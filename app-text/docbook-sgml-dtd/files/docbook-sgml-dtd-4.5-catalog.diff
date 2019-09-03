@@ -1,6 +1,6 @@
 diff -NurdB docbook-sgml-dtd/docbook.cat docbook-sgml-dtd_patch/docbook.cat
---- docbook-sgml-dtd/docbook.cat	2006-10-03 15:27:50.000000000 +0200
-+++ docbook-sgml-dtd_patch/docbook.cat	2007-08-14 00:43:31.485987458 +0200
+--- a/docbook.cat	2006-10-03 15:27:50.000000000 +0200
++++ b/docbook.cat	2007-08-14 00:43:31.485987458 +0200
 @@ -19,6 +19,8 @@
    -- ...................................................................... --
    -- DocBook driver file .................................................. --
