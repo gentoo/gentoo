@@ -119,7 +119,7 @@ app-admin/analog 6.0-r4 6.0.13: A webserver log analyzer
 app-admin/ansible 2.7.13 2.8.4 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 3.4.23 4.0.1: Checks ansible playbooks for practices and behaviour that can be improved
-app-admin/apache-tools 2.2.34 2.4.39 2.4.41: Useful Apache tools - htdigest, htpasswd, ab, htdbm
+app-admin/apache-tools 2.2.34 2.4.41: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r2 0.17.4 0.18.4: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r7: Another Password Generator
 app-admin/ara 0.15.0 0.15.0-r1: ARA Records Ansible
@@ -15166,7 +15166,7 @@ net-libs/neon 0.30.2: HTTP and WebDAV client library
 net-libs/net6 1.3.14-r2: Network access framework for IPv4/IPv6 written in C++
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
-net-libs/nghttp2 1.39.1 1.39.2 9999: HTTP/2 C Library
+net-libs/nghttp2 1.39.2 9999: HTTP/2 C Library
 net-libs/nodejs 0.12.18 4.9.1 6.14.4 6.17.1 8.12.0 8.16.1 10.16.3 12.9.0 12.9.1 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
@@ -15770,7 +15770,7 @@ net-print/c2esp 26 27: A CUPS filter for Kodak ESP printers
 net-print/cndrvcups-common-lb 3.60-r1: Common files for Canon drivers
 net-print/cndrvcups-lb 3.60-r2: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cnijfilter2 5.20 5.40 5.50 5.70: IJ Printer Driver
-net-print/cups 2.2.11 2.2.12 2.3.0 9999: The Common Unix Printing System
+net-print/cups 2.2.12 2.3.0 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.21.6 1.22.6 1.25.3 1.25.4 9999: Cups filters
 net-print/cups-pdf 2.6.1 3.0.0 3.0.1: Provides a virtual printer for CUPS to produce PDF files
@@ -18625,7 +18625,7 @@ www-plugins/passff 1.9: zx2c4 pass manager extension for Firefox
 www-plugins/passff-host 1.2.0-r1: Host app for the PassFF WebExtension
 www-plugins/pdfjs 1.9.426: A PDF reader in JavaScript
 www-servers/adsf 1.4.1 1.4.2: A Dead Simple Fileserver is a static file server that can launch in a directory
-www-servers/apache 2.2.34 2.4.39 2.4.41: The Apache Web Server
+www-servers/apache 2.2.34 2.4.41: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20170201: bozohttpd is a small and secure http server
 www-servers/caddy 0.10.10 0.10.11: Fast, cross-platform HTTP/2 web server with automatic HTTPS
