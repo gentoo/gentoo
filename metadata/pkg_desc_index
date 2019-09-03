@@ -1401,7 +1401,7 @@ app-emulation/dynamips 0.2.18: Cisco 7200/3600 Simulator
 app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulator
 app-emulation/faudio 19.03 19.06 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
 app-emulation/flannel 0.10.0 0.11.0: An etcd backed network fabric for containers
-app-emulation/free42 2.0.20 2.2.1 2.4 2.4.2: An HP-42S Calculator Simulator
+app-emulation/free42 2.0.20 2.2.1 2.4 2.4.2 2.5.3: An HP-42S Calculator Simulator
 app-emulation/fs-uae 3.0.0: Integrates the most accurate Amiga emulation code available from WinUAE
 app-emulation/fs-uae-launcher 3.0.0: PyQt5-based launcher for FS-UAE
 app-emulation/fuse 1.5.6 1.5.7: Free Unix Spectrum Emulator by Philip Kendall
@@ -4621,7 +4621,7 @@ dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r3 2017 2018-r2 2019: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.11.10 1.11.12 1.11.13 1.12.5 1.12.6 1.12.7 1.12.8 1.12.9 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.11.10 1.11.12 1.11.13 1.12.5 1.12.6 1.12.7 1.12.8 1.12.9 1.13 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
 dev-lang/helium 1.6 1.8.1: The Helium Compiler
@@ -7208,7 +7208,7 @@ dev-php/PEAR-Net_POP3 1.3.8-r1: Provides a POP3 class to access POP3 server
 dev-php/PEAR-Net_Ping 2.4.5-r2: OS independent wrapper class for executing ping calls
 dev-php/PEAR-Net_SMTP 1.7.2-r3 1.7.3 1.8.1: A PHP implementation of the SMTP protocol
 dev-php/PEAR-Net_Sieve 1.5.2-r1 1.5.4: An API for talking to sieve (RFC 3028) servers
-dev-php/PEAR-Net_SmartIRC 1.1.10-r1 1.1.12 1.1.13: PHP class to communicate with IRC networks
+dev-php/PEAR-Net_SmartIRC 1.1.10-r1 1.1.12 1.1.13 1.1.14: PHP class to communicate with IRC networks
 dev-php/PEAR-Net_Socket 1.2.2: PHP class interface to TCP sockets
 dev-php/PEAR-Net_Traceroute 0.21.3-r1: OS independet wrapper class for executing traceroute calls
 dev-php/PEAR-Net_URL 1.0.15-r1: Easy parsing of URLs
@@ -11244,6 +11244,7 @@ games-arcade/sdb 1.0.2-r1: A 2D top-down action game; escape a facility full of 
 games-arcade/sdl-sopwith 1.7.5-r2: Port of the classic Sopwith game using LibSDL
 games-arcade/sdlroids 1.3.4-r4: Asteroids Clone for X using SDL
 games-arcade/sdlsasteroids 3.0.1-r1: Rework of Sasteroids using SDL
+games-arcade/shovel-knight 3.3: Sweeping classic action adventure with an 8-bit retro aesthetic
 games-arcade/slimevolley 2.4.2-r1: A simple volleyball game
 games-arcade/solarwolf 1.5-r1: Action/arcade recreation of SolarFox
 games-arcade/spacerider 0.13-r1: Space-shooter written in C++, using the SDL
@@ -11406,7 +11407,7 @@ games-emulation/zsnes 1.51-r6 1.51-r7: SNES (Super Nintendo) emulator that uses 
 games-engines/devilutionx 9999: Diablo engine for modern operating systems
 games-engines/exult 9999: an Ultima 7 game engine that runs on modern operating systems
 games-engines/frobtads 1.2.3-r1 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
-games-engines/frotz 2.43-r1: Curses based interpreter for Z-code based text games
+games-engines/frotz 2.45_pre20190903: Interpreter for Z-code based text games
 games-engines/gargoyle 2011.1-r1: An Interactive Fiction (IF) player supporting all major formats
 games-engines/gemrb 0.8.3-r1: Reimplementation of the Infinity engine
 games-engines/love 0.7.2-r2 0.8.0-r1 0.8.0-r2 0.10.2 11.1 9999: A framework for 2D games in Lua
@@ -14816,7 +14817,7 @@ net-dns/s6-dns 2.2.0.1 2.3.0.0 2.3.0.1 2.3.0.2: Suite of DNS client programs and
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/tinystats 1.1: A tinydns logging helper app
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
-net-dns/unbound 1.9.0 1.9.1 1.9.1-r1 1.9.2: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.9.0 1.9.1 1.9.1-r1 1.9.2 1.9.3: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/validns 0.7 0.8: A high performance DNS/DNSSEC zone validator
 net-dns/valtz 0.7-r1: Validation tool for tinydns-data zone files
@@ -14848,7 +14849,7 @@ net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7-r1: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
-net-firewall/shorewall 5.2.3.3: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.2.3.3 5.2.3.4: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.35-r1 0.36: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
 net-firewall/xtables-addons 2.13 3.3: iptables extensions not yet accepted in the main kernel
@@ -16640,7 +16641,7 @@ sci-libs/libghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-libs/libh2o 0.2.1-r1 9999: Library of routines for IF97 water & steam properties
 sci-libs/libh2oxx 0.2-r1 9999: C++ bindings for libh2o
 sci-libs/libint 1.1.6 2.0.5: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
-sci-libs/libmed 3.3.1-r1 4.0.0-r1: A library to store and exchange meshed data or computation results
+sci-libs/libmed 4.0.0-r1: A library to store and exchange meshed data or computation results
 sci-libs/libmems 1.6_p1-r3 9999: Library for sci-biology/mauve
 sci-libs/libmuscle 3.7-r3: Library for sci-biology/mauve
 sci-libs/libnova 0.15.0: Celestial Mechanics and Astronomical Calculation Library
@@ -16667,7 +16668,7 @@ sci-libs/magma 1.4.0 1.4.1: Matrix Algebra on GPU and Multicore Architectures
 sci-libs/mathgl 2.4.1: Math Graphics Library
 sci-libs/matio 1.5.13 1.5.16: Library for reading and writing matlab files
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
-sci-libs/med 4.0.0: Modeling and Exchange of Data library
+sci-libs/med 4.0.0-r1: Modeling and Exchange of Data library
 sci-libs/metis 4.0.3 5.1.0-r2 5.1.0-r3: A package for unstructured serial graph partitioning
 sci-libs/minfx 1.0.3-r1 1.0.4_pre98 1.0.4 1.0.5 1.0.6 1.0.10 1.0.11: Numerical optimisation library
 sci-libs/minuit 5.34.14: A C++ physics analysis tool for function minimization
