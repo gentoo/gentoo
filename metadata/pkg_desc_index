@@ -9778,7 +9778,7 @@ dev-ruby/c21e 1.1.8 1.1.9 1.2.1: Run cross-platform executables
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/capistrano 2.15.5-r2 3.11.0 3.11.1: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
-dev-ruby/capybara 2.18.0 3.18.0 3.23.0 3.24.0 3.25.0 3.26.0 3.27.0 3.28.0: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 2.18.0 3.23.0 3.24.0 3.25.0 3.26.0 3.27.0 3.28.0 3.29.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.6: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
@@ -10068,7 +10068,7 @@ dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.1.0 2.1.1: Terminal painter
 dev-ruby/parallel 1.16.2 1.17.0: Run any code in parallel Processes or Threads
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
-dev-ruby/parser 2.5.3.0 2.6.2.0 2.6.2.1 2.6.3.0: A production-ready Ruby parser written in pure Ruby
+dev-ruby/parser 2.5.3.0 2.6.3.0 2.6.4.0: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.8.2: A small PEG based parser library
 dev-ruby/pastel 0.7.2 0.7.3: Terminal strings styling with intuitive and clean API
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
@@ -10263,7 +10263,7 @@ dev-ruby/sassc-rails 2.1.1 2.1.2: Integrate SassC-Ruby with Rails
 dev-ruby/sawyer 0.8.2: Secret User Agent of HTTP
 dev-ruby/sdoc 1.0.0: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.3.9: Advanced seed data handling for Rails
-dev-ruby/selenium-webdriver 2.53.4-r1 3.12.0 3.14.1 3.141.5926 3.142.0 3.142.1 3.142.2 3.142.3: This gem provides Ruby bindings for WebDriver
+dev-ruby/selenium-webdriver 2.53.4-r1 3.14.1 3.141.5926 3.142.0 3.142.1 3.142.2 3.142.3 3.142.4: This gem provides Ruby bindings for WebDriver
 dev-ruby/semantic_puppet 1.0.2: Library of tools for working with Semantic Versions and module dependencies
 dev-ruby/semver2 3.4.2: maintain versions as per http://semver.org
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
