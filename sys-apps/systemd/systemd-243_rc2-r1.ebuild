@@ -185,6 +185,7 @@ src_prepare() {
 
 	# Add local patches here
 	PATCHES+=(
+		"${FILESDIR}"/CVE-2019-15718.patch
 	)
 
 	if ! use vanilla; then
