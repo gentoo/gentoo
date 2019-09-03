@@ -26,9 +26,8 @@ python_prepare() {
 	# https://github.com/alex/rply/issues/26; fail under py[3-4]
 	if python_is_python3; then
 		sed -e s':test_simple:_&:' -e s':test_empty_production:_&:' \
-			-i tests/test_parsergenerator.py
+			-i tests/test_parsergenerator.py || die
 	fi
-	distutils-r1_python_prepare_all
 }
 
 python_test() {
