@@ -1,13 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 USE_RUBY="ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_EXTRADOC="History.md README.md"
 
 # Rake tasks are not distributed in the gem.
-RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_TASK_TEST=""
 
 inherit virtualx ruby-fakegem
@@ -16,7 +15,7 @@ DESCRIPTION="Capybara aims to simplify the process of integration testing Rack a
 HOMEPAGE="https://github.com/jnicklas/capybara"
 LICENSE="MIT"
 
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 SLOT="3"
 IUSE="test"
 
@@ -36,7 +35,7 @@ ruby_add_rdepend "
 	>=dev-ruby/nokogiri-1.8:0
 	>=dev-ruby/rack-1.6.0:*
 	>=dev-ruby/rack-test-0.6.3:*
-	>=dev-ruby/regexp_parser-1.2:1
+	>=dev-ruby/regexp_parser-1.5:1
 	>=dev-ruby/xpath-3.2:3"
 
 all_ruby_prepare() {
@@ -46,7 +45,7 @@ all_ruby_prepare() {
 	sed -i -e '/#maximize/,/^  end/ s:^:#:' lib/capybara/spec/session/window/window_spec.rb || die
 
 	# Avoid spec that requires unpackaged geckodriver
-	sed -i -e '/describe.*register_server/,/^  end/ s:^:#:' spec/capybara_spec.rb || die
+	#sed -i -e '/describe.*register_server/,/^  end/ s:^:#:' spec/capybara_spec.rb || die
 
 	# Avoid test dependency on puma server for now
 	sed -i -e '/should have :puma registered/,/^    end/ s:^:#:' spec/capybara_spec.rb || die
