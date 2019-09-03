@@ -11,7 +11,7 @@ FORTRAN_STANDARD=90
 inherit desktop fortran-2 python-single-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="Object-oriented tool suite for chemical kinetics, thermodynamics, and transport"
-HOMEPAGE="http://www.cantera.org"
+HOMEPAGE="https://www.cantera.org"
 SRC_URI="https://github.com/Cantera/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
@@ -34,7 +34,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	dev-cpp/eigen
+	dev-cpp/eigen:3
 	dev-libs/boost
 	dev-libs/libfmt
 	python? (
