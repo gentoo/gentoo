@@ -34,6 +34,7 @@ RDEPEND="
 	>=x11-libs/startup-notification-0.7
 	>=x11-libs/libXcomposite-0.2
 	>=gnome-base/gsettings-desktop-schemas-3.21.4[introspection?]
+	<gnome-base/gsettings-desktop-schemas-3.31
 	gnome-base/gnome-desktop:3=
 
 	x11-libs/libICE
