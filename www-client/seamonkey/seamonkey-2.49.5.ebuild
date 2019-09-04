@@ -38,7 +38,6 @@ else
 		${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source-l10n.tar.xz -> ${P}.source-l10n.tar.xz"
 fi
 
-#MOZCONFIG_OPTIONAL_GTK2ONLY=1
 MOZCONFIG_OPTIONAL_WIFI=1
 MOZ_GENERATE_LANGPACKS=1
 MOZ_L10N_SOURCEDIR="${S}/${P}-l10n"
@@ -106,11 +105,12 @@ pkg_pretend() {
 }
 
 src_unpack() {
-	unpack ${A/ ${P}.source-l10n.tar.xz}
+	local l10n_sources="${P}.source-l10n.tar.xz"
+	unpack ${A/ ${l10n_sources}}
 
 	mkdir "${S}/${P}-l10n" || die
 	cd "${S}/${P}-l10n" || die
-	unpack ${P}.source-l10n.tar.xz
+	unpack ${l10n_sources}
 }
 
 src_prepare() {
