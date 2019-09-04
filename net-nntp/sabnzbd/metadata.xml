@@ -1,9 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>jsbronder@gentoo.org</email>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="7za">Add support for extracting 7za files</flag>
 		<flag name="rar">Add support for extracting rar files</flag>
