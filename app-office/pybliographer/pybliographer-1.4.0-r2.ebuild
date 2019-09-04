@@ -21,6 +21,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=app-text/recode-3.6-r1
 	app-text/rarian
 	dev-libs/glib:2
+	dev-python/gconf-python:2[${PYTHON_USEDEP}]
 	dev-python/pygobject:2[${PYTHON_USEDEP}]
 	>=dev-python/pygtk-2.24.0:2[${PYTHON_USEDEP}]
 	>=dev-python/python-bibtex-1.2.5[${PYTHON_USEDEP}]
