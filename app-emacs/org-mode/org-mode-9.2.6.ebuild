@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 NEED_EMACS=24
 
 inherit elisp readme.gentoo-r1
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd ~x86-macos"
 IUSE="contrib doc odt-schema"
 RESTRICT="test"
 
-DEPEND="doc? ( virtual/texi2dvi )"
+BDEPEND="doc? ( virtual/texi2dvi )"
 
 S="${WORKDIR}/org-${PV}"
 SITEFILE="50${PN}-gentoo.el"
@@ -49,7 +49,7 @@ src_install() {
 	fi
 
 	elisp-site-file-install "${T}/${SITEFILE}"
-	dodoc README doc/library-of-babel.org etc/ORG-NEWS
+	dodoc README etc/ORG-NEWS
 	use doc && dodoc doc/org.pdf doc/orgcard.pdf doc/orgguide.pdf
 
 	DOC_CONTENTS="Org mode has a large variety of run-time dependencies,
