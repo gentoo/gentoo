@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm setup test unpack
+DEPEND=virtual/pkgconfig virtual/fortran
+DESCRIPTION=Optimized BLAS library based on GotoBLAS2
+EAPI=7
+HOMEPAGE=http://xianyi.github.com/OpenBLAS/
+IUSE=dynamic eselect-ldso index-64bit openmp pthread
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+LICENSE=BSD
+RDEPEND=eselect-ldso? ( >=app-eselect/eselect-blas-0.2 !app-eselect/eselect-cblas >=app-eselect/eselect-lapack-0.2 ) virtual/fortran
+REQUIRED_USE=?? ( openmp pthread )
+SLOT=0
+SRC_URI=https://github.com/xianyi/OpenBLAS/tarball/v0.3.7 -> openblas-0.3.7.tar.gz
+_eclasses_=fortran-2	f75a2d9321053acf424991e805f32ede	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=48a07334a8d5e99cc09746e1316118d1
