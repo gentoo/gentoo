@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
+inherit python-any-r1
 
 DESCRIPTION="BLAS-like Library Instantiation Software Framework"
 HOMEPAGE="https://github.com/flame/blis"
@@ -18,7 +19,7 @@ RDEPEND="eselect-ldso? ( !app-eselect/eselect-cblas
                          >=app-eselect/eselect-blas-0.2 )"
 
 DEPEND="${RDEPEND}
-	dev-lang/python
+	${PYTHON_DEPS}
 "
 
 PATCHES=(
@@ -56,7 +57,7 @@ src_configure () {
 		$(use_enable static-libs static) \
 		--enable-blas \
 		--enable-cblas \
-		${BLIS_FLAGS[@]} \
+		"${BLIS_FLAGS[@]}" \
 		--enable-shared \
 		$confname || die
 }
