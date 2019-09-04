@@ -9,7 +9,7 @@ PYTHON_REQ_USE="tk"
 inherit cmake-utils python-single-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="Multi-platform WYSIWYG ebook editor for ePub format"
-HOMEPAGE="https://sigil-ebook.com/"
+HOMEPAGE="https://sigil-ebook.com/ https://github.com/Sigil-Ebook/Sigil"
 SRC_URI="https://github.com/Sigil-Ebook/Sigil/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+ Apache-2.0"
@@ -33,7 +33,6 @@ RDEPEND="
 	>=dev-qt/qtprintsupport-5.12:5
 	>=dev-qt/qtwebengine-5.12:5[widgets]
 	>=dev-qt/qtwidgets-5.12:5
-	>=dev-qt/qtxmlpatterns-5.12:5
 	sys-libs/zlib[minizip]
 	plugins? (
 		dev-python/chardet[${PYTHON_USEDEP}]
@@ -59,7 +58,7 @@ DOCS=( ChangeLog.txt README.md )
 DOC_CONTENTS="From Sigil's release notes:
 When you fire up Sigil for the very first time:
 navigate to the new General Preferences and select the default
-epub version you plan to work with (epub 2 or epub3) so that new
+epub version you plan to work with (epub2 or epub3) so that new
 empty ebooks start with the correct code.
 if you plan to work with epub3 epubs, you should change your
 PreserveEntities setting to use ONLY NUMERIC entities.
@@ -68,12 +67,6 @@ For example use & # 1 6 0 ; for non-breaking spaces and etc.
 
 We strongly recommend enabling Mend On Open in your settings
 for best performance with Sigil."
-
-src_prepare() {
-	# bundled is a exact copy of the package, and upstream plan to switch soon
-	rm -r src/Resource_Files/plugin_launchers/python/css_parser/ || die
-	cmake-utils_src_prepare
-}
 
 src_configure() {
 	python_export PYTHON_LIBPATH PYTHON_INCLUDEDIR
