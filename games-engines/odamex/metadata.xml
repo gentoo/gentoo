@@ -6,18 +6,19 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>mwoodj@knology.net</email>
-		<name>Mike Wood</name>
+		<email>vilhelm.gray@gmail.com</email>
+		<name>William Breathitt Gray</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="odalaunch">Build the wxwidgets based launcher.</flag>
+		<flag name="client">Build client target</flag>
 		<flag name="master">Build master server target (advertises odamex server list)</flag>
-		<flag name="portmidi">Enable portmidi support.</flag>
-		<flag name="server">Build server target.</flag>
+		<flag name="odalaunch">Build the wxWidgets based launcher</flag>
+		<flag name="portmidi">Enable PortMidi support</flag>
+		<flag name="server">Build server target</flag>
 	</use>
 	<upstream>
 		<changelog>http://odamex.net/changelog.php</changelog>
