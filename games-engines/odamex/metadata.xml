@@ -14,10 +14,11 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="odalaunch">Build the wxwidgets based launcher.</flag>
+		<flag name="client">Build client target</flag>
 		<flag name="master">Build master server target (advertises odamex server list)</flag>
-		<flag name="portmidi">Enable portmidi support.</flag>
-		<flag name="server">Build server target.</flag>
+		<flag name="odalaunch">Build the wxWidgets based launcher</flag>
+		<flag name="portmidi">Enable PortMidi support</flag>
+		<flag name="server">Build server target</flag>
 	</use>
 	<upstream>
 		<changelog>http://odamex.net/changelog.php</changelog>
