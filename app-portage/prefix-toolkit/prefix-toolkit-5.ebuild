@@ -239,6 +239,15 @@ RETAIN="HOME=$HOME TERM=$TERM USER=$USER SHELL=$SHELL"
 [[ -n ${SSH_AUTH_SOCK} ]] && RETAIN+=" SSH_AUTH_SOCK=$SSH_AUTH_SOCK"
 # if we're on some X terminal, makes sense to inherit that too
 [[ -n ${DISPLAY} ]] && RETAIN+=" DISPLAY=$DISPLAY"
+if [[ -d /proc/registry ]]; then # we're on Cygwin
+	# crucial to Windows but cannot be restored, see
+	# https://cygwin.com/ml/cygwin/2019-08/msg00072.html
+	[[ -n ${SYSTEMDRIVE} ]] && RETAIN+=" SYSTEMDRIVE=$SYSTEMDRIVE"
+	# COMSPEC is to native Windows what SHELL is to *nix
+	[[ -n ${COMSPEC} ]] && RETAIN+=" COMSPEC=$COMSPEC"
+	# some Windows programs (e.g. devenv.exe) need TMP or TEMP
+	[[ -n ${TEMP} ]] && RETAIN+=" TEMP=$TEMP"
+fi
 # do it!
 if [[ ${SHELL#${EPREFIX}} != ${SHELL} ]] ; then
 	'@GENTOO_PORTAGE_EENV@' -i $RETAIN $SHELL -l
@@ -412,6 +421,7 @@ eend_exit() {
 ebegin "creating directory structure"
 (
 	set -e
+	mkdir -p "${CHILD_EPREFIX}"/var/tmp/portage
 	mkdir -p "${CHILD_EPREFIX}"/etc/portage/profile/use.mask
 	mkdir -p "${CHILD_EPREFIX}"/etc/portage/profile/use.force
 	mkdir -p "${CHILD_EPREFIX}"/etc/portage/env
@@ -427,11 +437,11 @@ ebegin "creating make.conf"
 (
 	set -e
 	echo "#"
-	echo "# The following values where taken from the parent prefix's"
-	echo "# environment. Feel free to adopt them as you like."
+	echo "# These are sane default compiler flags, feel free to adopt them as you like."
+	echo "# Extending the flags is done to respect flags probably set by some profile."
 	echo "#"
-	echo "CFLAGS=\"$(portageq envvar CFLAGS)\""
-	echo "CXXFLAGS=\"$(portageq envvar CXXFLAGS)\""
+	echo "CFLAGS=\"\${CFLAGS} -O2 -pipe\""
+	echo "CXXFLAGS=\"${CXXFLAGS} -O2 -pipe\""
 	echo "MAKEOPTS=\"$(portageq envvar MAKEOPTS)\""
 	niceness=$(portageq envvar PORTAGE_NICENESS || true)
 	[[ -n ${niceness} ]] &&
@@ -445,6 +455,10 @@ ebegin "creating make.conf"
 	echo "EPREFIX=\"${CHILD_EPREFIX}\""
 	echo "PORTAGE_OVERRIDE_EPREFIX=\"${PARENT_EPREFIX}\""
 	echo "BROOT=\"${PARENT_EPREFIX}\""
+	echo "PORTAGE_TMPDIR=\"\${EPREFIX}/var/tmp/portage\""
+	# Since EAPI 7 there is BDEPEND, which is DEPEND in EAPI up to 6.
+	# We do not want to pull DEPEND from EAPI <= 6, but RDEPEND only.
+	echo "EMERGE_DEFAULT_OPTS=\"--root-deps=rdeps\""
 	if [[ -n ${CHILD_CHOST} ]] ; then
 		echo "CHOST=\"${CHILD_CHOST}\""
 	fi
@@ -463,6 +477,10 @@ ebegin "creating env/host-cc.conf"
 cat > "${CHILD_EPREFIX}"/etc/portage/env/host-cc.conf <<-EOM
 	CC=${PARENT_CHOST}-gcc
 	CXX=${PARENT_CHOST}-g++
+	# Inherited compiler flags from parent prefix,
+	# as the child prefix may have a different compiler.
+	CFLAGS="$(portageq envvar CFLAGS)"
+	CXXFLAGS="$(portageq envvar CXXFLAGS)"
 	EOM
 eend_exit $?
 
