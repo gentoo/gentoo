@@ -87,7 +87,7 @@ src_prepare() {
 	if use gimp || use krita || use qt5; then
 		sed -i '/CMAKE_CXX_FLAGS_RELEASE/d' gmic-qt/CMakeLists.txt || die
 		local S="${S}/gmic-qt"
-		PATCHES=( "${FILESDIR}"/${PN}-2.6.7-qt-cmake.patch )
+		PATCHES=( "${FILESDIR}"/${PN}-2.7.1-qt-cmake.patch )
 		cmake-utils_src_prepare
 	fi
 }
