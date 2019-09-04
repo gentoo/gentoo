@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-04)
+# Unmaintained.  EAPI 0.  Last touched in 2010.  No real homepage.
+# No clear advantage over app-text/tree.
+# Removal in 30 days.  Bug #693502.
+app-text/ddir
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-04)
 # A metapackage without a really clear purpose.  No reverse
 # dependencies.
 # Removal in 30 days.
