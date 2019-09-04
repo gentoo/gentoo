@@ -20,6 +20,8 @@ KEYWORDS="~amd64"
 
 RESTRICT="strip"
 
+DEPEND="dev-lang/go"
+
 pkg_setup() {
 	enewgroup telegraf
 	enewuser telegraf -1 -1 -1 telegraf
