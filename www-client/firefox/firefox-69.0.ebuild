@@ -51,7 +51,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist clang cpu_flags_x86_avx2 dbus debug eme-free geckodriver
+IUSE="bindist clang cpu_flags_x86_avx2 debug eme-free geckodriver
 	+gmp-autoupdate hardened hwaccel jack lto neon pgo pulseaudio
 	+screenshot selinux startup-notification +system-av1
 	+system-harfbuzz +system-icu +system-jpeg +system-libevent
@@ -79,8 +79,8 @@ CDEPEND="
 	>=media-libs/freetype-2.4.10
 	kernel_linux? ( !pulseaudio? ( media-libs/alsa-lib ) )
 	virtual/freedesktop-icon-theme
-	dbus? ( >=sys-apps/dbus-0.60
-		>=dev-libs/dbus-glib-0.72 )
+	sys-apps/dbus
+	dev-libs/dbus-glib
 	startup-notification? ( >=x11-libs/startup-notification-0.8 )
 	>=x11-libs/pixman-0.19.2
 	>=dev-libs/glib-2.26:2
@@ -108,9 +108,11 @@ CDEPEND="
 	)
 	system-sqlite? ( >=dev-db/sqlite-3.28.0:3[secure-delete,debug=] )
 	system-webp? ( >=media-libs/libwebp-1.0.2:0= )
-	wifi? ( kernel_linux? ( >=sys-apps/dbus-0.60
-			>=dev-libs/dbus-glib-0.72
-			net-misc/networkmanager ) )
+	wifi? (
+		kernel_linux? (
+			net-misc/networkmanager
+		)
+	)
 	jack? ( virtual/jack )
 	selinux? ( sec-policy/selinux-mozilla )"
 
@@ -531,8 +533,6 @@ src_configure() {
 	sed -i -e 's/ccache_stats = None/return None/' \
 		python/mozbuild/mozbuild/controller/building.py || \
 		die "Failed to disable ccache stats call"
-
-	mozconfig_use_enable dbus
 
 	mozconfig_use_enable wifi necko-wifi
 
