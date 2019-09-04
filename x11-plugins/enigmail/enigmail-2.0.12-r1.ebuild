@@ -42,7 +42,10 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	"
 
-PATCHES=( "${FILESDIR}"/enigmail-no_pEp_auto_download.patch )
+PATCHES=(
+	"${FILESDIR}"/enigmail-no_pEp_auto_download.patch
+	"${FILESDIR}/${PN}-2.0.12-enable_seamonkey_support.patch"
+)
 
 src_compile() {
 	emake ipc public ui package lang stdlib
