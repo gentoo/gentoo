@@ -1,5 +1,5 @@
-DEFINED_PHASES=compile configure install postinst postrm test
-DEPEND=eselect-ldso? ( !app-eselect/eselect-cblas >=app-eselect/eselect-blas-0.2 ) dev-lang/python
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=eselect-ldso? ( !app-eselect/eselect-cblas >=app-eselect/eselect-blas-0.2 ) || ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 >=dev-lang/python-2.7.5-r2:2.7 )
 DESCRIPTION=BLAS-like Library Instantiation Software Framework
 EAPI=7
 HOMEPAGE=https://github.com/flame/blis
@@ -10,5 +10,5 @@ RDEPEND=eselect-ldso? ( !app-eselect/eselect-cblas >=app-eselect/eselect-blas-0.
 REQUIRED_USE=?? ( openmp pthread serial ) ?? ( eselect-ldso 64bit-index )
 SLOT=0
 SRC_URI=https://github.com/flame/blis/archive/0.5.2.tar.gz -> blis-0.5.2.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8
-_md5_=e9e39b427e1b47f5e14184f0ac2becb1
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=15f08e384d16acb29444599940b36d87
