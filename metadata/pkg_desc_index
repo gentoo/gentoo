@@ -1228,7 +1228,7 @@ app-emacs/emacs-wget 0.5.0-r1: Wget interface for Emacs
 app-emacs/emhacks 20070920-r1: Useful Emacs Lisp libraries, including gdiff, jjar, jmaker, swbuff, and tabbar
 app-emacs/emms 3.0-r1 4.1 4.3 4.4: The Emacs Multimedia System
 app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
-app-emacs/eselect-mode 1.4.14 9999: Emacs major mode for editing eselect files
+app-emacs/eselect-mode 1.4.14 1.4.15 9999: Emacs major mode for editing eselect files
 app-emacs/ess 17.11 18.10.2-r1: Emacs Speaks Statistics
 app-emacs/evil 1.0.8 1.2.13 1.2.14: Extensible vi layer for Emacs
 app-emacs/expand-region 0.11.0: Emacs extension to increase selected region by semantic units
@@ -1292,7 +1292,7 @@ app-emacs/nxml-gentoo-schemas 20170302 20180611: Extension for nxml-mode with Ge
 app-emacs/nxml-libvirt-schemas 1.2.1: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 3.12.1-r1 4.00.1: Emacs mode for OCaml
-app-emacs/org-mode 8.3.2-r1 9.0.4 9.1.13: An Emacs mode for notes and project planning
+app-emacs/org-mode 8.3.2-r1 9.1.13 9.2.6: An Emacs mode for notes and project planning
 app-emacs/outline-magic 0.9: Outline mode extensions for Emacs
 app-emacs/paredit 23-r1: Minor mode for performing structured editing of S-expressions
 app-emacs/pariemacs 3.14: sci-mathematics/pari emacs mode
@@ -1342,7 +1342,7 @@ app-emacs/tempo-snippets 0.1.5: Visual insertion of tempo templates
 app-emacs/thinks 1.9: Insert text in a think bubble
 app-emacs/thumbs 2.0-r1: Emacs thumbnail previewer for image files
 app-emacs/treepy 0.1.1: Generic tree traversing tools for Emacs Lisp
-app-emacs/tuareg-mode 2.0.7 2.0.8 2.0.10: An Objective Caml/Camllight mode for Emacs
+app-emacs/tuareg-mode 2.0.7 2.0.10 2.2.0: An Objective Caml/Camllight mode for Emacs
 app-emacs/twittering-mode 2.0.0 3.0.0 9999: Emacs major mode for Twitter
 app-emacs/typing 1.1.4: The Typing of Emacs -- an Elisp parody of The Typing of the Dead for Dreamcast
 app-emacs/uboat 1.2: Generate u-boat-death messages, patterned after Iron Coffins
@@ -1360,7 +1360,7 @@ app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r1: Mode for editing Wikipedia articles off-line
 app-emacs/windows 2.49: Window manager for GNU Emacs
 app-emacs/with-editor 2.7.2 2.7.4 2.8.0 2.8.3: Use the Emacsclient as the $EDITOR of child processes
-app-emacs/xclip 1.3: Emacs Interface to XClip
+app-emacs/xclip 1.3 1.9: Emacs Interface to XClip
 app-emacs/xrdb-mode 3.0: An Emacs major mode for editing X resource database files
 app-emacs/xslide 0.2.2 0.2.2-r1: An Emacs major mode for editing XSL stylesheets and running XSL processes
 app-emacs/yaml-mode 0.0.13 0.0.14: A major mode for GNU Emacs for editing YAML files
@@ -8984,7 +8984,6 @@ dev-python/sh 1.11 1.11-r1 1.12.9: Python subprocess interface
 dev-python/shm 1.2.2-r1: Python modules to access System V shared memory and semaphores
 dev-python/shutilwhich 1.1.0: A copy & paste backport of Python 3.3's shutil.which function
 dev-python/simplebayes 1.5.7: memory-based, optional-persistence naive bayesian text classifier
-dev-python/simplecv 1.3: Python interface to several powerful open source computer vision libraries
 dev-python/simpleeval 0.9.8: A simple, safe single expression evaluator library
 dev-python/simplegeneric 0.8.1-r1: Simple generic functions for Python
 dev-python/simplejson 3.13.2 3.14.0 3.15.0 3.16.0: Simple, fast, extensible JSON encoder/decoder for Python
@@ -9286,7 +9285,6 @@ dev-python/yapsy 1.11.223-r1 1.11.223-r2: A fat-free DIY Python plugin managemen
 dev-python/yaql 1.1.3: YAQL: Yet Another Query Language
 dev-python/yarl 1.1.1 1.3.0: Yet another URL library
 dev-python/yaswfp 0.9.3: Yet Another SWF Parser
-dev-python/yenc 0.4.0-r1: Module providing raw yEnc encoding/decoding
 dev-python/yolk 0.4.3-r1: Tool and library for querying PyPI and locally installed Python packages
 dev-python/yolk-portage 0.1-r1: Gentoo Portage plugin for yolk
 dev-python/yubiotp 0.2.1: Library verifying YubiKey OTP tokens, locally and using Yubico web service
@@ -13548,7 +13546,7 @@ media-libs/waffle 1.5.2 1.6.0 9999: Library that allows selection of GL API and 
 media-libs/webrtc-audio-processing 0.3.1: AudioProcessing library from the webrtc.org code base
 media-libs/woff2 1.0.2-r1: Encode/decode WOFF2 font format
 media-libs/wxsvg 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
-media-libs/x264 0.0.20190214 9999: A free library for encoding X264/AVC streams
+media-libs/x264 0.0.20190214 0.0.20190903 9999: A free library for encoding X264/AVC streams
 media-libs/x265 2.8 2.9 3.0 3.1 3.1.2 9999: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.9-r2 1.2.9999: Core libraries for Xine movie player
 media-libs/xvid 1.3.5: High performance/quality MPEG-4 video de-/encoding solution
@@ -14438,7 +14436,7 @@ media-video/vlc 3.0.8 3.0.9999 9999: Media player and framework with support for
 media-video/vobcopy 1.2.0: copies DVD .vob files to harddisk, decrypting them on the way
 media-video/vstrip 0.8f: A program to split non-css dvd vobs into individual chapters
 media-video/webcamoid 8.1.0: A full featured webcam capture application
-media-video/x264-encoder 0.0.20190214 9999: A free commandline encoder for X264/AVC streams
+media-video/x264-encoder 0.0.20190214 0.0.20190903 9999: A free commandline encoder for X264/AVC streams
 media-video/xanim-export 2.80.1-r5: XAnim with Quicktime and RAW Audio export functions
 media-video/xine-ui 0.99.10: Xine movie player
 media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project
