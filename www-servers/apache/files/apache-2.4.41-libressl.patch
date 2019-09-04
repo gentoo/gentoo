@@ -1,0 +1,27 @@
+From d446b977f28ec79fffc2d2b45c671e037b709f19 Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Wed, 28 Aug 2019 02:15:42 +0300
+Subject: [PATCH] mod_ssl: fix compilation with LibreSSL
+
+Upstream-Status: Submitted [https://github.com/apache/httpd/pull/64]
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ modules/ssl/ssl_engine_init.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/ssl/ssl_engine_init.c b/modules/ssl/ssl_engine_init.c
+index f54c922fc7..646c903fea 100644
+--- a/modules/ssl/ssl_engine_init.c
++++ b/modules/ssl/ssl_engine_init.c
+@@ -1512,7 +1512,7 @@ static apr_status_t ssl_init_proxy_certs(server_rec *s,
+     X509_STORE_CTX *sctx;
+     X509_STORE *store = SSL_CTX_get_cert_store(mctx->ssl_ctx);
+ 
+-#if OPENSSL_VERSION_NUMBER >= 0x1010100fL
++#if OPENSSL_VERSION_NUMBER >= 0x1010100fL && !defined(LIBRESSL_VERSION_NUMBER)
+     /* For OpenSSL >=1.1.1, turn on client cert support which is
+      * otherwise turned off by default (by design).
+      * https://github.com/openssl/openssl/issues/6933 */
+-- 
+2.23.0
+
