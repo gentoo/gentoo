@@ -51,7 +51,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist clang cpu_flags_x86_avx2 dbus debug eme-free geckodriver
+IUSE="bindist clang cpu_flags_x86_avx2 debug eme-free geckodriver
 	+gmp-autoupdate hardened hwaccel jack lto neon pgo pulseaudio
 	+screenshot selinux startup-notification +system-av1
 	+system-harfbuzz +system-icu +system-jpeg +system-libevent
@@ -64,7 +64,7 @@ SRC_URI="${SRC_URI}
 	${PATCH_URIS[@]}"
 
 CDEPEND="
-	>=dev-libs/nss-3.46
+	>=dev-libs/nss-3.45
 	>=dev-libs/nspr-4.22
 	dev-libs/atk
 	dev-libs/expat
@@ -79,8 +79,8 @@ CDEPEND="
 	>=media-libs/freetype-2.4.10
 	kernel_linux? ( !pulseaudio? ( media-libs/alsa-lib ) )
 	virtual/freedesktop-icon-theme
-	dbus? ( >=sys-apps/dbus-0.60
-		>=dev-libs/dbus-glib-0.72 )
+	sys-apps/dbus
+	dev-libs/dbus-glib
 	startup-notification? ( >=x11-libs/startup-notification-0.8 )
 	>=x11-libs/pixman-0.19.2
 	>=dev-libs/glib-2.26:2
@@ -98,19 +98,18 @@ CDEPEND="
 		>=media-libs/dav1d-0.3.0:=
 		>=media-libs/libaom-1.0.0:=
 	)
-	system-harfbuzz? ( >=media-libs/harfbuzz-2.4.0:0= >=media-gfx/graphite2-1.3.13 )
+	system-harfbuzz? ( >=media-libs/harfbuzz-2.5.3:0= >=media-gfx/graphite2-1.3.13 )
 	system-icu? ( >=dev-libs/icu-63.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
 	system-libevent? ( >=dev-libs/libevent-2.0:0=[threads] )
-	system-libvpx? (
-		>=media-libs/libvpx-1.7.0:0=[postproc]
-		<media-libs/libvpx-1.8:0=[postproc]
-	)
+	system-libvpx? ( =media-libs/libvpx-1.7*:0=[postproc] )
 	system-sqlite? ( >=dev-db/sqlite-3.28.0:3[secure-delete,debug=] )
 	system-webp? ( >=media-libs/libwebp-1.0.2:0= )
-	wifi? ( kernel_linux? ( >=sys-apps/dbus-0.60
-			>=dev-libs/dbus-glib-0.72
-			net-misc/networkmanager ) )
+	wifi? (
+		kernel_linux? (
+			net-misc/networkmanager
+		)
+	)
 	jack? ( virtual/jack )
 	selinux? ( sec-policy/selinux-mozilla )"
 
@@ -167,12 +166,7 @@ DEPEND="${CDEPEND}
 		x86? ( >=dev-lang/nasm-2.13 )
 	)"
 
-# We use virtx eclass which cannot handle wayland
-REQUIRED_USE="wifi? ( dbus )
-	pgo? (
-		lto
-		!wayland
-	)"
+REQUIRED_USE="pgo? ( lto )"
 
 RESTRICT="!test? ( test )"
 
@@ -537,8 +531,6 @@ src_configure() {
 		python/mozbuild/mozbuild/controller/building.py || \
 		die "Failed to disable ccache stats call"
 
-	mozconfig_use_enable dbus
-
 	mozconfig_use_enable wifi necko-wifi
 
 	mozconfig_use_enable geckodriver
@@ -594,8 +586,13 @@ src_compile() {
 		addpredict /etc/gconf
 	fi
 
-	MOZ_MAKE_FLAGS="${MAKEOPTS} -O" SHELL="${SHELL:-${EPREFIX}/bin/bash}" MOZ_NOSPAM=1 ${_virtx} \
-	./mach build --verbose || die
+	GDK_BACKEND=x11 \
+		MOZ_MAKE_FLAGS="${MAKEOPTS} -O" \
+		SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
+		MOZ_NOSPAM=1 \
+		${_virtx} \
+		./mach build --verbose \
+		|| die
 }
 
 src_install() {
