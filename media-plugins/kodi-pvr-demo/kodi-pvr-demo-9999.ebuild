@@ -16,8 +16,8 @@ case ${PV} in
 	inherit git-r3
 	;;
 *)
-	CODENAME="Krypton"
-	KEYWORDS="~x86 ~amd64"
+	CODENAME="Leia"
+	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/kodi-pvr/pvr.demo/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/pvr.demo-${PV}-${CODENAME}"
 	;;
@@ -28,8 +28,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	=media-tv/kodi-9999
-	=media-libs/kodi-platform-9999
+	~media-tv/kodi-9999
+	~media-libs/kodi-platform-9999
 	dev-libs/tinyxml
 	"
 

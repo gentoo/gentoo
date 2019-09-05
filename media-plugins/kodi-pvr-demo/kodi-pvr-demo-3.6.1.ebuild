@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils kodi-addon
 
@@ -16,7 +16,7 @@ case ${PV} in
 	inherit git-r3
 	;;
 *)
-	CODENAME="Krypton"
+	CODENAME="Leia"
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/kodi-pvr/pvr.demo/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/pvr.demo-${PV}-${CODENAME}"
@@ -28,8 +28,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	=media-tv/kodi-17*
-	=media-libs/kodi-platform-17*
+	=media-tv/kodi-18*
+	=media-libs/kodi-platform-18*
 	dev-libs/tinyxml
 	"
 
