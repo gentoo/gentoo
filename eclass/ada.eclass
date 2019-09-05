@@ -258,9 +258,13 @@ _ada_single_set_globals() {
 	local unflags=( "${_ADA_UNSUPPORTED_IMPLS[@]/#/-ada_target_}" )
 	local allflags=( ${flags[@]} ${unflags[@]} )
 
-	local optflags=${allflags[@]/%/(-)?}
+	local optflags=${flags[@]/%/(-)?}
 
 	IUSE="${allflags[*]}"
+
+	if [[ ${#_ADA_UNSUPPORTED_IMPLS[@]} -gt 0 ]]; then
+		optflags+=,${unflags[@]/%/(-)}
+	fi
 
 	local deps requse usedep
 	if [[ ${#_ADA_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
