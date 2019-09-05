@@ -9,10 +9,11 @@ DESCRIPTION="A modder-friendly OpenGL source port based on the DOOM engine"
 HOMEPAGE="https://zdoom.org"
 SRC_URI="https://github.com/coelckers/${PN}/archive/g${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="BSD BZIP2 DUMB-0.9.3 GPL-3 LGPL-3 MIT"
+LICENSE="BSD BZIP2 DUMB-0.9.3 GPL-3 LGPL-3 MIT
+	nonfree? ( Activision ChexQuest3 DOOM-COLLECTORS-EDITION freedist )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gtk gtk2 openmp"
+IUSE="gtk gtk2 +nonfree openmp"
 
 DEPEND="
 	media-libs/libsdl2[opengl]
@@ -32,6 +33,7 @@ S="${WORKDIR}/${PN}-g${PV}"
 PATCHES=(
 	"${FILESDIR}/${P}-fluidsynth2.patch"
 	"${FILESDIR}/${P}-install_soundfonts.patch"
+	"${FILESDIR}/${P}-Introduce-the-BUILD_NONFREE-option.patch"
 )
 
 src_prepare() {
@@ -51,6 +53,7 @@ src_configure() {
 		-DNO_GTK="$(usex !gtk)"
 		-DNO_OPENAL=OFF
 		-DNO_OPENMP="$(usex !openmp)"
+		-DBUILD_NONFREE="$(usex nonfree)"
 	)
 	cmake-utils_src_configure
 }
@@ -59,4 +62,18 @@ src_install() {
 	newicon src/posix/zdoom.xpm "${PN}.xpm"
 	make_desktop_entry "${PN}" "GZDoom" "${PN}" "Game;ActionGame"
 	cmake-utils_src_install
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	if ! use nonfree ; then
+		elog
+		elog "GZDoom installed without nonfree components."
+		elog "Note: The nonfree game_support.pk3 file is needed to play"
+		elog "      games natively supported by GZDoom."
+		elog "A list of games natively supported by GZDoom may be found"
+		elog "on the ZDoom wiki: https://zdoom.org/wiki/IWAD"
+		elog
+	fi
 }
