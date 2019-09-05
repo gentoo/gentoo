@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bernardo@standard.ai</email>
+		<name>Bernardo Meurer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		libuv bindings for luajit and lua 5.1/ 5.2/ 5.3.
+
+		This library makes libuv available to lua scripts. It was made for the
+		luvit project but should usable from nearly any lua project.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">luvit/luv</remote-id>
+	</upstream>
+</pkgmetadata>
