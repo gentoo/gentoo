@@ -1207,7 +1207,7 @@ app-emacs/df-mode 20050509-r1: Minor mode to show space left on devices in the m
 app-emacs/dictionary 1.10: Emacs package for talking to a dictionary server
 app-emacs/dircolors 1.0-r2: Provide the same facility of ls --color inside Emacs
 app-emacs/dired-sort-menu 1.26: Sort entries in Dired mode
-app-emacs/distel 4.0.6: Distributed Emacs Lisp for Erlang
+app-emacs/distel 4.0.6 4.1.1: Distributed Emacs Lisp for Erlang
 app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
@@ -1277,7 +1277,7 @@ app-emacs/mediawiki 2.2.4.1: MediaWiki client for Emacs
 app-emacs/mew 6.6 6.8: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
 app-emacs/mldonkey 0.0.4b-r1 0.0.4b-r2: An Emacs Lisp interface to the MLDonkey core
-app-emacs/mmm-mode 0.5.4: Enables the user to edit different parts of a file in different major modes
+app-emacs/mmm-mode 0.5.4 0.5.7: Enables the user to edit different parts of a file in different major modes
 app-emacs/moccur-edit 2.16: An improved interface to color-moccur for editing
 app-emacs/mode-compile 2.29.1: Smart command for compiling files according to major-mode
 app-emacs/mpg123-el 1.59 1.60: Emacs front-end to mpg123 audio player and OggVorbis audio player
@@ -1302,7 +1302,7 @@ app-emacs/po-mode 0.19.3 0.19.4 0.19.8.1: Major mode for GNU gettext PO files
 app-emacs/popup 0.5.3: Visual popup interface library for Emacs
 app-emacs/popwin 0.6.2 1.0.0: Popup window manager for Emacs
 app-emacs/pov-mode 3.3-r1: Major mode for Povray scene files
-app-emacs/proofgeneral 4.2: A generic interface for proof assistants
+app-emacs/proofgeneral 4.2 4.4: A generic interface for proof assistants
 app-emacs/protbuf 1.7-r1: Protect Emacs buffers from accidental killing
 app-emacs/psgml 1.4.0: A GNU Emacs Major Mode for editing SGML and XML coded documents
 app-emacs/puppet-mode 0.3-r1 0.3.20171221 0.3.20180813: Emacs major mode for editing Puppet manifests
