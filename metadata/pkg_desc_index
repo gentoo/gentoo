@@ -146,7 +146,7 @@ app-admin/conky 1.10.8-r4 1.10.8-r8 1.11.4 1.11.5: An advanced, highly configura
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.2.3 8.2.4: Serial Console Manager
 app-admin/consolehm 1.31: Console based hardware monitor for FreeBSD
-app-admin/consul 1.4.4-r1 1.5.0-r1 1.5.1-r1 1.5.2 1.5.3: A tool for service discovery, monitoring and configuration
+app-admin/consul 1.4.4-r1 1.5.0-r1 1.5.1-r1 1.5.2 1.5.3 1.6.0: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.19.5 0.20.0: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2 2.4: Limits the CPU usage of a process
@@ -14351,7 +14351,7 @@ media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6-r1: USB Video Class grabber
 media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping and burning DVDs
 media-video/m2vrequantizer 0.0.2_pre20060306-r1: Tool to requantize mpeg2 videos
-media-video/makemkv 1.14.4: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
+media-video/makemkv 1.14.5: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/maven-poke 0.0.1: Matrox utility to read and set maven registers (tune tvout)
 media-video/mediainfo 19.07: MediaInfo supplies technical and tag information about media files
