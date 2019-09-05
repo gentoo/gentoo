@@ -119,7 +119,6 @@ dev-python/construct python_targets_python2_7
 # Has multiple issues including symlinks and threading.
 # Packages should use and access libmariadb.so instead
 dev-db/mariadb-connector-c mysqlcompat
-~media-tv/kodi-17.6 mariadb
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-03-05)
 # Not keyworded on non-x86 arches
