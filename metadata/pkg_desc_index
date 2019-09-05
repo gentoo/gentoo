@@ -2982,15 +2982,15 @@ dev-ada/gnatcoll-core 2018-r1 2019: GNAT Component Collection Core packages
 dev-ada/gnatcoll-db 2018-r1: GNAT Component Collection
 dev-ada/gnatmem 2019: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2018 2019: Translates addresses into filename, line number, and function names
-dev-ada/gprbuild 2017-r1 2017-r2 2019 2019-r1: Multi-Language Management
+dev-ada/gprbuild 2017-r1 2019: Multi-Language Management
 dev-ada/gps 2017 2018-r1: The GNAT Programming Studio
 dev-ada/gps-bin 2016: The GNAT Programming Studio
 dev-ada/gtkada 2017 2018-r1 2019: A complete Ada graphical toolkit
 dev-ada/langkit 2017 2018 2019: A Python framework to generate language parsers
 dev-ada/libadalang 2017-r1 2018 2018-r1 2019: high performance semantic engine for the Ada programming language
 dev-ada/libadalang-tools 2018 2019: Libadalang-based tools: gnatpp, gnatmetric and gnatstub
-dev-ada/libgpr 2018-r1 2019 2019-r1: Ada library to handle GPRbuild project files
-dev-ada/xmlada 2018 2019 2019-r1: Set of modules that provide a simple manipulation of XML streams
+dev-ada/libgpr 2018-r1 2019: Ada library to handle GPRbuild project files
+dev-ada/xmlada 2018 2019: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15 0.04.15-r1: Multi-platform class and template library
 dev-cpp/aixlog 1.2.1 9999: Header-only C++ logging library
 dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1 4.7.1: The ANTLR 4 C++ Runtime
