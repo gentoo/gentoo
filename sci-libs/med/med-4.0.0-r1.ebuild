@@ -15,7 +15,7 @@ SRC_URI="https://files.salome-platform.org/Salome/other/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc fortran hdf5_16_api python test"
+IUSE="doc fortran hdf5-16-api python test"
 
 # fails to run parallel tests
 RESTRICT="test"
@@ -44,7 +44,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if use hdf5_16_api; then
+	if use hdf5-16-api; then
 		append-cppflags -DH5_USE_16_API
 	fi
 
