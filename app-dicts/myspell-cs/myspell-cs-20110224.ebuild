@@ -21,7 +21,7 @@ inherit myspell-r2
 
 DESCRIPTION="Czech dictionaries for myspell/hunspell"
 HOMEPAGE="http://www.liberix.cz/doplnky/slovniky/ooo/"
-SRC_URI="${HOMEPAGE}/dict-cs-2.oxt -> ${P}.zip"
+SRC_URI="http://www.liberix.cz/doplnky/slovniky/ooo/dict-cs-2.oxt -> ${P}.zip"
 
 LICENSE="GPL-2 MIT"
 SLOT="0"

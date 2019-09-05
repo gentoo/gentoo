@@ -6,7 +6,6 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
-		<flag name="colord">Use <pkg>x11-misc/colord</pkg> for color management</flag>
 		<flag name="http">Enable webservice integration through <pkg>net-libs/libsoup</pkg></flag>
 		<flag name="json">Compile code that uses the libjson-glib library</flag>
 		<flag name="slideshow">Enable slideshow plugin</flag>

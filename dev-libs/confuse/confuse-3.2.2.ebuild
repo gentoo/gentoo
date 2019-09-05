@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ inherit multilib-minimal
 
 DESCRIPTION="a configuration file parser library"
 HOMEPAGE="https://github.com/martinh/libconfuse"
-SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${P}.tar.xz"
+SRC_URI="https://github.com/martinh/libconfuse/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0/2.0.0"

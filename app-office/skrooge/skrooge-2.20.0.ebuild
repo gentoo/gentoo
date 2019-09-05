@@ -13,7 +13,7 @@ HOMEPAGE="https://skrooge.org/"
 [[ ${PV} == 9999 ]] || SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="activities designer kde ofx webkit"
 
 REQUIRED_USE="test? ( designer )"
@@ -74,6 +74,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	$(add_qt_dep qtquickcontrols)
 "
+
+PATCHES=( "${FILESDIR}"/${P}-missing-header.patch )
 
 # hangs + installs files
 RESTRICT+=" test"

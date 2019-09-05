@@ -18,7 +18,7 @@ IUSE="nat-pmp +tbb +webui"
 RDEPEND="
 	app-arch/bzip2
 	dev-cpp/websocketpp
-	<dev-libs/boost-1.70:=
+	dev-libs/boost:=
 	dev-libs/leveldb:=
 	dev-libs/libmaxminddb:=
 	dev-libs/openssl:0=[-bindist]

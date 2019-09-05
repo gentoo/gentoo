@@ -310,7 +310,7 @@ multilib_src_compile() {
 
 multilib_src_test() {
 	unset DBUS_SESSION_BUS_ADDRESS XDG_RUNTIME_DIR
-	eninja test
+	meson_src_test
 }
 
 multilib_src_install() {
@@ -443,6 +443,14 @@ pkg_postinst() {
 
 	if [[ ${ENABLED_UNITS[@]} ]]; then
 		systemctl --root="${ROOT:-/}" enable "${ENABLED_UNITS[@]}"
+	fi
+
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		if type systemctl &>/dev/null; then
+			systemctl --root="${ROOT:-/}" enable getty@.service remote-fs.target || FAIL=1
+		fi
+		elog "To enable a useful set of services, run the following:"
+		elog "  systemctl preset-all --preset-mode=enable-only"
 	fi
 
 	if [[ -L ${EROOT}/var/lib/systemd/timesync ]]; then

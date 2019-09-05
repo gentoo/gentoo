@@ -15,7 +15,7 @@ DESCRIPTION="Personal finance manager based on KDE Frameworks"
 HOMEPAGE="https://kmymoney.org"
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"
@@ -89,6 +89,8 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/kmymoney:4
 	quotes? ( dev-perl/Finance-Quote )
 "
+
+PATCHES=( "${FILESDIR}"/${P}-missing-header.patch )
 
 pkg_setup() {
 	use weboob && python_setup

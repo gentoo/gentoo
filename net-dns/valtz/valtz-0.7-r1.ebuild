@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Validation tool for tinydns-data zone files"
-SRC_URI="https://x42.com/software/valtz/${PN}.tgz"
+SRC_URI="https://x42.com/software/valtz/${PN}.tgz -> ${P}.tgz"
 HOMEPAGE="https://x42.com/software/valtz/"
-IUSE=""
 
-SLOT="0"
 LICENSE="BSD"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE=""
 
 RDEPEND="dev-lang/perl"
 

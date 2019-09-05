@@ -8,3 +8,8 @@ big-endian
 # Chris Gianelloni <wolf31o2@gentoo.org> (2008-02-13)
 # Mask multilib, since we cannot use it.
 multilib
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
+# # works on ppc64le
+-video_cards_amdgpu
+-video_cards_ast

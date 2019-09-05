@@ -20,8 +20,6 @@
 			backend for header caching</flag>
 		<flag name="tokyocabinet">Enable Tokyo Cabinet database backend for
 			header caching</flag>
-		<flag name="crypt">Add support for encryption -- using mcrypt or gpg
-			where applicable</flag>
 		<flag name="pgp_classic">Build classic_pgp backend to support PGP/MIME
 			and traditional/inline PGP</flag>
 		<flag name="gpg">Enable support for <pkg>app-crypt/gpgme</pkg></flag>

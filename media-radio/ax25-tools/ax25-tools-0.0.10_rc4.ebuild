@@ -19,7 +19,7 @@ S=${WORKDIR}/${MY_P}
 
 DEPEND="dev-libs/libax25
 	X? ( x11-libs/libX11
-		media-libs/mesa )"
+		media-libs/mesa[X(+)] )"
 RDEPEND=${DEPEND}
 
 src_configure() {

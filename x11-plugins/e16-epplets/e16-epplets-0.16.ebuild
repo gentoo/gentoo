@@ -18,7 +18,7 @@ BDEPEND="
 CDEPEND="
 	cdaudio? ( media-libs/libcdaudio )
 	libgtop? ( gnome-base/libgtop )
-	opengl? ( media-libs/glu media-libs/mesa )
+	opengl? ( media-libs/glu media-libs/mesa[X(+)] )
 	>=media-libs/imlib2-1.2.0
 	x11-libs/libX11
 	x11-libs/libXext

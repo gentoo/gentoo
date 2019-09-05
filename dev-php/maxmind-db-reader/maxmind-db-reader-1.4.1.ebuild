@@ -10,18 +10,19 @@ PHP_EXT_S="${S}/ext"
 PHP_EXT_NAME="maxminddb"
 PHP_EXT_OPTIONAL_USE="extension"
 
-USE_PHP="php5-6 php7-0 php7-1 php7-2 php7-3"
+USE_PHP="php5-6 php7-1 php7-2 php7-3"
 
 inherit php-ext-source-r3
 
 DESCRIPTION="PHP reader for the MaxMind database format"
 HOMEPAGE="https://github.com/maxmind/${MY_PN}"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/maxmind/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="extension test"
+RESTRICT="!test? ( test )"
 
 DEPEND="extension? ( dev-libs/libmaxminddb )"
 RDEPEND="${DEPEND}"

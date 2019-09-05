@@ -6,7 +6,7 @@
 		<name>Bernard Cafarelli</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">sol1/rdiff-backup</remote-id>
+		<remote-id type="github">rdiff-backup/rdiff-backup</remote-id>
 	</upstream>
 </pkgmetadata>
 

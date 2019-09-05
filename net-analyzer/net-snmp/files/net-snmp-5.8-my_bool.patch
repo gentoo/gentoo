@@ -1,0 +1,23 @@
+commit 9f4af8c42d515e6b214738cc97212dfbe7f749cf
+Author: Andreas Hasenack <ahasenack2@users.sourceforge.net>
+Date:   Tue Feb 5 18:21:40 2019 -0800
+
+    apps/snmptrapd_sql: Fix build against MySQL 8
+    
+    See also https://sourceforge.net/p/net-snmp/bugs/2922/.
+    
+    [bvanassche: changed 'int' into 'char']
+
+diff --git a/apps/snmptrapd_sql.c b/apps/snmptrapd_sql.c
+index 6126ca916..32a3b1799 100644
+--- a/apps/snmptrapd_sql.c
++++ b/apps/snmptrapd_sql.c
+@@ -199,7 +199,7 @@ typedef struct sql_buf_t {
+  * static bind structures, plus 2 static buffers to bind to.
+  */
+ static MYSQL_BIND _tbind[TBIND_MAX], _vbind[VBIND_MAX];
+-static my_bool    _no_v3;
++static char       _no_v3;
+ 
+ static void _sql_process_queue(u_int dontcare, void *meeither);
+ 

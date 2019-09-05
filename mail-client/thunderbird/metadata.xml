@@ -6,17 +6,25 @@
 	<name>Gentoo Mozilla Team</name>
 </maintainer>
 <use>
-	<flag name="bindist">Disable official Thunderbird branding (icons, name) which 
+	<flag name="bindist">Disable official Firefox/Thunderbird branding (icons, name) which 
 		are not binary-redistributable according to upstream.</flag>
 	<flag name="clang">Use Clang compiler instead of GCC</flag>
-	<flag name="crypt"> Enable encryption support with enigmail</flag>
-	<flag name="mozdom">Enable Mozilla's DOM inspector</flag>
-	<flag name="lightning">Enable app-global calendar support
-		(note 38.0 and above bundles calendar support when this flag is off)</flag>
 	<flag name="custom-optimization">Build with user-specified compiler optimizations
 		(-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)</flag>
+	<flag name="eme-free">Disable EME (DRM plugin) cabability at build time</flag>
+	<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically
+		downloaded and kept up-to-date in user profiles</flag>
 	<flag name="gtk2">Use the cairo-gtk2 rendering engine instead of the default cairo-gtk3</flag>
+	<flag name="lightning">Enable app-global calendar support
+		(note 38.0 and above bundles calendar support when this flag is off)</flag>
+	<flag name="lto">Enable Link Time Optimization (LTO). Requires Gold linker when using GCC
+		or LDD linker when using Clang</flag>
+	<flag name="mozdom">Enable Mozilla's DOM inspector</flag>
+	<flag name="pgo">Add support for profile-guided optimization using gcc-4.5,
+		for faster binaries. This option will double the compile time.</flag>
 	<flag name="rust">Enable support for using rust compiler  (experimental)</flag>
+	<flag name="system-av1">Use the system-wide <pkg>media-libs/dav1d</pkg>
+		and <pkg>media-libs/libaom</pkg> library instead of bundled.</flag>
 	<flag name="system-cairo">Use the system-wide <pkg>x11-libs/cairo</pkg>
 		instead of bundled.</flag>
 	<flag name="system-harfbuzz">Use the system-wide <pkg>media-libs/harfbuzz</pkg>
@@ -31,6 +39,9 @@
 		instead of bundled.</flag>
 	<flag name="system-sqlite">Use the system-wide <pkg>dev-db/sqlite</pkg>
 		installation with secure-delete enabled</flag>
-	<flag name="minimal">Remove the software development kit and headers</flag>
+	<flag name="system-webp">Use the system-wide <pkg>media-libs/libwebp</pkg>
+		instead of bundled.</flag>
+
+
 </use>
 </pkgmetadata>

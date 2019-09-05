@@ -20,7 +20,7 @@ else
 		MY_PV=${GOOGLETEST_COMMIT}
 	fi
 	SRC_URI="https://github.com/google/googletest/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="alpha amd64 ~arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 	S="${WORKDIR}"/googletest-${MY_PV}
 fi
 
@@ -35,7 +35,7 @@ DEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="!dev-cpp/gmock"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.9.0_pre20190607-add-mmap-stack-flag.patch
+	"${FILESDIR}"/${PN}-1.9.0_pre20190607-increase-clone-stack-size.patch
 )
 
 pkg_setup() {

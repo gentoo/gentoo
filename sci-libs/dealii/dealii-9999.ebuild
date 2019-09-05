@@ -128,6 +128,9 @@ src_configure() {
 		-DDEAL_II_WITH_TRILINOS="$(usex trilinos)"
 	)
 
+	# Do a little dance for purely cosmetic "QA" reasons.
+	use opencascade && mycmakeargs+=( -DOPENCASCADE_DIR="${CASROOT}" )
+
 	# Do a little dance for purely cosmetic "QA" reasons. The build system
 	# does query for the highest instruction set first and skips the other
 	# variables if a "higher" variant is set

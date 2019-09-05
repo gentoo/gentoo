@@ -7,7 +7,7 @@ inherit user
 
 DESCRIPTION="Download and install third-party clamav signatures"
 HOMEPAGE="https://github.com/extremeshok/${PN}"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/extremeshok/clamav-unofficial-sigs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -1,61 +1,6 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# When you add an entry to the top of this file, add your name, the date, and
-# an explanation of why something is getting masked. Please be extremely
-# careful not to commit atoms that are not valid, as it can cause large-scale
-# breakage, especially if it ends up in the daily snapshot.
-#
-## Example:
-##
-## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
-## # Masking foo USE flag until we can get the
-## # foo stuff to work properly again (bug 12345)
-## =media-video/mplayer-0.90_pre5 foo
-## =media-video/mplayer-0.90_pre5-r1 foo
-#
-
-#--- END OF EXAMPLES ---
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-05-03)
-# Requires net-libs/webkit-gtk. Not stable on sparc.
-dev-util/geany-plugins markdown
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-03-31)
-# No stable dovecot on net-mail/dovecot, bug #634822.
-mail-filter/maildrop dovecot
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2018-12-25)
-# Needs net-mail/mailutils and net-libs/webkit-gtk which are not
-# stable (yet?), bug #663248
-app-editors/emacs mailutils xwidgets
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-09-14)
-# media-libs/libraw is not stable
-media-gfx/imagemagick raw
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-07)
-# sci-visualization/gnuplot is not stable.
-app-admin/sysstat isag
-sci-libs/libqalculate gnuplot
-sci-mathematics/octave gnuplot
-
-# Mart Raudsepp <leio@gentoo.org> (2017-09-02)
-# Drop stable gstreamer on sparc, can move to use.stable.mask
-# after gstreamer:0.10 is gone; #601354
-dev-libs/efl gstreamer
-media-sound/mp3splt-gtk gstreamer
-net-im/pidgin gstreamer
-media-libs/libcanberra gstreamer
-
-# Pacho Ramos <pacho@gentoo.org> (2015-08-02)
-# Missing keywords
-dev-python/pyquery test
-sys-fs/dmraid klibc
-
-# Pacho Ramos <pacho@gentoo.org> (2014-07-02)
-# Mask due Gnome3 not going to be stabilized on this arch
-dev-util/geany-plugins gtkspell
->=gnome-base/gnome-desktop-2.32.1-r2 license-docs
-gnome-base/gvfs google
->=x11-libs/gtk+-3.12.2 cloudprint
+# Matt Turner <mattst88@gentoo.org> (2019-08-27)
+# No stable nftables yet.
+net-firewall/iptables nftables

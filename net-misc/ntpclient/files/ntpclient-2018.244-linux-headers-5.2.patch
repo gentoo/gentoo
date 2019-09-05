@@ -1,0 +1,10 @@
+--- a/src/ntpclient.c	2018-08-27 20:38:12.000000000 +0200
++++ b/src/ntpclient.c	2019-08-19 20:11:59.000000000 +0200
+@@ -40,6 +40,7 @@
+ #include <unistd.h>
+ #include <errno.h>
+ #ifdef PRECISION_SIOCGSTAMP
++#include <linux/sockios.h>
+ #include <sys/ioctl.h>
+ #endif
+ #ifdef USE_OBSOLETE_GETTIMEOFDAY

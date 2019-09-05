@@ -1,9 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2004-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xdg-utils.eclass
 # @MAINTAINER:
 # gnome@gentoo.org
+# freedesktop-bugs@gentoo.org
 # @AUTHOR:
 # Original author: Gilles Dartiguelongue <eva@gentoo.org>
 # @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
@@ -85,7 +86,7 @@ xdg_icon_cache_update() {
 	fi
 
 	ebegin "Updating icons cache"
-	local retval=0
+	local dir f retval=0
 	local fails=( )
 	for dir in "${EROOT%/}"/usr/share/icons/*
 	do

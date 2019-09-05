@@ -22,7 +22,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="+compute compute-only iscsi +memcached mysql +novncproxy openvswitch postgres +rabbitmq sqlite"
+IUSE="+compute compute-only iscsi +memcached +mysql +novncproxy openvswitch postgres +rabbitmq sqlite"
 REQUIRED_USE="
 	!compute-only? ( || ( mysql postgres sqlite ) )
 	compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite )"
@@ -239,13 +239,6 @@ python_install_all() {
 		doins "${FILESDIR}/scsi-openscsi-link.sh"
 	fi
 	rm -r "${ED}/usr/etc"
-}
-
-python_install() {
-	distutils-r1_python_install
-	# copy migration conf file (not coppied on install via setup.py script)
-	insinto "$(python_get_sitedir)/db/sqlalchemy/migrate_repo/"
-	doins "nova/db/sqlalchemy/migrate_repo/migrate.cfg"
 }
 
 pkg_postinst() {

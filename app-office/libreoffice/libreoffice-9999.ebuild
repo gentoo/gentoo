@@ -63,7 +63,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility bluetooth +branding coinmp +cups dbus debug eds firebird
-googledrive gstreamer +gtk gtk2 kde ldap +mariadb odk pdfimport postgres test
+googledrive gstreamer +gtk kde ldap +mariadb odk pdfimport postgres test
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -125,7 +125,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/nspr
 	dev-libs/nss
 	>=dev-libs/redland-1.0.16
-	>=dev-libs/xmlsec-1.2.24[nss]
+	>=dev-libs/xmlsec-1.2.28[nss]
 	media-gfx/fontforge
 	media-gfx/graphite2
 	media-libs/fontconfig
@@ -176,16 +176,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		x11-libs/gtk+:3
 		x11-libs/pango
 	)
-	gtk2? (
-		x11-libs/gdk-pixbuf
-		>=x11-libs/gtk+-2.24:2
-		x11-libs/pango
-	)
 	kde? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
-		dev-qt/qtx11extras:5
 		dev-qt/qtwidgets:5
+		dev-qt/qtx11extras:5
 		kde-frameworks/kconfig:5
 		kde-frameworks/kcoreaddons:5
 		kde-frameworks/ki18n:5
@@ -208,7 +203,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/libatomic_ops-7.2d
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
-	>=dev-util/gperf-3
+	>=dev-util/gperf-3.1
 	>=dev-util/mdds-1.4.1:1=
 	media-libs/glm
 	sys-devel/ucpp
@@ -217,7 +212,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/libXtst
 	java? (
 		dev-java/ant-core
-		>=virtual/jdk-1.6
+		>=virtual/jdk-1.8
 	)
 	test? (
 		app-crypt/gnupg
@@ -232,7 +227,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/openoffice
 	media-fonts/liberation-fonts
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
-	java? ( >=virtual/jre-1.6 )
+	java? ( >=virtual/jre-1.8 )
 	kde? ( kde-frameworks/breeze-icons:* )
 "
 if [[ ${MY_PV} != *9999* ]] && [[ ${PV} != *_* ]]; then
@@ -265,8 +260,11 @@ _check_reqs() {
 }
 
 pkg_pretend() {
-	use java || \
-		ewarn "If you plan to use Base application you should enable java or you will get various crashes."
+	if ! use java && ! use firebird; then
+		ewarn "If you plan to use Base application you must enable either firebird or java."
+	fi
+
+	use java || ewarn "Without java, several wizards are not going to be available."
 
 	if has_version "<app-office/libreoffice-5.3.0[firebird]"; then
 		ewarn "Firebird has been upgraded to version 3. It is unable to read back Firebird 2.5 data, so"
@@ -406,6 +404,7 @@ src_configure() {
 		--disable-epm
 		--disable-fetch-external
 		--disable-gstreamer-0-10
+		--disable-gtk
 		--disable-gtk3-kde5
 		--disable-online-update
 		--disable-openssl
@@ -439,7 +438,6 @@ src_configure() {
 		$(use_enable firebird firebird-sdbc)
 		$(use_enable gstreamer gstreamer-1-0)
 		$(use_enable gtk gtk3)
-		$(use_enable gtk2 gtk)
 		$(use_enable kde kf5)
 		$(use_enable kde qt5)
 		$(use_enable ldap)

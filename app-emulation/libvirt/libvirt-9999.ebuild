@@ -60,6 +60,7 @@ RDEPEND="
 	net-libs/rpcsvc-proto
 	>=net-misc/curl-7.18.0
 	sys-apps/dmidecode
+	!sys-apps/systemd[-cgroup-hybrid(+)]
 	>=sys-apps/util-linux-2.17
 	sys-devel/gettext
 	sys-libs/ncurses:0=
@@ -76,7 +77,6 @@ RDEPEND="
 	iscsi-direct? ( >=net-libs/libiscsi-1.18.0 )
 	libssh? ( net-libs/libssh )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
-	lxc? ( !sys-apps/systemd[-cgroup-hybrid(+)] )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
 		>sys-process/numactl-2.0.2
@@ -123,7 +123,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.6.0-do-not-use-sysconf.patch
+	"${FILESDIR}"/${PN}-5.7.0-do-not-use-sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-5.2.0-fix-paths-for-apparmor.patch
 )

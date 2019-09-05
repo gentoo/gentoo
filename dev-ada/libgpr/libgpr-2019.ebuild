@@ -13,14 +13,15 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf8e8031e87a8f1d425093
 		-> ${MYP}-src.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnat_2016 gnat_2017 gnat_2018 +gnat_2019 +shared static-libs static-pic"
 
 RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?]
 	dev-ada/xmlada[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
 	!net-libs/grpc"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]
+	dev-ada/gprbuild[gnat_2019(-)?]"
 
 S="${WORKDIR}"/${MYP}-src
 

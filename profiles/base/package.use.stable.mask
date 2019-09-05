@@ -4,6 +4,15 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Kent Fredric <kentnl@gentoo.org> (2019-08-29)
+# Support for DBD-mysql to use mariadb is sketchy. Use DBD-MariaDB
+# instead if you can.
+dev-perl/DBD-mysql mariadb
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-08-16)
+# dev-libs/libical[glib] was not stable tested, bug #689434
+=dev-libs/libical-3.0.5 glib
+
 # Michał Górny <mgorny@gentoo.org> (2019-07-31)
 # Freshly added test dependency for a test-restricted package.  Mask
 # the flag to avoid stabilizing it for the time being.
@@ -52,9 +61,10 @@ media-gfx/alembic arnold maya
 media-plugins/grilo-plugins chromaprint
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
-# Unstable dependencies.
-media-gfx/digikam vkontakte
+# media-libs/opencv[contrib,contrib_dnn], net-libs/libmediawiki,
+# net-libs/libkvkontakte all not stable anywhere.
 kde-apps/kipi-plugins mediawiki vkontakte
+media-gfx/digikam dnn vkontakte
 
 # Brian Evans <grknight@gentoo.org> (2018-12-06)
 # Mask USE flag since argon2 dependency is not stable on most arches

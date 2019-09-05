@@ -1,6 +1,14 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-08-18)
+# media-video/pipewire is not keyworded yet
+dev-libs/weston pipewire
+kde-apps/krfb wayland
+kde-plasma/xdg-desktop-portal-kde screencast
+sys-apps/xdg-desktop-portal screencast
+x11-wm/mutter screencast
+
 # Michał Górny <mgorny@gentoo.org> (2019-07-13)
 # app-forensics/libewf is not keyworded here.
 app-admin/testdisk ewf
@@ -117,7 +125,6 @@ media-libs/opencv contrib_dnn
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Moved from use.mask since they are flags local to one package.
 dev-cpp/xsd ace
-games-fps/doom-data doomsday
 media-tv/tvheadend hdhomerun
 
 # Michał Górny <mgorny@gentoo.org> (2017-11-29)
@@ -273,10 +280,6 @@ media-video/ffmpeg -mmal
 # Markus Meier <maekke@gentoo.org> (2015-11-10)
 # unkeyworded deps, bug #555896
 sci-libs/armadillo mkl
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (2015-10-15)
-# Repoman reports dependency issues on arm.
-www-client/chromium system-ffmpeg
 
 # Markus Meier <maekke@gentoo.org> (2015-10-10)
 # unkeyworded deps, bug #552330

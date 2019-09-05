@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Michael Orlitzky <mjo@gentoo.org>
 # Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Eclass used to create and maintain a single group entry
 # @DESCRIPTION:
 # This eclass represents and creates a single group entry.  The name
@@ -35,7 +36,7 @@ _ACCT_GROUP_ECLASS=1
 
 case ${EAPI:-0} in
 	7) ;;
-	*) die "EAPI=${EAPI} not supported";;
+	*) die "EAPI=${EAPI:-0} not supported";;
 esac
 
 inherit user
@@ -59,6 +60,9 @@ readonly ACCT_GROUP_NAME
 # @DESCRIPTION:
 # Preferred GID for the new group.  This variable is obligatory, and its
 # value must be unique across all group packages.
+#
+# Overlays should set this to -1 to dynamically allocate GID.  Using -1
+# in ::gentoo is prohibited by policy.
 
 # @ECLASS-VARIABLE: ACCT_GROUP_ENFORCE_ID
 # @DESCRIPTION:
@@ -87,6 +91,7 @@ acct-group_pkg_pretend() {
 
 	# verify ACCT_GROUP_ID
 	[[ -n ${ACCT_GROUP_ID} ]] || die "Ebuild error: ACCT_GROUP_ID must be set!"
+	[[ ${ACCT_GROUP_ID} -eq -1 ]] && return
 	[[ ${ACCT_GROUP_ID} -ge 0 ]] || die "Ebuild errors: ACCT_GROUP_ID=${ACCT_GROUP_ID} invalid!"
 
 	# check for ACCT_GROUP_ID collisions early

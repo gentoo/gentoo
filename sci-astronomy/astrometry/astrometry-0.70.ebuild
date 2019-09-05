@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -87,7 +87,7 @@ ap_make() {
 		MAN1_INSTALL_DIR="${ED%/}/usr/share/man/man1" \
 		DOC_INSTALL_DIR="${ED%/}/usr/share/doc/${PF}" \
 		EXAMPLE_INSTALL_DIR="${ED%/}/usr/share/doc/${PF}/examples" \
-		PY_BASE_INSTALL_DIR="${ED%/}$(python_get_sitedir)/astrometry" \
+		PY_BASE_INSTALL_DIR="${D}/$(python_get_sitedir)/astrometry" \
 		PY_BASE_LINK_DIR="../$(python_get_sitedir | sed -e 's|/usr/||')/astrometry" \
 		FINAL_DIR="${EPREFIX%/}/usr" \
 		DATA_FINAL_DIR="${EPREFIX%/}/usr/share/astrometry" \

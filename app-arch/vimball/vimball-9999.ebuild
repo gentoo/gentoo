@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python{3_5,3_6,3_7} )
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
@@ -19,10 +19,11 @@ HOMEPAGE="https://github.com/radhermit/vimball"
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND="${BDEPEND}"
+DEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_test() {
 	esetup.py test

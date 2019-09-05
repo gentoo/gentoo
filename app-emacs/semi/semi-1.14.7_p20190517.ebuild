@@ -8,11 +8,11 @@ inherit elisp
 DESCRIPTION="A library to provide MIME feature for GNU Emacs"
 HOMEPAGE="https://github.com/wanderlust/semi"
 GITHUB_SHA1="4cf114c95fb49ad75eb6916f678b45b04bad8122"
-SRC_URI="${HOMEPAGE}/archive/${GITHUB_SHA1}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wanderlust/semi/archive/${GITHUB_SHA1}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="alpha amd64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="l10n_ja"
 
 DEPEND=">=app-emacs/apel-10.8

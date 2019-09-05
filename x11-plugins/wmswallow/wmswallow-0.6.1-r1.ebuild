@@ -1,34 +1,45 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A dock applet to make any application dockable"
 HOMEPAGE="https://www.dockapps.net/wmswallow"
-SRC_URI="https://www.dockapps.net/download/${PN}.tar.Z"
+SRC_URI="https://www.dockapps.net/download/${PN}.tar.Z -> ${P}.tar.Z"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="x11-libs/libX11
+RDEPEND="
+	x11-libs/libX11
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
+BDEPEND="virtual/pkgconfig"
 
-S=${WORKDIR}/wmswallow
+S="${WORKDIR}/${PN}"
+PATCHES=( "${FILESDIR}"/${P}-format-security.patch )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-format-security.patch
-	sed -e "s:\${OBJS} -o:\${OBJS} \${LDFLAGS} -o:" \
-		-e "/LIBS/s/-lXext/-lX11 \0/"\
-		-i Makefile || die
+	default
+
+	# the Makefile is a mess, just
+	# rely on implicit rules instead
+	rm Makefile || die
+}
+
+src_configure() {
+	tc-export CC
+	append-cppflags $($(tc-getPKG_CONFIG) --cflags x11 xext)
+	export LDLIBS="$($(tc-getPKG_CONFIG) --libs x11 xext)"
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" xfree
+	emake wmswallow
 }
 
 src_install() {

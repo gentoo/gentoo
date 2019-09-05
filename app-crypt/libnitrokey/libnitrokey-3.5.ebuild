@@ -16,7 +16,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_SUBMODULES=()
 else
 	SRC_URI="https://github.com/Nitrokey/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-3"
@@ -31,6 +31,8 @@ DEPEND="
 	${RDEPEND}
 	test? ( >=dev-cpp/catch-2.5.0:0 )"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${PN}-3.5-tests-version-gitless.patch )
 
 src_configure() {
 	local mycmakeargs=(

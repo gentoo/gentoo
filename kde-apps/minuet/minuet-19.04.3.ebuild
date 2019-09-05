@@ -25,3 +25,5 @@ DEPEND="
 	media-sound/fluidsynth:=
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-missing-header.patch" )

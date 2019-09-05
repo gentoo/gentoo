@@ -1,0 +1,25 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -46,18 +46,18 @@
+     CFLAGS="${saved_CFLAGS}"
+ fi
+ 
+-AC_MSG_CHECKING([for implicit-function-declaration error flag in $CC])
++AC_MSG_CHECKING([for implicit-function-declaration warning flag in $CC])
+ saved_CFLAGS="${CFLAGS}"
+-CFLAGS="${CFLAGS} -Werror=implicit-function-declaration"
++CFLAGS="${CFLAGS} -Wimplicit-function-declaration"
+ AC_COMPILE_IFELSE([AC_LANG_SOURCE([])],[have_implicit_function_declaration="yes"],[have_implicit_function_declaration="no"])
+ AC_MSG_RESULT($have_implicit_function_declaration)
+ if test "$have_implicit_function_declaration" = "no" ; then
+     CFLAGS="${saved_CFLAGS}"
+ fi
+ 
+-AC_MSG_CHECKING([for format error flag in $CC])
++AC_MSG_CHECKING([for format warning flag in $CC])
+ saved_CFLAGS="${CFLAGS}"
+-CFLAGS="${CFLAGS} -Werror=format"
++CFLAGS="${CFLAGS} -Wformat"
+ AC_COMPILE_IFELSE([AC_LANG_SOURCE([])],[have_error_format="yes"],[have_error_format="no"])
+ AC_MSG_RESULT($have_error_format)
+ if test "$have_error_format" = "no" ; then

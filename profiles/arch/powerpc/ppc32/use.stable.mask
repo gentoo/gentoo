@@ -13,7 +13,6 @@ aria2
 
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # no stable versions on ppc
-clisp
 ecls
 sbcl
 

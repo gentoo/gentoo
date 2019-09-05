@@ -1,0 +1,20 @@
+--- a/Makefile
++++ b/Makefile
+@@ -13,16 +13,10 @@
+ #CC=gcc -Wall -g
+ #LEX=flex
+ 
+-pscan: scanner.yy.o pscan.o
+-	$(CC) scanner.yy.o pscan.o -o pscan
+-
+-scanner.yy.o: scanner.yy.c
+-	$(CC) -c scanner.yy.c -o scanner.yy.o
++pscan: scanner.yy.o
+ 
+ scanner.yy.c: scanner.l
+ 	$(LEX) -t scanner.l > scanner.yy.c
+ 
+-pscan.o: pscan.c pscan.h
+-
+ clean:
+ 	rm -f *.o *~ pscan scanner.yy.c core

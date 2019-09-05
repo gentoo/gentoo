@@ -39,7 +39,7 @@ SLOT="0"
 KEYWORDS=""
 # -berkdb by default re bug 602682
 IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip gost gssapi
-json ldap libressl lmdb mysql odbc postgres python selinux ssl static-libs
+json ldap libressl lmdb mysql odbc postgres python selinux static-libs
 urandom xml +zlib"
 # sdb-ldap - patch broken
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
@@ -53,11 +53,8 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )"
 # sdb-ldap? ( dlz )
 
-DEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0[-bindist] )
-		libressl? ( dev-libs/libressl )
-	)
+DEPEND="!libressl? ( dev-libs/openssl:0[-bindist] )
+	libressl? ( dev-libs/libressl )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( >=dev-db/unixODBC-2.2.6 )
 	ldap? ( net-nds/openldap )
@@ -78,7 +75,7 @@ DEPEND="
 
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-bind )
-	|| ( sys-process/psmisc >=sys-freebsd/freebsd-ubin-9.0_rc sys-process/fuser-bsd )"
+	|| ( sys-process/psmisc >=sys-freebsd/freebsd-ubin-9.0_rc )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -94,6 +91,8 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	export LDFLAGS="${LDFLAGS} -L${EPREFIX}/usr/$(get_libdir)"
 
 	# Adjusting PATHs in manpages
 	for i in bin/{named/named.8,check/named-checkconf.8,rndc/rndc.8} ; do
@@ -152,7 +151,6 @@ src_configure() {
 		$(use_with postgres dlz-postgres)
 		$(use_with lmdb)
 		$(use_with python)
-		$(use_with ssl openssl "${EPREFIX}"/usr)
 		$(use_with xml libxml2)
 		$(use_with zlib)
 	)

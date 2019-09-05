@@ -2,14 +2,9 @@ Use system's CA certificate store
 
 --- a/certifi/core.py
 +++ b/certifi/core.py
-@@ -19,9 +19,7 @@ class DeprecatedBundleWarning(DeprecationWarning):
- 
- 
+@@ -21,4 +21,2 @@ class DeprecatedBundleWarning(DeprecationWarning):
  def where():
 -    f = os.path.dirname(__file__)
 -
 -    return os.path.join(f, 'cacert.pem')
 +    return "@GENTOO_PORTAGE_EPREFIX@/etc/ssl/certs/ca-certificates.crt"
- 
- 
- def old_where():

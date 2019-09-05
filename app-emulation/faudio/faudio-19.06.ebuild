@@ -70,11 +70,8 @@ multilib_src_install() {
 	# FIXME: do we want to install the FAudio tools?
 	cmake-utils_src_install
 
-	sed -e \
-		"s@%LIB%@$(get_libdir)@g" \
-		"s@%PREFIX%@${EPREFIX}/usr@g" \
-		"${FILESDIR}/faudio.pc" \
-		> "${T}/faudio.pc" \
+	sed -e "s@%LIB%@$(get_libdir)@g" -e "s@%PREFIX%@${EPREFIX}/usr@g" \
+		"${FILESDIR}/faudio.pc" > "${T}/faudio.pc" \
 		|| die "sed failed"
 	insinto "/usr/$(get_libdir)/pkgconfig"
 	doins "${T}/faudio.pc"

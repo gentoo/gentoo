@@ -22,7 +22,7 @@ DEPEND="dev-qt/qtcore:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
 	dev-qt/qtwidgets:5
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	x11-libs/libX11"
 RDEPEND="${DEPEND}"
 

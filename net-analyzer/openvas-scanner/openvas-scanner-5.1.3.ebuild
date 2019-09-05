@@ -80,10 +80,6 @@ src_install() {
 	insinto /etc/openvas/sysconfig
 	doins "${FILESDIR}"/${MY_PN}-daemon.conf
 
-	insinto /etc/openvas/scripts
-	doins "${FILESDIR}"/openvas-feed-sync "${FILESDIR}"/first-start
-	fperms 0755 /etc/openvas/scripts/{openvas-feed-sync,first-start}
-
 	newinitd "${FILESDIR}/${MY_PN}.init" ${MY_PN}
 	newconfd "${FILESDIR}/${MY_PN}-daemon.conf" ${MY_PN}
 

@@ -17,11 +17,12 @@ PATCHES=(
 	"${FILESDIR}/${P}-correctly-install.patch"
 	"${FILESDIR}/${P}-correctly-install-pc.patch"
 	"${FILESDIR}/${P}-pc-prefix.patch"
+	"${FILESDIR}/${P}-do-not-install-kfd_ioctl.h.patch"
 )
 
 DESCRIPTION="Radeon Open Compute Thunk Interface"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface"
-CONFIG_CHECK="~HSA_AMD"
+CONFIG_CHECK="~HSA_AMD ~HMM_MIRROR ~ZONE_DEVICE"
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 

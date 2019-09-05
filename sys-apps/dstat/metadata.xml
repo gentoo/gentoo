@@ -18,9 +18,6 @@ compare disk usage in combination with interrupts from your IDE controller, or
 compare the network bandwidth numbers directly with the disk throughput (in the
 same interval).
 	</longdescription>
-	<use>
-		<flag name="wifi">Enable wireless network functions</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">dagwieers/dstat</remote-id>
 	</upstream>

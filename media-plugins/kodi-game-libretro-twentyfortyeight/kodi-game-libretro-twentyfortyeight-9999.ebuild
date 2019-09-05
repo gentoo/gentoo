@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils kodi-addon
 
@@ -35,5 +35,5 @@ RDEPEND="
 
 src_prepare() {
 	echo 'find_library(2048_LIB NAMES 2048_libretro${CMAKE_SHARED_LIBRARY_SUFFIX} PATH_SUFFIXES libretro)' > "${S}/Findlibretro-2048.cmake" || die
-	default
+	cmake-utils_src_prepare
 }

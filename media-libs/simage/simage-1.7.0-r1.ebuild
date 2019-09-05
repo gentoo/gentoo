@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,13 +10,12 @@ SRC_URI="https://bitbucket.org/Coin3D/coin/downloads/${P}.tar.gz"
 LICENSE="public-domain mpeg2enc"
 KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86"
 SLOT="0"
-IUSE="debug gif jpeg jpeg2k png sndfile static-libs tiff vorbis zlib"
+IUSE="debug gif jpeg png sndfile static-libs tiff vorbis zlib"
 RESTRICT="mirror bindist" #465086
 
 RDEPEND="
 	gif? ( media-libs/giflib )
 	jpeg? ( virtual/jpeg:0= )
-	jpeg2k? ( media-libs/jasper )
 	png? ( media-libs/libpng:0= )
 	sndfile? ( media-libs/libsndfile )
 	tiff? ( media-libs/tiff:0= )
@@ -54,7 +53,7 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable debug symbols) \
 		$(use_with jpeg) \
-		$(use_with jpeg2k jasper) \
+		--without-jasper \
 		$(use_with png) \
 		$(use_with sndfile libsndfile) \
 		$(use_enable static-libs static) \

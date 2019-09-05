@@ -11,7 +11,7 @@ SRC_URI="https://github.com/flatpak/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="doc geolocation screencast"
 
 BDEPEND="
@@ -28,7 +28,7 @@ DEPEND="
 	dev-libs/json-glib
 	sys-fs/fuse:0
 	geolocation? ( >=app-misc/geoclue-2.5.3:2.0 )
-	screencast? ( media-video/pipewire )
+	screencast? ( media-video/pipewire:= )
 "
 RDEPEND="${DEPEND}"
 

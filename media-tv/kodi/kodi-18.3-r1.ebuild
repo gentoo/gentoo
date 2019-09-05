@@ -88,7 +88,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.8
 	>=media-libs/libass-0.13.4
-	!raspberry-pi? ( media-libs/mesa[egl] )
+	!raspberry-pi? ( media-libs/mesa[egl,X(+)] )
 	>=media-libs/taglib-1.11.1
 	system-ffmpeg? (
 		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[encode,postproc]
@@ -295,11 +295,10 @@ src_configure() {
 
 src_compile() {
 	cmake-utils_src_compile all
-	use test && emake -C "${BUILD_DIR}" kodi-test
 }
 
 src_test() {
-	emake -C "${BUILD_DIR}" test
+	cmake-utils_src_make check
 }
 
 src_install() {

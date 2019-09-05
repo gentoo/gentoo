@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,7 @@ else
 fi
 LICENSE="GPL-3+"
 SLOT="0"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	>=net-wireless/gnuradio-3.7.0:=

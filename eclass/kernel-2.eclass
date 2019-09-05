@@ -191,9 +191,7 @@
 # If you do change them, there is a chance that we will not fix resulting bugs;
 # that of course does not mean we're not willing to help.
 
-PYTHON_COMPAT=( python{2_6,2_7} )
-
-inherit toolchain-funcs python-any-r1
+inherit toolchain-funcs
 [[ ${EAPI:-0} == [012345] ]] && inherit epatch
 [[ ${EAPI:-0} == [0123456] ]] && inherit estack eapi7-ver
 case ${EAPI:-0} in
@@ -621,6 +619,10 @@ if [[ ${ETYPE} == sources ]]; then
 				kernel_is le 2 6 ${DEBLOB_MAX_VERSION} && \
 					K_DEBLOB_AVAILABLE=1
 		if [[ ${K_DEBLOB_AVAILABLE} == "1" ]] ; then
+			PYTHON_COMPAT=( python2_7 )
+
+			inherit python-any-r1
+
 			IUSE="${IUSE} deblob"
 
 			# Reflect that kernels contain firmware blobs unless otherwise
@@ -1231,17 +1233,31 @@ unipatch() {
 			local GCC_MINOR_VER=$(gcc-minor-version)
 
 			# optimization patch for gcc < 8.X and kernel > 4.13
-			if [[ ${GCC_MAJOR_VER} -lt 8 ]] && [[ ${GCC_MAJOR_VER} -gt 4 ]]; then
-				if kernel_is ge 4 13 ; then
+			if kernel_is ge 4 13 ; then 
+				if [[ ${GCC_MAJOR_VER} -lt 8 ]] && [[ ${GCC_MAJOR_VER} -gt 4 ]]; then
 					UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
-				fi
-			# optimization patch for gcc >= 8 and kernel ge 4.13
-			elif [[ "${GCC_MAJOR_VER}" -ge 8 ]]; then
-				if kernel_is ge 4 13; then
+					UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
+				# optimization patch for gcc >= 8 and kernel ge 4.13
+				elif [[ "${GCC_MAJOR_VER}" -eq 8 ]]; then
 					# support old kernels for a period. For now, remove as all gcc versions required are masked
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
+					UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
+				elif [[ "${GCC_MAJOR_VER}" -eq 9 ]] && [[ ${GCC_MINOR_VER} -ge 1 ]]; then
+					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
+					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
+					UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
+				else
+					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
+					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
+					UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
+					UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
 				fi
+			else
+				UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
+				UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
+				UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
+				UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
 			fi
 		fi
 	done

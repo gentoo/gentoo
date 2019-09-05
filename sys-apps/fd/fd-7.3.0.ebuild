@@ -72,7 +72,7 @@ SRC_URI="https://github.com/sharkdp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
 
 DEPEND=">=virtual/rust-1.31.0"

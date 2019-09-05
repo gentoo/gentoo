@@ -50,7 +50,7 @@ RDEPEND="
 	mysql? ( virtual/mysql )
 	opengl? (
 		media-libs/ftgl
-		media-libs/mesa
+		media-libs/mesa[X(+)]
 	)
 	perl? ( dev-lang/perl:= )
 	postgis? ( dev-db/postgis )

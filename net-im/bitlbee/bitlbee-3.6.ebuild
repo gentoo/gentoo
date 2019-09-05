@@ -21,6 +21,7 @@ SLOT="0"
 IUSE_PROTOCOLS="msn oscar purple twitter +xmpp"
 IUSE="debug +gnutls ipv6 libevent libressl nss otr +plugins selinux test xinetd
 	${IUSE_PROTOCOLS}"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	|| ( purple xmpp msn oscar )

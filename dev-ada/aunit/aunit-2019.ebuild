@@ -22,7 +22,8 @@ RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	gnat_2018? ( dev-lang/gnat-gpl:7.3.1 )
 	gnat_2019? ( dev-lang/gnat-gpl:8.3.1 )"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]
+	dev-ada/gprbuild[gnat_2019(-)?]"
 
 REQUIRED_USE="^^ ( gnat_2016 gnat_2017 gnat_2018 gnat_2019 )"
 
@@ -35,12 +36,12 @@ src_compile() {
 }
 
 src_install() {
-	emake INSTALL="${D}"usr install
+	emake INSTALL="${D}"/usr install
 	einstalldocs
-	mv "${D}"usr/share/doc/${PN}/* "${D}"usr/share/doc/${PF}/ || die
-	rmdir "${D}"usr/share/doc/${PN} || die
-	mv "${D}"usr/share/examples/${PN} "${D}"usr/share/doc/${PF}/examples || die
-	rmdir "${D}"usr/share/examples || die
+	mv "${D}"/usr/share/doc/${PN}/* "${D}"/usr/share/doc/${PF}/ || die
+	rmdir "${D}"/usr/share/doc/${PN} || die
+	mv "${D}"/usr/share/examples/${PN} "${D}"/usr/share/doc/${PF}/examples || die
+	rmdir "${D}"/usr/share/examples || die
 	rm -r "${D}"/usr/share/gpr/manifests || die
 }
 

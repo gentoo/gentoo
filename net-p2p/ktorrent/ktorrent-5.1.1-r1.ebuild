@@ -13,7 +13,7 @@ HOMEPAGE="https://kde.org/applications/internet/ktorrent/"
 [[ ${KDE_BUILD_TYPE} = release ]] && SRC_URI="mirror://kde/stable/${PN}/${PV/%.0}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+bwscheduler +downloadorder +infowidget +ipfilter +kross +logviewer +magnetgenerator
 +mediaplayer rss +scanfolder +search +shutdown +stats +upnp +zeroconf"
 
@@ -81,6 +81,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-kdehig.patch"
 	"${FILESDIR}/${P}-singlefile-torrent.patch"
 	"${FILESDIR}/${P}-kcrash.patch"
+	"${FILESDIR}/${P}-missing-header.patch"
 )
 
 src_configure() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -60,8 +60,8 @@ get_permissions_oct() {
 pkg_postinst() {
 	# bug 614396
 	if [[ "$(get_permissions_oct /var/spool/mail)" != "3775" ]] ; then
-		einfo  "Fixing ${ROOT}var/spool/mail/ permissions"
-		chown root:mail "${ROOT}var/spool/mail/"
-		chmod 03775 "${ROOT}var/spool/mail/"
+		einfo  "Fixing ${ROOT}/var/spool/mail/ permissions"
+		chown root:mail "${ROOT}/var/spool/mail/"
+		chmod 03775 "${ROOT}/var/spool/mail/"
 	fi
 }

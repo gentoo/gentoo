@@ -11,20 +11,19 @@ MY_PV=${MY_PV/_rc/rc}
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="bind tools: dig, nslookup, host, nsupdate, dnssec-keygen"
-HOMEPAGE="http://www.isc.org/software/bind"
-SRC_URI="https://www.isc.org/downloads/file/${MY_P}/?version=tar-gz -> ${MY_PN}-${PV}.tar.gz"
+HOMEPAGE="https://www.isc.org/software/bind"
+SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc gssapi idn ipv6 libedit libressl readline ssl xml"
+IUSE="+caps doc gssapi idn ipv6 libedit libressl readline xml"
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
 
-CDEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+COMMON_DEPEND="
+	caps? ( sys-libs/libcap )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	xml? ( dev-libs/libxml2 )
 	idn? ( net-dns/libidn2:= )
 	gssapi? ( virtual/krb5 )
@@ -32,18 +31,24 @@ CDEPEND="
 	!libedit? (
 		readline? ( sys-libs/readline:0= )
 	)"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
-RDEPEND="${CDEPEND}
+DEPEND="${COMMON_DEPEND}"
+
+RDEPEND="${COMMON_EPEND}
 	!<net-dns/bind-9.10.2"
+
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
 # bug 479092, requires networking
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}"/sparc-pause-instruction.patch )
+
 src_prepare() {
 	default
+
+	export LDFLAGS="${LDFLAGS} -L${EPREFIX}/usr/$(get_libdir)"
 
 	# Disable tests for now, bug 406399
 	sed -i '/^SUBDIRS/s:tests::' bin/Makefile.in lib/Makefile.in || die
@@ -63,10 +68,10 @@ src_configure() {
 		--without-zlib
 		--without-lmdb
 		$(use_with idn libidn2)
-		$(use_with ssl openssl "${EPREFIX}"/usr)
 		$(use_with xml libxml2)
 		$(use_with gssapi)
 		$(use_with readline)
+		$(use_enable caps linux-caps)
 	)
 
 	# bug 607400
@@ -80,6 +85,9 @@ src_configure() {
 
 	# bug 344029
 	append-cflags "-DDIG_SIGCHASE"
+
+	# to expose CMSG_* macros from sys/sockets.h
+	[[ ${CHOST} == *-solaris* ]] && append-cflags "-D_XOPEN_SOURCE=600"
 
 	# localstatedir for nsupdate -l, bug 395785
 	tc-export BUILD_CC

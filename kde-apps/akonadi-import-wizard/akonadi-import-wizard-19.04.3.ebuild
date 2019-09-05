@@ -39,3 +39,5 @@ RDEPEND="${DEPEND}
 	!kde-apps/kdepim-l10n
 	!kde-apps/kmail:4
 "
+
+PATCHES=( "${FILESDIR}/${P}-missing-header.patch" )

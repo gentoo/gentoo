@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/ufw/${PV}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 sparc ~x86"
+KEYWORDS="amd64 ia64 ppc ppc64 sparc x86"
 IUSE="examples ipv6"
 
 DEPEND=""
@@ -90,7 +90,7 @@ pkg_pretend() {
 		mod_msg+=" mandatory, but they are often useful."
 		mod_msg+=" If you don't need some of them, please remove relevant"
 		mod_msg+=" module name(s) from IPT_MODULES in"
-		mod_msg+=" '${EROOT}etc/default/ufw' before (re)starting ufw."
+		mod_msg+=" '${EROOT}/etc/default/ufw' before (re)starting ufw."
 		mod_msg+=" Otherwise ufw may fail to start!"
 		ewarn "${mod_msg}"
 		if [[ "${nf_nat_ftp_ok}" == "no" ]]; then

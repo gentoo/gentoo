@@ -1,0 +1,73 @@
+From 73986d82e1ae60b224b401143cd4ce2c452bf326 Mon Sep 17 00:00:00 2001
+From: Doug Nazar <nazard@nazar.ca>
+Date: Wed, 7 Aug 2019 00:11:35 -0400
+Subject: [PATCH] orctest: Switch nearby float comparison to ULP method
+
+---
+ orc-test/orcarray.c | 7 ++-----
+ orc-test/orctest.c  | 8 ++++----
+ 2 files changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/orc-test/orcarray.c b/orc-test/orcarray.c
+index c0666c5..b27a1f9 100644
+--- a/orc-test/orcarray.c
++++ b/orc-test/orcarray.c
+@@ -211,9 +211,6 @@ orc_array_set_pattern_2 (OrcArray *array, OrcRandomContext *context,
+   }
+ }
+ 
+-#define MIN_NONDENORMAL (1.1754944909521339405e-38)
+-#define MIN_NONDENORMAL_D (2.2250738585072014e-308)
+-
+ int
+ orc_array_compare (OrcArray *array1, OrcArray *array2, int flags)
+ {
+@@ -230,7 +227,7 @@ orc_array_compare (OrcArray *array1, OrcArray *array2, int flags)
+         for (i=0;i<array1->n;i++){
+           if (isnan(a[i]) && isnan(b[i])) continue;
+           if (a[i] == b[i]) continue;
+-          if (fabs(a[i] - b[i]) < MIN_NONDENORMAL) continue;
++          if ((a[i] < 0.0) == (b[i] < 0.0) && abs(*(orc_uint32 *)&a[i] - *(orc_uint32 *)&b[i]) <= 2) continue;
+           return FALSE;
+         }
+       }
+@@ -247,7 +244,7 @@ orc_array_compare (OrcArray *array1, OrcArray *array2, int flags)
+         for (i=0;i<array1->n;i++){
+           if (isnan(a[i]) && isnan(b[i])) continue;
+           if (a[i] == b[i]) continue;
+-          if (fabs(a[i] - b[i]) < MIN_NONDENORMAL_D) continue;
++          if ((a[i] < 0.0) == (b[i] < 0.0) && abs(*(orc_uint64 *)&a[i] - *(orc_uint64 *)&b[i]) <= 2) continue;
+           return FALSE;
+         }
+       }
+diff --git a/orc-test/orctest.c b/orc-test/orctest.c
+index 9f0e942..54658bc 100644
+--- a/orc-test/orctest.c
++++ b/orc-test/orctest.c
+@@ -44,8 +44,6 @@
+ #define snprintf _snprintf
+ #endif
+ 
+-#define MIN_NONDENORMAL (1.1754944909521339405e-38)
+-
+ void _orc_profile_init(void);
+ 
+ OrcRandomContext rand_context;
+@@ -527,10 +525,12 @@ float_compare (OrcArray *array1, OrcArray *array2, int i, int j)
+     case 4:
+       if (isnan(*(float *)ptr1) && isnan(*(float *)ptr2)) return TRUE;
+       if (*(float *)ptr1 == *(float *)ptr2) return TRUE;
+-      if (fabs(*(float *)ptr1 - *(float *)ptr2) < MIN_NONDENORMAL) return TRUE;
++      if ((*(float *)ptr1 < 0.0) == (*(float *)ptr2 < 0.0) && abs(*(orc_uint32 *)ptr1 - *(orc_uint32 *)ptr2) <= 2) return TRUE;
+       return FALSE;
+     case 8:
+-      /* FIXME */
++      if (isnan(*(double *)ptr1) && isnan(*(double *)ptr2)) return TRUE;
++      if (*(double *)ptr1 == *(double *)ptr2) return TRUE;
++      if ((*(double *)ptr1 < 0.0) == (*(double *)ptr2 < 0.0) && abs(*(orc_uint64 *)ptr1 - *(orc_uint64 *)ptr2) <= 2) return TRUE;
+       return FALSE;
+   }
+   return FALSE;
+-- 
+2.21.0
+

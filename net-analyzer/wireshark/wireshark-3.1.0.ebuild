@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{5,6,7} )
-inherit fcaps flag-o-matic multilib python-r1 qmake-utils user xdg-utils cmake-utils
+inherit fcaps flag-o-matic multilib python-any-r1 qmake-utils user xdg-utils cmake-utils
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
@@ -15,9 +15,9 @@ KEYWORDS=""
 IUSE="
 	adns androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc
 	dpauxmon +dumpcap +editcap kerberos libxml2 lua lz4 maxminddb +mergecap
-	+netlink nghttp2 +plugins plugin_ifdemo +pcap +qt5 +randpkt +randpktdump
-	+reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl sdjournal
-	+text2pcap tfshark +tshark +udpdump zlib
+	+minizip +netlink nghttp2 +plugins plugin_ifdemo +pcap +qt5 +randpkt
+	+randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl
+	sdjournal +text2pcap tfshark +tshark +udpdump zlib
 "
 S=${WORKDIR}/${P/_/}
 
@@ -34,6 +34,7 @@ CDEPEND="
 	lua? ( >=dev-lang/lua-5.1:* )
 	lz4? ( app-arch/lz4 )
 	maxminddb? ( dev-libs/libmaxminddb )
+	minizip? ( sys-libs/zlib[minizip] )
 	netlink? ( dev-libs/libnl:3 )
 	nghttp2? ( net-libs/nghttp2 )
 	pcap? ( net-libs/libpcap )
@@ -81,7 +82,6 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-wireshark )
 "
 REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
 	plugin_ifdemo? ( plugins )
 "
 PATCHES=(
@@ -118,7 +118,7 @@ src_configure() {
 		append-cxxflags -fPIC -DPIC
 	fi
 
-	python_setup 'python3*'
+	python_setup
 
 	mycmakeargs+=(
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
@@ -158,6 +158,7 @@ src_configure() {
 		-DENABLE_LIBXML2=$(usex libxml2)
 		-DENABLE_LUA=$(usex lua)
 		-DENABLE_LZ4=$(usex lz4)
+		-DENABLE_MINIZIP=$(usex minizip)
 		-DENABLE_NETLINK=$(usex netlink)
 		-DENABLE_NGHTTP2=$(usex nghttp2)
 		-DENABLE_PCAP=$(usex pcap)

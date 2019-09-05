@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ IUSE="gnat_2016 gnat_2017 +gnat_2018"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	dev-ada/libadalang[gnat_2016=,gnat_2017=,gnat_2018=,static-libs]"
+	dev-ada/libadalang[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,static-libs]"
 
 S="${WORKDIR}"/${PN}-src
 

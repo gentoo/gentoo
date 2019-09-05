@@ -11,7 +11,7 @@ _genkernel()
     prev=${COMP_WORDS[COMP_CWORD-1]}
 
     # extract initial list of params/actions from genkernel --help
-    genkernel_help=$(command genkernel --help)
+    genkernel_help=$(command genkernel --help 2>/dev/null)
     actions=( $(<<<"$genkernel_help" sed -n \
 	'/^Available Actions:/,/^$/s/^[[:space:]]\+\([^[:space:]]\+\).*/\1/p') )
     params=( $(<<<"$genkernel_help" egrep -oe '--[^[:space:]]{2,}') )

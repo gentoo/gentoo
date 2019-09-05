@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/Ettercap/${PN}.git"
 else
 	SRC_URI="https://github.com/Ettercap/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+	KEYWORDS="~alpha amd64 ~arm ppc ppc64 sparc x86 ~x86-fbsd"
 fi
 
 IUSE="doc geoip gtk ipv6 libressl ncurses +plugins test"
@@ -63,7 +63,7 @@ src_configure() {
 		-DENABLE_GEOIP="$(usex geoip)"
 		-DBUNDLED_LIBS=OFF
 		-DSYSTEM_LIBS=ON
-		-DINSTALL_SYSCONFDIR="${EROOT}"etc
+		-DINSTALL_SYSCONFDIR="${EPREFIX}"/etc
 	)
 		#right now we only support gtk2, but ettercap also supports gtk3
 		#do we care? do we want to support both?

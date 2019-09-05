@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
+	</use>
 </pkgmetadata>

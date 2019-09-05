@@ -74,12 +74,6 @@ app-arch/tar xattr
 # sha512 is only supported by Linux-PAM's pam_unix for now
 sys-auth/pambase cracklib pam_ssh sha512
 
-# Alexis Ballier <aballier@gentoo.org> (2009-01-31)
-# app-misc/tracker should work but needs some code fixups and it uses the fdatasync system call
-# that we do not have (bug #257052)
-# Mask it for now
-gnome-base/nautilus tracker
-
 # Naohiro Aota <naota@gentoo.org> (2011-08-04)
 # ads require krb5, which is maksed on FreeBSD
 # cluster require ctdb, which doesn't support FreeBSD

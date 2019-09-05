@@ -7,9 +7,9 @@ PYTHON_REQ_USE="libressl?,sqlite,ssl"
 LIBDVDCSS_VERSION="1.4.2-Leia-Beta-5"
 LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-3"
 LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-3"
-FFMPEG_VERSION="4.0.3"
+FFMPEG_VERSION="4.0.4"
 CODENAME="Leia"
-FFMPEG_KODI_VERSION="18.2"
+FFMPEG_KODI_VERSION="18.4"
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz -> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_VERSION}.tar.gz -> libdvdnav-${LIBDVDNAV_VERSION}.tar.gz
@@ -31,7 +31,7 @@ else
 	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
 fi
 
-inherit autotools cmake-utils eutils gnome2-utils linux-info pax-utils python-single-r1 xdg-utils
+inherit autotools cmake-utils desktop linux-info pax-utils python-single-r1 xdg
 
 DESCRIPTION="A free and open source media-player and entertainment hub"
 HOMEPAGE="https://kodi.tv/ https://kodi.wiki/"
@@ -64,7 +64,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( sys-apps/dbus )
 	dev-db/sqlite
 	dev-libs/expat
-	dev-libs/flatbuffers
+	>=dev-libs/flatbuffers-1.11.0
 	>=dev-libs/fribidi-0.19.7
 	cec? ( >=dev-libs/libcec-4.0[raspberry-pi?] )
 	dev-libs/libpcre[cxx]
@@ -88,7 +88,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.8
 	>=media-libs/libass-0.13.4
-	!raspberry-pi? ( media-libs/mesa[egl] )
+	!raspberry-pi? ( media-libs/mesa[egl,X(+)] )
 	>=media-libs/taglib-1.11.1
 	system-ffmpeg? (
 		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[encode,postproc]
@@ -293,11 +293,10 @@ src_configure() {
 
 src_compile() {
 	cmake-utils_src_compile all
-	use test && emake -C "${BUILD_DIR}" kodi-test
 }
 
 src_test() {
-	emake -C "${BUILD_DIR}" test
+	cmake-utils_src_make check
 }
 
 src_install() {
@@ -313,14 +312,4 @@ src_install() {
 
 	python_domodule tools/EventClients/lib/python/xbmcclient.py
 	python_newscript "tools/EventClients/Clients/KodiSend/kodi-send.py" kodi-send
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
 }

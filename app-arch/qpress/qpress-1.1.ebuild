@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="A portable file archiver using QuickLZ algorithm"
 HOMEPAGE="http://www.quicklz.com/"
@@ -11,14 +13,18 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+BDEPEND="app-arch/unzip"
+
 S="${WORKDIR}"
 
-src_prepare() {
-	default
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1-fix-includes.patch
+	"${FILESDIR}"/${PN}-1.1-fix-build-system.patch
+)
 
-	# Fix compilation with newer gcc
-	sed -i '1i #include <unistd.h>' qpress.cpp || die
-	cp "${FILESDIR}/makefile" "${S}" || die
+src_configure() {
+	tc-export CC CXX
+	export LDLIBS="-lpthread"
 }
 
 src_install() {

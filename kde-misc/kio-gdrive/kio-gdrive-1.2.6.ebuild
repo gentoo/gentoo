@@ -22,7 +22,7 @@ COMMON_DEPEND="
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep knotifications)
-	$(add_kdeapps_dep libkgapi)
+	<kde-apps/libkgapi-19.04.50
 	$(add_qt_dep qtwidgets)
 	kaccounts? ( $(add_kdeapps_dep kaccounts-integration) )
 	!kaccounts? ( dev-libs/qtkeychain:=[qt5(+)] )

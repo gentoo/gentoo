@@ -8,6 +8,10 @@
 # Temporary mask for stable bug 688976
 ruby_targets_ruby25
 
+# Ben Kohler <bkohler@gentoo.org> (2019-06-11)
+# Pulls in net-libs/axtls which is not stable for sparc
+curl_ssl_axtls
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-02-02)
 # No stable app-arch/rpm on sparc.
 rpm

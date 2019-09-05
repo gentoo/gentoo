@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,12 +16,11 @@ KEYWORDS=""
 IUSE="gtk"
 
 RDEPEND="
-	>=dev-lang/perl-5.16.0
 	dev-perl/Data-Dump
 	dev-perl/JSON
 	dev-perl/libwww-perl[ssl]
 	dev-perl/Term-ReadLine-Gnu
-	media-video/ffmpeg[openssl]
+	dev-perl/LWP-Protocol-https
 	virtual/perl-Encode
 	virtual/perl-File-Path
 	virtual/perl-File-Spec
@@ -37,26 +36,21 @@ RDEPEND="
 		virtual/freedesktop-icon-theme
 		x11-libs/gdk-pixbuf:2[X,jpeg]
 	)
-	|| ( media-video/mpv media-video/mplayer media-video/smplayer media-video/vlc )"
+	|| ( media-video/ffmpeg[openssl] media-video/ffmpeg[gnutls] )
+	|| ( media-video/mpv media-video/mplayer media-video/vlc gtk? ( media-video/smplayer ) )"
 DEPEND="dev-perl/Module-Build"
 
 SRC_TEST="do"
 
-src_prepare() {
-	perl-module_src_prepare
-}
-
-# build system installs files on "perl Build.PL" too
-# do all the work in src_install
-src_configure() { :; }
-src_compile() { :; }
-
-src_install() {
+src_configure() {
 	local myconf
 	if use gtk ; then
 		myconf="--gtk-youtube-viewer"
 	fi
 	perl-module_src_configure
+}
+
+src_install() {
 	perl-module_src_install
 
 	if use gtk ; then
@@ -65,19 +59,14 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	use gtk && gnome2_icon_savelist
-	perl_set_version
-}
-
 pkg_postinst() {
 	use gtk && gnome2_icon_cache_update
 	elog "Optional dependencies:"
 	optfeature "cache support" dev-perl/LWP-UserAgent-Cached
-	optfeature "better STDIN support" dev-perl/Term-ReadLine-Gnu
 	optfeature "faster JSON to HASH conversion" dev-perl/JSON-XS
 	optfeature "the case if there are SSL problems" dev-perl/Mozilla-CA
 	optfeature "printing results in a fixed-width format (--fixed-width, -W)" dev-perl/Text-CharWidth
+	optfeature "live streams support" net-misc/youtube-dl
 	optfeature "threads support" virtual/perl-threads
 	elog
 	elog "Check the configuration file in ~/.config/youtube-viewer/"

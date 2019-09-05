@@ -42,6 +42,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-cmake-3.15.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DKS_PURE_QT=$(usex !kde)

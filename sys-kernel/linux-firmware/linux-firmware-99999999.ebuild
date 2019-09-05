@@ -25,6 +25,8 @@ IUSE="initramfs +redistributable savedconfig unknown-license"
 RESTRICT="binchecks strip
 	unknown-license? ( bindist )"
 
+REQUIRED_USE="initramfs? ( redistributable )"
+
 BDEPEND="initramfs? ( app-arch/cpio )"
 
 #add anything else that collides to this
@@ -295,9 +297,7 @@ src_prepare() {
 }
 
 src_install() {
-	if use !savedconfig; then
-		save_config ${PN}.conf
-	fi
+	save_config ${PN}.conf
 	rm ${PN}.conf || die
 
 	if use initramfs ; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit flag-o-matic pax-utils python-single-r1 toolchain-funcs
+inherit flag-o-matic pax-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -28,7 +28,6 @@ DEPEND="${RDEPEND}
 	test? ( net-misc/curl )"
 
 S="${WORKDIR}/node-v${PV}"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \

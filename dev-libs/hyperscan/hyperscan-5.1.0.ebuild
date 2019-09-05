@@ -25,7 +25,8 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-REQUIRED_USE="cpu_flags_x86_ssse3"
+REQUIRED_USE="cpu_flags_x86_ssse3
+	${PYTHON_REQUIRED_USE}"
 
 src_configure() {
 	local mycmakeargs=(

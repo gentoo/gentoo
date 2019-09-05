@@ -83,6 +83,8 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_kdeapps_dep kmail-account-wizard)
 "
 
+PATCHES=( "${FILESDIR}/${P}-missing-header.patch" )
+
 RESTRICT+=" test" # bug 616878
 
 src_prepare() {

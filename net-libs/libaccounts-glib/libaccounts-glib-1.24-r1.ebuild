@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.com/accounts-sso/${PN}/-/archive/VERSION_${PV}/${PN}-VER
 
 LICENSE="LGPL-2.1"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -27,6 +27,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	$(vala_depend)
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	dev-libs/check
@@ -39,7 +40,7 @@ RESTRICT="test"
 src_prepare() {
 	default
 
-	vala_src_prepare
+	vala_src_prepare --ignore-use
 
 	use doc || sed -e "/^subdir('docs')$/d" -i meson.build || die
 }

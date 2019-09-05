@@ -39,7 +39,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # -berkdb by default re bug 602682
 IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip gost gssapi
-json ldap libressl lmdb mysql odbc postgres python selinux ssl static-libs
+json ldap libressl lmdb mysql odbc postgres python selinux static-libs
 urandom xml +zlib"
 # sdb-ldap - patch broken
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
@@ -53,11 +53,8 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )"
 # sdb-ldap? ( dlz )
 
-DEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0[-bindist] )
-		libressl? ( dev-libs/libressl )
-	)
+DEPEND="!libressl? ( dev-libs/openssl:0[-bindist] )
+	libressl? ( dev-libs/libressl )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( >=dev-db/unixODBC-2.2.6 )
 	ldap? ( net-nds/openldap )
@@ -78,7 +75,7 @@ DEPEND="
 
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-bind )
-	|| ( sys-process/psmisc >=sys-freebsd/freebsd-ubin-9.0_rc sys-process/fuser-bsd )"
+	|| ( sys-process/psmisc >=sys-freebsd/freebsd-ubin-9.0_rc )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -94,6 +91,8 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	export LDFLAGS="${LDFLAGS} -L${EPREFIX}/usr/$(get_libdir)"
 
 	# Adjusting PATHs in manpages
 	for i in bin/{named/named.8,check/named-checkconf.8,rndc/rndc.8} ; do
@@ -152,7 +151,6 @@ src_configure() {
 		$(use_with postgres dlz-postgres)
 		$(use_with lmdb)
 		$(use_with python)
-		$(use_with ssl openssl "${EPREFIX}"/usr)
 		$(use_with xml libxml2)
 		$(use_with zlib)
 	)
@@ -211,19 +209,19 @@ src_install() {
 
 	if use gost; then
 		sed -e 's/^OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-0}$/OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-1}/' \
-			-i "${ED%/}/etc/init.d/named" || die
+			-i "${ED}/etc/init.d/named" || die
 	else
 		sed -e 's/^OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-1}$/OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-0}/' \
-			-i "${ED%/}/etc/init.d/named" || die
+			-i "${ED}/etc/init.d/named" || die
 	fi
 
 	newenvd "${FILESDIR}"/10bind.env 10bind
 
 	# Let's get rid of those tools and their manpages since they're provided by bind-tools
-	rm -f "${ED%/}"/usr/share/man/man1/{dig,host,nslookup}.1* || die
-	rm -f "${ED%/}"/usr/share/man/man8/nsupdate.8* || die
-	rm -f "${ED%/}"/usr/bin/{dig,host,nslookup,nsupdate} || die
-	rm -f "${ED%/}"/usr/sbin/{dig,host,nslookup,nsupdate} || die
+	rm -f "${ED}"/usr/share/man/man1/{dig,host,nslookup}.1* || die
+	rm -f "${ED}"/usr/share/man/man8/nsupdate.8* || die
+	rm -f "${ED}"/usr/bin/{dig,host,nslookup,nsupdate} || die
+	rm -f "${ED}"/usr/sbin/{dig,host,nslookup,nsupdate} || die
 	for tool in dsfromkey importkey keyfromlabel keygen \
 	  revoke settime signzone verify; do
 		rm -f "${ED%/}"/usr/{,s}bin/dnssec-"${tool}" || die
@@ -244,16 +242,16 @@ src_install() {
 		}
 		python_foreach_impl install_python_tools
 
-		python_replicate_script "${ED%/}/usr/sbin/dnssec-checkds"
-		python_replicate_script "${ED%/}/usr/sbin/dnssec-coverage"
+		python_replicate_script "${ED}/usr/sbin/dnssec-checkds"
+		python_replicate_script "${ED}/usr/sbin/dnssec-coverage"
 	fi
 
 	# bug 450406
 	dosym named.cache /var/bind/root.cache
 
-	dosym /var/bind/pri /etc/bind/pri
-	dosym /var/bind/sec /etc/bind/sec
-	dosym /var/bind/dyn /etc/bind/dyn
+	dosym "${ED}"/var/bind/pri /etc/bind/pri
+	dosym "${ED}"/var/bind/sec /etc/bind/sec
+	dosym "${ED}"/var/bind/dyn /etc/bind/dyn
 	keepdir /var/bind/{pri,sec,dyn}
 
 	dodir /var/log/named

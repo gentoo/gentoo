@@ -15,7 +15,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ~ppc ~ppc64 s390 ~sh ~sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ~ppc64 s390 ~sh ~sparc x86 ~amd64-fbsd"
 IUSE="afs +berkdb caps gdbm hdb-ldap ipv6 libressl +lmdb otp selinux ssl static-libs test X"
 
 CDEPEND="
@@ -155,8 +155,8 @@ multilib_src_install_all() {
 	dodoc ChangeLog* README NEWS TODO
 
 	# client rename
-	mv "${ED%/}"/usr/share/man/man1/{,k}su.1
-	mv "${ED%/}"/usr/bin/{,k}su
+	mv "${ED}"/usr/share/man/man1/{,k}su.1
+	mv "${ED}"/usr/bin/{,k}su
 
 	newinitd "${FILESDIR}"/heimdal-kdc.initd-r2 heimdal-kdc
 	newinitd "${FILESDIR}"/heimdal-kadmind.initd-r2 heimdal-kadmind

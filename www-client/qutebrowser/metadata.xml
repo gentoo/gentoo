@@ -5,10 +5,6 @@
 		<email>radhermit@gentoo.org</email>
 		<name>Tim Harder</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>jsbronder@gentoo.org</email>
-		<name>Justin Bronder</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">qutebrowser/qutebrowser</remote-id>
 	</upstream>

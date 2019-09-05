@@ -35,7 +35,7 @@ RDEPEND="
 	>=x11-libs/pixman-0.32.4[${MULTILIB_USEDEP}]
 	gles2? ( >=media-libs/mesa-9.1.6[gles2,${MULTILIB_USEDEP}] )
 	glib? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}] )
-	opengl? ( >=media-libs/mesa-9.1.6[egl,${MULTILIB_USEDEP}] )
+	opengl? ( >=media-libs/mesa-9.1.6[egl,X(+),${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libXrender-0.9.8[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]

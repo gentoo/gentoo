@@ -101,6 +101,7 @@ PATCHES=(
 		"${FILESDIR}/${PN}-1.1.453-core.patch"
 		"${FILESDIR}/${PN}-1.1.463-boost-1.69.0_p1.patch"
 		"${FILESDIR}/${PN}-1.1.463-boost-1.69.0_p2.patch"
+		"${FILESDIR}/${PN}-1.1.463-boost-1.69.0_p3.patch"
 		"${FILESDIR}/${PN}-1.1.463-fix-ptr-int-compare.patch"
 )
 

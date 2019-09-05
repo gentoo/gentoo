@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ HOMEPAGE="http://linux-diag.sourceforge.net/servicelog/"
 
 SLOT="0"
 LICENSE="GPL-2+"
-KEYWORDS="~ppc ~ppc64"
+KEYWORDS="ppc ppc64"
 
 DEPEND="
 	sys-libs/libservicelog

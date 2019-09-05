@@ -11,7 +11,7 @@ SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="BSD BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples pax_kernel static-libs"
 
 RDEPEND=""
@@ -22,10 +22,16 @@ DEPEND="${RDEPEND}
 
 DOCS=( README RELEASE )
 
+PATCHES=(
+	# Fixes some tests on various platforms (AMD Phenom, ARM, etc) with more suitable
+	# float comparison - https://gitlab.freedesktop.org/gstreamer/orc/issues/18
+	"${FILESDIR}"/${PV}-test-rounding.patch
+)
+
 src_prepare() {
 	default
 
-	# Do not build examples	
+	# Do not build examples
 	sed -e '/SUBDIRS/ s:examples::' \
 		-i Makefile.am Makefile.in || die
 }

@@ -33,3 +33,5 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	$(add_qt_dep qtconcurrent)
 "
+
+PATCHES=( "${FILESDIR}/${P}-missing-header.patch" )

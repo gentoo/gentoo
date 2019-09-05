@@ -21,11 +21,11 @@ IUSE="+cti fortran pch +python test"
 
 REQUIRED_USE="
 	python? ( cti )
-	cti? ( ${PYTHON_REQUIRED_USE} )
 	${PYTHON_REQUIRED_USE}
 	"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	python? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)

@@ -1,13 +1,17 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-08-18)
+# media-video/pipewire is not keyworded yet
+dev-libs/weston pipewire
+kde-apps/krfb wayland
+kde-plasma/xdg-desktop-portal-kde screencast
+sys-apps/xdg-desktop-portal screencast
+x11-wm/mutter screencast
+
 # Aaron Bauman <bman@gentoo.org> (2019-08-05)
 # dep not keyworded here
 media-gfx/gnome-photos upnp-av
-
-# Aaron Bauman <bman@gentoo.org> (2019-08-05)
-# jitterentropy is keyworded now
-sys-apps/rng-tools -jitterentropy
 
 # Patrick McLean <chutzpah@gentoo.org> (2019-06-14)
 # test deps not keyworded
@@ -67,7 +71,6 @@ media-video/libav -sdl
 media-video/mplayer -sdl
 media-video/mpv -sdl
 media-video/transcode -sdl
-net-libs/libvncserver -sdl
 virtual/ffmpeg -sdl
 >=x11-libs/wxGTK-3 -sdl
 
@@ -75,12 +78,6 @@ virtual/ffmpeg -sdl
 # kde-apps/cantor lua means luajit which needs luajit-2.1.0_beta3 for arm64
 # It builds OK but is not yet in ::gentoo. bug #678404
 kde-apps/cantor lua
-
-# Dirkjan Ochtman <djc@gentoo.org> (2018-09-29)
-# Upstream doesn't build docs for tier 2 and lower architectures.
-# Bug #660512.
-dev-lang/rust doc
-dev-lang/rust-bin doc
 
 # Virgil Dupras <vdupras@gentoo.org> (2018-09-06)
 # sci-electronics/ngspice not yet keyworded, bug #665416
@@ -118,7 +115,6 @@ dev-python/notebook doc
 
 # Mart Raudsepp <leio@gentoo.org> (2018-05-30)
 # Require old gnome2 libraries, not keywording legacy on purpose
-<=app-editors/gvim-8.0.1699 gnome
 sys-devel/distcc gnome
 
 # Mart Raudsepp <leio@gentoo.org> (2018-05-13)
@@ -331,9 +327,8 @@ media-sound/pulseaudio neon
 media-libs/vo-aacenc cpu_flags_arm_neon
 
 # Alexis Ballier <aballier@gentoo.org> (2017-06-16)
-# neon on pixman seems armv7 only, at least according to configure checks: it
-# aborts when neon is enabled.
-x11-libs/pixman neon
+# pixman's neon code is armv7 only.
+x11-libs/pixman cpu_flags_arm_neon neon
 
 # James Le Cuirot <chewi@gentoo.org> (2017-05-22)
 # Only available on some architectures.

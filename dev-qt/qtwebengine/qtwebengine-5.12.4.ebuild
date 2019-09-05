@@ -40,7 +40,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	>=media-libs/libvpx-1.5:=[svc]
 	media-libs/libwebp:=
-	media-libs/mesa[egl]
+	media-libs/mesa[egl,X(+)]
 	media-libs/opus
 	sys-apps/dbus
 	sys-apps/pciutils
@@ -83,6 +83,8 @@ PATCHES+=(
 	"${FILESDIR}/${P}-fix-should_override_user_agent_in_new_tabs.patch"
 	"${FILESDIR}/${P}-bump-V8-patchlevel.patch" # QTBUG-72532
 	"${FILESDIR}/${P}-fix-arm-32bit-segfaults.patch" # QTBUG-75097
+	# QTBUG-76963, not yet upstream:
+	"${FILESDIR}/${P}-webrtc-missing-header-w-linux-headers-5.2.patch"
 )
 
 src_prepare() {

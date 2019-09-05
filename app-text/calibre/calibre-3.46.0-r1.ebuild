@@ -196,8 +196,6 @@ src_install() {
 
 	addpredict /dev/dri #665310
 
-	#dodir "/usr/$(get_libdir)/python2.7/site-packages" # for init_calibre.py
-	#dodir $(python_get_sitedir)
 	PATH=${T}:${PATH} PYTHONPATH=${S}/src${PYTHONPATH:+:}${PYTHONPATH} \
 	"${PYTHON}" setup.py install \
 		--root="${D}" \
@@ -252,7 +250,7 @@ pkg_preinst() {
 pkg_postinst() {
 	[[ -n ${CALIBRE_LIB_DIR} ]] || die "CALIBRE_LIB_DIR is unset"
 	local x
-	for x in "${EROOT%/}${CALIBRE_LIB_DIR}"/*; do
+	for x in "${EROOT}${CALIBRE_LIB_DIR}"/*; do
 		if [[ " ${CALIBRE_LIB_CONTENT} " != *" ${x##*/} "* ]]; then
 			elog "Purging '${x}'"
 			rm -rf "${x}"

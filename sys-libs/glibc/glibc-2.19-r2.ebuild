@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit prefix eutils versionator toolchain-funcs flag-o-matic gnuconfig usr-ldscript \
+inherit prefix eutils toolchain-funcs flag-o-matic gnuconfig usr-ldscript \
 	multilib systemd multiprocessing
 
 DESCRIPTION="GNU libc C library"
@@ -32,7 +32,7 @@ PATCH_VER=9
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
 
-IUSE="audit caps compile-locales debug doc gd hardened headers-only multilib nscd profile selinux suid systemtap vanilla"
+IUSE="audit caps compile-locales debug doc gd headers-only multilib nscd profile selinux suid systemtap vanilla"
 
 # Minimum kernel version that glibc requires
 # hppa requires 2.6.20
@@ -255,20 +255,10 @@ setup_target_flags() {
 			sparc64-*)
 				case $(get-flag mcpu) in
 				niagara[234])
-					if version_is_at_least 2.8 ; then
-						cpu="sparc64v2"
-					elif version_is_at_least 2.4 ; then
-						cpu="sparc64v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparc64b"
-					fi
+					cpu="sparc64v2"
 					;;
 				niagara)
-					if version_is_at_least 2.4 ; then
-						cpu="sparc64v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparc64b"
-					fi
+					cpu="sparc64v"
 					;;
 				ultrasparc3)
 					cpu="sparc64b"
@@ -284,24 +274,10 @@ setup_target_flags() {
 			sparc-*)
 				case $(get-flag mcpu) in
 				niagara[234])
-					if version_is_at_least 2.8 ; then
-						cpu="sparcv9v2"
-					elif version_is_at_least 2.4 ; then
-						cpu="sparcv9v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparcv9b"
-					else
-						cpu="sparcv9"
-					fi
+					cpu="sparcv9v2"
 					;;
 				niagara)
-					if version_is_at_least 2.4 ; then
-						cpu="sparcv9v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparcv9b"
-					else
-						cpu="sparcv9"
-					fi
+					cpu="sparcv9v"
 					;;
 				ultrasparc3)
 					cpu="sparcv9b"
@@ -368,21 +344,6 @@ setup_flags() {
 
 	filter-flags '-fstack-protector*'
 	append-flags '-fno-stack-protector'
-
-	# Starting with gcc-6 (and fully upstreamed pie patches) we control
-	# default enabled/disabled pie via use flags. So nothing to do
-	# here then. #618160
-	if [[ $(gcc-major-version) -lt 6 ]]; then
-		if use hardened && tc-enables-pie ; then
-			# Force PIC macro definition for all compilations since they're all
-			# either -fPIC or -fPIE with the default-PIE compiler.
-			append-cppflags -DPIC
-		else
-			# Don't build -fPIE without the default-PIE compiler and the
-			# hardened-pie patch
-			filter-flags -fPIE
-		fi
-	fi
 }
 
 want_tls() {
@@ -410,25 +371,6 @@ want__thread() {
 	WANT__THREAD=$?
 
 	return ${WANT__THREAD}
-}
-
-use_multiarch() {
-	# Make sure binutils is new enough to support indirect functions,
-	# #336792. This funky sed supports gold and bfd linkers.
-	local bver nver
-	bver=$($(tc-getLD ${CTARGET}) -v | sed -n -r '1{s:[^0-9]*::;s:^([0-9.]*).*:\1:;p}')
-	case $(tc-arch ${CTARGET}) in
-	amd64|x86) nver="2.20" ;;
-	arm)       nver="2.22" ;;
-	hppa)      nver="2.23" ;;
-	ppc|ppc64) nver="2.20" ;;
-	# ifunc support was added in 2.23, but glibc also needs
-	# machinemode which is in 2.24.
-	s390)      nver="2.24" ;;
-	sparc)     nver="2.21" ;;
-	*)         return 1 ;;
-	esac
-	version_is_at_least ${nver} ${bver}
 }
 
 # Setup toolchain variables that had historically been defined in the
@@ -757,6 +699,8 @@ src_prepare() {
 
 	gnuconfig_update
 
+	eapply "${FILESDIR}"/2.19/glibc-2.19-kernel-2.6.16-compat.patch
+
 	cd "${WORKDIR}"
 	find . -name configure -exec touch {} +
 
@@ -764,25 +708,6 @@ src_prepare() {
 
 	# Fix permissions on some of the scripts.
 	chmod u+x "${S}"/scripts/*.sh
-
-	cd "${S}"
-
-	if use hardened ; then
-		# We don't enable these for non-hardened as the output is very terse --
-		# it only states that a crash happened.  The default upstream behavior
-		# includes backtraces and symbols.
-		einfo "Installing Hardened Gentoo SSP and FORTIFY_SOURCE handler"
-		cp "${FILESDIR}"/2.20/glibc-2.20-gentoo-stack_chk_fail.c debug/stack_chk_fail.c || die
-		cp "${FILESDIR}"/2.25/glibc-2.25-gentoo-chk_fail.c debug/chk_fail.c || die
-
-		if use debug ; then
-			# Allow SIGABRT to dump core on non-hardened systems, or when debug is requested.
-			sed -i \
-				-e '/^CFLAGS-backtrace.c/ iCPPFLAGS-stack_chk_fail.c = -DSSP_SMASH_DUMPS_CORE' \
-				-e '/^CFLAGS-backtrace.c/ iCPPFLAGS-chk_fail.c = -DSSP_SMASH_DUMPS_CORE' \
-				debug/Makefile || die
-		fi
-	fi
 }
 
 glibc_do_configure() {
@@ -892,7 +817,6 @@ glibc_do_configure() {
 		--libexecdir='$(libdir)'/misc/glibc
 		--with-bugurl=https://bugs.gentoo.org/
 		--with-pkgversion="$(glibc_banner)"
-		$(use_multiarch || echo --disable-multi-arch)
 		$(use_enable systemtap)
 		$(use_enable nscd)
 		${EXTRA_ECONF}

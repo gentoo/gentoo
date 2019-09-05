@@ -14,7 +14,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5b0cf840c7a4475261f97ced
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 gnat_2019 +shared static-libs"
 
 RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
@@ -30,7 +30,8 @@ RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	x11-libs/gtk+:3
 	x11-libs/pango"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]
+	dev-ada/gprbuild[gnat_2019(-)?]"
 
 REQUIRED_USE="^^ ( gnat_2016 gnat_2017 gnat_2018 gnat_2019 )"
 

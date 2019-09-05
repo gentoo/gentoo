@@ -19,7 +19,6 @@ IUSE="test"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
@@ -38,7 +37,7 @@ python_test() {
 	# 5 tests fail with disabled byte-compilation (they rely on exact
 	# output from python).
 	# The other 4 are broken.
-	py.test -k "not (test_pot_manual or test_pot_auto_explicit or \
+	pytest -vv -k "not (test_pot_manual or test_pot_auto_explicit or \
 		test_pot_auto or test_modules or test_packages) and not \
 		(test_desktop or test_po or test_policykit or \
 		test_requires_provides)" test/auto.py || \

@@ -39,7 +39,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	>=media-libs/libvpx-1.5:=[svc]
 	media-libs/libwebp:=
-	media-libs/mesa[egl]
+	media-libs/mesa[egl,X(+)]
 	media-libs/opus
 	sys-apps/dbus
 	sys-apps/pciutils

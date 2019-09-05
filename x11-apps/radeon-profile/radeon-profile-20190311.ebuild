@@ -34,7 +34,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-qt/qtconcurrent:5
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	x11-libs/libdrm
 "
 

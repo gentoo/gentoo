@@ -48,6 +48,7 @@ cdr - Add support for CD writer hardware
 cgi - Add CGI script support
 cjk - Add support for Multi-byte character languages (Chinese, Japanese, Korean)
 clamav - Add support for Clam AntiVirus software (usually with a plugin)
+colord - Support color management using x11-misc/colord
 connman - Add support for net-misc/connman
 coreaudio - Build the CoreAudio driver on Mac OS X systems
 cracklib - Support for cracklib strong password checking
@@ -64,7 +65,6 @@ dbus - Enable dbus support for anything that needs it (gpsd, gnomemeeting, etc)
 debug - Enable extra debug codepaths, like asserts and extra output. If you want to get meaningful backtraces see https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Backtraces
 dedicated - Add support for dedicated game servers (some packages do not provide clients and servers at the same time)
 dga - Add DGA (Direct Graphic Access) support for X
-directfb - Add support for DirectFB layer (library for FB devices)
 djvu - Support DjVu, a PDF-like document format esp. suited for scanned documents
 doc - Add extra documentation (API, Javadoc, etc). It is recommended to enable per package instead of globally
 dri - Enable direct rendering: used for accelerated 3D and some 2D, like DMA
@@ -106,6 +106,10 @@ gimp - Build a plugin for the GIMP
 git - Enable git (version control system) support
 glut - Build an OpenGL plugin using the GLUT library
 gmp - Add support for dev-libs/gmp (GNU MP library)
+gnat_2016 - Compile with dev-lang/gnat-gpl-2016
+gnat_2017 - Compile with dev-lang/gnat-gpl-2017
+gnat_2018 - Compile with dev-lang/gnat-gpl-2018
+gnat_2019 - Compile with dev-lang/gnat-gpl-2019
 gnome - Add GNOME support
 gnome-keyring - Enable support for storing passwords via gnome-keyring
 gnuplot - Enable support for gnuplot (data and function plotting)
@@ -181,6 +185,7 @@ lzma - Support for LZMA (de)compression algorithm
 lzo - Enable support for lzo compression
 m17n-lib - Enable m17n-lib support
 mad - Add support for mad (high-quality mp3 decoder library and cli frontend)
+magic - Add support for file type detection via magic bytes (usually via libmagic from sys-apps/file)
 maildir - Add support for maildir (~/.maildir) style mail spools
 matroska - Add support for the matroska container format (extensions .mkv, .mka and .mks)
 mbox - Add support for mbox (/var/spool/mail) style mail spools

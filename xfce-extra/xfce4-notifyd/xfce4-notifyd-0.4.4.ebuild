@@ -27,6 +27,11 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
+}
+
 pkg_postinst() {
 	xdg_icon_cache_update
 }

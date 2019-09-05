@@ -45,7 +45,7 @@ app-crypt/qca botan
 # Pacho Ramos <pacho@gentoo> (2011-03-18)
 # Missing keywords on deps (GNOME related packages)
 dev-libs/totem-pl-parser quvi
-media-plugins/gst-plugins-meta dv dvd musepack vcd vpx wavpack
+media-plugins/gst-plugins-meta dv dvd vcd vpx wavpack
 
 # Justin Lecher <jlec@gentoo.org> (2010-09-19)
 # kde-apps/konqueror not keyworded

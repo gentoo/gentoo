@@ -103,9 +103,9 @@ src_install() {
 }
 
 golang_install_pkgs() {
-	insinto $(dirname "${EPREFIX}$(get_golibdir)/src/${EGO_PN%/*}")
+	insinto $(dirname "$(get_golibdir)/src/${EGO_PN%/*}")
 	rm -rf "${S}"/src/${EGO_PN%/*}/.git*
 	doins -r "${S}"/src/${EGO_PN%/*}
-	insinto $(dirname "${EPREFIX}$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}")
+	insinto $(dirname "$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}")
 	doins -r "${S}"/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}{,.a}
 }

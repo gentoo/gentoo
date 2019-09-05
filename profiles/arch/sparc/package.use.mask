@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (2019-08-18)
+# media-video/pipewire is not keyworded yet
+x11-wm/mutter screencast
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-05-05)
 # No sparc arch support for jit.
 dev-lang/spidermonkey jit
@@ -110,6 +114,10 @@ dev-libs/hiredis test
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
 # DOSBox + OpenGLide is untested on this arch.
 games-emulation/dosbox glide
+
+# Fabian Groffen <grobian@gentoo.org> (2016-12-07)
+# unkeyworded notmuch dependency, bug #587560
+mail-client/mutt notmuch
 
 # Michał Górny <mgorny@gentoo.org> (2016-11-18)
 # libomp does not support SPARC, #600148.
@@ -311,6 +319,11 @@ x11-misc/xscreensaver new-login
 # libhid is not keyworded
 app-misc/lcdproc hid lcd_devices_mdm166a
 
+# Anthony G. Basile <blueness@gentoo.org> (2011-12-21)
+# Mask the vde flag on tinc because net-misc/vde is not
+# keyworded for sparc
+net-vpn/tinc vde
+
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # Mask use numa for openmpi
 sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
@@ -331,10 +344,6 @@ sys-cluster/openmpi numa
 # Pacho Ramos <pacho@gentoo.org> (2011-01-27)
 # missing keywords on needed plugins
 media-plugins/gst-plugins-meta dts dv libvisual modplug vcd wavpack
-
-# Michael Weber <xmw@gentoo.org> (2011-01-03)
-# dev-libs/libev is not keyworded
-www-servers/lighttpd libev
 
 # Justin Lecher <jlec@gentoo.org> (2010-08-13)
 # MKL not available on this arch

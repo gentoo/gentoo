@@ -11,7 +11,7 @@ inherit kde5
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/kdevelop/${PV}/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Integrated Development Environment, supporting KF5/Qt, C/C++ and much more"
@@ -83,6 +83,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	$(add_kdeapps_dep kapptemplate)
 	$(add_kdeapps_dep kio-extras)
+	$(add_qt_dep qdbus)
 	dev-util/ninja
 	>=sys-devel/gdb-7.0[python]
 	reviewboard? ( $(add_kdeapps_dep ktp-accounts-kcm) )
@@ -91,6 +92,8 @@ RDEPEND="${COMMON_DEPEND}
 
 RESTRICT+=" test"
 # see bug 366471
+
+PATCHES=( "${FILESDIR}/${P}-missing-header.patch" )
 
 src_configure() {
 	local mycmakeargs=(

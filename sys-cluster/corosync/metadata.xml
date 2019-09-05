@@ -9,9 +9,6 @@
 		<email>cluster@gentoo.org</email>
 		<name>Gentoo Cluster Project</name>
 	</maintainer>
-	<use>
-		<flag name="infiniband">Enable Infiniband RDMA transport support</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">corosync/corosync</remote-id>
 	</upstream>

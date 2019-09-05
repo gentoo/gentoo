@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # Subslot: libavutil major.libavcodec major.libavformat major
 # Since FFmpeg ships several libraries, subslot is kind of limited here.
@@ -46,6 +46,10 @@ LICENSE="
 		gpl? ( GPL-3 )
 		!gpl? ( LGPL-3 )
 	)
+	libaribb24? (
+		gpl? ( GPL-3 )
+		!gpl? ( LGPL-3 )
+	)
 	encode? (
 		amrenc? (
 			gpl? ( GPL-3 )
@@ -64,7 +68,7 @@ fi
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
 		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt gnutls gmp
-		+gpl +hardcoded-tables +iconv libressl:libtls libxml2 lzma +network opencl
+		+gpl hardcoded-tables +iconv libressl:libtls libxml2 lzma +network opencl
 		openssl +postproc samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau
 		X:xlib xcb:libxcb xcb:libxcb-shm xcb:libxcb-xfixes +zlib
 		# libavdevice options
@@ -75,12 +79,12 @@ FFMPEG_FLAG_MAP=(
 		# decoders
 		amr:libopencore-amrwb amr:libopencore-amrnb codec2:libcodec2 dav1d:libdav1d fdk:libfdk-aac
 		jpeg2k:libopenjpeg bluray:libbluray gme:libgme gsm:libgsm
-		mmal modplug:libmodplug opus:libopus libilbc librtmp ssh:libssh
+		libaribb24 mmal modplug:libmodplug opus:libopus libilbc librtmp ssh:libssh
 		speex:libspeex srt:libsrt svg:librsvg video_cards_nvidia:ffnvcodec
 		vorbis:libvorbis vpx:libvpx zvbi:libzvbi
 		# libavfilter options
 		appkit
-		bs2b:libbs2b chromaprint flite:libflite frei0r
+		bs2b:libbs2b chromaprint cuda:cuda-llvm flite:libflite frei0r
 		fribidi:libfribidi fontconfig ladspa libass lv2 truetype:libfreetype vidstab:libvidstab
 		rubberband:librubberband zeromq:libzmq zimg:libzimg
 		# libswresample options
@@ -170,7 +174,7 @@ RDEPEND="
 	cdio? ( >=dev-libs/libcdio-paranoia-0.90_p1-r1[${MULTILIB_USEDEP}] )
 	chromaprint? ( >=media-libs/chromaprint-1.2-r1[${MULTILIB_USEDEP}] )
 	codec2? ( media-libs/codec2[${MULTILIB_USEDEP}] )
-	dav1d? ( >=media-libs/dav1d-0.2.1:0=[${MULTILIB_USEDEP}] )
+	dav1d? ( >=media-libs/dav1d-0.4.0:0=[${MULTILIB_USEDEP}] )
 	encode? (
 		amrenc? ( >=media-libs/vo-amrwbenc-0.1.2-r1[${MULTILIB_USEDEP}] )
 		kvazaar? ( >=media-libs/kvazaar-1.2.0[${MULTILIB_USEDEP}] )
@@ -210,6 +214,7 @@ RDEPEND="
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	jpeg2k? ( >=media-libs/openjpeg-2:2[${MULTILIB_USEDEP}] )
 	libaom? ( >=media-libs/libaom-1.0.0-r1[${MULTILIB_USEDEP}] )
+	libaribb24? ( >=media-libs/aribb24-1.0.3-r2[${MULTILIB_USEDEP}] )
 	libass? ( >=media-libs/libass-0.10.2:=[${MULTILIB_USEDEP}] )
 	libcaca? ( >=media-libs/libcaca-0.99_beta18-r1[${MULTILIB_USEDEP}] )
 	libdrm? ( x11-libs/libdrm[${MULTILIB_USEDEP}] )
@@ -272,13 +277,16 @@ RDEPEND="${RDEPEND}
 "
 
 DEPEND="${RDEPEND}
-	>=sys-devel/make-3.81
-	doc? ( sys-apps/texinfo )
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	ladspa? ( >=media-libs/ladspa-sdk-1.13-r2[${MULTILIB_USEDEP}] )
-	cpu_flags_x86_mmx? ( || ( >=dev-lang/nasm-2.13 >=dev-lang/yasm-1.3 ) )
-	test? ( net-misc/wget sys-devel/bc )
 	v4l? ( sys-kernel/linux-headers )
+"
+BDEPEND="
+	>=sys-devel/make-3.81
+	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	cpu_flags_x86_mmx? ( || ( >=dev-lang/nasm-2.13 >=dev-lang/yasm-1.3 ) )
+	cuda? ( >=sys-devel/clang-7[llvm_targets_NVPTX] )
+	doc? ( sys-apps/texinfo )
+	test? ( net-misc/wget sys-devel/bc )
 "
 
 # Code requiring FFmpeg to be built under gpl license
@@ -286,6 +294,7 @@ GPL_REQUIRED_USE="
 	postproc? ( gpl )
 	frei0r? ( gpl )
 	cdio? ( gpl )
+	rubberband? ( gpl )
 	samba? ( gpl )
 	encode? (
 		x264? ( gpl )
@@ -295,6 +304,7 @@ GPL_REQUIRED_USE="
 	)
 "
 REQUIRED_USE="
+	cuda? ( video_cards_nvidia )
 	libv4l? ( v4l )
 	fftools_cws2fws? ( zlib )
 	test? ( encode )
@@ -359,6 +369,7 @@ multilib_src_configure() {
 	# Decoders
 	use amr && myconf+=( --enable-version3 )
 	use gmp && myconf+=( --enable-version3 )
+	use libaribb24 && myconf+=( --enable-version3 )
 	use fdk && use gpl && myconf+=( --enable-nonfree )
 
 	for i in "${ffuse[@]#+}" ; do

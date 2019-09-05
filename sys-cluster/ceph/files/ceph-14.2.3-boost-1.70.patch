@@ -1,0 +1,78 @@
+diff --git a/src/rgw/rgw_asio_frontend.cc b/src/rgw/rgw_asio_frontend.cc
+index e4be074ec7..4af3695dc1 100644
+--- a/src/rgw/rgw_asio_frontend.cc
++++ b/src/rgw/rgw_asio_frontend.cc
+@@ -81,7 +81,8 @@ class StreamIO : public rgw::asio::ClientIO {
+ using SharedMutex = ceph::async::SharedMutex<boost::asio::io_context::executor_type>;
+
+ template <typename Stream>
+-void handle_connection(RGWProcessEnv& env, Stream& stream,
++void handle_connection(boost::asio::io_context& context,
++                       RGWProcessEnv& env, Stream& stream,
+                        boost::beast::flat_buffer& buffer, bool is_ssl,
+                        SharedMutex& pause_mutex,
+                        rgw::dmclock::Scheduler *scheduler,
+@@ -152,7 +153,7 @@ void handle_connection(RGWProcessEnv& env, Stream& stream,
+                                   rgw::io::add_conlen_controlling(
+                                     &real_client))));
+       RGWRestfulIO client(cct, &real_client_io);
+-      auto y = optional_yield{socket.get_io_context(), yield};
++      auto y = optional_yield{context, yield};
+       process_request(env.store, env.rest, &req, env.uri_prefix,
+                       *env.auth_registry, &client, env.olog, y, scheduler);
+     }
+@@ -560,7 +561,7 @@ void AsioFrontend::accept(Listener& l, boost::system::error_code ec)
+           return;
+         }
+         buffer.consume(bytes);
+-        handle_connection(env, stream, buffer, true, pause_mutex,
++        handle_connection(context, env, stream, buffer, true, pause_mutex,
+                           scheduler.get(), ec, yield);
+         if (!ec) {
+           // ssl shutdown (ignoring errors)
+@@ -578,7 +579,7 @@ void AsioFrontend::accept(Listener& l, boost::system::error_code ec)
+         auto c = connections.add(conn);
+         boost::beast::flat_buffer buffer;
+         boost::system::error_code ec;
+-        handle_connection(env, s, buffer, false, pause_mutex,
++        handle_connection(context, env, s, buffer, false, pause_mutex,
+                           scheduler.get(), ec, yield);
+         s.shutdown(tcp::socket::shutdown_both, ec);
+       });
+diff --git a/src/rgw/rgw_dmclock_async_scheduler.h b/src/rgw/rgw_dmclock_async_scheduler.h
+index 70487a5253..1d454acd2e 100644
+--- a/src/rgw/rgw_dmclock_async_scheduler.h
++++ b/src/rgw/rgw_dmclock_async_scheduler.h
+@@ -82,7 +82,12 @@ class AsyncScheduler : public md_config_obs_t, public Scheduler {
+   using Completion = async::Completion<Signature, async::AsBase<Request>>;
+
+   using Clock = ceph::coarse_real_clock;
++#if BOOST_VERSION < 107000
+   using Timer = boost::asio::basic_waitable_timer<Clock>;
++#else
++  using Timer = boost::asio::basic_waitable_timer<Clock,
++        boost::asio::wait_traits<Clock>, executor_type>;
++#endif
+   Timer timer; //< timer for the next scheduled request
+
+   CephContext *const cct;
+diff --git a/src/rgw/rgw_reshard.h b/src/rgw/rgw_reshard.h
+index d99a6ff68d..213fc238d2 100644
+--- a/src/rgw/rgw_reshard.h
++++ b/src/rgw/rgw_reshard.h
+@@ -183,7 +183,14 @@ class RGWReshardWait {
+   ceph::condition_variable cond;
+
+   struct Waiter : boost::intrusive::list_base_hook<> {
+-    boost::asio::basic_waitable_timer<Clock> timer;
++#if BOOST_VERSION < 107000
++    using Timer = boost::asio::basic_waitable_timer<Clock>;
++#else
++    using Executor = boost::asio::io_context::executor_type;
++    using Timer = boost::asio::basic_waitable_timer<Clock,
++          boost::asio::wait_traits<Clock>, Executor>;
++#endif
++    Timer timer;
+     explicit Waiter(boost::asio::io_context& ioc) : timer(ioc) {}
+   };
+   boost::intrusive::list<Waiter> waiters;

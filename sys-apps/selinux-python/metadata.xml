@@ -10,9 +10,6 @@
 		that are required for basic operation of a SELinux system. These
 		include semanage, sepolicy and sepolgen.
 	</longdescription>
-	<use>
-		<flag name="audit">Enable support for <pkg>sys-process/audit</pkg> and use the audit_* functions (like audit_getuid instead of getuid())</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">SELinuxProject/selinux</remote-id>
 	</upstream>

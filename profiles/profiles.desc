@@ -159,8 +159,8 @@ ppc64           default/linux/powerpc/ppc64/17.0/64bit-userland/desktop         
 ppc64           default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome           stable
 ppc64           default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome/systemd   stable
 ppc64           default/linux/powerpc/ppc64/17.0/64bit-userland/developer               stable
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian		exp
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd	exp
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian		stable
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd	stable
 
 # RISC-V Profiles
 # @MAINTAINER: riscv@gentoo.org
@@ -182,11 +182,14 @@ sh              default/linux/sh/17.0/developer                 exp
 
 # SPARC Profiles
 # @MAINTAINER: sparc@gentoo.org
-sparc           default/linux/sparc/17.0                        exp
-sparc           default/linux/sparc/17.0/desktop                exp
-sparc           default/linux/sparc/17.0/desktop/gnome          exp
-sparc           default/linux/sparc/17.0/desktop/gnome/systemd  exp
-sparc           default/linux/sparc/17.0/developer              exp
+sparc		default/linux/sparc/17.0				exp
+sparc		default/linux/sparc/17.0/desktop			exp
+sparc		default/linux/sparc/17.0/developer			exp
+sparc		default/linux/sparc/17.0/systemd			exp
+sparc		default/linux/sparc/17.0/64ul				exp
+sparc		default/linux/sparc/17.0/64ul/desktop			exp
+sparc		default/linux/sparc/17.0/64ul/developer			exp
+sparc		default/linux/sparc/17.0/64ul/systemd			exp
 
 # x86 Profiles
 # @MAINTAINER: x86@gentoo.org

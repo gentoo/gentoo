@@ -1,4 +1,4 @@
-# Copyright 2010-2019 Arfrever Frehtes Taifersar Arahesis and others
+# Copyright 2010-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -37,6 +37,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86"
 IUSE="debug emacs fcitx4 +gui +handwriting-tegaki handwriting-tomoe ibus renderer test"
 REQUIRED_USE="|| ( emacs fcitx4 ibus ) gui? ( ^^ ( handwriting-tegaki handwriting-tomoe ) ) !gui? ( !handwriting-tegaki !handwriting-tomoe )"
+RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	>=dev-libs/protobuf-3.0.0
@@ -107,6 +108,7 @@ src_prepare() {
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-system_libraries.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-gcc-8.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-protobuf_generated_classes_no_inheritance.patch"
+	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-reiwa.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.20.2673.102-tests_build.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.20.2673.102-tests_skipping.patch"
 

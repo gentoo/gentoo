@@ -5,7 +5,7 @@ EAPI="7"
 
 DESCRIPTION="Library for handling version information and constraints"
 HOMEPAGE="https://github.com/phar-io/version"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/phar-io/version/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

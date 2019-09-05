@@ -21,12 +21,13 @@ DEPEND="${RDEPEND}
 		app-text/texlive
 		media-gfx/graphviz
 		)
+	hpx? ( sys-cluster/hpx )
+	<=dev-libs/libflatarray-0.2.0
 	mpi? ( virtual/mpi )
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	opencl? ( virtual/opencl )
 	opencv? ( media-libs/opencv )
 	silo? ( sci-libs/silo )
-	hpx? ( sys-cluster/hpx )
 	visit? ( sci-visualization/visit )"
 
 S="${WORKDIR}/${P}"

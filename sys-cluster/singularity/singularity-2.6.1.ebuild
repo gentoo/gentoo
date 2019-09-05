@@ -15,10 +15,13 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples static-libs +suid"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
+	${PYTHON_DEPS}
 	sys-fs/squashfs-tools:0
 "
+DEPEND=${PYTHON_DEPS}
 
 src_prepare() {
 	default

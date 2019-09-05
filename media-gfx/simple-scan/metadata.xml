@@ -11,9 +11,6 @@
 		You can print your scans, export them to pdf, or save them in a range
 		of image formats.
 	</longdescription>
-	<use>
-		<flag name="colord">Support color management using <pkg>x11-misc/colord</pkg></flag>
-	</use>
 	<upstream>
 		<remote-id type="launchpad">simple-scan</remote-id>
 	</upstream>

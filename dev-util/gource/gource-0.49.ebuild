@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	dev-libs/libpcre:3
 	dev-libs/tinyxml
 	media-libs/freetype:2
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	virtual/glu:0
 "
 RDEPEND="${COMMON_DEPEND}

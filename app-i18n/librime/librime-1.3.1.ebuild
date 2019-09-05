@@ -9,15 +9,16 @@ DESCRIPTION="Rime Input Method Engine, the core library"
 HOMEPAGE="https://rime.im/ https://github.com/rime/librime"
 SRC_URI="https://github.com/rime/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="BSD"
 SLOT="0/1"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="app-i18n/opencc:=
 	dev-cpp/glog:=
 	dev-cpp/yaml-cpp:=
-	dev-libs/boost:=[threads]
+	<dev-libs/boost-1.69:=[threads]
 	dev-libs/leveldb:=
 	dev-libs/marisa:="
 DEPEND="${RDEPEND}

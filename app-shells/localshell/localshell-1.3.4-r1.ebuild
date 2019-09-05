@@ -7,7 +7,7 @@ inherit base eutils
 
 DESCRIPTION="Localshell allows per-user/group local control of shell execution"
 HOMEPAGE="http://git.orbis-terrarum.net/?p=infrastructure/localshellc.git;a=summary"
-SRC_URI="${HOMEPAGE}/${P}.tar.bz2"
+SRC_URI="http://git.orbis-terrarum.net/?p=infrastructure/localshellc.git;a=summary/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

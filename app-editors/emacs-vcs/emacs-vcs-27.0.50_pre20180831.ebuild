@@ -175,7 +175,6 @@ src_configure() {
 	if use X; then
 		myconf+=" --with-x --without-ns"
 		myconf+=" $(use_with gconf)"
-		myconf+=" $(use_with gmp libgmp)"
 		myconf+=" $(use_with gsettings)"
 		myconf+=" $(use_with toolkit-scroll-bars)"
 		myconf+=" $(use_with gif)"
@@ -265,6 +264,7 @@ src_configure() {
 		$(use_with dbus) \
 		$(use_with dynamic-loading modules) \
 		$(use_with games gameuser ":gamestat") \
+		$(use_with gmp libgmp) \
 		$(use_with gpm) \
 		$(use_with json) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
