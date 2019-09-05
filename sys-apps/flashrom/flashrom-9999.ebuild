@@ -8,8 +8,10 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://review.coreboot.org/flashrom.git"
 	inherit git-r3
 else
-	SRC_URI="https://download.flashrom.org/releases/${P}.tar.bz2"
+	MY_P="${PN}-v${PV}"
+	SRC_URI="https://download.flashrom.org/releases/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+	S="${WORKDIR}/${MY_P}"
 fi
 
 DESCRIPTION="Utility for reading, writing, erasing and verifying flash ROM chips"
