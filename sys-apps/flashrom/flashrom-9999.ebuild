@@ -23,14 +23,44 @@ SLOT="0"
 # Note: Do not list bitbang_spi as it is not a programmer; it's a backend used
 # by some other spi programmers.
 IUSE_PROGRAMMERS="
-atahpt +atapromise +atavia +buspirate_spi +ch341a_spi +dediprog +developerbox_spi
-+digilent_spi +drkaiser +dummy +ft2232_spi +gfxnvidia +internal +it8212 jlink_spi
-+linux_mtd +linux_spi mstarddc_spi +nic3com +nicintel +nicintel_eeprom
-+nicintel_spi nicnatsemi +nicrealtek +ogp_spi +pickit2_spi +pony_spi +rayer_spi
-+satamv +satasii +serprog +usbblaster_spi"
+	atahpt
+	+atapromise
+	+atavia
+	+buspirate_spi
+	+ch341a_spi
+	+dediprog
+	+developerbox_spi
+	+digilent_spi
+	+drkaiser
+	+dummy
+	+ft2232_spi
+	+gfxnvidia
+	+internal
+	+it8212
+	jlink_spi
+	+linux_mtd
+	+linux_spi
+	mstarddc_spi
+	+nic3com
+	+nicintel
+	+nicintel_eeprom
+	+nicintel_spi
+	nicnatsemi
+	+nicrealtek
+	+ogp_spi
+	+pickit2_spi
+	+pony_spi
+	+rayer_spi
+	+satamv
+	+satasii
+	+serprog
+	+usbblaster_spi
+"
+
 IUSE="${IUSE_PROGRAMMERS} +internal_dmi static tools +wiki"
 
-LIB_DEPEND="atahpt? ( sys-apps/pciutils[static-libs(+)] )
+LIB_DEPEND="
+	atahpt? ( sys-apps/pciutils[static-libs(+)] )
 	atapromise? ( sys-apps/pciutils[static-libs(+)] )
 	atavia? ( sys-apps/pciutils[static-libs(+)] )
 	ch341a_spi? ( virtual/libusb:1[static-libs(+)] )
@@ -40,13 +70,13 @@ LIB_DEPEND="atahpt? ( sys-apps/pciutils[static-libs(+)] )
 	drkaiser? ( sys-apps/pciutils[static-libs(+)] )
 	ft2232_spi? ( dev-embedded/libftdi:=[static-libs(+)] )
 	gfxnvidia? ( sys-apps/pciutils[static-libs(+)] )
-	it8212? ( sys-apps/pciutils[static-libs(+)] )
 	internal? ( sys-apps/pciutils[static-libs(+)] )
+	it8212? ( sys-apps/pciutils[static-libs(+)] )
 	jlink_spi? ( dev-embedded/libjaylink[static-libs(+)] )
 	nic3com? ( sys-apps/pciutils[static-libs(+)] )
-	nicintel? ( sys-apps/pciutils[static-libs(+)] )
 	nicintel_eeprom? ( sys-apps/pciutils[static-libs(+)] )
 	nicintel_spi? ( sys-apps/pciutils[static-libs(+)] )
+	nicintel? ( sys-apps/pciutils[static-libs(+)] )
 	nicnatsemi? ( sys-apps/pciutils[static-libs(+)] )
 	nicrealtek? ( sys-apps/pciutils[static-libs(+)] )
 	ogp_spi? ( sys-apps/pciutils[static-libs(+)] )
@@ -54,7 +84,8 @@ LIB_DEPEND="atahpt? ( sys-apps/pciutils[static-libs(+)] )
 	rayer_spi? ( sys-apps/pciutils[static-libs(+)] )
 	satamv? ( sys-apps/pciutils[static-libs(+)] )
 	satasii? ( sys-apps/pciutils[static-libs(+)] )
-	usbblaster_spi? ( dev-embedded/libftdi:=[static-libs(+)] )"
+	usbblaster_spi? ( dev-embedded/libftdi:=[static-libs(+)] )
+"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
