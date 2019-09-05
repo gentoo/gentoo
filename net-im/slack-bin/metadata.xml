@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>bernardo@standard.ai</email>
+		<name>Bernardo Meurer</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
 	</maintainer>
@@ -10,10 +14,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Slack offers persistent chat rooms organized by topic,
-	as well as private groups and direct messaging.
-	All content inside Slack is searchable, including files, conversations,
-	and people.
+		Slack offers persistent chat rooms organized by topic,
+		as well as private groups and direct messaging.
+		All content inside Slack is searchable, including files, conversations,
+		and people.
 	</longdescription>
 	<use>
 		<flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
