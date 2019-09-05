@@ -5288,6 +5288,7 @@ dev-lua/luasocket 3.0_rc1-r3 3.0_rc1-r4: Networking support library for the Lua 
 dev-lua/luassert 1.7.9 1.7.10: Lua Assertions Extension
 dev-lua/luasystem 0.2.0_p0: platform independent system calls for lua
 dev-lua/lutok 0.4-r1: Lightweight C++ API library for Lua
+dev-lua/luv 1.30.1_p0: Bare libuv bindings for lua
 dev-lua/mediator_lua 1.1.2_p0: Event handling through channels
 dev-lua/messagepack 0.3.2: A pure Lua implementation of the MessagePack serialization format
 dev-lua/mpack 1.0.4: Lua bindings for libmpack
