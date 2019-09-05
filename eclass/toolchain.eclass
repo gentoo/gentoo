@@ -2126,8 +2126,6 @@ create_gcc_env_entry() {
 	fi
 
 	cat <<-EOF > ${gcc_envd_file}
-	PATH="${BINPATH}"
-	ROOTPATH="${BINPATH}"
 	GCC_PATH="${BINPATH}"
 	LDPATH="${ldpaths}"
 	MANPATH="${DATAPATH}/man"
