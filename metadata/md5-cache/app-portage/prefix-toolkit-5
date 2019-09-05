@@ -8,4 +8,4 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x
 LICENSE=GPL-3
 RDEPEND=!app-portage/prefix-chain-setup !sys-apps/prefix-chain-utils prefix-stack? ( >=sys-apps/baselayout-prefix-2.6 sys-apps/gentoo-functions app-portage/elt-patches sys-devel/gnuconfig sys-devel/gcc-config )
 SLOT=0
-_md5_=bbca3d146ec2bc7ceaa0ae08e30db3cb
+_md5_=4d1f2cbe09bf354a755da9bd7fb20236

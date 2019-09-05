@@ -1170,7 +1170,7 @@ app-emacs/apache-mode 2.2.0: Major mode for editing Apache configuration files
 app-emacs/apel 10.8-r1 10.8_p20190407: A Portable Emacs Library is a library for making portable Emacs Lisp programs
 app-emacs/async 1.9.3: Simple library for asynchronous processing in Emacs
 app-emacs/atomic-chrome 2.0.0: Edit text area on Chrome with Emacs using Atomic Chrome
-app-emacs/auctex 11.92 12.1: Extensible package for writing and formatting TeX files in Emacs
+app-emacs/auctex 11.92 12.1 12.1-r1: Extensible package for writing and formatting TeX files in Emacs
 app-emacs/auto-complete 1.5.1-r1: Auto-complete package
 app-emacs/autoconf-mode 2.69-r1: Emacs major modes for editing autoconf and autotest input
 app-emacs/basic-toolkit 0.3: Basic edit toolkit
@@ -1309,7 +1309,7 @@ app-emacs/puppet-mode 0.3-r1 0.3.20171221 0.3.20180813: Emacs major mode for edi
 app-emacs/pymacs 0.25-r2: A tool that allows both-side communication beetween Python and Emacs Lisp
 app-emacs/python-mode 6.1.2 6.2.0 6.2.3: An Emacs major mode for editing Python source
 app-emacs/quack 0.47: Enhances Emacs support for Scheme
-app-emacs/quilt-el 0.48.0: Quilt mode for Emacs
+app-emacs/quilt-el 0.48.0 0.66: Quilt mode for Emacs
 app-emacs/qwerty 1.1: Switch between QWERTY and DVORAK without changing the console keymap
 app-emacs/redo+ 1.19: Redo/undo system for Emacs
 app-emacs/regress 1.5.1: Regression test harness for Emacs Lisp code

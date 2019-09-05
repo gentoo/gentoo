@@ -1,0 +1,12 @@
+BDEPEND=>=virtual/emacs-23
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=Quilt mode for Emacs
+EAPI=7
+HOMEPAGE=https://savannah.nongnu.org/projects/quilt http://satoru-takeuchi.org/dev/quilt-el/
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-1+
+RDEPEND=dev-util/quilt >=virtual/emacs-23
+SLOT=0
+SRC_URI=mirror://nongnu/quilt/quilt-0.66.tar.gz
+_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=ac6a82bc6824ada4f8bcc6704d552ea8
