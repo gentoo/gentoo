@@ -11453,12 +11453,12 @@ games-fps/etqw-bin 1.5-r2: Enemy Territory: Quake Wars
 games-fps/etqw-data 1.0-r1: Enemy Territory: Quake Wars data files
 games-fps/etqw-demo 2.0_p1-r2: Enemy Territory: Quake Wars demo
 games-fps/ezquake-bin 2.2: Quakeworld client with mqwcl functionality and many more features
-games-fps/freedm 0.11.3: A 32-level game designed for competitive deathmatch play.
+games-fps/freedm 0.11.3-r1: A 32-level game designed for competitive deathmatch play.
 games-fps/freedm-data 0.11.3-r1: Game resources for FreeDM
-games-fps/freedoom 0.11.3-r1: A complete free-content single-player focused game based on the Doom engine
+games-fps/freedoom 0.11.3-r2: A complete free-content single-player focused game based on the Doom engine
 games-fps/freedoom-data 0.11.3-r1: Game resources for Freedoom: Phase 1+2
 games-fps/glxquake-bin 0-r2: A binary that works with any 3D-graphics-card that supports the glx X-extension
-games-fps/gzdoom 4.1.3: A modder-friendly OpenGL source port based on the DOOM engine
+games-fps/gzdoom 4.2.0: A modder-friendly OpenGL source port based on the DOOM engine
 games-fps/industri 1.01: Quake/Tenebrae based, single player game
 games-fps/legends 0.4.1.43-r2: Fast-paced first-person-shooter online multiplayer game, similar to Tribes
 games-fps/nexuiz 2.5.2-r1: Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
