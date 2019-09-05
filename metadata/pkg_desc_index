@@ -11454,9 +11454,9 @@ games-fps/etqw-data 1.0-r1: Enemy Territory: Quake Wars data files
 games-fps/etqw-demo 2.0_p1-r2: Enemy Territory: Quake Wars demo
 games-fps/ezquake-bin 2.2: Quakeworld client with mqwcl functionality and many more features
 games-fps/freedm 0.11.3: A 32-level game designed for competitive deathmatch play.
-games-fps/freedm-data 0.11.3: Game resources for FreeDM
+games-fps/freedm-data 0.11.3-r1: Game resources for FreeDM
 games-fps/freedoom 0.11.3-r1: A complete free-content single-player focused game based on the Doom engine
-games-fps/freedoom-data 0.11.3: Game resources for Freedoom: Phase 1+2
+games-fps/freedoom-data 0.11.3-r1: Game resources for Freedoom: Phase 1+2
 games-fps/glxquake-bin 0-r2: A binary that works with any 3D-graphics-card that supports the glx X-extension
 games-fps/gzdoom 4.1.3: A modder-friendly OpenGL source port based on the DOOM engine
 games-fps/industri 1.01: Quake/Tenebrae based, single player game
@@ -18578,7 +18578,7 @@ www-client/midori 7.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2: a free, open source web browser
 www-client/opera 63.0.3368.53 63.0.3368.66: A fast and secure web browser
-www-client/opera-beta 63.0.3368.33 63.0.3368.51: A fast and secure web browser
+www-client/opera-beta 64.0.3417.8: A fast and secure web browser
 www-client/opera-developer 65.0.3425.0 65.0.3430.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 2.1.1 2.1.1-r1: A headless WebKit scriptable with a JavaScript API
