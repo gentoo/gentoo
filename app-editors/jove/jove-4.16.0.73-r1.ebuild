@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.cs.toronto.edu/cs/ftp/pub/hugh/jove-dev/${PN}${PV}.tgz"
 
 LICENSE="JOVE"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="doc"
 
 RDEPEND="sys-libs/ncurses:0="
