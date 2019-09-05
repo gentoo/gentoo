@@ -455,7 +455,7 @@ ebegin "creating make.conf"
 	echo "EPREFIX=\"${CHILD_EPREFIX}\""
 	echo "PORTAGE_OVERRIDE_EPREFIX=\"${PARENT_EPREFIX}\""
 	echo "BROOT=\"${PARENT_EPREFIX}\""
-	echo "PORTAGE_TMPDIR=\"\${EPREFIX}/var/tmp/portage\""
+	echo "PORTAGE_TMPDIR=\"\${EPREFIX}/var/tmp\""
 	# Since EAPI 7 there is BDEPEND, which is DEPEND in EAPI up to 6.
 	# We do not want to pull DEPEND from EAPI <= 6, but RDEPEND only.
 	echo "EMERGE_DEFAULT_OPTS=\"--root-deps=rdeps\""
