@@ -152,6 +152,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.0-dpdk-cflags.patch"
 	"${FILESDIR}/ceph-14.2.0-link-crc32-statically.patch"
 	"${FILESDIR}/ceph-14.2.0-cython-0.29.patch"
+	"${FILESDIR}/ceph-14.2.3-boost-1.70.patch"
 )
 
 # dpdk and ninja don't get along
@@ -177,12 +178,6 @@ user_setup() {
 pkg_pretend() {
 	check-reqs_export_vars
 	check-reqs_pkg_pretend
-
-	if use system-boost && has_version '~dev-libs/boost-1.70.0'; then
-		ewarn "Building with boost-1.70 is experimental, and may cause runtime"
-		ewarn "failures. Disable the system-boost USE flag to use bundled boost"
-		ewarn "if you want an upstream supported configuration."
-	fi
 }
 
 pkg_setup() {
@@ -196,12 +191,10 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	if use system-boost; then
-		if has_version '~dev-libs/boost-1.70.0'; then
-			eapply "${FILESDIR}/ceph-14.2.0-boost-1.70-sonames.patch" \
-				"${FILESDIR}/ceph-14.2.0-boost-1.70.patch"
-		else
-			eapply "${FILESDIR}/ceph-14.2.0-boost-sonames.patch"
-		fi
+		eapply "${FILESDIR}/ceph-14.2.3-boost-sonames.patch"
+
+		has_version '>=dev-libs/boost-1.70.0' || \
+			eapply "${FILESDIR}/ceph-14.2.3-boost-1.6-python-sonames.patch"
 	fi
 
 	sed -i -r "s:DESTINATION .+\\):DESTINATION $(get_bashcompdir)\\):" \
