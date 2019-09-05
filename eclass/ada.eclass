@@ -260,7 +260,7 @@ _ada_single_set_globals() {
 
 	local optflags=${allflags[@]/%/(-)?}
 
-	IUSE="${flags[*]}"
+	IUSE="${allflags[*]}"
 
 	local deps requse usedep
 	if [[ ${#_ADA_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
