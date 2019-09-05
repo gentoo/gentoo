@@ -29,6 +29,9 @@ src_prepare() {
 	# missing ... in args forwarded to print-like function
 	sed -e 's:l\.Logger\.Panic(v):l.Logger.Panic(v...):' \
 		-i "${S}"/src/${EGO_PN}/raft/logger.go || die
+
+	# Avoid network-sandbox violations since go-1.13
+	rm src/${EGO_PN}/go.mod || die
 }
 
 pkg_setup() {
