@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201909-03">
+  <title>Pango: Buffer overflow</title>
+  <synopsis>A buffer overflow in Pango might allow an attacker to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">pango</product>
+  <announced>2019-09-06</announced>
+  <revised count="1">2019-09-06</revised>
+  <bug>692110</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/pango" auto="yes" arch="*">
+      <unaffected range="ge">1.42.4-r2</unaffected>
+      <vulnerable range="lt">1.42.4-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Pango is a library for layout and rendering of internationalized text.</p>
+  </background>
+  <description>
+    <p>A buffer overflow has been discovered in Pango’s
+      pango_log2vis_get_embedding_levels function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      string with functions like pango_itemize, possibly resulting in execution
+      of arbitrary code with the privileges of the process or a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Pango users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/pango-1.42.4-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1010238">
+      CVE-2019-1010238
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-09-02T22:32:20Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-09-06T16:01:18Z">b-man</metadata>
+</glsa>
