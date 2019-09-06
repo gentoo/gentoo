@@ -23,14 +23,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="luajit test"
 
-BDEPEND="
-	virtual/pkgconfig
-	test? (
-		luajit? ( dev-lang/luajit:2 )
-		!luajit? ( dev-lang/lua:0 )
-	)
+BDEPEND="virtual/pkgconfig"
+DEPEND="
+	dev-libs/libuv:=
+	luajit? ( dev-lang/luajit:2 )
+	!luajit? ( dev-lang/lua:0 )
 "
-DEPEND="dev-libs/libuv:="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
