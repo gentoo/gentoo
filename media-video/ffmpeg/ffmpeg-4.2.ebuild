@@ -525,6 +525,10 @@ multilib_src_install() {
 				popd >/dev/null || die
 			else
 				emake V=1 DESTDIR="${D}" install-libffmpeg
+
+				# When not built separately, libffmpeg has no code of
+				# its own so this QA check raises a false positive.
+				QA_FLAGS_IGNORED+=" usr/$(get_libdir)/chromium/.*"
 			fi
 		fi
 	fi
