@@ -103,6 +103,10 @@ pkg_setup() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# Apply 2565d3a for bug 688902
+	sed -e 's|bintree = self._bintree|\0\n\t\t# Force reindex in case pkgdir-index-trusted is enabled.\n\t\tbintree._populate_local(reindex=True)\n\t\tbintree.populated = True|' \
+		-i lib/portage/emaint/modules/binhost/binhost.py || die
+
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
 		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
