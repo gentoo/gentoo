@@ -115,9 +115,9 @@ src_prepare() {
 
 	sed -i -e "s:/usr/bin/true:$(type -P true):" scripts/blk_availability_systemd_red_hat.service.in || die #517514
 
-	# Without thin-privision-tools, there is nothing to install for target install_man7:
+	# Don't install thin man page when not requested
 	if ! use thin ; then
-		sed -i -e '/^install_lvm2/s:install_man7::' man/Makefile.in || die
+		sed -i -e 's/^\(MAN7+=.*\) $(LVMTHINMAN) \(.*\)$/\1 \2/' man/Makefile.in || die
 	fi
 
 	eautoreconf
@@ -242,10 +242,14 @@ src_install() {
 
 	if use static-libs; then
 		dolib.a libdm/ioctl/libdevmapper.a
-		dolib.a libdaemon/client/libdaemonclient.a #462908
 		#gen_usr_ldscript libdevmapper.so
-		dolib.a daemons/dmeventd/libdevmapper-event.a
-		#gen_usr_ldscript libdevmapper-event.so
+		if use !device-mapper-only; then
+			# depends on lvmetad
+			dolib.a libdaemon/client/libdaemonclient.a #462908
+			# depends on dmeventd
+			dolib.a daemons/dmeventd/libdevmapper-event.a
+			#gen_usr_ldscript libdevmapper-event.so
+		fi
 	else
 		rm -f "${ED}"/usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a
 	fi
