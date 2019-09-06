@@ -29,10 +29,14 @@ IUSE=""
 
 DEPEND="
 	=dev-libs/libplatform-2*
-	~media-tv/kodi-9999
+	=media-tv/kodi-18*
 	virtual/opengl
 	"
 
 RDEPEND="
 	${DEPEND}
 	"
+
+PATCHES=(
+	"${FILESDIR}/${P}-remove-kodi-platform.patch"
+)
