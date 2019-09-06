@@ -139,7 +139,7 @@ gstreamer_get_plugins() {
 }
 
 # @FUNCTION: gstreamer_get_plugin_dir
-# @USAGE: gstreamer_get_plugin_dir [<build_dir>]
+# @USAGE: [build_dir]
 # @INTERNAL
 # @DESCRIPTION:
 # Finds plugin build directory and output it.
@@ -161,7 +161,7 @@ gstreamer_get_plugin_dir() {
 }
 
 # @FUNCTION: gstreamer_system_link
-# @USAGE: gstreamer_system_link gst-libs/gst/audio:gstreamer-audio [...]
+# @USAGE: <gst-libs/gst/audio:gstreamer-audio> [...]
 # @DESCRIPTION:
 # Walks through makefiles in order to make sure build will link against system
 # libraries.
