@@ -1273,7 +1273,7 @@ app-emacs/magit-popup 2.12.3 2.12.4 2.13.0: Define prefix-infix-suffix command c
 app-emacs/mailcrypt 3.5.9-r1: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/markdown-mode 2.1 2.3: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
-app-emacs/mediawiki 2.2.4.1: MediaWiki client for Emacs
+app-emacs/mediawiki 2.2.4.1 2.2.9: MediaWiki client for Emacs
 app-emacs/mew 6.6 6.8: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
 app-emacs/mldonkey 0.0.4b-r1 0.0.4b-r2: An Emacs Lisp interface to the MLDonkey core
