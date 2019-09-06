@@ -13,6 +13,6 @@
 		YAPF is based off of 'clang-format', developed by Daniel Jasper.
 		In essence, the algorithm takes the code and reformats it to the best
 		formatting that conforms to the style guide, even if the original code
-		didn't violate the style guide.	
+		didn't violate the style guide.
 	</longdescription>
 </pkgmetadata>
