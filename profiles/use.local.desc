@@ -3731,6 +3731,7 @@ kde-apps/k3b:emovix - Enable burning support for eMoviX images
 kde-apps/kalzium:editor - Enable the embedded molecule editor/viewer
 kde-apps/kalzium:solver - Enable the equation solver
 kde-apps/kanagram:speech - Enable text-to-speech support
+kde-apps/kate:activities - Enable Plasma Activities support via kde-frameworks/kactivities
 kde-apps/kate:addons - Build and install additional plugins
 kde-apps/kde-apps-meta:pim - Pull in KDE PIM suite
 kde-apps/kde-apps-meta:sdk - Pull in developer-specific meta-packages
