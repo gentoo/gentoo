@@ -42,6 +42,9 @@ S="${WORKDIR}/${P}/src/${EGO_PN}"
 src_prepare() {
 	default
 
+	# Avoid network-sandbox violations since go-1.13
+	rm go.mod || die
+
 	sed -e '/^GIT_.*/d' \
 		-e '/	git diff --exit-code/d' \
 		-e 's/$(GO) build -i/$(GO) build -v -work -x/' \
