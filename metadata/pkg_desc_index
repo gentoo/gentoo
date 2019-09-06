@@ -31,6 +31,7 @@ acct-group/polkitd 0: System group: polkitd
 acct-group/qemu 0: System group: qemu
 acct-group/render 0: System group: render
 acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
+acct-group/slurm 0: A group for the slurm - Highly Scalable Resource Manager
 acct-group/spire 0: System group: spire
 acct-group/stdiscosrv 0: Group for the Syncthing discovery server
 acct-group/strelaysrv 0: Group for the Syncthing relay server
@@ -71,6 +72,7 @@ acct-user/polkitd 0: System user: polkitd
 acct-user/postmaster 0: Postmaster user
 acct-user/qemu 0: System user: qemu
 acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
+acct-user/slurm 0: User for the slurm - Highly Scalable Resource Manager
 acct-user/spire 0: user for spiffe runtime environment
 acct-user/stdiscosrv 0: User for the Syncthing discovery server
 acct-user/strelaysrv 0: User for the Syncthing relay server
