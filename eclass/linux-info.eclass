@@ -159,7 +159,7 @@ qeerror() { qout eerror "${@}" ; }
 # ---------------------------------------
 
 # @FUNCTION: getfilevar
-# @USAGE: variable configfile
+# @USAGE: <variable> <configfile>
 # @RETURN: the value of the variable
 # @DESCRIPTION:
 # It detects the value of the variable defined in the file configfile. This is
@@ -195,7 +195,7 @@ getfilevar() {
 }
 
 # @FUNCTION: getfilevar_noexec
-# @USAGE: variable configfile
+# @USAGE: <variable> <configfile>
 # @RETURN: the value of the variable
 # @DESCRIPTION:
 # It detects the value of the variable defined in the file configfile.
@@ -310,7 +310,7 @@ require_configured_kernel() {
 }
 
 # @FUNCTION: linux_chkconfig_present
-# @USAGE: option
+# @USAGE: <option>
 # @RETURN: true or false
 # @DESCRIPTION:
 # It checks that CONFIG_<option>=y or CONFIG_<option>=m is present in the current kernel .config
@@ -322,7 +322,7 @@ linux_chkconfig_present() {
 }
 
 # @FUNCTION: linux_chkconfig_module
-# @USAGE: option
+# @USAGE: <option>
 # @RETURN: true or false
 # @DESCRIPTION:
 # It checks that CONFIG_<option>=m is present in the current kernel .config
@@ -334,7 +334,7 @@ linux_chkconfig_module() {
 }
 
 # @FUNCTION: linux_chkconfig_builtin
-# @USAGE: option
+# @USAGE: <option>
 # @RETURN: true or false
 # @DESCRIPTION:
 # It checks that CONFIG_<option>=y is present in the current kernel .config
@@ -346,7 +346,7 @@ linux_chkconfig_builtin() {
 }
 
 # @FUNCTION: linux_chkconfig_string
-# @USAGE: option
+# @USAGE: <option>
 # @RETURN: CONFIG_<option>
 # @DESCRIPTION:
 # It prints the CONFIG_<option> value of the current kernel .config (it requires a configured kernel).
@@ -361,7 +361,7 @@ linux_chkconfig_string() {
 # ---------------------------------------
 
 # @FUNCTION: kernel_is
-# @USAGE: [-lt -gt -le -ge -eq] major_number [minor_number patch_number]
+# @USAGE: [-lt -gt -le -ge -eq] <major_number> [minor_number patch_number]
 # @RETURN: true or false
 # @DESCRIPTION:
 # It returns true when the current kernel version satisfies the comparison against the passed version.
