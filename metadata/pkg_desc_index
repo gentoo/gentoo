@@ -1163,7 +1163,7 @@ app-editors/xmlcopyeditor 1.2.1.3-r1: XML Copy Editor is a fast, free, validatin
 app-editors/xvile 9.8t: VI Like Emacs -- yet another full-featured vi clone
 app-editors/yudit 2.9.6: Free (Y)unicode text editor for all unices
 app-editors/zile 2.3.24-r2 2.4.11 2.4.14: Zile is a small Emacs clone
-app-emacs/actionscript-mode 7.2.2_p20140605 7.2.2_p20180527: A major mode for GNU Emacs for editing Actionscript 3 files
+app-emacs/actionscript-mode 7.2.2_p20180527: A major mode for GNU Emacs for editing Actionscript 3 files
 app-emacs/adaptive-wrap 0.5: Smart line-wrapping with wrap-prefix
 app-emacs/analog 1.9.99: Monitor lists of files or command output
 app-emacs/apache-mode 2.2.0: Major mode for editing Apache configuration files
@@ -1300,7 +1300,7 @@ app-emacs/php-mode 1.19.1: GNU Emacs major mode for editing PHP code
 app-emacs/planner 3.42: Maintain a local Wiki using Emacs-friendly markup
 app-emacs/po-mode 0.19.3 0.19.4 0.19.8.1: Major mode for GNU gettext PO files
 app-emacs/popup 0.5.3: Visual popup interface library for Emacs
-app-emacs/popwin 0.6.2 1.0.0: Popup window manager for Emacs
+app-emacs/popwin 1.0.0: Popup window manager for Emacs
 app-emacs/pov-mode 3.3-r1: Major mode for Povray scene files
 app-emacs/proofgeneral 4.2 4.4: A generic interface for proof assistants
 app-emacs/protbuf 1.7-r1: Protect Emacs buffers from accidental killing
