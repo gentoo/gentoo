@@ -179,7 +179,6 @@ sys-cluster/neutron haproxy
 dev-python/ipython notebook
 dev-python/networkx scipy
 dev-ruby/haml test
-media-libs/ming php
 media-libs/opencv contrib_dnn
 net-analyzer/icinga2 classicui
 
