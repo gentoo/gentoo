@@ -17652,7 +17652,7 @@ sys-boot/mokutil 0.3.0_p20170404: The utility to manipulate machines owner keys 
 sys-boot/netboot 0.10.2-r1: Allows to remote boot a computer over an IP network
 sys-boot/nettrom 2.3.3: NetWinder ARM bootloader and utilities
 sys-boot/os-prober 1.76-r1 1.77: Utility to detect other OSs on a set of drives
-sys-boot/palo 2.00 2.11 9999: PALO : PArisc Linux Loader
+sys-boot/palo 2.00 2.11 2.12 9999: PALO : PArisc Linux Loader
 sys-boot/plymouth 0.9.3-r1 0.9.3-r2 0.9.4-r1 9999: Graphical boot animation (splash) and logger
 sys-boot/plymouth-openrc-plugin 0.1.2-r1: Plymouth plugin for OpenRC
 sys-boot/psoload 2.0: Load home brewed code onto the GameCube with Phantasy Star Online
