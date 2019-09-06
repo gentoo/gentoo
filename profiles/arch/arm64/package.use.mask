@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-06)
+# dev-qt/qtgamepad is not keyworded yet
+dev-qt/qt3d gamepad
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-08-18)
 # media-video/pipewire is not keyworded yet
 dev-libs/weston pipewire
