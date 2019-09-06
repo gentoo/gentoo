@@ -422,7 +422,6 @@ dev-java/jlayer
 # multiple open sec bugs. no response from upstream
 # Masked for removal in 30 days
 media-libs/ming
-dev-php/ming-php
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-07-30)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
