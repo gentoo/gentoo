@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201909-02">
+  <title>VLC: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in VLC, the worst of which
+    could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">vlc</product>
+  <announced>2019-09-06</announced>
+  <revised count="1">2019-09-06</revised>
+  <bug>689974</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/vlc" auto="yes" arch="*">
+      <unaffected range="ge">3.0.8</unaffected>
+      <vulnerable range="lt">3.0.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VLC is a cross-platform media player and streaming server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in VLC. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All VLC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/vlc-3.0.8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13602">CVE-2019-13602</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13962">CVE-2019-13962</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14437">CVE-2019-14437</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14438">CVE-2019-14438</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14498">CVE-2019-14498</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14533">CVE-2019-14533</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14534">CVE-2019-14534</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14535">CVE-2019-14535</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14776">CVE-2019-14776</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14777">CVE-2019-14777</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14778">CVE-2019-14778</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14970">CVE-2019-14970</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-09-02T22:22:22Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-09-06T16:01:08Z">b-man</metadata>
+</glsa>
