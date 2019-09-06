@@ -25,8 +25,8 @@ RDEPEND="
 	<dev-python/colorama-0.3.9.0[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	<dev-python/rsa-3.5.0.0[${PYTHON_USEDEP}]
-	>=dev-python/s3transfer-0.1.12[${PYTHON_USEDEP}]
-	<dev-python/pyyaml-3.13.0[${PYTHON_USEDEP}]
+	>=dev-python/s3transfer-0.2.0[${PYTHON_USEDEP}]
+	<dev-python/pyyaml-5.2.0[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
