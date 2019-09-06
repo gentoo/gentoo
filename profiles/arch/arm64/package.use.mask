@@ -216,7 +216,11 @@ dev-libs/dbus-c++ ecore
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # USE=eds requires USE=gnome that is masked here.
 # USE=postgres requires dev-db/postgresql[kerberos] (USE masked).
-app-office/libreoffice eds postgres
+# NeddySeagoon <neddysegoon@gentoo.org> (2017-08-21)
+# Pulls in sci-libs/coinor-mp which wants immintrin.h not on arm64
+# Markus Meier <maekke@gentoo.org> (2012-12-08)
+# mask app-office/libreoffice java extensions
+app-office/libreoffice coinmp eds postgres libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher
 
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # Requires app-accessibility/brltty that is not keyworded here.
@@ -238,10 +242,6 @@ dev-python/python-neutronclient test
 # NeddySeagoon <neddysegoon@gentoo.org> (2017-08-24)
 # Support for g15daemon still needs -9999 packages on all arches
 media-sound/mumble g15
-
-# NeddySeagoon <neddysegoon@gentoo.org> (2017-08-21)
-# Pulls in sci-libs/coinor-mp which wants immintrin.h not on arm64
-app-office/libreoffice coinmp
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
@@ -474,10 +474,6 @@ dev-util/devhelp gedit
 # Markus Meier <maekke@gentoo.org> (2012-Dez-25)
 # unkeyworded deps for app-accessibility/speech-dispatcher
 app-accessibility/speech-dispatcher flite
-
-# Markus Meier <maekke@gentoo.org> (2012-12-08)
-# mask app-office/libreoffice java extensions
-app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2012-04-12)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
