@@ -36,7 +36,7 @@ src_prepare() {
 
 src_compile() {
 	pushd src/${EGO_PN} || die
-	GOPATH="${S}" go build -v -ldflags "-X ${EGO_PN}/version.GITCOMMIT=${GIT_COMMIT} -X ${EGO_PN}/version.VERSION=${PV}" -o "${S}"/bin/reg . || die
+	GOPATH="${S}" GO111MODULE=on go build -mod=vendor -v -ldflags "-X ${EGO_PN}/version.GITCOMMIT=${GIT_COMMIT} -X ${EGO_PN}/version.VERSION=${PV}" -o "${S}"/bin/reg . || die
 	popd || die
 }
 
