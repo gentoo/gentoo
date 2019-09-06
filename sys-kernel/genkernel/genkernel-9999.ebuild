@@ -38,7 +38,7 @@ VERSION_USERSPACE_RCU="0.10.2"
 VERSION_UTIL_LINUX="2.34"
 VERSION_XFSPROGS="5.1.0"
 VERSION_ZLIB="1.2.11"
-VERSION_ZSTD="1.4.1"
+VERSION_ZSTD="1.4.2"
 
 RH_HOME="ftp://sourceware.org/pub"
 DM_HOME="https://people.redhat.com/~heinzm/sw/dmraid/src"
