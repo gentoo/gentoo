@@ -16,6 +16,7 @@ RDEPEND="
 	>=kde-apps/kamera-${PV}:${SLOT}
 	>=kde-apps/kcolorchooser-${PV}:${SLOT}
 	>=kde-apps/kdegraphics-mobipocket-${PV}:${SLOT}
+	>=kde-apps/kipi-plugins-${PV}:${SLOT}
 	>=kde-apps/kolourpaint-${PV}:${SLOT}
 	>=kde-apps/kruler-${PV}:${SLOT}
 	>=kde-apps/libkdcraw-${PV}:${SLOT}

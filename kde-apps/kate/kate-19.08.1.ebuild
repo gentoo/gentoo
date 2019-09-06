@@ -8,13 +8,12 @@ KDE_TEST="true"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
-DESCRIPTION="Kate is an advanced text editor"
+DESCRIPTION="Multi-document editor with network transparency, Plasma integration and more"
 HOMEPAGE="https://kde.org/applications/utilities/kate https://kate-editor.org/"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="+addons"
+IUSE="activities +addons"
 
 DEPEND="
-	$(add_frameworks_dep kactivities)
 	$(add_frameworks_dep kcodecs)
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
@@ -40,6 +39,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
+	activities? ( $(add_frameworks_dep kactivities) )
 	addons? (
 		$(add_frameworks_dep kbookmarks)
 		$(add_frameworks_dep knewstuff)
@@ -65,6 +65,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		$(cmake-utils_use_find_package activities KF5Activities)
 		-DBUILD_addons=$(usex addons)
 		-DBUILD_kwrite=FALSE
 	)

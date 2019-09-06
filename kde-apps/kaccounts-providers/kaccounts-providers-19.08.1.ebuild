@@ -30,5 +30,3 @@ RDEPEND="${DEPEND}
 	net-libs/signon-ui
 	net-libs/signon-oauth2
 "
-
-PATCHES=( "${FILESDIR}/${PN}-19.04.3-missing-header.patch" )

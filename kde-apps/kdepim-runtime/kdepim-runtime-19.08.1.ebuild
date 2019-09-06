@@ -76,6 +76,11 @@ RDEPEND="${COMMON_DEPEND}
 
 RESTRICT+=" test"
 
+src_prepare() {
+	kde5_src_prepare
+	sed -i resources/CMakeLists.txt -e "/add_subdirectory( *facebook *)/ s/^/#DONT/" || die
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libkolabxml=ON
