@@ -9,8 +9,8 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShell/Extensions"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="examples test"
-KEYWORDS="amd64 x86"
+IUSE="test"
+KEYWORDS="~amd64 ~x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.26:2
@@ -22,21 +22,20 @@ RDEPEND="${COMMON_DEPEND}
 	dev-libs/gobject-introspection:=
 	dev-libs/atk[introspection]
 	gnome-base/gnome-menus:3[introspection]
-	>=gnome-base/gnome-shell-3.30
-	<gnome-base/gnome-shell-3.31
+	>=gnome-base/gnome-shell-3.32
 	media-libs/clutter:1.0[introspection]
 	net-libs/telepathy-glib[introspection]
 	x11-libs/gdk-pixbuf:2[introspection]
 	x11-libs/gtk+:3[introspection]
 	x11-libs/pango[introspection]
 	x11-themes/adwaita-icon-theme
-	>=x11-wm/mutter-3.30[introspection]
+	>=x11-wm/mutter-3.32[introspection]
 "
 DEPEND="${COMMON_DEPEND}
 	dev-lang/sassc
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-	test? ( dev-lang/spidermonkey:52 )
+	test? ( dev-lang/spidermonkey:60 )
 "
 
 RESTRICT="!test? ( test )"
@@ -51,6 +50,10 @@ you can use the https://extensions.gnome.org/ web interface, the
 gnome-extra/gnome-tweaks GUI, or modify the org.gnome.shell
 enabled-extensions gsettings key from the command line or a script."
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-leak-fix.patch # tiny leak fix on extension disable from origin/gnome-3-32
+)
+
 src_configure() {
 	meson_src_configure \
 		-Dextension_set=all \
@@ -59,15 +62,6 @@ src_configure() {
 
 src_install() {
 	meson_src_install
-
-	local example="example@gnome-shell-extensions.gcampax.github.com"
-	if use examples; then
-		mv "${ED}usr/share/gnome-shell/extensions/${example}" \
-			"${ED}usr/share/doc/${PF}/" || die
-	else
-		rm -r "${ED}usr/share/gnome-shell/extensions/${example}" || die
-	fi
-
 	readme.gentoo_create_doc
 }
 

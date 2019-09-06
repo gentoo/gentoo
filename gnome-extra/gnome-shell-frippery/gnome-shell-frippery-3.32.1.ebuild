@@ -9,7 +9,7 @@ SRC_URI="http://frippery.org/extensions/${P}.tgz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -17,8 +17,7 @@ RDEPEND="
 	>=dev-libs/gjs-1.29
 	dev-libs/gobject-introspection:=
 	gnome-base/gnome-menus:3[introspection]
-	>=gnome-base/gnome-shell-3.30
-	<gnome-base/gnome-shell-3.31
+	>=gnome-base/gnome-shell-3.32
 	media-libs/clutter:1.0[introspection]
 	x11-libs/pango[introspection]
 "
