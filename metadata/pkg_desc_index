@@ -13691,7 +13691,7 @@ media-plugins/kodi-pvr-dvblink 4.7.1 4.7.2 9999: Kodi's DVBLink client addon
 media-plugins/kodi-pvr-dvbviewer 3.7.5 3.7.8 3.7.11 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 2.4.4 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-hts 4.4.12 4.4.13 4.4.14 4.4.16 4.4.17 4.4.18 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
-media-plugins/kodi-pvr-iptvsimple 3.8.0 9999: Kodi's IPTVSimple client addon
+media-plugins/kodi-pvr-iptvsimple 3.8.0 3.8.1 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 3.5.16 3.5.17 9999: Kodi's MediaPortal TVServer client addon
 media-plugins/kodi-pvr-mythtv 5.10.9 9999: MythTV PVR for Kodi
 media-plugins/kodi-pvr-nextpvr 3.3.8 3.3.11 3.3.12 3.3.13 3.3.14 3.3.15 9999: Kodi's NextPVR client addon
@@ -13699,7 +13699,7 @@ media-plugins/kodi-pvr-njoy 3.4.2 9999: Kodi's Njoy N7 client addon
 media-plugins/kodi-pvr-pctv 2.4.5 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 3.4.8 3.4.9 9999: Kodi's Stalker client addon
 media-plugins/kodi-pvr-vbox 4.4.6 4.4.7 4.4.8 9999: Kodi's VBox Home TV Gateway PVR client addon
-media-plugins/kodi-pvr-vdr-vnsi 3.6.2 3.6.3 9999: Kodi PVR addon VNSI
+media-plugins/kodi-pvr-vdr-vnsi 3.6.2 3.6.3 3.6.3-r1 9999: Kodi PVR addon VNSI
 media-plugins/kodi-pvr-vuplus 3.17.0 3.18.1 3.19.0 3.20.0 3.21.0 3.22.0 3.23.0 3.24.0 3.25.0 3.26.0 3.27.0 3.27.1 9999: Kodi's VuPlus client addon
 media-plugins/kodi-pvr-wmc 2.4.4 9999: Kodi's Windows Media Center client addon
 media-plugins/kodi-screensaver-asteroids 2.1.0 9999: Asteroids screensaver for Kodi
@@ -17959,7 +17959,7 @@ sys-fs/loop-aes 3.7n: Linux kernel module to encrypt disk partitions with AES ci
 sys-fs/lsscsi 0.29 0.30: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r3: User-mode filesystem implementation
-sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.183 2.02.184-r4 2.02.185 2.03.05: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.183 2.02.184-r4 2.02.185-r1 2.02.186 2.03.05-r1: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1-r7 0.1_p16 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
