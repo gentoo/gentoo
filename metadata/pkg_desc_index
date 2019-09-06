@@ -11976,7 +11976,7 @@ gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.32.0: The GNOME Flashback Panel
 gnome-base/gnome-session 3.30.1-r1: Gnome session manager
 gnome-base/gnome-settings-daemon 3.30.2-r1: Gnome Settings Daemon
-gnome-base/gnome-shell 3.26.2-r4 3.30.2-r2: Provides core UI functions for the GNOME 3 desktop
+gnome-base/gnome-shell 3.26.2-r4 3.30.2-r2 3.32.2: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.24.1 3.28.1 3.32.0: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.32.2 1.38.3 1.40.2: Virtual filesystem implementation for GIO
@@ -12028,9 +12028,9 @@ gnome-extra/gnome-shell-extension-applications-overview-tooltip 5: Show tooltip 
 gnome-extra/gnome-shell-extension-dash-to-panel 19 23: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 19.01.3 19.01.4: A GNOME Shell extension for providing desktop icons
 gnome-extra/gnome-shell-extension-gsconnect 24: KDE Connect implementation for Gnome Shell
-gnome-extra/gnome-shell-extensions 3.30.1: JavaScript extensions for GNOME Shell
+gnome-extra/gnome-shell-extensions 3.30.1 3.32.1: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 22-r1: Moves legacy tray icons to top panel
-gnome-extra/gnome-shell-frippery 3.30.2: Unofficial extension pack providing GNOME 2-like features for GNOME 3
+gnome-extra/gnome-shell-frippery 3.30.2 3.32.1: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.30.6: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.30.0: The Gnome System Monitor
 gnome-extra/gnome-tweaks 3.30.2: Customize advanced GNOME 3 options
@@ -18022,7 +18022,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta16 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.184 4.4.186 4.4.187 4.4.188 4.4.189 4.4.190 4.9.184 4.9.186 4.9.187 4.9.188 4.9.189 4.9.190 4.14.132 4.14.135 4.14.136 4.14.137 4.14.138 4.14.139 4.14.140 4.14.141 4.19.57 4.19.63 4.19.64 4.19.65 4.19.66 4.19.67 4.19.68 4.19.69 4.19.71 5.2.5 5.2.6 5.2.7 5.2.8 5.2.9 5.2.10 5.2.11: Full sources including the Gentoo patchset for the 5.2 kernel tree
+sys-kernel/gentoo-sources 4.4.184 4.4.186 4.4.187 4.4.188 4.4.189 4.4.190 4.4.191 4.9.184 4.9.186 4.9.187 4.9.188 4.9.189 4.9.190 4.14.132 4.14.135 4.14.136 4.14.137 4.14.138 4.14.139 4.14.140 4.14.141 4.19.57 4.19.63 4.19.64 4.19.65 4.19.66 4.19.67 4.19.68 4.19.69 4.19.71 5.2.5 5.2.6 5.2.7 5.2.8 5.2.9 5.2.10 5.2.11: Full sources including the Gentoo patchset for the 5.2 kernel tree
 sys-kernel/git-sources 5.3_rc1 5.3_rc2 5.3_rc3 5.3_rc4 5.3_rc5 5.3_rc6 5.3_rc7: The very latest -git version of the Linux kernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
@@ -19530,7 +19530,7 @@ x11-themes/xfce-gant-icon-theme 3.9_p6-r1: Xfce Gant Icon Theme
 x11-themes/xfwm4-themes 4.10.0-r1: Additional themes for the Xfce window manager
 x11-themes/xxv-skins 1.6.1-r1: Additional skins for XXV
 x11-themes/yasis-icon-theme 0.4.2: A scalable icon theme called Yasis
-x11-themes/zuki-themes 3.30.1: Zuki themes for GTK, gnome-shell and more
+x11-themes/zuki-themes 3.30.1 3.32.2: Zuki themes for GTK, gnome-shell and more
 x11-themes/zukini 20120817: Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, metacity and more
 x11-themes/zukitwo 2016.08.08: Transition package to zuki-themes
 x11-themes/zukitwo-shell 2016.08.08: Transition package to zuki-themes
@@ -19563,7 +19563,7 @@ x11-wm/matwm2 0.1.2_pre3-r1: Simple EWMH compatible window manager with titlebar
 x11-wm/metacity 3.32.0: GNOME Flashback window manager
 x11-wm/muffin 3.6.0 3.8.2 4.0.3: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.26.2-r1 3.30.2-r1 3.30.2-r3 3.30.2-r4: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.26.2-r1 3.30.2-r1 3.30.2-r3 3.30.2-r4 3.32.2: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.6.1 3.6.1-r1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
