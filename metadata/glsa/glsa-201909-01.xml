@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201909-01">
+  <title>Perl: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Perl, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">perl</product>
+  <announced>2019-09-06</announced>
+  <revised count="1">2019-09-06</revised>
+  <bug>653432</bug>
+  <bug>670190</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/perl" auto="yes" arch="*">
+      <unaffected range="ge">5.28.2</unaffected>
+      <vulnerable range="lt">5.28.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Perl is a highly capable, feature-rich programming language.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Perl. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Perl users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/perl-5.28.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18311">CVE-2018-18311</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18312">CVE-2018-18312</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18313">CVE-2018-18313</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18314">CVE-2018-18314</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6797">CVE-2018-6797</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6798">CVE-2018-6798</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6913">CVE-2018-6913</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-09-01T00:43:08Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-09-06T16:00:53Z">b-man</metadata>
+</glsa>
