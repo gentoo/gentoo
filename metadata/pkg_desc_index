@@ -16524,7 +16524,7 @@ sci-libs/bmrblib 1.0.3: API abstracting the BioMagResBank (BMRB) NMR-STAR format
 sci-libs/btf 1.1.3 1.2.0: Algorithm for matrix permutation into block triangular form
 sci-libs/buddy 2.4-r1: Binary Decision Diagram Package
 sci-libs/camd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
-sci-libs/cantera 2.4.0-r1: Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
+sci-libs/cantera 2.4.0-r1 2.4.0-r2: Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
 sci-libs/cbflib 0.9.3.3: Library providing a simple mechanism for accessing CBF files and imgCIF files
 sci-libs/cblas-reference 20030223-r6 20151113-r2 20161223: C wrapper interface to the F77 reference BLAS implementation
 sci-libs/ccfits 2.4-r1 2.5: C++ interface for cfitsio
