@@ -48,7 +48,7 @@ DEPEND="
 	!mail-mta/qmail
 	net-mail/queue-repair
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
+		!libressl? ( >=dev-libs/openssl-1.1:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
 	sys-apps/gentoo-functions
