@@ -214,7 +214,7 @@ use_m() {
 }
 
 # @FUNCTION: convert_to_m
-# @USAGE: /path/to/the/file
+# @USAGE: </path/to/the/file>
 # @DESCRIPTION:
 # It converts a file (e.g. a makefile) to use M= instead of SUBDIRS=
 convert_to_m() {
