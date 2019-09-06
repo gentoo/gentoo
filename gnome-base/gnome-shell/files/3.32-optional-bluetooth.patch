@@ -1,0 +1,59 @@
+From 77518c23dd1ce3d000d5667b4d903af095939f7c Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Thu, 28 Feb 2019 00:50:19 +0200
+Subject: [PATCH] build: Make bluetooth support optional
+
+---
+ js/misc/meson.build | 2 +-
+ meson.build         | 7 ++++++-
+ meson_options.txt   | 6 ++++++
+ 3 files changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/js/misc/meson.build b/js/misc/meson.build
+index 5a4871762..3c5e02368 100644
+--- a/js/misc/meson.build
++++ b/js/misc/meson.build
+@@ -3,7 +3,7 @@ jsconf.set('PACKAGE_NAME', meson.project_name())
+ jsconf.set('PACKAGE_VERSION', meson.project_version())
+ jsconf.set('GETTEXT_PACKAGE', meson.project_name())
+ jsconf.set('LIBMUTTER_API_VERSION', mutter_api_version)
+-jsconf.set10('HAVE_BLUETOOTH', bt_dep.found())
++jsconf.set10('HAVE_BLUETOOTH', have_bluetooth)
+ jsconf.set10('HAVE_NETWORKMANAGER', have_networkmanager)
+ jsconf.set('datadir', datadir)
+ jsconf.set('libexecdir', libexecdir)
+diff --git a/meson.build b/meson.build
+index 21a80bcc8..c76afaa9c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -95,7 +95,12 @@ ibus_dep = dependency('ibus-1.0', version: ibus_req)
+ x11_dep = dependency('x11')
+ schemas_dep = dependency('gsettings-desktop-schemas', version: schemas_req)
+ 
+-bt_dep = dependency('gnome-bluetooth-1.0', version: bt_req, required: false)
++if get_option('bluetooth')
++  bt_dep = dependency('gnome-bluetooth-1.0', version: bt_req)
++  have_bluetooth = true
++else
++  have_bluetooth = false
++endif
+ gst_dep = dependency('gstreamer-1.0', version: gst_req, required: false)
+ gst_base_dep = dependency('gstreamer-base-1.0', required: false)
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index 853ca98dc..33f76379b 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,3 +1,9 @@
++option('bluetooth',
++  type: 'boolean',
++  value: true,
++  description: 'Enable bluetooth support'
++)
++
+ option('gtk_doc',
+   type: 'boolean',
+   value: false,
+-- 
+2.20.1
+
