@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="activities">Enable Plasma Activities support via <pkg>kde-frameworks/kactivities</pkg></flag>
 		<flag name="addons">Build and install additional plugins</flag>
 	</use>
 </pkgmetadata>
