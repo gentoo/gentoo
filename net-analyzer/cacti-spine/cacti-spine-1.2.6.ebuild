@@ -13,9 +13,11 @@ SRC_URI="https://www.cacti.net/downloads/spine/${MY_P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+IUSE="libressl"
 
 CDEPEND="
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	net-analyzer/net-snmp:=
 	dev-db/mysql-connector-c:0=
 "
@@ -35,7 +37,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	AT_M4DIR="config" eautoreconf
+	eautoreconf
 }
 
 src_install() {

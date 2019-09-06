@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-06)
+# Unmaintained.  Tests fail to build.  Last release in 2014.  No reverse
+# dependencies.  Removal in 30 days.  Bug #640860.
+dev-cpp/xsd
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2019-09-04)
 # EAPI 2. Brutally outdated and untouched for ages. Removal in
 # 30 days, bug 688504
