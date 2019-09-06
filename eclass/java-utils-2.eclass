@@ -266,7 +266,7 @@ java-pkg_addres() {
 }
 
 # @FUNCTION: java-pkg_rm_files
-# @USAGE: java-pkg_rm_files File1.java File2.java ...
+# @USAGE: <File1.java> [File2.java] ...
 # @DESCRIPTION:
 # Remove unneeded files in ${S}.
 #
