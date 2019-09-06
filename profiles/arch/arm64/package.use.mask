@@ -149,7 +149,6 @@ net-fs/samba addc addns ads cluster python test
 app-text/tesseract scrollview
 dev-cpp/eigen test
 kde-frameworks/frameworkintegration appstream
-kde-plasma/plasma-workspace geolocation
 mate-base/mate help
 mate-base/mate-applets-meta appindicator sensors
 mate-extra/caja-extensions gajim
