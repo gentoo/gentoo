@@ -35,7 +35,6 @@ sys-cluster/openmpi openmpi_fabrics_open-mx
 
 # Aaron Bauman <bman@gentoo.org> (2019-08-04)
 # media-libs/ming will be removed in 30 days
-media-gfx/pstoedit flash
 sci-chemistry/wxmacmolplt flash
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-08-03)
