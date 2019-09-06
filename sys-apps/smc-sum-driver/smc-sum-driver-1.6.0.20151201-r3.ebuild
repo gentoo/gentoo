@@ -35,7 +35,7 @@ src_prepare() {
 	default
 
 	# Install new Makefile to respect users CFLAGS and LDFLAGS
-	cp "${FILESDIR}"/makefile Makefile
+	cp "${FILESDIR}"/makefile Makefile || die
 }
 
 src_compile() {
