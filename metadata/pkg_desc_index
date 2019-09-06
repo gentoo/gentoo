@@ -15562,7 +15562,7 @@ net-misc/python-x2go 0.5.0.6 0.6.0.1 0.6.0.2: X2Go client-side Python API
 net-misc/pytvshows 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
 net-misc/qtm 1.3.19: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
-net-misc/r8168 8.045.08 8.047.02: r8168 driver for Realtek 8111/8168 PCI-E NICs
+net-misc/r8168 8.045.08 8.047.04: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.9 3.6.14 3.7.3-r1 3.7.9 3.7.10 3.7.11 3.7.13: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.14 2.17-r1 2.17-r2 2.18: Linux IPv6 Router Advertisement Daemon
 net-misc/rclone 1.45 1.47.0 9999: A program to sync files to and from various cloud storage providers
@@ -17411,7 +17411,7 @@ sys-apps/pkgcore 0.9.7 0.10.2 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/policycoreutils 2.8-r1 2.9 9999: SELinux core utilities
-sys-apps/portage 2.3.66-r1 2.3.69 2.3.75 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.66-r1 2.3.69 2.3.75-r1 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.6: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
@@ -18022,7 +18022,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta16 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.184 4.4.186 4.4.187 4.4.188 4.4.189 4.4.190 4.4.191 4.9.184 4.9.186 4.9.187 4.9.188 4.9.189 4.9.190 4.14.132 4.14.135 4.14.136 4.14.137 4.14.138 4.14.139 4.14.140 4.14.141 4.19.57 4.19.63 4.19.64 4.19.65 4.19.66 4.19.67 4.19.68 4.19.69 4.19.71 5.2.5 5.2.6 5.2.7 5.2.8 5.2.9 5.2.10 5.2.11: Full sources including the Gentoo patchset for the 5.2 kernel tree
+sys-kernel/gentoo-sources 4.4.184 4.4.186 4.4.187 4.4.188 4.4.189 4.4.190 4.4.191 4.9.184 4.9.186 4.9.187 4.9.188 4.9.189 4.9.190 4.9.191 4.14.132 4.14.135 4.14.136 4.14.137 4.14.138 4.14.139 4.14.140 4.14.141 4.14.142 4.19.57 4.19.63 4.19.64 4.19.65 4.19.66 4.19.67 4.19.68 4.19.69 4.19.71 5.2.5 5.2.6 5.2.7 5.2.8 5.2.9 5.2.10 5.2.11: Full sources including the Gentoo patchset for the 5.2 kernel tree
 sys-kernel/git-sources 5.3_rc1 5.3_rc2 5.3_rc3 5.3_rc4 5.3_rc5 5.3_rc6 5.3_rc7: The very latest -git version of the Linux kernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
