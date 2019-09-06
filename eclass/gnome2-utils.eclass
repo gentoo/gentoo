@@ -297,7 +297,6 @@ gnome2_schemas_savelist() {
 }
 
 # @FUNCTION: gnome2_schemas_update
-# @USAGE: gnome2_schemas_update
 # @DESCRIPTION:
 # Updates GSettings schemas.
 # This function should be called from pkg_postinst and pkg_postrm.
@@ -328,7 +327,6 @@ gnome2_gdk_pixbuf_savelist() {
 }
 
 # @FUNCTION: gnome2_gdk_pixbuf_update
-# @USAGE: gnome2_gdk_pixbuf_update
 # @DESCRIPTION:
 # Updates gdk-pixbuf loader cache if GNOME2_ECLASS_GDK_PIXBUF_LOADERS has some.
 # This function should be called from pkg_postinst and pkg_postrm.
@@ -360,7 +358,6 @@ gnome2_gdk_pixbuf_update() {
 }
 
 # @FUNCTION: gnome2_query_immodules_gtk2
-# @USAGE: gnome2_query_immodules_gtk2
 # @DESCRIPTION:
 # Updates gtk2 immodules/gdk-pixbuf loaders listing.
 gnome2_query_immodules_gtk2() {
@@ -374,7 +371,6 @@ gnome2_query_immodules_gtk2() {
 }
 
 # @FUNCTION: gnome2_query_immodules_gtk3
-# @USAGE: gnome2_query_immodules_gtk3
 # @DESCRIPTION:
 # Updates gtk3 immodules/gdk-pixbuf loaders listing.
 gnome2_query_immodules_gtk3() {
@@ -388,7 +384,6 @@ gnome2_query_immodules_gtk3() {
 }
 
 # @FUNCTION: gnome2_giomodule_cache_update
-# @USAGE: gnome2_giomodule_cache_update
 # @DESCRIPTION:
 # Updates glib's gio modules cache.
 # This function should be called from pkg_postinst and pkg_postrm.
