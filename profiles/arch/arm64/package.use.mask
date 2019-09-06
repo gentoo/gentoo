@@ -52,10 +52,6 @@ kde-apps/kalzium editor
 # to be refactored to separate bios and uefi
 kde-plasma/discover firmware
 
-# Jimi Huotari <chiitoo@gentoo.org> (2019-03-10)
-# dev-qt/qttranslations is not yet keyworded, bug #680082
-lxqt-base/lxqt-meta nls
-
 # Roy Bamford <neddyseagoon@gentoo.org> (2019-02-24)
 # sdl is in use.mask and lots of things remain untested with USE=sdl
 # list packages here that have been tested.
