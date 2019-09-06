@@ -1,0 +1,81 @@
+From a00bd286724b3186c17d70f1b2fe98da2d90bf60 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sun, 1 Sep 2019 14:42:04 +0300
+Subject: [PATCH] build: Allow building native backend without cogl-gles2
+
+Native backend already requires gles2, but was controlled by gles2
+meson option, even though it's hard required with native_backend
+already, and errored out if gles2 wasn't enabled too.
+Instead allow native_backend to be built without cogl-gles2 by simply
+checking for the gles2 hard requirement in case of have_native_backend
+too and not erroring out without -Dgles2=true, which is now used only
+for controlling cogl-gles2 build.
+---
+ meson.build     | 10 +++-------
+ src/meson.build |  4 ++--
+ 2 files changed, 5 insertions(+), 9 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 6160a4bb3..c85284ba2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -150,12 +150,13 @@ endif
+ have_egl_xlib = have_egl and have_x11
+ 
+ have_gles2 = get_option('gles2')
+-if have_gles2
++have_native_backend = get_option('native_backend')
++if have_gles2 or have_native_backend
+   gles2_dep = dependency('glesv2')
+   gles2_libname = get_option('gles2_libname')
+ 
+   if not have_egl
+-    error('GLESv2 support requires EGL to be enabled')
++    error('GLESv2 and native backend support requires EGL to be enabled')
+   endif
+ endif
+ 
+@@ -177,7 +178,6 @@ if have_libgudev
+   gudev_dep = dependency('gudev-1.0', version: gudev_req)
+ endif
+ 
+-have_native_backend = get_option('native_backend')
+ if have_native_backend
+   libdrm_dep = dependency('libdrm')
+   libgbm_dep = dependency('gbm', version: gbm_req)
+@@ -194,10 +194,6 @@ if have_native_backend
+     error('The native backend requires EGL to be enabled')
+   endif
+ 
+-  if not have_gles2
+-    error('The native backend requires GLESv2 to be enabled')
+-  endif
+-
+   if not have_libgudev
+     error('The native backend requires udev to be enabled')
+   endif
+diff --git a/src/meson.build b/src/meson.build
+index 182f7f5f5..af9776480 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -36,7 +36,7 @@ if have_gl
+   ]
+ endif
+ 
+-if have_gles2
++if have_native_backend
+   mutter_pkg_private_deps += [
+     gles2_dep,
+   ]
+@@ -436,7 +436,7 @@ if have_egl
+   ]
+ endif
+ 
+-if have_gles2
++if have_native_backend
+   mutter_sources += [
+     'backends/meta-gles3.c',
+     'backends/meta-gles3.h',
+-- 
+2.20.1
+
