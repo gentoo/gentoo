@@ -1275,7 +1275,7 @@ app-emacs/magit-popup 2.12.3 2.12.4 2.13.0: Define prefix-infix-suffix command c
 app-emacs/mailcrypt 3.5.9-r1: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/markdown-mode 2.1 2.3: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
-app-emacs/mediawiki 2.2.4.1 2.2.9: MediaWiki client for Emacs
+app-emacs/mediawiki 2.2.4.1 2.2.9-r1: MediaWiki client for Emacs
 app-emacs/mew 6.6 6.8: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
 app-emacs/mldonkey 0.0.4b-r1 0.0.4b-r2: An Emacs Lisp interface to the MLDonkey core
@@ -10189,10 +10189,10 @@ dev-ruby/rspec-rails 3.7.2 3.8.2: RSpec's official Ruby on Rails plugin
 dev-ruby/rspec-retry 0.6.1: Retry intermittently failing rspec examples
 dev-ruby/rspec-support 3.7.1 3.8.2: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.70.7 0.70.8: RSpec support and matchers
-dev-ruby/ruby-atk 3.3.2 3.3.6: Ruby Atk bindings
+dev-ruby/ruby-atk 3.3.2 3.3.6 3.3.7: Ruby Atk bindings
 dev-ruby/ruby-augeas 0.5.0-r3: Ruby bindings for Augeas
 dev-ruby/ruby-beautify 0.97.4: a cli tool (and module) to beautify ruby code
-dev-ruby/ruby-cairo-gobject 3.3.2 3.3.6: Ruby cairo-gobject bindings
+dev-ruby/ruby-cairo-gobject 3.3.2 3.3.6 3.3.7: Ruby cairo-gobject bindings
 dev-ruby/ruby-clutter 3.3.2 3.3.6: Ruby Clutter bindings
 dev-ruby/ruby-clutter-gdk 3.3.2 3.3.6: Ruby binding of GDK specific API of Clutter
 dev-ruby/ruby-clutter-gstreamer 3.3.2 3.3.6: Ruby Clutter bindings
@@ -10201,13 +10201,13 @@ dev-ruby/ruby-dict 0.9.4-r4: RFC 2229 client in Ruby
 dev-ruby/ruby-elf 1.0.8: Ruby library to access ELF files information
 dev-ruby/ruby-feedparser 0.9.4: Ruby library to parse ATOM/RSS feeds
 dev-ruby/ruby-filemagic 0.7.2: Ruby binding to libmagic
-dev-ruby/ruby-gdk3 3.3.2 3.3.6: Ruby GDK-3.x bindings
-dev-ruby/ruby-gdkpixbuf2 3.3.2 3.3.6: Ruby GdkPixbuf2 bindings
+dev-ruby/ruby-gdk3 3.3.2 3.3.6 3.3.7: Ruby GDK-3.x bindings
+dev-ruby/ruby-gdkpixbuf2 3.3.2 3.3.6 3.3.7: Ruby GdkPixbuf2 bindings
 dev-ruby/ruby-gettext 3.2.9: Native Language Support Library and Tools modeled after GNU gettext package
-dev-ruby/ruby-gio2 3.3.2 3.3.6: Ruby binding of GooCanvas
-dev-ruby/ruby-glib2 3.3.2 3.3.6: Ruby Glib2 bindings
+dev-ruby/ruby-gio2 3.3.2 3.3.6 3.3.7: Ruby binding of GooCanvas
+dev-ruby/ruby-glib2 3.3.2 3.3.6 3.3.7: Ruby Glib2 bindings
 dev-ruby/ruby-gnome2 3.3.2 3.3.6: Ruby Gnome2 bindings
-dev-ruby/ruby-gobject-introspection 3.3.2 3.3.6: Ruby GObjectIntrospection bindings
+dev-ruby/ruby-gobject-introspection 3.3.2 3.3.6 3.3.7: Ruby GObjectIntrospection bindings
 dev-ruby/ruby-gstreamer 3.3.2 3.3.6: Ruby GStreamer bindings
 dev-ruby/ruby-gtk2 3.3.2 3.3.6: Ruby Gtk2 bindings
 dev-ruby/ruby-gtk3 3.3.2 3.3.6: Ruby Gtk3 bindings
@@ -10224,13 +10224,13 @@ dev-ruby/ruby-oembed 0.12.0: An oEmbed consumer library written in Ruby.
 dev-ruby/ruby-ole 1.2.12.1 1.2.12.2: Ruby library for easy read/write access to OLE compound documents
 dev-ruby/ruby-opengl 0.10.0: OpenGL / GLUT bindings for ruby
 dev-ruby/ruby-openid 2.7.0: A robust library for verifying and serving OpenID identities
-dev-ruby/ruby-pango 3.3.2 3.3.6: Ruby Pango bindings
-dev-ruby/ruby-poppler 3.3.2 3.3.6: Ruby poppler-glib bindings
+dev-ruby/ruby-pango 3.3.2 3.3.6 3.3.7: Ruby Pango bindings
+dev-ruby/ruby-poppler 3.3.2 3.3.6 3.3.7: Ruby poppler-glib bindings
 dev-ruby/ruby-prof 0.18.0: A module for profiling Ruby code
 dev-ruby/ruby-progressbar 1.4.2-r1 1.10.0 1.10.1: A Text Progress Bar Library for Ruby
 dev-ruby/ruby-rc4 0.1.5-r2: A pure Ruby implementation of the Rc4 algorithm
 dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
-dev-ruby/ruby-rsvg 3.3.2 3.3.6: Ruby bindings for librsvg
+dev-ruby/ruby-rsvg 3.3.2 3.3.6 3.3.7: Ruby bindings for librsvg
 dev-ruby/ruby-sdl 2.1.2-r2: Ruby/SDL: Ruby bindings for SDL
 dev-ruby/ruby-shadow 2.5.0: ruby shadow bindings
 dev-ruby/ruby-shout 2.2.2: A Ruby interface to libshout2
@@ -14147,7 +14147,7 @@ media-sound/qsampler 0.5.3: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.5.5 0.5.6: A Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: A simple frontend to mp3gain, vorbisgain and metaflac
-media-sound/qtractor 0.9.5: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
+media-sound/qtractor 0.9.9: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
 media-sound/quodlibet 3.8.1-r1 3.9.1 4.1.0 4.2.0 4.2.1: audio library tagger, manager, and player for GTK+

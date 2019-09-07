@@ -4988,6 +4988,7 @@ media-sound/qmmp:soxr - Use the SoX resampling library
 media-sound/qmmp:stereo - Enable stereo effect
 media-sound/qmmp:tray - Build tray icon
 media-sound/qsampler:libgig - Enable libgig support for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
+media-sound/qtractor:aubio - Enable media-libs/aubio support
 media-sound/qtractor:dssi - Enable support for DSSI Soft Synth Interface
 media-sound/qtractor:rubberband - Enable support for in-place audio clip pitch-shifting through the rubberband library
 media-sound/rhythmbox:daap - Build the local network music sharing plugin which uses the DAAP protocol using net-libs/libdmapsharing
