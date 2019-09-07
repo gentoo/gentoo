@@ -628,7 +628,7 @@ app-crypt/hashcat 4.1.0 4.2.0 4.2.1 5.0.0 5.1.0 9999: World's fastest and most a
 app-crypt/hashcat-utils 1.9: a set of small utilities that are useful in advanced password cracking
 app-crypt/heimdal 7.5.0 7.6.0 7.7.0-r1: Kerberos 5 implementation from KTH
 app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for files
-app-crypt/ima-evm-utils 1.1 9999: Supporting tools for IMA and EVM
+app-crypt/ima-evm-utils 1.1-r1 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, etc.
 app-crypt/jetring 0.25 0.27: GPG keyring maintenance using changesets
 app-crypt/jitterentropy 2.1.2: Hardware RNG based on CPU timing jitter
@@ -656,7 +656,7 @@ app-crypt/md5deep 4.4: Expanded md5sum program with recursive and comparison opt
 app-crypt/md6sum 1.0-r2: A C implementation of MD6
 app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large number of hash algorithms
 app-crypt/minisign 0.8 9999: Dead simple tool to sign files and verify signatures
-app-crypt/mit-krb5 1.16-r2 1.16.1 1.16.2 1.16.3 1.17: MIT Kerberos V
+app-crypt/mit-krb5 1.16-r2 1.16.1 1.16.2 1.16.3 1.17-r1: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39 0.41 0.42: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/moolticute 0.30.1 0.30.8 9999: Mooltipass crossplatform daemon/tools
@@ -11454,9 +11454,9 @@ games-fps/etqw-data 1.0-r1: Enemy Territory: Quake Wars data files
 games-fps/etqw-demo 2.0_p1-r2: Enemy Territory: Quake Wars demo
 games-fps/ezquake-bin 2.2: Quakeworld client with mqwcl functionality and many more features
 games-fps/freedm 0.11.3-r1: A 32-level game designed for competitive deathmatch play.
-games-fps/freedm-data 0.11.3-r1: Game resources for FreeDM
+games-fps/freedm-data 0.11.3-r2: Game resources for FreeDM
 games-fps/freedoom 0.11.3-r2: A complete free-content single-player focused game based on the Doom engine
-games-fps/freedoom-data 0.11.3-r1: Game resources for Freedoom: Phase 1+2
+games-fps/freedoom-data 0.11.3-r2: Game resources for Freedoom: Phase 1+2
 games-fps/glxquake-bin 0-r2: A binary that works with any 3D-graphics-card that supports the glx X-extension
 games-fps/gzdoom 4.2.0: A modder-friendly OpenGL source port based on the DOOM engine
 games-fps/industri 1.01: Quake/Tenebrae based, single player game
@@ -17557,7 +17557,7 @@ sys-auth/rtkit 0.11-r2 0.11-r3: Realtime Policy and Watchdog Daemon
 sys-auth/sakcl 0.1.0: OpenSSH AuthorizedKeysCmd provider utilizing LDAP
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
 sys-auth/ssh-ldap-pubkey 1.3.0-r2 1.3.1: Utility to manage SSH public keys stored in LDAP
-sys-auth/sssd 1.16.3-r2 2.1.0 2.2.0: System Security Services Daemon provides access to identity and authentication
+sys-auth/sssd 1.16.3-r3 2.1.0-r1 2.2.0-r1: System Security Services Daemon provides access to identity and authentication
 sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson fingerprint reader, common in Thinkpads
 sys-auth/ykclient 2.14 2.15: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
@@ -17919,7 +17919,7 @@ sys-fs/duperemove 0.11.1: Btrfs deduplication utility
 sys-fs/e2fsprogs 1.44.5 1.45.2 1.45.3: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16.4: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
-sys-fs/ecryptfs-utils 108-r1 108-r2: eCryptfs userspace utilities
+sys-fs/ecryptfs-utils 108-r3: eCryptfs userspace utilities
 sys-fs/encfs 1.9.5: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/etcd-fs 0_p20140620 0_p20170517: Use etcd as a FUSE filesystem
 sys-fs/eudev 3.2.5 3.2.7-r2 3.2.8 4.9999 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
