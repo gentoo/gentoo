@@ -16,6 +16,7 @@ DEPEND=">=dev-lang/ocaml-3.12.1[ocamlopt?]
 	dev-ml/zarith
 	gtk? ( >=dev-ml/lablgtk-2.14[sourceview,ocamlopt?] )
 	dev-ml/camlzip
+	sci-mathematics/psmt2-frontend
 	>=dev-ml/ocplib-simplex-0.4
 	>=dev-ml/menhir-20181006
 	dev-ml/dune"
@@ -28,7 +29,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake
+	emake lib
+	emake bin
 	use gtk && emake gui
 }
 
