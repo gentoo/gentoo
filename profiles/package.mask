@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Both packages are (now) mirror-restricted and have non-working
+# SRC_URI.
+# Removal in 30 days.  Bug #601052.
+games-action/mutantstorm-demo
+games-action/spacetripper-demo
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
 # Mirror-restricted, SRC_URI down and sources nowhere to be found.
 # Removal in 30 days.  Bug #692798.
 sys-apps/adjtime
