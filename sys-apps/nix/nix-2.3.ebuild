@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools flag-o-matic readme.gentoo-r1 user
 
@@ -14,12 +14,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+etc_profile +gc doc s3 +sodium"
 
+# sys-apps/busybox is needed for sandbox mount of /bin/sh
 RDEPEND="
 	app-arch/brotli
 	app-arch/bzip2
 	app-arch/xz-utils
+	sys-apps/busybox[static]
 	dev-db/sqlite
+	dev-libs/editline:0=
 	dev-libs/openssl:0=
+	>=dev-libs/boost-1.66:0=[context]
 	net-misc/curl
 	sys-libs/libseccomp
 	sys-libs/zlib
@@ -37,11 +41,8 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.11.6-systemd.patch
-	"${FILESDIR}"/${PN}-1.11.6-respect-CXXFLAGS.patch
-	"${FILESDIR}"/${PN}-1.11.6-respect-LDFLAGS.patch
 	"${FILESDIR}"/${PN}-2.0-user-path.patch
-	"${FILESDIR}"/${PN}-2.0.4-bdwgc-8.patch
+	"${FILESDIR}"/${PN}-2.3-libpaths.patch
 )
 
 DISABLE_AUTOFORMATTING=yes
@@ -81,25 +82,18 @@ src_prepare() {
 }
 
 src_configure() {
-	local econf_args=()
-
 	if ! use s3; then
 		# Disable automagic depend: bug #670256
 		export ac_cv_header_aws_s3_S3Client_h=no
 	fi
-
 	econf \
 		--localstatedir="${EPREFIX}"/nix/var \
 		$(use_enable gc) \
-		"${args[@]}"
+		--with-sandbox-shell=/bin/busybox
 }
 
 src_compile() {
-	local make_vars=(
-		OPTIMIZE=0 # disable hardcoded -O3
-		V=1 # verbose build
-	)
-	emake "${make_vars[@]}"
+	emake V=1
 }
 
 src_install() {
@@ -136,7 +130,7 @@ src_install() {
 
 pkg_postinst() {
 	if ! use etc_profile; then
-		ewarn "${EROOT}etc/profile.d/nix.sh was removed (due to USE=-etc_profile)."
+		ewarn "${EROOT}/etc/profile.d/nix.sh was removed (due to USE=-etc_profile)."
 	fi
 
 	readme.gentoo_print_elog
