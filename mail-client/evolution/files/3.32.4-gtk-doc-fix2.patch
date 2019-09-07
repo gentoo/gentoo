@@ -1,0 +1,29 @@
+From 78dc64008f1312a97eaa56b5c12f93a2bfa3b096 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Mon, 5 Aug 2019 12:55:23 +0200
+Subject: [PATCH] Include also CFLAGS in gtkdoc-scangobj command line
+
+The LDFLAGS could imply certain compile options being used (like -fPIC),
+but these CFLAGS were not passed to gtkdoc-scangobj, thus the compilation
+could fail.
+
+Related to https://gitlab.gnome.org/GNOME/evolution-data-server/merge_requests/28
+---
+ cmake/modules/GtkDoc.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cmake/modules/GtkDoc.cmake b/cmake/modules/GtkDoc.cmake
+index 0ba1a7a78..2dfc4d691 100644
+--- a/cmake/modules/GtkDoc.cmake
++++ b/cmake/modules/GtkDoc.cmake
+@@ -98,6 +98,7 @@ macro(add_gtkdoc _module _namespace _deprecated_guards _srcdirsvar _depsvar _ign
+ 
+ 	# Add it as the last, thus in-tree headers have precedence
+ 	list(APPEND _scangobj_cflags_list -I${INCLUDE_INSTALL_DIR})
++	list(APPEND _scangobj_cflags_list ${CMAKE_C_FLAGS})
+ 
+ 	if(_scangobj_deps)
+ 		list(REMOVE_DUPLICATES _scangobj_deps)
+-- 
+2.20.1
+
