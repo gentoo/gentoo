@@ -15,5 +15,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+ELISP_PATCHES="${P}-user-agent.patch"
 SITEFILE="50${PN}-gentoo-${PV}.el"
 DOCS="README.mediawiki"

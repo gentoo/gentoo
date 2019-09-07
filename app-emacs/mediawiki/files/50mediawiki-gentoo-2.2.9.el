@@ -6,6 +6,6 @@
 (eval-after-load "mediawiki"
   '(add-to-list
     'mediawiki-site-alist
-    '("Gentoo" "https://wiki.gentoo.org/wiki/" "" "" nil "Main Page")
+    '("Gentoo" "https://wiki.gentoo.org/" "" "" nil "Main Page")
     nil
     (lambda (a b) (equal (car a) (car b)))))
