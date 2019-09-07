@@ -1833,7 +1833,7 @@ app-misc/beanstalkd 1.10: A simple, fast work queue
 app-misc/beep 1.3-r3: The advanced PC speaker beeper
 app-misc/bfr 1.6-r2 1.6-r3: General-purpose command-line pipe buffer
 app-misc/bgrep 0_p20110121-r1: Grep-like tool to search for binary strings
-app-misc/bijiben 3.26.2: Note editor designed to remain simple to use
+app-misc/bijiben 3.26.2 3.32.2: Note editor designed to remain simple to use
 app-misc/binclock 1.5: Displays a binary clock in your terminal
 app-misc/binwalk 2.1.1 9999: A tool for identifying files embedded inside firmware images
 app-misc/birthday 1.6.2-r1: Displays a list of events happening in the near future
@@ -4794,7 +4794,7 @@ dev-libs/fddl 20111124-r1: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13-r2: Loki C++ library from Modern C++ Design
 dev-libs/ffcall 2.1: Build foreign function call interfaces in embedded interpreter
 dev-libs/flatbuffers 1.11.0: Memory efficient serialization library
-dev-libs/folks 0.11.4-r1: Library for aggregating people from multiple sources
+dev-libs/folks 0.11.4-r1 0.12.1: Library for aggregating people from multiple sources
 dev-libs/freexl 1.0.1 1.0.2: Simple XLS data extraction library
 dev-libs/fribidi 1.0.5: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.3.0: Frame Streams implementation in C
@@ -12004,17 +12004,17 @@ gnome-extra/cinnamon-settings-daemon 3.6.1-r1 3.8.4 4.0.2: Cinnamon's settings d
 gnome-extra/cinnamon-translations 3.6.3 3.6.3-r1 3.8.2 4.0.0: Translation data for Cinnamon
 gnome-extra/cjs 3.6.1 3.8.0 4.0.0 4.0.0-r1: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/eiciel 0.9.11-r1 0.9.12.1 0.9.12.1-r1: ACL editor for GNOME, with Nautilus extension
-gnome-extra/evolution-data-server 3.30.5-r1: Evolution groupware backend
-gnome-extra/evolution-ews 3.30.5-r1: Evolution module for connecting to Microsoft Exchange Web Services
+gnome-extra/evolution-data-server 3.30.5-r1 3.32.4: Evolution groupware backend
+gnome-extra/evolution-ews 3.30.5-r1 3.32.2: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-boxes 3.30.3: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-calculator 3.30.1 3.32.2: A calculator application for GNOME
-gnome-extra/gnome-calendar 3.30.1: Manage your online calendars with simple and modern interface
+gnome-extra/gnome-calendar 3.30.1 3.32.2: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.30.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.30.1: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.30.0-r1: GNOME color profile tools
 gnome-extra/gnome-commander 1.10.0 1.10.1: A graphical, full featured, twin-panel file manager
-gnome-extra/gnome-contacts 3.30.2: GNOME contact management application
+gnome-extra/gnome-contacts 3.30.2 3.32.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.10: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.30.1: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
@@ -12569,7 +12569,7 @@ mail-client/claws-mail 3.17.3-r1 3.17.4 9999: An email client (and news reader) 
 mail-client/clawsker 0.7.8 0.7.10 1.1.0: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 0.92 0.95 0.96 1.0: CONE: COnsole News reader and Emailer
 mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on libEtPan
-mail-client/evolution 3.30.5: Integrated mail, addressbook and calendaring functionality
+mail-client/evolution 3.30.5 3.32.4: Integrated mail, addressbook and calendaring functionality
 mail-client/geary 0.12.4 3.32.0-r1: A lightweight, easy-to-use, feature-rich email client
 mail-client/hap 3.7-r1: A terminal mail notification program (replacement for biff)
 mail-client/kube 0.7.0: A mail client by KDE
