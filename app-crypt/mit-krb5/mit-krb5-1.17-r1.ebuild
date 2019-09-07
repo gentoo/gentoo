@@ -28,7 +28,7 @@ DEPEND="
 		>=dev-libs/libverto-0.2.5[libevent,${MULTILIB_USEDEP}]
 		>=dev-libs/libverto-0.2.5[tevent,${MULTILIB_USEDEP}]
 	)
-	keyutils? ( >=sys-apps/keyutils-1.5.8[${MULTILIB_USEDEP}] )
+	keyutils? ( >=sys-apps/keyutils-1.5.8:=[${MULTILIB_USEDEP}] )
 	lmdb? ( dev-db/lmdb )
 	nls? ( sys-devel/gettext[${MULTILIB_USEDEP}] )
 	openldap? ( >=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}] )

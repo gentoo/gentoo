@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit flag-o-matic pam python-single-r1 linux-info autotools
@@ -13,17 +14,17 @@ SRC_URI="https://launchpad.net/ecryptfs/trunk/${PV}/+download/${PN}_${PV}.orig.t
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
-IUSE="doc gpg gtk openssl pam pkcs11 python suid tpm"
+IUSE="doc gpg gtk nls openssl pam pkcs11 python suid tpm"
 
-RDEPEND=">=sys-apps/keyutils-1.0
+RDEPEND=">=sys-apps/keyutils-1.0:=
 	>=dev-libs/libgcrypt-1.2.0:0
 	dev-libs/nss
 	gpg? ( app-crypt/gpgme )
 	gtk? ( x11-libs/gtk+:2 )
-	openssl? ( >=dev-libs/openssl-0.9.7 )
+	openssl? ( >=dev-libs/openssl-0.9.7:= )
 	pam? ( sys-libs/pam )
 	pkcs11? (
-		>=dev-libs/openssl-0.9.7
+		>=dev-libs/openssl-0.9.7:=
 		>=dev-libs/pkcs11-helper-1.04
 	)
 	python? ( ${PYTHON_DEPS} )
@@ -52,6 +53,7 @@ src_configure() {
 		$(use_enable doc docs) \
 		$(use_enable gpg) \
 		$(use_enable gtk gui) \
+		$(use_enable nls) \
 		$(use_enable openssl) \
 		$(use_enable pam) \
 		$(use_enable pkcs11 pkcs11-helper) \

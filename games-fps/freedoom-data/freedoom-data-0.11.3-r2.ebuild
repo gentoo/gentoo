@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
-inherit python-any-r1 xdg
+inherit prefix python-any-r1 xdg
 
 DESCRIPTION="Game resources for Freedoom: Phase 1+2"
 HOMEPAGE="https://freedoom.github.io"
@@ -23,6 +23,8 @@ BDEPEND="
 
 S="${WORKDIR}/freedoom-${PV}"
 
+PATCHES="${FILESDIR}/${P}-Set-DOOMWADPATH.patch"
+
 DOOMWADPATH=share/doom
 
 python_check_deps() {
@@ -36,6 +38,8 @@ src_prepare() {
 
 	xdg_src_prepare
 	eapply_user
+
+	hprefixify dist/freedoom
 }
 
 src_compile() {
