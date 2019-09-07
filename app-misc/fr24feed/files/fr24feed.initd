@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Flightradar24 data sharing software"
+name="Flightradar24 feed daemon"
+pidfile="/run/${RC_SVCNAME}.pid"
+retry="TERM/10"
+stopsig="SIGTERM"
+
+command="/usr/bin/fr24feed"
+command_args="--monitor-file=/dev/shm/${RC_SVCNAME}.txt --write-pid=${pidfile} ${FR24FEED_OPTS}"
+command_background="true"
+
+depend() {
+	use net
+}
