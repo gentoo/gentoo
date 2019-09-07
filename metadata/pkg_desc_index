@@ -3007,7 +3007,7 @@ dev-cpp/ctemplate 2.3-r1: A simple but powerful template language for C++
 dev-cpp/eigen 3.3.7: C++ template library for linear algebra
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.2.0 2.2.1 2.2.1-r1 9999: Google's C++ argument parsing library
-dev-cpp/glibmm 2.56.1 2.58.1: C++ interface for glib2
+dev-cpp/glibmm 2.56.1 2.58.1 2.60.0: C++ interface for glib2
 dev-cpp/glog 0.3.4-r1 0.3.5 0.4.0: Google's C++ logging library
 dev-cpp/gnome-vfsmm 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 1.10.0: C++ interface for GStreamer
@@ -4806,7 +4806,7 @@ dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois
 dev-libs/gf2x 1.0-r1 1.1 1.2: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.1 0.3.2 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.48.7 1.54.3 1.56.2: Javascript bindings for GNOME
-dev-libs/glib 2.58.3-r1 2.60.6: The GLib library of C routines
+dev-libs/glib 2.58.3-r1 2.60.6 2.60.7: The GLib library of C routines
 dev-libs/gmime 2.6.23 3.2.3: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.1.2 6.1.2-r1: Library for arbitrary-precision arithmetic on different type of numbers
 dev-libs/gnulib 2016.12.21.08.39.01 2017.12.19.15.53.47 2019.03.17.09.24.57 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
@@ -10745,13 +10745,13 @@ dev-util/ftjam 2.5.3_rc2-r1 2.5.3_rc2-r2: A 100% compatible, enhanced implementa
 dev-util/ftnchek 3.3.1-r2: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 3.3 4.1: A Python script for summarizing gcov data
-dev-util/gdbus-codegen 2.58.3 2.60.6: GDBus code and documentation generator
+dev-util/gdbus-codegen 2.58.3 2.60.6 2.60.7: GDBus code and documentation generator
 dev-util/geany 1.30.1 1.34.1 1.35 9999: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.30 1.34 1.35: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.3.2 1.4.0 1.5.0 1.6.0 9999: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/glade 3.20.4 3.22.1: A user interface designer for GTK+ and GNOME
-dev-util/glib-utils 2.58.3 2.60.6: Build utilities for GLib using projects
+dev-util/glib-utils 2.58.3 2.60.6 2.60.7: Build utilities for GLib using projects
 dev-util/global 6.3.1 6.5.7: tag system to find an object location in various sources
 dev-util/glslang 7.9.2888 7.11.3114_pre20190415-r1 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1463 0.1544 0.1616: GN is a meta-build system that generates build files for Ninja
@@ -12116,7 +12116,7 @@ gui-apps/swayidle 1.2 1.3 1.5 9999: Idle management daemon for Wayland
 gui-apps/swaylock 1.3 1.4 9999: Screen locker for Wayland
 gui-apps/waybar 0.7.2-r1 9999: Highly customizable Wayland bar for Sway and Wlroots based compositors.
 gui-apps/wl-clipboard 1.0.0 9999: Wayland clipboard utilities
-gui-libs/amtk 5.0.0: Actions, Menus and Toolbars Kit for GTK+ applications
+gui-libs/amtk 5.0.0 5.0.1: Actions, Menus and Toolbars Kit for GTK+ applications
 gui-libs/libhandy 0.0.9: Library with GTK widgets for mobile phones
 gui-libs/tepl 4.2.0: GtkSourceView-based text editors and IDE helper library
 gui-libs/wlroots 0.4.1 0.5.0 0.6.0 0.7.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
@@ -18022,7 +18022,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta16 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.184 4.4.186 4.4.187 4.4.188 4.4.189 4.4.190 4.4.191 4.9.184 4.9.186 4.9.187 4.9.188 4.9.189 4.9.190 4.9.191 4.14.132 4.14.135 4.14.136 4.14.137 4.14.138 4.14.139 4.14.140 4.14.141 4.14.142 4.19.57 4.19.63 4.19.64 4.19.65 4.19.66 4.19.67 4.19.68 4.19.69 4.19.71 5.2.5 5.2.6 5.2.7 5.2.8 5.2.9 5.2.10 5.2.11: Full sources including the Gentoo patchset for the 5.2 kernel tree
+sys-kernel/gentoo-sources 4.4.184 4.4.186 4.4.187 4.4.188 4.4.189 4.4.190 4.4.191 4.9.184 4.9.186 4.9.187 4.9.188 4.9.189 4.9.190 4.9.191 4.14.132 4.14.135 4.14.136 4.14.137 4.14.138 4.14.139 4.14.140 4.14.141 4.14.142 4.19.57 4.19.63 4.19.64 4.19.65 4.19.66 4.19.67 4.19.68 4.19.69 4.19.71 5.2.5 5.2.6 5.2.7 5.2.8 5.2.9 5.2.10 5.2.11 5.2.13: Full sources including the Gentoo patchset for the 5.2 kernel tree
 sys-kernel/git-sources 5.3_rc1 5.3_rc2 5.3_rc3 5.3_rc4 5.3_rc5 5.3_rc6 5.3_rc7: The very latest -git version of the Linux kernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
