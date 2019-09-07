@@ -369,9 +369,6 @@ src_configure() {
 	# This flag makes compiling crash in interesting ways
 	filter-flags "-malign-double"
 
-	# Fixes bug #143895 on gcc-4.1.1
-	filter-flags "-fsched2-use-superblocks"
-
 	# Generic LTO broken since 5.28, triggers EUMM failures
 	filter-flags "-flto"
 
