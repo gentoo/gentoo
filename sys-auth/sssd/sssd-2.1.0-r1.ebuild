@@ -33,7 +33,7 @@ COMMON_DEP="
 		>=app-crypt/mit-krb5-1.12.2[${MULTILIB_USEDEP}]
 		>=net-dns/c-ares-1.10.0-r1[${MULTILIB_USEDEP}]
 	)
-	>=sys-apps/keyutils-1.5
+	>=sys-apps/keyutils-1.5:=
 	>=net-dns/c-ares-1.7.4
 	>=dev-libs/nss-3.12.9
 	selinux? (

@@ -8,7 +8,7 @@ inherit autotools flag-o-matic linux-info multilib-minimal pam systemd toolchain
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="https://pagure.io/SSSD/sssd"
 SRC_URI="http://releases.pagure.org/SSSD/${PN}/${P}.tar.gz"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -33,7 +33,7 @@ COMMON_DEP="
 		>=app-crypt/mit-krb5-1.12.2[${MULTILIB_USEDEP}]
 		>=net-dns/c-ares-1.10.0-r1[${MULTILIB_USEDEP}]
 	)
-	>=sys-apps/keyutils-1.5
+	>=sys-apps/keyutils-1.5:=
 	>=net-dns/c-ares-1.7.4
 	>=dev-libs/nss-3.12.9
 	selinux? (
@@ -48,7 +48,7 @@ COMMON_DEP="
 	nls? ( >=sys-devel/gettext-0.18 )
 	virtual/libintl
 	netlink? ( dev-libs/libnl:3 )
-	samba? ( >=net-fs/samba-4.10.2[winbind] )
+	samba? ( >=net-fs/samba-4.5 )
 	"
 
 RDEPEND="${COMMON_DEP}
@@ -83,6 +83,9 @@ pkg_setup(){
 src_prepare() {
 	sed -i 's:#!/sbin/runscript:#!/sbin/openrc-run:' \
 		"${S}"/src/sysv/gentoo/sssd.in || die "sed sssd.in"
+
+	eapply "${FILESDIR}"/${PN}-curl-macros.patch
+	eapply "${FILESDIR}"/${PN}-fix-CVE-2019-3811.patch
 
 	default
 	eautoreconf
@@ -226,5 +229,5 @@ multilib_src_test() {
 pkg_postinst(){
 	elog "You must set up sssd.conf (default installed into /etc/sssd)"
 	elog "and (optionally) configuration in /etc/pam.d in order to use SSSD"
-	elog "features. Please see howto in	https://docs.pagure.org/SSSD.sssd/design_pages/smartcard_authentication_require.html"
+	elog "features. Please see howto in	https://docs.pagure.org/SSSD.sssd/design_pages/index.html#implemented-in-1-16-x"
 }
