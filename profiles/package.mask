@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Unmaintained.  Installs world-writable directory.  Last release
+# in 2004.
+# Removal in 30 days.  Bug #692522.
+app-admin/yaala
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
 # Last release in 2004.  EAPI 0.  x86-only.  Upstream recommends
 # switching to XML Forms.
 # Removal in 30 days.  Bug #693658.
