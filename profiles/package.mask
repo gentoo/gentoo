@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Mirror-restricted, SRC_URI down and sources nowhere to be found.
+# Removal in 30 days.  Bug #692798.
+sys-apps/adjtime
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
 # Unmaintained.  Installs world-writable directory.  Last release
 # in 2004.
 # Removal in 30 days.  Bug #692522.
