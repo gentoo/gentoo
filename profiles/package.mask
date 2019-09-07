@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Has a build failure repoted.  Last bumped in 2006.  Homepage is gone,
+# and (newer) sources are nowhere to be found.
+# Removal in 30 days.  Bug #617188.
+sys-cluster/lspbs
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
 # sci-mathematics/kodkod: reported to fail to build.  Last bumped
 # in 2012.  Homepage is gone, and sources are nowhere to be found.
 #
