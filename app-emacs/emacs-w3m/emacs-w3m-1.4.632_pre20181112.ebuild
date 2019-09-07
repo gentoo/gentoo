@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit readme.gentoo elisp autotools
+inherit elisp autotools readme.gentoo-r1
 
 DESCRIPTION="emacs-w3m is an interface program of w3m on Emacs"
 HOMEPAGE="http://emacs-w3m.namazu.org/"
@@ -12,20 +12,23 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="l10n_ja"
+IUSE="gzip-el l10n_ja"
 
-DEPEND="virtual/w3m"
-RDEPEND="${DEPEND}"
+RDEPEND="virtual/w3m"
+BDEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}"
 SITEFILE="70${PN}-gentoo.el"
 
 src_prepare() {
+	mv configure.{in,ac} || die
+	sed -i -e '/^configure:/,+2d' Makefile.in || die
+	eapply_user
 	eautoreconf
 }
 
 src_configure() {
-	default
+	econf --without-compress-install
 }
 
 src_compile() {
@@ -34,11 +37,13 @@ src_compile() {
 
 src_install() {
 	emake lispdir="${ED}${SITELISP}/${PN}" \
-		infodir="${ED}/usr/share/info" \
+		COMPRESS_INSTALL=$(usex gzip-el) \
+		install-lisp
+	emake infodir="${ED}/usr/share/info" \
 		ICONDIR="${ED}${SITEETC}/${PN}" \
-		install-en $(use l10n_ja && echo install-ja) install-icons
+		install-info-en $(use l10n_ja && echo install-info-ja) install-icons
 
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	dodoc ChangeLog* NEWS README
 	use l10n_ja && dodoc BUGS.ja NEWS.ja README.ja
 

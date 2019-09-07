@@ -6,4 +6,7 @@
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
 <stabilize-allarches/>
+<use>
+  <flag name="gzip-el">Compress bundled Emacs Lisp source</flag>
+</use>
 </pkgmetadata>
