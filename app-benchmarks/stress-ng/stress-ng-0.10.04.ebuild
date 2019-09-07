@@ -19,7 +19,7 @@ DEPEND="
 	dev-libs/libgcrypt:0=
 	net-misc/lksctp-tools
 	sys-apps/attr
-	sys-apps/keyutils
+	sys-apps/keyutils:=
 	sys-libs/libapparmor
 	sys-libs/libcap
 	sys-libs/zlib:=

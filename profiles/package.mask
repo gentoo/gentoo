@@ -30,6 +30,31 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Unmaintained.  Beta version from 2012.  The ebuild is currently
+# broken, and since it relies on CD install, so it needs someone with
+# the CD to fix it.  The original maintainer suggests trying Serious Sam
+# Fusion in wine instead.
+# Removal in 30 days.  Bug #551174.
+games-fps/serious-sam-tfe
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Has a build failure repoted.  Last bumped in 2006.  Homepage is gone,
+# and (newer) sources are nowhere to be found.
+# Removal in 30 days.  Bug #617188.
+sys-cluster/lspbs
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# sci-mathematics/kodkod: reported to fail to build.  Last bumped
+# in 2012.  Homepage is gone, and sources are nowhere to be found.
+#
+# sci-mathematics/kodkodi: the only revdep of the above.  Last release
+# in 2012.  No reverse dependencies.
+#
+# Removal in 30 days.  Bug #685802.
+sci-mathematics/kodkod
+sci-mathematics/kodkodi
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
 # Unmaintained.  Not bumped since 2011.
 # Removal in 30 days.  Bug #693232.
 net-mail/kuvert
