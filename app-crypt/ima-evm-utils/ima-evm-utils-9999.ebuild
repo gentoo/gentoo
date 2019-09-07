@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ EGIT_REPO_URI="git://git.code.sf.net/p/linux-ima/ima-evm-utils"
 
 RDEPEND="
 	dev-libs/openssl:0=
-	sys-apps/keyutils"
+	sys-apps/keyutils:="
 DEPEND="${RDEPEND}
 	app-text/asciidoc
 	app-text/docbook-xsl-stylesheets
