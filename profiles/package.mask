@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Unmaintained.  EAPI 0.  Last bumped in 2005.  Upstream homepage
+# and sources gone.  No reverse dependencies.
+# Removal in 30 days.  Bug #693642.
+media-libs/libopendaap
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
 # Does not install correctly on multilib systems.  EAPI 0.  Multiple
 # other QA issues.  Obscure format with unlikely real use.  The domain
 # for homepage expired.  Last upstream commit in 2013.
