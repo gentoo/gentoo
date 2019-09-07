@@ -7,7 +7,7 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Michał Górny <mgorny@gentoo.org> (2019-08-27)
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
 # media-libs/fmod is slated for removal.
 games-arcade/savagewheels fmod
 games-fps/doomsday fmod
