@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="test"
 
-RDEPEND="dev-python/cryptography[${PYTHON_USEDEP}]
+RDEPEND="<dev-python/cryptography-2.7[${PYTHON_USEDEP}]
 	dev-python/idna[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=dev-python/ipaddress-1.0.16[${PYTHON_USEDEP}]' 'python2_7' )"
 DEPEND="${RDEPEND}
