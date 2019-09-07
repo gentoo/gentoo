@@ -5139,8 +5139,10 @@ media-tv/xmltv:uk_bleb - Britain tv listing grabber
 media-tv/xmltv:uk_tvguide - UK and Ireland tv listing grabber using TV Guide website
 media-tv/xmltv:zz_sdjson - Grabber for schedulesDirect.org SD-JSON service (many countries)
 media-video/aegisub:uchardet - Enable charset discovery via app-i18n/uchardet
-media-video/aravis:X - Build the GTK+-based video viewer for aravis. This requires GStreamer and a few plugins but technically not the GST plugin for aravis.
-media-video/aravis:gstreamer - Build the GStreamer plugin for aravis, but not the video viewer.
+media-video/aravis:X - Build the GTK+-based video viewer.
+media-video/aravis:fast-heartbeat - Enable faster heartbeat rate.
+media-video/aravis:gstreamer - Build the GStreamer plugin.
+media-video/aravis:packet-socket - Enable packet socket support.
 media-video/avidemux:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
 media-video/chaplin:transcode - Enable DVD ripping and transcoding
 media-video/clive:clipboard - Support reading from X clipboard

@@ -14281,7 +14281,7 @@ media-tv/xmltv 0.5.70: Set of utilities to manage TV listings stored in the XMLT
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
 media-video/aegisub 3.2.2_p20160518-r2 3.2.2_p20160518-r3 9999: Advanced subtitle editor
 media-video/alevt 1.6.2: Teletext viewer for X11
-media-video/aravis 0.5.10 0.6.1 9999: Library for video acquisition using Genicam cameras
+media-video/aravis 0.6.4 9999: Library for video acquisition using Genicam cameras
 media-video/asfrecorder 1.1 1.1-r1: Linux WindowsMedia streaming client
 media-video/atomicparsley 0.9.0: command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files
 media-video/atomicparsley-wez 0.9.6: command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files
