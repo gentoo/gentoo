@@ -5,5 +5,13 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
+<longdescription>
+  uptimes.el provides a simple system for tracking and displaying the
+  uptimes of your Emacs sessions. Simply loading uptimes.el from your
+  ~/.emacs file will start the tracking of any session.
+</longdescription>
 <stabilize-allarches/>
+<upstream>
+  <remote-id type="github">davep/uptimes.el</remote-id>
+</upstream>
 </pkgmetadata>
