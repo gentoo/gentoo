@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic qmake-utils
+inherit flag-o-matic qmake-utils xdg-utils
 
 DESCRIPTION="Audio/MIDI multi-track sequencer written in C++ with the Qt framework"
 HOMEPAGE="https://qtractor.sourceforge.io"
@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="cpu_flags_x86_sse debug dssi libsamplerate mad osc rubberband vorbis zlib"
+IUSE="aubio cpu_flags_x86_sse debug dssi libsamplerate mad osc rubberband vorbis zlib"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -32,6 +32,7 @@ DEPEND="
 	media-libs/lv2
 	media-libs/suil
 	virtual/jack
+	aubio? ( media-libs/aubio )
 	dssi? ( media-libs/dssi )
 	libsamplerate? ( media-libs/libsamplerate )
 	mad? ( media-libs/libmad )
@@ -52,6 +53,7 @@ src_configure() {
 		--enable-ladspa \
 		--enable-lilv \
 		$(use_enable debug) \
+		$(use_enable aubio libaubio) \
 		$(use_enable dssi) \
 		$(use_enable libsamplerate) \
 		$(use_enable mad libmad) \
@@ -62,4 +64,16 @@ src_configure() {
 		$(use_enable zlib libz)
 
 	eqmake5 ${PN}.pro -o ${PN}.mak
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
 }
