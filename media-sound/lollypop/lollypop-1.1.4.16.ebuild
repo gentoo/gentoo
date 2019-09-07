@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite"
-HASH="93fcc0dd47b06c2f4f54f88c0e67e993"
+HASH="6b4e4e7a2c17f0770c1e2b3354ae5a3a"
 inherit python-r1 gnome2-utils meson xdg-utils
 
 DESCRIPTION="Modern music player for GNOME"
