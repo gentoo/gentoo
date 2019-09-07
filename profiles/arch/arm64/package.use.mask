@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-06)
+# dev-qt/qtgamepad is not keyworded yet
+dev-qt/qt3d gamepad
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-08-18)
 # media-video/pipewire is not keyworded yet
 dev-libs/weston pipewire
@@ -51,10 +55,6 @@ kde-apps/kalzium editor
 # No arm64 ever had bios, but sys-apps/fwupdate needs
 # to be refactored to separate bios and uefi
 kde-plasma/discover firmware
-
-# Jimi Huotari <chiitoo@gentoo.org> (2019-03-10)
-# dev-qt/qttranslations is not yet keyworded, bug #680082
-lxqt-base/lxqt-meta nls
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2019-02-24)
 # sdl is in use.mask and lots of things remain untested with USE=sdl
@@ -153,7 +153,6 @@ net-fs/samba addc addns ads cluster python test
 app-text/tesseract scrollview
 dev-cpp/eigen test
 kde-frameworks/frameworkintegration appstream
-kde-plasma/plasma-workspace geolocation
 mate-base/mate help
 mate-base/mate-applets-meta appindicator sensors
 mate-extra/caja-extensions gajim
@@ -221,7 +220,11 @@ dev-libs/dbus-c++ ecore
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # USE=eds requires USE=gnome that is masked here.
 # USE=postgres requires dev-db/postgresql[kerberos] (USE masked).
-app-office/libreoffice eds postgres
+# NeddySeagoon <neddysegoon@gentoo.org> (2017-08-21)
+# Pulls in sci-libs/coinor-mp which wants immintrin.h not on arm64
+# Markus Meier <maekke@gentoo.org> (2012-12-08)
+# mask app-office/libreoffice java extensions
+app-office/libreoffice coinmp eds postgres libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher
 
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # Requires app-accessibility/brltty that is not keyworded here.
@@ -243,10 +246,6 @@ dev-python/python-neutronclient test
 # NeddySeagoon <neddysegoon@gentoo.org> (2017-08-24)
 # Support for g15daemon still needs -9999 packages on all arches
 media-sound/mumble g15
-
-# NeddySeagoon <neddysegoon@gentoo.org> (2017-08-21)
-# Pulls in sci-libs/coinor-mp which wants immintrin.h not on arm64
-app-office/libreoffice coinmp
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
@@ -479,10 +478,6 @@ dev-util/devhelp gedit
 # Markus Meier <maekke@gentoo.org> (2012-Dez-25)
 # unkeyworded deps for app-accessibility/speech-dispatcher
 app-accessibility/speech-dispatcher flite
-
-# Markus Meier <maekke@gentoo.org> (2012-12-08)
-# mask app-office/libreoffice java extensions
-app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2012-04-12)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for

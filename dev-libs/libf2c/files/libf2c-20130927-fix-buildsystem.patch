@@ -1,0 +1,65 @@
+--- a/makefile.u
++++ b/makefile.u
+@@ -12,16 +12,12 @@
+ #	-fPIC
+ # to the CFLAGS = line below.
+ 
+-.SUFFIXES: .c .o
+-CC = cc
+ SHELL = /bin/sh
+-CFLAGS = -O
+ 
+ # compile, then strip unnecessary symbols
+ .c.o:
+-	$(CC) -c -DSkip_f2c_Undefs $(CFLAGS) $*.c
+-	ld -r -x -o $*.xxx $*.o
+-	mv $*.xxx $*.o
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) -DSkip_f2c_Undefs $< -o $@
++
+ ## Under Solaris (and other systems that do not understand ld -x),
+ ## omit -x in the ld line above.
+ ## If your system does not have the ld command, comment out
+@@ -74,8 +70,8 @@
+ $(OFILES): f2c.h signal1.h sysdep1.h
+ 
+ libf2c.a: $(OFILES)
+-	ar r libf2c.a $?
+-	-ranlib libf2c.a
++	$(AR) r libf2c.a $?
++	$(RANLIB) libf2c.a
+ 
+ ## Shared-library variant: the following rule works on Linux
+ ## systems.  Details are system-dependent.  Under Linux, -fPIC
+@@ -92,12 +88,6 @@
+ 
+ ### If your system lacks ranlib, you don't need it; see README.
+ 
+-f77vers.o: f77vers.c
+-	$(CC) -c f77vers.c
+-
+-i77vers.o: i77vers.c
+-	$(CC) -c i77vers.c
+-
+ # To get an "f2c.h" for use with "f2c -C++", first "make hadd"
+ hadd: f2c.h0 f2ch.add
+ 	cat f2c.h0 f2ch.add >f2c.h
+@@ -125,7 +115,7 @@
+ 
+ install: libf2c.a
+ 	cp libf2c.a $(LIBDIR)
+-	-ranlib $(LIBDIR)/libf2c.a
++	$(RANLIB) $(LIBDIR)/libf2c.a
+ 
+ clean:
+ 	rm -f libf2c.a *.o arith.h signal1.h sysdep1.h
+@@ -185,8 +175,8 @@
+ xwsne.o:	fmt.h
+ 
+ arith.h: arithchk.c
+-	$(CC) $(CFLAGS) -DNO_FPINIT arithchk.c -lm ||\
+-	 $(CC) -DNO_LONG_LONG $(CFLAGS) -DNO_FPINIT arithchk.c -lm
++	$(CC) $(CPPFLAGS) $(CFLAGS) -DNO_FPINIT arithchk.c -lm ||\
++	 $(CC) -DNO_LONG_LONG $(CPPFLAGS) $(CFLAGS) -DNO_FPINIT arithchk.c -lm
+ 	./a.out >arith.h
+ 	rm -f a.out arithchk.o
+ 
