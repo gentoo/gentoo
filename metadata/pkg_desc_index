@@ -9903,7 +9903,7 @@ dev-ruby/gruff 0.7.0-r1 0.7.0-r2: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.7-r3 5.0.4 5.1.0 5.1.1 5.1.2: A ruby web page templating engine
 dev-ruby/haml-rails 1.0.0 2.0.0 2.0.1: Provides Haml generators for Rails 4
 dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes for Ruby
-dev-ruby/hashdiff 0.3.8 0.3.9 0.4.0 1.0.0: Simple Hash extension to make working with nested hashes easier
+dev-ruby/hashdiff 0.3.9 0.4.0 1.0.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.2: The Hashery is a tight collection of Hash-like classes
 dev-ruby/hashicorp-checkpoint 0.1.5: Internal HashiCorp service to check version information
 dev-ruby/hashie 2.1.2-r1 3.5.7 3.6.0: Hashie is a small collection of tools that make hashes more powerful
@@ -10251,7 +10251,7 @@ dev-ruby/rubypants 0.7.0: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
 dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
-dev-ruby/rubyzip 1.2.2 1.2.3: A ruby library for reading and writing zip files
+dev-ruby/rubyzip 1.2.2 1.2.3 1.2.4: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.5: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sanitize 4.6.6 5.0.0: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.3 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
@@ -10368,7 +10368,7 @@ dev-ruby/virtus 1.0.5: Attributes on Steroids for Plain Old Ruby Objects
 dev-ruby/vlad 2.7.0: Pragmatic application deployment automation, without mercy
 dev-ruby/warden 1.2.8: General Rack Authentication Framework
 dev-ruby/web-console 2.3.0 3.7.0 4.0.1: A debugging tool for your Ruby on Rails applications
-dev-ruby/webmock 2.3.2 3.5.1 3.6.0 3.6.2 3.7.0 3.7.1: Allows stubbing HTTP requests and setting expectations on HTTP requests
+dev-ruby/webmock 2.3.2 3.5.1 3.6.2 3.7.1 3.7.2: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.2-r1: A library to help write robots.txt compliant web robots
 dev-ruby/websocket 1.2.7 1.2.8: Universal Ruby library to handle WebSocket protocol
 dev-ruby/websocket-driver 0.6.5 0.7.0 0.7.1: A complete implementation of the WebSocket protocols
@@ -10383,7 +10383,7 @@ dev-ruby/xmlrpc 0.3.0: XMLRPC is a lightweight protocol that enables remote proc
 dev-ruby/xpath 2.1.0 3.2.0: XPath is a Ruby DSL around a subset of XPath 1.0
 dev-ruby/yajl-ruby 1.3.1 1.4.0 1.4.1: Ruby C bindings to the Yajl JSON stream-based parser library
 dev-ruby/yard 0.9.20: Documentation generation tool for the Ruby programming language
-dev-ruby/zeitwerk 1.4.3 2.1.8 2.1.9: Efficient and thread-safe code loader for Ruby
+dev-ruby/zeitwerk 1.4.3 2.1.8 2.1.9 2.1.10: Efficient and thread-safe code loader for Ruby
 dev-ruby/zentest 4.11.1 4.11.2: Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails
 dev-scheme/bytestructures 1.0.1: Structured access to bytevector contents
 dev-scheme/c-wrapper 0.6.1-r1: Foreign function interface for C and Objective-C libraries
@@ -18518,8 +18518,8 @@ www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module us
 www-apps/moodle 3.5.7 3.6.5 3.7.1: The Moodle Course Management System
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
-www-apps/nanoc 4.10.4 4.11.7 4.11.8 4.11.9: nanoc is a simple but very flexible static site generator written in Ruby
-www-apps/nanoc-core 4.11.7 4.11.8 4.11.9: nanoc is a simple but very flexible static site generator written in Ruby
+www-apps/nanoc 4.10.4 4.11.7 4.11.8 4.11.9 4.11.10: nanoc is a simple but very flexible static site generator written in Ruby
+www-apps/nanoc-core 4.11.7 4.11.8 4.11.9 4.11.10: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.5.11 2.5.12 2.6.1: IP address and data center infrastructure management tool
 www-apps/nextcloud 14.0.13 14.0.14 15.0.10 15.0.11 16.0.3 16.0.4: Personal cloud that runs on your own server
 www-apps/nikola 7.8.8 7.8.11 7.8.12 7.8.13 7.8.14 7.8.14-r1 7.8.15 7.8.15-r1: A static website and blog generator
