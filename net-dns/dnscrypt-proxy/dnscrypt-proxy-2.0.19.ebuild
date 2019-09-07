@@ -35,7 +35,7 @@ src_prepare() {
 	# Create directory structure suitable for building
 	mkdir -p "src/${EGO_PN%/*}" || die
 	mv "${PN}" "src/${EGO_PN}" || die
-	mv "vendor" "src/" || die
+	mv "vendor" "src/${EGO_PN}" || die
 }
 
 src_configure() {
