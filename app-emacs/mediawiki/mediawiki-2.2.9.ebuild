@@ -15,5 +15,5 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
-SITEFILE="50${PN}-gentoo.el"
+SITEFILE="50${PN}-gentoo-${PV}.el"
 DOCS="README.mediawiki"
