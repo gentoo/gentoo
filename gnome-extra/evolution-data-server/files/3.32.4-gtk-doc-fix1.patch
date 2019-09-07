@@ -1,0 +1,88 @@
+From 925070132ca90787ccfe9a993c3eb7e0feb74fa7 Mon Sep 17 00:00:00 2001
+From: Ting-Wei Lan <lantw@src.gnome.org>
+Date: Mon, 22 Jul 2019 16:06:21 +0800
+Subject: [PATCH] M!28 - Include LDFLAGS in gtkdoc-scangobj command line
+
+When a library provides no way to find linker flags for linking with it,
+the build system usually depends on the user to necessary put -L flags
+in LDFLAGS environment variable in order to find it. However, GtkDoc
+module constructs the command line by itself, and it forgets to add
+LDFLAGS to the command line of gtkdoc-scangobj.
+
+It is especially important to include LDFLAGS on non-GNU systems. For
+example, FreeBSD libc doesn't include a gettext implementation. GLib
+requires gettext, and it pulls in an external gettext runtime for it.
+However, gettext-runtime doesn't include a .pc file, so LDFLAGS is
+required if gettext-runtime isn't installed in the same prefix as GLib.
+Failing to include LDFLAGS in --ldflags passed to gtkdoc-scangobj can
+result in a linking error because -lintl cannot be found.
+
+In evolution-data-server we are lucky most of the time because it
+depends on a lot of external libraries. These external libraries are
+likely to be installed in the same prefix as gettext-runtime, so not
+using LDFLAGS doesn't cause linking failure because required flags are
+already pulled in by other libraries. In fact, this problem was found
+when building libical, which uses a similar GtkDoc.cmake file.
+
+In addition to the change to include LDFLAGS, this commit also changes
+the following things:
+
+ - Instead of constructing _scangobj_ldflags in reverse order, do it in
+   normal order. Appending is easier to understand than prepending, and
+   the linker also interprets -L and -l flags in normal order.
+
+ - Move -L${LIB_INSTALL_DIR} to the bottom. This is what the comment
+   says, and it is expected to work because we no longer constructs
+   _scangobj_ldflags in reverse order.
+
+Closes https://gitlab.gnome.org/GNOME/evolution-data-server/merge_requests/28
+---
+ cmake/modules/GtkDoc.cmake | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/cmake/modules/GtkDoc.cmake b/cmake/modules/GtkDoc.cmake
+index cc6cc007a..0ba1a7a78 100644
+--- a/cmake/modules/GtkDoc.cmake
++++ b/cmake/modules/GtkDoc.cmake
+@@ -96,9 +96,8 @@ macro(add_gtkdoc _module _namespace _deprecated_guards _srcdirsvar _depsvar _ign
+ 		list(APPEND _scangobj_deps ${opt})
+ 	endforeach(opt)
+ 
+-	# Add them as the last, thus in-tree headers/libs have precedence
++	# Add it as the last, thus in-tree headers have precedence
+ 	list(APPEND _scangobj_cflags_list -I${INCLUDE_INSTALL_DIR})
+-	list(APPEND _scangobj_ldflags -L${LIB_INSTALL_DIR})
+ 
+ 	if(_scangobj_deps)
+ 		list(REMOVE_DUPLICATES _scangobj_deps)
+@@ -122,7 +121,7 @@ macro(add_gtkdoc _module _namespace _deprecated_guards _srcdirsvar _depsvar _ign
+ 				if(NOT _output_name)
+ 					set(_output_name ${opt})
+ 				endif(NOT _output_name)
+-				set(_scangobj_ldflags "-L$<TARGET_FILE_DIR:${opt}> -l${_output_name} ${_scangobj_ldflags}")
++				set(_scangobj_ldflags "${_scangobj_ldflags} -L$<TARGET_FILE_DIR:${opt}> -l${_output_name}")
+ 
+ 				if(_target_type STREQUAL "SHARED_LIBRARY" OR (_target_type STREQUAL "MODULE_LIBRARY"))
+ 					set(_scangobj_ld_lib_dirs "${_scangobj_ld_lib_dirs}:$<TARGET_FILE_DIR:${opt}>")
+@@ -133,12 +132,18 @@ macro(add_gtkdoc _module _namespace _deprecated_guards _srcdirsvar _depsvar _ign
+ 		endif(TARGET ${opt})
+ 	endforeach(opt)
+ 
++	# Add extra flags from LDFLAGS environment variable
++	set(_scangobj_ldflags "${_scangobj_ldflags} ${CMAKE_SHARED_LINKER_FLAGS}")
++
+ 	foreach(opt IN LISTS _scangobj_deps)
+ 		if(NOT TARGET ${opt})
+ 			set(_scangobj_ldflags "${_scangobj_ldflags} ${opt}")
+ 		endif(NOT TARGET ${opt})
+ 	endforeach(opt)
+ 
++	# Add it as the last, thus in-tree libs have precedence
++	set(_scangobj_ldflags "${_scangobj_ldflags} -L${LIB_INSTALL_DIR}")
++
+ 	set(_scangobj_prefix ${CMAKE_COMMAND} -E env LD_LIBRARY_PATH="${_scangobj_ld_lib_dirs}:${LIB_INSTALL_DIR}:$ENV{LD_LIBRARY_PATH}")
+ 
+ 	if(NOT (_scangobj_cflags STREQUAL ""))
+-- 
+2.20.1
+
