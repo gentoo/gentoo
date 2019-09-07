@@ -132,12 +132,6 @@ media-libs/libipod
 # Removal in 30 days.  Bug #453748.
 media-libs/fmod
 
-# Ulrich Müller <ulm@gentoo.org> (2019-09-06)
-# Unmaintained upstream, last release in 2006.
-# Use app-emacs/mediawiki as replacement.
-# Masked for removal in 30 days, bug #693598.
-app-emacs/wikipedia-mode
-
 # Michał Górny <mgorny@gentoo.org> (2019-09-06)
 # Unmaintained.  Tests fail to build.  Last release in 2014.  No reverse
 # dependencies.  Removal in 30 days.  Bug #640860.
