@@ -15,22 +15,10 @@
 if [[ -z ${_KDE5_FUNCTIONS_ECLASS} ]]; then
 _KDE5_FUNCTIONS_ECLASS=1
 
-inherit toolchain-funcs
-
 case ${EAPI} in
 	7) ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
-
-# @ECLASS-VARIABLE: KDE_BUILD_TYPE
-# @DESCRIPTION:
-# If PV matches "*9999*", this is automatically set to "live".
-# Otherwise, this is automatically set to "release".
-KDE_BUILD_TYPE="release"
-if [[ ${PV} = *9999* ]]; then
-	KDE_BUILD_TYPE="live"
-fi
-export KDE_BUILD_TYPE
 
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
@@ -51,40 +39,6 @@ export KDE_BUILD_TYPE
 # @DESCRIPTION:
 # Minimum version of KDE Applications to require. This affects add_kdeapps_dep.
 : ${KDE_APPS_MINIMAL:=19.04.3}
-
-# @ECLASS-VARIABLE: KDE_GCC_MINIMAL
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Minimum version of active GCC to require. This is checked in kde5.eclass in
-# kde5_pkg_pretend and kde5_pkg_setup.
-
-# @FUNCTION: _check_gcc_version
-# @INTERNAL
-# @DESCRIPTION:
-# Determine if the current GCC version is acceptable, otherwise die.
-_check_gcc_version() {
-	if [[ ${MERGE_TYPE} != binary && -v KDE_GCC_MINIMAL ]] && tc-is-gcc; then
-
-		local version=$(gcc-version)
-		local major=${version%.*}
-		local minor=${version#*.}
-		local min_major=${KDE_GCC_MINIMAL%.*}
-		local min_minor=${KDE_GCC_MINIMAL#*.}
-
-		debug-print "GCC version check activated"
-		debug-print "Version detected:"
-		debug-print "	- Full: ${version}"
-		debug-print "	- Major: ${major}"
-		debug-print "	- Minor: ${minor}"
-		debug-print "Version required:"
-		debug-print "	- Major: ${min_major}"
-		debug-print "	- Minor: ${min_minor}"
-
-		[[ ${major} -lt ${min_major} ]] || \
-				( [[ ${major} -eq ${min_major} && ${minor} -lt ${min_minor} ]] ) \
-			&& die "Sorry, but gcc-${KDE_GCC_MINIMAL} or later is required for this package (found ${version})."
-	fi
-}
 
 # @FUNCTION: _add_category_dep
 # @INTERNAL
