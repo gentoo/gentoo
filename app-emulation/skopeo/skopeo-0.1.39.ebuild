@@ -30,8 +30,8 @@ RESTRICT="test"
 
 src_compile() {
 	local BUILDTAGS="containers_image_ostree_stub"
-	set -- env -u GOCACHE -u XDG_CACHE_HOME GOPATH="${WORKDIR}/${P}" \
-		go build -ldflags "-X main.gitCommit=${COMMIT}" \
+	set -- env -u GOCACHE -u XDG_CACHE_HOME GO111MODULE=on GOPATH="${WORKDIR}/${P}" \
+		go build -mod=vendor -ldflags "-X main.gitCommit=${COMMIT}" \
 		-gcflags "${GOGCFLAGS}" -tags "${BUILDTAGS}" \
 		-o skopeo ./cmd/skopeo
 	echo "$@"
