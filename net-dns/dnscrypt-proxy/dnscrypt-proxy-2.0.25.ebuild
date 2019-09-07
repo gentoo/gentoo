@@ -39,7 +39,7 @@ src_prepare() {
 	# fixes $GOPATH/go.mod exists but should not
 	rm go.mod || die
 	mv "${PN}" "src/${EGO_PN}" || die
-	mv "vendor" "src/" || die
+	mv "vendor" "src/${EGO_PN}" || die
 }
 
 src_configure() {
