@@ -1,5 +1,5 @@
---- libf2c2-20090411.orig/f2c.h0
-+++ libf2c2-20090411/f2c.h0
+--- a/f2c.h0
++++ b/f2c.h0
 @@ -7,21 +7,35 @@
  #ifndef F2C_INCLUDE
  #define F2C_INCLUDE
