@@ -6,7 +6,7 @@ EAPI=7
 EGIT_COMMIT="00057929f5acfd98341964d85722383363376d52"
 EGO_PN="github.com/containers/${PN}"
 
-inherit flag-o-matic golang-vcs-snapshot
+inherit bash-completion-r1 flag-o-matic golang-vcs-snapshot
 
 DESCRIPTION="Library and podman tool for running OCI-based containers in Pods"
 HOMEPAGE="https://github.com/containers/libpod/"
@@ -106,6 +106,8 @@ src_install() {
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/podman.logrotated" podman
+
+	dobashcomp completions/bash/*
 
 	keepdir /var/lib/containers
 }
