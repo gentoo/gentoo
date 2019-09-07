@@ -377,6 +377,7 @@ src_configure() {
 	filter-flags "-flto"
 
 	use sparc && myconf -Ud_longdbl
+	use sparc && myconf -Dd_u32align # bug #676062
 
 	export BUILD_BZIP2=0
 	export BZIP2_INCLUDE=${EROOT}/usr/include
