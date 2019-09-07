@@ -14,7 +14,7 @@ SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~x86"
 IUSE="debug +doc +gmp json +modern_kernel python +readline static-libs xtables"
 
 RDEPEND="
@@ -23,7 +23,7 @@ RDEPEND="
 	json? ( dev-libs/jansson )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
-	>=net-libs/libnftnl-1.1.4:0=
+	>=net-libs/libnftnl-1.1.3:0=
 	xtables? ( >=net-firewall/iptables-1.6.1 )
 "
 
@@ -40,6 +40,11 @@ BDEPEND="
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 #S="${WORKDIR}/v${PV}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-python_build.patch
+	"${FILESDIR}"/${P}-avoid_dive_into_py_subdir.patch
+)
 
 python_make() {
 	emake \
@@ -124,8 +129,14 @@ pkg_postinst() {
 
 	# In order for the nftables-restore systemd service to start
 	# the save_file must exist.
-	if [[ ! -f ${save_file} ]]; then
-		touch ${save_file}
+	if [[ ! -f "${save_file}" ]]; then
+		touch "${save_file}"
+	elif [[ $(( "$( stat --printf '%05a' "${save_file}" )" & 07177 )) -ne 0 ]]; then
+		ewarn "Your system has dangerous permissions for ${save_file}"
+		ewarn "It is probably affected by bug #691326."
+		ewarn "You may need to fix the permissions of the file. To do so,"
+		ewarn "you can run the command in the line below as root."
+		ewarn "    'chmod 600 \"${save_file}\"'"
 	fi
 
 	elog "If you wish to enable the firewall rules on boot (on systemd) you"
