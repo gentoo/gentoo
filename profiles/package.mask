@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Last (and only) release in 2005.  EAPI 0.  No reverse dependencies.
+# Removal in 30 days.  Bug #693640.
+media-libs/libipod
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
 # Proprietary software with restricted download access.  Last bumped
 # in 2011.  Still at EAPI 0.  Of the two revdeps, both make FMOD
 # optional and support alternative sound systems.
