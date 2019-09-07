@@ -1,0 +1,31 @@
+From e789f68895f71b7ad31057177810ca0161bf790e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pawe=C5=82=20Chmielowski?= <pchmielowski@process-one.net>
+Date: Tue, 6 Aug 2019 12:37:28 +0200
+Subject: [PATCH] Don't escape ' inside "", this is not valid yaml
+
+This fixes issue #13
+---
+ src/fast_yaml.erl | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/fast_yaml.erl b/src/fast_yaml.erl
+index db2be4a..11e453c 100644
+--- a/src/fast_yaml.erl
++++ b/src/fast_yaml.erl
+@@ -146,7 +146,6 @@ encode(B, _) when is_binary(B) ->
+            ($\s) -> [$\s];  % $\s ==  "space"
+            ($\t) -> [$\\, "t"];  % $\t ==  "tab"
+            ($\v) -> [$\\, "v"];  % $\v ==  "vertical tab"
+-           ($') -> [$\\, $'];    % $"  ==  simple quote
+            ($") -> [$\\, $"];    % $"  ==  double quote
+            ($\\) -> [$\\, $\\];  % $\\ ==  backslash
+           (C) -> C
+@@ -382,7 +381,7 @@ encode_decode_vertical_tab_test() ->
+ 
+ encode_decode_simple_quote_test() ->
+     FileName = filename:join(["..", "test", "temp_test.yml"]),
+-    Binary = <<"\'\"\'">>,
++    Binary = <<"'\"'">>,
+     Encoded = encode([[{'Source', Binary}]]),
+     file:write_file(FileName, Encoded),
+     Decoded = decode_from_file(FileName, [plain_as_atom]),
