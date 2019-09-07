@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Has a build failure reported.  Project discontinued and homepage gone.
+# Last bumped in 2007.  No reverse dependencies.
+# Removal in 30 days.  Bug #664494.
+media-libs/libjackasyn
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
 # Last (and only) release in 2005.  EAPI 0.  No reverse dependencies.
 # Removal in 30 days.  Bug #693640.
 media-libs/libipod
