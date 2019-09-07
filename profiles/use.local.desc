@@ -3397,10 +3397,11 @@ games-emulation/zsnes:pax_kernel - Triggers a paxmarking of the binary
 games-engines/exult:sdl2 - Use libsdl2 instead of libsdl
 games-engines/frobtads:tads2compiler - Build TADS2 compiler
 games-engines/frobtads:tads3compiler - Build TADS3 compiler
+games-engines/odamex:client - Build client target
 games-engines/odamex:master - Build master server target (advertises odamex server list)
-games-engines/odamex:odalaunch - Build the wxwidgets based launcher.
-games-engines/odamex:portmidi - Enable portmidi support.
-games-engines/odamex:server - Build server target.
+games-engines/odamex:odalaunch - Build the wxWidgets based launcher
+games-engines/odamex:portmidi - Enable PortMidi support
+games-engines/odamex:server - Build server target
 games-engines/openmw:devtools - Install development tools like bsatool, esmtool and opencs.
 games-engines/renpy:development - Install IDE for game developers and an empty game template
 games-engines/residualvm:mpeg2 - enable mpeg2 codec for cutscenes

@@ -11411,7 +11411,7 @@ games-engines/gargoyle 2011.1-r1: An Interactive Fiction (IF) player supporting 
 games-engines/gemrb 0.8.3-r1: Reimplementation of the Infinity engine
 games-engines/love 0.7.2-r2 0.8.0-r1 0.8.0-r2 0.10.2 11.1 9999: A framework for 2D games in Lua
 games-engines/nazghul 0.7.1-r1: A computer role-playing game (CRPG) engine with game called HaximA
-games-engines/odamex 0.7.0-r1: Online multiplayer, free software engine for Doom and Doom II
+games-engines/odamex 0.8.1: Online multiplayer free software engine for DOOM
 games-engines/openmw 0.45.0: Open source reimplementation of TES III: Morrowind
 games-engines/openxcom 1.0.0_p20180317 9999: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/qtads 2.1.7-r1: Multimedia interpreter for TADS text adventures
@@ -18515,7 +18515,7 @@ www-apps/mediawiki 1.32.0 1.32.2: The MediaWiki wiki web application (as used on
 www-apps/metadot 6.1.6-r1 6.4.5.4-r2: Metadot is a CMS with file, page and link management, and collaboration features
 www-apps/mirmon 2.10: Simple webapp to monitor the status of mirrors
 www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module using Apache
-www-apps/moodle 3.5.7 3.6.5 3.7.1: The Moodle Course Management System
+www-apps/moodle 3.5.8 3.6.6 3.7.2: The Moodle Course Management System
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
 www-apps/nanoc 4.10.4 4.11.7 4.11.8 4.11.9 4.11.10: nanoc is a simple but very flexible static site generator written in Ruby
