@@ -104,7 +104,6 @@ src_prepare() {
 	rm "plugins/position/libqtposition_geoclue.so" || die
 	rm "plugins/position/libqtposition_positionpoll.so" || die
 	rm "plugins/printsupport/libcupsprintersupport.so" || die
-	rm "plugins/qmltooling/libqmldbg_debugger.so" || die
 	rm "plugins/qmltooling/libqmldbg_inspector.so" || die
 	rm "plugins/qmltooling/libqmldbg_local.so" || die
 	rm "plugins/qmltooling/libqmldbg_messages.so" || die
@@ -159,7 +158,6 @@ src_prepare() {
 	rm "qml/QtQuick/PrivateWidgets/libwidgetsplugin.so" || die
 	rm "qml/QtQuick/Scene2D/libqtquickscene2dplugin.so" || die
 	rm "qml/QtQuick/Scene3D/libqtquickscene3dplugin.so" || die
-	rm "qml/QtQuick/VirtualKeyboard/Styles/libqtvirtualkeyboardstylesplugin.so" || die
 	rm "qml/QtQuick/XmlListModel/libqmlxmllistmodelplugin.so" || die
 	rm "qml/QtScxml/libdeclarative_scxml.so" || die
 	rm "qml/QtSensors/libdeclarative_sensors.so" || die
@@ -181,7 +179,6 @@ src_prepare() {
 	rm "qml/QtQuick/Controls.2/Fusion/libqtquickcontrols2fusionstyleplugin.so" || die
 	rm "qml/QtQuick/Controls.2/Imagine/libqtquickcontrols2imaginestyleplugin.so" || die
 	rm "qml/QtQml/RemoteObjects/libqtqmlremoteobjects.so" || die
-	rm "qml/Qt/labs/handlers/libhandlersplugin.so" || die
 	rm "qml/Qt/labs/location/liblocationlabsplugin.so" || die
 
 	default
