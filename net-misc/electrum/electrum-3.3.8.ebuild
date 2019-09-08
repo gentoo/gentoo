@@ -15,7 +15,7 @@ SRC_URI="https://download.electrum.org/${PV}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="cli ncurses qrcode +qt5"
 
 REQUIRED_USE="|| ( cli ncurses qt5 )"
