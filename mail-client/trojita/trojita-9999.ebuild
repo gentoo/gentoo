@@ -17,7 +17,7 @@ HOMEPAGE="http://trojita.flaska.net/"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-IUSE="addressbook +crypt +dbus debug +password +spell test +zlib"
+IUSE="+crypt +dbus debug +password pim +spell test +zlib"
 
 REQUIRED_USE="password? ( dbus )"
 
@@ -34,13 +34,13 @@ DEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
-	addressbook? ( kde-apps/akonadi-contacts:5 )
 	crypt? (
 		>=app-crypt/gpgme-1.8.0[cxx,qt5]
 		dev-libs/mimetic
 	)
 	dbus? ( dev-qt/qtdbus:5 )
 	password? ( dev-libs/qtkeychain[qt5(+)] )
+	pim? ( kde-apps/akonadi-contacts:5 )
 	spell? ( kde-frameworks/sonnet:5 )
 	zlib? ( sys-libs/zlib )
 "
@@ -59,12 +59,12 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_ABOOKADDRESSBOOK_PLUGIN=ON
-		-DWITH_AKONADIADDRESSBOOK_PLUGIN=$(usex addressbook)
 		-DWITH_CRYPTO_MESSAGES=$(usex crypt)
 		-DWITH_GPGMEPP=$(usex crypt)
 		-DWITH_MIMETIC=$(usex crypt)
 		-DWITH_DBUS=$(usex dbus)
 		-DWITH_QTKEYCHAIN_PLUGIN=$(usex password)
+		-DWITH_AKONADIADDRESSBOOK_PLUGIN=$(usex pim)
 		-DWITH_SONNET_PLUGIN=$(usex spell)
 		-DBUILD_TESTING=$(usex test)
 		-DWITH_ZLIB=$(usex zlib)
