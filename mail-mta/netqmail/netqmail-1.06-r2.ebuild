@@ -43,6 +43,8 @@ RESTRICT="test"
 
 DEPEND="
 	!mail-mta/qmail
+	acct-group/nofiles
+	acct-group/qmail
 	net-mail/queue-repair
 	ssl? ( dev-libs/openssl:0= )
 	sys-apps/groff
