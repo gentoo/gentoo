@@ -1107,7 +1107,7 @@ app-editors/focuswriter 1.7.2: Fullscreen and distraction-free word processor
 app-editors/fte 20110708-r1: Lightweight text-mode editor
 app-editors/gedit 3.30.2 3.32.2: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.30.1 3.32.2: Official plugins for gedit
-app-editors/ghex 3.18.3 3.18.4-r1: GNOME hexadecimal editor
+app-editors/ghex 3.18.4-r1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.8.0: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gnome-latex 3.28.1: Integrated LaTeX environment for GNOME
 app-editors/gummi 0.6.6-r2: Simple LaTeX editor for GTK+ users
@@ -4702,7 +4702,7 @@ dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolo
 dev-lang/tinycobol 0.65.9: COBOL for linux
 dev-lang/tk 8.5.17-r1 8.5.17-r100 8.5.17-r101 8.6.8 8.6.9 8.6.9.1: Tk Widget Set
 dev-lang/tuprolog 2.9.2 3.0.1 3.1.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
-dev-lang/vala 0.36.18 0.36.19 0.36.20 0.40.14 0.40.15 0.40.16 0.42.7 0.44.7 0.45.91: Compiler for the GObject type system
+dev-lang/vala 0.36.18 0.36.19 0.36.20 0.40.14 0.40.15 0.40.16 0.42.7 0.44.7 0.46.0: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.6.0 3.6.0-r1 3.7.0-r1: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3 6.3.3-r1: YAP is a high-performance Prolog compiler
@@ -5220,7 +5220,7 @@ dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library fo
 dev-libs/utfcpp 2.3.4 3.1 9999: UTF-8 C++ library
 dev-libs/uthash 2.0.2: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
-dev-libs/vala-common 0.40.14 0.42.7 0.44.7 0.45.91: Build infrastructure for packages that use Vala
+dev-libs/vala-common 0.40.14 0.42.7 0.44.7 0.46.0: Build infrastructure for packages that use Vala
 dev-libs/vanessa-adt 0.0.6 0.0.9: Abstract Data Types. Includes queue, dynamic array, hash and key value ADT
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
 dev-libs/vc 1.3.0 1.3.3 1.4.1: SIMD Vector Class Library for C++
@@ -12056,7 +12056,7 @@ gnome-extra/nautilus-actions 3.2.4: Configures programs to be launched when file
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to locations
 gnome-extra/nemo 3.6.4-r1 3.8.6-r1 4.0.6: A file manager for Cinnamon, forked from Nautilus
-gnome-extra/nm-applet 1.8.20 1.8.22: GNOME applet for NetworkManager
+gnome-extra/nm-applet 1.8.22: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/pch-session 3.30.0.2: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r1 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
@@ -15519,7 +15519,7 @@ net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netprofiles-ims 0.1.0134: Netprofiles Interface Management System manages network configurations
 net-misc/netsed 0.01b-r1: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.16.0 1.16.2 1.18.2: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.18.2: A set of co-operative tools that make networking simple and straightforward
 net-misc/networkmanager-wireguard 9999: NetworkManager WireGuard plugin
 net-misc/nextcloud-client 2.5.2: Desktop Syncing Client for Nextcloud
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
@@ -16453,7 +16453,7 @@ sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping appl
 sci-geosciences/gdal-grass 2.1.3: GDAL plugin to access GRASS data
 sci-geosciences/geocode-glib 3.26.1: GLib helper library for geocoding services
 sci-geosciences/gmt 4.5.6 4.5.8 4.5.9 4.5.18: Powerful map generator
-sci-geosciences/gnome-maps 3.30.3 3.30.3.1: A map application for GNOME
+sci-geosciences/gnome-maps 3.30.3.1: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.17-r3 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
@@ -17752,6 +17752,7 @@ sys-cluster/pmix 2.1.1: The Process Management Interface (PMI) Exascale
 sys-cluster/polysh 0.4-r1: Aggregate several remote shells into one
 sys-cluster/poolmon 0.5 0.6: A director mailserver pool monitoring script for Dovecot
 sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Charm++ Applications
+sys-cluster/rdma-core 24.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
 sys-cluster/singularity 2.6.1: Application containers for Linux
@@ -18079,7 +18080,7 @@ sys-libs/libcxx 6.0.1 7.1.0 8.0.0 8.0.1 9.0.0.9999 10.0.0.9999: New implementati
 sys-libs/libcxxabi 6.0.1 7.1.0 8.0.0 8.0.1 9.0.0.9999 10.0.0.9999: Low level support for a standard C++ library
 sys-libs/libcxxrt 0.0_p20180311 9999: C++ Runtime from PathScale, FreeBSD and NetBSD
 sys-libs/libfaketime 0.9.6-r1 0.9.6-r2 0.9.7: Report faked system time to programs
-sys-libs/libhugetlbfs 2.20 2.21: easy hugepage access
+sys-libs/libhugetlbfs 2.21 2.22: easy hugepage access
 sys-libs/libhx 3.22-r1 3.24: Platform independent library providing basic system functions
 sys-libs/libieee1284 0.2.11-r4 0.2.11-r5 0.2.11-r6: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client

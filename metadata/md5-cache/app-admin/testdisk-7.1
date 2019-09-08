@@ -5,11 +5,11 @@ DESCRIPTION=Checks and undeletes partitions + PhotoRec, signature based recovery
 EAPI=7
 HOMEPAGE=https://www.cgsecurity.org/wiki/TestDisk
 IUSE=ewf jpeg ntfs qt5 reiserfs static zlib
-KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~hppa ~ppc ~ppc64 ~x86
 LICENSE=GPL-2+
 RDEPEND=!static? ( static? ( sys-apps/util-linux[static-libs] sys-fs/e2fsprogs[static-libs] sys-libs/ncurses:0[static-libs] jpeg? ( virtual/jpeg:0[static-libs] ) ntfs? ( sys-fs/ntfs3g:=[static-libs] ) reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8[static-libs] ) zlib? ( sys-libs/zlib[static-libs] ) !arm? ( ewf? ( app-forensics/libewf:=[static-libs] ) ) ) !static? ( sys-apps/util-linux sys-fs/e2fsprogs sys-libs/ncurses:0= jpeg? ( virtual/jpeg:0 ) ntfs? ( sys-fs/ntfs3g ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8 ) zlib? ( sys-libs/zlib ) !arm? ( ewf? ( app-forensics/libewf:= ) ) ) )
 REQUIRED_USE=static? ( !qt5 )
 SLOT=0
 SRC_URI=https://www.cgsecurity.org/testdisk-7.1.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=f510c55943c19e036e707403d92eeeb9
+_md5_=e77c514c33c21e7e3d9af90840003081
