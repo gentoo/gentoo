@@ -17,7 +17,8 @@ else
 	else
 		MY_PV="${PV/_/-}"
 		MY_P="${PN}-${MY_PV}"
-		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/${MY_PV}/${MY_P}.tar.gz"
+		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/${MY_PV}/${MY_P}.tar.gz
+			https://dl.mumble.info/${MY_P}.tar.gz"
 		S="${WORKDIR}/${P/_*}"
 	fi
 	KEYWORDS="~amd64 ~arm64 ~x86"
