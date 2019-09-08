@@ -1,7 +1,7 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit latex-package
 
@@ -24,17 +24,16 @@ SRC_URI="mirror://gentoo/${P}-base.zip
 LICENSE="LPPL-1.2 free-noncomm"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 TEXMF="/usr/share/texmf-site"
 
 src_prepare() {
+	default
 	# remove spurious files, so that doins -r is possible later
-	find . -type f -name '.*' | xargs rm -f
+	find . -type f -name '.*' | xargs rm -f || die
 }
 
 src_install() {
@@ -55,5 +54,5 @@ src_install() {
 	dodoc -r doc/fonts/fraktur/*
 
 	# symlink for texdoc
-	dosym /usr/share/doc/${PF} ${TEXMF}/doc/fonts/fraktur
+	dosym ../../../doc/${PF} ${TEXMF}/doc/fonts/fraktur
 }
