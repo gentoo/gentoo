@@ -16,6 +16,8 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="+expvfst +hfst"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 RESTRICT="test"
 
 DEPEND="${PYTHON_DEPS}
