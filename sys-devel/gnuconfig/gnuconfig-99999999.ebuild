@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils
 if [[ ${PV} == "99999999" ]] ; then
@@ -31,9 +31,9 @@ maint_pkg_create() {
 	cp "${FILESDIR}"/${PV}/*.patch . || die
 
 	local tar="${T}/gnuconfig-${ver}.tar.bz2"
-	tar -jcf ${tar} ./* || die "creating tar failed"
+	tar -jcf "${tar}" ./* || die "creating tar failed"
 	einfo "Packaged tar now available:"
-	einfo "$(du -b ${tar})"
+	einfo "$(du -b "${tar}")"
 }
 
 src_unpack() {
@@ -46,7 +46,8 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${S}"/*.patch
+	default
+	eapply "${S}"/*.patch
 	use elibc_uclibc && sed -i 's:linux-gnu:linux-uclibc:' testsuite/config-guess.data #180637
 }
 
