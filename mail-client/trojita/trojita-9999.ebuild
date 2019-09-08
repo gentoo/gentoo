@@ -23,10 +23,9 @@ REQUIRED_USE="password? ( dbus )"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
-	test? ( dev-qt/qttest:5 )
 	zlib? ( virtual/pkgconfig )
 "
-DEPEND="
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
@@ -44,7 +43,9 @@ DEPEND="
 	spell? ( kde-frameworks/sonnet:5 )
 	zlib? ( sys-libs/zlib )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-qt/qttest:5 )
+"
 
 DOCS=( README LICENSE )
 
