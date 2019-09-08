@@ -33,7 +33,7 @@ if [[ -z ${KDE_ORG_NAME} ]]; then
 	KDE_ORG_NAME=${KMNAME:=$PN}
 fi
 
-inherit kde.org kde5-functions xdg
+inherit flag-o-matic kde.org kde5-functions xdg
 
 # @ECLASS-VARIABLE: KDE_AUTODEPS
 # @DESCRIPTION:
@@ -156,6 +156,27 @@ esac
 case ${KDE_AUTODEPS} in
 	false)
 		inherit cmake-utils
+		# @ECLASS-VARIABLE: ECM_KDEINSTALLDIRS
+		# @DESCRIPTION:
+		# If set to "false", do nothing.
+		# For any other value, assume the package is using KDEInstallDirs macro and switch
+		# KDE_INSTALL_USE_QT_SYS_PATHS to ON.
+		: ${ECM_KDEINSTALLDIRS:=true}
+
+		case ${KDE_DEBUG} in
+			false)	;;
+			*)
+				IUSE+=" debug"
+				;;
+		esac
+
+		case ${KDE_TEST} in
+			false)	;;
+			*)
+				IUSE+=" test"
+				DEPEND+=" test? ( dev-qt/qttest:5 )"
+				;;
+		esac
 		;;
 	*)
 		# all packages need breeze/oxygen icons for basic iconset, bug #564838
@@ -174,11 +195,46 @@ case ${KDE_AUTODEPS} in
 		[[ -z ${ECM_PO_DIRS} ]] && ECM_PO_DIRS=${KDE_PO_DIRS}
 		[[ -z ${ECM_QTHELP} ]] && ECM_QTHELP=${KDE_QTHELP}
 		[[ -z ${ECM_TEST} ]] && ECM_TEST=${KDE_TEST}
+		[[ -z ${KFMIN} ]] && KFMIN=${FRAMEWORKS_MINIMAL}
 		inherit ecm
 		;;
 esac
 
 EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
+
+# @FUNCTION: _kde5_strip_handbook_translations
+# @INTERNAL
+# @DESCRIPTION:
+# If LINGUAS is defined, enable only the requested translations when required.
+_kde5_strip_handbook_translations() {
+	if ! [[ -v LINGUAS ]]; then
+		return
+	fi
+
+	local lang po
+	for po in ${ECM_PO_DIRS}; do
+		if [[ -d ${po} ]] ; then
+			pushd ${po} > /dev/null || die
+			local lang
+			for lang in *; do
+				if [[ -e ${lang} ]] && ! has ${lang/.po/} ${LINGUAS} ; then
+					case ${lang} in
+						cmake_modules | \
+						CMakeLists.txt | \
+						${PN}.pot)	;;
+						*) rm -r ${lang} || die	;;
+					esac
+					if [[ -e CMakeLists.txt ]] ; then
+						cmake_comment_add_subdirectory ${lang}
+						sed -e "/add_subdirectory([[:space:]]*${lang}\/.*[[:space:]]*)/d" \
+							-i CMakeLists.txt || die
+					fi
+				fi
+			done
+			popd > /dev/null || die
+		fi
+	done
+}
 
 # @FUNCTION: kde5_pkg_pretend
 # @DESCRIPTION:
@@ -218,7 +274,26 @@ kde5_src_unpack() {
 kde5_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 	case ${KDE_AUTODEPS} in
-		false) cmake-utils_src_prepare ;;
+		false)
+			cmake-utils_src_prepare
+
+			_kde5_strip_handbook_translations
+
+			# only build unit tests when required
+			if ! { in_iuse test && use test; } ; then
+				if [[ ${KDE_TEST} = forceoptional ]] ; then
+					punt_bogus_dep Qt5 Test
+					# if forceoptional, also cover non-kde categories
+					cmake_comment_add_subdirectory autotests test tests
+				elif [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
+					cmake_comment_add_subdirectory autotests test tests
+				fi
+			fi
+			# in frameworks, tests = manual tests so never build them
+			if [[ ${CATEGORY} = kde-frameworks ]] && [[ ${PN} != extra-cmake-modules ]]; then
+				cmake_comment_add_subdirectory tests
+			fi
+			;;
 		*) ecm_src_prepare ;;
 	esac
 
@@ -244,7 +319,35 @@ kde5_src_prepare() {
 kde5_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 	case ${KDE_AUTODEPS} in
-		false) cmake-utils_src_configure ;;
+		false)
+			# we rely on cmake-utils.eclass to append -DNDEBUG too
+			if in_iuse debug && ! use debug; then
+				append-cppflags -DQT_NO_DEBUG
+			fi
+
+			local cmakeargs
+
+			if in_iuse test && ! use test ; then
+				cmakeargs+=( -DBUILD_TESTING=OFF )
+
+				if [[ ${KDE_TEST} = optional ]] ; then
+					cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON )
+				fi
+			fi
+			if [[ ${ECM_KDEINSTALLDIRS} != false ]] ; then
+				cmakeargs+=(
+					# install mkspecs in the same directory as qt stuff
+					-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+					# move handbook outside of doc dir, bug 667138
+					-DKDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help"
+				)
+			fi
+
+			# allow the ebuild to override what we set here
+			mycmakeargs=("${cmakeargs[@]}" "${mycmakeargs[@]}")
+
+			cmake-utils_src_configure
+			;;
 		*) ecm_src_configure ;;
 	esac
 }
