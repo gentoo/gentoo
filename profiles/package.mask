@@ -29,6 +29,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Does not start.  Last bumped in 2012, numerous releases behind
+# upstream.
+# Removal in 30 days.  Bug #609652.
+net-p2p/saku
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Last bumped in 2008.  Needs porting out of games.eclass.  Apparently
+# does not work in testing mode, and requires rare hardware and media
+# for normal operation.
+# Removal in 30 days.  Bug #654290.
+games-emulation/daphne
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Unmaintained.  EAPI 0.  Homepage gone.  Potential netqmail maintainer
+# indicates that it can be replaced by running one daemon from normal
+# qmail install.
+# Removal in 30 days.  Bug #693746.
+mail-mta/mini-qmail
+
 # Michał Górny <mgorny@gentoo.org> (2019-09-07)
 # Unmaintained.  Beta version from 2012.  The ebuild is currently
 # broken, and since it relies on CD install, so it needs someone with
