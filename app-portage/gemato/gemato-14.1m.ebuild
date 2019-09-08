@@ -19,6 +19,7 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~amd64-linux ~x86-linux"
 IUSE="+blake2 bzip2 +gpg lzma sha3 test tools"
+RESTRICT="!test? ( test )"
 
 MODULE_RDEPEND="
 	blake2? ( $(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' python{2_7,3_5} pypy{,3}) )
