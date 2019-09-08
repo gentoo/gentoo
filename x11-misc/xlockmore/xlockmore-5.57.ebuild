@@ -55,7 +55,7 @@ S=${WORKDIR}/${P/_alpha/ALPHA}
 
 src_unpack() {
 	unpack ${P/_alpha/ALPHA}.tar.xz
-	xz -cd ${DISTDIR}/ax_pthread.m4.xz > ${S}/ax_pthread.m4 || die
+	xz -cd "${DISTDIR}"/ax_pthread.m4.xz > "${S}"/ax_pthread.m4 || die
 }
 
 src_prepare() {
