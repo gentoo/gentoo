@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201909-07">
+  <title>Simple DirectMedia Layer: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Simple DirectMedia
+    Layer, the worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">libsdl2</product>
+  <announced>2019-09-08</announced>
+  <revised count="1">2019-09-08</revised>
+  <bug>690064</bug>
+  <bug>692392</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libsdl2" auto="yes" arch="*">
+      <unaffected range="ge">2.0.10</unaffected>
+      <vulnerable range="lt">2.0.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Simple DirectMedia Layer is a cross-platform development library
+      designed to provide low level access to audio, keyboard, mouse, joystick,
+      and graphics hardware via OpenGL and Direct3D.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Simple DirectMedia
+      Layer. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      audio or video, possibly resulting in execution of arbitrary code with
+      the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Simple DirectMedia Layer users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libsdl2-2.0.10"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13626">CVE-2019-13626</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7572">CVE-2019-7572</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7573">CVE-2019-7573</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7574">CVE-2019-7574</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7575">CVE-2019-7575</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7576">CVE-2019-7576</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7577">CVE-2019-7577</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7578">CVE-2019-7578</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7635">CVE-2019-7635</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7636">CVE-2019-7636</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7638">CVE-2019-7638</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-09-07T00:08:23Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-09-08T17:40:28Z">b-man</metadata>
+</glsa>
