@@ -1,0 +1,64 @@
+From d5899b457d3215db991761e57aa4e091e4b24f28 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 9 Oct 2008 15:51:35 -0400
+Subject: [PATCH] add ps2 targets to config.sub
+
+We no longer carry the "ps2" target as that conflicts with the long
+standing shortcut for the i386-ibm-aix target.
+---
+ config.sub | 25 +++++++++++++++++++++++--
+ 1 file changed, 23 insertions(+), 2 deletions(-)
+
+diff --git a/config.sub b/config.sub
+index a318a4686850..837d23369163 100755
+--- a/config.sub
++++ b/config.sub
+@@ -810,6 +810,27 @@ case $basic_machine in
+ 		vendor=atari
+ 		os=mint
+ 		;;
++	mipsEE* | ee)
++		cpu=mips64r5900el
++		vendor=scei
++		case $os in
++		    linux*)
++			;;
++		    *)
++			os=elf
++			;;
++		esac
++		;;
++	iop)
++		cpu=mipsel
++		vendor=scei
++		os=irx
++		;;
++	dvp)
++		cpu=dvp
++		vendor=scei
++		os=elf
++		;;
+ 	news-3600 | risc-news)
+ 		cpu=mips
+ 		vendor=sony
+@@ -1172,7 +1193,7 @@ case $cpu-$vendor in
+ 			| bfin | bpf | bs2000 \
+ 			| c[123]* | c30 | [cjt]90 | c4x \
+ 			| c8051 | clipper | craynv | csky | cydra \
+-			| d10v | d30v | dlx | dsp16xx \
++			| d10v | d30v | dlx | dsp16xx | dvp \
+ 			| e2k | elxsi | epiphany \
+ 			| f30[01] | f700 | fido | fr30 | frv | ft32 | fx80 \
+ 			| h8300 | h8500 \
+@@ -1359,7 +1380,7 @@ case $os in
+ 	     | uxpv* | beos* | mpeix* | udk* | moxiebox* \
+ 	     | interix* | uwin* | mks* | rhapsody* | darwin* \
+ 	     | openstep* | oskit* | conix* | pw32* | nonstopux* \
+-	     | storm-chaos* | tops10* | tenex* | tops20* | its* \
++	     | storm-chaos* | tops10* | tenex* | tops20* | its* | irx* \
+ 	     | os2* | vos* | palmos* | uclinux* | nucleus* \
+ 	     | morphos* | superux* | rtmk* | windiss* \
+ 	     | powermax* | dnix* | nx6 | nx7 | sei* | dragonfly* \
+-- 
+2.19.1
+
