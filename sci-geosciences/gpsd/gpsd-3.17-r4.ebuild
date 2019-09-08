@@ -79,6 +79,8 @@ src_prepare() {
 	fi
 
 	epatch "${FILESDIR}"/${P}-do_not_rm_library.patch
+	epatch "${FILESDIR}"/${P}-scons-print.patch
+	epatch "${FILESDIR}"/${P}-scons-py3.patch
 
 	# Avoid useless -L paths to the install dir
 	sed -i \
