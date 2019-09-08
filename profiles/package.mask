@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Unmaintained.  EAPI 0.  Added in 2003 and not updated since.
+# Apparently FreeBSD had a 1.4.4 but upstream homepage is already gone.
+# Not keyworded on amd64.
+# Removal in 30 days.  Bug #693750.
+app-text/freepwing
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
 # Added in 2008 and not updated since.  EAPI 0.  Upstream homepage
 # disappeared.  Not keyworded on amd64.
 # Removal in 30 days.  Bug #693748.
