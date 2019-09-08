@@ -30,6 +30,18 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Suite of NIH libraries.  Only dev-libs/vanessa-logger has external
+# revdep of net-misc/aggregate-flim.  All others only revdep between
+# themselves.  Almost all packages are EAPI 0, and date back
+# to 2002-2010 (one is EAPI 5 / 2015 but has no revdeps).
+# Removal in 30 days.  Bug #693820.
+dev-libs/vanessa-adt
+dev-libs/vanessa-logger
+net-libs/vanessa-mcast
+net-libs/vanessa-socket
+net-misc/aggregate-flim
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
 # Unmaintained.  Added in 2004.  Upstream is gone.  EAPI 0.  No amd64
 # keyword.  No reverse dependencies.
 # Removal in 30 days.  Bug #693812.
