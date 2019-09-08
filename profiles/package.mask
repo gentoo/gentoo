@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Unmaintained.  EAPI 0.  Homepage gone.  Potential netqmail maintainer
+# indicates that it can be replaced by running one daemon from normal
+# qmail install.
+# Removal in 30 days.  Bug #693746.
+mail-mta/mini-qmail
+
 # Michał Górny <mgorny@gentoo.org> (2019-09-07)
 # Unmaintained.  Beta version from 2012.  The ebuild is currently
 # broken, and since it relies on CD install, so it needs someone with
