@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Last bumped in 2009.  EAPI 0.  Keyworded only for the dead x86-bsd
+# port.  No reverse dependencies.
+# Removal in 30 days.  Bug #693768.
+dev-libs/libvolume_id
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
 # Unmaintained.  Added in 2002 and not updated since.  EAPI 0.  No amd64
 # keywords.  Apparently the only revdep was Stratego which was removed
 # in the past.
