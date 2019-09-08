@@ -501,7 +501,7 @@ app-benchmarks/cpuburn 1.4a-r3: CPU testing utilities in optimized assembler for
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workload Generator
 app-benchmarks/forkbomb 1.4-r1: Controlled fork() bomber for testing heavy system load
-app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.3.3 4.4.1: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
+app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.3.3 4.4.1 5.0.0: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
 app-benchmarks/hey 0.1.1_p20181017: HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
 app-benchmarks/httperf 0.9.1_p20181111 0.9.1_p20181111-r1: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
@@ -13100,7 +13100,7 @@ media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your 
 media-gfx/psftools 1.0.7 1.0.10: Utilities for manipulation of console fonts in PSF format
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
 media-gfx/pycam 0.5.1 0.6.2 0.6.4: Open Source CAM - Toolpath Generation for 3-Axis CNC machining
-media-gfx/qimgv 0.7.3 9999: A cross-platform image viewer with webm support. Written in qt5.
+media-gfx/qimgv 0.8.2 9999: A cross-platform image viewer with webm support. Written in qt5.
 media-gfx/qiv 2.3.2: Quick Image Viewer
 media-gfx/qrencode 4.0.2: C library for encoding data in a QR Code symbol
 media-gfx/qrencode-python 1.02_pre140921: A simple wrapper for the C qrencode library
