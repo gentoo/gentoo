@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>juippis@gentoo.org</email>
+    <name>Joonas Niilola</name>
+  </maintainer>
+  <use>
+    <flag name='expvfst'>Enable experimental features of VFST morphology backend</flag>
+    <flag name='hfst'>Enable HFST morphology backend</flag>
+  </use>
+</pkgmetadata>
