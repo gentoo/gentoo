@@ -105,21 +105,10 @@ qmail_set_cc() {
 	sed -e "s#'ar #'$(tc-getAR) #" -e "s#'ranlib #'$(tc-getRANLIB) #" -i make-makelib.sh
 }
 
-# @FUNCTION: qmail_create_groups
-# @DESCRIPTION:
-# Keep qmail groups in sync across ebuilds
-qmail_create_groups() {
-	einfo "Creating qmail groups"
-	enewgroup nofiles 200
-	enewgroup qmail 201
-}
-
 # @FUNCTION: qmail_create_users
 # @DESCRIPTION:
 # Keep qmail users in sync across ebuilds
 qmail_create_users() {
-	qmail_create_groups
-
 	einfo "Creating qmail users"
 	enewuser alias 200 -1  "${QMAIL_HOME}"/alias 200
 	enewuser qmaild 201 -1 "${QMAIL_HOME}" 200
