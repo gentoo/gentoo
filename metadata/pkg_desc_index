@@ -1190,7 +1190,7 @@ app-emacs/bubblet 0.74-r1: A bubble-popping game
 app-emacs/buffer-extension 0.1: Some enhanced functions for buffer manipulate
 app-emacs/calfw 1.3 1.6: A calendar framework for Emacs
 app-emacs/chess 2.0.4: A chess client and library for Emacs
-app-emacs/circe 1.3 2.7: A great IRC client for Emacs
+app-emacs/circe 1.3 2.7 2.11: A great IRC client for Emacs
 app-emacs/cldoc 1.16: Show Common Lisp operators and variables information in echo area
 app-emacs/color-browser 0.3-r1: A utility for designing Emacs color themes
 app-emacs/color-moccur 2.73: Major mode for color moccur
@@ -1287,7 +1287,7 @@ app-emacs/mode-compile 2.29.1: Smart command for compiling files according to ma
 app-emacs/mpg123-el 1.59 1.60: Emacs front-end to mpg123 audio player and OggVorbis audio player
 app-emacs/mu-cite 8.1_p201202272330 8.1_p201808232348: Message citation utilities for emacsen
 app-emacs/multi-term 1.4: Manage multiple terminal buffers in Emacs
-app-emacs/multiple-cursors 1.3.0: Multiple cursors for Emacs
+app-emacs/multiple-cursors 1.3.0 1.4.0: Multiple cursors for Emacs
 app-emacs/muse 3.20: An authoring and publishing environment for Emacs
 app-emacs/nagios-mode 0.3-r1: Major mode for editing Nagios configuration files
 app-emacs/navi2ch 1.8.4-r1: A navigator for the Japanese textboard 2ch
@@ -11965,7 +11965,7 @@ games-util/xgame 1.7.1-r1: Run games in a separate X session
 games-util/xgame-gtk2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
-gnome-base/dconf 0.26.1 0.30.1: Simple low-level configuration system
+gnome-base/dconf 0.26.1 0.30.1 0.32.0: Simple low-level configuration system
 gnome-base/dconf-editor 3.30.2: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.30.3-r3: GNOME Display Manager for managing graphical display servers and user logins
@@ -13345,7 +13345,7 @@ media-libs/libipod 0.1: lightweight and fast library written in C for managing A
 media-libs/libiptcdata 1.0.4-r1: library for manipulating the International Press Telecommunications Council (IPTC) metadata
 media-libs/libirman 0.4.5: library for Irman control of Unix software
 media-libs/libjackasyn 0.13: An application/library for connecting OSS apps to Jackit
-media-libs/libjpeg-turbo 1.5.3-r2 2.0.1 2.0.2: MMX, SSE, and SSE2 SIMD accelerated JPEG library
+media-libs/libjpeg-turbo 1.5.3-r2 2.0.2 2.0.3: MMX, SSE, and SSE2 SIMD accelerated JPEG library
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
 media-libs/libkate 0.4.1-r3: Codec for karaoke and text encapsulation for Ogg
 media-libs/liblastfm 1.1.0_pre20150206: Collection of libraries to integrate Last.fm services
@@ -17787,7 +17787,7 @@ sys-devel/clang 5.0.2 6.0.1 7.1.0 8.0.0 8.0.1 9.0.0.9999 10.0.0.9999: C language
 sys-devel/clang-common 6.0.1 7.1.0 8.0.0 8.0.1 9.0.0.9999 10.0.0.9999: Common files shared between multiple slots of clang
 sys-devel/clang-runtime 5.0.2 6.0.1 7.1.0 8.0.0 8.0.1 9.0.0.9999 10.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.2.0 2.3.0: Extensible perl-based build utility
-sys-devel/crossdev 20181020 20181202 20190311 20190712 20190901 99999999: Gentoo Cross-toolchain generator
+sys-devel/crossdev 20181020 20181202 20190311 20190712 20190901 20190908 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.3.2-r5 3.3.3: Distribute compilation of C code across several machines on a network
