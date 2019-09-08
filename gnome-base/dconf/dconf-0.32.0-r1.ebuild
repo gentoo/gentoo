@@ -42,6 +42,20 @@ src_configure() {
 	meson_src_configure
 }
 
+src_install() {
+	meson_src_install
+
+	# GSettings backend may be one of: memory, gconf, dconf
+	# Only dconf is really considered functional by upstream
+	# must have it enabled over gconf if both are installed
+	# This snippet can't be removed until gconf package is
+	# ensured to not install a /etc/env.d/50gconf and then
+	# still consider the CONFIG_PROTECT_MASK bit.
+	echo 'CONFIG_PROTECT_MASK="/etc/dconf"' >> 51dconf
+	echo 'GSETTINGS_BACKEND="dconf"' >> 51dconf
+	doenvd 51dconf
+}
+
 src_test() {
 	virtx meson_src_test
 }
