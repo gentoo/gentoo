@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-multilib eapi7-ver java-pkg-opt-2 libtool toolchain-funcs
+inherit cmake-multilib java-pkg-opt-2 libtool toolchain-funcs
 
 DESCRIPTION="MMX, SSE, and SSE2 SIMD accelerated JPEG library"
 HOMEPAGE="https://libjpeg-turbo.org/ https://sourceforge.net/projects/libjpeg-turbo/"
@@ -86,7 +86,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	find "${ED}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 
 	insinto /usr/share/doc/${PF}/html
 	doins -r "${S}"/doc/html/*
