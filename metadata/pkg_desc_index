@@ -1881,6 +1881,7 @@ app-misc/delay 1.6-r2: Sleeplike program that counts down the number of seconds 
 app-misc/detachtty 9-r1 11.0.0: Attach/detach from interactive processes across the network
 app-misc/detox 1.2.0-r3: Safely remove spaces and strange characters from filenames
 app-misc/devtodo 0.1.20-r3: A nice command line todo list for developers
+app-misc/dfshow 0.8.0_beta: DF-SHOW is a Unix-like rewrite of some of the applications from DF-EDIT
 app-misc/digitemp 3.7.1: Temperature logging and reporting using Maxim's iButtons and 1-Wire protocol
 app-misc/dnetc 2.9108.517 2.9112.521: distributed.net client
 app-misc/dtach 0.8-r1 0.9: Emulates the detach feature of screen
@@ -11940,7 +11941,7 @@ games-util/joystick 1.6.0 1.6.1: joystick testing utilities
 games-util/lgogdownloader 3.5 9999: Unofficial GOG.com downloader for Linux
 games-util/linux-wbfs-manager 0.1.12 9999: WBFS manager for Linux using GTK+
 games-util/loki_patch 20091105: Loki Software binary patch tool
-games-util/lutris 0.5.2.1 0.5.2.2 9999: An open source gaming platform for GNU/Linux
+games-util/lutris 0.5.2.1 0.5.2.2 0.5.3 9999: An open source gaming platform for GNU/Linux
 games-util/mcrcon 0.6.1: Remote connection client for Minecraft servers
 games-util/nml 0.4.5 0.4.5-r1: Compiler of NML files into grf/nfo files
 games-util/pogo-manager-bin 0.1.6 0.1.7: Pokemon Go manager
@@ -15670,7 +15671,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270: utility to download media contents from the web
-net-misc/youtube-dl 2019.08.13 2019.09.01 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2019.09.01 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.3.3 3.5.4 3.5.5 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17249,7 +17250,7 @@ sys-apps/dbus 1.12.16: A message bus system, a simple way for applications to ta
 sys-apps/dbus-broker 18 21 9999: Linux D-Bus Message Broker
 sys-apps/dcfldd 1.3.4.1-r1: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
-sys-apps/debianutils 4.8.3 4.8.6.2 4.8.6.3: A selection of tools from Debian
+sys-apps/debianutils 4.8.3 4.8.6.3 4.9: A selection of tools from Debian
 sys-apps/diffutils 3.6-r1 3.7: Tools to make diffs and compare files
 sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 3.1 3.2: DMI (Desktop Management Interface) table related utilities
@@ -19557,7 +19558,7 @@ x11-wm/fluxbox 1.3.7-r3 1.3.7-r4 9999: X11 window manager featuring tabs and an 
 x11-wm/fvwm 2.6.5-r3 2.6.8-r2: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.0 0.7.1 0.7.2 9999: A manual tiling window manager for X
-x11-wm/i3 4.14 4.15 4.16 4.16.1 9999: An improved dynamic tiling window manager
+x11-wm/i3 4.14 4.15 4.16 4.16.1 4.17.1 9999: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.16.1 4.16.1-r1: i3 fork with gaps and some more features
 x11-wm/icewm 1.5.5 1.6.1: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.4-r1 2.3.5 2.3.6 2.3.7: Very fast and lightweight still powerful window manager for X
