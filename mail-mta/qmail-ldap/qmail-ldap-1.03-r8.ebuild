@@ -43,6 +43,8 @@ RESTRICT="test"
 
 DEPEND="
 	!mail-mta/qmail
+	acct-group/nofiles
+	acct-group/qmail
 	net-nds/openldap
 	net-mail/queue-repair
 	ssl? ( dev-libs/openssl )
