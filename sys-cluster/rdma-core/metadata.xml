@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>zlogene@gentoo.org</email>
+        <name>Mikle Kolyada</name>
+    </maintainer>
+    <use>
+        <flag name="neigh">Enable iwpmd support</flag>
+        <flag name="python">Enable pyverbs support</flag>
+        <flag name="valgrind">Enable valgrind notations</flag>
+    </use>
+    <upstream>
+        <remote-id type="github">linux-rdma/rdma-core</remote-id>
+    </upstream>
+</pkgmetadata>
