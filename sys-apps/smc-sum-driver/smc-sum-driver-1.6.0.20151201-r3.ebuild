@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,8 +32,14 @@ pkg_nofetch() {
 }
 
 src_prepare() {
-	# Install new Makefile to respect users CFLAGS and LDFLAGS
-	cp "${FILESDIR}"/makefile Makefile
-
 	default
+
+	# Install new Makefile to respect users CFLAGS and LDFLAGS
+	cp "${FILESDIR}"/makefile Makefile || die
+}
+
+src_compile() {
+	BUILD_PARAMS="KDIR=${KV_OUT_DIR} M=${S}"
+
+	linux-mod_src_compile
 }
