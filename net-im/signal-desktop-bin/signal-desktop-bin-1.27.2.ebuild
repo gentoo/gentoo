@@ -23,10 +23,10 @@ RDEPEND="
 	net-print/cups
 	x11-libs/gtk+:3[X]
 	x11-libs/libXScrnSaver
-	x11-libs/libXtst
-	"
+	x11-libs/libXtst"
 
 QA_PREBUILT="opt/Signal/signal-desktop
+	opt/Signal/chrome-sandbox
 	opt/Signal/libffmpeg.so
 	opt/Signal/libGLESv2.so
 	opt/Signal/libnode.so
