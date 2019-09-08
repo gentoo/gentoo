@@ -3,7 +3,7 @@
 
 EAPI=0
 
-inherit eutils fixheadtails qmail
+inherit eutils fixheadtails
 
 DESCRIPTION="reads sendmail's .forward files under qmail"
 HOMEPAGE="http://cr.yp.to/dot-forward.html"
@@ -17,12 +17,12 @@ IUSE=""
 # See bug 97850
 RESTRICT="test"
 
-DEPEND=""
-RDEPEND=""
+DEPEND="
+	acct-group/nofiles
+	acct-group/qmail
+"
 
-pkg_setup() {
-	qmail_create_groups
-}
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}
