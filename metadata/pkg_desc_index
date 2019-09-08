@@ -2230,7 +2230,7 @@ app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2-r1: Distfile Patching Support for Gentoo Linux (tools)
 app-portage/eix 0.33.8: Search and query ebuilds
-app-portage/elicense 1.0.1 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
+app-portage/elicense 1.0.1 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.6.1-r1 0.7.6.2 0.7.6.3 0.7.6.4 0.7.6.5 0.7.6.6 0.7.7.1 0.7.8: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 2.7-r2 2.9: Elog viewer for Gentoo
 app-portage/elt-patches 20170317 20170422 20170815 20170826.1: Collection of patches for libtool.eclass
@@ -3099,7 +3099,7 @@ dev-db/mysql 5.6.44-r1 5.6.45-r2 5.7.26-r1 5.7.27-r1 8.0.17: A fast, multi-threa
 dev-db/mysql++ 2.3.2-r1 3.2.3-r1 3.2.4 3.2.5: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.34 7.3.22 7.4.21: An enhanced, drop-in replacement for MySQL
 dev-db/mysql-connector-c 6.1.11-r2 8.0.17-r3: C client library for MariaDB/MySQL
-dev-db/mysql-connector-c++ 1.1.9-r1 1.1.11-r1 1.1.12-r1 8.0.11 8.0.13 8.0.15: MySQL database connector for C++ (mimics JDBC 4.0 API)
+dev-db/mysql-connector-c++ 1.1.9-r1 1.1.11-r1 1.1.12-r1 8.0.11 8.0.13 8.0.15 8.0.17: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/mysql-init-scripts 2.3-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r4: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
 dev-db/mysql-workbench 8.0.16 8.0.17: MySQL Workbench
@@ -14949,7 +14949,7 @@ net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
 net-im/qtox 1.16.3 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.26.2: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.27.2: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skypeforlinux 8.51.0.92: Instant messaging client, with support for audio and video
 net-im/slack-bin 2.1.2 3.1.1 3.4.2 4.0.2: Team collaboration tool
@@ -15326,7 +15326,7 @@ net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
-net-misc/anydesk 4.0.1-r1 5.0.0: Feature rich multi-platform remote desktop application
+net-misc/anydesk 4.0.1-r1 5.0.0 5.1.2: Feature rich multi-platform remote desktop application
 net-misc/apt-cacher-ng 3.2 3.2_p2-r2: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
