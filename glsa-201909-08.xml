@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201909-08">
+  <title>D-Bus: Authentication bypass</title>
+  <synopsis>An authentication bypass was discovered in D-Bus.</synopsis>
+  <product type="ebuild">dbus</product>
+  <announced>2019-09-08</announced>
+  <revised count="1">2019-09-08</revised>
+  <bug>687900</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/dbus" auto="yes" arch="*">
+      <unaffected range="ge">1.12.16</unaffected>
+      <vulnerable range="lt">1.12.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>D-Bus is a message bus system which processes can use to talk to each
+      other.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that a local attacker could manipulate symbolic links
+      in their own home directory to bypass authentication and connect to a
+      DBusServer with elevated privileges.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker can bypass authentication mechanisms and elevate
+      privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All D-Bus users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/dbus-1.12.16"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-12749">CVE-2019-12749</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-09-07T17:12:55Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-09-08T17:40:45Z">b-man</metadata>
+</glsa>
