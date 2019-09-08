@@ -1,0 +1,13 @@
+--- src/source-af-packet.c.orig	2019-09-08 20:50:06.416466432 +0200
++++ src/source-af-packet.c	2019-09-08 20:53:26.144471385 +0200
+@@ -70,6 +70,10 @@
+ 
+ #ifdef HAVE_AF_PACKET
+ 
++#ifdef HAVE_LINUX_SOCKIOS_H
++#include <linux/sockios.h>
++#endif
++
+ #if HAVE_SYS_IOCTL_H
+ #include <sys/ioctl.h>
+ #endif
