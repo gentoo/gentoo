@@ -297,6 +297,9 @@ _calculate_src_uri() {
 		kross)
 			_kmname="portingAids/${_kmname}"
 			;;
+		kdesignerplugin)
+			[[ ${PV} = 5.6[01].* ]] || _kmname="portingAids/${_kmname}"
+			;;
 	esac
 
 	case ${CATEGORY} in
