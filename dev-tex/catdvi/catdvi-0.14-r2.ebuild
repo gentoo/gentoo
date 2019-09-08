@@ -1,28 +1,29 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils autotools toolchain-funcs flag-o-matic
+inherit autotools toolchain-funcs flag-o-matic
 
 DESCRIPTION="DVI to plain text translator"
 HOMEPAGE="http://catdvi.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="virtual/tex-base
 	dev-libs/kpathsea"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-kpathsea.patch"
+	eapply "${FILESDIR}"/${P}-kpathsea.patch
+	eapply_user
 	eautoconf
-	has_version '>=dev-libs/kpathsea-6.2.1' && append-cppflags "$($(tc-getPKG_CONFIG) --cflags kpathsea)"
+	has_version '>=dev-libs/kpathsea-6.2.1' \
+		&& append-cppflags "$($(tc-getPKG_CONFIG) --cflags kpathsea)"
 }
 
 src_compile() {
