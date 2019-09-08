@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -12,19 +12,17 @@ SRC_URI="http://www.tim-mann.org/trs80/${PN}${PV//.}.zip"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${LDFLAGS}" || die
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${LDFLAGS}"
 }
 
 src_install() {
-	dobin zmac || die
-	doman zmac.1 || die
-	dodoc ChangeLog MAXAM NEWS README || die
+	dobin zmac
+	doman zmac.1
+	dodoc ChangeLog MAXAM NEWS README
 }
