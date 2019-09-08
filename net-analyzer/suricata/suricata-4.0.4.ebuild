@@ -131,8 +131,8 @@ src_install() {
 	fowners -R ${PN}: "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"
 	fperms 750 "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"
 
-	newinitd "${FILESDIR}/${PN}-4.0.3-init" ${PN}
-	newconfd "${FILESDIR}/${PN}-4.0.3-conf" ${PN}
+	newinitd "${FILESDIR}/${P}-init" ${PN}
+	newconfd "${FILESDIR}/${P}-conf" ${PN}
 
 	if use logrotate; then
 		insopts -m0644
