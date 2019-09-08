@@ -4048,8 +4048,8 @@ mail-client/thunderbird:system-libvpx - Use the system-wide media-libs/libvpx in
 mail-client/thunderbird:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 mail-client/thunderbird:system-webp - Use the system-wide media-libs/libwebp instead of bundled.
 mail-client/thunderbird-bin:crashreporter - Enable crash reporter for bugs
-mail-client/trojita:addressbook - Build kde-apps/akonadi addressbook plugin
 mail-client/trojita:password - Store passwords securely via dev-libs/qtkeychain
+mail-client/trojita:pim - Enable support for KDE PIM resources integration via kde-apps/akonadi addressbook plugin
 mail-filter/MailScanner:exim - Set mail-mta/exim to used MTA
 mail-filter/MailScanner:postfix - Set mail-mta/postfix to used MTA
 mail-filter/MailScanner:spamassassin - Enable usage of mail-filter/spamassassin for spam protection
