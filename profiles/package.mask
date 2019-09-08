@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Added in 2008 and not updated since.  EAPI 0.  Upstream homepage
+# disappeared.  Not keyworded on amd64.
+# Removal in 30 days.  Bug #693748.
+app-emulation/vov
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
 # Does not start.  Last bumped in 2012, numerous releases behind
 # upstream.
 # Removal in 30 days.  Bug #609652.
