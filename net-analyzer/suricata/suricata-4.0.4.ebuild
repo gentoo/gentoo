@@ -48,6 +48,7 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}/${P}_configure-lua-flags.patch"
 	epatch "${FILESDIR}/${P}_sockios.patch"
+	sed -ie 's/docdir =.*/docdir = ${datarootdir}\/doc\/'${PF}'\//' "${S}/doc/Makefile.am"
 	eautoreconf
 }
 
@@ -125,8 +126,8 @@ src_install() {
 		doins rules/*.rules
 	fi
 
-	dodir "/var/lib/${PN}"
-	dodir "/var/log/${PN}"
+	keepdir "/var/lib/${PN}"
+	keepdir "/var/log/${PN}"
 
 	fowners -R ${PN}: "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"
 	fperms 750 "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"
