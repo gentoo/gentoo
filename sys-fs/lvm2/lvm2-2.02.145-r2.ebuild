@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils linux-info multilib systemd toolchain-funcs udev flag-o-matic usr-ldscript
+inherit autotools eutils linux-info multilib systemd toolchain-funcs udev flag-o-matic
 
 DESCRIPTION="User-land utilities for LVM2 (device-mapper) software"
 HOMEPAGE="https://sourceware.org/lvm2/"
@@ -222,9 +222,7 @@ src_install() {
 		dolib.a libdm/ioctl/libdevmapper.a
 		if use !device-mapper-only ; then
 			dolib.a libdaemon/client/libdaemonclient.a #462908
-			#gen_usr_ldscript libdevmapper.so
 			dolib.a daemons/dmeventd/libdevmapper-event.a
-			#gen_usr_ldscript libdevmapper-event.so
 		fi
 	else
 		rm -f "${ED}"usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a
