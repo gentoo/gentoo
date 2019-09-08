@@ -63,7 +63,7 @@ esac
 RDEPEND="virtual/tmpfiles"
 
 # @FUNCTION: dotmpfiles
-# @USAGE: dotmpfiles <tmpfiles.d_file> ...
+# @USAGE: <tmpfiles.d_file> ...
 # @DESCRIPTION:
 # Install one or more tmpfiles.d files into /usr/lib/tmpfiles.d.
 dotmpfiles() {
@@ -84,7 +84,7 @@ dotmpfiles() {
 }
 
 # @FUNCTION: newtmpfiles
-# @USAGE: newtmpfiles <old-name> <new-name>.conf
+# @USAGE: <old-name> <new-name>.conf
 # @DESCRIPTION:
 # Install a tmpfiles.d file in /usr/lib/tmpfiles.d under a new name.
 newtmpfiles() {
@@ -102,7 +102,7 @@ newtmpfiles() {
 }
 
 # @FUNCTION: tmpfiles_process
-# @USAGE: tmpfiles_process <filename> <filename> ...
+# @USAGE: <filename> <filename> ...
 # @DESCRIPTION:
 # Call a tmpfiles.d implementation to create new volatile and temporary
 # files and directories.
