@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Last bumped in 2008.  Needs porting out of games.eclass.  Apparently
+# does not work in testing mode, and requires rare hardware and media
+# for normal operation.
+# Removal in 30 days.  Bug #654290.
+games-emulation/daphne
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
 # Unmaintained.  EAPI 0.  Homepage gone.  Potential netqmail maintainer
 # indicates that it can be replaced by running one daemon from normal
 # qmail install.
