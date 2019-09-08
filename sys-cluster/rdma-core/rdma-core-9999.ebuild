@@ -34,6 +34,7 @@ DEPEND="${COMMON_DEPEND}
 	python? ( dev-python/cython[${PYTHON_USEDEP}] )"
 
 RDEPEND="${COMMON_DEPEND}
+	!!sys-fabric/infiniband-diags
 	!sys-fabric/libibverbs
 	!sys-fabric/librdmacm
 	!sys-fabric/libibumad
