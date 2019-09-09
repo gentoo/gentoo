@@ -5,9 +5,9 @@ DESCRIPTION=WAD composer for Doom, Heretic, Hexen, and Strife
 EAPI=7
 HOMEPAGE=https://github.com/Doom-Utils/deutex
 IUSE=man png
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2+ LGPL-2+ HPND
 RDEPEND=png? ( media-libs/libpng:0= )
 SLOT=0
 SRC_URI=https://github.com/Doom-Utils/deutex/releases/download/v5.2.0/deutex-5.2.0.tar.xz
-_md5_=bb53e8057d75f273097133ede5d1602e
+_md5_=a333c658412f8253cd79a4aef1c34f84
