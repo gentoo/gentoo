@@ -8,7 +8,7 @@ HOMEPAGE="https://linuxcontainers.org/lxd/introduction/"
 
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 IUSE="+daemon +ipv6 +dnsmasq nls test tools"
 
@@ -91,29 +91,47 @@ EGO_PN="github.com/lxc/lxd"
 src_prepare() {
 	eapply_user
 	eapply "${FILESDIR}/de-translation-newline-1.patch"
-	eapply "${FILESDIR}/ptbr-translation-newline.patch"
 
-	cd "${S}/dist/dqlite" || die "Can't cd to dqlite dir"
+	cd "${S}/_dist/deps/raft" || die "Can't cd to raft dir"
+	# Workaround for " * ACCESS DENIED:  open_wr:      /dev/zfs"
+	sed -i 's#zfs version | cut -f 2#< /sys/module/zfs/version cut -f 1#' configure.ac || die "Can't sed configure.ac for raft"
 	eautoreconf
+
+	cd "${S}/_dist/deps/dqlite" || die "Can't cd to dqlite dir"
+	eautoreconf
+
 }
 
 src_configure() {
-	export GOPATH="${S}/dist"
-	cd "${GOPATH}/sqlite" || die "Can't cd to sqlite dir"
+	export GOPATH="${S}/_dist"
+	cd "${GOPATH}/deps/sqlite" || die "Can't cd to sqlite dir"
 	econf --enable-replication --disable-amalgamation --disable-tcl --libdir="${EPREFIX}/usr/lib/lxd"
 
-	cd "${GOPATH}/dqlite" || die "Can't cd to dqlite dir"
+	cd "${GOPATH}/deps/raft" || die "Can't cd to raft dir"
+	PKG_CONFIG_PATH="${GOPATH}/raft/" econf --libdir=${EPREFIX}/usr/lib/lxd
+
+	cd "${GOPATH}/deps/dqlite" || die "Can't cd to dqlite dir"
+	export RAFT_CFLAGS="-I${GOPATH}/deps/raft/include/"
+	export RAFT_LIBS="${GOPATH}/deps/raft/.libs"
+	export CO_CFLAGS="-I${GOPATH}/deps/libco/"
+	export CO_LIBS="${GOPATH}/deps/libco/"
 	PKG_CONFIG_PATH="${GOPATH}/sqlite/" econf --libdir=${EPREFIX}/usr/lib/lxd
 }
 
 src_compile() {
-	export GOPATH="${S}/dist"
+	export GOPATH="${S}/_dist"
 
-	cd "${GOPATH}/sqlite" || die "Can't cd to sqlite dir"
+	cd "${GOPATH}/deps/sqlite" || die "Can't cd to sqlite dir"
 	emake
 
-	cd "${GOPATH}/dqlite" || die "Can't cd to dqlite dir"
-	emake CFLAGS="-I${GOPATH}/sqlite" LDFLAGS="-L${GOPATH}/sqlite"
+	cd "${GOPATH}/deps/raft" || die "Can't cd to raft dir"
+	emake
+
+	cd "${GOPATH}/deps/libco" || die "Can't cd to libco dir"
+	emake
+
+	cd "${GOPATH}/deps/dqlite" || die "Can't cd to dqlite dir"
+	emake CFLAGS="-I${GOPATH}/deps/sqlite -I${GOPATH}/deps/raft/include" LDFLAGS="-L${GOPATH}/deps/sqlite -L${GOPATH}/deps/raft"
 
 	# We don't use the Makefile here because it builds targets with the
 	# assumption that `pwd` is in a deep gopath namespace, which we're not.
@@ -125,9 +143,9 @@ src_compile() {
 
 		# LXD depends on a patched, bundled sqlite with replication
 		# capabilities.
-		export CGO_CFLAGS="-I${GOPATH}/sqlite/ -I${GOPATH}/dqlite/include/"
-		export CGO_LDFLAGS="-L${GOPATH}/sqlite/.libs/ -L${GOPATH}/dqlite/.libs/ -Wl,-rpath,${EPREFIX}/usr/lib/lxd"
-		export LD_LIBRARY_PATH="${GOPATH}/sqlite/.libs/:${GOPATH}/dqlite/.libs/"
+		export CGO_CFLAGS="${CGO_CFLAGS} -I${GOPATH}/deps/sqlite/ -I${GOPATH}/deps/dqlite/include/ -I${GOPATH}/deps/raft/include/ -I${GOPATH}/deps/libco/"
+		export CGO_LDFLAGS="${CGO_LDFLAGS} -L${GOPATH}/deps/sqlite/.libs/ -L${GOPATH}/deps/dqlite/.libs/ -L${GOPATH}/deps/raft/.libs -L${GOPATH}/deps/libco/ -Wl,-rpath,${EPREFIX}/usr/lib/lxd"
+		export LD_LIBRARY_PATH="${GOPATH}/deps/sqlite/.libs/:${GOPATH}/deps/dqlite/.libs/:${GOPATH}/deps/raft/.libs:${GOPATH}/deps/libco/:${LD_LIBRARY_PATH}"
 
 		go install -v -x -tags libsqlite3 ${EGO_PN}/lxd || die "Failed to build the daemon"
 	fi
@@ -144,7 +162,7 @@ src_compile() {
 
 src_test() {
 	if use daemon; then
-		export GOPATH="${S}/dist"
+		export GOPATH="${S}/_dist"
 		# This is mostly a copy/paste from the Makefile's "check" rule, but
 		# patching the Makefile to work in a non "fully-qualified" go namespace
 		# was more complicated than this modest copy/paste.
@@ -160,15 +178,21 @@ src_test() {
 }
 
 src_install() {
-	local bindir="dist/bin"
+	local bindir="_dist/bin"
 	dobin ${bindir}/lxc
 	if use daemon; then
 
-		export GOPATH="${S}/dist"
-		cd "${GOPATH}/sqlite" || die "Can't cd to sqlite dir"
+		export GOPATH="${S}/_dist"
+		cd "${GOPATH}/deps/sqlite" || die "Can't cd to sqlite dir"
 		emake DESTDIR="${D}" install
 
-		cd "${GOPATH}/dqlite" || die "Can't cd to dqlite dir"
+		cd "${GOPATH}/deps/raft" || die "Can't cd to raft dir"
+		emake DESTDIR="${D}" install
+
+		cd "${GOPATH}/deps/libco" || die "Can't cd to libco dir"
+		dolib.so libco.so || die "Can't install libco.so"
+
+		cd "${GOPATH}/deps/dqlite" || die "Can't cd to dqlite dir"
 		emake DESTDIR="${D}" install
 
 		# Must only install libs
