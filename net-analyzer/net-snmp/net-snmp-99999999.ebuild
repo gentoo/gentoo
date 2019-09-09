@@ -13,7 +13,7 @@ inherit autotools distutils-r1 eutils git-r3 perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://www.net-snmp.org/"
-EGIT_REPO_URI="https://git.code.sf.net/p/net-snmp/code"
+EGIT_REPO_URI="https://github.com/net-snmp/net-snmp"
 SRC_URI="
 	https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-3.tar.xz
 "
