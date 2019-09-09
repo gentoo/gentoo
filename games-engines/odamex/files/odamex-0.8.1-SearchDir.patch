@@ -1,0 +1,11 @@
+diff -Naur a/common/d_main.cpp b/common/d_main.cpp
+--- a/common/d_main.cpp	2019-07-22 19:11:28.000000000 +0100
++++ b/common/d_main.cpp	2019-09-09 22:57:47.624246017 +0100
+@@ -459,6 +459,7 @@
+ 	D_AddSearchDir(dirs, INSTALL_PREFIX "/" INSTALL_DATADIR "/games/odamex", separator);
+ 	#endif
+ 
++	D_AddSearchDir(dirs, "/usr/share/doom", separator);
+ 	D_AddSearchDir(dirs, "/usr/share/games/doom", separator);
+ 	D_AddSearchDir(dirs, "/usr/local/share/games/doom", separator);
+ 	D_AddSearchDir(dirs, "/usr/local/share/doom", separator);
