@@ -71,7 +71,7 @@ src_compile() {
 src_install() {
 	if use client ; then
 		newicon -s 128 "${S}/media/icon_${PN}_128.png" "${PN}.png"
-		make_desktop_entry "${PN} -waddir /usr/share/doom" "Odamex"
+		make_desktop_entry "${PN}" "Odamex"
 
 		if use odalaunch ; then
 			newicon -s 128 "${S}/media/icon_odalaunch_128.png" "odalaunch.png"
