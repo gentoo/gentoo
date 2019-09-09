@@ -9,7 +9,7 @@ SRC_URI="https://github.com/Doom-Utils/${PN}/releases/download/v${PV}/${P}.tar.x
 
 LICENSE="GPL-2+ LGPL-2+ HPND"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="man png"
 
 DEPEND="png? ( media-libs/libpng:0= )"
