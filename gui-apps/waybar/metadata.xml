@@ -13,7 +13,6 @@
         Highly customizable Wayland bar for Sway and Wlroots based compositors.
     </longdescription>
     <use>
-        <flag name="libcxx">Build with Clang's libc++ instead of libstdc++ on Linux.</flag>
         <flag name="mpd">Enable support for the Music Player Daemon</flag>
         <flag name="network">Enable libnl support for network related features</flag>
         <flag name="tray">Enable support for tray</flag>
