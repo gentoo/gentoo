@@ -5,6 +5,10 @@
 # iasl is keyworded ~arm64
 sys-firmware/seabios -debug
 
+# Eugene Bright <eugene@bright.gdn> (2019-09-09)
+# Missing keyword on dev-embedded/libjaylink
+sys-apps/flashrom jlink_spi
+
 # Aaron Bauman <bman@gentoo.org> (2019-08-05)
 # dep not keyworded here
 media-gfx/gnome-photos upnp-av
