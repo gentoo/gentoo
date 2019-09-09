@@ -18,7 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="libcxx mpd network pulseaudio tray +udev"
+IUSE="mpd network pulseaudio tray +udev"
 
 BDEPEND="
 	>=app-text/scdoc-1.9.2
@@ -35,7 +35,6 @@ DEPEND="
 	dev-libs/wayland
 	dev-libs/wayland-protocols
 	gui-libs/wlroots
-	libcxx? ( sys-libs/libcxx )
 	mpd? ( media-libs/libmpdclient )
 	network? ( dev-libs/libnl:3 )
 	pulseaudio? ( media-sound/pulseaudio )
@@ -56,7 +55,6 @@ src_configure() {
 		$(meson_feature pulseaudio)
 		$(meson_feature tray dbusmenu-gtk)
 		$(meson_feature udev libudev)
-		$(meson_use libcxx)
 	)
 	meson_src_configure
 }
