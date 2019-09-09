@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  Added in 2001, no new releases since.  EAPI 0.
+# Multiple QA issues.  No amd64 keywords.
+# Removal in 30 days.  Bug #693864.
+net-mail/fastforward
+
 # Michał Górny <mgorny@gentoo.org> (2019-09-08)
 # Suite of NIH libraries.  Only dev-libs/vanessa-logger has external
 # revdep of net-misc/aggregate-flim.  All others only revdep between
