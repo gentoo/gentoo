@@ -24,7 +24,7 @@ DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	media-video/mpv[libmpv]
-	exif? ( media-libs/libexif )
+	exif? ( media-gfx/exiv2:0 )
 	kde? ( kde-frameworks/kwindowsystem:5 )
 "
 RDEPEND="
