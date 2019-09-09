@@ -86,7 +86,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	virtual/ttf-fonts
 	media-fonts/roboto
 	>=media-libs/fontconfig-2.12.4
-	>=media-libs/freetype-2.8
+	>=media-libs/freetype-2.10.1
 	>=media-libs/libass-0.13.4
 	!raspberry-pi? ( media-libs/mesa[egl,X(+)] )
 	>=media-libs/taglib-1.11.1
