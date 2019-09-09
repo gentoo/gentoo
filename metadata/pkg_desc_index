@@ -1352,7 +1352,7 @@ app-emacs/typing 1.1.4: The Typing of Emacs -- an Elisp parody of The Typing of 
 app-emacs/uboat 1.2: Generate u-boat-death messages, patterned after Iron Coffins
 app-emacs/undo-tree 0.6.6: Undo trees and visualization
 app-emacs/uptimes 2.3-r2 3.7: Track and display emacs session uptimes
-app-emacs/vhdl-mode 3.35.1 3.38.1: VHDL-mode for Emacs
+app-emacs/vhdl-mode 3.38.1: VHDL-mode for Emacs
 app-emacs/visual-basic-mode 1.4.12: A mode for editing Visual Basic programs
 app-emacs/vm 8.2.0_beta-r1: The VM mail reader for Emacs
 app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
