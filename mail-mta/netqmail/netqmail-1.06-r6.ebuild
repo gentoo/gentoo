@@ -48,6 +48,13 @@ DEPEND="
 	!mail-mta/qmail
 	acct-group/nofiles
 	acct-group/qmail
+	acct-user/alias
+	acct-user/qmaild
+	acct-user/qmaill
+	acct-user/qmailp
+	acct-user/qmailq
+	acct-user/qmailr
+	acct-user/qmails
 	net-mail/queue-repair
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.1:0= )
@@ -87,8 +94,6 @@ pkg_setup() {
 		eerror
 		die "QMAIL_PATCH_DIR is not supported anymore"
 	fi
-
-	qmail_create_users
 }
 
 src_unpack() {
