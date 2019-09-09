@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-VENDOR_URI="https://dev.gentoo.org/~whubbs/dist/${P}-vendor.tar.gz"
+VENDOR_URI="https://dev.gentoo.org/~williamh/dist/${P}-vendor.tar.gz"
 
 DESCRIPTION="the spiffe runtime environment"
 HOMEPAGE="https://github.com/spiffe/spire"
