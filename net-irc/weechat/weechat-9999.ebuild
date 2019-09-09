@@ -135,14 +135,6 @@ src_configure() {
 		-DENABLE_XFER=$(usex xfer)
 	)
 
-	if use python; then
-		python_export PYTHON_LIBPATH
-		mycmakeargs+=(
-			-DPYTHON_EXECUTABLE="${PYTHON}"
-			-DPYTHON_LIBRARY="${PYTHON_LIBPATH}"
-		)
-	fi
-
 	cmake-utils_src_configure
 }
 
