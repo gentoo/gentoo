@@ -9,5 +9,5 @@ LICENSE=GPL-2+ GPL-3+
 RDEPEND=wanderlust? ( app-emacs/wanderlust ) >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/knu/elscreen/archive/20180321.tar.gz -> elscreen-20180321.tar.gz
-_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
 _md5_=6c74efa88945c09264057a8ce6acc1f4
