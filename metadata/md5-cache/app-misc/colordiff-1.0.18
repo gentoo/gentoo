@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl sys-apps/diffutils
 SLOT=0
 SRC_URI=https://www.colordiff.org/colordiff-1.0.18.tar.gz
-_eclasses_=prefix	e51c7882b7b721e54e684f7eb143cbfe
+_eclasses_=prefix	c2993e4c430c1ee24f278983d6189501
 _md5_=f834c327224f1669ec6e57fd4ae5aaba
