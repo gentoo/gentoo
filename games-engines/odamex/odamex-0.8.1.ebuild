@@ -40,7 +40,7 @@ PATCHES=(
 src_prepare() {
 	rm -r libraries/libminiupnpc odamex.wad || die
 
-	setup-wxwidgets
+	use odalaunch && setup-wxwidgets
 
 	cmake-utils_src_prepare
 }
