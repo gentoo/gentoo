@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# virtual/jdk is not stable here.
+sci-mathematics/z3 java
+
 # Mart Raudsepp <leio@gentoo.org> (2019-08-27)
 # Missing stable net-libs/webkit-gtk
 dev-util/glade webkit
