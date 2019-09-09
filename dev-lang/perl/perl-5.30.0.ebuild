@@ -357,9 +357,6 @@ src_configure() {
 	export LC_ALL="C"
 	[[ ${COLUMNS:-1} -ge 1 ]] || unset COLUMNS # bug #394091
 
-	# some arches and -O do not mix :)
-	use ppc && replace-flags -O? -O1
-
 	# Perl has problems compiling with -Os in your flags with glibc
 	use elibc_uclibc || replace-flags "-Os" "-O2"
 
@@ -372,16 +369,11 @@ src_configure() {
 	# This flag makes compiling crash in interesting ways
 	filter-flags "-malign-double"
 
-	# Fixes bug #97645
-	use ppc && filter-flags "-mpowerpc-gpopt"
-
-	# Fixes bug #143895 on gcc-4.1.1
-	filter-flags "-fsched2-use-superblocks"
-
 	# Generic LTO broken since 5.28, triggers EUMM failures
 	filter-flags "-flto"
 
 	use sparc && myconf -Ud_longdbl
+	use sparc && myconf -Dd_u32align # bug #676062
 
 	export BUILD_BZIP2=0
 	export BZIP2_INCLUDE=${EROOT}/usr/include
