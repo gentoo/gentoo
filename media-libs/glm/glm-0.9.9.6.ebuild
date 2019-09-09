@@ -29,3 +29,8 @@ src_configure() {
 
 	cmake-utils_src_configure
 }
+
+src_install() {
+	doheader -r glm
+	dodoc -r *md doc/*
+}
