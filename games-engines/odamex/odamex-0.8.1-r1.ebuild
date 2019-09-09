@@ -4,7 +4,7 @@
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-inherit cmake-utils desktop wxwidgets xdg
+inherit cmake-utils desktop prefix wxwidgets xdg
 
 DESCRIPTION="Online multiplayer free software engine for DOOM"
 HOMEPAGE="https://odamex.net/"
@@ -35,10 +35,12 @@ S="${WORKDIR}/${PN}-src-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-miniupnpc.patch
+	"${FILESDIR}"/${P}-SearchDir.patch
 )
 
 src_prepare() {
 	rm -r libraries/libminiupnpc odamex.wad || die
+	hprefixify common/d_main.cpp
 
 	use odalaunch && setup-wxwidgets
 
