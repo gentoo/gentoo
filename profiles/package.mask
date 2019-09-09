@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  Added in 2004 and not bumped since.  Homepage is gone.
+# EAPI 0.  No amd64 keyword.
+# Removal in 30 days.  Bug #693900.
+sys-apps/checkservice
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
 # Unmaintained.  Last bumped in 2012, last release in 2007.  EAPI 0.
 # No amd64 keyword.
 # Removal in 30 days.  Bug #693888.
