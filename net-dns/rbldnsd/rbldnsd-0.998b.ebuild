@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
 inherit toolchain-funcs user python-any-r1
@@ -16,16 +16,16 @@ KEYWORDS="~amd64 ~hppa ~sparc ~x86 ~x86-fbsd"
 IUSE="ipv6 test zlib"
 
 RDEPEND="zlib? ( sys-libs/zlib )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	test? (
+		${RDEPEND}
 		${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-python/pydns:2[${PYTHON_USEDEP}]')
 	)"
 
 PATCHES=(
 	"${FILESDIR}/rbldnsd-0.997a-robust-ipv6-test-support.patch"
-	"${FILESDIR}/rbldnsd-0.997a-format-security-compile-fix.patch"
-	"${FILESDIR}/rbldnsd-0.998-fix-huge-zone-OOM.patch"
 )
 
 src_configure() {
@@ -60,8 +60,8 @@ src_install() {
 	newconfd "${FILESDIR}"/confd-0.997a rbldnsd
 }
 
-pkg_postinst() {
+pkg_preinst() {
 	enewgroup rbldns
-	enewuser rbldns -1 -1 /var/db/rbldnsd rbldns
+	enewuser rbldns -1 -1 -1 rbldns
 	fowners rbldns:rbldns /var/db/rbldnsd
 }
