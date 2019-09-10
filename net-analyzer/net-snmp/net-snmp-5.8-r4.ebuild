@@ -83,6 +83,7 @@ src_prepare() {
 	use selinux && eapply "${FILESDIR}"/${PN}-5.1.2-snmpconf-selinux.patch
 
 	eapply "${FILESDIR}"/${PN}-5.7.3-include-limits.patch
+	eapply "${FILESDIR}"/${PN}-5.8-do-not-conflate-LDFLAGS-and-LIBS.patch
 	eapply "${FILESDIR}"/${PN}-5.8-my_bool.patch
 	eapply "${FILESDIR}"/${PN}-5.8-pcap.patch
 	eapply "${FILESDIR}"/${PN}-5.8-tinfo.patch
