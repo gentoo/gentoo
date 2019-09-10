@@ -10454,7 +10454,7 @@ dev-tcltk/tix 8.4.3-r1: A widget library for Tcl/Tk
 dev-tcltk/tkTheme 1.0-r2: Tcl/Tk Theming library
 dev-tcltk/tkXwin 1.0-r4: Tcl/Tk library to detect idle periods of an X session
 dev-tcltk/tkcon 2.5: Tk GUI console
-dev-tcltk/tkdnd 2.2 2.6 2.8: Extension that adds native drag & drop capabilities to the tk toolkit
+dev-tcltk/tkdnd 2.8: Extension that adds native drag & drop capabilities to the tk toolkit
 dev-tcltk/tkimg 1.4-r9 1.4.7: Adds a lot of image formats to Tcl/Tk
 dev-tcltk/tklib 0.6-r1 0.6-r2: Collection of utility modules for Tk, and a companion to Tcllib
 dev-tcltk/tkpiechart 6.5-r1: create and update 2D or 3D pie charts in a Tcl/Tk application
@@ -12971,7 +12971,7 @@ media-gfx/fbgrab 1.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12 2.13-r1 2.14 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/fblogo 0.5.2: Creates images to substitute Linux boot logo
 media-gfx/fdm-materials 3.4.1 3.6.0 4.2.0: FDM materials for media-gfx/cura
-media-gfx/feh 3.1.1 3.1.3 3.2 3.2.1: A fast, lightweight imageviewer using imlib2
+media-gfx/feh 3.2.1: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but simpler
 media-gfx/fim 0.5_rc3: Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
 media-gfx/flam3 3.0.1 3.1.1: Tools and a library for creating flame fractal images
@@ -18200,7 +18200,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1 0.5-r2 0.5-r3 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20190422 20190622 20190722 20190822: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20190722 20190822: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pidof-bsd 20050501-r4: pidof(1) utility for *BSD
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2 0.6.4: A utility for parallelizing execution of shell functions
@@ -18219,7 +18219,7 @@ sys-process/tiptop 2.2 2.3.1: top for performance counters
 sys-process/top-apple 73: Apple's top from Mac OS X Lion 10.7
 sys-process/uksmd 0_pre20190726: Userspace KSM helper daemon
 sys-process/unixtop 3.8_beta1-r3: top for UNIX systems
-sys-process/usbtop 0.2: utility that shows an estimated instantaneous bandwidth on USB buses and devices
+sys-process/usbtop 0.2 1.0: utility that shows an estimated instantaneous bandwidth on USB buses and devices
 sys-process/vixie-cron 4.1-r14 4.1-r15: Paul Vixie's cron daemon, a fully featured crond implementation
 sys-process/wait_on_pid 0.0.2-r1: small utility to wait for an arbitrary process to exit
 sys-process/watchpid 0.1-r2: Watches a process for termination
