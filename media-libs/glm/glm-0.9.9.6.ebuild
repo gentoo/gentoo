@@ -16,6 +16,14 @@ IUSE="test cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_avx cpu_flags_x86
 
 RDEPEND="virtual/opengl"
 
+src_prepare() {
+	cmake-utils_src_prepare
+	sed \
+		-e "s:@CMAKE_INSTALL_PREFIX@:${EPREFIX}/usr:" \
+		-e "s:@GLM_VERSION@:0.9.9:" \
+		"${FILESDIR}"/glm.pc.in > glm.pc || die
+}
+
 src_configure() {
 	if use test; then
 		local mycmakeargs=(
@@ -34,5 +42,5 @@ src_install() {
 	doheader -r glm
 	dodoc -r *md doc/*
 	insinto /usr/$(get_libdir)/pkgconfig
-	doins "${FILESDIR}"/glm.pc
+	doins glm.pc
 }
