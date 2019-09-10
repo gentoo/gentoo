@@ -4,18 +4,28 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit autotools python-single-r1 xdg-utils
-
-MY_PV="${PV}-1"
-MY_P="${PN}-${MY_PV}"
+inherit python-single-r1 xdg-utils
 
 DESCRIPTION="A library for manipulating block devices"
 HOMEPAGE="https://github.com/storaged-project/libblockdev"
-SRC_URI="https://github.com/storaged-project/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+if [[ "${PV}" == *9999 ]] ; then
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://github.com/storaged-project/libblockdev.git"
+	BDEPEND="
+		sys-devel/autoconf-archive
+		gtk-doc? ( dev-util/gtk-doc )
+	"
+else
+	MY_PV="${PV}-1"
+	#MY_P="${PN}-${MY_PV}"
+	#SRC_URI="https://github.com/storaged-project/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+	SRC_URI="https://github.com/storaged-project/${PN}/releases/download/${MY_PV}/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+	#S="${WORKDIR}/${MY_P}"
+fi
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="bcache +cryptsetup device-mapper dmraid doc escrow lvm kbd test +tools vdo"
+IUSE="bcache +cryptsetup device-mapper dmraid escrow gtk-doc introspection lvm kbd test +tools vdo"
 
 RDEPEND="
 	>=dev-libs/glib-2.42.2
@@ -46,16 +56,14 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
-BDEPEND="
-	>=dev-libs/gobject-introspection-1.3.0
-	sys-devel/autoconf-archive
-	doc? ( dev-util/gtk-doc )
+
+BDEPEND+="
+	dev-util/gtk-doc-am
+	introspection? ( >=dev-libs/gobject-introspection-1.3.0 )
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		escrow? ( cryptsetup )"
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	python-single-r1_pkg_setup
@@ -64,7 +72,7 @@ pkg_setup() {
 src_prepare() {
 	xdg_environment_reset #623992
 	default
-	eautoreconf
+	[[ "${PV}" == *9999 ]] && eautoreconf
 }
 
 src_configure() {
@@ -74,13 +82,14 @@ src_configure() {
 		--with-part
 		--without-mpath
 		--without-nvdimm
+		$(use_enable introspection)
 		$(use_enable test tests)
 		$(use_with bcache)
 		$(use_with cryptsetup crypto)
 		$(use_with device-mapper dm)
 		$(use_with dmraid)
-		$(use_with doc gtk-doc)
 		$(use_with escrow)
+		$(use_with gtk-doc)
 		$(use_with kbd)
 		$(use_with lvm lvm)
 		$(use_with lvm lvm-dbus)
@@ -103,5 +112,10 @@ src_configure() {
 
 src_install() {
 	default
-	find "${ED}" -name "*.la" -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
+	# This is installed even with USE=-lvm, but libbd_lvm are omitted so it
+	# doesn't work at all.
+	if ! use lvm; then
+		rm -f "${ED}"/usr/bin/lvm-cache-stats || die
+	fi
 }
