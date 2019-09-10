@@ -33,4 +33,6 @@ src_configure() {
 src_install() {
 	doheader -r glm
 	dodoc -r *md doc/*
+	insinto /usr/$(get_libdir)/pkgconfig
+	doins "${FILESDIR}"/glm.pc
 }
