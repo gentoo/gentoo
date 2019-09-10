@@ -19613,7 +19613,7 @@ xfce-base/xfce4-session 4.12.1-r2 4.13.3 4.13.4 4.14.0: A session manager for th
 xfce-base/xfce4-settings 4.12.4-r1 4.14.0 4.14.1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.1-r1 4.13.7 4.13.8 4.14.1: A configuration management system for Xfce
 xfce-base/xfdesktop 4.12.4 4.12.5-r1 4.13.5 4.13.6 4.14.0 4.14.1: Desktop manager for the Xfce desktop environment
-xfce-base/xfwm4 4.12.5-r1 4.13.3 4.13.4 4.14.0: Window manager for the Xfce desktop environment
+xfce-base/xfwm4 4.12.5-r1 4.14.0-r1: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4-r1: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3-r2: A port of the GNOME multiload applet for the Xfce panel
 xfce-extra/thunar-archive-plugin 0.3.1-r3 0.4.0: Archive plug-in for the Thunar filemanager
