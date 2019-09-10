@@ -105,6 +105,7 @@ src_test() {
 
 src_install() {
 	cmake-utils_src_install
+	find "${D}" -name '*.a' -delete || die
 
 	use python && python_optimize
 }
