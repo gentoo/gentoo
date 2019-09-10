@@ -14,8 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="opengl startup-notification +xcomposite +xpresent"
 
-RDEPEND="dev-libs/dbus-glib
-	>=dev-libs/glib-2.20
+RDEPEND=">=dev-libs/glib-2.20
 	>=x11-libs/gtk+-3.20:3
 	x11-libs/libX11
 	x11-libs/libXext
