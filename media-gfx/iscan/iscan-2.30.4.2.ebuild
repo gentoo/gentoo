@@ -70,6 +70,7 @@ PATCHES=(
 	"${FILESDIR}"/iscan-2.30.1-fix-g++-test.patch
 	"${FILESDIR}"/iscan-2.30.1.1-gcc6.patch
 	"${FILESDIR}"/iscan-2.30.3.1-fix-x86-unknown-types.patch
+	"${FILESDIR}"/iscan-2.30.4.2-sscanf.patch
 )
 
 QA_PRESTRIPPED="usr/lib.*/libesmod.so.*"
@@ -116,7 +117,7 @@ src_install() {
 	if use gimp; then
 		local plugindir="$(gimptool-2.0 --gimpplugindir)/plug-ins"
 		dodir "${plugindir}"
-		dosym "${ED}"/usr/bin/iscan "${plugindir}"/iscan
+		dosym "${ED%/}"/usr/bin/iscan "${plugindir}"/iscan
 	fi
 
 	use X && make_desktop_entry iscan "Image Scan! for Linux ${PV}" scanner
