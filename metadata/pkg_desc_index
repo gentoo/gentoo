@@ -18072,7 +18072,7 @@ sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
 sys-libs/libapparmor 2.13.1 2.13.3: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
-sys-libs/libblockdev 2.20-r2 2.21 2.22 9999: A library for manipulating block devices
+sys-libs/libblockdev 2.20-r2 2.22 2.23 9999: A library for manipulating block devices
 sys-libs/libcap 2.26-r2 2.27: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8 0.7.9: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.4: Library for accessing chip cards via chip card readers (terminals)
@@ -18600,7 +18600,7 @@ www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browse
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 2.7.1628.30_p1 2.7.1628.33_p1: A browser for our friends
+www-client/vivaldi 2.7.1628.33_p1: A browser for our friends
 www-client/vivaldi-snapshot 2.8.1650.3_p1 2.8.1657.8_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r11 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
