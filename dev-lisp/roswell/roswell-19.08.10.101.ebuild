@@ -22,13 +22,13 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -j1
+	emake
 }
 
 src_test() {
-	emake -j1 check
+	emake check
 }
 
 src_install() {
-	emake DESTDIR="${D}" -j1 install
+	emake DESTDIR="${D}" install
 }
