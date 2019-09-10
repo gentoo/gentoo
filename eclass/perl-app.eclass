@@ -21,7 +21,6 @@ case "${EAPI:-0}" in
 esac
 
 # @FUNCTION: perl-app_src_prep
-# @USAGE: perl-app_src_prep
 # @DESCRIPTION:
 # This is a wrapper function to perl-app_src_configure().
 perl-app_src_prep() {
@@ -29,7 +28,6 @@ perl-app_src_prep() {
 }
 
 # @FUNCTION: perl-app_src_configure
-# @USAGE: perl-app_src_configure
 # @DESCRIPTION:
 # This is a wrapper function to perl-module_src_configure().
 perl-app_src_configure() {
@@ -37,7 +35,6 @@ perl-app_src_configure() {
 }
 
 # @FUNCTION: perl-app_src_compile
-# @USAGE: perl-app_src_compile
 # @DESCRIPTION:
 # This is a wrapper function to perl-module_src_compile().
 perl-app_src_compile() {
