@@ -6,8 +6,8 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="VHDL-mode for Emacs"
-HOMEPAGE="http://www.iis.ee.ethz.ch/~zimmi/emacs/vhdl-mode.html"
-SRC_URI="http://www.iis.ee.ethz.ch/~zimmi/emacs/${P}.tar.gz"
+HOMEPAGE="https://iis.ee.ethz.ch/~zimmi/emacs/vhdl-mode.html"
+SRC_URI="https://iis.ee.ethz.ch/~zimmi/emacs/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
