@@ -244,8 +244,8 @@ video_cards_radeon
 video_cards_radeonsi
 
 # Guy Martin <gmsoft@gentoo.org> (2005-07-25)
-# lm_sensors not supported on hppa and ieee1394 not tested
-lm_sensors
+# lm-sensors not supported on hppa and ieee1394 not tested
+lm-sensors
 iec61883
 ieee1394
 

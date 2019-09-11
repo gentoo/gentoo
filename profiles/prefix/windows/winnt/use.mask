@@ -35,7 +35,7 @@ ibm
 ieee1394
 ipod
 ipv6
-lm_sensors
+lm-sensors
 ncurses
 opengl
 oss

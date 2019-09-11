@@ -46,7 +46,7 @@ wifi
 # Hardware not available on ia64
 apm
 battery
-lm_sensors
+lm-sensors
 pm-utils
 
 # Stuff that doesn't work on ia64, or not tested

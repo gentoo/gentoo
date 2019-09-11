@@ -18,7 +18,7 @@ fbcon
 gpm
 lirc
 multilib
-lm_sensors
+lm-sensors
 caps
 filecaps
 vidix
