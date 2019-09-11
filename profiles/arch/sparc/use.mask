@@ -148,7 +148,7 @@ zmq
 ifp
 chipcard
 hbci
-lm_sensors
+lm-sensors
 openct
 bluetooth
 dmraid

@@ -86,7 +86,7 @@ motif
 mono
 ocaml
 sdl
-lm_sensors
+lm-sensors
 wxwidgets
 
 # Many X drivers make no sense on this platform.
