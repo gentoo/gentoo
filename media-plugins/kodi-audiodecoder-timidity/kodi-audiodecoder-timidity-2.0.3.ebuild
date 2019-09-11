@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 inherit cmake-utils kodi-addon
 
@@ -28,7 +28,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	~media-tv/kodi-9999
+	=media-tv/kodi-18*
 	"
 RDEPEND="
 	${DEPEND}
