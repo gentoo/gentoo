@@ -1,0 +1,30 @@
+From bcf6a94c4bc912ad313ea21abdf7e83bbae450e5 Mon Sep 17 00:00:00 2001
+From: Nicola Tuveri <nic.tuv@gmail.com>
+Date: Thu, 12 Sep 2019 01:57:47 +0300
+Subject: [PATCH] Fix no-ec2m in ec_curve.c (1.1.0)
+
+I made a mistake in d4a5dac9f9242c580fb9d0a4389440eccd3494a7 and
+inverted the GF2m and GFp calls in ec_point_get_affine_coordinates, this
+fixes it.
+---
+ crypto/ec/ec_curve.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/crypto/ec/ec_curve.c b/crypto/ec/ec_curve.c
+index 2d28d7f70bb..6a58b3a23e0 100644
+--- a/crypto/ec/ec_curve.c
++++ b/crypto/ec/ec_curve.c
+@@ -3200,11 +3200,11 @@ int ec_point_get_affine_coordinates(const EC_GROUP *group,
+ 
+ #ifndef OPENSSL_NO_EC2M
+     if (field_nid == NID_X9_62_characteristic_two_field) {
+-        return EC_POINT_get_affine_coordinates_GFp(group, point, x, y, ctx);
++        return EC_POINT_get_affine_coordinates_GF2m(group, point, x, y, ctx);
+     } else
+ #endif /* !def(OPENSSL_NO_EC2M) */
+     if (field_nid == NID_X9_62_prime_field) {
+-        return EC_POINT_get_affine_coordinates_GF2m(group, point, x, y, ctx);
++        return EC_POINT_get_affine_coordinates_GFp(group, point, x, y, ctx);
+     } else {
+         /* this should never happen */
+         return 0;
