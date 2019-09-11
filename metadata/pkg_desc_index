@@ -2087,7 +2087,7 @@ app-misc/tmux 2.7 2.7-r1 2.8-r2 2.9 2.9a 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 3.4.0 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/tmux-xpanes 3.1.1 4.1.0: tmux-based terminal divider
 app-misc/tmux2html 0.1.11: Render full tmux windows or individual panes as HTML
-app-misc/tmuxp 1.5.1: tmux session manager. built on libtmux
+app-misc/tmuxp 1.5.3: tmux session manager. built on libtmux
 app-misc/todo 2.10-r2: A CLI-based TODO list manager
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
@@ -8122,7 +8122,7 @@ dev-python/libnatpmp 20130911 20140401-r1 20150609: Python module for libnatpmp,
 dev-python/libpillowfight 0.2.2 0.2.3-r1 0.2.4: Small library containing various image processing algorithms
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
-dev-python/libtmux 0.8.1: python api for tmux
+dev-python/libtmux 0.8.2: python api for tmux
 dev-python/libvirt-python 5.2.0 5.5.0 5.6.0 9999: libvirt Python bindings
 dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/libzilla 1.4 1.5: Library for managing Bugzilla bug reports from the CLI
@@ -10611,7 +10611,7 @@ dev-util/babeltrace 1.2.3 1.2.4: A command-line tool and library to read and con
 dev-util/bakefile 0.2.9-r1: Native makefiles generator
 dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
 dev-util/bats 0.4.0 0.4.0_p20170219: An automated testing system for bash
-dev-util/bazel 0.20.0 0.22.0 0.24.1 0.24.1-r1 0.26.1-r1 0.27.0-r1 0.27.2 0.28.1: Fast and correct automated build system
+dev-util/bazel 0.20.0 0.22.0 0.24.1 0.24.1-r1 0.26.1-r1 0.27.0-r1 0.27.2 0.28.1 0.29.1: Fast and correct automated build system
 dev-util/bbe 0.2.2 0.2.2-r1: Sed-like editor for binary files
 dev-util/bcc 0.6.0 0.7.0 0.9.0-r1 0.10.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20150811-r1: Indents C/C++ source code
