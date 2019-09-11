@@ -77,7 +77,7 @@ gphoto2
 afs
 mono
 lirc
-lm_sensors
+lm-sensors
 xemacs
 scanner
 sid
