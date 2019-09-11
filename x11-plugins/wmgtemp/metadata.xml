@@ -8,7 +8,7 @@
 
 <longdescription>
 wmgtemp is a dock-app for Window Maker that graphically displays the CPU and 
-System temperatures using the lm_sensors package. It was originally intended to 
+System temperatures using the lm-sensors package. It was originally intended to 
 work with the VIA686A chipset although it can dynamically detect chipset 
 features to work with other sensors. It displays the CPU and System temperature 
 values, a scaling graph of temperature history, and high-temperature warning 
