@@ -11,7 +11,7 @@ SRC_URI="http://www.tcl3d.org/download/${P}.distrib/${PN}-src-${PV}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug ode osg sdl truetype"
 
 RDEPEND="dev-lang/tcl:0=
