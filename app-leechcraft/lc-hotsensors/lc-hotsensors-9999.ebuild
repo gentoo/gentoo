@@ -14,7 +14,7 @@ KEYWORDS=""
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}[qwt]
-	sys-apps/lm_sensors
+	sys-apps/lm-sensors
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtdeclarative:5[widgets]
