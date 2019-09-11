@@ -18,7 +18,7 @@ else
 fi
 LICENSE="GPL-3"
 SLOT="2"
-IUSE="gnutls hddtemp libressl lm_sensors nls ntlm ssl kernel_FreeBSD X"
+IUSE="gnutls hddtemp libressl lm-sensors nls ntlm ssl kernel_FreeBSD X"
 
 RDEPEND="
 	acct-group/gkrellmd
@@ -32,7 +32,7 @@ RDEPEND="
 			libressl? ( dev-libs/libressl:0= )
 		)
 	)
-	lm_sensors? ( sys-apps/lm_sensors:= )
+	lm-sensors? ( sys-apps/lm-sensors:= )
 	nls? ( virtual/libintl )
 	ntlm? ( net-libs/libntlm )
 	X? (
@@ -95,7 +95,7 @@ src_compile() {
 			INCLUDEDIR="${EPREFIX}/usr/include/gkrellm2" \
 			LOCALEDIR="${EPREFIX}/usr/share/locale" \
 			$(usex nls "" "enable_nls=0") \
-			$(usex lm_sensors "" "without-libsensors=yes") \
+			$(usex lm-sensors "" "without-libsensors=yes") \
 			$(usex ntlm "" "without-ntlm=yes") \
 			$(usex ssl $(usex gnutls 'without-ssl=yes' 'without-gnutls=yes') 'without-ssl=yes without-gnutls=yes')
 	else
@@ -106,7 +106,7 @@ src_compile() {
 			LINK_FLAGS="$LDFLAGS -Wl,-E" \
 			STRIP="" \
 			$(usex nls "" "enable_nls=0") \
-			$(usex lm_sensors "" "without-libsensors=yes")
+			$(usex lm-sensors "" "without-libsensors=yes")
 	fi
 }
 
