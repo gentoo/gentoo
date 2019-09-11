@@ -1,5 +1,5 @@
---- docbook.cat	Tue Feb  2 06:53:32 1999
-+++ catalog	Thu May 25 11:45:01 2000
+--- a/docbook.cat	Tue Feb  2 06:53:32 1999
++++ b/docbook.cat	Thu May 25 11:45:01 2000
 @@ -35,29 +35,6 @@
  PUBLIC "-//OASIS//ENTITIES DocBook Additional General Entities V3.1//EN" "dbgenent.mod"
  PUBLIC "-//OASIS//ENTITIES DocBook Notations V3.1//EN" "dbnotn.mod"
