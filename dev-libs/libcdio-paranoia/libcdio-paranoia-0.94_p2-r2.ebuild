@@ -57,11 +57,16 @@ multilib_src_configure() {
 		# https://bugs.gentoo.org/616054
 		# https://savannah.gnu.org/bugs/index.php?50978
 		--enable-ld-version-script
+		$(use_enable static-libs static)
 	)
 	# Darwin linker doesn't get this
 	[[ ${CHOST} == *-darwin* ]] && myeconfargs+=( --disable-ld-version-script )
 	ECONF_SOURCE="${S}" \
 		econf "${myeconfargs[@]}"
+}
+
+multilib_src_install_all() {
+	find "${ED}" -type f -name "*.la" -delete || die
 }
 
 pkg_postinst() {
