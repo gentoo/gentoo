@@ -20,7 +20,7 @@ DESCRIPTION="full-strength general purpose cryptography library (including SSL a
 HOMEPAGE="https://www.openssl.org/"
 SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
 	bindist? (
-		mirror://${BINDIST_PATCH_SET}
+		mirror://gentoo/${BINDIST_PATCH_SET}
 		https://dev.gentoo.org/~whissi/dist/openssl/${BINDIST_PATCH_SET}
 	)"
 
