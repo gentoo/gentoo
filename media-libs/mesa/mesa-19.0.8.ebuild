@@ -37,7 +37,7 @@ done
 
 IUSE="${IUSE_VIDEO_CARDS}
 	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 +gles2 +libglvnd +llvm
-	lm_sensors opencl osmesa pax_kernel pic selinux test unwind vaapi valgrind
+	lm-sensors opencl osmesa pax_kernel pic selinux test unwind vaapi valgrind
 	vdpau vulkan wayland xa xvmc"
 
 REQUIRED_USE="
@@ -99,7 +99,7 @@ RDEPEND="
 				virtual/libelf:0=[${MULTILIB_USEDEP}]
 			)
 		)
-		lm_sensors? ( sys-apps/lm_sensors:=[${MULTILIB_USEDEP}] )
+		lm-sensors? ( sys-apps/lm-sensors:=[${MULTILIB_USEDEP}] )
 		opencl? (
 					dev-libs/ocl-icd[khronos-headers,${MULTILIB_USEDEP}]
 					dev-libs/libclc
@@ -288,7 +288,7 @@ pkg_pretend() {
 	fi
 
 	if ! use gallium; then
-		use lm_sensors && ewarn "Ignoring USE=lm_sensors since USE does not contain gallium"
+		use lm-sensors && ewarn "Ignoring USE=lm-sensors since USE does not contain gallium"
 		use llvm       && ewarn "Ignoring USE=llvm       since USE does not contain gallium"
 		use opencl     && ewarn "Ignoring USE=opencl     since USE does not contain gallium"
 		use vaapi      && ewarn "Ignoring USE=vaapi      since USE does not contain gallium"
@@ -349,7 +349,7 @@ multilib_src_configure() {
 	if use gallium; then
 		emesonargs+=(
 			$(meson_use llvm)
-			$(meson_use lm_sensors lmsensors)
+			$(meson_use lm-sensors lmsensors)
 			$(meson_use unwind libunwind)
 		)
 
