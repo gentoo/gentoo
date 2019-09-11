@@ -146,8 +146,8 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	newinitd "${FILESDIR}"/lm_sensors.initd lm_sensors
+	newconfd "${FILESDIR}"/lm_sensors.confd lm_sensors
 	systemd_dounit prog/init/lm_sensors.service
 
 	newinitd "${FILESDIR}"/fancontrol.initd fancontrol
@@ -166,7 +166,7 @@ multilib_src_install_all() {
 	dodoc doc/developers/applications
 
 	if use contrib; then
-		insinto /usr/share/${PN}
+		insinto /usr/share/lm_sensors
 		doins -r "${S}"/configs
 	fi
 }
@@ -208,7 +208,7 @@ pkg_postinst() {
 		elog "Please run \`/usr/sbin/sensors-detect' in order to setup"
 		elog "\"/etc/modules-load.d/lm_sensors.conf\"."
 		elog ""
-		elog "You might want to add ${PN} to your default runlevel to make"
+		elog "You might want to add lm_sensors to your default runlevel to make"
 		elog "sure the sensors get initialized on the next startup."
 		elog ""
 		elog "Be warned, the probing of hardware in your system performed by"
