@@ -11,11 +11,11 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
-IUSE="debug nls lm_sensors selinux static"
+IUSE="debug nls lm-sensors selinux static"
 
 CDEPEND="
 	nls? ( virtual/libintl )
-	lm_sensors? ( sys-apps/lm_sensors:= )
+	lm-sensors? ( sys-apps/lm-sensors:= )
 "
 DEPEND="
 	${CDEPEND}
@@ -54,7 +54,7 @@ src_configure() {
 		conf_dir=/etc \
 		econf \
 			$(use_enable debug debuginfo) \
-			$(use_enable lm_sensors sensors) \
+			$(use_enable lm-sensors sensors) \
 			$(use_enable nls) \
 			--enable-copy-only \
 			--enable-documentation \
