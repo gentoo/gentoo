@@ -178,7 +178,7 @@ libsamplerate - Build with support for converting sample rates using libsamplera
 libwww - Add libwww support (General purpose WEB API)
 lirc - Add support for lirc (Linux's Infra-Red Remote Control)
 livecd - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during livecd building
-lm_sensors - Add linux lm_sensors (hardware sensors) support
+lm-sensors - Add linux lm-sensors (hardware sensors) support
 lua - Enable Lua scripting support
 luajit - Use dev-lang/luajit instead of dev-lang/lua (ineffective with USE=-lua)
 lzma - Support for LZMA (de)compression algorithm
