@@ -375,7 +375,6 @@ src_configure() {
 	filter-flags "-flto"
 
 	use sparc && myconf -Ud_longdbl
-	use sparc && myconf -Dd_u32align # bug #676062
 
 	export BUILD_BZIP2=0
 	export BZIP2_INCLUDE=${EROOT}/usr/include
@@ -467,7 +466,9 @@ src_configure() {
 
 	# fix unaligned access misdetection
 	# https://rt.perl.org/Public/Bug/Display.html?id=133495
-	[[ ${CHOST} == sparc*-solaris* ]] && myconf "-Dd_u32align='define'"
+	# bug #676062
+	use hppa || use sparc || [[ ${CHOST} == sparc*-solaris* ]] && \
+		myconf "-Dd_u32align='define'"
 
 	# Prefix: the host system needs not to follow Gentoo multilib stuff, and in
 	# Prefix itself we don't do multilib either, so make sure perl can find
