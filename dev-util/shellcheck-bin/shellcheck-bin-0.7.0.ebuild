@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="amd64 ~arm"
 
 DEPEND="!dev-util/shellcheck"
 RDEPEND="${DEPEND}"
