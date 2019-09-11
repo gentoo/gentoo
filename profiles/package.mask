@@ -30,6 +30,15 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-11)
+# Both packages are unmaintained, and are many releases behind.
+# hadolint is reported to fail to build, and requires old version
+# of language-docker.  Newer versions of language-docker have
+# no revdeps.
+# Removal in 30 days.  Bug #674660.
+dev-haskell/language-docker
+dev-util/hadolint
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-11)
 # Gentoo/FreeBSD project is effectively dead.  The core packages are
 # outdated and vulnerable.  We do not have a fully working install,
 # and I have not been able to find anyone knowing how to create one.
