@@ -1942,8 +1942,6 @@ dev-lang/crystal:blocking-stdio-hack - Keep STDIO file descriptors in blocking m
 dev-lang/crystal:debug - Build each module as a separate object file. Speeds build up.
 dev-lang/crystal:xml - Use the dev-libs/libxml2 library to enable Crystal xml module
 dev-lang/crystal:yaml - Use the dev-libs/libyaml library to enable Crystal yaml module
-dev-lang/erlang:compat-ethread - Enable compatibility with pre-pentium 4 CPUs in the ethread library.
-dev-lang/erlang:dirty-schedulers - Enable dirty schedulers
 dev-lang/erlang:hipe - HIgh Performance Erlang extension
 dev-lang/erlang:kpoll - Enable kernel polling support
 dev-lang/erlang:pgo - Build erts with profile-guided optimizations
