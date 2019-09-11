@@ -18,7 +18,7 @@ IUSE="test"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${BDEPEND}
 	test? (
-		>=dev-python/pytest-4.3.1[${PYTHON_USEDEP}]
+		>=dev-python/pytest-4.5.0[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 	)"
 RDEPEND="app-misc/tmux"
