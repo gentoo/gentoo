@@ -28,6 +28,7 @@ BDEPEND="
 	test? (
 		${RDEPEND}
 		$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' pypy pypy3 python2_7 python3_5 python3_6)
+		dev-python/packaging[${PYTHON_USEDEP}]
 	)
 	doc? (
 		>=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]
