@@ -30,6 +30,14 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-11)
+# Unmaintained.  Ancient.  Carries a lot of patches, and has even more
+# bugs reported.  Last rites were cancelled due to Gentoo/FreeBSD 1 year
+# ago but that project is dead nowadays.  Many alternatives exist,
+# sys-process/cronie is probably the closest one (it's a fork).
+# Removal in 30 days.  Bug #693946.
+sys-process/vixie-cron
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-11)
 # Unmaintained.  Last bumped in 2013.  No apparent advantage over
 # the two other implementations in Gentoo (dev-util/pkgconfig,
 # dev-util/pkgconf).
