@@ -22,7 +22,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="altivec cpu_flags_arm_iwmmxt cpu_flags_arm_iwmmxt2 cpu_flags_arm_neon loongson2f cpu_flags_x86_mmxext cpu_flags_x86_sse2 cpu_flags_x86_ssse3"
+IUSE="cpu_flags_ppc_altivec cpu_flags_arm_iwmmxt cpu_flags_arm_iwmmxt2 cpu_flags_arm_neon loongson2f cpu_flags_x86_mmxext cpu_flags_x86_sse2 cpu_flags_x86_ssse3"
 
 multilib_src_configure() {
 	local openmp=disabled
@@ -34,7 +34,7 @@ multilib_src_configure() {
 		$(meson_feature cpu_flags_x86_mmxext mmx)
 		$(meson_feature cpu_flags_x86_sse2 sse2)
 		$(meson_feature cpu_flags_x86_ssse3 ssse3)
-		$(meson_feature altivec vmx)
+		$(meson_feature cpu_flags_ppc_altivec vmx)
 		$(meson_feature cpu_flags_arm_neon neon)
 		$(meson_feature loongson2f loongson-mmi)
 		-Dgtk=disabled
