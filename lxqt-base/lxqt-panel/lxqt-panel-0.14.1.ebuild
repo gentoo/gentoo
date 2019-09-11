@@ -54,7 +54,7 @@ DEPEND="
 	kbindicator? ( x11-libs/libxkbcommon )
 	mount? ( kde-frameworks/solid:5 )
 	networkmonitor? ( sys-libs/libstatgrab )
-	sensors? ( sys-apps/lm_sensors )
+	sensors? ( sys-apps/lm-sensors )
 	statusnotifier? ( dev-libs/libdbusmenu-qt[qt5(+)] )
 	sysstat? ( >=lxqt-base/libsysstat-0.4.1 )
 	tray? (
