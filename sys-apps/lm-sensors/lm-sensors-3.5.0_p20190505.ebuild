@@ -8,15 +8,13 @@ inherit linux-info systemd toolchain-funcs multilib-minimal
 DESCRIPTION="Hardware Monitoring user-space utilities"
 HOMEPAGE="https://hwmon.wiki.kernel.org/ https://github.com/lm-sensors/lm-sensors"
 
-MY_PN="${PN/_/-}"
-
 if [[ "${PV}" =~ .*_p[[:digit:]]{8}.* ]] ; then
 	COMMIT="2c8cca3d6cd60121b401734c1a24cfec7daed4fc"
-	SRC_URI="https://github.com/lm-sensors/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${MY_PN}-${COMMIT}"
+	SRC_URI="https://github.com/lm-sensors/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 else
 	SRC_URI="https://github.com/lm-sensors/lm-sensors/archive/V$(ver_rs 1- -).tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN/_/-}-$(ver_rs 1- -)"
+	S="${WORKDIR}/${PN}-$(ver_rs 1- -)"
 fi
 
 LICENSE="GPL-2+ LGPL-2.1"
