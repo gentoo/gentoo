@@ -53,7 +53,7 @@ diet
 lirc
 afs
 mono
-lm_sensors
+lm-sensors
 qdbm
 fftw
 eds
