@@ -29,6 +29,8 @@ acct-group/nsd 0: System group: nsd
 acct-group/ntp 0: System group: ntp
 acct-group/pdnsd 0: System group: pdnsd
 acct-group/polkitd 0: System group: polkitd
+acct-group/postdrop 0: System group: postdrop
+acct-group/postfix 0: System group: postfix
 acct-group/qemu 0: System group: qemu
 acct-group/render 0: System group: render
 acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
@@ -71,6 +73,7 @@ acct-user/nsd 0: user for nsd daemon
 acct-user/ntp 0: user for ntp daemon
 acct-user/pdnsd 0: user for pdns daemon
 acct-user/polkitd 0: System user: polkitd
+acct-user/postfix 0: user for postfix daemon
 acct-user/postmaster 0: Postmaster user
 acct-user/qemu 0: System user: qemu
 acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
@@ -12662,7 +12665,7 @@ mail-mta/msmtp 1.8.3 1.8.4 1.8.5 1.8.5-r1: An SMTP client and SMTP plugin for ma
 mail-mta/netqmail 1.06-r2 1.06-r4 1.06-r5 1.06-r6: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.3_p1-r1 6.4.0_p1: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 2.10.9 3.4.5-r1 3.4.6 3.5_pre20190724: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 2.10.9 3.4.5-r1 3.4.6 3.5_pre20190908: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge-bin 1.1.6 1.2.2: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
