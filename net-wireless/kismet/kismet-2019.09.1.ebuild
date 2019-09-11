@@ -33,7 +33,7 @@ HOMEPAGE="https://www.kismetwireless.net"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="lm_sensors mousejack networkmanager +pcre selinux +suid"
+IUSE="lm-sensors mousejack networkmanager +pcre selinux +suid"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 CDEPEND="
@@ -53,7 +53,7 @@ CDEPEND="
 	dev-libs/protobuf:=
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
 	sys-libs/ncurses:=
-	lm_sensors? ( sys-apps/lm_sensors )
+	lm-sensors? ( sys-apps/lm-sensors )
 	pcre? ( dev-libs/libpcre )
 	suid? ( sys-libs/libcap )
 	"
@@ -89,7 +89,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable pcre) \
-		$(use_enable lm_sensors lmsensors) \
+		$(use_enable lm-sensors lmsensors) \
 		$(use_enable mousejack libusb) \
 		$(use_enable networkmanager libnm) \
 		--sysconfdir=/etc/kismet \
