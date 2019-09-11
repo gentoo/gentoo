@@ -106,7 +106,7 @@ media-libs/mesa vulkan vulkan-overlay
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=opencl that is masked in this profile.
-net-misc/bfgminer adl lm_sensors
+net-misc/bfgminer adl lm-sensors
 
 # Jason Zaman <perfinion@gentoo.org> (2017-05-09)
 # x11-libs/libXpresent is not keyworded on ppc
