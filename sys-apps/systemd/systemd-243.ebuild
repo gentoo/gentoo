@@ -185,7 +185,6 @@ src_prepare() {
 
 	# Add local patches here
 	PATCHES+=(
-		"${FILESDIR}"/CVE-2019-15718.patch
 	)
 
 	if ! use vanilla; then
@@ -355,10 +354,7 @@ multilib_src_install_all() {
 	# Symlink /etc/sysctl.conf for easy migration.
 	dosym ../sysctl.conf /etc/sysctl.d/99-sysctl.conf
 
-	local udevdir=/lib/udev
-	use split-usr || udevdir=/usr/lib/udev
-
-	rm -r "${ED}${udevdir}/hwdb.d" || die
+	rm -r "${ED}${rootprefix}"/lib/udev/hwdb.d || die
 
 	if use split-usr; then
 		# Avoid breaking boot/reboot
