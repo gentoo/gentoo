@@ -11,11 +11,11 @@ EGIT_REPO_URI="https://github.com/sysstat/sysstat"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug nls lm_sensors selinux static"
+IUSE="debug nls lm-sensors selinux static"
 
 CDEPEND="
 	nls? ( virtual/libintl )
-	lm_sensors? ( sys-apps/lm_sensors:= )
+	lm-sensors? ( sys-apps/lm-sensors:= )
 "
 DEPEND="
 	${CDEPEND}
@@ -54,7 +54,7 @@ src_configure() {
 		conf_dir=/etc \
 		econf \
 			$(use_enable debug debuginfo) \
-			$(use_enable lm_sensors sensors) \
+			$(use_enable lm-sensors sensors) \
 			$(use_enable nls) \
 			--enable-copy-only \
 			--enable-documentation \
