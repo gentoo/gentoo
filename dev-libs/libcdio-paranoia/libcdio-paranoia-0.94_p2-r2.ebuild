@@ -15,8 +15,8 @@ SRC_URI="mirror://gnu/${PN%-*}/${MY_P}.tar.gz"
 # COPYING-LGPL from cdparanoia says "2.1 or later" but 2 files are without the
 # clause "or later" so we use LGPL-2.1 without +
 LICENSE="GPL-3+ GPL-2+ LGPL-2.1"
-SLOT="0/2" # soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+SLOT="0"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="+cxx static-libs test"
 
 RDEPEND="app-eselect/eselect-cdparanoia
@@ -57,11 +57,16 @@ multilib_src_configure() {
 		# https://bugs.gentoo.org/616054
 		# https://savannah.gnu.org/bugs/index.php?50978
 		--enable-ld-version-script
+		$(use_enable static-libs static)
 	)
 	# Darwin linker doesn't get this
 	[[ ${CHOST} == *-darwin* ]] && myeconfargs+=( --disable-ld-version-script )
 	ECONF_SOURCE="${S}" \
 		econf "${myeconfargs[@]}"
+}
+
+multilib_src_install_all() {
+	find "${ED}" -type f -name "*.la" -delete || die
 }
 
 pkg_postinst() {

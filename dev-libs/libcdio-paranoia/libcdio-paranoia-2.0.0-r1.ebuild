@@ -49,11 +49,16 @@ multilib_src_configure() {
 		$(use_enable cxx)
 		--disable-cpp-progs
 		--with-cd-paranoia-name=libcdio-paranoia
+		$(use_enable static-libs static)
 	)
 	# Darwin linker doesn't get this
 	[[ ${CHOST} == *-darwin* ]] && myeconfargs+=( --disable-ld-version-script )
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+multilib_src_install_all() {
+	find "${ED}" -type f -name "*.la" -delete || die
 }
 
 pkg_postinst() {
