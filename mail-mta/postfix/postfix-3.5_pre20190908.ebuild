@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic pam systemd toolchain-funcs user
+inherit flag-o-matic pam systemd toolchain-funcs
 
 MY_PV="${PV/_pre/-}"
 MY_SRC="${PN}-${MY_PV}"
@@ -39,6 +39,9 @@ DEPEND=">=dev-libs/libpcre-3.4
 	)"
 
 RDEPEND="${DEPEND}
+	acct-group/postfix
+	acct-group/postdrop
+	acct-user/postfix
 	memcached? ( net-misc/memcached )
 	net-mail/mailbase
 	!mail-mta/courier
@@ -64,13 +67,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-libressl-certkey.patch"
 	"${FILESDIR}/${PN}-libressl-server.patch"
 )
-
-pkg_setup() {
-	# Add postfix, postdrop user/group (bug #77565)
-	enewgroup postfix 207
-	enewgroup postdrop 208
-	enewuser postfix 207 -1 /var/spool/postfix postfix,mail
-}
 
 src_prepare() {
 	default
