@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 # TODO: knc (needs i2c-tools header)
 # TODO: kncasic & titan (need systemwide knc-asic install)
 # TODO: minergate (needs actual miner_gate)
-IUSE="adl alchemist avalon avalonmm bitmain bfsb bfx bifury bigpic bitforce bitfury cointerra cpumining drillbit dualminer examples gridseed hardened hashbuster hashbuster2 hashfast icarus jingtian keccak klondike +libusb littlefury lm_sensors metabank minion modminer nanofury ncurses opencl proxy proxy_getwork proxy_stratum rockminer screen scrypt +sha256d twinfury +udev udev-broad-rules unicode x6500 zeusminer ztex"
+IUSE="adl alchemist avalon avalonmm bitmain bfsb bfx bifury bigpic bitforce bitfury cointerra cpumining drillbit dualminer examples gridseed hardened hashbuster hashbuster2 hashfast icarus jingtian keccak klondike +libusb littlefury lm-sensors metabank minion modminer nanofury ncurses opencl proxy proxy_getwork proxy_stratum rockminer screen scrypt +sha256d twinfury +udev udev-broad-rules unicode x6500 zeusminer ztex"
 REQUIRED_USE='
 	|| ( keccak scrypt sha256d )
 	|| ( alchemist avalon avalonmm bitmain bfsb bfx bifury bigpic bitforce bitfury cointerra cpumining drillbit dualminer gridseed hashbuster hashbuster2 hashfast icarus klondike littlefury metabank modminer nanofury opencl proxy twinfury x6500 zeusminer ztex )
@@ -43,7 +43,7 @@ REQUIRED_USE='
 	keccak? ( || ( cpumining opencl proxy ) )
 	klondike? ( sha256d libusb )
 	littlefury? ( sha256d bitfury )
-	lm_sensors? ( opencl )
+	lm-sensors? ( opencl )
 	metabank? ( sha256d bitfury )
 	minion? ( sha256d )
 	modminer? ( sha256d )
@@ -78,8 +78,8 @@ DEPEND='
 	libusb? (
 		virtual/libusb:1
 	)
-	lm_sensors? (
-		sys-apps/lm_sensors
+	lm-sensors? (
+		sys-apps/lm-sensors
 	)
 	nanofury? (
 		dev-libs/hidapi
@@ -176,7 +176,7 @@ src_configure() {
 		$with_curses \
 		$(use_with udev libudev) \
 		$(use_enable udev-broad-rules broad-udevrules) \
-		$(use_with lm_sensors sensors) \
+		$(use_with lm-sensors sensors) \
 		$(use_with proxy_getwork libmicrohttpd) \
 		$(use_with proxy_stratum libevent) \
 		$(use_enable x6500) \
