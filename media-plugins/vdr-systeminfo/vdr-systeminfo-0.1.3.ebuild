@@ -16,7 +16,7 @@ IUSE=""
 
 DEPEND=">=media-video/vdr-1.4.7"
 
-RDEPEND="sys-apps/lm_sensors
+RDEPEND="sys-apps/lm-sensors
 		app-admin/hddtemp"
 
 src_prepare() {
