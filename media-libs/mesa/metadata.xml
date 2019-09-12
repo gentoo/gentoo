@@ -29,6 +29,7 @@
 		<flag name="xvmc">Enable the XvMC acceleration interface for the Gallium3D Video Layer.</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:mesa3d:mesa</remote-id>
 		<remote-id type="sourceforge">mesa3d</remote-id>
 	</upstream>
 </pkgmetadata>

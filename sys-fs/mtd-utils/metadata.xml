@@ -8,4 +8,7 @@
 	<email>embedded@gentoo.org</email>
 	<name>Embedded Gentoo</name>
 </maintainer>
+<upstream>
+	<remote-id type="cpe">cpe:/a:mtd-utils_project:mtd-utils</remote-id>
+</upstream>
 </pkgmetadata>

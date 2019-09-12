@@ -10,4 +10,7 @@
 			Enable usage of <pkg>dev-util/valgrind</pkg> in debug
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:gnu:libtasn1</remote-id>
+	</upstream>
 </pkgmetadata>

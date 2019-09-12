@@ -14,4 +14,7 @@
 		<flag name="multicall">Build the most commonly used tools as one
 			binary</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:wireless_tools:wireless_tools</remote-id>
+	</upstream>
 </pkgmetadata>
