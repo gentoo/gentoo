@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ RDEPEND="
 	app-text/liblangtag
 	dev-libs/librevenge
 	dev-libs/libxml2
-	>=dev-util/mdds-1.3.1:1=
+	>=dev-util/mdds-1.4.3:1=
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
@@ -46,10 +46,10 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable test tests)
 	)
-	if has_version ">=dev-util/mdds-1.4"; then
-		myeconfargs+=( --with-mdds=1.4 )
+	if has_version ">=dev-util/mdds-1.5"; then
+		myeconfargs+=( --with-mdds=1.5 )
 	else
-		myeconfargs+=( --with-mdds=1.2 )
+		myeconfargs+=( --with-mdds=1.4 )
 	fi
 
 	econf "${myeconfargs[@]}"
