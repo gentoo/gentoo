@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  The current release is from 2005, pending version bump
+# since 2012.  No reverse dependencies.
+# Removal in 30 days.  Bug #694168.
+dev-libs/elfio
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
 # Unmaintained.  Current release is from 2014, and needs version bump.
 # No reverse dependencies.
 # Removal in 30 days.  Bug #694166.
