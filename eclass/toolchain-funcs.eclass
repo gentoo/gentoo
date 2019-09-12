@@ -453,6 +453,36 @@ tc-ld-is-gold() {
 	return 1
 }
 
+# @FUNCTION: tc-ld-is-lld
+# @USAGE: [toolchain prefix]
+# @DESCRIPTION:
+# Return true if the current linker is set to lld.
+tc-ld-is-lld() {
+	local out
+
+	# First check the linker directly.
+	out=$($(tc-getLD "$@") --version 2>&1)
+	if [[ ${out} == *"LLD"* ]] ; then
+		return 0
+	fi
+
+	# Then see if they're selecting lld via compiler flags.
+	# Note: We're assuming they're using LDFLAGS to hold the
+	# options and not CFLAGS/CXXFLAGS.
+	local base="${T}/test-tc-lld"
+	cat <<-EOF > "${base}.c"
+	int main() { return 0; }
+	EOF
+	out=$($(tc-getCC "$@") ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -Wl,--version "${base}.c" -o "${base}" 2>&1)
+	rm -f "${base}"*
+	if [[ ${out} == *"LLD"* ]] ; then
+		return 0
+	fi
+
+	# No lld here!
+	return 1
+}
+
 # @FUNCTION: tc-ld-disable-gold
 # @USAGE: [toolchain prefix]
 # @DESCRIPTION:
