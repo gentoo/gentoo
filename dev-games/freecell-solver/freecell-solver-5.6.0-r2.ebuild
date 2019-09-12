@@ -13,19 +13,24 @@ SRC_URI="https://fc-solve.shlomifish.org/downloads/fc-solve/${P}.tar.xz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
+IUSE="tcmalloc"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/pysol_cards[${PYTHON_USEDEP}]
 	dev-python/random2[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	tcmalloc? ( dev-util/google-perftools )
 "
 DEPEND="${RDEPEND}
 	dev-perl/Path-Tiny
 	dev-perl/Template-Toolkit
 "
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+DOCS=( README.html )
+
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
 
 src_prepare() {
 	sed -i -e "s|share/doc/freecell-solver/|share/doc/${P}|" CMakeLists.txt || die
@@ -40,6 +45,7 @@ src_configure() {
 		-DBUILD_STATIC_LIBRARY=OFF
 		-DFCS_BUILD_DOCS=OFF
 		-DFCS_WITH_TEST_SUITE=OFF #requires unpackaged dependencies
+		-DFCS_AVOID_TCMALLOC=$(usex !tcmalloc)
 	)
 
 	cmake-utils_src_configure
