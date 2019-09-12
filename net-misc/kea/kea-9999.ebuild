@@ -23,7 +23,7 @@ fi
 
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
-IUSE="mysql openssl postgres samples"
+IUSE="mysql +openssl postgres samples"
 
 DEPEND="
 	dev-libs/boost:=
