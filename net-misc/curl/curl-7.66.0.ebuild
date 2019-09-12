@@ -61,8 +61,8 @@ RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 # ssl providers to be added:
 # fbopenssl  $(use_with spnego)
 
-DEPEND="${RDEPEND}
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+DEPEND="${RDEPEND}"
+BDEPEND=">=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	test? (
 		sys-apps/diffutils
 		dev-lang/perl
