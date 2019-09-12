@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,9 +10,12 @@ SRC_URI="mirror://sourceforge/legousb/${P}.tar.gz"
 HOMEPAGE="http://legousb.sourceforge.net/"
 
 SLOT="0"
-LICENSE="MPL-1.0"
+# The specified license is wrong as the file uses code from proprietary
+# SDK.  http://legousb.sourceforge.net/legousbtower/index.shtml
+LICENSE="all-rights-reserved"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
+RESTRICT="bindist mirror"
 
 src_configure() { :; }
 src_compile() { :; }
