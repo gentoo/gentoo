@@ -419,6 +419,22 @@ save_enabled_units() {
 
 pkg_preinst() {
 	save_enabled_units {machines,remote-{cryptsetup,fs}}.target getty@tty1.service
+
+	if ! use split-usr; then
+		local dir
+		for dir in bin sbin lib; do
+			if [[ ! ${EROOT}/${dir} -ef ${EROOT}/usr/${dir} ]]; then
+				eerror "\"${EROOT}/${dir}\" and \"${EROOT}/usr/${dir}\" are not merged."
+				eerror "One of them should be a symbolic link to the other one."
+				FAIL=1
+			fi
+		done
+		if [[ ${FAIL} ]]; then
+			eerror "Migration to system layout with merged directories must be performed before"
+			eerror "rebuilding ${CATEGORY}/${PN} with USE=\"-split-usr\" to avoid run-time breakage."
+			die "System layout with split directories still used"
+		fi
+	fi
 }
 
 pkg_postinst() {
