@@ -2475,7 +2475,7 @@ app-text/languagetool 4.5 4.6: A proof-reading tool for many languages
 app-text/lcdf-typetools 2.106 2.107: Font utilities for eg manipulating OTF
 app-text/lesspipe 1.83 1.83-r1 1.84: a preprocessor for less
 app-text/letterize 1.3 1.4: Generate English-plausible alphabetic mnemonics for a phone number
-app-text/libabw 0.1.2: Library parsing abiword documents
+app-text/libabw 0.1.2 0.1.3: Library parsing abiword documents
 app-text/libebook 0.1.2-r1 0.1.3: Library parsing various ebook formats
 app-text/libepubgen 0.1.1: EPUB generator for librevenge
 app-text/libetonyek 0.1.9 9999: Library parsing Apple Keynote presentations
@@ -4962,7 +4962,7 @@ dev-libs/libintl 0.19.7 0.19.8.1 0.20.1: the GNU international library (split ou
 dev-libs/libisoburn 1.5.0: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.0: Open-source library for reading, mastering and writing optical discs
 dev-libs/libite 2.0.0: A collection of useful BSD APIs
-dev-libs/libixion 0.13.0 0.14.1 9999: General purpose formula parser & interpreter
+dev-libs/libixion 0.14.1 9999: General purpose formula parser & interpreter
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
 dev-libs/libksba 1.3.5-r1 1.3.5-r2: X.509 and CMS (PKCS#7) library
 dev-libs/liblinear 210-r1 221 230: A Library for Large Linear Classification
@@ -4998,7 +4998,7 @@ dev-libs/libntru 0.4.1-r1: C Implementation of NTRUEncrypt
 dev-libs/libofx 0.9.10 0.9.14-r1: A library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17-r2: Library of simple functions that are optimized for various CPUs
 dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backends
-dev-libs/liborcus 0.13.4 0.14.1 9999: Standalone file import filter library for spreadsheet documents
+dev-libs/liborcus 0.14.1 9999: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13 0.9.16: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.31-r1 0.32-r1: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.4.10: Abstraction layer to simplify PKCS#11 API
@@ -10835,7 +10835,7 @@ dev-util/lxqt-build-tools 0.6.0: LXQt Build tools
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
 dev-util/makepp 1.18 2.0.99.1 2.0.99.2: GNU make replacement
 dev-util/massif-visualizer 0.7.0-r1: Tool visualising massif data
-dev-util/mdds 1.3.1 1.4.3 9999: A collection of multi-dimensional data structure and indexing algorithm
+dev-util/mdds 1.4.3 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.20.1: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/meson 0.50.1 0.51.1 0.51.2 9999: Open source build system
@@ -12234,7 +12234,7 @@ kde-apps/kdemultimedia-meta 19.04.3 19.08.1: kdemultimedia - merge this to pull 
 kde-apps/kdenetwork-filesharing 19.04.3 19.08.1: SMB filesharing config module for systemsettings
 kde-apps/kdenetwork-meta 19.04.3 19.08.1: kdenetwork - merge this to pull in all kdenetwork-derived packages
 kde-apps/kdenlive 19.04.3 19.08.1: Non-linear video editing suite by KDE
-kde-apps/kdepim-addons 19.04.3 19.08.1: Plugins for KDE Personal Information Management Suite
+kde-apps/kdepim-addons 19.04.3 19.08.1-r1: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 19.04.3 19.08.1: Libraries for KDE PIM applications
 kde-apps/kdepim-meta 19.04.3 19.08.1: KDE PIM - merge this to pull in all kdepim-derived packages
 kde-apps/kdepim-runtime 19.04.3 19.08.1: Runtime plugin collection to extend the functionality of KDE PIM
@@ -12540,7 +12540,7 @@ kde-plasma/plymouth-kcm 5.15.5 5.16.5: KDE Plasma control module for Plymouth
 kde-plasma/polkit-kde-agent 5.15.5 5.16.5: PolKit agent module for KDE Plasma
 kde-plasma/powerdevil 5.15.5 5.16.5: Power management for KDE Plasma Shell
 kde-plasma/sddm-kcm 5.15.5 5.16.5: KDE Plasma control module for SDDM
-kde-plasma/systemsettings 5.15.5 5.16.5: System settings utility
+kde-plasma/systemsettings 5.15.5 5.16.5: Control Center to configure KDE Plasma desktop
 kde-plasma/user-manager 5.15.5 5.16.5: Simple system settings module to manage the users of your system
 kde-plasma/xdg-desktop-portal-kde 5.15.5-r1 5.16.5: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
 kde-plasma/xembed-sni-proxy 5.15.5 5.16.5: Legacy xembed tray icons support for SNI-only system trays
@@ -13434,7 +13434,7 @@ media-libs/libtxc_dxtn 1.0.1-r4: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231-r1: Library of unicode annotation data
 media-libs/libuvc 0.0.6-r1: A cross-platform library for USB video devices, built atop libusb
 media-libs/libv4l 1.6.2 1.10.1 1.16.3 1.16.6: Separate libraries ebuild from upstream v4l-utils package
-media-libs/libvisio 0.1.6 9999: Library parsing the visio documents
+media-libs/libvisio 0.1.6 0.1.7 9999: Library parsing the file format of MS Visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
 media-libs/libvorbis 1.3.6: The Ogg Vorbis sound file format library
 media-libs/libvpx 1.5.0 1.6.0-r1 1.6.1 1.7.0 1.8.0 1.8.0-r1: WebM VP8 and VP9 Codec SDK
