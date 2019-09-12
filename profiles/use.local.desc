@@ -8123,7 +8123,7 @@ sys-apps/superdiag:usb - Install all files, which are needed for an installation
 sys-apps/superiotool:pci - Support for PCI-attached "Super I/Os" (e.g. in VIA VT82686A/B).
 sys-apps/systemd:apparmor - Enable AppArmor support
 sys-apps/systemd:audit - Enable support for sys-process/audit
-sys-apps/systemd:cgroup-hybrid - Default to hybrid cgroup hierarchy instead of unified.
+sys-apps/systemd:cgroup-hybrid - Default to hybrid (legacy) cgroup hierarchy instead of unified (modern).
 sys-apps/systemd:cryptsetup - Enable cryptsetup tools (includes unit generator for crypttab)
 sys-apps/systemd:curl - Enable support for uploading journals
 sys-apps/systemd:dns-over-tls - Enable DNS-over-TLS support
