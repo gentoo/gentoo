@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Both fail with modern versions of dev-util/waf
+# (#664762, #663712).  No reverse dependencies.
+# Removal in 30 days.  Bug #694182.
+dev-libs/libcxml
+dev-libs/locked_sstream
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
 # Unmaintained.  No reverse dependencies.  Its presence breaks
 # pulseaudio (#672468).
 # Removal in 30 days.  Bug #694180.
