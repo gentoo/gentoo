@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Fails to build against current version of boost.
+# No reverse dependencies (last one removed in April).
+# Removal in 30 days.  Bug #691264.
+dev-libs/actor-framework
+
 # Michał Górny <mgorny@gentoo.org> (2019-09-11)
 # Unmaintained.  Last bumped in 2016, many versions behind now.
 # Has test failures reported.  No reverse dependencies.
