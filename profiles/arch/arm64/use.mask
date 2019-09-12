@@ -98,7 +98,7 @@ libproxy
 darcs
 afs
 lirc
-lm_sensors
+lm-sensors
 scanner
 zvbi
 fluidsynth

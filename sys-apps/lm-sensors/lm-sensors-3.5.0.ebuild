@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="6"
 
-inherit linux-info systemd toolchain-funcs multilib-minimal
+inherit linux-info systemd toolchain-funcs multilib-minimal eapi7-ver
 
 DESCRIPTION="Hardware Monitoring user-space utilities"
 HOMEPAGE="https://hwmon.wiki.kernel.org/ https://github.com/lm-sensors/lm-sensors"
@@ -11,7 +11,7 @@ HOMEPAGE="https://hwmon.wiki.kernel.org/ https://github.com/lm-sensors/lm-sensor
 MY_PN="${PN/_/-}"
 
 if [[ "${PV}" =~ .*_p[[:digit:]]{8}.* ]] ; then
-	COMMIT="2c8cca3d6cd60121b401734c1a24cfec7daed4fc"
+	COMMIT="807f9b1529892c0ac89bca0c7ae781c59f9c8393"
 	SRC_URI="https://github.com/lm-sensors/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_PN}-${COMMIT}"
 else
@@ -24,7 +24,7 @@ LICENSE="GPL-2+ LGPL-2.1"
 # SUBSLOT based on SONAME of libsensors.so
 SLOT="0/5.0.0"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="contrib sensord static-libs"
 
 COMMON_DEPS="
@@ -35,7 +35,7 @@ COMMON_DEPS="
 
 RDEPEND="${COMMON_DEPS}
 	dev-lang/perl
-	!<sys-apps/openrc-0.36"
+	!<sys-apps/openrc-0.21.7"
 
 DEPEND="${COMMON_DEPS}
 	sys-devel/bison
@@ -46,7 +46,7 @@ WARNING_HWMON="${PN} requires CONFIG_HWMON to be enabled for use."
 WARNING_I2C_CHARDEV="sensors-detect requires CONFIG_I2C_CHARDEV to be enabled."
 WARNING_I2C="${PN} requires CONFIG_I2C to be enabled for most sensors."
 
-PATCHES=( "${FILESDIR}"/${PN}-3.5.0-sensors-detect-gentoo.patch )
+PATCHES=( "${FILESDIR}"/${PN}-3.4.0-sensors-detect-gentoo.patch )
 
 DOCS=( CHANGES CONTRIBUTORS INSTALL README )
 DOCS+=( doc/{donations,fancontrol.txt,fan-divisors,libsensors-API.txt,progs,temperature-sensors,vid} )
@@ -146,8 +146,8 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	newinitd "${FILESDIR}"/lm_sensors.initd lm_sensors
+	newconfd "${FILESDIR}"/lm_sensors.confd lm_sensors
 	systemd_dounit prog/init/lm_sensors.service
 
 	newinitd "${FILESDIR}"/fancontrol.initd fancontrol
@@ -166,7 +166,7 @@ multilib_src_install_all() {
 	dodoc doc/developers/applications
 
 	if use contrib; then
-		insinto /usr/share/${PN}
+		insinto /usr/share/lm_sensors
 		doins -r "${S}"/configs
 	fi
 }
@@ -208,7 +208,7 @@ pkg_postinst() {
 		elog "Please run \`/usr/sbin/sensors-detect' in order to setup"
 		elog "\"/etc/modules-load.d/lm_sensors.conf\"."
 		elog ""
-		elog "You might want to add ${PN} to your default runlevel to make"
+		elog "You might want to add lm_sensors to your default runlevel to make"
 		elog "sure the sensors get initialized on the next startup."
 		elog ""
 		elog "Be warned, the probing of hardware in your system performed by"

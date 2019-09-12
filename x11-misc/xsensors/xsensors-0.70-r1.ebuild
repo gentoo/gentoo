@@ -15,7 +15,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2
-	>=sys-apps/lm_sensors-3"
+	>=sys-apps/lm-sensors-3"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
