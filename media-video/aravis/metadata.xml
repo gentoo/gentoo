@@ -19,9 +19,9 @@
 		simulator and a simple video viewer.
 	</longdescription>
 	<use>
-		<flag name="X"> Build the GTK+-based video viewer.</flag>
-		<flag name="fast-heartbeat"> Enable faster heartbeat rate. </flag>
-		<flag name="gstreamer"> Build the GStreamer plugin.</flag>
-		<flag name="packet-socket"> Enable packet socket support.</flag>
+		<flag name="fast-heartbeat">Enable faster heartbeat rate. </flag>
+		<flag name="gstreamer">Build the GStreamer plugin.</flag>
+		<flag name="packet-socket">Enable packet socket support.</flag>
+		<flag name="viewer">Build the GTK+-based video viewer.</flag>
 	</use>
 </pkgmetadata>
