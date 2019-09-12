@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit autotools
+inherit autotools eapi7-ver
 
 MY_P="${P^g}"
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://practical-scheme.net/gauche/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~alpha amd64 ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="ipv6 libressl test"
 
