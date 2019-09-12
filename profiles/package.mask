@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Development stalled in 2009.  No reverse dependencies.
+# dev-libs/libvterm is the upstream recommended replacement.
+# Removal in 30 days.  Bug #694226.
+dev-libs/rote
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
 # Unmaintained.  Added in 2008.  Live ebuild only.  No reverse
 # dependencies.
 # Removal in 14 days.  Bug #694224.
