@@ -2910,6 +2910,7 @@ dev-qt/qt-docs:webview - Install documentation for dev-qt/qtwebview
 dev-qt/qt-docs:widgets - Install documentation for dev-qt/qtwidgets
 dev-qt/qt-docs:x11extras - Install documentation for dev-qt/qtx11extras
 dev-qt/qt-docs:xmlpatterns - Install documentation for dev-qt/qtxmlpatterns
+dev-qt/qt3d:gamepad - Add support for gamepad hardware via dev-qt/qtgamepad
 dev-qt/qt3d:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qt3d:qml - Build QML/QtQuick bindings
 dev-qt/qtbluetooth:qml - Build QML/QtQuick bindings and imports
@@ -2922,6 +2923,8 @@ dev-qt/qtdeclarative:localstorage - Build the LocalStorage import for QtQuick (r
 dev-qt/qtdeclarative:widgets - Enable QtWidgets support
 dev-qt/qtdiag:network - Report network information
 dev-qt/qtdiag:widgets - Report widget style information
+dev-qt/qtgamepad:evdev - Enable support for input devices via evdev
+dev-qt/qtgamepad:qml - Build QML bindings
 dev-qt/qtgui:egl - Enable EGL integration
 dev-qt/qtgui:eglfs - Build the EGL Full Screen/Single Surface platform plugin
 dev-qt/qtgui:evdev - Enable support for input devices via evdev
