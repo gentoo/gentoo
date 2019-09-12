@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Current version is from 2015, and is pending bump.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #694206.
+dev-libs/libucl
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
 # Unmaintained.  Added in 2002 and not bumped since.  Homepage gone.
 # No amd64 keyword.  No reverse dependencies.
 # Removal in 30 days.  Bug #694204.
