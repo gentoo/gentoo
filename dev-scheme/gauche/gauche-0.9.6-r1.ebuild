@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x
 IUSE="ipv6 libressl mbedtls test"
 
 RDEPEND="sys-libs/gdbm
-	mbedtls? ( net-libs/mbedtls )"
+	mbedtls? ( net-libs/mbedtls:= )"
 DEPEND="${RDEPEND}
 	test? (
 		!libressl? ( dev-libs/openssl:0 )
