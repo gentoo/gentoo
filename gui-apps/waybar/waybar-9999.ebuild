@@ -18,28 +18,31 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="libcxx mpd network pulseaudio tray +udev"
+IUSE="mpd network pulseaudio tray +udev"
+
+BDEPEND="
+	>=app-text/scdoc-1.9.2
+	virtual/pkgconfig
+"
 
 DEPEND="
 	dev-cpp/gtkmm:3.0
 	dev-libs/jsoncpp:=
 	dev-libs/libinput:=
 	dev-libs/libsigc++:2
-	>=dev-libs/libfmt-5.3.0:0/5
+	>=dev-libs/libfmt-5.3.0:=
 	>=dev-libs/spdlog-1.3.1:=
 	dev-libs/wayland
 	dev-libs/wayland-protocols
 	gui-libs/wlroots
-	libcxx? ( sys-libs/libcxx )
 	mpd? ( media-libs/libmpdclient )
 	network? ( dev-libs/libnl:3 )
 	pulseaudio? ( media-sound/pulseaudio )
 	tray? ( dev-libs/libdbusmenu[gtk3] )
-	udev? ( virtual/libudev:= )"
+	udev? ( virtual/libudev:= )
+"
 
 RDEPEND="${DEPEND}"
-
-BDEPEND="virtual/pkgconfig"
 
 if [[ ${PV} != 9999 ]]; then
 	S="${WORKDIR}/${PN^}-${PV}"
@@ -47,7 +50,6 @@ fi
 
 src_configure() {
 	local emesonargs=(
-		$(meson_use libcxx)
 		$(meson_feature mpd)
 		$(meson_feature network libnl)
 		$(meson_feature pulseaudio)
