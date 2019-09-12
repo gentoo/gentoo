@@ -1,13 +1,13 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl] virtual/pkgconfig
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=nls? ( virtual/libintl ) lm_sensors? ( sys-apps/lm_sensors:= ) nls? ( sys-devel/gettext )
+DEPEND=nls? ( virtual/libintl ) lm-sensors? ( sys-apps/lm-sensors:= ) nls? ( sys-devel/gettext )
 DESCRIPTION=System performance tools for Linux
 EAPI=7
 HOMEPAGE=http://pagesperso-orange.fr/sebastien.godard/
-IUSE=debug nls lm_sensors selinux static
+IUSE=debug nls lm-sensors selinux static
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=nls? ( virtual/libintl ) lm_sensors? ( sys-apps/lm_sensors:= ) selinux? ( sec-policy/selinux-sysstat )
+RDEPEND=nls? ( virtual/libintl ) lm-sensors? ( sys-apps/lm-sensors:= ) selinux? ( sec-policy/selinux-sysstat )
 SLOT=0
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=d9a2473385ca1592504a7f01069af146
+_md5_=2a2601793d4bdfcc0db060a32a400409

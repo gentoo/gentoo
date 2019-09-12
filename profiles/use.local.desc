@@ -68,7 +68,7 @@ app-admin/elektra:yajl - Enable yajl support
 app-admin/gkrellm:X - Build both the X11 gui (gkrellm) and the server (gkrellmd). Disabling this flag builds the server only
 app-admin/gkrellm:gnutls - Enable SSL support for mail checking with net-libs/gnutls (overrides 'ssl' USE flag)
 app-admin/gkrellm:hddtemp - Enable monitoring harddrive temperatures via app-admin/hddtemp
-app-admin/gkrellm:lm_sensors - Enable monitoring sensors via sys-apps/lm_sensors
+app-admin/gkrellm:lm-sensors - Enable monitoring sensors via sys-apps/lm-sensors
 app-admin/gkrellm:ntlm - Enable NTLM authentication for mail checking with net-libs/libntlm
 app-admin/gkrellm:ssl - Enable SSL support for mail checking with dev-libs/openssl
 app-admin/glance:swift - Adds swift storage support
@@ -8056,8 +8056,8 @@ sys-apps/kmscon:pango - Enable pango font rendering
 sys-apps/kmscon:pixman - Enable pixman font rendering
 sys-apps/kmscon:systemd - Enable multiseat support via systemd
 sys-apps/linux-misc-apps:usbip - Include USB/IP binaries to replace net-misc/usbip
-sys-apps/lm_sensors:contrib - Installs user contributed configuration files so you don't need to find settings on your own for your system if somebody else has already created such a configuration for sensors/mainboards you are using.
-sys-apps/lm_sensors:sensord - Enable sensord - a daemon that can be used to periodically log sensor readings from hardware health-monitoring chips
+sys-apps/lm-sensors:contrib - Installs user contributed configuration files so you don't need to find settings on your own for your system if somebody else has already created such a configuration for sensors/mainboards you are using.
+sys-apps/lm-sensors:sensord - Enable sensord - a daemon that can be used to periodically log sensor readings from hardware health-monitoring chips
 sys-apps/man-db:manpager - Enable manpager wrapper for colorizing output
 sys-apps/mawk:forced-sandbox - Always enable -W sandbox mode for simpler/secure runtime
 sys-apps/memtest86:serial - Compile with serial console support
