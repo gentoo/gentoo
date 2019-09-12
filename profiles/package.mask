@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last release in 2009.  No reverse dependencies.
+# Removal in 30 days.  Bug #694200.
+dev-libs/libproccpuinfo
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
 # Unmaintained.  Current version from 2015, last release in 2016.
 # No reverse dependencies.
 # Removal in 30 days.  Bug #694198.
