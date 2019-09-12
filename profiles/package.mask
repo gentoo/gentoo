@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Current release is from 2014, and needs version bump.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #694166.
+dev-libs/cgicc
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
 # Unmaintained.  Fails to build against current version of boost.
 # No reverse dependencies (last one removed in April).
 # Removal in 30 days.  Bug #691264.
