@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=net-wireless/gnuradio:= net-wireless/gr-osmosdr:= dev-libs/boost:=
+DESCRIPTION=Frequency scanner for GNU Radio
+EAPI=7
+HOMEPAGE=http://git.zx2c4.com/gr-scan/about
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=net-wireless/gnuradio:= net-wireless/gr-osmosdr:= dev-libs/boost:=
+SLOT=0
+SRC_URI=https://git.zx2c4.com/gr-scan/snapshot/gr-scan-25030f6063e796e5cb048ffc1ec7e1914192146b.tar.xz -> gr-scan-20160211.tar.xz
+_md5_=cbf1b9c7e7676fee332375509314974a
