@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  The driver is now included in the kernel,
+# so the package installs only a header file.  However, according
+# to upstream this file violated Lego Mindstorms SDK license.
+# Removal in 30 days.  Bug #694176.
+dev-libs/legousbtower
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
 # Unmaintained.  No reverse dependencies.  Multiple alternatives exist,
 # most with less restrictive licenses (e.g. dev-libs/glib).
 # Removal in 30 days.  Bug #694174.
