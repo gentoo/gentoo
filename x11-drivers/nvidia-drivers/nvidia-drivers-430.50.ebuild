@@ -458,9 +458,9 @@ src_install-libs() {
 
 	if use X; then
 		NV_GLX_LIBRARIES=(
-			"libEGL.so.$( [[ ${ABI} == "amd64" ]] && usex compat ${NV_SOVER} 1.1.0 || echo 1.1.0) ${GL_ROOT}"
+			"libEGL.so.$(usex compat ${NV_SOVER} 1.1.0) ${GL_ROOT}"
 			"libEGL_nvidia.so.${NV_SOVER} ${GL_ROOT}"
-			"libGL.so.1.7.0 ${GL_ROOT}"
+			"libGL.so.$(usex compat ${NV_SOVER} 1.7.0) ${GL_ROOT}"
 			"libGLESv1_CM.so.1.2.0 ${GL_ROOT}"
 			"libGLESv1_CM_nvidia.so.${NV_SOVER} ${GL_ROOT}"
 			"libGLESv2.so.2.1.0 ${GL_ROOT}"
@@ -489,7 +489,7 @@ src_install-libs() {
 		if use wayland && has_multilib_profile && [[ ${ABI} == "amd64" ]];
 		then
 			NV_GLX_LIBRARIES+=(
-				"libnvidia-egl-wayland.so.1.1.3"
+				"libnvidia-egl-wayland.so.1.1.2"
 			)
 		fi
 
