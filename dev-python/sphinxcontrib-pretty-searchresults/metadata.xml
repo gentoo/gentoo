@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bernardo@standard.ai</email>
+		<name>Bernardo Meurer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Sphinx: pretty search results is an extension for the Sphinx
+		documentation tool.
+
+		To display search results, Sphinx is fetching the
+		source files of search hits and rendering excerpts in raw markup
+		(Example). This extension removes the markup from these source files
+		(during build time), so the search results look decent.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">sphinxprettysearchresults</remote-id>
+		<remote-id type="github">sphinx-contrib/sphinx-pretty-searchresults</remote-id>
+	</upstream>
+</pkgmetadata>
