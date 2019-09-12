@@ -12,4 +12,7 @@
 	library aims to provide simple helpers that allows you to re-use code and to
 	avoid re-inventing the wheel.
 </longdescription>
+<upstream>
+	<remote-id type="cpe">cpe:/a:netfilter:libmnl</remote-id>
+</upstream>
 </pkgmetadata>

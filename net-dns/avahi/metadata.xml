@@ -20,5 +20,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">lathiat/avahi</remote-id>
+		<remote-id type="cpe">cpe:/a:avahi:avahi</remote-id>
 	</upstream>
 </pkgmetadata>

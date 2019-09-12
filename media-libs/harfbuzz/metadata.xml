@@ -13,6 +13,9 @@
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:harfbuzz_project:harfbuzz</remote-id>
+	</upstream>
 	<use>
 		<flag name="glib">Compile with GLib Unicode support</flag>
 		<flag name="graphite">Use graphite to render complex non-Roman writing systems</flag>

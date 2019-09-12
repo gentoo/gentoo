@@ -8,4 +8,7 @@
 <use>
 	<flag name="rpc">support looking up RPC service info</flag>
 </use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:lsof_project:lsof</remote-id>
+</upstream>
 </pkgmetadata>

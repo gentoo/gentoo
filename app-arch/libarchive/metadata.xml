@@ -33,6 +33,7 @@
 		</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:libarchive:libarchive</remote-id>
 		<remote-id type="github">libarchive/libarchive</remote-id>
 		<bugs-to>https://github.com/libarchive/libarchive/issues</bugs-to>
 	</upstream>

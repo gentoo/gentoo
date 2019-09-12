@@ -9,6 +9,7 @@
     <name>Gentoo Base System</name>
   </maintainer>
   <upstream>
+    <remote-id type="cpe">cpe:/a:kernel:bridge-utils</remote-id>
     <remote-id type="sourceforge">bridge</remote-id>
   </upstream>
 </pkgmetadata>

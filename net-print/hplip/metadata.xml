@@ -24,6 +24,7 @@
 		<flag name="X">Enables scanner GUI dependencies with USE="scanner" where <pkg>media-gfx/xsane</pkg> is preferred over <pkg>media-gfx/sane-frontends</pkg></flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:hp:linux_imaging_and_printing_project</remote-id>
 		<remote-id type="sourceforge">hplip</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -8,4 +8,7 @@
   <use>
     <flag name="xkb">Enable the XCB keyboard extension</flag>
   </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:x:libxcb</remote-id>
+  </upstream>
 </pkgmetadata>

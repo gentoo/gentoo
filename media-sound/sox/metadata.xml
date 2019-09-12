@@ -11,6 +11,7 @@
     <flag name="twolame">Enables twolame support (MPEG Audio Layer 2 encoder)</flag>
   </use>
   <upstream>
+    <remote-id type="cpe">cpe:/a:soundexchange:sound_exchange</remote-id>
     <remote-id type="sourceforge">sox</remote-id>
   </upstream>
 </pkgmetadata>

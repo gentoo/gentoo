@@ -5,4 +5,7 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:lzo_project:lzo</remote-id>
+	</upstream>
 </pkgmetadata>

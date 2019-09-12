@@ -16,4 +16,7 @@
 		* Control receive queue selection for multiqueue devices
 		* Upgrade firmware in flash memory
 </longdescription>
+<upstream>
+	<remote-id type="cpe">cpe:/a:kernel:ethtool</remote-id>
+</upstream>
 </pkgmetadata>

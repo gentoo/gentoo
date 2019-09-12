@@ -6,6 +6,7 @@
 		<name>Gentoo Printing Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:littlecms:little_cms_color_engine</remote-id>
 		<remote-id type="sourceforge">lcms</remote-id>
 	</upstream>
 </pkgmetadata>

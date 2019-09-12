@@ -5,4 +5,7 @@
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:xmlsoft:libxslt</remote-id>
+  </upstream>
 </pkgmetadata>

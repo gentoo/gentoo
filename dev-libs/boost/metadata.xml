@@ -19,6 +19,7 @@
 		<flag name="tools">Build and install the boost tools (bcp, quickbook, inspect, wave)</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:boost:boost</remote-id>
 		<remote-id type="sourceforge">boost</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -11,4 +11,7 @@
 	<flag name="iptables">include support for iptables filtering</flag>
 	<flag name="minimal">only install ip and tc programs, without eBPF support</flag>
 </use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:iproute2_project:iproute2</remote-id>
+</upstream>
 </pkgmetadata>
