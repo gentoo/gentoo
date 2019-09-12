@@ -11,7 +11,7 @@ HOMEPAGE="http://www.oasis-open.org/docbook/"
 SRC_URI="mirror://gentoo/${MY_P}.zip"
 
 LICENSE="docbook"
-SLOT="0"
+SLOT="4.1.2.4"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 IUSE=""
 
