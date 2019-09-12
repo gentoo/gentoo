@@ -8,4 +8,7 @@
 <use>
 	<flag name="asm">Enable use of hand optimized assembly routines (faster execution)</flag>
 </use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:gmplib:gmp</remote-id>
+</upstream>
 </pkgmetadata>

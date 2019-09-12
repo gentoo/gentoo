@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<remote-id type="cpe">cpe:/a:html-tidy:tidy</remote-id>
 		<remote-id type="sourceforge">tidy</remote-id>
 	</upstream>
 </pkgmetadata>

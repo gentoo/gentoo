@@ -9,6 +9,9 @@
 	<email>kde@gentoo.org</email>
 	<name>Gentoo KDE Project</name>
 </maintainer>
+<upstream>
+	<remote-id type="cpe">cpe:/a:nih:libzip</remote-id>
+</upstream>
 <use>
 	<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as TLS provider</flag>
 </use>

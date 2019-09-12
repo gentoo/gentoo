@@ -4,4 +4,7 @@
 	<maintainer type="person">
 		<email>eva@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:libdaemon_project:libdaemon</remote-id>
+	</upstream>
 </pkgmetadata>

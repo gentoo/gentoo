@@ -5,6 +5,9 @@
 		<email>samba@gentoo.org</email>
 		<name>Samba</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:samba:samba</remote-id>
+	</upstream>
 	<use>
 		<flag name="doc">Builds documentation</flag>
 		<flag name="ldap">Enable LDAP support</flag>

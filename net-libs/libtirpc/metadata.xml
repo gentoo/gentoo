@@ -6,6 +6,7 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:libtirpc_project:libtirpc</remote-id>
 		<remote-id type="sourceforge">libtirpc</remote-id>
 	</upstream>
 </pkgmetadata>

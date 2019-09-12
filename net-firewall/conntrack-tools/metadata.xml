@@ -12,6 +12,9 @@ is the module that provides stateful packet inspection for iptables. The
 conntrack-tools are the userspace daemon conntrackd and the command line
 interface conntrack.
 </longdescription>
+<upstream>
+<remote-id type="cpe">cpe:/a:netfilter:conntrack-tools</remote-id>
+</upstream>
 <use>
 <flag name="libtirpc">Use <pkg>net-libs/libtirpc</pkg> for RPC support</flag>
 <flag name="cthelper">Use <pkg>net-libs/libnetfilter_cthelper</pkg> for userspace conntrack helper support</flag>

@@ -5,4 +5,7 @@
     <email>freedesktop-bugs@gentoo.org</email>
     <name>Gentoo Freedesktop Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:libbsd:libbsd</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -38,4 +38,7 @@
   <slots>
    <subslots>Reflect ABI compatibility of libgnutls.so</subslots>
   </slots>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:gnu:gnutls</remote-id>
+  </upstream>
 </pkgmetadata>

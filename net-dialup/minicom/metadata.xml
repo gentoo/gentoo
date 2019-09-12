@@ -9,4 +9,7 @@
     Minicom is a menu driven communications program. It emulates ANSI and VT102
     terminals. It has a dialing directory and auto zmodem download.
   </longdescription>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:minicom_project:minicom</remote-id>
+  </upstream>
 </pkgmetadata>
