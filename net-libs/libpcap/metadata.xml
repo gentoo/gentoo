@@ -9,6 +9,7 @@
 <flag name="netlink">Use <pkg>dev-libs/libnl</pkg> to put wireless interfaces in monitor mode.</flag>
 </use>
 <upstream>
+<remote-id type="cpe">cpe:/a:tcpdump:libpcap</remote-id>
 <remote-id type="github">the-tcpdump-group/libpcap</remote-id>
 </upstream>
 </pkgmetadata>

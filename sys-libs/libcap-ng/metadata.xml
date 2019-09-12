@@ -11,4 +11,7 @@
 	utilities that can analyse all currently running applications and print
 	out any capabilities and whether or not it has an open ended bounding set.
 </longdescription>
+<upstream>
+	<remote-id type="cpe">cpe:/a:libcap-ng_project:libcap-ng</remote-id>
+</upstream>
 </pkgmetadata>

@@ -19,4 +19,7 @@ netperf include:
 <use>
 <flag name="demo">Emit interim results during the run. May affect results</flag>
 </use>
+<upstream>
+<remote-id type="cpe">cpe:/a:netperf:netperf</remote-id>
+</upstream>
 </pkgmetadata>
