@@ -16,30 +16,33 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+"
 SLOT="0"
 # FIXME: As of right now tests are always built, once that changes a USE flag
 # should be added. c.f. https://github.com/AravisProject/aravis/issues/286
-IUSE="doc fast-heartbeat gstreamer introspection packet-socket usb X"
+IUSE="gtk-doc fast-heartbeat gstreamer introspection packet-socket usb viewer"
 
 GST_DEPEND="
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
 "
 BDEPEND="
-	>=dev-util/meson-0.47.0
+	dev-util/glib-utils
 	virtual/pkgconfig
-	doc? ( dev-util/gtk-doc )
-	introspection? ( dev-libs/gobject-introspection )
+	gtk-doc? (
+		dev-util/gtk-doc
+		app-text/docbook-xml-dtd:4.3
+	)
+	introspection? ( dev-libs/gobject-introspection:= )
 "
 DEPEND="
-	>=dev-libs/glib-2.34
-	dev-libs/libxml2:=
-	sys-libs/zlib:=
+	>=dev-libs/glib-2.34:2
+	dev-libs/libxml2:2
+	sys-libs/zlib
 	gstreamer? ( ${GST_DEPEND} )
 	packet-socket? ( sys-process/audit )
 	usb? ( virtual/libusb:1 )
-	X? (
+	viewer? (
 		${GST_DEPEND}
 		>=x11-libs/gtk+-3.12:3
 		x11-libs/libnotify
@@ -53,13 +56,13 @@ fi
 
 src_configure() {
 	local emesonargs=(
-		$(meson_use doc documentation)
+		$(meson_use gtk-doc documentation)
 		$(meson_use fast-heartbeat)
 		$(meson_use gstreamer gst-plugin)
 		$(meson_use introspection)
 		$(meson_use packet-socket)
 		$(meson_use usb)
-		$(meson_use X viewer)
+		$(meson_use viewer)
 	)
 	meson_src_configure
 }
@@ -74,12 +77,12 @@ src_install() {
 	local install_p="${PN}-${install_pv}"
 
 	# Properly place icons
-	if use X; then
+	if use viewer; then
 		cp -r "${ED}/usr/share/${install_p}/icons" "${ED}/usr/share" || die "Failed to copy icons"
 	fi
 
 	# Symlink versioned binaries to non-versioned
 	dosym "arv-tool-${install_pv}" "usr/bin/arv-tool"
 	dosym "arv-fake-gv-camera-${install_pv}" "usr/bin/arv-fake-gv-camera"
-	use X && dosym "arv-viewer-${install_pv}" "usr/bin/arv-viewer"
+	use viewer && dosym "arv-viewer-${install_pv}" "usr/bin/arv-viewer"
 }
