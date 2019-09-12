@@ -16,6 +16,8 @@ IUSE="test cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_avx cpu_flags_x86
 
 RDEPEND="virtual/opengl"
 
+PATCHES=( "${FILESDIR}"/${P}-simd.patch )
+
 src_prepare() {
 	cmake-utils_src_prepare
 	sed \
