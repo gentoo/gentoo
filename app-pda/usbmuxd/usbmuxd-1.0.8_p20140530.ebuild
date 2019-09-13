@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,9 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 IUSE=""
 
-RDEPEND=">=app-pda/libimobiledevice-1.1.6
+RDEPEND="
+	acct-group/plugdev
+	>=app-pda/libimobiledevice-1.1.6
 	>=app-pda/libplist-1.11
 	virtual/libusb:1"
 DEPEND="${RDEPEND}
@@ -24,7 +26,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 pkg_setup() {
-	enewgroup plugdev
 	enewuser usbmux -1 -1 -1 "usb,plugdev"
 }
 
