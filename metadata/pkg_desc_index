@@ -2995,7 +2995,7 @@ dev-ada/gnatsymbolize 2018 2019: Translates addresses into filename, line number
 dev-ada/gprbuild 2017-r1 2017-r2 2019 2019-r1: Multi-Language Management
 dev-ada/gps 2017 2018-r1: The GNAT Programming Studio
 dev-ada/gps-bin 2016: The GNAT Programming Studio
-dev-ada/gtkada 2017 2018-r1 2019: A complete Ada graphical toolkit
+dev-ada/gtkada 2017 2017-r1 2018-r1 2018-r2 2019 2019-r1: A complete Ada graphical toolkit
 dev-ada/langkit 2017 2018 2019: A Python framework to generate language parsers
 dev-ada/libadalang 2017-r1 2018 2018-r1 2019: high performance semantic engine for the Ada programming language
 dev-ada/libadalang-tools 2018 2019: Libadalang-based tools: gnatpp, gnatmetric and gnatstub
@@ -4722,7 +4722,7 @@ dev-libs/actor-framework 0.14.5: The C++ Actor Framework (CAF)
 dev-libs/amdgpu-pro-opencl 18.20.684755 19.30.838629: Proprietary OpenCL implementation for AMD GPUs
 dev-libs/angelscript 2.33.0: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2: The ANTLR3 C Runtime
-dev-libs/appstream 0.12.6 0.12.7 0.12.8: Cross-distro effort for providing metadata for software in the Linux ecosystem
+dev-libs/appstream 0.12.7 0.12.8: Cross-distro effort for providing metadata for software in the Linux ecosystem
 dev-libs/appstream-glib 0.7.9 0.7.15: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.6.3-r4 1.6.5-r1 1.7.0-r1: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.4 1.5.4-r3 1.6.1-r3: Apache Portable Runtime Utility Library
@@ -5085,7 +5085,7 @@ dev-libs/libxmlb 0.1.8 0.1.10 0.1.11: Library to help create and query binary XM
 dev-libs/libxslt 1.1.33-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.16 4.17: platform abstraction code for tucnak package
-dev-libs/libzip 1.5.1 1.5.2-r1: Library for manipulating zip archives
+dev-libs/libzip 1.5.1 1.5.2-r2: Library for manipulating zip archives
 dev-libs/light 1.2-r1: A program to control backlights (and other hardware lights)
 dev-libs/link-grammar 5.3.11: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r3: Library for locking devices
@@ -12232,7 +12232,7 @@ kde-apps/kdeedu-meta 19.04.3 19.08.1: KDE educational apps - merge this to pull 
 kde-apps/kdegames-meta 19.04.3 19.08.1: kdegames - merge this to pull in all kdegames-derived packages
 kde-apps/kdegraphics-meta 19.04.3 19.08.1: kdegraphics - merge this to pull in all kdegraphics-derived packages
 kde-apps/kdegraphics-mobipocket 19.04.3 19.08.1: Library to support mobipocket ebooks
-kde-apps/kdemultimedia-meta 19.04.3 19.08.1: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
+kde-apps/kdemultimedia-meta 19.04.3: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 19.04.3 19.08.1: SMB filesharing config module for systemsettings
 kde-apps/kdenetwork-meta 19.04.3 19.08.1: kdenetwork - merge this to pull in all kdenetwork-derived packages
 kde-apps/kdenlive 19.04.3 19.08.1: Non-linear video editing suite by KDE
@@ -15184,6 +15184,8 @@ net-libs/net6 1.3.14-r2: Network access framework for IPv4/IPv6 written in C++
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.39.2 9999: HTTP/2 C Library
+net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
+net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
 net-libs/nodejs 0.12.18 4.9.1 6.14.4 6.17.1 8.12.0 8.16.1 10.16.3 12.9.1 12.10.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
@@ -15197,6 +15199,7 @@ net-libs/pacparser 1.3.7: Library to parse proxy auto-config files
 net-libs/phodav 2.2: WebDav server implementation using libsoup
 net-libs/pjproject 2.7.1 2.7.2: Open source SIP, Media, and NAT Traversal Library
 net-libs/quasselc 0_p20170111: API for accessing Quassel using C
+net-libs/quiche 0.1.0_alpha4_p20190912 9999: Implementation of the QUIC transport protocol and HTTP/3
 net-libs/qxmpp 0.9.3-r2 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.9.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
