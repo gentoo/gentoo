@@ -233,6 +233,10 @@ ada_export() {
 				export GNATLS=${EPREFIX}/usr/bin/gnatls-${gcc_pv}
 				debug-print "${FUNCNAME}: GNATLS = ${GNATLS}"
 				;;
+			GNATPREP)
+				export GNATPREP=${EPREFIX}/usr/bin/gnatprep-${gcc_pv}
+				debug-print "${FUNCNAME}: GNATPREP = ${GNATPREP}"
+				;;
 			ADA_PKG_DEP)
 				ADA_PKG_DEP="dev-lang/gnat-gpl:${gcc_pv}"
 
@@ -341,8 +345,8 @@ ada_wrapper_setup() {
 	if [[ ! -x ${workdir}/bin/gnatmake ]]; then
 		mkdir -p "${workdir}"/bin || die
 
-		local GCC GNATMAKE GNATLS GNATBIND
-		ada_export "${impl}" GCC GNATMAKE GNATLS GNATBIND
+		local GCC GNATMAKE GNATLS GNATBIND GNATPREP
+		ada_export "${impl}" GCC GNATMAKE GNATLS GNATBIND GNATPREP
 
 		# Ada compiler
 		cat > "${workdir}/bin/gcc" <<-_EOF_ || die
@@ -365,6 +369,11 @@ ada_wrapper_setup() {
 			exec "${GNATBIND}" "\${@}"
 		_EOF_
 		chmod a+x "${workdir}/bin/gnatbind"
+		cat > "${workdir}/bin/gnatprep" <<-_EOF_ || die
+			#!/bin/sh
+			exec "${GNATPREP}" "\${@}"
+		_EOF_
+		chmod a+x "${workdir}/bin/gnatprep"
 	fi
 
 	# Now, set the environment.
