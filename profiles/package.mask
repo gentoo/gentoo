@@ -31,6 +31,41 @@
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-13)
 # Unmaintained.  No reverse dependencies.
+# Removal in 30 days.  Bug #694260.
+sys-libs/libmath++
+sys-libs/rvm
+sys-libs/system-config-base
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Unmaintained.  All look pretty dead.  No reverse dependencies.
+#
+# x11-libs/gtkhotkey: 2009
+# x11-libs/libaosd: 2010
+# x11-libs/libproplist: ancient?
+#
+# Removal in 30 days.  Bug #694258.
+x11-libs/gtkhotkey
+x11-libs/libaosd
+x11-libs/libproplist
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Unmaintained.  Not bumped since 2011.  Fails to build due to broken
+# build system.  No reverse dependencies.
+# Removal in 30 days.  Bug #500616.
+net-libs/nacl
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Unmaintained.  No reverse dependencies.
+# Removal in 30 days.  Bug #694256.
+net-libs/ccnet
+net-libs/ccrtp
+net-libs/dslib
+net-libs/libgmail
+net-libs/libs3
+net-libs/libyahoo2
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Unmaintained.  No reverse dependencies.
 #
 # media-libs/libbmp: 2010, homepage gone.
 # media-libs/libmkv: 2011.
