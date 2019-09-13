@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hd_brummy@gentoo.org</email>
-		<name>Joerg Bornkessel</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>martin.dummer@gmx.net</email>
 		<name>Martin Dummer</name>
 	</maintainer>

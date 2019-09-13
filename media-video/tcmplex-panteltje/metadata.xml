@@ -4,10 +4,6 @@
 <maintainer type="person">
   <email>lordvan@gentoo.org</email>
 </maintainer>
-<maintainer type="person">
-  <email>hd_brummy@gentoo.org</email>
-  <name>Joerg Bornkessel</name>
-</maintainer>
 <maintainer type="project">
   <email>media-video@gentoo.org</email>
   <name>Gentoo Video project</name>

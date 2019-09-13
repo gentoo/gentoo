@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-			<email>hd_brummy@gentoo.org</email>
-			<name>Joerg Bornkessel</name>
-		</maintainer>
-		<maintainer type="project">
+	<maintainer type="project">
 			<email>media-video@gentoo.org</email>
 			<name>Gentoo Video project</name>
 		</maintainer>
