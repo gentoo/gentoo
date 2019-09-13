@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit udev user
+inherit udev
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code"
@@ -20,7 +20,9 @@ LICENSE="LGPL-2.1" # LGPL-2+ and LGPL-2.1+ ?
 SLOT="0/9" # Based on SONAME of libmtp shared library
 IUSE="+crypt doc examples static-libs"
 
-RDEPEND="virtual/libusb:1
+RDEPEND="
+	acct-group/plugdev
+	virtual/libusb:1
 	crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -29,10 +31,6 @@ BDEPEND="
 	doc? ( app-doc/doxygen )"
 
 DOCS=( AUTHORS README TODO )
-
-pkg_setup() {
-	enewgroup plugdev
-}
 
 src_prepare() {
 	default
