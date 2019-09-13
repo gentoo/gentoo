@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,6 +33,7 @@ HOMEPAGE="https://www.jetbrains.com/idea"
 LICENSE="IDEA
 	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
 IUSE="-custom-jdk"
+RESTRICT="bindist mirror"
 
 DEPEND="!dev-util/${PN}:14
 	!dev-util/${PN}:15"
