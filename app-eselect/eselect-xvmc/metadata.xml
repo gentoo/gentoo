@@ -5,7 +5,4 @@
 		<email>junghans@gentoo.org</email>
 		<name>Christoph Junghans</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>cardoe@gentoo.org</email>
-	</maintainer>
-</pkgmetadata>
+	</pkgmetadata>
