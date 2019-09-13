@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info udev user
+inherit linux-info udev
 
 DESCRIPTION="Yubico Universal 2nd Factor (U2F) Host C Library"
 HOMEPAGE="https://developers.yubico.com/libu2f-host/"
@@ -16,19 +16,14 @@ IUSE="kernel_linux static-libs systemd"
 
 DEPEND="dev-libs/hidapi
 	dev-libs/json-c:="
+# The U2F device node will be owned by group 'plugdev'
+# in non-systemd configurations
 RDEPEND="${DEPEND}
+	!systemd? ( acct-group/plugdev )
 	systemd? ( sys-apps/systemd[acl] )"
 BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="~HIDRAW"
-
-pkg_setup() {
-	# The U2F device node will be owned by group 'plugdev'
-	# in non-systemd configurations
-	if ! use systemd; then
-		enewgroup plugdev
-	fi
-}
 
 src_install() {
 	default
