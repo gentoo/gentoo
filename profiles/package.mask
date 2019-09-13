@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Last bumped in 2017.  Newer version fails to fetch.  Pending bump.
+# Unresolved license issues.
+# Removal in 30 days.  Bug #694264.
+dev-util/idea-ultimate
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
 # Unmaintained.  Last bumped in 2017.  Unresolved license issues.
 # Removal in 30 days.  Bug #694274.
 dev-util/webstorm
