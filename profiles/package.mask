@@ -29,6 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Unmaintained.  No reverse dependencies.
+#
+# media-libs/libbmp: 2010, homepage gone.
+# media-libs/libmkv: 2011.
+# media-libs/sampleicc: 2014, last upstream 2016.
+#
+# Removal in 30 days.  Bug #694254.
+media-libs/libbmp
+media-libs/libmkv
+media-libs/sampleicc
+
 # Michał Górny <mgorny@gentoo.org> (2019-09-12)
 # Unmaintained.  Current version from 2016, needs bump.  No reverse
 # dependencies.
