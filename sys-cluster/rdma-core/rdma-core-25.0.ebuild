@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ DEPEND="${COMMON_DEPEND}
 	python? ( dev-python/cython[${PYTHON_USEDEP}] )"
 
 RDEPEND="${COMMON_DEPEND}
-	!!sys-fabric/infiniband-diags
+	!sys-fabric/infiniband-diags
 	!sys-fabric/libibverbs
 	!sys-fabric/librdmacm
 	!sys-fabric/libibumad
@@ -51,6 +51,8 @@ RDEPEND="${COMMON_DEPEND}
 	!sys-fabric/libnes"
 
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/optional_pandoc.patch )
 
 pkg_setup() {
 	python-single-r1_pkg_setup
