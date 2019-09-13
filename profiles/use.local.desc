@@ -7683,6 +7683,7 @@ sci-libs/symengine:mpc - Add support for multiprecision complex arithmetic(dev-l
 sci-libs/symengine:mpfr - Add support for multiprecision floating point rouding(dev-libs/mpfr)
 sci-libs/taucs:cilk - Enable multithreading using dev-lang/cilk
 sci-libs/tensorflow:cuda - Enable support for nVidia CUDA
+sci-libs/tensorflow:xla - XLA (Accelerated Linear Algebra) Optimizing Compiler for TensorFlow
 sci-libs/trilinos:adolc - Add support for adolc (sci-libs/adolc)
 sci-libs/trilinos:arprec - Add support for arprec (sci-libs/arprec)
 sci-libs/trilinos:boost - Add support for boost (dev-libs/boost)
