@@ -16,7 +16,7 @@ SLOT="2017"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RESTRICT="splitdebug" #656858
+RESTRICT="bindist mirror splitdebug" #656858
 
 RDEPEND=">=virtual/jdk-1.7"
 
