@@ -5,9 +5,6 @@
     <email>aballier@gentoo.org</email>
     <name>Alexis Ballier</name>
   </maintainer>
-  <use>
-    <flag name="drm">Enables VA/DRM API support.</flag>
-  </use>
   <upstream>
     <remote-id type="github">intel/intel-vaapi-driver</remote-id>
   </upstream>
