@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils user bash-completion-r1
+inherit eutils bash-completion-r1
 
 DESCRIPTION="Policy based mounter that gives the ability to mount removable devices as a user"
 HOMEPAGE="https://launchpad.net/pmount"
@@ -13,17 +13,15 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sh sparc x86"
 IUSE="crypt"
 
-RDEPEND=">=sys-apps/util-linux-2.17.2
+RDEPEND="
+	acct-group/plugdev
+	>=sys-apps/util-linux-2.17.2
 	crypt? ( >=sys-fs/cryptsetup-1.0.6-r2 )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext"
 
 S=${WORKDIR}/${P/_/-}
-
-pkg_setup() {
-	enewgroup plugdev
-}
 
 src_prepare() {
 	# Restore default value from pmount <= 0.9.23 wrt #393633
