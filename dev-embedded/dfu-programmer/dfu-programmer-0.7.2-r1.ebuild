@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit udev user
+inherit udev
 
 DESCRIPTION="A Device Firmware Update based USB programmer for Atmel chips"
 HOMEPAGE="http://dfu-programmer.sourceforge.net"
@@ -14,14 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 arm"
 IUSE=""
 
-RDEPEND="virtual/libusb:1
+RDEPEND="
+	acct-group/plugdev
+	virtual/libusb:1
 	virtual/udev"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-pkg_setup() {
-	enewgroup plugdev
-}
 
 src_prepare() {
 	default
