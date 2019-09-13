@@ -63,6 +63,12 @@ S=${WORKDIR}/x/y/${P}
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+PATCHES=(
+	# fix linking in non-native build (without tools-extra)
+	# https://bugs.llvm.org/show_bug.cgi?id=43281
+	"${FILESDIR}"/9.0.0/0001-clang-unittest-Import-LLVMTestingSupport-if-necessar.patch
+)
+
 # Multilib notes:
 # 1. ABI_* flags control ABIs libclang* is built for only.
 # 2. clang is always capable of compiling code for all ABIs for enabled
