@@ -10794,7 +10794,7 @@ dev-util/hxtools 20180301: A collection of tools and scripts
 dev-util/icemon 3.1.0: Monitor program for use with Icecream compile clusters based on KDE Frameworks
 dev-util/icmake 9.02.07 9.02.08: Hybrid between a make utility and a shell scripting language
 dev-util/idea-community 2018.3.1.183.4588.61-r1 2018.3.3.183.5153.38 2018.3.4.183.5429.30 2019.1.191.6183.87: A complete toolset for web, mobile and enterprise development
-dev-util/idea-ultimate 2017.3.1.173.3942.27 2017.3.2.173.4127.17_pre: A complete toolset for web, mobile and enterprise development
+dev-util/idea-ultimate 2017.3.1.173.3942.27: A complete toolset for web, mobile and enterprise development
 dev-util/idutils 4.6: Fast, high-capacity, identifier database tool
 dev-util/ignition-cmake 0.2.0 0.4.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
