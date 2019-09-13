@@ -9,7 +9,7 @@ DESCRIPTION="Hacking with Style: TrueType VT220 Font"
 HOMEPAGE="http://sensi.org/~svo/glasstty/"
 SRC_URI="http://sensi.org/~svo/glasstty/Glass_TTY_VT220.ttf -> Glass_TTY_VT220-${PV}.ttf"
 
-KEYWORDS="amd64 ~arm arm64 x86"
+KEYWORDS="amd64 arm arm64 x86"
 LICENSE="freedist"
 SLOT="0"
 
