@@ -4812,7 +4812,7 @@ dev-libs/gecode 3.7.3-r1 4.4.0-r2: An environment for developing constraint-base
 dev-libs/geoip 1.6.9-r1 1.6.10 1.6.11 1.6.12: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1 1.2: C/C++ routines for fast arithmetic in GF(2)[x]
-dev-libs/girara 0.3.1 0.3.2 9999: UI library that focuses on simplicity and minimalism
+dev-libs/girara 0.3.1 0.3.2 0.3.3 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.48.7 1.54.3 1.56.2: Javascript bindings for GNOME
 dev-libs/glib 2.58.3-r1 2.60.6 2.60.7: The GLib library of C routines
 dev-libs/gmime 2.6.23 3.2.3: Utilities for creating and parsing messages using MIME
