@@ -1,13 +1,13 @@
 BDEPEND=>sys-devel/gettext-0.18.3 virtual/pkgconfig doc? ( app-doc/doxygen ) virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=configure install prepare setup unpack
-DEPEND=virtual/libusb:1 crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=acct-group/plugdev virtual/libusb:1 crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )
 DESCRIPTION=Implementation of Microsoft's Media Transfer Protocol (MTP)
 EAPI=7
 HOMEPAGE=http://libmtp.sourceforge.net/
 IUSE=+crypt doc examples static-libs
 LICENSE=LGPL-2.1
 PROPERTIES=live
-RDEPEND=virtual/libusb:1 crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )
+RDEPEND=acct-group/plugdev virtual/libusb:1 crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )
 SLOT=0/9
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	udev	452708c3f55cf6e918b045adb949a9e6	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=681676cf14d2d98fbb313196330a0faf
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	udev	452708c3f55cf6e918b045adb949a9e6
+_md5_=079e0d4ff1db5d8b519ff0b811ceb2e4
