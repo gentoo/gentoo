@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes"
 VALA_USE_DEPEND="vapigen"
 PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
-inherit bash-completion-r1 gnome2 linux-info multilib python-any-r1 systemd user readme.gentoo-r1 vala virtualx udev multilib-minimal
+inherit bash-completion-r1 gnome2 linux-info multilib python-any-r1 systemd readme.gentoo-r1 vala virtualx udev multilib-minimal
 
 DESCRIPTION="A set of co-operative tools that make networking simple and straightforward"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
@@ -70,6 +70,7 @@ COMMON_DEPEND="
 	)
 "
 RDEPEND="${COMMON_DEPEND}
+	acct-group/plugdev
 	|| (
 		net-misc/iputils[arping(+)]
 		net-analyzer/arping
@@ -141,7 +142,6 @@ pkg_setup() {
 		CONFIG_CHECK="~NF_NAT ~NF_NAT_MASQUERADE"
 		linux-info_pkg_setup
 	fi
-	enewgroup plugdev
 	if use introspection || use test; then
 		python-any-r1_pkg_setup
 	fi
