@@ -16,6 +16,7 @@ IUSE="doc geolocation screencast"
 
 BDEPEND="
 	dev-util/gdbus-codegen
+	media-libs/fontconfig
 	sys-devel/gettext
 	virtual/pkgconfig
 	doc? (

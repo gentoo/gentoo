@@ -20,10 +20,10 @@ RDEPEND="
 	>=kde-apps/kdenlive-${PV}:${SLOT}
 	>=kde-apps/kmix-${PV}:${SLOT}
 	>=kde-apps/kwave-${PV}:${SLOT}
-	>=kde-apps/libkcddb-${PV}:${SLOT}
 	cdrom? (
 		>=kde-apps/audiocd-kio-${PV}:${SLOT}
 		>=kde-apps/k3b-${PV}:${SLOT}
+		>=kde-apps/libkcddb-${PV}:${SLOT}
 		>=kde-apps/libkcompactdisc-${PV}:${SLOT}
 	)
 	ffmpeg? ( >=kde-apps/ffmpegthumbs-${PV}:${SLOT} )

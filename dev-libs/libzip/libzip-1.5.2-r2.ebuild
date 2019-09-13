@@ -18,7 +18,10 @@ DEPEND="
 	sys-libs/zlib
 	bzip2? ( app-arch/bzip2 )
 	ssl? (
-		gnutls? ( >=net-libs/gnutls-3.6.5:= )
+		gnutls? (
+			dev-libs/nettle:0=
+			>=net-libs/gnutls-3.6.5:=
+		)
 		!gnutls? (
 			mbedtls? ( net-libs/mbedtls:= )
 			!mbedtls? (
