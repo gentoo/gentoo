@@ -11,5 +11,5 @@ RDEPEND=static-libs? ( dev-libs/json-c:=[static-libs(+)] dev-libs/libgpg-error[s
 REQUIRED_USE=^^ ( gcrypt kernel nettle openssl ) libressl? ( openssl ) static? ( !gcrypt )
 SLOT=0/12
 SRC_URI=mirror://kernel/linux/utils/cryptsetup/v2.2/cryptsetup-2.2.0.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
 _md5_=121e54b0811c52f92fef0570da5aea7f

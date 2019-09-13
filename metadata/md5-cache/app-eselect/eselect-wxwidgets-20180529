@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.4.13
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/eselect-wxwidgets-20180529.tar.xz https://dev.gentoo.org/~mgorny/dist/eselect-wxwidgets-files.tar.bz2
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
 _md5_=f0d7b533f66b22098db5c27a30dc0a35

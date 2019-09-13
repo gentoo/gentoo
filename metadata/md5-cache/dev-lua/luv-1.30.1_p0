@@ -10,5 +10,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-libs/libuv:= luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:0 )
 SLOT=0
 SRC_URI=https://github.com/luvit/luv/archive/1.30.1-0.tar.gz -> luv-1.30.1_p0.tar.gz https://github.com/keplerproject/lua-compat-5.3/archive/daebe77a2f498817713df37f0bb316db1d82222f.zip -> luv-lua-compat-1.30.1_p0.zip
-_eclasses_=cmake-utils	91d6ef31dc426240577497cacbf2508c	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake-utils	91d6ef31dc426240577497cacbf2508c	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=be4f48d2eaa3e4ae99e3175a5ff32f9e
