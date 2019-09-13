@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>candrews@integralblue.com</email>
+		<email>candrews@gentoo.org</email>
 		<name>Craig Andrews</name>
 	</maintainer>
 	<upstream>
