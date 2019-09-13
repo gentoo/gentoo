@@ -17,7 +17,7 @@ fi
 DESCRIPTION="misc common functionality and useful optimizations"
 HOMEPAGE="https://github.com/pkgcore/snakeoil"
 
-LICENSE="BSD"
+LICENSE="BSD BSD-2 MIT"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"

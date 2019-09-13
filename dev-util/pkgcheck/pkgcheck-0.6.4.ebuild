@@ -28,8 +28,8 @@ if [[ ${PV} == *9999 ]]; then
 		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]"
 else
 	RDEPEND="
-		>=dev-python/snakeoil-0.8.1[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.10.2[${PYTHON_USEDEP}]"
+		>=dev-python/snakeoil-0.8.3[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.10.3[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
 	dev-python/chardet[${PYTHON_USEDEP}]

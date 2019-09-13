@@ -17,7 +17,7 @@ fi
 DESCRIPTION="a framework for package management"
 HOMEPAGE="https://github.com/pkgcore/pkgcore"
 
-LICENSE="BSD"
+LICENSE="BSD MIT"
 SLOT="0"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
@@ -26,7 +26,7 @@ RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND+=" ~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	RDEPEND+=" >=dev-python/snakeoil-0.8.1[${PYTHON_USEDEP}]"
+	RDEPEND+=" >=dev-python/snakeoil-0.8.3[${PYTHON_USEDEP}]"
 fi
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
