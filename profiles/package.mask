@@ -30,6 +30,18 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Unmaintained.  All look pretty dead.  No reverse dependencies.
+#
+# x11-libs/gtkhotkey: 2009
+# x11-libs/libaosd: 2010
+# x11-libs/libproplist: ancient?
+#
+# Removal in 30 days.  Bug #694258.
+x11-libs/gtkhotkey
+x11-libs/libaosd
+x11-libs/libproplist
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
 # Unmaintained.  Not bumped since 2011.  Fails to build due to broken
 # build system.  No reverse dependencies.
 # Removal in 30 days.  Bug #500616.
