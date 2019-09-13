@@ -201,6 +201,9 @@ multilib_src_configure() {
 		$(use_with kerberos gssapi "${EPREFIX}"/usr) \
 		$(use_with metalink libmetalink) \
 		$(use_with http2 nghttp2) \
+		--without-nghttp3 \
+		--without-ngtcp2 \
+		--without-quiche \
 		$(use_with rtmp librtmp) \
 		$(use_with brotli) \
 		--without-schannel \
