@@ -109,8 +109,6 @@ multilib_src_configure() {
 	local clang_version=$(ver_cut 1-3 "${llvm_version}")
 
 	local mycmakeargs=(
-		# ensure that the correct llvm-config is used
-		-DLLVM_CONFIG="$(type -P "${CHOST}-llvm-config")"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
 		# relative to bindir
