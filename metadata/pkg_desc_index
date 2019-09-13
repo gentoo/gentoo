@@ -10696,7 +10696,7 @@ dev-util/cpputest 3.8: unit testing and mocking framework for C/C++
 dev-util/cproto 4.7e 4.7o: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20070104 20101114: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7: Functional testing framework for command line applications
-dev-util/crash 6.1.4 7.0.0 7.0.3 7.0.7 7.1.4 7.1.8 7.1.9 7.2.5: Red Hat crash utility; used for analyzing kernel core dumps
+dev-util/crash 7.2.5: Red Hat crash utility; used for analyzing kernel core dumps
 dev-util/creduce 2.8.0_pre20180411 2.8.0_pre20180411-r1 2.8.0 2.9.0_pre20190414-r1 9999: C-Reduce - a plugin-based C program reducer
 dev-util/cscope 15.8a-r1 15.8a-r2 15.9: Interactively examine a C program
 dev-util/csup 20060318-r1: A rewrite of CVSup
@@ -13342,7 +13342,7 @@ media-libs/libgphoto2 2.5.20 2.5.22: Library that implements support for numerou
 media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library.
 media-libs/libharu 2.3.0-r2: C/C++ library for PDF generation
-media-libs/libhdhomerun 20140121 20150826: SiliconDust HDHomeRun Utilties
+media-libs/libhdhomerun 20150826: SiliconDust HDHomeRun Utilties
 media-libs/libheif 1.3.2-r1 1.4.0 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 media-libs/libicns 0.8.1-r1: A library for manipulating MacOS X .icns icon format
 media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
@@ -17761,7 +17761,7 @@ sys-cluster/pmix 2.1.1: The Process Management Interface (PMI) Exascale
 sys-cluster/polysh 0.4-r1: Aggregate several remote shells into one
 sys-cluster/poolmon 0.5 0.6: A director mailserver pool monitoring script for Dovecot
 sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Charm++ Applications
-sys-cluster/rdma-core 24.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
+sys-cluster/rdma-core 24.0 25.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
 sys-cluster/singularity 2.6.1: Application containers for Linux
