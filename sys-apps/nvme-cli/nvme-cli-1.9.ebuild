@@ -20,7 +20,9 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
-	sed -i 's:^LIBUUID =:LIBUUID ?=:' -i Makefile || die
+	sed -e 's|^LIBUUID =|LIBUUID ?=|' \
+		-e 's|^install-hostparams:$|\0 install-etc|' \
+		-i Makefile || die
 }
 
 src_configure() {
