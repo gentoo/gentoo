@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Unmaintained.  No reverse dependencies.
+# Removal in 30 days.  Bug #694260.
+sys-libs/libmath++
+sys-libs/rvm
+sys-libs/system-config-base
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
 # Unmaintained.  All look pretty dead.  No reverse dependencies.
 #
 # x11-libs/gtkhotkey: 2009
