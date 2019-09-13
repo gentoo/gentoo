@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Unmaintained.  Not bumped since 2011.  Fails to build due to broken
+# build system.  No reverse dependencies.
+# Removal in 30 days.  Bug #500616.
+net-libs/nacl
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
 # Unmaintained.  No reverse dependencies.
 # Removal in 30 days.  Bug #694256.
 net-libs/ccnet
