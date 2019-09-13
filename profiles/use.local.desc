@@ -9111,11 +9111,9 @@ x11-libs/libfm:automount - Use gnome-base/gvfs for automounting
 x11-libs/libfm:udisks - Use libfm's udisks-based volume monitor implementation instead of using the one from gvfs
 x11-libs/libfm:vala - Support custom actions in menus
 x11-libs/libva:drm - Enables VA/DRM API support.
-x11-libs/libva:egl - Enables EGL support.
 x11-libs/libva:utils - Install VA-API utility programs.
 x11-libs/libva-compat:drm - Enables VA/DRM API support.
 x11-libs/libva-compat:egl - Enables EGL support.
-x11-libs/libva-intel-driver:drm - Enables VA/DRM API support.
 x11-libs/libwnck:tools - Install wnckprop-3 and wnck-urgency-monitor-3 command-line tools
 x11-libs/libxcb:xkb - Enable the XCB keyboard extension
 x11-libs/motif:motif22-compatibility - Compatibility with Open Motif 2.2
