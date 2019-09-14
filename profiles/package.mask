@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Sachau <tommy@gentoo.org> (2019-09-14)
+# Freemail has been completly rewritten so the current
+# ebuild does no longer work for it. In addition the source
+# has moved. So masking for removal.
+# Removal in 30 days. Bug #628914
+net-mail/Freemail
+
+
 # Michał Górny <mgorny@gentoo.org> (2019-09-14)
 # The following packages are unmaintained and have not been tested
 # with Python 3.7.  Most of them are either in need of version bumps,
