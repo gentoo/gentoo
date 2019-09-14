@@ -1133,11 +1133,6 @@ sci-mathematics/spass
 # Removal in 30 days.  Bug #691840.
 sys-apps/lomoco
 
-# Aaron Bauman <bman@gentoo.org> (2019-08-14)
-# open sec bug #622428, unmaintained
-# list includes rdeps. Removal in 30 days.
-dev-java/xstream
-
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
