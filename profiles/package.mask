@@ -1152,7 +1152,6 @@ dev-java/netbeans-groovy
 dev-java/netbeans-java
 dev-java/netbeans-java
 dev-java/netbeans-javacard
-dev-java/netbeans-javadoc
 dev-java/netbeans-javafx
 dev-java/netbeans-mobility
 dev-java/netbeans-nb
@@ -1160,7 +1159,6 @@ dev-java/netbeans-php
 dev-java/netbeans-profiler
 dev-java/netbeans-webcommon
 dev-java/netbeans-websvccommon
-dev-util/netbeans
 
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
