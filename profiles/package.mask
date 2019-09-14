@@ -1140,7 +1140,6 @@ sci-biology/goby
 # bug #509354, #519216, #603440
 # list includes rdeps. Removal in 30 days.
 dev-java/smack
-dev-java/netbeans-ide
 
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
