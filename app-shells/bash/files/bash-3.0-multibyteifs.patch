@@ -1,0 +1,281 @@
+From: Tim Waugh <twaugh@redhat.com>
+To: bug-bash@gnu.org
+Subject: [patch] multibyte IFS values
+Date: Tue, 24 Aug 2004 13:34:59 +0100
+
+Hi,
+
+Here is a patch to address these problems:
+
+http://lists.gnu.org/archive/html/bug-bash/2004-07/msg00294.html
+http://lists.gnu.org/archive/html/bug-bash/2004-07/msg00296.html
+
+It works well for me at least.
+
+Tim.
+
+--- bash-3.0/subst.c.multibyteifs	2004-08-20 15:22:48.366497771 +0100
++++ bash-3.0/subst.c	2004-08-20 18:13:30.833624616 +0100
+@@ -124,7 +124,12 @@
+ SHELL_VAR *ifs_var;
+ char *ifs_value;
+ unsigned char ifs_cmap[UCHAR_MAX + 1];
++#if defined (HANDLE_MULTIBYTE)
++unsigned char ifs_firstc[MB_LEN_MAX];
++size_t ifs_firstc_len;
++#else
+ unsigned char ifs_firstc;
++#endif
+ 
+ /* Extern functions and variables from different files. */
+ extern int last_command_exit_value, last_command_exit_signal;
+@@ -862,8 +867,14 @@
+      char *charlist;
+ {
+   register int i = *sindex;
++  size_t slen;
++#if defined (HANDLE_MULTIBYTE)
++  size_t clen;
++  wchar_t *wcharlist = NULL;
++#endif
+   int c;
+   char *temp;
++  DECLARE_MBSTATE;
+ 
+   if (charlist[0] == '\'' && charlist[1] == '\0')
+     {
+@@ -872,18 +883,65 @@
+       return temp;
+     }
+ 
+-  for (i = *sindex; c = string[i]; i++)
++  slen = strlen (string + *sindex) + *sindex;
++  i = *sindex;
++#if defined (HANDLE_MULTIBYTE)
++  clen = strlen (charlist);
++#endif
++  while ((c = string[i]))
+     {
++#if defined (HANDLE_MULTIBYTE)
++      size_t mblength;
++#endif
++
+       if (c == CTLESC)
+ 	{
+-	  i++;
++	  i += 2;
+ 	  continue;
+ 	}
+ 
++#if defined (HANDLE_MULTIBYTE)
++      mblength = mblen (string + i, slen - i);
++      if (mblength > 1)
++	{
++	  wchar_t wc;
++	  size_t mblength = mbtowc (&wc, string + i, slen - i);
++	  if (MB_INVALIDCH (mblength))
++	    {
++	      if (MEMBER (c, charlist))
++		break;
++	    }
++	  else
++	    {
++	      if (!wcharlist)
++		{
++		  size_t len = mbstowcs (wcharlist, charlist, 0);
++		  if (len == -1)
++		    len = 0;
++		  wcharlist = xmalloc (sizeof (wchar_t) * (len + 1));
++		  mbstowcs (wcharlist, charlist, 1 + len);
++		}
++
++	      if (wcschr (wcharlist, wc))
++		{
++		  break;
++		}
++	    }
++	}
++      else
++#endif
++
+       if (MEMBER (c, charlist))
+ 	break;
++
++      ADVANCE_CHAR (string, slen, i);
+     }
+ 
++#if defined (HANDLE_MULTIBYTE)
++  if (wcharlist)
++    free (wcharlist);
++#endif
++
+   temp = substring (string, *sindex, i);
+   *sindex = i;
+ 
+@@ -1456,11 +1514,36 @@
+   d2 = 0;
+   if (delims)
+     {
+-      d2 = (char *)xmalloc (strlen (delims) + 1);
+-      for (i = ts = 0; delims[i]; i++)
++      size_t slength = strlen (delims);
++#if defined (HANDLE_MULTIBYTE)
++      size_t mblength = 1;
++      DECLARE_MBSTATE;
++#endif
++
++      d2 = (char *)xmalloc (slength + 1);
++      i = ts = 0;
++      while (delims[i])
+ 	{
++#if defined (HANDLE_MULTIBYTE)
++	  mbstate_t state_bak = state;
++	  mblength = mbrlen (delims + i, slength, &state);
++
++	  if (MB_INVALIDCH (mblength))
++	    state = state_bak;
++	  else if (mblength != 1)
++	    {
++	      memcpy (d2 + ts, delims + i, mblength);
++	      ts += mblength;
++	      i += mblength;
++	      slength -= mblength;
++	      continue;
++	    }
++#endif
++
+ 	  if (whitespace(delims[i]) == 0)
+ 	    d2[ts++] = delims[i];
++	  i++;
++	  slength--;
+ 	}
+       d2[ts] = '\0';
+     }
+@@ -1654,10 +1737,19 @@
+ string_list_dollar_star (list)
+      WORD_LIST *list;
+ {
++#if defined (HANDLE_MULTIBYTE)
++  char sep[MB_CUR_MAX + 1];
++#else
+   char sep[2];
++#endif
+ 
++#if defined (HANDLE_MULTIBYTE)
++  memcpy (sep, ifs_firstc, ifs_firstc_len);
++  sep[ifs_firstc_len] = '\0';
++#else
+   sep[0] = ifs_firstc;
+   sep[1] = '\0';
++#endif
+ 
+   return (string_list_internal (list, sep));
+ }
+@@ -1676,14 +1768,41 @@
+      WORD_LIST *list;
+      int quoted;
+ {
+-  char *ifs, sep[2];
++  char *ifs;
++#if defined (HANDLE_MULTIBYTE)
++  char sep[MB_CUR_MAX + 1];
++#else
++  char sep[2];
++#endif
+   WORD_LIST *tlist;
+ 
+   /* XXX this could just be ifs = ifs_value; */
+   ifs = ifs_var ? value_cell (ifs_var) : (char *)0;
+ 
++#if defined (HANDLE_MULTIBYTE)
++  if (ifs && *ifs)
++    {
++      size_t mblength = mblen (ifs, strnlen (ifs, MB_CUR_MAX));
++      if (MB_INVALIDCH (mblength))
++	{
++	  sep[0] = *ifs;
++	  sep[1] = '\0';
++	}
++      else
++	{
++	  memcpy (sep, ifs, mblength);
++	  sep[mblength] = '\0';
++	}
++    }
++  else
++    {
++      sep[0] = ' ';
++      sep[1] = '\0';
++    }
++#else
+   sep[0] = (ifs == 0 || *ifs == 0) ? ' ' : *ifs;
+   sep[1] = '\0';
++#endif
+ 
+   tlist = ((quoted & (Q_HERE_DOCUMENT|Q_DOUBLE_QUOTES)) || (ifs && *ifs == 0))
+ 		? quote_list (list)
+@@ -1732,6 +1851,7 @@
+   WORD_DESC *t;
+   char *current_word, *s;
+   int sindex, sh_style_split, whitesep;
++  size_t slen = 0;
+ 
+   if (!string || !*string)
+     return ((WORD_LIST *)NULL);
+@@ -1805,7 +1925,12 @@
+ 
+       /* Move past the current separator character. */
+       if (string[sindex])
+-	sindex++;
++	{
++	  DECLARE_MBSTATE;
++	  if (!slen)
++	    slen = strlen (string);
++	  ADVANCE_CHAR (string, slen, sindex);
++	}
+ 
+       /* Now skip sequences of space, tab, or newline characters if they are
+ 	 in the list of separators. */
+@@ -6796,7 +6921,27 @@
+       ifs_cmap[uc] = 1;
+     }
+ 
++#if defined (HANDLE_MULTIBYTE)
++  if (!ifs_value)
++    {
++      ifs_firstc[0] = '\0';
++      ifs_firstc_len = 1;
++    }
++  else
++    {
++      size_t ifs_len = strnlen (ifs_value, MB_CUR_MAX);
++      ifs_firstc_len = mblen (ifs_value, ifs_len);
++      if (MB_INVALIDCH (ifs_firstc_len))
++        {
++          ifs_firstc[0] = '\0';
++          ifs_firstc_len = 1;
++        }
++      else
++        memcpy (ifs_firstc, ifs_value, ifs_firstc_len);
++    }
++#else
+   ifs_firstc = ifs_value ? *ifs_value : 0;
++#endif
+ }
+ 
+ char *
+--- bash-3.0/subst.h.multibyteifs	2004-08-20 15:51:08.301074583 +0100
++++ bash-3.0/subst.h	2004-08-20 15:51:39.070206473 +0100
+@@ -231,7 +231,12 @@
+ extern SHELL_VAR *ifs_var;
+ extern char *ifs_value;
+ extern unsigned char ifs_cmap[];
++#if defined (HANDLE_MULTIBYTE)
++extern unsigned char ifs_firstc[];
++extern size_t ifs_firstc_len;
++#else
+ extern unsigned char ifs_firstc;
++#endif
+ 
+ /* Evaluates to 1 if C is a character in $IFS. */
+ #define isifs(c)	(ifs_cmap[(unsigned char)(c)] != 0)
