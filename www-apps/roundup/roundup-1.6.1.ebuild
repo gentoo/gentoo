@@ -13,17 +13,19 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT ZPL"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+IUSE="+tz sqlite mysql postgres xapian whoosh ssl"
 
 DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	tz? ( dev-python/pytz[$PYTHON_USEDEP] )
+	sqlite? ( dev-lang/python:*[sqlite] )
+	mysql? ( dev-python/mysql-python[$PYTHON_USEDEP] )
+	postgres? ( >=dev-python/psycopg-1.1.21[$PYTHON_USEDEP] )
+	xapian? ( >=dev-libs/xapian-bindings-1.0.0[python,$PYTHON_USEDEP] )
+	whoosh? ( >=dev-python/whoosh-2.5.7[$PYTHON_USEDEP] )
+	ssl? ( dev-python/pyopenssl[$PYTHON_USEDEP] )"
 
 DOCS="CHANGES.txt doc/*.txt"
-
-PATCHES=(
-	"${FILESDIR}/${P}-configparser.patch"
-	"${FILESDIR}/${P}-csrf-headers.patch"
-	"${FILESDIR}/${P}-xss.patch"
-)
 
 python_install_all() {
 	distutils-r1_python_install_all
