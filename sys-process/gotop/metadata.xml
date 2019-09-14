@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mathieu.tortuyaux@gmail.com</email>
+    <name>Mathieu Tortuyaux</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <changelog>https://github.com/cjbassi/gotop/blob/master/CHANGELOG.md</changelog>
+    <remote-id type="github">cjbassi/gotop</remote-id>
+  </upstream>
+</pkgmetadata>
+
