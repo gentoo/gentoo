@@ -15396,7 +15396,7 @@ net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 7.2.3 8.0.3 8.0.4 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 7.2.3 8.0.6 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
@@ -17621,7 +17621,7 @@ sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape dri
 sys-block/nbd 3.15.3 3.18 3.19 9999: Userland client/server for kernel network block device
 sys-block/noflushd 2.7.3 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
-sys-block/open-iscsi 2.0.873-r1 2.0.875 2.0.876 2.0.876_p20180814-r1 2.0.877: A performant, transport independent, multi-platform implementation of RFC3720
+sys-block/open-iscsi 2.0.873-r1 2.0.875 2.0.877 2.0.878: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.97 0.98 0.99: iSNS server and client for Linux
 sys-block/parted 3.2-r1 3.2_p20-r1 3.2_p23 3.2_p25 99999: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9-r1: Console-based application to efficiently save raw partition data to image file
