@@ -1142,7 +1142,6 @@ sci-biology/goby
 dev-java/smack
 dev-java/netbeans-ide
 dev-java/netbeans-extide
-dev-java/netbeans-webcommon
 dev-java/netbeans-websvccommon
 
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
