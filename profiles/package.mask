@@ -31,6 +31,11 @@
 
 # Zac Medico <zmedico@gentoo.org> (2019-09-14)
 # No reverse dependencies.
+# Removal in 30 days.  Bug #694390.
+dev-go/go-oauth2
+
+# Zac Medico <zmedico@gentoo.org> (2019-09-14)
+# No reverse dependencies.
 # Removal in 30 days.  Bug #694392.
 dev-go/go-protobuf
 
