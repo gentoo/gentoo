@@ -32,13 +32,8 @@ for_users() {
 	local user ret msg log
 	msg=$1; shift
 
-	: ${CHROME_REMOTE_DESKTOP_LOG_DIR:=/var/log}
-
 	for user in ${CHROME_REMOTING_USERS} ; do
 		ebegin "${msg} ${SVCNAME} for ${user}"
-
-		log="${CHROME_REMOTE_DESKTOP_LOG_DIR}/${SVCNAME}.${user}.log"
-		checkpath -f -m 0600 -o "${user}" "${log}"
 
 		# We need to background the app as it won't fork until the network
 		# (including DNS) is available.
@@ -46,7 +41,6 @@ for_users() {
 			-b \
 			-u "${user}" \
 			-x "${CRD}" \
-			-e "CHROME_REMOTE_DESKTOP_LOG_FILE=${log}" \
 			-- \
 			${OPTIONS} \
 			"$@"
