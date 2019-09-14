@@ -1171,7 +1171,6 @@ dev-java/logback
 # open sec bug #607720, unmaintained
 # Removal in 30 days
 dev-java/svgsalamander
-dev-java/flyingsaucer
 
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
