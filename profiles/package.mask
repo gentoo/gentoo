@@ -61,7 +61,6 @@ dev-python/maybe
 dev-python/mockredispy
 dev-python/parse
 dev-python/parse-type
-dev-python/phonenumbers
 dev-python/pyClamd
 dev-python/pycallgraph
 dev-python/pyroma
