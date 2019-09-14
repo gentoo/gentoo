@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 inherit autotools flag-o-matic java-pkg-opt-2 python-single-r1 qmake-utils
 
 DESCRIPTION="Open Source Graph Visualization Software"
@@ -29,7 +29,7 @@ COMMON_DEPEND="
 	>=media-libs/fontconfig-2.3.95
 	>=media-libs/freetype-2.1.10
 	>=media-libs/gd-2.0.34:=[fontconfig,jpeg,png,truetype,zlib]
-	>=media-libs/libpng-1.2:0
+	>=media-libs/libpng-1.2:0=
 	sys-libs/zlib
 	virtual/jpeg:0
 	virtual/libiconv
@@ -60,7 +60,8 @@ COMMON_DEPEND="
 		x11-libs/libXmu
 		x11-libs/libXpm
 		x11-libs/libXt
-	)"
+	)
+"
 DEPEND="${COMMON_DEPEND}
 	sys-devel/flex
 	sys-devel/libtool
@@ -71,9 +72,11 @@ DEPEND="${COMMON_DEPEND}
 	perl?	( dev-lang/swig )
 	python?	( dev-lang/swig )
 	ruby?	( dev-lang/swig )
-	tcl?	( dev-lang/swig )"
-RDEPEND="${COMMON_DEPEND}
-	!<=sci-chemistry/cluster-1.3.081231"
+	tcl?	( dev-lang/swig )
+"
+RDEPEND="${DEPEND}
+	!<=sci-chemistry/cluster-1.3.081231
+"
 
 # Dependency description / Maintainer-Info:
 
@@ -194,6 +197,7 @@ src_configure() {
 	myconf+=(
 		$(use_with cairo pangocairo)
 		$(use_with devil)
+		$(use_enable gdk-pixbuf)
 		$(use_with gtk)
 		$(use_with gts)
 		$(use_with qt5 qt)
@@ -210,7 +214,6 @@ src_configure() {
 		--with-ipsepcola
 		--with-libgd
 		--with-sfdp
-		$(use_enable gdk-pixbuf)
 		--without-ming
 	)
 
@@ -241,7 +244,7 @@ src_configure() {
 		$(use_enable tcl)
 	)
 
-	econf ${myconf[@]}
+	econf "${myconf[@]}"
 }
 
 src_install() {
@@ -263,7 +266,7 @@ src_install() {
 		find "${ED}" -name '*.la' -delete || die
 	fi
 
-	dodoc AUTHORS ChangeLog NEWS README
+	einstalldocs
 
 	use python && python_optimize \
 		"${D}$(python_get_sitedir)" \
