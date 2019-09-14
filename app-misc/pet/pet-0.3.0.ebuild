@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,10 @@ EGO_VENDOR=( "github.com/BurntSushi/toml b26d9c308763d68093482582cea63d69be07a0f
 	"github.com/pkg/errors 645ef00459ed84a119197bfb8d8205042c6df63d"
 	"github.com/spf13/cobra 7b2c5ac9fc04fc5efafb60700713d4fa609b777b"
 	"github.com/spf13/pflag e57e3eeb33f795204c1ca35f56c44f83227c6e66"
+	"golang.org/x/crypto 8ac0e0d97ce45cd83d1d7243c060cb8461dda5e9 github.com/golang/crypto"
+	"golang.org/x/net 1e491301e022f8f977054da4c2d852decd59571f github.com/golang/net"
+	"golang.org/x/oauth2 1e0a3fa8ba9a5c9eb35c271780101fdaf1b205d7 github.com/golang/oauth2"
+	"golang.org/x/sys 9527bec2660bd847c050fda93a0f0c6dee0800bb github.com/golang/sys"
 	"google.golang.org/appengine 150dc57a1b433e64154302bdc40b6bb8aefa313a github.com/golang/appengine" )
 
 EGO_PN="github.com/knqyf263/${PN}"
@@ -35,13 +39,7 @@ KEYWORDS="~amd64"
 IUSE="zsh-completion"
 
 # dev-go/toml doesn't provide sources
-DEPEND="dev-go/go-crypto:=
-	dev-go/go-net:=
-	dev-go/go-oauth2:=
-	dev-go/go-protobuf:=
-	dev-go/go-sys:="
-RDEPEND="${DEPEND}
-	zsh-completion? ( app-shells/zsh-completions )"
+RDEPEND="zsh-completion? ( app-shells/zsh-completions )"
 
 src_install() {
 	dobin pet
