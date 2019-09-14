@@ -942,10 +942,6 @@ app-misc/digitemp:ds9097u - Build support for the ds9097u sensor
 app-misc/elasticsearch:x-pack - Enable additional features (may need a license)
 app-misc/emelfm2:ansi - Add support for ANSI escape sequences
 app-misc/emelfm2:gtk3 - Use x11-libs/gtk+:3 instead of x11-libs/gtk+:2
-app-misc/freemind:groovy - Build plugin for scripting via Groovy
-app-misc/freemind:latex - Build plugin for inserting mathematical formulas in LaTeX syntax
-app-misc/freemind:pdf - Build plugin for exporting mindmaps to SVG and PDF
-app-misc/freemind:svg - Build plugin for exporting mindmaps to SVG and PDF
 app-misc/g810-led:hidapi - Use dev-libs/hidapi instead of virtual/libusb for talking to the device (advertised to be faster)
 app-misc/gcstar:stats - Enable statistics reporting
 app-misc/gcstar:tellico - Enable support for kde-misc/tellico files
@@ -1903,7 +1899,6 @@ dev-java/jna:awt - Enables support for Java AWT
 dev-java/jna:nio-buffers - Enables support for NIO buffers
 dev-java/log4j:javamail - Build the SMTPAppender
 dev-java/log4j:jms - Build the JMSAppender
-dev-java/logback:tomcat - Builds Apache Tomcat support
 dev-java/lucene:contrib - Include extra functionality from contrib/
 dev-java/miglayout:swt - Add support for the SWT toolkit.
 dev-java/openjdk:gentoo-vm - Allow this JDK to be recognised by Gentoo (package manager, eselect, java-config, EXPERIMENTAL!)

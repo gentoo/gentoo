@@ -1910,7 +1910,6 @@ app-misc/fdutils 5.5.20060227 5.5.20060227-r1: utilities for configuring and deb
 app-misc/fhem 5.9: A GPL'd perl server for house automation
 app-misc/figlet 2.2.5 2.2.5-r1: program for making large letters out of ordinary text
 app-misc/flirc 3.22.4: Allows you to pair any remote control with your computer or media center
-app-misc/freemind 1.0.1-r3: Mind-mapping software written in Java
 app-misc/fslint 2.46: A utility to find various forms of lint on a filesystem
 app-misc/fslurp 2.1.4: Read and display data from Fronius IG and IG Plus inverters
 app-misc/fsniper 1.3.1-r2: Monitors a given set of directories for new files
@@ -4183,7 +4182,6 @@ dev-java/felix-gogo-command 0.12.0: Felix Gogo Command
 dev-java/felix-gogo-runtime 0.10.0: Felix Gogo Runtime
 dev-java/felix-shell 1.4.3: Felix Shell
 dev-java/felix-utils 1.2.0: Felix Utils
-dev-java/flyingsaucer 7-r2: 100% Java XHTML+CSS renderer
 dev-java/fontbox 1.7.1-r1 1.8.11: An open source Java library for parsing font files
 dev-java/fop 2.0-r3: Formatting Objects Processor is a print formatter driven by XSL
 dev-java/forehead 1.0_beta5-r2: A framework to assist in controlling the run-time ClassLoader
@@ -4213,7 +4211,6 @@ dev-java/gnu-hylafax 1.0.3-r2: Java API designed to implement the client protoco
 dev-java/gnu-jaf 1.1.1-r1 1.1.2: GNU implementation of the JavaBeans Activation Framework
 dev-java/gnu-regexp 1.1.4-r3: GNU regular expression package for Java
 dev-java/gradle-bin 3.3 3.4.1 5.2.1: A project automation and build tool with a Groovy based DSL
-dev-java/groovy 2.4.5: A multi-faceted language for the Java platform
 dev-java/gson 2.3.1 2.6.2 2.7: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 20.0: A collection of Google's core Java libraries
 dev-java/guice 4.1: A lightweight dependency injection framework for Java 5 and above
@@ -4397,7 +4394,6 @@ dev-java/jvyaml 0.2.1-r2: Java YAML parser and emitter
 dev-java/jvyamlb 0.2.5-r1: JvYAMLb, YAML processor extracted from JRuby
 dev-java/jython 2.7.0-r2: An implementation of Python written in Java
 dev-java/jzlib 1.0.7-r2 1.1.1 1.1.3: JZlib is a re-implementation of zlib in pure Java
-dev-java/kryo 2.24.0: Fast, efficient Java serialization and cloning
 dev-java/kunststoff 2.0.2-r2: Kunststoff look'n'feel Java library
 dev-java/kxml 2.3.0: Small XML Pull Parser
 dev-java/l2fprod-common 7.3-r2: Java/Swing GUI components and libraries for building desktop applications
@@ -4408,7 +4404,6 @@ dev-java/libg 2.1.0-r1: Lots of small utilities for bndlib, a swiss army knife f
 dev-java/libmatthew-java 0.7.2-r2: A selection of libraries for Java
 dev-java/libreadline-java 0.8.0-r4: A JNI-wrapper to GNU Readline
 dev-java/log4j 1.2.17-r3: A low-overhead robust logging package for Java
-dev-java/logback 1.0.13-r1: A generic, reliable, fast & flexible logging framework for Java
 dev-java/lucene 1.4.3-r4 2.4.1-r2 3.5.0-r2 3.6.2-r2: High-performance, full-featured text search engine written entirely in Java
 dev-java/lzma 9.18: Java code for LZMA compression and decompression
 dev-java/lzmajio 0.95-r1 0.95-r2: LzmaInputStream/LzmaOutputStream interacting with underlying LZMA en-/decoders
@@ -4434,26 +4429,8 @@ dev-java/myfaces-builder-annotations 1.0.9: Apache MyFaces API - Builder annotat
 dev-java/nachocalendar 0.23-r1: Flexible Calendar component to the Java Platform
 dev-java/nanoxml 2.2.3-r4: NanoXML is a small non-validating parser for Java
 dev-java/nekohtml 1.9.18-r1: A simple HTML scanner and tag balancer using standard XML interfaces
-dev-java/netbeans-apisupport 8.2: Netbeans API Support Cluster
-dev-java/netbeans-cnd 8.2: Netbeans CND Cluster
-dev-java/netbeans-dlight 8.2: Netbeans D-Light Cluster
-dev-java/netbeans-enterprise 8.2-r1: Netbeans Enterprise cluster
-dev-java/netbeans-ergonomics 8.2: Netbeans Ergonomics Cluster
-dev-java/netbeans-extide 8.2: Netbeans ExtIDE Cluster
-dev-java/netbeans-groovy 8.2: Netbeans Groovy Cluster
 dev-java/netbeans-harness 8.2: Netbeans Harness
-dev-java/netbeans-ide 8.2 8.2-r1: Netbeans IDE Cluster
-dev-java/netbeans-java 8.2 8.2-r1: Netbeans Java Cluster
-dev-java/netbeans-javacard 8.2: Netbeans JavaCard Cluster
-dev-java/netbeans-javadoc 8.2: Netbeans JavaDocs
-dev-java/netbeans-javafx 8.2: Netbeans JavaFX Cluster
-dev-java/netbeans-mobility 8.2: Netbeans Mobility Cluster
-dev-java/netbeans-nb 8.2: Netbeans IDE Branding
-dev-java/netbeans-php 8.2: Netbeans PHP Cluster
 dev-java/netbeans-platform 8.2: Netbeans Platform
-dev-java/netbeans-profiler 8.2: Netbeans Profiler Cluster
-dev-java/netbeans-webcommon 8.2: Netbeans Web Services Cluster
-dev-java/netbeans-websvccommon 8.2: Netbeans Web Services Common Cluster
 dev-java/netty-buffer 4.0.21 4.0.36: Async event-driven framework for high performance network applications
 dev-java/netty-codec 4.0.36: Async event-driven framework for high performance network applications
 dev-java/netty-codec-http 4.0.36: Async event-driven framework for high performance network applications
@@ -4522,7 +4499,6 @@ dev-java/slf4j-ext 1.7.5 1.7.7: Simple Logging Facade for Java
 dev-java/slf4j-log4j12 1.7.7: Simple Logging Facade for Java (SLF4J) log4j bindings
 dev-java/slf4j-nop 1.7.7: Simple Logging Facade for Java
 dev-java/slf4j-simple 1.7.7: Simple Logging Facade for Java
-dev-java/smack 2.2.1 3.2.1: XMPP client library for instant messaging and presence
 dev-java/snakeyaml 1.16: A YAML 1.1 parser and emitter for Java 5
 dev-java/snappy 1.0.3_rc3 1.1.0.1: Snappy compressor/decompressor for Java
 dev-java/snip 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files
@@ -4540,7 +4516,6 @@ dev-java/sun-jimi 1.0-r3: Jimi is a class library for managing images
 dev-java/sun-jms 1.1-r2: The Java Message Service (JMS) API
 dev-java/sun-jmx 1.2.1-r3: Java Management Extensions for managing and monitoring
 dev-java/super-csv 2.3.1: A fast, programmer-friendly, free CSV library for Java
-dev-java/svgsalamander 0.0-r2: a SVG engine for Java
 dev-java/swing-layout 1.0.4-r1: Professional cross platform layouts with Swing
 dev-java/swingx 1.6.4: A collection of powerful, useful, and just plain fun Swing components
 dev-java/swingx-beaninfo 1.6.4: SwingX Beaninfo
@@ -10850,7 +10825,6 @@ dev-util/molecule-plugins 1.0.3: A set of base plugins for Molecule
 dev-util/mpatch 0.8-r1: Patch-like tool which can resolve common causes of patch rejects when applying
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
-dev-util/netbeans 8.2: Netbeans IDE
 dev-util/netsurf-buildsystem 1.7 1.7-r1: Build system used for netsurf and its libs
 dev-util/ninja 1.8.2 1.8.2-r1 1.8.2-r2 1.9.0 9999: A small build system similar to make
 dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
@@ -15446,7 +15420,6 @@ net-misc/gwhois 20120626-r1: Generic whois
 net-misc/haeredes 0.5.1: Confirm delegation of NS and MX records
 net-misc/hashcash 1.22-r1: Utility to generate hashcash tokens
 net-misc/hath 0.5.0: Hath manipulates network blocks in CIDR notation
-net-misc/hblink 9999: HomeBrew Repeater protocol as used by DMR+, MMDVM and Brandmeister
 net-misc/hlfl 0.60.1: High Level Firewall Language
 net-misc/hsc 1.0b: An HTML preprocessor using ML syntax
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
