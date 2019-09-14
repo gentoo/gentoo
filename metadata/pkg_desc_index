@@ -7529,7 +7529,7 @@ dev-python/blosc 1.2.8 1.4.4 1.5.0 1.5.1: High performance compressor optimized 
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/bokeh 0.11.1 0.12.6: Statistical and interactive HTML plots for Python
-dev-python/booleanOperations 0.8.0: Boolean operations on paths
+dev-python/booleanOperations 0.8.0 0.8.2: Boolean operations on paths
 dev-python/boto 2.41.0 2.48.0 2.49.0: Amazon Web Services API
 dev-python/boto3 1.9.4-r1 1.9.122 9999: The AWS SDK for Python
 dev-python/botocore 1.12.4-r1 1.12.81 1.12.122 1.12.205 1.12.210 1.12.223 9999: Low-level, data-driven core of boto 3.
@@ -7656,7 +7656,7 @@ dev-python/ddt 1.1.1: A library to multiply test cases
 dev-python/debtcollector 1.11.0 1.17.1 1.19.0 1.21.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.3.2 4.4.0: Simplifies the usage of decorators for the average programmer
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
-dev-python/defcon 0.5.3: A set of UFO based objects for use in font editing applications
+dev-python/defcon 0.5.3 0.6.0: A set of UFO based objects for use in font editing applications
 dev-python/deform 0.9.9: Another form generation library
 dev-python/defusedxml 0.5.0: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/demjson 2.2.4: Encoder, decoder, and lint/validator for JSON compliant with RFC 4627
