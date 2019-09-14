@@ -1142,8 +1142,6 @@ sci-biology/goby
 dev-java/smack
 dev-java/netbeans-ide
 dev-java/netbeans-extide
-dev-java/netbeans-java
-dev-java/netbeans-java
 dev-java/netbeans-webcommon
 dev-java/netbeans-websvccommon
 
