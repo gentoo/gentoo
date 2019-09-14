@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-gcc-5.patch
 	"${FILESDIR}"/${PN}-gentoo.patch
 	"${FILESDIR}"/${PN}-glibc-2.25.patch
+	"${FILESDIR}"/${PN}-info.patch
 )
 HTML_DOCS=( doc/${PN}-ref{e,j}.html )
 
