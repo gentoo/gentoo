@@ -1138,7 +1138,6 @@ sys-apps/lomoco
 # list includes rdeps. Removal in 30 days.
 dev-java/xstream
 dev-java/jsap
-net-misc/java-wakeonlan
 
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
