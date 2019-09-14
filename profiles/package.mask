@@ -1173,11 +1173,6 @@ dev-java/logback
 dev-java/svgsalamander
 dev-java/flyingsaucer
 
-# Aaron Bauman <bman@gentoo.org> (2019-08-14)
-# open sec bug #605690, unmaintained
-# Removal in 30 days
-dev-java/groovy
-
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
