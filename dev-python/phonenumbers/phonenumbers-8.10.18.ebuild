@@ -18,7 +18,7 @@ IUSE="test"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
-DOCS="README.rst"
+DOCS="README.md"
 
 python_test() {
 	esetup.py test
