@@ -1133,7 +1133,6 @@ sys-apps/lomoco
 dev-java/xstream
 dev-java/jsap
 net-misc/java-wakeonlan
-sci-biology/goby
 
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
