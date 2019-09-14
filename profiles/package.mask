@@ -1167,11 +1167,6 @@ dev-util/netbeans
 # Removal in 30 days
 dev-java/logback
 
-# Aaron Bauman <bman@gentoo.org> (2019-08-14)
-# open sec bug #607720, unmaintained
-# Removal in 30 days
-dev-java/svgsalamander
-
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
