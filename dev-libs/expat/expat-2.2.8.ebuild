@@ -12,9 +12,8 @@ SRC_URI="https://github.com/libexpat/libexpat/releases/download/R_${PV//\./_}/ex
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-IUSE="doc elibc_FreeBSD examples static-libs unicode"
-BDEPEND="doc? ( app-text/docbook2X )
-	unicode? ( ${AUTOTOOLS_DEPEND} )"
+IUSE="elibc_FreeBSD examples static-libs unicode"
+BDEPEND="unicode? ( ${AUTOTOOLS_DEPEND} )"
 
 DOCS=( README.md )
 
@@ -37,7 +36,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myconf="$(use_enable static-libs static) $(use_with doc docbook)"
+	local myconf="$(use_enable static-libs static) --without-docbook"
 
 	mkdir -p "${BUILD_DIR}"w || die
 
@@ -83,6 +82,8 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
+
+	doman doc/xmlwf.1
 
 	# Note: Use of HTML_DOCS would add unwanted "doc" subfolder
 	docinto html
