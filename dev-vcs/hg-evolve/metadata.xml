@@ -7,4 +7,7 @@
 	<longdescription lang="en">
 		This package supplies the evolve extension for Mercurial
 	</longdescription>
+	<upstream>
+		<remote-id type="pypi">hg-evolve</remote-id>
+	</upstream>
 </pkgmetadata>
