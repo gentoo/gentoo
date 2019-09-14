@@ -1,8 +1,0 @@
---- E-orig/development_tools/e_install	2019-03-13 04:55:13.000000000 +1100
-+++ E/development_tools/e_install	2019-09-11 21:11:37.628045114 +1000
-@@ -13,4 +13,4 @@
-     fi
- }
- 
--testinstall $1 $2 
-+install $1 $2 
