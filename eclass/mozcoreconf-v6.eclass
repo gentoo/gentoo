@@ -103,12 +103,6 @@ moz_pkgsetup() {
 	# false positives when toplevel configure passes downwards.
 	export QA_CONFIGURE_OPTIONS=".*"
 
-	if [[ $(gcc-major-version) -eq 3 ]]; then
-		ewarn "Unsupported compiler detected, DO NOT file bugs for"
-		ewarn "outdated compilers. Bugs opened with gcc-3 will be closed"
-		ewarn "invalid."
-	fi
-
 	python-any-r1_pkg_setup
 	# workaround to set python3 into PYTHON3 until mozilla doesn't need py2
 	if [[ "${PYTHON_COMPAT[@]}" != "${PYTHON_COMPAT[@]#python3*}" ]]; then
@@ -207,17 +201,15 @@ mozconfig_init() {
 
 	# Additional ARCH support
 	case "${ARCH}" in
-	arm)
-		if [[ ${PN} != seamonkey ]] ; then
-			# Reduce the memory requirements for linking
-			if use clang ; then
-				# Nothing to do
-				:;
-			elif tc-ld-is-gold || use lto; then
-				append-ldflags -Wl,--no-keep-memory
-			else
-				append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
-			fi
+	arm | ppc64)
+		# Reduce the memory requirements for linking
+		if use clang ; then
+			# Nothing to do
+			:;
+		elif tc-ld-is-gold; then
+			append-ldflags -Wl,--no-keep-memory
+		else
+			append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
 		fi
 		;;
 	alpha)
@@ -229,20 +221,6 @@ mozconfig_init() {
 	ia64)
 		# Historically we have needed to add this manually for 64-bit
 		append-flags -fPIC
-		;;
-	ppc64)
-		append-flags -fPIC
-		if [[ ${PN} != seamonkey ]] ; then
-			# Reduce the memory requirements for linking
-			if use clang ; then
-				# Nothing to do
-				:;
-			elif tc-ld-is-gold || use lto; then
-				append-ldflags -Wl,--no-keep-memory
-			else
-				append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
-			fi
-		fi
 		;;
 	esac
 
