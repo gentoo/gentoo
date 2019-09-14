@@ -9967,7 +9967,7 @@ dev-ruby/jquery-rails 3.1.4 4.3.3 4.3.5: jQuery! For Rails! So great
 dev-ruby/jquery-ui-rails 5.0.5-r1 6.0.1-r1: The jQuery UI assets for the Rails 3.2+ asset pipeline
 dev-ruby/jsobfu 0.4.2: A Javascript code obfuscator
 dev-ruby/json 1.8.6-r1 2.1.0 2.1.0-r1 2.2.0: A JSON implementation as a Ruby extension
-dev-ruby/json_schema 0.20.6 0.20.7: A JSON Schema V4 and Hyperschema V4 parser and validator
+dev-ruby/json_schema 0.20.6 0.20.7 0.20.8: A JSON Schema V4 and Hyperschema V4 parser and validator
 dev-ruby/jwt 1.5.6 2.1.0 2.2.0 2.2.1: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
 dev-ruby/kissfft 0.0.2: ruby interface to kissfft
@@ -10139,7 +10139,7 @@ dev-ruby/rake 12.3.1 12.3.2 12.3.3: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.0.7: Provide a standard and simplified way to build and package Ruby extensions
 dev-ruby/rake-remote_task 2.4.3: Extends Rake with remote task goodness
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
-dev-ruby/rash_alt 0.4.7: Rash alt version for Hashie's own Rash
+dev-ruby/rash_alt 0.4.7 0.4.8: Rash alt version for Hashie's own Rash
 dev-ruby/rb-gsl 2.1.0.2: Ruby interface to GNU Scientific Library
 dev-ruby/rb-inotify 0.10.0: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rb-readline 0.5.5: Ruby implementation of the GNU readline C library
