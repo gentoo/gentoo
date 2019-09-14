@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 		Qt-based directory statistics: KDirStat without any KDE -- from
 		the author of the original KDirStat.
@@ -15,6 +22,7 @@
 		and other Unix-like systems.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/shundhammer/qdirstat/issues</bugs-to>
 		<remote-id type="github">shundhammer/qdirstat</remote-id>
 	</upstream>
 </pkgmetadata>
