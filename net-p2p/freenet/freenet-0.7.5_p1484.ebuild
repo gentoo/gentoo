@@ -19,7 +19,7 @@ SRC_URI="
 LICENSE="GPL-2+ GPL-2 MIT BSD-2 Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
+IUSE="+nss test"
 
 CDEPEND="dev-java/bcprov:1.54
 	dev-java/commons-compress:0
@@ -29,7 +29,8 @@ CDEPEND="dev-java/bcprov:1.54
 	dev-java/jna:0
 	dev-java/lzma:0
 	dev-java/lzmajio:0
-	dev-java/mersennetwister:0"
+	dev-java/mersennetwister:0
+	nss? ( dev-libs/nss )"
 
 DEPEND="
 	app-arch/unzip
@@ -99,7 +100,9 @@ src_prepare() {
 		freenet-wrapper.conf || die "sed failed"
 
 	echo "wrapper.java.classpath.1=/usr/share/freenet/lib/freenet.jar" >> freenet-wrapper.conf || die
-
+	if use nss; then
+		echo "wrapper.java.additional.5=-Dfreenet.jce.use.NSS=true" >> freenet-wrapper.conf || die
+	fi
 	local i=2 pkg jars jar
 	local ifs_original=${IFS}
 	IFS=","
