@@ -107,6 +107,7 @@ RDEPEND="${DEPEND}
 # There can be swig-generated bindings for the following languages (/tclpkg/gv):
 # - c-sharp (disabled)
 # - scheme (enabled via guile) ... no longer broken on ~x86
+# - go (disabled)
 # - io (disabled)
 # - java (enabled via java) *2
 # - lua (enabled via lua)
@@ -222,6 +223,7 @@ src_configure() {
 		$(use_enable python python3)
 		$(use_enable ruby)
 		$(use_enable tcl)
+		--disable-go
 		--disable-io
 		--disable-lua
 		--disable-ocaml
