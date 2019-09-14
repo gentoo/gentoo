@@ -7717,14 +7717,14 @@ sci-libs/vtk:boost - Add support for boost
 sci-libs/vtk:cg - Use nvidia's cg shaders
 sci-libs/vtk:gdal - Support for gdal formated data
 sci-libs/vtk:imaging - Building Imaging modules
-sci-libs/vtk:json - Support for json formated data
+sci-libs/vtk:json - Support for json formatted data
 sci-libs/vtk:kaapi - Use sci-libs/xkaapi to handle smp support
 sci-libs/vtk:offscreen - Offscreen rendering through OSMesa
 sci-libs/vtk:rendering - Building Redering modules
 sci-libs/vtk:tbb - Use dev-cpp/tbb to handle smp support
 sci-libs/vtk:views - Building Views modules
 sci-libs/vtk:web - Install web component
-sci-libs/vtk:xdmf2 - Support for xdmf2 formated data
+sci-libs/vtk:xdmf2 - Support for xdmf2 formatted data
 sci-libs/xkaapi:blas - Kaapi BLAS tasks for PLASMA
 sci-libs/xkaapi:gpu - Build library for gpu threading
 sci-mathematics/Macaulay2:optimization - Accept upstream's choices for -O option, i.e. -O3 almost everywhere.
@@ -7905,7 +7905,7 @@ sci-visualization/veusz:fits - Add FITS format via dev-python/astropy
 sci-visualization/veusz:minuit - Use Minuit during fitting viadev-python/pyminuit
 sci-visualization/visit:cgns - Builds the reader for the CFD General Notation System file format.
 sci-visualization/visit:silo - Adds support for reading .silo files.
-sci-visualization/visit:xdmf2 - Support for xdmf2 formated data.
+sci-visualization/visit:xdmf2 - Support for xdmf2 formatted data.
 sci-visualization/yt:hub - Connect to the yt hub with dev-python/girder-client
 sec-policy/selinux-base:open_perms - Enable the open permissions for file object classes (SELinux policy capability).
 sec-policy/selinux-base:peer_perms - Enable the labeled networking peer permissions (SELinux policy capability).
