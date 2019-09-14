@@ -1102,13 +1102,6 @@ net-misc/openrdate
 # Lots of new versions upstream. Removal in 30 days.
 dev-embedded/bitbake
 
-# Michał Górny <mgorny@gentoo.org> (2019-08-15)
-# Unmaintained, PPC-only.  The Gentoo version is outdated, ebuild
-# is still EAPI=0 and has QA violations.  Last upstream release in 2009,
-# declared EOL since then.
-# Removal in 30 days.  Bug #692202.
-dev-lang/pasm
-
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
