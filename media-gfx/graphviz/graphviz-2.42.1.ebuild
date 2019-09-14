@@ -187,14 +187,6 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		--enable-ltdl
-		--disable-silent-rules
-		$(use_enable static-libs static)
-	)
-
-	# libtool file collision, bug 276609
-	myconf+=( --without-included-ltdl --disable-ltdl-install )
-
-	myconf+=(
 		$(use_with cairo pangocairo)
 		$(use_with devil)
 		$(use_enable gdk-pixbuf)
@@ -204,6 +196,7 @@ src_configure() {
 		$(use_with lasi)
 		$(use_with pdf poppler)
 		$(use_with postscript ghostscript)
+		$(use_enable static-libs static)
 		$(use_with svg rsvg)
 		$(use_with X x)
 		$(use_with X xaw)
@@ -215,35 +208,31 @@ src_configure() {
 		--with-libgd
 		--with-sfdp
 		--without-ming
-	)
-
-	# new/experimental features, to be tested, disable for now
-	myconf+=(
+		# new/experimental features, to be tested, disable for now
 		--with-cgraph
 		--without-glitz
 		--without-ipsepcola
 		--without-smyrna
 		--without-visio
-	)
-
-	# Bindings:
-	myconf+=(
+		# Bindings:
 		$(use_enable guile)
-		--disable-io
 		$(use_enable java)
-		--disable-lua
-		--disable-ocaml
 		$(use_enable perl)
-		--disable-php
-		--disable-python
 		$(use_enable python python2)
 		$(use_enable python python3)
-		--disable-r
 		$(use_enable ruby)
-		--disable-sharp
 		$(use_enable tcl)
+		--disable-io
+		--disable-lua
+		--disable-ocaml
+		--disable-php
+		--disable-python
+		--disable-r
+		--disable-sharp
+		# libtool file collision, bug #276609
+		--without-included-ltdl
+		--disable-ltdl-install
 	)
-
 	econf "${myconf[@]}"
 }
 
