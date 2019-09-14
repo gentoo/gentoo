@@ -1113,7 +1113,6 @@ dev-lang/pasm
 # sec bug #636976, unmaintained in Gentoo, license
 # forked multiple times. Removal in 30 days.
 dev-java/itext
-app-text/jpdftweak
 
 # Michał Górny <mgorny@gentoo.org> (2019-08-14)
 # No longer builds.  Homepage is gone, and its keep-alive fork is also
