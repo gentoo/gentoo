@@ -7,7 +7,7 @@ KDE_AUTODEPS="false"
 KDE_DEBUG="false"
 KDE_TEST="false"
 DISTUTILS_SINGLE_IMPL="true"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 inherit kde5 distutils-r1
 
 DESCRIPTION="Framework for building KDE API documentation in a standard format and style"
