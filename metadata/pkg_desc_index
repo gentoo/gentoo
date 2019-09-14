@@ -2022,7 +2022,7 @@ app-misc/pal 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.2.3 1.2.3-r3 1.2.4: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 4.3.0 4.3.2: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
-app-misc/pet 0.3.0 0.3.2: Simple command-line snippet manager
+app-misc/pet 0.3.0 0.3.2 0.3.6: Simple command-line snippet manager
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/physlock 11-r1: lightweight Linux console locking tool
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
