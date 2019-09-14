@@ -1144,7 +1144,6 @@ dev-java/netbeans-ide
 dev-java/netbeans-enterprise
 dev-java/netbeans-enterprise
 dev-java/netbeans-extide
-dev-java/netbeans-groovy
 dev-java/netbeans-java
 dev-java/netbeans-java
 dev-java/netbeans-nb
