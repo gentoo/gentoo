@@ -106,15 +106,15 @@ src_compile() {
 
 src_install() {
 	if use shared; then
-		emake prefix="${D}usr" install_library_type/relocatable
+		emake prefix="${D}/usr" install_library_type/relocatable
 	fi
 	if use static-libs; then
-		emake prefix="${D}usr" install_library_type/static
+		emake prefix="${D}/usr" install_library_type/static
 	fi
 	if use tools; then
-		emake prefix="${D}usr" install_tools/static
+		emake prefix="${D}/usr" install_tools/static
 	fi
-	emake prefix="${D}usr" install_gps_plugin
+	emake prefix="${D}/usr" install_gps_plugin
 	einstalldocs
 }
 
