@@ -1137,7 +1137,6 @@ sys-apps/lomoco
 # open sec bug #622428, unmaintained
 # list includes rdeps. Removal in 30 days.
 dev-java/xstream
-dev-java/jsap
 
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
