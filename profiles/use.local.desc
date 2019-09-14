@@ -1890,8 +1890,6 @@ dev-java/icedtea-bin:webstart - Provide javaws command through symlink to icedte
 dev-java/icedtea-web:javascript - Enable support for using proxy auto config (PAC) files.
 dev-java/icedtea-web:nsplugin - Enable the browser plugin (NPPlugin).
 dev-java/icedtea-web:tagsoup - Depend on dev-java/tagsoup which allows parsing malformed .jnlp files
-dev-java/itext:rtf - Build and provide libraries for rich text format
-dev-java/itext:rups - Build and provide GUI for Reading/Updating PDF Syntax
 dev-java/jdbc-mysql:c3p0 - Enable c3p0 support
 dev-java/jdbc-mysql:log4j - Enable log4 support
 dev-java/jfreesvg:debug - Enable debugging during compilation.
@@ -5028,10 +5026,6 @@ media-sound/supercollider:vim - Enable the SCVIM user interface
 media-sound/teamspeak-server:tsdns - Install TeamSpeaks own DNS service for handling multiple virtual servers.
 media-sound/tomahawk:telepathy - Enable support for the real-time communication framework telepathy
 media-sound/traverso:lv2 - Add support for Ladspa V2
-media-sound/tuxguitar:fluidsynth - Enables Fluidsynth MIDI software synthesis (with external sound fonts). JSA must be disabled in the plug-ins menu to use this.
-media-sound/tuxguitar:lilypond - Exports the score in a lilypond compatible format.
-media-sound/tuxguitar:pdf - Exports the score as a PDF file using dev-java/itext.
-media-sound/tuxguitar:tray - Adds an icon to the tray that controls midi playback.
 media-sound/umurmur:mbedtls - Use net-libs/mbedtls as TLS provider
 media-sound/umurmur:shm - Enable shared memory support
 media-sound/upmpdcli:thirdparty - Enable streaming from Qobuz and Tidal external services
@@ -7362,7 +7356,6 @@ sci-biology/clustalw-mpi:mpi_njtree - Use MPI (as opposed to serial) code for co
 sci-biology/clustalw-mpi:static_pairalign - Use static (as opposed to dynamic) scheduling for pair alignments
 sci-biology/exonerate:utils - Install all utilities
 sci-biology/fasttree:double-precision - use double precision instead of single-precision floating point (2x memroy required)
-sci-biology/goby:cpp - Compile C/C++ API
 sci-biology/mcl:blast - Add support for NCBI BLAST data
 sci-biology/plink:R - add support R language
 sci-biology/plink:webcheck - add support for online update checking every time the program starts
@@ -7393,7 +7386,6 @@ sci-chemistry/gromacs:offensive - Enable gromacs partly offensive quotes
 sci-chemistry/gromacs:opencl - Enable opencl non-bonded kernels
 sci-chemistry/gromacs:single-precision - Single precision version of gromacs (default)
 sci-chemistry/gromacs:tng - Enable new trajectory format - tng
-sci-chemistry/jmol:client-only - Install the viewer only, no applet files for httpd
 sci-chemistry/molequeue:client - Build the client application
 sci-chemistry/molequeue:server - Build the serve application
 sci-chemistry/molequeue:zeromq - Build with net-libs/zeromq support
@@ -7744,13 +7736,10 @@ sci-mathematics/bertini:optimization - Accept upstream's choices for -O option.
 sci-mathematics/cgal:mpfi - Enable support for multiple recision interval arithmetic via sci-libs/mpfi
 sci-mathematics/cgal:ntl - Enable support for dev-libs/ntl
 sci-mathematics/coq:camlp5 - Build using camlp5. This is required for some plugins like Ssreflect.
-sci-mathematics/cvc3:isabelle - Add integration support for the Isabelle/HOL theorem prover.
-sci-mathematics/cvc3:zchaff - Use the SAT solver zchaff whose copyright is owned by Princeton University and is more restrictive (see zchaff license).
 sci-mathematics/cvc4:cln - Use sci-libs/cln
 sci-mathematics/cvc4:proofs - Support for proof generation
 sci-mathematics/cvc4:replay - Turn on the replay feature
 sci-mathematics/cvc4:statistics - Include statistics
-sci-mathematics/e:isabelle - Add integration support for the Isabelle/HOL theorem prover.
 sci-mathematics/flint:gc - Enable garbage collection support via dev-libs/boehm-gc
 sci-mathematics/flint:ntl - Build NTL interface
 sci-mathematics/form:devref - Build and install developers reference
@@ -7765,10 +7754,6 @@ sci-mathematics/geomview:motionaveraging - Enable experimental motion averaging 
 sci-mathematics/gmp-ecm:custom-tune - Improve performance of some operations by selecting machine-specific defaults
 sci-mathematics/gretl:R - Enable support for dev-lang/R
 sci-mathematics/gsl-shell:fox - Build a x11-libs/fox GUI
-sci-mathematics/isabelle:graphbrowsing - Generate theory browsing information, including HTML documents that show a theory's definition, the theorems proved in its ML file and the relationship with its ancestors and descendants.
-sci-mathematics/isabelle:ledit - Use ledit for the isabelle tty line editor
-sci-mathematics/isabelle:readline - Use readline (rlwrap) for the isabelle tty line editor
-sci-mathematics/kodkodi:isabelle - Add integration support for the Isabelle/HOL theorem prover.
 sci-mathematics/maxima:clisp - Compile maxima with GNU CLISP (dev-lisp/clisp)
 sci-mathematics/maxima:clozurecl - Compile maxima with Clozure Common Lisp (dev-lisp/clozurecl)
 sci-mathematics/maxima:cmucl - Compile maxima with CMU Common Lisp (dev-lisp/cmucl)
@@ -7808,7 +7793,6 @@ sci-mathematics/rstudio:server - Build and install the RStudio server
 sci-mathematics/rw:executable - Build the 'rw' program.
 sci-mathematics/singular:boost - Compile against external boost headers (dev-libs/boost)
 sci-mathematics/slepc:complex-scalars - Make scalars complex
-sci-mathematics/spass:isabelle - Add integration support for the Isabelle/HOL theorem prover.
 sci-mathematics/unuran:prng - Use sci-mathematics/prng library
 sci-mathematics/unuran:rngstreams - Use sci-mathematics/rngstreams library
 sci-mathematics/why3-for-spark:coq - Add sci-mathematics/coq support

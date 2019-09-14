@@ -2465,7 +2465,6 @@ app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliogr
 app-text/jabref-bin 3.7 3.8 3.8.1 3.8.2 4.0 4.1 4.3.1 4.9999: Java GUI manages bibliographies in a BibTeX database
 app-text/jadetex 3.13-r7: TeX macros used by Jade TeX output
 app-text/jo 1.1: JSON output from a shell
-app-text/jpdftweak 0.9-r1: Swiss Army Knife for PDF files
 app-text/kbibtex 0.9: BibTeX editor to edit bibliographies used with LaTeX
 app-text/kchmviewer 7.7-r1: Feature rich chm file viewer, based on Qt
 app-text/keepnote 0.7.9-r2: A note taking application
@@ -4241,7 +4240,6 @@ dev-java/iso-relax 20050331-r4: Interfaces useful for applications which support
 dev-java/istack-commons-buildtools 2.22-r1: IStack Commons - Buildtools jar
 dev-java/istack-commons-runtime 2.22: IStack Commons - Runtime jar
 dev-java/istack-commons-soimp 2.22: IStack Commons - Soimp jar
-dev-java/itext 2.1.5-r2 5.5.4-r2: Generate documents in the Portable Document Format (PDF) and/or HTML
 dev-java/j2objc-annotations 1.2: Annotations for the J2ObjC Java to Objective-C translator
 dev-java/j2ssh 0.2.9: Java implementation of the SSH protocol
 dev-java/jackcess 1.2.14.3: Pure Java library for reading from and writing to MS Access databases
@@ -4356,7 +4354,6 @@ dev-java/jreleaseinfo 1.3.0-r2: Ant Task for build-time creation of Java source 
 dev-java/jrexx 1.1.1-r2: API for textual pattern matching based on the finite state automaton theory
 dev-java/jrobin 1.6.0-r1: JRobin is a 100% pure Java alternative to RRDTool
 dev-java/jrrd 1.0.1-r2: Java Interface to Tobias Oetiker's RRDtool
-dev-java/jsap 2.1-r2: Java Simple Arguments Parser (JSAP)
 dev-java/jsch 0.1.52 0.1.54: JSch is a pure Java implementation of SSH2
 dev-java/json 20150729 20160212: Java implementation of the JavaScript Object Notation
 dev-java/json-simple 1.1-r1: Simple Java toolkit for JSON
@@ -4575,7 +4572,6 @@ dev-java/xpp2 2.1.10-r2: A streaming pull XML parser used to quickly process inp
 dev-java/xpp3 1.1.4c-r3 1.1.4c-r4: An implementation of XMLPULL V1 API
 dev-java/xsdlib 20090415: Sun XML Datatypes Library
 dev-java/xsom 20140925: XSOM is a Java library allows to easily parse and inspect XML schema docs
-dev-java/xstream 1.4.8-r2: A text-processing Java API that serialize objects to XML and back again
 dev-java/xz-java 1.8: Implementation of xz data compression in pure java
 dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zeus-jscl 1.64-r1: Zeus Java Swing Components Library
@@ -4649,7 +4645,6 @@ dev-lang/opendylan 2013.1-r1 2013.2 2014.1 9999: OpenDylan language runtime envi
 dev-lang/opendylan-bin 2011.1 2012.1 2013.1 2013.2 2014.1 2019.1: OpenDylan language runtime environment (prebuilt)
 dev-lang/orc 0.4.28-r1 0.4.29: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
-dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.24.3-r1 5.24.4 5.26.2 5.28.2-r1 5.28.9999 5.30.0: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 5.6.40-r6 7.1.31 7.1.32 7.2.21 7.2.22 7.3.8 7.3.9 7.4.0_beta1 7.4.0_beta4 7.4.0_rc1: The PHP language runtime engine
@@ -10695,7 +10690,6 @@ dev-util/debootstrap 1.0.89 1.0.114 1.0.115: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.14.2-r2: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6: Framework for testing other programs
 dev-util/desktop-file-utils 0.23 0.24: Command line utilities to work with desktop menu entries
-dev-util/deskzilla 1.7.1-r1: A desktop client for Mozilla's Bugzilla bug tracking system
 dev-util/devhelp 3.30.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20190808: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
@@ -14211,7 +14205,6 @@ media-sound/traverso 0.49.5: Professional Audio Tools for GNU/Linux
 media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
 media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnostic volume management daemon
 media-sound/tunapie 2.1.17-r1 2.1.19: Directory browser for Radio and TV streams
-media-sound/tuxguitar 1.3.2: Multitrack guitar tablature editor and player written in Java-SWT
 media-sound/twolame 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2-r1: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.16a-r1 0.2.17-r1 0.2.17-r2 0.2.17-r3 9999: Minimalistic Murmur (Mumble server)
@@ -15446,7 +15439,6 @@ net-misc/ipv6calc 1.0.0 2.1.0: IPv6 address calculator
 net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/irrtree 1.2.1: The BGP swiss army knife of networking
 net-misc/istioctl 1.1.8 1.1.12: Istio configuration command line utility
-net-misc/java-wakeonlan 1.0.0-r2: A wakeonlan commandline tool and Java library
 net-misc/jlj 2.12-r1: Simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing and/or controlling a distance PC
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
@@ -16179,7 +16171,6 @@ sci-biology/gibbs 3.1: Identify motifs, conserved regions, in DNA or protein seq
 sci-biology/glimmer 3.02-r3 3.02b: An HMM-based microbial gene finding system from TIGR
 sci-biology/glimmerhmm 3.0.1-r1: A eukaryotic gene finding system from TIGR
 sci-biology/gmap 2015.12.31.5: A Genomic Mapping and Alignment Program for mRNA and EST Sequences
-sci-biology/goby 1.9.7.3-r1 1.9.8.1-r1: A DNA sequencing data management framework
 sci-biology/goby-cpp 1.9.7.3 1.9.8.1 2.0.1: A DNA sequencing data management framework - C/C++ API
 sci-biology/hmmer 2.3.2-r4 3.1_beta2: Sequence analysis using profile hidden Markov models
 sci-biology/iedera 1.05-r1: A subset seed design tool for DNA sequence alignment
@@ -16307,7 +16298,6 @@ sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
 sci-chemistry/gromacs 2018.3 2018.7 2018.9999 2019.2 2019.3 2019.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
-sci-chemistry/jmol 12.0.45-r1 12.2.27-r1: Java molecular viever for 3-D chemical structures
 sci-chemistry/ksdssp 040728 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
 sci-chemistry/mdtraj 1.9.1: Read, write and analyze MD trajectories with only a few lines of Python code
@@ -16768,12 +16758,10 @@ sci-mathematics/bertini 1.4: Software for Numerical Algebraic Geometry
 sci-mathematics/calc 2.12.4.13-r1 2.12.5.4: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.11.3: C++ library for geometric algorithms and data structures
 sci-mathematics/coq 8.6 8.6.1: Proof assistant written in O'Caml
-sci-mathematics/cvc3 2.4.1-r1: CVC3 is a theorem prover for Satisfiability Modulo Theories (SMT) problems
 sci-mathematics/cvc4 1.6 1.7: automatic theorem prover for satisfiability modulo theories (SMT) problems
 sci-mathematics/dataplot 20090821 20131220: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
 sci-mathematics/dunshire 0.1.1: Python library to solve linear games over symmetric cones
-sci-mathematics/e 1.8-r1 2.3: E is a theorem prover for full first-order logic with equality
 sci-mathematics/ent 101202: Pseudorandom number sequence test
 sci-mathematics/euler 1.61.0: Mathematical programming environment
 sci-mathematics/factmsieve 76-r1: Convenient factorization helper script using msieve and ggnfs
@@ -16794,10 +16782,8 @@ sci-mathematics/gmm 5.1: Generic C++ template library for sparse, dense and skyl
 sci-mathematics/gmp-ecm 6.4.3-r5 6.4.4-r1 7.0.4 9999: Elliptic Curve Method for Integer Factorization
 sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series library
 sci-mathematics/gsl-shell 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
-sci-mathematics/isabelle 2016.1: Isabelle is a generic proof assistant
 sci-mathematics/jags 3.4.0 4.0.0 4.1.0 4.2.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
 sci-mathematics/kodkod 1.5.2-r1: a constraint solver for relational logic
-sci-mathematics/kodkodi 1.5.2-r1: A text front-end for the Kodkod Java library
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/lybniz 1.3.2-r1: A function plotter program written in PyGTK
 sci-mathematics/mathmod 4.1-r1: Plot parametric and implicit surfaces
@@ -16834,7 +16820,6 @@ sci-mathematics/sha1-polyml 5.5.0 5.6_p1: implementation of SHA1 is taken from t
 sci-mathematics/singular 3.1.6 4.0.2 4.0.3: Computer algebra system for polynomial computations
 sci-mathematics/slepc 3.11.1: Scalable Library for Eigenvalue Problem Computations
 sci-mathematics/snns 4.3-r2 4.3-r3: Stuttgart Neural Network Simulator
-sci-mathematics/spass 3.9: An Automated Theorem Prover for First-Order Logic with Equality
 sci-mathematics/spin 6.4.5: Tool for formal verification of distributed software systems
 sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1 1.7.1-r1: Implementation of the logical framework LF
@@ -17347,7 +17332,6 @@ sys-apps/lm-sensors 3.5.0 3.5.0_p20190505: Hardware Monitoring user-space utilit
 sys-apps/lmctfy 0.2.0 0.3.0 0.3.1 0.5.0 0.5.0-r1: Linux application container management from Google
 sys-apps/lnxhc 1.2-r1: Linux Health Checker
 sys-apps/logwatch 7.5.1 7.5.2 9999: Analyzes and Reports on system logs
-sys-apps/lomoco 1.0-r9: Lomoco can configure vendor-specific options on Logitech USB mice
 sys-apps/lsadb 0.1.3 0.1.3-r1: Prints out information on all devices attached to the ADB bus
 sys-apps/lsb-release 1.4 1.4-r1 1.4-r2 1.4-r3: LSB version query program
 sys-apps/lsd 0.14.0 0.15.1 0.16.0: A modern ls with a lot of pretty colors and awesome icons
