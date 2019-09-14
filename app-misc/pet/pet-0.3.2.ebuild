@@ -20,6 +20,10 @@ EGO_VENDOR=(
 	"github.com/pkg/errors 645ef00459ed84a119197bfb8d8205042c6df63d"
 	"github.com/spf13/cobra ef82de70bb3f60c65fb8eebacbb2d122ef517385"
 	"github.com/spf13/pflag 583c0c0531f06d5278b7d917446061adc344b5cd"
+	"golang.org/x/crypto 8ac0e0d97ce45cd83d1d7243c060cb8461dda5e9 github.com/golang/crypto"
+	"golang.org/x/net 1e491301e022f8f977054da4c2d852decd59571f github.com/golang/net"
+	"golang.org/x/oauth2 1e0a3fa8ba9a5c9eb35c271780101fdaf1b205d7 github.com/golang/oauth2"
+	"golang.org/x/sys 9527bec2660bd847c050fda93a0f0c6dee0800bb github.com/golang/sys"
 	"google.golang.org/appengine 150dc57a1b433e64154302bdc40b6bb8aefa313a github.com/golang/appengine"
 )
 
@@ -38,15 +42,7 @@ KEYWORDS="~amd64"
 IUSE="zsh-completion"
 
 # dev-go/toml doesn't provide sources
-DEPEND="
-	dev-go/go-crypto:=
-	dev-go/go-net:=
-	dev-go/go-oauth2:=
-	dev-go/go-protobuf:=
-	dev-go/go-sys:="
-
 RDEPEND="
-	${DEPEND}
 	zsh-completion? ( app-shells/zsh-completions )"
 
 src_install() {
