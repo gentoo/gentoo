@@ -13,4 +13,9 @@
 		<remote-id type="pypi">roundup</remote-id>
 		<remote-id type="sourceforge">roundup</remote-id>
 	</upstream>
+	<use>
+		<flag name="tz">Enable full support of timezone</flag>
+		<flag name="xapian">Enable Xapian full-text indexer</flag>
+		<flag name="whoosh">Enable Whoosh full-text indexer</flag>
+	</use>
 </pkgmetadata>
