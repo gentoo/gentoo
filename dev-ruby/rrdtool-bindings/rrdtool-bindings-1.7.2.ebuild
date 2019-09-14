@@ -26,6 +26,7 @@ RDEPEND="
 	~net-analyzer/rrdtool-${PV}[graph=]
 "
 DEPEND="
+	${RDEPEND}
 	test? ( ~net-analyzer/rrdtool-${PV}[graph] )
 "
 

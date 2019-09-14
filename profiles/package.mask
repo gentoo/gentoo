@@ -1177,11 +1177,6 @@ app-misc/freemind
 # no rdeps. Removal in 30 days
 dev-java/kryo
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-08-14)
-# EAPI=2, ages old, effectively unmaintained. Gone in
-# 30 days. Bug 688154
-dev-java/jlayer
-
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
