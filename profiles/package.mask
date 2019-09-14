@@ -1152,7 +1152,6 @@ dev-java/netbeans-groovy
 dev-java/netbeans-java
 dev-java/netbeans-java
 dev-java/netbeans-javacard
-dev-java/netbeans-javafx
 dev-java/netbeans-nb
 dev-java/netbeans-php
 dev-java/netbeans-profiler
