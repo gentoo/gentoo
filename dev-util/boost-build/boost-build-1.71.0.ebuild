@@ -71,14 +71,6 @@ src_prepare() {
 
 src_configure() {
 	hprefixify engine/Jambase
-	if use python; then
-		# replace versions by user-selected one (TODO: fix this when slot-op
-		# deps are available to always match the best version available)
-		sed -i \
-			-e "s|27 26 25 24 23 22|${EPYTHON#python}|" \
-			engine/build.jam || die "sed failed"
-	fi
-
 	tc-export CXX
 }
 

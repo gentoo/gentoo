@@ -18,6 +18,7 @@ IUSE="doc examples ssl test"
 
 RDEPEND="
 	ssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )
+	dev-python/pysendfile[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -30,7 +31,6 @@ DEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
-		dev-python/pysendfile[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
