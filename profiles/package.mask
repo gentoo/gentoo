@@ -1142,7 +1142,6 @@ sci-biology/goby
 dev-java/smack
 dev-java/netbeans-ide
 dev-java/netbeans-apisupport
-dev-java/netbeans-cnd
 dev-java/netbeans-dlight
 dev-java/netbeans-enterprise
 dev-java/netbeans-enterprise
