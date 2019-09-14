@@ -30,6 +30,40 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-14)
+# The following packages are unmaintained and have not been tested
+# with Python 3.7.  Most of them are either in need of version bumps,
+# a few have been declared discontinued upstream.  None of them has
+# any reverse dependency.
+# Removal in 30 days.  Bug #694280.
+dev-python/attrdict
+dev-python/behave
+dev-python/cfgio
+dev-python/django-opensearch
+dev-python/django-otp-yubikey
+dev-python/django-phonenumber-field
+dev-python/grafanalib
+dev-python/libasyncns-python
+dev-python/maybe
+dev-python/mockredispy
+dev-python/parse
+dev-python/parse-type
+dev-python/phonenumbers
+dev-python/pyClamd
+dev-python/pycallgraph
+dev-python/pyroma
+dev-python/pytest-raisesregexp
+dev-python/python-consul
+dev-python/python-ptrace
+dev-python/pyuv
+dev-python/safety
+dev-python/sphinxcontrib-cheeseshop
+dev-python/structlog
+dev-python/torment
+dev-python/twilio
+dev-python/xonsh
+dev-python/yubiotp
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-14)
 # The following packages are unmaintained and do not declare support
 # for Python 3.  Most of them are either in need of version bumps,
 # or are dead upstream (haven't had a release since 2009-2015).
