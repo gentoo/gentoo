@@ -1135,12 +1135,6 @@ dev-java/jsap
 net-misc/java-wakeonlan
 sci-biology/goby
 
-# Aaron Bauman <bman@gentoo.org> (2019-08-14)
-# longstanding sec vulns, unpatched, not maintained
-# bug #509354, #519216, #603440
-# list includes rdeps. Removal in 30 days.
-dev-java/smack
-
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
