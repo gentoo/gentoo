@@ -16,7 +16,6 @@ IUSE="doc geolocation screencast"
 
 BDEPEND="
 	dev-util/gdbus-codegen
-	media-libs/fontconfig
 	sys-devel/gettext
 	virtual/pkgconfig
 	doc? (
@@ -27,6 +26,7 @@ BDEPEND="
 DEPEND="
 	dev-libs/glib:2[dbus]
 	dev-libs/json-glib
+	media-libs/fontconfig
 	sys-fs/fuse:0
 	geolocation? ( >=app-misc/geoclue-2.5.3:2.0 )
 	screencast? ( media-video/pipewire:= )
