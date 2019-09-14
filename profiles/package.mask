@@ -1141,7 +1141,6 @@ sci-biology/goby
 # list includes rdeps. Removal in 30 days.
 dev-java/smack
 dev-java/netbeans-ide
-dev-java/netbeans-apisupport
 dev-java/netbeans-enterprise
 dev-java/netbeans-enterprise
 dev-java/netbeans-ergonomics
