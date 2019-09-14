@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 MY_PV=${PV/_p/ga}
 MY_P=${PN}-${MY_PV}
@@ -11,7 +11,7 @@ S=${WORKDIR}/${PN}-${SUB_PV}
 
 # only the x3270 package installs fonts
 FONT_PN="x3270"
-FONT_S=${WORKDIR}/${FONT_PN}
+FONT_S="${S}/${FONT_PN}"
 
 inherit eutils font
 
@@ -21,7 +21,7 @@ SRC_URI="mirror://sourceforge/x3270/${MY_P}-src.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc s390 sparc x86"
+KEYWORDS="~amd64 ~ppc ~s390 ~sparc ~x86"
 IUSE="cjk doc ncurses ssl tcl X"
 
 RDEPEND="ssl? ( dev-libs/openssl:0= )
@@ -45,6 +45,10 @@ DEPEND="${RDEPEND}
 		x11-apps/bdftopcf
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.5_p8-tinfo.patch
+)
+
 suite3270_makelist() {
 	echo pr3287 s3270 \
 		$(usex ncurses c3270 '') \
@@ -53,6 +57,8 @@ suite3270_makelist() {
 }
 
 src_prepare() {
+	default
+
 	# Some subdirs (like c3270/x3270/s3270) install the same set of data files
 	# (they have the same contents).  Wrap that in a retry to avoid errors.
 	cat <<-EOF > _install
