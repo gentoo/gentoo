@@ -29,6 +29,35 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-14)
+# The following packages are unmaintained and do not declare support
+# for Python 3.  Most of them are either in need of version bumps,
+# or are dead upstream (haven't had a release since 2009-2015).
+# None of them have any reverse dependencies.
+# Removal in 30 days.  Bug #694280.
+dev-python/Ming
+dev-python/casuarius
+dev-python/imdbpy
+dev-python/kaa-base
+dev-python/kaa-display
+dev-python/kaa-imlib2
+dev-python/kaa-metadata
+dev-python/larch
+dev-python/pybloomfiltermmap
+dev-python/pylirc
+dev-python/pyringe
+dev-python/pystdf
+dev-python/python-dsv
+dev-python/python-gudev
+dev-python/python-spidermonkey
+dev-python/python-virtkey
+dev-python/rtf2xml
+dev-python/tmdb3
+dev-python/tracing
+dev-python/txsocksx
+dev-python/wsgilog
+dev-python/xmpppy
+
 # Michał Górny <mgorny@gentoo.org> (2019-09-13)
 # Last bumped in 2017.  Newer version fails to fetch.  Pending bump.
 # Unresolved license issues.
