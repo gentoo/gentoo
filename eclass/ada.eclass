@@ -23,10 +23,10 @@
 # Mostly copied from python-single-r1.eclass
 
 case "${EAPI:-0}" in
-	0|1|2|3|4)
+	0|1|2|3|4|5)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	5|6|7)
+	6|7)
 		# EAPI=5 is required for sane USE_EXPAND dependencies
 		;;
 	*)
@@ -237,6 +237,10 @@ ada_export() {
 				export GNATPREP=${EPREFIX}/usr/bin/gnatprep-${gcc_pv}
 				debug-print "${FUNCNAME}: GNATPREP = ${GNATPREP}"
 				;;
+			GNATCHOP)
+				export GNATCHOP=${EPREFIX}/usr/bin/gnatchop-${gcc_pv}
+				debug-print "${FUNCNAME}: GNATCHOP = ${GNATCHOP}"
+				;;
 			ADA_PKG_DEP)
 				ADA_PKG_DEP="dev-lang/gnat-gpl:${gcc_pv}"
 
@@ -345,35 +349,40 @@ ada_wrapper_setup() {
 	if [[ ! -x ${workdir}/bin/gnatmake ]]; then
 		mkdir -p "${workdir}"/bin || die
 
-		local GCC GNATMAKE GNATLS GNATBIND GNATPREP
-		ada_export "${impl}" GCC GNATMAKE GNATLS GNATBIND GNATPREP
+		local GCC GNATMAKE GNATLS GNATBIND GNATCHOP GNATPREP
+		ada_export "${impl}" GCC GNATMAKE GNATLS GNATCHOP GNATBIND GNATPREP
 
 		# Ada compiler
 		cat > "${workdir}/bin/gcc" <<-_EOF_ || die
 			#!/bin/sh
 			exec "${GCC}" "\${@}"
 		_EOF_
-		chmod a+x "${workdir}/bin/gcc"
+		chmod a+x "${workdir}/bin/gcc" || die
 		cat > "${workdir}/bin/gnatmake" <<-_EOF_ || die
 			#!/bin/sh
 			exec "${GNATMAKE}" "\${@}"
 		_EOF_
-		chmod a+x "${workdir}/bin/gnatmake"
+		chmod a+x "${workdir}/bin/gnatmake" || die
 		cat > "${workdir}/bin/gnatls" <<-_EOF_ || die
 			#!/bin/sh
 			exec "${GNATLS}" "\${@}"
 		_EOF_
-		chmod a+x "${workdir}/bin/gnatls"
+		chmod a+x "${workdir}/bin/gnatls" || die
 		cat > "${workdir}/bin/gnatbind" <<-_EOF_ || die
 			#!/bin/sh
 			exec "${GNATBIND}" "\${@}"
 		_EOF_
-		chmod a+x "${workdir}/bin/gnatbind"
+		chmod a+x "${workdir}/bin/gnatbind" || die
+		cat > "${workdir}/bin/gnatchop" <<-_EOF_ || die
+			#!/bin/sh
+			exec "${GNATCHOP}" "\${@}"
+		_EOF_
+		chmod a+x "${workdir}/bin/gnatchop" || die
 		cat > "${workdir}/bin/gnatprep" <<-_EOF_ || die
 			#!/bin/sh
 			exec "${GNATPREP}" "\${@}"
 		_EOF_
-		chmod a+x "${workdir}/bin/gnatprep"
+		chmod a+x "${workdir}/bin/gnatprep" || die
 	fi
 
 	# Now, set the environment.
@@ -397,7 +406,7 @@ ada_setup() {
 	if [[ ${#_ADA_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
 		if use "ada_targets_${_ADA_SUPPORTED_IMPLS[0]}"; then
 			# Only one supported implementation, enable it explicitly
-			ada_export "${_ADA_SUPPORTED_IMPLS[0]}" EADA GCC GCC_PV GNATMAKE
+			ada_export "${_ADA_SUPPORTED_IMPLS[0]}" EADA GCC_PV
 			ada_wrapper_setup
 		fi
 	else
