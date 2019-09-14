@@ -1115,7 +1115,6 @@ dev-lang/pasm
 dev-java/itext
 app-text/jpdftweak
 dev-util/deskzilla
-media-sound/tuxguitar
 
 # Michał Górny <mgorny@gentoo.org> (2019-08-14)
 # No longer builds.  Homepage is gone, and its keep-alive fork is also
