@@ -7844,14 +7844,14 @@ dev-python/flufl-bounce 3.0: Email bounce detectors.
 dev-python/flufl-i18n 2.0.1: A high level API for Python internationalization.
 dev-python/flufl-lock 3.2: NFS-safe file locking with timeouts for POSIX systems.
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
-dev-python/fonttools 3.0 3.20.1 3.21.1 3.24.0 3.24.1 3.24.2 3.28.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
+dev-python/fonttools 3.0 3.24.2 3.44.0 4.0.1: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/foolscap 0.7.0 0.11.0 0.13.1: RPC protocol for Twisted
 dev-python/formencode 1.3.0-r3: HTML form validation, generation, and conversion package
 dev-python/fpconst 0.7.3-r1: Python Module for handling IEEE 754 floating point special values
 dev-python/fqdn 1.1.1: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 0.3.10 0.3.11: Let your Python tests travel through time
 dev-python/frozen-flask 0.11-r1 0.15: Freezes a Flask application into a set of static files
-dev-python/fs 0.5.4 2.0.21 2.0.26 2.4.8: Filesystem abstraction layer
+dev-python/fs 0.5.4 2.0.21 2.0.26 2.4.8 2.4.9: Filesystem abstraction layer
 dev-python/fudge 0.9.6-r1 1.1.0: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6 0.3.6-r1: Recursive descent parsing library based on functional combinators
 dev-python/funcsigs 1.0.2-r1: Python function signatures backport from PEP362 for Python 2.7-3.5
@@ -17748,7 +17748,7 @@ sys-devel/binutils 2.26.1 2.27-r1 2.28.1 2.29.1-r1 2.30-r4 2.31.1-r6 2.32-r1 999
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5-r4 5.1-r1: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.26.1 2.27 2.28 2.28.1 2.29 2.29.1-r1 2.30-r4 2.31.1-r6 2.32-r1: Tools necessary to build programs
-sys-devel/bison 3.1 3.2.4 3.3.2 3.4.1: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 3.1 3.2.4 3.3.2 3.4.1 3.4.2: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20170421 20170510 20170812: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.6-r1 9999: Compiler-based Application Analysis
@@ -18801,7 +18801,7 @@ x11-libs/libXdamage 1.1.5: X.Org Xdamage library
 x11-libs/libXdmcp 1.1.3: X.Org X Display Manager Control Protocol library
 x11-libs/libXext 1.3.4: X.Org Xext library
 x11-libs/libXfixes 5.0.3-r1: X.Org Xfixes library
-x11-libs/libXfont2 2.0.3-r1 9999: X.Org Xfont library
+x11-libs/libXfont2 2.0.3-r1 2.0.4 9999: X.Org Xfont library
 x11-libs/libXft 2.3.3: X.Org Xft library
 x11-libs/libXi 1.7.10: X.Org Xi library
 x11-libs/libXinerama 1.1.4: X.Org Xinerama library
