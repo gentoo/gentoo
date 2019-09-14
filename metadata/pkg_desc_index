@@ -12232,7 +12232,7 @@ kde-apps/kdeedu-meta 19.04.3 19.08.1: KDE educational apps - merge this to pull 
 kde-apps/kdegames-meta 19.04.3 19.08.1: kdegames - merge this to pull in all kdegames-derived packages
 kde-apps/kdegraphics-meta 19.04.3 19.08.1: kdegraphics - merge this to pull in all kdegraphics-derived packages
 kde-apps/kdegraphics-mobipocket 19.04.3 19.08.1: Library to support mobipocket ebooks
-kde-apps/kdemultimedia-meta 19.04.3: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
+kde-apps/kdemultimedia-meta 19.04.3 19.08.1-r1: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 19.04.3 19.08.1: SMB filesharing config module for systemsettings
 kde-apps/kdenetwork-meta 19.04.3 19.08.1: kdenetwork - merge this to pull in all kdenetwork-derived packages
 kde-apps/kdenlive 19.04.3 19.08.1: Non-linear video editing suite by KDE
@@ -12747,7 +12747,7 @@ media-fonts/fantasque-sans-mono 2014.07: Functional programming font designed wi
 media-fonts/farsi-fonts 0.4: Farsi (Persian) Unicode fonts
 media-fonts/fgdc-emergency 2.20: FGDC Emergency Response Symbology Prototype
 media-fonts/fifth-leg 0.6-r1: Simplistic, technical sans serif - openSUSE font
-media-fonts/fira-code 1.205 1.206 1.207: Monospaced font with programming ligatures
+media-fonts/fira-code 1.205 1.206 1.207 2: Monospaced font with programming ligatures
 media-fonts/fira-mono 3.205: Default monospaced typeface for FirefoxOS, designed for legibility
 media-fonts/fira-sans 4.002 4.105: Default typeface for FirefoxOS, designed for legibility
 media-fonts/font-adobe-100dpi 1.0.3-r1: X.Org Adobe bitmap fonts
@@ -16701,7 +16701,7 @@ sci-libs/naga 2.1: Simplified Java NIO asynchronous sockets
 sci-libs/nanoflann 1.2.3 9999: C++ header-only library for Nearest Neighbor (NN) search wih KD-trees
 sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
 sci-libs/nemesis 6.09: Enhancement to the EXODUSII finite element database model
-sci-libs/netcdf 4.3.2-r1 4.4.0-r1 4.4.1.1 4.6.1 4.6.1-r1: Scientific library and interface for array oriented data access
+sci-libs/netcdf 4.3.2-r1 4.6.1 4.6.1-r1: Scientific library and interface for array oriented data access
 sci-libs/netcdf-cxx 4.2-r300 4.2.1 4.2.1-r1 4.3.0: C++ library for netCDF
 sci-libs/netcdf-fortran 4.2 4.4.2 4.4.3: Scientific library and interface for array oriented data access
 sci-libs/nfft 3.3.2: library for nonequispaced discrete Fourier transformations
