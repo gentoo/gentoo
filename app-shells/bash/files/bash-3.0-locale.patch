@@ -1,0 +1,112 @@
+Ripped from SuSe
+
+http://lists.gnu.org/archive/html/bug-bash/2004-08/msg00005.html
+
+From: schwab@suse.de
+To: bug-bash@gnu.org
+Subject: HISTTIMEFORMAT doesn't track locale changes
+Date: Sun,  1 Aug 2004 11:14:00 +0200 (CEST)
+
+Configuration Information [Automatically generated, do not change]:
+Machine: ia64
+OS: linux-gnu
+Compiler: gcc
+Compilation CFLAGS:  -DPROGRAM='bash' -DCONF_HOSTTYPE='ia64' -DCONF_OSTYPE='linux-gnu' -DCONF_MACHTYPE='ia64-unknown-linux-gnu' -DCONF_VENDOR='unknown' -DLOCALEDIR='/usr/local/share/locale' -DPACKAGE='bash' -DSHELL -DHAVE_CONFIG_H  -I.  -I../bash-3.0 -I../bash-3.0/include -I../bash-3.0/lib   -O2 -g
+uname output: Linux sykes 2.6.5-22-default #1 SMP Fri Jul 2 13:43:23 UTC 2004 ia64 ia64 ia64 GNU/Linux
+Machine Type: ia64-unknown-linux-gnu
+
+Bash Version: 3.0
+Patch Level: 0
+Release Status: release
+
+Description:
+Bash doesn't use the current locale when formatting HISTTIMEFORMAT.
+
+Repeat-By:
+sykes:/tmp/bash/Build/:[0]$ locale
+LANG=de_DE.UTF-8
+LC_CTYPE="de_DE.UTF-8"
+LC_NUMERIC=POSIX
+LC_TIME=POSIX
+LC_COLLATE=POSIX
+LC_MONETARY="de_DE.UTF-8"
+LC_MESSAGES=en_US.UTF-8
+LC_PAPER="de_DE.UTF-8"
+LC_NAME="de_DE.UTF-8"
+LC_ADDRESS="de_DE.UTF-8"
+LC_TELEPHONE="de_DE.UTF-8"
+LC_MEASUREMENT="de_DE.UTF-8"
+LC_IDENTIFICATION="de_DE.UTF-8"
+LC_ALL=
+sykes:/tmp/bash/Build/:[0]$ history 1
+ 1502  history 1
+sykes:/tmp/bash/Build/:[0]$ HISTTIMEFORMAT=%c
+sykes:/tmp/bash/Build/:[0]$ history 1
+ 1504  Sun Aug  1 10:56:59 2004history 1
+sykes:/tmp/bash/Build/:[0]$ export LC_TIME=$LANG
+sykes:/tmp/bash/Build/:[0]$ history 1
+ 1506  Sun Aug  1 10:57:24 2004history 1
+
+--- bash-3.0/locale.c
++++ bash-3.0/locale.c
+@@ -71,9 +71,10 @@ set_default_locale ()
+   textdomain (PACKAGE);
+ }
+ 
+-/* Set default values for LC_CTYPE, LC_COLLATE, LC_MESSAGES and LC_NUMERIC
+-   if they are not specified in the environment, but LC_ALL is.  This
+-   should be called from main() after parsing the environment. */
++/* Set default values for LC_CTYPE, LC_COLLATE, LC_MESSAGES, LC_NUMERIC
++   and LC_TIME if they are not specified in the environment, but LC_ALL
++   is.  This should be called from main() after parsing the
++   environment. */
+ void
+ set_default_locale_vars ()
+ {
+@@ -109,6 +110,12 @@ set_default_locale_vars ()
+     setlocale (LC_NUMERIC, lc_all);
+ #  endif /* LC_NUMERIC */
+ 
++#  if defined (LC_TIME)
++  val = get_string_value ("LC_TIME");
++  if (val == 0 && lc_all && *lc_all)
++    setlocale (LC_TIME, lc_all);
++#  endif /* LC_TIME */
++
+ #endif /* HAVE_SETLOCALE */
+ 
+   val = get_string_value ("TEXTDOMAIN");
+@@ -213,6 +220,13 @@ set_locale_var (var, value)
+ 	return (setlocale (LC_NUMERIC, get_locale_var ("LC_NUMERIC")) != 0);
+ #  endif /* LC_NUMERIC */
+     }
++  else if (var[3] == 'T' && var[4] == 'I')	/* LC_TIME */
++    {
++#  if defined (LC_TIME)
++      if (lc_all == 0 || *lc_all == '\0')
++	return (setlocale (LC_TIME, get_locale_var ("LC_TIME")) != 0);
++#  endif /* LC_TIME */
++    }
+ #endif /* HAVE_SETLOCALE */
+ 
+   return (0);
+@@ -285,6 +299,9 @@ reset_locale_vars ()
+ #  if defined (LC_NUMERIC)
+   setlocale (LC_NUMERIC, get_locale_var ("LC_NUMERIC"));
+ #  endif
++#  if defined (LC_TIME)
++  setlocale (LC_TIME, get_locale_var ("LC_TIME"));
++#  endif
+ 
+   locale_setblanks ();  
+ 
+--- bash-3.0/variables.c
++++ bash-3.0/variables.c
+@@ -3646,6 +3646,7 @@ static struct name_and_function special_
+   { "LC_CTYPE", sv_locale },
+   { "LC_MESSAGES", sv_locale },
+   { "LC_NUMERIC", sv_locale },
++  { "LC_TIME", sv_locale },
+ 
+   { "MAIL", sv_mail },
+   { "MAILCHECK", sv_mail },
