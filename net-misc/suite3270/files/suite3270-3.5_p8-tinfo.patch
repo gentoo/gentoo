@@ -10,14 +10,14 @@ ld: screen.o: undefined reference to symbol 'meta'
 /usr/lib64/libtinfo.so.6: error adding symbols: DSO missing from command line
 collect2: error: ld returned 1 exit status
 ---
- x3270/c3270/configure.in |  1 +
- x3270/c3270/configure    | 45 +++++++++++++++++++++++++++++++++++++++++++++
+ c3270/configure.in |  1 +
+ c3270/configure    | 45 +++++++++++++++++++++++++++++++++++++++++++++
  2 files changed, 46 insertions(+)
 
-diff --git a/x3270/c3270/configure.in b/x3270/c3270/configure.in
+diff --git a/c3270/configure.in b/c3270/configure.in
 index d9f19e6..8c6d852 100644
---- a/x3270/c3270/configure.in
-+++ b/x3270/c3270/configure.in
+--- a/c3270/configure.in
++++ b/c3270/configure.in
 @@ -129,6 +129,7 @@ dnl first, so that objects in them can be used by subsequent libraries.
  AC_SEARCH_LIBS(forkpty, util)
  AC_CHECK_FUNCS(forkpty)
@@ -26,10 +26,10 @@ index d9f19e6..8c6d852 100644
  if test "$with_readline" != no; then
  AC_CHECK_LIB(readline, rl_initialize)
  fi
-diff --git a/x3270/c3270/configure b/x3270/c3270/configure
+diff --git a/c3270/configure b/c3270/configure
 index bef2dff..9946e83 100755
---- a/x3270/c3270/configure
-+++ b/x3270/c3270/configure
+--- a/c3270/configure
++++ b/c3270/configure
 @@ -4020,6 +4020,51 @@ fi
  
  fi
