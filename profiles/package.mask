@@ -1179,11 +1179,6 @@ dev-java/flyingsaucer
 dev-java/groovy
 app-misc/freemind
 
-# Aaron Bauman <bman@gentoo.org> (2019-08-14)
-# open sec bug #576874, unmaintained in Gentoo
-# no rdeps. Removal in 30 days
-dev-java/kryo
-
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
