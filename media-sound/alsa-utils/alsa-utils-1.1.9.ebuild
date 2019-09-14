@@ -25,6 +25,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.8-missing_header.patch
+	"${FILESDIR}"/${P}-axfer-test-fix-invalid-comparison-of-64-bit-storage-.patch
 )
 
 src_configure() {

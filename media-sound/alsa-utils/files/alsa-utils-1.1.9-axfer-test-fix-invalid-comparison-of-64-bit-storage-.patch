@@ -1,0 +1,249 @@
+From fbb222c9bccb407750cea61e3bb6285cb8c1b330 Mon Sep 17 00:00:00 2001
+From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+Date: Sun, 28 Jul 2019 13:48:50 +0900
+Subject: [PATCH] axfer: test: fix invalid comparison of 64 bit storage in
+ ILP32 data type
+
+In system V ABIs with ILP32 data model, bit shift for '1ul' can brings
+undefined behaviour when the calculation result is over 32 bit width.
+
+This commit fixes the bug.
+
+Reported-by: Rolf Eike Beer <eike@sf-mail.de>
+Reference: https://bugs.gentoo.org/681652
+Reference: https://github.com/alsa-project/alsa-utils/issues/23
+Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ axfer/test/container-test.c | 142 ++++++++++++++++++------------------
+ axfer/test/generator.c      |   4 +-
+ axfer/test/mapper-test.c    |  24 +++---
+ 3 files changed, 85 insertions(+), 85 deletions(-)
+
+diff --git a/axfer/test/container-test.c b/axfer/test/container-test.c
+index 0e2e6e9..9b30ae3 100644
+--- a/axfer/test/container-test.c
++++ b/axfer/test/container-test.c
+@@ -172,82 +172,82 @@ int main(int argc, const char *argv[])
+ {
+ 	static const uint64_t sample_format_masks[] = {
+ 		[CONTAINER_FORMAT_RIFF_WAVE] =
+-			(1ul << SND_PCM_FORMAT_U8) |
+-			(1ul << SND_PCM_FORMAT_S16_LE) |
+-			(1ul << SND_PCM_FORMAT_S16_BE) |
+-			(1ul << SND_PCM_FORMAT_S24_LE) |
+-			(1ul << SND_PCM_FORMAT_S24_BE) |
+-			(1ul << SND_PCM_FORMAT_S32_LE) |
+-			(1ul << SND_PCM_FORMAT_S32_BE) |
+-			(1ul << SND_PCM_FORMAT_FLOAT_LE) |
+-			(1ul << SND_PCM_FORMAT_FLOAT_BE) |
+-			(1ul << SND_PCM_FORMAT_FLOAT64_LE) |
+-			(1ul << SND_PCM_FORMAT_FLOAT64_BE) |
+-			(1ul << SND_PCM_FORMAT_MU_LAW) |
+-			(1ul << SND_PCM_FORMAT_A_LAW) |
+-			(1ul << SND_PCM_FORMAT_S24_3LE) |
+-			(1ul << SND_PCM_FORMAT_S24_3BE) |
+-			(1ul << SND_PCM_FORMAT_S20_3LE) |
+-			(1ul << SND_PCM_FORMAT_S20_3BE) |
+-			(1ul << SND_PCM_FORMAT_S18_3LE) |
+-			(1ul << SND_PCM_FORMAT_S18_3BE),
++			(1ull << SND_PCM_FORMAT_U8) |
++			(1ull << SND_PCM_FORMAT_S16_LE) |
++			(1ull << SND_PCM_FORMAT_S16_BE) |
++			(1ull << SND_PCM_FORMAT_S24_LE) |
++			(1ull << SND_PCM_FORMAT_S24_BE) |
++			(1ull << SND_PCM_FORMAT_S32_LE) |
++			(1ull << SND_PCM_FORMAT_S32_BE) |
++			(1ull << SND_PCM_FORMAT_FLOAT_LE) |
++			(1ull << SND_PCM_FORMAT_FLOAT_BE) |
++			(1ull << SND_PCM_FORMAT_FLOAT64_LE) |
++			(1ull << SND_PCM_FORMAT_FLOAT64_BE) |
++			(1ull << SND_PCM_FORMAT_MU_LAW) |
++			(1ull << SND_PCM_FORMAT_A_LAW) |
++			(1ull << SND_PCM_FORMAT_S24_3LE) |
++			(1ull << SND_PCM_FORMAT_S24_3BE) |
++			(1ull << SND_PCM_FORMAT_S20_3LE) |
++			(1ull << SND_PCM_FORMAT_S20_3BE) |
++			(1ull << SND_PCM_FORMAT_S18_3LE) |
++			(1ull << SND_PCM_FORMAT_S18_3BE),
+ 		[CONTAINER_FORMAT_AU] =
+-			(1ul << SND_PCM_FORMAT_S8) |
+-			(1ul << SND_PCM_FORMAT_S16_BE) |
+-			(1ul << SND_PCM_FORMAT_S32_BE) |
+-			(1ul << SND_PCM_FORMAT_FLOAT_BE) |
+-			(1ul << SND_PCM_FORMAT_FLOAT64_BE) |
+-			(1ul << SND_PCM_FORMAT_MU_LAW) |
+-			(1ul << SND_PCM_FORMAT_A_LAW),
++			(1ull << SND_PCM_FORMAT_S8) |
++			(1ull << SND_PCM_FORMAT_S16_BE) |
++			(1ull << SND_PCM_FORMAT_S32_BE) |
++			(1ull << SND_PCM_FORMAT_FLOAT_BE) |
++			(1ull << SND_PCM_FORMAT_FLOAT64_BE) |
++			(1ull << SND_PCM_FORMAT_MU_LAW) |
++			(1ull << SND_PCM_FORMAT_A_LAW),
+ 		[CONTAINER_FORMAT_VOC] =
+-			(1ul << SND_PCM_FORMAT_U8) |
+-			(1ul << SND_PCM_FORMAT_S16_LE) |
+-			(1ul << SND_PCM_FORMAT_MU_LAW) |
+-			(1ul << SND_PCM_FORMAT_A_LAW),
++			(1ull << SND_PCM_FORMAT_U8) |
++			(1ull << SND_PCM_FORMAT_S16_LE) |
++			(1ull << SND_PCM_FORMAT_MU_LAW) |
++			(1ull << SND_PCM_FORMAT_A_LAW),
+ 		[CONTAINER_FORMAT_RAW] =
+-			(1ul << SND_PCM_FORMAT_S8) |
+-			(1ul << SND_PCM_FORMAT_U8) |
+-			(1ul << SND_PCM_FORMAT_S16_LE) |
+-			(1ul << SND_PCM_FORMAT_S16_BE) |
+-			(1ul << SND_PCM_FORMAT_U16_LE) |
+-			(1ul << SND_PCM_FORMAT_U16_BE) |
+-			(1ul << SND_PCM_FORMAT_S24_LE) |
+-			(1ul << SND_PCM_FORMAT_S24_BE) |
+-			(1ul << SND_PCM_FORMAT_U24_LE) |
+-			(1ul << SND_PCM_FORMAT_U24_BE) |
+-			(1ul << SND_PCM_FORMAT_S32_LE) |
+-			(1ul << SND_PCM_FORMAT_S32_BE) |
+-			(1ul << SND_PCM_FORMAT_U32_LE) |
+-			(1ul << SND_PCM_FORMAT_U32_BE) |
+-			(1ul << SND_PCM_FORMAT_FLOAT_LE) |
+-			(1ul << SND_PCM_FORMAT_FLOAT_BE) |
+-			(1ul << SND_PCM_FORMAT_FLOAT64_LE) |
+-			(1ul << SND_PCM_FORMAT_FLOAT64_BE) |
+-			(1ul << SND_PCM_FORMAT_IEC958_SUBFRAME_LE) |
+-			(1ul << SND_PCM_FORMAT_IEC958_SUBFRAME_BE) |
+-			(1ul << SND_PCM_FORMAT_MU_LAW) |
+-			(1ul << SND_PCM_FORMAT_A_LAW) |
+-			(1ul << SND_PCM_FORMAT_S24_3LE) |
+-			(1ul << SND_PCM_FORMAT_S24_3BE) |
+-			(1ul << SND_PCM_FORMAT_U24_3LE) |
+-			(1ul << SND_PCM_FORMAT_U24_3BE) |
+-			(1ul << SND_PCM_FORMAT_S20_3LE) |
+-			(1ul << SND_PCM_FORMAT_S20_3BE) |
+-			(1ul << SND_PCM_FORMAT_U20_3LE) |
+-			(1ul << SND_PCM_FORMAT_U20_3BE) |
+-			(1ul << SND_PCM_FORMAT_S18_3LE) |
+-			(1ul << SND_PCM_FORMAT_S18_3BE) |
+-			(1ul << SND_PCM_FORMAT_U18_3LE) |
+-			(1ul << SND_PCM_FORMAT_U18_3BE) |
+-			(1ul << SND_PCM_FORMAT_DSD_U8) |
+-			(1ul << SND_PCM_FORMAT_DSD_U16_LE) |
+-			(1ul << SND_PCM_FORMAT_DSD_U32_LE) |
+-			(1ul << SND_PCM_FORMAT_DSD_U16_BE) |
+-			(1ul << SND_PCM_FORMAT_DSD_U32_BE),
++			(1ull << SND_PCM_FORMAT_S8) |
++			(1ull << SND_PCM_FORMAT_U8) |
++			(1ull << SND_PCM_FORMAT_S16_LE) |
++			(1ull << SND_PCM_FORMAT_S16_BE) |
++			(1ull << SND_PCM_FORMAT_U16_LE) |
++			(1ull << SND_PCM_FORMAT_U16_BE) |
++			(1ull << SND_PCM_FORMAT_S24_LE) |
++			(1ull << SND_PCM_FORMAT_S24_BE) |
++			(1ull << SND_PCM_FORMAT_U24_LE) |
++			(1ull << SND_PCM_FORMAT_U24_BE) |
++			(1ull << SND_PCM_FORMAT_S32_LE) |
++			(1ull << SND_PCM_FORMAT_S32_BE) |
++			(1ull << SND_PCM_FORMAT_U32_LE) |
++			(1ull << SND_PCM_FORMAT_U32_BE) |
++			(1ull << SND_PCM_FORMAT_FLOAT_LE) |
++			(1ull << SND_PCM_FORMAT_FLOAT_BE) |
++			(1ull << SND_PCM_FORMAT_FLOAT64_LE) |
++			(1ull << SND_PCM_FORMAT_FLOAT64_BE) |
++			(1ull << SND_PCM_FORMAT_IEC958_SUBFRAME_LE) |
++			(1ull << SND_PCM_FORMAT_IEC958_SUBFRAME_BE) |
++			(1ull << SND_PCM_FORMAT_MU_LAW) |
++			(1ull << SND_PCM_FORMAT_A_LAW) |
++			(1ull << SND_PCM_FORMAT_S24_3LE) |
++			(1ull << SND_PCM_FORMAT_S24_3BE) |
++			(1ull << SND_PCM_FORMAT_U24_3LE) |
++			(1ull << SND_PCM_FORMAT_U24_3BE) |
++			(1ull << SND_PCM_FORMAT_S20_3LE) |
++			(1ull << SND_PCM_FORMAT_S20_3BE) |
++			(1ull << SND_PCM_FORMAT_U20_3LE) |
++			(1ull << SND_PCM_FORMAT_U20_3BE) |
++			(1ull << SND_PCM_FORMAT_S18_3LE) |
++			(1ull << SND_PCM_FORMAT_S18_3BE) |
++			(1ull << SND_PCM_FORMAT_U18_3LE) |
++			(1ull << SND_PCM_FORMAT_U18_3BE) |
++			(1ull << SND_PCM_FORMAT_DSD_U8) |
++			(1ull << SND_PCM_FORMAT_DSD_U16_LE) |
++			(1ull << SND_PCM_FORMAT_DSD_U32_LE) |
++			(1ull << SND_PCM_FORMAT_DSD_U16_BE) |
++			(1ull << SND_PCM_FORMAT_DSD_U32_BE),
+ 	};
+ 	static const uint64_t access_mask =
+-		(1ul << SND_PCM_ACCESS_MMAP_INTERLEAVED) |
+-		(1ul << SND_PCM_ACCESS_RW_INTERLEAVED);
++		(1ull << SND_PCM_ACCESS_MMAP_INTERLEAVED) |
++		(1ull << SND_PCM_ACCESS_RW_INTERLEAVED);
+ 	struct test_generator gen = {0};
+ 	struct container_trial *trial;
+ 	int i;
+diff --git a/axfer/test/generator.c b/axfer/test/generator.c
+index cdea2c9..bde8c5f 100644
+--- a/axfer/test/generator.c
++++ b/axfer/test/generator.c
+@@ -220,7 +220,7 @@ static int test_sample_format(struct test_generator *gen,
+ 	int err = 0;
+ 
+ 	for (i = 0; i <= SND_PCM_FORMAT_LAST; ++i) {
+-		if (!((1ul << i) & gen->sample_format_mask))
++		if (!((1ull << i) & gen->sample_format_mask))
+ 			continue;
+ 
+ 		err = test_samples_per_frame(gen, access, i);
+@@ -237,7 +237,7 @@ static int test_access(struct test_generator *gen)
+ 	int err = 0;
+ 
+ 	for (i = 0; i <= SND_PCM_ACCESS_LAST; ++i) {
+-		if (!((1ul << i) & gen->access_mask))
++		if (!((1ull << i) & gen->access_mask))
+ 			continue;
+ 
+ 		err = test_sample_format(gen, i);
+diff --git a/axfer/test/mapper-test.c b/axfer/test/mapper-test.c
+index 6b24d54..f0376c7 100644
+--- a/axfer/test/mapper-test.c
++++ b/axfer/test/mapper-test.c
+@@ -396,13 +396,13 @@ int main(int argc, const char *argv[])
+ {
+ 	// Test 8/16/18/20/24/32/64 bytes per sample.
+ 	static const uint64_t sample_format_mask =
+-			(1ul << SND_PCM_FORMAT_U8) |
+-			(1ul << SND_PCM_FORMAT_S16_LE) |
+-			(1ul << SND_PCM_FORMAT_S18_3LE) |
+-			(1ul << SND_PCM_FORMAT_S20_3LE) |
+-			(1ul << SND_PCM_FORMAT_S24_LE) |
+-			(1ul << SND_PCM_FORMAT_S32_LE) |
+-			(1ul << SND_PCM_FORMAT_FLOAT64_LE);
++			(1ull << SND_PCM_FORMAT_U8) |
++			(1ull << SND_PCM_FORMAT_S16_LE) |
++			(1ull << SND_PCM_FORMAT_S18_3LE) |
++			(1ull << SND_PCM_FORMAT_S20_3LE) |
++			(1ull << SND_PCM_FORMAT_S24_LE) |
++			(1ull << SND_PCM_FORMAT_S32_LE) |
++			(1ull << SND_PCM_FORMAT_FLOAT64_LE);
+ 	uint64_t access_mask;
+ 	struct test_generator gen = {0};
+ 	struct mapper_trial *trial;
+@@ -451,13 +451,13 @@ int main(int argc, const char *argv[])
+ 			goto end;
+ 		}
+ 
+-		access_mask = 1ul << access;
++		access_mask = 1ull << access;
+ 		verbose = true;
+ 	} else {
+-		access_mask = (1ul << SND_PCM_ACCESS_MMAP_INTERLEAVED) |
+-			      (1ul << SND_PCM_ACCESS_MMAP_NONINTERLEAVED) |
+-			      (1ul << SND_PCM_ACCESS_RW_INTERLEAVED) |
+-			      (1ul << SND_PCM_ACCESS_RW_NONINTERLEAVED);
++		access_mask = (1ull << SND_PCM_ACCESS_MMAP_INTERLEAVED) |
++			      (1ull << SND_PCM_ACCESS_MMAP_NONINTERLEAVED) |
++			      (1ull << SND_PCM_ACCESS_RW_INTERLEAVED) |
++			      (1ull << SND_PCM_ACCESS_RW_NONINTERLEAVED);
+ 		verbose = false;
+ 	}
+ 
+-- 
+2.21.0
+
