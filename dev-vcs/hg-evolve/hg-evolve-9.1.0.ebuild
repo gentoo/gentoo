@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="
-	>=dev-vcs/mercurial-4.4[${PYTHON_USEDEP}]"
+	>=dev-vcs/mercurial-4.5[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )"
 
