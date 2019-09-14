@@ -22,7 +22,11 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="altivec cpu_flags_arm_iwmmxt cpu_flags_arm_iwmmxt2 loongson2f cpu_flags_x86_mmxext neon cpu_flags_x86_sse2 cpu_flags_x86_ssse3"
+IUSE="altivec cpu_flags_arm_iwmmxt cpu_flags_arm_iwmmxt2 loongson2f cpu_flags_x86_mmxext neon cpu_flags_x86_sse2 cpu_flags_x86_ssse3 static-libs"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.38.4-static.patch
+)
 
 src_unpack() {
 	default
@@ -42,6 +46,7 @@ multilib_src_configure() {
 		$(meson_feature altivec vmx)
 		$(meson_feature neon neon)
 		$(meson_feature loongson2f loongson-mmi)
+		-Ddefault_library=$(usex static-libs both shared)
 		-Dgtk=disabled
 		-Dlibpng=disabled
 		-Dopenmp=$openmp # only used in unit tests

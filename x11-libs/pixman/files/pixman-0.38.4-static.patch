@@ -1,0 +1,74 @@
+From 4851d4e20f66f540cd61fb69851df17671fc90d2 Mon Sep 17 00:00:00 2001
+From: Christoph Reiter <reiter.christoph@gmail.com>
+Date: Sat, 11 May 2019 11:18:35 +0200
+Subject: [PATCH] meson: allow building a static library
+
+So that passing "-Ddefault_library=both" also creates a static lib.
+
+Note that Libs.private in the .pc file will still be wrong because of
+https://github.com/mesonbuild/meson/issues/3934 (it contains things like
+-lpixman-mmx)
+---
+ pixman/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pixman/meson.build b/pixman/meson.build
+index 6ce87e7..7b66827 100644
+--- a/pixman/meson.build
++++ b/pixman/meson.build
+@@ -97,7 +97,7 @@ pixman_files = files(
+   'pixman-utils.c',
+ )
+ 
+-libpixman = shared_library(
++libpixman = library(
+   'pixman-1',
+   [pixman_files, config_h, version_h],
+   link_with : [pixman_simd_libs],
+-- 
+2.22.0
+
+From afc6c935f1b52ca74d96f1ea2cbfb3e47ffb7fd4 Mon Sep 17 00:00:00 2001
+From: Dylan Baker <dylan@pnwbakers.com>
+Date: Mon, 9 Sep 2019 16:00:56 -0700
+Subject: [PATCH] meson: don't use link_with for library()
+
+Meson doesn't do the expected thing when library() creates a static
+library. Instead of combining the libraries together into a single
+archive it effectively discards them, resulting in missing symbols.
+
+To work around this we manually unpack the archives and shove the .o
+files into the final library. This doesn't affect the shared library at
+all, but makes the static library have the necessary symbols
+
+Fixes #33
+---
+ pixman/meson.build | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/pixman/meson.build b/pixman/meson.build
+index 7b66827..31be9d2 100644
+--- a/pixman/meson.build
++++ b/pixman/meson.build
+@@ -97,10 +97,17 @@ pixman_files = files(
+   'pixman-utils.c',
+ )
+ 
++# We cannot use 'link_with' or 'link_whole' because meson wont do the right
++# thing for static archives.
++_obs = []
++foreach l : pixman_simd_libs
++  _obs += l.extract_all_objects()
++endforeach
++
+ libpixman = library(
+   'pixman-1',
+   [pixman_files, config_h, version_h],
+-  link_with : [pixman_simd_libs],
++  objects: _obs,
+   dependencies : [dep_m, dep_threads],
+   version : meson.project_version(),
+   install : true,
+-- 
+2.22.0
+
