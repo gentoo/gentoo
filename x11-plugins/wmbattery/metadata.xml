@@ -6,6 +6,10 @@
 	<name>Bernard Cafarelli</name>
 </maintainer>
 
+<use>
+	<flag name="apm">Add APM (Advanced Power Management) support</flag>
+</use>
+
 <longdescription>
 Wmbattery displays the status of your laptop's battery in a small icon. This 
 includes if it is plugged in, if the battery is charging, how many minutes of 
