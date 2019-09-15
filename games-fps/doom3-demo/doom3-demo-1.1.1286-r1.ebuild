@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,7 @@ inherit eutils unpacker games
 
 DESCRIPTION="Doom III - 3rd installment of the classic id 3D first-person shooter"
 HOMEPAGE="http://www.doom3.com/"
-SRC_URI="mirror://3dgamers/doom3/doom3-linux-${PV}-demo.x86.run
-	mirror://idsoftware/doom3/linux/doom3-linux-${PV}-demo.x86.run
+SRC_URI="mirror://idsoftware/doom3/linux/doom3-linux-${PV}-demo.x86.run
 	mirror://gentoo/doom3.png"
 
 LICENSE="DOOM3"
