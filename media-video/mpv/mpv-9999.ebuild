@@ -67,7 +67,6 @@ COMMON_DEPEND="
 	drm? ( x11-libs/libdrm )
 	dvd? (
 		>=media-libs/libdvdnav-4.2.0
-		>=media-libs/libdvdread-4.1.0
 	)
 	egl? ( media-libs/mesa[egl,gbm(-)?,wayland(-)?] )
 	iconv? (
@@ -190,7 +189,6 @@ src_configure() {
 		$(use_enable libass libass-osd)
 		$(use_enable zlib)
 		$(use_enable bluray libbluray)
-		$(use_enable dvd dvdread)
 		$(use_enable dvd dvdnav)
 		$(use_enable cdda)
 		$(use_enable uchardet)
