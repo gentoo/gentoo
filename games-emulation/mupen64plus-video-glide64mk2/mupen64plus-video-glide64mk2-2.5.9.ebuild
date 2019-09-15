@@ -1,31 +1,35 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 MY_P=${PN}-src-${PV}
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
-DESCRIPTION="A fork of Mupen64 Nintendo 64 emulator, SDL audio plugin"
+DESCRIPTION="A fork of Mupen64 Nintendo 64 emulator, glide64mk2 video plugin"
 HOMEPAGE="https://www.mupen64plus.org/"
 SRC_URI="https://github.com/mupen64plus/${PN}/releases/download/${PV}/${MY_P}.tar.gz"
 
-LICENSE="GPL-2 LGPL-2.1"
+# TODO: 3dfx licenses
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libsamplerate oss speex"
+IUSE="gles2 hires cpu_flags_x86_sse"
 
-RDEPEND=">=games-emulation/mupen64plus-core-2.5:0=
-	media-libs/libsdl2:0=[sound]
-	libsamplerate? ( media-libs/libsamplerate:0= )
-	speex? ( media-libs/speex:0= )"
+RDEPEND=">=games-emulation/mupen64plus-core-2.5:0=[gles2=]
+	media-libs/libpng:0=
+	media-libs/libsdl2:0=[video]
+	sys-libs/zlib:0=
+	virtual/opengl:0=
+	gles2? ( media-libs/libsdl2:0[gles] )
+	hires? ( dev-libs/boost:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch_user
+	default
 
 	# avoid implicitly appending CPU flags
 	sed -i -e 's:-mmmx::g' -e 's:-msse::g' projects/unix/Makefile || die
@@ -65,11 +69,13 @@ src_compile() {
 		SDL_CFLAGS="$($(tc-getPKG_CONFIG) --cflags sdl2)"
 		SDL_LDLIBS="$($(tc-getPKG_CONFIG) --libs sdl2)"
 
-		NO_SPEEX=$(usex speex 0 1)
-		NO_SRC=$(usex libsamplerate 0 1)
-		NO_OSS=$(usex oss 0 1)
-		# not packaged (https://github.com/nemomobile/libaudioresource)
-		USE_AUDIORESOURCE=0
+		NOSSE=$(usex cpu_flags_x86_sse 0 1)
+		HIRES=$(usex hires 1 0)
+		USE_FRAMESKIPPER=1
+		USE_GLES=$(usex gles2 1 0)
+		# use bundled lib
+		# https://bugs.gentoo.org/654470
+		TXCDXTN=0
 	)
 
 	use amd64 && MAKEARGS+=( HOST_CPU=x86_64 )
@@ -80,5 +86,5 @@ src_compile() {
 
 src_install() {
 	emake "${MAKEARGS[@]}" DESTDIR="${D}" install
-	einstalldocs
+	dodoc RELEASE
 }

@@ -1,21 +1,21 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 MY_P=${PN}-src-${PV}
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A fork of Mupen64 Nintendo 64 emulator, SDL audio plugin"
 HOMEPAGE="https://www.mupen64plus.org/"
 SRC_URI="https://github.com/mupen64plus/${PN}/releases/download/${PV}/${MY_P}.tar.gz"
 
-LICENSE="GPL-2 LGPL-2.1"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="libsamplerate oss speex"
 
-RDEPEND=">=games-emulation/mupen64plus-core-2.5:0=
+RDEPEND=">=games-emulation/mupen64plus-core-${PV}:0=
 	media-libs/libsdl2:0=[sound]
 	libsamplerate? ( media-libs/libsamplerate:0= )
 	speex? ( media-libs/speex:0= )"
@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch_user
+	default
 
 	# avoid implicitly appending CPU flags
 	sed -i -e 's:-mmmx::g' -e 's:-msse::g' projects/unix/Makefile || die
@@ -80,5 +80,5 @@ src_compile() {
 
 src_install() {
 	emake "${MAKEARGS[@]}" DESTDIR="${D}" install
-	einstalldocs
+	dodoc RELEASE
 }
