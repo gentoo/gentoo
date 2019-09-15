@@ -218,7 +218,6 @@ nis - Support for NIS/YP services
 nls - Add Native Language Support (using gettext - GNU locale utilities)
 nntp - Add support for newsgroups (Network News Transfer Protocol)
 nocd - Install all files required to run the application without a CD mounted
-nptl - Enable support for Native POSIX Threads Library, the new threading module (requires linux-2.6 or better usually)
 nsplugin - Build plugin for browsers supporting the Netscape plugin architecture (that is almost any modern browser)
 ocaml - Add support/bindings for the Ocaml language
 ocamlopt - Enable ocamlopt support (ocaml native code compiler) -- Produces faster programs (Warning: you have to disable/enable it at a global scale)
