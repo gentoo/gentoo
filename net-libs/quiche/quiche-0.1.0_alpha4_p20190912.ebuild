@@ -134,7 +134,7 @@ else
 	GIT_COMMIT="89d0317ffb5b12080a41aea2743272aac887eecd"
 	BORINGSSL_COMMIT="f18bd55240b229a65df48e7905da98fff18cbf59"
 	SRC_URI="https://github.com/cloudflare/${PN}/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz
-		https://boringssl.googlesource.com/boringssl/+archive/${BORINGSSL_COMMIT}.tar.gz -> boringssl-${BORINGSSL_COMMIT}.tar.gz"
+		https://github.com/google/boringssl/archive/${BORINGSSL_COMMIT}.zip -> boringssl-${BORINGSSL_COMMIT}.tar.gz"
 	S="${WORKDIR}/${PN}-${GIT_COMMIT}"
 	SRC_URI+=" $(cargo_crate_uris ${CRATES})"
 	KEYWORDS="~amd64"
