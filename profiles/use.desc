@@ -18,7 +18,6 @@ alsa - Add support for media-libs/alsa-lib (Advanced Linux Sound Architecture)
 altivec - Add support for optimizations for G4 and G5/ppc970 processors
 ao - Use libao audio output library for sound playback
 apache2 - Add Apache2 support
-apm - Add APM (Advanced Power Management) support
 aqua - Include support for the Mac OS X Aqua (Carbon/Cocoa) GUI
 atm - Enable Asynchronous Transfer Mode protocol support
 audiofile - Add support for libaudiofile where applicable
