@@ -42,7 +42,6 @@ cdb - Add support for the CDB database engine from the author of qmail
 cdda - Add Compact Disk Digital Audio (Standard Audio CD) support
 cddb - Access cddb servers to retrieve and submit information about compact disks
 cdinstall - Copy files from the CD rather than asking the user to copy them, mostly used with games
-cdparanoia - Enable cdparanoia (audio CD ripper) support
 cdr - Add support for CD writer hardware
 cgi - Add CGI script support
 cjk - Add support for Multi-byte character languages (Chinese, Japanese, Korean)
