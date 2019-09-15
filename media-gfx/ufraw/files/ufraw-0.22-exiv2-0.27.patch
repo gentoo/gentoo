@@ -1,6 +1,6 @@
---- a/ufraw_exiv2.cc	2015-06-16 05:58:38.000000000 +0200
-+++ b/ufraw_exiv2.cc	2018-12-29 22:51:23.291894430 +0100
-@@ -15,9 +15,7 @@
+--- a/ufraw_exiv2.cc
++++ b/ufraw_exiv2.cc
+@@ -15,9 +15,8 @@
  #include "ufraw.h"
  
  #ifdef HAVE_EXIV2
@@ -8,10 +8,11 @@
 -#include <exiv2/easyaccess.hpp>
 -#include <exiv2/exif.hpp>
 +#include <exiv2/exiv2.hpp>
++#include <iostream>
  #include <sstream>
  #include <cassert>
  
-@@ -67,7 +65,11 @@
+@@ -67,7 +66,11 @@ extern "C" int ufraw_exif_read_input(ufraw_data *uf)
          if (exifData.empty()) {
              std::string error(uf->filename);
              error += ": No Exif data found in the file";
