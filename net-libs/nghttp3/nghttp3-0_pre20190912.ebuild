@@ -25,6 +25,7 @@ IUSE="test"
 BDEPEND="virtual/pkgconfig"
 DEPEND="test? ( >=dev-util/cunit-2.1[${MULTILIB_USEDEP}] )"
 RDEPEND=""
+RESTRICT="!test? ( test )"
 
 multilib_src_configure() {
 	local mycmakeargs=(
