@@ -24,6 +24,7 @@ BDEPEND="virtual/pkgconfig"
 DEPEND="ssl? ( >=dev-libs/openssl-1.1.1:0= )
 	test? ( >=dev-util/cunit-2.1[${MULTILIB_USEDEP}] )"
 RDEPEND=""
+RESTRICT="!test? ( test )"
 
 multilib_src_configure() {
 	local mycmakeargs=(
