@@ -1,7 +1,7 @@
 diff --git a/trunk/vpalias.c b/trunk/vpalias.c
 index 9853f14..e9bd81f 100644
---- vpalias.c
-+++ vpalias.c
+--- a/vpalias.c
++++ b/vpalias.c
 @@ -369,7 +369,7 @@ char *valias_select_names( char *domain )
          }
        }
