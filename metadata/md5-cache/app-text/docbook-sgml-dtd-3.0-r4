@@ -8,5 +8,5 @@ LICENSE=docbook
 RDEPEND=>=app-text/sgml-common-0.6.3-r7
 SLOT=3.0
 SRC_URI=https://www.oasis-open.org/docbook/sgml/3.0/docbk30.zip
-_eclasses_=sgml-catalog-r1	6fa52026c20ad1253e53cc4b19fe5dab
+_eclasses_=sgml-catalog-r1	d8b0f83f3e731fd3f34507d50d8bc7e2
 _md5_=a8f6f2df3236c1a3c5dc93ec13c6c8ce

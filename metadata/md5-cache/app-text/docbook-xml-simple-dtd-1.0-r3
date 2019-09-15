@@ -8,5 +8,5 @@ LICENSE=docbook
 RDEPEND=>=app-text/build-docbook-catalog-1.6 >=app-text/sgml-common-0.6.3-r7
 SLOT=1.0
 SRC_URI=https://www.oasis-open.org/docbook/xml/simple/1.0/docbook-simple-1.0.zip
-_eclasses_=sgml-catalog-r1	6fa52026c20ad1253e53cc4b19fe5dab
+_eclasses_=sgml-catalog-r1	d8b0f83f3e731fd3f34507d50d8bc7e2
 _md5_=473b344e44e49a854c70fa5ca946289e

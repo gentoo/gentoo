@@ -7,5 +7,5 @@ LICENSE=W3C
 RDEPEND=>=app-text/sgml-common-0.6.3-r7
 SLOT=0
 SRC_URI=http://www.w3.org/TR/html401/html40.tgz
-_eclasses_=sgml-catalog-r1	6fa52026c20ad1253e53cc4b19fe5dab
+_eclasses_=sgml-catalog-r1	d8b0f83f3e731fd3f34507d50d8bc7e2
 _md5_=f68c3042fceda1347908fdc501881a0c

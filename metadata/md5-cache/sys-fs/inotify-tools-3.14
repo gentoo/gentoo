@@ -7,5 +7,5 @@ IUSE=doc
 KEYWORDS=amd64 arm hppa ~mips ~sparc x86
 LICENSE=GPL-2
 SLOT=0
-SRC_URI=mirror://github/rvoicilas/inotify-tools/inotify-tools-3.14.tar.gz
-_md5_=4e23e83e32bf51a6a373f843cb375d93
+SRC_URI=https://github.com/downloads/rvoicilas/inotify-tools/inotify-tools-3.14.tar.gz
+_md5_=db72f27e7ff3b97e8f41c35b268616ca
