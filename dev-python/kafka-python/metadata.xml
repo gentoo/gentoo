@@ -5,11 +5,6 @@
   <longdescription>
       Python client for Apache Kafka
   </longdescription>
-  <use>
-    <flag name="snappy">
-        Install snappy compression/decompression support
-    </flag>
-  </use>
   <upstream>
     <remote-id type="github">dpkp/kafka-python</remote-id>
     <remote-id type="pypi">kafka-python</remote-id>
