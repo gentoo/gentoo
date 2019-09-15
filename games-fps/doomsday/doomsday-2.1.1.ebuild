@@ -12,7 +12,7 @@ HOMEPAGE="https://www.dengine.net"
 SRC_URI="https://downloads.sourceforge.net/project/deng/Doomsday%20Engine/${PV}/${P}.tar.gz"
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="demo fmod freedoom fluidsynth openal tools"
 
 RDEPEND="
