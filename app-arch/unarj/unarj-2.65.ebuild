@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Utility for opening arj archives"
 HOMEPAGE="http://www.arjsoftware.com/"
-SRC_URI="mirror://freebsd/ports/local-distfiles/ache/${P}.tgz"
+SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="arj"
 SLOT="0"
