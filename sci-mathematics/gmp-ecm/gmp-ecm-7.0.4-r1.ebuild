@@ -41,8 +41,7 @@ src_configure() {
 src_compile() {
 	append-ldflags "-Wl,-z,noexecstack"
 	if use custom-tune; then
-		use amd64 && cd x86_64
-		use x86 && cd pentium4
+		emake && emake ecm-params # need to build all to get benchmark bits, then run benchmark
 		emake
 	fi
 	default
