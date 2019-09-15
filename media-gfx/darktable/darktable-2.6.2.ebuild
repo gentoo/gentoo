@@ -72,6 +72,7 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}"/"${PN}"-find-opencl-header.patch
 	"${WORKDIR}"/"${P}"-gcc9.patch
+	"${FILESDIR}"/"${P}"-exiv2-0.27.patch
 )
 
 S="${WORKDIR}/${P/_/~}"
