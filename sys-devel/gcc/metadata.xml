@@ -27,6 +27,7 @@
     <flag name="mudflap">Add support for mudflap, a pointer use checking library</flag>
     <flag name="nopie">Disable PIE support (NOT FOR GENERAL USE)</flag>
     <flag name="nossp">Disable SSP support (NOT FOR GENERAL USE)</flag>
+    <flag name="nptl">Enable support for Native POSIX Threads Library, the new threading module (requires linux-2.6 or better usually)</flag>
     <flag name="objc">Build support for the Objective C code language</flag>
     <flag name="objc++">Build support for the Objective C++ language</flag>
     <flag name="objc-gc">Build support for the Objective C code language Garbage
