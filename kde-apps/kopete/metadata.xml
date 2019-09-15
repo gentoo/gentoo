@@ -14,6 +14,7 @@
 		<flag name="history">Enables saving chat history.</flag>
 		<flag name="latex">Embed latex formatted text into messages.</flag>
 		<flag name="nowlistening">Shows song you currently listen to in your status/etc. Bindings for many players.</flag>
+		<flag name="oscar">Enable Oscar (AIM/ICQ) IM protocol support</flag>
 		<flag name="otr">Allows crypting your chat (drugs and talking nonsense are considered as good alternatives ;]).</flag>
 		<flag name="pipes">Send messages to external pipe.</flag>
 		<flag name="privacy">Filter for incoming messages</flag>
