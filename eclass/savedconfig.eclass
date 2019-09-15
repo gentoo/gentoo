@@ -4,6 +4,7 @@
 # @ECLASS: savedconfig.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: common API for saving/restoring complex configuration files
 # @DESCRIPTION:
 # It is not uncommon to come across a package which has a very fine
