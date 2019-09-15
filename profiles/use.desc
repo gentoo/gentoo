@@ -134,7 +134,6 @@ headers-only - Install only C headers instead of whole package. Mainly used by s
 hscolour - Include coloured haskell sources to generated documentation (dev-haskell/hscolour)
 ibm - Add support for IBM ppc64 specific systems
 iconv - Enable support for the iconv character set conversion library
-icq - Enable ICQ IM protocol support
 icu - Enable ICU (Internationalization Components for Unicode) support, using dev-libs/icu
 idn - Enable support for Internationalized Domain Names
 ieee1394 - Enable FireWire/iLink IEEE1394 support (dv, camera, ...)
