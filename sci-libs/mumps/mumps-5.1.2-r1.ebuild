@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils toolchain-funcs flag-o-matic versionator fortran-2 multilib
+inherit flag-o-matic fortran-2 toolchain-funcs multilib
 
 MYP=MUMPS_${PV}
 
@@ -20,18 +20,23 @@ RDEPEND="
 	virtual/blas
 	metis? ( || ( >=sci-libs/metis-5 >=sci-libs/parmetis-4 )
 		mpi? ( >=sci-libs/parmetis-4 ) )
-	scotch? ( <sci-libs/scotch-6[mpi=] )
-	mpi? ( sci-libs/scalapack )"
-
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	mpi? ( sci-libs/scalapack )
+	scotch? ( >=sci-libs/scotch-6.0.1[mpi=] )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MYP}"
+
+get_version_component_count() {
+	local cnt=( $(ver_rs 1- ' ') )
+	echo ${#cnt[@]}
+}
 
 static_to_shared() {
 	local libstatic=${1}; shift
 	local libname=$(basename ${libstatic%.a})
-	local soname=${libname}$(get_libname $(get_version_component_range 1-2))
+	local soname=${libname}$(get_libname $(ver_cut 1-2))
 	local libdir=$(dirname ${libstatic})
 
 	einfo "Making ${soname} from ${libstatic}"
@@ -46,7 +51,7 @@ static_to_shared() {
 			-Wl,--whole-archive ${libstatic} -Wl,--no-whole-archive \
 			"$@" -o ${libdir}/${soname} || die "${soname} failed"
 		[[ $(get_version_component_count) -gt 1 ]] && \
-			ln -s ${soname} ${libdir}/${libname}$(get_libname $(get_major_version))
+			ln -s ${soname} ${libdir}/${libname}$(get_libname $(ver_cut 1))
 		ln -s ${soname} ${libdir}/${libname}$(get_libname)
 	fi
 }
@@ -90,14 +95,14 @@ src_configure() {
 	if use scotch && use mpi; then
 		sed -i \
 			-e "s:#\s*\(LSCOTCH\s*=\).*:\1-lptesmumps -lptscotch -lptscotcherr:" \
-			-e "s:#\s*\(ISCOTCH\s*=\).*:\1-I${EROOT}usr/include/scotch:" \
+			-e "s:#\s*\(ISCOTCH\s*=\).*:\1-I${EROOT}/usr/include/scotch:" \
 			Makefile.inc || die
 		LIBADD="${LIBADD} -lptesmumps -lptscotch -lptscotcherr"
 		ord="${ord} -Dptscotch"
 	elif use scotch; then
 		sed -i \
 			-e "s:#\s*\(LSCOTCH\s*=\).*:\1-lesmumps -lscotch -lscotcherr:" \
-			-e "s:#\s*\(ISCOTCH\s*=\).*:\1-I${EROOT}usr/include/scotch:" \
+			-e "s:#\s*\(ISCOTCH\s*=\).*:\1-I${EROOT}/usr/include/scotch:" \
 			Makefile.inc || die
 		LIBADD="${LIBADD} -lesmumps -lscotch -lscotcherr"
 		ord="${ord} -Dscotch"
