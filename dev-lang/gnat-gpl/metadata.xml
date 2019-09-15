@@ -11,6 +11,7 @@
 		<flag name="fixed-point">Enable fixed-point arithmetic support for MIPS
 			targets in gcc (Warning: significantly increases compile time!)
 		</flag>
+		<flag name="gcj">Build the GCJ Java language frontend.</flag>
 		<flag name="go">Build the GCC Go language frontend.</flag>
 		<flag name="graphite">Add support for the framework for loop
 			optimizations based on a polyhedral intermediate representation</flag>
