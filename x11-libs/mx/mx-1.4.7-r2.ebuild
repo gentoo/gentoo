@@ -8,7 +8,7 @@ inherit gnome2 eutils
 
 DESCRIPTION="A widget toolkit using Clutter"
 HOMEPAGE="http://clutter-project.org/"
-SRC_URI="mirror://github/clutter-project/${PN}/${P}.tar.xz"
+SRC_URI="https://github.com/downloads/clutter-project/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="1.0"
