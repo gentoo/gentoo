@@ -23,8 +23,6 @@ DEPEND="virtual/qmail
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"-p0"
-	"--"
 	"${FILESDIR}"/${PN}-5.4.9-access.violation.patch
 	"${FILESDIR}"/${PN}-lazy.patch
 	"${FILESDIR}"/${PN}-vpgsql.patch
