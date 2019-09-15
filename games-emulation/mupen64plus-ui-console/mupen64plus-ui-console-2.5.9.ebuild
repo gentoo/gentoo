@@ -15,23 +15,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=games-emulation/mupen64plus-core-${PV}:0=
+RDEPEND="
+	>=games-emulation/mupen64plus-core-${PV}:0=
 	media-libs/libsdl2:0=
 	!<games-emulation/mupen64plus-2.0"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare() {
-	default
-
-	# avoid implicitly appending CPU flags
-	sed -i -e 's:-mmmx::g' -e 's:-msse::g' projects/unix/Makefile || die
-
-	# avoid appending -fPIE/-fno-PIE
-	sed -i -e '/^if.*PIE/,/endif/d' projects/unix/Makefile || die
-}
+PATCHES=(
+	# 1. avoid implicitly appending CPU flags
+	# 2. avoid appending -fPIE/-fno-PIE
+	"${FILESDIR}"/${PN}-2.5.9-fix-makefile.patch
+)
 
 src_compile() {
 	MAKEARGS=(
