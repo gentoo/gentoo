@@ -9,7 +9,7 @@ inherit python-single-r1
 
 DESCRIPTION="Summarizes the contents of a syslog log file"
 HOMEPAGE="https://github.com/dpaleino/syslog-summary"
-SRC_URI="mirror://github/dpaleino/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/dpaleino/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
