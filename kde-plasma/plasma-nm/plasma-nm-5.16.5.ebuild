@@ -53,6 +53,8 @@ RDEPEND="${DEPEND}
 	$(add_plasma_dep kde-cli-tools)
 "
 
+PATCHES=( "${FILESDIR}/${P}-missing-headers.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_MODEMMANAGER_SUPPORT=$(usex !modemmanager)
