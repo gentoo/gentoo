@@ -10,5 +10,6 @@
 <flag name="nfqueue">Use NFQUEUE instead of QUEUE</flag>
 <flag name="pam_nuauth">Add support for pam nufw from PAM</flag>
 <flag name="plaintext">Add support for authentication with plaintext files</flag>
+<flag name="prelude">Add support/bindings for the Prelude Intrusion Detection System</flag>
 </use>
 </pkgmetadata>
