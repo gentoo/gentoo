@@ -52,7 +52,7 @@ multilib_src_configure() {
 		"-DXNASONG=$(usex xnasong ON OFF)"
 	)
 	if use ffmpeg; then
-		mycmakeargs+=( "-DFFmpeg_LIBRARY_DIRS=${PREFIX%/}/usr/$(get_libdir)"  )
+		mycmakeargs+=( "-DFFmpeg_LIBRARY_DIRS=${EPREFIX%/}/usr/$(get_libdir)"  )
 	fi
 	cmake-utils_src_configure
 }
@@ -70,8 +70,8 @@ multilib_src_install() {
 	# FIXME: do we want to install the FAudio tools?
 	cmake-utils_src_install
 
-	sed -e "s/%LIB%/$(get_libdir)/g" "${FILESDIR}/faudio.pc" \
-		> "${T}/faudio.pc" \
+	sed -e "s@%LIB%@$(get_libdir)@g" -e "s@%PREFIX%@${EPREFIX}/usr@g" \
+		"${FILESDIR}/faudio.pc" > "${T}/faudio.pc" \
 		|| die "sed failed"
 	insinto "/usr/$(get_libdir)/pkgconfig"
 	doins "${T}/faudio.pc"
