@@ -6,7 +6,7 @@ inherit autotools mono-env eutils
 
 DESCRIPTION="D-Bus for .NET"
 HOMEPAGE="https://github.com/mono/dbus-sharp"
-SRC_URI="mirror://github/mono/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/mono/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1.0"
