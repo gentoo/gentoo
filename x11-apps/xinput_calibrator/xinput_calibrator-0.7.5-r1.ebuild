@@ -6,7 +6,7 @@ inherit autotools-utils flag-o-matic
 
 DESCRIPTION="A generic touchscreen calibration program for X.Org"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/xinput_calibrator"
-SRC_URI="mirror://github/tias/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/tias/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

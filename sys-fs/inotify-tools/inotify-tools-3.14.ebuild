@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="a set of command-line programs providing a simple interface to inotify"
 HOMEPAGE="https://github.com/rvoicilas/inotify-tools/wiki"
-SRC_URI="mirror://github/rvoicilas/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/rvoicilas/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit distutils-r1 multilib
 
 DESCRIPTION="Toolkit and library for the analysis and manipulation of macromolecular models"
 HOMEPAGE="http://pymmlib.sourceforge.net/"
-SRC_URI="mirror://github/masci/mmLib/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/masci/mmLib/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
