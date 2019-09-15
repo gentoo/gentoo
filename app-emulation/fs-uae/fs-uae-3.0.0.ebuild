@@ -31,6 +31,7 @@ DEPEND="
 "
 
 BDEPEND="
+	app-arch/zip
 	sys-devel/gettext
 	virtual/pkgconfig
 "
