@@ -97,6 +97,23 @@ src_unpack() {
 		|| die "Failed copying scm"
 }
 
+src_prepare() {
+	cmake-utils_src_prepare
+
+	# Fix tests writing to /tmp
+	local fixtestfiles=(
+		"${S}"/gnucash/report/report-system/test/test-commodity-utils.scm
+		"${S}"/gnucash/report/report-system/test/test-extras.scm
+		"${S}"/gnucash/report/report-system/test/test-report-html.scm
+		"${S}"/gnucash/report/report-system/test/test-report-system.scm
+		"${S}"/libgnucash/backend/xml/test/test-xml-pricedb.cpp
+		"${S}"/libgnucash/backend/dbi/test/test-backend-dbi-basic.cpp
+	)
+	for x in "${fixtestfiles[@]}"; do
+		sed -i -e "s|\"/tmp/|\"${T}/|g" "${x}" || die "sed of "${x}" failed"
+	done
+}
+
 src_configure() {
 	export GUILE_AUTO_COMPILE=0
 
