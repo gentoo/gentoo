@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,6 @@ DESCRIPTION="Return to Castle Wolfenstein - Long awaited sequel to Wolfenstein 3
 HOMEPAGE="http://games.activision.com/games/wolfenstein/"
 SRC_URI="mirror://idsoftware/wolf/linux/wolf-linux-GOTY-maps.x86.run
 	mirror://idsoftware/wolf/linux/wolf-linux-${PV}.x86.run"
-#	mirror://3dgamers/returnwolfenstein/wolf-linux-${PV}.x86.run
 
 LICENSE="RTCW GPL-2" # gpl for init script bug #425944
 SLOT="0"
