@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit flag-o-matic toolchain-funcs multilib multilib-minimal
+inherit flag-o-matic toolchain-funcs multiprocessing multilib multilib-minimal
 
 # openssl-1.0.2-patches-1.6 contain additional CVE patches
 # which got fixed with this release.
@@ -130,6 +130,13 @@ src_prepare() {
 	# The config script does stupid stuff to prompt the user.  Kill it.
 	sed -i '/stty -icanon min 0 time 50; read waste/d' config || die
 	./config --test-sanity || die "I AM NOT SANE"
+
+	local make_jobs=$(makeopts_jobs)
+	if [[ ${make_jobs} -gt 6 ]] ; then
+		# bug 694512
+		einfo "Limiting parallel jobs to 6 ..."
+		export MAKEOPTS=-j6
+	fi
 
 	multilib_copy_sources
 }
