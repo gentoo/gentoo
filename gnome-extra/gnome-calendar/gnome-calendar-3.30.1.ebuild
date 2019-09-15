@@ -16,7 +16,7 @@ IUSE="gtk-doc"
 RDEPEND="
 	>=dev-libs/libical-1.0.1:0=
 	>=gnome-base/gsettings-desktop-schemas-3.21.2
-	>=gnome-extra/evolution-data-server-3.17.1:=
+	>=gnome-extra/evolution-data-server-3.17.1:=[gtk]
 	<gnome-extra/evolution-data-server-3.31
 	net-libs/libsoup:2.4
 	>=dev-libs/libdazzle-3.26.1
