@@ -2266,7 +2266,7 @@ app-portage/java-ebuilder 0.1 0.2 9999: Java team tool for semi-automatic creati
 app-portage/kuroo 0.90.5_p20180410 9999: Graphical Portage frontend based on KDE Frameworks
 app-portage/layman 2.0.0-r1 2.0.0-r3 2.2.0-r7 2.4.1-r1 2.4.2-r1 2.4.2-r2 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.6.2-r1 0.6.3 0.6.4.2 0.6.5 0.6.5-r1 0.6.6-r1 9999: metadata.xml generator for ebuilds
-app-portage/mgorny-dev-scripts 1: Handy scripts for ebuild development and more
+app-portage/mgorny-dev-scripts 2: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.5 2.2.6 9999: Tool to help select distfiles mirrors for Gentoo
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.2 0.5.3-r1: Simple tool for static analysis of overlays
@@ -3345,7 +3345,7 @@ dev-go/go-spew 0_pre20150619 9999: Implements a deep pretty printer for Go data 
 dev-go/go-sqlite3 1.1.0_p20160131 1.1.0_p20160307: Go sqlite3 driver using database/sql
 dev-go/go-sys 0_pre20160204 0_pre20180816 9999: Go packages for low-level interaction with the operating system
 dev-go/go-text 0_pre20160211 0.3.0 9999: Go text processing support
-dev-go/go-tools 0_pre20180817 9999: Tools that support the Go programming language (godoc, etc.)
+dev-go/go-tools 0_pre20180817 0_pre20190911 9999: Tools that support the Go programming language (godoc, etc.)
 dev-go/go-tour 0_p20180810: A Tour of Go
 dev-go/godebug-pretty 0_p20170819: Pretty printing for Go
 dev-go/godep 74 9999: dependency tool for go
