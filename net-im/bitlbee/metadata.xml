@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="libevent">Use libevent for event handling</flag>
+		<flag name="msn">Enable MSN Messenger IM protocol support.</flag>
 		<flag name="nss">Use NSS for SSL support in MSN and Jabber</flag>
 		<flag name="otr">Enable support for encrypted conversations</flag>
 		<flag name="plugins">Enable support for plugins</flag>
