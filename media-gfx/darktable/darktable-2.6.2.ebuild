@@ -12,6 +12,7 @@ MY_P="${P/_/.}"
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
 HOMEPAGE="https://www.darktable.org/"
 SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_PV}/${MY_P}.tar.xz
+	https://dev.gentoo.org/~asturm/distfiles/${P}-gcc9.patch.tar.xz
 	doc? ( https://github.com/darktable-org/${PN}/releases/download/release-${DOC_PV}/${PN}-usermanual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
 
 LICENSE="GPL-3 CC-BY-3.0"
@@ -68,7 +69,10 @@ RDEPEND="${COMMON_DEPEND}
 	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )
 "
 
-PATCHES=( "${FILESDIR}"/"${PN}"-find-opencl-header.patch )
+PATCHES=(
+	"${FILESDIR}"/"${PN}"-find-opencl-header.patch
+	"${WORKDIR}"/"${P}"-gcc9.patch
+)
 
 S="${WORKDIR}/${P/_/~}"
 
