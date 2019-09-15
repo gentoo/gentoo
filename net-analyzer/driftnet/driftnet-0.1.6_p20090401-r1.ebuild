@@ -6,7 +6,7 @@ inherit eutils fcaps flag-o-matic toolchain-funcs
 
 DESCRIPTION="Listen to network traffic and pick out images from TCP streams observed"
 HOMEPAGE="http://www.ex-parrot.com/~chris/driftnet/"
-SRC_URI="mirror://github/rbu/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/rbu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~arm64 ppc -sparc x86"
