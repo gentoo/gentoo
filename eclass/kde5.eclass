@@ -4,6 +4,7 @@
 # @ECLASS: kde5.eclass
 # @MAINTAINER:
 # kde@gentoo.org
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Support eclass for packages that follow KDE packaging conventions.
 # @DESCRIPTION:
 # This eclass is intended to streamline the creation of ebuilds for packages
