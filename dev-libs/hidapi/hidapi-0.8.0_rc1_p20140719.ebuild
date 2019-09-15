@@ -19,7 +19,7 @@ DESCRIPTION="A multi-platform library for USB and Bluetooth HID-Class devices"
 HOMEPAGE="http://www.signal11.us/oss/hidapi/"
 SRC_URI="https://github.com/signal11/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tgz"
 # When 0.8.0 is officially available the following link should be used.
-#SRC_URI="mirror://github/signal11/${PN}/${P}.zip"
+#SRC_URI="https://github.com/downloads/signal11/${PN}/${P}.zip"
 
 LICENSE="|| ( BSD GPL-3 HIDAPI )"
 SLOT="0"
