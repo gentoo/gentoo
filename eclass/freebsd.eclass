@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # @MAINTAINER:
@@ -76,7 +76,7 @@ if [[ ${MY_PV} != *9999* ]] && version_is_at_least 10.0 ${RV} ; then
 	if [[ ${DL_PV} == ${MY_PV} ]]; then
 		DL_PV="${DL_PV}-RELEASE"
 	fi
-	SRC_URI="mirror://freebsd/releases/i386/${DL_PV}/src.txz -> freebsd-src-${MY_PV}.tar.xz"
+	SRC_URI="mirror://gentoo/freebsd-src-${MY_PV}.tar.xz"
 fi
 
 IUSE="profile"
