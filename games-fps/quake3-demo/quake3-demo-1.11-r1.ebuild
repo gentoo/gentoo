@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,7 @@ inherit eutils unpacker games
 
 DESCRIPTION="the playable demo of Quake III Arena by Id Software"
 HOMEPAGE="http://www.idsoftware.com/games/quake/quake3-arena/"
-SRC_URI="mirror://idsoftware/quake3/linux/linuxq3ademo-${PV}-6.x86.gz.sh
-	mirror://3dgamers/quake3arena/linuxq3ademo-${PV}-6.x86.gz.sh"
+SRC_URI="mirror://idsoftware/quake3/linux/linuxq3ademo-${PV}-6.x86.gz.sh"
 
 LICENSE="Q3AEULA"
 SLOT="0"
