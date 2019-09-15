@@ -6,8 +6,7 @@ inherit eutils unpacker cdrom games
 
 DESCRIPTION="Tribes 2 - Team Combat on an Epic Scale"
 HOMEPAGE="http://www.lokigames.com/products/tribes2/"
-SRC_URI="http://www.libsdl.org/projects/${PN}/release/${P}-cdrom-x86.run
-	mirror://3dgamers/${PN}/${P}-cdrom-x86.run"
+SRC_URI="http://www.libsdl.org/projects/${PN}/release/${P}-cdrom-x86.run"
 
 LICENSE="LOKI-EULA"
 SLOT="0"
