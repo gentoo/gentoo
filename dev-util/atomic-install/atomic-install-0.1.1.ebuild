@@ -7,7 +7,7 @@ inherit autotools-utils
 
 DESCRIPTION="A library and tool to atomically install sets of files"
 HOMEPAGE="https://github.com/mgorny/atomic-install/"
-SRC_URI="mirror://github/mgorny/${PN}/${P}.tar.bz2"
+SRC_URI="https://github.com/downloads/mgorny/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
