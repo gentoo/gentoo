@@ -9,6 +9,7 @@
     <flag name="bluray">Enable playback of Blu-ray filesystems</flag>
     <flag name="bs2b">Enable Bauer stereophonic-to-binaural headphone filter</flag>
     <flag name="cdio">Use libcdio for CD support (instead of cdparanoia)</flag>
+    <flag name="cdparanoia">Enable cdparanoia (audio CD ripper) support</flag>
     <flag name="cpudetection">Enables runtime CPU detection (useful for binpkgs, compatibility on other CPUs)</flag>
     <flag name="dvdnav">Use forked libdvdnav, navigate menus in GUIs</flag>
     <flag name="enca">Enables support for charset discovery and conversion</flag>
