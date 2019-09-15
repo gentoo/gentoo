@@ -849,6 +849,7 @@ app-i18n/uim:gtk2 - Enable support for x11-libs/gtk+:2
 app-i18n/uim:skk - Enable support for app-i18n/skk-jisyo
 app-laptop/hdapsd:libconfig - Require dev-libs/libconfig to allow the daemon to read a configuration file at startup
 app-laptop/ibam:gkrellm - Enable building of app-admin/gkrellm module
+app-laptop/laptop-mode-tools:apm - Add APM (Advanced Power Management) support
 app-laptop/pbbuttonsd:ibam - Enable support for Intelligent Battery Monitoring
 app-laptop/pbbuttonsd:macbook - Enable support for the Macbook and Macbook Pro
 app-laptop/thinkfan:atasmart - include libatasmart support to get disc temperature
@@ -1951,12 +1952,14 @@ dev-lang/ghc:ghcmakebinary - Internal: Build binary friendly for redistribution.
 dev-lang/gnat-gpl:awt - Useful only when building GCJ, this enables Abstract Window Toolkit (AWT) peer support on top of GTK+
 dev-lang/gnat-gpl:cilk - Support the Cilk Plus language (C/C++ based languages for parallel programming)
 dev-lang/gnat-gpl:fixed-point - Enable fixed-point arithmetic support for MIPS targets in gcc (Warning: significantly increases compile time!)
+dev-lang/gnat-gpl:gcj - Build the GCJ Java language frontend.
 dev-lang/gnat-gpl:go - Build the GCC Go language frontend.
 dev-lang/gnat-gpl:graphite - Add support for the framework for loop optimizations based on a polyhedral intermediate representation
 dev-lang/gnat-gpl:libssp - Build SSP support into a dedicated library rather than use the code in the C library (DO NOT ENABLE THIS IF YOU DON'T KNOW WHAT IT DOES)
 dev-lang/gnat-gpl:mpx - Enable support for Intel Memory Protection Extensions (MPX)
 dev-lang/gnat-gpl:nopie - Disable PIE support (NOT FOR GENERAL USE)
 dev-lang/gnat-gpl:nossp - Disable SSP support (NOT FOR GENERAL USE)
+dev-lang/gnat-gpl:nptl - Enable support for Native POSIX Threads Library, the new threading module (requires linux-2.6 or better usually)
 dev-lang/gnat-gpl:objc - Build support for the Objective C code language
 dev-lang/gnat-gpl:objc++ - Build support for the Objective C++ language
 dev-lang/gnat-gpl:objc-gc - Build support for the Objective C code language Garbage Collector
@@ -3790,9 +3793,11 @@ kde-apps/kopete:gadu - Enable the Gadu protocol handler.
 kde-apps/kopete:groupwise - Enable the Groupwise protocol handler.
 kde-apps/kopete:highlight - Allows you to specify highlights on specific events.
 kde-apps/kopete:history - Enables saving chat history.
+kde-apps/kopete:jingle - Enable voice calls for jabber
 kde-apps/kopete:latex - Embed latex formatted text into messages.
 kde-apps/kopete:meanwhile - Enable the Sametime protocol handler.
 kde-apps/kopete:nowlistening - Shows song you currently listen to in your status/etc. Bindings for many players.
+kde-apps/kopete:oscar - Enable Oscar (AIM/ICQ) IM protocol support
 kde-apps/kopete:otr - Allows crypting your chat (drugs and talking nonsense are considered as good alternatives ;]).
 kde-apps/kopete:pipes - Send messages to external pipe.
 kde-apps/kopete:privacy - Filter for incoming messages
@@ -4715,6 +4720,7 @@ media-plugins/imlib2_loaders:eet - Enable Eet image loader
 media-plugins/imlib2_loaders:xcf - Enable XCF image loader
 media-plugins/mediastreamer-ilbc:20ms-frames - enable 20ms frame size (default is 30ms). Some VOIP providers such as Gizmo5 (aka Sipphone) require the codec to be compiled with the 30ms setting.
 media-plugins/vdr-burn:dvdarchive - DMH DVD - Archive
+media-plugins/vdr-cdplayer:cdparanoia - Enable cdparanoia (audio CD ripper) support
 media-plugins/vdr-dvbapi:dvbcsa - use media-libs/libdvbcsa free implementation of the DVB Common Scrambling Algorithm
 media-plugins/vdr-epgsearch:conflictcheckonly - install the "conflictcheckonly" vdr-plugin
 media-plugins/vdr-epgsearch:epgsearchonly - install the "epgsearchonly" vdr-plugin
@@ -5270,6 +5276,7 @@ media-video/mplayer:bl - Blinkenlights video output
 media-video/mplayer:bluray - Enable playback of Blu-ray filesystems
 media-video/mplayer:bs2b - Enable Bauer stereophonic-to-binaural headphone filter
 media-video/mplayer:cdio - Use libcdio for CD support (instead of cdparanoia)
+media-video/mplayer:cdparanoia - Enable cdparanoia (audio CD ripper) support
 media-video/mplayer:cpudetection - Enables runtime CPU detection (useful for binpkgs, compatibility on other CPUs)
 media-video/mplayer:dvdnav - Use forked libdvdnav, navigate menus in GUIs
 media-video/mplayer:enca - Enables support for charset discovery and conversion
@@ -5866,6 +5873,7 @@ net-firewall/nufw:nfconntrack - Use netfilter_conntrack
 net-firewall/nufw:nfqueue - Use NFQUEUE instead of QUEUE
 net-firewall/nufw:pam_nuauth - Add support for pam nufw from PAM
 net-firewall/nufw:plaintext - Add support for authentication with plaintext files
+net-firewall/nufw:prelude - Add support/bindings for the Prelude Intrusion Detection System
 net-firewall/pftop:altq - Enable altq(4) support — alternate queuing of network packets.
 net-firewall/pglinux:cron - Install cron script
 net-firewall/pglinux:logrotate - Install logrotate.d file
@@ -5980,7 +5988,9 @@ net-ftp/pure-ftpd:sysquota - Enables system quota support (needs sys-fs/quota)
 net-ftp/pure-ftpd:vchroot - Enable support for virtual chroot (possible security risk)
 net-ftp/yafc:ssh - Build with SFTP support
 net-im/bitlbee:libevent - Use libevent for event handling
+net-im/bitlbee:msn - Enable MSN Messenger IM protocol support.
 net-im/bitlbee:nss - Use NSS for SSL support in MSN and Jabber
+net-im/bitlbee:oscar - Enable Oscar (AIM/ICQ) IM protocol support
 net-im/bitlbee:otr - Enable support for encrypted conversations
 net-im/bitlbee:plugins - Enable support for plugins
 net-im/bitlbee:purple - Use libpurple instead of the built-in IM protocol support
@@ -6075,8 +6085,10 @@ net-im/spectrum2:whatsapp - Enables the WhatsApp backend, based on net-im/transw
 net-im/swift:client - Build the full graphical XMPP client.
 net-im/swift:gconf - Enable configuration through gnome-base/gconf.
 net-im/telepathy-connection-managers:gadu - Enable Gadu Gadu protocol support.
+net-im/telepathy-connection-managers:icq - Enable ICQ IM protocol support.
 net-im/telepathy-connection-managers:irc - Enable Internet Relay Chat (IRC) support.
 net-im/telepathy-connection-managers:meanwhile - Enable meanwhile support for Sametime protocol.
+net-im/telepathy-connection-managers:msn - Enable MSN Messenger IM protocol support.
 net-im/telepathy-connection-managers:sip - Enable SIP/SIMPLE messaging and calling.
 net-im/telepathy-connection-managers:sipe - Enable Sip Exchange Protocol.
 net-im/telepathy-connection-managers:steam - Enable Steam Chat support.
@@ -7107,6 +7119,7 @@ net-proxy/tsocks:dns - Force DNS queries to use SOCKS server via tcp
 net-proxy/tsocks:envconf - Allow TSOCKS_CONF_FILE to specify configuration file
 net-proxy/tsocks:server-lookups - Allow hostname resolution _for_ SOCKS servers
 net-proxy/tsocks:tordns - Apply tordns patch which allows transparent TORification of the DNS queries
+net-voip/telepathy-gabble:jingle - Enable voice calls for jabber
 net-voip/telepathy-gabble:plugins - Enable plugin loader
 net-voip/yate:amrnb - use AMR-NB
 net-voip/yate:dahdi - Enable Dahdi driver
@@ -8425,6 +8438,7 @@ sys-devel/gcc:boundschecking - Add the bounds checking patch by Haj Ten Brugge, 
 sys-devel/gcc:cilk - Support the Cilk Plus language (C/C++ based languages for parallel programming)
 sys-devel/gcc:d - Enable support for the D programming language
 sys-devel/gcc:fixed-point - Enable fixed-point arithmetic support for MIPS targets in gcc (Warning: significantly increases compile time!)
+sys-devel/gcc:gcj - Build the GCJ Java language frontend.
 sys-devel/gcc:go - Build the GCC Go language frontend.
 sys-devel/gcc:graphite - Add support for the framework for loop optimizations based on a polyhedral intermediate representation
 sys-devel/gcc:jit - Enable libgccjit so other applications can embed gcc for Just-In-Time compilation. This will slow down the compiler a bit as it forces all of the toolchain to be shared libs.
@@ -8434,6 +8448,7 @@ sys-devel/gcc:mpx - Enable support for Intel Memory Protection Extensions (MPX)
 sys-devel/gcc:mudflap - Add support for mudflap, a pointer use checking library
 sys-devel/gcc:nopie - Disable PIE support (NOT FOR GENERAL USE)
 sys-devel/gcc:nossp - Disable SSP support (NOT FOR GENERAL USE)
+sys-devel/gcc:nptl - Enable support for Native POSIX Threads Library, the new threading module (requires linux-2.6 or better usually)
 sys-devel/gcc:objc - Build support for the Objective C code language
 sys-devel/gcc:objc++ - Build support for the Objective C++ language
 sys-devel/gcc:objc-gc - Build support for the Objective C code language Garbage Collector
@@ -9202,6 +9217,7 @@ x11-plugins/pidgin-sipe:voice - Enable experimental voice/video support
 x11-plugins/pidgin-telegram:gcrypt - Use dev-libs/libgcrypt instead of dev-libs/openssl.
 x11-plugins/purple-plugin_pack:talkfilters - Enable support for app-text/talkfilters
 x11-plugins/vicious:contrib - Install extra widgets, some for less common hardware, some contributed by Vicious users.
+x11-plugins/wmbattery:apm - Add APM (Advanced Power Management) support
 x11-plugins/wmfire:session - Enable session management
 x11-plugins/wmudmount:gcr - Enable support for secure memory with app-crypt/gcr
 x11-plugins/wmudmount:secret - Enable support for secret service with app-crypt/libsecret
