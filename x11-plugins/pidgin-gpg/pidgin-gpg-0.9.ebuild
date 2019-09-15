@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Pidgin GPG/OpenPGP (XEP-0027) plugin"
 HOMEPAGE="https://github.com/segler-alex/Pidgin-GPG"
-SRC_URI="mirror://github/segler-alex/Pidgin-GPG/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/segler-alex/Pidgin-GPG/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
