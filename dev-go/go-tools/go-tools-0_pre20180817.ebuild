@@ -19,7 +19,7 @@ SRC_URI="${ARCHIVE_URI}
 	${EGO_VENDOR_URI}
 	mirror://gentoo/${GO_FAVICON}
 	https://dev.gentoo.org/~zmedico/distfiles/${GO_FAVICON}"
-LICENSE="BSD"
+LICENSE="BSD Apache-2.0 MIT"
 SLOT="0/${PVR}"
 
 src_prepare() {
