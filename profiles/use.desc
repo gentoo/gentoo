@@ -262,7 +262,6 @@ postgres - Add support for the postgresql database
 postscript - Enable support for the PostScript language (often with ghostscript-gpl or libspectre)
 ppds - Add support for automatically generated ppd (printing driver) files
 prefix - Defines if a Gentoo Prefix offset installation is used
-prelude - Add support/bindings for the Prelude Intrusion Detection System
 profile - Add support for software performance analysis (will likely vary from ebuild to ebuild)
 pulseaudio - Add support for PulseAudio sound server
 python - Add optional support/bindings for the Python language
