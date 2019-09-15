@@ -12,7 +12,7 @@ inherit golang-vcs-snapshot golang-build
 DESCRIPTION="A Tour of Go"
 HOMEPAGE="https://tour.golang.org"
 SRC_URI="${ARCHIVE_URI}"
-LICENSE="BSD"
+LICENSE="BSD MIT"
 SLOT="0"
 IUSE=""
 DEPEND="dev-go/go-net:=
