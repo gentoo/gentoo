@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="A small SSH Askpass replacement written with GTK2"
 HOMEPAGE="https://github.com/atj/ssh-askpass-fullscreen"
-SRC_URI="mirror://github/atj/${PN}/${P}.tar.bz2"
+SRC_URI="https://github.com/downloads/atj/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
