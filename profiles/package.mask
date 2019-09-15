@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-15)
+# This was an attempt to provide more reliable package merging mechanism
+# for Portage.  However, it was never finished and with Portage's
+# concept of bug-by-bug neverending backwards compatibility it would
+# never be accepted anyway.
+# Removal in 30 days.  Bug #694514.
+dev-util/atomic-install
+
 # Fabian Groffen <grobian@gentoo.org> (2019-09-15)
 # Incorporated in >=app-portage/portage-utils-0.80 as qmanifest
 # Removal in 30 days.  Bug #694428
