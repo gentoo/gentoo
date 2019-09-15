@@ -151,7 +151,6 @@ java - Add support for Java
 javascript - Enable javascript support
 jbig - Enable jbig-kit support for tiff, Hylafax, ImageMagick, etc
 jemalloc - Use dev-libs/jemalloc for memory management
-jingle - Enable voice calls for jabber
 jit - Enable just-in-time compilation for improved performance. May prevent use of some PaX memory protection features in Gentoo Hardened.
 joystick - Add support for joysticks in all packages
 jpeg - Add JPEG image support
