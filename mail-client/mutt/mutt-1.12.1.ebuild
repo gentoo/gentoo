@@ -25,7 +25,8 @@ REQUIRED_USE="
 	smime_classic?    ( ssl !gnutls )
 	smtp?             ( ssl sasl )
 	sasl?             ( || ( imap pop smtp nntp ) )
-	kerberos?         ( || ( imap pop smtp nntp ) )"
+	kerberos?         ( || ( imap pop smtp nntp ) )
+	vanilla?          ( !nntp !notmuch )"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
