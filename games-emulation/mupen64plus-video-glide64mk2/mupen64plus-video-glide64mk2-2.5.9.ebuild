@@ -19,7 +19,6 @@ IUSE="gles2 hires cpu_flags_x86_sse"
 RDEPEND=">=games-emulation/mupen64plus-core-2.5:0=[gles2=]
 	media-libs/libpng:0=
 	media-libs/libsdl2:0=[video]
-	media-libs/libtxc_dxtn
 	sys-libs/zlib:0=
 	virtual/opengl:0=
 	gles2? ( media-libs/libsdl2:0[gles] )
@@ -74,8 +73,9 @@ src_compile() {
 		HIRES=$(usex hires 1 0)
 		USE_FRAMESKIPPER=1
 		USE_GLES=$(usex gles2 1 0)
-		# use external lib
-		TXCDXTN=1
+		# use bundled lib
+		# https://bugs.gentoo.org/654470
+		TXCDXTN=0
 	)
 
 	use amd64 && MAKEARGS+=( HOST_CPU=x86_64 )
