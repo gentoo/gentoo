@@ -26,6 +26,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
+	rm -r data/foo || die # duplicate dir in tarball, bug #693434
 	if ! use doc; then
 		sed -e 's:^\(SUBDIRS = .* \)doc:\1:' -i Makefile.am || die
 	fi
