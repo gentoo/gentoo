@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Jason Zaman
+# Copyright 1999-2019 Jason Zaman
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: bazel.eclass
@@ -6,6 +6,7 @@
 # Jason Zaman <perfinion@gentoo.org>
 # @AUTHOR:
 # Jason Zaman <perfinion@gentoo.org>
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Utility functions for packages using Bazel Build
 # @DESCRIPTION:
 # A utility eclass providing functions to run the Bazel Build system.
