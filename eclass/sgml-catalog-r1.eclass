@@ -6,6 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Functions for installing SGML catalogs
 # @DESCRIPTION:
 # This eclass regenerates /etc/sgml/catalog, /etc/sgml.{,c}env
