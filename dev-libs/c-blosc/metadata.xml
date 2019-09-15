@@ -13,7 +13,6 @@
 	or in-memory, but also to accelerate memory-bound computations.
 	</longdescription>
 	<use>
-		<flag name="lz4">Enable lz4 compression</flag>
 		<flag name="snappy">Enable snappy compression</flag>
 	</use>
 	<upstream>

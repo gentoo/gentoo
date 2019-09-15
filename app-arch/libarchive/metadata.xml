@@ -18,9 +18,6 @@
 		<flag name="e2fsprogs">
 			Use file flags from <pkg>sys-fs/e2fsprogs</pkg> headers instead of <pkg>virtual/os-headers</pkg> headers
 		</flag>
-		<flag name="lz4">
-			Enable support for LZ4 compression using <pkg>app-arch/lz4</pkg>
-		</flag>
 		<flag name="nettle">
 			Use <pkg>dev-libs/nettle</pkg> as crypto backend
 		</flag>

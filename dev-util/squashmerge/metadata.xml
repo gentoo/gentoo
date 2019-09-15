@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<use>
-		<flag name="lz4">Enable support for LZ4 compression using <pkg>app-arch/lz4</pkg></flag>
-	</use>
 	<maintainer type="person">
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
