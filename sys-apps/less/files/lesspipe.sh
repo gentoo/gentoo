@@ -1,11 +1,13 @@
 #!/bin/bash
-#
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # Preprocessor for 'less'. Used when this environment variable is set:
 # LESSOPEN="|lesspipe %s"
 
 # TODO: handle compressed files better
 
-[[ -n ${LESSDEBUG} ]] && set -x
+[[ -n ${LESSDEBUG+set} ]] && set -x
 
 trap 'exit 0' PIPE
 
@@ -64,8 +66,9 @@ lesspipe() {
 		ls -alF -- "$1"
 		return
 	elif [[ ! -f $1 ]] ; then
-		stat "$1"
-		return
+		# Only return if the stat passes.  This is needed to handle pseudo
+		# arguments like URIs.
+		stat -- "$1" && return
 	fi
 
 	case "${match}" in
@@ -104,10 +107,11 @@ lesspipe() {
 	*.doc)      antiword "$1" || catdoc "$1" ;;
 	*.rtf)      unrtf --nopict --text "$1" ;;
 	*.conf|*.txt|*.log) ;; # force less to work on these directly #150256
+	*.json)     python -mjson.tool "$1" ;;
 
 	### URLs ###
-	ftp://*|http://*|*.htm|*.html)
-		for b in links2 links lynx ; do
+	ftp://*|http://*|https://|*.htm|*.html)
+		for b in elinks links2 links lynx ; do
 			${b} -dump "$1" && exit 0
 		done
 		html2text -style pretty "$1"
@@ -120,7 +124,7 @@ lesspipe() {
 	*.tar.lzma|*.tar.xz)
 		${DECOMPRESSOR} -- "$1" | tar tvvf -;;
 	*.tbz2|*.tbz|*.tgz|*.tlz|*.txz)
-		lesspipe "$1" "$1".tar.${1##*.t} ;;
+		lesspipe "$1" "$1.tar.${1##*.t}" ;;
 
 	### Misc archives ###
 	*.bz2|\
@@ -207,7 +211,7 @@ lesspipe() {
 	*)
 		case $(( recur++ )) in
 			# Maybe we didn't match due to case issues ...
-			0) lesspipe "$1" "$(echo $1 | LC_ALL=C tr '[:upper:]' '[:lower:]')" ;;
+			0) lesspipe "$1" "$(echo "$1" | LC_ALL=C tr '[:upper:]' '[:lower:]')" ;;
 
 			# Maybe we didn't match because the file is named weird ...
 			1) lesspipe_file "$1" ;;
@@ -241,12 +245,12 @@ lesspipe() {
 	esac
 }
 
-if [[ -z $1 ]] ; then
+if [[ $# -eq 0 ]] ; then
 	echo "Usage: lesspipe <file>"
 elif [[ $1 == "-V" || $1 == "--version" ]] ; then
 	cat <<-EOF
 		lesspipe (git)
-		Copyright 2001-2016 Gentoo Foundation
+		Copyright 1999-2019 Gentoo Authors
 		Mike Frysinger <vapier@gentoo.org>
 		     (with plenty of ideas stolen from other projects/distros)
 
@@ -275,7 +279,6 @@ elif [[ $1 == "-h" || $1 == "--help" ]] ; then
 	EOF
 else
 	recur=0
-	[[ -n ${LESSDEBUG} ]] \
-		&& lesspipe "$1" \
-		|| lesspipe "$1" 2> /dev/null
+	[[ -z ${LESSDEBUG+set} ]] && exec 2>/dev/null
+	lesspipe "$1"
 fi

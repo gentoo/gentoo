@@ -1,0 +1,46 @@
+> Machine Type: i686-pc-linux-gnu
+> 
+> Bash Version: 3.0
+> Patch Level: 0
+> Release Status: release
+> 
+> Description:
+>         GNU bash, version 3.00.0(1)-release (i686-pc-linux-gnu)
+>         (and
+>         GNU bash, version 2.05b.0(1)-release (i386-redhat-linux-gnu)
+> 
+>         dumps a core because of a null pointer "in make_bare_word 
+>         at make_cmd.c:90" (see gdb output below)
+
+Thanks for the report.  Here's a quick fix:
+
+*** arrayfunc.c~	Sat Nov  6 15:08:29 2004
+--- arrayfunc.c	Mon Jan 31 11:56:21 2005
+***************
+*** 709,713 ****
+  	  return ((char *)NULL);
+  	}
+!       else if (var == 0)
+  	return ((char *)NULL);
+        else if (array_p (var) == 0)
+--- 709,713 ----
+  	  return ((char *)NULL);
+  	}
+!       else if (var == 0 || value_cell (var) == 0)
+  	return ((char *)NULL);
+        else if (array_p (var) == 0)
+
+
+Chet
+
+-- 
+``The lyf so short, the craft so long to lerne.'' - Chaucer
+( ``Discere est Dolere'' -- chet )
+						Live...Laugh...Love
+Chet Ramey, ITS, CWRU    chet@po.cwru.edu    http://tiswww.tis.cwru.edu/~chet/
+
+
+_______________________________________________
+Bug-bash mailing list
+Bug-bash@gnu.org
+http://lists.gnu.org/mailman/listinfo/bug-bash
