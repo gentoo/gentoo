@@ -18,7 +18,7 @@ SLOT=$(ver_cut 1-2)
 MY_PV=${PV/_/}
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-SRC_URI="mirror://postgresql/source/v${MY_PV}/postgresql-${MY_PV}.tar.bz2"
+SRC_URI="https://ftp.postgresql.org/pub/source/v${MY_PV}/postgresql-${MY_PV}.tar.bz2"
 
 LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
