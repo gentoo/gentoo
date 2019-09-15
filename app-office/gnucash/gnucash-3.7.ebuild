@@ -104,8 +104,6 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		# Disable fallback to guile-2.0
-		-DCMAKE_DISABLE_FIND_PACKAGE_GUILE2=ON
 		-DCOMPILE_GSCHEMAS=OFF
 		-DDISABLE_NLS=$(usex !nls)
 		-DENABLE_REGISTER2=$(usex register2)
