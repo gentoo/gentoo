@@ -1,0 +1,18 @@
+https://sourceforge.net/p/lirc/git/merge-requests/42/
+
+Author: Craig Andrews <candrews@integralblue.com>
+Date:   Sat Sep 14 21:03:49 2019 -0400
+
+    systemd: ensure lirc runtime directory exists
+
+diff --git a/systemd/lircd.service b/systemd/lircd.service
+--- a/systemd/lircd.service
++++ b/systemd/lircd.service
+@@ -8,6 +8,7 @@
+ [Service]
+ Type=simple
+ ExecStart=/usr/sbin/lircd --nodaemon
++RuntimeDirectory=lirc
+ ; User=lirc
+ ; Group=lirc
+
