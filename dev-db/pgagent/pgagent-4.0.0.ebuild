@@ -12,7 +12,7 @@ KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="${MY_PN} is a job scheduler for PostgreSQL"
 HOMEPAGE="https://www.pgadmin.org/download/pgagent-source-code/"
-SRC_URI="mirror://postgresql/pgadmin/${PN}/${MY_PN}-${PV}-Source.tar.gz"
+SRC_URI="https://ftp.postgresql.org/pub/pgadmin/${PN}/${MY_PN}-${PV}-Source.tar.gz"
 
 LICENSE="POSTGRESQL GPL-2"
 SLOT="0"
