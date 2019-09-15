@@ -1093,12 +1093,6 @@ virtual/ruby-ffi
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.24
 
-# Michael Orlitzky <mjo@gentoo.org> (2019-08-18)
-# Ebuilds contain a two-year old root exploit. Less-than-maintained
-# since robbat2's announcement on 2017-11-30. Binary package to begin
-# with. Masked for removal eventually, https://bugs.gentoo.org/630808
-app-misc/dnetc
-
 # Mart Raudsepp <leio@gentoo.org> (2019-08-18)
 # Fails to dbus activate properly for me. Help welcome figuring it out.
 net-misc/gnome-remote-desktop
