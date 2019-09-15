@@ -136,9 +136,6 @@ src_prepare() {
 		# bug 694512
 		einfo "Limiting parallel jobs to 6 ..."
 		export MAKEOPTS=-j6
-	else
-		# Filter load average
-		export MAKEOPTS=-j${make_jobs}
 	fi
 
 	multilib_copy_sources
