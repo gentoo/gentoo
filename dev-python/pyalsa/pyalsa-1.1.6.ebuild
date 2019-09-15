@@ -9,7 +9,7 @@ inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Python bindings for ALSA library"
 HOMEPAGE="https://alsa-project.org/"
-SRC_URI="mirror://alsaproject/pyalsa/${P}.tar.bz2"
+SRC_URI="https://www.alsa-project.org/files/pub/pyalsa/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
