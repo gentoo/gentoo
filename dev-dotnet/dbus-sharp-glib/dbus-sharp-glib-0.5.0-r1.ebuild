@@ -6,7 +6,7 @@ inherit autotools mono-env
 
 DESCRIPTION="D-Bus for .NET: GLib integration module"
 HOMEPAGE="https://github.com/mono/dbus-sharp"
-SRC_URI="mirror://github/mono/dbus-sharp/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/mono/dbus-sharp/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1.0"
