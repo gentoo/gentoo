@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0/1"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 
 DOCS=( CONTRIBUTORS README README.zopflipng )
 
