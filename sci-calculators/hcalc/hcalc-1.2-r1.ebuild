@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="DJ's Hex Calculator"
 HOMEPAGE="http://www.delorie.com/store/hcalc/ https://github.com/jlec/hcalc"
-SRC_URI="mirror://github/jlec/hcalc/${P}.tar.xz"
+SRC_URI="https://github.com/downloads/jlec/hcalc/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
