@@ -6,6 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Vlastimil Babka <caster@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Eclass for building dev-java/ant-* packages
 # @DESCRIPTION:
 # This eclass provides functionality and default ebuild variables for building
