@@ -18,6 +18,7 @@ IUSE="debugger gles2 lirc new-dynarec opencv +osd cpu_flags_x86_sse"
 RDEPEND="media-libs/libpng:0=
 	media-libs/libsdl2:0=[joystick,opengl,video]
 	sys-libs/zlib:0=[minizip]
+	gles2? ( media-libs/libsdl2:0[gles] )
 	lirc? ( app-misc/lirc:0 )
 	opencv? ( media-libs/opencv:= )
 	osd? (
