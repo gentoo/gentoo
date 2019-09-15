@@ -1,0 +1,12 @@
+BDEPEND=>=dev-lang/go-1.10
+DEFINED_PHASES=compile install test unpack
+DESCRIPTION=A Tour of Go
+EAPI=7
+HOMEPAGE=https://tour.golang.org
+KEYWORDS=~amd64
+LICENSE=BSD Apache-2.0 MIT
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/golang/tour/archive/3c9f1af8b2da3b3661a39ee550190917c0cf5208.tar.gz -> go-tour-0_p20190829.tar.gz https://github.com/golang/tools/archive/7b79afddac434519a8ca775cc575fddb0d162aab.tar.gz -> github.com-golang-tools-7b79afddac434519a8ca775cc575fddb0d162aab.tar.gz https://github.com/golang/net/archive/3b0461eec859c4b73bb64fdc8285971fd33e3938.tar.gz -> github.com-golang-net-3b0461eec859c4b73bb64fdc8285971fd33e3938.tar.gz
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
+_md5_=7639be3db96e362805b2ffad443e94ce

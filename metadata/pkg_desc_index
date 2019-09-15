@@ -3346,7 +3346,7 @@ dev-go/go-sqlite3 1.1.0_p20160131 1.1.0_p20160307: Go sqlite3 driver using datab
 dev-go/go-sys 0_pre20160204 0_pre20180816 9999: Go packages for low-level interaction with the operating system
 dev-go/go-text 0_pre20160211 0.3.0 9999: Go text processing support
 dev-go/go-tools 0_pre20180817 0_pre20190911 9999: Tools that support the Go programming language (godoc, etc.)
-dev-go/go-tour 0_p20180810: A Tour of Go
+dev-go/go-tour 0_p20180810 0_p20190829: A Tour of Go
 dev-go/godebug-pretty 0_p20170819: Pretty printing for Go
 dev-go/godep 74 9999: dependency tool for go
 dev-go/gogo-protobuf 0.4_p20170815: Protocol Buffers for Go with Gadgets
