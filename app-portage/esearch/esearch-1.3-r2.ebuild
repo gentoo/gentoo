@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Replacement for 'emerge --search' with search-index"
 HOMEPAGE="https://github.com/fuzzyray/esearch"
-SRC_URI="mirror://github/fuzzyray/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/fuzzyray/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
