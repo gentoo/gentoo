@@ -6,7 +6,7 @@ inherit autotools gnome2
 
 DESCRIPTION="Gnome and XFCE applet for displaying XMonad log"
 HOMEPAGE="https://github.com/alexkay/xmonad-log-applet"
-SRC_URI="mirror://github/alexkay/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/alexkay/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 
 SLOT="0"
