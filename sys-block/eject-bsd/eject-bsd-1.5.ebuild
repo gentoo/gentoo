@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -11,8 +11,7 @@ DESCRIPTION="eject command for FreeBSD systems"
 HOMEPAGE="http://www.freshports.org/sysutils/eject/"
 SRC_URI="ftp://ports.jp.FreeBSD.org/pub/FreeBSD-jp/OD/${MY_P}.tar.gz
 	ftp://ftp4.jp.FreeBSD.org/pub/FreeBSD-jp/OD/${MY_P}.tar.gz
-	ftp://ftp.ics.es.osaka-u.ac.jp/pub/mirrors/FreeBSD-jp/OD/${MY_P}.tar.gz
-	mirror://freebsd/ports/distfiles/${MY_P}.tar.gz"
+	ftp://ftp.ics.es.osaka-u.ac.jp/pub/mirrors/FreeBSD-jp/OD/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
