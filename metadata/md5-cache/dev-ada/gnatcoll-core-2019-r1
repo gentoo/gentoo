@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=dev-ada/libgpr[ada_target_gnat_2016(-)?,ada_target_gnat_2017(-)?,ada_target_gnat_2018(-)?,ada_target_gnat_2019(-)?,shared?,static-libs?,static-pic?] !dev-ada/gnatcoll dev-ada/gprbuild[ada_target_gnat_2016(-)?,ada_target_gnat_2017(-)?,ada_target_gnat_2018(-)?,ada_target_gnat_2019(-)?]
+DESCRIPTION=GNAT Component Collection Core packages
+EAPI=7
+HOMEPAGE=http://libre.adacore.com
+IUSE=gnat_2019 +shared static-libs static-pic ada_target_gnat_2016 ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-ada/libgpr[ada_target_gnat_2016(-)?,ada_target_gnat_2017(-)?,ada_target_gnat_2018(-)?,ada_target_gnat_2019(-)?,shared?,static-libs?,static-pic?] !dev-ada/gnatcoll
+REQUIRED_USE=^^ ( ada_target_gnat_2016 ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 )
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/5cdf8ae231e87a8f1d425052 -> gnatcoll-core-2019-20190515-24AD8-src.tar.gz
+_eclasses_=ada	8df875b7777ad9b66d65912ad528f00a	multiprocessing	cac3169468f893670dac3e7cb940e045
+_md5_=30e57c947a4dfb2a03b499b4fb909b0b
