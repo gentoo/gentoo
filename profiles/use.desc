@@ -204,7 +204,6 @@ mp4 - Support for MP4 container format
 mpeg - Add libmpeg3 support to various packages
 mpi - Add MPI (Message Passing Interface) layer to the apps that support it
 mplayer - Enable mplayer support for playback or encoding
-msn - Enable MSN Messenger IM protocol support
 mssql - Add support for Microsoft SQL Server database
 mtp - Enable support for Media Transfer Protocol
 multilib - On 64bit systems, if you want to be able to compile 32bit and 64bit binaries
