@@ -1,0 +1,22 @@
+--- a/CMakeLists.txt	2019-06-09 21:18:38.000000000 +0200
++++ b/CMakeLists.txt	2019-09-15 23:53:19.496802424 +0200
+@@ -5,19 +5,6 @@
+ CMAKE_POLICY(SET CMP0053 NEW)
+ PROJECT("Luminance HDR")
+ 
+-string(TOLOWER ${CMAKE_BUILD_TYPE} LOWERCASE_CMAKE_BUILD_TYPE)
+-if(LOWERCASE_CMAKE_BUILD_TYPE MATCHES "^(debug|release|relwithdebinfo|minsizerel)$")
+-    message(STATUS "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+-else()
+-    message(FATAL_ERROR "Invalid value for CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}\n"
+-        "CMAKE_BUILD_TYPE should be one of:\nDebug, Release, RelWithDebInfo, MinSizeRel")
+-endif()
+-
+-if(LOWERCASE_CMAKE_BUILD_TYPE MATCHES "^(release|minsizerel)$")
+-    message(STATUS "Adding definitions: -DQT_NO_DEBUG_OUTPUT")
+-    add_definitions("-DQT_NO_DEBUG_OUTPUT")
+-endif()
+-
+ # assume built-in pthreads on MacOS
+ IF(APPLE)
+     enable_language(CXX)
