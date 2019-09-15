@@ -1,4 +1,3 @@
-alsaproject	ftp://ftp.alsa-project.org/pub
 apache		http://apache.lauf-forum.at/ http://apache.mirror.digionline.de/ http://apache.mirror.iphh.net/ https://artfiles.org/apache.org/ https://ftp-stud.hs-esslingen.de/pub/Mirrors/ftp.apache.org/dist/ https://ftp.fau.de/apache/ https://ftp.halifax.rwth-aachen.de/apache/ http://mirror.23media.de/apache/ http://apache.mirrors.hoobly.com/ http://www.gtlib.gatech.edu/pub/apache/ https://apache.osuosl.org/
 cpan		https://cpan.metacpan.org https://www.cpan.org
 cran		https://cran.r-project.org https://cran.us.r-project.org
