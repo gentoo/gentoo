@@ -285,6 +285,7 @@ slang - Add support for the slang text display library (it's like ncurses, but d
 slp - Add Service Locator Protocol support
 smartcard - Enable smartcard support
 smp - Enable support for multiprocessors or multicore systems
+snappy - Enable support for Snappy compression (as implemented in app-arch/snappy)
 sndfile - Add support for libsndfile
 snmp - Add support for the Simple Network Management Protocol if available
 soap - Add support for SOAP (Simple Object Access Protocol)
