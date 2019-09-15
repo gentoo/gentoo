@@ -44,6 +44,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-jpeg9.patch
 	"${FILESDIR}"/${P}-exiv2-0.27.patch
 	"${FILESDIR}"/${P}-gcc9.patch
+	"${FILESDIR}"/${P}-CVE-2015-8366.patch
+	"${FILESDIR}"/${P}-CVE-2018-19655.patch
 )
 
 src_prepare() {
