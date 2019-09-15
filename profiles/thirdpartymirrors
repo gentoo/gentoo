@@ -6,7 +6,6 @@ debian		http://deb.debian.org/debian/ http://ftp.au.debian.org/debian/ http://ft
 fedora-dev	http://archives.fedoraproject.org/pub/archive/fedora/linux/
 gentoo		https://gentoo.osuosl.org/distfiles https://ftp.halifax.rwth-aachen.de/gentoo/distfiles http://gentoo-distfiles.mirrors.tds.net/distfiles http://gentoo.ussg.indiana.edu/distfiles
 gimp		https://ftp.fau.de/gimp/gimp/ ftp://ftp.fau.de/gimp/gimp/ http://artfiles.org/gimp.org/pub/gimp/ http://www.mirrorservice.org/sites/ftp.gimp.org/pub/gimp/ ftp://ftp.mirrorservice.org/sites/ftp.gimp.org/pub/gimp/ http://pirbot.com/mirrors/gimp/gimp/
-github		https://github.com/downloads
 gmt		ftp://ftp.soest.hawaii.edu/gmt/ ftp://ftp.iris.washington.edu/pub/gmt/ ftp://ftp.iag.usp.br/pub/gmt/ ftp://ftp.geologi.uio.no/pub/gmt/ ftp://ftp.star.nesdis.noaa.gov/pub/sod/lsa/gmt
 gnome		https://download.gnome.org/
 gnu		https://ftp.gnu.org/gnu/ https://ftpmirror.gnu.org/ https://artfiles.org/gnu.org/ https://www.mirrorservice.org/sites/ftp.gnu.org/gnu/
