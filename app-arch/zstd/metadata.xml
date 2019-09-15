@@ -5,11 +5,6 @@
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
   </maintainer>
-  <use>
-    <flag name="lz4">
-      Enable support for LZ4 compression using <pkg>app-arch/lz4</pkg>
-    </flag>
-  </use>
   <upstream>
     <remote-id type="github">facebook/zstd</remote-id>
   </upstream>
