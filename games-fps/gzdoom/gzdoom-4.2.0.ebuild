@@ -12,7 +12,7 @@ SRC_URI="https://github.com/coelckers/${PN}/archive/g${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD BZIP2 DUMB-0.9.3 GPL-3 LGPL-3 MIT
 	nonfree? ( Activision ChexQuest3 DOOM-COLLECTORS-EDITION freedist )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="gtk gtk2 +nonfree openmp"
 
 DEPEND="
