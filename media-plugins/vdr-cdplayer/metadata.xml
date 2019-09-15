@@ -5,4 +5,7 @@
 <email>vdr@gentoo.org</email>
 <name>Gentoo VDR Project</name>
 </maintainer>
+<use>
+<flag name="cdparanoia">Enable cdparanoia (audio CD ripper) support</flag>
+</use>
 </pkgmetadata>
