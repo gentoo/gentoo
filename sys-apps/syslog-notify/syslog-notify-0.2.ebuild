@@ -6,7 +6,7 @@ inherit readme.gentoo
 
 DESCRIPTION="Notifications for syslog entries via libnotify"
 HOMEPAGE="https://jtniehof.github.com/syslog-notify/"
-SRC_URI="mirror://github/jtniehof/${PN}/${P}.tar.bz2"
+SRC_URI="https://github.com/downloads/jtniehof/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
