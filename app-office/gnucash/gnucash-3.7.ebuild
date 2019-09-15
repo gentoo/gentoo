@@ -98,6 +98,8 @@ src_unpack() {
 }
 
 src_configure() {
+	export GUILE_AUTO_COMPILE=0
+
 	local sql_on_off="OFF"
 	if use mysql || use postgres || use sqlite ; then
 		sql_on_off="ON"
