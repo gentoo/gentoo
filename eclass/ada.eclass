@@ -6,6 +6,7 @@
 # Ada team <ada@gentoo.org>
 # @AUTHOR:
 # Tupone Alfredo <tupone@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: An eclass for Ada packages
 # @DESCRIPTION:
 # This eclass set the IUSE and REQUIRED_USE to request the ADA_TARGET
