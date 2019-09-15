@@ -7,7 +7,7 @@ MY_P=${PN}-src-${PV}
 inherit eutils gnome2-utils multilib toolchain-funcs xdg-utils
 
 DESCRIPTION="A fork of Mupen64 Nintendo 64 emulator, console UI"
-HOMEPAGE="http://www.mupen64plus.org/"
+HOMEPAGE="https://www.mupen64plus.org/"
 SRC_URI="https://github.com/mupen64plus/${PN}/releases/download/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
