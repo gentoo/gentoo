@@ -39,6 +39,7 @@ app-text/gnopaster
 # Unmaintained.  Last touched in 2005.  Keyworded ppc only.  Upstream
 # is still alive, so this thing needs a major version bump.
 # Removal in 30 days.  Bug #694562.
+app-emulation/vmips
 app-emulation/vmips-cross-bin
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-15)
