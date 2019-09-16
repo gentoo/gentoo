@@ -643,7 +643,7 @@ app-crypt/johntheripper-jumbo 1.8.0 1.9.0 9999: fast password cracker
 app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
 app-crypt/kbfs 2.6.0 2.8.0 2.10.1 2.11.0 9999: Keybase Filesystem (KBFS)
 app-crypt/kencfs-plasma 2.0.1_alpha: GUI frontend for encfs
-app-crypt/keybase 2.10.1 2.11.0 2.13.1 3.0.0 9999: Client for keybase.io
+app-crypt/keybase 2.10.1 2.11.0 2.13.1 3.0.0 4.4.2 9999: Client for keybase.io
 app-crypt/keylookup 2.2: A tool to fetch PGP keys from keyservers
 app-crypt/kstart 4.1 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
 app-crypt/libb2 0.98 0.98.1-r1: C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
@@ -10600,7 +10600,7 @@ dev-util/bingrep 0.6.2: Binary file analysis tool
 dev-util/bitcoin-tx 0.16.3 0.17.1 0.18.0: Command-line Bitcoin transaction tool
 dev-util/bite 9999: bug, issue, and ticket extraction library and command line tool
 dev-util/bitrise 1.16.1 1.19.0 1.20.0 1.23.0 1.24.0: Run your Bitrise.io automations on any Mac or Linux machine
-dev-util/bless 0.6.0-r3 0.6.0-r4: GTK# Hex Editor
+dev-util/bless 0.6.0-r3 0.6.0-r4 0.6.2: GTK# Hex Editor
 dev-util/bloaty 0_p20170420: A size profiler for binaries
 dev-util/bnfc 2.8 2.8.1: A compiler front-end generator
 dev-util/boost-build 1.65.0 1.70.0 1.71.0: A system for large project software construction, simple to use and powerful
