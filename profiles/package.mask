@@ -98,7 +98,6 @@ dev-python/maybe
 dev-python/mockredispy
 dev-python/parse
 dev-python/parse-type
-dev-python/pyClamd
 dev-python/pycallgraph
 dev-python/pyroma
 dev-python/pytest-raisesregexp
