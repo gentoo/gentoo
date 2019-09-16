@@ -21,7 +21,7 @@ SRC_URI="https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV}/${
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 x86"
+KEYWORDS="amd64 arm arm64 x86"
 IUSE="libedit ncurses +python test"
 RESTRICT="!test? ( test )"
 
