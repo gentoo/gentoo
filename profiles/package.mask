@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-16)
+# Unmaintained.  Does not work anymore.  Last release in 2007.
+# Our recommended alternative is app-text/wgetpaste.
+# Removal in 30 days.  Bug #678554.
+app-text/gnopaster
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-16)
 # Unmaintained.  Last touched in 2005.  Keyworded ppc only.  Upstream
 # is still alive, so this thing needs a major version bump.
 # Removal in 30 days.  Bug #694562.
