@@ -36,12 +36,12 @@ RDEPEND="
 # - sys-devel/llvm provide test utils (e.g. FileCheck)
 # - sys-devel/clang provides the compiler to run tests
 DEPEND="${RDEPEND}
-	dev-lang/perl
 	offload? ( virtual/pkgconfig[${MULTILIB_USEDEP}] )
 	test? (
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 		>=sys-devel/clang-6
 	)"
+BDEPEND="dev-lang/perl"
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
