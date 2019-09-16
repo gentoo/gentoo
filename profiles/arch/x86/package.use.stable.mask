@@ -18,7 +18,7 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-09-13)
-# media-video/pipewire is not keyworded yet
+# media-video/pipewire is not stable yet
 dev-libs/weston pipewire
 kde-apps/krfb wayland
 kde-plasma/xdg-desktop-portal-kde screencast
