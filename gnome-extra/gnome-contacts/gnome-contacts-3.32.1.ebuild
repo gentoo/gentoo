@@ -18,7 +18,7 @@ VALA_DEPEND="
 	>=dev-libs/gobject-introspection-1.54
 	dev-libs/folks[vala(+)]
 	net-libs/gnome-online-accounts[vala]
-	gnome-extra/evolution-data-server[vala]
+	gnome-extra/evolution-data-server[gtk,vala]
 	telepathy? ( net-libs/telepathy-glib[vala] )
 	gui-libs/libhandy:0.0[vala]
 "
