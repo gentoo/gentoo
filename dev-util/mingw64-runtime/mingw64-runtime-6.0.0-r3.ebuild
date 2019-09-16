@@ -75,9 +75,11 @@ src_configure() {
 	# By default configure tries to set --sysroot=${prefix}. We disable
 	# this behaviour with --with-sysroot=no to use gcc's sysroot default.
 	# That way we can cross-build mingw64-runtime with cross-emerge.
+	local prefix="${EPREFIX}"$(alt_prefix)/usr
 	CHOST=${CTARGET} econf \
 		--with-sysroot=no \
-		--prefix="${EPREFIX}"$(alt_prefix)/usr \
+		--prefix="${prefix}" \
+		--libdir="${prefix}"/lib \
 		--with-headers \
 		--enable-sdk \
 		$(crt_with crt) \
