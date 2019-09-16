@@ -12,4 +12,8 @@
   <upstream>
     <remote-id type="github">google/jsonnet</remote-id>
   </upstream>
+  <use>
+    <flag name="custom-optimization">Build with user-specified compiler optimizations
+      (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)</flag>
+  </use>
 </pkgmetadata>
