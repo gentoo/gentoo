@@ -3261,10 +3261,10 @@ dev-erlang/cache_tab 1.0.7 1.0.20: In-memory cache Erlang and Elixir library
 dev-erlang/eimp 1.0.9: Erlang Image Manipulation Process
 dev-erlang/epam 1.0.2 1.0.6: epam for ejabberd to help with PAM authentication support
 dev-erlang/eredis 1.0.8: Erlang Redis client
-dev-erlang/esip 1.0.11 1.0.26: ProcessOne SIP server component
+dev-erlang/esip 1.0.11 1.0.26 1.0.30: ProcessOne SIP server component
 dev-erlang/ezlib 1.0.2 1.0.6: Native zlib driver for Erlang and Elixir
 dev-erlang/fast_tls 1.0.26 1.1.2: TLS/SSL native driver for Erlang and Elixir
-dev-erlang/fast_xml 1.1.22 1.1.34: Fast Expat based Erlang XML parsing library
+dev-erlang/fast_xml 1.1.22 1.1.34 1.1.37: Fast Expat based Erlang XML parsing library
 dev-erlang/fast_yaml 1.0.9 1.0.20: Fast Yaml native library for Erlang and Elixir
 dev-erlang/goldrush 0.1.9: Small Erlang app that provides fast event stream processing
 dev-erlang/hamcrest 0.1.0_p20160709: Erlang port of Hamcrest
@@ -3276,7 +3276,7 @@ dev-erlang/luerl 0.2 0.3: Lua in Erlang
 dev-erlang/meck 0.8.4 0.8.12: Mocking library for Erlang
 dev-erlang/p1_mysql 1.0.2 1.0.11: Pure Erlang MySQL driver
 dev-erlang/p1_oauth2 0.6.1 0.6.5: Erlang OAuth 2.0 implementation
-dev-erlang/p1_pgsql 1.1.2 1.1.6: Pure Erlang PostgreSQL driver
+dev-erlang/p1_pgsql 1.1.2 1.1.6 1.1.8: Pure Erlang PostgreSQL driver
 dev-erlang/p1_utils 1.0.13 1.0.16: Erlang utility modules from ProcessOne
 dev-erlang/p1_xmlrpc 1.15.1: Erlang XMLRPC implementation with SSL, cookies, authentication
 dev-erlang/proper 1.2 1.3: QuickCheck-inspired property-based testing tool for Erlang
@@ -3285,7 +3285,7 @@ dev-erlang/riak_pb 2.2.0.2: Riak Protocol Buffers messages
 dev-erlang/riakc 2.4.2: Erlang clients for Riak
 dev-erlang/sqlite3 1.1.5 1.1.6: SQLite gen_server port for Erlang
 dev-erlang/stringprep 1.0.8 1.0.17: Fast Stringprep implementation for Erlang and Elixir
-dev-erlang/stun 1.0.10 1.0.25: STUN and TURN library for Erlang and Elixir
+dev-erlang/stun 1.0.10 1.0.25 1.0.29: STUN and TURN library for Erlang and Elixir
 dev-erlang/xmpp 1.1.9 1.2.5: XMPP parsing and serialization library on top of Fast XML
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 1.1.6 1.1.7: Animated sprite editor & pixel art tool
