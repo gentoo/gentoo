@@ -18,7 +18,7 @@ VALA_DEPEND="
 	>=dev-libs/gobject-introspection-1.54
 	dev-libs/folks[vala(+)]
 	net-libs/gnome-online-accounts[vala]
-	gnome-extra/evolution-data-server[vala]
+	gnome-extra/evolution-data-server[gtk,vala]
 	net-libs/telepathy-glib[vala]
 "
 # Configure is wrong; it needs cheese-3.5.91, not 3.3.91
