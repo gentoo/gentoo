@@ -182,7 +182,7 @@ src_configure() {
 	fi
 
 	(
-		unset _JAVA_OPTIONS JAVA JAVAC XARGS
+		unset _JAVA_OPTIONS JAVA JAVA_TOOL_OPTIONS JAVAC XARGS
 		CFLAGS= CXXFLAGS= LDFLAGS= \
 		CONFIG_SITE=/dev/null \
 		econf "${myconf[@]}"
