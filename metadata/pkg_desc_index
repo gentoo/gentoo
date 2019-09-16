@@ -13309,7 +13309,7 @@ media-libs/libgphoto2 2.5.20 2.5.22: Library that implements support for numerou
 media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library.
 media-libs/libharu 2.3.0-r2: C/C++ library for PDF generation
-media-libs/libhdhomerun 20150826: SiliconDust HDHomeRun Utilties
+media-libs/libhdhomerun 20150826 20190621: SiliconDust HDHomeRun Utilties
 media-libs/libheif 1.3.2-r1 1.4.0 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 media-libs/libicns 0.8.1-r1: A library for manipulating MacOS X .icns icon format
 media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
@@ -14304,7 +14304,7 @@ media-video/dvgrab 3.5-r1: Digital Video (DV) grabber for GNU/Linux
 media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every video file localized in the CD root
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.2_pre20140701-r2: Movie creator from photos and video clips
-media-video/ffmpeg 3.4.6-r1 4.1.3 4.1.4 4.2 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
+media-video/ffmpeg 3.4.6-r1 4.1.3 4.1.4 4.2 4.2.1 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0-r1: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
