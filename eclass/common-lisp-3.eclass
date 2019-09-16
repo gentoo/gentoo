@@ -75,6 +75,7 @@ common-lisp-install-one-source() {
 }
 
 # @FUNCTION: lisp-file-p
+# @USAGE: <file>
 # @DESCRIPTION:
 # Returns true if ${1} is lisp source file.
 lisp-file-p() {
@@ -84,6 +85,7 @@ lisp-file-p() {
 }
 
 # @FUNCTION: common-lisp-get-fpredicate
+# @USAGE: <type>
 # @DESCRIPTION:
 # Outputs the corresponding predicate to check files of type ${1}.
 common-lisp-get-fpredicate() {
@@ -98,7 +100,7 @@ common-lisp-get-fpredicate() {
 }
 
 # @FUNCTION: common-lisp-install-sources
-# @USAGE: common-lisp-install-sources path [<other_paths>...]
+# @USAGE: <path> [...]
 # @DESCRIPTION:
 # Recursively install lisp sources of type ${2} if ${1} is -t or
 # Lisp by default. When given a directory, it will be recursively
@@ -126,6 +128,7 @@ common-lisp-install-sources() {
 }
 
 # @FUNCTION: common-lisp-install-one-asdf
+# @USAGE: <file>
 # @DESCRIPTION:
 # Installs ${1} asdf file in CLSOURCEROOT/CLPACKAGE and symlinks it in
 # CLSYSTEMROOT.
@@ -140,7 +143,7 @@ common-lisp-install-one-asdf() {
 }
 
 # @FUNCTION: common-lisp-install-asdf
-# @USAGE: common-lisp-install-asdf path [<other_paths>...]
+# @USAGE: <path> [...]
 # @DESCRIPTION:
 # Installs all ASDF files and creates symlinks in CLSYSTEMROOT.
 # When given a directory, it will be recursively scanned for ASDF
@@ -167,7 +170,6 @@ common-lisp-3_src_install() {
 }
 
 # @FUNCTION: common-lisp-find-lisp-impl
-# @USAGE: common-lisp-find-lisp-impl
 # @DESCRIPTION:
 # Outputs an installed Common Lisp implementation. Transverses
 # CLIMPLEMENTATIONS to find it.
@@ -179,7 +181,7 @@ common-lisp-find-lisp-impl() {
 }
 
 # @FUNCTION: common-lisp-export-impl-args
-# @USAGE: common-lisp-export-impl-args <lisp-implementation>
+# @USAGE: <lisp-implementation>
 # @DESCRIPTION:
 # Export a few variables containing the switches necessary
 # to make the CL implementation perform basic functions:
