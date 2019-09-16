@@ -11,7 +11,7 @@ HOMEPAGE="https://choqok.kde.org/"
 SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="attica konqueror telepathy"
 
 DEPEND="

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>dolsen@gentoo.org</email>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<maintainer>
 			<name>Crossbar.io Technologies GmbH</name>

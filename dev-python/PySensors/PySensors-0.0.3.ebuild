@@ -17,4 +17,4 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND=">=sys-apps/lm_sensors-3"
+RDEPEND=">=sys-apps/lm-sensors-3"

@@ -59,7 +59,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -525,6 +525,10 @@ multilib_src_install() {
 				popd >/dev/null || die
 			else
 				emake V=1 DESTDIR="${D}" install-libffmpeg
+
+				# When not built separately, libffmpeg has no code of
+				# its own so this QA check raises a false positive.
+				QA_FLAGS_IGNORED+=" usr/$(get_libdir)/chromium/.*"
 			fi
 		fi
 	fi

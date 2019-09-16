@@ -31,7 +31,7 @@ else
 	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
 fi
 
-inherit autotools cmake-utils eutils gnome2-utils linux-info pax-utils python-single-r1 xdg-utils
+inherit autotools cmake-utils desktop linux-info pax-utils python-single-r1 xdg
 
 DESCRIPTION="A free and open source media-player and entertainment hub"
 HOMEPAGE="https://kodi.tv/ https://kodi.wiki/"
@@ -64,7 +64,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( sys-apps/dbus )
 	dev-db/sqlite
 	dev-libs/expat
-	dev-libs/flatbuffers
+	>=dev-libs/flatbuffers-1.11.0
 	>=dev-libs/fribidi-0.19.7
 	cec? ( >=dev-libs/libcec-4.0[raspberry-pi?] )
 	dev-libs/libpcre[cxx]
@@ -85,8 +85,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	libusb? ( virtual/libusb:1 )
 	virtual/ttf-fonts
 	media-fonts/roboto
-	>=media-libs/fontconfig-2.12.4
-	>=media-libs/freetype-2.8
+	>=media-libs/fontconfig-2.13.1
+	>=media-libs/freetype-2.10.1
 	>=media-libs/libass-0.13.4
 	!raspberry-pi? ( media-libs/mesa[egl,X(+)] )
 	>=media-libs/taglib-1.11.1
@@ -293,11 +293,10 @@ src_configure() {
 
 src_compile() {
 	cmake-utils_src_compile all
-	use test && emake -C "${BUILD_DIR}" kodi-test
 }
 
 src_test() {
-	emake -C "${BUILD_DIR}" test
+	cmake-utils_src_make check
 }
 
 src_install() {
@@ -313,14 +312,4 @@ src_install() {
 
 	python_domodule tools/EventClients/lib/python/xbmcclient.py
 	python_newscript "tools/EventClients/Clients/KodiSend/kodi-send.py" kodi-send
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
 }

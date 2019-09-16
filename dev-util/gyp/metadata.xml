@@ -5,4 +5,9 @@
 		<email>arfrever.fta@gmail.com</email>
 		<name>Arfrever Frehtes Taifersar Arahesis</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+		<description>Proxy</description>
+	</maintainer>
 </pkgmetadata>

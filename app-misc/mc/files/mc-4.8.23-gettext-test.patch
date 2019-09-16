@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/693850
+https://midnight-commander.org/raw-attachment/ticket/3629/mc-3629-Linking-fix-for-gettext.patch
+
+Test change counterpart.
+
+--- a/tests/lib/Makefile.am
++++ b/tests/lib/Makefile.am
+@@ -9,3 +9,3 @@ AM_LDFLAGS = @TESTS_LDFLAGS@
+ LIBS = @CHECK_LIBS@ \
+-	$(top_builddir)/lib/libmc.la
++	$(top_builddir)/lib/libmc.la $(LIBINTL)
+ 
+--- a/tests/lib/mcconfig/Makefile.am
++++ b/tests/lib/mcconfig/Makefile.am
+@@ -11,3 +11,3 @@ AM_LDFLAGS = @TESTS_LDFLAGS@
+ LIBS = @CHECK_LIBS@ \
+-	$(top_builddir)/lib/libmc.la
++	$(top_builddir)/lib/libmc.la $(LIBINTL)
+ 
+--- a/tests/lib/search/Makefile.am
++++ b/tests/lib/search/Makefile.am
+@@ -10,3 +10,3 @@ AM_CPPFLAGS = \
+ LIBS = @CHECK_LIBS@ \
+-	$(top_builddir)/lib/libmc.la @PCRE_LIBS@
++	$(top_builddir)/lib/libmc.la @PCRE_LIBS@ $(LIBINTL)
+ 
+--- a/tests/lib/vfs/Makefile.am
++++ b/tests/lib/vfs/Makefile.am
+@@ -14,3 +14,3 @@ EXTRA_DIST = mc.charsets
+ LIBS = @CHECK_LIBS@ \
+-	$(top_builddir)/lib/libmc.la
++	$(top_builddir)/lib/libmc.la $(LIBINTL)
+ 
+--- a/tests/lib/Makefile.in
++++ b/tests/lib/Makefile.in
+@@ -636 +636 @@ LIBPTH_PREFIX = @LIBPTH_PREFIX@
+-LIBS = @CHECK_LIBS@ $(top_builddir)/lib/libmc.la $(am__append_1)
++LIBS = @CHECK_LIBS@ $(top_builddir)/lib/libmc.la $(LIBINTL) $(am__append_1)
+--- a/tests/lib/mcconfig/Makefile.in
++++ b/tests/lib/mcconfig/Makefile.in
+@@ -542 +542 @@ LIBPTH_PREFIX = @LIBPTH_PREFIX@
+-LIBS = @CHECK_LIBS@ $(top_builddir)/lib/libmc.la $(am__append_1)
++LIBS = @CHECK_LIBS@ $(top_builddir)/lib/libmc.la $(LIBINTL) $(am__append_1)
+--- a/tests/lib/search/Makefile.in
++++ b/tests/lib/search/Makefile.in
+@@ -584,2 +584 @@ LIBPTH_PREFIX = @LIBPTH_PREFIX@
+-LIBS = @CHECK_LIBS@ $(top_builddir)/lib/libmc.la @PCRE_LIBS@ \
+-	$(am__append_1)
++LIBS = @CHECK_LIBS@ $(top_builddir)/lib/libmc.la @PCRE_LIBS@ $(LIBINTL) $(am__append_1)
+--- a/tests/lib/vfs/Makefile.in
++++ b/tests/lib/vfs/Makefile.in
+@@ -641 +641 @@ LIBPTH_PREFIX = @LIBPTH_PREFIX@
+-LIBS = @CHECK_LIBS@ $(top_builddir)/lib/libmc.la $(am__append_1)
++LIBS = @CHECK_LIBS@ $(top_builddir)/lib/libmc.la $(LIBINTL) $(am__append_1)

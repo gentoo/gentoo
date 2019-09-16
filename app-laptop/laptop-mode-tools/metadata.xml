@@ -4,6 +4,9 @@
 	<maintainer type="person">
 		<email>alonbl@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name="apm">Add APM (Advanced Power Management) support</flag>
+	</use>
 	<upstream>
 		<maintainer status="active">
 			<email>gentoo-lmt@researchut.com</email>

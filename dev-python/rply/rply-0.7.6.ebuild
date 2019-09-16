@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/appdirs[${PYTHON_USEDEP}]
@@ -26,11 +27,10 @@ python_prepare() {
 	# https://github.com/alex/rply/issues/26; fail under py[3-4]
 	if python_is_python3; then
 		sed -e s':test_simple:_&:' -e s':test_empty_production:_&:' \
-			-i tests/test_parsergenerator.py
+			-i tests/test_parsergenerator.py || die
 	fi
-	distutils-r1_python_prepare_all
 }
 
 python_test() {
-	py.test || die "Tests fail with ${EPYTHON}"
+	pytest -vv || die "Tests fail with ${EPYTHON}"
 }

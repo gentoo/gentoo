@@ -17,7 +17,7 @@ IUSE="debug elogind gles2 input_devices_wacom +introspection screencast systemd 
 REQUIRED_USE="
 	wayland? ( ^^ ( elogind systemd ) )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 # libXi-1.7.4 or newer needed per:
 # https://bugzilla.gnome.org/show_bug.cgi?id=738944
@@ -34,6 +34,7 @@ RDEPEND="
 	>=x11-libs/startup-notification-0.7
 	>=x11-libs/libXcomposite-0.2
 	>=gnome-base/gsettings-desktop-schemas-3.21.4[introspection?]
+	<gnome-base/gsettings-desktop-schemas-3.31
 	gnome-base/gnome-desktop:3=
 
 	x11-libs/libICE

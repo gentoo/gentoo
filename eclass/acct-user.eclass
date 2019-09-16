@@ -108,7 +108,8 @@ readonly ACCT_USER_NAME
 # @REQUIRED
 # @DESCRIPTION:
 # List of groups the user should belong to.  This must be a bash
-# array.
+# array.  The first group specified is the user's primary group, while
+# the remaining groups (if any) become supplementary groups.
 
 
 # << Boilerplate ebuild variables >>

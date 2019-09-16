@@ -30,6 +30,11 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# avoid network-sandbox violations since go-1.13
+	rm src/${EGO_PN}/go.mod || die
+	grep -rlZ '_ "github.com/envoyproxy/protoc-gen-validate/validate"' . | \
+		xargs -0 sed -i '/_ "github.com\/envoyproxy\/protoc-gen-validate\/validate"/d' || die
+
 	sed -e 's:go get -u -v $(GOTOOLS)::' \
 		-e 's:vendorfmt dev-build:dev-build:' \
 		-i "src/${EGO_PN}/GNUmakefile" || die

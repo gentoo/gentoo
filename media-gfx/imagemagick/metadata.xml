@@ -16,4 +16,7 @@
     <flag name="q32">Set quantum depth value to 32</flag>
     <flag name="q8">Set quantum depth value to 8</flag>
   </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:imagemagick:imagemagick</remote-id>
+  </upstream>
 </pkgmetadata>

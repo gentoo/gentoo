@@ -6,6 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">frotz</remote-id>
+		<remote-id type="gitlab">DavidGriffith/frotz</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -5,11 +5,6 @@
 		<email>tools-portage@gentoo.org</email>
 		<name>Gentoo Portage tools team</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>dolsen@gentoo.org</email>
-		<name>Brian Dolbec</name>
-		<description>Upstream Maintainer (please CC on bugs)</description>
-	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">porthole</remote-id>
 	</upstream>

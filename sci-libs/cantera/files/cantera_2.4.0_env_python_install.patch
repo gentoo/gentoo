@@ -1,0 +1,17 @@
+diff -Nur old/interfaces/cython/SConscript new/interfaces/cython/SConscript
+--- old/interfaces/cython/SConscript	2018-08-24 16:24:45.000000000 +0300
++++ new/interfaces/cython/SConscript	2019-08-14 04:28:41.000000000 +0300
+@@ -83,10 +83,10 @@
+             extra = ''
+         elif localenv['OS'] == 'Darwin':
+             extra = localenv.subst(' --prefix=${python%s_prefix}' % major)
+-        elif localenv['libdirname'] == 'lib64':
+-            # 64-bit RHEL / Fedora
++        elif localenv['libdirname'] != 'lib':
++            # 64-bit RHEL / Fedora etc. or e.g. x32 Gentoo profile
+             extra = localenv.subst(
+-                ' --prefix=${python%s_prefix} --install-lib=${python%s_prefix}/lib64/python%s.%s/site-packages' % (major, major, major, minor))
++                ' --prefix=${python%s_prefix} --install-lib=${python%s_prefix}/${libdirname}/python%s.%s/site-packages' % (major, major, major, minor))
+         else:
+             extra = '--user'
+             localenv.AppendENVPath(

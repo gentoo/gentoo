@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/srp_daemon.sh"
+pidfile="/run/${SVCNAME}.pid"
+start_stop_daemon_args="-b -m"
+
+rdma_config="/etc/infiniband/openib.conf"
+[ -f ${rdma_config} ] && source ${rdma_config}
+
+[ ${SRP_DEFAULT_TL_RETRY_COUNT} ] && command_args="-l ${SRP_DEFAULT_TL_RETRY_COUNT}"
+
+start_pre() {
+	if ! [ -e /sys/module/ib_srp ]; then
+		eerror "SRP kernel module is not loaded, unable to start SRP daemon"
+		return 1
+	fi
+	return 0
+}

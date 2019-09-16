@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>dolsen@gentoo.org</email>
-		<name>Brian Dolbec</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 	BuildBot is a system to automate the compile/test cycle required
 	by most software projects to validate code changes.

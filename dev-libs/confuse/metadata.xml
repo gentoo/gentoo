@@ -6,6 +6,7 @@
 		<name>Sergey Popov</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:libconfuse_project:libconfuse</remote-id>
 		<remote-id type="github">martinh/libconfuse</remote-id>
 	</upstream>
 </pkgmetadata>

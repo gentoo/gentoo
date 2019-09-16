@@ -29,6 +29,7 @@ Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Under
 		<flag name="vtk">Build new 3D visualization module viz based on sci-libs/vtk</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:opencv:opencv</remote-id>
 		<remote-id type="sourceforge">opencvlibrary</remote-id>
 		<remote-id type="github">Itseez/opencv_contrib</remote-id>
 	</upstream>

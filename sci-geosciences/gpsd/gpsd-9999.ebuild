@@ -93,6 +93,8 @@ python_prepare_all() {
 	# Extract python info out of SConstruct so we can use saner distribute
 	pyvar() { sed -n "/^ *$1 *=/s:.*= *::p" SConstruct ; }
 	local pybins=$(pyvar python_progs | tail -1)
+	# Handle conditional tools manually. #666734
+	use X && pybins+="+ ['xgps', 'xgpsspeed']"
 	local pysrcs=$(sed -n '/^ *python_extensions = {/,/}/{s:^ *::;s:os[.]sep:"/":g;p}' SConstruct)
 	local packet=$("${PYTHON}" -c "${pysrcs}; print(python_extensions['gps/packet'])")
 	local client=$("${PYTHON}" -c "${pysrcs}; print(python_extensions['gps/clienthelpers'])")

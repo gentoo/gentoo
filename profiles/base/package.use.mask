@@ -7,6 +7,24 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Craig Andrews <candrews@gentoo.org> (2019-09-12)
+# OpenSSL (as of version 1.1.1) doesn't have APIs for QUIC support
+# see https://github.com/openssl/openssl/pull/8797
+net-libs/ngtcp2 ssl
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# LLVM 5 is being removed.
+~dev-ada/gps-2018 gnat_2017
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# media-libs/libnut is slated for removal.
+media-video/mplayer nut
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# media-libs/fmod is slated for removal.
+games-arcade/savagewheels fmod
+games-fps/doomsday fmod
+
 # Thomas Deutschmann <whissi88@gentoo.org> (2019-09-02)
 # PGO not yet supported for comm-central, #693160
 >=mail-client/thunderbird-68 pgo
@@ -32,11 +50,6 @@ sys-cluster/openmpi openmpi_fabrics_open-mx
 # but these currently don't exist in gentoo. The USE flags have to be
 # kept around for dependency reasons from rakudo and friends.
 >=dev-lang/nqp-2019.07 java
-
-# Aaron Bauman <bman@gentoo.org> (2019-08-04)
-# media-libs/ming will be removed in 30 days
-media-gfx/pstoedit flash
-sci-chemistry/wxmacmolplt flash
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-08-03)
 # Early microcode loading is only supported on amd64 & x86
@@ -119,7 +132,6 @@ dev-python/construct python_targets_python2_7
 # Has multiple issues including symlinks and threading.
 # Packages should use and access libmariadb.so instead
 dev-db/mariadb-connector-c mysqlcompat
-~media-tv/kodi-17.6 mariadb
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-03-05)
 # Not keyworded on non-x86 arches

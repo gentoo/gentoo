@@ -51,7 +51,7 @@ LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SUBSLOT}"
 
 if [[ "${PV##*.}" != "9999" ]]; then
-KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh ~sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 IUSE="berkdb debug doc gdbm ithreads"
@@ -468,7 +468,9 @@ src_configure() {
 
 	# fix unaligned access misdetection
 	# https://rt.perl.org/Public/Bug/Display.html?id=133495
-	[[ ${CHOST} == sparc*-solaris* ]] && myconf "-Dd_u32align='define'"
+	# bug #676062
+	use hppa || use sparc || [[ ${CHOST} == sparc*-solaris* ]] && \
+		myconf "-Dd_u32align='define'"
 
 	# Prefix: the host system needs not to follow Gentoo multilib stuff, and in
 	# Prefix itself we don't do multilib either, so make sure perl can find

@@ -6,7 +6,7 @@
 #    https://sourceforge.net/p/gphoto/bugs/643/
 
 EAPI=6
-inherit eutils multilib multilib-minimal udev user
+inherit eutils multilib multilib-minimal udev
 
 DESCRIPTION="Library that implements support for numerous digital cameras"
 HOMEPAGE="http://www.gphoto.org/"
@@ -50,6 +50,7 @@ done
 
 # libgphoto2 actually links to libltdl
 RDEPEND="
+	acct-group/plugdev
 	>=dev-libs/libxml2-2.9.1-r4:2[${MULTILIB_USEDEP}]
 	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
 	>=virtual/libusb-1-r1:1[${MULTILIB_USEDEP}]
@@ -78,10 +79,6 @@ pkg_pretend() {
 	if ! echo "${USE}" | grep "cameras_" > /dev/null 2>&1; then
 		einfo "No camera drivers will be built since you did not specify any."
 	fi
-}
-
-pkg_setup() {
-	enewgroup plugdev
 }
 
 src_prepare() {

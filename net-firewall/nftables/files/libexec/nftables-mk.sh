@@ -24,7 +24,7 @@ main() {
 		;;
 		"store")
 			local tmp_save="${NFTABLES_SAVE}.tmp"
-			umask 600;
+			umask 177
 			(
 				printf '#!/sbin/nft -f\nflush ruleset\n'
 				nft ${SAVE_OPTIONS} list ruleset

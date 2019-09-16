@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2011-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -21,7 +21,7 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-IUSE="alsa +client cups debug doc ffmpeg gstreamer jpeg libav libressl neon openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
+IUSE="alsa +client cpu_flags_arm_neon cups debug doc ffmpeg gstreamer jpeg libav libressl openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
 
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
@@ -104,7 +104,7 @@ src_configure() {
 		-DWITH_FFMPEG=$(usex ffmpeg)
 		-DWITH_GSTREAMER_1_0=$(usex gstreamer)
 		-DWITH_JPEG=$(usex jpeg)
-		-DWITH_NEON=$(usex neon)
+		-DWITH_NEON=$(usex cpu_flags_arm_neon)
 		-DWITH_OPENH264=$(usex openh264)
 		-DWITH_PULSE=$(usex pulseaudio)
 		-DWITH_SERVER=$(usex server)

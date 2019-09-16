@@ -28,7 +28,7 @@ HOMEPAGE="https://www.dovecot.org/"
 
 SLOT="0"
 LICENSE="LGPL-2.1 MIT"
-KEYWORDS="alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 s390 ~sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 ~sparc x86"
 
 IUSE_DOVECOT_AUTH="kerberos ldap lua mysql pam postgres sqlite vpopmail"
 IUSE_DOVECOT_COMPRESS="bzip2 lzma lz4 zlib"
@@ -51,8 +51,8 @@ DEPEND="argon2? ( dev-libs/libsodium )
 	selinux? ( sec-policy/selinux-dovecot )
 	solr? ( net-misc/curl dev-libs/expat )
 	sqlite? ( dev-db/sqlite:* )
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	suid? ( acct-group/mail )
 	tcpd? ( sys-apps/tcp-wrappers )
 	textcat? ( app-text/libexttextcat )

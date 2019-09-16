@@ -357,9 +357,6 @@ src_configure() {
 	export LC_ALL="C"
 	[[ ${COLUMNS:-1} -ge 1 ]] || unset COLUMNS # bug #394091
 
-	# some arches and -O do not mix :)
-	use ppc && replace-flags -O? -O1
-
 	# Perl has problems compiling with -Os in your flags with glibc
 	use elibc_uclibc || replace-flags "-Os" "-O2"
 
@@ -371,12 +368,6 @@ src_configure() {
 
 	# This flag makes compiling crash in interesting ways
 	filter-flags "-malign-double"
-
-	# Fixes bug #97645
-	use ppc && filter-flags "-mpowerpc-gpopt"
-
-	# Fixes bug #143895 on gcc-4.1.1
-	filter-flags "-fsched2-use-superblocks"
 
 	# Generic LTO broken since 5.28, triggers EUMM failures
 	filter-flags "-flto"
@@ -473,7 +464,9 @@ src_configure() {
 
 	# fix unaligned access misdetection
 	# https://rt.perl.org/Public/Bug/Display.html?id=133495
-	[[ ${CHOST} == sparc*-solaris* ]] && myconf "-Dd_u32align='define'"
+	# bug #676062
+	use hppa || use sparc || [[ ${CHOST} == sparc*-solaris* ]] && \
+		myconf "-Dd_u32align='define'"
 
 	# Prefix: the host system needs not to follow Gentoo multilib stuff, and in
 	# Prefix itself we don't do multilib either, so make sure perl can find

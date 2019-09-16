@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ppc64 x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc64 x86"
 IUSE="
 	adns androiddump bcg729 +capinfos +captype ciscodump +dftest doc dpauxmon
 	+dumpcap +editcap kerberos libxml2 lua lz4 maxminddb +mergecap +netlink
@@ -146,7 +146,7 @@ src_configure() {
 		-DBUILD_tshark=$(usex tshark)
 		-DBUILD_udpdump=$(usex udpdump)
 		-DBUILD_wireshark=$(usex qt5)
-		-DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PF}"
+		-DCMAKE_INSTALL_DOCDIR="${EROOT%/}/usr/share/doc/${PF}"
 		-DDISABLE_WERROR=yes
 		-DENABLE_BCG729=$(usex bcg729)
 		-DENABLE_CAP=$(usex filecaps caps)

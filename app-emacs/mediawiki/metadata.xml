@@ -7,6 +7,6 @@
 </maintainer>
 <stabilize-allarches/>
 <upstream>
-  <remote-id type="launchpad">mediawiki-el</remote-id>
+  <remote-id type="github">hexmode/mediawiki-el</remote-id>
 </upstream>
 </pkgmetadata>

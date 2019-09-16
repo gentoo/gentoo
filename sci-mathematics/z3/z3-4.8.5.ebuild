@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Z3Prover/z3/archive/${P^}.tar.gz"
 
 SLOT="0/4.8"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc64 x86"
 IUSE="doc examples gmp isabelle java openmp python"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

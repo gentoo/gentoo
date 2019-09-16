@@ -29,7 +29,6 @@ IUSE=""
 
 DEPEND="
 	~media-tv/kodi-9999
-	~media-libs/kodi-platform-9999
 	"
 RDEPEND="
 	${DEPEND}

@@ -40,7 +40,7 @@ pkg_postinst() {
 	optfeature "showing iptables rules." net-firewall/iptables
 	optfeature "showing ipmi sensors." sys-apps/ipmitool
 	optfeature "showing ipmi sensors." sys-apps/ipmiutil
-	optfeature "showing system sensors." sys-apps/lm_sensors
+	optfeature "showing system sensors." sys-apps/lm-sensors
 	optfeature "showing s.m.a.r.t. health." sys-apps/smartmontools
 	optfeature "showing lsi raid controller health." sys-block/megactl
 	optfeature "showing fake raid statistics." sys-fs/dmraid

@@ -80,7 +80,7 @@ get_udevdir() {
 }
 
 # @FUNCTION: udev_dorules
-# @USAGE: rules [...]
+# @USAGE: <rule> [...]
 # @DESCRIPTION:
 # Install udev rule(s). Uses doins, thus it is fatal in EAPI 4
 # and non-fatal in earlier EAPIs.
@@ -95,7 +95,7 @@ udev_dorules() {
 }
 
 # @FUNCTION: udev_newrules
-# @USAGE: oldname newname
+# @USAGE: <oldname> <newname>
 # @DESCRIPTION:
 # Install udev rule with a new name. Uses newins, thus it is fatal
 # in EAPI 4 and non-fatal in earlier EAPIs.

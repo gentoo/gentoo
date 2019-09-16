@@ -15,7 +15,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/lxqt/${PN}.git"
 else
 	SRC_URI="https://downloads.lxqt.org/downloads/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 fi
 
 LICENSE="LGPL-2.1+"
@@ -54,7 +54,7 @@ DEPEND="
 	kbindicator? ( x11-libs/libxkbcommon )
 	mount? ( kde-frameworks/solid:5 )
 	networkmonitor? ( sys-libs/libstatgrab )
-	sensors? ( sys-apps/lm_sensors )
+	sensors? ( sys-apps/lm-sensors )
 	statusnotifier? ( dev-libs/libdbusmenu-qt[qt5(+)] )
 	sysstat? ( >=lxqt-base/libsysstat-0.4.1 )
 	tray? (

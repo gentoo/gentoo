@@ -160,6 +160,10 @@ RDEPEND+="${CDEPEND}"
 REQUIRED_USE="apache2_modules_http2? ( ssl )
 	apache2_modules_md? ( ssl )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.4.41-libressl.patch" #668060
+)
+
 pkg_setup() {
 	# dependend critical modules which are not allowed in global scope due
 	# to USE flag conditionals (bug #499260)

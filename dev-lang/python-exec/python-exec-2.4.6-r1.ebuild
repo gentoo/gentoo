@@ -27,8 +27,10 @@ RDEPEND="
 src_configure() {
 	local pyimpls=() i EPYTHON
 	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
-		python_export "${i}" EPYTHON
-		pyimpls+=( "${EPYTHON}" )
+		if use "python_targets_${i}"; then
+			python_export "${i}" EPYTHON
+			pyimpls+=( "${EPYTHON}" )
+		fi
 	done
 
 	local myconf=(
@@ -47,13 +49,29 @@ src_install() {
 	newins - python-exec.conf \
 		< <(sed -n -e '/^#/p' config/python-exec.conf.example)
 
+	local programs=( python )
+	local scripts=( python-config 2to3 idle pydoc pyvenv )
+	local i
+	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
+		if use "python_targets_${i}"; then
+			# NB: duplicate entries are harmless
+			if python_is_python3 "${i}"; then
+				programs+=( python3 )
+				scripts+=( python3-config )
+			else
+				programs+=( python2 )
+				scripts+=( python2-config )
+			fi
+		fi
+	done
+
 	local f
-	for f in python{,2,3}; do
+	for f in "${programs[@]}"; do
 		# symlink the C wrapper for python to avoid shebang recursion
 		# bug #568974
 		dosym python-exec2c /usr/bin/"${f}"
 	done
-	for f in python{,2,3}-config 2to3 idle pydoc pyvenv; do
+	for f in "${scripts[@]}"; do
 		# those are python scripts (except for new python-configs)
 		# so symlink them via the python wrapper
 		dosym ../lib/python-exec/python-exec2 /usr/bin/"${f}"
