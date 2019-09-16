@@ -207,7 +207,7 @@ ruby_fakegem_gemsdir() {
 }
 
 # @FUNCTION: ruby_fakegem_doins
-# @USAGE: file [file...]
+# @USAGE: <file> [file...]
 # @DESCRIPTION:
 # Installs the specified file(s) into the gems directory.
 ruby_fakegem_doins() {
@@ -217,8 +217,8 @@ ruby_fakegem_doins() {
 	) || die "failed $0 $@"
 }
 
-# @FUNCTION: ruby_fakegem_newsins
-# @USAGE: file filename
+# @FUNCTION: ruby_fakegem_newins
+# @USAGE: <file> <newname>
 # @DESCRIPTION:
 # Installs the specified file into the gems directory using the provided filename.
 ruby_fakegem_newins() {
@@ -262,7 +262,7 @@ ruby_fakegem_install_gemspec() {
 }
 
 # @FUNCTION: ruby_fakegem_gemspec_gemspec
-# @USAGE: gemspec-input gemspec-output
+# @USAGE: <gemspec-input> <gemspec-output>
 # @DESCRIPTION:
 # Generates an installable version of the specification indicated by
 # RUBY_FAKEGEM_GEMSPEC. This file is eval'ed to produce a final specification
@@ -272,7 +272,7 @@ ruby_fakegem_gemspec_gemspec() {
 }
 
 # @FUNCTION: ruby_fakegem_metadata_gemspec
-# @USAGE: gemspec-metadata gemspec-output
+# @USAGE: <gemspec-metadata> <gemspec-output>
 # @DESCRIPTION:
 # Generates an installable version of the specification indicated by
 # the metadata distributed by the gem itself. This is similar to how
@@ -282,7 +282,7 @@ ruby_fakegem_metadata_gemspec() {
 }
 
 # @FUNCTION: ruby_fakegem_genspec
-# @USAGE: output-gemspec
+# @USAGE: <output-gemspec>
 # @DESCRIPTION:
 # Generates a gemspec for the package and places it into the "specifications"
 # directory of RubyGems.
@@ -327,7 +327,7 @@ EOF
 }
 
 # @FUNCTION: ruby_fakegem_binwrapper
-# @USAGE: command [path] [content]
+# @USAGE: <command> [path] [content]
 # @DESCRIPTION:
 # Creates a new binary wrapper for a command installed by the RubyGem.
 # path defaults to /usr/bin/$command content is optional and can be used
