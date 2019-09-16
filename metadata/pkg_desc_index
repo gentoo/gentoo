@@ -4612,7 +4612,7 @@ dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for 
 dev-lang/ispc 1.9.2 9999: Intel SPMD Program Compiler
 dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance programming language
 dev-lang/jimtcl 0.76 0.78-r2: Small footprint implementation of Tcl programming language
-dev-lang/jsonnet 0.12.1 0.13.0: A data templating language for app and tool developers
+dev-lang/jsonnet 0.12.1 0.13.0 0.14.0: A data templating language for app and tool developers
 dev-lang/julia 1.1.0 1.1.1 9999: High-performance programming language for technical computing
 dev-lang/julia-bin 1.1.0 1.1.1: High-performance programming language for technical computing
 dev-lang/jwasm 2.11a: MASM-compatible TASM-similar assembler (fork of Wasm)
@@ -10811,7 +10811,7 @@ dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/meson 0.50.1 0.51.1 0.51.2 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
-dev-util/mingw64-runtime 5.0.4 6.0.0-r1 6.0.0-r2: Free Win64 runtime and import library definitions
+dev-util/mingw64-runtime 5.0.4 6.0.0-r1 6.0.0-r3: Free Win64 runtime and import library definitions
 dev-util/molecule 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
 dev-util/molecule-core 1.0.2-r1: Sabayon distro-agnostic images build tool
 dev-util/molecule-plugins 1.0.3: A set of base plugins for Molecule
