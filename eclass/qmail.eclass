@@ -69,7 +69,7 @@ dospp() {
 }
 
 # @FUNCTION: dosupervise
-# @USAGE: dosupervise <service> [<runfile> <logfile>]
+# @USAGE: <service> [<runfile> <logfile>]
 # @DESCRIPTION:
 # Install runfiles for services and logging to supervise directory
 dosupervise() {
