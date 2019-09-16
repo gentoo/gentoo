@@ -9,27 +9,27 @@ inherit flag-o-matic toolchain-funcs multilib multilib-minimal
 # which got fixed with this release.
 # Please use 1.7 version number when rolling a new tarball!
 PATCH_SET="openssl-1.0.2-patches-1.5"
-MY_P=${P/_/-}
+MY_P=openssl-${PV/_/-}
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="https://www.openssl.org/"
 SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
 	!vanilla? (
 		mirror://gentoo/${PATCH_SET}.tar.xz
-		https://dev.gentoo.org/~chutzpah/dist/${PN}/${PATCH_SET}.tar.xz
-		https://dev.gentoo.org/~whissi/dist/${PN}/${PATCH_SET}.tar.xz
+		https://dev.gentoo.org/~chutzpah/dist/openssl/${PATCH_SET}.tar.xz
+		https://dev.gentoo.org/~whissi/dist/openssl/${PATCH_SET}.tar.xz
 		https://dev.gentoo.org/~polynomial-c/dist/${PATCH_SET}.tar.xz
 	)"
 
 LICENSE="openssl"
-SLOT="0"
+SLOT="1.0.0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-linux"
 IUSE="+asm bindist gmp kerberos rfc3779 sctp cpu_flags_x86_sse2 sslv2 +sslv3 static-libs test +tls-heartbeat vanilla zlib"
 RESTRICT="!bindist? ( bindist )"
 
-RDEPEND=">=app-misc/c_rehash-1.7-r1
-	gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
+RDEPEND="gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	kerberos? ( >=app-crypt/mit-krb5-1.11.4[${MULTILIB_USEDEP}] )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )"
+	zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
+	!=dev-libs/openssl-1.0.2*:0"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-lang/perl-5
@@ -38,7 +38,11 @@ BDEPEND="
 		sys-apps/diffutils
 		sys-devel/bc
 	)"
-PDEPEND="app-misc/ca-certificates"
+
+RESTRICT="test"
+
+# Do not install any docs
+DOCS=()
 
 # This does not copy the entire Fedora patchset, but JUST the parts that
 # are needed to make it safe to use EC with RESTRICT=bindist.
@@ -55,7 +59,7 @@ FEDORA_SRC_URI=()
 FEDORA_SOURCE=( $SOURCE1 $SOURCE12 $SOURCE13 )
 FEDORA_PATCH=( $PATCH1 $PATCH37 )
 for i in "${FEDORA_SOURCE[@]}" ; do
-	FEDORA_SRC_URI+=( "${FEDORA_GIT_BASE}/${i}?h=${FEDORA_GIT_BRANCH} -> ${P}_${i}" )
+	FEDORA_SRC_URI+=( "${FEDORA_GIT_BASE}/${i}?h=${FEDORA_GIT_BRANCH} -> openssl-${PV}_${i}" )
 done
 for i in "${FEDORA_PATCH[@]}" ; do # Already have a version prefix
 	FEDORA_SRC_URI+=( "${FEDORA_GIT_BASE}/${i}?h=${FEDORA_GIT_BRANCH} -> ${i}" )
@@ -72,7 +76,7 @@ src_prepare() {
 	if use bindist; then
 		# This just removes the prefix, and puts it into WORKDIR like the RPM.
 		for i in "${FEDORA_SOURCE[@]}" ; do
-			cp -f "${DISTDIR}"/"${P}_${i}" "${WORKDIR}"/"${i}" || die
+			cp -f "${DISTDIR}"/"openssl-${PV}_${i}" "${WORKDIR}"/"${i}" || die
 		done
 		# .spec %prep
 		bash "${WORKDIR}"/"${SOURCE1}" || die
@@ -96,9 +100,7 @@ src_prepare() {
 	rm -f Makefile
 
 	if ! use vanilla ; then
-		if [[ $(declare -p PATCHES 2>/dev/null) == "declare -a"* ]] ; then
-			[[ ${#PATCHES[@]} -gt 0 ]] && eapply "${PATCHES[@]}"
-		fi
+		eapply "${WORKDIR}"/patch/*.patch
 	fi
 
 	eapply_user
@@ -242,10 +244,7 @@ multilib_src_compile() {
 	# depend is needed to use $confopts; it also doesn't matter
 	# that it's -j1 as the code itself serializes subdirs
 	emake -j1 V=1 depend
-	emake all
-	# rehash is needed to prep the certs/ dir; do this
-	# separately to avoid parallel build issues.
-	emake rehash
+	emake build_libs
 }
 
 multilib_src_test() {
@@ -253,68 +252,5 @@ multilib_src_test() {
 }
 
 multilib_src_install() {
-	# We need to create $ED/usr on our own to avoid a race condition #665130
-	if [[ ! -d "${ED}/usr" ]]; then
-		# We can only create this directory once
-		mkdir "${ED}"/usr || die
-	fi
-
-	emake INSTALL_PREFIX="${D}" install
-}
-
-multilib_src_install_all() {
-	# openssl installs perl version of c_rehash by default, but
-	# we provide a shell version via app-misc/c_rehash
-	rm "${ED}"/usr/bin/c_rehash || die
-
-	local -a DOCS=( CHANGES* FAQ NEWS README doc/*.txt doc/c-indentation.el )
-	einstalldocs
-
-	use rfc3779 && dodoc engines/ccgost/README.gost
-
-	# This is crappy in that the static archives are still built even
-	# when USE=static-libs.  But this is due to a failing in the openssl
-	# build system: the static archives are built as PIC all the time.
-	# Only way around this would be to manually configure+compile openssl
-	# twice; once with shared lib support enabled and once without.
-	use static-libs || rm -f "${ED}"/usr/lib*/lib*.a
-
-	# create the certs directory
-	dodir ${SSL_CNF_DIR}/certs
-	cp -RP certs/* "${ED}"${SSL_CNF_DIR}/certs/ || die
-	rm -r "${ED}"${SSL_CNF_DIR}/certs/{demo,expired}
-
-	# Namespace openssl programs to prevent conflicts with other man pages
-	cd "${ED}"/usr/share/man
-	local m d s
-	for m in $(find . -type f | xargs grep -L '#include') ; do
-		d=${m%/*} ; d=${d#./} ; m=${m##*/}
-		[[ ${m} == openssl.1* ]] && continue
-		[[ -n $(find -L ${d} -type l) ]] && die "erp, broken links already!"
-		mv ${d}/{,ssl-}${m}
-		# fix up references to renamed man pages
-		sed -i '/^[.]SH "SEE ALSO"/,/^[.]/s:\([^(, ]*(1)\):ssl-\1:g' ${d}/ssl-${m}
-		ln -s ssl-${m} ${d}/openssl-${m}
-		# locate any symlinks that point to this man page ... we assume
-		# that any broken links are due to the above renaming
-		for s in $(find -L ${d} -type l) ; do
-			s=${s##*/}
-			rm -f ${d}/${s}
-			ln -s ssl-${m} ${d}/ssl-${s}
-			ln -s ssl-${s} ${d}/openssl-${s}
-		done
-	done
-	[[ -n $(find -L ${d} -type l) ]] && die "broken manpage links found :("
-
-	dodir /etc/sandbox.d #254521
-	echo 'SANDBOX_PREDICT="/dev/crypto"' > "${ED}"/etc/sandbox.d/10openssl
-
-	diropts -m0700
-	keepdir ${SSL_CNF_DIR}/private
-}
-
-pkg_postinst() {
-	ebegin "Running 'c_rehash ${EROOT}${SSL_CNF_DIR}/certs/' to rebuild hashes #333069"
-	c_rehash "${EROOT}${SSL_CNF_DIR}/certs" >/dev/null
-	eend $?
+	dolib.so lib{crypto,ssl}.so.${SLOT}
 }

@@ -3,31 +3,16 @@
 
 EAPI="7"
 
-inherit flag-o-matic toolchain-funcs multiprocessing multilib multilib-minimal
+inherit flag-o-matic toolchain-funcs multilib multilib-minimal
 
 # openssl-1.0.2-patches-1.6 contain additional CVE patches
 # which got fixed with this release.
 # Please use 1.7 version number when rolling a new tarball!
 PATCH_SET="openssl-1.0.2-patches-1.5"
-
 MY_P=${P/_/-}
-
-# This patch set is based on the following files from Fedora 25,
-# see https://src.fedoraproject.org/rpms/openssl/blob/25/f/openssl.spec
-# for more details:
-# - hobble-openssl (SOURCE1)
-# - ec_curve.c (SOURCE12) -- MODIFIED
-# - ectest.c (SOURCE13)
-# - openssl-1.1.1-ec-curves.patch (PATCH37) -- MODIFIED
-BINDIST_PATCH_SET="openssl-1.0.2t-bindist-1.0.tar.xz"
-
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="https://www.openssl.org/"
 SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
-	bindist? (
-		mirror://gentoo/${BINDIST_PATCH_SET}
-		https://dev.gentoo.org/~whissi/dist/openssl/${BINDIST_PATCH_SET}
-	)
 	!vanilla? (
 		mirror://gentoo/${PATCH_SET}.tar.xz
 		https://dev.gentoo.org/~chutzpah/dist/${PN}/${PATCH_SET}.tar.xz
@@ -37,7 +22,7 @@ SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
 
 LICENSE="openssl"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-linux"
 IUSE="+asm bindist gmp kerberos rfc3779 sctp cpu_flags_x86_sse2 sslv2 +sslv3 static-libs test +tls-heartbeat vanilla zlib"
 RESTRICT="!bindist? ( bindist )"
 
@@ -55,6 +40,28 @@ BDEPEND="
 	)"
 PDEPEND="app-misc/ca-certificates"
 
+# This does not copy the entire Fedora patchset, but JUST the parts that
+# are needed to make it safe to use EC with RESTRICT=bindist.
+# See openssl.spec for the matching numbering of SourceNNN, PatchNNN
+SOURCE1=hobble-openssl
+SOURCE12=ec_curve.c
+SOURCE13=ectest.c
+# These are ported instead
+#PATCH1=openssl-1.1.0-build.patch # Fixes EVP testcase for EC
+#PATCH37=openssl-1.1.0-ec-curves.patch
+FEDORA_GIT_BASE='https://src.fedoraproject.org/cgit/rpms/openssl.git/plain/'
+FEDORA_GIT_BRANCH='f25'
+FEDORA_SRC_URI=()
+FEDORA_SOURCE=( $SOURCE1 $SOURCE12 $SOURCE13 )
+FEDORA_PATCH=( $PATCH1 $PATCH37 )
+for i in "${FEDORA_SOURCE[@]}" ; do
+	FEDORA_SRC_URI+=( "${FEDORA_GIT_BASE}/${i}?h=${FEDORA_GIT_BRANCH} -> ${P}_${i}" )
+done
+for i in "${FEDORA_PATCH[@]}" ; do # Already have a version prefix
+	FEDORA_SRC_URI+=( "${FEDORA_GIT_BASE}/${i}?h=${FEDORA_GIT_BRANCH} -> ${i}" )
+done
+SRC_URI+=" bindist? ( ${FEDORA_SRC_URI[@]} )"
+
 S="${WORKDIR}/${MY_P}"
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -63,14 +70,18 @@ MULTILIB_WRAPPED_HEADERS=(
 
 src_prepare() {
 	if use bindist; then
-		mv "${WORKDIR}"/bindist-patches/hobble-openssl "${WORKDIR}" || die
-		bash "${WORKDIR}"/hobble-openssl || die
-
-		cp -f "${WORKDIR}"/bindist-patches/ec_curve.c "${S}"/crypto/ec/ || die
-		cp -f "${WORKDIR}"/bindist-patches/ectest.c "${S}"/crypto/ec/ || die
-
-		eapply "${WORKDIR}"/bindist-patches/ec-curves.patch
-
+		# This just removes the prefix, and puts it into WORKDIR like the RPM.
+		for i in "${FEDORA_SOURCE[@]}" ; do
+			cp -f "${DISTDIR}"/"${P}_${i}" "${WORKDIR}"/"${i}" || die
+		done
+		# .spec %prep
+		bash "${WORKDIR}"/"${SOURCE1}" || die
+		cp -f "${WORKDIR}"/"${SOURCE12}" "${S}"/crypto/ec/ || die
+		cp -f "${WORKDIR}"/"${SOURCE13}" "${S}"/crypto/ec/ || die # Moves to test/ in OpenSSL-1.1
+		for i in "${FEDORA_PATCH[@]}" ; do
+			eapply "${DISTDIR}"/"${i}"
+		done
+		eapply "${FILESDIR}"/openssl-1.0.2p-hobble-ecc.patch
 		# Also see the configure parts below:
 		# enable-ec \
 		# $(use_ssl !bindist ec2m) \
@@ -85,9 +96,7 @@ src_prepare() {
 	rm -f Makefile
 
 	if ! use vanilla ; then
-		if [[ $(declare -p PATCHES 2>/dev/null) == "declare -a"* ]] ; then
-			[[ ${#PATCHES[@]} -gt 0 ]] && eapply "${PATCHES[@]}"
-		fi
+		eapply "${WORKDIR}"/patch/*.patch
 	fi
 
 	eapply_user
@@ -130,16 +139,6 @@ src_prepare() {
 	# The config script does stupid stuff to prompt the user.  Kill it.
 	sed -i '/stty -icanon min 0 time 50; read waste/d' config || die
 	./config --test-sanity || die "I AM NOT SANE"
-
-	local make_jobs=$(makeopts_jobs)
-	if [[ ${make_jobs} -gt 6 ]] ; then
-		# bug 694512
-		einfo "Limiting parallel jobs to 6 ..."
-		export MAKEOPTS=-j6
-	else
-		# Filter load average
-		export MAKEOPTS=-j${make_jobs}
-	fi
 
 	multilib_copy_sources
 }
