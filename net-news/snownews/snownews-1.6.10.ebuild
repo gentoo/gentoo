@@ -11,11 +11,11 @@ SRC_URI="https://github.com/kouya/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
-IUSE="unicode"
+IUSE=""
 
 COMMON_DEPEND="
 	>=dev-libs/libxml2-2.5.6
-	>=sys-libs/ncurses-5.3:0=[unicode?]
+	>=sys-libs/ncurses-5.3:0=[unicode]
 "
 RDEPEND="
 	${COMMON_DEPEND}
@@ -32,7 +32,8 @@ BDEPEND="virtual/pkgconfig"
 src_prepare() {
 	default
 	tc-export PKG_CONFIG
-	sed -i 's|-lncurses|`\\$(PKG_CONFIG) --libs '"$(usex unicode ncursesw ncurses)"'`|' configure || die
+	local libs=$(${PKG_CONFIG} --libs ncursesw)
+	sed -i "s|-lncursesw\?|${libs}|" configure Config.mk.in || die
 	sed -i 's|$(INSTALL) -s snownews|$(INSTALL) snownews|' Makefile || die
 }
 
