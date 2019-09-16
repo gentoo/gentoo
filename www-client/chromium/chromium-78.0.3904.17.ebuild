@@ -144,11 +144,14 @@ PATCHES=(
 	"${FILESDIR}/chromium-compiler-r10.patch"
 	"${FILESDIR}/chromium-widevine-r4.patch"
 	"${FILESDIR}/chromium-fix-char_traits.patch"
-	"${FILESDIR}/chromium-unbundle-zlib.patch"
-	"${FILESDIR}/chromium-77-fix-gn-gen.patch"
+	"${FILESDIR}/chromium-unbundle-zlib-r1.patch"
 	"${FILESDIR}/chromium-77-system-icu.patch"
 	"${FILESDIR}/chromium-77-clang.patch"
 	"${FILESDIR}/chromium-78-include.patch"
+	"${FILESDIR}/chromium-78-revert-noexcept.patch"
+	"${FILESDIR}/chromium-78-gcc-enum-range.patch"
+	"${FILESDIR}/chromium-78-gcc-std-vector.patch"
+	"${FILESDIR}/chromium-78-gcc-noexcept.patch"
 )
 
 pre_build_checks() {
@@ -192,7 +195,7 @@ src_prepare() {
 
 	local keeplibs=(
 		base/third_party/cityhash
-		base/third_party/dmg_fp
+		base/third_party/double_conversion
 		base/third_party/dynamic_annotations
 		base/third_party/icu
 		base/third_party/nspr
@@ -260,6 +263,7 @@ src_prepare() {
 		third_party/cros_system_api
 		third_party/dav1d
 		third_party/dawn
+		third_party/depot_tools
 		third_party/devscripts
 		third_party/dom_distiller_js
 		third_party/emoji-segmenter
@@ -415,6 +419,7 @@ src_configure() {
 		myconf_gn+=" is_clang=true clang_use_chrome_plugins=false"
 	else
 		myconf_gn+=" is_clang=false"
+		append-cxxflags -fpermissive
 	fi
 
 	# Define a custom toolchain for GN
