@@ -32,7 +32,8 @@ RDEPEND="
 	~sys-devel/clang-${PV}[xml]
 	~sys-devel/llvm-${PV}
 	!<sys-devel/llvm-4.0"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	python? ( >=dev-lang/swig-3.0.11 )
 	test? (
 		~dev-python/lit-${PV}[${PYTHON_USEDEP}]
