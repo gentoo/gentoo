@@ -15,13 +15,14 @@ HOMEPAGE="https://github.com/luvit/luv"
 LUA_COMPAT_HASH="daebe77a2f498817713df37f0bb316db1d82222f"
 SRC_URI="
 	https://github.com/luvit/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/keplerproject/lua-compat-5.3/archive/${LUA_COMPAT_HASH}.zip -> ${PN}-lua-compat-${PV}.zip
+	https://github.com/keplerproject/lua-compat-5.3/archive/${LUA_COMPAT_HASH}.tar.gz -> ${PN}-lua-compat-${PV}.tar.gz
 "
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="luajit test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
