@@ -1137,11 +1137,6 @@ net-misc/gnome-remote-desktop
 # Removal in 30 days
 sys-kernel/bliss-initramfs
 
-# Aaron Bauman <bman@gentoo.org> (2019-08-17)
-# Relies on vulnerable automake:{1.9,1.10}
-# Removal in 30 days
-media-gfx/pixie
-
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
