@@ -7,7 +7,7 @@ inherit autotools eutils
 
 MY_P="${PN}${PV}"
 DESCRIPTION="tool for automating interactive applications"
-HOMEPAGE="http://expect.nist.gov/"
+HOMEPAGE="https://core.tcl-lang.org/expect/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
