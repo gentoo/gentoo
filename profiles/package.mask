@@ -1142,7 +1142,6 @@ sys-kernel/bliss-initramfs
 # Removal in 30 days
 media-gfx/pixie
 net-irc/eiwic
-net-misc/openrdate
 
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
