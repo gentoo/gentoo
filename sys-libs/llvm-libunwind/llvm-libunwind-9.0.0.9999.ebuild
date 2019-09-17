@@ -25,7 +25,8 @@ RESTRICT="!test? ( test )"
 RDEPEND="!sys-libs/libunwind"
 # llvm-6 for new lit options
 DEPEND="
-	>=sys-devel/llvm-6
+	>=sys-devel/llvm-6"
+BDEPEND="
 	test? ( >=sys-devel/clang-3.9.0
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
 
