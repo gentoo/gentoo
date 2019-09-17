@@ -35,8 +35,8 @@ RDEPEND="
 # - dev-python/lit provides the test runner
 # - sys-devel/llvm provide test utils (e.g. FileCheck)
 # - sys-devel/clang provides the compiler to run tests
-DEPEND="${RDEPEND}
-	dev-lang/perl
+DEPEND="${RDEPEND}"
+BDEPEND="dev-lang/perl
 	offload? ( virtual/pkgconfig[${MULTILIB_USEDEP}] )
 	test? (
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
