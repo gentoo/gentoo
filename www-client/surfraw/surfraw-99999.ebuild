@@ -41,7 +41,5 @@ src_install() {
 	bashcomp_alias ${PN} sr
 
 	docinto examples
-	dodoc examples/README
-	insinto /usr/share/doc/${PF}/examples
-	doins examples/uzbl_load_url_from_surfraw
+	dodoc examples/README examples/uzbl_load_url_from_surfraw
 }
