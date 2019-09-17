@@ -5,7 +5,7 @@ EAPI=7
 
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit desktop pax-utils rpm multilib-build xdg
+inherit chromium-2 desktop pax-utils rpm multilib-build xdg
 
 DESCRIPTION="Instant messaging client, with support for audio and video"
 HOMEPAGE="https://www.skype.com/"
@@ -56,6 +56,10 @@ RDEPEND="
 	x11-libs/libxcb[${MULTILIB_USEDEP}]
 	x11-libs/libxkbfile[${MULTILIB_USEDEP}]
 	x11-libs/pango[${MULTILIB_USEDEP}]"
+
+pkg_setup() {
+	chromium_suid_sandbox_check_kernel_config
+}
 
 src_unpack() {
 	rpm_src_unpack ${A}
