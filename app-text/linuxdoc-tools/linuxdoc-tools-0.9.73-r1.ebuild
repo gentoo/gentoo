@@ -72,8 +72,10 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if [[ ! -f ${EROOT}/etc/sgml/linuxdoc.cat ]]; then
-		cp "${T}"/linuxdoc.cat "${EROOT}"/etc/sgml/ || die
+	local backup=${T}/linuxdoc.cat
+	local real=${EROOT}/etc/sgml/linuxdoc.cat
+	if ! cmp -s "${backup}" "${real}"; then
+		cp "${backup}" "${real}" || die
 	fi
 
 	latex-package_pkg_postinst
