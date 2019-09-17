@@ -9,7 +9,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="Consul cross-DC KV replication daemon"
 EGO_PN="github.com/hashicorp/${PN}/..."
 HOMEPAGE="https://github.com/hashicorp/consul-replicate"
-LICENSE="MPL-2.0"
+LICENSE="MPL-2.0 Apache-2.0 BSD MIT"
 SLOT="0"
 IUSE="test"
 
