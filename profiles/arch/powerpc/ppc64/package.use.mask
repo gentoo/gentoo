@@ -3,7 +3,7 @@
 
 # Eugene Bright <eugene@bright.gdn> (2019-09-09)
 # Missing keyword on dev-embedded/libjaylink
-sys-apps/flashrom jlink_spi
+sys-apps/flashrom jlink-spi
 
 # Matthew Thode <prometheanfire@gentoo.org> (2019-08-22)
 # context works with newer versions of boost

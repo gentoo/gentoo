@@ -7,7 +7,7 @@ sys-firmware/seabios -debug
 
 # Eugene Bright <eugene@bright.gdn> (2019-09-09)
 # Missing keyword on dev-embedded/libjaylink
-sys-apps/flashrom jlink_spi
+sys-apps/flashrom jlink-spi
 
 # Conrad Kostecki <ck+gentoo@bl4ckb0x.de> (2019-08-17)
 # app-misc/graphlcd-base won't work on PowerPC/PowerPC64
