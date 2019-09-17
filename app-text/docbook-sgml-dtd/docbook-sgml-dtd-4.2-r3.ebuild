@@ -37,8 +37,10 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if [[ ! -f ${EROOT}/etc/sgml/sgml-docbook-${PV}.cat ]]; then
-		cp "${T}"/sgml-docbook-${PV}.cat "${EROOT}"/etc/sgml/ || die
+	local backup=${T}/sgml-docbook-${PV}.cat
+	local real=${EROOT}/etc/sgml/sgml-docbook-${PV}.cat
+	if ! cmp -s "${backup}" "${real}"; then
+		cp "${backup}" "${real}" || die
 	fi
 	sgml-catalog-r1_pkg_postinst
 }
