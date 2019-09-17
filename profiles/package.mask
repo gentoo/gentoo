@@ -30,6 +30,27 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-17)
+# Unmaintained EAPI 0 Apache modules + mod_access_dnsbl as a revdep.
+# Removal in 30 days.  Bug #694608.
+www-apache/mod_access_dnsbl
+www-apache/mod_authn_sasl
+www-apache/mod_depends
+www-apache/mod_dnsbl_lookup
+www-apache/mod_flvx
+www-apache/mod_geoip2
+www-apache/mod_macro
+www-apache/mod_umask
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-17)
+# Unmaintained libraries with no reverse dependencies.
+# Removal in 30 days.  Bug #694602.
+dev-db/cppdb
+dev-db/odbtp
+dev-db/soci
+dev-db/xbase
+dev-db/xbsql
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-17)
 # Last touched in 2005.  EAPI 0.  No clearly defined license.
 # Removal in 30 days.  Bug #694598.
 sys-fs/wpflash
@@ -1131,23 +1152,6 @@ virtual/ruby-ffi
 # Mart Raudsepp <leio@gentoo.org> (2019-08-18)
 # Fails to dbus activate properly for me. Help welcome figuring it out.
 net-misc/gnome-remote-desktop
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-17)
-# Unmaintained both upstream and in gentoo, author retired
-# Removal in 30 days
-sys-kernel/bliss-initramfs
-
-# Aaron Bauman <bman@gentoo.org> (2019-08-17)
-# Relies on vulnerable automake:{1.9,1.10}
-# Removal in 30 days
-media-gfx/pixie
-net-irc/eiwic
-net-misc/openrdate
-
-# Aaron Bauman <bman@gentoo.org> (2019-08-17)
-# Unmaintained, outstanding sec vuln bug #540360
-# Lots of new versions upstream. Removal in 30 days.
-dev-embedded/bitbake
 
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who

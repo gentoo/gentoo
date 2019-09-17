@@ -17,7 +17,7 @@ IUSE="debug elogind gles2 input_devices_wacom +introspection screencast systemd 
 REQUIRED_USE="
 	wayland? ( ^^ ( elogind systemd ) )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 # libXi-1.7.4 or newer needed per:
 # https://bugzilla.gnome.org/show_bug.cgi?id=738944
