@@ -30,6 +30,15 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-17)
+# Unmaintained libraries with no reverse dependencies.
+# Removal in 30 days.  Bug #694602.
+dev-db/cppdb
+dev-db/odbtp
+dev-db/soci
+dev-db/xbase
+dev-db/xbsql
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-17)
 # Last touched in 2005.  EAPI 0.  No clearly defined license.
 # Removal in 30 days.  Bug #694598.
 sys-fs/wpflash
