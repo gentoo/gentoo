@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit font
 FONTDIR="/usr/share/fonts/indic/${PN}"
 FONT_SUFFIX="ttf"
 
-DESCRIPTION="The Lohit Bengali font"
+DESCRIPTION="The Lohit Odia font"
 HOMEPAGE="https://pagure.io/lohit"
 SRC_URI="https://releases.pagure.org/lohit/${PN}-${FONT_SUFFIX}-${PV}.tar.gz"
 
