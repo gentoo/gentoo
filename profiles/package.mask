@@ -1132,11 +1132,6 @@ virtual/ruby-ffi
 # Fails to dbus activate properly for me. Help welcome figuring it out.
 net-misc/gnome-remote-desktop
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-17)
-# Unmaintained both upstream and in gentoo, author retired
-# Removal in 30 days
-sys-kernel/bliss-initramfs
-
 # Mike Gilbert <floppym@gentoo.org> (2019-08-13)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
