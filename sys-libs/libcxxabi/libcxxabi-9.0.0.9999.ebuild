@@ -32,7 +32,8 @@ RDEPEND="
 	)"
 # llvm-6 for new lit options
 DEPEND="${RDEPEND}
-	>=sys-devel/llvm-6
+	>=sys-devel/llvm-6"
+BDEPEND="
 	test? ( >=sys-devel/clang-3.9.0
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
 
