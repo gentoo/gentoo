@@ -405,7 +405,7 @@ ada_setup() {
 	unset EADA
 
 	if [[ ${#_ADA_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
-		if use "ada_targets_${_ADA_SUPPORTED_IMPLS[0]}"; then
+		if use "ada_target_${_ADA_SUPPORTED_IMPLS[0]}"; then
 			# Only one supported implementation, enable it explicitly
 			ada_export "${_ADA_SUPPORTED_IMPLS[0]}" EADA GCC_PV
 			ada_wrapper_setup
