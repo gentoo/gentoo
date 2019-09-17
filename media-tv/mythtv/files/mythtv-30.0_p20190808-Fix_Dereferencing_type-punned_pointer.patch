@@ -1,0 +1,34 @@
+--- a/libs/libmythfreemheg/Programs.cpp
++++ b/libs/libmythfreemheg/Programs.cpp
+@@ -232,7 +232,10 @@ void MHResidentProgram::CallProgram(bool fIsFork, const MHObjectRef &success, co
+                 for (int i = 0; i < format.Size(); i++)
+                 {
+                     unsigned char ch = format.GetAt(i);
+-                    char buffer[5]; // Largest text is 4 chars for a year + null terminator
++		    // Largest text is 4 chars for a year + null terminator
++		    // But... adding a constant to the value might be 5 chars + null terminator
++		    // Using 6 gets rid of compiler warning
++                    char buffer[6];
+ 
+                     if (ch == '%')
+                     {
+@@ -249,16 +252,16 @@ void MHResidentProgram::CallProgram(bool fIsFork, const MHObjectRef &success, co
+                         switch (ch)
+                         {
+                             case 'Y':
+-                                sprintf(buffer, "%04d", timeStr->tm_year + 1900);
++                                sprintf(buffer, "%04d", (unsigned short)(timeStr->tm_year + 1900));
+                                 break;
+                             case 'y':
+                                 sprintf(buffer, "%02d", timeStr->tm_year % 100);
+                                 break;
+                             case 'X':
+-                                sprintf(buffer, "%02d", timeStr->tm_mon + 1);
++                                sprintf(buffer, "%02d", (unsigned short)(timeStr->tm_mon + 1));
+                                 break;
+                             case 'x':
+-                                sprintf(buffer, "%1d", timeStr->tm_mon + 1);
++                                sprintf(buffer, "%1d", (unsigned short)(timeStr->tm_mon + 1));
+                                 break;
+                             case 'D':
+                                 sprintf(buffer, "%02d", timeStr->tm_mday);
