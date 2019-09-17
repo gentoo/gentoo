@@ -34,8 +34,9 @@ RDEPEND="
 	dev-ml/ocaml-ctypes:=
 	~sys-devel/llvm-${PV}:=[${LLVM_TARGET_USEDEPS// /,},debug?]
 	!sys-devel/llvm[ocaml(-)]"
+DEPEND="${RDEPEND}"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
-DEPEND="${RDEPEND}
+BDEPEND="
 	dev-lang/perl
 	dev-ml/findlib
 	test? ( dev-ml/ounit )
