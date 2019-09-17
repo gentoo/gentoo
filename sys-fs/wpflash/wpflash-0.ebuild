@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -9,10 +9,11 @@ DESCRIPTION="flash the firmware on a Webpal"
 HOMEPAGE="http://webpal.bigbrd.com/"
 SRC_URI="http://webpal.bigbrd.com/wpflash.c"
 
-LICENSE="public-domain"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
+RESTRICT="bindist mirror"
 
 DEPEND=""
 
