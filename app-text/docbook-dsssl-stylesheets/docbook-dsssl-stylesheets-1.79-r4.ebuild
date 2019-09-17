@@ -64,8 +64,10 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if [[ ! -f ${EROOT}/etc/sgml/dsssl-docbook-stylesheets.cat ]]; then
-		cp "${T}"/dsssl-docbook-stylesheets.cat "${EROOT}"/etc/sgml/ || die
+	local backup=${T}/dsssl-docbook-stylesheets.cat
+	local real=${EROOT}/etc/sgml/dsssl-docbook-stylesheets.cat
+	if ! cmp -s "${backup}" "${real}"; then
+		cp "${backup}" "${real}" || die
 	fi
 	# this one's shared with openjade, so we need to do it in postinst
 	if ! grep -q -s dsssl-docbook-stylesheets.cat \
