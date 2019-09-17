@@ -62,7 +62,7 @@ pkg_preinst() {
 pkg_postinst() {
 	# restore backed up files if necessary
 	for f in sgml-ent.cat sgml-docbook.cat; do
-		if [[ ! -s ${EROOT}/etc/sgml/${f} ]]; then
+		if ! cmp -s "${T}/${f}" "${EROOT}/etc/sgml/${f}"; then
 			cp "${T}/${f}" "${EROOT}"/etc/sgml/ || die
 		fi
 	done
