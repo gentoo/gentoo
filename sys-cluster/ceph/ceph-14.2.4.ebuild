@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 DESCRIPTION="Ceph distributed filesystem"
@@ -153,6 +153,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.0-link-crc32-statically.patch"
 	"${FILESDIR}/ceph-14.2.0-cython-0.29.patch"
 	"${FILESDIR}/ceph-14.2.3-boost-1.70.patch"
+	"${FILESDIR}/ceph-14.2.3-dpdk-compile-fix-1.patch"
 )
 
 # dpdk and ninja don't get along
