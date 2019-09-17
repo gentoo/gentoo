@@ -23,14 +23,14 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="~sys-devel/llvm-${PV}"
-DEPEND="${RDEPEND}
-	test? ( $(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]") )"
+DEPEND="${RDEPEND}"
+BDEPEND="test? ( $(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]") )"
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
 python_check_deps() {
-	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+	has_version -b "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
