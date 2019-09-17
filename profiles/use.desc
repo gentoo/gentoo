@@ -177,6 +177,7 @@ lm-sensors - Add linux lm-sensors (hardware sensors) support
 lua - Enable Lua scripting support
 luajit - Use dev-lang/luajit instead of dev-lang/lua (ineffective with USE=-lua)
 lzma - Support for LZMA (de)compression algorithm
+lz4 - Enable support for lz4 compression (as implemented in app-arch/lz4)
 lzo - Enable support for lzo compression
 m17n-lib - Enable m17n-lib support
 mad - Add support for mad (high-quality mp3 decoder library and cli frontend)
@@ -284,6 +285,7 @@ slang - Add support for the slang text display library (it's like ncurses, but d
 slp - Add Service Locator Protocol support
 smartcard - Enable smartcard support
 smp - Enable support for multiprocessors or multicore systems
+snappy - Enable support for Snappy compression (as implemented in app-arch/snappy)
 sndfile - Add support for libsndfile
 snmp - Add support for the Simple Network Management Protocol if available
 soap - Add support for SOAP (Simple Object Access Protocol)

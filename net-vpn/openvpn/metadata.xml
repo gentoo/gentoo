@@ -15,7 +15,6 @@ networks using an encrypted tunnel.</longdescription>
   <use>
     <flag name="down-root">Enable the down-root plugin</flag>
     <flag name="iproute2">Enabled iproute2 support instead of net-tools</flag>
-    <flag name="lz4">Enable LZ4 support</flag>
     <flag name="mbedtls">Use mbed TLS instead of OpenSSL</flag>
     <flag name="pkcs11">Enable PKCS#11 smartcard support</flag>
     <flag name="plugins">Enable the OpenVPN plugin system</flag>

@@ -37,7 +37,6 @@
 		<flag name="ssh">Enable SSH based block device support via <pkg>net-libs/libssh2</pkg></flag>
 		<flag name="static-user">Build the User targets as static binaries</flag>
 		<flag name="static">Build the User and Software MMU (system) targets as well as tools as static binaries</flag>
-		<flag name="snappy">Enable support for snappy compression</flag>
 		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
 		<flag name="tci">Enable the TCG Interpreter which can speed up or slowdown workloads depending on the host and guest CPUs being emulated. In the future it will be a runtime option but for now its compile time.</flag>
 		<flag name="jpeg">Enable jpeg image support for the VNC console server</flag>
