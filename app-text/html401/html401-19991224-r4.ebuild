@@ -36,8 +36,10 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if [[ ! -f ${EROOT}/etc/sgml/html401.cat ]]; then
-		cp "${T}"/html401.cat "${EROOT}"/etc/sgml/ || die
+	local backup=${T}/html401.cat
+	local real=${EROOT}/etc/sgml/html401.cat
+	if ! cmp -s "${backup}" "${real}"; then
+		cp "${backup}" "${real}" || die
 	fi
 	sgml-catalog-r1_pkg_postinst
 }
