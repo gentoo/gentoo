@@ -20,26 +20,24 @@
 		streaming application with Pan/Tilt
 	</longdescription>
 	<use>
-		<flag name="input_testpicture">Plugin for sending compiled in, test
+		<flag name="input-testpicture">Plugin for sending compiled in, test
 			pictures</flag>
-		<flag name="input_control">Plugin giving ability to control camera
+		<flag name="input-control">Plugin giving ability to control camera
 			movement (only specific cameras)</flag>
-		<flag name="input_file">Plugin that watches given directory and send
+		<flag name="input-file">Plugin that watches given directory and send
 			it's content</flag>
-		<flag name="input_uvc">Plugin that sends video stream from UVC
+		<flag name="input-uvc">Plugin that sends video stream from UVC
 			compatible camera</flag>
-		<flag name="output_file">Plugin that saves received content under given
+		<flag name="output-file">Plugin that saves received content under given
 			location</flag>
-		<flag name="output_udp">Plugin receiving content over UDP and storing to
+		<flag name="output-udp">Plugin receiving content over UDP and storing to
 			a directory</flag>
-		<flag name="output_http">Small HTTP server plugin which sends WWW
+		<flag name="output-http">Small HTTP server plugin which sends WWW
 			directory content and streams image content</flag>
-		<flag name="output_autofocus">Auto focusing plugin</flag>
-		<flag name="output_rtsp">Plugin which provides a mechanism to take
+		<flag name="output-autofocus">Auto focusing plugin</flag>
+		<flag name="output-rtsp">Plugin which provides a mechanism to take
 			snapshots with a trigger from a UDP packet</flag>
 		<flag name="www">Installs WWW content</flag>
-		<flag name="v4l">Uses <pkg>media-libs/libv4l</pkg> function mapping for
-			input_uvc plugin</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">mjpg-streamer</remote-id>
