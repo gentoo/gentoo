@@ -14,7 +14,8 @@ fi
 DESCRIPTION="Command line tool for Amazon Route 53"
 HOMEPAGE="https://github.com/barnybug/cli53"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0 BSD MIT"
+
 SLOT="0"
 
 EGO_PN="github.com/barnybug/cli53"
