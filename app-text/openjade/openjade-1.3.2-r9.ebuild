@@ -124,8 +124,10 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if [[ ! -f ${EROOT}/etc/sgml/${P}.cat ]]; then
-		cp "${T}"/${P}.cat "${EROOT}"/etc/sgml/ || die
+	local backup=${T}/${P}.cat
+	local real=${EROOT}/etc/sgml/${P}.cat
+	if ! cmp -s "${backup}" "${real}"; then
+		cp "${backup}" "${real}" || die
 	fi
 	# this one's shared with docbook-dsssl, so we need to do it in postinst
 	if ! grep -q -s ${P}.cat \
