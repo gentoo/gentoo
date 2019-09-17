@@ -5,6 +5,6 @@
 		<email>hanno@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">processone/eimp</remote-id>
+		<remote-id type="github">processone/mqtree</remote-id>
 	</upstream>
 </pkgmetadata>
