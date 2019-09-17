@@ -10238,7 +10238,7 @@ dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubyte
 dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 1.2.2 1.2.3 1.2.4: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.5: Parse YAML safely, alternative implementation of YAML.load
-dev-ruby/sanitize 4.6.6 5.0.0: Sanitize is a whitelist-based HTML sanitizer
+dev-ruby/sanitize 4.6.6 5.0.0 5.1.0: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.3 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-listen 4.0.0: Fork of guard/listen provides a stable API for users of the ruby Sass CLI
 dev-ruby/sass-rails 5.0.7 5.0.8: Official Ruby-on-Rails Integration with Sass
@@ -10265,7 +10265,7 @@ dev-ruby/sigar 0.7.3: System Information Gatherer And Reporter
 dev-ruby/sigdump 0.2.4: Setup signal handler which dumps backtrace of threads and allocated objects
 dev-ruby/simple-rss 1.3.3: A simple, flexible, extensible, and liberal RSS and Atom reader for Ruby
 dev-ruby/simple_oauth 0.3.1: Simply builds and verifies OAuth headers
-dev-ruby/simplecov 0.16.1-r1 0.17.0: Code coverage with a configuration library and merging across test suites
+dev-ruby/simplecov 0.16.1-r1 0.17.0 0.17.1: Code coverage with a configuration library and merging across test suites
 dev-ruby/simplecov-html 0.10.2: Generates a HTML report of your SimpleCov ruby code coverage results
 dev-ruby/sinatra 1.4.8 2.0.5 2.0.7: A DSL for quickly creating web applications in Ruby with minimal effort
 dev-ruby/sinatra-partial 1.0.1: Just the partials helper in a gem
@@ -12674,7 +12674,7 @@ media-fonts/Humor-Sans 1.0-r1: A sanserif typeface in the style of xkcd
 media-fonts/ahem 1.0: A font developed to help test writers develop predictable tests
 media-fonts/alee-fonts 13-r1: A Lee's Hangul truetype fonts
 media-fonts/alegreya-sans 2.008: A humanist sans-serif typeface with a calligraphic, dynamic feeling
-media-fonts/alegreya-serif 2.007: Alegreya serif type family
+media-fonts/alegreya-serif 2.007 2.008: Alegreya serif type family
 media-fonts/andika 5.000: Sans-serif font designed for literacy use
 media-fonts/anonymous-pro 1.002-r1: Monospaced truetype font designed with coding in mind
 media-fonts/aquafont 2.7-r4: Handwritten Japanese fixed-width TrueType font
@@ -12698,7 +12698,7 @@ media-fonts/cronyx-fonts 2.3.1-r2 2.3.8: Cronyx Cyrillic bitmap fonts for X
 media-fonts/croscorefonts 1.23.0 1.31.0: Open licensed fonts metrically compatible with MS corefonts
 media-fonts/crosextrafonts-caladea 20130214: Open licensed serif font metrically compatible with Cambria
 media-fonts/crosextrafonts-carlito 20130920: Open licensed sans-serif font metrically compatible with Calibri
-media-fonts/culmus 0.120-r5: Hebrew Type1 fonts
+media-fonts/culmus 0.120-r5 0.133: Hebrew Type1 fonts
 media-fonts/dejavu 2.35 2.37: DejaVu fonts, bitstream vera with ISO-8859-2 characters
 media-fonts/dina 2.89 2.93: A monospace bitmap font, primarily aimed at programmers
 media-fonts/droid 113-r5: Font family from Google's Android project
@@ -12707,7 +12707,7 @@ media-fonts/eb-garamond 0.016: Claude Garamont's humanist typeface from the mid-
 media-fonts/efont-unicode 0.4.2-r1: The /efont/ Unicode Bitmap Fonts
 media-fonts/ekushey-bangla-fonts 20070420: A collection of Free fonts for the Bangla (Bengali) script
 media-fonts/encodings 1.0.5: X.Org font encodings
-media-fonts/essays1743 2.000 2.001: John Stracke's Essays 1743 font
+media-fonts/essays1743 2.100: John Stracke's Essays 1743 font
 media-fonts/exljbris-free 20100320: Beautiful free fonts from exljbris Font Foundry
 media-fonts/exo 2: A geometric sans-serif font with a technological feel
 media-fonts/fantasque-sans-mono 2014.07: Functional programming font designed with some handwriting-like fuzziness
@@ -12781,7 +12781,7 @@ media-fonts/jomolhari 0.003c: Bhutanese style dbu-can font for Tibetan/Dzongkha 
 media-fonts/jsmath 1.0: Raster fonts for jsmath
 media-fonts/jsmath-extra-dark 1.0: Extra raster fonts for jsmath, dark version
 media-fonts/jsmath-extra-light 1.0: Extra raster fonts for jsmath, light version
-media-fonts/kacst-fonts 1.6.2 2.0: KACST Arabic TrueType Fonts
+media-fonts/kacst-fonts 2.01: KACST Arabic TrueType Fonts
 media-fonts/kanjistrokeorders 4.002: Font for viewing stroke order diagrams for kanji, kana and other characters
 media-fonts/khmer 5.0-r1: Fonts for the Khmer language of Cambodia
 media-fonts/kochi-substitute 20030809-r3: Kochi Japanese TrueType fonts with Wadalab Fonts
@@ -12789,23 +12789,23 @@ media-fonts/konfont 0.1: Fontset for KON2
 media-fonts/koruri 20161105: Japanese TrueType font based on M+ outline fonts and Open Sans
 media-fonts/lfpfonts-fix 0.83-r2: Linux Font Project fixed-width fonts
 media-fonts/lfpfonts-var 0.84: Linux Font Project variable-width fonts
-media-fonts/liberation-fonts 2.00.1-r3: A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
+media-fonts/liberation-fonts 2.00.1-r3 2.00.5: A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
 media-fonts/libertine 5.3.0.20120702-r2 5.3.0.20120702-r3: Fonts from the Linux Libertine Open Fonts Project
 media-fonts/lklug 0.6-r1: Sinhala font
-media-fonts/lohit-assamese 2.91.2: The Lohit Assamese font
-media-fonts/lohit-bengali 2.91.2: The Lohit Bengali font
-media-fonts/lohit-devanagari 2.95.0 2.95.1: The Lohit Devanagari font
+media-fonts/lohit-assamese 2.91.5: The Lohit Assamese font
+media-fonts/lohit-bengali 2.91.5: The Lohit Bengali font
+media-fonts/lohit-devanagari 2.95.4: The Lohit Devanagari font
 media-fonts/lohit-fonts 2.4.2 2.20150220: Meta ebuild for the Lohit family of Indic fonts
-media-fonts/lohit-gujarati 2.92.2: The Lohit Gujarati font
-media-fonts/lohit-gurmukhi 2.91.0: The Lohit Gurmukhi font
-media-fonts/lohit-kannada 2.5.3: The Lohit Kannada font
-media-fonts/lohit-malayalam 2.92.0: The Lohit Malayalam font
-media-fonts/lohit-marathi 2.94.0: The Lohit Marathi font
-media-fonts/lohit-nepali 2.94.0: The Lohit Nepali font
-media-fonts/lohit-odia 2.91.0: The Lohit Odia font
-media-fonts/lohit-tamil 2.91.1: The Lohit Tamil font
-media-fonts/lohit-tamil-classical 2.5.3: The Lohit Tamil Classical font
-media-fonts/lohit-telugu 2.5.3: The Lohit Telugu font
+media-fonts/lohit-gujarati 2.92.4: The Lohit Gujarati font
+media-fonts/lohit-gurmukhi 2.91.2: The Lohit Gurmukhi font
+media-fonts/lohit-kannada 2.5.4: The Lohit Kannada font
+media-fonts/lohit-malayalam 2.92.2: The Lohit Malayalam font
+media-fonts/lohit-marathi 2.94.2: The Lohit Marathi font
+media-fonts/lohit-nepali 2.94.2: The Lohit Nepali font
+media-fonts/lohit-odia 2.91.2: The Lohit Odia font
+media-fonts/lohit-tamil 2.91.3: The Lohit Tamil font
+media-fonts/lohit-tamil-classical 2.5.4: The Lohit Tamil Classical font
+media-fonts/lohit-telugu 2.5.4: The Lohit Telugu font
 media-fonts/mathematica-fonts 10.0: Mathematica's Fonts for MathML
 media-fonts/mgopen 1.1: Magenta MgOpen typeface collection for Modern Greek
 media-fonts/mikachan-font-otf 9.1-r1: Mikachan Japanese TrueType Collection fonts
