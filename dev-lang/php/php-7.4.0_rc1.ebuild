@@ -218,9 +218,11 @@ src_prepare() {
 		sapi/fpm/php-fpm.conf.in \
 		|| die 'failed to move the include directory in php-fpm.conf'
 
-	# Bug 669566 - necessary so that build tools are updated for commands like pecl
-	cp "${BROOT}/usr/share/aclocal/libtool.m4" build/ || die
-	eautoreconf
+	# Emulate buildconf to support cross-compilation
+	rm -fr aclocal.m4 autom4te.cache config.cache \
+		configure main/php_config.h.in || die
+	eautoconf --force
+	eautoheader
 }
 
 src_configure() {
