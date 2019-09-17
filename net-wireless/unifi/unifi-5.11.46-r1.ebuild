@@ -6,19 +6,23 @@ EAPI=6
 # Set this var for any releases except stable
 RC_SUFFIX="-a5113ebc10"
 
-inherit systemd user
+inherit systemd
 
 DESCRIPTION="A Management Controller for Ubiquiti Networks UniFi APs"
 HOMEPAGE="https://www.ubnt.com"
 SRC_URI="https://dl.ui.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
 
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
 SLOT="0/5.11"
 IUSE="systemd"
 
-RDEPEND="dev-db/mongodb
-	virtual/jre:1.8"
+RDEPEND="
+	acct-group/unifi
+	acct-user/unifi
+	dev-db/mongodb
+	virtual/jre:1.8
+"
 
 DEPEND="app-arch/unzip"
 
@@ -29,11 +33,6 @@ S="${WORKDIR}/UniFi"
 DOCS=( "readme.txt" )
 
 QA_PREBUILT="usr/lib/unifi/lib/native/Linux/x86_64/*.so"
-
-pkg_setup() {
-	enewgroup unifi
-	enewuser unifi -1 -1 /var/lib/unifi unifi
-}
 
 src_prepare() {
 	# Remove unneeded files Linux, Mac and Windows
