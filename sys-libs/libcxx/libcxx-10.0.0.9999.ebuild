@@ -46,10 +46,10 @@ RDEPEND="
 # clang-3.9.0 installs necessary target symlinks unconditionally
 # which removes the need for MULTILIB_USEDEP
 DEPEND="${RDEPEND}
-	test? ( >=sys-devel/clang-3.9.0
-		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )
-	app-arch/xz-utils
 	>=sys-devel/llvm-6"
+BDEPEND="
+	test? ( >=sys-devel/clang-3.9.0
+		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
 
 DOCS=( CREDITS.TXT )
 
