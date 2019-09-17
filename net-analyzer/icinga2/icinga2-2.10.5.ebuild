@@ -24,7 +24,7 @@ WX_GTK_VER="3.0"
 CDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	>=dev-libs/boost-1.58-r1
+	>=dev-libs/boost-1.58-r1:=
 	console? ( dev-libs/libedit )
 	mariadb? ( dev-db/mariadb-connector-c:= )
 	mysql? ( dev-db/mysql-connector-c:= )
