@@ -18562,7 +18562,7 @@ www-client/ripe-atlas-cousteau 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.49.5 2.49.9.1_p0: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
-www-client/surfraw 2.3.0-r1 99999: A fast unix command line interface to WWW
+www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 2.7.1628.33_p1: A browser for our friends
 www-client/vivaldi-snapshot 2.8.1664.4_p1 2.8.1664.25_p1 2.8.1664.26_p1: A browser for our friends
@@ -18614,7 +18614,7 @@ www-servers/lighttpd 1.4.53 1.4.54 9999: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.16.1-r1 1.17.3-r1: Robust, small and high performance http and reverse proxy server
-www-servers/nginx-unit 1.8.0 1.9.0 1.10.0: A dynamic web and application server
+www-servers/nginx-unit 1.8.0 1.10.0: A dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3.3 9999: Pretty small HTTP server -- a command-line tool to share files
