@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 S=${WORKDIR}/${P}/utils/lit
 
 # Tests require 'FileCheck' and 'not' utilities (from llvm)
-DEPEND="
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
