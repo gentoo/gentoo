@@ -9,4 +9,4 @@ RDEPEND=>=app-text/build-docbook-catalog-1.6 >=app-text/sgml-common-0.6.3-r7
 SLOT=4.1.2.5
 SRC_URI=https://www.oasis-open.org/docbook/xml/simple/4.1.2.5/simple4125.zip
 _eclasses_=sgml-catalog-r1	d8b0f83f3e731fd3f34507d50d8bc7e2
-_md5_=781aa2417f4a7b8c4b4607380a97f6cb
+_md5_=c5d87eafebef73ace4d3721176f618ea

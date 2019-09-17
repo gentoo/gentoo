@@ -8,4 +8,4 @@ RDEPEND=>=app-text/sgml-common-0.6.3-r7
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~floppym/dist/sgml-common/sgml-common-0.6.3-gentoo.tar.gz
 _eclasses_=prefix	c2993e4c430c1ee24f278983d6189501	sgml-catalog-r1	d8b0f83f3e731fd3f34507d50d8bc7e2
-_md5_=7333e3b5287ee1980abf8493390f79d7
+_md5_=1f2e968ef3e157fde7790960eb3debf0

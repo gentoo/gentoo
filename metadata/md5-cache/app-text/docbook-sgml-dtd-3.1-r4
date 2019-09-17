@@ -9,4 +9,4 @@ RDEPEND=>=app-text/sgml-common-0.6.3-r7
 SLOT=3.1
 SRC_URI=https://www.oasis-open.org/docbook/sgml/3.1/docbk31.zip
 _eclasses_=sgml-catalog-r1	d8b0f83f3e731fd3f34507d50d8bc7e2
-_md5_=a8f6f2df3236c1a3c5dc93ec13c6c8ce
+_md5_=4f0bda41bf47c419550933c78b140db7

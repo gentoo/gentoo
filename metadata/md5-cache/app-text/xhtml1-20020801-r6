@@ -9,4 +9,4 @@ RDEPEND=>=app-text/sgml-common-0.6.3-r7
 SLOT=0
 SRC_URI=mirror://gentoo/xhtml1.tgz -> xhtml1-20020801.tgz
 _eclasses_=sgml-catalog-r1	d8b0f83f3e731fd3f34507d50d8bc7e2
-_md5_=6a32717b32a58575dc9ba5b7ab272bbd
+_md5_=9944c55ce306fad4563becebb5e2b648
