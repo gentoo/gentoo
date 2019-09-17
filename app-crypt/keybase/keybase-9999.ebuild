@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,10 +14,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="
-	~app-crypt/kbfs-${PV}"
-RDEPEND="
-	app-crypt/gnupg"
+DEPEND=""
+RDEPEND="app-crypt/gnupg"
 
 src_unpack() {
 	git-r3_src_unpack
