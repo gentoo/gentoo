@@ -37,7 +37,7 @@ SRC_URI="https://${EGO_PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 DESCRIPTION="A tool for extracting metrics from application logs"
 HOMEPAGE="https://github.com/google/mtail"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 MPL-2.0 BSD BSD-2 MIT"
 SLOT="0"
 IUSE=""
 RDEPEND="!app-misc/mtail"
