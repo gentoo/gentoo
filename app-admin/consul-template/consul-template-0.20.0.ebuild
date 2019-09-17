@@ -10,7 +10,7 @@ DESCRIPTION="Generic template rendering and notifications with Consul"
 GIT_COMMIT="9a0f301"
 EGO_PN="github.com/hashicorp/${PN}"
 HOMEPAGE="https://github.com/hashicorp/consul-template"
-LICENSE="MPL-2.0"
+LICENSE="MPL-2.0 Apache-2.0 BSD BSD-2 ISC MIT WTFPL-2"
 SLOT="0"
 # TODO: debug test failures
 RESTRICT="test"
