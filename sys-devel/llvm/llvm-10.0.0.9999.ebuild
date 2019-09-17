@@ -55,6 +55,9 @@ RDEPEND="
 	z3? ( >=sci-mathematics/z3-4.7.1:0=[${MULTILIB_USEDEP}] )"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${RDEPEND}
+	gold? ( sys-libs/binutils-libs )"
+BDEPEND="
+	dev-lang/perl
 	|| ( >=sys-devel/gcc-3.0 >=sys-devel/llvm-3.5
 		( >=sys-freebsd/freebsd-lib-9.1-r10 sys-libs/libcxx )
 	)
@@ -66,7 +69,6 @@ DEPEND="${RDEPEND}
 		dev-python/recommonmark[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	') )
-	gold? ( sys-libs/binutils-libs )
 	libffi? ( virtual/pkgconfig )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
@@ -74,7 +76,6 @@ DEPEND="${RDEPEND}
 # installed means llvm-config there will take precedence.
 RDEPEND="${RDEPEND}
 	!sys-devel/llvm:0"
-BDEPEND="dev-lang/perl"
 PDEPEND="sys-devel/llvm-common
 	gold? ( >=sys-devel/llvmgold-${SLOT} )"
 
@@ -86,8 +87,8 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 python_check_deps() {
 	use doc || return 0
 
-	has_version "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+	has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
+	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
