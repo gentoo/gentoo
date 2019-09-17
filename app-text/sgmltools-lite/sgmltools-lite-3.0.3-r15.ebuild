@@ -92,8 +92,10 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if [[ ! -f ${EROOT}/etc/sgml/sgml-lite.cat ]]; then
-		cp "${T}"/sgml-lite.cat "${EROOT}"/etc/sgml/ || die
+	local backup=${T}/sgml-lite.cat
+	local real=${EROOT}/etc/sgml/sgml-lite.cat
+	if ! cmp -s "${backup}" "${real}"; then
+		cp "${backup}" "${real}" || die
 	fi
 	sgml-catalog-r1_pkg_postinst
 }
