@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,8 +22,8 @@ RDEPEND=""
 S=${WORKDIR}/${P}/src/${EGO_SRC}
 
 src_compile() {
-	GOPATH="${WORKDIR}/${P}" GOBIN="${WORKDIR}/${P}/bin" \
-		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
+	GOPATH="${WORKDIR}/${P}" GOBIN="${WORKDIR}/${P}/bin" GO111MODULE=on \
+		go install -mod=vendor -v -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
 }
 
 src_install() {
