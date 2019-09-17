@@ -15,7 +15,7 @@ SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~zmedico/dist/${VAULT_WEBUI_ARCHIVE}
 	)"
 SLOT="0"
-LICENSE="MPL-2.0"
+LICENSE="MPL-2.0 Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT"
 KEYWORDS="~amd64"
 IUSE="+webui"
 
