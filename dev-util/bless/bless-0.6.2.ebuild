@@ -6,11 +6,11 @@ inherit autotools gnome2 mono-env
 
 DESCRIPTION="GTK# Hex Editor"
 HOMEPAGE="https://github.com/afrantzis/Bless/"
-SRC_URI="https://github.com/afrantzis/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/afrantzis/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 # EGIT_REPO_URI="https://github.com/afrantzis/bless/"
 # EGIT_COMMIT="v${PV}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
@@ -49,5 +49,5 @@ src_configure() {
 src_install() {
 	default
 
-	mv "${D}/usr/share/doc/${PN}" "${D}/usr/share/doc/${P}"
+	mv "${D}/usr/share/doc/${PN}" "${D}/usr/share/doc/${P}" || die "Unable to make documentation version-specific."
 }
