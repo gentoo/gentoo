@@ -1,7 +1,7 @@
-Index: Makefile
-===================================================================
---- Makefile	(revision 150)
-+++ Makefile	(working copy)
+Index: diff --git a/Makefile b/Makefile
+index c0b2d10..ef264e9 100644
+--- a/Makefile
++++ b/Makefile
 @@ -63,64 +63,64 @@
  	chmod 755 $(APP_BINARY)
  
