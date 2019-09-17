@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit fcaps user golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/blackbox_exporter"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
-BLACKBOX_EXPORTER_COMMIT="4a22506"
+BLACKBOX_EXPORTER_COMMIT="3f726a8"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
@@ -17,7 +17,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-util/promu"
+DEPEND=">=dev-lang/go-1.12
+	dev-util/promu"
 
 FILECAPS=(
 	cap_net_raw usr/bin/blackbox_exporter
@@ -36,7 +37,7 @@ src_prepare() {
 src_compile() {
 	pushd src/${EGO_PN} || die
 	mkdir -p bin || die
-	GOPATH="${S}" promu build -v --prefix blackbox_exporter || die
+	GO111MODULE=on GOPATH="${S}" promu build -v --prefix blackbox_exporter || die
 	popd || die
 }
 
@@ -51,4 +52,6 @@ src_install() {
 	fowners ${PN}:${PN} /var/lib/blackbox_exporter /var/log/blackbox_exporter
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/${PN}.logrotated" "${PN}"
 }
