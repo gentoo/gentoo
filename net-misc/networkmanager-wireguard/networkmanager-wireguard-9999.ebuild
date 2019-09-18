@@ -1,50 +1,56 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-EGIT_REPO_URI="https://github.com/max-moser/network-manager-wireguard"
-
-GNOME2_EAUTORECONF=yes
-
-inherit gnome2 user git-r3
+inherit autotools git-r3
 
 DESCRIPTION="NetworkManager WireGuard plugin"
 HOMEPAGE="https://github.com/max-moser/network-manager-wireguard"
 SRC_URI=""
+EGIT_REPO_URI="https://github.com/max-moser/network-manager-wireguard"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
-IUSE="gtk test"
+IUSE="+glib +gtk +nls"
 
 RDEPEND="
-	>=dev-libs/glib-2.54:2
-	>=net-misc/networkmanager-1.7.0:=
+	net-misc/networkmanager
 	net-vpn/wireguard
+	glib? ( dev-libs/glib )
 	gtk? (
-		>=app-crypt/libsecret-0.18
-		>=gnome-extra/nm-applet-1.7.0
-		>=x11-libs/gtk+-3.4:3
+		app-crypt/libsecret
+		gnome-extra/nm-applet
+		x11-libs/gtk+:3
 	)
 "
-DEPEND="${RDEPEND}
-	sys-devel/gettext
-	>=dev-util/intltool-0.35
+
+DEPEND="${RDEPEND}"
+
+BDEPEND="
 	virtual/pkgconfig
+	nls? (
+		dev-util/intltool
+		sys-devel/gettext
+	)
 "
 
-src_unpack() {
-	git-r3_src_unpack
+src_prepare() {
+	default
+
+	eautoreconf
 }
 
 src_configure() {
-	# --localstatedir=/var needed per bug #536248
-	gnome2_src_configure \
-		--localstatedir=/var \
-		--disable-more-warnings \
-		--disable-static \
-		--with-dist-version=Gentoo \
-		$(use_with gtk gnome) \
-		$(use_with gtk libnm-glib)
+	local myeconfargs=(
+		--disable-lto
+		--disable-more-warnings
+		--disable-static
+		$(use_with glib	libnm-glib)
+		$(use_with gtk gnome)
+		$(use_enable nls)
+		--with-dist-version="Gentoo"
+	)
+
+	econf "${myeconfargs[@]}"
 }
