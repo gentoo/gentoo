@@ -645,7 +645,7 @@ app-crypt/johntheripper-jumbo 1.8.0 1.9.0 9999: fast password cracker
 app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
 app-crypt/kbfs 2.6.0 2.8.0 2.10.1 2.11.0 9999: Keybase Filesystem (KBFS)
 app-crypt/kencfs-plasma 2.0.1_alpha: GUI frontend for encfs
-app-crypt/keybase 2.10.1 2.11.0 2.13.1 3.0.0 4.4.2 9999: Client for keybase.io
+app-crypt/keybase 2.13.1 3.0.0 4.4.2 9999: Client for keybase.io
 app-crypt/keylookup 2.2: A tool to fetch PGP keys from keyservers
 app-crypt/kstart 4.1 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
 app-crypt/libb2 0.98 0.98.1-r1: C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
