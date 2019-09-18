@@ -175,10 +175,9 @@ src_install() {
 
 	if use doc ; then
 		pushd "${WORKDIR}/${PN}-${PV%_*}" >/dev/null
+		dodoc Doc/zsh.{dvi,pdf}
 		docinto html
 		dodoc Doc/*.html
-		insinto /usr/share/doc/${PF}
-		doins Doc/zsh.{dvi,pdf}
 		popd >/dev/null
 	fi
 
