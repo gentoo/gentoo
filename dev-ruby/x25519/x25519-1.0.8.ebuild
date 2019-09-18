@@ -24,6 +24,8 @@ IUSE=""
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#: ; /coverall/I s:^:#:' spec/spec_helper.rb || die
+
+	sed -i -e 's/git ls-files -z/find . -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
 each_ruby_configure() {
