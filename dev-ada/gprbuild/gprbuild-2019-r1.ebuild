@@ -57,13 +57,13 @@ src_compile() {
 	incflags="-Isrc -Igpr/src -I${xmlada_src}/sax -I${xmlada_src}/dom \
 		-I${xmlada_src}/schema -I${xmlada_src}/unicode \
 		-I${xmlada_src}/input_sources"
-	${GCC} -c ${CFLAGS} gpr/src/gpr_imports.c -o gpr_imports.o || die
+	gcc -c ${CFLAGS} gpr/src/gpr_imports.c -o gpr_imports.o || die
 	for bin in ${bin_progs}; do
-		${GNATMAKE} -j$(makeopts_jobs) ${incflags} $ADAFLAGS ${bin}-main \
+		gnatmake -j$(makeopts_jobs) ${incflags} $ADAFLAGS ${bin}-main \
 			-o ${bin} -largs gpr_imports.o || die
 	done
 	for lib in $lib_progs; do
-		${GNATMAKE} -j$(makeopts_jobs) ${incflags} ${lib} $ADAFLAGS \
+		gnatmake -j$(makeopts_jobs) ${incflags} ${lib} $ADAFLAGS \
 			-largs gpr_imports.o || die
 	done
 }
