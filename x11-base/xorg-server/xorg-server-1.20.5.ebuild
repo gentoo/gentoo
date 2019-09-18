@@ -15,9 +15,13 @@ if [[ ${PV} != 9999* ]]; then
 fi
 
 IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug elogind +glamor ipv6 libressl minimal selinux +suid systemd +udev unwind xcsecurity"
+IUSE="${IUSE_SERVERS} debug elogind +glamor ipv6 libressl libglvnd minimal selinux +suid systemd +udev unwind xcsecurity"
 
-CDEPEND=">=app-eselect/eselect-opengl-1.3.0
+CDEPEND="libglvnd? (
+		media-libs/libglvnd
+		!app-eselect/eselect-opengl
+	)
+	!libglvnd? ( >=app-eselect/eselect-opengl-1.3.0	)
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	>=x11-apps/iceauth-1.0.2
@@ -206,7 +210,9 @@ src_install() {
 pkg_postinst() {
 	if ! use minimal; then
 		# sets up libGL and DRI2 symlinks if needed (ie, on a fresh install)
-		eselect opengl set xorg-x11 --use-old
+		if ! use libglvnd; then
+			eselect opengl set xorg-x11 --use-old
+		fi
 	fi
 }
 
