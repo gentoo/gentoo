@@ -5,6 +5,7 @@
 <email>jer@gentoo.org</email>
 </maintainer>
 <use>
-<flag name='openssl'>Use <pkg>dev-libs/openssl</pkg> for cryptographic features</flag>
+<flag name='linux-crypto'>Use Linux kernel cryptographic API</flag>
+<flag name='openssl'>Use <pkg>dev-libs/openssl</pkg> for hash routines instead of internal gnulib</flag>
 </use>
 </pkgmetadata>
