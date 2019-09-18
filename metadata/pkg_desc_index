@@ -265,7 +265,7 @@ app-admin/pprocm 1.0-r2: ncurses-based program to monitor CPU, disk, network and
 app-admin/prelude-manager 3.0.0 3.1.0 4.0.0 4.1.1: Bus communication for all Prelude modules
 app-admin/procinfo-ng 2.0.304-r1: Completely rewrite of the old system monitoring app procinfo
 app-admin/profile-cleaner 2.36: Vacuum and reindex browser sqlite databases
-app-admin/ps_mem 3.12 3.12-r1 3.13: A utility to report core memory usage per program
+app-admin/ps_mem 3.13: A utility to report core memory usage per program
 app-admin/psmon 1.39-r1: Monitors process table to slay aggressive, and spawn dead, processes
 app-admin/puppet 4.10.12 5.5.14 5.5.16 6.6.0 6.7.2 6.8.0: A system automation and configuration management software.
 app-admin/puppet-agent 6.6.0 6.7.2 6.8.0: general puppet client utils along with hiera and facter
