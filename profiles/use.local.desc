@@ -7360,7 +7360,8 @@ sci-biology/seqan:tools - Build and install SeqAn commandline tools, such as the
 sci-biology/ucsc-genome-browser:server - Install genome browser Web application. If this flag is off, only libraries and utilities from the suite are installed.
 sci-biology/yass:dmalloc - Enable debugging with the dmalloc library
 sci-biology/yass:lowmem - Build for environments with low amounts of memory
-sci-calculators/datamash:openssl - Use dev-libs/openssl for cryptographic features
+sci-calculators/datamash:linux-crypto - Use Linux kernel cryptographic API
+sci-calculators/datamash:openssl - Use dev-libs/openssl for hash routines instead of internal gnulib
 sci-calculators/units:units_cur - Install the units_cur python script that updates currencies
 sci-chemistry/apbs:fast - APBS fast mode (experimental)
 sci-chemistry/apbs:fetk - Include support for FeTK
