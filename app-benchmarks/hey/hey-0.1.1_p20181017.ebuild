@@ -12,7 +12,7 @@ inherit golang-build golang-vcs-snapshot
 DESCRIPTION="HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom"
 HOMEPAGE="https://github.com/rakyll/hey"
 SRC_URI="https://${EGO_SRC}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="test"
