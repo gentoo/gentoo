@@ -28,7 +28,7 @@ S="${WORKDIR}"/${MYP}-src
 PATCHES=( "${FILESDIR}"/${PN}-2017-gentoo.patch )
 
 src_compile() {
-	emake GNATMAKE="${GNATMAKE} ${ADAFLAGS}" \
+	emake GNATMAKE="gnatmake ${ADAFLAGS}" \
 		BUILDER="gprbuild -j$(makeopts_jobs)" generate_sources
 	if use static-libs; then
 		emake BUILDER="gprbuild -v -j$(makeopts_jobs)" build-static
