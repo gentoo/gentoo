@@ -33,22 +33,22 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 	)"
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
 	>=app-emulation/spice-protocol-0.14.0
+	smartcard? ( app-emulation/qemu[smartcard] )"
+BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
-	')
-	smartcard? ( app-emulation/qemu[smartcard] )"
+	')"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.14.0-openssl1.1_fix.patch
 )
 
 python_check_deps() {
-	has_version ">=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]"
-	has_version "dev-python/six[${PYTHON_USEDEP}]"
+	has_version -b ">=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]"
+	has_version -b "dev-python/six[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
