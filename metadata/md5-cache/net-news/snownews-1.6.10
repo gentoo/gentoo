@@ -4,10 +4,10 @@ DEPEND=>=dev-libs/libxml2-2.5.6 >=sys-libs/ncurses-5.3:0=[unicode]
 DESCRIPTION=Command-line RSS feed reader
 EAPI=7
 HOMEPAGE=https://github.com/kouya/snownews
-KEYWORDS=amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=GPL-3
 RDEPEND=>=dev-libs/libxml2-2.5.6 >=sys-libs/ncurses-5.3:0=[unicode] dev-perl/XML-LibXML dev-perl/libwww-perl
 SLOT=0
 SRC_URI=https://github.com/kouya/snownews/archive/1.6.10.tar.gz -> snownews-1.6.10.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=70fb05e575715d86ba09dadee80f8bc7
+_md5_=580434fe19aeae324d4f26206f7799f3
