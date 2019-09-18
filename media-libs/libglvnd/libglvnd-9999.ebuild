@@ -25,14 +25,17 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
+IUSE="X"
 
 RDEPEND="
 	!media-libs/mesa[-libglvnd(-)]
-	x11-libs/libX11[${MULTILIB_USEDEP}]
-	"
+	X? (
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+	)"
 DEPEND="${PYTHON_DEPS}
-	${RDEPEND}"
+	${RDEPEND}
+	X? ( x11-base/xorg-proto )"
 
 src_prepare() {
 	default
@@ -40,7 +43,12 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} econf
+	myconf=(
+		--disable-headers
+		$(use_enable X x11)
+		$(use_enable X glx)
+	)
+	ECONF_SOURCE=${S} econf "${myconf[@]}"
 }
 
 multilib_src_install() {
