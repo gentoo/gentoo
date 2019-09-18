@@ -29,6 +29,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-18)
+# Distributing an entire prebuilt distribution as a package turned out
+# to be a bad idea.  All current upstream versions contain vulnerable
+# packages and lack correct license information.  Upstream does not
+# provide a publicly accessible bug tracker, and does not reply to mail.
+# Removal in 30 days.  Bug #683724.
+app-admin/systemrescuecd-x86
+sys-boot/systemrescuecd-x86-grub
+
 # Matt Turner <mattst88@gentoo.org> (2019-09-03)
 # Broken. Bug #694774
 >=media-libs/freeglut-3.2.0
@@ -1271,12 +1280,6 @@ dev-db/postgresql:12
 =virtual/perl-threads-2.70.0-r1
 =virtual/perl-threads-shared-1.510.0-r1
 =virtual/perl-version-0.991.600-r1
-
-# Michał Górny <mgorny@gentoo.org> (2019-04-18)
-# All current versions of SystemRescueCD contain vulnerable packages.
-# Bug #683724.
-app-admin/systemrescuecd-x86
-sys-boot/systemrescuecd-x86-grub
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-04-17)
 # The Oracle JDK License has changed for releases starting 2019-04-16
