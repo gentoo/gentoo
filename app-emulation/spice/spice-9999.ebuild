@@ -55,6 +55,10 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# Delete repo-only Makefile that causes build to fail.
+	# https://gitlab.freedesktop.org/spice/spice/issues/35
+	rm GNUmakefile || die
+
 	eautoreconf
 }
 
