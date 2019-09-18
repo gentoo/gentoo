@@ -14,10 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="
-	~app-crypt/kbfs-2.11.0"
-RDEPEND="
-	app-crypt/gnupg"
+DEPEND=""
+RDEPEND="app-crypt/gnupg"
 
 src_unpack() {
 	unpack "${P}.tar.gz"
