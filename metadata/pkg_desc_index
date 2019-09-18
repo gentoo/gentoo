@@ -15351,7 +15351,7 @@ net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Acce
 net-misc/cmst 2018.01.06 2019.01.13: Qt GUI for Connman with system tray icon
 net-misc/cni-plugins 0.7.5 0.7.6 0.8.1 0.8.2: Standard networking plugins for container networking
 net-misc/connect 1.103: network connection relaying command (proxy)
-net-misc/connman 1.35-r1 1.37: Provides a daemon for managing internet connections
+net-misc/connman 1.37: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1 1.1.1-r1: GTK GUI for Connman
 net-misc/connman-json-client 1.0_p20150721: An ncurses UI for connman
 net-misc/connman-notify 0_pre20140623: Desktop notification integration for connman
