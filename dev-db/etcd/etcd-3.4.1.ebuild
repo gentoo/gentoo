@@ -7,7 +7,7 @@ inherit user systemd golang-vcs-snapshot
 
 KEYWORDS="~amd64"
 EGO_PN="go.etcd.io/etcd"
-GIT_COMMIT="898bd13"
+GIT_COMMIT="a14579f"
 MY_PV="${PV/_rc/-rc.}"
 DESCRIPTION="Highly-available key value store for shared configuration and service discovery"
 HOMEPAGE="https://github.com/etcd-io/etcd"
