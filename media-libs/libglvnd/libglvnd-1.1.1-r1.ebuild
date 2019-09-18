@@ -27,14 +27,19 @@ IUSE=""
 
 RDEPEND="
 	!media-libs/mesa[-libglvnd(-)]
+	!<media-libs/mesa-19.2.0_rc1
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	"
 DEPEND="${PYTHON_DEPS}
 	${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-Add-pkg-config-files-for-EGL-GL-GLES-and-GLX.patch
+)
+
 src_prepare() {
 	default
-	[[ $PV = 9999* ]] && eautoreconf
+	eautoreconf
 }
 
 multilib_src_configure() {
