@@ -3267,14 +3267,14 @@ dev-erlang/ezlib 1.0.2 1.0.6: Native zlib driver for Erlang and Elixir
 dev-erlang/fast_tls 1.0.26 1.1.2: TLS/SSL native driver for Erlang and Elixir
 dev-erlang/fast_xml 1.1.22 1.1.34 1.1.37: Fast Expat based Erlang XML parsing library
 dev-erlang/fast_yaml 1.0.9 1.0.20: Fast Yaml native library for Erlang and Elixir
-dev-erlang/goldrush 0.1.9: Small Erlang app that provides fast event stream processing
+dev-erlang/goldrush 0.1.9 0.2.0: Small Erlang app that provides fast event stream processing
 dev-erlang/hamcrest 0.1.0_p20160709: Erlang port of Hamcrest
 dev-erlang/iconv 1.0.4 1.0.10: Fast encoding conversion library for Erlang and Elixir
-dev-erlang/jiffy 0.14.9 0.14.11: JSON NIFs for Erlang
+dev-erlang/jiffy 0.14.9 0.14.11 1.0.1: JSON NIFs for Erlang
 dev-erlang/jose 1.9.0: JSON Object Signing and Encryption (JOSE) for Erlang and Elixir
 dev-erlang/lager 3.2.4 3.8.0: Logging framework for Erlang/OTP
 dev-erlang/luerl 0.2 0.3: Lua in Erlang
-dev-erlang/meck 0.8.4 0.8.12: Mocking library for Erlang
+dev-erlang/meck 0.8.4 0.8.12 0.8.13: Mocking library for Erlang
 dev-erlang/mqtree 1.0.4: Index tree for MQTT topic filters
 dev-erlang/p1_mysql 1.0.2 1.0.11: Pure Erlang MySQL driver
 dev-erlang/p1_oauth2 0.6.1 0.6.5: Erlang OAuth 2.0 implementation
