@@ -509,7 +509,7 @@ app-benchmarks/cpuburn 1.4a-r3: CPU testing utilities in optimized assembler for
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workload Generator
 app-benchmarks/forkbomb 1.4-r1: Controlled fork() bomber for testing heavy system load
-app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.3.3 4.4.1 5.0.0: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
+app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.3.3 4.4.1 5.0.1: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
 app-benchmarks/hey 0.1.1_p20181017: HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
 app-benchmarks/httperf 0.9.1_p20181111 0.9.1_p20181111-r1: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
@@ -3082,7 +3082,7 @@ dev-db/hyperdex 1.6.0-r1 1.7.1 1.8.0 1.8.1 9999: A searchable distributed Key-Va
 dev-db/influxdb 1.5.1 1.6.3 1.6.4: Scalable datastore for metrics, events, and real-time analytics
 dev-db/innotop 1.11.1 1.11.4 1.12.0: A text-mode MySQL and InnoDB monitor like mytop, but with many more features
 dev-db/kdb 3.2.0: Database connectivity and creation framework for various vendors
-dev-db/kyotocabinet 1.2.76-r1 1.2.77: A straightforward implementation of DBM
+dev-db/kyotocabinet 1.2.77: A straightforward implementation of DBM
 dev-db/libdbi 0.9.0: A database-independent abstraction layer in C
 dev-db/libdbi-drivers 0.9.0 0.9.0-r1: The libdbi-drivers project maintains drivers for libdbi
 dev-db/libiodbc 3.52.12: ODBC Interface for Linux
@@ -4761,7 +4761,7 @@ dev-libs/double-conversion 3.1.4-r1: Binary-decimal and decimal-binary conversio
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.16.0: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
-dev-libs/efl 1.22.2 1.22.3 1.22.4: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.22.2 1.22.5: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfio 1.0.3-r1: ELF reader and producer implemented as a C++ library
 dev-libs/elfutils 0.176-r1 0.177: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.9 0.20 0.21 0.22 0.23 9999: Embedded Linux Library provides core, low-level functionality for system daemons
@@ -4839,7 +4839,7 @@ dev-libs/kpathsea 6.2.2_p20160523 6.2.3_p20170524 6.3.1_p20190410: Path searchin
 dev-libs/kproperty 3.2.0: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98-r2: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/kreport 3.2.0: Framework for creation and generation of reports in multiple formats
-dev-libs/leatherman 1.3.0 1.7.1: A C++ toolkit
+dev-libs/leatherman 1.3.0 1.7.1 1.7.2: A C++ toolkit
 dev-libs/legousbtower 0.5.4-r1: The lego mindstorms usb tower headers and/or modules
 dev-libs/leveldb 1.9.0-r5 1.9.0-r6 1.15.0 1.15.0-r1 1.17 1.18 1.18-r2 1.20: a fast key-value storage library written at Google
 dev-libs/libIDL 0.8.14-r2: CORBA tree builder
@@ -8283,7 +8283,7 @@ dev-python/os-resource-classes 0.3.0: A list of standardized resource classes fo
 dev-python/os-service-types 1.3.0 1.6.0: A library to handle official service types for OpenStack and it's aliases.
 dev-python/os-testr 1.0.0: A testr wrapper to provide functionality for OpenStack projects
 dev-python/os-traits 0.5.0 0.11.0: os-traits is a library containing standardized trait strings.
-dev-python/os-vif 1.9.1 1.15.1: OpenStack Cinder brick library for managing local volume attaches
+dev-python/os-vif 1.9.1 1.15.1 1.15.2: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.20: Adds Virtual Interfaces support to python-novaclient
 dev-python/os-win 3.0.1 4.2.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.3 0.3.4: XenAPI library for OpenStack projects
@@ -9850,7 +9850,7 @@ dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing lib
 dev-ruby/execjs 2.7.0: ExecJS lets you run JavaScript code from Ruby
 dev-ruby/exifr 1.3.4 1.3.5 1.3.6: A library to read EXIF info from JPEG and TIFF images
 dev-ruby/expression_parser 0.9.0_p20130518: A math parser
-dev-ruby/facter 3.9.2-r1 3.14.2 3.14.3 9999: A cross-platform ruby library for retrieving facts from operating systems
+dev-ruby/facter 3.9.2-r1 3.14.2 3.14.3 3.14.4 9999: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.19.2 0.20.0 0.20.1: A fake filesystem. Use it in your tests
 dev-ruby/faker 1.9.3 1.9.5-r1 1.9.6: A library for generating fake data such as names, addresses, and phone numbers
@@ -15463,7 +15463,7 @@ net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Tr
 net-misc/lldpd 1.0.3 1.0.4: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/megatools 1.9.98 1.10.2 1.10.2-r1: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.5.14 1.5.16 1.5.17: High-performance, distributed memory object caching system
+net-misc/memcached 1.5.14 1.5.16 1.5.17 1.5.18: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r13 2.3.13-r14 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.5.4-r1 3.8.6 9999: Simple, powerful and moeful twitter client
