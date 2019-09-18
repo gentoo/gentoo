@@ -2223,9 +2223,9 @@ app-pda/iripdb 0.1.3b: Allows generating the DB files necessary for the iRiver i
 app-pda/jpilot 1.8.2: Desktop Organizer Software for the Palm Pilot
 app-pda/libimobiledevice 1.2.0-r1: Support library to communicate with Apple iPhone/iPod Touch devices
 app-pda/libplist 2.0.0: Support library to deal with Apple Property Lists (Binary & XML)
-app-pda/libusbmuxd 1.0.9: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
+app-pda/libusbmuxd 1.0.10: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-pda/pilot-link 0.12.5-r2: Suite of tools for moving data between a Palm device and a desktop
-app-pda/usbmuxd 1.0.8_p20140530: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
+app-pda/usbmuxd 1.1.0: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
 app-portage/cpuid2cpuflags 1 5 6 7 8 9999: Tool to guess CPU_FLAGS_* flags for the host
@@ -19128,7 +19128,7 @@ x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
 x11-misc/xfe 1.42 1.43.1 1.43.2: MS-Explorer-like minimalist file manager for X
 x11-misc/xfishtank 2.1-r2: Turns your root window into an aquarium
 x11-misc/xflux 20130927 20130927-r1 20170103: Makes the color of your computer's display adapt to the time of the day
-x11-misc/xflux-gui 1.1.10_p20180910 1.2.0: A GUI for f.lux
+x11-misc/xflux-gui 1.1.10_p20180910 1.2.0-r1: A GUI for f.lux
 x11-misc/xfractint 20.04_p14: A fractal generator
 x11-misc/xgestures 0.4: A mouse gesture recognition program for X11 desktops
 x11-misc/xhkeys 2.2.1: assign particular actions to any key or key combination
