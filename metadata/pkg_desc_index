@@ -18444,7 +18444,7 @@ www-apache/mod_xsendfile 1.0_beta1: Apache module that processes X-SENDFILE head
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 3.0.2 3.1.0: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 5.3.7 6.0.2 6.0.3: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 5.3.7 6.0.2 6.0.3 6.0.4: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 1.2.6.2 2.2.0: multilanguage CalDAV web client
