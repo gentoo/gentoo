@@ -411,7 +411,7 @@ ada_setup() {
 	if [[ ${#_ADA_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
 		if use "ada_target_${_ADA_SUPPORTED_IMPLS[0]}"; then
 			# Only one supported implementation, enable it explicitly
-			ada_export "${_ADA_SUPPORTED_IMPLS[0]}" EADA GCC_PV GNAT
+			ada_export "${_ADA_SUPPORTED_IMPLS[0]}" EADA GCC_PV GNAT GNATBIND GNATLS GNATMAKE
 			ada_wrapper_setup
 		fi
 	else
@@ -427,7 +427,7 @@ ada_setup() {
 					die "More than one implementation in ADA_TARGET."
 				fi
 
-				ada_export "${impl}" EADA GCC_PV GNAT
+				ada_export "${impl}" EADA GCC_PV GNAT GNATBIND GNATLS GNATMAKE
 				ada_wrapper_setup
 			fi
 		done
