@@ -31,7 +31,6 @@ RDEPEND="app-arch/unzip
 	x11-libs/libXdmcp
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
-	app-eselect/eselect-opengl
 	media-libs/glew"
 BDEPEND="${DEPEND}
 	virtual/pkgconfig
