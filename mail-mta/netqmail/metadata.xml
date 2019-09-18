@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>gentoo-bug@opensource.sf-tec.de</email>
+		<name>Rolf Eike Beer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="authcram">Enable AUTHCRAM support</flag>
 		<flag name="gencertdaily">Generate SSL certificates daily instead of
