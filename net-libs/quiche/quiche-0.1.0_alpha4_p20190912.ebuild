@@ -140,7 +140,15 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="BSD-2"
+LICENSE="|| ( Apache-2.0 Boost-1.0 )
+	|| ( Apache-2.0 MIT )
+	|| ( Apache-2.0-with-LLVM-exceptions Apache-2.0 MIT )
+	BSD-2
+	BSD
+	ISC
+	MIT
+	|| ( Unlicense MIT )
+	openssl"
 SLOT="0/0"
 IUSE=""
 DOCS=( CODEOWNERS  COPYING README.md )
