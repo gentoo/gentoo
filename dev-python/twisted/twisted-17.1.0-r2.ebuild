@@ -113,7 +113,8 @@ python_test() {
 	# workaround for the eclass not installing the entry points
 	# in the test environment.  copy the old 16.3.2 start script
 	# to run the tests with
-	cp "${FILESDIR}"/trial "${TEST_DIR}"
+	cp "${FILESDIR}"/trial "${TEST_DIR}" || die
+	chmod +x "${TEST_DIR}"/trial || die
 
 	pushd "${TEST_DIR}" > /dev/null || die
 
