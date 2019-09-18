@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 
-IUSE="${IUSE} bluetooth debug doc examples +ethernet iptables iwd l2tp nftables"
+IUSE="${IUSE} bluetooth debug doc examples +ethernet +iptables iwd l2tp nftables"
 IUSE="${IUSE} ofono openvpn openconnect pptp policykit tools vpnc +wifi wispr networkmanager"
 
 REQUIRED_USE="|| ( iptables nftables )"
