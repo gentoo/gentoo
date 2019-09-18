@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 KEYWORDS="amd64"
 DESCRIPTION="Google Drive client for the commandline"
 HOMEPAGE="https://github.com/odeke-em/drive"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD MIT"
 SLOT="0"
 IUSE=""
 EGO_PN="${HOMEPAGE#*//}"
