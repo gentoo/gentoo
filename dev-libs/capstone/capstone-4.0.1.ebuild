@@ -16,7 +16,9 @@ LICENSE="BSD"
 SLOT="0/4" # libcapstone.so.4
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
-IUSE="python"
+RESTRICT="!test? ( test )"
+
+IUSE="python test"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )
@@ -62,6 +64,11 @@ src_configure() {
 		PREFIX = ${EPREFIX}/usr
 		EOF
 	} >> config.mk || die
+
+	if ! use test; then
+		# Don't build tests if not requested: bug #663006
+		sed -i tests/Makefile -e 's@all: $(BINARY)@all:@' || die
+	fi
 
 	wrap_python ${FUNCNAME}
 }
