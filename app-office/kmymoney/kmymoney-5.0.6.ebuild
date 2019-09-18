@@ -20,7 +20,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 fi
 
 LICENSE="GPL-2"
-IUSE="activities addressbook calendar holidays ofx quotes webkit weboob"
+IUSE="activities addressbook calendar hbci holidays ofx quotes webkit weboob"
 
 REQUIRED_USE="weboob? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -66,6 +66,10 @@ COMMON_DEPEND="
 		$(add_kdeapps_dep kidentitymanagement)
 	)
 	calendar? ( dev-libs/libical:= )
+	hbci? (
+		>=net-libs/aqbanking-5.8.2
+		>=sys-libs/gwenhywfar-4.20.2[qt5]
+	)
 	holidays? ( $(add_frameworks_dep kholidays) )
 	ofx? ( dev-libs/libofx )
 	webkit? (
@@ -99,8 +103,8 @@ src_configure() {
 		$(cmake-utils_use_find_package addressbook KF5Akonadi)
 		$(cmake-utils_use_find_package addressbook KF5Contacts)
 		$(cmake-utils_use_find_package addressbook KF5IdentityManagement)
-		-DENABLE_KBANKING=OFF
 		-DENABLE_LIBICAL=$(usex calendar)
+		-DENABLE_KBANKING=$(usex hbci)
 		$(cmake-utils_use_find_package holidays KF5Holidays)
 		-DENABLE_OFXIMPORTER=$(usex ofx)
 		-DENABLE_WEBENGINE=$(usex !webkit)
