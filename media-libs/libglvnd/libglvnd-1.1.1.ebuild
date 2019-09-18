@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 inherit autotools ${GIT_ECLASS} multilib-minimal python-any-r1
 
 DESCRIPTION="The GL Vendor-Neutral Dispatch library"
