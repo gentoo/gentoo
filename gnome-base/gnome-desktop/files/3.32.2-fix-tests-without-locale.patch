@@ -1,0 +1,82 @@
+From 9ae847ec875efe443d51d584fa6c61966c7c3c7c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Javier=20Jard=C3=B3n?= <jjardon@gnome.org>
+Date: Wed, 4 Sep 2019 22:09:26 +0100
+Subject: [PATCH] tests/wall*: Do not fail if some of the locales is missing
+
+---
+ tests/wall-clock.c        | 14 ++++++++++++++
+ tests/wallclock-reftest.c |  5 +++++
+ 2 files changed, 19 insertions(+)
+
+diff --git a/tests/wall-clock.c b/tests/wall-clock.c
+index 4937ee66..23929ebd 100644
+--- a/tests/wall-clock.c
++++ b/tests/wall-clock.c
+@@ -48,6 +48,7 @@ test_utf8_character (const char *utf8_char,
+ 	/* In the C locale, make sure the time string is formatted with regular
+          * colons */
+ 	locale = newlocale (LC_ALL_MASK, "C", (locale_t) 0);
++	g_assert_true (locale != (locale_t)0);
+ 	save_locale = uselocale (locale);
+ 	clock = gnome_wall_clock_new ();
+ 	str = gnome_wall_clock_string_for_datetime (clock,
+@@ -60,6 +61,10 @@ test_utf8_character (const char *utf8_char,
+ 
+ 	/* In a UTF8 locale, we want ratio characters and no colons. */
+ 	locale = newlocale (LC_ALL_MASK, "en_US.utf8", locale);
++	if (locale == (locale_t)0) {
++		g_test_skip("en_US.utf8 locale not found, skipping");
++		return;
++	}
+ 	uselocale (locale);
+ 	clock = gnome_wall_clock_new ();
+ 	str = gnome_wall_clock_string_for_datetime (clock,
+@@ -73,6 +78,10 @@ test_utf8_character (const char *utf8_char,
+ 	/* ... and same thing with an RTL locale: should be formatted with
+          * ratio characters */
+ 	locale = newlocale (LC_ALL_MASK, "he_IL.utf8", locale);
++	if (locale == (locale_t)0) {
++		g_test_skip("he_IL.utf8 locale not found, skipping");
++		return;
++	}
+ 	uselocale (locale);
+ 	clock = gnome_wall_clock_new ();
+ 	str = gnome_wall_clock_string_for_datetime (clock,
+@@ -112,6 +121,10 @@ test_clock_format_setting (void)
+ 	const char *str;
+ 
+ 	locale = newlocale (LC_ALL_MASK, "en_US.utf8", (locale_t) 0);
++	if (locale == (locale_t)0) {
++		g_test_skip("en_US.utf8 locale not found, skipping");
++		return;
++	}
+ 	save_locale = uselocale (locale);
+ 
+ 	settings = g_settings_new ("org.gnome.desktop.interface");
+@@ -192,6 +205,7 @@ test_weekday_setting (void)
+ 
+ 	/* Save current locale */
+ 	locale = newlocale (LC_ALL_MASK, "C", (locale_t) 0);
++	g_assert_true (locale != (locale_t)0);
+ 	save_locale = uselocale (locale);
+ 	settings = g_settings_new ("org.gnome.desktop.interface");
+ 
+diff --git a/tests/wallclock-reftest.c b/tests/wallclock-reftest.c
+index 8ac630f2..0a7e812d 100644
+--- a/tests/wallclock-reftest.c
++++ b/tests/wallclock-reftest.c
+@@ -446,6 +446,11 @@ test_ui_file (GFile         *file,
+   locale = get_locale_for_file (ui_file);
+   g_assert (locale);
+   loc = newlocale (LC_ALL_MASK, locale, (locale_t) 0);
++  if (loc == (locale_t)0)
++    {
++      g_test_skip("locale not found, skipping");
++      return;
++    }
+   previous_locale = uselocale (loc);
+   g_assert_true (previous_locale != (locale_t) 0);
+ 
+-- 
+2.20.1
+
