@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 inherit autotools ${GIT_ECLASS} multilib-minimal python-any-r1
 
 DESCRIPTION="The GL Vendor-Neutral Dispatch library"
@@ -25,14 +25,18 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
+IUSE="X"
 
 RDEPEND="
 	!media-libs/mesa[-libglvnd(-)]
-	x11-libs/libX11[${MULTILIB_USEDEP}]
-	"
+	!<media-libs/mesa-19.2.0_rc1
+	X? (
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+	)"
 DEPEND="${PYTHON_DEPS}
-	${RDEPEND}"
+	${RDEPEND}
+	X? ( x11-base/xorg-proto )"
 
 src_prepare() {
 	default
@@ -40,7 +44,12 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} econf
+	myconf=(
+		--disable-headers
+		$(use_enable X x11)
+		$(use_enable X glx)
+	)
+	ECONF_SOURCE=${S} econf "${myconf[@]}"
 }
 
 multilib_src_install() {
