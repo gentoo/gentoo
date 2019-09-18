@@ -569,7 +569,11 @@ qt5_base_configure() {
 		-no-freetype -no-harfbuzz
 		-no-openssl -no-libproxy
 		-no-xcb-xlib
-		-no-xcb-xinput -no-xkbcommon # bug 672340
+
+		# bug 672340
+		-no-xkbcommon
+		$([[ ${QT5_MINOR_VERSION} -lt 15 ]] && echo -no-xcb-xinput)
+		$([[ ${QT5_MINOR_VERSION} -ge 15 ]] && echo -no-bundled-xcb-xinput)
 
 		# cannot use -no-gif because there is no way to override it later
 		#-no-gif
@@ -617,7 +621,7 @@ qt5_base_configure() {
 
 		# disable undocumented X11-related flags, override in qtgui
 		# (not shown in ./configure -help output)
-		-no-xkb
+		$([[ ${QT5_MINOR_VERSION} -lt 15 ]] && echo -no-xkb)
 
 		# always enable session management support: it doesn't need extra deps
 		# at configure time and turning it off is dangerous, see bug 518262
