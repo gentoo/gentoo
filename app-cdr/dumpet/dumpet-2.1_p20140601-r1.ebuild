@@ -13,9 +13,10 @@ SRC_URI="https://github.com/rhboot/dumpet/archive/${COMMIT}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
+#Restrict tests since required test file is unavailable
+RESTRICT="test"
 
 RDEPEND="dev-libs/libxml2
 	dev-libs/popt"
