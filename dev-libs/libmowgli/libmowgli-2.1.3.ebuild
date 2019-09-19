@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Useful set of performance and usability-oriented extensions to C"
 HOMEPAGE="https://github.com/atheme/libmowgli-2"
@@ -16,7 +16,7 @@ RDEPEND="ssl? (
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	)
-	!=dev-libs/libmowgli-2.1.0" # Bug 629644
+	!~dev-libs/libmowgli-2.1.0" # Bug 629644
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS README doc/BOOST doc/design-concepts.txt )
