@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-19)
+# Last bumped in 2010.  Homepage & SRC_URI gone, redistribution
+# is forbidden by license.
+# Removal in 30 days.  Bug #680726.
+sci-chemistry/azara
+
 # Michał Górny <mgorny@gentoo.org> (2019-09-18)
 # Distributing an entire prebuilt distribution as a package turned out
 # to be a bad idea.  All current upstream versions contain vulnerable
