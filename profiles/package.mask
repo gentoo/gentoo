@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2019-09-19)
+# Minetest Game is now installed and managed through the Minetest
+# engine in games-action/minetest. Removal in 30 days.
+games-action/minetest_game
+
 # Michał Górny <mgorny@gentoo.org> (2019-09-19)
 # Last bumped in 2010.  Homepage & SRC_URI gone, redistribution
 # is forbidden by license.
