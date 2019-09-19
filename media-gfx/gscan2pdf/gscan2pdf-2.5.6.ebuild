@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DIST_TEST="do"
 
@@ -46,14 +46,14 @@ RDEPEND="
 	media-gfx/sane-backends
 	media-libs/tiff"
 
-DEPEND="test? (
+BDEPEND="test? (
 		${RDEPEND}
 		dev-perl/Sub-Override
 		media-libs/fontconfig
 
 		app-text/djvu[tiff]
 		app-text/poppler[utils]
-		app-text/tesseract[-opencl,osd,tiff]
+		app-text/tesseract[-opencl,osd(+),tiff]
 		app-text/unpaper
 		media-gfx/imagemagick[djvu,png,tiff,perl]
 		media-gfx/sane-backends[sane_backends_test]
@@ -66,6 +66,7 @@ mydoc="History"
 
 pkg_postinst() {
 	optfeature "DjVu file support" "app-text/djvu[tiff] media-gfx/imagemagick[djvu]"
+	optfeature "encrypting PDFs" app-text/pdftk
 	optfeature "creating PostScript files from PDFs" app-text/poppler[utils]
 	optfeature "adding to an existing PDF" app-text/poppler[utils]
 	optfeature "Optical Character Recognition" app-text/tesseract[osd,tiff]
