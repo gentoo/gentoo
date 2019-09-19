@@ -30,13 +30,13 @@ COMMON_DEPEND="
 	x11-libs/cairo:=[X]
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
-BDEPEND="${COMMON_DEPEND}
+DEPEND="${COMMON_DEPEND}
 	media-libs/fontconfig
 "
 RDEPEND="${COMMON_DEPEND}
 	seccomp? ( sys-apps/bubblewrap )
 "
-DEPEND="
+BDEPEND="
 	app-text/docbook-xml-dtd:4.1.2
 	dev-util/gdbus-codegen
 	gtk-doc? ( >=dev-util/gtk-doc-1.14 )
