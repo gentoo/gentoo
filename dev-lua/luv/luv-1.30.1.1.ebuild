@@ -5,20 +5,20 @@ EAPI=7
 
 inherit cmake-utils unpacker
 
-MY_PV="${PV/_p/-}"
+# e.g. MY_PV = a.b.c-d
+MY_PV="$(ver_rs 3 -)"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Bare libuv bindings for lua"
 HOMEPAGE="https://github.com/luvit/luv"
-# XXX: Remember to check this hash between bumps!
-# https://github.com/luvit/luv/tree/master/deps
-LUA_COMPAT_HASH="daebe77a2f498817713df37f0bb316db1d82222f"
+
+LUA_COMPAT_PV="0.7"
 SRC_URI="
 	https://github.com/luvit/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/keplerproject/lua-compat-5.3/archive/${LUA_COMPAT_HASH}.tar.gz -> ${PN}-lua-compat-${PV}.tar.gz
+	https://github.com/keplerproject/lua-compat-5.3/archive/v${LUA_COMPAT_PV}.tar.gz -> ${PN}-lua-compat-${LUA_COMPAT_PV}.tar.gz
 "
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="luajit test"
@@ -42,7 +42,7 @@ src_prepare() {
 }
 
 src_configure() {
-	lua_compat_dir="${WORKDIR}/lua-compat-5.3-${LUA_COMPAT_HASH}"
+	lua_compat_dir="${WORKDIR}/lua-compat-5.3-${LUA_COMPAT_PV}"
 	local mycmakeargs=(
 		-DBUILD_MODULE=OFF
 		-DLUA_BUILD_TYPE=System
