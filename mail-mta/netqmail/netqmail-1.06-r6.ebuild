@@ -28,12 +28,14 @@ HOMEPAGE="
 SRC_URI="mirror://qmail/${P}.tar.gz
 	https://dev.gentoo.org/~hollow/distfiles/${GENQMAIL_F}
 	https://www.ckdhr.com/ckd/${QMAIL_LARGE_DNS}
-	http://inoa.net/qmail-tls/${QMAIL_TLS_CVE}
-	http://arnt.gulbrandsen.priv.no/qmail/qmail-smtputf8.patch
 	!vanilla? (
 		highvolume? ( mirror://qmail/${QMAIL_BIGTODO_F} )
 		qmail-spp? ( mirror://sourceforge/qmail-spp/${QMAIL_SPP_F} )
-		ssl? ( https://mirror.alexh.name/qmail/netqmail/${QMAIL_TLS_F} )
+		ssl? (
+			https://mirror.alexh.name/qmail/netqmail/${QMAIL_TLS_F}
+			http://inoa.net/qmail-tls/${QMAIL_TLS_CVE}
+			https://arnt.gulbrandsen.priv.no/qmail/qmail-smtputf8.patch
+		)
 	)
 "
 
@@ -81,7 +83,7 @@ pkg_setup() {
 		eerror
 		eerror "The QMAIL_PATCH_DIR variable for custom patches"
 		eerror "has been removed from ${PN}. If you need custom patches"
-		eerror "you should create a copy of this ebuild in an overlay."
+		eerror "see 'user patches' in the portage manual."
 		eerror
 		die "QMAIL_PATCH_DIR is not supported anymore"
 	fi
