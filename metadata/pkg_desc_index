@@ -11096,7 +11096,7 @@ games-action/koth 0.8.0-r1: Multiplayer, networked game of little tanks with rea
 games-action/lugaru 20151204-r1: 3D arcade with unique fighting system and anthropomorphic characters
 games-action/luola 1.3.2-r1: A 2D multiplayer arcade game resembling V-Wing
 games-action/maelstrom 3.0.6-r3: An asteroids battle game
-games-action/minetest 0.4.17.1 5.0.1-r2 5.0.1-r3: An InfiniMiner/Minecraft inspired game
+games-action/minetest 5.0.1-r3: An InfiniMiner/Minecraft inspired game
 games-action/minetest_game 0.4.16 0.4.17 5.0.1: The main game for the Minetest game engine
 games-action/moon-buggy 1.0.51-r1: A simple console game, where you drive a car across the moon's surface
 games-action/mutantstorm-demo 1.33-r1: shoot through crazy psychedelic 3D environments
@@ -11447,7 +11447,7 @@ games-fps/freedm-data 0.11.3-r2: Game resources for FreeDM
 games-fps/freedoom 0.11.3-r2: A complete free-content single-player focused game based on the Doom engine
 games-fps/freedoom-data 0.11.3-r2: Game resources for Freedoom: Phase 1+2
 games-fps/glxquake-bin 0-r2: A binary that works with any 3D-graphics-card that supports the glx X-extension
-games-fps/gzdoom 4.2.0: A modder-friendly OpenGL source port based on the DOOM engine
+games-fps/gzdoom 4.2.1: A modder-friendly OpenGL source port based on the DOOM engine
 games-fps/industri 1.01: Quake/Tenebrae based, single player game
 games-fps/legends 0.4.1.43-r2: Fast-paced first-person-shooter online multiplayer game, similar to Tribes
 games-fps/nexuiz 2.5.2-r1: Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine

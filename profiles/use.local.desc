@@ -3287,7 +3287,6 @@ games-action/dxx-rebirth:textures - Include high resolution (640x480) background
 games-action/hotline-miami:bundled-libs - Use bundled libraries.
 games-action/hotline-miami:launcher - Install qt launcher
 games-action/minetest:client - Build Minetest client
-games-action/minetest:jsoncpp - Enable using a system-wide JSONCPP
 games-action/minetest:leveldb - Enable LevelDB backend
 games-action/minetest:redis - Enable redis backend via dev-libs/hiredis
 games-action/minetest:server - Build Minetest server
