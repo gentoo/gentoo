@@ -122,13 +122,6 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	if use client ; then
-		elog
-		elog "optional dependencies:"
-		elog "	games-action/minetest_game (official mod)"
-		elog
-	fi
-
 	if use server ; then
 		elog
 		elog "Configure your server via /etc/conf.d/minetest-server"
