@@ -47,6 +47,8 @@ REQUIRED_USE="
 	vpx? ( opengl )
 "
 
+RESTRICT="bindist"
+
 S="${WORKDIR}/${PN}_${MY_DATE}-${MY_BUILD}"
 
 MY_DEPEND_RDEPEND="
