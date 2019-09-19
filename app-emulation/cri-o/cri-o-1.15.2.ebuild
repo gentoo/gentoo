@@ -3,7 +3,7 @@
 
 EAPI=7
 
-EGIT_COMMIT="66a9cf7c79b529c0f76546a352c1a4eb04b7721c"
+EGIT_COMMIT="f0827bb332854ffcff2f4d9f64d68b8139970b3d"
 EGO_PN="github.com/cri-o/${PN}"
 
 inherit golang-vcs-snapshot
@@ -12,10 +12,10 @@ DESCRIPTION="OCI-based implementation of Kubernetes Container Runtime Interface"
 HOMEPAGE="https://cri-o.io/"
 SRC_URI="https://github.com/cri-o/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="btrfs +device-mapper ostree selinux systemd"
+IUSE="btrfs +device-mapper selinux systemd"
 
 COMMON_DEPEND="
 	app-crypt/gpgme:=
@@ -31,18 +31,19 @@ COMMON_DEPEND="
 	sys-libs/libseccomp:=
 	btrfs? ( sys-fs/btrfs-progs )
 	device-mapper? ( sys-fs/lvm2:= )
-	ostree? ( dev-util/ostree )
 	selinux? ( sys-libs/libselinux:= )
 	systemd? ( sys-apps/systemd:= )"
 DEPEND="
-	${COMMON_DEPEND}
-	dev-go/go-md2man"
+	${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
 	!<app-emulation/libpod-1.3.2-r1"
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
 src_prepare() {
 	default
+
+	# Avoid network-sandbox violations since go-1.13
+	rm go.mod || die
 
 	sed -e '/^GIT_.*/d' \
 		-e '/	git diff --exit-code/d' \
@@ -74,10 +75,6 @@ src_compile() {
 	[[ -f hack/libdm_installed.sh ]] || die
 	use device-mapper || { echo -e "#!/bin/sh\necho exclude_graphdriver_devicemapper" > \
 		hack/libdm_installed.sh || die; }
-
-	[[ -f hack/ostree_tag.sh ]] || die
-	use ostree || { echo -e "#!/bin/sh\necho containers_image_ostree_stub" > \
-		hack/ostree_tag.sh || die; }
 
 	[[ -f hack/selinux_tag.sh ]] || die
 	use selinux || { echo -e "#!/bin/sh\ntrue" > \
