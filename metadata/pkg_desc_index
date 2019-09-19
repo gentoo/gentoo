@@ -11963,7 +11963,7 @@ gnome-base/gnome-light 3.22.0 3.26.2 3.30.2: Meta package for GNOME-Light, merge
 gnome-base/gnome-menus 3.13.3-r1: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.32.0: The GNOME Flashback Panel
-gnome-base/gnome-session 3.30.1-r1: Gnome session manager
+gnome-base/gnome-session 3.30.1-r1 3.32.0: Gnome session manager
 gnome-base/gnome-settings-daemon 3.30.2-r1 3.32.1: Gnome Settings Daemon
 gnome-base/gnome-shell 3.26.2-r4 3.30.2-r2 3.32.2: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
@@ -12936,7 +12936,7 @@ media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
 media-gfx/enblend 4.2.0_p20161007-r1: Image Blending with Multiresolution Splines
 media-gfx/engauge 10.6: Convert an image file showing a graph or map into numbers
 media-gfx/entangle 0.6.0: Tethered Camera Control & Capture
-media-gfx/eog 3.28.4: The Eye of GNOME image viewer
+media-gfx/eog 3.28.4 3.32.2: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.26.3 3.26.4: Eye of GNOME plugins
 media-gfx/eom 1.22.0 1.22.1: The MATE image viewer
 media-gfx/ephoto 1.5: Enlightenment image viewer written with EFL
@@ -17825,7 +17825,7 @@ sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm4
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
 sys-firmware/edk2-ovmf 201905 999999: UEFI firmware for 64-bit x86 virtual machines
 sys-firmware/firmware-imx 5.4: NXP i.MX firmware
-sys-firmware/intel-microcode 20190618_p20190908: Intel IA32/IA64 microcode update data
+sys-firmware/intel-microcode 20190618_p20190908 20190918_p20190918: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI
 sys-firmware/ipxe 1.0.0_p20180211 1.0.0_p20190728: Open source network boot (PXE) firmware
