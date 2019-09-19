@@ -28,6 +28,8 @@ ruby_add_rdepend 'dev-ruby/mime-types:3 >=dev-ruby/multi_xml-0.5.2'
 ruby_add_bdepend 'test? ( dev-ruby/webmock )'
 
 all_ruby_prepare() {
+	sed -i -e 's/git ls-files \?-\?-\?/find/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
 	# Remove bundler
 	rm Gemfile || die
 	sed -i -e '/[Bb]undler/ s:^:#:' Rakefile || die
