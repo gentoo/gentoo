@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="KVM driver for docker-machine"
 
 HOMEPAGE="https://github.com/dhiltgen/docker-machine-kvm"
-LICENSE="Apache-2.0 BSD CC-BY-SA-4.0 MIT ZLIB"
+LICENSE="Apache-2.0 BSD CC-BY-SA-4.0 MIT MPL-2.0 ZLIB"
 SLOT="0"
 IUSE=""
 COMMON_DEPEND="app-emulation/libvirt:=[qemu,virt-network]"
