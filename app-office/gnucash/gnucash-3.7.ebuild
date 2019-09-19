@@ -35,8 +35,8 @@ RDEPEND="
 	dev-libs/icu:=
 	dev-libs/libxslt
 	aqbanking? (
-		>=net-libs/aqbanking-5[gtk,ofx?]
-		sys-libs/gwenhywfar[gtk]
+		>=net-libs/aqbanking-5[ofx?]
+		sys-libs/gwenhywfar
 		chipcard? ( sys-libs/libchipcard )
 	)
 	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
@@ -44,6 +44,7 @@ RDEPEND="
 		gnome-base/dconf
 		net-libs/webkit-gtk:4=
 		>=x11-libs/gtk+-3.14.0:3
+		aqbanking? ( >=sys-libs/gwenhywfar-4.20.2[gtk] )
 	)
 	mysql? (
 		dev-db/libdbi
