@@ -49,6 +49,6 @@ src_test () {
 }
 
 src_install () {
-	ada/manage.py install "${D}"usr
+	ada/manage.py install "${D}"/usr
 	python_domodule build/python/libadalang.py
 }
