@@ -65,7 +65,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-db/sqlite
 	dev-libs/expat
 	>=dev-libs/flatbuffers-1.11.0
-	>=dev-libs/fribidi-0.19.7
+	>=dev-libs/fribidi-1.0.5
 	cec? ( >=dev-libs/libcec-4.0[raspberry-pi?] )
 	dev-libs/libpcre[cxx]
 	>=dev-libs/libinput-1.10.5
