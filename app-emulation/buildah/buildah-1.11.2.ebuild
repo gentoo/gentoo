@@ -7,7 +7,7 @@ inherit bash-completion-r1 golang-vcs-snapshot
 KEYWORDS="~amd64"
 DESCRIPTION="A tool that facilitates building OCI images"
 HOMEPAGE="https://github.com/containers/buildah"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
 SLOT="0"
 IUSE="ostree selinux"
 EGO_PN="${HOMEPAGE#*//}"
