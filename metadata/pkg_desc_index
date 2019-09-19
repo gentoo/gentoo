@@ -95,8 +95,8 @@ acct-user/unrealircd 0: System user: unrealircd
 acct-user/uptimed 0: user for uptime daemon
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
-app-accessibility/at-spi2-atk 2.26.2 2.30.1: Gtk module for bridging AT-SPI to Atk
-app-accessibility/at-spi2-core 2.26.2 2.30.1: D-Bus accessibility specifications and registration daemon
+app-accessibility/at-spi2-atk 2.26.2 2.30.1 2.32.0: Gtk module for bridging AT-SPI to Atk
+app-accessibility/at-spi2-core 2.26.2 2.30.1 2.32.1: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1 6.0-r1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.21: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.7.4: Combination editor, browser, and mail client that is 100% text based
@@ -4702,7 +4702,7 @@ dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line 
 dev-libs/asyncresolv 0.0.3: Asynchronous DNS query library written in C++
 dev-libs/atcore 1.0.0: API to manage the serial connection between the computer and 3D Printers
 dev-libs/atf 0.21-r2: Libraries to write tests in C, C++ and shell
-dev-libs/atk 2.28.1 2.30.0: GTK+ & GNOME Accessibility Toolkit
+dev-libs/atk 2.28.1 2.30.0 2.32.0: GTK+ & GNOME Accessibility Toolkit
 dev-libs/aws-sdk-cpp 1.5.17: AWS SDK for C++
 dev-libs/bareos-fastlzlib 0_pre20140912 0_pre20150524: Fork of zlib-like interface to fast block compression (LZ4 or FastLZ) libraries
 dev-libs/bcm2835 1.52 1.57: Provides access to GPIO and other IO functions on the Broadcom BCM2835
@@ -11954,7 +11954,7 @@ gnome-base/gnome-applets 3.32.0: Applets for the GNOME Flashback Panel
 gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome packages
 gnome-base/gnome-control-center 3.30.3-r1: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.30.2: Sub-meta package for the core applications integrated with GNOME 3
-gnome-base/gnome-core-libs 3.30.2: Sub-meta package for the core libraries of GNOME 3
+gnome-base/gnome-core-libs 3.30.2 3.32.2: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 2.32.1-r2 3.30.2.3 3.32.2: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.30.2: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.32.0: GNOME Flashback session
