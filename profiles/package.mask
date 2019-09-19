@@ -1197,10 +1197,6 @@ dev-lang/vala:0.46
 dev-lang/php:7.4
 ~virtual/httpd-php-7.4
 
-# Sobhan Mohammadpour <sobhan@gentoo.org> (2019-07-14)
-# Masked for testing
->=media-video/totem-3.32.1
-
 # Robin H. Johnson <robbat2@gentoo.org> (2019-07-08)
 # Needs LOTS of testing, broke boot on my laptop in early attempts, maybe needs
 # matching genkernel work?
