@@ -12,7 +12,7 @@ inherit golang-vcs-snapshot
 KEYWORDS="~amd64"
 DESCRIPTION="containers/storage library"
 HOMEPAGE="https://github.com/containers/storage"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 ISC MIT"
 SLOT="0"
 IUSE="btrfs +device-mapper ostree test"
 EGO_PN="${HOMEPAGE#*//}"
