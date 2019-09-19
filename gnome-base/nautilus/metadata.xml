@@ -6,6 +6,7 @@
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
 <use>
+	<flag name="gstreamer">Enable the Audio/Video file properties page</flag>
 	<flag name="packagekit">Use packagekit to search for programs to open
 		unknown file types</flag>
 	<flag name="previewer">Use <pkg>gnome-extra/sushi</pkg> to preview files
