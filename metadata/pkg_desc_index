@@ -9916,7 +9916,7 @@ dev-ruby/http-accept 1.7.0 2.1.0 2.1.1: Parse Accept and Accept-Language HTTP he
 dev-ruby/http-cookie 1.0.3: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.3 2.1.1: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
-dev-ruby/httparty 0.16.4 0.17.0: Makes http fun! Also, makes consuming restful web services dead easy
+dev-ruby/httparty 0.16.4 0.17.0 0.17.1: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
 dev-ruby/i18n 0.7.0-r3 0.9.5-r1 1.0.1-r1 1.6.0: Add Internationalization support to your Ruby application
@@ -12758,7 +12758,7 @@ media-fonts/font-sun-misc 1.0.3-r1: X.Org Sun fonts
 media-fonts/font-util 1.3.1 1.3.2-r1: X.Org font utilities
 media-fonts/font-winitzki-cyrillic 1.0.3-r1: X.Org Winitzki cyrillic font
 media-fonts/font-xfree86-type1 1.0.4-r1: X.Org XFree86 Type 1 font
-media-fonts/fontawesome 4.7.0 5.1.0 5.10.2: The iconic font
+media-fonts/fontawesome 4.7.0 5.1.0 5.11.1: The iconic font
 media-fonts/free-bangla-font 0.2: Unicode compliant Open Type Bangla fonts
 media-fonts/freefont 20120503: OpenType and TrueType Unicode fonts from the Free UCS Outline Fonts Project
 media-fonts/freefonts 0.10-r3: A Collection of Free Type1 Fonts
