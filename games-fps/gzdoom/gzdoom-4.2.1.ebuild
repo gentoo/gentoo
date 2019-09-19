@@ -31,13 +31,16 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-g${PV}"
 PATCHES=(
-	"${FILESDIR}/${P}-fluidsynth2.patch"
 	"${FILESDIR}/${P}-install_soundfonts.patch"
 	"${FILESDIR}/${P}-Introduce-the-BUILD_NONFREE-option.patch"
 )
 
 src_prepare() {
 	rm -rf docs/licenses || die
+	if ! use nonfree ; then
+		rm -rf wadsrc_bm wadsrc_extra || die
+	fi
+
 	cmake-utils_src_prepare
 }
 
@@ -68,12 +71,12 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	if ! use nonfree ; then
-		elog
-		elog "GZDoom installed without nonfree components."
-		elog "Note: The nonfree game_support.pk3 file is needed to play"
-		elog "      games natively supported by GZDoom."
-		elog "A list of games natively supported by GZDoom may be found"
-		elog "on the ZDoom wiki: https://zdoom.org/wiki/IWAD"
-		elog
+		ewarn
+		ewarn "GZDoom installed without nonfree components."
+		ewarn "Note: The nonfree game_support.pk3 file is needed to play"
+		ewarn "      games natively supported by GZDoom."
+		ewarn "A list of games natively supported by GZDoom may be found"
+		ewarn "on the ZDoom wiki: https://zdoom.org/wiki/IWAD"
+		ewarn
 	fi
 }

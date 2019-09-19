@@ -43,7 +43,6 @@
 	</maintainer>
 	<use>
 		<flag name="client">Build Minetest client</flag>
-		<flag name="jsoncpp">Enable using a system-wide JSONCPP</flag>
 		<flag name="leveldb">Enable LevelDB backend</flag>
 		<flag name="redis">Enable redis backend via <pkg>dev-libs/hiredis</pkg></flag>
 		<flag name="server">Build Minetest server</flag>
