@@ -17,7 +17,7 @@ IUSE="+otf +ttf"
 
 REQUIRED_USE="|| ( otf ttf )"
 
-DEPEND="app-arch/unzip"
+DEPEND=""
 RDEPEND=""
 
 S="${WORKDIR}/${MY_PN}-${PV}"
