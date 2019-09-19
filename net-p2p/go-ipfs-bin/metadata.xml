@@ -5,12 +5,16 @@
 		<email>davidroman96@gmail.com</email>
 		<name>David Roman</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>hurikhan77+bgo@gmail.com</email>
+		<name>Kai Krakow</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	IPFS is a decentralized torrent-like networking system with transparent
-	file adding/downloading.
+		IPFS is a decentralized torrent-like networking system with transparent
+		file adding/downloading.
 	</longdescription>
 </pkgmetadata>
