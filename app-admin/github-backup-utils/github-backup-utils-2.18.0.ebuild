@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # See https://github.com/github/backup-utils/issues/135
 PYTHON_COMPAT=(python2_7)
@@ -18,6 +18,7 @@ IUSE="test"
 
 DEPEND="test? (
 	dev-util/checkbashisms
+	sys-apps/moreutils
 	${PYTHON_DEPS}
 )"
 
@@ -25,16 +26,6 @@ RDEPEND="net-misc/rsync"
 
 MY_PN="${PN/#github-/}"
 S="${WORKDIR}/${MY_PN}-${PV}"
-
-src_prepare() {
-	default
-
-	# skip a test that depends on a git checkout: https://bugs.gentoo.org/629628
-	eapply "${FILESDIR}/github-backup-utils-tarball-fix.patch"
-
-	# Fix for python3 systems
-	eapply "${FILESDIR}/github-backup-utils-python27.patch"
-}
 
 src_compile() {
 	:;
@@ -51,6 +42,8 @@ src_install() {
 
 	insinto etc/${PN}
 	newins backup.config-example backup.config
+
+dodoc -r docs/*
 }
 
 src_test() {
