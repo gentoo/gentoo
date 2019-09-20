@@ -1,0 +1,46 @@
+--- a/Makefile	2018-05-19 14:15:37.000000000 +0200
++++ b/Makefile	2019-08-08 21:43:09.000000000 +0200
+@@ -1,4 +1,4 @@
+-CFLAGS+=-g
++CFLAGS+=
+ CPPFLAGS?=
+ LDFLAGS?=
+ ifneq (,$(findstring arch=i386,$(CFLAGS)))
+@@ -36,7 +36,7 @@
+ 
+ BUILDROOT=
+ 
+-default: $(PROG) $(PROG).man.gz cpuinfo2cpuid cpuinfo2cpuid.man.gz
++default: $(PROG) cpuinfo2cpuid cpuinfo2cpuid.man
+ 
+ $(PROG): cpuid.c Makefile
+ 	$(CC) $(CFL) $(LDFLAGS) -o $@ cpuid.c
+@@ -50,11 +50,11 @@
+ cpuinfo2cpuid.man.gz: cpuinfo2cpuid.man
+ 	gzip < $< > $@
+ 
+-install: $(PROG) $(PROG).man.gz cpuinfo2cpuid cpuinfo2cpuid.man.gz
+-	install -D -s -m 755 $(PROG)              $(BUILDROOT)/usr/bin/$(PROG)
+-	install -D    -m 444 $(PROG).man.gz       $(BUILDROOT)/usr/share/man/man1/$(PROG).1.gz
++install: $(PROG) cpuinfo2cpuid
++	install -D    -m 755 $(PROG)              $(BUILDROOT)/usr/bin/$(PROG)
++	install -D    -m 444 $(PROG).man          $(BUILDROOT)/usr/share/man/man1/$(PROG).1
+ 	install -D    -m 755 cpuinfo2cpuid        $(BUILDROOT)/usr/bin/cpuinfo2cpuid
+-	install -D    -m 444 cpuinfo2cpuid.man.gz $(BUILDROOT)/usr/share/man/man1/cpuinfo2cpuid.1.gz
++	install -D    -m 444 cpuinfo2cpuid.man    $(BUILDROOT)/usr/share/man/man1/cpuinfo2cpuid.1
+ 
+ clean:
+ 	rm -f $(PROG) $(PROG).i386 $(PROG).x86_64
+@@ -71,10 +71,10 @@
+ # Todd's Development rules
+ 
+ $(PROG).i386: cpuid.c Makefile
+-	$(CC) -m32 -Wl,--hash-style=both $(CFL) $(LDFLAGS) -o $@ cpuid.c
++	$(CC) -m32 $(CFL) -o $@ cpuid.c
+ 
+ $(PROG).x86_64: cpuid.c Makefile
+-	$(CC) -m64 $(CFL) $(LDFLAGS) -o $@ cpuid.c
++	$(CC) -m64 $(CFL) -o $@ cpuid.c
+ 
+ todd: $(PROG).i386 $(PROG).x86_64
+ 	rm -f ~/.bin/execs/i586/$(PROG)
