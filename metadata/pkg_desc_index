@@ -17214,7 +17214,7 @@ sys-apps/colorized-logs 2.4: Tools for logs with ANSI color
 sys-apps/conspy 1.10: Remote control for Linux virtual consoles
 sys-apps/coreutils 8.30 8.31 8.31-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/cpint 2.5.3: Linux/390 Interface to z/VM's Control Program
-sys-apps/cpuid 20170122 20180419: Utility to get detailed information about the CPU(s) using the CPUID instruction
+sys-apps/cpuid 20180419 20180519: Linux tool to dump x86 CPUID information about the CPUs
 sys-apps/cracklib-words 2.9.6 20080507: large set of crack/cracklib dictionaries
 sys-apps/crazydiskinfo 1.0.2: Interactive TUI S.M.A.R.T viewer
 sys-apps/daemonize 1.7.4 1.7.8: Runs a command as a Unix daemon
