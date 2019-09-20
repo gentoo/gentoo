@@ -28,8 +28,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="acl authfile ban +caps case clamav copy ctrls deflate diskuse dso dynmasq exec ifsession ifversion ident ipv6
-	kerberos ldap libressl log_forensic memcache msg mysql ncurses nls pam +pcre postgres qos radius
-	ratio readme rewrite selinux sftp shaper sitemisc snmp sodium softquota sqlite ssl tcpd test unique_id vroot"
+	kerberos ldap libressl log-forensic memcache msg mysql ncurses nls pam +pcre postgres qos radius
+	ratio readme rewrite selinux sftp shaper sitemisc snmp sodium softquota sqlite ssl tcpd test unique-id vroot"
 # TODO: geoip
 REQUIRED_USE="ban? ( ctrls )
 	msg? ( ctrls )
@@ -172,7 +172,7 @@ src_configure() {
 		m="${m}:mod_gss:mod_auth_gss"
 	fi
 	use ldap && m="${m}:mod_ldap"
-	use log_forensic && m="${m}:mod_log_forensic"
+	use log-forensic && m="${m}:mod_log_forensic"
 	use msg && m="${m}:mod_msg"
 	if use mysql || use postgres || use sqlite ; then
 		m="${m}:mod_sql:mod_sql_passwd"
@@ -207,7 +207,7 @@ src_configure() {
 		m="${m}:mod_wrap2:mod_wrap2_file"
 		use mysql || use postgres || use sqlite && m="${m}:mod_wrap2_sql"
 	fi
-	use unique_id && m="${m}:mod_unique_id"
+	use unique-id && m="${m}:mod_unique_id"
 	use vroot && m="${m}:mod_vroot"
 
 	if [[ -n ${PROFTP_CUSTOM_MODULES} ]]; then
