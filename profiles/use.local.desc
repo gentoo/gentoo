@@ -5873,7 +5873,7 @@ net-ftp/proftpd:exec - Enable support for the mod_exec module. WARNING: this cou
 net-ftp/proftpd:ident - Enable support for the mod_ident module
 net-ftp/proftpd:ifsession - Enable support for the ifsession module
 net-ftp/proftpd:ifversion - Enable support for the mod_ifversion module
-net-ftp/proftpd:log_forensic - Enable support for the mod_log_forensic module, log only suspicious actions.
+net-ftp/proftpd:log-forensic - Enable support for the mod_log_forensic module, log only suspicious actions.
 net-ftp/proftpd:memcache - Enable support for the mod_memcache module, for using memcached servers
 net-ftp/proftpd:msg - Enable support for the mod_msg module, allows system users to send messages to connected clients via the ftpdctl program.
 net-ftp/proftpd:qos - Enable support for the mod_qos module
@@ -5885,7 +5885,7 @@ net-ftp/proftpd:shaper - Enable support for the mod_shaper module
 net-ftp/proftpd:sitemisc - Enable support for the sitemisc module
 net-ftp/proftpd:sodium - Use dev-libs/libsodium for password encryption an key exchange
 net-ftp/proftpd:softquota - Enable support for the quotatab module
-net-ftp/proftpd:unique_id - Enable support for the mod_unique_id module, every connection gets unique ID.
+net-ftp/proftpd:unique-id - Enable support for the mod_unique_id module, every connection gets unique ID.
 net-ftp/proftpd:vroot - Enable support for the virtual root module
 net-ftp/pure-ftpd:anondel - Permit anonymous to delete files
 net-ftp/pure-ftpd:anonperm - Permit anonymous to change file permissions
@@ -7987,7 +7987,7 @@ sys-apps/net-tools:arp - build the arp and rarp tools (for manipulating the ARP 
 sys-apps/net-tools:hostname - build the hostname and dnsdomainname tools
 sys-apps/net-tools:plipconfig - build the plipconfig tool (for working with old PLIP hardware)
 sys-apps/net-tools:slattach - build the slattach tool (for working with old serial ports)
-sys-apps/nix:etc_profile - Install /etc/profile.d/ entry to inject nix support for all users.
+sys-apps/nix:etc-profile - Install /etc/profile.d/ entry to inject nix support for all users.
 sys-apps/nix:gc - Enable garbage collection in the Nix expression evaluator (use dev-libs/boehm-gc).
 sys-apps/nix:s3 - Enable Amazon S3 bucket to load and store packages (use dev-libs/aws-sdk-cpp).
 sys-apps/nix:sodium - Use dev-libs/libsodium for cryptography
