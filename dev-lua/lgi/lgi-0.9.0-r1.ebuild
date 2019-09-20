@@ -47,8 +47,9 @@ src_test() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	dohtml -r docs/*
+	docompress -x /usr/share/doc/${PF}
 	dodoc README.md
+	dodoc -r docs/*
 	if use examples; then
 		dodoc -r samples
 	fi
