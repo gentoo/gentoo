@@ -1,0 +1,10 @@
+--- a/cpuid.c	2018-05-19 14:09:29.000000000 +0200
++++ b/cpuid.c	2019-08-08 21:53:03.000000000 +0200
+@@ -4249,6 +4249,7 @@
+           { "fast short REP MOV"                      ,  4,  4, bools },
+           { "PCONFIG"                                 , 18, 18, bools },
+           { "CET_IBT: CET indirect branch tracking"   , 20, 20, bools },
++          { "SPEC_CTRL: Speculation Control" ,  26,  26, bools },
+       };
+    print_names(value, names, LENGTH(names, named_item),
+                /* max_len => */ 40);
