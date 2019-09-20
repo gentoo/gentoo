@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ DESCRIPTION="Digital Audio Workstation"
 HOMEPAGE="http://ardour.org/"
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="http://git.ardour.org/ardour/ardour.git"
+	EGIT_REPO_URI="https://git.ardour.org/ardour/ardour.git"
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
@@ -20,7 +20,7 @@ else
 fi
 
 LICENSE="GPL-2"
-SLOT="5"
+SLOT="6"
 IUSE="altivec doc jack cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
@@ -50,12 +50,11 @@ RDEPEND="
 	net-misc/curl
 	sys-libs/readline:0=
 	sci-libs/fftw:3.0[threads]
-	virtual/libusb:0
+	virtual/libusb:1
 	x11-libs/cairo
 	>=x11-libs/gtk+-2.8.1:2
 	x11-libs/pango
 	jack? ( virtual/jack )
-	>=media-libs/slv2-0.6.1
 	media-libs/lilv
 	media-libs/sratom
 	dev-libs/sord
@@ -113,15 +112,14 @@ src_configure() {
 	tc-export CC CXX
 	mkdir -p "${D}"
 	waf-utils_src_configure \
-		--destdir="${D}" \
-		--prefix=/usr \
-		--configdir=/etc \
-		--nls \
-		--optimize \
-		--lv2 \
-		$(usex jack "--with-backends=alsa,jack" "--with-backends=alsa  --libjack=weak") \
-		$(usex doc "--docs" '') \
-		$({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization")
+                $(usex doc "--docs" '') \
+                $({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization") \
+                $(usex jack "--with-backends=alsa,jack" "--with-backends=alsa  --libjack=weak") \
+                --destdir="${D}" \
+                --prefix=/usr \
+                --configdir=/etc \
+                --nls \
+                --optimize
 }
 
 src_install() {
@@ -129,7 +127,7 @@ src_install() {
 	mv ${PN}.1 ${PN}${SLOT}.1
 	doman ${PN}${SLOT}.1
 	newicon "${S}/gtk2_ardour/resources/Ardour-icon_48px.png" ${PN}${SLOT}.png
-	make_desktop_entry ardour5 ardour5 ardour5 AudioVideo
+	make_desktop_entry ardour6 ardour6 ardour6 AudioVideo
 }
 
 pkg_postinst() {
