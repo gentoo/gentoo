@@ -17,6 +17,6 @@ zSeries (s390) Linux kernel and device drivers
 		<flag name="zlib">build the zgetdump and dump2tar utilities</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">e2fsprogs</remote-id>
+		<remote-id type="github">ibm-s390-tools/s390-tools</remote-id>
 	</upstream>
 </pkgmetadata>
