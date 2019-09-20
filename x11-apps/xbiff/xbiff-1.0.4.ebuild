@@ -7,7 +7,7 @@ inherit xorg-3
 
 DESCRIPTION="mailbox flag for X"
 
-KEYWORDS="~amd64 ~arm ~hppa ~mips ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~mips ppc ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/libXaw
