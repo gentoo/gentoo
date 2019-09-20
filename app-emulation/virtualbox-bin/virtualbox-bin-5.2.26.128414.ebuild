@@ -36,7 +36,7 @@ LICENSE="GPL-2 PUEL"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+additions +chm headless python vboxwebsrv rdesktop-vrdp"
-RESTRICT="mirror"
+RESTRICT="bindist mirror"
 
 if [[ "${PV}" != *beta* ]] ; then
 	SRC_URI+="
