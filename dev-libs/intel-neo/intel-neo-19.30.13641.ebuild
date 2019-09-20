@@ -20,7 +20,7 @@ IUSE="vaapi"
 BDEPEND="virtual/pkgconfig"
 COMMON="dev-libs/ocl-icd
 	dev-util/intel-graphics-compiler
-	>=media-libs/gmmlib-19.0.0
+	>=media-libs/gmmlib-19.2.3
 	vaapi? (
 		x11-libs/libdrm[video_cards_intel]
 		>=x11-libs/libva-2.0.0
