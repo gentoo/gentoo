@@ -15,7 +15,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf8ae231e87a8f1d425052
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnat_2019 +shared static-libs static-pic"
+IUSE="+shared static-libs static-pic"
 
 RDEPEND="
 	dev-ada/libgpr[${ADA_USEDEP},shared?,static-libs?,static-pic?]
