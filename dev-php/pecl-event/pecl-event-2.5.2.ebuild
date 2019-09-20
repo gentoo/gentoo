@@ -16,7 +16,6 @@ KEYWORDS="~amd64 ~ia64 ~x86"
 LICENSE="PHP-3.01"
 
 DESCRIPTION="PHP wrapper for libevent2"
-LICENSE="PHP-3"
 SLOT="0"
 
 DEPEND="
