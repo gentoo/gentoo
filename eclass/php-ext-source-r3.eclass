@@ -15,7 +15,8 @@ inherit autotools
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test
 
 case ${EAPI:-0} in
-	6|7) ;;
+	6) inherit eapi7-ver ;;
+	7) ;;
 	*)
 		die "${ECLASS} is not compatible with EAPI=${EAPI}"
 esac
@@ -183,10 +184,18 @@ php-ext-source-r3_phpize() {
 		# WANT_AUTOMAKE (see bugs #329071 and #549268).
 		autotools_run_tool "${PHPIZE}"
 
-		# Force libtoolize to run and regenerate autotools files (bug
-		# #220519).
-		rm aclocal.m4 || die "failed to remove aclocal.m4"
-		eautoreconf
+		# PHP >=7.4 no longer works with eautoreconf
+		if ver_test $PHP_CURRENTSLOT -ge 7.4 ; then
+			rm -fr aclocal.m4 autom4te.cache config.cache \
+				configure main/php_config.h.in || die
+			eautoconf --force
+			eautoheader
+		else
+			# Force libtoolize to run and regenerate autotools files (bug
+			# #220519).
+			rm aclocal.m4 || die "failed to remove aclocal.m4"
+			eautoreconf
+		fi
 	fi
 }
 
