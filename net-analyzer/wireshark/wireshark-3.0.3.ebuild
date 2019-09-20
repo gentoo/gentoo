@@ -53,12 +53,12 @@ CDEPEND="
 	sshdump? ( >=net-libs/libssh-0.6 )
 	ssl? ( net-libs/gnutls:= )
 	zlib? ( sys-libs/zlib )
+	${PYTHON_DEPS}
 "
 # We need perl for `pod2html`. The rest of the perl stuff is to block older
 # and broken installs. #455122
 DEPEND="
 	${CDEPEND}
-	${PYTHON_DEPS}
 "
 BDEPEND="
 	!<perl-core/Pod-Simple-3.170
