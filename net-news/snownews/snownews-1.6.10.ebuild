@@ -10,7 +10,7 @@ SRC_URI="https://github.com/kouya/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
 COMMON_DEPEND="
