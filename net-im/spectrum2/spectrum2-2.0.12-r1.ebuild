@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-any-r1 systemd user
+inherit cmake-utils python-any-r1 systemd
 
 DESCRIPTION="An open source instant messaging transport"
 HOMEPAGE="https://www.spectrum.im"
@@ -18,6 +18,8 @@ IUSE="doc frotz irc mysql postgres purple sms +sqlite test twitter whatsapp xmpp
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 RDEPEND="
+	acct-group/spectrum
+	acct-user/spectrum
 	dev-libs/boost:=[nls]
 	dev-libs/expat
 	dev-libs/libev:=
@@ -67,9 +69,6 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	enewgroup spectrum
-	enewuser spectrum -1 -1 /var/lib/spectrum2 spectrum
-
 	use test && python-any-r1_pkg_setup
 }
 
