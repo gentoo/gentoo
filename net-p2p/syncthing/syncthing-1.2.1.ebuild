@@ -79,7 +79,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="selinux tools"
 
-BDEPEND=">=dev-lang/go-1.12"
+BDEPEND="<dev-lang/go-1.13"
 RDEPEND="acct-group/syncthing
 	acct-user/syncthing
 	tools? ( acct-group/stdiscosrv
