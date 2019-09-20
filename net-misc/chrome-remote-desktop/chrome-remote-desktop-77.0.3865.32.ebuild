@@ -31,6 +31,7 @@ SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="xrandr"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="bindist mirror"
 
 # All the libs this package links against.
 RDEPEND="app-admin/sudo
