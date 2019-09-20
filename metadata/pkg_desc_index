@@ -4705,7 +4705,10 @@ dev-libs/asyncresolv 0.0.3: Asynchronous DNS query library written in C++
 dev-libs/atcore 1.0.0: API to manage the serial connection between the computer and 3D Printers
 dev-libs/atf 0.21-r2: Libraries to write tests in C, C++ and shell
 dev-libs/atk 2.28.1 2.30.0 2.32.0: GTK+ & GNOME Accessibility Toolkit
-dev-libs/aws-sdk-cpp 1.5.17: AWS SDK for C++
+dev-libs/aws-c-common 0.4.11: Core c99 package for AWS SDK for C
+dev-libs/aws-c-event-stream 0.1.3: C99 implementation of the vnd.amazon.eventstream content-type
+dev-libs/aws-checksums 0.1.3: Cross-Platform HW accelerated CRC32c and CRC32 with software fallbacks
+dev-libs/aws-sdk-cpp 1.7.178: AWS SDK for C++
 dev-libs/bareos-fastlzlib 0_pre20140912 0_pre20150524: Fork of zlib-like interface to fast block compression (LZ4 or FastLZ) libraries
 dev-libs/bcm2835 1.52 1.57: Provides access to GPIO and other IO functions on the Broadcom BCM2835
 dev-libs/beignet 1.3.2-r3: OpenCL implementation for Intel Sandy Bridge, Ivy Bridge and Haswell GPUs
@@ -15500,7 +15503,6 @@ net-misc/netprofiles-ims 0.1.0134: Netprofiles Interface Management System manag
 net-misc/netsed 0.01b-r1: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.18.2: A set of co-operative tools that make networking simple and straightforward
-net-misc/networkmanager-wireguard 9999: NetworkManager WireGuard plugin
 net-misc/nextcloud-client 2.5.2: Desktop Syncing Client for Nextcloud
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
@@ -15845,6 +15847,7 @@ net-vpn/networkmanager-pptp 1.2.8: NetworkManager PPTP VPN plugin
 net-vpn/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
 net-vpn/networkmanager-strongswan 1.4.4-r1: NetworkManager StrongSwan plugin
 net-vpn/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
+net-vpn/networkmanager-wireguard 0_pre20181128 9999: NetworkManager WireGuard plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 7.08-r1 8.02 8.03 9999: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.9.0 1.10.0: Fortinet compatible VPN client
