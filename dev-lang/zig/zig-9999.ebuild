@@ -27,14 +27,14 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]}
 
 RDEPEND="
-	sys-devel/llvm:8
-	!experimental? ( sys-devel/llvm:8[${LLVM_TARGET_USEDEPS// /,}] )
-	sys-devel/clang:8
+	sys-devel/llvm:9
+	!experimental? ( sys-devel/llvm:9[${LLVM_TARGET_USEDEPS// /,}] )
+	sys-devel/clang:9
 "
 
 DEPEND="${RDEPEND}"
 
-LLVM_MAX_SLOT=8
+LLVM_MAX_SLOT=9
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
