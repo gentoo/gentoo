@@ -27,7 +27,7 @@ RDEPEND="
 DEPEND="app-arch/unzip
 	${PYTHON_DEPS}"
 
-RESTRICT="fetch"
+RESTRICT="bindist fetch"
 
 S="${WORKDIR}/${MY_P}"/linux_mac
 
