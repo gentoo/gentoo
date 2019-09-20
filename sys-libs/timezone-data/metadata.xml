@@ -10,7 +10,7 @@
     <name>Gentoo Toolchain Project</name>
   </maintainer>
   <use>
-    <flag name="leaps_timezone">
+    <flag name="leaps-timezone">
       Install the set of "right" timezones; these timezones include leap seconds
       when counting seconds since the epoch (while POSIX does not) as they are
       based on the TAI (International Atomic Time) clock
