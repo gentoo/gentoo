@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake-utils xdg-utils
 
-DESCRIPTION="Vim-fork focused on extensibility and agility."
+DESCRIPTION="Vim-fork focused on extensibility and agility"
 HOMEPAGE="https://neovim.io"
 
 if [[ ${PV} == 9999 ]]; then
@@ -20,9 +20,21 @@ LICENSE="Apache-2.0 vim"
 SLOT="0"
 IUSE="+clipboard +luajit +nvimpager python remote ruby +tui +jemalloc"
 
-CDEPEND="
+BDEPEND="
+	dev-util/gperf
+	virtual/libiconv
+	virtual/libintl
+	virtual/pkgconfig
+"
+
+DEPEND="
 	dev-libs/libuv:0=
+	<dev-libs/libvterm-0.1
 	dev-libs/msgpack:0=
+	dev-lua/lpeg[luajit=]
+	dev-lua/mpack[luajit=]
+	net-libs/libnsl
+	jemalloc? ( dev-libs/jemalloc )
 	luajit? ( dev-lang/luajit:2 )
 	!luajit? (
 		dev-lang/lua:=
@@ -32,35 +44,23 @@ CDEPEND="
 		dev-libs/libtermkey
 		>=dev-libs/unibilium-2.0.0:0=
 	)
-	dev-libs/libvterm
-	dev-lua/lpeg[luajit=]
-	dev-lua/mpack[luajit=]
-	jemalloc? ( dev-libs/jemalloc )
-	net-libs/libnsl"
-
-DEPEND="
-	${CDEPEND}
-	dev-util/gperf
-	virtual/libintl
-	virtual/libiconv
-	app-eselect/eselect-vi"
+"
 
 RDEPEND="
-	${CDEPEND}
+	${DEPEND}
+	app-eselect/eselect-vi
 	python? ( dev-python/neovim-python-client )
 	ruby? ( dev-ruby/neovim-ruby-client )
 	remote? ( dev-python/neovim-remote )
-	clipboard? ( || ( x11-misc/xsel x11-misc/xclip ) )"
+	clipboard? ( || ( x11-misc/xsel x11-misc/xclip ) )
+"
 
 CMAKE_BUILD_TYPE=Release
 
 src_prepare() {
 	# use our system vim dir
-	sed -e '/^# define SYS_VIMRC_FILE/s|$VIM|'"${EPREFIX}"'/etc/vim|' \
+	sed -e "/^# define SYS_VIMRC_FILE/s|\$VIM|${EPREFIX}/etc/vim|" \
 		-i src/nvim/globals.h || die
-
-	# add eclass to bash filetypes
-	sed -e 's|*.ebuild|*.ebuild,*.eclass|' -i runtime/filetype.vim || die
 
 	cmake-utils_src_prepare
 }

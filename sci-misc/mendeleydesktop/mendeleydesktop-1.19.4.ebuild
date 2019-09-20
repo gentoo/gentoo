@@ -23,7 +23,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RESTRICT="fetch"
+RESTRICT="bindist fetch"
 
 DEPEND=""
 BDEPEND=""
