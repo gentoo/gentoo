@@ -51,6 +51,9 @@ DOCS=( AUTHORS NEWS.md CONTRIBUTING.md contrib/syslog-ng.conf.{HP-UX,RedHat,SunO
 	contrib/syslog2ng "${T}/syslog-ng.conf.gentoo.hardened"
 	"${T}/syslog-ng.logrotate.hardened" "${FILESDIR}/README.hardened" )
 
+# bug #695176
+PATCHES=( "${FILESDIR}/patches/${PN}-3.23.1-fix-sigabrt.patch" )
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
