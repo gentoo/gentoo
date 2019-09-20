@@ -23,13 +23,14 @@ IUSE=""
 
 ruby_add_bdepend "doc? ( dev-ruby/redcarpet )
 	test? ( dev-ruby/minitest-power_assert )
+	dev-ruby/yard
 "
 
 ruby_add_rdepend "dev-ruby/redcarpet"
 
 all_ruby_prepare() {
-	rm -f tasks/update/changelog.rake || die
+	rm -f tasks/{check/style,update/changelog}.rake || die
 
 	sed -i -e '/bundler/I s:^:#: ; 5irequire "minitest-power_assert"' spec/spec_helper.rb || die
-	sed -i -e '/\(changelog\|bundler\)/ s:^:#: ; 1irequire "pathname"' Rakefile || die
+	sed -i -e '/\(changelog\|bundler\|rubocop\)/ s:^:#: ; 1irequire "pathname"' Rakefile || die
 }
