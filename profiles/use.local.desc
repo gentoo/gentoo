@@ -4988,24 +4988,32 @@ media-tv/kodi:udev - Use sys-fs/udev rules to handle devices' permissions and ho
 media-tv/kodi:webserver - Enable internal webserver
 media-tv/kodi:xslt - Enable XSLT support using dev-libs/libxslt
 media-tv/linuxtv-dvb-apps:alevt - Build videotext decoder
-media-tv/mythtv:alsa - Allows MythTV to directly output sound to ALSA devices, this is needed if you are using ALSA dmix or SPDIF. Note, you will have to physically type your device into the MythTV configuration since it will only give you /dev/dsp devices in the drop down.
-media-tv/mythtv:altivec - Builds ffmpeg's codec libraries with altivec support.
-media-tv/mythtv:autostart - Uses a custom autostart configuration gleaned from experience with MythTV since its early versions and discussed with other MythTV maintainers and users. Does not rely on KDE being installed like most methods do.
-media-tv/mythtv:bluray - Pulls in libbluray for BluRay support.
-media-tv/mythtv:cec - Allows you to control CEC enabled TVs via HDMI. Currently requires a USB based CEC -> HDMI injector between your TV and video card since no graphics drivers support CEC natively.
-media-tv/mythtv:crystalhd - Allows you to utilize a Broadcom CrystalHD hardware based video decoder to improve the performance of video decode.
-media-tv/mythtv:debug - Instructs Qt to use the 'debug' target instead of 'release' target. If your MythTV is crashing or you need a backtrace, you need to compile it with this option otherwise the debugging data is useless.
-media-tv/mythtv:egl - Support EGL video output.
+media-tv/mythtv:alsa - Allows MythTV to directly output sound to ALSA devices
+media-tv/mythtv:asi - Support for DVEO ASI recorder
+media-tv/mythtv:autostart - Use a custom autostart configuration
+media-tv/mythtv:bluray - Use the system libbluray for BluRay support
+media-tv/mythtv:cec - Allows control of CEC enabled TVs via HDMI
+media-tv/mythtv:ceton - Ceton InfiniTV 4 a CableCARD-enabled tuner support
+media-tv/mythtv:crystalhd - Broadcom CrystalHD hardware support
+media-tv/mythtv:debug - Instructs Qt to use the 'debug' target
+media-tv/mythtv:egl - EGL video output support
 media-tv/mythtv:fftw - Support visualizations via sci-libs/fftw
+media-tv/mythtv:hdhomerun - Silicondust USA Inc.network-attached tuner support
+media-tv/mythtv:hdpvr - Hauppauge HD-PVR?
 media-tv/mythtv:hls - HTTP Live Streaming support
-media-tv/mythtv:ieee1394 - Allows MythTV to communicate and use Firewire enabled Cable boxes. These are typically found in the United States, where such support is required by law. This will also install Firewire test programs and external channel changers if the internal changer does not work.
-media-tv/mythtv:jack - Allows MythTV to use JACK as your sound output device. You will have to manually configure the path to your JACK settings.
-media-tv/mythtv:lcd - Tells MythTV that you have an instance of app-misc/lcdproc configured on your machine and it should output information such as current time, show name, episode name, etc to that LCD.
-media-tv/mythtv:lirc - Adds LIRC support directly to MythTV allowing for built in control via a LIRC device.
-media-tv/mythtv:mythlogserver - Enable support for syslog and file logging. Not used with systemd.
-media-tv/mythtv:perl - Builds the perl bindings for MythTV. Allows you to write scripts in Perl to control your MythTV setup or communicate with it.
-media-tv/mythtv:wrapper - Use Ubuntu mythtfrontend wrapper.
-media-tv/mythtv:xmltv - Pulls in the media-tv/xmltv TV listing grabbers for users not using Schedules Direct.
+media-tv/mythtv:ieee1394 - Firewire enabled Cable boxe support
+media-tv/mythtv:ivtv - Support kernel driver for the iTVC15 family of MPEG codecs
+media-tv/mythtv:jack - Allows MythTV to use JACK as your sound output device
+media-tv/mythtv:java - BD-J support for Blu-ray discs
+media-tv/mythtv:lcd - Enable use of app-misc/lcdproc data display
+media-tv/mythtv:lirc - LIRC remote control device support
+media-tv/mythtv:mythlogserver - Enable support for syslog and file logging
+media-tv/mythtv:perl - Build the perl bindings for MythTV
+media-tv/mythtv:vbox - V@Box Communications network-attached tuner devices support
+media-tv/mythtv:vpx - Enable VP8/VP9 support for media-libs/libvpx
+media-tv/mythtv:wrapper - Use Ubuntu mythtfrontend wrapper
+media-tv/mythtv:x265 - Enable h265 encoding using x265
+media-tv/mythtv:xmltv - Support media-tv/xmltv TV listing - not used by Schedules Direct]
 media-tv/tvheadend:capmt - Enable support for capmt (dvbapi) protocol
 media-tv/tvheadend:constcw - Enable support for the constcw protocol
 media-tv/tvheadend:cwc - Enable support for the cwc (newcamd) protocol
