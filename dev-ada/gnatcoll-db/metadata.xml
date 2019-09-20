@@ -6,6 +6,7 @@
 	</maintainer>
 	<use>
 		<flag name="gnatcoll_db2ada">Build gnatcoll_db2ada</flag>
+		<flag name="db2ada">Build gnatcoll_db2ada</flag>
 		<flag name="gnatinspect">Build gnatinspect</flag>
 		<flag name="shared">Build shared library</flag>
 		<flag name="sql">Build sql library</flag>
