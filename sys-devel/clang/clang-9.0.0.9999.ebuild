@@ -68,6 +68,9 @@ PATCHES=(
 	# fix linking in non-native build (without tools-extra)
 	# https://bugs.llvm.org/show_bug.cgi?id=43281
 	"${FILESDIR}"/9.0.0/0001-clang-unittest-Import-LLVMTestingSupport-if-necessar.patch
+	# fix build with gcc-9.0.0
+	# https://bugs.llvm.org/show_bug.cgi?id=40547
+	"${FILESDIR}"/9.0.0/0002-Initialize-all-fields-in-ABIArgInfo.patch
 )
 
 # Multilib notes:
