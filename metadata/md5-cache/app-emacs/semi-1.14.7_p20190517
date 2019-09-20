@@ -5,10 +5,10 @@ DESCRIPTION=A library to provide MIME feature for GNU Emacs
 EAPI=7
 HOMEPAGE=https://github.com/wanderlust/semi
 IUSE=l10n_ja
-KEYWORDS=alpha amd64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=alpha amd64 ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-2+
 RDEPEND=>=app-emacs/apel-10.8 >=app-emacs/flim-1.14.9 >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/wanderlust/semi/archive/4cf114c95fb49ad75eb6916f678b45b04bad8122.tar.gz -> semi-1.14.7_p20190517.tar.gz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=b62f0b3e5b56ee3fd5063e89620eb163
+_md5_=29f8e825233cdfc97095835287df032e

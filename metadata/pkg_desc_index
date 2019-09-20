@@ -7412,7 +7412,7 @@ dev-python/abstract_rendering 0.5.1: Rendering as a binning process
 dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/aiodns 1.1.1 1.2.0 2.0.0: Simple DNS resolver for asyncio
 dev-python/aioeventlet 0.5.1-r1: asyncio event loop scheduling callbacks in eventlet
-dev-python/aiohttp 2.3.10 3.5.4 3.6.0: http client/server for asyncio
+dev-python/aiohttp 2.3.10 3.5.4 3.6.0 3.6.1: http client/server for asyncio
 dev-python/aiohttp-cors 0.6.0: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.2.2: SOCKS proxy connector for aiohttp
@@ -16829,7 +16829,7 @@ sci-mathematics/wxmaxima 18.11.4 19.05.7 19.08.1 19.09.0: Graphical frontend to 
 sci-mathematics/xmds 2.2.2: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-mathematics/yacas 1.7.0-r1: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
-sci-mathematics/z3 4.4.1 4.5.0 4.8.5: An efficient theorem prover
+sci-mathematics/z3 4.4.1 4.5.0 4.8.5 4.8.6: An efficient theorem prover
 sci-misc/ViSP-images 3.0.1 3.1.0 3.2.0: ViSP images data set
 sci-misc/apertium 3.2.0: Shallow-transfer machine Translation engine and toolbox
 sci-misc/boinc 7.8.6 7.9.3 7.14.2 9999: The Berkeley Open Infrastructure for Network Computing
