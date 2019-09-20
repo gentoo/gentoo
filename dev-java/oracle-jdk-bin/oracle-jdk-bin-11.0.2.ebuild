@@ -23,7 +23,7 @@ LICENSE="Oracle-BCLA-JavaSE"
 SLOT="${PV%%.*}"
 IUSE="alsa commercial cups doc +fontconfig +gentoo-vm gtk2 gtk3 headless-awt javafx nsplugin selinux source"
 REQUIRED_USE="javafx? ( alsa fontconfig ^^ ( gtk2 gtk3 ) )"
-RESTRICT="fetch preserve-libs strip"
+RESTRICT="bindist fetch preserve-libs strip"
 QA_PREBUILT="*"
 
 # NOTES:
