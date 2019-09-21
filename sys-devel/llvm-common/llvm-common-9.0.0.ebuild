@@ -7,6 +7,7 @@ MY_P=llvm-${PV/_/}.src
 DESCRIPTION="Common files shared between multiple slots of LLVM"
 HOMEPAGE="https://llvm.org/"
 SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -14,8 +15,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x6
 IUSE=""
 
 RDEPEND="!sys-devel/llvm:0"
-
-S=${WORKDIR}/${MY_P}
 
 src_unpack() {
 	einfo "Unpacking parts of ${MY_P}.tar.xz ..."
