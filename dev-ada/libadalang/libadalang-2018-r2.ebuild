@@ -31,6 +31,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 S="${WORKDIR}"/${MYP}
 
+pkg_setup() {
+	python-single-r1_pkg_setup
+	ada_pkg_setup
+}
+
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${PN}-2017-gentoo.patch
