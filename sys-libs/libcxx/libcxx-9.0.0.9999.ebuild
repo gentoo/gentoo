@@ -8,32 +8,21 @@ EAPI=7
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
-EGIT_REPO_URI="https://git.llvm.org/git/libcxx.git
-	https://github.com/llvm-mirror/libcxx.git"
-EGIT_BRANCH="release_90"
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
-[[ ${PV} == *9999 ]] && SCM="git-r3" || SCM=""
-
-inherit ${SCM} cmake-multilib llvm multiprocessing python-any-r1 \
+inherit cmake-multilib git-r3 llvm multiprocessing python-any-r1 \
 	toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
-if [[ ${PV} != *9999 ]] ; then
-	SRC_URI="https://llvm.org/releases/${PV}/${P}.src.tar.xz"
-	S="${WORKDIR}/${P}.src"
-else
-	SRC_URI=""
-fi
+SRC_URI=""
+EGIT_REPO_URI="https://git.llvm.org/git/libcxx.git
+	https://github.com/llvm-mirror/libcxx.git"
+EGIT_BRANCH="release_90"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-if [[ ${PV} != *9999 ]] ; then
-	KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
-else
-	KEYWORDS=""
-fi
+KEYWORDS=""
 IUSE="elibc_glibc elibc_musl +libcxxabi libcxxrt +libunwind +static-libs test"
 REQUIRED_USE="libunwind? ( || ( libcxxabi libcxxrt ) )
 	?? ( libcxxabi libcxxrt )"
