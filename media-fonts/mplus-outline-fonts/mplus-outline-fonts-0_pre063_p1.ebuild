@@ -5,7 +5,8 @@ EAPI="6"
 
 inherit font
 
-MY_P="mplus-TESTFLIGHT-${PV:5:3}a"
+MY_P="mplus-${PV/0_pre/TESTFLIGHT-}"
+MY_P="${MY_P/_p1/a}"
 
 DESCRIPTION="M+ Japanese outline fonts"
 HOMEPAGE="http://mplus-fonts.osdn.jp/ http://ossipedia.ipa.go.jp/ipafont/"
