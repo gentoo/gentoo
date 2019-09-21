@@ -25,10 +25,15 @@ src_prepare() {
 	sed -e 's:\(for p in \)shellcheck :\1 :' \
 		-e 's:^			gofmt \\$:\\:' \
 		-e 's:^			govet \\$:\\:' \
+		-e 's:^			govet_shadow \\$:\\:' \
 		-i "${S}"/src/${EGO_PN}/test || die
 	# missing ... in args forwarded to print-like function
 	sed -e 's:l\.Logger\.Panic(v):l.Logger.Panic(v...):' \
 		-i "${S}"/src/${EGO_PN}/raft/logger.go || die
+
+	sed -e 's:TestGetDefaultInterface(:_\0:' \
+		-e 's:TestGetDefaultHost(:_\0:' \
+		-i "${S}"/src/${EGO_PN}/pkg/netutil/routes_linux_test.go || die
 
 	# Avoid network-sandbox violations since go-1.13
 	rm src/${EGO_PN}/go.mod || die
