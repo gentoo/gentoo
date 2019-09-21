@@ -17,6 +17,7 @@ DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="https://llvm.org/"
 SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz
 	test? ( https://releases.llvm.org/${PV}/${LLVM_P}.tar.xz )"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -27,8 +28,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="~sys-devel/llvm-${PV}"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( $(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]") )"
-
-S=${WORKDIR}/${MY_P}
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
