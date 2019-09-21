@@ -13,7 +13,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="Prometheus push acceptor for ephemeral and batch jobs"
 HOMEPAGE="https://github.com/prometheus/pushgateway"
 SRC_URI="${ARCHIVE_URI}"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 IUSE=""
 
