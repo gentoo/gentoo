@@ -363,8 +363,9 @@ src_prepare() {
 
 	default
 
-	# Fix ld and objcopy being called directly
-	tc-export AR LD OBJCOPY
+	# Use correct toolchain to fix cross-compiling
+	tc-export AR LD NM OBJCOPY PKG_CONFIG
+	export WINDRES=${CHOST}-windres
 
 	# Verbose builds
 	MAKEOPTS+=" V=1"
@@ -391,8 +392,13 @@ qemu_src_configure() {
 	local conf_opts=(
 		--prefix=/usr
 		--sysconfdir=/etc
+		--bindir=/usr/bin
 		--libdir=/usr/$(get_libdir)
+		--datadir=/usr/share
 		--docdir=/usr/share/doc/${PF}/html
+		--mandir=/usr/share/man
+		--with-confsuffix=/qemu
+		--localstatedir=/var
 		--disable-bsd-user
 		--disable-guest-agent
 		--disable-strip
