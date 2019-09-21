@@ -14,6 +14,7 @@ MY_P=llvm-${PV/_/}.src
 DESCRIPTION="OCaml bindings for LLVM"
 HOMEPAGE="https://llvm.org/"
 SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz"
+S=${WORKDIR}/${MY_P}
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -25,6 +26,7 @@ LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug test ${ALL_LLVM_TARGETS[*]}"
+REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -40,10 +42,6 @@ BDEPEND="
 	test? ( dev-ml/ounit )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
-
-REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )"
-
-S=${WORKDIR}/${MY_P}
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
