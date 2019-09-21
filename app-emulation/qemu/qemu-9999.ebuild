@@ -35,8 +35,8 @@ SLOT="0"
 
 IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug doc
 	+fdt glusterfs gnutls gtk infiniband iscsi +jpeg kernel_linux
-	kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs +png
-	pulseaudio python rbd sasl +seccomp sdl selinux smartcard snappy
+	kernel_FreeBSD lzo ncurses nfs nls numa opengl +oss +pin-upstream-blobs
+	+png pulseaudio python rbd sasl +seccomp sdl selinux smartcard snappy
 	spice ssh static static-user systemtap tci test usb usbredir vde
 	+vhost-net virgl virtfs +vnc vte xattr xen xfs +xkb"
 
@@ -475,12 +475,14 @@ qemu_src_configure() {
 
 	if [[ ! ${buildtype} == "user" ]] ; then
 		# audio options
-		local audio_opts="oss"
-		use alsa && audio_opts="alsa,${audio_opts}"
-		use sdl && audio_opts="sdl,${audio_opts}"
-		use pulseaudio && audio_opts="pa,${audio_opts}"
+		local audio_opts=(
+			$(usev alsa)
+			$(usev oss)
+			$(usev sdl)
+			$(usex pulseaudio pa "")
+		)
 		conf_opts+=(
-			--audio-drv-list="${audio_opts}"
+			--audio-drv-list=$(printf "%s," "${audio_opts[@]}")
 		)
 	fi
 
