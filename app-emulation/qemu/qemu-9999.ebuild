@@ -32,12 +32,13 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
+
 IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug doc
 	+fdt glusterfs gnutls gtk infiniband iscsi +jpeg kernel_linux
 	kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs +png
 	pulseaudio python rbd sasl +seccomp sdl selinux smartcard snappy
 	spice ssh static static-user systemtap tci test usb usbredir vde
-	+vhost-net virgl virtfs +vnc vte xattr xen xfs"
+	+vhost-net virgl virtfs +vnc vte xattr xen xfs +xkb"
 
 COMMON_TARGETS="aarch64 alpha arm cris hppa i386 m68k microblaze microblazeel
 	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 riscv32 riscv64 s390x
@@ -85,7 +86,7 @@ ALL_DEPEND="
 # softmmu targets (qemu-system-*).
 SOFTMMU_TOOLS_DEPEND="
 	dev-libs/libxml2[static-libs(+)]
-	x11-libs/libxkbcommon[static-libs(+)]
+	xkb? ( x11-libs/libxkbcommon[static-libs(+)] )
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	accessibility? (
 		app-accessibility/brltty[api]
@@ -463,6 +464,7 @@ qemu_src_configure() {
 		$(conf_notuser xen)
 		$(conf_notuser xen xen-pci-passthrough)
 		$(conf_notuser xfs xfsctl)
+		$(conf_notuser xkb xkbcommon)
 	)
 
 	if [[ ${buildtype} == "user" ]] ; then
