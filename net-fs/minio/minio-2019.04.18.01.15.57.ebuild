@@ -125,7 +125,7 @@ KEYWORDS="~amd64 ~amd64-linux"
 DESCRIPTION="An Amazon S3 compatible object storage server"
 HOMEPAGE="https://github.com/minio/minio"
 SRC_URI="${ARCHIVE_URI}"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0"
 SLOT="0"
 
 RESTRICT="test"
