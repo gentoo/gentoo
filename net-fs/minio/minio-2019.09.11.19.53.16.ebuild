@@ -132,8 +132,8 @@ EGO_VENDOR=( "gopkg.in/yaml.v2 51d6538a90f86fe93ac480b35f37b2be17fef232 github.c
 	     "gopkg.in/jcmturner/goidentity.v2 v2.0.0 github.com/jcmturner/goidentity"
 	     "gopkg.in/jcmturner/goidentity.v3 v3.0.0 github.com/jcmturner/goidentity"
 	     "github.com/kurin/blazer cf2f27cc0be3dac3c1a94c3c8b76834ce741439e"
-		 "gopkg.in/ldap.v3 v3.0.3 github.com/go-ldap/ldap"
-		 "gopkg.in/asn1-ber.v1 f715ec2f112d1e4195b827ad68cf44017a3ef2b1 github.com/go-asn1-ber/asn1-ber"
+	     "gopkg.in/ldap.v3 v3.0.3 github.com/go-ldap/ldap"
+	     "gopkg.in/asn1-ber.v1 f715ec2f112d1e4195b827ad68cf44017a3ef2b1 github.com/go-asn1-ber/asn1-ber"
 )
 
 inherit user golang-build golang-vcs-snapshot
@@ -150,7 +150,7 @@ KEYWORDS="~amd64 ~amd64-linux"
 DESCRIPTION="An Amazon S3 compatible object storage server"
 HOMEPAGE="https://github.com/minio/minio"
 SRC_URI="${ARCHIVE_URI}"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0"
 SLOT="0"
 
 RESTRICT="test"
