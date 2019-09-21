@@ -166,7 +166,7 @@ X86_FIRMWARE_DEPEND="
 	)"
 PPC64_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/seabios-1.11.0[binary,seavgabios]
+		~sys-firmware/seabios-1.12.0[binary,seavgabios]
 	)
 	!pin-upstream-blobs? (
 		>=sys-firmware/seabios-1.10.2[seavgabios]
