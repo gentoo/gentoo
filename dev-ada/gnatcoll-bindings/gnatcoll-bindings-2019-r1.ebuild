@@ -31,6 +31,11 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 
 S="${WORKDIR}"/${MYP}-src
 
+pkg_setup() {
+	python-single-r1_pkg_setup
+	ada_pkg_setup
+}
+
 src_compile() {
 	build () {
 		gprbuild -j$(makeopts_jobs) -m -p -v \
