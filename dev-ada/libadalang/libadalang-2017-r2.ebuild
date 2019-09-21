@@ -31,6 +31,11 @@ S="${WORKDIR}"/${PN}-gps-src
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
+pkg_setup() {
+	python-single-r1_pkg_setup
+	ada_pkg_setup
+}
+
 src_prepare() {
 	default
 	rm -r ada/testsuite/tests/acats_parse || die
