@@ -13,6 +13,7 @@ LICENSE="metapackage"
 SLOT="$(ver_cut 1-3)"
 KEYWORDS=""
 IUSE="+compiler-rt crt libcxx openmp +sanitize"
+REQUIRED_USE="sanitize? ( compiler-rt )"
 PROPERTIES="live"
 
 RDEPEND="
@@ -28,5 +29,3 @@ RDEPEND="
 	)
 	libcxx? ( >=sys-libs/libcxx-${PV}[${MULTILIB_USEDEP}] )
 	openmp? ( >=sys-libs/libomp-${PV}[${MULTILIB_USEDEP}] )"
-
-REQUIRED_USE="sanitize? ( compiler-rt )"
