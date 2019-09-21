@@ -29,8 +29,8 @@ IUSE=""
 
 DEPEND="
 	~media-tv/kodi-9999
-	media-libs/libogg
-	media-libs/libvorbis
+	>=media-libs/libogg-1.3.4
+	>=media-libs/libvorbis-1.3.6
 	"
 
 RDEPEND="
