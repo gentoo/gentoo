@@ -54,6 +54,7 @@ PDEPEND="tools? ( >=app-admin/mongo-tools-${PV} )"
 PATCHES=(
 	"${FILESDIR}/${PN}-3.6.1-fix-scons.patch"
 	"${FILESDIR}/${PN}-4.0.0-no-compass.patch"
+	"${FILESDIR}/${PN}-4.0.12-boost-1.71-cxxabi-include.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
