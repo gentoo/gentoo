@@ -6,6 +6,6 @@
 		<name>Tim Harder</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">calleerlandsson/pick</remote-id>
+		<remote-id type="github">mptre/pick</remote-id>
 	</upstream>
 </pkgmetadata>

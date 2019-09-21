@@ -1,38 +1,51 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools git-r3 toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="ncurses directconnect client"
 HOMEPAGE="https://dev.yorhel.nl/ncdc"
-EGIT_REPO_URI="git://g.blicky.net/ncdc.git"
+if [[ "${PV}" == *9999 ]] ; then
+	inherit autotools git-r3
+	EGIT_REPO_URI="git://g.blicky.net/ncdc.git"
+else
+	SRC_URI="https://dev.yorhel.nl/download/${P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE="geoip"
 
-RDEPEND="app-arch/bzip2
+RDEPEND="
+	app-arch/bzip2
 	dev-db/sqlite:3
 	dev-libs/glib:2
-	net-libs/gnutls
-	sys-libs/ncurses:0[unicode]
-	sys-libs/zlib
+	net-libs/gnutls:=
+	sys-libs/ncurses:0=[unicode]
+	sys-libs/zlib:=
 	geoip? ( dev-libs/geoip )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/makeheaders
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	default
-	eautoreconf
+	[[ "${PV}" == *9999 ]] && eautoreconf
 }
 
 src_configure() {
-	econf --enable-git-version \
+	local myeconfargs=(
 		$(use_with geoip)
+	)
+	if [[ "${PV}" == *9999 ]] ; then
+		myeconfargs+=( --enable-git-version )
+	fi
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {

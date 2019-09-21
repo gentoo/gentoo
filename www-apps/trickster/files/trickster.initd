@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+
+description="Dashboard Accelerator for Prometheus"
+command=/usr/bin/trickster
+command_background=yes
+command_user=${user:-trickster}:${group:-trickster}
+extra_started_commands=reload
+pidfile=/var/run/${RC_SVCNAME}.pid
+
+depend() {
+	after net
+}
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	case "${supervisor}" in
+	supervise-daemon)
+		supervise-daemon --signal HUP --pidfile "${pidfile}"
+		;;
+	*)
+		start-stop-daemon --signal HUP --pidfile "${pidfile}"
+		;;
+	esac
+	eend $?
+}

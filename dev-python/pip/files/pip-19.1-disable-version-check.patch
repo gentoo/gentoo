@@ -1,0 +1,19 @@
+Don't check for new versions of pip.
+
+--- pip-19.1/src/pip/_internal/cli/base_command.py
++++ pip-19.1/src/pip/_internal/cli/base_command.py
+@@ -213,12 +213,8 @@ class Command(object):
+ 
+             return UNKNOWN_ERROR
+         finally:
+-            allow_version_check = (
+-                # Does this command have the index_group options?
+-                hasattr(options, "no_index") and
+-                # Is this command allowed to perform this check?
+-                not (options.disable_pip_version_check or options.no_index)
+-            )
++            # Disabled on Gentoo
++            allow_version_check = False
+             # Check if we're using the latest version of pip available
+             if allow_version_check:
+                 session = self._build_session(

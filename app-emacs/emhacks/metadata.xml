@@ -16,6 +16,7 @@
   swbuff,   Quick switch between Emacs buffers;
   tabbar,   Display a tab bar in the header line.
 </longdescription>
+<stabilize-allarches/>
 <upstream>
   <remote-id type="sourceforge">emhacks</remote-id>
 </upstream>

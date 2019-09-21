@@ -1,0 +1,9 @@
+https://bugs.gentoo.org/690268
+--- a/configure.ac
++++ b/configure.ac
+@@ -57,3 +57,4 @@ else
+       AC_CHECK_LIB(curses, tputs, HaveLibTermcap=YES; LibTermcap=curses,
+-        HaveLibTermcap=NO; LibTermcap=not-installed)))
++        AC_CHECK_LIB(tinfo, tputs, HaveLibTermcap=YES; LibTermcap=tinfo,
++          HaveLibTermcap=NO; LibTermcap=not-installed))))
+ 

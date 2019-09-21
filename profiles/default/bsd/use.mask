@@ -1,5 +1,5 @@
-# Copyright 1999-2017 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 # Mart Raudsepp <leio@gentoo.org>
 # net-misc/networkmanager not keyworded
@@ -15,11 +15,10 @@ alsa
 v4l
 libv4l
 fbcon
-directfb
 gpm
 lirc
 multilib
-lm_sensors
+lm-sensors
 caps
 filecaps
 vidix
@@ -56,7 +55,6 @@ tslib
 
 # Mask Xorg-modular drivers that are Linux-specific
 input_devices_evdev
-input_devices_tslib
 input_devices_synaptics
 input_devices_vmmouse
 video_cards_vmware
@@ -66,6 +64,6 @@ video_cards_nouveau
 # Linux only sane backends
 sane_backends_qcam
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (19 oct 2010)
+# Diego E. Pettenò <flameeyes@gentoo.org> (2010-10-19)
 # unmasking flags that only apply to FreeBSD
 -kqueue

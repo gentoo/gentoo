@@ -1,0 +1,21 @@
+--- a/mariadb_config/libmariadb.pc.in
++++ b/mariadb_config/libmariadb.pc.in
+@@ -7,14 +7,13 @@
+ #
+ 
+ prefix=@CMAKE_INSTALL_PREFIX@
+-includedir=${prefix}/@INSTALL_INCLUDEDIR@/@SUFFIX_INSTALL_DIR@
+-libdir=${prefix}/@INSTALL_LIBDIR@/@SUFFIX_INSTALL_DIR@
++includedir=${prefix}/include
++libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+ 
+ Name: libmariadb
+ Version: @CPACK_PACKAGE_VERSION@
++URL: https://mariadb.com/kb/en/library/mariadb-connector-c/
+ Description: MariaDB Connector/C dynamic library
+-Cflags: -I${includedir}
++Cflags: -I${includedir}/mariadb
+ Libs: -L${libdir} -lmariadb
+ Libs.private: @extra_dynamic_LDFLAGS@
+-
+-

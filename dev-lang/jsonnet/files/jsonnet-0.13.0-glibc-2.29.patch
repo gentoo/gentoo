@@ -1,0 +1,8 @@
+diff --git a/test_suite/error.import_folder.jsonnet.golden_regex b/test_suite/error.import_folder.jsonnet.golden_regex
+index bc468fb..c472b23 100644
+--- a/test_suite/error.import_folder.jsonnet.golden_regex
++++ b/test_suite/error.import_folder.jsonnet.golden_regex
+@@ -1,2 +1,2 @@
+-(STATIC ERROR: lib:1:1: unexpected end of file.|RUNTIME ERROR: couldn't open import "lib": basic_filebuf::underflow error reading the file(: iostream error)?
++(STATIC ERROR: lib:1:1: unexpected end of file.|RUNTIME ERROR: couldn't open import "lib": basic_filebuf::underflow error reading the file(: iostream error|: Is a directory)?
+ 	error.import_folder.jsonnet:17:1-13	)

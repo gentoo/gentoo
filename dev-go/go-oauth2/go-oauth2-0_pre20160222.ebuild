@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ SRC_URI="
 
 SLOT="0/${PVR}"
 LICENSE="BSD"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-go/go-tools"
@@ -103,9 +103,9 @@ src_install() {
 }
 
 golang_install_pkgs() {
-	insinto $(dirname "${EPREFIX}$(get_golibdir)/src/${EGO_PN%/*}")
+	insinto $(dirname "$(get_golibdir)/src/${EGO_PN%/*}")
 	rm -rf "${S}"/src/${EGO_PN%/*}/.git*
 	doins -r "${S}"/src/${EGO_PN%/*}
-	insinto $(dirname "${EPREFIX}$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}")
+	insinto $(dirname "$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}")
 	doins -r "${S}"/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}{,.a}
 }

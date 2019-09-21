@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Set up some defaults.
@@ -38,8 +38,10 @@ image_path() {
 	local gkarch="$(get_genkernel_arch $karch)"
 	for x in \
 		"bzImage" \
+		"vmlinux" \
 		"vmlinuz" \
 		"bzImage-${kver}" \
+		"vmlinux-${kver}" \
 		"vmlinuz-${kver}" \
 		"kernel-genkernel-${karch}-${kver}" \
 		"kernel-genkernel-${gkarch}-${kver}" \

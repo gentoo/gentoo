@@ -1,0 +1,127 @@
+From 90890e7d27c544e3557bed2f6624614141db0fc4 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 29 Sep 2018 15:34:43 +0200
+Subject: [PATCH] Reintroduce the username field reading with webkit-options.d
+
+Use WebChannel to spy on the input fields.
+Use the old UserAgent to make sure the selectors match.
+---
+ src/browser-request.cpp | 11 +++++++++++
+ src/qml/WebView.qml     | 36 ++++++++++++++++++++++++++++++++++++
+ 2 files changed, 47 insertions(+)
+
+diff --git a/src/browser-request.cpp b/src/browser-request.cpp
+index 1895d59..e58f302 100644
+--- a/src/browser-request.cpp
++++ b/src/browser-request.cpp
+@@ -31,6 +31,7 @@
+ #include <QStandardPaths>
+ #include <QTimer>
+ #include <SignOn/uisessiondata_priv.h>
++#include <QSettings>
+ 
+ using namespace SignOnUi;
+ using namespace SignOnUi::QQuick;
+@@ -43,8 +44,10 @@ class BrowserRequestPrivate: public QObject
+     Q_DECLARE_PUBLIC(BrowserRequest)
+     Q_PROPERTY(QUrl pageComponentUrl READ pageComponentUrl CONSTANT)
+     Q_PROPERTY(QUrl currentUrl READ currentUrl WRITE setCurrentUrl)
++    Q_PROPERTY(QString username MEMBER m_username)
+     Q_PROPERTY(QUrl startUrl READ startUrl CONSTANT)
+     Q_PROPERTY(QUrl finalUrl READ finalUrl CONSTANT)
++    Q_PROPERTY(QString usernameSelector READ usernameSelector CONSTANT)
+ 
+ public:
+     BrowserRequestPrivate(BrowserRequest *request);
+@@ -58,6 +61,7 @@ public:
+     QUrl startUrl() const { return m_startUrl; }
+     QUrl finalUrl() const { return m_finalUrl; }
+     QUrl responseUrl() const { return m_responseUrl; }
++    QString usernameSelector() const { return m_settings->value("UsernameField").toString(); }
+ 
+ public Q_SLOTS:
+     void cancel();
+@@ -77,6 +81,8 @@ private:
+     QUrl m_startUrl;
+     QUrl m_finalUrl;
+     QUrl m_responseUrl;
++    QString m_username;
++    QSettings *m_settings;
+     QTimer m_failTimer;
+     mutable BrowserRequest *q_ptr;
+ };
+@@ -116,6 +122,9 @@ void BrowserRequestPrivate::start()
+ 
+     m_finalUrl = params.value(SSOUI_KEY_FINALURL).toString();
+     m_startUrl = params.value(SSOUI_KEY_OPENURL).toString();
++
++    m_settings = new QSettings("signon-ui/webkit-options.d/" + m_startUrl.host(), QString(), this);
++
+     buildDialog(params);
+ 
+     QObject::connect(m_dialog, SIGNAL(finished(int)),
+@@ -231,6 +240,8 @@ void BrowserRequestPrivate::onFinished()
+     QVariantMap reply;
+     QUrl url = m_responseUrl.isEmpty() ? m_currentUrl : m_responseUrl;
+     reply[SSOUI_KEY_URLRESPONSE] = url.toString();
++    if (!m_username.isEmpty())
++        reply[SSOUI_KEY_USERNAME] = m_username;
+ 
+     m_dialog->close();
+ 
+diff --git a/src/qml/WebView.qml b/src/qml/WebView.qml
+index 33462b8..3af0239 100644
+--- a/src/qml/WebView.qml
++++ b/src/qml/WebView.qml
+@@ -1,4 +1,5 @@
+ import QtQuick 2.0
++import QtWebChannel 1.0
+ import QtWebEngine 1.1
+ 
+ WebEngineView {
+@@ -25,8 +26,43 @@ WebEngineView {
+     profile: WebEngineProfile {
+         cachePath: rootDir
+         persistentStoragePath: rootDir
++        // For compatibility with the webkit-options.d values
++        httpUserAgent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) Safari/537.21"
+     }
+ 
++    QtObject {
++        id: commProxy
++        WebChannel.id: "comm"
++        property string username: ""
++        property string selector: signonRequest.usernameSelector
++        onUsernameChanged: signonRequest.username = username
++    }
++
++    WebChannel {
++        id: chan
++        registeredObjects: [commProxy]
++    }
++    webChannel: chan
++
++    WebEngineScript {
++        id: qwebchannel
++        injectionPoint: WebEngineScript.DocumentCreation
++        sourceUrl: "qrc:/qtwebchannel/qwebchannel.js"
++        worldId: WebEngineScript.MainWorld
++    }
++
++    WebEngineScript {
++        id: commScript
++        injectionPoint: WebEngineScript.DocumentReady
++        sourceCode: "new QWebChannel(window.qt.webChannelTransport, function(channel) {" +
++                    "    var elem = document.querySelector(channel.objects.comm.selector);" +
++                    "    elem.addEventListener('keyup', function() { channel.objects.comm.username = elem.value; });" +
++                    "});"
++        worldId: WebEngineScript.MainWorld
++    }
++
++    userScripts: [qwebchannel, commScript]
++
+     ProgressBar {
+         anchors.top: parent.top
+         anchors.left: parent.left
+-- 
+2.18.0

@@ -1,9 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=6
 
 MY_P=${P/-ac}
+
 DESCRIPTION="WMACPILoad based dockapp to monitor CPU temp and battery time on ACPI kernels"
 HOMEPAGE="http://wmacpiload.tuxfamily.org/"
 SRC_URI="http://wmacpiload.tuxfamily.org/download/${MY_P}.tar.bz2"
@@ -18,16 +19,10 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 S="${WORKDIR}/${MY_P}"
 
-src_compile() {
+src_configure() {
 	econf $(use_enable debug)
-	emake || die "compile failed"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
-	dodoc AUTHORS ChangeLog NEWS README THANKS TODO
 }

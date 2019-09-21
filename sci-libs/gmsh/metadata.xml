@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<use>
+		<flag name="cgns"> Enables cgns output support</flag>
+		<flag name="metis"> Enables metis support</flag>
+		<flag name="med"> Enables med support</flag>
+		<flag name="netgen"> Enable 3D Frontal triangulation using netgen lib</flag>
+		<flag name="petsc"> Enable sci-mathematics/petsc support</flag>
+		<flag name="opencascade"> Enable OpenCASCADE support</flag>
+	</use>
+</pkgmetadata>

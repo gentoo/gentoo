@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{3_5,3_6} )
 PYTHON_REQ_USE="ncurses(+)"
 
 inherit distutils-r1
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/ChrisADR/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 DOCS=( README.md CONTRIBUTING.md )

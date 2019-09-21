@@ -1,21 +1,23 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic
 
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/libcdr.git"
-[[ ${PV} == 9999 ]] && inherit autotools git-r3
+if [[ ${PV} = 9999 ]]; then
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/libcdr.git"
+	inherit autotools git-r3
+else
+	SRC_URI="https://dev-www.libreoffice.org/src/libcdr/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+fi
 
 DESCRIPTION="Library parsing the Corel cdr documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libcdr"
-[[ ${PV} == 9999 ]] || SRC_URI="https://dev-www.libreoffice.org/src/libcdr/${P}.tar.xz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-[[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="doc static-libs test"
 
 RDEPEND="
@@ -26,6 +28,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
+"
+BDEPEND="
 	sys-devel/libtool
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
@@ -42,11 +46,12 @@ src_configure() {
 	# bug 619448
 	append-cxxflags -std=c++14
 
-	econf \
-		--disable-werror \
-		$(use_with doc docs) \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		$(use_with doc docs)
+		$(use_enable static-libs static)
 		$(use_enable test tests)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

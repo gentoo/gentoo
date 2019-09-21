@@ -12,11 +12,6 @@
 	fast. Blosc is meant not only to reduce the size of large datasets on-disk
 	or in-memory, but also to accelerate memory-bound computations.
 	</longdescription>
-	<use>
-		<flag name="lz4">Enable lz4 compression</flag>
-		<flag name="snappy">Enable snappy compression</flag>
-		<flag name="zstd">Enable zstd compression</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">Blosc/c-blosc</remote-id>
 	</upstream>

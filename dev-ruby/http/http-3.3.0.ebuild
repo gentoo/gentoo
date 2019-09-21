@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -16,13 +16,13 @@ HOMEPAGE="https://github.com/tarcieri/http"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend "
 	>=dev-ruby/addressable-2.3:0
 	>=dev-ruby/http-cookie-1.0:0
-	>=dev-ruby/http-form_data-1.0.1:1.0
+	dev-ruby/http-form_data:2
 	>=dev-ruby/http_parser_rb-0.6.0 =dev-ruby/http_parser_rb-0.6*"
 
 ruby_add_bdepend "

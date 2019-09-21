@@ -9,6 +9,6 @@
 		<flag name="video">Use phonon for video embedding</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">texstudio</remote-id>
+		<remote-id type="github">texstudio-org/texstudio</remote-id>
 	</upstream>
 </pkgmetadata>

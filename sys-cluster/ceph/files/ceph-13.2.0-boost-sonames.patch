@@ -1,0 +1,166 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2f997d03f8..748cb190e6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -591,7 +591,7 @@ set(BOOST_COMPONENTS
+ set(BOOST_HEADER_COMPONENTS container)
+ 
+ if(WITH_MGR)
+-	list(APPEND BOOST_COMPONENTS python)
++	list(APPEND BOOST_COMPONENTS python-${EPYTHON_VERSION})
+ endif()
+ if(WITH_BOOST_CONTEXT)
+   list(APPEND BOOST_COMPONENTS context coroutine)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 3d3b4c0919..94ab42ef9f 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -630,12 +630,12 @@ set(ceph_common_objs
+   $<TARGET_OBJECTS:crush_objs>)
+ set(ceph_common_deps
+   json_spirit erasure_code ${LIB_RESOLV}
+-  Boost::thread
+-  Boost::system
+-  Boost::random
+-  Boost::program_options
+-  Boost::date_time
+-  Boost::iostreams
++  boost_thread
++  boost_system
++  boost_random
++  boost_program_options
++  boost_date_time
++  boost_iostreams
+   ${BLKID_LIBRARIES}
+   ${Backtrace_LIBRARIES}
+   ${BLKIN_LIBRARIES}
+@@ -759,7 +759,7 @@ if (WITH_MGR)
+                  $<TARGET_OBJECTS:heap_profiler_objs>)
+   target_include_directories(ceph-mgr SYSTEM PRIVATE "${PYTHON_INCLUDE_DIRS}")
+   target_link_libraries(ceph-mgr osdc client global-static ceph-common
+-      Boost::python ${MGR_PYTHON_LIBRARIES} ${BLKID_LIBRARIES} ${CMAKE_DL_LIBS} ${ALLOC_LIBS})
++      boost_python-${EPYTHON_VERSION} ${MGR_PYTHON_LIBRARIES} ${BLKID_LIBRARIES} ${CMAKE_DL_LIBS} ${ALLOC_LIBS})
+   install(TARGETS ceph-mgr DESTINATION bin)
+ endif (WITH_MGR)
+ 
+@@ -888,7 +888,7 @@ set(ceph_mds_srcs
+   ceph_mds.cc)
+ add_executable(ceph-mds ${ceph_mds_srcs})
+ target_link_libraries(ceph-mds mds ${CMAKE_DL_LIBS} global-static ceph-common
+-  Boost::thread)
++  boost_thread)
+ install(TARGETS ceph-mds DESTINATION bin)
+ 
+ add_subdirectory(erasure-code)
+diff --git a/src/rbd_replay/CMakeLists.txt b/src/rbd_replay/CMakeLists.txt
+index e9d3804c5f..5c6eb58de1 100644
+--- a/src/rbd_replay/CMakeLists.txt
++++ b/src/rbd_replay/CMakeLists.txt
+@@ -36,7 +36,7 @@ if(HAVE_BABELTRACE)
+     global
+     babeltrace
+     babeltrace-ctf
+-    Boost::date_time
++    boost_date_time
+     )
+   install(TARGETS rbd-replay-prep DESTINATION bin)
+ endif(HAVE_BABELTRACE)
+diff --git a/src/rgw/CMakeLists.txt b/src/rgw/CMakeLists.txt
+index c1edd3b882..000c8daaf8 100644
+--- a/src/rgw/CMakeLists.txt
++++ b/src/rgw/CMakeLists.txt
+@@ -162,7 +162,7 @@ target_link_libraries(rgw_a librados cls_otp_client cls_lock_client cls_rgw_clie
+ 
+ if (WITH_RADOSGW_BEAST_FRONTEND)
+   target_compile_definitions(rgw_a PUBLIC BOOST_COROUTINES_NO_DEPRECATION_WARNING)
+-  target_link_libraries(rgw_a Boost::coroutine Boost::context)
++  target_link_libraries(rgw_a boost_coroutine boost_context)
+ endif()
+ 
+ if (WITH_CURL_OPENSSL OR (WITH_RADOSGW_BEAST_FRONTEND AND WITH_RADOSGW_BEAST_OPENSSL))
+diff --git a/src/test/CMakeLists.txt b/src/test/CMakeLists.txt
+index a43335e825..a0d056faaa 100644
+--- a/src/test/CMakeLists.txt
++++ b/src/test/CMakeLists.txt
+@@ -147,7 +147,7 @@ add_executable(ceph_omapbench
+   )
+ target_link_libraries(ceph_omapbench
+   librados
+-  Boost::program_options
++  boost_program_options
+   global
+   ${BLKID_LIBRARIES}
+   ${CMAKE_DL_LIBS}
+diff --git a/src/test/erasure-code/CMakeLists.txt b/src/test/erasure-code/CMakeLists.txt
+index 4ba31ab2a8..ab66208b57 100644
+--- a/src/test/erasure-code/CMakeLists.txt
++++ b/src/test/erasure-code/CMakeLists.txt
+@@ -2,15 +2,15 @@
+ add_executable(ceph_erasure_code_benchmark 
+   ${CMAKE_SOURCE_DIR}/src/erasure-code/ErasureCode.cc
+   ceph_erasure_code_benchmark.cc)
+-target_link_libraries(ceph_erasure_code_benchmark ceph-common Boost::program_options global ${CMAKE_DL_LIBS})
++target_link_libraries(ceph_erasure_code_benchmark ceph-common boost_program_options global ${CMAKE_DL_LIBS})
+ install(TARGETS ceph_erasure_code_benchmark
+   DESTINATION bin)
+ 
+ add_executable(ceph_erasure_code_non_regression ceph_erasure_code_non_regression.cc)
+-target_link_libraries(ceph_erasure_code_non_regression ceph-common Boost::program_options global ${CMAKE_DL_LIBS})
++target_link_libraries(ceph_erasure_code_non_regression ceph-common boost_program_options global ${CMAKE_DL_LIBS})
+ 
+ add_executable(ceph_erasure_code ceph_erasure_code.cc)
+-target_link_libraries(ceph_erasure_code ceph-common Boost::program_options global ${CMAKE_DL_LIBS})
++target_link_libraries(ceph_erasure_code ceph-common boost_program_options global ${CMAKE_DL_LIBS})
+ install(TARGETS ceph_erasure_code
+   DESTINATION bin)
+ 
+diff --git a/src/test/librados/CMakeLists.txt b/src/test/librados/CMakeLists.txt
+index 1c909ee1ce..7c1ef32df1 100644
+--- a/src/test/librados/CMakeLists.txt
++++ b/src/test/librados/CMakeLists.txt
+@@ -61,7 +61,7 @@ set_target_properties(ceph_test_rados_api_asio PROPERTIES COMPILE_FLAGS
+ target_link_libraries(ceph_test_rados_api_asio global
+   librados ${UNITTEST_LIBS})
+ if(WITH_BOOST_CONTEXT)
+-  target_link_libraries(ceph_test_rados_api_asio Boost::coroutine Boost::context)
++  target_link_libraries(ceph_test_rados_api_asio boost_coroutine boost_context)
+ endif()
+ 
+ # ceph_test_rados_api_list
+@@ -147,7 +147,7 @@ add_executable(ceph_test_rados_api_tier
+ set_target_properties(ceph_test_rados_api_tier PROPERTIES COMPILE_FLAGS
+   ${UNITTEST_CXX_FLAGS})
+ target_link_libraries(ceph_test_rados_api_tier
+-  librados global ${UNITTEST_LIBS} Boost::system radostest)
++  librados global ${UNITTEST_LIBS} boost_system radostest)
+ 
+ # ceph_test_rados_api_snapshots
+ add_executable(ceph_test_rados_api_snapshots
+diff --git a/src/tools/CMakeLists.txt b/src/tools/CMakeLists.txt
+index e0844ec0c7..886839302c 100644
+--- a/src/tools/CMakeLists.txt
++++ b/src/tools/CMakeLists.txt
+@@ -29,20 +29,20 @@ install(PROGRAMS
+ endif(WITH_TESTS)
+ 
+ add_executable(ceph-osdomap-tool ceph_osdomap_tool.cc)
+-target_link_libraries(ceph-osdomap-tool os global Boost::program_options)
++target_link_libraries(ceph-osdomap-tool os global boost_program_options)
+ install(TARGETS ceph-osdomap-tool DESTINATION bin)
+ 
+ add_executable(ceph-monstore-tool
+   ceph_monstore_tool.cc
+   ../mgr/mgr_commands.cc)
+-target_link_libraries(ceph-monstore-tool os global Boost::program_options)
++target_link_libraries(ceph-monstore-tool os global boost_program_options)
+ install(TARGETS ceph-monstore-tool DESTINATION bin)
+ 
+ add_executable(ceph-objectstore-tool
+   ceph_objectstore_tool.cc
+   rebuild_mondb.cc
+   RadosDump.cc)
+-target_link_libraries(ceph-objectstore-tool osd os global Boost::program_options ${CMAKE_DL_LIBS})
++target_link_libraries(ceph-objectstore-tool osd os global boost_program_options ${CMAKE_DL_LIBS})
+ if(WITH_FUSE)
+   target_link_libraries(ceph-objectstore-tool fuse)
+ endif(WITH_FUSE)

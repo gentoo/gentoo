@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # Somehow based on init.d file shipped with mt-daapd itself.
 #
@@ -26,7 +26,7 @@ fi
 
 depend() {
 	need net
-	#USEHOWL need mDNSResponderPosix
+	need avahi-daemon
 }
 
 start() {

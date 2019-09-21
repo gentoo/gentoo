@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,9 @@ SRC_URI="https://github.com/awesomeWM/awesome-releases/raw/master/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ppc ppc64 x86 ~x86-fbsd"
 IUSE="dbus doc elibc_FreeBSD gnome luajit test"
+RESTRICT="test"
 
 RDEPEND="
 	>=dev-lang/lua-5.1:0
@@ -45,7 +46,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	media-gfx/imagemagick[png]
 	>=x11-base/xcb-proto-1.5
-	>=x11-proto/xproto-7.0.15
+	x11-base/xorg-proto
 	doc? ( dev-lua/ldoc )
 	test? (
 		app-shells/zsh

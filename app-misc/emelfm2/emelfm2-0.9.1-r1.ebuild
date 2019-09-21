@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="A file manager that implements the popular two-pane design"
-HOMEPAGE="http://emelfm2.net/"
+HOMEPAGE="https://github.com/tom2tom/emelfm2"
 SRC_URI="http://emelfm2.net/rel/${P}.tar.bz2"
 
 LICENSE="GPL-3 LGPL-3"

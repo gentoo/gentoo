@@ -23,11 +23,9 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	app-text/rman
+	x11-base/xorg-proto
 	x11-misc/gccmakedep
 	x11-misc/imake
-	x11-proto/inputproto
-	x11-proto/xextproto
-	x11-proto/xproto
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.6-last_altgr_mask.patch

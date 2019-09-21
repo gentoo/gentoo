@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,10 +20,11 @@ IUSE="examples mysql postgres sqlite test"
 
 RDEPEND="mysql? ( >=dev-python/mysql-python-1.2.2[${PYTHON_USEDEP}] )
 	postgres? ( dev-python/psycopg[${PYTHON_USEDEP}] )"
-DEPEND="${RDEPEND}
-	test? ( dev-python/twill
-		dev-python/pycurl )"
+DEPEND="${RDEPEND}"
 S="${WORKDIR}/openid-python-openid-b666238"
+
+# Tests depend on twill, a broken package. Bug #285169
+RESTRICT="test"
 
 python_prepare_all() {
 	local PATCHES=(

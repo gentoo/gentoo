@@ -1,0 +1,27 @@
+From de567f9104af2b7b86d0de2f25eeb091a95e8579 Mon Sep 17 00:00:00 2001
+From: Tristan de Cacqueray <tristanC@wombatt.eu>
+Date: Sun, 9 Jun 2019 02:16:49 +0000
+Subject: [PATCH] Fix compilation with boost-1.67
+
+When using a system boost version >1.67, the compilation fails because of:
+server/supernova/./utilities/time_tag.hpp: In member function 'boost::posix_time::ptime nova::time_tag::to_ptime() const':
+supernova/./utilities/time_tag.hpp:232:102: error: no matching function for call to 'boost::date_time::subsecond_duration<boost::posix_time::time_duration, 1000000>::subsecond_duration(double)'
+  232 |         time_duration offset = seconds(get_secs() - ntp_offset) + microseconds(get_nanoseconds()/1000);
+---
+ server/supernova/utilities/time_tag.hpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/server/supernova/utilities/time_tag.hpp b/server/supernova/utilities/time_tag.hpp
+index 0f49955fd3..c1bb0e73cb 100644
+--- a/server/supernova/utilities/time_tag.hpp
++++ b/server/supernova/utilities/time_tag.hpp
+@@ -179,7 +179,8 @@ class time_tag {
+ #ifdef BOOST_DATE_TIME_POSIX_TIME_STD_CONFIG
+         time_duration offset = seconds(get_secs() - ntp_offset) + nanoseconds(get_nanoseconds());
+ #else
+-        time_duration offset = seconds(get_secs() - ntp_offset) + microseconds(get_nanoseconds()/1000);
++        time_duration offset =
++            seconds(get_secs() - ntp_offset) + microseconds(static_cast<long>(get_nanoseconds() / 1000));
+ #endif
+         return ptime(base, offset);
+     }

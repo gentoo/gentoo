@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 #IUSE="freeipmi openipmi status"
 IUSE="libressl openipmi static"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~x86"
+KEYWORDS="amd64 hppa ~ia64 ppc x86"
 LICENSE="BSD"
 
 RDEPEND="
@@ -28,6 +28,10 @@ DEPEND="${RDEPEND}
 		#freeipmi? ( sys-libs/freeipmi )
 # ipmitool CAN build against || ( sys-libs/openipmi sys-libs/freeipmi )
 # but it doesn't actually need either.
+
+PATCHES=(
+	"${FILESDIR}"/${P}-openssl-1.1.patch
+)
 
 src_prepare() {
 	default

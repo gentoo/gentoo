@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 BURP_CONFIG="/etc/burp/burp-server.conf"
@@ -28,7 +28,7 @@ depend() {
 }
 
 start_pre() {
-	checkpath -o root:burp -m 0775 -d /etc/burp
+	checkpath -o root:burp -m 0750 -d /etc/burp
 	checkpath -o root:burp -m 0640 -f /etc/burp/burp-server.conf
 	checkpath -o root:burp -m 0750 -d /etc/burp/clientconfdir
 	checkpath -o root:burp -m 0770 -d "$(get_backup_dir)"

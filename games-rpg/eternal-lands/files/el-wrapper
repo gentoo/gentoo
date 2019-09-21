@@ -1,0 +1,53 @@
+#!/bin/bash -e
+
+elc=~/.elc
+datadir=$elc/el_data
+browser=xdg-open
+
+if [[ ! -e $elc ]] || [[ ! -e $datadir ]] || [[ ! -e $elc/servers.lst ]] ||
+   [[ ! -e $elc/el.ini ]]; then
+
+	[[ -e $elc ]] || mkdir -p $elc
+
+	if [[ ! -e $datadir ]]; then
+		echo
+		echo "The \"Eternal Lands\" launcher is downloading the game data..."
+		echo "It is only needed before the first start."
+		echo "The default data location is ~/.elc/el_data"
+		echo
+
+		tmpdir="`mktemp -d /tmp/eternal-lands.XXXXXXXXXX`"
+		trap "rm -r $tmpdir" EXIT
+		wget https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.2/el_195_1_data_files.zip -P $tmpdir
+		unzip $tmpdir/el_195_1_data_files.zip -d $elc
+
+		echo
+		echo "The game sound and music are optional, you can download \
+them now or any time later from the official website and unpack into \
+~/.elc/el_data/sound and ~/.elc/el_data/music"
+		while true; do
+			read -r -n 1 -p "Download the game sound and music now? (y/n) " yn
+			case $yn in
+				[Yy]) break;;
+				[Nn]) break;;
+				*) echo -e "\nPlease answer Yes or No.";;
+			esac
+		done
+		echo
+
+		if [[ $yn == [Yy] ]]; then
+			wget https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.2/eternallands-sound_1.9.4.zip -P $tmpdir
+			wget https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.2/music_full.zip -P $tmpdir
+			unzip $tmpdir/eternallands-sound_1.9.4.zip -d $datadir
+			mkdir $datadir/music
+			unzip $tmpdir/music_full.zip -d $datadir/music
+		fi
+
+		rm -r $tmpdir
+	fi
+
+	[[ -e $elc/servers.lst ]] || cp $datadir/servers.lst $elc/
+	[[ -e $elc/el.ini ]] || cp $datadir/el.ini $elc/
+fi
+
+exec /usr/bin/el.linux.bin -dir="$datadir" -b="$browser" "$@"

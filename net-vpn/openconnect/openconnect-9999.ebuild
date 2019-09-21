@@ -1,21 +1,21 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 PYTHON_REQ_USE="xml"
 
-inherit eutils java-pkg-opt-2 linux-info python-any-r1 readme.gentoo-r1
+inherit linux-info python-any-r1 readme.gentoo-r1
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="git://git.infradead.org/users/dwmw2/${PN}.git"
+	EGIT_REPO_URI="https://gitlab.com/openconnect/openconnect.git"
 	inherit git-r3 autotools
 else
 	ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
-VPNC_VER=20180227
+VPNC_VER=20190611
 SRC_URI="${ARCHIVE_URI}
 	ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-${VPNC_VER}.tar.gz"
 
@@ -24,7 +24,7 @@ HOMEPAGE="http://www.infradead.org/openconnect.html"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
-IUSE="doc +gnutls gssapi java libproxy libressl lz4 nls smartcard static-libs stoken"
+IUSE="doc +gnutls gssapi libproxy libressl lz4 nls smartcard static-libs stoken"
 
 DEPEND="
 	dev-libs/libxml2
@@ -34,6 +34,7 @@ DEPEND="
 		libressl? ( dev-libs/libressl:0=[static-libs?] )
 	)
 	gnutls? (
+		app-crypt/trousers
 		app-misc/ca-certificates
 		dev-libs/nettle
 		>=net-libs/gnutls-3:0=[static-libs?]
@@ -47,10 +48,9 @@ DEPEND="
 RDEPEND="${DEPEND}
 	sys-apps/iproute2
 	!<sys-apps/openrc-0.13"
-DEPEND="${DEPEND}
+BDEPEND="
 	virtual/pkgconfig
 	doc? ( ${PYTHON_DEPS} sys-apps/groff )
-	java? ( >=virtual/jdk-1.6 )
 	nls? ( sys-devel/gettext )"
 
 CONFIG_CHECK="~TUN"
@@ -60,7 +60,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	java-pkg-opt-2_pkg_setup
+	:
 }
 
 src_unpack() {
@@ -78,16 +78,14 @@ src_prepare() {
 }
 
 src_configure() {
-	if [[ ${LINGUAS+set} == set ]]; then
-		strip-linguas -u po
-		echo "${LINGUAS}" > po/LINGUAS || die
-	fi
-
 	if use doc; then
 		python_setup
 	else
-		export PYTHON=/bin/false
+		export ac_cv_path_PYTHON=
 	fi
+
+	# Used by tests if userpriv is disabled
+	addwrite /run/netns
 
 	local myconf=(
 		--with-vpnc-script="${EPREFIX}/etc/openconnect/openconnect.sh"
@@ -101,7 +99,7 @@ src_configure() {
 		$(use_with gssapi)
 		$(use_with smartcard libpcsclite)
 		$(use_with stoken)
-		$(use_with java)
+		--without-java
 	)
 
 	econf "${myconf[@]}"
@@ -147,7 +145,7 @@ src_install() {
 	newins "${FILESDIR}"/openconnect.logrotate openconnect
 	keepdir /var/log/openconnect
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 
 	readme.gentoo_create_doc
 }
@@ -157,6 +155,6 @@ pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog
 		elog "You may want to consider installing the following optional packages."
-		optfeature "resolvconf support" net-dns/openresolv
+		optfeature "resolvconf support" virtual/resolvconf
 	fi
 }

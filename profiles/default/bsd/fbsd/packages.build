@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file describes the packages needed to build a stage 1 based on this
@@ -47,5 +47,4 @@ sys-freebsd/freebsd-bin
 sys-freebsd/freebsd-sbin
 sys-freebsd/freebsd-ubin
 sys-freebsd/freebsd-usbin
-sys-freebsd/freebsd-contrib
 sys-libs/timezone-data

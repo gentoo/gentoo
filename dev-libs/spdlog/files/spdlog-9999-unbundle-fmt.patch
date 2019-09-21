@@ -1,0 +1,45 @@
+diff --git a/include/spdlog/fmt/fmt.h b/include/spdlog/fmt/fmt.h
+index 5d039b8c..8107b19a 100644
+--- a/include/spdlog/fmt/fmt.h
++++ b/include/spdlog/fmt/fmt.h
+@@ -19,9 +19,6 @@
+ #ifndef FMT_USE_WINDOWS_H
+ #define FMT_USE_WINDOWS_H 0
+ #endif
+-#include "bundled/core.h"
+-#include "bundled/format.h"
+-#else // SPDLOG_FMT_EXTERNAL is defined - use external fmtlib
+-#include "fmt/core.h"
+-#include "fmt/format.h"
+-#endif
++#endif // SPDLOG_FMT_EXTERNAL is defined - use external fmtlib
++#include <fmt/core.h>
++#include <fmt/format.h>
+diff --git a/include/spdlog/fmt/ostr.h b/include/spdlog/fmt/ostr.h
+index 9902898f..5e92a592 100644
+--- a/include/spdlog/fmt/ostr.h
++++ b/include/spdlog/fmt/ostr.h
+@@ -11,8 +11,6 @@
+ #ifndef FMT_HEADER_ONLY
+ #define FMT_HEADER_ONLY
+ #endif
+-#include "bundled/ostream.h"
+-#include "fmt.h"
+-#else
+-#include <fmt/ostream.h>
+ #endif
++
++#include <fmt/ostream.h>
+diff --git a/src/spdlog.cpp b/src/spdlog.cpp
+index be91412d..d68dd522 100644
+--- a/src/spdlog.cpp
++++ b/src/spdlog.cpp
+@@ -104,7 +104,7 @@ template std::shared_ptr<spdlog::logger> spdlog::stderr_logger_st<spdlog::async_
+ // All rights reserved.
+ 
+ #if !defined(SPDLOG_FMT_EXTERNAL)
+-#include "spdlog/fmt/bundled/format-inl.h"
++#include <fmt/format-inl.h>
+ 
+ FMT_BEGIN_NAMESPACE
+ template struct internal::basic_data<void>;

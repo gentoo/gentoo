@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,10 +14,10 @@ if [ "${PV}" != "9999" ]; then
 		amd64? ( ${MY_URL}/${MY_PKG/i386/amd64} )"
 	KEYWORDS="-* ~amd64 ~x86"
 else
-	inherit cvs #hack to make it part of @live-rebuild
 	MY_URL="https://dl.google.com/linux/direct"
 	MY_PKG="${PN}_current_i386.deb"
 	SRC_URI=""
+	PROPERTIES="live"
 fi
 
 DESCRIPTION="Video chat browser plug-in for Google Talk"
@@ -70,7 +70,7 @@ pkg_nofetch() {
 		elog "with ${PV}+. If you can get the distfile from e.g. another computer of yours, or search"
 		use amd64 && MY_PKG="${MY_PKG/i386/amd64}"
 		elog "it with google: https://www.google.com/search?q=intitle:%22index+of%22+${MY_PKG}"
-		elog "and copy the file ${MY_PKG} to ${DISTDIR}."
+		elog "and copy ${MY_PKG} to your DISTDIR directory."
 	else
 		einfo "This version is no longer available from Google."
 		einfo "Note that Gentoo cannot mirror the distfiles due to license reasons, so we have to follow the bump."

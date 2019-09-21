@@ -1,0 +1,11 @@
+[Unit]
+Description="Policy routing daemon"
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/pingu -d
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

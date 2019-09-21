@@ -1,6 +1,0 @@
-#!/bin/bash
-
-SERVICES="${SERVICES} lugons"
-
-ENGINE_lugons=lodgeit
-URL_lugons="https://paste.lugons.org/"

@@ -1,4 +1,0 @@
-# systemd tmpfile settings for teamspeak3-server
-# See tmpfiles.d(5) for details
-
-d /var/run/teamspeak3 0755 teamspeak teamspeak -

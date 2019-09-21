@@ -5,9 +5,6 @@
 		<email>graphics@gentoo.org</email>
 		<name>Gentoo Graphics Project</name>
 	</maintainer>
-	<use>
-		<flag name="demosaic">Enable support for external interpolation algorithms</flag> 
-	</use>
 	<upstream>
 		<remote-id type="github">LibRaw/LibRaw</remote-id>
 	</upstream>

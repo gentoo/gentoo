@@ -1,0 +1,34 @@
+--- a/CMakeLists.txt	2019-05-04 16:33:55.000000000 +0200
++++ b/CMakeLists.txt	2019-08-08 21:53:36.255257785 +0200
+@@ -1,6 +1,6 @@
+ project(kshutdown)
+ 
+-cmake_minimum_required(VERSION 3.0.0)
++cmake_minimum_required(VERSION 3.1)
+ cmake_policy(SET CMP0063 NEW) # disables cmake warning
+ 
+ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+@@ -45,7 +45,9 @@
+ 	add_subdirectory(po)
+ endif()
+ 
+-include(FeatureSummary)
+-feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
++set (CMAKE_CXX_STANDARD 14)
+ 
+ add_subdirectory(src)
++
++include(FeatureSummary)
++feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+--- a/src/CMakeLists.txt	2019-05-04 16:33:55.000000000 +0200
++++ b/src/CMakeLists.txt	2019-08-08 21:53:48.791385858 +0200
+@@ -31,9 +31,6 @@
+ 	add_executable(kshutdown ${kshutdown_SRC} ${kshutdown_MOC_SOURCES})
+ endif()
+ 
+-# HACK: Add -std=gnu++14 option (cmake horror):
+-target_compile_features(kshutdown PUBLIC cxx_std_14)
+-
+ if(KS_PURE_QT)
+ 	target_link_libraries(kshutdown
+ 		Qt5::DBus

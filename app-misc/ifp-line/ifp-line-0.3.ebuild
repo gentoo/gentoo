@@ -1,8 +1,7 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils
+EAPI=6
 
 DESCRIPTION="iRiver iFP open-source driver"
 HOMEPAGE="http://ifp-driver.sourceforge.net/"
@@ -16,17 +15,15 @@ IUSE=""
 RDEPEND="virtual/libusb:0"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-fix-warnings.patch
-}
+PATCHES=( "${FILESDIR}/${P}-fix-warnings.patch" )
 
 src_install() {
 	dobin ifp || die
-	dodoc NEWS README TIPS ChangeLog
 	doman ifp.1
 
 	exeinto /usr/share/${PN}
 	doexe nonroot.sh || die
+	default
 }
 
 pkg_postinst() {

@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="sys-apps/lm_sensors:=
+DEPEND="sys-apps/lm-sensors:=
 	>=x11-libs/libdockapp-0.7:=
 	x11-libs/libX11"
 RDEPEND="${DEPEND}"

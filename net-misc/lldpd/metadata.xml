@@ -25,7 +25,6 @@ lldpd also implements CDP (Cisco Discovery Protocol), FDP (Foundry Discovery Pro
 		<flag name="dot3">Enable Dot3 extension (PHY stuff)</flag>
 		<flag name="edp">Enable Extreme Discovery Protocol</flag>
 		<flag name="fdp">Enable Foundry Discovery Protocol</flag>
-		<flag name="jansson">Enable JSON output via Jansson</flag>
 		<flag name="lldpmed">Enable LLDP-MED extension</flag>
 		<flag name="old-kernel">Enable compatibility with Linux kernel older than 2.6.39</flag>
 		<flag name="sanitizers">Enable code instrumentation with selected sanitizers</flag>

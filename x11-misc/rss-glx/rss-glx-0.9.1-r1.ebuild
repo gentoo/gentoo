@@ -12,14 +12,14 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ppc ~ppc64 sparc x86"
 IUSE="+bzip2 openal quesoglc"
 
 RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
 	>=media-libs/glew-1.5.1:=
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	>=media-gfx/imagemagick-6.4:=
 	>=x11-misc/xscreensaver-5.08-r2
 	bzip2? ( app-arch/bzip2 )
@@ -28,7 +28,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	virtual/pkgconfig
 	sys-apps/sed
 "

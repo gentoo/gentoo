@@ -1,0 +1,23 @@
+From f9d18d87c3340aa53f524524bf189b99459ab1e6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Franti=C5=A1ek=20Dvo=C5=99=C3=A1k?= <valtri@civ.zcu.cz>
+Date: Thu, 18 May 2017 23:10:48 +0200
+Subject: [PATCH] Update for ox > 2.4.11
+
+There is more pedantic parsing of white-space characters in ox > 2.4.11. Better to set explicitly the expected skip mode.
+---
+ lib/multi_xml/parsers/ox.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/multi_xml/parsers/ox.rb b/lib/multi_xml/parsers/ox.rb
+index e52a560..dc1413e 100644
+--- a/lib/multi_xml/parsers/ox.rb
++++ b/lib/multi_xml/parsers/ox.rb
+@@ -29,7 +29,7 @@ def parse_error
+ 
+       def parse(io)
+         handler = Handler.new
+-        ::Ox.sax_parse(handler, io, :convert_special => true)
++        ::Ox.sax_parse(handler, io, convert_special: true, skip: :skip_return)
+         handler.doc
+       end
+ 

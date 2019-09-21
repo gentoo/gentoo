@@ -5,4 +5,12 @@
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">zlin/wgetpaste</remote-id>
+		<bugs-to>https://github.com/zlin/wgetpaste/issues</bugs-to>
+	</upstream>
 </pkgmetadata>

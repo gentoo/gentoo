@@ -1,0 +1,11 @@
+--- intercal-0.31-orig/configure.ac
++++ intercal-0.31/configure.ac
+@@ -14,7 +14,7 @@
+ 		  subdir-objects no-texinfo.tex -Wall -Wno-override])
+ 
+ dnl Information about this version of INTERCAL.
+-PACKAGE_VERSION=0.30
++PACKAGE_VERSION=0.31
+ REPOSITORY_URL=`sed -n <control '/XBS-Repository-URL: */s///p'`
+ 
+ dnl Checks for programs.

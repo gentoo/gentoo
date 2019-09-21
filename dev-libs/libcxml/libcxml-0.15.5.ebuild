@@ -1,15 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
+PYTHON_COMPAT=( python2_7 python3_5 python3_6 )
 PYTHON_REQ_USE="threads(+)"
 inherit python-any-r1 waf-utils
 
 DESCRIPTION="small C++ library which makes it marginally neater to parse XML using libxml++"
-HOMEPAGE="http://carlh.net/libcxml"
-SRC_URI="http://carlh.net/downloads/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://carlh.net/libcxml"
+SRC_URI="https://carlh.net/downloads/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,17 +6,17 @@
     <name>Pacho Ramos</name>
   </maintainer>
 <use>
+  <flag name="btpclient">Enable BTP client</flag>
   <flag name="deprecated">Build deprecated plugins</flag>
   <flag name="experimental">Build experimental plugins</flag>
   <flag name="extra-tools">Install tools that upstream doesn't install on
     purpose by default. All this tools shouldn't be used. Then, please
     notify upstream about you still need them to let them know the
     situation.</flag>
-  <flag name="mesh">Add support for Bluetooth Mesh control application and advertising
-    bearer.</flag>
-  <flag name="obex">Enable OBEX transfer support.</flag>
-  <flag name="test-programs">Install tools for testing of
-    various Bluetooth functions</flag>
+  <flag name="mesh">Add support for Bluetooth Mesh control application and advertising bearer.</flag>
+  <flag name="midi">Enable MIDI support</flag>
+  <flag name="obex">Enable OBEX transfer support</flag>
+  <flag name="test-programs">Install tools for testing of various Bluetooth functions</flag>
   <flag name="user-session">Allow compatibility with user-session semantics for session bus under systemd</flag>
 </use>
 <upstream>

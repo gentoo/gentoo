@@ -1,0 +1,31 @@
+From 80f22fe6825ac090ec259e31114371640261240d Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Thu, 20 Jun 2019 13:59:08 +0200
+Subject: Add DesktopEntry to notifyrc
+
+Summary:
+This allows the notification KCM, that comes with Plasma 5.16, to
+identify RSIBreak as an application.
+
+Test Plan: Shows up under applications, not under system services.
+
+Reviewers: aacid
+
+Differential Revision: https://phabricator.kde.org/D21994
+---
+ src/rsibreak.notifyrc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/rsibreak.notifyrc b/src/rsibreak.notifyrc
+index 0067fa7..c82a4ab 100644
+--- a/src/rsibreak.notifyrc
++++ b/src/rsibreak.notifyrc
+@@ -1,5 +1,6 @@
+ [Global]
+ IconName=rsibreak
++DesktopEntry=org.kde.rsibreak
+ Comment=RSIBreak
+ Comment[bg]=RSIBreak
+ Comment[ca]=RSIBreak
+-- 
+cgit v1.1

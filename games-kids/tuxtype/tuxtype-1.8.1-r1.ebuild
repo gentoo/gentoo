@@ -1,19 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils user
+inherit eutils
 
 DESCRIPTION="Typing tutorial with lots of eye-candy"
-HOMEPAGE="https://alioth.debian.org/projects/tux4kids"
-SRC_URI="https://alioth.debian.org/frs/download.php/3270/tuxtype_w_fonts-${PV}.tar.gz"
+HOMEPAGE="https://github.com/tux4kids/tuxtype"
+SRC_URI="https://github.com/tux4kids/${PN}/archive/upstream/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 OFL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="svg"
 
-DEPEND="media-libs/libsdl[video]
+DEPEND="acct-group/gamestat
+	media-libs/libsdl[video]
 	media-libs/sdl-image
 	media-libs/sdl-mixer
 	media-libs/sdl-pango
@@ -21,11 +22,7 @@ DEPEND="media-libs/libsdl[video]
 	svg? ( gnome-base/librsvg )"
 RDEPEND=${DEPEND}
 
-S=${WORKDIR}/tuxtype_w_fonts-${PV}
-
-pkg_setup(){
-	enewgroup gamestat 36
-}
+S=${WORKDIR}/${PN}-upstream-${PV}
 
 src_configure() {
 	econf \

@@ -1,0 +1,40 @@
+From 93c03b9582eb1eac21f084decf86ca5f1340dc53 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sat, 7 Sep 2019 22:16:43 +0300
+Subject: [PATCH] meson: Allow disabling build of tests
+
+---
+ meson.build       | 4 +++-
+ meson_options.txt | 1 +
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 91800654..37e6b5c2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -219,7 +219,9 @@ subdir('tools')
+ subdir('po')
+ 
+ # Tests
+-subdir('tests')
++if get_option('test')
++  subdir('tests')
++endif
+ 
+ if docs_enabled
+   subdir('docs')
+diff --git a/meson_options.txt b/meson_options.txt
+index 042a72e8..b4552d49 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -9,6 +9,7 @@ option('zeitgeist', type: 'boolean', value: false, description: 'build Zeitgeist
+ option('import_tool', type: 'boolean', value: true, description: 'Enable building the meta-contact import tool')
+ option('inspect_tool', type: 'boolean', value: true, description: 'Enable building the data inspection tool')
+ # Test options
++option('test', type: 'boolean', value: true, description: 'Build test programs')
+ option('installed_tests', type: 'boolean', value: false, description: 'Install test programs')
+ # Docs
+ option('docs', type: 'boolean', value: false, description: 'Enable documentation generation')
+-- 
+2.20.1
+

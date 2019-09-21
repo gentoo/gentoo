@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,15 +18,12 @@ RDEPEND="${DEPEND}"
 SLOT="0"
 LICENSE="BSD"
 KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+RESTRICT="!ocamlopt? ( strip )"
 
 src_compile() {
 	emake -j1 all
 	if use ocamlopt; then
 		emake -j1 ledit.opt
-	else
-		# If using bytecode we dont want to strip the binary as it would remove the
-		# bytecode and only leave ocamlrun...
-		export STRIP_MASK="*/bin/*"
 	fi
 }
 

@@ -1,5 +1,5 @@
---- pysize/main.py	2007-03-11 16:09:53.000000000 +0100
-+++ pysize/main.py.new	2009-01-02 00:08:43.384827054 +0100
+--- a/pysize/main.py	2007-03-11 16:09:53.000000000 +0100
++++ b/pysize/main.py.new	2009-01-02 00:08:43.384827054 +0100
 @@ -69,17 +69,8 @@
      stats.print_stats(40)
      os.remove(prof_file)

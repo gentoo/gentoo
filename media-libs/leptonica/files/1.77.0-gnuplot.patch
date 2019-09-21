@@ -1,0 +1,25 @@
+From 5204b5453fe8035d77e34add80f8ebb1f36b9350 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@aura-online.co.uk>
+Date: Mon, 14 Jan 2019 20:26:14 +0000
+Subject: [PATCH] Add boxa2_reg and numa[12]_reg to gnuplot-dependent test list
+
+---
+ prog/reg_wrapper.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/prog/reg_wrapper.sh b/prog/reg_wrapper.sh
+index 5568c8e..ff9264d 100755
+--- a/prog/reg_wrapper.sh
++++ b/prog/reg_wrapper.sh
+@@ -31,7 +31,7 @@ TEST_NAME="${TEST##*/}"
+ TEST_NAME="${TEST_NAME%_reg*}"
+ 
+ case "${TEST_NAME}" in
+-    baseline|boxa1|colormask|colorspace|dna|enhance|extrema|fpix1|italic|kernel|nearline|projection|rankbin|rankhisto|wordboxes)
++    baseline|boxa[12]|colormask|colorspace|dna|enhance|extrema|fpix1|italic|kernel|nearline|numa[12]|projection|rankbin|rankhisto|wordboxes)
+         GNUPLOT=$(type -P gnuplot || type -P wgnuplot)
+ 
+         if [ -z "${GNUPLOT}" ] || ! "${GNUPLOT}" -e "set terminal png" 2>/dev/null ; then
+-- 
+2.19.2
+

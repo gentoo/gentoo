@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 JAVA_PKG_IUSE="source"
 
-inherit eutils fdo-mime java-pkg-2 java-ant-2 versionator
+inherit eutils java-pkg-2 java-ant-2 versionator xdg-utils
 
 MY_PV=$(replace_all_version_separators "")
 MY_SRC="Vuze_${MY_PV}"
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/azureus/${PN}/${MY_SRC}/${MY_SRC}_source.zip"
 LICENSE="GPL-2 BSD"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 # bundles parts of http://www.programmers-friend.org/
 # bundles bcprov - 1.37 required but not in the tree
@@ -93,7 +93,7 @@ EANT_GENTOO_CLASSPATH="swt-3.8,json-simple,log4j,commons-cli-1 commons-lang-2.1"
 src_compile() {
 	local mem
 	use amd64 && mem="320"
-	use x86   && mem="192"
+	use x86   && mem="256"
 	use ppc   && mem="192"
 	use ppc64 && mem="256"
 	use sparc && mem="320"
@@ -136,9 +136,9 @@ pkg_postinst() {
 	elog "rather than the startup script.  You can enable the console UI by"
 	elog "editing this config file."
 	echo
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

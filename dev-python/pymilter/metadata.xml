@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gentoo@seichter.de</email>
+		<name>Ralph Seichter</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+		<description>Proxy Maintainer</description>
+	</maintainer>
+	<longdescription>
+		A python extension module to enable python scripts to attach
+		to sendmail’s libmilter functionality. Additional python
+		modules provide for navigating and modifying MIME parts, and
+		sending DSNs or doing CBVs.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">sdgathman/pymilter</remote-id>
+	</upstream>
+</pkgmetadata>

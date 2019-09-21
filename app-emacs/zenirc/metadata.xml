@@ -15,4 +15,5 @@
   features are implemented via module extensions. For example, DCC (Direct
   Client-to-Client) can be enabled at the user's option.
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>

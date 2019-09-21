@@ -1,0 +1,622 @@
+From c6f41bea3371e6e1948a99ac64d5882d76d9c66e Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 31 Mar 2019 16:19:55 +0200
+Subject: [PATCH] Port from GConf to GSettings
+
+Summary:
+CCBUG: 386665
+
+As discussed in bug 386665 GConf is deprecated and needs to be replaced by GSettings to keep features enabled.
+
+Question: Do we need GConf as a fallback for PA versions without module-gsettings?
+
+Test Plan:
+Checkboxes in Advanced tab are enabled again.
+Changed settings are shown in dconf-editor and vice versa.
+Combine output checkbox shows/hides combined sink in applet
+
+Reviewers: drosca, davidedmundson
+
+Reviewed By: drosca
+
+Subscribers: pino, lbeltrame, evpokp, rikmills, broulik, asturmlechner, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D14147
+---
+ CMakeLists.txt                           | 15 ++--
+ cmake/FindGIO.cmake                      | 72 +++++++++++++++++++
+ config.h.cmake                           |  3 +-
+ src/CMakeLists.txt                       | 18 ++++-
+ src/gsettingsitem.cpp                    | 91 ++++++++++++++++++++++++
+ src/gsettingsitem.h                      | 59 +++++++++++++++
+ src/kcm/package/contents/ui/Advanced.qml |  8 +--
+ src/modulemanager.cpp                    | 79 +++++++++++++-------
+ src/modulemanager.h                      | 14 ++--
+ 9 files changed, 315 insertions(+), 44 deletions(-)
+ create mode 100644 cmake/FindGIO.cmake
+ create mode 100644 src/gsettingsitem.cpp
+ create mode 100644 src/gsettingsitem.h
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9973ef7..d33dc1d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,11 +20,6 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
+ include(ECMOptionalAddSubdirectory)
+ 
+ include(FindPkgConfig)
+-pkg_check_modules(GCONF gconf-2.0)
+-pkg_check_modules(GOBJECT gobject-2.0)
+-if (GCONF_FOUND AND GOBJECT_FOUND)
+-    set(HAVE_GCONF TRUE)
+-endif()
+ 
+ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS
+     Core
+@@ -45,6 +40,16 @@ find_package(PulseAudio 5.0.0 REQUIRED)
+ find_package(Canberra REQUIRED)
+ find_package(GLIB2 REQUIRED)
+ 
++option(USE_GCONF "Use legacy GConf instead of GSettings")
++
++pkg_check_modules(GOBJECT gobject-2.0 REQUIRED)
++if(USE_GCONF)
++    pkg_check_modules(GCONF gconf-2.0 REQUIRED)
++else()
++    find_package(GIO REQUIRED)
++    set(USE_GSETTINGS True)
++endif()
++
+ find_package(CanberraPulse)
+ set_package_properties(CanberraPulse PROPERTIES
+     DESCRIPTION "Pulseaudio backend for libcanberra"
+diff --git a/cmake/FindGIO.cmake b/cmake/FindGIO.cmake
+new file mode 100644
+index 0000000..827c243
+--- /dev/null
++++ b/cmake/FindGIO.cmake
+@@ -0,0 +1,72 @@
++# - Try to find the GIO libraries
++# Once done this will define
++#
++#  GIO_FOUND - system has GIO
++#  GIO_INCLUDE_DIR - the GIO include directory
++#  GIO_LIBRARIES - GIO library
++#
++# Copyright (c) 2010 Dario Freddi <drf@kde.org>
++#
++# Redistribution and use is allowed according to the terms of the BSD license.
++# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
++
++if(GIO_INCLUDE_DIR AND GIO_LIBRARIES)
++    # Already in cache, be silent
++    set(GIO_FIND_QUIETLY TRUE)
++endif(GIO_INCLUDE_DIR AND GIO_LIBRARIES)
++
++if (NOT WIN32)
++    include(UsePkgConfig)
++    pkgconfig(gio-2.0 _LibGIOIncDir _LibGIOLinkDir _LibGIOLinkFlags _LibGIOCflags)
++endif(NOT WIN32)
++
++MESSAGE(STATUS "gio include dir: ${_LibGIOIncDir}")
++
++# first try without default paths to respect PKG_CONFIG_PATH
++
++find_path(GIO_MAIN_INCLUDE_DIR glib.h
++        PATH_SUFFIXES glib-2.0
++        PATHS ${_LibGIOIncDir}
++        NO_DEFAULT_PATH)
++
++find_path(GIO_MAIN_INCLUDE_DIR glib.h
++        PATH_SUFFIXES glib-2.0
++        PATHS ${_LibGIOIncDir} )
++
++MESSAGE(STATUS "found gio main include dir: ${GIO_MAIN_INCLUDE_DIR}")
++
++# search the glibconfig.h include dir under the same root where the library is found
++find_library(GIO_LIBRARIES
++        NAMES gio-2.0
++        PATHS ${_LibGIOLinkDir}
++        NO_DEFAULT_PATH)
++
++find_library(GIO_LIBRARIES
++        NAMES gio-2.0
++        PATHS ${_LibGIOLinkDir})
++
++
++get_filename_component(GIOLibDir "${GIO_LIBRARIES}" PATH)
++
++find_path(GIO_INTERNAL_INCLUDE_DIR glibconfig.h
++        PATH_SUFFIXES glib-2.0/include
++        PATHS ${_LibGIOIncDir} "${GIOLibDir}" ${CMAKE_SYSTEM_LIBRARY_PATH}
++        NO_DEFAULT_PATH)
++
++find_path(GIO_INTERNAL_INCLUDE_DIR glibconfig.h
++        PATH_SUFFIXES glib-2.0/include
++        PATHS ${_LibGIOIncDir} "${GIOLibDir}" ${CMAKE_SYSTEM_LIBRARY_PATH})
++
++set(GIO_INCLUDE_DIR "${GIO_MAIN_INCLUDE_DIR}")
++
++# not sure if this include dir is optional or required
++# for now it is optional
++if(GIO_INTERNAL_INCLUDE_DIR)
++    set(GIO_INCLUDE_DIR ${GIO_INCLUDE_DIR} "${GIO_INTERNAL_INCLUDE_DIR}")
++endif(GIO_INTERNAL_INCLUDE_DIR)
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(GIO  DEFAULT_MSG  GIO_LIBRARIES GIO_MAIN_INCLUDE_DIR)
++
++mark_as_advanced(GIO_INCLUDE_DIR GIO_LIBRARIES)
++
+diff --git a/config.h.cmake b/config.h.cmake
+index 1643e50..7d801c3 100644
+--- a/config.h.cmake
++++ b/config.h.cmake
+@@ -1,3 +1,4 @@
+ /* config.h.  Generated by cmake from config.h.cmake  */
+ 
+-#cmakedefine01 HAVE_GCONF
++#cmakedefine01 USE_GSETTINGS
++#cmakedefine01 USE_GCONF
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 8684251..d4a6c4b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -37,11 +37,16 @@ set(qml_SRCS
+ set_property(SOURCE qml/dbus/osdService.xml APPEND PROPERTY CLASSNAME OsdServiceInterface)
+ qt5_add_dbus_interface(dbus_SRCS qml/dbus/osdService.xml osdservice)
+ 
+-if (HAVE_GCONF)
++if (USE_GCONF)
+     include_directories(${GCONF_INCLUDE_DIRS} ${GOBJECT_INCLUDE_DIRS})
+     set(cpp_SRCS ${cpp_SRCS} gconfitem.cpp)
+ endif()
+ 
++if (USE_GSETTINGS)
++    include_directories(${GIO_INCLUDE_DIRS} ${GOBJECT_INCLUDE_DIRS})
++    set(cpp_SRCS ${cpp_SRCS} gsettingsitem.cpp)
++endif()
++
+ add_library(plasma-volume-declarative SHARED ${dbus_SRCS} ${cpp_SRCS} ${qml_SRCS})
+ target_link_libraries(plasma-volume-declarative
+     Qt5::Core
+@@ -52,12 +57,19 @@ target_link_libraries(plasma-volume-declarative
+     ${PULSEAUDIO_LIBRARY}
+     ${PULSEAUDIO_MAINLOOP_LIBRARY}
+     ${CANBERRA_LIBRARIES}
++    ${GOBJECT_LIBRARIES}
+ )
+ 
+-if (HAVE_GCONF)
++if (USE_GCONF)
+     target_link_libraries(plasma-volume-declarative
+         ${GCONF_LDFLAGS}
+-        ${GOBJECT_LDFLAGS}
++    )
++endif()
++
++if (USE_GSETTINGS)
++    target_link_libraries(plasma-volume-declarative
++        ${GIO_LIBRARIES}
++        GLIB2::GLIB2
+     )
+ endif()
+ 
+diff --git a/src/gsettingsitem.cpp b/src/gsettingsitem.cpp
+new file mode 100644
+index 0000000..b3a9353
+--- /dev/null
++++ b/src/gsettingsitem.cpp
+@@ -0,0 +1,91 @@
++/*
++ * Copyright (C) 2018 Nicolas Fella <nicolas.fella@gmx.de>
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public License
++ * version 2.1 as published by the Free Software Foundation.
++ *
++ * This library is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA
++ *
++ */
++
++#include <QString>
++#include <QVariant>
++
++#include <gio/gio.h>
++
++#include "gsettingsitem.h"
++#include "debug.h"
++
++QVariant GSettingsItem::value(const QString &key) const
++{
++    GVariant *gvalue = g_settings_get_value(m_settings, key.toLatin1().data());
++
++    QVariant toReturn;
++
++    switch (g_variant_classify(gvalue)) {
++    case G_VARIANT_CLASS_BOOLEAN:
++        toReturn = QVariant((bool)g_variant_get_boolean(gvalue));
++        break;
++    case G_VARIANT_CLASS_STRING:
++        toReturn = QVariant(QString::fromUtf8(g_variant_get_string(gvalue, nullptr)));
++        break;
++    default:
++        qCWarning(PLASMAPA()) << "Unhandled variant type in value()";
++    }
++
++    g_variant_unref(gvalue);
++
++    return toReturn;
++}
++
++void GSettingsItem::set(const QString &key, const QVariant &val)
++{
++    // It might be hard to detect the right GVariant type from
++    // complext QVariant types such as string lists or more detailed
++    // types such as integers (GVariant has different sizes),
++    // therefore we get the current value for the key and convert
++    // to QVariant using the GVariant type
++    GVariant *oldValue = g_settings_get_value(m_settings, key.toLatin1().data());
++    GVariant *newValue = nullptr;
++
++    switch (g_variant_type_peek_string(g_variant_get_type(oldValue))[0]) {
++    case G_VARIANT_CLASS_BOOLEAN:
++        newValue = g_variant_new_boolean(val.toBool());
++        break;
++    case G_VARIANT_CLASS_STRING:
++        newValue = g_variant_new_string(val.toString().toUtf8().constData());
++        break;
++    default:
++        qCWarning(PLASMAPA()) << "Unhandled variant type in set()";
++    }
++
++    if (newValue) {
++        g_settings_set_value(m_settings, key.toLatin1().data(), newValue);
++    }
++
++    g_variant_unref(oldValue);
++}
++
++GSettingsItem::GSettingsItem(const QString &key, QObject *parent)
++    : QObject (parent)
++{
++    m_settings = g_settings_new_with_path("org.freedesktop.pulseaudio.module-group", key.toLatin1().data());
++
++    g_signal_connect(m_settings, "changed", G_CALLBACK(GSettingsItem::settingChanged), this);
++}
++
++GSettingsItem::~GSettingsItem()
++{
++    g_settings_sync();
++    if (m_settings)
++        g_object_unref(m_settings);
++}
+diff --git a/src/gsettingsitem.h b/src/gsettingsitem.h
+new file mode 100644
+index 0000000..9afcfc2
+--- /dev/null
++++ b/src/gsettingsitem.h
+@@ -0,0 +1,59 @@
++/*
++ * Copyright (C) 2018 Nicolas Fella <nicolas.fella@gmx.de>
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public License
++ * version 2.1 as published by the Free Software Foundation.
++ *
++ * This library is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA
++ *
++ */
++
++#ifndef GSETTINGSITEM_H
++#define GSETTINGSITEM_H
++
++#include <QVariant>
++#include <QStringList>
++#include <QObject>
++
++#include <gio/gio.h>
++
++class GSettingsItem : public QObject
++{
++    Q_OBJECT
++
++ public:
++
++    explicit GSettingsItem(const QString &key, QObject *parent = nullptr);
++    virtual ~GSettingsItem() override;
++
++    QVariant value(const QString &key) const;
++    void set(const QString &key, const QVariant &val);
++
++
++Q_SIGNALS:
++    void subtreeChanged();
++
++private:
++    GSettings *m_settings;
++
++static void settingChanged(GSettings *settings, const gchar *key, gpointer data)
++{
++    Q_UNUSED(settings)
++    Q_UNUSED(key)
++
++    GSettingsItem *self = static_cast<GSettingsItem *>(data);
++    Q_EMIT self->subtreeChanged();
++}
++
++};
++
++#endif // GCONFITEM_H
+diff --git a/src/kcm/package/contents/ui/Advanced.qml b/src/kcm/package/contents/ui/Advanced.qml
+index 536ae3e..48512e7 100644
+--- a/src/kcm/package/contents/ui/Advanced.qml
++++ b/src/kcm/package/contents/ui/Advanced.qml
+@@ -73,7 +73,7 @@ ScrollView {
+             text: i18nd("kcm_pulseaudio", "Add virtual output device for simultaneous output on all local sound cards")
+             checked: moduleManager.combineSinks
+             onCheckedChanged: moduleManager.combineSinks = checked;
+-            enabled: moduleManager.loadedModules.indexOf("module-gconf") != -1
++            enabled: moduleManager.configModuleLoaded
+             visible: moduleManager.settingsSupported
+         }
+ 
+@@ -84,7 +84,7 @@ ScrollView {
+             text: i18nd("kcm_pulseaudio", "Automatically switch all running streams when a new output becomes available")
+             checked: moduleManager.switchOnConnect
+             onCheckedChanged: moduleManager.switchOnConnect = checked;
+-            enabled: moduleManager.loadedModules.indexOf("module-gconf") != -1
++            enabled: moduleManager.configModuleLoaded
+             visible: moduleManager.settingsSupported
+         }
+ 
+@@ -92,8 +92,8 @@ ScrollView {
+             Layout.alignment: Qt.AlignHCenter
+             enabled: false
+             font.italic: true
+-            text: i18nd("kcm_pulseaudio", "Requires 'module-gconf' PulseAudio module")
+-            visible: moduleManager.settingsSupported && moduleManager.loadedModules.indexOf("module-gconf") == -1
++            text: i18nd("kcm_pulseaudio", "Requires %1 PulseAudio module", moduleManager.configModuleName)
++            visible: moduleManager.settingsSupported && !moduleManager.configModuleLoaded
+         }
+ 
+         Header {
+diff --git a/src/modulemanager.cpp b/src/modulemanager.cpp
+index 5245ac5..a43182e 100644
+--- a/src/modulemanager.cpp
++++ b/src/modulemanager.cpp
+@@ -23,10 +23,15 @@
+ #include "module.h"
+ #include "../config.h"
+ 
+-#if HAVE_GCONF
++#if USE_GSETTINGS
++#include "gsettingsitem.h"
++
++#define PA_SETTINGS_PATH_MODULES "/org/freedesktop/pulseaudio/module-groups"
++#endif
++
++#if USE_GCONF
+ #include "gconfitem.h"
+-#define PA_GCONF_ROOT "/system/pulseaudio"
+-#define PA_GCONF_PATH_MODULES PA_GCONF_ROOT"/modules"
++#define PA_SETTINGS_PATH_MODULES "/system/pulseaudio/modules"
+ #endif
+ 
+ #include <QTimer>
+@@ -34,29 +39,38 @@
+ namespace QPulseAudio
+ {
+ 
+-#if HAVE_GCONF
+-class GConfModule : public GConfItem
++#if USE_GCONF || USE_GSETTINGS
++
++#if USE_GSETTINGS
++class ConfigModule : public GSettingsItem
++#elif USE_GCONF
++class ConfigModule : public GConfItem
++#endif
+ {
+ public:
+-    GConfModule(const QString &configName, const QString &moduleName, QObject *parent);
++    ConfigModule(const QString &configName, const QString &moduleName, QObject *parent);
+     bool isEnabled() const;
+     void setEnabled(bool enabled, const QVariant &args=QVariant());
+ private:
+     QString m_moduleName;
+ };
+ 
+-GConfModule::GConfModule(const QString &configName, const QString &moduleName, QObject *parent) :
+-    GConfItem(QStringLiteral(PA_GCONF_PATH_MODULES"/") + configName, parent),
++ConfigModule::ConfigModule(const QString &configName, const QString &moduleName, QObject *parent) :
++#if USE_GSETTINGS
++    GSettingsItem(QStringLiteral(PA_SETTINGS_PATH_MODULES"/") + configName + QStringLiteral("/"), parent),
++#elif USE_GCONF
++    GConfItem(QStringLiteral(PA_SETTINGS_PATH_MODULES"/") + configName, parent),
++#endif
+     m_moduleName(moduleName)
+ {
+ }
+ 
+-bool GConfModule::isEnabled() const
++bool ConfigModule::isEnabled() const
+ {
+     return value(QStringLiteral("enabled")).toBool();
+ }
+ 
+-void GConfModule::setEnabled(bool enabled, const QVariant &args)
++void ConfigModule::setEnabled(bool enabled, const QVariant &args)
+ {
+     set(QStringLiteral("locked"), true);
+ 
+@@ -69,20 +83,20 @@ void GConfModule::setEnabled(bool enabled, const QVariant &args)
+     }
+     set(QStringLiteral("locked"), false);
+ }
+-#endif
+ 
++#endif
+ 
+ ModuleManager::ModuleManager(QObject *parent) :
+     QObject(parent)
+ {
+-#if HAVE_GCONF
+-    m_combineSinks = new GConfModule(QStringLiteral("combine"), QStringLiteral("module-combine"), this);
+-    m_switchOnConnect = new GConfModule(QStringLiteral("switch-on-connect"), QStringLiteral("module-switch-on-connect"), this);
+-    m_deviceManager = new GConfModule(QStringLiteral("device-manager"), QStringLiteral("module-device-manager"), this);
+-
+-    connect(m_combineSinks, &GConfItem::subtreeChanged, this, &ModuleManager::combineSinksChanged);
+-    connect(m_switchOnConnect, &GConfItem::subtreeChanged, this, &ModuleManager::switchOnConnectChanged);
+-    connect(m_deviceManager, &GConfItem::subtreeChanged, this, &ModuleManager::switchOnConnectChanged);
++#if USE_GCONF || USE_GSETTINGS
++    m_combineSinks = new ConfigModule(QStringLiteral("combine"), QStringLiteral("module-combine"), this);
++    m_switchOnConnect = new ConfigModule(QStringLiteral("switch-on-connect"), QStringLiteral("module-switch-on-connect"), this);
++    m_deviceManager = new ConfigModule(QStringLiteral("device-manager"), QStringLiteral("module-device-manager"), this);
++
++    connect(m_combineSinks, &ConfigModule::subtreeChanged, this, &ModuleManager::combineSinksChanged);
++    connect(m_switchOnConnect, &ConfigModule::subtreeChanged, this, &ModuleManager::switchOnConnectChanged);
++    connect(m_deviceManager, &ConfigModule::subtreeChanged, this, &ModuleManager::switchOnConnectChanged);
+ #endif
+ 
+     QTimer *updateModulesTimer = new QTimer(this);
+@@ -100,7 +114,7 @@ ModuleManager::~ModuleManager()
+ 
+ bool ModuleManager::settingsSupported() const
+ {
+-#if HAVE_GCONF
++#if USE_GCONF || USE_GSETTINGS
+     return true;
+ #else
+     return false;
+@@ -109,7 +123,7 @@ bool ModuleManager::settingsSupported() const
+ 
+ bool ModuleManager::combineSinks() const
+ {
+-#if HAVE_GCONF
++#if USE_GCONF || USE_GSETTINGS
+     return m_combineSinks->isEnabled();
+ #else
+     return false;
+@@ -118,21 +132,21 @@ bool ModuleManager::combineSinks() const
+ 
+ void ModuleManager::setCombineSinks(bool combineSinks)
+ {
+-#if HAVE_GCONF
++#if USE_GCONF || USE_GSETTINGS
+     m_combineSinks->setEnabled(combineSinks);
+ #else
+-    Q_UNUSED(combineSinks)
++    Q_UNUSED(combineSinks()
+ #endif
+ }
+ 
+ bool ModuleManager::switchOnConnect() const
+ {
++#if USE_GCONF || USE_GSETTINGS
+     //switch on connect and device-manager do the same task. Only one should be enabled
+ 
+     //Note on the first run m_deviceManager will appear to be disabled even though it's actually running
+     //because there is no gconf entry, however m_switchOnConnect will only exist if set by Plasma PA
+     //hence only check this entry
+-#if HAVE_GCONF
+     return m_switchOnConnect->isEnabled() ;
+ #else
+     return false;
+@@ -141,7 +155,7 @@ bool ModuleManager::switchOnConnect() const
+ 
+ void ModuleManager::setSwitchOnConnect(bool switchOnConnect)
+ {
+-#if HAVE_GCONF
++#if USE_GCONF || USE_GSETTINGS
+     m_deviceManager->setEnabled(!switchOnConnect);
+     m_switchOnConnect->setEnabled(switchOnConnect);
+ #else
+@@ -164,4 +178,19 @@ void ModuleManager::updateLoadedModules()
+     Q_EMIT loadedModulesChanged();
+ }
+ 
++bool ModuleManager::configModuleLoaded() const
++{
++    return m_loadedModules.contains(configModuleName());
++}
++
++QString ModuleManager::configModuleName() const
++{
++#if USE_GCONF
++    return QStringLiteral("module-gconf");
++#elif USE_GSETTINGS
++    return QStringLiteral("module-gsettings");
++#else
++    return QString();
++#endif
++}
+ }
+diff --git a/src/modulemanager.h b/src/modulemanager.h
+index 17efd6d..291936e 100644
+--- a/src/modulemanager.h
++++ b/src/modulemanager.h
+@@ -29,11 +29,9 @@
+ // Properties need fully qualified classes even with pointers.
+ #include "client.h"
+ 
+-class GConfItem;
+-
+ namespace QPulseAudio
+ {
+-class GConfModule;
++class ConfigModule;
+ 
+ class ModuleManager : public QObject
+ {
+@@ -41,6 +39,8 @@ class ModuleManager : public QObject
+     Q_PROPERTY(bool settingsSupported READ settingsSupported CONSTANT)
+     Q_PROPERTY(bool combineSinks READ combineSinks WRITE setCombineSinks NOTIFY combineSinksChanged)
+     Q_PROPERTY(bool switchOnConnect READ switchOnConnect WRITE setSwitchOnConnect NOTIFY switchOnConnectChanged)
++    Q_PROPERTY(bool configModuleLoaded READ configModuleLoaded NOTIFY loadedModulesChanged)
++    Q_PROPERTY(QString configModuleName READ configModuleName CONSTANT)
+     Q_PROPERTY(QStringList loadedModules READ loadedModules NOTIFY loadedModulesChanged)
+ public:
+     explicit ModuleManager(QObject *parent = nullptr);
+@@ -52,6 +52,8 @@ public:
+     bool switchOnConnect() const;
+     void setSwitchOnConnect(bool switchOnConnect);
+     QStringList loadedModules() const;
++    bool configModuleLoaded() const;
++    QString configModuleName() const;
+ 
+ Q_SIGNALS:
+     void combineSinksChanged();
+@@ -61,9 +63,9 @@ Q_SIGNALS:
+ private:
+     void updateLoadedModules();
+ 
+-    GConfModule *m_combineSinks;
+-    GConfModule *m_switchOnConnect;
+-    GConfModule *m_deviceManager;
++    ConfigModule *m_combineSinks;
++    ConfigModule *m_switchOnConnect;
++    ConfigModule *m_deviceManager;
+     QStringList m_loadedModules;
+ };
+ 
+-- 
+2.21.0

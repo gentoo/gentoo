@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Nirbheek Chauhan <nirbheek@gentoo.org>
 # Ian Stakenvicius <axs@gentoo.org>
+# @SUPPORTED_EAPIS: 2 3 4 5 6
 # @BLURB: Handle language packs for mozilla products
 # @DESCRIPTION:
 # Sets IUSE according to MOZ_LANGS (language packs available). Also exports
@@ -123,12 +124,17 @@ esac
 # shouldn't (ie it is an alpha or beta package)
 : ${MOZ_FORCE_UPSTREAM_L10N:=""}
 
-
 # @ECLASS-VARIABLE: MOZ_TOO_REGIONALIZED_FOR_L10N
 # @INTERNAL
 # @DESCRIPTION:
 # Upstream identifiers that should not contain region subtags in L10N
 MOZ_TOO_REGIONALIZED_FOR_L10N=( fy-NL ga-IE gu-IN hi-IN hy-AM nb-NO nn-NO pa-IN sv-SE )
+
+# @ECLASS-VARIABLE: MOZ_INSTALL_L10N_XPIFILE
+# @DESCRIPTION:
+# Install langpacks as .xpi file instead of unpacked directory.
+# Leave unset to install unpacked
+: ${MOZ_INSTALL_L10N_XPIFILE:=""}
 
 # Add l10n_* to IUSE according to available language packs
 # No language packs for alphas and betas
@@ -364,8 +370,13 @@ mozlinguas_src_install() {
 		done
 		popd > /dev/null || die
 	fi
+
 	for x in "${mozlinguas[@]}"; do
-		xpi_install "${WORKDIR}/${MOZ_P}-${x}${MOZ_LANGPACK_UNOFFICIAL:+.unofficial}"
+		if [[ -n ${MOZ_INSTALL_L10N_XPIFILE} ]]; then
+			xpi_copy "${WORKDIR}/${MOZ_P}-${x}${MOZ_LANGPACK_UNOFFICIAL:+.unofficial}"
+		else
+			xpi_install "${WORKDIR}/${MOZ_P}-${x}${MOZ_LANGPACK_UNOFFICIAL:+.unofficial}"
+		fi
 	done
 }
 

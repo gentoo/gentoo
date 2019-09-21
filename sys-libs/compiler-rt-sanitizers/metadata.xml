@@ -7,5 +7,9 @@
 	<use>
 		<flag name='clang'>Force building using installed clang (rather
 			than the default CC/CXX).</flag>
+		<flag name='libfuzzer'>Build fuzzing runtime.</flag>
+		<flag name='profile'>Build profiling runtime.</flag>
+		<flag name='sanitize'>Build sanitizer runtimes.</flag>
+		<flag name='xray'>Build XRay runtime.</flag>
 	</use>
 </pkgmetadata>

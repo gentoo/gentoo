@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-  <email>vdr@gentoo.org</email>
-  <name>gentoo-vdr-project</name>
-</maintainer>
-<longdescription lang="en">
-  This package provides Graphical LCD Driver.
-</longdescription>
-<use>
-  <flag name="g15">Add support for <pkg>app-misc/g15daemon</pkg> driver
-    (e.g. Logitech G15 Keybord)</flag>
-</use>
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>vdr@gentoo.org</email>
+		<name>gentoo-vdr-project</name>
+	</maintainer>
+	<longdescription>
+		Contains the lowlevel lcd drivers for GraphLCD, which are also used by GLCDprocDriver.
+	</longdescription>
+	<use>
+		<flag name="fontconfig">Add support for <pkg>media-libs/fontconfig</pkg> font names.</flag>
+		<flag name="freetype">Add support for <pkg>media-libs/freetype</pkg>.</flag>
+		<flag name="g15">Add support for <pkg>app-misc/g15daemon</pkg>, used by the Logitech G15 keyboard.</flag>
+		<flag name="graphicsmagick">Add support for <pkg>media-gfx/graphicsmagick</pkg>.</flag>
+		<flag name="imagemagick">Add support for <pkg>media-gfx/imagemagick</pkg>.</flag>
+	</use>
 </pkgmetadata>

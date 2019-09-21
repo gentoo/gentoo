@@ -1,7 +1,0 @@
-<?xml version="1.0" ?>
-<accessible description="Root of the accessible tree" name="root_object" role="accelerator label">
-      <accessible description="first child" name="test" role="alert"/>
-      <accessible_document description="image child" name="my_document" role="text">
-         <document page_numer="7" page_no="2"/>
-      </accessible_document>
-</accessible>

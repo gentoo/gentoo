@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+EAPI=7
+PYTHON_COMPAT=( python3_{5,6,7} )
 inherit distutils-r1 git-r3 readme.gentoo-r1
 
 DESCRIPTION="A Python interactive packet manipulation program for mastering the network"
-HOMEPAGE="http://www.secdev.org/projects/scapy/ https://github.com/secdev/scapy"
+HOMEPAGE="https://scapy.net/ https://github.com/secdev/scapy"
 EGIT_REPO_URI="https://github.com/secdev/${PN}"
 
 LICENSE="GPL-2"
@@ -27,7 +27,7 @@ Scapy has optional support for the following packages:
 	net-analyzer/tcpreplay
 	virtual/imagemagick-tools
 
-	See also ${EPREFIX}/usr/share/doc/${PF}/installation.rst
+	See also ""${EPREFIX}/usr/share/doc/${PF}/installation.rst""
 "
 
 src_prepare() {

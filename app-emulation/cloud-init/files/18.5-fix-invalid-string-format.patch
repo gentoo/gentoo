@@ -1,0 +1,46 @@
+From 5b065316113b97aadb43e63cc31bb8639f6a6376 Mon Sep 17 00:00:00 2001
+From: Scott Moser <smoser@ubuntu.com>
+Date: Fri, 14 Dec 2018 03:24:26 +0000
+Subject: [PATCH] Update to pylint 2.2.2.
+
+The tip-pylint tox target correctly reported the invalid use of
+string formatting.  The change here is to:
+
+a.) Fix the error that was caught.
+b.) move to pylint 2.2.2 for the default 'pylint' target.
+---
+ cloudinit/sources/DataSourceAzure.py | 4 ++--
+ tox.ini                              | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/cloudinit/sources/DataSourceAzure.py b/cloudinit/sources/DataSourceAzure.py
+index e076d5dc..46efca4a 100644
+--- a/cloudinit/sources/DataSourceAzure.py
++++ b/cloudinit/sources/DataSourceAzure.py
+@@ -980,8 +980,8 @@ def read_azure_ovf(contents):
+         raise NonAzureDataSource("No LinuxProvisioningConfigurationSet")
+     if len(lpcs_nodes) > 1:
+         raise BrokenAzureDataSource("found '%d' %ss" %
+-                                    ("LinuxProvisioningConfigurationSet",
+-                                     len(lpcs_nodes)))
++                                    (len(lpcs_nodes),
++                                     "LinuxProvisioningConfigurationSet"))
+     lpcs = lpcs_nodes[0]
+ 
+     if not lpcs.hasChildNodes():
+diff --git a/tox.ini b/tox.ini
+index 2fb3209d..d983348b 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -21,7 +21,7 @@ setenv =
+ basepython = python3
+ deps =
+     # requirements
+-    pylint==1.8.1
++    pylint==2.2.2
+     # test-requirements because unit tests are now present in cloudinit tree
+     -r{toxinidir}/test-requirements.txt
+ commands = {envpython} -m pylint {posargs:cloudinit tests tools}
+-- 
+2.20.0
+

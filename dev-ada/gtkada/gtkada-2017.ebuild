@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,7 @@ RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	x11-libs/gtk+:3
 	x11-libs/pango"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?]"
 
 REQUIRED_USE="^^ ( gnat_2016 gnat_2017 )"
 
@@ -48,7 +48,6 @@ src_configure() {
 	else
 		GCC_PV=6.3.0
 	fi
-	GCC=${CHOST}-gcc-${GCC_PV}
 	econf \
 		--prefix="${D}/usr" \
 		$(use_enable static-libs static) \
@@ -58,7 +57,7 @@ src_configure() {
 
 src_compile() {
 	GNATPREP=${CHOST}-gnatprep-${GCC_PV}
-	GCC=${GCC} emake -j1 GNATPREP=${GNATPREP} PROCESSORS=$(makeopts_jobs)
+	emake -j1 GNATPREP=${GNATPREP} PROCESSORS=$(makeopts_jobs)
 }
 
 src_install() {

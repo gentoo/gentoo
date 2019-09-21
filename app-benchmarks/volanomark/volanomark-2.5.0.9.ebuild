@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -13,7 +13,7 @@ RESTRICT="mirror"
 
 SLOT="0"
 
-KEYWORDS="x86 amd64"
+KEYWORDS="amd64 x86"
 IUSE=""
 DEPEND="virtual/jre
 	>=sys-apps/sed-4

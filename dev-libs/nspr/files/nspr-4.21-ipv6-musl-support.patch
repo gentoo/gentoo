@@ -1,0 +1,53 @@
+From 8c57451f44d7ceb37bfb4ae6e457fc70b1f58d0a Mon Sep 17 00:00:00 2001
+From: Moritz Kick <gentoo@blackphoenix.de>
+Date: Wed, 20 Mar 2019 13:36:06 -0500
+Subject: [PATCH] Added IPv6 compatibility for musl libc
+
+Signed-off-by: Moritz Kick <gentoo@blackphoenix.de>
+Signed-off-by: Jory Pratt <anarchy@gentoo.org>
+---
+ pr/include/md/_linux.h | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
+
+diff --git a/pr/include/md/_linux.h b/pr/include/md/_linux.h
+index 2370ab8..612184c 100644
+--- a/pr/include/md/_linux.h
++++ b/pr/include/md/_linux.h
+@@ -289,33 +289,22 @@ static inline PRInt32 _MD_ATOMIC_SET(PRInt32 *ptr, PRInt32 nv)
+ #endif /* __arm__ */
+ 
+ #define USE_SETJMP
+-#if (defined(__GLIBC__) && __GLIBC__ >= 2) || defined(ANDROID)
+ #define _PR_POLL_AVAILABLE
+-#endif
+ #undef _PR_USE_POLL
+ #define _PR_STAT_HAS_ONLY_ST_ATIME
+ #if defined(__alpha) || defined(__ia64__)
+ #define _PR_HAVE_LARGE_OFF_T
+-#elif (__GLIBC__ > 2) || (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 1) \
+-    || defined(ANDROID)
+-#define _PR_HAVE_OFF64_T
+ #else
+-#define _PR_NO_LARGE_FILES
++#define _PR_HAVE_OFF64_T
+ #endif
+-#if (__GLIBC__ > 2) || (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 1) \
+-    || defined(ANDROID)
+ #define _PR_INET6
+ #define _PR_HAVE_INET_NTOP
+ #define _PR_HAVE_GETHOSTBYNAME2
+ #define _PR_HAVE_GETADDRINFO
+ #define _PR_INET6_PROBE
+-#endif
+ #ifndef ANDROID
+ #define _PR_HAVE_SYSV_SEMAPHORES
+ #define PR_HAVE_SYSV_NAMED_SHARED_MEMORY
+-#endif
+-/* Android has gethostbyname_r but not gethostbyaddr_r or gethostbyname2_r. */
+-#if (__GLIBC__ >= 2) && defined(_PR_PTHREADS)
+ #define _PR_HAVE_GETHOST_R
+ #define _PR_HAVE_GETHOST_R_INT
+ #endif
+-- 
+2.21.0
+

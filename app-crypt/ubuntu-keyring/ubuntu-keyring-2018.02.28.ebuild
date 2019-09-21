@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="GnuPG archive keys of the Ubuntu archive"
-HOMEPAGE="http://packages.ubuntu.com/zesty/ubuntu-keyring"
+HOMEPAGE="https://packages.ubuntu.com/bionic/ubuntu-keyring"
 SRC_URI="mirror://ubuntu/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2+"

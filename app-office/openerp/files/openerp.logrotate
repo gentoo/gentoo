@@ -1,9 +1,0 @@
-# Copyright 1999-2012 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-/var/log/openerp/*.log {
- monthly
- create 660 openerp openerp
- missingok
- copytruncate
-}

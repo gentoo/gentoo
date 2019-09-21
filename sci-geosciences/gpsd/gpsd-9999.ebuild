@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,12 +30,14 @@ GPSD_PROTOCOLS=(
 	tripmate tsip ublox
 )
 IUSE_GPSD_PROTOCOLS=${GPSD_PROTOCOLS[@]/#/gpsd_protocols_}
-IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth dbus debug ipv6 latency_timing ncurses ntp python qt5 +shm +sockets static test udev usb X"
+IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug ipv6 latency_timing ncurses ntp python qt5 +shm +sockets static test udev usb X"
 REQUIRED_USE="X? ( python )
 	gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm )
-	python? ( ${PYTHON_REQUIRED_USE} )"
+	python? ( ${PYTHON_REQUIRED_USE} )
+	qt5? ( cxx )"
 
 RDEPEND="
+	>=net-misc/pps-tools-0.0.20120407
 	bluetooth? ( net-wireless/bluez )
 	dbus? (
 		sys-apps/dbus
@@ -44,6 +46,7 @@ RDEPEND="
 	ncurses? ( sys-libs/ncurses:= )
 	ntp? ( || (
 		net-misc/ntp
+		net-misc/ntpsec
 		net-misc/chrony
 	) )
 	qt5? (
@@ -90,6 +93,8 @@ python_prepare_all() {
 	# Extract python info out of SConstruct so we can use saner distribute
 	pyvar() { sed -n "/^ *$1 *=/s:.*= *::p" SConstruct ; }
 	local pybins=$(pyvar python_progs | tail -1)
+	# Handle conditional tools manually. #666734
+	use X && pybins+="+ ['xgps', 'xgpsspeed']"
 	local pysrcs=$(sed -n '/^ *python_extensions = {/,/}/{s:^ *::;s:os[.]sep:"/":g;p}' SConstruct)
 	local packet=$("${PYTHON}" -c "${pysrcs}; print(python_extensions['gps/packet'])")
 	local client=$("${PYTHON}" -c "${pysrcs}; print(python_extensions['gps/clienthelpers'])")
@@ -115,10 +120,10 @@ src_configure() {
 		gpsd_group=uucp
 		nostrip=True
 		python=False
-		libgpsmm=True
 		manbuild=False
 		shared=$(usex !static True False)
 		$(use_scons bluetooth bluez)
+		$(use_scons cxx libgpsmm)
 		$(use_scons debug clientdebug)
 		$(use_scons dbus dbus_export)
 		$(use_scons ipv6)
@@ -126,7 +131,7 @@ src_configure() {
 		$(use_scons ncurses)
 		$(use_scons ntp ntpshm)
 		$(use_scons ntp pps)
-		$(use_scons qt5 libQgpsmm)
+		$(use_scons qt5 qt)
 		$(use_scons shm shm_export)
 		$(use_scons sockets socket_export)
 		$(use_scons usb)

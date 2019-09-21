@@ -2,13 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hwoarang@gentoo.org</email>
-		<name>Markos Chandras</name>
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
 	</maintainer>
 	<use>
 		<flag name="gtk">Pull in the gtk+ greeter</flag>
+		<flag name="non_root">Use non-root user by default</flag>
 	</use>
 	<upstream>
-		<remote-id type="launchpad">lightdm</remote-id>
+		<remote-id type="github">CanonicalLtd/lightdm</remote-id>
 	</upstream>
 </pkgmetadata>

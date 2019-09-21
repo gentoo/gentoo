@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 inherit autotools-utils fortran-2
 
 DESCRIPTION="Scientific library and interface for array oriented data access"
-HOMEPAGE="http://www.unidata.ucar.edu/software/netcdf/"
+HOMEPAGE="https://www.unidata.ucar.edu/software/netcdf/"
 SRC_URI="https://github.com/Unidata/netcdf-fortran/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="UCAR-Unidata"

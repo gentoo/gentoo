@@ -1,0 +1,10 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# For now we add the x86-64 qemu-riscv64 static binary to all
+# stages. This makes life somewhat simpler when working without
+# real hardware.
+*app-emulation/qemu-riscv64-bin
+
+# For the initial hot experimentation phase...
+*sys-devel/gdb

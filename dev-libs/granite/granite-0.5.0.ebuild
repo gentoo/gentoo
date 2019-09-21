@@ -5,7 +5,7 @@ EAPI=6
 
 VALA_MIN_API_VERSION=0.32
 
-inherit gnome2-utils vala cmake-utils
+inherit gnome2-utils vala cmake-utils versionator
 
 DESCRIPTION="Elementary OS library that extends Gtk+"
 HOMEPAGE="https://github.com/elementary/granite"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/elementary/${PN}/archive/$(get_version_component_ran
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="demo nls test"
 
 RDEPEND="
@@ -41,7 +41,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DLIB_INSTALL_DIR=$(get_libdir)
 		-DVALA_EXECUTABLE=${VALAC}
 	)
 

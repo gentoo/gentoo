@@ -1,0 +1,181 @@
+From de705a0eeaa27a8ac1abdc2625e639340323595a Mon Sep 17 00:00:00 2001
+From: Tanu Kaskinen <tanuk@iki.fi>
+Date: Tue, 6 Mar 2018 15:09:06 +0200
+Subject: [PATCH 08/77] set exit_idle_time to 0 when we detect a session
+
+As the comments explain, this fixes relogin problems on some systems
+that remove our sockets on logout without terminating the daemon.
+---
+ man/pulse-daemon.conf.5.xml.in     | 15 ++++++++++++---
+ man/pulseaudio.1.xml.in            | 17 +++++++++++++++--
+ src/modules/module-console-kit.c   | 13 +++++++++++++
+ src/modules/module-systemd-login.c | 14 ++++++++++++++
+ src/modules/x11/module-x11-xsmp.c  | 13 +++++++++++++
+ src/pulsecore/core.c               | 10 ++++++++++
+ src/pulsecore/core.h               |  2 ++
+ 7 files changed, 79 insertions(+), 5 deletions(-)
+
+diff --git a/man/pulse-daemon.conf.5.xml.in b/man/pulse-daemon.conf.5.xml.in
+index f0550f3b..f49fa9b0 100644
+--- a/man/pulse-daemon.conf.5.xml.in
++++ b/man/pulse-daemon.conf.5.xml.in
+@@ -292,9 +292,18 @@ License along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
+     <option>
+       <p><opt>exit-idle-time=</opt> Terminate the daemon after the
+       last client quit and this time in seconds passed. Use a negative value to
+-      disable this feature. Defaults to 20. The
+-      <opt>--exit-idle-time</opt> command line option takes
+-      precedence.</p>
++      disable this feature. Defaults to 20. The <opt>--exit-idle-time</opt>
++      command line option takes precedence.</p>
++
++      <p>When PulseAudio runs in the per-user mode and detects a login
++      session, then any positive value will be reset to 0 so that PulseAudio
++      will terminate immediately on logout. A positive value therefore has
++      effect only in environments where there's no support for login session
++      tracking. A negative value can still be used to disable any automatic
++      exit.</p>
++
++      <p>When PulseAudio runs in the system mode, automatic exit is always
++      disabled, so this option does nothing.</p>
+     </option>
+ 
+     <option>
+diff --git a/man/pulseaudio.1.xml.in b/man/pulseaudio.1.xml.in
+index f732b8ae..824eddb4 100644
+--- a/man/pulseaudio.1.xml.in
++++ b/man/pulseaudio.1.xml.in
+@@ -189,8 +189,21 @@ License along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
+     <option>
+       <p><opt>--exit-idle-time</opt><arg>=SECS</arg></p>
+ 
+-      <optdesc><p>Terminate the daemon when idle and the specified
+-      number of seconds passed.</p></optdesc>
++      <optdesc>
++        <p>Terminate the daemon after the last client quit and this time in
++        seconds passed. Use a negative value to disable this feature. Defaults
++        to 20.</p>
++
++        <p>When PulseAudio runs in the per-user mode and detects a login
++        session, then any positive value will be reset to 0 so that PulseAudio
++        will terminate immediately on logout. A positive value therefore has
++        effect only in environments where there's no support for login session
++        tracking. A negative value can still be used to disable any automatic
++        exit.</p>
++
++        <p>When PulseAudio runs in the system mode, automatic exit is always
++        disabled, so this option does nothing.</p>
++      </optdesc>
+     </option>
+ 
+     <option>
+diff --git a/src/modules/module-console-kit.c b/src/modules/module-console-kit.c
+index c7938849..c8fe2ed2 100644
+--- a/src/modules/module-console-kit.c
++++ b/src/modules/module-console-kit.c
+@@ -118,6 +118,19 @@ static void add_session(struct userdata *u, const char *id) {
+ 
+     pa_log_debug("Added new session %s", id);
+ 
++    /* Positive exit_idle_time is only useful when we have no session tracking
++     * capability, so we can set it to 0 now that we have detected a session.
++     * The benefit of setting exit_idle_time to 0 is that pulseaudio will exit
++     * immediately when the session ends. That in turn is useful, because some
++     * systems (those that use pam_systemd but don't use systemd for managing
++     * pulseaudio) clean $XDG_RUNTIME_DIR on logout, but fail to terminate all
++     * services that depend on the files in $XDG_RUNTIME_DIR. The directory
++     * contains our sockets, and if the sockets are removed without terminating
++     * pulseaudio, a quick relogin will likely cause trouble, because a new
++     * instance will be spawned while the old instance is still running. */
++    if (u->core->exit_idle_time > 0)
++        pa_core_set_exit_idle_time(u->core, 0);
++
+ fail:
+ 
+     if (m)
+diff --git a/src/modules/module-systemd-login.c b/src/modules/module-systemd-login.c
+index 87981592..51401575 100644
+--- a/src/modules/module-systemd-login.c
++++ b/src/modules/module-systemd-login.c
+@@ -84,6 +84,20 @@ static int add_session(struct userdata *u, const char *id) {
+     pa_hashmap_put(u->sessions, session->id, session);
+ 
+     pa_log_debug("Added new session %s", id);
++
++    /* Positive exit_idle_time is only useful when we have no session tracking
++     * capability, so we can set it to 0 now that we have detected a session.
++     * The benefit of setting exit_idle_time to 0 is that pulseaudio will exit
++     * immediately when the session ends. That in turn is useful, because some
++     * systems (those that use pam_systemd but don't use systemd for managing
++     * pulseaudio) clean $XDG_RUNTIME_DIR on logout, but fail to terminate all
++     * services that depend on the files in $XDG_RUNTIME_DIR. The directory
++     * contains our sockets, and if the sockets are removed without terminating
++     * pulseaudio, a quick relogin will likely cause trouble, because a new
++     * instance will be spawned while the old instance is still running. */
++    if (u->core->exit_idle_time > 0)
++        pa_core_set_exit_idle_time(u->core, 0);
++
+     return 0;
+ }
+ 
+diff --git a/src/modules/x11/module-x11-xsmp.c b/src/modules/x11/module-x11-xsmp.c
+index 0238e516..6f801237 100644
+--- a/src/modules/x11/module-x11-xsmp.c
++++ b/src/modules/x11/module-x11-xsmp.c
+@@ -206,6 +206,19 @@ int pa__init(pa_module*m) {
+     if (!u->client)
+         goto fail;
+ 
++    /* Positive exit_idle_time is only useful when we have no session tracking
++     * capability, so we can set it to 0 now that we have detected a session.
++     * The benefit of setting exit_idle_time to 0 is that pulseaudio will exit
++     * immediately when the session ends. That in turn is useful, because some
++     * systems (those that use pam_systemd but don't use systemd for managing
++     * pulseaudio) clean $XDG_RUNTIME_DIR on logout, but fail to terminate all
++     * services that depend on the files in $XDG_RUNTIME_DIR. The directory
++     * contains our sockets, and if the sockets are removed without terminating
++     * pulseaudio, a quick relogin will likely cause trouble, because a new
++     * instance will be spawned while the old instance is still running. */
++    if (u->core->exit_idle_time > 0)
++        pa_core_set_exit_idle_time(u->core, 0);
++
+     pa_modargs_free(ma);
+ 
+     return 0;
+diff --git a/src/pulsecore/core.c b/src/pulsecore/core.c
+index 79abbc04..da42a13e 100644
+--- a/src/pulsecore/core.c
++++ b/src/pulsecore/core.c
+@@ -426,6 +426,16 @@ void pa_core_update_default_source(pa_core *core) {
+     pa_hook_fire(&core->hooks[PA_CORE_HOOK_DEFAULT_SOURCE_CHANGED], core->default_source);
+ }
+ 
++void pa_core_set_exit_idle_time(pa_core *core, int time) {
++    pa_assert(core);
++
++    if (time == core->exit_idle_time)
++        return;
++
++    pa_log_info("exit_idle_time: %i -> %i", core->exit_idle_time, time);
++    core->exit_idle_time = time;
++}
++
+ static void exit_callback(pa_mainloop_api *m, pa_time_event *e, const struct timeval *t, void *userdata) {
+     pa_core *c = userdata;
+     pa_assert(c->exit_event == e);
+diff --git a/src/pulsecore/core.h b/src/pulsecore/core.h
+index 213964ce..38622f61 100644
+--- a/src/pulsecore/core.h
++++ b/src/pulsecore/core.h
+@@ -258,6 +258,8 @@ void pa_core_set_configured_default_source(pa_core *core, const char *source);
+ void pa_core_update_default_sink(pa_core *core);
+ void pa_core_update_default_source(pa_core *core);
+ 
++void pa_core_set_exit_idle_time(pa_core *core, int time);
++
+ /* Check whether no one is connected to this core */
+ void pa_core_check_idle(pa_core *c);
+ 
+-- 
+2.17.1
+

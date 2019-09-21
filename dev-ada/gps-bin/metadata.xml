@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tupone@gentoo.org</email>
-		<name>Tupone Alfredo</name>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
 	</maintainer>
 	<longdescription lang="en">
 		GPS, the GNAT Programming Studio, is a cutting-edge Free Software IDE

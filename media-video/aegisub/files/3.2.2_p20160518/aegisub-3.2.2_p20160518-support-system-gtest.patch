@@ -24,13 +24,13 @@ index 8c30c1d..c5bf049 100644
  GTEST_ROOT ?= $(TOP)vendor/googletest
  GTEST_FILE := ${GTEST_ROOT}/src/gtest-all
 +GTEST_CPPFLAGS := -I$(GTEST_ROOT) -I$(GTEST_ROOT)/include
-+GTEST_CXXFLAGS := $(CFLAGS_PTHREAD)
 +GTEST_LIBS := $(LIBS_PTHREAD)
 +else
-+GTEST_CPPFLAGS := $(shell gtest-config --cppflags)
-+GTEST_CXXFLAGS := $(shell gtest-config --cxxflags)
-+GTEST_LIBS := $(shell gtest-config --libs)
++GTEST_CPPFLAGS := $(shell pkg-config --cflags-only-I gtest)
++GTEST_LIBS := $(shell pkg-config --libs gtest)
 +endif
++
++GTEST_CXXFLAGS := $(CFLAGS_PTHREAD)
 
  run_PCH := $(d)support/tests_pre.h
  run_CPPFLAGS := -I$(TOP)libaegisub/include -I$(TOP) -I$(d)support \

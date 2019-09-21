@@ -29,13 +29,17 @@ CFLAGS_ppc="-m32"
 LDFLAGS_ppc="-m elf32ppc"
 CHOST_ppc="powerpc-unknown-linux-gnu"
 
-# Michał Górny <mgorny@gentoo.org> (27 Jun 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-06-27)
 # Make the ABI flag implicit for compatibility with native ebuilds.
 IUSE_IMPLICIT="abi_ppc_64"
 
-# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
 VIDEO_CARDS="fbdev mga nv r128 radeon"
 
 # Enable abi_ppc_64 for packages that don't have it forced.
 ABI_PPC="64"
+
+# Hans de Graaff <graaff@gentoo.org) (2019-07-17)
+# Temporary RUBY_TARGETS for bug 688976
+RUBY_TARGETS="ruby24 -ruby25"

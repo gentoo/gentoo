@@ -1,0 +1,25 @@
+From f217b5c36b39a294b920437ff66055ee1a3fa5b7 Mon Sep 17 00:00:00 2001
+From: albert-github <albert.tests@gmail.com>
+Date: Tue, 19 Mar 2019 10:42:24 +0100
+Subject: [PATCH] issue #6892 xml not well-formed (invalid token) for c++
+
+the `declname` and `defname` should  also be converted (compare as well the routine `generateXMLForMember`)
+---
+ src/xmlgen.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/xmlgen.cpp b/src/xmlgen.cpp
+index 420a653fc..568e48886 100644
+--- a/src/xmlgen.cpp
++++ b/src/xmlgen.cpp
+@@ -360,8 +360,8 @@ static void writeTemplateArgumentList(ArgumentList *al,
+       }
+       if (!a->name.isEmpty())
+       {
+-        t << indentStr <<  "    <declname>" << a->name << "</declname>" << endl;
+-        t << indentStr <<  "    <defname>" << a->name << "</defname>" << endl;
++        t << indentStr <<  "    <declname>" << convertToXML(a->name) << "</declname>" << endl;
++        t << indentStr <<  "    <defname>" << convertToXML(a->name) << "</defname>" << endl;
+       }
+       if (!a->defval.isEmpty())
+       {

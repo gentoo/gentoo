@@ -1,0 +1,55 @@
+--- a/ada/testsuite/tests/name_resolution/for_of_derived/test.yaml	2019-06-10 18:10:52.274104372 +0200
++++ b/ada/testsuite/tests/name_resolution/for_of_derived/test.yaml	2019-06-10 18:12:09.050950758 +0200
+@@ -1,2 +1,3 @@
+ driver: name-resolution
+ input_sources: [for_of_derived.adb]
++expect_failure: Gentoo unfixed
+--- a/ada/testsuite/tests/name_resolution/test_subp_address/test.yaml	2019-06-10 18:13:18.821902438 +0200
++++ b/ada/testsuite/tests/name_resolution/test_subp_address/test.yaml	2019-06-10 18:13:40.055583691 +0200
+@@ -1,3 +1,4 @@
+ driver: name-resolution
+ input_sources: [test_subp_address.adb]
+ with_default_project: False
++expect_failure: Gentoo unfixed
+--- a/ada/testsuite/tests/name_resolution/delay_until/test.yaml	2019-06-10 18:17:48.878848194 +0200
++++ b/ada/testsuite/tests/name_resolution/delay_until/test.yaml	2019-06-10 18:18:00.052680426 +0200
+@@ -1,2 +1,3 @@
+ driver: name-resolution
+ input_sources: [delay_until.adb]
++expect_failure: Gentoo unfixed
+--- a/ada/testsuite/tests/name_resolution/exception_occurence/test.yaml	2019-06-10 18:14:22.803941966 +0200
++++ b/ada/testsuite/tests/name_resolution/exception_occurence/test.yaml	2019-06-10 18:15:40.665773085 +0200
+@@ -1,2 +1,3 @@
+ driver: name-resolution
+ input_sources: [test_exc.adb]
++expect_failure: Gentoo unfixed
+--- a/ada/testsuite/tests/name_resolution/int_text_io/test.yaml	2019-06-10 18:18:29.797233863 +0200
++++ b/ada/testsuite/tests/name_resolution/int_text_io/test.yaml	2019-06-10 18:18:40.230077225 +0200
+@@ -1,2 +1,3 @@
+ driver: name-resolution
+ input_sources: [foo.adb]
++expect_failure: Gentoo unfixed
+--- a/ada/testsuite/tests/name_resolution/stream_attrs/test.yaml	2019-06-10 18:18:59.441788761 +0200
++++ b/ada/testsuite/tests/name_resolution/stream_attrs/test.yaml	2019-06-10 18:19:09.873632142 +0200
+@@ -1,2 +1,3 @@
+ driver: name-resolution
+ input_sources: [streamable_types.ads]
++expect_failure: Gentoo unfixed
+--- a/ada/testsuite/tests/name_resolution/pow_op_2/test.yaml	2019-06-10 18:20:04.207816327 +0200
++++ b/ada/testsuite/tests/name_resolution/pow_op_2/test.yaml	2019-06-10 18:20:15.739643192 +0200
+@@ -1,2 +1,3 @@
+ driver: name-resolution
+ input_sources: [test.adb]
++expect_failure: Gentoo unfixed
+--- a/ada/testsuite/tests/name_resolution/text_io_child_units/test.yaml	2019-06-10 18:19:33.552276617 +0200
++++ b/ada/testsuite/tests/name_resolution/text_io_child_units/test.yaml	2019-06-10 18:19:42.437143224 +0200
+@@ -1,2 +1,3 @@
+ driver: name-resolution
+ input_sources: [foo.adb]
++expect_failure: Gentoo unfixed
+--- a/ada/testsuite/tests/name_resolution/for_of_vector/test.yaml	2019-06-10 18:20:36.925325094 +0200
++++ b/ada/testsuite/tests/name_resolution/for_of_vector/test.yaml	2019-06-10 18:20:45.641194223 +0200
+@@ -1,2 +1,3 @@
+ driver: name-resolution
+ input_sources: [testvec.adb]
++expect_failure: Gentoo unfixed

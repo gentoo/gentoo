@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -74,7 +74,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? (
 		dev-texlive/texlive-fontsrecommended
-		|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended )
+		dev-texlive/texlive-plaingeneric
 		dev-texlive/texlive-metapost
 		virtual/latex-base
 	)
@@ -92,6 +92,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-ncurses-pkgconfig.patch
 	"${FILESDIR}"/${PN}-4.2.0-zlib-underlinking.patch
 	"${FILESDIR}"/${P}-fix-qscintilla-detection.patch
+	"${FILESDIR}"/${PN}-4.4.0-qt-5.11.patch
 )
 
 src_prepare() {
@@ -154,6 +155,7 @@ src_configure() {
 }
 
 src_compile() {
+	export VARTEXFONTS="${T}/fonts" # otherwise it will write to /var/cache/fonts/ and trip sandbox
 	default
 	if use java; then
 		pax-mark m "${S}/src/.libs/octave-cli"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -8,7 +8,7 @@ inherit latex-package
 S="${WORKDIR}/${PN}"
 LICENSE="LPPL-1.2"
 DESCRIPTION="A LaTeX module to format envelopes"
-HOMEPAGE="http://planck.psu.edu/~boris/"
+HOMEPAGE="https://ctan.org/pkg/envlab"
 # downloaded from
 # ftp://ftp.ctan.org/pub/tex-archive/macros/latex/contrib/${PN}.tar.gz
 SRC_URI="mirror://gentoo/${P}.tar.gz"

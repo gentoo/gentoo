@@ -12,4 +12,7 @@
 		Monad Transformers" available here:
 		&lt;http://okmij.org/ftp/papers/LogicT.pdf&gt;
 	</longdescription>
+	<upstream>
+		<remote-id type="github">Bodigrim/logict</remote-id>
+	</upstream>
 </pkgmetadata>

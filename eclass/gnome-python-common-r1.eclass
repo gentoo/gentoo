@@ -8,6 +8,7 @@
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on the work of: Arun raghaven <ford_prefect@gentoo.org>
 # which in turn was based on the work of Jim Ramsay <lack@gentoo.org>
+# @SUPPORTED_EAPIS: 5
 # @BLURB: Common functionality for building gnome-python* bindings
 # @DESCRIPTION:
 # This eclass provides python-r1 support for the GNOME2 library Python
@@ -55,12 +56,12 @@ if [[ ${GNOME_ORG_MODULE} != "gnome-python" ]]; then
 	DOCS="${DOCS} MAINTAINERS"
 fi
 
-RDEPEND="~dev-python/${GNOME_ORG_MODULE}-base-${PV}
+RDEPEND="~dev-python/${GNOME_ORG_MODULE}-base-${PV}[${PYTHON_USEDEP}]
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 gnome-python-common-r1_src_prepare() {
 	gnome2_src_prepare

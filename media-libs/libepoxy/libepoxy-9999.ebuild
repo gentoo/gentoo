@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 PYTHON_REQ_USE='xml(+)'
 inherit ${GIT_ECLASS} meson multilib-minimal python-any-r1
 
@@ -24,13 +24,14 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test +X"
+IUSE="+egl test +X"
 
+RDEPEND="egl? ( media-libs/mesa[egl,${MULTILIB_USEDEP}] )"
 DEPEND="${PYTHON_DEPS}
-	media-libs/mesa[egl,${MULTILIB_USEDEP}]
+	${RDEPEND}
+	>=dev-util/meson-0.47.0
 	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
-	>=dev-util/meson-0.44.0"
-RDEPEND=""
+	virtual/pkgconfig"
 
 src_unpack() {
 	default
@@ -39,9 +40,10 @@ src_unpack() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Degl=yes
+		-Degl=$(usex egl)
 		-Dglx=$(usex X)
 		-Dx11=$(usex X true false)
+		-Dtests=$(usex test true false)
 	)
 	meson_src_configure
 }

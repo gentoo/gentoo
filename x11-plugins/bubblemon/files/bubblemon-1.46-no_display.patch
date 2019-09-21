@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/310399
 
---- bubblemon.c
-+++ bubblemon.c
+--- a/bubblemon.c
++++ b/bubblemon.c
 @@ -44,7 +44,7 @@
   */
  #define _GNU_SOURCE

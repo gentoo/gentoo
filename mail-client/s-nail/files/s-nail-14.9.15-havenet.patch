@@ -1,0 +1,205 @@
+diff --git a/THANKS b/THANKS
+index 9613133d..1d4dfd0d 100644
+--- a/THANKS
++++ b/THANKS
+@@ -43,6 +43,7 @@ Erich Eckner              erich dot eckner at gmx dot de
+ Paul Eggert               eggert at cs dot ucla dot edu
+ Justin Ellingwood         JustinEllingwood at gmail dot com
+ Robert Elz                kre at munnari dot OZ dot AU
++Brian Evans               grknight at gentoo dot org
+ Rich Felker               dalias at libc dot org
+ Dr. Werner Fink           werner at suse dot de
+ Felix Fontein             felix at fontein dot de
+diff --git a/mx-test.sh b/mx-test.sh
+index 4a60a1b0..201b00e7 100755
+--- a/mx-test.sh
++++ b/mx-test.sh
+@@ -5442,12 +5442,17 @@ t_mta_aliases() {
+    ## xxx The following are actually *expandaddr* tests!!
+ 
+    # May not send plain names over SMTP!
+-   echo | ${MAILX} ${ARGS} -Smta=smtp://laber.backe \
+-      -Smta-aliases=./.tali \
+-      -b a3 -c a2 a1 > ./.tall 2>&1
+-   check_exn0 3
+-   check 4 - "${MBOX}" '1172368381 238'
+-   if have_feat uistrings; then
++   mtaali=
++   if have_feat smtp; then
++      echo | ${MAILX} ${ARGS} \
++         -Smta=smtp://laber.backe -Ssmtp-auth=none \
++         -Smta-aliases=./.tali \
++         -b a3 -c a2 a1 > ./.tall 2>&1
++      check_exn0 3
++      check 4 - "${MBOX}" '1172368381 238'
++      mtaali=1
++   fi
++   if [ -n "${mtaali}" ] && have_feat uistrings; then
+       check 5 - .tall '771616226 179'
+    else
+       t_echoskip '5:[test unsupported]'
+diff --git a/src/mx/cmd-resend.c b/src/mx/cmd-resend.c
+index 488c9b78..31f20609 100644
+--- a/src/mx/cmd-resend.c
++++ b/src/mx/cmd-resend.c
+@@ -723,7 +723,11 @@ jleave:
+ 
+ static int
+ a_crese_resend1(void *vp, boole add_resent){
+-   struct mx_url url;
++#ifdef mx_HAVE_NET
++   struct mx_url url, *urlp = &url;
++#else
++   struct mx_url *urlp = NIL;
++#endif
+    struct header head;
+    struct mx_name *myto, *myrawto;
+    boole mta_isexe;
+@@ -747,7 +751,7 @@ jedar:
+       goto jleave;
+    }
+ 
+-   if(!(mta_isexe = mx_sendout_mta_url(&url)))
++   if(!(mta_isexe = mx_sendout_mta_url(urlp)))
+       goto jleave;
+    mta_isexe = (mta_isexe != TRU1);
+ 
+@@ -794,7 +798,7 @@ jedar:
+       head.h_mailx_orig_cc = lextract(hfield1("cc", mp), GCC | gf);
+       head.h_mailx_orig_bcc = lextract(hfield1("bcc", mp), GBCC | gf);
+ 
+-      if(n_resend_msg(mp, (mta_isexe ? NIL : &url), &head, add_resent
++      if(n_resend_msg(mp, (mta_isexe ? NIL : urlp), &head, add_resent
+             ) != OKAY){
+          /* n_autorec_relax_gut(); XXX but is handled automatically? */
+          goto jleave;
+diff --git a/src/mx/sendout.c b/src/mx/sendout.c
+index 2b0e8bf0..c4f373c1 100644
+--- a/src/mx/sendout.c
++++ b/src/mx/sendout.c
+@@ -2060,9 +2060,13 @@ FL enum okay
+ n_mail1(enum n_mailsend_flags msf, struct header *hp, struct message *quote,
+    char const *quotefile)
+ {
+-   struct n_sigman sm;
++#ifdef mx_HAVE_NET
+    struct mx_cred_ctx cc;
+-   struct mx_url url;
++   struct mx_url url, *urlp = &url;
++#else
++   struct mx_url *urlp = NIL;
++#endif
++   struct n_sigman sm;
+    struct sendbundle sb;
+    struct mx_name *to;
+    boole dosign, mta_isexe;
+@@ -2121,7 +2125,7 @@ n_mail1(enum n_mailsend_flags msf, struct header *hp, struct message *quote,
+ #ifndef mx_HAVE_SMIME
+    if (dosign) {
+       n_err(_("No S/MIME support compiled in\n"));
+-      goto jleave;
++      goto jfail_dead;
+    }
+ #endif
+ 
+@@ -2139,8 +2143,8 @@ n_mail1(enum n_mailsend_flags msf, struct header *hp, struct message *quote,
+     * TODO header fields ONCE, call that ONCE after user editing etc. has
+     * TODO completed (one edit cycle) */
+ 
+-   if(!(mta_isexe = mx_sendout_mta_url(&url)))
+-      goto jleave;
++   if(!(mta_isexe = mx_sendout_mta_url(urlp)))
++      goto jfail_dead;
+    mta_isexe = (mta_isexe != TRU1);
+ 
+    /* Take the user names from the combined to and cc lists and do all the
+@@ -2174,8 +2178,10 @@ n_mail1(enum n_mailsend_flags msf, struct header *hp, struct message *quote,
+    sb.sb_hp = hp;
+    sb.sb_to = to;
+    sb.sb_input = mtf;
+-   sb.sb_urlp = mta_isexe ? NIL : &url;
++   sb.sb_urlp = mta_isexe ? NIL : urlp;
++#ifdef mx_HAVE_NET
+    sb.sb_credp = &cc;
++#endif
+ 
+    if((dosign || count_nonlocal(to) > 0) &&
+          !_sendbundle_setup_creds(&sb, (dosign > 0))){
+@@ -2728,8 +2734,10 @@ FL enum okay
+ n_resend_msg(struct message *mp, struct mx_url *urlp, struct header *hp,
+    boole add_resent)
+ {
+-   struct n_sigman sm;
++#ifdef mx_HAVE_NET
+    struct mx_cred_ctx cc;
++#endif
++   struct n_sigman sm;
+    struct sendbundle sb;
+    FILE * volatile ibuf, *nfo, * volatile nfi;
+    struct mx_fs_tmp_ctx *fstcp;
+@@ -2794,7 +2802,9 @@ n_resend_msg(struct message *mp, struct mx_url *urlp, struct header *hp,
+    sb.sb_to = to;
+    sb.sb_input = nfi;
+    sb.sb_urlp = urlp;
++#ifdef mx_HAVE_NET
+    sb.sb_credp = &cc;
++#endif
+ 
+    if(!_sendout_error &&
+          count_nonlocal(to) > 0 && !_sendbundle_setup_creds(&sb, FAL0)){
+diff --git a/src/mx/url.c b/src/mx/url.c
+index 574e7c56..4bd55fb5 100644
+--- a/src/mx/url.c
++++ b/src/mx/url.c
+@@ -321,29 +321,33 @@ mx_url_parse(struct mx_url *urlp, enum cproto cproto, char const *data){
+ 
+    rv = FAL0;
+ 
++#ifdef mx_HAVE_TLS
++# define a_OUCH 0
++#else
++# define a_OUCH 1
++#endif
++
+    /* Network protocol */
+ #define a_PROTOX(X,Y,Z) \
+    urlp->url_portno = Y;\
+    su_mem_copy(urlp->url_proto, X "://\0", sizeof(X "://\0"));\
+    urlp->url_proto[sizeof(X) -1] = '\0';\
+    urlp->url_proto_len = sizeof(X) -1;\
+-   do{ Z; }while(0)
++   if(a_OUCH){ Z; }
+ #define a_PRIVPROTOX(X,Y,Z) \
+    do{ a_PROTOX(X, Y, Z); }while(0)
+-#define a__IF(X,Y,Z)  \
++
++#define a__IF(T,X,Y,Z)  \
+    if(!su_cs_cmp_case_n(data, X "://", sizeof(X "://") -1)){\
++      if(a_OUCH && T)\
++         goto jeproto;\
+       a_PROTOX(X, Y, Z);\
+       data += sizeof(X "://") -1;\
+       goto juser;\
+    }
+-#define a_IF(X,Y) a__IF(X, Y, (void)0)
+-#ifdef mx_HAVE_TLS
+-# define a_IFS(X,Y) a__IF(X, Y, urlp->url_flags |= mx_URL_TLS_REQUIRED)
+-# define a_IFs(X,Y) a__IF(X, Y, urlp->url_flags |= mx_URL_TLS_OPTIONAL)
+-#else
+-# define a_IFS(X,Y) goto jeproto;
+-# define a_IFs(X,Y) a_IF(X, Y)
+-#endif
++#define a_IF(X,Y) a__IF(0, X, Y, (void)0)
++#define a_IFS(X,Y) a__IF(1, X, Y, urlp->url_flags |= mx_URL_TLS_REQUIRED)
++#define a_IFs(X,Y) a__IF(0, X, Y, urlp->url_flags |= mx_URL_TLS_OPTIONAL)
+ 
+    switch(cproto){
+    case CPROTO_CERTINFO:
+@@ -413,6 +417,7 @@ mx_url_parse(struct mx_url *urlp, enum cproto cproto, char const *data){
+ #endif
+    }
+ 
++#undef a_OUCH
+ #undef a_PRIVPROTOX
+ #undef a_PROTOX
+ #undef a__IF

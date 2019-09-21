@@ -1,0 +1,16 @@
+--- a/server/drivers/Makefile.am	2017-01-22 23:18:54.000000000 +0100
++++ b/server/drivers/Makefile.am	2018-10-04 22:48:50.302344274 +0200
+@@ -47,11 +47,11 @@
+ futaba_LDADD =       @LIBUSB_LIBS@ @LIBUSB_1_0_LIBS@ libLCD.a
+ g15_LDADD =          @LIBG15@
+ glcd_LDADD =         libLCD.a @GLCD_DRIVERS@ @FT2_LIBS@ @LIBPNG_LIBS@ @LIBSERDISP@ @LIBUSB_LIBS@ @LIBX11_LIBS@
+-glcd_DEPENDENCIES =  @GLCD_DRIVERS@ glcd-glcd-render.o
++glcd_DEPENDENCIES =  @GLCD_DRIVERS@ glcd-glcd-render.o libLCD.a
+ glcdlib_LDADD =      @LIBGLCD@
+ glk_LDADD =          libbignum.a
+ hd44780_LDADD =      libLCD.a @HD44780_DRIVERS@ @HD44780_I2C@ @LIBUSB_LIBS@ @LIBFTDI_LIBS@ @LIBUGPIO@ libbignum.a
+-hd44780_DEPENDENCIES = @HD44780_DRIVERS@ @HD44780_I2C@
++hd44780_DEPENDENCIES = @HD44780_DRIVERS@ @HD44780_I2C@ libLCD.a libbignum.a
+ i2500vfd_LDADD =     @LIBFTDI_LIBS@
+ imon_LDADD =         libLCD.a libbignum.a
+ imonlcd_LDADD =      libLCD.a

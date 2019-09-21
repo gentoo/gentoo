@@ -1,0 +1,11 @@
+Disable 'nvcc' tests to avoid test failure
+on system with gcc-7+ enabled by default.
+--- a/test/run
++++ b/test/run
+@@ -425,2 +425,6 @@ else
+ fi
++# Disable nvcc tests in Gentoo as nvcc requires gcc<7.
++# Not a default normally.
++REAL_NVCC=
++REAL_CUOBJDUMP=
+ echo

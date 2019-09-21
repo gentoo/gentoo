@@ -1,8 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+VALA_MIN_API_VERSION="0.34"
+VALA_MAX_API_VERSION="0.42"
 VALA_USE_DEPEND="vapigen"
 
 inherit autotools bash-completion-r1 gnome2-utils python-r1 vala virtualx xdg-utils
@@ -13,7 +15,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="+X +emoji gconf +gtk +gtk2 +introspection kde +libnotify nls +python test +unicode vala wayland"
 REQUIRED_USE="emoji? ( gtk )
 	gtk2? ( gtk )
@@ -21,7 +23,6 @@ REQUIRED_USE="emoji? ( gtk )
 	libnotify? ( gtk )
 	python? (
 		${PYTHON_REQUIRED_USE}
-		gtk
 		introspection
 	)
 	test? ( gtk )
@@ -71,6 +72,8 @@ DEPEND="${CDEPEND}
 	)
 	nls? ( sys-devel/gettext )
 	unicode? ( app-i18n/unicode-data )"
+
+PATCHES=( "${FILESDIR}"/${P}-enable-gsettings-in-runtest.patch )
 
 src_prepare() {
 	vala_src_prepare --ignore-use
@@ -166,8 +169,6 @@ src_install() {
 
 pkg_preinst() {
 	use gconf && gnome2_gconf_savelist
-	gnome2_icon_savelist
-	gnome2_schemas_savelist
 }
 
 pkg_postinst() {

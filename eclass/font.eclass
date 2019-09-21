@@ -1,10 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: font.eclass
 # @MAINTAINER:
 # fonts@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: Eclass to make font installation uniform
+
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6) ;;
+	*)             die "EAPI ${EAPI} is not supported by font.eclass." ;;
+esac
 
 inherit eutils
 
@@ -47,13 +53,14 @@ FONT_CONF=( "" )
 # COPYRIGHT README{,.txt} NEWS AUTHORS BUGS ChangeLog FONTLOG.txt
 DOCS=${DOCS:-}
 
-IUSE="X"
-
-DEPEND="X? (
-		x11-apps/mkfontdir
-		media-fonts/encodings
+if [[ ${CATEGORY}/${PN} != media-fonts/encodings ]]; then
+	IUSE="X"
+	DEPEND="X? (
+			>=x11-apps/mkfontscale-1.2.0
+			media-fonts/encodings
 	)"
-RDEPEND=""
+	RDEPEND=""
+fi
 
 # @FUNCTION: font_xfont_config
 # @DESCRIPTION:

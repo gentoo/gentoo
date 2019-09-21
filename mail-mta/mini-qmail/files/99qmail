@@ -1,3 +1,0 @@
-PATH="/var/qmail/bin"
-ROOTPATH="/var/qmail/bin"
-CONFIG_PROTECT="/var/qmail/control"

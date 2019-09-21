@@ -1,0 +1,17 @@
+[Unit]
+Description=Syncthing discovery server
+After=network.target
+
+[Service]
+User=stdiscosrv
+Group=stdiscosrv
+ExecStart=/usr/libexec/syncthing/stdiscosrv
+WorkingDirectory=/var/lib/stdiscosrv
+
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

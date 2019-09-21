@@ -1,0 +1,45 @@
+--- a/doc/Doxyfile.in	2009-07-13 16:30:48.000000000 -0400
++++ b/doc/Doxyfile.in	2019-02-08 13:22:51.088064431 -0500
+@@ -46,6 +46,8 @@
+ DISTRIBUTE_GROUP_DOC   = NO
+ SUBGROUPING            = YES
+ TYPEDEF_HIDES_STRUCT   = NO
++EXTENSION_MAPPING      = no_extension=C++
++
+ #---------------------------------------------------------------------------
+ # Build related configuration options
+ #---------------------------------------------------------------------------
+@@ -75,7 +77,6 @@
+ ENABLED_SECTIONS       =
+ MAX_INITIALIZER_LINES  = 30
+ SHOW_USED_FILES        = YES
+-SHOW_DIRECTORIES       = NO
+ SHOW_FILES             = YES
+ SHOW_NAMESPACES        = YES
+ FILE_VERSION_FILTER    =
+@@ -182,7 +183,6 @@
+ HTML_HEADER            =
+ HTML_FOOTER            =
+ HTML_STYLESHEET        =
+-HTML_ALIGN_MEMBERS     = YES
+ GENERATE_HTMLHELP      = NO
+ GENERATE_DOCSET        = NO
+ DOCSET_FEEDNAME        = "Doxygen generated docs"
+@@ -235,8 +235,6 @@
+ #---------------------------------------------------------------------------
+ GENERATE_XML           = YES
+ XML_OUTPUT             = xml
+-XML_SCHEMA             =
+-XML_DTD                =
+ XML_PROGRAMLISTING     = YES
+ #---------------------------------------------------------------------------
+ # configuration options for the AutoGen Definitions output
+@@ -276,7 +274,7 @@
+ MSCGEN_PATH            =
+ HIDE_UNDOC_RELATIONS   = YES
+ HAVE_DOT               = NO
+-DOT_FONTNAME           = FreeSans
++DOT_FONTNAME           = Helvetica
+ DOT_FONTPATH           =
+ CLASS_GRAPH            = YES
+ COLLABORATION_GRAPH    = YES

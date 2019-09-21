@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,12 +12,12 @@ SRC_URI="ftp://sourceware.org/pub/lvm2/${PN/lvm/LVM}.${PV}.tgz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
-IUSE="readline static static-libs systemd clvm cman lvm1 lvm2create_initrd selinux +udev +thin device-mapper-only"
-REQUIRED_USE="device-mapper-only? ( !clvm !cman !lvm1 !lvm2create_initrd !thin )
+IUSE="readline static static-libs systemd lvm1 lvm2create_initrd selinux +udev +thin device-mapper-only"
+REQUIRED_USE="device-mapper-only? ( !lvm1 !lvm2create_initrd !thin )
 	systemd? ( udev )
-	static? ( !udev )" #520450
+	static? ( !udev !systemd )" #520450
 
-DEPEND_COMMON="clvm? ( cman? ( =sys-cluster/cman-3* ) =sys-cluster/libdlm-3* )
+DEPEND_COMMON="
 	readline? ( sys-libs/readline:0= )
 	udev? ( >=virtual/libudev-208:=[static-libs?] )"
 # /run is now required for locking during early boot. /var cannot be assumed to
@@ -27,7 +27,6 @@ RDEPEND="${DEPEND_COMMON}
 	>=sys-apps/baselayout-2.2
 	!<sys-apps/openrc-0.11
 	!<sys-fs/cryptsetup-1.1.2
-	!!sys-fs/clvm
 	!!sys-fs/lvm-user
 	>=sys-apps/util-linux-2.16
 	lvm2create_initrd? ( sys-apps/makedev )
@@ -152,27 +151,7 @@ src_configure() {
 	# disable O_DIRECT support on hppa, breaks pv detection (#99532)
 	use hppa && myconf="${myconf} --disable-o_direct"
 
-	if use clvm; then
-		myconf="${myconf} --with-cluster=${buildmode}"
-		# 4-state! Make sure we get it right, per bug 210879
-		# Valid options are: none, cman, gulm, all
-		#
-		# 2009/02:
-		# gulm is removed now, now dual-state:
-		# cman, none
-		# all still exists, but is not needed
-		#
-		# 2009/07:
-		# TODO: add corosync and re-enable ALL
-		local clvmd=""
-		use cman && clvmd="cman"
-		#clvmd="${clvmd/cmangulm/all}"
-		[ -z "${clvmd}" ] && clvmd="none"
-		myconf="${myconf} --with-clvmd=${clvmd}"
-		myconf="${myconf} --with-pool=${buildmode}"
-	else
-		myconf="${myconf} --with-clvmd=none --with-cluster=none"
-	fi
+	myconf="${myconf} --with-clvmd=none --with-cluster=none"
 
 	econf \
 		$(use_enable readline) \
@@ -230,17 +209,10 @@ src_install() {
 		newinitd "${FILESDIR}"/lvmetad.initd-2.02.105-r2 lvmetad
 	fi
 
-	if use clvm; then
-		newinitd "${FILESDIR}"/clvmd.rc-2.02.39 clvmd
-		newconfd "${FILESDIR}"/clvmd.confd-2.02.39 clvmd
-	fi
-
 	if use static-libs; then
 		dolib.a libdm/ioctl/libdevmapper.a
 		dolib.a libdaemon/client/libdaemonclient.a #462908
-		#gen_usr_ldscript libdevmapper.so
 		dolib.a daemons/dmeventd/libdevmapper-event.a
-		#gen_usr_ldscript libdevmapper-event.so
 	else
 		rm -f "${ED}"usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a
 	fi

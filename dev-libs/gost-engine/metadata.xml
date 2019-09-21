@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>candrews@gentoo.org</email>
+    <name>Craig Andrews</name>
+  </maintainer>
+  <longdescription>
+    A reference implementation of the Russian GOST crypto algorithms for OpenSSL.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gost-engine/engine</remote-id>
+  </upstream>
+</pkgmetadata>

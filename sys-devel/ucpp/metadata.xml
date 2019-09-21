@@ -5,8 +5,11 @@
 		<email>office@gentoo.org</email>
 		<name>Gentoo Office project</name>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="gitlab">scarabeusiv/ucpp</remote-id>
+	</upstream>
 </pkgmetadata>

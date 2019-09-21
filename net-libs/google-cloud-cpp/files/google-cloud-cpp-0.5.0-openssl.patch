@@ -1,0 +1,13 @@
+diff -ur google-cloud-cpp-0.5.0.orig/google/cloud/storage/CMakeLists.txt google-cloud-cpp-0.5.0/google/cloud/storage/CMakeLists.txt
+--- google-cloud-cpp-0.5.0.orig/google/cloud/storage/CMakeLists.txt	2019-01-30 14:01:05.657031402 +0800
++++ google-cloud-cpp-0.5.0/google/cloud/storage/CMakeLists.txt	2019-01-30 14:01:19.969968164 +0800
+@@ -215,9 +215,6 @@
+                              Crc32c::crc32c
+                              CURL::CURL
+                              Threads::Threads
+-                             OpenSSL::SSL
+-                             OpenSSL::Crypto
+-                             ZLIB::ZLIB
+                       PRIVATE storage_common_options)
+ target_include_directories(storage_client
+                            PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>

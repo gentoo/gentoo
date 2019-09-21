@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,12 +21,13 @@ CDEPEND="
 	cgi? ( >=media-libs/gd-2[png] )
 	snmp? ( net-analyzer/net-snmp )
 	usb? ( virtual/libusb:0 )
-	ssl? ( >=dev-libs/openssl-1 )
+	ssl? ( >=dev-libs/openssl-1:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	xml? ( >=net-libs/neon-0.25.0 )
 	ipmi? ( sys-libs/freeipmi )
 	zeroconf? ( net-dns/avahi )
 	dev-libs/libltdl
+	net-libs/libnsl
 	virtual/udev"
 DEPEND="$CDEPEND
 	>=sys-apps/sed-4
@@ -88,11 +89,8 @@ pkg_setup() {
 src_prepare() {
 	#ht_fix_file configure.in
 
-	epatch "${FILESDIR}/nut-2.7.2/nut-2.7.2-no-libdummy.patch"
+	epatch "${FILESDIR}"/nut-2.7.2-no-libdummy.patch
 	epatch "${FILESDIR}"/${PN}-2.6.2-lowspeed-buffer-size.patch
-	#epatch "${FILESDIR}"/${PN}-2.6.3-CVE-2012-2944.patch
-	#epatch "${FILESDIR}"/${PN}-2.6.5-freeipmi_fru.patch
-	#epatch "${FILESDIR}"/${PN}-2.7.1-fix-scanning.patch
 	epatch "${FILESDIR}"/${PN}-2.7.1-snmpusb-order.patch
 
 	sed -e "s:GD_LIBS.*=.*-L/usr/X11R6/lib \(.*\) -lXpm -lX11:GD_LIBS=\"\1:" \

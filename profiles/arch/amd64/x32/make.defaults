@@ -5,11 +5,11 @@ DEFAULT_ABI="x32"
 ABI="x32"
 MULTILIB_ABIS="amd64 x86 x32"
 
-# Michał Górny <mgorny@gentoo.org> (01 Jul 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-07-01)
 # Default to abi_x86_x32 for packages that don't have it forced.
 ABI_X86="x32"
 
-# Michał Górny <mgorny@gentoo.org> (25 Jun 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-06-25)
 # Make the native ABI implicit so that MULTILIB_USEDEP can be satisfied
 # by non-multilib ebuilds when non-native ABIs are disabled.
 IUSE_IMPLICIT="-abi_x86_64 abi_x86_x32"

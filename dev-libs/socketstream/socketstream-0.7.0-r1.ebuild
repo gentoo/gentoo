@@ -1,9 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="C++ Streaming sockets library"
 HOMEPAGE="http://socketstream.sourceforge.net/"
@@ -14,31 +12,26 @@ SLOT="0"
 KEYWORDS="alpha amd64 ~hppa ~ppc ~sparc x86"
 IUSE="doc"
 
-DEPEND="doc? ( app-doc/doxygen )"
-RDEPEND=""
+BDEPEND="doc? ( app-doc/doxygen )"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+PATCHES=(
+	"${FILESDIR}"/${PV}-missing_includes.patch
+	"${FILESDIR}"/${P}-gcc47.patch
+)
+
+src_prepare() {
+	default
 	# include/Makefile uses DIST_SUBDIRS and thus headers dont get installed
 	sed -i 's|^DIST_\(SUBDIRS =\)|\1|' include/Makefile.in || \
 		die "sed include/Makefile.in failed"
-
-	epatch "${FILESDIR}"/${PV}-missing_includes.patch
-	epatch "${FILESDIR}"/${P}-gcc47.patch
 }
 
 src_compile() {
-	econf || die "econf failed"
-	emake || die "emake failed"
-
-	if use doc ; then
-		emake doxygen || die "failed to build docs"
-	fi
+	default
+	use doc && emake doxygen
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS ChangeLog NEWS README* HACKING TODO
-	use doc && dohtml -r docs/html/*
+	use doc && local HTML_DOCS=( docs/html/. )
+	default
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>juippis@gentoo.org</email>
+    <name>Joonas Niilola</name>
+  </maintainer>
+  <longdescription lang="en">
+    This is a process monitor and system monitor.
+
+      - Full support across Linux, MacOS, FreeBSD and OpenBSD.
+      - Process Listing.
+      - Single-process view.
+      - Start/stop/kill individual process.
+      - Process PID, UID, name, thread count, memory use, nice, priority, state, CPU ID 
+        and CPU usage.
+      - CPU monitoring.
+      - Memory monitoring.
+      - Disk usage monitoring.
+      - Network usage monitoring.
+      - CPU temperature monitoring.
+      - Battery and power status.
+  </longdescription>
+</pkgmetadata>

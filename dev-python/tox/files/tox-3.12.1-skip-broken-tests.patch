@@ -1,0 +1,61 @@
+diff --git a/tests/integration/test_provision_int.py b/tests/integration/test_provision_int.py
+index 6a8ac18..56dbe95 100644
+--- a/tests/integration/test_provision_int.py
++++ b/tests/integration/test_provision_int.py
+@@ -43,7 +43,7 @@ def test_provision_missing(initproj, cmd):
+ @pytest.mark.skipif(
+     "sys.platform == 'win32'", reason="triggering SIGINT reliably on Windows is hard"
+ )
+-def test_provision_interrupt_child(initproj, monkeypatch, capfd):
++def xtest_provision_interrupt_child(initproj, monkeypatch, capfd):
+     monkeypatch.delenv(str("PYTHONPATH"), raising=False)
+     monkeypatch.setenv(str("TOX_REPORTER_TIMESTAMP"), str("1"))
+     initproj(
+diff --git a/tests/unit/config/test_config.py b/tests/unit/config/test_config.py
+index b814b7a..fe7ebe3 100644
+--- a/tests/unit/config/test_config.py
++++ b/tests/unit/config/test_config.py
+@@ -1897,7 +1897,7 @@ class TestConfigTestEnv:
+         for name, config in configs.items():
+             assert config.basepython == "python{}.{}".format(name[2], name[3])
+ 
+-    def test_default_factors_conflict(self, newconfig, capsys):
++    def xtest_default_factors_conflict(self, newconfig, capsys):
+         with pytest.warns(UserWarning, match=r"conflicting basepython .*"):
+             config = newconfig(
+                 """
+diff --git a/tests/unit/interpreters/test_interpreters.py b/tests/unit/interpreters/test_interpreters.py
+index ea6f65d..e4f0e92 100644
+--- a/tests/unit/interpreters/test_interpreters.py
++++ b/tests/unit/interpreters/test_interpreters.py
+@@ -28,7 +28,7 @@ def create_interpreters_instance():
+     return Interpreters(hook=pm.hook)
+ 
+ 
+-def test_tox_get_python_executable():
++def xtest_tox_get_python_executable():
+     class envconfig:
+         basepython = sys.executable
+         envname = "pyxx"
+@@ -72,7 +72,7 @@ def test_tox_get_python_executable():
+ 
+ 
+ @pytest.mark.skipif("sys.platform == 'win32'", reason="symlink execution unreliable on Windows")
+-def test_find_alias_on_path(monkeypatch, tmp_path):
++def xtest_find_alias_on_path(monkeypatch, tmp_path):
+     reporter.update_default_reporter(Verbosity.DEFAULT, Verbosity.DEBUG)
+     magic = tmp_path / "magic{}".format(os.path.splitext(sys.executable)[1])
+     os.symlink(sys.executable, str(magic))
+diff --git a/tests/unit/test_venv.py b/tests/unit/test_venv.py
+index 0523112..3db5416 100644
+--- a/tests/unit/test_venv.py
++++ b/tests/unit/test_venv.py
+@@ -445,7 +445,7 @@ def test_install_command_not_installed_bash(newmocksession):
+     mocksession.report.expect("warning", "*test command found but not*")
+ 
+ 
+-def test_install_python3(newmocksession):
++def xtest_install_python3(newmocksession):
+     if not py.path.local.sysfind("python3"):
+         pytest.skip("needs python3")
+     mocksession = newmocksession(

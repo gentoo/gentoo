@@ -2,14 +2,17 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>karl.j.linden@gmail.com</email>
-		<name>Karl Linden</name>
+		<email>alexander@tsoy.me</email>
+		<name>Alexander Tsoy</name>
 	</maintainer>
 	<maintainer type="project">
-	<email>proxy-maint@gentoo.org</email>
+		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="rubberband">Enable rubberband support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">dsacre/klick</remote-id>
+	</upstream>
 </pkgmetadata>

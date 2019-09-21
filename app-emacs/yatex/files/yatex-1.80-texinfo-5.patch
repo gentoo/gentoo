@@ -1,0 +1,247 @@
+--- a/docs/yahtmle.tex
++++ b/docs/yahtmle.tex
+@@ -1,4 +1,4 @@
+-\def\lang{eng} % -*- texinfo -*- for Texinfo V.3.1 
++@c \def\lang{eng} % -*- texinfo -*- for Texinfo V.3.1 
+ \input texinfo
+ @setfilename yahtmle
+ @settitle Yet Another html-mode for Emacs
+@@ -14,10 +14,9 @@
+ 
+ @titlepage
+ @sp 10
+-@center
+ @subtitle Yet Another html-mode for emacs
+ @title // yahtml //
+-%@subtitle // yahtml //
++@c @subtitle // yahtml //
+ @author @copyright{} 1994-2012 by    HIROSE, Yuuji [yuuji@@yatex.org]
+ @end titlepage
+ 
+--- a/docs/yahtmlj.tex
++++ b/docs/yahtmlj.tex
+@@ -1,4 +1,4 @@
+-\def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
++@c \def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
+ \input texinfo
+ @setfilename yahtmlj
+ @settitle Yet Another html-mode for Emacs
+@@ -14,7 +14,6 @@
+ 
+ @titlepage
+ @sp 10
+-@center
+ @subtitle Yet Another html-mode for emacs
+ @title 『HTML屋』
+ @subtitle // yahtml //
+--- a/docs/yatexe.tex
++++ b/docs/yatexe.tex
+@@ -1,4 +1,4 @@
+-\def\lang{jp} % -*- texinfo -*-
++@c \def\lang{jp} % -*- texinfo -*-
+ \input texinfo.tex
+ @setfilename yatexe
+ @settitle Yet Another tex-mode for Emacs
+@@ -14,7 +14,6 @@
+ 
+ @titlepage
+ @sp 10
+-@center
+ @subtitle Yet Another tex-mode for emacs
+ @title Wild Bird
+ @subtitle // YaTeX //
+@@ -713,7 +712,7 @@
+ @item M-x YaTeX-section-overview
+         @dots{} Generate *Sectioning Lines* buffer
+ @end table
+-@cindex{Generate the listing of sectioning units}
++@cindex Generate the listing of sectioning units
+ from the LaTeX source buffer.  In this listing buffer, typing @kbd{u} on
+ the sectioning command shifts up the corresponding sectioning command in
+ source text and @kbd{d} shifts down.  After marking lines in the listing
+@@ -1133,7 +1132,7 @@
+ @node Invoking image processor, Jump to main file, Jump to corresponding object, Cursor jump
+ @comment  node-name,  next,  previous,  up
+ @section Invoking image processor
+-@cindex{Drawing tool invocation}
++@cindex Drawing tool invocation
+ 
+ `image-including line' described above means such lines as
+ @code{\epsfile@{file=foo.ps@}}.  If you type @kbd{[prefix] g} on that
+@@ -1756,44 +1755,44 @@
+ @end defvar
+ 
+ @defvar YaTeX-cmd-gimp
+-Command name of GIMP (code{"gimp"})
++Command name of GIMP (@code{"gimp"})
+ @end defvar
+ @defvar YaTeX-cmd-tgif
+-Command name of tgif (code{"tgif"})
++Command name of tgif (@code{"tgif"})
+ @end defvar
+ @defvar YaTeX-cmd-inkscape
+-Command name of Inkscape (code{"inkscape"})
++Command name of Inkscape (@code{"inkscape"})
+ @end defvar
+ @defvar YaTeX-cmd-dia
+-Command name of Dia (code{"dia"})
++Command name of Dia (@code{"dia"})
+ @end defvar
+ @defvar YaTeX-cmd-ooo
+-Command name of OpenOffice.org/LibreOffice (code{"soffice"})
++Command name of OpenOffice.org/LibreOffice (@code{"soffice"})
+ @end defvar
+ @defvar YaTeX-cmd-gs
+-Command name of Ghostscript (code{"gs"})
++Command name of Ghostscript (@code{"gs"})
+ @end defvar
+ @defvar YaTeX-cmd-dvips
+-Command name of dvips (code{"dvips"})
++Command name of dvips (@code{"dvips"})
+ @end defvar
+ @defvar YaTeX-cmd-displayline
+ Command name of displayline
+-(code{"/Applications/Skim.app/Contents/SharedSupport/displayline"})
++(@code{"/Applications/Skim.app/Contents/SharedSupport/displayline"})
+ @end defvar
+ @defvar YaTeX-cmd-edit-ps
+-Command name for editing PostScript files(Value of code{"YaTeX-cmd-gimp"})
++Command name for editing PostScript files(Value of @code{"YaTeX-cmd-gimp"})
+ @end defvar
+ @defvar YaTeX-cmd-edit-pdf
+-Command name for editing PDF files(Value of code{"YaTeX-cmd-ooo"})
++Command name for editing PDF files(Value of @code{"YaTeX-cmd-ooo"})
+ @end defvar
+ @defvar YaTeX-cmd-edit-ai
+-Command name for editing `.ai' files(Value of code{"YaTeX-cmd-inkscape"})
++Command name for editing `.ai' files(Value of @code{"YaTeX-cmd-inkscape"})
+ @end defvar
+ @defvar YaTeX-cmd-edit-svg
+-Command name for editing SVG files(Value of code{"YaTeX-cmd-inkscape"})
++Command name for editing SVG files(Value of @code{"YaTeX-cmd-inkscape"})
+ @end defvar
+ @defvar YaTeX-cmd-edit-images
+-Command name for editing image files(Value of code{"YaTeX-cmd-gimp"})
++Command name for editing image files(Value of @code{"YaTeX-cmd-gimp"})
+ @end defvar
+ 
+ @defvar YaTeX-need-nonstop
+@@ -2289,9 +2288,9 @@
+ @table @kbd
+ @item [F]
+ YaTeX:read-position
+-@itemx [A]
++@item [A]
+ Character list which can show up in the brackets
+-@itemx [D]
++@item [D]
+    Return the location specifier such as `[htb]'.  When
+ nothing is entered, omit [] itself.  If the possible characters
+ are "htbp", call this function as
+@@ -2299,9 +2298,9 @@
+ 
+ @item [F]
+ YaTeX:read-coordinates
+-@itemx [A]
++@item [A]
+ Base prompt, X-axis prompt, Y-axis prompt     (each optional)        
+-@itemx [D]
++@item [D]
+   Read the coordinates with the prompt ``BasePrompt X-axisPrompt:'' for
+ X-axis, ``BasePrompt Y-axisPrompt:'' for Y-axis, and return it in the form 
+ of ``(X,Y)''.  The default prompts are @code{Dimension}, @code{X},
+@@ -2309,9 +2308,9 @@
+ 
+ @item [F]
+ YaTeX:check-completion-type
+-@itemx [A]
++@item [A]
+ One of the symbols: 'begin, 'section, or 'maketitle
+-@itemx [D]
++@item [D]
+   Check the current completion type is specified one and cause error if
+ not. The variable @code{YaTeX-current-completion-type} holds the symbol
+ according to the current completion type.
+--- a/docs/yatexj.tex
++++ b/docs/yatexj.tex
+@@ -1,4 +1,4 @@
+-\def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
++@c \def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
+ \input texinfo
+ @setfilename yatexj
+ @settitle Yet Another tex-mode for Emacs
+@@ -19,7 +19,6 @@
+ 
+ @titlepage
+ @sp 10
+-@center
+ @subtitle Yet Another tex-mode for emacs
+ @title 『野鳥』
+ @subtitle // YaTeX //
+@@ -1146,7 +1145,7 @@
+ @section 括弧入力補助
+ @cindex 括弧入力補助[かつこにゆうりよくほしよ]
+ 
+-  3種類ある括弧 () {} [] の開き括弧を入れたときに閉じ括弧を自動的に入れます。
++  3種類ある括弧 () @{@} [] の開き括弧を入れたときに閉じ括弧を自動的に入れます。
+ @code{\} の直後にの @code{[} を入れると行を分けてインデントを揃え、
+ 数式入力に備えます。その他 La@TeX{} のマクロに応じて括弧の釣合の取れた
+ 状態に導きます。開き括弧そのものを1つだけ入れたいときは @kbd{C-q} で
+@@ -1965,44 +1964,44 @@
+ @end defvar
+ 
+ @defvar YaTeX-cmd-gimp
+-GIMPを起動するコマンド (code{"gimp"})
++GIMPを起動するコマンド (@code{"gimp"})
+ @end defvar
+ @defvar YaTeX-cmd-tgif
+-tgifを起動するコマンド (code{"tgif"})
++tgifを起動するコマンド (@code{"tgif"})
+ @end defvar
+ @defvar YaTeX-cmd-inkscape
+-Inkscapeを起動するコマンド (code{"inkscape"})
++Inkscapeを起動するコマンド (@code{"inkscape"})
+ @end defvar
+ @defvar YaTeX-cmd-dia
+-Diaを起動するコマンド (code{"dia"})
++Diaを起動するコマンド (@code{"dia"})
+ @end defvar
+ @defvar YaTeX-cmd-ooo
+-OpenOffice.orgまたはLibreOfficeを起動するコマンド (code{"soffice"})
++OpenOffice.orgまたはLibreOfficeを起動するコマンド (@code{"soffice"})
+ @end defvar
+ @defvar YaTeX-cmd-gs
+-Ghostscriptを起動するコマンド (code{"gs"})
++Ghostscriptを起動するコマンド (@code{"gs"})
+ @end defvar
+ @defvar YaTeX-cmd-dvips
+-dvipsを起動するコマンド(環境によってはpdvipsなど) (code{"dvips"})
++dvipsを起動するコマンド(環境によってはpdvipsなど) (@code{"dvips"})
+ @end defvar
+ @defvar YaTeX-cmd-displayline
+ displaylineを起動するコマンド
+-(code{"/Applications/Skim.app/Contents/SharedSupport/displayline"})
++(@code{"/Applications/Skim.app/Contents/SharedSupport/displayline"})
+ @end defvar
+ @defvar YaTeX-cmd-edit-ps
+-PostScriptファイルを編集するコマンド (変数code{"YaTeX-cmd-gimp"}の値)
++PostScriptファイルを編集するコマンド (変数@code{"YaTeX-cmd-gimp"}の値)
+ @end defvar
+ @defvar YaTeX-cmd-edit-pdf
+-PDFファイルを編集するコマンド (変数code{"YaTeX-cmd-ooo"}の値)
++PDFファイルを編集するコマンド (変数@code{"YaTeX-cmd-ooo"}の値)
+ @end defvar
+ @defvar YaTeX-cmd-edit-ai
+-.aiファイルを編集するコマンド (変数code{"YaTeX-cmd-inkscape"}の値)
++.aiファイルを編集するコマンド (変数@code{"YaTeX-cmd-inkscape"}の値)
+ @end defvar
+ @defvar YaTeX-cmd-edit-svg
+-SVGファイルを編集するコマンド (変数code{"YaTeX-cmd-inkscape"}の値)
++SVGファイルを編集するコマンド (変数@code{"YaTeX-cmd-inkscape"}の値)
+ @end defvar
+ @defvar YaTeX-cmd-edit-images
+-その他画像ファイルを編集するコマンド (変数code{"YaTeX-cmd-gimp"}の値)
++その他画像ファイルを編集するコマンド (変数@code{"YaTeX-cmd-gimp"}の値)
+ @end defvar
+ 
+ @defvar YaTeX-need-nonstop

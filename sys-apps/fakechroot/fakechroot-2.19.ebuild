@@ -1,17 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Provide a faked chroot environment without requiring root privileges"
-HOMEPAGE="http://fakechroot.alioth.debian.org/"
-SRC_URI="mirror://debian/pool/main/f/${PN}/${PN}_${PV}.orig.tar.gz"
+HOMEPAGE="https://github.com/dex4er/fakechroot"
+SRC_URI="https://github.com/dex4er/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE=""
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 ~sparc x86"
 
 RESTRICT="test"
 
@@ -20,7 +18,6 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc NEWS.md README.md
+	default
 	find "${D}" -name '*.la' -exec rm -f '{}' +
 }

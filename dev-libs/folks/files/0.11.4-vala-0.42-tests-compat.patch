@@ -1,0 +1,39 @@
+From 600e2d42e6097502ec0c42ab257d08fc0ca7933a Mon Sep 17 00:00:00 2001
+From: Rico Tzschichholz <ricotz@ubuntu.com>
+Date: Wed, 30 May 2018 14:20:27 +0200
+Subject: [PATCH] tests: Use FileAttribute.* enumeration
+
+---
+ tests/folks/avatar-cache.vala | 2 +-
+ tests/folks/object-cache.vala | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/folks/avatar-cache.vala b/tests/folks/avatar-cache.vala
+index d25245c0..ee32e9e4 100644
+--- a/tests/folks/avatar-cache.vala
++++ b/tests/folks/avatar-cache.vala
+@@ -78,7 +78,7 @@ public class AvatarCacheTests : Folks.TestCase
+     {
+       // Delete the files in the directory
+       var enumerator =
+-          dir.enumerate_children (FILE_ATTRIBUTE_STANDARD_NAME,
++          dir.enumerate_children (FileAttribute.STANDARD_NAME,
+               FileQueryInfoFlags.NONE);
+ 
+       FileInfo? file_info = enumerator.next_file ();
+diff --git a/tests/folks/object-cache.vala b/tests/folks/object-cache.vala
+index 62d208e6..f2a5188d 100644
+--- a/tests/folks/object-cache.vala
++++ b/tests/folks/object-cache.vala
+@@ -108,7 +108,7 @@ public class ObjectCacheTests : Folks.TestCase
+     {
+       // Delete the files in the directory
+       var enumerator =
+-          dir.enumerate_children (FILE_ATTRIBUTE_STANDARD_NAME,
++          dir.enumerate_children (FileAttribute.STANDARD_NAME,
+               FileQueryInfoFlags.NONE);
+ 
+       FileInfo? file_info = enumerator.next_file ();
+-- 
+2.21.0
+

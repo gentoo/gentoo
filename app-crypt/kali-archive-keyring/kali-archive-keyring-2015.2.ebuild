@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="GnuPG archive keys of the Kali archive"
-HOMEPAGE="http://www.kali.org"
+HOMEPAGE="https://www.kali.org"
 SRC_URI="http://http.kali.org/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="GPL-2+"

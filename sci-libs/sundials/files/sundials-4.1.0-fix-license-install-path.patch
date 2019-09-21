@@ -1,0 +1,16 @@
+diff -Nur old/CMakeLists.txt new/CMakeLists.txt
+--- old/CMakeLists.txt	2019-02-12 21:50:51.000000000 +0300
++++ new/CMakeLists.txt	2019-06-23 00:39:23.000000000 +0300
+@@ -1168,10 +1168,10 @@
+ # install license and notice files
+ INSTALL(
+   FILES ${PROJECT_SOURCE_DIR}/LICENSE
+-  DESTINATION include/sundials
++  DESTINATION share/doc/sundials-4.1.0
+   )
+ INSTALL(
+   FILES ${PROJECT_SOURCE_DIR}/NOTICE
+-  DESTINATION include/sundials
++  DESTINATION share/doc/sundials-4.1.0
+   )
+ 

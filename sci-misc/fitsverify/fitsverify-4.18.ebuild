@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="FITS file format checker"
-HOMEPAGE="http://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/"
+HOMEPAGE="https://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/"
 SRC_URI="${HOMEPAGE}/${P}.tar.gz"
 
 LICENSE="MIT"

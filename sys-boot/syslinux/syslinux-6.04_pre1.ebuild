@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders"
-HOMEPAGE="http://www.syslinux.org/"
+HOMEPAGE="https://www.syslinux.org/"
 # Final releases in 6.xx/$PV.tar.* (literal "xx")
 # Testing releases in Testing/$PV/$PV.tar.*
 SRC_URI_DIR=${PV:0:1}.xx
@@ -45,6 +45,7 @@ src_prepare() {
 	rm -f gethostip #bug 137081
 
 	epatch "${FILESDIR}"/${PN}-6.03-sysmacros.patch #579928
+	epatch "${FILESDIR}"/${P}-singleloadsegment.patch #662678
 
 	# Don't prestrip or override user LDFLAGS, bug #305783
 	local SYSLINUX_MAKEFILES="extlinux/Makefile linux/Makefile mtools/Makefile \
@@ -82,6 +83,8 @@ src_prepare() {
 			ewarn "Continuing anyway as requested."
 		fi
 	fi
+
+	epatch_user
 }
 
 src_compile() {

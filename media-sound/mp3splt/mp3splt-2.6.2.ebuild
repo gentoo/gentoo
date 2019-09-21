@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit multilib
 
@@ -11,10 +11,10 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~hppa ~ppc ~ppc64 sparc x86"
 IUSE="flac"
 
-RDEPEND="~media-libs/libmp3splt-0.9.2[flac?]"
+RDEPEND=">=media-libs/libmp3splt-0.9.2-r1[flac?]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext"

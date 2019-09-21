@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ else
 	https://dev.gentoo.org/~blueness/musl-misc/getconf.c
 	https://dev.gentoo.org/~blueness/musl-misc/getent.c
 	https://dev.gentoo.org/~blueness/musl-misc/iconv.c"
-	KEYWORDS="-* ~amd64 ~arm ~mips ~ppc ~x86"
+	KEYWORDS="-* ~amd64 ~arm ~arm64 ~mips ~ppc ~x86"
 fi
 
 export CBUILD=${CBUILD:-${CHOST}}
@@ -51,6 +51,12 @@ pkg_setup() {
 		*-musl*) ;;
 		*) die "Use sys-devel/crossdev to build a musl toolchain" ;;
 		esac
+	fi
+
+	# fix for #667126, copied from glibc ebuild
+	# make sure host make.conf doesn't pollute us
+	if is_crosscompile || tc-is-cross-compiler ; then
+		CHOST=${CTARGET} strip-unsupported-flags
 	fi
 }
 

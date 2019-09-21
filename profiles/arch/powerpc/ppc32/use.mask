@@ -1,20 +1,20 @@
 # Unmask the flag which corresponds to ARCH.
 -ppc
 
-# James Le Cuirot <chewi@gentoo.org> (12 Jan 2015)
+# James Le Cuirot <chewi@gentoo.org> (2015-01-12)
 # Java is no longer supported on ppc.
 java
 
-# Michał Górny <mgorny@gentoo.org> (27 Jun 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-06-27)
 # Unmask multilib flag for the ABI.
 -abi_ppc_32
 
-# Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
+# Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # keyworded on ppc
 -clisp
 -ecls
 -sbcl
 
-# Pacho Ramos <pacho@gentoo.org> (11 Sep 2013)
+# Pacho Ramos <pacho@gentoo.org> (2013-09-11)
 # Unmask systemd since it is keyworded here.
 -systemd

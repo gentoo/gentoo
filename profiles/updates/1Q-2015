@@ -23,7 +23,6 @@ move app-admin/eselect-chuck app-eselect/eselect-chuck
 move app-admin/eselect-ctags app-eselect/eselect-ctags
 move app-admin/eselect-emacs app-eselect/eselect-emacs
 move app-admin/eselect-fontconfig app-eselect/eselect-fontconfig
-move app-admin/eselect-gnat app-eselect/eselect-gnat
 move app-admin/eselect-gnome-shell-extensions app-eselect/eselect-gnome-shell-extensions
 move app-admin/eselect-infinality app-eselect/eselect-infinality
 move app-admin/eselect-java app-eselect/eselect-java
@@ -31,7 +30,6 @@ move app-admin/eselect-lapack app-eselect/eselect-lapack
 move app-admin/eselect-lcdfilter app-eselect/eselect-lcdfilter
 move app-admin/eselect-lib-bin-symlink app-eselect/eselect-lib-bin-symlink
 move app-admin/eselect-lua app-eselect/eselect-lua
-move app-admin/eselect-mesa app-eselect/eselect-mesa
 move app-admin/eselect-metasploit app-eselect/eselect-metasploit
 move app-admin/eselect-miniaudicle app-eselect/eselect-miniaudicle
 move app-admin/eselect-mpg123 app-eselect/eselect-mpg123
@@ -47,7 +45,6 @@ move app-admin/eselect-php app-eselect/eselect-php
 move app-admin/eselect-pinentry app-eselect/eselect-pinentry
 move app-admin/eselect-postgresql app-eselect/eselect-postgresql
 move app-admin/eselect-python app-eselect/eselect-python
-move app-admin/eselect-qtgraphicssystem app-eselect/eselect-qtgraphicssystem
 move app-admin/eselect-rails app-eselect/eselect-rails
 move app-admin/eselect-renpy app-eselect/eselect-renpy
 move app-admin/eselect-ruby app-eselect/eselect-ruby

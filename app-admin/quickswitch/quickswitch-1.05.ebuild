@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ HOMEPAGE="http://quickswitch.sf.net"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc s390 amd64"
+KEYWORDS="amd64 ppc s390 sparc x86"
 IUSE="ncurses"
 
 DEPEND=">=dev-lang/perl-5.6.0"

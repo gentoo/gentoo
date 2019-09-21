@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit gnome2-utils qmake-utils xdg
+inherit gnome2-utils qmake-utils xdg flag-o-matic
 
 DESCRIPTION="Multimedia interpreter for TADS text adventures"
 HOMEPAGE="http://qtads.sourceforge.net"
@@ -21,6 +21,8 @@ DEPEND="media-libs/libsdl[sound]
 RDEPEND="${DEPEND}"
 
 src_configure() {
+	# bug 654356 temp fix
+	append-cxxflags -fpermissive
 	eqmake5 qtads.pro -after CONFIG-=silent
 }
 

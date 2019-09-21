@@ -1,0 +1,11 @@
+--- tk8.6.9/unix/tcl.m4
++++ tk8.6.9/unix/tcl.m4
+@@ -1407,7 +1407,7 @@
+ 	    # get rid of the warnings.
+ 	    #CFLAGS_OPTIMIZE="${CFLAGS_OPTIMIZE} -D__NO_STRING_INLINES -D__NO_MATH_INLINES"
+ 
+-	    SHLIB_LD='${CC} ${CFLAGS} ${LDFLAGS} -shared'
++	    SHLIB_LD='${CC} ${CFLAGS} ${LDFLAGS} -shared -Wl,-soname,${@}'
+ 	    DL_OBJS="tclLoadDl.o"
+ 	    DL_LIBS="-ldl"
+ 	    LDFLAGS="$LDFLAGS -Wl,--export-dynamic"

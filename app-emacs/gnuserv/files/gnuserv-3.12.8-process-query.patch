@@ -1,0 +1,14 @@
+Function process-kill-without-query is obsolete since 22.1 and no
+longer exists in 27.
+
+--- gnuserv-3.12.8-orig/gnuserv.el
++++ gnuserv-3.12.8/gnuserv.el
+@@ -738,7 +738,7 @@
+ 	    (start-process "gnuserv" nil gnuserv-program)))
+     (set-process-sentinel gnuserv-process 'gnuserv-sentinel)
+     (set-process-filter gnuserv-process 'gnuserv-process-filter)
+-    (process-kill-without-query gnuserv-process)
++    (set-process-query-on-exit-flag gnuserv-process nil)
+     (setq allow-deletion-of-last-visible-frame t)
+     (run-hooks 'gnuserv-init-hook)))
+ 

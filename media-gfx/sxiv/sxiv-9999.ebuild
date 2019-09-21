@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils xdg-utils gnome2-utils savedconfig toolchain-funcs
+inherit desktop xdg-utils gnome2-utils savedconfig toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/muennich/sxiv.git"
@@ -18,12 +18,12 @@ HOMEPAGE="https://github.com/muennich/sxiv/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="exif gif"
+IUSE="exif gif +jpeg +png"
 
 RDEPEND="
 	exif? ( media-libs/libexif )
 	gif? ( media-libs/giflib:0= )
-	media-libs/imlib2[X,gif?]
+	media-libs/imlib2[X,gif?,jpeg?,png?]
 	x11-libs/libX11
 	x11-libs/libXft
 "

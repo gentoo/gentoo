@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,14 +8,11 @@ BONUSPACK_P="dedicatedserver3339-bonuspack.zip"
 PATCH_P="ut2004-lnxpatch${PV%.*}-2.tar.bz2"
 DESCRIPTION="Unreal Tournament 2004 Linux Dedicated Server"
 HOMEPAGE="http://www.unrealtournament.com/"
-SRC_URI="mirror://3dgamers/unrealtourn2k4/${BONUSPACK_P}
-	http://files.chaoticdreams.org/UT2004/DedicatedServer3339-BonusPack.zip -> ${BONUSPACK_P}
-	http://downloads.unrealadmin.org/UT2004/Server/${BONUSPACK_P}
-	http://sonic-lux.net/data/mirror/ut2004/${BONUSPACK_P}
-	mirror://3dgamers/unrealtourn2k4/${PATCH_P}
-	http://downloads.unrealadmin.org/UT2004/Patches/Linux/${PATCH_P}
-	http://sonic-lux.net/data/mirror/ut2004/${PATCH_P}
-	mirror://gentoo/ut2004-v${PV/./-}-linux-dedicated.7z"
+SRC_URI="
+	https://files.chaoticdreams.org/UT2004/DedicatedServer3339-BonusPack.zip -> ${BONUSPACK_P}
+	http://ut2004.ut-files.com/index.php?dir=Patches/Linux/&file=${PATCH_P} -> ${PATCH_P}
+	https://dev.gentoo.org/~chewi/distfiles/ut2004-v${PV/./-}-linux-dedicated.7z
+"
 
 LICENSE="ut2003"
 SLOT="0"

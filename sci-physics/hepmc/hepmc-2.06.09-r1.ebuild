@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
 
 MYP=HepMC-${PV}
 
 DESCRIPTION="Event Record for Monte Carlo Generators"
-HOMEPAGE="http://lcgapp.cern.ch/project/simu/HepMC/"
+HOMEPAGE="https://hepmc.web.cern.ch/hepmc/"
 SRC_URI="http://lcgapp.cern.ch/project/simu/HepMC/download/${MYP}.tar.gz"
 
 LICENSE="GPL-2"
@@ -33,7 +33,7 @@ DOCS=( ChangeLog AUTHORS )
 src_prepare() {
 	cmake-utils_src_prepare
 
-	sed -i -e '/add_subdirectory(doc)/d' CMakeLists.txt
+	sed -i -e '/add_subdirectory(doc)/d' CMakeLists.txt || die
 	# CMake doc building broken
 	# gentoo doc directory
 	#sed -i \
@@ -56,8 +56,12 @@ src_prepare() {
 		{src,fio}/CMakeLists.txt || die
 
 	# remove targets if use flags not set
-	use examples || sed -i -e '/add_subdirectory(examples)/d' CMakeLists.txt
-	use test || sed -i -e '/add_subdirectory(test)/d' CMakeLists.txt
+	if ! use examples; then
+		sed -i -e '/add_subdirectory(examples)/d' CMakeLists.txt || die
+	fi
+	if ! use test; then
+		sed -i -e '/add_subdirectory(test)/d' CMakeLists.txt || die
+	fi
 	if ! use static-libs; then
 		sed -i \
 			-e '/(HepMC\(fio\|\)S/d' \
@@ -68,13 +72,9 @@ src_prepare() {
 
 src_configure() {
 	# use MeV over GeV and mm over cm
-	local length_conf="MM"
-	use cm && length_conf="CM"
-	local momentum_conf="MEV"
-	use gev && momentum_conf="GEV"
-	mycmakeargs+=(
-		-Dlength=${length_conf}
-		-Dmomentum=${momentum_conf}
+	local mycmakeargs=(
+		-Dlength=$(usex cm CM MM)
+		-Dmomentum=$(usex gev GEV MEV)
 	)
 	cmake-utils_src_configure
 }
@@ -89,6 +89,7 @@ src_compile() {
 }
 
 src_install() {
+	use doc && HTML_DOCS=( doc/html/. )
+	use doc && dodoc doc/*.pdf
 	cmake-utils_src_install
-	use doc && dodoc doc/*.pdf && dohtml -r doc/html/*
 }

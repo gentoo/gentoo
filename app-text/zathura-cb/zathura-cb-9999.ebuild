@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils toolchain-funcs readme.gentoo-r1 xdg
+inherit meson
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -11,48 +11,20 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_BRANCH="develop"
 else
 	KEYWORDS="~amd64 ~arm ~x86"
-	SRC_URI="https://pwmt.org/projects/zathura/plugins/download/${P}.tar.gz"
+	SRC_URI="https://pwmt.org/projects/zathura/plugins/download/${P}.tar.xz"
 fi
 
 DESCRIPTION="Comic book plug-in for zathura with 7zip, rar, tar and zip support"
-HOMEPAGE="https://pwmt.org/projects/zathura/"
+HOMEPAGE="https://pwmt.org/projects/zathura-cb/"
 
 LICENSE="ZLIB"
 SLOT="0"
-IUSE=""
 
-RDEPEND=">=app-text/zathura-0.3.8
-	dev-libs/glib:2=
-	app-arch/libarchive:=
-	x11-libs/cairo:=
-	x11-libs/gdk-pixbuf:="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND=">=app-text/zathura-0.3.9
+	dev-libs/girara
+	dev-libs/glib:2
+	x11-libs/cairo"
 
-src_configure() {
-	myzathuraconf=(
-		CC="$(tc-getCC)"
-		LD="$(tc-getLD)"
-		VERBOSE=1
-		DESTDIR="${D}"
-	)
-}
+RDEPEND="${DEPEND}"
 
-src_compile() {
-	emake "${myzathuraconf[@]}"
-}
-
-src_install() {
-	emake "${myzathuraconf[@]}" install
-	dodoc AUTHORS
-
-	FORCE_PRINT_ELOG=1
-	local DOC_CONTENTS="Consider installing app-arch/p7zip app-arch/tar app-arch/unrar
-		app-arch/unzip for additional file support."
-	readme.gentoo_create_doc
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-	readme.gentoo_print_elog
-}
+BDEPEND="virtual/pkgconfig"

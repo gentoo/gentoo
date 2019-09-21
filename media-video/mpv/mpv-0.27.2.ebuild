@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 PYTHON_REQ_USE='threads(+)'
 
 WAF_PV=1.9.8
@@ -18,7 +18,7 @@ if [[ ${PV} != *9999* ]]; then
 		https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~kensington/distfiles/${P}-patches-${PR}.tar.xz
 	"
-	KEYWORDS="alpha amd64 ~arm ~hppa ppc ppc64 x86 ~amd64-linux"
+	KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ppc ppc64 x86 ~amd64-linux"
 	DOCS=( RELEASE_NOTES )
 else
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
@@ -164,6 +164,10 @@ src_configure() {
 		append-cflags -I"${SYSROOT%/}${EPREFIX}/opt/vc/include"
 		append-ldflags -L"${SYSROOT%/}${EPREFIX}/opt/vc/lib"
 	fi
+
+	# Prevent access violations from zsh completion generation.
+	# See Gentoo bug 656086.
+	use zsh-completion && addpredict /dev/dri
 
 	local mywafargs=(
 		--confdir="${EPREFIX}/etc/${PN}"

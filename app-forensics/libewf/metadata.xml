@@ -7,8 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="bfio">Enables libbfio for chaining file in file handling</flag>
-		<flag name="rawio">Enables raw IO handling</flag>
-		<flag name="ewf">Enables the v1 API</flag>
 		<flag name="fuse">Enable fuse support for ewfmount</flag>
 		<flag name="uuid">Enable UUID support in the ewftools</flag>
 	</use>

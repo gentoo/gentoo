@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>bernardo@standard.ai</email>
+        <name>Bernardo Meurer</name>
+    </maintainer>
+    <maintainer type="person">
+        <email>bman@gentoo.org</email>
+        <name>Aaron Bauman</name>
+    </maintainer>
+    <longdescription lang="en">
+        Grab images from a Wayland compositor.
+    </longdescription>
+    <use>
+        <flag name="jpeg">Enable JPEG support.</flag>
+        <flag name="man">Generate and install man pages.</flag>
+    </use>
+    <upstream>
+        <remote-id type="github">emersion/grim</remote-id>
+        <bugs-to>https://github.com/emersion/grim/issues</bugs-to>
+        <changelog>https://github.com/emersion/grim/releases</changelog>
+    </upstream>
+</pkgmetadata>

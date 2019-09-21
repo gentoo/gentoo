@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Detect perl's global phase on older perls"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND=""

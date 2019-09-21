@@ -5,7 +5,12 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>steils@gentoo.org</email>
+		<name>Stefan Strogin</name>
+	</maintainer>
 	<use>
+		<flag name="sdl2">Use libsdl2 instead of libsdl</flag>
 		<flag name="sound">Enable and install sounds</flag>
 	</use>
 </pkgmetadata>

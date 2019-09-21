@@ -1,0 +1,49 @@
+From c5ca85848c2fe28366d286a5b000f99d927516d3 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Tue, 25 Jun 2019 08:58:34 +0200
+Subject: build: avoid recursion into py/ if not selected
+
+Signed-off-by: Jan Engelhardt <jengelh@inai.de>
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+---
+ Makefile.am    | 6 ++++--
+ py/Makefile.am | 3 ---
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index e567d32d..4a17424d 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -3,8 +3,10 @@ ACLOCAL_AMFLAGS	= -I m4
+ SUBDIRS = 	src	\
+ 		include	\
+ 		files	\
+-		doc		\
+-		py
++		doc
++if HAVE_PYTHON
++SUBDIRS += py
++endif
+ 
+ EXTRA_DIST =	tests	\
+ 		files
+diff --git a/py/Makefile.am b/py/Makefile.am
+index 9fce7c9e..5f4e1f6f 100644
+--- a/py/Makefile.am
++++ b/py/Makefile.am
+@@ -1,7 +1,5 @@
+ EXTRA_DIST = setup.py __init__.py nftables.py schema.json
+ 
+-if HAVE_PYTHON
+-
+ all-local:
+ 	cd $(srcdir) && \
+ 		$(PYTHON_BIN) setup.py build --build-base $(abs_builddir)
+@@ -28,4 +26,3 @@ clean-local:
+ 
+ distclean-local:
+ 	rm -f version
+-endif
+-- 
+cgit v1.2.1
+

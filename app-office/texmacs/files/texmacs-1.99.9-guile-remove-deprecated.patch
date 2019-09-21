@@ -1,0 +1,295 @@
+diff -Naruw TeXmacs-1.99.9-src.orig/CMakeLists.txt TeXmacs-1.99.9-src/CMakeLists.txt
+--- TeXmacs-1.99.9-src.orig/CMakeLists.txt	2019-02-01 04:33:32.000000000 -0500
++++ TeXmacs-1.99.9-src/CMakeLists.txt	2019-06-02 17:13:47.980498170 -0400
+@@ -274,7 +274,6 @@
+ elseif(Guile_VERSION_STRING VERSION_LESS 3.0)
+   set(CONFIG_GUILE_SERIAL "D")
+   set(GUILE_D 1)
+-  set(SCM_SIZET size_t)
+ else(Guile_VERSION_STRING VERSION_LESS 1.6)
+   message(ERROR "Not Guile serial A,B,C or D???")
+ endif(Guile_VERSION_STRING VERSION_LESS 1.6)
+@@ -286,7 +285,7 @@
+ 
+ MESSAGE(STATUS "Checking the size_t of guile strings")
+ 
+-CHECK_C_SOURCE_COMPILES(  "#include <guile/gh.h>
++CHECK_CXX_SOURCE_COMPILES(  "#include <guile/gh.h>
+   #include <libguile.h>
+   void print_string (SCM s) {
+     int len_r;
+diff -Naruw TeXmacs-1.99.9-src.orig/src/CMakeLists.txt.orig TeXmacs-1.99.9-src/src/CMakeLists.txt.orig
+--- TeXmacs-1.99.9-src.orig/src/CMakeLists.txt.orig	1969-12-31 19:00:00.000000000 -0500
++++ TeXmacs-1.99.9-src/src/CMakeLists.txt.orig	2019-06-02 17:12:44.654011478 -0400
+@@ -0,0 +1,32 @@
++
++add_library(texmacs_body STATIC ${TeXmacs_All_SRCS})
++
++add_executable (${TeXmacs_binary_name}
++  ./Texmacs/Texmacs/texmacs.cpp
++)
++
++target_link_libraries (${TeXmacs_binary_name}
++  texmacs_body
++  ${TeXmacs_Libraries}
++)
++
++if (APPLE)
++  set(MACOSX_BUNDLE_DISPLAY_NAME TeXmacs)
++  set_target_properties (${TeXmacs_binary_name}
++    PROPERTIES
++    MACOSX_BUNDLE TRUE
++    MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/MacOSXBundleInfo.plist.in
++    DEBUG_OUTPUT_NAME ${TeXmacs_binary_name}${EXE_DEBUG_EXTENSION}
++    RELEASE_OUTPUT_NAME ${TeXmacs_binary_name}
++    RUNTIME_OUTPUT_DIRECTORY ${TEXMACS_BINARY_DIR}
++  )
++else (APPLE)
++  set_target_properties (${TeXmacs_binary_name}
++    PROPERTIES
++    DEBUG_OUTPUT_NAME ${TeXmacs_binary_name}${EXE_DEBUG_EXTENSION}
++    RELEASE_OUTPUT_NAME ${TeXmacs_binary_name}
++    RUNTIME_OUTPUT_DIRECTORY ${TEXMACS_BINARY_DIR}
++  )
++  install (TARGETS ${TeXmacs_binary_name} DESTINATION lib/texmacs/TeXmacs/bin)
++endif (APPLE)
++
+diff -Naruw TeXmacs-1.99.9-src.orig/src/CMakeLists.txt.rej TeXmacs-1.99.9-src/src/CMakeLists.txt.rej
+--- TeXmacs-1.99.9-src.orig/src/CMakeLists.txt.rej	1969-12-31 19:00:00.000000000 -0500
++++ TeXmacs-1.99.9-src/src/CMakeLists.txt.rej	2019-06-02 17:12:44.654011478 -0400
+@@ -0,0 +1,19 @@
++--- CMakeLists.txt	(revision 11761)
+++++ CMakeLists.txt	(working copy)
++@@ -274,7 +274,6 @@
++ elseif (Guile_VERSION_STRING VERSION_LESS 3.0)
++   set (CONFIG_GUILE_SERIAL "D")
++   set (GUILE_D 1)
++-  set (SCM_SIZET size_t)
++ else (Guile_VERSION_STRING VERSION_LESS 1.6)
++   message (ERROR "Not Guile serial A,B,C or D???")
++ endif (Guile_VERSION_STRING VERSION_LESS 1.6)
++@@ -286,7 +285,7 @@
++ 
++ message (STATUS "Checking the size_t of guile strings")
++ 
++-check_c_source_compiles ("
+++check_cxx_source_compiles ("
++ #include <guile/gh.h>
++ #include <libguile.h>
++ void print_string (SCM s) {
+diff -Naruw TeXmacs-1.99.9-src.orig/src/Scheme/Guile/guile_tm.cpp TeXmacs-1.99.9-src/src/Scheme/Guile/guile_tm.cpp
+--- TeXmacs-1.99.9-src.orig/src/Scheme/Guile/guile_tm.cpp	2018-03-23 08:44:53.000000000 -0400
++++ TeXmacs-1.99.9-src/src/Scheme/Guile/guile_tm.cpp	2019-06-02 17:13:10.420604916 -0400
+@@ -85,19 +85,34 @@
+ #ifndef DEBUG_ON
+ static SCM
+ TeXmacs_lazy_eval_file (char *file) {
++#if (defined(GUILE_A) || defined(GUILE_B))
+   return scm_internal_lazy_catch (SCM_BOOL_T,
+                                   (scm_t_catch_body) scm_c_primitive_load, file,
+                                   (scm_t_catch_handler) TeXmacs_lazy_catcher, file);
++#else
++  return scm_c_with_throw_handler (SCM_BOOL_T,
++                                   (scm_t_catch_body) scm_c_primitive_load, file,
++                                   (scm_t_catch_handler) TeXmacs_lazy_catcher,
++                                   file, 0);
++#endif
+ }
+ #endif
+ 
+ static SCM
+ TeXmacs_eval_file (char *file) {
+ #ifndef DEBUG_ON
++#if (defined(GUILE_A) || defined(GUILE_B))
+   return scm_internal_catch (SCM_BOOL_T,
+                              (scm_t_catch_body) TeXmacs_lazy_eval_file, file,
+                              (scm_t_catch_handler) TeXmacs_catcher, file);
+ #else
++  return scm_c_catch (SCM_BOOL_T,
++                      (scm_t_catch_body) TeXmacs_lazy_eval_file, file,
++                      (scm_t_catch_handler) TeXmacs_catcher, file, NULL, NULL);
++
++#endif
++
++#else
+   return 	scm_c_primitive_load (file);										 
+ #endif
+ }
+@@ -121,19 +136,33 @@
+ #ifndef DEBUG_ON
+ static SCM
+ TeXmacs_lazy_eval_string (char *s) {
++#if (defined(GUILE_A) || defined(GUILE_B))
+   return scm_internal_lazy_catch (SCM_BOOL_T,
+                                   (scm_t_catch_body) scm_c_eval_string, s,
+                                   (scm_t_catch_handler) TeXmacs_lazy_catcher, s);
++#else
++  return scm_c_with_throw_handler (SCM_BOOL_T,
++                                   (scm_t_catch_body) scm_c_eval_string, s,
++                                   (scm_t_catch_handler) TeXmacs_lazy_catcher,
++                                   s, 0);
++#endif
+ }
+ #endif
+ 
+ static SCM
+ TeXmacs_eval_string (char *s) {
+ #ifndef DEBUG_ON
++#if (defined(GUILE_A) || defined(GUILE_B))
+   return scm_internal_catch (SCM_BOOL_T,
+                              (scm_t_catch_body) TeXmacs_lazy_eval_string, s,
+                              (scm_t_catch_handler) TeXmacs_catcher, s);
+ #else
++  return scm_c_catch (SCM_BOOL_T,
++                      (scm_t_catch_body) TeXmacs_lazy_eval_string, s,
++                      (scm_t_catch_handler) TeXmacs_catcher, s, NULL, NULL);
++
++#endif
++#else
+   return  scm_c_eval_string(s);
+ #endif
+ }
+@@ -180,19 +209,35 @@
+ #ifndef DEBUG_ON
+ static SCM
+ TeXmacs_lazy_call_scm (arg_list* args) {
++#if (defined(GUILE_A) || defined(GUILE_B))
+   return scm_internal_lazy_catch (SCM_BOOL_T,
+                                   (scm_t_catch_body) TeXmacs_call, (void*) args,
+-                                  (scm_t_catch_handler) TeXmacs_lazy_catcher, (void*) args);
++                                  (scm_t_catch_handler) TeXmacs_lazy_catcher,
++                                  (void*) args);
++#else
++  return scm_c_with_throw_handler (SCM_BOOL_T,
++                                   (scm_t_catch_body) TeXmacs_call, (void*) args,
++                                   (scm_t_catch_handler) TeXmacs_lazy_catcher,
++                                   (void*) args, 0);
++
++#endif
+ }
+ #endif
+ 
+ static SCM
+ TeXmacs_call_scm (arg_list *args) {
+ #ifndef DEBUG_ON
++#if (defined(GUILE_A) || defined(GUILE_B))
+   return scm_internal_catch (SCM_BOOL_T,
+                              (scm_t_catch_body) TeXmacs_lazy_call_scm, (void*) args,
+                              (scm_t_catch_handler) TeXmacs_catcher, (void*) args);
+ #else
++  return scm_c_catch (SCM_BOOL_T,
++                      (scm_t_catch_body) TeXmacs_lazy_call_scm, (void*) args,
++                      (scm_t_catch_handler) TeXmacs_catcher, (void*) args,
++                      NULL, NULL);
++#endif
++#else
+   return TeXmacs_call(args);
+ #endif
+ }
+@@ -443,7 +488,11 @@
+   return SCM_BOOL_F;
+ }
+ 
++#ifdef GUILE_A
+ static scm_sizet
++#else
++static size_t
++#endif
+ free_blackbox (SCM blackbox_smob) {
+   blackbox *ptr = (blackbox *) SCM_CDR (blackbox_smob);
+ #ifdef DEBUG_ON
+diff -Naruw TeXmacs-1.99.9-src.orig/src/Scheme/Guile/guile_tm.hpp TeXmacs-1.99.9-src/src/Scheme/Guile/guile_tm.hpp
+--- TeXmacs-1.99.9-src.orig/src/Scheme/Guile/guile_tm.hpp	2018-06-28 04:13:37.000000000 -0400
++++ TeXmacs-1.99.9-src/src/Scheme/Guile/guile_tm.hpp	2019-06-02 17:13:22.220571381 -0400
+@@ -83,8 +83,8 @@
+ #define scm_is_double scm_is_real
+ #define scm_new_procedure(name,r,a,b,c) scm_c_define_gsubr(name,a,b,c,(scm_t_subr)r)
+ #define scm_lookup_string(name) scm_variable_ref(scm_c_lookup(name))
+-#define scm_long2scm scm_long2num
+-#define scm_scm2long(x) scm_num2long(x,SCM_ARG1,"scm2long")
++#define scm_long2scm scm_from_long
++#define scm_scm2long(x) scm_to_long(x,SCM_ARG1,"scm2long")
+ #define scm_double2scm scm_from_double
+ #define scm_scm2double scm_to_double
+ #define scm_str2scm scm_from_locale_stringn
+@@ -103,8 +103,8 @@
+ #define scm_is_double scm_is_real
+ #define scm_new_procedure(name,r,a,b,c) scm_c_define_gsubr(name,a,b,c,r)
+ #define scm_lookup_string(name) scm_variable_ref(scm_c_lookup(name))
+-#define scm_long2scm scm_long2num
+-#define scm_scm2long(x) scm_num2long(x,SCM_ARG1,"scm2long")
++#define scm_long2scm scm_from_long
++#define scm_scm2long(x) scm_to_long(x,SCM_ARG1,"scm2long")
+ #define scm_double2scm scm_from_double
+ #define scm_scm2double scm_to_double
+ #define scm_str2scm scm_from_locale_stringn
+diff -Naruw TeXmacs-1.99.9-src.orig/src/Scheme/Tiny/tinyscheme_tm.cpp TeXmacs-1.99.9-src/src/Scheme/Tiny/tinyscheme_tm.cpp
+--- TeXmacs-1.99.9-src.orig/src/Scheme/Tiny/tinyscheme_tm.cpp	2017-09-28 09:44:11.000000000 -0400
++++ TeXmacs-1.99.9-src/src/Scheme/Tiny/tinyscheme_tm.cpp	2019-06-02 17:13:27.543889585 -0400
+@@ -139,22 +139,6 @@
+ /******************************************************************************
+  * Evaluation of files
+  ******************************************************************************/
+-#if 0
+-static scm
+-TeXmacs_lazy_eval_file (char *file) {
+-	
+-	return scm_internal_lazy_catch (scm_BOOL_T,
+-									(scm_t_catch_body) scm_c_primitive_load, file,
+-									(scm_t_catch_handler) TeXmacs_lazy_catcher, file);
+-}
+-
+-static scm
+-TeXmacs_eval_file (char *file) {
+-	return scm_internal_catch (scm_BOOL_T,
+-							   (scm_t_catch_body) TeXmacs_lazy_eval_file, file,
+-							   (scm_t_catch_handler) TeXmacs_catcher, file);
+-}
+-#endif 
+ scm
+ eval_scheme_file (string file) {
+ 	//static int cumul= 0;
+@@ -172,21 +156,6 @@
+ /******************************************************************************
+  * Evaluation of strings
+  ******************************************************************************/
+-#if 0
+-static scm
+-TeXmacs_lazy_eval_string (char *s) {
+-	return scm_internal_lazy_catch (scm_BOOL_T,
+-									(scm_t_catch_body) scm_c_eval_string, s,
+-									(scm_t_catch_handler) TeXmacs_lazy_catcher, s);
+-}
+-
+-static scm
+-TeXmacs_eval_string (char *s) {
+-	return scm_internal_catch (scm_BOOL_T,
+-							   (scm_t_catch_body) TeXmacs_lazy_eval_string, s,
+-							   (scm_t_catch_handler) TeXmacs_catcher, s);
+-}
+-#endif
+ scm
+ eval_scheme (string s) {
+ 	// cout << "Eval] " << s << "\n";
+@@ -214,21 +183,7 @@
+ 		}
+ 	}
+ }
+-#if 0
+-static scm
+-TeXmacs_lazy_call_scm (arg_list* args) {
+-	return scm_internal_lazy_catch (scm_BOOL_T,
+-									(scm_t_catch_body) TeXmacs_call, (void*) args,
+-									(scm_t_catch_handler) TeXmacs_lazy_catcher, (void*) args);
+-}
+ 
+-static scm
+-TeXmacs_call_scm (arg_list *args) {
+-	return scm_internal_catch (scm_BOOL_T,
+-							   (scm_t_catch_body) TeXmacs_lazy_call_scm, (void*) args,
+-							   (scm_t_catch_handler) TeXmacs_catcher, (void*) args);
+-}
+-#endif
+ scm
+ call_scheme (scm fun) {
+ 	scm a[]= { fun }; arg_list args= { 0, a };

@@ -1,0 +1,12 @@
+diff --git a/src/swig/ruby/build b/src/swig/ruby/build
+index 2d0cc0d..1a8aee7 100755
+--- a/src/swig/ruby/build
++++ b/src/swig/ruby/build
+@@ -8,6 +8,6 @@ system( "ln -sf ../mlt.i" )
+ system( "swig -c++ -ruby -I../../mlt++ -I../.. mlt.i" )
+ $CFLAGS = $CFLAGS.to_s + " -I../.. " + (ENV.has_key?('CXXFLAGS')? ENV['CXXFLAGS'] : '')
+ $CXXFLAGS = $CXXFLAGS.to_s + " -I../.. " + (ENV.has_key?('CXXFLAGS')? ENV['CXXFLAGS'] : '')
+-$LDFLAGS = $LDFLAGS.to_s + " -L../../mlt++ -lmlt++"
++$LDFLAGS = $LDFLAGS.to_s + " -L../../mlt++ -lmlt++ -L../../framework -lmlt"
+ create_makefile('mlt')
+ system( "make V=1" )

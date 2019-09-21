@@ -3,6 +3,6 @@
 
 # SECTION: Unmask
 
-# 2008/02/13 - Chris Gianelloni <wolf31o2@gentoo.org>
+# Chris Gianelloni <wolf31o2@gentoo.org> (2008-02-13)
 # Unmask multilib, since we need to use it.
 -multilib

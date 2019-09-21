@@ -7,4 +7,7 @@
   <upstream>
     <remote-id type="github">hashicorp/vault</remote-id>
   </upstream>
+  <use>
+    <flag name="webui">Enable the Web UI</flag>
+  </use>
 </pkgmetadata>

@@ -1,2 +1,0 @@
-# tmpfiles.d (5) for use with stubby.service
-d /run/stubby 0750 root stubby - -

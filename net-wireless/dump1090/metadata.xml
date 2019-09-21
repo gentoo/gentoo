@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>xmw@gentoo.org</email>
-		<name>Michael Weber</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>radio@gentoo.org</email>
 		<name>Radio</name>
 	</maintainer>
+	<use>
+		<flag name="bladerf">Build with Nuand BladeRF support</flag>
+		<flag name="rtlsdr">Build with Realtek RTL2832U (rtlsdr) support</flag>
+	</use>
 	<upstream>
-		<remote-id type="github">antirez/dump1090</remote-id>
+		<remote-id type="github">flightaware/dump1090</remote-id>
 	</upstream>
 </pkgmetadata>

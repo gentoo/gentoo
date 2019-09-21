@@ -1,0 +1,73 @@
+From 83773f6682154723d2a68e731c0e87c1f1a06893 Mon Sep 17 00:00:00 2001
+From: Jan Grulich <jgrulich@redhat.com>
+Date: Thu, 16 May 2019 13:05:19 +0200
+Subject: AppChooser: put list of applications into a scrollarea
+
+BUG:407559
+FIXED-IN: 5.15.6
+---
+ src/appchooserdialog.cpp     | 18 ++++++++++++++++--
+ src/appchooserdialogitem.cpp |  1 +
+ 2 files changed, 17 insertions(+), 2 deletions(-)
+
+diff --git a/src/appchooserdialog.cpp b/src/appchooserdialog.cpp
+index 8fc888f..b14a5f9 100644
+--- a/src/appchooserdialog.cpp
++++ b/src/appchooserdialog.cpp
+@@ -30,6 +30,7 @@
+ #include <KLocalizedString>
+ #include <QSettings>
+ #include <QStandardPaths>
++#include <QScrollArea>
+ #include <QTimer>
+ 
+ #include <KProcess>
+@@ -42,6 +43,7 @@ AppChooserDialog::AppChooserDialog(const QStringList &choices, const QString &de
+     , m_defaultApp(defaultApp)
+ {
+     setMinimumWidth(640);
++    setMaximumHeight(480);
+ 
+     QVBoxLayout *vboxLayout = new QVBoxLayout(this);
+     vboxLayout->setSpacing(20);
+@@ -60,11 +62,23 @@ AppChooserDialog::AppChooserDialog(const QStringList &choices, const QString &de
+ 
+     vboxLayout->addWidget(label);
+ 
+-    m_gridLayout = new QGridLayout();
++    QWidget *appsWidget = new QWidget(this);
++    QScrollArea *scrollArea = new QScrollArea(this);
++    scrollArea->setFrameShape(QFrame::NoFrame);
++    scrollArea->setWidget(appsWidget);
++    scrollArea->setWidgetResizable(true);
++
++    // FIXME: workaround scrollarea sizing, set minimum height to make sure at least two rows are visible
++    if (choices.count() > 3) {
++        scrollArea->setMinimumHeight(200);
++    }
++
++    m_gridLayout = new QGridLayout;
++    appsWidget->setLayout(m_gridLayout);
+ 
+     QTimer::singleShot(0, this, &AppChooserDialog::addDialogItems);
+ 
+-    vboxLayout->addLayout(m_gridLayout);
++    vboxLayout->addWidget(scrollArea);
+ 
+     setLayout(vboxLayout);
+     setWindowTitle(i18n("Open with"));
+diff --git a/src/appchooserdialogitem.cpp b/src/appchooserdialogitem.cpp
+index d01327f..1ce3249 100644
+--- a/src/appchooserdialogitem.cpp
++++ b/src/appchooserdialogitem.cpp
+@@ -36,6 +36,7 @@ AppChooserDialogItem::AppChooserDialogItem(const QString &applicationName, const
+     setIcon(QIcon::fromTheme(icon));
+     setIconSize(QSize(64, 64));
+     setCheckable(true);
++    setFixedHeight(100);
+     setFixedWidth(150);
+     setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+ 
+-- 
+cgit v1.1
+

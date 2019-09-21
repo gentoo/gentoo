@@ -1,0 +1,26 @@
+commit 41f18edc9f2f0b1ef304ea25f148bd56a6bf3d70
+Author: Maarten de Vries <maarten@de-vri.es>
+Date:   Thu Jan 31 00:58:29 2019 +0100
+
+    Remove signals from find_package(Boost COMPONENTS ...) (#1580)
+    
+    The packages use signals2, not signals. Only boost libraries with
+    compiled code should be passed to find_package(Boost COMPONENTS ...),
+    and the signals2 library has always been header only.
+    
+    Boost 1.69 has removed the deprecated signals library, so the otherwise
+    useless but harmless `signals` component now breaks the build.
+
+diff --git a/test/test_roscpp/CMakeLists.txt b/test/test_roscpp/CMakeLists.txt
+index 519767362..01c3d6672 100644
+--- a/test/test_roscpp/CMakeLists.txt
++++ b/test/test_roscpp/CMakeLists.txt
+@@ -11,7 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
+ )
+ 
+ if(CATKIN_ENABLE_TESTING)
+-  find_package(Boost REQUIRED COMPONENTS signals filesystem system)
++  find_package(Boost REQUIRED COMPONENTS filesystem system)
+ 
+   include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+ 

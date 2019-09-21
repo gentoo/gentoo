@@ -1,0 +1,81 @@
+From b08ff87378dab3e6255864d2749e17b71210e7bd Mon Sep 17 00:00:00 2001
+From: Henning Schild <henning@hennsch.de>
+Date: Sat, 9 Mar 2019 16:35:52 +0100
+Subject: [PATCH] libs: enforce static linking of internal libs
+
+Since the application binary is the only file installed and the libs are
+not used by anyone else, make sure they are always static. Otherwise
+cmake can make them shared and those shared libs will be missing after
+install.
+
+Signed-off-by: Henning Schild <henning@hennsch.de>
+---
+ src/libs/core/CMakeLists.txt                 | 2 +-
+ src/libs/registry/CMakeLists.txt             | 2 +-
+ src/libs/ui/CMakeLists.txt                   | 2 +-
+ src/libs/ui/qxtglobalshortcut/CMakeLists.txt | 2 +-
+ src/libs/util/CMakeLists.txt                 | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/libs/core/CMakeLists.txt b/src/libs/core/CMakeLists.txt
+index cd212bb..3bd7371 100644
+--- a/src/libs/core/CMakeLists.txt
++++ b/src/libs/core/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-add_library(Core
++add_library(Core STATIC
+     application.cpp
+     applicationsingleton.cpp
+     extractor.cpp
+diff --git a/src/libs/registry/CMakeLists.txt b/src/libs/registry/CMakeLists.txt
+index 3372711..977919d 100644
+--- a/src/libs/registry/CMakeLists.txt
++++ b/src/libs/registry/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-add_library(Registry
++add_library(Registry STATIC
+     cancellationtoken.h
+     docset.cpp
+     docsetmetadata.cpp
+diff --git a/src/libs/ui/CMakeLists.txt b/src/libs/ui/CMakeLists.txt
+index 1fe12ef..27a4877 100644
+--- a/src/libs/ui/CMakeLists.txt
++++ b/src/libs/ui/CMakeLists.txt
+@@ -16,7 +16,7 @@ set(Ui_FORMS
+     settingsdialog.ui
+ )
+ 
+-add_library(Ui
++add_library(Ui STATIC
+     aboutdialog.cpp
+     docsetlistitemdelegate.cpp
+     docsetsdialog.cpp
+diff --git a/src/libs/ui/qxtglobalshortcut/CMakeLists.txt b/src/libs/ui/qxtglobalshortcut/CMakeLists.txt
+index 8b1b0ef..1776839 100644
+--- a/src/libs/ui/qxtglobalshortcut/CMakeLists.txt
++++ b/src/libs/ui/qxtglobalshortcut/CMakeLists.txt
+@@ -19,7 +19,7 @@ elseif(WIN32)
+     )
+ endif()
+ 
+-add_library(QxtGlobalShortcut ${QxtGlobalShortcut_SOURCES})
++add_library(QxtGlobalShortcut STATIC ${QxtGlobalShortcut_SOURCES})
+ 
+ find_package(Qt5Gui REQUIRED)
+ target_link_libraries(QxtGlobalShortcut Qt5::Gui)
+diff --git a/src/libs/util/CMakeLists.txt b/src/libs/util/CMakeLists.txt
+index d4ab871..ad0e9ec 100644
+--- a/src/libs/util/CMakeLists.txt
++++ b/src/libs/util/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # Nothing to moc here, so avoid empty build units.
+ set(CMAKE_AUTOMOC OFF)
+ 
+-add_library(Util
++add_library(Util STATIC
+     plist.cpp
+     sqlitedatabase.cpp
+     version.cpp
+-- 
+2.19.2
+

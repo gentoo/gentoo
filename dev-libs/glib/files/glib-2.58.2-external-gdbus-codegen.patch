@@ -1,0 +1,124 @@
+From 69da419c33c24a05126d21fb3098139d30ba9093 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Wed, 19 Dec 2018 14:01:43 +0200
+Subject: [PATCH] build: don't build gdbus-codegen and rely on external
+ gdbus-codegen for tests
+
+---
+ configure.ac                                  |  1 -
+ docs/reference/gio/Makefile.am                |  1 -
+ gio/Makefile.am                               |  2 +-
+ gio/tests/Makefile.am                         | 22 ++++++-------------
+ .../gdbus-object-manager-example/Makefile.am  |  6 ++---
+ 5 files changed, 10 insertions(+), 22 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4b15b69b8..9187a12bb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3481,7 +3481,6 @@ gobject/glib-mkenums
+ gobject/tests/Makefile
+ gthread/Makefile
+ gio/Makefile
+-gio/gdbus-2.0/codegen/Makefile
+ gio/gdbus-2.0/codegen/config.py
+ gio/gnetworking.h
+ gio/xdgmime/Makefile
+diff --git a/docs/reference/gio/Makefile.am b/docs/reference/gio/Makefile.am
+index 08093e8a0..9ce11f824 100644
+--- a/docs/reference/gio/Makefile.am
++++ b/docs/reference/gio/Makefile.am
+@@ -212,7 +212,6 @@ man_MANS +=				\
+ 	gsettings.1			\
+ 	gresource.1			\
+ 	gdbus.1				\
+-	gdbus-codegen.1			\
+ 	gio.1				\
+ 	$(NULL)
+ 
+diff --git a/gio/Makefile.am b/gio/Makefile.am
+index 05b20cdef..ed5d7d4cb 100644
+--- a/gio/Makefile.am
++++ b/gio/Makefile.am
+@@ -1,6 +1,6 @@
+ include $(top_srcdir)/glib.mk
+ 
+-SUBDIRS = gdbus-2.0/codegen
++SUBDIRS = 
+ 
+ if OS_UNIX
+ SUBDIRS += xdgmime
+diff --git a/gio/tests/Makefile.am b/gio/tests/Makefile.am
+index c4e7a9257..4b538b1e9 100644
+--- a/gio/tests/Makefile.am
++++ b/gio/tests/Makefile.am
+@@ -253,9 +253,7 @@ gdbus-daemon-impl.c: $(top_srcdir)/gio/gdbusdaemon.c
+ # These files are only generated on Windows builds inside GIO,
+ # but we want them on non-Windows builds for the tests
+ gdbus-daemon-generated.h gdbus-daemon-generated.c: $(top_srcdir)/gio/dbus-daemon.xml $(GDBUS_PYTHON_DEPS)
+-	$(AM_V_GEN) UNINSTALLED_GLIB_SRCDIR=$(top_srcdir) \
+-		UNINSTALLED_GLIB_BUILDDIR=$(top_builddir) \
+-		$(PYTHON) $(top_srcdir)/gio/gdbus-2.0/codegen/gdbus-codegen.in \
++	$(AM_V_GEN) gdbus-codegen \
+ 		--interface-prefix org. \
+ 		--generate-c-code gdbus-daemon-generated \
+ 		--c-namespace _G \
+@@ -494,10 +492,8 @@ gnotification_SOURCES                    = $(gdbus_sessionbus_sources) gnotifica
+ 
+ BUILT_SOURCES += gdbus-test-codegen-generated.c gdbus-test-codegen-generated.h gdbus-test-codegen-generated-interface-info.c gdbus-test-codegen-generated-interface-info.h
+ gdbus-test-codegen.o: gdbus-test-codegen-generated.h gdbus-test-codegen-generated-interface-info.h
+-gdbus-test-codegen-generated.h: test-codegen.xml Makefile $(top_builddir)/gio/gdbus-2.0/codegen/gdbus-codegen
+-	$(AM_V_GEN) UNINSTALLED_GLIB_SRCDIR=$(top_srcdir) \
+-		UNINSTALLED_GLIB_BUILDDIR=$(top_builddir) \
+-		$(PYTHON) $(top_builddir)/gio/gdbus-2.0/codegen/gdbus-codegen \
++gdbus-test-codegen-generated.h: test-codegen.xml Makefile
++	$(AM_V_GEN) gdbus-codegen \
+ 		--interface-prefix org.project. \
+ 		--generate-c-code gdbus-test-codegen-generated \
+ 		--c-generate-object-manager \
+@@ -516,10 +512,8 @@ gdbus-test-codegen-generated.h: test-codegen.xml Makefile $(top_builddir)/gio/gd
+ 		$(NULL)
+ gdbus-test-codegen-generated.c: gdbus-test-codegen-generated.h
+ 	@: # Generated as side-effect of .h
+-gdbus-test-codegen-generated-interface-info.h: test-codegen.xml Makefile $(top_builddir)/gio/gdbus-2.0/codegen/gdbus-codegen
+-	$(AM_V_GEN) UNINSTALLED_GLIB_SRCDIR=$(top_srcdir) \
+-		UNINSTALLED_GLIB_BUILDDIR=$(top_builddir) \
+-		$(PYTHON) $(top_builddir)/gio/gdbus-2.0/codegen/gdbus-codegen \
++gdbus-test-codegen-generated-interface-info.h: test-codegen.xml Makefile
++	$(AM_V_GEN) gdbus-codegen \
+ 		--interface-info-header \
+ 		--annotate "org.project.Bar" Key1 Value1 \
+ 		--annotate "org.project.Bar" org.gtk.GDBus.Internal Value2 \
+@@ -532,10 +526,8 @@ gdbus-test-codegen-generated-interface-info.h: test-codegen.xml Makefile $(top_b
+ 		--output $@ \
+ 		$(srcdir)/test-codegen.xml \
+ 		$(NULL)
+-gdbus-test-codegen-generated-interface-info.c: test-codegen.xml Makefile $(top_builddir)/gio/gdbus-2.0/codegen/gdbus-codegen
+-	$(AM_V_GEN) UNINSTALLED_GLIB_SRCDIR=$(top_srcdir) \
+-		UNINSTALLED_GLIB_BUILDDIR=$(top_builddir) \
+-		$(PYTHON) $(top_builddir)/gio/gdbus-2.0/codegen/gdbus-codegen \
++gdbus-test-codegen-generated-interface-info.c: test-codegen.xml Makefile
++	$(AM_V_GEN) gdbus-codegen \
+ 		--interface-info-body \
+ 		--annotate "org.project.Bar" Key1 Value1 \
+ 		--annotate "org.project.Bar" org.gtk.GDBus.Internal Value2 \
+diff --git a/gio/tests/gdbus-object-manager-example/Makefile.am b/gio/tests/gdbus-object-manager-example/Makefile.am
+index 1d0464c5c..0603d9b0a 100644
+--- a/gio/tests/gdbus-object-manager-example/Makefile.am
++++ b/gio/tests/gdbus-object-manager-example/Makefile.am
+@@ -11,10 +11,8 @@ GDBUS_GENERATED = \
+ 	gdbus-example-objectmanager-generated-org.gtk.GDBus.Example.ObjectManager.Cat.xml	\
+ 	$(NULL)
+ 
+-$(GDBUS_GENERATED) : gdbus-example-objectmanager.xml Makefile $(top_builddir)/gio/gdbus-2.0/codegen/gdbus-codegen
+-	$(AM_V_GEN) UNINSTALLED_GLIB_SRCDIR=$(top_srcdir) \
+-		UNINSTALLED_GLIB_BUILDDIR=$(top_builddir) \
+-		$(PYTHON) $(top_builddir)/gio/gdbus-2.0/codegen/gdbus-codegen \
++$(GDBUS_GENERATED) : gdbus-example-objectmanager.xml Makefile
++	$(AM_V_GEN) gdbus-codegen \
+ 		--interface-prefix org.gtk.GDBus.Example.ObjectManager. \
+ 		--c-namespace Example \
+ 		--c-generate-object-manager \
+-- 
+2.17.0
+

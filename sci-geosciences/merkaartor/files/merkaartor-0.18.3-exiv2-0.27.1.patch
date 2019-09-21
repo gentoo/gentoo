@@ -1,0 +1,12 @@
+--- a/src/Docks/GeoImageDock.h	2016-09-06 00:29:45.000000000 +0200
++++ b/src/Docks/GeoImageDock.h	2019-07-01 19:20:43.450789475 +0200
+@@ -7,8 +7,7 @@
+ #include <QDockWidget>
+ #include <QMouseEvent>
+ #include <QShortcut>
+-#include <exiv2/image.hpp>
+-#include <exiv2/exif.hpp>
++#include <exiv2/exiv2.hpp>
+ #include <QDrag>
+ 
+ class ImageView;

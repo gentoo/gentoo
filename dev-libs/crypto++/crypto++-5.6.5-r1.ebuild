@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
@@ -14,7 +14,7 @@ SLOT="0/5.6" # subslot is so version
 KEYWORDS="alpha amd64 ~arm arm64 hppa ppc ppc64 sparc x86 ~x64-macos"
 IUSE="static-libs"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
@@ -43,11 +43,11 @@ src_install() {
 
 	# remove leftovers as build system sucks
 	rm -fr "${ED}"/usr/bin "${ED}"/usr/share/cryptopp
-	use static-libs || rm -f "${ED}${EPREFIX}"/usr/$(get_libdir)/*.a
+	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*.a
 
 	# compatibility
 	dosym cryptopp "${EPREFIX}"/usr/include/crypto++
-	for f in "${ED}${EPREFIX}"/usr/$(get_libdir)/*; do
+	for f in "${ED}"/usr/$(get_libdir)/*; do
 		ln -s "$(basename "${f}")" "$(echo "${f}" | sed 's/cryptopp/crypto++/')" || die
 	done
 }

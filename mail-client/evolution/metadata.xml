@@ -9,8 +9,6 @@
 		<flag name="archive">Enable archives support in attachments via
 			<pkg>app-arch/gnome-autoar</pkg></flag>
 		<flag name="bogofilter">Build <pkg>mail-filter/bogofilter</pkg> plugin</flag>
-		<flag name="crypt">Enable GPG encryption support using
-			<pkg>app-crypt/gnupg</pkg> and <pkg>app-crypt/pinentry</pkg></flag>
 		<flag name="geolocation">Enable support for displaying contacts on a map
 			inside evolution using <pkg>media-libs/libchamplain</pkg></flag>
 		<flag name="highlight">Enable text highlighting

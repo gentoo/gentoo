@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils unpacker
+
+inherit desktop eutils unpacker
 
 MY_P="spacetripperdemo"
 DESCRIPTION="Hardcore arcade shoot-em-up"
@@ -13,7 +14,7 @@ LICENSE="POMPOM"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
-RESTRICT="strip"
+RESTRICT="strip mirror bindist"
 
 RDEPEND="
 	>=virtual/opengl-7.0-r1[abi_x86_32(-)]

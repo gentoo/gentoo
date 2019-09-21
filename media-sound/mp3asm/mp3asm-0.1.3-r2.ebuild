@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_PV="${PV}-1"  # Patchlevel
 
@@ -14,19 +14,15 @@ SRC_URI="mirror://sourceforge/mp3asm/${PN}-${MY_PV}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
-IUSE=""
-
-DEPEND=""
 
 # the author uses weird numbering...
-S="${WORKDIR}/mp3asm-0.1"
+S="${WORKDIR}/${PN}-0.1"
 
 src_compile() {
-	econf || die "econf failed"
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" || die "emake failed"
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 }
 
 src_install() {
-	dobin src/mp3asm || die "install failed"
+	dobin src/mp3asm
 	dodoc Changelog README
 }

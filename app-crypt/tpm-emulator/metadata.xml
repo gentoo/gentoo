@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="sourceforge">tpm-emulator</remote-id>
 	</upstream>
+	<use>
+		<flag name="mtm-emulator">Build the MTM emulator</flag>
+	</use>
 </pkgmetadata>

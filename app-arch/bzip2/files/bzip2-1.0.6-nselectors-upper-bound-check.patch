@@ -1,0 +1,30 @@
+From 13ca8fee0c897121ae79ae644a212418398dfea7 Mon Sep 17 00:00:00 2001
+From: Amin Hassani <ahassani@chromium.org>
+Date: Fri, 8 Mar 2019 09:58:20 -0800
+Subject: [PATCH] Check for upper bounds of nselectors.
+
+Currently there is no check for the upper bounds of the
+nselectors. Hence, a corrupt input can cause a segfault.
+
+This issue was discovered by one of our fuzzers. The actual error was:
+
+../bzip2-1.0.6/decompress.c:299:10: runtime error: index 18002 out of bounds for type 'UChar [18002]'
+---
+ decompress.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/decompress.c b/decompress.c
+index 311f566..391552d 100644
+--- a/decompress.c
++++ b/decompress.c
+@@ -288,6 +288,7 @@ Int32 BZ2_decompress ( DState* s )
+       if (nGroups < 2 || nGroups > 6) RETURN(BZ_DATA_ERROR);
+       GET_BITS(BZ_X_SELECTOR_2, nSelectors, 15);
+       if (nSelectors < 1) RETURN(BZ_DATA_ERROR);
++      if (nSelectors > BZ_MAX_SELECTORS) RETURN(BZ_DATA_ERROR);
+       for (i = 0; i < nSelectors; i++) {
+          j = 0;
+          while (True) {
+-- 
+2.21.0.360.g471c308f928-goog
+

@@ -13,6 +13,6 @@
   for performance and scalability.
   </longdescription>
   <upstream>
-    <remote-id type="github">01org/tbb</remote-id>
+    <remote-id type="github">intel/tbb</remote-id>
   </upstream>
 </pkgmetadata>

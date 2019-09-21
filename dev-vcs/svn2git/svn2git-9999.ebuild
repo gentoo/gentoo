@@ -28,20 +28,13 @@ RDEPEND="${DEPEND}
 
 DOCS=( README.md )
 
-PATCHES=( "${FILESDIR}"/${PN}-1.0.2.1-include-path.patch )
-
-src_prepare() {
-	# Note: patching order matters
-	default
-
-	if [[ "${PV}" != "9999" ]]; then
-		eapply "${FILESDIR}"/${PN}-1.0.10-version.patch
-		export SVN_ALL_FAST_EXPORT_VERSION=${PVR}  # for src_compile
-	fi
-}
-
 src_configure() {
-	eqmake5 fast-export2.pro
+	local qmake_args=(
+		APR_INCLUDE=/usr/include/apr-1
+		PREFIX=/usr
+		SVN_INCLUDE=/usr/include/subversion-1
+	)
+	eqmake5 "${qmake_args[@]}" fast-export2.pro
 }
 
 src_install() {

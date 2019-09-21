@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	ssl? (
 		gnutls? ( net-libs/gnutls )
-		!gnutls? ( >=dev-libs/openssl-0.9.6m )
+		!gnutls? ( >=dev-libs/openssl-0.9.6m:0 )
 	)
 "
 DEPEND="${COMMON_DEPEND}

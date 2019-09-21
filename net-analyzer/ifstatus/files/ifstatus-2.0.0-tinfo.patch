@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ # Gabriel Montenegro 
+ 
+ GCC = g++
+-LDFLAGS = -lncurses
++LDFLAGS += $(shell $(PKG_CONFIG) --libs ncurses)
+ CFLAGS = -O2 -Wall
+ 
+ BIN = ifstatus

@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 inherit distutils-r1
 
@@ -12,14 +12,14 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
 RDEPEND="
 	$(python_gen_cond_dep '>=dev-python/trollius-2.0[${PYTHON_USEDEP}]' python2_7)
 	$(python_gen_cond_dep '>=dev-python/futures-3.0.3[${PYTHON_USEDEP}]' python2_7)
 "
-DEPEND="app-arch/unzip
+DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	doc? (
@@ -28,11 +28,7 @@ DEPEND="app-arch/unzip
 		>=dev-python/sphinx_rtd_theme-0.1.9[${PYTHON_USEDEP}]
 	)
 	test? ( >=dev-python/pytest-2.6.4[${PYTHON_USEDEP}]
-		>=dev-python/pytest-cov-1.8.1[${PYTHON_USEDEP}]
 		>=dev-python/mock-1.3.0[${PYTHON_USEDEP}]
-		>=dev-python/tox-2.1.1[${PYTHON_USEDEP}]
-		>=dev-python/pep8-1.6.2[${PYTHON_USEDEP}]
-		>=dev-python/pyenchant-1.6.6[${PYTHON_USEDEP}]
 	)
 "
 
@@ -43,22 +39,15 @@ src_prepare() {
 	rm "${S}/test/test_packaging.py" || die
 }
 
-python_prepare() {
-	# https://github.com/tavendo/txaio/issues/3
-	cp -r "${FILESDIR}"/util.py test || die
-
-	distutils-r1_python_prepare
-}
-
 python_compile_all() {
 	use doc && emake -C docs html
 }
 
 python_test() {
-	py.test || die "Tests failed under ${EPYTHON}"
+	pytest -v || die "Tests failed under ${EPYTHON}"
 }
 
 python_install_all() {
-	use doc && HTML_DOCS=( doc/_build/html/. )
+	use doc && HTML_DOCS=( docs/_build/html/. )
 	distutils-r1_python_install_all
 }

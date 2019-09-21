@@ -1,13 +1,13 @@
---- Makefile.am
-+++ Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -17,4 +17,4 @@
  		  NETInterface.cc NETInterface.hh \
  		  blackboxstyle.hh
  EXTRA_DIST = BUGS TODO
 -fluxter_LDADD = @X_LIBS@
 +fluxter_LDADD = @LIBS@
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -18,14 +18,12 @@
  [
   test "$CFLAGS" = "" && CFLAGS="-g -Wall -DDEBUG"

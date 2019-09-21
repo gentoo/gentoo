@@ -9,6 +9,7 @@
 		<flag name="debugger">Build the debugger</flag>
 		<flag name="gles2">Use GLES2 instead of OpenGL</flag>
 		<flag name="new-dynarec">Enable new experimental dynamic recompiler implementation (only for x86 and arm)</flag>
+		<flag name="opencv">Support video capture via <pkg>media-libs/opencv</pkg></flag>
 		<flag name="osd">Overlay emulator messages using on-screen-display</flag>
 	</use>
 	<longdescription>Mupen64Plus is a plugin-based N64 emulator for Linux which is capable of accurately playing many games.

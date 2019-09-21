@@ -1,0 +1,13 @@
+diff -Naur a/src/tingle/makefile b/src/tingle/makefile
+--- a/src/tingle/makefile	2019-06-09 21:09:50.677101222 +0300
++++ b/src/tingle/makefile	2019-06-19 05:57:15.196603384 +0300
+@@ -1,7 +1,7 @@
+ PROGRAM=tingle
+ SOURCES=tingle.c
+-CFLAGS=-O2 -Wall -pedantic -std=c99 -lpthread
+-LDFLAGS=-lm -pthread
++CFLAGS+=-Wall -pedantic -std=c99 -lpthread
++LDFLAGS+=-lm -pthread
+ HAVE_ALSA := 0
+ 
+ ALSA_TEST := $(shell pkg-config --exists alsa 1>&2 2>/dev/null; echo $$?)

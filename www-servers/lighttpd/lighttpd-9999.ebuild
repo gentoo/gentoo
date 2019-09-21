@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -151,7 +151,7 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	# init script stuff
 	newinitd "${FILESDIR}"/lighttpd.initd lighttpd
@@ -174,7 +174,7 @@ src_install() {
 	newdoc doc/config//lighttpd.conf lighttpd.conf.distrib
 	use ipv6 && readme.gentoo_create_doc
 
-	use doc && dohtml -r doc/*
+	use doc && dodoc -r doc
 
 	docinto txt
 	dodoc doc/outdated/*.txt

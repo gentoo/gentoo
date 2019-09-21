@@ -1,0 +1,73 @@
+diff -Nur old/cantera-2.4.0/SConstruct new/cantera-2.4.0/SConstruct
+--- old/SConstruct	2018-08-24 16:24:45.000000000 +0300
++++ new/SConstruct	2019-07-17 15:50:06.000000000 +0300
+@@ -189,7 +189,7 @@
+     toolchain = ['default']
+ 
+ env = Environment(tools=toolchain+['textfile', 'subst', 'recursiveInstall', 'wix', 'gch'],
+-                  ENV={'PATH': os.environ['PATH']},
++                  ENV={'PATH': os.environ['PATH'], 'CCACHE_DIR': os.environ.get('CCACHE_DIR','')},
+                   toolchain=toolchain,
+                   **extraEnvArgs)
+ 
+@@ -327,6 +327,14 @@
+         'prefix',
+         'Set this to the directory where Cantera should be installed.',
+         defaults.prefix, PathVariable.PathAccept),
++    PathVariable(
++        'libdirname',
++        """Set this to the directory where Cantera libraries should be installed.
++           Some distributions (e.g. Fedora/RHEL) use 'lib64' instead of 'lib' on 64-bit systems
++           or could use some other library directory name instead of 'lib' depends
++           on architecture and profile (e.g. Gentoo 'libx32' on x32 profile).
++           If user didn't set 'libdirname' configuration variable set it to default value 'lib'""",
++        'lib', PathVariable.PathAccept),
+     EnumVariable(
+         'python_package',
+         """If you plan to work in Python, then you need the ``full`` Cantera Python
+@@ -723,10 +731,7 @@
+ env['cantera_pure_version'] = '.'.join(str(x) for x in ctversion.version)
+ env['cantera_short_version'] = '.'.join(str(x) for x in ctversion.version[:2])
+ 
+-try:
+-    env['git_commit'] = getCommandOutput('git', 'rev-parse', '--short', 'HEAD')
+-except Exception:
+-    env['git_commit'] = 'unknown'
++env['git_commit'] = 'unknown'
+ 
+ # Print values of all build options:
+ print("Configuration variables read from 'cantera.conf' and command line:")
+@@ -1061,7 +1066,7 @@
+ 
+     # Ignore the minor version, e.g. 2.4.x -> 2.4
+     env['sundials_version'] = '.'.join(sundials_version.split('.')[:2])
+-    if env['sundials_version'] not in ('2.4','2.5','2.6','2.7','3.0','3.1'):
++    if env['sundials_version'] not in ('2.4','2.5','2.6','2.7','3.0','3.1','3.2'):
+         print("""ERROR: Sundials version %r is not supported.""" % env['sundials_version'])
+         sys.exit(1)
+     print("""INFO: Using system installation of Sundials version %s.""" % sundials_version)
+@@ -1465,12 +1470,6 @@
+ # *** Set additional configuration variables ***
+ # **********************************************
+ 
+-# Some distributions (e.g. Fedora/RHEL) use 'lib64' instead of 'lib' on 64-bit systems
+-if any(name.startswith('/usr/lib64/python') for name in sys.path):
+-    env['libdirname'] = 'lib64'
+-else:
+-    env['libdirname'] = 'lib'
+-
+ # On Debian-based systems, need to special-case installation to
+ # /usr/local because of dist-packages vs site-packages
+ env['debian'] = any(name.endswith('dist-packages') for name in sys.path)
+diff -Nur old/cantera-2.4.0/test_problems/SConscript new/cantera-2.4.0/test_problems/SConscript
+--- old/test_problems/SConscript	2018-08-24 16:24:45.000000000 +0300
++++ new/test_problems/SConscript	2019-07-17 15:41:35.000000000 +0300
+@@ -282,7 +282,7 @@
+ CompileAndTest('VPsilane_test', 'VPsilane_test', 'VPsilane_test', 'output_blessed.txt')
+ 
+ CompileAndTest('clib', 'clib_test', 'clib_test', 'output_blessed.txt',
+-               extensions=['^clib_test.c'], libs=['cantera_shared'])
++               extensions=['^clib_test.c'])
+ 
+ # Force explicitly-named tests to run even if SCons thinks they're up to date
+ for command in COMMAND_LINE_TARGETS:

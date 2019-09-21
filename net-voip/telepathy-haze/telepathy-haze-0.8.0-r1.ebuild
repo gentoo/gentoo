@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,6 +28,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/dbus-glib-0.73
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	virtual/pkgconfig"
 #	test? ( dev-python/twisted-words )"
 

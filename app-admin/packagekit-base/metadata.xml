@@ -11,8 +11,9 @@
 	</maintainer>
 	<use>
 		<flag name="command-not-found">Enable packagekit support on shell "command not found"</flag>
+		<flag name="consolekit">Use <pkg>sys-auth/consolekit</pkg> to get user session</flag>
 		<flag name="cron">Install cron script for auto-update</flag>
-		<flag name="elogind">Enable elogind support to get user session</flag>
+		<flag name="elogind">Enable <pkg>sys-auth/elogind</pkg> support to get user session</flag>
 		<flag name="entropy">Enable Entropy backend</flag>
 	</use>
 </pkgmetadata>

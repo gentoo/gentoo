@@ -1,0 +1,56 @@
+From 3d4a468b6c8cb154c88cf4592a5845973999dc29 Mon Sep 17 00:00:00 2001
+From: Abs62 <ottomann@yandex.ru>
+Date: Tue, 10 Apr 2018 18:44:43 +0300
+Subject: [PATCH] Qt5: Fix compilation with Qt 5.11 (issue #991)
+
+---
+ fulltextsearch.hh | 1 +
+ initializing.cc   | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/fulltextsearch.hh b/fulltextsearch.hh
+index da7e2943..adf9619f 100644
+--- a/fulltextsearch.hh
++++ b/fulltextsearch.hh
+@@ -6,6 +6,7 @@
+ #include <QRegExp>
+ #include <QAbstractListModel>
+ #include <QList>
++#include <QAction>
+ 
+ #include "dictionary.hh"
+ #include "ui_fulltextsearch.h"
+diff --git a/initializing.cc b/initializing.cc
+index 0db6909b..59e605d6 100644
+--- a/initializing.cc
++++ b/initializing.cc
+@@ -1,6 +1,7 @@
+ /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
+  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
+ 
++#include <QIcon>
+ #include "initializing.hh"
+ #include <QCloseEvent>
+ 
+From a65967805ab424b299bdfa1d1f9c7ebb8a7fd517 Mon Sep 17 00:00:00 2001
+From: Perfect Gentleman <perfect007gentleman@gmail.com>
+Date: Wed, 11 Apr 2018 00:04:12 +0700
+Subject: [PATCH] Update groups_widgets.hh
+
+fixes https://github.com/goldendict/goldendict/issues/991
+---
+ groups_widgets.hh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/groups_widgets.hh b/groups_widgets.hh
+index ce442fa2..2064e3bb 100644
+--- a/groups_widgets.hh
++++ b/groups_widgets.hh
+@@ -8,6 +8,7 @@
+ 
+ #include <vector>
+ 
++#include <QAction>
+ #include <QListWidget>
+ #include <QSortFilterProxyModel>
+ 

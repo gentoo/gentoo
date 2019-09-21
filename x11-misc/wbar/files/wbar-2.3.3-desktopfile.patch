@@ -1,10 +1,3 @@
-From: Julian Ospald <hasufell@gentoo.org>
-Date:   Fri Sep 21 17:08:32 2012 +0200
-
-	fix desktop file destination and QA issues
-
-diff --git a/configure.ac b/configure.ac
-index 00ad0b6..48fe73d 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -83,6 +83,7 @@ AC_DEFINE_UNQUOTED(PIDOF_BIN, "$PIDOF_BIN ", [ program to retreive wbar pid ])
@@ -15,8 +8,6 @@ index 00ad0b6..48fe73d 100644
  etc/Makefile \
  etc/wbar.cfg \
  etc/wbar.desktop.in \
-diff --git a/etc/Makefile.am b/etc/Makefile.am
-index ec41c76..d78525e 100644
 --- a/etc/Makefile.am
 +++ b/etc/Makefile.am
 @@ -3,7 +3,7 @@ CLEANFILES = *~ $(wbardesktop:.desktop.in.in=.desktop)
@@ -28,8 +19,6 @@ index ec41c76..d78525e 100644
  autostart_DATA = $(wbardesktop:.desktop.in.in=.desktop)
  
  bashcompletiondir = /etc/bash_completion.d
-diff --git a/po/POTFILES.in b/po/POTFILES.in
-index ddf920c..16ee6dd 100644
 --- a/po/POTFILES.in
 +++ b/po/POTFILES.in
 @@ -1,3 +1,4 @@
@@ -37,16 +26,12 @@ index ddf920c..16ee6dd 100644
  share/wbar.glade
  src/config/Functions.cc
  src/config/Functions.h
-diff --git a/po/POTFILES.skip b/po/POTFILES.skip
-index 327f139..27a8f48 100644
 --- a/po/POTFILES.skip
 +++ b/po/POTFILES.skip
 @@ -1,2 +1,3 @@
  etc/wbar.desktop.in.in
 +share/wbar.desktop.in.in
  
-diff --git a/share/Makefile.am b/share/Makefile.am
-index 87c736b..66027d4 100644
 --- a/share/Makefile.am
 +++ b/share/Makefile.am
 @@ -1,8 +1,17 @@
@@ -69,9 +54,6 @@ index 87c736b..66027d4 100644
 +$(wbardesktop) \
 +$(wbardesktop:.desktop.in.in=.desktop.in)
  
-diff --git a/share/wbar.desktop.in.in b/share/wbar.desktop.in.in
-new file mode 100644
-index 0000000..48fc33c
 --- /dev/null
 +++ b/share/wbar.desktop.in.in
 @@ -0,0 +1,12 @@

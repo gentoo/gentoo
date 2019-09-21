@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs multilib-minimal
+inherit toolchain-funcs multilib-minimal usr-ldscript
 
 DESCRIPTION="Userspace access to USB devices (libusb-0.1 compat wrapper)"
 HOMEPAGE="http://libusb.sourceforge.net/"

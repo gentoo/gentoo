@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="A mouse friendly tiling window manager"
-HOMEPAGE="http://www.hzog.net/index.php/Main_Page"
+HOMEPAGE="https://www.hzog.net/index.php/Main_Page"
 SRC_URI="http://www.hzog.net/pub/${PN}-1.9.9-r1.tar.gz"
 
 LICENSE="GPL-3"

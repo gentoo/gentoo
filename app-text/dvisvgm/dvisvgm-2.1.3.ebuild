@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Converts DVI files to SVG"
-HOMEPAGE="http://dvisvgm.bplaced.net/"
+HOMEPAGE="https://dvisvgm.de/"
 SRC_URI="https://github.com/mgieseki/dvisvgm/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"

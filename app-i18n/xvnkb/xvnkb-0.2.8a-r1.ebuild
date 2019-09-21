@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -14,7 +14,7 @@ HOMEPAGE="http://xvnkb.sourceforge.net/"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="ppc x86"
 RDEPEND="x11-libs/libX11
 	xft? ( x11-libs/libXft )"
 DEPEND="${RDEPEND}

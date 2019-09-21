@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/504270
 
---- examples/Makefile.am
-+++ examples/Makefile.am
+--- a/examples/Makefile.am
++++ b/examples/Makefile.am
 @@ -22,7 +22,7 @@
  
  player_example_SOURCES = player_example.c

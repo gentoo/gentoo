@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!--maintainer-needed-->
 	<longdescription lang="en">
 Pspdftool is a tool for preprinting preparation of documents. It supports PostScript and PDF files and allows users do several transformations (for example rotation, scale, miror ...) and pages selections.
 </longdescription>

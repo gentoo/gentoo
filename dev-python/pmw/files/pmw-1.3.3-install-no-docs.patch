@@ -1,10 +1,10 @@
  src/setup.py | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/src/setup.py b/src/setup.py
+diff --git a/setup.py b/setup.py
 index a5f9039..cfcf8a2 100755
---- a/src/setup.py
-+++ b/src/setup.py
+--- a/setup.py
++++ b/setup.py
 @@ -16,9 +16,7 @@ setup(name="Pmw",
  		'Pmw.Pmw_1_3_3.lib',],
  

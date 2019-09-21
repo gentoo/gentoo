@@ -27,13 +27,13 @@ sys-apps/attr
 sys-apps/acl
 net-misc/pump
 
-# Diego Pettenò <flameeyes@gentoo.org> (5 June 2005)
+# Diego Pettenò <flameeyes@gentoo.org> (2005-06-05)
 # metamail isn't maintained anymore upstream, Debian patches doesn't
 # work on FreeBSD, and neither on Debian or on FreeBSD the package
 # has a maintainer to coordinate with. Isn't an hard-dep for anything.
 net-mail/metamail
 
-# Diego Pettenò <flameeyes@gentoo.org> (20 Aug 2005)
+# Diego Pettenò <flameeyes@gentoo.org> (2005-08-20)
 # We obviously can't have linux-sources (mask this to allow the
 # virtual to be masked)
 sys-kernel/gentoo-sources

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,6 @@ EAPI=5
 inherit linux-info xorg-2
 
 DESCRIPTION="Driver for Synaptics touchpads"
-HOMEPAGE="https://cgit.freedesktop.org/xorg/driver/xf86-input-synaptics/"
 
 KEYWORDS="amd64 arm ~mips ppc ppc64 x86"
 IUSE="kernel_linux"
@@ -17,8 +16,7 @@ RDEPEND="kernel_linux? ( >=dev-libs/libevdev-0.4 )
 	>=x11-libs/libXtst-1.1.0"
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-2.6.37
-	>=x11-proto/inputproto-2.1.99.3
-	>=x11-proto/recordproto-1.14"
+	x11-base/xorg-proto"
 
 DOCS=( "README" )
 

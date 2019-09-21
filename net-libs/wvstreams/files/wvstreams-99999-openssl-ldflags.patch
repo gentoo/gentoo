@@ -1,0 +1,10 @@
+--- a/config.ac
++++ b/config.ac
+@@ -444,7 +444,6 @@
+ if test "$with_openssl" != "no"; then
+     if test "$with_openssl" != ""; then
+         WV_APPEND(CPPFLAGS, [-I$with_openssl/include])
+-        WV_APPEND(LDFLAGS, [-L$with_openssl])
+     fi
+     AC_CHECK_HEADERS(openssl/ssl.h,, [with_openssl=no],
+                      [#define OPENSSL_NO_KRB5])

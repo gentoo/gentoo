@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -35,7 +35,7 @@ pkg_nofetch() {
 	einfo
 	einfo " 1. Visit ${DOWNLOADSITE} and follow instructions"
 	einfo " 2. Download ${SRC_URI}"
-	einfo " 3. Move file to ${DISTDIR}"
+	einfo " 3. Move file to your DISTDIR directory"
 	einfo " 4. Run emerge on this package again to complete"
 	einfo
 }

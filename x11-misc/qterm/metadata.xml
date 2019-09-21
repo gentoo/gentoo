@@ -6,7 +6,7 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">qterm</remote-id>
 		<remote-id type="github">qterm/qterm</remote-id>
+		<remote-id type="sourceforge">qterm</remote-id>
 	</upstream>
 </pkgmetadata>

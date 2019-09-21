@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 inherit cmake-utils toolchain-funcs fortran-2 python-single-r1
 
@@ -22,12 +22,11 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="aec doc examples fortran jpeg2k netcdf png python static-libs test threads"
+IUSE="aec doc examples fortran netcdf png python static-libs test threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	aec? ( sci-libs/libaec:= )
-	jpeg2k? ( media-libs/jasper:= )
 	netcdf? ( sci-libs/netcdf:= )
 	png? ( media-libs/libpng:= )
 	python? (
@@ -72,7 +71,7 @@ src_configure() {
 		-DENABLE_AEC="$(usex aec)"
 		-DENABLE_FORTRAN="$(usex fortran)"
 		-DENABLE_GRIB_THREADS="$(usex threads)"
-		-DENABLE_JPG="$(usex jpeg2k)"
+		-DENABLE_JPG=OFF
 		-DENABLE_NETCDF="$(usex netcdf)"
 		-DENABLE_PNG="$(usex png)"
 		-DENABLE_PYTHON="$(usex python)"

@@ -1,0 +1,20 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -26,7 +26,7 @@
+ xgettext = @XGETTEXT@
+ msgfmt = @MSGFMT@
+ ranlib = @RANLIB@
+-ar = ar
++AR ?= ar
+ 
+ cc = $(CC)
+ cflags = $(CPPFLAGS) $(CFLAGS) $(DEFS) -I./include
+@@ -249,7 +249,7 @@
+ 
+ bin/libwdm.a: src/libwdm/debug.o src/libwdm/environment.o src/libwdm/names.o src/libwdm/plcheckers.o
+ 	mkdir -p bin
+-	$(ar) cru bin/libwdm.a src/libwdm/debug.o src/libwdm/environment.o src/libwdm/names.o src/libwdm/plcheckers.o
++	$(AR) cru bin/libwdm.a src/libwdm/debug.o src/libwdm/environment.o src/libwdm/names.o src/libwdm/plcheckers.o
+ 	$(ranlib) bin/libwdm.a
+ 
+ $(DESTDIR)$(MANDIR)/man1/wdmLogin.1: doc/wdmLogin.man

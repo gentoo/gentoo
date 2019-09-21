@@ -9,11 +9,6 @@
     <email>php-bugs@gentoo.org</email>
     <name>PHP</name>
   </maintainer>
-  <use>
-    <flag name="extension">
-      Build the C extension (only for php-5.6.x).
-    </flag>
-  </use>
   <upstream>
     <remote-id type="github">twigphp/Twig</remote-id>
   </upstream>

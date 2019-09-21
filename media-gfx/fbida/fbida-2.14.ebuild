@@ -5,9 +5,9 @@ EAPI=6
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Image viewers for the framebuffer console (fbi) and X11 (ida)"
-HOMEPAGE="http://www.kraxel.org/blog/linux/fbida/"
+HOMEPAGE="https://www.kraxel.org/blog/linux/fbida/"
 SRC_URI="
-	http://www.kraxel.org/releases/${PN}/${P}.tar.gz
+	https://www.kraxel.org/releases/${PN}/${P}.tar.gz
 	mirror://gentoo/ida.png.bz2
 "
 LICENSE="GPL-2 IJG"
@@ -25,7 +25,7 @@ CDEPEND="
 	>=media-libs/freetype-2.0
 	media-libs/libepoxy
 	media-libs/libexif
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	virtual/jpeg:*
 	virtual/ttf-fonts
 	x11-libs/cairo[opengl]

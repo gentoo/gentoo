@@ -7,7 +7,7 @@ CMAKE_MAKEFILE_GENERATOR=emake
 inherit cmake-utils
 
 DESCRIPTION="MySQL database connector for C++ (mimics JDBC 4.0 API)"
-HOMEPAGE="http://dev.mysql.com/downloads/connector/cpp/"
+HOMEPAGE="https://dev.mysql.com/downloads/connector/cpp/"
 URI_DIR="Connector-C++"
 SRC_URI="https://dev.mysql.com/get/Downloads/${URI_DIR}/${P}-src.tar.gz"
 

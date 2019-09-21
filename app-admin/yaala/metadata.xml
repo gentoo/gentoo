@@ -5,7 +5,4 @@
   <longdescription>
     Yet Another Log Analyzer
   </longdescription>
-  <use>
-    <flag name="storable">Support for persistence of Perl data structures.</flag>
-  </use>
 </pkgmetadata>

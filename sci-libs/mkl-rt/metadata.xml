@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+
+  <upstream>
+    <doc>https://software.intel.com/en-us/mkl</doc>
+  </upstream>
+
+  <maintainer type="person">
+    <name>Mo Zhou</name>
+    <email>lumin@debian.org</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+
+  <longdescription>
+    Intel® Math Kernel Library (Intel® MKL) optimizes code with minimal
+    effort for future generations of Intel® processors. It is compatible
+    with your choice of compilers, languages, operating systems, and
+    linking and threading models.
+  </longdescription>
+
+  <use>
+    <flag name="eselect-ldso">Enable runtime library switching by eselect and ld.so.</flag>
+  </use>
+
+</pkgmetadata>

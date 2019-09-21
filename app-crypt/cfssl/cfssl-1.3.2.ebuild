@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ EGO_PN="github.com/cloudflare/${PN}"
 inherit golang-build golang-vcs-snapshot
 
 SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="Cloudflare's PKI and TLS toolkit"
 HOMEPAGE="https://github.com/cloudflare/cfssl"

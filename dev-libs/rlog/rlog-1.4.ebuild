@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="A C++ logging library"
-HOMEPAGE="http://www.arg0.net/rlog"
+HOMEPAGE="https://www.arg0.net/rlog"
 SRC_URI="https://rlog.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

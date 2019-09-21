@@ -16,5 +16,7 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Babel</remote-id>
+		<remote-id type="github">python-babel/babel</remote-id>
+		<bugs-to>https://github.com/python-babel/babel/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,42 @@
+#!/bin/sh
+
+usage() {
+  printf "The following firmware's are supported:\n"
+  printf "Nordic Semiconductor Bootloader\n"
+  printf "CrazyRadio Firmware\n"
+  printf "RFStorm Research Firmware\n"
+  printf "run \"mousejack install\"\n\n"
+  printf "To flash Logitech Unifying Dongle C-U0007\n"
+  printf "run \"mousejack logitech_install\"\n\n"
+}
+
+if [ -z "${1}" ]; then
+  usage
+  exit 1
+fi
+
+#parse args
+while true; do
+  case $1 in
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    install)
+      /usr/share/mousejack/prog/usb-flash.py /usr/share/mousejack/dongle.bin
+      exit $?
+      ;;
+    logitech_install)
+      /usr/share/mousejack/prog/logitech-usb-flash.py /usr/share/mousejack/dongle.formatted.bin /usr/share/mousejack/dongle.formatted.ihx
+      exit $?
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      break
+      ;;
+  esac
+  shift
+done

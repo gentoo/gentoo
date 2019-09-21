@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ IUSE=""
 RDEPEND="dev-cpp/gtkmm:2.4
 	dev-libs/libsigc++:2
 	>=media-sound/pulseaudio-0.9.7[glib]
-	|| ( x11-themes/tango-icon-theme x11-themes/gnome-icon-theme )"
+	x11-themes/tango-icon-theme"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

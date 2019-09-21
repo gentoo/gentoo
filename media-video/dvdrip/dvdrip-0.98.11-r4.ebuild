@@ -1,15 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils flag-o-matic perl-module
 
 DESCRIPTION="dvd::rip is a graphical frontend for transcode"
-HOMEPAGE="http://www.exit1.org/dvdrip/"
-SRC_URI="http://www.exit1.org/dvdrip/dist/${P}.tar.gz"
+HOMEPAGE="https://www.exit1.org/dvdrip/"
+SRC_URI="https://www.exit1.org/dvdrip/dist/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="ffmpeg fping libav mplayer ogg subtitles vcd vorbis xine xvid"
 
 DEPEND=">=dev-perl/Event-ExecFlow-0.64

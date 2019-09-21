@@ -1,5 +1,5 @@
---- iwidgets4.0.1/Makefile.in
-+++ iwidgets4.0.1/Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -30,6 +30,7 @@
  
  srcdir = @srcdir@

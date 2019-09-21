@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>steils@gentoo.org</email>
+		<name>Stefan Strogin</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
 	<longdescription>Free, open-source, non-linear video editor to create and edit videos and movies</longdescription>
 	<upstream>
-		<remote-id type="launchpad">openshot</remote-id>
 		<remote-id type="github">OpenShot/openshot-qt</remote-id>
 		<bugs-to>https://github.com/OpenShot/openshot-qt/issues</bugs-to>
 	</upstream>

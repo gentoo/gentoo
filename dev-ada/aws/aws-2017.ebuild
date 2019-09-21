@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,9 +19,9 @@ IUSE="gnat_2016 +gnat_2017"
 
 RDEPEND="dev-ada/xmlada[gnat_2016=,gnat_2017=,static-libs]"
 DEPEND="${RDEPEND}
-	dev-ada/gnat_util[gnat_2016=,gnat_2017=,static-libs]
-	dev-ada/asis[gnat_2016=,gnat_2017=]
-	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
+	dev-ada/gnat_util[gnat_2016(-)?,gnat_2017(-)?,static-libs]
+	dev-ada/asis[gnat_2016(-)?,gnat_2017(-)?]
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?]"
 REQUIRED_USE="^^ ( gnat_2016 gnat_2017 )"
 
 S="${WORKDIR}"/${MY_P}
@@ -29,16 +29,12 @@ S="${WORKDIR}"/${MY_P}
 PATCHES=( "${FILESDIR}"/${PN}-2016-gentoo.patch )
 
 src_configure() {
-	emake -j1 setup prefix=/usr
+	emake -j1 setup prefix=/usr \
+		GPRBUILD="/usr/bin/gprbuild -v"
 }
 
 src_compile() {
-	if use gnat_2016; then
-		GCC_PV=4.9.4
-	else
-		GCC_PV=6.3.0
-	fi
-	emake GCC=${CHOST}-gcc-${GCC_PV} \
+	emake \
 		PROCESSORS=$(makeopts_jobs) \
 		DEBUG=true \
 		GPRBUILD="/usr/bin/gprbuild -v"

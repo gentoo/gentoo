@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,8 @@ fi
 inherit toolchain-funcs ${SCM}
 
 DESCRIPTION="A suite of programs to modify openttd/Transport Tycoon Deluxe's GRF files"
-HOMEPAGE="http://dev.openttdcoop.org/projects/grfcodec"
-[[ -z ${SCM} ]] && SRC_URI="http://binaries.openttd.org/extra/${PN}/${PV}/${P}-source.tar.xz"
+HOMEPAGE="https://dev.openttdcoop.org/projects/grfcodec"
+[[ -z ${SCM} ]] && SRC_URI="https://binaries.openttd.org/extra/${PN}/${PV}/${P}-source.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

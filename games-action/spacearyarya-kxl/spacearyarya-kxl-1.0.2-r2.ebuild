@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+
+inherit autotools desktop
 
 MY_P=SpaceAryarya-KXL-${PV}
 DESCRIPTION="A 2D/3D shooting game"

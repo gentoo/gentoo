@@ -11,9 +11,8 @@
 	</maintainer>
 	<use>
 		<flag name="examples">Install interactive demo module browser and sample applets.</flag>
-		<flag name="doc">Install HTML wxWidgets docs and wxpython API reference.</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">wxpython</remote-id>
+		<remote-id type="github">wxWidgets/Phoenix</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,7 +4,7 @@
 EAPI=5
 
 DESCRIPTION="A fork of Mupen64 Nintendo 64 emulator, meta-package"
-HOMEPAGE="http://www.mupen64plus.org/"
+HOMEPAGE="https://www.mupen64plus.org/"
 SRC_URI=""
 
 LICENSE="metapackage"

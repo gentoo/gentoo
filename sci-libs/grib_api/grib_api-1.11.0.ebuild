@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit autotools-utils toolchain-funcs fortran-2 python-single-r1
 
@@ -21,13 +21,13 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="doc examples fortran jasper jpeg2k netcdf openmp png python static-libs threads perl"
+IUSE="doc examples fortran jpeg2k netcdf openmp png python static-libs threads perl"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	jpeg2k? (
-		jasper? ( media-libs/jasper:= )
-		!jasper? ( media-libs/openjpeg:0 )
+		media-libs/openjpeg:0
+		!!media-libs/jasper
 	)
 	netcdf? ( sci-libs/netcdf )
 	png? ( media-libs/libpng:0= )

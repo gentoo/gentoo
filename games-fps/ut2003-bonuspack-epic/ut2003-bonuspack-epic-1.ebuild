@@ -1,11 +1,11 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit games
 
 DESCRIPTION="Epic Bonus Pack for UT2003"
-HOMEPAGE="http://www.moddb.com/games/unreal-tournament-2003"
+HOMEPAGE="https://www.moddb.com/games/unreal-tournament-2003"
 SRC_URI="http://ftp.student.utwente.nl/pub/games/UT2003/BonusPack/UT2003-epicbonuspackone.exe"
 
 LICENSE="ut2003"

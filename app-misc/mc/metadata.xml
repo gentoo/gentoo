@@ -15,7 +15,6 @@
   </maintainer>
   <use>
     <flag name="edit">Compile and install the mcedit application</flag>
-    <flag name="mclib">Compile and install the libmc.so shared library</flag>
     <flag name="sftp">Add support for sftp (uses <pkg>net-libs/libssh2</pkg> for it).</flag>
     <flag name="slang">Use <pkg>sys-libs/slang</pkg> instead of <pkg>sys-libs/ncurses</pkg>.</flag>
     <flag name="xdg">Toggles mc's config dir location. Enable for $XDG_CONFIG_HOME/mc, disable for $HOME/.mc</flag>

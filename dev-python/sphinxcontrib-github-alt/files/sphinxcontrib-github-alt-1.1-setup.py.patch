@@ -1,0 +1,19 @@
+setup.py for sphinxcontrib_github_alt by Marius Brehler <marbre@linux.sungazer.de>.
+
+Patch by Marius Brehler <marbrbre@linux.sungazer.de>.
+--- /dev/null
++++ b/setup.py
+@@ -0,0 +1,12 @@
++from distutils.core import setup
++
++setup(name='sphinxcontrib_github_alt',
++      version='1.1',
++      author='Jupyter Development Team',
++      author_email='jupyter@googlegroups.com',
++      url='https://github.com/jupyter/sphinxcontrib_github_alt',
++      packages=['sphinxcontrib_github_alt'],
++      classifiers=[
++          'License :: OSI Approved :: BSD License'
++      ]
++)
+\ No newline at end of file

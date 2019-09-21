@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 eutils multilib flag-o-matic
 
@@ -11,7 +11,7 @@ MYPN="${PN/scikits_/scikit-}"
 MYP="${MYPN}-${PV}"
 
 DESCRIPTION="Python modules for machine learning and data mining"
-HOMEPAGE="http://scikit-learn.org"
+HOMEPAGE="https://scikit-learn.org"
 SRC_URI="mirror://pypi/${MYPN:0:1}/${MYPN}/${MYP}.tar.gz"
 
 LICENSE="BSD"

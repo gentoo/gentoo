@@ -1,0 +1,32 @@
+diff --git a/test/test_submit.py b/test/test_submit.py
+index bce5362..2d13811 100644
+--- a/test/test_submit.py
++++ b/test/test_submit.py
+@@ -1,13 +1,23 @@
+ import unittest
+-import os
+-import sys
+-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+-
+ import musicbrainzngs
+ from musicbrainzngs import musicbrainz
+ from test import _common
+ 
++
+ class SubmitTest(unittest.TestCase):
++
++    def setUp(self):
++        self.orig_opener = musicbrainzngs.compat.build_opener
++        musicbrainz.set_useragent("test_client", "1.0")
++        musicbrainz.auth("user", "password")
++
++    def tearDown(self):
++        musicbrainzngs.compat.build_opener = self.orig_opener
++        musicbrainz._useragent = ""
++        musicbrainz._client = ""
++        musicbrainz.user = ""
++        musicbrainz.password = ""
++
+     def test_submit_tags(self):
+         self.opener = _common.FakeOpener("<response/>")
+         musicbrainzngs.compat.build_opener = lambda *args: self.opener

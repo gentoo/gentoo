@@ -1,0 +1,25 @@
+From 1f98b4a87df3d68b8dd6a2eef24521db7a4d5c75 Mon Sep 17 00:00:00 2001
+From: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date: Wed, 15 May 2019 18:13:29 +0900
+Subject: [PATCH] Fix compilation error with exiv2 0.27.1
+
+Due to the change in https://github.com/Exiv2/exiv2/commit/71498411c19e6b97a24245b5a1a22063c76a972a ,
+gnome-cmd-tags-exiv2.cc does not compile with exiv2 0.27.1 .
+
+This commit is to fix the error.
+---
+ src/tags/gnome-cmd-tags-exiv2.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/tags/gnome-cmd-tags-exiv2.cc b/src/tags/gnome-cmd-tags-exiv2.cc
+index 807e6f43..e4b269f3 100644
+--- a/src/tags/gnome-cmd-tags-exiv2.cc
++++ b/src/tags/gnome-cmd-tags-exiv2.cc
+@@ -33,6 +33,7 @@
+ #ifdef HAVE_EXIV2
+ #include <exiv2/exif.hpp>
+ #include <exiv2/image.hpp>
++#include <exiv2/error.hpp>
+ #endif
+ 
+ using namespace std;

@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
+PYTHON_COMPAT=( python2_7 python3_5 python3_6 python3_7 )
 
 inherit distutils-r1 vcs-snapshot
 
@@ -21,19 +21,15 @@ else
 fi
 
 RDEPEND="
-	>=dev-python/botocore-1.8.20[${PYTHON_USEDEP}]
-	>=dev-python/jmespath-0.7.1[${PYTHON_USEDEP}]
-	<dev-python/jmespath-1.0.0[${PYTHON_USEDEP}]
-	>=dev-python/s3transfer-0.1.10[${PYTHON_USEDEP}]
-	<dev-python/s3transfer-0.2.0[${PYTHON_USEDEP}]
+	>=dev-python/botocore-1.12.4[${PYTHON_USEDEP}]
+	dev-python/jmespath[${PYTHON_USEDEP}]
+	dev-python/s3transfer[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
-		>=dev-python/guzzle_sphinx_theme-0.7.10[${PYTHON_USEDEP}]
-		<dev-python/guzzle_sphinx_theme-0.8[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.1.3[${PYTHON_USEDEP}]
-		<dev-python/sphinx-1.7[${PYTHON_USEDEP}]
+		dev-python/guzzle_sphinx_theme[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
 	test? (
 		${RDEPEND}

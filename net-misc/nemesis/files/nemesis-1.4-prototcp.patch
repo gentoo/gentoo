@@ -1,5 +1,5 @@
---- nemesis-1.4-orig/source/src/nemesis-proto_tcp.c	Fri Oct 31 16:29:38 2003
-+++ nemesis-1.4/source/src/nemesis-proto_tcp.c	Fri May 19 17:31:13 2006
+--- a/src/nemesis-proto_tcp.c
++++ b/src/nemesis-proto_tcp.c
 @@ -16,7 +16,7 @@
          FileData *ipod, FileData *tcpod, char *device)
  {

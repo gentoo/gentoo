@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_{5,6} )
 
 DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1 xdg-utils
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/gramps-project/${PN}/archive/v${PV}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+rcs +reports exif geo postscript spell"
 
 RDEPEND="

@@ -10,7 +10,9 @@
 		<name>Radio</name>
 	</maintainer>
 	<use>
+		<flag name="bladerf">use native backend which directly uses <pkg>net-wireless/bladerf</pkg></flag>
 		<flag name="hackrf">use native backend which directly uses <pkg>net-libs/libhackrf</pkg></flag>
+		<flag name="plutosdr">use native backend which directly uses <pkg>net-libs/libiio</pkg></flag>
 		<flag name="rtlsdr">use native backend which directly uses <pkg>net-wireless/rtl-sdr</pkg></flag>
 		<flag name="uhd">use native backend which directly uses <pkg>net-wireless/uhd</pkg></flag>
 	</use>

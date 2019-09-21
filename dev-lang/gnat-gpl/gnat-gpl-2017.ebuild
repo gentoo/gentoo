@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -37,7 +37,7 @@ SRC_URI+="
 LICENSE+=" GPL-2 GPL-3"
 SLOT="${TOOLCHAIN_GCC_PV}"
 KEYWORDS="amd64 x86"
-IUSE="bootstrap"
+IUSE="+bootstrap"
 
 RDEPEND="!sys-devel/gcc:${TOOLCHAIN_GCC_PV}"
 DEPEND="${RDEPEND}
@@ -125,6 +125,9 @@ src_prepare() {
 		-e 's:$(P) ::g' \
 		gcc/ada/gcc-interface/Makefile.in \
 		|| die "sed failed"
+	# fix missing ustat.h
+	epatch "${FILESDIR}/${P}-ustat.patch"
+
 	toolchain_src_prepare
 }
 

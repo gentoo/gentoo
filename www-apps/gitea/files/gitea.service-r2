@@ -1,0 +1,34 @@
+[Unit]
+Description=Gitea service
+Documentation=https://docs.gitea.io/
+
+AssertPathIsDirectory=/var/lib/gitea
+AssertPathIsReadWrite=/var/lib/gitea
+
+After=network.target
+Requires=network.target
+After=mysqld.service
+After=postgresql-9.3.service
+After=postgresql-9.4.service
+After=postgresql-9.5.service
+After=postgresql-9.6.service
+After=postgresql-10.service
+After=postgresql-11.service
+After=postgresql-12.service
+After=memcached.service
+After=redis.service
+
+[Service]
+User=git
+Group=git
+
+Environment="GITEA_WORK_DIR=/var/lib/gitea" "GITEA_CUSTOM=/var/lib/gitea/custom"
+WorkingDirectory=/var/lib/gitea
+ExecStart=/usr/bin/gitea web --config /etc/gitea/app.ini
+
+Restart=always
+PrivateTmp=true
+Nice=5
+
+[Install]
+WantedBy=multi-user.target

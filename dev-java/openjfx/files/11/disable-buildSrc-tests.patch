@@ -1,0 +1,13 @@
+Description: Disables the buildSrc tests to work around a Gradle bug (UnsupportedOperationException: Cannot nest operations in the same thread)
+Author: Emmanuel Bourg <ebourg@apache.org>
+Forwarded: not-needed
+--- a/buildSrc/build.gradle
++++ b/buildSrc/build.gradle
+@@ -81,6 +81,7 @@
+ // Java 7 but when we switch to 8 this will be needed, and probably again when
+ // we start building with Java 9.
+ test {
++    enabled = false;
+     enableAssertions = true;
+     testLogging.exceptionFormat = "full";
+     scanForTestClasses = false;

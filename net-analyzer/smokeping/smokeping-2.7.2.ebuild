@@ -33,7 +33,7 @@ DEPEND="
 	dev-perl/libwww-perl
 	dev-perl/perl-ldap
 	virtual/perl-libnet
-	|| ( dev-perl/CGI-Fast <dev-perl/CGI-4 )
+	dev-perl/CGI-Fast
 	!apache2? ( virtual/httpd-cgi )
 	apache2? (
 		>=www-apache/mod_perl-2.0.1

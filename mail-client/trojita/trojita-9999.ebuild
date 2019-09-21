@@ -1,25 +1,30 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-EGIT_REPO_URI="https://anongit.kde.org/${PN}.git"
-inherit cmake-utils gnome2-utils virtualx xdg-utils
-[[ ${PV} == 9999 ]] && inherit git-r3
-
-DESCRIPTION="A Qt IMAP e-mail client"
-HOMEPAGE="http://trojita.flaska.net/"
-if [[ ${PV} != 9999 ]]; then
+if [[ ${PV} = *9999* ]]; then
+	EGIT_REPO_URI="https://anongit.kde.org/${PN}.git"
+	inherit git-r3
+else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
+inherit cmake-utils virtualx xdg
+
+DESCRIPTION="A Qt IMAP e-mail client"
+HOMEPAGE="http://trojita.flaska.net/"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-IUSE="+crypt +dbus debug +password test +zlib"
+IUSE="+crypt +dbus debug +password pim +spell test +zlib"
 
 REQUIRED_USE="password? ( dbus )"
 
+BDEPEND="
+	dev-qt/linguist-tools:5
+	zlib? ( virtual/pkgconfig )
+"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -34,12 +39,12 @@ RDEPEND="
 	)
 	dbus? ( dev-qt/qtdbus:5 )
 	password? ( dev-libs/qtkeychain[qt5(+)] )
+	pim? ( kde-apps/akonadi-contacts:5 )
+	spell? ( kde-frameworks/sonnet:5 )
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
 	test? ( dev-qt/qttest:5 )
-	zlib? ( virtual/pkgconfig )
 "
 
 DOCS=( README LICENSE )
@@ -49,17 +54,20 @@ src_prepare() {
 
 	# the build system is taking a look at `git describe ... --dirty` and
 	# gentoo's modifications to CMakeLists.txt break these
-	sed -i "s/--dirty//" "${S}/cmake/TrojitaVersion.cmake" || die "Cannot fix the version check"
+	sed -e "s/--dirty//" -i cmake/TrojitaVersion.cmake || die "Cannot fix the version check"
 }
 
 src_configure() {
 	local mycmakeargs=(
+		-DWITH_ABOOKADDRESSBOOK_PLUGIN=ON
 		-DWITH_CRYPTO_MESSAGES=$(usex crypt)
 		-DWITH_GPGMEPP=$(usex crypt)
 		-DWITH_MIMETIC=$(usex crypt)
 		-DWITH_DBUS=$(usex dbus)
 		-DWITH_QTKEYCHAIN_PLUGIN=$(usex password)
-		-DWITH_TESTS=$(usex test)
+		-DWITH_AKONADIADDRESSBOOK_PLUGIN=$(usex pim)
+		-DWITH_SONNET_PLUGIN=$(usex spell)
+		-DBUILD_TESTING=$(usex test)
 		-DWITH_ZLIB=$(usex zlib)
 	)
 
@@ -68,18 +76,4 @@ src_configure() {
 
 src_test() {
 	virtx cmake-utils_src_test
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }

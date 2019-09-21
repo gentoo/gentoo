@@ -1,0 +1,53 @@
+#!/sbin/openrc-run
+
+description="github exporter for Prometheus"
+command=/usr/bin/github-exporter
+command_background=yes
+command_user=${RC_SVCNAME}:${RC_SVCNAME}
+pidfile=/var/run/github-exporter.pid
+error_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+output_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+
+depend() {
+	after net
+}
+
+start_pre() {
+	local env_args
+	if [ -z "${ORGS}" ] && [ -z "${REPOS}" ]; then
+		eerror "ORGS and / or REPOS must be set."
+		return 1
+	fi
+	if [ -n "${GITHUB_TOKEN}" ] && [ -n "${GITHUB_TOKEN_FILE}" ]; then
+	eerror "Please set only one of GITHUB_TOKEN or GITHUB_TOKEN_FILE"
+	return 1
+	fi
+	if [ -n "${API_URL}" ]; then
+		env_args="${env_args} -e API_URL=${API_URL}"
+	fi
+	if [ -n "${GITHUB_TOKEN}" ]; then
+	env_args="${env_args} -e GITHUB_TOKEN=${GITHUB_TOKEN}"
+	elif [ -n "${GITHUB_TOKEN_FILE}" ]; then
+	env_args="${env_args} -e GITHUB_TOKEN_FILE=${GITHUB_TOKEN_FILE}"
+	fi
+	if [ -z "${LISTEN_PORT}" ]; then
+		env_args="${env_args} -e LISTEN_PORT=9171"
+	else
+		env_args="${env_args} -e LISTEN_PORT=${LISTEN_PORT}"
+	fi
+	if [ -n "${LOG_LEVEL}" ]; then
+	env_args="${env_args} -e LOG_LEVEL=${LOG_LEVEL}"
+	fi
+	if [ -n "${METRICS_PATH}" ]; then
+	env_args="${env_args} -e METRICS_PATH=${METRICS_PATH}"
+	fi
+	if [ -n "${ORGS}" ]; then
+		env_args="${env_args} -e ORGS=${ORGS}"
+	fi
+	if [ -n "${REPOS}" ]; then
+		env_args="${env_args} -e REPOS=${REPOS}"
+	fi
+	start_stop_daemon_args="${start_stop_daemon_args} ${env_args}"
+	supervise_daemon_args="${supervise_daemon_args} ${env_args}"
+	return 0
+}

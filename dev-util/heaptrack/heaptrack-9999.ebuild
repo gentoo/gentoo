@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_AUTODEPS="false"
 KDE_TEST="forceoptional"
@@ -15,7 +15,10 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+qt5 zstd"
 
-COMMON_DEPEND="
+BDEPEND="
+	$(add_frameworks_dep extra-cmake-modules)
+"
+DEPEND="
 	dev-libs/boost:=
 	sys-libs/libunwind
 	sys-libs/zlib
@@ -35,10 +38,7 @@ COMMON_DEPEND="
 	)
 	zstd? ( app-arch/zstd:= )
 "
-DEPEND="${COMMON_DEPEND}
-	$(add_frameworks_dep extra-cmake-modules)
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	qt5? ( >=kde-frameworks/kf-env-4 )
 "
 

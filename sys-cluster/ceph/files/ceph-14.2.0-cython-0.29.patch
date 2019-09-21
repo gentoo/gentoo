@@ -1,0 +1,17 @@
+--- ceph-13.2.1/cmake/modules/Distutils.cmake.old	2018-07-26 17:39:56.000000000 -0000
++++ ceph-13.2.1/cmake/modules/Distutils.cmake	2018-12-24 05:43:51.566174070 -0000
+@@ -58,8 +62,13 @@
+ function(distutils_install_cython_module name)
+   get_property(compiler_launcher GLOBAL PROPERTY RULE_LAUNCH_COMPILE)
+   get_property(link_launcher GLOBAL PROPERTY RULE_LAUNCH_LINK)
+-  set(PY_CC "${compiler_launcher} ${CMAKE_C_COMPILER}")
++  string(REPLACE " " ";" cflags ${CMAKE_C_FLAGS})
++  list(APPEND cflags -iquote${CMAKE_SOURCE_DIR}/src/include -w)
++  list(APPEND cflags -D'void0=dead_function\(void\)')
++  list(APPEND cflags -D'__Pyx_check_single_interpreter\(ARG\)=ARG \#\# 0')
++  string(REPLACE ";" " " cflags "${cflags}")
++  set(PY_CC "${compiler_launcher} ${CMAKE_C_COMPILER} ${cflags}")
+   set(PY_LDSHARED "${link_launcher} ${CMAKE_C_COMPILER} -shared")
+   install(CODE "
+     set(ENV{CC} \"${PY_CC}\")
+     set(ENV{LDSHARED} \"${PY_LDSHARED}\")

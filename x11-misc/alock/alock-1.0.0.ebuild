@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs
 
 # we need this since there are no tagged releases yet
 DESCRIPTION="locks the local X display until a password is entered"
-HOMEPAGE="http://darkshed.net/projects/alock
+HOMEPAGE="https://darkshed.net/projects/alock
 	https://github.com/mgumz/alock"
 SRC_URI="https://github.com/mgumz/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

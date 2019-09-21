@@ -5,6 +5,13 @@
     <email>openstack@gentoo.org</email>
     <name>Openstack</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+  </maintainer>
   <upstream>
     <remote-id type="pypi">httpretty</remote-id>
     <remote-id type="github">gabrielfalcao/httpretty</remote-id>

@@ -1,17 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools flag-o-matic gnome2 xdg-utils
+inherit desktop flag-o-matic xdg cmake-utils
 
 DESCRIPTION="OpenGL 3D space simulator"
 HOMEPAGE="https://celestia.space"
 if [[ "${PV}" = 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/CelestiaProject/Celestia.git"
-	# Necessary because of gnome2 eclass
-	SRC_URI=""
 else
 	# Old URI! Please update once we have a release > v1.6.1
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -20,98 +18,52 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="cairo gnome gtk nls pch theora threads"
+IUSE="glut gtk nls +qt5 theora"
 
-RDEPEND="
-	virtual/opengl
-	virtual/jpeg:0
-	media-libs/libpng:0=
+REQUIRED_USE="|| ( glut gtk qt5 )"
+
+BDEPEND="
+	dev-cpp/eigen
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+"
+DEPEND="
 	>=dev-lang/lua-5.1:*
+	dev-libs/libfmt:=
+	media-libs/glew:0
+	media-libs/libpng:0=
+	virtual/glu
+	virtual/jpeg:0
+	virtual/opengl
+	glut? ( media-libs/freeglut )
 	gtk? (
 		x11-libs/gtk+:2
 		>=x11-libs/gtkglext-1.0
+		x11-libs/gdk-pixbuf:2
+		x11-libs/pango
 	)
-	gnome? (
-		>=gnome-base/libgnomeui-2.0
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
 	)
-	!gtk? ( !gnome? ( media-libs/freeglut ) )
-	cairo? ( x11-libs/cairo )
-	theora? ( media-libs/libtheora )"
-
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-
-REQUIRED_USE="gnome? ( gtk )"
+	theora? (
+		media-libs/libogg
+		media-libs/libtheora
+	)
+"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	# make better desktop files
 	"${FILESDIR}"/${PN}-1.5.0-desktop.patch
 	# add a ~/.celestia for extra directories
 	"${FILESDIR}"/${PN}-1.6.99-cfg.patch
-	# missing zlib.h include with libpng15
-	"${FILESDIR}"/${PN}-1.6.1-libpng15.patch
-	"${FILESDIR}"/${PN}-1.6.99-linking.patch
-
-	# gcc-47, #414015
-	"${FILESDIR}"/${PN}-1.6.99-gcc47.patch
-
-	# libpng16 #464764
-	"${FILESDIR}"/${PN}-1.6.1-libpng16.patch
-
-	# Patches from upstream PRs
-
-	# https://github.com/CelestiaProject/Celestia/pull/35
-	#"${FILESDIR}/${PN}-1.6.99-automake.patch"
-	"${FILESDIR}/${PN}-1.6.99-models_makefile.patch"
-	"${FILESDIR}/${PN}-1.6.99-default_source.patch"
-	"${FILESDIR}/${PN}-1.6.99-symlink.patch"
-
-	# https://github.com/CelestiaProject/Celestia/pull/37
-	"${FILESDIR}/${PN}-1.6.99-compiler_warnings.patch"
 )
 
-pkg_setup() {
-	# Check for one for the following use flags to be set.
-	if use gnome; then
-		einfo "USE=\"gnome\" detected."
-		USE_DESTDIR="1"
-		CELESTIA_GUI="gnome"
-	elif use gtk; then
-		einfo "USE=\"gtk\" detected."
-		CELESTIA_GUI="gtk"
-	else
-		ewarn "If you want to use the full gui, set USE=\"{gnome|gtk}\""
-		ewarn "Defaulting to glut support (no GUI)."
-		CELESTIA_GUI="glut"
-	fi
-}
-
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
-	if [[ -f configure.in ]] ; then
-		mv configure.{in,ac} || die
-	else
-		elog "configure.in file is gone. Clean up the ebuild!"
-	fi
-
-	# remove flags to let the user decide
-	local
-	for cf in -O2 -ffast-math \
-		-fexpensive-optimizations \
-		-fomit-frame-pointer; do
-		sed -i \
-			-e "s/${cf}//g" \
-			configure.ac admin/* || die "sed failed"
-	done
-	# remove an unused gconf macro killing autoconf when no gnome
-	# (not needed without eautoreconf)
-	if ! use gnome; then
-		sed -i \
-			-e '/AM_GCONF_SOURCE_2/d' \
-			configure.ac || die "sed failed"
-	fi
-	eautoreconf
 	filter-flags "-funroll-loops -frerun-loop-opt"
 
 	### This version of Celestia has a bug in the font rendering and
@@ -121,38 +73,38 @@ src_prepare() {
 }
 
 src_configure() {
-	# force lua in 1.6.1. seems to be inevitable
-	local myeconfargs=(
-		--disable-rpath
-		--with-${CELESTIA_GUI}
-		--with-lua
-		$(use_enable cairo)
-		$(use_enable threads threading)
-		$(use_enable nls)
-		$(use_enable pch)
-		$(use_enable theora)
+	# force lua. Seems still to be inevitable
+	local mycmakeargs=(
+		#-DENABLE_CELX="$(usex lua)"
+		-DENABLE_CELX=ON
+		-DENABLE_NLS="$(usex nls)"
+		-DENABLE_GLUT="$(usex glut)"
+		-DENABLE_GTK="$(usex gtk)"
+		-DENABLE_QT="$(usex qt5)"
+		-DENABLE_WIN=OFF
+		-DENABLE_THEORA="$(usex theora)"
 	)
-	econf "${myeconfargs[@]}"
+	cmake-utils_src_configure
 }
 
 src_install() {
-	if [[ ${CELESTIA_GUI} == gnome ]]; then
-		gnome2_src_install
-	else
-		emake DESTDIR="${D}" MKDIR_P="mkdir -p" install
-		local size
-		for size in 16 22 32 48 ; do
-			newicon "${S}"/src/celestia/kde/data/hi${size}-app-${PN}.png ${PN}.png
-		done
-	fi
-	[[ ${CELESTIA_GUI} == glut ]] && domenu celestia.desktop
+	cmake-utils_src_install
+
+	local size
+	for size in 16 22 32 48 ; do
+		newicon -s ${size} "${S}"/src/celestia/kde/data/hi${size}-app-${PN}.png ${PN}.png
+	done
+
+	use glut && domenu ${PN}.desktop
+	local ui
+	for ui in gtk qt5 ; do
+		if use ${ui} ; then
+			sed \
+				-e "/^Name/s@\$@ (${ui} interface)@" \
+				-e "/^Exec/s@${PN}@${PN}-${ui/qt5/qt}@" \
+				${PN}.desktop > "${T}"/${PN}-${ui}.desktop || die
+			domenu "${T}"/${PN}-${ui}.desktop
+		fi
+	done
 	dodoc AUTHORS README TRANSLATORS *.txt
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }

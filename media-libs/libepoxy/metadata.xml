@@ -5,6 +5,9 @@
 		<email>x11@gentoo.org</email>
 		<name>X11</name>
 	</maintainer>
+	<use>
+		<flag name="egl">Enable EGL support.</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">anholt/libepoxy</remote-id>
 	</upstream>

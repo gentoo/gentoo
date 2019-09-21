@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit ltprune python-single-r1 user
+inherit python-single-r1 flag-o-matic
 
 MY_P="${PN}2-${PV}"
 
@@ -27,6 +27,7 @@ COMMON_DEPS="pcap? ( net-libs/libpcap )
 	)"
 DEPEND="${COMMON_DEPS}"
 RDEPEND="${COMMON_DEPS}
+	acct-group/qemu
 	selinux? ( sec-policy/selinux-vde )"
 
 S="${WORKDIR}/${MY_P}"
@@ -34,13 +35,16 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=( "${FILESDIR}/${P}-format-security.patch" )
 
 pkg_setup() {
-	# default group already used in kqemu
-	enewgroup qemu
+	use python && python-single-r1_pkg_setup
+}
 
-	python-single-r1_pkg_setup
+src_prepare() {
+	default
+	has_version ">=dev-libs/openssl-1.1.0" && eapply "${FILESDIR}/${P}-openssl-1.1.patch"
 }
 
 src_configure() {
+	filter-flags -O0 -Os
 	econf \
 		$(use_enable pcap) \
 		$(use_enable python) \
@@ -54,7 +58,7 @@ src_compile() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -type f -delete || die
 
 	newinitd "${FILESDIR}"/vde.init-r1 vde
 	newconfd "${FILESDIR}"/vde.conf-r1 vde

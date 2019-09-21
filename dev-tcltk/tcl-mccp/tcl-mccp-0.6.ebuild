@@ -1,9 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit autotools-utils
+EAPI=6
 
 DESCRIPTION="mccp extension to TCL"
 HOMEPAGE="http://tcl-mccp.sf.net/"
@@ -18,3 +16,7 @@ DEPEND="dev-lang/tcl:0="
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-flags.patch )
+
+src_configure() {
+	econf --with-tcl="${EPREFIX}"/usr/$(get_libdir)
+}

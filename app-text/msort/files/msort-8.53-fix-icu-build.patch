@@ -1,0 +1,11 @@
+--- a/Makefile.am	2009-08-05 05:09:21.000000000 +0200
++++ b/Makefile.am	2018-09-27 15:41:10.685759919 +0200
+@@ -22,7 +22,7 @@
+ LIBS+=-lutf8proc
+ AM_CFLAGS += -DUSEUTF8PROC
+ else
+-LIBS+=-licutu
++LIBS+=-licutu -licuuc
+ endif
+ 
+ msg:	msg.tcl

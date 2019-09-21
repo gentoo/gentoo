@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>sci-chemistry@gentoo.org</email>
 		<name>Gentoo Chemistry Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="freecode">gelemental</remote-id>
+		<remote-id type="github">ginggs/gelemental</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -20,7 +20,7 @@ RDEPEND="sys-libs/ncurses:0
 	>=app-misc/editor-wrapper-3"
 
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}/${MY_P}
 

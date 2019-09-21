@@ -12,4 +12,5 @@
   Emacs. The default behaviour is similar to paren.el but more sophisticated.
   Normally you can try all default settings to enjoy mic-paren.
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>

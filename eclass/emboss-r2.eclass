@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: emboss-r2.eclass
@@ -10,6 +10,7 @@
 # Original author: Author Olivier Fisette <ofisette@gmail.com>
 # Next gen author: Justin Lecher <jlec@gentoo.org>
 # Next gen author: Ted Tanberry <ted.tanberry@gmail.com>
+# @SUPPORTED_EAPIS: 6
 # @BLURB: Use this to easy install EMBOSS and EMBASSY programs (EMBOSS add-ons).
 # @DESCRIPTION:
 # The inheriting ebuild must set at least EAPI=6 and provide EBO_DESCRIPTION before the inherit line.
@@ -57,7 +58,7 @@ RDEPEND="
 	dev-libs/libpcre:3
 	sci-libs/plplot:=
 	sys-libs/zlib
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	pdf? ( media-libs/libharu:= )
 	png? ( media-libs/gd:2=[png] )
 	postgres? ( dev-db/postgresql:= )

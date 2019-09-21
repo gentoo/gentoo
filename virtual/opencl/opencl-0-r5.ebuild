@@ -7,14 +7,14 @@ inherit multilib-build
 
 DESCRIPTION="Virtual for OpenCL implementations"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 x86"
 CARDS=( amdgpu i965 nvidia )
 IUSE="${CARDS[@]/#/video_cards_}"
 
 # amdgpu-pro-opencl and intel-ocl-sdk are amd64-only
 RDEPEND="app-eselect/eselect-opencl
 	|| (
-		>=media-libs/mesa-9.1.6[opencl,${MULTILIB_USEDEP}]
+		>=media-libs/mesa-9.1.6[opencl,X(+),${MULTILIB_USEDEP}]
 		video_cards_amdgpu? (
 			abi_x86_64? ( !abi_x86_32? ( dev-libs/amdgpu-pro-opencl ) ) )
 		video_cards_i965? (

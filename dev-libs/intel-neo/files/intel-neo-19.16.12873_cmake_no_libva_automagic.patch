@@ -1,0 +1,14 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -374,9 +374,9 @@
+ endif()
+ 
+ # LibVA detection
+-if(UNIX)
++if(UNIX AND ENABLE_VAAPI_MEDIA_SHARING)
+   set(IGDRCL__LIBVA_IS_REQUIRED "")
+-  if(IGDRCL_FORCE_USE_LIBVA)
++  if(IGDRCL_FORCE_USE_LIBVA OR ENABLE_VAAPI_MEDIA_SHARING)
+     set(IGDRCL__LIBVA_IS_REQUIRED "REQUIRED")
+   endif()
+ 

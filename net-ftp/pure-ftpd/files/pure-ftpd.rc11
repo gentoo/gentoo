@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ftpd_pidfile="/var/run/pure-ftpd.pid"
@@ -9,11 +9,12 @@ daemon="/usr/sbin/pure-ftpd"
 script_daemon="/usr/sbin/pure-uploadscript"
 
 depend() {
-	need net
+	need localmount
+	use netmount
 }
 
 start_pre() {
-	if [ -z "$IS_CONFIGURED" ] ; then
+	if [ -z "${IS_CONFIGURED}" ] ; then
 		eerror "You need to setup /etc/conf.d/pure-ftpd first!"
 		return 1
 	fi
@@ -21,7 +22,7 @@ start_pre() {
 
 start() {
 	UPSCRIPT=""
-	if [ -n "$UPLOADSCRIPT" ] ; then
+	if [ -n "${UPLOADSCRIPT}" ] ; then
 		UPSCRIPT="--uploadscript"
 	fi
 
@@ -42,11 +43,11 @@ start() {
 		--make-pidfile --background --exec /usr/sbin/pure-ftpd ${WAIT} \
 		-- $(echo ${FTPD_CONFIG} | sed 's@\([[:space:]]\+\|^\)-B\([[:space:]]\+\|$\)@\1@g')
 	result=$?
-	if [ $result -ne 0 ] ; then
+	if [ ${result} -ne 0 ] ; then
 		eend 1 "Could not launch Pure-FTPd"
 	else
 		eend $result
-		if [ -n "$UPLOADSCRIPT" ] ; then
+		if [ -n "${UPLOADSCRIPT}" ] ; then
 			ebegin "Starting Pure-FTPd upload script"
 			start-stop-daemon --start --quiet --make-pidfile \
 				 --pidfile ${script_pidfile} \
@@ -58,7 +59,7 @@ start() {
 }
 
 stop() {
-	if [ -n "$UPLOADSCRIPT" ] ; then
+	if [ -n "${UPLOADSCRIPT}" ] ; then
 		ebegin "Stopping Pure-FTPd upload script"
 		start-stop-daemon --stop --retry 20 --quiet \
 			--pidfile ${script_pidfile}

@@ -1,30 +1,34 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 DISTUTILS_SINGLE_IMPL=1
 DISABLE_AUTOFORMATTING=true
-
-EGIT_REPO_URI="https://github.com/metabrainz/picard"
-inherit distutils-r1 git-r3 gnome2-utils readme.gentoo-r1 xdg-utils
+if [[ ${PV} = *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/metabrainz/picard"
+	inherit git-r3
+else
+	SRC_URI="https://musicbrainz.osuosl.org/pub/musicbrainz/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
+inherit distutils-r1 readme.gentoo-r1 xdg
 
 DESCRIPTION="A cross-platform music tagger"
 HOMEPAGE="https://picard.musicbrainz.org"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
 IUSE="nls"
 
+BDEPEND="
+	nls? ( dev-qt/linguist-tools:5 )
+"
 RDEPEND="
 	dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_USEDEP}]
 	dev-qt/qtgui:5[accessibility]
 	>=media-libs/mutagen-1.38"
-DEPEND="
-	nls? ( dev-qt/linguist-tools:5 )
-"
 
 RESTRICT="test" # doesn't work with ebuilds
 
@@ -66,11 +70,5 @@ Picard's settings:
 
 pkg_postinst() {
 	readme.gentoo_print_elog
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_pkg_postinst
 }

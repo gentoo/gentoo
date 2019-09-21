@@ -5,13 +5,13 @@
 		<email>kaikaikai@yandex.ru</email>
 		<name>Alexey Korepanov</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<maintainer type="person">
 		<email>klondike@gentoo.org</email>
 		<name>Francisco Blas Izquierdo Riera</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>blueness@gentoo.org</email>
-		<name>Anthony G. Basile</name>
 	</maintainer>
 	<use>
 		<flag name="i2p-hardening">

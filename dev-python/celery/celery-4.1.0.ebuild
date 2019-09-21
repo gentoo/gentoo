@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 inherit distutils-r1 bash-completion-r1
 
@@ -13,13 +13,14 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 # There are a number of other optional 'extras' which overlap with those of kombu, however
 # there has been no apparent expression of interest or demand by users for them. See requires.txt
 IUSE="doc examples redis sqs test yaml"
 
+# kombu < 4.2: #666228 (can be loosened in next bump)
 RDEPEND="
-	<dev-python/kombu-5.0[${PYTHON_USEDEP}]
+	<dev-python/kombu-4.2[${PYTHON_USEDEP}]
 	>=dev-python/kombu-4.0.2[${PYTHON_USEDEP}]
 	>=dev-python/billiard-3.5.0.2[${PYTHON_USEDEP}]
 	<dev-python/billiard-3.6.0[${PYTHON_USEDEP}]
@@ -51,8 +52,8 @@ DEPEND="
 		>=dev-python/sphinx_celery-1.3[${PYTHON_USEDEP}]
 		dev-python/jinja[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python2_7 python3_4)
-		)"
+		$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python2_7)
+	)"
 
 # testsuite needs it own source
 DISTUTILS_IN_SOURCE_BUILD=1
@@ -94,7 +95,6 @@ pkg_postinst() {
 	optfeature "eventlet support" dev-python/eventlet
 	#optfeature "couchbase support" dev-python/couchbase
 	optfeature "redis support" dev-db/redis dev-python/redis-py
-	optfeature "couchdb support" dev-db/couchdb dev-python/couchdb-python
 	optfeature "gevent support" dev-python/gevent
 	optfeature "auth support" dev-python/pyopenssl
 	optfeature "pyro support" dev-python/pyro:4

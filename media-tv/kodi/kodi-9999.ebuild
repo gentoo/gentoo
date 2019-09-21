@@ -1,39 +1,52 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-# Does not work with py3 here
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="sqlite"
-
-inherit autotools cmake-utils eutils linux-info pax-utils python-single-r1
-
-LIBDVDCSS_VERSION="1.4.1-Leia-Alpha-1"
-LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-1"
-LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-1"
-FFMPEG_VERSION="4.0"
+PYTHON_REQ_USE="libressl?,sqlite,ssl"
+LIBDVDCSS_VERSION="1.4.2-Leia-Beta-5"
+LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-3"
+LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-3"
+FFMPEG_VERSION="4.0.4"
 CODENAME="Leia"
-FFMPEG_KODI_VERSION="Alpha-1"
+FFMPEG_KODI_VERSION="18.4"
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz -> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_VERSION}.tar.gz -> libdvdnav-${LIBDVDNAV_VERSION}.tar.gz
 	!system-ffmpeg? ( https://github.com/xbmc/FFmpeg/archive/${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz -> ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz )"
 
-DESCRIPTION="Kodi is a free and open source media-player and entertainment hub"
+if [[ ${PV} == *9999 ]] ; then
+	PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
+	inherit git-r3
+else
+	PYTHON_COMPAT=( python2_7 )
+	MY_PV=${PV/_p/_r}
+	MY_PV=${MY_PV/_alpha/a}
+	MY_PV=${MY_PV/_beta/b}
+	MY_PV=${MY_PV/_rc/rc}
+	MY_P="${PN}-${MY_PV}"
+	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
+fi
+
+inherit autotools cmake-utils desktop linux-info pax-utils python-single-r1 xdg
+
+DESCRIPTION="A free and open source media-player and entertainment hub"
 HOMEPAGE="https://kodi.tv/ https://kodi.wiki/"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gbm gles lcms libressl libusb lirc mysql nfs +opengl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus dvd gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl pulseaudio raspberry-pi samba systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	gbm? ( gles )
 	|| ( gles opengl )
-	^^ ( gbm wayland X )
+	^^ ( gbm raspberry-pi wayland X )
+	?? ( mariadb mysql )
 	udev? ( !libusb )
 	udisks? ( dbus )
 	upower? ( dbus )
@@ -41,7 +54,7 @@ REQUIRED_USE="
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	airplay? (
-		>=app-pda/libplist-2.0.0[python,${PYTHON_USEDEP}]
+		>=app-pda/libplist-2.0.0
 		net-libs/shairplay
 	)
 	alsa? ( >=media-libs/alsa-lib-1.1.4.1 )
@@ -51,40 +64,49 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( sys-apps/dbus )
 	dev-db/sqlite
 	dev-libs/expat
-	>=dev-libs/fribidi-0.19.7
-	cec? ( >=dev-libs/libcec-4.0 )
+	>=dev-libs/flatbuffers-1.11.0
+	>=dev-libs/fribidi-1.0.5
+	cec? ( >=dev-libs/libcec-4.0[raspberry-pi?] )
 	dev-libs/libpcre[cxx]
+	>=dev-libs/libinput-1.10.5
 	>=dev-libs/libxml2-2.9.4
 	>=dev-libs/lzo-2.04
 	dev-libs/tinyxml[stl]
 	dev-python/pillow[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/pycryptodome[${PYTHON_USEDEP}]' 'python3*')
 	>=dev-libs/libcdio-0.94
-	dev-libs/libfmt
+	>=dev-libs/libfmt-3.0.1
+	dev-libs/libfstrcmp
 	gbm? (	media-libs/mesa[gbm] )
-	gles? ( media-libs/mesa[gles2] )
+	gles? (
+		!raspberry-pi? ( media-libs/mesa[gles2] )
+	)
 	lcms? ( media-libs/lcms:2 )
 	libusb? ( virtual/libusb:1 )
 	virtual/ttf-fonts
 	media-fonts/roboto
-	>=media-libs/fontconfig-2.12.4
-	>=media-libs/freetype-2.8
+	>=media-libs/fontconfig-2.13.1
+	>=media-libs/freetype-2.10.1
 	>=media-libs/libass-0.13.4
-	media-libs/mesa[egl]
+	!raspberry-pi? ( media-libs/mesa[egl,X(+)] )
 	>=media-libs/taglib-1.11.1
 	system-ffmpeg? (
 		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[encode,postproc]
 		libressl? ( media-video/ffmpeg[libressl,-openssl] )
 		!libressl? ( media-video/ffmpeg[-libressl,openssl] )
 	)
-	mysql? ( virtual/mysql )
-	>=net-misc/curl-7.56.1
+	mysql? ( dev-db/mysql-connector-c:= )
+	mariadb? ( dev-db/mariadb-connector-c:= )
+	>=net-misc/curl-7.56.1[http2]
 	nfs? ( >=net-fs/libnfs-2.0.0:= )
 	opengl? ( media-libs/glu )
 	!libressl? ( >=dev-libs/openssl-1.0.2l:0= )
 	libressl? ( dev-libs/libressl:0= )
+	raspberry-pi? (
+		|| ( media-libs/raspberrypi-userland media-libs/raspberrypi-userland-bin media-libs/mesa[egl,gles2,vc4] )
+	)
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
-	sftp? ( net-libs/libssh[sftp] )
 	>=sys-libs/zlib-1.2.11
 	udev? ( virtual/udev )
 	vaapi? (
@@ -104,7 +126,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-cpp/waylandpp-0.2.3:=
 		media-libs/mesa[wayland]
 		>=dev-libs/wayland-protocols-1.7
-		>=x11-libs/libxkbcommon-0.4.1
 	)
 	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages] )
 	X? (
@@ -114,21 +135,15 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		system-ffmpeg? ( media-video/ffmpeg[X] )
 	)
 	x11-libs/libdrm
+	>=x11-libs/libxkbcommon-0.4.1
 	xslt? ( dev-libs/libxslt )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
 RDEPEND="${COMMON_DEPEND}
-	lirc? (
-		|| ( app-misc/lirc app-misc/inputlircd )
-	)
+	lirc? ( app-misc/lirc )
 	!media-tv/xbmc
-	udisks? ( sys-fs/udisks:0 )
-	upower? (
-		systemd? ( sys-power/upower )
-		!systemd? (
-			|| ( sys-power/upower-pm-utils sys-power/upower )
-		)
-	)
+	udisks? ( sys-fs/udisks:2 )
+	upower? ( sys-power/upower )
 "
 DEPEND="${COMMON_DEPEND}
 	app-arch/bzip2
@@ -143,35 +158,9 @@ DEPEND="${COMMON_DEPEND}
 	>=media-libs/libpng-1.6.26:0=
 	test? ( dev-cpp/gtest )
 	virtual/pkgconfig
+	virtual/jre
 	x86? ( dev-lang/nasm )
 "
-case ${PV} in
-9999)
-	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
-	inherit git-r3
-	# Force java for latest git version to avoid having to hand maintain the
-	# generated addons package.  #488118
-	DEPEND+="
-		virtual/jre
-		"
-	;;
-*)
-	MY_PV=${PV/_p/_r}
-	MY_PV=${MY_PV/_alpha/a}
-	MY_PV=${MY_PV/_beta/b}
-	MY_PV=${MY_PV/_rc/rc}
-	MY_P="${PN}-${MY_PV}"
-	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz
-		 !java? ( https://github.com/candrews/gentoo-kodi/raw/master/${MY_P}-generated-addons.tar.xz )"
-	KEYWORDS="~amd64 ~x86"
-	IUSE+=" java"
-	DEPEND+="
-		java? ( virtual/jre )
-		"
-
-	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
-	;;
-esac
 
 CONFIG_CHECK="~IP_MULTICAST"
 ERROR_IP_MULTICAST="
@@ -184,10 +173,23 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
-src_prepare() {
-	if in_iuse java && use !java; then
-		eapply "${FILESDIR}"/${PN}-cmake-no-java.patch
+src_unpack() {
+	if [[ ${PV} == *9999 ]] ; then
+		if python_is_python3; then
+			EGIT_BRANCH="feature_python3"
+			ewarn "Using the experimental Python 3 branch!"
+			ewarn "See https://kodi.wiki/view/Migration_to_Python_3 for more information."
+			ewarn "To use the non-experimental Python 2 version:"
+			ewarn "echo '~${CATEGORY}/${P} PYTHON_TARGETS: -* python2_7 PYTHON_SINGLE_TARGET: -* python2_7' >> /etc/portage/package.use"
+			ewarn "then re-merge using: emerge -a =${CATEGORY}/${PF}"
+		fi
+		git-r3_src_unpack
+	else
+		default
 	fi
+}
+
+src_prepare() {
 	cmake-utils_src_prepare
 
 	# avoid long delays when powerkit isn't running #348580
@@ -197,7 +199,6 @@ src_prepare() {
 
 	# Prepare tools and libs witch are configured with autotools during compile time
 	AUTOTOOLS_DIRS=(
-		"${S}"/lib/cpluff
 		"${S}"/tools/depends/native/TexturePacker/src
 		"${S}"/tools/depends/native/JsonSchemaBuilder/src
 	)
@@ -212,7 +213,6 @@ src_prepare() {
 
 	# Prevent autoreconf rerun
 	sed -e 's/autoreconf -vif/echo "autoreconf already done in src_prepare()"/' -i \
-		"${S}"/cmake/modules/FindCpluff.cmake \
 		"${S}"/tools/depends/native/TexturePacker/src/autogen.sh \
 		"${S}"/tools/depends/native/JsonSchemaBuilder/src/autogen.sh \
 		|| die
@@ -233,20 +233,21 @@ src_configure() {
 		-DENABLE_DVDCSS=$(usex css)
 		-DENABLE_INTERNAL_CROSSGUID=OFF
 		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
+		-DENABLE_INTERNAL_FSTRCMP=OFF
 		-DENABLE_CAP=$(usex caps)
 		-DENABLE_LCMS2=$(usex lcms)
-		-DENABLE_LIRC=$(usex lirc)
+		-DENABLE_LIRCCLIENT=$(usex lirc)
+		-DENABLE_MARIADBCLIENT=$(usex mariadb)
+		-DENABLE_MYSQLCLIENT=$(usex mysql)
 		-DENABLE_MICROHTTPD=$(usex webserver)
 		-DENABLE_MYSQLCLIENT=$(usex mysql)
 		-DENABLE_NFS=$(usex nfs)
 		-DENABLE_OPENGLES=$(usex gles)
 		-DENABLE_OPENGL=$(usex opengl)
-		-DENABLE_OPENSSL=ON
 		-DENABLE_OPTICAL=$(usex dvd)
 		-DENABLE_PLIST=$(usex airplay)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_SMBCLIENT=$(usex samba)
-		-DENABLE_SSH=$(usex sftp)
 		-DENABLE_UDEV=$(usex udev)
 		-DENABLE_UPNP=$(usex upnp)
 		-DENABLE_VAAPI=$(usex vaapi)
@@ -266,16 +267,21 @@ src_configure() {
 	fi
 
 	if use gbm; then
-		mycmakeargs+=( -DCORE_PLATFORM_NAME="gbm" )
+		mycmakeargs+=(
+			-DCORE_PLATFORM_NAME="gbm"
+			-DGBM_RENDER_SYSTEM="$(usex opengl gl gles)"
+		)
 	fi
 
 	if use wayland; then
-		mycmakeargs+=( -DCORE_PLATFORM_NAME="wayland" )
-		if use opengl; then
-			mycmakeargs+=( -DWAYLAND_RENDER_SYSTEM="gl" )
-		else
-			mycmakeargs+=( -DWAYLAND_RENDER_SYSTEM="gles" )
-		fi
+		mycmakeargs+=(
+			-DCORE_PLATFORM_NAME="wayland"
+			-DWAYLAND_RENDER_SYSTEM="$(usex opengl gl gles)"
+		)
+	fi
+
+	if use raspberry-pi; then
+		mycmakeargs+=( -DCORE_PLATFORM_NAME="rbpi" )
 	fi
 
 	if use X; then
@@ -287,19 +293,16 @@ src_configure() {
 
 src_compile() {
 	cmake-utils_src_compile all
-	use test && emake -C "${BUILD_DIR}" kodi-test
 }
 
 src_test() {
-	emake -C "${BUILD_DIR}" test
+	cmake-utils_src_make check
 }
 
 src_install() {
 	cmake-utils_src_install
 
 	pax-mark Em "${ED%/}"/usr/$(get_libdir)/${PN}/${PN}.bin
-
-	rm "${ED%/}"/usr/share/doc/*/{LICENSE.GPL,copying.txt}* || die
 
 	newicon media/icon48x48.png kodi.png
 
@@ -308,5 +311,5 @@ src_install() {
 		usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf
 
 	python_domodule tools/EventClients/lib/python/xbmcclient.py
-	python_newscript "tools/EventClients/Clients/Kodi Send/kodi-send.py" kodi-send
+	python_newscript "tools/EventClients/Clients/KodiSend/kodi-send.py" kodi-send
 }

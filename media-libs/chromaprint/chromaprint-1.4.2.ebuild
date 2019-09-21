@@ -7,7 +7,7 @@ inherit cmake-multilib
 GTEST_VERSION="1.8.0"
 
 DESCRIPTION="A client-side library that implements a custom algorithm for extracting fingerprints"
-HOMEPAGE="http://acoustid.org/chromaprint"
+HOMEPAGE="https://acoustid.org/chromaprint"
 SRC_URI="https://bitbucket.org/acoustid/${PN}/downloads/${P}.tar.gz
 	test? (	https://github.com/google/googletest/archive/release-${GTEST_VERSION}.tar.gz -> gtest-${GTEST_VERSION}.tar.gz )
 "

@@ -1,0 +1,13 @@
+--- a/doc/Makefile	2019-05-03 13:18:33.343246393 +0200
++++ b/doc/Makefile	2019-05-03 13:19:33.110902639 +0200
+@@ -48,8 +48,8 @@
+ ../source/help_topic.h ../source/help_data.h: .version help.etx setext
+ 	@ echo "Creating NEdit help code `cat .version`"
+ 	@ ./setext -m -v version="`cat .version`" help.etx
+-	@ mv -f help_topic.h ../source
+-	@ mv -f help_data.h ../source
++	@ cp -f help_topic.h ../source
++	@ cp -f help_data.h ../source
+ 
+ nedit.html: .version help.etx setext
+ 	@ echo "Creating NEdit HTML documentation..."

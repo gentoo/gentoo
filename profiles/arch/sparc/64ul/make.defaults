@@ -1,0 +1,8 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+MULTILIB_ABIS="sparc64"
+DEFAULT_ABI="sparc64"
+ABI="${DEFAULT_ABI}"
+
+CHOST="sparc64-unknown-linux-gnu"

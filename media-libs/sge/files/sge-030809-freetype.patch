@@ -1,5 +1,5 @@
---- sge_tt_text.cpp
-+++ sge_tt_text.cpp
+--- a/sge_tt_text.cpp
++++ b/sge_tt_text.cpp
 @@ -36,10 +36,9 @@
  #include "sge_textpp.h"
  

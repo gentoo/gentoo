@@ -1,0 +1,21 @@
+From 88c09cb6218fda5457c228f33084244db8725ed2 Mon Sep 17 00:00:00 2001
+From: orbea <ovariegata@yahoo.com>
+Date: Sat, 15 Apr 2017 19:36:01 -0700
+Subject: [PATCH] Fix libffmpegthumbnailer.pc to work with multilib systems
+
+---
+ libffmpegthumbnailer.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libffmpegthumbnailer.pc.in b/libffmpegthumbnailer.pc.in
+index 77c00b2..0a2f997 100644
+--- a/libffmpegthumbnailer.pc.in
++++ b/libffmpegthumbnailer.pc.in
+@@ -1,6 +1,6 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
+ includedir=${prefix}/include
+ 
+ Name: libffmpegthumbnailer

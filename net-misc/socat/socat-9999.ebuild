@@ -1,15 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
+EAPI=7
 inherit autotools flag-o-matic git-r3 toolchain-funcs
 
 DESCRIPTION="Multipurpose relay (SOcket CAT)"
 HOMEPAGE="http://www.dest-unreach.org/socat/"
-MY_P=${P/_beta/-b}
-S="${WORKDIR}/${MY_P}"
-EGIT_REPO_URI="git://repo.or.cz/${PN}.git"
+EGIT_REPO_URI="https://repo.or.cz/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,17 +25,16 @@ DEPEND="
 	${RDEPEND}
 	app-text/yodl
 "
-
-RESTRICT="test
-	ssl? ( readline? ( bindist ) )"
-
+RESTRICT="
+	test
+	ssl? ( readline? ( bindist ) )
+"
 DOCS=(
 	BUGREPORTS CHANGES DEVELOPMENT EXAMPLES FAQ FILES PORTING README SECURITY
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.3.0-filan-build.patch
-	"${FILESDIR}"/${PN}-1.7.3.1-stddef_h.patch
+	"${FILESDIR}"/${PN}-9999-stddef_h.patch
 )
 
 pkg_setup() {

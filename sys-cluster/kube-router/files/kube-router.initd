@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Kubernetes routing engine"
+supervisor=supervise-daemon
+command="/usr/bin/kube-router"
+error_log='/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log'
+pidfile="${pidfile:-/run/${RC_SVCNAME}.pid}"
+
+command_args="--master=${K8S_APISERVER} --kubeconfig=${KUBECONFIG} \
+              --run-service-proxy=${RUN_PROXY:-false} \
+              --run-firewall=${RUN_FIREWALL:-false} \
+              --run-router=${RUN_ROUTER:-false} \
+              ${HOSTNAME:+--hostname-override=}${HOSTNAME} \
+              ${EXTRA_ARGS}"
+
+extra_commands="clear"
+
+clear() {
+    "${command}" --cleanup-config
+}

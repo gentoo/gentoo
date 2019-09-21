@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -25,6 +25,7 @@ RDEPEND="gtk? ( dev-ml/lablgtk
 
 #PDEPEND="gtk? ( media-fonts/font-schumacher-misc )"
 
+RESTRICT="!ocamlopt? ( strip )"
 SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}.tar.gz
 	doc? ( https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
 		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html )"
@@ -78,7 +79,6 @@ src_install () {
 		dohtml "${DISTDIR}/${P}-manual.html"
 		dodoc "${DISTDIR}/${P}-manual.pdf"
 	fi
-	use ocamlopt || export STRIP_MASK="*/bin/*"
 }
 
 pkg_postinst() {

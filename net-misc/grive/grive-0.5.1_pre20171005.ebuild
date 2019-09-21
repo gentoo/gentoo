@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
 
@@ -27,9 +27,9 @@ RDEPEND="
 	dev-libs/expat
 	>=dev-libs/json-c-0.11-r1:=
 	dev-libs/libgcrypt:0=
+	dev-libs/yajl
 	|| ( net-misc/curl[curl_ssl_openssl] net-misc/curl[curl_ssl_gnutls] )
 	sys-libs/binutils-libs:0=
 	sys-libs/glibc
-	dev-libs/yajl
 "
 DEPEND="${RDEPEND}"

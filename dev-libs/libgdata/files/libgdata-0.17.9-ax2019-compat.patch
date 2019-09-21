@@ -1,0 +1,20 @@
+autoconf-archive-2019.01.06 breaks AX_CODE_COVERAGE usage by requiring
+a different integration inside Makefile.am. This would be fine if the
+local m4/ax_code_coverage.m4 would get used, but eaclocal parses out
+the install from ACLOCAL_AMFLAGS, and calls aclocal with that, which
+overwrites ax_code_coverage.m4 with the newer version, obviously
+breaking the usage of all that in Makefile.am.
+Workaround it by patching out the --install argument, thus using the
+tarball copy of it (older version), which works with Makefile.am
+without further patching.
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,6 +1,6 @@
+ SUBDIRS = . po docs gdata/tests
+ 
+-ACLOCAL_AMFLAGS = --install -I m4 ${ACLOCAL_FLAGS}
++ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+ 
+ DISTCHECK_CONFIGURE_FLAGS =
+ MAINTAINERCLEANFILES =

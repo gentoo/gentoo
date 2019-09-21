@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 PYTHON_REQ_USE='threads(+)'
 
-WAF_PV=1.9.8
+WAF_PV=2.0.9
 
 inherit eapi7-ver flag-o-matic gnome2-utils pax-utils python-r1 toolchain-funcs waf-utils xdg-utils
 
@@ -15,7 +15,7 @@ HOMEPAGE="https://mpv.io/"
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
+	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
 	DOCS=( RELEASE_NOTES )
 else
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
@@ -29,15 +29,15 @@ DOCS+=( README.md DOCS/{client-api,interface}-changes.rst )
 LICENSE="LGPL-2.1+ GPL-2+ BSD ISC samba? ( GPL-3+ )"
 SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda doc drm dvb
-	dvd +egl encode gbm +iconv jack javascript jpeg lcms +libass libav libcaca
-	libmpv +lua luajit openal +opengl oss pulseaudio raspberry-pi rubberband
-	samba sdl selinux test tools +uchardet v4l vaapi vdpau wayland +X +xv zlib
+	dvd +egl gbm +iconv jack javascript jpeg lcms +libass libcaca libmpv +lua
+	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
+	selinux test tools +uchardet v4l vaapi vdpau vulkan wayland +X +xv zlib
 	zsh-completion"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
 	aqua? ( opengl )
-	cuda? ( !libav opengl )
+	cuda? ( opengl )
 	egl? ( || ( gbm X wayland ) )
 	gbm? ( drm egl opengl )
 	lcms? ( opengl )
@@ -50,6 +50,7 @@ REQUIRED_USE="
 	v4l? ( || ( alsa oss ) )
 	vaapi? ( || ( gbm X wayland ) )
 	vdpau? ( X )
+	vulkan? ( || ( X wayland ) )
 	wayland? ( egl )
 	X? ( egl? ( opengl ) )
 	xv? ( X )
@@ -58,8 +59,7 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
-	!libav? ( >=media-video/ffmpeg-4.0:0=[encode?,threads,vaapi?,vdpau?] )
-	libav? ( ~media-video/libav-9999:0=[encode?,threads,vaapi?,vdpau?] )
+	>=media-video/ffmpeg-4.0:0=[encode,threads,vaapi?,vdpau?]
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
 	archive? ( >=app-arch/libarchive-3.0.0:= )
 	bluray? ( >=media-libs/libbluray-0.3.0:= )
@@ -96,9 +96,14 @@ COMMON_DEPEND="
 	v4l? ( media-libs/libv4l )
 	vaapi? ( x11-libs/libva:=[drm?,X?,wayland?] )
 	vdpau? ( x11-libs/libvdpau )
+	vulkan? (
+		media-libs/shaderc
+		media-libs/vulkan-loader[X?,wayland?]
+		>=media-libs/libplacebo-1.18.0[vulkan]
+	)
 	wayland? (
 		>=dev-libs/wayland-1.6.0
-		>=dev-libs/wayland-protocols-1.12
+		>=dev-libs/wayland-protocols-1.14
 		>=x11-libs/libxkbcommon-0.3.0
 	)
 	X? (
@@ -133,7 +138,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-make-ffmpeg-version-check-non-fatal.patch"
+	"${FILESDIR}/${PN}-0.29.0-make-ffmpeg-version-check-non-fatal.patch"
 )
 
 src_prepare() {
@@ -150,6 +155,10 @@ src_configure() {
 		append-cflags -I"${SYSROOT%/}${EPREFIX}/opt/vc/include"
 		append-ldflags -L"${SYSROOT%/}${EPREFIX}/opt/vc/lib"
 	fi
+
+	# Prevent access violations from zsh completion generation.
+	# See Gentoo bug 656086.
+	use zsh-completion && addpredict /dev/dri
 
 	local mywafargs=(
 		--confdir="${EPREFIX}/etc/${PN}"
@@ -180,7 +189,6 @@ src_configure() {
 		$(use_enable libass)
 		$(use_enable libass libass-osd)
 		$(use_enable zlib)
-		$(use_enable encode encoding)
 		$(use_enable bluray libbluray)
 		$(use_enable dvd dvdread)
 		$(use_enable dvd dvdnav)
@@ -228,10 +236,12 @@ src_configure() {
 		$(usex vaapi "$(use_enable gbm vaapi-drm)" '--disable-vaapi-drm')
 		$(use_enable libcaca caca)
 		$(use_enable jpeg)
+		$(use_enable vulkan shaderc)
 		$(use_enable raspberry-pi rpi)
 		$(usex libmpv "$(use_enable opengl plain-gl)" '--disable-plain-gl')
 		--disable-mali-fbdev # Only available in overlays.
 		$(usex opengl '' '--disable-gl')
+		$(use_enable vulkan)
 
 		# HWaccels:
 		# Automagic Video Toolbox HW acceleration. See Gentoo bug 577332.
@@ -332,6 +342,8 @@ pkg_postinst() {
 		elog "If command-line completion doesn't work after mpv update,"
 		elog "please rebuild app-shells/mpv-bash-completion."
 	fi
+
+	elog "If you want URL support, please install net-misc/youtube-dl."
 
 	gnome2_icon_cache_update
 	xdg_desktop_database_update

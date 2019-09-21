@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/678886
+
+--- min-cscope/src/CMakeLists.txt
++++ min-cscope/src/CMakeLists.txt
+@@ -15,7 +15,11 @@
+ # Curses interface
+ IF(NOT NO_CURSES)
+     CHECK_INCLUDE_FILES(ncurses.h HAVE_NCURSES)
++    if(HAVE_NCURSES)
++	set(CURSES_NEED_NCURSES TRUE)
++    endif(HAVE_NCURSES)
+     CHECK_INCLUDE_FILES(curses.h HAVE_CURSES)
++    find_package(Curses REQUIRED)
+     IF(HAVE_NCURSES OR HAVE_CURSES)
+         MESSAGE("Building with curses-based interface")
+         SET(MIN_CSCOPE_SRCS ${MIN_CSCOPE_SRCS} command.c edit.c help.c mouse.c)
+@@ -137,13 +141,9 @@
+ IF(WIN32)
+     SET(MIN_CSCOPE_LIBS ${MIN_CSCOPE_LIBS} regex)
+ ENDIF(WIN32)
+-IF(HAVE_NCURSES)
+-    SET(MIN_CSCOPE_LIBS ${MIN_CSCOPE_LIBS} ncurses)
+-ELSE(HAVE_NCURSES)
+-    IF(HAVE_CURSES) 
+-        SET(MIN_CSCOPE_LIBS ${MIN_CSCOPE_LIBS} ncurses)
+-    ENDIF(HAVE_CURSES)
+-ENDIF(HAVE_NCURSES)
++IF(HAVE_NCURSES OR HAVE_CURSES)
++    SET(MIN_CSCOPE_LIBS ${MIN_CSCOPE_LIBS} ${CURSES_LIBRARIES})
++ENDIF(HAVE_NCURSES OR HAVE_CURSES)
+ 
+ ADD_EXECUTABLE(min-cscope ${MIN_CSCOPE_SRCS})
+ TARGET_LINK_LIBRARIES(min-cscope ${MIN_CSCOPE_LIBS})

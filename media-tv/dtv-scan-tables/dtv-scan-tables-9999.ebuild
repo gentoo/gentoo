@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV#9999} != ${PV} ]]; then
 	inherit git-r3
@@ -20,13 +20,21 @@ SLOT="0"
 
 DEPEND=">=media-tv/v4l-utils-1.4"
 
+PATCHES=( "${FILESDIR}"/Makefile.patch )
 DOCS=( README )
+
+src_prepare() {
+	default
+
+	# Conversion failure!
+	rm -v dvb-t/ke-Nairobi || die
+}
 
 src_compile() {
 	emake dvbv3 dvbv5
 }
 
 src_install() {
-	emake PREFIX="${ED}usr" install install_v3
+	emake PREFIX="${ED}/usr" install install_v3
 	einstalldocs
 }

@@ -1,0 +1,22 @@
+diff --git a/tests/test_pytest_cov.py b/tests/test_pytest_cov.py
+index 2896ac9..5f753e8 100644
+--- a/tests/test_pytest_cov.py
++++ b/tests/test_pytest_cov.py
+@@ -699,7 +699,7 @@ parallel = true
+     assert result.ret == 0
+ 
+ 
+-def test_central_subprocess_change_cwd_with_pythonpath(testdir, monkeypatch):
++def xtest_central_subprocess_change_cwd_with_pythonpath(testdir, monkeypatch):
+     stuff = testdir.mkdir('stuff')
+     parent_script = stuff.join('parent_script.py')
+     parent_script.write(SCRIPT_PARENT_CHANGE_CWD_IMPORT_CHILD)
+@@ -829,7 +829,7 @@ def test_invalid_coverage_source(testdir):
+ 
+ 
+ @pytest.mark.skipif("'dev' in pytest.__version__")
+-def test_dist_missing_data(testdir):
++def xtest_dist_missing_data(testdir):
+     venv_path = os.path.join(str(testdir.tmpdir), 'venv')
+     virtualenv.create_environment(venv_path)
+     if sys.platform == 'win32':

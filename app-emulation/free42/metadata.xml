@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>nimiux@gentoo.org</email>
-    <name>Chema Alonso</name>
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
   </maintainer>
   <longdescription lang="en">
      An HP-42S Calculator Simulator

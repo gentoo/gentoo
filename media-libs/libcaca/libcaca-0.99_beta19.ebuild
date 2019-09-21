@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ SRC_URI="http://libcaca.zoy.org/files/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 ISC LGPL-2.1 WTFPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="cxx doc imlib java mono ncurses opengl python ruby slang static-libs test truetype X"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -83,6 +83,9 @@ src_prepare() {
 	if use imlib && ! use X; then
 		append-cflags -DX_DISPLAY_MISSING
 	fi
+
+	# bug 653400
+	append-cxxflags -std=c++11
 
 	# Removed 'has_version '>=dev-texlive/texlive-latex-2013' &&' that prefixed this
 	# patch before wrt #517474

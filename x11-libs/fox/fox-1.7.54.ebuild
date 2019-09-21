@@ -24,7 +24,7 @@ RDEPEND="x11-libs/libXrandr
 		x11-libs/libXft )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	x11-libs/libXt"
 
 src_configure() {

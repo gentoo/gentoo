@@ -5,4 +5,10 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="bazaar">Enable support for Bazaar VCS in <pkg>kde-apps/dolphin</pkg> via <pkg>kde-apps/dolphin-plugins-bazaar</pkg></flag>
+		<flag name="git">Enable support for Git VCS in <pkg>kde-apps/dolphin</pkg> via <pkg>kde-apps/dolphin-plugins-git</pkg></flag>
+		<flag name="mercurial">Enable support for Mercurial VCS in <pkg>kde-apps/dolphin</pkg> via <pkg>kde-apps/dolphin-plugins-mercurial</pkg></flag>
+		<flag name="subversion">Enable support for Apache Subversion VCS in <pkg>kde-apps/dolphin</pkg> via <pkg>kde-apps/dolphin-plugins-subversion</pkg></flag>
+	</use>
 </pkgmetadata>

@@ -16,6 +16,9 @@
 		<flag name="hdb-ldap">
 		Adds support for LDAP as a database backend
 	</flag>
+		<flag name="lmdb">
+		Add support for using dev-db/lmdb for lookup tables
+	</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">heimdal/heimdal</remote-id>

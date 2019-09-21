@@ -1,0 +1,61 @@
+From 3f07c95482c15f151e10f06c89302d3700c6430f Mon Sep 17 00:00:00 2001
+From: Sebastian Andrzej Siewior <sebastian@breakpoint.cc>
+Date: Mon, 6 May 2019 13:33:48 +0200
+Subject: [PATCH] tls: compile with OpenSSL 1.1.0
+
+The init functions are not longer required in OpenSSL 1.1 so I dropped
+them.
+
+TLSv1_client_method() should not be used because it enables only the
+TLSv1.0 protocol. Better is to use SSLv23_client_method() which enable
+all the protocols including TLSv1.2. With this functions SSLv2 and SSLv3
+is theoretically possible but as of today those protocols are usually
+build-time disabled.
+To avoid all this OpenSSL 1.1 provides TLS_client_method() which is aim
+to provide to highest TLS protocol version (same as
+SSLv23_client_method() but it is deprecated in 1.1).
+
+Signed-off-by: Sebastian Andrzej Siewior <sebastian@breakpoint.cc>
+
+Forward-ported to libshout-2.4.2 by Lars Wendler <polynomial-c@gentoo.org>
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ src/tls.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/src/tls.c b/src/tls.c
+index aed5bfc..d60fb57 100644
+--- a/src/tls.c
++++ b/src/tls.c
+@@ -26,6 +26,7 @@
+ #include <string.h>
+ 
+ #include <shout/shout.h>
++#include <string.h>
+ #include "shout_private.h"
+ 
+ #ifndef XXX_HAVE_X509_check_host
+@@ -86,14 +87,17 @@ shout_tls_t *shout_tls_new(shout_t *self, sock_t socket)
+ 
+ static inline int tls_setup(shout_tls_t *tls)
+ {
+-    SSL_METHOD *meth;
+-
++    const SSL_METHOD *meth;
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
+     SSL_library_init();
+     SSL_load_error_strings();
+     SSLeay_add_all_algorithms();
+     SSLeay_add_ssl_algorithms();
+ 
+-    meth = TLSv1_client_method();
++    meth = SSLv23_client_method();
++#else
++    meth = TLS_client_method();
++#endif
+     if (!meth)
+         goto error;
+ 
+-- 
+2.21.0
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: The comments in this file are for instruction and documentation.
@@ -10,15 +10,17 @@
 # It is suggested that you use the latest EAPI approved by the Council.
 # The PMS contains specifications for all EAPIs. Eclasses will test for this
 # variable if they need to use features that are not universal in all EAPIs.
-EAPI=6
+# If an eclass doesn't support latest EAPI, use the previous EAPI instead.
+EAPI=7
+
 
 # inherit lists eclasses to inherit functions from. For example, an ebuild
 # that needs the eautoreconf function from autotools.eclass won't work
 # without the following line:
 #inherit autotools
 #
-# eclasses tend to list descriptions of how to use their functions properly.
-# take a look at /usr/portage/eclass/ for more examples.
+# Eclasses tend to list descriptions of how to use their functions properly.
+# Take a look at the eclass/ directory for more examples.
 
 # Short one-line description of this package.
 DESCRIPTION="This is a sample skeleton ebuild file"
@@ -31,8 +33,8 @@ HOMEPAGE="https://foo.example.org/"
 SRC_URI="ftp://foo.example.org/${P}.tar.gz"
 
 
-# License of the package.  This must match the name of file(s) in
-# /usr/portage/licenses/.  For complex license combination see the developer
+# License of the package.  This must match the name of file(s) in the
+# licenses/ directory.  For complex license combination see the developer
 # docs on gentoo.org for details.
 LICENSE=""
 
@@ -50,14 +52,15 @@ LICENSE=""
 SLOT="0"
 
 # Using KEYWORDS, we can record masking information *inside* an ebuild
-# instead of relying on an external package.mask file.  Right now, you should
-# set the KEYWORDS variable for every ebuild so that it contains the names of
-# all the architectures with which the ebuild works.  All of the official
-# architectures can be found in the arch.list file which is in
-# /usr/portage/profiles/.  Usually you should just set this to "~amd64".
-# The ~ in front of the architecture indicates that the package is new and
-# should be considered unstable until testing proves its stability.  So, if
-# you've confirmed that your ebuild works on amd64 and ppc, you'd specify:
+# instead of relying on an external package.mask file.  Right now, you
+# should set the KEYWORDS variable for every ebuild so that it contains
+# the names of all the architectures with which the ebuild works.
+# All of the official architectures can be found in the arch.list file
+# which is in the profiles/ directory.  Usually you should just set this
+# to "~amd64".  The ~ in front of the architecture indicates that the
+# package is new and should be considered unstable until testing proves
+# its stability.  So, if you've confirmed that your ebuild works on
+# amd64 and ppc, you'd specify:
 # KEYWORDS="~amd64 ~ppc"
 # Once packages go stable, the ~ prefix is removed.
 # For binary packages, use -* and then list the archs the bin package
@@ -76,24 +79,31 @@ IUSE="gnome X"
 #RESTRICT="strip"
 
 
-# Build-time dependencies, such as
-#    ssl? ( >=dev-libs/openssl-0.9.6b )
-#    >=dev-lang/perl-5.6.1-r1
+# Run-time dependencies. Must be defined to whatever this depends on to run.
+# Example:
+#    ssl? ( >=dev-libs/openssl-1.0.2q:0= )
+#    >=dev-lang/perl-5.24.3-r1
 # It is advisable to use the >= syntax show above, to reflect what you
 # had installed on your system when you tested the package.  Then
 # other users hopefully won't be caught without the right version of
 # a dependency.
-#DEPEND=""
+#RDEPEND=""
 
-# Run-time dependencies. Must be defined to whatever this depends on to run.
+# Build-time dependencies that need to be binary compatible with the system
+# being built (CHOST). These include libraries that we link against.
 # The below is valid if the same run-time depends are required to compile.
-RDEPEND="${DEPEND}"
+#DEPEND="${RDEPEND}"
+
+# Build-time dependencies that are executed during the emerge process, and
+# only need to be present in the native build system (CBUILD). Example:
+#BDEPEND="virtual/pkgconfig"
+
 
 # Source directory; the dir where the sources can be found (automatically
 # unpacked) inside ${WORKDIR}.  The default value for S is ${WORKDIR}/${P}
 # If you don't need to change it, leave the S= line out of the ebuild
 # to keep it tidy.
-#S=${WORKDIR}/${P}
+#S="${WORKDIR}/${P}"
 
 
 # The following src_configure function is implemented as default by portage, so
@@ -116,7 +126,7 @@ RDEPEND="${DEPEND}"
 	#	--mandir=/usr/share/man || die
 	# Note the use of --infodir and --mandir, above. This is to make
 	# this package FHS 2.2-compliant.  For more information, see
-	#   https://www.pathname.com/fhs/
+	#   https://wiki.linuxfoundation.org/lsb/fhs
 #}
 
 # The following src_compile function is implemented as default by portage, so

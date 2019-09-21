@@ -1,23 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils user linux-info systemd readme.gentoo-r1 bash-completion-r1
+PYTHON_COMPAT=( python3_{5,6,7} )
+
+inherit autotools bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://libvirt.org/libvirt.git"
+	EGIT_REPO_URI="https://libvirt.org/git/libvirt.git"
 	SRC_URI=""
 	KEYWORDS=""
 	SLOT="0"
 else
-	# Versions with 4 numbers are stable updates:
-	if [[ ${PV} =~ ^[0-9]+(\.[0-9]+){3} ]]; then
-		SRC_URI="http://libvirt.org/sources/stable_updates/${P}.tar.xz"
-	else
-		SRC_URI="http://libvirt.org/sources/${P}.tar.xz"
-	fi
+	SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 	SLOT="0/${PV}"
 fi
@@ -26,20 +23,19 @@ DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="http://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 IUSE="
-	apparmor audit +caps +dbus firewalld fuse glusterfs iscsi +libvirtd lvm
-	libssh lxc +macvtap nfs nls numa openvz parted pcap phyp policykit
-	+qemu rbd sasl selinux +udev uml +vepa virtualbox virt-network
-	wireshark-plugins xen zeroconf zfs
+	apparmor audit +caps +dbus dtrace firewalld fuse glusterfs iscsi
+	iscsi-direct +libvirtd lvm libssh lxc +macvtap nfs nls numa openvz
+	parted pcap phyp policykit +qemu rbd sasl selinux +udev +vepa
+	virtualbox virt-network wireshark-plugins xen zfs
 "
 
 REQUIRED_USE="
 	firewalld? ( virt-network )
-	libvirtd? ( || ( lxc openvz qemu uml virtualbox xen ) )
+	libvirtd? ( || ( lxc openvz qemu virtualbox xen ) )
 	lxc? ( caps libvirtd )
 	openvz? ( libvirtd )
 	policykit? ( dbus )
 	qemu? ( libvirtd )
-	uml? ( libvirtd )
 	vepa? ( macvtap )
 	virt-network? ( libvirtd )
 	virtualbox? ( libvirtd )
@@ -51,17 +47,20 @@ REQUIRED_USE="
 # package will use 3 by default. Since we don't have slot pinning in an API,
 # we must go with the most recent
 RDEPEND="
+	acct-user/qemu
+	policykit? ( acct-group/libvirt )
 	app-misc/scrub
 	dev-libs/libgcrypt:0
 	dev-libs/libnl:3
 	>=dev-libs/libxml2-2.7.6
-	|| ( >=net-analyzer/netcat6-1.0-r2 >=net-analyzer/openbsd-netcat-1.105-r1 )
+	>=net-analyzer/openbsd-netcat-1.105-r1
 	>=net-libs/gnutls-1.0.25:0=
 	net-libs/libssh2
 	net-libs/libtirpc
 	net-libs/rpcsvc-proto
 	>=net-misc/curl-7.18.0
 	sys-apps/dmidecode
+	!sys-apps/systemd[-cgroup-hybrid(+)]
 	>=sys-apps/util-linux-2.17
 	sys-devel/gettext
 	sys-libs/ncurses:0=
@@ -70,10 +69,12 @@ RDEPEND="
 	audit? ( sys-process/audit )
 	caps? ( sys-libs/libcap-ng )
 	dbus? ( sys-apps/dbus )
-	firewalld? ( net-firewall/firewalld )
+	dtrace? ( dev-util/systemtap )
+	firewalld? ( >=net-firewall/firewalld-0.6.3 )
 	fuse? ( >=sys-fs/fuse-2.8.6:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
+	iscsi-direct? ( >=net-libs/libiscsi-1.18.0 )
 	libssh? ( net-libs/libssh )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
 	nfs? ( net-fs/nfs-utils )
@@ -88,7 +89,7 @@ RDEPEND="
 	pcap? ( >=net-libs/libpcap-1.0.0 )
 	policykit? ( >=sys-auth/polkit-0.9 )
 	qemu? (
-		>=app-emulation/qemu-0.13.0
+		>=app-emulation/qemu-1.5.0
 		dev-libs/yajl
 	)
 	rbd? ( sys-cluster/ceph )
@@ -104,17 +105,17 @@ RDEPEND="
 	virtualbox? ( || ( app-emulation/virtualbox >=app-emulation/virtualbox-bin-2.2.0 ) )
 	wireshark-plugins? ( net-analyzer/wireshark:= )
 	xen? (
-		app-emulation/xen
+		>=app-emulation/xen-4.6.0
 		app-emulation/xen-tools:=
 	)
 	udev? (
 		virtual/udev
 		>=x11-libs/libpciaccess-0.10.9
 	)
-	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
 	zfs? ( sys-fs/zfs )"
 
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	app-text/xhtml1
 	dev-lang/perl
 	dev-libs/libxslt
@@ -122,19 +123,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.2.0-do_not_use_sysconf.patch
+	"${FILESDIR}"/${PN}-5.7.0-do-not-use-sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-3.10.0-r2-fix_paths_for_apparmor.patch
+	"${FILESDIR}"/${PN}-5.2.0-fix-paths-for-apparmor.patch
 )
 
 pkg_setup() {
-	if use qemu; then
-		enewgroup qemu 77
-		enewuser qemu 77 -1 -1 "qemu,kvm"
-	fi
-
-	use policykit && enewgroup libvirt
-
 	# Check kernel configuration:
 	CONFIG_CHECK=""
 	use fuse && CONFIG_CHECK+="
@@ -184,10 +178,18 @@ pkg_setup() {
 		~NETFILTER_ADVANCED
 		~NETFILTER_XT_CONNMARK
 		~NETFILTER_XT_MARK
-		~NETFILTER_XT_TARGET_CHECKSUM"
+		~NETFILTER_XT_TARGET_CHECKSUM
+		~IP_NF_FILTER
+		~IP_NF_MANGLE
+		~IP_NF_NAT
+		~IP_NF_TARGET_MASQUERADE
+		~IP6_NF_FILTER
+		~IP6_NF_MANGLE
+		~IP6_NF_NAT"
 	# Bandwidth Limiting Support
 	use virt-network && CONFIG_CHECK+="
 		~BRIDGE_EBT_T_NAT
+		~IP_NF_TARGET_REJECT
 		~NET_ACT_POLICE
 		~NET_CLS_FW
 		~NET_CLS_U32
@@ -215,45 +217,41 @@ src_prepare() {
 	default
 
 	if [[ ${PV} = *9999* ]]; then
+		# Reinitialize submodules as this is required for gnulib's bootstrap
+		git submodule init
 		# git checkouts require bootstrapping to create the configure script.
 		# Additionally the submodules must be cloned to the right locations
 		# bug #377279
 		./bootstrap || die "bootstrap failed"
 		(
-			git submodule status | sed 's/^[ +-]//;s/ .*//'
-			git hash-object bootstrap.conf
+		    git submodule status .gnulib | awk '{ print $1 }'
+		    git hash-object bootstrap.conf
+		    git ls-tree -d HEAD gnulib/local | awk '{ print $3 }'
 		) >.git-module-status
 	fi
 
 	# Tweak the init script:
-	cp "${FILESDIR}/libvirtd.init-r16" "${S}/libvirtd.init" || die
+	cp "${FILESDIR}/libvirtd.init-r18" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
-		-e "s/USE_FLAG_AVAHI/$(usex zeroconf 'use avahi-daemon' '')/" \
-		-e "s/USE_FLAG_ISCSI/$(usex iscsi 'use iscsid' '')/" \
-		-e "s/USE_FLAG_RBD/$(usex rbd 'use ceph' '')/" \
 		-i "${S}/libvirtd.init" || die "sed failed"
 
 	eautoreconf
 }
 
 src_configure() {
-	#
-	# With 4.1.0 we should always enable networking support - otherwise not
-	# even minimal networking is available. Yes, this degrades
-	# USE=virt-network to a mere runtime-dep USE flag. But let's keep it
-	# for compatibility and convenience.
-	#
 	local myeconfargs=(
 		$(use_with apparmor)
 		$(use_with apparmor apparmor-profiles)
 		$(use_with audit)
 		$(use_with caps capng)
 		$(use_with dbus)
+		$(use_with dtrace)
 		$(use_with firewalld)
 		$(use_with fuse)
 		$(use_with glusterfs)
 		$(use_with glusterfs storage-gluster)
 		$(use_with iscsi storage-iscsi)
+		$(use_with iscsi-direct storage-iscsi-direct)
 		$(use_with libvirtd)
 		$(use_with libssh)
 		$(use_with lvm storage-lvm)
@@ -274,21 +272,15 @@ src_configure() {
 		$(use_with sasl)
 		$(use_with selinux)
 		$(use_with udev)
-		$(use_with uml)
 		$(use_with vepa virtualport)
+		$(use_with virt-network network)
 		$(use_with wireshark-plugins wireshark-dissector)
-		$(use_with xen)
-		$(use_with xen xen-inotify)
 		$(use_with xen libxl)
-		$(use_with zeroconf avahi)
 		$(use_with zfs storage-zfs)
-
-		--with-network
 
 		--without-hal
 		--without-netcf
 		--without-sanlock
-		--without-xenapi
 
 		--with-esx
 		--with-init-script=systemd
@@ -301,7 +293,6 @@ src_configure() {
 		--disable-static
 		--disable-werror
 
-		--with-html-subdir=${PF}/html
 		--localstatedir=/var
 	)
 
@@ -343,9 +334,7 @@ src_install() {
 	# Remove bogus, empty directories. They are either not used, or
 	# libvirtd is able to create them on demand
 	rm -rf "${D}"/etc/sysconfig
-	rm -rf "${D}"/var/cache
-	rm -rf "${D}"/var/run
-	rm -rf "${D}"/var/log
+	rm -rf "${D}"/var
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
@@ -356,15 +345,15 @@ src_install() {
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd || die
-	newinitd "${FILESDIR}/libvirt-guests.init-r2" libvirt-guests || die
+	newinitd "${FILESDIR}/libvirt-guests.init-r4" libvirt-guests || die
 	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
 	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd || die
 
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die
 
-	newbashcomp "${S}/tools/bash-completion/vsh" vsh
-	bashcomp_alias vsh virsh virt-admin
+	newbashcomp "${S}/tools/bash-completion/vsh" virsh
+	bashcomp_alias virsh virt-admin
 
 	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true

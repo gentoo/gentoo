@@ -1,0 +1,21 @@
+diff -Naur wmfire-1.2.4.orig/src/wmfire.c wmfire-1.2.4/src/wmfire.c
+--- wmfire-1.2.4.orig/src/wmfire.c	2005-12-04 11:39:16.000000000 +0100
++++ wmfire-1.2.4/src/wmfire.c	2019-07-30 22:43:03.306268675 +0200
+@@ -108,7 +108,7 @@
+ void change_flame(int);
+ GdkCursor *setup_cursor();
+ void burn_spot(int, int, int);
+-inline void draw_fire(unsigned int);
++void draw_fire(unsigned int);
+ static void make_wmfire_dockapp();
+ void read_config(int, char **);
+ void do_help(void);
+@@ -470,7 +470,7 @@
+ /* Draw fire                              */
+ /******************************************/
+ 
+-inline void
++void
+ draw_fire(unsigned int load)
+ {
+ 	int x, y, i, j;

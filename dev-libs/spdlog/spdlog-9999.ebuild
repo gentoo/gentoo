@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils
 
-DESCRIPTION="Very fast, header only, C++ logging library."
+DESCRIPTION="Very fast, header only, C++ logging library"
 HOMEPAGE="https://github.com/gabime/spdlog"
 
 if [[ ${PV} == *9999 ]]; then
@@ -17,22 +17,24 @@ else
 fi
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/1"
 IUSE="test"
 
 DEPEND="
-	dev-libs/libfmt
+	>=dev-libs/libfmt-5.0.0
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-unbundle-fmt.patch" )
+PATCHES=( "${FILESDIR}/${PN}-9999-unbundle-fmt.patch" )
 
 src_configure() {
+	rm -r include/spdlog/fmt/bundled || die
+
 	local mycmakeargs=(
-			-DSPDLOG_BUILD_EXAMPLES=no
-			-DSPDLOG_BUILD_TESTING=$(usex test)
+		-DSPDLOG_BUILD_EXAMPLE=no
+		-DSPDLOG_BUILD_BENCH=no
+		-DSPDLOG_BUILD_TESTS=$(usex test)
 	)
 
 	cmake-utils_src_configure
-
 }

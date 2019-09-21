@@ -1,0 +1,11 @@
+--- a/src/cpp/CMakeLists.txt	2019-02-14 21:58:41.567625108 +0100
++++ b/src/cpp/CMakeLists.txt	2019-02-14 21:59:04.017920926 +0100
+@@ -34,7 +34,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux" AN
+     target_link_libraries(flann_cpp -Wl,-whole-archive flann_cpp_s -Wl,-no-whole-archive)
+ 
+     if (BUILD_CUDA_LIB)
+-	    cuda_add_library(flann_cuda SHARED "")
++	    cuda_add_library(flann_cuda SHARED "empty.cpp")
+         set_target_properties(flann_cuda PROPERTIES LINKER_LANGUAGE CXX)
+         target_link_libraries(flann_cuda -Wl,-whole-archive flann_cuda_s -Wl,-no-whole-archive)
+         set_property(TARGET flann_cpp_s PROPERTY COMPILE_DEFINITIONS FLANN_USE_CUDA)

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: texlive-module.eclass
@@ -6,6 +6,7 @@
 # tex@gentoo.org
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
+# @SUPPORTED_EAPIS: 3 4 5 6 7
 # @BLURB: Provide generic install functions so that modular texlive's texmf ebuild will only have to inherit this eclass
 # @DESCRIPTION:
 # Purpose: Provide generic install functions so that modular texlive's texmf ebuilds will
@@ -64,13 +65,15 @@
 # @DESCRIPTION:
 # Array variable specifying any patches to be applied.
 
-inherit texlive-common eutils
-
 case "${EAPI:-0}" in
 	0|1|2)
 		die "EAPI='${EAPI}' is not supported anymore"
 		;;
+	3|4|5)
+		inherit texlive-common eutils
+		;;
 	*)
+		inherit texlive-common
 		;;
 esac
 
@@ -82,19 +85,30 @@ IUSE="source"
 
 # Starting from TeX Live 2009, upstream provides .tar.xz modules.
 PKGEXT=tar.xz
-DEPEND="${COMMON_DEPEND}
-	app-arch/xz-utils"
+case "${EAPI:-0}" in
+	0|1|2|3|4|5|6)
+		DEPEND="${COMMON_DEPEND}
+			app-arch/xz-utils"
+		;;
+	*)
+		# We do not need anything from SYSROOT:
+		#   Everything is built from the texlive install in /
+		#   Generated files are noarch
+		BDEPEND="${COMMON_DEPEND}
+			app-arch/xz-utils"
+		;;
+esac
 
 for i in ${TEXLIVE_MODULE_CONTENTS}; do
 	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.${PKGEXT}"
 done
 
 # Forge doc SRC_URI
-[ -n "${PN##*documentation*}" ] && [ -n "${TEXLIVE_MODULE_DOC_CONTENTS}" ] && SRC_URI="${SRC_URI} doc? ("
+[ -n "${TEXLIVE_MODULE_DOC_CONTENTS}" ] && SRC_URI="${SRC_URI} doc? ("
 for i in ${TEXLIVE_MODULE_DOC_CONTENTS}; do
 	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.${PKGEXT}"
 done
-[ -n "${PN##*documentation*}" ] && [ -n "${TEXLIVE_MODULE_DOC_CONTENTS}" ] && SRC_URI="${SRC_URI} )"
+[ -n "${TEXLIVE_MODULE_DOC_CONTENTS}" ] && SRC_URI="${SRC_URI} )"
 
 # Forge source SRC_URI
 if [ -n "${TEXLIVE_MODULE_SRC_CONTENTS}" ] ; then
@@ -107,7 +121,7 @@ fi
 
 RDEPEND="${COMMON_DEPEND}"
 
-[ -z "${PN##*documentation*}" ] || IUSE="${IUSE} doc"
+IUSE="${IUSE} doc"
 
 # @ECLASS-VARIABLE: TEXLIVE_MODULE_OPTIONAL_ENGINE
 # @DESCRIPTION:
@@ -147,8 +161,15 @@ texlive-module_src_unpack() {
 # Apply patches from the PATCHES array and user patches, if any.
 
 texlive-module_src_prepare() {
-	[[ ${#PATCHES[@]} -gt 0 ]] && epatch "${PATCHES[@]}"
-	epatch_user
+	case "${EAPI:-0}" in
+		0|1|2|3|4|5)
+			[[ ${#PATCHES[@]} -gt 0 ]] && epatch "${PATCHES[@]}"
+			epatch_user
+			;;
+		*)
+			die "texlive-module_src_prepare is not to be used in EAPI ${EAPI}"
+			;;
+	esac
 }
 
 # @FUNCTION: texlive-module_add_format
@@ -299,6 +320,10 @@ texlive-module_src_compile() {
 		esac
 	done
 
+	# Determine texlive-core version for fmtutil call
+        fmt_call="$(has_version '>=app-text/texlive-core-2019' \
+         && echo "fmtutil-user" || echo "fmtutil")"
+
 	# Build format files
 	for i in texmf-dist/fmtutil/format*.cnf; do
 		if [ -f "${i}" ]; then
@@ -306,14 +331,14 @@ texlive-module_src_compile() {
 			[ -d texmf-var ] || mkdir texmf-var
 			[ -d texmf-var/web2c ] || mkdir texmf-var/web2c
 			VARTEXFONTS="${T}/fonts" TEXMFHOME="${S}/texmf:${S}/texmf-dist:${S}/texmf-var"\
-				env -u TEXINPUTS fmtutil --cnffile "${i}" --fmtdir "${S}/texmf-var/web2c" --all\
+				env -u TEXINPUTS $fmt_call --cnffile "${i}" --fmtdir "${S}/texmf-var/web2c" --all\
 				|| die "failed to build format ${i}"
 		fi
 	done
 
 	# Delete ls-R files, these should not be created but better be certain they
 	# do not end up being installed.
-	find . -name 'ls-R' -delete
+	find . -name 'ls-R' -delete || die
 }
 
 # @FUNCTION: texlive-module_src_install
@@ -327,7 +352,7 @@ texlive-module_src_install() {
 	done
 
 	dodir /usr/share
-	if [ -z "${PN##*documentation*}" ] || use doc; then
+	if use doc; then
 		[ -d texmf-doc ] && cp -pR texmf-doc "${ED}/usr/share/"
 	else
 		[ -d texmf/doc ] && rm -rf texmf/doc
@@ -396,5 +421,12 @@ texlive-module_pkg_postrm() {
 	etexmf-update
 }
 
-EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install \
-	pkg_postinst pkg_postrm
+case "${EAPI:-0}" in
+	0|1|2|3|4|5)
+		EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install \
+			pkg_postinst pkg_postrm
+		;;
+	*)
+		EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_postinst pkg_postrm
+		;;
+esac

@@ -1,0 +1,13 @@
+--- a/Makefile	2015-07-29 17:57:24.000000000 -0300
++++ b/Makefile	2017-02-02 15:08:06.720017266 -0300
+@@ -64,8 +64,8 @@
+ 
+ install-openrc:
+ 	$(Q)echo -e '\033[1;32mInstalling openrc files...\033[0m'
+-	$(INSTALL_DIR) "$(DESTDIR)$(DOCDIR)"
+-	$(INSTALL_SCRIPT) init/psd.openrc "$(DESTDIR)$(DOCDIR)/psd.openrc"
++	$(INSTALL_DIR) "$(DESTDIR)$(INITDIR_UPSTART)"
++	$(INSTALL_SCRIPT) init/psd.openrc "$(DESTDIR)$(INITDIR_UPSTART)/psd"
+ 	[ -f "$(DESTDIR)$(CONFDIR)/psd.conf" ] || $(INSTALL_DATA) common/psd.conf "$(DESTDIR)$(CONFDIR)/psd.conf"
+ 
+ install-systemd:

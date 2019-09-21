@@ -1,0 +1,29 @@
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=906623
+
+--- a/lib/hx509/Makefile.am	2019-05-16 08:59:34.326758842 +0300
++++ b/lib/hx509/Makefile.am	2019-05-16 08:58:43.140804423 +0300
+@@ -147,8 +147,8 @@
+ 
+ $(ALL_OBJECTS): $(HX509_PROTOS)
+ 
+-$(libhx509_la_OBJECTS): $(srcdir)/hx_locl.h
+-$(libhx509_la_OBJECTS): ocsp_asn1.h pkcs10_asn1.h
++$(ALL_OBJECTS): $(srcdir)/hx_locl.h
++$(ALL_OBJECTS): ocsp_asn1.h pkcs10_asn1.h $(dist_include_HEADERS)
+ 
+ $(srcdir)/hx509-protos.h: $(dist_libhx509_la_SOURCES)
+ 	$(heim_verbose)cd $(srcdir) && perl ../../cf/make-proto.pl -R '^(_|^C)' -E HX509_LIB -q -P comment -o hx509-protos.h $(dist_libhx509_la_SOURCES) || rm -f hx509-protos.h
+--- a/lib/hcrypto/Makefile.am	2019-05-16 09:02:28.154602045 +0300
++++ b/lib/hcrypto/Makefile.am	2019-05-16 09:02:10.600617878 +0300
+@@ -102,6 +102,11 @@
+ 
+ TESTS = $(PROGRAM_TESTS) $(SCRIPT_TESTS)
+ 
++ALL_OBJECTS  = $(libhcrypto_la_OBJECTS)
++ALL_OBJECTS += $(test_rand_OBJECTS)
++ALL_OBJECTS += $(libhctest_la_OBJECTS)
++$(ALL_OBJECTS): | install-build-headers
++
+ LDADD = $(lib_LTLIBRARIES) $(LIB_roken) $(LIB_openssl_crypto)
+ test_rand_LDADD = $(LDADD) -lm
+ 

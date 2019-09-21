@@ -1,0 +1,32 @@
+From a9f0b2143c3154da34b8798127263f6f11f61bd5 Mon Sep 17 00:00:00 2001
+From: Ishimoto Shinobu <47295761+protonesso@users.noreply.github.com>
+Date: Tue, 21 May 2019 22:41:05 +0900
+Subject: [PATCH] avoid glibc
+
+cause problems on musl systems
+
+Upstream-Status: Backport
+[https://github.com/libressl-portable/portable/pull/529]
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ crypto/compat/getprogname_linux.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/crypto/compat/getprogname_linux.c b/crypto/compat/getprogname_linux.c
+index 2c89743..4e7e31f 100644
+--- a/crypto/compat/getprogname_linux.c
++++ b/crypto/compat/getprogname_linux.c
+@@ -26,9 +26,7 @@ getprogname(void)
+ #if defined(__ANDROID_API__) && __ANDROID_API__ < 21
+ 	extern const char *__progname;
+ 	return __progname;
+-#elif defined(__GLIBC__)
+-	return program_invocation_short_name;
+ #else
+-#error "Cannot emulate getprogname"
++	return program_invocation_short_name;
+ #endif
+ }
+-- 
+2.21.0
+

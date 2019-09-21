@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -7,7 +7,7 @@ DESCRIPTION="A daemon to spin down your disks and force accesses to be cached"
 HOMEPAGE="http://noflushd.sourceforge.net"
 SRC_URI="mirror://sourceforge/noflushd/${P}.tar.gz"
 LICENSE="GPL-2"
-KEYWORDS="x86 amd64 ppc"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 SLOT="0"
 

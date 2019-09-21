@@ -1,0 +1,15 @@
+--- a/Makefile	2016-03-18 13:03:22.000000000 +0000
++++ b/Makefile	2018-10-02 11:11:00.344942941 +0100
+@@ -32,9 +32,11 @@
+ 	rm -f examples/*.pyc plugins/*.pyc
+ 	$(MAKE) -C docs clean
+ 
++TEST_PLUGINS=--cpufreq --disk-avgqu --disk-avgrq --disk-svctm --disk-tps --disk-util --disk-wait --dstat-cpu --dstat-ctxt --dstat-mem --dstat --helloworld --md-status --net-packets --proc-count --snooze --test --top-bio-adv --top-bio --top-childwait --top-cpu-adv --top-cpu --top-cputime-avg --top-cputime --top-int --top-io-adv --top-io --top-latency-avg --top-latency --top-mem --top-oom
++
+ test:
+ 	./dstat -taf 1 5
+-	./dstat -t --all-plugins 1 5
++	./dstat -t $(TEST_PLUGINS) 1 5
+ 
+ dist: clean
+ 	$(MAKE) -C docs dist

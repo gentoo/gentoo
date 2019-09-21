@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,6 +16,12 @@ IUSE="debug"
 DEPEND="sys-fs/sysfsutils"
 RDEPEND="${DEPEND}
 	sys-apps/dmidecode"
+
+src_prepare() {
+	sed -i \
+		-e 's|-Werror||' \
+		configure || die
+}
 
 src_configure() {
 	econf \

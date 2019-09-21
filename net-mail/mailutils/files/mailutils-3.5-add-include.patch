@@ -1,0 +1,10 @@
+--- a/frm/frm.h	2018-02-10 09:06:00.000000000 +0300
++++ b/frm/frm.h	2019-02-07 09:40:57.541489264 +0300
+@@ -24,6 +24,7 @@
+ #include <string.h>
+ #include <unistd.h>
+ #include <fcntl.h>
++#include <limits.h>
+ #include <sys/types.h>
+ #ifdef HAVE_TERMIOS_H
+ # include <termios.h>

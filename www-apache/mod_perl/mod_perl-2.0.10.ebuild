@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,7 @@ SRC_TEST=do
 # The test dependencies are from CPAN (Bundle::Apache2).
 
 # When all MPMs are disabled via useflags, the apache ebuild selects a
-# default one, which will likely need threading...
+# default one, which will likely need threading.
 
 RDEPEND="
 	dev-lang/perl[ithreads=]
@@ -60,6 +60,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}"-2.0.4-inline.patch        # 550244
 	"${FILESDIR}/${PN}"-2.0.10_rc1-bundled-Apache-Test.patch # 352724
 	"${FILESDIR}/${PN}"-2.0.10_rc1-Gentoo-not-Unix.patch
+	"${FILESDIR}/${PN}"-2.0.10-apache24-tests-1.patch # 614684
+	"${FILESDIR}/${PN}"-2.0.10-apache24-tests-2.patch # 614684
 )
 
 src_prepare() {

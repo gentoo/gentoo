@@ -34,6 +34,9 @@ setup-allowed-flags() {
 
 		# CPPFLAGS and LDFLAGS
 		'-[DUILR]*' '-Wl,*'
+
+		# Linker choice flag
+		'-fuse-ld'
 	)
 
 	# allow a bunch of flags that negate features / control ABI
@@ -65,6 +68,13 @@ setup-allowed-flags() {
 		-mno-fxsr -mno-hle -mno-rtm -mno-xsave -mno-xsaveopt
 		# gcc 4.9
 		-mno-avx512cd -mno-avx512er -mno-avx512f -mno-avx512pf -mno-sha
+	)
+
+	# Allow some safe individual flags. Should come along with the bug reference.
+	ALLOWED_FLAGS+=(
+		# Allow explicit stack realignment to run non-conformant
+		# binaries: bug #677852
+		-mstackrealign
 	)
 }
 
@@ -486,7 +496,8 @@ test-flags-PROG() {
 
 	while (( $# )); do
 		case "$1" in
-			--param)
+			# '-B /foo': bug # 687198
+			--param|-B)
 				if test-flag-${comp} "$1" "$2"; then
 					flags+=( "$1" "$2" )
 				fi

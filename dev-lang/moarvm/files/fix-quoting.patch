@@ -1,0 +1,28 @@
+From f1b26bb0e8f4e0a00ac31f9defb1ed74b820eb39 Mon Sep 17 00:00:00 2001
+From: Stefan Seifert <nine@detonation.org>
+Date: Mon, 15 Jul 2019 12:04:45 +0200
+Subject: [PATCH] Fix Configure.pl failing when --prefix /usr is passed
+
+gerd++ reported this on Github 1143 and supplied the diagnostics and
+fix:
+If the prefix is exact /usr, then it seems that in build/Makefile.in
+@moardll@: $(OBJECTS) $(THIRDPARTY)
+        $(MSG) linking $@
+        $(CMD)$(LD) @ldout@$@ $(LDFLAGS) @ldshared@ @moarshared@ $(OBJECTS) $(DLL_LIBS)
+moarshared will not be substituted or is wrong.
+---
+ Configure.pl | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Configure.pl b/Configure.pl
+index b71b576be..753dcfaac 100755
+--- a/Configure.pl
++++ b/Configure.pl
+@@ -441,6 +441,7 @@ sub uniq {
+ push @ldflags, $ENV{LDFLAGS}         if $ENV{LDFLAGS};
+ $config{ldflags} = join ' ', @ldflags;
+ 
++$config{moarshared} = '';
+ # Switch shared lib compiler flags in relocatable case.
+ if (not $args{static} and $config{prefix} ne '/usr') {
+     $config{moarshared} = $config{moarshared_relocatable}   if  $args{relocatable};

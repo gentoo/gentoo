@@ -9,6 +9,7 @@
   wgrep allows you to edit a grep buffer and apply those changes to
   the file buffer.
 </longdescription>
+<stabilize-allarches/>
 <upstream>
   <remote-id type="github">mhayashi1120/Emacs-wgrep</remote-id>
 </upstream>

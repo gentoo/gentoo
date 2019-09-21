@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils fdo-mime gnome2-utils multilib nsplugins
+inherit autotools eutils gnome2-utils multilib nsplugins xdg-utils
 
 DESCRIPTION="GTK+ Front-End for libxine"
 HOMEPAGE="http://xine.sourceforge.net/"
@@ -10,10 +10,10 @@ SRC_URI="mirror://sourceforge/xine/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="l10n_cs l10n_de lirc nls nsplugin udev +xcb xinerama"
 
-COMMON_DEPEND=">=media-libs/xine-lib-1.1.20
+COMMON_DEPEND=">=media-libs/xine-lib-1.1.20[gtk]
 	x11-libs/gtk+:2
 	>=dev-libs/glib-2
 	>=dev-lang/spidermonkey-1.8.2.15:0
@@ -76,13 +76,13 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }

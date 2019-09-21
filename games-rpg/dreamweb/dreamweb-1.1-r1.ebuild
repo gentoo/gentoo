@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils
 
 DESCRIPTION="Top-down adventure game set in a gritty futuristic/dystopian city"
-HOMEPAGE="http://wiki.scummvm.org/index.php/Dreamweb"
+HOMEPAGE="https://wiki.scummvm.org/index.php/Dreamweb"
 SRC_URI="doc? ( mirror://sourceforge/scummvm/${PN}-manuals-en-highres.zip )
 	l10n_de? ( mirror://sourceforge/scummvm/${PN}-cd-de-${PV}.zip )
 	l10n_en? ( mirror://sourceforge/scummvm/${PN}-cd-us-${PV}.zip )

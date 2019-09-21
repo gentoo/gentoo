@@ -1,0 +1,16 @@
+respect env CPPFLAGS
+
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -2,8 +2,9 @@ prefix=/usr
+ includedir=$(prefix)/include
+ libdir=$(prefix)/lib
+ 
+-CFLAGS ?= -g -fomit-frame-pointer -O2
+-CFLAGS += -Wall -I. -fPIC
++CFLAGS ?= -fomit-frame-pointer -O2
++CFLAGS += -I. -fPIC
++CFLAGS += $(CPPFLAGS)
+ SO_CFLAGS=-shared $(CFLAGS)
+ L_CFLAGS=$(CFLAGS)
+ LINK_FLAGS=

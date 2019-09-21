@@ -1,0 +1,21 @@
+--- a/examples/ramysql/Makefile.in
++++ b/examples/ramysql/Makefile.in
+@@ -56,7 +56,8 @@
+ 
+ 
+ MYSQLLIB = @MYSQL_LDFLAGS@ 
+-CURSESLIB = @CURSESLIB@ @V_READLINE@
++CURSESLIB = @CURSESLIB@
++V_READLINE = @V_READLINE@
+ 
+ 
+ # Standard CFLAGS
+@@ -94,7 +95,7 @@
+ 	$(CC) $(CCOPT) -o $@ rasql.o $(LDFLAGS) $(MYSQLLIB) $(LIB) $(COMPATLIB)
+ 
+ $(INSTALLBIN)/rasqlinsert: rasqlinsert.o raclient.o $(LIB)
+-	$(CC) $(CCOPT) -o $@ raclient.o rasqlinsert.o @V_PCRE@ $(LDFLAGS) $(MYSQLLIB) $(LIB) $(COMPATLIB) $(CURSESLIB)
++	$(CC) $(CCOPT) -o $@ raclient.o rasqlinsert.o @V_PCRE@ $(LDFLAGS) $(MYSQLLIB) $(LIB) $(COMPATLIB) $(CURSESLIB) $(V_READLINE)
+ 
+ $(INSTALLBIN)/rasqltimeindex: rasqltimeindex.o $(LIB)
+ 	$(CC) $(CCOPT) -o $@ rasqltimeindex.o @V_PCRE@ $(LDFLAGS) $(MYSQLLIB) $(LIB) $(COMPATLIB)

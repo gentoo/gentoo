@@ -11,7 +11,7 @@ SRC_URI="https://github.com/source-foundry/Hack/releases/download/v${PV}/Hack-v$
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 arm arm64 x86"
 IUSE=""
 RESTRICT="binchecks strip"
 

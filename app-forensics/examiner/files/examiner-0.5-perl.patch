@@ -1,5 +1,5 @@
---- ./os/linux/examiner_hashes.pl.orig	2005-05-22 10:39:56.000000000 +1000
-+++ ./os/linux/examiner_hashes.pl	2005-05-22 10:40:11.000000000 +1000
+--- a/os/linux/examiner_hashes.pl.orig	2005-05-22 10:39:56.000000000 +1000
++++ b/os/linux/examiner_hashes.pl	2005-05-22 10:40:11.000000000 +1000
 @@ -1,6 +1,6 @@
  $loaded_library=1;
  
@@ -17,8 +17,8 @@
  	1 => "SOCKET",
  	2 => "BIND",
  	3 => "CONNECT",
---- os/bsd/examiner_hashes.pl.orig	2005-05-22 10:45:39.000000000 +1000
-+++ os/bsd/examiner_hashes.pl	2005-05-22 10:45:58.000000000 +1000
+--- a/os/bsd/examiner_hashes.pl.orig	2005-05-22 10:45:39.000000000 +1000
++++ b/os/bsd/examiner_hashes.pl	2005-05-22 10:45:58.000000000 +1000
 @@ -1,6 +1,6 @@
  $loaded_library=1;
  

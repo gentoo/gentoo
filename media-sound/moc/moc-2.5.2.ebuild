@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MY_P=${P/_/-}
 DESCRIPTION="Music On Console - ncurses interface for playing audio files"
-HOMEPAGE="http://moc.daper.net"
+HOMEPAGE="https://moc.daper.net"
 SRC_URI="http://ftp.daper.net/pub/soft/moc/stable/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"

@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic usr-ldscript
 
 DESCRIPTION="Reiserfs Utilities"
 HOMEPAGE="https://www.kernel.org/pub/linux/utils/fs/reiserfs/"

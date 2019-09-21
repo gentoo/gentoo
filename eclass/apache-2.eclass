@@ -4,12 +4,13 @@
 # @ECLASS: apache-2.eclass
 # @MAINTAINER:
 # polynomial-c@gentoo.org
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Provides a common set of functions for apache-2.x ebuilds
 # @DESCRIPTION:
 # This eclass handles apache-2.x ebuild functions such as LoadModule generation
 # and inter-module dependency checking.
 
-inherit autotools eutils flag-o-matic multilib ssl-cert user toolchain-funcs versionator
+inherit autotools flag-o-matic multilib ssl-cert user toolchain-funcs eapi7-ver
 
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
@@ -21,7 +22,7 @@ case ${EAPI:-0} in
 esac
 
 # settings which are version specific go in here:
-case $(get_version_component_range 1-2) in
+case $(ver_cut 1-2) in
 	2.4)
 		DEFAULT_MPM_THREADED="event" #509922
 		CDEPEND=">=dev-libs/apr-1.5.1:=
@@ -91,7 +92,7 @@ SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
 # built-in modules
 
 IUSE_MPMS="${IUSE_MPMS_FORK} ${IUSE_MPMS_THREAD}"
-IUSE="${IUSE} debug doc ldap libressl selinux ssl static suexec threads"
+IUSE="${IUSE} debug doc gdbm ldap libressl selinux ssl static suexec threads"
 
 for module in ${IUSE_MODULES} ; do
 	IUSE="${IUSE} apache2_modules_${module}"
@@ -119,7 +120,7 @@ _apache2_set_mpms() {
 		REQUIRED_USE+=" )"
 	done
 
-	if [[ "${PV}" != 2.2* ]] ; then
+	if [[ "$(ver_cut 1-2)" != 2.2 ]] ; then
 		REQUIRED_USE+=" apache2_mpms_prefork? ( !apache2_modules_http2 )"
 	fi
 }
@@ -128,10 +129,11 @@ unset -f _apache2_set_mpms
 
 DEPEND="${CDEPEND}
 	dev-lang/perl
-	=dev-libs/apr-util-1*:=[ldap?]
+	=dev-libs/apr-util-1*:=[gdbm=,ldap?]
 	dev-libs/libpcre
 	apache2_modules_deflate? ( sys-libs/zlib )
 	apache2_modules_mime? ( app-misc/mime-types )
+	gdbm? ( sys-libs/gdbm:= )
 	ldap? ( =net-nds/openldap-2* )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.2:0= )
@@ -276,7 +278,9 @@ setup_modules() {
 		elog "through the following environment variables:"
 		elog
 		elog " SUEXEC_SAFEPATH: Default PATH for suexec (default: '${EPREFIX}/usr/local/bin:${EPREFIX}/usr/bin:${EPREFIX}/bin')"
-		elog "  SUEXEC_LOGFILE: Path to the suexec logfile (default: '${EPREFIX}/var/log/apache2/suexec_log')"
+		if { ver_test ${PV} -ge 2.4.34 && ! use suexec-syslog ; } || ver_test ${PV} -lt 2.4.34 ; then
+			elog "  SUEXEC_LOGFILE: Path to the suexec logfile (default: '${EPREFIX}/var/log/apache2/suexec_log')"
+		fi
 		elog "   SUEXEC_CALLER: Name of the user Apache is running as (default: apache)"
 		elog "  SUEXEC_DOCROOT: Directory in which suexec will run scripts (default: '${EPREFIX}/var/www')"
 		elog "   SUEXEC_MINUID: Minimum UID, which is allowed to run scripts via suexec (default: 1000)"
@@ -286,7 +290,15 @@ setup_modules() {
 		elog
 
 		MY_CONF+=( --with-suexec-safepath="${SUEXEC_SAFEPATH:-${EPREFIX}/usr/local/bin:${EPREFIX}/usr/bin:${EPREFIX}/bin}" )
-		MY_CONF+=( --with-suexec-logfile="${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}" )
+		if ver_test ${PV} -ge 2.4.34 ; then
+			MY_CONF+=( $(use_with !suexec-syslog suexec-logfile "${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}") )
+			MY_CONF+=( $(use_with suexec-syslog) )
+			if use suexec-syslog && use suexec-caps ; then
+				MY_CONF+=( --enable-suexec-capabilities )
+			fi
+		else
+			MY_CONF+=( --with-suexec-logfile="${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}" )
+		fi
 		MY_CONF+=( --with-suexec-bin="${EPREFIX}/usr/sbin/suexec" )
 		MY_CONF+=( --with-suexec-userdir=${SUEXEC_USERDIR:-public_html} )
 		MY_CONF+=( --with-suexec-caller=${SUEXEC_CALLER:-apache} )
@@ -406,6 +418,9 @@ apache-2_pkg_setup() {
 	if use userland_BSD; then
 		elog "On BSD systems you need to add the following line to /boot/loader.conf:"
 		elog "  accf_http_load=\"YES\""
+		if use ssl ; then
+			elog "  accf_data_load=\"YES\""
+		fi
 		elog
 	fi
 }
@@ -617,10 +632,13 @@ apache-2_src_install() {
 
 	# set some sane permissions for suexec
 	if use suexec ; then
-		fowners 0:${SUEXEC_CALLER:-apache} /usr/sbin/suexec
-		fperms 4710 /usr/sbin/suexec
-		# provide legacy symlink for suexec, bug 177697
-		dosym /usr/sbin/suexec /usr/sbin/suexec2
+		local needs_adjustment="$(ver_test ${PV} -ge 2.4.34 && { { ! use suexec-syslog || ! use suexec-caps ; } && echo true || echo false ; } || echo true)"
+		if ${needs_adjustment} ; then
+			fowners 0:${SUEXEC_CALLER:-apache} /usr/sbin/suexec
+			fperms 4710 /usr/sbin/suexec
+			# provide legacy symlink for suexec, bug 177697
+			dosym /usr/sbin/suexec /usr/sbin/suexec2
+		fi
 	fi
 
 	# empty dirs

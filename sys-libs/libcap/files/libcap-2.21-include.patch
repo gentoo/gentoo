@@ -1,5 +1,5 @@
---- libcap/libcap.h.org	2011-06-15 07:25:58.912480899 +0200
-+++ libcap/libcap.h	2011-06-15 07:26:16.421329661 +0200
+--- a/libcap/libcap.h
++++ b/libcap/libcap.h
 @@ -13,6 +13,7 @@
  #include <stdlib.h>
  #include <string.h>

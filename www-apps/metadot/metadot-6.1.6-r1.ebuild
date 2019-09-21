@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -13,7 +13,7 @@ DESCRIPTION="Metadot is a CMS with file, page and link management, and collabora
 HOMEPAGE="http://www.metadot.com"
 SRC_URI="http://download.metadot.com/${MY_P}.tar.gz"
 
-KEYWORDS="~x86 ppc"
+KEYWORDS="ppc ~x86"
 
 RDEPEND="
 	>=dev-lang/perl-5.005

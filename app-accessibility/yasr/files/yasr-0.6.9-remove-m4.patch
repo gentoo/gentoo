@@ -1,6 +1,5 @@
-diff -Naur yasr-0.6.9.orig/Makefile.am yasr-0.6.9/Makefile.am
---- yasr-0.6.9.orig/Makefile.am	2008-02-02 06:44:05.000000000 -0600
-+++ yasr-0.6.9/Makefile.am	2009-02-06 08:37:07.000000000 -0600
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -7,7 +7,6 @@
  
  SUBDIRS = \
@@ -14,9 +13,8 @@ diff -Naur yasr-0.6.9.orig/Makefile.am yasr-0.6.9/Makefile.am
  	README-ru
  
 -ACLOCAL_AMFLAGS = -I m4
-diff -Naur yasr-0.6.9.orig/configure.in yasr-0.6.9/configure.in
---- yasr-0.6.9.orig/configure.in	2008-02-02 07:09:04.000000000 -0600
-+++ yasr-0.6.9/configure.in	2009-02-06 08:36:43.000000000 -0600
+--- a/configure.in
++++ b/configure.in
 @@ -59,8 +59,7 @@
  AM_GNU_GETTEXT(external)
  AM_GNU_GETTEXT_VERSION([0.17])

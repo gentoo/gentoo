@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,6 +17,8 @@ RDEPEND="
 	dev-ros/audio_capture
 	dev-ros/audio_common_msgs
 	dev-ros/audio_play
-	dev-ros/sound_play
 "
+#	dev-ros/sound_play
+# https://bugs.gentoo.org/612980#c14
+
 DEPEND="${RDEPEND}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.vdr-portal.de/board/thread.php?threadid=62306"
 SRC_URI="mirror://gentoo/${MY_P}.tgz
 	https://dev.gentoo.org/~zzam/distfiles/${MY_P}.tgz"
 
-KEYWORDS="x86 ~amd64"
+KEYWORDS="~amd64 x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""

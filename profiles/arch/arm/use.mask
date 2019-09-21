@@ -3,33 +3,36 @@
 
 # Unmask arm arch specific flags
 -cpu_flags_arm_iwmmxt
--iwmmxt
+-cpu_flags_arm_iwmmxt2
 
-# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
-# Unmask elogind since it is keyworded here.
--elogind
+# Michał Górny <mgorny@gentoo.org> (2018-07-16)
+# Python 3.7 support requires fresh versions of packages which are stuck
+# at keywordreqs.
+# bug #661320: dev-python/twisted
+python_targets_python3_7
+python_single_target_python3_7
 
-# Patrick Lauer <patrick@gentoo.org> (28 Apr 2015)
-# Dependencies not keyworded
-ayatana
+# Andrey Utkin <andrey_utkin@gentoo.org> (2018-06-13)
+# No ACPI support on arm. Bug #657332
+acpi
 
-# Andrey Grozin <grozin@gentoo.org> (16 May 2014)
+# Andrey Grozin <grozin@gentoo.org> (2014-05-16)
 # gcl keyworded ~arm, bug #509842
 -gcl
 
-# Markus Meier <maekke@gentoo.org> (22 Aug 2010)
+# Markus Meier <maekke@gentoo.org> (2010-08-22)
 # unmask synaptics input driver
 -input_devices_synaptics
 
-# Markus Meier <maekke@gentoo.org> (22 Aug 2010)
+# Markus Meier <maekke@gentoo.org> (2010-08-22)
 # net-wireless/wimax not tested
 wimax
 
-# Markus Meier <maekke@gentoo.org> (21 Aug 2010)
+# Markus Meier <maekke@gentoo.org> (2010-08-21)
 # app-antivirus/clamav not tested
 clamav
 
-# Kacper Kowalik <xarthisius@gentoo.org> (9 Aug 2010)
+# Kacper Kowalik <xarthisius@gentoo.org> (2010-08-09)
 # cblas-external as virtual/cblas is also masked
 cblas-external
 
@@ -63,13 +66,14 @@ hardened
 pdfannotextractor
 prelude
 mssql
+gajim
 
 # havent tested yet
 gphoto2
 afs
 mono
 lirc
-lm_sensors
+lm-sensors
 xemacs
 scanner
 sid
@@ -94,6 +98,7 @@ anthy
 -video_cards_freedreno
 -video_cards_imx
 -video_cards_omap
+-video_cards_panfrost
 -video_cards_tegra
 -video_cards_vc4
 
@@ -101,7 +106,7 @@ anthy
 # Unmask as Vivante is available for arm.
 -video_cards_vivante
 
-# 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-02-05)
 # Modular X: mask for architectures on which they aren't available
 video_cards_glint
 video_cards_mga
@@ -109,8 +114,6 @@ video_cards_nouveau
 video_cards_nv
 video_cards_r128
 video_cards_radeon
-video_cards_tdfx
-video_cards_voodoo
 
 # Matt Turner <mattst88@gentoo.org>
 # Mask more VIDEO_CARDs added with mesa-8.0
@@ -122,28 +125,23 @@ video_cards_r600
 video_cards_radeonsi
 
 # USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
-# Bug #184563, 18 Sep 2007
+# Bug #184563, 2007-09-18
 # Robin H. Johnson <robbat2@gentoo.org>
 audit
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
 # media-libs/xine-lib is not keyworded
 xine
 
-# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
-# libdlm and cman are not keyworded
-cman
-clvm
-
-# Michał Górny <mgorny@gentoo.org> (4 May 2013)
+# Michał Górny <mgorny@gentoo.org> (2013-05-04)
 # Unmask systemd since it is keyworded here.
 -systemd
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (10 Nov 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-11-10)
 # sys-devel/llvm is keyworded
 -llvm
 
@@ -152,4 +150,3 @@ numa
 
 # toolkit for nvidia binary drivers
 cg
-

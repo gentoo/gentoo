@@ -35,7 +35,7 @@ RDEPEND="
 	x11-libs/libXmu
 	x11-libs/libXt
 	media-libs/glu
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	media-libs/freeglut
 	amd64? ( abi_x86_32? (
 		>=media-libs/glu-9.0.0-r1[abi_x86_32(-)]

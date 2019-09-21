@@ -1,8 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+
+CMAKE_MAKEFILE_GENERATOR="emake"
 
 inherit cmake-utils eutils python-any-r1
 if [[ ${PV} = *9999* ]]; then
@@ -32,7 +34,7 @@ RDEPEND="app-text/ghostscript-gpl
 		media-gfx/graphviz
 		media-libs/freetype
 	)
-	doxysearch? ( =dev-libs/xapian-1.2* )
+	doxysearch? ( dev-libs/xapian )
 	latex? (
 		dev-texlive/texlive-bibtexextra
 		dev-texlive/texlive-fontsextra
@@ -58,7 +60,7 @@ DEPEND="sys-devel/flex
 # src_test() defaults to make -C testing but there is no such directory (bug #504448)
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}/${PN}-1.8.11-link_with_pthread.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.8.12-link_with_pthread.patch" )
 DOCS=( LANGUAGE.HOWTO README.md )
 
 pkg_setup() {
@@ -97,12 +99,14 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DDOC_INSTALL_DIR="share/doc/${P}"
 		-Duse_libclang=$(usex clang)
 		-Dbuild_doc=$(usex doc)
 		-Dbuild_search=$(usex doxysearch)
 		-Dbuild_wizard=$(usex qt5)
 		-Duse_sqlite3=$(usex sqlite)
+		)
+	use doc && mycmakeargs+=(
+		-DDOC_INSTALL_DIR="share/doc/${P}"
 		)
 
 	cmake-utils_src_configure

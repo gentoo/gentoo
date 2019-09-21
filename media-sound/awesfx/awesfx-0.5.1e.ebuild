@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="AWE32 Sound Driver Utility Programs"
 HOMEPAGE="http://ftp.suse.com/pub/people/tiwai/awesfx"
@@ -9,11 +9,11 @@ SRC_URI="http://ftp.suse.com/pub/people/tiwai/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE=""
 
-RDEPEND="media-libs/alsa-lib"
-DEPEND="${RDEPEND}"
+DEPEND="media-libs/alsa-lib"
+RDEPEND="${DEPEND}"
 
 BANK_LOC="${EPREFIX}/usr/share/sounds/sf2"
 
@@ -27,7 +27,7 @@ src_configure() {
 src_install() {
 	default
 
-	rm -f "${ED}"/usr/share/sounds/sf2/README-bank
+	rm "${ED}"/usr/share/sounds/sf2/README-bank || die
 	newinitd "${FILESDIR}"/sfxload.initd sfxload
 	newconfd "${FILESDIR}"/sfxload.confd sfxload
 }

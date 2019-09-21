@@ -1,0 +1,27 @@
+diff --git a/Makefile b/Makefile
+index d34c615..7931c88 100644
+--- a/Makefile
++++ b/Makefile
+@@ -115,9 +115,10 @@ PYTHON		:= ctracecmd.so
+ PYTHON_GUI	:= ctracecmd.so ctracecmdgui.so
+ 
+ PYTHON_VERS ?= python
++PYTHON_PKGCONFIG_VERS ?= $(PYTHON_VERS)
+ 
+ # Can build python?
+-ifeq ($(shell sh -c "pkg-config --cflags $(PYTHON_VERS) > /dev/null 2>&1 && echo y"), y)
++ifeq ($(shell sh -c "pkg-config --cflags $(PYTHON_PKGCONFIG_VERS) > /dev/null 2>&1 && echo y"), y)
+ 	PYTHON_PLUGINS := plugin_python.so
+ 	BUILD_PYTHON := $(PYTHON) $(PYTHON_PLUGINS)
+ 	BUILD_PYTHON_WORKS := 1
+@@ -372,8 +373,8 @@ report_nopythondev: force
+ 	$(Q)echo
+ 
+ ifndef NO_PYTHON
+-PYTHON_INCLUDES = `pkg-config --cflags $(PYTHON_VERS)`
+-PYTHON_LDFLAGS = `pkg-config --libs $(PYTHON_VERS)` \
++PYTHON_INCLUDES = `pkg-config --cflags $(PYTHON_PKGCONFIG_VERS)`
++PYTHON_LDFLAGS = `pkg-config --libs $(PYTHON_PKGCONFIG_VERS)` \
+ 		$(shell $(PYTHON_VERS)-config --ldflags)
+ PYGTK_CFLAGS = `pkg-config --cflags pygtk-2.0`
+ else

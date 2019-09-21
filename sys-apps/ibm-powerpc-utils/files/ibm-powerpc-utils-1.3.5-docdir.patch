@@ -1,0 +1,13 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -4,8 +4,8 @@
+ sbin_PROGRAMS =
+ EXTRA_DIST =
+ 
+-docdir = $(datadir)/doc/packages/@PACKAGE@
+-doc_DATA = README COPYING
++docdir ?= $(datadir)/doc/packages/@PACKAGE@
++doc_DATA = Changelog README
+ 
+ bin_SCRIPTS = scripts/amsstat
+ 

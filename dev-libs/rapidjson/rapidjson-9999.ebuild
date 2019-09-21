@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,6 +29,13 @@ DEPEND="
 		dev-util/valgrind
 	)"
 RDEPEND=""
+
+src_prepare() {
+	cmake-utils_src_prepare
+
+	sed -i -e 's|-Werror||g' CMakeLists.txt || die
+	sed -i -e 's|-Werror||g' example/CMakeLists.txt || die
+}
 
 src_configure() {
 	local mycmakeargs=(

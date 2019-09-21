@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,10 @@ RDEPEND="
 	x11-libs/libXt:0"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.1.18-makefile.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1.18-makefile.patch
+	"${FILESDIR}"/${PN}-2.1.18-include.patch #637346
+)
 
 src_prepare() {
 	default

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ PATCHES=( "${FILESDIR}/${PN}-1.080812-fix-build-system.patch" )
 pkg_nofetch() {
 	einfo "Please visit http://www.phrap.org/phredphrapconsed.html and obtain the file"
 	einfo "\"distrib.tar.gz\", then rename it to \"phrap-${PV}-distrib.tar.gz\""
-	einfo "and put it in ${DISTDIR}"
+	einfo "and put it into your DISTDIR directory."
 }
 
 src_compile() {

@@ -9,6 +9,9 @@
 		<email>crypto@gentoo.org</email>
 		<name>Crypto</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:gnupg:libgcrypt</remote-id>
+	</upstream>
 <use>
 <flag name="o-flag-munging">Enable O-flag mangling during build</flag>
 </use>

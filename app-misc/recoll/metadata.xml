@@ -18,8 +18,10 @@
 	</upstream>
 	<use>
 		<flag name="camelcase">Enable indexing for camelCase sentences and words</flag>
+		<flag name="chm">Enable CHM file support via <pkg>dev-python/pychm</pkg></flag>
 		<flag name="inotify">Use the Linux Kernel notification subsystem for monitoring file alterations in realtime</flag>
 		<flag name="session">Stop monitoring file alterations when X11 session terminates</flag>
+		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> for fancy result list display</flag>
 	</use>
 	<longdescription lang="en">
 		Recoll is a desktop full-text search tool. It can search most document

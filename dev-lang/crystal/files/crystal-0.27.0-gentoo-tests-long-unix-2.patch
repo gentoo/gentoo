@@ -1,0 +1,13 @@
+--- a/spec/std/socket/unix_socket_spec.cr
++++ b/spec/std/socket/unix_socket_spec.cr
+@@ -37,7 +37,9 @@ describe UNIXSocket do
+     end
+   end
+ 
+-  it "sync flag after accept" do
++  # On large non-standard temp paths the test fails as:
++  #    Path size exceeds the maximum size of 107 bytes
++  pending "sync flag after accept" do
+     with_tempfile("unix_socket-accept.sock") do |path|
+       UNIXServer.open(path) do |server|
+         UNIXSocket.open(path) do |client|

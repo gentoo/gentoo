@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!--maintainer-needed-->
 	<longdescription lang="en">
 		Barry is a utility for synchronization, backup, restore,
 		program management, and charging of BlackBerry devices.
 	</longdescription>
 	<use>
 		<flag name="boost">Enable boost support</flag>
-		<flag name="desktop">Install the GUI desktop control panel</flag>
 		<flag name="gui">Install the GUI backup tool</flag>
 	</use>
 	<upstream>

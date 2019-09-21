@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		Tool for undervolting and throttling limits alteration for Intel CPUs
+	</longdescription>
+	<use>
+		<flag name="elogind">Use elogind hook to apply voltage after system sleep</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">kitsunyan/intel-undervolt</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -52,9 +52,10 @@ CDEPEND="
 	!sys-cluster/mpich2
 	!sys-cluster/nullmpi
 	!sys-cluster/mpiexec
+	!sys-cluster/pmix
 	>=dev-libs/libevent-2.0.22[${MULTILIB_USEDEP},threads]
 	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
-	>=sys-apps/hwloc-1.11.2[${MULTILIB_USEDEP},numa?]
+	<sys-apps/hwloc-2[${MULTILIB_USEDEP},numa?]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1 )
 	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
@@ -134,6 +135,9 @@ multilib_src_configure() {
 		$(multilib_native_use_enable openmpi_ofed_features_failover btl-openib-failover) \
 		$(multilib_native_use_with openmpi_rm_pbs tm) \
 		$(multilib_native_use_with openmpi_rm_slurm slurm)
+
+	# fix parallel build when f08 is enabled
+	mkdir -p ompi/mpi/fortran/use-mpi-f08/profile || die
 }
 
 multilib_src_test() {

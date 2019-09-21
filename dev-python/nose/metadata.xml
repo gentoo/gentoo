@@ -8,6 +8,5 @@
   <upstream>
     <remote-id type="pypi">nose</remote-id>
     <remote-id type="github">nose-devs/nose</remote-id>
-    <remote-id type="bitbucket">jpellerin/nose</remote-id>
   </upstream>
 </pkgmetadata>

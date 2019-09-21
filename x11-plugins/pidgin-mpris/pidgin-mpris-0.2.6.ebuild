@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=7
 
 DESCRIPTION="Gets current song from MPRIS-aware media players"
 HOMEPAGE="http://m0n5t3r.info/work/pidgin-mpris/"
@@ -18,8 +18,3 @@ RDEPEND="net-im/pidgin[gtk]
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-src_install() {
-	emake install DESTDIR="${D}" || die "Install failed"
-	dodoc INSTALL README TODO
-}

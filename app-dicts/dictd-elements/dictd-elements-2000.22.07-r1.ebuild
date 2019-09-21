@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.dict.org"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
-KEYWORDS="x86 ppc sparc amd64 ppc64"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 
 DEPEND=">=app-text/dictd-1.5.5"
 

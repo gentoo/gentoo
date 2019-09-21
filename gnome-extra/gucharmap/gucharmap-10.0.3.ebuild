@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Gucharmap"
 
 LICENSE="GPL-3"
 SLOT="2.90"
-KEYWORDS="alpha amd64 arm ~arm64 ia64 ~ppc ppc64 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd"
 
 IUSE="debug +introspection test vala"
 REQUIRED_USE="vala? ( introspection )"
@@ -29,10 +29,11 @@ RDEPEND="${COMMON_DEPEND}
 	!<gnome-extra/gucharmap-3:0
 "
 DEPEND="${RDEPEND}
-	app-text/yelp-tools
 	dev-util/desktop-file-utils
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1
 	>=dev-util/intltool-0.40
+	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
 	test? (	app-text/docbook-xml-dtd:4.1.2 )

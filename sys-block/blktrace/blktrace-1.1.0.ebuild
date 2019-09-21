@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 		sys-kernel/linux-headers
 		doc? (
 			virtual/latex-base
-			|| ( >=app-text/texlive-core-2014 app-text/dvipdfm )
+			>=app-text/texlive-core-2014
 		)
 		dev-libs/libaio"
 S="${WORKDIR}/${MY_P}"

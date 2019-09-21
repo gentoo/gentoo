@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ DESCRIPTION="Flash utility for LSI MPT-SAS3 controller"
 HOMEPAGE="https://www.broadcom.com/products/storage/host-bus-adapters/sas-9300-8e#downloads"
 LICENSE="LSI"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd ~ppc64 ~amd64-fbsd ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="-* ~amd64 ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="efi doc"
 RESTRICT="strip fetch mirror"
 DEPEND=""
@@ -31,10 +31,10 @@ S="${WORKDIR}/${MY_P}"
 pkg_nofetch() {
 	elog "Broadcom has a mandatory click-through license on their binaries."
 	elog "Please visit $HOMEPAGE and download ${DISTFILE_BIN} from the Mangement Software section."
-	elog "After downloading, move ${DISTFILE_BIN} into $DISTDIR"
+	elog "After downloading, move ${DISTFILE_BIN} into your DISTDIR directory."
 	if use doc; then
 		elog "Please also download 'SAS3Flash Utility Quick Reference Guide' (${DISTFILE_DOC}) "
-		elog "and also place it into $DISTDIR"
+		elog "and also place it into your DISTDIR directory."
 	fi
 	einfo ${SRC_URI}
 }

@@ -5,11 +5,15 @@
 		<email>radhermit@gentoo.org</email>
 		<name>Tim Harder</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="github">lotabout/skim</remote-id>
-	</upstream>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
 	<use>
 		<flag name="tmux">Install sk-tmux script to run skim in a tmux pane</flag>
 		<flag name="vim">Install vim plugin for skim</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">lotabout/skim</remote-id>
+	</upstream>
 </pkgmetadata>

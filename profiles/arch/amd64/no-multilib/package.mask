@@ -1,15 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (07 Jan 2018)
-# Requires 32-bit libraries.
-<net-misc/teamviewer-13
-
-# David Seifert <soap@gentoo.org> (03 Jan 2018)
+# David Seifert <soap@gentoo.org> (2018-01-03)
 # Requires 32-bit multilib compatibility
 sys-block/megamgr
 
-# James Le Cuirot <chewi@gentoo.org> (13 Aug 2016)
+# James Le Cuirot <chewi@gentoo.org> (2016-08-13)
 # Steam requires amd64 multilib. These are steam-overlay packages.
 dev-util/adobe-air-runtime
 games-util/steam-client-meta
@@ -25,7 +21,6 @@ mail-client/novell-groupwise-client
 # Mask packages that rely on amd64 multilib
 >=app-i18n/atokx3-3.0.0
 app-accessibility/mbrola
-app-accessibility/perlbox-voice
 app-arch/stuffit
 app-benchmarks/cpuburn
 app-editors/emacs:18
@@ -36,18 +31,16 @@ app-emulation/winetricks
 app-office/ooextras
 dev-embedded/libftd2xx
 dev-embedded/openocd
-dev-lang/icc
-dev-lang/idb
-dev-lang/ifc
 dev-util/android-ndk
 dev-util/android-sdk-update-manager
-dev-util/android-studio
 dev-util/biew
+games-action/badland
 games-action/beathazardultra
 games-action/brutal-legend
 games-action/cs2d
 games-action/descent3
 games-action/descent3-demo
+games-action/guacamelee
 games-action/heretic2
 games-action/heretic2-demo
 games-action/hotline-miami
@@ -97,7 +90,6 @@ games-fps/etqw-demo
 games-fps/glxquake-bin
 games-fps/legends
 games-fps/postal2
-games-fps/postal2mp-demo
 games-fps/quake3-bin
 games-fps/quake3-demo
 games-fps/quake3-ra3
@@ -111,32 +103,28 @@ games-fps/sauerbraten
 games-fps/serious-sam-tfe
 games-fps/serious-sam-tse
 games-fps/soldieroffortune
-games-fps/soldieroffortune-demo
 games-fps/unreal-tournament
 games-fps/ut2003
 games-fps/ut2003-demo
 games-fps/ut2004-demo
-games-kids/crayon-physics
 games-misc/little-inferno
 games-misc/papers-please
-games-puzzle/hoh-bin
+games-puzzle/triptych
 games-roguelike/adom
 games-rpg/baldurs-gate-ee
+games-rpg/costume-quest
 games-rpg/dear-esther
 games-rpg/dungeon-defenders
 games-rpg/eschalon-book-1-demo
-games-rpg/penumbra-collection
 games-rpg/wasteland2
 games-server/etqw-ded
 games-server/nwn-ded
-games-server/ut2003-ded
 games-simulation/bcs-demo
 games-strategy/darwinia
 games-strategy/darwinia-demo
 games-strategy/defcon-demo
 games-strategy/dominions2
 games-strategy/heroes3
-games-strategy/heroes3-demo
 games-strategy/knights-demo
 games-strategy/majesty-demo
 games-strategy/smac
@@ -153,10 +141,4 @@ sci-biology/foldingathome
 sci-chemistry/cara-bin
 sci-chemistry/mars
 sci-electronics/eagle
-sci-libs/ipp
 sys-libs/lib-compat-loki
-
-
-# AMD64 Team; <amd64@gentoo.org>
-# grub-1 is not available on no-multilib-profiles
-<sys-boot/grub-1.99

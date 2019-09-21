@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit toolchain-funcs xdg-utils
+inherit desktop toolchain-funcs xdg-utils
 
 MACROS_PV="20091017"
 DESCRIPTION="Jasspa Microemacs"
@@ -16,7 +16,7 @@ SRC_URI="http://www.jasspa.com/release_20090909/jasspa-mesrc-${PV}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="nanoemacs X xpm"
 
 RDEPEND="sys-libs/ncurses:0=
@@ -83,10 +83,7 @@ src_install() {
 		keepdir /usr/share/jasspa/site
 		insinto /usr/share
 		doins -r "${WORKDIR}"/jasspa
-		if use X; then
-			insinto /usr/share/applications
-			doins "${FILESDIR}"/${PN}.desktop
-		fi
+		use X && domenu "${FILESDIR}"/${PN}.desktop
 	fi
 
 	dodoc faq.txt readme.txt change.log

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ PATCHES=(
 
 pkg_nofetch() {
 	einfo "Please visit ${HOMEPAGE} and obtain the file"
-	einfo "${SRC_URI}, then place it in ${DISTDIR}"
+	einfo "${SRC_URI}, then place it into your DISTDIR directory."
 }
 
 src_compile() {

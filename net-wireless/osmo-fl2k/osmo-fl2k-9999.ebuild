@@ -14,7 +14,8 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://git.osmocom.org/osmo-fl2k"
 else
 	KEYWORDS="~amd64"
-	SRC_URI="mirror://gentoo/${P}.tar.xz"
+	SRC_URI="https://git.osmocom.org/osmo-fl2k/snapshot/v${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/v${PV}"
 fi
 
 LICENSE="GPL-2+"
@@ -23,8 +24,8 @@ SLOT="0"
 IUSE="udev"
 
 DEPEND="virtual/libusb:1"
-RDEPEND="${DEPEND}
-	media-sound/sox
+RDEPEND="${DEPEND}"
+PDEPEND="media-sound/sox
 	sys-apps/pv"
 
 # continguous memory allocator can optionally be used for zero-copy transfer
@@ -37,6 +38,9 @@ src_configure() {
 		-DLIB_INSTALL_DIR="/usr/$(get_libdir)"
 		-DINSTALL_UDEV_RULES=OFF
 	)
+	#https://gcc.gnu.org/bugzilla/show_bug.cgi?id=49653
+	replace-flags -O0 -O2
+	replace-flags -Os -O2
 	cmake-utils_src_configure
 }
 

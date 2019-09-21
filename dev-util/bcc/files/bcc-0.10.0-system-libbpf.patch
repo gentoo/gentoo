@@ -1,0 +1,182 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 94aac856..bd454226 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,12 +9,6 @@ endif()
+ 
+ enable_testing()
+ 
+-# populate submodules (libbpf)
+-if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/cc/libbpf/src)
+-  execute_process(COMMAND git submodule update --init --recursive
+-                  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+-endif()
+-
+ include(cmake/GetGitRevisionDescription.cmake)
+ include(cmake/version.cmake)
+ include(CMakeDependentOption)
+@@ -61,6 +55,9 @@ FOREACH(DIR ${LLVM_INCLUDE_DIRS})
+   include_directories("${DIR}/../tools/clang/include")
+ ENDFOREACH()
+ 
++find_package(PkgConfig)
++pkg_check_modules(LIBBPF REQUIRED libbpf)
++
+ # Set to a string path if system places kernel lib directory in
+ # non-default location.
+ if(NOT DEFINED BCC_KERNEL_MODULES_DIR)
+diff --git a/examples/cpp/CMakeLists.txt b/examples/cpp/CMakeLists.txt
+index 906c9aaf..210f0f75 100644
+--- a/examples/cpp/CMakeLists.txt
++++ b/examples/cpp/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ 
+ include_directories(${CMAKE_SOURCE_DIR}/src/cc)
+ include_directories(${CMAKE_SOURCE_DIR}/src/cc/api)
+-include_directories(${CMAKE_SOURCE_DIR}/src/cc/libbpf/include/uapi)
++include_directories(${LIBBPF_INCLUDE_DIRS})
+ 
+ option(INSTALL_CPP_EXAMPLES "Install C++ examples. Those binaries are statically linked and can take plenty of disk space" OFF)
+ 
+diff --git a/examples/cpp/pyperf/CMakeLists.txt b/examples/cpp/pyperf/CMakeLists.txt
+index 6f963c66..e8dd66f6 100644
+--- a/examples/cpp/pyperf/CMakeLists.txt
++++ b/examples/cpp/pyperf/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ 
+ include_directories(${CMAKE_SOURCE_DIR}/src/cc)
+ include_directories(${CMAKE_SOURCE_DIR}/src/cc/api)
+-include_directories(${CMAKE_SOURCE_DIR}/src/cc/libbpf/include/uapi)
++include_directories(${LIBBPF_INCLUDE_DIRS})
+ 
+ add_executable(PyPerf PyPerf.cc PyPerfUtil.cc PyPerfBPFProgram.cc PyPerfLoggingHelper.cc PyPerfDefaultPrinter.cc Py36Offsets.cc)
+ target_link_libraries(PyPerf bcc-static)
+diff --git a/introspection/CMakeLists.txt b/introspection/CMakeLists.txt
+index 88df6e84..de8a6464 100644
+--- a/introspection/CMakeLists.txt
++++ b/introspection/CMakeLists.txt
+@@ -3,11 +3,11 @@
+ 
+ include_directories(${CMAKE_SOURCE_DIR}/src/cc)
+ include_directories(${CMAKE_SOURCE_DIR}/src/cc/api)
+-include_directories(${CMAKE_SOURCE_DIR}/src/cc/libbpf/include/uapi)
++include_directories(${LIBBPF_INCLUDE_DIRS})
+ 
+ option(INSTALL_INTROSPECTION "Install BPF introspection tools" ON)
+ 
+ add_executable(bps bps.c)
+-target_link_libraries(bps bpf-static)
++target_link_libraries(bps ${LIBBPF_LIBRARIES})
+ 
+ install (TARGETS bps DESTINATION share/bcc/introspection)
+diff --git a/src/cc/CMakeLists.txt b/src/cc/CMakeLists.txt
+index bd34fd48..dfbeb596 100644
+--- a/src/cc/CMakeLists.txt
++++ b/src/cc/CMakeLists.txt
+@@ -10,8 +10,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/frontends/clang)
+ include_directories(${LLVM_INCLUDE_DIRS})
+ include_directories(${LIBELF_INCLUDE_DIRS})
+ # todo: if check for kernel version
+-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libbpf/include)
+-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libbpf/include/uapi)
++include_directories(${LIBBPF_INCLUDE_DIRS})
+ add_definitions(${LLVM_DEFINITIONS})
+ configure_file(libbcc.pc.in ${CMAKE_CURRENT_BINARY_DIR}/libbcc.pc @ONLY)
+ 
+@@ -28,13 +27,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DLLVM_MAJOR_VERSION=${CMAKE_MATCH_1}")
+ 
+ include(static_libstdc++)
+ 
+-file(GLOB libbpf_sources "libbpf/src/*.c")
+-add_library(bpf-static STATIC libbpf.c perf_reader.c ${libbpf_sources})
+-set_target_properties(bpf-static PROPERTIES OUTPUT_NAME bcc_bpf)
+-add_library(bpf-shared SHARED libbpf.c perf_reader.c ${libbpf_sources})
+-set_target_properties(bpf-shared PROPERTIES VERSION ${REVISION_LAST} SOVERSION 0)
+-set_target_properties(bpf-shared PROPERTIES OUTPUT_NAME bcc_bpf)
+-
+ set(bcc_common_sources bcc_common.cc bpf_module.cc bcc_btf.cc exported_files.cc)
+ if (${LLVM_PACKAGE_VERSION} VERSION_EQUAL 6 OR ${LLVM_PACKAGE_VERSION} VERSION_GREATER 6)
+   set(bcc_common_sources ${bcc_common_sources} bcc_debug.cc)
+@@ -79,12 +71,12 @@ set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${llvm_lib_exclude_f
+ 
+ # bcc_common_libs_for_a for archive libraries
+ # bcc_common_libs_for_s for shared libraries
+-set(bcc_common_libs_for_a b_frontend clang_frontend bpf-static
++set(bcc_common_libs_for_a b_frontend clang_frontend
+   -Wl,--whole-archive ${clang_libs} ${llvm_libs} -Wl,--no-whole-archive
+-  ${LIBELF_LIBRARIES})
++  ${LIBELF_LIBRARIES} ${LIBBPF_LIBRARIES})
+ set(bcc_common_libs_for_s ${bcc_common_libs_for_a})
+-set(bcc_common_libs_for_lua b_frontend clang_frontend bpf-static
+-  ${clang_libs} ${llvm_libs} ${LIBELF_LIBRARIES})
++set(bcc_common_libs_for_lua b_frontend clang_frontend
++	${clang_libs} ${llvm_libs} ${LIBELF_LIBRARIES} ${LIBBPF_LIBRARIES})
+ 
+ if(ENABLE_CPP_API)
+   add_subdirectory(api)
+@@ -111,8 +103,7 @@ set(bcc-lua-static ${bcc-lua-static} ${bcc_common_libs_for_lua})
+ install(TARGETS bcc-shared LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ install(FILES ${bcc_table_headers} DESTINATION include/bcc)
+ install(FILES ${bcc_api_headers} DESTINATION include/bcc)
+-install(DIRECTORY libbpf/include/uapi/linux/ DESTINATION include/bcc/compat/linux FILES_MATCHING PATTERN "*.h")
++#install(DIRECTORY libbpf/include/uapi/linux/ DESTINATION include/bcc/compat/linux FILES_MATCHING PATTERN "*.h")
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libbcc.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ endif(ENABLE_CLANG_JIT)
+ install(FILES ${bcc_common_headers} DESTINATION include/bcc)
+-install(TARGETS bpf-shared LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+diff --git a/src/cc/bcc_btf.cc b/src/cc/bcc_btf.cc
+index 12816757..29e4c707 100644
+--- a/src/cc/bcc_btf.cc
++++ b/src/cc/bcc_btf.cc
+@@ -19,8 +19,8 @@
+ #include <string.h>
+ #include "linux/btf.h"
+ #include "libbpf.h"
+-#include "libbpf/src/libbpf.h"
+-#include "libbpf/src/btf.h"
++#include <bpf/libbpf.h>
++#include <bpf/btf.h>
+ #include <vector>
+ 
+ #define BCC_MAX_ERRNO       4095
+diff --git a/src/cc/bpf_module.cc b/src/cc/bpf_module.cc
+index 836c458f..eb03ce59 100644
+--- a/src/cc/bpf_module.cc
++++ b/src/cc/bpf_module.cc
+@@ -43,7 +43,7 @@
+ #include "exported_files.h"
+ #include "libbpf.h"
+ #include "bcc_btf.h"
+-#include "libbpf/src/bpf.h"
++#include <bpf/bpf.h>
+ 
+ namespace ebpf {
+ 
+diff --git a/src/cc/libbpf.c b/src/cc/libbpf.c
+index 63f4894e..83147dbe 100644
+--- a/src/cc/libbpf.c
++++ b/src/cc/libbpf.c
+@@ -52,8 +52,8 @@
+ // TODO: Remove this when CentOS 6 support is not needed anymore
+ #include "setns.h"
+ 
+-#include "libbpf/src/bpf.h"
+-#include "libbpf/src/libbpf.h"
++#include <bpf/bpf.h>
++#include <bpf/libbpf.h>
+ 
+ // TODO: remove these defines when linux-libc-dev exports them properly
+ 
+diff --git a/tests/cc/CMakeLists.txt b/tests/cc/CMakeLists.txt
+index a47abe14..ae710eb4 100644
+--- a/tests/cc/CMakeLists.txt
++++ b/tests/cc/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ 
+ include_directories(${CMAKE_SOURCE_DIR}/src/cc)
+ include_directories(${CMAKE_SOURCE_DIR}/src/cc/api)
+-include_directories(${CMAKE_SOURCE_DIR}/src/cc/libbpf/include/uapi)
++include_directories(${LIBBPF_INCLUDE_DIRS})
+ 
+ add_executable(test_static test_static.c)
+ target_link_libraries(test_static bcc-static)

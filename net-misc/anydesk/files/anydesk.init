@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="AnyDesk service"
+description="AnyDesk global service"
+command="/opt/bin/anydesk"
+command_args="--service"
+pidfile="/var/run/anydesk.pid"
+command_background=true

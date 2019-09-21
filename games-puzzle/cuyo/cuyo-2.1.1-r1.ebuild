@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit autotools gnome2-utils versionator
 
 MY_P="${PN}-$(get_version_component_range 1).~-$(get_version_component_range 2-3)"
 DESCRIPTION="highly addictive and remotely related to tetris"
-HOMEPAGE="http://www.karimmi.de/cuyo/"
+HOMEPAGE="https://www.karimmi.de/cuyo/"
 SRC_URI="https://savannah.nongnu.org/download/cuyo/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

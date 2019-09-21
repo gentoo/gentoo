@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -55,5 +55,5 @@ src_install() {
 
 pkg_nofetch() {
 	einfo "Please visit ${HOMEPAGE}, obtain the file"
-	einfo "${P}.tar.gz and put it in ${DISTDIR}"
+	einfo "${P}.tar.gz and put it in your DISTDIR directory."
 }

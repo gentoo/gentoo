@@ -5,4 +5,7 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
+<use>
+	<flag name="nautilus">Build gnome-base/nautilus extension</flag>
+</use>
 </pkgmetadata>

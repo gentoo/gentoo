@@ -1,0 +1,11 @@
+--- gprolog-1.4.5.orig/src/Pl2Wam/check_boot	2012-12-07 03:09:23.000000000 +0100
++++ gprolog-1.4.5/src/Pl2Wam/check_boot	2018-09-01 12:56:38.385276112 +0200
+@@ -13,7 +13,7 @@
+ 
+ rm_make() {
+     rm -f $*
+-    make >/tmp/make.log 2>&1 || (echo /tmp/make.log ; exit 1)
++    make >make.log 2>&1 || (echo make.log ; exit 1)
+ }
+ 
+ 

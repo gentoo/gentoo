@@ -7,6 +7,6 @@
     </maintainer>
     <longdescription>Libarchive VFS add-on for Kodi</longdescription>
     <upstream>
-        <remote-id type="github">notspiff/vfs.libarchive</remote-id>
+        <remote-id type="github">xbmc/vfs.libarchive</remote-id>
     </upstream>
 </pkgmetadata>

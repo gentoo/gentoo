@@ -11,7 +11,7 @@ type -P gxargs > /dev/null && alias xargs=gxargs
 # Attempt to point the default SHELL used by configure scripts to bash.
 # while most should work with BSD's bourne just fine, the extra scripts
 # used by some applications (specially test scripts) use way too many bashisms.
-# Alexis Ballier <29 May 2012>: Disable this, we should rather fix bugs and it
+# Alexis Ballier (2012-05-29): Disable this, we should rather fix bugs and it
 # seems to confuse libtool a couple of packages (dev-libs/libtar, net-dns/hesiod)
 # export CONFIG_SHELL="/bin/bash"
 

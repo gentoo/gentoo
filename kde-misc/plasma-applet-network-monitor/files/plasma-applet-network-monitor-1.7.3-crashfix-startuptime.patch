@@ -1,0 +1,63 @@
+From 7aa094a156914aac5d1ac85967f9063bc6faa61e Mon Sep 17 00:00:00 2001
+From: Michail Vourlakos <mvourlakos@gmail.com>
+Date: Tue, 7 Feb 2017 22:03:29 +0200
+Subject: [PATCH] fix crash and imrove startup time
+
+--fix crash because the repeater can not catch up
+with the model changes during startup
+--this also improves a lot the start up loading as
+the visuals are painted only when the component
+has completed its initialization phase
+---
+ package/contents/ui/main.qml | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/package/contents/ui/main.qml b/package/contents/ui/main.qml
+index d781266..4ba4b5a 100644
+--- a/package/contents/ui/main.qml
++++ b/package/contents/ui/main.qml
+@@ -24,6 +24,7 @@ Item {
+     id: main
+     
+     // general settings
++    property bool inStart: true
+     property bool showLo: plasmoid.configuration.showLo
+     property bool showDdWrt: plasmoid.configuration.showDdWrt
+     property double updateInterval: plasmoid.configuration.updateInterval * 1000
+@@ -155,7 +156,8 @@ Item {
+     }
+     
+     Component.onCompleted: {
+-        reloadComponent()
++        reloadComponent();
++        inStart = false;
+     }
+     
+     function reloadComponent() {
+@@ -232,8 +234,15 @@ Item {
+         setItemSize()
+     }
+     
+-    onShowLoChanged: devicesChanged()
+-    onShowDdWrtChanged: devicesChanged()
++    onShowLoChanged: {
++        if (!inStart)
++            devicesChanged();
++    }
++    
++    onShowDdWrtChanged: {
++        if (!inStart)
++            devicesChanged();
++    }
+ 
+     GridLayout {
+         columns: gridColumns
+@@ -247,7 +256,7 @@ Item {
+         Layout.preferredHeight: height
+         
+         Repeater {
+-            model: networkDevicesModel
++            model: inStart ? 0 : networkDevicesModel
+             delegate: ActiveConnection {
+                 Layout.preferredWidth: itemWidth
+                 Layout.preferredHeight: itemHeight

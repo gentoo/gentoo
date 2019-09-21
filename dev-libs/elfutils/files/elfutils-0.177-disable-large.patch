@@ -1,0 +1,14 @@
+getconf does not disable test on 64-kernel with CFLAGS=-m32
+--- a/tests/run-large-elf-file.sh
++++ b/tests/run-large-elf-file.sh
+@@ -19,6 +19,10 @@
+ 
+ # Only run on 64bit systems, 32bit systems don't support > 4GB
+ # ELF files.
++
++# this detection fails for 64-bit systems with -m32
++exit 77
++
+ long_bit=$(getconf LONG_BIT)
+ echo "long_bit: $long_bit"
+ if test $long_bit -ne 64; then

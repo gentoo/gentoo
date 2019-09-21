@@ -5,4 +5,8 @@
 		<email>dev-zero@gentoo.org</email>
 		<name>Tiziano Müller</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>grknight@gentoo.org</email>
+		<name>Brian Evans</name>
+	</maintainer>
 </pkgmetadata>

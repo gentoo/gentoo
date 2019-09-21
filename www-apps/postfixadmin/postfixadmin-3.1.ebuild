@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils user webapp
+inherit user webapp
 
 DESCRIPTION="Web Based Management tool for Postfix style virtual domains and users"
 HOMEPAGE="http://postfixadmin.sourceforge.net"
@@ -89,10 +89,12 @@ pkg_postinst() {
 pkg_postrm() {
 	# Make sure we don't leave broken vacation.pl symlink
 	find -L "${ROOT}"/var/spool/vacation/ -type l -delete
-	if [[ ! -e "${ROOT}"/var/spool/vacation/vacation.pl ]] &&
-		path_exists "${ROOT}"/var/spool/vacation/vacation.pl-*; then
-		ln -s $(LC_ALL=C ls -1 /var/spool/vacation/vacation.pl-* | tail -n1) \
-			"${ROOT}"/var/spool/vacation/vacation.pl || die
+	local shopt_save=$(shopt -p nullglob)
+	shopt -s nullglob
+	local vacation=( "${ROOT}"/var/spool/vacation/vacation.pl-* )
+	${shopt_save}
+	if [[ ! -e "${ROOT}"/var/spool/vacation/vacation.pl && -n ${vacation[@]} ]]; then
+		ln -s "${vacation[-1]}" "${ROOT}"/var/spool/vacation/vacation.pl || die
 		ewarn "/var/spool/vacation/vacation.pl was updated to point on most"
 		ewarn "recent verion, but please, do your own checks"
 	fi

@@ -18,12 +18,20 @@ start() {
 		--stderr "${TELEPORT_LOGFILE}" \
 		-- start --config="${TELEPORT_CONFDIR}/teleport.yaml" \
 		${TELEPORT_OPTS}
-		eend $?
+	eend $?
 }
 
 stop() {
 	ebegin "Stopping Teleport SSH Service"
 		start-stop-daemon --stop --exec /usr/bin/teleport \
 		--pidfile "${TELEPORT_PIDFILE}"
+	eend $?
+}
+
+reload() {
+	checkconfig || return 1
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP \
+	    --exec "${TELEPORT_BINARY}" --pidfile "${TELEPORT_PIDFILE}"
 	eend $?
 }

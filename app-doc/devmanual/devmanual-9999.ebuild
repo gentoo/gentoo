@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit readme.gentoo-r1
 
@@ -10,18 +10,23 @@ HOMEPAGE="https://devmanual.gentoo.org/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/devmanual.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/devmanual.git"
 else
 	SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-macos"
 fi
 
-LICENSE="CC-BY-SA-2.0"
+LICENSE="CC-BY-SA-3.0"
 SLOT="0"
-IUSE=""
+IUSE="+fallback"
 
-DEPEND="dev-libs/libxslt
+BDEPEND="dev-libs/libxslt
 	media-gfx/imagemagick[truetype,svg,png]"
+
+src_prepare() {
+	default
+	use fallback && eapply "${FILESDIR}"/${PN}-fallback.patch
+}
 
 src_compile() {
 	# Imagemagick uses inkscape (if present) to delegate
@@ -55,12 +60,12 @@ src_install() {
 
 pkg_postinst() {
 	readme.gentoo_print_elog
-	if ! has_version app-portage/eclass-manpages; then
+	if ! has_version app-doc/eclass-manpages; then
 		elog "The offline version of the devmanual does not include the"
 		elog "documentation for the eclasses. If you need it, then emerge"
 		elog "the following package:"
 		elog
-		elog "app-portage/eclass-manpages"
+		elog "app-doc/eclass-manpages"
 		elog
 	fi
 }

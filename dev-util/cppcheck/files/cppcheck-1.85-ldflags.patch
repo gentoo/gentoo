@@ -1,0 +1,24 @@
+--- a/tools/dmake.cpp
++++ b/tools/dmake.cpp
+@@ -363,10 +363,10 @@
+     fout << ".PHONY: run-dmake tags\n\n";
+     fout << "\n###### Targets\n\n";
+     fout << "cppcheck: $(LIBOBJ) $(CLIOBJ) $(EXTOBJ)\n";
+-    fout << "\t$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $^ $(LIBS) $(LDFLAGS) $(RDYNAMIC)\n\n";
++    fout << "\t$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $^ $(LDFLAGS) $(RDYNAMIC) $(LIBS)\n\n";
+     fout << "all:\tcppcheck testrunner\n\n";
+     fout << "testrunner: $(TESTOBJ) $(LIBOBJ) $(EXTOBJ) cli/threadexecutor.o cli/cmdlineparser.o cli/cppcheckexecutor.o cli/filelister.o\n";
+-    fout << "\t$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $^ $(LIBS) $(LDFLAGS) $(RDYNAMIC)\n\n";
++    fout << "\t$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $^ $(LDFLAGS) $(RDYNAMIC) $(LIBS)\n\n";
+     fout << "test:\tall\n";
+     fout << "\t./testrunner\n\n";
+     fout << "check:\tall\n";
+@@ -380,7 +380,7 @@
+     fout << "generate_cfg_tests: tools/generate_cfg_tests.o $(EXTOBJ)\n";
+     fout << "\tg++ -Iexternals/tinyxml -o generate_cfg_tests tools/generate_cfg_tests.o $(EXTOBJ)\n";
+     fout << "reduce:\ttools/reduce.o $(LIBOBJ) $(EXTOBJ)\n";
+-    fout << "\t$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $^ $(LIBS) $(LDFLAGS) $(RDYNAMIC)\n\n";
++    fout << "\t$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $^ $(LDFLAGS) $(RDYNAMIC) $(LIBS)\n\n";
+     fout << "clean:\n";
+     fout << "\trm -f build/*.o lib/*.o cli/*.o test/*.o tools/*.o externals/*/*.o testrunner reduce dmake cppcheck cppcheck.1\n\n";
+     fout << "man:\tman/cppcheck.1\n\n";

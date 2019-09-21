@@ -2,13 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>wizardedit@gentoo.org</email>
-    <name>Austin English</name>
+    <email>mattst88@gentoo.org</email>
+    <name>Matt Turner</name>
   </maintainer>
   <longdescription>
   Interactive viewer for Graphviz dot files
   </longdescription>
   <upstream>
     <remote-id type="github">jrfonseca/xdot.py</remote-id>
+    <bugs-to>https://github.com/jrfonseca/xdot.py</bugs-to>
   </upstream>
 </pkgmetadata>

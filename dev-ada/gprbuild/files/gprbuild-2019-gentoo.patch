@@ -1,0 +1,274 @@
+--- a/src/gprlib.adb	2019-06-02 10:57:49.807002425 +0200
++++ b/src/gprlib.adb	2019-06-02 11:01:32.986518447 +0200
+@@ -266,7 +266,9 @@
+ 
+    Driver_Name                   : Name_Id := No_Name;
+ 
+-   Gnatbind_Name                 : String_Access := new String'("gnatbind");
++   Gnatbind_Name                 : String_Access := new String'("@GNATBIND@");
++
++   Gnatbind_Path_Option          : constant String := "--gnatbind_path=";
+ 
+    Compiler_Name                 : String_Access := new String'("gcc");
+ 
+@@ -2081,7 +2083,7 @@
+                           and then Line (Last - 2 .. Last) = "gcc"
+                         then
+                            Gnatbind_Name :=
+-                             new String'(Line (1 .. Last - 3) & "gnatbind");
++                             new String'(Line (1 .. Last - 3) & "@GNATBIND@");
+                            Objcopy_Name :=
+                              new String'(Line (1 .. Last - 3) & "objcopy");
+ 
+@@ -2089,7 +2091,7 @@
+                           and then Line (Last - 6 .. Last) = "gcc.exe"
+                         then
+                            Gnatbind_Name :=
+-                             new String'(Line (1 .. Last - 7) & "gnatbind");
++                             new String'(Line (1 .. Last - 7) & "@GNATBIND@");
+                            Objcopy_Name :=
+                              new String'(Line (1 .. Last - 7) & "objcopy");
+                         end if;
+@@ -2241,7 +2243,13 @@
+                Mapping_File_Name := new String'(Line (1 .. Last));
+ 
+             when Binding_Options =>
+-               Binding_Options_Table.Append (Line (1 .. Last));
++               if Last > Gnatbind_Path_Option'Length
++                  and then Line (1 .. Gnatbind_Path_Option'Length) =
++                     Gnatbind_Path_Option then
++                     null;
++               else
++                  Binding_Options_Table.Append (Line (1 .. Last));
++               end if;
+ 
+             when Copy_Source_Dir =>
+                Copy_Source_Directory := new String'(Line (1 .. Last));
+--- a/share/gprconfig/compilers.xml	2019-06-01 21:29:57.611722804 +0200
++++ b/share/gprconfig/compilers.xml	2019-06-01 21:42:56.000608601 +0200
+@@ -20,15 +20,15 @@
+   <!--    GCC 3.x & 4.x (not for GNAT Pro)-->
+   <compiler_description>
+     <name>GCC</name>
+-    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*-pc-mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-)?gcc</executable>
++    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*-pc-mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-)?gcc-@VER@</executable>
+     <version>
+-      <external>${PREFIX}gcc -v</external>
++      <external>${PREFIX}gcc-@VER@ -v</external>
+       <nogrep regexp="for GNAT Pro"></nogrep>
+       <grep regexp="^gcc \S+ (\S+)" group="1"></grep>
+     </version>
+     <languages>C</languages>
+     <target>
+-      <external>${PREFIX}gcc -dumpmachine</external>
++      <external>${PREFIX}gcc-@VER@ -dumpmachine</external>
+       <grep regexp="[^\r\n]+"></grep>
+     </target>
+   </compiler_description>
+@@ -170,14 +170,14 @@
+    -->
+   <compiler_description>
+     <name>GNAT</name>
+-    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*-pc-mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-|.*-qnx.*)?gnatls</executable>
++    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*-pc-mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-|.*-qnx.*)?gnatls-@VER@</executable>
+     <version>
+-      <external>${PREFIX}gnatls -v --version</external>
++      <external>${PREFIX}gnatls-@VER@ -v --version</external>
+       <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
+     </version>
+     <languages>Ada</languages>
+     <variable name="gcc_version">
+-      <external>${PREFIX}gcc -v</external>
++      <external>${PREFIX}gcc-@VER@ -v</external>
+       <grep regexp="^[-\w]*gcc \S+ (\S+)" group="1"></grep>
+     </variable>
+     <runtimes default="default,kernel,native">
+@@ -187,67 +187,11 @@
+        <directory group="1" >\.\./$TARGET/lib/gnat/(.*)/adalib/</directory>
+     </runtimes>
+     <target>
+-      <external>${PREFIX}gcc -dumpmachine</external>
++      <external>${PREFIX}gcc-@VER@ -dumpmachine</external>
+       <grep regexp="[^\r\n]+"></grep>
+     </target>
+   </compiler_description>
+ 
+-  <!--  CodePeer -->
+-
+-  <compiler_description>
+-    <name>GNAT_CODEPEER</name>
+-    <executable prefix="1">(.*gnsa-|.*codepeer-)gnatls</executable>
+-    <version>
+-      <external>${PREFIX}gnatls -v</external>
+-      <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
+-    </version>
+-    <languages>Ada,C,C++</languages>
+-    <variable name="gcc_version">
+-      <external>${PREFIX}gcc -v</external>
+-      <grep regexp="^[-\w]*gcc \S+ (\S+)" group="1"></grep>
+-    </variable>
+-    <runtimes default="default,native">
+-       <directory group="default" >\.\./lib/gcc/.*/$gcc_version/adalib/</directory>
+-       <directory group="1" >\.\./lib/gnat/(.*)/adalib/</directory>
+-       <directory group="1" >\.\./lib/gcc/.*/$gcc_version/rts-(.*)/adalib/</directory>
+-    </runtimes>
+-    <target>codepeer</target>
+-  </compiler_description>
+-
+-  <!--  Generic GNAT LLVM Target -->
+-
+-  <compiler_description>
+-    <name>GNAT_LLVM</name>
+-    <executable prefix="1">(llvm-)gnatls</executable>
+-    <version>
+-      <external>${PREFIX}gnatls -v</external>
+-      <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
+-    </version>
+-    <languages>Ada</languages>
+-    <variable name="gcc_version">
+-      <external>${PREFIX}gcc -v</external>
+-      <grep regexp="^[-\w]*gcc \S+ (\S+)" group="1"></grep>
+-    </variable>
+-    <runtimes default="default,native">
+-       <directory group="default" >\.\./lib/rts-native/adalib/</directory>
+-    </runtimes>
+-    <target>llvm</target>
+-  </compiler_description>
+-
+-  <!--  Generic C compiler for LLVM  -->
+-  <compiler_description>
+-    <name>C_LLVM</name>
+-    <executable>clang</executable>
+-    <version>
+-      <external>clang --version</external>
+-
+-      <!--  'clang version 6.0.0 ...'  -->
+-      <grep regexp="^clang version (\S+) " group="1"></grep>
+-    </version>
+-    <languages>C</languages>
+-    <target>llvm</target>
+-  </compiler_description>
+-
+   <!--  Generic C++ compiler for LLVM  -->
+   <compiler_description>
+     <name>C++_LLVM</name>
+@@ -262,45 +206,6 @@
+     <target>llvm</target>
+   </compiler_description>
+ 
+-  <!--  C Target -->
+-
+-  <compiler_description>
+-    <name>GNAT_C</name>
+-    <executable prefix="1">(c-)gnatls</executable>
+-    <version>
+-      <external>${PREFIX}gnatls -v</external>
+-      <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
+-    </version>
+-    <languages>Ada</languages>
+-    <variable name="gcc_version">
+-      <external>${PREFIX}gcc -v</external>
+-      <grep regexp="^[-\w]*gcc \S+ (\S+)" group="1"></grep>
+-    </variable>
+-    <runtimes default="default,ccg">
+-       <directory group="default" >\.\./libexec/gnat_ccg/lib/gcc/.*/$gcc_version/adalib/</directory>
+-       <directory group="1" >\.\./libexec/gnat_ccg/lib/gcc/.*/$gcc_version/rts-(.*)/adalib/</directory>
+-       <directory group="1" >\.\./lib/gnat/(.*)/adalib/</directory>
+-    </runtimes>
+-    <target>c</target>
+-  </compiler_description>
+-
+-  <!--  GNAT_DOTNET -->
+-
+-  <compiler_description>
+-    <name>GNAT_DOTNET</name>
+-    <executable prefix="1">(.*dotnet-)gnatls</executable>
+-    <version>
+-      <external>${PREFIX}gnatls -v</external>
+-      <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
+-    </version>
+-    <languages>Ada</languages>
+-    <runtimes default="default,kernel">
+-       <directory group="default" >\.\./lib/dotgnat/adalib/</directory>
+-       <directory group="1" >\.\./lib/dotgnat/rts-(.*)/adalib/</directory>
+-    </runtimes>
+-    <target>dotnet</target>
+-  </compiler_description>
+-
+   <!--    G77  -->
+   <compiler_description>
+     <name>G77</name>
+@@ -404,21 +309,6 @@
+     </target>
+   </compiler_description>
+ 
+-  <!-- LLVM Compiler -->
+-  <compiler_description>
+-    <name>LLVM</name>
+-    <executable>clang</executable>
+-    <version>
+-      <external>clang -v</external>
+-      <grep regexp=".*(LLVM|clang) version ([0-9.]*)" group="2"></grep>
+-    </version>
+-    <languages>C,C++</languages>
+-    <target>
+-      <external>clang -dumpmachine</external>
+-      <grep regexp="[^\r\n]+"></grep>
+-    </target>
+-  </compiler_description>
+-
+   <!--  Windres compiler -->
+   <compiler_description>
+     <name>WINDRES</name>
+--- a/share/gprconfig/gnat.xml	2019-06-01 21:53:53.383281607 +0200
++++ b/share/gprconfig/gnat.xml	2019-06-01 21:57:08.414196529 +0200
+@@ -60,7 +60,7 @@
+    &filter_gnat;
+    <config>
+    package Compiler is
+-      for Driver                   ("Ada") use "${PATH(ada)}${PREFIX(ada)}gcc";
++      for Driver                   ("Ada") use "${PATH(ada)}${PREFIX(ada)}gcc-@VER@";
+       for Language_Kind            ("Ada") use "unit_based";
+       for Dependency_Kind          ("Ada") use "ALI_File";
+       for Leading_Required_Switches        ("Ada") use
+@@ -77,6 +77,9 @@
+       for Objects_Path_File     ("Ada") use "ADA_PRJ_OBJECTS_FILE";
+       for Driver         ("Ada") use
+           "${GPRCONFIG_PREFIX}libexec/gprbuild/gprbind";
++      for Switches ("Ada") use ("--gnatbind_path=gnatbind-@VER@");
++      for Required_Switches ("Ada") use
++        Binder'Required_Switches ("Ada") &amp; ("--RTS=${RUNTIME_DIR(ada)}");
+    end Binder;
+ 
+    for Toolchain_Version ("Ada") use "GNAT ${VERSION(ada)}";
+--- a/share/gprconfig/c.xml	2019-06-01 21:57:36.244755708 +0200
++++ b/share/gprconfig/c.xml	2019-06-01 21:59:14.919191663 +0200
+@@ -14,7 +14,7 @@
+      </compilers>
+      <config>
+    package Compiler is
+-      for Driver              ("C") use "${PATH(c)}${PREFIX(c)}gcc";
++      for Driver              ("C") use "${PATH(c)}${PREFIX(c)}gcc-@VER@";
+    end Compiler;
+      </config>
+    </configuration>
+--- a/share/gprconfig/linker.xml	2019-06-01 21:59:34.546880368 +0200
++++ b/share/gprconfig/linker.xml	2019-06-01 22:00:50.906668730 +0200
+@@ -1015,7 +1015,7 @@
+     </targets>
+     <config>
+    for Library_Partial_Linker use
+-         ("${PATH(ada)}${PREFIX(ada)}gcc", "-nostdlib", "-Wl,-r", "-o");
++         ("${PATH(ada)}${PREFIX(ada)}gcc-@VER@", "-nostdlib", "-Wl,-r", "-no-pie", "-o");
+     </config>
+   </configuration>
+ 
+@@ -1034,7 +1034,7 @@
+     </targets>
+     <config>
+    for Library_Partial_Linker use
+-         ("${PATH(c)}${PREFIX(c)}gcc", "-nostdlib", "-Wl,-r", "-o");
++         ("${PATH(c)}${PREFIX(c)}gcc-@VER@", "-nostdlib", "-Wl,-r", "-no-pie", "-o");
+     </config>
+   </configuration>
+ 

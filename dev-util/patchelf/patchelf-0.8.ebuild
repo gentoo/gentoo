@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ HOMEPAGE="http://nixos.org/patchelf.html"
 SRC_URI="http://releases.nixos.org/${PN}/${P}/${P}.tar.bz2"
 
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 LICENSE="GPL-3"
 IUSE=""
 
@@ -32,5 +32,7 @@ src_configure() {
 }
 
 src_test() {
-	autotools-utils_src_test -j1
+	autotools-utils_src_test -j1 \
+							 CFLAGS+=" -no-pie" \
+							 CXXFLAGS+=" -no-pie"
 }

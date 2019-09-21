@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils flag-o-matic autotools
+inherit autotools desktop flag-o-matic ltprune
 
 DESCRIPTION="3D tank combat simulator game"
 HOMEPAGE="https://www.bzflag.org/"
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="dedicated upnp"
 
-DEPEND="
+RDEPEND="
 	net-dns/c-ares
 	>=net-misc/curl-7.15.0
 	sys-libs/ncurses:0
@@ -22,11 +22,16 @@ DEPEND="
 		media-libs/libsdl2[joystick,sound,video]
 		virtual/glu
 		virtual/opengl )
-	upnp? ( net-libs/miniupnpc )"
-RDEPEND=${DEPEND}
+	upnp? ( net-libs/miniupnpc )
+"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.12-configure.patch
 	"${FILESDIR}"/${PN}-2.4.12-tinfo.patch
+	"${FILESDIR}"/${PN}-2.4.12-sdl2-cppflags.patch
 )
 
 src_prepare() {
@@ -35,18 +40,21 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
+	local myconf=(
+		$(use_enable upnp UPnP)
+		--libdir="${EPREFIX}"/usr/$(get_libdir)/${PN}
+	)
 
 	if use dedicated ; then
 		ewarn
 		ewarn "You are building a server-only copy of BZFlag"
 		ewarn
-		myconf="--disable-client --without-SDL"
+		myconf+=( --disable-client --without-SDL )
+	else
+		myconf=( --with-SDL=2 )
 	fi
 
-	econf \
-		$(use_enable upnp UPnP) \
-		${myconf}
+	econf "${myconf[@]}"
 }
 
 src_install() {

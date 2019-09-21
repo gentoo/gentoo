@@ -1,0 +1,33 @@
+From 08bdd5b26388f92867ab03e36d73e32481faed88 Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Mon, 1 Jul 2019 13:35:09 +0300
+Subject: [PATCH] libcrypto: fix compilation with LibreSSL
+
+LibreSSL does not support FIPS, so do not check it.
+
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+Upstream-Status: Submitted
+[https://www.libssh.org/archive/libssh/2019-07/0000000.html]
+---
+ include/libssh/libcrypto.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/include/libssh/libcrypto.h b/include/libssh/libcrypto.h
+index 541912b5..1a1df635 100644
+--- a/include/libssh/libcrypto.h
++++ b/include/libssh/libcrypto.h
+@@ -112,7 +112,11 @@ typedef BN_CTX* bignum_CTX;
+ 
+ 
+ /* Returns true if the OpenSSL is operating in FIPS mode */
++#ifndef LIBRESSL_VERSION_NUMBER
+ #define ssh_fips_mode() (FIPS_mode() != 0)
++#else
++#define ssh_fips_mode() false
++#endif
+ 
+ #endif /* HAVE_LIBCRYPTO */
+ 
+-- 
+2.22.0
+

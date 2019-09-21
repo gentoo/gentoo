@@ -1,0 +1,54 @@
+From 17864ae1e14362d56bbd7dd75149e094a4716bc6 Mon Sep 17 00:00:00 2001
+From: Michael Weber <xmw@gentoo.org>
+Date: Mon, 29 Apr 2019 20:56:28 +0200
+Subject: [PATCH 3/3] Disable doc files installation by build system
+
+Patch was rebased from 7.1 on top of 8.0.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                   | 14 --------------
+ thirdparty/snappy/CMakeLists.txt |  5 -----
+ 2 files changed, 19 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6466cd8a..84fd0ae1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -604,20 +604,6 @@ endif ()
+ ##############################################################################
+ # Packaging
+ 
+-install (
+-    FILES
+-        README.markdown
+-        docs/BUGS.markdown
+-        docs/NEWS.markdown
+-        docs/USAGE.markdown
+-    DESTINATION ${DOC_INSTALL_DIR}
+-)
+-install (
+-    FILES LICENSE
+-    DESTINATION ${DOC_INSTALL_DIR}
+-    RENAME LICENSE.txt
+-)
+-
+ set (CPACK_PACKAGE_VERSION_MAJOR "8")
+ set (CPACK_PACKAGE_VERSION_MINOR "0")
+ 
+diff --git a/thirdparty/snappy/CMakeLists.txt b/thirdparty/snappy/CMakeLists.txt
+index 84ecbac8..f732dbc0 100644
+--- a/thirdparty/snappy/CMakeLists.txt
++++ b/thirdparty/snappy/CMakeLists.txt
+@@ -26,8 +26,3 @@ add_convenience_library (snappy_bundled EXCLUDE_FROM_ALL
+     snappy-stubs-public.h
+ )
+ 
+-install (
+-    FILES COPYING
+-    DESTINATION ${DOC_INSTALL_DIR}
+-    RENAME LICENSE-snappy.txt
+-)
+-- 
+2.21.0
+

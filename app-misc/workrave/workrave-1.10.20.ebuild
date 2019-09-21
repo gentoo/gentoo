@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -53,6 +53,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	dev-python/cheetah
+	dev-util/glib-utils
 	>=dev-util/intltool-0.40.0
 	sys-devel/autoconf-archive
 	x11-base/xorg-proto

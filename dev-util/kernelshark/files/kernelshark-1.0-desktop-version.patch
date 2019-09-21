@@ -1,0 +1,11 @@
+diff --git a/kernel-shark/build/ks.desktop.cmake b/kernel-shark/build/ks.desktop.cmake
+index 2b02c0d..34c02ea 100644
+--- a/build/ks.desktop.cmake
++++ b/build/ks.desktop.cmake
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Version=@KS_VERSION_STRING@
++Version=1.1
+ Type=Application
+ Name=Kernel Shark
+ GenericName=Kernel Shark

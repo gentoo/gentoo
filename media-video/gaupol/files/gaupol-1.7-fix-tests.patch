@@ -1,0 +1,132 @@
+commit 7778eda0e6e4280fb43aa78721561e43d3e866eb
+Author: Osmo Salomaa <otsaloma@iki.fi>
+Date:   Sun Aug 4 21:19:20 2019 +0300
+
+    Accept any en* language for spell-check tests
+
+diff --git a/aeidon/agents/test/test_text.py b/aeidon/agents/test/test_text.py
+index bf6c4ac1..a2261595 100644
+--- a/aeidon/agents/test/test_text.py
++++ b/aeidon/agents/test/test_text.py
+@@ -78,14 +78,16 @@ class TestTextAgent(aeidon.TestCase):
+         for subtitle in self.project.subtitles:
+             subtitle.main_text = subtitle.main_text.replace("a", " a")
+             subtitle.main_text = subtitle.main_text.replace("e", "e ")
++        language = self.get_spell_check_language("en")
+         self.project.spell_check_join_words(indices=None,
+                                             doc=aeidon.documents.MAIN,
+-                                            language="en")
++                                            language=language)
+ 
+     def test_spell_check_split_words(self):
+         for subtitle in self.project.subtitles:
+             subtitle.main_text = subtitle.main_text.replace("s ", "s")
+             subtitle.main_text = subtitle.main_text.replace("y ", "y")
++        language = self.get_spell_check_language("en")
+         self.project.spell_check_split_words(indices=None,
+                                              doc=aeidon.documents.MAIN,
+-                                             language="en")
++                                             language=language)
+diff --git a/aeidon/test/test_spell.py b/aeidon/test/test_spell.py
+index 66369e0e..ff94f150 100644
+--- a/aeidon/test/test_spell.py
++++ b/aeidon/test/test_spell.py
+@@ -21,7 +21,8 @@ import aeidon
+ class TestSpellChecker(aeidon.TestCase):
+ 
+     def setup_method(self, method):
+-        self.checker = aeidon.SpellChecker("en")
++        language = self.get_spell_check_language("en")
++        self.checker = aeidon.SpellChecker(language)
+ 
+     def test_add_replacement(self):
+         self.checker.add_replacement("abc", "xyz")
+@@ -50,7 +51,8 @@ class TestSpellChecker(aeidon.TestCase):
+ class TestSpellCheckNavigator(aeidon.TestCase):
+ 
+     def setup_method(self, method):
+-        self.navigator = aeidon.SpellCheckNavigator("en")
++        language = language = self.get_spell_check_language("en")
++        self.navigator = aeidon.SpellCheckNavigator(language)
+         self.navigator.text = "She knows the fighting\ntechniques of Panzer Kunst."
+ 
+     def test_ignore(self):
+diff --git a/aeidon/unittest.py b/aeidon/unittest.py
+index 8c384806..d80c5a22 100644
+--- a/aeidon/unittest.py
++++ b/aeidon/unittest.py
+@@ -50,6 +50,15 @@ class TestCase:
+         with open(path, "r", encoding="ascii") as f:
+             return f.read().strip()
+ 
++    def get_spell_check_language(self, language):
++        """Return spell-check language to use in unit tests."""
++        # Allow any close-enough variant as different systems will have
++        # different spell-check engines and dictionaries installed.
++        for candidate in aeidon.SpellChecker.list_languages():
++            if candidate.startswith(language):
++                return candidate
++        raise Exception("Spell-check dictionary {}* not found".format(language))
++
+     def new_microdvd_file(self):
+         """Return path to a new temporary MicroDVD file."""
+         return self.new_temp_file(aeidon.formats.MICRODVD)
+diff --git a/gaupol/agents/test/test_tools.py b/gaupol/agents/test/test_tools.py
+index a9fbdf8f..e1547476 100644
+--- a/gaupol/agents/test/test_tools.py
++++ b/gaupol/agents/test/test_tools.py
+@@ -36,7 +36,8 @@ class TestToolsAgent(gaupol.TestCase):
+ 
+     @patch("gaupol.util.flash_dialog", OK)
+     def test__on_check_spelling_activate(self):
+-        gaupol.conf.spell_check.language = "en"
++        language = self.get_spell_check_language("en")
++        gaupol.conf.spell_check.language = language
+         self.application.get_action("check-spelling").activate()
+ 
+     @patch("gaupol.util.flash_dialog", OK)
+diff --git a/gaupol/dialogs/test/test_spell_check.py b/gaupol/dialogs/test/test_spell_check.py
+index cbe7d61a..d74860fb 100644
+--- a/gaupol/dialogs/test/test_spell_check.py
++++ b/gaupol/dialogs/test/test_spell_check.py
+@@ -32,7 +32,8 @@ class TestSpellCheckDialog(gaupol.TestCase):
+         aeidon.SpellChecker.add_to_personal = aeidon.SpellChecker.add_to_session
+         aeidon.SpellChecker.read_replacements = lambda *args: None
+         aeidon.SpellChecker.write_replacements = lambda *args: None
+-        gaupol.conf.spell_check.language = "en"
++        language = self.get_spell_check_language("en")
++        gaupol.conf.spell_check.language = language
+         self.application = self.new_application()
+         for page in self.application.pages:
+             for subtitle in page.project.subtitles:
+diff --git a/gaupol/test/test_spell.py b/gaupol/test/test_spell.py
+index 72b74e33..5018abab 100644
+--- a/gaupol/test/test_spell.py
++++ b/gaupol/test/test_spell.py
+@@ -37,4 +37,5 @@ class TestSpellChecker(aeidon.TestCase):
+         Gtk.main()
+ 
+     def setup_method(self, method):
+-        self.checker = gaupol.SpellChecker("en")
++        language = self.get_spell_check_language("en")
++        self.checker = gaupol.SpellChecker(language)
+
+commit 340b3bf6bb7cfdf5be9e973f25f5a616ef504702
+Author: Osmo Salomaa <otsaloma@iki.fi>
+Date:   Mon Aug 5 02:31:32 2019 +0300
+
+    Set spell-check language for assistant test
+
+diff --git a/gaupol/test/test_assistants.py b/gaupol/test/test_assistants.py
+index 6969b273..4d6dfdcb 100644
+--- a/gaupol/test/test_assistants.py
++++ b/gaupol/test/test_assistants.py
+@@ -109,6 +109,8 @@ class TestJoinSplitWordsPage(_TestBuilderPage):
+ 
+     @patch("gaupol.util.flash_dialog", OK)
+     def test_correct_texts(self):
++        language = self.get_spell_check_language("en")
++        gaupol.conf.spell_check.language = language
+         self.page.correct_texts(self.project,
+                                 None,
+                                 aeidon.documents.MAIN)

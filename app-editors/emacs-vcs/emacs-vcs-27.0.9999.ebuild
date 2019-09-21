@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
 
@@ -14,7 +14,7 @@ if [[ ${PV##*.} = 9999 ]]; then
 else
 	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/emacs-${PV}.tar.xz
 		mirror://gnu-alpha/emacs/pretest/emacs-${PV}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 	# FULL_VERSION keeps the full version number, which is needed in
 	# order to determine some path information correctly for copy/move
 	# operations later on
@@ -28,8 +28,9 @@ HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="27"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gtk2 gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
+RESTRICT="test"
 
 RDEPEND="sys-libs/ncurses:0=
 	>=app-eselect/eselect-emacs-1.16
@@ -37,9 +38,13 @@ RDEPEND="sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
+	games? ( acct-group/gamestat )
+	gmp? ( dev-libs/gmp:0= )
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
+	json? ( dev-libs/jansson )
 	kerberos? ( virtual/krb5 )
+	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
 	mailutils? ( net-mail/mailutils[clients] )
 	!mailutils? ( net-libs/liblockfile )
@@ -72,20 +77,20 @@ RDEPEND="sys-libs/ncurses:0=
 			x11-libs/libXft
 			x11-libs/libXrender
 			cairo? ( >=x11-libs/cairo-1.12.18 )
+			harfbuzz? ( media-libs/harfbuzz:0= )
 			m17n-lib? (
 				>=dev-libs/libotf-0.9.4
 				>=dev-libs/m17n-lib-1.5.1
 			)
 		)
 		gtk? (
-			xwidgets? (
-				net-libs/webkit-gtk:4=
+			gtk2? ( x11-libs/gtk+:2 )
+			!gtk2? (
 				x11-libs/gtk+:3
-				x11-libs/libXcomposite
-			)
-			!xwidgets? (
-				gtk3? ( x11-libs/gtk+:3 )
-				!gtk3? ( x11-libs/gtk+:2 )
+				xwidgets? (
+					net-libs/webkit-gtk:4=
+					x11-libs/libXcomposite
+				)
 			)
 		)
 		!gtk? (
@@ -111,13 +116,14 @@ RDEPEND="sys-libs/ncurses:0=
 	)"
 
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	gzip-el? ( app-arch/gzip )
 	X? ( x11-base/xorg-proto )"
+
+BDEPEND="virtual/pkgconfig
+	gzip-el? ( app-arch/gzip )"
 #	pax_kernel? ( sys-apps/attr )
 
 if [[ ${PV##*.} = 9999 ]]; then
-	DEPEND="${DEPEND}
+	BDEPEND="${BDEPEND}
 	sys-apps/texinfo"
 fi
 
@@ -139,8 +145,7 @@ src_prepare() {
 	eapply_user
 
 	# Fix filename reference in redirected man page
-	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
-		|| die "unable to sed ctags.1"
+	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
 
 	AT_M4DIR=m4 eautoreconf
 }
@@ -183,6 +188,7 @@ src_configure() {
 		if use xft; then
 			myconf+=" --with-xft"
 			myconf+=" $(use_with cairo)"
+			myconf+=" $(use_with harfbuzz)"
 			myconf+=" $(use_with m17n-lib libotf)"
 			myconf+=" $(use_with m17n-lib m17n-flt)"
 		else
@@ -207,11 +213,12 @@ src_configure() {
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			if use xwidgets; then
-				myconf+=" --with-x-toolkit=gtk3 --with-xwidgets"
+			if use gtk2; then
+				myconf+=" --with-x-toolkit=gtk2 --without-xwidgets"
+				use xwidgets && ewarn \
+					"USE flag \"xwidgets\" has no effect if \"gtk2\" is set."
 			else
-				myconf+=" --with-x-toolkit=$(usex gtk3 gtk3 gtk2)"
-				myconf+=" --without-xwidgets"
+				myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
 			fi
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
@@ -231,8 +238,12 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
-		! use gtk && use xwidgets && ewarn \
-			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
+		if ! use gtk; then
+			use gtk2 && ewarn \
+				"USE flag \"gtk2\" has no effect if \"gtk\" is not set."
+			use xwidgets && ewarn \
+				"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
+		fi
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"
@@ -243,6 +254,7 @@ src_configure() {
 
 	econf \
 		--program-suffix="-${EMACS_SUFFIX}" \
+		--includedir="${EPREFIX}"/usr/include/${EMACS_SUFFIX} \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--localstatedir="${EPREFIX}"/var \
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
@@ -254,8 +266,11 @@ src_configure() {
 		$(use_with dbus) \
 		$(use_with dynamic-loading modules) \
 		$(use_with games gameuser ":gamestat") \
+		$(use_with gmp libgmp) \
 		$(use_with gpm) \
+		$(use_with json) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
+		$(use_with lcms lcms2) \
 		$(use_with libxml2 xml2) \
 		$(use_with mailutils) \
 		$(use_with selinux) \
@@ -275,14 +290,12 @@ src_compile() {
 src_install () {
 	emake DESTDIR="${D}" NO_BIN_LINK=t install
 
-	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} \
-		|| die "moving emacs executable failed"
-	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 \
-		|| die "moving emacs man page failed"
+	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} || die
+	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 || die
+	mv "${ED}"/usr/share/metainfo/{emacs-,}${EMACS_SUFFIX}.appdata.xml || die
 
 	# move info dir to avoid collisions with the dir file generated by portage
-	mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} \
-		|| die "moving info dir failed"
+	mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} || die
 	touch "${ED}"/usr/share/info/${EMACS_SUFFIX}/.keepinfodir
 	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir.orig
 
@@ -367,15 +380,14 @@ pkg_preinst() {
 	# move Info dir file to correct name
 	local infodir=/usr/share/info/${EMACS_SUFFIX} f
 	if [[ -f ${ED}${infodir}/dir.orig ]]; then
-		mv "${ED}"${infodir}/dir{.orig,} || die "moving info dir failed"
+		mv "${ED}"${infodir}/dir{.orig,} || die
 	elif [[ -d "${ED}"${infodir} ]]; then
 		# this should not happen in EAPI 4
 		ewarn "Regenerating Info directory index in ${infodir} ..."
 		rm -f "${ED}"${infodir}/dir{,.*}
 		for f in "${ED}"${infodir}/*; do
 			if [[ ${f##*/} != *-[0-9]* && -e ${f} ]]; then
-				install-info --info-dir="${ED}"${infodir} "${f}" \
-					|| die "install-info failed"
+				install-info --info-dir="${ED}"${infodir} "${f}" || die
 			fi
 		done
 	fi

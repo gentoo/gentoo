@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!--maintainer-needed-->
 	<longdescription lang="en">
 		The Steam protocol plugin for bitlbee. This plugin uses the Steam
 		Mobile API allowing it to run alongside the main Steam client.

@@ -1,0 +1,19 @@
+--- a/source/tools/src/wad2map.cpp	2019-04-08 08:29:24.000000000 +0200
++++ b/source/tools/src/wad2map.cpp	2019-04-20 15:07:38.684542190 +0200
+@@ -7,6 +7,7 @@
+ 
+ #include "compat.h"
+ #include "pragmas.h"
++#include "vfs.h"
+ 
+ #define MAXWADS 4096
+ #define MAXPOINTS 8192
+@@ -313,7 +314,7 @@
+         Bprintf("Could not find %s\n",scriptname);
+         exit(0);
+     }
+-    filpos = 0; fileng = filelength(filhandle);
++    filpos = 0; fileng = buildvfs_length(filhandle);
+     while (readline() != 0)
+     {
+         i = 0; j = 0; lasti = 0;

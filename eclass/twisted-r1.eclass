@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Author: Jan Matejka <yac@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5
 # @BLURB: Eclass for Twisted packages
 # @DESCRIPTION:
 # The twisted eclass defines phase functions for Twisted packages.

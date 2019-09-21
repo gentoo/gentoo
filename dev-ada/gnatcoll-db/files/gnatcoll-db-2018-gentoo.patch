@@ -1,0 +1,11 @@
+--- a/sqlite/gnatcoll_sqlite.gpr	2018-06-24 14:08:52.477478654 +0200
++++ b/sqlite/gnatcoll_sqlite.gpr	2018-06-24 14:08:59.149372684 +0200
+@@ -42,7 +42,7 @@
+    for Library_Name    use Name;
+    for Library_Version use "lib" & Name & Gnatcoll.So_Ext & "." & Version;
+ 
+-   for Languages use ("Ada", "C");
++   for Languages use ("Ada");
+ 
+    Thread_Lib := ();
+ 

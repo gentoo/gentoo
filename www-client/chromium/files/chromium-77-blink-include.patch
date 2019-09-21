@@ -1,0 +1,28 @@
+From 5baf7df7f4c5971dab552897eeef94b194650ce5 Mon Sep 17 00:00:00 2001
+From: Dave Tapuska <dtapuska@chromium.org>
+Date: Mon, 12 Aug 2019 22:30:13 +0000
+Subject: [PATCH] Fix build failure due to missing include for std::numeric_limits usage.
+
+Some configurations fail to build, limits should have been included.
+
+BUG=992832
+
+Change-Id: I894ba0543bfcef101c93259e39a31d12ae6d035c
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1747981
+Commit-Queue: Dave Tapuska <dtapuska@chromium.org>
+Reviewed-by: Mostyn Bramley-Moore <mostynb@vewd.com>
+Cr-Commit-Position: refs/heads/master@{#686214}
+---
+
+diff --git a/third_party/blink/renderer/platform/exported/web_time_range.cc b/third_party/blink/renderer/platform/exported/web_time_range.cc
+index 384566a..68d83e1 100644
+--- a/third_party/blink/renderer/platform/exported/web_time_range.cc
++++ b/third_party/blink/renderer/platform/exported/web_time_range.cc
+@@ -31,6 +31,7 @@
+ #include "third_party/blink/public/platform/web_time_range.h"
+ 
+ #include <cmath>
++#include <limits>
+ 
+ namespace blink {
+ 

@@ -1,0 +1,16 @@
+# Config file.
+MR_CONF="/etc/milter-regex.conf"
+
+# Process and socket owner, socket group, socket permissions. Make
+# sure to allow your MTA to write to the socket by specifying an
+# appropriate group.
+MR_USER="milter"
+MR_GROUP="milter"
+MR_PERM="0660"
+
+MR_RUNDIR="/run/milter-regex"
+MR_SOCKET="${MR_RUNDIR}/socket"
+
+# Additional options for logging etc. Do not attempt to overwrite any
+# of the options already defined in /etc/init.d/milter-regex.
+MR_OPTS=""

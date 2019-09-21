@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+	Powerline is a statusline plugin for vim, and provides statuslines and
+	prompts for several other applications, including zsh, bash, fish,
+	tmux, IPython, Awesome, i3 and Qtile.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">powerline-status</remote-id>
+		<remote-id type="github">powerline/powerline</remote-id>
+	</upstream>
+</pkgmetadata>

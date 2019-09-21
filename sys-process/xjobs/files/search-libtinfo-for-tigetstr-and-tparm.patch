@@ -1,0 +1,32 @@
+From 8272978e3f90aec42101a6f254af779e20cfc0eb Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 14 Aug 2019 20:19:24 -0400
+Subject: [PATCH 1/1] Rename configure.in to configure.ac and search libtinfo
+ for tigetstr/tparm.
+
+---
+ configure.in => configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+ rename configure.in => configure.ac (95%)
+
+diff --git a/configure.in b/configure.ac
+similarity index 95%
+rename from configure.in
+rename to configure.ac
+index 21fc034..0baa3cc 100644
+--- a/configure.in
++++ b/configure.ac
+@@ -72,8 +72,8 @@ AC_CHECK_HEADER([term.h],
+ 	AC_INCLUDES_DEFAULT
+ 	)
+ 
+-AC_SEARCH_LIBS(tigetstr,ncurses,)
+-AC_SEARCH_LIBS(tparm,curses,)
++AC_SEARCH_LIBS(tigetstr,ncurses tinfo)
++AC_SEARCH_LIBS(tparm,curses tinfo)
+ 
+ AC_SUBST(DEBUG)
+ AC_SUBST(AUTOCONF)
+-- 
+2.21.0
+

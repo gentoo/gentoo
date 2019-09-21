@@ -5,4 +5,9 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
+<longdescription lang="en">
+	Lights Off is a collection of light switch puzzles. Clicking on a light
+	toggles it either on or off, but also toggles all the surrounding lights,
+	too. Your objective is simple: turn off all the lights!
+</longdescription>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Performance Test of Filesystem I/O using standard C library calls"
 HOMEPAGE="http://www.textuality.com/bonnie/"
-SRC_URI="http://www.textuality.com/bonnie/bonnie.tar.gz"
+SRC_URI="http://www.textuality.com/bonnie/bonnie.tar.gz -> ${P}.tar.gz"
 
 LICENSE="bonnie"
 SLOT="0"

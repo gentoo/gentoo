@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ MY_PV="8-update7"
 MY_P="${PN}-${MY_PV}-linux"
 
 DESCRIPTION="A brainstorming and mind mapping software tool"
-HOMEPAGE="http://www.xmind.net"
+HOMEPAGE="https://www.xmind.net"
 SRC_URI="http://dl2.xmind.net/xmind-downloads/${MY_P}.zip
 	https://dev.gentoo.org/~creffett/distfiles/xmind-icons.tar.xz"
 LICENSE="EPL-1.0 LGPL-3"
@@ -17,6 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+DEPEND="app-arch/unzip"
 RDEPEND="
 	>=virtual/jre-1.8
 	x11-libs/gtk+:2

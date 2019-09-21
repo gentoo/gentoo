@@ -5,7 +5,4 @@
     <email>xfce@gentoo.org</email>
     <name>XFCE Team</name>
   </maintainer>
-  <use>
-    <flag name="granite">Enable support for the elementary library <pkg>dev-libs/granite</pkg></flag>
-  </use>
 </pkgmetadata>

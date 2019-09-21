@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils user
+
+inherit desktop
 
 MY_P="ChickensForLinux-Linux-${PV}"
 DESCRIPTION="Target chickens with rockets and shotguns. Funny"
@@ -15,14 +16,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror bindist"
 
-DEPEND="<media-libs/allegro-5"
+DEPEND="acct-group/gamestat
+	<media-libs/allegro-5"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}
-
-pkg_setup(){
-	enewgroup gamestat 36
-}
 
 src_prepare() {
 	default

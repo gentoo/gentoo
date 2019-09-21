@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils multilib flag-o-matic toolchain-funcs udev user
+inherit eutils multilib flag-o-matic toolchain-funcs udev
 
 # One ebuild to rule them all
 if [[ ${PV} == *9999 ]] ; then
@@ -13,7 +13,7 @@ else
 	MY_PV="${PV/_/-}"
 	MY_P="${PN}-${MY_PV}"
 	S="${WORKDIR}"/${MY_P}
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 	SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${MY_PV}/${MY_P}.tar.gz"
 fi
 
@@ -25,7 +25,9 @@ SLOT="0"
 IUSE="+cmsis-dap dummy +ftdi +jlink parport +usb verbose-io"
 RESTRICT="strip" # includes non-native binaries
 
-RDEPEND=">=dev-lang/jimtcl-0.76
+RDEPEND="
+	acct-group/plugdev
+	>=dev-lang/jimtcl-0.76
 	cmsis-dap? ( dev-libs/hidapi )
 	jlink? ( dev-embedded/libjaylink )
 	usb? (
@@ -37,10 +39,6 @@ RDEPEND=">=dev-lang/jimtcl-0.76
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 [[ ${PV} == "9999" ]] && DEPEND+=" >=sys-apps/texinfo-5" #549946
-
-pkg_setup() {
-	enewgroup plugdev
-}
 
 src_prepare() {
 	epatch_user
@@ -136,7 +134,6 @@ src_configure() {
 
 src_install() {
 	default
-	env -uRESTRICT prepstrip "${ED}"/usr/bin
 	udev_dorules "${D}"/usr/share/${PN}/contrib/*.rules
 }
 

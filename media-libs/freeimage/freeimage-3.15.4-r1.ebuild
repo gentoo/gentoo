@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs eutils
+inherit eutils toolchain-funcs
 
 MY_PN=FreeImage
 MY_PV=${PV//.}

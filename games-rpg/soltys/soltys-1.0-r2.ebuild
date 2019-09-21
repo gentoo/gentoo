@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils
 
 DESCRIPTION="Classic adventure game"
-HOMEPAGE="http://wiki.scummvm.org/index.php/Soltys"
+HOMEPAGE="https://wiki.scummvm.org/index.php/Soltys"
 SRC_URI="l10n_en? ( mirror://sourceforge/scummvm/${PN}-en-v${PV}.zip )
 	l10n_es? ( mirror://sourceforge/scummvm/${PN}-es-v${PV}.zip )
 	l10n_pl? ( mirror://sourceforge/scummvm/${PN}-pl-v${PV}.zip )

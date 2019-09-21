@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after thermald
+}
+
+command="/usr/bin/intel-undervolt"
+command_args="daemon"
+command_background="true"
+pidfile="/run/${RC_SVCNAME}.pid"
+required_files="/etc/intel-undervolt.conf"
+
+start_pre() {
+	if service_started thermald; then
+		eerror "thermald conflits with ${RC_SVCNAME}, exiting"
+	fi
+
+	ebegin "${RC_SVCNAME} -> apply initial voltage"
+		"${command}" apply
+	eend $?
+}

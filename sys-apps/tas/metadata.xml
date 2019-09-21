@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		TAS provides server usage information at the OS level,
+		that users could monitor on a system through the BMC/IPMI.
+		For HW Platforms, where there is not RAID controller in configuration,
+		it is recommended to install TAS.
+		Provides Asset and Health Information:
+		Hardware Information:
+		CPU, Memory, NIC, and HDD Health
+		Usage Monitoring: CPU workload, Memory Size, NIC State, and Disk Partition
+		Supports RAID and HDD SMART Failure Information:
+		Broadcom 3108 RAID Controller and Intel PCH/RSTe RAID Chipset
+		Generates State Event Log: Disk Failure and NIC State Change
+	</longdescription>
+</pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ REQUIRED_USE="
 	vala? ( introspection )
 "
 
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm arm64 hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.44.0:2
@@ -33,6 +33,7 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.7:= )
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.25
 	>=dev-util/intltool-0.40
 	virtual/pkgconfig
@@ -42,6 +43,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.17.8-disable-demos.patch
+	# don't overwrite m4/ax_* with newer breaking versions
+	"${FILESDIR}"/${P}-ax2019-compat.patch
 )
 
 src_prepare() {

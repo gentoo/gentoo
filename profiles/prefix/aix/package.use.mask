@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michael Haubenwallner <haubi@gentoo.org> (16 Feb 2012)
+# Michael Haubenwallner <haubi@gentoo.org> (2012-02-16)
 # JIT implementation in pcre does not know about AIX.
 dev-libs/libpcre jit

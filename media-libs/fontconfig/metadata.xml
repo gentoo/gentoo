@@ -6,4 +6,7 @@
 		<name>Fonts</name>
 	</maintainer>
 	<longdescription>Fontconfig is a font configuration and customization library, which does not depend on the X Window System. It is designed to locate fonts within the system and select them according to requirements specified by applications.</longdescription>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:fontconfig_project:fontconfig</remote-id>
+	</upstream>
 </pkgmetadata>

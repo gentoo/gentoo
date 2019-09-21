@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://github.com/pathscale/libcxxrt.git"
 inherit flag-o-matic toolchain-funcs portability ${SCM} multilib-minimal
 
 DESCRIPTION="C++ Runtime from PathScale, FreeBSD and NetBSD"
-HOMEPAGE="https://github.com/pathscale/libcxxrt http://www.pathscale.com/node/265"
+HOMEPAGE="https://github.com/pathscale/libcxxrt"
 if [ "${PV%9999}" = "${PV}" ] ; then
 	SRC_URI="mirror://gentoo/${P}.tar.xz"
 	DEPEND="app-arch/xz-utils"
@@ -21,9 +21,9 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 if [ "${PV%9999}" = "${PV}" ] ; then
-	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm arm64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 else
-	KEYWORDS=""
+	KEYWORDS="amd64 arm arm64 x86"
 fi
 IUSE="+libunwind +static-libs test"
 

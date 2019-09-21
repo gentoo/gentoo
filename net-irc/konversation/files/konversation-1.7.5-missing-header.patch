@@ -1,0 +1,23 @@
+From 4d0036617becc26a76fd021138c98aceec4c7b53 Mon Sep 17 00:00:00 2001
+From: Luca Beltrame <lbeltrame@kde.org>
+Date: Sun, 21 Jul 2019 09:14:32 +0200
+Subject: Fix build with Qt 5.13
+
+---
+ src/irc/outputfilter.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/irc/outputfilter.cpp b/src/irc/outputfilter.cpp
+index f9e6253..45d11fb 100644
+--- a/src/irc/outputfilter.cpp
++++ b/src/irc/outputfilter.cpp
+@@ -32,6 +32,7 @@
+ 
+ #include <QStringList>
+ #include <QFile>
++#include <QMetaMethod>
+ #include <QRegExp>
+ #include <QTextCodec>
+ #include <QByteArray>
+-- 
+cgit v1.1

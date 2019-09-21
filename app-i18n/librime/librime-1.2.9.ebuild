@@ -1,23 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2012-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 inherit cmake-utils vcs-snapshot
 
-DESCRIPTION="Rime Input Method Engine library"
-HOMEPAGE="http://rime.im/ https://github.com/rime/librime"
+DESCRIPTION="Rime Input Method Engine, the core library"
+HOMEPAGE="https://rime.im/ https://github.com/rime/librime"
 SRC_URI="https://github.com/rime/${PN}/archive/rime-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/1"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="static-libs test"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="app-i18n/opencc:=
 	dev-cpp/glog:=
-	>=dev-cpp/yaml-cpp-0.5.0:=
-	>=dev-libs/boost-1.46.0:=[threads]
+	dev-cpp/yaml-cpp:=
+	<dev-libs/boost-1.69:=[threads]
 	dev-libs/leveldb:=
 	dev-libs/marisa:="
 DEPEND="${RDEPEND}
@@ -26,13 +27,9 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		-DBOOST_USE_CXX11=ON
-		-DBUILD_DATA=OFF
-		-DBUILD_SEPARATE_LIBS=OFF
-		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
-		-DBUILD_STATIC=$(usex static-libs)
 		-DBUILD_TEST=$(usex test)
+		-DBOOST_USE_CXX11=ON
+		-DLIB_INSTALL_DIR="${EPREFIX}"/usr/$(get_libdir)
 	)
-
 	cmake-utils_src_configure
 }

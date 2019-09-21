@@ -1,0 +1,37 @@
+###############################
+# Default settings for logstash
+###############################
+
+# Set a home directory
+#LS_HOME=/var/lib/logstash
+
+# Set data directory
+#LS_DATA_DIR=${LS_HOME}/data
+
+# Arguments to pass to logstash agent
+#LS_OPTS=""
+
+# Arguments to pass to java
+#LS_HEAP_SIZE="500m"
+#LS_JAVA_OPTS="-Djava.io.tmpdir=$HOME"
+
+# user id to be invoked as
+#LS_USER=logstash
+#LS_GROUP=logstash
+
+# logstash logging
+#LS_LOG_DIR=/var/log/logstash
+#LS_USE_GC_LOGGING="true"
+
+# logstash settings directory
+#LS_SETTINGS_DIR=/etc/logstash
+
+# Open file limit
+#LS_OPEN_FILES=16384
+
+# Nice level
+#LS_NICE=19
+
+# If this is set to 1, then when `stop` is called, if the process has
+# not exited within a reasonable time, SIGKILL will be sent next.
+KILL_ON_STOP_TIMEOUT=0

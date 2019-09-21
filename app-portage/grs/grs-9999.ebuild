@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-PYTHON_COMPAT=( python3_{4,5,6} )
+EAPI="7"
+PYTHON_COMPAT=( python3_{5,6} )
 
 inherit distutils-r1 linux-info
 
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~blueness/${PN}/${ISO}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 DESCRIPTION="Suite to build Gentoo Reference Systems"
@@ -27,10 +27,7 @@ IUSE="server"
 
 DEPEND=""
 RDEPEND="
-	|| (
-		sys-apps/portage
-		sys-apps/portage-mgorny
-	)
+	sys-apps/portage
 	server? (
 		app-arch/tar[xattr]
 		app-crypt/md5deep
@@ -58,7 +55,7 @@ src_install() {
 	echo "CONFIG_PROTECT=\"/etc/grs/systems.conf\"" > "${T}"/20grs
 	doenvd "${T}"/20grs
 	if use server; then
-		mkdir ${D}/usr/share/${PN}
-		cp "${DISTDIR}"/${ISO} ${D}/usr/share/${PN}
+		mkdir "${D}"/usr/share/${PN}
+		cp "${DISTDIR}"/${ISO} "${D}"/usr/share/${PN}
 	fi
 }

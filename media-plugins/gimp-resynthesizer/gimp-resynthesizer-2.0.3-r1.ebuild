@@ -18,10 +18,13 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 DEPEND="media-gfx/gimp
-	virtual/pkgconfig"
-RDEPEND="media-gfx/gimp[python,${PYTHON_USEDEP}]"
+	virtual/pkgconfig
+	${PYTHON_DEPS}"
+RDEPEND="media-gfx/gimp[python,${PYTHON_USEDEP}]
+	${PYTHON_DEPS}"
 
 S="${WORKDIR}/${MY_P}"
 

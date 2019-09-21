@@ -5,4 +5,8 @@
     <email>rust@gentoo.org</email>
     <name>Rust Project</name>
   </maintainer>
+  <use>
+    <flag name="clippy">Install clippy component</flag>
+    <flag name="rustfmt">Install rustfmt component</flag>
+  </use>
 </pkgmetadata>

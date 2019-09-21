@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -5,9 +5,10 @@
  
  PACKAGE = genromfs

@@ -1,0 +1,12 @@
+diff --git a/spice-common/python_modules/demarshal.py b/spice-common/python_modules/demarshal.py
+index 1ea131d..7172762 100644
+--- a/spice-common/python_modules/demarshal.py
++++ b/spice-common/python_modules/demarshal.py
+@@ -318,6 +318,7 @@ def write_validate_array_item(writer, container, item, scope, parent_scope, star
+         writer.assign(nelements, array.size)
+     elif array.is_remaining_length():
+         if element_type.is_fixed_nw_size():
++            writer.error_check("%s > message_end" % item.get_position())
+             if element_type.get_fixed_nw_size() == 1:
+                 writer.assign(nelements, "message_end - %s" % item.get_position())
+             else:

@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="In memory size limited LRU cache"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 PATCHES=("${FILESDIR}/${PN}-0.21-benchmark.patch")

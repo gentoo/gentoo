@@ -17,9 +17,10 @@
 <longdescription>Libguestfs is a library and tool set for accessing and 
 modifying virtual machine (VM) disk images</longdescription>
 <use>
-	<flag name="fuse">Enable image mount support via fuse</flag>
 	<flag name="erlang">Build Erlang bindings</flag>
+	<flag name="fuse">Enable image mount support via fuse</flag>
+	<flag name="inspect-icons">Use <pkg>media-gfx/icoutils</pkg> for acces icon file in image and inspect it</flag>
+	<flag name="libvirt">Use <pkg>app-emulation/libvirt</pkg> to manipulate VMs</flag>
 	<flag name="systemtap">Use <pkg>dev-util/systemtap</pkg> to inspect VM via "probes" way</flag>
-	<flag name="inspect-icons">Use <pkg>media-gfx/icoutils</pkg>for acces icon file in image and inspect it</flag>
 </use>
 </pkgmetadata>

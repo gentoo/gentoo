@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>wine@gentoo.org</email>
+		<name>Wine</name>
+		<description>
+			This package must be kept in sync with repo/proj/wine repository.
+			Any changes need to be run past the maintainer to ensure the two repositories are kept in sync.
+		</description>
+	</maintainer>
+	<use>
+		<flag name="spirv-tools">Enable SPIRV shader debugging support using <pkg>dev-util/spirv-tools</pkg></flag>
+	</use>
+</pkgmetadata>

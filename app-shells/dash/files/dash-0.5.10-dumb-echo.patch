@@ -24,7 +24,7 @@ sequence.  it also makes dash smaller & faster to disable this logic entirely.
 -		lastfmt = "%s";
 +	for (i = 1; i < argc; ++i) {
 +		outstr(argv[i], out1);
-+		if (1 < argc - 1)
++		if (i < argc - 1)
 +			outc(' ', out1);
  	}
 -

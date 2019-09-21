@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2010-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 PYTHON_COMPAT=(python2_7)
 
 inherit elisp-common multiprocessing python-any-r1 toolchain-funcs
@@ -34,13 +34,24 @@ fi
 # japanese-usage-dictionary: BSD-2
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE="debug emacs fcitx4 +gui +handwriting-tegaki handwriting-tomoe ibus renderer test"
 REQUIRED_USE="|| ( emacs fcitx4 ibus ) gui? ( ^^ ( handwriting-tegaki handwriting-tomoe ) ) !gui? ( !handwriting-tegaki !handwriting-tomoe )"
+RESTRICT="!test? ( test )"
 
+BDEPEND="${PYTHON_DEPS}
+	>=dev-libs/protobuf-3.0.0
+	dev-util/gyp
+	dev-util/ninja
+	virtual/pkgconfig
+	emacs? ( virtual/emacs )
+	fcitx4? ( sys-devel/gettext )"
 RDEPEND=">=dev-libs/protobuf-3.0.0:=
 	emacs? ( virtual/emacs )
-	fcitx4? ( app-i18n/fcitx:4 )
+	fcitx4? (
+		app-i18n/fcitx:4
+		virtual/libintl
+	)
 	gui? (
 		app-i18n/zinnia
 		dev-qt/qtcore:5
@@ -61,10 +72,6 @@ RDEPEND=">=dev-libs/protobuf-3.0.0:=
 		x11-libs/pango
 	)"
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
-	dev-util/gyp
-	dev-util/ninja
-	virtual/pkgconfig
 	test? (
 		>=dev-cpp/gtest-1.8.0
 		dev-libs/jsoncpp
@@ -85,8 +92,8 @@ src_unpack() {
 
 		if use fcitx4; then
 			local EGIT_SUBMODULES=()
-			git-r3_fetch https://github.com/fcitx/mozc refs/heads/fcitx
-			git-r3_checkout https://github.com/fcitx/mozc "${WORKDIR}/fcitx-mozc"
+			git-r3_fetch https://gitlab.com/fcitx/mozc.git refs/heads/fcitx
+			git-r3_checkout https://gitlab.com/fcitx/mozc.git "${WORKDIR}/fcitx-mozc"
 		fi
 	else
 		unpack ${P}.tar.gz
@@ -99,6 +106,9 @@ src_unpack() {
 
 src_prepare() {
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-system_libraries.patch"
+	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-gcc-8.patch"
+	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-protobuf_generated_classes_no_inheritance.patch"
+	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-reiwa.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.20.2673.102-tests_build.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.20.2673.102-tests_skipping.patch"
 
@@ -318,5 +328,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	use emacs && elisp-site-regen
+	if use emacs; then
+		elisp-site-regen
+	fi
 }

@@ -22,7 +22,6 @@ move kde-base/bovo kde-apps/bovo
 move kde-base/cantor kde-apps/cantor
 move kde-base/cervisia kde-apps/cervisia
 move kde-base/dolphin kde-apps/dolphin
-move kde-base/dolphin-plugins kde-apps/dolphin-plugins
 move kde-base/dragon kde-apps/dragon
 move kde-base/ffmpegthumbs kde-apps/ffmpegthumbs
 move kde-base/filelight kde-apps/filelight
@@ -137,7 +136,6 @@ move kde-base/libksane kde-apps/libksane
 move kde-base/lokalize kde-apps/lokalize
 move kde-base/lskat kde-apps/lskat
 move kde-base/marble kde-apps/marble
-move kde-base/okteta kde-apps/okteta
 move kde-base/okular kde-apps/okular
 move kde-base/oxygen-icons kde-frameworks/oxygen-icons
 move kde-base/palapeli kde-apps/palapeli

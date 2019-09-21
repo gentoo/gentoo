@@ -77,6 +77,7 @@ chromium_remove_language_paks() {
 
 	# Bug 588198
 	rm -f fake-bidi.pak || die
+	rm -f fake-bidi.pak.info || die
 
 	# Look for extra pak files.
 	# Remove pak files that the user does not want.
@@ -94,6 +95,7 @@ chromium_remove_language_paks() {
 
 		if ! use l10n_${lang}; then
 			rm "${pak}" || die
+			rm -f "${pak}.info" || die
 		fi
 	done
 }
@@ -104,8 +106,7 @@ chromium_pkg_die() {
 	fi
 
 	# Prevent user problems like bug #348235.
-	eshopts_push -s extglob
-	if is-flagq '-g?(gdb)?([1-9])'; then
+	if ( shopt -s extglob; is-flagq '-g?(gdb)?([1-9])' ); then
 		ewarn
 		ewarn "You have enabled debug info (i.e. -g or -ggdb in your CFLAGS/CXXFLAGS)."
 		ewarn "This produces very large build files causes the linker to consume large"
@@ -114,7 +115,6 @@ chromium_pkg_die() {
 		ewarn "Please try removing -g{,gdb} before reporting a bug."
 		ewarn
 	fi
-	eshopts_pop
 
 	# ccache often causes bogus compile failures, especially when the cache gets
 	# corrupted.

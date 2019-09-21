@@ -1,0 +1,70 @@
+From ef13ae006609e51eaddbcdf0495f44cfde797e26 Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Tue, 14 May 2019 20:34:47 +0300
+Subject: [PATCH 1/2] Respect {C,CXX,LD}FLAGS
+
+Upstream-Status: Inappropriate [Gentoo-specific]
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ Makefile.linux | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile.linux b/Makefile.linux
+index c57aeeeb..a0839c5c 100644
+--- a/Makefile.linux
++++ b/Makefile.linux
+@@ -17,11 +17,11 @@ OPTIONS = -DLINUX -DELC $(foreach FEATURE, $(FEATURES), -D$(FEATURE)) -D_7ZIP_ST
+ 	$(shell pkg-config vorbisfile --cflags) \
+ 	$(shell pkg-config zlib --cflags)
+ 
+-CFLAGS=$(PLATFORM) $(CWARN) -O0 -ggdb -pipe $(OPTIONS) -fno-strict-aliasing $(EXTRA_INCLUDES)
++CFLAGS += $(OPTIONS) -fno-strict-aliasing $(EXTRA_INCLUDES)
+ 
+-CXXFLAGS=$(PLATFORM) $(CXXWARN) -O0 -ggdb -pipe $(OPTIONS) -fno-strict-aliasing $(EXTRA_INCLUDES)
++CXXFLAGS += $(OPTIONS) -fno-strict-aliasing $(EXTRA_INCLUDES)
+ 
+-LDFLAGS=$(shell pkg-config sdl --libs) \
++LDFLAGS += $(shell pkg-config sdl --libs) \
+ 	$(shell pkg-config libxml-2.0 --libs) \
+ 	$(shell pkg-config SDL_net --libs) \
+ 	$(shell pkg-config SDL_image --libs) \
+@@ -111,7 +111,7 @@ HEADER_DIRS = . books eye_candy io pawn fsaa engine xz
+ DEP_FILES=$(foreach OBJ, $(COBJS), .deps/$(OBJ).P) $(foreach OBJ, $(CXXOBJS), .deps/$(OBJ).P)
+ #(shell echo $OBJ |sed s/\.o/\.P/))
+ 
+-EXE=el.x86.linux.bin
++EXE=el.linux.bin
+ 
+ ifndef CC
+ CC=gcc
+@@ -127,8 +127,8 @@ all: $(EXE)
+ 
+ # the compile targets
+ $(EXE): $(OBJS)
+-	@echo "  LINK $(EXE)"
+-	@$(LINK) $(CFLAGS) -o $(EXE) $(OBJS) $(LDFLAGS)
++	@echo "$(CC) $(CFLAGS) -o $(EXE) $(OBJS) $(LDFLAGS)"
++	@$(CC) $(CFLAGS) -o $(EXE) $(OBJS) $(LDFLAGS)
+ 
+ #recompile on Makefile or conf change
+ #.depend $(OBJS): Makefile.linux make.conf
+@@ -136,14 +136,14 @@ $(EXE): $(OBJS)
+ DEPS_MAGIC := $(shell mkdir .deps .deps/io .deps/shader .deps/eye_candy .deps/exceptions .deps/xz .deps/xml .deps/fsaa .deps/engine > /dev/null 2>&1 || :)
+ 
+ $(COBJS): %.o: %.c Makefile.linux make.conf
+-	@echo "  CC   $@"
++	@echo "$(CC) $(CFLAGS) -MT '$@' -MD -MP -MF '.deps/$@.pp' -c $< -o $@"
+ 	@if $(CC) $(CFLAGS) -MT '$@' -MD -MP -MF '.deps/$@.pp' -c $< -o $@; then \
+ 		mv ".deps/$@.pp" ".deps/$@.P"; \
+ 	else rm -f ".deps/$@.pp"; exit 1; \
+ 	fi
+ 
+ $(CXXOBJS): %.o: %.cpp Makefile.linux make.conf
+-	@echo "  CXX  $@"
++	@echo "$(CXX) $(CXXFLAGS) -MT '$@' -MD -MP -MF '.deps/$@.pp' -c $< -o $@"
+ 	@if $(CXX) $(CXXFLAGS) -MT '$@' -MD -MP -MF '.deps/$@.pp' -c $< -o $@; then \
+ 		mv ".deps/$@.pp" ".deps/$@.P"; \
+ 	else rm -f ".deps/$@.pp"; exit 1; \
+-- 
+2.21.0
+

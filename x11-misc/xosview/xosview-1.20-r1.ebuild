@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils toolchain-funcs xdg-utils
+inherit toolchain-funcs xdg-utils
 
 DESCRIPTION="X11 operating system viewer"
 HOMEPAGE="http://www.pogo.org.uk/~mark/xosview/"
@@ -20,7 +20,7 @@ COMMON_DEPS="x11-libs/libX11
 RDEPEND="${COMMON_DEPS}
 	media-fonts/font-misc-misc"
 DEPEND="${COMMON_DEPS}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 DOCS=( CHANGES README.linux TODO )
 

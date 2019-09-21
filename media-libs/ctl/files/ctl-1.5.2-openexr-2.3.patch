@@ -1,0 +1,13 @@
+Index: CTL-ctl-1.5.2/lib/IlmCtlSimd/CtlSimdInst.cpp
+===================================================================
+--- CTL-ctl-1.5.2.orig/lib/IlmCtlSimd/CtlSimdInst.cpp
++++ CTL-ctl-1.5.2/lib/IlmCtlSimd/CtlSimdInst.cpp
+@@ -189,7 +189,7 @@ SimdInst::executePath (SimdBoolMask &mas
+ 	    REPLACE_EXC
+ 		(e, "\n" <<
+ 		 xcontext.fileName() << ":" <<
+-		 inst->lineNumber() << ": " << e);
++		 inst->lineNumber() << ": " << e.what());
+ 
+ 	    throw e;
+ 	}

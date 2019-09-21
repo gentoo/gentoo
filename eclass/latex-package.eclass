@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: latex-package.eclass
@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Matthew Turk <satai@gentoo.org>
 # Martin Ehmsen <ehmsen@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: An eclass for easy installation of LaTeX packages
 # @DESCRIPTION:
 # This eClass is designed to be easy to use and implement.  The vast majority of
@@ -54,13 +55,16 @@
 
 case ${EAPI:-0} in
 	0|1|2|3|4|5) inherit base eutils ;;
-	6) ;;
-	*) die "Unknown EAPI ${EAPI} for ${ECLASS}" ;;
 esac
 
 RDEPEND="virtual/latex-base"
 DEPEND="${RDEPEND}
 	>=sys-apps/texinfo-4.2-r5"
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6) ;;
+	7) BDEPEND="${DEPEND}"; DEPEND="" ;;
+	*) die "${ECLASS}: Unknown EAPI ${EAPI}" ;;
+esac
 HOMEPAGE="http://www.tug.org/"
 TEXMF="/usr/share/texmf-site"
 

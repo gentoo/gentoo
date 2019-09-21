@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		A prettyprinter/text rendering engine. Easy to use, well-documented, ANSI terminal backend exists, HTML backend is trivial to implement, no name clashes, Text-based, extensible.
+	</longdescription>
+</pkgmetadata>

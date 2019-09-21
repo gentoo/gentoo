@@ -1,0 +1,55 @@
+--- a/extensions/tnc/Makefile.in	2018-10-31 21:18:18.701695694 +0100
++++ b/extensions/tnc/Makefile.in	2018-10-31 21:19:25.621555122 +0100
+@@ -372,25 +372,25 @@
+ #========================================================================
+ 
+ install-lib-binaries: binaries
+-	@$(INSTALL_DATA_DIR) $(DESTDIR)$(pkglibdir)
++	@$(INSTALL_DATA_DIR) $(DESTDIR)$(libdir)
+ 	@list='$(lib_BINARIES)'; for p in $$list; do \
+ 	  if test -f $$p; then \
+-	    echo " $(INSTALL_LIBRARY) $$p $(DESTDIR)$(pkglibdir)/$$p"; \
+-	    $(INSTALL_LIBRARY) $$p $(DESTDIR)$(pkglibdir)/$$p; \
++	    echo " $(INSTALL_LIBRARY) $$p $(DESTDIR)$(libdir)/$$p"; \
++	    $(INSTALL_LIBRARY) $$p $(DESTDIR)$(libdir)/$$p; \
+ 	    stub=`echo $$p|sed -e "s/.*\(stub\).*/\1/"`; \
+ 	    if test "x$$stub" = "xstub"; then \
+-		echo " $(RANLIB_STUB) $(DESTDIR)$(pkglibdir)/$$p"; \
+-		$(RANLIB_STUB) $(DESTDIR)$(pkglibdir)/$$p; \
++		echo " $(RANLIB_STUB) $(DESTDIR)$(libdir)/$$p"; \
++		$(RANLIB_STUB) $(DESTDIR)$(libdir)/$$p; \
+ 	    else \
+-		echo " $(RANLIB) $(DESTDIR)$(pkglibdir)/$$p"; \
+-		$(RANLIB) $(DESTDIR)$(pkglibdir)/$$p; \
++		echo " $(RANLIB) $(DESTDIR)$(libdir)/$$p"; \
++		$(RANLIB) $(DESTDIR)$(libdir)/$$p; \
+ 	    fi; \
+ 	    ext=`echo $$p|sed -e "s/.*\.//"`; \
+ 	    if test "x$$ext" = "xdll"; then \
+ 		lib=`basename $$p|sed -e 's/.[^.]*$$//'`.lib; \
+ 		if test -f $$lib; then \
+-		    echo " $(INSTALL_DATA) $$lib $(DESTDIR)$(pkglibdir)/$$lib"; \
+-	            $(INSTALL_DATA) $$lib $(DESTDIR)$(pkglibdir)/$$lib; \
++		    echo " $(INSTALL_DATA) $$lib $(DESTDIR)$(libdir)/$$lib"; \
++	            $(INSTALL_DATA) $$lib $(DESTDIR)$(libdir)/$$lib; \
+ 		fi; \
+ 	    fi; \
+ 	  fi; \
+@@ -398,13 +398,13 @@
+ 	@list='$(PKG_TCL_SOURCES)'; for p in $$list; do \
+ 	  if test -f $(srcdir)/$$p; then \
+ 	    destp=`basename $$p`; \
+-	    echo " Install $$destp $(DESTDIR)$(pkglibdir)/$$destp"; \
+-	    $(INSTALL_DATA) $(srcdir)/$$p $(DESTDIR)$(pkglibdir)/$$destp; \
++	    echo " Install $$destp $(DESTDIR)$(libdir)/$$destp"; \
++	    $(INSTALL_DATA) $(srcdir)/$$p $(DESTDIR)$(libdir)/$$destp; \
+ 	  fi; \
+ 	done
+ 	@if test "x$(SHARED_BUILD)" = "x1"; then \
+-	    echo " Install pkgIndex.tcl $(DESTDIR)$(pkglibdir)"; \
+-	    $(INSTALL_DATA) pkgIndex.tcl $(DESTDIR)$(pkglibdir); \
++	    echo " Install pkgIndex.tcl $(DESTDIR)$(libdir)"; \
++	    $(INSTALL_DATA) pkgIndex.tcl $(DESTDIR)$(libdir); \
+ 	fi
+ 
+ #========================================================================

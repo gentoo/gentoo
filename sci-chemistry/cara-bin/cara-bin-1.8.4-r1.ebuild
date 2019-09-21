@@ -34,7 +34,7 @@ RDEPEND="
 	lua? ( dev-lang/lua )"
 DEPEND=""
 
-RESTRICT="mirror"
+RESTRICT="bindist mirror"
 
 QA_PREBUILT="opt/cara/*"
 

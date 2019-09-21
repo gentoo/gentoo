@@ -6,6 +6,7 @@
 		<name>Gentoo Geosciences Project</name>
 	</maintainer>
 	<use>
+		<flag name="apache">Enable mapserver to run under apache</flag>
 		<flag name="gdal">Enable <pkg>sci-libs/gdal</pkg> library support</flag>
 		<flag name="geos">Enable <pkg>sci-libs/geos</pkg> library support</flag>
 		<flag name="postgis">Enable <pkg>dev-db/postgis</pkg> support</flag>

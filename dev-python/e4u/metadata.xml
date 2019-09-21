@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/lambdalisue/e4u/issues</bugs-to>
+		<remote-id type="github">lambdalisue/e4u</remote-id>
+	</upstream>
+	<longdescription>
+		A library for handling unicode emoji and carrier's emoji.
+		The main feature is conversion unicode emoji to carrier's emoji
+		and conversion carrier's emoji to unicode emoji.
+	</longdescription>
+</pkgmetadata>

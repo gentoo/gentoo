@@ -1,25 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools mozextension gnome2-utils
-
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/Fedict/${PN}.git"
-	inherit git-r3
-	SRC_URI=""
-else
-	SRC_URI="https://codeload.github.com/fedict/${PN}/tar.gz/v${PV} -> ${P}.tar.gz"
-	KEYWORDS="~x86 ~amd64 ~arm"
-fi
+inherit autotools gnome2-utils git-r3
 
 DESCRIPTION="Electronic Identity Card middleware supplied by the Belgian Federal Government"
 HOMEPAGE="https://eid.belgium.be"
+EGIT_REPO_URI="https://github.com/Fedict/${PN}.git"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="+dialogs +gtk p11-kit +xpi"
+IUSE="+dialogs +gtk +p11v220 p11-kit"
 
 RDEPEND=">=sys-apps/pcsc-lite-1.2.9
 	gtk? (
@@ -30,9 +22,7 @@ RDEPEND=">=sys-apps/pcsc-lite-1.2.9
 		net-libs/libproxy
 		!app-misc/eid-viewer-bin
 	)
-	p11-kit? ( app-crypt/p11-kit )
-	xpi? ( || ( >=www-client/firefox-bin-3.6.24
-		>=www-client/firefox-3.6.20 ) )"
+	p11-kit? ( app-crypt/p11-kit )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -44,6 +34,10 @@ src_prepare() {
 
 	sed -i -e 's:/beid/rsaref220:/rsaref220:' configure.ac || die
 	sed -i -e 's:/beid::' cardcomm/pkcs11/src/libbeidpkcs11.pc.in || die
+
+	# legacy xpi module : we don't want it anymore
+	sed -i -e '/SUBDIRS/ s:plugins_tools/xpi ::' Makefile.am || die
+	sed -i -e '/plugins_tools\/xpi/ d' configure.ac || die
 
 	# hardcoded lsb_info
 	sed -i \
@@ -58,33 +52,19 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable dialogs) \
+		$(use_enable p11v220) \
 		$(use_enable p11-kit p11kit) \
 		$(use_with gtk gtkvers 'detect') \
 		--with-gnu-ld \
-		--disable-static \
-		--disable-signed
+		--disable-static
 }
 
 src_install() {
 	default
-
-	if use xpi; then
-		declare MOZILLA_FIVE_HOME
-		if has_version '>=www-client/firefox-3.6.20'; then
-			MOZILLA_FIVE_HOME="/usr/$(get_libdir)/firefox"
-			xpi_install "${ED}/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/belgiumeid@eid.belgium.be"
-		fi
-		if has_version '>=www-client/firefox-bin-3.6.24'; then
-			MOZILLA_FIVE_HOME="/opt/firefox"
-			xpi_install "${ED}/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/belgiumeid@eid.belgium.be"
-		fi
-	else
-		rm -r "${ED}"/usr/lib/mozilla || die
-	fi
-	rm -r "${ED}/usr/share/mozilla" "${ED}"/usr/$(get_libdir)/*.la || die
-
+	rm -r "${ED}"/usr/$(get_libdir)/*.la || die
 	if use gtk; then
-		rm -r "${ED}/usr/include/eid-util" || die
+		domenu plugins_tools/eid-viewer/eid-viewer.desktop
+		doicon plugins_tools/eid-viewer/gtk/eid-viewer.png
 	fi
 }
 

@@ -1,9 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: udev.eclass
 # @MAINTAINER:
 # udev-bugs@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: Default eclass for determining udev directories.
 # @DESCRIPTION:
 # Default eclass for determining udev directories.
@@ -33,12 +34,16 @@ _UDEV_ECLASS=1
 inherit toolchain-funcs
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*) die "${ECLASS}.eclass API in EAPI ${EAPI} not yet established."
 esac
 
-RDEPEND=""
-DEPEND="virtual/pkgconfig"
+if [[ ${EAPI:-0} == [0123456] ]]; then
+	RDEPEND=""
+	DEPEND="virtual/pkgconfig"
+else
+	BDEPEND="virtual/pkgconfig"
+fi
 
 # @FUNCTION: _udev_get_udevdir
 # @INTERNAL
@@ -46,7 +51,8 @@ DEPEND="virtual/pkgconfig"
 # Get unprefixed udevdir.
 _udev_get_udevdir() {
 	if $($(tc-getPKG_CONFIG) --exists udev); then
-		echo "$($(tc-getPKG_CONFIG) --variable=udevdir udev)"
+		local udevdir="$($(tc-getPKG_CONFIG) --variable=udevdir udev)"
+		echo "${udevdir#${EPREFIX%/}}"
 	else
 		echo /lib/udev
 	fi
@@ -74,7 +80,7 @@ get_udevdir() {
 }
 
 # @FUNCTION: udev_dorules
-# @USAGE: rules [...]
+# @USAGE: <rule> [...]
 # @DESCRIPTION:
 # Install udev rule(s). Uses doins, thus it is fatal in EAPI 4
 # and non-fatal in earlier EAPIs.
@@ -82,13 +88,14 @@ udev_dorules() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_udev_get_udevdir)"/rules.d
 		doins "${@}"
 	)
 }
 
 # @FUNCTION: udev_newrules
-# @USAGE: oldname newname
+# @USAGE: <oldname> <newname>
 # @DESCRIPTION:
 # Install udev rule with a new name. Uses newins, thus it is fatal
 # in EAPI 4 and non-fatal in earlier EAPIs.
@@ -96,6 +103,7 @@ udev_newrules() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_udev_get_udevdir)"/rules.d
 		newins "${@}"
 	)

@@ -1,0 +1,68 @@
+Add missing setuser.8
+
+Upstream-bug: https://github.com/bruceg/daemontools-encore/issues/60
+
+--- /dev/null
++++ b/setuser.8
+@@ -0,0 +1,61 @@
++.TH setuser 8
++.SH NAME
++setuser \- runs another program under a specified account's environment.
++.SH SYNOPSIS
++.B setuser
++.I account
++.I child
++.SH DESCRIPTION
++.I account
++is a single argument.
++.I child
++consists of one or more arguments. 
++
++.B setuser
++sets
++.BR $GID ,
++.BR $UID ,
++.BR $SHELL ,
++.BR $HOME ,
++and
++.BR $USER
++to
++.IR account 's
++gid number, uid number, login shell, home directory, and user name, respectively.
++It changes the working directory to
++.IR account 's
++home, and sets its uid and gid to
++.IR account 's
++uid and gid, with supplementary groups set up.
++It then runs
++.IR child .
++
++.B setuser
++cannot be run by anyone other than root.
++.SH EXIT CODES
++.B setuser
++exits 111 if it cannot find a UNIX account named
++.IB account ,
++if it cannot setup the environment, change directory, setgid, setuid, or run
++.IR child .
++Otherwise its exit code is the same as that of
++.IR child .
++.SH SEE ALSO
++envdir(8),
++envini(8),
++envuidgid(8),
++fghack(8),  
++multilog(8),
++pgrphack(8),
++readproctitle(8),
++setlock(8),
++setuidgid(8),
++softlimit(8),
++supervise(8),
++svc(8),
++svok(8),
++svscan(8),
++svscanboot(8),
++svstat(8),
++tai64n(8),
++tai64nlocal(8)

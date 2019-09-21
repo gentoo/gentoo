@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,12 +6,12 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="library for nonequispaced discrete Fourier transformations"
-HOMEPAGE="http://www-user.tu-chemnitz.de/~potts/nfft"
+HOMEPAGE="https://www-user.tu-chemnitz.de/~potts/nfft/"
 SRC_URI="https://github.com/NFFT/nfft/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc openmp static-libs"
 
 RDEPEND="sci-libs/fftw:3.0[threads,openmp?]"

@@ -6,13 +6,13 @@ EAPI="6"
 inherit systemd user
 
 DESCRIPTION="A lightweight system monitoring tool"
-HOMEPAGE="http://www.monitorix.org/"
+HOMEPAGE="https://www.monitorix.org/"
 SRC_URI="https://github.com/mikaku/Monitorix/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="apcupsd hddtemp httpd lm_sensors postfix"
+IUSE="apcupsd hddtemp httpd lm-sensors postfix"
 S="${WORKDIR}/Monitorix-${PV}"
 
 RDEPEND="dev-perl/Config-General
@@ -27,7 +27,7 @@ RDEPEND="dev-perl/Config-General
 	apcupsd? ( sys-power/apcupsd )
 	hddtemp? ( app-admin/hddtemp )
 	httpd? ( virtual/httpd-cgi )
-	lm_sensors? ( sys-apps/lm_sensors )
+	lm-sensors? ( sys-apps/lm-sensors )
 	postfix? ( net-mail/pflogsumm dev-perl/MailTools )"
 
 pkg_setup() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: darcs.eclass
@@ -21,7 +21,12 @@
 
 # support for tags
 
-inherit eutils # eshopts_{push,pop}
+# eshopts_{push,pop}
+case "${EAPI:-0}" in
+	4|5|6) inherit eutils ;;
+	7)     inherit estack ;;
+	*) ;;
+esac
 
 # Don't download anything other than the darcs repository
 SRC_URI=""
@@ -80,8 +85,18 @@ SRC_URI=""
 
 # --- end ebuild-configurable settings ---
 
-DEPEND="dev-vcs/darcs
-	net-misc/rsync"
+PROPERTIES+=" live"
+
+case ${EAPI:-0} in
+	[0-6]) # no need to care about 5-HDEPEND and similar
+		DEPEND="dev-vcs/darcs
+			net-misc/rsync"
+		;;
+	*)
+		BDEPEND="dev-vcs/darcs
+			net-misc/rsync"
+		;;
+esac
 
 # @FUNCTION: darcs_patchcount
 # @DESCRIPTION:

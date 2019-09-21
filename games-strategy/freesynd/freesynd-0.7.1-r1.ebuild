@@ -1,10 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils cmake-utils gnome2-utils readme.gentoo-r1
+EAPI=6
 
-DESCRIPTION="A portable reimplementation of engine for the classic Bullfrog game, Syndicate"
+CMAKE_IN_SOURCE_BUILD=1
+inherit cmake-utils desktop gnome2-utils readme.gentoo-r1
+
+DESCRIPTION="Portable reimplementation of engine for the classic Bullfrog game, Syndicate"
 HOMEPAGE="http://freesynd.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
@@ -23,9 +25,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
+DOCS=( NEWS README INSTALL AUTHORS )
 
-CMAKE_IN_SOURCE_BUILD=1
+PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
 
 DOC_CONTENTS="
 	You have to set \"data_dir = /my/path/to/synd-data\"
@@ -42,8 +44,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_with debug DEBUG)
-		$(cmake-utils_use_build devtools DEV_TOOLS)
+		-DWITH_DEBUG=$(usex debug)
+		-DBUILD_DEV_TOOLS=$(usex devtools)
 	)
 
 	cmake-utils_src_configure
@@ -56,12 +58,8 @@ src_install() {
 	doins -r data
 	newicon -s 128 icon/sword.png ${PN}.png
 	make_desktop_entry ${PN}
-	dodoc NEWS README INSTALL AUTHORS
+	einstalldocs
 	readme.gentoo_create_doc
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

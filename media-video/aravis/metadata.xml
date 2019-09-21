@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>lu_zero@gentoo.org</email>
-  </maintainer>
-
-  <maintainer type="project">
-    <email>media-video@gentoo.org</email>
-    <name>Gentoo Video project</name>
-  </maintainer>
-
-  <use>
-    <flag name="X">
-      Build the GTK+-based video viewer for aravis. This requires
-      GStreamer and a few plugins but technically not the GST plugin
-      for aravis.
-    </flag>
-
-    <flag name="gstreamer">
-      Build the GStreamer plugin for aravis, but not the video viewer.
-    </flag>
-  </use>
+	<maintainer type="person">
+		<email>bernardo@standard.ai</email>
+		<name>Bernardo Meurer</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>lu_zero@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Aravis is a glib/gobject based library for video acquisition using Genicam
+		cameras. It currently implements the gigabit ethernet and USB3 protocols
+		used by industrial cameras. It also provides a basic ethernet camera
+		simulator and a simple video viewer.
+	</longdescription>
+	<use>
+		<flag name="fast-heartbeat">Enable faster heartbeat rate. </flag>
+		<flag name="gstreamer">Build the GStreamer plugin.</flag>
+		<flag name="packet-socket">Enable packet socket support.</flag>
+		<flag name="viewer">Build the GTK+-based video viewer.</flag>
+	</use>
 </pkgmetadata>

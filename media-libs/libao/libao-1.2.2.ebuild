@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,14 +6,14 @@ EAPI=6
 inherit autotools libtool multilib multilib-minimal
 
 DESCRIPTION="The Audio Output library"
-HOMEPAGE="http://www.xiph.org/ao/"
-#SRC_URI="http://downloads.xiph.org/releases/ao/${P}.tar.gz"
+HOMEPAGE="https://www.xiph.org/ao/"
+#SRC_URI="https://downloads.xiph.org/releases/ao/${P}.tar.gz"
 #SRC_URI="https://git.xiph.org/?p=libao.git;a=snapshot;h=refs/tags/${PV};sf=tgz -> ${P}.tar.gz"
 SRC_URI="https://github.com/xiph/libao/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="alsa nas mmap pulseaudio static-libs"
 
 RDEPEND="

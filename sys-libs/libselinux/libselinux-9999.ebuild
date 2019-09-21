@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
-USE_RUBY="ruby23"
+PYTHON_COMPAT=( python2_7 python3_5 python3_6 python3_7 )
+USE_RUBY="ruby24 ruby25"
 
 # No, I am not calling ruby-ng
 inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
 SEPOL_VER="${PV}"
-MY_RELEASEDATE="20180426"
+MY_RELEASEDATE="20190315"
 
 DESCRIPTION="SELinux userland library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
@@ -20,14 +20,14 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/SELinuxProject/selinux.git"
 	S="${WORKDIR}/${MY_P}/${PN}"
 else
-	SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/${MY_RELEASEDATE}/${MY_P}.tar.gz"
+	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_RELEASEDATE}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="public-domain"
 SLOT="0"
-IUSE="pcre2 python ruby static-libs ruby_targets_ruby23"
+IUSE="pcre2 python ruby static-libs ruby_targets_ruby24 ruby_targets_ruby25"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
@@ -35,11 +35,14 @@ RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
 	pcre2? ( dev-libs/libpcre2:=[static-libs?,${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
-		ruby_targets_ruby23? ( dev-lang/ruby:2.3 )
-	)"
+		ruby_targets_ruby24? ( dev-lang/ruby:2.4 )
+		ruby_targets_ruby25? ( dev-lang/ruby:2.5 )
+	)
+	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	python? ( >=dev-lang/swig-2.0.9 )"
+	python? ( >=dev-lang/swig-2.0.9 )
+	ruby? ( >=dev-lang/swig-2.0.9 )"
 
 src_prepare() {
 	eapply_user
@@ -55,6 +58,7 @@ multilib_src_compile() {
 		SHLIBDIR="/$(get_libdir)" \
 		LDFLAGS="-fPIC ${LDFLAGS} -pthread" \
 		USE_PCRE2="$(usex pcre2 y n)" \
+		FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
 		all
 
 	if multilib_is_native_abi && use python; then
@@ -64,6 +68,7 @@ multilib_src_compile() {
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="/$(get_libdir)" \
 				USE_PCRE2="$(usex pcre2 y n)" \
+				FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
 				pywrap
 		}
 		python_foreach_impl building
@@ -80,6 +85,7 @@ multilib_src_compile() {
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="/$(get_libdir)" \
 				USE_PCRE2="$(usex pcre2 y n)" \
+				FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
 				rubywrap
 		}
 		for RUBYTARGET in ${USE_RUBY}; do

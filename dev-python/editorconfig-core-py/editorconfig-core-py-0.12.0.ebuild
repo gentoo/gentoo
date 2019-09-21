@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 TESTVER="abb579e00f2deeede91cb485e53512efab9c6474"
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
+PYTHON_COMPAT=( python2_7 python3_5 python3_6 )
 inherit distutils-r1
 
 DESCRIPTION="Clone of EditorConfig core written in Python"
-HOMEPAGE="http://editorconfig.org/"
+HOMEPAGE="https://editorconfig.org/"
 SRC_URI="https://github.com/${PN%-core-py}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	test? (
 		https://github.com/${PN%-core-py}/${PN%-core-py}-core-test/archive/${TESTVER}.tar.gz -> ${PN%-core-py}-core-test-${TESTVER}.tar.gz

@@ -1,0 +1,56 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=5
+inherit eutils toolchain-funcs
+
+MY_P="WepAttack-${PV}"
+DESCRIPTION="WLAN tool for breaking 802.11 WEP keys"
+HOMEPAGE="http://wepattack.sourceforge.net/"
+SRC_URI="mirror://sourceforge/wepattack/${MY_P}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="amd64 x86"
+IUSE="john"
+
+DEPEND="
+	dev-libs/openssl:0=
+	net-libs/libpcap
+	sys-libs/zlib
+"
+
+RDEPEND="${DEPEND}
+john? ( || ( app-crypt/johntheripper app-crypt/johntheripper-jumbo ) )"
+
+S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-filter-mac-address.patch
+	epatch "${FILESDIR}"/${P}-missed-string.h-warnings-fix.patch
+	chmod +x src/wlan
+	sed -i \
+		-e "/^CFLAGS=/s:=:=${CFLAGS} :" \
+		-e 's:-fno-for-scope::g' \
+		-e "/^CC=/s:gcc:$(tc-getCC):" \
+		-e "/^LD=/s:gcc:$(tc-getCC):" \
+		-e 's:log.o\\:log.o \\:' \
+		src/Makefile || die
+	sed -i \
+		-e "s/wordfile:/-wordlist=/" \
+		run/wepattack_word || die
+}
+
+src_compile() {
+	emake -C src
+}
+
+src_install() {
+	dobin src/wepattack
+	if use john; then
+		dosbin run/wepattack_{inc,word}
+		insinto /etc
+		doins "${FILESDIR}"/wepattack.conf
+	fi
+	dodoc README
+}

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <!--maintainer-needed-->
   <use>
     <flag name="apparmor">Enable apparmor support using <pkg>sys-libs/libapparmor</pkg></flag>
     <flag name="archive">Enable archive support using <pkg>app-arch/libarchive</pkg></flag>
     <flag name="gsf">Enable OLE2 (MS Office) plug-in support using <pkg>gnome-extra/libgsf</pkg></flag>
-    <flag name="magic">Enable magic support using <pkg>sys-apps/file</pkg></flag>
     <flag name="midi">Enable MIDI support through <pkg>media-libs/libsmf</pkg></flag>
   </use>
 </pkgmetadata>

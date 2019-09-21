@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="GD::Barcode - Create barcode image with GD"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 RDEPEND="dev-perl/GD"

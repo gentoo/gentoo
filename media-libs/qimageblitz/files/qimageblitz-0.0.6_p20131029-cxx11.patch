@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2017-03-15 00:31:04.000000000 +0100
++++ b/CMakeLists.txt	2019-07-21 16:39:14.365729343 +0200
+@@ -14,6 +14,8 @@
+   set(CMAKE_AUTOMOC ON)
+   find_package(Qt5Core REQUIRED)
+   find_package(Qt5Gui REQUIRED)
++  set (CMAKE_CXX_STANDARD 11)
++  set (CMAKE_CXX_EXTENSIONS OFF)
+ else()
+   find_package(Qt4 REQUIRED)
+   # properly set up compile flags (QT_DEBUG/QT_NO_DEBUG, ...)

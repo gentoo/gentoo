@@ -1,7 +1,0 @@
-# Copyright 1999-2017 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Fabian Groffen <grobian@gentoo.org> (2017-06-15)
-# net-mail/notmuch is not keyworded, and holds back stabilisation, see
-# bug https://bugs.gentoo.org/show_bug.cgi?id=604902
-mail-client/mutt notmuch

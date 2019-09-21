@@ -1,23 +1,21 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+inherit distutils-r1 git-r3 qmake-utils toolchain-funcs
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+DESCRIPTION="Static analyzer of C/C++ code"
+HOMEPAGE="https://github.com/danmar/cppcheck"
+EGIT_REPO_URI="${HOMEPAGE}"
 
-inherit distutils-r1 flag-o-matic qmake-utils toolchain-funcs git-r3
-
-DESCRIPTION="static analyzer of C/C++ code"
-HOMEPAGE="http://cppcheck.sourceforge.net"
-EGIT_REPO_URI="https://github.com/danmar/cppcheck.git"
-
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS=""
 IUSE="htmlreport pcre qt5"
 
 RDEPEND="
-	>=dev-libs/tinyxml2-2
+	dev-libs/tinyxml2:=
 	htmlreport? ( dev-python/pygments[${PYTHON_USEDEP}] )
 	pcre? ( dev-libs/libpcre )
 	qt5? (
@@ -31,57 +29,64 @@ DEPEND="${RDEPEND}
 	dev-libs/libxslt
 	virtual/pkgconfig
 "
-
-PATCHES=( "${FILESDIR}"/${PN}-1.75-tinyxml2.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999-tinyxml2.patch
+)
 
 src_prepare() {
 	default
-	append-cxxflags -std=c++0x
 
-	# Drop bundled libs, patch Makefile generator and re-run it
 	rm -r externals/tinyxml || die
-	tc-export CXX
-	emake dmake
-	./dmake || die
 }
 
 src_configure() {
+	tc-export CXX PKG_CONFIG
+	export LIBS="$(${PKG_CONFIG} --libs tinyxml2)"
+
+	emake dmake
+	./dmake || die
+
 	if use pcre ; then
 		sed -e '/HAVE_RULES=/s:=no:=yes:' \
-			-i Makefile
+			-i Makefile || die
+	fi
+
+	if use qt5 ; then
+		pushd gui || die
+		eqmake5
+		popd || die
 	fi
 }
 
 src_compile() {
-	export LIBS="$(pkg-config --libs tinyxml2)"
 	emake ${PN} man \
-		CFGDIR="${EROOT}usr/share/${PN}/cfg" \
-		DB2MAN="${EROOT}usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl"
+		CFGDIR="${EROOT}/usr/share/${PN}/cfg" \
+		DB2MAN="${EROOT}/usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl"
 
 	if use qt5 ; then
-		pushd gui
-		eqmake5
+		pushd gui || die
 		emake
-		popd
+		popd || die
 	fi
+
 	if use htmlreport ; then
-		pushd htmlreport
+		pushd htmlreport || die
 		distutils-r1_src_compile
-		popd
+		popd || die
 	fi
 }
 
 src_test() {
 	# safe final version
-	mv -v ${PN}{,.final}
-	mv -v lib/library.o{,.final}
-	mv -v cli/cppcheckexecutor.o{,.final}
+	mv -v ${PN}{,.final} || die
+	mv -v lib/library.o{,.final} || die
+	mv -v cli/cppcheckexecutor.o{,.final} || die
 	#trigger recompile with CFGDIR inside ${S}
 	emake check CFGDIR="${S}/cfg"
 	# restore
-	mv -v ${PN}{.final,}
-	mv -v lib/library.o{.final,}
-	mv -v cli/cppcheckexecutor.o{.final,}
+	mv -v ${PN}{.final,} || die
+	mv -v lib/library.o{.final,} || die
+	mv -v cli/cppcheckexecutor.o{.final,} || die
 }
 
 src_install() {
@@ -95,13 +100,13 @@ src_install() {
 		dodoc gui/{projectfile.txt,gui.${PN}}
 	fi
 	if use htmlreport ; then
-		pushd htmlreport
+		pushd htmlreport || die
 		distutils-r1_src_install
-		popd
+		popd || die
 		find "${D}" -name "*.egg-info" -delete
 	else
 		rm "${ED}/usr/bin/cppcheck-htmlreport" || die
 	fi
 	doman ${PN}.1
-	dodoc -r triage
+	dodoc -r tools/triage
 }

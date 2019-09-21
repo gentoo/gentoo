@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ PLOCALES="fi fr it ja nl pt_BR ru sv"
 inherit flag-o-matic toolchain-funcs l10n
 
 DESCRIPTION="Devilspie like window matching utility, using LUA for scripting"
-HOMEPAGE="https://gusnan.se/devilspie2"
-SRC_URI="http://download.savannah.gnu.org/releases/devilspie2/devilspie2_${PV}-src.tar.gz"
+HOMEPAGE="https://www.nongnu.org/devilspie2/"
+SRC_URI="https://download.savannah.gnu.org/releases/devilspie2/devilspie2_${PV}-src.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -27,7 +27,7 @@ DEPEND="
 	${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 src_prepare() {

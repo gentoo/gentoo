@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="NUMA daemon that manages application locality"
+
+depend() {
+	need localmount
+	use logger
+}
+
+command="/usr/bin/numad"
+command_args="${NUMAD_OPTS}"
+pidfile="/run/${RC_SVCNAME}.pid"

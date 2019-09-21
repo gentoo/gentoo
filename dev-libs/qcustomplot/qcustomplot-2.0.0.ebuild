@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,10 +6,10 @@ EAPI=6
 inherit qmake-utils
 
 DESCRIPTION="Qt C++ widget for plotting and data visualization"
-HOMEPAGE="http://www.qcustomplot.com/"
+HOMEPAGE="https://www.qcustomplot.com/"
 SRC_URI="
-	http://www.qcustomplot.com/release/${PV}/QCustomPlot-sharedlib.tar.gz -> ${PN}-sharedlib-${PV}.tar.gz
-	http://www.qcustomplot.com/release/${PV}/QCustomPlot-source.tar.gz -> ${PN}-source-${PV}.tar.gz"
+	https://www.qcustomplot.com/release/${PV}/QCustomPlot-sharedlib.tar.gz -> ${PN}-sharedlib-${PV}.tar.gz
+	https://www.qcustomplot.com/release/${PV}/QCustomPlot-source.tar.gz -> ${PN}-source-${PV}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3"

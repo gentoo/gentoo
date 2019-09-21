@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit autotools ltprune xdg-utils
+inherit autotools xdg-utils
 
 DESCRIPTION="Delivery framework for general Input Method configuration"
 HOMEPAGE="https://tagoh.bitbucket.io/imsettings"
@@ -11,7 +11,7 @@ SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="gconf gtk2 qt5 +introspection static-libs xfconf"
 RESTRICT="test"
 
@@ -27,6 +27,7 @@ RDEPEND="dev-libs/glib:2
 	introspection? ( dev-libs/gobject-introspection )
 	xfconf? ( xfce-base/xfconf )"
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	dev-util/intltool
 	sys-devel/autoconf-archive
 	sys-devel/gettext
@@ -59,7 +60,7 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${D}" -name '*.la' -delete || die
 
 	fperms 0755 /etc/X11/xinit/xinitrc.d/${MY_XINPUTSH}
 }

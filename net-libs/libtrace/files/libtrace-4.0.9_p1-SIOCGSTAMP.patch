@@ -1,0 +1,12 @@
+diff --git a/lib/format_linux_common.h b/lib/format_linux_common.h
+index 244144b1..b6a66d30 100644
+--- a/lib/format_linux_common.h
++++ b/lib/format_linux_common.h
+@@ -44,6 +44,7 @@
+ #include <netpacket/packet.h>
+ #include <net/ethernet.h>
+ #include <net/if_arp.h>
++#include <linux/sockios.h>
+ 
+ #include <net/if.h>
+ #include <sys/ioctl.h>

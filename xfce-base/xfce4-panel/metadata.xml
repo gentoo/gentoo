@@ -5,4 +5,7 @@
     <email>xfce@gentoo.org</email>
     <name>XFCE Team</name>
   </maintainer>
+  <use>
+    <flag name='gtk2'>Enable GTK+2 plugin support.</flag>
+  </use>
 </pkgmetadata>

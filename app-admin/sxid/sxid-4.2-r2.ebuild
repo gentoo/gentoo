@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="suid, sgid file and directory checking"
-HOMEPAGE="http://freshmeat.net/projects/sxid"
+HOMEPAGE="http://linukz.org/sxid.shtml https://github.com/taem/sxid"
 SRC_URI="http://linukz.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"

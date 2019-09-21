@@ -22,8 +22,8 @@
 		<flag name="usb">
 		Build direct CCID access for scdaemon; requires <pkg>dev-libs/libusb</pkg>.
 		</flag>
-		<flag name="mta">
-		Build mta support using <pkg>virtual/mta</pkg>.
+		<flag name="user-socket">
+		try a socket directory which is not removed by init manager at session end
 		</flag>
 		<flag name="tofu">
 		Enable support for Trust on First use trust model; requires <pkg>dev-db/sqlite</pkg>.
@@ -35,4 +35,7 @@
 		Install the wks-server
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:gnupg:gnupg</remote-id>
+	</upstream>
 </pkgmetadata>

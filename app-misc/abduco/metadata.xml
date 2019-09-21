@@ -5,10 +5,6 @@
 	<email>hendrik@consetetur.de</email>
 	<name>Hendrik v. Raven (lorem_ipsum)</name>
 </maintainer>
-<maintainer type="person">
-	<email>xmw@gentoo.org</email>
-	<name>Michael Weber</name>
-</maintainer>
 <maintainer type="project">
 	<email>proxy-maint@gentoo.org</email>
 	<name>Proxy Maintainers</name>

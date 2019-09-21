@@ -4,6 +4,7 @@
 # @ECLASS: autotools.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: Regenerates auto* build scripts
 # @DESCRIPTION:
 # This eclass is for safely handling autotooled software packages that need to
@@ -24,6 +25,11 @@ fi
 
 if [[ -z ${_AUTOTOOLS_ECLASS} ]]; then
 _AUTOTOOLS_ECLASS=1
+
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6|7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
+esac
 
 inherit libtool
 
@@ -59,7 +65,7 @@ inherit libtool
 # Do NOT change this variable in your ebuilds!
 # If you want to force a newer minor version, you can specify the correct
 # WANT value by using a colon:  <PV>:<WANT_AUTOMAKE>
-_LATEST_AUTOMAKE=( 1.16:1.16 1.15.1:1.15 )
+_LATEST_AUTOMAKE=( 1.16.1:1.16 1.15.1:1.15 )
 
 _automake_atom="sys-devel/automake"
 _autoconf_atom="sys-devel/autoconf"
@@ -118,7 +124,10 @@ RDEPEND=""
 # their own DEPEND string.
 : ${AUTOTOOLS_AUTO_DEPEND:=yes}
 if [[ ${AUTOTOOLS_AUTO_DEPEND} != "no" ]] ; then
-	DEPEND=${AUTOTOOLS_DEPEND}
+	case ${EAPI:-0} in
+		0|1|2|3|4|5|6) DEPEND=${AUTOTOOLS_DEPEND} ;;
+		7) BDEPEND=${AUTOTOOLS_DEPEND} ;;
+	esac
 fi
 __AUTOTOOLS_AUTO_DEPEND=${AUTOTOOLS_AUTO_DEPEND} # See top of eclass
 
@@ -442,10 +451,17 @@ autotools_env_setup() {
 	if [[ ${WANT_AUTOMAKE} == "latest" ]]; then
 		local pv
 		for pv in ${_LATEST_AUTOMAKE[@]/#*:} ; do
-			# has_version respects ROOT, but in this case, we don't want it to,
-			# thus "ROOT=/" prefix;
 			# Break on first hit to respect _LATEST_AUTOMAKE order.
-			ROOT=/ has_version "=sys-devel/automake-${pv}*" && export WANT_AUTOMAKE="${pv}" && break
+			local hv_args=""
+			case ${EAPI:-0} in
+				5|6)
+					hv_args="--host-root"
+					;;
+				7)
+					hv_args="-b"
+					;;
+			esac
+			ROOT=/ has_version ${hv_args} "=sys-devel/automake-${pv}*" && export WANT_AUTOMAKE="${pv}" && break
 		done
 		[[ ${WANT_AUTOMAKE} == "latest" ]] && \
 			die "Cannot find the latest automake! Tried ${_LATEST_AUTOMAKE[*]}"

@@ -1,0 +1,86 @@
+diff --git a/desktop/font_haru.c b/desktop/font_haru.c
+index 4ee9824f0..3304ba82a 100644
+--- a/desktop/font_haru.c
++++ b/desktop/font_haru.c
+@@ -37,7 +37,7 @@
+ #include <hpdf.h>
+ 
+ #include "utils/nsoption.h"
+-#include "desktop/save_pdf/font_haru.h"
++#include "desktop/font_haru.h"
+ #include "desktop/font.h"
+ #include "utils/log.h"
+ 
+diff --git a/desktop/save_pdf.c b/desktop/save_pdf.c
+index 889190089..9e6265cfb 100644
+--- a/desktop/save_pdf.c
++++ b/desktop/save_pdf.c
+@@ -60,6 +60,8 @@
+ #include "utils/useragent.h"
+ #include "content/hlcache.h"
+ #include "utils/nsoption.h"
++#include "desktop/gui_misc.h"
++#include "desktop/gui_internal.h"
+ #include "netsurf/bitmap.h"
+ 
+ #include "netsurf/plotters.h"
+@@ -455,11 +457,6 @@ HPDF_Image pdf_extract_image(struct bitmap *bitmap)
+ 
+ 		switch(content_get_type(content)){
+ 		/*Handle "embeddable" types of images*/
+-		case CONTENT_JPEG:
+- 			image = HPDF_LoadJpegImageFromMem(pdf_doc,
+- 					(const HPDF_BYTE *) source_data,
+- 					source_size);
+- 			break;
+ 
+ 		/*Disabled until HARU PNG support will be more stable.
+ 
+@@ -706,7 +703,7 @@ bool pdf_begin(struct print_settings *print_settings)
+ 
+ 
+ #ifndef PDF_DEBUG
+-	if (option_enable_PDF_compression)
++	if (nsoption_bool(enable_PDF_compression))
+ 		HPDF_SetCompressionMode(pdf_doc, HPDF_COMP_ALL); /*Compression on*/
+ #endif
+ 	HPDF_SetInfoAttr(pdf_doc, HPDF_INFO_CREATOR, user_agent_string());
+@@ -780,7 +777,7 @@ void pdf_end(void)
+ 	assert(settings->output != NULL);
+ 
+ 	/*Encryption on*/
+-	if (option_enable_PDF_password)
++	if (nsoption_bool(enable_PDF_password))
+ 		guit->misc->pdf_password(&owner_pass, &user_pass,
+ 				(void *)settings->output);
+ 	else
+@@ -795,7 +792,7 @@ nserror save_pdf(const char *path)
+ {
+ 	nserror res = NSERROR_OK;
+ 
+-	if (option_enable_PDF_password && owner_pass != NULL ) {
++	if (nsoption_bool(enable_PDF_password) && owner_pass != NULL ) {
+ 		HPDF_SetPassword(pdf_doc, owner_pass, user_pass);
+ 		HPDF_SetEncryptionMode(pdf_doc, HPDF_ENCRYPT_R3, 16);
+ 		free(owner_pass);
+diff --git a/frontends/gtk/scaffolding.c b/frontends/gtk/scaffolding.c
+index 8c46fd884..748518fdc 100644
+--- a/frontends/gtk/scaffolding.c
++++ b/frontends/gtk/scaffolding.c
+@@ -853,14 +853,14 @@ MULTIHANDLER(pdf)
+ 
+ 	free(url_name);
+ 
+-	strncpy(dirname, option_downloads_directory, PATH_MAX);
++	strncpy(dirname, nsoption_charp(downloads_directory), PATH_MAX);
+ 	strncat(dirname, "/", PATH_MAX - strlen(dirname));
+ 	dirname[PATH_MAX - 1] = '\0';
+ 
+ 	/* this way the scale used by PDF functions is synchronised with that
+ 	 * used by the all-purpose print interface
+ 	 */
+-	haru_nsfont_set_scale((float)option_export_scale / 100);
++	haru_nsfont_set_scale((float)nsoption_int(export_scale) / 100);
+ 
+ 	save_dialog = gtk_file_chooser_dialog_new("Export to PDF", g->window,
+ 		GTK_FILE_CHOOSER_ACTION_SAVE,

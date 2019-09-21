@@ -1,0 +1,33 @@
+--- a/src/src.pro	2018-05-29 13:11:55.000000000 +0200
++++ b/src/src.pro	2018-07-11 20:02:51.415773874 +0200
+@@ -99,7 +99,7 @@
+ 	RESOURCES += ../icons/icon.qrc
+ 
+ 	isEmpty(PREFIX) {
+-		PREFIX = /usr/local
++		PREFIX = /usr
+ 	}
+ 	isEmpty(BINDIR) {
+ 		BINDIR = bin
+--- a/src/locale_dialog.cpp
++++ b/src/locale_dialog.cpp
+@@ -85,7 +85,7 @@
+ 	if (paths.isEmpty()) {
+ 		QString appdir = QCoreApplication::applicationDirPath();
+ 		paths.append(appdir);
+-		paths.append(appdir + "/../share/" + QCoreApplication::applicationName().toLower());
++		paths.append("/usr/share");
+ 		paths.append(appdir + "/../Resources");
+ 	}
+ 	foreach (const QString& path, paths) {
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -46,7 +46,7 @@
+ 	QString path = app.applicationDirPath();
+ 	QStringList paths;
+ 	paths.append(path + "/data/");
+-	paths.append(path + "/../share/tanglet/data/");
++	paths.append("/usr/share/data/");
+ 	paths.append(path + "/../Resources/data/");
+ 	QDir::setSearchPaths("tanglet", paths);
+ 

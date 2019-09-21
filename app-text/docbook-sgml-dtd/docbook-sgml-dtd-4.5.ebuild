@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,12 +6,12 @@ inherit eutils sgml-catalog
 
 MY_P="docbook-${PV}"
 DESCRIPTION="Docbook SGML DTD 4.5"
-HOMEPAGE="http://docbook.org/sgml/"
-SRC_URI="http://www.docbook.org/sgml/${PV}/${MY_P}.zip"
+HOMEPAGE="https://docbook.org/sgml/"
+SRC_URI="https://www.docbook.org/sgml/${PV}/${MY_P}.zip"
 
 LICENSE="docbook"
 SLOT="4.5"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris"
 IUSE=""
 
 DEPEND=">=app-arch/unzip-5.41"

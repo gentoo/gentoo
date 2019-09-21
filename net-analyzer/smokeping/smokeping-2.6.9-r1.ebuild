@@ -31,7 +31,7 @@ DEPEND="
 	radius? ( dev-perl/Authen-Radius )
 	ssh? ( dev-perl/Net-OpenSSH )
 	telnet? ( dev-perl/Net-Telnet )
-	|| ( dev-perl/CGI-Fast <dev-perl/CGI-4 )
+	dev-perl/CGI-Fast
 	>=dev-lang/perl-5.8.8-r8
 	>=dev-perl/SNMP_Session-1.13
 	>=net-analyzer/fping-2.4_beta2-r2[suid]

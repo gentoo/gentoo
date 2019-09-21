@@ -25,19 +25,6 @@ case ${EAPI:-0} in
 	;;
 esac
 
-# @FUNCTION: eqawarn
-# @USAGE: [message]
-# @DESCRIPTION:
-# Proxy to ewarn for package managers that don't provide eqawarn and use the PM
-# implementation if available. Reuses PORTAGE_ELOG_CLASSES as set by the dev
-# profile.
-if ! declare -F eqawarn >/dev/null ; then
-	eqawarn() {
-		has qa ${PORTAGE_ELOG_CLASSES} && ewarn "$@"
-		:
-	}
-fi
-
 # @FUNCTION: emktemp
 # @USAGE: [temp dir]
 # @DESCRIPTION:
@@ -148,7 +135,6 @@ make_wrapper() {
 
 	(
 	echo '#!/bin/sh'
-	[[ -n ${chdir} ]] && printf 'cd "%s"\n' "${EPREFIX}${chdir}"
 	if [[ -n ${libdir} ]] ; then
 		local var
 		if [[ ${CHOST} == *-darwin* ]] ; then
@@ -164,6 +150,7 @@ make_wrapper() {
 			fi
 		EOF
 	fi
+	[[ -n ${chdir} ]] && printf 'cd "%s" &&\n' "${EPREFIX}${chdir}"
 	# We don't want to quote ${bin} so that people can pass complex
 	# things as ${bin} ... "./someprog --args"
 	printf 'exec %s "$@"\n' "${bin/#\//${EPREFIX}/}"
@@ -172,6 +159,7 @@ make_wrapper() {
 
 	if [[ -n ${path} ]] ; then
 		(
+		exeopts -m 0755
 		exeinto "${path}"
 		newexe "${tmpwrapper}" "${wrapper}"
 		) || die
@@ -180,33 +168,11 @@ make_wrapper() {
 	fi
 }
 
-# @FUNCTION: path_exists
-# @USAGE: [-a|-o] <paths>
-# @DESCRIPTION:
-# Check if the specified paths exist.  Works for all types of paths
-# (files/dirs/etc...).  The -a and -o flags control the requirements
-# of the paths.  They correspond to "and" and "or" logic.  So the -a
-# flag means all the paths must exist while the -o flag means at least
-# one of the paths must exist.  The default behavior is "and".  If no
-# paths are specified, then the return value is "false".
 path_exists() {
-	local opt=$1
-	[[ ${opt} == -[ao] ]] && shift || opt="-a"
-
-	# no paths -> return false
-	# same behavior as: [[ -e "" ]]
-	[[ $# -eq 0 ]] && return 1
-
-	local p r=0
-	for p in "$@" ; do
-		[[ -e ${p} ]]
-		: $(( r += $? ))
-	done
-
-	case ${opt} in
-		-a) return $(( r != 0 )) ;;
-		-o) return $(( r == $# )) ;;
-	esac
+	eerror "path_exists has been removed.  Please see the following post"
+	eerror "for a replacement snippet:"
+	eerror "https://blogs.gentoo.org/mgorny/2018/08/09/inlining-path_exists/"
+	die "path_exists is banned"
 }
 
 # @FUNCTION: use_if_iuse
@@ -410,6 +376,25 @@ in_iuse() {
 
 	has "${flag}" "${liuse[@]#[+-]}"
 }
+
+;;
+esac
+
+case ${EAPI:-0} in
+0|1|2|3|4|5|6)
+
+# @FUNCTION: eqawarn
+# @USAGE: [message]
+# @DESCRIPTION:
+# Proxy to ewarn for package managers that don't provide eqawarn and use the PM
+# implementation if available. Reuses PORTAGE_ELOG_CLASSES as set by the dev
+# profile.
+if ! declare -F eqawarn >/dev/null ; then
+	eqawarn() {
+		has qa ${PORTAGE_ELOG_CLASSES} && ewarn "$@"
+		:
+	}
+fi
 
 ;;
 esac

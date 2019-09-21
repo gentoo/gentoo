@@ -1,0 +1,17 @@
+# -*- mode: conf -*-
+
+[Unit]
+Description=Dashboard Accelerator for Prometheus
+Documentation=https://github.com/Comcast/trickster
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/default/trickster
+User=trickster
+ExecStart=/usr/bin/trickster \
+          $TRICKSTER_OPTS
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

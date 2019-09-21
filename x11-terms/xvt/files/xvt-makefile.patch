@@ -1,5 +1,5 @@
---- xvt-1.0/Makefile.orig	2009-09-04 15:45:08.000000000 +0200
-+++ xvt-1.0/Makefile	2009-09-04 15:46:00.000000000 +0200
+--- a/Makefile
++++ b/Makefile
 @@ -27,7 +27,7 @@
  #ARCH=AIX3
  #ARCH=ULTRIX

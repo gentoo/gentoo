@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND+=" dev-libs/hiredis:="
+RDEPEND+=" =dev-libs/hiredis-0.13*:="
 DEPEND+=" dev-libs/hiredis test? ( dev-ruby/test-unit:2 )"
 
 RUBY_S="${MY_P}"

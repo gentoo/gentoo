@@ -5,7 +5,7 @@ EAPI=6
 inherit autotools eutils gnome2
 
 DESCRIPTION="Compositing window manager forked from Mutter for use with Cinnamon"
-HOMEPAGE="http://cinnamon.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 SRC_URI="https://github.com/linuxmint/muffin/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
@@ -53,10 +53,8 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.35
 	virtual/pkgconfig
+	x11-base/xorg-proto
 	test? ( app-text/docbook-xml-dtd:4.5 )
-	xinerama? ( x11-proto/xineramaproto )
-	x11-proto/xextproto
-	x11-proto/xproto
 "
 RDEPEND="${COMMON_DEPEND}
 	!x11-misc/expocity

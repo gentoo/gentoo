@@ -1,0 +1,19 @@
+https://sqlite.org/src/info/af53c41a127c314c
+
+--- /test/like3.test
++++ /test/like3.test
+@@ -182,6 +182,7 @@
+ # Verify that the LIKE optimization works with an ESCAPE clause when
+ # using PRAGMA case_sensitive_like=ON.
+ #
++ifcapable !icu {
+ do_execsql_test like3-6.100 {
+   DROP TABLE IF EXISTS t1;
+   CREATE TABLE t1(path TEXT COLLATE nocase PRIMARY KEY,a,b,c) WITHOUT ROWID;
+@@ -229,5 +230,6 @@
+   QUERY PLAN
+   `--SEARCH TABLE t2 USING INDEX t2path2 (path>? AND path<?)
+ }
++}
+ 
+ finish_test

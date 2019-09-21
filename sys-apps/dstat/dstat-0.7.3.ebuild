@@ -24,6 +24,8 @@ RDEPEND="
 	)"
 DEPEND=""
 
+PATCHES=( "${FILESDIR}/dstat-${PV}-skip-non-sandbox-tests.patch" )
+
 src_install() {
 	emake DESTDIR="${ED}" install
 	einstalldocs

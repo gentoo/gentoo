@@ -1,0 +1,51 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Copyright 2019 Alarig Le Lay <alarig@grifon.fr>
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+pidfile="/run/${RC_SVCNAME}.pid"
+command="/usr/sbin/${RC_SVCNAME}"
+retry=15
+
+CONF_FILE="/etc/${RC_SVCNAME}.conf"
+SOCK="/run/${RC_SVCNAME}.ctl"
+
+client_args="-s ${SOCK}"
+command_args="${client_args} -c ${CONF_FILE} -P ${pidfile}"
+client_args="${client_args} -r"
+
+depend() {
+	need net
+	use logger
+}
+
+check_run() {
+	BIRD_CHECK_CONF="birdc ${client_args} configure check \"${CONF_FILE}\""
+	# Check if the bird parser returns what we want
+	# We can’t use $? because it’s always 0 if the sock works
+	STATE=$(${BIRD_CHECK_CONF} | grep 'Configuration OK')
+
+	if [ -n "${STATE}" ]; then
+		return 0
+	else
+		# We remove the first three lines (garbage informations), the
+		# errors begin after that
+		eerror "$(${BIRD_CHECK_CONF} | sed '1,3d')"
+		return 1
+	fi
+}
+
+reload() {
+	check_run || return 1
+	ebegin "Reloading BIRD"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" = "restart" ] ; then
+		check_run || return 1
+	fi
+}

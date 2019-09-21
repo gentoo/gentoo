@@ -4,6 +4,7 @@
 # @ECLASS: out-of-source.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: convenient wrapper to build autotools packages out-of-source
 # @DESCRIPTION:
 # This eclass provides a minimalistic wrapper interface to easily

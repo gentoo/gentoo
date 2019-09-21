@@ -5,14 +5,14 @@
 # All the Mac OS X profiles inherit from their matching arch profile here.
 
 
-# Christoph Junghans <ottoxr@gentoo.org> (29 Dec 2014)
+# Christoph Junghans <ottoxr@gentoo.org> (2014-12-29)
 # disable optimized assembly code, bug #529584
 media-libs/xvid -pic
 
-# Jeremy Olexa <darkside@gentoo.org> (29 Jul 2010)
+# Jeremy Olexa <darkside@gentoo.org> (2010-07-29)
 # Relocation issues on 32-bit OSX only, bug #329859
 media-sound/mpg123 -cpu_flags_x86_mmx -cpu_flags_x86_sse
 
-# Fabian Groffen <grobian@gentoo.org> (01 Feb 2009)
+# Fabian Groffen <grobian@gentoo.org> (2009-02-01)
 # Doesn't compile on 32-bits OSX only, bug #257225
 media-video/ffmpeg -cpu_flags_x86_mmx

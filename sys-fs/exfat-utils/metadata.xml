@@ -9,6 +9,7 @@
 	<name>Gentoo Base System</name>
 </maintainer>
 <upstream>
+	<remote-id type="cpe">cpe:/a:exfat_prokect:exfat</remote-id>
 	<remote-id type="google-code">exfat</remote-id>
 	<remote-id type="github">relan/exfat</remote-id>
 </upstream>

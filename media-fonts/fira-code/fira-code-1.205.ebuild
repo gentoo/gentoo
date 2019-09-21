@@ -7,11 +7,12 @@ inherit font
 
 DESCRIPTION="Monospaced font with programming ligatures"
 HOMEPAGE="https://github.com/tonsky/FiraCode"
-SRC_URI="https://github.com/tonsky/FiraCode/archive/${PV}.tar.gz -> ${P}.tar.gz https://github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip"
+SRC_URI="https://github.com/tonsky/FiraCode/archive/${PV}.tar.gz -> ${P}.tar.gz
+https://github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 arm arm64 x86"
 IUSE=""
 
 S="${WORKDIR}/FiraCode-${PV}"
@@ -21,7 +22,6 @@ FONT_SUFFIX="otf"
 DOCS="README.md"
 
 src_prepare() {
-	mv "${WORKDIR}"/*.otf "${FONT_S}" || die
-
 	default
+	mv "${WORKDIR}"/*.otf "${FONT_S}" || die
 }

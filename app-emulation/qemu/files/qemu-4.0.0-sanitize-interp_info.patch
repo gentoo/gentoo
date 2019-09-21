@@ -1,0 +1,32 @@
+linux-user: Sanitize interp_info and, for mips
+
+Sanitize interp_info structure in load_elf_binary() and, for mips only,
+init its field fp_abi. This fixes appearances of "Unexpected FPU mode"
+message in some MIPS use cases.
+
+Signed-off-by: Daniel Santos <address@hidden>
+Signed-off-by: Aleksandar Markovic <address@hidden>
+---
+ linux-user/elfload.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index c1a2602..7f09d57 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -2698,6 +2698,11 @@ int load_elf_binary(struct linux_binprm *bprm, struct image_info *info)
+     char *elf_interpreter = NULL;
+     char *scratch;
+ 
++    memset(&interp_info, 0, sizeof(interp_info));
++#ifdef TARGET_MIPS
++    interp_info.fp_abi = MIPS_ABI_FP_UNKNOWN;
++#endif
++
+     info->start_mmap = (abi_ulong)ELF_START_MMAP;
+ 
+     load_elf_image(bprm->filename, bprm->fd, info,
+-- 
+2.7.4
+
+

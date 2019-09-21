@@ -6,9 +6,9 @@ EAPI="5"
 inherit eutils savedconfig pam user
 
 DESCRIPTION="small SSH 2 client/server designed for small memory environments"
-HOMEPAGE="http://matt.ucc.asn.au/dropbear/dropbear.html"
-SRC_URI="http://matt.ucc.asn.au/dropbear/releases/${P}.tar.bz2
-	http://matt.ucc.asn.au/dropbear/testing/${P}.tar.bz2"
+HOMEPAGE="https://matt.ucc.asn.au/dropbear/dropbear.html"
+SRC_URI="https://matt.ucc.asn.au/dropbear/releases/${P}.tar.bz2
+	https://matt.ucc.asn.au/dropbear/testing/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
@@ -38,13 +38,13 @@ set_options() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.46-dbscp.patch
-	sed -i \
+	sed \
 		-e '/SFTPSERVER_PATH/s:".*":"/usr/lib/misc/sftp-server":' \
-		options.h || die
+		default_options.h > localoptions.h || die
 	sed -i \
 		-e '/pam_start/s:sshd:dropbear:' \
 		svr-authpam.c || die
-	restore_config options.h
+	restore_config localoptions.h
 }
 
 src_configure() {
@@ -86,7 +86,7 @@ src_install() {
 		dosym ../bin/dropbearmulti /usr/sbin/dropbear
 		cd "${S}"
 	fi
-	save_config options.h
+	save_config localoptions.h
 
 	if ! use minimal ; then
 		mv "${ED}"/usr/bin/{,db}scp || die

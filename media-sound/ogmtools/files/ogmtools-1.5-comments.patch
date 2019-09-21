@@ -1,5 +1,5 @@
---- vorbis_header_utils.c.orig	Fri Aug 31 14:47:55 2007
-+++ vorbis_header_utils.c	Fri Aug 31 14:51:23 2007
+--- a/vorbis_header_utils.c
++++ b/vorbis_header_utils.c
 @@ -153,15 +153,15 @@
      die("malloc");
    

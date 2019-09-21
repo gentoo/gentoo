@@ -10,7 +10,6 @@
 		<flag name="dmtx">Enables barcode data matrix support.</flag>
 		<flag name="demos">Installs demo programs.</flag>
 		<flag name="ogre">Enables <pkg>dev-games/ogre</pkg> support.</flag>
-		<flag name="ois">Enables <pkg>dev-games/ois</pkg> support via ogre.</flag>
 		<flag name="opencv">Enables <pkg>media-libs/opencv</pkg> support.</flag>
 		<flag name="tutorials">Installs tutorials.</flag>
 		<flag name="zbar">Enables barcodes reading.</flag>

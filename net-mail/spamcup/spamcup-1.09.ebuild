@@ -14,8 +14,8 @@ IUSE=""
 
 DEPEND=">=dev-lang/perl-5.8.0
 	dev-perl/Getopt-ArgvFile
-	|| ( ( >dev-perl/libwww-perl-6 dev-perl/HTML-Form ) <dev-perl/libwww-perl-6
-	) "
+	dev-perl/HTML-Form
+	>dev-perl/libwww-perl-6"
 RDEPEND="${DEPEND}"
 
 src_install() {

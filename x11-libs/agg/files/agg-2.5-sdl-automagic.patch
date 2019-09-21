@@ -1,0 +1,26 @@
+--- a/configure.in	2013-08-06 16:35:30.740061017 -0700
++++ b/configure.in	2013-08-06 16:40:47.511004499 -0700
+@@ -95,10 +95,14 @@
+ 
+ dnl #########  Check for SDL: #####################
+ dnl the sdl script pollutes our global values:
++AC_ARG_ENABLE(sdl,
++    AC_HELP_STRING([--enable-sdl],[enable the sdl layer]) ) 
++
++sdl_enabled="no"
++if test x"$enable_sdl" = x"yes"; then
+ temp_LIBS="$LIBS"
+ temp_CFLAGS="$CFLAGS"
+ temp_CXXFLAGS="$CXXFLAGS"
+-sdl_enabled=""
+ SDL_VERSION=1.2.0
+ AM_PATH_SDL($SDL_VERSION,
+     [sdl_enabled="yes"],
+@@ -111,6 +115,7 @@
+ dnl ### the sdl script already does that:
+ dnl AC_SUBST(SDL_CFLAGS)
+ dnl AC_SUBST(SDL_LIBS)
++fi
+ AM_CONDITIONAL(ENABLE_SDL,[test xyes = x$sdl_enabled -a xno != x$enable_platform -a x$win32_host != xyes])
+ dnl ###############################################
+ 

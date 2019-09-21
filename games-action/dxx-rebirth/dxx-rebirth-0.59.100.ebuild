@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -51,9 +51,11 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-# Remove hardcoded optimisation flags.
-# Change share path to use old d1x/d2x locations.
-PATCHES=( "${FILESDIR}"/${P}-{flags,sharepath}.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-flags.patch # Remove hardcoded optimisation flags.
+	"${FILESDIR}"/${P}-sharepath.patch # Change share path to use old d1x/d2x locations.
+	"${FILESDIR}"/${P}-physfs-3-no-deprecation.patch # bug #653014
+)
 
 src_compile() {
 	tc-export CXX
@@ -102,6 +104,5 @@ pkg_postinst() {
 		elog "To play the game enable USE=\"data\" or manually "
 		elog "copy the files to ${EPREFIX}/usr/share/games/{d1x,d2x}."
 		elog "See each game's INSTALL.txt for details."
-		echo
 	fi
 }

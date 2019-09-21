@@ -1,0 +1,17 @@
+diff -r -U2 sbcl-1.5.3.orig/contrib/sb-concurrency/tests/test-frlock.lisp sbcl-1.5.3/contrib/sb-concurrency/tests/test-frlock.lisp
+--- sbcl-1.5.3.orig/contrib/sb-concurrency/tests/test-frlock.lisp	2019-05-27 22:03:04.000000000 +0200
++++ sbcl-1.5.3/contrib/sb-concurrency/tests/test-frlock.lisp	2019-06-01 11:41:21.260384857 +0200
+@@ -26,5 +26,5 @@
+                           (read-count 1000000)
+                           (outer-read-pause 0) (inner-read-pause 0)
+-                          (writer-count 10) (write-count (/ 1 *minimum-sleep*))
++                          (writer-count 10) (write-count 5000)
+                           (outer-write-pause *minimum-sleep*) (inner-write-pause 0))
+     (let ((rw (make-frlock))
+@@ -89,5 +89,5 @@
+ (deftest* (frlock.1)
+     (handler-case
+-        (sb-ext:with-timeout 20
++        (sb-ext:with-timeout 240
+           (test-frlocks #+win32 :outer-write-pause #+win32 t ))
+       (sb-ext:timeout (c)

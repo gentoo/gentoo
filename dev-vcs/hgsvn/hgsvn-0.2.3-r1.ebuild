@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -37,5 +37,5 @@ python_prepare_all() {
 
 python_install() {
 	distutils-r1_python_install
-	rm -fr "${ED}$(python_get_sitedir)/hgsvn/unittests"
+	rm -rf "${D}/$(python_get_sitedir)/hgsvn/unittests" || die
 }

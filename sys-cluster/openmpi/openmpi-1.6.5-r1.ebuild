@@ -52,7 +52,8 @@ RDEPEND="
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
 	!sys-cluster/mpiexec
-	>=sys-apps/hwloc-1.3
+	!sys-cluster/pmix
+	<sys-apps/hwloc-2
 	dev-libs/libltdl:0
 	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 	openmpi_fabrics_dapl? ( sys-fabric/dapl )

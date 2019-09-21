@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 DESCRIPTION="Hard drive bottleneck testing benchmark suite"
-HOMEPAGE="http://www.coker.com.au/bonnie++/"
-SRC_URI="http://www.coker.com.au/bonnie++/experimental/${P}.tgz"
+HOMEPAGE="https://www.coker.com.au/bonnie++/"
+SRC_URI="https://www.coker.com.au/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

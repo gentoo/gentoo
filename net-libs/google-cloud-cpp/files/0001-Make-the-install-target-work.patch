@@ -1,0 +1,12 @@
+diff -ur google-cloud-cpp-0.2.0.orig/google/cloud/storage/CMakeLists.txt google-cloud-cpp-0.2.0/google/cloud/storage/CMakeLists.txt
+--- google-cloud-cpp-0.2.0.orig/google/cloud/storage/CMakeLists.txt	2018-09-28 00:39:41.170482472 +0800
++++ google-cloud-cpp-0.2.0/google/cloud/storage/CMakeLists.txt	2018-09-28 00:42:09.679979597 +0800
+@@ -321,7 +321,7 @@
+         PATTERN "testing/*"
+         EXCLUDE)
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/version_info.h DESTINATION
+-              include/storage/client)
++              include/google/cloud/storage)
+ 
+ # Setup global variables used in the following *.in files.
+ set(GOOGLE_CLOUD_CPP_CONFIG_VERSION_MAJOR ${STORAGE_CLIENT_VERSION_MAJOR})

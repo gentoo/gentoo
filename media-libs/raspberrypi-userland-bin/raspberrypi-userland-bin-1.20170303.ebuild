@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/raspberrypi/firmware/archive/${PV}.tar.gz -> ${MY_P}
 
 LICENSE="BSD GPL-2 raspberrypi-videocore-bin"
 SLOT="0"
-KEYWORDS="~arm -*"
+KEYWORDS="-* ~arm"
 IUSE="+hardfp examples"
 
 RDEPEND="!media-libs/raspberrypi-userland"

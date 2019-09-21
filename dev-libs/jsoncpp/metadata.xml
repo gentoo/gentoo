@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>phajdan.jr@gentoo.org</email>
-    <name>Pawel Hajdan jr</name>
-  </maintainer>
-  <maintainer type="person">
     <email>mgorny@gentoo.org</email>
     <name>Michał Górny</name>
   </maintainer>

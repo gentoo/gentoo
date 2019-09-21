@@ -1,0 +1,15 @@
+# Example
+
+# default ceph conf file
+#ceph_conf="/etc/ceph/ceph.conf"
+
+# Set RADOSGW_WANT_NAME_PARAM=y in order to make the init script add
+# a --name=client.${RC_SVCNAME} parameter to command_args for radosgw.*
+# service instances. This will make the service use a key by the name
+# of client.${RC_SVCNAME} instead of the default client.admin key.
+# A setting like this in the ceph config file can be used to customize
+# the rgw_data and keyring paths used by radosgw instances:
+# [client]
+# rgw_data = /var/lib/ceph/radosgw/$cluster-$id
+# keyring = /var/lib/ceph/radosgw/$cluster-$id/keyring
+RADOSGW_WANT_NAME_PARAM=n

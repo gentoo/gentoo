@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,12 +20,12 @@ inherit eutils qmail
 DESCRIPTION="qmail -- a secure, reliable, efficient, simple message transfer agent"
 HOMEPAGE="
 	http://netqmail.org
-	http://cr.yp.to/qmail.html
+	https://cr.yp.to/qmail.html
 	http://qmail.org
 "
 SRC_URI="mirror://qmail/${P}.tar.gz
 	https://dev.gentoo.org/~hollow/distfiles/${GENQMAIL_F}
-	http://www.ckdhr.com/ckd/${QMAIL_LARGE_DNS}
+	https://www.ckdhr.com/ckd/${QMAIL_LARGE_DNS}
 	http://inoa.net/qmail-tls/${QMAIL_TLS_CVE}
 	!vanilla? (
 		highvolume? ( mirror://qmail/${QMAIL_BIGTODO_F} )
@@ -44,7 +44,7 @@ RESTRICT="test"
 DEPEND="
 	!mail-mta/qmail
 	net-mail/queue-repair
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0= )
 	sys-apps/groff
 "
 RDEPEND="

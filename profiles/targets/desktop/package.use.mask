@@ -1,11 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Lars Wendler <polynomial-c@gentoo.org> (11 Apr 2018)
-# Masked until we have a working ldap patch again.
-# See https://bugs.gentoo.org/652438
->=net-misc/openssh-7.7_p1 ldap
-
 # USE=gles2 in the following packages disables full OpenGL
 # Upstream does not test for that case and packages frequently
 # fail to build or run if set.

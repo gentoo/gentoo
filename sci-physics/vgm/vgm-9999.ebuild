@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils versionator
+inherit cmake-utils
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -21,12 +21,18 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc examples +geant4 +root test"
 
+# sci-physics/root[c++11] required to match sci-physics/geant
 RDEPEND="
 	sci-physics/clhep:=
-	root? ( sci-physics/root:= )
+	root? ( sci-physics/root:=[c++11] )
 	geant4? ( >=sci-physics/geant-4.10.03 )"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[dot] )"
+	doc? ( app-doc/doxygen[dot] )
+	test? ( sci-physics/geant-vmc[g4root] )"
+RESTRICT="
+	!geant4? ( test )
+	!root? ( test )
+	!test? ( test )"
 
 DOCS=(
 	doc/README
@@ -38,7 +44,7 @@ DOCS=(
 
 src_configure() {
 	local mycmakeargs=(
-		-DCLHEP_DIR="${EROOT}usr"
+		-DCLHEP_DIR="${EPREFIX}/usr"
 		-DWITH_EXAMPLES="$(usex examples)"
 		-DINSTALL_EXAMPLES="$(usex examples)"
 		-DWITH_GEANT4="$(usex geant4)"

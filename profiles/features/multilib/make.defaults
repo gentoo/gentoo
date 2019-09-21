@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (16 Nov 2011)
+# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2011-11-16)
 # Rename STAGE1_USE to BOOTSTRAP_USE and stack it to the parent value
 # This is so we build with multilib from the start
 BOOTSTRAP_USE="${BOOTSTRAP_USE} multilib"

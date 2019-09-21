@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 MY_PN="Flask-Gravatar"
 MY_P=${MY_PN}-${PV}
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Small extension for Flask to make usage of Gravatar service easy"
@@ -17,8 +17,12 @@ LICENSE="BSD"
 
 SLOT="0"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="dev-python/flask[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
+	dev-python/pytest-runner[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
+"
 
 S=${WORKDIR}/${MY_P}

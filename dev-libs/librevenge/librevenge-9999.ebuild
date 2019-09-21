@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit multilib-minimal
+inherit flag-o-matic multilib-minimal
 
 DESCRIPTION="A helper library for REVerse ENGineered formats filters"
-HOMEPAGE="http://sf.net/p/libwpd/librevenge"
+HOMEPAGE="https://sf.net/p/libwpd/librevenge"
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="git://git.code.sf.net/p/libwpd/librevenge"
 	inherit git-r3 autotools
 else
-	SRC_URI="http://sf.net/projects/libwpd/files/${PN}/${P}/${P}.tar.xz"
+	SRC_URI="https://sf.net/projects/libwpd/files/${PN}/${P}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~x86 ~x86-fbsd"
 fi
 
@@ -31,6 +31,9 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 	[[ ${PV} = *9999 ]] && eautoreconf
+
+	# bug 651264
+	append-cxxflags -std=c++11
 }
 
 multilib_src_configure() {

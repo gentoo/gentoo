@@ -1,26 +1,25 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit git-r3
+inherit autotools git-r3 pax-utils
 
 DESCRIPTION="System performance benchmark"
 HOMEPAGE="https://github.com/akopytov/sysbench"
-
 EGIT_REPO_URI="https://github.com/akopytov/sysbench.git"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
 IUSE="aio mysql postgres test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="aio? ( dev-libs/libaio )
-	mysql? ( virtual/libmysqlclient )
+	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
 	dev-lang/luajit:="
 DEPEND="${RDEPEND}
-	app-editors/vim-core
 	dev-libs/concurrencykit
 	dev-libs/libxslt
 	sys-devel/libtool
@@ -33,17 +32,14 @@ src_prepare() {
 	# remove bundled libs
 	rm -r third_party/luajit/luajit third_party/concurrency_kit/ck third_party/cram || die
 
-	./autogen.sh || die
+	eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
-		$(use_enable aio aio)
-		$(use_with mysql mysql)
+		$(use_enable aio)
+		$(use_with mysql)
 		$(use_with postgres pgsql)
-		--without-attachsql
-		--without-drizzle
-		--without-oracle
 		--with-system-luajit
 		--with-system-ck
 	)
@@ -53,4 +49,10 @@ src_configure() {
 
 src_test() {
 	emake check test
+}
+
+src_install() {
+	default
+
+	pax-mark m "${ED}"/usr/bin/${PN}
 }

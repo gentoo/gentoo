@@ -1,0 +1,32 @@
+From 446794de8da4329ea532cbee4ca877bcafd0e534 Mon Sep 17 00:00:00 2001
+From: "David E. Box" <david.e.box@linux.intel.com>
+Date: Fri, 15 Sep 2017 15:37:05 -0700
+Subject: [PATCH] tsc: Change default tsc calibration method to pmtimer on EFI
+ systems
+
+On efi systems, make pmtimer based tsc calibration the default over the
+pit. This prevents Grub from hanging on Intel SoC systems that power gate
+the pit.
+
+Signed-off-by: David E. Box <david.e.box@linux.intel.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/kern/i386/tsc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/grub-core/kern/i386/tsc.c b/grub-core/kern/i386/tsc.c
+index 2e85289d8..f266eb131 100644
+--- a/grub-core/kern/i386/tsc.c
++++ b/grub-core/kern/i386/tsc.c
+@@ -68,7 +68,7 @@ grub_tsc_init (void)
+ #ifdef GRUB_MACHINE_XEN
+   (void) (grub_tsc_calibrate_from_xen () || calibrate_tsc_hardcode());
+ #elif defined (GRUB_MACHINE_EFI)
+-  (void) (grub_tsc_calibrate_from_pit () || grub_tsc_calibrate_from_pmtimer () || grub_tsc_calibrate_from_efi() || calibrate_tsc_hardcode());
++  (void) (grub_tsc_calibrate_from_pmtimer () || grub_tsc_calibrate_from_pit () || grub_tsc_calibrate_from_efi() || calibrate_tsc_hardcode());
+ #elif defined (GRUB_MACHINE_COREBOOT)
+   (void) (grub_tsc_calibrate_from_pmtimer () || grub_tsc_calibrate_from_pit () || calibrate_tsc_hardcode());
+ #else
+-- 
+2.22.0
+

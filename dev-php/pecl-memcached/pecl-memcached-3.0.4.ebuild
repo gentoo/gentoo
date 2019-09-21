@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -54,8 +54,6 @@ src_configure() {
 }
 
 src_install(){
-	use examples && dodoc -r server-example
-
 	if use php_targets_php7-0 || use php_targets_php7-1 || use php_targets_php7-2 ; then
 		php-ext-source-r3_src_install
 	fi

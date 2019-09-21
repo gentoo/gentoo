@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,15 +7,15 @@ inherit eutils flag-o-matic autotools multilib-minimal
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/cairo"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/cairo/cairo.git"
 	SRC_URI=""
 else
 	SRC_URI="https://www.cairographics.org/releases/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A vector graphics library with cross-device output support"
-HOMEPAGE="https://www.cairographics.org"
+HOMEPAGE="https://www.cairographics.org/ https://gitlab.freedesktop.org/cairo/cairo"
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 IUSE="X aqua debug gles2 +glib opengl static-libs +svg utils valgrind xcb"
@@ -26,6 +26,7 @@ IUSE="X aqua debug gles2 +glib opengl static-libs +svg utils valgrind xcb"
 RESTRICT="test"
 
 RDEPEND="
+	>=dev-libs/lzo-2.06-r1[${MULTILIB_USEDEP}]
 	>=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}]
 	>=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}]
@@ -34,8 +35,7 @@ RDEPEND="
 	>=x11-libs/pixman-0.32.4[${MULTILIB_USEDEP}]
 	gles2? ( >=media-libs/mesa-9.1.6[gles2,${MULTILIB_USEDEP}] )
 	glib? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}] )
-	opengl? ( >=media-libs/mesa-9.1.6[egl,${MULTILIB_USEDEP}] )
-	utils? ( >=dev-libs/lzo-2.06-r1[${MULTILIB_USEDEP}] )
+	opengl? ( >=media-libs/mesa-9.1.6[egl,X(+),${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libXrender-0.9.8[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
@@ -47,9 +47,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=sys-devel/libtool-2
-	X? (
-		>=x11-proto/renderproto-0.11.1-r1[${MULTILIB_USEDEP}]
-	)"
+	X? ( x11-base/xorg-proto )"
 #[[ ${PV} == *9999* ]] && DEPEND="${DEPEND}
 #	doc? (
 #		>=dev-util/gtk-doc-1.6
@@ -90,11 +88,6 @@ multilib_src_configure() {
 
 	use elibc_FreeBSD && myopts+=" --disable-symbol-lookup"
 
-	# TODO: remove this (and add USE-dep) when qtgui is converted, bug #498010
-	if ! multilib_is_native_abi; then
-		myopts+=" --disable-qt"
-	fi
-
 	# [[ ${PV} == *9999* ]] && myopts+=" $(use_enable doc gtk-doc)"
 
 	ECONF_SOURCE="${S}" \
@@ -112,8 +105,6 @@ multilib_src_configure() {
 		$(use_enable opengl gl) \
 		$(use_enable static-libs static) \
 		$(use_enable svg) \
-		$(use_enable utils interpreter) \
-		$(use_enable utils script) \
 		$(use_enable utils trace) \
 		$(use_enable valgrind) \
 		$(use_enable xcb) \
@@ -122,6 +113,8 @@ multilib_src_configure() {
 		--enable-pdf \
 		--enable-png \
 		--enable-ps \
+		--enable-script \
+		--enable-interpreter \
 		--disable-drm \
 		--disable-directfb \
 		--disable-gallium \

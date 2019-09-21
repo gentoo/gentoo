@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit autotools elisp-common ltprune
+inherit autotools elisp-common
 
 MY_P="${P/_pre/pre}"
 
@@ -76,7 +76,8 @@ src_test() {
 }
 
 src_install () {
-	emake DESTDIR="${D}" install
+	default
+	find "${ED}" -name '*.la' -delete || die
 
 	if use emacs; then
 		elisp-install ${PN} lisp/*.el*
@@ -85,8 +86,6 @@ src_install () {
 		docinto lisp
 		dodoc lisp/ChangeLog*
 	fi
-
-	prune_libtool_files
 }
 
 pkg_postinst() {

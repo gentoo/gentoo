@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -23,7 +23,7 @@ HOMEPAGE="http://www.mozilla.org/rhino/"
 
 LICENSE="MPL-1.1 GPL-2"
 SLOT="1.6"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 IUSE=""
 
 # ../rhino-Rhino1_7_7_RELEASE

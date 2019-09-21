@@ -1,0 +1,72 @@
+From 60bbcde225f3c28a36d8643c451509d9deb09222 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Sat, 15 Jun 2019 13:34:09 +0200
+Subject: [PATCH 2/5] Find IlmBase by setting a proper ILMBASE_ROOT value and
+ by using pkg-config to determine the installed ilmbase version, instead of
+ using the cmake STRINGS command.
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ cmake/Modules/FindIlmBase.cmake   | 18 +++++++++++++++++-
+ cmake/Modules/FindPyIlmBase.cmake |  2 +-
+ 2 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/Modules/FindIlmBase.cmake b/cmake/Modules/FindIlmBase.cmake
+index 679a02f..0fe2b1a 100644
+--- a/cmake/Modules/FindIlmBase.cmake
++++ b/cmake/Modules/FindIlmBase.cmake
+@@ -52,7 +52,7 @@ IF(NOT DEFINED ILMBASE_ROOT)
+           SET( ALEMBIC_ILMBASE_ROOT NOTFOUND )
+         ELSE()
+           # TODO: set to default install path when shipping out
+-          SET( ALEMBIC_ILMBASE_ROOT "/usr/local/ilmbase-1.0.1/" )
++          SET( ALEMBIC_ILMBASE_ROOT "/usr" )
+         ENDIF()
+     ELSE()
+         IF ( ${WINDOWS} )
+@@ -87,6 +87,21 @@ SET(_ilmbase_SEARCH_DIRS
+     /usr/freeware
+ )
+ 
++# use pkg-config to determine the correct version
++include(FindPkgConfig)
++IF(PKG_CONFIG_FOUND)
++    PKG_CHECK_MODULES(PC_ILMBASE QUIET IlmBase)
++    IF(PC_ILMBASE_FOUND)
++        SET(ILMBASE_VERSION ${PC_ILMBASE_VERSION})
++        SET(ALEMBIC_ILMBASE_INCLUDE_DIRECTORY ${PC_ILMBASE_INCLUDE_DIRS})
++        STRING(REGEX MATCH "-lHalf" ALEMBIC_ILMBASE_HALF_LIB ${PC_ILMBASE_LDFLAGS})
++        STRING(REGEX MATCH "-lIex" ALEMBIC_ILMBASE_IEX_LIB ${PC_ILMBASE_LDFLAGS})
++        STRING(REGEX MATCH "-lIexMath" ALEMBIC_ILMBASE_IEXMATH_LIB ${PC_ILMBASE_LDFLAGS})
++        STRING(REGEX MATCH "-lIlmThread" ALEMBIC_ILMBASE_ILMTHREAD_LIB ${PC_ILMBASE_LDFLAGS})
++        String(REGEX MATCH "-lImath" ALEMBIC_ILMBASE_IMATH_LIB ${PC_ILMBASE_LDFLAGS})
++    ENDIF()
++ELSE(PKG_CONFIG_FOUND)
++
+ FIND_PATH(ILMBASE_INCLUDE_DIR
+   NAMES
+     IlmBaseConfig.h
+@@ -179,6 +194,7 @@ IF ( ${ALEMBIC_ILMBASE_INCLUDE_DIRECTORY} STREQUAL "ALEMBIC_ILMBASE_INCLUDE_DIRE
+   MESSAGE( FATAL_ERROR "ilmbase header files not found, required: ALEMBIC_ILMBASE_ROOT: ${ALEMBIC_ILMBASE_ROOT}" )
+ ENDIF()
+ 
++ENDIF(PKG_CONFIG_FOUND)
+ 
+ MESSAGE( STATUS "ILMBASE INCLUDE PATH: ${ALEMBIC_ILMBASE_INCLUDE_DIRECTORY}" )
+ MESSAGE( STATUS "HALF LIB: ${ALEMBIC_ILMBASE_HALF_LIB}" )
+diff --git a/cmake/Modules/FindPyIlmBase.cmake b/cmake/Modules/FindPyIlmBase.cmake
+index d55f8d3..b5f3cb5 100644
+--- a/cmake/Modules/FindPyIlmBase.cmake
++++ b/cmake/Modules/FindPyIlmBase.cmake
+@@ -44,7 +44,7 @@ ELSE()
+               SET(ALEMBIC_PYILMBASE_ROOT NOTFOUND)
+             ELSE()
+               # TODO: set to default install path when shipping out
+-              SET(ALEMBIC_PYILMBASE_ROOT "/usr/local/pyilmbase/")
++              SET(ALEMBIC_PYILMBASE_ROOT "/usr")
+             ENDIF()
+         ELSE()
+             IF (${WINDOWS})
+-- 
+2.22.0
+

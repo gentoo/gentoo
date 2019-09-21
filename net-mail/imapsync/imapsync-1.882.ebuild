@@ -31,7 +31,6 @@ RDEPEND="
 	dev-perl/JSON
 	dev-perl/libwww-perl
 	dev-perl/Mail-IMAPClient
-	dev-perl/Mail-IMAPClient
 	dev-perl/Module-Implementation
 	dev-perl/Module-Runtime
 	dev-perl/Module-ScanDeps
@@ -41,21 +40,16 @@ RDEPEND="
 	dev-perl/PAR
 	dev-perl/Parse-RecDescent
 	dev-perl/Readonly
-	dev-perl/Readonly
 	dev-perl/Readonly-XS
 	dev-perl/Regexp-Common
 	dev-perl/Sys-MemInfo
-	dev-perl/Sys-MemInfo
-	dev-perl/TermReadKey
 	dev-perl/TermReadKey
 	dev-perl/Try-Tiny
-	dev-perl/Unicode-String
 	dev-perl/Unicode-String
 	dev-perl/URI
 	virtual/perl-Compress-Raw-Zlib
 	virtual/perl-Data-Dumper
 	virtual/perl-Digest
-	virtual/perl-Digest-MD5
 	virtual/perl-Digest-MD5
 	virtual/perl-Digest-SHA
 	virtual/perl-Encode
@@ -65,8 +59,8 @@ RDEPEND="
 	# HTML::Entities
 	# JSON::WebToken
 	# JSON::WebToken::Crypt::RSA
-RDEPEND="
-	${DEPEND}
+DEPEND="
+	${RDEPEND}
 	test? (
 		virtual/perl-Test
 		dev-perl/Test-Deep

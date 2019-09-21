@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -59,7 +59,6 @@ src_install() {
 		doins -r include/*
 	else
 		emake -j1 install DESTDIR="${D}"
-		env -uRESTRICT CHOST=${CTARGET} prepallstrip
 
 		# Make sure diff cross-compilers don't collide #414075
 		mv "${D}"/usr/share/doc/{${PF},${CTARGET}-${PF}} || die

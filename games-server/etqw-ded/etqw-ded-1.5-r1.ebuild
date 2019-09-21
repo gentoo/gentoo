@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ QA_PREBUILT="${dir:1}/pb/*.so
 	${dir:1}/*.so*"
 
 pkg_nofetch() {
-	einfo "Please download ${A} from ${HOMEPAGE} and copy it to ${DISTDIR}"
+	einfo "Please download ${A} from ${HOMEPAGE} and copy it into your DISTDIR directory."
 }
 
 src_unpack() {

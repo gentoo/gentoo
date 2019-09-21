@@ -23,6 +23,7 @@
 		<flag name="pcre-jit">Use JIT support for PCRE</flag>
 		<flag name="pcre2">Enable PCRE2 RegEx support</flag>
 		<flag name="pcre2-jit">Use JIT support for PCRE2</flag>
+		<flag name="prometheus-exporter">Also build the prometheus exporter</flag>
 		<flag name="slz">Use <pkg>dev-libs/libslz</pkg> compression library</flag>
 		<flag name="tools">Install additional tools (halog, iprange)</flag>
 		<flag name="device-atlas">Use <pkg>dev-libs/device-atlas-api-c</pkg> library</flag>

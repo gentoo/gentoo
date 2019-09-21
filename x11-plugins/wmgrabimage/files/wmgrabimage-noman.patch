@@ -1,5 +1,5 @@
---- Makefile.orig	2001-05-27 19:02:18.000000000 +0000
-+++ Makefile	2004-06-22 21:05:36.711363520 +0000
+--- a/Makefile	2001-05-27 19:02:18.000000000 +0000
++++ b/Makefile	2004-06-22 21:05:36.711363520 +0000
 @@ -30,5 +30,4 @@
  install:: wmGrabImage
  	install -s -m 0755 wmGrabImage $(DESTDIR)/bin

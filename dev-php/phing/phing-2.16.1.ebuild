@@ -4,8 +4,8 @@
 EAPI=6
 
 DESCRIPTION="PHP project build system based on Apache Ant"
-HOMEPAGE="http://www.phing.info/"
-SRC_URI="http://www.phing.info/get/${P}.tgz"
+HOMEPAGE="https://www.phing.info/"
+SRC_URI="https://www.phing.info/get/${P}.tgz"
 
 LICENSE="FDL-1.3 LGPL-2.1"
 SLOT="0"

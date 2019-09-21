@@ -1,0 +1,71 @@
+From 430c6ffb65cd839be5ba6266a89f645afa8f9442 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 14 Oct 2018 12:30:56 +0200
+Subject: [PATCH] setup.py: Support specifying custom --pkgconfigdir
+
+Support overriding --pkgconfigdir for whenever the autodetection
+gives incorrect result (e.g. PyPy).  Fixes #119.
+---
+ setup.py | 21 ++++++++++++++++++---
+ 1 file changed, 18 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 36641d9..75c8888 100755
+--- a/setup.py
++++ b/setup.py
+@@ -14,6 +14,7 @@ except ImportError:
+ from distutils.core import Extension, Command, Distribution
+ from distutils.ccompiler import new_compiler
+ from distutils.sysconfig import customize_compiler
++from distutils.util import change_root
+ from distutils import log
+ from distutils import sysconfig
+ 
+@@ -265,11 +266,15 @@ class test_cmd(Command):
+ 
+ class install_pkgconfig(Command):
+     description = "install .pc file"
+-    user_options = []
++    user_options = [
++        ('pkgconfigdir=', None, 'pkg-config file install directory'),
++    ]
+ 
+     def initialize_options(self):
++        self.root = None
+         self.install_base = None
+         self.install_data = None
++        self.pkgconfigdir = None
+         self.compiler_type = None
+         self.outfiles = []
+ 
+@@ -280,6 +285,11 @@ class install_pkgconfig(Command):
+             ('install_data', 'install_data'),
+         )
+ 
++        self.set_undefined_options(
++            'install',
++            ('root', 'root'),
++        )
++
+         self.set_undefined_options(
+             'build_ext',
+             ('compiler_type', 'compiler_type'),
+@@ -315,8 +325,13 @@ class install_pkgconfig(Command):
+                 "Skipping install_pkgconfig, not supported with MSVC")
+             return
+ 
+-        python_lib = sysconfig.get_python_lib(True, True, self.install_data)
+-        pkgconfig_dir = os.path.join(os.path.dirname(python_lib), 'pkgconfig')
++        if self.pkgconfigdir is None:
++            python_lib = sysconfig.get_python_lib(True, True,
++                                                  self.install_data)
++            pkgconfig_dir = os.path.join(os.path.dirname(python_lib),
++                                         'pkgconfig')
++        else:
++            pkgconfig_dir = change_root(self.root, self.pkgconfigdir)
+         self.mkpath(pkgconfig_dir)
+ 
+         pcname = "py3cairo.pc" if sys.version_info[0] == 3 else "pycairo.pc"
+-- 
+2.19.1
+

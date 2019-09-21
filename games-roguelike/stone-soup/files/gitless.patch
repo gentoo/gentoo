@@ -1,0 +1,13 @@
+--- /Makefile	2019-04-15 19:34:40.604288477 -0500
++++ /Makefile	2019-04-15 19:36:25.249286603 -0500
+@@ -1149,9 +1149,8 @@
+ 
+ LANGUAGES = $(filter-out en, $(notdir $(wildcard dat/descript/??)))
+ SRC_PKG_BASE  := stone_soup
+-SRC_VERSION   := $(shell git describe --tags $(MERGE_BASE) 2>/dev/null || cat util/release_ver)
++SRC_VERSION   := $(shell cat util/release_ver)
+ MAJOR_VERSION = $(shell echo "$(SRC_VERSION)"|sed -r 's/-.*//;s/^([^.]+\.[^.]+).*/\1/')
+-RECENT_TAG    := $(shell git describe --abbrev=0 --tags $(MERGE_BASE))
+ 
+ export SRC_VERSION
+ 

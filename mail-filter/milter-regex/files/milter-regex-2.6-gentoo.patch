@@ -1,0 +1,38 @@
+--- a/Makefile.linux	2011-07-16 16:51:34.000000000 +0300
++++ a/Makefile.linux	2012-08-05 18:15:30.906378968 +0300
+@@ -6,28 +6,27 @@
+ # see milter-regex.init for an init script for RedHat/Fedora
+ # (contributed by admin@2ka.mipt.ru)
+ 
+-CFLAGS=		-g
+-LDFLAGS=	-L/usr/lib/libmilter -lmilter -lpthread
++LIBS=  -lmilter -lpthread
+ 
+ all: milter-regex milter-regex.cat8
+ 
+ milter-regex: milter-regex.o eval.o strlcat.o strlcpy.o y.tab.o
+-	gcc -o milter-regex milter-regex.o eval.o strlcat.o strlcpy.o y.tab.o $(LDFLAGS)
++	$(CC) $(LDFLAGS) -o milter-regex milter-regex.o eval.o strlcat.o strlcpy.o y.tab.o $(LIBS)
+ 
+ milter-regex.o: milter-regex.c eval.h
+-	gcc $(CFLAGS) -c milter-regex.c
++	$(CC) $(CFLAGS) -c milter-regex.c
+ 
+ eval.o: eval.c eval.h
+-	gcc $(CFLAGS) -c eval.c
++	$(CC) $(CFLAGS) -c eval.c
+ 
+ strlcat.o: strlcat.c
+-	gcc $(CFLAGS) -c strlcat.c
++	$(CC) $(CFLAGS) -c strlcat.c
+ 
+ strlcpy.o: strlcpy.c
+-	gcc $(CFLAGS) -c strlcpy.c
++	$(CC) $(CFLAGS) -c strlcpy.c
+ 
+ y.tab.o: y.tab.c
+-	gcc $(CFLAGS) -c y.tab.c
++	$(CC) $(CFLAGS) -c y.tab.c
+ 
+ y.tab.c: parse.y
+ 	yacc -d parse.y

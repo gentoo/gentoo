@@ -3,7 +3,7 @@
 
 EAPI="4"
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs eutils usr-ldscript
 
 DESCRIPTION="library required by reiser4progs"
 HOMEPAGE="https://sourceforge.net/projects/reiser4/"

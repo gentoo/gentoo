@@ -1,0 +1,22 @@
+--- a/CMakeLists.txt	2019-03-08 18:39:47.000000000 +0100
++++ b/CMakeLists.txt	2019-05-21 23:20:50.964082298 +0200
+@@ -5,19 +5,6 @@
+ option(PTEX_BUILD_SHARED_LIBS "Enable building Ptex shared libraries" ON)
+ option(PRMAN_15_COMPATIBLE_PTEX "Enable PRMan 15 compatibility" OFF)
+ 
+-if (DEFINED ENV{CXXFLAGS_STD})
+-    if ($ENV{CXXFLAGS_STD} STREQUAL "c++17")
+-        set(CMAKE_CXX_STANDARD 17)
+-    elseif ($ENV{CXXFLAGS_STD} STREQUAL "c++14")
+-        set(CMAKE_CXX_STANDARD 14)
+-    elseif ($ENV{CXXFLAGS_STD} STREQUAL "c++11")
+-        set(CMAKE_CXX_STANDARD 11)
+-    else ()
+-        set(CMAKE_CXX_STANDARD 98)
+-    endif ()
+-else ()
+-    set(CMAKE_CXX_STANDARD 98)
+-endif ()
+ set(CMAKE_CXX_EXTENSIONS OFF)
+ set(CMAKE_FIND_PACKAGE_RESOLVE_SYMLINKS ON)
+ set(CMAKE_INSTALL_MESSAGE LAZY) # Silence "Up-to-date:" install messages

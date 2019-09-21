@@ -7,7 +7,7 @@ index 63172e4..6c2afcc 100644
  
  AC_CHECK_LIB(util, forkpty)
 -AC_CHECK_LIB(curses, main)
-+AC_SEARCH_LIBS([tgetent], [cursesw curses ncursesw ncurses], [break;])
++AC_SEARCH_LIBS([tgetent], [tinfow tinfo cursesw curses ncursesw ncurses], [break;])
  
  dnl for freebsd
  dnl AC_CHECK_LIB(c, i386_set_ioperm)

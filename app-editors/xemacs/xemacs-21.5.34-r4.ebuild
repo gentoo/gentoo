@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: xemacs currently does not work with position independent code
@@ -66,6 +66,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-ncurses-tinfo.patch"
 	epatch "${FILESDIR}/${P}-gcc5.patch"
 	epatch "${FILESDIR}/${P}-glibc-macro.patch"
+	epatch "${FILESDIR}/${P}-as-needed.patch"
 
 	# Some binaries and man pages are installed under suffixed names
 	# to avoid collions with their GNU Emacs counterparts (see below).

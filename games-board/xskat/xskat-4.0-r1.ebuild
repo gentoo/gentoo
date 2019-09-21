@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,9 +16,9 @@ IUSE=""
 RDEPEND="media-fonts/font-misc-misc
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	x11-misc/gccmakedep
-	x11-misc/imake
-	x11-proto/xproto"
+	x11-misc/imake"
 
 src_prepare() {
 	default

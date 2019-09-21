@@ -4,7 +4,7 @@
 EAPI="6"
 
 DESCRIPTION="Official ODBC driver for PostgreSQL"
-HOMEPAGE="http://www.postgresql.org/"
+HOMEPAGE="https://www.postgresql.org/"
 SRC_URI="mirror://postgresql/odbc/versions/src/${P}.tar.gz"
 SLOT="0"
 LICENSE="LGPL-2"

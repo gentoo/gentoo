@@ -1,0 +1,33 @@
+From 653f988ba163c74f3ebdb6e53f57db9d8e569b1f Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 28 Dec 2018 09:23:52 -0500
+Subject: [PATCH 1/4] Ignore all "sd_notify" lines.
+
+Lines beginning with either "sd_notify:" or "sd_notify (no socket):"
+contain information about what is being sent to the systemd
+notification socket, if one exists. One such line was already being
+ignored, but we don't want any of them. So, the existing
+@ignore_list_final entry was expanded to encompass all such messages.
+---
+ amavis-logwatch | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/amavis-logwatch b/amavis-logwatch
+index ac93cbc..ffb502b 100644
+--- a/amavis-logwatch
++++ b/amavis-logwatch
+@@ -2047,7 +2047,10 @@ sub create_ignore_list() {
+    push @ignore_list_final, qr/\bRUSAGE\b/;
+    push @ignore_list_final, qr/: Sending .* to UNIX socket/;
+ 
+-   push @ignore_list_final, qr/sd_notify \(no socket\): STATUS=Starting child process\(es\), ready for work./
++   # Lines beginning with "sd_notify:" or "sd_notify (no socket):"
++   # describe what is being sent to the systemd notification socket,
++   # if one exists.
++   push @ignore_list_final, qr/^sd_notify( \(no socket\))?:/;
+ }
+ 
+ # Notes:
+-- 
+2.19.2
+

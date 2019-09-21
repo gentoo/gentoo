@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils multilib-minimal toolchain-funcs flag-o-matic
+inherit eutils multilib-minimal toolchain-funcs flag-o-matic usr-ldscript
 
 DESCRIPTION="Asynchronous input/output library that uses the kernels native interface"
 HOMEPAGE="http://lse.sourceforge.net/io/aio.html"

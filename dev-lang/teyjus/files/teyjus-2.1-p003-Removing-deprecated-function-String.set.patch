@@ -1,0 +1,51 @@
+commit 38772fa56ed7edef88e71df8a69eea4f341968ed
+Author: Giselle Reis <giselle.mnr@gmail.com>
+Date:   Fri Jul 26 15:28:03 2019 +0300
+
+    Removing deprecated function String.set
+    
+    Teyjus will not build with a typecheck error
+    because String.set takes bytes, not a string. This
+    commit fixes this issue.
+    String.set is deprecated, so Bytes.set is used
+    instead.
+
+diff --git a/source/compiler/bytecode.ml b/source/compiler/bytecode.ml
+index 957c276..655ddab 100644
+--- a/source/compiler/bytecode.ml
++++ b/source/compiler/bytecode.ml
+@@ -248,28 +248,28 @@ let readWord () = readNBytes (getInChannel ()) (getWordSize ())
+ let readString () =
+   let input = getInChannel () in
+   let length = readNBytes input 4 in
+-  let myString = String.make length ' ' in
++  let myString = Bytes.make length ' ' in
+   let rec readStringAux index =
+ 	if (index = length) then ()
+ 	else 
+-	  (String.set myString index (input_char input);
++	  (Bytes.set myString index (input_char input);
+ 	   readStringAux (index + 1))
+   in
+   readStringAux 0;
+-  myString 
++  Bytes.to_string myString 
+ 
+ let readLongString () = 
+   let input = getInChannel() in
+   let length = readNBytes input 4 in
+-  let myString = String.make length ' ' in
++  let myString = Bytes.make length ' ' in
+   let rec readStringAux index =
+ 	if (index = length) then ()
+ 	else 
+-	  (String.set myString index (input_char input);
++	  (Bytes.set myString index (input_char input);
+ 	   readStringAux (index + 1))
+   in
+   readStringAux 0;
+-  myString 
++  Bytes.to_string myString 
+ 
+ (* skip n bytes   *)
+ let skipNBytes numberBytes =

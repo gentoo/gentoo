@@ -1,5 +1,5 @@
---- wmpop3lb2.4.2/wmpop3/Pop3Client.c	2002-06-27 16:04:42.000000000 +0200
-+++ wmpop3lb2.4.2-pathed/wmpop3/Pop3Client.c	2007-01-11 14:39:12.000000000 +0200
+--- a/wmpop3/Pop3Client.c	2002-06-27 16:04:42.000000000 +0200
++++ b/wmpop3/Pop3Client.c	2007-01-11 14:39:12.000000000 +0200
 @@ -27,6 +27,49 @@
  
  #include "Pop3Client.h"

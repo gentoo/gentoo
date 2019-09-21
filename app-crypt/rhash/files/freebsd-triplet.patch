@@ -1,0 +1,23 @@
+From 14db7f9ee87e05450853ba0e1d8e83cc34aef3e4 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@aura-online.co.uk>
+Date: Sat, 24 Mar 2018 13:51:56 +0000
+Subject: [PATCH] configure: Match FreeBSD triplets with versions
+
+Triplets such as x86_64-unknown-freebsd11.1 are common.
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index 8ebb929..5b6b710 100755
+--- a/configure
++++ b/configure
+@@ -398,7 +398,7 @@ else
+     part=$(echo $BUILD_TARGET | cut -d '-' -f $component)
+     case "$(echo $part | tr '[A-Z]' '[a-z]')" in
+       linux) TARGET_OS=Linux ;;
+-      freebsd) TARGET_OS=FreeBSD ;;
++      freebsd*) TARGET_OS=FreeBSD ;;
+       gnu/kfreebsd) TARGET_OS=FreeBSD ;;
+       netbsd) TARGET_OS=NetBSD ;;
+       bsd/os) TARGET_OS=BSD/OS ;;

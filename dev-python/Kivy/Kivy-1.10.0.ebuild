@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_5} )
 
 inherit distutils-r1
 
 DISTUTILS_IN_SOURCE_BUILD=1
 
 DESCRIPTION="Library for rapid development of hardware-accelerated multitouch applications"
-HOMEPAGE="http://kivy.org/"
+HOMEPAGE="https://kivy.org/"
 SRC_URI="https://github.com/kivy/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

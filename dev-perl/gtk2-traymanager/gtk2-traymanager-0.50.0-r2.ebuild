@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ HOMEPAGE="http://gtk2-perl.sf.net/ ${HOMEPAGE}"
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
+KEYWORDS="amd64 ia64 x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2
@@ -23,6 +23,7 @@ RDEPEND="x11-libs/gtk+:2
 DEPEND="${RDEPEND}
 	dev-perl/ExtUtils-Depends
 	dev-perl/ExtUtils-PkgConfig
+	dev-util/glib-utils
 	virtual/pkgconfig"
 
 src_test() {

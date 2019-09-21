@@ -1,0 +1,19 @@
+fish is now installed on your system.
+To run fish, type 'fish' in your terminal.
+
+It is advised not to set fish as a default login shell.
+see https://bugs.gentoo.org/545830 for more details.
+Executing fish using ~/.bashrc is an alternative
+see https://wiki.gentoo.org/wiki/Fish#Caveats for details
+
+To set your colors, run 'fish_config'
+To scan your man pages for completions, run 'fish_update_completions'
+To autocomplete command suggestions press Ctrl + F or right arrow key.
+
+Please add a "BROWSER" variable to fish environment pointing to the
+browser of your choice to get acces to fish help system:
+  BROWSER="/usr/bin/firefox"
+
+If you have issues with cut'n'paste in X-terminals, install the x11-misc/xsel package.
+
+Have fun!

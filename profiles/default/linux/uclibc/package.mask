@@ -19,10 +19,10 @@ dev-games/gtkradiant
 dev-games/ps2-packer
 games-action/descent3
 games-action/descent3-demo
+games-action/guacamelee
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
 games-action/trine
-games-arcade/marbleblastgold-demo
 games-fps/enemy-territory
 games-fps/enemy-territory-etpro
 games-fps/enemy-territory-truecombat
@@ -30,7 +30,6 @@ games-fps/etqw-bin
 games-fps/glxquake-bin
 games-fps/legends
 games-fps/postal2
-games-fps/postal2mp-demo
 games-fps/quake3-bin
 games-fps/quake3-demo
 games-fps/rtcwmp-demo
@@ -57,6 +56,7 @@ games-fps/ut2004-troopers
 games-fps/ut2004-unwheel
 games-puzzle/world-of-goo
 games-puzzle/world-of-goo-demo
+games-rpg/costume-quest
 games-rpg/wasteland2
 games-server/etqw-ded
 games-server/ut2004-ded
@@ -80,7 +80,6 @@ games-action/trine-enchanted-edition
 games-action/trine2
 games-arcade/dynamitejack
 games-arcade/thinktanks-demo
-games-kids/crayon-physics
 games-misc/little-inferno
 games-misc/papers-please
 games-rpg/dear-esther

@@ -1,0 +1,26 @@
+commit 5f765d8f0ef76c227277c3f9e3162f9deac654db
+Author: Jesse Allen <the3dfxdude@gmail.com>
+Date:   Wed Jun 26 18:11:30 2019 -0700
+
+    LocaleRes: Don't use database field to enable transliteration.
+
+diff --git a/src/LocaleRes.cpp b/src/LocaleRes.cpp
+index 5b4300a..88d975f 100644
+--- a/src/LocaleRes.cpp
++++ b/src/LocaleRes.cpp
+@@ -107,10 +107,13 @@ void LocaleRes::init(const char *locale)
+ 		strcpy(lang, "??");
+ 		strcpy(codeset, "ISO-8859-1");
+ 	}
+-	strcat(codeset, "//TRANSLIT");
+ 
+-	cd = iconv_open(codeset, "");
++	String tocode(codeset);
++	tocode += "//TRANSLIT";
++	cd = iconv_open(tocode, "");
++
+ 	cd_latin = iconv_open("ISO-8859-1", "");
++
+ 	in_buf = mem_add(INIT_BUF_SIZE+1);
+ 	in_buf_size = INIT_BUF_SIZE;
+ 	out_buf = mem_add(INIT_BUF_SIZE+1);

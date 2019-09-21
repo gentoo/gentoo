@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,6 +44,7 @@ PATCHES=(
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
+	export MAKEOPTS+=" -j1" #638782
 }
 
 src_prepare() {

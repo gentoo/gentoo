@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,13 +11,13 @@ CCTOOLS=cctools-${CCTOOLS_VERSION}
 DYLD=dyld-421.2
 
 DESCRIPTION="Darwin assembler as(1) and static linker ld(1), Xcode Tools ${PV}"
-HOMEPAGE="http://www.opensource.apple.com/darwinsource/"
+HOMEPAGE="http://www.opensource.apple.com/"
 SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 	http://www.opensource.apple.com/tarballs/cctools/${CCTOOLS}.tar.gz
 	http://www.opensource.apple.com/tarballs/dyld/${DYLD}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-4.3-r1.tar.bz2
 	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-5.1-r2.tar.bz2
-	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.3-r1.tar.bz2
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.3-r2.tar.bz2
 	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-8.2-r1.tar.bz2"
 
 LICENSE="APSL-2"

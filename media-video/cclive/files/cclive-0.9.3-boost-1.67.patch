@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/671768
+
+--- a/src/cc/progressbar.h
++++ b/src/cc/progressbar.h
+@@ -316,7 +316,7 @@ private:
+ 
+   static inline std::string eta_from_seconds(const double s)
+   {
+-    const pt::time_duration& td = pt::seconds(s);
++    const pt::time_duration& td = pt::seconds(long(s));
+     return pt::to_simple_string(td);
+   }
+ 

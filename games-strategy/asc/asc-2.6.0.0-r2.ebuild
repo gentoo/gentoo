@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 WX_GTK_VER=3.0
-inherit eutils toolchain-funcs flag-o-matic wxwidgets
+inherit autotools toolchain-funcs flag-o-matic wxwidgets
 
 DESCRIPTION="turn based strategy game designed in the tradition of the Battle Isle series"
 HOMEPAGE="http://www.asc-hq.org/"
@@ -37,7 +37,10 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/"/${P}-gcc6-nothrow-in-dtors.patch )
+PATCHES=(
+	"${FILESDIR}/"/${P}-gcc6-nothrow-in-dtors.patch
+	"${FILESDIR}/"/${P}-freetype_pkgconfig.patch #657998
+)
 
 src_unpack() {
 	local f
@@ -53,6 +56,12 @@ src_unpack() {
 	done
 }
 
+src_prepare() {
+	default
+	# required for freetype_pkgconfig patch
+	eautoreconf
+}
+
 src_configure() {
 	need-wxwidgets unicode
 	# Added --disable-paraguitest for bugs 26402 and 4488
@@ -61,10 +70,12 @@ src_configure() {
 	if [[ $(gcc-major-version) -eq 4 ]] ; then
 		replace-flags -O3 -O2
 	fi
-	econf \
-		--disable-paraguitest \
-		--disable-paragui \
+	local myeconfargs=(
+		--disable-paraguitest
+		--disable-paragui
 		--datadir="/usr/share"
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

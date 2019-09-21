@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,8 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC)
+	# 'DBG=' unsets '-Werror' and other optional flags, bug #664294
+	emake CC=$(tc-getCC) DBG=
 }
 
 src_install() {

@@ -1,0 +1,41 @@
+https://gcc.gnu.org/PR87338
+
+From 1cc1dc32fcf6b47db4e6d28f55de343713f824a4 Mon Sep 17 00:00:00 2001
+From: James Clarke <jrtc27@jrtc27.com>
+Date: Thu, 25 Apr 2019 15:58:55 +0200
+Subject: [PATCH] PR bootstrap/87338: Fix ia64 bootstrap comparison regression
+ in r257511
+To: gcc-patches@gcc.gnu.org
+
+By using ASM_OUTPUT_LABEL, r257511 forced the assembler to start a new
+bundle when emitting an inline entry label on. Instead, use
+ASM_OUTPUT_DEBUG_LABEL like for the block begin and end labels so tags are
+emitted rather than labels.
+
+gcc/
+	PR bootstrap/87338
+	* dwarf2out.c (dwarf2out_inline_entry): Use ASM_OUTPUT_DEBUG_LABEL
+	instead of ASM_GENERATE_INTERNAL_LABEL and ASM_OUTPUT_LABEL.
+---
+ gcc/dwarf2out.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+--- a/gcc/dwarf2out.c
++++ b/gcc/dwarf2out.c
+@@ -27670,11 +27670,8 @@ dwarf2out_inline_entry (tree block)
+   if (cur_line_info_table)
+     ied->view = cur_line_info_table->view;
+ 
+-  char label[MAX_ARTIFICIAL_LABEL_BYTES];
+-
+-  ASM_GENERATE_INTERNAL_LABEL (label, BLOCK_INLINE_ENTRY_LABEL,
+-			       BLOCK_NUMBER (block));
+-  ASM_OUTPUT_LABEL (asm_out_file, label);
++  ASM_OUTPUT_DEBUG_LABEL (asm_out_file, BLOCK_INLINE_ENTRY_LABEL,
++			  BLOCK_NUMBER (block));
+ }
+ 
+ /* Called from finalize_size_functions for size functions so that their body
+-- 
+1.8.5.3
+

@@ -1,0 +1,23 @@
+From f870e6c68696a6018702caa5c8a2feba9b0f99fa Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 28 Apr 2019 17:35:31 +0200
+Subject: [PATCH] tests: No longer crash when compiled with -DNDEBUG (fixes
+ #67)
+
+---
+ test/MemoryManagerSuite.cpp | 2 ++
+ 1 files changed, 2 insertions(+)
+
+diff --git a/test/MemoryManagerSuite.cpp b/test/MemoryManagerSuite.cpp
+index 85f498b..4cda664 100644
+--- a/test/MemoryManagerSuite.cpp
++++ b/test/MemoryManagerSuite.cpp
+@@ -19,6 +19,8 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+  */
+ 
++#undef NDEBUG  // because we rely on assert(3) further down
++
+ #include <cassert>
+ #include <cerrno>
+ #include <cstring>  // memcpy

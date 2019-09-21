@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on the work of: Krzysztof Pawlik <nelchael@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: A simple eclass to build Python packages using distutils.
 # @DESCRIPTION:
 # A simple eclass providing functions to build Python packages using
@@ -80,10 +81,10 @@ if [[ ! ${_DISTUTILS_R1} ]]; then
 
 [[ ${EAPI} == [45] ]] && inherit eutils
 [[ ${EAPI} == [56] ]] && inherit xdg-utils
-inherit toolchain-funcs
+inherit multiprocessing toolchain-funcs
 
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-	inherit multiprocessing python-r1
+	inherit python-r1
 else
 	inherit python-single-r1
 fi
@@ -454,7 +455,23 @@ distutils-r1_python_compile() {
 
 	_distutils-r1_copy_egg_info
 
-	esetup.py build "${@}"
+	local build_args=()
+	# distutils is parallel-capable since py3.5
+	# to avoid breaking stable ebuilds, enable it only if either:
+	# a. we're dealing with EAPI 7
+	# b. we're dealing with Python 3.7 or PyPy3
+	if python_is_python3 && [[ ${EPYTHON} != python3.4 ]]; then
+		if [[ ${EAPI} != [56] || ${EPYTHON} != python3.[56] ]]; then
+			local jobs=$(makeopts_jobs "${MAKEOPTS}" INF)
+			if [[ ${jobs} == INF ]]; then
+				local nproc=$(get_nproc)
+				jobs=$(( nproc + 1 ))
+			fi
+			build_args+=( -j "${jobs}" )
+		fi
+	fi
+
+	esetup.py build "${build_args[@]}" "${@}"
 }
 
 # @FUNCTION: _distutils-r1_wrap_scripts
@@ -528,6 +545,7 @@ distutils-r1_python_install() {
 
 	# python likes to compile any module it sees, which triggers sandbox
 	# failures if some packages haven't compiled their modules yet.
+	addpredict "${EPREFIX}/usr/lib/${EPYTHON}"
 	addpredict "${EPREFIX}/usr/$(get_libdir)/${EPYTHON}"
 	addpredict /usr/lib/portage/pym
 	addpredict /usr/local # bug 498232
@@ -572,14 +590,23 @@ distutils-r1_python_install() {
 
 	esetup.py install --root="${root}" "${args[@]}"
 
-	local forbidden_package_names=( examples test tests )
+	local forbidden_package_names=( examples test tests .pytest_cache )
 	local p
 	for p in "${forbidden_package_names[@]}"; do
 		if [[ -d ${root}$(python_get_sitedir)/${p} ]]; then
 			die "Package installs '${p}' package which is forbidden and likely a bug in the build system."
 		fi
 	done
-	if [[ -d ${root}/usr/$(get_libdir)/pypy/share ]]; then
+
+	local shopt_save=$(shopt -p nullglob)
+	shopt -s nullglob
+	local pypy_dirs=(
+		"${root}/usr/$(get_libdir)"/pypy*/share
+		"${root}/usr/lib"/pypy*/share
+	)
+	${shopt_save}
+
+	if [[ -n ${pypy_dirs} ]]; then
 		local cmd=die
 		[[ ${EAPI} == [45] ]] && cmd=eqawarn
 		"${cmd}" "Package installs 'share' in PyPy prefix, see bug #465546."

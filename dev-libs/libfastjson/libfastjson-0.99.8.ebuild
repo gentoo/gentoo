@@ -6,11 +6,11 @@ EAPI="6"
 inherit autotools
 
 DESCRIPTION="Fork of the json-c library, which is optimized for liblognorm processing"
-HOMEPAGE="http://www.rsyslog.com/tag/libfastjson/"
+HOMEPAGE="https://www.rsyslog.com/tag/libfastjson/"
 SRC_URI="http://download.rsyslog.com/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0/4.2.0"
-KEYWORDS="amd64 arm arm64 ~hppa ~sparc x86"
+KEYWORDS="amd64 arm arm64 hppa sparc x86"
 IUSE="static-libs"
 
 DEPEND=">=sys-devel/autoconf-archive-2015.02.04"

@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="${HDDTEMP_EXEC}"
+command_args="-d ${HDDTEMP_OPTS} ${HDDTEMP_DRIVES}"
+procname="hddtemp"
+
+depend() {
+	need localmount
+}

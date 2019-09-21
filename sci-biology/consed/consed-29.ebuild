@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,10 +45,10 @@ PATCHES=(
 pkg_nofetch() {
 	einfo "Please visit ${HOMEPAGE} and obtain the file"
 	einfo "\"sources.tar.gz\", then rename it to \"${P}-sources.tar.gz\""
-	einfo "and place it in ${DISTDIR},"
+	einfo "and place it into your DISTDIR directory,"
 	einfo "obtain the file"
 	einfo "\"consed_linux.tar.gz\", then rename it to \"${P}-linux.tar.gz\""
-	einfo "and place it in ${DISTDIR}"
+	einfo "and place it into your DISTDIR directory."
 }
 
 src_prepare() {

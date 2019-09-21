@@ -10,7 +10,7 @@ MY_RC=${PV}
 S=${WORKDIR}/${PN}-${MY_PV}
 
 DESCRIPTION="Sender Rewriting Scheme library"
-HOMEPAGE="http://srs.mirtol.com/"
+HOMEPAGE="http://opsec.eu/src/srs/"
 SRC_URI="http://srs.mirtol.com/libsrs_alt-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"

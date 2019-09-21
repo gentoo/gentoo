@@ -5,7 +5,10 @@
 		<email>grknight@gentoo.org</email>
 		<name>Brian Evans</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
 	<upstream>
-		<remote-id type="github">dbcli/mycli</remote-id>
+		<remote-id type="github">dbcli/cli_helpers</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -11,7 +11,7 @@ HOMEPAGE="http://cr.yp.to/qmailanalog.html"
 
 LICENSE="freedist public-domain" # public-domain for files/tai64nfrac.c
 SLOT="0"
-KEYWORDS="x86 sparc ~amd64"
+KEYWORDS="~amd64 sparc x86"
 IUSE=""
 
 DEPEND="sys-apps/groff"

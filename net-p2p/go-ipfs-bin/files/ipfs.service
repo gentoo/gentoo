@@ -1,0 +1,14 @@
+[Unit]
+Description=InterPlanetary File System
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/ipfs daemon --enable-gc --migrate
+ExecStop=/usr/bin/ipfs shutdown
+Group=%i
+Restart=always
+Type=simple
+User=%i
+
+[Install]
+WantedBy=multi-user.target

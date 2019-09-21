@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MY_PN="KFaenza"
 DESCRIPTION="Faenza-Cupertino icon theme for KDE Plasma"
-HOMEPAGE="https://kde-look.org/content/show.php/KFaenza?content=143890
+HOMEPAGE="https://store.kde.org/p/1002580/
 	https://kde-look.org/content/show.php/KFaenza+icon+patch?content=153813
 	https://kde-look.org/content/show.php/Additional+KFaenza+Icons?content=147483"
 #That is upstream location, not reupload. Don't fix

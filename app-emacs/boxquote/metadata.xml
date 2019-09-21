@@ -19,4 +19,5 @@
   pulling it in, either by inserting the contents of another file or by
   yanking text into the current buffer.
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>

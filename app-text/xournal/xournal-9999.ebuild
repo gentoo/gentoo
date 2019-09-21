@@ -1,9 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-GCONF_DEBUG=no
+EAPI=6
 
 [[ ${PV} == *9999 ]] && GNOME2_EAUTORECONF=yes
 
@@ -46,9 +44,8 @@ DEPEND="${COMMONDEPEND}
 "
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 	emake DESTDIR="${D}" desktop-install
 
-	dodoc ChangeLog AUTHORS README
-	dohtml -r html-doc/*
+	dodoc -r html-doc/*
 }

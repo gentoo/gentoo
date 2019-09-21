@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,6 @@ IUSE="snmp +usb cgi nls gnome kernel_linux"
 
 DEPEND="
 	||	( >=sys-apps/util-linux-2.23[tty-helpers(-)]
-		  <=sys-apps/sysvinit-2.88-r4
 		  sys-freebsd/freebsd-ubin
 		)
 	cgi? ( >=media-libs/gd-1.8.4 )

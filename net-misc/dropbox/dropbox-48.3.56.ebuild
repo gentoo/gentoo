@@ -7,14 +7,14 @@ PYTHON_COMPAT=( python2_7 python3_5 python3_6 )
 inherit eutils gnome2-utils pax-utils systemd python-single-r1
 
 DESCRIPTION="Dropbox daemon (pretends to be GUI-less)"
-HOMEPAGE="http://dropbox.com/"
+HOMEPAGE="https://www.dropbox.com/"
 SRC_URI="
 	x86? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-${PV}.tar.gz )
 	amd64? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-${PV}.tar.gz )"
 
 LICENSE="CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-linux"
+KEYWORDS="amd64 x86 ~x86-linux"
 IUSE="+librsync-bundled selinux X"
 RESTRICT="mirror strip"
 
@@ -58,10 +58,7 @@ RDEPEND="${PYTHON_DEPS}
 	net-misc/wget
 	>=sys-devel/gcc-4.2.0
 	sys-libs/zlib
-	|| (
-		sys-libs/ncurses:5/5
-		sys-libs/ncurses:0/5
-	)"
+	sys-libs/ncurses:5/5"
 
 src_unpack() {
 	unpack ${A}

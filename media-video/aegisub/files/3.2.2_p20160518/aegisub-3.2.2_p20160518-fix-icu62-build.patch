@@ -1,0 +1,59 @@
+From d4461f65be5aa440506bd23e90e71aaf8f0ebada Mon Sep 17 00:00:00 2001
+From: sidneys <sidneys.github.io@outlook.com>
+Date: Sat, 31 Mar 2018 02:57:19 +0200
+Subject: [PATCH] fix(updated-macos-build): prefix icu method calls
+ (icu::BreakIterator, icu::Locale, icu::UnicodeString)
+
+---
+ libaegisub/common/character_count.cpp | 6 +++---
+ src/utils.cpp                         | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/libaegisub/common/character_count.cpp b/libaegisub/common/character_count.cpp
+index 0b8c70b31..1276f74fb 100644
+--- a/libaegisub/common/character_count.cpp
++++ b/libaegisub/common/character_count.cpp
+@@ -36,7 +36,7 @@ icu::BreakIterator& get_break_iterator(const char *ptr, size_t len) {
+ 	static std::once_flag token;
+ 	std::call_once(token, [&] {
+ 		UErrorCode status = U_ZERO_ERROR;
+-		bi.reset(BreakIterator::createCharacterInstance(Locale::getDefault(), status));
++		bi.reset(icu::BreakIterator::createCharacterInstance(icu::Locale::getDefault(), status));
+ 		if (U_FAILURE(status)) throw agi::InternalError("Failed to create character iterator");
+ 	});
+ 
+@@ -58,7 +58,7 @@ size_t count_in_range(Iterator begin, Iterator end, int mask) {
+ 
+ 	size_t count = 0;
+ 	auto pos = character_bi.first();
+-	for (auto end = character_bi.next(); end != BreakIterator::DONE; pos = end, end = character_bi.next()) {
++	for (auto end = character_bi.next(); end != icu::BreakIterator::DONE; pos = end, end = character_bi.next()) {
+ 		if (!mask)
+ 			++count;
+ 		else {
+@@ -143,7 +143,7 @@ size_t IndexOfCharacter(std::string const& str, size_t n) {
+ 	auto& bi = get_break_iterator(&str[0], str.size());
+ 
+ 	for (auto pos = bi.first(), end = bi.next(); ; --n, pos = end, end = bi.next()) {
+-		if (end == BreakIterator::DONE)
++		if (end == icu::BreakIterator::DONE)
+ 			return str.size();
+ 		if (n == 0)
+ 			return pos;
+diff --git a/src/utils.cpp b/src/utils.cpp
+index 876c4c011..2416aa7a2 100644
+--- a/src/utils.cpp
++++ b/src/utils.cpp
+@@ -270,9 +270,9 @@ agi::fs::path SaveFileSelector(wxString const& message, std::string const& optio
+ }
+ 
+ wxString LocalizedLanguageName(wxString const& lang) {
+-	Locale iculoc(lang.c_str());
++	icu::Locale iculoc(lang.c_str());
+ 	if (!iculoc.isBogus()) {
+-		UnicodeString ustr;
++		icu::UnicodeString ustr;
+ 		iculoc.getDisplayName(iculoc, ustr);
+ #ifdef _MSC_VER
+ 		return wxString(ustr.getBuffer());
+

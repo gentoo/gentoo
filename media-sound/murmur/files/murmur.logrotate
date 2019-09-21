@@ -3,6 +3,6 @@
 	notifempty
 	sharedscripts
 	postrotate
-		/etc/init.d/murmur reload > /dev/null
+		test -r /run/murmur/murmur.pid && kill -HUP $(cat /run/murmur/murmur.pid) &>/dev/null
 	endscript
 }

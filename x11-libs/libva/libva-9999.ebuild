@@ -1,61 +1,56 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-SCM=""
-if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
-	SCM=git-r3
-	EGIT_BRANCH=master
-	EGIT_REPO_URI="https://github.com/intel/libva"
-fi
-
-AUTOTOOLS_AUTORECONF="yes"
-inherit autotools-multilib ${SCM} multilib versionator
+inherit multilib-minimal
 
 DESCRIPTION="Video Acceleration (VA) API for Linux"
 HOMEPAGE="https://01.org/linuxmedia/vaapi"
-if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
-	SRC_URI=""
+
+if [[ ${PV} = *9999* ]] ; then # Live ebuild
+	inherit autotools git-r3
+	EGIT_BRANCH=master
+	EGIT_REPO_URI="https://github.com/intel/libva"
+	AUTOTOOLS_AUTORECONF="yes"
 else
-	SRC_URI="https://github.com/intel/libva/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/intel/libva/releases/download/${PV}/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"
-SLOT="0/$(get_version_component_range 1)"
-if [ "${PV%9999}" = "${PV}" ] ; then
-	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
-else
-	KEYWORDS=""
-fi
-IUSE="+drm opengl vdpau wayland X utils"
+SLOT="0/$(ver_cut 1)"
+IUSE="+drm opengl utils vdpau wayland X"
 
 VIDEO_CARDS="nvidia intel i965 nouveau"
 for x in ${VIDEO_CARDS}; do
 	IUSE+=" video_cards_${x}"
 done
 
-RDEPEND=">=x11-libs/libdrm-2.4.46[${MULTILIB_USEDEP}]
+RDEPEND="
+	>=x11-libs/libdrm-2.4.46[${MULTILIB_USEDEP}]
+	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
+	wayland? ( >=dev-libs/wayland-1.11[${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
 	)
-	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
-	wayland? ( >=dev-libs/wayland-1.11[${MULTILIB_USEDEP}] )"
-
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
 PDEPEND="video_cards_nvidia? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB_USEDEP}] )
 	video_cards_nouveau? ( >=x11-libs/libva-vdpau-driver-0.7.4-r3[${MULTILIB_USEDEP}] )
 	vdpau? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB_USEDEP}] )
 	video_cards_intel? ( >=x11-libs/libva-intel-driver-2.0.0[${MULTILIB_USEDEP}] )
 	video_cards_i965? ( >=x11-libs/libva-intel-driver-2.0.0[${MULTILIB_USEDEP}] )
 	utils? ( media-video/libva-utils )
-	"
+"
 
 REQUIRED_USE="|| ( drm wayland X )
-		opengl? ( X )"
+	opengl? ( X )"
 
 DOCS=( NEWS )
 
@@ -67,6 +62,11 @@ MULTILIB_WRAPPED_HEADERS=(
 /usr/include/va/va_glx.h
 )
 
+src_prepare() {
+	default
+	[[ "${PV}" == *9999* ]] && eautoreconf
+}
+
 multilib_src_configure() {
 	local myeconfargs=(
 		--with-drivers-path="${EPREFIX}/usr/$(get_libdir)/va/drivers"
@@ -75,5 +75,9 @@ multilib_src_configure() {
 		$(use_enable wayland)
 		$(use_enable drm)
 	)
-	autotools-utils_src_configure
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+multilib_src_install_all() {
+	find "${ED}" -type f -name "*.la" -delete || die
 }

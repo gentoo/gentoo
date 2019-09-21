@@ -6,7 +6,7 @@ EAPI="6"
 inherit systemd user
 
 DESCRIPTION="A lightweight system monitoring tool"
-HOMEPAGE="http://www.monitorix.org/"
+HOMEPAGE="https://www.monitorix.org/"
 SRC_URI="https://github.com/mikaku/Monitorix/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
@@ -93,7 +93,7 @@ pkg_postinst() {
 	elog "  app-admin/hddtemp   (disk drive temperatures and health)"
 	elog "  mail-mta/postfix    (email reports/statics)"
 	elog "  mail-mta/sendmail   (email reports/statics)"
-	elog "  sys-apps/lm_sensors (lm_sensors and GPU temperatures)"
+	elog "  sys-apps/lm-sensors (lm-sensors and GPU temperatures)"
 	elog "  sys-power/apcupsd   (APC UPS statistics)"
 	elog "  sys-power/nut       (Network UPS Tools statistics)"
 	elog

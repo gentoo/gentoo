@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit apache-module
 
 DESCRIPTION="Store and configure Apache virtual hosts using LDAP"
-HOMEPAGE="http://modvhostldap.alioth.debian.org/"
+HOMEPAGE="https://github.com/oerdnj/mod-vhost-ldap"
 SRC_URI="https://dev.gentoo.org/~mjo/distfiles/${P}.tar.xz"
 
 LICENSE="Apache-2.0"

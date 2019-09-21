@@ -1,0 +1,19 @@
+commit 984f62591b264aa8ed5c17f4033ec96dbba4bf5f
+Author: Alexander Zubkov <green@qrator.net>
+Date:   Wed Oct 17 22:47:50 2018 +0200
+
+    do not duplicate jail in shells file
+
+diff --git a/lib/arch/generic/functions b/lib/arch/generic/functions
+index b1fdbc8..89cd607 100755
+--- a/lib/arch/generic/functions
++++ b/lib/arch/generic/functions
+@@ -823,7 +823,7 @@ sub add_jail_to_shells {
+   close(F);
+ 
+   for $k (@elem) {
+-    if ($k =~ /^$INSTALL_DIR\/jail/) {
++    if ($k =~ /^$INSTALL_DIR\/bin\/jail/) {
+       $found = 1;
+       last;
+     }

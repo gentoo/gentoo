@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -39,7 +39,7 @@ CHECKREQS_DISK_BUILD="2400M"
 pkg_nofetch() {
 	einfo "Please buy & download ${SRC_URI} from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "and move it to ${DISTDIR}"
+	einfo "and move it to your DISTDIR directory."
 }
 
 src_unpack() {

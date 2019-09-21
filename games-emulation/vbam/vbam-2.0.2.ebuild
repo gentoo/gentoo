@@ -30,7 +30,7 @@ RDEPEND="
 	sys-libs/zlib:=
 	virtual/glu
 	virtual/opengl
-	ffmpeg? ( media-video/ffmpeg:= )
+	ffmpeg? ( =media-video/ffmpeg-3*:= )
 	lirc? ( app-misc/lirc )
 	nls? ( virtual/libintl )
 	wxwidgets? (

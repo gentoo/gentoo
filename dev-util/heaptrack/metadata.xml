@@ -5,7 +5,4 @@
 		<email>asturm@gentoo.org</email>
 		<name>Andreas Sturmlechner</name>
 	</maintainer>
-	<use>
-		<flag name="zstd">Enable support for ZSTD compression using <pkg>app-arch/zstd</pkg></flag>
-	</use>
 </pkgmetadata>

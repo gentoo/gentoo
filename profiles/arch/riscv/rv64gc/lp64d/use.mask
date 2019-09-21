@@ -1,0 +1,8 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Mask multilib, since we do not want to use it.
+multilib
+
+# Mask the other multilib flags back for non-multilib profile.
+abi_riscv_lp64

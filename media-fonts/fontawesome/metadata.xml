@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hilobakho@gmail.com</email>
-		<name>Mykyta Holubakha</name>
+		<email>bernardo@standard.ai</email>
+		<name>Bernardo Meurer</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
@@ -16,4 +16,5 @@
 		<flag name="otf">Install the OpenType version of the font</flag>
 		<flag name="ttf">Install the TrueType version of the font</flag>
 	</use>
+	<stabilize-allarches/>
 </pkgmetadata>

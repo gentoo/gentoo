@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="github">cython/backports_abc</remote-id>
     <remote-id type="pypi">backports_abc</remote-id>
+    <bugs-to>https://github.com/cython/backports_abc/issues</bugs-to>
   </upstream>
 </pkgmetadata>

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_{5,6}} pypy{,3} )
 QTB_PV="5.5.1"
 QTB_P="qtbase-opensource-src-${QTB_PV}"
 QTW_PV="5.7.1"

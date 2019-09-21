@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ https://github.com/be5invis/${PN}/releases/download/v${PV}/02-${PN}-term-${PV}.z
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 DEPEND="app-arch/unzip"
 

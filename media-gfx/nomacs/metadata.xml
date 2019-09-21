@@ -12,6 +12,5 @@
 	</upstream>
 	<use>
 		<flag name="opencv">Build support for <pkg>media-libs/opencv</pkg></flag>
-		<flag name="zip">Build support for zip archives</flag>
 	</use>
 </pkgmetadata>

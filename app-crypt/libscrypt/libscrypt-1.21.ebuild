@@ -11,7 +11,7 @@ SRC_URI="https://github.com/technion/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND=""

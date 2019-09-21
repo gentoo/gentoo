@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6})
+PYTHON_COMPAT=(python{2_7,3_5,3_6})
 
 #EGIT_PROJECT="gentoo-keys.git"
 EGIT_BRANCH="master"
 
 inherit distutils-r1 git-r3
 
-EGIT_REPO_URI="git://anongit.gentoo.org/proj/gentoo-keys.git"
+EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoo-keys.git"
 
 DESCRIPTION="An OpenPGP/GPG key management tool and python libs"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Gentoo-keys"

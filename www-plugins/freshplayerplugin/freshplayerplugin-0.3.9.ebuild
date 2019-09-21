@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,12 +12,11 @@ SRC_URI="https://github.com/i-rinat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT=0
 IUSE="gles2 jack libav libressl pulseaudio v4l vaapi vdpau"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 HWDEC_DEPEND="
 	libav? ( media-video/libav:0=[vaapi?,vdpau?] )
 	!libav? ( media-video/ffmpeg:0=[vaapi?,vdpau?] )
-	x11-libs/libva:=
 	x11-libs/libvdpau
 "
 
@@ -33,6 +32,7 @@ COMMON_DEPEND="
 	x11-libs/libXrandr:=
 	x11-libs/libXrender:=
 	x11-libs/libdrm:=
+	x11-libs/libva:=
 	x11-libs/pango:=[X]
 	jack? (
 		media-sound/jack-audio-connection-kit
@@ -54,7 +54,11 @@ RDEPEND="${COMMON_DEPEND}
 	www-plugins/adobe-flash:22[abi_x86_64,ppapi(+)]
 	"
 
-PATCHES=( "${FILESDIR}/0.3.5-cmake.patch" "${FILESDIR}/0.3.9-ioctl.patch" )
+PATCHES=(
+	"${FILESDIR}/0.3.5-cmake.patch"
+	"${FILESDIR}/0.3.9-ioctl.patch"
+	"${FILESDIR}/${P}-ffmpeg-4.patch"
+)
 DOCS=( ChangeLog data/freshwrapper.conf.example README.md )
 
 src_configure() {

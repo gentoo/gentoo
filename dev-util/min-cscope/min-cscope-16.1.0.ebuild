@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Interactively examine a C program"
@@ -15,7 +16,11 @@ IUSE="debug"
 
 S=${WORKDIR}/${PN}
 
-DOCS="AUTHORS README* TODO"
+DOCS=( AUTHORS README{,.cscope} TODO )
+
+PATCHES=(
+	"${FILESDIR}/${P}-tinfo.patch" #678886
+)
 
 src_prepare() {
 	cmake-utils_src_prepare

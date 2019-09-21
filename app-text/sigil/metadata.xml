@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>arthurzam+gentoo@gmail.com</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">Sigil is a multi-platform WYSIWYG ebook editor.
 		It is designed to edit books in ePub format.</longdescription>
+	<use>
+		<flag name="plugins">Installed needed Python packages for using Sigil plugins</flag>
+		<flag name="system-mathjax">Use the system-wide <pkg>dev-libs/mathjax</pkg> instead of bundled</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">Sigil-Ebook/Sigil</remote-id>
+		<maintainer status="active">
+			<email>douglaslmassay@gmail.com</email>
+			<name>Doug Massay</name>
+		</maintainer>
+		<bugs-to>https://github.com/Sigil-Ebook/Sigil/issues</bugs-to>
+		<changelog>https://github.com/Sigil-Ebook/Sigil/blob/master/ChangeLog.txt</changelog>
 	</upstream>
 </pkgmetadata>

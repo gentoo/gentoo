@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2001-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,8 +6,8 @@ EAPI="6"
 inherit autotools libtool multilib-minimal
 
 DESCRIPTION="HTTP and WebDAV client library"
-HOMEPAGE="http://www.webdav.org/neon/"
-SRC_URI="http://www.webdav.org/neon/${P}.tar.gz"
+HOMEPAGE="http://webdav.org/neon/"
+SRC_URI="http://webdav.org/neon/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/27"
@@ -42,10 +42,13 @@ src_prepare() {
 	# Use CHOST-prefixed version of xml2-config for cross-compilation.
 	sed -e "s/AC_CHECK_PROG(XML2_CONFIG,/AC_CHECK_TOOL(XML2_CONFIG,/" -i macros/neon-xml-parser.m4 || die "sed failed"
 
-	# Use OpenSSL <1.1 compatibility code with LibreSSL.
-	# Functions EVP_PKEY_up_ref(), EVP_PKEY_get0_RSA(), RSA_meth_get0_app_data(), RSA_meth_new(), RSA_meth_free(),
-	# RSA_meth_set_priv_enc(), RSA_meth_set0_app_data() are not implemented in LibreSSL 2.5.1.
-	sed -e "s/#if OPENSSL_VERSION_NUMBER < 0x10100000L/& || defined(LIBRESSL_VERSION_NUMBER)/" -i src/ne_openssl.c src/ne_pkcs11.c || die "sed failed"
+	# Fix compatibility with OpenSSL >=1.1.
+	sed -e "s/RSA_F_RSA_PRIVATE_ENCRYPT/RSA_F_RSA_OSSL_PRIVATE_ENCRYPT/" -i src/ne_pkcs11.c || die "sed failed"
+
+	# Support LibreSSL.
+	# Functions RSA_meth_get0_app_data() and RSA_meth_set0_app_data() are not implemented in LibreSSL 2.9.1.
+	sed -e "1202s/#if OPENSSL_VERSION_NUMBER < 0x10100000L/& || defined(LIBRESSL_VERSION_NUMBER)/" -i src/ne_openssl.c || die "sed failed"
+	sed -e "97a #if defined(LIBRESSL_VERSION_NUMBER)\nstatic void *RSA_meth_get0_app_data(const RSA_METHOD *meth)\n{\n    return meth->app_data;\n}\nstatic int RSA_meth_set0_app_data(RSA_METHOD *meth, void *app_data)\n{\n    meth->app_data = app_data;\n    return 1;\n}\n#endif" -i src/ne_pkcs11.c || die "sed failed"
 
 	eapply_user
 

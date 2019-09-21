@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake-multilib.eclass
@@ -6,6 +6,7 @@
 # gx86-multilib team <multilib@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: cmake-utils wrapper for multilib builds
 # @DESCRIPTION:
 # The cmake-multilib.eclass provides a glue between cmake-utils.eclass(5)
@@ -18,9 +19,8 @@
 # in multilib-minimal, yet they ought to call appropriate cmake-utils
 # phase rather than 'default'.
 
-# EAPI=5 is required for meaningful MULTILIB_USEDEP.
 case ${EAPI:-0} in
-	5|6) ;;
+	[67]) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 

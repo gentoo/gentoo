@@ -1,0 +1,12 @@
+diff --git a/app/styles/markdown.css b/app/styles/markdown.css
+index 7c87385..607f025 100644
+--- a/app/styles/markdown.css
++++ b/app/styles/markdown.css
+@@ -25,6 +25,7 @@ body{
+     line-height: 1;
+     max-width: 960px;
+     padding: 30px;
++    background-color: #ffffff;
+ }
+ h1, h2, h3, h4 {
+     color: #111111;

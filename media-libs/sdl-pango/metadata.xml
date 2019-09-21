@@ -5,10 +5,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">sdlpango</remote-id>
 	</upstream>

@@ -13,7 +13,7 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/vivien/${PN}"
 else
 	SRC_URI="https://github.com/vivien/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 SLOT="0"
@@ -21,7 +21,7 @@ LICENSE="GPL-3"
 
 RDEPEND="app-admin/sysstat
 	media-sound/playerctl
-	sys-apps/lm_sensors
+	sys-apps/lm-sensors
 	sys-power/acpi
 	|| ( x11-wm/i3 x11-wm/i3-gaps )"
 

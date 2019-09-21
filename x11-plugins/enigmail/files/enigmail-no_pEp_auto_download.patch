@@ -1,0 +1,33 @@
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Wed, 7 Mar 2018 11:31:50 +0100
+Subject: Avoid auto-download of pEpEngine (Closes: #891882)
+
+When pEpEngine is available in debian, enigmail should Depend: or
+Recommend: it.  In the meantime, we should disable auto-download of
+the pEp engine and prefer enigmail.
+---
+ package/prefs/defaultPrefs.js | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/package/prefs/defaultPrefs.js b/package/prefs/defaultPrefs.js
+index a1f031e..10f2c25 100755
+--- a/package/prefs/defaultPrefs.js
++++ b/package/prefs/defaultPrefs.js
+@@ -14,7 +14,7 @@
+ // 0: force using Enigmail
+ // 1: automatic mode (use pEp if Enigmail and S/MIME are not configured for any identity)
+ // 2: force using pEp
+-pref("extensions.enigmail.juniorMode", 1);
++pref("extensions.enigmail.juniorMode", 0);
+ 
+ // the last configured Enigmail version
+ pref("extensions.enigmail.configuredVersion", "");
+@@ -204,7 +204,7 @@ pref("extensions.enigmail.warnDownloadContactKeys", true);
+ pref("extensions.enigmail.wrapHtmlBeforeSend", true);
+ 
+ // automatically download pepmda if it is available (without askin user)
+-pref("extensions.enigmail.pEpAutoDownload", true);
++pref("extensions.enigmail.pEpAutoDownload", false);
+ 
+ // holds the last result of the last check for pEp updates
+ pref("extensions.enigmail.pEpLastUpdate", 0);

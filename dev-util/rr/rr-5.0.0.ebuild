@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ CMAKE_BUILD_TYPE=Release
 inherit cmake-utils linux-info python-single-r1
 
 DESCRIPTION="Record and Replay Framework"
-HOMEPAGE="http://rr-project.org/"
+HOMEPAGE="https://rr-project.org/"
 SRC_URI="https://github.com/mozilla/${PN}/archive/${PV}.tar.gz -> mozilla-${P}.tar.gz"
 
 LICENSE="MIT BSD-2"

@@ -1,0 +1,13 @@
+Disable the effect video button if gstreamer is missing.
+
+--- a/kcmkwin/kwineffects/package/contents/ui/Effect.qml	2019-03-22 23:06:45.172699544 +0100
++++ b/kcmkwin/kwineffects/package/contents/ui/Effect.qml	2019-03-22 23:07:30.435043637 +0100
+@@ -111,7 +111,7 @@
+ 
+         QtControls.Button {
+             icon.name: "video"
+-            visible: model.VideoRole.toString() !== ""
++            visible: false
+ 
+             onClicked: videoItem.showHide()
+         }

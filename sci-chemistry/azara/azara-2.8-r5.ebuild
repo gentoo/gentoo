@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="xpm X"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="bindist mirror"
 
 RDEPEND="
 	x11-libs/libX11

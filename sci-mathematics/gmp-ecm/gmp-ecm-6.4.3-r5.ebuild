@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -11,22 +11,17 @@ inherit eutils
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+blas +custom-tune gwnum -openmp test"
+IUSE="+blas +custom-tune -openmp test"
 
 # gmp 5.1 breaks a few things with this version
 DEPEND="<dev-libs/gmp-5.1.0
 	blas? ( sci-libs/gsl )
-	gwnum? ( sci-mathematics/gwnum )
 	openmp? ( sys-devel/gcc[openmp] )"
 RDEPEND="${DEPEND}"
-
-# can't be both enabled
-REQUIRED_USE="gwnum? ( !openmp )"
 
 S=${WORKDIR}/ecm-${PV}
 
 src_configure() {
-	if use gwnum; then myconf="--with-gwnum=/usr/lib"; fi
 	# --enable-shellcmd is broken
 	econf $(use_enable openmp) $myconf
 }

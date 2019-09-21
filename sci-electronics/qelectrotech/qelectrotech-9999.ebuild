@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2001-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils gnome2-utils qmake-utils subversion xdg-utils
+inherit gnome2-utils qmake-utils subversion xdg-utils
 
 MY_P=${PN}-${PV%0}-src
 
@@ -17,6 +17,7 @@ KEYWORDS=""
 IUSE="doc"
 
 RDEPEND="
+	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -33,14 +34,12 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 DOCS=( CREDIT ChangeLog README )
-
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.3-fix-paths.patch"
-}
+PATCHES=( "${FILESDIR}/${PN}-0.3-fix-paths.patch" )
 
 src_configure() {
 	eqmake5 ${PN}.pro
 }
+
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 
@@ -52,16 +51,14 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }

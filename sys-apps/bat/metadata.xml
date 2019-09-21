@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		A cat(1) clone with wings
+
+		bat tries to achieve the following goals:
+
+			- Provide beautiful, advanced syntax highlighting
+			- Integrate with Git to show file modifications
+			- Be a drop-in replacement for (POSIX) cat
+			- Offer a user-friendly command-line interface
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/sharkdp/bat/issues</bugs-to>
+		<remote-id type="github">sharkdp/bat</remote-id>
+	</upstream>
+</pkgmetadata>

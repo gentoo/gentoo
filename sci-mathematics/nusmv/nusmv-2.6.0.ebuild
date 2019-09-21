@@ -31,6 +31,7 @@ DEPEND="${SHARED_DEPEND}
 		dev-texlive/texlive-latexextra
 		app-doc/doxygen
 	)
+	app-arch/unzip
 	dev-libs/libxml2
 	${PYTHON_DEPS}"
 

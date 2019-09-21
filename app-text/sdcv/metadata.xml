@@ -11,6 +11,6 @@
 		dark background.</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">sdcv</remote-id>
+		<remote-id type="github">Dushistov/sdcv</remote-id>
 	</upstream>
 </pkgmetadata>

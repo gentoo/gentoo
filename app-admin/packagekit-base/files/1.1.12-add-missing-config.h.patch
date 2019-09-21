@@ -1,0 +1,25 @@
+From 3620f182745db77b5bf4552a9e8d8cb38fdc0268 Mon Sep 17 00:00:00 2001
+From: Kalev Lember <klember@redhat.com>
+Date: Tue, 4 Dec 2018 22:15:49 +0100
+Subject: [PATCH 2/2] trivial: Add missing config.h include
+
+---
+ lib/packagekit-glib2/pk-progress-bar.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/lib/packagekit-glib2/pk-progress-bar.c b/lib/packagekit-glib2/pk-progress-bar.c
+index e75f319e4..28d8f5ac2 100644
+--- a/lib/packagekit-glib2/pk-progress-bar.c
++++ b/lib/packagekit-glib2/pk-progress-bar.c
+@@ -19,6 +19,8 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
+  */
+ 
++#include "config.h"
++
+ #include <glib.h>
+ #include <string.h>
+ #include <unistd.h>
+-- 
+2.19.2
+

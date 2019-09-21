@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
-inherit autotools base
+inherit autotools
 
 DESCRIPTION="Open Application Interface Specification cluster framework"
 HOMEPAGE="http://www.openais.org/"
@@ -21,6 +21,8 @@ DEPEND="${RDEPEND}
 DOCS=( "${S}/AUTHORS" "${S}/README.amf" )
 
 src_prepare() {
+	default
+
 	# respect CFLAGS
 	sed -i -e "s/\$OPT_CFLAGS \$GDB_FLAGS//" configure.ac || die
 	# respect LDFLAGS
@@ -28,18 +30,21 @@ src_prepare() {
 		services/Makefile.am || die
 	# don't install docs
 	sed -i -e "/^dist_doc/d" Makefile.am || die
+
 	eautoreconf
 }
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
-		--docdir=/usr/share/doc/${PF} \
-		--localstatedir=/var
+		--localstatedir="${EPREFIX}"/var
 }
 
 src_install() {
-	base_src_install
+	default
+
 	rm -rf "${D}"/etc/init.d/openais || die
-	use static-libs || rm -rf "${D}"/usr/$(get_libdir)/*.a || die
+
+	if ! use static-libs; then
+		find "${D}" -name '*.la' -delete || die "Pruning failed"
+	fi
 }

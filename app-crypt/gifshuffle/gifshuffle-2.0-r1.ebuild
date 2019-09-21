@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="GIF colourmap steganography"
 HOMEPAGE="http://www.darkside.com.au/gifshuffle/"
-SRC_URI="http://www.darkside.com.au/gifshuffle/${PN}.tar.gz"
+SRC_URI="http://www.darkside.com.au/gifshuffle/${PN}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

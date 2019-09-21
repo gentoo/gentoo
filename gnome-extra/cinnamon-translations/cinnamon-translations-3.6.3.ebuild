@@ -7,7 +7,7 @@ PLOCALES="af am an ar as ast az be be@latin bg bn bn_IN br bs ca ca@valencia crh
 inherit l10n
 
 DESCRIPTION="Translation data for Cinnamon"
-HOMEPAGE="http://cinnamon.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 SRC_URI="https://github.com/linuxmint/cinnamon-translations/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

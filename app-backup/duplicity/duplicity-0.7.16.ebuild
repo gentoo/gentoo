@@ -47,6 +47,6 @@ python_test() {
 }
 
 pkg_postinst() {
-	einfo "Duplicity has many optional dependencies to support various backends."
-	einfo "Currently it's up to you to install them as necessary."
+	elog "Duplicity has many optional dependencies to support various backends."
+	elog "Currently it's up to you to install them as necessary."
 }

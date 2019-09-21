@@ -34,9 +34,6 @@ app-portage/layman darcs
 # dev-python/mysql-python
 dev-vcs/mercurial bugzilla
 
-# net-libs/axtls
-net-misc/curl curl_ssl_axtls
-
 # media-libs/libmetalink -> undefined references on TEMP_FAILURE_RETRY (macro
 # provided by glibc)
 net-misc/curl metalink
@@ -109,7 +106,6 @@ media-libs/xine-lib vaapi
 
 # media-libs/nas
 media-libs/libsdl nas
-dev-qt/qtgui nas
 app-editors/xemacs nas
 media-sound/mpg123 nas
 media-video/mplayer nas
@@ -135,17 +131,6 @@ media-libs/mesa video_cards_vmware
 # media-libs/libepoxy
 x11-base/xorg-server glamor wayland
 x11-drivers/xf86-video-ati glamor
-
-# x11-drivers/xf86-video-tdfx
-x11-base/xorg-drivers video_cards_tdfx
-
-# >=sys-auth/polkit-qt-0.103.0
-# >=kde-misc/polkit-kde-kcmodules-0.98_pre20101127
-# >=sys-auth/polkit-kde-agent-0.99
-kde-frameworks/kdelibs policykit
-
-# <=sci-geosciences/gpsd-2.95-r1
-app-misc/geoclue gps
 
 # >=sys-devel/binutils-2.22
 sys-devel/llvm gold

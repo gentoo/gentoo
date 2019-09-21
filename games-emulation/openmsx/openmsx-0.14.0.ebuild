@@ -1,17 +1,19 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit desktop readme.gentoo-r1
+EAPI=7
+
+PYTHON_COMPAT=( python2_7 )
+
+inherit desktop python-any-r1 readme.gentoo-r1
 
 DESCRIPTION="MSX emulator that aims for perfection"
 HOMEPAGE="http://openmsx.org/"
-SRC_URI="https://github.com/openMSX/openMSX/releases/download/RELEASE_0_14_0/${P}.tar.gz"
+SRC_URI="https://github.com/openMSX/openMSX/releases/download/RELEASE_${PV//./_}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-lang/tcl:0=
@@ -23,7 +25,14 @@ RDEPEND="
 	media-libs/sdl-ttf
 	virtual/opengl
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	${PYTHON_DEPS}
+"
+
+PATCHES=(
+	"${FILESDIR}"/sdl-ttf.patch
+)
 
 DOC_CONTENTS="
 If you want to if you want to emulate real MSX systems and not

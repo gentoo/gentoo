@@ -1,0 +1,11 @@
+--- a/Makefile.am	2009-08-05 05:09:21.000000000 +0200
++++ b/Makefile.am	2018-09-27 15:32:28.685753684 +0200
+@@ -6,7 +6,7 @@
+ noinst_HEADERS = comparisons.h compdefs.h dstr.h ex_codes.h exitcode.h input.h key.h limits.h record.h retcodes.h unicode.h  unorm.h utf8error.h
+ LOCALEDIR=/usr/local/share/locale
+ EXTRA_DIST = $(docs) msg.tcl CREDITS msort-${VERSION}.lsm RegressionTests SortOrders
+-AUTOMAKE_OPTIONS = dist-zip dist-bzip2
++AUTOMAKE_OPTIONS = dist-zip dist-bzip2 nostdinc
+ 
+ if ALLOCAOK
+ AM_CFLAGS = -DLOCALEDIR=\"${LOCALEDIR}\" -DALLOCAOK -std=gnu99

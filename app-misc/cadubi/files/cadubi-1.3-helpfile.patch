@@ -1,5 +1,5 @@
---- cadubi.orig	2004-03-29 22:36:24.280138064 +0200
-+++ cadubi	2004-03-29 22:39:34.473224320 +0200
+--- a/cadubi.orig	2004-03-29 22:36:24.280138064 +0200
++++ b/cadubi	2004-03-29 22:39:34.473224320 +0200
 @@ -18,7 +18,7 @@
  # (sorry guys, i wrote this years before i had the remotest clue as to
  #  what the hell i was doing)

@@ -1,0 +1,81 @@
+From e30cb0872593d1614392817762b871de36e4c2f3 Mon Sep 17 00:00:00 2001
+From: Allison Vacanti <allison.vacanti@kitware.com>
+Date: Thu, 27 Jun 2019 16:04:53 -0400
+Subject: [PATCH] Fix OpenMP for gcc-9 backwards incompatibility.
+
+For details, see
+
+https://www.gnu.org/software/gcc/gcc-9/porting_to.html
+---
+ vtkm/cont/openmp/internal/FunctorsOpenMP.h     | 18 +++++++++++++++---
+ vtkm/cont/openmp/internal/ParallelSortOpenMP.h |  4 +++-
+ 2 files changed, 18 insertions(+), 4 deletions(-)
+
+diff --git ParaView-v5.6.0/VTK/ThirdParty/vtkm/vtk-m/vtkm/cont/openmp/internal/FunctorsOpenMP.h b/vtkm/cont/openmp/internal/FunctorsOpenMP.h
+index 27cd2bc0..0271754c 100644
+--- ParaView-v5.6.0/VTK/ThirdParty/vtkm/vtk-m/vtkm/cont/openmp/internal/FunctorsOpenMP.h
++++ ParaView-v5.6.0/VTK/ThirdParty/vtkm/vtk-m/vtkm/cont/openmp/internal/FunctorsOpenMP.h
+@@ -36,6 +36,18 @@
+ #define VTKM_OPENMP_DIRECTIVE(directive)
+ #endif // _OPENMP
+ 
++// See "OpenMP data sharing" section of
++// https://www.gnu.org/software/gcc/gcc-9/porting_to.html. OpenMP broke
++// backwards compatibility regarding const variable handling.
++// tl;dr, put all const variables accessed from openmp blocks in a
++// VTKM_OPENMP_SHARED_CONST(var1, var2, ...) macro. This will do The Right Thing
++// on all gcc.
++#if defined(__GNUC__) && __GNUC__ >= 9
++#define VTKM_OPENMP_SHARED_CONST(...) shared(__VA_ARGS__)
++#else
++#define VTKM_OPENMP_SHARED_CONST(...)
++#endif
++
+ // When defined, supported type / operator combinations will use the OpenMP
+ // reduction(...) clause. Otherwise, all reductions use the general
+ // implementation with a manual reduction once the threads complete.
+@@ -279,8 +291,8 @@ struct ReduceHelper
+     int numThreads = 0;
+     std::unique_ptr<ReturnType[]> threadData;
+ 
+-    VTKM_OPENMP_DIRECTIVE(parallel default(none) firstprivate(f)
+-                            shared(data, doParallel, numThreads, threadData))
++    VTKM_OPENMP_DIRECTIVE(parallel default(none) firstprivate(f) shared(
++      data, doParallel, numThreads, threadData) VTKM_OPENMP_SHARED_CONST(numVals))
+     {
+ 
+       int tid = omp_get_thread_num();
+@@ -412,7 +424,7 @@ void ReduceByKeyHelper(KeysInArray keysInArray,
+   vtkm::Id outIdx = 0;
+ 
+   VTKM_OPENMP_DIRECTIVE(parallel default(none) firstprivate(keysIn, valuesIn, keysOut, valuesOut, f)
+-                          shared(outIdx))
++                          shared(outIdx) VTKM_OPENMP_SHARED_CONST(numValues))
+   {
+     int tid = omp_get_thread_num();
+     int numThreads = omp_get_num_threads();
+diff --git a/vtkm/cont/openmp/internal/ParallelSortOpenMP.h b/vtkm/cont/openmp/internal/ParallelSortOpenMP.h
+index e06d1762..a973eee6 100644
+--- ParaView-v5.6.0/VTK/ThirdParty/vtkm/vtk-m/vtkm/cont/openmp/internal/ParallelSortOpenMP.h
++++ ParaView-v5.6.0/VTK/ThirdParty/vtkm/vtk-m/vtkm/cont/openmp/internal/ParallelSortOpenMP.h
+@@ -123,7 +123,8 @@ void parallel_sort_bykey(vtkm::cont::ArrayHandle<T, StorageT>& keys,
+       VTKM_OPENMP_DIRECTIVE(parallel for
+                             default(none)
+                             firstprivate(valuesInPortal, indexPortal, valuesOutPortal)
+-                            schedule(static))
++                            schedule(static)
++                            VTKM_OPENMP_SHARED_CONST(size))
+       for (vtkm::Id i = 0; i < size; ++i)
+       {
+         valuesOutPortal.Set(i, valuesInPortal.Get(indexPortal.Get(i)));
+@@ -209,6 +210,7 @@ void parallel_sort_bykey(vtkm::cont::ArrayHandle<T, StorageT>& keys,
+     VTKM_OPENMP_DIRECTIVE(parallel for
+                           default(none)
+                           firstprivate(valuesInPortal, indexPortal, valuesOutPortal)
++                          VTKM_OPENMP_SHARED_CONST(size)
+                           schedule(static))
+     for (vtkm::Id i = 0; i < size; ++i)
+     {
+-- 
+2.21.0
+

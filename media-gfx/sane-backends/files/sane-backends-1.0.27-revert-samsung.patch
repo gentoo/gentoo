@@ -1,0 +1,406 @@
+From 9b13d4c18b2424eaed02b72a928e9607921ec265 Mon Sep 17 00:00:00 2001
+From: Bernard Cafarelli <bernard.cafarelli@gmail.com>
+Date: Tue, 17 Apr 2018 22:43:15 +0200
+Subject: [PATCH] Revert "Color scanning for Samsung models, which support JPEG
+ Lossy compression."
+
+This reverts commit 926bfade544de4a4fd5f1a8082b85a97e2443770, leaving
+the new IDs in.
+As tracked in #315876, this breaks scanning with multiple Samsung scanners
+
+Conflicts:
+	backend/xerox_mfp.c
+	backend/xerox_mfp.h
+	doc/descriptions/xerox_mfp.desc
+---
+ backend/Makefile.am             |   2 +-
+ backend/Makefile.in             |   7 +-
+ backend/xerox_mfp.c             | 193 +-------------------------------
+ backend/xerox_mfp.h             |   5 -
+ doc/descriptions/xerox_mfp.desc |  10 +-
+ 5 files changed, 14 insertions(+), 203 deletions(-)
+
+diff --git a/backend/Makefile.am b/backend/Makefile.am
+index 18695a4a..3225b133 100644
+--- a/backend/Makefile.am
++++ b/backend/Makefile.am
+@@ -1086,7 +1086,7 @@ libxerox_mfp_la_CPPFLAGS = $(AM_CPPFLAGS) -DBACKEND_NAME=xerox_mfp
+ nodist_libsane_xerox_mfp_la_SOURCES = xerox_mfp-s.c
+ libsane_xerox_mfp_la_CPPFLAGS = $(AM_CPPFLAGS) -DBACKEND_NAME=xerox_mfp
+ libsane_xerox_mfp_la_LDFLAGS = $(DIST_SANELIBS_LDFLAGS)
+-libsane_xerox_mfp_la_LIBADD = $(COMMON_LIBS) libxerox_mfp.la ../sanei/sanei_init_debug.lo ../sanei/sanei_constrain_value.lo ../sanei/sanei_config.lo  sane_strstatus.lo @SANEI_SANEI_JPEG_LO@ $(JPEG_LIBS) ../sanei/sanei_usb.lo ../sanei/sanei_tcp.lo $(MATH_LIB) $(SOCKET_LIBS) $(USB_LIBS) $(RESMGR_LIBS)
++libsane_xerox_mfp_la_LIBADD = $(COMMON_LIBS) libxerox_mfp.la ../sanei/sanei_init_debug.lo ../sanei/sanei_constrain_value.lo ../sanei/sanei_config.lo  sane_strstatus.lo ../sanei/sanei_usb.lo ../sanei/sanei_tcp.lo $(MATH_LIB) $(SOCKET_LIBS) $(USB_LIBS) $(RESMGR_LIBS)
+ EXTRA_DIST += xerox_mfp.conf.in
+ 
+ libdll_preload_la_SOURCES =  dll.c
+diff --git a/backend/Makefile.in b/backend/Makefile.in
+index d1dca4a2..2643bb77 100644
+--- a/backend/Makefile.in
++++ b/backend/Makefile.in
+@@ -1430,10 +1430,9 @@ libsane_v4l_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+ libsane_xerox_mfp_la_DEPENDENCIES = $(COMMON_LIBS) libxerox_mfp.la \
+ 	../sanei/sanei_init_debug.lo ../sanei/sanei_constrain_value.lo \
+ 	../sanei/sanei_config.lo sane_strstatus.lo \
+-	$(am__DEPENDENCIES_1) ../sanei/sanei_usb.lo \
+-	../sanei/sanei_tcp.lo $(am__DEPENDENCIES_1) \
++	../sanei/sanei_usb.lo ../sanei/sanei_tcp.lo \
+ 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+-	$(am__DEPENDENCIES_1)
++	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+ nodist_libsane_xerox_mfp_la_OBJECTS =  \
+ 	libsane_xerox_mfp_la-xerox_mfp-s.lo
+ libsane_xerox_mfp_la_OBJECTS = $(nodist_libsane_xerox_mfp_la_OBJECTS)
+@@ -2754,7 +2753,7 @@ libxerox_mfp_la_CPPFLAGS = $(AM_CPPFLAGS) -DBACKEND_NAME=xerox_mfp
+ nodist_libsane_xerox_mfp_la_SOURCES = xerox_mfp-s.c
+ libsane_xerox_mfp_la_CPPFLAGS = $(AM_CPPFLAGS) -DBACKEND_NAME=xerox_mfp
+ libsane_xerox_mfp_la_LDFLAGS = $(DIST_SANELIBS_LDFLAGS)
+-libsane_xerox_mfp_la_LIBADD = $(COMMON_LIBS) libxerox_mfp.la ../sanei/sanei_init_debug.lo ../sanei/sanei_constrain_value.lo ../sanei/sanei_config.lo  sane_strstatus.lo @SANEI_SANEI_JPEG_LO@ $(JPEG_LIBS) ../sanei/sanei_usb.lo ../sanei/sanei_tcp.lo $(MATH_LIB) $(SOCKET_LIBS) $(USB_LIBS) $(RESMGR_LIBS)
++libsane_xerox_mfp_la_LIBADD = $(COMMON_LIBS) libxerox_mfp.la ../sanei/sanei_init_debug.lo ../sanei/sanei_constrain_value.lo ../sanei/sanei_config.lo  sane_strstatus.lo ../sanei/sanei_usb.lo ../sanei/sanei_tcp.lo $(MATH_LIB) $(SOCKET_LIBS) $(USB_LIBS) $(RESMGR_LIBS)
+ libdll_preload_la_SOURCES = dll.c
+ libdll_preload_la_CPPFLAGS = $(AM_CPPFLAGS) -DBACKEND_NAME=dll -DENABLE_PRELOAD
+ libdll_la_SOURCES = dll.c
+diff --git a/backend/xerox_mfp.c b/backend/xerox_mfp.c
+index 8b8c8956..d37a6237 100644
+--- a/backend/xerox_mfp.c
++++ b/backend/xerox_mfp.c
+@@ -33,9 +33,6 @@
+ #include "../include/sane/sanei_usb.h"
+ #include "../include/sane/sanei_config.h"
+ #include "../include/sane/sanei_backend.h"
+-#ifdef HAVE_LIBJPEG
+-#include <jpeglib.h>
+-#endif
+ #include "xerox_mfp.h"
+ 
+ #define BACKEND_BUILD 13
+@@ -93,128 +90,6 @@ static char *str_cmd(int cmd)
+ }
+ 
+ #define MAX_DUMP 70
+-const char *encTmpFileName = "/tmp/stmp_enc.tmp";
+-
+-static int decompress(struct device __sane_unused__ *dev,
+-                      const char __sane_unused__ *infilename)
+-{
+-#ifdef HAVE_LIBJPEG
+-    int rc;
+-    int row_stride, width, height, pixel_size;
+-    struct jpeg_decompress_struct cinfo;
+-    struct jpeg_error_mgr jerr;
+-    unsigned long bmp_size = 0;
+-    FILE *pInfile = NULL;
+-    JSAMPARRAY buffer;
+-
+-    if ((pInfile = fopen(infilename, "rb")) == NULL) {
+-        fprintf(stderr, "can't open %s\n", infilename);
+-        return -1;
+-    }
+-
+-    cinfo.err = jpeg_std_error(&jerr);
+-
+-    jpeg_create_decompress(&cinfo);
+-
+-    jpeg_stdio_src(&cinfo, pInfile);
+-
+-    rc = jpeg_read_header(&cinfo, TRUE);
+-    if (rc != 1) {
+-        jpeg_destroy_decompress(&cinfo);
+-        fclose(pInfile);
+-        return -1;
+-    }
+-
+-    jpeg_start_decompress(&cinfo);
+-
+-    width = cinfo.output_width;
+-    height = cinfo.output_height;
+-    pixel_size = cinfo.output_components;
+-    bmp_size = width * height * pixel_size;
+-    dev->decDataSize = bmp_size;
+-
+-    row_stride = width * pixel_size;
+-
+-    buffer = (*cinfo.mem->alloc_sarray)
+-             ((j_common_ptr) &cinfo, JPOOL_IMAGE, row_stride, 1);
+-
+-    while (cinfo.output_scanline < cinfo.output_height) {
+-        buffer[0] = dev->decData + \
+-                    (cinfo.output_scanline) * row_stride;
+-        jpeg_read_scanlines(&cinfo, buffer, 1);
+-    }
+-    jpeg_finish_decompress(&cinfo);
+-    jpeg_destroy_decompress(&cinfo);
+-    fclose(pInfile);
+-    return 0;
+-#else
+-    return -1;
+-#endif
+-}
+-
+-static int copy_decompress_data(struct device *dev, unsigned char *pDest, int maxlen, int *destLen)
+-{
+-    int data_size = 0;
+-    size_t result = 0, retVal = 0;
+-
+-
+-    if (0 == dev->decDataSize) {
+-        *destLen = 0;
+-        return retVal;
+-    }
+-    data_size = dev->decDataSize - dev->currentDecDataIndex;
+-    if (data_size > maxlen) {
+-        data_size = maxlen;
+-    }
+-    memcpy(pDest, dev->decData+dev->currentDecDataIndex, data_size);
+-    result = data_size;
+-    *destLen = result;
+-    dev->currentDecDataIndex += result;
+-    retVal = result;
+-
+-    if (dev->decDataSize == dev->currentDecDataIndex) {
+-        dev->currentDecDataIndex = 0;
+-        dev->decDataSize = 0;
+-    }
+-
+-    return retVal;
+-}
+-
+-static int decompress_tempfile(struct device *dev)
+-{
+-    decompress(dev, encTmpFileName);
+-    remove(encTmpFileName);
+-    return 0;
+-}
+-
+-static int dump_to_tmp_file(struct device *dev)
+-{
+-    unsigned char *pSrc = dev->data;
+-    int srcLen = dev->datalen;
+-    FILE *pInfile;
+-    if ((pInfile = fopen(encTmpFileName, "a")) == NULL) {
+-        fprintf(stderr, "can't open %s\n", encTmpFileName);
+-        return 0;
+-    }
+-
+-    fwrite(pSrc, 1, srcLen, pInfile);
+-    fclose(pInfile);
+-    return srcLen;
+-}
+-
+-static int isSupportedDevice(struct device __sane_unused__ *dev)
+-{
+-#ifdef HAVE_LIBJPEG
+-    /* Checking device which supports JPEG Lossy compression for color scanning*/
+-    if (dev->compressionTypes & (1 << 6))
+-        return 1;
+-    else
+-        return 0;
+-#else
+-    return 0;
+-#endif
+-}
+-
+ static void dbg_dump(struct device *dev)
+ {
+     int i;
+@@ -639,11 +514,9 @@ static void set_parameters(struct device *dev)
+     dev->para.pixels_per_line = dev->win_width / px_to_len;
+     dev->para.bytes_per_line = dev->para.pixels_per_line;
+ 
+-    if (!isSupportedDevice(dev)) {
+ #if BETTER_BASEDPI
+-        px_to_len = 1213.9 / dev->val[OPT_RESOLUTION].w;
++	px_to_len = 1213.9 / dev->val[OPT_RESOLUTION].w;
+ #endif
+-    }
+     dev->para.lines = dev->win_len / px_to_len;
+     if (dev->composition == MODE_LINEART ||
+         dev->composition == MODE_HALFTONE) {
+@@ -765,13 +638,6 @@ static int dev_set_window(struct device *dev)
+     cmd[0x11] = (SANE_Byte)floor(dev->win_off_y);
+     cmd[0x12] = (SANE_Byte)((dev->win_off_y - floor(dev->win_off_y)) * 100);
+     cmd[0x13] = dev->composition;
+-    /* Set to JPEG Lossy Compression, if mode is color (only for supported model)...
+-     * else go with Uncompressed (For backard compatibility with old models )*/
+-    if (dev->composition == MODE_RGB24) {
+-        if (isSupportedDevice(dev)) {
+-            cmd[0x14] = 0x6;
+-        }
+-    }
+     cmd[0x16] = dev->threshold;
+     cmd[0x17] = dev->doc_source;
+ 
+@@ -843,7 +709,6 @@ dev_inquiry(struct device *dev)
+                       dev->res[0x3e] << 8 |
+                       dev->res[0x3f];
+     dev->line_order = dev->res[0x31];
+-    dev->compressionTypes = dev->res[0x32];
+     dev->doc_loaded = (dev->res[0x35] == 0x02) &&
+                       (dev->res[0x26] & 0x03);
+ 
+@@ -942,10 +807,6 @@ dev_free(struct device *dev)
+         free(UNCONST(dev->sane.type));
+     if (dev->data)
+         free(dev->data);
+-    if (dev->decData) {
+-        free(dev->decData);
+-        dev->decData = NULL;
+-    }
+     memset(dev, 0, sizeof(*dev));
+     free(dev);
+ }
+@@ -1283,19 +1144,6 @@ sane_read(SANE_Handle h, SANE_Byte *buf, SANE_Int maxlen, SANE_Int *lenp)
+     /* if there is no data to read or output from buffer */
+     if (!dev->blocklen && dev->datalen <= PADDING_SIZE) {
+ 
+-        /* copying uncompressed data */
+-        if (dev->composition == MODE_RGB24 &&
+-            isSupportedDevice(dev) &&
+-            dev->decDataSize > 0) {
+-            int diff = dev->total_img_size - dev->total_out_size;
+-            int bufLen = (diff < maxlen) ? diff : maxlen;
+-            if (0 < diff &&
+-                0 < copy_decompress_data(dev, buf, bufLen, lenp)) {
+-                dev->total_out_size += *lenp;
+-                return SANE_STATUS_GOOD;
+-            }
+-        }
+-
+         /* and we don't need to acquire next block */
+         if (dev->final_block) {
+             int slack = dev->total_img_size - dev->total_out_size;
+@@ -1311,10 +1159,7 @@ sane_read(SANE_Handle h, SANE_Byte *buf, SANE_Int maxlen, SANE_Int *lenp)
+                 /* this will never happen */
+                 DBG(1, "image overflow %d bytes\n", dev->total_img_size - dev->total_out_size);
+             }
+-            if (isSupportedDevice(dev) &&
+-                dev->composition == MODE_RGB24) {
+-                remove(encTmpFileName);
+-            }
++
+             /* that's all */
+             dev_stop(dev);
+             return SANE_STATUS_EOF;
+@@ -1365,18 +1210,9 @@ sane_read(SANE_Handle h, SANE_Byte *buf, SANE_Int maxlen, SANE_Int *lenp)
+ 
+         if (buf && lenp) { /* read mode */
+             /* copy will do minimal of valid data */
+-            if (dev->para.format == SANE_FRAME_RGB && dev->line_order) {
+-                if (isSupportedDevice(dev)) {
+-                    clrlen = dump_to_tmp_file(dev);
+-                    /* decompress after reading entire block data*/
+-                    if (0 == dev->blocklen) {
+-                        decompress_tempfile(dev);
+-                    }
+-                    copy_decompress_data(dev, buf, maxlen, &olen);
+-                } else {
+-                    clrlen = copy_mix_bands_trim(dev, buf, maxlen, &olen);
+-                }
+-            } else
++            if (dev->para.format == SANE_FRAME_RGB && dev->line_order)
++				clrlen = copy_mix_bands_trim(dev, buf, maxlen, &olen);
++            else
+                 clrlen = copy_plain_trim(dev, buf, maxlen, &olen);
+ 
+             dev->datalen -= clrlen;
+@@ -1455,9 +1291,6 @@ sane_start(SANE_Handle h)
+     if (!dev->data && !(dev->data = malloc(DATASIZE)))
+         return ret_cancel(dev, SANE_STATUS_NO_MEM);
+ 
+-    if (!dev->decData && !(dev->decData = malloc(POST_DATASIZE)))
+-        return ret_cancel(dev, SANE_STATUS_NO_MEM);
+-
+     if (!dev_acquire(dev))
+         return dev->state;
+ 
+@@ -1479,22 +1312,6 @@ sane_start(SANE_Handle h)
+ 
+     dev->total_img_size = dev->para.bytes_per_line * dev->para.lines;
+ 
+-    if (isSupportedDevice(dev) &&
+-        dev->composition == MODE_RGB24) {
+-	int fd;
+-        remove(encTmpFileName);
+-
+-	/* Precreate temporary file in exclusive mode. */
+-	fd = open(encTmpFileName, O_CREAT|O_EXCL, 0600);
+-	if (fd == -1) {
+-	    DBG(3, "%s: %p, can't create temporary file %s: %s\n", __func__,
+-		(void *)dev, encTmpFileName, strerror(errno));
+-	    return ret_cancel(dev, SANE_STATUS_ACCESS_DENIED);
+-	}
+-	close(fd);
+-    }
+-    dev->currentDecDataIndex = 0;
+-
+     return SANE_STATUS_GOOD;
+ }
+ 
+diff --git a/backend/xerox_mfp.h b/backend/xerox_mfp.h
+index 3d93f06d..ea89dda2 100644
+--- a/backend/xerox_mfp.h
++++ b/backend/xerox_mfp.h
+@@ -74,10 +74,6 @@ struct device {
+ #define DATATAIL(dev) ((dev->dataoff + dev->datalen) & DATAMASK)
+ #define DATAROOM(dev) dataroom(dev)
+ 
+-#define POST_DATASIZE 0xFFFFFF
+-    SANE_Byte *decData;
+-    int decDataSize;
+-    int currentDecDataIndex;
+     /* data from CMD_INQUIRY: */
+     int resolutions;		/* supported resolution bitmask */
+     int compositions;		/* supported image compositions bitmask */
+@@ -102,7 +98,6 @@ struct device {
+     int composition;		/* MODE_ */
+     int doc_source;		/* document source */
+     int threshold;		/* brightness */
+-    int compressionTypes;
+ 
+     /* CMD_READ data. It is per block only, image could be in many blocks */
+     int blocklen;			/* image data block len (padding incl.) */
+diff --git a/doc/descriptions/xerox_mfp.desc b/doc/descriptions/xerox_mfp.desc
+index d21a6be6..67253b38 100644
+--- a/doc/descriptions/xerox_mfp.desc
++++ b/doc/descriptions/xerox_mfp.desc
+@@ -320,7 +320,7 @@
+ 
+ :model "SCX-3405W"
+ :interface "Ethernet"
+-:status :good
++:status :basic
+ 
+ :model "SCX-3400"
+ :interface "USB"
+@@ -335,17 +335,17 @@
+ :model "SCX-4729FD"
+ :interface "USB"
+ :usbid "0x04e8" "0x3453"
+-:status :good
++:status :basic
+ 
+ :model "CLX-6260"
+ :interface "USB"
+ :usbid "0x04e8" "0x3455"
+-:status :good
++:status :minimal
+ 
+ :model "CLX-3300 Series"
+ :interface "USB"
+ :usbid "0x04e8" "0x3456"
+-:status :good
++:status :basic
+ 
+ :model "SCX-470x"
+ :interface "USB"
+@@ -355,7 +355,7 @@
+ :model "CLX-4190"
+ :interface "USB"
+ :usbid "0x04e8" "0x345a"
+-:status :good
++:status :minimal
+ 
+ :model "SCX-4650 4x21S Series"
+ :interface "USB"
+-- 
+2.17.0
+

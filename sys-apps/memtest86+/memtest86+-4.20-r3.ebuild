@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -17,7 +17,7 @@ IUSE="floppy serial"
 BOOTDIR=/boot/memtest86plus
 QA_PRESTRIPPED="${BOOTDIR}/memtest.netbsd"
 
-RDEPEND="floppy? ( >=sys-boot/grub-0.95:0 sys-fs/mtools )"
+RDEPEND="floppy? ( sys-fs/mtools )"
 DEPEND=""
 
 src_prepare() {

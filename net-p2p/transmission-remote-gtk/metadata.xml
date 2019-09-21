@@ -1,6 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>leio@gentoo.org</email>
+		<name>Mart Raudsepp</name>
+	</maintainer>
 	<use>
 		<flag name="libproxy">Use <pkg>net-libs/libproxy</pkg> for 
 			getting the HTTP/HTTPS/SOCKS proxy configuration.</flag>

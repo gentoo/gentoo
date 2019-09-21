@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,8 +20,7 @@ RDEPEND="media-libs/imlib2[X]
 	x11-libs/libXmu
 	x11-libs/libXft"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/xineramaproto
+	x11-base/xorg-proto
 	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${PN}-pointer-size.patch

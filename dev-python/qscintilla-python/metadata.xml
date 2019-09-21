@@ -14,8 +14,9 @@
 			<email>phil@riverbankcomputing.com</email>
 			<name>Phil Thompson</name>
 		</maintainer>
+		<changelog>https://www.riverbankcomputing.com/static/Downloads/QScintilla/ChangeLog</changelog>
+		<doc>https://www.riverbankcomputing.com/static/Docs/QScintilla/</doc>
 		<bugs-to>mailto:qscintilla@riverbankcomputing.com</bugs-to>
-		<doc>http://pyqt.sourceforge.net/Docs/QScintilla2/</doc>
-		<remote-id type="sourceforge">pyqt</remote-id>
+		<remote-id type="pypi">QScintilla</remote-id>
 	</upstream>
 </pkgmetadata>

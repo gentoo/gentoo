@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit cmake-multilib cmake-utils git-r3
+inherit cmake-multilib cmake-utils git-r3 python-any-r1
 
 DESCRIPTION="Provides an API and commands for processing SPIR-V modules"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-Tools"
@@ -15,23 +16,25 @@ SLOT="0"
 # Tests fail upon finding symbols that do not match a regular expression
 # in the generated library. Easily hit with non-standard compiler flags
 RESTRICT="test"
-
+COMMON_DEPEND=">=dev-util/spirv-headers-1.3.4_pre20190302"
+DEPEND="${COMMON_DEPEND}"
 RDEPEND=""
-DEPEND="dev-util/spirv-headers"
+BDEPEND="${PYTHON_DEPS}
+	${COMMON_DEPEND}"
 
 multilib_src_configure() {
 	local mycmakeargs=(
 		"-DSPIRV-Headers_SOURCE_DIR=/usr/"
+		"-DSPIRV_WERROR=OFF"
 	)
 
 	cmake-utils_src_configure
 }
 
 multilib_src_install() {
-	default
+	cmake-utils_src_install
 
 	# create a header file with the commit hash of the current revision
 	# vulkan-tools needs this to build
-	local revision="$(git-r3_peek_remote_ref)" &> /dev/null
-	echo "${revision}" > "${D}/usr/include/${PN}/${PN}-commit.h" || die
+	echo "${EGIT_VERSION}" > "${D}/usr/include/${PN}/${PN}-commit.h" || die
 }

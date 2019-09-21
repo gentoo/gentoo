@@ -1,41 +1,31 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-#if LIVE
-AUTOTOOLS_AUTORECONF=yes
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
-
-inherit git-r3
-#endif
-
-inherit autotools-utils udev user
+inherit autotools git-r3 udev
 
 DESCRIPTION="Simple udev-based automounter for removable USB media"
-HOMEPAGE="https://bitbucket.org/mgorny/uam/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/uam/"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/mgorny/uam.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
-RDEPEND="virtual/udev"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="
+	acct-group/plugdev
+	virtual/udev"
+DEPEND="virtual/pkgconfig"
 
-#if LIVE
-KEYWORDS=
-SRC_URI=
-#endif
+src_prepare() {
+	default
+	eautoreconf
+}
 
 pkg_postinst() {
-	# The plugdev group is created by pam, pmount and many other ebuilds
-	# in gx86. As we don't want to depend on any of them (even pmount is
-	# optional), we create it ourself too.
-	enewgroup plugdev
-
 	elog "To be able to access uam-mounted filesystems, you have to be"
 	elog "a member of the 'plugdev' group."
 	elog

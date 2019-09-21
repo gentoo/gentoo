@@ -1,4 +1,3 @@
-diff -Naruw a/contrib/Makefile b/contrib/Makefile
 --- a/contrib/Makefile
 +++ b/contrib/Makefile
 @@ -5,57 +5,9 @@
@@ -59,7 +58,6 @@ diff -Naruw a/contrib/Makefile b/contrib/Makefile
  
  ifneq ($(with_uuid),no)
  SUBDIRS += uuid-ossp
-diff -Naruw a/src/backend/Makefile b/src/backend/Makefile
 --- a/src/backend/Makefile
 +++ b/src/backend/Makefile
 @@ -51,7 +51,7 @@
@@ -96,7 +94,6 @@ diff -Naruw a/src/backend/Makefile b/src/backend/Makefile
  
  install-bin: postgres $(POSTGRES_IMP) installdirs
  	$(INSTALL_PROGRAM) postgres$(X) '$(DESTDIR)$(bindir)/postgres$(X)'
-diff -Naruw a/src/bin/Makefile b/src/bin/Makefile
 --- a/src/bin/Makefile
 +++ b/src/bin/Makefile
 @@ -14,19 +14,8 @@
@@ -119,7 +116,6 @@ diff -Naruw a/src/bin/Makefile b/src/bin/Makefile
  	pgbench \
  	psql \
  	scripts
-diff -Naruw a/src/Makefile b/src/Makefile
 --- a/src/Makefile
 +++ b/src/Makefile
 @@ -15,21 +15,12 @@

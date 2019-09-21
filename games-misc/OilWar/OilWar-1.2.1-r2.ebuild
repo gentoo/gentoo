@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils gnome2-utils user
+inherit eutils gnome2-utils
 
 DESCRIPTION="Evil army is attacking your country and tries to steal your oil"
 HOMEPAGE="http://linux.softpedia.com/get/GAMES-ENTERTAINMENT/RTS/OilWar-15354.shtml"
@@ -14,14 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="media-libs/libsdl[video]
+DEPEND="acct-group/gamestat
+	media-libs/libsdl[video]
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer"
 RDEPEND="${DEPEND}"
-
-pkg_setup(){
-	enewgroup gamestat 36
-}
 
 src_prepare() {
 	default

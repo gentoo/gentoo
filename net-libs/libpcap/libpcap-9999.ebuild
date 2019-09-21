@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,7 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.6.1-prefix-solaris.patch
+	"${FILESDIR}"/${PN}-1.9.0-pcap-config-includedir.patch
 	"${FILESDIR}"/${PN}-9999-prefix-darwin.patch
 )
 

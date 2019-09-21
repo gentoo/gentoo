@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="Open Handset Alliance's Android NDK (Native Dev Kit)"
-HOMEPAGE="http://developer.android.com/sdk/ndk/"
+HOMEPAGE="https://developer.android.com/ndk/"
 SRC_URI="x86? ( target-32? ( https://dl.google.com/android/ndk/${PN}32-r${PV}-linux-x86.tar.bz2 )
 		target-64? ( https://dl.google.com/android/ndk/${PN}64-r${PV}-linux-x86.tar.bz2 ) )
 	amd64? ( target-32? ( https://dl.google.com/android/ndk/${PN}32-r${PV}-linux-x86_64.tar.bz2 )

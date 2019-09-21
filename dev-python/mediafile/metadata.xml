@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bernardo@standard.ai</email>
+		<name>Bernardo Meurer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		MediaFile is a simple interface to the metadata tags for many audio
+		file formats. It wraps Mutagen, a high-quality library for low-level
+		tag manipulation, with a high-level, format-independent interface for
+		a common set of tags.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">beetbox/mediafile</remote-id>
+	</upstream>
+</pkgmetadata>

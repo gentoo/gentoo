@@ -1,0 +1,18 @@
+diff --git a/setup.py b/setup.py
+index 41037e95d..6a438fa99 100644
+--- a/setup.py
++++ b/setup.py
+@@ -178,9 +178,10 @@ class sdist_with_jquery(_orgin_sdist):
+ class install_lib_with_jquery(InstallLibCommand):
+     def run(self):
+         InstallLibCommand.run(self)
+-        _download_jquery_to(
+-            os.path.join(self.install_dir, "matplotlib/backends/web_backend/"))
+-
++        # Avoid downloading jquery ui during emerge: we already have it in
++        # pypi's tarball. use this!
++        name = "matplotlib/backends/web_backend/jquery-ui-1.12.1"
++        os.rename(os.path.join('lib', name), os.path.join(self.install_dir, name))
+ 
+ class develop_with_jquery(DevelopCommand):
+     def run(self):

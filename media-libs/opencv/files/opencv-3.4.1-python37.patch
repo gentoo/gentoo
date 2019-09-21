@@ -1,0 +1,12 @@
+diff -urN a/modules/python/src2/cv2.cpp b/modules/python/src2/cv2.cpp
+--- a/modules/python/src2/cv2.cpp	2018-02-23 11:38:33.000000000 +0300
++++ b/modules/python/src2/cv2.cpp	2019-08-10 22:28:03.337071791 +0300
+@@ -886,7 +886,7 @@
+     (void)name;
+     if(!obj || obj == Py_None)
+         return true;
+-    char* str = PyString_AsString(obj);
++    const char* str = PyString_AsString(obj);
+     if(!str)
+         return false;
+     value = String(str);

@@ -1,10 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-inherit cmake-utils
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+
+inherit cmake-utils python-any-r1
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -25,11 +26,19 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+BDEPEND="test? ( ${PYTHON_DEPS} )"
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DCATCH_ENABLE_WERROR=OFF
 		-DBUILD_TESTING=$(usex test)
-		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 	)
+	use test &&
+		mycmakeargs+=(-DPYTHON_EXECUTABLE="${PYTHON}")
+
 	cmake-utils_src_configure
 }

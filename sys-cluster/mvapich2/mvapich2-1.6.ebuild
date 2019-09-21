@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -11,17 +11,14 @@ SRC_URI="${HOMEPAGE}/download/mvapich2/mvapich2-${PV/_/-}.tgz"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug fortran large-cluster medium-cluster romio threads"
 
 RDEPEND="
-	|| (
-		(
-			sys-fabric/libibverbs
-			sys-fabric/libibumad
-			sys-fabric/libibmad
-			sys-fabric/librdmacm )
-		sys-fabric/openib-userspace )"
+	sys-fabric/libibverbs
+	sys-fabric/libibumad
+	sys-fabric/libibmad
+	sys-fabric/librdmacm"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/mvapich2-${PV/_/-}"

@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="pypi">Flask-Sphinx-Themes</remote-id>
     <remote-id type="github">pallets/flask-sphinx-themes</remote-id>
+    <bugs-to>https://github.com/pallets/flask-sphinx-themes/issues</bugs-to>
   </upstream>
 </pkgmetadata>

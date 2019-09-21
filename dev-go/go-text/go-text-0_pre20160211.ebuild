@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,6 +25,7 @@ DEPEND=""
 RDEPEND=""
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME #680946
 	# Create a writable GOROOT in order to avoid sandbox violations.
 	cp -sR "$(go env GOROOT)" "${T}/goroot" || die
 	rm -rf "${T}/goroot/src/${EGO_SRC}" || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ SRC_URI="mirror://sourceforge/linux-diag/${P}.tar.gz"
 HOMEPAGE="http://linux-diag.sourceforge.net/servicelog/"
 
 SLOT="0"
-LICENSE="IBM"
-KEYWORDS="~ppc ~ppc64"
+LICENSE="GPL-2+"
+KEYWORDS="ppc ppc64"
 
 DEPEND="
 	sys-libs/libservicelog

@@ -1,0 +1,46 @@
+From e93ea9167dc4185b6c29b27abdab55b6bcd06c74 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Wed, 1 May 2019 13:38:34 +0200
+Subject: [PATCH] g-ir-merge: Avoid recursive includes
+
+Ensure the namespace is not part of the includes. This is a kludge and
+shouldn't ever happen, except it does (in continuous, induced by vala).
+
+The next big thing that would happen here is a rewrite of libtracker-sparql
+vala bits so we don't need this merging anymore, so I won't put much
+thought on it.
+---
+ utils/g-ir-merge/g-ir-merge | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/utils/g-ir-merge/g-ir-merge b/utils/g-ir-merge/g-ir-merge
+index ad79c2d29..321032a4a 100755
+--- a/utils/g-ir-merge/g-ir-merge
++++ b/utils/g-ir-merge/g-ir-merge
+@@ -89,12 +89,12 @@ def parse_inputs(files):
+     return includes, namespaces, c_includes
+ 
+ 
+-def merge_includes(all_includes):
++def merge_includes(all_includes, namespace):
+     merged = {}
+     for element in all_includes:
+         name = element.get('name')
+         version = element.get('version')
+-        if name not in merged:
++        if name not in merged and name != namespace:
+             merged[name] = element
+     return list(merged.values())
+ 
+@@ -153,7 +153,7 @@ def main():
+ 
+     all_includes, all_namespaces, all_c_includes = parse_inputs(args.files)
+ 
+-    includes = merge_includes(all_includes)
++    includes = merge_includes(all_includes, args.namespace)
+ 
+     namespace_contents, identifier_prefixes, symbol_prefixes, shared_libraries \
+         = merge_namespaces(all_namespaces)
+-- 
+2.20.1
+

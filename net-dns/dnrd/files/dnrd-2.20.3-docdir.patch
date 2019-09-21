@@ -1,7 +1,7 @@
 Index: doc/Makefile.am
 ===================================================================
---- doc/Makefile.am	(revision 247)
-+++ doc/Makefile.am	(revision 248)
+--- a/doc/Makefile.am	(revision 247)
++++ b/doc/Makefile.am	(revision 248)
 @@ -1,5 +1,4 @@
  PACKAGE = @PACKAGE_TARNAME@
 -docdir = $(datadir)/doc/$(PACKAGE)
@@ -10,8 +10,8 @@ Index: doc/Makefile.am
  EXTRA_DIST = $(man_MANS) $(doc_DATA)
 Index: Makefile.am
 ===================================================================
---- Makefile.am	(revision 247)
-+++ Makefile.am	(revision 248)
+--- a/Makefile.am	(revision 247)
++++ b/Makefile.am	(revision 248)
 @@ -1,6 +1,5 @@
  PACKAGE = @PACKAGE_TARNAME@
  SUBDIRS = src doc

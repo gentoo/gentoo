@@ -6,7 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="server">Enable cmake-server support.</flag>
 		<flag name="system-jsoncpp">Use system copy of <pkg>dev-libs/jsoncpp</pkg> instead of bundled one.</flag>
 	</use>
 </pkgmetadata>

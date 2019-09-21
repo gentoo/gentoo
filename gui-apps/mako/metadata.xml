@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+		A lightweight notification daemon for Wayland. Works on Sway.
+	</longdescription>
+	<use>
+		<flag name="icons">Enable support for icons</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">emmersion/mako</remote-id>
+		<bugs-to>https://github.com/emersion/mako/issues</bugs-to>
+		<changelog>https://github.com/emersion/mako/releases</changelog>
+	</upstream>
+</pkgmetadata>

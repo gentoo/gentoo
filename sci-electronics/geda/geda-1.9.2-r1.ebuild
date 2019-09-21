@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,12 +8,12 @@ MY_PN=${PN}-gaf
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="GPL Electronic Design Automation (gEDA):gaf core package"
-HOMEPAGE="http://www.gpleda.org/"
+HOMEPAGE="http://wiki.geda-project.org/geda:gaf"
 SRC_URI="http://ftp.geda-project.org/${MY_PN}/unstable/v$(get_version_component_range 1-2)/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="debug doc examples nls stroke threads"
 
 CDEPEND="
@@ -51,6 +51,19 @@ src_prepare() {
 	if ! use examples ; then
 		sed -i -e 's/\texamples$//' Makefile.in || die
 	fi
+
+	# add missing GIO_LIB Bug #684870
+	sed -i -e 's/gsymcheck_LDFLAGS =/gsymcheck_LDFLAGS = $(GIO_LIBS)/' \
+		gsymcheck/src/Makefile.am || die
+
+	sed -i -e 's/gnetlist_LDFLAGS =/gnetlist_LDFLAGS = $(GIO_LIBS)/' \
+		gnetlist/src/Makefile.am || die
+
+	sed -i -e 's/gschlas_LDFLAGS =/gschlas_LDFLAGS = $(GIO_LIBS)/' \
+		utils/gschlas/Makefile.am || die
+
+	sed -i -e 's/sarlacc_schem_LDFLAGS =/sarlacc_schem_LDFLAGS = $(GIO_LIBS)/' \
+		contrib/sarlacc_schem/Makefile.am || die
 
 	eautoreconf
 }

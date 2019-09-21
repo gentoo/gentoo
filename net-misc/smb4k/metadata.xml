@@ -7,6 +7,5 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">smb4k</remote-id>
-		<bugs-to>https://sourceforge.net/p/smb4k/tickets/</bugs-to>
 	</upstream>
 </pkgmetadata>

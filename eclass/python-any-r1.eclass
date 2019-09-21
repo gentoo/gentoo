@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-any-r1.eclass
@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: An eclass for packages having build-time dependency on Python.
 # @DESCRIPTION:
 # A minimal eclass for packages which need any Python interpreter
@@ -169,6 +170,12 @@ _python_any_set_globals() {
 	else
 		PYTHON_DEPS=${deps}
 		readonly PYTHON_DEPS
+	fi
+
+	if [[ ! ${PYTHON_REQUIRED_USE+1} ]]; then
+		# fake var to catch mistaken usage
+		PYTHON_REQUIRED_USE='I-DO-NOT-EXIST-IN-PYTHON-ANY-R1'
+		readonly PYTHON_REQUIRED_USE
 	fi
 }
 _python_any_set_globals

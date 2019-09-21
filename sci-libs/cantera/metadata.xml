@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>torokhov-s-a@yandex.ru</email>
+    <name>Sergey Torokhov</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    Cantera is an open-source suite of object-oriented software tools
+    for problems involving chemical kinetics, thermodynamics, and/or transport processes.
+  </longdescription>
+  <use>
+    <flag name="cti">Install CTI tools (ck2cti, ctml_writer) for conversion of Chemkin files to Cantera format</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">cantera</remote-id>
+  </upstream>
+</pkgmetadata>

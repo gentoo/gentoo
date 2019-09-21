@@ -6,9 +6,7 @@
 <name>Gentoo LiveCD Project</name>
 </maintainer>
 <use>
-<flag name="lz4">Enable support for LZ4 compression using <pkg>app-arch/lz4</pkg></flag>
 <flag name="xz">Enable support for XZ ("LZMA2") compression using <pkg>app-arch/xz-utils</pkg></flag>
-<flag name="zstd">Enable support for ZSTD compression using <pkg>app-arch/zstd</pkg></flag>
 </use>
 <upstream>
 <remote-id type="sourceforge">squashfs</remote-id>

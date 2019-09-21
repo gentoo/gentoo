@@ -12,5 +12,3 @@ SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"
-
-PATCHES=( "${FILESDIR}"/${PN}-Get-rid-of-custom-target.patch )

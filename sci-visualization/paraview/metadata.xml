@@ -7,10 +7,11 @@
   </maintainer>
   <use>
     <flag name="boost">Enable the usage of dev-libs/boost</flag>
-    <flag name="coprocessing">Enable the coprocessing infrastructure which is mainly useful in the context of clusters</flag>
     <flag name="cg">Add support for nvidia's cg shaders</flag>
-    <flag name="nvcontrol">Add NVCONTROL support for OpenGL options</flag>
-    <flag name="plugins">Build and install additional plugins</flag>
+    <flag name="coprocessing">Enable the coprocessing infrastructure which is mainly useful in the context of clusters</flag>
     <flag name="development">Install development files including headers</flag>
+    <flag name="nvcontrol">Add NVCONTROL support for OpenGL options</flag>
+    <flag name="offscreen">Offscreen rendering through OSMesa</flag>
+    <flag name="plugins">Build and install additional plugins</flag>
   </use>
 </pkgmetadata>

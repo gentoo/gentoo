@@ -1,0 +1,71 @@
+Index: rosserial_server/include/rosserial_server/async_read_buffer.h
+===================================================================
+--- rosserial_server.orig/include/rosserial_server/async_read_buffer.h
++++ rosserial_server/include/rosserial_server/async_read_buffer.h
+@@ -166,7 +166,7 @@ private:
+ 
+     // Post the callback rather than executing it here so, so that we have a chance to do the cleanup
+     // below prior to it actually getting run, in the event that the callback queues up another read.
+-    stream_.get_io_service().post(boost::bind(read_success_callback_, stream));
++    static_cast<boost::asio::io_service&>(stream_.get_executor().context()).post(boost::bind(read_success_callback_, stream));
+ 
+     // Resetting these values clears our state so that we know there isn't a callback pending.
+     read_requested_bytes_ = 0;
+Index: rosserial_server/include/rosserial_server/udp_stream.h
+===================================================================
+--- rosserial_server.orig/include/rosserial_server/udp_stream.h
++++ rosserial_server/include/rosserial_server/udp_stream.h
+@@ -48,7 +48,6 @@ namespace rosserial_server
+ {
+ 
+ using boost::asio::ip::udp;
+-using boost::asio::handler_type;
+ 
+ 
+ class UdpStream : public udp::socket
+@@ -62,9 +61,9 @@ public:
+   {
+     boost::system::error_code ec;
+     const protocol_type protocol = server_endpoint.protocol();
+-    this->get_service().open(this->get_implementation(), protocol, ec);
++    udp::socket::open(protocol, ec);
+     boost::asio::detail::throw_error(ec, "open");
+-    this->get_service().bind(this->get_implementation(), server_endpoint, ec);
++    bind(server_endpoint, ec);
+     boost::asio::detail::throw_error(ec, "bind");
+ 
+     client_endpoint_ = client_endpoint;
+@@ -76,6 +75,8 @@ public:
+   async_write_some(const ConstBufferSequence& buffers,
+       BOOST_ASIO_MOVE_ARG(WriteHandler) handler)
+   {
++    return async_send(buffers, handler);
++#if 0
+     // If you get an error on the following line it means that your handler does
+     // not meet the documented type requirements for a WriteHandler.
+     BOOST_ASIO_WRITE_HANDLER_CHECK(WriteHandler, handler) type_check;
+@@ -94,6 +95,7 @@ public:
+         this->get_implementation(), buffers, client_endpoint_, 0,
+         BOOST_ASIO_MOVE_CAST(WriteHandler)(handler));
+ #endif
++#endif
+   }
+ 
+   template <typename MutableBufferSequence, typename ReadHandler>
+@@ -102,6 +104,8 @@ public:
+   async_read_some(const MutableBufferSequence& buffers,
+       BOOST_ASIO_MOVE_ARG(ReadHandler) handler)
+   {
++    return async_receive(buffers, handler);
++#if 0
+     // If you get an error on the following line it means that your handler does
+     // not meet the documented type requirements for a ReadHandler.
+     BOOST_ASIO_READ_HANDLER_CHECK(ReadHandler, handler) type_check;
+@@ -119,6 +123,7 @@ public:
+         this->get_implementation(), buffers, client_endpoint_, 0,
+         BOOST_ASIO_MOVE_CAST(ReadHandler)(handler));
+ #endif
++#endif
+   }
+ 
+ private:

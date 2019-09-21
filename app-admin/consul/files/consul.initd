@@ -1,20 +1,19 @@
 #!/sbin/openrc-run
-# Copyright 2015-2017 Gentoo Foundation
+# Copyright 2015-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 description="consul agent"
 extra_started_commands="reload"
-export GOMAXPROCS=${GOMAXPROCS:-2}
 group=${group:-${RC_SVCNAME}}
 user=${user:-${RC_SVCNAME}}
 pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+rc_ulimit=${rc_ulimit-"-n 65536"}
 command="/usr/bin/${RC_SVCNAME}"
 command_args="agent ${command_args:-config-dir=/etc/consul.d}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
 	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
-stopsig="SIGINT"
 
 depend() {
 	need net

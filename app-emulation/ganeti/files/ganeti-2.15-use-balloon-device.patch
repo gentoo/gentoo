@@ -1,0 +1,13 @@
+diff --git a/lib/hypervisor/hv_kvm/__init__.py b/lib/hypervisor/hv_kvm/__init__.py
+index 174621fcc..1f598e7ef 100644
+--- a/lib/hypervisor/hv_kvm/__init__.py
++++ b/lib/hypervisor/hv_kvm/__init__.py
+@@ -1094,7 +1094,7 @@ class KVMHypervisor(hv_base.BaseHypervisor):
+     # Add id to ballon and place to the first available slot (3 or 4)
+     addr = utils.GetFreeSlot(pci_reservations, reserve=True)
+     pci_info = ",bus=pci.0,addr=%s" % hex(addr)
+-    kvm_cmd.extend(["-balloon", "virtio,id=balloon%s" % pci_info])
++    kvm_cmd.extend(["-device", "virtio-balloon,id=balloon%s" % pci_info])
+     kvm_cmd.extend(["-daemonize"])
+     if not instance.hvparams[constants.HV_ACPI]:
+       kvm_cmd.extend(["-no-acpi"])

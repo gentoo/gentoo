@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		This package contains utility programs for OpenPower systems:
+		'opal-prd' provides a daemon to load and run the OpenPower firmware's Processor Recovery Diagnostics binary.
+			It's responsible for run time maintenance of OpenPower Systems hardware.
+		
+		'gard' utility can read, parse and clear hardware gard partitions on OpenPower platforms.
+		
+		'getscom' and 'putscom' utilities provide an interface to query or modify the registers of the different chipsets of an OpenPower system.
+		
+		'pflash' is a tool to access the flash modules on such systems and update the OpenPower firmware.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">open-power/skiboot</remote-id>
+	</upstream>
+</pkgmetadata>

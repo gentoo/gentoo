@@ -8,16 +8,19 @@
 	<use>
 		<flag name="abiword">Add support for abiword format using <pkg>app-text/libabw</pkg></flag>
 		<flag name="ebook">Add support for various ebook formats using <pkg>app-text/libebook</pkg></flag>
+		<flag name="epub">Add support for conversion to ePub format using <pkg>app-text/libepubgen</pkg></flag>
 		<flag name="freehand">Add support for freehand format using <pkg>media-libs/libfreehand</pkg></flag>
 		<flag name="gsf">Add support for structured files using <pkg>gnome-extra/libgsf</pkg></flag>
 		<flag name="keynote">Add support for keynote format using <pkg>app-text/libetonyek</pkg></flag>
 		<flag name="mspub">Add support to mspub format using <pkg>app-text/libmspub</pkg></flag>
 		<flag name="mwaw">Add support to mwaw formats using <pkg>app-text/libmwaw</pkg></flag>
 		<flag name="pagemaker">Add support to pagemaker formats using <pkg>media-libs/libpagemaker</pkg></flag>
+		<flag name="qxp">Add support for QuarkXpress documents using <pkg>app-text/libqxp</pkg></flag>
 		<flag name="visio">Add support for visio format using <pkg>media-libs/libvisio</pkg></flag>
 		<flag name="wpd">Add support for wpd format using <pkg>app-text/libwpd</pkg></flag>
 		<flag name="wpg">Add support for wpg format using <pkg>app-text/libwpg</pkg></flag>
 		<flag name="wps">Add support for wps format using <pkg>app-text/libwps</pkg></flag>
+		<flag name="zmf">Add support for Zoner Callisto/Draw documents format using <pkg>media-libs/libzmf</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">libwpd</remote-id>

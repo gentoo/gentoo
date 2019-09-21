@@ -1,0 +1,27 @@
+Bug: https://bugs.gentoo.org/416339
+
+The previous patch for the above bug report used $ENV{LIBDIR} but this
+wasn't enough to help with cross-compiling. We could use $ENV{SYSROOT}
+but this results in a bogus RPATH entry. It is better to simply trust
+the toolchain, which may have its own sysroot applied.
+
+Cross-compiling Perl modules requires additional hackery but at least
+that hackery will work now. :)
+
+Chewi
+2017/12/03
+
+diff -Naur a/Makefile.PL b/Makefile.PL
+--- a/Makefile.PL	2017-10-13 01:38:01.000000000 +0100
++++ b/Makefile.PL	2017-12-03 10:52:27.304861804 +0000
+@@ -141,10 +141,8 @@
+         cccdlflags => '',
+     };
+     for ("$prefix/include", "$prefix/inc32", '/usr/kerberos/include') {
+-      push @{$opts->{inc_paths}}, $_ if -f "$_/openssl/ssl.h";
+     }
+     for ($prefix, "$prefix/lib64", "$prefix/lib", "$prefix/out32dll") {
+-      push @{$opts->{lib_paths}}, $_ if -d $_;
+     }
+ 
+     my $rsaref  = $self->ssleay_is_rsaref;

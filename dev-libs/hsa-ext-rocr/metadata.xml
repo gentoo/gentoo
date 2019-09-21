@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>candrews@gentoo.org</email>
+		<name>Craig Andrews</name>
+	</maintainer>
+	<longdescription lang="en">
+		For the time being the ROCm platform relies on a closed-source library
+		to provide HSA image support. In the future it will either be deprecated
+		or become open source.
+		Furthermore, this package optionally provides the "tools"
+		debug/trace/profiling library which has already been deprecated.
+	</longdescription>
+	<use>
+		<flag name="deprecated">Install the deprecated debug/trace/profiling library</flag>
+	</use>
+</pkgmetadata>

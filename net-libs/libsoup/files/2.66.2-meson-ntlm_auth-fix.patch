@@ -1,0 +1,28 @@
+From ecd64363f82eb9d6cea07674f49c2d2869e5b62b Mon Sep 17 00:00:00 2001
+From: Claudio Saavedra <csaavedra@igalia.com>
+Date: Tue, 20 Aug 2019 16:04:06 +0300
+Subject: [PATCH] NTLM: Fix build with ntlm enabled
+
+Just realized that build with NTLM enabled was broken (!?)
+
+(cherry picked from commit bab0db142d508e92e72970db72cbbce3c13a526a)
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index f0e34cb0..346ed2fd 100644
+--- a/meson.build
++++ b/meson.build
+@@ -271,7 +271,7 @@ if host_machine.system() != 'windows'
+ 
+     if ntlm_auth.found()
+       add_project_arguments('-DUSE_NTLM_AUTH=1', language : 'c')
+-      add_project_arguments('-DNTLM_AUTH=' + ntlm_auth.path(), language : 'c')
++      add_project_arguments('-DNTLM_AUTH="' + ntlm_auth.path() + '"', language : 'c')
+     endif
+   endif
+ endif
+-- 
+2.20.1
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,8 +14,10 @@ SRC_URI="https://github.com/tats/${PN}/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.g
 
 LICENSE="w3m"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~amd64-fbsd"
+KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="X fbcon gdk-pixbuf gpm imlib l10n_de l10n_ja libressl lynxkeymap nls nntp ssl unicode xface"
+REQUIRED_USE="X? ( ?? ( gdk-pixbuf imlib ) )
+	fbcon? ( ?? ( gdk-pixbuf imlib ) )"
 
 RDEPEND="dev-libs/boehm-gc:=
 	sys-libs/ncurses:0=
@@ -37,9 +39,6 @@ RDEPEND="dev-libs/boehm-gc:=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 S="${WORKDIR}/${MY_P}"
-
-REQUIRED_USE="X? ( ?? ( gdk-pixbuf imlib ) )
-	fbcon? ( ?? ( gdk-pixbuf imlib ) )"
 
 PATCHES=( "${FILESDIR}/${PN}-img-fb.patch" )
 
@@ -94,8 +93,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	einstalldocs
+	default
 
 	# http://www.sic.med.tohoku.ac.jp/~satodai/w3m-dev/200307.month/3944.html
 	insinto /etc/${PN}

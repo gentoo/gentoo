@@ -1,13 +1,13 @@
 ####################################################################
 #
-# When you add an entry to the top of this file, add your name, the date, and
-# an explanation of why something is getting masked. Please be extremely
-# careful not to commit atoms that are not valid, as it can cause large-scale
-# breakage, especially if it ends up in the daily snapshot.
+# When you add an entry to the top of this file, add your name, the date
+# in the UTC timezone, and an explanation of why something is getting masked.
+# Please be extremely careful not to commit atoms that are not valid, as it can
+# cause large-scale breakage, especially if it ends up in the daily snapshot.
 #
 ## Example:
 ##
-## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
+## # Dev E. Loper <developer@gentoo.org> (2019-07-01)
 ## # Masking  these versions until we can get the
 ## # v4l stuff to work properly again
 ## =media-video/mplayer-0.90_pre5
@@ -21,7 +21,7 @@
 #
 ## Example:
 ##
-## # Dev E. Loper <developer@gentoo.org> (23 May 2015)
+## # Dev E. Loper <developer@gentoo.org> (2019-07-01)
 ## # Masked for removal in 30 days.  Doesn't work
 ## # with new libfoo. Upstream dead, gtk-1, smells
 ## # funny. (bug #987654)
@@ -29,413 +29,1411 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (12 May 2018)
-# Depends on dead Qt4, upstream TRAC and SVN dead. No maint. response.
-# Masked for removal in 30 days, bugs #645418, #591866, #574244.
-net-dns/dnssec-lookup
-net-dns/dnssec-nodes
-net-dns/dnssec-system-tray
 
-# Mikle Kolyada <zlogene@gentoo.org> (10 May 2018)
-# The upstream is totally dead (the last release is from 2006).
-# Does not compile against gcc-6, uses old EAPI=3 (#564998, #644262).
-# Use dev-libs/memcached istead. Removal in 30 days.
-dev-libs/libmemcache
+# Miroslav Šulc <fordfrog@gentoo.org> (2019-09-21)
+# Depends on >=virtual/{jdk,jre}-11 which is masked
+=www-servers/tomcat-9.0.26
 
-# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
-# Depends on dead Qt4. Masked for removal in 30 days.
-dev-python/pyside-tools
+# James Le Cuirot <chewi@gentoo.org> (2019-09-19)
+# Minetest Game is now installed and managed through the Minetest
+# engine in games-action/minetest. Removal in 30 days.
+games-action/minetest_game
 
-# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
-# Depends on dead Qt4, does not build, needs someone to bump to Qt5.
-# Masked for removal in 30 days. Bugs #588892, #588898, #649656
-media-libs/libprojectm-qt
-media-sound/projectm-pulseaudio
-media-sound/projectm-jack
+# Michał Górny <mgorny@gentoo.org> (2019-09-19)
+# Last bumped in 2010.  Homepage & SRC_URI gone, redistribution
+# is forbidden by license.
+# Removal in 30 days.  Bug #680726.
+sci-chemistry/azara
 
-# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
-# Depends on dead Qt4, no revdeps. Masked for removal in 30 days.
-dev-libs/sni-qt
+# Michał Górny <mgorny@gentoo.org> (2019-09-18)
+# Distributing an entire prebuilt distribution as a package turned out
+# to be a bad idea.  All current upstream versions contain vulnerable
+# packages and lack correct license information.  Upstream does not
+# provide a publicly accessible bug tracker, and does not reply to mail.
+# Removal in 30 days.  Bug #683724.
+app-admin/systemrescuecd-x86
+sys-boot/systemrescuecd-x86-grub
 
-# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
-# Depends on dead Qt4, dead upstream.
-# Masked for removal in 30 days. Bugs #408651, #642950, #651622
-media-gfx/structure-synth
+# Matt Turner <mattst88@gentoo.org> (2019-09-03)
+# Broken. Bug #694774
+>=media-libs/freeglut-3.2.0
 
-# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
-# Depends on dead Qt4, dead upstream.
-# Masked for removal in 30 days. Bug #640258
-dev-util/valkyrie
+# Michał Górny <mgorny@gentoo.org> (2019-09-17)
+# Unmaintained EAPI 0 Apache modules + mod_access_dnsbl as a revdep.
+# Removal in 30 days.  Bug #694608.
+www-apache/mod_access_dnsbl
+www-apache/mod_authn_sasl
+www-apache/mod_depends
+www-apache/mod_dnsbl_lookup
+www-apache/mod_flvx
+www-apache/mod_geoip2
+www-apache/mod_macro
+www-apache/mod_umask
 
-# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
-# Depends on dead Qt4, severely outdated, no one does the bump.
-# Masked for removal in 30 days. Bugs #489190, #648666
-media-gfx/ipe
+# Michał Górny <mgorny@gentoo.org> (2019-09-17)
+# Unmaintained libraries with no reverse dependencies.
+# Removal in 30 days.  Bug #694602.
+dev-db/cppdb
+dev-db/odbtp
+dev-db/soci
+dev-db/xbase
+dev-db/xbsql
 
-# Andreas Sturmlechner <asturm@gentoo.org> (8 May 2018)
-# Breaking consumers by internal header cleanup and removal of deprecated
-# qt5_use_modules from Qt5CoreMacros.cmake. File bugs with fixes upstream
-# and against the qt-5.11 tracker (bug #653646).
-~dev-qt/assistant-5.11.0_rc
-~dev-qt/designer-5.11.0_rc
-~dev-qt/linguist-5.11.0_rc
-~dev-qt/linguist-tools-5.11.0_rc
-~dev-qt/pixeltool-5.11.0_rc
-~dev-qt/qdbus-5.11.0_rc
-~dev-qt/qdbusviewer-5.11.0_rc
-~dev-qt/qdoc-5.11.0_rc
-~dev-qt/qt3d-5.11.0_rc
-~dev-qt/qtbluetooth-5.11.0_rc
-~dev-qt/qtcharts-5.11.0_rc
-~dev-qt/qtconcurrent-5.11.0_rc
-~dev-qt/qtcore-5.11.0_rc
-~dev-qt/qtdatavis3d-5.11.0_rc
-~dev-qt/qtdbus-5.11.0_rc
-~dev-qt/qtdeclarative-5.11.0_rc
-~dev-qt/qtdiag-5.11.0_rc
-~dev-qt/qtgraphicaleffects-5.11.0_rc
-~dev-qt/qtgui-5.11.0_rc
-~dev-qt/qthelp-5.11.0_rc
-~dev-qt/qtimageformats-5.11.0_rc
-~dev-qt/qtlocation-5.11.0_rc
-~dev-qt/qtmultimedia-5.11.0_rc
-~dev-qt/qtnetworkauth-5.11.0_rc
-~dev-qt/qtnetwork-5.11.0_rc
-~dev-qt/qtopengl-5.11.0_rc
-~dev-qt/qtpaths-5.11.0_rc
-~dev-qt/qtplugininfo-5.11.0_rc
-~dev-qt/qtpositioning-5.11.0_rc
-~dev-qt/qtprintsupport-5.11.0_rc
-~dev-qt/qtquickcontrols2-5.11.0_rc
-~dev-qt/qtquickcontrols-5.11.0_rc
-~dev-qt/qtscript-5.11.0_rc
-~dev-qt/qtscxml-5.11.0_rc
-~dev-qt/qtsensors-5.11.0_rc
-~dev-qt/qtserialbus-5.11.0_rc
-~dev-qt/qtserialport-5.11.0_rc
-~dev-qt/qtspeech-5.11.0_rc
-~dev-qt/qtsql-5.11.0_rc
-~dev-qt/qtsvg-5.11.0_rc
-~dev-qt/qttest-5.11.0_rc
-~dev-qt/qttranslations-5.11.0_rc
-~dev-qt/qtvirtualkeyboard-5.11.0_rc
-~dev-qt/qtwayland-5.11.0_rc
-~dev-qt/qtwebchannel-5.11.0_rc
-~dev-qt/qtwebengine-5.11.0_rc
-~dev-qt/qtwebsockets-5.11.0_rc
-~dev-qt/qtwebview-5.11.0_rc
-~dev-qt/qtwidgets-5.11.0_rc
-~dev-qt/qtx11extras-5.11.0_rc
-~dev-qt/qtxmlpatterns-5.11.0_rc
-~dev-qt/qtxml-5.11.0_rc
+# Michał Górny <mgorny@gentoo.org> (2019-09-17)
+# Last touched in 2005.  EAPI 0.  No clearly defined license.
+# Removal in 30 days.  Bug #694598.
+sys-fs/wpflash
 
-# Hans de Graaff <graaff@gentoo.org> (7 May 2018)
-# Old slots that are ruby23-only and no longer maintained
-# upstream, and that do not have packages depend on them.
-# Migrate to newer slot of the same package.
-dev-ruby/askismet:0
-dev-ruby/arel:5.0
-dev-ruby/autoprefixer-rails:6
-dev-ruby/blankslate:2
-dev-ruby/http:0.6
-dev-ruby/jquery-ui-rails:4
-dev-ruby/net-ssh:3
-dev-ruby/sanitize:0
-dev-ruby/twitter:5
+# Michał Górny <mgorny@gentoo.org> (2019-09-16)
+# Unmaintained.  Fails to build.  Last release in 2004.  EAPI 0.
+# Removal in 30 days.  Bug #592360.
+net-mail/mailsync
 
-# Maciej Mrozowski <reavertm@gentoo.org> (6 May 2018)
-# SoQt does not build yet
->=media-libs/coin-4.0.0
->=media-libs/simage-1.7.1
+# Michał Górny <mgorny@gentoo.org> (2019-09-16)
+# Unmaintained.  Does not work anymore.  Last release in 2007.
+# Our recommended alternative is app-text/wgetpaste.
+# Removal in 30 days.  Bug #678554.
+app-text/gnopaster
 
-# Mikle Kolyada <zlogene@gentoo.org> (4 May 2018)
-# Upstream is dead, no maintainer, no longer updated.
-# Masked for removal in 30 days
-games-misc/fortune-mod-gentoo-ru
+# Michał Górny <mgorny@gentoo.org> (2019-09-16)
+# Unmaintained.  Last touched in 2005.  Keyworded ppc only.  Upstream
+# is still alive, so this thing needs a major version bump.
+# Removal in 30 days.  Bug #694562.
+app-emulation/vmips
+app-emulation/vmips-cross-bin
 
-# Mike Gilbert <floppym@gentoo.org> (30 Apr 2018)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-68
+# Michał Górny <mgorny@gentoo.org> (2019-09-15)
+# This was an attempt to provide more reliable package merging mechanism
+# for Portage.  However, it was never finished and with Portage's
+# concept of bug-by-bug neverending backwards compatibility it would
+# never be accepted anyway.
+# Removal in 30 days.  Bug #694514.
+dev-util/atomic-install
 
-# Aaron Bauman <bman@gentoo.org> (30 Apr 2018)
-# Masked for testing
-=dev-libs/libressl-2.7*
+# Fabian Groffen <grobian@gentoo.org> (2019-09-15)
+# Incorporated in >=app-portage/portage-utils-0.80 as qmanifest
+# Removal in 30 days.  Bug #694428
+app-portage/hashgen
 
-# Mikle Kolyada <zlogene@gentoo.org> (27 Apr 2018)
-# Upstream is dead, the site with the sources is down.
-# There's no chance to get the sources (fetch restricted)
-# Removal in 30 days (bug #642866)
-app-emulation/armv8-fast-model
+# Zac Medico <zmedico@gentoo.org> (2019-09-14)
+# No reverse dependencies.
+# Removal in 30 days.  Bug #694390.
+dev-go/go-oauth2
 
-# Hans de Graaff <graaff@gentoo.org> (27 Apr 2018)
-# No longer supported upstream. Use ruby23 instead.
-# Masked for removal in 30 days. Bug #642258.
-dev-lang/ruby:2.2
-virtual/ruby
-dev-ruby/tzinfo:0
+# Zac Medico <zmedico@gentoo.org> (2019-09-14)
+# No reverse dependencies.
+# Removal in 30 days.  Bug #694392.
+dev-go/go-protobuf
 
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Apr 2018)
-# Package version depends on Qt-5.10 that was/is/will not be in tree.
->=sci-misc/mendeleydesktop-1.18
+# Michał Górny <mgorny@gentoo.org> (2019-09-14)
+# Unmaintained.  All of them were not bumped since 2016.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #694398.
+dev-go/cli
+dev-go/go-gitlab-client
+dev-go/toml
 
-# Michał Górny <mgorny@gentoo.org> (26 Apr 2018)
-# Apparently redundant to built-in Python features.  Homepage gone
-# without trace.  Last release in 2003.  No reverse dependencies.
-# Removal in 30 days.  Bug #537720.
-dev-python/iconvcodec
+# Michał Górny <mgorny@gentoo.org> (2019-09-14)
+# sci-biology/goby has been removed.  This package makes little sense
+# without it.
+# Removal in 30 days.
+sci-biology/goby-cpp
 
-# Michał Górny <mgorny@gentoo.org> (26 Apr 2018)
-# Does not work with any of the unmasked django versions.  Unmaintained.
-# No reverse dependencies.  Removal in 30 days.  Bug #527176.
-dev-python/django-evolution
+# Michał Górny <mgorny@gentoo.org> (2019-09-14)
+# Unmaintained.  Vulnerable to arbitrary code execution.  Debian (being
+# its current upstream) removed it.  The recommended replacement
+# is net-misc/dhcpcd.
+# Removal in 30 days.  Bug #694314.
+net-misc/pump
 
-# Michał Górny <mgorny@gentoo.org> (26 Apr 2018)
-# Produces a lot of Pango warnings, then segfaults.  Unmaintained.
-# No reverse dependencies.  Removal in 30 days.  Bug #526668.
-dev-python/kiwi
+# Thomas Sachau <tommy@gentoo.org> (2019-09-14)
+# Freemail has been completly rewritten so the current
+# ebuild does no longer work for it. In addition the source
+# has moved. So masking for removal.
+# Removal in 30 days. Bug #628914
+net-mail/Freemail
 
-# Michał Górny <mgorny@gentoo.org> (26 Apr 2018)
-# Obsolete package used during some past GSoC development
-# and unmaintained since.  All of its users have retired already.
-# No reverse dependencies.  The ebuild runs test suite of CPython
-# instead of its own.  Removal in 30 days.  Bug #526552.
-dev-python/tdaemon
+# Michał Górny <mgorny@gentoo.org> (2019-09-14)
+# The following packages are unmaintained and have not been tested
+# with Python 3.7.  Most of them are either in need of version bumps,
+# a few have been declared discontinued upstream.  None of them has
+# any reverse dependency.
+# Removal in 30 days.  Bug #694280.
+dev-python/attrdict
+dev-python/behave
+dev-python/cfgio
+dev-python/django-opensearch
+dev-python/django-otp-yubikey
+dev-python/django-phonenumber-field
+dev-python/grafanalib
+dev-python/libasyncns-python
+dev-python/maybe
+dev-python/mockredispy
+dev-python/parse
+dev-python/parse-type
+dev-python/pycallgraph
+dev-python/pyroma
+dev-python/pytest-raisesregexp
+dev-python/python-consul
+dev-python/python-ptrace
+dev-python/pyuv
+dev-python/safety
+dev-python/sphinxcontrib-cheeseshop
+dev-python/structlog
+dev-python/torment
+dev-python/twilio
+dev-python/xonsh
+dev-python/yubiotp
 
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Apr 2018)
-# Depends on dead Qt4, no more revdeps. Masked for removal in 30 days.
-dev-libs/qjson
+# Michał Górny <mgorny@gentoo.org> (2019-09-14)
+# The following packages are unmaintained and do not declare support
+# for Python 3.  Most of them are either in need of version bumps,
+# or are dead upstream (haven't had a release since 2009-2015).
+# None of them have any reverse dependencies.
+# Removal in 30 days.  Bug #694280.
+dev-python/Ming
+dev-python/casuarius
+dev-python/imdbpy
+dev-python/kaa-base
+dev-python/kaa-display
+dev-python/kaa-imlib2
+dev-python/kaa-metadata
+dev-python/larch
+dev-python/pybloomfiltermmap
+dev-python/pylirc
+dev-python/pyringe
+dev-python/pystdf
+dev-python/python-dsv
+dev-python/python-gudev
+dev-python/python-spidermonkey
+dev-python/python-virtkey
+dev-python/rtf2xml
+dev-python/tmdb3
+dev-python/tracing
+dev-python/txsocksx
+dev-python/wsgilog
+dev-python/xmpppy
 
-# Michał Górny <mgorny@gentoo.org> (22 Apr 2018)
-# Unmaintained buggy package with unresearched segfaults.  No support
-# for Python 3.  No reverse dependencies.
-# Removal in 30 days.  Bug #454680.
-dev-python/simpleparse
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Last bumped in 2017.  Newer version fails to fetch.  Pending bump.
+# Unresolved license issues.
+# Removal in 30 days.  Bug #694264.
+dev-util/idea-ultimate
 
-# Matt Turner <mattst88@gentoo.org> (21 Apr 2018)
-# Awful, unmaintained, unused. Removal in 30 days. Bug #651300.
-x11-libs/xpyb
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Unmaintained.  Last bumped in 2017.  Unresolved license issues.
+# Removal in 30 days.  Bug #694274.
+dev-util/webstorm
 
-# Matt Turner <mattst88@gentoo.org> (21 Apr 2018)
-# Protocol headers and client library for the long dead Xprint extension.
-# Removal in 30 days. Bug #649076.
-x11-proto/printproto
-x11-libs/libXp
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Unmaintained.  No reverse dependencies.
+# Removal in 30 days.  Bug #694260.
+sys-libs/libmath++
+sys-libs/rvm
+sys-libs/system-config-base
 
-# Alexis Ballier <aballier@gentoo.org> (21 Apr 2018)
-# Needs porting of revdeps
-# See: https://bugs.gentoo.org/653678
->=media-video/ffmpeg-4.0
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Unmaintained.  All look pretty dead.  No reverse dependencies.
+#
+# x11-libs/gtkhotkey: 2009
+# x11-libs/libaosd: 2010
+# x11-libs/libproplist: ancient?
+#
+# Removal in 30 days.  Bug #694258.
+x11-libs/gtkhotkey
+x11-libs/libaosd
+x11-libs/libproplist
 
-# Brian Evans <grknight@gentoo.org> (20 Apr 2018)
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Unmaintained.  Not bumped since 2011.  Fails to build due to broken
+# build system.  No reverse dependencies.
+# Removal in 30 days.  Bug #500616.
+net-libs/nacl
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Unmaintained.  No reverse dependencies.
+# Removal in 30 days.  Bug #694256.
+net-libs/ccnet
+net-libs/ccrtp
+net-libs/dslib
+net-libs/libgmail
+net-libs/libs3
+net-libs/libyahoo2
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-13)
+# Unmaintained.  No reverse dependencies.
+#
+# media-libs/libbmp: 2010, homepage gone.
+# media-libs/libmkv: 2011.
+# media-libs/sampleicc: 2014, last upstream 2016.
+#
+# Removal in 30 days.  Bug #694254.
+media-libs/libbmp
+media-libs/libmkv
+media-libs/sampleicc
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Current version from 2016, needs bump.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #694242.
+dev-libs/xmlwrapp
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last release in 2011.  No reverse dependencies.
+# Removal in 30 days.  Bug #694240.
+dev-libs/xmlrpc-epi
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  No reverse dependencies.
+# Removal in 30 days.  Bug #694238.
+dev-libs/xml-security-c
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last release in 1998.  No reverse dependencies.
+# Removal in 30 days.  Bug #694236.
+dev-libs/syncdir
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Current version from 2011, latest upstream 2015.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #694234.
+dev-libs/stlsoft
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last release in 2005.  No reverse dependencies.
+# Removal in 30 days.  Bug #694228.
+dev-libs/socketstream
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last release in 2014.  No reverse dependencies.
+# Removal in 30 days.  Bug #694228.
+dev-libs/sblim-sfcc
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Development stalled in 2009.  No reverse dependencies.
+# dev-libs/libvterm is the upstream recommended replacement.
+# Removal in 30 days.  Bug #694226.
+dev-libs/rote
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Added in 2008.  Live ebuild only.  No reverse
+# dependencies.
+# Removal in 14 days.  Bug #694224.
+dev-libs/polylib
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last release in <=2004.  Reported to fail to build.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #694222.
+dev-libs/pcre++
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Added in 2005 and not bumped since.  Homepage gone.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #694218.
+dev-libs/mdsplib
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last bumped in 2009.  Homepage gone.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #694216.
+dev-libs/mapm
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last bumped in 2011.  Homepage gone.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #694214.
+dev-libs/ltxml
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  EOL-ed upstream.  No reverse dependencies.
+# Removal in 30 days.  Bug #694212.
+dev-libs/log4shib
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last bumped in 2014.  Homepage gone.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #694210.
+dev-libs/libwbxml
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Old GNOME library, last release in 2000.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #694208.
+dev-libs/libunicode
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Current version is from 2015, and is pending bump.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #694206.
+dev-libs/libucl
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Added in 2002 and not bumped since.  Homepage gone.
+# No amd64 keyword.  No reverse dependencies.
+# Removal in 30 days.  Bug #694204.
+dev-libs/libtrain
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last bumped in 2011.  Homepage gone.  No amd64 keyword.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #694202.
+dev-libs/libsqlora8
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last release in 2009.  No reverse dependencies.
+# Removal in 30 days.  Bug #694200.
+dev-libs/libproccpuinfo
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Current version from 2015, last release in 2016.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #694198.
+dev-libs/libntru
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last release in 2014.  Declared obsolete upstream.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #694196.
+dev-libs/libmongo-client
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last release in 2009.  No reverse dependencies.
+# Removal in 30 days.  Bug #694192.
+dev-libs/libmail
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last release in 2009.  No reverse dependencies.
+# Removal in 30 days.  Bug #694188.
+dev-libs/libidmef
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last bumped in 2005.  Homepage gone.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #694186.
+dev-libs/libhtmlparse
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last release in 2009.  No reverse dependencies.
+# Removal in 30 days.  Bug #694184.
+dev-libs/libhome
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Both fail with modern versions of dev-util/waf
+# (#664762, #663712).  No reverse dependencies.
+# Removal in 30 days.  Bug #694182.
+dev-libs/libcxml
+dev-libs/locked_sstream
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  No reverse dependencies.  Its presence breaks
+# pulseaudio (#672468).
+# Removal in 30 days.  Bug #694180.
+dev-libs/libcli
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last release in 2010.  No reverse dependencies.
+# Removal in 30 days.  Bug #694178.
+dev-libs/libcaldav
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  The driver is now included in the kernel,
+# so the package installs only a header file.  However, according
+# to upstream this file violated Lego Mindstorms SDK license.
+# Removal in 30 days.  Bug #694176.
+dev-libs/legousbtower
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  No reverse dependencies.  Multiple alternatives exist,
+# most with less restrictive licenses (e.g. dev-libs/glib).
+# Removal in 30 days.  Bug #694174.
+dev-libs/hashit
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Last release from 2010.  No reverse dependencies.
+# Removal in 30 days.  Bug #694170.
+dev-libs/fampp2
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  The current release is from 2005, pending version bump
+# since 2012.  No reverse dependencies.
+# Removal in 30 days.  Bug #694168.
+dev-libs/elfio
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Current release is from 2014, and needs version bump.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #694166.
+dev-libs/cgicc
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-12)
+# Unmaintained.  Fails to build against current version of boost.
+# No reverse dependencies (last one removed in April).
+# Removal in 30 days.  Bug #691264.
+dev-libs/actor-framework
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-11)
+# Unmaintained.  Last bumped in 2016, many versions behind now.
+# Has test failures reported.  No reverse dependencies.
+# Removal in 30 days.  Bug #694056.
+dev-libs/gecode
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-11)
+# Ruby 2.4-only.  Requires old version of dev-libs/gecode.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #694040.
+dev-ruby/dep_selector
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-11)
+# Both packages are unmaintained, and are many releases behind.
+# hadolint is reported to fail to build, and requires old version
+# of language-docker.  Newer versions of language-docker have
+# no revdeps.
+# Removal in 30 days.  Bug #674660.
+dev-haskell/language-docker
+dev-util/hadolint
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-11)
+# Gentoo/FreeBSD project is effectively dead.  The core packages are
+# outdated and vulnerable.  We do not have a fully working install,
+# and I have not been able to find anyone knowing how to create one.
+# Leaf packages are failing to build more and more frequently, some
+# simply because of our outdated base system.  The profiles were marked
+# exp two months ago not to stall other developers, core packages are
+# masked for at least two months, and nowadays they have unsatisfied
+# dependencies already.
+#
+# If anyone wishes to take the effort over, please consider it urgent.
+# If not, I will slowly start removing remaining parts of FreeBSD
+# after this batch, and checking which packages can be salvaged.
+#
+# Removal in 30 days.  Bug #683284.
+sys-freebsd/boot0
+sys-freebsd/freebsd-bin
+sys-freebsd/freebsd-cddl
+sys-freebsd/freebsd-lib
+sys-freebsd/freebsd-libexec
+sys-freebsd/freebsd-mk-defs
+sys-freebsd/freebsd-pam-modules
+sys-freebsd/freebsd-pf
+sys-freebsd/freebsd-rescue
+sys-freebsd/freebsd-sbin
+sys-freebsd/freebsd-share
+sys-freebsd/freebsd-sources
+sys-freebsd/freebsd-ubin
+sys-freebsd/freebsd-usbin
+sys-freebsd/ubin-wrappers
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-11)
+# Unmaintained.  Ancient.  Carries a lot of patches, and has even more
+# bugs reported.  Last rites were cancelled due to Gentoo/FreeBSD 1 year
+# ago but that project is dead nowadays.  Many alternatives exist,
+# sys-process/cronie is probably the closest one (it's a fork).
+# Removal in 30 days.  Bug #694036.
+sys-process/vixie-cron
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-11)
+# Unmaintained.  Last bumped in 2013.  No apparent advantage over
+# the two other implementations in Gentoo (dev-util/pkgconfig,
+# dev-util/pkgconf).
+# Removal in 30 days.  Bug #694034.
+dev-util/pkgconfig-openbsd
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  Last bumped in 2009, last upstream release in 2014.
+# EAPI 0.  No amd64 keyword.
+# Removal in 30 days.  Bug #693944.
+www-client/ck4up
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Last bumped in 2006.  Homepage gone (domain taken over).  EAPI 0.
+# No amd64 keyword.
+# Removal in 30 days.  Bug #693942.
+www-apps/metadot
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  EAPI 0.  No amd64 keyword.  Does not support most
+# of the modern browsers.  Obsoleted by x11-misc/xdg-utils
+# and desktop-specific tools.
+# Removal in 30 days.  Bug #693940.
+www-apps/browser-config
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  Added in 2005.  Last upstream update in 2003.  EAPI 0.
+# No amd64 keyword.
+# Removal in 30 days.  Bug #693938.
+www-apache/mod_diagnostics
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Last release in 2005.  EAPI 0.  No amd64 keyword.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #693936.
+sys-libs/lrmi
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Added in 2006 and not updated since.  EAPI 0.  Keyworded only for dead
+# x86-fbsd.
+# Removal in 30 days.  Bug #693934.
+sys-fs/scan-ffs
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Added in 2005, not bumped since.  Last upstream release in 2007.
+# EAPI 0.  No amd64 keyword.
+# Removal in 30 days.  Bug #693932.
+sys-cluster/ocfs
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Added in 2005, no upstream releases since.  EAPI 0.  No amd64 keyword.
+# -master is reported to fail to build.
+# Removal in 30 days.  Bug #693930.
+sys-cluster/feedbackd-agent
+sys-cluster/feedbackd-master
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  Last bumped in 2009, last upstream release from 2005.
+# EAPI 0.  No amd64 keyword.
+# Removal in 30 days.  Bug #693908.
+sys-boot/raincoat
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Added in 2006, no new releases since.  EAPI 0.  No amd64 keyword.
+# Removal in 30 days.  Bug #693906.
+sys-auth/icmpdn
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Not touched since 2005.  EAPI 0.  No amd64 keyword.
+# Removal in 30 days.  Bug #693904.
+sys-apps/netboot-base
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Added in 2005 and not bumped since.  Homepage gone.  EAPI 0.  No amd64
+# keyword.
+# Removal in 30 days.  Bug #693902.
+sys-apps/fwcrv
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  Added in 2004 and not bumped since.  Homepage is gone.
+# EAPI 0.  No amd64 keyword.
+# Removal in 30 days.  Bug #693900.
+sys-apps/checkservice
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  Last bumped in 2012, last release in 2007.  EAPI 0.
+# No amd64 keyword.
+# Removal in 30 days.  Bug #693888.
+net-wireless/orinoco-fwutils
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  Last release in 2004.  EAPI 0.  No amd64 keyword.
+# Removal in 30 days.  Bug #693886.
+net-p2p/xnap
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  Added in 2004, last release in 2002.  EAPI 0.
+# QA issues.  No amd64 keyword.
+# Removal in 30 days.  Bug #693884.
+net-p2p/smet2html
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  Added in 2004 and not bumped since.  Homepage dead.
+# EAPI 0.  No amd64 keyword.
+# Removal in 30 days.  Bug #693882.
+net-p2p/myster
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  Last bumped in 2008, last upstream activity in 2010.
+# EAPI 0.  QA issues.  No amd64 keyword.
+# Removal in 30 days.  Bug #693880.
+net-p2p/mktorrent-borg
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Added in 2002 and not bumped since.  EAPI 0.  No amd64 keyword.
+# Sources are no longer to be found on the homepage, and upstream
+# explicitly points to third-party applications.
+# Removal in 30 days.  Bug #693878.
+net-misc/shout
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  Last bumped in 2003.  Homepage gone.  EAPI 0.
+# No amd64 keyword.
+# Removal in 30 days.  Bug #693876.
+net-misc/hlfl
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  Last bumped in 2003, no new releases since.  EAPI 0.
+# No amd64 keywords.
+# Removal in 30 days.  Bug #693868.
+net-mail/gensig
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Both added in 2003, no new releases since.  Homepage dead.  EAPI 0.
+# No amd64 keywords.
+# Removal in 30 days.  Bug #693866.
+net-mail/qmail-lint
+net-mail/qmail-qsanity
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-09)
+# Unmaintained.  Added in 2001, no new releases since.  EAPI 0.
+# Multiple QA issues.  No amd64 keywords.
+# Removal in 30 days.  Bug #693864.
+net-mail/fastforward
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Suite of NIH libraries.  Only dev-libs/vanessa-logger has external
+# revdep of net-misc/aggregate-flim.  All others only revdep between
+# themselves.  Almost all packages are EAPI 0, and date back
+# to 2002-2010 (one is EAPI 5 / 2015 but has no revdeps).
+# Removal in 30 days.  Bug #693820.
+dev-libs/vanessa-adt
+dev-libs/vanessa-logger
+net-libs/vanessa-mcast
+net-libs/vanessa-socket
+net-misc/aggregate-flim
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Unmaintained.  Added in 2004.  Upstream is gone.  EAPI 0.  No amd64
+# keyword.  No reverse dependencies.
+# Removal in 30 days.  Bug #693812.
+net-libs/roadrunner
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Unmaintained.  Added in 2006, no newer releases.  EAPI 0.  No amd64
+# keywords.
+# Removal in 30 days.  Bug #693812.
+net-dns/tinystats
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Last bumped in 2009, last release in 2010.  EAPI 0.  No amd64 keyword.
+# Removal in 30 days.  Bug #693808.
+net-dialup/dgcmodem
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Added in 2000 and not bumped since.  EAPI 0.  No amd64 keywords.
+# Homepage and SRC_URI dead.  Original xanim was removed in 2016.
+# Removal in 30 days.  Bug #693804.
+media-video/xanim-export
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Last bumped in 2007.  EAPI 0.  Multiple QA issues.  x86-only.
+# Homepage is long gone.
+# Removal in 30 days.  Bug #693802.
+media-sound/imp3sh
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Last bumped in 2007.  EAPI 0.  Known to be broken on amd64.
+# Homepage dead.
+# Removal in 30 days.  Bug #693800.
+media-sound/hearnet
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Added in 2004 and not updated since.  Incorrect license.  EAPI 0.
+# Proprietary 32-bit x86 executable.  Homepage and SRC_URI are dead,
+# and we shouldn't be mirroring distfiles in the first place.
+# Removal in 30 days.  Bug #693798.
+sys-boot/psoload
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Added in 2003 and not updated since.  Unclear license.  EAPI 0.
+# No amd64 keywords.  Homepage and SRC_URI are dead, and we probably
+# shouldn't be mirroring distfiles in the first place.
+# Removal in 30 days.  Bug #693796.
+net-misc/netprofiles-ims
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Added in 2004 and not updated since.  Unclear license.  EAPI 0.
+# Homepage and SRC_URI are dead, and we probably shouldn't be mirroring
+# them in the first place.
+# Removal in 30 days.  Bug #693794.
+media-video/maven-poke
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Last bumped in 2009.  EAPI 0.  Keyworded only for the dead x86-bsd
+# port.  No reverse dependencies.
+# Removal in 30 days.  Bug #693768.
+dev-libs/libvolume_id
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Unmaintained.  Added in 2002 and not updated since.  EAPI 0.  No amd64
+# keywords.  Apparently the only revdep was Stratego which was removed
+# in the past.
+# Removal in 30 days.  Bug #693760.
+dev-libs/cpl-stratego
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Unmaintained.  Added in 2004 and not updated since.  Homepage dead.
+# EAPI 0.  No amd64 keywords.  No reverse dependencies.
+# Removal in 30 days.  Bug #693758.
+dev-libs/asyncresolv
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Unmaintained.  Last release in 2004.  EAPI 0, no amd64 keywords.
+# Removal in 30 days.  Bug #693756.
+dev-lang/gwydion-dylan-bin
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Both packages are unmaintained, EAPI 0, not keyworded on amd64.
+# Both were last bumped in 2010.  Tinycobol had one release afterwards,
+# after which it has been declared dead (in 2011).  It is the only
+# reverse dependency of vbisam, and it has no reverse dependencies
+# itself.
+# Removal in 30 days.  Bug #693752.
+dev-db/vbisam
+dev-lang/tinycobol
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Unmaintained.  EAPI 0.  Added in 2003 and not updated since.
+# Apparently FreeBSD had a 1.4.4 but upstream homepage is already gone.
+# Not keyworded on amd64.
+# Removal in 30 days.  Bug #693750.
+app-text/freepwing
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Added in 2008 and not updated since.  EAPI 0.  Upstream homepage
+# disappeared.  Not keyworded on amd64.
+# Removal in 30 days.  Bug #693748.
+app-emulation/vov
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Does not start.  Last bumped in 2012, numerous releases behind
+# upstream.
+# Removal in 30 days.  Bug #609652.
+net-p2p/saku
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Last bumped in 2008.  Needs porting out of games.eclass.  Apparently
+# does not work in testing mode, and requires rare hardware and media
+# for normal operation.
+# Removal in 30 days.  Bug #654290.
+games-emulation/daphne
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# Unmaintained.  EAPI 0.  Homepage gone.  Potential netqmail maintainer
+# indicates that it can be replaced by running one daemon from normal
+# qmail install.
+# Removal in 30 days.  Bug #693746.
+mail-mta/mini-qmail
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Unmaintained.  Beta version from 2012.  The ebuild is currently
+# broken, and since it relies on CD install, so it needs someone with
+# the CD to fix it.  The original maintainer suggests trying Serious Sam
+# Fusion in wine instead.
+# Removal in 30 days.  Bug #551174.
+games-fps/serious-sam-tfe
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Has a build failure repoted.  Last bumped in 2006.  Homepage is gone,
+# and (newer) sources are nowhere to be found.
+# Removal in 30 days.  Bug #617188.
+sys-cluster/lspbs
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# sci-mathematics/kodkod: reported to fail to build.  Last bumped
+# in 2012.  Homepage is gone, and sources are nowhere to be found.
+#
+# Removal in 30 days.  Bug #685802.
+sci-mathematics/kodkod
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Unmaintained.  Not bumped since 2011.
+# Removal in 30 days.  Bug #693232.
+net-mail/kuvert
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Both packages are (now) mirror-restricted and have non-working
+# SRC_URI.
+# Removal in 30 days.  Bug #601052.
+games-action/mutantstorm-demo
+games-action/spacetripper-demo
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Mirror-restricted, SRC_URI down and sources nowhere to be found.
+# Removal in 30 days.  Bug #692798.
+sys-apps/adjtime
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Unmaintained.  Installs world-writable directory.  Last release
+# in 2004.
+# Removal in 30 days.  Bug #692522.
+app-admin/yaala
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Last release in 2004.  EAPI 0.  x86-only.  Upstream recommends
+# switching to XML Forms.
+# Removal in 30 days.  Bug #693658.
+app-text/fdftk
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Proprietary, fetch-restricted package.  Last bumped in 2007.  EAPI 0.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #693656.
+dev-java/jdbc-informix
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Unmaintained.  EAPI 0.  Last (pre-alpha) release in 2001.  No reverse
+# dependencies.  Removal in 30 days.  Bug #693644.
+media-libs/sdlmm
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Has reported build and test failures.  Last release in 2013.  Current
+# stable is EAPI 0, and there is no point in stabilizing the newer
+# version.  No reverse dependencies.
+# Removal in 30 days.  Bug #622340.
+media-libs/sdif
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Unmaintained.  EAPI 0.  Last bumped in 2005.  Upstream homepage
+# and sources gone.  No reverse dependencies.
+# Removal in 30 days.  Bug #693642.
+media-libs/libopendaap
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Does not install correctly on multilib systems.  EAPI 0.  Multiple
+# other QA issues.  Obscure format with unlikely real use.  The domain
+# for homepage expired.  Last upstream commit in 2013.
+# Removal in 30 days.  Bug #313087.
+media-libs/libnut
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Has a build failure reported.  Project discontinued and homepage gone.
+# Last bumped in 2007.  No reverse dependencies.
+# Removal in 30 days.  Bug #664494.
+media-libs/libjackasyn
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Last (and only) release in 2005.  EAPI 0.  No reverse dependencies.
+# Removal in 30 days.  Bug #693640.
+media-libs/libipod
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-07)
+# Proprietary software with restricted download access.  Last bumped
+# in 2011.  Still at EAPI 0.  Of the two revdeps, both make FMOD
+# optional and support alternative sound systems.
+# Removal in 30 days.  Bug #453748.
+media-libs/fmod
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-06)
+# Unmaintained.  Tests fail to build.  Last release in 2014.  No reverse
+# dependencies.  Removal in 30 days.  Bug #640860.
+dev-cpp/xsd
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-09-04)
+# EAPI 2. Brutally outdated and untouched for ages. Removal in
+# 30 days, bug 688504
+sci-libs/openfoam-bin
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-04)
+# EAPI 0.  Keyworded only for x86-fbsd which is dead.  Practically untouched
+# since 2007.  Removal in 30 days.  Bug #693504.
+app-admin/consolehm
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-04)
+# Unmaintained.  EAPI 0.  Last touched in 2010.  No real homepage.
+# No clear advantage over app-text/tree.
+# Removal in 30 days.  Bug #693502.
+app-text/ddir
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-04)
+# A metapackage without a really clear purpose.  No reverse
+# dependencies.
+# Removal in 30 days.
+app-text/docbook-sgml
+
+# Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
+# Unofficial build. Superseded by official 2.49.5 release.
+# Masked for removal.
+=www-client/seamonkey-2.49.9.1_p0
+
+# Matthias Maier <tamiko@gentoo.org> (2019-09-03)
+# Duplicate package - use sci-libs/med instead, bug #693146
+# (Expedited) removal in 7 days
+sci-libs/libmed
+
+# Matt Turner <mattst88@gentoo.org> (2019-09-03)
+# Not supported by the current browserpass extension.
+# Removal in 30 days
+<www-plugins/browserpass-3
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-02)
+# gnome-vfs was deprecated along with GNOME 2.22 in favor of gvfs.
+# gnome-vfsmm provides C++ bindings for it, with last release in 2009
+# and only one reverse dependency.
+#
+# assogiate is the last revdep of gnome-vfsmm.  It was last bumped
+# in 2007, and the homepage is long gone (last seen ~2009).
+#
+# Removal in 30 days.  Bug #649000.
+dev-cpp/gnome-vfsmm
+gnome-extra/assogiate
+
+# Matt Turner <mattst88@gentoo.org> (2019-09-01)
+# <dev-scheme/guile-2 is package.mask'd
+<media-sound/lilypond-2.19
+
+# Matt Turner <mattst88@gentoo.org> (2019-09-01)
+# dev-scheme/guile-gnome-platform depends on dev-scheme/guile:12. Its only
+# reverse dependency is sci-chemistry/burrow-owl, so include it. The others are
+# dependencies of sci-chemistry/burrow-owl as well, and it is their only
+# reverse dependency.
+# Bug #693290.
+dev-libs/g-wrap
+dev-scheme/guile-cairo
+dev-scheme/guile-gnome-platform
+dev-scheme/guile-lib
+sci-chemistry/burrow-owl
+sci-libs/starparse
+
+# Matt Turner <mattst88@gentoo.org> (2019-09-01)
+# Unmaintained, unpackaged versions from 2015. Incompatible with guile-2.2.
+# Removal in 30 days. # Bug #654654.
+games-strategy/liquidwar6
+
+# Matt Turner <mattst88@gentoo.org> (2019-09-01)
+# TeXmacs is the only remaining package in tree that requires guile-1.8, which
+# is unsupported upstream. A TeXmacs port to Guile-2 has been in progress for a
+# few years. Bug #436400
+app-office/texmacs
+<dev-scheme/guile-2
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-01)
+# Remnant of Half-Life server stuff that was removed back in 2005.
+# Removal in 30 days.  Bug #693260.
+dev-games/hlsdk
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-01)
+# Ancient, i386-only binary package.  Current version is a nightly
+# from 2006.  The package has had a release since, has found a new
+# upstream and has been forked multiple times as well.  Apparently
+# NetRadiant-custom is the most recently maintained fork (not packaged).
+# Removal in 30 days.  Bug #181372.
+dev-games/gtkradiant
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-01)
+# Never keyworded on amd64 (and probably does not work on 64-bit
+# systems).  Last release from 2001.  Requires rare hardware.
+# Removal in 30 days.  Bug #693258.
+dev-games/flinker
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-01)
+# Last bumped in 2007.  The current version is known to be broken
+# on amd64.  The game has been discontinued, and then revived/forked
+# multiple times.  It is pending a version bump since at least 2011.
+# See [1] for the 'revived' project and links to other forks.
+# [1] http://www.netpanzer.info/Download/
+# Removal in 30 days.  Bug #375237.
+games-strategy/netpanzer
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-01)
+# Discontinued upstream.  Last release in 2003.  Replaced
+# by dev-embedded/urjtag.
+# Removal in 30 days.  Bug #693256.
+dev-embedded/jtag
+
+# Joonas Niilola <juippis@gentoo.org> (2019-08-31)
+# No maintainer and no one stepped in to take it after a mailing 
+# list announcement. Has QA issues and continuous CI issues. Removal 
+# in 30 days.
+# Bugs: #690784, #691376, #693184
+app-misc/pip3line
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-31)
+# Unmaintained.  EAPI 0 ebuilds with multiple QA issues.  Last release
+# added in 2003.  Upstream removed all traces of it.
+# Removal in 30 days.  Bug #693186.
+www-apache/mod_pcgi2
+www-apps/pcgi
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-30)
+# All current releases are incompatible with the current version
+# of mail-mta/opensmtpd.  Not touched by maintainer since 2016.  Some
+# USE flag combinations fail to build with other errors.  Needs porting
+# to new Python eclasses.
+# Removal in 30 days.  Bug #693128.
+mail-filter/opensmtpd-extras
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-30)
+# Unmaintained.  EAPI=0.  HOMEPAGE and SRC_URI are gone.  Last release
+# in 2006.  Removal in 30 days.  Bug #680412.
+mail-filter/ask
+
+# Ulrich Müller <ulm@gentoo.org> (2019-08-30)
+# Last visible upstream activity in 2013. Doesn't work with Emacs 24.3
+# or newer. Byte-compilation of newest upstream version 1.3.1 fails.
+# Masked for removal in 30 days, bug #693118.
+app-emacs/identica-mode
+
+# David Seifert <soap@gentoo.org> (2019-08-29)
+# Dead upstream, last commit over 10 years ago, no revdeps, EAPI=0,
+# Removal in 30 days.
+sci-electronics/gplcver
+
+# David Seifert <soap@gentoo.org> (2019-08-29)
+# Dead upstream, last release in 2008, no revdeps, removal in 30 days.
+dev-cpp/threadpool
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-29)
+# Added in 2012 and not touched since.  Fails multilib-strict.  Pending
+# version bump.  No reverse dependencies.
+# Removal in 30 days.  Bug #667064.
+net-misc/libss7
+
+# Stefan Strogin <steils@gentoo.org> (2019-08-29)
+# Obsolete. No reverse dependencies (games-rpg/eternal-lands no longer
+# depends on them).
+# Removal in 30 days. Bug #549890.
+games-rpg/eternal-lands-bloodsucker
+games-rpg/eternal-lands-data
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-28)
+# Last touched in 2010.  EAPI=0.  Last upstream release in 2011 (pending
+# bump).  No reverse dependencies.
+# Removal in 30 days.  Bug #681168.
+dev-embedded/scratchbox
+dev-embedded/scratchbox-devkit-apt-https
+dev-embedded/scratchbox-devkit-cputransp
+dev-embedded/scratchbox-devkit-debian
+dev-embedded/scratchbox-devkit-debian-squeeze
+dev-embedded/scratchbox-devkit-doctools
+dev-embedded/scratchbox-devkit-git
+dev-embedded/scratchbox-devkit-maemo3
+dev-embedded/scratchbox-devkit-perl
+dev-embedded/scratchbox-devkit-qemu
+dev-embedded/scratchbox-devkit-svn
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-27)
+# Unmaintained.  No release since 2008.  Is reported to wrongly reject
+# 'pretty much all mails', also reported build failure.
+# Removal in 30 days.  Bug #519668.
+mail-filter/sid-milter
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-27)
+# Fails to build against openssl-1.1.  Not touched by Gentoo maintainer
+# who is also upstream since 2016, and the problem has been reported
+# in Jan 2019.  Removal in 30 days.  Bug #674800.
+app-crypt/af_alg
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-27)
+# Our version is seriously outdated and has numerous bugs reported,
+# including multilib-strict failures preventing it from being installed
+# on any modern system.  It has not been touched since 2016, and is
+# many releases behind upstream.  Furthermore, upstream has discontinued
+# it in favor of eeCodes.
+# Removal in 30 days.  Bug #628746.
+sci-libs/grib_api
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-27)
+# Not touched since 2012.  Homepage gone, and no replacement found.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #692796.
+dev-tcltk/tkTheme
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-27)
+# Discontinued upstream, in favor of Tokyo Tycoon.  Last release
+# in 2010.  Not touched by the Gentoo maintainer since 2010, with bugs
+# having to be addressed by other developers.
+# Removal in 30 days.  Bug #681044.
+net-misc/tokyotyrant
+
+# Ulrich Müller <ulm@gentoo.org> (2019-08-26)
+# A more recent version of thumbs.el is distributed
+# as part of GNU Emacs proper.
+# Masked for removal in 30 days, bug #692882.
+app-emacs/thumbs
+
+# Brian Evans <grknight@gentoo.org> (2019-08-26)
+# Deprecated virtual as it cannot solve the issue of ABI incompatibility
+# and rebuild consumers when provider changes
+# No revdeps. Removal in 30 days.
+virtual/libmysqlclient
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-25)
+# Discontinued upstream in 2015, and not touched in Gentoo since.
+# Has series of build failures reported due to growing incompatibility
+# with new kernels.  Removal in 30 days.  Bug #677618.
+sys-cluster/open-mx
+
+# Brian Evans <grknight@gentoo.org> (2019-08-23)
+# These packages are incompatible with current versions of PHP (7 or higher)
+# They need a maintainer but no one has volunteered.
+# Removal in 30 days if no one picks them up.
+# Bugs 615472 651166 and 651180 respectively
+www-apps/groupoffice
+www-apps/phpwebsite
+www-apps/sitebar
+
+# Matthias Maier <tamiko@gentoo.org> (2019-08-22)
+# Masked for removal in 30 days. Unmaintained and upstream has released
+# backdoored versions for more than a year due to a compromised development
+# server, http://www.webmin.com/exploit.html
+app-admin/webmin
+
+# Hans de Graaff <graaff@gentoo.org> (2019-08-21)
+# This virtual was useful when jruby was still around but this
+# has not been the case for a long time and there are no
+# reverse dependencies for this package anymore.
+# Removal in 30 days.
+virtual/ruby-ffi
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
+# Depends on >=virtual/{jdk,jre}-11 which is masked
+=www-servers/tomcat-9.0.24
+
+# Mart Raudsepp <leio@gentoo.org> (2019-08-18)
+# Fails to dbus activate properly for me. Help welcome figuring it out.
+net-misc/gnome-remote-desktop
+
+# Mike Gilbert <floppym@gentoo.org> (2019-08-13)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-78
+
+# Mart Raudsepp <leio@gentoo.org> (2019-07-28)
+# GNOME 3.33 development release packages
+>=dev-libs/vala-common-0.45
+dev-lang/vala:0.46
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-07-26)
+# Mask 5.x version
+# It breaks hundreds of py2 ebuilds and not all deps are keyworded
+>=dev-python/pytest-5.0.1
+
+# Brian Evans <grknight@gentoo.org> (2019-07-25)
+# Mask new beta versions until release
+dev-lang/php:7.4
+~virtual/httpd-php-7.4
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-07-08)
+# Needs LOTS of testing, broke boot on my laptop in early attempts, maybe needs
+# matching genkernel work?
+>=sys-fs/lvm2-2.03
+
+# Daniel Pielmeier <billie@gentoo.org> (2019-07-06)
+# Requires >=dev-lang/lua-5.2 which is masked
+>=app-admin/conky-1.11.4
+
+# Patrick Lauer <patrick@gentoo.org> (2019-05-23)
+# PostgreSQL beta and release candidate releases are pre-release testing
+# versions, not meant for production use. They are feature-frozen, and are
+# released to the public for testing before final release
+#
+# NOTE: Successive beta or candidate releases may not be backwards compatible,
+# so it is important that you review the release notes before upgrading.
+#
+# For more information about beta and release candidate versions, see:
+#     https://www.postgresql.org/developer/beta/
+dev-db/postgresql:12
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-05-11)
+# Perl 5.24 will be removed soon. Please upgrade.
+<dev-lang/perl-5.26.2
+=virtual/perl-Archive-Tar-2.40.100_rc-r6
+=virtual/perl-B-Debug-1.230.0-r3
+=virtual/perl-CPAN-2.110.100_rc-r6
+=virtual/perl-CPAN-Meta-2.150.5-r1
+=virtual/perl-Carp-1.400.0-r1
+=virtual/perl-Compress-Raw-Bzip2-2.69.0-r1
+=virtual/perl-Compress-Raw-Zlib-2.69.0-r1
+=virtual/perl-DB_File-1.835.0-r3
+=virtual/perl-Data-Dumper-2.160.0-r1
+=virtual/perl-Devel-PPPort-3.320.0-r1
+=virtual/perl-Digest-MD5-2.540.0-r3
+=virtual/perl-Digest-SHA-5.950.100_rc-r6
+=virtual/perl-Encode-2.800.100_rc-r4
+=virtual/perl-ExtUtils-MakeMaker-7.100.200_rc-r4
+=virtual/perl-ExtUtils-ParseXS-3.310.0-r1
+=virtual/perl-File-Spec-3.630.100_rc-r4
+=virtual/perl-Filter-Simple-0.920.0-r3
+=virtual/perl-Getopt-Long-2.480.0-r1
+=virtual/perl-HTTP-Tiny-0.56.1_rc-r4
+=virtual/perl-I18N-LangTags-0.400.0-r5
+=virtual/perl-IO-1.360.100_rc-r4
+=virtual/perl-IO-Compress-2.69.1_rc-r4
+=virtual/perl-IO-Socket-IP-0.370.0-r3
+=virtual/perl-IPC-Cmd-0.920.100_rc-r6
+=virtual/perl-JSON-PP-2.273.0.100_rc-r6
+=virtual/perl-Locale-Maketext-1.260.100_rc-r6
+=virtual/perl-Math-BigInt-1.999.715-r2
+=virtual/perl-Math-BigInt-FastCalc-0.400.0-r1
+=virtual/perl-Math-BigRat-0.260.802-r1
+=virtual/perl-Math-Complex-1.590.0-r9
+=virtual/perl-Module-CoreList-5.201.709.220-r2
+=virtual/perl-Module-Load-Conditional-0.640.0-r3
+=virtual/perl-Module-Metadata-1.0.31-r1
+=virtual/perl-Net-Ping-2.430.100_rc-r6
+=virtual/perl-Parse-CPAN-Meta-1.441.700.100_rc-r4
+=virtual/perl-Perl-OSType-1.9.0-r1
+=virtual/perl-Pod-Simple-3.320.0-r1
+=virtual/perl-Safe-2.390.0-r3
+=virtual/perl-Scalar-List-Utils-1.420.200_rc-r1
+=virtual/perl-Storable-2.560.100_rc-r4
+=virtual/perl-Sys-Syslog-0.330.100_rc-r6
+=virtual/perl-Term-ANSIColor-4.40.0-r1
+=virtual/perl-Term-ReadLine-1.150.0-r3
+=virtual/perl-Test-1.280.100_rc-r4
+=virtual/perl-Test-Harness-3.360.100_rc-r3
+=virtual/perl-Test-Simple-1.1.14_p522-r2
+=virtual/perl-Thread-Queue-3.90.0-r1
+=virtual/perl-Thread-Semaphore-2.120.0-r9
+=virtual/perl-Unicode-Collate-1.140.0-r2
+=virtual/perl-XSLoader-0.220.0-r4
+=virtual/perl-bignum-0.420.100_rc-r4
+=virtual/perl-libnet-3.80.100_rc-r4
+=virtual/perl-parent-0.234.0-r1
+=virtual/perl-podlators-4.70.0-r1
+=virtual/perl-threads-2.70.0-r1
+=virtual/perl-threads-shared-1.510.0-r1
+=virtual/perl-version-0.991.600-r1
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-04-17)
+# The Oracle JDK License has changed for releases starting 2019-04-16
+# While it may be fine to use for some usecases it's not comepletely clear
+# what is considered "personal use" and if we can legally distribute it.
+# License states:
+# "You may not:
+# make the Programs available in any manner to any third party"
+# masking all future versions, removal will follow soon.
+# Alternatives: icedtea, icedtea-bin, openjdk, openjdk-bin, openjdk-jre-bin
+# Bug: https://bugs.gentoo.org/681828
+>dev-java/oracle-jdk-bin-1.8.0.202:1.8
+>dev-java/oracle-jre-bin-1.8.0.202:1.8
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-03-25)
+# Requires >=dev-lang/lua-5.3 which is masked
+sys-apps/likwid
+
+# Matt Turner <mattst88@gentoo.org> (2019-03-16)
+# Previously packaged drivers, now removed from Gentoo.
+# Keep this mask in place so users are aware, but can also easily unmask them
+# in an overlay if so desired.
+x11-drivers/xf86-input-citron
+x11-drivers/xf86-video-apm
+x11-drivers/xf86-video-ark
+x11-drivers/xf86-video-chips
+x11-drivers/xf86-video-cirrus
+x11-drivers/xf86-video-cyrix
+x11-drivers/xf86-video-i128
+x11-drivers/xf86-video-i740
+x11-drivers/xf86-video-impact
+x11-drivers/xf86-video-mach64
+x11-drivers/xf86-video-neomagic
+x11-drivers/xf86-video-newport
+x11-drivers/xf86-video-nsc
+x11-drivers/xf86-video-rendition
+x11-drivers/xf86-video-s3
+x11-drivers/xf86-video-s3virge
+x11-drivers/xf86-video-savage
+x11-drivers/xf86-video-sis
+x11-drivers/xf86-video-sisusb
+x11-drivers/xf86-video-sunbw2
+x11-drivers/xf86-video-suncg14
+x11-drivers/xf86-video-suncg3
+x11-drivers/xf86-video-suncg6
+x11-drivers/xf86-video-sunffb
+x11-drivers/xf86-video-sunleo
+x11-drivers/xf86-video-suntcx
+x11-drivers/xf86-video-tdfx
+x11-drivers/xf86-video-tga
+x11-drivers/xf86-video-trident
+x11-drivers/xf86-video-tseng
+x11-drivers/xf86-video-voodoo
+
+# Eray Aslan <eras@gentoo.org> (2019-03-01)
+# Mask experimental software
+=mail-mta/postfix-3.5*
+
+# Dennis Lamm <expeditioneer@gentoo.org> (2019-01-29)
+# Depends on >=app-text/enchant-2.0.0 which is masked
+=gnome-extra/gtkhtml-4.10.0-r1
+
+# Dennis Lamm <expeditioneer@gentoo.org> (2019-01-28)
+# Depends on >=app-text/enchant-2.0.0 which is masked
+>=app-text/gtkspell-3.0.10
+
+# Dennis Lamm <expeditioneer@gentoo.org> (2019-01-28)
+# Depends on >=app-text/enchant-2.1.3 which is masked
+>=app-text/gspell-1.8.1
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2019-01-23)
+# Depends on >=virtual/{jdk,jre}-11 which is masked
+=dev-java/ant-eclipse-ecj-4.10
+=dev-java/eclipse-ecj-4.10
+
+# Thomas Deutschmann <whissi@gentoo.org> (2018-12-10)
+# Requires >=dev-lang/lua-5.2 which is masked
+>=app-admin/lsyncd-2.2.3
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-11-25)
+# Masked per security vulnerability CVE-2018-14345, bug #661510
+# Keeping it masked while users have unsolved issues with >0.15.0.
+<x11-misc/sddm-0.18.0
+
+# Ian Stakenvicius <axs@gentoo.org> (2018-11-07)
+# on behalf of Mozilla Project <mozilla@gentoo.org>
+# Mask old/vuln thunderbird for removal by 2019,
+# see security bug 670102
+<mail-client/thunderbird-60.0
+<mail-client/thunderbird-bin-60.0
+
+# Brian Evans <grknight@gentoo.org> (2018-11-05)
+# Causes a dependency loop in the OpenRC script. Bug #651998
+=sys-fs/cryptsetup-2.0.5-r1
+
+# Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
+# EOL and has known vulnerabilities. Please move to
+# Firefox 60 or newer if you can.
+<www-client/firefox-60
+<www-client/firefox-bin-60
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-10-07)
+# Masked for more testing especially of reverse-deps.
+>=dev-games/ogre-1.11.2
+
+# Thomas Deutschmann <whissi@gentoo.org> (2018-10-06)
+# Outdated and vulnerable snapshot; libav-12.3 is the better
+# version for now
+=media-video/libav-13_pre20171219
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
+# Mask transition ebuilds that were needed only for <glibc-2.26
+# We will keep them in the tree as long as we have masked
+# <glibc-2.26.
+~net-libs/libnsl-0
+~net-libs/rpcsvc-proto-0
+
+# Michał Górny <mgorny@gentoo.org> (2018-08-01)
+# Multiprocessing versions of gemato.  They are known to hang on some
+# users, so let's keep them masked until somebody figures out what's
+# wrong.  Bug #647964.
+~app-portage/gemato-14.1m
+~app-portage/gemato-14.0m
+~app-portage/gemato-9999m
+
+# Kent Fredric <kentnl@gentoo.org> (2018-05-27)
+# Subject to Man-in-the-middle security bypass vulnerability.
+# Retained in tree only for users who need older versions
+# for compatibility reasons.
+# Bug: #623942
+<dev-perl/DBD-mysql-4.44.0
+
+# Matt Turner <mattst88@gentoo.org> (2018-05-25)
+# New package. Needs to interact with media-libs/mesa and
+# x11-drivers/nvidia-drivers. Work in progress.
+media-libs/libglvnd
+
+# Brian Evans <grknight@gentoo.org> (2018-04-20)
 # Likely to break a lot of software
 # Masked for initial testing
 >=dev-db/mysql-connector-c++-8.0.0
 
-# Lars Wendler <polynomial-c@gentoo.org> (18 Apr 2018)
-# Breaks consumers most likely because of the following change:
-#   * Add const to several classes and members
-# See tracker bug #653464
->=app-text/poppler-0.64.0
-
-# Jason Zaman <perfinion@gentoo.org> (08 Apr 2018)
-# Dead upstream, for an old version of Xfce
-# Masked for removal in 30 days.
-xfce-extra/xfce-theme-manager
-
-# Rick Farina <zerochaos@gentoo.org> (04 Apr 2018)
-# Violates PMS and does not work with stable portage.
-# Masked for removal in 60 days, lift mask if bug #650126 is fixed
-sys-fs/aufs3
-sys-fs/aufs4
-
-# Michał Górny (03 Apr 2018)
-# Starting with sys-apps/sandbox-2.13+, unloading is possible via
-# disabling (SANDBOX_ON=0) + wiping LD_PRELOAD. This renders the tool
-# obsolete. Removal in 30 days.
-app-portage/unsandbox
-
-# Matthias Maier <tamiko@gentoo.org> (3 Apr 2018)
-# Remove old Intel C/C++/Fortran compiler ebuilds. These packages require
-# to acquire a non-commercial license by Intel and download "Intel Parallel
-# Studio" in ancient versions (3+ years old). Current versions (as of 2018)
-# can be found in the ::science overlay.
-#
-# Corresponding eclass/intel-sdp eclass slated for removal as well.
-#
-# Masked for removal in 30 days.
-<dev-lang/icc-18
-<dev-lang/ifc-18
-dev-lang/idb
-<dev-libs/intel-common-18
-<sci-libs/ipp-18
-sci-chemistry/cyana
-
-# Jeroen Roovers <jer@gentoo.org> (6 Apr 2018)
-# Requires >=dev-libs/icu-61.1
-# https://bugs.gentoo.org/651698
-=net-libs/nodejs-9.11*
-
-# Jeroen Roovers <jer@gentoo.org> (6 Apr 2018)
-# Requires >=dev-libs/openssl-1.1.0
-=net-libs/nodejs-10*
-
-# Mart Raudsepp <leio@gentoo.org> (30 Mar 2018)
-# GStreamer mp3 decoder plugin based on libmad is removed with gstreamer-1.12.
-# media-plugins/gst-plugins-mpg123 is the suggested replacement.
-# Masked for removal in 30 days. Bug 631128
-media-plugins/gst-plugins-mad:1.0
-
-# Lars Wendler <polynomial-c@gentoo.org> (27 Mar 2018)
-# Breaks a couple of revdeps. See tracker bug at
-# https://bugs.gentoo.org/651698
-=dev-libs/icu-61.1
-=dev-libs/icu-layoutex-61.1
-
-# Tony Vroon <chainsaw@gentoo.org> (24 Mar 2018)
-# This is a vulnerable version of Asterisk and should not be used except
-# to troubleshoot a purported memory leak in the 11.25.3 release.
-# Bug 629682.
-=net-misc/asterisk-11.25.1
-
-# Aaron W. Swenson <titanofold@gentoo.org> (22 Mar 2018)
-# EOL. No longer receives bug or security fixes. Recommended to update
-# to latest available.
-# Removal in 30 days (21 Apr 2018). Bug 634028.
-<dev-db/postgresql-9.3
-
-# Michał Górny <mgorny@gentoo.org> (20 Mar 2018)
-# Poorly tested version bump followed by a series of quick hacks
-# that do not make it any more working. Bug #651030.
->=sys-devel/distcc-3.3
-
-# Georgy Yakovlev <ya@sysdump.net> (13 Mar 2018)
-# 1.x version is no longer maintained by upstream
-# 2.x is in the tree and is better in almost every way
-# Removal in 90 days. Bug #650464
-=net-dns/dnscrypt-proxy-1.9.5-r1
-
-# Sebastian Pipping <sping@gentoo.org> (11 Mar 2018)
-# Breaks XFCE, 1.19.6 was fine (in that regard). Bug #650228
->=x11-base/xorg-server-1.19.7
->=x11-base/xorg-drivers-1.20
-
-# Tim Harder <radhermit@gentoo.org> (01 Mar 2018)
-# Masked for testing.
->=dev-python/aiohttp-3
-
-# Anthony G. Basile <blueness@gentoo.org> (25 Feb 2018)
-# Upstream has been dead since 2012.  Migrate to uclibc-ng.
-# See https://wiki.gentoo.org/wiki/Project:Hardened_uClibc
-sys-libs/uclibc
-
-# Mart Raudsepp <leio@gentoo.org> (23 Feb 2018)
-# Old net-libs/webkit-gtk SLOTs have hundreds of known security issues.
-# Use the security safe net-libs webkit-gtk SLOT=4 instead via
-# libraries and applications ported to gtk3 and webkit2gtk API.
-# Please keep this package.mask entry until at least 25th May 2018 for
-# extra notification of the security vulnerabilities. Bug #577068.
-net-libs/webkit-gtk:2
-net-libs/webkit-gtk:3
-
-# Eray Aslan <eras@gentoo.org> (08 Feb 2018)
-# Mask experimental software
-=mail-mta/postfix-3.4*
-
-# Thomas Deutschmann <whissi@gentoo.org> (07 Feb 2018)
-# Intel recommends to pull these versions because they could
-# cause higher than expected reboots and other unpredictable
-# system behavior. Bug #646646
-=sys-firmware/intel-microcode-20171117_p20171215
-=sys-firmware/intel-microcode-20171117_p20171215-r1
-=sys-firmware/intel-microcode-20180108
-=sys-firmware/intel-microcode-20180108-r1
-
-# Patrice Clement <monsieurp@gentoo.org> (26 Jan 2018)
-# Has different symbols. Known to cause issues with i3bar/swaybar.
-media-fonts/fontawesome:0/5
-
-# Eray Aslan <eras@gentoo.org> (22 Jan 2018)
-# Vulnerable - see https://bugs.gentoo.org/630684
-# Please migrate to cyrus-imapd-3.0 releases
-=net-mail/cyrus-imapd-2.5*
-
-# Patrice Clement <monsieurp@gentoo.org> (18 Jan 2018)
-# mpv >= 0.28.0 requires currently masked ffmpeg >= 4.0.
->=media-video/mpv-0.28.0
-
-# Richard Freeman <rich0@gentoo.org> (09 Jan 2018)
-# Bug 644048 - temp QA mask until it can get sorted out
-# Lars Wendler <polynomial-c@gentoo.org> (26 Feb 2018)
-# See also tracker bug: https://bugs.gentoo.org/648864
-~sys-apps/attr-2.4.48
-
-# Lars Wendler <polynomial-c@gentoo.org> (10 Jan 2018)
-# Mask followup bugfixes for =sys-apps/attr-2.4.48 as well until proper
-# testing has been conducted.
-=sys-apps/acl-2.2.52-r2
-
-# Matthias Maier <tamiko@gentoo.org> (26 Dec 2017)
-# gcc depends on mpfr and this version changes soname. Spare users with
-# FEATURES=-preserve-libs from completely frying their system.
->=dev-libs/mpfr-4.0.0
-
-# Thomas Beierlein <tomjbe@gentoo.org> (23 Dec 2017)
-# To adapt to changed version naming by upstream
-# (pcb-yyyymmdd to pcb-x.y.z) we move the ebuild to
-# pcb-0_pyyyymmdd and mask >=pcb-20000000.
-# Do not remove the mask until newer version gets stable
->=sci-electronics/pcb-20000000
-
-# Andreas Sturmlechner <asturm@gentoo.org> (21 Dec 2017)
-# Masked for testing
-=dev-libs/libical-3.0.1
-
-# James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
-# Java 9 is not yet fully supported on Gentoo. Packages cannot depend
+# James Le Cuirot <chewi@gentoo.org> (2017-12-17)
+# Java 9+ is not yet fully supported on Gentoo. Packages cannot depend
 # on it so these virtuals are not yet required. If you wish to use
-# Java 9 now then install oracle-(jdk|jre)-bin:9 directly.
-virtual/jdk:9
-virtual/jre:9
+# Java 9+ then install oracle-(jdk|jre)-bin or openjdk(-bin) directly.
+virtual/jdk:11
+virtual/jre:11
 
-# Patrice Clement <monsieurp@gentoo.org> (12 Dec 2017)
-# Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
-# (<0.6) that have been punted from the tree.
-net-misc/cocaine-core
-
-# Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
-# Depends on dead Qt4, upstream porting inquiry pending. Bug #631788
-games-kids/crayon-physics
-
-# Michał Górny <mgorny@gentoo.org> (25 Nov 2017)
-# Testing branch GTK+3 release. Changes API, breaks xfce-base/xfdesktop.
-# Masked until the latter sees a new release.
->=dev-python/thunarx-python-0.4.0
->=xfce-base/thunar-1.7
->=xfce-extra/thunar-archive-plugin-0.4.0
->=xfce-extra/thunar-media-tags-plugin-0.3.0
->=xfce-extra/thunar-shares-plugin-0.3.0
-
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
-# Depends on dead Qt4. Last-rites on hold for chance of Qt5-port. Bug #620702
-<media-gfx/freecad-0.17
-
-# Patrice Clement <monsieurp@gentoo.org> (28 Oct 2017)
-# Missing dependencies.
->=dev-python/scrapy-1.4.0
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (22 Oct 2017)
-# Broken with recent Perl (5.26) and not used by anything
-# in the Gentoo repository. Please uninstall.
-sys-devel/autoconf:2.59
-sys-devel/autoconf:2.61
-sys-devel/autoconf:2.62
-sys-devel/autoconf:2.63
-sys-devel/autoconf:2.65
-sys-devel/autoconf:2.67
-sys-devel/autoconf:2.68
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (18 Oct 2017)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-10-18)
 # sys-devel/automake versions 1.4, 1.5, 1.6, 1.7, 1.8
 # have known security vulnerabilities, are broken with
 # recent Perl (>=5.26.0), and are not used by anything in
@@ -446,7 +1444,7 @@ sys-devel/automake:1.6
 sys-devel/automake:1.7
 sys-devel/automake:1.8
 
-# Kent Fredric <kentnl@gentoo.org> (11 Oct 2017)
+# Kent Fredric <kentnl@gentoo.org> (2017-10-11)
 # This package should now be provided entirely by dev-lang/perl,
 # stable perl 5.24 provides Unicode-Collate-1.140.0
 # testing perl 5.26 provides Unicode-Collate-1.190.0
@@ -457,52 +1455,17 @@ sys-devel/automake:1.8
 # See bug #634040
 <perl-core/Unicode-Collate-1.190.0-r99
 
-# Patrice Clement <monsieurp@gentoo.org> (01 Oct 2017)
-# Mask Atom betas for testing.
-app-editors/atom:beta
-
-# Patrice Clement <monsieurp@gentoo.org> (09 Sep 2017)
+# Patrice Clement <monsieurp@gentoo.org> (2017-09-09)
 # Python 3 port is almost complete with version 0.6.0. Users might run into
 # minor bumps here and there which is why the mask is still in place for the
 # time being.
 >=dev-java/javatoolkit-0.6.0
 
-# Gilles Dartiguelongue <eva@gentoo.org> (04 Sep 2017)
+# Gilles Dartiguelongue <eva@gentoo.org> (2017-09-04)
 # Incompatible changes in API in Enchant 2. Bug #629838.
 >=app-text/enchant-2
 
-# Gilles Dartiguelongue <eva@gentoo.org> (2 Sep 1017)
-# Gnome 3.26 package mask
->=app-text/libgepub-0.5
-
-# Anthony G. Basile <blueness@gentoo.org> (27 Aug 2017)
-# Upstream is no longer providing public patches
-sys-kernel/hardened-sources
-
-# Patrice Clement <monsieurp@gentoo.org> (23 Aug 2017)
-# Packages depending on this library need to be tested first before
-# it is unmasked. Possibly some slotting is still needed.
-# Package testing tracked in bug #611022.
->=dev-libs/msgpack-1.4.2
-
-# Sébastien Fabbro <bicatali@gentoo.org> (19 Aug 2017)
-# ipython-6 is python-3 only and causes circular dependencies
-# Unset python_targets_python2_7 for ipykernel and ipyparallel if needed.
->=dev-python/ipython-6
-
-# Mats Lidell <matsl@gentoo.org> (17 Aug 2017)
-# Masked ede and all its dependencies due to security reasons.
-# bug #398241
-app-xemacs/ede
-app-xemacs/semantic
-app-xemacs/jde
-app-xemacs/xslt-process
-app-xemacs/xetla
-app-xemacs/cogre
-app-xemacs/ecb
-app-xemacs/xemacs-packages-all
-
-# Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
+# Kent Fredric <kentnl@gentoo.org> (2017-07-21)
 # Masked due to serious regression that introduces widespread data
 # corruption when storing data in blobs. Masked, because any code
 # that is written to use this version is now dependent on this version
@@ -511,33 +1474,13 @@ app-xemacs/xemacs-packages-all
 # See: https://github.com/perl5-dbi/DBD-mysql/issues/117
 =dev-perl/DBD-mysql-4.42.0
 
-# Ian Stakenvicius <axs@gentoo.org> (19 Jul 2017)
-# Mask spidermonkey:52 as it is a self-rolled release, no official
-# release has been rolled.  Is only committed to support development
-# versions of gjs.  Will unmask when gnome-3.26 is ready for testing
-# or when upstream releases an official tarball.
-dev-lang/spidermonkey:52
-# Lars Wendler <polynomial-c@gentoo.org> (09 May 2018)
-# Depends on masked spidermonkey:52.
-# Please remove both masks together.
->=sys-auth/polkit-0.114
-
-# Nicolas Bock <nicolasbock@gentoo.org> (17 Jul 2017)
-# Keep shotwell development series masked.
->=media-gfx/shotwell-0.29
-
-# Nicolas Bock <nicolasbock@gentoo.org> (31 Oct 2017)
+# Nicolas Bock <nicolasbock@gentoo.org> (2017-10-31)
 # There are multiple unresolved upstream issues with >=jabref-bin-4.0 (#636036).
 # If you still would like to use this version, please report any issues to
 # upstream.
 >=app-text/jabref-bin-4.0
 
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Randomly broken due to sys-devel/binutils-config bug (#584296).
-# Unmask when it is finally fixed, so people can build the package.
-dev-util/mutrace
-
-# Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
+# Hans de Graaff <graaff@gentoo.org> (2017-06-05)
 # Bundles obsolete and vulnerable webkit version.
 # Upstream has stopped development and recommends using
 # headless mode in >=www-client/chromium-59.
@@ -545,19 +1488,14 @@ dev-util/mutrace
 www-client/phantomjs
 dev-ruby/poltergeist
 
-# Thomas Deutschmann <whissi@gentoo.org> (24 May 2017)
-# Broken runscript/changed behavior causing lvm2 to fail
-# on boot. Bug #617578
->=sys-fs/lvm2-2.02.171
-
-# Michał Górny <mgorny@gentoo.org> (22 May 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-05-22)
 # for Maciej S. Szmigiero <mail@maciej.szmigiero.name>
 # Any version above 5.100.138 breaks b43 driver in various ways.
 # Also, b43 wiki page says to use 5.100.138. Bug #541080.
 >=sys-firmware/b43-firmware-6.30.163.46
 
 # Michał Górny <mgorny@gentoo.org>, Andreas K. Hüttel <dilfridge@gentoo.org>,
-# Matthias Maier <tamiko@gentoo.org> (21 May 2017)
+# Matthias Maier <tamiko@gentoo.org> (2017-05-21 and later updates)
 # These old versions of toolchain packages (binutils, gcc, glibc) are no
 # longer officially supported and are not suitable for general use. Using
 # these packages can result in build failures (and possible breakage) for
@@ -566,37 +1504,22 @@ dev-ruby/poltergeist
 # If you still use one of these old toolchain packages, please upgrade (and
 # switch the compiler / the binutils) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
-# (updated 27 Dec 2017 with gcc < 5.4)
 <sys-devel/gcc-5.4
-<sys-libs/glibc-2.25-r9
-<sys-devel/binutils-2.29.1-r1
+<sys-libs/glibc-2.28
+<sys-devel/binutils-2.32-r1
+<sys-devel/binutils-hppa64-2.32-r1
+<sys-libs/binutils-libs-2.32-r1
 
-# Michał Górny <mgorny@gentoo.org> (20 May 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-05-20)
 # Old versions of CUDA and their reverse dependencies. They do not
 # support GCC 5+, and are really old.
-# (updated 27 Dec 2017 with cuda < 8 because of gcc < 5 mask)
+# (updated 2017-12-27 with cuda < 8 because of gcc < 5 mask)
 <dev-python/pycuda-2016
 <dev-util/nvidia-cuda-sdk-8
 <dev-util/nvidia-cuda-toolkit-8
 net-wireless/cpyrit-cuda
 
-# Bernard Cafarelli <voyageur@gentoo.org> (8 May 2017)
-# Coordinated conversion to wxGTK:3.0-gtk3
-# Drop mask after migration of existing wxGTK:3.0 users
-=net-ftp/filezilla-3.31.0-r300
-=net-ftp/filezilla-3.33.0-r300
-=dev-util/codeblocks-17.12-r300
-
-# Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
-# Old gstreamer 0.10 version, which is security vulnerable.
-# Use gstreamer:1.0 with media-plugins/gst-plugins-libav
-# instead (despite the name, it uses media-video/ffmpeg too).
-# Please keep this mask entry until gstreamer:0.10 is still
-# in tree or at least gets an affecting GLSA from bug 601354
-# Bug #594878.
-media-plugins/gst-plugins-ffmpeg
-
-# Kent Fredric <kentnl@gentoo.org> (04 Feb 2017)
+# Kent Fredric <kentnl@gentoo.org> (2017-02-04)
 # Unsecure versions that have been only restored to tree
 # to resolve compatibility problems with mail-filter/amavisd-new
 # Use with caution due to these being removed for CVE-2016-1251
@@ -604,59 +1527,29 @@ media-plugins/gst-plugins-ffmpeg
 # Bug: #604678
 <dev-perl/DBD-mysql-4.41.0
 
-# Alon Bar-Lev <alonbl@gentoo.org> (06 Feb 2017)
-# Needs openssl-1.1
->=dev-libs/opencryptoki-3.6
-
-# Bernard Cafarelli <voyageur@gentoo.org> (30 Jan 2017)
-# Alpha release with new features, masked for testing
-=app-text/tesseract-4.00.00_alpha*
-
-# Jeroen Roovers <jer@gentoo.org> (12 Jan 2017)
-# Use x11-drivers/nvidia-drivers[tools] instead.
-media-video/nvidia-settings
-
-# Michael Orlitzky <mjo@gentoo.org> (07 Jan 2017)
+# Michael Orlitzky <mjo@gentoo.org> (2017-01-07)
 # This package has some dangerous quality and security issues, but
 # people may still find it useful. It is masked to prevent accidental
 # use. See bugs 603346 and 604998 for more information.
 app-admin/amazon-ec2-init
 
-# Robin H. Johnson <robbat2@gentoo.org> (05 Jan 2017)
+# Robin H. Johnson <robbat2@gentoo.org> (2017-01-05)
 # Masking for testing
 =app-emulation/ganeti-2.16*
 =app-emulation/ganeti-2.17*
 
-# Michał Górny <mgorny@gentoo.org> (17 Nov 2016)
+# Michał Górny <mgorny@gentoo.org> (2016-11-17)
 # New version masked for testing. It supports source-window buffer size
 # over 2G but it 'currently performs 3-5% slower and has 1-2% worse
 # compression'.
 >=dev-util/xdelta-3.1.0
 
-# Tim Harder <radhermit@gentoo.org> (03 Nov 2016)
+# Tim Harder <radhermit@gentoo.org> (2016-11-03)
 # Masked for testing
 =sys-fs/fuse-3*
 =net-fs/sshfs-3*
 
-# Denis Dupeyron <calchan@gentoo.org> (12 Sep 2016)
-# Masked for testing, see bug #588894.
-=x11-misc/light-locker-1.7.0-r1
-
-# Lars Wendler <polynomial-c@gentoo.org> (26 Aug 2016)
-# Masked while being tested and reverse deps aren't fully compatible
-=dev-libs/openssl-1.1*
-
-# James Le Cuirot <chewi@gentoo.org> (03 Apr 2016)
-# Masking Spring Framework for the time being as 3.2.4 is old, has
-# multiple vulnerabilities, and we're not likely to update it
-# soon. Hopefully we can revisit it when the Maven stuff works out.
-dev-java/spring-aop
-dev-java/spring-beans
-dev-java/spring-core
-dev-java/spring-expression
-dev-java/spring-instrument
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (03 Apr 2016)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2016-04-03)
 # Can exhaust all available memory depending on task
 # but is made available for experts who heed this warning
 # as newer versions produce different output. Contact
@@ -664,51 +1557,18 @@ dev-java/spring-instrument
 # for questions.
 <=media-gfx/slic3r-1.1.9999
 
-# James Le Cuirot <chewi@gentoo.org> (07 Feb 2016)
-# Masked until 2.0 final arrives, which hopefully won't depend on
-# commons-dbcp:0 as that requires Java 6. Note that the 2.0 in the
-# tree should have actually been 2.0_beta1. There are no revdeps.
-dev-java/jcs
-
-# Andrey Grozin <grozin@gentoo.org> (04 Jan 2016)
-# Needs a bump and substantial ebuild rewrite
-=sci-mathematics/reduce-20110414-r1
-
-# Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
-# Uses unsafe ioctls that could result in data corruption. Upstream
-# is working on replacing them in the wip/dedup-syscall branch.
-# Keep it masked until they are done. sys-fs/duperemove is
-# the suggested replacement for the meantime.
-sys-fs/bedup
-
-# Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)
-# Releases are not from original upstream but from a fork.
-# Masked as requested by vapier.
-~net-misc/iputils-20160308
-~net-misc/iputils-20161105
-
-# Justin Lecher <jlec@gentoo.org> (28 Feb 2015)
-# Unfixed security problems
-# No upstream support anymore
-# CVE-2015-{0219,0220,0221,0222,5145}
-# CVE-2016-{9013,9014},CVE-2017-{7233,7234}
-# #536586
-# #554864
-=dev-python/django-1.4*
-=dev-python/django-1.5*
-=dev-python/django-1.6*
-=dev-python/django-1.7*
-=dev-python/django-1.9*
-
-# Robin H. Johnson <robbat2@gentoo.org> (04 Aug 2014)
+# Robin H. Johnson <robbat2@gentoo.org> (2014-08-04)
 # Masked for testing, presently fails upstream testsuite:
 # FAIL:07:02:35 (00:00:00) db_dump/db_load(./TESTDIR.3/recd001.db:child killed: kill signal): expected 0, got 1
 # FAIL:07:02:35 (00:00:00) Dump/load of ./TESTDIR.3/recd001.db failed.
 # FAIL:07:02:35 (00:00:00) db_verify_preop: expected 0, got 1
+# Lars Wendler <polynomial-c@gentoo.org> (2019-01-25)
+# Also masked because of mostly incompatible license (AGPL-3)
 =sys-libs/db-6.1*
 =sys-libs/db-6.2*
+=sys-libs/db-18.1*
 
-# Ulrich Müller <ulm@gentoo.org> (15 Jul 2014)
+# Ulrich Müller <ulm@gentoo.org> (2014-07-15)
 # Permanently mask sys-libs/lib-compat and its reverse dependencies,
 # pending multiple security vulnerabilities and QA issues.
 # See bugs #515926 and #510960.
@@ -719,53 +1579,45 @@ games-action/phobiaii
 games-fps/rtcw
 games-fps/unreal
 games-strategy/heroes3
-games-strategy/heroes3-demo
 games-strategy/smac
 
-# Mikle Kolyada <zlogene@gentoo.org> (27 Jun 2014)
+# Mikle Kolyada <zlogene@gentoo.org> (2014-06-27)
 # Masked for proper testing. (Major updates in the code).
 ~dev-perl/PortageXS-0.2.12
 
-# Matti Bickel <mabi@gentoo.org> (22 Apr 2014)
+# Matti Bickel <mabi@gentoo.org> (2014-04-22)
 # Masked slotted lua for testing
-# William Hubbs <williamh@gentoo.org> (07 Aug 2016)
+# William Hubbs <williamh@gentoo.org> (2016-08-07)
 # Taking this mask since Mabi is retired
-# Rafael Martins <rafaelmartins@gentoo.org> (04 Dec 2016)
+# Rafael Martins <rafaelmartins@gentoo.org> (2016-12-04)
 # Adding Lua 5.3 to mask
 app-eselect/eselect-lua
 =dev-lang/lua-5.1.5-r100
 =dev-lang/lua-5.1.5-r101
+=dev-lang/lua-5.1.5-r102
 =dev-lang/lua-5.2.3
 =dev-lang/lua-5.2.3-r1
 =dev-lang/lua-5.2.3-r2
+=dev-lang/lua-5.2.3-r3
+=dev-lang/lua-5.2.4
+=dev-lang/lua-5.2.4-r1
 =dev-lang/lua-5.3.3
 =dev-lang/lua-5.3.3-r1
+=dev-lang/lua-5.3.3-r2
+=dev-lang/lua-5.3.5
+=dev-lang/lua-5.3.5-r1
 
-# Samuli Suominen <ssuominen@gentoo.org> (06 Mar 2012)
+# Samuli Suominen <ssuominen@gentoo.org> (2012-03-06)
 # Masked for testing since this is known to break nearly
 # every reverse dependency wrt bug 407091
 >=dev-lang/lua-5.2.0
 
-# Mike Gilbert <floppym@gentoo.org> (04 Mar 2014)
+# Mike Gilbert <floppym@gentoo.org> (2014-03-04)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
 www-plugins/chrome-binary-plugins:unstable
 
-# Justin Lecher <jlec@gentoo.org> (14 Oct 2013)
-# Seems to break all deps - API change?
->=sci-libs/metis-5
-
-# Michael Weber <xmw@gentoo.org> (17 Jul 2013)
-# Upstream next versions
->=sys-boot/raspberrypi-firmware-1_pre
-
-# Richard Freeman <rich0@gentoo.org> (24 Mar 2013)
-# Contains known buffer overflows.  Package generally works
-# but should not be fed untrusted input (eg from strangers).
-# Masked to ensure users are aware before they install.
-app-text/cuneiform
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (03 Jan 2009)
+# Diego E. Pettenò <flameeyes@gentoo.org> (2009-01-03)
 # These packages are not supposed to be merged directly, instead
 # please use sys-devel/crossdev to install them.
 dev-libs/cygwin
@@ -775,7 +1627,7 @@ dev-util/w32api
 sys-libs/newlib
 dev-embedded/avr-libc
 
-# Chris Gianelloni <wolf31o2@gentoo.org> (03 Mar 2008)
+# Chris Gianelloni <wolf31o2@gentoo.org> (2008-03-03)
 # Masking due to security bug #194607 and security bug #204067
 games-fps/doom3
 games-fps/doom3-cdoom
@@ -793,7 +1645,7 @@ games-fps/quake4-bin
 games-fps/quake4-data
 games-fps/quake4-demo
 
-# <klieber@gentoo.org> (01 Apr 2004)
+# <klieber@gentoo.org> (2004-04-01)
 # The following packages contain a remotely-exploitable
 # security vulnerability and have been hard masked accordingly.
 #

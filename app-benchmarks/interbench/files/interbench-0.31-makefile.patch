@@ -1,0 +1,16 @@
+--- a/Makefile	2016-10-21 04:28:00.000000000 +0200
++++ b/Makefile	2018-11-01 16:56:36.000000000 +0100
+@@ -1,8 +1,9 @@
+-CC=gcc
+-CFLAGS=-W -Wall -g -O2 -s -pipe
+-LDFLAGS=-lrt -lm -pthread
++CC ?= gcc
++CFLAGS+=-W -Wall
++LDFLAGS+=-lrt -lm -pthread
+ 
+-interbench: interbench.o hackbench.o -lm
++interbench: interbench.o hackbench.o
++	$(CC) $(CFLAGS) -o interbench interbench.o hackbench.o $(LDFLAGS)
+ interbench.o: interbench.c
+ hackbench.o: hackbench.c
+ 

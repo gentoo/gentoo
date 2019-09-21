@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: virtualx.eclass
@@ -6,6 +6,7 @@
 # x11@gentoo.org
 # @AUTHOR:
 # Original author: Martin Schlemmer <azarah@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: This eclass can be used for packages that needs a working X environment to build.
 
 if [[ ! ${_VIRTUAL_X} ]]; then
@@ -14,7 +15,7 @@ case "${EAPI:-0}" in
 	0|1|2|3)
 		die "virtualx.eclass: EAPI ${EAPI} is too old."
 		;;
-	4|5|6)
+	4|5|6|7)
 		;;
 	*)
 		die "virtualx.eclass: EAPI ${EAPI} is not supported yet."
@@ -53,7 +54,11 @@ case ${VIRTUALX_REQUIRED} in
 	manual)
 		;;
 	always)
-		DEPEND="${VIRTUALX_DEPEND}"
+		if [[ ${EAPI:-0} != [0123456] ]]; then
+			BDEPEND="${VIRTUALX_DEPEND}"
+		else
+			DEPEND="${VIRTUALX_DEPEND}"
+		fi
 		RDEPEND=""
 		;;
 	optional|tests)
@@ -77,7 +82,11 @@ case ${VIRTUALX_REQUIRED} in
 		IUSE="${VIRTUALX_USE}"
 		;;
 	*)
-		DEPEND="${VIRTUALX_REQUIRED}? ( ${VIRTUALX_DEPEND} )"
+		if [[ ${EAPI:-0} != [0123456] ]]; then
+			BDEPEND="${VIRTUALX_REQUIRED}? ( ${VIRTUALX_DEPEND} )"
+		else
+			DEPEND="${VIRTUALX_REQUIRED}? ( ${VIRTUALX_DEPEND} )"
+		fi
 		RDEPEND=""
 		IUSE="${VIRTUALX_REQUIRED}"
 		;;
@@ -169,7 +178,10 @@ virtx() {
 	# Xvfb is started, else bump the display number
 	#
 	# Azarah - 5 May 2002
-	XDISPLAY=$(i=0; while [[ -f /tmp/.X${i}-lock ]] ; do ((i++));done; echo ${i})
+	# GNOME GDM may have started X on DISPLAY :0 with a
+	# lock file /tmp/.X1024-lock, therefore start the search at 1.
+	# Else a leftover /tmp/.X1-lock will prevent finding an available display.
+	XDISPLAY=$(i=1; while [[ -f /tmp/.X${i}-lock ]] ; do ((i++));done; echo ${i})
 	debug-print "${FUNCNAME}: XDISPLAY=${XDISPLAY}"
 
 	# We really do not want SANDBOX enabled here

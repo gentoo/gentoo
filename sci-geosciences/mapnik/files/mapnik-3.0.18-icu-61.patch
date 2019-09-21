@@ -1,0 +1,54 @@
+From 1ddfe6c315487a802f2ea38119255a203a25913c Mon Sep 17 00:00:00 2001
+From: Raul Marin <git@rmr.ninja>
+Date: Tue, 3 Apr 2018 13:18:03 +0200
+Subject: [PATCH] Qualify ICU types explicitly
+
+ICU 61 has dropped the global `using namespace icu;`
+http://site.icu-project.org/download/61#TOC-Migration-Issues
+---
+ include/mapnik/text/scrptrun.hpp | 2 +-
+ src/text/text_layout.cpp         | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/include/mapnik/text/scrptrun.hpp b/include/mapnik/text/scrptrun.hpp
+index 2161c510d9..c219a2a0d3 100644
+--- a/include/mapnik/text/scrptrun.hpp
++++ b/include/mapnik/text/scrptrun.hpp
+@@ -37,7 +37,7 @@ struct ParenStackEntry
+     UScriptCode scriptCode = USCRIPT_INVALID_CODE;
+ };
+ 
+-class ScriptRun : public UObject {
++class ScriptRun : public icu::UObject {
+ public:
+     ScriptRun();
+ 
+diff --git a/src/text/text_layout.cpp b/src/text/text_layout.cpp
+index 663cbe11aa..ecf02ab8e3 100644
+--- a/src/text/text_layout.cpp
++++ b/src/text/text_layout.cpp
+@@ -207,6 +207,7 @@ void text_layout::layout()
+ // At the end everything that is left over is added as the final line.
+ void text_layout::break_line_icu(std::pair<unsigned, unsigned> && line_limits)
+ {
++    using BreakIterator = icu::BreakIterator;
+     text_line line(line_limits.first, line_limits.second);
+     shape_text(line);
+ 
+@@ -228,7 +229,7 @@ void text_layout::break_line_icu(std::pair<unsigned, unsigned> && line_limits)
+     }
+ 
+     mapnik::value_unicode_string const& text = itemizer_.text();
+-    Locale locale; // TODO: Is the default constructor correct?
++    icu::Locale locale; // TODO: Is the default constructor correct?
+     UErrorCode status = U_ZERO_ERROR;
+     std::unique_ptr<BreakIterator> breakitr(BreakIterator::createLineInstance(locale, status));
+ 
+@@ -336,6 +337,7 @@ inline int adjust_last_break_position (int pos, bool repeat_wrap_char)
+ 
+ void text_layout::break_line(std::pair<unsigned, unsigned> && line_limits)
+ {
++    using BreakIterator = icu::BreakIterator;
+     text_line line(line_limits.first, line_limits.second);
+     shape_text(line);
+     double scaled_wrap_width = wrap_width_ * scale_factor_;

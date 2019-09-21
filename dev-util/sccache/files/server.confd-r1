@@ -1,0 +1,12 @@
+# /etc/conf.d/sccache-server: config file for /etc/init.d/sccache-server
+#
+
+# Full path to config file. /etc/sccache/server.conf is default if not set.
+#SCCACHE_SERVER_CONF="/etc/sccache/server.conf"
+
+# logging is off by default, possible values are: error warn info debug trace
+#SCCACHE_SERVER_LOGLEVEL=info
+
+# no limits set by default, see IONICE(1), NICE(1), START-STOP-DAEMON(8)
+#SSD_NICELEVEL=15
+#SSD_IONICELEVEL=3

@@ -1,11 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils toolchain-funcs
+EAPI=6
 
-DESCRIPTION="Take a list of prefixes and perform two optimisations to reduce the length of the prefix list"
-HOMEPAGE="http://dist.automagic.org/"
+inherit toolchain-funcs
+
+DESCRIPTION="Perform two optimisations on a list of prefixes to reduce the length of the list"
+HOMEPAGE="https://ftp.isc.org/isc/aggregate"
 SRC_URI="${HOMEPAGE}/${P}.tar.gz"
 
 LICENSE="ISC"
@@ -16,9 +17,7 @@ IUSE=""
 RDEPEND="dev-lang/perl"
 DEPEND=""
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-build-fixup.patch
-}
+PATCHES=( "${FILESDIR}/${P}-build-fixup.patch" )
 
 src_configure() {
 	tc-export CC
@@ -26,7 +25,7 @@ src_configure() {
 }
 
 src_install() {
-	dobin aggregate aggregate-ios || die
+	dobin aggregate{,-ios}
 	doman aggregate{,-ios}.1
-	dodoc HISTORY
+	einstalldocs
 }

@@ -1,0 +1,13 @@
+--- a/setup.py	2009-03-16 15:45:54.000000000 +0100
++++ b/setup.py	2018-06-16 18:23:29.689677175 +0200
+@@ -73,9 +73,6 @@
+ 							   libraries=libname,
+ 							   extra_link_args=lflags_arg)],
+ 	  scripts = ['rdiff-backup', 'rdiff-backup-statistics'],
+-	  data_files = [('share/man/man1', ['rdiff-backup.1',
+-										'rdiff-backup-statistics.1']),
+-					('share/doc/rdiff-backup-%s' % (version_string,),
+-					 ['CHANGELOG', 'COPYING', 'README', 'FAQ.html'])],
++	  data_files = [('share/man/man1', ['rdiff-backup.1','rdiff-backup-statistics.1'])],
+ 					**extra_options)
+ 

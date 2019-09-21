@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads"
 inherit python-single-r1 unpacker
 
 DESCRIPTION="Commercial version of app-emulation/wine with paid support."
-HOMEPAGE="http://www.codeweavers.com/products/crossover/"
+HOMEPAGE="https://www.codeweavers.com/products/"
 SRC_URI="https://media.codeweavers.com/pub/crossover/cxlinux/demo/install-crossover-${PV}.bin"
 
 LICENSE="CROSSOVER-3"
@@ -42,7 +42,7 @@ RDEPEND="${DEPEND}
 	dev-util/desktop-file-utils
 	!app-emulation/crossover-office-pro-bin
 	!app-emulation/crossover-office-bin
-	capi? ( net-dialup/capi4k-utils )
+	capi? ( net-libs/libcapi[abi_x86_32(-)] )
 	cups? ( net-print/cups[abi_x86_32(-)] )
 	gsm? ( media-sound/gsm[abi_x86_32(-)] )
 	jpeg? ( virtual/jpeg[abi_x86_32(-)] )
@@ -64,6 +64,7 @@ RDEPEND="${DEPEND}
 	>=media-libs/freetype-2.0.0[abi_x86_32(-)]
 	media-libs/mesa[abi_x86_32(-)]
 	sys-apps/util-linux[abi_x86_32(-)]
+	sys-libs/ncurses:5/5[abi_x86_32(-)]
 	sys-libs/zlib[abi_x86_32(-)]
 	x11-libs/libICE[abi_x86_32(-)]
 	x11-libs/libSM[abi_x86_32(-)]
@@ -78,7 +79,7 @@ RDEPEND="${DEPEND}
 
 pkg_nofetch() {
 	einfo "Please visit ${HOMEPAGE}"
-	einfo "and place ${A} in ${DISTDIR}"
+	einfo "and place ${A} into your DISTDIR directory"
 }
 
 src_unpack() {
@@ -102,7 +103,7 @@ src_prepare() {
 
 src_install() {
 	# Install crossover symlink, bug #476314
-	dosym /opt/cxoffice/bin/crossover /opt/bin/crossover
+	dosym ../cxoffice/bin/crossover /opt/bin/crossover
 
 	# Install documentation
 	dodoc README changelog.txt

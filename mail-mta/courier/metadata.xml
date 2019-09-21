@@ -4,10 +4,6 @@
 	<maintainer type="person">
 		<email>hanno@gentoo.org</email>
 	</maintainer>
-	<maintainer type="project">
-		<email>net-mail@gentoo.org</email>
-		<name>Net-Mail</name>
-	</maintainer>
 	<longdescription>
 		Complete email package consisting of pop, imap, smtp, and fax
 		server and secure version of the above also.

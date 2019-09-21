@@ -20,8 +20,6 @@ changed at run time.
 </longdescription>
 	<use>
 		<flag name="hyperspec">Use local hyperspec instead of online version</flag>
-		<flag name="new-clx">Build CLISP with support for the NEW-CLX module which is a
--C binding to the Xorg libraries</flag>
 		<flag name="svm">Build CLISP with support for the Support Vector Machine module</flag>
 	</use>
 	<upstream>

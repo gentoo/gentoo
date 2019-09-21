@@ -11,7 +11,7 @@ inherit wxwidgets perl-module
 DESCRIPTION="Building, finding and using wxWidgets binaries"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="amd64 ~ia64 x86"
 IUSE="gstreamer opengl test"
 
 RDEPEND="

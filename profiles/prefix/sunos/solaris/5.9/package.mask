@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 
-# Jeremy Olexa <darkside@gentoo.org> (26 Aug 2008)
+# Jeremy Olexa <darkside@gentoo.org> (2008-08-26)
 # Requires that pthread.h defines pthread_atfork() but it doesn't on Solaris 9
 # SPARC.
 dev-libs/nss
 
-# Jeremy Olexa <darkside@gentoo.org> (26 Aug 2008)
+# Jeremy Olexa <darkside@gentoo.org> (2008-08-26)
 # Massive header errors. SIZE_MAX is defined in limits.h, getopt_long.c requires
 # getopt.h and err.h which don't seem to be present. Might be salvageable with
 # gnulib but I don't know much about that yet. Old versions still work.

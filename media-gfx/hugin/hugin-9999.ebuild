@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 WX_GTK_VER="3.0"
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
-inherit mercurial python-single-r1 wxwidgets versionator cmake-utils
+inherit mercurial python-single-r1 wxwidgets cmake-utils eapi7-ver xdg
 
 DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
@@ -14,7 +14,7 @@ SRC_URI=""
 EHG_REPO_URI="http://hg.code.sf.net/p/hugin/hugin"
 EHG_PROJECT="${PN}-${PN}"
 
-LICENSE="GPL-2 SIFT"
+LICENSE="GPL-2+ BSD BSD-2 MIT wxWinLL-3 ZLIB FDL-1.2"
 SLOT="0"
 KEYWORDS=""
 
@@ -36,6 +36,7 @@ CDEPEND="
 	media-libs/tiff:0
 	>=media-libs/vigra-1.11.0[openexr]
 	sci-libs/fftw:3.0=
+	sci-libs/flann
 	sys-libs/zlib
 	virtual/glu
 	virtual/jpeg:0
@@ -56,11 +57,15 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS=( authors.txt README TODO )
 
-S=${WORKDIR}/${PN}-$(get_version_component_range 1-3)
+S=${WORKDIR}/${PN}-$(ver_cut 1-2).0
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 	setup-wxwidgets
+}
+
+src_prepare() {
+	cmake-utils_src_prepare
 }
 
 src_configure() {

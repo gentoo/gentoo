@@ -1,5 +1,5 @@
---- configure.in.old	2007-12-05 22:37:57.000000000 +0100
-+++ configure.in	2007-12-05 22:54:57.000000000 +0100
+--- a/configure.in	2007-12-05 22:37:57.000000000 +0100
++++ b/configure.in	2007-12-05 22:54:57.000000000 +0100
 @@ -88,12 +88,11 @@
  	[  --enable-gtk            build with the GTK widget set])
  

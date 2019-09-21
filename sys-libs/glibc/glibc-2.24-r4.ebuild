@@ -18,8 +18,7 @@ RELEASE_VER=""
 case ${PV} in
 9999*)
 	EGIT_REPO_URIS="git://sourceware.org/git/glibc.git"
-	EGIT_SOURCEDIRS="${S}"
-	inherit git-2
+	inherit git-r3
 	;;
 *)
 	RELEASE_VER=${PV}

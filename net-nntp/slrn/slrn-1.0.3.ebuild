@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://jedsoft.org/releases/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE="canlock libressl nls ssl uudeview"
 
 RDEPEND="app-arch/sharutils
@@ -26,7 +26,7 @@ RDEPEND="app-arch/sharutils
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
-PATCHES=( "${FILESDIR}"/${P}-make.patch )
+PATCHES=( "${FILESDIR}"/${PN}-1.0.2-make.patch )
 
 src_configure() {
 	econf \

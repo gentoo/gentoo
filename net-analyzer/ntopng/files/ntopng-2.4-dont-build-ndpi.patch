@@ -1,4 +1,4 @@
---- a/configure.ac.old
+--- a/configure.ac
 +++ b/configure.ac
 @@ -62,13 +62,6 @@
  fi

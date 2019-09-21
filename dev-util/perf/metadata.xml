@@ -9,6 +9,7 @@
 		<name>Yixun Lan</name>
 	</maintainer>
 	<use>
+		<flag name="clang">Enable builtin clang and LLVM support</flag>
 		<flag name="demangle">
 			Enable C++ symbol name demangling, using libbfd from
 			<pkg>sys-devel/binutils</pkg>. When this flag is enabled, the
@@ -25,6 +26,9 @@
 		<flag name="numa">Enable NUMA support</flag>
 		<flag name="perl">
 			Add support for Perl as a scripting language for perf tools.
+		</flag>
+		<flag name="systemtap">
+			Add support to define SDT event in perf tools.
 		</flag>
 		<flag name="unwind">
 			Use sys-libs/libunwind for frame unwinding support.

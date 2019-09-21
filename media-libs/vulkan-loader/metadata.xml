@@ -9,7 +9,6 @@
 		<remote-id type="github">KhronosGroup/Vulkan-LoaderAndValidationLayers</remote-id>
 	</upstream>
 	<use>
-		<flag name="demos">Build vulkan demos and vulkaninfo</flag>
-		<flag name="layers">Build the vulkan layers</flag>
+		<flag name="layers">Include the vulkan layers</flag>
 	</use>
 </pkgmetadata>

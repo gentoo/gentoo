@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>cedk@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		This package supplies the evolve extension for Mercurial
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">hg-evolve</remote-id>
+	</upstream>
+</pkgmetadata>

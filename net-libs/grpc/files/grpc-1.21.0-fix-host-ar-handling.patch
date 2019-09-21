@@ -1,0 +1,47 @@
+From 913486fddb5c2600f6ff83e549ee25e67579666f Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Wed, 22 May 2019 23:04:28 -0700
+Subject: [PATCH] Makefile: fix host ar handling
+
+picked lines from
+https://github.com/grpc/grpc/pull/11476
+---
+ Makefile | 236 ++++++++++++++++++++++++++++---------------------------
+ 1 file changed, 119 insertions(+), 117 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 67495f2..e1c741c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -346,6 +346,7 @@ HOST_CC ?= $(CC)
+ HOST_CXX ?= $(CXX)
+ HOST_LD ?= $(LD)
+ HOST_LDXX ?= $(LDXX)
++HOST_AR ?= $(AR)
+
+ CFLAGS += -std=c99 -Wsign-conversion -Wconversion $(W_SHADOW) $(W_EXTRA_SEMI)
+ CXXFLAGS += -std=c++11
+@@ -483,6 +484,7 @@ HOST_CFLAGS += $(CFLAGS)
+ HOST_CXXFLAGS += $(CXXFLAGS)
+ HOST_LDFLAGS += $(LDFLAGS)
+ HOST_LDLIBS += $(LDLIBS)
++HOST_AROPTS = $(AROPTS)
+
+ # These are automatically computed variables.
+ # There shouldn't be any need to change anything from now on.
+
+@@ -7381,11 +7383,11 @@ $(LIBDIR)/$(CONFIG)/libgrpc_plugin_support.a: protobuf_dep_error
+
+ else
+
+-$(LIBDIR)/$(CONFIG)/libgrpc_plugin_support.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(PROTOBUF_DEP) $(LIBGRPC_PLUGIN_SUPPORT_OBJS)
+-	$(E) "[AR]      Creating $@"
++$(LIBDIR)/$(CONFIG)/libgrpc_plugin_support.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(PROTOBUF_DEP) $(LIBGRPC_PLUGIN_SUPPORT_OBJS)
++	$(E) "[HOSTAR]  Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc_plugin_support.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_plugin_support.a $(LIBGRPC_PLUGIN_SUPPORT_OBJS)
++	$(Q) $(HOST_AR) $(HOST_AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_plugin_support.a $(LIBGRPC_PLUGIN_SUPPORT_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc_plugin_support.a
+ endif

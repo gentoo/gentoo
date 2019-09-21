@@ -17,17 +17,17 @@ SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~x86 ~arm-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc x86 ~x86-linux"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2
 	x11-libs/libXrandr
 	x11-apps/xrandr"
 DEPEND="${RDEPEND}
-	x11-proto/randrproto
-	virtual/pkgconfig
+	>=dev-util/intltool-0.40.0
 	sys-devel/gettext
-	>=dev-util/intltool-0.40.0"
+	virtual/pkgconfig
+	x11-base/xorg-proto"
 
 src_prepare() {
 	default

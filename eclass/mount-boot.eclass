@@ -54,7 +54,7 @@ mount-boot_check_status() {
 	# note that /dev/BOOT is in the Gentoo default /etc/fstab file
 	local fstabstate=$(awk '!/^#|^[[:blank:]]+#|^\/dev\/BOOT/ {print $2}' /etc/fstab | egrep "^/boot$" )
 	local procstate=$(awk '$2 ~ /^\/boot$/ {print $2}' /proc/mounts)
-	local proc_ro=$(awk '{ print $2 " ," $4 "," }' /proc/mounts | sed -n '/\/boot .*,ro,/p')
+	local proc_ro=$(awk '{ print $2 " ," $4 "," }' /proc/mounts | sed -n '/^\/boot .*,ro,/p')
 
 	if [ -n "${fstabstate}" ] && [ -n "${procstate}" ] ; then
 		if [ -n "${proc_ro}" ] ; then

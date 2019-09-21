@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -130,7 +130,7 @@ multilib_src_configure() {
 			;;
 	esac
 
-	ECONF_SOURCE="${S}" econf "${myconf[@]}" MPICC="$(tc-getCC -lmpi)"
+	ECONF_SOURCE="${S}" econf "${myconf[@]}" MPICC="$(tc-getCC) -lmpi"
 }
 
 src_configure() {

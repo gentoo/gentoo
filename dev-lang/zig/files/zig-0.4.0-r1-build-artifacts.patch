@@ -1,0 +1,61 @@
+From 81767a658d07219a402384f98a7553abcbbd2e70 Mon Sep 17 00:00:00 2001
+From: Marc Tiehuis <marctiehuis@gmail.com>
+Date: Thu, 18 Apr 2019 18:58:12 +1200
+Subject: [PATCH] Don't install stage2 artifacts
+
+Fixes #2220.
+---
+ CMakeLists.txt          | 11 ++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1b017a881..047d538e8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -58,6 +58,16 @@ endif()
+ 
+ set(ZIG_CPP_LIB_DIR "${CMAKE_BINARY_DIR}/zig_cpp")
+ 
++# Handle multi-config builds and place each into a common lib. The VS generator
++# for example will append a Debug folder by default if not explicitly specified.
++set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${ZIG_CPP_LIB_DIR})
++set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${ZIG_CPP_LIB_DIR})
++foreach(CONFIG_TYPE ${CMAKE_CONFIGURATION_TYPES})
++    string(TOUPPER ${CONFIG_TYPE} CONFIG_TYPE)
++    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${CONFIG_TYPE} ${ZIG_CPP_LIB_DIR})
++    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CONFIG_TYPE} ${ZIG_CPP_LIB_DIR})
++endforeach(CONFIG_TYPE CMAKE_CONFIGURATION_TYPES)
++
+ if(ZIG_FORCE_EXTERNAL_LLD)
+     find_package(lld)
+     include_directories(${LLVM_INCLUDE_DIRS})
+@@ -253,7 +263,6 @@ else()
+         embedded_lld_wasm
+         embedded_lld_lib
+     )
+-    install(TARGETS embedded_lld_elf embedded_lld_coff embedded_lld_mingw embedded_lld_wasm embedded_lld_lib DESTINATION "${ZIG_CPP_LIB_DIR}")
+ endif()
+ 
+ # No patches have been applied to SoftFloat-3e
+
+From 40fe6afdad1a8676b5d3a5dd23d6d50d6ea9f059 Mon Sep 17 00:00:00 2001
+From: Marc Tiehuis <marctiehuis@gmail.com>
+Date: Wed, 1 May 2019 17:39:23 +1200
+Subject: [PATCH] Don't install zig_cpp lib for stage2 target
+
+Missed in last commit. See #2220.
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 047d538e8..9881ce1de 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6671,6 +6681,5 @@
+ endif()
+ install(TARGETS zig DESTINATION bin)
+-install(TARGETS zig_cpp DESTINATION "${ZIG_CPP_LIB_DIR}")
+ 
+ foreach(file ${ZIG_C_HEADER_FILES})
+     get_filename_component(file_dir "${C_HEADERS_DEST}/${file}" DIRECTORY)

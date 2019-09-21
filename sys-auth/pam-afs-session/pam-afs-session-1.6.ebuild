@@ -6,8 +6,8 @@ EAPI=0
 inherit pam
 
 DESCRIPTION="OpenAFS PAM Module"
-HOMEPAGE="http://www.eyrie.org/~eagle/software/pam-afs-session/"
-SRC_URI="http://archives.eyrie.org/software/afs/${P}.tar.gz"
+HOMEPAGE="https://www.eyrie.org/~eagle/software/pam-afs-session/"
+SRC_URI="https://archives.eyrie.org/software/ARCHIVE/${PN}/${P}.tar.gz"
 
 LICENSE="HPND openafs-krb5-a"
 SLOT="0"

@@ -1,9 +1,13 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>wschlich@gentoo.org</email>
-		<name>Wolfram Schlich</name>
+		<email>lmiphay@gmail.com</email>
+		<name>Paul Healy</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 Dstat is a versatile replacement for vmstat, iostat and ifstat. Dstat overcomes
@@ -14,10 +18,8 @@ compare disk usage in combination with interrupts from your IDE controller, or
 compare the network bandwidth numbers directly with the disk throughput (in the
 same interval).
 	</longdescription>
-	<use>
-		<flag name="wifi">Enable wireless network functions</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">dagwieers/dstat</remote-id>
 	</upstream>
 </pkgmetadata>
+

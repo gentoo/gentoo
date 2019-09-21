@@ -13,7 +13,7 @@ inherit distutils-r1 eutils
 DESCRIPTION="A tool that generates and installs ebuilds for Octave-Forge"
 HOMEPAGE="https://github.com/rafaelmartins/g-octave"
 
-SRC_URI="mirror://github/rafaelmartins/${PN}/${P}.tar.gz
+SRC_URI="https://github.com/downloads/rafaelmartins/${PN}/${P}.tar.gz
 	https://github.com/rafaelmartins/${PN}-db/tarball/${DB_COMMIT} ->
 		${PN}-db-${DB_COMMIT:0:7}.tar.gz"
 
@@ -23,11 +23,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 DEPEND="doc? ( >=dev-python/sphinx-1.0 )"
-RDEPEND="
-	|| (
-		sys-apps/portage
-		sys-apps/portage-mgorny
-	)"
+RDEPEND="sys-apps/portage"
 
 python_prepare_all() {
 	local PATCHES=(

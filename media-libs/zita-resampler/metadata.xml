@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alexander@tsoy.me</email>
+		<name>Alexander Tsoy</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Libzita-resampler is a C++ library for resampling audio signals.
+		It is designed to be used within a real-time processing context,
+		to be fast, and to provide high-quality sample rate conversion.
+	</longdescription>
+	<use>
+		<flag name="tools">Install zresample and zretune tools</flag>
+	</use>
+</pkgmetadata>

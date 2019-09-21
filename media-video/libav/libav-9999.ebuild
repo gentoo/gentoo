@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="6"
 
-inherit eutils flag-o-matic multilib multilib-minimal toolchain-funcs
+inherit flag-o-matic multilib multilib-minimal toolchain-funcs
 
 if [[ ${PV} == *9999 ]] ; then
-	: ${EGIT_REPO_URI:="git://git.libav.org/libav.git"}
+	: ${EGIT_REPO_URI:="https://git.libav.org/libav.git"}
 	if [[ ${PV%9999} != "" ]] ; then
 		: ${EGIT_BRANCH:="release/${PV%.9999}"}
 	fi
@@ -19,20 +19,18 @@ if [[ ${PV} == *9999 ]] ; then
 	SRC_URI=""
 elif [[ ${PV%_p*} != ${PV} ]] ; then # Gentoo snapshot
 	SRC_URI="https://dev.gentoo.org/~lu_zero/libav/${P}.tar.xz"
+	SRC_URI+=" test? ( https://dev.gentoo.org/~lu_zero/libav/fate-${PV}.tar.xz )"
 else # Official release
 	SRC_URI="https://libav.org/releases/${P}.tar.xz"
+	SRC_URI+=" test? ( https://dev.gentoo.org/~lu_zero/libav/fate-${PV%%.*}.tar.xz )"
 fi
-# 9999 does not have fate-*.tar.xz
-[[ ${PV%9999} != "" ]] && SRC_URI+=" test? ( https://dev.gentoo.org/~lu_zero/libav/fate-${PV%%.*}.tar.xz )"
 
 LICENSE="LGPL-2.1  gpl? ( GPL-3 )"
 SLOT="0/13"
-[[ ${PV} == *9999 ]] || KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64
-~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
-~x64-solaris ~x86-solaris"
+[[ ${PV} == *9999 ]] || KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="aac alsa amr bs2b +bzip2 cdio cpudetection custom-cflags debug doc +encode faac fdk
 	frei0r fontconfig +gpl gsm +hardcoded-tables ieee1394 jack jpeg2k libressl mp3
-	+network openssl opus oss pic pulseaudio rtmp schroedinger sdl speex ssl
+	+network openssl opus oss pic pulseaudio rtmp sdl speex ssl
 	static-libs test theora threads tools truetype twolame v4l vaapi vdpau vorbis vpx X
 	wavpack webp x264 x265 xvid +zlib"
 
@@ -94,7 +92,6 @@ RDEPEND="
 		!openssl? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}] )
 	)
 	sdl? ( >=media-libs/libsdl-1.2.15-r4[sound,video,${MULTILIB_USEDEP}] )
-	schroedinger? ( >=media-libs/schroedinger-1.0.11-r1[${MULTILIB_USEDEP}] )
 	speex? ( >=media-libs/speex-1.2_rc1-r1[${MULTILIB_USEDEP}] )
 	truetype? (	>=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}] )
 	fontconfig? ( >=media-libs/fontconfig-2.10[${MULTILIB_USEDEP}] )
@@ -111,7 +108,6 @@ DEPEND="${RDEPEND}
 	ieee1394? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	cpu_flags_x86_mmx? ( >=dev-lang/nasm-2.13 )
 	rtmp? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
-	schroedinger? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	ssl? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	test? ( sys-devel/bc )
 	truetype? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
@@ -143,7 +139,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch_user
+	eapply_user
 
 	# if we have snapshot then we need to hardcode the version
 	if [[ ${PV%_p*} != ${PV} ]]; then
@@ -154,6 +150,9 @@ src_prepare() {
 	use zlib && TOOLS+=( cws2fws )
 
 	MAKEOPTS+=" V=1"
+
+	# needed at leasts for tests in live ebuild
+	multilib_copy_sources
 }
 
 multilib_src_configure() {
@@ -229,7 +228,7 @@ multilib_src_configure() {
 	# Decoders
 	use amr && myconf+=( --enable-libopencore-amrwb --enable-libopencore-amrnb )
 	use fdk && myconf+=( --enable-nonfree --enable-libfdk-aac )
-	uses="gsm opus rtmp schroedinger speex vpx"
+	uses="gsm opus rtmp speex vpx"
 	for i in ${uses}; do
 		use ${i} && myconf+=( --enable-lib${i} )
 	done

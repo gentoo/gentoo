@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 DESCRIPTION="Extracts and records individual MP3 file tracks from shoutcast streams"
 HOMEPAGE="http://streamripper.sourceforge.net"
@@ -19,15 +19,11 @@ RDEPEND="media-libs/libmad
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+DOCS=( CHANGES parse_rules.txt README THANKS )
+
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		--without-included-libmad \
 		--without-included-argv \
 		$(use_with vorbis ogg)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc CHANGES parse_rules.txt README THANKS
 }

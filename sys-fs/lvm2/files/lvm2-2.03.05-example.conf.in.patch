@@ -1,0 +1,56 @@
+From d5755288f23fdeaca4c6d317583f5f119ea8801c Mon Sep 17 00:00:00 2001
+From: "Robin H. Johnson" <robbat2@gentoo.org>
+Date: Wed, 24 Jul 2019 11:01:03 +0200
+Subject: [PATCH] Add Gentoo specific changes
+
+Forward-ported from 2.02.178 to 2.03.05
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ conf/example.conf.in | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/conf/example.conf.in b/conf/example.conf.in
+index 154f621bcf..83124ddea3 100644
+--- a/conf/example.conf.in
++++ b/conf/example.conf.in
+@@ -143,6 +143,9 @@ devices {
+ 	# Example
+ 	# Accept every block device:
+ 	# filter = [ "a|.*/|" ]
++	# Gentoo: we exclude /dev/nbd by default, because it makes a lot of kernel
++	# noise when you probed while not available.
++	filter = [ "r|/dev/nbd.*|", "a/.*/" ]
+ 	# Reject the cdrom drive:
+ 	# filter = [ "r|/dev/cdrom|" ]
+ 	# Work with just loopback devices, e.g. for testing:
+@@ -1677,7 +1680,7 @@ activation {
+ 
+ # Configuration section metadata.
+ # This configuration section has an automatic default value.
+-# metadata {
++metadata {
+ 
+ 	# Configuration option metadata/check_pv_device_sizes.
+ 	# Check device sizes are not smaller than corresponding PV sizes.
+@@ -1722,7 +1725,8 @@ activation {
+ 	# 
+ 	# This configuration option is advanced.
+ 	# This configuration option has an automatic default value.
+-	# pvmetadatacopies = 1
++	# Gentoo: enable for data safety, but PV resize is then disabled.
++	# pvmetadatacopies = 2
+ 
+ 	# Configuration option metadata/vgmetadatacopies.
+ 	# Number of copies of metadata to maintain for each VG.
+@@ -1766,7 +1770,7 @@ activation {
+ 	# This configuration option is advanced.
+ 	# This configuration option has an automatic default value.
+ 	# stripesize = 64
+-# }
++}
+ 
+ # Configuration section report.
+ # LVM report command output formatting.
+-- 
+2.22.0
+

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>wraeth@gentoo.org</email>
-		<name>Sam Jorna</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="github">phhusson/QuasselC</remote-id>
 		<bugs-to>https://github.com/phhusson/QuasselC/issues</bugs-to>

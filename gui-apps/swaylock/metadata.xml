@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>speedjack95@gmail.com</email>
+		<name>Niccolò Scatena</name>
+	</maintainer>
+	<longdescription lang="en">
+		Swaylock is a screen locking utility for Wayland compositors. It is
+		compatible with any Wayland compositor which implements the following
+		Wayland protocols: wlr-layer-shell, wlr-input-inhibitor, xdg-output,
+		xdg-shell.
+
+		Swaylock is the official screen locker for <pkg>gui-wm/sway</pkg>.
+	</longdescription>
+	<use>
+		<flag name="fish-completion">Enable fish completion support</flag>
+		<flag name="gdk-pixbuf">Enable additional image format support via the <pkg>x11-libs/gdk-pixbuf</pkg> library</flag>
+		<flag name="man">Build and install man pages</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">swaywm/swaylock</remote-id>
+		<maintainer status="active">
+			<email>sir@cmpwn.com</email>
+			<name>Drew DeVault</name>
+		</maintainer>
+		<bugs-to>https://github.com/swaywm/swaylock/issues</bugs-to>
+		<changelog>https://github.com/swaywm/swaylock/releases</changelog>
+	</upstream>
+</pkgmetadata>

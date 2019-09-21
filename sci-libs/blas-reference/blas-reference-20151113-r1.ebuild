@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+CMAKE_MAKEFILE_GENERATOR=emake
 
 inherit eutils fortran-2 cmake-utils multilib flag-o-matic toolchain-funcs
 

@@ -1,0 +1,26 @@
+commit 6223549e4d5e1d442a9cfb8e8c7334bcc62c1662
+Author: Maarten de Vries <maarten@de-vri.es>
+Date:   Thu Jan 17 16:00:14 2019 +0100
+
+    Remove `signals` from find_package(Boost COMPONENTS ...).
+    
+    tf2 is using signals2, which is not the same library.
+    Additionally, signals2 has always been header only, and header only
+    libraries must not be listed in find_package.
+    
+    Boost 1.69 removed the old signals library entirely, so the otherwise
+    useless `COMPONENTS signals` actually breaks the build.
+
+diff --git a/tf2/CMakeLists.txt b/tf2/CMakeLists.txt
+index 9ffb17a..7a6da34 100644
+--- a/tf2/CMakeLists.txt
++++ b/tf2/CMakeLists.txt
+@@ -3,7 +3,7 @@ project(tf2)
+ 
+ find_package(console_bridge REQUIRED)
+ find_package(catkin REQUIRED COMPONENTS geometry_msgs rostime tf2_msgs)
+-find_package(Boost REQUIRED COMPONENTS signals system thread)
++find_package(Boost REQUIRED COMPONENTS system thread)
+ 
+ catkin_package(
+    INCLUDE_DIRS include

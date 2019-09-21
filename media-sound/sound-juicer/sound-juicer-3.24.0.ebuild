@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/SoundJuicer"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="debug flac test vorbis"
 
 COMMON_DEPEND="
@@ -36,8 +36,8 @@ RDEPEND="${COMMON_DEPEND}
 	media-plugins/gst-plugins-meta:1.0
 "
 DEPEND="${COMMON_DEPEND}
-	app-text/yelp-tools
 	dev-libs/appstream-glib
+	dev-util/itstool
 	>=sys-devel/gettext-0.19.6
 	virtual/pkgconfig
 	test? ( ~app-text/docbook-xml-dtd-4.3 )

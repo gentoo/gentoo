@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,11 +24,11 @@ pkg_setup() {
 src_compile() {
 	pushd src/${EGO_PN} || die
 	GOPATH=${S} go install -v -tags pkcs11 -ldflags "-w -X ${EGO_PN}/version.GitCommit=${GIT_COMMIT} -X ${EGO_PN}/version.NotaryVersion=${PV}" \
-    ${EGO_PN}/cmd/notary-server || die
+		${EGO_PN}/cmd/notary-server || die
 	GOPATH=${S} go install -v -tags pkcs11 -ldflags "-w -X ${EGO_PN}/version.GitCommit=${GIT_COMMIT} -X ${EGO_PN}/version.NotaryVersion=${PV}" \
-    ${EGO_PN}/cmd/notary-signer || die
+		${EGO_PN}/cmd/notary-signer || die
 	GOPATH=${S} go install -v -tags pkcs11 -ldflags "-w -X ${EGO_PN}/version.GitCommit=${GIT_COMMIT} -X ${EGO_PN}/version.NotaryVersion=${PV}" \
-    ${EGO_PN}/cmd/notary || die
+		${EGO_PN}/cmd/notary || die
 	popd || die
 }
 

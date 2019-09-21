@@ -1,0 +1,25 @@
+Fix pkgconfig 'Version' w/ USE=examples
+https://bugs.gentoo.org/657300
+
+--- a/CMakeLists.txt	2018-02-23 23:39:25.000000000 +0200
++++ b/CMakeLists.txt	2018-06-03 22:26:38.673844365 +0300
+@@ -3,7 +3,7 @@
+ 
+ cmake_minimum_required (VERSION 3.1 FATAL_ERROR)
+ 
+-project (soxr C)
++project (soxr)
+ set (DESCRIPTION_SUMMARY
+     "High quality, one-dimensional sample-rate conversion library")
+ 
+@@ -100,10 +100,6 @@
+   set (LIBM_LIBRARIES m)
+ endif ()
+ 
+-if (${BUILD_EXAMPLES})
+-  project (${PROJECT_NAME}) # Adds c++ compiler
+-endif ()
+-
+ if (WITH_OPENMP)
+   find_package (OpenMP)
+   if (OPENMP_FOUND)

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,6 +19,8 @@ DEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
 	fam? ( virtual/fam )
 	readline? ( >=sys-libs/readline-4.3:0= )"
 RDEPEND="${DEPEND}"
+
+RESTRICT="!ocamlopt? ( strip )"
 
 src_prepare() {
 	epatch \
@@ -45,5 +47,4 @@ src_install() {
 		dodoc doc/ps/omake-doc.{pdf,ps} doc/txt/omake-doc.txt
 		dohtml -r doc/html/*
 	fi
-	use ocamlopt || export STRIP_MASK="*/bin/*"
 }

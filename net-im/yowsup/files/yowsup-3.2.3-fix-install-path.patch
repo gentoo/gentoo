@@ -1,0 +1,21 @@
+--- a/setup.py	2019-05-07 18:52:38.000000000 +0200
++++ b/setup.py	2019-07-26 23:05:18.000000000 +0200
+@@ -33,7 +33,6 @@
+     #long_description=long_description,
+     packages= find_packages(),
+     include_package_data=True,
+-    data_files = [('yowsup/common', ['yowsup/common/mime.types'])],
+     platforms='any',
+     #test_suite='',
+     classifiers = [
+--- a/yowsup/common/tools.py	2019-05-07 18:52:38.000000000 +0200
++++ b/yowsup/common/tools.py	2019-07-26 23:05:38.000000000 +0200
+@@ -173,7 +173,7 @@
+         return preview
+ 
+ class MimeTools:
+-    MIME_FILE = os.path.join(os.path.dirname(__file__), 'mime.types')
++    MIME_FILE = os.path.join('/usr/share/yowsup/common', 'mime.types')
+     mimetypes.init() # Load default mime.types
+     try:
+         mimetypes.init([MIME_FILE]) # Append whatsapp mime.types

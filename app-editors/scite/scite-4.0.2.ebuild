@@ -8,12 +8,12 @@ inherit toolchain-funcs flag-o-matic gnome2-utils xdg-utils
 MY_PV=${PV//./}
 DESCRIPTION="A very powerful, highly configurable, small editor with syntax
 coloring."
-HOMEPAGE="http://www.scintilla.org/SciTE.html"
+HOMEPAGE="https://www.scintilla.org/SciTE.html"
 SRC_URI="mirror://sourceforge/scintilla/${PN}${MY_PV}.tgz"
 
 LICENSE="HPND lua? ( MIT )"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="lua"
 
 RDEPEND="dev-libs/glib:=

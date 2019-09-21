@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( pypy3 python3_{4,5,6} )
+PYTHON_COMPAT=( pypy3 python3_{5,6} )
 inherit eutils python-single-r1 systemd
 
 DESCRIPTION="systemd units to create timers for cron directories and crontab"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/systemd-cron/${PN}/archive/v${PV}.tar.gz -> systemd-
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 sparc x86"
 IUSE="cron-boot etc-crontab-systemd minutely setgid test yearly"
 
 RDEPEND=">=sys-apps/systemd-217

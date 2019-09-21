@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils multilib
 
 DESCRIPTION="Fork of the official but unmaintained LDAP backend"
-HOMEPAGE="http://repo.or.cz/w/pdns-ldap-backend.git http://sequanux.org/cgi-bin/mailman/listinfo/pdns-ldap-backend"
+HOMEPAGE="https://repo.or.cz/w/pdns-ldap-backend.git http://sequanux.org/cgi-bin/mailman/listinfo/pdns-ldap-backend"
 SRC_URI="http://sequanux.org/dl/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

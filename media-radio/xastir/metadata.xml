@@ -6,7 +6,6 @@
 		<name>Thomas Beierlein</name>
 	</maintainer>
 	<use>
-		<flag name="festival">Enable text to speech synthesizer</flag>
 		<flag name="gdal">Support for some further map formats</flag>
 		<flag name="geotiff">Install geotiff support. Allows using USGS DRG topo
 			maps or other types of geotiff mapes/images</flag>

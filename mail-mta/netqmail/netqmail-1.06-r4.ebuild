@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,12 +20,12 @@ inherit eutils qmail
 DESCRIPTION="qmail -- a secure, reliable, efficient, simple message transfer agent"
 HOMEPAGE="
 	http://netqmail.org
-	http://cr.yp.to/qmail.html
+	https://cr.yp.to/qmail.html
 	http://qmail.org
 "
 SRC_URI="mirror://qmail/${P}.tar.gz
 	https://dev.gentoo.org/~hollow/distfiles/${GENQMAIL_F}
-	http://www.ckdhr.com/ckd/${QMAIL_LARGE_DNS}
+	https://www.ckdhr.com/ckd/${QMAIL_LARGE_DNS}
 	http://inoa.net/qmail-tls/${QMAIL_TLS_CVE}
 	!vanilla? (
 		highvolume? ( mirror://qmail/${QMAIL_BIGTODO_F} )
@@ -45,8 +45,8 @@ DEPEND="
 	!mail-mta/qmail
 	net-mail/queue-repair
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:= )
 	)
 	sys-apps/gentoo-functions
 	sys-apps/groff
@@ -101,12 +101,14 @@ src_prepare() {
 	ht_fix_file Makefile*
 
 	if ! use vanilla; then
-		# This patch contains relative paths and needs to be cleaned up.
-		sed 's~^--- ../../~--- ~g' \
-			<"${DISTDIR}"/${QMAIL_TLS_F} \
-			>"${T}"/${QMAIL_TLS_F} || die
-		use ssl        && epatch "${T}"/${QMAIL_TLS_F}
-		use ssl        && epatch "${DISTDIR}"/${QMAIL_TLS_CVE}
+		if use ssl; then
+			# This patch contains relative paths and needs to be cleaned up.
+			sed 's~^--- ../../~--- ~g' \
+				< "${DISTDIR}"/${QMAIL_TLS_F} \
+				> "${T}"/${QMAIL_TLS_F} || die
+			epatch "${T}"/${QMAIL_TLS_F}
+			epatch "${DISTDIR}"/${QMAIL_TLS_CVE}
+		fi
 		use highvolume && epatch "${DISTDIR}"/${QMAIL_BIGTODO_F}
 
 		if use qmail-spp; then

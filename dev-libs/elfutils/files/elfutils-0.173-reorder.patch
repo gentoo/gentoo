@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/666954
+https://github.com/rpm-software-management/rpm/issues/423
+https://sourceware.org/ml/elfutils-devel/2019-q2/msg00077.html
+
+From: Mark Wielaard <mark at klomp dot org>
+Subject: [PATCH] libelf: Mark shdr_flags dirty if offset or size changes during update.
+Date: Mon, 13 May 2019 00:13:42 +0200
+Message-Id: <20190512221342.23383-1-mark@klomp.org>
+
+We forgot to mark the shdr_flags dirty when only the sh_size or
+sh_offset changed during elf_update (). This meant that if there were
+no other shdr changes we only wrote out the section data, but didn't
+write out the shdr table to the file.
+
+Signed-off-by: Mark Wielaard <mark@klomp.org>
+---
+ libelf/elf32_updatenull.c          |   5 +-
+
+--- a/libelf/elf32_updatenull.c
++++ b/libelf/elf32_updatenull.c
+@@ -366,12 +366,15 @@ __elfw2(LIBELFBITS,updatenull_wrlock) (Elf *elf, int *change_bop, size_t shnum)
+ 		    }
+ 
+ 		  /* See whether the section size is correct.  */
++		  int size_changed = 0;
+ 		  update_if_changed (shdr->sh_size, (GElf_Word) offset,
+-				     changed);
++				     size_changed);
++		  changed |= size_changed;
+ 
+ 		  if (shdr->sh_type != SHT_NOBITS)
+ 		    size += offset;
+ 
++		  scn->shdr_flags |= (offset_changed | size_changed);
+ 		  scn->flags |= changed;
+ 		}
+ 

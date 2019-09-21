@@ -1,0 +1,50 @@
+From 4e75b2ae313b13b5bfb54cc5e5c53368d6eb2a08 Mon Sep 17 00:00:00 2001
+From: James Clarke <jrtc27@jrtc27.com>
+Date: Thu, 18 Jul 2019 14:31:55 +0200
+Subject: [PATCH] sparc64: Fix BIOS Boot Partition support
+
+Currently, gpt_offset is uninitialised when using a BIOS Boot Partition
+but is used unconditionally inside save_blocklists. Instead, ensure it
+is always initialised to 0 (note that there is already separate code to
+do the equivalent adjustment after we call save_blocklists on this code
+path).
+
+This patch has been tested on a T5-2 LDOM.
+
+Signed-off-by: James Clarke <jrtc27@jrtc27.com>
+Tested-by: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+Reviewed-by: Vladimir Serbinenko <phcoder@gmail.com>
+Reviewed-by: Eric Snowberg <eric.snowberg@oracle.com>
+
+---
+ util/setup.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+---
+ util/setup.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/util/setup.c b/util/setup.c
+index 6f88f3c..3be88aa 100644
+--- a/util/setup.c
++++ b/util/setup.c
+@@ -271,6 +271,9 @@ SETUP (const char *dir,
+   bl.current_segment =
+     GRUB_BOOT_I386_PC_KERNEL_SEG + (GRUB_DISK_SECTOR_SIZE >> 4);
+ #endif
++#ifdef GRUB_SETUP_SPARC64
++  bl.gpt_offset = 0;
++#endif
+   bl.last_length = 0;
+ 
+   /* Read the boot image by the OS service.  */
+@@ -730,7 +733,6 @@ unable_to_embed:
+ #ifdef GRUB_SETUP_SPARC64
+   {
+     grub_partition_t container = root_dev->disk->partition;
+-    bl.gpt_offset = 0;
+ 
+     if (grub_strstr (container->partmap->name, "gpt"))
+       bl.gpt_offset = grub_partition_get_start (container);
+-- 
+cgit v1.0-41-gc330
+

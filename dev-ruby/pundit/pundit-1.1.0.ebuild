@@ -3,9 +3,9 @@
 
 EAPI=5
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
-RUBY_FAKEGEM_RECIPE_TEST="rspec"
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="doc"
 
 inherit ruby-fakegem
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/activesupport-3.0.0"
+ruby_add_rdepend ">=dev-ruby/activesupport-3.0.0:*"
 
 ruby_add_bdepend "test? ( >=dev-ruby/actionpack-3.0.0
 	>=dev-ruby/activemodel-3.0.0 )"

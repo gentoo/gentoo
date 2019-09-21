@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ DEPEND="net-print/cups
 	virtual/pkgconfig"
 RDEPEND="
 	dev-libs/libxml2
-	|| ( >=net-print/cups-filters-1.0.43-r1[foomatic] net-print/foomatic-filters )
+	>=net-print/cups-filters-1.0.43-r1[foomatic]
 "
 PDEPEND="net-print/foomatic-db"
 

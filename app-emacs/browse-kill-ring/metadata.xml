@@ -12,6 +12,7 @@
   killed that piece of text that you think you killed, but you're not quite
   sure? If so, then browse-kill-ring.el is the emacs extension for you.
 </longdescription>
+<stabilize-allarches/>
 <upstream>
   <remote-id type="github">todesschaf/browse-kill-ring</remote-id>
 </upstream>

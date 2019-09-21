@@ -13,5 +13,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86"
 IUSE=""
+RESTRICT="test" # actually accesses the pcsc-lite daemon
 
 DEPEND=">=sys-apps/pcsc-lite-1.6.0"

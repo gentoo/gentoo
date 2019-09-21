@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,8 +30,10 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/mpi
 	dev-libs/boost:=[python,mpi,${PYTHON_USEDEP}]
 	sci-libs/fftw:3.0
-	dev-python/mpi4py[${PYTHON_USEDEP}]"
+	>=dev-python/mpi4py-2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
+
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_configure() {
 	src_configure_internal() {

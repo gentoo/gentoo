@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,18 +6,21 @@ EAPI=6
 inherit autotools flag-o-matic
 
 DESCRIPTION="Open source SIP, Media, and NAT Traversal Library"
-HOMEPAGE="http://www.pjsip.org/"
-SRC_URI="http://www.pjsip.org/release/${PV}/${P}.tar.bz2"
-KEYWORDS="~amd64 ~x86"
+HOMEPAGE="https://www.pjsip.org/"
+SRC_URI="https://www.pjsip.org/release/${PV}/${P}.tar.bz2"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
 CODEC_FLAGS="g711 g722 g7221 gsm ilbc speex l16"
 VIDEO_FLAGS="sdl ffmpeg v4l2 openh264 libyuv"
 SOUND_FLAGS="alsa oss portaudio"
-IUSE="amr debug doc epoll examples ipv6 opus resample silk ssl static-libs webrtc ${CODEC_FLAGS} ${VIDEO_FLAGS} ${SOUND_FLAGS}"
+IUSE="amr debug doc epoll examples ipv6 libressl opus resample silk ssl static-libs webrtc ${CODEC_FLAGS} ${VIDEO_FLAGS} ${SOUND_FLAGS}"
 
-PATCHES=( "${FILESDIR}"/${P}-ssl-flipflop.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-ssl-flipflop.patch
+	"${FILESDIR}"/${P}-libressl.patch
+)
 
 RDEPEND="alsa? ( media-libs/alsa-lib )
 	oss? ( media-libs/portaudio[oss] )
@@ -34,11 +37,15 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 	openh264? ( media-libs/openh264 )
 	resample? ( media-libs/libsamplerate )
 
-	ssl? ( dev-libs/openssl:= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 
 	net-libs/libsrtp:0"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	!!media-plugins/mediastreamer-bcg729"
 
 REQUIRED_USE="?? ( ${SOUND_FLAGS} )"
 

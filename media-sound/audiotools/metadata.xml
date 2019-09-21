@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<use>
+		<flag name="cue">Enable CUE sheet support</flag>
+		<flag name="dvda">Enable DVD-Audio support</flag>
+		<flag name="gui">Enable support for GUI tools</flag>
+		<flag name="twolame">Enable twolame support (MPEG Audio Layer 2 encoder)</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">audiotools</remote-id>
+	</upstream>
+</pkgmetadata>

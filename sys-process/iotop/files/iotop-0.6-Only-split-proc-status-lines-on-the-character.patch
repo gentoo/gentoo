@@ -1,0 +1,31 @@
+From 7814f30a5ed65acd07f284bba991ca557788ee80 Mon Sep 17 00:00:00 2001
+From: Paul Wise <pabs3@bonedaddy.net>
+Date: Thu, 28 Jul 2016 13:25:54 +0800
+Subject: [PATCH] Only split /proc/*/status lines on the : character.
+
+Apparently vserver kernels have some lines that don't
+appear to have the tab character so iotop crashes.
+
+The tab character will be stripped by the next code line.
+
+Closes: https://bugs.gentoo.org/show_bug.cgi?id=458556
+---
+ iotop/data.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/iotop/data.py b/iotop/data.py
+index c4e961e..d18ca9d 100644
+--- a/iotop/data.py
++++ b/iotop/data.py
+@@ -197,7 +197,7 @@ def parse_proc_pid_status(pid):
+     result_dict = {}
+     try:
+         for line in open('/proc/%d/status' % pid):
+-            key, value = line.split(':\t', 1)
++            key, value = line.split(':', 1)
+             result_dict[key] = value.strip()
+     except IOError:
+         pass  # No such process
+-- 
+2.20.1.97.g81188d93c3-goog
+

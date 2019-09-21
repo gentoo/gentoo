@@ -15,6 +15,7 @@
 	<use>
 		<flag name="leasefile">Enable lease file.</flag>
 		<flag name="igd2">Build for IGDv2 instead of an IGDv1</flag>
+		<flag name="nftables">Use <pkg>net-firewall/nftables</pkg> rather than <pkg>net-firewall/iptables</pkg>.</flag>
 		<flag name="pcp-peer">Enable support for PCP-PEER to allow NAT-PMP clients to mangle their packets.</flag>
 		<flag name="portinuse">Check if a port is in use before allowing a NAT-PMP client to map it.</flag>
 		<flag name="strict">Be more strict regarding compliance with UPnP specifications.</flag>

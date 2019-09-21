@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 inherit distutils-r1
 
@@ -13,11 +13,11 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="examples test"
 
 RDEPEND="
-	>=dev-python/llvmlite-0.19[${PYTHON_USEDEP}]
+	>=dev-python/llvmlite-0.22.0[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	virtual/python-enum34[${PYTHON_USEDEP}]
 	virtual/python-funcsigs[${PYTHON_USEDEP}]
@@ -28,9 +28,13 @@ DEPEND="${RDEPEND}
 	test? (	dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
+PATCHES=(
+	"${FILESDIR}"/numba-skip-tests.patch
+)
+
 python_test() {
-	cd "${BUILD_DIR}"/lib* || die
-	${PYTHON} -c "import numba; numba.test()" || die
+	cd "${BUILD_DIR}/lib" || die
+	${EPYTHON} -m numba.runtests -v || die
 }
 
 python_install_all() {

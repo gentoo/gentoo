@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,8 @@ KEYWORDS="~amd64 ~hppa ~sparc ~x86 ~amd64-linux ~x86-linux"
 RDEPEND="
 	x11-libs/motif:0
 	virtual/lapack
-	dev-lang/cfortran"
+	dev-lang/cfortran
+	net-libs/libnsl"
 DEPEND="${RDEPEND}
 	x11-misc/imake
 	x11-misc/makedepend

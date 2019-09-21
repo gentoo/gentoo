@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils linux-info
+inherit autotools desktop eutils linux-info
 
 HOMEPAGE="http://www.gnokii.org/"
 if [[ $PV == *9999 ]]; then
@@ -29,7 +29,7 @@ RDEPEND="
 	sms? (
 		dev-libs/glib:2
 		postgres? ( dev-db/postgresql:* )
-		mysql? ( virtual/mysql:= )
+		mysql? ( dev-db/mysql-connector-c:= )
 	)
 	usb? ( virtual/libusb:0 )
 	X? ( x11-libs/gtk+:2 )"

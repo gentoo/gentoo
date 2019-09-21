@@ -45,7 +45,7 @@ Make build system semi-sane:
 -/usr/X11R6/lib/libICE.a /usr/X11R6/lib/libXext.a /usr/X11R6/lib/libXmu.a \
 -/usr/X11R6/lib/libXp.a /usr/lib/libm.a /me1/gordon/samtools/samtools-0.1.18/libbam.a /me1/gordon/samtools/samtools-0.1.18/bcftools/libbcf.a /me1/gordon/zlib/zlib-1.2.5/libz.a
 +
-+MOTIF_LIBS ?= -lXt -lXm
++MOTIF_LIBS ?= -lXm -lXt
 +ALL_LIBS = $(LIBS) $(MOTIF_LIBS) $(X11_LIBS) $(SAMTOOLS_LIBS)
  
  

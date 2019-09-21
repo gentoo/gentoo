@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+		Madeleine Valois is a prince's companion. Her job is to guide
+		and advise him, to make him look good so that he can land a
+		royal bride. It is her responsibility to keep him out of
+		trouble - not to let him walk blindly into a political
+		minefield, not to let him get arrested for a crime he didn't
+		commit, and definitely not to let him fall in love with her.
+
+		Unfortunately, events are not going according to plan...
+	</longdescription>
+</pkgmetadata>

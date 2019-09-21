@@ -9,6 +9,14 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>aranea@aixah.de</email>
+		<name>Luis Ressel</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">
 		s6-dns is a suite of DNS client programs and libraries for Unix systems,
 		as an alternative to the BIND, djbdns or other DNS clients.

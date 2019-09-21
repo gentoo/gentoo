@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,10 +14,10 @@ SRC_URI="http://movit.sesse.net/${P}.tar.gz
 LICENSE="GPL-2+"
 SLOT="0"
 
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE=""
 
-RDEPEND="media-libs/mesa
+RDEPEND="media-libs/mesa[X(+)]
 	>=dev-cpp/eigen-3.2.0:3
 	media-libs/libepoxy
 	sci-libs/fftw

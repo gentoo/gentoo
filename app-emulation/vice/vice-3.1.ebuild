@@ -1,38 +1,34 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit autotools flag-o-matic toolchain-funcs
 
-DESCRIPTION="The Versatile Commodore 8-bit Emulator"
+DESCRIPTION="Versatile Commodore 8-bit Emulator"
 HOMEPAGE="http://vice-emu.sourceforge.net/"
 SRC_URI="mirror://sourceforge/vice-emu/releases/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="Xaw3d alsa ethernet ffmpeg fullscreen +gtk ipv6 lame libav nls oss png pulseaudio sdl +sdlsound threads vte zlib"
+IUSE="alsa ethernet ffmpeg fullscreen +gtk ipv6 lame libav nls oss png pulseaudio sdl +sdlsound threads vte Xaw3d zlib"
 
 # upstream says gtk3 and sdl2 shouldn't be exposed yet.
 #REQUIRED_USE="?? ( gtk2 gtk3 sdl )"
 REQUIRED_USE="?? ( gtk sdl )"
 
-GTK_COMMON="
-	x11-libs/pango
-	x11-libs/cairo"
 #	gtk3? (
+#		x11-libs/cairo
 #		x11-libs/gtk+:3
+#		x11-libs/pango
 #		vte? ( x11-libs/vte:2.90 )
-#		${GTK_COMMON}
 #	)
 RDEPEND="
+	media-libs/giflib
 	virtual/jpeg:0
 	virtual/opengl
-	media-libs/giflib
 	alsa? ( media-libs/alsa-lib )
-	pulseaudio? ( media-sound/pulseaudio )
-	sdlsound? ( media-libs/libsdl[sound] )
 	ethernet? (
 	    >=net-libs/libpcap-0.9.8
 	    >=net-libs/libnet-1.1.2.1:1.1
@@ -41,17 +37,22 @@ RDEPEND="
 		libav? ( media-video/libav:= )
 		!libav? ( media-video/ffmpeg:= )
 	)
+	gtk? (
+		x11-libs/cairo
+		x11-libs/gtk+:2
+		x11-libs/gtkglext
+		x11-libs/pango
+		vte? ( x11-libs/vte:0 )
+	)
 	lame? ( media-sound/lame )
 	nls? ( virtual/libintl )
 	png? ( media-libs/libpng:0= )
-	zlib? ( sys-libs/zlib:= )
-	sdl? (
-		media-libs/libsdl[joystick,video]
-	)
+	pulseaudio? ( media-sound/pulseaudio )
+	sdl? ( media-libs/libsdl[joystick,video] )
 	!sdl? (
+		sys-libs/readline:0=
 		x11-libs/libX11
 		x11-libs/libXext
-		sys-libs/readline:0=
 		fullscreen? (
 			x11-libs/libXrandr
 			x11-libs/libXxf86vm
@@ -65,28 +66,25 @@ RDEPEND="
 			!Xaw3d? ( x11-libs/libXaw )
 		)
 	)
-	gtk? (
-		x11-libs/gtk+:2
-		x11-libs/gtkglext
-		${GTK_COMMON}
-		vte? ( x11-libs/vte:0 )
-	)"
+	sdlsound? ( media-libs/libsdl[sound] )
+	zlib? ( sys-libs/zlib )
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
+	media-libs/fontconfig
 	x11-apps/bdftopcf
 	x11-apps/mkfontdir
 	x11-base/xorg-proto
-	media-libs/fontconfig
+	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	!sdl? (
-		!gtk? (
+	!gtk? ( !sdl? (
 			x11-libs/libICE
 			x11-libs/libSM
-		)
-	)"
+	) )
+"
 
-PATCH=(
-	"${FILESDIR}"/${P}-autotools.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.4.27-autotools.patch
+	"${FILESDIR}"/${P}-ffmpeg4.patch
 )
 
 src_prepare() {

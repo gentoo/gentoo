@@ -5,10 +5,14 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>steils@gentoo.org</email>
+		<name>Stefan Strogin</name>
+	</maintainer>
 	<use>
 		<flag name="boost">Use boost instead of C++11 libraries</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">vimpc</remote-id>
+		<remote-id type="github">boysetsfrog/vimpc</remote-id>
 	</upstream>
 </pkgmetadata>

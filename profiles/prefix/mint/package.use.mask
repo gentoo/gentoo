@@ -1,14 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Alan Hourihane <alanh@fairlite.co.uk> (11 Mar 2014)
+# Alan Hourihane <alanh@fairlite.co.uk> (2014-03-11)
 # plays havoc with GNU pth bug #503764
 dev-lang/tcl threads
 
-# Alan Hourihane <alanh@fairlite.co.uk> (30 Dec 2011)
+# Alan Hourihane <alanh@fairlite.co.uk> (2011-12-30)
 # xz-utils plays havoc with GNU pth
 app-arch/xz-utils threads
 
-# Alan Hourihane <alanh@fairlite.co.uk> (15 Dec 2011)
+# Alan Hourihane <alanh@fairlite.co.uk> (2011-12-15)
 # MiNT doesn't have mmap, and jit requires it.
 dev-libs/libpcre jit

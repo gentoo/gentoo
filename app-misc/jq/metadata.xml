@@ -9,6 +9,7 @@
 		<flag name="oniguruma">Use dev-libs/oniguruma for regular expression support</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:jq_project:jq</remote-id>
 		<remote-id type="github">stedolan/jq</remote-id>
 	</upstream>
 </pkgmetadata>

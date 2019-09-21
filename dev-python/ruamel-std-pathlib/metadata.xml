@@ -2,12 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>fkmclane@gmail.com</email>
-		<name>Foster McLane</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>andrey_utkin@gentoo.org</email>
 		<name>Andrey Utkin</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>fkmclane@gmail.com</email>
+		<name>Foster McLane</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="bitbucket">ruamel/std.pathlib</remote-id>

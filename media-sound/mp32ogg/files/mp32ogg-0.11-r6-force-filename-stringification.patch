@@ -1,8 +1,8 @@
 http://bugs.gentoo.org/328953
 http://qa.mandriva.com/53477
 
---- mp32ogg
-+++ mp32ogg
+--- a/mp32ogg
++++ b/mp32ogg
 @@ -167,7 +167,9 @@
  }
  

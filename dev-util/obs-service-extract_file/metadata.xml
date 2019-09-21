@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!--maintainer-needed-->
 <longdescription lang="en">
 This is a source service for Open Build Service. This service is parsing all spec files and downloads all Source files which are specified via a http, https or ftp url.
 </longdescription>

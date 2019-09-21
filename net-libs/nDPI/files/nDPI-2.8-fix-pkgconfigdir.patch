@@ -1,0 +1,11 @@
+--- Makefile.am.orig	2018-10-08 19:04:23.241000607 -0600
++++ Makefile.am	2018-10-08 19:04:46.710000661 -0600
+@@ -1,7 +1,7 @@
+ ACLOCAL_AMFLAGS = -I m4
+ SUBDIRS = src/lib example tests
+ 
+-pkgconfigdir = $(prefix)/libdata/pkgconfig
++pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = libndpi.pc
+ 
+ EXTRA_DIST = autogen.sh

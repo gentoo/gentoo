@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/air-imager/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="crypt"
 
 # coreutils are needed for /usr/bin/split binary
@@ -21,11 +21,7 @@ DEPEND="${COMMON_DEPEND}
 "
 # TODO: air can utilize dc3dd, but it is not in portage ATM
 RDEPEND="${COMMON_DEPEND}
-	|| (
-		net-analyzer/netcat6
-		net-analyzer/netcat
-		net-analyzer/gnu-netcat
-	)
+	net-analyzer/netcat
 	app-arch/mt-st
 	crypt? ( net-analyzer/cryptcat )
 "

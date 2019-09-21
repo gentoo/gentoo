@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit eutils systemd
+inherit systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://linux-nfs.org/~steved/rpcbind.git"
@@ -18,7 +18,7 @@ HOMEPAGE="https://sourceforge.net/projects/rpcbind/"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="debug selinux systemd tcpd warmstarts"
+IUSE="debug remotecalls selinux systemd tcpd warmstarts"
 REQUIRED_USE="systemd? ( warmstarts )"
 
 CDEPEND=">=net-libs/libtirpc-0.2.3:=
@@ -30,17 +30,22 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-rpcbind )"
 
 src_prepare() {
+	default
 	[[ ${PV} == "9999" ]] && eautoreconf
-	epatch_user
 }
 
 src_configure() {
-	econf \
-		--with-statedir="${EPREFIX}"/run/${PN} \
-		--with-systemdsystemunitdir=$(usex systemd "$(systemd_get_unitdir)" "no") \
-		$(use_enable tcpd libwrap) \
-		$(use_enable debug) \
+	local myeconfargs=(
+		--bindir="${EPREFIX}"/sbin
+		--sbindir="${EPREFIX}"/sbin
+		--with-statedir="${EPREFIX}"/run/${PN}
+		--with-systemdsystemunitdir=$(usex systemd "$(systemd_get_systemunitdir)" "no")
+		$(use_enable debug)
+		$(use_enable remotecalls rmtcalls)
 		$(use_enable warmstarts)
+		$(use_enable tcpd libwrap)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

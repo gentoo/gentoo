@@ -1,0 +1,22 @@
+diff --git a/doc/man/CMakeLists.txt b/doc/man/CMakeLists.txt
+index 65024b3..c3e3211 100644
+--- a/doc/man/CMakeLists.txt
++++ b/doc/man/CMakeLists.txt
+@@ -14,14 +14,13 @@ if(VSIM)
+ endif(VSIM)
+ 
+ foreach(MANUAL IN LISTS MANUALS)
+-    set(MANPAGE_OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${MANUAL}.1.gz)
++    set(MANPAGE_OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${MANUAL}.1)
+     set(MANPAGE_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/${MANUAL}.rst)
+     add_custom_command(OUTPUT ${MANPAGE_OUTPUT}
+-        COMMAND ${RST2MAN} ${RST2MAN_OPTS} ${MANPAGE_SOURCE} | gzip > ${MANPAGE_OUTPUT}
++        COMMAND ${RST2MAN} ${RST2MAN_OPTS} ${MANPAGE_SOURCE} ${MANPAGE_OUTPUT}
+         DEPENDS ${MANPAGE_SOURCE}
+-        BYPRODUCTS ${MANPAGE_OUTPUT}
+         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+-        COMMENT "Converting ${MANUAL}.rst from ReStructuredText into manpage ${MANUAL}.1.gz"
++        COMMENT "Converting ${MANUAL}.rst from ReStructuredText into manpage ${MANUAL}.1"
+         VERBATIM
+     )
+     list(APPEND MANPAGES_LIST ${MANPAGE_OUTPUT})

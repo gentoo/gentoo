@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit kde5
 
@@ -13,7 +13,8 @@ IUSE=""
 LICENSE="GPL-2+"
 KEYWORDS="amd64 ~x86"
 
-CDEPEND="
+BDEPEND="sys-devel/gettext"
+DEPEND="
 	$(add_frameworks_dep kauth)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
@@ -24,13 +25,11 @@ CDEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	sys-apps/systemd
+	sys-apps/systemd:=
 "
-DEPEND="${CDEPEND}
-	>=dev-libs/boost-1.45
-	sys-devel/gettext
-"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	!kde-misc/kcmsystemd:4
 	!kde-misc/systemd-kcm:4
 "
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.11b3.patch" )

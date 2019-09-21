@@ -3,22 +3,27 @@
 
 EAPI=6
 
+inherit toolchain-funcs
+
 DESCRIPTION="EmACT, a fork of Conroy's MicroEmacs"
 HOMEPAGE="http://www.eligis.com/emacs/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+ BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="X"
 
 RDEPEND="sys-libs/ncurses:0=
 	X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 	X? ( x11-base/xorg-proto )"
 
 src_configure() {
-	econf $(use_with X x)
+	econf \
+		$(use_with X x) \
+		LIBS="$("$(tc-getPKG_CONFIG)" --libs ncurses)"
 }
 
 src_install() {

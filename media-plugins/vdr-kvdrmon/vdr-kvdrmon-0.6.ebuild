@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ DESCRIPTION="VDR Plugin: monitors on KDE Kickerapplet kvdrmon"
 HOMEPAGE="http://vdr-statusleds.sf.net/kvdrmon"
 SRC_URI="mirror://sourceforge/vdr-statusleds/${P}.tgz"
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""

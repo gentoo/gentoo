@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils eutils flag-o-matic git-r3 gnome2-utils pax-utils toolchain-funcs versionator xdg-utils
+inherit cmake-utils flag-o-matic git-r3 pax-utils toolchain-funcs xdg
 
 EGIT_REPO_URI="https://github.com/darktable-org/${PN}.git"
 
@@ -19,10 +19,12 @@ IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto
 nls opencl openmp openexr pax_kernel webp
 ${LANGS// / l10n_}"
 
-# sse3 support is required to build darktable
-REQUIRED_USE="cpu_flags_x86_sse3"
-
-CDEPEND="
+BDEPEND="
+	dev-util/intltool
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+"
+COMMON_DEPEND="
 	dev-db/sqlite:3
 	dev-libs/json-glib
 	dev-libs/libxml2:2
@@ -50,17 +52,17 @@ CDEPEND="
 	jpeg2k? ( media-libs/openjpeg:2= )
 	opencl? ( virtual/opencl )
 	openexr? ( media-libs/openexr:0= )
-	webp? ( media-libs/libwebp:0= )"
-RDEPEND="${CDEPEND}
-	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )"
-DEPEND="${CDEPEND}
-	dev-util/intltool
-	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
+	webp? ( media-libs/libwebp:0= )
+"
+DEPEND="${COMMON_DEPEND}
 	opencl? (
 		>=sys-devel/clang-4
 		>=sys-devel/llvm-4
-	)"
+	)
+"
+RDEPEND="${COMMON_DEPEND}
+	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )
+"
 
 pkg_pretend() {
 	if use openmp ; then
@@ -77,7 +79,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_PRINT=$(usex cups)
-		-DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PF}"
 		-DCUSTOM_CFLAGS=ON
 		-DUSE_CAMERA_SUPPORT=$(usex gphoto2)
 		-DUSE_COLORD=$(usex colord)
@@ -102,9 +103,13 @@ src_install() {
 	cmake-utils_src_install
 	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.pdf
 
-	for lang in ${LANGS} ; do
-		use l10n_${lang} || rm -r "${ED}"/usr/share/locale/${lang/-/_}
-	done
+	if use nls ; then
+		for lang in ${LANGS} ; do
+			if ! use l10n_${lang}; then
+				rm -r "${ED}"/usr/share/locale/${lang/-/_} || die
+			fi
+		done
+	fi
 
 	if use pax_kernel && use opencl ; then
 		pax-mark Cm "${ED}"/usr/bin/${PN} || die
@@ -114,18 +119,4 @@ src_install() {
 		eqawarn "you suspect that ${PN} is broken by this modification,"
 		eqawarn "please open a bug."
 	fi
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
 }

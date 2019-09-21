@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="FASTA is a DNA and Protein sequence alignment software package"
-HOMEPAGE="http://fasta.bioch.virginia.edu/fasta_www2/fasta_down.shtml"
+HOMEPAGE="https://fasta.bioch.virginia.edu/fasta_www2/fasta_down.shtml"
 SRC_URI="http://faculty.virginia.edu/wrpearson/${PN}/${PN}36/${P}.tar.gz"
 
 LICENSE="fasta"

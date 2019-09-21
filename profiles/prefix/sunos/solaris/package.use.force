@@ -1,7 +1,7 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Fabian Groffen <grobian@gentoo.org> (08 Dec 2011)
+# Fabian Groffen <grobian@gentoo.org> (2011-12-08)
 # Force libssp, Solaris' libc doesn't have stack protection symbols,
 # hence without this, -fstack-protector fails with linker unresolved
 # symbol errors.

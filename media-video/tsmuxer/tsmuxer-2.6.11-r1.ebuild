@@ -15,7 +15,7 @@ IUSE=""
 QA_FLAGS_IGNORED="opt/${PN}/bin/tsMuxeR opt/${PN}/bin/tsMuxerGUI"
 
 DEPEND="|| (
-	>=app-arch/upx-ucl-3.01[lzma]
+	>=app-arch/upx-3.01[lzma]
 	>=app-arch/upx-bin-3.01
 )"
 RDEPEND="

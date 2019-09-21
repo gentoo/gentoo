@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
+  </maintainer>
+  <longdescription lang="en">Most accurate trained models for app-text/tesseract</longdescription>
+  <upstream>
+    <remote-id type="github">tesseract-ocr/tessdata_best</remote-id>
+  </upstream>
+  <use>
+    <flag name="osd"> Enable support orientation and script detection.</flag>
+  </use>
+</pkgmetadata>

@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Emulates scrollwheel, right- & left-click for one-button mice/touchpads"
 HOMEPAGE="http://geekounet.org/powerbook/"
-SRC_URI="http://geekounet.org/powerbook/files/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

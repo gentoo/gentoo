@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 RUBY_OPTIONAL=no
-USE_RUBY="ruby23"
+USE_RUBY="ruby24"
 # note: define maximally ONE implementation here
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{5,6}} )
 
 inherit toolchain-funcs python-single-r1 ruby-ng
 
@@ -16,15 +16,16 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 	EGIT_CHECKOUT_DIR=${WORKDIR}/all/${P}
 else
-	SRC_URI="http://www.klayout.org/downloads/source/${P}.tar.gz"
+	SRC_URI="https://www.klayout.org/downloads/source/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Viewer and editor for GDS and OASIS integrated circuit layouts"
-HOMEPAGE="http://www.klayout.de/"
+HOMEPAGE="https://www.klayout.de/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
 	dev-qt/designer:5

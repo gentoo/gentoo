@@ -5,4 +5,11 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<maintainer type="project">
+	<email>perl@gentoo.org</email>
+	<name>Gentoo Perl Project</name>
+</maintainer>
+<use>
+	<flag name="standalone">Build standalone version that survives all Portage bugs</flag>
+</use>
 </pkgmetadata>

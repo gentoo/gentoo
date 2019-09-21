@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools elisp-common eutils git-r3 toolchain-funcs
+EAPI=7
+inherit autotools elisp-common git-r3 toolchain-funcs
 
 DESCRIPTION="window manager without mouse dependency"
-HOMEPAGE="http://www.nongnu.org/ratpoison/"
-EGIT_REPO_URI="git://git.savannah.nongnu.org/ratpoison.git"
+HOMEPAGE="https://www.nongnu.org/ratpoison/"
+EGIT_REPO_URI="https://git.savannah.gnu.org/git/ratpoison.git"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,8 +24,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/randrproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 SITEFILE=50ratpoison-gentoo.el
@@ -36,9 +35,12 @@ DOCS=(
 	README
 	TODO
 )
+PATCHES=(
+	"${FILESDIR}"/ratpoison.el-gentoo.patch
+)
 
 src_prepare() {
-	eapply "${FILESDIR}"/ratpoison.el-gentoo.patch
+	default
 
 	eautoreconf
 }

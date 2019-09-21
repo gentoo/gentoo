@@ -1,0 +1,42 @@
+--- a/patch/15_all_disable-systemtap-switch.patch	2019-05-28 09:25:40.556754095 +0200
++++ b/patch/15_all_disable-systemtap-switch.patch	2019-05-28 09:25:00.731426775 +0200
+@@ -42,8 +42,8 @@
+    lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
+    lt_status=$lt_dlunknown
+    cat > conftest.$ac_ext <<_LT_EOF
+--#line 18451 "configure"
+-+#line 18453 "configure"
++-#line 18497 "configure"
+++#line 18499 "configure"
+  #include "confdefs.h"
+  
+  #if HAVE_DLFCN_H
+@@ -51,8 +51,8 @@
+    lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
+    lt_status=$lt_dlunknown
+    cat > conftest.$ac_ext <<_LT_EOF
+--#line 18557 "configure"
+-+#line 18559 "configure"
++-#line 18603 "configure"
+++#line 18605 "configure"
+  #include "confdefs.h"
+  
+  #if HAVE_DLFCN_H
+--- a/gcc-8-2019-20190517-18C94-src/gcc/ada/osint.adb	2017-03-10 21:58:02.600710156 +0100
++++ b/gcc-8-2019-20190517-18C94-src/gcc/ada/osint.adb	2017-03-10 21:59:38.033983293 +0100
+@@ -2229,14 +2229,11 @@
+       for J in Start_Of_Prefix .. Name_Len - Prog'Length + 1 loop
+          if Name_Buffer (J .. J + Prog'Length - 1) = Prog then
+             End_Of_Prefix := J - 1;
++            Start_Of_Suffix := J + Prog'Length;
+             exit;
+          end if;
+       end loop;
+ 
+-      if End_Of_Prefix > 1 then
+-         Start_Of_Suffix := End_Of_Prefix + Prog'Length + 1;
+-      end if;
+-
+       --  Create the new program name
+ 
+       return new String'

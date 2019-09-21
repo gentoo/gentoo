@@ -20,7 +20,7 @@ RDEPEND="
 	app-admin/gkrellm:2[X]
 	x11-libs/libXtst"
 DEPEND="${RDEPEND}
-	x11-proto/inputproto"
+	x11-base/xorg-proto"
 
 S="${WORKDIR}/${MY_P}"
 

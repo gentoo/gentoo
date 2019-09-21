@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>crypto@gentoo.org</email>
+		<name>Crypto</name>
+	</maintainer>
+	<use>
+		<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> as crypto engine</flag>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as crypto engine</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">tpm2-software/tpm2-tss</remote-id>
+	</upstream>
+</pkgmetadata>

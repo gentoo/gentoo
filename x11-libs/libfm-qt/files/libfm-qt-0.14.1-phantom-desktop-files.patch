@@ -1,0 +1,109 @@
+From f944be7d2447d5c579a57fb5519ee5e2dece5871 Mon Sep 17 00:00:00 2001
+From: Tsu Jan <tsujan2000@gmail.com>
+Date: Sun, 21 Apr 2019 14:11:14 +0430
+Subject: [PATCH] Don't ignore creation-deletion sequences
+
+Fixes https://github.com/lxqt/pcmanfm-qt/issues/944
+
+Previously, if a file was in addition queue and then it came into the deletion queue, its addition and deletion were both ignored. That was wrong and could result in showing nonexistent files because addition can also happen in directory list job before being processed by file info job.
+
+Also process accumulated changes only after finishing the current info job and don't clear all deletion paths after processing them (because, logically, only those paths that can be deleted should be removed).
+---
+ src/core/folder.cpp | 60 +++++++++++++++++++++++----------------------
+ 1 file changed, 31 insertions(+), 29 deletions(-)
+
+diff --git a/src/core/folder.cpp b/src/core/folder.cpp
+index 6c2b27d..2385a8b 100644
+--- a/src/core/folder.cpp
++++ b/src/core/folder.cpp
+@@ -228,16 +228,6 @@ void Folder::onFileInfoFinished() {
+         return;
+     }
+ 
+-    // process the changes accumulated during this info job
+-    if(filesystem_info_pending // means a pending change; see "onFileSystemInfoFinished()"
+-       || !paths_to_update.empty() || !paths_to_add.empty() || !paths_to_del.empty()) {
+-        QTimer::singleShot(0, this, &Folder::processPendingChanges);
+-    }
+-    // there's no pending change at the moment; let the next one be processed
+-    else {
+-        has_idle_update_handler = false;
+-    }
+-
+     FileInfoList files_to_add;
+     FileInfoList files_to_delete;
+     std::vector<FileInfoPair> files_to_update;
+@@ -271,6 +261,16 @@ void Folder::onFileInfoFinished() {
+         Q_EMIT filesChanged(files_to_update);
+     }
+     Q_EMIT contentChanged();
++
++    // process the changes accumulated during this info job
++    if(filesystem_info_pending // means a pending change; see "onFileSystemInfoFinished()"
++       || !paths_to_update.empty() || !paths_to_add.empty() || !paths_to_del.empty()) {
++        QTimer::singleShot(0, this, &Folder::processPendingChanges);
++    }
++    // there's no pending change at the moment; let the next one be processed
++    else {
++        has_idle_update_handler = false;
++    }
+ }
+ 
+ void Folder::processPendingChanges() {
+@@ -314,21 +314,24 @@ void Folder::processPendingChanges() {
+     }
+ 
+     // process deletion
+-    if(!paths_to_del.empty()) {
+-        FileInfoList deleted_files;
+-        for(const auto &path: paths_to_del) {
+-            auto name = path.baseName();
+-            auto it = files_.find(name.get());
+-            if(it != files_.end()) {
+-                deleted_files.push_back(it->second);
+-                files_.erase(it);
+-            }
++    FileInfoList deleted_files;
++    auto path_it = paths_to_del.begin();
++    while(path_it != paths_to_del.end()) {
++        const auto& path = *path_it;
++        auto name = path.baseName();
++        auto it = files_.find(name.get());
++        if(it != files_.end()) {
++            deleted_files.push_back(it->second);
++            files_.erase(it);
++            path_it = paths_to_del.erase(path_it);
+         }
+-        if(!deleted_files.empty()) {
+-            Q_EMIT filesRemoved(deleted_files);
+-            Q_EMIT contentChanged();
++        else {
++            ++path_it;
+         }
+-        paths_to_del.clear();
++    }
++    if(!deleted_files.empty()) {
++        Q_EMIT filesRemoved(deleted_files);
++        Q_EMIT contentChanged();
+     }
+ 
+     if(pending_change_notify) {
+@@ -404,13 +407,12 @@ void Folder::eventFileDeleted(const FilePath& path) {
+     bool deleted = true;
+     // qDebug() << "delete " << path.baseName().get();
+     // G_LOCK(lists);
+-    if(std::find(paths_to_add.cbegin(), paths_to_add.cend(), path) != paths_to_add.cend()) {
+-        // if the file was going to be added, just remove it from the addition queue
+-        paths_to_add.erase(std::remove(paths_to_add.begin(), paths_to_add.end(), path), paths_to_add.cend());
+-    }
+-    else if(std::find(paths_to_del.cbegin(), paths_to_del.cend(), path) == paths_to_del.cend()) {
++    /* WARNING: If the file is in the addition queue, we shouldn not remove it from that queue
++       and ignore its deletion because it may have been added by the directory list job, in
++       which case, ignoring an addition-deletion sequence would result in a nonexistent file. */
++    if(std::find(paths_to_del.cbegin(), paths_to_del.cend(), path) == paths_to_del.cend()) {
+         paths_to_del.push_back(path);
+-        // the update queue should be cancelled for a file that is going to be deleted
++        // the update queue can be cancelled for a file that is going to be deleted
+         paths_to_update.erase(std::remove(paths_to_update.begin(), paths_to_update.end(), path), paths_to_update.cend());
+     }
+     else {

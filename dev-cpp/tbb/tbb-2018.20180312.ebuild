@@ -10,7 +10,7 @@ PV2=3
 MY_PV="${PV1}_U${PV2}"
 
 DESCRIPTION="High level abstract threading library"
-HOMEPAGE="http://www.threadingbuildingblocks.org/"
+HOMEPAGE="https://www.threadingbuildingblocks.org"
 SRC_URI="https://github.com/01org/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -78,8 +78,8 @@ local_src_compile() {
 	case ${MULTILIB_ABI_FLAG} in
 		abi_x86_64) arch=x86_64 ;;
 		abi_x86_32) arch=ia32 ;;
-		abi_ppc_64) arch=ppc64 ;;
-		abi_ppc_32) arch=ppc32 ;;
+#		abi_ppc_64) arch=ppc64 ;;
+#		abi_ppc_32) arch=ppc32 ;;
 	esac
 
 	case "$(tc-getCXX)" in

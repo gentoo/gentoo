@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,8 +8,8 @@ inherit eutils toolchain-funcs
 MY_PN="LuaLDAP"
 
 DESCRIPTION="Simple interface from Lua to OpenLDAP"
-HOMEPAGE="http://git.zx2c4.com/lualdap/about/"
-SRC_URI="http://git.zx2c4.com/${PN}/snapshot/${P}.tar.xz"
+HOMEPAGE="https://git.zx2c4.com/lualdap/about/"
+SRC_URI="https://git.zx2c4.com/${PN}/snapshot/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"

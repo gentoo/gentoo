@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils multilib flag-o-matic toolchain-funcs udev user
+inherit eutils multilib flag-o-matic toolchain-funcs udev
 
 # One ebuild to rule them all
 if [[ ${PV} == *9999 ]] ; then
@@ -25,7 +25,9 @@ SLOT="0"
 IUSE="cmsis-dap dummy ftdi parport +usb verbose-io"
 RESTRICT="strip" # includes non-native binaries
 
-RDEPEND=">=dev-lang/jimtcl-0.76
+RDEPEND="
+	acct-group/plugdev
+	>=dev-lang/jimtcl-0.76
 	cmsis-dap? ( dev-libs/hidapi )
 	usb? (
 		virtual/libusb:0
@@ -35,10 +37,6 @@ RDEPEND=">=dev-lang/jimtcl-0.76
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-pkg_setup() {
-	enewgroup plugdev
-}
 
 src_prepare() {
 	epatch_user
@@ -126,7 +124,6 @@ src_configure() {
 
 src_install() {
 	default
-	env -uRESTRICT prepstrip "${ED}"/usr/bin
 	udev_dorules "${D}"/usr/share/${PN}/contrib/*.rules
 }
 

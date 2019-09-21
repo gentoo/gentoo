@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,9 +6,9 @@ EAPI=6
 inherit flag-o-matic libtool toolchain-funcs
 
 DESCRIPTION="Convert files between various character sets"
-HOMEPAGE="http://recode.progiciels-bpi.ca/"
+HOMEPAGE="https://github.com/rrthomas/recode"
 REV="2d7092a9999194fc0e9449717a8048c8d8e26c18"
-SRC_URI="https://github.com/pinard/Recode/archive/${REV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/pinard/Recode/archive/${REV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

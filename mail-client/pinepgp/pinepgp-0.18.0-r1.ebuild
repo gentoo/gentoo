@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""
 
-DEPEND="|| ( mail-client/alpine mail-client/pine )
+DEPEND="mail-client/alpine
 	app-crypt/gnupg"
 
 src_unpack()	{

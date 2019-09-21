@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -43,8 +43,8 @@ pkg_nofetch() {
 	einfo
 	einfo "Please buy Wasteland 2"
 	einfo "from https://www.gog.com/ and"
-	einfo "download \"${SRC_URI}\""
-	einfo "and move/link it to \"${DISTDIR}\""
+	einfo "download ${SRC_URI}"
+	einfo "and move it to your DISTDIR directory."
 	einfo
 	einfo "This ebuild was tested with the CLASSICAL edition."
 	einfo "If it works with the deluxe edition too, please"

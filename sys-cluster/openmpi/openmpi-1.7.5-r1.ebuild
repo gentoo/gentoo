@@ -55,9 +55,10 @@ RDEPEND="
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
 	!sys-cluster/mpiexec
+	!sys-cluster/pmix
 	dev-libs/libevent
 	dev-libs/libltdl:0
-	>=sys-apps/hwloc-1.7.2
+	<sys-apps/hwloc-2
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 	openmpi_fabrics_ofed? ( sys-fabric/ofed )

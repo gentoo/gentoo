@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools ltprune versionator toolchain-funcs udev
+inherit autotools toolchain-funcs udev
 
-MY_P=ACR38_LINUX_$(get_version_component_range 1)00$(get_version_component_range 2)$(get_version_component_range 3)_P
+MY_P=ACR38_LINUX_$(ver_cut 1)00$(ver_cut 2)$(ver_cut 3)_P
 
 SLOT="0"
 LICENSE="LGPL-2.1"
@@ -25,12 +25,10 @@ HOMEPAGE="https://www.acs.com.hk"
 # libusb-compat is marked stable and primary in the virtual. -ssuominen
 RDEPEND=">=sys-apps/pcsc-lite-1.6.4
 	virtual/libusb:0"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S=${WORKDIR}/${MY_P}
-
-IUSE=""
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-build.patch
@@ -43,8 +41,8 @@ src_prepare() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${D}" -name '*.la' -delete || die
 
 	# note: for eudev support this pkg may always need to install rules to /usr
-	udev_newrules "${FILESDIR}"/${PV}-bis.rules 92-pcscd-acr38u.rules
+	udev_newrules "${FILESDIR}/${PV}-bis.rules" 92-pcscd-acr38u.rules
 }

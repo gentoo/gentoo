@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 inherit cmake-utils python-single-r1 readme.gentoo-r1 systemd user
 
-GTEST_VER="1.8.0"
-GTEST_URL="https://github.com/google/googletest/archive/release-${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz"
+GTEST_VER="1.8.1"
+GTEST_URL="https://github.com/google/googletest/archive/${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz"
 DESCRIPTION="An advanced IRC Bouncer"
 
 if [[ ${PV} == *9999* ]]; then
@@ -16,14 +16,17 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI=${EGIT_REPO_URI:-"https://github.com/znc/znc.git"}
 	SRC_URI=""
 else
+	MY_PV=${PV/_/-}
+	MY_P=${PN}-${MY_PV}
 	SRC_URI="
-		http://znc.in/releases/archive/${P}.tar.gz
+		https://znc.in/releases/archive/${MY_P}.tar.gz
 		test? ( ${GTEST_URL} )
 	"
 	KEYWORDS="~amd64 ~arm ~x86"
+	S=${WORKDIR}/${MY_P}
 fi
 
-HOMEPAGE="http://znc.in"
+HOMEPAGE="https://znc.in"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+ipv6 +icu libressl nls perl python +ssl sasl tcl test +zlib"
@@ -45,11 +48,14 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
 	perl? ( >=dev-lang/swig-3.0.0 )
 	python? ( >=dev-lang/swig-3.0.0 )
+	test? ( dev-qt/qtnetwork:5 )
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-1.7.1-inttest-dir.patch )
 
 pkg_setup() {
 	if use python; then
@@ -70,6 +76,9 @@ src_prepare() {
 		rm modules/modperl/generated.tar.gz || die
 		rm modules/modpython/generated.tar.gz || die
 	fi
+
+	sed -i -e "s|DZNC_BIN_DIR:path=|DZNC_BIN_DIR:path=${T}/inttest|" \
+		test/CMakeLists.txt || die
 
 	cmake-utils_src_prepare
 }
@@ -98,9 +107,28 @@ src_configure() {
 }
 
 src_test() {
-	pushd "${BUILD_DIR}" > /dev/null || die
-	${CMAKE_MAKEFILE_GENERATOR} unittest || die "Unit test failed"
-	popd > /dev/null || die
+	cmake-utils_src_make unittest
+	if has network-sandbox ${FEATURES}; then
+		DESTDIR="${T}/inttest" cmake-utils_src_make install
+		local filter='-'
+		if ! use perl; then
+			filter="${filter}:ZNCTest.Modperl*"
+		fi
+		if ! use python; then
+			filter="${filter}:ZNCTest.Modpython*"
+		fi
+		# CMAKE_PREFIX_PATH and CXXFLAGS are needed for znc-buildmod
+		# invocations from inside the test
+		GTEST_FILTER="${filter}" ZNC_UNUSUAL_ROOT="${T}/inttest" \
+			CMAKE_PREFIX_PATH="${T}/inttest/usr/share/znc/cmake" \
+			CXXFLAGS="${CXXFLAGS} -isystem ${T}/inttest/usr/include" \
+			cmake-utils_src_make inttest
+	else
+		# TODO: don't require sandbox after
+		# https://github.com/znc/znc/pull/1363 is implemented
+		ewarn "FEATURES=-network-sandbox; skipping integration tests which"
+		ewarn "temporary open local ports."
+	fi
 }
 
 src_install() {
@@ -121,35 +149,34 @@ pkg_postinst() {
 		readme.gentoo_print_elog
 	fi
 
-	if [[ -d "${EROOT%/}"/etc/znc ]]; then
-		ewarn "${EROOT%/}/etc/znc exists on your system."
+	if [[ -d "${EROOT}"/etc/znc ]]; then
+		ewarn "${EROOT}/etc/znc exists on your system."
 		ewarn "Due to the nature of the contents of that folder,"
 		ewarn "we have changed the default configuration to use"
-		ewarn "	${EROOT%/}/var/lib/znc"
-		ewarn "please move ${EROOT%/}/etc/znc to ${EROOT%/}/var/lib/znc"
+		ewarn "	${EROOT}/var/lib/znc"
+		ewarn "please move ${EROOT}/etc/znc to ${EROOT}/var/lib/znc"
 		ewarn "or adjust your service configuration."
 	fi
 }
 
 pkg_config() {
-	if [[ -e "${EROOT%/}/var/lib/znc" ]]; then
-		ewarn "${EROOT%/}/var/lib/znc already exists, aborting to avoid damaging"
+	if [[ -e "${EROOT}/var/lib/znc" ]]; then
+		ewarn "${EROOT}/var/lib/znc already exists, aborting to avoid damaging"
 		ewarn "any existing configuration. If you are sure you want"
 		ewarn "to generate a new configuration, remove the folder"
 		ewarn "and try again."
 	else
-		einfo "Press any key to interactively create a new configuration file"
-		einfo "for znc."
+		einfo "Press enter to interactively create a new configuration file for znc."
 		einfo "To abort, press Control-C"
 		read
-		mkdir -p "${EROOT%/}/var/lib/znc" || die
-		chown -R ${PN}:${PN} "${EROOT%/}/var/lib/znc" ||
+		mkdir -p "${EROOT}/var/lib/znc" || die
+		chown -R ${PN}:${PN} "${EROOT}/var/lib/znc" ||
 			die "Setting permissions failed"
 		start-stop-daemon --start --user ${PN}:${PN} --env ZNC_NO_LAUNCH_AFTER_MAKECONF=1 \
-			"${EROOT%/}"/usr/bin/znc -- --makeconf --datadir "${EROOT%/}/var/lib/znc" ||
+			"${EROOT}"/usr/bin/znc -- --makeconf --datadir "${EROOT}/var/lib/znc" ||
 			die "Config failed"
 		einfo
-		einfo "Now you can start znc service using the init system of your choice."
-		einfo "Don't forget to enable znc service if you want to use znc on boot."
+		einfo "You can now start the znc service using the init system of your choice."
+		einfo "Don't forget to enable it if you want to use znc at boot."
 	fi
 }

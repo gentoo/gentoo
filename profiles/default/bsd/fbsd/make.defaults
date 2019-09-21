@@ -12,11 +12,11 @@ MAKE="gmake"
 
 USE="berkdb crypt iconv ipv6 ncurses nls oss pam pcre readline ssl tcpd zlib"
 
-# 2006/03/07 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-03-07)
 # Modular X: Support direct rendering by default
 USE="${USE} dri"
 
-# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
 VIDEO_CARDS="dummy fbdev vmware"
 

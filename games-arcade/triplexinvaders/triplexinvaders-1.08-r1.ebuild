@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1
+inherit desktop eutils python-single-r1
 
 DESCRIPTION="An Alien Invaders style game with 3d graphics"
 HOMEPAGE="http://triplexinvaders.infogami.com"

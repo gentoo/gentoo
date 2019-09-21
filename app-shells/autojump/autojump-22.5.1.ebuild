@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 inherit bash-completion-r1 python-r1 vcs-snapshot
 
@@ -20,7 +20,7 @@ REQUIRED_USE="ipython? ( ${PYTHON_REQUIRED_USE} )"
 # Not all tests pass. Need investigation.
 RESTRICT="test"
 RDEPEND="ipython? ( ${PYTHON_DEPS} )"
-DEPEND="test? ( dev-python/flake8 dev-python/tox )"
+DEPEND="${PYTHON_DEPS}"
 
 src_prepare() {
 	eapply_user

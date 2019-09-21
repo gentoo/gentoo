@@ -1,0 +1,24 @@
+From c1ac1fb93dace81b2a60f9d1f5d6d20298c8b9bb Mon Sep 17 00:00:00 2001
+From: Fabrice Bellet <fabrice@bellet.info>
+Date: Fri, 1 Feb 2019 09:29:40 +0100
+Subject: [PATCH] fix for boost 1.69
+
+---
+ simgear/nasal/cppbind/NasalHash.hxx | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/simgear/nasal/cppbind/NasalHash.hxx b/simgear/nasal/cppbind/NasalHash.hxx
+index aac672fd..2ee7d044 100644
+--- a/simgear/nasal/cppbind/NasalHash.hxx
++++ b/simgear/nasal/cppbind/NasalHash.hxx
+@@ -23,6 +23,7 @@
+ #include "to_nasal.hxx"
+ 
+ #include <simgear/structure/map.hxx>
++#include <boost/core/enable_if.hpp>
+ #include <boost/iterator/iterator_facade.hpp>
+ 
+ namespace nasal
+-- 
+2.20.1
+

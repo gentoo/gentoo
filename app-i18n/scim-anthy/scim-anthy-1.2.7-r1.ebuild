@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils
 
@@ -26,8 +26,12 @@ DEPEND="${DEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
+	default
+
 	if use gtk3; then
 		EPATCH_SOURCE="${WORKDIR}/patches" EPATCH_SUFFIX="patch" epatch
+	else
+		epatch "${FILESDIR}/${P}-gtk2_build.patch"
 	fi
 
 	eautoreconf

@@ -1,16 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 inherit cmake-multilib
 
-DESCRIPTION="A completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library"
+DESCRIPTION="Completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library"
 HOMEPAGE="http://freeglut.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="debug static-libs"
 
 # enabling GLES support seems to cause build failures
@@ -27,6 +28,11 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
 HTML_DOCS=( doc/. )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-drop-unnecessary-x11-libs.patch
+	"${FILESDIR}"/${P}-bsd-usb-joystick.patch
+)
 
 src_configure() {
 	local mycmakeargs=(

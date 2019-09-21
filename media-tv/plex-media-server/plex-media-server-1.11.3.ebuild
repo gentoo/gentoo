@@ -16,7 +16,7 @@ _FULL_VERSION="${PV}.${MINOR_VERSION}"
 URI="https://downloads.plex.tv/plex-media-server"
 
 DESCRIPTION="A free media library that is intended for use with a plex client."
-HOMEPAGE="http://www.plex.tv/"
+HOMEPAGE="https://www.plex.tv/"
 SRC_URI="amd64? ( ${URI}/${_FULL_VERSION}/plexmediaserver_${_FULL_VERSION}_amd64.deb )"
 SLOT="0"
 LICENSE="Plex"

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ KEYWORDS="alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-maco
 IUSE="l10n_ja"
 
 DEPEND=">=app-emacs/apel-10.6
-	virtual/emacs-flim"
+	app-emacs/flim"
 RDEPEND="${DEPEND}"
 
 ELISP_PATCHES="${PN}-info.patch"

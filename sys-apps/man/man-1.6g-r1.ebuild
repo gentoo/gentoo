@@ -15,7 +15,7 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x8
 IUSE="+lzma nls selinux"
 
 DEPEND="nls? ( sys-devel/gettext )"
-RDEPEND="|| ( >=sys-apps/groff-1.19.2-r1 app-doc/heirloom-doctools )
+RDEPEND=">=sys-apps/groff-1.19.2-r1
 	!sys-apps/man-db
 	!<app-arch/lzma-4.63
 	lzma? ( app-arch/xz-utils )
@@ -127,13 +127,5 @@ pkg_postinst() {
 		ewarn "You have multiple makewhatis cron files installed."
 		ewarn "You might want to delete all but one of these:"
 		ewarn ${files}
-	fi
-
-	if has_version app-doc/heirloom-doctools; then
-		ewarn "Please note that the /etc/man.conf file installed will not"
-		ewarn "work with heirloom's nroff by default (yet)."
-		ewarn ""
-		ewarn "Check app-doc/heirloom-doctools elog messages for the proper"
-		ewarn "configuration."
 	fi
 }

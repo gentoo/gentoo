@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Software package for algebraic, geometric and combinatorial problems"
 HOMEPAGE="http://www.4ti2.de/"
@@ -14,10 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="static-libs"
 
-DEPEND="
-	sci-mathematics/glpk:0[gmp]
-	dev-libs/gmp[cxx]"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	sci-mathematics/glpk:=[gmp]
+	dev-libs/gmp:0=[cxx]"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.2-gold.patch
@@ -25,8 +25,7 @@ PATCHES=(
 
 src_prepare() {
 	default
-	sed -e "s:^CXX.*$:CXX=$(tc-getCXX):g" \
-		-i m4/glpk-check.m4 || die
+	sed -e "/^CXX/d" -i m4/glpk-check.m4 || die
 	# The swig subdir is not used, so we can skip running autotools in it. #518000
 	AT_NO_RECURSIVE=1 eautoreconf
 }
@@ -39,5 +38,8 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files --all
+
+	if ! use static-libs; then
+		find "${D}" -name '*.la' -delete || die
+	fi
 }

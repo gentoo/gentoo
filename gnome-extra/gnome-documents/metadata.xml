@@ -5,4 +5,10 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
+<longdescription lang="en">
+	A simple application to access, organize and share your documents on
+	GNOME. It is meant to be a simple and elegant replacement for using a
+	file manager to deal with documents. Seamless cloud integration is offered
+	through GNOME Online Accounts.
+</longdescription>
 </pkgmetadata>

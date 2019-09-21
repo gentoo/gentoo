@@ -1,7 +1,7 @@
 Index: id3lib-3.8.3/configure.in
 ===================================================================
---- id3lib-3.8.3.orig/configure.in
-+++ id3lib-3.8.3/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -168,7 +168,7 @@ if test $has_iconv = 1; then
  		iconv_oldstyle=1, iconv_oldstyle=0)
    if test $iconv_oldstyle = 1; then

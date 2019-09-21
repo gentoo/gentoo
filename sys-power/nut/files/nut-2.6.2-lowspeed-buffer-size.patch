@@ -3,10 +3,10 @@ http://boxster.ghz.cc/projects/nut/changeset/2407
 
 Respun from nut-2.4.3-lowspeed-buffer-size.patch
 
-Index: /trunk/drivers/libhid.c
+Index: a/drivers/libhid.c
 ===================================================================
---- /trunk/drivers/libhid.c (revision 2336)
-+++ /trunk/drivers/libhid.c (revision 2407)
+--- a/drivers/libhid.c (revision 2336)
++++ a/drivers/libhid.c (revision 2407)
 @@ -142,5 +142,5 @@
  	int	id = pData->ReportID;
  	int	r;

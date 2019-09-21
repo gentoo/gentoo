@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="A curses-based ascii-art editor"
 HOMEPAGE="http://aewan.sourceforge.net/"
@@ -16,12 +16,13 @@ KEYWORDS="amd64 x86"
 DOCS=( CHANGELOG README TODO )
 
 DEPEND="sys-libs/zlib
-	>=sys-libs/ncurses-5.0"
+	>=sys-libs/ncurses-5.0:0="
 
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch \
+	default
+	eapply \
 		"${FILESDIR}/${P}-debug_aewl-warnings.patch" \
 		"${FILESDIR}/${P}-tinfo.patch"
 	eautoreconf

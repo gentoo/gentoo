@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-quoting.patch
 	"${FILESDIR}"/${P}-gcc6.patch
 	"${FILESDIR}"/${P}-musl.patch
+	"${FILESDIR}"/${P}-drop-bogus-assignment.patch #638720
 )
 
 HTML_DOCS=( htdoc )
@@ -42,14 +43,16 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--with-config-dir="${EPREFIX}"/etc/${PN} \
-		--with-default-config-file="${EPREFIX}"/etc/${PN}/${PN}.conf \
-		--with-database-dir="${EPREFIX}"/var/lib/${PN}/db \
-		--with-cgi-bin-dir="${EPREFIX}"/var/www/localhost/cgi-bin \
-		--with-search-dir="${EPREFIX}"/var/www/localhost/htdocs/${PN} \
-		--with-image-dir="${EPREFIX}"/var/www/localhost/htdocs/${PN} \
+	local myeconfargs=(
+		--with-config-dir="${EPREFIX}"/etc/${PN}
+		--with-default-config-file="${EPREFIX}"/etc/${PN}/${PN}.conf
+		--with-database-dir="${EPREFIX}"/var/lib/${PN}/db
+		--with-cgi-bin-dir="${EPREFIX}"/var/www/localhost/cgi-bin
+		--with-search-dir="${EPREFIX}"/var/www/localhost/htdocs/${PN}
+		--with-image-dir="${EPREFIX}"/var/www/localhost/htdocs/${PN}
 		$(use_with ssl)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install () {

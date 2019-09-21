@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -14,7 +14,7 @@ DEPEND=">=x11-wm/windowmaker-0.80.2-r2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc amd64 sparc"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 S1=${WORKDIR}/Sounds
 S2=${WORKDIR}/SoundSets

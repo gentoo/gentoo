@@ -1,0 +1,55 @@
+diff -ur ceph-12.2.5.orig/src/rapidjson/CMakeLists.txt ceph-12.2.5/src/rapidjson/CMakeLists.txt
+--- ceph-12.2.5.orig/src/rapidjson/CMakeLists.txt	2018-07-09 11:18:09.188115751 -0700
++++ ceph-12.2.5/src/rapidjson/CMakeLists.txt	2018-07-09 11:36:56.848639110 -0700
+@@ -50,7 +50,7 @@
+ endif(CCACHE_FOUND)
+ 
+ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -Wall -Wextra -Werror")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -Wall -Wextra")
+     if (RAPIDJSON_BUILD_CXX11)
+         if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.7.0")
+             set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+@@ -73,7 +73,7 @@
+         endif()
+     endif()
+ elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -Wall -Wextra -Werror -Wno-missing-field-initializers")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -Wall -Wextra -Wno-missing-field-initializers")
+     if (RAPIDJSON_BUILD_CXX11)
+         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+     endif()
+diff -ur ceph-12.2.5.orig/src/rocksdb/CMakeLists.txt ceph-12.2.5/src/rocksdb/CMakeLists.txt
+--- ceph-12.2.5.orig/src/rocksdb/CMakeLists.txt	2018-07-09 11:18:09.219115543 -0700
++++ ceph-12.2.5/src/rocksdb/CMakeLists.txt	2018-07-09 11:34:58.843411195 -0700
+@@ -174,15 +174,6 @@
+   PROPERTIES COMPILE_FLAGS "-msse4.2")
+ endif()
+ 
+-option(FAIL_ON_WARNINGS "Treat compile warnings as errors" ON)
+-if(FAIL_ON_WARNINGS)
+-  if(MSVC)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /WX")
+-  else() # assume GCC
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+-  endif()
+-endif()
+-
+ option(WITH_ASAN "build with ASAN" OFF)
+ if(WITH_ASAN)
+   add_definitions(-DROCKSDB_TSAN_RUN)
+diff -ur ceph-12.2.5.orig/src/rocksdb/Makefile ceph-12.2.5/src/rocksdb/Makefile
+--- ceph-12.2.5.orig/src/rocksdb/Makefile	2018-03-11 18:58:51.000000000 -0700
++++ ceph-12.2.5/src/rocksdb/Makefile	2018-07-09 11:35:53.847049123 -0700
+@@ -243,11 +243,6 @@
+ WARNING_FLAGS = -W -Wextra -Wall -Wsign-compare -Wshadow \
+   -Wno-unused-parameter
+ 
+-ifndef DISABLE_WARNING_AS_ERROR
+-	WARNING_FLAGS += -Werror
+-endif
+-
+-
+ ifdef LUA_PATH
+ 
+ ifndef LUA_INCLUDE

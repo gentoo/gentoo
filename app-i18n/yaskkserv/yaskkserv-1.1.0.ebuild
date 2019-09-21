@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -15,19 +15,16 @@ KEYWORDS="amd64 x86"
 IUSE="gnutls libressl systemd"
 
 RDEPEND="app-i18n/skk-jisyo
-	gnutls? ( net-libs/gnutls )
+	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	systemd? ( virtual/udev[systemd] )"
 DEPEND="${RDEPEND}
 	dev-lang/perl"
 
-REQUIRED_USE="?? ( gnutls libressl )"
-
 PATCHES=( "${FILESDIR}"/${PN}-gentoo.patch )
-DOCS=( README.md )
 HTML_DOCS=( documentation/. )
 
 src_configure() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit autotools eutils fcaps flag-o-matic git-r3
 
 DESCRIPTION="My TraceRoute, an Excellent network diagnostic tool"
 HOMEPAGE="http://www.bitwizard.nl/mtr/"
-EGIT_REPO_URI="https://github.com/traviscross/mtr.git"
+EGIT_REPO_URI="https://github.com/traviscross/mtr"
 SRC_URI="mirror://gentoo/gtk-2.0-for-mtr.m4.bz2"
 
 LICENSE="GPL-2"
@@ -27,7 +27,7 @@ DEPEND="
 	virtual/pkgconfig
 "
 
-DOCS=( AUTHORS FORMATS NEWS README SECURITY TODO )
+DOCS=( AUTHORS FORMATS NEWS README.md SECURITY TODO )
 FILECAPS=( cap_net_raw usr/sbin/mtr-packet )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.88-tinfo.patch

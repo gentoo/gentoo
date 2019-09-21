@@ -1,0 +1,54 @@
+From 9eaaa76e2e36e46a43dbd419724696fd7ff8ea64 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Cardona?= <remi@gentoo.org>
+Date: Sat, 14 Apr 2018 09:55:22 +0200
+Subject: [PATCH 1/2] gdbus-codegen-2.54.3-sitedir.patch
+
+---
+ gio/gdbus-2.0/codegen/gdbus-codegen.in | 28 --------------------------
+ 1 file changed, 28 deletions(-)
+
+diff --git a/gio/gdbus-2.0/codegen/gdbus-codegen.in b/gio/gdbus-2.0/codegen/gdbus-codegen.in
+index 67d367543..190afa28f 100755
+--- a/gdbus-codegen.in
++++ b/gdbus-codegen.in
+@@ -20,36 +20,8 @@
+ # Author: David Zeuthen <davidz@redhat.com>
+ 
+ 
+-import os
+ import sys
+ 
+-srcdir = os.getenv('UNINSTALLED_GLIB_SRCDIR', None)
+-filedir = os.path.dirname(__file__)
+-
+-if srcdir is not None:
+-    path = os.path.join(srcdir, 'gio', 'gdbus-2.0')
+-elif os.path.basename(filedir) == 'bin':
+-    # Make the prefix containing gdbus-codegen 'relocatable' at runtime by
+-    # adding /some/prefix/bin/../share/glib-2.0 to the python path
+-    path = os.path.join(filedir, '..', 'share', 'glib-2.0')
+-else:
+-    # Assume that the modules we need are in the current directory and add the
+-    # parent directory to the python path.
+-    path = os.path.join(filedir, '..')
+-
+-# Canonicalize, then do further testing
+-path = os.path.abspath(path)
+-
+-# If the above path detection failed, use the hard-coded datadir. This can
+-# happen when, for instance, bindir and datadir are not in the same prefix or
+-# on Windows where we cannot make any guarantees about the directory structure.
+-#
+-# In these cases our installation cannot be relocatable, but at least we should
+-# be able to find the codegen module.
+-if not os.path.isfile(os.path.join(path, 'codegen', 'codegen_main.py')):
+-    path = os.path.join('@DATADIR@', 'glib-2.0')
+-
+-sys.path.insert(0, path)
+-from codegen import codegen_main
++from gdbus_codegen import codegen_main
+ 
+ sys.exit(codegen_main.codegen_main())
+-- 
+2.17.0
+

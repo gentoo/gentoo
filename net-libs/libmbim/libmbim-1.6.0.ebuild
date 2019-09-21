@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -22,6 +22,7 @@ IUSE="doc static-libs test"
 RDEPEND=">=dev-libs/glib-2.32
 	virtual/libgudev:="
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	doc? ( dev-util/gtk-doc )
 	virtual/pkgconfig"
 [[ ${PV} == "9999" ]] && DEPEND+=" dev-util/gtk-doc" #469214

@@ -1,15 +1,18 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2003-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit bash-completion-r1 linux-info meson ninja-utils multilib-minimal toolchain-funcs udev user versionator
+inherit bash-completion-r1 linux-info meson ninja-utils multilib-minimal toolchain-funcs udev
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
+	MY_PV=${PV/_/-}
+	MY_P=systemd-${MY_PV}
+	S=${WORKDIR}/${MY_P}
+	SRC_URI="https://github.com/systemd/systemd/archive/v${MY_PV}/${MY_P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
@@ -44,13 +47,22 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt"
 RDEPEND="${COMMON_DEPEND}
+	acct-group/kmem
+	acct-group/tty
+	acct-group/audio
+	acct-group/cdrom
+	acct-group/dialout
+	acct-group/disk
+	acct-group/input
+	acct-group/kvm
+	acct-group/lp
+	acct-group/render
+	acct-group/tape
+	acct-group/video
 	!<sys-fs/lvm2-2.02.103
 	!<sec-policy/selinux-base-2.20120725-r10"
 PDEPEND=">=sys-apps/hwids-20140304[udev]
 	>=sys-fs/udev-init-scripts-26"
-
-S=${WORKDIR}/systemd-${PV}
-EGIT_CHECKOUT_DIR=${S}
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
@@ -80,8 +92,11 @@ src_prepare() {
 	ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", GROUP="usb"
 	EOF
 
+	if [[ -d "${WORKDIR}/patches" ]]; then
+		eapply "${WORKDIR}/patches"
+	fi
+
 	local PATCHES=(
-		"${FILESDIR}/236-uucp-group.patch"
 	)
 
 	default
@@ -136,7 +151,6 @@ multilib_src_compile() {
 			udevadm
 			src/udev/ata_id
 			src/udev/cdrom_id
-			src/udev/collect
 			src/udev/mtd_probe
 			src/udev/scsi_id
 			src/udev/v4l_id
@@ -168,7 +182,7 @@ multilib_src_install() {
 		doexe systemd-udevd
 
 		exeinto /lib/udev
-		doexe src/udev/{ata_id,cdrom_id,collect,mtd_probe,scsi_id,v4l_id}
+		doexe src/udev/{ata_id,cdrom_id,mtd_probe,scsi_id,v4l_id}
 
 		rm rules/99-systemd.rules || die
 		insinto /lib/udev/rules.d
@@ -307,11 +321,6 @@ pkg_postinst() {
 		fi
 		eend $?
 	fi
-
-	# https://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69
-	# https://bugs.gentoo.org/246847
-	# https://bugs.gentoo.org/514174
-	enewgroup input
 
 	# Update hwdb database in case the format is changed by udev version.
 	if has_version 'sys-apps/hwids[udev]'; then

@@ -12,7 +12,6 @@
 		<flag name="logwatch">Install support files for 
 			<pkg>sys-apps/logwatch</pkg></flag>
 		<flag name="netlink">Adding support for using netlink to create VLANs</flag>
-		<flag name="sqlite">Adding sqlite support</flag>
 		<flag name="wps">Add support for Wi-Fi Protected Setup</flag>
 	</use>
 	<maintainer type="person">
@@ -23,4 +22,7 @@
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:w1.fi:hostapd</remote-id>
+	</upstream>
 </pkgmetadata>

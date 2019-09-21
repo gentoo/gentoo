@@ -1,5 +1,5 @@
---- CMakeLists.txt
-+++ CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -15,10 +15,6 @@
  
  add_definitions(-DFAST_MATH -DCVD_FASTLOG)
@@ -11,8 +11,8 @@
  add_subdirectory(libmpcdec)
  add_subdirectory(libmpcpsy)
  add_subdirectory(libmpcenc)
---- libmpcdec/CMakeLists.txt
-+++ libmpcdec/CMakeLists.txt
+--- a/libmpcdec/CMakeLists.txt
++++ b/libmpcdec/CMakeLists.txt
 @@ -1,7 +1,22 @@
  include_directories(${libmpc_SOURCE_DIR}/include)
  if(SHARED)

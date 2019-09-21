@@ -10,7 +10,6 @@
 			recommended for the most common usage; for example, this installs
 			the file manager. Disable this and other USE flags if you want a
 			more minimal MATE Desktop.</flag>
-		<flag name="gtk3">Build all of MATE DE with GTK+3 instead of GTK+2</flag>
 		<flag name="notification">Force notification daemon to default to MATE's
 			notification daemon. Enabled by default. Disable if it causes conflicts
 			with other installed desktop environments.</flag>

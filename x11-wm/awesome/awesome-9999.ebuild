@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils eutils git-r3 pax-utils
 
@@ -11,7 +11,9 @@ EGIT_REPO_URI="https://github.com/awesomeWM/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS=""
 IUSE="dbus doc elibc_FreeBSD gnome luajit test"
+RESTRICT="test"
 
 RDEPEND="
 	>=dev-lang/lua-5.1:0
@@ -44,7 +46,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	media-gfx/imagemagick[png]
 	>=x11-base/xcb-proto-1.5
-	>=x11-proto/xproto-7.0.15
+	x11-base/xorg-proto
 	doc? ( dev-lua/ldoc )
 	test? (
 		app-shells/zsh

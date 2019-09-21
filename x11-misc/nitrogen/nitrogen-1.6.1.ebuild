@@ -11,7 +11,7 @@ SRC_URI="http://projects.l3ib.org/${PN}/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="nls xinerama"
 
 RDEPEND="
@@ -24,7 +24,7 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	xinerama? ( x11-proto/xineramaproto )
+	xinerama? ( x11-base/xorg-proto )
 "
 
 src_prepare() {

@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/678652
+Created-By: Maciej S. Szmigiero <mail@maciej.szmigiero.name>
+---
+--- a/tools/build/feature/test-clang.cpp	2018-12-24 00:55:59.000000000 +0100
++++ b/tools/build/feature/test-clang.cpp	2019-04-06 16:05:56.828757243 +0200
+@@ -1,10 +1,10 @@
+ // SPDX-License-Identifier: GPL-2.0
+-#include "clang/Basic/VirtualFileSystem.h"
+ #include "clang/Driver/Driver.h"
+ #include "clang/Frontend/TextDiagnosticPrinter.h"
+ #include "llvm/ADT/IntrusiveRefCntPtr.h"
+ #include "llvm/Support/ManagedStatic.h"
+ #include "llvm/Support/raw_ostream.h"
++#include "llvm/Support/VirtualFileSystem.h"
+ 
+ using namespace clang;
+ using namespace clang::driver;

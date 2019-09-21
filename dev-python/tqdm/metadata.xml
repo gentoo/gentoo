@@ -14,6 +14,8 @@
 		any iterator with "tqdm(iterator)", and you're done!
 	</longdescription>
 	<upstream>
+		<remote-id type="pypi">tqdm</remote-id>
 		<remote-id type="github">tqdm/tqdm</remote-id>
+		<bugs-to>https://github.com/tqdm/tqdm/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

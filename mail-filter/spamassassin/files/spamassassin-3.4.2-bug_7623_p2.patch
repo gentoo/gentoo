@@ -1,0 +1,15 @@
+Bug: https://bugs.gentoo.org/677250
+Bug: https://bz.apache.org/SpamAssassin/show_bug.cgi?id=7623
+
+--- a/sa-update.raw	2018/09/29 10:16:29	1842320
++++ b/sa-update.raw	2018/09/29 10:20:26	1842321
+@@ -1659,6 +1659,9 @@
+     my($a_rr, $aaaa_rr);
+       # RFC 3986:  scheme = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
+     $mirror =~ s{^[a-z][a-z0-9.+-]*://}{}si;  # strip scheme like http://
++    # No DNS check needed for IPv4 or IPv6 address literal
++    return 1 if $mirror =~ m{^\d+\.\d+\.\d+\.\d+(?:[:/]|$)};
++    return 1 if $mirror =~ m{^\[};
+     $mirror =~ s{[:/].*}{}s;  # strip all starting from :port or /path
+     return 1 if $have_inet4 && do_dns_query($mirror, "A");
+     return 1 if $have_inet6 && do_dns_query($mirror, "AAAA");

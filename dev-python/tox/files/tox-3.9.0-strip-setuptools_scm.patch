@@ -1,0 +1,30 @@
+diff --git a/setup.py b/setup.py
+index 73f2540..8d6f3c3 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,19 +1,13 @@
+ # -*- coding: utf-8 -*-
+-import textwrap
++import os
+ 
+ from setuptools import setup
+ 
+-setup(
+-    use_scm_version={
+-        "write_to": "src/tox/version.py",
+-        "write_to_template": textwrap.dedent(
+-            """
+-             # coding: utf-8
+-             from __future__ import unicode_literals
++VERSION = os.environ['PV']
++with open('src/tox/version.py', 'wt') as fp:
++    fp.write("__version__ = u'{}'".format(VERSION))
+ 
+-             __version__ = {version!r}
+-             """
+-        ).lstrip(),
+-    },
++setup(
++    version=VERSION,
+     package_dir={"": "src"},
+ )

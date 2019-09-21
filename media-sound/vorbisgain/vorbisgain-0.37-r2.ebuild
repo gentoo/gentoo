@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Calculator of perceived sound level for Ogg Vorbis files"
-HOMEPAGE="http://sjeng.org/vorbisgain.html"
-SRC_URI="http://sjeng.org/ftp/vorbis/${P}.tar.gz"
+HOMEPAGE="https://sjeng.org/vorbisgain.html"
+SRC_URI="https://sjeng.org/ftp/vorbis/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

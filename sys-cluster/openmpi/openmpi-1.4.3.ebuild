@@ -26,7 +26,8 @@ RDEPEND="
 	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
-	!sys-cluster/mpiexec"
+	!sys-cluster/mpiexec
+	!sys-cluster/pmix"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}

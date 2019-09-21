@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils kodi-addon
 
@@ -17,8 +17,9 @@ case ${PV} in
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/peak3d/inputstream.adaptive/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/inputstream.adaptive-${PV}"
+	CODENAME="Leia"
+	SRC_URI="https://github.com/peak3d/inputstream.adaptive/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/inputstream.adaptive-${PV}-${CODENAME}"
 	;;
 esac
 
@@ -28,10 +29,14 @@ IUSE=""
 
 DEPEND="
 	dev-libs/expat
-	=media-tv/kodi-9999
-	=media-libs/kodi-platform-9999
-	=dev-libs/libplatform-2*
+	~media-tv/kodi-9999
+	~media-libs/kodi-platform-9999
 	"
 RDEPEND="
 	${DEPEND}
 	"
+
+src_prepare(){
+	[ -d depends ] && rm -rf depends || die
+	cmake-utils_src_prepare
+}

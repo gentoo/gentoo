@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://mosh.org/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ppc x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm ~mips ppc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="+client examples +mosh-hardening +server ufw +utempter"
 
 REQUIRED_USE="
@@ -19,6 +19,7 @@ REQUIRED_USE="
 	examples? ( client )"
 
 RDEPEND="
+	dev-libs/openssl:0=
 	dev-libs/protobuf:0=
 	sys-libs/ncurses:0=
 	virtual/ssh

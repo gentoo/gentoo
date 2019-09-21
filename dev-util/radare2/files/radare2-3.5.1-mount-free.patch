@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/688336
+
+From 40453029179d230cf02ffed205f2d63e33981b8f Mon Sep 17 00:00:00 2001
+From: pancake <pancake@nopcode.org>
+Date: Mon, 17 Jun 2019 11:34:49 +0200
+Subject: [PATCH] Fix #14334 - Double-free in ms command
+
+---
+ libr/core/cmd_mount.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/libr/core/cmd_mount.c
++++ b/libr/core/cmd_mount.c
+@@ -471,7 +471,7 @@ static int cmd_mount(void *data, const char *_input) {
+ 			rli->completion.run_user = rli->user;
+ 			r_line_completion_set (&rli->completion, ms_argc, ms_argv);
+ 			r_fs_shell_prompt (&shell, core->fs, input);
+-			free (cwd);
++			R_FREE (cwd);
+ 			r_pvector_clear (&rli->completion.args);
+ 			memcpy (&rli->completion, &c, sizeof (c));
+ 		}

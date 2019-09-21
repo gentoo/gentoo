@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5,6})
+PYTHON_COMPAT=( python2_7 python3_{5,6})
 
 COMMIT="32a11cd7d75c4c5b3e3fc01c383314be298b0f9b"
 

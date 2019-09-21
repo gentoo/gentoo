@@ -1,0 +1,47 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -36,7 +36,7 @@
+         add_definitions(-DMAGICK7)
+     endif()
+     find_package(PkgConfig REQUIRED)
+-    pkg_check_modules(MAGICK REQUIRED ImageMagick++)
++    pkg_check_modules(MAGICK REQUIRED Magick++)
+     # ffmpeg
+     if(ENABLE_FFMPEG)
+         pkg_check_modules(AVDEVICE REQUIRED libavdevice)
+@@ -66,7 +66,7 @@
+ find_package(Qt5Concurrent REQUIRED)
+ 
+ # inotify
+-if("${CMAKE_SYSTEM}" NOT MATCHES "Linux")
++if(NOT "${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
+     find_package(PkgConfig REQUIRED)
+     pkg_check_modules(NOTIFY REQUIRED libinotify)
+ endif()
+@@ -123,7 +123,7 @@
+     ${PROJECT_VERSION_MAJOR}
+ )
+ if(ENABLE_MAGICK OR ENABLE_MAGICK7)
+-    target_compile_definitions(QtFM PRIVATE ${MAGICK_CFLAGS_OTHER})
++    target_compile_options(QtFM PRIVATE ${MAGICK_CFLAGS_OTHER})
+     target_link_libraries(QtFM ${MAGICK_LIBRARIES})
+     if(ENABLE_FFMPEG)
+         target_include_directories(QtFM
+@@ -161,7 +161,7 @@
+ if(ENABLE_DBUS)
+     target_link_libraries(QtFM Qt5::DBus QtFMBus)
+ endif()
+-if("${CMAKE_SYSTEM}" NOT MATCHES "Linux")
++if(NOT "${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
+     target_link_libraries(QtFM ${NOTIFY_LIBRARIES})
+ endif()
+ if(APPLE)
+@@ -192,7 +192,7 @@
+ if(ENABLE_DBUS)
+     target_link_libraries(${PROJECT_NAME} Qt5::DBus)
+ endif()
+-if("${CMAKE_SYSTEM}" NOT MATCHES "Linux")
++if(NOT "${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
+     target_link_libraries(${PROJECT_NAME} ${NOTIFY_LIBRARIES})
+ endif()
+ if(APPLE)

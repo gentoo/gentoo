@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -23,7 +23,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="2"
-IUSE="alsa celt +classic dbus doc ieee1394 libsamplerate opus pam readline sndfile"
+IUSE="alsa +classic dbus doc ieee1394 libsamplerate opus pam readline sndfile"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -34,7 +34,6 @@ CDEPEND="${PYTHON_DEPS}
 	media-libs/libsndfile
 	sys-libs/readline:0=
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
-	celt? ( media-libs/celt:0[${MULTILIB_USEDEP}] )
 	dbus? (
 		dev-libs/expat[${MULTILIB_USEDEP}]
 		sys-apps/dbus[${MULTILIB_USEDEP}]
@@ -62,7 +61,7 @@ multilib_src_configure() {
 		$(usex dbus --dbus "")
 		$(usex classic --classic "")
 		--alsa=$(usex alsa yes no)
-		--celt=$(usex celt yes no)
+		--celt=no
 		--doxygen=$(multilib_native_usex doc yes no)
 		--firewire=$(usex ieee1394 yes no)
 		--freebob=no
