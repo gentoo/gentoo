@@ -53,6 +53,11 @@ S="${WORKDIR}"/${MYP}-src
 
 PATCHES=( "${FILESDIR}"/${P}-r1-gentoo.patch )
 
+pkg_setup() {
+	python-single-r1_pkg_setup
+	ada_setup
+}
+
 src_prepare() {
 	default
 	mv configure.{in,ac} || die
