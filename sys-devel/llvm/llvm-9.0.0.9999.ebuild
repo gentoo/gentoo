@@ -34,6 +34,7 @@ SLOT="$(ver_cut 1)"
 KEYWORDS=""
 IUSE="debug doc exegesis gold libedit +libffi ncurses test xar xml z3
 	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
+REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -76,8 +77,6 @@ RDEPEND="${RDEPEND}
 	!sys-devel/llvm:0"
 PDEPEND="sys-devel/llvm-common
 	gold? ( >=sys-devel/llvmgold-${SLOT} )"
-
-REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )"
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
