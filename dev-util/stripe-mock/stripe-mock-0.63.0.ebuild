@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/stripe/stripe-mock"
 SRC_URI="https://github.com/stripe/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
-LICENSE="MIT"
+LICENSE="MIT ISC BSD-2"
 SLOT="0"
 
 src_install() {
