@@ -27,7 +27,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="Replicated SQLite using the Raft consensus protocol"
 
 HOMEPAGE="https://github.com/rqlite/rqlite http://www.philipotoole.com/tag/rqlite/"
-LICENSE="MIT"
+LICENSE="MIT BSD MPL-2.0"
 SLOT="0"
 IUSE=""
 EGIT_REPO_URI="https://${EGO_PN}.git"
