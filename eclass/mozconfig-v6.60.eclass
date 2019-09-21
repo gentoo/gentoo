@@ -160,6 +160,14 @@ DEPEND="app-arch/zip
 	sys-apps/findutils
 	|| (
 		(
+			sys-devel/clang:9
+			!clang? ( sys-devel/llvm:9 )
+			clang? (
+				=sys-devel/lld-9*
+				sys-devel/llvm:9[gold]
+			)
+		)
+		(
 			sys-devel/clang:8
 			!clang? ( sys-devel/llvm:8 )
 			clang? (
