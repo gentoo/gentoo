@@ -13,6 +13,7 @@ LICENSE="metapackage"
 SLOT="$(ver_cut 1-3)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="+compiler-rt crt libcxx openmp +sanitize"
+REQUIRED_USE="sanitize? ( compiler-rt )"
 
 RDEPEND="
 	compiler-rt? (
@@ -27,5 +28,3 @@ RDEPEND="
 	)
 	libcxx? ( >=sys-libs/libcxx-${PV}[${MULTILIB_USEDEP}] )
 	openmp? ( >=sys-libs/libomp-${PV}[${MULTILIB_USEDEP}] )"
-
-REQUIRED_USE="sanitize? ( compiler-rt )"
