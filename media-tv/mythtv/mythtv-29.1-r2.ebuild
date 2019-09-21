@@ -72,7 +72,7 @@ COMMON="
 	egl? ( media-libs/mesa[egl] )
 	fftw? ( sci-libs/fftw:3.0= )
 	hls? (
-		<media-libs/libvpx-1.7.0:=
+		media-libs/libvpx:=
 		>=media-libs/x264-0.0.20111220:=
 	)
 	ieee1394? (
