@@ -11,6 +11,7 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
+PROPERTIES="live"
 
 RDEPEND="sys-devel/llvm:${PV}[gold]
 	!sys-devel/llvm:0"
