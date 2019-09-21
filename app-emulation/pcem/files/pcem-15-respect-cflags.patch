@@ -1,0 +1,13 @@
+--- a/configure.ac	2019-05-19 18:40:05.000000000 +0200
++++ b/configure.ac	2019-09-21 17:34:53.499993726 +0200
+@@ -31,8 +31,8 @@
+    CXXFLAGS="-Wall -O0 -g -D_DEBUG"
+    AC_MSG_RESULT([yes])
+ else
+-   CFLAGS="-O3"
+-   CXXFLAGS="-O3"
++   CFLAGS?="-O3"
++   CXXFLAGS?="-O3"
+    AC_MSG_RESULT([no])
+ fi
+ 
