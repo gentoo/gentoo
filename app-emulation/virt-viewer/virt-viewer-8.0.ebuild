@@ -5,8 +5,8 @@ EAPI=6
 inherit gnome2
 
 DESCRIPTION="Graphical console client for connecting to virtual machines"
-HOMEPAGE="http://virt-manager.org/"
-SRC_URI="http://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
+HOMEPAGE="https://virt-manager.org/"
+SRC_URI="https://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
