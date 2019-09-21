@@ -6,7 +6,7 @@ EAPI=7
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{5,6}} )
 
 inherit cmake-utils llvm multiprocessing python-single-r1 \
 	toolchain-funcs
