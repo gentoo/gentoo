@@ -1,0 +1,166 @@
+https://sourceforge.net/p/vpopmail/patches/98/
+
+--- a/vpopmaild.c	(revision 998)
++++ b/vpopmaild.c	(working copy)
+@@ -1326,7 +1326,7 @@
+         }
+       }
+       snprintf(newpath, MAXPATH, "%s",myvpw->pw_dir);
+-      strncat(newpath, &path[i], MAXPATH );
++      strncat(newpath, &path[i], MAXPATH-strlen(newpath)-1);
+     } else {     /*  may be domain name   */
+       for(i=0;path[i]!='/'&&path[i]!=0&&i<256;++i) {
+         thedomain[i] = path[i];
+@@ -1337,7 +1337,7 @@
+         return(9);
+       } 
+       snprintf(newpath, MAXPATH, "%s", thedir);
+-      strncat(newpath, &path[i], MAXPATH );
++      strncat(newpath, &path[i], MAXPATH-strlen(newpath)-1);
+     }
+   }
+ 
+@@ -1459,23 +1459,23 @@
+     }
+     snprintf( WriteBuf, sizeof(WriteBuf), "%s", mydirent->d_name);
+     if ( S_ISREG(statbuf.st_mode ) ) {
+-      strncat(WriteBuf," file", sizeof(WriteBuf));
++      strncat(WriteBuf," file", sizeof(WriteBuf)-strlen(WriteBuf)-1);
+     } else if ( S_ISDIR(statbuf.st_mode ) ) {
+-      strncat(WriteBuf," dir", sizeof(WriteBuf));
++      strncat(WriteBuf," dir", sizeof(WriteBuf)-strlen(WriteBuf)-1);
+     } else if ( S_ISCHR(statbuf.st_mode ) ) {
+-      strncat(WriteBuf," chardev", sizeof(WriteBuf));
++      strncat(WriteBuf," chardev", sizeof(WriteBuf)-strlen(WriteBuf)-1);
+     } else if ( S_ISBLK(statbuf.st_mode ) ) {
+-      strncat(WriteBuf," blkdev", sizeof(WriteBuf));
++      strncat(WriteBuf," blkdev", sizeof(WriteBuf)-strlen(WriteBuf)-1);
+     } else if ( S_ISFIFO(statbuf.st_mode ) ) {
+-      strncat(WriteBuf," fifo", sizeof(WriteBuf));
++      strncat(WriteBuf," fifo", sizeof(WriteBuf)-strlen(WriteBuf)-1);
+     } else if ( S_ISLNK(statbuf.st_mode ) ) {
+-      strncat(WriteBuf," link", sizeof(WriteBuf));
++      strncat(WriteBuf," link", sizeof(WriteBuf)-strlen(WriteBuf)-1);
+     } else if ( S_ISSOCK(statbuf.st_mode ) ) {
+-      strncat(WriteBuf," sock", sizeof(WriteBuf));
++      strncat(WriteBuf," sock", sizeof(WriteBuf)-strlen(WriteBuf)-1);
+     } else {
+-      strncat(WriteBuf," unknown", sizeof(WriteBuf));
++      strncat(WriteBuf," unknown", sizeof(WriteBuf)-strlen(WriteBuf)-1);
+     }
+-    strncat(WriteBuf,RET_CRLF, sizeof(WriteBuf));
++    strncat(WriteBuf,RET_CRLF, sizeof(WriteBuf)-strlen(WriteBuf)-1);
+     wait_write();
+   }
+   if ( closedir(mydir) < 0 ) {
+@@ -1604,7 +1604,7 @@
+   while(fgets(tmpbuf,sizeof(tmpbuf),fs)!=NULL){
+     if ( strcmp(tmpbuf, "." RET_CRLF) == 0 || strcmp(tmpbuf, ".\n") == 0 ) {
+       snprintf(WriteBuf, sizeof(WriteBuf), "%s", ".");
+-      strncat(WriteBuf, tmpbuf, sizeof(WriteBuf));
++      strncat(WriteBuf, tmpbuf, sizeof(WriteBuf)-strlen(WriteBuf)-1);
+     } else {
+       memcpy(WriteBuf,tmpbuf,sizeof(tmpbuf));
+     }
+--- a/vmysql.c	(revision 998)
++++ b/vmysql.c	(working copy)
+@@ -731,7 +731,7 @@
+             );
+ 
+         if ( sortit == 1 ) {
+-            strncat( SqlBufRead, " order by pw_name", SQL_BUF_SIZE);
++            strncat( SqlBufRead, " order by pw_name", SQL_BUF_SIZE-strlen(SqlBufRead)-1);
+         }
+ 
+         if (res_read!=NULL) mysql_free_result(res_read_getall);
+--- a/vldap.c	(revision 998)
++++ b/vldap.c	(working copy)
+@@ -1022,7 +1022,7 @@
+ 
+     /* if we are lucky the domain is in the assign file */
+     if ( vget_assign(domain,dir_control_file,MAX_DIR_NAME,NULL,NULL)!=NULL ) {
+-        strncat(dir_control_file, "/.dir-control", MAX_DIR_NAME);
++        strncat(dir_control_file, "/.dir-control", MAX_DIR_NAME-strlen(dir_control_file)-1);
+ 
+     /* it isn't in the assign file so we have to get it from /etc/passwd */
+     } else {
+@@ -1041,7 +1041,7 @@
+         }
+ 
+         /* stick on the rest of the path */
+-        strncat(dir_control_file, "/" DOMAINS_DIR "/.dir-control", MAX_DIR_NAME);
++        strncat(dir_control_file, "/" DOMAINS_DIR "/.dir-control", MAX_DIR_NAME-strlen(dir_control_file)-1);
+     }
+     return(dir_control_file);
+ }
+@@ -1177,7 +1177,7 @@
+  char dir_control_file[MAX_DIR_NAME];
+ 
+     vget_assign(domain, dir_control_file, 156, NULL,NULL);
+-    strncat(dir_control_file,"/.dir-control", MAX_DIR_NAME);
++    strncat(dir_control_file,"/.dir-control", MAX_DIR_NAME-strlen(dir_control_file)-1);
+     return(unlink(dir_control_file));
+ }
+ 
+--- a/vpopmail.c	(revision 998)
++++ b/vpopmail.c	(working copy)
+@@ -1900,8 +1900,8 @@
+ 
+     //  Copy the rest of the terms into the domain name
+     for(j=1;j<i;j++) {
+-      strncat( domain, ".", MAX_BUFF );
+-      strncat( domain, parts[j], MAX_BUFF );
++      strncat( domain, ".", MAX_BUFF-strlen(domain)-1);
++      strncat( domain, parts[j], MAX_BUFF-strlen(domain)-1);
+     }
+   
+   }
+--- a/vcdb.c	(revision 998)
++++ b/vcdb.c	(working copy)
+@@ -271,7 +271,7 @@
+     }
+ 
+     strncpy(line,user,sizeof(line)); 
+-    strncat(line,":",sizeof(line));
++    strncat(line,":",sizeof(line)-strlen(line)-1);
+     ptr = line;
+     while (*ptr != ':') { ptr++; }
+     ptr++;
+@@ -1055,7 +1055,7 @@
+  char dir_control_file[MAX_DIR_NAME];
+ 
+     vget_assign(domain, dir_control_file, 156, NULL,NULL);
+-    strncat(dir_control_file,"/.dir-control", MAX_DIR_NAME);
++    strncat(dir_control_file,"/.dir-control", MAX_DIR_NAME-strlen(dir_control_file)-1);
+     return(unlink(dir_control_file));
+ }
+ 
+@@ -1120,7 +1120,7 @@
+ 
+     /* if we are lucky the domain is in the assign file */
+     if ( vget_assign(domain,dir_control_file,MAX_DIR_NAME,NULL,NULL)!=NULL ) { 
+-	strncat(dir_control_file, "/.dir-control", MAX_DIR_NAME);
++	strncat(dir_control_file, "/.dir-control", MAX_DIR_NAME-strlen(dir_control_file)-1);
+ 
+     /* it isn't in the assign file so we have to get it from /etc/passwd */
+     } else {
+@@ -1139,7 +1139,7 @@
+         }
+ 
+         /* stick on the rest of the path */
+-        strncat(dir_control_file, "/" DOMAINS_DIR "/.dir-control", MAX_DIR_NAME); 
++        strncat(dir_control_file, "/" DOMAINS_DIR "/.dir-control", MAX_DIR_NAME-strlen(dir_control_file)-1);
+     }
+     return(dir_control_file);
+ }
+--- a/vpgsql.c	(revision 998)
++++ b/vpgsql.c	(working copy)
+@@ -522,7 +522,7 @@
+ #endif
+ 	     );
+     if ( sortit == 1 ) {
+-      strncat( SqlBufRead, " order by pw_name", SQL_BUF_SIZE);
++      strncat( SqlBufRead, " order by pw_name", SQL_BUF_SIZE-strlen(SqlBufRead)-1);
+     }
+     if ( pgres ) { /* reset state if we had previous result */
+       PQclear(pgres);    // clear previous result	

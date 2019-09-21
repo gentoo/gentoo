@@ -1,0 +1,9 @@
+--- vpopmail-5.4.33-orig/cdb/cdb_seek.c	2019-09-25 23:01:01.332000000 +0200
++++ vpopmail-5.4.33/cdb/cdb_seek.c	2019-09-25 23:03:04.112000000 +0200
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <errno.h>
++#include <unistd.h>
+ #include "cdb.h"
+ 
+ #ifndef SEEK_SET
