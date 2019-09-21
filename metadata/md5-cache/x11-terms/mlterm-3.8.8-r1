@@ -10,5 +10,5 @@ RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 bidi? ( dev-libs/fribidi 
 REQUIRED_USE=gtk2? ( gtk )
 SLOT=0
 SRC_URI=mirror://sourceforge/mlterm/mlterm-3.8.8.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8
-_md5_=882ccf0ef7d7ee3fda2f3088fbba34e2
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
+_md5_=7d181bd44f9354e81c52e4db57265edf

@@ -1,12 +1,13 @@
+BDEPEND=>=dev-lang/go-1.10 virtual/pkgconfig
 DEFINED_PHASES=compile install prepare setup test unpack
-DEPEND=>=dev-lang/go-1.10 virtual/pkgconfig
-DESCRIPTION=Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
-EAPI=6
-HOMEPAGE=https://github.com/oliver006/redis_exporter
+DEPEND=dev-util/promu
+DESCRIPTION=uWSGI metrics exporter for prometheus.io
+EAPI=7
+HOMEPAGE=https://github.com/timonwong/uwsgi_exporter
 KEYWORDS=~amd64
-LICENSE=MIT Apache-2.0 BSD
+LICENSE=Apache-2.0 BSD ISC MIT
 RESTRICT=strip
 SLOT=0
-SRC_URI=https://github.com/oliver006/redis_exporter/archive/v0.20.2.tar.gz -> redis_exporter-0.20.2.tar.gz
+SRC_URI=https://github.com/timonwong/uwsgi_exporter/archive/v0.8.0.tar.gz -> uwsgi_exporter-0.8.0.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=f1a722daf763a138991c70d85ed14e82
+_md5_=bf83c4aaba16b54152b146c827298e91

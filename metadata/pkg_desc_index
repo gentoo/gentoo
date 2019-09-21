@@ -1826,7 +1826,7 @@ app-metrics/pushgateway 0.9.0 0.9.1: Prometheus push acceptor for ephemeral and 
 app-metrics/rabbitmq_exporter 0.29.0: Rabbitmq exporter for Prometheus
 app-metrics/redis_exporter 0.20.2: Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
 app-metrics/snmp_exporter 0.13.0 0.14.0-r2 0.15.0: Prometheus exporter for snmp metrics
-app-metrics/uwsgi_exporter 0.7.0: uWSGI metrics exporter for prometheus.io
+app-metrics/uwsgi_exporter 0.7.0 0.8.0: uWSGI metrics exporter for prometheus.io
 app-metrics/vault_exporter 0.1.2: Vault exporter for Prometheus
 app-misc/abduco 0.5 0.6: lightweight session manager with {de,at}tach support
 app-misc/abook 0.6.1 0.6.1-r1: Abook is a text-based addressbook program designed to use with mutt mail client
@@ -19370,7 +19370,7 @@ x11-terms/kitty 0.14.2 0.14.4 9999: A modern, hackable, featureful, OpenGL-based
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.22.0 1.22.1: The MATE Terminal
-x11-terms/mlterm 3.8.7 3.8.8: A multi-lingual terminal emulator
+x11-terms/mlterm 3.8.7 3.8.8-r1: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
 x11-terms/multi-aterm 0.2.1-r1: rxvt compatible terminal emulator with transparency and tab support
 x11-terms/pangoterm 0.0_pre20150323 0.0_pre20150913 0.0_pre20151022 0.0_pre20160305 0.0_pre20171111: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
