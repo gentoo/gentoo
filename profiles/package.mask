@@ -29,7 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-09-21)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.26
@@ -1166,13 +1165,6 @@ www-apps/sitebar
 # backdoored versions for more than a year due to a compromised development
 # server, http://www.webmin.com/exploit.html
 app-admin/webmin
-
-# Hans de Graaff <graaff@gentoo.org> (2019-08-21)
-# This virtual was useful when jruby was still around but this
-# has not been the case for a long time and there are no
-# reverse dependencies for this package anymore.
-# Removal in 30 days.
-virtual/ruby-ffi
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
