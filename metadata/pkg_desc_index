@@ -18400,7 +18400,6 @@ virtual/python-typing 0-r1: A virtual for the Python typing module
 virtual/python-unittest-mock 1: A virtual for unittest.mock with mock fallback
 virtual/qmail 1.03: Virtual for qmail
 virtual/resolvconf 1: Virtual to select between different resolvconf providers
-virtual/ruby-ffi 4: Virtual ebuild for the Ruby ffi library
 virtual/ruby-ssl 10 11: Virtual ebuild for the Ruby OpenSSL bindings
 virtual/rubygems 14 15: Virtual ebuild for rubygems
 virtual/rust 1.34.2 1.35.0 1.36.0 1.37.0: Virtual for Rust language compiler
