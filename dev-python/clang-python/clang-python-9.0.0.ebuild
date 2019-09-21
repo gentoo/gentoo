@@ -10,13 +10,14 @@ MY_P=cfe-${PV/_/}.src
 DESCRIPTION="Python bindings for sys-devel/clang"
 HOMEPAGE="https://llvm.org/"
 SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz"
+S=${WORKDIR}/${MY_P}/bindings/python
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-fbsd"
 IUSE="test"
-RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="!test? ( test )"
 
 # The module is opening libclang.so directly, and doing some blasphemy
 # on top of it.
@@ -26,8 +27,6 @@ RDEPEND="
 	!sys-devel/clang:0[python(-)]
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
-
-S=${WORKDIR}/${MY_P}/bindings/python
 
 src_unpack() {
 	einfo "Unpacking parts of ${MY_P}.tar.xz ..."
