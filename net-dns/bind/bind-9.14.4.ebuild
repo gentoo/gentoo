@@ -134,6 +134,7 @@ src_configure() {
 		--with-libtool
 		--enable-full-report
 		--without-readline
+		--with-openssl="${EPREFIX}"/usr
 		$(use_enable caps linux-caps)
 		$(use_enable dnsrps)
 		$(use_enable dnstap)
