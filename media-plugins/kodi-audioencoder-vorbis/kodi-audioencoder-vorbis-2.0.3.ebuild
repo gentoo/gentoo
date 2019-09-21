@@ -18,7 +18,7 @@ case ${PV} in
 *)
 	KEYWORDS="~amd64 ~x86"
 	CODENAME="Leia"
-	SRC_URI="https://github.com/xbmc/audioencoder.vorbis/archive/v${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/xbmc/audioencoder.vorbis/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/audioencoder.vorbis-${PV}-${CODENAME}"
 	;;
 esac
@@ -28,7 +28,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	~media-tv/kodi-9999
+	=media-tv/kodi-18*
 	>=media-libs/libogg-1.3.4
 	>=media-libs/libvorbis-1.3.6
 	"
