@@ -9,6 +9,8 @@ inherit git-r3 python-r1
 DESCRIPTION="Python bindings for sys-devel/clang"
 HOMEPAGE="https://llvm.org/"
 SRC_URI=""
+S=${WORKDIR}/${P}/bindings/python
+
 EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
 
@@ -16,8 +18,8 @@ LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
-RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="!test? ( test )"
 
 # The module is opening libclang.so directly, and doing some blasphemy
 # on top of it.
@@ -27,8 +29,6 @@ RDEPEND="
 	!sys-devel/clang:0[python(-)]
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
-
-S=${WORKDIR}/${P}/bindings/python
 
 src_unpack() {
 	git-r3_fetch
