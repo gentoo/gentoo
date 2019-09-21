@@ -47,7 +47,6 @@ COMMON="
 	media-libs/taglib
 	>=media-sound/lame-3.93.1
 	sys-libs/zlib
-	virtual/mysql
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXext
@@ -139,6 +138,10 @@ S="${WORKDIR}/${PF}/mythtv"
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
+If a MYSQL server is installed, a mythtv MySQL user and mythconverg database
+is created if it does not already exist.
+You will be prompted for your MySQL root password.
+
 To have this machine operate as recording host for MythTV,
 mythbackend must be running. Run the following:
 rc-update add mythbackend default
@@ -366,7 +369,7 @@ pkg_info() {
 }
 
 pkg_config() {
-	echo "Creating mythtv MySQL user and mythconverg database if it does not"
-	echo "already exist. You will be prompted for your MySQL root password."
-	"${EROOT}"/usr/bin/mysql -u root -p < "${EROOT}"/usr/share/mythtv/database/mc.sql
+	if [[ -e "${EROOT}"/usr/bin/mysql ]]; then
+		"${EROOT}"/usr/bin/mysql -u root -p < "${EROOT}"/usr/share/mythtv/database/mc.sql
+	fi
 }

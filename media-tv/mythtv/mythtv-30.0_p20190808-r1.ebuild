@@ -57,7 +57,6 @@ COMMON="
 	media-libs/taglib
 	lame? ( >=media-sound/lame-3.93.1 )
 	sys-libs/zlib
-	virtual/mysql
 	opengl? ( virtual/opengl )
 	X? (
 		x11-libs/libX11:=
@@ -154,8 +153,9 @@ S="${WORKDIR}/${PF}/mythtv"
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
-Creating mythtv MySQL user and mythconverg database if it does not
-already exist. You will be prompted for your MySQL root password.
+If a MYSQL server is installed, a mythtv MySQL user and mythconverg database
+is created if it does not already exist.
+You will be prompted for your MySQL root password.
 
 Mythtv is updated to use correct FHS/Gentoo policy paths.
 Updating mythtv installations may report:
@@ -416,5 +416,7 @@ pkg_info() {
 }
 
 pkg_config() {
-	"${EROOT}"/usr/bin/mysql -u root -p < "${EROOT}"/usr/share/mythtv/database/mc.sql
+	if [[ -e "${EROOT}"/usr/bin/mysql ]]; then
+		"${EROOT}"/usr/bin/mysql -u root -p < "${EROOT}"/usr/share/mythtv/database/mc.sql
+	fi
 }
