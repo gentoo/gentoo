@@ -15,6 +15,11 @@ inherit eutils linux-info toolchain-funcs multilib python-r1 \
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://git.qemu.org/qemu.git"
+	EGIT_SUBMODULES=(
+		slirp
+		tests/fp/berkeley-{test,soft}float-3
+		ui/keycodemapdb
+	)
 	inherit git-r3
 	SRC_URI=""
 else
