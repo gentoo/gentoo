@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
+VALA_USE_DEPEND="vapigen"
 inherit cmake-utils python-any-r1 vala
 
 DESCRIPTION="An implementation of basic iCAL protocols"
@@ -21,6 +22,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? ( ${PYTHON_DEPS} )
+	vala? ( $(vala_depend) )
 "
 DEPEND="
 	dev-libs/icu:=
@@ -30,7 +32,6 @@ DEPEND="
 		dev-libs/gobject-introspection:=
 		dev-libs/libxml2:2
 	)
-	vala? ( $(vala_depend) )
 "
 RDEPEND="${DEPEND}
 	sys-libs/timezone-data
@@ -66,6 +67,12 @@ src_configure() {
 		-DLIBICAL_BUILD_TESTING=$(usex test)
 		-DICAL_GLIB_VAPI=$(usex vala)
 	)
+	if use vala; then
+		mycmakeargs+=(
+			-DVALAC="${VALAC}"
+			-DVAPIGEN="${VAPIGEN}"
+		)
+	fi
 	cmake-utils_src_configure
 }
 
