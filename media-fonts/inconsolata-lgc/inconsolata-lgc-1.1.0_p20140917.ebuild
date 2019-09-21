@@ -7,7 +7,7 @@ inherit font
 EGIT_COMMIT="d086a618248121d61e3f3de64b4301230d1c860c"
 DESCRIPTION="Modified version of Inconsolata Hellenic adding the Cyrillic alphabet"
 HOMEPAGE="https://github.com/DeLaGuardo/Inconsolata-LGC"
-SRC_URI="https://github.com/DeLaGuardo/Inconsolata-LGC/tarball/${EGIT_COMMIT} -> ${P}.tar.gz"
+SRC_URI="https://github.com/DeLaGuardo/Inconsolata-LGC/archive/${EGIT_COMMIT}.tar.gz -> ${P}-gh.tar.gz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
