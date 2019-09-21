@@ -10,13 +10,12 @@ QA_PREBUILT="
 	opt/${PN}/bin/libdbm64.so
 	opt/${PN}/bin/lldb/*
 	opt/${PN}/custom-jdk/*
-	opt/${PN}/lib/pty4j-native/linux/x86*/libpty.so
+	opt/${PN}/lib/pty4j-native/linux/*/libpty.so
 	opt/${PN}/plugins/android/lib/libwebp_jni*.so
-	opt/${PN}/plugins/android/resources/installer/*/installer
-	opt/${PN}/plugins/android/resources/perfa/*/libperfa.so
-	opt/${PN}/plugins/android/resources/perfd/*/perfd
-	opt/${PN}/plugins/android/resources/simpleperf/*/simpleperf
-	opt/${PN}/plugins/android/resources/simpleperf/*/libsimpleperf_report.so
+	opt/${PN}/plugins/android/resources/installer/*
+	opt/${PN}/plugins/android/resources/perfetto/*
+	opt/${PN}/plugins/android/resources/simpleperf/*
+	opt/${PN}/plugins/android/resources/transport/*
 "
 
 VER_CMP=( $(ver_rs 1- ' ') )
@@ -35,7 +34,7 @@ SRC_URI="https://dl.google.com/dl/android/studio/ide-zips/${STUDIO_V}/${PN}-ide-
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="custom-jdk selinux"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	dev-java/commons-logging:0
@@ -123,7 +122,6 @@ src_install() {
 		fperms -R 755 "${dir}"/jre/{bin,jre/bin}
 		fperms 755 ${dir}/jre/jre/lib/jexec
 	fi
-	chmod 755 "${ED%/}${dir}"/gradle/gradle-*/bin/gradle || die
 
 	newicon "bin/studio.png" "${PN}.png"
 	make_wrapper ${PN} ${dir}/bin/studio.sh
