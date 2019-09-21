@@ -13,6 +13,7 @@ LICENSE="metapackage"
 SLOT="$(ver_cut 1-3)"
 KEYWORDS=""
 IUSE="+compiler-rt crt libcxx openmp +sanitize"
+PROPERTIES="live"
 
 RDEPEND="
 	compiler-rt? (
