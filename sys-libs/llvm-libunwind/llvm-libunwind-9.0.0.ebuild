@@ -19,6 +19,7 @@ SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz
 	test? (
 		https://releases.llvm.org/${PV}/${LIBCXX_P}.tar.xz
 		https://releases.llvm.org/${PV}/${LIBCXXABI_P}.tar.xz )"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
@@ -33,8 +34,6 @@ DEPEND="
 BDEPEND="
 	test? ( >=sys-devel/clang-3.9.0
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
-
-S=${WORKDIR}/${MY_P}
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
