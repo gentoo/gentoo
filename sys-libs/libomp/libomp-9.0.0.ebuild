@@ -14,6 +14,7 @@ MY_P=openmp-${PV}.src
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
 SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
@@ -41,8 +42,6 @@ BDEPEND="dev-lang/perl
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 		>=sys-devel/clang-6
 	)"
-
-S=${WORKDIR}/${MY_P}
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
