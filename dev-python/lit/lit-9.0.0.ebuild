@@ -10,14 +10,13 @@ MY_P=llvm-${PV/_/}.src
 DESCRIPTION="A stand-alone install of the LLVM suite testing tool"
 HOMEPAGE="https://llvm.org/"
 SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz"
+S=${WORKDIR}/${MY_P}/utils/lit
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-fbsd"
 IUSE="test"
 RESTRICT="!test? ( test )"
-
-S=${WORKDIR}/${MY_P}/utils/lit
 
 # Tests require 'FileCheck' and 'not' utilities (from llvm)
 BDEPEND="
