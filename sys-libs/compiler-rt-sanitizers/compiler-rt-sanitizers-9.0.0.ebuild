@@ -18,6 +18,7 @@ DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
 SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz
 	test? ( https://releases.llvm.org/${PV}/${LLVM_P}.tar.xz )"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="$(ver_cut 1-3)"
@@ -40,8 +41,6 @@ BDEPEND="
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
 		sys-libs/compiler-rt:${SLOT} )
 	${PYTHON_DEPS}"
-
-S=${WORKDIR}/${MY_P}
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo

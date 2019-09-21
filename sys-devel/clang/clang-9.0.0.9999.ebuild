@@ -14,6 +14,9 @@ inherit cmake-utils git-r3 llvm multilib-minimal multiprocessing \
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
 SRC_URI=""
+# We need extra level of indirection for CLANG_RESOURCE_DIR
+S=${WORKDIR}/x/y/${P}
+
 EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
 EGIT_BRANCH="release_90"
@@ -32,6 +35,8 @@ SLOT="$(ver_cut 1)"
 KEYWORDS=""
 IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
 	test xml kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	|| ( ${ALL_LLVM_TARGETS[*]} )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -54,12 +59,6 @@ PDEPEND="
 	~sys-devel/clang-runtime-${PV}
 	default-compiler-rt? ( =sys-libs/compiler-rt-${PV%_*}* )
 	default-libcxx? ( >=sys-libs/libcxx-${PV} )"
-
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	|| ( ${ALL_LLVM_TARGETS[*]} )"
-
-# We need extra level of indirection for CLANG_RESOURCE_DIR
-S=${WORKDIR}/x/y/${P}
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
