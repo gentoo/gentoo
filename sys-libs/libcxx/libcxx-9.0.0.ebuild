@@ -17,6 +17,7 @@ MY_P=${P}.src
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
 SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
@@ -38,8 +39,6 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	test? ( >=sys-devel/clang-3.9.0
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
-
-S=${WORKDIR}/${MY_P}
 
 DOCS=( CREDITS.TXT )
 
