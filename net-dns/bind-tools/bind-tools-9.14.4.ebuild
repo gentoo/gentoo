@@ -67,6 +67,7 @@ src_configure() {
 		--without-libjson
 		--without-zlib
 		--without-lmdb
+		--with-openssl="${EPREFIX}"/usr
 		$(use_with idn libidn2)
 		$(use_with xml libxml2)
 		$(use_with gssapi)
