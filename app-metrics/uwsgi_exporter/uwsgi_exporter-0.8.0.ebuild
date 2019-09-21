@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit user golang-build golang-vcs-snapshot systemd
 
 EGO_PN="github.com/timonwong/uwsgi_exporter"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
-UWSGI_EXPORTER_COMMIT="20e35a9"
+UWSGI_EXPORTER_COMMIT="ddbc18f"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 

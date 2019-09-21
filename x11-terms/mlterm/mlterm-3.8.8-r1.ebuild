@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit eutils
+inherit desktop
 
 DESCRIPTION="A multi-lingual terminal emulator"
 HOMEPAGE="http://mlterm.sourceforge.net/"
