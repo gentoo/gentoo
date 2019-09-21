@@ -16,6 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE=""
 DEPEND=">=dev-texlive/texlive-basic-2019
 >=dev-tex/pgf-3.0.1
+!=dev-texlive/texlive-luatex-2017*
 "
 RDEPEND="${DEPEND} "
 TEXLIVE_MODULE_BINSCRIPTS="
