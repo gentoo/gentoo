@@ -9,7 +9,7 @@ SRC_URI="https://download.enlightenment.org/rel/apps/${PN}/${P}.tar.xz -> ${P}-1
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 
 RDEPEND="dev-libs/efl[eet,X]"
