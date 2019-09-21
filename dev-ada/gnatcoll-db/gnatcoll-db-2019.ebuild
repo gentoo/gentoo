@@ -40,6 +40,11 @@ S="${WORKDIR}"/${PN}-${commitId}
 
 PATCHES=( "${FILESDIR}"/${PN}-2018-gentoo.patch )
 
+pkg_setup () {
+	python-single-r1_pkg_setup
+	ada_setup
+}
+
 src_compile() {
 	build () {
 		GPR_PROJECT_PATH="${S}/sql":"${S}/sqlite":"${S}/xref" \
