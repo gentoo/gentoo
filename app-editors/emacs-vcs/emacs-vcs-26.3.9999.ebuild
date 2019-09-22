@@ -304,6 +304,15 @@ src_install () {
 	# remove COPYING file (except for etc/COPYING used by describe-copying)
 	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING
 
+	if use systemd; then
+		insinto /usr/lib/systemd/user
+		sed -e "/^##/d" \
+			-e "/^ExecStart/s,emacs,${EPREFIX}/usr/bin/${EMACS_SUFFIX}," \
+			-e "/^ExecStop/s,emacsclient,${EPREFIX}/usr/bin/&-${EMACS_SUFFIX}," \
+			etc/emacs.service | newins - ${EMACS_SUFFIX}.service
+		assert
+	fi
+
 	if use gzip-el; then
 		# compress .el files when a corresponding .elc exists
 		find "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp -type f \
