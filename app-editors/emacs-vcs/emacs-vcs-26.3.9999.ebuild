@@ -67,8 +67,7 @@ RDEPEND="sys-libs/ncurses:0=
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff:0 )
 		xpm? ( x11-libs/libXpm )
-		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0=
-			<media-gfx/imagemagick-7:0= )
+		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= )
 		xft? (
 			media-libs/fontconfig
 			media-libs/freetype
@@ -304,6 +303,15 @@ src_install () {
 
 	# remove COPYING file (except for etc/COPYING used by describe-copying)
 	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING
+
+	if use systemd; then
+		insinto /usr/lib/systemd/user
+		sed -e "/^##/d" \
+			-e "/^ExecStart/s,emacs,${EPREFIX}/usr/bin/${EMACS_SUFFIX}," \
+			-e "/^ExecStop/s,emacsclient,${EPREFIX}/usr/bin/&-${EMACS_SUFFIX}," \
+			etc/emacs.service | newins - ${EMACS_SUFFIX}.service
+		assert
+	fi
 
 	if use gzip-el; then
 		# compress .el files when a corresponding .elc exists

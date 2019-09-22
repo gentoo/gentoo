@@ -28,6 +28,7 @@ ruby_add_rdepend "
 	dev-ruby/json:=
 	dev-ruby/semantic_puppet
 	>=dev-ruby/facter-3.0.0
+	dev-ruby/concurrent-ruby
 	augeas? ( dev-ruby/ruby-augeas )
 	diff? ( dev-ruby/diff-lcs )
 	doc? ( dev-ruby/rdoc )
