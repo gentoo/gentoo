@@ -1,6 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matthew Thode <prometheanfire@gentoo.org> (2019-08-22)
+# context works with newer versions of boost
+# https://github.com/boostorg/context/commit/d4608a4e8ba2e8a0bdd45613243e6c53a23d23dc
+>=dev-libs/boost-1.71.0 -context
+
 # Jimi Huotari <chiitoo@gentoo.org> (2019-07-28)
 # Mask unkeyworded, untested dependencies.
 # https://bugs.gentoo.org/689606
