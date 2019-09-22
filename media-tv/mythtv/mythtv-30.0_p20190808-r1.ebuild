@@ -24,7 +24,7 @@ SLOT="0/${PV}"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
 IUSE_VIDEO_CAPTURE_DEVICES="v4l ivtv ieee1394 hdpvr hdhomerun vbox ceton"
-IUSE="alsa altivec asi autostart bluray cdda cdr cec crystalhd debug dvd dvb egl exif fftw jack java
+IUSE="alsa altivec asi autostart bluray cdda cdr cec debug dvd dvb egl exif fftw jack java
 	+lame lcd libass lirc +opengl oss perl pulseaudio python raw systemd vaapi vdpau vpx
 	+wrapper x264 x265 +xml xmltv +xvid +X zeroconf
 	${IUSE_INPUT_DEVICES} ${IUSE_VIDEO_CAPTURE_DEVICES}"
@@ -272,7 +272,7 @@ src_configure() {
 	# Hardware accellerators
 	myconf+=(
 		$(use_enable vdpau)
-		$(use_enable crystalhd)
+		--disable-crystalhd
 		$(use_enable vaapi)
 		$(use_enable vaapi vaapi2)
 		$(use_enable opengl opengl-video)
