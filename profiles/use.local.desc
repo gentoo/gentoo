@@ -597,6 +597,7 @@ app-emulation/qemu:fdt - Enables firmware device tree support
 app-emulation/qemu:glusterfs - Enables GlusterFS cluster fileystem via sys-cluster/glusterfs
 app-emulation/qemu:gnutls - Enable TLS support for the VNC console server. For 1.4 and newer this also enables WebSocket support. For 2.0 through 2.3 also enables disk quorum support.
 app-emulation/qemu:iscsi - Enable direct iSCSI support via net-libs/libiscsi instead of indirectly via the Linux block layer that sys-block/open-iscsi does.
+app-emulation/qemu:jemalloc - Enable jemalloc allocator support
 app-emulation/qemu:jpeg - Enable jpeg image support for the VNC console server
 app-emulation/qemu:ncurses - Enable the ncurses-based console
 app-emulation/qemu:nfs - Enable NFS support
@@ -638,6 +639,7 @@ app-emulation/vice:sdlsound - Use media-libs/libsdl for sound support
 app-emulation/vice:vte - Enable support for x11-libs/vte in the GTK+ interface
 app-emulation/virt-manager:policykit - Enables sys-auth/polkit authentication support, required when using app-emulation/libvirt with PolicyKit authentication
 app-emulation/virt-manager:sasl - Depend on the proper libraries needed to connect to SASL-enabled libvirtd instances (e.g. Kerberos-protected instances).
+app-emulation/virt-viewer:libvirt - Support connecting to virtual machines managed by libvirt.
 app-emulation/virt-viewer:spice - Support connecting to SPICE-enabled virtual machines.
 app-emulation/virt-viewer:vnc - Support connecting to VNC-enabled virtual machines.
 app-emulation/virt-what:dmi - Use sys-apps/dmidecode to read firmware data
