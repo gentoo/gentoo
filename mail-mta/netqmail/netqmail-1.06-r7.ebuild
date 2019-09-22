@@ -43,11 +43,10 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
 IUSE="authcram gencertdaily highvolume libressl qmail-spp ssl vanilla"
-REQUIRED_USE='vanilla? ( !ssl !qmail-spp !highvolume )'
+REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume )"
 RESTRICT="test"
 
 DEPEND="
-	!mail-mta/qmail
 	acct-group/nofiles
 	acct-group/qmail
 	acct-user/alias
@@ -57,34 +56,33 @@ DEPEND="
 	acct-user/qmailq
 	acct-user/qmailr
 	acct-user/qmails
+	net-dns/libidn2
 	net-mail/queue-repair
+	sys-apps/gentoo-functions
+	sys-apps/groff
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.1:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
-	sys-apps/gentoo-functions
-	sys-apps/groff
-	net-dns/libidn2
 "
-RDEPEND="
+RDEPEND="${DEPEND}
+	>=net-mail/dot-forward-0.71-r3
+	>=sys-apps/ucspi-tcp-0.88-r17
+	virtual/checkpassword
+	virtual/daemontools
+	authcram? ( >=net-mail/cmd5checkpw-0.30 )
+	ssl? ( >=sys-apps/ucspi-ssl-0.70-r1 )
 	!mail-mta/courier
 	!mail-mta/esmtp
 	!mail-mta/exim
 	!mail-mta/mini-qmail
 	!mail-mta/msmtp[mta]
 	!mail-mta/nullmailer
+	!mail-mta/opensmtpd
 	!mail-mta/postfix
 	!mail-mta/qmail-ldap
 	!mail-mta/sendmail
-	!<mail-mta/ssmtp-2.64-r2
-	!>=mail-mta/ssmtp-2.64-r2[mta]
-	>=sys-apps/ucspi-tcp-0.88-r17
-	ssl? ( >=sys-apps/ucspi-ssl-0.70-r1 )
-	virtual/daemontools
-	>=net-mail/dot-forward-0.71-r3
-	virtual/checkpassword
-	authcram? ( >=net-mail/cmd5checkpw-0.30 )
-	${DEPEND}
+	!mail-mta/ssmtp[mta]
 "
 
 pkg_setup() {
@@ -110,6 +108,7 @@ PATCHES=(
 	"${FILESDIR}/${PV}-readwrite.patch"
 	"${DISTDIR}/${QMAIL_LARGE_DNS}"
 	"${FILESDIR}/${PV}-fbsd-utmpx.patch"
+	"${FILESDIR}/${P}-ipme-multiple.patch"
 )
 
 src_prepare() {
@@ -119,14 +118,13 @@ src_prepare() {
 			sed 's~^--- \.\./\.\./~--- ~g' \
 				< "${DISTDIR}"/${QMAIL_TLS_F} \
 				> "${T}"/${QMAIL_TLS_F} || die
-			PATCHES=(${PATCHES[@]}
-				"${T}/${QMAIL_TLS_F}"
+			PATCHES+=( "${T}/${QMAIL_TLS_F}"
 				"${DISTDIR}/${QMAIL_TLS_CVE}"
 				"${FILESDIR}/qmail-smtputf8.patch"
 			)
 		fi
 		if use highvolume; then
-			PATCHES=(${PATCHES[@]} "${DISTDIR}/${QMAIL_BIGTODO_F}")
+			PATCHES+=( "${DISTDIR}/${QMAIL_BIGTODO_F}" )
 		fi
 
 		if use qmail-spp; then
@@ -136,11 +134,9 @@ src_prepare() {
 				SPP_PATCH="${QMAIL_SPP_S}/netqmail-spp.diff"
 			fi
 			# make the patch work with "-p1"
-			sed -e 's#^--- \([Mq]\)#--- a/\1#' -e 's#^+++ \([Mq]\)#+++ b/\1#' -i ${SPP_PATCH}
+			sed -e 's#^--- \([Mq]\)#--- a/\1#' -e 's#^+++ \([Mq]\)#+++ b/\1#' -i ${SPP_PATCH} || die
 
-			PATCHES=(${PATCHES[@]}
-				"${SPP_PATCH}"
-			)
+			PATCHES+=( "${SPP_PATCH}" )
 		fi
 	fi
 
