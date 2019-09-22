@@ -7,7 +7,7 @@
 	</upstream>
 	<use>
 		<flag name="music">Enable music support</flag>
-		<flag name="music_flac_convert">Fetch flac music and convert it to ogg</flag>
-		<flag name="music_ogg">Fetch ogg music</flag>
+		<flag name="music-flac-convert">Fetch flac music and convert it to ogg</flag>
+		<flag name="music-ogg">Fetch ogg music</flag>
 	</use>
 </pkgmetadata>
