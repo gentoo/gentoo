@@ -1994,7 +1994,7 @@ app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/kryoflux-dtc 2.6: KryoFlux Host Software
 app-misc/ktoblzcheck 1.49: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.11.0_pre20170527 0.11.0_pre20170527-r1 0.11.0_pre20170527-r2 0.11.0_pre20170527-r3: A small program that grabs information and displays it on an external LCD
-app-misc/lcdproc 0.5.2-r1 0.5.5 0.5.6-r1 0.5.9: Displays real-time system information from your Linux/*BSD box on a LCD
+app-misc/lcdproc 0.5.9: Displays real-time system information from your Linux/*BSD box on a LCD
 app-misc/leave 20100918-r1: FreeBSD command-line tool that reminds you when its time to leave
 app-misc/ledit 2.03: A line editor to be used with interactive commands
 app-misc/lfm 2.3-r1: Last File Manager is a powerful file manager for the console
@@ -17420,7 +17420,7 @@ sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so f
 sys-apps/proot 5.1.0-r2: User-space implementation of chroot, mount --bind, and binfmt_misc
 sys-apps/pv 1.6.0-r1 1.6.6: Pipe Viewer: a tool for monitoring the progress of data through a pipe
 sys-apps/qcontrol 0.4.2-r1: Send commands to some microcontrollers, e.g., to change LEDs or sound a buzzer
-sys-apps/qdirstat 1.4 1.6: Qt-based directory statistics
+sys-apps/qdirstat 1.6: Qt-based directory statistics
 sys-apps/qingy 1.0.0-r4: A DirectFB getty replacement
 sys-apps/razercfg 0.39-r1: Utility for advanced configuration of Razer mice
 sys-apps/readahead-list 1.20060421.1016-r3: Preloads files into the page cache to accelerate program loading
@@ -19149,7 +19149,7 @@ x11-misc/xdotool 3.20150503.1-r1 3.20160805.1: Simulate keyboard input and mouse
 x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
 x11-misc/xfe 1.42 1.43.1 1.43.2: MS-Explorer-like minimalist file manager for X
 x11-misc/xfishtank 2.1-r2: Turns your root window into an aquarium
-x11-misc/xflux 20130927 20130927-r1 20170103: Makes the color of your computer's display adapt to the time of the day
+x11-misc/xflux 20130927-r1 20170103: Makes the color of your computer's display adapt to the time of the day
 x11-misc/xflux-gui 1.1.10_p20180910 1.2.0-r1: A GUI for f.lux
 x11-misc/xfractint 20.04_p14: A fractal generator
 x11-misc/xgestures 0.4: A mouse gesture recognition program for X11 desktops
