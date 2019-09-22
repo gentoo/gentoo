@@ -8,9 +8,9 @@ MY_P=${MY_PN}-${PV}
 DESCRIPTION="High-performance programming language for technical computing"
 HOMEPAGE="https://julialang.org/"
 SRC_URI="
-	x86? ( https://julialang-s3.julialang.org/bin/linux/x86/1.1/${MY_P}-linux-i686.tar.gz )
-	amd64? ( https://julialang-s3.julialang.org/bin/linux/x64/1.1/${MY_P}-linux-x86_64.tar.gz )
-	amd64-fbsd? ( https://julialang-s3.julialang.org/bin/freebsd/x64/1.1/${MY_P}-freebsd-x86_64.tar.gz )
+	x86? ( https://julialang-s3.julialang.org/bin/linux/x86/1.2/${MY_P}-linux-i686.tar.gz )
+	amd64? ( https://julialang-s3.julialang.org/bin/linux/x64/1.2/${MY_P}-linux-x86_64.tar.gz )
+	amd64-fbsd? ( https://julialang-s3.julialang.org/bin/freebsd/x64/1.2/${MY_P}-freebsd-x86_64.tar.gz )
 "
 
 LICENSE="MIT"
