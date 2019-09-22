@@ -8,7 +8,7 @@ inherit cmake-utils
 DESCRIPTION="Data package for colobot (Colonize with Bots)"
 HOMEPAGE="https://colobot.info/"
 SRC_URI="
-	https://github.com/colobot/colobot-data/archive/colobot-gold-${PV}-alpha.zip -> ${P}.zip
+	https://github.com/colobot/colobot-data/archive/colobot-gold-${PV}-alpha.tar.gz -> ${P}.tar.gz
 	music-ogg? ( https://colobot.info/files/music/colobot-music_ogg_${PV}-alpha.tar.gz -> ${P}-music-ogg.tar.gz )
 	music-flac-convert? ( https://colobot.info/files/music/colobot-music_flac_${PV}-alpha.tar.gz -> ${P}-music-flac.tar.gz )"
 
@@ -22,13 +22,12 @@ REQUIRED_USE="
 	music-ogg? ( music )"
 
 DEPEND="
-	app-arch/unzip
 	music-flac-convert? ( media-sound/vorbis-tools )"
 
 S="${WORKDIR}/${PN}-colobot-gold-${PV}-alpha"
 
 src_unpack() {
-	unpack "${P}.zip"
+	unpack "${P}.tar.gz"
 
 	cd "${S}" || die
 	if use music; then
