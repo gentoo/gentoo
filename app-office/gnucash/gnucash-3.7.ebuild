@@ -15,11 +15,11 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-IUSE="aqbanking chipcard debug doc examples gnome-keyring +gui mysql nls ofx
+IUSE="aqbanking smartcard debug doc examples gnome-keyring +gui mysql nls ofx
 	  postgres python quotes -register2 sqlite test"
 
 REQUIRED_USE="
-	chipcard? ( aqbanking )
+	smartcard? ( aqbanking )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 # libdbi version requirement for sqlite taken from bug #455134
@@ -37,7 +37,7 @@ RDEPEND="
 	aqbanking? (
 		>=net-libs/aqbanking-5[ofx?]
 		sys-libs/gwenhywfar
-		chipcard? ( sys-libs/libchipcard )
+		smartcard? ( sys-libs/libchipcard )
 	)
 	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
 	gui? (
