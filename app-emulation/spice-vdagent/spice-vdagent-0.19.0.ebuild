@@ -22,6 +22,7 @@ CDEPEND="
 	>=app-emulation/spice-protocol-0.14.0
 	media-libs/alsa-lib
 	>=x11-libs/libpciaccess-0.10
+	x11-libs/libdrm
 	x11-libs/libXfixes
 	x11-libs/libXrandr
 	x11-libs/libX11

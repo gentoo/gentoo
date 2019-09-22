@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# iasl is stable on ppc
+sys-firmware/seabios -debug
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-15)
 # sys-cluster/hpx, sci-libs/silo, sci-visualization/visit not keyworded
 sci-libs/libgeodecomp hpx silo visit

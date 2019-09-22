@@ -23,11 +23,6 @@ media-sound/hydrogen portmidi
 # missing keyword on dev-python/dbusmock, bug #620024
 >=gnome-base/gnome-settings-daemon-3.24 test
 
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# package.use.force forces USE=binary, and USE=debug requires !binary,
-# so it can never be enabled.
-sys-firmware/seabios debug
-
 # Michał Górny <mgorny@gentoo.org> (2017-06-28)
 # app-misc/dtach is not keyworded, and tests are restricted anyway, so
 # no point in pursuing it right now.
