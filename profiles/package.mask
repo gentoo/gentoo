@@ -1435,6 +1435,7 @@ sys-devel/automake:1.5
 sys-devel/automake:1.6
 sys-devel/automake:1.7
 sys-devel/automake:1.8
+sys-devel/automake:1.9
 
 # Kent Fredric <kentnl@gentoo.org> (2017-10-11)
 # This package should now be provided entirely by dev-lang/perl,
