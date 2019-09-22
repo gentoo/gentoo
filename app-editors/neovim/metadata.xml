@@ -6,6 +6,10 @@
 		<name>Bernardo Meurer</name>
 	</maintainer>
 	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+	<maintainer type="project">
 		<email>vim@gentoo.org</email>
 		<name>Gentoo Vim Project</name>
 	</maintainer>
