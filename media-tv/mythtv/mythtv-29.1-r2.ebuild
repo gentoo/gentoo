@@ -62,9 +62,6 @@ COMMON="
 		sys-fs/udisks:2
 	)
 	cec? ( dev-libs/libcec )
-	dvb? (
-		virtual/linuxtv-dvb-headers
-	)
 	dvd? (
 		dev-libs/libcdio:=
 		sys-fs/udisks:2
