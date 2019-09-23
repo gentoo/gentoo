@@ -1,0 +1,11 @@
+--- a/configure.old       2006-07-30 17:07:27.000000000 +0200
++++ a/configure   2019-09-06 18:46:50.587538700 +0200
+@@ -6697,7 +6697,7 @@
+ #define HAVE_LIBNCURSES 1
+ _ACEOF
+ 
+-  LIBS="-lncurses $LIBS"
++  LIBS="-ltinfo -lncurses $LIBS"
+ 
+ fi
+
