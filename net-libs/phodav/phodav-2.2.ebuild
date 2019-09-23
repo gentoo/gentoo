@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-libs/glib-2.51:2
 	>=net-libs/libsoup-2.48:2.4
 	dev-libs/libxml2
-	zeroconf? ( net-dns/avahi )
+	zeroconf? ( net-dns/avahi[dbus] )
 "
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.10
