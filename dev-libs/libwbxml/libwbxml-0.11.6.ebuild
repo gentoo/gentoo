@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils
 
@@ -11,18 +11,15 @@ SRC_URI="mirror://sourceforge/libwbxml/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="test"
 
-RDEPEND="
-	dev-libs/expat
-	virtual/libiconv
-"
+RDEPEND="dev-libs/expat
+	virtual/libiconv"
 DEPEND="${RDEPEND}
-	test? ( dev-libs/check )
-"
+	test? ( dev-libs/check )"
 
-DOCS=( AUTHORS BUGS ChangeLog NEWS README References THANKS TODO )
+DOCS=( BUGS ChangeLog README References THANKS TODO )
 
 src_configure() {
 	local mycmakeargs=(
