@@ -199,7 +199,7 @@ font_src_install() {
 	[[ -n ${DOCS} ]] && { dodoc ${DOCS} || die "docs installation failed" ; }
 
 	# install common docs
-	for commondoc in COPYRIGHT README{,.txt} NEWS AUTHORS BUGS ChangeLog FONTLOG.txt; do
+	for commondoc in COPYRIGHT README{,.md,.txt} NEWS AUTHORS BUGS ChangeLog FONTLOG.txt; do
 		[[ -s ${commondoc} ]] && dodoc ${commondoc}
 	done
 }
