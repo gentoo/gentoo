@@ -85,7 +85,6 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/ttf-fonts
 	selinux? ( sec-policy/selinux-chromium )
 	tcmalloc? ( !<x11-drivers/nvidia-drivers-331.20 )
-	widevine? ( www-plugins/chrome-binary-plugins[widevine(-)] )
 "
 DEPEND="${COMMON_DEPEND}
 "
