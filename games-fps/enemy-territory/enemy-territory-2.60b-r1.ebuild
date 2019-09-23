@@ -18,7 +18,7 @@ LICENSE="RTCW-ETEULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="dedicated"
-RESTRICT="mirror strip"
+RESTRICT="bindist mirror strip"
 
 DEPEND="app-arch/unzip"
 RDEPEND="sys-libs/glibc
