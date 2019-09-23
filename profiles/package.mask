@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hanno Boeck <hanno@gentoo.org> (2019-09-23)
+# Depends on an API by German tax authorities that
+# has been disabled, bug #695434
+app-office/geierlein
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-09-21)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.26
