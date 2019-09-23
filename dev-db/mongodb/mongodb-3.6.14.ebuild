@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 )
 
 SCONS_MIN_VERSION="2.5.0"
 CHECKREQS_DISK_BUILD="2400M"
@@ -21,17 +21,17 @@ SRC_URI="https://fastdl.mongodb.org/src/${MY_P}.tar.gz"
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="debug kerberos libressl lto ssl test +tools"
+IUSE="debug kerberos libressl lto mms-agent ssl test +tools"
 
 RDEPEND=">=app-arch/snappy-1.1.3
-	>=dev-cpp/yaml-cpp-0.6.2:=
-	>=dev-libs/boost-1.70:=[threads(+)]
-	>=dev-libs/libpcre-8.42[cxx]
-	app-arch/zstd
+	>=dev-cpp/yaml-cpp-0.5.3:=
+	>=dev-libs/boost-1.60:=[threads(+)]
+	>=dev-libs/libpcre-8.41[cxx]
 	dev-libs/snowball-stemmer
 	net-libs/libpcap
-	>=sys-libs/zlib-1.2.11:=
+	>=sys-libs/zlib-1.2.8:=
 	kerberos? ( dev-libs/cyrus-sasl[kerberos] )
+	mms-agent? ( app-admin/mms-agent )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.1g:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -39,7 +39,7 @@ RDEPEND=">=app-arch/snappy-1.1.3
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	$(python_gen_any_dep '
-		dev-python/cheetah3[${PYTHON_USEDEP}]
+		dev-python/cheetah[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		virtual/python-typing[${PYTHON_USEDEP}]
 	')
@@ -52,21 +52,20 @@ DEPEND="${RDEPEND}
 PDEPEND="tools? ( >=app-admin/mongo-tools-${PV} )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.2.0-fix-scons.patch"
-	"${FILESDIR}/${PN}-4.2.0-fix-scons-third-party.patch"
-	"${FILESDIR}/${PN}-4.0.0-no-compass.patch"
+	"${FILESDIR}/${PN}-3.6.1-fix-scons.patch"
+	"${FILESDIR}/${PN}-3.6.1-no-compass.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
 
 pkg_pretend() {
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
-		if ver_test "$REPLACING_VERSIONS" -lt 4.0; then
-			ewarn "To upgrade from a version earlier than the 4.0-series, you must"
+		if ver_test "$REPLACING_VERSIONS" -lt 3.4; then
+			ewarn "To upgrade from a version earlier than the 3.4-series, you must"
 			ewarn "successively upgrade major releases until you have upgraded"
-			ewarn "to 4.0-series. Then upgrade to 4.2 series."
+			ewarn "to 3.4-series. Then upgrade to 3.6 series."
 		else
-			ewarn "Be sure to set featureCompatibilityVersion to 4.0 before upgrading."
+			ewarn "Be sure to set featureCompatibilityVersion to 3.4 before upgrading."
 		fi
 	fi
 }
@@ -82,7 +81,7 @@ src_prepare() {
 	default
 
 	# remove bundled libs
-	rm -r src/third_party/{boost-*,pcre-*,scons-*,snappy-*,yaml-cpp-*,zlib-*,zstandard-*} || die
+	rm -r src/third_party/{boost-*,pcre-*,scons-*,snappy-*,yaml-cpp-*,zlib-*} || die
 
 	# remove compass
 	rm -r src/mongo/installer/compass || die
@@ -103,7 +102,6 @@ src_configure() {
 		--use-system-stemmer
 		--use-system-yaml
 		--use-system-zlib
-		--use-system-zstd
 	)
 
 	use debug && scons_opts+=( --dbg=on )
