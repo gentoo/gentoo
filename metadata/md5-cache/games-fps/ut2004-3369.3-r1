@@ -7,8 +7,8 @@ IUSE=dedicated opengl
 KEYWORDS=~amd64 ~x86
 LICENSE=ut2003
 RDEPEND=sys-libs/glibc games-fps/ut2004-data games-fps/ut2004-bonuspack-ece games-fps/ut2004-bonuspack-mega dedicated? ( !games-server/ut2004-ded ) opengl? ( =virtual/libstdc++-3.3 virtual/opengl x11-libs/libXext x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp media-libs/libsdl media-libs/openal ) !dedicated? ( !opengl? ( =virtual/libstdc++-3.3 virtual/opengl x11-libs/libXext x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp media-libs/libsdl media-libs/openal ) ) games-misc/games-envd
-RESTRICT=mirror strip
+RESTRICT=bindist mirror strip
 SLOT=0
 SRC_URI=http://treefort.icculus.org/ut2004/ut2004-lnxpatch3369-2.tar.bz2 http://storage.guntoo.de/downs/downloads/Patch/ut2004-v3369-3-linux-dedicated.7z mirror://gentoo/ut2004-v3369-3-linux-dedicated.7z
 _eclasses_=base	2ec5c64f5de125f0c65a927c4c128fef	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	games	be6b136152d095d3e15031e2c725eb3f	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	user	00484e1be1aac73e24fca1c99557a7d6	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=667853a7c364952dda1928f85b3f4607
+_md5_=54c54266da7b4e181f2b4c25f401075d

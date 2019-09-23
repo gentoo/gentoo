@@ -539,7 +539,7 @@ app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 4.0.4: A HTTP regression testing and benchmarking utility
 app-benchmarks/spew 1.0.8-r1: Measures I/O performance and/or generates I/O load
 app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
-app-benchmarks/stress-ng 0.10.04: Stress test for a computer system with various selectable ways
+app-benchmarks/stress-ng 0.10.05: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.15-r1 1.0.16-r1 1.0.17-r1 9999: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/volanomark 2.5.0.9: Java server benchmark utility
@@ -2047,7 +2047,7 @@ app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
 app-misc/pip3line 3.6.0 9999: Raw bytes manipulation, transformations (decoding and more) and interception
 app-misc/pipeworks 0.4-r1: A small utility that measures throughput between stdin and stdout
 app-misc/plod 1.9-r2: A tool to help administrators keep track of daily activities
-app-misc/prog-express 3.7.8-r1: A modern and intuitive control software for the Batronix USB programming devices
+app-misc/prog-express 3.7.8-r1 3.8.3: A modern and intuitive control software for the Batronix USB programming devices
 app-misc/ps3pf_utils 2.3: Utilities to set the ps3 specific features
 app-misc/pwsafe 0.2.0-r4: A Password Safe compatible command-line password manager
 app-misc/pysmssend 1.48-r2: Python Application for sending sms over multiple ISPs
@@ -3064,7 +3064,7 @@ dev-cpp/popl 1.2.0 9999: Header-only C++ program options parser library
 dev-cpp/pstreams 0.7.0 0.8.1 1.0.0 1.0.1: C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)
 dev-cpp/random123 1.09-r1: library of counter-based random number generators (CBRNGs)
 dev-cpp/rttr 0.9.6: Run Time Type Reflection - library adding reflection to C++
-dev-cpp/sourcetrail 2018.3.55-r1 2019.1.11 2019.2.39: A cross-platform source explorer for C/C++ and Java
+dev-cpp/sourcetrail 2018.3.55-r1 2019.1.11 2019.2.39 2019.3.46: A cross-platform source explorer for C/C++ and Java
 dev-cpp/sparsehash 2.0.3-r1: An extremely memory-efficient hash_map implementation
 dev-cpp/tbb 2017.20161128 2018.20180312 2019.8: High level abstract threading library
 dev-cpp/tclap 1.2.1 1.2.2: Simple templatized C++ library for parsing command line arguments
@@ -15454,7 +15454,7 @@ net-misc/igmpproxy 0.2.1-r2: A multicast routing daemon which uses IGMP forwardi
 net-misc/ip-sentinel 0.12: Prevent unauthorized usage of IPs in the local ethernet broadcastdomain by answering ARP-requests
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.13 2.0.14a 2.99999.99999 3.6 3.7 3.99999.99999: A TCP, UDP, and SCTP network bandwidth measurement tool
-net-misc/ipmiview 2.15.0.190109: A GUI application that allows to manage multiple target systems through BMC
+net-misc/ipmiview 2.15.0.190109 2.16.0.190815: A GUI application that allows to manage multiple target systems through BMC
 net-misc/iprange 1.0.4: iprange utility
 net-misc/ipsc 0.4.3.2-r2: IP Subnet Calculator
 net-misc/ipsorcery 2.0.9-r2: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
@@ -19266,7 +19266,7 @@ x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from ann
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
 x11-plugins/pidgin-sipe 1.23.3 1.24.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
 x11-plugins/pidgin-skypeweb 1.1 1.2 1.2.2 1.4 1.5 9999: SkypeWeb Plugin for Pidgin
-x11-plugins/pidgin-telegram 1.4.1: A libpurple protocol plugin that adds support for the Telegram messenger
+x11-plugins/pidgin-telegram 1.4.1 1.4.2: A libpurple protocol plugin that adds support for the Telegram messenger
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
 x11-plugins/pidgin-xmpp-receipts 0.8: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
