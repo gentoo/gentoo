@@ -14,7 +14,7 @@ LICENSE="RTCW"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
-RESTRICT="strip mirror"
+RESTRICT="bindist strip mirror"
 
 RDEPEND="sys-libs/glibc
 	amd64? ( sys-libs/glibc[multilib] )
