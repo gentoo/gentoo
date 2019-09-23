@@ -96,7 +96,7 @@ src_install() {
 	newins ext/default puppetserver
 	# normal init type tasks
 	dosym ../default/puppetserver /etc/conf.d/puppetserver
-	newinitd "${FILESDIR}/puppetserver.init" puppetserver
+	newinitd "${FILESDIR}/puppetserver.init-r1" puppetserver
 	# misc
 	insinto /etc/logrotate.d
 	newins ext/puppetserver.logrotate.conf puppetserver
