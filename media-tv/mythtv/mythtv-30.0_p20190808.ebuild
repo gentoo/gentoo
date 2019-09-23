@@ -25,8 +25,8 @@ SLOT="0/${PV}"
 IUSE_INPUT_DEVICES="input_devices_joystick"
 IUSE_VIDEO_CAPTURE_DEVICES="v4l ivtv ieee1394 hdpvr hdhomerun vbox ceton"
 IUSE="alsa altivec asi autostart bluray cdda cdr cec debug dvd dvb egl exif fftw jack java
-	+lame lcd libass lirc +opengl oss perl pulseaudio python raw systemd vaapi vdpau vpx
-	+wrapper x264 x265 +xml xmltv +xvid +X zeroconf
+	+lame lcd libass lirc  +opengl oss perl pulseaudio python raw systemd vaapi vdpau vpx
+	+wrapper x264 x265 +xml xmltv xnvctrl +xvid +X zeroconf
 	${IUSE_INPUT_DEVICES} ${IUSE_VIDEO_CAPTURE_DEVICES}"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -114,6 +114,7 @@ COMMON="
 	x264? (	>=media-libs/x264-0.0.20111220:= )
 	x265? (	media-libs/x265 )
 	xml? ( >=dev-libs/libxml2-2.6.0 )
+	xnvctrl? ( x11-drivers/nvidia-drivers:=[tools] )
 	xvid? ( >=media-libs/xvid-1.1.0 )
 	zeroconf? (
 		dev-libs/openssl:0=
@@ -264,7 +265,7 @@ src_configure() {
 	# Video Output Support
 	myconf+=(
 		$(use_enable X x11)
-		$(use_enable X xnvctrl)
+		$(use_enable xnvctrl)
 		$(use_enable X xrandr)
 		$(use_enable X xv)
 	)
