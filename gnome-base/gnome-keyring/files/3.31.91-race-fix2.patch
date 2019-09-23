@@ -1,0 +1,104 @@
+From 5d088356a9473c06564bd2cef18ca370437a17bc Mon Sep 17 00:00:00 2001
+From: Benjamin Berg <bberg@redhat.com>
+Date: Tue, 14 May 2019 17:42:29 +0200
+Subject: [PATCH 2/2] dbus-environment: Make Setenv request synchronuous
+
+Currently there is a potential race condition where the Setenv request
+races further session startup. i.e. the clients that are started with
+--start on login may quit before the Setenv DBus call is delivered. This
+opens a theoretical race condition where gnome-session is already past
+the initialization phase when it serves the Setenv request.
+---
+ daemon/dbus/gkd-dbus-environment.c | 62 +++++++++++++++---------------
+ 1 file changed, 30 insertions(+), 32 deletions(-)
+
+diff --git a/daemon/dbus/gkd-dbus-environment.c b/daemon/dbus/gkd-dbus-environment.c
+index 051de953..acf398b9 100644
+--- a/daemon/dbus/gkd-dbus-environment.c
++++ b/daemon/dbus/gkd-dbus-environment.c
+@@ -38,32 +38,13 @@ gkd_dbus_environment_cleanup (GDBusConnection *conn)
+ 	/* Nothing to do here */
+ }
+ 
+-static void
+-on_setenv_reply (GObject *source,
+-		 GAsyncResult *result,
+-		 gpointer user_data)
+-{
+-	GError *error = NULL;
+-	GVariant *res;
+-
+-	res = g_dbus_connection_call_finish (G_DBUS_CONNECTION (source), result, &error);
+-
+-	if (error != NULL) {
+-		if (g_error_matches (error, G_DBUS_ERROR, G_DBUS_ERROR_SERVICE_UNKNOWN))
+-			g_debug ("couldn't set environment variable in session: %s", error->message);
+-		else
+-			g_message ("couldn't set environment variable in session: %s", error->message);
+-		g_error_free (error);
+-	}
+-
+-	g_clear_pointer (&res, g_variant_unref);
+-}
+-
+ static void
+ setenv_request (GDBusConnection *conn, const gchar *env)
+ {
+ 	const gchar *value;
+ 	gchar *name;
++	GVariant *res;
++	GError *error = NULL;
+ 
+ 	/* Find the value part of the environment variable */
+ 	value = strchr (env, '=');
+@@ -73,19 +54,36 @@ setenv_request (GDBusConnection *conn, const gchar *env)
+ 	name = g_strndup (env, value - env);
+ 	++value;
+ 
+-	g_dbus_connection_call (conn,
+-				SERVICE_SESSION_MANAGER,
+-				PATH_SESSION_MANAGER,
+-				IFACE_SESSION_MANAGER,
+-				"Setenv",
+-				g_variant_new ("(ss)",
+-					       name,
+-					       value),
+-				NULL, G_DBUS_CALL_FLAGS_NONE,
+-				-1, NULL,
+-				on_setenv_reply, NULL);
++	/* Note: This call does not neccessarily need to be a sync call. However
++	 *       under certain conditions the process will quit immediately
++	 *       after emitting the call. This ensures that we wait long enough
++	 *       for the message to be sent out (could also be done using
++	 *       g_dbus_connection_flush() in the exit handler when called with
++	 *       --start) and also ensures that gnome-session has processed the
++	 *       DBus message before possibly thinking that the startup of
++	 *       gnome-keyring has finished and continuing with forking the
++	 *       shell. */
++	res = g_dbus_connection_call_sync (conn,
++					   SERVICE_SESSION_MANAGER,
++					   PATH_SESSION_MANAGER,
++					   IFACE_SESSION_MANAGER,
++					   "Setenv",
++					   g_variant_new ("(ss)",
++							  name,
++							  value),
++					   NULL, G_DBUS_CALL_FLAGS_NONE,
++					   -1, NULL, &error);
++
++	if (error != NULL) {
++		if (g_error_matches (error, G_DBUS_ERROR, G_DBUS_ERROR_SERVICE_UNKNOWN))
++			g_debug ("couldn't set environment variable in session: %s", error->message);
++		else
++			g_message ("couldn't set environment variable in session: %s", error->message);
++		g_error_free (error);
++	}
+ 
+ 	g_free (name);
++	g_clear_pointer (&res, g_variant_unref);
+ }
+ 
+ static void
+-- 
+2.20.1
+
