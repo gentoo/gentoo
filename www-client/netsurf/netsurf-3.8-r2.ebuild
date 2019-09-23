@@ -13,11 +13,9 @@ LICENSE="GPL-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 IUSE="+bmp +duktape fbcon truetype +gif gtk gtk2 +javascript +jpeg +mng
-	pdf-writer +png +psl +rosprite +svg +svgtiny +webp fbcon_frontend_sdl
-	fbcon_frontend_vnc fbcon_frontend_x"
+	pdf-writer +png +psl +rosprite +svg +svgtiny +webp"
 
 REQUIRED_USE="|| ( fbcon gtk gtk2 )
-	fbcon? ( || ( fbcon_frontend_sdl fbcon_frontend_vnc fbcon_frontend_x ) )
 	duktape? ( javascript )"
 
 RDEPEND="
@@ -114,12 +112,6 @@ src_install() {
 		_emake TARGET=framebuffer DESTDIR="${ED}" install
 		elog "framebuffer binary has been installed as netsurf-fb"
 		make_desktop_entry "${EROOT}"/usr/bin/netsurf-fb NetSurf-framebuffer netsurf "Network;WebBrowser"
-	fi
-	if use fbcon_frontend_sdl; then
-		elog "To be able to use netsurf without X, don't forget to enable the "
-		elog "proper USE flags in libsdl (fbcon). Also, make /dev/input/mice "
-		elog "readable to the account using netsurf-fb. Either use chmod a+r "
-		elog "/dev/input/mice (security!!!) or use a group."
 	fi
 	if use gtk2 ; then
 		_emake TARGET=gtk DESTDIR="${ED}" install
