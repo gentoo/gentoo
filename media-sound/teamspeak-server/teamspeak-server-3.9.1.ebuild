@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="doc mysql tsdns"
 
-RESTRICT="mirror"
+RESTRICT="bindist mirror"
 
 QA_PREBUILT="
 	opt/teamspeak3-server/libmariadb.so.2
