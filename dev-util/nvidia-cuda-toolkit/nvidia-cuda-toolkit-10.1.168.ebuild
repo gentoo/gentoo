@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}
 	>=x11-drivers/nvidia-drivers-396.24[X,uvm]
 	debugger? (
 		sys-libs/libtermcap-compat
-		sys-libs/ncurses:5/5[tinfo]
+		sys-libs/ncurses-compat:5[tinfo]
 		)
 	eclipse? ( >=virtual/jre-1.6 )
 	profiler? ( >=virtual/jre-1.6 )"
