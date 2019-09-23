@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils
 
@@ -24,7 +24,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-DEPEND="=net-libs/libhackrf-${PV}:=
+DEPEND="~net-libs/libhackrf-${PV}:=
 		sci-libs/fftw:3.0="
 RDEPEND="${DEPEND}"
 
