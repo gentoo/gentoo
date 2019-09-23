@@ -40,7 +40,7 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 "
 
-RESTRICT="mirror"
+RESTRICT="bindist mirror"
 
 S="${WORKDIR}"
 

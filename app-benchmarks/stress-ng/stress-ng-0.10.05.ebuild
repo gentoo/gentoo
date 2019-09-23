@@ -33,5 +33,6 @@ PATCHES=( "${FILESDIR}/${PN}-0.09.53-makefile.patch" )
 
 src_compile() {
 	tc-export CC
+
 	default
 }

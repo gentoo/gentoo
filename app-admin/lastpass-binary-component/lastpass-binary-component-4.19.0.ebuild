@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://download.cloud.lastpass.com/linux/lplinux.tar.bz2 -> ${P}.tar.b
 LICENSE="LastPass"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-RESTRICT="strip mirror" # We can't mirror it, but we can fetch it
+RESTRICT="bindist strip mirror" # We can't mirror it, but we can fetch it
 
 LASTPASS_EXEDIR=/opt/lastpass/
 
