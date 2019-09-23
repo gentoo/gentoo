@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,7 +18,7 @@ IUSE=""
 COMMON_DEPEND="
 	app-crypt/seahorse
 	dev-libs/glib:2
-	>=net-dns/avahi-0.6:=
+	>=net-dns/avahi-0.6:=[dbus]
 	net-libs/libsoup:2.4
 	>=x11-libs/gtk+-3:3
 
