@@ -322,14 +322,12 @@
     <subproject ref="amd64@gentoo.org"/>
     <subproject ref="arm@gentoo.org"/>
     <subproject ref="alpha@gentoo.org"/>
-    <subproject ref="cron-bugs@gentoo.org"/>
     <subproject ref="embedded@gentoo.org"/>
     <subproject ref="hppa@gentoo.org"/>
     <subproject ref="ia64@gentoo.org"/>
     <subproject ref="m68k@gentoo.org"/>
     <subproject ref="mips@gentoo.org"/>
     <subproject ref="openrc@gentoo.org"/>
-    <subproject ref="pam-bugs@gentoo.org"/>
     <subproject ref="ppc@gentoo.org"/>
     <subproject ref="riscv@gentoo.org"/>
     <subproject ref="s390@gentoo.org"/>
@@ -736,32 +734,6 @@
       <email>williamh@gentoo.org</email>
       <name>William Hubbs</name>
       <role>Council member</role>
-    </member>
-  </project>
-  <project>
-    <email>cron-bugs@gentoo.org</email>
-    <name>Gentoo Cron Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Cron</url>
-    <description>The Gentoo Cron Project maintains cron-related packages.</description>
-    <member>
-      <email>blueness@gentoo.org</email>
-      <name>Anthony G. Basile</name>
-    </member>
-    <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
-    </member>
-    <member>
-      <email>perfinion@gentoo.org</email>
-      <name>Jason Zaman</name>
-    </member>
-    <member>
-      <email>vapier@gentoo.org</email>
-      <name>Mike Frysinger</name>
-    </member>
-    <member>
-      <email>zlogene@gentoo.org</email>
-      <name>Mikle Kolyada</name>
     </member>
   </project>
   <project>
@@ -2363,22 +2335,6 @@
       <email>sping@gentoo.org</email>
       <name>Sebastian Pipping</name>
       <role>Git</role>
-    </member>
-  </project>
-  <project>
-    <email>pam-bugs@gentoo.org</email>
-    <name>Pluggable Authentication Method maintenance</name>
-    <url>https://wiki.gentoo.org/wiki/Project:PAM</url>
-    <description>Pluggable Authentication Method is the main authentication method supported by Gentoo; the PAM maintenance project maintain the related software.</description>
-    <member>
-      <email>robbat2@gentoo.org</email>
-      <name>Robin Johnson</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>zlogene@gentoo.org</email>
-      <name>Mikle Kolyada</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
