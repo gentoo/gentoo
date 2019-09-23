@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+dbus"
 
 RDEPEND="
+	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5=
 	dev-qt/qtwidgets:5
