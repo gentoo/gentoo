@@ -5,16 +5,16 @@ EAPI=7
 
 # upstream CMakeLists.txt are buggy
 CMAKE_MAKEFILE_GENERATOR=emake
-inherit cmake-utils desktop git-r3 xdg-utils
+inherit cmake-utils desktop xdg-utils
 
 DESCRIPTION="Colobot is an educational real-time strategy video game featuring 3D graphics"
 HOMEPAGE="https://colobot.info/"
-EGIT_REPO_URI="https://github.com/colobot/colobot"
-EGIT_SUBMODULES=()
+SRC_URI="https://github.com/colobot/colobot/archive/${PN}-gold-${PV}-alpha.tar.gz"
+S="${WORKDIR}/${PN}-${PN}-gold-${PV}-alpha"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="devbuild doc +openal test tools"
 RESTRICT="!test? ( test )"
 
