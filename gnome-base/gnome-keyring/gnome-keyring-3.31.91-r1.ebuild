@@ -38,6 +38,8 @@ DEPEND="${RDEPEND}
 PDEPEND="app-crypt/pinentry[gnome-keyring]" #570512
 
 PATCHES=(
+	"${FILESDIR}"/${PV}-race-fix{1,2}.patch # fix race issues on start, where sometimes keyring doesn't work after login; from origin/master
+	"${FILESDIR}"/${PV}-ssh-tests-fix.patch
 	"${FILESDIR}"/${PV}-fix-musl.patch
 )
 
