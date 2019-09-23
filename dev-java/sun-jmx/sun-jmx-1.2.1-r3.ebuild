@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -20,7 +20,7 @@ IUSE=""
 DEPEND=">=virtual/jdk-1.4
 	app-arch/unzip"
 RDEPEND=">=virtual/jre-1.4"
-RESTRICT="fetch"
+RESTRICT="bindist fetch"
 
 S="${WORKDIR}/${MY_P}-bin"
 
