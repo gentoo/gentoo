@@ -230,7 +230,7 @@ app-admin/helm 2.14.3: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
 app-admin/integrit 4.1-r1: file integrity verification program
-app-admin/keepass 2.42.1: A free, open source, light-weight and easy-to-use password manager
+app-admin/keepass 2.42.1 2.43: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassxc 2.4.3-r1 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.2 3.3: A command line interface to KeePass database files
@@ -15013,7 +15013,7 @@ net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
-net-irc/unrealircd 4.2.2 4.2.4.1: An advanced Internet Relay Chat daemon
+net-irc/unrealircd 4.2.4.1: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.5-r1 2.6 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.4 9999: An advanced IRC Bouncer
