@@ -133,7 +133,7 @@ DESCRIPTION="${GAME_NAME} ${MOD_NAME} - ${MOD_DESC}"
 
 SLOT="0"
 IUSE="dedicated opengl"
-RESTRICT="mirror strip"
+RESTRICT="bindist mirror strip"
 
 DEPEND="app-arch/unzip"
 RDEPEND="dedicated? ( $(games-mods_get_rdepend --ded) )
