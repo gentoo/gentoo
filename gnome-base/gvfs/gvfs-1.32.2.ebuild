@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -60,7 +60,7 @@ RDEPEND="
 		>=virtual/libgudev-147:=
 		virtual/libudev:= )
 	udisks? ( >=sys-fs/udisks-1.97:2 )
-	zeroconf? ( >=net-dns/avahi-0.6 )
+	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
 "
 DEPEND="${RDEPEND}
 	app-text/docbook-xsl-stylesheets
