@@ -8774,7 +8774,6 @@ www-apps/roundup:tz - Enable full support of timezone
 www-apps/roundup:whoosh - Enable Whoosh full-text indexer
 www-apps/roundup:xapian - Enable Xapian full-text indexer
 www-apps/rt:lighttpd - Add www-servers/lighttpd support
-www-apps/sitebar:plugins - Install optional plugins
 www-apps/trac:highlight - Enable syntax highlighting
 www-apps/trac:i18n - Enable support for i18n with dev-python/Babel
 www-apps/trac:restructuredtext - Enable support for reStructuredText for wiki formatting

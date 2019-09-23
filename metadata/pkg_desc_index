@@ -345,7 +345,6 @@ app-admin/verynice 1.1-r3: A tool for dynamically adjusting the nice-level of pr
 app-admin/watchfolder 0.3.3-r1: watches directories and processes files
 app-admin/webalizer 2.23.08: Webserver log file analyzer
 app-admin/webapp-config 1.52-r1 1.53-r2 1.54-r2 1.55-r1 9999: Gentoo's installer for web-based applications
-app-admin/webmin 1.881: A web-based Unix systems administration interface
 app-admin/whowatch 1.8.5 1.8.6: Displays information about users currently logged on in real time
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
@@ -18495,7 +18494,6 @@ www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/gitea 1.8.0 1.8.2 1.8.3: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.3.4 6.3.5: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
-www-apps/groupoffice 3.7.52 4.0.47 4.0.97 4.0.144 4.1.7: Group-Office is a powerful modular Intranet application framework
 www-apps/hiawatha-monitor 1.6: Monitoring application for www-servers/hiawatha
 www-apps/hugo 0.48: A Fast and Flexible Static Site Generator built with love in Go
 www-apps/icingaweb2 2.6.3 2.7.1 9999: Icinga Web 2 - Frontend for icinga2
@@ -18532,7 +18530,6 @@ www-apps/ownpaste 0.2.2-r1 9999: Private pastebin (server-side implementation)
 www-apps/pcgi 2.0_alpha5: Jeff Bauer's Persistent CGI
 www-apps/phpBB 3.2.7: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.2.2 3.3.1: A customizable PHP script that displays information about your system nicely
-www-apps/phpwebsite 1.7.2: phpWebSite Content Management System
 www-apps/piwigo 2.9.4 2.9.5: a photo gallery software for the web
 www-apps/postfixadmin 3.1 3.2: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 3.1.0 4.0.0 4.1.5: Graphical front-end analysis console for the Prelude Framework
@@ -18543,7 +18540,6 @@ www-apps/roundup 1.5.1 1.6.1: Issue-tracking system with command-line, web, and 
 www-apps/rt 4.4.3 4.4.4: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.4-r1 3.8-r1 9999: ruTorrent is a front-end for the popular Bittorrent client rTorrent
 www-apps/scgi 1.14-r1: A Python package for implementing SCGI servers
-www-apps/sitebar 3.3.9-r2: The Bookmark Server for Personal and Team Use
 www-apps/trac 1.0.9 1.2.1: Enhanced wiki and issue tracking system for software development projects
 www-apps/trac-accountmanager 0.4.2-r1 0.4.4: A Trac plugin for manage user accounts
 www-apps/trac-mercurial 0.12.0.29_pre10899-r1 1.0.0.3_pre20130206-r1: A Mercurial plugin for Trac
