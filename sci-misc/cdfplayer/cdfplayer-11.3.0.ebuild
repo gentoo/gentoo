@@ -40,7 +40,7 @@ RDEPEND="
 	dev-libs/icu
 	x11-libs/libxcb
 	dev-libs/libxml2
-	sys-libs/ncurses:5/5
+	sys-libs/ncurses-compat:5
 	media-libs/freetype
 "
 
