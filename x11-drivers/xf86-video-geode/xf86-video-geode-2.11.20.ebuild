@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit xorg-2
+EAPI=7
+inherit xorg-3
 
 DESCRIPTION="AMD Geode GX2 and LX video driver"
 
@@ -15,9 +15,8 @@ DEPEND="${RDEPEND}
 		sys-kernel/linux-headers
 	)"
 
-src_configure() {
+pkg_setup() {
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ztv)
 	)
-	xorg-2_src_configure
 }
