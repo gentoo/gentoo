@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -58,7 +58,7 @@ RDEPEND="${PYTHON_DEPS}
 	net-misc/wget
 	>=sys-devel/gcc-4.2.0
 	sys-libs/zlib
-	sys-libs/ncurses:5/5"
+	sys-libs/ncurses-compat:5"
 
 src_unpack() {
 	unpack ${A}
