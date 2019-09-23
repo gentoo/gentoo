@@ -14,7 +14,7 @@ LICENSE="RTCW GPL-2" # gpl for init script bug #425946
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="dedicated"
-RESTRICT="strip mirror"
+RESTRICT="bindist strip mirror"
 
 RDEPEND="sys-libs/glibc
 	amd64? ( sys-libs/glibc[multilib] )
