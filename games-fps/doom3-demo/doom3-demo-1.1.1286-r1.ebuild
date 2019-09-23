@@ -13,7 +13,7 @@ LICENSE="DOOM3"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
-RESTRICT="strip mirror"
+RESTRICT="bindist strip mirror"
 QA_EXECSTACK="${GAMES_PREFIX_OPT:1}/${PN}/*"
 
 # Do not remove the amd64 dep unless you are POSITIVE that it is not necessary.
