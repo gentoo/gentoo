@@ -33,16 +33,13 @@ SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd
 KEYWORDS="-* ~amd64"
 
 LICENSE="google-chrome"
-IUSE="+widevine"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
-	widevine? (
-		dev-libs/glib:2
-		dev-libs/nspr
-		dev-libs/nss
-		!<www-client/chromium-57[widevine(-)]
-	)
+	dev-libs/glib:2
+	dev-libs/nspr
+	dev-libs/nss
+	!<www-client/chromium-57[widevine(-)]
 "
 
 for x in 0 beta stable unstable; do
@@ -59,9 +56,6 @@ pkg_nofetch() {
 }
 
 src_install() {
-	insinto /usr/$(get_libdir)/chromium
-	if use widevine; then
-		doins libwidevinecdm.so
-		dosym ../chromium/libwidevinecdm.so /usr/$(get_libdir)/chromium-browser/libwidevinecdm.so
-	fi
+	insinto "/usr/$(get_libdir)/chromium-browser"
+	doins -r WidevineCdm
 }
