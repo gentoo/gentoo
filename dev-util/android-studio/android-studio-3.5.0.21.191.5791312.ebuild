@@ -53,7 +53,7 @@ RDEPEND="${DEPEND}
 	>=media-libs/libpng-1.2.51
 	>=media-libs/mesa-10.2.8[X(+)]
 	|| ( gnome-extra/zenity kde-apps/kdialog x11-apps/xmessage x11-libs/libnotify )
-	>=sys-libs/ncurses-5.9-r3:5/5[tinfo]
+	sys-libs/ncurses-compat:5[tinfo]
 	>=sys-libs/zlib-1.2.8-r1
 	>=x11-libs/libX11-1.6.2
 	>=x11-libs/libXau-1.0.7-r1
