@@ -258,7 +258,7 @@ app-admin/mei-amt-check 0_p20170515: AMT status checker
 app-admin/metalog 3-r2 20181125: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 1.0.0 1.0.1: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1 6.0.0.381_p1: MongoDB MMS agents
-app-admin/mongo-tools 3.6.8 3.6.13 4.0.10 4.0.12 4.2.0: A high-performance, open source, schema-free document-oriented database
+app-admin/mongo-tools 3.6.8 3.6.13 3.6.14 4.0.10 4.0.12 4.2.0: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.25.3 5.26.0: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/mtail 3.0.0_rc33: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
@@ -1667,7 +1667,7 @@ app-i18n/libskk 1.0.2: GObject-based library to deal with Japanese kana-to-kanji
 app-i18n/libtabe 0.2.6 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
 app-i18n/man-pages-da 0.1.2: A somewhat comprehensive collection of Danish Linux man pages
 app-i18n/man-pages-de 1.15 1.21 2.10 2.12: A somewhat comprehensive collection of Linux german man page translations
-app-i18n/man-pages-fr 3.70 3.70-r1: A somewhat comprehensive collection of French Linux man pages
+app-i18n/man-pages-fr 3.70-r1: A somewhat comprehensive collection of French Linux man pages
 app-i18n/man-pages-it 4.00: A somewhat comprehensive collection of Italian Linux man pages
 app-i18n/man-pages-ja 20171215 20180315: A collection of manual pages translated into Japanese
 app-i18n/man-pages-nl 0.13.3: A somewhat comprehensive collection of Dutch Linux man pages
@@ -3111,7 +3111,7 @@ dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
 dev-db/mariadb 5.5.65 10.1.38-r1 10.1.41-r1 10.2.22-r1 10.2.26-r1 10.3.17-r1 10.3.18 10.4.7-r1: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.0.6-r1 3.0.9 3.1.2 3.1.3 9999: C client library for MariaDB/MySQL
 dev-db/metakit 2.4.9.7-r2: Embedded database library
-dev-db/mongodb 3.6.8 3.6.13 4.0.10 4.0.12 4.2.0: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 3.6.8 3.6.13 3.6.14 4.0.10 4.0.12 4.2.0 4.2.0-r1: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.19.0 1.20.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
@@ -12714,6 +12714,7 @@ media-fonts/baekmuk-fonts 2.2-r2: Korean Baekmuk Font
 media-fonts/bitstream-cyberbit 2.0-r2: Cyberbit Unicode (including CJK) font
 media-fonts/cantarell 0.101 0.111: Default fontset for GNOME Shell
 media-fonts/cardo 1.04: Unicode font for classicists, medievalists and linguists
+media-fonts/cascadia-code 1909.16: A monospaced font developed for Windows Terminal
 media-fonts/cheapskatefonts 1.0: Dustismo's decorative font collection
 media-fonts/clearsans 1.00: OpenType font optimized for readability on small screens
 media-fonts/cm-unicode 0.7.0-r1: Computer Modern Unicode fonts
@@ -15819,7 +15820,7 @@ net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/http-replicator 4.0_alpha2-r7: Proxy cache for Gentoo packages
 net-proxy/mitmproxy 4.0.4: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.2.4 0.3.0 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
-net-proxy/obfs4proxy 0.0.10 0.0.11: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
+net-proxy/obfs4proxy 0.0.11: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
 net-proxy/piper 1.14: Piper (a tool for manipulating SOCKS5 servers)
 net-proxy/polipo 1.1.1-r4 9999: A caching web proxy
@@ -16799,7 +16800,7 @@ sci-mathematics/geogebra 5.0.339.0_p20170308-r1: Mathematics software for geomet
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.5-r1: Compute Groebner fans and tropical varities
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
-sci-mathematics/gimps 28.10-r1 29.4.7 29.4.8: The Great Internet Mersenne Prime Search
+sci-mathematics/gimps 29.4.7 29.4.8 29.8.6: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.6.6 1.7.2 1.7.4: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.63: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1: Generic C++ template library for sparse, dense and skyline matrices
