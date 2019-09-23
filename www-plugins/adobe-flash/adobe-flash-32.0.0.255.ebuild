@@ -36,7 +36,7 @@ SLOT="22"
 
 KEYWORDS="-* amd64 x86"
 LICENSE="AdobeFlash-11.x"
-RESTRICT="strip mirror"
+RESTRICT="bindist mirror strip"
 
 NPAPI_RDEPEND="
 	dev-libs/atk[${MULTILIB_USEDEP}]
