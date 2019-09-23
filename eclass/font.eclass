@@ -8,7 +8,7 @@
 # @BLURB: Eclass to make font installation uniform
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*)             die "EAPI ${EAPI} is not supported by font.eclass." ;;
 esac
 
@@ -218,7 +218,7 @@ font_pkg_postinst() {
 		elog "The following fontconfig configuration files have been installed:"
 		elog
 		for conffile in "${FONT_CONF[@]}"; do
-			if [[ -e ${EROOT}etc/fonts/conf.avail/$(basename ${conffile}) ]]; then
+			if [[ -e "${EROOT}etc/fonts/conf.avail/$(basename ${conffile})" ]]; then
 				elog "  $(basename ${conffile})"
 			fi
 		done
