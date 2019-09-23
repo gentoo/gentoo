@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="-deprecated"
 
-RESTRICT="mirror fetch strip"
+RESTRICT="bindist mirror fetch strip"
 
 QA_PREBUILT="/opt/${PN}/lib*/*"
 
