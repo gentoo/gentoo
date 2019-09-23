@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bernardo@standard.ai</email>
+		<name>Bernardo Meurer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		RocksDB is developed and maintained by Facebook Database Engineering
+		Team. It is built on earlier work on LevelDB by Sanjay Ghemawat
+			(sanjay@google.com) and Jeff Dean (jeff@google.com)
+
+		This code is a library that forms the core building block for a fast
+		key value server, especially suited for storing data on flash drives.
+		It has a Log-Structured-Merge-Database (LSM) design with flexible
+			tradeoffs between Write-Amplification-Factor (WAF),
+			Read-Amplification-Factor (RAF) and Space-Amplification-Factor (SAF).
+		It has multi-threaded compactions, making it specially suitable for
+		storing multiple terabytes of data in a single database.
+	</longdescription>
+	<use>
+		<flag name="gflags">Use <pkg>dev-cpp/gflags</pkg> for flag parsing</flag>
+		<flag name="tools">Build database inspection/debugging tools</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">facebook/rocksdb</remote-id>
+	</upstream>
+</pkgmetadata>
