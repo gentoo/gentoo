@@ -355,12 +355,6 @@ dev-libs/ltxml
 dev-libs/log4shib
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-12)
-# Unmaintained.  Last bumped in 2014.  Homepage gone.  No reverse
-# dependencies.
-# Removal in 30 days.  Bug #694210.
-dev-libs/libwbxml
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-12)
 # Unmaintained.  Old GNOME library, last release in 2000.  No reverse
 # dependencies.
 # Removal in 30 days.  Bug #694208.
