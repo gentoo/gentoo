@@ -1160,9 +1160,8 @@ sys-cluster/open-mx
 # These packages are incompatible with current versions of PHP (7 or higher)
 # They need a maintainer but no one has volunteered.
 # Removal in 30 days if no one picks them up.
-# Bugs 615472 and 651166 respectively
+# Bug 615472
 www-apps/groupoffice
-www-apps/phpwebsite
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
