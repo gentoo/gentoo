@@ -23,7 +23,7 @@ HOMEPAGE="https://gitlab.com/yawning/obfs4"
 SRC_URI="https://gitlab.com/yawning/obfs4/-/archive/${P}/obfs4-${P}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 
-LICENSE="BSD"
+LICENSE="BSD BSD-2 CC0-1.0 BZIP2 GPL-3+ MIT public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
