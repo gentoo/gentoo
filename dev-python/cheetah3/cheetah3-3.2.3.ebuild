@@ -18,7 +18,8 @@ IUSE=""
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
-RDEPEND="dev-python/markdown[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/markdown[${PYTHON_USEDEP}]
+	!dev-python/cheetah"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
