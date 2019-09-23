@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare
-DEPEND=>=dev-libs/glib-2.51:2 >=net-libs/libsoup-2.48:2.4 dev-libs/libxml2 zeroconf? ( net-dns/avahi ) >=dev-util/gtk-doc-am-1.10 >=dev-util/intltool-0.40.0 sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 app-arch/xz-utils dev-util/desktop-file-utils x11-misc/shared-mime-info virtual/pkgconfig virtual/pkgconfig
+DEPEND=>=dev-libs/glib-2.51:2 >=net-libs/libsoup-2.48:2.4 dev-libs/libxml2 zeroconf? ( net-dns/avahi[dbus] ) >=dev-util/gtk-doc-am-1.10 >=dev-util/intltool-0.40.0 sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 app-arch/xz-utils dev-util/desktop-file-utils x11-misc/shared-mime-info virtual/pkgconfig virtual/pkgconfig
 DESCRIPTION=WebDav server implementation using libsoup
 EAPI=6
 HOMEPAGE=https://wiki.gnome.org/phodav
 IUSE=spice systemd zeroconf
 KEYWORDS=alpha amd64 arm ~arm64 ppc ppc64 x86
 LICENSE=LGPL-2.1+
-RDEPEND=>=dev-libs/glib-2.51:2 >=net-libs/libsoup-2.48:2.4 dev-libs/libxml2 zeroconf? ( net-dns/avahi )
+RDEPEND=>=dev-libs/glib-2.51:2 >=net-libs/libsoup-2.48:2.4 dev-libs/libxml2 zeroconf? ( net-dns/avahi[dbus] )
 SLOT=2.0
 SRC_URI=mirror://gnome/sources/phodav/2.2/phodav-2.2.tar.xz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2	1a42e8c41af42cb294817dcc5b7e3df6	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	udev	452708c3f55cf6e918b045adb949a9e6	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=e5da536d5b58a90fb5d0e87f4d49722d
+_md5_=f579796a709205d5e297f2ac556ff9cc
