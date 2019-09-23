@@ -4,6 +4,10 @@
 	<maintainer type="person">
 		<email>amit.prakash.ambasta@gmail.com</email>
 	</maintainer>
+	<maintainer type="person">
+		<email>yamakuzure@gmx.net</email>
+		<name>Sven Eden</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
@@ -313,7 +317,7 @@
 				based multiplayer game servers in the cloud.
 			Amazon Glue             : Fully managed ETL (extract, transform, and load) service to categorize
 				data, clean it, enrich it, and move it reliably between various data stores.
-			Amazon Ground Statíon   : Fully managed service that enables you to control satellite
+			Amazon Ground Stati-on   : Fully managed service that enables you to control satellite
 				communications, process satellite data, and scale your satellite operations.
 			AWS Import/Export       : Accelerates transferring large amounts of data between the AWS cloud
 				and portable storage devices that are mailed to Amazon.
