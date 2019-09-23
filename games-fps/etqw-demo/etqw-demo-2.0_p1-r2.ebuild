@@ -17,7 +17,7 @@ LICENSE="ETQW"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RESTRICT="strip mirror"
+RESTRICT="bindist strip mirror"
 
 DEPEND="app-arch/unzip"
 RDEPEND=">=sys-libs/zlib-1.2.8-r1[abi_x86_32(-)]
