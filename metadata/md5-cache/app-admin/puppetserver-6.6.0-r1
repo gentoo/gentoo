@@ -10,4 +10,4 @@ RDEPEND=>=virtual/jdk-1.8.0 app-admin/puppet-agent[puppetdb?]
 SLOT=0
 SRC_URI=https://downloads.puppetlabs.com/puppet/puppetserver-6.6.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=1101deac6fac3442743f8d9b59a8e7d8
+_md5_=abccd3a83bfcddcedeeae6e525f73b0c
