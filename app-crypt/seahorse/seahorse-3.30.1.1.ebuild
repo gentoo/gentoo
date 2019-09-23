@@ -22,7 +22,7 @@ RDEPEND="
 	net-misc/openssh
 	ldap? ( net-nds/openldap:= )
 	>=net-libs/libsoup-2.33.92:2.4
-	zeroconf? ( >=net-dns/avahi-0.6:= )
+	zeroconf? ( >=net-dns/avahi-0.6:=[dbus] )
 "
 DEPEND="${RDEPEND}
 	$(vala_depend)
