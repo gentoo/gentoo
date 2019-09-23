@@ -121,7 +121,7 @@
 		<flag name="cloudwatch">
 			Amazon CloudWatch monitors Amazon Web Services (AWS) resources and the applications run on AWS
 			in real time.
-			The following modules besides 'monitoring' are also enabled:
+			The following modules besides monitoring are also enabled:
 			Application Insights: Monitor .NET and SQL Server applications.
 			App Mesh            : Monitor and control microservices running on AWS.
 			CloudTrail          : Monitor AWS deployments in the cloud by getting a history of AWS API
@@ -219,7 +219,7 @@
 		<flag name="kinesis">
 			Amazon Kinesis
 			Collect, process, and analyze video and data streams in real time. The following modules besides
-			'kinesis' are enabled:
+			kinesis are enabled:
 			firehose                    : Load data streams into AWS data stores.
 			kinesisanalytics            : Process and analyze streaming data using SQL or Java. (Also
 				enables kinesisanalyticsv2)
@@ -261,7 +261,7 @@
 			Services (AWS).
 			Marketplace support consists of the marketplacecommerceanalytics module plus:
 			Marketplace Entitlement Service: A contract verification feature that AWS Marketplace sellers
-				can use to verify the amount of the seller’s product (for example, end user licenses or
+				can use to verify the amount of the sellers product (for example, end user licenses or
 				storage, data, or compute capacity) the customer has purchased.
 			Marketplace Metering Service   : A pricing and metering feature that AWS Marketplace sellers can
 				use to directly charge for their software along one of four dimensions: users, data,
@@ -288,7 +288,7 @@
 			Amazon Comprehend       : Natural language processing (NLP) to extract insights about the
 				content of documents without the need of any special preprocessing.
 			Comprehend Medical      : Specialized Amazon Comprehend variant to extract insights from
-				clinical documents such as doctor’s notes or clinical trial reports.
+				clinical documents such as doctors notes or clinical trial reports.
 			Amazon Connect          : A contact center as a service (CCaS) solution that offers easy, self-
 				service configuration and enables dynamic, personal, and natural customer engagement at
 				any scale.
@@ -324,7 +324,7 @@
 			Amazon Mechanical Turk  : Request on-demand, scalable, human workforce to complete jobs that
 				humans can do better than computers, such as recognizing objects in photographs.
 			Amazon Neptune          : Fast and reliable fully managed graph database service. Supports
-				Apache TinkerPop Gremlin and W3C’s SPARQL
+				Apache TinkerPop Gremlin and W3Cs SPARQL
 			Amazon QuickSight       : A fast business analytics service to build visualizations, perform ad
 				hoc analysis, and quickly get business insights from your data.
 			Amazon Redshift         : Fully managed petabyte-scale data warehouse service.
@@ -385,7 +385,7 @@
 			Amazon Simple Storage Service Storage for the internet.
 			Additionally to the s3 module, the following modules are activated:
 			Athena           : Interactive query service to analyze data in Amazon S3 using standard SQL.
-			Glacier          : Storage solution for 'cold data'.
+			Glacier          : Storage solution for cold data.
 			Transfer for SFTP: Transfer files directly into and out of Amazon S3 using SFTP.
 			Also enables s3-encryption, s3control and transfer.
 		</flag>
