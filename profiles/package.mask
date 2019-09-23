@@ -1156,21 +1156,6 @@ virtual/libmysqlclient
 # with new kernels.  Removal in 30 days.  Bug #677618.
 sys-cluster/open-mx
 
-# Brian Evans <grknight@gentoo.org> (2019-08-23)
-# These packages are incompatible with current versions of PHP (7 or higher)
-# They need a maintainer but no one has volunteered.
-# Removal in 30 days if no one picks them up.
-# Bugs 615472 651166 and 651180 respectively
-www-apps/groupoffice
-www-apps/phpwebsite
-www-apps/sitebar
-
-# Matthias Maier <tamiko@gentoo.org> (2019-08-22)
-# Masked for removal in 30 days. Unmaintained and upstream has released
-# backdoored versions for more than a year due to a compromised development
-# server, http://www.webmin.com/exploit.html
-app-admin/webmin
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.24
