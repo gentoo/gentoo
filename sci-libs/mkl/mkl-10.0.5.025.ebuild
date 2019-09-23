@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ LICENSE="Intel-SDP"
 KEYWORDS="-* amd64 ~ia64 x86"
 IUSE="doc fftw fortran95 int64 mpi"
 
-RESTRICT="strip mirror"
+RESTRICT="bindist strip mirror"
 
 DEPEND="
 	app-eselect/eselect-blas
