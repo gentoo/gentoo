@@ -24,7 +24,6 @@ CDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	>=dev-libs/boost-1.66.0:=[context]
-	<dev-libs/boost-1.71.0
 	console? ( dev-libs/libedit )
 	mariadb? ( dev-db/mariadb-connector-c:= )
 	mysql? ( dev-db/mysql-connector-c:= )
