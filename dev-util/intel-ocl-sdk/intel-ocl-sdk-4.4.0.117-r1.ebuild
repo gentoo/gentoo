@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ LICENSE="Intel-SDP"
 SLOT="0"
 IUSE="android +system-tbb system-clang +system-boost"
 KEYWORDS="-* ~amd64"
-RESTRICT="mirror"
+RESTRICT="bindist mirror"
 
 RDEPEND="app-eselect/eselect-opencl
 	sys-process/numactl
