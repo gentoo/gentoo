@@ -27,7 +27,7 @@ LICENSE="PUEL"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
-RESTRICT="mirror strip"
+RESTRICT="bindist mirror strip"
 
 RDEPEND="~app-emulation/virtualbox-${DEP_PV}"
 
