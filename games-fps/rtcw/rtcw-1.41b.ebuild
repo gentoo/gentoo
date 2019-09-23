@@ -13,7 +13,7 @@ LICENSE="RTCW GPL-2" # gpl for init script bug #425944
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="opengl dedicated"
-RESTRICT="strip mirror"
+RESTRICT="bindist strip mirror"
 
 UIDEPEND="x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXau[abi_x86_32(-)]
