@@ -6054,16 +6054,16 @@ net-im/vacuum:socksstreams - Enable initiating SOCKS5 data streams between two X
 net-im/vacuum:urlprocessor - Allows other plugins to load data from custom types of URLs
 net-im/vacuum:vcard - Enable obtaining peer's personal contact information
 net-im/vacuum:xmppuriqueries - Allow other plugins to handle XMPP URI queries
-net-irc/anope:anope_modules_chanstats - Channel Statistics
-net-irc/anope:anope_modules_cs_fantasy_stats - Enables the STATS and GSTATS commands
-net-irc/anope:anope_modules_cs_fantasy_top - Enables the (G)TOP and (G)TOP10 commands
-net-irc/anope:anope_modules_irc2sql - Stores channel statistics in a mysql database
-net-irc/anope:anope_modules_ldap_auth - Authorize through LDAP
-net-irc/anope:anope_modules_ldap_oper - Dynamically ties users to Anope opertypes via LDAP
-net-irc/anope:anope_modules_sql_auth - Authorize through SQL
-net-irc/anope:anope_modules_sql_log - Additional log target in SQL
-net-irc/anope:anope_modules_sql_oper - Allows granting users services operator privileges from SQL
+net-irc/anope:chanstats - Channel Statistics
+net-irc/anope:cs-fantasy-stats - Enables the STATS and GSTATS commands
+net-irc/anope:cs-fantasy-top - Enables the (G)TOP and (G)TOP10 commands
+net-irc/anope:irc2sql - Stores channel statistics in a mysql database
+net-irc/anope:ldap-auth - Authorize through LDAP
+net-irc/anope:ldap-oper - Dynamically ties users to Anope opertypes via LDAP
 net-irc/anope:posix - Add support for POSIX Compatible Regular Expressions
+net-irc/anope:sql-auth - Authorize through SQL
+net-irc/anope:sql-log - Additional log target in SQL
+net-irc/anope:sql-oper - Allows granting users services operator privileges from SQL
 net-irc/anope:ssl - Provide SSL services using OpenSSL
 net-irc/anope:tre - Use dev-libs/tre for regular expressions
 net-irc/atheme-services:cracklib - Enable nickserv/cracklib module for enforcing strong account passwords
@@ -6891,7 +6891,7 @@ net-p2p/bitcoind:system-leveldb - Use the system-wide dev-libs/leveldb instead o
 net-p2p/bitcoind:upnp - Enable Universal Plug and Play
 net-p2p/bitcoind:wallet - Enable wallet support
 net-p2p/bitcoind:zeromq - Report blocks and transactions via zeromq
-net-p2p/dbhub:switch_user - Enable support for switching user
+net-p2p/dbhub:switch-user - Enable support for switching user
 net-p2p/deluge:console - Enable default console UI
 net-p2p/deluge:webinterface - Install dependencies needed for the web interface
 net-p2p/eiskaltdcpp:cli - Enable sample cli based on readline
@@ -8722,7 +8722,7 @@ virtual/ssh:minimal - Prefer net-misc/dropbear over net-misc/openssh
 virtual/wine:d3d9 - Enable Ixit's Gallium Nine Patchset
 virtual/wine:staging - Enable Wine-Staging's Patchset
 www-apache/mod_backtrace:unwind - Use sys-libs/libunwind to provide better resolution of function names.
-www-apache/mod_extract_forwarded:mod_proxy - Enable support for Apache's internal proxy
+www-apache/mod_extract_forwarded:mod-proxy - Enable support for Apache's internal proxy
 www-apache/mod_musicindex:archive - Add archive support
 www-apache/mod_musicindex:cache - Add File cache support
 www-apache/mod_musicindex:mysql - Add MySQL cache support
@@ -8836,9 +8836,6 @@ www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the de
 www-client/lynx:ssl - Enable HTTPS support.
 www-client/netsurf:bmp - BMP bitmap image support (media-libs/libnsbmp)
 www-client/netsurf:duktape - Use duktape.org javascript engine
-www-client/netsurf:fbcon_frontend_sdl - Use framebuffer frontend sdl
-www-client/netsurf:fbcon_frontend_vnc - Use framebuffer frontend vnc
-www-client/netsurf:fbcon_frontend_x - Use framebuffer frontend X
 www-client/netsurf:gtk - Build GTK3 GUI
 www-client/netsurf:gtk2 - Build GTK2 GUI
 www-client/netsurf:pdf-writer - PDF output support (media-libs/libharu)

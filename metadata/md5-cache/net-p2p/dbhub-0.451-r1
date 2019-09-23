@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure prepare
-DEPEND=perl? ( dev-lang/perl ) switch_user? ( sys-libs/libcap ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=perl? ( dev-lang/perl ) switch-user? ( sys-libs/libcap ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Hub software for Direct Connect, fork of opendchub
 EAPI=6
 HOMEPAGE=http://www.dbhub.org
-IUSE=debug perl nls switch_user
+IUSE=debug perl nls switch-user
 KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
-RDEPEND=perl? ( dev-lang/perl ) switch_user? ( sys-libs/libcap )
+RDEPEND=perl? ( dev-lang/perl ) switch-user? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=mirror://sourceforge/dbhub/dbhub-0.451.tbz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=1ab44ab8f746c093cc8649f6a884360f
+_md5_=82c620b3ed65ae8f11675f7f1c19ef1f
