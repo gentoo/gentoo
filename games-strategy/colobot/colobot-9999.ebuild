@@ -1,26 +1,22 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils desktop
+# upstream CMakeLists.txt are buggy
+CMAKE_MAKEFILE_GENERATOR=emake
+inherit cmake-utils desktop git-r3 xdg-utils
 
 DESCRIPTION="Colobot is an educational real-time strategy video game featuring 3D graphics"
 HOMEPAGE="https://colobot.info/"
-
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/colobot/colobot"
-	EGIT_SUBMODULES=()
-	inherit git-r3
-else
-	SRC_URI="https://github.com/colobot/colobot/archive/${PN}-gold-${PV}-alpha.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
-	S="${WORKDIR}/${PN}-${PN}-gold-${PV}-alpha"
-fi
+EGIT_REPO_URI="https://github.com/colobot/colobot"
+EGIT_SUBMODULES=()
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="devbuild test tools doc +openal"
+KEYWORDS=""
+IUSE="devbuild doc +openal test tools"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-games/physfs
@@ -52,7 +48,10 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-src_install() {
-	cmake-utils_src_install
-	doicon -s 256 desktop/colobot.ico
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
