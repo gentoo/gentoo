@@ -1,0 +1,27 @@
+From 7a8b7d2ebfbb831840e6d58dbb1109f4c31d6ba4 Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <dueno@src.gnome.org>
+Date: Fri, 10 May 2019 15:47:33 +0200
+Subject: [PATCH] rpc-layer: fix build with musl-libc
+
+The recent POSIX suggests to include <sys/select.h> for select().
+
+Reported by Anthony G. Basile.
+---
+ pkcs11/rpc-layer/gkm-rpc-daemon-standalone.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pkcs11/rpc-layer/gkm-rpc-daemon-standalone.c b/pkcs11/rpc-layer/gkm-rpc-daemon-standalone.c
+index 5024e1e1..b3fb6707 100644
+--- a/pkcs11/rpc-layer/gkm-rpc-daemon-standalone.c
++++ b/pkcs11/rpc-layer/gkm-rpc-daemon-standalone.c
+@@ -34,6 +34,7 @@
+ 
+ #include <dlfcn.h>
+ #include <pthread.h>
++#include <sys/select.h>
+ 
+ #define SOCKET_PATH "/tmp/gkm-rpc-daemon.sock"
+ 
+-- 
+2.20.1
+
