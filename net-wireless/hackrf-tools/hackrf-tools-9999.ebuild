@@ -24,7 +24,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-DEPEND="=net-libs/libhackrf-${PV}:=
+DEPEND="~net-libs/libhackrf-${PV}:=
 		sci-libs/fftw:3.0="
 RDEPEND="${DEPEND}"
 
