@@ -4,35 +4,35 @@
 	<!-- maintainer-needed -->
 	<use>
 		<flag name="ar">Argentina tv listing grabber</flag>
-		<flag name="ch_search">Grabber for Switzerland</flag>
+		<flag name="ch-search">Grabber for Switzerland</flag>
 		<flag name="dk">Denmark tv listing grabber</flag>
 		<flag name="dtvla">Latin America digital tv listing grabber</flag>
-		<flag name="es_laguiatv">Spain alternative grabber</flag>
-		<flag name="eu_dotmedia">Grabber for Europe (xmltv.se / dotmedia)</flag>
-		<flag name="eu_epg">EPG grabber for some European countries.</flag>
+		<flag name="es-laguiatv">Spain alternative grabber</flag>
+		<flag name="eu-dotmedia">Grabber for Europe (xmltv.se / dotmedia)</flag>
+		<flag name="eu-epg">EPG grabber for some European countries.</flag>
 		<flag name="fi">Finland tv listing grabber</flag>
-		<flag name="fi_sv">Grabber for Finland (Swedish)</flag>
+		<flag name="fi-sv">Grabber for Finland (Swedish)</flag>
 		<flag name="fr">France tv listing grabber</flag>
-		<flag name="fr_kazer">France (Kazer) tv listing grabber</flag>
+		<flag name="fr-kazer">France (Kazer) tv listing grabber</flag>
 		<flag name="huro">Hungarian tv listing grabber</flag>
 		<flag name="il">Israel tv listing grabber</flag>
 		<flag name="is">Iceland tv listing grabber</flag>
 		<flag name="it">Italy tv listing grabber</flag>
-		<flag name="na_dd">North America tv listing grabber</flag>
-		<flag name="na_dtv">North America Direct TV grabber</flag>
-		<flag name="na_tvmedia">Grabber for North America (TVMedia)</flag>
+		<flag name="na-dd">North America tv listing grabber</flag>
+		<flag name="na-dtv">North America Direct TV grabber</flag>
+		<flag name="na-tvmedia">Grabber for North America (TVMedia)</flag>
 		<flag name="nl">Netherlands tv listing grabber</flag>
-		<flag name="no_gf">Norway Gfeed tv listing grabber</flag>
-		<flag name="pt_meo">Grabber for Portugal (MEO)</flag>
-		<flag name="se_swedb">Sweden tv listing grabber</flag>
-		<flag name="se_tvzon">Sweden (tvzon.se) tv listing grabber</flag>
+		<flag name="no-gf">Norway Gfeed tv listing grabber</flag>
+		<flag name="pt-meo">Grabber for Portugal (MEO)</flag>
+		<flag name="se-swedb">Sweden tv listing grabber</flag>
+		<flag name="se-tvzon">Sweden (tvzon.se) tv listing grabber</flag>
 		<flag name="tr">Turkey (Digiturk) tv listing grabber</flag>
-		<flag name="tv_check">enable GUI checking</flag>
-		<flag name="tv_combiner">enable grabbers combiner</flag>
-		<flag name="tv_pick_cgi">enable CGI support</flag>
-		<flag name="uk_bleb">Britain tv listing grabber</flag>
-		<flag name="uk_tvguide">UK and Ireland tv listing grabber using TV Guide website</flag>
-		<flag name="zz_sdjson">Grabber for schedulesDirect.org SD-JSON service (many countries)</flag>
+		<flag name="tv-check">enable GUI checking</flag>
+		<flag name="tv-combiner">enable grabbers combiner</flag>
+		<flag name="tv-pick-cgi">enable CGI support</flag>
+		<flag name="uk-bleb">Britain tv listing grabber</flag>
+		<flag name="uk-tvguide">UK and Ireland tv listing grabber using TV Guide website</flag>
+		<flag name="zz-sdjson">Grabber for schedulesDirect.org SD-JSON service (many countries)</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">xmltv</remote-id>
