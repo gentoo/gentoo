@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install postinst
-DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5= dev-qt/qtwidgets:5 dbus? ( dev-qt/qtdbus:5 dev-qt/qtgui:5[dbus] ) dev-qt/linguist-tools:5
+DEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5= dev-qt/qtwidgets:5 dbus? ( dev-qt/qtdbus:5 dev-qt/qtgui:5[dbus] ) dev-qt/linguist-tools:5
 DESCRIPTION=Qt5 configuration tool, similar to qtconfig for Qt4
 EAPI=7
 HOMEPAGE=https://sourceforge.net/projects/qt5ct/
 IUSE=+dbus
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2
-RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5= dev-qt/qtwidgets:5 dbus? ( dev-qt/qtdbus:5 dev-qt/qtgui:5[dbus] )
+RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5= dev-qt/qtwidgets:5 dbus? ( dev-qt/qtdbus:5 dev-qt/qtgui:5[dbus] )
 SLOT=0
 SRC_URI=mirror://sourceforge/qt5ct/qt5ct-0.41.tar.bz2
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=948f06d2a5406a9dcc37979ddbb69c15
+_md5_=473be849ff295b1600b34bf311c0b0f7

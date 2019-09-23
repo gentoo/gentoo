@@ -3108,7 +3108,7 @@ dev-db/libzdb 2.11.1 2.11.2 2.11.3 2.12 3.0 3.1 3.1-r1: A thread safe high level
 dev-db/lmdb 0.9.23 0.9.24: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
-dev-db/mariadb 5.5.65 10.1.38-r1 10.1.41-r1 10.2.22-r1 10.2.26-r1 10.3.17-r1 10.3.18 10.4.7-r1: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.65 10.1.38-r1 10.1.41-r1 10.2.22-r1 10.2.26-r1 10.2.27 10.3.17-r1 10.3.18 10.4.7-r1: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.0.6-r1 3.0.9 3.1.2 3.1.3 9999: C client library for MariaDB/MySQL
 dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 3.6.8 3.6.13 3.6.14 4.0.10 4.0.12 4.2.0 4.2.0-r1: A high-performance, open source, schema-free document-oriented database
@@ -5066,7 +5066,7 @@ dev-libs/libvterm 0.0_pre20160305 0.0_pre20171004 0.0_pre20181126 0.1: An abstra
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libwacom 0.33 1.0: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.4.1-r1: string internment library, written in C
-dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML documents
+dev-libs/libwbxml 0.11.2 0.11.6: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x86 code
 dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
@@ -12094,7 +12094,7 @@ gnustep-apps/preview 0.9: Simple image viewer
 gnustep-apps/price 1.2.0 1.3.0: Precision Raster Image Convolution Engine
 gnustep-apps/projectcenter 0.6.2: An IDE for GNUstep
 gnustep-apps/simpleagenda 0.43: a simple calendar and agenda application
-gnustep-apps/sogo 3.2.9 3.2.10 4.0.7: Groupware server built around OpenGroupware.org and the SOPE application server
+gnustep-apps/sogo 3.2.9 3.2.10 4.0.7 4.0.8: Groupware server built around OpenGroupware.org and the SOPE application server
 gnustep-apps/systempreferences 1.2.0: System Preferences is a clone of Apple OS X' System Preferences
 gnustep-apps/talksoup 1.1: IRC client for GNUstep
 gnustep-apps/terminal 0.9.8 0.9.9: A terminal emulator for GNUstep
@@ -12117,7 +12117,7 @@ gnustep-libs/netclasses 1.1.0: An asynchronous networking library for GNUstep
 gnustep-libs/pantomime 1.2.2 1.2.3 1.3.0: A set of Objective-C classes that model a mail system
 gnustep-libs/performance 0.5.0: Help improve the performance of GNUstep applications
 gnustep-libs/renaissance 0.9.0-r1: GNUstep Renaissance allows to describe user interfaces XML files
-gnustep-libs/sope 3.2.9-r1 3.2.10-r1 4.0.7-r1: A set of frameworks forming a complete Web application server environment
+gnustep-libs/sope 3.2.9-r1 3.2.10-r1 4.0.7-r1 4.0.8: A set of frameworks forming a complete Web application server environment
 gnustep-libs/sqlclient 1.8.1-r1: GNUstep lightweight database abstraction layer
 gui-apps/grim 1.2.0 9999: Grab images from a Wayland compositor.
 gui-apps/mako 1.3 1.4 9999: A lightweight notification daemon for Wayland. Works on Sway.
