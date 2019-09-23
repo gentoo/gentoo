@@ -15091,7 +15091,7 @@ net-libs/libgmail 0.1.11-r1: Python bindings to access Google's gmail service
 net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS/Atom/Pie feeds
 net-libs/libgsasl 1.8.0-r1: The GNU SASL library
 net-libs/libgssglue 0.4-r1: Exports a gssapi interface which calls other random gssapi libraries
-net-libs/libhackrf 2017.02.1 2018.01.1 9999: library for communicating with HackRF SDR platform
+net-libs/libhackrf 2018.01.1 9999: library for communicating with HackRF SDR platform
 net-libs/libhtp 0.5.22: security-aware parser for the HTTP protocol and the related bits and pieces
 net-libs/libhubbub 0.3.3 0.3.5-r1: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
@@ -15922,7 +15922,7 @@ net-wireless/gr-rds 9999: GNU Radio FM RDS Receiver
 net-wireless/gr-rftap 9999: RFtap Module for GNU Radio
 net-wireless/gr-scan 20160211: Frequency scanner for GNU Radio
 net-wireless/gr-specest 9999: A module adding spectral estimation routines to GNU Radio
-net-wireless/hackrf-tools 2017.02.1 2018.01.1-r1 9999: tools for communicating with HackRF SDR platform
+net-wireless/hackrf-tools 2018.01.1-r1 9999: tools for communicating with HackRF SDR platform
 net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 5.1 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
