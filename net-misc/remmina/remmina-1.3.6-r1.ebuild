@@ -38,7 +38,7 @@ CDEPEND="
 	telepathy? ( net-libs/telepathy-glib )
 	vnc? ( net-libs/libvncserver[jpeg] )
 	webkit? ( net-libs/webkit-gtk:4 )
-	zeroconf? ( net-dns/avahi[gtk3] )
+	zeroconf? ( net-dns/avahi[dbus,gtk3] )
 "
 DEPEND="${CDEPEND}
 	dev-util/intltool
