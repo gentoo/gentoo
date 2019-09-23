@@ -64,7 +64,7 @@ RDEPEND="${DEPEND}
 	>=media-libs/freetype-2.0.0[abi_x86_32(-)]
 	media-libs/mesa[abi_x86_32(-)]
 	sys-apps/util-linux[abi_x86_32(-)]
-	sys-libs/ncurses:5/5[abi_x86_32(-)]
+	sys-libs/ncurses-compat:5[abi_x86_32(-)]
 	sys-libs/zlib[abi_x86_32(-)]
 	x11-libs/libICE[abi_x86_32(-)]
 	x11-libs/libSM[abi_x86_32(-)]
