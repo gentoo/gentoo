@@ -18769,7 +18769,7 @@ x11-drivers/xf86-video-ast 1.1.5: X.Org driver for ASpeedTech cards
 x11-drivers/xf86-video-ati 19.0.1 9999: ATI video driver
 x11-drivers/xf86-video-dummy 0.3.8: X.Org driver for dummy cards
 x11-drivers/xf86-video-fbdev 0.5.0: video driver for framebuffer device
-x11-drivers/xf86-video-geode 2.11.19: AMD Geode GX2 and LX video driver
+x11-drivers/xf86-video-geode 2.11.20: AMD Geode GX2 and LX video driver
 x11-drivers/xf86-video-glint 1.2.9: GLINT/Permedia video driver
 x11-drivers/xf86-video-intel 2.99.917_p20190301 9999: X.Org driver for Intel cards
 x11-drivers/xf86-video-mga 1.6.5 2.0.0: Matrox video driver
