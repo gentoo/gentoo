@@ -1835,7 +1835,7 @@ app-metrics/prom2json 0.1.0_p20170523: A tool to scrape a Prometheus client and 
 app-metrics/prometheus 2.9.2 2.11.2 2.12.0: Prometheus monitoring system and time series database
 app-metrics/pushgateway 0.9.0 0.9.1: Prometheus push acceptor for ephemeral and batch jobs
 app-metrics/rabbitmq_exporter 0.29.0: Rabbitmq exporter for Prometheus
-app-metrics/redis_exporter 0.20.2 1.1.1 1.2.0: Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
+app-metrics/redis_exporter 0.20.2 1.1.1 1.2.0 1.2.1: Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
 app-metrics/snmp_exporter 0.13.0 0.14.0-r2 0.15.0: Prometheus exporter for snmp metrics
 app-metrics/uwsgi_exporter 0.7.0 0.8.0: uWSGI metrics exporter for prometheus.io
 app-metrics/vault_exporter 0.1.2: Vault exporter for Prometheus
