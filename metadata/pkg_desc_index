@@ -1428,7 +1428,7 @@ app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulato
 app-emulation/faudio 19.06 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
 app-emulation/firecracker 0.18.0: Secure and fast microVMs for serverless computing
 app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
-app-emulation/free42 2.0.20 2.2.1 2.4 2.4.2 2.5.3: An HP-42S Calculator Simulator
+app-emulation/free42 2.0.20 2.5.3 2.5.9: An HP-42S Calculator Simulator
 app-emulation/fs-uae 3.0.0: Integrates the most accurate Amiga emulation code available from WinUAE
 app-emulation/fs-uae-launcher 3.0.0: PyQt5-based launcher for FS-UAE
 app-emulation/fuse 1.5.6 1.5.7: Free Unix Spectrum Emulator by Philip Kendall
@@ -9139,7 +9139,7 @@ dev-python/timelib 0.2.4-r1: parse english textual date descriptions
 dev-python/tinycss 0.3 0.4: A complete yet simple CSS parser for Python
 dev-python/tinycss2 0.5 0.6.1 1.0.2: A complete yet simple CSS parser for Python
 dev-python/tinyrpc 0.9.4 1.0.1: A protocol neutral RPC library that supports JSON-RPC and zmq.
-dev-python/tld 0.9.2 0.9.3: Extract the top level domain (TLD) from the URL given
+dev-python/tld 0.9.2 0.9.3 0.9.6: Extract the top level domain (TLD) from the URL given
 dev-python/tlslite 0.4.9-r2: TLS Lite is a free python library that implements SSL 3.0 and TLS 1.0/1.1
 dev-python/tmdb3 0.7.2: TheMovieDB.org APIv3 interface
 dev-python/toml 0.10.0: Python library for handling TOML files
@@ -12094,7 +12094,7 @@ gnustep-apps/preview 0.9: Simple image viewer
 gnustep-apps/price 1.2.0 1.3.0: Precision Raster Image Convolution Engine
 gnustep-apps/projectcenter 0.6.2: An IDE for GNUstep
 gnustep-apps/simpleagenda 0.43: a simple calendar and agenda application
-gnustep-apps/sogo 3.2.9 3.2.10 4.0.7 4.0.8: Groupware server built around OpenGroupware.org and the SOPE application server
+gnustep-apps/sogo 4.0.7 4.0.8: Groupware server built around OpenGroupware.org and the SOPE application server
 gnustep-apps/systempreferences 1.2.0: System Preferences is a clone of Apple OS X' System Preferences
 gnustep-apps/talksoup 1.1: IRC client for GNUstep
 gnustep-apps/terminal 0.9.8 0.9.9: A terminal emulator for GNUstep
@@ -12117,7 +12117,7 @@ gnustep-libs/netclasses 1.1.0: An asynchronous networking library for GNUstep
 gnustep-libs/pantomime 1.2.2 1.2.3 1.3.0: A set of Objective-C classes that model a mail system
 gnustep-libs/performance 0.5.0: Help improve the performance of GNUstep applications
 gnustep-libs/renaissance 0.9.0-r1: GNUstep Renaissance allows to describe user interfaces XML files
-gnustep-libs/sope 3.2.9-r1 3.2.10-r1 4.0.7-r1 4.0.8: A set of frameworks forming a complete Web application server environment
+gnustep-libs/sope 4.0.7-r1 4.0.8: A set of frameworks forming a complete Web application server environment
 gnustep-libs/sqlclient 1.8.1-r1: GNUstep lightweight database abstraction layer
 gui-apps/grim 1.2.0 9999: Grab images from a Wayland compositor.
 gui-apps/mako 1.3 1.4 9999: A lightweight notification daemon for Wayland. Works on Sway.
@@ -12950,7 +12950,7 @@ media-gfx/darktable 2.6.1 2.6.2 9999: A virtual lighttable and darkroom for phot
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0-r1: Command-line decoder for raw digital photos
 media-gfx/digikam 6.2.0 6.3.0: Digital photo management application
-media-gfx/displaycal 3.7.2.0-r1 3.8.1.1 3.8.3.0 3.8.5.0: Display calibration and characterization powered by Argyll CMS
+media-gfx/displaycal 3.7.2.0-r1 3.8.1.1 3.8.3.0 3.8.5.0 3.8.7.0: Display calibration and characterization powered by Argyll CMS
 media-gfx/ditaa 0.10 0.11.0: A utility that converts ascii-art diagrams to bitmap diagrams
 media-gfx/dmtx-utils 0.7.5: Tools for reading and writing Data Matrix barcodes
 media-gfx/dpic 20130310 20160824: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
@@ -14728,7 +14728,7 @@ net-analyzer/tsung 1.7.0: Erlang's multi-protocol distributed load testing tool
 net-analyzer/ttcp 1.12-r2: Tool to test TCP and UDP throughput
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 2.3 2.4 9999: Console-based network traffic monitor that keeps statistics of network usage
-net-analyzer/wapiti 3.0.0 3.0.1 9999: Web-application vulnerability scanner
+net-analyzer/wapiti 3.0.0 3.0.1 3.0.2 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
 net-analyzer/wireshark 3.0.3 3.0.4 3.0.5 3.1.0 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
