@@ -26,7 +26,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/PyQt5-5.13[gui,network,printsupport,webchannel,widgets,${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-5.13.1[gui,network,printsupport,ssl,webchannel,widgets,${PYTHON_USEDEP}]
 	>=dev-python/PyQt5-sip-4.19.14:=[${PYTHON_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtwebengine:5[widgets]
