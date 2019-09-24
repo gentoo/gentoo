@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ LICENSE="QUAKE4"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="cdinstall dedicated l10n_cs l10n_fr l10n_it l10n_pl l10n_ru"
-RESTRICT="strip"
+RESTRICT="bindist mirror strip"
 
 RDEPEND="sys-libs/glibc
 	amd64? ( sys-libs/glibc[multilib] )
