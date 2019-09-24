@@ -10,4 +10,4 @@ RDEPEND=!=app-emulation/virtualbox-9999 kernel_linux? ( virtual/modutils )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~polynomial-c/virtualbox/vbox-kernel-module-src-6.0.12.tar.xz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	6c7b3e7b9d39bd049bf23a991c16315e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=6daaa9b032c655fed3eae07cbb451483
+_md5_=f7a3d11c06eac084cd45b19de45ebf39
