@@ -1,5 +1,5 @@
 BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DEFINED_PHASES=compile install prepare test
+DEFINED_PHASES=prepare
 DESCRIPTION=A lisp installer and launcher for major environment
 EAPI=7
 HOMEPAGE=https://github.com/roswell/roswell
@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=!net-libs/librouteros
 SLOT=0
-SRC_URI=https://github.com/roswell/roswell/archive/v19.3.10.97.tar.gz -> roswell-19.3.10.97.tar.gz
+SRC_URI=https://github.com/roswell/roswell/archive/v19.08.10.101.tar.gz -> roswell-19.08.10.101.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=989116ad76a3710a768e0acecec49f70
+_md5_=e5a3a970c4aaa4c6bce39fb31f3721da
