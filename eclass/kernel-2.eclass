@@ -945,8 +945,6 @@ preinst_headers() {
 # see inline comments
 
 postinst_sources() {
-	local MAKELINK=0
-
 	# if we have USE=symlink, then force K_SYMLINK=1
 	use symlink && K_SYMLINK=1
 
@@ -960,14 +958,10 @@ postinst_sources() {
 
 	# if we are to forcably symlink, delete it if it already exists first.
 	if [[ ${K_SYMLINK} -gt 0 ]]; then
-		[[ -h ${EROOT%/}/usr/src/linux ]] && { rm "${EROOT%/}"/usr/src/linux || die; }
-		MAKELINK=1
-	fi
+		if [[ -e ${EROOT%/}/usr/src/linux && ! -L ${EROOT%/}/usr/src/linux ]] ; then
+			die "${EROOT%/}/usr/src/linux exist and is not a symlink"
+		fi
 
-	# if the link doesnt exist, lets create it
-	[[ ! -h ${EROOT%/}/usr/src/linux ]] && MAKELINK=1
-
-	if [[ ${MAKELINK} == 1 ]]; then
 		ln -sf linux-${KV_FULL} "${EROOT%/}"/usr/src/linux || die
 	fi
 
