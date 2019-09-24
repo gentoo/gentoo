@@ -2124,7 +2124,7 @@ app-misc/ttysnoop 0.12d: Tool to snoop on login tty's through another tty-device
 app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of files
 app-misc/uptimed 0.4.1-r1 0.4.1-r2 0.4.2: System uptime record daemon that keeps track of your highest uptimes
 app-misc/utimer 0.4-r1: A command line timer and stopwatch
-app-misc/vcontrold 0.98.5 0.98.6: Daemon for communication with Viessmann Vito heatings
+app-misc/vcontrold 0.98.5 0.98.6 0.98.8: Daemon for communication with Viessmann Vito heatings
 app-misc/vcp 2.2-r2: Copy files/directories in a curses interface
 app-misc/vifm 0.9.1 0.10: Console file manager with vi(m)-like keybindings
 app-misc/vit 1.2-r1 9999: Perl/Curses front-end for Taskwarrior (app-misc/task)
@@ -5794,7 +5794,7 @@ dev-perl/Crypt-DH 0.70.0-r2: Diffie-Hellman key exchange system
 dev-perl/Crypt-DH-GMP 0.0.120: Crypt::DH Using GMP Directly
 dev-perl/Crypt-DSA 1.170.0: DSA Signatures and Key Generation
 dev-perl/Crypt-Eksblowfish 0.9.0-r2: the Eksblowfish block cipher
-dev-perl/Crypt-IDEA 1.100.0: Parse and save PGP packet streams
+dev-perl/Crypt-IDEA 1.100.0 1.100.0-r1: An implementation of the IDEA symmetric-key block cipher
 dev-perl/Crypt-OpenPGP 1.120.0: Pure-Perl OpenPGP-compatible PGP implementation
 dev-perl/Crypt-OpenSSL-Bignum 0.90.0: OpenSSL's multiprecision integer arithmetic
 dev-perl/Crypt-OpenSSL-DSA 0.190.0-r1: Digital Signature Algorithm using OpenSSL
@@ -5829,7 +5829,7 @@ dev-perl/DBD-mysql 4.32.0-r2 4.37.0 4.41.0 4.41.0-r2 4.42.0 4.44.0-r1 4.44.0-r2 
 dev-perl/DBI 1.637.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r2: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.50.0: create a temporary database from a DBIx::Class::Schema
-dev-perl/DBIx-Class 0.82.840 0.82.841: Extensible and flexible object <-> relational mapper
+dev-perl/DBIx-Class 0.82.840 0.82.841 0.82.841-r1: Extensible and flexible object <-> relational mapper
 dev-perl/DBIx-Class-DynamicDefault 0.40.0: Automatically set and update fields
 dev-perl/DBIx-Class-InflateColumn-Boolean 0.3.0: Auto-create boolean objects from columns
 dev-perl/DBIx-Class-InflateColumn-IP 0.20.30-r1: Auto-create NetAddr::IP objects from columns
@@ -14933,7 +14933,7 @@ net-im/gitter-bin 3.1.0 4.1.0: Chat and network platform
 net-im/jabber-base 0.01 0.01-r1: Jabber servers and transports layout package
 net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
-net-im/libcommuni 3.5.0_p20180116: A cross-platform IRC framework written with Qt
+net-im/libcommuni 3.5.0_p20180116 3.5.0_p20190110: A cross-platform IRC framework written with Qt
 net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/mattermost-desktop-bin 4.2.3: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 9999: A small Jabber console client with various features, like MUC, SSL, PGP
