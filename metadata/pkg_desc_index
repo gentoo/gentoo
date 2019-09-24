@@ -8657,7 +8657,7 @@ dev-python/pyserial 3.2.1 3.4: Python Serial Port extension
 dev-python/pysha3 1.0.2-r1: SHA-3 (Keccak) for Python 2.7 - 3.5
 dev-python/pyshark 0.3.7.2-r1 0.4.2.3: A Python wrapper for tshark output parsing
 dev-python/pysmi 0.1.3 0.3.1 0.3.4: Python Lex & Yacc
-dev-python/pysnmp 4.4.4 4.4.10-r1 4.4.11 999999: Python SNMP library
+dev-python/pysnmp 4.4.4 4.4.10-r1 4.4.11 4.4.12 999999: Python SNMP library
 dev-python/pysnmp-apps 0.5.2 0.5.3: PySNMP applications
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysol_cards 0.6.2 0.6.2-r1: Deal PySol FreeCell cards
@@ -18576,7 +18576,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2: a free, open source web browser
 www-client/opera 63.0.3368.94: A fast and secure web browser
 www-client/opera-beta 64.0.3417.8 64.0.3417.11 64.0.3417.19: A fast and secure web browser
-www-client/opera-developer 65.0.3437.0 65.0.3445.0: A fast and secure web browser
+www-client/opera-developer 65.0.3437.0 65.0.3445.0 65.0.3450.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 2.1.1 2.1.1-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
@@ -18588,7 +18588,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 2.7.1628.33_p1 2.8.1664.36_p1: A browser for our friends
-www-client/vivaldi-snapshot 2.8.1664.32_p1: A browser for our friends
+www-client/vivaldi-snapshot 2.9.1675.11_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r11 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-client/weboob 1.3 9998 9999: Consume lots of websites without a browser (Web Outside Of Browsers)
