@@ -4604,7 +4604,7 @@ dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.8.0 1.9.0-r1 1.10.0: General-purpose programming language with an emphasis on functional programming
 dev-lang/closure-compiler-bin 20170218: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.12.5 2.3.2: A little language that compiles into javascript
-dev-lang/crystal 0.28.0 0.29.0 0.29.0-r1 0.30.0 0.30.1: The Crystal Programming Language
+dev-lang/crystal 0.30.0 0.30.1 0.31.0: The Crystal Programming Language
 dev-lang/duktape 2.1.1 2.2.0 2.2.1: Embeddable Javascript engine
 dev-lang/elixir 1.4.5 1.6.6 1.8.1 1.8.2 1.9.0 1.9.1: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
@@ -15866,7 +15866,7 @@ net-vpn/networkmanager-strongswan 1.4.4-r1 1.4.5: NetworkManager StrongSwan plug
 net-vpn/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
 net-vpn/networkmanager-wireguard 0_pre20181128 9999: NetworkManager WireGuard plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
-net-vpn/openconnect 7.08-r1 8.02 8.03 9999: Free client for Cisco AnyConnect SSL VPN software
+net-vpn/openconnect 7.08-r1 8.02 8.03 8.05 9999: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.9.0 1.10.0: Fortinet compatible VPN client
 net-vpn/openvpn 2.4.6 2.4.6-r1 2.4.7-r1 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/peervpn 0.044-r4: P2P mesh VPN
@@ -18554,7 +18554,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.1 5.1.1 5.2 5.2.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.1: Web-based interactive data analytics notebook launcher
-www-client/chromium 77.0.3865.75 78.0.3887.7: Open-source version of Google Chrome web browser
+www-client/chromium 77.0.3865.75 77.0.3865.90 78.0.3887.7: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
