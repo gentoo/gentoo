@@ -1,14 +1,14 @@
-BDEPEND=sys-devel/make >=dev-util/cmake-3.9.6 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=app-text/po4a dev-lang/perl sys-devel/gettext dev-util/ninja >=dev-util/cmake-3.9.6 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
-DEPEND=dev-games/physfs dev-libs/boost:= media-libs/glew:0 media-libs/libogg media-libs/libpng:0= media-libs/libsdl2:= media-libs/libsndfile:= media-libs/libvorbis:= media-libs/sdl2-image media-libs/sdl2-ttf media-sound/vorbis-tools sys-devel/gettext openal? ( media-libs/openal )
+DEPEND=dev-games/physfs dev-libs/boost:= media-libs/glew:0 media-libs/libogg media-libs/libpng:0= media-libs/libsdl2:= media-libs/libsndfile:= media-libs/libvorbis:= media-libs/sdl2-image media-libs/sdl2-ttf media-sound/vorbis-tools openal? ( media-libs/openal )
 DESCRIPTION=Colobot is an educational real-time strategy video game featuring 3D graphics
 EAPI=7
 HOMEPAGE=https://colobot.info/
 IUSE=devbuild doc +openal test tools
-LICENSE=GPL-3
+LICENSE=GPL-3+
 PROPERTIES=live
-RDEPEND=dev-games/physfs dev-libs/boost:= media-libs/glew:0 media-libs/libogg media-libs/libpng:0= media-libs/libsdl2:= media-libs/libsndfile:= media-libs/libvorbis:= media-libs/sdl2-image media-libs/sdl2-ttf media-sound/vorbis-tools sys-devel/gettext openal? ( media-libs/openal ) games-strategy/colobot-data
+RDEPEND=dev-games/physfs dev-libs/boost:= media-libs/glew:0 media-libs/libogg media-libs/libpng:0= media-libs/libsdl2:= media-libs/libsndfile:= media-libs/libvorbis:= media-libs/sdl2-image media-libs/sdl2-ttf media-sound/vorbis-tools openal? ( media-libs/openal ) games-strategy/colobot-data
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=cmake-utils	91d6ef31dc426240577497cacbf2508c	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=8b9e7e6a440af3e2dcc0546ad53c8540
+_md5_=7dfa4fcdd02953bb4129a76059ef45c3
