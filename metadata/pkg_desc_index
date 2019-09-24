@@ -525,7 +525,7 @@ app-benchmarks/cpuburn 1.4a-r3: CPU testing utilities in optimized assembler for
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workload Generator
 app-benchmarks/forkbomb 1.4-r1: Controlled fork() bomber for testing heavy system load
-app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.3.3 4.4.1 5.0.1: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
+app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.4.1 5.0.1: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
 app-benchmarks/hey 0.1.1_p20181017: HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
 app-benchmarks/httperf 0.9.1_p20181111 0.9.1_p20181111-r1: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
@@ -1282,7 +1282,6 @@ app-emacs/howm 1.4.3: Note-taking tool on Emacs
 app-emacs/htmlize 1.47 1.54: HTML-ize font-lock buffers in Emacs
 app-emacs/httpd 1.1: A HTTP server embedded in the Emacs
 app-emacs/icicles 2013.04.23.23400 2018.02.13.23733: Minibuffer input completion and cycling
-app-emacs/identica-mode 1.1-r1: Identi.ca mode for Emacs
 app-emacs/igrep 2.113: An improved interface to "grep" and "find"
 app-emacs/inform-mode 1.5.8 1.6.2: A major mode for editing Inform programs
 app-emacs/initsplit 1.7_pre20140203: Split customizations into different files
@@ -1366,7 +1365,6 @@ app-emacs/teco 7-r1: TECO interpreter for GNU Emacs
 app-emacs/template 3.1c-r1: Use templates, decorate comments, auto-update buffers
 app-emacs/tempo-snippets 0.1.5: Visual insertion of tempo templates
 app-emacs/thinks 1.9: Insert text in a think bubble
-app-emacs/thumbs 2.0-r1: Emacs thumbnail previewer for image files
 app-emacs/treepy 0.1.1: Generic tree traversing tools for Emacs Lisp
 app-emacs/tuareg-mode 2.0.7 2.0.10 2.2.0: An Objective Caml/Camllight mode for Emacs
 app-emacs/twittering-mode 2.0.0 3.0.0 9999: Emacs major mode for Twitter
@@ -3108,7 +3106,7 @@ dev-db/libzdb 2.11.1 2.11.2 2.11.3 2.12 3.0 3.1 3.1-r1: A thread safe high level
 dev-db/lmdb 0.9.23 0.9.24: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
-dev-db/mariadb 5.5.65 10.1.38-r1 10.1.41-r1 10.2.22-r1 10.2.26-r1 10.2.27 10.3.17-r1 10.3.18 10.4.7-r1: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.65 10.1.38-r1 10.1.41-r1 10.2.22-r1 10.2.26-r1 10.2.27 10.3.17-r1 10.3.18 10.4.7-r1 10.4.8: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.0.6-r1 3.0.9 3.1.2 3.1.3 9999: C client library for MariaDB/MySQL
 dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 3.6.8 3.6.13 3.6.14 4.0.10 4.0.12 4.2.0 4.2.0-r1: A high-performance, open source, schema-free document-oriented database
@@ -7322,7 +7320,7 @@ dev-php/pecl-redis 3.1.6-r1 4.2.0 4.3.0: PHP extension for interfacing with Redi
 dev-php/pecl-rrd 1.1.3-r2 2.0.1-r3: RRDtool bindings for PHP
 dev-php/pecl-sphinx 1.3.3-r1: PHP extension to execute search queries on a sphinx daemon
 dev-php/pecl-spl_types 0.4.0-r2: Standard PHP library types add-on
-dev-php/pecl-ssh2 0.13-r3 1.1.2 9999: PHP bindings for the libssh2 library
+dev-php/pecl-ssh2 0.13-r3 1.1.2 1.2 9999: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 1.0.9-r1 2.0.2: PHP extension to communicate with Stomp message brokers
 dev-php/pecl-svn 1.0.3-r1: PHP Bindings for the Subversion Revision control system
 dev-php/pecl-taint 2.0.2 2.0.4 2.0.5: Extension used for detecting XSS code (tainted strings)
@@ -14390,7 +14388,7 @@ media-video/openshot 2.4.0-r1 2.4.4: Free, open-source, non-linear video editor 
 media-video/orion 1.6.1 1.6.5: Cross-platform Twitch client
 media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 1.0.2 1.0.3 1.0.4: A simple Xfce4 media player using GStreamer
-media-video/peek 1.3.1-r2: Simple animated Gif screen recorder
+media-video/peek 1.3.1-r2 1.4.0: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 3.7.1: Movie slideshow creator using Ken Burns effect
 media-video/pipewire 0.2.6: Multimedia processing graphs
@@ -18030,7 +18028,7 @@ sys-kernel/git-sources 5.3_rc1 5.3_rc2 5.3_rc3 5.3_rc4 5.3_rc5 5.3_rc6 5.3_rc7 5
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.19: Developer documentation generated from the Linux kernel
-sys-kernel/linux-firmware 20190603 20190815 20190904 99999999: Linux firmware files
+sys-kernel/linux-firmware 20190603 20190815 20190904 20190923 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.13 4.14-r1 4.15-r1 4.16 4.16-r2 4.17 4.18 4.19 4.20 5.0 5.0-r1 5.1 5.2 5.3: Linux system headers
 sys-kernel/mips-sources 4.4.192 4.9.192 4.14.143 4.17.19 4.18.20: Linux-Mips GIT sources for MIPS-based machines, dated 20181112
 sys-kernel/pf-sources 5.1_p7 5.2_p1 5.2_p2 5.2_p3 5.2_p4 5.2_p5 5.2_p6 5.2_p7 5.2_p8 5.3_p1: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
