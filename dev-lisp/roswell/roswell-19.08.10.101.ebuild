@@ -20,15 +20,3 @@ src_prepare() {
 	default
 	eautoreconf
 }
-
-src_compile() {
-	emake -j1
-}
-
-src_test() {
-	emake -j1 check
-}
-
-src_install() {
-	emake DESTDIR="${D}" -j1 install
-}
