@@ -15864,7 +15864,7 @@ net-vpn/networkmanager-openconnect 1.2.4-r1: NetworkManager OpenConnect plugin
 net-vpn/networkmanager-openvpn 1.8.10: NetworkManager OpenVPN plugin
 net-vpn/networkmanager-pptp 1.2.8: NetworkManager PPTP VPN plugin
 net-vpn/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
-net-vpn/networkmanager-strongswan 1.4.4-r1: NetworkManager StrongSwan plugin
+net-vpn/networkmanager-strongswan 1.4.4-r1 1.4.5: NetworkManager StrongSwan plugin
 net-vpn/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
 net-vpn/networkmanager-wireguard 0_pre20181128 9999: NetworkManager WireGuard plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
