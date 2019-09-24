@@ -10018,7 +10018,7 @@ dev-ruby/mini_magick 4.9.3 4.9.4 4.9.5: Manipulate images with minimal use of me
 dev-ruby/mini_mime 1.0.0 1.0.1 1.0.2: A lightweight mime type lookup toy
 dev-ruby/minispec-metadata 3.3.1: Define and access metadata in MiniTest::Spec descriptions and specs
 dev-ruby/minitar 0.8 0.9: Provides POSIX tarchive management from Ruby programs
-dev-ruby/minitest 4.7.5-r2 5.10.3 5.11.3: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
+dev-ruby/minitest 4.7.5-r2 5.10.3 5.11.3 5.12.0: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
 dev-ruby/minitest-around 0.5.0: Alternative for setup/teardown dance
 dev-ruby/minitest-bonus-assertions 3.0: Bonus assertions for minitest
 dev-ruby/minitest-hooks 1.5.0: Adds around and before_all/after_all/around_all hooks for Minitest
