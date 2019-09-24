@@ -1,0 +1,13 @@
+DEFINED_PHASES=install nofetch postinst postrm
+DESCRIPTION=Real-time, class-based strategy game set in a cyberpunk city
+EAPI=7
+HOMEPAGE=http://satellitereign.com/
+IUSE=+gui
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=virtual/opengl x11-libs/libX11 x11-libs/libXcursor x11-libs/libXrandr gui? ( dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 )
+RESTRICT=bindist fetch splitdebug
+SLOT=0
+SRC_URI=SatelliteReignLinux0113_06.zip
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=2c637d5cff7005a675f6336eca86d8f7

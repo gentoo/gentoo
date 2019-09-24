@@ -7407,7 +7407,7 @@ dev-python/PyGithub 1.43.8: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.10.1-r1 5.12.2 5.13.0 5.13.1: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.17 4.19.18 4.19.19: Private sip module for PyQt5
-dev-python/PyQtWebEngine 5.12.1 5.13.1_pre1907131806: Python bindings for QtWebEngine
+dev-python/PyQtWebEngine 5.12.1 5.13.1: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
 dev-python/PySDL2 0.9.6: Python (ctypes) bindings for SDL2 libraries
 dev-python/PySensors 0.0.3: Python bindings to libsensors (via ctypes)
@@ -11908,6 +11908,7 @@ games-strategy/netpanzer 0.8.2: Fast-action multiplayer strategic network game
 games-strategy/openra 20190314: A free RTS engine supporting games like Command & Conquer, Red Alert and Dune2k
 games-strategy/outerspace 0.5.68-r1: On-line strategy game taking place in the dangerous universe
 games-strategy/s25rttr 0.8.1-r3: Open Source remake of The Settlers II game (needs original game files)
+games-strategy/satellite-reign 1.13.06: Real-time, class-based strategy game set in a cyberpunk city
 games-strategy/scorched3d 44-r2: Multi-player tank battle in 3D (OpenGL)
 games-strategy/seven-kingdoms 2.14.7 2.15.2: Seven Kingdoms: Ancient Adversaries
 games-strategy/smac 6.0a: Linux port of the popular strategy game from Firaxis
