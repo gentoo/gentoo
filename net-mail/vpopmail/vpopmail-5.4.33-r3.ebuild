@@ -15,7 +15,9 @@ KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="clearpasswd ipalias maildrop mysql postgres spamassassin"
 REQUIRED_USE="mysql? ( !postgres )"
 
-DEPEND="virtual/qmail
+DEPEND="
+	acct-group/vpopmail
+	virtual/qmail
 	maildrop? ( mail-filter/maildrop )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:=[server] )
@@ -88,7 +90,6 @@ vpopmail_set_homedir() {
 }
 
 pkg_setup() {
-	enewgroup vpopmail 89
 	enewuser vpopmail 89 -1 ${VPOP_DEFAULT_HOME} vpopmail
 	upgradewarning
 }
