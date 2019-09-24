@@ -4919,7 +4919,7 @@ dev-libs/libezV24 0.1.1 0.1.1-r1: library that provides an easy API to Linux ser
 dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.2.1 3.2.1-r1 3.2.1-r2 3.2.1-r3 3.3_rc0: a portable, high level programming interface to various calling conventions
-dev-libs/libfilezilla 0.15.1 0.16.0 0.17.1 0.18.0 0.18.1: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.15.1 0.16.0 0.17.1 0.18.0 0.18.1 0.18.2: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.2.0 0.3.0: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 4.1.0 5.1.0 5.2.0 5.2.1 5.3.0 6.0.0 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
@@ -7405,8 +7405,8 @@ dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
 dev-python/PyECLib 1.5.0 1.6.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyGithub 1.43.8: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
-dev-python/PyQt5 5.10.1-r1 5.12.2 5.13.0: Python bindings for the Qt framework
-dev-python/PyQt5-sip 4.19.17 4.19.18: Private sip module for PyQt5
+dev-python/PyQt5 5.10.1-r1 5.12.2 5.13.0 5.13.1: Python bindings for the Qt framework
+dev-python/PyQt5-sip 4.19.17 4.19.18 4.19.19: Private sip module for PyQt5
 dev-python/PyQtWebEngine 5.12.1 5.13.1_pre1907131806: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
 dev-python/PySDL2 0.9.6: Python (ctypes) bindings for SDL2 libraries
@@ -9003,7 +9003,7 @@ dev-python/simplesoapy 1.5.1-r1 9999: Simple pythonic wrapper for SoapySDR libra
 dev-python/simplespectral 1.0.0 9999: Heavily simplified scipy.signal.spectral module
 dev-python/simpy 3.0.8: Object-oriented, process-based discrete-event simulation language
 dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
-dev-python/sip 4.19.13 4.19.17 4.19.18: Python extension module generator for C and C++ libraries
+dev-python/sip 4.19.13 4.19.17 4.19.18 4.19.19: Python extension module generator for C and C++ libraries
 dev-python/six 1.10.0 1.11.0 1.12.0: Python 2 and 3 compatibility library
 dev-python/slackclient 1.1.0 1.2.0: Client for Slack supporting the Slack Web and Real Time Messaging API
 dev-python/sleekxmpp 1.3.1-r1: Python library for XMPP
@@ -14888,7 +14888,7 @@ net-fs/tahoe-lafs 1.10.2: Secure, decentralized, data store
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r5 0.7-r6 0.7.2: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.39.0 3.42.1 3.43.0 3.44.1 3.44.2: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.39.0 3.42.1 3.43.0 3.44.1 3.44.2 3.45.0: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2 0.01-r3: FTP layout package
