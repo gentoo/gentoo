@@ -4,7 +4,7 @@
 EAPI=6
 inherit autotools flag-o-matic linux-info systemd
 
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/network/wireless/iwd.git"
 	inherit git-r3
 else
@@ -19,14 +19,18 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3"
 
-RDEPEND=">=dev-libs/ell-0.21
-	net-wireless/wireless-regdb
+COMMON_DEPEND=">=dev-libs/ell-0.21
 	sys-apps/dbus
-	client? ( sys-libs/readline:0= )
+	client? ( sys-libs/readline:0= )"
+
+RDEPEND="${COMMON_DEPEND}
+	net-wireless/wireless-regdb
 	crda? ( net-wireless/crda )"
 
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
+
+[[ ${PV} == *9999* ]] && DEPEND+=" dev-python/docutils"
 
 pkg_pretend() {
 	CONFIG_CHECK="
@@ -96,7 +100,7 @@ pkg_pretend() {
 }
 
 src_unpack() {
-	if [[ ${PV} == "9999" ]] ; then
+	if [[ ${PV} == *9999* ]] ; then
 		git-r3_src_unpack
 		git clone git://git.kernel.org/pub/scm/libs/ell/ell.git "${WORKDIR}"/ell
 	else
@@ -132,7 +136,7 @@ src_install() {
 		newinitd "${FILESDIR}/ead.initd" ead
 	fi
 
-	if [[ ${PV} == "9999" ]] ; then
+	if [[ ${PV} == *9999* ]] ; then
 		exeinto /usr/share/iwd/scripts/
 		doexe test/*
 	fi
