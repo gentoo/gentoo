@@ -18832,7 +18832,7 @@ x11-libs/libXres 1.2.0-r1: X.Org XRes library
 x11-libs/libXt 1.2.0: X.Org X Toolkit Intrinsics library
 x11-libs/libXtst 1.2.3-r1: X.Org Xlib-based client API for the XTEST & RECORD extensions library
 x11-libs/libXv 1.0.11-r1: X.Org Xv library
-x11-libs/libXvMC 1.0.11: X.Org XvMC library
+x11-libs/libXvMC 1.0.11 1.0.12: X.Org XvMC library
 x11-libs/libXxf86dga 1.1.5: X.Org Xxf86dga library
 x11-libs/libXxf86misc 1.0.4: X.Org Xxf86misc library
 x11-libs/libXxf86vm 1.1.4-r1: X.Org Xxf86vm library
