@@ -12,7 +12,7 @@ LICENSE="ETQW"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="cdinstall"
-RESTRICT="strip"
+RESTRICT="bindist mirror strip"
 
 DEPEND="app-arch/unzip"
 RDEPEND="sys-libs/glibc
