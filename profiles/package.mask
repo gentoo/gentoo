@@ -1054,12 +1054,6 @@ mail-filter/opensmtpd-extras
 # in 2006.  Removal in 30 days.  Bug #680412.
 mail-filter/ask
 
-# Ulrich Müller <ulm@gentoo.org> (2019-08-30)
-# Last visible upstream activity in 2013. Doesn't work with Emacs 24.3
-# or newer. Byte-compilation of newest upstream version 1.3.1 fails.
-# Masked for removal in 30 days, bug #693118.
-app-emacs/identica-mode
-
 # David Seifert <soap@gentoo.org> (2019-08-29)
 # Dead upstream, last commit over 10 years ago, no revdeps, EAPI=0,
 # Removal in 30 days.
@@ -1131,12 +1125,6 @@ dev-tcltk/tkTheme
 # having to be addressed by other developers.
 # Removal in 30 days.  Bug #681044.
 net-misc/tokyotyrant
-
-# Ulrich Müller <ulm@gentoo.org> (2019-08-26)
-# A more recent version of thumbs.el is distributed
-# as part of GNU Emacs proper.
-# Masked for removal in 30 days, bug #692882.
-app-emacs/thumbs
 
 # Brian Evans <grknight@gentoo.org> (2019-08-26)
 # Deprecated virtual as it cannot solve the issue of ABI incompatibility
