@@ -102,7 +102,6 @@ pkg_postinst() {
 	optfeature "image viewer" media-gfx/ephoto
 	optfeature "ConnMan user interface for Enlightenment" net-misc/econnman
 	optfeature "system and process monitor" sys-process/evisum
-	optfeature "downloading themes and add-ons" x11-misc/enlightenment-extra
 	optfeature "feature rich terminal emulator" x11-terms/terminology
 	optfeature "a matching GTK theme" x11-themes/e-gtk-theme
 }
