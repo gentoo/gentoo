@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit multilib eutils flag-o-matic pax-utils
 
 #same order as http://www.sbcl.org/platform-table.html
 BV_X86=1.4.3
-BV_AMD64=1.4.15
+BV_AMD64=1.5.6
 BV_PPC=1.2.7
 BV_SPARC=1.0.28
 BV_ALPHA=1.0.28
@@ -96,7 +96,7 @@ src_unpack() {
 
 src_prepare() {
 	# bug #468482
-	eapply "${FILESDIR}"/concurrency-test-1.3.15.patch
+	eapply "${FILESDIR}"/concurrency-test-1.5.3.patch
 	# bugs #486552, #527666, #517004
 	eapply "${FILESDIR}"/${PN}-1.4.0-bsd-sockets-test.patch
 	# bugs #560276, #561018
@@ -104,7 +104,6 @@ src_prepare() {
 
 	eapply "${FILESDIR}"/${PN}-1.2.11-solaris.patch
 	eapply "${FILESDIR}"/${PN}-1.4.0-verbose-build.patch
-	eapply "${FILESDIR}"/${P}-capstone.patch
 
 	eapply_user
 
