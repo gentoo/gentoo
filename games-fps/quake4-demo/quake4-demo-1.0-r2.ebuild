@@ -17,7 +17,7 @@ LICENSE="QUAKE4"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="dedicated"
-RESTRICT="strip"
+RESTRICT="bindist mirror strip"
 
 RDEPEND="sys-libs/glibc
 	sys-libs/libstdc++-v3:5
