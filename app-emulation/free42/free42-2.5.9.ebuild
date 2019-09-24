@@ -31,8 +31,8 @@ DOCS=( CREDITS HISTORY README )
 S="${WORKDIR}/${MY_PV}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.0.10-fix-makefile.patch"
-	"${FILESDIR}/${PN}-2.0.10-fix-build-intel-lib.patch"
+	"${FILESDIR}/${PN}-2.5.3-fix-makefile.patch"
+	"${FILESDIR}/${PN}-2.5.3-fix-build-intel-lib.patch"
 )
 
 src_prepare() {
