@@ -21,6 +21,8 @@ IUSE="pax_kernel"
 
 RDEPEND="!=app-emulation/virtualbox-9999"
 
+PATCHES=( "${FILESDIR}"/${PN}-6.0.12-linux-5.3+-compatibility.patch )
+
 S="${WORKDIR}"
 
 BUILD_TARGETS="all"
