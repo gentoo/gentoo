@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit meson
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
+
+inherit meson python-any-r1
 
 DESCRIPTION="Library to help create and query binary XML blobs"
 HOMEPAGE="https://github.com/hughsie/libxmlb"
@@ -29,7 +31,19 @@ DEPEND="
 BDEPEND="
 	>=dev-util/meson-0.47.0
 	virtual/pkgconfig
+	introspection? (
+		$(python_gen_any_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
+		${PYTHON_DEPS}
+	)
 "
+
+python_check_deps() {
+	has_version -b "dev-python/setuptools[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use introspection && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	local emesonargs=(
