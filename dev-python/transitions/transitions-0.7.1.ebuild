@@ -26,10 +26,11 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test? (
-		dev-python/pycodestyle[${PYTHON_USEDEP}]
 		dev-python/dill[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/pycodestyle[${PYTHON_USEDEP}]
+		dev-python/pygraphviz[${PYTHON_USEDEP}]
 	)
 "
 
