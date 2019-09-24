@@ -5261,7 +5261,7 @@ dev-lisp/flexi-streams 1.0.16 1.0.17: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10 2.6.12: GNU Common Lisp
 dev-lisp/hyperspec 7.0-r1: Common Lisp ANSI-standard Hyperspec
 dev-lisp/roswell 19.3.10.97: A lisp installer and launcher for major environment
-dev-lisp/sbcl 1.3.11 1.4.9 1.4.15 1.5.0 1.5.3: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
+dev-lisp/sbcl 1.3.11 1.4.9 1.5.3 1.5.6: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/trivial-gray-streams 20170830 99999999: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.1.5 3.3.1 3.3.2: UIOP is a portability layer spun off ASDF3
 dev-lua/LuaBitOp 1.0.1-r1 1.0.2 1.0.2-r1: Bit Operations Library for the Lua Programming Language
@@ -17920,7 +17920,7 @@ sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/duperemove 0.11.1: Btrfs deduplication utility
-sys-fs/e2fsprogs 1.44.5 1.45.2 1.45.3: Standard EXT2/EXT3/EXT4 filesystem utilities
+sys-fs/e2fsprogs 1.44.5 1.45.2 1.45.3 1.45.4: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16.4: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
 sys-fs/ecryptfs-utils 108-r3: eCryptfs userspace utilities
@@ -18049,7 +18049,7 @@ sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
 sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r2 5.1.29-r1 5.3.28-r2 5.3.28-r3 6.0.35 6.0.35-r1 6.1.36 6.1.38 6.2.32-r1 6.2.38 18.1.25 18.1.32: Oracle Berkeley DB
-sys-libs/e2fsprogs-libs 1.44.5 1.45.2 1.45.3: e2fsprogs libraries (common error and subsystem)
+sys-libs/e2fsprogs-libs 1.44.5 1.45.2 1.45.3 1.45.4: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 30 31 32 32-r1 35 37: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
 sys-libs/freeipmi 1.5.7 1.6.3 1.6.4: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
