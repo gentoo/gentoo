@@ -3,8 +3,6 @@
 
 EAPI=7
 
-# upstream CMakeLists.txt are buggy
-CMAKE_MAKEFILE_GENERATOR=emake
 inherit cmake-utils desktop xdg-utils
 
 DESCRIPTION="Colobot is an educational real-time strategy video game featuring 3D graphics"
@@ -18,6 +16,11 @@ KEYWORDS="~amd64"
 IUSE="devbuild doc +openal test tools"
 RESTRICT="!test? ( test )"
 
+# perl for pod2man
+BDEPEND="
+	app-text/po4a
+	dev-lang/perl
+	sys-devel/gettext"
 DEPEND="
 	dev-games/physfs
 	dev-libs/boost:=
@@ -30,10 +33,17 @@ DEPEND="
 	media-libs/sdl2-image
 	media-libs/sdl2-ttf
 	media-sound/vorbis-tools
-	sys-devel/gettext
 	openal? ( media-libs/openal )"
 RDEPEND="${DEPEND}
 	games-strategy/colobot-data"
+
+src_prepare() {
+	cmake-utils_src_prepare
+
+	# we need to call it explicitly to help Ninja figure out the deps
+	cd desktop || die
+	po4a po4a.cfg || die
+}
 
 src_configure() {
 	local mycmakeargs=(
