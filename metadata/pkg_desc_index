@@ -16782,7 +16782,7 @@ sci-mathematics/axiom 200805: Axiom is a general purpose Computer Algebra system
 sci-mathematics/bertini 1.4: Software for Numerical Algebraic Geometry
 sci-mathematics/calc 2.12.4.13-r1 2.12.5.4: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.11.3: C++ library for geometric algorithms and data structures
-sci-mathematics/coq 8.6 8.6.1: Proof assistant written in O'Caml
+sci-mathematics/coq 8.6 8.6.1 8.9.1: Proof assistant written in O'Caml
 sci-mathematics/cvc4 1.6 1.7: automatic theorem prover for satisfiability modulo theories (SMT) problems
 sci-mathematics/dataplot 20090821 20131220: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
