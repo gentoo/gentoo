@@ -17731,7 +17731,6 @@ sys-cluster/nova 18.2.2 19.0.2 2018.2.9999 2019.1.9999: Cloud computing fabric c
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
-sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
 sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.7 2.0.2 2.0.4 2.1.6 3.0.4 3.1.4 4.0.1-r1: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2018.2.9999 2019.1.9999: A openstack meta-package for installing the various openstack pieces
@@ -18269,7 +18268,6 @@ virtual/libffi 3.0.10 3.0.11 3.0.13-r1 3.3_rc0: A virtual for the Foreign Functi
 virtual/libgudev 215-r3 230 232: Virtual for libgudev providers
 virtual/libiconv 0 0-r1 0-r2: Virtual for the GNU conversion library
 virtual/libintl 0 0-r1 0-r2: Virtual for the GNU Internationalization Library
-virtual/libmysqlclient 18 18-r1 21: Virtual for MySQL client libraries
 virtual/libstdc++ 3.3: Virtual for the GNU Standard C++ Library for <gcc-3.4
 virtual/libudev 215-r1 232: Virtual for libudev providers
 virtual/libusb 0-r2 1-r1 1-r2: Virtual for libusb
