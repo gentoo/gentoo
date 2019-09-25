@@ -8,5 +8,5 @@ KEYWORDS=amd64 x86
 LICENSE=LGPL-2
 RDEPEND=dev-db/postgresql:*[ssl?] !iodbc? ( dev-db/unixODBC ) iodbc? ( dev-db/libiodbc )
 SLOT=0
-SRC_URI=mirror://postgresql/odbc/versions/src/psqlodbc-11.01.0000.tar.gz
-_md5_=6abf2a7620ae24c1f0bf16140be3b16c
+SRC_URI=https://ftp.postgresql.org/pub/odbc/versions/src/psqlodbc-11.01.0000.tar.gz
+_md5_=5f3bb4f5663324448119a77586ec37d9
