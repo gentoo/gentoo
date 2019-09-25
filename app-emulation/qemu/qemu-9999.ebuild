@@ -682,7 +682,7 @@ src_install() {
 		emake DESTDIR="${ED}" install
 
 		# This might not exist if the test failed. #512010
-		[[ -e check-report.html ]] && dohtml check-report.html
+		[[ -e check-report.html ]] && dodoc check-report.html
 
 		if use kernel_linux; then
 			udev_newrules "${FILESDIR}"/65-kvm.rules-r1 65-kvm.rules
