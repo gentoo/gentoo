@@ -243,6 +243,7 @@ x86? (
 	usr/lib*/libGLESv2.so.2.0.0
 	usr/lib*/libGL.so.1.2.0
 	usr/lib*/libOSMesa.so.8.0.0
+	libglvnd? ( usr/lib/libGLX_mesa.so.0.0.0 )
 )"
 
 llvm_check_deps() {
@@ -503,6 +504,8 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	meson_src_install
+
+	use libglvnd && rm -f "${D}"/usr/$(get_libdir)/pkgconfig/{egl,gl}.pc
 }
 
 multilib_src_install_all() {
@@ -514,9 +517,11 @@ multilib_src_test() {
 }
 
 pkg_postinst() {
-	# Switch to the xorg implementation.
-	echo
-	eselect opengl set --use-old ${OPENGL_DIR}
+	if ! use libglvnd; then
+		# Switch to the xorg implementation.
+		echo
+		eselect opengl set --use-old ${OPENGL_DIR}
+	fi
 }
 
 # $1 - VIDEO_CARDS flag (check skipped for "--")
