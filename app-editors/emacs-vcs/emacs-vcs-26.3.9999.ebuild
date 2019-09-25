@@ -116,7 +116,6 @@ DEPEND="${RDEPEND}
 
 BDEPEND="virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
-#	pax_kernel? ( sys-apps/attr )
 
 if [[ ${PV##*.} = 9999 ]]; then
 	BDEPEND="${BDEPEND}
