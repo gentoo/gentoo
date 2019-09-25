@@ -9905,7 +9905,7 @@ dev-ruby/git 1.4.0 1.5.0: Library for using Git in Ruby
 dev-ruby/github_api 0.18.2: A Ruby wrapper for the GitHub REST API v3
 dev-ruby/globalid 0.4.1 0.4.2: Reference models by URI
 dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
-dev-ruby/google-protobuf 3.6.1 3.8.0 3.9.0 3.9.1: Protocol Buffers are Google's data interchange format
+dev-ruby/google-protobuf 3.6.1 3.8.0 3.9.0 3.9.1 3.9.2: Protocol Buffers are Google's data interchange format
 dev-ruby/gpgme 2.0.18: Ruby language binding for GnuPG Made Easy
 dev-ruby/gruff 0.7.0-r1 0.7.0-r2: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.7-r3 5.0.4 5.1.0 5.1.1 5.1.2: A ruby web page templating engine
@@ -9991,7 +9991,7 @@ dev-ruby/maildir 2.2.1-r1: A library for reading and writing arbitrary messages 
 dev-ruby/marcel 0.3.3-r1: Simple mime type detection using magic numbers, filenames, and extensions
 dev-ruby/maruku 0.7.3: A Markdown-superset interpreter written in Ruby
 dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object functionality
-dev-ruby/maxitest 3.1.0 3.2.0 3.3.0: Minitest + all the features you always wanted
+dev-ruby/maxitest 3.1.0 3.2.0 3.3.0 3.4.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
 dev-ruby/mechanize 2.7.6: A Ruby library used for automating interaction with websites
 dev-ruby/memoist 0.15.0 0.16.0: ActiveSupport::Memoizable with a few enhancements
@@ -10054,7 +10054,7 @@ dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.2: network_interface layer from metasploit pcaprub
 dev-ruby/nexpose 7.2.1: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
-dev-ruby/nio4r 1.2.1-r1 2.3.1 2.4.0 2.5.1: A high performance selector API for monitoring IO objects
+dev-ruby/nio4r 1.2.1-r1 2.3.1 2.4.0 2.5.1 2.5.2: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.8.4 1.10.4: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 1.5.0 2.0.1: A Nokogiri interface to the Gumbo HTML5 parser
