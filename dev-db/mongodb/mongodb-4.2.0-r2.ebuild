@@ -40,6 +40,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	$(python_gen_any_dep '
 		dev-python/cheetah3[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		virtual/python-typing[${PYTHON_USEDEP}]
 	')
