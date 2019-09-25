@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils gnome2-utils perl-module
+inherit desktop eutils perl-module xdg-utils
 
 DESCRIPTION="A command line utility for viewing youtube-videos in Mplayer"
 HOMEPAGE="https://trizenx.blogspot.com/2012/03/gtk-youtube-viewer.html"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/trizen/youtube-viewer/archive/${PV}.tar.gz -> ${P}.t
 
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 
 RDEPEND="
@@ -57,12 +57,13 @@ src_install() {
 }
 
 pkg_postinst() {
-	use gtk && gnome2_icon_cache_update
+	use gtk && xdg_icon_cache_update
 	elog "Optional dependencies:"
 	optfeature "cache support" dev-perl/LWP-UserAgent-Cached
 	optfeature "faster JSON to HASH conversion" dev-perl/JSON-XS
 	optfeature "the case if there are SSL problems" dev-perl/Mozilla-CA
 	optfeature "printing results in a fixed-width format (--fixed-width, -W)" dev-perl/Text-CharWidth
+	optfeature "live streams support" net-misc/youtube-dl
 	optfeature "threads support" virtual/perl-threads
 	elog
 	elog "Check the configuration file in ~/.config/youtube-viewer/"
@@ -70,5 +71,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	use gtk && gnome2_icon_cache_update
+	use gtk && xdg_icon_cache_update
 }
