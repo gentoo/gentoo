@@ -12593,8 +12593,8 @@ mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.3.8 1.3.9: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
-mail-client/thunderbird 52.9.1 60.8.0 60.9.0 68.0-r2 68.1.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 52.9.1-r1 60.8.0 60.9.0 68.0 68.1.0: Thunderbird Mail Client
+mail-client/thunderbird 52.9.1 60.8.0 60.9.0 68.1.1: Thunderbird Mail Client
+mail-client/thunderbird-bin 52.9.1-r1 60.8.0 60.9.0 68.1.1: Thunderbird Mail Client
 mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.1.0 1.2.0 1.3.0: Initial tagging script for Notmuch
