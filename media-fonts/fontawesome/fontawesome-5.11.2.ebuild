@@ -10,15 +10,12 @@ DESCRIPTION="The iconic font"
 HOMEPAGE="https://fontawesome.com"
 SRC_URI="https://github.com/FortAwesome/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="CC-BY-3.0 OFL-1.1"
+LICENSE="CC-BY-4.0 OFL-1.1"
 SLOT="0/5"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+otf +ttf"
 
 REQUIRED_USE="|| ( otf ttf )"
-
-DEPEND=""
-RDEPEND=""
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
