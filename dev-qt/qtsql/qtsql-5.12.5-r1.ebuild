@@ -38,6 +38,11 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 	:sql
 )
 
+PATCHES+=(
+	# Backport from dev branch
+	"${FILESDIR}/${PN}-5.12.4-mysql_free_results_when_qsqlquery_finished_is_called.patch"
+)
+
 src_configure() {
 	local myconf=(
 		$(qt_use freetds  sql-tds    plugin)

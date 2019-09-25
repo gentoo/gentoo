@@ -42,6 +42,11 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 	:widgets
 )
 
+PATCHES+=(
+	# Still pending: https://codereview.qt-project.org/c/qt/qtbase/+/255384
+	"${FILESDIR}/${PN}-5.12.4-synth-enterleaveEvent-for-accepted-QTabletEvent.patch"
+)
+
 src_configure() {
 	local myconf=(
 		-opengl $(usex gles2 es2 desktop)
