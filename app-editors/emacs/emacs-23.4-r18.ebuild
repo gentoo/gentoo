@@ -81,7 +81,6 @@ BDEPEND="alsa? ( virtual/pkgconfig )
 	dbus? ( virtual/pkgconfig )
 	X? ( virtual/pkgconfig )
 	gzip-el? ( app-arch/gzip )"
-#	pax_kernel? ( sys-apps/attr )
 
 RDEPEND="${RDEPEND}
 	!<app-editors/emacs-vcs-${PV}"
