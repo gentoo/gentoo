@@ -1181,11 +1181,6 @@ glibc_do_src_install() {
 	# '#define VERSION "2.26.90"' -> '2.26.90'
 	local upstream_pv=$(sed -n -r 's/#define VERSION "(.*)"/\1/p' "${S}"/version.h)
 
-	# gdb is lame and requires some debugging information to remain in
-	# libpthread.  libthread_db makes no sense stripped as it is only used when debugging.
-	dostrip -x $(alt_libdir)/libpthread-${upstream_pv}.so
-	dostrip -x $(alt_libdir)/libthread_db-1.0.so
-
 	if [[ -e ${ED}/$(alt_usrlibdir)/libm-${upstream_pv}.a ]] ; then
 		# Move versioned .a file out of libdir to evade portage QA checks
 		# instead of using gen_usr_ldscript(). We fix ldscript as:
