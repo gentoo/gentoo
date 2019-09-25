@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/pkgcore/pkgcheck"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="doc test"
+IUSE="doc network test"
 RESTRICT="!test? ( test )"
 
 if [[ ${PV} == *9999 ]]; then
@@ -34,6 +34,7 @@ fi
 RDEPEND+="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
+	network? ( dev-python/requests[${PYTHON_USEDEP}] )
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
