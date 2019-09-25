@@ -14,7 +14,8 @@ IUSE=""
 RDEPEND="
 	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
-	>=x11-libs/libXv-1.0.10[${MULTILIB_USEDEP}]"
+	>=x11-libs/libXv-1.0.10[${MULTILIB_USEDEP}]
+	!<x11-base/xorg-proto-2019.2"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 PDEPEND="app-eselect/eselect-xvmc"
