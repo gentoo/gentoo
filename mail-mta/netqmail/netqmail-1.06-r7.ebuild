@@ -118,13 +118,13 @@ src_prepare() {
 			sed 's~^--- \.\./\.\./~--- ~g' \
 				< "${DISTDIR}"/${QMAIL_TLS_F} \
 				> "${T}"/${QMAIL_TLS_F} || die
-			local PATCHES+=( "${T}/${QMAIL_TLS_F}"
+			PATCHES+=( "${T}/${QMAIL_TLS_F}"
 				"${DISTDIR}/${QMAIL_TLS_CVE}"
 				"${FILESDIR}/qmail-smtputf8.patch"
 			)
 		fi
 		if use highvolume; then
-			local PATCHES+=( "${DISTDIR}/${QMAIL_BIGTODO_F}" )
+			PATCHES+=( "${DISTDIR}/${QMAIL_BIGTODO_F}" )
 		fi
 
 		if use qmail-spp; then
@@ -136,7 +136,7 @@ src_prepare() {
 			# make the patch work with "-p1"
 			sed -e 's#^--- \([Mq]\)#--- a/\1#' -e 's#^+++ \([Mq]\)#+++ b/\1#' -i ${SPP_PATCH} || die
 
-			local PATCHES+=( "${SPP_PATCH}" )
+			PATCHES+=( "${SPP_PATCH}" )
 		fi
 	fi
 
