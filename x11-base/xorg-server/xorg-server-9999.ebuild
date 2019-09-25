@@ -78,7 +78,7 @@ CDEPEND="libglvnd? (
 	wayland? (
 		>=dev-libs/wayland-1.3.0
 		media-libs/libepoxy[egl(+)]
-		>=dev-libs/wayland-protocols-1.1
+		>=dev-libs/wayland-protocols-1.18
 	)
 	>=x11-apps/xinit-1.3.3-r1
 	systemd? (
