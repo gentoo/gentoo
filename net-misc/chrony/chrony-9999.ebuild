@@ -64,34 +64,33 @@ src_configure() {
 	fi
 
 	# not an autotools generated script
-	local CHRONY_CONFIGURE="
-	./configure \
-		$(use_enable seccomp scfilter) \
-		$(usex adns '' --disable-asyncdns) \
-		$(usex caps '' --disable-linuxcaps) \
-		$(usex cmdmon '' --disable-cmdmon) \
-		$(usex ipv6 '' --disable-ipv6) \
-		$(usex ntp '' --disable-ntp) \
-		$(usex phc '' --disable-phc) \
-		$(usex pps '' --disable-pps) \
-		$(usex refclock '' --disable-refclock) \
-		$(usex rtc '' --disable-rtc) \
-		${CHRONY_EDITLINE} \
-		${EXTRA_ECONF} \
-		--chronysockdir=/run/chrony \
-		--disable-sechash \
-		--docdir=/usr/share/doc/${PF} \
-		--mandir=/usr/share/man \
-		--prefix=/usr \
-		--sysconfdir=/etc/chrony \
+	local myconf=(
+		$(use_enable seccomp scfilter)
+		$(usex adns '' --disable-asyncdns)
+		$(usex caps '' --disable-linuxcaps)
+		$(usex cmdmon '' --disable-cmdmon)
+		$(usex ipv6 '' --disable-ipv6)
+		$(usex ntp '' --disable-ntp)
+		$(usex phc '' --disable-phc)
+		$(usex pps '' --disable-pps)
+		$(usex refclock '' --disable-refclock)
+		$(usex rtc '' --disable-rtc)
+		${CHRONY_EDITLINE}
+		${EXTRA_ECONF}
+		--chronysockdir="${EPREFIX}/run/chrony"
+		--disable-sechash
+		--docdir="${EPREFIX}/usr/share/doc/${PF}"
+		--mandir="${EPREFIX}/usr/share/man"
+		--prefix="${EPREFIX}/usr"
+		--sysconfdir="${EPREFIX}/etc/chrony"
 		--with-pidfile="${EPREFIX}/run/chrony/chronyd.pid"
-		--without-nss \
+		--without-nss
 		--without-tomcrypt
-	"
+	)
 
 	# print the ./configure call to aid in future debugging
-	einfo ${CHRONY_CONFIGURE}
-	bash ${CHRONY_CONFIGURE} || die
+	echo bash ./configure "${myconf[@]}" >&2
+	bash ./configure "${myconf[@]}" || die
 }
 
 src_compile() {
