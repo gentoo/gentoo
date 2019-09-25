@@ -25,14 +25,15 @@ fi
 
 # TODO: unbundle sqlite and KSyntaxHighlighting
 
-QTC_PLUGINS=(android +autotest baremetal bazaar beautifier
+QTC_PLUGINS=(android +autotest baremetal bazaar beautifier boot2qt
 	'+clang:clangcodemodel|clangformat|clangpchmanager|clangrefactoring|clangtools' clearcase
-	cmake:cmakeprojectmanager cppcheck cvs +designer git glsl:glsleditor +help ios lsp:languageclient
-	mercurial modeling:modeleditor nim perforce perfprofiler python:pythoneditor qbs:qbsprojectmanager
-	+qmldesigner qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal silversearcher subversion
-	valgrind winrt)
+	cmake:cmakeprojectmanager cppcheck ctfvisualizer cvs +designer git glsl:glsleditor +help ios
+	lsp:languageclient mercurial modeling:modeleditor nim perforce perfprofiler python:pythoneditor
+	qbs:qbsprojectmanager +qmldesigner qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal
+	silversearcher subversion valgrind winrt)
 IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
 REQUIRED_USE="
+	boot2qt? ( remotelinux )
 	clang? ( test? ( qbs ) )
 	qnx? ( remotelinux )
 "
@@ -128,7 +129,7 @@ src_prepare() {
 	fi
 	if ! use perfprofiler; then
 		rm -rf src/tools/perfparser || die
-		if ! use qmlprofiler; then
+		if ! use ctfvisualizer && ! use qmlprofiler; then
 			sed -i -e '/tracing/d' src/libs/libs.pro tests/auto/auto.pro || die
 		fi
 	fi
