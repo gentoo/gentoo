@@ -5103,7 +5103,7 @@ dev-libs/mpc 1.0.3 1.0.3-r2 1.1.0-r1: A library for multiprecision complex arith
 dev-libs/mpfr 2.4.2_p3-r1 3.1.3_p4 3.1.4 3.1.5_p2 3.1.6 4.0.0-r1 4.0.1 4.0.2: library for multiple-precision floating-point computations with exact rounding
 dev-libs/mps 1.106.2 1.110.0 1.111.0 1.114.0: Ravenbrook Memory Pool System
 dev-libs/msgpack 1.1.0 3.1.1 3.2.0: MessagePack is a binary-based efficient data interchange format
-dev-libs/mxml 3.0: A small XML parsing library that you can use to read XML data files or strings
+dev-libs/mxml 3.0 3.1: A small XML parsing library that you can use to read XML data files or strings
 dev-libs/nanomsg 1.1.4 1.1.5: High-performance messaging interface for distributed applications
 dev-libs/nettle 3.4.1 3.5.1: Low-level cryptographic library
 dev-libs/newt 0.52.20 0.52.21: Redhat's Newt windowing toolkit development files
