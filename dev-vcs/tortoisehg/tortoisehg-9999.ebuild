@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -62,7 +62,8 @@ python_install_all() {
 	distutils-r1_python_install_all
 	dodoc doc/ReadMe*.txt doc/TODO contrib/mergetools.rc
 	if use doc ; then
-		dohtml -r doc/build/html/
+		docinto html
+		dodoc -r doc/build/html/.
 	fi
 	newicon -s scalable icons/scalable/apps/thg.svg thg_logo.svg
 	domenu contrib/thg.desktop
