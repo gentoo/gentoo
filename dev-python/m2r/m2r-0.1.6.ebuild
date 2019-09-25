@@ -21,7 +21,8 @@ RDEPEND="
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( $(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7) )
+	test? ( dev-python/pytest
+		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7) )
 	${RDEPEND}
 "
 
