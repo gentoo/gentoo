@@ -16,10 +16,12 @@
 		<flag name="baremetal">Build plugin for bare metal devices</flag>
 		<flag name="bazaar">Add support for <pkg>dev-vcs/bzr</pkg> version control system</flag>
 		<flag name="beautifier">Build the beautifier plugin (supports astyle, clang-format, and uncrustify)</flag>
+		<flag name="boot2qt">Build the Boot2Qt plugin</flag>
 		<flag name="clang">Build clang-based plugins (code model, formatting, refactoring, static analysis)</flag>
 		<flag name="clearcase">Add support for IBM ClearCase version control system (requires manual installation of ClearCase client)</flag>
 		<flag name="cmake">Enable cmake project manager plugin</flag>
 		<flag name="cppcheck">Enable integration with <pkg>dev-util/cppcheck</pkg></flag>
+		<flag name="ctfvisualizer">Build the Chrome Trace Format Visualizer plugin</flag>
 		<flag name="designer">Enable designer for QtWidgets-based UIs</flag>
 		<flag name="glsl">Enable GLSL source code editor</flag>
 		<flag name="help">Build the help plugin</flag>
