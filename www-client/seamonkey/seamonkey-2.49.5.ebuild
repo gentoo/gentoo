@@ -41,7 +41,8 @@ fi
 MOZCONFIG_OPTIONAL_WIFI=1
 MOZ_GENERATE_LANGPACKS=1
 MOZ_L10N_SOURCEDIR="${S}/${P}-l10n"
-inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v6.60 pax-utils xdg-utils autotools mozextension nsplugins mozlinguas-v2
+MOZCONFIG_OPTIONAL_GTK3=enabled
+inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v6.52 pax-utils xdg-utils autotools mozextension nsplugins mozlinguas-v2
 
 PATCH="${PN}-2.49.5-patches-01"
 
