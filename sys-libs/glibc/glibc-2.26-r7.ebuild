@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,6 @@ DESCRIPTION="GNU libc C library"
 HOMEPAGE="https://www.gnu.org/software/libc/"
 
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
-RESTRICT="strip" # Strip ourself #46186
 EMULTILIB_PKG="true"
 
 # Configuration variables
@@ -784,7 +783,6 @@ src_install() {
 	fi
 
 	foreach_abi glibc_do_src_install
-	src_strip
 }
 
 pkg_preinst() {
