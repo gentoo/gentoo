@@ -1137,12 +1137,6 @@ net-misc/tokyotyrant
 # No revdeps. Removal in 30 days.
 virtual/libmysqlclient
 
-# Michał Górny <mgorny@gentoo.org> (2019-08-25)
-# Discontinued upstream in 2015, and not touched in Gentoo since.
-# Has series of build failures reported due to growing incompatibility
-# with new kernels.  Removal in 30 days.  Bug #677618.
-sys-cluster/open-mx
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.24

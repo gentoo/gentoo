@@ -156,9 +156,6 @@ sys-cluster/openmpi openmpi_fabrics_psm
 # sys-fabric/librdmacm
 sys-cluster/openmpi openmpi_ofed_features_rdmacm
 
-# sys-cluster/open-mx
-sys-cluster/openmpi openmpi_fabrics_open-mx
-
 # sys-cluster/slurm
 sys-cluster/openmpi openmpi_rm_slurm
 
