@@ -1,0 +1,16 @@
+BDEPEND=app-text/asciidoc virtual/pkgconfig nls? ( >=sys-devel/gettext-0.19.6 ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=media-libs/fontconfig x11-libs/gdk-pixbuf:2[X] x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXft x11-libs/libXrandr x11-libs/libXrender alsa? ( media-libs/alsa-lib media-libs/libsndfile[alsa] ) ao? ( media-libs/libao media-libs/libsndfile ) bidi? ( dev-libs/fribidi ) truetype? ( x11-libs/libXext ) xinerama? ( x11-libs/libXinerama ) || ( app-arch/plzip app-arch/pdlzip app-arch/lzip ) gnome-base/librsvg x11-base/xorg-proto truetype? ( >=media-libs/freetype-2.0.9 )
+DESCRIPTION=Ice Window Manager with Themes
+EAPI=7
+HOMEPAGE=https://ice-wm.org/ https://github.com/ice-wm/icewm
+IUSE=+alsa ao bidi debug nls truetype uclibc xinerama
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/fontconfig x11-libs/gdk-pixbuf:2[X] x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXft x11-libs/libXrandr x11-libs/libXrender alsa? ( media-libs/alsa-lib media-libs/libsndfile[alsa] ) ao? ( media-libs/libao media-libs/libsndfile ) bidi? ( dev-libs/fribidi ) truetype? ( x11-libs/libXext ) xinerama? ( x11-libs/libXinerama )
+REQUIRED_USE=|| ( alsa ao )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/ice-wm/icewm/releases/download/1.6.2/icewm-1.6.2.tar.lz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
+_md5_=525654c9cd436fb4df0ef5034038cb51

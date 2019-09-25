@@ -172,7 +172,6 @@ app-admin/salt:zeromq - Add support for the zeromq transport.
 app-admin/sudo:gcrypt - Use message digest functions from dev-libs/libgcrypt instead of sudo's
 app-admin/sudo:libressl - Use message digest functions from dev-libs/libressl instead of sudo's
 app-admin/sudo:offensive - Let sudo print insults when the user types the wrong password
-app-admin/sudo:openssl - Use message digest functions from dev-libs/openssl instead of sudo's
 app-admin/sudo:secure-path - Replace PATH variable with compile time secure paths
 app-admin/sudo:sendmail - Allow sudo to send emails with sendmail
 app-admin/sudo:sssd - Add System Security Services Daemon support

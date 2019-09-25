@@ -317,7 +317,7 @@ app-admin/sshguard 2.4.0 99999: protects hosts from brute force attacks against 
 app-admin/stow 2.2.2-r1: GNU Stow is a symlink farm manager
 app-admin/su-exec 0.2: Switch user and group id and exec
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
-app-admin/sudo 1.8.25_p1-r1 1.8.27-r1 1.8.28_beta3 9999: Allows users or groups to run commands as other users
+app-admin/sudo 1.8.27-r1 1.8.28_rc1 9999: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9 1.15: Interactive adduser script from Slackware
 app-admin/supernova 2.2.0: novaclient wrapper for multiple nova environments
 app-admin/supervisor 3.1.4 3.3.5 4.0.3 4.0.4: A system for controlling process state under UNIX
@@ -2421,7 +2421,7 @@ app-text/docbook-xsl-stylesheets 1.79.1-r2: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/doconce 1.3 1.4.4: A markdown-like langauge to generate docs in html, LaTeX, and many other formats
 app-text/docx2txt 1.2 1.3 1.4: Convert MS Office docx files to plain text
-app-text/dos2unix 7.3.5 7.4.0: Convert DOS or MAC text files to UNIX format or vice versa
+app-text/dos2unix 7.3.5 7.4.0 7.4.1: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/duali 0.2.0-r1: Arabic dictionary based on the DICT protocol
 app-text/dvipng 1.15-r1: Translate DVI files into PNG or GIF graphics
 app-text/dvipsk 5.995_p20150521 5.996_p20160523 5.997_p20170524 5.999_p20190410: DVI-to-PostScript translator
@@ -10944,7 +10944,7 @@ dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS bin
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
 dev-util/statifier 1.7.4: Statifier is a tool for creating portable, self-containing Linux executables
 dev-util/stepman 0.10.0 0.10.2 0.10.4 0.10.5: Step collection manager for Bitrise CLI
-dev-util/strace 4.26 5.1 5.2 9999: A useful diagnostic, instructional, and debugging tool
+dev-util/strace 4.26 5.2 5.3 9999: A useful diagnostic, instructional, and debugging tool
 dev-util/stressapptest 1.0.9: Stressful Application Test
 dev-util/stripe-mock 0.34.1 0.47.0 0.63.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: a member function stub generator for C++
@@ -11389,7 +11389,7 @@ games-emulation/mastergear-bin 4.5: SEGA Master System / Game Gear emulator
 games-emulation/mednafen 0.9.46: Argument-driven multi-system emulator utilizing OpenGL and SDL
 games-emulation/mednaffe 0.8.7: A front-end (GUI) for mednafen emulator
 games-emulation/mekanix 070-r1: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO, and OMV emulator
-games-emulation/mgba 0.6.3 0.7.1 0.7.2 9999: Game Boy Advance emulator written in C
+games-emulation/mgba 0.6.3 0.7.2 0.7.3 9999: Game Boy Advance emulator written in C
 games-emulation/mupen64plus 2.5 2.5.9: A fork of Mupen64 Nintendo 64 emulator, meta-package
 games-emulation/mupen64plus-audio-sdl 2.5 2.5.9: A fork of Mupen64 Nintendo 64 emulator, SDL audio plugin
 games-emulation/mupen64plus-core 2.5-r1 2.5.9: A fork of Mupen64 Nintendo 64 emulator, core library
@@ -19549,7 +19549,7 @@ x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.0 0.7.1 0.7.2 9999: A manual tiling window manager for X
 x11-wm/i3 4.14 4.15 4.16 4.16.1 4.17.1 9999: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.16.1 4.16.1-r1: i3 fork with gaps and some more features
-x11-wm/icewm 1.5.5 1.6.1: Ice Window Manager with Themes
+x11-wm/icewm 1.5.5 1.6.1 1.6.2: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.7: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 1.3.0_p1 1.4.0_p1-r1 1.5.0-r1 9999: Lumina desktop environment
