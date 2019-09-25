@@ -12532,7 +12532,7 @@ kde-plasma/plasma-workspace 5.16.5: KDE Plasma workspace
 kde-plasma/plasma-workspace-wallpapers 5.16.5: Additional wallpapers for the Plasma workspace
 kde-plasma/plymouth-kcm 5.16.5: KDE Plasma control module for Plymouth
 kde-plasma/polkit-kde-agent 5.16.5: PolKit agent module for KDE Plasma
-kde-plasma/powerdevil 5.16.5: Power management for KDE Plasma Shell
+kde-plasma/powerdevil 5.16.5-r1: Power management for KDE Plasma Shell
 kde-plasma/sddm-kcm 5.16.5: KDE Plasma control module for SDDM
 kde-plasma/systemsettings 5.16.5: Control Center to configure KDE Plasma desktop
 kde-plasma/user-manager 5.16.5: Simple system settings module to manage the users of your system
