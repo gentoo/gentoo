@@ -1,14 +1,14 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit bsdmk multilib-minimal toolchain-funcs
 
 DESCRIPTION="crtbegin.o/crtend.o from NetBSD CSU for GCC-free toolchain"
 HOMEPAGE="http://cvsweb.netbsd.org/bsdweb.cgi/src/lib/csu/"
 SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.xz
-	test? ( https://dev.gentoo.org/~mgorny/dist/${P}-tests.tar.bz2 )"
+	test? ( https://dev.gentoo.org/~mgorny/dist/netbsd-csu-7.1-tests.tar.bz2 )"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="app-arch/xz-utils
+BDEPEND="app-arch/xz-utils
 	test? ( sys-devel/clang )"
 
 S=${WORKDIR}/${P}/lib/csu
@@ -133,7 +133,7 @@ multilib_src_test() {
 }
 
 multilib_src_install() {
-	dolib crtbegin.o crtbeginS.o crtend.o
+	dolib.a crtbegin.o crtbeginS.o crtend.o
 	dosym crtbegin.o "/usr/$(get_libdir)/crtbeginT.o"
 	dosym crtend.o "/usr/$(get_libdir)/crtendS.o"
 }

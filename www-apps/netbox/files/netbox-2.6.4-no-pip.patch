@@ -1,0 +1,21 @@
+diff --git a/upgrade.sh b/upgrade.sh
+index 793e72cd..8490d713 100755
+--- a/upgrade.sh
++++ b/upgrade.sh
+@@ -10,16 +10,6 @@ cd "$(dirname "$0")"
+ PYTHON="python3"
+ PIP="pip3"
+ 
+-# Uninstall any Python packages which are no longer needed
+-COMMAND="${PIP} uninstall -r old_requirements.txt -y"
+-echo "Removing old Python packages ($COMMAND)..."
+-eval $COMMAND
+-
+-# Install any new Python packages
+-COMMAND="${PIP} install -r requirements.txt --upgrade"
+-echo "Updating required Python packages ($COMMAND)..."
+-eval $COMMAND
+-
+ # Apply any database migrations
+ COMMAND="${PYTHON} netbox/manage.py migrate"
+ echo "Applying database migrations ($COMMAND)..."

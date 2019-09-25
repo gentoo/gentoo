@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 JAVA_PKG_IUSE="doc source"
 
@@ -42,7 +42,7 @@ src_compile() {
 
 src_install() {
 	java-pkg-simple_src_install
-	dodoc README.md release-notes/{CREDITS,VERSION}
+	dodoc README.md release-notes/{CREDITS,VERSION}-2.x
 }
 
 src_test() {
