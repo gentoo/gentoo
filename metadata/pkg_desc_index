@@ -12660,7 +12660,7 @@ mail-mta/esmtp 1.2 1.2-r1: User configurable relay-only Mail Transfer Agent with
 mail-mta/exim 4.92-r3 4.92-r4 4.92.1-r1 4.92.2: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.8.3 1.8.4 1.8.5 1.8.5-r1: An SMTP client and SMTP plugin for mail user agents such as Mutt
-mail-mta/netqmail 1.06-r2 1.06-r4 1.06-r6: qmail -- a secure, reliable, efficient, simple message transfer agent
+mail-mta/netqmail 1.06-r2 1.06-r4 1.06-r6 1.06-r7: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.3_p1-r1 6.4.0_p1: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 2.10.9 3.4.5-r1 3.4.6 3.4.7 3.5_pre20190922: A fast and secure drop-in replacement for sendmail
@@ -13918,7 +13918,7 @@ media-sound/audacity 2.2.2 2.3.2: Free crossplatform audio editor
 media-sound/audex 0.95_pre20190721: Tool for ripping compact discs
 media-sound/audicle 1.0.0.7-r2: A Context-sensitive, On-the-fly Audio Programming Environ/mentality
 media-sound/audiocompress 2.0: Very gentle 1-band dynamic range compressor
-media-sound/audiotag 0.19: A command-line tool for mass tagging/renaming of audio files
+media-sound/audiotag 0.19 0.19-r1: Command-line tool for mass tagging/renaming of audio files
 media-sound/audiotools 3.1.1: A collection of command line audio tools
 media-sound/aumix 2.9.1: Aumix volume/mixer control program
 media-sound/awesfx 0.5.1e: AWE32 Sound Driver Utility Programs

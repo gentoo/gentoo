@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Command-line tool for mass tagging/renaming of audio files
+EAPI=7
+HOMEPAGE=https://github.com/Daenyth/audiotag
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=https://github.com/downloads/Daenyth/audiotag/audiotag-0.19.tar.bz2
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8
+_md5_=9423ea0071df1d5823e1ea7834083a64
