@@ -1101,40 +1101,6 @@ dev-embedded/scratchbox-devkit-perl
 dev-embedded/scratchbox-devkit-qemu
 dev-embedded/scratchbox-devkit-svn
 
-# Michał Górny <mgorny@gentoo.org> (2019-08-27)
-# Unmaintained.  No release since 2008.  Is reported to wrongly reject
-# 'pretty much all mails', also reported build failure.
-# Removal in 30 days.  Bug #519668.
-mail-filter/sid-milter
-
-# Michał Górny <mgorny@gentoo.org> (2019-08-27)
-# Fails to build against openssl-1.1.  Not touched by Gentoo maintainer
-# who is also upstream since 2016, and the problem has been reported
-# in Jan 2019.  Removal in 30 days.  Bug #674800.
-app-crypt/af_alg
-
-# Michał Górny <mgorny@gentoo.org> (2019-08-27)
-# Our version is seriously outdated and has numerous bugs reported,
-# including multilib-strict failures preventing it from being installed
-# on any modern system.  It has not been touched since 2016, and is
-# many releases behind upstream.  Furthermore, upstream has discontinued
-# it in favor of eeCodes.
-# Removal in 30 days.  Bug #628746.
-sci-libs/grib_api
-
-# Michał Górny <mgorny@gentoo.org> (2019-08-27)
-# Not touched since 2012.  Homepage gone, and no replacement found.
-# No reverse dependencies.
-# Removal in 30 days.  Bug #692796.
-dev-tcltk/tkTheme
-
-# Michał Górny <mgorny@gentoo.org> (2019-08-27)
-# Discontinued upstream, in favor of Tokyo Tycoon.  Last release
-# in 2010.  Not touched by the Gentoo maintainer since 2010, with bugs
-# having to be addressed by other developers.
-# Removal in 30 days.  Bug #681044.
-net-misc/tokyotyrant
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.24

@@ -78,7 +78,6 @@ media-libs/netpbm jpeg2k
 media-libs/opencv jpeg2k
 media-libs/simage jpeg2k
 net-proxy/ziproxy jpeg2k
-sci-libs/grib_api jasper jpeg2k
 x11-libs/gdk-pixbuf jpeg2k
 
 # James Le Cuirot <chewi@gentoo.org> (2019-05-21)
