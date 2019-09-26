@@ -4,7 +4,7 @@ DEPEND=dev-libs/libbsd:= dev-libs/libyaml:= idn? ( net-dns/libidn2:= ) !gnutls? 
 DESCRIPTION=Modern asynchronous DNS API
 EAPI=7
 HOMEPAGE=https://getdnsapi.net/
-IUSE=doc +getdns_query +getdns_server_mon gnutls +idn libev libevent libuv nettle static-libs stubby +threads +unbound +filecaps
+IUSE=doc +getdns-query +getdns-server-mon gnutls +idn libev libevent libuv nettle static-libs stubby +threads +unbound +filecaps
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=dev-libs/libbsd:= dev-libs/libyaml:= idn? ( net-dns/libidn2:= ) !gnutls? ( dev-libs/openssl:0= ) gnutls? ( net-libs/gnutls:0=[dane] ) libev? ( dev-libs/libev:= ) libevent? ( dev-libs/libevent:= ) libuv? ( dev-libs/libuv:= ) nettle? ( dev-libs/nettle:0= ) unbound? ( >=net-dns/unbound-1.4.16:= ) stubby? ( sys-libs/libcap:= )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://getdnsapi.net/releases/getdns-1-5-2/getdns-1.5.2.tar.gz
 _eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=b8962a4b4b18cf188346120389cd8937
+_md5_=90ebfb3c6b388525c00f30a46b5705d4

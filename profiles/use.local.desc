@@ -5688,8 +5688,8 @@ net-dns/dnsmasq:script - Enable support for calling scripts when leases change.
 net-dns/dnsmasq:tftp - Enables built in TFTP server for netbooting.
 net-dns/dnssec-validator:dlv - Enable support for the DNSSEC look-aside validation
 net-dns/dnssec-validator:nsec3 - Enable support for the NSEC3 Resource Record
-net-dns/getdns:getdns_query - Add getdns_query tool
-net-dns/getdns:getdns_server_mon - Add getdns_server_mon tool
+net-dns/getdns:getdns-query - Add getdns_query tool
+net-dns/getdns:getdns-server-mon - Add getdns_server_mon tool
 net-dns/getdns:libev - Enable dev-libs/libev support
 net-dns/getdns:libevent - Enable dev-libs/libevent support
 net-dns/getdns:libuv - Enable dev-libs/libuv support
