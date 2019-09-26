@@ -34,10 +34,6 @@ games-fps/doomsday fmod
 www-client/elinks guile
 
 # Michał Górny <mgorny@gentoo.org> (2019-08-27)
-# sci-libs/grib_api is slated for removal.
-dev-lang/gdl grib
-
-# Michał Górny <mgorny@gentoo.org> (2019-08-27)
 # net-misc/tokyotyrant is slated for removal.
 app-metrics/collectd collectd_plugins_tokyotyrant
 

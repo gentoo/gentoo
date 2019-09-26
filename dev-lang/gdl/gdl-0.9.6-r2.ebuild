@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/gnudatalanguage/${P}v2.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+eigen fftw graphicsmagick grib gshhs hdf hdf5 +imagemagick netcdf openmp
+IUSE="+eigen fftw graphicsmagick gshhs hdf hdf5 +imagemagick netcdf openmp
 	  png proj postscript python static-libs udunits wxwidgets"
 
 RDEPEND="
@@ -27,7 +27,6 @@ RDEPEND="
 	sys-libs/zlib:0=
 	x11-libs/libX11:0=
 	fftw? ( sci-libs/fftw:3.0= )
-	grib? ( sci-libs/grib_api:0= )
 	gshhs? ( sci-geosciences/gshhs-data sci-geosciences/gshhs:0= )
 	hdf? ( sci-libs/hdf:0= )
 	hdf5? ( sci-libs/hdf5:0= )
@@ -102,7 +101,7 @@ src_configure() {
 		-DX11=ON
 		-DEIGEN3="$(usex eigen)"
 		-DFFTW="$(usex fftw)"
-		-DGRIB="$(usex grib)"
+		-DGRIB=OFF
 		-DGSHHS="$(usex gshhs)"
 		-DHDF="$(usex hdf)"
 		-DHDF5="$(usex hdf5)"
