@@ -2661,7 +2661,7 @@ app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edi
 app-text/xmlto 0.0.28-r1: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8 0.4.8-r1 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/xpdf 4.01.01: The PDF viewer and tools
-app-text/yelp-tools 3.18.0 3.28.0: Collection of tools for building and converting documentation
+app-text/yelp-tools 3.18.0 3.28.0 3.32.2: Collection of tools for building and converting documentation
 app-text/yodl 4.01.00 4.02.00 4.02.01: Your Own Document Language: a pre-document language and tools to process it
 app-text/zathura 0.4.3 0.4.4 9999: A highly customizable and functional document viewer
 app-text/zathura-cb 0.1.8 9999: Comic book plug-in for zathura with 7zip, rar, tar and zip support
@@ -12063,8 +12063,8 @@ gnome-extra/polkit-gnome 0.105-r1 0.105-r2: A dbus session bus service that is u
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.30.0: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
-gnome-extra/yelp 3.30.0: Help browser for GNOME
-gnome-extra/yelp-xsl 3.20.1 3.30.1: XSL stylesheets for yelp
+gnome-extra/yelp 3.30.0 3.32.2: Help browser for GNOME
+gnome-extra/yelp-xsl 3.20.1 3.30.1 3.32.1: XSL stylesheets for yelp
 gnome-extra/zenity 3.30.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.8: Addresses is a Apple Addressbook work alike (standalone and for GNUMail)
@@ -15314,7 +15314,7 @@ net-mail/smtptools 0.2.3: A collection of tools to send or receive mails with SM
 net-mail/spamcup 1.09: This script does the same you would do when you report spam with your browser in Spamcop.net
 net-mail/swaks 20130209.0-r1: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 net-mail/t-prot 3.4: TOFU protection - display filter for RFC822 messages
-net-mail/tnef 1.4.15: Decodes MS-TNEF MIME attachments
+net-mail/tnef 1.4.15 1.4.17: Decodes MS-TNEF MIME attachments
 net-mail/tpop3d 1.5.5 1.5.5-r1: An extensible POP3 server with vmail-sql/MySQL support
 net-mail/vacation 1.2.7.0: automatic mail answering program
 net-mail/vchkuser 0.4: qmail-spp plugin to check recipient existance with vpopmail
@@ -15856,7 +15856,7 @@ net-vpn/logmein-hamachi 2.1.0.174 2.1.0.198: LogMeIn Hamachi VPN tunneling engin
 net-vpn/networkmanager-fortisslvpn 1.2.6 1.2.8: NetworkManager Fortinet SSLVPN compatible plugin
 net-vpn/networkmanager-l2tp 1.2.12: NetworkManager L2TP plugin
 net-vpn/networkmanager-libreswan 1.2.10 1.2.12: NetworkManager libreswan plugin
-net-vpn/networkmanager-openconnect 1.2.4-r1: NetworkManager OpenConnect plugin
+net-vpn/networkmanager-openconnect 1.2.4-r1 1.2.6: NetworkManager OpenConnect plugin
 net-vpn/networkmanager-openvpn 1.8.10: NetworkManager OpenVPN plugin
 net-vpn/networkmanager-pptp 1.2.8: NetworkManager PPTP VPN plugin
 net-vpn/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
@@ -19394,7 +19394,7 @@ x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/QGnomePlatform 0.5: A Qt Platform Theme aimed to accommodate GNOME settings
 x11-themes/adapta-gtk-theme 3.95.0.11: An adaptive Gtk+ theme based on Material Design Guidelines
-x11-themes/adwaita-icon-theme 3.24.0 3.26.1 3.30.1: GNOME default icon theme
+x11-themes/adwaita-icon-theme 3.24.0 3.26.1 3.30.1 3.32.0: GNOME default icon theme
 x11-themes/adwaita-qt 1.0-r1 1.1.0: A style to bend Qt applications to look like they belong into GNOME Shell
 x11-themes/arc-icon-theme 20161122: Vertex icon theme
 x11-themes/arc-theme 20190330: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
@@ -19482,8 +19482,8 @@ x11-themes/nimbus 0.1.7-r1: The default OpenSolaris theme (GTK+ 2.x engine, icon
 x11-themes/notify-osd-icons 0.7-r1: Icons for on-screen-display notification agent
 x11-themes/nou-icon-theme 09.02.08: A scalable icon theme called Nou
 x11-themes/numix-gtk-theme 2.6.7-r1: A modern flat theme with a combination of light and dark elements
-x11-themes/numix-icon-theme 18.07.17: An official icon theme from the Numix Project
-x11-themes/numix-icon-theme-circle 18.08.29 18.09.19 18.10.03 18.12.01 19.01.24 19.02.07 19.02.22 19.03.20 19.04.15 19.05.07: An icon theme for Linux from the Numix project
+x11-themes/numix-icon-theme 18.07.17 19.09.20: An official icon theme from the Numix Project
+x11-themes/numix-icon-theme-circle 18.08.29 18.09.19 18.10.03 18.12.01 19.01.24 19.02.07 19.02.22 19.03.20 19.04.15 19.05.07 19.09.20: An icon theme for Linux from the Numix project
 x11-themes/nuovo-icon-theme 0.5: A scalable icon theme called Nuovo
 x11-themes/nuvox 07.1-r1: NuvoX SVG icon theme
 x11-themes/obsidian-xcursors 1.0: A shiny and clean xcursor theme
