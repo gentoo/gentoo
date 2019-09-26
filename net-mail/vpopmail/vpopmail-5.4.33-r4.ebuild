@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit autotools eutils fixheadtails qmail user
 
@@ -11,16 +11,39 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86"
-IUSE="clearpasswd ipalias maildrop mysql spamassassin"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+IUSE="clearpasswd ipalias maildrop mysql postgres spamassassin"
+REQUIRED_USE="mysql? ( !postgres )"
 
 DEPEND="
 	acct-group/vpopmail
 	virtual/qmail
 	maildrop? ( mail-filter/maildrop )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:0= )
+	postgres? ( dev-db/postgresql:=[server] )
 	spamassassin? ( mail-filter/spamassassin )"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.4.9-access.violation.patch
+	"${FILESDIR}"/${PN}-lazy.patch
+	"${FILESDIR}"/${PN}-vpgsql.patch
+	"${FILESDIR}"/${PN}-double-free.patch
+	"${FILESDIR}"/${PN}-5.4.33-vdelivermail-add-static.patch
+	"${FILESDIR}"/${PN}-5.4.33-fix-those-vfork-instances-that-do-more-than-exec.patch
+	"${FILESDIR}"/${PN}-5.4.33-remove-unneeded-forward-declaration.patch
+	"${FILESDIR}"/${PN}-5.4.33-clean-up-calling-maildrop.patch
+	"${FILESDIR}"/${PN}-5.4.33-fix-S-tag-in-case-spamassassin-changed-the-file-size.patch
+	"${FILESDIR}"/${PN}-5.4.33-strncat.patch
+	"${FILESDIR}"/${PN}-5.4.33-unistd.patch
+)
+DOCS=(
+	doc/.
+)
+HTML_DOCS=(
+	doc_html/.
+	man_html/.
+)
 
 # This makes sure the variable is set, and that it isn't null.
 VPOP_DEFAULT_HOME="/var/vpopmail"
@@ -43,9 +66,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-5.4.9-access.violation.patch
-	epatch "${FILESDIR}"/${PN}-lazy.patch
-	epatch "${FILESDIR}"/${PN}-double-free.patch
+	default
+
+	echo 'install-recursive: install-exec-am' \
+		>>"${S}"/Makefile.am
 
 	# fix maildir paths
 	sed -i -e 's|Maildir|.maildir|g' \
@@ -60,7 +84,7 @@ src_prepare() {
 	# automake/autoconf
 	mv -f "${S}"/configure.{in,ac} || die
 	sed -i -e 's,AM_CONFIG_HEADER,AC_CONFIG_HEADERS,g' \
-	        configure.ac || die
+		configure.ac || die
 
 	# _FORTIFY_SOURCE
 	sed -i \
@@ -76,8 +100,8 @@ src_configure() {
 
 	local authopts
 	if use mysql; then
-		incdir=$(mysql_config --variable=pkgincludedir)
-		libdir=$(mysql_config --variable=pkglibdir)
+		incdir=$(mysql_config --variable=pkgincludedir || die)
+		libdir=$(mysql_config --variable=pkglibdir || die)
 		authopts+=" --enable-auth-module=mysql"
 		authopts+=" --enable-incdir=${incdir}"
 		authopts+=" --enable-libdir=${libdir}"
@@ -85,8 +109,16 @@ src_configure() {
 		authopts+=" --enable-valias"
 		authopts+=" --disable-mysql-replication"
 		authopts+=" --enable-mysql-limits"
+	elif use postgres; then
+		libdir=$(pg_config --libdir || die)
+		incdir=$(pg_config --pkgincludedir || die)
+		authopts+=" --enable-auth-module=pgsql"
+		authopts+=" --enable-incdir=${incdir}"
+		authopts+=" --enable-libdir=${libdir}"
+		authopts+=" --enable-sql-logging"
+		authopts+=" --enable-valias"
 	else
-		authopts="--enable-auth-module=cdb"
+		authopts+=" --enable-auth-module=cdb"
 	fi
 
 	econf ${authopts} \
@@ -118,8 +150,7 @@ src_configure() {
 src_install() {
 	vpopmail_set_homedir
 
-	# bug #277764
-	emake -j1 DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 	keepdir "${VPOP_HOME}"/domains
 
 	# install helper script for maildir conversion
@@ -127,22 +158,22 @@ src_install() {
 	dobin "${FILESDIR}"/vpopmail-Maildir-dotmaildir-fix.sh
 	into /usr
 
-	dodoc doc/AUTHORS ChangeLog doc/FAQ doc/INSTALL doc/README*
-	dohtml doc/doc_html/* doc/man_html/*
-	rm -rf "${D}/${VPOP_HOME}"/doc
+	mv doc/doc_html/ doc/man_html/ . || die
+	einstalldocs
+	rm -r "${D}/${VPOP_HOME}"/doc || die
 	dosym \
-		$(realpath --relative-to "${D}/${VPOP_HOME}"/ "${D}"/usr/share/doc/${PF}/) \
+		$(realpath --relative-to "${D}/${VPOP_HOME}"/ "${D}"/usr/share/doc/${PF}/ || die) \
 		"${VPOP_HOME}"/doc
 
 	# create /etc/vpopmail.conf
 	if use mysql; then
-		dodir /etc
-		mv "${D}${VPOP_HOME}"/etc/vpopmail.mysql "${D}"/etc/vpopmail.conf
+		insinto /etc
+		newins "${D}${VPOP_HOME}"/etc/vpopmail.mysql vpopmail.conf
 		dosym \
-			$(realpath --relative-to "${D}/${VPOP_HOME}"/etc/ "${D}"/etc/vpopmail.conf) \
+			$(realpath --relative-to "${D}/${VPOP_HOME}"/etc/ "${D}"/etc/vpopmail.conf || die) \
 			"${VPOP_HOME}"/etc/vpopmail.mysql
 
-		sed -e '12d' -i "${D}"/etc/vpopmail.conf
+		sed -e '12d' -i "${D}"/etc/vpopmail.conf || die
 		echo '# Read-only DB' >> "${D}"/etc/vpopmail.conf
 		echo 'localhost|0|vpopmail|secret|vpopmail' >> "${D}"/etc/vpopmail.conf
 		echo '# Write DB' >> "${D}"/etc/vpopmail.conf
@@ -156,14 +187,14 @@ src_install() {
 	insinto "${VPOP_HOME}"/etc
 	doins vusagec.conf
 	dosym "${VPOP_HOME}"/etc/vusagec.conf /etc/vusagec.conf
-	sed -i 's/Disable = False;/Disable = True;/g' "${D}${VPOP_HOME}"/etc/vusagec.conf
+	sed -i 's/Disable = False;/Disable = True;/g' "${D}${VPOP_HOME}"/etc/vusagec.conf || die
 
 	einfo "Installing env.d entry"
 	dodir /etc/env.d
 	doenvd "${FILESDIR}"/99vpopmail
 
 	einfo "Locking down vpopmail permissions"
-	fowners root:0 -R "${VPOP_HOME}"/{bin,etc,include}
+	fowners -R root:0 "${VPOP_HOME}"/{bin,etc,include}
 	fowners root:vpopmail "${VPOP_HOME}"/bin/vchkpw
 	fperms 4711 "${VPOP_HOME}"/bin/vchkpw
 }
@@ -190,8 +221,8 @@ pkg_postinst() {
 
 	# do this for good measure
 	if [[ -e /etc/vpopmail.conf ]]; then
-		chmod 640 /etc/vpopmail.conf
-		chown root:vpopmail /etc/vpopmail.conf
+		chmod 640 /etc/vpopmail.conf || die
+		chown root:vpopmail /etc/vpopmail.conf || die
 	fi
 
 	upgradewarning
@@ -222,17 +253,7 @@ upgradewarning() {
 	if use mysql; then
 		elog
 		elog "If you are upgrading from 5.4.17 or older, you have to fix your"
-		elog "MySQL tables:"
-		elog
-		elog 'ALTER TABLE `dir_control` CHANGE `domain` `domain` CHAR(96) NOT NULL;'
-		elog 'ALTER TABLE `ip_alias_map` CHANGE domain domain CHAR(96) NOT NULL;'
-		elog 'ALTER TABLE `lastauth` CHANGE domain domain CHAR(96) NOT NULL;'
-		elog 'ALTER TABLE `valias` CHANGE domain domain CHAR(96) NOT NULL;'
-		elog 'ALTER TABLE `vlog` CHANGE domain domain CHAR(96) NOT NULL;'
-		elog 'ALTER TABLE `vpopmail` CHANGE domain domain CHAR(96) NOT NULL;'
-		elog 'ALTER TABLE `limits` CHANGE domain domain CHAR(96) NOT NULL,'
-		elog '    ADD `disable_spamassassin` TINYINT(1) DEFAULT '0' NOT NULL AFTER `disable_smtp`,'
-		elog '    ADD `delete_spam` TINYINT(1) DEFAULT '0' NOT NULL AFTER `disable_spamassassin`;'
+		elog "MySQL tables, please see the UPGRADE file in the documentation!"
 		elog
 	fi
 
