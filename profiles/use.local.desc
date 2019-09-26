@@ -6648,6 +6648,7 @@ net-misc/mosh:mosh-hardening - Enable compiler and linker options to frustrate m
 net-misc/mosh:server - Build network server
 net-misc/mosh:ufw - Install net-firewall/ufw rule set
 net-misc/mosh:utempter - Include libutempter support
+net-misc/mrouted:rsrr - Enable Routing Support for Resource Reservations, for RSVP
 net-misc/mulk:checksum - Enable checksum verification for Metalink from dev-libs/openssl
 net-misc/mulk:metalink - Enable support for media-libs/libmetalink
 net-misc/ncp:diet - Compile against dev-libs/dietlibc
