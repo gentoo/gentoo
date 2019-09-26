@@ -15,7 +15,10 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="test"
 
-DEPEND="dev-libs/aws-c-common"
+DEPEND="
+	dev-libs/aws-c-common
+	dev-libs/aws-checksums
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-add_missing_cmake_install_prefix.patch
