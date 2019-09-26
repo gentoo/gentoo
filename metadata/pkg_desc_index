@@ -4664,7 +4664,7 @@ dev-lang/orc 0.4.28-r1 0.4.29: The Oil Runtime Compiler, a just-in-time compiler
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.24.3-r1 5.24.4 5.26.2 5.28.2-r1 5.28.9999 5.30.0: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.40-r6 7.1.31 7.1.32 7.2.21 7.2.22 7.3.8 7.3.9 7.4.0_rc1 7.4.0_rc2: The PHP language runtime engine
+dev-lang/php 5.6.40-r6 7.1.31 7.1.32 7.2.21 7.2.22 7.3.8 7.3.9 7.3.10 7.4.0_rc1 7.4.0_rc2: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.15 2.7.16 3.5.5 3.5.7 3.6.5 3.6.8 3.6.9 3.7.2 3.7.3 3.7.4-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
@@ -5010,7 +5010,7 @@ dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing 
 dev-libs/libpwquality 1.4.0 1.4.1: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 3.3.1: A Qt implementation of XDG standards
 dev-libs/libratbag 0.9: Library to configure gaming mice
-dev-libs/librdkafka 0.11.5 0.11.6 1.0.0-r1 1.0.1 1.1.0: Apache Kafka C/C++ client library
+dev-libs/librdkafka 0.11.5 0.11.6 1.0.0-r1 1.0.1 1.1.0 1.2.0: Apache Kafka C/C++ client library
 dev-libs/librelp 1.2.18 1.3.0 1.4.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1 2.9.5 2.10.0: Generic library for reporting software bugs
@@ -5116,7 +5116,7 @@ dev-libs/nsync 1.20.1: A C library that exports various synchronization primitiv
 dev-libs/ntl 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.2.11 2.2.12 2.2.12-r1: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/onigmo 6.1.3: Onigmo is a regular expressions library forked from Oniguruma
-dev-libs/oniguruma 6.9.3: Regular expression library for different character encodings
+dev-libs/oniguruma 6.9.3 6.9.3-r1: Regular expression library for different character encodings
 dev-libs/opencl-clang 8.0.0 8.0.1: OpenCL-oriented thin wrapper library around clang
 dev-libs/opencryptoki 3.4.1 3.6.1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
@@ -13476,9 +13476,9 @@ media-libs/osl 1.8.12 1.9.6 1.9.9 1.10.5: Advanced shading language for producti
 media-libs/oyranos 0.9.6-r1 9999: Colour management system allowing to share settings across apps and services
 media-libs/partio 1.1.0_p20170829 1.5.4 9999: Library for particle IO and manipulation
 media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
-media-libs/phonon 4.10.2 4.11.0: KDE multimedia abstraction library
+media-libs/phonon 4.10.2 4.11.1: KDE multimedia abstraction library
 media-libs/phonon-gstreamer 4.9.0-r3 4.10.0: GStreamer backend for the Phonon multimedia library
-media-libs/phonon-vlc 0.10.2 0.11.0: VLC backend for the Phonon multimedia library
+media-libs/phonon-vlc 0.10.2 0.11.1: VLC backend for the Phonon multimedia library
 media-libs/plib 1.8.5-r1 1.8.5-r2: multimedia library used by many games
 media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
@@ -15203,7 +15203,7 @@ net-libs/shairplay 0_pre20170118 0_pre20180824 0_pre20180824-r1 9999: Apple airp
 net-libs/signon-oauth2 0.24: OAuth2 plugin for Signon daemon
 net-libs/signon-ui 0.15_p20171022: Online accounts signon UI
 net-libs/signond 8.59-r1 8.60: Signon daemon for libaccounts-glib
-net-libs/socket_wrapper 1.1.6 1.1.7 1.1.9 1.2.1: A library passing all socket communications through unix sockets
+net-libs/socket_wrapper 1.1.6 1.1.7 1.1.9 1.2.1 1.2.3: A library passing all socket communications through unix sockets
 net-libs/sofia-sip 1.12.11: RFC3261 compliant SIP User-Agent library
 net-libs/srt 1.3.2 9999: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/stem 1.5.4 1.6.0 1.7.0 1.7.1: Stem is a Python controller library for Tor
@@ -15813,7 +15813,7 @@ net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, p
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r1: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.6.11-r2 1.6.14 1.7.10 1.7.11 1.8.9 1.8.13 1.8.20 1.8.21 1.9.10 1.9.9999 2.0.4 2.0.5 2.0.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.6.11-r2 1.6.14 1.7.10 1.7.11 1.8.9 1.8.13 1.8.20 1.8.21 1.9.10 1.9.9999 2.0.6 2.0.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/http-replicator 4.0_alpha2-r7: Proxy cache for Gentoo packages
@@ -18111,7 +18111,7 @@ sys-libs/ncurses 5.9-r101 6.1_p20181020 6.1_p20190609: console display library
 sys-libs/netbsd-csu 7.1 9.0_beta: crtbegin.o/crtend.o from NetBSD CSU for GCC-free toolchain
 sys-libs/newlib 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 2.4.0 2.5.0 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
-sys-libs/nss_wrapper 1.1.3 1.1.5: A wrapper for the user, group and hosts NSS API
+sys-libs/nss_wrapper 1.1.3 1.1.5 1.1.6: A wrapper for the user, group and hosts NSS API
 sys-libs/obstack-standalone 1.1: A standalone library to implement GNU libc's obstack.
 sys-libs/openipmi 2.0.22 2.0.26 2.0.27 2.0.27-r1: Library interface to IPMI
 sys-libs/pam 1.2.1-r2 1.3.0-r2 1.3.1-r1: Linux-PAM (Pluggable Authentication Modules)
@@ -18130,7 +18130,7 @@ sys-libs/tdb 1.3.13 1.3.16 1.3.18 1.4.0 1.4.2: A simple database API
 sys-libs/tevent 0.9.28 0.9.31-r1 0.9.37 0.9.38 0.9.39 0.10.0: Samba tevent library
 sys-libs/timezone-data 2018i 2019a 2019b-r1 2019b-r2: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc-ng 1.0.26 1.0.30-r1 1.0.31 9999: C library for developing embedded Linux systems
-sys-libs/uid_wrapper 1.2.1 1.2.4: A wrapper to fake privilege separation
+sys-libs/uid_wrapper 1.2.1 1.2.4 1.2.7: A wrapper to fake privilege separation
 sys-libs/zlib 1.2.11-r2: Standard (de)compression library
 sys-power/acpi 1.7-r1: Displays information about ACPI devices
 sys-power/acpi_call 1.1.0 1.1.0-r1 1.1.0-r2 3.17 9999: A kernel module that enables you to call ACPI methods
@@ -18188,7 +18188,7 @@ sys-process/latencytop 0.5 0.5-r1: tool for identifying where in the system late
 sys-process/lsof 4.91 4.93.2-r1: Lists open files for running Unix processes
 sys-process/memwatch 0.1.0 0.2.0 0.2.1 0.3.0 0.3.0-r1 0.3.1 0.3.2 0.3.3: Interactive memory viewer
 sys-process/minit 0.10-r1: a small yet feature-complete init
-sys-process/nmon 16g 16i 16j: Nigel's performance MONitor for CPU, memory, network, disks, etc...
+sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1 0.5-r2 0.5-r3 9999: The NUMA daemon that manages application locality
 sys-process/parallel 20190722 20190822: A shell tool for executing jobs in parallel locally or on remote machines
@@ -18574,8 +18574,8 @@ www-client/midori 7.0 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2: a free, open source web browser
 www-client/opera 63.0.3368.94: A fast and secure web browser
-www-client/opera-beta 64.0.3417.8 64.0.3417.11 64.0.3417.19: A fast and secure web browser
-www-client/opera-developer 65.0.3437.0 65.0.3445.0 65.0.3450.0: A fast and secure web browser
+www-client/opera-beta 64.0.3417.19 64.0.3417.32: A fast and secure web browser
+www-client/opera-developer 65.0.3450.0 65.0.3454.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 2.1.1 2.1.1-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
@@ -19495,7 +19495,7 @@ x11-themes/oxygen-gtk 1.4.1-r1 1.4.6-r1: Official GTK+:2 port of KDE's Oxygen wi
 x11-themes/pearlgrey-xcursors 1.0: A simple crispy white-grey xcursor theme
 x11-themes/pidgin-penguins-smileys 1.0: Penguins pidgin smiley theme
 x11-themes/pulse-glass 20100616: The Pulse Glass x11 mouse cursor theme
-x11-themes/qtcurve 1.9.0 1.9.0-r1 9999: Widget styles for Qt and GTK2
+x11-themes/qtcurve 1.9.0 1.9.0-r1 1.9.1 9999: Widget styles for Qt and GTK2
 x11-themes/redhat-artwork 5.0.8-r4: RedHat's Bluecurve theme for GTK2, KDE, GDM, Metacity and Nautilus
 x11-themes/sawfish-themes 0.0.1-r3: Some nice themes for Sawfish
 x11-themes/shiki-colors 4.6: Mixes the elegance of a dark theme with the usability of a light theme
