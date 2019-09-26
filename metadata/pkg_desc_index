@@ -12586,7 +12586,7 @@ mail-client/kube 0.7.0: A mail client by KDE
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20160123: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
-mail-client/mutt 1.10.1 1.11.3 1.11.4 1.12.0 1.12.1: A small but very powerful text-based mail client
+mail-client/mutt 1.10.1 1.11.4 1.12.1 1.12.2: A small but very powerful text-based mail client
 mail-client/neomutt 20180223 20180323 20180512 20180622 20180716 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
