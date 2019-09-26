@@ -13,7 +13,7 @@ SRC_URI="https://github.com/elementary/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm x86"
 # FIXME: Figure out issues with enabling doc.
 # See https://github.com/gentoo/gentoo/pull/12690#issuecomment-525027164
 IUSE="test"
