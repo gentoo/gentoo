@@ -1,0 +1,13 @@
+https://bugs.php.net/bug.php?id=78559
+https://github.com/kkos/oniguruma/commit/d3e402928b6eb3327f8f7d59a9edfa622fec557b
+
+--- a/src/regexec.c
++++ b/src/regexec.c
+@@ -4196,6 +4196,7 @@ str_lower_case_match(OnigEncoding enc, int case_fold_flag,
+     lowlen = ONIGENC_MBC_CASE_FOLD(enc, case_fold_flag, &p, end, lowbuf);
+     q = lowbuf;
+     while (lowlen > 0) {
++      if (t >= tend)    return 0;
+       if (*t++ != *q++) return 0;
+       lowlen--;
+     }
