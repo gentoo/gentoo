@@ -4674,8 +4674,8 @@ dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111 3_pre20140304: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.4.6 2.4.7 2.5.5 2.5.6 2.6.2 2.6.3 2.6.4: An object-oriented scripting language
-dev-lang/rust 1.34.2 1.35.0 1.36.0 1.37.0: Systems programming language from Mozilla
-dev-lang/rust-bin 1.34.2 1.35.0 1.36.0 1.37.0: Systems programming language from Mozilla
+dev-lang/rust 1.34.2 1.35.0 1.36.0 1.37.0 1.38.0: Systems programming language from Mozilla
+dev-lang/rust-bin 1.34.2 1.35.0 1.36.0 1.37.0 1.38.0: Systems programming language from Mozilla
 dev-lang/sassc 3.5.0 3.6.0: A libsass command line driver
 dev-lang/scala 2.12.4: The Scala Programming Language
 dev-lang/scala-bin 2.12.4: The Scala Programming Language
@@ -18215,7 +18215,7 @@ virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
 virtual/awk 0 1: Virtual for awk implementation
 virtual/bitcoin-leveldb 0-r2: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
 virtual/blas 1.0 3.6 3.7 3.8: Virtual for FORTRAN 77 BLAS implementation
-virtual/cargo 1.34.2 1.35.0 1.36.0 1.37.0: Package manager for Rust
+virtual/cargo 1.34.2 1.35.0 1.36.0 1.37.0 1.38.0: Package manager for Rust
 virtual/cblas 1.0 3.6 3.7 3.8: Virtual for BLAS C implementation
 virtual/cdrtools 0: Virtual for command-line recorders cdrtools and cdrkit
 virtual/checkpassword 0: Virtual for checkpassword compatible applications
@@ -18397,7 +18397,7 @@ virtual/qmail 1.03: Virtual for qmail
 virtual/resolvconf 1: Virtual to select between different resolvconf providers
 virtual/ruby-ssl 10 11: Virtual ebuild for the Ruby OpenSSL bindings
 virtual/rubygems 14 15: Virtual ebuild for rubygems
-virtual/rust 1.34.2 1.35.0 1.36.0 1.37.0: Virtual for Rust language compiler
+virtual/rust 1.34.2 1.35.0 1.36.0 1.37.0 1.38.0: Virtual for Rust language compiler
 virtual/service-manager 0 1: Virtual for various service managers
 virtual/shadow 0: Virtual for user account management utilities
 virtual/skkserv 0: Virtual for SKK server
