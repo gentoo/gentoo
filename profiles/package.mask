@@ -1101,12 +1101,6 @@ dev-embedded/scratchbox-devkit-perl
 dev-embedded/scratchbox-devkit-qemu
 dev-embedded/scratchbox-devkit-svn
 
-# Michał Górny <mgorny@gentoo.org> (2019-08-27)
-# Unmaintained.  No release since 2008.  Is reported to wrongly reject
-# 'pretty much all mails', also reported build failure.
-# Removal in 30 days.  Bug #519668.
-mail-filter/sid-milter
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.24
