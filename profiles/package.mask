@@ -1107,12 +1107,6 @@ dev-embedded/scratchbox-devkit-svn
 # Removal in 30 days.  Bug #519668.
 mail-filter/sid-milter
 
-# Michał Górny <mgorny@gentoo.org> (2019-08-27)
-# Fails to build against openssl-1.1.  Not touched by Gentoo maintainer
-# who is also upstream since 2016, and the problem has been reported
-# in Jan 2019.  Removal in 30 days.  Bug #674800.
-app-crypt/af_alg
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.24
