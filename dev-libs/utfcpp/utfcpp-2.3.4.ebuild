@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/utfcpp/utf8_v${PV//./_}.zip"
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
