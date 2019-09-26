@@ -40,6 +40,7 @@ RESTRICT=test
 S="${WORKDIR}/${P/_/-}"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-3.5-pool-vendor-gentoo.patch
 	"${FILESDIR}"/${PN}-3.5-systemd-gentoo.patch
 )
 
