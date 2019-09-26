@@ -16,7 +16,15 @@ IUSE="static-libs"
 
 BDEPEND="virtual/pkgconfig[${MULTILIB_USEDEP}]"
 
+PATCHES=( "${FILESDIR}"/config.h.patch )
 DOCS=( AUTHORS NEWS README ChangeLog THANKS )
+
+src_prepare() {
+	default
+
+	# Prevent explosive doc rebuild due to patch.
+	find -type f -exec touch -r doc/c2man.stamp {} + || die
+}
 
 multilib_src_configure() {
 	local myeconfargs=(

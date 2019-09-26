@@ -1,0 +1,228 @@
+From b534ab2642f694c3106d5bc8d0a8beae60bf60d3 Mon Sep 17 00:00:00 2001
+From: Dov Grobgeld <dov.grobgeld@gmail.com>
+Date: Sat, 18 Aug 2018 20:37:22 +0300
+Subject: [PATCH] Removed HAVE_CONFIG_H from public API
+
+---
+ bin/fribidi-benchmark.c          | 5 +++++
+ bin/fribidi-main.c               | 5 +++++
+ gen.tab/gen-arabic-shaping-tab.c | 4 ++++
+ gen.tab/gen-bidi-type-tab.c      | 4 ++++
+ gen.tab/gen-brackets-tab.c       | 4 ++++
+ gen.tab/gen-brackets-type-tab.c  | 4 ++++
+ gen.tab/gen-joining-type-tab.c   | 4 ++++
+ gen.tab/gen-mirroring-tab.c      | 4 ++++
+ gen.tab/gen-unicode-version.c    | 4 ++++
+ lib/bidi-types.h                 | 2 +-
+ lib/fribidi-arabic.c             | 4 ++++
+ lib/fribidi-types.h              | 4 ----
+ lib/joining-types.h              | 2 +-
+ lib/run.h                        | 2 +-
+ 14 files changed, 45 insertions(+), 7 deletions(-)
+
+diff --git a/bin/fribidi-benchmark.c b/bin/fribidi-benchmark.c
+index e5fc9c0..07ac336 100644
+--- a/bin/fribidi-benchmark.c
++++ b/bin/fribidi-benchmark.c
+@@ -33,6 +33,11 @@
+ #include <fribidi-deprecated.h>
+ 
+ #include <stdio.h>
++
++#ifdef HAVE_CONFIG_H
++# include <config.h>
++#endif
++
+ #ifdef STDC_HEADERS
+ # include <stdlib.h>
+ # include <stddef.h>
+diff --git a/bin/fribidi-main.c b/bin/fribidi-main.c
+index cd359a9..33e1630 100644
+--- a/bin/fribidi-main.c
++++ b/bin/fribidi-main.c
+@@ -33,6 +33,11 @@
+ #include <fribidi-deprecated.h>
+ 
+ #include <stdio.h>
++
++#ifdef HAVE_CONFIG_H
++# include <config.h>
++#endif
++
+ #ifdef STDC_HEADERS
+ # include <stdlib.h>
+ # include <stddef.h>
+diff --git a/gen.tab/gen-arabic-shaping-tab.c b/gen.tab/gen-arabic-shaping-tab.c
+index e613768..369501c 100644
+--- a/gen.tab/gen-arabic-shaping-tab.c
++++ b/gen.tab/gen-arabic-shaping-tab.c
+@@ -30,6 +30,10 @@
+ #include <fribidi-unicode.h>
+ 
+ #include <stdio.h>
++#ifdef HAVE_CONFIG_H
++# include <config.h>
++#endif
++
+ #ifdef STDC_HEADERS
+ # include <stdlib.h>
+ # include <stddef.h>
+diff --git a/gen.tab/gen-bidi-type-tab.c b/gen.tab/gen-bidi-type-tab.c
+index a0a61ef..05b1d16 100644
+--- a/gen.tab/gen-bidi-type-tab.c
++++ b/gen.tab/gen-bidi-type-tab.c
+@@ -30,6 +30,10 @@
+ #include <fribidi-unicode.h>
+ 
+ #include <stdio.h>
++#ifdef HAVE_CONFIG_H
++# include <config.h>
++#endif
++
+ #ifdef STDC_HEADERS
+ # include <stdlib.h>
+ # include <stddef.h>
+diff --git a/gen.tab/gen-brackets-tab.c b/gen.tab/gen-brackets-tab.c
+index 8c1f1df..cd99e01 100644
+--- a/gen.tab/gen-brackets-tab.c
++++ b/gen.tab/gen-brackets-tab.c
+@@ -32,6 +32,10 @@
+ #include <fribidi-unicode.h>
+ 
+ #include <stdio.h>
++#ifdef HAVE_CONFIG_H
++# include <config.h>
++#endif
++
+ #ifdef STDC_HEADERS
+ # include <stdlib.h>
+ # include <stddef.h>
+diff --git a/gen.tab/gen-brackets-type-tab.c b/gen.tab/gen-brackets-type-tab.c
+index 221db07..9ec60cc 100644
+--- a/gen.tab/gen-brackets-type-tab.c
++++ b/gen.tab/gen-brackets-type-tab.c
+@@ -32,6 +32,10 @@
+ #include <fribidi-unicode.h>
+ 
+ #include <stdio.h>
++#ifdef HAVE_CONFIG_H
++# include <config.h>
++#endif
++
+ #ifdef STDC_HEADERS
+ # include <stdlib.h>
+ # include <stddef.h>
+diff --git a/gen.tab/gen-joining-type-tab.c b/gen.tab/gen-joining-type-tab.c
+index 07c0953..29ab3ed 100644
+--- a/gen.tab/gen-joining-type-tab.c
++++ b/gen.tab/gen-joining-type-tab.c
+@@ -30,6 +30,10 @@
+ #include <fribidi-unicode.h>
+ 
+ #include <stdio.h>
++#ifdef HAVE_CONFIG_H
++# include <config.h>
++#endif
++
+ #ifdef STDC_HEADERS
+ # include <stdlib.h>
+ # include <stddef.h>
+diff --git a/gen.tab/gen-mirroring-tab.c b/gen.tab/gen-mirroring-tab.c
+index 21d33cf..e19be91 100644
+--- a/gen.tab/gen-mirroring-tab.c
++++ b/gen.tab/gen-mirroring-tab.c
+@@ -30,6 +30,10 @@
+ #include <fribidi-unicode.h>
+ 
+ #include <stdio.h>
++#ifdef HAVE_CONFIG_H
++# include <config.h>
++#endif
++
+ #ifdef STDC_HEADERS
+ # include <stdlib.h>
+ # include <stddef.h>
+diff --git a/gen.tab/gen-unicode-version.c b/gen.tab/gen-unicode-version.c
+index 4291551..35306ca 100644
+--- a/gen.tab/gen-unicode-version.c
++++ b/gen.tab/gen-unicode-version.c
+@@ -28,6 +28,10 @@
+ #include <common.h>
+ 
+ #include <stdio.h>
++#ifdef HAVE_CONFIG_H
++# include <config.h>
++#endif
++
+ #ifdef STDC_HEADERS
+ # include <stdlib.h>
+ # include <stddef.h>
+diff --git a/lib/bidi-types.h b/lib/bidi-types.h
+index 385ef05..86f3d02 100644
+--- a/lib/bidi-types.h
++++ b/lib/bidi-types.h
+@@ -27,7 +27,7 @@
+ #ifndef _BIDI_TYPES_H
+ #define _BIDI_TYPES_H
+ 
+-#include "common.h"
++#include "fribidi-common.h"
+ 
+ #include <fribidi-types.h>
+ #include <fribidi-bidi-types.h>
+diff --git a/lib/fribidi-arabic.c b/lib/fribidi-arabic.c
+index dbfdc09..e12074c 100644
+--- a/lib/fribidi-arabic.c
++++ b/lib/fribidi-arabic.c
+@@ -27,6 +27,10 @@
+ 
+ #include "common.h"
+ 
++#ifdef HAVE_CONFIG_H
++# include <config.h>
++#endif
++
+ #ifdef HAVE_STDLIB_H
+ # include <stdlib.h>
+ #endif
+diff --git a/lib/fribidi-types.h b/lib/fribidi-types.h
+index 9f1746f..90238b4 100644
+--- a/lib/fribidi-types.h
++++ b/lib/fribidi-types.h
+@@ -27,10 +27,6 @@
+ #ifndef _FRIBIDI_TYPES_H
+ #define _FRIBIDI_TYPES_H
+ 
+-#ifdef HAVE_CONFIG_H
+-# include <config.h>
+-#endif
+-
+ #include "fribidi-common.h"
+ 
+ #include "fribidi-begindecls.h"
+diff --git a/lib/joining-types.h b/lib/joining-types.h
+index 94b9fe3..6e11fa1 100644
+--- a/lib/joining-types.h
++++ b/lib/joining-types.h
+@@ -27,7 +27,7 @@
+ #ifndef _JOINING_TYPES_H
+ #define _JOINING_TYPES_H
+ 
+-#include "common.h"
++#include "fribidi-common.h"
+ 
+ #include <fribidi-types.h>
+ #include <fribidi-joining-types.h>
+diff --git a/lib/run.h b/lib/run.h
+index 8c4e259..44ddfec 100644
+--- a/lib/run.h
++++ b/lib/run.h
+@@ -29,7 +29,7 @@
+ #ifndef _RUN_H
+ #define _RUN_H
+ 
+-#include "common.h"
++#include "fribidi-common.h"
+ 
+ #include <fribidi-common.h>
+ 
