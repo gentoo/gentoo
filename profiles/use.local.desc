@@ -1665,7 +1665,7 @@ dev-haskell/distributive:lib-werror - Compile with the ghc -Werror option
 dev-haskell/encoding:systemencoding - Provide the getSystemEncoding action to query the locale.
 dev-haskell/entropy:halvm - Build for the HaLVM.
 dev-haskell/filestore:maxcount - Make use of a recent (>= 2.3.0) Darcs feature which vastly improves the performance of 'latest'. You should disable this flag if you plan to use gitit with an older version of Darcs, or 'latest' will raise an error.
-dev-haskell/glib:closure_signals - Use the the GClosure-based signals implementation.
+dev-haskell/glib:closure-signals - Use the the GClosure-based signals implementation.
 dev-haskell/gtk:deprecated - Include definitions in this library that are considered obsolete.
 dev-haskell/gtk:fmode-binary - Set the default file translation mode for file I/O operations to _O_BINARY.
 dev-haskell/gtk:gio - Depend on GIO package, thereby enabling certain features.
@@ -1730,7 +1730,7 @@ dev-haskell/monad-control:instancest - If enabled this package will export Monad
 dev-haskell/monad-logger:template-haskell - Enable Template Haskell support.
 dev-haskell/monad-par:chaselev - Use Chase-Lev Deques for higher-perf work-stealing.
 dev-haskell/nats:hashable - You can disable the use of the `hashable` package using USE=-hashable. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users. If set we will not supply an instance of `Hashable`.
-dev-haskell/network-data:small_base - Build the split-up base package.
+dev-haskell/network-data:small-base - Build the split-up base package.
 dev-haskell/pandoc-citeproc:bibutils - use Chris Putnam's app-text/bibutils
 dev-haskell/pandoc-citeproc:embed_data_files - Embed locale files into the library (needed for windows packaging)
 dev-haskell/pandoc-citeproc:hexpat - use dev-haskell/hexpat instead of dev-haskell/xml for XML parsing
