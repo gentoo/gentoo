@@ -141,3 +141,13 @@ src_test() {
 	export GSETTINGS_BACKEND="dconf" # Tests require dconf and explicitly check for it (env_reset set it to "memory")
 	dbus-run-session meson test -C "${BUILD_DIR}" || die 'tests failed'
 }
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	gnome2_schemas_update
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	gnome2_schemas_update
+}
