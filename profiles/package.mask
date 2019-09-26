@@ -1122,12 +1122,6 @@ app-crypt/af_alg
 # Removal in 30 days.  Bug #628746.
 sci-libs/grib_api
 
-# Michał Górny <mgorny@gentoo.org> (2019-08-27)
-# Not touched since 2012.  Homepage gone, and no replacement found.
-# No reverse dependencies.
-# Removal in 30 days.  Bug #692796.
-dev-tcltk/tkTheme
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.24
