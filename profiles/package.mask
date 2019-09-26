@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2019-09-26)
+# Blocks its own dependency. Bug #695606.
+=x11-libs/libXvMC-1.0.12
+
 # Joonas Niilola <juippis@gentoo.org> (2019-09-24)
 # Upstream decided to deprecate this service, and app. Removal in 
 # ~30 days. Bug #695562
