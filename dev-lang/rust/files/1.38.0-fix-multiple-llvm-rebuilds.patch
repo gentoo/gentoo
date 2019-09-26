@@ -1,0 +1,75 @@
+From 53fe76479aab03b1fbe5b7184f45484886f769b1 Mon Sep 17 00:00:00 2001
+From: Josh Stone <jistone@redhat.com>
+Date: Wed, 4 Sep 2019 16:02:31 -0700
+Subject: [PATCH] Assume non-git LLVM is fresh if the stamp file exists
+
+Rustbuild usually writes the LLVM submodule commit in a stamp file, so
+we can avoid rebuilding it unnecessarily. However, for builds from a
+source tarball (non-git), we were assuming a rebuild is always needed.
+This can cause a lot of extra work if any environment like `CFLAGS`
+changed between steps like build and install, which are often separate
+in distro builds.
+
+Now we also write an empty stamp file if the git commit is unknown, and
+its presence is trusted to indicate that no rebuild is needed. An info
+message reports that this is happening, along with the stamp file path
+that can be deleted to force a rebuild anyway.
+---
+ src/bootstrap/native.rs | 27 ++++++++++++++-------------
+ 1 file changed, 14 insertions(+), 13 deletions(-)
+
+diff --git a/src/bootstrap/native.rs b/src/bootstrap/native.rs
+index f02def3e1b05..7bf9ea2688f4 100644
+--- a/src/bootstrap/native.rs
++++ b/src/bootstrap/native.rs
+@@ -81,26 +81,29 @@ impl Step for Llvm {
+             (info, "src/llvm-project/llvm", builder.llvm_out(target), dir.join("bin"))
+         };
+ 
+-        if !llvm_info.is_git() {
+-            println!(
+-                "git could not determine the LLVM submodule commit hash. \
+-                Assuming that an LLVM build is necessary.",
+-            );
+-        }
+-
+         let build_llvm_config = llvm_config_ret_dir
+             .join(exe("llvm-config", &*builder.config.build));
+         let done_stamp = out_dir.join("llvm-finished-building");
+ 
+-        if let Some(llvm_commit) = llvm_info.sha() {
+-            if done_stamp.exists() {
++        if done_stamp.exists() {
++            if let Some(llvm_commit) = llvm_info.sha() {
+                 let done_contents = t!(fs::read(&done_stamp));
+ 
+                 // If LLVM was already built previously and the submodule's commit didn't change
+                 // from the previous build, then no action is required.
+                 if done_contents == llvm_commit.as_bytes() {
+-                    return build_llvm_config
++                    return build_llvm_config;
+                 }
++            } else {
++                builder.info(
++                    "Could not determine the LLVM submodule commit hash. \
++                     Assuming that an LLVM rebuild is not necessary.",
++                );
++                builder.info(&format!(
++                    "To force LLVM to rebuild, remove the file `{}`",
++                    done_stamp.display()
++                ));
++                return build_llvm_config;
+             }
+         }
+ 
+@@ -303,9 +306,7 @@ impl Step for Llvm {
+ 
+         cfg.build();
+ 
+-        if let Some(llvm_commit) = llvm_info.sha() {
+-            t!(fs::write(&done_stamp, llvm_commit));
+-        }
++        t!(fs::write(&done_stamp, llvm_info.sha().unwrap_or("")));
+ 
+         build_llvm_config
+     }
