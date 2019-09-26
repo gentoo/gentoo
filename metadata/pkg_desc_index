@@ -10624,7 +10624,7 @@ dev-util/bingrep 0.6.2: Binary file analysis tool
 dev-util/bitcoin-tx 0.16.3 0.17.1 0.18.0: Command-line Bitcoin transaction tool
 dev-util/bite 9999: bug, issue, and ticket extraction library and command line tool
 dev-util/bitrise 1.16.1 1.19.0 1.20.0 1.23.0 1.24.0: Run your Bitrise.io automations on any Mac or Linux machine
-dev-util/bless 0.6.0-r3 0.6.0-r4 0.6.2: GTK# Hex Editor
+dev-util/bless 0.6.0-r3 0.6.0-r4 0.6.2-r1: GTK# Hex Editor
 dev-util/bloaty 0_p20170420: A size profiler for binaries
 dev-util/bnfc 2.8 2.8.1: A compiler front-end generator
 dev-util/boost-build 1.65.0 1.70.0 1.71.0: A system for large project software construction, simple to use and powerful
