@@ -31,3 +31,8 @@ src_install() {
 	dobin ${PN}
 	doman ${PN}.1
 }
+
+pkg_postinst() {
+	elog "Some features of inxi depend on additional packages. Get a full list with"
+	elog "inxi --recommends"
+}
