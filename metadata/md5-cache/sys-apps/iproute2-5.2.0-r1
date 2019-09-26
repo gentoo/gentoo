@@ -5,10 +5,10 @@ DESCRIPTION=kernel routing and traffic control utilities
 EAPI=7
 HOMEPAGE=https://wiki.linuxfoundation.org/networking/iproute2
 IUSE=atm berkdb caps elf +iptables ipv6 minimal selinux
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sh ~sparc ~x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sh ~sparc x86
 LICENSE=GPL-2
 RDEPEND=!net-misc/arpd dev-libs/libbsd !minimal? ( net-libs/libmnl ) caps? ( sys-libs/libcap ) elf? ( virtual/libelf ) iptables? ( >=net-firewall/iptables-1.4.20:= ) berkdb? ( sys-libs/db:= ) atm? ( net-dialup/linux-atm ) selinux? ( sys-libs/libselinux )
 SLOT=0
 SRC_URI=mirror://kernel/linux/utils/net/iproute2/iproute2-5.2.0.tar.xz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=e490cdb78cc29c1201c461e2ea367db9
+_md5_=e6d13c2dbb6d2762e055a23fe50b03c8
