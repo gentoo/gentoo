@@ -4,9 +4,9 @@ DEPEND=sys-fs/fuse:0= sys-libs/zlib dev-libs/glib:2
 DESCRIPTION=Fuse module to mount ISO9660
 EAPI=7
 HOMEPAGE=https://sourceforge.net/projects/fuseiso
-KEYWORDS=amd64 ~ppc64 x86
+KEYWORDS=amd64 ~ppc ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=sys-fs/fuse:0= sys-libs/zlib dev-libs/glib:2
 SLOT=0
 SRC_URI=http://superb-dca2.dl.sourceforge.net/project/fuseiso/fuseiso/20070708/fuseiso-20070708.tar.bz2
-_md5_=dcfb8ebeeaa92d86823c4322cd1c8bab
+_md5_=22e86e62472da150269d5df20c3646b1

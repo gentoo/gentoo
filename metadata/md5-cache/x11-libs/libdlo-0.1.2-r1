@@ -5,10 +5,10 @@ DESCRIPTION=A fully open source driver which supports all DisplayLink devices
 EAPI=7
 HOMEPAGE=https://libdlo.freedesktop.org/wiki/
 IUSE=static-libs test-program
-KEYWORDS=amd64 ~ppc x86
+KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=virtual/libusb:0=
 SLOT=0
 SRC_URI=https://people.freedesktop.org/~berniet/libdlo-0.1.2.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=7303902b4b2d423723bb3c78cb31fdc5
+_md5_=f92a39abc97a99988c8daa69de492bd0

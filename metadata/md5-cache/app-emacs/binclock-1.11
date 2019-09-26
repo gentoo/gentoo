@@ -3,10 +3,10 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Display the current time using a binary clock
 EAPI=7
 HOMEPAGE=http://www.davep.org/emacs/
-KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ppc ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/davep/binclock.el/archive/v1.11.tar.gz -> binclock-1.11.tar.gz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=8f04ab3f0d8b20437db0dabded846107
+_md5_=6e0d763dda1577b5faa06fe5c1107448
