@@ -17,7 +17,7 @@ IUSE="debug"
 
 RDEPEND="
 	>=dev-lang/mono-1.1.14
-	>=dev-dotnet/gtk-sharp-2.12.21
+	>=dev-dotnet/gtk-sharp-2.12.21:2
 "
 DEPEND="${RDEPEND}
 	app-text/rarian
