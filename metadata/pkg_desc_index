@@ -10080,7 +10080,7 @@ dev-ruby/parser 2.5.3.0 2.6.3.0 2.6.4.0 2.6.4.1: A production-ready Ruby parser 
 dev-ruby/parslet 1.8.2: A small PEG based parser library
 dev-ruby/pastel 0.7.2 0.7.3: Terminal strings styling with intuitive and clean API
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
-dev-ruby/path_expander 1.0.3 1.0.4 1.0.5: Pre-process CLI arguments expanding directories into their constituent files
+dev-ruby/path_expander 1.0.3 1.0.4 1.0.5 1.1.0: Pre-process CLI arguments expanding directories into their constituent files
 dev-ruby/pathutil 0.16.2: Like Pathname but a little less insane
 dev-ruby/patron 0.13.1-r1 0.13.3: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pcaprub 0.12.4 0.13.0: Libpcap bindings for ruby compat
@@ -10259,7 +10259,7 @@ dev-ruby/rubypants 0.7.0: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
 dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
-dev-ruby/rubyzip 1.2.2 1.2.3 1.2.4: A ruby library for reading and writing zip files
+dev-ruby/rubyzip 1.2.2 1.2.3 1.2.4 1.3.0 2.0.0: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.5: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sanitize 4.6.6 5.0.0 5.1.0: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.3 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
@@ -19594,7 +19594,7 @@ xfce-base/libxfce4util 4.13.2 4.13.5 4.14.0: A basic utility library for the Xfc
 xfce-base/thunar 1.6.16-r1 1.6.17 1.8.7 1.8.8 1.8.9: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.12.0-r2 4.13.5 4.14.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.12-r1 4.14-r1: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.12.2 4.13.6 4.13.7 4.14.0: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.12.2 4.14.0 4.14.1: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1-r2 4.13.3 4.13.4 4.14.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.12.4-r1 4.14.0 4.14.1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.1-r1 4.13.7 4.13.8 4.14.1: A configuration management system for Xfce
