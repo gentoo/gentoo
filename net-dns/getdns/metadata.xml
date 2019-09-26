@@ -11,8 +11,8 @@
 	</maintainer>
 	<use>
 		<flag name="stubby">Add Stubby DNS Privacy Deamon</flag>
-		<flag name="getdns_query">Add getdns_query tool</flag>
-		<flag name="getdns_server_mon">Add getdns_server_mon tool</flag>
+		<flag name="getdns-query">Add getdns_query tool</flag>
+		<flag name="getdns-server-mon">Add getdns_server_mon tool</flag>
 		<flag name="unbound">Enable <pkg>net-dns/unbound</pkg> libraries support</flag>
 		<flag name="libevent">Enable <pkg>dev-libs/libevent</pkg> support</flag>
 		<flag name="libev">Enable <pkg>dev-libs/libev</pkg> support</flag>
