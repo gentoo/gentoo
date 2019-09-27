@@ -38,7 +38,7 @@ LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
 KEYWORDS=""
 # -berkdb by default re bug 602682
-IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip gost gssapi
+IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip gssapi
 json ldap libressl lmdb mysql odbc postgres python selinux static-libs
 urandom xml +zlib"
 # sdb-ldap - patch broken
@@ -208,14 +208,6 @@ src_install() {
 	newinitd "${FILESDIR}"/named.init-r13 named
 	newconfd "${FILESDIR}"/named.confd-r7 named
 
-	if use gost; then
-		sed -e 's/^OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-0}$/OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-1}/' \
-			-i "${ED%/}/etc/init.d/named" || die
-	else
-		sed -e 's/^OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-1}$/OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-0}/' \
-			-i "${ED%/}/etc/init.d/named" || die
-	fi
-
 	newenvd "${FILESDIR}"/10bind.env 10bind
 
 	# Let's get rid of those tools and their manpages since they're provided by bind-tools
@@ -243,8 +235,8 @@ src_install() {
 		}
 		python_foreach_impl install_python_tools
 
-		python_replicate_script "${ED}/usr/sbin/dnssec-checkds"
-		python_replicate_script "${ED}/usr/sbin/dnssec-coverage"
+		python_replicate_script "${ED%/}/usr/sbin/dnssec-checkds"
+		python_replicate_script "${ED%/}/usr/sbin/dnssec-coverage"
 	fi
 
 	# bug 450406
@@ -338,13 +330,7 @@ pkg_config() {
 	mkdir -m 0755 -p ${CHROOT}/{dev,etc,var/log,run} || die
 	mkdir -m 0750 -p ${CHROOT}/etc/bind || die
 	mkdir -m 0770 -p ${CHROOT}/var/{bind,log/named} ${CHROOT}/run/named/ || die
-	# As of bind 9.8.0
-	if has_version net-dns/bind[gost]; then
-		mkdir -m 0755 -p ${CHROOT}/usr/$(get_libdir)/engines || die
-		if [ "$(get_libdir)" = "lib64" ]; then
-			ln -s lib64 ${CHROOT}/usr/lib || die
-		fi
-	fi
+
 	chown root:named \
 		${CHROOT} \
 		${CHROOT}/var/{bind,log/named} \
