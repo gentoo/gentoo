@@ -122,6 +122,7 @@ RDEPEND="
 			x11-libs/libXrender
 			virtual/opengl
 		)
+		wayland? ( x11-libs/libxkbcommon[X] )
 	)
 	xine? ( media-libs/xine-lib )
 	xpm? ( x11-libs/libXpm )
