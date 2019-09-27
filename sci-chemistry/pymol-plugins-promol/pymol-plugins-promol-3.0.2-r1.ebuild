@@ -22,7 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	virtual/python-pmw[${PYTHON_USEDEP}]
+	dev-python/pmw:py2[${PYTHON_USEDEP}]
 	sci-chemistry/pymol[${PYTHON_USEDEP}]"
 DEPEND=""
 
