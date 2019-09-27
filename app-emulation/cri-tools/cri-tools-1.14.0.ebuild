@@ -7,7 +7,7 @@ inherit golang-build golang-vcs-snapshot
 EGO_PN="github.com/kubernetes-sigs/cri-tools"
 MY_PV="v${PV/_beta/-beta.}"
 ARCHIVE_URI="https://${EGO_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="CLI and validation tools for Kubelet Container Runtime (CRI)"
 HOMEPAGE="https://github.com/kubernetes-sigs/cri-tools"
