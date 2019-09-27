@@ -1773,12 +1773,12 @@ dev-haskell/semigroups:transformers - provide instances for transformers package
 dev-haskell/semigroups:unordered-containers - You can disable the use of the `unordered-containers` package using USE=-unordered-containers. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/sendfile:portable - Explicitly enable portable sendfile support (implemented in Haskell)
 dev-haskell/sha:exe - Build a sha1 and a sha384 executable similar to 'md5sum'.
-dev-haskell/shakespeare:test_coffee - Render tests through coffeescript render function.
-dev-haskell/shakespeare:test_export - Test export.
-dev-haskell/shakespeare:test_roy - Render tests through roy render function.
-dev-haskell/shakespeare-js:test_coffee - Test coffee.
-dev-haskell/shakespeare-js:test_export - Test export.
-dev-haskell/shakespeare-js:test_roy - Test roy.
+dev-haskell/shakespeare:test-coffee - Render tests through coffeescript render function.
+dev-haskell/shakespeare:test-export - Test export.
+dev-haskell/shakespeare:test-roy - Render tests through roy render function.
+dev-haskell/shakespeare-js:test-coffee - Test coffee.
+dev-haskell/shakespeare-js:test-export - Test export.
+dev-haskell/shakespeare-js:test-roy - Test roy.
 dev-haskell/shelly:lifted - run the tests against Shelly.Lifted
 dev-haskell/shuffle:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/simple-sendfile:allow-bsd - Allow use of BSD sendfile (disable on GNU/kFreeBSD)
