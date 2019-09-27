@@ -20,6 +20,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.6.0-find-lld-includes.patch"
 	"${FILESDIR}/${PN}-2.6.0-dependencies.patch"
 	"${FILESDIR}/${PN}-2.6.0-unbundle-yaml-cpp.patch"
+	"${FILESDIR}/${PN}-2.7.0-llvm-interface-change.patch"
 )
 
 DESCRIPTION="Radeon Open Compute Code Object Manager"
