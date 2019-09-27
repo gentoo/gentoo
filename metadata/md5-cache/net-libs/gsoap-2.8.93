@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-libs/zlib gnutls? ( net-libs/gnutls ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl ) ) app-arch/unzip sys-devel/flex sys-devel/bison
+DESCRIPTION=A cross-platform open source C and C++ SDK for SOAP/XML Web services
+EAPI=7
+HOMEPAGE=http://gsoap2.sourceforge.net
+IUSE=doc debug examples ipv6 libressl gnutls +ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 gSOAP
+RDEPEND=sys-libs/zlib gnutls? ( net-libs/gnutls ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/gsoap2/gsoap_2.8.93.zip
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_md5_=2a31f2711763c04db15da240bf868b3d

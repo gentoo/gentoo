@@ -5064,7 +5064,7 @@ dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories S
 dev-libs/libxdiff 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.4.0-r1: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.9 2.9.9-r1: XML C parser and toolkit
-dev-libs/libxmlb 0.1.8 0.1.10 0.1.11: Library to help create and query binary XML blobs
+dev-libs/libxmlb 0.1.8 0.1.10 0.1.11 0.1.12: Library to help create and query binary XML blobs
 dev-libs/libxslt 1.1.33-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.16 4.17: platform abstraction code for tucnak package
@@ -15041,7 +15041,7 @@ net-libs/gnutls 3.6.7 3.6.9: A TLS 1.2 and SSL 3.0 implementation for the GNU pr
 net-libs/google-cloud-cpp 0.2.0-r1 0.5.0 0.9.0 0.10.0: Google Cloud Client Library for C++
 net-libs/grpc 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1-r1 1.21.1-r1 1.22.1 1.23.0: Modern open source high performance RPC framework
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
-net-libs/gsoap 2.8.84 2.8.87 2.8.91: A cross-platform open source C and C++ SDK for SOAP/XML Web services
+net-libs/gsoap 2.8.84 2.8.87 2.8.91 2.8.93: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.3: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.9.0: VNC viewer widget for GTK
 net-libs/gupnp 1.0.3 1.0.4: An object-oriented framework for creating UPnP devs and control points
