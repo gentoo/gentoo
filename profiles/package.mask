@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-27)
+# The virtual is not really useful since all reverse dependencies
+# support only Python 2.7.  All its uses were replaced with direct
+# dependencies on dev-python/pmw.
+# Removal in 30 days.
+virtual/python-pmw
+
 # Ulrich Müller <ulm@gentoo.org> (2019-09-26)
 # Blocks its own dependency. Bug #695606.
 =x11-libs/libXvMC-1.0.12
