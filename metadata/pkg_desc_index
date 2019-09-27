@@ -3152,7 +3152,7 @@ dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.8.5 4.9.0.1: Web-based administration for MySQL database in PHP
 dev-db/plr 8.3.0.17: R language extension for postgresql database
 dev-db/postgis 2.4.6 2.4.7 2.4.8 2.5.1-r1 2.5.2 2.5.3 3.0.0_alpha4 9999: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.4.22 9.4.22-r1 9.4.23 9.4.24 9.5.17 9.5.17-r1 9.5.18 9.5.19 9.6.13 9.6.13-r1 9.6.14 9.6.15 10.9 10.10 11.4 11.5 12_beta3 12_beta4 9999: PostgreSQL RDBMS
+dev-db/postgresql 9.4.22 9.4.22-r1 9.4.23 9.4.24 9.5.17 9.5.17-r1 9.5.18 9.5.19 9.6.13 9.6.13-r1 9.6.14 9.6.15 10.9 10.10 11.4 11.5 12_beta4 12_rc1 9999: PostgreSQL RDBMS
 dev-db/pspg 1.6.5 1.6.8: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000 11.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
@@ -4074,7 +4074,7 @@ dev-java/ant-core 1.9.13-r2 1.10.5-r2: Java-based build tool similar to 'make' t
 dev-java/ant-eclipse-ecj 4.2.1 4.4.2 4.5.1 4.10: Ant Compiler Adapter for Eclipse Java Compiler
 dev-java/ant-ivy 1.4.1-r1 2.3.0-r2: Ivy is a free java based dependency manager
 dev-java/ant-jai 1.9.13 1.10.5: Apache Ant's optional tasks depending on sun-jai-bin
-dev-java/ant-javamail 1.9.13 1.10.5: Apache Ant's optional tasks depending on oracle-javamail
+dev-java/ant-javamail 1.9.13 1.10.5: Apache Ant's optional tasks depending on gnu-jaf-1
 dev-java/ant-jdepend 1.9.13 1.10.5: Apache Ant's optional tasks depending on jdepend
 dev-java/ant-jmf 1.9.13 1.10.5: Apache Ant's optional tasks for the Java Media Framework (JMF)
 dev-java/ant-jsch 1.9.13 1.10.5: Apache Ant's optional tasks depending on jsch
