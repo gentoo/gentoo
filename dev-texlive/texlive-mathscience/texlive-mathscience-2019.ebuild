@@ -17,7 +17,6 @@ IUSE=""
 DEPEND=">=dev-texlive/texlive-fontsrecommended-2019
 >=dev-texlive/texlive-latex-2019
 !<dev-texlive/texlive-latexextra-2017
-!dev-tex/SIunits
 !dev-texlive/texlive-mathextra
 !dev-texlive/texlive-science
 !=dev-texlive/texlive-latexextra-2017*
