@@ -1,5 +1,6 @@
 acct-group/adm 0: System group: adm
 acct-group/audio 0: System group: audio
+acct-group/bitcoin 0: A group for users with access to system-wide Bitcoin services
 acct-group/burp 0: Group for the app-backup/burp server
 acct-group/cdrom 0: System group: cdrom
 acct-group/dialout 0: System group: dialout
@@ -24,6 +25,7 @@ acct-group/mail 0: Mail program group
 acct-group/man 0: System group: man
 acct-group/messagebus 0: System group: messagebus
 acct-group/minecraft 0: A group for the Minecraft server
+acct-group/mosquitto 0: A group for the mosquitto MQTT broker
 acct-group/msmtpd 0: System group: msmtpd
 acct-group/murmur 0: System group: murmur
 acct-group/mysql 0: MySQL program group
@@ -63,6 +65,7 @@ acct-group/video 0: System group: video
 acct-group/vpopmail 0: System group: vpopmail
 acct-group/wheel 0: System group: wheel
 acct-user/alias 0: alias user for qmail mail delivery
+acct-user/bitcoin 0: System-wide Bitcoin services user
 acct-user/burp 0: User for the app-backup/burp server
 acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/elasticsearch 0: Elasticsearch program user
@@ -78,6 +81,7 @@ acct-user/mail 0: Mail program user
 acct-user/man 1: System user: man
 acct-user/messagebus 0: System user: messagebus
 acct-user/minecraft 0: A user for the Minecraft server
+acct-user/mosquitto 0: A user for the mosquitto MQTT broker
 acct-user/msmtpd 0: user for msmtp daemon
 acct-user/murmur 0: user for murmur daemon
 acct-user/mysql 0: MySQL program user
@@ -1999,7 +2003,7 @@ app-misc/lfm 2.3-r1: Last File Manager is a powerful file manager for the consol
 app-misc/linux-logo 5.11-r4: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/linuxspa 0.7.1-r2: Linux Serial Protocol Analyser
 app-misc/lirc 0.10.1 0.10.1-r1 0.10.1-r2: decode and send infra-red signals of many commonly used remote controls
-app-misc/livecd-tools 2.2 2.3 2.4 2.5 9999: Gentoo LiveCD tools for autoconfiguration of hardware
+app-misc/livecd-tools 2.5 2.6 9999: Gentoo LiveCD tools for autoconfiguration of hardware
 app-misc/lockfile-progs 0.1.17: Programs to safely lock/unlock files and mailboxes
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
 app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
@@ -2016,7 +2020,7 @@ app-misc/metromap 0.1.4-r1: Metromap is simple pygtk+2 programm for finding path
 app-misc/mime-types 9: Provides /etc/mime.types file
 app-misc/mkcert 1.4.0: A zero-config tool to make locally trusted development certificates
 app-misc/mmv 1.01b_p18 1.01b_p18-r1: Move/copy/append/link multiple files according to a set of wildcard patterns
-app-misc/mosquitto 1.5.6 1.5.8 1.6.2: An Open Source MQTT v3 Broker
+app-misc/mosquitto 1.5.6 1.5.8 1.6.2 1.6.7: An Open Source MQTT v3 Broker
 app-misc/mouseremote 0.90-r2: X10 MouseRemote
 app-misc/mswinurl_launcher 1.0: Launcher and desktop association for MS Windows *.URL (text/x-uri) files
 app-misc/mtail 1.1.1-r3 1.2.0: Tail workalike, that performs output colourising
@@ -18538,7 +18542,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.1 5.1.1 5.2 5.2.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.1: Web-based interactive data analytics notebook launcher
-www-client/chromium 77.0.3865.75 77.0.3865.90 78.0.3887.7: Open-source version of Google Chrome web browser
+www-client/chromium 77.0.3865.90 78.0.3887.7: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
