@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit golang-build golang-vcs-snapshot
+inherit golang-build golang-vcs-snapshot bash-completion-r1
 
 EGO_PN="github.com/kubernetes-sigs/cri-tools"
 MY_PV="v${PV/_beta/-beta.}"
@@ -21,9 +21,16 @@ RESTRICT="test"
 src_compile() {
 	GOPATH="${S}" go test -c -v -ldflags="-X ${EGO_PN}/pkg/version.Version=${MY_PV}" -o bin/critest ${EGO_PN}/cmd/critest || die
 	GOPATH="${S}" go build -v -ldflags="-X ${EGO_PN}/pkg/version.Version=${MY_PV}" -o bin/crictl ${EGO_PN}/cmd/crictl || die
+	bin/crictl completion bash > ${PN}.bash || die
+	bin/crictl completion zsh > ${PN}.zsh || die
 }
 
 src_install() {
 	dobin bin/*
+
+	newbashcomp ${PN}.bash ${PN}
+	insinto /usr/share/zsh/site-functions
+	newins ${PN}.zsh _${PN}
+
 	dodoc -r src/${EGO_PN}/{docs,{README,RELEASE,CHANGELOG,CONTRIBUTING}.md}
 }
