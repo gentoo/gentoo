@@ -19526,7 +19526,7 @@ x11-wm/cwm 5.6 9999: OpenBSD fork of calmwm, a clean and lightweight window mana
 x11-wm/dwm 6.1-r1 6.2 9999: a dynamic window manager for X11
 x11-wm/e16 1.0.19 1.0.20: Enlightenment Window Manager (E16)
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
-x11-wm/enlightenment 0.22.4-r1 0.23.0: Enlightenment window manager
+x11-wm/enlightenment 0.22.4-r1 0.23.0 0.23.1: Enlightenment window manager
 x11-wm/evilwm 1.0.1-r1 1.1.1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.7-r3 1.3.7-r4 9999: X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5-r3 2.6.8-r2: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
