@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit gnome2-utils
+inherit xdg-utils
 
 DESCRIPTION="Gargantuan Icon Theme"
 HOMEPAGE="https://www.gnome-look.org/content/show.php?content=24364"
@@ -25,6 +25,10 @@ src_install() {
 	doins -r *
 }
 
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
+}
