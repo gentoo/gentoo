@@ -645,7 +645,7 @@ app-crypt/gnupg-pkcs11-scd 0.9.2: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.10.0: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
-app-crypt/gpgme 1.13.0 1.13.1: GnuPG Made Easy is a library for making GnuPG easier to use
+app-crypt/gpgme 1.13.0 1.13.0-r1 1.13.1: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
 app-crypt/hashcat 4.1.0 4.2.0 4.2.1 5.0.0 5.1.0 9999: World's fastest and most advanced password recovery utility
@@ -4664,7 +4664,7 @@ dev-lang/orc 0.4.28-r1 0.4.29: The Oil Runtime Compiler, a just-in-time compiler
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.24.3-r1 5.24.4 5.26.2 5.28.2-r1 5.28.9999 5.30.0: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.40-r6 7.1.31 7.1.32 7.2.21 7.2.22 7.3.8 7.3.9 7.3.10 7.4.0_rc1 7.4.0_rc2: The PHP language runtime engine
+dev-lang/php 5.6.40-r6 7.1.31 7.1.32 7.2.21 7.2.22 7.2.23 7.3.8 7.3.9 7.3.10 7.4.0_rc1 7.4.0_rc2: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.15 2.7.16 3.5.5 3.5.7 3.6.5 3.6.8 3.6.9 3.7.2 3.7.3 3.7.4-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
