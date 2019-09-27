@@ -18002,9 +18002,9 @@ sys-fs/xwmfs 0.83: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.4: Zero's out all free space on a filesystem
-sys-fs/zfs 0.7.13 0.8.1 9999: Userland utilities for ZFS Linux kernel module
+sys-fs/zfs 0.7.13 0.8.1 0.8.2 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-auto-snapshot 1.2.4 9999: ZFS Automatic Snapshot Service for Linux
-sys-fs/zfs-kmod 0.7.13 0.8.1 9999: Linux ZFS kernel module for sys-fs/zfs
+sys-fs/zfs-kmod 0.7.13 0.8.1 0.8.2 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.127 4.14.128 4.14.129 4.14.130 4.14.131 4.14.132 4.14.133 4.19.52 4.19.53 4.19.55 4.19.56 4.19.57 4.19.58 4.19.59 5.1.11 5.1.12 5.1.14 5.1.15 5.1.16 5.1.17 5.1.18 5.2.0 5.2.1: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
 sys-kernel/ck-sources 4.9.120 4.9.123 4.9.124 4.9.126 4.9.128 4.9.130 4.9.132 4.9.135 4.9.137 4.14.63 4.14.66 4.14.67 4.14.69 4.14.71 4.14.73 4.14.75 4.14.78 4.14.81 4.18.5 4.18.7 4.18.9 4.18.11 4.18.13 4.18.16 4.18.19 4.19.2 5.1.7 5.2.3: Gentoo's genpatches for Linux 5.2, with Con Kolivas' MuQSS process scheduler.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers

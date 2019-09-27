@@ -3,10 +3,10 @@ DEFINED_PHASES=configure
 DESCRIPTION=Freetype 2 based TrueType font to TeX's PK format converter
 EAPI=7
 HOMEPAGE=http://tug.org/texlive/
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/kpathsea-6.2.1 media-libs/freetype:2 sys-libs/zlib !media-libs/freetype:1
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20190410-source.tar.xz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=a65e840f7dbeb6cf4ff4795ed7dd6865
+_md5_=52c504dc45d39ec7a511575ecda8a93e
