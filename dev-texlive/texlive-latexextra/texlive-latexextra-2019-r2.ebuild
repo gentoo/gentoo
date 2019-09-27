@@ -17,12 +17,6 @@ IUSE=""
 DEPEND=">=dev-texlive/texlive-latexrecommended-2019
 >=dev-texlive/texlive-pictures-2019
 >=dev-texlive/texlive-fontsrecommended-2014
-!dev-tex/achemso
-!dev-tex/prosper
-!dev-tex/ha-prosper
-!dev-tex/texpower
-!dev-tex/cdcover
-!dev-tex/ppower4
 !=dev-texlive/texlive-pstricks-2017*
 !=dev-texlive/texlive-mathscience-2017*
 dev-perl/Spreadsheet-ParseExcel
