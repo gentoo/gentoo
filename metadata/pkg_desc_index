@@ -10899,7 +10899,7 @@ dev-util/regexxer 0.10: An interactive tool for performing search and replace op
 dev-util/rej 0.16: A utility for solving diff/patch rejects
 dev-util/repo 1.12.37 1.13.2: Google tool for managing git, particularly multiple repos
 dev-util/reswrap 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
-dev-util/rocm-cmake 0.2 2.7.0 9999: Radeon Open Compute CMake Modules
+dev-util/rocm-cmake 0.2 2.7.0 2.8.0 9999: Radeon Open Compute CMake Modules
 dev-util/rocminfo 2.6.0 2.7.0 2.8.0 9999: ROCm Application for Reporting System Info
 dev-util/rosdep 0.13.0 0.14.0 0.15.0 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
@@ -15717,7 +15717,7 @@ net-p2p/bitcoind 0.16.3 0.17.1 0.18.0: Original Bitcoin crypto-currency wallet f
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.3.18-r4 0.4.1_p20160925-r1: John Hoffman's fork of the original bittorrent
 net-p2p/classified-ads 0.11 0.12 0.13: Program for displaying classified advertisement items
-net-p2p/cpuminer-opt 3.9.6.2 3.9.7 9999: Optimized multi algo CPU miner
+net-p2p/cpuminer-opt 3.9.6.2 3.9.7 3.9.8 9999: Optimized multi algo CPU miner
 net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
 net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clients
 net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client written in C and C++
