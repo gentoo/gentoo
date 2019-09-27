@@ -122,5 +122,6 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/chrony-2.4-r1.logrotate chrony
 
-	systemd_dounit examples/chronyd.service
+	systemd_dounit examples/{chronyd,chrony-wait}.service
+	systemd_enable_ntpunit 50-chrony chronyd.service
 }
