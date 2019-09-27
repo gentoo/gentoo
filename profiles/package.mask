@@ -1092,7 +1092,6 @@ games-rpg/eternal-lands-data
 dev-embedded/scratchbox
 dev-embedded/scratchbox-devkit-apt-https
 dev-embedded/scratchbox-devkit-cputransp
-dev-embedded/scratchbox-devkit-debian
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
