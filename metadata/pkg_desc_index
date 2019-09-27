@@ -12988,11 +12988,11 @@ media-gfx/galleryadd 2.30: Perl script to recursively adds directories/images to
 media-gfx/geeqie 1.4-r1 1.5 1.5.1 9999: A lightweight GTK image viewer forked from GQview
 media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
 media-gfx/gif2png 2.5.9 2.5.12 2.5.14: Converts images from gif format to png format
-media-gfx/gifsicle 1.91: Create, manipulate, and optimize GIF images and animations
+media-gfx/gifsicle 1.91 1.92: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimp 2.8.22-r1 2.9.8-r1 2.10.8-r1 2.10.10-r1 2.10.12 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
-media-gfx/gmic 2.7.0 2.7.1: GREYC's Magic Image Converter
+media-gfx/gmic 2.7.0 2.7.1 2.7.2: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.30.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.30.1-r1: Access, organize and share your photos on GNOME
@@ -13184,7 +13184,7 @@ media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio app
 media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Blinkenlights
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
 media-libs/chromaprint 1.4.2 1.4.3: A client-side library that implements a custom algorithm for extracting fingerprints
-media-libs/cimg 2.6.5 2.6.7 2.7.0: C++ template image processing toolkit
+media-libs/cimg 2.7.0 2.7.2: C++ template image processing toolkit
 media-libs/clutter 1.26.2-r1: Clutter is a library for creating graphical user interfaces
 media-libs/clutter-gst 3.0.27: GStreamer integration library for Clutter
 media-libs/clutter-gtk 1.8.4: Library for embedding a Clutter canvas (stage) in GTK+
@@ -19371,7 +19371,7 @@ x11-terms/cool-retro-term 1.1.0 1.1.1: terminal emulator which mimics the look a
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.30.3: The Gnome Terminal
 x11-terms/guake 3.3.2 3.4.0-r1 3.6.1-r1 3.6.3 9999: Drop-down terminal for GNOME
-x11-terms/kitty 0.14.2 0.14.4 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
+x11-terms/kitty 0.14.4 0.14.6 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.22.0 1.22.1: The MATE Terminal
