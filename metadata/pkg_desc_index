@@ -2529,7 +2529,7 @@ app-text/multitail 6.4.1 6.4.2: Tail with multiple windows
 app-text/mupdf 1.14.0-r3 1.15.0: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_pre7: Namazu is a full-text search engine
-app-text/nfoview 1.23 1.24 1.26 9999: Simple viewer for NFO files, which are ASCII art in the CP437 codepage
+app-text/nfoview 1.26 1.27 9999: Simple viewer for NFO files, which are ASCII art in the CP437 codepage
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
 app-text/ocrad 0.22 0.23 0.24 0.25 0.26: GNU Ocrad is an OCR (Optical Character Recognition) program
 app-text/odt2txt 0.4-r1 0.5: A simple converter from OpenDocument Text to plain text
