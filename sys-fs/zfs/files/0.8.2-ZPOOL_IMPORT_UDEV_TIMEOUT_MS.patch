@@ -1,0 +1,68 @@
+From d7037d2a2fd57504070eba14634b8a7ea159de32 Mon Sep 17 00:00:00 2001
+From: Richard Yao <ryao@gentoo.org>
+Date: Thu, 1 Aug 2019 15:54:30 -0400
+Subject: [PATCH] Implement ZPOOL_IMPORT_UDEV_TIMEOUT_MS
+
+Since 0.7.0, zpool import would unconditionally block on udev for 30
+seconds. This introduced a regression in initramfs environments that
+lack udev (particularly mdev based environments), yet use a zfs userland
+tools intended for the system that had been built against udev. Gentoo's
+genkernel is the main example, although custom user initramfs
+environments would be similarly impacted unless special builds of the
+ZFS userland utilities were done for them.  Such environments already
+have their own mechanisms for blocking until device nodes are ready
+(such as genkernel's scandelay parameter), so it is unnecessary for
+zpool import to block on a non-existent udev until a timeout is reached
+inside of them.
+
+Rather than trying to intelligently determine whether udev is avaliable
+on the system to avoid unnecessarily blocking in such environments, it
+seems best to just allow the environment to override the timeout.  I
+propose that we add an environment variable called
+ZPOOL_IMPORT_UDEV_TIMEOUT_MS. Setting it to 0 would restore the 0.6.x
+behavior that was more desireable in mdev based initramfs environments.
+This allows the system userland utilities to be reused when building
+mdev-based initramfs archives.
+
+Reviewed-by: Georgy Yakovlev <gyakovlev@gentoo.org>
+Signed-off-by: Richard Yao <ryao@gentoo.org>
+---
+ lib/libzutil/zutil_import.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/lib/libzutil/zutil_import.c b/lib/libzutil/zutil_import.c
+index e82744383dc..8c4d8c5cb5c 100644
+--- a/lib/libzutil/zutil_import.c
++++ b/lib/libzutil/zutil_import.c
+@@ -58,6 +58,7 @@
+ #endif
+ #include <stddef.h>
+ #include <stdlib.h>
++#include <stdio.h>
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+@@ -1653,15 +1654,22 @@ zpool_open_func(void *arg)
+ 		char *devid = NULL;
+ 		rdsk_node_t *slice;
+ 		avl_index_t where;
++		char *env;
++		int timeout;
+ 		int error;
+ 
+ 		if (label_paths(rn->rn_hdl, rn->rn_config, &path, &devid))
+ 			return;
+ 
++		env = getenv("ZPOOL_IMPORT_UDEV_TIMEOUT_MS");
++
++		if ((env == NULL) || sscanf(env, "%d", &timeout) != 1)
++			timeout = DISK_LABEL_WAIT;
++
+ 		/*
+ 		 * Allow devlinks to stabilize so all paths are available.
+ 		 */
+-		zpool_label_disk_wait(rn->rn_name, DISK_LABEL_WAIT);
++		zpool_label_disk_wait(rn->rn_name, timeout);
+ 
+ 		if (path != NULL) {
+ 			slice = zfs_alloc(hdl, sizeof (rdsk_node_t));
