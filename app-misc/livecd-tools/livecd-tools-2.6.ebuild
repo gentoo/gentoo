@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,12 +7,12 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://anongit.gentoo.org/proj/livecd-tools.git"
 	inherit git-r3
 else
-	SRC_URI="https://dev.gentoo.org/~williamh/dist/${P}.tar.gz"
+	SRC_URI="https://gitweb.gentoo.org/proj/livecd-tools.git/snapshot/${P}.tar.bz2"
 	KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
 fi
 
 DESCRIPTION="Gentoo LiveCD tools for autoconfiguration of hardware"
-HOMEPAGE="http://wolf31o2.org/projects/livecd-tools"
+HOMEPAGE="https://www.gentoo.org"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -24,7 +24,8 @@ RDEPEND="dev-util/dialog
 	>=sys-apps/openrc-0.8.2-r1
 	sys-apps/pciutils
 	sys-apps/gawk
-	sys-apps/sed"
+	sys-apps/sed
+"
 
 pkg_setup() {
 		ewarn "This package is designed for use on the LiveCD only and will do"
