@@ -5,7 +5,7 @@ EAPI=6
 
 ANT_TASK_JDKVER=1.8
 ANT_TASK_JREVER=1.8
-ANT_TASK_DEPNAME="oracle-javamail"
+ANT_TASK_DEPNAME=( "gnu-jaf-1" "oracle-javamail" )
 
 inherit ant-tasks
 
