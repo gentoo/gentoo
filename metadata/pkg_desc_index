@@ -180,7 +180,7 @@ app-admin/conserver 8.2.3 8.2.4: Serial Console Manager
 app-admin/consolehm 1.31: Console based hardware monitor for FreeBSD
 app-admin/consul 1.4.4-r1 1.5.3 1.6.0: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
-app-admin/consul-template 0.20.0: Generic template rendering and notifications with Consul
+app-admin/consul-template 0.20.0 0.22.0: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2 2.4: Limits the CPU usage of a process
 app-admin/cronlocker 0.4.0_p20180710: synchronize a cron job across multiple hosts using the consul lock feature
 app-admin/cronolog 1.6.2-r5: Log rotation software
