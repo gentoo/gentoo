@@ -3054,7 +3054,7 @@ dev-cpp/metslib 0.5.3: Metaheuristic modeling framework and optimization toolkit
 dev-cpp/mm-common 0.9.12: Build infrastructure and utilities for GNOME C++ bindings
 dev-cpp/ms-gsl 2.0.0 9999: Guideline Support Library implementation by Microsoft
 dev-cpp/muParser 2.2.5 2.2.6.1: Library for parsing mathematical expressions
-dev-cpp/nlohmann_json 3.5.0 3.6.1 3.6.1-r1: JSON for Modern C++
+dev-cpp/nlohmann_json 3.6.1-r1 3.7.0: JSON for Modern C++
 dev-cpp/pangomm 2.42.0: C++ interface for pango
 dev-cpp/picojson 1.3.0: Header-file-only, JSON parser serializer in C++
 dev-cpp/pngpp 0.2.9: A simple but powerful C++ interface to libpng
@@ -3245,17 +3245,6 @@ dev-embedded/pk2cmd 1.20: An application for working with the Microchip PicKit2 
 dev-embedded/platformio 4.0.1: An open source ecosystem for IoT development
 dev-embedded/ponyprog 2.07c-r2 3.0.0: EEPROM and microcontroller programmer/flasher
 dev-embedded/powersoftplus-libftdi 0.1.8-r1: Library which includes a table of VIDs and PIDs of Ever UPS devices
-dev-embedded/scratchbox 1.0.19 1.0.20: A cross-compilation toolkit for embedded Linux application development
-dev-embedded/scratchbox-devkit-apt-https 1.0.10 1.0.11: A cross-compilation toolkit for embedded Linux application development
-dev-embedded/scratchbox-devkit-cputransp 1.0.7 1.0.9: A cross-compilation toolkit for embedded Linux application development
-dev-embedded/scratchbox-devkit-debian 1.0.10 1.0.11: A cross-compilation toolkit for embedded Linux application development
-dev-embedded/scratchbox-devkit-debian-squeeze 1.0.4 1.0.5: A cross-compilation toolkit for embedded Linux application development
-dev-embedded/scratchbox-devkit-doctools 1.0.9 1.0.13 1.0.14: A cross-compilation toolkit for embedded Linux application development
-dev-embedded/scratchbox-devkit-git 1.0.1 1.0.2: A cross-compilation toolkit for embedded Linux application development
-dev-embedded/scratchbox-devkit-maemo3 1.0.3: A cross-compilation toolkit for embedded Linux application development
-dev-embedded/scratchbox-devkit-perl 1.0.4 1.0.5: A cross-compilation toolkit for embedded Linux application development
-dev-embedded/scratchbox-devkit-qemu 0.10.0.0.10 0.11.50.0.5 0.12.50.0.3: A cross-compilation toolkit for embedded Linux application development
-dev-embedded/scratchbox-devkit-svn 1.0: A cross-compilation toolkit for embedded Linux application development
 dev-embedded/sdcc 3.8.0-r1 9999: Small device C compiler (for various microprocessors)
 dev-embedded/sgpp-lite-arm-eabi-bin 2010.09.51 2014.05.28: Regular, validated releases of the GNU Toolchain for arm processors
 dev-embedded/sgpp-lite-arm-linux-bin 2010.09.50: Regular, validated releases of the GNU Toolchain for arm processors
