@@ -65,7 +65,7 @@ src_configure() {
 }
 
 src_compile() {
-	default
+	emake -j1
 
 	if use mysql; then
 		einfo "Building MySQL support"
