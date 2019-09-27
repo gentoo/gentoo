@@ -4492,7 +4492,7 @@ dev-java/saxon 6.5.5-r2 9.2.0.6-r2: A XSLT and XQuery Processor
 dev-java/saxpath 1.0-r3: Java XPath API
 dev-java/sblim-cim-client 2.2.1 2.2.1-r1: A WBEM services client that includes an SLP client for CIM service discovery
 dev-java/sbt 0.13.13: sbt is a build tool for Scala and Java projects that aims to do the basics well
-dev-java/sbt-bin 1.1.4 1.1.5 1.2.8: sbt, a build tool for Scala
+dev-java/sbt-bin 1.1.4 1.1.5 1.2.8 1.3.2: sbt, a build tool for Scala
 dev-java/shared-objects 1.4-r4: Core factory for maximal sharing of arbitrary objects
 dev-java/simplyhtml 0.13.1-r1: Text processing application based on HTML and CSS files
 dev-java/sjsxp 1.0.1-r3: Sun Java Streaming XML Parser
