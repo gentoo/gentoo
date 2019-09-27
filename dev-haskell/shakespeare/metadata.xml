@@ -14,8 +14,8 @@
 		Please see the documentation at &lt;http://docs.yesodweb.com/book/hamlet/&gt; for more details.
 	</longdescription>
 	<use>
-		<flag name="test_export">Test export.</flag>
-		<flag name="test_coffee">Render tests through coffeescript render function.</flag>
-		<flag name="test_roy">Render tests through roy render function.</flag>
+		<flag name="test-export">Test export.</flag>
+		<flag name="test-coffee">Render tests through coffeescript render function.</flag>
+		<flag name="test-roy">Render tests through roy render function.</flag>
 	</use>
 </pkgmetadata>
