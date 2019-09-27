@@ -4204,7 +4204,7 @@ dev-java/geoip-java 1.3.0: Java library for lookup countries by IP addresses
 dev-java/glassfish-deployment-api 3.1.1: J2EE Application Deployment Specification V.1.2
 dev-java/glassfish-ejb-api 3.2: Project GlassFish Enterprise JavaBean API
 dev-java/glassfish-interceptor-api 3.1: Project GlassFish Interceptor API
-dev-java/glassfish-jms-api 1.1.2.2.04: Java Transaction API
+dev-java/glassfish-jms-api 1.1.2.2.04-r1: Java Transaction API
 dev-java/glassfish-persistence 1.0-r1: Glassfish implementation of persistence API
 dev-java/glassfish-servlet-api 3.1.1: Glassfish reference implementation of Servlet API 2.5 and JSP API 2.1
 dev-java/glassfish-transaction-api 1.1.2.2.04-r1: Java Transaction API
@@ -10389,7 +10389,7 @@ dev-scheme/chicken 4.13.0-r1: Scheme interpreter and native Scheme to C compiler
 dev-scheme/elk 3.99.8: Scheme implementation designed to be embeddable extension to C/C++ applications
 dev-scheme/escm 1.1-r1: escm - Embedded Scheme Processor
 dev-scheme/gambit 4.8.8-r1 4.8.8-r2 4.9.3: Gambit-C is a native Scheme to C compiler and interpreter
-dev-scheme/gauche 0.9.5 0.9.6-r1 0.9.8: A Unix system friendly Scheme Interpreter
+dev-scheme/gauche 0.9.6-r1 0.9.8: A Unix system friendly Scheme Interpreter
 dev-scheme/gauche-cdb 0.3.1-r1: CDB binding for Gauche
 dev-scheme/gauche-gl 0.6: OpenGL binding for Gauche
 dev-scheme/gauche-gtk 0.6_pre1: GTK2 binding for Gauche
@@ -15323,7 +15323,7 @@ net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network 
 net-misc/arpsponge 3.12.2 3.17.11: Sweeps up stray ARP queries from a peering LAN
 net-misc/asterisk 11.25.3 13.23.1: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk
-net-misc/asterisk-extra-sounds 1.4.11: Extra sounds for asterisk
+net-misc/asterisk-extra-sounds 1.4.11 1.4.11-r1: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.9: G.729 codec and supporting files for asterisk
 net-misc/asterisk-moh-opsound 2.03: asterisk moh music
 net-misc/astmanproxy 1.28.2: Proxy for the Asterisk manager interface

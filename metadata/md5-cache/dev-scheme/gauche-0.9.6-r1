@@ -4,10 +4,10 @@ DESCRIPTION=A Unix system friendly Scheme Interpreter
 EAPI=6
 HOMEPAGE=http://practical-scheme.net/gauche/
 IUSE=ipv6 libressl mbedtls test
-KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=~alpha amd64 ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=BSD
 RDEPEND=sys-libs/gdbm mbedtls? ( net-libs/mbedtls:= )
 SLOT=0/0.9
 SRC_URI=mirror://sourceforge/gauche/Gauche-0.9.6.tgz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=f8bd6837bd358f360c6798bc441b863f
+_md5_=a526f77286a0bd13aa5257e9d9d84872

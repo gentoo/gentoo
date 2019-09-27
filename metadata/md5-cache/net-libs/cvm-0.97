@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://untroubled.org/cvm/archive/cvm-0.97.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=f7b13f814173060f7b32b0efefc30baa
+_md5_=67e3e9976eb8569273dcee9f1b051548
