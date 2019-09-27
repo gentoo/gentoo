@@ -21,19 +21,13 @@ fi
 LICENSE="LGPL-2.1+ GPL-2"
 SLOT="0"
 IUSE="gtk-doc +introspection python static-libs test +vala"
-
 REQUIRED_USE="
 	python? ( introspection ${PYTHON_REQUIRED_USE} )
 	test? ( python introspection )
 	vala? ( introspection )
 "
+RESTRICT="!test? ( test )"
 
-RDEPEND="${PYTHON_DEPS}
-	>=dev-libs/glib-2.38.0:2
-	>=media-gfx/exiv2-0.21:=
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
-"
-DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
@@ -44,6 +38,12 @@ BDEPEND="
 	)
 	vala? ( $(vala_depend) )
 "
+RDEPEND="${PYTHON_DEPS}
+	>=dev-libs/glib-2.38.0:2
+	>=media-gfx/exiv2-0.21:=
+	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
