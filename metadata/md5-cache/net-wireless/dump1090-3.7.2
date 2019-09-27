@@ -1,13 +1,13 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile install prepare unpack
+DEFINED_PHASES=compile install prepare
 DEPEND=bladerf? ( net-wireless/bladerf:= ) rtlsdr? ( net-wireless/rtl-sdr:= ) sys-libs/ncurses:= virtual/libusb:1
 DESCRIPTION=simple Mode S decoder for RTLSDR devices
 EAPI=7
 HOMEPAGE=https://github.com/flightaware/dump1090
 IUSE=bladerf +rtlsdr
+KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-PROPERTIES=live
 RDEPEND=bladerf? ( net-wireless/bladerf:= ) rtlsdr? ( net-wireless/rtl-sdr:= ) sys-libs/ncurses:= virtual/libusb:1
 SLOT=0
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+SRC_URI=https://github.com/flightaware/dump1090/archive/v3.7.2.tar.gz -> dump1090-3.7.2.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
 _md5_=108c553a0e8ce0bcb38b6db1a727c443
