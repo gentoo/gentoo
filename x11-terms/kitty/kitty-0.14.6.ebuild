@@ -27,6 +27,7 @@ COMMON_DEPS="
 	>=media-libs/harfbuzz-1.5.0:=
 	sys-apps/dbus
 	sys-libs/zlib
+	media-libs/libcanberra
 	media-libs/libpng:0=
 	media-libs/freetype:2
 	media-libs/fontconfig
@@ -53,8 +54,8 @@ DEPEND="${RDEPEND}
 [[ ${PV} == *9999 ]] && DEPEND+=" >=dev-python/sphinx-1.7[${PYTHON_USEDEP}]"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.14.2-flags.patch
-	"${FILESDIR}"/${PN}-0.11.0-svg-icon.patch
+	"${FILESDIR}"/${PN}-0.14.4-flags.patch
+	"${FILESDIR}"/${PN}-0.14.4-svg-icon.patch
 )
 
 src_prepare() {
