@@ -11,5 +11,5 @@ RDEPEND=dev-qt/designer:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclara
 REQUIRED_USE=portmidi? ( portaudio )
 SLOT=0
 SRC_URI=https://github.com/musescore/MuseScore/archive/v3.0.1.tar.gz -> musescore-3.0.1.tar.gz https://dev.gentoo.org/~fordfrog/distfiles/MuseScore_General-0.1.3.tar.bz2
-_eclasses_=cmake-utils	91d6ef31dc426240577497cacbf2508c	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake-utils	91d6ef31dc426240577497cacbf2508c	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	1b4b0d1d972613ecfb7af4c5c53f2051	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=2471383df91cee8864625dbb5ed2eb93

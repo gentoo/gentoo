@@ -11,5 +11,5 @@ PDEPEND=l10n_af? ( app-dicts/myspell-af ) l10n_bg? ( app-dicts/myspell-bg ) l10n
 RDEPEND=ncurses? ( sys-libs/ncurses:0= ) readline? ( sys-libs/readline:= )
 SLOT=0/1.7
 SRC_URI=https://github.com/hunspell/hunspell/archive/v1.7.0.tar.gz -> hunspell-1.7.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	1b4b0d1d972613ecfb7af4c5c53f2051	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
 _md5_=7829d26ef72a102f3ebdf46cbe52507d

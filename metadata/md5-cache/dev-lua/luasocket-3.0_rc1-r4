@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/lua-5.1.5-r2[deprecated,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/diegonehab/luasocket/archive/v3.0-rc1.tar.gz -> luasocket-3.0_rc1.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	1b4b0d1d972613ecfb7af4c5c53f2051	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
 _md5_=5561f73030dd87c7bbd770cac3a18143

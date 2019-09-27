@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/mujs-1.0.4 media-libs/freetype:2=[static-libs?] media-libs/ha
 REQUIRED_USE=opengl? ( !static-libs ) curl? ( X )
 SLOT=0/1.14.0
 SRC_URI=https://mupdf.com/downloads/archive/mupdf-1.14.0-source.tar.xz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	1b4b0d1d972613ecfb7af4c5c53f2051	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=5c7460692ac68cf53672b81fa3177202

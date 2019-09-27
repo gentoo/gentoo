@@ -10,5 +10,5 @@ RDEPEND=client? ( media-libs/libsdl2:=[X,sound,joystick,opengl,video] mumble? ( 
 REQUIRED_USE=|| ( client server ) voip? ( opus )
 SLOT=0
 SRC_URI=https://github.com/mickael9/ioq3/archive/167cb6b611ad27f30787a2fe204a7c65ec1fa18e.tar.gz -> urbanterror-4.3.4_p20180708.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	1b4b0d1d972613ecfb7af4c5c53f2051	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=0c47d665b85040bbf4328f6ac8d3da16

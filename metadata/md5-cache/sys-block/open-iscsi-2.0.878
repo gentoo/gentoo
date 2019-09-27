@@ -11,5 +11,5 @@ RDEPEND=sys-apps/kmod sys-block/open-isns:= sys-kernel/linux-headers infiniband?
 REQUIRED_USE=infiniband? ( rdma ) || ( rdma tcp )
 SLOT=0/0.2
 SRC_URI=https://github.com/open-iscsi/open-iscsi/archive/2.0.878.tar.gz -> open-iscsi-2.0.878.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	1b4b0d1d972613ecfb7af4c5c53f2051	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=221a4e1dfba89b3f28292ddce33fc29c

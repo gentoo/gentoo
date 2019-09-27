@@ -11,5 +11,5 @@ RDEPEND=alsa? ( media-libs/alsa-lib:= media-sound/alsa-utils ) dssi? ( media-lib
 REQUIRED_USE=dssi? ( gtk ) lv2? ( gtk )
 SLOT=0
 SRC_URI=https://github.com/amsynth/amsynth/releases/download/release-1.8.0/amsynth-1.8.0.tar.bz2
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	1b4b0d1d972613ecfb7af4c5c53f2051	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
 _md5_=f428ae8942e0f47b4c3fe60f78197263

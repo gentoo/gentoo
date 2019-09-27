@@ -10,5 +10,5 @@ LICENSE=|| ( LGPL-2.1 MPL-1.1 )
 RDEPEND=sys-libs/zlib sdl? ( >=media-libs/libsdl-1.2.6 )
 SLOT=0
 SRC_URI=https://github.com/gdraheim/zziplib/archive/v0.13.69.tar.gz -> zziplib-0.13.69.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	1b4b0d1d972613ecfb7af4c5c53f2051	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
 _md5_=83082c76840a7d29d94400cb4da6532a
