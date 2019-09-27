@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>lu_zero@gentoo.org</email>
-  </maintainer>
-<maintainer type="project">
-    <email>media-video@gentoo.org</email>
-    <name>Gentoo Video project</name>
-  </maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>lu_zero@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
 </pkgmetadata>
