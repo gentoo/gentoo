@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="all_cpolys"
+IUSE="all-cpolys"
 
 RDEPEND=">=dev-haskell/cereal-0.2:=[profile?]
 		dev-haskell/entropy:=[profile?]
@@ -27,5 +27,5 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	haskell-cabal_src_configure \
-		$(cabal_flag all_cpolys all_cpolys)
+		$(cabal_flag all-cpolys all_cpolys)
 }
