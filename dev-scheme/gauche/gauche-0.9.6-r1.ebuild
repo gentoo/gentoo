@@ -29,7 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-gauche.m4.patch
 	"${FILESDIR}"/${PN}-ext-ldflags.patch
 	"${FILESDIR}"/${PN}-xz-info.patch
-	"${FILESDIR}"/${PN}-rfc.tls.patch
+	"${FILESDIR}"/${P}-rfc.tls.patch
 )
 DOCS=( AUTHORS ChangeLog HACKING README )
 
