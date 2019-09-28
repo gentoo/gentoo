@@ -17,19 +17,20 @@ RESTRICT="test"
 
 RDEPEND="expat? ( dev-libs/expat:0=[${MULTILIB_USEDEP}] )
 	!expat? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
-	gnutls? (
-		app-misc/ca-certificates
-		net-libs/gnutls:0=[${MULTILIB_USEDEP}]
-		pkcs11? ( dev-libs/pakchois:0=[${MULTILIB_USEDEP}] )
-	)
-	!gnutls? ( ssl? (
-		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
-		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-		pkcs11? ( dev-libs/pakchois:0=[${MULTILIB_USEDEP}] )
-	) )
 	kerberos? ( virtual/krb5:0=[${MULTILIB_USEDEP}] )
 	libproxy? ( net-libs/libproxy:0=[${MULTILIB_USEDEP}] )
 	nls? ( virtual/libintl:0=[${MULTILIB_USEDEP}] )
+	ssl? (
+		gnutls? (
+			app-misc/ca-certificates
+			net-libs/gnutls:0=[${MULTILIB_USEDEP}]
+		)
+		!gnutls? (
+			libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
+			!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
+		)
+		pkcs11? ( dev-libs/pakchois:0=[${MULTILIB_USEDEP}] )
+	)
 	zlib? ( sys-libs/zlib:0=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]"
@@ -75,10 +76,12 @@ multilib_src_configure() {
 		myconf+=(--with-libxml2)
 	fi
 
-	if use gnutls; then
-		myconf+=(--with-ssl=gnutls --with-ca-bundle="${EPREFIX}/etc/ssl/certs/ca-certificates.crt")
-	elif use ssl; then
-		myconf+=(--with-ssl=openssl)
+	if use ssl; then
+		if use gnutls; then
+			myconf+=(--with-ssl=gnutls --with-ca-bundle="${EPREFIX}/etc/ssl/certs/ca-certificates.crt")
+		else
+			myconf+=(--with-ssl=openssl)
+		fi
 	fi
 
 	econf \
@@ -105,7 +108,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	find "${ED}" -name "*.la" -delete
+	find "${D}" -name "*.la" -type f -delete || die
 
 	dodoc AUTHORS BUGS NEWS README THANKS TODO
 }
