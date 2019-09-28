@@ -321,7 +321,7 @@ x11-misc/xscreensaver new-login
 
 # Pacho Ramos <pacho@gentoo.org> (2012-05-07)
 # libhid is not keyworded
-app-misc/lcdproc hid lcd_devices_mdm166a
+app-misc/lcdproc lcd_devices_mdm166a
 
 # Anthony G. Basile <blueness@gentoo.org> (2011-12-21)
 # Mask the vde flag on tinc because net-misc/vde is not

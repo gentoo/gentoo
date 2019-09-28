@@ -65,7 +65,7 @@ media-sound/mpd fluidsynth
 # Alexis Ballier <aballier@gentoo.org> (2017-05-29)
 # frei0r-plugins is not stable yet, mask it on stable versions
 <media-video/libav-13 frei0r
-<=media-video/ffmpeg-4.1.3 frei0r sofalizer
+<=media-video/ffmpeg-4.1.3 frei0r
 
 # Michael Weber <xmw@gentoo.org> (2017-04-01)
 # no stable jdk
