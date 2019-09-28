@@ -1,0 +1,481 @@
+commit d89e11c543a37e8e7e1e8872f77b1e4283da596f
+Author: Evan Stade <estade@chromium.org>
+Date:   Thu Sep 5 18:08:56 2019 +0000
+
+    Introduce ProfileManagerObserver.
+    
+    Currently there are two methods, OnProfileAdded (to replace
+    NOTIFICATION_PROFILE_ADDED and NOTIFICATION_PROFILE_CREATED) and
+    OnProfileMarkedForPermanentDeletion (to replace
+    NOTIFICATION_PROFILE_DESTRUCTION_STARTED).
+    
+    Use the new interface in NoteTakingHelper and ExtensionService.
+    
+    Another option would be to have OnProfileMarkedForPermanentDeletion
+    be a part of a ProfileObserver interface, but it seems best to
+    minimize the number of observer interfaces.
+    
+    Bug: 268984
+    Change-Id: I96ba72e558ee3da30729207adcd8e22e0755293a
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1776682
+    Commit-Queue: Evan Stade <estade@chromium.org>
+    Reviewed-by: Scott Violet <sky@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#693858}
+
+diff --git b/chrome/browser/BUILD.gn a/chrome/browser/BUILD.gn
+index 0bc6da647d95..e0d99c93bfd7 100644
+--- b/chrome/browser/BUILD.gn
++++ a/chrome/browser/BUILD.gn
+@@ -1472,7 +1472,6 @@ jumbo_split_static_library("browser") {
+     "profiles/profile_key.h",
+     "profiles/profile_manager.cc",
+     "profiles/profile_manager.h",
+-    "profiles/profile_manager_observer.h",
+     "profiles/profile_metrics.cc",
+     "profiles/profile_metrics.h",
+     "profiles/profile_shortcut_manager_win.cc",
+diff --git b/chrome/browser/chrome_notification_types.h a/chrome/browser/chrome_notification_types.h
+index fa06a890677c..d6f87fba347e 100644
+--- b/chrome/browser/chrome_notification_types.h
++++ a/chrome/browser/chrome_notification_types.h
+@@ -119,11 +119,18 @@ enum NotificationType {
+   // The details are none and the source is the new profile.
+   NOTIFICATION_PROFILE_CREATED,
+ 
+-  // Use ProfileManagerObserver::OnProfileAdded instead of this notification.
+   // Sent after a Profile has been added to ProfileManager.
+   // The details are none and the source is the new profile.
+   NOTIFICATION_PROFILE_ADDED,
+ 
++  // Use KeyedServiceShutdownNotifier instead this notification type (you did
++  // read the comment at the top of the file, didn't you?).
++  // Sent early in the process of destroying a Profile, at the time a user
++  // initiates the deletion of a profile versus the much later time when the
++  // profile object is actually destroyed (use NOTIFICATION_PROFILE_DESTROYED).
++  // The details are none and the source is a Profile*.
++  NOTIFICATION_PROFILE_DESTRUCTION_STARTED,
++
+   // Use KeyedServiceShutdownNotifier instead this notification type (you did
+   // read the comment at the top of the file, didn't you?).
+   // Sent before a Profile is destroyed. This notification is sent both for
+@@ -131,6 +138,10 @@ enum NotificationType {
+   // The details are none and the source is a Profile*.
+   NOTIFICATION_PROFILE_DESTROYED,
+ 
++  // Sent after the URLRequestContextGetter for a Profile has been initialized.
++  // The details are none and the source is a Profile*.
++  NOTIFICATION_PROFILE_URL_REQUEST_CONTEXT_GETTER_INITIALIZED,
++
+   // Printing ----------------------------------------------------------------
+ 
+   // Notification from PrintJob that an event occurred. It can be that a page
+diff --git b/chrome/browser/chromeos/note_taking_helper.cc a/chrome/browser/chromeos/note_taking_helper.cc
+index 8a9b52a6ff63..797801c4b459 100644
+--- b/chrome/browser/chromeos/note_taking_helper.cc
++++ a/chrome/browser/chromeos/note_taking_helper.cc
+@@ -18,6 +18,7 @@
+ #include "base/stl_util.h"
+ #include "base/strings/string_split.h"
+ #include "chrome/browser/browser_process.h"
++#include "chrome/browser/chrome_notification_types.h"
+ #include "chrome/browser/chromeos/arc/arc_util.h"
+ #include "chrome/browser/chromeos/file_manager/path_util.h"
+ #include "chrome/browser/chromeos/lock_screen_apps/state_controller.h"
+@@ -33,6 +34,7 @@
+ #include "components/prefs/pref_service.h"
+ #include "components/prefs/scoped_user_pref_update.h"
+ #include "content/public/browser/browser_thread.h"
++#include "content/public/browser/notification_service.h"
+ #include "extensions/browser/extension_registry.h"
+ #include "extensions/common/api/app_runtime.h"
+ #include "extensions/common/extension.h"
+@@ -327,24 +329,6 @@ void NoteTakingHelper::OnArcPlayStoreEnabledChanged(bool enabled) {
+     observer.OnAvailableNoteTakingAppsUpdated();
+ }
+ 
+-void NoteTakingHelper::OnProfileAdded(Profile* profile) {
+-  auto* registry = extensions::ExtensionRegistry::Get(profile);
+-  DCHECK(!extension_registry_observer_.IsObserving(registry));
+-  extension_registry_observer_.Add(registry);
+-
+-  // TODO(derat): Remove this once OnArcPlayStoreEnabledChanged() is always
+-  // called after an ARC-enabled user logs in: http://b/36655474
+-  if (!play_store_enabled_ && arc::IsArcPlayStoreEnabledForProfile(profile)) {
+-    play_store_enabled_ = true;
+-    for (Observer& observer : observers_)
+-      observer.OnAvailableNoteTakingAppsUpdated();
+-  }
+-
+-  auto* bridge = arc::ArcIntentHelperBridge::GetForBrowserContext(profile);
+-  if (bridge)
+-    bridge->AddObserver(this);
+-}
+-
+ void NoteTakingHelper::SetProfileWithEnabledLockScreenApps(Profile* profile) {
+   DCHECK(!profile_with_enabled_lock_screen_apps_);
+   profile_with_enabled_lock_screen_apps_ = profile;
+@@ -377,7 +361,8 @@ NoteTakingHelper::NoteTakingHelper()
+                                      kExtensionIds + base::size(kExtensionIds));
+ 
+   // Track profiles so we can observe their extension registries.
+-  g_browser_process->profile_manager()->AddObserver(this);
++  registrar_.Add(this, chrome::NOTIFICATION_PROFILE_ADDED,
++                 content::NotificationService::AllBrowserContextsAndSources());
+   play_store_enabled_ = false;
+   for (Profile* profile :
+        g_browser_process->profile_manager()->GetLoadedProfiles()) {
+@@ -414,8 +399,6 @@ NoteTakingHelper::NoteTakingHelper()
+ NoteTakingHelper::~NoteTakingHelper() {
+   DCHECK_CURRENTLY_ON(content::BrowserThread::UI);
+ 
+-  g_browser_process->profile_manager()->RemoveObserver(this);
+-
+   // ArcSessionManagerTest shuts down ARC before NoteTakingHelper.
+   if (arc::ArcSessionManager::Get())
+     arc::ArcSessionManager::Get()->RemoveObserver(this);
+@@ -555,6 +538,30 @@ NoteTakingHelper::LaunchResult NoteTakingHelper::LaunchAppInternal(
+   NOTREACHED();
+ }
+ 
++void NoteTakingHelper::Observe(int type,
++                               const content::NotificationSource& source,
++                               const content::NotificationDetails& details) {
++  DCHECK_EQ(type, chrome::NOTIFICATION_PROFILE_ADDED);
++  Profile* profile = content::Source<Profile>(source).ptr();
++  DCHECK(profile);
++
++  auto* registry = extensions::ExtensionRegistry::Get(profile);
++  DCHECK(!extension_registry_observer_.IsObserving(registry));
++  extension_registry_observer_.Add(registry);
++
++  // TODO(derat): Remove this once OnArcPlayStoreEnabledChanged() is always
++  // called after an ARC-enabled user logs in: http://b/36655474
++  if (!play_store_enabled_ && arc::IsArcPlayStoreEnabledForProfile(profile)) {
++    play_store_enabled_ = true;
++    for (Observer& observer : observers_)
++      observer.OnAvailableNoteTakingAppsUpdated();
++  }
++
++  auto* bridge = arc::ArcIntentHelperBridge::GetForBrowserContext(profile);
++  if (bridge)
++    bridge->AddObserver(this);
++}
++
+ void NoteTakingHelper::OnExtensionLoaded(
+     content::BrowserContext* browser_context,
+     const extensions::Extension* extension) {
+diff --git b/chrome/browser/chromeos/note_taking_helper.h a/chrome/browser/chromeos/note_taking_helper.h
+index dd7868b6e86d..8af050e0c00a 100644
+--- b/chrome/browser/chromeos/note_taking_helper.h
++++ a/chrome/browser/chromeos/note_taking_helper.h
+@@ -15,10 +15,13 @@
+ #include "base/observer_list.h"
+ #include "base/scoped_observer.h"
+ #include "chrome/browser/chromeos/arc/arc_session_manager.h"
+-#include "chrome/browser/profiles/profile_manager_observer.h"
+ #include "components/arc/intent_helper/arc_intent_helper_observer.h"
+ #include "components/arc/mojom/intent_helper.mojom.h"
+ #include "components/prefs/pref_change_registrar.h"
++#include "content/public/browser/notification_details.h"
++#include "content/public/browser/notification_observer.h"
++#include "content/public/browser/notification_registrar.h"
++#include "content/public/browser/notification_source.h"
+ #include "extensions/browser/extension_registry_observer.h"
+ #include "extensions/common/extension.h"
+ 
+@@ -89,8 +92,8 @@ using NoteTakingAppInfos = std::vector<NoteTakingAppInfo>;
+ // Singleton class used to launch a note-taking app.
+ class NoteTakingHelper : public arc::ArcIntentHelperObserver,
+                          public arc::ArcSessionManager::Observer,
+-                         public extensions::ExtensionRegistryObserver,
+-                         public ProfileManagerObserver {
++                         public content::NotificationObserver,
++                         public extensions::ExtensionRegistryObserver {
+  public:
+   // Interface for observing changes to the list of available apps.
+   class Observer {
+@@ -199,9 +202,6 @@ class NoteTakingHelper : public arc::ArcIntentHelperObserver,
+   // arc::ArcSessionManager::Observer:
+   void OnArcPlayStoreEnabledChanged(bool enabled) override;
+ 
+-  // ProfileManagerObserver:
+-  void OnProfileAdded(Profile* profile) override;
+-
+   // Sets the profile which supports note taking apps on the lock screen.
+   void SetProfileWithEnabledLockScreenApps(Profile* profile);
+ 
+@@ -246,6 +246,11 @@ class NoteTakingHelper : public arc::ArcIntentHelperObserver,
+                                  const std::string& app_id,
+                                  const base::FilePath& path);
+ 
++  // content::NotificationObserver:
++  void Observe(int type,
++               const content::NotificationSource& source,
++               const content::NotificationDetails& details) override;
++
+   // extensions::ExtensionRegistryObserver:
+   void OnExtensionLoaded(content::BrowserContext* browser_context,
+                          const extensions::Extension* extension) override;
+@@ -317,6 +322,8 @@ class NoteTakingHelper : public arc::ArcIntentHelperObserver,
+ 
+   base::ObserverList<Observer>::Unchecked observers_;
+ 
++  content::NotificationRegistrar registrar_;
++
+   std::unique_ptr<NoteTakingControllerClient> note_taking_controller_client_;
+ 
+   base::WeakPtrFactory<NoteTakingHelper> weak_ptr_factory_{this};
+diff --git b/chrome/browser/extensions/extension_service.cc a/chrome/browser/extensions/extension_service.cc
+index 3ea9b0cd444e..d2fd26b60580 100644
+--- b/chrome/browser/extensions/extension_service.cc
++++ a/chrome/browser/extensions/extension_service.cc
+@@ -32,7 +32,6 @@
+ #include "base/time/time.h"
+ #include "base/trace_event/trace_event.h"
+ #include "build/build_config.h"
+-#include "chrome/browser/browser_process.h"
+ #include "chrome/browser/chrome_notification_types.h"
+ #include "chrome/browser/extensions/api/content_settings/content_settings_custom_extension_provider.h"
+ #include "chrome/browser/extensions/api/content_settings/content_settings_service.h"
+@@ -323,9 +322,9 @@ ExtensionService::ExtensionService(Profile* profile,
+                  content::NotificationService::AllBrowserContextsAndSources());
+   registrar_.Add(this, content::NOTIFICATION_RENDERER_PROCESS_TERMINATED,
+                  content::NotificationService::AllBrowserContextsAndSources());
+-  // The ProfileManager may be null in unit tests.
+-  if (g_browser_process->profile_manager())
+-    profile_manager_observer_.Add(g_browser_process->profile_manager());
++  registrar_.Add(this,
++                 chrome::NOTIFICATION_PROFILE_DESTRUCTION_STARTED,
++                 content::Source<Profile>(profile_));
+ 
+   UpgradeDetector::GetInstance()->AddObserver(this);
+ 
+@@ -1843,6 +1842,10 @@ void ExtensionService::Observe(int type,
+                                     system_->info_map(), process->GetID()));
+       break;
+     }
++    case chrome::NOTIFICATION_PROFILE_DESTRUCTION_STARTED: {
++      OnProfileDestructionStarted();
++      break;
++    }
+ 
+     default:
+       NOTREACHED() << "Unexpected notification type.";
+@@ -1996,15 +1999,6 @@ bool ExtensionService::ShouldBlockExtension(const Extension* extension) {
+   return !extension || CanBlockExtension(extension);
+ }
+ 
+-void ExtensionService::OnProfileMarkedForPermanentDeletion(Profile* profile) {
+-  if (profile != profile_)
+-    return;
+-
+-  ExtensionIdSet ids_to_unload = registry_->enabled_extensions().GetIDs();
+-  for (auto it = ids_to_unload.begin(); it != ids_to_unload.end(); ++it)
+-    UnloadExtension(*it, UnloadedExtensionReason::PROFILE_SHUTDOWN);
+-}
+-
+ void ExtensionService::ManageBlacklist(
+     const Blacklist::BlacklistStateMap& state_map) {
+   DCHECK_CURRENTLY_ON(BrowserThread::UI);
+@@ -2172,6 +2166,13 @@ void ExtensionService::UnloadAllExtensionsInternal() {
+   // been disabled or uninstalled.
+ }
+ 
++void ExtensionService::OnProfileDestructionStarted() {
++  ExtensionIdSet ids_to_unload = registry_->enabled_extensions().GetIDs();
++  for (auto it = ids_to_unload.begin(); it != ids_to_unload.end(); ++it) {
++    UnloadExtension(*it, UnloadedExtensionReason::PROFILE_SHUTDOWN);
++  }
++}
++
+ void ExtensionService::OnInstalledExtensionsLoaded() {
+   if (updater_)
+     updater_->Start();
+diff --git b/chrome/browser/extensions/extension_service.h a/chrome/browser/extensions/extension_service.h
+index 4153a22dcfc3..8564a6770608 100644
+--- b/chrome/browser/extensions/extension_service.h
++++ a/chrome/browser/extensions/extension_service.h
+@@ -18,15 +18,12 @@
+ #include "base/memory/ref_counted.h"
+ #include "base/memory/weak_ptr.h"
+ #include "base/optional.h"
+-#include "base/scoped_observer.h"
+ #include "base/strings/string16.h"
+ #include "chrome/browser/extensions/blacklist.h"
+ #include "chrome/browser/extensions/extension_management.h"
+ #include "chrome/browser/extensions/forced_extensions/installation_tracker.h"
+ #include "chrome/browser/extensions/install_gate.h"
+ #include "chrome/browser/extensions/pending_extension_manager.h"
+-#include "chrome/browser/profiles/profile_manager.h"
+-#include "chrome/browser/profiles/profile_manager_observer.h"
+ #include "chrome/browser/upgrade_detector/upgrade_observer.h"
+ #include "components/sync/model/string_ordinal.h"
+ #include "content/public/browser/notification_observer.h"
+@@ -162,8 +159,7 @@ class ExtensionService : public ExtensionServiceInterface,
+                          public Blacklist::Observer,
+                          public ExtensionManagement::Observer,
+                          public UpgradeObserver,
+-                         public ExtensionRegistrar::Delegate,
+-                         public ProfileManagerObserver {
++                         public ExtensionRegistrar::Delegate {
+  public:
+   // Constructor stores pointers to |profile| and |extension_prefs| but
+   // ownership remains at caller.
+@@ -452,9 +448,6 @@ class ExtensionService : public ExtensionServiceInterface,
+   bool CanDisableExtension(const Extension* extension) override;
+   bool ShouldBlockExtension(const Extension* extension) override;
+ 
+-  // ProfileManagerObserver implementation.
+-  void OnProfileMarkedForPermanentDeletion(Profile* profile) override;
+-
+   // For the extension in |version_path| with |id|, check to see if it's an
+   // externally managed extension.  If so, uninstall it.
+   void CheckExternalUninstall(const std::string& id);
+@@ -673,9 +666,6 @@ class ExtensionService : public ExtensionServiceInterface,
+   // Tracker of enterprise policy forced installation.
+   InstallationTracker forced_extensions_tracker_;
+ 
+-  ScopedObserver<ProfileManager, ProfileManagerObserver>
+-      profile_manager_observer_{this};
+-
+   using InstallGateRegistry =
+       std::map<ExtensionPrefs::DelayReason, InstallGate*>;
+   InstallGateRegistry install_delayer_registry_;
+diff --git b/chrome/browser/extensions/extension_service_unittest.cc a/chrome/browser/extensions/extension_service_unittest.cc
+index 80261046aa50..80e3abd8da3e 100644
+--- b/chrome/browser/extensions/extension_service_unittest.cc
++++ a/chrome/browser/extensions/extension_service_unittest.cc
+@@ -7262,7 +7262,9 @@ TEST_F(ExtensionServiceTest, DestroyingProfileClearsExtensions) {
+   EXPECT_EQ(0u, registry()->terminated_extensions().size());
+   EXPECT_EQ(0u, registry()->blacklisted_extensions().size());
+ 
+-  service()->OnProfileMarkedForPermanentDeletion(profile());
++  service()->Observe(chrome::NOTIFICATION_PROFILE_DESTRUCTION_STARTED,
++                     content::Source<Profile>(profile()),
++                     content::NotificationService::NoDetails());
+   EXPECT_EQ(UnloadedExtensionReason::PROFILE_SHUTDOWN, unloaded_reason_);
+   EXPECT_EQ(0u, registry()->enabled_extensions().size());
+   EXPECT_EQ(0u, registry()->disabled_extensions().size());
+diff --git b/chrome/browser/profiles/profile_manager.cc a/chrome/browser/profiles/profile_manager.cc
+index 5fb5b84258a8..8b9e5e28cd34 100644
+--- b/chrome/browser/profiles/profile_manager.cc
++++ a/chrome/browser/profiles/profile_manager.cc
+@@ -53,7 +53,6 @@
+ #include "chrome/browser/profiles/profile_avatar_icon_util.h"
+ #include "chrome/browser/profiles/profile_destroyer.h"
+ #include "chrome/browser/profiles/profile_info_cache.h"
+-#include "chrome/browser/profiles/profile_manager_observer.h"
+ #include "chrome/browser/profiles/profile_metrics.h"
+ #include "chrome/browser/profiles/profiles_state.h"
+ #include "chrome/browser/signin/account_reconcilor_factory.h"
+@@ -485,14 +484,6 @@ Profile* ProfileManager::CreateInitialProfile() {
+   return profile;
+ }
+ 
+-void ProfileManager::AddObserver(ProfileManagerObserver* observer) {
+-  observers_.AddObserver(observer);
+-}
+-
+-void ProfileManager::RemoveObserver(ProfileManagerObserver* observer) {
+-  observers_.RemoveObserver(observer);
+-}
+-
+ Profile* ProfileManager::GetProfile(const base::FilePath& profile_dir) {
+   TRACE_EVENT0("browser", "ProfileManager::GetProfile");
+ 
+@@ -1180,9 +1171,6 @@ void ProfileManager::DoFinalInit(ProfileInfo* profile_info,
+   // GetProfileByPath().
+   profile_info->created = true;
+ 
+-  for (auto& observer : observers_)
+-    observer.OnProfileAdded(profile);
+-
+   content::NotificationService::current()->Notify(
+       chrome::NOTIFICATION_PROFILE_ADDED,
+       content::Source<Profile>(profile),
+@@ -1483,10 +1471,12 @@ void ProfileManager::OnLoadProfileForProfileDeletion(
+   // TODO(sail): Due to bug 88586 we don't delete the profile instance. Once we
+   // start deleting the profile instance we need to close background apps too.
+   if (profile) {
+-    // TODO(estade): Migrate additional code in this block to observe
+-    // ProfileManager instead of handling shutdown here.
+-    for (auto& observer : observers_)
+-      observer.OnProfileMarkedForPermanentDeletion(profile);
++    // TODO: Migrate additional code in this block to observe this notification
++    // instead of being implemented here.
++    content::NotificationService::current()->Notify(
++        chrome::NOTIFICATION_PROFILE_DESTRUCTION_STARTED,
++        content::Source<Profile>(profile),
++        content::NotificationService::NoDetails());
+ 
+     // Disable sync for doomed profile.
+     if (ProfileSyncServiceFactory::HasSyncService(profile)) {
+diff --git b/chrome/browser/profiles/profile_manager.h a/chrome/browser/profiles/profile_manager.h
+index 87ecf1fc998b..bcfb7d7ca0e1 100644
+--- b/chrome/browser/profiles/profile_manager.h
++++ a/chrome/browser/profiles/profile_manager.h
+@@ -18,7 +18,6 @@
+ #include "base/files/file_path.h"
+ #include "base/gtest_prod_util.h"
+ #include "base/macros.h"
+-#include "base/observer_list.h"
+ #include "base/threading/thread_checker.h"
+ #include "build/build_config.h"
+ #include "chrome/browser/profiles/profile.h"
+@@ -31,7 +30,6 @@
+ 
+ class ProfileAttributesStorage;
+ class ProfileInfoCache;
+-class ProfileManagerObserver;
+ 
+ class ProfileManager : public content::NotificationObserver,
+                        public Profile::Delegate {
+@@ -88,9 +86,6 @@ class ProfileManager : public content::NotificationObserver,
+   // platforms, this returns the default profile.
+   static Profile* CreateInitialProfile();
+ 
+-  void AddObserver(ProfileManagerObserver* observer);
+-  void RemoveObserver(ProfileManagerObserver* observer);
+-
+   // Returns a profile for a specific profile directory within the user data
+   // dir. This will return an existing profile it had already been created,
+   // otherwise it will create and manage it.
+@@ -450,8 +445,6 @@ class ProfileManager : public content::NotificationObserver,
+   // Controls whether to initialize some services. Only disabled for testing.
+   bool do_final_services_init_ = true;
+ 
+-  base::ObserverList<ProfileManagerObserver> observers_;
+-
+   // TODO(chrome/browser/profiles/OWNERS): Usage of this in profile_manager.cc
+   // should likely be turned into DCHECK_CURRENTLY_ON(BrowserThread::UI) for
+   // consistency with surrounding code in the same file but that wasn't trivial
+diff --git b/chrome/browser/profiles/profile_manager_observer.h a/chrome/browser/profiles/profile_manager_observer.h
+deleted file mode 100644
+index 5f15d1ddce7c..000000000000
+--- b/chrome/browser/profiles/profile_manager_observer.h
++++ /dev/null
+@@ -1,24 +0,0 @@
+-// Copyright 2019 The Chromium Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style license that can be
+-// found in the LICENSE file.
+-
+-#ifndef CHROME_BROWSER_PROFILES_PROFILE_MANAGER_OBSERVER_H_
+-#define CHROME_BROWSER_PROFILES_PROFILE_MANAGER_OBSERVER_H_
+-
+-#include "base/observer_list_types.h"
+-
+-class Profile;
+-
+-class ProfileManagerObserver : public base::CheckedObserver {
+- public:
+-  // Called when a profile is added to the manager. The profile is fully created
+-  // and registered with the ProfileManager.
+-  virtual void OnProfileAdded(Profile* profile) {}
+-
+-  // Called when the user deletes a profile and all associated data should be
+-  // erased. Note that the Profile object will not be destroyed until Chrome
+-  // shuts down. See https://crbug.com/88586
+-  virtual void OnProfileMarkedForPermanentDeletion(Profile* profile) {}
+-};
+-
+-#endif  // CHROME_BROWSER_PROFILES_PROFILE_MANAGER_OBSERVER_H_
