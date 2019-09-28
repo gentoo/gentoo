@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Hybrid between a make utility and a shell scripting language"
-HOMEPAGE="http://fbb-git.gitlab.io/icmake/ https://gitlab.com/fbb-git/icmake"
+HOMEPAGE="https://fbb-git.gitlab.io/icmake/ https://gitlab.com/fbb-git/icmake"
 SRC_URI="https://gitlab.com/fbb-git/${PN}/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
