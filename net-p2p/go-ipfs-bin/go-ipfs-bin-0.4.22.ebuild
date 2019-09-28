@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit bash-completion-r1 systemd user
+inherit bash-completion-r1 systemd
 
 DESCRIPTION="Main implementation of IPFS"
 HOMEPAGE="https://ipfs.io/"
@@ -17,7 +17,12 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm ~x86"
 
-RDEPEND="sys-fs/fuse"
+RDEPEND="
+	acct-group/ipfs
+	acct-user/ipfs
+	sys-fs/fuse:0
+"
+
 S="${WORKDIR}/go-ipfs"
 
 QA_PREBUILT="/usr/bin/ipfs"
@@ -26,6 +31,8 @@ src_install() {
 	dobin ipfs
 
 	systemd_dounit "${FILESDIR}/ipfs.service"
+	systemd_newunit "${FILESDIR}/ipfs-at.service" "ipfs@.service"
+
 	newinitd "${FILESDIR}/ipfs.init" ipfs
 	newconfd "${FILESDIR}/ipfs.confd" ipfs
 
@@ -34,9 +41,6 @@ src_install() {
 }
 
 pkg_preinst() {
-	enewgroup ipfs
-	enewuser ipfs "" "" /var/lib/ipfs ipfs
-
 	fowners -R ipfs:ipfs /var/log/ipfs
 }
 
