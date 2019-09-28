@@ -1,9 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit eapi7-ver
+EAPI=7
 
 P_RELEASE="$(ver_cut 1-2)"
 
@@ -45,6 +43,7 @@ RDEPEND="
 "
 DEPEND=""
 PDEPEND=">=gnome-base/gvfs-1.40.1"
+BDEPEND=""
 S="${WORKDIR}"
 
 pkg_pretend() {
