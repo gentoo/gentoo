@@ -19540,7 +19540,7 @@ x11-wm/fvwm 2.6.5-r3 2.6.8-r2: An extremely powerful ICCCM-compliant multiple vi
 x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.0 0.7.1 0.7.2 9999: A manual tiling window manager for X
 x11-wm/i3 4.14 4.15 4.16 4.16.1 4.17.1 9999: An improved dynamic tiling window manager
-x11-wm/i3-gaps 4.16.1 4.16.1-r1: i3 fork with gaps and some more features
+x11-wm/i3-gaps 4.16.1 4.16.1-r1 4.17.1: i3 fork with gaps and some more features
 x11-wm/icewm 1.5.5 1.6.1 1.6.2: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.7: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
