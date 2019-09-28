@@ -1,8 +1,6 @@
 # Copyright 2008-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# True Authors: Arfrever Frehtes Taifersar Arahesis and others
-
 EAPI="6"
 JAVA_PKG_IUSE="doc source"
 
@@ -24,7 +22,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/20"
+SLOT="0/21"
 KEYWORDS=""
 IUSE=""
 
