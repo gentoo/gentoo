@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 inherit eutils
 
 MY_PV="20080909"
@@ -14,7 +14,7 @@ SRC_URI="https://lib3ds.googlecode.com/files/${MY_P}.zip"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
-IUSE=""
+IUSE="static-libs"
 
 S=${WORKDIR}/${MY_P}
 
@@ -24,6 +24,11 @@ DEPEND="${RDEPEND}
 	app-arch/unzip"
 
 src_prepare() {
-#	epatch "${FILESDIR}"/${P}-underlinking.patch
-	epatch "${FILESDIR}"/${P}-underlinking-no-autoreconf.patch
+#	eapply "${FILESDIR}"/${P}-underlinking.patch
+	eapply "${FILESDIR}"/${P}-underlinking-no-autoreconf.patch
+	default
+}
+
+src_configure() {
+	econf $(use_enable static-libs static)
 }

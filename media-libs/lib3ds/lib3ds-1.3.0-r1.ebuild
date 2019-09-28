@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
-inherit autotools-utils
+inherit autotools eutils
 
 DESCRIPTION="library for managing 3D-Studio Release 3 and 4 .3DS files"
 HOMEPAGE="https://code.google.com/p/lib3ds/"
@@ -22,3 +22,7 @@ PATCHES=(
 	"${FILESDIR}/lib3ds-1.3.0-r1-pkgconfig.patch"
 	"${FILESDIR}/lib3ds-1.3.0-r1-mesh.c.patch"
 )
+
+src_configure() {
+	econf $(use_enable static-libs static)
+}
