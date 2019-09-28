@@ -329,8 +329,6 @@ src_configure() {
 	# DVB / Video4Linux / Radio support #
 	#####################################
 	myconf+=" --disable-tv-bsdbt848"
-	# broken upstream, won't work with recent kernels
-	myconf+=" --disable-ivtv"
 	# gone since linux-headers-2.6.38
 	myconf+=" --disable-tv-v4l1"
 	if { use dvb || use v4l || use pvr || use radio; }; then
