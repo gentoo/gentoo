@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ HOMEPAGE="http://x265.org/"
 LICENSE="GPL-2"
 # subslot = libx265 soname
 SLOT="0/160"
-IUSE="+10bit +12bit cpu_flags_arm_neon numa pic power8 test"
+IUSE="+10bit +12bit cpu_flags_arm_neon numa pic power8 static-libs test"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"
 RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
@@ -189,6 +189,7 @@ multilib_src_install() {
 	# Install only "main" variant since the others are already linked into it.
 	local MULTIBUILD_VARIANTS=( "main" )
 	multibuild_foreach_variant cmake-utils_src_install
+	use static-libs || find "${ED}" -type f -name "*.a" -exec rm -f {} \;
 }
 
 multilib_src_install_all() {
