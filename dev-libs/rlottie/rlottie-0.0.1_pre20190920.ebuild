@@ -22,6 +22,8 @@ DEPEND="test? ( dev-cpp/gtest )"
 
 S="${WORKDIR}/rlottie-${MY_COMMIT}"
 
+PATCHES=( "${FILESDIR}"/rlottie-0.0.1_pre20190920-disable-werror.patch )
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use test)
