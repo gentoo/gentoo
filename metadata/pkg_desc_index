@@ -2023,7 +2023,7 @@ app-misc/metromap 0.1.4-r1: Metromap is simple pygtk+2 programm for finding path
 app-misc/mime-types 9: Provides /etc/mime.types file
 app-misc/mkcert 1.4.0: A zero-config tool to make locally trusted development certificates
 app-misc/mmv 1.01b_p18 1.01b_p18-r1: Move/copy/append/link multiple files according to a set of wildcard patterns
-app-misc/mosquitto 1.5.6 1.5.8 1.6.2 1.6.7: An Open Source MQTT v3 Broker
+app-misc/mosquitto 1.5.6 1.6.7: An Open Source MQTT v3 Broker
 app-misc/mouseremote 0.90-r2: X10 MouseRemote
 app-misc/mswinurl_launcher 1.0: Launcher and desktop association for MS Windows *.URL (text/x-uri) files
 app-misc/mtail 1.1.1-r3 1.2.0: Tail workalike, that performs output colourising
