@@ -2,10 +2,10 @@ DEFINED_PHASES=-
 DEPEND=app-arch/libarchive:= sys-fs/fuse:0 virtual/pkgconfig
 DESCRIPTION=Mount archives using libarchive and FUSE
 EAPI=6
-HOMEPAGE=https://www.cybernoia.de/software/archivemount.html https://github.com/cybernoid/archivemount.git
+HOMEPAGE=https://www.cybernoia.de/software/archivemount.html https://github.com/cybernoid/archivemount
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=app-arch/libarchive:= sys-fs/fuse:0
 SLOT=0
 SRC_URI=https://www.cybernoia.de/software/archivemount/archivemount-0.8.12.tar.gz
-_md5_=96124bb0a7346b769fae1e6dfe95325a
+_md5_=6dc3cde29f3eaed07136152b2468f8f3
