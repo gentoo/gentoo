@@ -2699,6 +2699,7 @@ dev-python/pyzor:redis - Enables the redis back-end database engine for pyzord t
 dev-python/rarfile:compressed - Enables the module to support compressed v3 archives by calling the app-arch/unrar.
 dev-python/rdflib:redland - enable support for Redland triplestore
 dev-python/restkit:cli - Install the restcli command line interface/tool, based on dev-python/ipython
+dev-python/rfc3986:idna - enable support for the IDNA specification (RFC 5891)
 dev-python/setuptools_scm:mercurial - Enables mercurial backend
 dev-python/simplespectral:faster - Use sci-libs/scipy to speed up drawing
 dev-python/simplespectral:fastest - Use dev-python/pyFFTW to speed up drawing to the max
