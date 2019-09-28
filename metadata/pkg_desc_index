@@ -2245,7 +2245,7 @@ app-pda/iripdb 0.1.3b: Allows generating the DB files necessary for the iRiver i
 app-pda/jpilot 1.8.2: Desktop Organizer Software for the Palm Pilot
 app-pda/libimobiledevice 1.2.0-r1: Support library to communicate with Apple iPhone/iPod Touch devices
 app-pda/libplist 2.0.0: Support library to deal with Apple Property Lists (Binary & XML)
-app-pda/libusbmuxd 1.0.9 1.0.10: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
+app-pda/libusbmuxd 1.0.9 1.0.10-r1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-pda/pilot-link 0.12.5-r2: Suite of tools for moving data between a Palm device and a desktop
 app-pda/usbmuxd 1.0.8_p20140530 1.1.0: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
@@ -11082,6 +11082,7 @@ games-action/bzflag 2.4.12 2.4.14 2.4.16 2.4.18: 3D tank combat simulator game
 games-action/chickens 0.2.4-r1: Target chickens with rockets and shotguns. Funny
 games-action/chromium-bsu 0.9.15.1-r1: Chromium B.S.U. - an arcade game
 games-action/clanbomber 2.1.1-r1: Bomberman-like multiplayer game
+games-action/crimsonland 1.3.5: A top-down shooter with a touch of RPG
 games-action/cs2d 1002-r1: A freeware clone of Counter-Strike with some added features in gameplay
 games-action/d1x-rebirth 0.58.1: Descent Rebirth - enhanced Descent 1 engine
 games-action/deathchase3d 0.9-r1: A remake of the Sinclair Spectrum game of the same name
@@ -11758,6 +11759,7 @@ games-roguelike/dwarf-fortress 0.43.05 0.44.12: A single-player fantasy game
 games-roguelike/hengband 1.6.2-r1: An Angband variant, with a Japanese/fantasy theme
 games-roguelike/mazesofmonad 1.0.9-r3: Console-based roguelike Role Playing Game similar to nethack
 games-roguelike/moria 5.7.10: The Dungeons of Moria, a single player roguelike game, also known as Umoria
+games-roguelike/neon-chrome 1.1.12: A ruthless top-down cyberpunk shooter with rogue-like elements
 games-roguelike/nethack 3.6.0-r3 3.6.1: The ultimate old-school single player dungeon exploration game
 games-roguelike/powder 117-r1: A game in the genre of Rogue, Nethack, and Diablo. Emphasis is on tactical play
 games-roguelike/scourge 0.21.1-r1: A graphical rogue-like adventure game
@@ -14863,7 +14865,7 @@ net-fs/mc 2019.01.10.00.38.22 2019.01.24.01.40.23 2019.01.30.19.57.22 2019.02.06
 net-fs/minio 2019.01.10.00.21.20 2019.01.16.21.44.08 2019.01.23.23.18.58 2019.01.31.00.31.19 2019.02.06.21.16.36 2019.02.12.21.58.47 2019.02.14.00.21.45 2019.02.20.22.44.29 2019.02.26.19.51.46 2019.03.06.22.47.10 2019.03.13.21.59.47 2019.03.20.22.38.47 2019.03.27.22.35.21 2019.04.04.18.31.46 2019.04.09.01.22.30 2019.04.18.01.15.57 2019.04.18.21.44.59 2019.04.23.23.50.36 2019.07.24.02.02.23 2019.07.31.18.57.56 2019.08.01.22.18.54 2019.08.14.20.37.41 2019.08.21.19.40.07 2019.08.29.00.25.01 2019.09.11.19.53.16: An Amazon S3 compatible object storage server
 net-fs/ncpfs 2.2.6-r3 2.2.6-r4 2.2.6-r5: Provides access to Netware services using the NCP protocol
 net-fs/netatalk 3.1.12: Open Source AFP server
-net-fs/nfs-utils 2.3.3 2.3.4 2.4.1-r1 2.4.1-r2: NFS client and server daemons
+net-fs/nfs-utils 2.4.1-r2: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.3 0.3.5: Commandline and GUI tools that deal directly with NFSv4 ACLs
 net-fs/nfstest 1.0.2 2.1.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.22.1 1.6.22.2 1.8.2-r1: The OpenAFS distributed file system

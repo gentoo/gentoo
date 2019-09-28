@@ -1,0 +1,12 @@
+DEFINED_PHASES=install nofetch postinst postrm
+DESCRIPTION=A ruthless top-down cyberpunk shooter with rogue-like elements
+EAPI=7
+HOMEPAGE=https://neonchromegame.com/
+KEYWORDS=-* ~amd64
+LICENSE=all-rights-reserved
+RDEPEND=media-libs/libsdl2[opengl,video] media-libs/openal
+RESTRICT=bindist mirror splitdebug
+SLOT=0
+SRC_URI=NeonChrome-Linux-1.1.12.tar https://dev.gentoo.org/~chewi/distfiles/neon-chrome.png
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=f2fd9f9209c10a3b38ee8bc9b9854c33
