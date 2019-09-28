@@ -81,6 +81,7 @@ games-misc/papers-please
 games-puzzle/world-of-goo
 games-puzzle/world-of-goo-demo
 games-roguelike/adom
+games-roguelike/neon-chrome
 games-rpg/costume-quest
 games-rpg/dear-esther
 games-rpg/dungeon-defenders
