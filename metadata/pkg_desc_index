@@ -2807,7 +2807,7 @@ app-vim/splice 1.0.1 1.1.0: vim plugin: resolve conflicts during three-way merge
 app-vim/sudoedit 0.21: vim plugin: edit files using sudo or su
 app-vim/supertab 2.1: vim plugin: enhanced Tab key functionality
 app-vim/surround 2.1-r1: vim plugin: Delete/change/add parentheses/quotes/XML-tags & much more
-app-vim/syntastic 3.8.0 3.9.0 9999: vim plugin: syntax checking using external tools
+app-vim/syntastic 3.9.0 9999: vim plugin: syntax checking using external tools
 app-vim/tagbar 2.7: vim plugin: display tags of the current file ordered by scope
 app-vim/taglist 4.6: vim plugin: ctags-based source code browser
 app-vim/tasklist 1.0.1: Highlight FIXME/TODO/CUSTOM keywords in a separate list
