@@ -13220,7 +13220,7 @@ media-libs/ganv 1.4.2: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.2.5-r2: Graphics library for fast image creation
 media-libs/gegl 0.2.0-r2 0.2.0-r5 0.2.0-r6 0.3.0 0.3.0-r1 0.3.26 0.3.34 0.4.14 0.4.16 9999: A graph based image processing framework
-media-libs/gexiv2 0.10.10-r1 9999: GObject-based wrapper around the Exiv2 library
+media-libs/gexiv2 0.10.10-r1 0.12.0 9999: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 4.1.6-r2 4.1.6-r3 5.0.6 5.1.4 5.1.8-r1 5.1.9 5.2.1: Library to handle, display and manipulate GIF images
 media-libs/glew 1.6.0-r100 1.10.0-r100 2.1.0-r1: The OpenGL Extension Wrangler Library
