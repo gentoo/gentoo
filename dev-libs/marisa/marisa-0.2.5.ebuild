@@ -24,14 +24,8 @@ fi
 LICENSE="|| ( BSD-2 LGPL-2.1+ )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_sse4a cpu_flags_x86_popcnt python static-libs"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
-	cpu_flags_x86_sse3? ( cpu_flags_x86_sse2 )
-	cpu_flags_x86_ssse3? ( cpu_flags_x86_sse3 )
-	cpu_flags_x86_sse4_1? ( cpu_flags_x86_ssse3 )
-	cpu_flags_x86_sse4_2? ( cpu_flags_x86_popcnt cpu_flags_x86_sse4_1 )
-	cpu_flags_x86_sse4a? ( cpu_flags_x86_popcnt cpu_flags_x86_sse3 )
-	cpu_flags_x86_popcnt? ( cpu_flags_x86_sse3 )"
+IUSE="python static-libs"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="python? (
 		${PYTHON_DEPS}
@@ -43,6 +37,10 @@ RDEPEND="${DEPEND}"
 if [[ "${PV}" != "9999" ]]; then
 	S="${WORKDIR}/marisa-trie-${PV}"
 fi
+
+PATCHES=(
+	"${FILESDIR}/${P}-cpu_features_check.patch"
+)
 
 src_prepare() {
 	default
@@ -58,14 +56,18 @@ src_prepare() {
 }
 
 src_configure() {
+	local -x CPPFLAGS="${CPPFLAGS} ${CXXFLAGS}"
+
 	local options=(
-		$(use_enable cpu_flags_x86_sse2 sse2)
-		$(use_enable cpu_flags_x86_sse3 sse3)
-		$(use_enable cpu_flags_x86_ssse3 ssse3)
-		$(use_enable cpu_flags_x86_sse4_1 sse4.1)
-		$(use_enable cpu_flags_x86_sse4_2 sse4.2)
-		$(use_enable cpu_flags_x86_sse4a sse4a)
-		$(use_enable cpu_flags_x86_popcnt popcnt)
+		# Preprocessor macros dependent on CPPFLAGS are checked.
+		--enable-sse2
+		--enable-sse3
+		--enable-ssse3
+		--enable-sse4.1
+		--enable-sse4.2
+		--enable-sse4
+		--enable-sse4a
+		--enable-popcnt
 		$(use_enable static-libs static)
 	)
 
