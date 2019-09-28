@@ -30,7 +30,7 @@ BDEPEND=""
 RDEPEND="app-i18n/opencc:0=
 	dev-cpp/glog:0=
 	dev-cpp/yaml-cpp:0=
-	dev-libs/boost:0=[threads]
+	dev-libs/boost:0=[nls,threads]
 	dev-libs/leveldb:0=
 	dev-libs/marisa:0="
 DEPEND="${RDEPEND}
