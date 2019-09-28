@@ -13,7 +13,6 @@ else
 	S="${WORKDIR}/ROCT-Thunk-Interface-roc-${PV}"
 	KEYWORDS="~amd64"
 fi
-
 PATCHES=(
 	"${FILESDIR}/${PN}-2.6.0-correctly-install.patch"
 	"${FILESDIR}/${PN}-2.6.0-correctly-install-pc.patch"
