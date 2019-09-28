@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs eutils multilib multilib-minimal
 
@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 src_prepare() {
+	default
 	multilib_copy_sources
 }
 
@@ -41,6 +42,7 @@ multilib_src_compile() {
 multilib_src_install() {
 	emake DESTDIR="${D}" INSTALL_SDK_LIBS="${EPREFIX}/usr/$(get_libdir)" INSTALL_PKGCONFIG="${EPREFIX}/usr/$(get_libdir)/pkgconfig" INSTALL_PLUGINS="${EPREFIX}/usr/$(get_libdir)/vamp" install
 	multilib_is_native_abi && use doc && dohtml -r build/doc/html/*
+	use static-libs || find "${ED}" -type f -name "*.a" -exec rm -f {} \;
 }
 
 multilib_src_install_all() {
