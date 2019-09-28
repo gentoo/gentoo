@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="AVFS is a virtual filesystem that allows browsing of compressed files"
-HOMEPAGE="https://sourceforge.net/projects/avf"
+HOMEPAGE="https://sourceforge.net/projects/avf/"
 SRC_URI="mirror://sourceforge/avf/${P}.tar.bz2"
 
 LICENSE="GPL-2"
