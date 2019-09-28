@@ -7,7 +7,6 @@ inherit eutils unpacker games
 DESCRIPTION="standalone multi-player game based on Return to Castle Wolfenstein"
 HOMEPAGE="http://www.idsoftware.com/"
 SRC_URI="mirror://idsoftware/et/linux/et-linux-2.60.x86.run
-	ftp://ftp.red.telefonica-wholesale.net/GAMES/ET/linux/et-linux-2.60.x86.run
 	mirror://idsoftware/et/ET-${PV}.zip
 	dedicated? (
 		https://dev.gentoo.org/~wolf31o2/sources/dump/${PN}-all-0.1.tar.bz2
