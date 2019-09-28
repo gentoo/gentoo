@@ -21,3 +21,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+
+src_prepare() {
+	# Use current python version, not the latest installed
+	sed -i "s/find_package(Python3 3.4 REQUIRED/find_package(Python3 ${EPYTHON##python} EXACT REQUIRED/g" CMakeLists.txt || die
+
+	cmake-utils_src_prepare
+}
