@@ -206,8 +206,7 @@ qmail_man_install() {
 	into /usr
 	doman *.[1578]
 	dodoc BLURB* CHANGES FAQ INSTALL* PIC* README* REMOVE* SECURITY \
-		SENDMAIL SYSDEPS TEST* THANKS* THOUGHTS TODO* \
-		UPGRADE VERSION*
+		SENDMAIL* SYSDEPS TEST* THANKS* THOUGHTS UPGRADE VERSION*
 
 	declare -F qmail_man_install_hook >/dev/null && \
 		qmail_man_install_hook
