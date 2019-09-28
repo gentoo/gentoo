@@ -3073,7 +3073,6 @@ dev-cpp/sourcetrail 2018.3.55-r1 2019.1.11 2019.2.39 2019.3.46: A cross-platform
 dev-cpp/sparsehash 2.0.3-r1: An extremely memory-efficient hash_map implementation
 dev-cpp/tbb 2017.20161128 2018.20180312 2019.8: High level abstract threading library
 dev-cpp/tclap 1.2.1 1.2.2: Simple templatized C++ library for parsing command line arguments
-dev-cpp/threadpool 0.2.5-r1: A cross-platform C++ thread pool library (built on top of Boost)
 dev-cpp/tree 2.81: An STL-like tree class
 dev-cpp/waylandpp 0.2.3 0.2.4 0.2.5 9999: Wayland C++ bindings
 dev-cpp/websocketpp 0.8.1-r1: C++/Boost Asio based websocket client/server library
@@ -3603,7 +3602,7 @@ dev-haskell/glade 0.12.5.0-r2 0.12.5.0-r100: Binding to the glade library
 dev-haskell/glib 0.12.5.4 0.13.2.2 0.13.4.1: Binding to the GLIB library for Gtk2Hs
 dev-haskell/glob 0.7.5 0.7.14: Globbing library
 dev-haskell/gluraw 1.2.0.0 1.3.0.0 1.4.0.1 1.5.0.1 2.0.0.3: A raw binding for the OpenGL graphics system
-dev-haskell/glut 2.1.1.2 2.3.1.0 2.4.0.0 2.5.1.1 2.7.0.1 2.7.0.11: A binding for the OpenGL Utility Toolkit
+dev-haskell/glut 2.5.1.1 2.7.0.11: A binding for the OpenGL Utility Toolkit
 dev-haskell/gnuidn 0.2.1 0.2.2: Bindings for GNU IDN
 dev-haskell/gnutls 0.2: Bindings for GNU libgnutls
 dev-haskell/graphviz 2999.18.0.2-r1 2999.18.1.2: Bindings to Graphviz for graph visualisation
@@ -11789,8 +11788,6 @@ games-rpg/dungeon-defenders 20130305: A hybrid of two hot genres: Tower Defense 
 games-rpg/egoboo 2.8.1-r1: A 3d dungeon crawling adventure in the spirit of NetHack
 games-rpg/eschalon-book-1-demo 106-r1: A classic role-playing game
 games-rpg/eternal-lands 1.9.5.3: A 3D fantasy MMORPG written in C and SDL
-games-rpg/eternal-lands-bloodsucker 3.0_p20110618: Non-official map pack for Eternal Lands
-games-rpg/eternal-lands-data 1.9.3-r1: An online MMORPG written in C and SDL
 games-rpg/freedink 108.4-r1: Dink Smallwood is an adventure/role-playing game, similar to Zelda (2D top view)
 games-rpg/freedink-data 1.08.20140901-r1 1.08.20170409: Freedink game data
 games-rpg/freedroid 1.0.2-r1: Freedroid - a Paradroid clone
@@ -15171,7 +15168,7 @@ net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter
 net-libs/nghttp2 1.39.2 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 0.12.18 4.9.1 6.14.4 6.17.1 8.12.0 8.16.1 10.16.3 12.9.1 12.10.0 12.11.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.18 4.9.1 6.14.4 6.17.1 8.12.0 8.16.1 10.16.3 12.10.0 12.11.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -15471,7 +15468,6 @@ net-misc/l7-protocols 2009.05.28: Protocol definitions of l7-filter kernel modul
 net-misc/lambdamoo 1.8.1-r3: networked mud that can be used for different types of collaborative software
 net-misc/lanmap 81-r1 81-r2: lanmap sits quietly on a network and builds a picture of what it sees
 net-misc/lcr 9999: Linux Call Router
-net-misc/libss7 1.0.2: Signalling System 7 (SS7) protocol library
 net-misc/libteam 1.22 1.29 9999: Library and tools set for controlling team network device
 net-misc/linux-eoip 0.5: Linux support for proprietary MIkrotik EoIP protocol
 net-misc/linuxptp 1.8 2.0: The Linux Precision Time Protocol (PTP) implementation
@@ -16399,7 +16395,6 @@ sci-electronics/geda-xgsch2pcb 0.1.3-r3 0.1.3-r4: A graphical front-end for the 
 sci-electronics/gerbv 2.6.0 2.6.1: A RS-274X (Gerber) and NC drill (Excellon) file viewer
 sci-electronics/gnetman 0.0.1_pre20110124: A GNU Netlist Manipulation Library
 sci-electronics/gnucap 0.35.20091207-r1: GNUCap is the GNU Circuit Analysis Package
-sci-electronics/gplcver 2.11a 2.12a: Verilog simulator
 sci-electronics/gresistor 0.0.2: Translate a resistor color codes into a readable value
 sci-electronics/gsmc 1.1-r2: A GTK program for doing Smith Chart calculations
 sci-electronics/gspeakers 0.11-r2: GTK based loudspeaker enclosure and crossovernetwork designer
@@ -17270,7 +17265,7 @@ sys-apps/findutils 4.6.0-r1 4.7.0: GNU utilities for finding files
 sys-apps/firejail 0.9.50 0.9.60-r1 9999: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.38.10 0.9.38.12 0.9.56.2 0.9.56.2-r1: Security sandbox for any type of processes; LTS version
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
-sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8 0.9.9 1.0 9999: Utility for reading, writing, erasing and verifying flash ROM chips
+sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8 0.9.9 1.0 1.1 9999: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/flock 2.19: Manage locks from shell scripts
 sys-apps/frandom 1.1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwcrv 0.1.0: FireWire CSR Config ROM Viewer

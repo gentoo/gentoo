@@ -3421,9 +3421,6 @@ games-rpg/daimonin-client:music - Install extra music
 games-rpg/drascula:sound - Install optional audio files
 games-rpg/dreamweb:doc - High-resolution scans of the written material in the original UK game box
 games-rpg/dungeon-defenders:bundled-libs - Use the upstream provided bundled libraries.
-games-rpg/eternal-lands-data:bloodsuckermaps - Will install Bloodsucker's Maps in place of the official map files
-games-rpg/eternal-lands-data:music - Enables in-game music
-games-rpg/eternal-lands-data:sound - Enables in-game sound effects
 games-rpg/hatoful-boyfriend:gui - Install the GUI for configuring screen resolution and input
 games-rpg/hatoful-boyfriend-holiday-star:gui - Install the GUI for configuring screen resolution and input
 games-rpg/kqlives:cheats - Enable cheating mode
