@@ -1,7 +1,7 @@
 # Copyright 2008-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple
@@ -26,8 +26,9 @@ SLOT="0/21"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="~dev-libs/protobuf-${PV}
+BDEPEND="~dev-libs/protobuf-${PV}
 	>=virtual/jdk-1.7"
+DEPEND=">=virtual/jdk-1.7"
 RDEPEND=">=virtual/jre-1.7
 	!<dev-libs/protobuf-3[java(-)]"
 
