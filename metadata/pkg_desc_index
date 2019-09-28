@@ -12056,7 +12056,7 @@ gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME'
 gnome-extra/pch-session 3.30.0.2: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r1 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
-gnome-extra/sushi 3.30.0: A quick previewer for Nautilus, the GNOME file manager
+gnome-extra/sushi 3.30.0 3.32.1: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.30.0 3.32.2: Help browser for GNOME
 gnome-extra/yelp-xsl 3.20.1 3.30.1 3.32.1: XSL stylesheets for yelp
