@@ -50,7 +50,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local -x CXXFLAGS="${CXXFLAGS} -I/usr/include/utf8cpp"
+	local -x CXXFLAGS="${CXXFLAGS} -I${ESYSROOT}/usr/include/utf8cpp"
 
 	local mycmakeargs=(
 		-DBOOST_USE_CXX11=ON
