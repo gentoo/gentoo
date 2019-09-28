@@ -13720,7 +13720,7 @@ media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
 media-plugins/kodi-visualization-projectm 2.1.0 2.2.0 9999: ProjectM visualizer for Kodi
 media-plugins/kodi-visualization-shadertoy 1.1.5 1.1.8 1.1.9 1.1.10 9999: Shadertoy visualizer for Kodi
 media-plugins/kodi-visualization-spectrum 1.1.1 2.0.3 2.0.4 9999: Spectrum visualizer for Kodi
-media-plugins/kodi-visualization-starburst 9999: StarBurst visualizer for Kodi
+media-plugins/kodi-visualization-starburst 2.0.0 9999: StarBurst visualizer for Kodi
 media-plugins/kodi-visualization-waveform 2.0.1 3.0.2 9999: Waveform visualizer for Kodi
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
