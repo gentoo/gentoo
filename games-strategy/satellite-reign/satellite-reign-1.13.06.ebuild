@@ -18,6 +18,8 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="+gui"
 RESTRICT="bindist fetch splitdebug"
 
+BDEPEND="app-arch/unzip"
+
 RDEPEND="
 	virtual/opengl
 	x11-libs/libX11
