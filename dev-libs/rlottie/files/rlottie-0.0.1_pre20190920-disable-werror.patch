@@ -1,0 +1,11 @@
+diff -Naur a/meson.build b/meson.build
+--- a/meson.build	2019-09-28 08:38:12.810010842 +0300
++++ b/meson.build	2019-09-28 08:38:47.812649483 +0300
+@@ -1,6 +1,6 @@
+ project('rlottie',
+         'cpp',
+-        default_options : ['warning_level=3', 'werror=true', 'cpp_std=c++14', 'optimization=s'],
++        default_options : ['cpp_std=c++14', 'optimization=s'],
+         version : '0.0.1',
+         license : 'Apache')
+ 
