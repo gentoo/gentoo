@@ -1,8 +1,6 @@
 # Copyright 2008-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# True Authors: Arfrever Frehtes Taifersar Arahesis and others
-
 EAPI="7"
 PYTHON_COMPAT=(python{2_7,3_5,3_6,3_7})
 
@@ -24,7 +22,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/20"
+SLOT="0/21"
 KEYWORDS=""
 IUSE=""
 
@@ -60,5 +58,5 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	find "${D}" -name "*.pth" -delete || die
+	find "${D}" -name "*.pth" -type f -delete || die
 }
