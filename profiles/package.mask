@@ -30,6 +30,33 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-28)
+# All of the following packages are unfetchable and mirror-restricted.
+#
+# games-fps/enemy-territory-etpro: #638092
+# games-fps/ut2003-bonuspack-cm: #640552
+# games-rpg/runescape-launcher: #625884
+# games-server/bf1942-lnxded: #640576
+# games-server/nwn-ded: #640578
+# games-strategy/mindrover-demo: #640586
+# media-fonts/hkscs-ming: #640590
+# net-print/adobeps: #687000
+# sci-chemistry/xdsstat-bin: #673962
+# sci-libs/parmgridgen (+ revdep sci-libs/openfoam): #633888
+#
+# Removal in 30 days.
+games-fps/enemy-territory-etpro
+games-fps/ut2003-bonuspack-cm
+games-rpg/runescape-launcher
+games-server/bf1942-lnxded
+games-server/nwn-ded
+games-strategy/mindrover-demo
+media-fonts/hkscs-ming
+net-print/adobeps
+sci-chemistry/xdsstat-bin
+sci-libs/openfoam
+sci-libs/parmgridgen
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-28)
 # games-fps/ut2004 is unfetchable for almost 3 years.  The remaining
 # packagse are its reverse dependencies, some of them unfetchable
 # as well.
