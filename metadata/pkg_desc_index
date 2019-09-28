@@ -14,6 +14,7 @@ acct-group/gkrellmd 0: System group: gkrellmd
 acct-group/i2pd 0: Group for the system-wide net-vpn/i2pd server
 acct-group/input 0: System group: input
 acct-group/inspircd 0: System group: inspircd
+acct-group/ipfs 0: Group for the system-wide net-p2p/go-ipfs-bin server
 acct-group/kibana 0: Kibana program group
 acct-group/kmem 0: System group: kmem
 acct-group/knot 0: System group: knot
@@ -74,6 +75,7 @@ acct-user/git 0: Git repository hosting user
 acct-user/gkrellmd 0: user for gkrellm daemon
 acct-user/i2pd 0: User for the system-wide net-vpn/i2pd server
 acct-user/inspircd 0: User for InspIRCd server daemon
+acct-user/ipfs 0: User for the system-wide net-p2p/go-ipfs-bin server
 acct-user/kibana 0: Kibana program user
 acct-user/knot 0: User for knot DNS server
 acct-user/logstash 0: Logstash program user
@@ -115,6 +117,7 @@ acct-user/transmission 1: System user: transmission
 acct-user/unifi 0: A user for the UniFi Controller
 acct-user/unrealircd 0: System user: unrealircd
 acct-user/uptimed 0: user for uptime daemon
+acct-user/vpopmail 0: user for vpopmail
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.26.2 2.30.1 2.32.0: Gtk module for bridging AT-SPI to Atk
@@ -2305,7 +2308,7 @@ app-portage/repoman 2.3.11 2.3.16 2.3.17 9999: Repoman is a Quality Assurance to
 app-portage/smart-live-rebuild 1.3.6 9999: Check live packages for updates and emerge them as necessary
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.5 0.6 9999: arch testing tool
-app-portage/ufed 0.94 9999: Gentoo Linux USE flags editor
+app-portage/ufed 0.94 0.95 9999: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 17 9999: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.2.4-r4 22.5.1 22.5.3: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r1 5.0_p9 5.0_p11: The standard GNU Bourne again shell
@@ -15662,7 +15665,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270: utility to download media contents from the web
-net-misc/youtube-dl 2019.09.12.1 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2019.09.12.1 2019.09.28 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.5.4 3.5.5 3.5.8 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -15729,7 +15732,7 @@ net-p2p/fms 0.3.79 0.3.80: A spam-resistant message board application for Freene
 net-p2p/freenet 0.7.5_p1480 0.7.5_p1483 0.7.5_p1484: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.8.15: Official golang implementation of the Ethereum protocol
-net-p2p/go-ipfs-bin 0.4.18 0.4.19 0.4.20: Main implementation of IPFS
+net-p2p/go-ipfs-bin 0.4.19 0.4.20 0.4.22: Main implementation of IPFS
 net-p2p/gtk-gnutella 1.1.14 1.1.15: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/ktorrent 5.1.1-r1 5.1.2-r1: Powerful BitTorrent client based on KDE Frameworks
