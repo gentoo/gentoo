@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="command line date and time utilities"
-HOMEPAGE="https://hroptatyr.github.com/dateutils/"
+HOMEPAGE="https://www.fresse.org/dateutils/"
 SRC_URI="https://bitbucket.org/hroptatyr/${PN}/downloads/${P}.tar.xz"
 
 LICENSE="BSD"
