@@ -29,6 +29,29 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-28)
+# games-fps/ut2004 is unfetchable for almost 3 years.  The remaining
+# packagse are its reverse dependencies, some of them unfetchable
+# as well.
+# Removal in 30 days.  Bug #601402.
+games-fps/ut2004
+games-fps/ut2004-action
+games-fps/ut2004-airbuccaneers
+games-fps/ut2004-bonuspack-cbp1
+games-fps/ut2004-bonuspack-cbp2
+games-fps/ut2004-bonuspack-ece
+games-fps/ut2004-bonuspack-mega
+games-fps/ut2004-cor
+games-fps/ut2004-crossfire
+games-fps/ut2004-data
+games-fps/ut2004-deathball
+games-fps/ut2004-fragops
+games-fps/ut2004-hamsterbash
+games-fps/ut2004-muralis
+games-fps/ut2004-strikeforce
+games-fps/ut2004-troopers
+games-fps/ut2004-unwheel
+
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
