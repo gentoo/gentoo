@@ -1368,7 +1368,6 @@ x11-drivers/xf86-video-voodoo
 # users, so let's keep them masked until somebody figures out what's
 # wrong.  Bug #647964.
 ~app-portage/gemato-14.1m
-~app-portage/gemato-14.0m
 ~app-portage/gemato-9999m
 
 # Kent Fredric <kentnl@gentoo.org> (2018-05-27)
