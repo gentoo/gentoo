@@ -6,8 +6,8 @@ EAPI=6
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="A parallel implementation of gzip"
-HOMEPAGE="http://www.zlib.net/pigz/"
-SRC_URI="http://www.zlib.net/pigz/${P}.tar.gz"
+HOMEPAGE="https://www.zlib.net/pigz/"
+SRC_URI="https://www.zlib.net/pigz/${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
