@@ -84,6 +84,7 @@ games-fps/ut2004-muralis
 games-fps/ut2004-strikeforce
 games-fps/ut2004-troopers
 games-fps/ut2004-unwheel
+games-server/ut2004-ded
 
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
