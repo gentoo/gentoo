@@ -198,10 +198,6 @@ dev-python/networkx scipy
 sys-libs/libblockdev dmraid
 
 # Mart Raudsepp <leio@gentoo.org> (2018-02-13)
-# USE=sofalizer requires sci-libs/netcdf that is not keyworded yet.
-media-video/ffmpeg sofalizer
-
-# Mart Raudsepp <leio@gentoo.org> (2018-02-13)
 # USE=upnp-av requires net-misc/dleyna-server that is not keyworded yet.
 >=media-plugins/grilo-plugins-0.3.5 upnp-av
 
@@ -261,7 +257,7 @@ media-gfx/pstoedit emf
 
 # Alexis Ballier <aballier@gentoo.org> (2017-07-14)
 # Appends -mfpu=neon and asm seems arm32
-net-misc/freerdp neon
+net-misc/freerdp cpu_flags_arm_neon
 
 # Alexis Ballier <aballier@gentoo.org> (2017-07-14)
 # zfs does not build on arm64 (yet?)
