@@ -2296,7 +2296,7 @@ app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-pac
 app-portage/overlint 0.5.2 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
 app-portage/pfl 3.0-r2 3.0.1-r2 3.0.1-r3: Searchable online file/package database for Gentoo
-app-portage/portage-utils 0.62 0.74 0.74-r1 0.80 9999: Small and fast Portage helper tools written in C
+app-portage/portage-utils 0.74 0.74-r1 0.80 9999: Small and fast Portage helper tools written in C
 app-portage/porthole 0.6.1-r5: A GTK+-based frontend to Portage
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.27: A helper program for maintaining the package.keyword and package.unmask files
