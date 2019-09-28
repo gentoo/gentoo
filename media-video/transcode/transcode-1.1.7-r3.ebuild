@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2002-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ RDEPEND="
 	aac? ( media-libs/faac )
 	alsa? ( media-libs/alsa-lib )
 	dv? ( media-libs/libdv )
-	dvd? ( media-libs/libdvdread )
+	dvd? ( media-libs/libdvdread:0= )
 	iconv? ( virtual/libiconv )
 	imagemagick? ( media-gfx/imagemagick:= )
 	jpeg? ( virtual/jpeg:0= )
