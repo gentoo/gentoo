@@ -1093,7 +1093,6 @@ net-misc/libss7
 # Obsolete. No reverse dependencies (games-rpg/eternal-lands no longer
 # depends on them).
 # Removal in 30 days. Bug #549890.
-games-rpg/eternal-lands-bloodsucker
 games-rpg/eternal-lands-data
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
