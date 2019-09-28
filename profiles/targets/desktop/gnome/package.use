@@ -5,7 +5,7 @@
 dev-libs/efl sound
 
 # Needed by gnome-photos
-media-libs/gegl jpeg2k raw
+media-libs/gegl raw
 
 # Needed by a global USE=wayland right now; some REQUIRED_USE may be outdated and need review
 >=media-libs/cogl-1.18.2-r1 gles2
