@@ -37,6 +37,7 @@ dev-util/biew
 games-action/badland
 games-action/beathazardultra
 games-action/brutal-legend
+games-action/crimsonland
 games-action/cs2d
 games-action/descent3
 games-action/descent3-demo
