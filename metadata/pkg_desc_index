@@ -17628,7 +17628,7 @@ sys-boot/cromwell 2.40-r3: Xbox boot loader
 sys-boot/cromwell-bin 2.40-r1: Xbox boot loader precompiled binaries from xbox-linux.org
 sys-boot/dvhtool 1.0.1-r2: Tool to copy kernel(s) into the volume header on SGI MIPS-based workstations
 sys-boot/efibootmgr 14 15 16: User-space application to modify the EFI boot manager
-sys-boot/elilo 3.6_p20060314 3.10 3.12 3.16 3.16-r1 3.16-r2 3.16-r3: Linux boot loader for EFI-based systems such as IA-64
+sys-boot/elilo 3.16-r2 3.16-r3: Linux boot loader for EFI-based systems such as IA-64
 sys-boot/gnu-efi 3.0.2 3.0.3 3.0.6-r1 3.0.6-r2 3.0.8 3.0.9: Library for build EFI Applications
 sys-boot/grub 2.02-r4 2.04_rc1 2.04-r1 9999: GNU GRUB boot loader
 sys-boot/lilo 24.0-r1 24.1 24.2: Standard Linux boot loader
@@ -17899,7 +17899,7 @@ sys-fs/davl 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.46 1.99.8: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.21-r1 1.23 1.24: Copy data from one file or block device to another with read-error recovery
 sys-fs/dfc 3.1.1: A simple CLI tool that display file system usage, with colors
-sys-fs/diskdev_cmds 332.14_p1: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
+sys-fs/diskdev_cmds 332.14_p1 332.14_p1-r1: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
 sys-fs/dislocker 0.7.1-r1 9999: Dislocker is used to read BitLocker encrypted partitions.
 sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4: Device-mapper RAID tool and library
@@ -17950,7 +17950,7 @@ sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r3: User-mode filesystem implementation
 sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.183 2.02.184-r4 2.02.185-r1 2.02.186 2.03.05-r1: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
-sys-fs/mac-fdisk 0.1-r7 0.1_p16 0.1_p18: Mac/PowerMac disk partitioning utility
+sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mhddfs 0.1.39-r2: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.91-r1: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
