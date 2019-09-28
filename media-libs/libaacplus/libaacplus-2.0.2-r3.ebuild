@@ -13,9 +13,8 @@ TGPPDIST=26410-800.zip
 DESCRIPTION="HE-AAC+ v2 library, based on the reference implementation"
 HOMEPAGE="http://tipok.org.ua/node/17"
 SRC_URI="
+	https://tipok.org.ua/downloads/media/aacplus/libaacplus/${P}.tar.gz
 	https://dev.gentoo.org/~aballier/${P}.tar.gz
-	http://tipok.ath.cx/downloads/media/aac+/libaacplus/${P}.tar.gz
-	http://217.20.164.161/~tipok/aacplus/${P}.tar.gz
 	http://www.3gpp.org/ftp/Specs/archive/26_series/26.410/${TGPPDIST}"
 
 LICENSE="LGPL-2.1"
