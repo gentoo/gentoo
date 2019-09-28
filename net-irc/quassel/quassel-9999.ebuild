@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,6 @@ IUSE="bundled-icons crypt +dbus debug kde ldap monolithic oxygen postgres +serve
 snorenotify +ssl syslog urlpreview X"
 
 SERVER_RDEPEND="
-	dev-qt/qtscript:5
 	crypt? ( app-crypt/qca:2[qt5(+),ssl] )
 	ldap? ( net-nds/openldap )
 	postgres? ( dev-qt/qtsql:5[postgres] )
