@@ -12,6 +12,7 @@ LICENSE="ETQW"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="videos"
+RESTRICT="bindist"
 
 S="${WORKDIR}"
 
