@@ -1079,10 +1079,6 @@ mail-filter/ask
 # Removal in 30 days.
 sci-electronics/gplcver
 
-# David Seifert <soap@gentoo.org> (2019-08-29)
-# Dead upstream, last release in 2008, no revdeps, removal in 30 days.
-dev-cpp/threadpool
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.24
