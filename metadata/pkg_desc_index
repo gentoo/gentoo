@@ -245,7 +245,7 @@ app-admin/kubectx 0.6.3: Fast way to switch between clusters and namespaces in k
 app-admin/lastpass-binary-component 4.19.0: Binary component required by the LastPass Password Manager browser extension
 app-admin/lastpass-cli 1.3.1-r1 1.3.2 1.3.3: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.13: Check for mapped libs and open files that are marked as deleted
-app-admin/lnav 0.8.3 0.8.4 0.8.5: A curses-based tool for viewing and analyzing log files
+app-admin/lnav 0.8.5: A curses-based tool for viewing and analyzing log files
 app-admin/logcheck 1.3.18-r1: Mails anomalies in the system logfiles to the administrator
 app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.13.0 3.14.0 3.15.0 3.15.1: Rotates, compresses, and mails system logs
@@ -1898,7 +1898,7 @@ app-misc/cstream 3.1.1: general-purpose stream-handling tool like UNIX dd
 app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common unix-based commands
 app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.17 1.22: A program (and preload library) to fake system date
-app-misc/dateutils 0.4.3 0.4.5 0.4.6: command line date and time utilities
+app-misc/dateutils 0.4.6: command line date and time utilities
 app-misc/datovka 4.11.1 4.13.1: GUI to access the Czech data box e-government system
 app-misc/ddate 0.2.2: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.2_p20140105-r2: DDCControl allows control of monitor parameters via DDC
@@ -2394,7 +2394,7 @@ app-text/convertlit 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+
 app-text/convmv 2.04 2.05: convert filenames to utf8 or any other charset
 app-text/cook 1.0.2-r1: Embedded language which can be used as a macro preprocessor
 app-text/coolreader 3.2.2.1-r2: CoolReader - reader of eBook files (fb2,epub,htm,rtf,txt)
-app-text/cpdf 2.1.1-r1 2.2.1: A command line tool for manipulating PDF files
+app-text/cpdf 2.2.1: A command line tool for manipulating PDF files
 app-text/crf++ 0.58: Yet Another CRF toolkit for segmenting/labelling sequential data
 app-text/crm114 20100106-r1: A powerful text processing tool, mainly used for spam filtering
 app-text/csvfix 1.6: A stream editor for manipulating CSV files
