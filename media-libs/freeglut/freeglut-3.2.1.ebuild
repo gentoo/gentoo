@@ -32,8 +32,14 @@ HTML_DOCS=( doc/. )
 src_configure() {
 	local mycmakeargs=(
 		"-DFREEGLUT_GLES=OFF"
+		"-DFREEGLUT_BUILD_DEMOS=OFF"
 		"-DFREEGLUT_BUILD_STATIC_LIBS=$(usex static-libs ON OFF)"
 	)
 #	$(cmake-utils_use gles FREEGLUT_GLES)
 	cmake-multilib_src_configure
+}
+
+multilib_src_install() {
+	cmake-utils_src_install
+	cp "${D}"/usr/$(get_libdir)/pkgconfig/{,free}glut.pc
 }
