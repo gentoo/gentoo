@@ -15881,7 +15881,7 @@ net-wireless/bladerf-firmware 2.2.0 2.3.2: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.7.3 0.11.0: bladeRF FPGA bitstreams
 net-wireless/blueberry 1.1.13-r1: A Bluetooth configuration tool
 net-wireless/blueman 2.1.1 9999: Simple and intuitive GTK+ Bluetooth Manager
-net-wireless/bluez 5.50-r2 5.50-r3: Bluetooth Tools and System Daemons for Linux
+net-wireless/bluez 5.50-r3 5.51: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices for linux
 net-wireless/broadcom-sta 6.30.223.271-r5: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
@@ -16332,7 +16332,7 @@ sci-chemistry/namd 2.10: A powerful and highly parallelized molecular dynamics c
 sci-chemistry/nmrdepaker 1.0: Program to perform NMR spectra 'De-Pake-ing' and moment calculation
 sci-chemistry/nmrglue 0.5-r1: A module for working with NMR data in Python
 sci-chemistry/numbat 0.999-r1: new user-friendly method built for automatic dX-tensor determination
-sci-chemistry/openbabel 2.4.1: Interconverts file formats used in molecular modeling
+sci-chemistry/openbabel 2.4.1 2.4.1-r1: Interconverts file formats used in molecular modeling
 sci-chemistry/openbabel-perl 2.4.1: Perl bindings for OpenBabel
 sci-chemistry/openbabel-python 2.4.1-r1: Python bindings for OpenBabel (including Pybel)
 sci-chemistry/ortep3 1.0.3-r1: Thermal ellipsoid plot program for crystal structure illustrations
