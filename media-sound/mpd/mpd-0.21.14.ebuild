@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic linux-info meson systemd user
+inherit flag-o-matic linux-info meson systemd user xdg-utils
 
 DESCRIPTION="The Music Player Daemon (mpd)"
 HOMEPAGE="https://www.musicpd.org https://github.com/MusicPlayerDaemon/MPD"
@@ -291,4 +291,9 @@ src_install() {
 pkg_postinst() {
 	# also change the homedir if the user has existed before
 	usermod -d "/var/lib/mpd" mpd || die "usermod failed"
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
