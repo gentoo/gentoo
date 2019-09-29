@@ -1,0 +1,20 @@
+diff --git a/rocm_agent_enumerator b/rocm_agent_enumerator
+index 7a73339..78e8215 100755
+--- a/rocm_agent_enumerator
++++ b/rocm_agent_enumerator
+@@ -55,9 +55,11 @@ def getGCNISA(line, match_from_beginning = False):
+ def readFromTargetLstFile():
+   target_list = []
+ 
+-  # locate target.lst which should be placed at the same directory with this
+-  # script
+-  target_lst_path = os.path.join(CWD, "target.lst")
++  # locate target.lst using environment variable or
++  # it should be placed at the same directory with this script
++  target_lst_path = os.environ.get("ROCM_TARGET_LST");
++  if target_lst_path == None:
++    target_lst_path = os.path.join(CWD, "target.lst")
+   if os.path.isfile(target_lst_path):
+     target_lst_file = open(target_lst_path, 'r')
+     for line in target_lst_file:
+
