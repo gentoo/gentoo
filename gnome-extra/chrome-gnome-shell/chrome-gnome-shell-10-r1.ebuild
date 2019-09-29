@@ -9,7 +9,7 @@ inherit cmake-utils python-single-r1
 
 DESCRIPTION="GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome"
-SRC_URI="mirror://gnome/sources/${PN}/${PV}/${P}.tar.xz"
+SRC_URI="https://download.gnome.org/sources/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
