@@ -45,6 +45,9 @@ PATCHES=(
 
 	# Fix deadlocks with glib-2.32, bug #413331, upstream #667230
 	"${FILESDIR}/${PN}-0.1.10-ih_sub_cancel-deadlock.patch"
+
+	# Fix building with clang, bug #509696
+	"${FILESDIR}/${PN}-0.1.10-clang-fix.patch"
 )
 
 src_prepare() {

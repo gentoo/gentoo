@@ -1,0 +1,16 @@
+Bug: https://bugs.gentoo.org/509696
+
+Don't rely on GCC's void to 0 implicit conversion
+for void return statements.
+
+--- a/server/gam_eq.c
++++ b/server/gam_eq.c
+@@ -124,7 +124,7 @@
+ {
+ 	gboolean done_work = FALSE;
+ 	if (!eq)
+-		return;
++		return done_work;
+ 
+ #ifdef GAM_EQ_VERBOSE
+ 	GAM_DEBUG(DEBUG_INFO, "gam_eq: Flushing event queue for %s\n", gam_connection_get_pidname (conn));
