@@ -1,15 +1,15 @@
 BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6 >=kde-frameworks/extra-cmake-modules-5.60.0:5
 DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup test unpack
-DEPEND=>=kde-frameworks/breeze-icons-5.60.0:5 >=kde-frameworks/kcodecs-5.60.0:5 >=kde-apps/kcontacts-19.04.3:5 >=kde-apps/kmime-19.04.3:5 >=dev-qt/qtdeclarative-5.12.3:5 >=dev-qt/qtgui-5.12.3:5 >=dev-qt/qtnetwork-5.12.3:5 >=dev-qt/qtquickcontrols-5.12.3:5 >=dev-qt/qtquickcontrols2-5.12.3:5 >=dev-qt/qttest-5.12.3:5 >=dev-qt/qtwebengine-5.12.3:5[widgets] >=dev-qt/qtwidgets-5.12.3:5 >=app-crypt/gpgme-1.7.1:=[cxx,qt5] dev-libs/kasync >=dev-libs/sink-0.7.0 test? ( >=dev-qt/qttest-5.12.3:5 ) dev-util/desktop-file-utils x11-misc/shared-mime-info test? ( >=dev-qt/qttest-5.12.3:5 ) >=dev-qt/qtcore-5.12.3:5
-DESCRIPTION=A mail client by KDE
+DEPEND=>=kde-frameworks/breeze-icons-5.60.0:5 >=kde-frameworks/kcodecs-5.60.0:5 || ( >=kde-frameworks/kcontacts-5.60.0:5 >=kde-apps/kcontacts-19.04.3:5 ) >=kde-apps/kmime-19.04.3:5 >=dev-qt/qtconcurrent-5.12.3:5 >=dev-qt/qtdeclarative-5.12.3:5 >=dev-qt/qtgui-5.12.3:5 >=dev-qt/qtnetwork-5.12.3:5 >=dev-qt/qtquickcontrols-5.12.3:5 >=dev-qt/qtquickcontrols2-5.12.3:5 >=dev-qt/qttest-5.12.3:5 >=dev-qt/qtwebengine-5.12.3:5[widgets] >=dev-qt/qtwidgets-5.12.3:5 >=app-crypt/gpgme-1.7.1:=[cxx,qt5] dev-libs/kasync >=dev-libs/sink-0.7.0 test? ( >=dev-qt/qttest-5.12.3:5 ) dev-util/desktop-file-utils x11-misc/shared-mime-info test? ( >=dev-qt/qttest-5.12.3:5 ) >=dev-qt/qtcore-5.12.3:5
+DESCRIPTION=Mail client based on KDE Frameworks
 EAPI=7
 HOMEPAGE=https://kube.kde.org/
 IUSE=debug test
 KEYWORDS=~amd64
 LICENSE=GPL-2
-RDEPEND=>=kde-frameworks/breeze-icons-5.60.0:5 >=kde-frameworks/kcodecs-5.60.0:5 >=kde-apps/kcontacts-19.04.3:5 >=kde-apps/kmime-19.04.3:5 >=dev-qt/qtdeclarative-5.12.3:5 >=dev-qt/qtgui-5.12.3:5 >=dev-qt/qtnetwork-5.12.3:5 >=dev-qt/qtquickcontrols-5.12.3:5 >=dev-qt/qtquickcontrols2-5.12.3:5 >=dev-qt/qttest-5.12.3:5 >=dev-qt/qtwebengine-5.12.3:5[widgets] >=dev-qt/qtwidgets-5.12.3:5 >=app-crypt/gpgme-1.7.1:=[cxx,qt5] dev-libs/kasync >=dev-libs/sink-0.7.0 >=kde-frameworks/kf-env-4 || ( >=kde-frameworks/breeze-icons-5.60.0:5 kde-frameworks/oxygen-icons:* ) >=dev-qt/qtcore-5.12.3:5
+RDEPEND=>=kde-frameworks/breeze-icons-5.60.0:5 >=kde-frameworks/kcodecs-5.60.0:5 || ( >=kde-frameworks/kcontacts-5.60.0:5 >=kde-apps/kcontacts-19.04.3:5 ) >=kde-apps/kmime-19.04.3:5 >=dev-qt/qtconcurrent-5.12.3:5 >=dev-qt/qtdeclarative-5.12.3:5 >=dev-qt/qtgui-5.12.3:5 >=dev-qt/qtnetwork-5.12.3:5 >=dev-qt/qtquickcontrols-5.12.3:5 >=dev-qt/qtquickcontrols2-5.12.3:5 >=dev-qt/qttest-5.12.3:5 >=dev-qt/qtwebengine-5.12.3:5[widgets] >=dev-qt/qtwidgets-5.12.3:5 >=app-crypt/gpgme-1.7.1:=[cxx,qt5] dev-libs/kasync >=dev-libs/sink-0.7.0 >=kde-frameworks/kf-env-4 || ( >=kde-frameworks/breeze-icons-5.60.0:5 kde-frameworks/oxygen-icons:* ) >=dev-qt/qtcore-5.12.3:5
 RESTRICT=test
 SLOT=5
 SRC_URI=https://github.com/KDE/kube/archive/v0.7.0.tar.gz -> kube-0.7.0.tar.gz
 _eclasses_=cmake-utils	91d6ef31dc426240577497cacbf2508c	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	1b4b0d1d972613ecfb7af4c5c53f2051	kde5	e9642fa5c53197b7ba3d9e2c8460d5c5	kde5-functions	8593b8fd9e43123f882a49d0079dc20e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	virtualx	53625127887b62eabb9ec61d3d943462	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=7d8275c8da6f9876d3d02206ee14f7c9
+_md5_=2809aecc228b92d93b63a53f67523bae
