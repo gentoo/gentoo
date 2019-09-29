@@ -7685,7 +7685,7 @@ dev-python/dib-utils 0.0.8 0.0.10: Standalone tools related to diskimage-builder
 dev-python/dicttoxml 1.7.4: Converts a Python dictionary or other data type to a valid XML string
 dev-python/diff-cover 1.0.4 2.3.0: Automatically find diff lines that need test coverage
 dev-python/diff-match-patch 20121119: Diff, match and patch algorithms for plain text
-dev-python/dill 0.2.5 0.3.0: Serialize all of python (almost)
+dev-python/dill 0.2.5 0.3.0 0.3.1.1: Serialize all of python (almost)
 dev-python/dingus 0.3.4-r1: A record-then-assert mocking library
 dev-python/dirq 1.7.1: Python port of Perl module Directory::Queue
 dev-python/discogs-client 2.0.2 2.2.1: Official Python API client for Discogs
