@@ -7113,6 +7113,7 @@ dev-perl/gnome2-canvas 1.2.0-r2: Perl interface to the Gnome Canvas
 dev-perl/gnome2-perl 1.46.0: Perl interface to the 2.x series of the Gnome libraries
 dev-perl/gnome2-vfs-perl 1.81.0-r1 1.83.0: Perl interface to the 2.x series of the Gnome Virtual File System libraries
 dev-perl/gnome2-wnck 0.160.0-r1 0.160.0-r2: Perl interface to the Window Navigator Construction Kit
+dev-perl/go-perl 0.15: GO::Parser parses all GO files formats and types
 dev-perl/gtk2-ex-formfactory 0.670.0-r1: Gtk2 FormFactory
 dev-perl/gtk2-gladexml 1.7.0-r1 1.7.0-r2: Create user interfaces directly from Glade XML files
 dev-perl/gtk2-spell 1.40.0-r1 1.40.0-r2: Bindings for GtkSpell with Gtk2.x
