@@ -39,7 +39,7 @@ case ${PV} in
 		RPM="${PN}-${MY_PV}-$(gvcr $#).fc$(gvcr $(( $# - 1 ))).src.rpm"
 	}
 	parse_fedora_ver
-	SRC_URI="mirror://fedora-dev/development/rawhide/source/SRPMS/g/${RPM}"
+	SRC_URI="https://archives.fedoraproject.org/pub/archive/fedora/linux/development/rawhide/source/SRPMS/g/${RPM}"
 	;;
 *)
 	# Normal upstream release
