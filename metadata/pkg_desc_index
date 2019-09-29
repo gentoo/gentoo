@@ -15744,7 +15744,7 @@ net-p2p/ncdc 1.20 1.21 9999: ncurses directconnect client
 net-p2p/nicotine+ 1.4.1-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
 net-p2p/pybitmessage 0.6.3.2_p20180521: Reference client for Bitmessage: a P2P communications protocol
-net-p2p/qbittorrent 4.1.6-r1 4.1.7 4.1.8 9999: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 4.1.7 4.1.8 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.3-r1 0.6.4 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
