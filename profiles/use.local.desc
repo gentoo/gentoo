@@ -1674,7 +1674,7 @@ dev-haskell/gtk3:fmode-binary - Set the default file translation mode for file I
 dev-haskell/gtk3:gio - Depend on GIO package, thereby enabling certain features.
 dev-haskell/hackage-security:use-network-uri - Get Network.URI from the network-uri package.
 dev-haskell/happstack-server:network-uri - Get Network.URI from the network-uri package
-dev-haskell/happstack-server:template_haskell - Description: Template Haskell is available on this system
+dev-haskell/happstack-server:template-haskell - Description: Template Haskell is available on this system
 dev-haskell/hashed-storage:diff - Provide the Storage.Hashed.Diff module.
 dev-haskell/hashed-storage:hpc - Compile with the profiling ghc flag -fhpc.
 dev-haskell/hashtables:bounds-checking - if on, use bounds-checking array accesses
