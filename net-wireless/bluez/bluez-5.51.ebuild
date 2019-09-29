@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 PYTHON_COMPAT=( python2_7 )
+
 inherit autotools python-single-r1 readme.gentoo-r1 systemd udev multilib-minimal
 
 DESCRIPTION="Bluetooth Tools and System Daemons for Linux"
@@ -12,8 +12,8 @@ SRC_URI="mirror://kernel/linux/bluetooth/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/3"
-KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 x86"
-IUSE="alsa btpclient cups doc debug deprecated extra-tools experimental +mesh +obex +readline selinux systemd test test-programs +udev user-session"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86"
+IUSE="btpclient cups doc debug deprecated extra-tools experimental +mesh midi +obex +readline selinux systemd test test-programs +udev user-session"
 
 # Since this release all remaining extra-tools need readline support, but this could
 # change in the future, hence, this REQUIRED_USE constraint could be dropped
@@ -35,14 +35,14 @@ BDEPEND="
 DEPEND="
 	>=dev-libs/glib-2.28:2[${MULTILIB_USEDEP}]
 	>=sys-apps/hwids-20121202.2
-	alsa? ( media-libs/alsa-lib )
-	btpclient? ( >=dev-libs/ell-0.3 )
+	btpclient? ( >=dev-libs/ell-0.14 )
 	cups? ( net-print/cups:= )
 	mesh? (
-		>=dev-libs/ell-0.3
+		>=dev-libs/ell-0.14
 		dev-libs/json-c:=
 		sys-libs/readline:0=
 	)
+	midi? ( media-libs/alsa-lib )
 	obex? ( dev-libs/libical:= )
 	readline? ( sys-libs/readline:0= )
 	systemd? (
@@ -53,26 +53,17 @@ DEPEND="
 	udev? ( >=virtual/udev-172 )
 "
 RDEPEND="${DEPEND}
-	acct-group/plugdev
 	selinux? ( sec-policy/selinux-bluetooth )
 	test-programs? ( ${TEST_DEPS} )
 "
-DOC_CONTENTS="
-	If you want to control your bluetooth devices as a non-root user,
-	please remember to add you to plugdev group.
-"
+
+RESTRICT="!test? ( test )"
 
 PATCHES=(
-	# Fix missing header (fixed in 'master')
-	"${FILESDIR}"/${P}-btpclient-header.patch
-
-	# Use static group "plugdev" to not force people to become root for
-	# controlling the devices.
-	"${FILESDIR}"/${PN}-plugdev.patch
-
 	# Try both udevadm paths to cover udev/systemd vs. eudev locations (#539844)
 	# http://www.spinics.net/lists/linux-bluetooth/msg58739.html
-	"${FILESDIR}"/${PN}-udevadm-path.patch
+	# https://bugs.gentoo.org/539844
+	"${FILESDIR}"/${PN}-udevadm-path-r1.patch
 
 	# build: Quote systemd variable names, bug #527432
 	# http://article.gmane.org/gmane.linux.bluez.kernel/67230
@@ -81,9 +72,6 @@ PATCHES=(
 	# Fedora patches
 	# http://www.spinics.net/lists/linux-bluetooth/msg40136.html
 	"${FILESDIR}"/0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch
-
-	# ???
-	"${FILESDIR}"/0004-agent-Assert-possible-infinite-loop.patch
 )
 
 pkg_setup() {
@@ -115,6 +103,7 @@ src_prepare() {
 	fi
 
 	# Broken test https://bugzilla.kernel.org/show_bug.cgi?id=196621
+	# https://bugs.gentoo.org/618548
 	sed -i -e '/unit_tests += unit\/test-gatt\b/d' Makefile.am || die
 
 	eautoreconf
@@ -152,12 +141,14 @@ multilib_src_configure() {
 		--enable-monitor \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
 		--with-systemduserunitdir="$(systemd_get_userunitdir)" \
-		$(multilib_native_use_enable alsa midi) \
 		$(multilib_native_use_enable btpclient) \
+		$(multilib_native_use_enable btpclient external-ell) \
 		$(multilib_native_use_enable cups) \
 		$(multilib_native_use_enable deprecated) \
 		$(multilib_native_use_enable experimental) \
 		$(multilib_native_use_enable mesh) \
+		$(multilib_native_use_enable mesh external-ell) \
+		$(multilib_native_use_enable midi) \
 		$(multilib_native_use_enable obex) \
 		$(multilib_native_use_enable readline client) \
 		$(multilib_native_use_enable systemd) \
@@ -198,9 +189,14 @@ multilib_src_install() {
 			# Upstream doesn't install this, bug #524640
 			# http://permalink.gmane.org/gmane.linux.bluez.kernel/53115
 			# http://comments.gmane.org/gmane.linux.bluez.kernel/54564
-			# gatttool is only built with readline, bug #530776
-			dobin attrib/gatttool
 			dobin tools/btmgmt
+			# gatttool is only built with readline, bug #530776
+			# https://bugzilla.redhat.com/show_bug.cgi?id=1141909
+			# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=720486
+			# https://bugs.archlinux.org/task/37686
+			dobin attrib/gatttool
+			# https://bugzilla.redhat.com/show_bug.cgi?id=1699680
+			dobin tools/avinfo
 		fi
 
 		# Not installed by default after being built, bug #666756
@@ -208,13 +204,15 @@ multilib_src_install() {
 
 		# Unittests are not that useful once installed, so make them optional
 		if use test-programs; then
-			# example-gatt-client is the only one needing
-			# python3, the others are python2 only. Remove
-			# until we see how to pull in python2 and python3
-			# for runtime
+			# Few are needing python3, the others are python2 only. Remove
+			# until we see how to pull in python2 and python3 for runtime
 			rm "${ED}"/usr/$(get_libdir)/bluez/test/example-gatt-server || die
 			rm "${ED}"/usr/$(get_libdir)/bluez/test/example-gatt-client || die
+			rm "${ED}"/usr/$(get_libdir)/bluez/test/agent.py || die
+			rm "${ED}"/usr/$(get_libdir)/bluez/test/test-mesh || die
+
 			python_fix_shebang "${ED}"/usr/$(get_libdir)/bluez/test
+
 			for i in $(find "${ED}"/usr/$(get_libdir)/bluez/test -maxdepth 1 -type f ! -name "*.*"); do
 				dosym "${i}" /usr/bin/bluez-"${i##*/}"
 			done
@@ -240,7 +238,7 @@ multilib_src_install_all() {
 		ln -s "${ED}"/usr/lib/systemd/user/obex.service "${ED}"/usr/lib/systemd/user/dbus-org.bluez.obex.service
 	fi
 
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -type f -delete || die
 
 	keepdir /var/lib/bluetooth
 
@@ -251,20 +249,37 @@ multilib_src_install_all() {
 	for d in input network; do
 		doins profiles/${d}/${d}.conf
 	done
+	# Setup auto enable as Fedora does for allowing to use
+	# keyboards/mouse as soon as possible
+	sed -i 's/#\[Policy\]$/\[Policy\]/; s/#AutoEnable=false/AutoEnable=true/' src/main.conf || die
 	doins src/main.conf
 
 	newinitd "${FILESDIR}"/bluetooth-init.d-r4 bluetooth
 
 	einstalldocs
 	use doc && dodoc doc/*.txt
-	! use systemd && readme.gentoo_create_doc
+	# Install .json files as examples to be used by meshctl
+	if use mesh; then
+		dodoc tools/mesh/*.json
+		local DOC_CONTENTS="Some example .json files were installed into
+		/usr/share/doc/${PF} to be used with meshctl. Feel free to
+		uncompress and copy them to ~/.config/meshctl to use them."
+		readme.gentoo_create_doc
+	fi
+
+	# From Fedora:
+	# Scripts for automatically btattach-ing serial ports connected to Broadcom HCIs
+	# as found on some Atom based x86 hardware
+	udev_dorules "${FILESDIR}/69-btattach-bcm.rules"
+	systemd_newunit "${FILESDIR}/btattach-bcm_at.service" "btattach-bcm@.service"
+	exeinto /usr/libexec/bluetooth
+	doexe "${FILESDIR}/btattach-bcm-service.sh"
 }
 
 pkg_postinst() {
-	! use systemd && readme.gentoo_print_elog
-
 	use udev && udev_reload
 	systemd_reenable bluetooth.service
 
-	has_version net-dialup/ppp || elog "To use dial up networking you must install net-dialup/ppp."
+	has_version net-dialup/ppp || elog "To use dial up networking you must install net-dialup/ppp"
+	use mesh && readme.gentoo_print_elog
 }
