@@ -140,10 +140,6 @@ sci-chemistry/azara
 app-admin/systemrescuecd-x86
 sys-boot/systemrescuecd-x86-grub
 
-# Matt Turner <mattst88@gentoo.org> (2019-09-03)
-# Broken. Bug #694774
->=media-libs/freeglut-3.2.0
-
 # Michał Górny <mgorny@gentoo.org> (2019-09-17)
 # Unmaintained EAPI 0 Apache modules + mod_access_dnsbl as a revdep.
 # Removal in 30 days.  Bug #694608.
@@ -1143,12 +1139,6 @@ mail-filter/ask
 # Mart Raudsepp <leio@gentoo.org> (2019-08-18)
 # Fails to dbus activate properly for me. Help welcome figuring it out.
 net-misc/gnome-remote-desktop
-
-# Mike Gilbert <floppym@gentoo.org> (2019-08-13)
-# Dev channel releases are only for people who
-# are developers or want more experimental features
-# and accept a more unstable release.
->=www-client/chromium-78
 
 # Mart Raudsepp <leio@gentoo.org> (2019-07-28)
 # GNOME 3.33 development release packages
