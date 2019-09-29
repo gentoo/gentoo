@@ -7,7 +7,7 @@ inherit autotools multilib-minimal
 PVP=(${PV//[-\._]/ })
 DESCRIPTION="Image loading and rendering library"
 HOMEPAGE="http://ftp.acc.umu.se/pub/GNOME/sources/imlib/1.9/"
-SRC_URI="mirror://gnome/sources/${PN}/${PVP[0]}.${PVP[1]}/${P}.tar.bz2
+SRC_URI="https://download.gnome.org/sources/${PN}/${PVP[0]}.${PVP[1]}/${P}.tar.bz2
 	mirror://gentoo/gtk-1-for-imlib.m4.bz2"
 
 LICENSE="GPL-2"
