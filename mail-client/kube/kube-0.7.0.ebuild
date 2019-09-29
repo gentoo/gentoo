@@ -3,10 +3,10 @@
 
 EAPI=7
 
-KDE_TEST="forceoptional-recursive"
+KDE_TEST="forceoptional"
 inherit kde5
 
-DESCRIPTION="A mail client by KDE"
+DESCRIPTION="Mail client based on KDE Frameworks"
 HOMEPAGE="https://kube.kde.org/"
 SRC_URI="https://github.com/KDE/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
@@ -14,8 +14,12 @@ KEYWORDS="~amd64"
 RDEPEND="
 	$(add_frameworks_dep breeze-icons)
 	$(add_frameworks_dep kcodecs)
-	$(add_kdeapps_dep kcontacts)
+	|| (
+		$(add_frameworks_dep kcontacts)
+		$(add_kdeapps_dep kcontacts)
+	)
 	$(add_kdeapps_dep kmime)
+	$(add_qt_dep qtconcurrent)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
@@ -33,6 +37,11 @@ DEPEND="${RDEPEND}
 "
 
 RESTRICT+=" test"
+
+PATCHES=(
+	"${FILESDIR}/${P}-tests-optional.patch"
+	"${FILESDIR}/${P}-require-cxx14.patch"
+)
 
 src_prepare() {
 	kde5_src_prepare

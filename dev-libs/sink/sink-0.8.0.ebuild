@@ -16,18 +16,24 @@ IUSE=""
 # qtgui is bogus but is required because something else in the deptree
 # uses it as a public dependency but doesn't search for it properly
 RDEPEND="
+	|| (
+		$(add_frameworks_dep kcalendarcore)
+		$(add_kdeapps_dep kcalcore)
+	)
+	|| (
+		$(add_frameworks_dep kcontacts)
+		$(add_kdeapps_dep kcontacts)
+	)
 	$(add_frameworks_dep kcoreaddons)
-	$(add_kdeapps_dep kcalcore)
-	$(add_kdeapps_dep kcontacts)
 	$(add_kdeapps_dep kmime)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
 	dev-db/lmdb:=
 	dev-libs/flatbuffers
-	dev-libs/kasync
+	>=dev-libs/kasync-0.3
 	>=dev-libs/xapian-1.4.4:0=
-	net-libs/kdav2
-	net-libs/kimap2
+	>=net-libs/kdav2-0.3
+	>=net-libs/kimap2-0.3
 	net-misc/curl
 	sys-libs/readline:0=
 "
