@@ -1,0 +1,13 @@
+BDEPEND=|| ( ( dev-lang/python:3.7 dev-libs/marisa[python,python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-libs/marisa[python,python_targets_python3_6(-),python_single_target_python3_6(+)] ) ) || ( dev-lang/vala:0.46 dev-lang/vala:0.44 dev-lang/vala:0.42 dev-lang/vala:0.40 dev-lang/vala:0.36 ) dev-libs/gobject-introspection virtual/pkgconfig nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure install prepare setup unpack
+DEPEND=dev-libs/glib:2 dev-libs/json-glib dev-libs/libgee:0.8 dev-libs/marisa nls? ( virtual/libintl )
+DESCRIPTION=Japanese Kana Kanji conversion input method library
+EAPI=7
+HOMEPAGE=https://github.com/ueno/libkkc
+IUSE=nls static-libs
+LICENSE=GPL-3+
+PROPERTIES=live
+RDEPEND=dev-libs/glib:2 dev-libs/json-glib dev-libs/libgee:0.8 dev-libs/marisa nls? ( virtual/libintl )
+SLOT=0
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	vala	682da46cf615b9f7a7d3680058139dcd
+_md5_=59bede461e171ad0c49485a04bbe7465

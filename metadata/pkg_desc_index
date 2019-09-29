@@ -1634,7 +1634,7 @@ app-i18n/ibus-cangjie 2.4-r1: Chinese Cangjie and Quick engines for IBus
 app-i18n/ibus-chewing 1.5.1-r1 1.6.1: Chinese Chewing engine for IBus
 app-i18n/ibus-fbterm 1.0.1: IBus client for FbTerm
 app-i18n/ibus-handwrite 2.1.4-r1 3.0.0: Hand write recognition/input for IBus
-app-i18n/ibus-hangul 1.5.0-r1 1.5.1: Korean Hangul engine for IBus
+app-i18n/ibus-hangul 1.5.1: Korean Hangul engine for IBus
 app-i18n/ibus-input-pad 1.4.99_pre20140916: Input Pad for IBus
 app-i18n/ibus-kkc 1.5.22: Japanese Kana Kanji conversion engine for IBus
 app-i18n/ibus-libpinyin 1.9.2 1.9.3 1.9.3-r1 1.10.0: Intelligent Pinyin and Bopomofo input methods based on LibPinyin for IBus
@@ -1665,7 +1665,7 @@ app-i18n/kinput2 3.1-r2: A Japanese input server which supports the XIM protocol
 app-i18n/libcangjie 1.3: Library implementing the Cangjie input method
 app-i18n/libchewing 0.5.1 9999: Intelligent phonetic (Zhuyin/Bopomofo) input method library
 app-i18n/libhangul 0.1.0: Library for hangul input method logic, hanja dictionary
-app-i18n/libkkc 0.3.5: Japanese Kana Kanji conversion input method library
+app-i18n/libkkc 0.3.5 0.3.6_pre20190809104047 9999: Japanese Kana Kanji conversion input method library
 app-i18n/libpinyin 2.3.0 9999: Libraries for handling of Hanyu Pinyin and Zhuyin Fuhao
 app-i18n/librime 1.2.9 1.3.1 1.4.0 1.5.3: RIME (Rime Input Method Engine) core library
 app-i18n/libskk 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
@@ -4475,7 +4475,7 @@ dev-java/picocontainer 1.1-r1: Small footprint Dependency Injection container
 dev-java/plexus-classworlds 2.2.3: The class loader framework of the Plexus project
 dev-java/portletapi 1.0-r1 2.0-r1: Portlet API 2.0 developed by the Java Community Process JSR-286
 dev-java/prefuse 20071021_beta: UI toolkit for building highly interactive visualizations of un-/structured data
-dev-java/protobuf-java 3.6.1.3 3.7.1 3.8.0 3.9.1 9999: Google's Protocol Buffers - Java bindings
+dev-java/protobuf-java 3.6.1.3 3.7.1 3.8.0 3.9.1 3.9.2 9999: Google's Protocol Buffers - Java bindings
 dev-java/qdox 1.6.3-r1 1.12.1-r1: Parser for extracting class/interface/method definitions
 dev-java/radeox 1.0_beta2-r1: Radeox Wiki render engine
 dev-java/rat 0.11: Apache Rat is a release audit tool, focused on licenses.
@@ -4761,7 +4761,7 @@ dev-libs/cyberjack 3.99.5_p13: REINER SCT cyberJack USB chipcard reader user spa
 dev-libs/cygwin 1.5.25.15: Linux-like environment for Windows
 dev-libs/cyrus-sasl 2.1.27-r2: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA blind signatures
-dev-libs/darts 0.32: A C++ template library that implements Double-Array
+dev-libs/darts 0.32 0.32h_pre20181117064816 9999: Darts-clone (Double-ARray Trie System) C++ library
 dev-libs/dbus-c++ 0.9.0-r3: Provides a C++ API for D-BUS
 dev-libs/dbus-glib 0.110: D-Bus bindings for glib
 dev-libs/device-atlas-api-c 2.1.3 2.1.4: API to detect devices based on the User-Agent HTTP header
@@ -5086,7 +5086,7 @@ dev-libs/lzo 2.10: An extremely fast compression and decompression library
 dev-libs/m17n-lib 1.7.0 1.8.0: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
 dev-libs/mapm 4.9.5-r1: Mike's Arbitrary Precision Math Library
-dev-libs/marisa 0.2.4: Matching Algorithm with Recursively Implemented StorAge
+dev-libs/marisa 0.2.4 0.2.5 9999: Matching Algorithm with Recursively Implemented StorAge
 dev-libs/mathjax 2.7.0 2.7.4: JavaScript display engine for LaTeX, MathML and AsciiMath
 dev-libs/mdsplib 0.11: METAR Decoder Software Package Library
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
@@ -5134,7 +5134,7 @@ dev-libs/polylib 9999: ppl port of cloog
 dev-libs/popt 1.16-r2: Parse Options - Command line parser
 dev-libs/ppl 1.1 1.2: The Parma Polyhedra Library for numerical analysis of complex systems
 dev-libs/processor-trace 1.6.1 1.6.2 2.0: Intel(R) Processor Trace decoder library
-dev-libs/protobuf 3.6.1.3 3.7.1 3.8.0 3.9.1 9999: Google's Protocol Buffers - Extensible mechanism for serializing structured data
+dev-libs/protobuf 3.6.1.3 3.7.1 3.8.0 3.9.1 3.9.2 9999: Google's Protocol Buffers - Extensible mechanism for serializing structured data
 dev-libs/protobuf-c 1.3.1 1.3.2: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.5: pslib is a C-library to create PostScript files on the fly
 dev-libs/ptexenc 1.3.4_p20160523 1.3.5_p20170524 1.3.7_p20190410: Library for Japanese pTeX providing a better way of handling character encodings
@@ -8430,7 +8430,7 @@ dev-python/prometheus_client 0.5.0 0.6.0: Python client for the Prometheus monit
 dev-python/prometheus_flask_exporter 0.4.1 0.5.1 0.7.2: Provides HTTP request metrics to export into Prometheus
 dev-python/promises 2.0.1-r1 2.1-r1: An implementation of Promises in Python
 dev-python/prompt_toolkit 1.0.15 2.0.6 2.0.7: Building powerful interactive command lines in Python
-dev-python/protobuf-python 3.6.1.3 3.7.1 3.8.0 3.9.1 9999: Google's Protocol Buffers - Python bindings
+dev-python/protobuf-python 3.6.1.3 3.7.1 3.8.0 3.9.1 3.9.2 9999: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.0 1.5.1 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1: Python library for communicating with Pocket Science Lab
 dev-python/psutil 5.4.1 5.4.3 5.4.7 5.4.8 5.5.0 5.6.0 5.6.1: Retrieve information on running processes and system utilization

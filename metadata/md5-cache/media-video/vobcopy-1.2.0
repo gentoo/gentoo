@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install
-DEPEND=>=media-libs/libdvdread-0.9.4
+DEPEND=media-libs/libdvdread:0=
 DESCRIPTION=copies DVD .vob files to harddisk, decrypting them on the way
 EAPI=6
 HOMEPAGE=http://lpn.rnbhq.org/
@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://lpn.rnbhq.org/download/vobcopy-1.2.0.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=70134c428fb56cabfb8d5613598577d0
+_md5_=ea54b59dc139293f4ecdda709272ca55
