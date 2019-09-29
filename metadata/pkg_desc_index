@@ -12038,7 +12038,7 @@ gnome-extra/gnome-shell-extensions-topicons-plus 22-r1: Moves legacy tray icons 
 gnome-extra/gnome-shell-frippery 3.30.2 3.32.1: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.30.6: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.30.0: The Gnome System Monitor
-gnome-extra/gnome-tweaks 3.30.2: Customize advanced GNOME 3 options
+gnome-extra/gnome-tweaks 3.30.2 3.32.0: Customize advanced GNOME 3 options
 gnome-extra/gnome-user-docs 3.30.2 3.32.3: GNOME end user documentation
 gnome-extra/gnome-user-share 3.28.0: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
