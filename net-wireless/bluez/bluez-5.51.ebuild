@@ -93,7 +93,7 @@ src_prepare() {
 
 	# http://www.spinics.net/lists/linux-bluetooth/msg38490.html
 	if ! use user-session || ! use systemd; then
-		eapply "${FILESDIR}"/0001-Allow-using-obexd-without-systemd-in-the-user-sessio.patch
+		eapply "${FILESDIR}"/0001-Allow-using-obexd-without-systemd-in-the-user-session-r1.patch
 	fi
 
 	if use cups; then
@@ -219,7 +219,7 @@ multilib_src_install() {
 		fi
 	else
 		emake DESTDIR="${D}" \
-			install-includeHEADERS \
+			install-pkgincludeHEADERS \
 			install-libLTLIBRARIES \
 			install-pkgconfigDATA
 	fi
