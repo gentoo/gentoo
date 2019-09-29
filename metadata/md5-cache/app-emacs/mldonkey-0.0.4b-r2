@@ -3,10 +3,10 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=An Emacs Lisp interface to the MLDonkey core
 EAPI=7
 HOMEPAGE=https://www.emacswiki.org/emacs/MlDonkey http://web.archive.org/web/20070107165326/www.physik.fu-berlin.de/~dhansen/mldonkey/
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=~amd64 ppc ~x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=http://www.physik.fu-berlin.de/%7Edhansen/mldonkey/files/mldonkey-el-0.0.4b.tar.gz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=6e4fd8a0ad385fbc6e1b55bf2783a5dc
+_md5_=5c0f3f055f93ba342b825e902311ec92
