@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="GTK+2 themes which copy and improve the look of XP Luna"
 HOMEPAGE="https://web.archive.org/web/20130730053042/https://art.gnome.org/themes/gtk2/1058"
-SRC_URI="mirror://gnome/teams/art.gnome.org/themes/gtk2/GTK2-EXperience.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://download.gnome.org/teams/art.gnome.org/themes/gtk2/GTK2-EXperience.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
