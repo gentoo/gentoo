@@ -19407,7 +19407,7 @@ x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Ic
 x11-themes/elementary-xfce-icon-theme 0.11 0.13.1: Elementary icons forked from upstream, extended and maintained for Xfce
 x11-themes/experience 3.04-r1: GTK+2 themes which copy and improve the look of XP Luna
 x11-themes/faenza-icon-theme 1.3.1: A scalable icon theme called Faenza
-x11-themes/fedora-backgrounds 27.0.1 28.1.5 29.1.3 30.1.2: A set of default and supplemental wallpapers for Fedora
+x11-themes/fedora-backgrounds 27.0.1 28.1.5 29.1.3 30.1.2 31.0.3: A set of default and supplemental wallpapers for Fedora
 x11-themes/flatsvg 1.0: Flat SVG icon set
 x11-themes/fluxbox-styles-fluxmod 20050128-r1: A collection of FluxBox themes from FluxMod
 x11-themes/fvwm-crystal 3.2.3-r1 3.2.5-r1 3.4.1-r1 3.4.1-r2: Configurable FVWM theme with transparency and freedesktop compatible menu
