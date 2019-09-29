@@ -210,7 +210,7 @@ multilib_src_install() {
 			rm "${ED}"/usr/$(get_libdir)/bluez/test/example-gatt-client || die
 			rm "${ED}"/usr/$(get_libdir)/bluez/test/agent.py || die
 			rm "${ED}"/usr/$(get_libdir)/bluez/test/test-mesh || die
-			
+
 			python_fix_shebang "${ED}"/usr/$(get_libdir)/bluez/test
 
 			for i in $(find "${ED}"/usr/$(get_libdir)/bluez/test -maxdepth 1 -type f ! -name "*.*"); do
@@ -273,7 +273,7 @@ multilib_src_install_all() {
 	udev_dorules "${FILESDIR}/69-btattach-bcm.rules"
 	systemd_newunit "${FILESDIR}/btattach-bcm_at.service" "btattach-bcm@.service"
 	exeinto /usr/libexec/bluetooth
-	doexe "${FILESDIR}/btattach-bcm-service.sh"	
+	doexe "${FILESDIR}/btattach-bcm-service.sh"
 }
 
 pkg_postinst() {
