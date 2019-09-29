@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -36,7 +36,8 @@ DEPEND="${RDEPEND}
 
 pkg_setup() {
 	webapp_pkg_setup
-	enewuser "${PN}"
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 -1 ${PN}
 }
 
 src_prepare() {
