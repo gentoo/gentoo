@@ -13,7 +13,7 @@ MY_PN="gnome-python"
 DESCRIPTION="Provides the base files for the gnome-python bindings"
 HOMEPAGE="http://pygtk.org/"
 PVP="$(get_version_component_range 1-2)"
-SRC_URI="mirror://gnome/sources/${MY_PN}/${PVP}/${MY_PN}-${PV}.tar.bz2"
+SRC_URI="https://download.gnome.org/sources/${MY_PN}/${PVP}/${MY_PN}-${PV}.tar.bz2"
 
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
