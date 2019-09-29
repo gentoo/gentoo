@@ -15,7 +15,7 @@ KEYWORDS=""
 IUSE="
 	adns androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc
 	dpauxmon +dumpcap +editcap kerberos libxml2 lua lz4 maxminddb +mergecap
-	+minizip +netlink nghttp2 +plugins plugin_ifdemo +pcap +qt5 +randpkt
+	+minizip +netlink nghttp2 +plugins plugin-ifdemo +pcap +qt5 +randpkt
 	+randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl
 	sdjournal +text2pcap tfshark +tshark +udpdump zlib
 "
@@ -82,7 +82,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-wireshark )
 "
 REQUIRED_USE="
-	plugin_ifdemo? ( plugins )
+	plugin-ifdemo? ( plugins )
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4-androiddump.patch
@@ -163,7 +163,7 @@ src_configure() {
 		-DENABLE_NGHTTP2=$(usex nghttp2)
 		-DENABLE_PCAP=$(usex pcap)
 		-DENABLE_PLUGINS=$(usex plugins)
-		-DENABLE_PLUGIN_IFDEMO=$(usex plugin_ifdemo)
+		-DENABLE_PLUGIN_IFDEMO=$(usex plugin-ifdemo)
 		-DENABLE_SBC=$(usex sbc)
 		-DENABLE_SMI=$(usex smi)
 		-DENABLE_SNAPPY=$(usex snappy)
