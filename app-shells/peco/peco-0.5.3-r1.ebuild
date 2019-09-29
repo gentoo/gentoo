@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGO_VENDOR=( "github.com/google/btree 0c3044bc8bada22db67b93f5760fe3f05d6a5c25"
 	"github.com/jessevdk/go-flags 8bc97d602c3bfeb5fc6fc9b5a9c898f245495637"
