@@ -219,7 +219,7 @@ multilib_src_install() {
 		fi
 	else
 		emake DESTDIR="${D}" \
-			install-includeHEADERS \
+			install-pkgincludeHEADERS \
 			install-libLTLIBRARIES \
 			install-pkgconfigDATA
 	fi
