@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 inherit eutils multilib-minimal python-single-r1
 
 DESCRIPTION="a library with the aim to simplify DNS programming in C"
@@ -74,8 +74,7 @@ multilib_src_configure() {
 
 src_prepare() {
 	default
-	#epatch "${FILESDIR}/${P}-CVE-2017-1000231.patch"
-	#epatch "${FILESDIR}/${P}-CVE-2017-1000232.patch"
+	epatch "${FILESDIR}/${P}-Makefile.patch"
 	# remove non-existing dependency for target packaging/libldns.pc
 	sed -i 's,packaging/libldns.pc.in,,' "${S}"/Makefile.in || die 'could not patch Makefile.in'
 }
