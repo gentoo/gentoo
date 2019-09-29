@@ -12650,7 +12650,7 @@ mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a
 mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
 mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
-mail-mta/exim 4.92-r3 4.92-r4 4.92.1-r1 4.92.2: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.92-r3 4.92-r4 4.92.1-r1 4.92.2 4.92.3: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.8.3 1.8.4 1.8.5 1.8.5-r1: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r2 1.06-r4 1.06-r6 1.06-r7: qmail -- a secure, reliable, efficient, simple message transfer agent
