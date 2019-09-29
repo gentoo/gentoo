@@ -38,7 +38,10 @@ DEPEND="${RDEPEND}
 
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${P}-tests-optional.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-tests-optional.patch"
+	"${FILESDIR}/${P}-require-cxx14.patch"
+)
 
 src_prepare() {
 	kde5_src_prepare
