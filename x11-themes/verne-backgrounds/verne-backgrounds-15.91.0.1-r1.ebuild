@@ -13,7 +13,7 @@ MY_P="${PN}-$(get_version_component_range 1-3)"
 DESCRIPTION="Fedora 16 official background artwork"
 HOMEPAGE="https://fedoraproject.org/wiki/F16_Artwork"
 
-SRC_URI="mirror://fedora-dev/${SRC_PATH}/${PN}-$(replace_version_separator 3 -).fc${FEDORA}.src.rpm"
+SRC_URI="https://archives.fedoraproject.org/pub/archive/fedora/linux/${SRC_PATH}/${PN}-$(replace_version_separator 3 -).fc${FEDORA}.src.rpm"
 
 LICENSE="CC-BY-SA-3.0"
 KEYWORDS="~amd64"
