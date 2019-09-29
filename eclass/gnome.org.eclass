@@ -48,6 +48,6 @@ fi
 # Major and minor numbers of the version number.
 : ${GNOME_ORG_PVP:=$(ver_cut 1-2)}
 
-SRC_URI="mirror://gnome/sources/${GNOME_ORG_MODULE}/${GNOME_ORG_PVP}/${GNOME_ORG_MODULE}-${PV}.tar.${GNOME_TARBALL_SUFFIX}"
+SRC_URI="https://download.gnome.org/sources/${GNOME_ORG_MODULE}/${GNOME_ORG_PVP}/${GNOME_ORG_MODULE}-${PV}.tar.${GNOME_TARBALL_SUFFIX}"
 
 S="${WORKDIR}/${GNOME_ORG_MODULE}-${PV}"
