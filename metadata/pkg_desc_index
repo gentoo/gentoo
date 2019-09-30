@@ -2049,7 +2049,6 @@ app-misc/pet 0.3.0 0.3.2 0.3.6: Simple command-line snippet manager
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/physlock 11-r1: lightweight Linux console locking tool
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
-app-misc/pip3line 3.6.0 9999: Raw bytes manipulation, transformations (decoding and more) and interception
 app-misc/pipeworks 0.4-r1: A small utility that measures throughput between stdin and stdout
 app-misc/plod 1.9-r2: A tool to help administrators keep track of daily activities
 app-misc/prog-express 3.7.8-r1 3.8.3: A modern and intuitive control software for the Batronix USB programming devices

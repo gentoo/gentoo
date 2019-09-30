@@ -1031,9 +1031,6 @@ app-misc/note:text - Add support for text backend
 app-misc/openastro:jpeg - Enable exporting Astrological Charts to jpeg
 app-misc/openastro:png - Enable exporting Astrological Charts to png
 app-misc/pax-utils:python - Install a more powerful/faster version of lddtree
-app-misc/pip3line:distorm - Compile the Distorm plugin
-app-misc/pip3line:qscintilla - Use QScintilla for more efficient text display
-app-misc/pip3line:ssl - Compile the plugin adding miscellaneous hashes from OpenSSL
 app-misc/recoll:camelcase - Enable indexing for camelCase sentences and words
 app-misc/recoll:chm - Enable CHM file support via dev-python/pychm
 app-misc/recoll:inotify - Use the Linux Kernel notification subsystem for monitoring file alterations in realtime
