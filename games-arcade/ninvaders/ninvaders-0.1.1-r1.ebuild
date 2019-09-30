@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="ASCII space invaders clone"
 HOMEPAGE="http://ninvaders.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ninvaders/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ninvaders/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

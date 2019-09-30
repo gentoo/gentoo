@@ -8,7 +8,7 @@ MY_P=${PN}2-${PV}
 
 DESCRIPTION="Active OS fingerprinting tool - this is Xprobe2"
 HOMEPAGE="http://sys-security.com/blog/xprobe2"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Fast, efficient TCP/IP protocol for connecting to Win32-based databases"
 HOMEPAGE="http://odbtp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/odbtp/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/odbtp/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"

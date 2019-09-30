@@ -10,9 +10,9 @@ TCL_VER="8.6.2"
 
 DESCRIPTION="Object Oriented Enhancements for Tcl/Tk"
 HOMEPAGE="http://incrtcl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/incrtcl/%5Bincr%20Tcl_Tk%5D-4-source/itcl%20${PV}/${MY_P}.tar.gz"
-#SRC_URI="mirror://sourceforge/project/incrtcl/%5Bincr%20Tcl_Tk%5D-4-source/itcl%204.0.2/itcl4.0.2.tar.gz"
-#SRC_URI="mirror://sourceforge/project/tcl/Tcl/${TCL_VER}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/incrtcl/%5Bincr%20Tcl_Tk%5D-4-source/itcl%20${PV}/${MY_P}.tar.gz"
+#SRC_URI="https://download.sourceforge.net/project/incrtcl/%5Bincr%20Tcl_Tk%5D-4-source/itcl%204.0.2/itcl4.0.2.tar.gz"
+#SRC_URI="https://download.sourceforge.net/project/tcl/Tcl/${TCL_VER}/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"

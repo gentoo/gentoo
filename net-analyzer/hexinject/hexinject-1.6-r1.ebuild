@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Network packet sniffer and injector"
 HOMEPAGE="http://hexinject.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -10,7 +10,7 @@ S="${WORKDIR}"
 
 DESCRIPTION="A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs"
 HOMEPAGE="http://www.unhide-forensics.info"
-SRC_URI="mirror://sourceforge/${PN}/files/${MY_P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/files/${MY_P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"

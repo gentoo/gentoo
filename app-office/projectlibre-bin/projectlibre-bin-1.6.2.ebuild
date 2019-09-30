@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="An open source desktop alternative to Microsoft Project"
 HOMEPAGE="http://www.projectlibre.org/"
-SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tar.gz
+SRC_URI="https://download.sourceforge.net/${MY_PN}/${MY_P}.tar.gz
 	mirror://gentoo/${MY_PN}.png"
 
 LICENSE="CPAL-1.0"

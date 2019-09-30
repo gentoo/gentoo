@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="HTTP download tool built atop the HTTP fetcher library"
 HOMEPAGE="https://sourceforge.net/projects/fetch/"
-SRC_URI="mirror://sourceforge/fetch/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/fetch/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

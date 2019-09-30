@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="A submitter for gnopaste, a nopaste service like http://nopaste.info"
 HOMEPAGE="http://gnopaste.sf.net"
-SRC_URI="mirror://sourceforge/gnopaste/${P}.pl.gz"
+SRC_URI="https://download.sourceforge.net/gnopaste/${P}.pl.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

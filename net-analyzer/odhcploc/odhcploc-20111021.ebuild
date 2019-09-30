@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Open DHCP Locator"
 HOMEPAGE="http://odhcploc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"

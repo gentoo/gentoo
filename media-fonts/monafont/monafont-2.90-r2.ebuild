@@ -9,8 +9,8 @@ MY_P="${P/_/}"
 
 DESCRIPTION="Japanese bitmap and TrueType fonts suitable for browsing 2ch"
 HOMEPAGE="http://monafont.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2
-		truetype? ( mirror://sourceforge/${PN}/${PN}-ttf-${PV}.zip )"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.bz2
+		truetype? ( https://download.sourceforge.net/${PN}/${PN}-ttf-${PV}.zip )"
 
 LICENSE="public-domain"
 SLOT="0"

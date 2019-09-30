@@ -8,7 +8,7 @@ S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="TV RSS is a tool for automating torrent downloads"
 HOMEPAGE="http://tvtrss.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tvtrss/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/tvtrss/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

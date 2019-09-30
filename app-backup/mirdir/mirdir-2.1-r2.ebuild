@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Synchronize two directory trees in a fast way"
 HOMEPAGE="https://sourceforge.net/projects/mirdir/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-Unix.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-Unix.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

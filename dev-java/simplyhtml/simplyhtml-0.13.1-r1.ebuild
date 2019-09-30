@@ -10,7 +10,7 @@ MY_PV="$(replace_all_version_separators _)"
 
 DESCRIPTION="Text processing application based on HTML and CSS files"
 HOMEPAGE="http://simplyhtml.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}_src_${MY_PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_PN}_src_${MY_PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"

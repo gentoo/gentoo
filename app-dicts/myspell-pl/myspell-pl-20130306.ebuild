@@ -30,7 +30,7 @@ HOMEPAGE="
 SRC_URI="
 	http://sjp.pl/slownik/ort/sjp-myspell-pl-${PV}.zip
 	http://www.openoffice.org/pl/pliki/hyph_pl_PL.zip -> ${P}-hyph.zip
-	mirror://sourceforge/synonimy/OOo2-Thesaurus-1.5.zip -> ${P}-thes.zip
+	https://download.sourceforge.net/synonimy/OOo2-Thesaurus-1.5.zip -> ${P}-thes.zip
 "
 LICENSE="CC-SA-1.0 LGPL-3 GPL-3 MPL-1.1"
 SLOT="0"

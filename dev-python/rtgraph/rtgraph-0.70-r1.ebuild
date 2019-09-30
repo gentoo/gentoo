@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Widgets for graphing data in real-time using PyGTK, and UI components for controlling the graphs"
 HOMEPAGE="http://rtgraph.sourceforge.net/"
-SRC_URI="mirror://sourceforge/rtgraph/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/rtgraph/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

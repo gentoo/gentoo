@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Cross-media, cross-platform 2D graphics package"
 HOMEPAGE="http://piddle.sourceforge.net/"
-SRC_URI="mirror://sourceforge/piddle/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/piddle/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

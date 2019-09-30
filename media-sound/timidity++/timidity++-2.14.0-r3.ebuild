@@ -11,7 +11,7 @@ S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="A handy MIDI to WAV converter with OSS and ALSA output support"
 HOMEPAGE="http://timidity.sourceforge.net/"
-SRC_URI="mirror://sourceforge/timidity/${MY_P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/timidity/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

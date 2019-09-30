@@ -7,7 +7,7 @@ inherit autotools gnome2-utils flag-o-matic nsplugins qmake-utils toolchain-func
 
 DESCRIPTION="Portable DjVu viewer using Qt"
 HOMEPAGE="http://djvu.sourceforge.net/djview4.html"
-SRC_URI="mirror://sourceforge/djvu/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/djvu/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

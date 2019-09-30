@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Themeable and easy to use TV Guide - written in Java"
 HOMEPAGE="https://www.tvbrowser.org"
-SRC_URI="mirror://sourceforge/project/tvbrowser/TV-Browser%20Releases%20%28Java%208%20and%20higher%29/${PV}/${MY_PN}_${PV}_bin.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/tvbrowser/TV-Browser%20Releases%20%28Java%208%20and%20higher%29/${PV}/${MY_PN}_${PV}_bin.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

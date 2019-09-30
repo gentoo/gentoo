@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A WBEM services client that includes an SLP client for CIM service discovery"
 HOMEPAGE="http://sblim.wiki.sourceforge.net/CimClient"
-SRC_URI="mirror://sourceforge/sblim/${PN}2-${PV}-src.zip"
+SRC_URI="https://download.sourceforge.net/sblim/${PN}2-${PV}-src.zip"
 
 LICENSE="CPL-1.0"
 SLOT="2"

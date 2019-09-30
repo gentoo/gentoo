@@ -8,7 +8,7 @@ inherit desktop eutils gnome2-utils python-single-r1
 
 DESCRIPTION="A side scrolling shooter game starring a steamboat on the sea"
 HOMEPAGE="http://funnyboat.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.zip"
 
 LICENSE="GPL-2 MIT"
 SLOT="0"

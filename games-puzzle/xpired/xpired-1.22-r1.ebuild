@@ -6,7 +6,7 @@ inherit desktop
 
 DESCRIPTION="A Sokoban-styled puzzle game with lots more action"
 HOMEPAGE="http://xpired.sourceforge.net"
-SRC_URI="mirror://sourceforge/xpired/${P}-linux_source.tar.gz"
+SRC_URI="https://download.sourceforge.net/xpired/${P}-linux_source.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

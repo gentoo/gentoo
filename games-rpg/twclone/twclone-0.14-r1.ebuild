@@ -6,7 +6,7 @@ EAPI=6
 MY_P="${PN}-source-${PV}"
 DESCRIPTION="Clone of BBS Door game Trade Wars 2002"
 HOMEPAGE="http://twclone.sourceforge.net/"
-SRC_URI="mirror://sourceforge/twclone/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/twclone/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

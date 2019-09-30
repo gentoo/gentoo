@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Encrypted UDP based FTP with multicast"
 HOMEPAGE="http://uftp-multicast.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}-multicast/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}-multicast/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit python-single-r1 multilib-minimal
 
 DESCRIPTION="Library to query devices using IEEE1284"
 HOMEPAGE="http://cyberelk.net/tim/software/libieee1284/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

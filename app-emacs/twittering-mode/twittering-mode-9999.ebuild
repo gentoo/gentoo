@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	IUSE="doc"
 else
-	SRC_URI="mirror://sourceforge/twmode/${P}.tar.gz"
+	SRC_URI="https://download.sourceforge.net/twmode/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	RESTRICT="test"
 	IUSE=""

@@ -9,7 +9,7 @@ inherit multilib-minimal
 
 DESCRIPTION="Embedded lua scripts for libquvi"
 HOMEPAGE="http://quvi.sourceforge.net/"
-SRC_URI="mirror://sourceforge/quvi/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/quvi/${P}.tar.xz"
 
 LICENSE="AGPL-3"
 SLOT="0"

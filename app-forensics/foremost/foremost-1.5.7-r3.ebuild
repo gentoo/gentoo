@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="A console program to recover files based on their headers and footers"
 HOMEPAGE="http://foremost.sourceforge.net/"
-#SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+#SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 # starting to hate sf.net ...
 SRC_URI="http://foremost.sourceforge.net/pkg/${P}.tar.gz"
 

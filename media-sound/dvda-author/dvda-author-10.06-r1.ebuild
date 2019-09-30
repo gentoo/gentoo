@@ -5,7 +5,7 @@ EAPI="5"
 
 DESCRIPTION="Author a DVD-Audio DVD"
 HOMEPAGE="http://dvd-audio.sourceforge.net"
-SRC_URI="mirror://sourceforge/dvd-audio/${P}-300.tar.gz"
+SRC_URI="https://download.sourceforge.net/dvd-audio/${P}-300.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

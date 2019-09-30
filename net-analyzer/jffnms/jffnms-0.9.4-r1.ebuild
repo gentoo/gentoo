@@ -6,7 +6,7 @@ inherit user
 
 DESCRIPTION="Network Management and Monitoring System"
 HOMEPAGE="http://www.jffnms.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

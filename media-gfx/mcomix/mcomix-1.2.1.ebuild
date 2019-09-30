@@ -12,7 +12,7 @@ inherit distutils-r1 l10n xdg-utils
 
 DESCRIPTION="A fork of comix, a GTK image viewer for comic book archives"
 HOMEPAGE="https://sourceforge.net/p/mcomix/wiki/Home/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

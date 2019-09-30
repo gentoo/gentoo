@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="automatic mail answering program"
 HOMEPAGE="http://vacation.sourceforge.net/"
-SRC_URI="mirror://sourceforge/vacation/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/vacation/${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="alpha amd64 x86"
 SLOT="0"

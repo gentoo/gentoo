@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A python wrapper for Gnuplot"
 HOMEPAGE="http://gnuplot-py.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

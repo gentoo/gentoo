@@ -9,7 +9,7 @@ if [[ "${PV}" = 9999 ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/NetworkBlockDevice/nbd.git"
 else
-	SRC_URI="mirror://sourceforge/nbd/${P}.tar.xz"
+	SRC_URI="https://download.sourceforge.net/nbd/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 LICENSE="GPL-2"

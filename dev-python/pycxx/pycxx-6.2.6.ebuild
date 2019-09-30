@@ -8,7 +8,7 @@ inherit eutils distutils-r1
 
 DESCRIPTION="Set of facilities to extend Python with C++"
 HOMEPAGE="http://cxx.sourceforge.net"
-SRC_URI="mirror://sourceforge/cxx/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cxx/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

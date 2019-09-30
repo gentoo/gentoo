@@ -6,7 +6,7 @@ inherit gnome2-utils
 
 DESCRIPTION="D&D character generator"
 HOMEPAGE="http://pcgen.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pcgen/${P}-full.zip"
+SRC_URI="https://download.sourceforge.net/pcgen/${P}-full.zip"
 
 LICENSE="LGPL-2.1 OGL-1.0a"
 SLOT="0"

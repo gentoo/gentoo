@@ -10,7 +10,7 @@ inherit wxwidgets eutils
 
 DESCRIPTION="A cross-platform free DVD authoring application"
 HOMEPAGE="http://www.dvdstyler.org/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

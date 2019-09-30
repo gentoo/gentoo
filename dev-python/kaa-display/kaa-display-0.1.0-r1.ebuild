@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python API providing Low level support for various displays, such as X11 or framebuffer"
 HOMEPAGE="http://www.freevo.org/ https://github.com/freevo/kaa-display"
-SRC_URI="mirror://sourceforge/freevo/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/freevo/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

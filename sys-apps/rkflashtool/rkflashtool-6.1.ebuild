@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Tool for flashing Rockchip devices"
 HOMEPAGE="https://sourceforge.net/projects/rkflashtool/"
-SRC_URI="mirror://sourceforge/project/${PN}/${P}/${P}-src.tar.xz"
+SRC_URI="https://download.sourceforge.net/project/${PN}/${P}/${P}-src.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"

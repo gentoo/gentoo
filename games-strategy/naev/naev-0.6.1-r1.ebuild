@@ -6,8 +6,8 @@ inherit flag-o-matic gnome2-utils
 
 DESCRIPTION="A 2D space trading and combat game, in a similar vein to Escape Velocity"
 HOMEPAGE="http://blog.naev.org/"
-SRC_URI="mirror://sourceforge/naev/${P}.tar.bz2
-	mirror://sourceforge/naev/ndata-${PV}.zip"
+SRC_URI="https://download.sourceforge.net/naev/${P}.tar.bz2
+	https://download.sourceforge.net/naev/ndata-${PV}.zip"
 
 LICENSE="GPL-2 GPL-3 public-domain CC-BY-3.0 CC-BY-SA-3.0"
 SLOT="0"

@@ -11,7 +11,7 @@ MY_PN="TGGraphLayout"
 
 DESCRIPTION="TouchGraph provides a set of interfaces for graph visualization"
 HOMEPAGE="http://touchgraph.sourceforge.net"
-SRC_URI="mirror://sourceforge/touchgraph/TGGL_${PV//./}_jre11.zip"
+SRC_URI="https://download.sourceforge.net/touchgraph/TGGL_${PV//./}_jre11.zip"
 LICENSE="Apache-1.1"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86"

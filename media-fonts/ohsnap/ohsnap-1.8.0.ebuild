@@ -6,7 +6,7 @@ inherit font
 
 DESCRIPTION="The ohsnap / osnap monospace font (based on Artwiz Snap)"
 HOMEPAGE="https://sourceforge.net/projects/osnapfont"
-SRC_URI="mirror://sourceforge/osnapfont/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/osnapfont/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

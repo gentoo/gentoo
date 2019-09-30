@@ -6,7 +6,7 @@ inherit desktop
 
 DESCRIPTION="Komi the Space Frog - simple SDL game of collection"
 HOMEPAGE="http://komi.sourceforge.net"
-SRC_URI="mirror://sourceforge/komi/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/komi/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

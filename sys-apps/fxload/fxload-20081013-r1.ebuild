@@ -9,7 +9,7 @@ inherit eutils toolchain-funcs
 MY_P="${PN}-${PV:0:4}_${PV:4:2}_${PV:6:2}"
 DESCRIPTION="USB firmware uploader"
 HOMEPAGE="http://linux-hotplug.sourceforge.net/"
-SRC_URI="mirror://sourceforge/linux-hotplug/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/linux-hotplug/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

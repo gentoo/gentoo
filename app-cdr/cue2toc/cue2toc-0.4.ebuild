@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Convert CUE files to cdrdao's TOC format"
 HOMEPAGE="http://cue2toc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/cue2toc/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cue2toc/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

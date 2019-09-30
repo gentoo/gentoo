@@ -9,7 +9,7 @@ MY_P=${PN}-src-${PV}
 
 DESCRIPTION="Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices"
 HOMEPAGE="http://guvcview.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

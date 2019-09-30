@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="PHAT is a collection of GTK+ widgets geared toward pro-audio apps"
 HOMEPAGE="https://sourceforge.net/projects/phat.berlios/"
-SRC_URI="mirror://sourceforge/phat.berlios/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/phat.berlios/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

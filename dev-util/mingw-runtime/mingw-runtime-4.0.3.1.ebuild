@@ -17,7 +17,7 @@ MY_P="mingwrt-$(version_format_string '$1.$2.$3-$4')-mingw32"
 DESCRIPTION="Free Win32 runtime and import library definitions"
 HOMEPAGE="http://www.mingw.org/"
 # https://sourceforge.net/projects/mingw/files/MinGW/Base/mingw-rt/
-SRC_URI="mirror://sourceforge/mingw/${MY_P}-src.tar.lzma"
+SRC_URI="https://download.sourceforge.net/mingw/${MY_P}-src.tar.lzma"
 
 LICENSE="BSD"
 SLOT="0"

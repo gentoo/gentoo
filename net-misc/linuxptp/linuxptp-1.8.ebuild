@@ -7,7 +7,7 @@ inherit linux-info
 
 DESCRIPTION="The Linux Precision Time Protocol (PTP) implementation"
 HOMEPAGE="http://linuxptp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/v${PV}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/v${PV}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

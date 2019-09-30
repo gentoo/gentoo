@@ -12,7 +12,7 @@ inherit eutils linux-info perl-module python-r1 base subversion autotools
 
 DESCRIPTION="Takes control of the G15 keyboard, through the linux kernel uinput device driver"
 HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
-[[ ${PV} = *9999* ]] || SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+[[ ${PV} = *9999* ]] || SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

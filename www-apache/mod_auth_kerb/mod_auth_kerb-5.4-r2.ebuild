@@ -6,7 +6,7 @@ inherit apache-module eutils systemd
 
 DESCRIPTION="An Apache authentication module using Kerberos"
 HOMEPAGE="http://modauthkerb.sourceforge.net/"
-SRC_URI="mirror://sourceforge/modauthkerb/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/modauthkerb/${P}.tar.gz
 	https://dev.gentoo.org/~mgorny/dist/${P}-gentoo-patchset.tar.bz2"
 
 LICENSE="BSD openafs-krb5-a HPND"

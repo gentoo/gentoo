@@ -6,7 +6,7 @@ inherit autotools sgml-catalog flag-o-matic toolchain-funcs
 
 DESCRIPTION="Jade is an implementation of DSSSL for formatting SGML and XML documents"
 HOMEPAGE="http://openjade.sourceforge.net"
-SRC_URI="mirror://sourceforge/openjade/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/openjade/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

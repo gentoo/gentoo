@@ -6,7 +6,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="Network Security Analysis Tool, an application-level network security scanner"
 HOMEPAGE="http://nsat.sourceforge.net/"
-SRC_URI="mirror://sourceforge/nsat/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/nsat/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

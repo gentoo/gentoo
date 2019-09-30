@@ -9,7 +9,7 @@ inherit distutils-r1 user
 
 DESCRIPTION="a clone of P2P anonymous BBS shinGETsu"
 HOMEPAGE="http://shingetsu.info/"
-SRC_URI="mirror://sourceforge/shingetsu/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/shingetsu/${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0"

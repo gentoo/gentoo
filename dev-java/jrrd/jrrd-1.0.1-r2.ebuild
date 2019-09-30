@@ -9,7 +9,7 @@ inherit autotools java-pkg-2
 
 DESCRIPTION="Java Interface to Tobias Oetiker's RRDtool"
 
-SRC_URI="mirror://sourceforge/opennms/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/opennms/${P}.tar.gz"
 HOMEPAGE="http://www.opennms.org/"
 KEYWORDS="amd64 x86"
 LICENSE="GPL-2"

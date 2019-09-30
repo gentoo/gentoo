@@ -7,7 +7,7 @@ inherit linux-info linux-mod autotools toolchain-funcs
 
 DESCRIPTION="Kernel modules for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="https://linux-gpib.sourceforge.io/"
-SRC_URI="mirror://sourceforge/linux-gpib/linux-gpib-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/linux-gpib/linux-gpib-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

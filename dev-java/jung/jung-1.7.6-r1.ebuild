@@ -8,7 +8,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="The Java Universal Network/Graph Framework"
 HOMEPAGE="http://jung.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"

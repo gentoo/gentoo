@@ -9,7 +9,7 @@ S="${WORKDIR}/MonoCalendar"
 
 DESCRIPTION="iCal clone for .NET"
 HOMEPAGE="http://www.monocalendar.com/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-source-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-source-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

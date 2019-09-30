@@ -12,7 +12,7 @@ MY_P="${PN}-mop-${PV}"
 
 DESCRIPTION="Library of interoperable metaobject protocols for dynamic languages"
 HOMEPAGE="https://sourceforge.net/projects/dynalang/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${MY_P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}/${MY_P}.tgz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

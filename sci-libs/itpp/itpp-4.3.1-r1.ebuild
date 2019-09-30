@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="C++ library of mathematical, signal processing and communication"
 HOMEPAGE="http://itpp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-3"

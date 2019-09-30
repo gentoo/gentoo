@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="An ANSI C implementation of dynamic arrays (Approximation of C++ vectors)"
 HOMEPAGE="http://cvector.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${MY_P}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

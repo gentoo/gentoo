@@ -7,7 +7,7 @@ inherit multilib-minimal toolchain-funcs
 
 DESCRIPTION="Network Audio System"
 HOMEPAGE="https://radscan.com/nas.html"
-SRC_URI="mirror://sourceforge/${PN}/${P}.src.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.src.tar.gz"
 
 LICENSE="HPND MIT"
 SLOT="0"

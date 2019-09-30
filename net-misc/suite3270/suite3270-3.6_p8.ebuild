@@ -17,7 +17,7 @@ inherit eutils font
 
 DESCRIPTION="Complete 3270 access package"
 HOMEPAGE="http://x3270.bgp.nu/"
-SRC_URI="mirror://sourceforge/x3270/${MY_P}-src.tgz"
+SRC_URI="https://download.sourceforge.net/x3270/${MY_P}-src.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

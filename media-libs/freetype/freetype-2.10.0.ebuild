@@ -10,11 +10,11 @@ HOMEPAGE="https://www.freetype.org/"
 IUSE="X +adobe-cff bindist bzip2 +cleartype_hinting debug fontforge harfbuzz infinality png static-libs utils"
 
 if [[ "${PV}" != 9999 ]] ; then
-	SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.bz2
+	SRC_URI="https://download.sourceforge.net/freetype/${P/_/}.tar.bz2
 		mirror://nongnu/freetype/${P/_/}.tar.bz2
-		utils?	( mirror://sourceforge/freetype/ft2demos-${PV}.tar.bz2
+		utils?	( https://download.sourceforge.net/freetype/ft2demos-${PV}.tar.bz2
 			mirror://nongnu/freetype/ft2demos-${PV}.tar.bz2 )
-		doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.bz2
+		doc?	( https://download.sourceforge.net/freetype/${PN}-doc-${PV}.tar.bz2
 			mirror://nongnu/freetype/${PN}-doc-${PV}.tar.bz2 )"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 	IUSE+=" doc"

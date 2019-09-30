@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="A graphical frontend for the 'efax' application"
 HOMEPAGE="http://efax-gtk.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.src.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.src.tgz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

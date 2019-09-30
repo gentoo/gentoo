@@ -9,7 +9,7 @@ inherit distutils-r1 elisp-common
 
 DESCRIPTION="Bicycle Repair Man is the Python Refactoring Browser"
 HOMEPAGE="http://bicyclerepair.sourceforge.net/"
-SRC_URI="mirror://sourceforge/bicyclerepair/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/bicyclerepair/${P}.tar.gz"
 
 LICENSE="icu GPL-2+"
 SLOT="0"

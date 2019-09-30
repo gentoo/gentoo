@@ -11,7 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="SAX: Simple API for XML in Java"
 HOMEPAGE="http://sax.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}.zip -> ${P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_PN}.zip -> ${P}.zip"
 LICENSE="public-domain"
 
 SLOT="0"

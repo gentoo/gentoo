@@ -384,13 +384,13 @@ get_gcc_src_uri() {
 		local HTBFILE="bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch.bz2"
 		GCC_SRC_URI+="
 			boundschecking? (
-				mirror://sourceforge/boundschecking/${HTBFILE}
+				https://download.sourceforge.net/boundschecking/${HTBFILE}
 				$(gentoo_urls ${HTBFILE})
 			)"
 	fi
 
 	[[ -n ${D_VER} ]] && \
-		GCC_SRC_URI+=" d? ( mirror://sourceforge/dgcc/gdc-${D_VER}-src.tar.bz2 )"
+		GCC_SRC_URI+=" d? ( https://download.sourceforge.net/dgcc/gdc-${D_VER}-src.tar.bz2 )"
 
 	if tc_has_feature gcj ; then
 		if tc_version_is_at_least 4.5 ; then

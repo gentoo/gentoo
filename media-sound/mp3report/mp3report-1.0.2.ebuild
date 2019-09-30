@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="Perl script to create an HTML report of MP3 files in a directory"
 HOMEPAGE="http://mp3report.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PF}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PF}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

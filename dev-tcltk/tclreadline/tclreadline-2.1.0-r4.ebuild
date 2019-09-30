@@ -12,7 +12,7 @@ DEBIAN_PATCH=12
 DESCRIPTION="Readline extension to TCL"
 HOMEPAGE="http://tclreadline.sf.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.gz
+	https://download.sourceforge.net/${PN}/${P}.tar.gz
 	mirror://debian/pool/main/t/${PN}/${PN}_${PV}-${DEBIAN_PATCH}.debian.tar.gz"
 
 SLOT="0"

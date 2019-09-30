@@ -7,7 +7,7 @@ inherit xdg
 
 DESCRIPTION="Nintendo DS emulator"
 HOMEPAGE="http://desmume.org/"
-SRC_URI="mirror://sourceforge/desmume/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/desmume/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

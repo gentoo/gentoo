@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="Daemon of the CDEmu optical media image mounting suite"
 HOMEPAGE="http://cdemu.org"
-SRC_URI="mirror://sourceforge/cdemu/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/cdemu/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0/7" # subslot = CDEMU_DAEMON_INTERFACE_VERSION_MAJOR in CMakeLists.txt

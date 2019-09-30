@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="Utility for getting info out of DVDs"
 HOMEPAGE="https://sourceforge.net/projects/lsdvd/"
-SRC_URI="mirror://sourceforge/lsdvd/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lsdvd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

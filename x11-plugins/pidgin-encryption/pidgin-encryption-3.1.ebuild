@@ -7,7 +7,7 @@ inherit flag-o-matic eutils
 
 DESCRIPTION="Pidgin IM Encryption PlugIn"
 HOMEPAGE="http://pidgin-encrypt.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pidgin-encrypt/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pidgin-encrypt/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

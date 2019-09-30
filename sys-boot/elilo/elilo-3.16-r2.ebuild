@@ -7,7 +7,7 @@ inherit toolchain-funcs eutils multilib
 
 DESCRIPTION="Linux boot loader for EFI-based systems such as IA-64"
 HOMEPAGE="https://sourceforge.net/projects/elilo/"
-SRC_URI="mirror://sourceforge/elilo/${P}-all.tar.gz
+SRC_URI="https://download.sourceforge.net/elilo/${P}-all.tar.gz
 	mirror://debian/pool/main/e/elilo/elilo_3.14-3.debian.tar.gz"
 
 LICENSE="GPL-2"

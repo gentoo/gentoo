@@ -7,7 +7,7 @@ inherit toolchain-funcs eutils
 
 DESCRIPTION="Indexes and searches Maildir/MH folders"
 HOMEPAGE="http://www.rpcurnow.force9.co.uk/mairix/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz
 	gnus? ( mirror://gentoo/${P}-gnus-marks-propagation.patch.gz )"
 
 LICENSE="GPL-2"

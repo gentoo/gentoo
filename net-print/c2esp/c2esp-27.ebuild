@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="A CUPS filter for Kodak ESP printers"
 HOMEPAGE="https://sourceforge.net/projects/cupsdriverkodak"
-SRC_URI="mirror://sourceforge/cupsdriverkodak/files/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cupsdriverkodak/files/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"

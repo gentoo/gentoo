@@ -7,7 +7,7 @@ inherit eutils flag-o-matic toolchain-funcs udev
 
 DESCRIPTION="IrDA management and handling utilities"
 HOMEPAGE="http://irda.sourceforge.net"
-SRC_URI="mirror://sourceforge/irda/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/irda/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

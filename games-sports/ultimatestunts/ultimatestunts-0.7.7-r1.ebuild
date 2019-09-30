@@ -7,7 +7,7 @@ inherit eutils flag-o-matic versionator
 MY_P=${PN}-srcdata-$(replace_all_version_separators)1
 DESCRIPTION="Remake of the famous Stunts game"
 HOMEPAGE="http://www.ultimatestunts.nl/"
-SRC_URI="mirror://sourceforge/ultimatestunts/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ultimatestunts/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

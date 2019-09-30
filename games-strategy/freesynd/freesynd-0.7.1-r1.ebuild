@@ -8,7 +8,7 @@ inherit cmake-utils desktop gnome2-utils readme.gentoo-r1
 
 DESCRIPTION="Portable reimplementation of engine for the classic Bullfrog game, Syndicate"
 HOMEPAGE="http://freesynd.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit multilib python-single-r1
 MY_PN=IceWMControlPanel
 DESCRIPTION="A complete control panel for IceWM using gtk & python"
 HOMEPAGE="http://icesoundmanager.sourceforge.net/index.php"
-SRC_URI="mirror://sourceforge/icesoundmanager/${MY_PN}-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/icesoundmanager/${MY_PN}-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

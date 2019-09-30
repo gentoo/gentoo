@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="Free TrueType fonts based on Bitstream's Vera fonts with additional letters"
 HOMEPAGE="https://sourceforge.net/projects/hunkyfonts/"
-SRC_URI="mirror://sourceforge/hunkyfonts/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/hunkyfonts/${P}.tar.bz2"
 
 LICENSE="BitstreamVera public-domain"
 SLOT="0"

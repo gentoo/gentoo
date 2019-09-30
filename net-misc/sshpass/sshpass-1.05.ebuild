@@ -5,7 +5,7 @@ EAPI="4"
 
 DESCRIPTION="Tool for noninteractively performing password authentication with ssh"
 HOMEPAGE="http://sshpass.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"

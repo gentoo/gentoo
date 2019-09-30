@@ -7,7 +7,7 @@ inherit autotools multilib-minimal
 
 DESCRIPTION="Multiple Image Networkgraphics lib (animated png's)"
 HOMEPAGE="https://www.libmng.com/"
-SRC_URI="mirror://sourceforge/libmng/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/libmng/${P}.tar.xz"
 
 LICENSE="libmng"
 SLOT="0/2"

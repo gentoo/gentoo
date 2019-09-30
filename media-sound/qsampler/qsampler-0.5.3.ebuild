@@ -7,7 +7,7 @@ inherit qmake-utils xdg-utils
 
 DESCRIPTION="Graphical frontend to the LinuxSampler engine"
 HOMEPAGE="https://qsampler.sourceforge.io/ https://www.linuxsampler.org/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

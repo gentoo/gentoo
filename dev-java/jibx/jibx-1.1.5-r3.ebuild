@@ -11,7 +11,7 @@ MY_PV=$(replace_all_version_separators '_')
 
 DESCRIPTION="JiBX: Binding XML to Java Code"
 HOMEPAGE="http://jibx.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${MY_PV}.zip -> ${P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}_${MY_PV}.zip -> ${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"

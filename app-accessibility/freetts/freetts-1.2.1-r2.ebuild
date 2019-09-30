@@ -6,7 +6,7 @@ EAPI=0
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="A speech synthesis system written entirely in Java"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.zip"
 HOMEPAGE="http://freetts.sourceforge.net/"
 
 RDEPEND=">=virtual/jre-1.4

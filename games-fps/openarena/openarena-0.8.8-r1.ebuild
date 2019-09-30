@@ -6,8 +6,8 @@ inherit desktop epatch flag-o-matic versionator
 
 DESCRIPTION="Open-source replacement for Quake 3 Arena"
 HOMEPAGE="http://openarena.ws/"
-SRC_URI="mirror://sourceforge/oarena/${P}.zip
-	mirror://sourceforge/oarena/src/${PN}-engine-source-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/oarena/${P}.zip
+	https://download.sourceforge.net/oarena/src/${PN}-engine-source-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="create an APNG from a GIF"
 HOMEPAGE="https://sourceforge.net/projects/gif2apng/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${PV}/${P}-src.zip"
 
 LICENSE="ZLIB LGPL-2.1"
 SLOT="0"

@@ -10,7 +10,7 @@ ITCL_VERSION="$(get_version_component_range 1-2)"
 
 DESCRIPTION="Object Oriented Enhancements for Tcl/Tk"
 HOMEPAGE="http://incrtcl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/incrtcl/%5BIncr%20Tcl_Tk%5D-source/${PV}/${PN}${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/incrtcl/%5BIncr%20Tcl_Tk%5D-source/${PV}/${PN}${PV}.tar.gz"
 
 IUSE=""
 SLOT="0"

@@ -9,7 +9,7 @@ inherit distutils-r1 eutils
 
 DESCRIPTION="Python wrappers for lpsolve linear programming library"
 HOMEPAGE="http://lpsolve.sourceforge.net/5.5/Python.htm"
-SRC_URI="mirror://sourceforge/lpsolve/${PN}_${PV}_Python_source.tar.gz"
+SRC_URI="https://download.sourceforge.net/lpsolve/${PN}_${PV}_Python_source.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

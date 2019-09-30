@@ -10,8 +10,8 @@ MY_P="${PN}${PV/_beta/b}"
 DESCRIPTION="Tk Widget Set"
 HOMEPAGE="http://www.tcl.tk/"
 SRC_URI="
-	mirror://sourceforge/tcl/${MY_P}-src.tar.gz
-	mirror://sourceforge/tcl/${MY_P//tk/tcl}-src.tar.gz
+	https://download.sourceforge.net/tcl/${MY_P}-src.tar.gz
+	https://download.sourceforge.net/tcl/${MY_P//tk/tcl}-src.tar.gz
 	"
 
 LICENSE="tcltk"

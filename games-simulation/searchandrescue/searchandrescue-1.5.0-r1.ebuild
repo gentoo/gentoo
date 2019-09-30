@@ -8,8 +8,8 @@ MY_DATA_PV=1.3.0
 MY_PN=SearchAndRescue
 DESCRIPTION="Helicopter based air rescue flight simulator"
 HOMEPAGE="http://searchandrescue.sourceforge.net/"
-SRC_URI="mirror://sourceforge/searchandrescue/${MY_PN}-${PV}.tar.gz
-	mirror://sourceforge/searchandrescue/${MY_PN}-data-${MY_DATA_PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/searchandrescue/${MY_PN}-${PV}.tar.gz
+	https://download.sourceforge.net/searchandrescue/${MY_PN}-data-${MY_DATA_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

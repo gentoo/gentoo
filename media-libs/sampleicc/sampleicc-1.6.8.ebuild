@@ -7,7 +7,7 @@ inherit autotools-utils
 
 DESCRIPTION="C++ library for reading, writing, manipulating, and applying ICC profiles"
 HOMEPAGE="http://sampleicc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/SampleICC-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/SampleICC-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

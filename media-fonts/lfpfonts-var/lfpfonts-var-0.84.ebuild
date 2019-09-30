@@ -7,7 +7,7 @@ inherit font font-ebdftopcf
 
 DESCRIPTION="Linux Font Project variable-width fonts"
 HOMEPAGE="https://sourceforge.net/projects/xfonts/"
-SRC_URI="mirror://sourceforge/xfonts/${PN}-src-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/xfonts/${PN}-src-${PV}.tar.bz2"
 LICENSE="public-domain"
 
 SLOT="0"

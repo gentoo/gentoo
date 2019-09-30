@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="SIFT algorithm for automatic panorama creation in C"
 HOMEPAGE="http://hugin.sourceforge.net/ http://user.cs.tu-berlin.de/~nowozin/autopano-sift/"
-SRC_URI="mirror://sourceforge/hugin/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/hugin/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

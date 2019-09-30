@@ -9,7 +9,7 @@ S_DATE="20161107"
 
 DESCRIPTION="Open Settlement Protocol development kit"
 HOMEPAGE="http://www.transnexus.com/OSP%20Toolkit/OSP%20Toolkit%20Documents/OSP%20Toolkit%20Documents.htm"
-SRC_URI="mirror://sourceforge/osp-toolkit/OSPToolkit-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/osp-toolkit/OSPToolkit-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -14,7 +14,7 @@ inherit python-single-r1
 
 DESCRIPTION="Arabic dictionary based on the DICT protocol"
 HOMEPAGE="https://www.arabeyes.org/Duali"
-SRC_URI="mirror://sourceforge/arabeyes/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/arabeyes/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

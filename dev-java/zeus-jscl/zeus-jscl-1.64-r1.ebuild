@@ -11,7 +11,7 @@ MY_P="${PN}_v${PV//./_}"
 
 DESCRIPTION="Zeus Java Swing Components Library"
 HOMEPAGE="https://sourceforge.net/projects/zeus-jscl/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

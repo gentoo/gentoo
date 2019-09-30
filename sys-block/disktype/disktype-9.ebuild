@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Detect the content format of a disk or disk image"
 HOMEPAGE="http://disktype.sourceforge.net/"
-SRC_URI="mirror://sourceforge/disktype/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/disktype/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

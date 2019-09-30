@@ -10,7 +10,7 @@ MY_P="${P^}"
 
 DESCRIPTION="Qt-based chess application + engine \"gupta\""
 HOMEPAGE="https://sourceforge.net/projects/gambitchess/"
-SRC_URI="mirror://sourceforge/project/${PN}chess/${MY_P}/${MY_P}-src.tar.xz"
+SRC_URI="https://download.sourceforge.net/project/${PN}chess/${MY_P}/${MY_P}-src.tar.xz"
 
 LICENSE="CC0-1.0"
 SLOT="0"

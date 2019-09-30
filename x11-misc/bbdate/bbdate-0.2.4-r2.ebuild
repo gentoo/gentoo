@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="blackbox date display"
 HOMEPAGE="https://sourceforge.net/projects/bbtools"
-SRC_URI="mirror://sourceforge/bbtools/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/bbtools/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

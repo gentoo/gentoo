@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="interface to the new Yahoo! Messenger protocol"
 HOMEPAGE="http://libyahoo2.sourceforge.net/"
-SRC_URI="mirror://sourceforge/libyahoo2/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/libyahoo2/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

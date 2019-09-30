@@ -9,7 +9,7 @@ inherit python-single-r1
 
 DESCRIPTION="CrossTeX - object oriented BibTeX replacement"
 HOMEPAGE="http://www.cs.cornell.edu/people/egs/crosstex/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

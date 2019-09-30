@@ -7,9 +7,9 @@ inherit font
 
 DESCRIPTION="A font based on Adobe Utopia"
 HOMEPAGE="https://heuristica.sourceforge.io/"
-SRC_URI="mirror://sourceforge/heuristica/${PN}-ttf-${PV}.tar.xz
-	mirror://sourceforge/heuristica/${PN}-otf-${PV}.tar.xz
-	mirror://sourceforge/heuristica/${PN}-pfb-${PV}.tar.xz"
+SRC_URI="https://download.sourceforge.net/heuristica/${PN}-ttf-${PV}.tar.xz
+	https://download.sourceforge.net/heuristica/${PN}-otf-${PV}.tar.xz
+	https://download.sourceforge.net/heuristica/${PN}-pfb-${PV}.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"

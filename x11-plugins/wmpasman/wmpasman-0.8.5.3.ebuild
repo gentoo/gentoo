@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="Password storage/retrieval in a dockapp"
 HOMEPAGE="https://sourceforge.net/projects/wmpasman/"
-SRC_URI="mirror://sourceforge/wmpasman/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/wmpasman/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

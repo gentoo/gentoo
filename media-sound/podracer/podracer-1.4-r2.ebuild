@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A simple podcast aggregator, designed for cron"
 HOMEPAGE="http://podracer.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

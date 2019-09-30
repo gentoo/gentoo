@@ -7,7 +7,7 @@ inherit epatch epunt-cxx eutils libtool ltprune multilib multilib-minimal
 
 DESCRIPTION="The MAD id3tag library"
 HOMEPAGE="http://www.underbit.com/products/mad/"
-SRC_URI="mirror://sourceforge/mad/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mad/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit eutils
 DESCRIPTION="Squid logfile analyzer and traffic grapher"
 HOMEPAGE="http://squid-graph.sourceforge.net/"
 LICENSE="GPL-2"
-SRC_URI="mirror://sourceforge/squid-graph/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/squid-graph/${P}.tar.gz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"

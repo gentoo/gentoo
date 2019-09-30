@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="X based config tool for the windowmaker X windowmanager"
 HOMEPAGE="http://wmakerconf.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P/-/_}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P/-/_}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

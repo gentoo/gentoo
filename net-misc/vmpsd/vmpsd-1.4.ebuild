@@ -6,7 +6,7 @@ inherit eutils flag-o-matic autotools
 
 DESCRIPTION="An open-source VLAN management system"
 HOMEPAGE="http://vmps.sourceforge.net"
-SRC_URI="mirror://sourceforge/vmps/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/vmps/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"

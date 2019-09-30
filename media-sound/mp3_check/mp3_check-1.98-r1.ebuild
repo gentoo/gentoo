@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="MP3 consistency checker"
 HOMEPAGE="https://sourceforge.net/projects/mp3check/"
-SRC_URI="mirror://sourceforge/mp3check/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mp3check/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Linux Kernel Crash Dumps (LKCD) Utilities"
 HOMEPAGE="http://lkcd.sourceforge.net/"
-SRC_URI="mirror://sourceforge/lkcd/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lkcd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

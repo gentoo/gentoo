@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Another uncompressor for compatibility"
 HOMEPAGE="https://github.com/vapier/ncompress"
-SRC_URI="mirror://sourceforge/ncompress/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ncompress/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

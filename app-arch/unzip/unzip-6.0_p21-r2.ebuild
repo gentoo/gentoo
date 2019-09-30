@@ -11,7 +11,7 @@ MY_P="${PN}${MY_PV}"
 
 DESCRIPTION="unzipper for pkzip-compressed files"
 HOMEPAGE="http://www.info-zip.org/"
-SRC_URI="mirror://sourceforge/infozip/${MY_P}.tar.gz
+SRC_URI="https://download.sourceforge.net/infozip/${MY_P}.tar.gz
 	mirror://debian/pool/main/u/${PN}/${PN}_${PV/_p/-}.debian.tar.xz"
 
 LICENSE="Info-ZIP"

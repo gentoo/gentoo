@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="JFreeChart is a free Java class library for generating charts"
 HOMEPAGE="http://www.jfree.org/jfreechart"
-SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="1.0"

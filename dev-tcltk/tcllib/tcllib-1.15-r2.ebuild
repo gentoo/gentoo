@@ -9,7 +9,7 @@ DESCRIPTION="Tcl Standard Library"
 HOMEPAGE="http://www.tcl.tk/software/tcllib/"
 SRC_URI="
 	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.xz
-	mirror://sourceforge/tcllib/${P}.tar.bz2"
+	https://download.sourceforge.net/tcllib/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

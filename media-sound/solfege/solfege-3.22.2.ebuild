@@ -9,7 +9,7 @@ inherit python-single-r1
 
 DESCRIPTION="GNU Solfege is a program written to help you practice ear training"
 HOMEPAGE="https://www.gnu.org/software/solfege/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

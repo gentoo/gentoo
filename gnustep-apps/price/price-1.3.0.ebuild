@@ -7,7 +7,7 @@ inherit gnustep-2
 MY_P=PRICE-${PV}
 DESCRIPTION="Precision Raster Image Convolution Engine"
 HOMEPAGE="http://price.sourceforge.net/"
-SRC_URI="mirror://sourceforge/price/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/price/${MY_P}.tar.gz"
 KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 LICENSE="GPL-2"

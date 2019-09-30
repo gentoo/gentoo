@@ -6,7 +6,7 @@ inherit autotools desktop
 
 DESCRIPTION="A clone of Sega's Chu Chu Rocket"
 HOMEPAGE="http://mures.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mures/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mures/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

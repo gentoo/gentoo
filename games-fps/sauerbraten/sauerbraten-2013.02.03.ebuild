@@ -7,7 +7,7 @@ inherit eutils flag-o-matic gnome2-utils games
 EDITION="collect_edition"
 DESCRIPTION="Sauerbraten is a FOSS game engine (Cube 2) with freeware game data (Sauerbraten)"
 HOMEPAGE="http://sauerbraten.org/"
-SRC_URI="mirror://sourceforge/sauerbraten/sauerbraten/2013_02_03/sauerbraten_${PV//./_}_${EDITION}_linux.tar.bz2"
+SRC_URI="https://download.sourceforge.net/sauerbraten/sauerbraten/2013_02_03/sauerbraten_${PV//./_}_${EDITION}_linux.tar.bz2"
 
 LICENSE="ZLIB freedist"
 SLOT="0"

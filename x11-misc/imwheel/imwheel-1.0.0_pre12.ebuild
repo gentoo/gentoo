@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="mouse tool for advanced features such as wheels and 3+ buttons"
 HOMEPAGE="http://imwheel.sourceforge.net/"
-SRC_URI="mirror://sourceforge/imwheel/${P/_/}.tar.gz"
+SRC_URI="https://download.sourceforge.net/imwheel/${P/_/}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

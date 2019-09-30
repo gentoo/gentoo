@@ -19,7 +19,7 @@ else
 fi
 SRC_URI="
 	$SRC_URI
-	mirror://sourceforge/opencpnplugins/climatology_pi/CL-DATA-1.0.tar.xz -> ${PN}-1.0-CL-DATA.tar.xz
+	https://download.sourceforge.net/opencpnplugins/climatology_pi/CL-DATA-1.0.tar.xz -> ${PN}-1.0-CL-DATA.tar.xz
 "
 
 DESCRIPTION="Climatology Plugin for OpenCPN (includes CL-DATA)"

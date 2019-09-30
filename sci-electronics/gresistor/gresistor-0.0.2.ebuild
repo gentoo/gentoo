@@ -10,7 +10,7 @@ inherit distutils-r1 eutils
 
 DESCRIPTION="Translate a resistor color codes into a readable value"
 HOMEPAGE="https://sourceforge.net/projects/gresistor/"
-SRC_URI="mirror://sourceforge/gresistor/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gresistor/${P}.tar.gz"
 
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0"

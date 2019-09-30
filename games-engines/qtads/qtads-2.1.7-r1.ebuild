@@ -6,7 +6,7 @@ inherit gnome2-utils qmake-utils xdg flag-o-matic
 
 DESCRIPTION="Multimedia interpreter for TADS text adventures"
 HOMEPAGE="http://qtads.sourceforge.net"
-SRC_URI="mirror://sourceforge/qtads/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/qtads/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

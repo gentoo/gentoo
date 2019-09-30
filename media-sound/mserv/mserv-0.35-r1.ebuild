@@ -7,7 +7,7 @@ inherit depend.apache webapp eutils toolchain-funcs user
 
 DESCRIPTION="Jukebox-style music server"
 HOMEPAGE="http://www.mserv.org"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="mserv"
 
 KEYWORDS="amd64 ~ppc sparc x86"

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Simple IVTV command line TV and radio player with support of LIRC"
 HOMEPAGE="https://sourceforge.net/projects/ivtvplayer/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

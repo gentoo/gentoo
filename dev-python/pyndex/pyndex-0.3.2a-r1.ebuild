@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end"
 HOMEPAGE="https://sourceforge.net/projects/pyndex/"
-SRC_URI="mirror://sourceforge/pyndex/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pyndex/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

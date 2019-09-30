@@ -13,7 +13,7 @@ DEPEND="dev-libs/libxml2
 	>=sys-cluster/ipvsadm-1.24
 	dev-lang/perl"
 
-SRC_URI="mirror://sourceforge/feedbackd/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/feedbackd/${P}.tar.gz"
 
 IUSE=""
 SLOT="0"

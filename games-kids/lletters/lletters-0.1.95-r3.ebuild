@@ -10,7 +10,7 @@ DESCRIPTION="Game that helps young kids learn their letters and numbers"
 HOMEPAGE="http://lln.sourceforge.net"
 SRC_URI="mirror://debian/pool/main/l/${PN}/${PN}_${PV}+gtk2.orig.tar.gz
 	mirror://debian/pool/main/l/${PN}/${PN}_${PV}+gtk2-${PATCH_LEVEL}.diff.gz
-	mirror://sourceforge/lln/${PN}-media-0.1.9a.tar.gz"
+	https://download.sourceforge.net/lln/${PN}-media-0.1.9a.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

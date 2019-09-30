@@ -9,7 +9,7 @@ IUSE=""
 
 DESCRIPTION="Hebrew support for TeX"
 HOMEPAGE="http://ivritex.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ivritex/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ivritex/${P}.tar.gz"
 RESTRICT="mirror"
 
 LICENSE="LPPL-1.2"

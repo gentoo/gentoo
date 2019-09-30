@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2 xdg-utils
 
 DESCRIPTION="Programmer's editor written in Java"
 HOMEPAGE="http://www.jedit.org"
-SRC_URI="mirror://sourceforge/${PN}/${PN}${PV}source.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}${PV}source.tar.bz2"
 
 LICENSE="BSD GPL-2"
 KEYWORDS="amd64 ppc64 x86"

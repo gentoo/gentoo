@@ -7,7 +7,7 @@ inherit multiprocessing toolchain-funcs
 
 DESCRIPTION="The UEFI Boot Manager by Rod Smith"
 HOMEPAGE="https://www.rodsbooks.com/refind/"
-SRC_URI="mirror://sourceforge/project/${PN}/${PV}/${PN}-src-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/${PN}/${PV}/${PN}-src-${PV}.tar.gz"
 
 LICENSE="BSD GPL-2 GPL-3 FDL-1.3"
 SLOT="0"

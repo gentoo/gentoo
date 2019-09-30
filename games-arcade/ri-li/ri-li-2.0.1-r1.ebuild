@@ -6,7 +6,7 @@ inherit autotools desktop
 
 DESCRIPTION="Drive a toy wood engine and collect all the coaches"
 HOMEPAGE="http://ri-li.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ri-li/Ri-li-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/ri-li/Ri-li-${PV}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

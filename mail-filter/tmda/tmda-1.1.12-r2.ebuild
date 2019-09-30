@@ -9,7 +9,7 @@ inherit python-single-r1
 
 DESCRIPTION="Python-based SPAM reduction system"
 HOMEPAGE="http://www.tmda.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

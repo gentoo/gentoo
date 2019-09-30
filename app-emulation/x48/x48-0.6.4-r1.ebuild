@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="HP48 Calculator Emulator"
 HOMEPAGE="http://x48.berlios.de/"
-SRC_URI="mirror://sourceforge/x48.berlios/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/x48.berlios/${P}.tar.bz2"
 LICENSE="GPL-3"
 
 SLOT="0"

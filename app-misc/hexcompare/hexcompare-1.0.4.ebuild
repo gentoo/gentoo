@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="ncurses-based visual comparison of binary files"
 HOMEPAGE="http://hexcompare.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

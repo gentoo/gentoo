@@ -11,7 +11,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="A GTK2-based viewer and editor for BitTorrent meta files"
 HOMEPAGE="http://gtorrentviewer.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gtorrentviewer/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gtorrentviewer/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~ppc x86 ~x86-fbsd"

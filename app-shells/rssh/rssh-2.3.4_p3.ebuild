@@ -7,7 +7,7 @@ inherit autotools-utils multilib
 DESCRIPTION="Restricted shell for SSHd"
 HOMEPAGE="http://rssh.sourceforge.net/"
 MY_P="${P/%_p*}"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p/-}.debian.tar.xz"
 
 LICENSE="BSD"

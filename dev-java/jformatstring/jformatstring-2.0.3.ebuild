@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Compile time checking for Java format strings"
-SRC_URI="mirror://sourceforge/findbugs/findbugs-${FINDBUGS_PV}-source.zip"
+SRC_URI="https://download.sourceforge.net/findbugs/findbugs-${FINDBUGS_PV}-source.zip"
 HOMEPAGE="https://code.google.com/p/j-format-string"
 
 LICENSE="GPL-2"

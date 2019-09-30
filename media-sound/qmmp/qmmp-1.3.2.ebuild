@@ -10,7 +10,7 @@ DESCRIPTION="Qt5-based audio player with winamp/xmms skins support"
 HOMEPAGE="http://qmmp.ylsoftware.com"
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2
-		mirror://sourceforge/${PN}-dev/files/${P}.tar.bz2"
+		https://download.sourceforge.net/${PN}-dev/files/${P}.tar.bz2"
 	KEYWORDS="amd64 x86"
 else
 	QMMP_DEV_BRANCH="1.2"

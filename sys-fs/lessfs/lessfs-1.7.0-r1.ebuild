@@ -9,7 +9,7 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="A high performance inline data deduplicating filesystem"
 HOMEPAGE="https://sourceforge.net/projects/lessfs/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${MY_P}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

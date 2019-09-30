@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="Japanese input method Tomoe IMEngine for SCIM"
 HOMEPAGE="http://tomoe.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tomoe/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/tomoe/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

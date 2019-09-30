@@ -10,7 +10,7 @@ S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Search normal or compressed mailbox using a regular expression or dates"
 HOMEPAGE="https://github.com/coppit/grepmail"
-SRC_URI="mirror://sourceforge/grepmail/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/grepmail/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

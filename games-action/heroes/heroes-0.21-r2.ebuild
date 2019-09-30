@@ -10,10 +10,10 @@ snd_eff_ver=1.0
 
 DESCRIPTION="Heroes Enjoy Riding Over Empty Slabs: similar to Tron and Nibbles"
 HOMEPAGE="http://heroes.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
-	mirror://sourceforge/${PN}/${PN}-data-${data_ver}.tar.bz2
-	mirror://sourceforge/${PN}/${PN}-sound-tracks-${snd_trk_ver}.tar.bz2
-	mirror://sourceforge/${PN}/${PN}-sound-effects-${snd_eff_ver}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2
+	https://download.sourceforge.net/${PN}/${PN}-data-${data_ver}.tar.bz2
+	https://download.sourceforge.net/${PN}/${PN}-sound-tracks-${snd_trk_ver}.tar.bz2
+	https://download.sourceforge.net/${PN}/${PN}-sound-effects-${snd_eff_ver}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

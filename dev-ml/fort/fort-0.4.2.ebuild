@@ -7,7 +7,7 @@ inherit multilib eutils
 
 DESCRIPTION="provides an environment for testing programs and Objective Caml modules"
 HOMEPAGE="http://fort.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0/${PV}"

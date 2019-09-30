@@ -10,8 +10,8 @@ inherit python-single-r1 sgml-catalog
 DESCRIPTION="Python interface to SGML software in a DocBook/OpenJade env"
 HOMEPAGE="http://sgmltools-lite.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/sgmltools-lite/${P}.tar.gz
-	mirror://sourceforge/sgmltools-lite/nw-eps-icons-0.0.1.tar.gz"
+	https://download.sourceforge.net/sgmltools-lite/${P}.tar.gz
+	https://download.sourceforge.net/sgmltools-lite/nw-eps-icons-0.0.1.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

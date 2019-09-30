@@ -16,8 +16,8 @@ MY_BP=${PN}-fonts-ttf-${MY_PV}
 MY_SP=${PN}-fonts-${MY_PV}
 
 if [[ -z ${snapv} ]]; then
-	SRC_URI="!fontforge? ( mirror://sourceforge/${PN}/${MY_BP}.tar.bz2 )
-		fontforge? ( mirror://sourceforge/${PN}/${MY_SP}.tar.bz2 )"
+	SRC_URI="!fontforge? ( https://download.sourceforge.net/${PN}/${MY_BP}.tar.bz2 )
+		fontforge? ( https://download.sourceforge.net/${PN}/${MY_SP}.tar.bz2 )"
 else
 	SRC_URI="!fontforge? ( http://dejavu.sourceforge.net/snapshots/${MY_BP}-${snapv}.tar.bz2 )
 		fontforge? ( http://dejavu.sourceforge.net/snapshots/${MY_SP}-${snapv}.tar.bz2 )"

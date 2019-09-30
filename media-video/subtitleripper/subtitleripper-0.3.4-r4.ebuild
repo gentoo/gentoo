@@ -11,7 +11,7 @@ DESCRIPTION="DVD Subtitle Ripper for Linux"
 HOMEPAGE="http://subtitleripper.sourceforge.net/"
 LICENSE="GPL-2"
 KEYWORDS="amd64 ppc ppc64 x86"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-${MY_PV}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-${MY_PV}.tgz"
 SLOT="0"
 IUSE=""
 RDEPEND=">=media-libs/netpbm-10.41.0

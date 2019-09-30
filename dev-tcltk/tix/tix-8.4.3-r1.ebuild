@@ -8,7 +8,7 @@ inherit eutils multilib
 MY_P="Tix${PV}"
 DESCRIPTION="A widget library for Tcl/Tk"
 HOMEPAGE="http://tix.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tix/${MY_P}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/tix/${MY_P}-src.tar.gz"
 
 IUSE=""
 LICENSE="BSD"

@@ -6,7 +6,7 @@ inherit eutils multilib-minimal
 
 DESCRIPTION="A library to play a wide range of module formats"
 HOMEPAGE="http://mikmod.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mikmod/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mikmod/${P}.tar.gz"
 
 LICENSE="LGPL-2+ LGPL-2.1"
 SLOT="0"

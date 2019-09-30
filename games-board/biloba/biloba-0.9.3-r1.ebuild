@@ -6,7 +6,7 @@ inherit autotools eutils gnome2-utils
 
 DESCRIPTION="a board game, up to 4 players, with AI and network"
 HOMEPAGE="http://biloba.sourceforge.net/"
-SRC_URI="mirror://sourceforge/biloba/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/biloba/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

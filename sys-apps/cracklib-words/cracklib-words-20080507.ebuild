@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="large set of crack/cracklib dictionaries"
 HOMEPAGE="https://sourceforge.net/projects/cracklib"
-SRC_URI="mirror://sourceforge/cracklib/${P}.gz"
+SRC_URI="https://download.sourceforge.net/cracklib/${P}.gz"
 
 LICENSE="public-domain"
 SLOT="0"

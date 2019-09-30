@@ -6,7 +6,7 @@ EAPI=5
 inherit epatch
 
 DESCRIPTION="A USENET software package designed for small sites"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 HOMEPAGE="http://leafnode.sourceforge.net/"
 LICENSE="GPL-2"
 SLOT="0"

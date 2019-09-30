@@ -4,7 +4,7 @@
 EAPI=0
 
 DESCRIPTION="A library for parsing, sorting and filtering your mail"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 HOMEPAGE="http://libsieve.sourceforge.net/"
 
 SLOT="0"

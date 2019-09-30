@@ -9,7 +9,7 @@ MY_P=$(replace_version_separator 4 '-' ${PF})
 
 DESCRIPTION="Console file manager with vi(m)-like keybindings"
 HOMEPAGE="https://vifm.info/"
-SRC_URI="mirror://sourceforge/vifm/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/vifm/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

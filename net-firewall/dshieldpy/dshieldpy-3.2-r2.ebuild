@@ -9,7 +9,7 @@ inherit python-single-r1
 
 DESCRIPTION="Python script to submit firewall logs to dshield.org"
 HOMEPAGE="http://dshieldpy.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dshieldpy/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dshieldpy/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

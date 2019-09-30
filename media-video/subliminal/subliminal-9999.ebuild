@@ -12,7 +12,7 @@ DESCRIPTION="Python library to search and download subtitles"
 HOMEPAGE="https://github.com/Diaoul/subliminal https://pypi.org/project/subliminal/"
 EGIT_REPO_URI="https://github.com/Diaoul/${PN}.git"
 EGIT_BRANCH="develop"
-SRC_URI="test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip )"
+SRC_URI="test? ( https://download.sourceforge.net/matroska/test_files/matroska_test_w1_1.zip )"
 
 LICENSE="MIT"
 SLOT="0"

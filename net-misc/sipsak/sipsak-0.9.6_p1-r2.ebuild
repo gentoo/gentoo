@@ -7,7 +7,7 @@ inherit eutils flag-o-matic
 
 DESCRIPTION="small command line tool for testing SIP applications and devices"
 HOMEPAGE="https://sourceforge.net/projects/sipsak.berlios/"
-SRC_URI="mirror://sourceforge/sipsak.berlios/${P/_p/-}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sipsak.berlios/${P/_p/-}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

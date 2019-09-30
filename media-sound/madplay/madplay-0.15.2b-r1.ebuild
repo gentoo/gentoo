@@ -6,7 +6,7 @@ inherit autotools epatch epunt-cxx
 
 DESCRIPTION="The MAD audio player"
 HOMEPAGE="http://www.underbit.com/products/mad/"
-SRC_URI="mirror://sourceforge/mad/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mad/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="Extra themes for fvwm-themes"
 HOMEPAGE="http://fvwm-themes.sourceforge.net/"
-SRC_URI="mirror://sourceforge/fvwm-themes/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/fvwm-themes/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

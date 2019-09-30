@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Read and display data from Fronius IG and IG Plus inverters"
 HOMEPAGE="https://fslurp.sourceforge.io/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"

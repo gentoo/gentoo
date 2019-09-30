@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Dock app for monitoring the current battery status and CPU temperature"
 HOMEPAGE="https://sourceforge.net/projects/wmbatteries"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

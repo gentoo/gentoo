@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs eutils
 
 DESCRIPTION="CLI program to play and record audiofiles"
 HOMEPAGE="http://rawrec.sourceforge.net"
-SRC_URI="mirror://sourceforge/rawrec/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/rawrec/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

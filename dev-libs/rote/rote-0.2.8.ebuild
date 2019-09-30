@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="simple C library for VT102 terminal emulation"
 HOMEPAGE="http://rote.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

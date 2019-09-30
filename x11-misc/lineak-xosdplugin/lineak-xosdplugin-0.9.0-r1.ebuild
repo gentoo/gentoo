@@ -9,7 +9,7 @@ MY_P=${P/.0/}
 
 DESCRIPTION="Xosd plugin for LINEAK"
 HOMEPAGE="http://lineak.sourceforge.net/"
-SRC_URI="mirror://sourceforge/lineak/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lineak/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

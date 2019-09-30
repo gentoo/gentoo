@@ -9,7 +9,7 @@ GENTOO_VDR_CONDITIONAL=yes
 
 DESCRIPTION="VDR Plugin: Xinelib PlugIn"
 HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
-SRC_URI="mirror://sourceforge/${PN#vdr-}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN#vdr-}/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"

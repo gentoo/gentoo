@@ -9,7 +9,7 @@ MY_PV="$(get_version_component_range 1-2)"
 
 DESCRIPTION="Yet another factoring utility"
 HOMEPAGE="https://sourceforge.net/projects/yafu/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PV}/${PN}-${MY_PV}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_PV}/${PN}-${MY_PV}-src.zip"
 
 SLOT="0"
 LICENSE="public-domain"

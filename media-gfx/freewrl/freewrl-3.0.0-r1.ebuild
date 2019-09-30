@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]]; then
 	SRC_URI=
 	KEYWORDS=
 else
-	SRC_URI="mirror://sourceforge/freewrl/${P}.tar.bz2"
+	SRC_URI="https://download.sourceforge.net/freewrl/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 fi
 

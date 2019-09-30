@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Function library efficiently solving the Nearest Neighbor Problem"
 HOMEPAGE="http://neartree.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"

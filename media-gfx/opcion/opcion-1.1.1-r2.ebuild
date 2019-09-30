@@ -9,7 +9,7 @@ MY_P="Opcion_v${PV}"
 
 DESCRIPTION="Free font viewer written in Java"
 HOMEPAGE="http://opcion.sourceforge.net/"
-SRC_URI="mirror://sourceforge/opcion/${MY_P}_src.zip"
+SRC_URI="https://download.sourceforge.net/opcion/${MY_P}_src.zip"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"

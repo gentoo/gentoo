@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A library for porting blocked I/O OSS/ALSA audio applications to JACK"
 HOMEPAGE="http://bio2jack.sourceforge.net/"
-SRC_URI="mirror://sourceforge/bio2jack/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/bio2jack/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="AmphetaDesk is a free syndicated news aggregator"
 HOMEPAGE="http://www.disobey.com/amphetadesk/"
-SRC_URI="mirror://sourceforge/sourceforge/amphetadesk/${PN}-src-v${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sourceforge/amphetadesk/${PN}-src-v${PV}.tar.gz"
 LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="~amd64 ppc x86"

@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A download tool for UNIX-like systems"
 HOMEPAGE="http://puf.sourceforge.net/"
-SRC_URI="mirror://sourceforge/puf/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/puf/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

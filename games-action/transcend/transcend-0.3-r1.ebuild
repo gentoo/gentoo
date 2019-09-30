@@ -7,7 +7,7 @@ inherit desktop
 
 DESCRIPTION="Retro-style, abstract, 2D shooter"
 HOMEPAGE="http://transcend.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/Transcend_${PV}_UnixSource.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/Transcend_${PV}_UnixSource.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

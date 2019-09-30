@@ -10,7 +10,7 @@ MY_P="MySQL-python-${PV}"
 
 DESCRIPTION="Python interface to MySQL"
 HOMEPAGE="https://sourceforge.net/projects/mysql-python/ https://pypi.org/project/MySQL-python/"
-SRC_URI="mirror://sourceforge/mysql-python/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mysql-python/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

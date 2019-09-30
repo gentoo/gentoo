@@ -6,7 +6,7 @@ inherit eutils flag-o-matic readme.gentoo-r1
 
 DESCRIPTION="Multiplayer AI script based strategy game"
 HOMEPAGE="http://galaxyhack.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2
 	mirror://gentoo/${PN}.png"
 
 LICENSE="GPL-2 galaxyhack"

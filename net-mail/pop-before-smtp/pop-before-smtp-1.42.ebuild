@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="a simple daemon to allow email relay control based on successful POP or IMAP logins"
 HOMEPAGE="http://popbsmtp.sourceforge.net"
-SRC_URI="mirror://sourceforge/popbsmtp/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/popbsmtp/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 BSD Artistic )"
 SLOT="0"

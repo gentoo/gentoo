@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="Experimental x-y data reading library"
 HOMEPAGE="http://www.unipress.waw.pl/fityk/xylib/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 

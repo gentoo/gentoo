@@ -22,8 +22,8 @@ inherit rpm myspell-r2
 DESCRIPTION="Hungarian dictionaries for myspell/hunspell"
 HOMEPAGE="http://magyarispell.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/magyarispell/hu_HU-${PV}.tar.gz
-	mirror://sourceforge/magyarispell/huhyphn_v20110815_LibO.tar.gz
+	https://download.sourceforge.net/magyarispell/hu_HU-${PV}.tar.gz
+	https://download.sourceforge.net/magyarispell/huhyphn_v20110815_LibO.tar.gz
 	http://downloadarchive.documentfoundation.org/libreoffice/old/3.6.0.4/rpm/x86/LibO_3.6.0.4_Linux_x86_langpack-rpm_hu.tar.gz
 "
 # Hyphen seems to have no releases but was not updated in last 4 years, just use

@@ -6,7 +6,7 @@ EAPI="4"
 inherit fdo-mime
 
 DESCRIPTION="A RS-274X (Gerber) and NC drill (Excellon) file viewer"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 HOMEPAGE="http://gerbv.geda-project.org/"
 
 IUSE="doc examples static-libs unit-mm"

@@ -8,7 +8,7 @@ MY_P=${P/_/-}
 
 DESCRIPTION="Weak signal ham radio communication"
 HOMEPAGE="http://physics.princeton.edu/pulsar/K1JT/wsjtx.html"
-SRC_URI="mirror://sourceforge/wsjt/${MY_P}.tgz"
+SRC_URI="https://download.sourceforge.net/wsjt/${MY_P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"

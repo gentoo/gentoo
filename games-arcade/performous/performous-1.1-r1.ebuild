@@ -15,10 +15,10 @@ DESCRIPTION="SingStar GPL clone"
 HOMEPAGE="https://performous.org/"
 SRC_URI="https://github.com/performous/performous/archive/${PV}.tar.gz -> ${P}.tar.gz
 	songs? (
-		mirror://sourceforge/performous/${SONGS_PN}-restricted-3.zip
-		mirror://sourceforge/performous/${SONGS_PN}-jc-1.zip
-		mirror://sourceforge/performous/${SONGS_PN}-libre-3.zip
-		mirror://sourceforge/performous/${SONGS_PN}-shearer-1.zip
+		https://download.sourceforge.net/performous/${SONGS_PN}-restricted-3.zip
+		https://download.sourceforge.net/performous/${SONGS_PN}-jc-1.zip
+		https://download.sourceforge.net/performous/${SONGS_PN}-libre-3.zip
+		https://download.sourceforge.net/performous/${SONGS_PN}-shearer-1.zip
 	)
 "
 

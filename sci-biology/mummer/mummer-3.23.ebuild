@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A rapid whole genome aligner"
 HOMEPAGE="http://mummer.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mummer/MUMmer${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mummer/MUMmer${PV}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"

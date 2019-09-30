@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="optimize APNG images"
 HOMEPAGE="https://sourceforge.net/projects/apng/"
-SRC_URI="mirror://sourceforge/apng/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/apng/${P}-src.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

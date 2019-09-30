@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A Python extension to parse BibTeX files"
 HOMEPAGE="https://pybliographer.org/"
-SRC_URI="mirror://sourceforge/pybliographer/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pybliographer/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

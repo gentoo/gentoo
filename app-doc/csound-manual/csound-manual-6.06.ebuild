@@ -8,12 +8,12 @@ MY_P=Csound${PV}
 DESCRIPTION="The Csound reference manual"
 HOMEPAGE="http://csounds.com/"
 SRC_URI="
-	mirror://sourceforge/csound/${MY_P}_manual_pdf.zip
-	l10n_fr? ( mirror://sourceforge/csound/${MY_P}_manual-fr_pdf.zip )
+	https://download.sourceforge.net/csound/${MY_P}_manual_pdf.zip
+	l10n_fr? ( https://download.sourceforge.net/csound/${MY_P}_manual-fr_pdf.zip )
 
 	html? (
-		mirror://sourceforge/csound/${MY_P}_manual_html.zip
-		l10n_fr? ( mirror://sourceforge/csound/${MY_P}_manual-fr_html.zip )
+		https://download.sourceforge.net/csound/${MY_P}_manual_html.zip
+		l10n_fr? ( https://download.sourceforge.net/csound/${MY_P}_manual-fr_html.zip )
 	)"
 
 LICENSE="FDL-1.2+"

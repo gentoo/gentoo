@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Graphics program that can be used to give photos a cartoon-like appearance"
 HOMEPAGE="http://www.toonyphotos.com"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.orig.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools linux-info user
 
 DESCRIPTION="A client implementation of Secure Socket Tunneling Protocol (SSTP)"
 HOMEPAGE="http://sstp-client.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sstp-client/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sstp-client/${P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"

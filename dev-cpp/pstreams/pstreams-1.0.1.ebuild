@@ -8,8 +8,8 @@ inherit toolchain-funcs
 DESCRIPTION="C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)"
 HOMEPAGE="http://pstreams.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.gz
-	doc? ( mirror://sourceforge/${PN}/${PN}-docs-${PV}.tar.gz )"
+	https://download.sourceforge.net/${PN}/${P}.tar.gz
+	doc? ( https://download.sourceforge.net/${PN}/${PN}-docs-${PV}.tar.gz )"
 
 SLOT="0"
 LICENSE="LGPL-3"

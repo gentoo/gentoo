@@ -7,7 +7,7 @@ inherit eutils fdo-mime
 NAME=Coccinella
 DESCRIPTION="Jabber Client With a Built-in Whiteboard and VoIP (jingle)"
 HOMEPAGE="http://www.thecoccinella.org/"
-SRC_URI="mirror://sourceforge/coccinella/${NAME}-${PV}Src.tar.gz"
+SRC_URI="https://download.sourceforge.net/coccinella/${NAME}-${PV}Src.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -6,7 +6,7 @@ EAPI=6
 inherit gkrellm-plugin toolchain-funcs
 
 DESCRIPTION="A Program-Launcher Plugin for GKrellM2"
-SRC_URI="mirror://sourceforge/gkrellmlaunch/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gkrellmlaunch/${P}.tar.gz"
 HOMEPAGE="http://gkrellmlaunch.sourceforge.net/"
 
 LICENSE="GPL-2"

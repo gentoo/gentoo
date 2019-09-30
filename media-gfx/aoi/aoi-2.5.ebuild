@@ -9,8 +9,8 @@ MY_P="aoi25"
 MY_MANUAL_V="2.3"
 S="${WORKDIR}/ArtOfIllusion25"
 DESCRIPTION="A free, open-source 3D modelling and rendering studio"
-SRC_URI="mirror://sourceforge/aoi/${MY_P}.zip
-	doc? ( mirror://sourceforge/aoi/manual${MY_MANUAL_V}.zip )"
+SRC_URI="https://download.sourceforge.net/aoi/${MY_P}.zip
+	doc? ( https://download.sourceforge.net/aoi/manual${MY_MANUAL_V}.zip )"
 HOMEPAGE="http://aoi.sourceforge.net/index"
 KEYWORDS="~amd64 x86"
 LICENSE="GPL-2"

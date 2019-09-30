@@ -7,7 +7,7 @@ MY_PKG=manpages-pl-${PV}
 
 DESCRIPTION="A collection of Polish translations of Linux manual pages"
 HOMEPAGE="https://sourceforge.net/projects/manpages-pl/"
-SRC_URI="mirror://sourceforge/manpages-pl/${MY_PKG}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/manpages-pl/${MY_PKG}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

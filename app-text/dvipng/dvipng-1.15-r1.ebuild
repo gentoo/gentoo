@@ -7,7 +7,7 @@ inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Translate DVI files into PNG or GIF graphics"
 HOMEPAGE="http://dvipng.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3+ Texinfo-manual"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit readme.gentoo-r1
 
 DESCRIPTION="A shell frontend for duplicity"
 HOMEPAGE="http://duply.net"
-SRC_URI="mirror://sourceforge/project/ftplicity/duply%20%28simple%20duplicity%29/1.11.x/${PN}_${PV}.tgz"
+SRC_URI="https://download.sourceforge.net/project/ftplicity/duply%20%28simple%20duplicity%29/1.11.x/${PN}_${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

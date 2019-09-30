@@ -21,7 +21,7 @@ inherit myspell-r2
 DESCRIPTION="Kiswahili dictionaries for myspell/hunspell"
 LICENSE="LGPL-2.1"
 HOMEPAGE="https://extensions.openoffice.org/en/project/swahili-dictionary"
-SRC_URI="mirror://sourceforge/aoo-extensions/dicts.sw.oxt -> ${P}.oxt"
+SRC_URI="https://download.sourceforge.net/aoo-extensions/dicts.sw.oxt -> ${P}.oxt"
 
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd"

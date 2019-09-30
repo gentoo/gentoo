@@ -15,7 +15,7 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Fast lightweight tabbed filemanager"
 HOMEPAGE="https://wiki.lxde.org/en/PCManFM"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

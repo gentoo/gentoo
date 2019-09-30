@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="3D motor sports simulator"
 HOMEPAGE="http://gracer.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gracer/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gracer/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

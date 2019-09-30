@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="This plugin allows you to browse and preview available albums on magnatune.com"
 HOMEPAGE="http://gmpc.wikia.com/wiki/GMPC_PLUGIN_MAGNATUNE"
-SRC_URI="mirror://sourceforge/musicpd/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/musicpd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

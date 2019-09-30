@@ -7,7 +7,7 @@ AUTOTOOLS_AUTORECONF=1 #290284
 inherit autotools-utils
 
 DESCRIPTION="Tools to convert docbook to man and info"
-SRC_URI="mirror://sourceforge/docbook2x/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/docbook2x/${P}.tar.gz"
 HOMEPAGE="http://docbook2x.sourceforge.net/"
 
 SLOT="0"

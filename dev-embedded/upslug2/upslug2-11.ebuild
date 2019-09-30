@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="util for flashing NSLU2 machines remotely"
 HOMEPAGE="http://www.nslu2-linux.org/wiki/Main/UpSlug2"
-SRC_URI="mirror://sourceforge/nslu/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/nslu/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

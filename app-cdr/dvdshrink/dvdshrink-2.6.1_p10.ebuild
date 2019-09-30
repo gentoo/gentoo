@@ -7,7 +7,7 @@ inherit desktop
 
 DESCRIPTION="Scriptable DVD copy software"
 HOMEPAGE="http://dvdshrink.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P/_p/-}mdk.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P/_p/-}mdk.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

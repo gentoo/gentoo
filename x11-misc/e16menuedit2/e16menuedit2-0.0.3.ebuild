@@ -8,7 +8,7 @@ inherit gnome2
 
 DESCRIPTION="Menu editor for Enlightenment DR16 written in GTK2"
 HOMEPAGE="https://www.enlightenment.org https://sourceforge.net/projects/enlightenment/"
-SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/enlightenment/${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
 LICENSE="MIT-with-advertising"

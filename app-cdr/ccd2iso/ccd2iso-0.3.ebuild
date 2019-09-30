@@ -5,7 +5,7 @@ EAPI="6"
 
 DESCRIPTION="Convert CD images from ccd (CloneCD) to iso"
 HOMEPAGE="https://sourceforge.net/projects/ccd2iso/"
-SRC_URI="mirror://sourceforge/ccd2iso/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ccd2iso/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Chroot any dynamically linked application in a safe and sane manner"
 HOMEPAGE="http://chrootsafe.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN//_}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN//_}/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"

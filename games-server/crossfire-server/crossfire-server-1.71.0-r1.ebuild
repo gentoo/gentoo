@@ -6,9 +6,9 @@ EAPI=6
 MY_P="${P/-server/}"
 DESCRIPTION="Server for the crossfire clients"
 HOMEPAGE="http://crossfire.real-time.com/"
-SRC_URI="mirror://sourceforge/crossfire/${PN}/${PV}/${MY_P}.tar.bz2
-	mirror://sourceforge/crossfire/${PN}/${PV}/${MY_P}.maps.tar.bz2
-	mirror://sourceforge/crossfire/${PN}/${PV}/${MY_P}.arch.tar.bz2"
+SRC_URI="https://download.sourceforge.net/crossfire/${PN}/${PV}/${MY_P}.tar.bz2
+	https://download.sourceforge.net/crossfire/${PN}/${PV}/${MY_P}.maps.tar.bz2
+	https://download.sourceforge.net/crossfire/${PN}/${PV}/${MY_P}.arch.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

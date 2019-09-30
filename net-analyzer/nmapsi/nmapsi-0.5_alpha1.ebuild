@@ -10,7 +10,7 @@ MY_P=${PN}4-${PV/_/-}
 
 DESCRIPTION="A Qt frontend to nmap"
 HOMEPAGE="http://www.nmapsi4.org/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

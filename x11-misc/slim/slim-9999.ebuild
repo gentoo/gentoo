@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/axs-gentoo/slim-git.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://sourceforge/project/${PN}.berlios/${P}.tar.gz"
+	SRC_URI="https://download.sourceforge.net/project/${PN}.berlios/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 fi
 

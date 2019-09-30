@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="ext2fs and minix disk editor for linux"
 HOMEPAGE="http://lde.sourceforge.net/"
-SRC_URI="mirror://sourceforge/lde/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lde/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

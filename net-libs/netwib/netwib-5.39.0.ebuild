@@ -11,8 +11,8 @@ HOMEPAGE="
 	http://www.laurentconstantin.com/en/netw/netwib/
 	http://ntwib.sourceforge.net/
 "
-SRC_URI="mirror://sourceforge/ntwib/${P}-src.tgz
-	doc? ( mirror://sourceforge/ntwib/${P}-doc_html.tgz )"
+SRC_URI="https://download.sourceforge.net/ntwib/${P}-src.tgz
+	doc? ( https://download.sourceforge.net/ntwib/${P}-doc_html.tgz )"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit latex-package
 
 DESCRIPTION="Culmus fonts support for latex"
 HOMEPAGE="http://ivritex.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ivritex/${P}_src.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ivritex/${P}_src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

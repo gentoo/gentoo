@@ -8,7 +8,7 @@ inherit eutils python-r1
 
 DESCRIPTION="Configurable FVWM theme with transparency and freedesktop compatible menu"
 HOMEPAGE="http://fvwm-crystal.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

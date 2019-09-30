@@ -6,7 +6,7 @@ EAPI="4"
 inherit base toolchain-funcs
 
 DESCRIPTION="Knocker is an easy to use security port scanner written in C"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 HOMEPAGE="http://knocker.sourceforge.net"
 
 SLOT="0"

@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Fldigi helper for transferring files"
 HOMEPAGE="http://www.w1hkj.com"
-SRC_URI="mirror://sourceforge/fldigi/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/fldigi/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

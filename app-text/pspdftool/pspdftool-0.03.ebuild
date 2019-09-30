@@ -12,7 +12,7 @@ unset EXTRA_ECLASS
 
 DESCRIPTION="Tool for prepress preparation of PDF and PostScript documents"
 HOMEPAGE="https://sourceforge.net/projects/pspdftool"
-[[ "${PV}" == "9999" ]] || SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+[[ "${PV}" == "9999" ]] || SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 # Don't move KEYWORDS on the previous line or ekeyword won't work # 399061
 [[ "${PV}" == "9999" ]] || \

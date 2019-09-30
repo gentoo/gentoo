@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python source code checking tool"
 HOMEPAGE="http://pychecker.sourceforge.net/ https://pypi.org/project/PyChecker/"
-SRC_URI="mirror://sourceforge/pychecker/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pychecker/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

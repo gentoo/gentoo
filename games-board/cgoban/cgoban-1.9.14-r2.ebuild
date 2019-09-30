@@ -6,7 +6,7 @@ inherit eutils autotools
 
 DESCRIPTION="A Go-frontend"
 HOMEPAGE="http://cgoban1.sourceforge.net/"
-SRC_URI="mirror://sourceforge/cgoban1/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cgoban1/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

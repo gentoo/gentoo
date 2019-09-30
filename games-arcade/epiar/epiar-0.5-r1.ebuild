@@ -6,7 +6,7 @@ inherit flag-o-matic eutils games
 
 DESCRIPTION="A space adventure/combat game"
 HOMEPAGE="https://sourceforge.net/projects/epiar/"
-SRC_URI="mirror://sourceforge/epiar/${P}.0-src.zip"
+SRC_URI="https://download.sourceforge.net/epiar/${P}.0-src.zip"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

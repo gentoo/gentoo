@@ -10,7 +10,7 @@ HOMEPAGE="http://argtable.sourceforge.net/"
 MY_PV="$(replace_version_separator 1 '-')"
 MY_P=${PN}${MY_PV}
 
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

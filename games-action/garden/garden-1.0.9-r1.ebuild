@@ -7,7 +7,7 @@ inherit desktop gnome2-utils autotools flag-o-matic
 
 DESCRIPTION="Multiplatform vertical shoot-em-up with non-traditional elements"
 HOMEPAGE="http://garden.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -8,7 +8,7 @@ MY_P="${P/sdl-/}"
 DESCRIPTION="Port of the classic Sopwith game using LibSDL"
 HOMEPAGE="http://sdl-sopwith.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${MY_P}.tar.gz
+	https://download.sourceforge.net/${PN}/${MY_P}.tar.gz
 	https://src.fedoraproject.org/rpms/sopwith/raw/master/f/sopwith.png
 "
 

@@ -9,7 +9,7 @@ inherit eutils elisp-common toolchain-funcs
 
 DESCRIPTION="Regression, econometrics and time-series library"
 HOMEPAGE="http://gretl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

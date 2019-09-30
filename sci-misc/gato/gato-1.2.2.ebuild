@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Graph Animation Toolbox"
 HOMEPAGE="http://gato.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P^}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P^}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

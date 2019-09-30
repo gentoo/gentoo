@@ -23,7 +23,7 @@ inherit myspell-r2
 
 DESCRIPTION="Bulgarian dictionaries for myspell/hunspell"
 HOMEPAGE="http://bgoffice.sourceforge.net/"
-SRC_URI="mirror://sourceforge/bgoffice/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/bgoffice/${MY_P}.zip"
 
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1"
 SLOT="0"

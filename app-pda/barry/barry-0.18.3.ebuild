@@ -6,7 +6,7 @@ inherit bash-completion-r1 eutils flag-o-matic gnome2-utils udev
 
 DESCRIPTION="Sync, backup, program management, and charging for BlackBerry devices"
 HOMEPAGE="http://www.netdirect.ca/software/packages/barry/"
-SRC_URI="mirror://sourceforge/barry/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/barry/${P}.tar.bz2"
 
 LICENSE="CC-BY-SA-3.0 GPL-2" #See logo/README for CCPL
 SLOT="0"

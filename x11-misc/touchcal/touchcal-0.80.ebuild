@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Touchscreen calibration utility"
 HOMEPAGE="http://touchcal.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.orig.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

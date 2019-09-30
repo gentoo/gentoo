@@ -7,7 +7,7 @@ inherit toolchain-funcs eutils usr-ldscript
 
 DESCRIPTION="library required by reiser4progs"
 HOMEPAGE="https://sourceforge.net/projects/reiser4/"
-SRC_URI="mirror://sourceforge/reiser4/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/reiser4/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 MY_P="linuxconsoletools-${PV}"
 DESCRIPTION="joystick testing utilities"
 HOMEPAGE="https://sourceforge.net/projects/linuxconsole/ http://atrey.karlin.mff.cuni.cz/~vojtech/input/"
-SRC_URI="mirror://sourceforge/linuxconsole/files/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/linuxconsole/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

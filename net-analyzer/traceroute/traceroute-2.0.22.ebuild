@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Utility to trace the route of IP packets"
 HOMEPAGE="http://traceroute.sourceforge.net/"
-SRC_URI="mirror://sourceforge/traceroute/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/traceroute/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

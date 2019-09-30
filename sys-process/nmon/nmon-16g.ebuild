@@ -10,7 +10,7 @@ MY_P="lmon${PV}"
 DESCRIPTION="Nigel's performance MONitor for CPU, memory, network, disks, etc..."
 HOMEPAGE="http://nmon.sourceforge.net/"
 LICENSE="GPL-3"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.c"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.c"
 
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc64 x86"

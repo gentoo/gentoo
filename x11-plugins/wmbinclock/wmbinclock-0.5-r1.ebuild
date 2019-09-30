@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="a nifty little binary clock dockapp"
 HOMEPAGE="https://www.dockapps.net/wmbinclock"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

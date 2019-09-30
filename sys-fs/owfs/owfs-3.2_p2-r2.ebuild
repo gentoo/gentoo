@@ -11,7 +11,7 @@ inherit autotools distutils-r1 linux-info perl-functions systemd user
 MY_P="${P/_/}"
 
 DESCRIPTION="Access 1-Wire devices like a filesystem"
-SRC_URI="mirror://sourceforge/owfs/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/owfs/${MY_P}.tar.gz"
 HOMEPAGE="http://owfs.org/ https://sourceforge.net/projects/owfs/"
 KEYWORDS="amd64 arm x86"
 

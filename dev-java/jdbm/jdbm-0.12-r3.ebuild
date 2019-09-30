@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Jdbm aims to be for Java what GDBM is for Perl, Python, C, ..."
 HOMEPAGE="http://jdbm.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.zip"
 
 LICENSE="BSD"
 SLOT="1"

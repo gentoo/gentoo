@@ -9,7 +9,7 @@ MY_P="${PN}.${PV}"
 
 DESCRIPTION="Poly/ML is a full implementation of Standard ML"
 HOMEPAGE="https://www.polyml.org"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"

@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Hotmail to pop3 daemon"
 HOMEPAGE="http://hotwayd.sourceforge.net/"
-SRC_URI="mirror://sourceforge/hotwayd/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/hotwayd/${P}.tar.bz2"
 RESTRICT="mirror"
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Dictionary data for the Arab dictionary project duali"
 HOMEPAGE="https://www.arabeyes.org/Duali"
-SRC_URI="mirror://sourceforge/arabeyes/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/arabeyes/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 	unset SRC_URI
 else
 	KEYWORDS="amd64 x86"
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+	SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 fi
 
 DESCRIPTION="An application for notetaking, sketching, and keeping a journal using a stylus"

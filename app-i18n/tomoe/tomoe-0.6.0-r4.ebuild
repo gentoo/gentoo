@@ -9,7 +9,7 @@ inherit autotools python-single-r1 ruby-single
 
 DESCRIPTION="Japanese handwriting recognition engine"
 HOMEPAGE="http://tomoe.osdn.jp/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

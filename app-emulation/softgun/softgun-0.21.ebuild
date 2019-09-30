@@ -7,7 +7,7 @@ inherit toolchain-funcs eutils
 
 DESCRIPTION="ARM software emulator"
 HOMEPAGE="http://softgun.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

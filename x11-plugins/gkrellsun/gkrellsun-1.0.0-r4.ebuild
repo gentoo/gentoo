@@ -7,7 +7,7 @@ inherit gkrellm-plugin
 
 DESCRIPTION="A GKrellM plugin that shows sunrise and sunset times"
 HOMEPAGE="http://gkrellsun.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gkrellsun/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gkrellsun/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="1"

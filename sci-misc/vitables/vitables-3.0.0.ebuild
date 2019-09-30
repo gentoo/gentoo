@@ -12,7 +12,7 @@ MY_P=ViTables-${PV}
 
 DESCRIPTION="A graphical tool for browsing / editing files in both PyTables and HDF5 formats"
 HOMEPAGE="http://vitables.org/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

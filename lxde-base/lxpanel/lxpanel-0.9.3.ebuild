@@ -7,7 +7,7 @@ inherit readme.gentoo-r1
 
 DESCRIPTION="Lightweight X11 desktop panel for LXDE"
 HOMEPAGE="https://wiki.lxde.org/en/LXPanel"
-SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha amd64 arm ~arm64 ppc x86 ~amd64-linux ~x86-linux"

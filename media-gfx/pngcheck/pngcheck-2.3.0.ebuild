@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Verifies the integrity of PNG, JNG and MNG files with internal checksums"
 HOMEPAGE="http://www.libpng.org/pub/png/apps/pngcheck.html"
-SRC_URI="mirror://sourceforge/png-mng/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/png-mng/${P}.tar.gz"
 
 LICENSE="HPND GPL-2+"
 SLOT="0"

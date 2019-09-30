@@ -7,7 +7,7 @@ KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="Cute PHP Library (cphplib)"
 HOMEPAGE="http://cphplib.sourceforge.net/"
-SRC_URI="mirror://sourceforge/cphplib/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/cphplib/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="doc"

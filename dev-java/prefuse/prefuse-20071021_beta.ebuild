@@ -10,7 +10,7 @@ inherit java-pkg-2 java-ant-2
 MY_PV=${PV/_beta/}
 MY_P=${PN}-beta-${MY_PV}
 DESCRIPTION="UI toolkit for building highly interactive visualizations of un-/structured data"
-SRC_URI="mirror://sourceforge/prefuse/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/prefuse/${MY_P}.zip"
 HOMEPAGE="http://prefuse.org"
 LICENSE="BSD"
 SLOT="2006"

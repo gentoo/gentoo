@@ -10,7 +10,7 @@ inherit eutils libtool
 
 DESCRIPTION="Powerful GTK+ based image & movie viewer"
 HOMEPAGE="http://gtkmmviewer.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gtkmmviewer/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gtkmmviewer/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

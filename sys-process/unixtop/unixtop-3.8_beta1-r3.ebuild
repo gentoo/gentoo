@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="top for UNIX systems"
 HOMEPAGE="http://unixtop.sourceforge.net/"
-SRC_URI="mirror://sourceforge/unixtop/top-${PV/_/}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/unixtop/top-${PV/_/}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

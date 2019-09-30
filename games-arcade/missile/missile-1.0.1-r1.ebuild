@@ -6,7 +6,7 @@ inherit desktop gnome2-utils
 
 DESCRIPTION="The game Missile Command for Linux"
 HOMEPAGE="http://missile.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

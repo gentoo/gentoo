@@ -9,7 +9,7 @@ inherit autotools-utils
 
 DESCRIPTION="Library for parsing NMR star files (peak-list format) and CIF files"
 HOMEPAGE="http://burrow-owl.sourceforge.net/"
-#SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+#SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 # Created from rev 19 @ http://oregonstate.edu/~benisong/software/projects/starparse/releases/1.0
 SRC_URI="http://dev.gentooexperimental.org/~jlec/distfiles/${P}.tar.bz2"
 

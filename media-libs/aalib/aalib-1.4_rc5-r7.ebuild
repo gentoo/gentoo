@@ -10,7 +10,7 @@ S="${WORKDIR}/${PN}-1.4.0"
 
 DESCRIPTION="A ASCII-Graphics Library"
 HOMEPAGE="http://aa-project.sourceforge.net/aalib/"
-SRC_URI="mirror://sourceforge/aa-project/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/aa-project/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

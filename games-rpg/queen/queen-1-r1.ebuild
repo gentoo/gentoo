@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="Flight of the Amazon Queen - 2D point-and-click adventure game set in the 1940s"
 HOMEPAGE="http://scummvm.sourceforge.net/"
-SF_BASE_URL="mirror://sourceforge/scummvm/"
+SF_BASE_URL="https://download.sourceforge.net/scummvm/"
 LYS_BASE_URL="http://www.lysator.liu.se/~zino/scummvm/queen/"
 FILE_DE="FOTAQ_Ger_talkie-1.0.zip"
 FILE_EN="FOTAQ_Talkie-1.1.zip"

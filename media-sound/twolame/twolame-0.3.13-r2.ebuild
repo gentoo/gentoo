@@ -7,7 +7,7 @@ inherit eutils multilib-minimal
 
 DESCRIPTION="An optimised MPEG Audio Layer 2 (MP2) encoder"
 HOMEPAGE="http://www.twolame.org"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A performance data analyzer for nagios"
 HOMEPAGE="http://www.pnp4nagios.org/"
-SRC_URI="mirror://sourceforge/${PN}/PNP-0.6/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/PNP-0.6/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

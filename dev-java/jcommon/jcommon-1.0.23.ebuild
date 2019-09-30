@@ -10,7 +10,7 @@ inherit java-pkg-2 java-ant-2 versionator
 MY_P=${PN}-$(replace_version_separator 3 -)
 DESCRIPTION="A collection of useful classes used by JFreeChart, JFreeReport and others"
 HOMEPAGE="http://www.jfree.org/jcommon"
-SRC_URI="mirror://sourceforge/jfreechart/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/jfreechart/${MY_P}.zip"
 
 LICENSE="LGPL-2"
 SLOT="1.0"

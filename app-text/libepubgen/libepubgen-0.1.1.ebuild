@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="EPUB generator for librevenge"
 HOMEPAGE="https://sourceforge.net/projects/libepubgen/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="MPL-2.0"
 SLOT="0"

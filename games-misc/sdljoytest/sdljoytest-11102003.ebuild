@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="SDL app to test joysticks and game controllers"
 HOMEPAGE="http://sdljoytest.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sdljoytest/SDLJoytest-GL-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/sdljoytest/SDLJoytest-GL-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

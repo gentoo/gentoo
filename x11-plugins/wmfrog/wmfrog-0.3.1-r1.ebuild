@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="a weather application, it shows the weather in a graphical way"
 HOMEPAGE="http://wiki.colar.net/wmfrog_dockapp"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Persistent IRC bouncer"
 HOMEPAGE="http://mind.riot.org/muh/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

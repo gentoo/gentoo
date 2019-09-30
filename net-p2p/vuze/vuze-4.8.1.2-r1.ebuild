@@ -16,7 +16,7 @@ SRC_TARBALL="Vuze_${MY_PV}_source.zip"
 
 DESCRIPTION="BitTorrent client in Java, formerly called Azureus"
 HOMEPAGE="http://www.vuze.com/"
-SRC_URI="mirror://sourceforge/azureus/${PN}/Vuze_${MY_PV}/${SRC_TARBALL}
+SRC_URI="https://download.sourceforge.net/azureus/${PN}/Vuze_${MY_PV}/${SRC_TARBALL}
 	mirror://gentoo/${PATCHSET}"
 LICENSE="GPL-2 BSD"
 

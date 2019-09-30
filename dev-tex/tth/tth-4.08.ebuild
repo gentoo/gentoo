@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Translate TEX into HTML"
 HOMEPAGE="http://hutchinson.belmont.ma.us/tth/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}${PV}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

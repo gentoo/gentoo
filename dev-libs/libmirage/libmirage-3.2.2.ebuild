@@ -7,7 +7,7 @@ inherit cmake-utils xdg-utils
 
 DESCRIPTION="CD and DVD image access library"
 HOMEPAGE="http://cdemu.org"
-SRC_URI="mirror://sourceforge/cdemu/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/cdemu/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0/11" # subslot = libmirage soname version

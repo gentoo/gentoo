@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java-based extensible high-precision math library"
 HOMEPAGE="http://jump-math.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}-math/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}-math/${P}.tar.gz"
 
 KEYWORDS="amd64 x86"
 LICENSE="BSD"

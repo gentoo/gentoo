@@ -8,7 +8,7 @@ inherit autotools
 MY_P="${PN}-r0"
 DESCRIPTION="Standalone JACK counterpart of LADSPA plugin TAP Reverberator"
 HOMEPAGE="http://tap-plugins.sourceforge.net/reverbed.html"
-SRC_URI="mirror://sourceforge/tap-plugins/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/tap-plugins/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

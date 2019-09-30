@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Mock Objects for interfaces in JUnit tests by generating them on the fly"
 HOMEPAGE="http://www.easymock.org/"
-SRC_URI="mirror://sourceforge/${PN}/EasyMock/${PV}/${P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/EasyMock/${PV}/${P}.zip"
 
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="3.2"

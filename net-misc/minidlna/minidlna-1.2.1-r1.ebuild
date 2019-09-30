@@ -7,7 +7,7 @@ inherit autotools eutils linux-info systemd tmpfiles toolchain-funcs user
 
 DESCRIPTION="DLNA/UPnP-AV compliant media server"
 HOMEPAGE="https://sourceforge.net/projects/minidlna/"
-SRC_URI="mirror://sourceforge/minidlna/${PV}/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/minidlna/${PV}/${P}.tar.gz
 	https://dev.gentoo.org/~xmw/minidlna-gentoo-artwork.patch.xz"
 
 LICENSE="BSD GPL-2"

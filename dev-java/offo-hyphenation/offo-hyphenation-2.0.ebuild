@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="Hyphenation patterns for Apache Fop"
 HOMEPAGE="http://offo.sourceforge.net"
-SRC_URI="mirror://sourceforge/offo/${PN}_v${PV}.zip"
+SRC_URI="https://download.sourceforge.net/offo/${PN}_v${PV}.zip"
 LICENSE="GPL-2 Apache-2.0 LPPL-1.3b TeX"
 SLOT="0"
 KEYWORDS="amd64 ppc64 x86"

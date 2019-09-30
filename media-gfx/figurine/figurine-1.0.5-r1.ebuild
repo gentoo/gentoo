@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A vector based graphics editor similar to xfig, but simpler"
 HOMEPAGE="http://figurine.sourceforge.net/"
-SRC_URI="mirror://sourceforge/figurine/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/figurine/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

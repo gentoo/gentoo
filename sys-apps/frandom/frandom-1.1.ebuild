@@ -7,7 +7,7 @@ inherit linux-mod udev
 
 DESCRIPTION="Fast kernel-land pseudo-random number generator using the RC4 algorithm"
 HOMEPAGE="http://billauer.co.il/frandom.html"
-SRC_URI="mirror://sourceforge/project/frandom//${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/frandom//${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

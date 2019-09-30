@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="jTDS - SQL Server and Sybase JDBC driver"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.zip"
 HOMEPAGE="http://jtds.sourceforge.net"
 LICENSE="LGPL-2.1"
 SLOT="1.3"

@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="A setup-and-forget Linux bare metal disaster recovery solution"
 HOMEPAGE="http://relax-and-recover.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

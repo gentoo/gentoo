@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Free Java code coverage tool"
 HOMEPAGE="http://emma.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.zip"
 
 LICENSE="CPL-1.0"
 SLOT="0"

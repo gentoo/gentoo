@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="A router configuration security analysis library"
 HOMEPAGE="http://nipper.titania.co.uk/"
-SRC_URI="mirror://sourceforge/nipper/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/nipper/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"

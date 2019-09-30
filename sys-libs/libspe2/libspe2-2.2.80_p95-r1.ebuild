@@ -9,7 +9,7 @@ MY_P=${P/_p/-}
 
 DESCRIPTION="A wrapper library to adapt the JSRE SPU usage model to SPUFS"
 HOMEPAGE="https://sourceforge.net/projects/libspe"
-SRC_URI="mirror://sourceforge/libspe/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/libspe/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

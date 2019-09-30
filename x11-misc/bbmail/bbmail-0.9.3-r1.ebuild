@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="blackbox mail notification"
 HOMEPAGE="https://sourceforge.net/projects/bbtools"
-SRC_URI="mirror://sourceforge/bbtools/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/bbtools/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

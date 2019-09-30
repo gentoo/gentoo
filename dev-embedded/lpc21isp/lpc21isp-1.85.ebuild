@@ -9,7 +9,7 @@ MY_PN="${PN}_$(delete_all_version_separators)"
 
 DESCRIPTION="In-circuit programming (ISP) tool for the NXP microcontrollers"
 HOMEPAGE="https://sourceforge.net/projects/lpc21isp/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_PN}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

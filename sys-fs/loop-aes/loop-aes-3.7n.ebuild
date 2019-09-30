@@ -9,7 +9,7 @@ MY_P="${PN/aes/AES}-v${PV}"
 
 DESCRIPTION="Linux kernel module to encrypt disk partitions with AES cipher"
 HOMEPAGE="http://loop-aes.sourceforge.net/loop-AES.README"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

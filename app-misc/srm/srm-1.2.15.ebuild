@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="A command-line compatible rm which destroys file contents before unlinking"
 HOMEPAGE="https://sourceforge.net/projects/srm/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

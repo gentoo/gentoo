@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Library for parsing/handling of command line parameters"
 HOMEPAGE="http://jcmdline.sourceforge.net/"
-SRC_URI="mirror://sourceforge/jcmdline/${P}.zip"
+SRC_URI="https://download.sourceforge.net/jcmdline/${P}.zip"
 LICENSE="MPL-1.1"
 SLOT="1.0"
 KEYWORDS="amd64 x86"

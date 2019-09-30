@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="LaTeX to RTF converter"
 HOMEPAGE="http://latex2rtf.sourceforge.net/"
-SRC_URI="mirror://sourceforge/latex2rtf/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/latex2rtf/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 ~sparc x86"

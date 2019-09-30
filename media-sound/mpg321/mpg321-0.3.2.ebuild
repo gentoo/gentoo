@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3"
 HOMEPAGE="http://mpg321.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P/-/_}.orig.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P/-/_}.orig.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

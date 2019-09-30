@@ -5,7 +5,7 @@ EAPI=5
 inherit eutils flag-o-matic
 
 DESCRIPTION="Provides a subset of the well-known JDBC 2.0(tm) and runs on top of ODBC"
-SRC_URI="mirror://sourceforge/libodbcxx/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/libodbcxx/${P}.tar.bz2"
 HOMEPAGE="http://libodbcxx.sourceforge.net/"
 
 LICENSE="LGPL-2.1"

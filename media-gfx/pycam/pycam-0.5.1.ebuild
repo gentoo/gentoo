@@ -8,7 +8,7 @@ inherit distutils-r1 python-r1
 
 DESCRIPTION="Open Source CAM - Toolpath Generation for 3-Axis CNC machining"
 HOMEPAGE="http://pycam.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"

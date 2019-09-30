@@ -7,7 +7,7 @@ inherit base flag-o-matic
 
 DESCRIPTION="RTF to HTML converter"
 HOMEPAGE="http://rtf2html.sourceforge.net/"
-SRC_URI="mirror://sourceforge/rtf2html/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/rtf2html/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

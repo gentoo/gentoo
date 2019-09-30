@@ -7,7 +7,7 @@ inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Notion is a tiling, tabbed window manager for the X window system"
 HOMEPAGE="http://notion.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/files/${P/_p/-}-src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/files/${P/_p/-}-src.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit gnome2
 
 DESCRIPTION="A frontend for gPhoto 2"
 HOMEPAGE="http://gphoto.org/proj/gtkam"
-SRC_URI="mirror://sourceforge/gphoto/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/gphoto/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

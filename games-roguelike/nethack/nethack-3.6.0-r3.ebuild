@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs flag-o-matic
 MY_PV=${PV//.}
 DESCRIPTION="The ultimate old-school single player dungeon exploration game"
 HOMEPAGE="https://www.nethack.org/"
-SRC_URI="mirror://sourceforge/nethack/${PN}-${MY_PV}-src.tgz"
+SRC_URI="https://download.sourceforge.net/nethack/${PN}-${MY_PV}-src.tgz"
 
 LICENSE="nethack"
 SLOT="0"

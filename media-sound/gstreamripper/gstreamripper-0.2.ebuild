@@ -8,7 +8,7 @@ MY_P=GStreamripperX-${PV}
 
 DESCRIPTION="A GTK+ toolkit based frontend for streamripper"
 HOMEPAGE="https://sourceforge.net/projects/gstreamripper/"
-SRC_URI="mirror://sourceforge/gstreamripper/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gstreamripper/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

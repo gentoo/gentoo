@@ -8,7 +8,7 @@ MY_P=${PN}${PV//./_}
 
 DESCRIPTION="sff to bmp converter"
 HOMEPAGE="http://sfftools.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sfftools/${MY_P}_src.zip"
+SRC_URI="https://download.sourceforge.net/sfftools/${MY_P}_src.zip"
 
 LICENSE="HPND MIT"
 SLOT="0"

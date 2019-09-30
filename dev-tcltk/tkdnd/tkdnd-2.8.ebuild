@@ -9,7 +9,7 @@ MY_PN="TkDND"
 
 DESCRIPTION="Extension that adds native drag & drop capabilities to the tk toolkit"
 HOMEPAGE="http://www.ellogon.org/petasis/tcltk-projects/tkdnd/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}/${MY_PN}%20${PV}/${P/-/}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_PN}/${MY_PN}%20${PV}/${P/-/}-src.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

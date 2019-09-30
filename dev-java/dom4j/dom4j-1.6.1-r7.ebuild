@@ -10,7 +10,7 @@ inherit java-pkg-2 java-ant-2
 DESCRIPTION="XML Java library"
 HOMEPAGE="http://dom4j.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/dom4j/${P}.tar.gz
+	https://download.sourceforge.net/dom4j/${P}.tar.gz
 	mirror://gentoo/${P}-java5.patch.bz2"
 
 LICENSE="dom4j"

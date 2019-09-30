@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="a simple yet powerful command line cd player"
 HOMEPAGE="http://libcdaudio.sourceforge.net"
-SRC_URI="mirror://sourceforge/libcdaudio/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/libcdaudio/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

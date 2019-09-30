@@ -10,9 +10,9 @@ EXTRAS1="eboard-extras-1pl2"
 EXTRAS2="eboard-extras-2"
 DESCRIPTION="chess interface for POSIX systems"
 HOMEPAGE="http://www.bergo.eng.br/eboard/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
-	mirror://sourceforge/${PN}/${EXTRAS1}.tar.gz
-	mirror://sourceforge/${PN}/${EXTRAS2}.tar.gz
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2
+	https://download.sourceforge.net/${PN}/${EXTRAS1}.tar.gz
+	https://download.sourceforge.net/${PN}/${EXTRAS2}.tar.gz
 	mirror://debian/pool/main/e/eboard/${PN}_${DEB_V}.diff.gz"
 
 LICENSE="GPL-2"

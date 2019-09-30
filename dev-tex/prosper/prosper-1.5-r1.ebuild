@@ -11,7 +11,7 @@ DESCRIPTION="Prosper is a LaTeX class for writing transparencies"
 HOMEPAGE="http://prosper.sf.net/"
 # Taken from: ftp://ftp.dante.de/tex-archive/macros/latex/contrib/${PN}.tar.gz
 SRC_URI="mirror://gentoo/${P}.tar.gz
-	mirror://sourceforge/prosper/${CONTRIB}.tar.gz"
+	https://download.sourceforge.net/prosper/${CONTRIB}.tar.gz"
 LICENSE="LPPL-1.2"	# has been changed since 1.5
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"

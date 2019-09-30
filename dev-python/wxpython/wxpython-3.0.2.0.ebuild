@@ -13,8 +13,8 @@ MY_PN="wxPython-src"
 DESCRIPTION="A blending of the wxWindows C++ class library with Python"
 HOMEPAGE="http://www.wxpython.org/"
 SRC_URI="
-	mirror://sourceforge/wxpython/${MY_PN}-${PV}.tar.bz2
-	examples? ( mirror://sourceforge/wxpython/wxPython-demo-${PV}.tar.bz2 )"
+	https://download.sourceforge.net/wxpython/${MY_PN}-${PV}.tar.bz2
+	examples? ( https://download.sourceforge.net/wxpython/wxPython-demo-${PV}.tar.bz2 )"
 
 LICENSE="wxWinLL-3"
 SLOT="3.0"

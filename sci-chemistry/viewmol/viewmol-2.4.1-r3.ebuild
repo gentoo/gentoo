@@ -10,7 +10,7 @@ inherit prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="Open-source graphical front end for computational chemistry programs"
 HOMEPAGE="http://viewmol.sourceforge.net/"
-SRC_URI="mirror://sourceforge/viewmol/${P}.src.tgz"
+SRC_URI="https://download.sourceforge.net/viewmol/${P}.src.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

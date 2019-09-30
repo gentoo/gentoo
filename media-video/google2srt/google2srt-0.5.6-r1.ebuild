@@ -13,7 +13,7 @@ MAINCLASS="GUI"
 
 DESCRIPTION="Convert subtitles from Google Video and YouTube to SubRip (.srt) format"
 HOMEPAGE="http://google2srt.sourceforge.net/en/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.zip
 	http://sbriesen.de/gentoo/distfiles/google2srt-icon.png"
 
 LICENSE="GPL-3"

@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Aquarium web application framework"
 HOMEPAGE="http://aquarium.sourceforge.net/ https://pypi.org/project/aquarium/"
-SRC_URI="mirror://sourceforge/aquarium/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/aquarium/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

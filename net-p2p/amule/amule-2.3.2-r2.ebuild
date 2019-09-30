@@ -11,7 +11,7 @@ S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="aMule, the all-platform eMule p2p client"
 HOMEPAGE="http://www.amule.org/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -9,7 +9,7 @@ MY_P=QScintilla_gpl-${PV/_pre/.dev}
 
 DESCRIPTION="A Qt port of Neil Hodgson's Scintilla C++ editor class"
 HOMEPAGE="https://www.riverbankcomputing.com/software/qscintilla/intro"
-SRC_URI="mirror://sourceforge/pyqt/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pyqt/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/13"

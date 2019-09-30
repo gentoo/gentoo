@@ -7,7 +7,7 @@ inherit cmake-multilib
 
 DESCRIPTION="An open-source JPEG 2000 library"
 HOMEPAGE="https://www.openjpeg.org"
-SRC_URI="mirror://sourceforge/${PN}.mirror/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}.mirror/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/5" # based on SONAME

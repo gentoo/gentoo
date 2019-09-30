@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Small but powerful library implementing the client-server IRC protocol"
 HOMEPAGE="http://www.ulduzsoft.com/libircclient/"
-SRC_URI="mirror://sourceforge/libircclient/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/libircclient/${P}.tar.gz"
 
 LICENSE="LGPL-2+"
 SLOT="0"

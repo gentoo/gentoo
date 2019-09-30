@@ -9,7 +9,7 @@ inherit autotools-utils
 
 DESCRIPTION="Flexible remote checksum-based differencing"
 HOMEPAGE="https://librsync.github.io/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/1"

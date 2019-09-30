@@ -29,7 +29,7 @@ SRC_URI="mirror://qmail/${P}.tar.gz
 	http://inoa.net/qmail-tls/${QMAIL_TLS_CVE}
 	!vanilla? (
 		highvolume? ( mirror://qmail/${QMAIL_BIGTODO_F} )
-		qmail-spp? ( mirror://sourceforge/qmail-spp/${QMAIL_SPP_F} )
+		qmail-spp? ( https://download.sourceforge.net/qmail-spp/${QMAIL_SPP_F} )
 		ssl? ( http://shupp.org/patches/${QMAIL_TLS_F} )
 	)
 "

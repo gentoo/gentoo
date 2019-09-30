@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="A free VHDL simulator"
-SRC_URI="mirror://sourceforge/qucs/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/qucs/${P}.tar.gz"
 HOMEPAGE="http://freehdl.seul.org/"
 LICENSE="GPL-2"
 

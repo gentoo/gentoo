@@ -9,7 +9,7 @@ MY_P=${PN}_${PV/_p/_}
 
 DESCRIPTION="IE Activity Parser"
 HOMEPAGE="https://sourceforge.net/projects/odessa/"
-SRC_URI="mirror://sourceforge/odessa/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/odessa/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="This script does the same you would do when you report spam with your browser in Spamcop.net"
 HOMEPAGE="https://sourceforge.net/projects/spamcup/"
-SRC_URI="mirror://sourceforge/spamcup/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/spamcup/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 

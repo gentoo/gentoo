@@ -12,7 +12,7 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Java port of HTML Tidy, an HTML syntax checker and pretty printer"
 HOMEPAGE="http://jtidy.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-${MY_PV}-sources.zip -> ${P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-${MY_PV}-sources.zip -> ${P}.zip"
 LICENSE="HTML-Tidy W3C"
 SLOT="0"
 KEYWORDS="amd64 ppc64 x86"

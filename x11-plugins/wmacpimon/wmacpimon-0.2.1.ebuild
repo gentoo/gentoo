@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="DockApp monitors the temperature and Speedstep features in ACPI-based systems"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="An IRC client for X11 and Motif"
 HOMEPAGE="http://nebula-irc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}-irc/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}-irc/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

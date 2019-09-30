@@ -7,7 +7,7 @@ inherit cmake-utils xdg
 
 DESCRIPTION="MIDI and audio sequencer and notation editor"
 HOMEPAGE="https://www.rosegardenmusic.com/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

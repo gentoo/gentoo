@@ -20,11 +20,11 @@ FANCY_FONTS="journal hillel anka comix gan ozrad ktav-yad dorian gladia horev"
 FANCY_YG_FONTS="ShmuelCLM MakabiYG"
 TAAMEY_FONTS="TaameyDavidCLM TaameyFrankCLM KeterAramTsova KeterYG"
 
-SRC_URI="mirror://sourceforge/culmus/${P}.tar.gz
-	mirror://sourceforge/culmus/${PN}-type1-${TYPE1_PV}.tar.gz
-	fontforge? ( mirror://sourceforge/culmus/${PN}-src-${PV}.tar.gz )
-	ancient? ( !fontforge? ( mirror://sourceforge/culmus/${MY_A_P}.TTF.tgz )
-		fontforge? ( mirror://sourceforge/culmus/${MY_A_P}.tgz ) )"
+SRC_URI="https://download.sourceforge.net/culmus/${P}.tar.gz
+	https://download.sourceforge.net/culmus/${PN}-type1-${TYPE1_PV}.tar.gz
+	fontforge? ( https://download.sourceforge.net/culmus/${PN}-src-${PV}.tar.gz )
+	ancient? ( !fontforge? ( https://download.sourceforge.net/culmus/${MY_A_P}.TTF.tgz )
+		fontforge? ( https://download.sourceforge.net/culmus/${MY_A_P}.tgz ) )"
 SRC_URI+=" fancy? ( $(printf "http://culmus.sourceforge.net/fancy/%s.tar.gz " ${FANCY_FONTS}) )"
 SRC_URI+=" fancy? ( $(printf "http://culmus.sourceforge.net/fancy-yg/%s.zip " ${FANCY_YG_FONTS}) )"
 SRC_URI+=" taamey? ( $(printf "http://culmus.sourceforge.net/taamim/%s.zip " ${TAAMEY_FONTS}) )"

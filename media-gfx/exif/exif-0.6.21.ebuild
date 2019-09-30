@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Small CLI util to show EXIF infos hidden in JPEG files"
 HOMEPAGE="https://libexif.github.io/"
-SRC_URI="mirror://sourceforge/libexif/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/libexif/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools multilib-minimal
 
 DESCRIPTION="Easy to use, but yet powerful, API for all possible input sources"
 HOMEPAGE="https://ibiblio.org/ggicore/packages/libgii.html"
-SRC_URI="mirror://sourceforge/ggi/${P}.src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/ggi/${P}.src.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"

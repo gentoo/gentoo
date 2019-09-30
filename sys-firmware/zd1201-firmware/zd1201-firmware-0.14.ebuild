@@ -7,7 +7,7 @@ MY_P=zd1201-${PV}-fw
 
 DESCRIPTION="Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices"
 HOMEPAGE="http://linux-lc100020.sourceforge.net/"
-SRC_URI="mirror://sourceforge/linux-lc100020/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/linux-lc100020/${MY_P}.tar.gz"
 
 LICENSE="|| ( GPL-3 MPL-1.1 )"
 SLOT="0"

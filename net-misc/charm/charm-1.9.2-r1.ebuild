@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A text based livejournal client"
 HOMEPAGE="http://ljcharm.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ljcharm/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ljcharm/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

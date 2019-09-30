@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="Artwiz Aleczapko fonts"
 HOMEPAGE="http://artwizaleczapka.sourceforge.net/"
-SRC_URI="mirror://sourceforge/artwizaleczapka/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/artwizaleczapka/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

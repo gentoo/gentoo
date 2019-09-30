@@ -10,7 +10,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme"
 HOMEPAGE="https://practical-scheme.net/wiliki/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="blackbox ppp frontend/monitor"
 HOMEPAGE="https://sourceforge.net/projects/bbtools/"
-SRC_URI="mirror://sourceforge/bbtools/${PN}/${P}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/bbtools/${PN}/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

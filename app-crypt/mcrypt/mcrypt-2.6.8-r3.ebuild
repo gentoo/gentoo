@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="replacement of the old unix crypt(1)"
 HOMEPAGE="http://mcrypt.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mcrypt/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mcrypt/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

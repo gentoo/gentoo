@@ -9,7 +9,7 @@ inherit autotools eutils wxwidgets
 
 DESCRIPTION="Multi-player tank battle in 3D (OpenGL)"
 HOMEPAGE="http://www.scorched3d.co.uk/"
-SRC_URI="mirror://sourceforge/scorched3d/Scorched3D-${PV}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/scorched3d/Scorched3D-${PV}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

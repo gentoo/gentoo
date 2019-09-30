@@ -7,7 +7,7 @@ inherit eutils python-single-r1
 
 DESCRIPTION="GTK+ interface for RecordMyDesktop"
 HOMEPAGE="http://recordmydesktop.sourceforge.net/"
-SRC_URI="mirror://sourceforge/recordmydesktop/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/recordmydesktop/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

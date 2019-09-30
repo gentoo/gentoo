@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="Make Album The Easy Way (Matew) is an HTML/CSS generator for static image albums"
 HOMEPAGE="http://inquisb.github.io/matew/"
-SRC_URI="mirror://sourceforge/matew/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/matew/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

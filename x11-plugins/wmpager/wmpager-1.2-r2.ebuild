@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="A simple pager docklet for the WindowMaker window manager"
 HOMEPAGE="http://wmpager.sourceforge.net/"
-SRC_URI="mirror://sourceforge/wmpager/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/wmpager/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

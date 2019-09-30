@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="ISC dhcpd lease analysis and reporting"
 HOMEPAGE="http://dhcpd-pools.sf.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"

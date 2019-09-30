@@ -6,7 +6,7 @@ inherit eutils readme.gentoo-r1
 
 DESCRIPTION="FUSE filesystem for SMB shares"
 HOMEPAGE="https://sourceforge.net/projects/smbnetfs"
-SRC_URI="mirror://sourceforge/smbnetfs/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/smbnetfs/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

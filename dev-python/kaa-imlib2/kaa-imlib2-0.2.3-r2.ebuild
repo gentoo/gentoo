@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Imlib2 wrapper for Python"
 HOMEPAGE="http://www.freevo.org/ http://api.freevo.org/kaa-imlib2/"
-SRC_URI="mirror://sourceforge/freevo/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/freevo/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

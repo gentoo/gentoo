@@ -11,8 +11,8 @@ HOMEPAGE="
 	http://ntwox.sourceforge.net/
 	http://www.laurentconstantin.com/en/netw/netwox/
 "
-SRC_URI="mirror://sourceforge/ntwox/${P}-src.tgz
-	doc? ( mirror://sourceforge/ntwox/${P}-doc_html.tgz )"
+SRC_URI="https://download.sourceforge.net/ntwox/${P}-src.tgz
+	doc? ( https://download.sourceforge.net/ntwox/${P}-doc_html.tgz )"
 
 LICENSE="GPL-3"
 SLOT="0"

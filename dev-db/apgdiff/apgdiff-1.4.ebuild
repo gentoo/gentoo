@@ -7,7 +7,7 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="A simple PostgreSQL diff tool that is useful for schema upgrades"
 HOMEPAGE="https://www.apgdiff.com/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.zip"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

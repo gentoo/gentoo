@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Tool for generating API documentation for Python modules from docstrings"
 HOMEPAGE="http://epydoc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

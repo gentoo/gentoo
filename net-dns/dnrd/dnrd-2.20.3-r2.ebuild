@@ -7,7 +7,7 @@ inherit autotools user
 
 DESCRIPTION="A caching DNS proxy server"
 HOMEPAGE="http://dnrd.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dnrd/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dnrd/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

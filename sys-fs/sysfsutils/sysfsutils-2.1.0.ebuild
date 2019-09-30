@@ -6,7 +6,7 @@ inherit autotools toolchain-funcs usr-ldscript
 
 DESCRIPTION="System Utilities Based on Sysfs"
 HOMEPAGE="http://linux-diag.sourceforge.net/Sysfsutils.html"
-SRC_URI="mirror://sourceforge/linux-diag/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/linux-diag/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

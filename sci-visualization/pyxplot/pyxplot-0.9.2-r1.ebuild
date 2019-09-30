@@ -9,7 +9,7 @@ inherit multilib python-single-r1
 
 DESCRIPTION="Gnuplot like graphing program publication-quality figures"
 HOMEPAGE="http://www.pyxplot.org.uk/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

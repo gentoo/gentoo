@@ -6,7 +6,7 @@ inherit autotools eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="JACK Rack is an effects rack for the JACK low latency audio API"
 HOMEPAGE="http://jack-rack.sourceforge.net/"
-SRC_URI="mirror://sourceforge/jack-rack/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/jack-rack/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

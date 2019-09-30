@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Epinions implementation of XML-RPC protocol in C"
 HOMEPAGE="http://xmlrpc-epi.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xmlrpc-epi/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/xmlrpc-epi/${P}.tar.bz2"
 
 LICENSE="Epinions"
 SLOT="0"

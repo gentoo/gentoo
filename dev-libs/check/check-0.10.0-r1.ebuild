@@ -9,7 +9,7 @@ inherit autotools autotools-multilib
 
 DESCRIPTION="A unit test framework for C"
 HOMEPAGE="https://sourceforge.net/projects/check/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

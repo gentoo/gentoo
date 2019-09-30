@@ -6,7 +6,7 @@ EAPI=4
 DESCRIPTION="This plugin allows you to play local files on a remote or local mpd
 server"
 HOMEPAGE="http://gmpc.wikia.com/wiki/GMPC_PLUGIN_MSERVER"
-SRC_URI="mirror://sourceforge/musicpd/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/musicpd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

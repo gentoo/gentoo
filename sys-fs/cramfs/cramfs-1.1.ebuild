@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Linux filesystem designed to be simple, small, and to compress things well"
 HOMEPAGE="https://sourceforge.net/projects/cramfs/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

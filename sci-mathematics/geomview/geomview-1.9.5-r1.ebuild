@@ -7,7 +7,7 @@ inherit elisp-common eutils fdo-mime flag-o-matic
 
 DESCRIPTION="Interactive Geometry Viewer"
 HOMEPAGE="http://geomview.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2
 	https://dev.gentoo.org/~jlec/distfiles/geomview.png.tar"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 LICENSE="LGPL-2.1"

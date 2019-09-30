@@ -5,8 +5,8 @@ EAPI=6
 
 DESCRIPTION="A guitar music typesetter"
 HOMEPAGE="http://chordii.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
-	doc? ( mirror://sourceforge/${PN}/user_guide-${PV}.pdf )"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz
+	doc? ( https://download.sourceforge.net/${PN}/user_guide-${PV}.pdf )"
 
 LICENSE="GPL-3"
 SLOT="0"

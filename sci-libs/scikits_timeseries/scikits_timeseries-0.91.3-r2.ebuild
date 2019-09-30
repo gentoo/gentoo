@@ -12,8 +12,8 @@ MY_P="${P/scikits_/scikits.}"
 DESCRIPTION="SciPy module for manipulating, reporting, and plotting time series"
 HOMEPAGE="http://pytseries.sourceforge.net/index.html"
 SRC_URI="
-	mirror://sourceforge/pytseries/${MY_P}.tar.gz
-	doc? ( mirror://sourceforge/pytseries/${MY_P}-html_docs.zip )"
+	https://download.sourceforge.net/pytseries/${MY_P}.tar.gz
+	doc? ( https://download.sourceforge.net/pytseries/${MY_P}-html_docs.zip )"
 
 LICENSE="BSD eGenixPublic-1.1"
 SLOT="0"

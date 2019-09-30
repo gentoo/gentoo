@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Ehcache is a pure Java, fully-featured, in-process cache"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 HOMEPAGE="http://ehcache.sourceforge.net"
 
 LICENSE="Apache-2.0"

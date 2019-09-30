@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="C API library to the last.fm web service (unofficial)"
 HOMEPAGE="http://liblastfm.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN/c}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN/c}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

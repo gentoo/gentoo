@@ -8,8 +8,8 @@ DEB_PATCH="${PN}_${PV}-7"
 DESCRIPTION="OpenGL interactive relativistic simulator"
 HOMEPAGE="http://lightspeed.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.gz
-	mirror://sourceforge/${PN}/objects-1.tar.gz
+	https://download.sourceforge.net/${PN}/${P}.tar.gz
+	https://download.sourceforge.net/${PN}/objects-1.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${DEB_PATCH}.diff.gz"
 
 LICENSE="LGPL-2.1"

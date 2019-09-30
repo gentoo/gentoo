@@ -12,7 +12,7 @@ inherit gnome2-utils l10n qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Great Qt GUI front-end for mplayer/mpv"
 HOMEPAGE="https://www.smplayer.eu/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ BSD-2"
 SLOT="0"

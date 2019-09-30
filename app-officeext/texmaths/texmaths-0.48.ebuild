@@ -13,7 +13,7 @@ inherit office-ext-r1
 
 DESCRIPTION="LaTeX Equation Editor for LibreOffice"
 HOMEPAGE="http://roland65.free.fr/texmaths/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.oxt"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.oxt"
 
 LICENSE="GPL-2"
 SLOT="0"

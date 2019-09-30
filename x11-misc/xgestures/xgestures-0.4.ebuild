@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A mouse gesture recognition program for X11 desktops"
 HOMEPAGE="http://www.cs.bgu.ac.il/~tzachar/xgestures.html"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

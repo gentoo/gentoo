@@ -10,7 +10,7 @@ inherit distutils-r1 eutils multilib systemd
 
 DESCRIPTION="A scalable distributed monitoring system for clusters and grids"
 HOMEPAGE="http://ganglia.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ganglia/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ganglia/${P}.tar.gz"
 LICENSE="BSD"
 
 SLOT="0"

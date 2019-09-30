@@ -7,7 +7,7 @@ inherit eutils autotools
 
 DESCRIPTION="A set of tools to create and apply patch to XML files using XPath"
 HOMEPAGE="http://xmlpatch.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN/lib}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN/lib}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

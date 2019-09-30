@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="The swiss army knife of sound processing programs"
 HOMEPAGE="http://sox.sourceforge.net"
-SRC_URI="mirror://sourceforge/sox/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sox/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

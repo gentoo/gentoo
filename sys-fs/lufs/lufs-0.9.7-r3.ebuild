@@ -7,7 +7,7 @@ inherit eutils autotools
 
 DESCRIPTION="User-mode filesystem implementation"
 HOMEPAGE="https://sourceforge.net/projects/lufs/"
-SRC_URI="mirror://sourceforge/lufs/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lufs/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

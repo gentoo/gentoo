@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="The Celera de novo whole-genome shotgun DNA sequence assembler, aka CABOG"
 HOMEPAGE="https://sourceforge.net/projects/wgs-assembler/"
-SRC_URI="mirror://sourceforge/${PN}/wgs-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/wgs-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

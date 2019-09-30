@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file"
 HOMEPAGE="http://netdude.sourceforge.net/"
-SRC_URI="mirror://sourceforge/netdude/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/netdude/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

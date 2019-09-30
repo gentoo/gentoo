@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="A free implementation of the OpenGL Character Renderer (GLC)"
 HOMEPAGE="http://quesoglc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-free.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-free.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

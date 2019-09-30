@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Free implementation of OVAL"
 HOMEPAGE="http://oval.mitre.org/language/interpreter.html"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

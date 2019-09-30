@@ -7,7 +7,7 @@ inherit versionator java-pkg-opt-2
 
 DESCRIPTION="Helmut Dersch's panorama toolbox library"
 HOMEPAGE="http://panotools.sourceforge.net/"
-SRC_URI="mirror://sourceforge/panotools/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/panotools/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

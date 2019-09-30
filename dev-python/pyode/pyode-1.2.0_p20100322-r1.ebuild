@@ -10,7 +10,7 @@ SNAPSHOT_DATE="2010-03-22"	# This is a snapshot
 
 DESCRIPTION="Python bindings to the ODE physics engine"
 HOMEPAGE="http://pyode.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/PyODE-snapshot-${SNAPSHOT_DATE}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/PyODE-snapshot-${SNAPSHOT_DATE}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

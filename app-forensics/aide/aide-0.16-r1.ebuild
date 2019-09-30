@@ -7,7 +7,7 @@ inherit autotools readme.gentoo-r1
 
 DESCRIPTION="AIDE (Advanced Intrusion Detection Environment) is a file integrity checker"
 HOMEPAGE="http://aide.sourceforge.net/"
-SRC_URI="mirror://sourceforge/aide/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/aide/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,8 +8,8 @@ inherit autotools-utils virtualx
 DESCRIPTION="Visualize multidimensional nuclear magnetic resonance (NMR) spectra"
 HOMEPAGE="http://burrow-owl.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.gz
-	examples? ( mirror://sourceforge/${PN}/burrow-demos.tar )"
+	https://download.sourceforge.net/${PN}/${P}.tar.gz
+	examples? ( https://download.sourceforge.net/${PN}/burrow-demos.tar )"
 
 LICENSE="GPL-2"
 SLOT="0"

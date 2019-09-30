@@ -10,7 +10,7 @@ inherit python-single-r1
 DESCRIPTION="Tool to produce LaTeX Beamer code from wiki-like input"
 
 HOMEPAGE="http://wiki2beamer.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.zip"
 
 LICENSE="|| ( GPL-2 GPL-3 ) FDL-1.3"
 SLOT="0"

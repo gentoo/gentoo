@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="This plugin allows you to edit tags in your library"
 HOMEPAGE="http://gmpc.wikia.com/wiki/GMPC_PLUGIN_TAGEDIT"
-SRC_URI="mirror://sourceforge/musicpd/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/musicpd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

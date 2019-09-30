@@ -10,7 +10,7 @@ inherit autotools-utils
 MY_P="${P/emf/EMF}"
 DESCRIPTION="Library implementation of ECMA-234 API for the generation of enhanced metafiles"
 HOMEPAGE="http://libemf.sourceforge.net/"
-SRC_URI="mirror://sourceforge/libemf/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/libemf/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="lirc module for Python"
 HOMEPAGE="https://sourceforge.net/projects/pylirc/ https://pypi.org/project/pylirc/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

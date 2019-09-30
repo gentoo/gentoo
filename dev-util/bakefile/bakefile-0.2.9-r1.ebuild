@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 bash-completion-r1
 
 DESCRIPTION="Native makefiles generator"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 HOMEPAGE="http://bakefile.sourceforge.net"
 
 LICENSE="MIT"

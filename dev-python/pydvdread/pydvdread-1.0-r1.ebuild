@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="A set of Python bindings for the libdvdread library"
 HOMEPAGE="http://pydvdread.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -13,7 +13,7 @@ DESCRIPTION="An anti-spam filter using on Bayesian filtering"
 HOMEPAGE="http://spambayes.sourceforge.net"
 SRC_URI="
 	mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz
-	mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+	https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="PSF-2.2 GPL-2"
 SLOT="0"

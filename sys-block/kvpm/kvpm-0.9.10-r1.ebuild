@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="GUI front end for Linux LVM2 and GNU parted based on KDE Frameworks"
 HOMEPAGE="https://sourceforge.net/projects/kvpm/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="5"

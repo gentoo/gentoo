@@ -11,7 +11,7 @@ MY_P="pyPgSQL-${PV}"
 
 DESCRIPTION="Python Interface to PostgreSQL"
 HOMEPAGE="http://pypgsql.sourceforge.net/ https://pypi.org/project/pyPgSQL/"
-SRC_URI="mirror://sourceforge/pypgsql/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pypgsql/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

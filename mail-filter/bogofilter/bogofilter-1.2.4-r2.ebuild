@@ -7,7 +7,7 @@ inherit autotools db-use flag-o-matic toolchain-funcs
 
 DESCRIPTION="Bayesian spam filter designed with fast algorithms, and tuned for speed"
 HOMEPAGE="http://bogofilter.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

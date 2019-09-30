@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="cross platform lightweight components library for C++"
 HOMEPAGE="http://xplc.sourceforge.net"
-SRC_URI="mirror://sourceforge/xplc/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xplc/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

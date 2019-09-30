@@ -6,7 +6,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="build a self-extracting and self-installing binary package"
 HOMEPAGE="https://sourceforge.net/projects/pdv"
-SRC_URI="mirror://sourceforge/pdv/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pdv/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -8,7 +8,7 @@ MY_P=${PN}.${PV}
 
 DESCRIPTION="A set of tools for creating TeX documents with graphics"
 HOMEPAGE="http://www.xfig.org/"
-SRC_URI="mirror://sourceforge/mcj/${MY_P}.tar.gz
+SRC_URI="https://download.sourceforge.net/mcj/${MY_P}.tar.gz
 	mirror://gentoo/fig2mpdf-1.1.2.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/${P}-gentoo-patchset.tar.bz2"
 

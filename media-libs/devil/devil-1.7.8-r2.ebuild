@@ -9,7 +9,7 @@ MY_P=DevIL-${PV}
 
 DESCRIPTION="DevIL image library"
 HOMEPAGE="http://openil.sourceforge.net/"
-SRC_URI="mirror://sourceforge/openil/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/openil/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

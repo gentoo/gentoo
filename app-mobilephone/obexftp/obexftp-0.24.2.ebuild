@@ -10,7 +10,7 @@ inherit cmake-utils python-single-r1 ruby-single
 
 DESCRIPTION="File transfer over OBEX for mobile phones"
 HOMEPAGE="http://dev.zuckschwerdt.org/openobex/wiki/ObexFtp"
-SRC_URI="mirror://sourceforge/openobex/${P}-Source.tar.gz"
+SRC_URI="https://download.sourceforge.net/openobex/${P}-Source.tar.gz"
 SLOT="0"
 
 LICENSE="GPL-2"

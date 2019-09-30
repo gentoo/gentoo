@@ -6,7 +6,7 @@ inherit desktop
 
 DESCRIPTION="Rework of Sasteroids using SDL"
 HOMEPAGE="http://sdlsas.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sdlsas/SDLSasteroids-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sdlsas/SDLSasteroids-${PV}.tar.gz"
 
 LICENSE="GPL-2 freedist"
 SLOT="0"

@@ -11,7 +11,7 @@ MY_P2="${PN}-${MY_PV2}"
 
 DESCRIPTION="library to use arbitrary fonts in OpenGL applications"
 HOMEPAGE="http://ftgl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

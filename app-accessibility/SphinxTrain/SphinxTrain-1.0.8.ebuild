@@ -9,7 +9,7 @@ inherit multilib python-single-r1
 
 DESCRIPTION="Speech Recognition (Training Module)"
 HOMEPAGE="http://cmusphinx.sourceforge.net/html/cmusphinx.php"
-SRC_URI="mirror://sourceforge/cmusphinx/sphinxtrain-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cmusphinx/sphinxtrain-${PV}.tar.gz"
 
 LICENSE="BSD-with-attribution"
 SLOT="0"

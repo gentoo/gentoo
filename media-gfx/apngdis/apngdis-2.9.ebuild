@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="extract PNG frames from an APNG"
 HOMEPAGE="https://sourceforge.net/projects/apngdis/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${PV}/${P}-src.zip"
 
 LICENSE="ZLIB"
 SLOT="0"

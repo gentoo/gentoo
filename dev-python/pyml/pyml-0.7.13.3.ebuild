@@ -11,7 +11,7 @@ MYP=PyML-${PV}
 
 DESCRIPTION="Python machine learning package"
 HOMEPAGE="http://pyml.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${MYP}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MYP}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

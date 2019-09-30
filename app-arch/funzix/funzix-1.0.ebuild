@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="unpacker for the bogus ZIX format"
 HOMEPAGE="http://funzix.sourceforge.net/"
-SRC_URI="mirror://sourceforge/funzix/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/funzix/${P}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"

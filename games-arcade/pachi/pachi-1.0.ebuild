@@ -8,7 +8,7 @@ DESCRIPTION="platform game inspired by games like Manic Miner and Jet Set Willy"
 HOMEPAGE="http://dragontech.sourceforge.net/index.php?main=pachi&lang=en"
 # Upstream doesn't version their releases.
 # (should be downloaded and re-compressed with tar -jcvf)
-#SRC_URI="mirror://sourceforge/dragontech/pachi_source.tgz"
+#SRC_URI="https://download.sourceforge.net/dragontech/pachi_source.tgz"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"

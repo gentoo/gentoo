@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Help robot find kitten"
 HOMEPAGE="http://robotfindskitten.org/"
-SRC_URI="mirror://sourceforge/rfk/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/rfk/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

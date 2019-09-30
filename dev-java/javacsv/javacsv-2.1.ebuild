@@ -11,7 +11,7 @@ RESTRICT="test"
 
 DESCRIPTION="Java library for reading and writing CSV and plain delimited text files"
 HOMEPAGE="https://www.csvreader.com/java_csv.php"
-SRC_URI="mirror://sourceforge/${PN}/${P/-/}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P/-/}.zip"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"

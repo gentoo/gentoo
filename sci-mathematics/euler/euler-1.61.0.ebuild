@@ -10,7 +10,7 @@ inherit autotools-utils
 
 DESCRIPTION="Mathematical programming environment"
 HOMEPAGE="http://euler.sourceforge.net/"
-SRC_URI="mirror://sourceforge/euler/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/euler/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc -sparc x86 ~amd64-linux ~x86-linux"

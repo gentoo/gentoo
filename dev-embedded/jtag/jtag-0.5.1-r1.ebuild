@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Tool for working with JTAG-aware devices and boards through JTAG adapter"
 HOMEPAGE="http://openwince.sourceforge.net/jtag/"
-SRC_URI="mirror://sourceforge/openwince/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/openwince/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

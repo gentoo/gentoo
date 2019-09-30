@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="C library implementing client support for CalDAV"
 HOMEPAGE="http://libcaldav.sourceforge.net/"
-SRC_URI="mirror://sourceforge/libcaldav/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/libcaldav/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

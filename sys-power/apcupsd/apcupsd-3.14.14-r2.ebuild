@@ -7,7 +7,7 @@ inherit linux-info flag-o-matic systemd udev
 
 DESCRIPTION="APC UPS daemon with integrated tcp/ip remote shutdown"
 HOMEPAGE="http://www.apcupsd.org/"
-SRC_URI="mirror://sourceforge/apcupsd/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/apcupsd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

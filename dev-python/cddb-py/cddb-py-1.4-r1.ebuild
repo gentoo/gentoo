@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="CDDB Module for Python"
 HOMEPAGE="https://sourceforge.net/projects/cddb-py/"
-SRC_URI="mirror://sourceforge/cddb-py/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cddb-py/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

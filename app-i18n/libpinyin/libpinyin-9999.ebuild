@@ -20,7 +20,7 @@ if [[ "${PV}" == "9999" ]]; then
 else
 	SRC_URI="https://github.com/libpinyin/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
-SRC_URI+=" mirror://sourceforge/${PN}/models/model${LIBPINYIN_MODEL_VERSION}.text.tar.gz -> ${PN}-model${LIBPINYIN_MODEL_VERSION}.text.tar.gz"
+SRC_URI+=" https://download.sourceforge.net/${PN}/models/model${LIBPINYIN_MODEL_VERSION}.text.tar.gz -> ${PN}-model${LIBPINYIN_MODEL_VERSION}.text.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0/13"

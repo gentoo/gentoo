@@ -7,6 +7,6 @@ inherit vim-plugin
 
 DESCRIPTION="online vim documentation translated into Chinese"
 HOMEPAGE="http://vimcdoc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="vim.org"
 KEYWORDS="~amd64 ~x86"

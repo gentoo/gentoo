@@ -11,8 +11,8 @@ SCRIPTS="scripts-${SV}"
 DESCRIPTION="Genetic Algorithm File Fitter"
 HOMEPAGE="http://gaffitter.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.bz2
-	scripts? ( mirror://sourceforge/${PN}/scripts/${SV}/${SCRIPTS}.tar.bz2 )"
+	https://download.sourceforge.net/${PN}/${P}.tar.bz2
+	scripts? ( https://download.sourceforge.net/${PN}/scripts/${SV}/${SCRIPTS}.tar.bz2 )"
 
 LICENSE="GPL-3"
 SLOT="0"

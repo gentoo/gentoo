@@ -11,7 +11,7 @@ inherit qmake-utils python-single-r1
 
 DESCRIPTION="A dynamic Python binding for the Qt framework"
 HOMEPAGE="http://pythonqt.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pythonqt/pythonqt/${P}/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/pythonqt/pythonqt/${P}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

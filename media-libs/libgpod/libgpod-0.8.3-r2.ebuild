@@ -8,7 +8,7 @@ inherit autotools eutils mono-env python-single-r1 udev
 
 DESCRIPTION="Shared library to access the contents of an iPod"
 HOMEPAGE="http://www.gtkpod.org/libgpod/"
-SRC_URI="mirror://sourceforge/gtkpod/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/gtkpod/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"

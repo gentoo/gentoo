@@ -6,7 +6,7 @@ inherit flag-o-matic gnome2-utils
 
 DESCRIPTION="Hard disk drive health inspection tool"
 HOMEPAGE="https://gsmartcontrol.sourceforge.io/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="|| ( GPL-2 GPL-3 ) Boost-1.0 BSD Unlicense ZLIB"
 SLOT="0"

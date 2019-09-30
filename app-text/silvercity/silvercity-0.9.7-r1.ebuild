@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A lexical analyser for many languages"
 HOMEPAGE="http://silvercity.sourceforge.net/"
-SRC_URI="mirror://sourceforge/silvercity/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/silvercity/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

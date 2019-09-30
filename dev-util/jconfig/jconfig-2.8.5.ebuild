@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Utility that provides a simple API for the management of properties"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-src-v${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-src-v${PV}.tar.gz"
 HOMEPAGE="http://www.jconfig.org/"
 LICENSE="BSD"
 SLOT="0"

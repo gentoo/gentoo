@@ -7,7 +7,7 @@ inherit multilib toolchain-funcs
 
 DESCRIPTION="Hardware-based performance monitoring interface for Linux"
 HOMEPAGE="http://perfmon2.sourceforge.net"
-SRC_URI="mirror://sourceforge/perfmon2/${PN}4/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/perfmon2/${PN}4/${P}.tar.gz"
 
 LICENSE="GPL-2 MIT"
 SLOT="0/4"

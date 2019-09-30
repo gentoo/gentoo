@@ -9,7 +9,7 @@ inherit subversion base eutils autotools
 
 DESCRIPTION="Small library for display text and graphics on a Logitech G15 keyboard"
 HOMEPAGE="https://sourceforge.net/projects/g15tools/"
-[[ $PV = *9999* ]] || SRC_URI="mirror://sourceforge/g15tools/${P}.tar.bz2"
+[[ $PV = *9999* ]] || SRC_URI="https://download.sourceforge.net/g15tools/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

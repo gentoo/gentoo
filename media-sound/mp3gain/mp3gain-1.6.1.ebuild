@@ -8,7 +8,7 @@ MY_P="${P//./_}"
 
 DESCRIPTION="A program to analyze and adjust MP3 files to same volume"
 HOMEPAGE="http://mp3gain.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}-src.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

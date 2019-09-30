@@ -8,7 +8,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Draw UML diagrams using a simple and human readable text description"
 HOMEPAGE="http://plantuml.com"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~x86"

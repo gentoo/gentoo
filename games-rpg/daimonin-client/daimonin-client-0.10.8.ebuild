@@ -8,7 +8,7 @@ inherit autotools eutils
 DESCRIPTION="A graphical 2D tile-based MMORPG"
 HOMEPAGE="http://daimonin.sourceforge.net/"
 SRC_URI="https://dev.gentoo.org/~soap/distfiles/${P}.zip
-	music? ( mirror://sourceforge/daimonin/daimoninMusicLQ20100827.zip )"
+	music? ( https://download.sourceforge.net/daimonin/daimoninMusicLQ20100827.zip )"
 
 LICENSE="GPL-2"
 SLOT="0"

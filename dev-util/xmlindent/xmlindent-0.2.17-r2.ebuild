@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="XML stream reformatter for ASCII text, but not UTF-8, written in ANSI C"
 HOMEPAGE="http://xmlindent.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xmlindent/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xmlindent/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"

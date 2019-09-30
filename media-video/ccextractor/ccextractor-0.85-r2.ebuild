@@ -7,7 +7,7 @@ inherit cmake-utils toolchain-funcs
 
 DESCRIPTION="Extract closed captioning subtitles from video to SRT"
 HOMEPAGE="https://www.ccextractor.org/"
-SRC_URI="mirror://sourceforge/ccextractor/${PN}-src-nowin.${PV}.zip"
+SRC_URI="https://download.sourceforge.net/ccextractor/${PN}-src-nowin.${PV}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

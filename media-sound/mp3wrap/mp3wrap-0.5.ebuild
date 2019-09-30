@@ -4,7 +4,7 @@
 EAPI=0
 
 DESCRIPTION="Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.tar.gz"
 HOMEPAGE="http://mp3wrap.sourceforge.net/"
 
 LICENSE="GPL-2"

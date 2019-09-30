@@ -9,7 +9,7 @@ MY_P=${PN}-${PV/_}
 
 DESCRIPTION="cmdline tool to read, parse, merge, and write RSS (and Atom) feeds"
 HOMEPAGE="http://rsstool.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}-src.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

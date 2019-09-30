@@ -11,7 +11,7 @@ DESCRIPTION="Convert DOS or MAC text files to UNIX format or vice versa"
 HOMEPAGE="http://www.xs4all.nl/~waterlan/dos2unix.html https://sourceforge.net/projects/dos2unix/"
 SRC_URI="
 	http://www.xs4all.nl/~waterlan/${PN}/${P}.tar.gz
-	mirror://sourceforge/${PN}/${P}.tar.gz"
+	https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

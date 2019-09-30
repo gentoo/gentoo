@@ -6,7 +6,7 @@ inherit libtool
 
 DESCRIPTION="A library for accessing a CDDB server"
 HOMEPAGE="http://libcddb.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"

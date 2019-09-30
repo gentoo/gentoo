@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Utility to control digital cameras based on Sierra Imaging firmware"
 HOMEPAGE="http://photopc.sourceforge.net"
-SRC_URI="mirror://sourceforge/photopc/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/photopc/${P}.tar.gz"
 
 LICENSE="photopc"
 SLOT="0"

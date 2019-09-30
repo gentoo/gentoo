@@ -10,7 +10,7 @@ inherit eutils gnome2-utils l10n python-single-r1 xdg-utils
 
 DESCRIPTION="A GTK image viewer specifically designed to handle comic books"
 HOMEPAGE="http://comix.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

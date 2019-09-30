@@ -12,7 +12,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Core classes of jBitcollider: org.bitpedia.collider.core"
 HOMEPAGE="http://bitcollider.sourceforge.net/"
-SRC_URI="mirror://sourceforge/bitcollider/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/bitcollider/${MY_P}.zip"
 
 LICENSE="public-domain"
 SLOT="0"

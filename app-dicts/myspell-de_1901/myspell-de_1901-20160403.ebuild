@@ -21,7 +21,7 @@ DESCRIPTION="German (traditional orthography) dictionaries for myspell/hunspell"
 HOMEPAGE="http://www.j3e.de/myspell/
 	http://extensions.libreoffice.org/extension-center/german-de-de-1901-old-spelling-dictionaries"
 #SRC_URI="http://extensions.libreoffice.org/extension-center/german-de-de-1901-old-spelling-dictionaries/pscreleasefolder.2011-11-04.1209635399/${PV:0:4}.${PV:4:2}.${PV:6:2}/dict-de_de-1901_oldspell_${PV:0:4}-${PV:4:2}-${PV:6:2}.oxt"
-SRC_URI="mirror://sourceforge/project/aoo-extensions/1057/8/dict-de_de-1901_oldspell_${PV:0:4}-${PV:4:2}-${PV:6:2}.oxt"
+SRC_URI="https://download.sourceforge.net/project/aoo-extensions/1057/8/dict-de_de-1901_oldspell_${PV:0:4}-${PV:4:2}-${PV:6:2}.oxt"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"

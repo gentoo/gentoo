@@ -14,10 +14,10 @@ MY_P2="CBFlib_0.9.3"
 DESCRIPTION="Library providing a simple mechanism for accessing CBF files and imgCIF files"
 HOMEPAGE="http://www.bernstein-plus-sons.com/software/CBF/"
 BASE_TEST_URI="http://arcib.dowling.edu/software/CBFlib/downloads/version_${PV}/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P1}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P1}.tar.gz"
 #	test? (
-#		mirror://sourceforge/${PN}/${MY_P2}_Data_Files_Input.tar.gz
-#		mirror://sourceforge/${PN}/${MY_P2}_Data_Files_Output.tar.gz
+#		https://download.sourceforge.net/${PN}/${MY_P2}_Data_Files_Input.tar.gz
+#		https://download.sourceforge.net/${PN}/${MY_P2}_Data_Files_Output.tar.gz
 #	)"
 
 LICENSE="GPL-2"

@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="A DNS-Server which gets its data from a MySQL-/PostgreSQL-database"
 HOMEPAGE="http://www.mydns.pl/"
-SRC_URI="mirror://sourceforge/mydns-ng/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mydns-ng/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

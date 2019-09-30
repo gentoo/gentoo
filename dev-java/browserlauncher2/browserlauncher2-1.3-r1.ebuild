@@ -12,7 +12,7 @@ MY_PN="BrowserLauncher2"
 
 DESCRIPTION="A library that facilitates opening a browser from a Java application"
 HOMEPAGE="http://browserlaunch2.sourceforge.net/"
-SRC_URI="mirror://sourceforge/browserlaunch2/${MY_PN}-all-${MY_PV}.jar"
+SRC_URI="https://download.sourceforge.net/browserlaunch2/${MY_PN}-all-${MY_PV}.jar"
 
 LICENSE="LGPL-2.1"
 SLOT="1.0"

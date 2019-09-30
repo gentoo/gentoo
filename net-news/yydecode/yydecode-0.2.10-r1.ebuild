@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="A decoder for yENC format, popular on Usenet"
 HOMEPAGE="http://yydecode.sourceforge.net/"
-SRC_URI="mirror://sourceforge/yydecode/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/yydecode/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

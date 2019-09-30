@@ -10,7 +10,7 @@ inherit autotools-utils python-r1
 
 DESCRIPTION="Python bindings to GtkGLExt"
 HOMEPAGE="https://projects-old.gnome.org/gtkglext/"
-SRC_URI="mirror://sourceforge/gtkglext/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/gtkglext/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"

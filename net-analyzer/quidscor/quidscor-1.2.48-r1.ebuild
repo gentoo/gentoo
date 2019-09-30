@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Qualys IDS Correlation Daemon"
 HOMEPAGE="http://quidscor.sourceforge.net/"
-SRC_URI="mirror://sourceforge/quidscor/${P}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/quidscor/${P}-src.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

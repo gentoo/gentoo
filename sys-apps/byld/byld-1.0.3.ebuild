@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="build a Linux distribution on a single floppy"
 HOMEPAGE="http://byld.sourceforge.net/"
-SRC_URI="mirror://sourceforge/byld/byld-${PV//./_}.tgz"
+SRC_URI="https://download.sourceforge.net/byld/byld-${PV//./_}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit perl-app
 
 DESCRIPTION="Simple log watcher"
 HOMEPAGE="https://sourceforge.net/projects/swatch/"
-SRC_URI="mirror://sourceforge/swatch/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/swatch/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

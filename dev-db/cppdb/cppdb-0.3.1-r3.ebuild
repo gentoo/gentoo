@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="SQL connectivity library for platform and database independent connectivity"
 HOMEPAGE="http://cppcms.com/sql/cppdb/"
-SRC_URI="mirror://sourceforge/cppcms/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/cppcms/${P}.tar.bz2"
 
 LICENSE="|| ( Boost-1.0 MIT )"
 SLOT="0"

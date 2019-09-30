@@ -24,7 +24,7 @@ elif [ -z "${DESCRIPTION}" ]; then
 fi
 
 HOMEPAGE="http://stardict.sourceforge.net/"
-SRC_URI="mirror://sourceforge/stardict/${DICT_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/stardict/${DICT_P}.tar.bz2"
 
 IUSE="gzip"
 SLOT="0"

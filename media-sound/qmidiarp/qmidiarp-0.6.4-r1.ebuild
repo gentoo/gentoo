@@ -7,7 +7,7 @@ inherit flag-o-matic qmake-utils
 
 DESCRIPTION="An arpeggiator, sequencer and MIDI LFO for ALSA"
 HOMEPAGE="http://qmidiarp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

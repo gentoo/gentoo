@@ -7,7 +7,7 @@ inherit eutils wxwidgets toolchain-funcs versionator
 
 DESCRIPTION="A full-featured wxWidgets version of the classic dice game Yahtzee"
 HOMEPAGE="http://openyahtzee.sourceforge.net/"
-SRC_URI="mirror://sourceforge/openyahtzee/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/openyahtzee/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

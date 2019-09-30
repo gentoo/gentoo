@@ -11,7 +11,7 @@ DESCRIPTION="A graphical file and directories comparator and merge tool"
 HOMEPAGE="http://furius.ca/xxdiff/"
 # generated as 'hg archive xxdiff-${P}.tar'
 # from https://bitbucket.org/blais/xxdiff tree
-#SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+#SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"

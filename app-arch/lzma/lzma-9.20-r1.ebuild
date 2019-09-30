@@ -8,7 +8,7 @@ inherit toolchain-funcs
 MY_P="${PN}${PV//.}"
 DESCRIPTION="LZMA Stream Compressor from the SDK"
 HOMEPAGE="https://www.7-zip.org/sdk.html"
-SRC_URI="mirror://sourceforge/sevenzip/${MY_P}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/sevenzip/${MY_P}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"

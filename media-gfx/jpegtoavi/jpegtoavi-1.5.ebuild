@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="JPEG to AVI/MJPEG animation command-line conversion tool"
 HOMEPAGE="https://sourceforge.net/projects/jpegtoavi/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

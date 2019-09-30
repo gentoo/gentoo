@@ -8,7 +8,7 @@ inherit base
 MY_P=${P/_/}
 S=${WORKDIR}/${MY_P/rc*/}
 DESCRIPTION="An ASCII Image Viewer"
-SRC_URI="mirror://sourceforge/aa-project/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/aa-project/${MY_P}.tar.gz"
 HOMEPAGE="http://aa-project.sourceforge.net/aview/"
 
 SLOT="0"

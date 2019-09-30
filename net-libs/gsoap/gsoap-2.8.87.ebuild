@@ -9,7 +9,7 @@ MY_P="${PN}-2.8"
 
 DESCRIPTION="A cross-platform open source C and C++ SDK for SOAP/XML Web services"
 HOMEPAGE="http://gsoap2.sourceforge.net"
-SRC_URI="mirror://sourceforge/gsoap2/gsoap_${PV}.zip"
+SRC_URI="https://download.sourceforge.net/gsoap2/gsoap_${PV}.zip"
 
 LICENSE="GPL-2 gSOAP"
 SLOT="0"

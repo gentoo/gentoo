@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc examples source test"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="JmDNS is an implementation of multi-cast DNS in Java"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 HOMEPAGE="http://jmdns.sourceforge.net"
 
 LICENSE="Apache-2.0"

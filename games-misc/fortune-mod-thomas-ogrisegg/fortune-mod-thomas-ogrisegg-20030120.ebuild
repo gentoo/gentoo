@@ -5,7 +5,7 @@ EAPI=5
 MY_P=fortune-mod-thomas.ogrisegg-${PV}
 DESCRIPTION="Quotes from Thomas Ogrisegg"
 HOMEPAGE="http://fortune-mod-fvl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/fortune-mod-fvl/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/fortune-mod-fvl/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

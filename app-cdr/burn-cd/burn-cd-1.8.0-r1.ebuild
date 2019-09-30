@@ -9,7 +9,7 @@ inherit python-single-r1
 
 DESCRIPTION="Smart console frontend for virtual/cdrtools and dvd+rw-tools"
 HOMEPAGE="http://burn-cd.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

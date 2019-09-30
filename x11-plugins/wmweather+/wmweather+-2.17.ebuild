@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A dockapp for displaying data collected from METAR, AVN, ETA, and MRF forecasts"
 HOMEPAGE="https://www.sourceforge.net/projects/wmweatherplus/"
-SRC_URI="mirror://sourceforge/wmweatherplus/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/wmweatherplus/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

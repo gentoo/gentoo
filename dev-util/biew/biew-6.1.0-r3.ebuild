@@ -8,7 +8,7 @@ MY_P=${PN}-$(replace_all_version_separators "")
 
 DESCRIPTION="A portable viewer of binary files, hexadecimal and disassembler modes"
 HOMEPAGE="http://beye.sourceforge.net/"
-SRC_URI="mirror://sourceforge/beye/${PV}/${MY_P}-src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/beye/${PV}/${MY_P}-src.tar.bz2"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"

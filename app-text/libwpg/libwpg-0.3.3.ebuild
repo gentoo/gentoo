@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="C++ library to read and parse graphics in WPG"
 HOMEPAGE="http://libwpg.sourceforge.net/libwpg.htm"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
 SLOT="0.3"

@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="A cellular automata setting the background of your X Windows desktop under water"
 HOMEPAGE="http://xdesktopwaves.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"

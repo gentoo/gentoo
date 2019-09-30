@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="Bus scanning, testing and topology visualizing tool for Linux IEEE1394 subsystem"
 HOMEPAGE="https://sourceforge.net/projects/gscanbus.berlios/"
-SRC_URI="mirror://sourceforge/${PN}.berlios/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}.berlios/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

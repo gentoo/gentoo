@@ -9,7 +9,7 @@ DESCRIPTION="ArpON (Arp handler inspectiON) is a portable Arp handler"
 MY_PN="ArpON"
 MY_P="${MY_PN}-${PV}"
 HOMEPAGE="http://arpon.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

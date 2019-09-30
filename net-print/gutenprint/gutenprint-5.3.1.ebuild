@@ -9,7 +9,7 @@ HOMEPAGE="http://gutenprint.sourceforge.net"
 
 MY_P="${P/_/-}"
 S="${WORKDIR}/${MY_P}"
-SRC_URI="mirror://sourceforge/gimp-print/${MY_P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/gimp-print/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

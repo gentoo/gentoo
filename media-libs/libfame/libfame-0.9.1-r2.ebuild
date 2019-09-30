@@ -10,7 +10,7 @@ inherit autotools-multilib
 PATCHLEVEL="2"
 DESCRIPTION="MPEG-1 and MPEG-4 video encoding library"
 HOMEPAGE="http://fame.sourceforge.net/"
-SRC_URI="mirror://sourceforge/fame/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/fame/${P}.tar.gz
 	http://digilander.libero.it/dgp85/gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
 
 LICENSE="GPL-2"

@@ -8,8 +8,8 @@ inherit eutils toolchain-funcs
 DESCRIPTION="Lightweight text-mode editor"
 HOMEPAGE="http://fte.sourceforge.net"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}-src.zip
-	mirror://sourceforge/${PN}/${P}-common.zip"
+	https://download.sourceforge.net/${PN}/${P}-src.zip
+	https://download.sourceforge.net/${PN}/${P}-common.zip"
 
 LICENSE="|| ( GPL-2 Artistic )"
 SLOT="0"

@@ -12,7 +12,7 @@ MY_V=$(get_major_version ${PV})
 
 DESCRIPTION="Tool for extracting documentation from Python source code"
 HOMEPAGE="http://happydoc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}_r${MY_PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_PN}_r${MY_PV}.tar.gz"
 
 LICENSE="HPND ZPL"
 SLOT="0"

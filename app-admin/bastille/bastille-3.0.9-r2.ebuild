@@ -11,7 +11,7 @@ MY_P=${MY_PN}-${PV}
 S=${WORKDIR}/${MY_PN}
 DESCRIPTION="Bastille-Linux is a security hardening tool"
 HOMEPAGE="http://bastille-linux.org/"
-SRC_URI="mirror://sourceforge/${PN}-linux/${MY_P}.tar.bz2
+SRC_URI="https://download.sourceforge.net/${PN}-linux/${MY_P}.tar.bz2
 	mirror://gentoo/${P}-gentoo-${PATCHVER}.patch.bz2"
 
 LICENSE="GPL-2"

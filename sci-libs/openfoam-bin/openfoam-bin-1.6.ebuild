@@ -11,9 +11,9 @@ MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Open Field Operation and Manipulation - CFD Simulation Toolbox"
 HOMEPAGE="http://www.opencfd.co.uk/openfoam/"
-SRC_URI="mirror://sourceforge/foam/${MY_P}.General.gtgz -> ${MY_P}.General.tgz
-	x86? ( mirror://sourceforge/foam/${MY_P}.linuxGccDPOpt.gtgz -> ${MY_P}.linuxGccDPOpt.tgz )
-	amd64? ( mirror://sourceforge/foam/${MY_P}.linux64GccDPOpt.gtgz -> ${MY_P}.linux64GccDPOpt.tgz )
+SRC_URI="https://download.sourceforge.net/foam/${MY_P}.General.gtgz -> ${MY_P}.General.tgz
+	x86? ( https://download.sourceforge.net/foam/${MY_P}.linuxGccDPOpt.gtgz -> ${MY_P}.linuxGccDPOpt.tgz )
+	amd64? ( https://download.sourceforge.net/foam/${MY_P}.linux64GccDPOpt.gtgz -> ${MY_P}.linux64GccDPOpt.tgz )
 	mirror://gentoo/${MY_P}-compile.patch.bz2"
 
 LICENSE="GPL-2"

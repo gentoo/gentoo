@@ -8,7 +8,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol"
 HOMEPAGE="http://gnomad2.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

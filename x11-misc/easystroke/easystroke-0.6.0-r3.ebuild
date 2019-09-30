@@ -6,7 +6,7 @@ inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="a gesture-recognition application for X11"
 HOMEPAGE="https://sourceforge.net/apps/trac/easystroke/"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit java-pkg-2 java-ant-2 eutils
 
 DESCRIPTION="A PSP (personal software process) time tracking utility written in Java"
 HOMEPAGE="http://hourglass.wiki.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

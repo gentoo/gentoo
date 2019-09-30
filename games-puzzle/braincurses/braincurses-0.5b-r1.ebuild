@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="An ncurses-based mastermind clone"
 HOMEPAGE="https://github.com/bderrly/braincurses"
-SRC_URI="mirror://sourceforge/braincurses/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/braincurses/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

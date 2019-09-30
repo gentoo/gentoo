@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="A C implementation of MD6"
 HOMEPAGE="https://groups.csail.mit.edu/cis/md6"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

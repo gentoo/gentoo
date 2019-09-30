@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Documentation for Cheetah templates"
 HOMEPAGE="http://www.cheetahtemplate.org/"
-SRC_URI="mirror://sourceforge/cheetahtemplate/CheetahDocs-${PV/_alpha/a}.tgz"
+SRC_URI="https://download.sourceforge.net/cheetahtemplate/CheetahDocs-${PV/_alpha/a}.tgz"
 
 IUSE=""
 LICENSE="OPL"

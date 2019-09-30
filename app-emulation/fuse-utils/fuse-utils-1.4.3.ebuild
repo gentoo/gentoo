@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Utils for the Free Unix Spectrum Emulator by Philip Kendall"
 HOMEPAGE="http://fuse-emulator.sourceforge.net"
-SRC_URI="mirror://sourceforge/fuse-emulator/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/fuse-emulator/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

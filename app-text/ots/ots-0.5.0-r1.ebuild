@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="Open source Text Summarizer, as used in newer releases of abiword and kword"
 HOMEPAGE="http://libots.sourceforge.net/"
-SRC_URI="mirror://sourceforge/libots/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/libots/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

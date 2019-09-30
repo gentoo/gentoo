@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Console based chess interface"
 HOMEPAGE="http://sjeng.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sjeng/Sjeng-Free-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sjeng/Sjeng-Free-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"

@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Utilities for TIPC (Transparent Inter-Process Communication)"
 HOMEPAGE="http://tipc.sourceforge.net"
-SRC_URI="mirror://sourceforge/tipc/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/tipc/${P}.tar.gz"
 
 LICENSE="|| ( BSD-2 GPL-2 )"
 SLOT="0"

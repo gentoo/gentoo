@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Pidgin Plug-in SIPE (Sip Exchange Protocol)"
 HOMEPAGE="http://sipe.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sipe/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sipe/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

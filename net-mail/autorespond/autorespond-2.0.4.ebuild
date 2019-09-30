@@ -9,7 +9,7 @@ DEBIAN_PV="1"
 DEBIAN_P="${P/-/_}-${DEBIAN_PV}"
 DESCRIPTION="Autoresponder add on package for qmailadmin"
 HOMEPAGE="http://inter7.com/devel/"
-SRC_URI="mirror://sourceforge/qmailadmin/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/qmailadmin/${P}.tar.gz
 	mirror://debian/pool/contrib/${PN:0:1}/${PN}/${DEBIAN_P}.diff.gz"
 
 LICENSE="GPL-2"

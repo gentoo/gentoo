@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Find Bugs in Java Programs"
 HOMEPAGE="http://findbugs.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-source.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-source.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="display misc information about your hardware"
 HOMEPAGE="http://syscriptor.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

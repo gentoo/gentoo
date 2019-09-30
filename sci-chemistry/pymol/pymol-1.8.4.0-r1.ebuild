@@ -12,7 +12,7 @@ DESCRIPTION="A Python-extensible molecular graphics system"
 HOMEPAGE="http://www.pymol.org/"
 SRC_URI="
 	https://dev.gentoo.org/~jlec/distfiles/${P}.png.xz
-	mirror://sourceforge/project/${PN}/${PN}/$(get_version_component_range 1-2)/${PN}-v${PV}.tar.bz2
+	https://download.sourceforge.net/project/${PN}/${PN}/$(get_version_component_range 1-2)/${PN}-v${PV}.tar.bz2
 	"
 # git archive -v --prefix=${P}/ master -o ${P}.tar.xz
 RESTRICT="mirror"

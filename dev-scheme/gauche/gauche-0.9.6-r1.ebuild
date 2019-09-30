@@ -9,7 +9,7 @@ MY_P="${P^g}"
 
 DESCRIPTION="A Unix system friendly Scheme Interpreter"
 HOMEPAGE="http://practical-scheme.net/gauche/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tgz"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"

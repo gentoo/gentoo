@@ -8,10 +8,10 @@ MY_P="${P/_beta/b}"
 DESCRIPTION="A small, flexible, screen-oriented MUD client (aka TinyFugue)"
 HOMEPAGE="http://tinyfugue.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/tinyfugue/${MY_P}.tar.gz
+	https://download.sourceforge.net/tinyfugue/${MY_P}.tar.gz
 	http://homepage.mac.com/mikeride/abelinc/scripts/allrootpatch.txt -> tf-allrootpatch.txt
 	http://homepage.mac.com/mikeride/abelinc/scripts/allsrcpatch.txt -> tf-allsrcpatch.txt
-	doc? ( mirror://sourceforge/tinyfugue/${MY_P}-help.tar.gz )"
+	doc? ( https://download.sourceforge.net/tinyfugue/${MY_P}-help.tar.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"

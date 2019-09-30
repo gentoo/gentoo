@@ -7,7 +7,7 @@ inherit virtualx
 
 DESCRIPTION="A flexible listbox widget for Tk"
 HOMEPAGE="http://tktreectrl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0"

@@ -30,7 +30,7 @@ SRC_URI="mirror://qmail/${P}.tar.gz
 	https://www.ckdhr.com/ckd/${QMAIL_LARGE_DNS}
 	!vanilla? (
 		highvolume? ( mirror://qmail/${QMAIL_BIGTODO_F} )
-		qmail-spp? ( mirror://sourceforge/qmail-spp/${QMAIL_SPP_F} )
+		qmail-spp? ( https://download.sourceforge.net/qmail-spp/${QMAIL_SPP_F} )
 		ssl? (
 			https://mirror.alexh.name/qmail/netqmail/${QMAIL_TLS_F}
 			http://inoa.net/qmail-tls/${QMAIL_TLS_CVE}

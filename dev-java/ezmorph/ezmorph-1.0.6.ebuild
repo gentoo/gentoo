@@ -8,7 +8,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A simple Java library for transforming an Object to another Object"
 HOMEPAGE="http://ezmorph.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-sources.jar"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-sources.jar"
 
 LICENSE="Apache-2.0"
 SLOT="0"

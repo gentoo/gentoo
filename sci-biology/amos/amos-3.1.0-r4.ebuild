@@ -9,7 +9,7 @@ inherit autotools flag-o-matic python-single-r1
 
 DESCRIPTION="A Modular, Open-Source whole genome assembler"
 HOMEPAGE="http://amos.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~soap/distfiles/${PN}-3.1.0-fix-c++14.patch.bz2"
 
 LICENSE="Artistic"

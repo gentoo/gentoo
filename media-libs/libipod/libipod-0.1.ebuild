@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="lightweight and fast library written in C for managing Apple iPods"
 HOMEPAGE="http://libipod.sourceforge.net/"
-SRC_URI="mirror://sourceforge/libipod/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/libipod/${P}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

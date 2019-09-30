@@ -8,7 +8,7 @@ inherit desktop gnome2-utils qmake-utils
 
 DESCRIPTION="Tool to render 3D fractals"
 HOMEPAGE="http://www.mandelbulber.com"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="CC-BY-4.0 GPL-3"
 SLOT="0"

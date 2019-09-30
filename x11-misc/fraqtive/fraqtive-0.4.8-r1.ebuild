@@ -7,7 +7,7 @@ inherit qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="Open source, multi-platform generator of the Mandelbrot family fractals"
 HOMEPAGE="https://fraqtive.mimec.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

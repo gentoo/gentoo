@@ -7,7 +7,7 @@ inherit gkrellm-plugin toolchain-funcs
 
 DESCRIPTION="A web monitor plugin for GKrellM2"
 HOMEPAGE="http://gkwebmon.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

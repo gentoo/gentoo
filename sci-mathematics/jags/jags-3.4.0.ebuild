@@ -9,7 +9,7 @@ MYP="JAGS-${PV}"
 
 DESCRIPTION="Just Another Gibbs Sampler for Bayesian MCMC simulation"
 HOMEPAGE="http://mcmc-jags.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/mcmc-jags/JAGS/3.x/Source/${MYP}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/mcmc-jags/JAGS/3.x/Source/${MYP}.tar.gz"
 LICENSE="GPL-2"
 IUSE="doc"
 

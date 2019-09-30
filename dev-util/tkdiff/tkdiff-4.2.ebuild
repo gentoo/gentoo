@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Graphical front end to the diff program"
 HOMEPAGE="http://tkdiff.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

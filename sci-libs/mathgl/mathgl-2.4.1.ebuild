@@ -10,7 +10,7 @@ inherit cmake-utils eutils python-single-r1 wxwidgets multilib flag-o-matic
 
 DESCRIPTION="Math Graphics Library"
 HOMEPAGE="http://mathgl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz mirror://sourceforge/${PN}/STIX_font.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz mirror://sourceforge/${PN}/STIX_font.tgz"
 
 LICENSE="LGPL-3"
 SLOT="0/7.5.0"

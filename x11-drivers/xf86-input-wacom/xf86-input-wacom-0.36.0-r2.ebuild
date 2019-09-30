@@ -10,7 +10,7 @@ HOMEPAGE="http://linuxwacom.sourceforge.net/"
 LICENSE="GPL-2"
 EGIT_REPO_URI="git://git.code.sf.net/p/linuxwacom/${PN}"
 [[ ${PV} != 9999* ]] && \
-	SRC_URI="mirror://sourceforge/linuxwacom/${PN}/${P}.tar.bz2"
+	SRC_URI="https://download.sourceforge.net/linuxwacom/${PN}/${P}.tar.bz2"
 
 KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
 IUSE="debug"

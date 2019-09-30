@@ -7,7 +7,7 @@ inherit desktop toolchain-funcs
 
 DESCRIPTION="A multi-player 2D client/server space game"
 HOMEPAGE="http://www.xpilot.org/"
-SRC_URI="mirror://sourceforge/xpilotgame/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/xpilotgame/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

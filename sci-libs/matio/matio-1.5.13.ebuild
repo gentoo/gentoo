@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Library for reading and writing matlab files"
 HOMEPAGE="https://sourceforge.net/projects/matio/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 SLOT="0/4" # subslot = soname version
 LICENSE="BSD-2"

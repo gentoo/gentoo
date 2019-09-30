@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="JUnit-addons is a collection of helper classes for JUnit"
 HOMEPAGE="http://junit-addons.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.zip"
 
 LICENSE="Apache-1.1"
 SLOT="0"

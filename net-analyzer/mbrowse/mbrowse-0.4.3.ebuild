@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="MBrowse is a graphical MIB browser"
 HOMEPAGE="https://sourceforge.net/projects/mbrowse/"
-SRC_URI="mirror://sourceforge/${PN}/files/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

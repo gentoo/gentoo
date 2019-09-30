@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Implementation of the Unified Expression Language (EL) - JSR-245"
 HOMEPAGE="http://juel.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"

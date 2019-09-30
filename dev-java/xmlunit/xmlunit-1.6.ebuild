@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="XMLUnit extends JUnit and NUnit to enable unit testing of XML"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.zip"
 HOMEPAGE="http://xmlunit.sourceforge.net/"
 
 LICENSE="BSD"

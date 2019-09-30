@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="IRC client intended to be displayed on a text console"
 HOMEPAGE="http://rhapsody.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}_${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

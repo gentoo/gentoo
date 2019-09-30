@@ -8,7 +8,7 @@ inherit cmake-utils desktop
 
 DESCRIPTION="cross-platform multimedia library"
 HOMEPAGE="https://liballeg.org/"
-SRC_URI="mirror://sourceforge/alleg/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/alleg/${P}.tar.gz"
 
 LICENSE="Allegro MIT GPL-2+ ZLIB"
 SLOT="0"

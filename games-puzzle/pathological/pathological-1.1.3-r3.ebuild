@@ -8,7 +8,7 @@ inherit eutils python-single-r1 games
 
 DESCRIPTION="An enriched clone of the game 'Logical' by Rainbow Arts"
 HOMEPAGE="http://pathological.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit desktop
 
 DESCRIPTION="Asteroids Clone for X using SDL"
 HOMEPAGE="http://david.hedbor.org/projects/sdlroids/"
-SRC_URI="mirror://sourceforge/sdlroids/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/sdlroids/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

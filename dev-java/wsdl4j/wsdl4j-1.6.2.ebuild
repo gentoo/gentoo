@@ -13,8 +13,8 @@ HOMEPAGE="http://wsdl4j.sourceforge.net"
 TCK="jwsdltck"
 TCK_V="1.2"
 
-SRC_URI="mirror://sourceforge/${PN}/${PN}-src-${PV}.zip
-	test? ( mirror://sourceforge/${TCK}/${TCK}-bin-${TCK_V}.zip )"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-src-${PV}.zip
+	test? ( https://download.sourceforge.net/${TCK}/${TCK}-bin-${TCK_V}.zip )"
 
 LICENSE="CPL-1.0"
 SLOT="0"

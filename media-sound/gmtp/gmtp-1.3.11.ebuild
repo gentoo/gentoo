@@ -6,7 +6,7 @@ inherit gnome2-utils
 
 DESCRIPTION="A simple MTP client for MP3 players"
 HOMEPAGE="http://gmtp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

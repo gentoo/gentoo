@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="High-performance Python library for predictive modeling"
 HOMEPAGE="https://mlpy.fbk.eu/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

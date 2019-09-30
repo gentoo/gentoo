@@ -6,7 +6,7 @@ inherit flag-o-matic
 
 DESCRIPTION="A full featured backup tool, aimed for disks"
 HOMEPAGE="http://dar.linux.free.fr/"
-SRC_URI="mirror://sourceforge/dar/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dar/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

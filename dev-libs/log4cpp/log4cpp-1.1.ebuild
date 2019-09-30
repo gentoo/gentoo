@@ -7,7 +7,7 @@ inherit autotools multilib-minimal
 
 DESCRIPTION="C++ classes for flexible logging to files, syslog and other destinations"
 HOMEPAGE="http://log4cpp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/5"

@@ -7,7 +7,7 @@ inherit perl-module
 
 DESCRIPTION="Set of utilities to manage TV listings stored in the XMLTV format"
 HOMEPAGE="http://xmltv.org"
-SRC_URI="mirror://sourceforge/xmltv/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/xmltv/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

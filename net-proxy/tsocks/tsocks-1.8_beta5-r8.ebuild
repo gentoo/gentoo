@@ -7,7 +7,7 @@ inherit autotools eutils multilib multilib-minimal toolchain-funcs
 
 DESCRIPTION="Transparent SOCKS v4 proxying library"
 HOMEPAGE="http://tsocks.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tsocks/${PN}-${PV/_}.tar.gz
+SRC_URI="https://download.sourceforge.net/tsocks/${PN}-${PV/_}.tar.gz
 	tordns? ( https://dev.gentoo.org/~bircoph/patches/${PN}-${PV/_beta/b}-tordns1-gentoo-r3.patch.xz )"
 
 LICENSE="GPL-2"

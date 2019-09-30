@@ -7,7 +7,7 @@ inherit flag-o-matic qmake-utils xdg-utils
 
 DESCRIPTION="Audio/MIDI multi-track sequencer written in C++ with the Qt framework"
 HOMEPAGE="https://qtractor.sourceforge.io"
-SRC_URI="mirror://sourceforge/qtractor/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/qtractor/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

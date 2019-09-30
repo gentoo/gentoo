@@ -7,7 +7,7 @@ inherit autotools-multilib
 
 DESCRIPTION="library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set"
 HOMEPAGE="https://sourceforge.net/projects/libavc1394/"
-SRC_URI="mirror://sourceforge/libavc1394/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/libavc1394/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

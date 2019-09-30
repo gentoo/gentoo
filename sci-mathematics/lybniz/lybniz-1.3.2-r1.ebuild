@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="A function plotter program written in PyGTK"
 HOMEPAGE="http://lybniz2.sourceforge.net/"
-SRC_URI="mirror://sourceforge/lybniz2/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lybniz2/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

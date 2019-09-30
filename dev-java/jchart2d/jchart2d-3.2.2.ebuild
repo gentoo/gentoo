@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A minimalistic realtime charting library for Java"
 HOMEPAGE="http://jchart2d.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/sources/${PN}-eclipse-project-${PV}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}/sources/${PN}-eclipse-project-${PV}.zip"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

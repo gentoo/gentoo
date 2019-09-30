@@ -8,8 +8,8 @@ MY_P="${P/_/}"
 MY_P="${MY_P/beta/beta-}"
 DESCRIPTION="A Panzer General clone written in SDL"
 HOMEPAGE="http://lgames.sourceforge.net/LGeneral/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz
-	mirror://sourceforge/${PN}/pg-data.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz
+	https://download.sourceforge.net/${PN}/pg-data.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

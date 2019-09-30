@@ -10,7 +10,7 @@ inherit eutils perl-module python-any-r1 cmake-multilib
 
 DESCRIPTION="Library providing rendering capabilities for complex non-Roman writing systems"
 HOMEPAGE="http://graphite.sil.org/"
-SRC_URI="mirror://sourceforge/silgraphite/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/silgraphite/${PN}/${P}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

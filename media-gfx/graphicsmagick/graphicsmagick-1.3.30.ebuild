@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit mercurial
 	EHG_REPO_URI="http://hg.code.sf.net/p/${PN}/code"
 else
-	SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
+	SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.xz"
 	KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 

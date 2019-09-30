@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 
 	DEPEND="dev-util/confix"
 else
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+	SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 	KEYWORDS="~x86-winnt"
 fi
 

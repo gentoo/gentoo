@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Various formats to Open document format converter"
 HOMEPAGE="http://libwpd.sf.net"
-SRC_URI="mirror://sourceforge/libwpd/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/libwpd/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
 SLOT="0"

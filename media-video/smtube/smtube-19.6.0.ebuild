@@ -9,7 +9,7 @@ inherit desktop l10n qmake-utils
 
 DESCRIPTION="YouTube Browser for SMPlayer"
 HOMEPAGE="http://smplayer.sourceforge.net/smtube"
-SRC_URI="mirror://sourceforge/smtube/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/smtube/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

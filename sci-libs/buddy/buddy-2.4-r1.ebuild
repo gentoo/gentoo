@@ -7,7 +7,7 @@ inherit fortran-2
 
 DESCRIPTION="Binary Decision Diagram Package"
 HOMEPAGE="https://sourceforge.net/projects/buddy/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="buddy"
 SLOT="0"

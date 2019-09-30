@@ -10,7 +10,7 @@ MY_P="${PN}-v${PV}0"
 
 DESCRIPTION="GUI frontend for Ngspice and Gnucap"
 HOMEPAGE="https://sourceforge.net/projects/gspiceui/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

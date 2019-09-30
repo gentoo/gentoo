@@ -7,7 +7,7 @@ inherit autotools-utils fortran-2 multilib toolchain-funcs
 
 DESCRIPTION="Suite for ab initio quantum chemistry computing various molecular properties"
 HOMEPAGE="http://www.psicode.org/"
-SRC_URI="mirror://sourceforge/psicode/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/psicode/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

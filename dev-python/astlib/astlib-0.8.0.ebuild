@@ -12,7 +12,7 @@ MYP=${MYPN}-${PV}
 
 DESCRIPTION="Python astronomy modules for image and coordinate manipulation"
 HOMEPAGE="http://astlib.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MYP}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MYP}.tar.gz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"

@@ -6,7 +6,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="A puzzle game where the player has to arrange balls in triplets"
 HOMEPAGE="https://sourceforge.net/projects/zaz/"
-SRC_URI="mirror://sourceforge/zaz/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/zaz/${P}.tar.bz2"
 
 LICENSE="GPL-3 GPL-3+ CC-BY-SA-3.0 OFL"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Tool written archiving old email in mailboxes"
 HOMEPAGE="http://archivemail.sourceforge.net/"
-SRC_URI="mirror://sourceforge/archivemail/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/archivemail/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

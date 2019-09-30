@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 DESCRIPTION="A text editor written in Java"
 HOMEPAGE="https://sourceforge.net/projects/jext/"
 MY_PV="${PV/_}"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-sources-${MY_PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-sources-${MY_PV}.tar.gz"
 LICENSE="|| ( GPL-2 JPython )"
 SLOT="0"
 KEYWORDS="amd64 x86"

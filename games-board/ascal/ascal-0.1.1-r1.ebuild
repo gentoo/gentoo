@@ -6,7 +6,7 @@ inherit autotools eutils flag-o-matic
 
 DESCRIPTION="A game similar to Draughts but with some really cool enhancements"
 HOMEPAGE="http://ascal.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ascal/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/ascal/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Image regularization algorithm for denoising, inpainting and resizing"
 HOMEPAGE="http://www.greyc.ensicaen.fr/~dtschump/greycstoration/"
-SRC_URI="mirror://sourceforge/cimg/GREYCstoration-${PV}.zip"
+SRC_URI="https://download.sourceforge.net/cimg/GREYCstoration-${PV}.zip"
 
 LICENSE="CeCILL-2"
 SLOT="0"

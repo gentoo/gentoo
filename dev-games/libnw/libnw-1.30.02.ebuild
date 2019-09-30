@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Tools and libraries for NWN file manipulation"
 HOMEPAGE="http://openknights.sourceforge.net/"
-SRC_URI="mirror://sourceforge/openknights/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/openknights/${P}.tar.gz"
 
 LICENSE="openknights"
 SLOT="0"

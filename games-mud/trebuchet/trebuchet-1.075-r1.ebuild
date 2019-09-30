@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A crossplatform TCL/TK based MUD client"
 HOMEPAGE="http://belfry.com/fuzzball/trebuchet/"
-SRC_URI="mirror://sourceforge/trebuchet/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/trebuchet/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

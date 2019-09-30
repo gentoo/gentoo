@@ -7,7 +7,7 @@ inherit user
 
 DESCRIPTION="Gofish gopher server"
 HOMEPAGE="http://gofish.sourceforge.net"
-SRC_URI="mirror://sourceforge/gofish/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gofish/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

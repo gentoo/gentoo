@@ -12,7 +12,7 @@ TCL_VER="8.6.2"
 
 DESCRIPTION="Tcl Thread extension"
 HOMEPAGE="http://www.tcl.tk/"
-SRC_URI="mirror://sourceforge/project/tcl/Tcl/${TCL_VER}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/tcl/Tcl/${TCL_VER}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

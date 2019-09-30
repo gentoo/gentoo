@@ -6,7 +6,7 @@ inherit desktop
 
 DESCRIPTION="A classical memory game"
 HOMEPAGE="http://lgames.sourceforge.net/LPairs/"
-SRC_URI="mirror://sourceforge/lgames/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lgames/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

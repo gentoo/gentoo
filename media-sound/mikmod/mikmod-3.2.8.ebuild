@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="A console MOD-Player based on libmikmod"
 HOMEPAGE="http://mikmod.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mikmod/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mikmod/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

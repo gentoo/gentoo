@@ -8,7 +8,7 @@ inherit perl-module
 MY_P=libhtmlobject-perl-${PV}
 
 DESCRIPTION="A HTML development and delivery Perl Module"
-SRC_URI="mirror://sourceforge/htmlobject/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/htmlobject/${MY_P}.tar.gz"
 HOMEPAGE="http://htmlobject.sourceforge.net"
 
 SLOT="0"

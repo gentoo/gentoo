@@ -8,7 +8,7 @@ inherit gnome2-utils
 MV="3.1"
 DESCRIPTION="A simple applet that shows what you saved since you quit smoking."
 HOMEPAGE="http://quitcount.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Dump a remote Subversion repository"
 HOMEPAGE="http://rsvndump.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3+ BSD public-domain"  # rsvndump, snappy-c, critbit89
 SLOT="0"

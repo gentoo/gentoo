@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="Library and tools to parse, encode and handle WBXML documents"
 HOMEPAGE="https://github.com/libwbxml/libwbxml"
-SRC_URI="mirror://sourceforge/libwbxml/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/libwbxml/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

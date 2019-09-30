@@ -8,7 +8,7 @@ MY_PN=${PN/emilia-/}
 MY_P=${MY_PN}-${PV}
 DESCRIPTION="SDL OpenGL pinball game"
 HOMEPAGE="http://pinball.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pinball/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pinball/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

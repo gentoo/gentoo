@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Confix: A Build Tool on Top of GNU Automake"
 HOMEPAGE="http://confix.sourceforge.net"
-SRC_URI="mirror://sourceforge/confix/Confix-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/confix/Confix-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"

@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="LXDE GTK+ theme switcher"
 HOMEPAGE="https://wiki.lxde.org/en/LXAppearance"
-SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/lxde/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -10,7 +10,7 @@ HOMEPAGE="http://www.pcre.org/"
 MY_P="pcre2-${PV/_rc/-RC}"
 if [[ ${PV} != *_rc* ]] ; then
 	# Only the final releases are available here.
-	SRC_URI="mirror://sourceforge/pcre/${MY_P}.tar.bz2
+	SRC_URI="https://download.sourceforge.net/pcre/${MY_P}.tar.bz2
 		ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/${MY_P}.tar.bz2"
 else
 	SRC_URI="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/Testing/${MY_P}.tar.bz2"

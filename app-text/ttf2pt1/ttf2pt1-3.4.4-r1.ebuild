@@ -7,7 +7,7 @@ inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="True Type Font to Postscript Type 1 Converter"
 HOMEPAGE="http://ttf2pt1.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ttf2pt1/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/ttf2pt1/${P}.tgz"
 
 LICENSE="ttf2pt1"
 SLOT="0"

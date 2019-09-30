@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="OO-DBMS with interfaces for C/C++/Java/PHP/Perl"
 HOMEPAGE="http://www.garret.ru/~knizhnik/gigabase.html"
-SRC_URI="mirror://sourceforge/gigabase/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gigabase/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

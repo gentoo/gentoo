@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="small implementation of Obex for phones using the DCU-11 USB-to-serial adapter"
 HOMEPAGE="http://cobex.sourceforge.net/"
-SRC_URI="mirror://sourceforge/cobex/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cobex/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

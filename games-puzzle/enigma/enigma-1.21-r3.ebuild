@@ -6,7 +6,7 @@ inherit autotools gnome2-utils
 
 DESCRIPTION="Puzzle game similar to Oxyd"
 HOMEPAGE="http://www.nongnu.org/enigma/"
-SRC_URI="mirror://sourceforge/enigma-game/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/enigma-game/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

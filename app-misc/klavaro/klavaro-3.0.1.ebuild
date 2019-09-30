@@ -11,7 +11,7 @@ MY_P="${PN}-$(delete_version_separator 2)"
 
 DESCRIPTION="Another free touch typing tutor program"
 HOMEPAGE="http://klavaro.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/project/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

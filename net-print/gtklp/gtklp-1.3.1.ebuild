@@ -7,8 +7,8 @@ inherit autotools eutils
 
 DESCRIPTION="A GUI for cupsd"
 HOMEPAGE="https://gtklp.sirtobi.com/"
-SRC_URI="mirror://sourceforge/gtklp/${P}.src.tar.gz
-	mirror://sourceforge/gtklp/logo.xpm.gz -> gtklp-logo.xpm.gz"
+SRC_URI="https://download.sourceforge.net/gtklp/${P}.src.tar.gz
+	https://download.sourceforge.net/gtklp/logo.xpm.gz -> gtklp-logo.xpm.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

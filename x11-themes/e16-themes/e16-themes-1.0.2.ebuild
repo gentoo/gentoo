@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="All the official E16 themes"
 HOMEPAGE="https://www.enlightenment.org https://sourceforge.net/projects/enlightenment/"
-SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/enlightenment/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

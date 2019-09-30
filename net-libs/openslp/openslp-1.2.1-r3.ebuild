@@ -7,7 +7,7 @@ inherit eutils autotools systemd
 
 DESCRIPTION="An open-source implementation of Service Location Protocol"
 HOMEPAGE="http://www.openslp.org/"
-SRC_URI="mirror://sourceforge/openslp/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/openslp/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"

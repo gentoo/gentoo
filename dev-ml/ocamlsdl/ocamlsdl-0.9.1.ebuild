@@ -8,7 +8,7 @@ inherit findlib eutils
 DESCRIPTION="OCaml SDL Bindings"
 
 HOMEPAGE="http://ocamlsdl.sourceforge.net"
-SRC_URI="mirror://sourceforge/ocamlsdl/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ocamlsdl/${P}.tar.gz"
 LICENSE="LGPL-2"
 
 SLOT="0/${PV}"

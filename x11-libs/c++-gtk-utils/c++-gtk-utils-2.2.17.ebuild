@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="A number of classes and functions for programming GTK+ programs using C++"
 HOMEPAGE="http://cxx-gtk-utils.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN/++/xx}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN/++/xx}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"

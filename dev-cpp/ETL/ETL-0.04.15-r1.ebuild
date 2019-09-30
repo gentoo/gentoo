@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Multi-platform class and template library"
 HOMEPAGE="https://www.synfig.org"
-SRC_URI="mirror://sourceforge/synfig/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/synfig/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

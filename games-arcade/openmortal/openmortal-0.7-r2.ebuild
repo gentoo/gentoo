@@ -6,7 +6,7 @@ inherit autotools desktop
 
 DESCRIPTION="A spoof of the famous Mortal Kombat game"
 HOMEPAGE="http://openmortal.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

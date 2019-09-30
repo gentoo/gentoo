@@ -8,7 +8,7 @@ inherit autotools eutils multilib
 MY_P="${P/_/}"
 DESCRIPTION="A library to get the ink level of your printer"
 HOMEPAGE="http://libinklevel.sourceforge.net/"
-SRC_URI="mirror://sourceforge/libinklevel/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/libinklevel/${MY_P}.tar.gz"
 
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"

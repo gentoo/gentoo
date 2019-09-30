@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="Open Type Organizer"
 HOMEPAGE="https://sourceforge.net/projects/oto/"
-SRC_URI="mirror://sourceforge/oto/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/oto/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

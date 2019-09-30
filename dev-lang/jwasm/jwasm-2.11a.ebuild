@@ -12,7 +12,7 @@ MY_P="${MY_PN}${MY_PV}"
 
 DESCRIPTION="MASM-compatible TASM-similar assembler (fork of Wasm)"
 HOMEPAGE="https://sourceforge.net/projects/jwasm/"
-SRC_URI="mirror://sourceforge/${PN}/JWasm%20Source%20Code/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/JWasm%20Source%20Code/${MY_P}.zip"
 LICENSE="Watcom-1.0"
 
 SLOT="0"

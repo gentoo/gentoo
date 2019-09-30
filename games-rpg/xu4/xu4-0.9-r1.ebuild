@@ -6,9 +6,9 @@ inherit eutils
 
 DESCRIPTION="A remake of the computer game Ultima IV"
 HOMEPAGE="http://xu4.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xu4/${P}.tar.gz
-	mirror://sourceforge/xu4/ultima4-1.01.zip
-	mirror://sourceforge/xu4/u4upgrad.zip"
+SRC_URI="https://download.sourceforge.net/xu4/${P}.tar.gz
+	https://download.sourceforge.net/xu4/ultima4-1.01.zip
+	https://download.sourceforge.net/xu4/u4upgrad.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

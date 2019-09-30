@@ -9,7 +9,7 @@ MY_PV="${PV/_p*}-3"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="C Unit Test Framework"
-SRC_URI="mirror://sourceforge/cunit/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/cunit/${MY_P}.tar.bz2"
 HOMEPAGE="http://cunit.sourceforge.net"
 
 LICENSE="LGPL-2"

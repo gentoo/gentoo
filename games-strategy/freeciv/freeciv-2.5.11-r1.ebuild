@@ -6,7 +6,7 @@ inherit autotools eutils flag-o-matic gnome2-utils
 
 DESCRIPTION="multiplayer strategy game (Civilization Clone)"
 HOMEPAGE="http://www.freeciv.org/"
-SRC_URI="mirror://sourceforge/freeciv/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/freeciv/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A simple GUI XMMS2 client with minimal functionality"
 HOMEPAGE="https://wiki.lxde.org/en/LXMusic"
-SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

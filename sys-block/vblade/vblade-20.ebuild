@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="vblade exports a block device using AoE"
 HOMEPAGE="http://sf.net/projects/aoetools/"
-SRC_URI="mirror://sourceforge/aoetools/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/aoetools/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

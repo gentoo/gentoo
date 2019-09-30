@@ -7,7 +7,7 @@ inherit autotools base eutils
 
 DESCRIPTION="Smart Common Input Method (SCIM) Generic Table Input Method Server"
 HOMEPAGE="http://www.scim-im.org/"
-SRC_URI="mirror://sourceforge/scim/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/scim/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

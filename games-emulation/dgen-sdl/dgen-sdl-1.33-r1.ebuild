@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator"
 HOMEPAGE="http://dgen.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dgen/files/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dgen/files/${P}.tar.gz"
 
 LICENSE="dgen-sdl BSD BSD-2 free-noncomm LGPL-2.1+ GPL-2+"
 SLOT="0"

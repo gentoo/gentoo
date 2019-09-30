@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)"
 HOMEPAGE="http://libexif.sf.net"
-SRC_URI="mirror://sourceforge/libexif/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/libexif/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

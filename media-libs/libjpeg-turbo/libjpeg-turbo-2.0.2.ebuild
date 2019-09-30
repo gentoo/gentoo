@@ -7,7 +7,7 @@ inherit cmake-multilib eapi7-ver java-pkg-opt-2 libtool toolchain-funcs
 
 DESCRIPTION="MMX, SSE, and SSE2 SIMD accelerated JPEG library"
 HOMEPAGE="https://libjpeg-turbo.org/ https://sourceforge.net/projects/libjpeg-turbo/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz
 	mirror://gentoo/libjpeg8_8d-2.debian.tar.gz"
 
 LICENSE="BSD IJG"

@@ -21,4 +21,4 @@ UNIPATCH_LIST="
 DESCRIPTION="Full sources for the Xbox Linux kernel"
 SRC_URI="${KERNEL_URI}
 	${ARCH_URI}
-	mirror://sourceforge/xbox-linux/${XBOX_PATCHES}"
+	https://download.sourceforge.net/xbox-linux/${XBOX_PATCHES}"

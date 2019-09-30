@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="HelpGUI is a simple library which develop a help viewer component"
 HOMEPAGE="http://helpgui.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.jar"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.jar"
 
 LICENSE="GPL-2"
 SLOT="0"

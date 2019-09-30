@@ -6,7 +6,7 @@ EAPI=0
 DESCRIPTION="Create a statical HTML Image gallery with captions for each image"
 
 HOMEPAGE="http://cthumb.sourceforge.net"
-SRC_URI="mirror://sourceforge/cthumb/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cthumb/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha ~amd64 ppc ~sparc x86"

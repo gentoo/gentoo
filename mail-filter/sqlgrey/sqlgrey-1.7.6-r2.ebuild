@@ -6,7 +6,7 @@ EAPI=0
 inherit eutils systemd user
 
 DESCRIPTION="SQLgrey is a postfix policy service implementing a grey-listing policy"
-SRC_URI="mirror://sourceforge/sqlgrey/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/sqlgrey/${P}.tar.bz2"
 HOMEPAGE="http://sqlgrey.sourceforge.net/"
 LICENSE="GPL-2"
 SLOT="0"

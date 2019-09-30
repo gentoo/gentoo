@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="CAD program written in PyGTK"
 HOMEPAGE="https://sourceforge.net/projects/pythoncad"
-SRC_URI="mirror://sourceforge/pythoncad/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pythoncad/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

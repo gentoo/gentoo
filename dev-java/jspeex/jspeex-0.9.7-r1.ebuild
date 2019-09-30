@@ -9,7 +9,7 @@ inherit base java-pkg-2 java-ant-2
 
 DESCRIPTION="Speex speech codec library for Java"
 HOMEPAGE="http://jspeex.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"

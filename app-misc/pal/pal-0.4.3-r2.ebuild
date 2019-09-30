@@ -6,7 +6,7 @@ inherit prefix toolchain-funcs
 
 DESCRIPTION="Command-line calendar program"
 HOMEPAGE="http://palcal.sourceforge.net/"
-SRC_URI="mirror://sourceforge/palcal/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/palcal/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

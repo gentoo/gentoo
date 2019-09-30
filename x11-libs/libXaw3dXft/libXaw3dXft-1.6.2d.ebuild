@@ -7,7 +7,7 @@ inherit xorg-2
 
 DESCRIPTION="Xaw3dXft library"
 HOMEPAGE="https://sourceforge.net/projects/sf-xpaint"
-SRC_URI="mirror://sourceforge/sf-xpaint/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/sf-xpaint/${P}.tar.bz2"
 
 KEYWORDS="amd64 x86"
 IUSE="unicode xpm"

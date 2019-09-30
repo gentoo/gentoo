@@ -7,7 +7,7 @@ inherit multilib toolchain-funcs
 
 DESCRIPTION="feature rich database generator for high performance C applications"
 HOMEPAGE="http://datadraw.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${PN}${PV}/${PN}${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}/${PN}${PV}/${PN}${PV}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

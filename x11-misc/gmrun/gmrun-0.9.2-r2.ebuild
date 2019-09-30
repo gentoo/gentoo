@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="A GTK-2 based launcher box with bash style auto completion!"
 HOMEPAGE="https://sourceforge.net/projects/gmrun/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-1"
 SLOT="0"

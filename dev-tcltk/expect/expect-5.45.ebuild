@@ -8,7 +8,7 @@ inherit autotools eutils
 MY_P="${PN}${PV}"
 DESCRIPTION="tool for automating interactive applications"
 HOMEPAGE="http://expect.nist.gov/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

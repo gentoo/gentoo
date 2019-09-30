@@ -7,7 +7,7 @@ inherit desktop gnome2-utils
 
 DESCRIPTION="Chromium B.S.U. - an arcade game"
 HOMEPAGE="http://chromium-bsu.sourceforge.net/"
-SRC_URI="mirror://sourceforge/chromium-bsu/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/chromium-bsu/${P}.tar.gz"
 
 LICENSE="Clarified-Artistic"
 SLOT="0"

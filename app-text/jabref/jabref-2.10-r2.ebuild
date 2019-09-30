@@ -11,7 +11,7 @@ MY_PV="${PV/_beta/b}"
 
 DESCRIPTION="Java GUI for managing BibTeX and other bibliographies"
 HOMEPAGE="http://jabref.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/JabRef-${MY_PV}-src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/JabRef-${MY_PV}-src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

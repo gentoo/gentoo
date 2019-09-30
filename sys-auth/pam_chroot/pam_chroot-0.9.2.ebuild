@@ -7,7 +7,7 @@ inherit toolchain-funcs pam flag-o-matic eutils
 
 DESCRIPTION="Linux-PAM module that allows a user to be chrooted in auth, account, or session"
 HOMEPAGE="https://sourceforge.net/projects/pam-chroot/"
-SRC_URI="mirror://sourceforge/pam-chroot/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/pam-chroot/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

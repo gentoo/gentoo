@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="Active Spam Killer: A program to filter spam"
 HOMEPAGE="http://www.paganini.net/ask/index.html"
-SRC_URI="mirror://sourceforge/a-s-k/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/a-s-k/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

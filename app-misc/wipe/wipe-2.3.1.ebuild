@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Secure file wiping utility based on Peter Gutman's patterns"
 HOMEPAGE="http://wipe.sourceforge.net/"
-SRC_URI="mirror://sourceforge/wipe/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/wipe/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

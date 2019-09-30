@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="library wrapping the interix lib-c to make it less buggy"
 HOMEPAGE="http://suacomp.sf.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BEER-WARE"
 SLOT="0"

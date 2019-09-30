@@ -7,7 +7,7 @@ inherit eutils multilib
 
 DESCRIPTION="Pure Tcl implementation of an XML parser"
 HOMEPAGE="http://tclxml.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tclxml/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/tclxml/${P}.tar.gz"
 
 IUSE="debug threads"
 LICENSE="BSD"

@@ -12,7 +12,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="A lightweight panel/taskbar for X11 window managers"
 HOMEPAGE="http://pypanel.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

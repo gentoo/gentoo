@@ -4,7 +4,7 @@
 EAPI=5
 DESCRIPTION="Fortune database of Robin S. Socha quotes"
 HOMEPAGE="http://fortune-mod-fvl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/fortune-mod-fvl/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/fortune-mod-fvl/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

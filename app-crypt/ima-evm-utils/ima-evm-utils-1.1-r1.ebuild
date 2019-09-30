@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Supporting tools for IMA and EVM"
 HOMEPAGE="http://linux-ima.sourceforge.net"
-SRC_URI="mirror://sourceforge/linux-ima/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/linux-ima/${P}.tar.gz"
 
 RDEPEND="
 	dev-libs/openssl:0=

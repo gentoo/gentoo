@@ -11,7 +11,7 @@ MY_P="${P/pyx/PyX}"
 DESCRIPTION="Python package for the generation of encapsulated PostScript figures"
 HOMEPAGE="https://pyx.sourceforge.net/
 	https://pypi.org/project/PyX/"
-SRC_URI="mirror://sourceforge/pyx/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pyx/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

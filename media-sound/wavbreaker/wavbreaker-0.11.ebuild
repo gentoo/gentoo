@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="wavbreaker/wavmerge GTK+ utility to break or merge WAV files"
 HOMEPAGE="http://wavbreaker.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

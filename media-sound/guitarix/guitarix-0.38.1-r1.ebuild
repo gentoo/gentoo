@@ -11,7 +11,7 @@ MY_P="${PN}2-${PV}"
 
 DESCRIPTION="Virtual guitar amplifier for Linux"
 HOMEPAGE="http://guitarix.org/"
-SRC_URI="mirror://sourceforge/guitarix/guitarix/${MY_P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/guitarix/guitarix/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

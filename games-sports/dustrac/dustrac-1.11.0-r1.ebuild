@@ -6,7 +6,7 @@ inherit eutils gnome2-utils cmake-utils
 
 DESCRIPTION="Tile-based, cross-platform 2D racing game"
 HOMEPAGE="http://dustrac.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dustrac/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dustrac/${P}.tar.gz"
 
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"

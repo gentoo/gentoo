@@ -7,7 +7,7 @@ inherit autotools desktop xdg-utils
 
 DESCRIPTION="Analog waveform viewer for SPICE-like simulations"
 HOMEPAGE="http://gwave.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/gwave3/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/gwave3/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 x86"

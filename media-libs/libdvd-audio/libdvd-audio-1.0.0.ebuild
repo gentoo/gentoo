@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="library for extracting audio from DVD-Audio discs"
 HOMEPAGE="https://sourceforge.net/projects/libdvd-audio/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-3"
 SLOT="0"

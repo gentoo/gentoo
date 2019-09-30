@@ -7,7 +7,7 @@ inherit eutils webapp
 
 DESCRIPTION="Converts GNU .info files to HTML"
 HOMEPAGE="http://info2html.sourceforge.net/"
-SRC_URI="mirror://sourceforge/info2html/${P}.tar"
+SRC_URI="https://download.sourceforge.net/info2html/${P}.tar"
 
 LICENSE="freedist"
 # webapp.eclass deals with SLOTting

@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="NETI@Home research project from GATech"
 HOMEPAGE="http://www.neti.gatech.edu"
-SRC_URI="mirror://sourceforge/neti/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/neti/${P}.tar.gz"
 
 KEYWORDS="~ppc ~x86"
 LICENSE="GPL-2"

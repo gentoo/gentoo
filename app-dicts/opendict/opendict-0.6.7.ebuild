@@ -8,7 +8,7 @@ inherit gnome2 python-single-r1 readme.gentoo-r1
 
 DESCRIPTION="OpenDict is a free cross-platform dictionary program"
 HOMEPAGE="http://opendict.sourceforge.net/"
-SRC_URI="mirror://sourceforge/opendict/files/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/opendict/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

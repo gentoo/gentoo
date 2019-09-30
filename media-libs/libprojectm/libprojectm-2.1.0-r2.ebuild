@@ -10,7 +10,7 @@ MY_P=${MY_P/lib}
 
 DESCRIPTION="A graphical music visualization plugin similar to milkdrop"
 HOMEPAGE="http://projectm.sourceforge.net"
-SRC_URI="mirror://sourceforge/projectm/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/projectm/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

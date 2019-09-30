@@ -7,8 +7,8 @@ inherit libtool multilib-minimal
 
 DESCRIPTION="Portable Network Graphics library"
 HOMEPAGE="http://www.libpng.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz
-	apng? ( mirror://sourceforge/apng/${P}-apng.patch.gz )"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz
+	apng? ( https://download.sourceforge.net/apng/${P}-apng.patch.gz )"
 
 LICENSE="libpng2"
 SLOT="0/16"

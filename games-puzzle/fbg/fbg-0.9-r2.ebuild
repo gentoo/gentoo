@@ -6,7 +6,7 @@ inherit desktop
 
 DESCRIPTION="A Tetris clone written in OpenGL"
 HOMEPAGE="http://fbg.sourceforge.net/"
-SRC_URI="mirror://sourceforge/fbg/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/fbg/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

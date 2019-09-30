@@ -9,7 +9,7 @@ inherit python-single-r1
 
 DESCRIPTION="Scripts to prepare and plot VOACAP propagation predictions"
 HOMEPAGE="http://www.qsl.net/hz1jw/pythonprop"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

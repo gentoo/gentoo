@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Graphical debugger interface"
 HOMEPAGE="http://www.kdbg.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"

@@ -7,7 +7,7 @@ inherit eutils autotools toolchain-funcs
 
 DESCRIPTION="An mpeg library for linux"
 HOMEPAGE="http://heroinewarrior.com/libmpeg3.php"
-SRC_URI="mirror://sourceforge/heroines/${P}-src.tar.bz2
+SRC_URI="https://download.sourceforge.net/heroines/${P}-src.tar.bz2
 	mirror://gentoo/${PN}-1.7-gentoo.tar.bz2"
 
 LICENSE="GPL-2"

@@ -8,7 +8,7 @@ inherit eutils autotools systemd
 
 DESCRIPTION="LXDE Display Manager"
 HOMEPAGE="https://wiki.lxde.org/en/LXDM"
-SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/lxde/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

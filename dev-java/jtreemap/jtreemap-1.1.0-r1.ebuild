@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java library for treemapping data"
 HOMEPAGE="http://jtreemap.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip -> ${P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.zip -> ${P}.zip"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"

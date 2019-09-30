@@ -6,7 +6,7 @@ inherit readme.gentoo-r1
 
 DESCRIPTION="A Large Assortment of Beautiful Themed Icons, Created with FVWM in mind"
 HOMEPAGE="http://wm-icons.sourceforge.net/"
-SRC_URI="mirror://sourceforge/wm-icons/wm-icons-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/wm-icons/wm-icons-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

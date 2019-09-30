@@ -6,7 +6,7 @@ inherit eutils flag-o-matic
 
 DESCRIPTION="city/country simulation game for X and Linux SVGALib"
 HOMEPAGE="http://lincity.sourceforge.net/"
-SRC_URI="mirror://sourceforge/lincity/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lincity/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

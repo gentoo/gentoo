@@ -7,7 +7,7 @@ inherit desktop qmake-utils xdg
 
 DESCRIPTION="Texas Hold'em poker game"
 HOMEPAGE="https://www.pokerth.net/"
-SRC_URI="mirror://sourceforge/pokerth/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pokerth/${P}.tar.gz"
 
 LICENSE="AGPL-3 GPL-1 GPL-2 GPL-3 BitstreamVera public-domain"
 SLOT="0"

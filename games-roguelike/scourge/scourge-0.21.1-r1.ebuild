@@ -6,8 +6,8 @@ inherit autotools desktop wxwidgets
 
 DESCRIPTION="A graphical rogue-like adventure game"
 HOMEPAGE="https://sourceforge.net/projects/scourge/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.src.tar.gz
-	mirror://sourceforge/${PN}/${P}.data.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.src.tar.gz
+	https://download.sourceforge.net/${PN}/${P}.data.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

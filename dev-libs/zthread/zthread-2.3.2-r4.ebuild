@@ -9,7 +9,7 @@ MY_P="ZThread-${PV}"
 
 DESCRIPTION="platform-independent multi-threading and synchronization library for C++"
 HOMEPAGE="http://zthread.sourceforge.net/"
-SRC_URI="mirror://sourceforge/zthread/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/zthread/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

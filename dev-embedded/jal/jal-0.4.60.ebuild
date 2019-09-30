@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="A high-level language for Microchip PIC and Ubicom SX microcontrollers"
 HOMEPAGE="http://jal.sourceforge.net/"
-SRC_URI="mirror://sourceforge/jal/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/jal/${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="x86"
 SLOT="0"

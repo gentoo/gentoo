@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A very simple csv (comma-separated values) parser library for Java"
 HOMEPAGE="http://opencsv.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src-with-libs.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src-with-libs.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

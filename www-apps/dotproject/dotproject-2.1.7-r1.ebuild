@@ -6,7 +6,7 @@ inherit eutils webapp
 
 DESCRIPTION="dotProject is a PHP web-based project management framework"
 HOMEPAGE="http://www.dotproject.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 LICENSE="GPL-2"

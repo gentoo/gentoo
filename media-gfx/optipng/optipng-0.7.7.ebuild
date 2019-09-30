@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Compress PNG files without affecting image quality"
 HOMEPAGE="http://optipng.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"

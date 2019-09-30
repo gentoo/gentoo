@@ -6,8 +6,8 @@ inherit toolchain-funcs
 
 DESCRIPTION="Portable Network Graphics (PNG) optimizing utility"
 HOMEPAGE="https://pmt.sourceforge.io/pngcrush/"
-SRC_URI="system-libs? ( mirror://sourceforge/pmt/${P}-nolib.tar.xz )
-	!system-libs? ( mirror://sourceforge/pmt/${P}.tar.xz )"
+SRC_URI="system-libs? ( https://download.sourceforge.net/pmt/${P}-nolib.tar.xz )
+	!system-libs? ( https://download.sourceforge.net/pmt/${P}.tar.xz )"
 
 LICENSE="pngcrush"
 SLOT="0"

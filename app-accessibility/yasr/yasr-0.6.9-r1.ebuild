@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="General-purpose console screen reader"
 HOMEPAGE="http://yasr.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

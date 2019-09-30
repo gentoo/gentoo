@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="A set of improved Artwiz fonts with bold and full ISO-8859-1 support"
 HOMEPAGE="http://artwiz-latin1.sourceforge.net/"
-SRC_URI="mirror://sourceforge/artwiz-latin1/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/artwiz-latin1/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT=0

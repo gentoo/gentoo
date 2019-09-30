@@ -6,7 +6,7 @@ inherit eutils flag-o-matic gnome2-utils
 
 DESCRIPTION="Beaver is an Early AdVanced EditoR"
 HOMEPAGE="http://beaver-editor.sourceforge.net/"
-SRC_URI="mirror://sourceforge/beaver-editor/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/beaver-editor/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

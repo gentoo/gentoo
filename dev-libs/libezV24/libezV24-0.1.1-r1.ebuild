@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="library that provides an easy API to Linux serial ports"
 HOMEPAGE="http://ezv24.sourceforge.net"
-SRC_URI="mirror://sourceforge/ezv24/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ezv24/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="netcat clone extended with twofish encryption"
 HOMEPAGE="http://farm9.org/Cryptcat/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-unix-${PV}.tar"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-unix-${PV}.tar"
 
 LICENSE="GPL-2"
 SLOT="0"

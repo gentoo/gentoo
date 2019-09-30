@@ -6,7 +6,7 @@ inherit eutils gnome2-utils
 
 DESCRIPTION="2D Racing Game"
 HOMEPAGE="http://trophy.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

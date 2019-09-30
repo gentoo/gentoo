@@ -7,7 +7,7 @@ inherit versionator
 
 DESCRIPTION="A makefile generation tool"
 HOMEPAGE="http://industriousone.com/premake"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-src-${PV}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-src-${PV}.zip"
 
 LICENSE="GPL-2"
 SLOT=$(get_major_version)

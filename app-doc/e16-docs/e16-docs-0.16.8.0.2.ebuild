@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="The E16 online help"
 HOMEPAGE="https://www.enlightenment.org https://sourceforge.net/projects/enlightenment/"
-SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/enlightenment/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

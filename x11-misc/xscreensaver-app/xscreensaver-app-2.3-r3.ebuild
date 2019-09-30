@@ -10,7 +10,7 @@ MY_PN=${MY_PN/s/S}
 
 DESCRIPTION="XScreenSaver dockapp for the Window Maker window manager"
 HOMEPAGE="http://xscreensaverapp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/xscreensaverapp/${MY_PN}/${PV}/${MY_PN}-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/xscreensaverapp/${MY_PN}/${PV}/${MY_PN}-${PV}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

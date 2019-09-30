@@ -7,7 +7,7 @@ inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Dynamic compressor to amplify quiet parts of music"
 HOMEPAGE="http://vlevel.sourceforge.net/"
-SRC_URI="mirror://sourceforge/vlevel/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/vlevel/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

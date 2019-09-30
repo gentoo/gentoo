@@ -6,7 +6,7 @@ inherit desktop flag-o-matic toolchain-funcs gnome2-utils
 
 DESCRIPTION="Portable, Open Source NES emulator which is written mostly in C"
 HOMEPAGE="http://fakenes.sourceforge.net/"
-SRC_URI="mirror://sourceforge/fakenes/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/fakenes/${P}.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit eutils wxwidgets
 
 DESCRIPTION="C++ library to create, manipulate and render SVG files"
 HOMEPAGE="http://wxsvg.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="wxWinLL-3"
 SLOT="0/3" # based on SONAME of libwxsvg.so

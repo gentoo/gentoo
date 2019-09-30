@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="Virtual MIDI Piano Keyboard"
 HOMEPAGE="http://vmpk.sourceforge.net/"
-SRC_URI="mirror://sourceforge/vmpk/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/vmpk/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

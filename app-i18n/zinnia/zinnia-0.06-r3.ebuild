@@ -7,7 +7,7 @@ inherit autotools flag-o-matic perl-module toolchain-funcs
 
 DESCRIPTION="Zinnia - Online hand recognition system with machine learning"
 HOMEPAGE="https://taku910.github.io/zinnia/ https://github.com/taku910/zinnia https://sourceforge.net/projects/zinnia/"
-SRC_URI="mirror://sourceforge/zinnia/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/zinnia/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

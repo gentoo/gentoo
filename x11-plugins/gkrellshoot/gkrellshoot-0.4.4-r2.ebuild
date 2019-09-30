@@ -7,7 +7,7 @@ inherit gkrellm-plugin
 
 DESCRIPTION="GKrellm2 plugin to take screen shots and lock screen"
 HOMEPAGE="http://gkrellshoot.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gkrellshoot/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gkrellshoot/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"

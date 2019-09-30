@@ -6,7 +6,7 @@ inherit multilib
 
 DESCRIPTION="Wings 3D is an advanced subdivision modeler"
 HOMEPAGE="http://www.wings3d.com/"
-SRC_URI="mirror://sourceforge/wings/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/wings/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

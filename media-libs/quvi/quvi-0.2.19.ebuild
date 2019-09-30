@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="library for parsing video download links"
 HOMEPAGE="http://quvi.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PV:0:3}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PV:0:3}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

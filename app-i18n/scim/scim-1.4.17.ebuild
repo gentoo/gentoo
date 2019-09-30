@@ -6,7 +6,7 @@ inherit eutils flag-o-matic multilib gnome2-utils autotools qmake-utils
 
 DESCRIPTION="Smart Common Input Method (SCIM) is an Input Method (IM) development platform"
 HOMEPAGE="https://sourceforge.net/projects/scim"
-SRC_URI="mirror://sourceforge/scim/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/scim/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

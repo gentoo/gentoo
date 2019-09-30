@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A C library implementing a suite of algorithms to factor large integers"
 HOMEPAGE="https://sourceforge.net/projects/msieve/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/Msieve%20v${PV}/${PN}${PV/./}_src.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}/Msieve%20v${PV}/${PN}${PV/./}_src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

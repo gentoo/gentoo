@@ -7,7 +7,7 @@ inherit multilib
 
 DESCRIPTION="A PAM module that can mount volumes for a user session"
 HOMEPAGE="http://pam-mount.sourceforge.net"
-SRC_URI="mirror://sourceforge/pam-mount/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/pam-mount/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

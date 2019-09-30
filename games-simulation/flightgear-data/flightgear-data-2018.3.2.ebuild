@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="FlightGear data files"
 HOMEPAGE="http://www.flightgear.org/"
-SRC_URI="mirror://sourceforge/flightgear/FlightGear-${PV}-data.tar.bz2"
+SRC_URI="https://download.sourceforge.net/flightgear/FlightGear-${PV}-data.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

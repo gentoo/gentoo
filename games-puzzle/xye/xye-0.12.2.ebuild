@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Free version of the classic game Kye"
 HOMEPAGE="http://xye.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xye/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xye/${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"

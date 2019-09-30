@@ -6,7 +6,7 @@ inherit autotools toolchain-funcs gnome2-utils
 
 DESCRIPTION="Client for the nethack-style but more in the line of UO"
 HOMEPAGE="http://crossfire.real-time.com/"
-SRC_URI="mirror://sourceforge/crossfire/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/crossfire/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

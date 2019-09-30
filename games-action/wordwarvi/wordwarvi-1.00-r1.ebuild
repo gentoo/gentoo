@@ -7,7 +7,7 @@ inherit desktop
 
 DESCRIPTION="A retro side-scrolling shoot'em up based on the editor war story"
 HOMEPAGE="http://wordwarvi.sourceforge.net"
-SRC_URI="mirror://sourceforge/wordwarvi/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/wordwarvi/${P}.tar.gz"
 
 LICENSE="GPL-2 CC-BY-2.0 CC-BY-SA-3.0"
 SLOT="0"

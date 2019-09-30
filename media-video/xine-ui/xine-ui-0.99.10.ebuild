@@ -7,7 +7,7 @@ inherit autotools gnome2-utils xdg-utils
 
 DESCRIPTION="Xine movie player"
 HOMEPAGE="https://xine-project.org/home"
-SRC_URI="mirror://sourceforge/xine/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/xine/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="802.11b Wireless Packet Sniffer/WEP Cracker"
 HOMEPAGE="http://airsnort.shmoo.com/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

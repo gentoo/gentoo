@@ -11,7 +11,7 @@ MY_P=${P/m/M}-src
 
 DESCRIPTION="A drawing tool for 2D molecular structures"
 HOMEPAGE="http://molsketch.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/Molsketch/Beryllium-7%20${PV}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/${PN}/Molsketch/Beryllium-7%20${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

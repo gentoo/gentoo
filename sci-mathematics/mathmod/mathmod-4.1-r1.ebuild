@@ -6,7 +6,7 @@ inherit eutils gnome2-utils qmake-utils fdo-mime
 
 DESCRIPTION="Plot parametric and implicit surfaces"
 HOMEPAGE="https://www.facebook.com/pages/MathMod/529510253833102"
-SRC_URI="mirror://sourceforge/${PN}/${P}.src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.src.zip"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

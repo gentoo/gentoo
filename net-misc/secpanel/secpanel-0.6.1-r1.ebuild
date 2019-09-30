@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Graphical frontend for managing and running SSH and SCP connections"
 HOMEPAGE="https://themediahost.de/secpanel/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

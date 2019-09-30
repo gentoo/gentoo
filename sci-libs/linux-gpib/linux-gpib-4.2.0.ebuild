@@ -9,7 +9,7 @@ inherit readme.gentoo-r1 autotools perl-functions python-single-r1 toolchain-fun
 
 DESCRIPTION="Driver library for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="https://linux-gpib.sourceforge.io/"
-SRC_URI="mirror://sourceforge/linux-gpib/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/linux-gpib/${P}.tar.gz
 	firmware? ( https://linux-gpib.sourceforge.io/firmware/gpib_firmware-2006-11-12.tar.gz )
 "
 

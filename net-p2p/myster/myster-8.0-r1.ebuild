@@ -8,7 +8,7 @@ inherit java-pkg-2
 MY_PV=${PV/.0/}
 DESCRIPTION="Myster is a decentralized file sharing network"
 HOMEPAGE="http://www.mysternetworks.com/"
-SRC_URI="mirror://sourceforge/myster/Myster_PR${MY_PV}_Generic.zip"
+SRC_URI="https://download.sourceforge.net/myster/Myster_PR${MY_PV}_Generic.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

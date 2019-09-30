@@ -7,7 +7,7 @@ MY_PV=${PV/_}
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="GNU make replacement"
 HOMEPAGE="http://makepp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/2.1/${MY_P}.txz"
+SRC_URI="https://download.sourceforge.net/${PN}/2.1/${MY_P}.txz"
 
 LICENSE="GPL-2"
 SLOT="0"

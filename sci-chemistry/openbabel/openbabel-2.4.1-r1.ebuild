@@ -9,7 +9,7 @@ inherit cmake-utils desktop eutils wxwidgets
 DESCRIPTION="Interconverts file formats used in molecular modeling"
 HOMEPAGE="http://openbabel.org/wiki/Main_Page"
 SRC_URI="
-	mirror://sourceforge/openbabel/${P}.tar.gz
+	https://download.sourceforge.net/openbabel/${P}.tar.gz
 	https://openbabel.org/docs/dev/_static/babel130.png -> ${PN}.png
 "
 

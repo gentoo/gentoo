@@ -9,7 +9,7 @@ MY_PV=${PV/_/-}
 
 DESCRIPTION="Music player for a wide range of formats designed for gapless playback"
 HOMEPAGE="http://aqualung.jeremyevans.net/ https://github.com/jeremyevans/aqualung"
-SRC_URI="mirror://sourceforge/aqualung/${PN}-${MY_PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/aqualung/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

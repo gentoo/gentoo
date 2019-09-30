@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A virtual machine simulator based on a MIPS R3000 processor"
 HOMEPAGE="http://vmips.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

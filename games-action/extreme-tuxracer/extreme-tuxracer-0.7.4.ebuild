@@ -7,7 +7,7 @@ inherit autotools desktop gnome2-utils
 
 DESCRIPTION="High speed arctic racing game based on Tux Racer"
 HOMEPAGE="http://extremetuxracer.sourceforge.net/"
-SRC_URI="mirror://sourceforge/extremetuxracer/etr-${PV/_/}.tar.xz"
+SRC_URI="https://download.sourceforge.net/extremetuxracer/etr-${PV/_/}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

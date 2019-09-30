@@ -7,7 +7,7 @@ inherit autotools db-use
 
 DESCRIPTION="libhome is a library providing a getpwnam() emulation"
 HOMEPAGE="http://pll.sourceforge.net"
-SRC_URI="mirror://sourceforge/pll/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pll/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

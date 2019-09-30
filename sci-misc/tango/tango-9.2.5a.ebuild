@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Tango is an Open Source solution for SCADA and DCS"
 HOMEPAGE="https://www.tango-controls.org/"
-SRC_URI="mirror://sourceforge/tango-cs/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/tango-cs/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

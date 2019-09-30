@@ -9,7 +9,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Abstract shooter - defeat auto-created huge battleships"
 HOMEPAGE="http://www.asahi-net.or.jp/~cs8k-cyu/windows/rr_e.html
 	http://rrootage.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Cross-platform object-oriented scripting shell using the squirrel language"
 HOMEPAGE="http://squirrelsh.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

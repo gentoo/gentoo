@@ -6,7 +6,7 @@ inherit autotools eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="X Amateur Station Tracking and Information Reporting"
 HOMEPAGE="http://xastir.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit bash-completion-r1 eutils user
 
 DESCRIPTION="GEMBIRD SiS-PM control utility"
 HOMEPAGE="http://sispmctl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sispmctl/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sispmctl/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

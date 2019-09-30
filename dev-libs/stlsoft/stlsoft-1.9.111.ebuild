@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="Robust, Lightweight, Cross-platform, Template Software"
 HOMEPAGE="http://www.stlsoft.org/"
-SRC_URI="mirror://sourceforge/stlsoft/${P}-hdrs.zip"
+SRC_URI="https://download.sourceforge.net/stlsoft/${P}-hdrs.zip"
 
 LICENSE="BSD"
 SLOT="1.9"

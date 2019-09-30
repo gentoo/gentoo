@@ -9,7 +9,7 @@ MY_PN="${PN}_src"
 MY_P="${MY_PN}_${PV}"
 DESCRIPTION="The Host Bus Adapter API for managing Fibre Channel Host Bus Adapters"
 HOMEPAGE="http://hbaapi.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tgz
 	mirror://gentoo/${P}.Makefile.gz"
 
 LICENSE="SNIA"

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Text console based program for playing audio files"
 HOMEPAGE="http://www.mp3blaster.org/ http://mp3blaster.sourceforge.net/ https://github.com/stragulus/mp3blaster"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

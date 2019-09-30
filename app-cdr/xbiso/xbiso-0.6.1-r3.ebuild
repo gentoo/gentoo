@@ -6,7 +6,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Xbox xdvdfs ISO extraction utility"
 HOMEPAGE="https://sourceforge.net/projects/xbiso/"
-SRC_URI="mirror://sourceforge/xbiso/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xbiso/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -11,8 +11,8 @@ ITCL_MY_P="itcl3.2.1"
 DESCRIPTION="Widget collection for incrTcl/incrTk"
 HOMEPAGE="http://incrtcl.sourceforge.net/itcl/"
 SRC_URI="
-	mirror://sourceforge/incrtcl/${MY_P}.tar.gz
-	mirror://sourceforge/incrtcl/${ITCL_MY_P}_src.tgz"
+	https://download.sourceforge.net/incrtcl/${MY_P}.tar.gz
+	https://download.sourceforge.net/incrtcl/${ITCL_MY_P}_src.tgz"
 
 LICENSE="HPND Old-MIT tcltk"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit autotools-utils distutils-r1 prefix eutils
 
 DESCRIPTION="CMU Speech Recognition engine"
 HOMEPAGE="http://cmusphinx.sourceforge.net/"
-SRC_URI="mirror://sourceforge/cmusphinx/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cmusphinx/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

@@ -10,7 +10,7 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="A SQL Server injection & takeover tool"
 HOMEPAGE="http://sqlninja.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

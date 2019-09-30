@@ -8,7 +8,7 @@ MY_P=${P/opensp/OpenSP}
 
 DESCRIPTION="A free, object-oriented toolkit for SGML parsing and entity management"
 HOMEPAGE="http://openjade.sourceforge.net/"
-SRC_URI="mirror://sourceforge/openjade/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/openjade/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

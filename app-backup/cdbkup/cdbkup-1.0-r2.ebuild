@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="performs full/incremental backups of local/remote filesystems onto CD-R(W)s"
 HOMEPAGE="http://cdbkup.sourceforge.net/"
-SRC_URI="mirror://sourceforge/cdbkup/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cdbkup/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

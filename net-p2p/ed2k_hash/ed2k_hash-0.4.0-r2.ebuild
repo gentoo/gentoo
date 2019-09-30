@@ -7,7 +7,7 @@ inherit flag-o-matic
 DESCRIPTION="Tool for generating eDonkey2000 links"
 HOMEPAGE="http://ed2k-tools.sourceforge.net/ed2k_hash.shtml"
 RESTRICT="mirror"
-SRC_URI="mirror://sourceforge/ed2k-tools/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ed2k-tools/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

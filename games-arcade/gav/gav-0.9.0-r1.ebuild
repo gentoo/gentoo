@@ -7,7 +7,7 @@ inherit desktop
 DESCRIPTION="GPL Arcade Volleyball"
 HOMEPAGE="http://gav.sourceforge.net/"
 # the themes are behind a lame php-counter script.
-SRC_URI="mirror://sourceforge/gav/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/gav/${P}.tar.gz
 	mirror://gentoo/fabeach.tgz
 	mirror://gentoo/florindo.tgz
 	mirror://gentoo/inverted.tgz

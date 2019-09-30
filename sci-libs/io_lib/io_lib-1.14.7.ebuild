@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="General purpose trace and experiment file reading/writing interface"
 HOMEPAGE="http://staden.sourceforge.net/"
-SRC_URI="mirror://sourceforge/staden/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/staden/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/11"

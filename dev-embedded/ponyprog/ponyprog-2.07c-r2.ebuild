@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Serial device programmer"
 HOMEPAGE="http://www.lancos.com/ppwin95.html"
-SRC_URI="mirror://sourceforge/${PN}/Pony_Prog2000-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/Pony_Prog2000-${PV}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

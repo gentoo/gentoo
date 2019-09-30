@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A small, extremely fast XML parser for Java"
 HOMEPAGE="http://piccolo.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"

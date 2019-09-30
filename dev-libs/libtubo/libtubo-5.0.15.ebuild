@@ -8,7 +8,7 @@ MY_P=${PN}0-${PV}
 
 DESCRIPTION="small and simple interprocess communication library"
 HOMEPAGE="http://xffm.org/libtubo"
-SRC_URI="mirror://sourceforge/xffm/${PN}/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/xffm/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

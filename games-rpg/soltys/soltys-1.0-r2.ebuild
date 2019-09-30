@@ -6,10 +6,10 @@ inherit eutils
 
 DESCRIPTION="Classic adventure game"
 HOMEPAGE="https://wiki.scummvm.org/index.php/Soltys"
-SRC_URI="l10n_en? ( mirror://sourceforge/scummvm/${PN}-en-v${PV}.zip )
-	l10n_es? ( mirror://sourceforge/scummvm/${PN}-es-v${PV}.zip )
-	l10n_pl? ( mirror://sourceforge/scummvm/${PN}-pl-v${PV}.zip )
-	!l10n_en? ( !l10n_es? ( !l10n_pl? ( mirror://sourceforge/scummvm/${PN}-en-v${PV}.zip ) ) )
+SRC_URI="l10n_en? ( https://download.sourceforge.net/scummvm/${PN}-en-v${PV}.zip )
+	l10n_es? ( https://download.sourceforge.net/scummvm/${PN}-es-v${PV}.zip )
+	l10n_pl? ( https://download.sourceforge.net/scummvm/${PN}-pl-v${PV}.zip )
+	!l10n_en? ( !l10n_es? ( !l10n_pl? ( https://download.sourceforge.net/scummvm/${PN}-en-v${PV}.zip ) ) )
 	http://www.scummvm.org/images/cat-soltys.png"
 
 LICENSE="Soltys"

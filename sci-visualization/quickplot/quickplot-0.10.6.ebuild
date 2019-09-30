@@ -9,7 +9,7 @@ inherit autotools-utils eutils
 
 DESCRIPTION="A fast interactive 2D plotter"
 HOMEPAGE="http://quickplot.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-3"

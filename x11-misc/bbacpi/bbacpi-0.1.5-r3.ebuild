@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="ACPI monitor for X11"
 HOMEPAGE="http://bbacpi.sourceforge.net"
-SRC_URI="mirror://sourceforge/bbacpi/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/bbacpi/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

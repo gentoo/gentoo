@@ -9,7 +9,7 @@ inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files"
 HOMEPAGE="http://atomicparsley.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

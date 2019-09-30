@@ -9,7 +9,7 @@ MY_PN=${PN/c/C}
 
 DESCRIPTION="3D and open source chess game"
 HOMEPAGE="http://pouetchess.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_src_${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}_src_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

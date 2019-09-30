@@ -15,7 +15,7 @@ MY_P="pyFltk-${PV}_py3"
 
 DESCRIPTION="Python interface to Fltk library"
 HOMEPAGE="http://pyfltk.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz -> ${MY_PN}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz -> ${MY_PN}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

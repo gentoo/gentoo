@@ -7,7 +7,7 @@ inherit qmake-utils
 
 DESCRIPTION="Library for displaying values on a polar coordinate system"
 HOMEPAGE="http://qwtpolar.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="qwt"
 SLOT="0"

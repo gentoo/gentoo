@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Extra preferences that are desired but are not worthy for Pidgin"
 HOMEPAGE="http://gaim-extprefs.sourceforge.net"
-SRC_URI="mirror://sourceforge/gaim-extprefs/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gaim-extprefs/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

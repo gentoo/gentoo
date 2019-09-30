@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs
 DESCRIPTION="Tool to convert simple XML to a variety of formats (pdf, html, txt, manpage)"
 
 HOMEPAGE="http://xml2doc.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 IUSE=""

@@ -11,7 +11,7 @@ else
 	MY_PN="VirtualGL"
 	MY_P="${MY_PN}-${PV}"
 	S="${WORKDIR}/${MY_P}"
-	SRC_URI="mirror://sourceforge/project/${PN}/${PV}/${MY_P}.tar.gz"
+	SRC_URI="https://download.sourceforge.net/project/${PN}/${PV}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 

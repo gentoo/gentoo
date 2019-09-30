@@ -10,7 +10,7 @@ MY_P=${PN}-v${MY_PV}
 
 DESCRIPTION="Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting"
 HOMEPAGE="http://ebtables.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 KEYWORDS="amd64 ppc x86"
 IUSE="static"

@@ -8,7 +8,7 @@ inherit font
 MY_PN="wqy-bitmapsong"
 DESCRIPTION="WenQuanYi Bitmap Song CJK font"
 HOMEPAGE="http://wenq.org/wqy2/index.cgi?Home"
-SRC_URI="mirror://sourceforge/wqy/${MY_PN}-pcf-${PV/_rc/-RC}.tar.gz"
+SRC_URI="https://download.sourceforge.net/wqy/${MY_PN}-pcf-${PV/_rc/-RC}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

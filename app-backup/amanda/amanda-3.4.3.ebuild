@@ -6,7 +6,7 @@ inherit autotools perl-module user systemd
 
 DESCRIPTION="The Advanced Maryland Automatic Network Disk Archiver"
 HOMEPAGE="http://www.amanda.org/"
-SRC_URI="mirror://sourceforge/amanda/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/amanda/${P}.tar.gz"
 
 LICENSE="HPND BSD BSD-2 GPL-2+ GPL-3+"
 SLOT="0"

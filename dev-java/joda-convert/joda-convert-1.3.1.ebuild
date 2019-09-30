@@ -8,7 +8,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Java library for conversion between Object and String"
 HOMEPAGE="http://www.joda.org/joda-convert/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-dist.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-dist.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

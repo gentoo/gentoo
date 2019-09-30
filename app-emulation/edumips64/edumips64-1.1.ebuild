@@ -10,7 +10,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="A visual and cross-platform MIPS64 CPU Simulator"
 HOMEPAGE="https://www.edumips.org"
 SLOT="0"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

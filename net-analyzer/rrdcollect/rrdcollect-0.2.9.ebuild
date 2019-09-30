@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Read system statistical data and feed it to RRDtool"
 HOMEPAGE="http://rrdcollect.sourceforge.net/"
-SRC_URI="mirror://sourceforge/rrdcollect/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/rrdcollect/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ GENTOO_THEME_VERSION="2.1"
 
 DESCRIPTION="A DirectFB getty replacement"
 HOMEPAGE="http://qingy.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2
 	mirror://gentoo/${PN}-gentoo-theme-${GENTOO_THEME_VERSION}.tar.bz2
 	https://dev.gentoo.org/~gienah/2big4tree/sys-apps/qingy/${P}-screensavers.patch.gz
 	https://dev.gentoo.org/~gienah/2big4tree/sys-apps/qingy/${P}-consolekit-pam.patch.gz"

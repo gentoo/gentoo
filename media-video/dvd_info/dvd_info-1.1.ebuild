@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="DVD utilities to print information, copy tracks, etc."
 HOMEPAGE="https://github.com/beandog/dvd_info"
-SRC_URI="mirror://sourceforge/dvdinfo/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dvdinfo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

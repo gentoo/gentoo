@@ -7,7 +7,7 @@ inherit versionator eutils
 
 DESCRIPTION="A makefile generation tool"
 HOMEPAGE="http://industriousone.com/premake"
-SRC_URI="mirror://sourceforge/premake/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/premake/${P}-src.zip"
 
 LICENSE="BSD"
 SLOT=$(get_major_version)

@@ -9,7 +9,7 @@ inherit eutils flag-o-matic python-single-r1
 
 DESCRIPTION="Tool for generic packet injection on 802.11"
 HOMEPAGE="http://airpwn.sf.net"
-SRC_URI="mirror://sourceforge/airpwn/$P.tgz"
+SRC_URI="https://download.sourceforge.net/airpwn/$P.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

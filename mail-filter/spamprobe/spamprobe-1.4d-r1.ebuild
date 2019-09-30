@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Fast, intelligent, automatic spam detector using Bayesian analysis"
 HOMEPAGE="http://spamprobe.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="QPL"
 SLOT="0"

@@ -27,7 +27,7 @@
 #
 # DESCRIPTION="Foo bar application"
 # HOMEPAGE="http://example.org/foo/"
-# SRC_URI="mirror://sourceforge/foo/${P}.tar.bz2"
+# SRC_URI="https://download.sourceforge.net/foo/${P}.tar.bz2"
 #
 # LICENSE="LGPL-2.1"
 # KEYWORDS=""

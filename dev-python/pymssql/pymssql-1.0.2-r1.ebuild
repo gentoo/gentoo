@@ -8,7 +8,7 @@ inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Simple MSSQL python extension module"
 HOMEPAGE="http://www.pymssql.org/en/stable/ https://pypi.org/project/pymssql/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

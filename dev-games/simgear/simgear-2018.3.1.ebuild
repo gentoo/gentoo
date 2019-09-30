@@ -7,7 +7,7 @@ inherit cmake-utils toolchain-funcs
 
 DESCRIPTION="Development library for simulation games"
 HOMEPAGE="http://www.simgear.org/"
-SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/flightgear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

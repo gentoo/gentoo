@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4"
 HOMEPAGE="http://ogmrip.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ogmrip/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ogmrip/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

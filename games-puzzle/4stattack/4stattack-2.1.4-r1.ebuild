@@ -8,7 +8,7 @@ inherit eutils python-single-r1
 
 DESCRIPTION="Connect-4 game, single or network multiplayer"
 HOMEPAGE="http://forcedattack.sourceforge.net/"
-SRC_URI="mirror://sourceforge/forcedattack/4stAttack-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/forcedattack/4stAttack-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

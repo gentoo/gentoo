@@ -13,8 +13,8 @@ MY_P="${P/_/}"
 DESCRIPTION="Python library for creating 3D images"
 HOMEPAGE="http://cgkit.sourceforge.net"
 SRC_URI="
-	$(python_gen_cond_dep mirror://sourceforge/${PN}/${PN}/${P}/${P}-py2k.tar.gz 'python2*')
-	$(python_gen_cond_dep mirror://sourceforge/${PN}/${PN}/${P}/${P}-py3k.tar.gz 'python3*')"
+	$(python_gen_cond_dep https://download.sourceforge.net/${PN}/${PN}/${P}/${P}-py2k.tar.gz 'python2*')
+	$(python_gen_cond_dep https://download.sourceforge.net/${PN}/${PN}/${P}/${P}-py3k.tar.gz 'python3*')"
 
 LICENSE="LGPL-2.1 MPL-1.1 GPL-2"
 SLOT="0"
