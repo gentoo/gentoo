@@ -8,7 +8,7 @@ inherit autotools python-single-r1 readme.gentoo-r1 systemd udev multilib-minima
 
 DESCRIPTION="Bluetooth Tools and System Daemons for Linux"
 HOMEPAGE="http://www.bluez.org"
-SRC_URI="mirror://kernel/linux/bluetooth/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/bluetooth/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/3"
