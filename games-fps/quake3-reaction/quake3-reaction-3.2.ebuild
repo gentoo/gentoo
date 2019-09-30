@@ -11,8 +11,8 @@ inherit games games-mods
 
 HOMEPAGE="http://www.rq3.com/"
 SRC_URI="
-	mirror://quakeunity/modifications/reactionquake3/ReactionQuake3-v3.1-Full.zip
-	mirror://quakeunity/modifications/reactionquake3/ReactionQuake3-v3.2-Update.zip
+	https://www.mirrorservice.org/sites/quakeunity.com/modifications/reactionquake3/ReactionQuake3-v3.1-Full.zip
+	https://www.mirrorservice.org/sites/quakeunity.com/modifications/reactionquake3/ReactionQuake3-v3.2-Update.zip
 	"
 
 LICENSE="all-rights-reserved"
