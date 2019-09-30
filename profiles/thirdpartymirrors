@@ -22,7 +22,6 @@ openbsd		https://cdn.openbsd.org/pub/OpenBSD https://cloudflare.cdn.openbsd.org/
 openssl		https://artfiles.org/openssl.org/ https://www.mirrorservice.org/sites/ftp.openssl.org/ ftp://ftp.openssl.org
 pypi		https://pypi.org/packages/source https://files.pythonhosted.org/packages/source
 qmail		https://qmail.geto.net/ https://qmail-mirror.jms1.net/ http://qmail.pandakc.com/ http://qmail.glasswings.com.au/ http://qmail.ii.net/ http://qmail.teraren.com/ http://qmail.mirror.cdnetworks.com/ https://qmail.yongbok.net/ https://qmail.mirror.choon.net/ http://qmail.cbox.biz/ http://qmail.cbox.biz/ http://qmail.mirrors.ovh.net/ftp.qmail.org/ http://qmail.rasjonell.net/ http://mirrors.ntua.gr/qmail/ http://qmail.cti.gr/ http://qmail.dnsbeans.com/ http://qmail.hypergrid.it/ http://qmail.omnis.ch/ http://qmail.linorg.usp.br/ http://qmail.cavsystems.net/ https://qmail.mivzakim.net/ http://qmail.mirror.rise.ph/
-quakeunity	http://www.mirrorservice.org/sites/quakeunity.com
 rubygems	https://rubygems.org/gems
 ruby		https://cache.ruby-lang.org/pub/ruby/ ftp://ftp.fu-berlin.de/unix/languages/ruby/
 samba		https://download.samba.org/pub/samba/ https://ftp.cc.uoc.gr/mirrors/samba
