@@ -3969,7 +3969,6 @@ mail-filter/amavisd-new:rspamd - Add support for mail-filter/rspamd extension (H
 mail-filter/amavisd-new:rspamd-https - Add support for mail-filter/rspamd extension (both HTTP and HTTPS)
 mail-filter/amavisd-new:spamassassin - Add support for mail-filter/spamassassin
 mail-filter/amavisd-new:zmq - Add support for zeromq sockets
-mail-filter/ask:procmail - Adds support for mail-filter/procmail
 mail-filter/bogofilter:tokyocabinet - Enable Tokyo Cabinet database support
 mail-filter/clamassassin:clamd - Use the app-antivirus/clamav daemon for virus checking
 mail-filter/clamassassin:subject-rewrite - Adds support for subject rewriting
@@ -4000,35 +3999,6 @@ mail-filter/opendkim:stats - Add support for statistics (requires 'opendbx' flag
 mail-filter/opendkim:unbound - Use the unbound dnssec library to perform DKIM DNS queries.
 mail-filter/opendmarc:reports - Install the reports binaries: expire, import, reports, params
 mail-filter/opendmarc:spf - Use the mail-filter/libspf2 for Sender Policy Framework checking
-mail-filter/opensmtpd-extras:filter-clamav - filter for scanning with app-antivirus/clamav
-mail-filter/opensmtpd-extras:filter-dkim-signer - filter for adding DKIM signatures to outgoing messages
-mail-filter/opensmtpd-extras:filter-dnsbl - filter for checking hosts against the DNS black lists
-mail-filter/opensmtpd-extras:filter-lua - filter for interfacing with dev-lang/lua
-mail-filter/opensmtpd-extras:filter-monkey - filter for arbitrarily rejecting random emails
-mail-filter/opensmtpd-extras:filter-pause - filter to pause on new connections
-mail-filter/opensmtpd-extras:filter-perl - filter for interfacing with dev-lang/perl
-mail-filter/opensmtpd-extras:filter-python - filter for interfacing with dev-lang/python
-mail-filter/opensmtpd-extras:filter-regex - filter for regular expression matching
-mail-filter/opensmtpd-extras:filter-spamassassin - filter for scanning with mail-filter/spamassassin
-mail-filter/opensmtpd-extras:filter-stub - stub filter
-mail-filter/opensmtpd-extras:filter-trace - trace filter
-mail-filter/opensmtpd-extras:filter-void - void filter
-mail-filter/opensmtpd-extras:queue-null - null queue
-mail-filter/opensmtpd-extras:queue-python - queue for interfacing with dev-lang/python
-mail-filter/opensmtpd-extras:queue-ram - ram queue
-mail-filter/opensmtpd-extras:queue-stub - stub queue
-mail-filter/opensmtpd-extras:scheduler-python - schedulre for interfacing with python
-mail-filter/opensmtpd-extras:scheduler-ram - ram scheduler
-mail-filter/opensmtpd-extras:scheduler-stub - stub scheduler
-mail-filter/opensmtpd-extras:table-ldap - table for lookups with net-nds/openldap
-mail-filter/opensmtpd-extras:table-mysql - table for lookups with virtual/mysql
-mail-filter/opensmtpd-extras:table-passwd - table for lookups using /etc/passwd
-mail-filter/opensmtpd-extras:table-postgres - table for lookups with dev-db/postgresql
-mail-filter/opensmtpd-extras:table-python - table for interfacing with dev-lang/python
-mail-filter/opensmtpd-extras:table-redis - table for lookups with dev-db/redis
-mail-filter/opensmtpd-extras:table-socketmap - table for lookups using a socket map
-mail-filter/opensmtpd-extras:table-sqlite - table for lookups with dev-db/sqlite3
-mail-filter/opensmtpd-extras:table-stub - stub table
 mail-filter/postfwd:tools - Install additional tools for testing postfwd
 mail-filter/postgrey:targrey - Enables the targrey patch
 mail-filter/rmilter:dkim - Enable support for DomainKeys Identified Mail
