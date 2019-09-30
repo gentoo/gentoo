@@ -7,12 +7,12 @@ inherit eutils desktop xdg-utils
 
 DESCRIPTION="A top-down shooter with a touch of RPG"
 HOMEPAGE="https://crimsonland.com/"
-SRC_URI="Crimsonland-Linux-x86-${PV}.tar
-	https://dev.gentoo.org/~chewi/distfiles/${PN}.png"
+SRC_URI="Crimsonland-Linux-x86-${PV}.tar"
+#	https://dev.gentoo.org/~chewi/distfiles/${PN}.png"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-RESTRICT="bindist mirror splitdebug"
+RESTRICT="bindist fetch splitdebug"
 
 RDEPEND="
 	media-libs/libsdl2[abi_x86_32,opengl,video]
@@ -40,8 +40,8 @@ src_install() {
 
 	dodoc README.txt
 
-	doicon -s 64 "${DISTDIR}"/${PN}.png
-	make_desktop_entry ${PN} Crimsonland
+#	doicon -s 64 "${DISTDIR}"/${PN}.png
+	make_desktop_entry ${PN} Crimsonland applications-games
 }
 
 pkg_postinst() { xdg_icon_cache_update; }
