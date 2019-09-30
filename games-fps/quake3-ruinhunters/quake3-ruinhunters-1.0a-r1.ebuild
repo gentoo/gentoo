@@ -10,8 +10,8 @@ inherit games games-mods
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="
-	mirror://quakeunity/modifications/ruinhunters/ruin_hunters_v10.zip
-	mirror://quakeunity/modifications/ruinhunters/ruin_hunters_v10a_patch.zip"
+	https://www.mirrorservice.org/sites/quakeunity.com/modifications/ruinhunters/ruin_hunters_v10.zip
+	https://www.mirrorservice.org/sites/quakeunity.com/modifications/ruinhunters/ruin_hunters_v10a_patch.zip"
 
 LICENSE="freedist"
 KEYWORDS="~amd64 ~x86"
