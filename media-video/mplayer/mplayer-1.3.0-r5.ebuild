@@ -71,8 +71,8 @@ RDEPEND+="
 	dga? ( x11-libs/libXxf86dga )
 	dts? ( media-libs/libdca )
 	dv? ( media-libs/libdv )
-	dvd? ( >=media-libs/libdvdread-4.1.3 )
-	dvdnav? ( >=media-libs/libdvdnav-4.1.3 )
+	dvd? ( >=media-libs/libdvdread-4.1.3:0= )
+	dvdnav? ( >=media-libs/libdvdnav-4.1.3:0= )
 	encode? (
 		!twolame? ( toolame? ( media-sound/toolame ) )
 		twolame? ( media-sound/twolame )

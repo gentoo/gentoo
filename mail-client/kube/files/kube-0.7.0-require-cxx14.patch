@@ -1,0 +1,36 @@
+From c38edcfe12b68585641eb925321067e3db811766 Mon Sep 17 00:00:00 2001
+From: Christian Mollekopf <mollekopf@kolabsys.com>
+Date: Tue, 18 Sep 2018 20:51:54 +0200
+Subject: [PATCH] Properly require c++ 14
+
+---
+ extensions/api/src/CMakeLists.txt | 3 ++-
+ framework/src/CMakeLists.txt      | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/extensions/api/src/CMakeLists.txt b/extensions/api/src/CMakeLists.txt
+index 051fec3c..45cd08ce 100644
+--- a/extensions/api/src/CMakeLists.txt
++++ b/extensions/api/src/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ set(CMAKE_CXX_VISIBILITY_PRESET default)
+-set(CMAKE_CXX_STANDARD_REQUIRED 14)
++set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ find_package(Qt5 COMPONENTS REQUIRED Core Concurrent Quick Qml WebEngineWidgets Test WebEngine Gui)
+ find_package(KF5Mime 4.87.0 CONFIG REQUIRED)
+diff --git a/framework/src/CMakeLists.txt b/framework/src/CMakeLists.txt
+index 67512c6e..b29ef059 100644
+--- a/framework/src/CMakeLists.txt
++++ b/framework/src/CMakeLists.txt
+@@ -11,7 +11,8 @@ find_package(KF5Contacts CONFIG REQUIRED)
+ include(GenerateExportHeader)
+ 
+ set(CMAKE_CXX_VISIBILITY_PRESET default)
+-set(CMAKE_CXX_STANDARD_REQUIRED 14)
++set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ include_directories(. domain/mime/mimetreeparser domain/ domain/mime)
+ 

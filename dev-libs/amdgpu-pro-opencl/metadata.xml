@@ -5,10 +5,4 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
-	<longdescription lang="en">
-		This package contains the libraries necessary to enable OpenCL support
-		on AMD GPUs supported by the amdgpu driver. The libraries themselves
-		are part of the proprietary AMDGPU-Pro suite but work fine with the
-		free amdgpu driver stack.
-	</longdescription>
 </pkgmetadata>

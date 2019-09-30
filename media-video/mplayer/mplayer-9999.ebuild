@@ -71,8 +71,8 @@ RDEPEND+="
 	dga? ( x11-libs/libXxf86dga )
 	dts? ( media-libs/libdca )
 	dv? ( media-libs/libdv )
-	dvd? ( >=media-libs/libdvdread-4.1.3 )
-	dvdnav? ( >=media-libs/libdvdnav-4.1.3 )
+	dvd? ( >=media-libs/libdvdread-4.1.3:0= )
+	dvdnav? ( >=media-libs/libdvdnav-4.1.3:0= )
 	encode? (
 		!twolame? ( toolame? ( media-sound/toolame ) )
 		twolame? ( media-sound/twolame )
@@ -329,8 +329,6 @@ src_configure() {
 	# DVB / Video4Linux / Radio support #
 	#####################################
 	myconf+=" --disable-tv-bsdbt848"
-	# broken upstream, won't work with recent kernels
-	myconf+=" --disable-ivtv"
 	# gone since linux-headers-2.6.38
 	myconf+=" --disable-tv-v4l1"
 	if { use dvb || use v4l || use pvr || use radio; }; then

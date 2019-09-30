@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="app-i18n/opencc:=
 	dev-cpp/glog:=
 	dev-cpp/yaml-cpp:=
-	<dev-libs/boost-1.69:=[threads]
+	<dev-libs/boost-1.69:=[nls,threads]
 	dev-libs/leveldb:=
 	dev-libs/marisa:="
 DEPEND="${RDEPEND}

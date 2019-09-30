@@ -65,5 +65,5 @@ multilib_src_test() {
 multilib_src_install() {
 	meson_src_install
 
-	rm -rf ${D}/usr/share/doc/waffle1
+	rm -rf "${D}"/usr/share/doc/waffle1
 }

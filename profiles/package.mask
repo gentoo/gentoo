@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2019-09-28)
+# Merged into Mesa. No reverse dependencies. Bug #654464
+# Removal in 30 days
+media-libs/libtxc_dxtn
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-09-28)
 # ppc64/ia64 binary-only package was needed to workaround
 # gcc-3.3 bugs. Should not be needed anymore. To be removed
@@ -134,10 +139,6 @@ sci-chemistry/azara
 # Removal in 30 days.  Bug #683724.
 app-admin/systemrescuecd-x86
 sys-boot/systemrescuecd-x86-grub
-
-# Matt Turner <mattst88@gentoo.org> (2019-09-03)
-# Broken. Bug #694774
->=media-libs/freeglut-3.2.0
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-17)
 # Unmaintained EAPI 0 Apache modules + mod_access_dnsbl as a revdep.
@@ -1104,33 +1105,6 @@ games-strategy/netpanzer
 # Removal in 30 days.  Bug #693256.
 dev-embedded/jtag
 
-# Joonas Niilola <juippis@gentoo.org> (2019-08-31)
-# No maintainer and no one stepped in to take it after a mailing 
-# list announcement. Has QA issues and continuous CI issues. Removal 
-# in 30 days.
-# Bugs: #690784, #691376, #693184
-app-misc/pip3line
-
-# Michał Górny <mgorny@gentoo.org> (2019-08-31)
-# Unmaintained.  EAPI 0 ebuilds with multiple QA issues.  Last release
-# added in 2003.  Upstream removed all traces of it.
-# Removal in 30 days.  Bug #693186.
-www-apache/mod_pcgi2
-www-apps/pcgi
-
-# Michał Górny <mgorny@gentoo.org> (2019-08-30)
-# All current releases are incompatible with the current version
-# of mail-mta/opensmtpd.  Not touched by maintainer since 2016.  Some
-# USE flag combinations fail to build with other errors.  Needs porting
-# to new Python eclasses.
-# Removal in 30 days.  Bug #693128.
-mail-filter/opensmtpd-extras
-
-# Michał Górny <mgorny@gentoo.org> (2019-08-30)
-# Unmaintained.  EAPI=0.  HOMEPAGE and SRC_URI are gone.  Last release
-# in 2006.  Removal in 30 days.  Bug #680412.
-mail-filter/ask
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.24
@@ -1138,12 +1112,6 @@ mail-filter/ask
 # Mart Raudsepp <leio@gentoo.org> (2019-08-18)
 # Fails to dbus activate properly for me. Help welcome figuring it out.
 net-misc/gnome-remote-desktop
-
-# Mike Gilbert <floppym@gentoo.org> (2019-08-13)
-# Dev channel releases are only for people who
-# are developers or want more experimental features
-# and accept a more unstable release.
->=www-client/chromium-78
 
 # Mart Raudsepp <leio@gentoo.org> (2019-07-28)
 # GNOME 3.33 development release packages
@@ -1363,7 +1331,6 @@ x11-drivers/xf86-video-voodoo
 # users, so let's keep them masked until somebody figures out what's
 # wrong.  Bug #647964.
 ~app-portage/gemato-14.1m
-~app-portage/gemato-14.0m
 ~app-portage/gemato-9999m
 
 # Kent Fredric <kentnl@gentoo.org> (2018-05-27)
@@ -1401,6 +1368,7 @@ sys-devel/automake:1.6
 sys-devel/automake:1.7
 sys-devel/automake:1.8
 sys-devel/automake:1.9
+sys-devel/automake:1.10
 
 # Kent Fredric <kentnl@gentoo.org> (2017-10-11)
 # This package should now be provided entirely by dev-lang/perl,

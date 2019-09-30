@@ -36,3 +36,8 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	"
+
+src_prepare(){
+	[ -d depends ] && rm -rf depends || die
+	cmake-utils_src_prepare
+}

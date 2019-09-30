@@ -10,7 +10,7 @@ MY_P="ImageMagick-${MY_PV}"
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
 HOMEPAGE="https://www.imagemagick.org/"
-SRC_URI="mirror://${PN}/${MY_P}.tar.xz"
+SRC_URI="mirror://imagemagick/${MY_P}.tar.xz"
 
 LICENSE="imagemagick"
 SLOT="0/${PV}"

@@ -66,10 +66,6 @@ app-doc/doxygen clang doxysearch doc
 # virtual/opengl and media-libs/freeglut not stable yet
 media-libs/libwebp opengl
 
-# Mart Raudsepp <leio@gentoo.org> (2018-05-06)
-# No media-libs/freeglut and co stable yet
-media-libs/jasper opengl
-
 # Mart Raudsepp <leio@gentoo.org> (2018-05-04)
 # sci-libs/mpir fails tests, bug 640424
 dev-python/gmpy mpir

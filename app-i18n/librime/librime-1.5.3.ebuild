@@ -30,7 +30,7 @@ BDEPEND=""
 RDEPEND="app-i18n/opencc:0=
 	dev-cpp/glog:0=
 	dev-cpp/yaml-cpp:0=
-	dev-libs/boost:0=[threads]
+	dev-libs/boost:0=[nls,threads]
 	dev-libs/leveldb:0=
 	dev-libs/marisa:0="
 DEPEND="${RDEPEND}
@@ -50,7 +50,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local -x CXXFLAGS="${CXXFLAGS} -I/usr/include/utf8cpp"
+	local -x CXXFLAGS="${CXXFLAGS} -I${ESYSROOT}/usr/include/utf8cpp"
 
 	local mycmakeargs=(
 		-DBOOST_USE_CXX11=ON

@@ -13,7 +13,7 @@ SRC_URI="http://www.physik.fu-berlin.de/%7Edhansen/mldonkey/files/${MY_P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc ~x86"
 
 S="${WORKDIR}/${MY_P}"
 ELISP_PATCHES="${P}-vd.patch ${P}-emacs-26.patch"
