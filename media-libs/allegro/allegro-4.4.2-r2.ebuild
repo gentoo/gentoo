@@ -62,9 +62,9 @@ src_configure() {
 	# WANT_EXAMPLES doesn't install anything
 	local mycmakeargs=(
 		-DDOCDIR=share/doc
-		-DINFODIR=share/info
 		-DMANDIR=share/man
 		-DWANT_ALSA=$(usex alsa)
+		-DWANT_DOCS_INFO=OFF
 		-DWANT_EXAMPLES=OFF
 		-DWANT_JACK=$(usex jack)
 		-DWANT_JPGALLEG=$(usex jpeg)
