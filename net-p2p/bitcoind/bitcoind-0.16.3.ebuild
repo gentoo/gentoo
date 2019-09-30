@@ -20,7 +20,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc x86 ~amd64-linux ~x86-linux"
-IUSE="+asm +bitcoin_policy_rbf examples knots libressl test upnp +wallet zeromq"
+IUSE="+asm examples knots libressl test upnp +wallet zeromq"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -51,14 +51,9 @@ pkg_pretend() {
 		elog "For more information, see:"
 		elog "https://bitcoincore.org/en/2018/09/18/release-${PV}/"
 	fi
-	if use bitcoin_policy_rbf; then
-		elog "Replace By Fee policy is enabled: Your node will preferentially mine and"
-		elog "relay transactions paying the highest fee, regardless of receive order."
-	else
-		elog "Replace By Fee policy is disabled: Your node will only accept the first"
-		elog "transaction seen consuming a conflicting input, regardless of fee"
-		elog "offered by later ones."
-	fi
+	elog "Replace By Fee policy is now always enabled by default: Your node will"
+	elog "preferentially mine and relay transactions paying the highest fee, regardless"
+	elog "of receive order. To disable RBF, set mempoolreplacement=never in bitcoin.conf"
 }
 
 pkg_setup() {
@@ -81,10 +76,6 @@ src_prepare() {
 	fi
 
 	eapply_user
-
-	if ! use bitcoin_policy_rbf; then
-		sed -i 's/\(DEFAULT_ENABLE_REPLACEMENT = \)true/\1false/' src/validation.h || die
-	fi
 
 	echo '#!/bin/true' >share/genbuild.sh || die
 	mkdir -p src/obj || die
