@@ -8,7 +8,7 @@ inherit flag-o-matic multilib toolchain-funcs usr-ldscript
 DESCRIPTION="Standard EXT2/EXT3/EXT4 filesystem utilities"
 HOMEPAGE="http://e2fsprogs.sourceforge.net/"
 SRC_URI="mirror://sourceforge/e2fsprogs/${P}.tar.xz
-	mirror://kernel/linux/kernel/people/tytso/e2fsprogs/v${PV}/${P}.tar.xz
+	https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${PV}/${P}.tar.xz
 	elibc_mintlib? ( mirror://gentoo/${PN}-1.42.9-mint-r1.patch.xz )"
 
 LICENSE="GPL-2 BSD"
