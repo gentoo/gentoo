@@ -1,0 +1,79 @@
+diff --git a/runtime/device/device.hpp b/runtime/device/device.hpp
+index 9eb45b2..a721463 100644
+--- a/runtime/device/device.hpp
++++ b/runtime/device/device.hpp
+@@ -21,7 +21,7 @@
+ 
+ #if defined(WITH_LIGHTNING_COMPILER) && !defined(USE_COMGR_LIBRARY)
+ #include "caching/cache.hpp"
+-#include "driver/AmdCompiler.h"
++#include "AmdCompiler.h"
+ #endif  // defined(WITH_LIGHTNING_COMPILER) && ! defined(USE_COMGR_LIBRARY)
+ #include "acl.h"
+ 
+diff --git a/runtime/device/devprogram.cpp b/runtime/device/devprogram.cpp
+index 587e950..dc233f3 100644
+--- a/runtime/device/devprogram.cpp
++++ b/runtime/device/devprogram.cpp
+@@ -14,7 +14,7 @@
+ 
+ #if defined(WITH_LIGHTNING_COMPILER) || defined(USE_COMGR_LIBRARY)
+ #ifndef USE_COMGR_LIBRARY
+-#include "driver/AmdCompiler.h"
++#include "AmdCompiler.h"
+ #include "libraries.amdgcn.inc"
+ #include "opencl1.2-c.amdgcn.inc"
+ #include "opencl2.0-c.amdgcn.inc"
+diff --git a/runtime/device/devprogram.hpp b/runtime/device/devprogram.hpp
+index 68de7ba..8b91ba2 100644
+--- a/runtime/device/devprogram.hpp
++++ b/runtime/device/devprogram.hpp
+@@ -11,7 +11,7 @@
+ 
+ #if defined(WITH_LIGHTNING_COMPILER) || defined(USE_COMGR_LIBRARY)
+ #ifndef USE_COMGR_LIBRARY
+-#include "driver/AmdCompiler.h"
++#include "AmdCompiler.h"
+ #else
+ #include "amd_comgr.h"
+ #endif
+diff --git a/runtime/device/rocm/rocdevice.cpp b/runtime/device/rocm/rocdevice.cpp
+index 4cba9d7..7ab30ed 100644
+--- a/runtime/device/rocm/rocdevice.cpp
++++ b/runtime/device/rocm/rocdevice.cpp
+@@ -20,7 +20,7 @@
+ #include "device/rocm/rocvirtual.hpp"
+ #include "device/rocm/rocprogram.hpp"
+ #if defined(WITH_LIGHTNING_COMPILER) && ! defined(USE_COMGR_LIBRARY)
+-#include "driver/AmdCompiler.h"
++#include "AmdCompiler.h"
+ #endif  // defined(WITH_LIGHTNING_COMPILER) && ! defined(USE_COMGR_LIBRARY)
+ #include "device/rocm/rocmemory.hpp"
+ #include "device/rocm/rocglinterop.hpp"
+diff --git a/runtime/device/rocm/rockernel.cpp b/runtime/device/rocm/rockernel.cpp
+index 8a28acc..7d5b62d 100644
+--- a/runtime/device/rocm/rockernel.cpp
++++ b/runtime/device/rocm/rockernel.cpp
+@@ -11,7 +11,7 @@
+ 
+ #if defined(WITH_LIGHTNING_COMPILER) || defined(USE_COMGR_LIBRARY)
+ #ifndef USE_COMGR_LIBRARY
+-#include "driver/AmdCompiler.h"
++#include "AmdCompiler.h"
+ #endif
+ #include "llvm/Support/AMDGPUMetadata.h"
+ 
+diff --git a/runtime/device/rocm/rocprogram.cpp b/runtime/device/rocm/rocprogram.cpp
+index 0155dc2..613d00d 100644
+--- a/runtime/device/rocm/rocprogram.cpp
++++ b/runtime/device/rocm/rocprogram.cpp
+@@ -10,7 +10,7 @@
+ #if defined(WITH_LIGHTNING_COMPILER) || defined(USE_COMGR_LIBRARY)
+ #include <gelf.h>
+ #ifndef USE_COMGR_LIBRARY
+-#include "driver/AmdCompiler.h"
++#include "AmdCompiler.h"
+ #include "libraries.amdgcn.inc"
+ #endif
+ #endif  // defined(WITH_LIGHTNING_COMPILER) || defined(USE_COMGR_LIBRARY)
+
