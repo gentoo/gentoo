@@ -7,7 +7,7 @@ inherit linux-info systemd toolchain-funcs
 
 DESCRIPTION="Kernel based automounter"
 HOMEPAGE="https://web.archive.org/web/*/http://www.linux-consulting.com/Amd_AutoFS/autofs.html"
-SRC_URI="mirror://kernel/linux/daemons/${PN}/v5/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/daemons/${PN}/v5/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
