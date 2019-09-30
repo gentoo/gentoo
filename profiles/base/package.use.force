@@ -16,7 +16,7 @@ sys-devel/gcc cxx
 # them is an experimental feature and needs testing.
 sys-libs/glibc static-libs
 
-# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
+# Michał Górny <mgorny@gentoo.org> (2019-03-22)
 # Force building separate tinfo to maintain stable library API.  This
 # is backwards-compatible with packages linked to -lncurses, so neither
 # installed packages nor pre-built software should be negatively
