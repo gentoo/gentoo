@@ -15,6 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~mips ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE="+asm doc ecdh endomorphism experimental gmp libressl +recovery schnorr test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	asm? ( amd64 )
