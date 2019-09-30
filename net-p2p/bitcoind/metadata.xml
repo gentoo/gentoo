@@ -11,7 +11,6 @@
 	</maintainer>
 	<use>
 		<flag name="asm">Enable assembly for optimization</flag>
-		<flag name="bitcoin_policy_rbf">Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order</flag>
 		<flag name="knots">Build enhanced Bitcoin Knots version, rather than Bitcoin Core</flag>
 		<flag name="system-leveldb">Use the system-wide dev-libs/leveldb instead of bundled</flag>
 		<flag name="upnp">Enable Universal Plug and Play</flag>

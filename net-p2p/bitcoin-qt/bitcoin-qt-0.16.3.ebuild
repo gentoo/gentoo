@@ -1,4 +1,4 @@
-# Copyright 2010-2018 Gentoo Authors
+# Copyright 2010-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc x86 ~amd64-linux ~x86-linux"
 
-IUSE="+asm +bip70 +bitcoin_policy_rbf dbus kde +libevent knots libressl +qrcode test upnp +wallet zeromq"
+IUSE="+asm +bip70 dbus kde +libevent knots libressl +qrcode test upnp +wallet zeromq"
 
 RDEPEND="
 	>=dev-libs/boost-1.52.0:=[threads(+)]
@@ -68,14 +68,9 @@ pkg_pretend() {
 		elog "For more information, see:"
 		elog "https://bitcoincore.org/en/2018/09/18/release-${PV}/"
 	fi
-	if use bitcoin_policy_rbf; then
-		elog "Replace By Fee policy is enabled: Your node will preferentially mine and"
-		elog "relay transactions paying the highest fee, regardless of receive order."
-	else
-		elog "Replace By Fee policy is disabled: Your node will only accept the first"
-		elog "transaction seen consuming a conflicting input, regardless of fee"
-		elog "offered by later ones."
-	fi
+	elog "Replace By Fee policy is now always enabled by default: Your node will"
+	elog "preferentially mine and relay transactions paying the highest fee, regardless"
+	elog "of receive order. To disable RBF, set mempoolreplacement=never in bitcoin.conf"
 }
 
 src_prepare() {
@@ -95,10 +90,6 @@ src_prepare() {
 	fi
 
 	eapply_user
-
-	if ! use bitcoin_policy_rbf; then
-		sed -i 's/\(DEFAULT_ENABLE_REPLACEMENT = \)true/\1false/' src/validation.h || die
-	fi
 
 	echo '#!/bin/true' >share/genbuild.sh || die
 	mkdir -p src/obj || die
