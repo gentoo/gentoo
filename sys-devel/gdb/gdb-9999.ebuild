@@ -88,6 +88,10 @@ BDEPEND="
 
 S=${WORKDIR}/${PN}-${MY_PV}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
@@ -114,6 +118,11 @@ src_configure() {
 	strip-unsupported-flags
 
 	local myconf=(
+		# portage's econf() does not detect presence of --d-d-t
+		# because it greps only top-level ./configure. But not
+		# gnulib's or gdb's configure.
+		--disable-dependency-tracking
+
 		--with-pkgversion="$(gdb_branding)"
 		--with-bugurl='https://bugs.gentoo.org/'
 		--disable-werror
