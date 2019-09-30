@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=virtual/pam dev-libs/libp11:= dev-libs/openssl:0=
 SLOT=0
 SRC_URI=https://github.com/OpenSC/pam_p11/releases/download/pam_p11-0.3.0/pam_p11-0.3.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	1b4b0d1d972613ecfb7af4c5c53f2051	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	756a09f72c4cdbb55f2694c95f1e0860	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	756a09f72c4cdbb55f2694c95f1e0860	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
 _md5_=05ae40ac1c9c5437c98c63c7ff77d154

@@ -335,7 +335,7 @@ app-admin/sysklogd 1.5.1-r1: Standard log daemons
 app-admin/syslog-ng 3.22.1 3.23.1-r1: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1 1.14-r2: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17: Daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 12.0.5 12.0.6 12.1.5 12.1.6 999999: System performance tools for Linux
+app-admin/sysstat 12.0.5 12.0.6 12.1.6 12.1.7 999999: System performance tools for Linux
 app-admin/system-config-printer 1.5.11-r1 1.5.11-r2: Graphical user interface for CUPS administration
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility

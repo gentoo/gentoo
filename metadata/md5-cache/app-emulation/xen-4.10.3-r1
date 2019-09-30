@@ -11,5 +11,5 @@ REQUIRED_USE=arm? ( debug )
 RESTRICT=test splitdebug strip
 SLOT=0
 SRC_URI=https://downloads.xenproject.org/release/xen/4.10.3/xen-4.10.3.tar.gz https://dev.gentoo.org/~dlan/distfiles/xen-4.10.3-upstream-patches-1.tar.xz https://github.com/hydrapolic/gentoo-dist/raw/master/xen/xen-4.10.3-upstream-patches-1.tar.xz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	1b4b0d1d972613ecfb7af4c5c53f2051	mount-boot	0ed73d6bc7399be07e136b5dc46709d9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	mount-boot	0ed73d6bc7399be07e136b5dc46709d9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
 _md5_=ae8b04d034e9895bb6cc3d8a5b3b48a4

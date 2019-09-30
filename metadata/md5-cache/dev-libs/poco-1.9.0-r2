@@ -11,5 +11,5 @@ RDEPEND=>=dev-libs/libpcre-8.42 xml? ( dev-libs/expat ) mysql? ( !mariadb? ( dev
 REQUIRED_USE=7z? ( xml ) file2pagecompiler? ( pagecompiler ) iodbc? ( odbc ) mongodb? ( data ) mysql? ( data ) odbc? ( data ) pagecompiler? ( json net util xml ) pocodoc? ( cppparser util xml ) ssl? ( util ) sqlite? ( data ) test? ( data? ( sqlite ) json util xml )
 SLOT=0
 SRC_URI=https://github.com/pocoproject/poco/archive/poco-1.9.0-release.tar.gz -> poco-1.9.0.tar.gz
-_eclasses_=cmake-utils	91d6ef31dc426240577497cacbf2508c	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	1b4b0d1d972613ecfb7af4c5c53f2051	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake-utils	91d6ef31dc426240577497cacbf2508c	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=ec988c15f7fe560b97d9c6a7e1a80b18
