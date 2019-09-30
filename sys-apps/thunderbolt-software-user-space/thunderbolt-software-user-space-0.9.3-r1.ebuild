@@ -7,14 +7,14 @@ inherit cmake-utils linux-info
 
 DESCRIPTION="Thunderbolt(TM) user-space components"
 HOMEPAGE="https://github.com/intel/thunderbolt-software-user-space"
-SRC_URI="https://github.com/intel/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/intel/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~asturm/distfiles/${P}-tbtadm.1.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-BDEPEND="app-text/txt2tags"
 DEPEND="dev-libs/boost:="
 RDEPEND="${DEPEND}"
 
@@ -24,4 +24,14 @@ pkg_pretend() {
 	CONFIG_CHECK="HOTPLUG_PCI"
 	ERROR_HOTPLUG_PCI="Thunderbolt needs pci hotplug support, so please enable it."
 	check_extra_config
+}
+
+src_prepare() {
+	cmake-utils_src_prepare
+	cmake_comment_add_subdirectory docs
+}
+
+src_install() {
+	cmake-utils_src_install
+	doman tbtadm.1
 }
