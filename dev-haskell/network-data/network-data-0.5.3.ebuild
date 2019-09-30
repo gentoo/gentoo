@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	default
+
 	if has_version "<dev-lang/ghc-7.10.1"; then
 		cabal_chdeps \
 			'pretty >= 1.1.2' 'pretty >= 1.0, prettyclass >= 1.0'
