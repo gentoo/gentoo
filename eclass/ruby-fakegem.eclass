@@ -176,7 +176,7 @@ case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		;;
 esac
 
-SRC_URI="mirror://rubygems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}${RUBY_FAKEGEM_SUFFIX:+-${RUBY_FAKEGEM_SUFFIX}}.gem"
+SRC_URI="https://rubygems.org/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}${RUBY_FAKEGEM_SUFFIX:+-${RUBY_FAKEGEM_SUFFIX}}.gem"
 
 ruby_add_bdepend virtual/rubygems
 ruby_add_rdepend virtual/rubygems
