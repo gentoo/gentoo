@@ -38,7 +38,7 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/flags.patch
+	"${FILESDIR}"/0.5-flags.patch
 	"${FILESDIR}"/0.3-nine-dll-path.patch
 )
 
