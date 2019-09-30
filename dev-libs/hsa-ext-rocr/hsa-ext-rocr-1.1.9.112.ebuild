@@ -9,26 +9,18 @@ MY_PV=$(ver_rs 3 '-')
 
 DESCRIPTION="Proprietary image-support library for Radeon Open Compute"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROCm#closed-source-components"
-SRC_URI="http://repo.radeon.com/rocm/apt/debian/pool/main/h/${PN}-dev/${PN}-dev_${MY_PV}-g835b876_amd64.deb"
+SRC_URI="http://repo.radeon.com/rocm/apt/debian/pool/main/h/${PN}-dev/${PN}-dev_${MY_PV}-g3d9d98f_amd64.deb"
 
 LICENSE="AMD-GPU-PRO-EULA"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="-deprecated"
 
-RESTRICT="bindist mirror fetch strip"
+RESTRICT="bindist strip"
 
 QA_PREBUILT="/opt/${PN}/lib*/*"
 
 S="${WORKDIR}"
-
-pkg_nofetch() {
-	einfo "Please download the package"
-	einfo
-	einfo "    ${SRC_URI}"
-	einfo
-	einfo "and place into your distfiles directory."
-}
 
 src_unpack() {
 	unpack_deb ${A}
