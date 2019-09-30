@@ -18,6 +18,8 @@ IUSE=""
 DEPEND="dev-libs/boost:="
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
+
 pkg_pretend() {
 	CONFIG_CHECK="THUNDERBOLT"
 	ERROR_THUNDERBOLT="This program talks to the thunderbolt kernel driver, so please enable it."
