@@ -23,7 +23,7 @@ BB_HOME="https://busybox.net/downloads"
 
 COMMON_URI="${DM_HOME}/dmraid-${VERSION_DMRAID}.tar.bz2
 		${DM_HOME}/old/dmraid-${VERSION_DMRAID}.tar.bz2
-		mirror://kernel/linux/utils/raid/mdadm/mdadm-${VERSION_MDADM}.tar.xz
+		https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-${VERSION_MDADM}.tar.xz
 		${RH_HOME}/lvm2/LVM2.${VERSION_LVM}.tgz
 		${RH_HOME}/lvm2/old/LVM2.${VERSION_LVM}.tgz
 		${BB_HOME}/busybox-${VERSION_BUSYBOX}.tar.bz2
