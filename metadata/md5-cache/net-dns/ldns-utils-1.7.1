@@ -3,11 +3,11 @@ DEPEND=>=net-libs/ldns-1.7.1[dane?,ecdsa?,ed25519?,ed448?,gost?] examples? ( net
 DESCRIPTION=Set of utilities to simplify various dns(sec) tasks
 EAPI=6
 HOMEPAGE=http://www.nlnetlabs.nl/projects/ldns/
-IUSE=+dane ecdsa ed25519 ed448 examples gost ssl
+IUSE=+dane ecdsa ed25519 ed448 examples gost libressl ssl
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=BSD
 RDEPEND=>=net-libs/ldns-1.7.1[dane?,ecdsa?,ed25519?,ed448?,gost?] examples? ( net-libs/libpcap )
 REQUIRED_USE=ecdsa? ( ssl ) ed25519? ( ssl ) ed448? ( ssl ) dane? ( ssl ) gost? ( ssl )
 SLOT=0
 SRC_URI=http://www.nlnetlabs.nl/downloads/ldns/ldns-1.7.1.tar.gz
-_md5_=b1e41ecc482926de904c8eb0e8c908f9
+_md5_=c84af6331f6481107e61c1131e7b8c12
