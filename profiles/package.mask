@@ -1109,7 +1109,6 @@ dev-embedded/jtag
 # Unmaintained.  EAPI 0 ebuilds with multiple QA issues.  Last release
 # added in 2003.  Upstream removed all traces of it.
 # Removal in 30 days.  Bug #693186.
-www-apache/mod_pcgi2
 www-apps/pcgi
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
