@@ -57,7 +57,7 @@ case ${BTYPE} in
 		SRC_URI="ftp://gcc.gnu.org/pub/binutils/snapshots/binutils-${BVER}.tar.bz2
 			ftp://sourceware.org/pub/binutils/snapshots/binutils-${BVER}.tar.bz2" ;;
 	hjlu)
-		SRC_URI="mirror://kernel/linux/devel/binutils/binutils-${BVER}.tar."
+		SRC_URI="https://www.kernel.org/pub/linux/devel/binutils/binutils-${BVER}.tar."
 		version_is_at_least 2.21.51.0.5 && SRC_URI+="xz" || SRC_URI+="bz2" ;;
 	rel) SRC_URI="mirror://gnu/binutils/binutils-${BVER}.tar.bz2" ;;
 esac
