@@ -22,6 +22,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc x86 ~amd64-linux ~x86-linux"
 
 IUSE="+asm +bip70 dbus kde +libevent knots libressl +qrcode test upnp +wallet zeromq"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/boost-1.52.0:=[threads(+)]

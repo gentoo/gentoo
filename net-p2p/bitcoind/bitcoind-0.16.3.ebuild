@@ -21,6 +21,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE="+asm examples knots libressl test upnp +wallet zeromq"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	acct-group/bitcoin
