@@ -17,20 +17,20 @@ if [[ ${PV} == *_rc* ]] ; then
 	LINUX_VER=$(ver_cut 1-2).$(($(ver_cut 3)-1))
 	PATCH_VERSION=$(ver_cut 1-3)
 	LINUX_PATCH=patch-${PV//_/-}.xz
-	SRC_URI="mirror://kernel/linux/kernel/v${LINUX_V}/testing/${LINUX_PATCH}
-		mirror://kernel/linux/kernel/v${LINUX_V}/testing/v${PATCH_VERSION}/${LINUX_PATCH}"
+	SRC_URI="https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/testing/${LINUX_PATCH}
+		https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/testing/v${PATCH_VERSION}/${LINUX_PATCH}"
 elif [[ ${PV} == *.*.* ]] ; then
 	# stable-release series
 	LINUX_VER=$(ver_cut 1-2)
 	LINUX_PATCH=patch-${PV}.xz
-	SRC_URI="mirror://kernel/linux/kernel/v${LINUX_V}/${LINUX_PATCH}"
+	SRC_URI="https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/${LINUX_PATCH}"
 else
 	LINUX_VER=${PV}
 	SRC_URI=""
 fi
 
 LINUX_SOURCES="linux-${LINUX_VER}.tar.xz"
-SRC_URI+=" mirror://kernel/linux/kernel/v${LINUX_V}/${LINUX_SOURCES}"
+SRC_URI+=" https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/${LINUX_SOURCES}"
 
 LICENSE="GPL-2"
 SLOT="0"
