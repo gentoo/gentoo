@@ -29,6 +29,54 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (2019-10-01)
+# End of life.  Please upgrade.
+# Removal in 90 days. Bug 651784
+dev-lang/php:5.6
+
+# Brian Evans <grknight@gentoo.org> (2019-10-01)
+# Old slots for support of PHP <7
+# Removal in 90 days. Bug 651784
+dev-php/pecl-apcu:0
+dev-php/pecl-dbase:0
+dev-php/pecl-http:2
+dev-php/pecl-mailparse:0
+dev-php/pecl-memcached:0
+dev-php/pecl-oauth:0
+dev-php/pecl-propro:0
+dev-php/pecl-ps:0
+dev-php/pecl-raphf:0
+dev-php/pecl-rrd:0
+dev-php/pecl-ssh2:0
+dev-php/pecl-stomp:0
+dev-php/pecl-xdiff:0
+dev-php/pecl-yaml:0
+
+# Brian Evans <grknight@gentoo.org> (2019-10-01)
+# Old extensions which only work with PHP <7
+# pecl-memcache is replaced by pecl-memcachd (with code changes)
+# pecl-mongo is replaced by pecl-monogodb
+# Removal in 90 days. Bug 651784
+dev-php/PEAR-MDB2_Driver_mysql
+dev-php/magickwand
+dev-php/pecl-bbcode
+dev-php/pecl-cairo
+dev-php/pecl-dbx
+dev-php/haru
+dev-php/pecl-htscanner
+dev-php/pecl-libevent
+dev-php/pecl-memcache
+dev-php/pecl-mongo
+dev-php/pecl-mysqlnd_ms
+dev-php/pecl-mysqlnd_qc
+dev-php/pecl-sphinx
+dev-php/pecl-spl_types
+dev-php/pecl-svn
+dev-php/pecl-xrange
+dev-php/suhosin
+dev-php/xcache
+dev-php/xhprof
+
 # Matt Turner <mattst88@gentoo.org> (2019-09-28)
 # Merged into Mesa. No reverse dependencies. Bug #654464
 # Removal in 30 days
