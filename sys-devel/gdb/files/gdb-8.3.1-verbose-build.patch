@@ -1,0 +1,13 @@
+Enable verbose build. By default gdb ignores even --disable-silent-rules.
+Override verbosity back to non-silent.
+
+https://bugs.gentoo.org/695936
+--- a/gdb/silent-rules.mk
++++ b/gdb/silent-rules.mk
+@@ -1,5 +1,4 @@
+-# If V is undefined or V=0 is specified, use the silent/verbose/compact mode.
+-V ?= 0
++V ?= 1
+ ifeq ($(V),0)
+ ECHO_CXX =    @echo "  CXX    $@";
+ ECHO_CXXLD =  @echo "  CXXLD  $@";

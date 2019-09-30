@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-rpath.patch
 	"${FILESDIR}"/${P}-Werror-format-security.patch # bug 540470
 	"${FILESDIR}"/${P}-glibc228.patch               # bug 670781
+	"${FILESDIR}"/${P}-GLX_RGBA_FLOAT_BIT.patch     # bug 672858
 )
 
 src_prepare() {
@@ -61,9 +62,9 @@ src_configure() {
 	# WANT_EXAMPLES doesn't install anything
 	local mycmakeargs=(
 		-DDOCDIR=share/doc
-		-DINFODIR=share/info
 		-DMANDIR=share/man
 		-DWANT_ALSA=$(usex alsa)
+		-DWANT_DOCS_INFO=OFF
 		-DWANT_EXAMPLES=OFF
 		-DWANT_JACK=$(usex jack)
 		-DWANT_JPGALLEG=$(usex jpeg)
