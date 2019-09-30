@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Old Imake-related build files"
 HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/util/cf"
-SRC_URI="mirror://xorg/util/${P}.tar.bz2
+SRC_URI="https://www.x.org/releases/individual/util/${P}.tar.bz2
 	https://dev.gentoo.org/~mattst88/distfiles/${PN}-1.0.6-solaris-prefix.patch.bz2"
 
 LICENSE="MIT"
