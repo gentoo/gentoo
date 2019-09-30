@@ -9,8 +9,8 @@ MOD_DIR="seals"
 inherit games games-mods
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="mirror://quakeunity/modifications/navyseals/nsco_beta19.zip
-	mirror://quakeunity/modifications/navyseals/nsco_beta193upd.zip"
+SRC_URI="https://www.mirrorservice.org/sites/quakeunity.com/modifications/navyseals/nsco_beta19.zip
+	https://www.mirrorservice.org/sites/quakeunity.com/modifications/navyseals/nsco_beta193upd.zip"
 
 LICENSE="freedist"
 KEYWORDS="~amd64 ~x86"
