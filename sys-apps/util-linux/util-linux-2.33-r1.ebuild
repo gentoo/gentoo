@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	[[ "${PV}" = *_rc* ]] || \
 	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
-	SRC_URI="mirror://kernel/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz"
+	SRC_URI="https://www.kernel.org/pub/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz"
 fi
 
 DESCRIPTION="Various useful Linux utilities"
