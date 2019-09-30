@@ -30,7 +30,7 @@ if [[ ${PKV_EXTRA} ]]; then
 	else
 		PKV="${KV_MAJOR}.$((${KV_SUB}+1))-${PKV_EXTRA}"
 	fi
-	PATCH_URI="mirror://kernel/linux/kernel/v${KV_MAJOR}.${KV_MINOR}/patch-${PKV}.${K_TARBALL_SUFFIX}"
+	PATCH_URI="https://www.kernel.org/pub/linux/kernel/v${KV_MAJOR}.${KV_MINOR}/patch-${PKV}.${K_TARBALL_SUFFIX}"
 fi
 if [[ ${KV_MAJOR} == 2 ]]; then
 	OKV="${KV_MAJOR}.${KV_MINOR}.${KV_SUB}"
@@ -38,13 +38,13 @@ else
 	OKV="${KV_MAJOR}.${KV_SUB}"
 fi
 KERNEL_URI="
-	mirror://kernel/linux/kernel/v${KV_MAJOR}.${KV_MINOR}/linux-${OKV}.tar.${K_TARBALL_SUFFIX}
-	mirror://kernel/linux/kernel/v${KV_MAJOR}.${KV_MINOR}/testing/linux-${OKV}.tar.${K_TARBALL_SUFFIX}"
+	https://www.kernel.org/pub/linux/kernel/v${KV_MAJOR}.${KV_MINOR}/linux-${OKV}.tar.${K_TARBALL_SUFFIX}
+	https://www.kernel.org/pub/linux/kernel/v${KV_MAJOR}.${KV_MINOR}/testing/linux-${OKV}.tar.${K_TARBALL_SUFFIX}"
 DEBIAN_PV=2.0.4
 DEBIAN_PR=9
 DEBIAN_A="${PN}_${DEBIAN_PV}-${DEBIAN_PR}.debian.tar.xz"
 SRC_URI="
-	mirror://kernel/linux/libs/klibc/${PV:0:3}/${P}.tar.${K_TARBALL_SUFFIX}
+	https://www.kernel.org/pub/linux/libs/klibc/${PV:0:3}/${P}.tar.${K_TARBALL_SUFFIX}
 	mirror://debian/pool/main/k/klibc/${DEBIAN_A}
 	${PATCH_URI}
 	${KERNEL_URI}"
