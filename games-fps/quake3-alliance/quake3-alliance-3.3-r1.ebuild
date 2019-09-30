@@ -9,9 +9,9 @@ MOD_DIR="alliance"
 inherit games games-mods
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="mirror://quakeunity/modifications/alliance/alliance30.zip
+SRC_URI="https://www.mirrorservice.org/sites/quakeunity.com/modifications/alliance/alliance30.zip
 	http://www.superkeff.net/mods/mods/alliance/alliance30.zip
-	mirror://quakeunity/modifications/alliance/alliance30-33.zip
+	https://www.mirrorservice.org/sites/quakeunity.com/modifications/alliance/alliance30-33.zip
 	http://www.superkeff.net/mods/mods/alliance/alliance30-33.zip"
 
 LICENSE="freedist"
