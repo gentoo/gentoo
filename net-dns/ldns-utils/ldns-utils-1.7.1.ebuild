@@ -30,7 +30,7 @@ S=${WORKDIR}/${MY_P}
 
 src_configure() {
 	# >=openssl-1.1.0 required for dane-ta
-	if has_version "<dev-libs/openssl-1.1.0" || use libressl; then
+	if has_version "<dev-libs/openssl-1.1.0" || has_version dev-libs/libressl; then
 		local dane_ta_usage="--disable-dane-ta-usage"
 	else
 		local dane_ta_usage=""
