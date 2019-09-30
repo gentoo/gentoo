@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="X.Org autotools utility macros"
 HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/util/macros"
-SRC_URI="mirror://xorg/util/${P}.tar.bz2"
+SRC_URI="https://www.x.org/releases/individual/util/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
