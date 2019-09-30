@@ -13,7 +13,7 @@ GIT_V="2.18.0"
 
 DESCRIPTION="a fast web-interface for git repositories"
 HOMEPAGE="https://git.zx2c4.com/cgit/about"
-SRC_URI="mirror://kernel/software/scm/git/git-${GIT_V}.tar.xz
+SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${GIT_V}.tar.xz
 	https://git.zx2c4.com/cgit/snapshot/${P}.tar.xz"
 
 LICENSE="GPL-2"
