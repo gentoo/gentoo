@@ -16889,7 +16889,7 @@ sci-physics/qmeq 1.0: Quantum master equation package for Quantum dot transport 
 sci-physics/qutip 4.2.0: Simulating dynamics of open quantum systems in Python.
 sci-physics/reduze 2.2: Program for reducing Feynman integrals
 sci-physics/rivet 2.6.0-r1: Toolkit for validation of Monte Carlo HEP event generators
-sci-physics/root 6.12.06-r11 6.14.08-r4 6.16.00-r4 6.18.02 9999: C++ data analysis framework and interpreter from CERN
+sci-physics/root 6.12.06-r11 6.14.08-r4 6.16.00-r4 6.18.04 9999: C++ data analysis framework and interpreter from CERN
 sci-physics/sassena 1.4.2: Software for Calculating Scattering Diagrams on Massively Parallel Computers
 sci-physics/siscone 2.0.6 3.0.3: Hadron Seedless Infrared-Safe Cone jet algorithm
 sci-physics/thepeg 1.9.2 2.0.0 2.0.4: Toolkit for High Energy Physics Event Generation
