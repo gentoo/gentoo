@@ -1732,11 +1732,11 @@ dev-haskell/monad-par:chaselev - Use Chase-Lev Deques for higher-perf work-steal
 dev-haskell/nats:hashable - You can disable the use of the `hashable` package using USE=-hashable. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users. If set we will not supply an instance of `Hashable`.
 dev-haskell/network-data:small-base - Build the split-up base package.
 dev-haskell/pandoc-citeproc:bibutils - use Chris Putnam's app-text/bibutils
-dev-haskell/pandoc-citeproc:embed_data_files - Embed locale files into the library (needed for windows packaging)
+dev-haskell/pandoc-citeproc:embed-data-files - Embed locale files into the library (needed for windows packaging)
 dev-haskell/pandoc-citeproc:hexpat - use dev-haskell/hexpat instead of dev-haskell/xml for XML parsing
 dev-haskell/pandoc-citeproc:network - use dev-haskell/network and dev-haskell/http to retrieve CSL file from URIs
-dev-haskell/pandoc-citeproc:small_base - Choose the new smaller, split-up base package.
-dev-haskell/pandoc-citeproc:test_citeproc - Build the test-citeproc program
+dev-haskell/pandoc-citeproc:small-base - Choose the new smaller, split-up base package.
+dev-haskell/pandoc-citeproc:test-citeproc - Build the test-citeproc program
 dev-haskell/pandoc-citeproc:unicode_collation - Use Haskell bindings to the dev-libs/icu
 dev-haskell/persistent:nooverlap - Use OverlappingInstances only for String. Only developers should use this.
 dev-haskell/persistent-sqlite:build-sanity-exe - Build a sanity check test executable.

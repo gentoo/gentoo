@@ -15104,7 +15104,7 @@ net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
 net-libs/libnatpmp 20110808-r1 20130911 20140401-r1 20150609: An alternative protocol to UPnP IGD specification
 net-libs/libndp 1.7: Library for Neighbor Discovery Protocol
-net-libs/libnet 1.0.2a-r5 1.0.2a-r6 1.2_rc3-r1: library providing an API for commonly used low-level network functions
+net-libs/libnet 1.0.2a-r5 1.0.2a-r6 1.2_rc3-r1 1.2.9999: library providing an API for commonly used low-level network functions
 net-libs/libnetfilter_acct 1.0.2 1.0.3: Userspace library providing interface to extended accounting infrastructure of NetFilter
 net-libs/libnetfilter_conntrack 1.0.4 1.0.5 1.0.6 1.0.7: programming interface (API) to the in-kernel connection tracking state table
 net-libs/libnetfilter_cthelper 1.0.0 1.0.0-r1: userspace library that provides the programming interface to the user-space helper infrastructure
@@ -18576,7 +18576,7 @@ www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browse
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 2.7.1628.33_p1 2.8.1664.36_p1 2.8.1664.40_p1: A browser for our friends
+www-client/vivaldi 2.8.1664.40_p1: A browser for our friends
 www-client/vivaldi-snapshot 2.9.1675.11_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r11 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
