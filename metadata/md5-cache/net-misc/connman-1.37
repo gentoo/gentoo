@@ -7,8 +7,8 @@ IUSE=bluetooth debug doc examples +ethernet +iptables iwd l2tp nftables ofono op
 KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.16 >=sys-apps/dbus-1.2.24 sys-libs/readline:0= iptables? ( >=net-firewall/iptables-1.4.8 ) bluetooth? ( net-wireless/bluez ) iwd? ( net-wireless/iwd ) l2tp? ( net-dialup/xl2tpd ) nftables? ( >=net-libs/libnftnl-1.0.4:0= >=net-libs/libmnl-1.0.0:0= ) ofono? ( net-misc/ofono ) openconnect? ( net-vpn/openconnect ) openvpn? ( net-vpn/openvpn ) policykit? ( sys-auth/polkit ) pptp? ( net-dialup/pptpclient ) vpnc? ( net-vpn/vpnc ) wifi? ( >=net-wireless/wpa_supplicant-2.0[dbus] ) wispr? ( net-libs/gnutls ) virtual/tmpfiles
-REQUIRED_USE=|| ( iptables nftables )
+REQUIRED_USE=^^ ( iptables nftables )
 SLOT=0
 SRC_URI=mirror://kernel/linux/network/connman/connman-1.37.tar.xz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=68e8ea5752875d003530c3441ce8c73a
+_md5_=060cee82350ded5c47db4f3fb6718b49
