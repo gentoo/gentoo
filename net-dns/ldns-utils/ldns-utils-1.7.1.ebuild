@@ -12,7 +12,7 @@ SRC_URI="http://www.nlnetlabs.nl/downloads/ldns/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="+dane ecdsa ed25519 ed448 examples gost libressl ssl"
+IUSE="+dane ecdsa ed25519 ed448 examples gost ssl"
 
 REQUIRED_USE="
 	ecdsa? ( ssl )
