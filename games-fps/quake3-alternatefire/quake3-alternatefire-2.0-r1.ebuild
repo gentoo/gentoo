@@ -9,7 +9,7 @@ MOD_DIR="alternatefire"
 inherit games games-mods
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="mirror://quakeunity/modifications/alternatefire/alternatefire-${PV}.zip"
+SRC_URI="https://www.mirrorservice.org/sites/quakeunity.com/modifications/alternatefire/alternatefire-${PV}.zip"
 
 LICENSE="freedist"
 
