@@ -15,7 +15,8 @@ MY_P="${PN}-community-${PV}-src"
 
 DESCRIPTION="MySQL Workbench"
 HOMEPAGE="https://www.mysql.com/products/workbench/"
-SRC_URI="mirror://mysql/Downloads/MySQLGUITools/${MY_P}.tar.gz https://www.antlr.org/download/antlr-${ANTLR_VERSION}-complete.jar"
+SRC_URI="https://cdn.mysql.com/Downloads/MySQLGUITools/${MY_P}.tar.gz
+	https://www.antlr.org/download/antlr-${ANTLR_VERSION}-complete.jar"
 
 LICENSE="GPL-2"
 SLOT="0"
