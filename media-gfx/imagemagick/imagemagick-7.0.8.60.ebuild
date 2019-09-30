@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_PV="$(ver_rs 3 '-')"
 	MY_P="ImageMagick-${MY_PV}"
-	SRC_URI="mirror://${PN}/${MY_P}.tar.xz"
+	SRC_URI="mirror://imagemagick/${MY_P}.tar.xz"
 	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
