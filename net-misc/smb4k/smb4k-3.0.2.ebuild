@@ -10,7 +10,7 @@ DESCRIPTION="Advanced network neighborhood browser"
 HOMEPAGE="https://sourceforge.net/p/smb4k/home/Home/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+	SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz"
 	KEYWORDS="amd64 x86"
 fi
 

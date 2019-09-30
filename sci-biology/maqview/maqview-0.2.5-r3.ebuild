@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="GUI for sci-biology/maq, a short read mapping assembler"
 HOMEPAGE="http://maq.sourceforge.net/"
-SRC_URI="mirror://sourceforge/maq/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/maq/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

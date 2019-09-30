@@ -6,7 +6,7 @@ EAPI=0
 inherit eutils
 DESCRIPTION="led is a general purpose LDAP editor"
 HOMEPAGE="http://led.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"

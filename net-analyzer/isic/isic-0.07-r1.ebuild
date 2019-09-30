@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="IP Stack Integrity Checker"
 HOMEPAGE="http://isic.sourceforge.net/"
-SRC_URI="mirror://sourceforge/isic/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/isic/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -7,7 +7,7 @@ KEYWORDS="ppc x86"
 
 DESCRIPTION="replacement for IBM's C-ISAM"
 HOMEPAGE="https://sourceforge.net/projects/vbisam"
-SRC_URI="mirror://sourceforge/tiny-cobol/isam/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/tiny-cobol/isam/${P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 IUSE=""

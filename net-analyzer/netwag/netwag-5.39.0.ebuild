@@ -10,8 +10,8 @@ HOMEPAGE="
 	http://ntwag.sourceforge.net/
 	http://www.laurentconstantin.com/en/netw/netwag/
 "
-SRC_URI="mirror://sourceforge/ntwag/${P}-src.tgz
-	doc? ( mirror://sourceforge/ntwag/${P}-doc_html.tgz )"
+SRC_URI="https://download.sourceforge.net/ntwag/${P}-src.tgz
+	doc? ( https://download.sourceforge.net/ntwag/${P}-doc_html.tgz )"
 
 LICENSE="GPL-3"
 SLOT="0"

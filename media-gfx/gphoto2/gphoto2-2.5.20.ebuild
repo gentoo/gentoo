@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Free, redistributable digital camera software application"
 HOMEPAGE="http://www.gphoto.org/"
-SRC_URI="mirror://sourceforge/gphoto/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/gphoto/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

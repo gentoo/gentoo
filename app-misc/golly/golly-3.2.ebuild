@@ -9,7 +9,7 @@ inherit eutils flag-o-matic python-single-r1 gnome2-utils wxwidgets
 
 DESCRIPTION="simulator for Conway's Game of Life and other cellular automata"
 HOMEPAGE="http://golly.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

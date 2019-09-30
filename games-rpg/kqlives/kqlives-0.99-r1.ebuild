@@ -9,7 +9,7 @@ MY_P=${P/lives}
 
 DESCRIPTION="A console-style role playing game"
 HOMEPAGE="http://kqlives.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

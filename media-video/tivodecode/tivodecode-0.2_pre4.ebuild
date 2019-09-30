@@ -9,7 +9,7 @@ MY_PV="$(delete_version_separator '_')"
 
 DESCRIPTION="TiVo File Decoder"
 HOMEPAGE="http://tivodecode.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-${MY_PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-${MY_PV}.tar.gz"
 LICENSE="BSD"
 
 SLOT="0"

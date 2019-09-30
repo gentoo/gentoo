@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="language independent text-to-speech system"
 HOMEPAGE="http://epos.ufe.cz/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit autotools flag-o-matic gnome2 toolchain-funcs multilib perl-module pytho
 DESCRIPTION="GTK Instant Messenger client"
 HOMEPAGE="http://pidgin.im/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.bz2
+	https://download.sourceforge.net/${PN}/${P}.tar.bz2
 	https://dev.gentoo.org/~polynomial-c/${PN}-eds-3.6.patch.bz2
 	https://gist.githubusercontent.com/imcleod/77f38d11af11b2413ada/raw/46e9d6cb4d2f839832dad2d697bb141a88028e04/pidgin-irc-join-sleep.patch -> ${PN}-2.10.9-irc_join_sleep.patch"
 

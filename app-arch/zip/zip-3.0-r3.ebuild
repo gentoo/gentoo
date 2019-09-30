@@ -7,7 +7,7 @@ inherit toolchain-funcs eutils flag-o-matic
 MY_P="${PN}${PV//.}"
 DESCRIPTION="Info ZIP (encryption support)"
 HOMEPAGE="http://www.info-zip.org/"
-SRC_URI="mirror://sourceforge/infozip/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/infozip/${MY_P}.zip"
 
 LICENSE="Info-ZIP"
 SLOT="0"

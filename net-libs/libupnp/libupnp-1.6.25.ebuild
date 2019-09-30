@@ -7,7 +7,7 @@ inherit eutils flag-o-matic autotools
 
 DESCRIPTION="An Portable Open Source UPnP Development Kit"
 HOMEPAGE="http://pupnp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pupnp/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/pupnp/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

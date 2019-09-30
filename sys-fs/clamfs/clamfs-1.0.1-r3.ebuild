@@ -6,7 +6,7 @@ inherit eutils linux-info
 
 DESCRIPTION="A FUSE-based user-space file system with on-access anti-virus file scanning"
 HOMEPAGE="http://clamfs.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

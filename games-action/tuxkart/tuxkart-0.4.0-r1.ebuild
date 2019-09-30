@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A racing game starring Tux, the Linux penguin"
 HOMEPAGE="http://tuxkart.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tuxkart/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/tuxkart/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

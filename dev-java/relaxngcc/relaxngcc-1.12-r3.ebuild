@@ -11,7 +11,7 @@ MY_DATE="20031218"
 
 DESCRIPTION="RELAX NG Compiler Compiler"
 HOMEPAGE="http://relaxngcc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-${MY_DATE}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-${MY_DATE}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"

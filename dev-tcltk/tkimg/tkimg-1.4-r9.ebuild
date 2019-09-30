@@ -11,7 +11,7 @@ DESCRIPTION="Adds a lot of image formats to Tcl/Tk"
 HOMEPAGE="http://tkimg.sourceforge.net/"
 SRC_URI="
 	https://dev.gentoo.org/~jlec/distfiles/${P}-patchset-1.tar.xz
-	mirror://sourceforge/${PN}/${PV}/${MYP}.tar.bz2"
+	https://download.sourceforge.net/${PN}/${PV}/${MYP}.tar.bz2"
 
 SLOT="0"
 LICENSE="BSD"

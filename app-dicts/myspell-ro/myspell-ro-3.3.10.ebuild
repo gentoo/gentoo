@@ -22,9 +22,9 @@ inherit myspell-r2
 DESCRIPTION="Romanian dictionaries for myspell/hunspell"
 HOMEPAGE="https://rospell.wordpress.com"
 SRC_URI="
-	mirror://sourceforge/rospell/ro_RO.${PV}.zip
-	mirror://sourceforge/rospell/hyph_ro_RO.${PV}.zip
-	mirror://sourceforge/rospell/th_ro_RO.3.3.zip
+	https://download.sourceforge.net/rospell/ro_RO.${PV}.zip
+	https://download.sourceforge.net/rospell/hyph_ro_RO.${PV}.zip
+	https://download.sourceforge.net/rospell/th_ro_RO.3.3.zip
 "
 
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1"

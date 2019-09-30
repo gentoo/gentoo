@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="An application that translates joystick events to keyboard events"
 HOMEPAGE="https://sourceforge.net/projects/joy2key"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,7 +6,7 @@ EAPI=7
 DESCRIPTION="a dockapp to get/set power management status for laptops (APM, ACPI
 and CPUfreq)"
 HOMEPAGE="http://wmpower.sourceforge.net/"
-SRC_URI="mirror://sourceforge/wmpower/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/wmpower/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

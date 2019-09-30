@@ -8,7 +8,7 @@ inherit gnome2 vala
 DESCRIPTION="Spell checking widget for GTK"
 HOMEPAGE="http://gtkspell.sourceforge.net/"
 MY_P="${PN}3-${PV}"
-SRC_URI="mirror://sourceforge/project/${PN}/${PV}/${MY_P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/project/${PN}/${PV}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="3/0"

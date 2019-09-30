@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="ICC color profiles by OpenICC"
 HOMEPAGE="https://www.freedesktop.org/wiki/OpenIcc/ProfilePackages"
-SRC_URI="mirror://sourceforge/openicc/OpenICC-Profiles/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/openicc/OpenICC-Profiles/${P}.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"

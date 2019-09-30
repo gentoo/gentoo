@@ -6,7 +6,7 @@ inherit desktop epatch scons-utils
 
 DESCRIPTION="A portable Famicom/NES emulator, an evolution of the original FCE Ultra"
 HOMEPAGE="http://fceux.com/"
-SRC_URI="mirror://sourceforge/fceultra/${P}.src.tar.gz"
+SRC_URI="https://download.sourceforge.net/fceultra/${P}.src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

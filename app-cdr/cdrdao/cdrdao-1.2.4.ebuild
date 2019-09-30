@@ -9,7 +9,7 @@ DESCRIPTION="Burn CDs in disk-at-once mode -- with optional GUI frontend"
 HOMEPAGE="http://cdrdao.sourceforge.net/"
 if [[ ${PV/*_rc*} ]]
 then
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+	SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 else
 	SRC_URI="http://www.poolshark.org/src/${P/_}.tar.bz2"
 fi

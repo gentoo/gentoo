@@ -7,7 +7,7 @@ inherit readme.gentoo elisp
 
 DESCRIPTION="When you start Emacs, Session restores various variables from your last session"
 HOMEPAGE="http://emacs-session.sourceforge.net/"
-SRC_URI="mirror://sourceforge/emacs-session/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/emacs-session/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="ETL is a multi-platform class and template library"
 HOMEPAGE="http://synfig.org"
-SRC_URI="mirror://sourceforge/synfig/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/synfig/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

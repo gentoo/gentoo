@@ -7,7 +7,7 @@ inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="Portable Rexx interpreter"
 HOMEPAGE="https://regina-rexx.sourceforge.io/"
-SRC_URI="mirror://sourceforge/${PN}/Regina-REXX-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/Regina-REXX-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1 MPL-1.0"
 SLOT="0"

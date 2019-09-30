@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="Micro Linux distro to boot from a CD and play every video file localized in the CD root"
 HOMEPAGE="http://movix.sourceforge.net"
-SRC_URI="mirror://sourceforge/movix/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/movix/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

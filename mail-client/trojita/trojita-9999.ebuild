@@ -7,7 +7,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://anongit.kde.org/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+	SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 inherit cmake-utils virtualx xdg

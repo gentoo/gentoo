@@ -8,7 +8,7 @@ inherit font python-any-r1
 
 DESCRIPTION="A clean fixed font for the console and X11"
 HOMEPAGE="http://terminus-font.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}/${P}.tar.gz"
 
 LICENSE="OFL-1.1 GPL-2"
 SLOT="0"

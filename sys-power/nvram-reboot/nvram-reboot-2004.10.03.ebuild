@@ -8,7 +8,7 @@ inherit mount-boot
 MY_P="${P/nvram-/}"
 DESCRIPTION="PowerOff Boot-Images for nvram-wakeup (not needed for GRUB)"
 HOMEPAGE="https://sourceforge.net/projects/nvram-wakeup/"
-SRC_URI="mirror://sourceforge/nvram-wakeup/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/nvram-wakeup/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

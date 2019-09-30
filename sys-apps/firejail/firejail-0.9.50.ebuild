@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Security sandbox for any type of processes"
 HOMEPAGE="https://firejail.wordpress.com/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

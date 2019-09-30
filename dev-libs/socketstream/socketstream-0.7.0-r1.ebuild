@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="C++ Streaming sockets library"
 HOMEPAGE="http://socketstream.sourceforge.net/"
-SRC_URI="mirror://sourceforge/socketstream/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/socketstream/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

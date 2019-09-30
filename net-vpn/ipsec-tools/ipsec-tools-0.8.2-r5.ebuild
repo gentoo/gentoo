@@ -7,7 +7,7 @@ inherit flag-o-matic autotools linux-info pam systemd
 
 DESCRIPTION="A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation"
 HOMEPAGE="http://ipsec-tools.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD GPL-2"
 SLOT="0"

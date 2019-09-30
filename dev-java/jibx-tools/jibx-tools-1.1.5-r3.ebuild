@@ -10,7 +10,7 @@ MY_PV=$(replace_all_version_separators '_')
 
 DESCRIPTION="JiBX: Binding XML to Java Code - Generators"
 HOMEPAGE="http://jibx.sourceforge.net/"
-SRC_URI="mirror://sourceforge/jibx/jibx_${MY_PV}.zip"
+SRC_URI="https://download.sourceforge.net/jibx/jibx_${MY_PV}.zip"
 
 LICENSE="BSD"
 SLOT="0"

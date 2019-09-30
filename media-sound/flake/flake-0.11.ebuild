@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="An alternative to the FLAC reference encoder"
 HOMEPAGE="http://flake-enc.sourceforge.net"
-SRC_URI="mirror://sourceforge/flake-enc/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/flake-enc/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

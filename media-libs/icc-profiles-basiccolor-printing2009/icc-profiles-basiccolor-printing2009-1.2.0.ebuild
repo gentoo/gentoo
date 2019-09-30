@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="ICC profiles for printing/offset"
 HOMEPAGE="https://www.freedesktop.org/wiki/OpenIcc/ProfilePackages"
-SRC_URI="mirror://sourceforge/openicc/basICColor-Profiles/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/openicc/basICColor-Profiles/${P}.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"

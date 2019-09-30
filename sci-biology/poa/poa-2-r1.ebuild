@@ -9,7 +9,7 @@ MY_P="${PN}V${PV}"
 
 DESCRIPTION="Fast multiple sequence alignments using partial-order graphs"
 HOMEPAGE="http://bioinfo.mbi.ucla.edu/poa/"
-SRC_URI="mirror://sourceforge/poamsa/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/poamsa/${MY_P}.tar.gz"
 
 # According to SF project page
 LICENSE="GPL-2"

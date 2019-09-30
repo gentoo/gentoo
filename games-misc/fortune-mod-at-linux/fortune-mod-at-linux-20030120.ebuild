@@ -5,7 +5,7 @@ EAPI=5
 MY_P="fortune-mod-at.linux-${PV}"
 DESCRIPTION="Quotes from at.linux"
 HOMEPAGE="http://fortune-mod-fvl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/fortune-mod-fvl/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/fortune-mod-fvl/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

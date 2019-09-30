@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A high-performance, parallel remote shell utility"
 HOMEPAGE="https://computing.llnl.gov/linux/pdsh.html"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

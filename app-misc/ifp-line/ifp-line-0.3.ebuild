@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="iRiver iFP open-source driver"
 HOMEPAGE="http://ifp-driver.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ifp-driver/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ifp-driver/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="C++11 wrapper for the LMDB database library"
 HOMEPAGE="http://lmdbxx.sourceforge.net/"
-SRC_URI="mirror://sourceforge/lmdbxx/${PV}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lmdbxx/${PV}/${MY_P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

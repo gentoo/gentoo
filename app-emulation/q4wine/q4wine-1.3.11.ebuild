@@ -11,7 +11,7 @@ MY_P=${PN}-${PV/_p/-r}
 
 DESCRIPTION="Qt GUI configuration tool for Wine"
 HOMEPAGE="https://q4wine.brezblock.org.ua/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

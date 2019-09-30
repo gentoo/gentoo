@@ -9,7 +9,7 @@ inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="matplotlib toolkit to plot map projections"
 HOMEPAGE="https://matplotlib.org/basemap/ https://pypi.org/project/basemap/"
-SRC_URI="mirror://sourceforge/matplotlib/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/matplotlib/${P}.tar.gz"
 
 IUSE="examples test"
 SLOT="0"

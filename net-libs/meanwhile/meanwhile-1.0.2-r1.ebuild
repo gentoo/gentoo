@@ -6,7 +6,7 @@ inherit eutils flag-o-matic
 
 DESCRIPTION="Meanwhile (Sametime protocol) library"
 HOMEPAGE="http://meanwhile.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 IUSE="doc debug"

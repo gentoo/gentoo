@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A Window Maker applet that shows your biorhythm"
 HOMEPAGE="http://wmbio.sourceforge.net/"
-SRC_URI="mirror://sourceforge/wmbio/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/wmbio/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

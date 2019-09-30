@@ -5,7 +5,7 @@ EAPI=6
 inherit autotools eutils systemd
 
 DESCRIPTION="Port Forwarding Daemon"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 HOMEPAGE="http://portfwd.sourceforge.net"
 LICENSE="GPL-2"
 

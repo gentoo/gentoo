@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="pslib is a C-library to create PostScript files on the fly"
 HOMEPAGE="http://pslib.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pslib/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pslib/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

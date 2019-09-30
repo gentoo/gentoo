@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A lightweight Java neural network framework"
 HOMEPAGE="http://neuroph.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}_nb.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}_${PV}_nb.zip"
 
 LICENSE="GPL-3"
 SLOT="0"

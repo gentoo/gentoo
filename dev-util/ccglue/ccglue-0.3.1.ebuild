@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="Produce cross-reference files from cscope and ctags for use with app-vim/cctree"
 HOMEPAGE="http://ccglue.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-release-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-release-${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

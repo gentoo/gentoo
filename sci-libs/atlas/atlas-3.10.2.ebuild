@@ -11,7 +11,7 @@ LAPACKP=lapack-3.6.0.tgz
 
 DESCRIPTION="Automatically Tuned Linear Algebra Software"
 HOMEPAGE="http://math-atlas.sourceforge.net/"
-SRC_URI="mirror://sourceforge/math-atlas/${PN}${PV}.tar.bz2
+SRC_URI="https://download.sourceforge.net/math-atlas/${PN}${PV}.tar.bz2
 	fortran? ( lapack? ( http://www.netlib.org/lapack/${LAPACKP} ) )"
 
 LICENSE="BSD"

@@ -11,7 +11,7 @@ MY_PN=${PN/-}
 MY_P=${MY_PN}-${PV}
 DESCRIPTION="Mock Objects for interfaces in JUnit tests by generating them on the fly"
 HOMEPAGE="http://www.easymock.org/"
-SRC_URI="mirror://sourceforge/easymock/EasyMock%20Class%20Extension/${PV}/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/easymock/EasyMock%20Class%20Extension/${PV}/${MY_P}.zip"
 
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="3.2"

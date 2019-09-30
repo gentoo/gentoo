@@ -9,7 +9,7 @@ MY_P="${PN}${PV/_beta/b}"
 
 DESCRIPTION="Object Oriented Enhancements for Tcl/Tk"
 HOMEPAGE="http://incrtcl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/incrtcl/%5BIncr%20Tcl_Tk%5D-source/$(get_version_component_range 1-2)/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/incrtcl/%5BIncr%20Tcl_Tk%5D-source/$(get_version_component_range 1-2)/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"

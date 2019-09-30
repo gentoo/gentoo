@@ -10,7 +10,7 @@ MY_P="${PN}_${PV/_/}"
 
 DESCRIPTION="Proxy cache for Gentoo packages"
 HOMEPAGE="https://sourceforge.net/projects/http-replicator"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

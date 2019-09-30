@@ -7,8 +7,8 @@ inherit eutils games
 DATAVERSION="0.8"
 DESCRIPTION="Fast-action multiplayer strategic network game"
 HOMEPAGE="http://www.netpanzer.info/"
-SRC_URI="mirror://sourceforge/netpanzer.berlios/${P}.tar.bz2
-	mirror://sourceforge/netpanzer.berlios/${PN}-data-${DATAVERSION}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/netpanzer.berlios/${P}.tar.bz2
+	https://download.sourceforge.net/netpanzer.berlios/${PN}-data-${DATAVERSION}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

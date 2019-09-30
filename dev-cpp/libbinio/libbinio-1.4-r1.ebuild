@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Binary I/O stream class library"
 HOMEPAGE="http://libbinio.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

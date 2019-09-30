@@ -13,7 +13,7 @@ DICT_FR="fre_2.1"
 DICT_ES="spa_3.0"
 DICT_DE="ger_2.0.1"
 
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz
 	l10n_de? ( http://cream.sourceforge.net/cream-spell-dict-${DICT_DE}.zip )
 	l10n_en? ( http://cream.sourceforge.net/cream-spell-dict-${DICT_EN}.zip )
 	l10n_es? ( http://cream.sourceforge.net/cream-spell-dict-${DICT_ES}.zip )

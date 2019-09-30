@@ -6,7 +6,7 @@ inherit gnome2
 
 DESCRIPTION="A clone of the popular board game The Settlers of Catan"
 HOMEPAGE="http://pio.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pio/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pio/${P}.tar.gz"
 
 LICENSE="GPL-2 CC-BY-SA-4.0"
 SLOT="0"

@@ -11,8 +11,8 @@ MY_P_TTF="LinLibertineTTF_${MY_PV}"
 
 DESCRIPTION="Fonts from the Linux Libertine Open Fonts Project"
 HOMEPAGE="http://linuxlibertine.org/"
-SRC_URI="mirror://sourceforge/linuxlibertine/${MY_P_OTF}.tgz
-	mirror://sourceforge/linuxlibertine/${MY_P_TTF}.tgz"
+SRC_URI="https://download.sourceforge.net/linuxlibertine/${MY_P_OTF}.tgz
+	https://download.sourceforge.net/linuxlibertine/${MY_P_TTF}.tgz"
 
 LICENSE="|| ( GPL-2-with-font-exception OFL-1.1 )"
 SLOT="0"

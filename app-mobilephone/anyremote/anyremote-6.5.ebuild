@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="Bluetooth, infrared or cable remote control service"
 HOMEPAGE="http://anyremote.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

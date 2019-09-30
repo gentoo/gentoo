@@ -8,7 +8,7 @@ inherit autotools python-r1
 
 DESCRIPTION="Gnome frontend to Anyremote"
 HOMEPAGE="http://anyremote.sourceforge.net/"
-SRC_URI="mirror://sourceforge/anyremote/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/anyremote/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

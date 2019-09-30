@@ -6,7 +6,7 @@ inherit cmake-utils toolchain-funcs
 
 DESCRIPTION="A multicast protocol to support Bible software shared co-navigation"
 HOMEPAGE="http://www.crosswire.org/wiki/BibleSync"
-SRC_URI="mirror://sourceforge/gnomesword/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gnomesword/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

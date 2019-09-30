@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="a small stealth network autoconfigure software"
 HOMEPAGE="http://selfdhcp.sourceforge.net"
-SRC_URI="mirror://sourceforge/selfdhcp/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/selfdhcp/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

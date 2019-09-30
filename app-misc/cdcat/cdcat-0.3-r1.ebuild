@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Simple yet effective CD indexing program"
 # original src went away: SRC_URI="http://littledragon.home.ro/unix/${P}.tar.gz"
-SRC_URI="mirror://sourceforge/cdcatalog/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cdcatalog/${P}.tar.gz"
 HOMEPAGE="http://cdcatalog.sourceforge.net/"
 
 LICENSE="GPL-2"

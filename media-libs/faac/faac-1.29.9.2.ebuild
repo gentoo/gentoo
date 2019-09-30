@@ -7,7 +7,7 @@ inherit autotools epunt-cxx multilib-minimal
 
 DESCRIPTION="Free MPEG-4 audio codecs by AudioCoding.com"
 HOMEPAGE="https://www.audiocoding.com"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 MPEG-4"
 SLOT="0"

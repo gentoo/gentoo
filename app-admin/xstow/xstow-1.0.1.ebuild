@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="replacement for GNU stow with extensions"
 HOMEPAGE="http://xstow.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xstow/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/xstow/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit flag-o-matic multilib
 
 DESCRIPTION="Lightweight scheme interpreter"
 HOMEPAGE="http://tinyscheme.sourceforge.net"
-SRC_URI="mirror://sourceforge/tinyscheme/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/tinyscheme/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -14,7 +14,7 @@ inherit flag-o-matic gnome2 python-single-r1
 
 DESCRIPTION="A international dictionary supporting fuzzy and glob style matching"
 HOMEPAGE="http://stardict-4.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}-4/${P}.tar.bz2
+SRC_URI="https://download.sourceforge.net/${PN}-4/${P}.tar.bz2
 	pronounce? ( https://${PN}-3.googlecode.com/files/WyabdcRealPeopleTTS.tar.bz2 )
 	qqwry? ( mirror://gentoo/QQWry.Dat.bz2 )"
 

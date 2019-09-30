@@ -10,7 +10,7 @@ inherit python-single-r1 flag-o-matic
 MY_P="${PN}2-${PV}"
 
 DESCRIPTION="Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml"
-SRC_URI="mirror://sourceforge/vde/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/vde/${MY_P}.tar.bz2"
 HOMEPAGE="http://vde.sourceforge.net/"
 
 LICENSE="GPL-2"

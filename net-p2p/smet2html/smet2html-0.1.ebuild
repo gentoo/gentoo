@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="Convert eDonkey2000 server.met to html"
 HOMEPAGE="http://ed2k-tools.sourceforge.net/${PN}.shtml"
-SRC_URI="mirror://sourceforge/ed2k-tools/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ed2k-tools/${P}.tar.gz"
 RESTRICT="mirror"
 
 LICENSE="GPL-2"

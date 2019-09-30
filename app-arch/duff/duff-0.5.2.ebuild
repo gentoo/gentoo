@@ -5,7 +5,7 @@ EAPI="5"
 
 DESCRIPTION="Command-line utility for quickly finding duplicates in a given set of files"
 HOMEPAGE="http://duff.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

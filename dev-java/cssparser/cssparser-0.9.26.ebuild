@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="API for parsing CSS 2 in Java"
 HOMEPAGE="http://cssparser.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-sources.jar -> ${P}.jar"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-sources.jar -> ${P}.jar"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

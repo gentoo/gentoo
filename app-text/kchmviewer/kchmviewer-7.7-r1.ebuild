@@ -7,7 +7,7 @@ inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="Feature rich chm file viewer, based on Qt"
 HOMEPAGE="https://www.ulduzsoft.com/kchmviewer/"
-SRC_URI="mirror://sourceforge/kchmviewer/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/kchmviewer/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

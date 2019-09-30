@@ -13,7 +13,7 @@ MY_P=${P/_rc/-rc}
 
 DESCRIPTION="A web interface for managing a qmail system with virtual domains"
 HOMEPAGE="http://www.inter7.com/qmailadmin.html"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

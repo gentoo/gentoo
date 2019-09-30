@@ -8,7 +8,7 @@ inherit bash-completion-r1
 MY_P="${P/_/-}"
 DESCRIPTION="Small and simple weblog engine written in Bash for the command-line"
 HOMEPAGE="http://nanoblogger.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

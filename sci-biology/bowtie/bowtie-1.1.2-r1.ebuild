@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Popular short read aligner for Next-generation sequencing data"
 HOMEPAGE="http://bowtie-bio.sourceforge.net/"
-SRC_URI="mirror://sourceforge/bowtie-bio/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/bowtie-bio/${P}-src.zip"
 
 LICENSE="Artistic"
 SLOT="1"

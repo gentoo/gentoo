@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Squid Analysis Report Generator"
 HOMEPAGE="https://sourceforge.net/projects/sarg/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~x86"

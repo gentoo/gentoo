@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2 prefix virtualx
 
 DESCRIPTION="A fully functional ldap browser written in java"
 HOMEPAGE="http://jxplorer.org/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-${PV}-project.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-${PV}-project.zip"
 LICENSE="CAOSL"
 
 IUSE=""

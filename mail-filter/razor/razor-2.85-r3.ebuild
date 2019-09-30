@@ -9,7 +9,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Distributed, collaborative spam detection and filtering network"
 HOMEPAGE="http://razor.sourceforge.net/"
-SRC_URI="mirror://sourceforge/razor/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/razor/${MY_P}.tar.bz2"
 
 LICENSE="Artistic"
 SLOT="0"

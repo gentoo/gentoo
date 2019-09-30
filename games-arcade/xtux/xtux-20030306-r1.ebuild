@@ -6,7 +6,7 @@ inherit desktop
 
 DESCRIPTION="Multiplayer Gauntlet-style arcade game"
 HOMEPAGE="http://xtux.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xtux/xtux-src-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xtux/xtux-src-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

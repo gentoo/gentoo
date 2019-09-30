@@ -12,7 +12,7 @@ MY_P=${PN}-${PV//./-}
 DESCRIPTION="Protocol definitions of l7-filter kernel modules"
 HOMEPAGE="http://l7-filter.sourceforge.net/protocols"
 
-SRC_URI="mirror://sourceforge/l7-filter/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/l7-filter/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

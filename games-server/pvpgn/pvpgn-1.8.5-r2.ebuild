@@ -7,8 +7,8 @@ inherit epatch games
 SUPPORTP="${PN}-support-1.3"
 DESCRIPTION="A gaming server for Battle.Net compatible clients"
 HOMEPAGE="https://sourceforge.net/projects/pvpgn.berlios/"
-SRC_URI="mirror://sourceforge/pvpgn.berlios/${PN}-${PV/_/}.tar.bz2
-	mirror://sourceforge/pvpgn.berlios/${SUPPORTP}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pvpgn.berlios/${PN}-${PV/_/}.tar.bz2
+	https://download.sourceforge.net/pvpgn.berlios/${SUPPORTP}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

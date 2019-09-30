@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="A tool to measure bandwidth and RTT between two hosts using ICMP"
 HOMEPAGE="https://bwping.sourceforge.io/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

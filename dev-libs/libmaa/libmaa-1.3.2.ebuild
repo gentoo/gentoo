@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="Library with low-level data structures which are helpful for writing compilers"
 HOMEPAGE="http://www.dict.org/"
-SRC_URI="mirror://sourceforge/dict/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dict/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

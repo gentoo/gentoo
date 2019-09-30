@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="tintin mud client clone implemented in Python"
 HOMEPAGE="http://lyntin.sourceforge.net/"
-SRC_URI="mirror://sourceforge/lyntin/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lyntin/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

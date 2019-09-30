@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Hangul IMEngine for SCIM ported from imhangul"
 HOMEPAGE="http://www.scim-im.org/"
-SRC_URI="mirror://sourceforge/scim/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/scim/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

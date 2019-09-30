@@ -29,7 +29,7 @@ SRC_URI="mirror://qmail/qmail-${PV}.tar.gz
 	mirror://gentoo/${P}-queue-custom-error.patch
 	!vanilla? (
 		qmail-spp? (
-			mirror://sourceforge/qmail-spp/${QMAIL_SPP_F}
+			https://download.sourceforge.net/qmail-spp/${QMAIL_SPP_F}
 			mirror://gentoo/${QMAIL_LDAP_SPP_F}
 		)
 	)

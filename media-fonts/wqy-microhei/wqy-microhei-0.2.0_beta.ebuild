@@ -8,7 +8,7 @@ inherit font
 MY_P="${P/_/-}"
 DESCRIPTION="A droid derived Sans-Serif style CJK font"
 HOMEPAGE="http://wqy.sourceforge.net/en/"
-SRC_URI="mirror://sourceforge/wqy/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/wqy/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-3"
 SLOT="0"

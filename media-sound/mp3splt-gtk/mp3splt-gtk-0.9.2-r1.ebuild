@@ -6,7 +6,7 @@ inherit versionator autotools multilib
 
 DESCRIPTION="a GTK+ based utility to split mp3 and ogg files without decoding"
 HOMEPAGE="http://mp3splt.sourceforge.net"
-SRC_URI="mirror://sourceforge/mp3splt/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mp3splt/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

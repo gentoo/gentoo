@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="library for calling real mode BIOS routines under Linux"
 HOMEPAGE="http://www.sourceforge.net/projects/lrmi/"
-SRC_URI="mirror://sourceforge/lrmi/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lrmi/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

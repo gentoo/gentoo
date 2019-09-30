@@ -6,7 +6,7 @@ inherit eutils fixheadtails multilib
 
 DESCRIPTION="Erlang bindings for the SDL library"
 HOMEPAGE="http://esdl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/esdl/${P}.src.tgz"
+SRC_URI="https://download.sourceforge.net/esdl/${P}.src.tgz"
 
 LICENSE="BSD"
 SLOT="0"

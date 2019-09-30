@@ -8,7 +8,7 @@ KEYWORDS="amd64 arm ~ppc x86"
 
 DESCRIPTION="A simple CLI program for displaying network statistics in real time"
 HOMEPAGE="http://ifstatus.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-v${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-v${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 

@@ -8,7 +8,7 @@ inherit gnome2
 
 DESCRIPTION="Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4"
 HOMEPAGE="http://ogmrip.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ogmrip/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ogmrip/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

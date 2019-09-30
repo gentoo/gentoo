@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="Reversi game for GNOME, supporting the Go/Game Text Protocol"
 HOMEPAGE="http://rhino.sourceforge.net/"
-SRC_URI="mirror://sourceforge/rhino/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/rhino/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

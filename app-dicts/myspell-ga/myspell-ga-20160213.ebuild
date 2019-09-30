@@ -21,7 +21,7 @@ inherit myspell-r2
 
 DESCRIPTION="Irish dictionaries for myspell/hunspell"
 HOMEPAGE="https://extensions.openoffice.org/en/project/irish-language-spell-checker-thesaurus-and-hyphenation-patterns"
-SRC_URI="mirror://sourceforge/aoo-extensions/focloiri-gaeilge-4.8.oxt -> ${P}.oxt"
+SRC_URI="https://download.sourceforge.net/aoo-extensions/focloiri-gaeilge-4.8.oxt -> ${P}.oxt"
 
 LICENSE="GPL-2"
 SLOT="0"

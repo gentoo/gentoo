@@ -7,8 +7,8 @@ inherit eutils games
 DATA_PV=1.5
 DESCRIPTION="How many tomatoes can you smash in ten short minutes?"
 HOMEPAGE="http://tomatoes.sourceforge.net/about.html"
-SRC_URI="mirror://sourceforge/tomatoes/tomatoes-linux-src-${PV}.tar.bz2
-	mirror://sourceforge/tomatoes/tomatoes-linux-${DATA_PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/tomatoes/tomatoes-linux-src-${PV}.tar.bz2
+	https://download.sourceforge.net/tomatoes/tomatoes-linux-${DATA_PV}.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"

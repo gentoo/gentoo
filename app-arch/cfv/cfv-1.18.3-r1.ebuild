@@ -9,7 +9,7 @@ inherit python-single-r1
 
 DESCRIPTION="Utility to test and create .sfv, .csv, .crc and md5sum files"
 HOMEPAGE="http://cfv.sourceforge.net/"
-SRC_URI="mirror://sourceforge/cfv/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cfv/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

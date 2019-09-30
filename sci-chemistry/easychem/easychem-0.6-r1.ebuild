@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Chemical structure drawing program - focused on presentation"
 HOMEPAGE="http://easychem.sourceforge.net/"
-SRC_URI="mirror://sourceforge/easychem/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/easychem/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

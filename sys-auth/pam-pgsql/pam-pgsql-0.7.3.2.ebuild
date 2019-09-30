@@ -11,7 +11,7 @@ HOMEPAGE="https://sourceforge.net/projects/pam-pgsql/"
 if [[ ${PV} == *_p* ]]; then
 	SRC_URI="http://www.flameeyes.eu/gentoo-distfiles/${P}.tar.gz"
 else
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+	SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 fi
 
 RDEPEND="virtual/pam

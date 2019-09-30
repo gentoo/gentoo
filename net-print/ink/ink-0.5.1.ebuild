@@ -4,7 +4,7 @@
 EAPI="5"
 
 DESCRIPTION="A command line utility to display the ink level of your printer"
-SRC_URI="mirror://sourceforge/ink/${P/_}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ink/${P/_}.tar.gz"
 HOMEPAGE="http://ink.sourceforge.net/"
 
 LICENSE="GPL-2"

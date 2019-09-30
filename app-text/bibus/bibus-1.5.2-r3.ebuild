@@ -10,7 +10,7 @@ inherit python-r1 versionator xdg-utils
 DESCRIPTION="Bibliographic and reference management software, integrates with LO and MS Word"
 HOMEPAGE="http://bibus-biblio.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}-biblio/${PN}_${PV}.orig.tar.gz
+	https://download.sourceforge.net/${PN}-biblio/${PN}_${PV}.orig.tar.gz
 	https://dev.gentoo.org/~jlec/distfiles/${P}-lo-4.patch.xz
 	"
 

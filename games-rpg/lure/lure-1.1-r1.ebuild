@@ -11,12 +11,12 @@ HOMEPAGE="http://www.revolution.co.uk/_display.php?id=10"
 SRC_URI="
 	https://raw.githubusercontent.com/scummvm/scummvm/266aef932a8a052df897e4d79b4572e5d169916f/dists/engine-data/lure.dat -> lure-${DAT_PV}.dat
 	!l10n_en? ( !l10n_es? ( !l10n_fr? ( !l10n_de? ( !l10n_it?
-		( mirror://sourceforge/scummvm/${P}.zip -> ${PN}-en-${PV}.zip ) ) ) ) )
-	l10n_en? ( mirror://sourceforge/scummvm/${P}.zip  -> ${PN}-en-${PV}.zip )
-	l10n_es? ( mirror://sourceforge/scummvm/${PN}-es-${PV}.zip )
-	l10n_fr? ( mirror://sourceforge/scummvm/${PN}-fr-${PV}.zip )
-	l10n_de? ( mirror://sourceforge/scummvm/${PN}-de-${PV}.zip )
-	l10n_it? ( mirror://sourceforge/scummvm/${PN}-it-${PV}.zip )"
+		( https://download.sourceforge.net/scummvm/${P}.zip -> ${PN}-en-${PV}.zip ) ) ) ) )
+	l10n_en? ( https://download.sourceforge.net/scummvm/${P}.zip  -> ${PN}-en-${PV}.zip )
+	l10n_es? ( https://download.sourceforge.net/scummvm/${PN}-es-${PV}.zip )
+	l10n_fr? ( https://download.sourceforge.net/scummvm/${PN}-fr-${PV}.zip )
+	l10n_de? ( https://download.sourceforge.net/scummvm/${PN}-de-${PV}.zip )
+	l10n_it? ( https://download.sourceforge.net/scummvm/${PN}-it-${PV}.zip )"
 
 LICENSE="lure"
 SLOT="0"

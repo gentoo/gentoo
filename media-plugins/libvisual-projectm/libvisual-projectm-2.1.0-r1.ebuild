@@ -9,7 +9,7 @@ MY_P=projectM-complete-${PV}-Source
 
 DESCRIPTION="A libvisual graphical music visualization plugin similar to milkdrop"
 HOMEPAGE="http://projectm.sourceforge.net"
-SRC_URI="mirror://sourceforge/projectm/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/projectm/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

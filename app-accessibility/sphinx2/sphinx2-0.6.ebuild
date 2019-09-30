@@ -9,7 +9,7 @@ MY_P=${P/_/}
 
 DESCRIPTION="CMU Speech Recognition-engine"
 HOMEPAGE="https://cmusphinx.github.io"
-SRC_URI="mirror://sourceforge/cmusphinx/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cmusphinx/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

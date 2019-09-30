@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="Fortune modules from the King James Bible scriptures"
 HOMEPAGE="http://scriptures.nephi.org/"
-SRC_URI="mirror://sourceforge/mormon/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/mormon/${P}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"

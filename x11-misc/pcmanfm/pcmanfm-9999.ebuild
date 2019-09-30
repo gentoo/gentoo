@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+	SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~x86"
 fi
 

@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="LGPL-ed pc emulator"
 HOMEPAGE="http://bochs.sourceforge.net/"
-SRC_URI="mirror://sourceforge/bochs/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/bochs/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

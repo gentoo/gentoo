@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="auto cdrom mounter for the lazy user"
 HOMEPAGE="http://autorun.sourceforge.net/"
-SRC_URI="mirror://sourceforge/autorun/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/autorun/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

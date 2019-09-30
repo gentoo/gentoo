@@ -6,7 +6,7 @@ inherit desktop flag-o-matic
 
 DESCRIPTION="A Sega Genesis/CD/32X emulator"
 HOMEPAGE="https://sourceforge.net/projects/gens/"
-SRC_URI="mirror://sourceforge/gens/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gens/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="OpenGL virtual desktop switching"
 HOMEPAGE="http://desk3d.sourceforge.net/"
-SRC_URI="mirror://sourceforge/desk3d/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/desk3d/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

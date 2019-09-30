@@ -6,7 +6,7 @@ inherit eutils scons-utils games
 
 DESCRIPTION="Fast 2D tank arcade game with multiplayer and split-screen modes"
 HOMEPAGE="http://btanks.sourceforge.net/"
-SRC_URI="mirror://sourceforge/btanks/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/btanks/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

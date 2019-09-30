@@ -11,7 +11,7 @@ MY_PN="Impressive"
 
 DESCRIPTION="Stylish way of giving presentations with Python"
 HOMEPAGE="http://impressive.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}/${PV%b}/${MY_PN}-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_PN}/${PV%b}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

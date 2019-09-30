@@ -6,7 +6,7 @@ inherit eutils autotools
 
 DESCRIPTION="A GTK-based image browser"
 HOMEPAGE="http://gqview.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gqview/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gqview/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

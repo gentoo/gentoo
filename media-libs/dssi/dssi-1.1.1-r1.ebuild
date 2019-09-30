@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Plugin API for software instruments with user interfaces"
 HOMEPAGE="http://dssi.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dssi/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dssi/${P}.tar.gz"
 
 LICENSE="BSD LGPL-2.1"
 SLOT="0"

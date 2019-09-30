@@ -7,7 +7,7 @@ inherit multilib user eutils
 
 DESCRIPTION="Nagios Service Check Acceptor"
 HOMEPAGE="http://www.nagios.org/"
-SRC_URI="mirror://sourceforge/nagios/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/nagios/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

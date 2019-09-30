@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="ncurses based password database client compatible with KeePass 1.x databases"
 HOMEPAGE="http://ckpass.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

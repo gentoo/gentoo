@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Tool for sending text messages for various Swiss providers"
 HOMEPAGE="https://sourceforge.net/projects/pysms/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

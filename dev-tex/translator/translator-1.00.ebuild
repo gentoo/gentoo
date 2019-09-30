@@ -7,7 +7,7 @@ inherit latex-package
 
 DESCRIPTION="A package for translating words in TeX"
 HOMEPAGE="http://latex-beamer.sourceforge.net/"
-SRC_URI="mirror://sourceforge/latex-beamer/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/latex-beamer/${P}.tar.gz"
 
 LICENSE="GPL-2 LPPL-1.3c"
 SLOT="0"

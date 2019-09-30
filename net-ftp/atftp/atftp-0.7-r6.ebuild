@@ -9,7 +9,7 @@ DEBIAN_A="${PN}_${PV}-${DEBIAN_PV}.diff"
 
 DESCRIPTION="Advanced TFTP implementation client/server"
 HOMEPAGE="https://sourceforge.net/projects/atftp/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.dfsg.tar.gz
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.dfsg.tar.gz
 	mirror://debian/pool/main/a/${PN}/${DEBIAN_A}.gz"
 
 LICENSE="GPL-2"

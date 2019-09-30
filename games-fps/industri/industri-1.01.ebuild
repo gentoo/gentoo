@@ -6,8 +6,8 @@ inherit eutils toolchain-funcs games
 
 DESCRIPTION="Quake/Tenebrae based, single player game"
 HOMEPAGE="http://industri.sourceforge.net/"
-SRC_URI="mirror://sourceforge/industri/industri_BIN-${PV}-src.tar.gz
-	mirror://sourceforge/industri/industri-1.00.zip"
+SRC_URI="https://download.sourceforge.net/industri/industri_BIN-${PV}-src.tar.gz
+	https://download.sourceforge.net/industri/industri-1.00.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

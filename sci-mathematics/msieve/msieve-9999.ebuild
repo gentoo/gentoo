@@ -7,7 +7,7 @@ inherit eutils subversion toolchain-funcs
 
 DESCRIPTION="A C library implementing a suite of algorithms to factor large integers"
 HOMEPAGE="https://sourceforge.net/projects/msieve/"
-#SRC_URI="mirror://sourceforge/${PN}/${PN}/Msieve%20v${PV}/${PN}${PV/./}src.tar.gz"
+#SRC_URI="https://download.sourceforge.net/${PN}/${PN}/Msieve%20v${PV}/${PN}${PV/./}src.tar.gz"
 ESVN_REPO_URI="https://svn.code.sf.net/p/msieve/code/trunk"
 
 LICENSE="public-domain"

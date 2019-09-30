@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Very fast requantisizing tool for backup DVDs"
 HOMEPAGE="http://vamps.sourceforge.net/"
-SRC_URI="mirror://sourceforge/vamps/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/vamps/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

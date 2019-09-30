@@ -9,7 +9,7 @@ inherit toolchain-funcs wxwidgets
 
 DESCRIPTION="Port of 7-Zip archiver for Unix"
 HOMEPAGE="http://p7zip.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}_src_all.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}_${PV}_src_all.tar.bz2"
 
 LICENSE="LGPL-2.1 rar? ( unRAR )"
 SLOT="0"

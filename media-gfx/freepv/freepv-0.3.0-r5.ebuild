@@ -6,7 +6,7 @@ inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Panorama viewer (Quicktime, PangeaVR, GLPanoView formats)"
 HOMEPAGE="http://freepv.sourceforge.net/"
-SRC_URI="mirror://sourceforge/freepv/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/freepv/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

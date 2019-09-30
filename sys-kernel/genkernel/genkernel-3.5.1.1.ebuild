@@ -29,7 +29,7 @@ COMMON_URI="${DM_HOME}/dmraid-${VERSION_DMRAID}.tar.bz2
 		${BB_HOME}/busybox-${VERSION_BUSYBOX}.tar.bz2
 		http://www.open-iscsi.org/bits/open-iscsi-${VERSION_ISCSI}.tar.gz
 		mirror://gentoo/open-iscsi-${VERSION_ISCSI}.tar.gz
-		mirror://sourceforge/fuse/fuse-${VERSION_FUSE}.tar.gz
+		https://download.sourceforge.net/fuse/fuse-${VERSION_FUSE}.tar.gz
 		http://podgorny.cz/unionfs-fuse/releases/unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.bz2
 		mirror://gentoo/unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.bz2
 		mirror://gnupg/gnupg/gnupg-${VERSION_GPG}.tar.bz2"

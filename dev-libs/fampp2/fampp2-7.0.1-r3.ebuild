@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="C++ wrapper for fam"
 HOMEPAGE="https://sourceforge.net/projects/fampp/"
-SRC_URI="mirror://sourceforge/fampp/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/fampp/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

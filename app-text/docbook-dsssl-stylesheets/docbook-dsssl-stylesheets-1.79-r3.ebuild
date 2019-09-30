@@ -10,7 +10,7 @@ inherit sgml-catalog
 
 DESCRIPTION="DSSSL Stylesheets for DocBook"
 HOMEPAGE="https://github.com/docbook/wiki/wiki"
-SRC_URI="mirror://sourceforge/docbook/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/docbook/${MY_P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

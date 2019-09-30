@@ -6,7 +6,7 @@ inherit eutils flag-o-matic multilib
 
 DESCRIPTION="An MTA designed specifically for maildirs"
 HOMEPAGE="http://www.courier-mta.org/"
-SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/courier/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

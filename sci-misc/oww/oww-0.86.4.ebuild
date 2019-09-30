@@ -9,7 +9,7 @@ inherit autotools-utils
 
 DESCRIPTION="A one-wire weather station for Dallas Semiconductor"
 HOMEPAGE="http://oww.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="Artistic"

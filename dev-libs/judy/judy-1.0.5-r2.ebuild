@@ -7,7 +7,7 @@ inherit autotools ltprune multilib-minimal
 
 DESCRIPTION="A C library that implements a dynamic array"
 HOMEPAGE="http://judy.sourceforge.net/"
-SRC_URI="mirror://sourceforge/judy/Judy-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/judy/Judy-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="C library implementing the OAuth secure authentication protocol"
 HOMEPAGE="http://liboauth.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 MIT )"
 SLOT="0"

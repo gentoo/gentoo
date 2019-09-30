@@ -7,7 +7,7 @@ inherit multilib-minimal
 
 DESCRIPTION="Bauer stereophonic-to-binaural DSP library"
 HOMEPAGE="http://bs2b.sourceforge.net/"
-SRC_URI="mirror://sourceforge/bs2b/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/bs2b/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

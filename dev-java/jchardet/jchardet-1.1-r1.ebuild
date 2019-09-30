@@ -8,7 +8,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java port of Mozilla's Automatic Charset Detection algorithm"
 HOMEPAGE="http://jchardet.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}/${P}.zip"
 
 LICENSE="MPL-1.1"
 SLOT="0"

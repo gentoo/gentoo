@@ -7,7 +7,7 @@ inherit base
 
 DESCRIPTION="Tool for fault-tolerant data recovery from damaged (io-errors) devices or files"
 HOMEPAGE="http://safecopy.sourceforge.net"
-SRC_URI="mirror://sourceforge/safecopy/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/safecopy/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

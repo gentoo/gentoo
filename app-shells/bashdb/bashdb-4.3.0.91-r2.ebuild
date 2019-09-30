@@ -6,7 +6,7 @@ EAPI=6
 MY_P="${PN}-${PV:0:3}-${PV:4}"
 DESCRIPTION="bash source code debugging"
 HOMEPAGE="http://bashdb.sourceforge.net/"
-SRC_URI="mirror://sourceforge/bashdb/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/bashdb/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

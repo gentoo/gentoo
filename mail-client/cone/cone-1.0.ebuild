@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="CONE: COnsole News reader and Emailer"
 HOMEPAGE="https://www.courier-mta.org/cone/"
-SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/courier/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

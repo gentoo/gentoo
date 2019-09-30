@@ -9,8 +9,8 @@ MY_P="${P/6/5}"
 
 DESCRIPTION="A Fast CJK (Chinese/Japanese/Korean) Console Environment"
 HOMEPAGE="http://zhcon.sourceforge.net/"
-SRC_URI="mirror://sourceforge/zhcon/${MY_P}.tar.gz
-		mirror://sourceforge/zhcon/zhcon-0.2.5-to-0.2.6.diff.gz"
+SRC_URI="https://download.sourceforge.net/zhcon/${MY_P}.tar.gz
+		https://download.sourceforge.net/zhcon/zhcon-0.2.5-to-0.2.6.diff.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

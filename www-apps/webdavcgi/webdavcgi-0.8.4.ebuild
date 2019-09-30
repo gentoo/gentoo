@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs versionator
 
 DESCRIPTION="A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV"
 HOMEPAGE="http://webdavcgi.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 

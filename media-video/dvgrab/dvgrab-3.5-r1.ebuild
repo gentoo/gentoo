@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Digital Video (DV) grabber for GNU/Linux"
 HOMEPAGE="https://github.com/ddennedy/dvgrab"
-SRC_URI="mirror://sourceforge/kino/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/kino/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

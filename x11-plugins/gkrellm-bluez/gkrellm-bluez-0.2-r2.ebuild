@@ -6,7 +6,7 @@ EAPI=6
 inherit gkrellm-plugin
 
 DESCRIPTION="GKrellm plugin for monitoring bluetooth (Linux BlueZ) adapters"
-SRC_URI="mirror://sourceforge/gkrellm-bluez/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gkrellm-bluez/${P}.tar.gz"
 HOMEPAGE="http://gkrellm-bluez.sourceforge.net"
 
 LICENSE="GPL-2"

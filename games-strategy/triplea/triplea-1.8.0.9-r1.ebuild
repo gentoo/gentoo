@@ -7,7 +7,7 @@ inherit eutils java-pkg-2 java-ant-2 versionator
 MY_PV=$(replace_all_version_separators _)
 DESCRIPTION="An open source clone of the popular Axis and Allies boardgame"
 HOMEPAGE="http://triplea.sourceforge.net/"
-SRC_URI="mirror://sourceforge/triplea/${PN}_${MY_PV}_source_code_only.zip"
+SRC_URI="https://download.sourceforge.net/triplea/${PN}_${MY_PV}_source_code_only.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="True Audio Compressor Software"
 HOMEPAGE="http://tta.sourceforge.net"
-SRC_URI="mirror://sourceforge/tta/${P}-src.tgz"
+SRC_URI="https://download.sourceforge.net/tta/${P}-src.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

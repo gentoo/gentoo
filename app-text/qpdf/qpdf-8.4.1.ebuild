@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Command-line tool for structural, content-preserving transformation of PDF files"
 HOMEPAGE="http://qpdf.sourceforge.net/"
-SRC_URI="mirror://sourceforge/qpdf/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/qpdf/${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 Artistic-2 )"
 

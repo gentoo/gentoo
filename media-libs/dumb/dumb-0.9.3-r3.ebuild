@@ -7,7 +7,7 @@ inherit toolchain-funcs multilib-build multilib-minimal
 
 DESCRIPTION="IT/XM/S3M/MOD player library with click removal and IT filters"
 HOMEPAGE="http://dumb.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dumb/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dumb/${P}.tar.gz"
 
 LICENSE="DUMB-0.9.3"
 SLOT="0"

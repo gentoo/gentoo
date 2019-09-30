@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Libggi extension for advanced color and palette handling"
 HOMEPAGE="https://ibiblio.org/ggicore/packages/libggigcp.html"
-SRC_URI="mirror://sourceforge/ggi/${P}.src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/ggi/${P}.src.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

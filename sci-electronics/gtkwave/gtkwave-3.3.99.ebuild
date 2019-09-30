@@ -7,7 +7,7 @@ inherit xdg-utils toolchain-funcs
 
 DESCRIPTION="A wave viewer for LXT, LXT2, VZT, GHW and standard Verilog VCD/EVCD files"
 HOMEPAGE="http://gtkwave.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 IUSE="doc examples fasttree fatlines judy lzma packed tcl"
 LICENSE="GPL-2 MIT"

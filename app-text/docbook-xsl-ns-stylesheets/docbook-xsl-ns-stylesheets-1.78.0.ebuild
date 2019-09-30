@@ -9,7 +9,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="XSL Stylesheets for Docbook"
 HOMEPAGE="https://github.com/docbook/wiki/wiki"
-SRC_URI="mirror://sourceforge/docbook/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/docbook/${MY_P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

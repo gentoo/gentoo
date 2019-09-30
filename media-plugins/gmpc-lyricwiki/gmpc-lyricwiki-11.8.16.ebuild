@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="This plugin uses lyricwiki to fetch lyrics"
 HOMEPAGE="http://gmpc.wikia.com/wiki/GMPC_PLUGIN_LYRICWIKI"
-SRC_URI="mirror://sourceforge/musicpd/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/musicpd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

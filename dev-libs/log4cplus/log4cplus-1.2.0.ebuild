@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="C++ port of the Log for Java (log4j) logging library"
 HOMEPAGE="http://log4cplus.sourceforge.net/ https://github.com/log4cplus/log4cplus"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}-stable/${PV}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/project/${PN}/${PN}-stable/${PV}/${P}.tar.bz2"
 
 LICENSE="|| ( Apache-2.0 BSD-2 )"
 SLOT="0/1.2-5"

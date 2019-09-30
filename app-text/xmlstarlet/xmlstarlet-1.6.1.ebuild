@@ -5,7 +5,7 @@ EAPI="4"
 
 DESCRIPTION="A set of tools to transform, query, validate, and edit XML documents"
 HOMEPAGE="http://xmlstar.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xmlstar/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xmlstar/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

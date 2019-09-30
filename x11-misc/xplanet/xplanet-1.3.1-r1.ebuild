@@ -6,7 +6,7 @@ inherit flag-o-matic
 
 DESCRIPTION="Render images of the earth into the X root window"
 HOMEPAGE="http://xplanet.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Asynchronous Network Library"
 HOMEPAGE="http://asio.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}/${P}.tar.bz2"
 
 LICENSE="Boost-1.0"
 SLOT="0"

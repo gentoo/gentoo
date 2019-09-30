@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="Open Dynamics Engine SDK"
 HOMEPAGE="http://ode.org/"
-SRC_URI="mirror://sourceforge/opende/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/opende/${P}.tar.bz2"
 
 LICENSE="|| ( LGPL-2.1 BSD )"
 SLOT="0"

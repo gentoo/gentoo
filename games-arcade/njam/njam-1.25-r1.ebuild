@@ -7,7 +7,7 @@ inherit desktop flag-o-matic
 MY_P="${P}-src"
 DESCRIPTION="Multi or single-player network Pacman-like game in SDL"
 HOMEPAGE="http://njam.sourceforge.net/"
-SRC_URI="mirror://sourceforge/njam/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/njam/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Coraid Ethernet Console client"
 HOMEPAGE="http://aoetools.sourceforge.net/"
-SRC_URI="mirror://sourceforge/aoetools/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/aoetools/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

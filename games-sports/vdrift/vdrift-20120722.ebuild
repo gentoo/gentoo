@@ -7,8 +7,8 @@ inherit eutils scons-utils games
 MY_P=${PN}-${PV:0:4}-${PV:4:2}-${PV:6:2}
 DESCRIPTION="A driving simulation made with drift racing in mind"
 HOMEPAGE="http://vdrift.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2
-	mirror://sourceforge/${PN}/${MY_P}c_patch.diff"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.bz2
+	https://download.sourceforge.net/${PN}/${MY_P}c_patch.diff"
 
 LICENSE="GPL-3 ZLIB LGPL-2.1+"
 SLOT="0"

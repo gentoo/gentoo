@@ -13,7 +13,7 @@ MY_PN=PySolFC
 CARD_BASE="${MY_PN}-Cardsets"
 CARD_BASEV="${CARD_BASE}-2.0"
 CARD_BASE_MINV="${CARD_BASE}--Minimal-2.0.1"
-SF_CARD_BASE="mirror://sourceforge/${PN}/${CARD_BASE}"
+SF_CARD_BASE="https://download.sourceforge.net/${PN}/${CARD_BASE}"
 
 DESCRIPTION="An exciting collection of more than 1000 solitaire card games"
 HOMEPAGE="https://pysolfc.sourceforge.net/"

@@ -9,7 +9,7 @@ MY_P=FANN-${PV}-Source
 
 DESCRIPTION="Fast Artificial Neural Network Library"
 HOMEPAGE="http://leenissen.dk/fann/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

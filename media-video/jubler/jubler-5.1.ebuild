@@ -9,7 +9,7 @@ MY_PN="${PN^}"
 
 DESCRIPTION="Java subtitle editor"
 HOMEPAGE="http://www.jubler.org/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-source-${PV}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_PN}-source-${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

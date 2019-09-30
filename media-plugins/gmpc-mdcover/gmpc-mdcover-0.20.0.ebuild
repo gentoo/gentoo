@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Plugin for fetching cover art, artist art, album and artist information"
 HOMEPAGE="http://gmpc.wikia.com/wiki/GMPC_PLUGIN_MDCOVER"
-SRC_URI="mirror://sourceforge/musicpd/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/musicpd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

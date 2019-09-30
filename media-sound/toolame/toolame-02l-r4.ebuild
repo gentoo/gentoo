@@ -6,7 +6,7 @@ inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="tooLAME - an optimized mpeg 1/2 layer 2 audio encoder"
 HOMEPAGE="http://www.planckenergy.com"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

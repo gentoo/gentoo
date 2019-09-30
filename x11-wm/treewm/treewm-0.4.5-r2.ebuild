@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="WindowManager that arranges the windows in a tree (not in a list)"
 HOMEPAGE="http://treewm.sourceforge.net/"
-SRC_URI="mirror://sourceforge/treewm/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/treewm/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"

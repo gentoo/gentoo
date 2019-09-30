@@ -10,7 +10,7 @@ inherit java-pkg-2 java-ant-2 eutils
 DESCRIPTION="A simple HTML scanner and tag balancer using standard XML interfaces"
 
 HOMEPAGE="http://nekohtml.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 
 SLOT="0"

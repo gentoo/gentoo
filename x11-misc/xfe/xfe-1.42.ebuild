@@ -11,7 +11,7 @@ inherit autotools eutils l10n
 
 DESCRIPTION="MS-Explorer-like minimalist file manager for X"
 HOMEPAGE="http://roland65.free.fr/xfe"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

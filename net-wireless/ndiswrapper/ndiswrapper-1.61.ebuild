@@ -6,7 +6,7 @@ inherit linux-mod readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="Wrapper for using Windows drivers for some wireless cards"
 HOMEPAGE="http://ndiswrapper.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/stable/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/stable/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 x86"

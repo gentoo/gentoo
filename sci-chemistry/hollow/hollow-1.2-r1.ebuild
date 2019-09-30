@@ -9,7 +9,7 @@ inherit python-r1
 
 DESCRIPTION="Production of surface images of proteins"
 HOMEPAGE="http://hollow.sourceforge.net/"
-#SRC_URI="mirror://sourceforge/${P}.zip"
+#SRC_URI="https://download.sourceforge.net/${P}.zip"
 SRC_URI="http://hollow.sourceforge.net/${P}.zip"
 
 SLOT="0"

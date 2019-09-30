@@ -8,7 +8,7 @@ inherit fdo-mime python-single-r1
 
 DESCRIPTION="A graphical tool to compare and merge text files"
 HOMEPAGE="http://diffuse.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

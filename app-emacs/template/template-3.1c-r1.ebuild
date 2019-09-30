@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Use templates, decorate comments, auto-update buffers"
 HOMEPAGE="http://emacs-template.sourceforge.net/"
-SRC_URI="mirror://sourceforge/emacs-template/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/emacs-template/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

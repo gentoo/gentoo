@@ -10,7 +10,7 @@ REQUIRED_USE="systray? ( toolbar )"
 
 DESCRIPTION="X11 window manager featuring tabs and an iconbar"
 
-SRC_URI="mirror://sourceforge/fluxbox/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/fluxbox/${P}.tar.xz"
 HOMEPAGE="http://www.fluxbox.org"
 SLOT="0"
 LICENSE="MIT"

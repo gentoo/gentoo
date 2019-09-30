@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library"
 HOMEPAGE="https://sourceforge.net/projects/xdb/ http://linux.techass.com/projects/xdb/"
-SRC_URI="mirror://sourceforge/xdb/${PN}64-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xdb/${PN}64-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

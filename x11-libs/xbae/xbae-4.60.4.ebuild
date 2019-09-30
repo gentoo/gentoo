@@ -7,7 +7,7 @@ inherit autotools-utils
 
 DESCRIPTION="Motif-based widget to display a grid of cells as a spreadsheet"
 HOMEPAGE="http://xbae.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"

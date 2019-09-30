@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 MY_P="WepAttack-${PV}"
 DESCRIPTION="WLAN tool for breaking 802.11 WEP keys"
 HOMEPAGE="http://wepattack.sourceforge.net/"
-SRC_URI="mirror://sourceforge/wepattack/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/wepattack/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A collection of tasks for Apache Ant"
 HOMEPAGE="http://ant-contrib.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ant-contrib/${PN}-${PV/_beta/b}-src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/ant-contrib/${PN}-${PV/_beta/b}-src.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"

@@ -6,7 +6,7 @@ EAPI=6
 inherit gkrellm-plugin toolchain-funcs
 
 DESCRIPTION="A GKrellM2 plugin to control a fli4l router"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-src-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-src-${PV}.tar.bz2"
 HOMEPAGE="http://gkrellm-imonc.sourceforge.net/"
 
 # The COPYING file contains the GPLv2, but the file headers say GPLv2+.

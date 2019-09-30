@@ -8,7 +8,7 @@ inherit eutils flag-o-matic gnome2
 
 DESCRIPTION="C++ bindings for gtkglext"
 HOMEPAGE="https://projects.gnome.org/gtkglext/"
-SRC_URI="mirror://sourceforge/gtkglext/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/gtkglext/${P}.tar.bz2"
 
 KEYWORDS="amd64 ppc x86"
 IUSE="doc"

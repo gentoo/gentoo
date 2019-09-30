@@ -4,7 +4,7 @@
 EAPI=5
 DESCRIPTION="An application that translates joystick events to mouse events"
 HOMEPAGE="https://sourceforge.net/projects/joymouse-linux"
-SRC_URI="mirror://sourceforge/joymouse-linux/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/joymouse-linux/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

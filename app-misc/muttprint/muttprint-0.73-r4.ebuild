@@ -7,7 +7,7 @@ inherit autotools-utils eutils
 
 DESCRIPTION="Script for pretty printing of your mails"
 HOMEPAGE="http://muttprint.sourceforge.net"
-SRC_URI="mirror://sourceforge/muttprint/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/muttprint/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

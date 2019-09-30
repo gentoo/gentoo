@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Flexible Calendar component to the Java Platform"
 HOMEPAGE="http://nachocalendar.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-src-${PV}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-src-${PV}.tar.bz2 -> ${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

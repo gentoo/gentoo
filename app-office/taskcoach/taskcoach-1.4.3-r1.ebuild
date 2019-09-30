@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Simple personal tasks and todo lists manager"
 HOMEPAGE="http://www.taskcoach.org https://pypi.org/project/TaskCoach/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 
 SLOT="0"

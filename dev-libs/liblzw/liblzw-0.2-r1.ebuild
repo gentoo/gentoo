@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="small C library for reading LZW compressed files (.Z)"
 HOMEPAGE="https://github.com/vapier/liblzw"
-SRC_URI="mirror://sourceforge/freestdf/${P}.tar.lzma"
+SRC_URI="https://download.sourceforge.net/freestdf/${P}.tar.lzma"
 
 LICENSE="public-domain"
 SLOT="0"

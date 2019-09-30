@@ -7,7 +7,7 @@ inherit eutils cmake-utils wxwidgets
 
 DESCRIPTION="ARRL Logbook of the World"
 HOMEPAGE="http://www.arrl.org/tqsl-download"
-SRC_URI="mirror://sourceforge/trustedqsl/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/trustedqsl/${P}.tar.gz"
 
 LICENSE="LOTW"
 SLOT="0"

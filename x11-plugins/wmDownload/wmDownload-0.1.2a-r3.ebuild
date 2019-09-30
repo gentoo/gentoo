@@ -5,7 +5,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="dockapp that displays how much data you've received on each eth and ppp device"
-SRC_URI="mirror://sourceforge/wmdownload/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/wmdownload/${P}.tar.gz"
 HOMEPAGE="http://wmdownload.sourceforge.net/"
 
 LICENSE="GPL-2"

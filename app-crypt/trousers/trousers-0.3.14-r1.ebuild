@@ -7,7 +7,7 @@ inherit autotools linux-info readme.gentoo-r1 systemd user udev
 
 DESCRIPTION="An open-source TCG Software Stack (TSS) v1.1 implementation"
 HOMEPAGE="http://trousers.sf.net"
-SRC_URI="mirror://sourceforge/trousers/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/trousers/${PN}/${P}.tar.gz"
 
 LICENSE="CPL-1.0 GPL-2"
 SLOT="0"

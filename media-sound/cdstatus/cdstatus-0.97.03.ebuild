@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="Tool for diagnosing cdrom drive and digital data (audio) extraction"
 HOMEPAGE="http://cdstatus.sourceforge.net"
-SRC_URI="mirror://sourceforge/cdstatus/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cdstatus/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

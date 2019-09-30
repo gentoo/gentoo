@@ -7,7 +7,7 @@ inherit eutils games
 MY_P="twind-${PV}"
 DESCRIPTION="Match and remove all of the blocks before time runs out"
 HOMEPAGE="http://twind.sourceforge.net/"
-SRC_URI="mirror://sourceforge/twind/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/twind/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

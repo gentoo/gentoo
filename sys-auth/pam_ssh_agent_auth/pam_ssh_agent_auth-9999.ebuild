@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/jbeverly/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://sourceforge/pamsshagentauth/${PN}/v${PV}/${P}.tar.bz2"
+	SRC_URI="https://download.sourceforge.net/pamsshagentauth/${PN}/v${PV}/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 

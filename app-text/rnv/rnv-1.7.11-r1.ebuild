@@ -6,7 +6,7 @@ inherit unpacker toolchain-funcs
 
 DESCRIPTION="A lightweight Relax NG Compact Syntax validator"
 HOMEPAGE="http://www.davidashen.net/rnv.html"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"

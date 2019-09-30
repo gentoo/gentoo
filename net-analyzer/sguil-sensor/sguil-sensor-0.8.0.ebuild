@@ -8,7 +8,7 @@ inherit user
 MY_PV="${PV/_p/p}"
 DESCRIPTION="Sensor part of sguil Network Security Monitoring"
 HOMEPAGE="http://sguil.sourceforge.net"
-SRC_URI="mirror://sourceforge/sguil/sguil-sensor-${MY_PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sguil/sguil-sensor-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2 QPL"
 SLOT="0"

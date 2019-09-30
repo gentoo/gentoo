@@ -9,7 +9,7 @@ inherit eutils multilib user python-r1
 
 DESCRIPTION="Greg Stein's python streaming audio server for desktop or LAN use"
 HOMEPAGE="http://edna.sourceforge.net/"
-SRC_URI="mirror://sourceforge/edna/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/edna/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit python-single-r1 vim-plugin
 MY_P="AutomaticTexPlugin_${PV}"
 DESCRIPTION="vim plugin: a comprehensive plugin for editing LaTeX files"
 HOMEPAGE="http://atp-vim.sourceforge.net/"
-SRC_URI="mirror://sourceforge/atp-vim/releases/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/atp-vim/releases/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 KEYWORDS="amd64 x86"
 

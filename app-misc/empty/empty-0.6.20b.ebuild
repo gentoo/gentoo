@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Small shell utility, similar to expect(1)"
 HOMEPAGE="http://empty.sourceforge.net"
-SRC_URI="mirror://sourceforge/empty/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/empty/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"

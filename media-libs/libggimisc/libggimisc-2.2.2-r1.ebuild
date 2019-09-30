@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Adds support for some special graphical target features"
 HOMEPAGE="https://ibiblio.org/ggicore/packages/libggimisc.html"
-SRC_URI="mirror://sourceforge/ggi/${P}.src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/ggi/${P}.src.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

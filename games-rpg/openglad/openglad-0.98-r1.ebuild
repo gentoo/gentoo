@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="An SDL clone of Gladiator, a classic RPG game"
 HOMEPAGE="http://snowstorm.sourceforge.net/"
-SRC_URI="mirror://sourceforge/snowstorm/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/snowstorm/${P}.tar.gz
 	mirror://gentoo/${PN}.png"
 
 LICENSE="GPL-2"

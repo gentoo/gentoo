@@ -9,7 +9,7 @@ inherit autotools-utils
 
 DESCRIPTION="A mail handling library"
 HOMEPAGE="http://libmail.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

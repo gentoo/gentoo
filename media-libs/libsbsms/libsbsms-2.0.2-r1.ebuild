@@ -8,7 +8,7 @@ inherit eutils autotools
 
 DESCRIPTION="A library for high quality time and pitch scale modification"
 HOMEPAGE="http://sbsms.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sbsms/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sbsms/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit eutils multilib wxwidgets
 
 DESCRIPTION="C++ wrapper around the public domain SQLite 3.x database"
 HOMEPAGE="http://wxcode.sourceforge.net/components/wxsqlite3/"
-SRC_URI="mirror://sourceforge/wxcode/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/wxcode/${P}.tar.gz"
 
 LICENSE="wxWinLL-3"
 SLOT="0"

@@ -9,7 +9,7 @@ IUSE="doc"
 MY_P="${P/./-}"
 
 DESCRIPTION="A bundle of style and class files for creating dynamic online presentations"
-SRC_URI="mirror://sourceforge/texpower/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/texpower/${MY_P}.tar.gz"
 HOMEPAGE="http://texpower.sourceforge.net/"
 LICENSE="GPL-2"
 SLOT="0"

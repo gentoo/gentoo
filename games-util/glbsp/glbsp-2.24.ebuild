@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs versionator
 MY_PV=$(delete_version_separator 1)
 DESCRIPTION="A node builder specially designed for OpenGL ports of the DOOM game engine"
 HOMEPAGE="http://glbsp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/glbsp/${PN}_src_${MY_PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/glbsp/${PN}_src_${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

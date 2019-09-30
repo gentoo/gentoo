@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${PV/_alpha/-a}"
 
 DESCRIPTION="Web Services for Python"
 HOMEPAGE="http://pywebsvcs.sourceforge.net/zsi.html"
-SRC_URI="mirror://sourceforge/pywebsvcs/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pywebsvcs/${MY_P}.tar.gz"
 
 LICENSE="BSD MIT"
 SLOT="0"

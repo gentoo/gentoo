@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="Command line tool for extracting videos from various websites"
 HOMEPAGE="http://cclive.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PV:0:3}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PV:0:3}/${P}.tar.xz"
 
 LICENSE="AGPL-3"
 SLOT="0"

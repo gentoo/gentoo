@@ -9,7 +9,7 @@ MY_P=${PN}_${PV}
 
 DESCRIPTION="A Qt5 client for the music player daemon (MPD) written in C++"
 HOMEPAGE="https://sourceforge.net/projects/quimup/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}_source.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}_source.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

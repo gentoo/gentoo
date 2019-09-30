@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="A Machine Emulator, Mainly emulates MIPS, but supports other CPU types"
 HOMEPAGE="http://gxemul.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/gxemul/GXemul/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/gxemul/GXemul/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

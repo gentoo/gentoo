@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A GUI front-end to dd/dc3dd"
 HOMEPAGE="http://air-imager.sourceforge.net/"
-SRC_URI="mirror://sourceforge/air-imager/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/air-imager/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

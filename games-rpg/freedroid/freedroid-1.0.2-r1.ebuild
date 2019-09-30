@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="Freedroid - a Paradroid clone"
 HOMEPAGE="http://freedroid.sourceforge.net/"
-SRC_URI="mirror://sourceforge/freedroid/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/freedroid/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

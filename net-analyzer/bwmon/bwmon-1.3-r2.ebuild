@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Simple ncurses bandwidth monitor"
 HOMEPAGE="http://bwmon.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 RDEPEND="sys-libs/ncurses"
 DEPEND="

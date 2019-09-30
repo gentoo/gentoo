@@ -10,7 +10,7 @@ RESTRICT="test"
 
 DESCRIPTION="Heirloom Bourne Shell, derived from OpenSolaris code SVR4/SVID3"
 HOMEPAGE="http://heirloom.sourceforge.net/sh.html"
-SRC_URI="mirror://sourceforge/heirloom/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/heirloom/${P}.tar.bz2"
 
 LICENSE="CDDL"
 SLOT="0"

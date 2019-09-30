@@ -7,7 +7,7 @@ inherit cmake-utils desktop gnome2-utils
 
 DESCRIPTION="Modern 3D space shooter with spaceship upgrade possibilities"
 HOMEPAGE="https://sourceforge.net/projects/openastromenace/"
-SRC_URI="mirror://sourceforge/openastromenace/${PV}/astromenace-src-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/openastromenace/${PV}/astromenace-src-${PV}.tar.bz2"
 
 LICENSE="GPL-3 GPL-3+ CC-BY-SA-3.0 UbuntuFontLicense-1.0 OFL-1.1"
 SLOT="0"

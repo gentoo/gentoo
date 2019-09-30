@@ -7,7 +7,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Java utility for computing and verifying checksums: CRC*, MD*, etc."
 HOMEPAGE="http://www.jonelo.de/java/jacksum/"
-SRC_URI="mirror://sourceforge/jacksum/${P}.zip"
+SRC_URI="https://download.sourceforge.net/jacksum/${P}.zip"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"

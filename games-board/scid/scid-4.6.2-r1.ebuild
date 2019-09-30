@@ -7,11 +7,11 @@ inherit eutils toolchain-funcs gnome2-utils python-any-r1
 
 DESCRIPTION="a free chess database application"
 HOMEPAGE="http://scid.sourceforge.net/"
-SRC_URI="mirror://sourceforge/scid/${P}.zip
-	mirror://sourceforge/scid/spelling.zip
-	mirror://sourceforge/scid/ratings.zip
-	mirror://sourceforge/scid/photos.zip
-	mirror://sourceforge/scid/scidlet40k.zip"
+SRC_URI="https://download.sourceforge.net/scid/${P}.zip
+	https://download.sourceforge.net/scid/spelling.zip
+	https://download.sourceforge.net/scid/ratings.zip
+	https://download.sourceforge.net/scid/photos.zip
+	https://download.sourceforge.net/scid/scidlet40k.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

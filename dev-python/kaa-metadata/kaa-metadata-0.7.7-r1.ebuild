@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Powerful media metadata parser for media files in Python, successor of MMPython"
 HOMEPAGE="http://www.freevo.org/ https://github.com/freevo/kaa-metadata"
-SRC_URI="mirror://sourceforge/freevo/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/freevo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

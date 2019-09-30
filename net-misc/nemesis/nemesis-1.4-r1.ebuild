@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="A commandline-based, portable human IP stack for UNIX/Linux"
 HOMEPAGE="http://nemesis.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P/_}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P/_}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="XMDS - The eXtensible Multi-Dimensional Simulator"
 HOMEPAGE="http://www.xmds.org"
-SRC_URI="mirror://sourceforge/xmds/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xmds/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"

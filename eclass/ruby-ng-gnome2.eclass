@@ -44,7 +44,7 @@ if has "${EAPI:-0}" 0 1 2 3 ; then
 else
 	RUBY_S=ruby-gnome2-all-${PV}/${subbinding}
 fi
-SRC_URI="mirror://sourceforge/ruby-gnome2/ruby-gnome2-all-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ruby-gnome2/ruby-gnome2-all-${PV}.tar.gz"
 HOMEPAGE="https://ruby-gnome2.osdn.jp/"
 LICENSE="Ruby"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="ORiNOCO IEEE 802.11 wireless LAN firmware utilities"
 HOMEPAGE="http://www.nongnu.org/orinoco/"
-SRC_URI="mirror://sourceforge/orinoco/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/orinoco/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

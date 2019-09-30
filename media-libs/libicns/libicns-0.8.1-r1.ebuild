@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A library for manipulating MacOS X .icns icon format"
 HOMEPAGE="https://sourceforge.net/projects/icns/"
-SRC_URI="mirror://sourceforge/icns/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/icns/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

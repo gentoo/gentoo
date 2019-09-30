@@ -6,7 +6,7 @@ EAPI=6
 inherit linux-info
 
 DESCRIPTION="Create tunnels over TCP/IP networks with shaping, encryption, and compression"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 HOMEPAGE="http://vtun.sourceforge.net/"
 
 LICENSE="GPL-2"

@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="Command line utility able to create bootable USB disks"
 HOMEPAGE="http://advancemame.sourceforge.net/boot-readme.html"
-SRC_URI="mirror://sourceforge/advancemame/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/advancemame/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

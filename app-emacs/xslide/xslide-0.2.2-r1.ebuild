@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="An Emacs major mode for editing XSL stylesheets and running XSL processes"
 HOMEPAGE="https://sourceforge.net/projects/xslide/"
-SRC_URI="mirror://sourceforge/xslide/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xslide/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

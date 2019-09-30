@@ -6,7 +6,7 @@ EAPI=6
 inherit gkrellm-plugin toolchain-funcs
 
 DESCRIPTION="A GKrellM2 plugin of the famous wmMoonClock dockapp"
-SRC_URI="mirror://sourceforge/gkrellmoon/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gkrellmoon/${P}.tar.gz"
 HOMEPAGE="http://gkrellmoon.sourceforge.net/"
 
 LICENSE="GPL-2"

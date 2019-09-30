@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Fast Base64 encoding/decoding routines"
 HOMEPAGE="http://libb64.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.zip"
 
 LICENSE="CC-PD"
 # static library, so always rebuild

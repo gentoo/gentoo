@@ -7,7 +7,7 @@ inherit perl-app
 
 DESCRIPTION="A terminal-based file manager written in Perl"
 HOMEPAGE="http://p-f-m.sourceforge.net/"
-SRC_URI="mirror://sourceforge/p-f-m/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/p-f-m/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

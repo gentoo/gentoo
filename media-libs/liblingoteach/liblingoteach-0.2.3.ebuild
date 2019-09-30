@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A library to support lingoteach-ui and for generic lesson development"
 HOMEPAGE="http://lingoteach.sourceforge.net"
-SRC_URI="mirror://sourceforge/lingoteach/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lingoteach/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

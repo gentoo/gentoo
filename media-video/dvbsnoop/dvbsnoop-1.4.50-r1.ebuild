@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="DVB/MPEG stream analyzer program"
-SRC_URI="mirror://sourceforge/dvbsnoop/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dvbsnoop/${P}.tar.gz"
 HOMEPAGE="http://dvbsnoop.sourceforge.net/"
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~ppc x86"

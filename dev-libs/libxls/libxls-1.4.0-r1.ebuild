@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="A library which can read Excel (xls) files"
 HOMEPAGE="http://libxls.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/libxls/${P}.zip"
+SRC_URI="https://download.sourceforge.net/project/libxls/${P}.zip"
 
 LICENSE="GPL-2 LGPL-3"
 SLOT="0/1" # libxlsreader.so.1

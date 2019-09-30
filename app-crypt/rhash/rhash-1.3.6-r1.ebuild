@@ -7,7 +7,7 @@ inherit toolchain-funcs multilib-minimal
 
 DESCRIPTION="Console utility and library for computing and verifying file hash sums"
 HOMEPAGE="http://rhash.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

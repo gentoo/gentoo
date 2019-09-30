@@ -7,7 +7,7 @@ inherit font
 MY_P="${PN}-bdf-${PV/_p/-}"
 DESCRIPTION="WenQuanYi Unibit CJK font"
 HOMEPAGE="http://wenq.org/enindex.cgi"
-SRC_URI="mirror://sourceforge/wqy/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/wqy/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

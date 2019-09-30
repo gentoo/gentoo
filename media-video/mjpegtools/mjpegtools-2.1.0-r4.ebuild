@@ -7,7 +7,7 @@ inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="Tools for MJPEG video"
 HOMEPAGE="http://mjpeg.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mjpeg/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mjpeg/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="1"

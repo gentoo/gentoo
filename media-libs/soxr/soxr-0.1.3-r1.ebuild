@@ -8,7 +8,7 @@ inherit cmake-multilib
 MY_P="${P}-Source"
 DESCRIPTION="SoX Resampler library"
 HOMEPAGE="https://sourceforge.net/p/soxr/wiki/Home/"
-SRC_URI="mirror://sourceforge/soxr/${MY_P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/soxr/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

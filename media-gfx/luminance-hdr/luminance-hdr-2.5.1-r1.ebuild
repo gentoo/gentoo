@@ -8,7 +8,7 @@ inherit cmake-utils toolchain-funcs flag-o-matic xdg-utils
 MY_P=${P/_/.}
 DESCRIPTION="Graphical user interface that provides a workflow for HDR imaging"
 HOMEPAGE="http://qtpfsgui.sourceforge.net https://github.com/LuminanceHDR/LuminanceHDR"
-SRC_URI="mirror://sourceforge/qtpfsgui/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/qtpfsgui/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

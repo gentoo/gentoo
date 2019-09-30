@@ -7,7 +7,7 @@ MY_P="${P^g}"
 
 DESCRIPTION="OpenGL binding for Gauche"
 HOMEPAGE="http://practical-scheme.net/gauche/"
-SRC_URI="mirror://sourceforge/${PN%-*}/${MY_P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN%-*}/${MY_P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"

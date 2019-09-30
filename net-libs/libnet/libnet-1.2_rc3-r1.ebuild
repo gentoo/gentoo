@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="library providing an API for commonly used low-level network functions"
 HOMEPAGE="http://libnet-dev.sourceforge.net/ https://github.com/sam-github/libnet"
-SRC_URI="mirror://sourceforge/project/${PN}-dev/${P/_/-}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/${PN}-dev/${P/_/-}.tar.gz"
 
 LICENSE="BSD BSD-2 HPND"
 SLOT="1.1"

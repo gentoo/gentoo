@@ -9,7 +9,7 @@ inherit java-pkg-2 eutils
 
 DESCRIPTION="A JNI-wrapper to GNU Readline"
 HOMEPAGE="http://java-readline.sourceforge.net/"
-SRC_URI="mirror://sourceforge/java-readline/${P}-src.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/java-readline/${P}-src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

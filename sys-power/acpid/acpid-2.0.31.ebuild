@@ -8,7 +8,7 @@ DESCRIPTION="Daemon for Advanced Configuration and Power Interface"
 HOMEPAGE="https://sourceforge.net/projects/acpid2"
 EXTRAS_VER="2.0.29-r1"
 EXTRAS_NAME="${CATEGORY}_${PN}_${EXTRAS_VER}_extras"
-SRC_URI="mirror://sourceforge/${PN}2/${P}.tar.xz
+SRC_URI="https://download.sourceforge.net/${PN}2/${P}.tar.xz
 	https://dev.gentoo.org/~andrey_utkin/distfiles/${EXTRAS_NAME}.tar.xz
 	"
 

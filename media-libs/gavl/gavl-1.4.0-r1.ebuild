@@ -9,7 +9,7 @@ inherit autotools-multilib
 
 DESCRIPTION="library for handling uncompressed audio and video data"
 HOMEPAGE="http://gmerlin.sourceforge.net"
-SRC_URI="mirror://sourceforge/gmerlin/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gmerlin/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

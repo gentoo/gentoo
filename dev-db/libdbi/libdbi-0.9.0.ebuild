@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils autotools multilib
 
 DESCRIPTION="A database-independent abstraction layer in C"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 HOMEPAGE="http://libdbi.sourceforge.net/"
 LICENSE="LGPL-2.1"
 

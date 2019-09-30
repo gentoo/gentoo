@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="A challenge/response-based white-list spam filter"
 HOMEPAGE="http://mapson.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mapson/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mapson/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

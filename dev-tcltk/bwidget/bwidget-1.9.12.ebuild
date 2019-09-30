@@ -10,7 +10,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="High-level widget set for Tcl/Tk"
 HOMEPAGE="http://tcllib.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tcllib/${MY_PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/tcllib/${MY_PN}/${PV}/${P}.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0"

@@ -9,7 +9,7 @@ DESCRIPTION="Utility to convert files in xfig format to OpenOffice.org Draw form
 LICENSE="GPL-2"
 
 HOMEPAGE="https://sourceforge.net/projects/fig2sxd"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.orig.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}_${PV}.orig.tar.gz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"

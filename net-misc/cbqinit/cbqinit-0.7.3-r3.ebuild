@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Sets up class-based queue traffic control (QoS) with iproute2"
 HOMEPAGE="https://www.sourceforge.net/projects/cbqinit/"
-SRC_URI="mirror://sourceforge/cbqinit/cbq.init-v${PV} -> ${P}"
+SRC_URI="https://download.sourceforge.net/cbqinit/cbq.init-v${PV} -> ${P}"
 
 LICENSE="GPL-2"
 SLOT="0"

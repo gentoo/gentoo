@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="Simple templatized C++ library for parsing command line arguments"
 HOMEPAGE="http://tclap.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

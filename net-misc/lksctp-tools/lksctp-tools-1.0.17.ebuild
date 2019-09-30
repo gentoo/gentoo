@@ -7,7 +7,7 @@ inherit eutils multilib flag-o-matic autotools autotools-utils linux-info
 
 DESCRIPTION="Tools for Linux Kernel Stream Control Transmission Protocol implementation"
 HOMEPAGE="http://lksctp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/lksctp/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lksctp/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2+ LGPL-2.1 )"
 SLOT="0"

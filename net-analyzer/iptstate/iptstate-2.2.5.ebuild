@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="IP Tables State displays states being kept by iptables in a top-like format"
 HOMEPAGE="https://www.phildev.net/iptstate/ https://github.com/jaymzh/iptstate"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"

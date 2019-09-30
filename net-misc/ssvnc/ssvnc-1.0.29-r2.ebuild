@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="VNC viewer that adds encryption security to VNC connections"
 HOMEPAGE="http://www.karlrunge.com/x11vnc/ssvnc.html"
-SRC_URI="mirror://sourceforge/ssvnc/${P}.src.tar.gz"
+SRC_URI="https://download.sourceforge.net/ssvnc/${P}.src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

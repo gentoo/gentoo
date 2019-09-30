@@ -10,7 +10,7 @@ inherit perl-module python-any-r1 cmake-multilib
 
 DESCRIPTION="Library providing rendering capabilities for complex non-Roman writing systems"
 HOMEPAGE="https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_home"
-SRC_URI="mirror://sourceforge/silgraphite/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/silgraphite/${PN}/${P}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

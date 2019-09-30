@@ -13,12 +13,12 @@ SOUNDS="sounds"
 
 DESCRIPTION="Bomberman clone w/network support for up to 6 players"
 HOMEPAGE="http://xblast.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xblast/${P}.tar.gz
-	mirror://sourceforge/xblast/${IMAGES}.tar.gz
-	mirror://sourceforge/xblast/${LEVELS}.tar.gz
-	mirror://sourceforge/xblast/${MODELS}.tar.gz
-	mirror://sourceforge/xblast/${MUSICS}.tar.gz
-	mirror://sourceforge/xblast/${SOUNDS}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xblast/${P}.tar.gz
+	https://download.sourceforge.net/xblast/${IMAGES}.tar.gz
+	https://download.sourceforge.net/xblast/${LEVELS}.tar.gz
+	https://download.sourceforge.net/xblast/${MODELS}.tar.gz
+	https://download.sourceforge.net/xblast/${MUSICS}.tar.gz
+	https://download.sourceforge.net/xblast/${SOUNDS}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

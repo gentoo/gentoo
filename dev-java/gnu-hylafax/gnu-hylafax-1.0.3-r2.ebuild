@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java API designed to implement the client protocol portion of the hfaxd server"
 HOMEPAGE="http://gnu-hylafax.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${P}-bin.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}/${PV}/${P}-bin.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

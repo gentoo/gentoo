@@ -7,7 +7,7 @@ inherit autotools gnome2-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="RAW Image format viewer and GIMP plugin"
 HOMEPAGE="http://ufraw.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

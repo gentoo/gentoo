@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="Loki C++ library from Modern C++ Design"
 HOMEPAGE="http://www.libferris.com/"
-SRC_URI="mirror://sourceforge/witme/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/witme/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

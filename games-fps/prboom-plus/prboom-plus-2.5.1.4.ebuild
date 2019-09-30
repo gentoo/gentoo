@@ -10,7 +10,7 @@ HOMEPAGE="https://prboom-plus.sourceforge.net"
 # We are using a github mirror here because the upstream tarball is missing the
 # free dog assets; we should update SRC_URI to point to the upstream tarball
 # once the free assets are present as expected
-#SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+#SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 SRC_URI="https://github.com/coelckers/prboom-plus/archive/f96f891d068dcc5ec52ed91056b46d27e9a8462d.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+

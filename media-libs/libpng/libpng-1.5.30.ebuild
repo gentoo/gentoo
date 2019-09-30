@@ -9,7 +9,7 @@ inherit eutils libtool multilib-minimal
 
 DESCRIPTION="Portable Network Graphics library"
 HOMEPAGE="http://www.libpng.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz
 	apng? ( https://dev.gentoo.org/~polynomial-c/${P}-apng.patch.gz )"
 
 LICENSE="libpng"

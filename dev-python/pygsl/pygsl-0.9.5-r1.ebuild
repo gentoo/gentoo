@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python interface for the GNU scientific library (gsl)"
 HOMEPAGE="http://pygsl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

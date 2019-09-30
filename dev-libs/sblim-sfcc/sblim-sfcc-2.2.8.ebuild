@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Small Footprint CIM Client Library"
 HOMEPAGE="https://sourceforge.net/apps/mediawiki/sblim"
-SRC_URI="mirror://sourceforge/project/sblim/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/project/sblim/${PN}/${P}.tar.bz2"
 
 LICENSE="EPL-1.0"
 SLOT="0"

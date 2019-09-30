@@ -6,7 +6,7 @@ inherit eutils unpacker toolchain-funcs games
 
 DESCRIPTION="fast-paced 2D shoot'em'up"
 HOMEPAGE="http://g2ex.sourceforge.net/"
-SRC_URI="mirror://sourceforge/g2ex/g2ex-setup.run"
+SRC_URI="https://download.sourceforge.net/g2ex/g2ex-setup.run"
 
 LICENSE="GPL-2"
 SLOT="0"

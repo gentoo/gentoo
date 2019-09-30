@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="dailystrips automatically downloads your favorite online comics from the web"
 HOMEPAGE="http://dailystrips.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dailystrips/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dailystrips/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

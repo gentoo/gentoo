@@ -7,7 +7,7 @@ inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="ethernet program loader for the Dreamcast"
 HOMEPAGE="http://cadcdev.sourceforge.net/"
-SRC_URI="mirror://sourceforge/cadcdev/dcload-ip-${PV}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/cadcdev/dcload-ip-${PV}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

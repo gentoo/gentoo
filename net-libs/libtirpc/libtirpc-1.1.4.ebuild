@@ -7,7 +7,7 @@ inherit autotools multilib-minimal toolchain-funcs usr-ldscript
 
 DESCRIPTION="Transport Independent RPC library (SunRPC replacement)"
 HOMEPAGE="https://sourceforge.net/projects/libtirpc/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2
 	mirror://gentoo/${PN}-glibc-nfs.tar.xz"
 
 LICENSE="GPL-2"

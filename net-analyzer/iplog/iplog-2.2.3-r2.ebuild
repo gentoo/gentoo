@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="iplog is a TCP/IP traffic logger"
 HOMEPAGE="http://ojnk.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ojnk/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ojnk/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 FDL-1.1 )"
 SLOT="0"

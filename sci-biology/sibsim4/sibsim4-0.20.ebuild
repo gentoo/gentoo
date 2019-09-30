@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A rewrite and improvement upon sim4, a DNA-mRNA aligner"
 HOMEPAGE="http://sibsim4.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/SIBsim4-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/SIBsim4-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

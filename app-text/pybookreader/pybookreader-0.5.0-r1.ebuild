@@ -10,7 +10,7 @@ MY_P="PyBookReader-${PV}"
 
 DESCRIPTION="A book reader for .fb2 .html and plain text (possibly gzipped)"
 HOMEPAGE="http://pybookreader.narod.ru/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-single-r1 multilib systemd user
 
 DESCRIPTION="A python-based mailing list server with an extensive web interface"
-SRC_URI="mirror://sourceforge/${PN}/${P/_p/-}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P/_p/-}.tgz"
 HOMEPAGE="http://www.list.org/"
 
 LICENSE="GPL-2"

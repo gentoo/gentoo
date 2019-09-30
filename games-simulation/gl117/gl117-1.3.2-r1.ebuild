@@ -7,7 +7,7 @@ inherit eutils
 MY_P="gl-117-${PV}-src"
 DESCRIPTION="An action flight simulator"
 HOMEPAGE="http://www.heptargon.de/gl-117/gl-117.html"
-SRC_URI="mirror://sourceforge/gl-117/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/gl-117/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

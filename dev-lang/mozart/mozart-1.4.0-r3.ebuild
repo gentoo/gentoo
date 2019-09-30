@@ -11,9 +11,9 @@ MY_P="mozart-${PV}.20080704"
 DESCRIPTION="Advanced development platform for intelligent, distributed applications"
 HOMEPAGE="https://mozart.github.io/ https://github.com/mozart/mozart"
 SRC_URI="
-	mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/${MY_P}-src.tar.gz
+	https://download.sourceforge.net/project/mozart-oz/v1/1.4.0-2008-07-02-tar/${MY_P}-src.tar.gz
 	mirror://gentoo/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz
-	doc? ( mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/${MY_P}-doc.tar.gz )"
+	doc? ( https://download.sourceforge.net/project/mozart-oz/v1/1.4.0-2008-07-02-tar/${MY_P}-doc.tar.gz )"
 
 SLOT="0"
 LICENSE="Mozart"

@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Blowfish implementation in Java"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.tar.gz"
 HOMEPAGE="http://blowfishj.sourceforge.net/index.html"
 
 LICENSE="Apache-2.0"

@@ -7,7 +7,7 @@ inherit desktop
 MY_OGG=danslatristesse2-48.ogg
 DESCRIPTION="3D tabletennis game"
 HOMEPAGE="http://cannonsmash.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/csmash-${PV}.tar.gz
+SRC_URI="https://download.sourceforge.net/${PN}/csmash-${PV}.tar.gz
 	vorbis? ( http://nan.p.utmc.or.jp/${MY_OGG} )"
 
 LICENSE="GPL-2"

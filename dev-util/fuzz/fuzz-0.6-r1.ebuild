@@ -10,7 +10,7 @@ HOMEPAGE="http://fuzz.sourceforge.net/"
 DEB_P="${PN}_${PV}"
 DEB_PR="7.3"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.gz
+	https://download.sourceforge.net/${PN}/${P}.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${DEB_P}-${DEB_PR}.diff.gz"
 
 LICENSE="GPL-2"

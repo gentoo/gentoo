@@ -9,7 +9,7 @@ PATCH_VER="1.0"
 MY_P=nc${PV}
 DESCRIPTION="the network swiss army knife"
 HOMEPAGE="http://nc110.sourceforge.net/"
-SRC_URI="mirror://sourceforge/nc110/${MY_P}.tgz
+SRC_URI="https://download.sourceforge.net/nc110/${MY_P}.tgz
 	ftp://sith.mimuw.edu.pl/pub/users/baggins/IPv6/nc-v6-20000918.patch.gz
 	mirror://gentoo/${P}-patches-${PATCH_VER}.tar.bz2"
 

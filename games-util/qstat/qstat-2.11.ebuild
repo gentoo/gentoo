@@ -4,7 +4,7 @@
 EAPI=5
 DESCRIPTION="Server statics collector supporting many FPS games"
 HOMEPAGE="https://sourceforge.net/projects/qstat/"
-SRC_URI="mirror://sourceforge/qstat/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/qstat/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"

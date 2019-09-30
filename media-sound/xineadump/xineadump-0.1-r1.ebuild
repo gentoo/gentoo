@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Utility for Xine decoding support in transKode"
 HOMEPAGE="https://sourceforge.net/projects/transkode"
-SRC_URI="mirror://sourceforge/transkode/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/transkode/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

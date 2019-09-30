@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="A dockapp for keeping small notes around on the desktop"
 HOMEPAGE="https://sourceforge.net/projects/wmstickynotes/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

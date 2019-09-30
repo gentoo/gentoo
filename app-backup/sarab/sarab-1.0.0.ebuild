@@ -7,7 +7,7 @@ inherit readme.gentoo-r1
 
 DESCRIPTION="SaraB is a powerful and automated backup scheduling system based on DAR"
 HOMEPAGE="http://sarab.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sarab/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sarab/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

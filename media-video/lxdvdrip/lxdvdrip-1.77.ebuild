@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Command line tool to automate the process of ripping and burning DVDs"
-SRC_URI="mirror://sourceforge/lxdvdrip/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/lxdvdrip/${P}.tgz"
 HOMEPAGE="https://sourceforge.net/projects/lxdvdrip/"
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Editor for VDR channels.conf"
 HOMEPAGE="https://sites.google.com/site/reniershomepage/"
-SRC_URI="mirror://sourceforge/${PN}/${P/-/_}_src.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P/-/_}_src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

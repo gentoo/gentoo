@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="a set of tools for updating gentoo config files"
 HOMEPAGE="https://sourceforge.net/projects/etc-proposals.berlios/"
-SRC_URI="mirror://sourceforge/${PN}.berlios/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}.berlios/${P}.tar.gz"
 
 IUSE=""
 LICENSE="GPL-2"

@@ -10,7 +10,7 @@ MY_P=${P}.${SVN_REV}
 
 DESCRIPTION="Sorts files on FAT16/32 partitions, ideal for basic audio players"
 HOMEPAGE="http://fatsort.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

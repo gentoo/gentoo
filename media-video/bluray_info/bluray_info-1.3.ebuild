@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Blu-ray disc tools: bluray_info, bluray_copy"
 HOMEPAGE="https://github.com/beandog/bluray_info"
-SRC_URI="mirror://sourceforge/bluray-info/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/bluray-info/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

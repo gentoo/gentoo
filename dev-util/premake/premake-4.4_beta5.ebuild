@@ -9,7 +9,7 @@ inherit versionator
 
 DESCRIPTION="A makefile generation tool"
 HOMEPAGE="https://premake.github.io/"
-SRC_URI="mirror://sourceforge/premake/${MY_P}-src.zip"
+SRC_URI="https://download.sourceforge.net/premake/${MY_P}-src.zip"
 
 LICENSE="BSD"
 SLOT=$(get_major_version)

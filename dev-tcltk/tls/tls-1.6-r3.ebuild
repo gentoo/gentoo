@@ -9,7 +9,7 @@ MY_P="${PN}${PV}"
 
 DESCRIPTION="TLS OpenSSL extension to Tcl"
 HOMEPAGE="http://tls.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tls/${MY_P}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/tls/${MY_P}-src.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

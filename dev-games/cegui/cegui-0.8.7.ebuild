@@ -9,7 +9,7 @@ inherit eutils flag-o-matic cmake-utils python-single-r1
 
 DESCRIPTION="Crazy Eddie's GUI System"
 HOMEPAGE="http://www.cegui.org.uk/"
-SRC_URI="mirror://sourceforge/crayzedsgui/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/crayzedsgui/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

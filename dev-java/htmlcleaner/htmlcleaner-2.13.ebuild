@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="HTML parser written in Java that can be used as a tool, library or Ant task"
 HOMEPAGE="http://htmlcleaner.sourceforge.net/"
-SRC_URI="mirror://sourceforge/htmlcleaner/files/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/htmlcleaner/files/${P}-src.zip"
 
 LICENSE="BSD"
 SLOT="0"

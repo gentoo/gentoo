@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="command-line utility to create toc-files for cdrdao"
 HOMEPAGE="https://sourceforge.net/projects/mkcdtoc/"
-SRC_URI="mirror://sourceforge/mkcdtoc/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/mkcdtoc/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

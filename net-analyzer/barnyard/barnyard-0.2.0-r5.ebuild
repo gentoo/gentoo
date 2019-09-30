@@ -8,7 +8,7 @@ inherit autotools
 DESCRIPTION="Fast output system for Snort"
 HOMEPAGE="https://sourceforge.net/projects/barnyard"
 SRC_URI="
-	mirror://sourceforge/barnyard/barnyard-${PV/_/-}.tar.gz
+	https://download.sourceforge.net/barnyard/barnyard-${PV/_/-}.tar.gz
 	mirror://gentoo/${P}-patches.tar.bz2"
 
 SLOT="0"

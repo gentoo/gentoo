@@ -11,7 +11,7 @@ MY_PV=${PV/_/}
 
 DESCRIPTION="Kernel module and driver library for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="https://linux-gpib.sourceforge.io/"
-SRC_URI="mirror://sourceforge/linux-gpib/${PN}-${MY_PV}.tar.gz
+SRC_URI="https://download.sourceforge.net/linux-gpib/${PN}-${MY_PV}.tar.gz
 	firmware? ( https://linux-gpib.sourceforge.io/firmware/gpib_firmware-2006-11-12.tar.gz )
 "
 

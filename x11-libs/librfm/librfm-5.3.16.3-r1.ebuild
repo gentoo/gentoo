@@ -8,7 +8,7 @@ MY_P="${PN}5-${PV}"
 
 DESCRIPTION="The basic library used by some rfm applications, such as Rodent filemanager"
 HOMEPAGE="http://xffm.org/libxffm.html"
-SRC_URI="mirror://sourceforge/xffm/${PN}/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/xffm/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

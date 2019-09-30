@@ -9,7 +9,7 @@ MY_PV="$(replace_all_version_separators _)"
 
 DESCRIPTION="A console ICQ client supporting versions 7/8"
 HOMEPAGE="http://ysmv7.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ysmv7/${PN}v7_${MY_PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/ysmv7/${PN}v7_${MY_PV}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"

@@ -9,7 +9,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Intelligent Battery Monitor"
 HOMEPAGE="http://ibam.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}-${PATCH_LEVEL}.diff.gz"
 
 LICENSE="GPL-2"

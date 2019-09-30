@@ -8,7 +8,7 @@ inherit gnome2-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="A terminal emulator designed to integrate with the ROX environment"
 HOMEPAGE="http://roxterm.sourceforge.net/"
-SRC_URI="mirror://sourceforge/roxterm/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/roxterm/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-3"
 SLOT="1"

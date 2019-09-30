@@ -7,7 +7,7 @@ inherit autotools eutils gnome2-utils
 
 DESCRIPTION="model-airplane flight simulation program"
 HOMEPAGE="https://sourceforge.net/projects/crrcsim/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="User-space implementation of L2TP for Linux and other UNIX systems"
 HOMEPAGE="https://sourceforge.net/projects/rp-l2tp/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~ppc x86"

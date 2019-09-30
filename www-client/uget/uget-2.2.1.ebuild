@@ -7,7 +7,7 @@ inherit gnome2-utils xdg-utils
 
 DESCRIPTION="Download manager using gtk+ and libcurl"
 HOMEPAGE="http://www.ugetdm.com"
-SRC_URI="mirror://sourceforge/urlget/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/urlget/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

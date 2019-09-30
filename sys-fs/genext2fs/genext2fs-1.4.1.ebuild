@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="generate ext2 file systems"
 HOMEPAGE="https://sourceforge.net/projects/genext2fs"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="Tools for accessing and converting various ebook file formats"
 HOMEPAGE="https://sourceforge.net/projects/ebook-tools/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

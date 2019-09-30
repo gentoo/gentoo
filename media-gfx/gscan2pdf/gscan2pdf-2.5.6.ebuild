@@ -9,7 +9,7 @@ inherit eutils perl-module virtualx
 
 DESCRIPTION="Scan documents, perform OCR, produce PDFs and DjVus"
 HOMEPAGE="http://gscan2pdf.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

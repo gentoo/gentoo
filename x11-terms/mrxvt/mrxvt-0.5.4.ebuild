@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="Multi-tabbed rxvt clone with XFT, transparent background and CJK support"
 HOMEPAGE="http://materm.sourceforge.net/"
-SRC_URI="mirror://sourceforge/materm/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/materm/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

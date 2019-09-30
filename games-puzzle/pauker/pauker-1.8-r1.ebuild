@@ -8,7 +8,7 @@ inherit desktop java-pkg-2 java-ant-2
 
 DESCRIPTION="A java based flashcard program"
 HOMEPAGE="http://pauker.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pauker/${P}.src.jar"
+SRC_URI="https://download.sourceforge.net/pauker/${P}.src.jar"
 
 LICENSE="GPL-2"
 SLOT="0"

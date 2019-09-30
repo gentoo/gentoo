@@ -12,7 +12,7 @@ MY_P="${PN}_${MY_PV}"
 
 DESCRIPTION="The leading SQL relational database engine written in Java"
 HOMEPAGE="http://hsqldb.org"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.zip"
 
 LICENSE="BSD GPL-2"
 SLOT="0"

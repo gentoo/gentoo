@@ -6,7 +6,7 @@ inherit autotools eutils gnome2-utils multilib nsplugins xdg-utils
 
 DESCRIPTION="GTK+ Front-End for libxine"
 HOMEPAGE="http://xine.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xine/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/xine/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
 inherit autotools-multilib
 
 DESCRIPTION="Library for playing MOD-like music files"
-SRC_URI="mirror://sourceforge/modplug-xmms/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/modplug-xmms/${P}.tar.gz"
 HOMEPAGE="http://modplug-xmms.sourceforge.net/"
 
 LICENSE="public-domain"

@@ -5,7 +5,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Rule management for SNORT"
-SRC_URI="mirror://sourceforge/oinkmaster/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/oinkmaster/${P}.tar.gz"
 HOMEPAGE="http://oinkmaster.sf.net/"
 
 LICENSE="BSD"

@@ -19,17 +19,17 @@ P_RUPALI="Rupali_01-02-2007"
 
 DESCRIPTION="A collection of Free fonts for the Bangla (Bengali) script"
 HOMEPAGE="http://ekushey.org/index.php/page/otf_bangla_fonts"
-SRC_URI="mirror://sourceforge/ekushey/${P_LOHIT}.ttf
-	mirror://sourceforge/ekushey/${P_MOHUA}.ttf
-	mirror://sourceforge/ekushey/${P_AZAD}.ttf
-	mirror://sourceforge/ekushey/${P_PUJA}.ttf
-	mirror://sourceforge/ekushey/${P_DURGA}.ttf
-	mirror://sourceforge/ekushey/${P_SARASWATII}.ttf
-	mirror://sourceforge/ekushey/${P_SHARIFA}.ttf
-	mirror://sourceforge/ekushey/${P_SUMIT}.ttf
-	mirror://sourceforge/ekushey/${P_PUNARBHABA}.ttf
-	mirror://sourceforge/ekushey/${P_SOLAIMANLIPI}.ttf
-	mirror://sourceforge/ekushey/${P_RUPALI}.ttf"
+SRC_URI="https://download.sourceforge.net/ekushey/${P_LOHIT}.ttf
+	https://download.sourceforge.net/ekushey/${P_MOHUA}.ttf
+	https://download.sourceforge.net/ekushey/${P_AZAD}.ttf
+	https://download.sourceforge.net/ekushey/${P_PUJA}.ttf
+	https://download.sourceforge.net/ekushey/${P_DURGA}.ttf
+	https://download.sourceforge.net/ekushey/${P_SARASWATII}.ttf
+	https://download.sourceforge.net/ekushey/${P_SHARIFA}.ttf
+	https://download.sourceforge.net/ekushey/${P_SUMIT}.ttf
+	https://download.sourceforge.net/ekushey/${P_PUNARBHABA}.ttf
+	https://download.sourceforge.net/ekushey/${P_SOLAIMANLIPI}.ttf
+	https://download.sourceforge.net/ekushey/${P_RUPALI}.ttf"
 
 LICENSE="GPL-2 OFL-1.1"
 SLOT="0"

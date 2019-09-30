@@ -9,7 +9,7 @@ inherit autotools python-r1
 
 DESCRIPTION="Utility that scans through the system and generates a menu of installed programs"
 HOMEPAGE="http://menumaker.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

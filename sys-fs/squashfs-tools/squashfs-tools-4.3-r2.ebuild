@@ -9,7 +9,7 @@ DEB_VER="3"
 
 DESCRIPTION="Tool for creating compressed filesystem type squashfs"
 HOMEPAGE="http://squashfs.sourceforge.net"
-SRC_URI="mirror://sourceforge/squashfs/squashfs${PV}.tar.gz
+SRC_URI="https://download.sourceforge.net/squashfs/squashfs${PV}.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}-${DEB_VER}.debian.tar.xz"
 
 LICENSE="GPL-2"

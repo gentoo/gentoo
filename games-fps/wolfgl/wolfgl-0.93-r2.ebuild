@@ -11,10 +11,10 @@ inherit eutils
 DESCRIPTION="Wolfenstein and Spear of Destiny port using OpenGL"
 HOMEPAGE="http://wolfgl.sourceforge.net/"
 SRC_URI="mirror://gentoo/${P}.tbz2
-	mirror://sourceforge/wolfgl/wolfdata.zip
-	mirror://sourceforge/wolfgl/sdmdata.zip"
-#	mirror://sourceforge/wolfgl/wolfglx-wl6-${PV}.zip
-#	mirror://sourceforge/wolfgl/wolfglx-sod-${PV}.zip
+	https://download.sourceforge.net/wolfgl/wolfdata.zip
+	https://download.sourceforge.net/wolfgl/sdmdata.zip"
+#	https://download.sourceforge.net/wolfgl/wolfglx-wl6-${PV}.zip
+#	https://download.sourceforge.net/wolfgl/wolfglx-sod-${PV}.zip
 
 LICENSE="GPL-2"
 SLOT="0"

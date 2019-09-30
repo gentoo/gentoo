@@ -7,7 +7,7 @@ inherit pam
 
 DESCRIPTION="a simple PAM module which uses libfprint's functionality for authentication"
 HOMEPAGE="http://www.reactivated.net/fprint/wiki/Pam_fprint"
-SRC_URI="mirror://sourceforge/fprint/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/fprint/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

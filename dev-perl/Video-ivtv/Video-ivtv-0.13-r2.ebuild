@@ -7,7 +7,7 @@ inherit perl-module
 
 DESCRIPTION="Video::ivtv perl module, for use with ivtv-ptune"
 HOMEPAGE="http://ivtv.sourceforge.net"
-SRC_URI="mirror://sourceforge/ivtv/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ivtv/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

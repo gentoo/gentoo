@@ -9,9 +9,9 @@ DESCRIPTION="A suite of educational games for young children"
 HOMEPAGE="http://childsplay.sourceforge.net/"
 PLUGINS_VERSION="0.90"
 PLUGINS_LFC_VERSION="0.90"
-SRC_URI="mirror://sourceforge/childsplay/${P}.tgz
-	mirror://sourceforge/childsplay/${PN}_plugins-${PLUGINS_VERSION}.tgz
-	mirror://sourceforge/childsplay/${PN}_plugins_lfc-${PLUGINS_LFC_VERSION}.tgz"
+SRC_URI="https://download.sourceforge.net/childsplay/${P}.tgz
+	https://download.sourceforge.net/childsplay/${PN}_plugins-${PLUGINS_VERSION}.tgz
+	https://download.sourceforge.net/childsplay/${PN}_plugins_lfc-${PLUGINS_LFC_VERSION}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"

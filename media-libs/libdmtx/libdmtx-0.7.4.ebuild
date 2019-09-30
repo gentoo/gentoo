@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Barcode data matrix reading and writing library"
 HOMEPAGE="http://libdmtx.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

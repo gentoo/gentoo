@@ -11,9 +11,9 @@ SIMUPAK="simupak64-${MY_PV%-[0-9]*}.zip"
 
 DESCRIPTION="A free Transport Tycoon clone"
 HOMEPAGE="http://www.simutrans.com/"
-SRC_URI="mirror://sourceforge/simutrans/simutrans-src-${MY_PV}.zip
+SRC_URI="https://download.sourceforge.net/simutrans/simutrans-src-${MY_PV}.zip
 	http://simutrans-germany.com/translator/data/tab/language_pack-Base+texts.zip
-	mirror://sourceforge/simutrans/${SIMUPAK}"
+	https://download.sourceforge.net/simutrans/${SIMUPAK}"
 
 LICENSE="Artistic"
 SLOT="0"

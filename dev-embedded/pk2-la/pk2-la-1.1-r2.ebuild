@@ -9,7 +9,7 @@ inherit python-r1
 
 DESCRIPTION="Logic Analyzer and I/O Probe for the Microchip PICkit2"
 HOMEPAGE="https://sourceforge.net/projects/pk2-la"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

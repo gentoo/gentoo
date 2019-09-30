@@ -7,7 +7,7 @@ inherit eutils autotools systemd toolchain-funcs
 
 DESCRIPTION="Daemon to use hardware random number generators"
 HOMEPAGE="http://gkernel.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gkernel/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gkernel/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

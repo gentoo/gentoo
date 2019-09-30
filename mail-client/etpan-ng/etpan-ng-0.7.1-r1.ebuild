@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="etPan is a console mail client that is based on libEtPan"
 HOMEPAGE="http://www.etpan.org/other.html"
-SRC_URI="mirror://sourceforge/libetpan/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/libetpan/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 x86"

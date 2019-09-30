@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="A simple thesaurus for Libreoffice"
 HOMEPAGE="http://hunspell.sourceforge.net/"
-SRC_URI="mirror://sourceforge/hunspell/MyThes/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/hunspell/MyThes/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="UNIX Shell for people already familiar with the C language"
 HOMEPAGE="http://ccsh.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ccsh/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ccsh/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -13,7 +13,7 @@ MY_P_DOT="${MY_PN}-${PV}"
 
 DESCRIPTION="Gives Pymol additional functionalities and presets to the PyMOL GUI"
 HOMEPAGE="http://bni-tools.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${MY_PN}/${MY_PN}/${MY_P_DOT}/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/${MY_PN}/${MY_PN}/${MY_P_DOT}/${MY_P}.zip"
 
 LICENSE="CNRI"
 SLOT="0"

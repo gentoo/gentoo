@@ -7,7 +7,7 @@ inherit perl-module
 
 DESCRIPTION="Perl script to convert HTML files into formatted LaTeX"
 HOMEPAGE="http://html2latex.sourceforge.net/"
-SRC_URI="mirror://sourceforge/html2latex/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/html2latex/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"

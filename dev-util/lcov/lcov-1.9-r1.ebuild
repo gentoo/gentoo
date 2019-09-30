@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="A graphical front-end for GCC's coverage testing tool gcov"
 HOMEPAGE="http://ltp.sourceforge.net/coverage/lcov.php"
-SRC_URI="mirror://sourceforge/ltp/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ltp/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

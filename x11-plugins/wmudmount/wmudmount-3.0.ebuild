@@ -6,7 +6,7 @@ inherit gnome2-utils
 
 DESCRIPTION="A filesystem mounter that uses udisks to handle notification and mounting"
 HOMEPAGE="https://sourceforge.net/projects/wmudmount/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="Simple Event Correlator"
 HOMEPAGE="http://simple-evcorr.sourceforge.net/"
-SRC_URI="mirror://sourceforge/simple-evcorr/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/simple-evcorr/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

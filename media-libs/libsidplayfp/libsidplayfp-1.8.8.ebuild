@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="Library for the sidplay2 fork with resid-fp"
 HOMEPAGE="https://sourceforge.net/projects/sidplay-residfp/"
-SRC_URI="mirror://sourceforge/sidplay-residfp/${PN}/$(ver_cut 1-2)/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sidplay-residfp/${PN}/$(ver_cut 1-2)/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit gnome2
 
 DESCRIPTION="Gnome Risk Clone"
 HOMEPAGE="http://teg.sourceforge.net/"
-SRC_URI="mirror://sourceforge/teg/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/teg/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

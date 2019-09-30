@@ -7,7 +7,7 @@ MY_P="${PN}-2003-02-08"
 S=${WORKDIR}/${PN}
 
 DESCRIPTION="blinkperl is a telnet server, which plays BlinkenLight movies"
-SRC_URI="mirror://sourceforge/blinkserv/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/blinkserv/${MY_P}.tar.gz"
 HOMEPAGE="http://blinkserv.sourceforge.net/"
 
 SLOT="0"

@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Reoback Backup Solution"
 HOMEPAGE="http://reoback.sourceforge.net/"
-SRC_URI="mirror://sourceforge/reoback/reoback-${PV/_p/_r}.tar.gz"
+SRC_URI="https://download.sourceforge.net/reoback/reoback-${PV/_p/_r}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

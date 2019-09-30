@@ -6,7 +6,7 @@ inherit autotools desktop
 
 DESCRIPTION="A simple arcade/puzzle game, loosely based on the retro classic Frogger"
 HOMEPAGE="https://sourceforge.net/projects/fishsupper/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="CC-BY-SA-2.5 GPL-3"
 SLOT="0"

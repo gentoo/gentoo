@@ -7,7 +7,7 @@ inherit flag-o-matic gkrellm-plugin toolchain-funcs
 
 DESCRIPTION="Get Stock quotes plugin for Gkrellm2"
 HOMEPAGE="http://gkrellstock.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gkrellstock/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gkrellstock/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"

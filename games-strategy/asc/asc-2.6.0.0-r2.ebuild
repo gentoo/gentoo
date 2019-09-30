@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs flag-o-matic wxwidgets
 
 DESCRIPTION="turn based strategy game designed in the tradition of the Battle Isle series"
 HOMEPAGE="http://www.asc-hq.org/"
-SRC_URI="mirror://sourceforge/asc-hq/${P}.tar.bz2
+SRC_URI="https://download.sourceforge.net/asc-hq/${P}.tar.bz2
 	http://www.asc-hq.org/music/frontiers.ogg
 	http://www.asc-hq.org/music/time_to_strike.ogg
 	http://www.asc-hq.org/music/machine_wars.ogg"

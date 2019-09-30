@@ -9,7 +9,7 @@ inherit autotools python-r1 toolchain-funcs
 
 DESCRIPTION="Utilities for analysing and manipulating the SAM/BAM alignment formats"
 HOMEPAGE="http://www.htslib.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

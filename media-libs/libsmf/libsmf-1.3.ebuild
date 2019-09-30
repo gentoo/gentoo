@@ -7,7 +7,7 @@ inherit autotools-utils
 
 DESCRIPTION="Standard MIDI File format library"
 HOMEPAGE="http://libsmf.sourceforge.net/api/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

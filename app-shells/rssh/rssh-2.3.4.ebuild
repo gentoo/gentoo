@@ -6,7 +6,7 @@ inherit eutils multilib
 
 DESCRIPTION="Restricted shell for SSHd"
 HOMEPAGE="http://rssh.sourceforge.net/"
-SRC_URI="mirror://sourceforge/rssh/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/rssh/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

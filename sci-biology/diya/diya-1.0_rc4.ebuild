@@ -7,7 +7,7 @@ inherit perl-module
 
 DESCRIPTION="Do It Yourself Annotation, tools & libraries for sequence assembly & annotation"
 HOMEPAGE="http://gmod.org/wiki/Diya"
-SRC_URI="mirror://sourceforge/diyg/files/diya/diya-1.0/diya-${PV/_/-}.tar.gz"
+SRC_URI="https://download.sourceforge.net/diyg/files/diya/diya-1.0/diya-${PV/_/-}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

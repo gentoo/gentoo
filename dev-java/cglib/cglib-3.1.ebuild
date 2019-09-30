@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="cglib is a powerful, high performance and quality Code Generation Library"
 HOMEPAGE="https://github.com/cglib/cglib"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-src-${PV}.jar"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-src-${PV}.jar"
 
 LICENSE="Apache-2.0"
 SLOT="3"

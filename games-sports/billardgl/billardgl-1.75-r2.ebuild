@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="an OpenGL billards game"
 HOMEPAGE="https://sourceforge.net/projects/billardgl/"
-SRC_URI="mirror://sourceforge/${PN}/BillardGL-${PV}.tar.gz
+SRC_URI="https://download.sourceforge.net/${PN}/BillardGL-${PV}.tar.gz
 	mirror://gentoo/${PN}.png"
 
 LICENSE="GPL-2"

@@ -8,7 +8,7 @@ inherit desktop python-single-r1
 
 DESCRIPTION="Hexagonal Minesweeper"
 HOMEPAGE="https://sourceforge.net/projects/hexamine"
-SRC_URI="mirror://sourceforge/hexamine/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/hexamine/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

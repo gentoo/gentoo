@@ -6,7 +6,7 @@ inherit autotools desktop flag-o-matic
 
 DESCRIPTION="Very polished Tetris clone"
 HOMEPAGE="http://lgames.sourceforge.net/LTris/"
-SRC_URI="mirror://sourceforge/lgames/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lgames/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

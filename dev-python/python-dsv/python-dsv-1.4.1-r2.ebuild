@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python module for importing and exporting DSV files"
 HOMEPAGE="http://python-dsv.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/DSV-${PV}.tar.gz
+SRC_URI="https://download.sourceforge.net/${PN}/DSV-${PV}.tar.gz
 	https://dev.gentoo.org/~mgorny/dist/${P}-gentoo-patchset.tar.bz2"
 
 LICENSE="CNRI"

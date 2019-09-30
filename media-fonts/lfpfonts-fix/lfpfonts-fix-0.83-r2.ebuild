@@ -6,7 +6,7 @@ EAPI=0
 inherit font eutils font-ebdftopcf
 
 DESCRIPTION="Linux Font Project fixed-width fonts"
-SRC_URI="mirror://sourceforge/xfonts/${PN}-src-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/xfonts/${PN}-src-${PV}.tar.bz2"
 HOMEPAGE="https://sourceforge.net/projects/xfonts/"
 LICENSE="public-domain"
 

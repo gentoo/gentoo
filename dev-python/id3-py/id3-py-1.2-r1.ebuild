@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Module for manipulating ID3 tags in Python"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}_${PV}.tar.gz"
 HOMEPAGE="http://id3-py.sourceforge.net/"
 
 LICENSE="GPL-2"

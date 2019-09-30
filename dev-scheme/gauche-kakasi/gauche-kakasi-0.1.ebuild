@@ -9,7 +9,7 @@ MY_P="${P^g}"
 
 DESCRIPTION="Kakasi binding for Gauche"
 HOMEPAGE="http://sourceforge.jp/projects/gauche/"
-SRC_URI="mirror://sourceforge/${PN%-*}/${MY_P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN%-*}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

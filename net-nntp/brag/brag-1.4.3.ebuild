@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="Brag collects and assembles multipart binary attachments from newsgroups"
 HOMEPAGE="http://brag.sourceforge.net/"
-SRC_URI="mirror://sourceforge/brag/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/brag/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

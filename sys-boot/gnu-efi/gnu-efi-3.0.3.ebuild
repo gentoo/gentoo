@@ -7,7 +7,7 @@ inherit flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="Library for build EFI Applications"
 HOMEPAGE="http://gnu-efi.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gnu-efi/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/gnu-efi/${P}.tar.bz2"
 
 # inc/, lib/ dirs (README.efilib)
 # - BSD-2

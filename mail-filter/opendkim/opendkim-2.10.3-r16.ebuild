@@ -7,7 +7,7 @@ inherit autotools db-use eutils systemd tmpfiles user
 
 DESCRIPTION="A milter providing DKIM signing and verification"
 HOMEPAGE="http://opendkim.org/"
-SRC_URI="mirror://sourceforge/opendkim/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/opendkim/${P}.tar.gz"
 
 # The GPL-2 is for the init script, bug 425960.
 LICENSE="BSD GPL-2 Sendmail-Open-Source"

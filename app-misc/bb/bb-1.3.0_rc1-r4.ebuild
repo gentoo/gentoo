@@ -9,7 +9,7 @@ MY_P="${PN}-$(get_version_component_range 1-2)$(get_version_component_range 4-4)
 
 DESCRIPTION="Demonstration program for visual effects of aalib"
 HOMEPAGE="http://aa-project.sourceforge.net/"
-SRC_URI="mirror://sourceforge/aa-project/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/aa-project/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

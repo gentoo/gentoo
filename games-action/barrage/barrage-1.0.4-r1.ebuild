@@ -7,7 +7,7 @@ inherit desktop gnome2-utils
 
 DESCRIPTION="A violent point-and-click shooting game"
 HOMEPAGE="http://lgames.sourceforge.net/Barrage/"
-SRC_URI="mirror://sourceforge/lgames/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lgames/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="Simple Qt-based XML editor"
 HOMEPAGE="https://qxmledit.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.tgz"
 
 LICENSE="LGPL-2"
 SLOT="0"

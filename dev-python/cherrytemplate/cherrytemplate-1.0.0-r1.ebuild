@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Easy and powerful templating module for Python"
 HOMEPAGE="http://cherrytemplate.python-hosting.com/"
-SRC_URI="mirror://sourceforge/cherrypy/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cherrypy/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

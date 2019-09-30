@@ -10,7 +10,7 @@ inherit distutils-r1 eutils
 
 DESCRIPTION="A GTK+-based frontend to Portage"
 HOMEPAGE="http://porthole.sourceforge.net"
-SRC_URI="mirror://sourceforge/porthole/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/porthole/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

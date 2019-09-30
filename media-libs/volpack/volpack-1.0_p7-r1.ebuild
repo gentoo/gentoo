@@ -7,7 +7,7 @@ MYP=${PN}-${PV/_p/c}
 
 DESCRIPTION="Volume rendering library"
 HOMEPAGE="http://amide.sourceforge.net/packages.html"
-SRC_URI="mirror://sourceforge/amide/${MYP}.tgz"
+SRC_URI="https://download.sourceforge.net/amide/${MYP}.tgz"
 
 LICENSE="BSD"
 SLOT="0"

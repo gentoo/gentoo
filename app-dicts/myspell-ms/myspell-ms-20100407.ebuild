@@ -19,7 +19,7 @@ inherit myspell-r2
 DESCRIPTION="Malay dictionaries for myspell/hunspell"
 LICENSE="FDL-1.2"
 HOMEPAGE="https://extensions.openoffice.org/en/project/kamus-bahasa-malaysia-malay-dictionary"
-SRC_URI="mirror://sourceforge/aoo-extensions/ms_my.oxt -> ${P}.oxt"
+SRC_URI="https://download.sourceforge.net/aoo-extensions/ms_my.oxt -> ${P}.oxt"
 
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd"

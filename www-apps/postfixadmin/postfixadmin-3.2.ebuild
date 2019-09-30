@@ -7,7 +7,7 @@ inherit user webapp
 
 DESCRIPTION="Web Based Management tool for Postfix style virtual domains and users"
 HOMEPAGE="http://postfixadmin.sourceforge.net"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${P}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/${PN}/${PN}/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"

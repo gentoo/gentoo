@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/${PN}"
 	inherit git-r3 autotools
 else
-	SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${P}.tar.gz"
+	SRC_URI="https://download.sourceforge.net/${PN}/${PN}/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc ~x86"
 fi
 

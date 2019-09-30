@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="System tray utility including support for KDE system tray icons"
 HOMEPAGE="http://stalonetray.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

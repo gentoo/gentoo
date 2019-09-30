@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source examples"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Javassist makes Java bytecode manipulation simple"
-SRC_URI="mirror://sourceforge/jboss/${P}.zip"
+SRC_URI="https://download.sourceforge.net/jboss/${P}.zip"
 HOMEPAGE="http://www.csg.is.titech.ac.jp/~chiba/javassist/"
 
 LICENSE="MPL-1.1"

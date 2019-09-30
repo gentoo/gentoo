@@ -5,7 +5,7 @@ EAPI=5
 inherit eutils libtool multilib-minimal
 
 DESCRIPTION="VBI Decoding Library for Zapping"
-SRC_URI="mirror://sourceforge/zapping/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/zapping/${P}.tar.bz2"
 HOMEPAGE="http://zapping.sourceforge.net"
 
 LICENSE="GPL-2 LGPL-2"

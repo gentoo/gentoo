@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="GUI tool used to make the management of Pure-FTPd a little easier"
 HOMEPAGE="http://purify.sourceforge.net/"
-SRC_URI="mirror://sourceforge/purify/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/purify/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

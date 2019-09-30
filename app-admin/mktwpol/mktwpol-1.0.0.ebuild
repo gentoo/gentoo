@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Bash scripts to install tripwire and generate tripwire policy files"
 HOMEPAGE="https://sourceforge.net/projects/mktwpol"
-SRC_URI="mirror://sourceforge/mktwpol/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mktwpol/${P}.tar.gz"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"

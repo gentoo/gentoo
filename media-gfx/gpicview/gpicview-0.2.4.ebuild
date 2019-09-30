@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="A Simple and Fast Image Viewer for X"
 HOMEPAGE="http://lxde.sourceforge.net/gpicview"
-SRC_URI="mirror://sourceforge/lxde/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lxde/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

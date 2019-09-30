@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="OOExtras: Extra Templates for OpenOffice.org!"
 HOMEPAGE="http://ooextras.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ooextras/${PN}${PV}.tgz"
+SRC_URI="https://download.sourceforge.net/ooextras/${PN}${PV}.tgz"
 
 INSTDIR="/opt/${PN}"
 S="${WORKDIR}/downloads"

@@ -9,7 +9,7 @@ inherit eutils gnome2-utils python-single-r1 cmake-utils
 
 DESCRIPTION="Reimplementation of the Infinity engine"
 HOMEPAGE="http://gemrb.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gemrb/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gemrb/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="OpenGL visualization for HDAPS data"
 HOMEPAGE="http://hdaps.sourceforge.net"
-SRC_URI="mirror://sourceforge/hdaps/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/hdaps/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

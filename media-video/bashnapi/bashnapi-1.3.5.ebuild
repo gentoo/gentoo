@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Napiprojekt.pl subtitle downloader in bash"
 HOMEPAGE="https://sourceforge.net/projects/bashnapi/"
-SRC_URI="mirror://sourceforge/${PN}/bashnapi_v${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/bashnapi_v${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

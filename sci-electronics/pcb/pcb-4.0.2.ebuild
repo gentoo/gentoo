@@ -7,7 +7,7 @@ inherit autotools eutils xdg-utils gnome2-utils toolchain-funcs
 
 DESCRIPTION="GPL Electronic Design Automation: Printed Circuit Board editor"
 HOMEPAGE="http://pcb.geda-project.org/"
-SRC_URI="mirror://sourceforge/pcb/pcb/${P}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pcb/pcb/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Website pre-processor features tag substitution and page ordering"
 HOMEPAGE="https://sourceforge.net/projects/wsmake/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ Artistic"
 SLOT="0"

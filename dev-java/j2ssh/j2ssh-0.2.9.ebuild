@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Java implementation of the SSH protocol"
 HOMEPAGE="https://sourceforge.net/projects/sshtools/ http://www.sshtools.com/"
-SRC_URI="mirror://sourceforge/sshtools/${P}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/sshtools/${P}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

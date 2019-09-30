@@ -6,7 +6,7 @@ EAPI=5
 MY_P="${P/-/_}"
 
 DESCRIPTION="SNMP Trap Translator"
-SRC_URI="mirror://sourceforge/snmptt/${MY_P}.tgz"
+SRC_URI="https://download.sourceforge.net/snmptt/${MY_P}.tgz"
 HOMEPAGE="http://www.snmptt.org/"
 LICENSE="GPL-2"
 

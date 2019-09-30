@@ -9,7 +9,7 @@ inherit bash-completion-r1 cmake-utils python-single-r1 xdg-utils
 
 DESCRIPTION="Command-line tool for controlling cdemu-daemon"
 HOMEPAGE="http://cdemu.org"
-SRC_URI="mirror://sourceforge/cdemu/cdemu-client-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/cdemu/cdemu-client-${PV}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit eutils multilib versionator
 
 DESCRIPTION="A set of extensions to TCL"
 HOMEPAGE="http://tclx.sourceforge.net"
-SRC_URI="mirror://sourceforge/tclx/${PN}${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/tclx/${PN}${PV}.tar.bz2"
 
 LICENSE="BSD"
 IUSE="tk threads"

@@ -10,7 +10,7 @@ HOMEPAGE="https://www.virtualgl.org/"
 MY_PN="VirtualGL"
 MY_P="${MY_PN}-${PV}"
 S="${WORKDIR}/${MY_P}"
-SRC_URI="mirror://sourceforge/${PN}/files/${PV}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/files/${PV}/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2.1 wxWinLL-3.1 FLTK"

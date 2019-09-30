@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="An input module for Smart Common Input Method (SCIM) which uses m17n as backend"
 HOMEPAGE="http://www.scim-im.org/projects/imengines"
-SRC_URI="mirror://sourceforge/scim/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/scim/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

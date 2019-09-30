@@ -6,7 +6,7 @@ EAPI=6
 inherit udev
 
 DESCRIPTION="The lego mindstorms usb tower headers and/or modules"
-SRC_URI="mirror://sourceforge/legousb/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/legousb/${P}.tar.gz"
 HOMEPAGE="http://legousb.sourceforge.net/"
 
 SLOT="0"

@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="API for Python which provides simple access to Bluetooth operations"
 HOMEPAGE="http://lightblue.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

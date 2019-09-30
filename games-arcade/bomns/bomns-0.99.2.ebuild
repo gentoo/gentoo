@@ -6,7 +6,7 @@ inherit autotools flag-o-matic games
 
 DESCRIPTION="A fast-paced multiplayer deathmatch arcade game"
 HOMEPAGE="http://greenridge.sourceforge.net"
-SRC_URI="mirror://sourceforge/greenridge/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/greenridge/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

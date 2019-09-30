@@ -7,7 +7,7 @@ MY_PV=$(ver_rs 3 -)
 
 DESCRIPTION="Text User Interface that implements the well known CUA widgets"
 HOMEPAGE="http://tvision.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tvision/rhtvision_${MY_PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/tvision/rhtvision_${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A free ASCII-Text Screen Editor for UNIX"
 HOMEPAGE="https://sourceforge.net/projects/joe-editor/"
-SRC_URI="mirror://sourceforge/joe-editor/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/joe-editor/${P}.tar.gz"
 
 LICENSE="GPL-1+ CC-BY-3.0"
 SLOT="0"

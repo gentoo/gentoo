@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 MY_P=${P/-/}
 
 DESCRIPTION="Simple framework to write repeatable tests"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.zip"
 HOMEPAGE="http://www.junit.org/"
 LICENSE="CPL-1.0"
 SLOT="0"

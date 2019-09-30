@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Password Generator"
 HOMEPAGE="https://sourceforge.net/projects/pwgen/"
-SRC_URI="mirror://sourceforge/pwgen/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pwgen/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

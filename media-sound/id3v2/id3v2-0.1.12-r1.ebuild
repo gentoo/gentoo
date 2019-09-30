@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A command line editor for id3v2 tags"
 HOMEPAGE="http://id3v2.sourceforge.net/"
-SRC_URI="mirror://sourceforge/id3v2/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/id3v2/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

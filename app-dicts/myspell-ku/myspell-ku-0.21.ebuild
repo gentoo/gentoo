@@ -18,7 +18,7 @@ inherit myspell-r2
 
 DESCRIPTION="Kurdish dictionaries for myspell/hunspell"
 HOMEPAGE="https://code.google.com/p/hunspell-ku/"
-SRC_URI="mirror://sourceforge/myspellkurdish/ku_TR-${PV/./}.zip"
+SRC_URI="https://download.sourceforge.net/myspellkurdish/ku_TR-${PV/./}.zip"
 
 LICENSE="GPL-3 LGPL-3 MPL-1.1"
 SLOT="0"

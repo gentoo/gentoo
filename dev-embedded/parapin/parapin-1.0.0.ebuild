@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A parallel port pin programming library"
 HOMEPAGE="http://parapin.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 IUSE="doc"

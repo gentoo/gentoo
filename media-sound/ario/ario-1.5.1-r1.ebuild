@@ -9,7 +9,7 @@ inherit autotools gnome2 python-any-r1
 
 DESCRIPTION="GTK2 MPD (Music Player Daemon) client inspired by Rythmbox"
 HOMEPAGE="http://ario-player.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}-player/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}-player/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

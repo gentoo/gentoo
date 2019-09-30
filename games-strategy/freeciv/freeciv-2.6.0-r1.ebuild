@@ -12,7 +12,7 @@ DESCRIPTION="multiplayer strategy game (Civilization Clone)"
 HOMEPAGE="http://www.freeciv.org/"
 
 if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
-	SRC_URI="mirror://sourceforge/freeciv/${MY_P}.tar.bz2"
+	SRC_URI="https://download.sourceforge.net/freeciv/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 fi
 

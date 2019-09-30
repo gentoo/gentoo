@@ -7,7 +7,7 @@ MY_P=${P/sdl/SDL}
 
 DESCRIPTION="A C++ Wrapper for the Simple DirectMedia Layer"
 HOMEPAGE="http://sdlmm.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sdlmm/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/sdlmm/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"

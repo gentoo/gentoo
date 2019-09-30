@@ -5,15 +5,15 @@ EAPI=6
 inherit eutils
 
 INT_PV="1.1"
-INT_URI="mirror://sourceforge/scummvm/drascula-int-${INT_PV}.zip"
+INT_URI="https://download.sourceforge.net/scummvm/drascula-int-${INT_PV}.zip"
 DAT_PV="2.0.0"
 AUD_PV="2.0"
 
 DESCRIPTION="Drascula: The Vampire Strikes Back"
 HOMEPAGE="http://www.alcachofasoft.com/"
-SRC_URI="mirror://sourceforge/scummvm/drascula-${PV}.zip
+SRC_URI="https://download.sourceforge.net/scummvm/drascula-${PV}.zip
 	https://github.com/scummvm/scummvm/raw/v${DAT_PV}/dists/engine-data/drascula.dat -> drascula-${DAT_PV}.dat
-	sound? ( mirror://sourceforge/scummvm/drascula-audio-${AUD_PV}.zip )
+	sound? ( https://download.sourceforge.net/scummvm/drascula-audio-${AUD_PV}.zip )
 	https://salsa.debian.org/games-team/drascula/raw/master/debian/icons/drascula.png
 	l10n_es? ( ${INT_URI} )
 	l10n_de? ( ${INT_URI} )

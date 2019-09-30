@@ -10,7 +10,7 @@ inherit cmake-utils multilib
 
 DESCRIPTION="High-performance, full-featured text search engine based off of lucene in C++"
 HOMEPAGE="http://clucene.sourceforge.net/"
-SRC_URI="mirror://sourceforge/clucene/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/clucene/${MY_P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 LGPL-2.1 )"
 SLOT="1"

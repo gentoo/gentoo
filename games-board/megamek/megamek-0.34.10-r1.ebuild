@@ -6,7 +6,7 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="an unofficial, online version of the Classic BattleTech board game"
 HOMEPAGE="http://megamek.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/MegaMek-v${PV}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/MegaMek-v${PV}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

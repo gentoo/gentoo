@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="Worldforge math library"
 HOMEPAGE="http://www.worldforge.org/dev/eng/libraries/wfmath"
-SRC_URI="mirror://sourceforge/worldforge/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/worldforge/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

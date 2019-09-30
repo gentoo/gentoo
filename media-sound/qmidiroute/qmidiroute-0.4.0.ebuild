@@ -6,7 +6,7 @@ inherit autotools flag-o-matic qmake-utils
 
 DESCRIPTION="QMidiRoute is a filter/router for MIDI events"
 HOMEPAGE="http://alsamodular.sourceforge.net"
-SRC_URI="mirror://sourceforge/alsamodular/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/alsamodular/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

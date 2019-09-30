@@ -6,7 +6,7 @@ inherit autotools desktop flag-o-matic
 
 DESCRIPTION="SDL/OpenGL space shoot'em up game"
 HOMEPAGE="http://criticalmass.sourceforge.net/"
-SRC_URI="mirror://sourceforge/criticalmass/CriticalMass-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/criticalmass/CriticalMass-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

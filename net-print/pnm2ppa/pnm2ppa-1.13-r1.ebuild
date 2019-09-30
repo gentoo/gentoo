@@ -7,7 +7,7 @@ inherit base
 
 DESCRIPTION="Print driver for Hp Deskjet 710, 712, 720, 722, 820, 1000 series"
 HOMEPAGE="http://pnm2ppa.sourceforge.net"
-SRC_URI="mirror://sourceforge/pnm2ppa/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pnm2ppa/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Spectrum emulation library"
 HOMEPAGE="http://fuse-emulator.sourceforge.net/libspectrum.php"
-SRC_URI="mirror://sourceforge/fuse-emulator/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/fuse-emulator/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

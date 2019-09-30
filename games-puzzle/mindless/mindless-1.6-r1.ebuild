@@ -7,7 +7,7 @@ inherit desktop readme.gentoo-r1
 ORANAME="OracleAll_050523.txt"
 DESCRIPTION="Play trading card games (Magic: the Gathering etc.) against other people"
 HOMEPAGE="http://mindless.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mindless/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/mindless/${P}.tar.gz
 	http://www.wizards.com/dci/oracle/${ORANAME}
 	http://mindless.sourceforge.net/images/logo.png -> ${PN}.png"
 

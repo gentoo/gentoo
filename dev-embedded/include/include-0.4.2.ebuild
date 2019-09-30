@@ -5,7 +5,7 @@ EAPI="4"
 
 DESCRIPTION="A collection of useful, independent include files for C/Assembler developers"
 HOMEPAGE="http://openwince.sourceforge.net/include/"
-SRC_URI="mirror://sourceforge/openwince/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/openwince/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

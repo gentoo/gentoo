@@ -10,7 +10,7 @@ inherit eutils multilib multilib-minimal udev
 
 DESCRIPTION="Library that implements support for numerous digital cameras"
 HOMEPAGE="http://www.gphoto.org/"
-SRC_URI="mirror://sourceforge/gphoto/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/gphoto/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 

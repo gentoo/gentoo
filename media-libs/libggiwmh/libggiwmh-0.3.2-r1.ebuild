@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Window manager hints extensions for libggi"
 HOMEPAGE="https://ibiblio.org/ggicore/packages/libggiwmh.html"
-SRC_URI="mirror://sourceforge/ggi/${P}.src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/ggi/${P}.src.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

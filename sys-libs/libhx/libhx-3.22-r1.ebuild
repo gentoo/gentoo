@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="Platform independent library providing basic system functions"
 HOMEPAGE="http://libhx.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/libHX-${PV}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/libHX-${PV}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

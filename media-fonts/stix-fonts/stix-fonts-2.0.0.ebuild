@@ -7,7 +7,7 @@ inherit font
 MY_P="STIXv${PV}"
 DESCRIPTION="Comprehensive OpenType font set of mathematical symbols and alphabets"
 HOMEPAGE="http://www.stixfonts.org/"
-SRC_URI="mirror://sourceforge/${PN/-/}/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN/-/}/${MY_P}.zip"
 
 LICENSE="OFL-1.1"
 SLOT="0"

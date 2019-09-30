@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="C library for high-throughput sequencing data formats"
 HOMEPAGE="http://www.htslib.org/"
-SRC_URI="mirror://sourceforge/samtools/${PV}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/samtools/${PV}/${P}.tar.bz2"
 
 SLOT="0/2"
 LICENSE="MIT"

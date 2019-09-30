@@ -10,7 +10,7 @@ MYPF=${MYP}_2016Aug26
 
 DESCRIPTION="Hierarchical Equal Area isoLatitude Pixelization of a sphere"
 HOMEPAGE="http://healpix.sourceforge.net/"
-SRC_URI="mirror://sourceforge/healpix/${MYP}/${MYPF}.tar.gz"
+SRC_URI="https://download.sourceforge.net/healpix/${MYP}/${MYPF}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

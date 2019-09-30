@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Hub software for Direct Connect, fork of opendchub"
 HOMEPAGE="http://www.dbhub.org"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tbz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tbz2"
 
 LICENSE="GPL-2"
 SLOT="0"

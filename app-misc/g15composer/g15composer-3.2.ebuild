@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A library to render text and shapes into a buffer usable by the Logitech G15"
 HOMEPAGE="https://sourceforge.net/projects/g15tools/"
-SRC_URI="mirror://sourceforge/g15tools/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/g15tools/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

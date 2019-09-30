@@ -7,7 +7,7 @@ inherit java-utils-2 java-pkg-2
 
 DESCRIPTION="A Scheme dialect with a simple Java interface called Javadot notation"
 HOMEPAGE="http://jscheme.sourceforge.net/jscheme/main.html"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="Apache-1.1"
 SLOT="0"

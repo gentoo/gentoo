@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Tool to change the parameters of a Plextor CD-ROM drive"
 HOMEPAGE="http://plextor-tool.sourceforge.net/"
-SRC_URI="mirror://sourceforge/plextor-tool/${P}.src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/plextor-tool/${P}.src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

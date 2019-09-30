@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A small utility that measures throughput between stdin and stdout"
 HOMEPAGE="http://pipeworks.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pipeworks/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pipeworks/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

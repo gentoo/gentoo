@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="correctly read (or write) a region of a block device"
 HOMEPAGE="http://devio.sourceforge.net/"
-SRC_URI="mirror://sourceforge/devio/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/devio/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

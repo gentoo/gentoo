@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="Firmware for ZyDAS ZD1211 USB-WLAN devices supported by the zd1211rw driver"
 HOMEPAGE="https://sourceforge.net/projects/zd1211/"
-SRC_URI="mirror://sourceforge/zd1211/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/zd1211/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

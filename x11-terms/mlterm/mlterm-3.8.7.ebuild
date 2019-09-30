@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="A multi-lingual terminal emulator"
 HOMEPAGE="http://mlterm.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

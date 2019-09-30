@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python bindings for libifp library for accessing iRiver iFP devices"
 HOMEPAGE="http://ifp-gnome.sourceforge.net"
-SRC_URI="mirror://sourceforge/ifp-gnome/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ifp-gnome/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

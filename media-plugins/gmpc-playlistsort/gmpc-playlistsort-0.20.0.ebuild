@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="This plugin adds a dialog to sort the current playlist"
 HOMEPAGE="http://gmpc.wikia.com/"
-SRC_URI="mirror://sourceforge/musicpd/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/musicpd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

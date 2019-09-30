@@ -5,7 +5,7 @@ EAPI="6"
 
 DESCRIPTION="An open source clone of the Asus launcher for EeePC"
 HOMEPAGE="https://wiki.lxde.org/en/LXLauncher"
-SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

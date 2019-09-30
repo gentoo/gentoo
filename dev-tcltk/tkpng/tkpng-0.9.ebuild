@@ -7,7 +7,7 @@ MY_P="${PN}${PV}"
 
 DESCRIPTION="Implements support for loading and using PNG images with Tcl/Tk"
 HOMEPAGE="http://www.muonics.com/FreeStuff/TkPNG/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${MY_P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}/${PV}/${MY_P}.tgz"
 
 SLOT="0"
 LICENSE="tcltk"

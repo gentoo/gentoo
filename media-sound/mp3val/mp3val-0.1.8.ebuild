@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="Validate and fix MPEG audio files"
 HOMEPAGE="http://mp3val.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mp3val/${P}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/mp3val/${P}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

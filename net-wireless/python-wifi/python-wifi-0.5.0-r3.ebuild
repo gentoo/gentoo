@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Provides r/w access to a wireless network card's capabilities"
 HOMEPAGE="https://pypi.org/project/python-wifi/"
-SRC_URI="mirror://sourceforge/${PN}.berlios/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}.berlios/${P}.tar.bz2"
 
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86"

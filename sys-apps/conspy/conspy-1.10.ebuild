@@ -8,7 +8,7 @@ inherit autotools-utils
 
 DESCRIPTION="Remote control for Linux virtual consoles"
 HOMEPAGE="http://conspy.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-1/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-1/${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"

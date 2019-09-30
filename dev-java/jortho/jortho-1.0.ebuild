@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A Java spell-checking library"
 HOMEPAGE="https://www.inetsoftware.de/other-products/jortho"
-SRC_URI="mirror://sourceforge/project/jortho/JOrtho%20Library/${PV}/JOrtho_${PV}.zip"
+SRC_URI="https://download.sourceforge.net/project/jortho/JOrtho%20Library/${PV}/JOrtho_${PV}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

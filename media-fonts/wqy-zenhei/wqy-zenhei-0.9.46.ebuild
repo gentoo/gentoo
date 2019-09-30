@@ -7,7 +7,7 @@ inherit font readme.gentoo
 
 DESCRIPTION="WenQuanYi Hei-Ti Style (sans-serif) Chinese outline font"
 HOMEPAGE="http://wenq.org/wqy2/index.cgi?ZenHei"
-SRC_URI="mirror://sourceforge/project/wqy/${PN}-snapshot/${PV}-May/${P}-May.tar.bz2"
+SRC_URI="https://download.sourceforge.net/project/wqy/${PN}-snapshot/${PV}-May/${P}-May.tar.bz2"
 
 LICENSE="GPL-2-with-font-exception"
 SLOT="0"

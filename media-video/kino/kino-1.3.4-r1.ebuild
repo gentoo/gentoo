@@ -6,7 +6,7 @@ inherit autotools ltprune udev
 
 DESCRIPTION="Kino is a non-linear DV editor for GNU/Linux"
 HOMEPAGE="http://www.kinodv.org/"
-SRC_URI="mirror://sourceforge/kino/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/kino/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Wrapper to use lufs modules with fuse kernel support"
 HOMEPAGE="http://fuse.sourceforge.net/"
-SRC_URI="mirror://sourceforge/fuse/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/fuse/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

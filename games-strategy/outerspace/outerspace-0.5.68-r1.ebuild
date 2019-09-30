@@ -9,8 +9,8 @@ inherit desktop gnome2-utils distutils-r1
 MY_PN="${PN/outerspace/Outer Space}"
 DESCRIPTION="On-line strategy game taking place in the dangerous universe"
 HOMEPAGE="https://www.ospace.net/ https://sourceforge.net/projects/ospace/"
-SRC_URI="mirror://sourceforge/ospace/Client/${PV}/Outer%20Space-${PV}.tar.gz -> ${P}.tar.gz
-	mirror://sourceforge/ospace/Client/${PV}/outerspace_${PV}-0ubuntu1_all.deb"
+SRC_URI="https://download.sourceforge.net/ospace/Client/${PV}/Outer%20Space-${PV}.tar.gz -> ${P}.tar.gz
+	https://download.sourceforge.net/ospace/Client/${PV}/outerspace_${PV}-0ubuntu1_all.deb"
 
 LICENSE="GPL-2"
 SLOT="0"

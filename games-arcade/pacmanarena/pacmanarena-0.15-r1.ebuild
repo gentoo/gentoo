@@ -6,8 +6,8 @@ inherit autotools desktop
 
 DESCRIPTION="3D Pacman clone with a few surprises. Rockets, bombs and explosions abound"
 HOMEPAGE="http://pacmanarena.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/pacman-arena-${PV}.tar.bz2
-	mirror://sourceforge/${PN}/pacman-data-0.0.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/pacman-arena-${PV}.tar.bz2
+	https://download.sourceforge.net/${PN}/pacman-data-0.0.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

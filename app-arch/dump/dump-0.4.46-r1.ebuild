@@ -7,7 +7,7 @@ MY_P="${PN}-$(ver_rs 2 b)"
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Dump/restore ext2fs backup utilities"
 HOMEPAGE="http://dump.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dump/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dump/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

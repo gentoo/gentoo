@@ -8,7 +8,7 @@ inherit autotools
 MY_P="ELFIO-${PV}"
 DESCRIPTION="ELF reader and producer implemented as a C++ library"
 HOMEPAGE="http://elfio.sourceforge.net/"
-SRC_URI="mirror://sourceforge/elfio/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/elfio/${MY_P}.tar.gz"
 
 S="${WORKDIR}/${MY_P}"
 

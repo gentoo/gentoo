@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A telnet daemon for use in Java applications"
 HOMEPAGE="http://telnetd.sourceforge.net/"
-SRC_URI="mirror://sourceforge/telnetd/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/telnetd/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

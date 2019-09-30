@@ -7,7 +7,7 @@ inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Interactively examine a C program"
 HOMEPAGE="https://sourceforge.net/projects/kscope/"
-SRC_URI="mirror://sourceforge/kscope/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/kscope/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

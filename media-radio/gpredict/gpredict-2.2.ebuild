@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Real-time satellite tracking and orbit prediction application"
 HOMEPAGE="http://gpredict.oz9aec.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit multilib eutils
 
 DESCRIPTION="Tool for transfering mp3s to and from a Rio 600, 800, Riot, and Nike PSA/Play"
 HOMEPAGE="http://rioutil.sourceforge.net/"
-SRC_URI="mirror://sourceforge/rioutil/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/rioutil/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

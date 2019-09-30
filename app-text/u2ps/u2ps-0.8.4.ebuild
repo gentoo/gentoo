@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="A text to PostScript converter like a2ps, but supports UTF-8"
 HOMEPAGE="https://sourceforge.net/projects/u2ps.berlios/"
-SRC_URI="mirror://sourceforge/project/${PN}.berlios/${PN}-full-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/${PN}.berlios/${PN}-full-${PV}.tar.gz"
 
 LICENSE="GPL-3 GPL-3-with-font-exception free-noncomm"
 SLOT="0"

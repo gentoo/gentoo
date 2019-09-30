@@ -6,7 +6,7 @@ EAPI=6
 inherit gkrellm-plugin toolchain-funcs
 
 DESCRIPTION="a GKrellM2 plugin which displays the top three processes"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.orig.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}_${PV}.orig.tar.gz"
 HOMEPAGE="https://sourceforge.net/projects/gkrelltop"
 
 LICENSE="GPL-2"

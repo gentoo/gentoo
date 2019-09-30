@@ -7,7 +7,7 @@ inherit autotools-utils multilib-minimal
 
 DESCRIPTION="Library for parsing video download links"
 HOMEPAGE="http://quvi.sourceforge.net/"
-SRC_URI="mirror://sourceforge/quvi/${PV:0:3}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/quvi/${PV:0:3}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0.4"

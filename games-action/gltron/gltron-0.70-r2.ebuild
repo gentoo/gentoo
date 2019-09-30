@@ -7,7 +7,7 @@ inherit desktop
 
 DESCRIPTION="3d tron, just like the movie"
 HOMEPAGE="http://gltron.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-source.tar.gz
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-source.tar.gz
 	mirror://gentoo/${PN}.png"
 
 LICENSE="GPL-2"

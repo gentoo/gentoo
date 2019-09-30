@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Utility to switch network profiles on the fly"
-SRC_URI="mirror://sourceforge/quickswitch/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/quickswitch/${P}.tar.gz"
 HOMEPAGE="http://quickswitch.sf.net"
 
 LICENSE="GPL-2"

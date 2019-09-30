@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A console player for AdLib music"
 HOMEPAGE="http://adplug.sourceforge.net"
-SRC_URI="mirror://sourceforge/adplug/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/adplug/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

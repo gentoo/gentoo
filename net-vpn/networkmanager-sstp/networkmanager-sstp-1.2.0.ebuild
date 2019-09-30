@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)"
 HOMEPAGE="https://sourceforge.net/projects/sstp-client/"
-SRC_URI="mirror://sourceforge/project/sstp-client/network-manager-sstp/${PV}/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/project/sstp-client/network-manager-sstp/${PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

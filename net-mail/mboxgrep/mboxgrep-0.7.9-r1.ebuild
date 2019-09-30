@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="Grep for mbox files"
-SRC_URI="mirror://sourceforge/mboxgrep/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mboxgrep/${P}.tar.gz"
 HOMEPAGE="http://mboxgrep.sf.net"
 
 DEPEND=""

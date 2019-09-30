@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python CRC Generator module"
 HOMEPAGE="http://crcmod.sourceforge.net/"
-SRC_URI="mirror://sourceforge/crcmod/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/crcmod/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

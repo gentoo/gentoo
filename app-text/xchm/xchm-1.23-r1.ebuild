@@ -8,7 +8,7 @@ inherit eutils flag-o-matic wxwidgets xdg-utils
 
 DESCRIPTION="Utility for viewing Compiled HTML Help (CHM) files"
 HOMEPAGE="http://xchm.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xchm/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xchm/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

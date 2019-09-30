@@ -9,7 +9,7 @@ inherit eutils multilib python-single-r1
 
 DESCRIPTION="A robust, high-performance CORBA 2 ORB"
 HOMEPAGE="http://omniorb.sourceforge.net/"
-SRC_URI="mirror://sourceforge/omniorb/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/omniorb/${P}.tar.gz"
 
 LICENSE="LGPL-2 GPL-2"
 SLOT="0"

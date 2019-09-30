@@ -8,7 +8,7 @@ MY_P=${PN}_${PV}
 
 DESCRIPTION="Qt5 GUI ALSA tools: mixer, configuration browser"
 HOMEPAGE="http://xwmw.org/qastools/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${MY_P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PV}/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

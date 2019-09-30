@@ -7,7 +7,7 @@ inherit gnome2-utils eutils
 
 DESCRIPTION="Japanese-English Dictionary for GNOME"
 HOMEPAGE="http://gwaei.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gwaei/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/gwaei/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

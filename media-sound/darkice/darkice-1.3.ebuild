@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A live audio streamer"
 HOMEPAGE="http://www.darkice.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

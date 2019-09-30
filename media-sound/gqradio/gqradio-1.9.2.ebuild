@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="An FM radio tuner app from the people who brought you GQmpeg"
 HOMEPAGE="http://gqmpeg.sourceforge.net/radio.html"
-SRC_URI="mirror://sourceforge/gqmpeg/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gqmpeg/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

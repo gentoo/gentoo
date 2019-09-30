@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Ant-tasks to compile various source languages and produce executables"
 HOMEPAGE="http://ant-contrib.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ant-contrib/ant-contrib/${P/_/-}/${P/_beta/b}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ant-contrib/ant-contrib/${P/_/-}/${P/_beta/b}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

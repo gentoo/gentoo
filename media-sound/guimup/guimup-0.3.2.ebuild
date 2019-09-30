@@ -8,7 +8,7 @@ MY_P=${P/-/_}
 
 DESCRIPTION="A client for MPD with a clean, GTK interface"
 HOMEPAGE="http://coonsden.com"
-SRC_URI="mirror://sourceforge/musicpd/${MY_P}_src.tar.gz"
+SRC_URI="https://download.sourceforge.net/musicpd/${MY_P}_src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

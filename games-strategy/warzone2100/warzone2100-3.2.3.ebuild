@@ -9,8 +9,8 @@ VIDEOS_PV=2.2
 VIDEOS_P=${PN}-videos-${VIDEOS_PV}.wz
 DESCRIPTION="3D real-time strategy game"
 HOMEPAGE="http://wz2100.net/"
-SRC_URI="mirror://sourceforge/warzone2100/${P}.tar.xz
-	videos? ( mirror://sourceforge/warzone2100/warzone2100/Videos/${VIDEOS_PV}/high-quality-en/sequences.wz -> ${VIDEOS_P} )"
+SRC_URI="https://download.sourceforge.net/warzone2100/${P}.tar.xz
+	videos? ( https://download.sourceforge.net/warzone2100/warzone2100/Videos/${VIDEOS_PV}/high-quality-en/sequences.wz -> ${VIDEOS_P} )"
 
 SRC_URI+=" https://github.com/Warzone2100/warzone2100/commit/ef37bca38289f4f79c6533acd93ed326858a3f68.patch -> ${PN}-3.2.3-qt_compile_fix.patch"
 

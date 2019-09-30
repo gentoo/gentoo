@@ -7,7 +7,7 @@ inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Software synthesizer capable of making a countless number of instruments"
 HOMEPAGE="http://zynaddsubfx.sourceforge.net/"
-SRC_URI="mirror://sourceforge/zynaddsubfx/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/zynaddsubfx/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

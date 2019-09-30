@@ -8,7 +8,7 @@ inherit flag-o-matic multilib udev user
 DESCRIPTION="library for accessing smart card terminals"
 HOMEPAGE="https://github.com/OpenSC/openct/wiki"
 
-SRC_URI="mirror://sourceforge/opensc/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/opensc/${PN}/${P}.tar.gz"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 
 LICENSE="LGPL-2.1"

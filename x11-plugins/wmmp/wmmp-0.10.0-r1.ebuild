@@ -7,7 +7,7 @@ MY_P=${P/wm/WM}
 
 DESCRIPTION="A Window Maker dock app client for Music Player Daemon(media-sound/mpd)"
 HOMEPAGE="http://mpd.wikia.com/wiki/Client:WMmp"
-SRC_URI="mirror://sourceforge/musicpd/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/musicpd/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

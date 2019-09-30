@@ -9,7 +9,7 @@ IUSE="bittorrent doc fasttrack gd gnutella gtk guionly magic +ocamlopt"
 
 DESCRIPTION="Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface"
 HOMEPAGE="http://mldonkey.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

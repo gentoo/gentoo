@@ -9,7 +9,7 @@ inherit autotools-utils fdo-mime
 
 DESCRIPTION="A collection of data files to add support for chemical MIME types"
 HOMEPAGE="http://chemical-mime.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN/-data/}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN/-data/}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

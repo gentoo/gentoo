@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="JFreeSVG is a fast, light-weight, vector graphics library for the Java platform"
 HOMEPAGE="http://www.jfree.org/jfreesvg/"
-SRC_URI="mirror://sourceforge/jfreegraphics2d/${P}.zip"
+SRC_URI="https://download.sourceforge.net/jfreegraphics2d/${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="3.0"

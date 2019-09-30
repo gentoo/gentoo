@@ -10,7 +10,7 @@ inherit python-single-r1 xdg-utils
 
 DESCRIPTION="A full featured Python IDE using PyQt and QScintilla"
 HOMEPAGE="https://eric-ide.python-projects.org/"
-SRC_URI="mirror://sourceforge/eric-ide/${PN}6/stable/${PV}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/eric-ide/${PN}6/stable/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="6"

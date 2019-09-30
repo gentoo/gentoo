@@ -6,7 +6,7 @@ inherit autotools gnome2-utils xdg-utils
 
 DESCRIPTION="A fast, small and powerful file manager and graphical shell"
 HOMEPAGE="http://xffm.org/"
-SRC_URI="mirror://sourceforge/xffm/${PV}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/xffm/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

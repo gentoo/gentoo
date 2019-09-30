@@ -12,7 +12,7 @@ MY_P="Pmw.${PV}"
 
 DESCRIPTION="Toolkit for building high-level compound Python widgets using the Tkinter module"
 HOMEPAGE="http://pmw.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="py2"

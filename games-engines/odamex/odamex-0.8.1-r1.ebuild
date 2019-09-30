@@ -8,7 +8,7 @@ inherit cmake-utils desktop prefix wxwidgets xdg
 
 DESCRIPTION="Online multiplayer free software engine for DOOM"
 HOMEPAGE="https://odamex.net/"
-SRC_URI="mirror://sourceforge/${PN}/Odamex/${PV}/${PN}-src-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/Odamex/${PV}/${PN}-src-${PV}.tar.bz2"
 
 LICENSE="GPL-2+ MIT"
 SLOT="0"

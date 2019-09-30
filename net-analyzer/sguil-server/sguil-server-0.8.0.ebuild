@@ -8,7 +8,7 @@ inherit multilib ssl-cert user
 MY_PV="${PV/_p/p}"
 DESCRIPTION="Daemon for Sguil Network Security Monitoring"
 HOMEPAGE="http://sguil.sourceforge.net"
-SRC_URI="mirror://sourceforge/sguil/sguil-server-${MY_PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sguil/sguil-server-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2 QPL"
 SLOT="0"

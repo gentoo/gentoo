@@ -7,7 +7,7 @@ inherit eutils autotools
 
 DESCRIPTION="A collection of powerful tools for manipulating EPROM load files"
 HOMEPAGE="http://srecord.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

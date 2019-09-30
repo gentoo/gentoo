@@ -8,7 +8,7 @@ IUSE="mysql berkdb"
 
 DESCRIPTION="A fast and small Bayesian spam filter"
 HOMEPAGE="http://bmf.sourceforge.net/"
-SRC_URI="mirror://sourceforge/bmf/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/bmf/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

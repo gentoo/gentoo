@@ -9,7 +9,7 @@ MY_P="${P/_alpha/a}"
 
 DESCRIPTION="OCaml interface to the GD graphics library"
 HOMEPAGE="https://sourceforge.net/projects/gd4o/"
-SRC_URI="mirror://sourceforge/gd4o/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gd4o/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"

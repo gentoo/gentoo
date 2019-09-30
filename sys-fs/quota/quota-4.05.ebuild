@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Linux quota tools"
 HOMEPAGE="https://sourceforge.net/projects/linuxquota/"
-SRC_URI="mirror://sourceforge/linuxquota/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/linuxquota/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

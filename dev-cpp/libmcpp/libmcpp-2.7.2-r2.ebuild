@@ -9,7 +9,7 @@ MY_P=${P/lib/}
 
 DESCRIPTION="A portable C++ preprocessor"
 HOMEPAGE="http://mcpp.sourceforge.net"
-SRC_URI="mirror://sourceforge/mcpp/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mcpp/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

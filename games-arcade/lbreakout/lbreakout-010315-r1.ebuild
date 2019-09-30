@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Breakout clone written with the SDL library"
 HOMEPAGE="http://lgames.sourceforge.net/LBreakout/"
-SRC_URI="mirror://sourceforge/lgames/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lgames/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

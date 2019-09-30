@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs versionator java-pkg-opt-2
 
 DESCRIPTION="Artistic Style is a re-indenter and reformatter for C++, C and Java source code"
 HOMEPAGE="http://astyle.sourceforge.net/"
-SRC_URI="mirror://sourceforge/astyle/astyle_${PV}_linux.tar.gz"
+SRC_URI="https://download.sourceforge.net/astyle/astyle_${PV}_linux.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/3.1"

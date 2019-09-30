@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="A clean, lightweight, object oriented scripting language"
 HOMEPAGE="http://www.ferite.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="1"

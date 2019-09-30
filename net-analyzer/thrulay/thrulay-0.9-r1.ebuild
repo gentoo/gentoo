@@ -7,7 +7,7 @@ inherit toolchain-funcs autotools
 DESCRIPTION="Measure the capacity of a network by sending a bulk TCP stream over it"
 HOMEPAGE="http://www.internet2.edu/~shalunov/thrulay/"
 SRC_URI="http://www.internet2.edu/~shalunov/thrulay/${P}.tar.gz
-		mirror://sourceforge/${PN}/${P}.tar.gz"
+		https://download.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"

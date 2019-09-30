@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="bookmarksync synchronizes various browser bookmark files"
 HOMEPAGE="https://sourceforge.net/projects/booksync/"
-SRC_URI="mirror://sourceforge/booksync/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/booksync/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ppc x86"

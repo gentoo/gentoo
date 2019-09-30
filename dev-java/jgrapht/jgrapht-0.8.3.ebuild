@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source test"
 inherit java-pkg-2 java-ant-2 eutils
 
 DESCRIPTION="Graph library that is a simpler and faster alternative to JGraph"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 HOMEPAGE="http://jgrapht.sourceforge.net"
 
 KEYWORDS="amd64 x86"

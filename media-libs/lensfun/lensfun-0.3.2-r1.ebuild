@@ -9,7 +9,7 @@ inherit python-single-r1 cmake-utils
 
 DESCRIPTION="Library for rectifying and simulating photographic lens distortions"
 HOMEPAGE="http://lensfun.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3 CC-BY-SA-3.0" # See README for reasoning.
 SLOT="0"

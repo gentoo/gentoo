@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="OpenGL-based 3D File Manager"
 HOMEPAGE="https://sourceforge.net/projects/innolab/"
-SRC_URI="mirror://sourceforge/innolab/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/innolab/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -12,7 +12,7 @@ inherit cmake-utils flag-o-matic fortran-2 java-pkg-opt-2 python-single-r1 toolc
 
 DESCRIPTION="Multi-language scientific plotting library"
 HOMEPAGE="http://plplot.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0/14" # SONAME of libplplot.so

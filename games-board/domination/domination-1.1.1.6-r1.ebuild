@@ -6,7 +6,7 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="The well-known board game, written in java"
 HOMEPAGE="http://domination.sourceforge.net"
-SRC_URI="mirror://sourceforge/domination/Domination_${PV}.zip"
+SRC_URI="https://download.sourceforge.net/domination/Domination_${PV}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"

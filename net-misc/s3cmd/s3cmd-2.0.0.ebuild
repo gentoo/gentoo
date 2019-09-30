@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Command line client for Amazon S3"
 HOMEPAGE="https://s3tools.org/s3cmd"
-SRC_URI="mirror://sourceforge/s3tools/${P/_/-}.tar.gz"
+SRC_URI="https://download.sourceforge.net/s3tools/${P/_/-}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 

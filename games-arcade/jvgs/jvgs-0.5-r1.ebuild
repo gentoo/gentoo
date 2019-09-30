@@ -7,7 +7,7 @@ inherit cmake-utils desktop
 
 DESCRIPTION="An open-source platform game with a sketched and minimalistic look"
 HOMEPAGE="http://jvgs.sourceforge.net/"
-SRC_URI="mirror://sourceforge/jvgs/${P}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/jvgs/${P}-src.tar.gz"
 
 LICENSE="WTFPL-2"
 SLOT="0"

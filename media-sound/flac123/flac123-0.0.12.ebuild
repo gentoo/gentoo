@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="console app for playing FLAC audio files"
 HOMEPAGE="http://flac-tools.sourceforge.net"
-SRC_URI="mirror://sourceforge/flac-tools/${P}-release.tar.gz"
+SRC_URI="https://download.sourceforge.net/flac-tools/${P}-release.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -15,7 +15,7 @@ LIRC_DRIVER_DEVICE="/dev/lirc0"
 MY_P=${PN}-${PV/_/-}
 
 if [[ "${PV/_pre/}" = "${PV}" ]]; then
-	SRC_URI="mirror://sourceforge/lirc/${MY_P}.tar.bz2"
+	SRC_URI="https://download.sourceforge.net/lirc/${MY_P}.tar.bz2"
 else
 	SRC_URI="http://www.lirc.org/software/snapshots/${MY_P}.tar.bz2"
 fi

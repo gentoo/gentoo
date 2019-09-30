@@ -6,7 +6,7 @@ inherit desktop
 
 DESCRIPTION="Robbo, a popular Atari XE/XL game ported to Linux"
 HOMEPAGE="http://gnurobbo.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gnurobbo/${P}-source.tar.gz"
+SRC_URI="https://download.sourceforge.net/gnurobbo/${P}-source.tar.gz"
 
 LICENSE="GPL-2 BitstreamVera"
 SLOT="0"

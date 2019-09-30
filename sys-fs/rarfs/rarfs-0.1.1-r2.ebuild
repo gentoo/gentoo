@@ -9,7 +9,7 @@ inherit python-r1
 
 DESCRIPTION="Fuse module to mount uncompressed RAR archives"
 HOMEPAGE="https://sourceforge.net/projects/rarfs/"
-SRC_URI="mirror://sourceforge/rarfs/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/rarfs/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

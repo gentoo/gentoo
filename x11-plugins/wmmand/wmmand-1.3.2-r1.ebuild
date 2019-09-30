@@ -8,7 +8,7 @@ MY_P=wmMand-${PV}
 
 DESCRIPTION="a dockable mandelbrot browser"
 HOMEPAGE="https://sourceforge.net/projects/wmmand/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

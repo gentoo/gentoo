@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A fat-free DIY Python plugin management toolkit"
 HOMEPAGE="http://yapsy.sourceforge.net/"
-SRC_URI="mirror://sourceforge/yapsy/${MY_P}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/yapsy/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

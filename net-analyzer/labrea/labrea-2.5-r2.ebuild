@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="'Sticky' Honeypot and IDS"
 HOMEPAGE="http://labrea.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-stable-1.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-stable-1.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Excellent MS Word filter lib, used in most Office suites"
 HOMEPAGE="http://wvware.sourceforge.net"
-SRC_URI="mirror://sourceforge/wvware/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/wvware/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"

@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils toolchain-funcs
 DESCRIPTION="Watch word program for the GNOME2 desktop (watch word (german): losung)"
 HOMEPAGE="http://www.godehardt.org/losung.html"
-SRC_URI="mirror://sourceforge/glosung/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/glosung/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="Packet generator tool for ethernet"
 HOMEPAGE="http://packeth.sourceforge.net/"
-SRC_URI="mirror://sourceforge/packeth/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/packeth/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

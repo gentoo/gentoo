@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="IBM's tools for support of the ipr SCSI controller"
-SRC_URI="mirror://sourceforge/iprdd/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/iprdd/${P}.tar.gz"
 HOMEPAGE="https://sourceforge.net/projects/iprdd/"
 
 SLOT="0"

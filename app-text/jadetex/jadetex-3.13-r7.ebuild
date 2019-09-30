@@ -7,7 +7,7 @@ inherit latex-package texlive-common
 
 DESCRIPTION="TeX macros used by Jade TeX output"
 HOMEPAGE="http://jadetex.sourceforge.net/"
-SRC_URI="mirror://sourceforge/jadetex/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/jadetex/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

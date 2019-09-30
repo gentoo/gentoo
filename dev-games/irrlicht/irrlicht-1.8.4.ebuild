@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="open source high performance realtime 3D engine written in C++"
 HOMEPAGE="http://irrlicht.sourceforge.net/"
-SRC_URI="mirror://sourceforge/irrlicht/${P}.zip
+SRC_URI="https://download.sourceforge.net/irrlicht/${P}.zip
 	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
 
 LICENSE="ZLIB"

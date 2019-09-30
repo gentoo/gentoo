@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="libmcrypt provides uniform interface to access several encryption algorithms"
 HOMEPAGE="http://mcrypt.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mcrypt/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mcrypt/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="IP Cisco Accounting Daemon"
 HOMEPAGE="https://sourceforge.net/projects/ipcad/ http://lionet.info/ipcad/"
-SRC_URI="mirror://sourceforge/ipcad/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ipcad/${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0"

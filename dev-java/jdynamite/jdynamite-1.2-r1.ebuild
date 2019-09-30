@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 MY_PV="${PV/./_}"
 DESCRIPTION="Dynamic Template in Java"
 HOMEPAGE="http://jdynamite.sourceforge.net/doc/jdynamite.html"
-SRC_URI="mirror://sourceforge/${PN}/${PN}${MY_PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}${MY_PV}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

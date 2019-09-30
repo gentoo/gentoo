@@ -7,7 +7,7 @@ inherit autotools eutils user
 
 DESCRIPTION="A grep for network layers"
 HOMEPAGE="http://ngrep.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ngrep/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/ngrep/${P}.tar.bz2"
 
 LICENSE="ngrep"
 SLOT="0"

@@ -11,7 +11,7 @@ MY_PV="$(replace_all_version_separators -)"
 
 DESCRIPTION="A XSLT and XQuery Processor"
 HOMEPAGE="http://saxon.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}he${MY_PV}source.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}he${MY_PV}source.zip"
 
 LICENSE="MPL-1.0"
 SLOT="9"

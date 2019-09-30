@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="create an APNG from multiple PNG files"
 HOMEPAGE="https://sourceforge.net/projects/apngasm/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${PV}/${P}-src.zip"
 
 LICENSE="ZLIB"
 SLOT="0"

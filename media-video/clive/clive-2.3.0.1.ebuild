@@ -6,7 +6,7 @@ inherit perl-app
 
 DESCRIPTION="Command line tool for extracting videos from various websites"
 HOMEPAGE="http://clive.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PV:0:3}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PV:0:3}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

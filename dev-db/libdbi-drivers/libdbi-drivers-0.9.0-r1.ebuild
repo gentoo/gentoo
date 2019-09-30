@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="The libdbi-drivers project maintains drivers for libdbi"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${P}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/${PN}/${PN}/${P}/${P}.tar.gz"
 HOMEPAGE="http://libdbi-drivers.sourceforge.net/"
 LICENSE="LGPL-2.1"
 

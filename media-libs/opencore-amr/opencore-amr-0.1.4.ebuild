@@ -7,7 +7,7 @@ inherit autotools-multilib
 
 DESCRIPTION="Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec"
 HOMEPAGE="http://opencore-amr.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

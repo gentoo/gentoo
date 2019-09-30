@@ -10,7 +10,7 @@ inherit eutils
 
 DESCRIPTION="adds stencil shadows and per pixel lights to quake"
 HOMEPAGE="http://tenebrae.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tenebrae/tenebraedata.zip
+SRC_URI="https://download.sourceforge.net/tenebrae/tenebraedata.zip
 	mirror://gentoo/${P}.tbz2"
 
 LICENSE="GPL-2"

@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="Unofficial tool for controlling the Razer Copperhead mouse"
 HOMEPAGE="http://razertool.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P/-/_}.orig.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P/-/_}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

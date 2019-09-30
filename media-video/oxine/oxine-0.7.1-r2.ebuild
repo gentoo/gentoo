@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="OSD frontend for Xine"
 HOMEPAGE="http://oxine.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 SLOT="0"

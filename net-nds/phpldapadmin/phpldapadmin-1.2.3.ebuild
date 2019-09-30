@@ -7,7 +7,7 @@ inherit eutils webapp
 
 DESCRIPTION="phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server"
 HOMEPAGE="http://phpldapadmin.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"

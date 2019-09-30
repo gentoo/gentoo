@@ -15,7 +15,7 @@ DESCRIPTION="PPC Bootloader"
 HOMEPAGE="http://yaboot.ozlabs.org"
 SRC_URI="
 	http://yaboot.ozlabs.org/releases/${P}.tar.gz
-	mirror://sourceforge/e2fsprogs/${E2FS_P}.tar.gz
+	https://download.sourceforge.net/e2fsprogs/${E2FS_P}.tar.gz
 "
 
 LICENSE="GPL-2"

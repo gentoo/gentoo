@@ -11,7 +11,7 @@ MY_P="${MY_PN}Src${MY_PV}"
 
 DESCRIPTION="GUI for computational chemistry packages"
 HOMEPAGE="http://gabedit.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="3D File Browser"
 HOMEPAGE="https://sourceforge.net/projects/dz3d/"
-SRC_URI="mirror://sourceforge/dz3d/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dz3d/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

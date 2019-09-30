@@ -6,7 +6,7 @@ EAPI=5
 inherit check-reqs eutils pax-utils
 
 DESCRIPTION="Standard ML optimizing compiler and libraries"
-BASE_URI="mirror://sourceforge/${PN}"
+BASE_URI="https://download.sourceforge.net/${PN}"
 SRC_URI="!binary? ( ${BASE_URI}/${P}.src.tgz )
 		  binary? ( amd64? ( ${BASE_URI}/${P}-1.amd64-linux.tgz )
 					x86?   ( ${BASE_URI}/${P}-1.x86-linux.tgz ) )"

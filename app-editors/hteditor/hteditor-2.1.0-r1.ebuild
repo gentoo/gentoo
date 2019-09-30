@@ -9,7 +9,7 @@ MY_P=${P/editor}
 
 DESCRIPTION="A file viewer, editor and analyzer for text, binary, and executable files"
 HOMEPAGE="http://hte.sourceforge.net/ https://github.com/sebastianbiallas/ht/"
-SRC_URI="mirror://sourceforge/hte/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/hte/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

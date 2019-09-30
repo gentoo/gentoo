@@ -5,9 +5,9 @@ EAPI="5"
 
 DESCRIPTION="Tables available for ophcrack"
 HOMEPAGE="http://ophcrack.sourceforge.net/"
-SRC_URI="xpfast? ( mirror://sourceforge/ophcrack/tables_xp_free_fast.zip )
-		 xpsmall? ( mirror://sourceforge/ophcrack/tables_xp_free_small.zip )
-		 vistafree? ( mirror://sourceforge/ophcrack/tables_vista_free.zip )"
+SRC_URI="xpfast? ( https://download.sourceforge.net/ophcrack/tables_xp_free_fast.zip )
+		 xpsmall? ( https://download.sourceforge.net/ophcrack/tables_xp_free_small.zip )
+		 vistafree? ( https://download.sourceforge.net/ophcrack/tables_vista_free.zip )"
 
 LICENSE="GPL-2"
 SLOT="0"

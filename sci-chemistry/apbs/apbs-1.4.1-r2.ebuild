@@ -10,7 +10,7 @@ inherit cmake-utils distutils-r1 flag-o-matic toolchain-funcs
 
 DESCRIPTION="Evaluation of electrostatic properties of nanoscale biomolecular systems"
 HOMEPAGE="https://www.poissonboltzmann.org/apbs/"
-#SRC_URI="mirror://sourceforge/${PN}/${P}-source.tar.gz"
+#SRC_URI="https://download.sourceforge.net/${PN}/${P}-source.tar.gz"
 SRC_URI="https://github.com/Electrostatics/apbs-pdb2pqr/archive/${COMMIT}.zip -> ${P}.zip"
 
 SLOT="0"

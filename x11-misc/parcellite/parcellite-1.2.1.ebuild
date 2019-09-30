@@ -9,7 +9,7 @@ MY_P=${PN}-${PV/_}
 
 DESCRIPTION="A lightweight GTK+ based clipboard manager"
 HOMEPAGE="http://parcellite.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

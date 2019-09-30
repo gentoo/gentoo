@@ -7,7 +7,7 @@ inherit qmake-utils
 
 DESCRIPTION="Qt5 configuration tool, similar to qtconfig for Qt4"
 HOMEPAGE="https://sourceforge.net/projects/qt5ct/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"

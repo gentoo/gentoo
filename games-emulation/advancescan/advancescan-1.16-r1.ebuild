@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="A command line rom manager for MAME, MESS, AdvanceMAME, AdvanceMESS and Raine"
 HOMEPAGE="http://advancemame.sourceforge.net/scan-readme.html"
-SRC_URI="mirror://sourceforge/advancemame/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/advancemame/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

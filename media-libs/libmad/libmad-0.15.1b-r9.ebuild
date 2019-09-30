@@ -7,7 +7,7 @@ inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="\"M\"peg \"A\"udio \"D\"ecoder library"
 HOMEPAGE="http://mad.sourceforge.net"
-SRC_URI="mirror://sourceforge/mad/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mad/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

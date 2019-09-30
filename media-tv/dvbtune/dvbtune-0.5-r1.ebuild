@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="simple tuning app for DVB cards"
 HOMEPAGE="https://sourceforge.net/projects/dvbtools"
-SRC_URI="mirror://sourceforge/dvbtools/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dvbtools/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

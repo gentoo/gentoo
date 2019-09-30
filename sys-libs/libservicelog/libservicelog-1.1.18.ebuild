@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Provides a library for logging service-related events"
-SRC_URI="mirror://sourceforge/linux-diag/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/linux-diag/${P}.tar.gz"
 HOMEPAGE="http://linux-diag.sourceforge.net/servicelog/"
 
 SLOT="0"

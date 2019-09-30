@@ -10,7 +10,7 @@ S=${WORKDIR}/${MY_PN}-${PV}
 
 DESCRIPTION="KACST Arabic TrueType Fonts"
 HOMEPAGE="http://www.arabeyes.org/project.php?proj=Khotot"
-SRC_URI="mirror://sourceforge/arabeyes/${P//-/_}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/arabeyes/${P//-/_}.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="0"

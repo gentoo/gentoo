@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Fast XML parser"
 HOMEPAGE="http://rapidxml.sourceforge.net/"
-SRC_URI="mirror://sourceforge/rapidxml/rapidxml-${PV}.zip"
+SRC_URI="https://download.sourceforge.net/rapidxml/rapidxml-${PV}.zip"
 
 LICENSE="Boost-1.0 MIT"
 SLOT="0"

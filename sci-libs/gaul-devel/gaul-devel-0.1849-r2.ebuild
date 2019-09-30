@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="Genetic Algorithm Utility Library"
 HOMEPAGE="http://GAUL.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gaul/${P}-0.tar.bz2"
+SRC_URI="https://download.sourceforge.net/gaul/${P}-0.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

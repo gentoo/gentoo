@@ -7,7 +7,7 @@ DESCRIPTION="A libpcap-based tool to collect network traffic data and emit it as
 HOMEPAGE="http://fprobe.sourceforge.net"
 LICENSE="GPL-2"
 
-SRC_URI="mirror://sourceforge/fprobe/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/fprobe/${P}.tar.bz2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
 

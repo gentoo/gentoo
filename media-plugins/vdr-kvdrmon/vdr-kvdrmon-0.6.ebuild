@@ -7,7 +7,7 @@ inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: monitors on KDE Kickerapplet kvdrmon"
 HOMEPAGE="http://vdr-statusleds.sf.net/kvdrmon"
-SRC_URI="mirror://sourceforge/vdr-statusleds/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/vdr-statusleds/${P}.tgz"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"

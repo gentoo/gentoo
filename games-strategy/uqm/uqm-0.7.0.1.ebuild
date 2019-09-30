@@ -11,14 +11,14 @@ BASE_P="${PN}-${BASE_PV}"
 
 DESCRIPTION="The Ur-Quan Masters: Port of Star Control 2"
 HOMEPAGE="http://sc2.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sc2/${MY_P}-source.tgz
-	mirror://sourceforge/sc2/${BASE_P}-content.uqm
-	music? ( mirror://sourceforge/sc2/${BASE_P}-3domusic.uqm )
-	voice? ( mirror://sourceforge/sc2/${BASE_P}-voice.uqm )
-	remix? ( mirror://sourceforge/sc2/${PN}-remix-disc1.uqm \
-		mirror://sourceforge/sc2/${PN}-remix-disc2.uqm \
-		mirror://sourceforge/sc2/${PN}-remix-disc3.uqm \
-		mirror://sourceforge/sc2/${PN}-remix-disc4.uqm )"
+SRC_URI="https://download.sourceforge.net/sc2/${MY_P}-source.tgz
+	https://download.sourceforge.net/sc2/${BASE_P}-content.uqm
+	music? ( https://download.sourceforge.net/sc2/${BASE_P}-3domusic.uqm )
+	voice? ( https://download.sourceforge.net/sc2/${BASE_P}-voice.uqm )
+	remix? ( https://download.sourceforge.net/sc2/${PN}-remix-disc1.uqm \
+		https://download.sourceforge.net/sc2/${PN}-remix-disc2.uqm \
+		https://download.sourceforge.net/sc2/${PN}-remix-disc3.uqm \
+		https://download.sourceforge.net/sc2/${PN}-remix-disc4.uqm )"
 
 LICENSE="GPL-2+"
 SLOT="0"

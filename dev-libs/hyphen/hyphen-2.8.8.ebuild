@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="ALTLinux hyphenation library"
 HOMEPAGE="http://hunspell.github.io/"
-SRC_URI="mirror://sourceforge/hunspell/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/hunspell/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1"
 SLOT="0"

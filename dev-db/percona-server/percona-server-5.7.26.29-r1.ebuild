@@ -21,7 +21,7 @@ MY_MAJOR_PV=$(ver_cut 1-2)
 MY_RELEASE_NOTES_URI="https://www.percona.com/doc/percona-server/5.7/release-notes/release-notes_index.html"
 
 SRC_URI="https://www.percona.com/downloads/${MY_PN}-${MY_MAJOR_PV}/${MY_PN}-${MY_PV}/source/tarball/${PN}-${MY_PV}.tar.gz
-	mirror://sourceforge/boost/boost_1_59_0.tar.gz
+	https://download.sourceforge.net/boost/boost_1_59_0.tar.gz
 "
 
 # Gentoo patches to MySQL

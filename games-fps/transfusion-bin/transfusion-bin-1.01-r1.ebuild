@@ -7,8 +7,8 @@ inherit eutils
 MY_PN="${PN/-bin/}"
 DESCRIPTION="Blood remake"
 HOMEPAGE="http://www.transfusion-game.com/"
-SRC_URI="mirror://sourceforge/blood/${MY_PN}-1.0-linux.i386.zip
-	mirror://sourceforge/blood/${MY_PN}-patch-${PV}-linux.i386.zip
+SRC_URI="https://download.sourceforge.net/blood/${MY_PN}-1.0-linux.i386.zip
+	https://download.sourceforge.net/blood/${MY_PN}-patch-${PV}-linux.i386.zip
 	mirror://gentoo/${MY_PN}.png"
 
 LICENSE="GPL-2"

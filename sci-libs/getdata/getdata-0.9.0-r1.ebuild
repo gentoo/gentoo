@@ -10,7 +10,7 @@ inherit autotools fortran-2 python-single-r1
 
 DESCRIPTION="Reference implementation of the Dirfile, format for time-ordered binary data"
 HOMEPAGE="http://getdata.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="LGPL-2.1"

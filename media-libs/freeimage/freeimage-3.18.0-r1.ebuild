@@ -11,8 +11,8 @@ MY_P=${MY_PN}${MY_PV}
 
 DESCRIPTION="Image library supporting many formats"
 HOMEPAGE="http://freeimage.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip
-	mirror://sourceforge/${PN}/${MY_P}.pdf"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.zip
+	https://download.sourceforge.net/${PN}/${MY_P}.pdf"
 
 LICENSE="|| ( GPL-2 FIPL-1.0 )"
 SLOT="0"

@@ -8,7 +8,7 @@ MY_P=${PN}_${PV}
 
 DESCRIPTION="Pidgin plugin that renders latex formulae"
 HOMEPAGE="https://sourceforge.net/projects/pidgin-latex/"
-SRC_URI="mirror://sourceforge/pidgin-latex/${MY_P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/pidgin-latex/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

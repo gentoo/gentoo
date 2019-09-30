@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="The backup tool and wonderful emulator's Swiss Army knife program"
 HOMEPAGE="http://ucon64.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ucon64/${P}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/ucon64/${P}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

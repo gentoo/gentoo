@@ -7,7 +7,7 @@ inherit desktop gnome2-utils toolchain-funcs
 
 DESCRIPTION="Worms and Scorched Earth-like game"
 HOMEPAGE="http://atanks.sourceforge.net/"
-SRC_URI="mirror://sourceforge/atanks/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/atanks/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

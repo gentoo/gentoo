@@ -8,7 +8,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java code for LZMA compression and decompression"
 HOMEPAGE="https://www.7-zip.org/"
-SRC_URI="mirror://sourceforge/sevenzip/${PN}${PV/./}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/sevenzip/${PN}${PV/./}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"

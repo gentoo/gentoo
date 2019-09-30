@@ -6,7 +6,7 @@ inherit autotools flag-o-matic systemd
 
 DESCRIPTION="Advanced TFTP implementation client/server"
 HOMEPAGE="https://sourceforge.net/projects/atftp/"
-SRC_URI="mirror://sourceforge/atftp/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/atftp/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

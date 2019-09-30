@@ -10,7 +10,7 @@ S="${WORKDIR}"/${MY_PN}_${PV}
 
 DESCRIPTION="Arabeyes Arabic TrueType fonts"
 HOMEPAGE="https://www.arabeyes.org/Khotot#2.0"
-SRC_URI="mirror://sourceforge/arabeyes/${MY_PN}_${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/arabeyes/${MY_PN}_${PV}.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="0"

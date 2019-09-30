@@ -12,7 +12,7 @@ MY_P="${MY_P//./_}"
 
 DESCRIPTION="A Java API to read, write, and modify Excel spreadsheets"
 HOMEPAGE="http://jexcelapi.sourceforge.net/"
-SRC_URI="mirror://sourceforge/jexcelapi/${MY_P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/jexcelapi/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit eutils prefix toolchain-funcs
 
 DESCRIPTION="A utility for parallelizing execution of shell functions"
 HOMEPAGE="http://prll.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

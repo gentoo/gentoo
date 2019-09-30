@@ -8,7 +8,7 @@ inherit gkrellm-plugin toolchain-funcs
 MY_P=${P/-/_}
 
 DESCRIPTION="an Image-Watcher-Plugin for GKrellM2"
-SRC_URI="mirror://sourceforge/gkrellkam/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/gkrellkam/${MY_P}.tar.gz"
 HOMEPAGE="http://gkrellkam.sourceforge.net"
 
 LICENSE="GPL-2"

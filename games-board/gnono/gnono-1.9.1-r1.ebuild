@@ -6,7 +6,7 @@ inherit autotools eutils gnome2-utils
 
 DESCRIPTION="A rewrite for GNOME of the Windows card game WUNO"
 HOMEPAGE="https://sourceforge.net/projects/gnono/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

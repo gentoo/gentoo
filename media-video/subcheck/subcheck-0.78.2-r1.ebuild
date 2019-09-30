@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Subcheck checks srt subtitle files for errors"
 HOMEPAGE="http://subcheck.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

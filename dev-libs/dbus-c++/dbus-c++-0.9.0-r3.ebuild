@@ -9,7 +9,7 @@ inherit autotools-multilib
 
 DESCRIPTION="Provides a C++ API for D-BUS"
 HOMEPAGE="https://sourceforge.net/projects/dbus-cplusplus/ https://sourceforge.net/apps/mediawiki/dbus-cplusplus/index.php?title=Main_Page"
-SRC_URI="mirror://sourceforge/dbus-cplusplus/lib${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dbus-cplusplus/lib${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Dict protocol implementation in Java"
 HOMEPAGE="http://dict4j.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.jar -> ${P}.jar"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.jar -> ${P}.jar"
 
 LICENSE="BSD"
 SLOT="0"

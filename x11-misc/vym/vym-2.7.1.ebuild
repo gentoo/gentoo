@@ -7,7 +7,7 @@ inherit desktop l10n qmake-utils
 
 DESCRIPTION="View Your Mind, a mindmap tool"
 HOMEPAGE="https://www.insilmaril.de/vym/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

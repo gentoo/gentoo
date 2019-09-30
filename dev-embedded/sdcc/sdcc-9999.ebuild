@@ -9,8 +9,8 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit subversion
 else
 	SRC_URI="
-		mirror://sourceforge/sdcc/${PN}-src-${PV}.tar.bz2
-		doc? ( mirror://sourceforge/sdcc/${PN}-doc-${PV}.tar.bz2 )
+		https://download.sourceforge.net/sdcc/${PN}-src-${PV}.tar.bz2
+		doc? ( https://download.sourceforge.net/sdcc/${PN}-doc-${PV}.tar.bz2 )
 	"
 	KEYWORDS="~amd64 ~x86"
 fi

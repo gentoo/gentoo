@@ -7,7 +7,7 @@ inherit readme.gentoo-r1 elisp autotools
 
 DESCRIPTION="Provides a simple interface to public key cryptography with OpenPGP"
 HOMEPAGE="http://mailcrypt.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mailcrypt/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mailcrypt/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

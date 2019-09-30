@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Display calibration and characterization powered by Argyll CMS"
 HOMEPAGE="https://displaycal.net/"
-SRC_URI="mirror://sourceforge/dispcalgui/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dispcalgui/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

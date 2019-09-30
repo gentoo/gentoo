@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="a GTK+ TCP/IP DX-cluster and ON4KST chat client"
 HOMEPAGE="https://sourceforge.net/projects/xdxclusterclient"
-SRC_URI="mirror://sourceforge/xdxclusterclient/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xdxclusterclient/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

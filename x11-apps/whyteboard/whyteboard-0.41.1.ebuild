@@ -10,7 +10,7 @@ inherit eutils python-single-r1 multilib
 DESCRIPTION="A simple image, PDF and postscript file annotator"
 HOMEPAGE="http://whyteboard.org/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.gz
+	https://download.sourceforge.net/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~lxnay/${PN}/${PN}.png"
 
 LICENSE="ISC"

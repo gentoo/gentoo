@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Simple application launcher for the Window Maker dock"
 HOMEPAGE="https://www.dockapps.net/wmappl"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext

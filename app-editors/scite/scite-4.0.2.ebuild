@@ -9,7 +9,7 @@ MY_PV=${PV//./}
 DESCRIPTION="A very powerful, highly configurable, small editor with syntax
 coloring."
 HOMEPAGE="https://www.scintilla.org/SciTE.html"
-SRC_URI="mirror://sourceforge/scintilla/${PN}${MY_PV}.tgz"
+SRC_URI="https://download.sourceforge.net/scintilla/${PN}${MY_PV}.tgz"
 
 LICENSE="HPND lua? ( MIT )"
 SLOT="0"

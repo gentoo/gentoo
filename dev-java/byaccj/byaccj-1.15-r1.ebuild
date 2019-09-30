@@ -8,7 +8,7 @@ inherit toolchain-funcs
 DESCRIPTION="A java extension of BSD YACC-compatible parser generator"
 HOMEPAGE="http://byaccj.sourceforge.net/"
 MY_P="${PN}${PV}_src"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

@@ -9,7 +9,7 @@ PYTHON_REQ_USE="tk"
 
 DESCRIPTION="Python refactoring IDE"
 HOMEPAGE="http://freecode.com/projects/ropeide https://pypi.org/project/ropeide/"
-SRC_URI="mirror://sourceforge/rope/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/rope/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

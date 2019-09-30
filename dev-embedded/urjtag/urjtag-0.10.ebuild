@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Tool for communicating over JTAG with flash chips, CPUs, and many more"
 HOMEPAGE="http://urjtag.sourceforge.net/"
-SRC_URI="mirror://sourceforge/urjtag/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/urjtag/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

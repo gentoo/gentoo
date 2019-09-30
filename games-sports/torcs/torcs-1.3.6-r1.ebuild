@@ -6,7 +6,7 @@ inherit autotools eutils multilib
 
 DESCRIPTION="The Open Racing Car Simulator"
 HOMEPAGE="http://torcs.sourceforge.net/"
-SRC_URI="mirror://sourceforge/torcs/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/torcs/${P}.tar.bz2"
 
 LICENSE="GPL-2 FreeArt"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="Network Testing Tool"
 HOMEPAGE="http://www.eff.org/testyourisp/switzerland/"
-SRC_URI="mirror://sourceforge/switzerland/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/switzerland/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"

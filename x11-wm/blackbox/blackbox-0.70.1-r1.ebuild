@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="A small, fast, full-featured window manager for X"
 HOMEPAGE="https://github.com/bbidulock/blackboxwm"
-SRC_URI="mirror://sourceforge/${PN}wm/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}wm/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

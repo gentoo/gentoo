@@ -5,7 +5,7 @@ EAPI="7"
 
 DESCRIPTION="Encryption and decryption"
 HOMEPAGE="https://sourceforge.net/projects/ccrypt/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PV}/${P}.tar.gz"
 IUSE="emacs"
 LICENSE="GPL-2"
 SLOT="0"

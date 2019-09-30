@@ -7,7 +7,7 @@ inherit cmake-utils pam eutils systemd versionator
 
 DESCRIPTION="Simple Login Manager"
 HOMEPAGE="https://sourceforge.net/projects/slim.berlios/"
-SRC_URI="mirror://sourceforge/project/${PN}.berlios/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/${PN}.berlios/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

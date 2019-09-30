@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Convert MS Office docx files to plain text"
 HOMEPAGE="http://docx2txt.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"

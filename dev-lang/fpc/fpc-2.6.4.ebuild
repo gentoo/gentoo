@@ -7,15 +7,15 @@ inherit toolchain-funcs
 
 HOMEPAGE="https://www.freepascal.org/"
 DESCRIPTION="Free Pascal Compiler"
-SRC_URI="mirror://sourceforge/freepascal/fpcbuild-${PV}.tar.gz
-	mirror://sourceforge/freepascal/fpc-${PV}.source.tar.gz
-	amd64? ( mirror://sourceforge/freepascal/${P}.x86_64-linux.tar )
-	arm? ( mirror://sourceforge/freepascal/${P}.arm-linux.tar )
-	ppc? ( mirror://sourceforge/freepascal/${P}.powerpc-linux.tar )
-	ppc64? ( mirror://sourceforge/freepascal/${P}.powerpc64-linux.tar )
-	sparc? ( mirror://sourceforge/freepascal/${PN}-2.6.2.sparc-linux.tar )
-	x86? ( mirror://sourceforge/freepascal/${P}.i386-linux.tar )
-	doc? ( mirror://sourceforge/freepascal/Documentation/${PV}/doc-html.tar.gz -> ${P}-doc-html.tar.gz
+SRC_URI="https://download.sourceforge.net/freepascal/fpcbuild-${PV}.tar.gz
+	https://download.sourceforge.net/freepascal/fpc-${PV}.source.tar.gz
+	amd64? ( https://download.sourceforge.net/freepascal/${P}.x86_64-linux.tar )
+	arm? ( https://download.sourceforge.net/freepascal/${P}.arm-linux.tar )
+	ppc? ( https://download.sourceforge.net/freepascal/${P}.powerpc-linux.tar )
+	ppc64? ( https://download.sourceforge.net/freepascal/${P}.powerpc64-linux.tar )
+	sparc? ( https://download.sourceforge.net/freepascal/${PN}-2.6.2.sparc-linux.tar )
+	x86? ( https://download.sourceforge.net/freepascal/${P}.i386-linux.tar )
+	doc? ( https://download.sourceforge.net/freepascal/Documentation/${PV}/doc-html.tar.gz -> ${P}-doc-html.tar.gz
 		https://dev.gentoo.org/~radhermit/distfiles/${P}-fpctoc.htx.bz2 )"
 
 SLOT="0"

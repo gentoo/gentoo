@@ -9,7 +9,7 @@ inherit cmake-utils desktop distutils-r1 java-pkg-opt-2
 
 DESCRIPTION="Library for real time MIDI input and output"
 HOMEPAGE="http://portmedia.sourceforge.net/"
-SRC_URI="mirror://sourceforge/portmedia/${PN}-src-${PV}.zip"
+SRC_URI="https://download.sourceforge.net/portmedia/${PN}-src-${PV}.zip"
 
 LICENSE="MIT"
 SLOT="0"

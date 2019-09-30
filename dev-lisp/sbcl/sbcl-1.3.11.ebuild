@@ -21,19 +21,19 @@ BV_X64_SOLARIS=1.2.7
 
 DESCRIPTION="Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp"
 HOMEPAGE="http://sbcl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sbcl/${P}-source.tar.bz2
-	x86? ( mirror://sourceforge/sbcl/${PN}-${BV_X86}-x86-linux-binary.tar.bz2 )
-	amd64? ( mirror://sourceforge/sbcl/${PN}-${BV_AMD64}-x86-64-linux-binary.tar.bz2 )
-	ppc? ( mirror://sourceforge/sbcl/${PN}-${BV_PPC}-powerpc-linux-binary.tar.bz2 )
-	sparc? ( mirror://sourceforge/sbcl/${PN}-${BV_SPARC}-sparc-linux-binary.tar.bz2 )
-	alpha? ( mirror://sourceforge/sbcl/${PN}-${BV_ALPHA}-alpha-linux-binary.tar.bz2 )
-	arm? ( mirror://sourceforge/sbcl/${PN}-${BV_ARM}-armhf-linux-binary.tar.bz2 )
-	ppc-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_PPC_MACOS}-powerpc-darwin-binary.tar.bz2 )
-	x86-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_X86_MACOS}-x86-darwin-binary.tar.bz2 )
-	x64-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_X64_MACOS}-x86-64-darwin-binary.tar.bz2 )
-	sparc-solaris? ( mirror://sourceforge/sbcl/${PN}-${BV_SPARC_SOLARIS}-sparc-solaris-binary.tar.bz2 )
-	x86-solaris? ( mirror://sourceforge/sbcl/${PN}-${BV_X86_SOLARIS}-x86-solaris-binary.tar.bz2 )
-	x64-solaris? ( mirror://sourceforge/sbcl/${PN}-${BV_X64_SOLARIS}-x86-64-solaris-binary.tar.bz2 )"
+SRC_URI="https://download.sourceforge.net/sbcl/${P}-source.tar.bz2
+	x86? ( https://download.sourceforge.net/sbcl/${PN}-${BV_X86}-x86-linux-binary.tar.bz2 )
+	amd64? ( https://download.sourceforge.net/sbcl/${PN}-${BV_AMD64}-x86-64-linux-binary.tar.bz2 )
+	ppc? ( https://download.sourceforge.net/sbcl/${PN}-${BV_PPC}-powerpc-linux-binary.tar.bz2 )
+	sparc? ( https://download.sourceforge.net/sbcl/${PN}-${BV_SPARC}-sparc-linux-binary.tar.bz2 )
+	alpha? ( https://download.sourceforge.net/sbcl/${PN}-${BV_ALPHA}-alpha-linux-binary.tar.bz2 )
+	arm? ( https://download.sourceforge.net/sbcl/${PN}-${BV_ARM}-armhf-linux-binary.tar.bz2 )
+	ppc-macos? ( https://download.sourceforge.net/sbcl/${PN}-${BV_PPC_MACOS}-powerpc-darwin-binary.tar.bz2 )
+	x86-macos? ( https://download.sourceforge.net/sbcl/${PN}-${BV_X86_MACOS}-x86-darwin-binary.tar.bz2 )
+	x64-macos? ( https://download.sourceforge.net/sbcl/${PN}-${BV_X64_MACOS}-x86-64-darwin-binary.tar.bz2 )
+	sparc-solaris? ( https://download.sourceforge.net/sbcl/${PN}-${BV_SPARC_SOLARIS}-sparc-solaris-binary.tar.bz2 )
+	x86-solaris? ( https://download.sourceforge.net/sbcl/${PN}-${BV_X86_SOLARIS}-x86-solaris-binary.tar.bz2 )
+	x64-solaris? ( https://download.sourceforge.net/sbcl/${PN}-${BV_X64_SOLARIS}-x86-64-solaris-binary.tar.bz2 )"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

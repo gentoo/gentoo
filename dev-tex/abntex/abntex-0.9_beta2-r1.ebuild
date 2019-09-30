@@ -10,8 +10,8 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="LaTeX macros for writing documents following the ABNT norms"
 HOMEPAGE="http://abntex.codigolivre.org.br/ http://abntex.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz
-	doc? ( mirror://sourceforge/${PN}/${PN}-doc-${MY_PV}.tar.gz )"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz
+	doc? ( https://download.sourceforge.net/${PN}/${PN}-doc-${MY_PV}.tar.gz )"
 
 LICENSE="LPPL-1.3c"
 SLOT="0"

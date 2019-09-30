@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="Virtual Router Redundancy Protocol Daemon"
 HOMEPAGE="http://www.sourceforge.net/projects/vrrpd"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/1.0/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}/1.0/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

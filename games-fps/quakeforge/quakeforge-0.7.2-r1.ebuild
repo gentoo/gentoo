@@ -6,7 +6,7 @@ inherit eutils flag-o-matic autotools
 
 DESCRIPTION="New 3d engine based off of id Softwares's Quake and QuakeWorld game engine"
 HOMEPAGE="http://www.quakeforge.net/"
-SRC_URI="mirror://sourceforge/quake/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/quake/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

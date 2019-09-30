@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="A command-line tool for taking JPEG snapshots of VNC servers"
 HOMEPAGE="http://vncsnapshot.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

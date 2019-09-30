@@ -20,7 +20,7 @@ SRC_URI="ftp://ftp.proftpd.org/distrib/source/${P/_/}.tar.gz
 	case? ( http://www.castaglia.org/${PN}/modules/${PN}-mod-case-${MOD_CASE}.tar.gz )
 	clamav? ( https://secure.thrallingpenguin.com/redmine/attachments/download/1/mod_clamav-${MOD_CLAMAV}.tar.gz )
 	diskuse? ( http://www.castaglia.org/${PN}/modules/${PN}-mod-diskuse-${MOD_DISKUSE}.tar.gz )
-	kerberos? ( mirror://sourceforge/gssmod/mod_gss-${MOD_GSS}.tar.gz )
+	kerberos? ( https://download.sourceforge.net/gssmod/mod_gss-${MOD_GSS}.tar.gz )
 	msg? ( http://www.castaglia.org/${PN}/modules/${PN}-mod-msg-${MOD_MSG}.tar.gz )
 	vroot? ( https://github.com/Castaglia/${PN}-mod_vroot/archive/v${MOD_VROOT}.tar.gz -> mod_vroot-${MOD_VROOT}.tar.gz )"
 LICENSE="GPL-2"

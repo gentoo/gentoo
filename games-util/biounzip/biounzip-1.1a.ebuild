@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Unpacks BioZip archives"
 HOMEPAGE="http://biounzip.sourceforge.net/"
-SRC_URI="mirror://sourceforge/biounzip/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/biounzip/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="CPU, memory, swap, network stats for G15 Keyboard"
 HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
-SRC_URI="mirror://sourceforge/g15daemon/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/g15daemon/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

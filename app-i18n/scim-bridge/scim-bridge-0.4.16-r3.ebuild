@@ -7,7 +7,7 @@ inherit autotools eutils gnome2-utils multilib readme.gentoo-r1
 
 DESCRIPTION="Yet another IM-client of SCIM"
 HOMEPAGE="http://www.scim-im.org/projects/scim_bridge"
-SRC_URI="mirror://sourceforge/scim/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/scim/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

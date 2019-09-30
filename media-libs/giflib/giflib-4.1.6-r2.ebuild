@@ -7,7 +7,7 @@ inherit epatch epunt-cxx libtool
 
 DESCRIPTION="Library to handle, display and manipulate GIF images"
 HOMEPAGE="https://sourceforge.net/projects/giflib/"
-SRC_URI="mirror://sourceforge/giflib/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/giflib/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

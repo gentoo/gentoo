@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Library to create EPS graphics from a Graphics2D"
 HOMEPAGE="http://jlibeps.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip -> ${P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Cisco netflow probe from libpcap, ULOG, tee/divert sources"
 HOMEPAGE="https://sourceforge.net/projects/ndsad"
-SRC_URI="mirror://sourceforge/ndsad/ndsad-${PV}.tgz"
+SRC_URI="https://download.sourceforge.net/ndsad/ndsad-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

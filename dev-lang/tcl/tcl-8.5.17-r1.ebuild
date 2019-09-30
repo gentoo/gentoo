@@ -9,7 +9,7 @@ MY_P="${PN}${PV/_beta/b}"
 
 DESCRIPTION="Tool Command Language"
 HOMEPAGE="http://www.tcl.tk/"
-SRC_URI="mirror://sourceforge/tcl/${MY_P}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/tcl/${MY_P}-src.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0/8.5"

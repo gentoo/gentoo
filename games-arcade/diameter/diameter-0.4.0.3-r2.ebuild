@@ -9,7 +9,7 @@ inherit autotools eutils python-single-r1
 
 DESCRIPTION="Arcade game with elements of economy and adventure"
 HOMEPAGE="https://sourceforge.net/projects/gamediameter/"
-SRC_URI="mirror://sourceforge/gamediameter/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/gamediameter/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

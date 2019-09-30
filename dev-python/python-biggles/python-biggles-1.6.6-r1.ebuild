@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A Python module for creating publication-quality 2D scientific plots"
 HOMEPAGE="http://biggles.sourceforge.net/"
-SRC_URI="mirror://sourceforge/biggles/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/biggles/${MY_P}.tar.gz"
 
 DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]

@@ -6,7 +6,7 @@ inherit cmake-utils eutils flag-o-matic gnome2-utils
 
 DESCRIPTION="a multi-player, 3D action role-playing game"
 HOMEPAGE="http://sumwars.org"
-SRC_URI="mirror://sourceforge/sumwars/${P//_/-}-src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/sumwars/${P//_/-}-src.tar.bz2"
 
 LICENSE="GPL-3 CC-BY-SA-3.0"
 SLOT="0"

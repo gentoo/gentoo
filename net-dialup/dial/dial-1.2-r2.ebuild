@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A simple client for DWUN"
 HOMEPAGE="http://dwun.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dwun/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dwun/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

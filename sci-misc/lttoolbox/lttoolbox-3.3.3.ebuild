@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Toolbox for lexical processing, morphological analysis and generation of words"
 HOMEPAGE="https://www.apertium.org"
-SRC_URI="mirror://sourceforge/apertium/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/apertium/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

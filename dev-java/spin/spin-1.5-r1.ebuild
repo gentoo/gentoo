@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Transparent threading solution for non-freezing Swing applications"
 HOMEPAGE="http://spin.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}-all.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-all.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="Simple but powerful unit testing framework for C++"
 HOMEPAGE="http://cpptest.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

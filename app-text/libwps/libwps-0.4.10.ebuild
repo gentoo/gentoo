@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Microsoft Works file word processor format import filter library"
 HOMEPAGE="https://sourceforge.net/p/libwps/wiki/Home/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
 SLOT="0"

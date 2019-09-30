@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Utility to place icons on the root window"
 HOMEPAGE="http://idesk.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

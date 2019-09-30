@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="DSSI Soft Synth Interface"
 HOMEPAGE="http://dssi.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dssi/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dssi/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

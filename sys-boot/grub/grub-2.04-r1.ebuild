@@ -45,7 +45,7 @@ PATCHES=(
 DEJAVU=dejavu-sans-ttf-2.37
 UNIFONT=unifont-12.1.02
 SRC_URI+=" fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
-	themes? ( mirror://sourceforge/dejavu/${DEJAVU}.zip )"
+	themes? ( https://download.sourceforge.net/dejavu/${DEJAVU}.zip )"
 
 DESCRIPTION="GNU GRUB boot loader"
 HOMEPAGE="https://www.gnu.org/software/grub/"

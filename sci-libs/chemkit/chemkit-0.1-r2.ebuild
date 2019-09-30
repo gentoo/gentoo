@@ -9,7 +9,7 @@ inherit cmake-utils python-single-r1 virtualx
 
 DESCRIPTION="Library for chemistry applications"
 HOMEPAGE="https://github.com/kylelutz/chemkit"
-SRC_URI="mirror://sourceforge/project/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD PSF-2.2"

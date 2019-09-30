@@ -7,7 +7,7 @@ inherit qmake-utils xdg-utils
 
 DESCRIPTION="Graphical wireless scanning for Linux"
 HOMEPAGE="https://sourceforge.net/projects/linssid/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.orig.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

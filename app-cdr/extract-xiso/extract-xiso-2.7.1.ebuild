@@ -9,7 +9,7 @@ MY_PV=${PV/_beta/b}
 
 DESCRIPTION="Tool for extracting and creating optimised Xbox ISO images"
 HOMEPAGE="https://sourceforge.net/projects/extract-xiso"
-SRC_URI="mirror://sourceforge/extract-xiso/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/extract-xiso/${P}.tar.gz"
 
 LICENSE="BSD-4"
 SLOT="0"

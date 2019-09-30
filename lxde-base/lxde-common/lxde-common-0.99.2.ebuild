@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="LXDE Session default configuration files and nuoveXT2 iconset"
 HOMEPAGE="https://wiki.lxde.org/en/LXDE_Common"
-SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

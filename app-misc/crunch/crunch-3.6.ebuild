@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="A wordlist generator"
 HOMEPAGE="https://sourceforge.net/projects/crunch-wordlist/"
-SRC_URI="mirror://sourceforge/crunch-wordlist/crunch-wordlist/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/crunch-wordlist/crunch-wordlist/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

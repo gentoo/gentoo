@@ -5,7 +5,7 @@ EAPI="4"
 
 DESCRIPTION="Performance monitoring tool capable of interactive reporting and logging to disk"
 HOMEPAGE="http://collectl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/collectl/${P}.src.tar.gz"
+SRC_URI="https://download.sourceforge.net/collectl/${P}.src.tar.gz"
 
 LICENSE="GPL-2 Artistic"
 SLOT="0"

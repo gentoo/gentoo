@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Enlightenment DR16 epplets"
 HOMEPAGE="https://www.enlightenment.org https://sourceforge.net/projects/enlightenment/"
-SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/enlightenment/${P}.tar.xz"
 KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2+ BSD public-domain"

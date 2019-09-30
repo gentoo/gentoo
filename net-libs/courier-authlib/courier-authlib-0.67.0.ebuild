@@ -7,7 +7,7 @@ inherit flag-o-matic
 KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 
 DESCRIPTION="Courier authentication library"
-SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/courier/${P}.tar.bz2"
 HOMEPAGE="https://www.courier-mta.org/authlib/"
 LICENSE="GPL-3"
 SLOT="0"

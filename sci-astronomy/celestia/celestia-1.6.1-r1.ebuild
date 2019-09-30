@@ -8,7 +8,7 @@ inherit eutils flag-o-matic gnome2 autotools
 
 DESCRIPTION="OpenGL 3D space simulator"
 HOMEPAGE="http://www.shatters.net/celestia/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

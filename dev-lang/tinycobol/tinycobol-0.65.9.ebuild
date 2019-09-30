@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="COBOL for linux"
 HOMEPAGE="http://tiny-cobol.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tiny-cobol/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/tiny-cobol/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"

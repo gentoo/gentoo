@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2 versionator
 
 MY_P="${PN}-$(replace_all_version_separators '-')"
 DESCRIPTION="A Java data mining package"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.zip"
 HOMEPAGE="http://www.cs.waikato.ac.nz/ml/weka/"
 SLOT="0"
 LICENSE="GPL-2"

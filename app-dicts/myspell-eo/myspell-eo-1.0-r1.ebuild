@@ -18,7 +18,7 @@ inherit myspell-r2
 
 DESCRIPTION="Esperanto dictionaries for myspell/hunspell"
 HOMEPAGE="http://nlp.fi.muni.cz/projekty/esperanto_spell_checker/"
-SRC_URI="mirror://sourceforge/aoo-extensions/3377/1/${PV}-dev.oxt -> ${P}.oxt"
+SRC_URI="https://download.sourceforge.net/aoo-extensions/3377/1/${PV}-dev.oxt -> ${P}.oxt"
 
 LICENSE="GPL-2 LGPL-3 MPL-1.1"
 SLOT="0"

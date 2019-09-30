@@ -6,7 +6,7 @@ inherit autotools eutils user toolchain-funcs
 
 DESCRIPTION="Network traffic analyzer with web interface"
 HOMEPAGE="https://www.ntop.org/"
-SRC_URI="mirror://sourceforge/ntop/${PN}/${P}-stable.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ntop/${PN}/${P}-stable.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

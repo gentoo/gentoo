@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Console app for copying burning audio cds"
 HOMEPAGE="http://burncdda.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

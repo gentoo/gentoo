@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Library of unicode annotation data"
 HOMEPAGE="http://libuninameslist.sourceforge.net/"
-SRC_URI="mirror://sourceforge/libuninameslist/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/libuninameslist/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

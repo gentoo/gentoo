@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="protects hosts from brute force attacks against ssh"
 HOMEPAGE="https://www.sshguard.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

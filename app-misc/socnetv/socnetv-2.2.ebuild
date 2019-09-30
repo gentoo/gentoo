@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Qt Social Network Visualizer"
 HOMEPAGE="http://socnetv.sourceforge.net/"
-SRC_URI="mirror://sourceforge/socnetv/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/socnetv/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

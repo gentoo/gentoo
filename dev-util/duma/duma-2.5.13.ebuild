@@ -10,7 +10,7 @@ MY_P="${PN}_$(replace_all_version_separators '_')"
 DESCRIPTION="DUMA (Detect Unintended Memory Access) is a memory debugging library"
 HOMEPAGE="http://duma.sourceforge.net/"
 
-SRC_URI="mirror://sourceforge/duma/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/duma/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

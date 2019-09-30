@@ -6,7 +6,7 @@ inherit gnome2-utils multilib toolchain-funcs
 
 DESCRIPTION="Drawing program designed for young children"
 HOMEPAGE="http://www.tuxpaint.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

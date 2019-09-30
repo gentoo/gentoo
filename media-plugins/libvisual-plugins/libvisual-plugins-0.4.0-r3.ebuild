@@ -8,7 +8,7 @@ PATCHLEVEL=4
 
 DESCRIPTION="collection of visualization plugins for use with the libvisual framework"
 HOMEPAGE="http://libvisual.sourceforge.net/"
-SRC_URI="mirror://sourceforge/libvisual/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/libvisual/${P}.tar.gz
 	mirror://gentoo/${P}-patches-${PATCHLEVEL}.tar.bz2
 	mirror://gentoo/${P}-m4-1.tar.bz2"
 

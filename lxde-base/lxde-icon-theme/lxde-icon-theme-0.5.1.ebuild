@@ -7,7 +7,7 @@ inherit gnome2-utils
 
 DESCRIPTION="nuoveXT2 iconset"
 HOMEPAGE="https://lxde.org/"
-SRC_URI="mirror://sourceforge/lxde/LXDE%20Icon%20Theme/${P}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/lxde/LXDE%20Icon%20Theme/${P}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

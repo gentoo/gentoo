@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Reimplementation of Nebulous using SDL"
 HOMEPAGE="http://toppler.sourceforge.net/"
-SRC_URI="mirror://sourceforge/toppler/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/toppler/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

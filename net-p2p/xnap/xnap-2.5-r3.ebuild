@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="A P2P framework and client"
 HOMEPAGE="http://xnap.sf.net"
-SRC_URI="mirror://sourceforge/xnap/${P}r3.jar"
+SRC_URI="https://download.sourceforge.net/xnap/${P}r3.jar"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"

@@ -9,7 +9,7 @@ inherit python-r1
 
 DESCRIPTION="A Python module that implements several well-known classical cipher algorithms"
 HOMEPAGE="http://pycipher.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.py"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.py"
 
 LICENSE="BSD-2"
 SLOT="0"

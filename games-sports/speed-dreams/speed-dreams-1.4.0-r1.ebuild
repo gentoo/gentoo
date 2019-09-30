@@ -6,7 +6,7 @@ inherit autotools eutils versionator
 
 DESCRIPTION="A fork of the famous open racing car simulator TORCS"
 HOMEPAGE="http://speed-dreams.sourceforge.net/"
-SRC_URI="mirror://sourceforge/speed-dreams/${P}-r2307-src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/speed-dreams/${P}-r2307-src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

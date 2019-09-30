@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Text User Interface that implements the well known CUA widgets"
 HOMEPAGE="http://tvision.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tvision/rhtvision_${PV/_pre/-}.tar.gz"
+SRC_URI="https://download.sourceforge.net/tvision/rhtvision_${PV/_pre/-}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

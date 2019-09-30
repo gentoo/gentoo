@@ -6,7 +6,7 @@ inherit desktop
 
 DESCRIPTION="Block-clearing puzzle game"
 HOMEPAGE="http://wizznic.org/"
-SRC_URI="mirror://sourceforge/wizznic/Wizznic_src_build_${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/wizznic/Wizznic_src_build_${PV}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"

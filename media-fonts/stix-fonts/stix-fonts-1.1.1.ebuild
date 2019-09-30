@@ -6,7 +6,7 @@ inherit font
 
 DESCRIPTION="Comprehensive OpenType font set of mathematical symbols and alphabets"
 HOMEPAGE="http://www.stixfonts.org/"
-SRC_URI="mirror://sourceforge/${PN/-/}/STIXv${PV}-word.zip"
+SRC_URI="https://download.sourceforge.net/${PN/-/}/STIXv${PV}-word.zip"
 
 LICENSE="OFL-1.1"
 SLOT="0"

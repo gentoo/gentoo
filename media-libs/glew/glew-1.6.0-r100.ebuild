@@ -6,7 +6,7 @@ inherit multilib-minimal toolchain-funcs versionator
 
 DESCRIPTION="The OpenGL Extension Wrangler Library"
 HOMEPAGE="http://glew.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="BSD MIT"
 SLOT="$(get_version_component_range 1-2)"

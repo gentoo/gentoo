@@ -7,7 +7,7 @@ AUTOTOOLS_AUTORECONF=1
 inherit autotools-utils eutils
 
 DESCRIPTION="A utility to merge apache logs in chronological order"
-SRC_URI="mirror://sourceforge/mergelog/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mergelog/${P}.tar.gz"
 HOMEPAGE="http://mergelog.sourceforge.net"
 
 IUSE=""

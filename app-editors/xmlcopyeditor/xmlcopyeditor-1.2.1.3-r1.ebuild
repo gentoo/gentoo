@@ -8,7 +8,7 @@ inherit autotools wxwidgets
 
 DESCRIPTION="XML Copy Editor is a fast, free, validating XML editor"
 HOMEPAGE="http://xml-copy-editor.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xml-copy-editor/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xml-copy-editor/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

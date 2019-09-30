@@ -6,10 +6,10 @@ inherit eutils gnome2-utils
 
 DESCRIPTION="A traditional game of Brunei"
 HOMEPAGE="http://pasang-emas.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
-	extras? ( mirror://sourceforge/${PN}/pasang-emas-themes-1.0.tar.bz2
-	          mirror://sourceforge/${PN}/pet-marble.tar.bz2
-	          mirror://sourceforge/${PN}/pet-fragrance.tar.bz2 )"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.bz2
+	extras? ( https://download.sourceforge.net/${PN}/pasang-emas-themes-1.0.tar.bz2
+	          https://download.sourceforge.net/${PN}/pet-marble.tar.bz2
+	          https://download.sourceforge.net/${PN}/pet-fragrance.tar.bz2 )"
 
 LICENSE="GPL-3"
 SLOT="0"

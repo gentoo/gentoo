@@ -7,7 +7,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Ant Task for build-time creation of Java source file with version or other info"
 HOMEPAGE="http://jreleaseinfo.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"

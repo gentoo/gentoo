@@ -9,7 +9,7 @@ inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Python interface to libmhash"
 HOMEPAGE="http://mhash.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mhash/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/mhash/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

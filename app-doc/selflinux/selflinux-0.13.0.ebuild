@@ -7,7 +7,7 @@ MY_P="SelfLinux-${PV}"
 
 DESCRIPTION="german-language hypertext tutorial about Linux"
 HOMEPAGE="http://selflinux.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}-html.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}-html.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

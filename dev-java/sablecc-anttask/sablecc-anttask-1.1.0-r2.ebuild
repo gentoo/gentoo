@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Ant task for sablecc"
 HOMEPAGE="http://sablecc.org/"
-SRC_URI="mirror://sourceforge/sablecc/${P}-src.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sablecc/${P}-src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

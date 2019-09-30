@@ -6,7 +6,7 @@ inherit eutils readme.gentoo systemd user
 
 DESCRIPTION="Dictionary Client/Server for the DICT protocol"
 HOMEPAGE="http://www.dict.org/ https://sourceforge.net/projects/dict/"
-SRC_URI="mirror://sourceforge/dict/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dict/${P}.tar.gz"
 
 SLOT="0"
 # We install rfc so - ISOC-rfc

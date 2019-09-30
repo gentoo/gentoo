@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="mccp extension to TCL"
 HOMEPAGE="http://tcl-mccp.sf.net/"
-SRC_URI="mirror://sourceforge/tcl-mccp/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/tcl-mccp/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

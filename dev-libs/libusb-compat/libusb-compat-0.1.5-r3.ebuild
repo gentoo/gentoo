@@ -7,7 +7,7 @@ inherit toolchain-funcs multilib-minimal usr-ldscript
 
 DESCRIPTION="Userspace access to USB devices (libusb-0.1 compat wrapper)"
 HOMEPAGE="http://libusb.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN/-compat}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN/-compat}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

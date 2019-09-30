@@ -7,7 +7,7 @@ inherit flag-o-matic qmake-utils
 
 DESCRIPTION="Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections"
 HOMEPAGE="http://qjackctl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/qjackctl/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/qjackctl/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

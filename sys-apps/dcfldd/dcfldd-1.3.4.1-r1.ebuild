@@ -7,7 +7,7 @@ My_PV=$(ver_rs 3 '-')
 
 DESCRIPTION="enhanced dd with features for forensics and security"
 HOMEPAGE="http://dcfldd.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dcfldd/${PN}-${My_PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dcfldd/${PN}-${My_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

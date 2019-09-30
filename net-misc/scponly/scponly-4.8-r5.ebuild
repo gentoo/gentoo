@@ -6,7 +6,7 @@ inherit eutils multilib readme.gentoo toolchain-funcs user
 
 DESCRIPTION="A tiny pseudoshell which only permits scp and sftp"
 HOMEPAGE="https://github.com/scponly/scponly"
-SRC_URI="mirror://sourceforge/scponly/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/scponly/${P}.tgz"
 
 LICENSE="BSD-2"
 SLOT="0"

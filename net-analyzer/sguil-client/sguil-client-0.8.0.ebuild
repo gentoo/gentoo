@@ -8,7 +8,7 @@ inherit multilib
 MY_PV="${PV/_p/p}"
 DESCRIPTION="GUI Console for sguil Network Security Monitoring"
 HOMEPAGE="http://sguil.sf.net"
-SRC_URI="mirror://sourceforge/sguil/sguil-client-${MY_PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sguil/sguil-client-${MY_PV}.tar.gz"
 
 LICENSE="QPL"
 SLOT="0"

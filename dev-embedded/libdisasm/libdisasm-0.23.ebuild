@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="Provides basic disassembly of Intel x86 instructions from a binary stream"
 HOMEPAGE="http://bastard.sourceforge.net/libdisasm.html"
-SRC_URI="mirror://sourceforge/project/bastard/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/bastard/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="Clarified-Artistic"
 SLOT="0"

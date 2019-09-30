@@ -11,7 +11,7 @@ DESCRIPTION="a Java library for handling iCalendar data streams"
 HOMEPAGE="http://ical4j.sourceforge.net/"
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}-src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}-src.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

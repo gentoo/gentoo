@@ -7,7 +7,7 @@ inherit readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="Embedded language which can be used as a macro preprocessor"
 HOMEPAGE="http://cook.sourceforge.net/"
-SRC_URI="mirror://sourceforge/cook/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/cook/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

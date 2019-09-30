@@ -7,7 +7,7 @@ inherit autotools pam
 
 DESCRIPTION="Daemon that provides on demand IP links via SLIP or PPP"
 HOMEPAGE="http://diald.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="Old-MIT GPL-2" # GPL-2 only for init script
 SLOT="0"

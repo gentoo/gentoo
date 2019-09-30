@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Display-oriented editor for binary files, based on the vi texteditor"
 HOMEPAGE="http://bvi.sourceforge.net/"
-SRC_URI="mirror://sourceforge/bvi/${P}.src.tar.gz"
+SRC_URI="https://download.sourceforge.net/bvi/${P}.src.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

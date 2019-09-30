@@ -9,7 +9,7 @@ inherit autotools-utils readme.gentoo
 
 DESCRIPTION="Graphical display of directories and globs referenced at the shell prompt"
 HOMEPAGE="http://viewglob.sourceforge.net/"
-SRC_URI="mirror://sourceforge/viewglob/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/viewglob/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

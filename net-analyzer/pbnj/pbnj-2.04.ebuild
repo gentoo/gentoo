@@ -6,7 +6,7 @@ inherit perl-module
 
 DESCRIPTION="A tool for running Nmap scans and diff'ing the results"
 HOMEPAGE="http://pbnj.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pbnj/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/pbnj/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

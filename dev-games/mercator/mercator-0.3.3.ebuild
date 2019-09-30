@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="WorldForge library primarily aimed at terrain"
 HOMEPAGE="https://www.worldforge.org/index.php/components/mercator/"
-SRC_URI="mirror://sourceforge/worldforge/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/worldforge/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 x86"

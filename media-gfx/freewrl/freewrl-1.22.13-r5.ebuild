@@ -7,7 +7,7 @@ inherit autotools nsplugins eutils flag-o-matic java-pkg-opt-2 multilib
 
 DESCRIPTION="VRML97 and X3D compliant browser, library, and web-browser plugin"
 HOMEPAGE="http://freewrl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/freewrl/${P}.1.tar.bz2"
+SRC_URI="https://download.sourceforge.net/freewrl/${P}.1.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

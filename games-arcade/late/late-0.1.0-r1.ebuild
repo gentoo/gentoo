@@ -6,7 +6,7 @@ inherit desktop
 
 DESCRIPTION="A game, similar to Barrack by Ambrosia Software"
 HOMEPAGE="http://late.sourceforge.net/"
-SRC_URI="mirror://sourceforge/late/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/late/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

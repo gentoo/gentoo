@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Input pad for SCIM used to input symbols and special characters"
 HOMEPAGE="http://www.scim-im.org/"
-SRC_URI="mirror://sourceforge/scim/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/scim/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

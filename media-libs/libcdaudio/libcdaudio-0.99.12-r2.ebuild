@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Library of cd audio related routines"
 HOMEPAGE="http://libcdaudio.sourceforge.net/"
-SRC_URI="mirror://sourceforge/libcdaudio/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/libcdaudio/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

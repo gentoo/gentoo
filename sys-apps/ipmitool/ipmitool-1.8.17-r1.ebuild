@@ -9,7 +9,7 @@ HOMEPAGE="http://ipmitool.sf.net/"
 DEBIAN_PR="1.debian"
 DEBIAN_P="${P/-/_}"
 DEBIAN_PF="${DEBIAN_P}-${DEBIAN_PR}"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz
 	https://launchpad.net/ubuntu/+archive/primary/+files/${DEBIAN_PF}.tar.xz"
 #IUSE="freeipmi openipmi status"
 IUSE="libressl openipmi static"

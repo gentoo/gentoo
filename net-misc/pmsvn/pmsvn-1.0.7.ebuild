@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="Server's configuration management and monitoring tool"
 HOMEPAGE="https://sourceforge.net/projects/pmsvn/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"

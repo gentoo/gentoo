@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="LADSPA plugin for bs2b headphone filter"
 HOMEPAGE="http://bs2b.sourceforge.net/"
-SRC_URI="mirror://sourceforge/bs2b/LADSPA%20splugin/${PV}/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/bs2b/LADSPA%20splugin/${PV}/${P}.tar.bz2"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"

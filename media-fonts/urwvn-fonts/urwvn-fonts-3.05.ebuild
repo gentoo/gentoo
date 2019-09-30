@@ -11,7 +11,7 @@ DESCRIPTION="fonts gpl'd by Han The Thanh, based on URW++ fonts with Vietnamese 
 # http://vntex.sf.net/fonts/urwvn-ttf/download
 # https://sourceforge.net/projects/vntex/files
 HOMEPAGE="http://vntex.sf.net"
-SRC_URI="mirror://sourceforge/project/vntex/urwvn-ttf/${MY_P}-ttf.tar.bz2"
+SRC_URI="https://download.sourceforge.net/project/vntex/urwvn-ttf/${MY_P}-ttf.tar.bz2"
 
 LICENSE="GPL-2 Aladdin" # see bug #434262
 SLOT="0"

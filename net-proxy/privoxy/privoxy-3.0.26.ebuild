@@ -11,7 +11,7 @@ inherit autotools systemd toolchain-funcs user
 
 HOMEPAGE="http://www.privoxy.org https://sourceforge.net/projects/ijbswa/"
 DESCRIPTION="A web proxy with advanced filtering capabilities for enhancing privacy"
-SRC_URI="mirror://sourceforge/ijbswa/${P%_*}-${PRIVOXY_STATUS}-src.tar.gz"
+SRC_URI="https://download.sourceforge.net/ijbswa/${P%_*}-${PRIVOXY_STATUS}-src.tar.gz"
 
 IUSE="+acl client-tags compression editor extended-host-patterns
 external-filters +fast-redirects +force graceful-termination

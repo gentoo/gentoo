@@ -6,7 +6,7 @@ inherit eutils systemd
 
 DESCRIPTION="A highly configurable replacement for syslogd/klogd"
 HOMEPAGE="http://metalog.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

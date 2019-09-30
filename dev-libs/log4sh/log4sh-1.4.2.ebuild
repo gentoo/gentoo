@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="A flexible logging framework for shell scripts"
 HOMEPAGE="https://sourceforge.net/projects/log4sh"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

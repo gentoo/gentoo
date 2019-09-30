@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs gnome2-utils
 
 DESCRIPTION="A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures"
 HOMEPAGE="http://www.residualvm.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-sources.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-sources.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

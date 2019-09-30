@@ -8,7 +8,7 @@ inherit cmake-utils flag-o-matic xdg-utils
 
 DESCRIPTION="Powerful GUI manager for the Sqlite3 database"
 HOMEPAGE="https://sourceforge.net/projects/sqliteman/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

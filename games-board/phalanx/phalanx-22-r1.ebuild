@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="A chess engine suitable for beginner and intermediate players"
 HOMEPAGE="http://phalanx.sourceforge.net/"
-SRC_URI="mirror://sourceforge/phalanx/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/phalanx/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

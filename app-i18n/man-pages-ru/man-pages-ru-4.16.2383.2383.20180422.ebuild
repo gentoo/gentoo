@@ -9,7 +9,7 @@ MY_PV="$(replace_version_separator 1 . $(replace_all_version_separators -))"
 
 DESCRIPTION="A collection of Russian translations of Linux manual pages"
 HOMEPAGE="http://man-pages-ru.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${MY_PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}_${MY_PV}.tar.bz2"
 
 LICENSE="FDL-1.3"
 SLOT="0"

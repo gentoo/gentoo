@@ -10,7 +10,7 @@ inherit cmake-utils flag-o-matic
 DESCRIPTION="Hot backup utility for MySQL based servers"
 HOMEPAGE="https://www.percona.com/software/mysql-database/percona-xtrabackup"
 SRC_URI="https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/source/tarball/${P}.tar.gz
-	mirror://sourceforge/boost/boost_1_59_0.tar.gz"
+	https://download.sourceforge.net/boost/boost_1_59_0.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

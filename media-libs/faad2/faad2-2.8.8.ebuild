@@ -7,7 +7,7 @@ inherit autotools multilib-minimal
 
 DESCRIPTION="AAC audio decoding library"
 HOMEPAGE="https://www.audiocoding.com/faad2.html"
-SRC_URI="mirror://sourceforge/faac/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/faac/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Filesystem Integrity Checker"
-SRC_URI="mirror://sourceforge/petrovich/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/petrovich/${P}.tar.gz"
 HOMEPAGE="https://sourceforge.net/projects/petrovich"
 
 LICENSE="GPL-2"

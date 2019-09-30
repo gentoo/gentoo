@@ -6,7 +6,7 @@ inherit eutils linux-info
 
 DESCRIPTION="Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2"
 HOMEPAGE="https://www.sourceforge.net/projects/htbinit/"
-SRC_URI="mirror://sourceforge/htbinit/htb.init-v${PV}"
+SRC_URI="https://download.sourceforge.net/htbinit/htb.init-v${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"

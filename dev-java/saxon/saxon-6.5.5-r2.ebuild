@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple versionator
 MY_P="${PN}$(replace_all_version_separators -)"
 
 DESCRIPTION="Set of tools for processing XML documents"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.zip"
 HOMEPAGE="http://saxon.sourceforge.net/"
 
 LICENSE="MPL-1.1"

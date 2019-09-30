@@ -11,7 +11,7 @@ MY_P=PLWM-${PV/_}
 
 DESCRIPTION="Python classes for, and an implementation of, a window manager"
 HOMEPAGE="http://plwm.sourceforge.net/"
-SRC_URI="mirror://sourceforge/plwm/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/plwm/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

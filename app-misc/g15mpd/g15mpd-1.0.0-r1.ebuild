@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="MPD (music player daemon) plugin to G15daemon"
 HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
-SRC_URI="mirror://sourceforge/g15daemon/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/g15daemon/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

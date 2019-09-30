@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools multibuild toolchain-funcs
 
 DESCRIPTION="The Next Generation Spice (Electronic Circuit Simulator)"
-SRC_URI="mirror://sourceforge/ngspice/${P}.tar.gz
-	doc? ( mirror://sourceforge/ngspice/${P}-manual.pdf )"
+SRC_URI="https://download.sourceforge.net/ngspice/${P}.tar.gz
+	doc? ( https://download.sourceforge.net/ngspice/${P}-manual.pdf )"
 HOMEPAGE="http://ngspice.sourceforge.net"
 LICENSE="BSD GPL-2"
 

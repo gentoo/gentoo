@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Small XML Pull Parser"
 HOMEPAGE="http://kxml.org/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}2-src-${PV}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}2-src-${PV}.zip"
 
 LICENSE="BSD"
 SLOT="2"

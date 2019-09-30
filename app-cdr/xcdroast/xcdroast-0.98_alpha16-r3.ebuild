@@ -6,7 +6,7 @@ inherit gnome2-utils
 
 DESCRIPTION="Lightweight cdrtools front-end for CD and DVD writing"
 HOMEPAGE="http://www.xcdroast.org/"
-SRC_URI="mirror://sourceforge/xcdroast/${P/_/}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xcdroast/${P/_/}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

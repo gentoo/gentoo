@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="System tray application for Google Voice, GMail, Calendar, Reader, and Wave"
 HOMEPAGE="http://googsystray.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

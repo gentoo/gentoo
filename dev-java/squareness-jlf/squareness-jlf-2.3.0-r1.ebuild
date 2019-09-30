@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Squareness Java Look and Feel"
 HOMEPAGE="http://squareness.beeger.net/"
-SRC_URI="mirror://sourceforge/squareness/${PN/-/_}_src-${PV}.zip"
+SRC_URI="https://download.sourceforge.net/squareness/${PN/-/_}_src-${PV}.zip"
 
 LICENSE="BSD"
 SLOT="0"

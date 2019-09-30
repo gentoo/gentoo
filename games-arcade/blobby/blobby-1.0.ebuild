@@ -7,7 +7,7 @@ inherit cmake-utils desktop
 
 DESCRIPTION="Beach ball game with blobs of goo"
 HOMEPAGE="https://sourceforge.net/projects/blobby/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}2-linux-${PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}2-linux-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

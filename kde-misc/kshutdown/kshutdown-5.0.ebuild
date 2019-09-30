@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Shutdown manager for desktop environments like KDE Plasma"
 HOMEPAGE="https://kshutdown.sourceforge.io"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-source-${PV}.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${PN}-source-${PV}.zip"
 
 LICENSE="GPL-2+"
 KEYWORDS="amd64 x86"

@@ -12,7 +12,7 @@ MY_PV="$(replace_all_version_separators _ )"
 
 DESCRIPTION="Calendar and task tracker, written in Java"
 HOMEPAGE="http://borg-calendar.sourceforge.net/"
-SRC_URI="mirror://sourceforge/borg-calendar/borg%201.7/BORG%20${PV}/${MY_PN}_${MY_PV}.zip"
+SRC_URI="https://download.sourceforge.net/borg-calendar/borg%201.7/BORG%20${PV}/${MY_PN}_${MY_PV}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

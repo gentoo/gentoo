@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 DESCRIPTION="tools to create and extract Squashfs filesystems"
 HOMEPAGE="http://squashfs.sourceforge.net"
 SRC_URI="
-	mirror://sourceforge/squashfs/squashfs${PV/_p*}.tar.gz
+	https://download.sourceforge.net/squashfs/squashfs${PV/_p*}.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz
 "
 

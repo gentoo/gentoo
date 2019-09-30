@@ -7,7 +7,7 @@ inherit desktop epatch virtualx
 
 DESCRIPTION="ROX-Filer a drag and drop spatial file manager"
 HOMEPAGE="http://rox.sourceforge.net/desktop"
-SRC_URI="mirror://sourceforge/rox/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/rox/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"

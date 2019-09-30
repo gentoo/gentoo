@@ -7,7 +7,7 @@ inherit multilib eutils toolchain-funcs usr-ldscript
 
 DESCRIPTION="reiser4progs: mkfs, fsck, etc..."
 HOMEPAGE="https://sourceforge.net/projects/reiser4/"
-SRC_URI="mirror://sourceforge/reiser4/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/reiser4/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="(T)he k(I)cki(N) (T)ickin d(I)kumud clie(N)t"
 HOMEPAGE="https://tintin.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tintin/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/tintin/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

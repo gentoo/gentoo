@@ -7,14 +7,14 @@ inherit font
 DESCRIPTION="Microsoft's TrueType core fonts"
 HOMEPAGE="http://corefonts.sourceforge.net/"
 SRC_URI="mirror://gentoo/EUupdate.EXE
-	mirror://sourceforge/corefonts/andale32.exe
-	mirror://sourceforge/corefonts/arialb32.exe
-	mirror://sourceforge/corefonts/comic32.exe
-	mirror://sourceforge/corefonts/courie32.exe
-	mirror://sourceforge/corefonts/georgi32.exe
-	mirror://sourceforge/corefonts/impact32.exe
-	mirror://sourceforge/corefonts/webdin32.exe
-	mirror://sourceforge/corefonts/wd97vwr32.exe"
+	https://download.sourceforge.net/corefonts/andale32.exe
+	https://download.sourceforge.net/corefonts/arialb32.exe
+	https://download.sourceforge.net/corefonts/comic32.exe
+	https://download.sourceforge.net/corefonts/courie32.exe
+	https://download.sourceforge.net/corefonts/georgi32.exe
+	https://download.sourceforge.net/corefonts/impact32.exe
+	https://download.sourceforge.net/corefonts/webdin32.exe
+	https://download.sourceforge.net/corefonts/wd97vwr32.exe"
 
 LICENSE="MSttfEULA"
 SLOT="0"

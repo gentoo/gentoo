@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="A Cross platform Makefile tool"
-SRC_URI="mirror://sourceforge/tmake/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/tmake/${P}.tar.bz2"
 HOMEPAGE="http://tmake.sourceforge.net"
 
 LICENSE="HPND"

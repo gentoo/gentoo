@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Matplotlib toolkit for gridding irreguraly spaced data"
 HOMEPAGE="http://matplotlib.sourceforge.net/users/toolkits.html"
-SRC_URI="mirror://sourceforge/matplotlib/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/matplotlib/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

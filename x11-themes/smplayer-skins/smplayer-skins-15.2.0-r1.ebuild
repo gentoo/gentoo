@@ -7,7 +7,7 @@ inherit qmake-utils
 
 DESCRIPTION="Skins for SMPlayer"
 HOMEPAGE="https://www.smplayer.info/"
-SRC_URI="mirror://sourceforge/smplayer/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/smplayer/${P}.tar.bz2"
 
 LICENSE="CC-BY-2.5 CC-BY-SA-2.5 CC-BY-SA-3.0 GPL-2 LGPL-3"
 SLOT="0"

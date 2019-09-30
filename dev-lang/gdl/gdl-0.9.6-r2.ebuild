@@ -10,7 +10,7 @@ inherit cmake-utils eutils python-r1 wxwidgets toolchain-funcs virtualx
 
 DESCRIPTION="GNU Data Language"
 HOMEPAGE="https://github.com/gnudatalanguage/gdl"
-SRC_URI="mirror://sourceforge/gnudatalanguage/${P}v2.tgz"
+SRC_URI="https://download.sourceforge.net/gnudatalanguage/${P}v2.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

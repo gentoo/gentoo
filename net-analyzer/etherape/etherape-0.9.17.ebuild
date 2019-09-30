@@ -6,7 +6,7 @@ inherit gnome2
 
 DESCRIPTION="A graphical network monitor for Unix modeled after etherman"
 HOMEPAGE="http://etherape.sourceforge.net/"
-SRC_URI="mirror://sourceforge/etherape/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/etherape/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

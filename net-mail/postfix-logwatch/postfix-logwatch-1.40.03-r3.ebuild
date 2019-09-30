@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="A log analyzer for postfix"
 HOMEPAGE="http://logreporters.sourceforge.net/"
-SRC_URI="mirror://sourceforge/logreporters/${P}.tgz"
+SRC_URI="https://download.sourceforge.net/logreporters/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"

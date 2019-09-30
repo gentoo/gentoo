@@ -7,7 +7,7 @@ inherit user systemd
 
 DESCRIPTION="Open source DMARC implementation "
 HOMEPAGE="http://www.trusteddomain.org/opendmarc/"
-SRC_URI="mirror://sourceforge/opendmarc/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/opendmarc/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

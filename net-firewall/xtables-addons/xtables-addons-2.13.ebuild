@@ -9,7 +9,7 @@ inherit eutils linux-info linux-mod multilib
 
 DESCRIPTION="iptables extensions not yet accepted in the main kernel"
 HOMEPAGE="http://xtables-addons.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xtables-addons/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/xtables-addons/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

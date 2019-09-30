@@ -10,7 +10,7 @@ inherit eutils python-single-r1
 DESCRIPTION="library for manipulating the International Press Telecommunications
 Council (IPTC) metadata"
 HOMEPAGE="http://libiptcdata.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

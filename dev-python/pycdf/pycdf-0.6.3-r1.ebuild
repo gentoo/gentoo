@@ -10,7 +10,7 @@ MY_P="${PN}-${PV:0:3}-${PV:4:1}"
 
 DESCRIPTION="Python interface to scientific netCDF library"
 HOMEPAGE="http://pysclint.sourceforge.net/pycdf/"
-SRC_URI="mirror://sourceforge/pysclint/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pysclint/${MY_P}.tar.gz"
 
 LICENSE="PSF-2"
 SLOT="0"

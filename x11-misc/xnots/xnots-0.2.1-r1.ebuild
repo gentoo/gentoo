@@ -6,7 +6,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A desktop sticky note program for the unix geek"
 HOMEPAGE="http://xnots.sourceforge.net https://github.com/thePalindrome/xnots"
-SRC_URI="mirror://sourceforge/xnots/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/xnots/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

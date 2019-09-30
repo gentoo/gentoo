@@ -11,7 +11,7 @@ MY_P="${PN}-Java60-${PV}"
 
 DESCRIPTION="A portability wrapper for java.util.concurrent API (jsr166) 6.0"
 HOMEPAGE="http://${SF_PN}.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${SF_PN}/${PV}/${MY_P}-src.tar.bz2"
+SRC_URI="https://download.sourceforge.net/${SF_PN}/${PV}/${MY_P}-src.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"

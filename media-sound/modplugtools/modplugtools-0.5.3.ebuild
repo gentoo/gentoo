@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="libmodplug based module players modplug123 and modplugplay"
 HOMEPAGE="http://modplug-xmms.sourceforge.net/"
-SRC_URI="mirror://sourceforge/modplug-xmms/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/modplug-xmms/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

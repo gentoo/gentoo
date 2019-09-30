@@ -7,7 +7,7 @@ MY_P="${PN}-${PV%.*}-${PV/*.}"
 
 DESCRIPTION="IPA dictionary for MeCab"
 HOMEPAGE="http://taku910.github.io/mecab/"
-SRC_URI="mirror://sourceforge/${PN%-*}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN%-*}/${MY_P}.tar.gz"
 
 LICENSE="ipadic"
 SLOT="0"

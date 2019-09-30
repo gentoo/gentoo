@@ -10,7 +10,7 @@ MY_P="wxGlade-${PV}"
 
 DESCRIPTION="Glade-like GUI designer which can generate Python, Perl, C++ or XRC code"
 HOMEPAGE="http://wxglade.sourceforge.net/"
-SRC_URI="mirror://sourceforge/wxglade/${MY_P}.zip"
+SRC_URI="https://download.sourceforge.net/wxglade/${MY_P}.zip"
 
 LICENSE="MIT"
 SLOT="0"

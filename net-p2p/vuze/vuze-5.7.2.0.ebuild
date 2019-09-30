@@ -12,7 +12,7 @@ MY_SRC="Vuze_${MY_PV}"
 
 DESCRIPTION="BitTorrent client in Java, formerly called Azureus"
 HOMEPAGE="http://www.vuze.com/"
-SRC_URI="mirror://sourceforge/azureus/${PN}/${MY_SRC}/${MY_SRC}_source.zip"
+SRC_URI="https://download.sourceforge.net/azureus/${PN}/${MY_SRC}/${MY_SRC}_source.zip"
 LICENSE="GPL-2 BSD"
 
 SLOT="0"

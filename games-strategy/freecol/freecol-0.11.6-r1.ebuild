@@ -7,7 +7,7 @@ inherit desktop java-pkg-2 java-ant-2
 
 DESCRIPTION="An open source clone of the game Colonization"
 HOMEPAGE="http://www.freecol.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}-src.zip"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

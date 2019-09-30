@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="OpenEXR CTL libraries"
 HOMEPAGE="https://sourceforge.net/projects/ampasctl"
-SRC_URI="mirror://sourceforge/ampasctl/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/ampasctl/${P}.tar.gz"
 
 LICENSE="AMPAS"
 SLOT="0"

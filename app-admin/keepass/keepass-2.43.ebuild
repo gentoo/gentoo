@@ -8,7 +8,7 @@ inherit eutils gnome2-utils xdg-utils
 MY_PN="KeePass"
 DESCRIPTION="A free, open source, light-weight and easy-to-use password manager"
 HOMEPAGE="https://keepass.info/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-${PV}-Source.zip"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_PN}-${PV}-Source.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

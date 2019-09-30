@@ -8,7 +8,7 @@ inherit eutils python-single-r1 games
 MY_P=${P/-n-}
 DESCRIPTION="A multiplayer clone of the famous Bubble Bobble game"
 HOMEPAGE="http://bub-n-bros.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT Artistic-2"
 SLOT="0"

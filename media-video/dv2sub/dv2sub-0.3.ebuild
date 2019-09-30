@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="extract info or subtitles from DV stream"
 HOMEPAGE="http://dv2sub.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dv2sub/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dv2sub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

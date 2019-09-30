@@ -7,7 +7,7 @@ IUSE=""
 
 DESCRIPTION="checkpassword-compatible authentication program w/pam support"
 HOMEPAGE="http://checkpasswd-pam.sourceforge.net/"
-SRC_URI="mirror://sourceforge/checkpasswd-pam/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/checkpasswd-pam/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

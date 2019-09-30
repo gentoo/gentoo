@@ -9,7 +9,7 @@ inherit cmake-utils toolchain-funcs multilib eutils
 
 DESCRIPTION="Streamlined C++ linear algebra library"
 HOMEPAGE="http://arma.sourceforge.net/"
-SRC_URI="mirror://sourceforge/arma/${P}.tar.xz"
+SRC_URI="https://download.sourceforge.net/arma/${P}.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0/9"

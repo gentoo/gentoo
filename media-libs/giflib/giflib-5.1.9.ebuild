@@ -7,7 +7,7 @@ inherit multilib-minimal toolchain-funcs
 
 DESCRIPTION="Library to handle, display and manipulate GIF images"
 HOMEPAGE="https://sourceforge.net/projects/giflib/"
-SRC_URI="mirror://sourceforge/giflib/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/giflib/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/7"

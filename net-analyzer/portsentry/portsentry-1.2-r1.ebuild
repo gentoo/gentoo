@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 DESCRIPTION="Automated port scan detector and response tool"
 # Seems like CISCO took the site down?
 HOMEPAGE="https://sourceforge.net/projects/sentrytools/"
-SRC_URI="mirror://sourceforge/sentrytools/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/sentrytools/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

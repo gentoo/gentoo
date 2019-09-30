@@ -9,7 +9,7 @@ inherit python-single-r1
 
 DESCRIPTION="Mode Oriented Directly Coded Lexical Analyser Generator"
 HOMEPAGE="http://quex.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

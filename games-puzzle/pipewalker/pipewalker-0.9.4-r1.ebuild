@@ -6,7 +6,7 @@ inherit desktop flag-o-matic
 
 DESCRIPTION="Rotating pieces puzzle game"
 HOMEPAGE="http://pipewalker.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pipewalker/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/pipewalker/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

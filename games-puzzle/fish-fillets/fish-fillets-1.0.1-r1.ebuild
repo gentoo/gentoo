@@ -7,8 +7,8 @@ inherit autotools desktop
 DATA_PV="1.0.0"
 DESCRIPTION="Underwater puzzle game - find a safe way out"
 HOMEPAGE="http://fillets.sourceforge.net/"
-SRC_URI="mirror://sourceforge/fillets/fillets-ng-${PV}.tar.gz
-	mirror://sourceforge/fillets/fillets-ng-data-${DATA_PV}.tar.gz"
+SRC_URI="https://download.sourceforge.net/fillets/fillets-ng-${PV}.tar.gz
+	https://download.sourceforge.net/fillets/fillets-ng-data-${DATA_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

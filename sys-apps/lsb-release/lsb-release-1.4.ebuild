@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="LSB version query program"
 HOMEPAGE="https://wiki.linuxfoundation.org/lsb/"
-SRC_URI="mirror://sourceforge/lsb/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/lsb/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

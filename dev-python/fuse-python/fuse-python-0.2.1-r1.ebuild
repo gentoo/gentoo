@@ -11,7 +11,7 @@ KEYWORDS="amd64 x86"
 DESCRIPTION="Python FUSE bindings"
 HOMEPAGE="https://github.com/libfuse/python-fuse"
 
-SRC_URI="mirror://sourceforge/fuse/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/fuse/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""

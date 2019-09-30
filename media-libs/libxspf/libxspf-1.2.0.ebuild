@@ -7,7 +7,7 @@ inherit xdg-utils
 
 DESCRIPTION="Playlist handling library"
 HOMEPAGE="http://libspiff.sourceforge.net/"
-SRC_URI="mirror://sourceforge/libspiff/${P}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/libspiff/${P}.tar.bz2"
 
 LICENSE="BSD LGPL-2.1"
 SLOT="0"

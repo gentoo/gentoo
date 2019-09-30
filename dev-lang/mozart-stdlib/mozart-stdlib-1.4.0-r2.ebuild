@@ -7,7 +7,7 @@ MY_P="mozart-${PV}.20080704-std"
 
 DESCRIPTION="The Mozart Standard Library"
 HOMEPAGE="https://mozart.github.io/ https://github.com/mozart/mozart"
-SRC_URI="mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/${MY_P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/project/mozart-oz/v1/1.4.0-2008-07-02-tar/${MY_P}.tar.gz"
 LICENSE="Mozart"
 
 SLOT="0"

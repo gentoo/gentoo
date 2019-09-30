@@ -8,7 +8,7 @@ inherit desktop python-r1
 
 DESCRIPTION="Fast-paced, 3D, first-person shoot/dodge-'em-up, in the vain of Tempest or n2o"
 HOMEPAGE="http://accelerator3d.sourceforge.net/"
-SRC_URI="mirror://sourceforge/accelerator3d/accelerator-${PV}.tar.bz2"
+SRC_URI="https://download.sourceforge.net/accelerator3d/accelerator-${PV}.tar.bz2"
 
 LICENSE="Artistic"
 SLOT="0"

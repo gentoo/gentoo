@@ -13,7 +13,7 @@ SRC_VER="20060610"
 
 DESCRIPTION="Java library used to parse HTML (from htmlparser.org)"
 HOMEPAGE="http://htmlparser.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${MY_PN}/${MY_PN}${MY_PV}_${SRC_VER}.zip"
+SRC_URI="https://download.sourceforge.net/${MY_PN}/${MY_PN}${MY_PV}_${SRC_VER}.zip"
 
 LICENSE="CPL-1.0"
 SLOT="0"

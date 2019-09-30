@@ -9,8 +9,8 @@ DESCRIPTION="GPS data editor and analyzer"
 HOMEPAGE="https://sourceforge.net/projects/viking/"
 IUSE="doc +exif libexif gps +magic mapnik nls sqlite"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.bz2
-	doc? ( mirror://sourceforge/${PN}/${PN}.pdf )"
+	https://download.sourceforge.net/${PN}/${P}.tar.bz2
+	doc? ( https://download.sourceforge.net/${PN}/${PN}.pdf )"
 
 LICENSE="GPL-2"
 SLOT="0"

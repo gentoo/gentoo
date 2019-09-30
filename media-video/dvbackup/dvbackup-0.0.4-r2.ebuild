@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A small utility for creating backups on DV tapes"
 HOMEPAGE="http://dvbackup.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dvbackup/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/dvbackup/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

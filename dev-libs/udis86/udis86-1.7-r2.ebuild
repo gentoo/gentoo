@@ -8,7 +8,7 @@ inherit autotools-multilib eutils
 
 DESCRIPTION="Disassembler library for the x86/-64 architecture sets"
 HOMEPAGE="http://udis86.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

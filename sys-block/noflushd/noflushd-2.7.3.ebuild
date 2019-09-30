@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="A daemon to spin down your disks and force accesses to be cached"
 HOMEPAGE="http://noflushd.sourceforge.net"
-SRC_URI="mirror://sourceforge/noflushd/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/noflushd/${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
