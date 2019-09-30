@@ -1120,11 +1120,6 @@ www-apps/pcgi
 # Removal in 30 days.  Bug #693128.
 mail-filter/opensmtpd-extras
 
-# Michał Górny <mgorny@gentoo.org> (2019-08-30)
-# Unmaintained.  EAPI=0.  HOMEPAGE and SRC_URI are gone.  Last release
-# in 2006.  Removal in 30 days.  Bug #680412.
-mail-filter/ask
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.24
