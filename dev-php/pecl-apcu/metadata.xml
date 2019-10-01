@@ -6,9 +6,9 @@
 		<name>PHP</name>
 	</maintainer>
 	<use>
-		<flag name="lock_semaphore">Enable semaphore locks instead of fcntl</flag>
-		<flag name="lock_pthreadmutex">Enable pthread mutex locking</flag>
-		<flag name="lock_pthreadrw">Enable pthread read/write locking</flag>
-		<flag name="lock_spinlock">Enable spin locks (EXPERIMENTAL)</flag>
+		<flag name="lock-semaphore">Enable semaphore locks instead of fcntl</flag>
+		<flag name="lock-pthreadmutex">Enable pthread mutex locking</flag>
+		<flag name="lock-pthreadrw">Enable pthread read/write locking</flag>
+		<flag name="lock-spinlock">Enable spin locks (EXPERIMENTAL)</flag>
 	</use>
 </pkgmetadata>
