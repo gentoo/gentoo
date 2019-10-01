@@ -9,7 +9,7 @@ MOD_DIR="arena"
 inherit games games-mods
 
 HOMEPAGE="https://www.moddb.com/mods/rocket-arena-3"
-SRC_URI="mirror://quakeunity/modifications/rocketarena3/ra3${PV/.}.zip"
+SRC_URI="https://www.mirrorservice.org/sites/quakeunity.com/modifications/rocketarena3/ra3${PV/.}.zip"
 
 LICENSE="freedist"
 KEYWORDS="~amd64 ~x86"

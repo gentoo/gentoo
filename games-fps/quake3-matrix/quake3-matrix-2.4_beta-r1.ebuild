@@ -9,7 +9,7 @@ MOD_DIR="matrix"
 inherit games games-mods
 
 HOMEPAGE="https://www.moddb.com/mods/matrix-quake-3"
-SRC_URI="mirror://quakeunity/modifications/matrix24.zip"
+SRC_URI="https://www.mirrorservice.org/sites/quakeunity.com/modifications/matrix24.zip"
 
 LICENSE="freedist"
 KEYWORDS="~amd64 ~x86"

@@ -9,8 +9,8 @@ MOD_DIR="threewave"
 inherit games games-mods
 
 HOMEPAGE="http://www.threewave.com/"
-SRC_URI="mirror://quakeunity/modifications/threewavectf/threewave_16_full.zip
-	mirror://quakeunity/modifications/threewavectf/threewave_17_update.zip"
+SRC_URI="https://www.mirrorservice.org/sites/quakeunity.com/modifications/threewavectf/threewave_16_full.zip
+	https://www.mirrorservice.org/sites/quakeunity.com/modifications/threewavectf/threewave_17_update.zip"
 
 LICENSE="freedist"
 KEYWORDS="~amd64 ~x86"
