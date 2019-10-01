@@ -18,13 +18,12 @@ SRC_URI="mirror://ruby/${SLOT}/${MY_P}.tar.xz"
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="berkdb debug doc examples gdbm ipv6 jemalloc jit libressl +rdoc rubytests socks5 +ssl static-libs tk xemacs"
+IUSE="berkdb debug doc examples gdbm ipv6 jemalloc libressl +rdoc rubytests socks5 +ssl static-libs tk xemacs"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
 	jemalloc? ( dev-libs/jemalloc )
-	jit? ( || ( sys-devel/gcc:* sys-devel/clang:* ) )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl )
@@ -44,33 +43,31 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BUNDLED_GEMS="
-	>=dev-ruby/did_you_mean-1.2.1[ruby_targets_ruby26]
-	>=dev-ruby/minitest-5.11.3[ruby_targets_ruby26]
-	>=dev-ruby/net-telnet-0.2.0[ruby_targets_ruby26]
-	>=dev-ruby/power_assert-1.1.3[ruby_targets_ruby26]
-	>=dev-ruby/rake-12.3.2[ruby_targets_ruby26]
-	>=dev-ruby/test-unit-3.2.9[ruby_targets_ruby26]
-	>=dev-ruby/xmlrpc-0.3.0[ruby_targets_ruby26]
+	>=dev-ruby/did_you_mean-1.2.0:2.5[ruby_targets_ruby25]
+	>=dev-ruby/minitest-5.10.3[ruby_targets_ruby25]
+	>=dev-ruby/net-telnet-0.1.1[ruby_targets_ruby25]
+	>=dev-ruby/power_assert-1.1.1[ruby_targets_ruby25]
+	>=dev-ruby/rake-12.3.0[ruby_targets_ruby25]
+	>=dev-ruby/test-unit-3.2.7[ruby_targets_ruby25]
+	>=dev-ruby/xmlrpc-0.3.0[ruby_targets_ruby25]
 "
 
 PDEPEND="
 	${BUNDLED_GEMS}
-	virtual/rubygems[ruby_targets_ruby26]
-	>=dev-ruby/bundler-1.17.2[ruby_targets_ruby26]
-	>=dev-ruby/json-2.0.2[ruby_targets_ruby26]
-	rdoc? ( >=dev-ruby/rdoc-5.1.0[ruby_targets_ruby26] )
+	virtual/rubygems[ruby_targets_ruby25]
+	>=dev-ruby/json-2.0.2[ruby_targets_ruby25]
+	rdoc? ( >=dev-ruby/rdoc-6.1.2[ruby_targets_ruby25] )
 	xemacs? ( app-xemacs/ruby-modes )"
 
 src_prepare() {
-	# 005 does not compile bigdecimal and is questionable because it
-	# compiles ruby in a non-standard way, may be dropped
-	eapply "${FILESDIR}"/2.6/010*.patch
+	eapply "${FILESDIR}"/${SLOT}/{001,005,011}*.patch
 
 	einfo "Unbundling gems..."
 	cd "$S"
 	# Remove bundled gems that we will install via PDEPEND, bug
-	# 539700.
-	rm -fr gems/* || die
+	# 539700. Use explicit version numbers to ensure rm fails when they
+	# change so we can update dependencies accordingly.
+	rm -f gems/{did_you_mean-1.2.0,minitest-5.10.3,net-telnet-0.1.1,power_assert-1.1.1,rake-12.3.0,test-unit-3.2.7,xmlrpc-0.3.0}.gem || die
 
 	einfo "Removing bundled libraries..."
 	rm -fr ext/fiddle/libffi-3.2.1 || die
@@ -133,7 +130,6 @@ src_configure() {
 		--disable-rpath \
 		--with-out-ext="${modules}" \
 		$(use_with jemalloc jemalloc) \
-		$(use_enable jit jit-support ) \
 		$(use_enable socks5 socks) \
 		$(use_enable doc install-doc) \
 		--enable-ipv6 \
@@ -144,13 +140,10 @@ src_configure() {
 		${myconf} \
 		--enable-option-checking=no \
 		|| die "econf failed"
-
-	# Makefile is broken because it lacks -ldl
-	rm -rf ext/-test-/popen_deadlock || die
 }
 
 src_compile() {
-	emake V=1 EXTLDFLAGS="${LDFLAGS}" MJIT_CFLAGS="${CFLAGS}" MJIT_OPTFLAGS="" MJIT_DEBUGFLAGS="" || die "emake failed"
+	emake V=1 EXTLDFLAGS="${LDFLAGS}" || die "emake failed"
 }
 
 src_test() {
@@ -176,7 +169,6 @@ src_install() {
 	# since they are used during the build to e.g. create the
 	# documentation.
 	rm -rf ext/json || die
-	rm -rf lib/bundler* lib/rdoc/rdoc.gemspec || die
 
 	# Ruby is involved in the install process, we don't want interference here.
 	unset RUBYOPT
@@ -190,20 +182,16 @@ src_install() {
 	done
 	export LD_LIBRARY_PATH RUBYLIB
 
-	# Create directory for the default gems
-	local gem_home="${EPREFIX}/usr/$(get_libdir)/ruby/gems/${RUBYVERSION}"
-	mkdir -p "${D}/${gem_home}" || die "mkdir gem home failed"
-
-	emake V=1 DESTDIR="${D}" GEM_DESTDIR=${gem_home} install || die "make install failed"
+	emake V=1 DESTDIR="${D}" install || die "make install failed"
 
 	# Remove installed rubygems and rdoc copy
 	rm -rf "${ED}/usr/$(get_libdir)/ruby/${RUBYVERSION}/rubygems" || die "rm rubygems failed"
 	rm -rf "${ED}/usr/bin/"gem"${MY_SUFFIX}" || die "rm rdoc bins failed"
 	rm -rf "${ED}/usr/$(get_libdir)/ruby/${RUBYVERSION}"/rdoc* || die "rm rdoc failed"
-	rm -rf "${ED}/usr/bin/"{bundle,bundler,ri,rdoc}"${MY_SUFFIX}" || die "rm rdoc bins failed"
+	rm -rf "${ED}/usr/bin/"{ri,rdoc}"${MY_SUFFIX}" || die "rm rdoc bins failed"
 
 	if use doc; then
-		emake DESTDIR="${D}" GEM_DESTDIR=${gem_home} install-doc || die "make install-doc failed"
+		make DESTDIR="${D}" install-doc || die "make install-doc failed"
 	fi
 
 	if use examples; then

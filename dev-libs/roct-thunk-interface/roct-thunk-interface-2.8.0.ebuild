@@ -22,7 +22,7 @@ PATCHES=(
 
 DESCRIPTION="Radeon Open Compute Thunk Interface"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface"
-CONFIG_CHECK="~HSA_AMD ~HMM_MIRROR ~ZONE_DEVICE"
+CONFIG_CHECK="~NUMA ~HSA_AMD ~HMM_MIRROR ~ZONE_DEVICE"
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 
