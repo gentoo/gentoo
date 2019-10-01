@@ -1086,11 +1086,6 @@ app-text/docbook-sgml
 # (Expedited) removal in 7 days
 sci-libs/libmed
 
-# Matt Turner <mattst88@gentoo.org> (2019-09-03)
-# Not supported by the current browserpass extension.
-# Removal in 30 days
-<www-plugins/browserpass-3
-
 # Michał Górny <mgorny@gentoo.org> (2019-09-02)
 # gnome-vfs was deprecated along with GNOME 2.22 in favor of gvfs.
 # gnome-vfsmm provides C++ bindings for it, with last release in 2009
