@@ -11,7 +11,7 @@ SRC_URI="
 	x86? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-${PV}.tar.gz )
 	amd64? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-${PV}.tar.gz )"
 
-LICENSE="CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
+LICENSE="BSD-2 CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-linux"
 IUSE="+librsync-bundled selinux X"
@@ -98,7 +98,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/dropbox.initd dropbox
 	newconfd "${FILESDIR}"/dropbox.conf dropbox
-	systemd_newunit "${FILESDIR}"/dropbox_at.service-r1 "dropbox@.service"
+	systemd_newunit "${FILESDIR}"/dropbox_at.service-r2 "dropbox@.service"
 
 	dodoc "${T}"/{README,ACKNOWLEDGEMENTS}
 }
