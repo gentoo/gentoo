@@ -1,0 +1,15 @@
+BDEPEND=test? ( ruby_targets_ruby24? ( >=dev-ruby/childprocess-0.5:2[ruby_targets_ruby24] >=dev-ruby/rubyzip-1.2.2:*[ruby_targets_ruby24] ) ruby_targets_ruby25? ( >=dev-ruby/childprocess-0.5:2[ruby_targets_ruby25] >=dev-ruby/rubyzip-1.2.2:*[ruby_targets_ruby25] ) ruby_targets_ruby26? ( >=dev-ruby/childprocess-0.5:2[ruby_targets_ruby26] >=dev-ruby/rubyzip-1.2.2:*[ruby_targets_ruby26] ) ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26] ) test? ( ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26] ) )
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26] )
+DESCRIPTION=This gem provides Ruby bindings for WebDriver
+EAPI=7
+HOMEPAGE=https://github.com/seleniumhq/selenium
+IUSE=test ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 test
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=ruby_targets_ruby24? ( >=dev-ruby/childprocess-0.5:2[ruby_targets_ruby24] >=dev-ruby/rubyzip-1.2.2:*[ruby_targets_ruby24] ) ruby_targets_ruby25? ( >=dev-ruby/childprocess-0.5:2[ruby_targets_ruby25] >=dev-ruby/rubyzip-1.2.2:*[ruby_targets_ruby25] ) ruby_targets_ruby26? ( >=dev-ruby/childprocess-0.5:2[ruby_targets_ruby26] >=dev-ruby/rubyzip-1.2.2:*[ruby_targets_ruby26] ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26] )
+REQUIRED_USE=|| ( ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 )
+SLOT=3
+SRC_URI=mirror://rubygems/selenium-webdriver-3.142.5.gem
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	ruby-fakegem	c8dcac8f7763e5eae502d4a905ce77e9	ruby-ng	a28f4a400304e633468f10ad1b9e2f6e	ruby-utils	5b782a86f95c84466cdb53f8c8a8be37	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_md5_=7dd16868879024be3a2f8a9ea944ce7c
