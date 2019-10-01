@@ -18,7 +18,6 @@ RDEPEND="
 	>=app-crypt/gpgme-1.7.1:=[cxx,qt5]
 	dev-libs/kasync:5
 	>=dev-libs/sink-0.7.0:5
-	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
@@ -49,6 +48,9 @@ PATCHES=(
 
 src_prepare() {
 	cmake-utils_src_prepare
+
+	sed -e "/find_package.*Qt5/s/ Concurrent//" \
+		-i {extensions/api,framework}/src/CMakeLists.txt || die
 
 	if ! use test; then
 		sed -e "/find_package.*Qt5/s/ Test//" \
