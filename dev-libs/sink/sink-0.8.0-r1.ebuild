@@ -3,57 +3,52 @@
 
 EAPI=7
 
-KDE_TEST="false" # build breaks otherwise. tests not isolated.
-inherit kde5
+inherit cmake-utils
 
 DESCRIPTION="Data access layer handling synchronization, caching and indexing"
 HOMEPAGE="https://kube-project.com"
 SRC_URI="mirror://kde/unstable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
+SLOT="5"
 KEYWORDS="~amd64"
 
 # qtgui is bogus but is required because something else in the deptree
 # uses it as a public dependency but doesn't search for it properly
 RDEPEND="
-	|| (
-		$(add_frameworks_dep kcalendarcore)
-		$(add_kdeapps_dep kcalcore)
-	)
-	|| (
-		$(add_frameworks_dep kcontacts)
-		$(add_kdeapps_dep kcontacts)
-	)
-	$(add_frameworks_dep kcoreaddons)
-	$(add_kdeapps_dep kmime)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtnetwork)
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
 	dev-db/lmdb:=
 	dev-libs/flatbuffers
 	>=dev-libs/kasync-0.3:5
 	>=dev-libs/xapian-1.4.4:0=
+	kde-frameworks/extra-cmake-modules:5
+	|| (
+		kde-frameworks/kcalendarcore:5
+		kde-apps/kcalcore:5
+	)
+	|| (
+		kde-frameworks/kcontacts:5
+		kde-apps/kcontacts:5
+	)
+	kde-frameworks/kcoreaddons:5
+	kde-apps/kmime:5
 	>=net-libs/kdav2-0.3:5
 	>=net-libs/kimap2-0.3:5
 	net-misc/curl
 	sys-libs/readline:0=
 "
 DEPEND="${RDEPEND}
-	$(add_qt_dep qtconcurrent)
+	dev-qt/qtconcurrent:5
 "
 
 # fails to build
 RESTRICT+=" test"
 
-src_prepare() {
-	kde5_src_prepare
-	# FIXME: sink is useless without its 'examples'. Workaround our eclass
-	sed -i -e "/add_subdirectory(examples)/ s/#DONOTCOMPILE //" \
-		CMakeLists.txt || die "Failed to fix CMakeLists.txt"
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libgit2=ON
 	)
-	kde5_src_configure
+	cmake-utils_src_configure
 }
