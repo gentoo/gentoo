@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit cmake-utils python-single-r1 user
 
@@ -17,7 +17,6 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples fuse http kerberos python readline rbd ssl test"
 
 CDEPEND="
-	!<sci-physics/root-5.32[xrootd]
 	sys-libs/zlib
 	fuse? ( sys-fs/fuse:= )
 	kerberos? ( virtual/krb5 )
