@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 PATCHES=("${FILESDIR}"/${P}-minibuffer-prompt.patch
-	"${FILESDIR}"/${P}-emacs-24.patch)
+	"${FILESDIR}"/${P}-emacs-24.patch
+	"${FILESDIR}"/${P}-backquotes.patch)
 SITEFILE="50${PN}-gentoo.el"
 DOC_CONTENTS="To be able to invoke Teco directly, define a keybinding
 	for teco:command in your ~/.emacs file, e.g.:
