@@ -40,14 +40,12 @@
  feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 --- a/framework/src/domain/mime/mimetreeparser/CMakeLists.txt	2019-09-29 21:36:28.455107143 +0200
 +++ b/framework/src/domain/mime/mimetreeparser/CMakeLists.txt	2019-09-29 21:36:28.458107171 +0200
-@@ -49,5 +49,9 @@
+@@ -49,5 +49,7 @@
      Gpgme::Gpgme
  )
  
 +if(BUILD_TESTING)
  add_subdirectory(autotests)
-+endif()
-+if(BUILD_TESTING)
  add_subdirectory(tests)
 +endif()
 --- a/components/CMakeLists.txt	2019-09-29 21:36:28.463107218 +0200

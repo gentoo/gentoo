@@ -25,7 +25,6 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtquickcontrols:5
 	dev-qt/qtquickcontrols2:5
-	dev-qt/qttest:5
 	dev-qt/qtwebengine:5[widgets]
 	dev-qt/qtwidgets:5
 	kde-apps/kmime:5
@@ -52,9 +51,12 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	if ! use test; then
-		sed \
-			-e "/Qt5::Test/s/^/#DISABLED/" \
-			-e "/set(BUILD_TESTING ON)/s/^/#DISABLED /" \
+		sed -e "/find_package.*Qt5/s/ Test//" \
+			-i {,components/}CMakeLists.txt CMakeLists.txt \
+				{extensions/api,framework}/src/CMakeLists.txt || die
+		sed -e "/Qt5::Test/s/^/#DISABLED/" \
+			-i {extensions/api,framework}/src/CMakeLists.txt || die
+		sed -e "/set(BUILD_TESTING ON)/s/^/#DISABLED /" \
 			-e "/domain\/modeltest.cpp/s/^/#DISABLED /" \
 			-i framework/src/CMakeLists.txt || die
 	fi
