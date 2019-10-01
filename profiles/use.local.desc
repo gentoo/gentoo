@@ -3468,12 +3468,6 @@ games-strategy/heroes3:music - Installs optional music data
 games-strategy/heroes3:sounds - Installs optional sound data
 games-strategy/ja2-stracciatella:editor - Adds necessary file to run the editor
 games-strategy/ja2-stracciatella:ru-gold - Support for russian gold ja2 version
-games-strategy/liquidwar6:doc - Convert the info pages to html
-games-strategy/liquidwar6:gles2 - Enable OpenGL ES 2.0 support
-games-strategy/liquidwar6:gtk - Used to display error/critical messages
-games-strategy/liquidwar6:maps - Install extra maps
-games-strategy/liquidwar6:ogg - Enable mod-ogg via media-libs/sdl-mixer (currently the only sound provider)
-games-strategy/liquidwar6:readline - Enable interactive script shell for hacking
 games-strategy/megaglest:editor - Build map editor
 games-strategy/megaglest:fribidi - Enable FriBIDi support
 games-strategy/megaglest:model-viewer - Build model viewer
