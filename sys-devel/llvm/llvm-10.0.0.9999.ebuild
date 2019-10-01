@@ -18,7 +18,7 @@ EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
 	https://github.com/llvm-mirror/llvm.git"
 
 # Those are in lib/Targets, without explicit CMakeLists.txt mention
-ALL_LLVM_EXPERIMENTAL_TARGETS=( AVR Nios2 )
+ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC AVR )
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
@@ -90,6 +90,38 @@ python_check_deps() {
 	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
 
+check_live_ebuild() {
+	local prod_targets=(
+		$(sed -n -e '/set(LLVM_ALL_TARGETS/,/)/p' CMakeLists.txt \
+			| tail -n +2 | head -n -1)
+	)
+	local all_targets=(
+		lib/Target/*/
+	)
+	all_targets=( "${all_targets[@]#lib/Target/}" )
+	all_targets=( "${all_targets[@]%/}" )
+
+	local exp_targets=() i
+	for i in "${all_targets[@]}"; do
+		has "${i}" "${prod_targets[@]}" || exp_targets+=( "${i}" )
+	done
+	# reorder
+	all_targets=( "${prod_targets[@]}" "${exp_targets[@]}" )
+
+	if [[ ${exp_targets[*]} != ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]} ]]; then
+		ewarn "ALL_LLVM_EXPERIMENTAL_TARGETS is outdated!"
+		ewarn "    Have: ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]}"
+		ewarn "Expected: ${exp_targets[*]}"
+		ewarn
+	fi
+
+	if [[ ${all_targets[*]} != ${ALL_LLVM_TARGETS[*]#llvm_targets_} ]]; then
+		ewarn "ALL_LLVM_TARGETS is outdated!"
+		ewarn "    Have: ${ALL_LLVM_TARGETS[*]#llvm_targets_}"
+		ewarn "Expected: ${all_targets[*]}"
+	fi
+}
+
 src_prepare() {
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
@@ -100,6 +132,9 @@ src_prepare() {
 
 	# User patches + QA
 	cmake-utils_src_prepare
+
+	# Verify that the live ebuild is up-to-date
+	check_live_ebuild
 }
 
 # Is LLVM being linked against libc++?
