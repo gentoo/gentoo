@@ -1,0 +1,72 @@
+From 6b633c4b14850df376d5cec571699018772f358e Mon Sep 17 00:00:00 2001
+From: Tomas Popela <tomas.popela@gmail.com>
+Date: Tue, 17 Sep 2019 19:48:48 +0000
+Subject: [PATCH] GCC: Can't use alignas() together with __attribute__()
+
+It's because GCC has problems when mixing the alignas() together with
+__attribute__() (that is used to export the symbols). The best
+solution is to use ALIGNAS() macro from //base/compiler_specific.h
+together with alignof() to have the equal functionality that compiles on
+GCC as well as on clang.
+
+Bug: 819294
+Change-Id: Ieb169592a2965f17a18bfc88d28418eb723a4e5a
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1806735
+Auto-Submit: Tomáš Popela <tomas.popela@gmail.com>
+Commit-Queue: Alex Clarke <alexclarke@chromium.org>
+Reviewed-by: Alex Clarke <alexclarke@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#697330}
+---
+
+diff --git a/base/task/promise/dependent_list.h b/base/task/promise/dependent_list.h
+index 020bdbfc..3245c1c 100644
+--- a/base/task/promise/dependent_list.h
++++ b/base/task/promise/dependent_list.h
+@@ -59,7 +59,7 @@
+ 
+   // Align Node on an 8-byte boundary to ensure the first 3 bits are 0 and can
+   // be used to store additional state (see static_asserts below).
+-  class BASE_EXPORT alignas(8) Node {
++  class BASE_EXPORT ALIGNAS(8) Node {
+    public:
+     Node();
+     explicit Node(Node&& other) noexcept;
+
+From 8148fd96ae04a1150a9c6012634dcd2a7335f87a Mon Sep 17 00:00:00 2001
+From: Tomas Popela <tomas.popela@gmail.com>
+Date: Tue, 20 Aug 2019 05:23:14 +0000
+Subject: [PATCH] GCC: Can't use alignas() together with __attribute__()
+
+It's because GCC has problems when mixing the alignas() together with
+__attribute__() (that is used to export the symbols). The best
+solution is to use ALIGNAS() macro from //base/compiler_specific.h
+together with alignof() to have the equal functionality that compiles on
+GCC as well as on clang.
+
+This is a regression after https://crrev.com/659933.
+
+Bug: 994581
+Change-Id: Ia376866ff9ac57d52d2e907fa325ae5a51893d07
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1758064
+Reviewed-by: Eric Willigers <ericwilligers@chromium.org>
+Commit-Queue: Eric Willigers <ericwilligers@chromium.org>
+Commit-Queue: Tomáš Popela <tomas.popela@gmail.com>
+Auto-Submit: Tomáš Popela <tomas.popela@gmail.com>
+Cr-Commit-Position: refs/heads/master@{#688417}
+---
+
+diff --git a/third_party/blink/renderer/core/css/css_property_value_set.h b/third_party/blink/renderer/core/css/css_property_value_set.h
+index 67b353d..1bd404e 100644
+--- a/third_party/blink/renderer/core/css/css_property_value_set.h
++++ b/third_party/blink/renderer/core/css/css_property_value_set.h
+@@ -175,8 +175,8 @@
+   DISALLOW_COPY_AND_ASSIGN(CSSLazyPropertyParser);
+ };
+ 
+-class CORE_EXPORT alignas(Member<const CSSValue>) alignas(
+-    CSSPropertyValueMetadata) ImmutableCSSPropertyValueSet
++class CORE_EXPORT ALIGNAS(alignof(Member<const CSSValue>))
++    ALIGNAS(alignof(CSSPropertyValueMetadata)) ImmutableCSSPropertyValueSet
+     : public CSSPropertyValueSet {
+  public:
+   ImmutableCSSPropertyValueSet(const CSSPropertyValue*,
