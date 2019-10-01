@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2019-10-01)
+# Fails byte-compilation with recent Emacs versions.
+# Homepage and SRC_URI are gone. Upstream package
+# is unmaintained, according to EmacsWiki.
+# Masked for removal in 30 days. Bug #666836.
+app-emacs/mode-compile
+
 # Brian Evans <grknight@gentoo.org> (2019-10-01)
 # End of life.  Please upgrade.
 # Removal in 90 days. Bug 651784
