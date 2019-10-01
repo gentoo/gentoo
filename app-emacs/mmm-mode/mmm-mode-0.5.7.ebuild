@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 BDEPEND="sys-apps/texinfo"
 
+PATCHES=("${FILESDIR}"/${P}-texinfo-encoding.patch)
 SITEFILE="50${PN}-gentoo.el"
 ELISP_TEXINFO="mmm.texinfo"
 DOCS="AUTHORS FAQ NEWS README README.Mason TODO"
