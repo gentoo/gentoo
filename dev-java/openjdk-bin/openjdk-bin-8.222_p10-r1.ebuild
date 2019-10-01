@@ -71,7 +71,7 @@ src_install() {
 	fi
 
 	if use headless-awt ; then
-		rm -fvr jre/lib/*/lib*{[jx]awt,splashscreen}* \
+		rm -fvr {,jre/}lib/*/lib*{[jx]awt,splashscreen}* \
 			{,jre/}bin/policytool bin/appletviewer || die
 	fi
 
