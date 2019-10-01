@@ -73,6 +73,9 @@ PATCHES=(
 	# fix build with gcc-9.0.0
 	# https://bugs.llvm.org/show_bug.cgi?id=40547
 	"${FILESDIR}"/9.0.0/0002-Initialize-all-fields-in-ABIArgInfo.patch
+	# fix silly test failure due to '.src' in path
+	# https://bugs.llvm.org/show_bug.cgi?id=42979
+	"${FILESDIR}"/9.0.0/0003-Fix-Driver-modules.cpp-test-to-work-when-build-direc.patch
 )
 
 # Multilib notes:
