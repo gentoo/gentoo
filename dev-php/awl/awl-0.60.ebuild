@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Andrew McMillan's Web Libraries"
 HOMEPAGE="https://gitlab.com/davical-project/awl"
@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-DEPEND="test? ( dev-php/phpunit )"
+BDEPEND="test? ( dev-php/phpunit )"
 RDEPEND="dev-lang/php:*[pdo,postgres,xml]"
 
 S="${WORKDIR}"
