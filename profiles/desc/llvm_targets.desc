@@ -3,6 +3,7 @@
 
 AArch64 - AArch64 CPU target (arm64 in Gentoo)
 AMDGPU - AMDGPU target (supports R600 and GCN GPUs)
+ARC - ARC (Argonaut RISC Core) embedded CPU target [EXPERIMENTAL]
 ARM - ARM CPU target
 AVR - 8-bit Atmel AVR microcontroller target [EXPERIMENTAL]
 BPF - Berkeley Packet Filter target
