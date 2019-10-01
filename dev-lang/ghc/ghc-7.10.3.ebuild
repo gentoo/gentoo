@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -95,7 +95,7 @@ PREBUILT_BINARY_DEPENDS="
 # ghc[binary] in system. terminfo package is linked
 # against ncurses.
 PREBUILT_BINARY_RDEPENDS="${PREBUILT_BINARY_DEPENDS}
-	sys-libs/ncurses:5/5
+	sys-libs/ncurses-compat:5
 "
 
 RDEPEND+="binary? ( ${PREBUILT_BINARY_RDEPENDS} )"

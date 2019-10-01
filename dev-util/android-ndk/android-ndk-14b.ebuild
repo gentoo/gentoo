@@ -21,7 +21,7 @@ RDEPEND=">=dev-util/android-sdk-update-manager-10
 	>=sys-devel/make-3.81
 	|| (
 		sys-libs/ncurses:0/5[tinfo]
-		sys-libs/ncurses:5/5[tinfo]
+		sys-libs/ncurses-compat:5[tinfo]
 	)"
 
 S="${WORKDIR}/${PN}-r${PV}"

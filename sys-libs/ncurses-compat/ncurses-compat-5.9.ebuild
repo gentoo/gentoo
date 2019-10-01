@@ -8,7 +8,7 @@ EAPI="5"
 inherit eutils toolchain-funcs multilib-minimal
 
 MY_PV=${PV:0:3}
-MY_P=${PN}-${MY_PV}
+MY_P=ncurses-${MY_PV}
 DESCRIPTION="console display library"
 HOMEPAGE="https://www.gnu.org/software/ncurses/ https://invisible-island.net/ncurses/"
 SRC_URI="mirror://gnu/ncurses/${MY_P}.tar.gz"
@@ -22,18 +22,19 @@ IUSE="gpm tinfo unicode"
 DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
 # Block the ncurses-5 that installs the same lib. #557472
 RDEPEND="${DEPEND}
-	!<sys-libs/ncurses-6:0"
+	!<sys-libs/ncurses-6:0
+	!sys-libs/ncurses:5"
 
 S=${WORKDIR}/${MY_P}
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.8-gfbsd.patch
-	"${FILESDIR}"/${PN}-5.7-nongnu.patch
-	"${FILESDIR}"/${PN}-5.9-rxvt-unicode-9.15.patch #192083 #383871
-	"${FILESDIR}"/${PN}-5.9-fix-clang-build.patch #417763
-	"${FILESDIR}"/${PN}-5.9-pkg-config.patch
-	"${FILESDIR}"/${P}-no-I-usr-include.patch #522586
-	"${FILESDIR}"/${P}-gcc-5.patch #545114
+	"${FILESDIR}"/ncurses-5.8-gfbsd.patch
+	"${FILESDIR}"/ncurses-5.7-nongnu.patch
+	"${FILESDIR}"/ncurses-5.9-rxvt-unicode-9.15.patch #192083 #383871
+	"${FILESDIR}"/ncurses-5.9-fix-clang-build.patch #417763
+	"${FILESDIR}"/ncurses-5.9-pkg-config.patch
+	"${FILESDIR}"/ncurses-5.9-no-I-usr-include.patch #522586
+	"${FILESDIR}"/ncurses-5.9-gcc-5.patch #545114
 )
 
 src_prepare() {

@@ -54,7 +54,7 @@ RDEPEND="
 	>=dev-lang/perl-5.0
 	${PYTHON_DEPS}
 	>=media-libs/freetype-2.1.10-r2
-	sys-libs/ncurses:5/5
+	sys-libs/ncurses-compat:5
 	x11-libs/libXaw
 	x11-libs/libXinerama"
 
