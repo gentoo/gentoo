@@ -7263,7 +7263,7 @@ dev-php/doctrine 1.2.5 2.4.6 2.6.1: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0: Utility to instantiate objects in PHP without invoking their constructors
 dev-php/fedora-autoloader 0.2.1 1.0.0: Fedora's Static PSR-4, PSR-0, and classmap autoloader
 dev-php/geos-php 1.0.0: A PHP interface to GEOS - Geometry Engine, Open Source
-dev-php/igbinary 2.0.8 3.0.1: A fast drop-in replacement for the standard PHP serialize
+dev-php/igbinary 2.0.8 3.0.1 3.0.1-r1: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 4.0.2 4.2.0: Object-oriented graphing library for PHP
 dev-php/json-schema 5.2.8: PHP implementation of JSON schema
 dev-php/jsonlint 1.7.1: JSON Lint for PHP
@@ -7277,7 +7277,7 @@ dev-php/myclabs-deepcopy 1.6.0 1.6.1: Create deep copies (clones) of your object
 dev-php/onphp 1.0.11_pre20141124: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.10.1-r1 1.10.3: PEAR - PHP Extension and Application Repository
 dev-php/pecl-amqp 1.8.0 1.9.0 1.9.3 1.9.4: PHP Bindings for AMQP 0-9-1 compatible brokers
-dev-php/pecl-apcu 4.0.11 5.1.12 5.1.17: Stripped down version of APC supporting only user cache
+dev-php/pecl-apcu 4.0.11 5.1.12 5.1.17-r1: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.4 1.0.4-r1 1.0.5: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-bbcode 1.0.3_beta1-r2: A quick and efficient BBCode Parsing Library
 dev-php/pecl-cairo 0.3.2-r1: Cairo bindings for PHP
@@ -15145,7 +15145,7 @@ net-libs/libssh2 1.8.0-r1 1.8.0-r2 1.8.2 1.9.0 1.9.0-r1 9999: Library implementi
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 1.1.4: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
-net-libs/libtorrent-rasterbar 1.1.10 1.1.12 1.1.13 1.2.0 1.2.1: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/libtorrent-rasterbar 1.1.10 1.1.12 1.1.13 1.2.0 1.2.1 1.2.2: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.8 4.0.9_p1 4.0.9_p1-r1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.2 1.8.3-r1 1.8.4: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
@@ -18018,7 +18018,7 @@ sys-kernel/linux-docs 4.19: Developer documentation generated from the Linux ker
 sys-kernel/linux-firmware 20190603 20190815 20190904 20190923 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.13 4.14-r1 4.15-r1 4.16 4.16-r2 4.17 4.18 4.19 4.20 5.0 5.0-r1 5.1 5.2 5.3: Linux system headers
 sys-kernel/mips-sources 4.4.192 4.9.192 4.14.143 4.17.19 4.18.20: Linux-Mips GIT sources for MIPS-based machines, dated 20181112
-sys-kernel/pf-sources 5.1_p7 5.2_p1 5.2_p2 5.2_p3 5.2_p4 5.2_p5 5.2_p6 5.2_p7 5.2_p8 5.3_p1: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.1_p7 5.2_p8 5.3_p1 5.3_p2: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999 4.13.9999 4.14.9999 4.19.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4.164_p176 4.9.115_p93 4.9.146_p125 4.14.71_p44 4.14.78_p47 4.14.87_p49 4.16.18_p12 4.18.16_p9 4.19.5_p4 4.19.10_p8: Full Linux 4.19 kernel sources with the CONFIG_PREEMPT_RT patch
@@ -18094,7 +18094,8 @@ sys-libs/mtdev 1.1.5: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.22 1.1.23 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/musl-nscd 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/native-uuid 1.0: .pc file for uuid
-sys-libs/ncurses 5.9-r101 6.1_p20181020 6.1_p20190609: console display library
+sys-libs/ncurses 6.1_p20181020 6.1_p20190609: console display library
+sys-libs/ncurses-compat 5.9: console display library
 sys-libs/netbsd-csu 7.1 9.0_beta: crtbegin.o/crtend.o from NetBSD CSU for GCC-free toolchain
 sys-libs/newlib 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 2.4.0 2.5.0 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location

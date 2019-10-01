@@ -5,9 +5,9 @@ EAPI=6
 HOMEPAGE=https://developer.android.com/ndk/
 KEYWORDS=~amd64
 LICENSE=android
-RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81 sys-libs/ncurses:5/5
+RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81 sys-libs/ncurses-compat:5
 RESTRICT=mirror strip installsources test
 SLOT=0
 SRC_URI=https://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip
 _eclasses_=check-reqs	5e40a693d9c828e8f3655184116e8b73
-_md5_=09bddb30c6ef4c4be3afdde7865d20f5
+_md5_=68b53f00aa5293367f7be65e1c4dff10

@@ -5,9 +5,9 @@ EAPI=6
 HOMEPAGE=https://developer.android.com/ndk/
 KEYWORDS=~amd64
 LICENSE=android
-RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81 || ( sys-libs/ncurses:0/5[tinfo] sys-libs/ncurses:5/5[tinfo] )
+RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81 || ( sys-libs/ncurses:0/5[tinfo] sys-libs/ncurses-compat:5[tinfo] )
 RESTRICT=mirror strip installsources test
 SLOT=0
 SRC_URI=https://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip
 _eclasses_=check-reqs	5e40a693d9c828e8f3655184116e8b73
-_md5_=fca6448cb89826d406f9d6cda495cbf0
+_md5_=96a416094bd36de9b381d0b20eed0715
