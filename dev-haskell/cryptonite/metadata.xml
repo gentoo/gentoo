@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -29,12 +29,8 @@
 		Evaluate the security related to your requirements before using.
 	</longdescription>
 	<use>
-		<flag name="support_aesni">allow compilation with AESNI on system and architecture that supports it</flag>
-		<flag name="support_rdrand">allow compilation with AESNI on system and architecture that supports it</flag>
-		<flag name="support_pclmuldq">Allow compilation with pclmuldq on architecture that supports it</flag>
+		<flag name="cpu-flags-x86-rdrand">allow compilation with RDRAND on system and architecture that supports it</flag>
 		<flag name="integer-gmp">Whether or not to use GMP for some functions</flag>
-		<flag name="support_deepseq">add deepseq instances for cryptographic types</flag>
-		<flag name="support_blake2_sse">Use SSE optimized version of BLAKE2</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">haskell-crypto/cryptonite</remote-id>
