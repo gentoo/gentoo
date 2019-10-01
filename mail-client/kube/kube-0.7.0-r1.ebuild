@@ -3,39 +3,42 @@
 
 EAPI=7
 
-KDE_TEST="forceoptional"
-inherit kde5
+inherit cmake-utils
 
 DESCRIPTION="Mail client based on KDE Frameworks"
 HOMEPAGE="https://kube-project.com"
 SRC_URI="mirror://kde/unstable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2+"
+SLOT="5"
 KEYWORDS="~amd64"
+IUSE="test"
 
 RDEPEND="
-	$(add_frameworks_dep breeze-icons)
-	$(add_frameworks_dep kcodecs)
-	|| (
-		$(add_frameworks_dep kcontacts)
-		$(add_kdeapps_dep kcontacts)
-	)
-	$(add_kdeapps_dep kmime)
-	$(add_qt_dep qtconcurrent)
-	$(add_qt_dep qtdeclarative)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtnetwork)
-	$(add_qt_dep qtquickcontrols)
-	$(add_qt_dep qtquickcontrols2)
-	$(add_qt_dep qttest)
-	$(add_qt_dep qtwebengine 'widgets')
-	$(add_qt_dep qtwidgets)
 	>=app-crypt/gpgme-1.7.1:=[cxx,qt5]
 	dev-libs/kasync:5
 	>=dev-libs/sink-0.7.0:5
+	dev-qt/qtconcurrent:5
+	dev-qt/qtcore:5
+	dev-qt/qtdeclarative:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtquickcontrols:5
+	dev-qt/qtquickcontrols2:5
+	dev-qt/qttest:5
+	dev-qt/qtwebengine:5[widgets]
+	dev-qt/qtwidgets:5
+	kde-apps/kmime:5
+	kde-frameworks/breeze-icons:5
+	kde-frameworks/extra-cmake-modules:5
+	kde-frameworks/kcodecs:5
+	|| (
+		kde-frameworks/kcontacts:5
+		kde-apps/kcontacts:5
+	)
 "
 DEPEND="${RDEPEND}
-	test? ( $(add_qt_dep qttest) )
+	test? ( dev-qt/qttest:5 )
 "
 
 RESTRICT+=" test"
@@ -46,7 +49,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	kde5_src_prepare
+	cmake-utils_src_prepare
 
 	if ! use test; then
 		sed \
