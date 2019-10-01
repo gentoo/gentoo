@@ -1086,11 +1086,6 @@ app-text/docbook-sgml
 # (Expedited) removal in 7 days
 sci-libs/libmed
 
-# Matt Turner <mattst88@gentoo.org> (2019-09-03)
-# Not supported by the current browserpass extension.
-# Removal in 30 days
-<www-plugins/browserpass-3
-
 # Michał Górny <mgorny@gentoo.org> (2019-09-02)
 # gnome-vfs was deprecated along with GNOME 2.22 in favor of gvfs.
 # gnome-vfsmm provides C++ bindings for it, with last release in 2009
@@ -1106,24 +1101,6 @@ gnome-extra/assogiate
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd
 <media-sound/lilypond-2.19
-
-# Matt Turner <mattst88@gentoo.org> (2019-09-01)
-# dev-scheme/guile-gnome-platform depends on dev-scheme/guile:12. Its only
-# reverse dependency is sci-chemistry/burrow-owl, so include it. The others are
-# dependencies of sci-chemistry/burrow-owl as well, and it is their only
-# reverse dependency.
-# Bug #693290.
-dev-libs/g-wrap
-dev-scheme/guile-cairo
-dev-scheme/guile-gnome-platform
-dev-scheme/guile-lib
-sci-chemistry/burrow-owl
-sci-libs/starparse
-
-# Matt Turner <mattst88@gentoo.org> (2019-09-01)
-# Unmaintained, unpackaged versions from 2015. Incompatible with guile-2.2.
-# Removal in 30 days. # Bug #654654.
-games-strategy/liquidwar6
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # TeXmacs is the only remaining package in tree that requires guile-1.8, which
