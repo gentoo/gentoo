@@ -533,7 +533,7 @@ app-benchmarks/cpuburn 1.4a-r3: CPU testing utilities in optimized assembler for
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workload Generator
 app-benchmarks/forkbomb 1.4-r1: Controlled fork() bomber for testing heavy system load
-app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.4.1 5.0.1: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
+app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.4.1 5.0.2: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
 app-benchmarks/hey 0.1.1_p20181017: HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
 app-benchmarks/httperf 0.9.1_p20181111 0.9.1_p20181111-r1: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
@@ -2045,7 +2045,7 @@ app-misc/pal 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.2.3 1.2.3-r3 1.2.4: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 4.3.0 4.3.2: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
-app-misc/pet 0.3.0 0.3.2 0.3.6: Simple command-line snippet manager
+app-misc/pet 0.3.6: Simple command-line snippet manager
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/physlock 11-r1: lightweight Linux console locking tool
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
@@ -7254,7 +7254,7 @@ dev-php/Text_Template 1.1.1 1.2.1: A simple template engine
 dev-php/YAML 1.0.6-r3: The Symfony YAML Component
 dev-php/adodb 5.20.14: Database abstraction layer for PHP
 dev-php/agavi 1.0.8: PHP MVC application framework
-dev-php/awl 0.59: Andrew McMillan's Web Libraries
+dev-php/awl 0.59 0.60: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
 dev-php/composer 1.8.6 1.9.0: Dependency Manager for PHP
@@ -18469,7 +18469,7 @@ www-apps/cgp 1_p20181209: A graphical web-based front-end for visualizing RRD co
 www-apps/chromedriver-bin 2.24-r1 2.30-r1 2.35-r1 2.40 2.41 74.0.3729.6 76.0.3809.68 77.0.3865.40: WebDriver for Chrome
 www-apps/curator 3.0_p20110120-r2: Gallery generator
 www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
-www-apps/davical 1.1.7 1.1.7-r1: A CalDAV and CardDAV Server
+www-apps/davical 1.1.7-r2 1.1.8: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20160626e 20170219e 20180422a 20180422b: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
 www-apps/drraw 2.0.1 2.1.3: drraw is a simple web based presentation front-end for RRDtool
