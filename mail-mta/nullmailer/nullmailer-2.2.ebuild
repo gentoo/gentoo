@@ -35,6 +35,12 @@ RDEPEND="
 	!mail-mta/ssmtp[mta(+)]
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-test-racecondition.patch"
+	"${FILESDIR}/${P}-disable-dns-using-test.patch"
+	"${FILESDIR}/${P}-disable-smtp-auth-tests.patch"
+)
+
 pkg_setup() {
 	enewgroup nullmail 88
 	enewuser nullmail 88 -1 /var/spool/nullmailer nullmail
