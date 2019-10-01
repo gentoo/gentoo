@@ -1,0 +1,17 @@
+Patch the autoconf file to use the fallback MAXFD number when cross-compiling.
+Without this patch the configure step fails due to trying to execute a binary
+while cross compiling.
+
+diff --git a/acinclude/os-deps.m4 b/acinclude/os-deps.m4
+index b507175..fb035f8 100644
+--- a/acinclude/os-deps.m4
++++ b/acinclude/os-deps.m4
+@@ -231,7 +231,7 @@ int main(int argc, char **argv) {
+ 	fprintf (fp, "%d\n", i & ~0x3F);
+ 	return 0;
+ }
+-  ]])],[squid_filedescriptors_limit=`cat conftestval`],[],[])
++  ]])],[squid_filedescriptors_limit=`cat conftestval`],[],[squid_filedescriptors_limit=256])
+   dnl Microsoft MSVCRT.DLL supports 2048 maximum FDs
+   AS_CASE(["$host_os"],[mingw|mingw32],[squid_filedescriptors_limit="2048"])
+   AC_MSG_RESULT($squid_filedescriptors_limit)

@@ -78,6 +78,7 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-4.3-gentoo.patch"
+	eapply "${FILESDIR}/${PN}-4.8-max-fd.patch"
 	sed -i -e 's:/usr/local/squid/etc:/etc/squid:' \
 		INSTALL QUICKSTART \
 		scripts/fileno-to-pathname.pl \
