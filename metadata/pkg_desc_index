@@ -14316,7 +14316,7 @@ media-video/dvgrab 3.5-r1: Digital Video (DV) grabber for GNU/Linux
 media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every video file localized in the CD root
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.2_pre20140701-r2: Movie creator from photos and video clips
-media-video/ffmpeg 3.4.6-r1 4.1.3 4.1.4 4.2 4.2.1 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
+media-video/ffmpeg 3.4.6-r1 4.1.3 4.1.4 4.2.1 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0-r1: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
