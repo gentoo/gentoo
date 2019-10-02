@@ -1,8 +1,0 @@
---- lookup-1.4.1-orig/lisp/ndic.el
-+++ lookup-1.4.1/lisp/ndic.el
-@@ -1,4 +1,4 @@
--e;;; ndic.el --- Lookup by free dictionaries
-+;;; ndic.el --- Lookup by free dictionaries
- ;; Copyright (C) 1999 Lookup Development Team <lookup@ring.gr.jp>
- 
- ;; Author: Keisuke Nishida <kei@psn.net>
