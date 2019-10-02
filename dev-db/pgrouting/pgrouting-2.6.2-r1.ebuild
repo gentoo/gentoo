@@ -13,7 +13,7 @@ HOMEPAGE="http://pgrouting.org/"
 LICENSE="GPL-2 MIT Boost-1.0"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 SRC_URI="https://github.com/pgRouting/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 IUSE="pdf html"
 
