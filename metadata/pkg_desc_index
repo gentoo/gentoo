@@ -605,7 +605,7 @@ app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD 
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.5-r1: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.36.0 0.37.0 0.38.0 9999: An implementation of the ACME protocol
+app-crypt/acme 0.36.0 0.37.0 0.38.0 0.39.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
 app-crypt/acme-sh 2.7.9 2.8.0 9999: An ACME Shell script
 app-crypt/acme-tiny 4.0.3 4.0.4 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
@@ -622,9 +622,9 @@ app-crypt/bsign 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.30: CCID free software driver
 app-crypt/ccrypt 1.11 1.11-r1: Encryption and decryption
-app-crypt/certbot 0.36.0 0.37.0 0.38.0 9999: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 0.36.0 0.37.2 0.38.0 9999: Apache plugin for certbot (Let's Encrypt Client)
-app-crypt/certbot-nginx 0.36.0 0.37.2 0.38.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot 0.36.0 0.37.0 0.38.0 0.39.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 0.36.0 0.37.2 0.38.0 0.39.0 9999: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot-nginx 0.36.0 0.37.2 0.38.0 0.39.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/cfssl 1.3.2 1.3.3 1.3.4: Cloudflare's PKI and TLS toolkit
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
@@ -13708,8 +13708,8 @@ media-plugins/kodi-visualization-fishbmc 5.1.1 9999: Fische visualizer for Kodi
 media-plugins/kodi-visualization-goom 9999: Goom visualizer for Kodi
 media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
 media-plugins/kodi-visualization-projectm 2.1.0 2.2.0 9999: ProjectM visualizer for Kodi
-media-plugins/kodi-visualization-shadertoy 1.1.5 1.1.8 1.1.9 1.1.10 9999: Shadertoy visualizer for Kodi
-media-plugins/kodi-visualization-spectrum 1.1.1 2.0.3 2.0.4 3.0.0 9999: Spectrum visualizer for Kodi
+media-plugins/kodi-visualization-shadertoy 1.1.5 1.1.8 1.1.9 1.1.10 1.2.1 9999: Shadertoy visualizer for Kodi
+media-plugins/kodi-visualization-spectrum 1.1.1 2.0.3 2.0.4 3.0.0 3.0.1 9999: Spectrum visualizer for Kodi
 media-plugins/kodi-visualization-starburst 2.0.0 2.0.1 9999: StarBurst visualizer for Kodi
 media-plugins/kodi-visualization-waveform 2.0.1 3.0.2 9999: Waveform visualizer for Kodi
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
