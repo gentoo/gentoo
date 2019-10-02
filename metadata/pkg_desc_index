@@ -7606,7 +7606,7 @@ dev-python/click-log 0.1.8 0.2.1 0.3.2: Logging integration for Click.
 dev-python/click-plugins 1.0.3: Module for click to enable registering CLI commands via setuptools entry-points
 dev-python/click-threading 0.3.0 0.4.4: Multithreaded Click apps made easy.
 dev-python/clientcookie 1.3.0-r1: Python module for handling HTTP cookies on the client side
-dev-python/cliff 2.11.1 2.12.0 2.12.0-r2: Command Line Interface Formulation Framework
+dev-python/cliff 2.12.0 2.12.0-r2: Command Line Interface Formulation Framework
 dev-python/cliff-tablib 1.1-r2: Formatter extensions of JSON, YAML, and HTML output for the cliff framework
 dev-python/cligj 0.4.0: Click-based argument and option decorators for Python GIS command line programs
 dev-python/clint 0.5.1: Python Command-line Application Tools
@@ -7671,7 +7671,7 @@ dev-python/dbus-python 1.2.0-r1 1.2.4 1.2.6-r1 1.2.6-r2 1.2.8: Python bindings f
 dev-python/dbusmock 0.16.9 0.18.2: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.1.1: A library to multiply test cases
-dev-python/debtcollector 1.11.0 1.17.1 1.19.0 1.21.0: Python deprecation patterns and strategies that collect technical debt
+dev-python/debtcollector 1.21.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.3.2 4.4.0: Simplifies the usage of decorators for the average programmer
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/defcon 0.5.3 0.6.0: A set of UFO based objects for use in font editing applications
@@ -8809,7 +8809,7 @@ dev-python/python-socketio 1.7.4 1.8.0 2.0.0: Python implementation of the Socke
 dev-python/python-spidermonkey 0.0.10: JavaScript / Python bridge
 dev-python/python-sqlparse 0.2.3 0.2.4 0.3.0: A non-validating SQL parser module for Python
 dev-python/python-stdnum 1.11: A module to handle standardized numbers and codes
-dev-python/python-swiftclient 3.0.0 3.1.0 3.3.0 3.4.0 3.5.0 3.7.0: Python bindings to the OpenStack Object Storage API
+dev-python/python-swiftclient 3.7.0: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 233 234: Python module for native access to the systemd facilities
 dev-python/python-termstyle 0.1.10: console colouring for python
 dev-python/python-troveclient 1.3.0 2.5.0 2.17.0: A client for the OpenStack Trove API, a scalable relational database service
