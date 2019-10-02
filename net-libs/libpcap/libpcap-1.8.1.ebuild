@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit autotools multilib-minimal ltprune
 
 DESCRIPTION="A system-independent library for user-level network packet capture"
 HOMEPAGE="
-	http://www.tcpdump.org/
+	https://www.tcpdump.org/
 	https://github.com/the-tcpdump-group/libpcap
 "
 SRC_URI="
