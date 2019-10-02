@@ -26,6 +26,6 @@
 </use>
 <slots>
 	<subslots>Reflects ABI compatibility of libpoppler.so only,
-		NOT libpoppler-{glib,qt4,cpp}.so!</subslots>
+		NOT libpoppler-{glib,qt5,cpp}.so!</subslots>
 </slots>
 </pkgmetadata>
