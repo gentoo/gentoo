@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,11 +6,11 @@ inherit flag-o-matic toolchain-funcs user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
 HOMEPAGE="
-	http://www.tcpdump.org/
+	https://www.tcpdump.org/
 	https://github.com/the-tcpdump-group/tcpdump
 "
 SRC_URI="
-	http://www.tcpdump.org/release/${P}.tar.gz
+	https://www.tcpdump.org/release/${P}.tar.gz
 "
 
 LICENSE="BSD"
