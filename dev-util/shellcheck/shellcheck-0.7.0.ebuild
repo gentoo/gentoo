@@ -24,7 +24,7 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	>=dev-haskell/diff-0.2.0:=[profile?]
 	>=dev-haskell/mtl-2.2.1:=[profile?]
 	>=dev-haskell/parsec-3.0:=[profile?]
-	>=dev-haskell/quickcheck-2.7.4:2=[template_haskell,profile?]
+	>=dev-haskell/quickcheck-2.7.4:2=[template-haskell,profile?]
 	dev-haskell/regex-tdfa:=[profile?]
 	>=dev-lang/ghc-8.0.1:=
 "
