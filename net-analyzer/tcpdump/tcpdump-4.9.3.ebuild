@@ -31,8 +31,9 @@ DEPEND="
 	${RDEPEND}
 	drop-root? ( virtual/pkgconfig )
 	test? (
-		|| ( app-arch/sharutils sys-freebsd/freebsd-ubin )
+		>=net-libs/libpcap-1.9.1
 		dev-lang/perl
+		|| ( app-arch/sharutils sys-freebsd/freebsd-ubin )
 	)
 "
 
