@@ -109,16 +109,72 @@ check_live_ebuild() {
 	all_targets=( "${prod_targets[@]}" "${exp_targets[@]}" )
 
 	if [[ ${exp_targets[*]} != ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]} ]]; then
-		ewarn "ALL_LLVM_EXPERIMENTAL_TARGETS is outdated!"
-		ewarn "    Have: ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]}"
-		ewarn "Expected: ${exp_targets[*]}"
-		ewarn
+		eqawarn "ALL_LLVM_EXPERIMENTAL_TARGETS is outdated!"
+		eqawarn "    Have: ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]}"
+		eqawarn "Expected: ${exp_targets[*]}"
+		eqawarn
 	fi
 
 	if [[ ${all_targets[*]} != ${ALL_LLVM_TARGETS[*]#llvm_targets_} ]]; then
-		ewarn "ALL_LLVM_TARGETS is outdated!"
-		ewarn "    Have: ${ALL_LLVM_TARGETS[*]#llvm_targets_}"
-		ewarn "Expected: ${all_targets[*]}"
+		eqawarn "ALL_LLVM_TARGETS is outdated!"
+		eqawarn "    Have: ${ALL_LLVM_TARGETS[*]#llvm_targets_}"
+		eqawarn "Expected: ${all_targets[*]}"
+	fi
+}
+
+check_distribution_components() {
+	if [[ ${CMAKE_MAKEFILE_GENERATOR} == ninja ]]; then
+		local all_targets=() my_targets=() l
+		cd "${BUILD_DIR}" || die
+
+		while read -r l; do
+			if [[ ${l} == install-*-stripped:* ]]; then
+				l=${l#install-}
+				l=${l%%-stripped*}
+
+				case ${l} in
+					# shared libs
+					LLVM|LLVMgold)
+						;;
+					# TableGen lib + deps
+					LLVMDemangle|LLVMSupport|LLVMTableGen)
+						;;
+					# static libs
+					LLVM*)
+						continue
+						;;
+					# meta-targets
+					distribution|llvm-libraries)
+						continue
+						;;
+				esac
+
+				all_targets+=( "${l}" )
+			fi
+		done < <(ninja -t targets all)
+
+		while read -r l; do
+			my_targets+=( "${l}" )
+		done < <(get_distribution_components $"\n")
+
+		local add=() remove=()
+		for l in "${all_targets[@]}"; do
+			if ! has "${l}" "${my_targets[@]}"; then
+				add+=( "${l}" )
+			fi
+		done
+		for l in "${my_targets[@]}"; do
+			if ! has "${l}" "${all_targets[@]}"; then
+				remove+=( "${l}" )
+			fi
+		done
+
+		if [[ ${#add[@]} -gt 0 || ${#remove[@]} -gt 0 ]]; then
+			eqawarn "get_distribution_components() is outdated!"
+			eqawarn "   Add: ${add[*]}"
+			eqawarn "Remove: ${remove[*]}"
+		fi
+		cd - >/dev/null || die
 	fi
 }
 
@@ -149,6 +205,122 @@ is_libcxx_linked() {
 	[[ ${out} == *HAVE_LIBCXX* ]]
 }
 
+get_distribution_components() {
+	local sep=${1-;}
+
+	local out=(
+		# shared libs
+		LLVM
+		LTO
+		Remarks
+
+		# tools
+		llvm-config
+
+		# common stuff
+		cmake-exports
+		llvm-headers
+
+		# libraries needed for clang-tblgen
+		LLVMDemangle
+		LLVMSupport
+		LLVMTableGen
+	)
+
+	if multilib_is_native_abi; then
+		out+=(
+			# utilities
+			llvm-tblgen
+			FileCheck
+			llvm-PerfectShuffle
+			count
+			not
+			yaml-bench
+
+			# tools
+			bugpoint
+			dsymutil
+			llc
+			lli
+			lli-child-target
+			llvm-addr2line
+			llvm-ar
+			llvm-as
+			llvm-bcanalyzer
+			llvm-c-test
+			llvm-cat
+			llvm-cfi-verify
+			llvm-config
+			llvm-cov
+			llvm-cvtres
+			llvm-cxxdump
+			llvm-cxxfilt
+			llvm-cxxmap
+			llvm-diff
+			llvm-dis
+			llvm-dlltool
+			llvm-dwarfdump
+			llvm-dwp
+			llvm-elfabi
+			llvm-exegesis
+			llvm-extract
+			llvm-ifs
+			llvm-jitlink
+			llvm-lib
+			llvm-link
+			llvm-lipo
+			llvm-lto
+			llvm-lto2
+			llvm-mc
+			llvm-mca
+			llvm-modextract
+			llvm-mt
+			llvm-nm
+			llvm-objcopy
+			llvm-objdump
+			llvm-opt-report
+			llvm-pdbutil
+			llvm-profdata
+			llvm-ranlib
+			llvm-rc
+			llvm-readelf
+			llvm-readobj
+			llvm-reduce
+			llvm-rtdyld
+			llvm-size
+			llvm-split
+			llvm-stress
+			llvm-strings
+			llvm-strip
+			llvm-symbolizer
+			llvm-undname
+			llvm-xray
+			obj2yaml
+			opt
+			sancov
+			sanstats
+			verify-uselistorder
+			yaml2obj
+
+			# python modules
+			opt-viewer
+		)
+
+		use doc && out+=(
+			docs-dsymutil-man
+			docs-llvm-dwarfdump-man
+			docs-llvm-man
+			docs-llvm-html
+		)
+
+		use gold && out+=(
+			LLVMgold
+		)
+	fi
+
+	printf "%s${sep}" "${out[@]}"
+}
+
 multilib_src_configure() {
 	local ffi_cflags ffi_ldflags
 	if use libffi; then
@@ -164,7 +336,11 @@ multilib_src_configure() {
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 
-		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_SHARED_LIBS=OFF
+		-DLLVM_BUILD_LLVM_DYLIB=ON
+		-DLLVM_LINK_LLVM_DYLIB=ON
+		-DLLVM_DISTRIBUTION_COMPONENTS=$(get_distribution_components)
+
 		# cheap hack: LLVM combines both anyway, and the only difference
 		# is that the former list is explicitly verified at cmake time
 		-DLLVM_TARGETS_TO_BUILD=""
@@ -256,6 +432,8 @@ multilib_src_configure() {
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 	cmake-utils_src_configure
+
+	multilib_is_native_abi && check_distribution_components
 }
 
 multilib_src_compile() {
@@ -295,7 +473,7 @@ src_install() {
 }
 
 multilib_src_install() {
-	cmake-utils_src_install
+	DESTDIR=${D} cmake-utils_src_make install-distribution
 
 	# move headers to /usr/include for wrapping
 	rm -rf "${ED}"/usr/include || die
