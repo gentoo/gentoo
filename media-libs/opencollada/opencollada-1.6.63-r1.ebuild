@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,6 @@ IUSE="static-libs"
 RDEPEND="dev-libs/libpcre
 	dev-libs/libxml2
 	dev-libs/zziplib
-	media-libs/lib3ds
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
