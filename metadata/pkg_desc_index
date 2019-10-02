@@ -3038,7 +3038,6 @@ dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.2.0 2.2.1 2.2.1-r1 9999: Google's C++ argument parsing library
 dev-cpp/glibmm 2.56.1 2.58.1 2.60.0: C++ interface for glib2
 dev-cpp/glog 0.3.4-r1 0.4.0: Google's C++ logging library
-dev-cpp/gnome-vfsmm 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 1.10.0: C++ interface for GStreamer
 dev-cpp/gtest 1.8.0 1.8.0-r1 1.8.1 1.8.1-r1 1.9.0_pre20190607 9999: Google C++ Testing Framework
 dev-cpp/gtkglextmm 1.2.0-r2: C++ bindings for gtkglext
@@ -3229,7 +3228,6 @@ dev-embedded/gputils 1.5.0: Tools including assembler, linker and librarian for 
 dev-embedded/icdprog 0.5: Microchip PIC Programmer using ICD hardware
 dev-embedded/include 0.4.2: A collection of useful, independent include files for C/Assembler developers
 dev-embedded/jal 0.4.60 0.4.62: A high-level language for Microchip PIC and Ubicom SX microcontrollers
-dev-embedded/jtag 0.5.1-r1: Tool for working with JTAG-aware devices and boards through JTAG adapter
 dev-embedded/kobs-ng 3.0.35.4.1.0: utility to write u-boot images to NAND on Freescale iMX devices
 dev-embedded/libdisasm 0.23: Provides basic disassembly of Intel x86 instructions from a binary stream
 dev-embedded/libftd2xx 1.1.12-r1: Library that allows a direct access to a USB device
@@ -3306,15 +3304,12 @@ dev-games/cardpics 0.4 0.4-r1: set of free cards sets
 dev-games/cegui 0.8.7: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7 4.0.0: Multi-platform game development library
 dev-games/flatzebra 0.1.6: A generic game engine for 2D double-buffering animation
-dev-games/flinker 1.72: GBA cart writing utility by Jeff Frohwein
 dev-games/freecell-solver 5.6.0 5.6.0-r2: C library for automatically solving Freecell and some other solitaire variants
 dev-games/goatee 0.3.0 0.3.1.1 0.3.1.2: A monadic take on a 2,500-year-old board game - library
-dev-games/gtkradiant 1.5.0_pre20060302: FPS level editor
 dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using Allegro, SDL and/or OpenGL
 dev-games/hawknl 1.68-r2: A cross-platform network library designed for games
 dev-games/hdl_dump 0.8.6.20060901 0.9.2.20180722: Game installer for PlayStation 2 HD Loader and Open PS2 Loader
 dev-games/higan-ananke 094: A higan helper library needed for extra rom load options
-dev-games/hlsdk 2.3-r1: Half-Life Software Development Kit for mod authors
 dev-games/irrlicht 1.8.4: open source high performance realtime 3D engine written in C++
 dev-games/libmaitretarot 0.1.98: backend library for the maitretarot games
 dev-games/libmt_client 0.1.98: backend library for the maitretarot clients
@@ -11895,7 +11890,6 @@ games-strategy/megaglest-data 3.11.1: Data files for the cross-platform 3D realt
 games-strategy/mindrover-demo 1.07b: Control a robot as it races across Europa
 games-strategy/naev 0.6.1-r1: A 2D space trading and combat game, in a similar vein to Escape Velocity
 games-strategy/netherearth 0.52-r1: A remake of the SPECTRUM game Nether Earth
-games-strategy/netpanzer 0.8.2: Fast-action multiplayer strategic network game
 games-strategy/openra 20190314: A free RTS engine supporting games like Command & Conquer, Red Alert and Dune2k
 games-strategy/outerspace 0.5.68-r1: On-line strategy game taking place in the dangerous universe
 games-strategy/s25rttr 0.8.1-r3: Open Source remake of The Settlers II game (needs original game files)
@@ -11993,7 +11987,6 @@ gnome-base/libgtop 2.36.0 2.38.0: A library that provides top functionality to a
 gnome-base/librsvg 2.40.18 2.40.20: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.30.5-r1 3.32.3: Default file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
-gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
 gnome-extra/chrome-gnome-shell 10 10-r1: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
 gnome-extra/cinnamon 3.6.6-r2 3.8.8 4.0.3 4.0.3-r1 4.0.3-r2: A fork of GNOME Shell with layout similar to GNOME 2
 gnome-extra/cinnamon-control-center 3.6.5 3.8.0 4.0.0: Cinnamons's main interface to configure various aspects of the desktop
@@ -16631,7 +16624,6 @@ sci-libs/libghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-libs/libh2o 0.2.1-r1 9999: Library of routines for IF97 water & steam properties
 sci-libs/libh2oxx 0.2-r1 9999: C++ bindings for libh2o
 sci-libs/libint 1.1.6 2.0.5: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
-sci-libs/libmed 4.0.0-r1: A library to store and exchange meshed data or computation results
 sci-libs/libmems 1.6_p1-r3 9999: Library for sci-biology/mauve
 sci-libs/libmuscle 3.7-r3: Library for sci-biology/mauve
 sci-libs/libnova 0.15.0: Celestial Mechanics and Astronomical Calculation Library
