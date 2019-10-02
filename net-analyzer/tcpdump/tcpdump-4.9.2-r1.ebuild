@@ -6,11 +6,11 @@ inherit autotools flag-o-matic toolchain-funcs user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
 HOMEPAGE="
-	http://www.tcpdump.org/
+	https://www.tcpdump.org/
 	https://github.com/the-tcpdump-group/tcpdump
 "
 SRC_URI="
-	http://www.tcpdump.org/release/${P}.tar.gz
+	https://www.tcpdump.org/release/${P}.tar.gz
 "
 
 LICENSE="BSD"

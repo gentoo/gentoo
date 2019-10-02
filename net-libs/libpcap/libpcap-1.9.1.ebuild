@@ -6,7 +6,7 @@ inherit autotools multilib-minimal ltprune
 
 DESCRIPTION="A system-independent library for user-level network packet capture"
 HOMEPAGE="
-	http://www.tcpdump.org/
+	https://www.tcpdump.org/
 	https://github.com/the-tcpdump-group/libpcap
 "
 SRC_URI="

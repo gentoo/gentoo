@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit flag-o-matic toolchain-funcs user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="+drop-root libressl smi ssl samba suid test"
 
 RDEPEND="
@@ -41,15 +41,6 @@ pkg_setup() {
 		enewgroup tcpdump
 		enewuser tcpdump -1 -1 -1 tcpdump
 	fi
-}
-
-src_prepare() {
-	default
-
-	sed -i -e '/^eapon1/d;' tests/TESTLIST || die
-
-	# bug 630394
-	sed -i -e '/^nbns-valgrind/d' tests/TESTLIST || die
 }
 
 src_configure() {
