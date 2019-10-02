@@ -92,7 +92,6 @@ PATCHES=(
 	"${FILESDIR}"/1.38.0-fix-custom-libdir.patch
 	"${FILESDIR}"/1.38.0-fix-multiple-llvm-rebuilds.patch
 	"${FILESDIR}"/1.36.0-libressl.patch
-	"${FILESDIR}"/1.36.0-libressl3.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
