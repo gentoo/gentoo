@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="doc test"
+IUSE="test"
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"
@@ -30,14 +30,6 @@ DEPEND="
 		>=dev-python/doc8-0.6.0[${PYTHON_USEDEP}]
 		>=dev-python/reno-2.5.0[${PYTHON_USEDEP}]
 	)
-	doc? (
-		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.6.2[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.6.6[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.6.7[${PYTHON_USEDEP}]
-		>=dev-python/openstackdocstheme-1.18.1[${PYTHON_USEDEP}]
-		>=dev-python/reno-2.5.0[${PYTHON_USEDEP}]
-	)
 "
 RDEPEND="
 	${CDEPEND}
@@ -51,10 +43,6 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_compile_all() {
-	use doc && esetup.py build_sphinx
-}
-
 python_test() {
 	distutils_install_for_testing
 
@@ -62,10 +50,4 @@ python_test() {
 
 	testr init || die "testr init failed under ${EPYTHON}"
 	testr run || die "testr run failed under ${EPYTHON}"
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( doc/build/html/. )
-
-	distutils-r1_python_install_all
 }
