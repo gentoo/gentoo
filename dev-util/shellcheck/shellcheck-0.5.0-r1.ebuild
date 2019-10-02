@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ IUSE=""
 RDEPEND="dev-haskell/aeson:=[profile?]
 	>=dev-haskell/mtl-2.2.1:=[profile?]
 	>=dev-haskell/parsec-3.0:=[profile?]
-	>=dev-haskell/quickcheck-2.7.4:2=[template_haskell,profile?]
+	>=dev-haskell/quickcheck-2.7.4:2=[template-haskell,profile?]
 	dev-haskell/regex-tdfa:=[profile?]
 	dev-haskell/semigroups:=[profile?]
 	>=dev-lang/ghc-7.8.2:=
