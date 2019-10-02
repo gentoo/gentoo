@@ -1081,23 +1081,6 @@ app-text/docbook-sgml
 # Masked for removal.
 =www-client/seamonkey-2.49.9.1_p0
 
-# Matthias Maier <tamiko@gentoo.org> (2019-09-03)
-# Duplicate package - use sci-libs/med instead, bug #693146
-# (Expedited) removal in 7 days
-sci-libs/libmed
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-02)
-# gnome-vfs was deprecated along with GNOME 2.22 in favor of gvfs.
-# gnome-vfsmm provides C++ bindings for it, with last release in 2009
-# and only one reverse dependency.
-#
-# assogiate is the last revdep of gnome-vfsmm.  It was last bumped
-# in 2007, and the homepage is long gone (last seen ~2009).
-#
-# Removal in 30 days.  Bug #649000.
-dev-cpp/gnome-vfsmm
-gnome-extra/assogiate
-
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd
 <media-sound/lilypond-2.19
@@ -1108,40 +1091,6 @@ gnome-extra/assogiate
 # few years. Bug #436400
 app-office/texmacs
 <dev-scheme/guile-2
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-01)
-# Remnant of Half-Life server stuff that was removed back in 2005.
-# Removal in 30 days.  Bug #693260.
-dev-games/hlsdk
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-01)
-# Ancient, i386-only binary package.  Current version is a nightly
-# from 2006.  The package has had a release since, has found a new
-# upstream and has been forked multiple times as well.  Apparently
-# NetRadiant-custom is the most recently maintained fork (not packaged).
-# Removal in 30 days.  Bug #181372.
-dev-games/gtkradiant
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-01)
-# Never keyworded on amd64 (and probably does not work on 64-bit
-# systems).  Last release from 2001.  Requires rare hardware.
-# Removal in 30 days.  Bug #693258.
-dev-games/flinker
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-01)
-# Last bumped in 2007.  The current version is known to be broken
-# on amd64.  The game has been discontinued, and then revived/forked
-# multiple times.  It is pending a version bump since at least 2011.
-# See [1] for the 'revived' project and links to other forks.
-# [1] http://www.netpanzer.info/Download/
-# Removal in 30 days.  Bug #375237.
-games-strategy/netpanzer
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-01)
-# Discontinued upstream.  Last release in 2003.  Replaced
-# by dev-embedded/urjtag.
-# Removal in 30 days.  Bug #693256.
-dev-embedded/jtag
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
