@@ -7,7 +7,7 @@ inherit autotools git-r3 multilib-minimal ltprune
 DESCRIPTION="A system-independent library for user-level network packet capture"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/libpcap"
 HOMEPAGE="
-	http://www.tcpdump.org/
+	https://www.tcpdump.org/
 	${EGIT_REPO_URI}
 "
 
