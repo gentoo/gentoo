@@ -165,6 +165,7 @@ go-module_live_vendor() {
 # Display a warning about security updates for Go programs.
 go-module_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "$@"
+	[[ -n ${REPLACING_VERSIONS} ]] && return 0
 	ewarn "${PN} is written in the Go programming language."
 	ewarn "Since this language is statically linked, security"
 	ewarn "updates will be handled in individual packages and will be"
