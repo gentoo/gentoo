@@ -1,0 +1,175 @@
+Do not gzip docs
+
+--- a/kpartx/Makefile
++++ b/kpartx/Makefile
+@@ -21,7 +21,6 @@ all: $(EXEC)
+ 
+ $(EXEC): $(OBJS)
+ 	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC) $(LDFLAGS) $(LIBDEPS)
+-	$(GZIP) $(EXEC).8 > $(EXEC).8.gz
+ 
+ install: $(EXEC) $(EXEC).8
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(bindir)
+@@ -33,11 +32,11 @@ install: $(EXEC) $(EXEC).8
+ 	$(INSTALL_PROGRAM) -m 644 kpartx.rules $(DESTDIR)$(libudevdir)/rules.d/66-kpartx.rules
+ 	$(INSTALL_PROGRAM) -m 644 del-part-nodes.rules $(DESTDIR)$(libudevdir)/rules.d/68-del-part-nodes.rules
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(man8dir)
+-	$(INSTALL_PROGRAM) -m 644 $(EXEC).8.gz $(DESTDIR)$(man8dir)
++	$(INSTALL_PROGRAM) -m 644 $(EXEC).8 $(DESTDIR)$(man8dir)
+ 
+ uninstall:
+ 	$(RM) $(DESTDIR)$(bindir)/$(EXEC)
+-	$(RM) $(DESTDIR)$(man8dir)/$(EXEC).8.gz
++	$(RM) $(DESTDIR)$(man8dir)/$(EXEC).8
+ 	$(RM) $(DESTDIR)$(libudevdir)/kpartx_id
+ 	$(RM) $(DESTDIR)$(libudevdir)/rules.d/11-dm-parts.rules
+ 	$(RM) $(DESTDIR)$(libudevdir)/rules.d/66-kpartx.rules
+--- a/libdmmp/Makefile
++++ b/libdmmp/Makefile
+@@ -40,7 +40,7 @@ install:
+ 		$(DESTDIR)$(pkgconfdir)/$(PKGFILE)
+ 	perl -i -pe 's|__INCLUDEDIR__|$(includedir)|g' \
+ 		$(DESTDIR)$(pkgconfdir)/$(PKGFILE)
+-	@for file in docs/man/*.3.gz; do \
++	@for file in docs/man/*.3; do \
+ 		$(INSTALL_PROGRAM) -m 644 -D \
+ 			$$file \
+ 			$(DESTDIR)$(man3dir)/ || exit $?; \
+@@ -69,11 +69,11 @@ check: all
+ speed_test: all
+ 	$(MAKE) -C test speed_test
+ 
+-doc: docs/man/$(EXTRA_MAN_FILES).gz
++doc: docs/man/$(EXTRA_MAN_FILES)
+ 
+ TEMPFILE := $(shell mktemp)
+ 
+-docs/man/$(EXTRA_MAN_FILES).gz: $(HEADERS)
++docs/man/$(EXTRA_MAN_FILES): $(HEADERS)
+ 	@for file in $(EXTRA_MAN_FILES); do \
+ 		$(INSTALL_PROGRAM) -v -m 644 -D docs/$$file docs/man/$$file; \
+ 	done
+@@ -82,10 +82,7 @@ docs/man/$(EXTRA_MAN_FILES).gz: $(HEADERS)
+ 	perl docs/kernel-doc -man "$(TEMPFILE)" | \
+ 	    perl docs/split-man.pl docs/man
+ 	-rm -f "$(TEMPFILE)"
+-	@for file in docs/man/*.3; do \
+-		gzip -f $$file; \
+-	done
+-	find docs/man -type f -name \*[0-9].gz
++	find docs/man -type f -name \*.[0-9]
+ 
+ dep_clean:
+ 	$(RM) $(OBJS:.o=.d)
+--- a/libmpathpersist/Makefile
++++ b/libmpathpersist/Makefile
+@@ -16,8 +16,6 @@ all: $(LIBS)
+ $(LIBS): $(OBJS)
+ 	$(CC) $(LDFLAGS) $(SHARED_FLAGS) $(LIBDEPS) -Wl,-soname=$@ -o $@ $(OBJS)
+ 	$(LN) $(LIBS) $(DEVLIB)
+-	$(GZIP) mpath_persistent_reserve_in.3 > mpath_persistent_reserve_in.3.gz
+-	$(GZIP) mpath_persistent_reserve_out.3 > mpath_persistent_reserve_out.3.gz
+ 
+ install: $(LIBS)
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(syslibdir)
+@@ -26,14 +24,14 @@ install: $(LIBS)
+ 	$(INSTALL_PROGRAM) -m 755 -d $(DESTDIR)$(man3dir)
+ 	$(INSTALL_PROGRAM) -m 755 -d $(DESTDIR)$(includedir)
+ 	$(LN) $(LIBS) $(DESTDIR)$(syslibdir)/$(DEVLIB)
+-	$(INSTALL_PROGRAM) -m 644 mpath_persistent_reserve_in.3.gz $(DESTDIR)$(man3dir)
+-	$(INSTALL_PROGRAM) -m 644 mpath_persistent_reserve_out.3.gz $(DESTDIR)$(man3dir)
++	$(INSTALL_PROGRAM) -m 644 mpath_persistent_reserve_in.3 $(DESTDIR)$(man3dir)
++	$(INSTALL_PROGRAM) -m 644 mpath_persistent_reserve_out.3 $(DESTDIR)$(man3dir)
+ 	$(INSTALL_PROGRAM) -m 644 mpath_persist.h $(DESTDIR)$(includedir)
+ 
+ uninstall:
+ 	$(RM) $(DESTDIR)$(syslibdir)/$(LIBS)
+-	$(RM) $(DESTDIR)$(man3dir)/mpath_persistent_reserve_in.3.gz
+-	$(RM) $(DESTDIR)$(man3dir)/mpath_persistent_reserve_out.3.gz
++	$(RM) $(DESTDIR)$(man3dir)/mpath_persistent_reserve_in.3
++	$(RM) $(DESTDIR)$(man3dir)/mpath_persistent_reserve_out.3
+ 	$(RM) $(DESTDIR)$(includedir)/mpath_persist.h
+ 	$(RM) $(DESTDIR)$(syslibdir)/$(DEVLIB)
+ 
+--- a/mpathpersist/Makefile
++++ b/mpathpersist/Makefile
+@@ -14,13 +14,12 @@ all: $(EXEC)
+ 
+ $(EXEC): $(OBJS)
+ 	$(CC) $(OBJS) -o $(EXEC) $(LDFLAGS) $(CFLAGS) $(LIBDEPS)
+-	$(GZIP) $(EXEC).8 > $(EXEC).8.gz
+ 
+ install:
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(bindir)
+ 	$(INSTALL_PROGRAM) -m 755 $(EXEC) $(DESTDIR)$(bindir)/
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(man8dir)
+-	$(INSTALL_PROGRAM) -m 644 $(EXEC).8.gz $(DESTDIR)$(man8dir)
++	$(INSTALL_PROGRAM) -m 644 $(EXEC).8 $(DESTDIR)$(man8dir)
+ 
+ clean: dep_clean
+ 	$(RM) core *.o $(EXEC) *.gz
+@@ -29,7 +28,7 @@ include $(wildcard $(OBJS:.o=.d))
+ 
+ uninstall:
+ 	$(RM) $(DESTDIR)$(bindir)/$(EXEC)
+-	$(RM) $(DESTDIR)$(man8dir)/$(EXEC).8.gz
++	$(RM) $(DESTDIR)$(man8dir)/$(EXEC).8
+ 
+ dep_clean:
+ 	$(RM) $(OBJS:.o=.d)
+--- a/multipath/Makefile
++++ b/multipath/Makefile
+@@ -16,8 +16,6 @@ all: $(EXEC)
+ 
+ $(EXEC): $(OBJS) $(multipathdir)/libmultipath.so $(mpathcmddir)/libmpathcmd.so
+ 	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC) $(LDFLAGS) $(LIBDEPS)
+-	$(GZIP) $(EXEC).8 > $(EXEC).8.gz
+-	$(GZIP) $(EXEC).conf.5 > $(EXEC).conf.5.gz
+ 
+ install:
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(bindir)
+@@ -26,16 +24,16 @@ install:
+ 	$(INSTALL_PROGRAM) -m 644 11-dm-mpath.rules $(DESTDIR)$(udevrulesdir)
+ 	$(INSTALL_PROGRAM) -m 644 $(EXEC).rules $(DESTDIR)$(libudevdir)/rules.d/56-multipath.rules
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(man8dir)
+-	$(INSTALL_PROGRAM) -m 644 $(EXEC).8.gz $(DESTDIR)$(man8dir)
++	$(INSTALL_PROGRAM) -m 644 $(EXEC).8 $(DESTDIR)$(man8dir)
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(man5dir)
+-	$(INSTALL_PROGRAM) -m 644 $(EXEC).conf.5.gz $(DESTDIR)$(man5dir)
++	$(INSTALL_PROGRAM) -m 644 $(EXEC).conf.5 $(DESTDIR)$(man5dir)
+ 
+ uninstall:
+ 	$(RM) $(DESTDIR)$(bindir)/$(EXEC)
+ 	$(RM) $(DESTDIR)$(udevrulesdir)/11-dm-mpath.rules
+ 	$(RM) $(DESTDIR)$(libudevdir)/rules.d/56-multipath.rules
+-	$(RM) $(DESTDIR)$(man8dir)/$(EXEC).8.gz
+-	$(RM) $(DESTDIR)$(man5dir)/$(EXEC).conf.5.gz
++	$(RM) $(DESTDIR)$(man8dir)/$(EXEC).8
++	$(RM) $(DESTDIR)$(man5dir)/$(EXEC).conf.5
+ 
+ clean: dep_clean
+ 	$(RM) core *.o $(EXEC) *.gz
+--- a/multipathd/Makefile
++++ b/multipathd/Makefile
+@@ -34,7 +34,6 @@ all : $(EXEC)
+ 
+ $(EXEC): $(OBJS) $(multipathdir)/libmultipath.so $(mpathcmddir)/libmpathcmd.so
+ 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(EXEC) $(LIBDEPS)
+-	$(GZIP) $(EXEC).8 > $(EXEC).8.gz
+ 
+ install:
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(bindir)
+@@ -45,11 +44,11 @@ ifdef SYSTEMD
+ 	$(INSTALL_PROGRAM) -m 644 $(EXEC).socket $(DESTDIR)$(unitdir)
+ endif
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(man8dir)
+-	$(INSTALL_PROGRAM) -m 644 $(EXEC).8.gz $(DESTDIR)$(man8dir)
++	$(INSTALL_PROGRAM) -m 644 $(EXEC).8 $(DESTDIR)$(man8dir)
+ 
+ uninstall:
+ 	$(RM) $(DESTDIR)$(bindir)/$(EXEC)
+-	$(RM) $(DESTDIR)$(man8dir)/$(EXEC).8.gz
++	$(RM) $(DESTDIR)$(man8dir)/$(EXEC).8
+ 	$(RM) $(DESTDIR)$(unitdir)/$(EXEC).service
+ 	$(RM) $(DESTDIR)$(unitdir)/$(EXEC).socket
+ 
