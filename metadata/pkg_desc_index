@@ -313,7 +313,7 @@ app-admin/recursos 2.0-r1: Script to create html and text report about your syst
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.14.1 0.14.2 0.14.4: Tool to manage OpenRC services that need to be restarted
 app-admin/rex 1.3.3 1.4.0-r1 1.4.1 1.5.0 1.6.0 9999: (R)?ex is a small script to ease the execution of remote commands
-app-admin/rsyslog 8.1904.0-r1 8.1907.0-r1 8.1908.0: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.1904.0-r1 8.1907.0-r1 8.1908.0 8.1910.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 0.2.3-r1 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2016.11.10 2017.7.8 2018.3.4 2019.2.0-r1: Salt is a remote execution and configuration manager
@@ -1123,14 +1123,14 @@ app-editors/curses-hexedit 0.9.7: full screen curses hex editor (with insert/del
 app-editors/dav 0.8.5-r2: A minimal console text editor
 app-editors/dhex 0.68: ncurses-based hex-editor with diff mode
 app-editors/diakonos 0.9.4: A Linux editor for the masses
-app-editors/e3 2.8 2.8.2: Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings
+app-editors/e3 2.8: Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings
 app-editors/editra 0.7.20-r2: Multi-platform text editor supporting over 50 programming languages
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/elvis 2.2.0-r6 2.2.0-r7: A vi/ex clone
 app-editors/emacs 18.59-r12 23.4-r18 24.5-r7 25.3-r6 26.1-r3 26.2 26.3-r1: The extensible, customizable, self-documenting real-time display editor
 app-editors/emacs-vcs 26.3.9999 27.0.50_pre20180831 27.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
-app-editors/ersatz-emacs 20060515 20060515-r1: A very minimal imitation of the famous GNU Emacs editor
+app-editors/ersatz-emacs 20060515-r1: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 2.0: A small and easy to use folding editor
 app-editors/focuswriter 1.7.2: Fullscreen and distraction-free word processor
 app-editors/fte 20110708-r1: Lightweight text-mode editor
@@ -1145,7 +1145,7 @@ app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0 2.1.0-r1: A file viewer, editor and analyzer for text, binary, and executable files
 app-editors/jasspa-microemacs 20091011-r3: Jasspa Microemacs
-app-editors/jed 0.99.19 0.99.19-r1: Console S-Lang-based editor
+app-editors/jed 0.99.19-r1: Console S-Lang-based editor
 app-editors/jedit 5.2.0-r1 5.4.0: Programmer's editor written in Java
 app-editors/jext 5.0-r2: A text editor written in Java
 app-editors/joe 4.2 4.3-r1 4.4 4.6: A free ASCII-Text Screen Editor for UNIX
@@ -1208,12 +1208,12 @@ app-emacs/auto-complete 1.5.1-r1: Auto-complete package
 app-emacs/autoconf-mode 2.69-r1: Emacs major modes for editing autoconf and autotest input
 app-emacs/basic-toolkit 0.3: Basic edit toolkit
 app-emacs/bbdb 3.1.2-r1: The Insidious Big Brother Database
-app-emacs/binclock 1.7-r1 1.11: Display the current time using a binary clock
+app-emacs/binclock 1.11: Display the current time using a binary clock
 app-emacs/bison-mode 0.3: Emacs major mode for Bison, Yacc and Lex grammars
 app-emacs/blogmax 20110305 20170321: Blogging in Emacs
 app-emacs/bm 1.32_p20140214: Visible bookmarks in buffer
 app-emacs/bongo 1.1: Buffer-oriented media player for Emacs
-app-emacs/boxquote 1.23 2.1: Quote text with a semi-box
+app-emacs/boxquote 2.1: Quote text with a semi-box
 app-emacs/browse-kill-ring 1.3c 2.0.0: An improved interface to kill-ring
 app-emacs/bubblet 0.74-r1: A bubble-popping game
 app-emacs/buffer-extension 0.1: Some enhanced functions for buffer manipulate
@@ -1276,7 +1276,7 @@ app-emacs/ghub 2.0.0 2.0.1 3.0.0: Minuscule client library for the Git forge API
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
 app-emacs/gnuserv 3.12.8-r4: Attach to an already running Emacs
 app-emacs/go-mode 1.4.0 1.5.0: An improved Go mode for emacs
-app-emacs/google-c-style 20091009-r1 20140929: Provides the google C/C++ coding style
+app-emacs/google-c-style 20140929: Provides the google C/C++ coding style
 app-emacs/graphql 0.1.1: GraphQL utilities
 app-emacs/graphviz-dot-mode 0.3.7 0.4 0.4.20171103 0.4.20181118: Emacs mode for editing and previewing Graphviz dot graphs
 app-emacs/h4x0r 0.13-r1: Aid in writing like a script kiddie does
@@ -1286,7 +1286,7 @@ app-emacs/helm-system-packages 1.10.1: A Helm interface to the package manager o
 app-emacs/hexrgb 0_p957: Functions to manipulate colors, including RGB hex strings
 app-emacs/highline 7.2.2: Minor mode to highlight current line in buffer
 app-emacs/howm 1.4.3: Note-taking tool on Emacs
-app-emacs/htmlize 1.47 1.54: HTML-ize font-lock buffers in Emacs
+app-emacs/htmlize 1.54: HTML-ize font-lock buffers in Emacs
 app-emacs/httpd 1.1: A HTTP server embedded in the Emacs
 app-emacs/icicles 2013.04.23.23400 2018.02.13.23733: Minibuffer input completion and cycling
 app-emacs/igrep 2.113: An improved interface to "grep" and "find"
@@ -1297,7 +1297,7 @@ app-emacs/jasmin 1.2-r2: An Emacs major mode for editing Jasmin Java bytecode as
 app-emacs/jde 2.4.1: Java Development Environment for Emacs
 app-emacs/keywiz 1.4: Emacs key sequence quiz
 app-emacs/ledger-mode 3.1.1: An Emacs major mode for editing ledger files
-app-emacs/lookup 1.4.1 1.99.96_pre20180209: An interface to search CD-ROM books and network dictionaries
+app-emacs/lookup 1.99.96_pre20180209: An interface to search CD-ROM books and network dictionaries
 app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20180410: Elisp client for the LysKOM conference system
 app-emacs/magit 2.11.0 2.12.1 2.13.1 2.90.1: A Git porcelain inside Emacs
@@ -1308,7 +1308,7 @@ app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
 app-emacs/mediawiki 2.2.4.1 2.2.9-r1: MediaWiki client for Emacs
 app-emacs/mew 6.6 6.8: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
-app-emacs/mldonkey 0.0.4b-r1 0.0.4b-r2: An Emacs Lisp interface to the MLDonkey core
+app-emacs/mldonkey 0.0.4b-r2: An Emacs Lisp interface to the MLDonkey core
 app-emacs/mmm-mode 0.5.4 0.5.7: Enables the user to edit different parts of a file in different major modes
 app-emacs/moccur-edit 2.16: An improved interface to color-moccur for editing
 app-emacs/mode-compile 2.29.1: Smart command for compiling files according to major-mode
@@ -1322,7 +1322,7 @@ app-emacs/navi2ch 1.8.4-r1: A navigator for the Japanese textboard 2ch
 app-emacs/nxml-docbook5-schemas 5.0 5.1: Add support for DocBook 5 schemas to NXML
 app-emacs/nxml-gentoo-schemas 20170302 20180611: Extension for nxml-mode with Gentoo-specific schemas
 app-emacs/nxml-libvirt-schemas 1.2.1: Extension for nxml-mode with libvirt schemas
-app-emacs/nxml-svg-schemas 1.1.20081123 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
+app-emacs/nxml-svg-schemas 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 3.12.1-r1 4.00.1: Emacs mode for OCaml
 app-emacs/org-mode 8.3.2-r1 9.1.13 9.2.6: An Emacs mode for notes and project planning
 app-emacs/outline-magic 0.9: Outline mode extensions for Emacs
@@ -1399,7 +1399,7 @@ app-emacs/yasnippet 0.13.0: Yet another snippet extension for Emacs
 app-emacs/yasnippet-snippets 0.3: A collection of yasnippet snippets for many languages
 app-emacs/yatex 1.77 1.80: Yet Another TeX mode for Emacs
 app-emacs/yc 4.0.13 5.2.1: Yet another Canna client on Emacsen
-app-emacs/zenburn 20110907 20110907-r1: Zenburn color theme for Emacs
+app-emacs/zenburn 20110907-r1: Zenburn color theme for Emacs
 app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs text editor
 app-emulation/aqemu 0.9.2: Graphical interface for QEMU and KVM emulators, using Qt5
 app-emulation/bochs 2.6.9: LGPL-ed pc emulator
@@ -1823,7 +1823,7 @@ app-metrics/bind_exporter 0.2.0_p20190226: Prometheus exporter for BIND
 app-metrics/blackbox_exporter 0.14.0 0.15.0 0.15.1: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 app-metrics/buildbot-prometheus 17.7.2-r2: A Prometheus metrics exporter for Buildbot
 app-metrics/burrow_exporter 0.0.6 0.0.6-r1: Prometheus exporter for Burrow
-app-metrics/collectd 5.8.1-r1 5.9.1-r2: Collects system statistics and provides mechanisms to store the values
+app-metrics/collectd 5.8.1-r1 5.9.1-r2 5.9.2: Collects system statistics and provides mechanisms to store the values
 app-metrics/consul_exporter 0.4.0: Prometheus exporter for consul metrics
 app-metrics/elasticsearch_exporter 1.0.2 1.0.4_rc1 1.1.0_rc1 1.1.0: Elasticsearch stats exporter for Prometheus
 app-metrics/github-exporter 04 04-r1: Github statistics exporter for prometheus
@@ -17996,7 +17996,7 @@ sys-kernel/ck-sources 4.9.120 4.9.123 4.9.124 4.9.126 4.9.128 4.9.130 4.9.132 4.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta17 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta18 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 4.4.189 4.4.192 4.4.193 4.4.194 4.9.189 4.9.192 4.9.193 4.9.194 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.3.0 5.3.1 5.3.2: Full sources including the Gentoo patchset for the 5.3 kernel tree
 sys-kernel/git-sources 5.4_rc1: The very latest -git version of the Linux kernel
@@ -18535,7 +18535,7 @@ www-client/epiphany 3.30.4 3.30.5 3.32.4 3.32.5: GNOME webbrowser based on Webki
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0 60.8.0 60.9.0 68.1.0 69.0.1: Firefox Web Browser
-www-client/firefox-bin 52.9.0 60.9.0 68.1.0 69.0: Firefox Web Browser
+www-client/firefox-bin 52.9.0 60.9.0 68.1.0 69.0.1: Firefox Web Browser
 www-client/google-chrome 77.0.3865.90: The web browser from Google
 www-client/google-chrome-beta 78.0.3904.34: The web browser from Google
 www-client/google-chrome-unstable 79.0.3921.0: The web browser from Google
