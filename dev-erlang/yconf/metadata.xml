@@ -5,6 +5,6 @@
 		<email>hanno@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">processone/xmpp</remote-id>
+		<remote-id type="github">processone/yconf</remote-id>
 	</upstream>
 </pkgmetadata>
