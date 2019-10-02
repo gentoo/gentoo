@@ -17,25 +17,21 @@ inherit golang-build golang-vcs-snapshot
 EGO_PN="github.com/g4s8/${PN}"
 DESCRIPTION="Command line tool to bootstrap Github repository"
 HOMEPAGE="https://github.com/g4s8/${PN}"
-ARCHIVE_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI="${ARCHIVE_URI}
+SRC_URI="https://github.com/g4s8/${PN}/archive/${PN}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
 
 src_compile() {
-	local now=$(date -u +%Y.%m.%dT%H:%M:%S)
 	BUILDFLAGS="" GOPATH="${S}" \
-		emake BUILD_VERSION=${PV} BUILD_DATE=${now} -j1 -C src/${EGO_PN} build || die
+		emake BUILD_VERSION=${PV} BUILD_DATE="2019.09.30T11:31:00" -j1 -C src/${EGO_PN} build
 }
 
 src_test() {
-	emake OUTPUT=lib test || die
+	emake OUTPUT=lib test
 }
 
 src_install() {
 	dobin src/${EGO_PN}/${PN} || die
-	elog "Read the README for details: ${HOMEPAGE}"
 }
