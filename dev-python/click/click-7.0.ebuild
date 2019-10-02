@@ -26,6 +26,11 @@ DEPEND="
 python_prepare_all() {
 	# Prevent un-needed d'loading
 	sed -e "s/, 'sphinx.ext.intersphinx'//" -i docs/conf.py || die
+
+	# Allow docs building without Click being installed, Bug #692270
+	sed -e "s/\(release, version\).*/\1 = (\"$PV\", \"$PV\")/g" \
+		-i docs/conf.py || die
+
 	distutils-r1_python_prepare_all
 }
 
