@@ -291,14 +291,14 @@ src_install() {
 		doins src/external/tng_io/include/tng/*h
 	fi
 	# drop unneeded stuff
-	rm "${ED}"usr/bin/GMXRC* || die
-	for x in "${ED}"usr/bin/gmx-completion-*.bash ; do
+	rm "${ED}"/usr/bin/GMXRC* || die
+	for x in "${ED}"/usr/bin/gmx-completion-*.bash ; do
 		local n=${x##*/gmx-completion-}
 		n="${n%.bash}"
-		cat "${ED}"usr/bin/gmx-completion.bash "$x" > "${T}/${n}" || die
+		cat "${ED}"/usr/bin/gmx-completion.bash "$x" > "${T}/${n}" || die
 		newbashcomp "${T}"/"${n}" "${n}"
 	done
-	rm "${ED}"usr/bin/gmx-completion*.bash || die
+	rm "${ED}"/usr/bin/gmx-completion*.bash || die
 	readme.gentoo_create_doc
 }
 
