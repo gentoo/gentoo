@@ -151,11 +151,13 @@ PATCHES=(
 	"${FILESDIR}/chromium-77-clang.patch"
 	"${FILESDIR}/chromium-77-pulseaudio-13.patch"
 	"${FILESDIR}/chromium-78-include.patch"
+	"${FILESDIR}/chromium-78-protobuf-export.patch"
 	"${DISTDIR}/chromium-78-revert-noexcept.patch"
 	"${DISTDIR}/chromium-78-revert-pm-observer.patch"
 	"${FILESDIR}/chromium-78-gcc-enum-range.patch"
 	"${FILESDIR}/chromium-78-gcc-std-vector.patch"
 	"${FILESDIR}/chromium-78-gcc-noexcept.patch"
+	"${FILESDIR}/chromium-78-gcc-alignas.patch"
 )
 
 pre_build_checks() {
@@ -163,6 +165,10 @@ pre_build_checks() {
 		local -x CPP="$(tc-getCXX) -E"
 		if tc-is-gcc && ! ver_test "$(gcc-version)" -ge 8.0; then
 			die "At least gcc 8.0 is required"
+		fi
+		# component build hangs with tcmalloc enabled due to sandbox issue, bug #695976.
+		if has usersandbox ${FEATURES} && use tcmalloc && use component-build; then
+			die "Component build with tcmalloc requires FEATURES=-usersandbox."
 		fi
 	fi
 
