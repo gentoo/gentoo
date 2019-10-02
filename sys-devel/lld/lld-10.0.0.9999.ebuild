@@ -75,6 +75,6 @@ src_test() {
 }
 
 src_install() {
-	default
+	cmake-utils_src_install
 	find "${D}" -name '*.a' -delete || die
 }
