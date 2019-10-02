@@ -109,16 +109,16 @@ check_live_ebuild() {
 	all_targets=( "${prod_targets[@]}" "${exp_targets[@]}" )
 
 	if [[ ${exp_targets[*]} != ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]} ]]; then
-		ewarn "ALL_LLVM_EXPERIMENTAL_TARGETS is outdated!"
-		ewarn "    Have: ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]}"
-		ewarn "Expected: ${exp_targets[*]}"
-		ewarn
+		eqawarn "ALL_LLVM_EXPERIMENTAL_TARGETS is outdated!"
+		eqawarn "    Have: ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]}"
+		eqawarn "Expected: ${exp_targets[*]}"
+		eqawarn
 	fi
 
 	if [[ ${all_targets[*]} != ${ALL_LLVM_TARGETS[*]#llvm_targets_} ]]; then
-		ewarn "ALL_LLVM_TARGETS is outdated!"
-		ewarn "    Have: ${ALL_LLVM_TARGETS[*]#llvm_targets_}"
-		ewarn "Expected: ${all_targets[*]}"
+		eqawarn "ALL_LLVM_TARGETS is outdated!"
+		eqawarn "    Have: ${ALL_LLVM_TARGETS[*]#llvm_targets_}"
+		eqawarn "Expected: ${all_targets[*]}"
 	fi
 }
 
