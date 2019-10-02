@@ -1179,7 +1179,7 @@ app-editors/retext 7.0.3 7.0.4-r1 9999: Simple editor for Markdown and reStructu
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 3.5.5 3.6.5-r1 4.0.2 4.1.3 4.2.0: A very powerful, highly configurable, small editor with syntax coloring
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
-app-editors/sublime-text 3_p3176 3_p3200-r1 3_p3207: Sophisticated text editor for code, markup and prose
+app-editors/sublime-text 3_p3176 3_p3200-r1 3_p3207 3_p3211: Sophisticated text editor for code, markup and prose
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
 app-editors/teco 36_p19940820: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
@@ -3298,7 +3298,8 @@ dev-erlang/riakc 2.4.2: Erlang clients for Riak
 dev-erlang/sqlite3 1.1.5 1.1.6: SQLite gen_server port for Erlang
 dev-erlang/stringprep 1.0.8 1.0.17: Fast Stringprep implementation for Erlang and Elixir
 dev-erlang/stun 1.0.10 1.0.25 1.0.29: STUN and TURN library for Erlang and Elixir
-dev-erlang/xmpp 1.1.9 1.2.5: XMPP parsing and serialization library on top of Fast XML
+dev-erlang/xmpp 1.1.9 1.2.5 1.4.2: XMPP parsing and serialization library on top of Fast XML
+dev-erlang/yconf 1.0.1: YAML configuration processor
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 1.1.6 1.1.7: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4 0.4-r1: set of free cards sets
@@ -14545,6 +14546,7 @@ net-analyzer/linkchecker 9.4.0-r1 9999: Check websites for broken links
 net-analyzer/macchanger 1.7.0 1.7.0-r1: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/masscan 1.0.4 1.0.5: Mass IP port scanner
 net-analyzer/mbrowse 0.4.3 0.4.3-r1: MBrowse is a graphical MIB browser
+net-analyzer/mdns-scan 0.5: a tool for scanning for mDNS/DNS-SD published services
 net-analyzer/metasploit 4.17.21-r5 9999: Advanced framework for developing, testing, and using vulnerability exploit code
 net-analyzer/mk-livestatus 1.2.8_p10 1.2.8_p16 1.2.8_p26: Nagios/Icinga event broker that allows quick/direct access to your status data
 net-analyzer/monitoring-plugins 2.2-r2 2.2-r3 2.2-r4: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
