@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (2019-10-02)
+# OTR support is fully integrated within irssi since version 1.2.0. Type /help otr
+# at the command prompt to find out more. The OTR module is therefore obsolete
+# and can be tree-cleaned.
+# Masked for removal in 30 days. Bug #696074.
+net-irc/irssi-otr
+
 # Ulrich Müller <ulm@gentoo.org> (2019-10-01)
 # Fails byte-compilation with recent Emacs versions.
 # Homepage and SRC_URI are gone. Upstream package
