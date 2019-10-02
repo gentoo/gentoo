@@ -16,14 +16,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
-IUSE="doc"
+IUSE=""
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/pbr-1.6[${PYTHON_USEDEP}]
-	doc? (
-		>=dev-python/sphinx-1.6.2[${PYTHON_USEDEP}]
-	)
 "
 RDEPEND="
 	>=dev-python/requests-2.14.2[${PYTHON_USEDEP}]
@@ -35,14 +32,4 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
 	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	use doc && esetup.py build_sphinx
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( doc/build/html/. )
-
-	distutils-r1_python_install_all
 }
