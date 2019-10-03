@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,10 +6,10 @@ EAPI=5
 inherit eutils unpacker cdrom games
 
 DESCRIPTION="Futuristic FPS (a hack that runs on top of Unreal Tournament)"
-HOMEPAGE="http://www.unreal.com/ http://icculus.org/~chunky/ut/unreal/"
-SRC_URI="http://www.icculus.org/%7Echunky/ut/unreal/unreali-install.run
-	ftp://ftp.lokigames.com/pub/patches/ut/ut-install-436.run
-	ftp://ftp.lokigames.com/pub/patches/ut/IpDrv-436-Linux-08-20-02.zip"
+HOMEPAGE="https://www.oldunreal.com/ https://icculus.org/~chunky/ut/unreal/"
+SRC_URI="https://www.icculus.org/%7Echunky/ut/unreal/unreali-install.run
+	https://www.ut-files.com/Patches/ut-install-436.run
+	https://www.ut-files.com/Patches/ipdrv-436-linux-08-20-02.zip -> IpDrv-436-Linux-08-20-02.zip"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
