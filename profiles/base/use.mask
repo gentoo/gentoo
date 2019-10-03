@@ -32,10 +32,6 @@ php_targets_php7-0
 # d3d9 only works on amd64/x86.
 d3d9
 
-# Aaron W. Swenson <titanofold@gentoo.org> (2018-09-09)
-# Mask PostgreSQL 12 while in (pre-)alpha.
-postgres_targets_postgres12
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-11-04)
 # Unkeyworded on most arches, unmasked in supported arch profiles.
 audacious
