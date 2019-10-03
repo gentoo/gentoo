@@ -3073,7 +3073,7 @@ dev-cpp/sparsehash 2.0.3-r1: An extremely memory-efficient hash_map implementati
 dev-cpp/tbb 2017.20161128 2018.20180312 2019.8: High level abstract threading library
 dev-cpp/tclap 1.2.1 1.2.2: Simple templatized C++ library for parsing command line arguments
 dev-cpp/tree 2.81: An STL-like tree class
-dev-cpp/waylandpp 0.2.3 0.2.4 0.2.5 9999: Wayland C++ bindings
+dev-cpp/waylandpp 0.2.3 0.2.4 0.2.5 0.2.6 9999: Wayland C++ bindings
 dev-cpp/websocketpp 0.8.1-r1: C++/Boost Asio based websocket client/server library
 dev-cpp/xsd 4.0.0: An open-source, cross-platform W3C XML Schema to C++ data binding compiler
 dev-cpp/yaml-cpp 0.6.2: YAML parser and emitter in C++
@@ -15360,7 +15360,7 @@ net-misc/connect 1.103: network connection relaying command (proxy)
 net-misc/connman 1.37: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1 1.1.1-r1: GTK GUI for Connman
 net-misc/connman-json-client 1.0_p20150721: An ncurses UI for connman
-net-misc/connman-notify 0_pre20140623 0_pre20140623-r1: Desktop notification integration for connman
+net-misc/connman-notify 0_pre20191003: Desktop notification integration for connman
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/crossbar 17.6.1_p3-r1 17.8.1 17.9.1 17.12.1 18.3.1: Crossbar.io - The Unified Application Router for the twisted framework
 net-misc/csync 0.50.0 0.50.0-r1: lightweight file synchronizer utility
