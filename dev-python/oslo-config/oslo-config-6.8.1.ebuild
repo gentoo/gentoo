@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
-IUSE="doc test"
+IUSE="test"
 
 CDEPEND=">=dev-python/pbr-1.3[${PYTHON_USEDEP}]"
 DEPEND="
@@ -36,12 +36,6 @@ DEPEND="
 		>=dev-python/requests-mock-1.5.0[${PYTHON_USEDEP}]
 		>=dev-python/bandit-1.1.0[${PYTHON_USEDEP}]
 	)
-	doc? (
-		>=dev-python/sphinx-1.6.2[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.6.6[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.6.7[${PYTHON_USEDEP}]
-		>=dev-python/reno-2.5.0[${PYTHON_USEDEP}]
-	)
 "
 RDEPEND="
 	${CDEPEND}
@@ -58,7 +52,6 @@ RDEPEND="
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
-	use doc && esetup.py build_sphinx
 	distutils-r1_python_prepare_all
 }
 
@@ -67,10 +60,4 @@ python_test() {
 
 	testr init || die "testr init failed under ${EPYTHON}"
 	testr run || die "testr run failed under ${EPYTHON}"
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( doc/build/html/. )
-
-	distutils-r1_python_install_all
 }
