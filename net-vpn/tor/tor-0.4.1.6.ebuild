@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~ppc-macos"
 IUSE="caps doc libressl lzma +man scrypt seccomp selinux systemd tor-hardening test zstd"
 
 DEPEND="
-	dev-libs/libevent[ssl]
+	dev-libs/libevent:=[ssl]
 	sys-libs/zlib
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
