@@ -7,7 +7,7 @@ PATCH_VER="1.3"
 
 inherit toolchain
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~ppc-macos"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
