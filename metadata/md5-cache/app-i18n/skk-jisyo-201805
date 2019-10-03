@@ -8,4 +8,4 @@ KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~
 LICENSE=GPL-2 freedist public-domain
 SLOT=0
 SRC_URI=mirror://gentoo/skk-jisyo-201805.tar.xz https://dev.gentoo.org/~hattya/distfiles/skk-jisyo-201805.tar.xz
-_md5_=6ef8d02cffbb5e431fb2e8a6db851e7e
+_md5_=aa74cb1b807f43aa29b84b838e625917

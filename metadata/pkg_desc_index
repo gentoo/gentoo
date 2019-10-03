@@ -1725,7 +1725,7 @@ app-i18n/unicode-emoji 5.0 11.0 12.0: UTS #51 Unicode Emoji
 app-i18n/xcin 2.5.3_pre3-r2 2.5.3_pre3-r3: Chinese X Input Method
 app-i18n/xsunpinyin 3.0.0_rc1: A standalone XIM server for SunPinyin
 app-i18n/xvnkb 0.2.8a-r1 0.2.9a-r1: Vietnamese input keyboard for X
-app-i18n/yaskkserv 1.1.0: Yet Another SKK server
+app-i18n/yaskkserv 1.1.0 1.1.1: Yet Another SKK server
 app-i18n/zhcon 0.2.6-r3: A Fast CJK (Chinese/Japanese/Korean) Console Environment
 app-i18n/zinnia 0.06-r3: Zinnia - Online hand recognition system with machine learning
 app-i18n/zinnia-tomoe 0.6.0_p20080911: Handwriting model files trained with Tomoe data
@@ -3006,6 +3006,7 @@ app-xemacs/zenirc 1.16 1.18: ZENIRC IRC Client
 dev-ada/asis 2016 2016-r1 2018 2019 2019-r1: To develop tools for Ada software
 dev-ada/aunit 2018 2019 2019-r1: Ada unit testing framework
 dev-ada/aws 2017 2018 2018-r1 2018-r2 2019 2019-r1: A complete Web development framework
+dev-ada/gnat-suite-bin 2014 2016 2017 2018: GNAT Ada suite
 dev-ada/gnat_util 2017-r1 2017-r2 2018 2018-r1 2018-r2 2019 2019-r1: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll 2017 2017-r1: GNAT Component Collection
 dev-ada/gnatcoll-bindings 2018-r1 2019 2019-r1: GNAT Component Collection
