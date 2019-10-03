@@ -1,22 +1,25 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
+MY_P="${PN}-$(ver_rs 2 '')"
 DESCRIPTION="Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings"
 HOMEPAGE="https://sites.google.com/site/e3editor/"
-SRC_URI="https://sites.google.com/site/e3editor/Home/${P}.tgz"
+SRC_URI="https://sites.google.com/site/e3editor/Home/${MY_P}.tgz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
 RESTRICT="strip"
 
-DEPEND=">=dev-lang/nasm-2.09.04"
-RDEPEND=""
+BDEPEND=">=dev-lang/nasm-2.09.04"
+
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	sed -i 's/-D$(EXMODE)//' Makefile || die
+	eapply_user
 }
 
 src_compile() {
@@ -32,6 +35,7 @@ src_install() {
 	dosym e3 /usr/bin/e3ws
 
 	newman e3.man e3.1
-	dohtml e3.html
-	dodoc ChangeLog README README_OLD
+	dodoc ChangeLog README README.v2.7.1
+	docinto html
+	dodoc e3.html
 }
