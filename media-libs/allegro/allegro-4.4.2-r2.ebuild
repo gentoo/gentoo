@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-Werror-format-security.patch # bug 540470
 	"${FILESDIR}"/${P}-glibc228.patch               # bug 670781
 	"${FILESDIR}"/${P}-GLX_RGBA_FLOAT_BIT.patch     # bug 672858
+	"${FILESDIR}"/${P}-static-func.patch            # bug 696034
 )
 
 src_prepare() {
