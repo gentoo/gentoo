@@ -1,0 +1,50 @@
+From 8ec4db907c403b24685a961b48be5f8a288d9bd9 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Wed, 2 Oct 2019 11:26:29 +0200
+Subject: Fix the dependencies on generated files differently.
+
+Some Gentoo users were still having build issues with the mbox resource.
+
+BUG: 410474
+FIXED-IN: 19.08.1
+---
+ resources/mbox/CMakeLists.txt | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/resources/mbox/CMakeLists.txt b/resources/mbox/CMakeLists.txt
+index c52230f..ca8bc1e 100644
+--- a/resources/mbox/CMakeLists.txt
++++ b/resources/mbox/CMakeLists.txt
+@@ -14,10 +14,18 @@ set( mboxresource_SRCS
+   ${mboxresource_common_SRCS}
+ )
+ 
+-# Fix a race condition. mboxresource.cpp needs compactpage.h which includes ui_compactpage.h.
+-# Make sure the ui file is generated before building the akonadi_mbox_resource target.
+-set_source_files_properties(mboxresource.cpp PROPERTIES OBJECT_DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/ui_compactpage.h)
+-set_source_files_properties(mboxresource.cpp PROPERTIES OBJECT_DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/ui_lockfilepage.h)
++# mboxresource.cpp needs UI files generated for another target. We must be sure the files
++# were created before building the akonadi_mbox_resource target.
++add_custom_target(generated_headers
++  DEPENDS
++  ${CMAKE_CURRENT_BINARY_DIR}/ui_compactpage.h
++  ${CMAKE_CURRENT_BINARY_DIR}/ui_lockfilepage.h
++)
++set_source_files_properties(
++  ${CMAKE_CURRENT_BINARY_DIR}/ui_compactpage.h
++  ${CMAKE_CURRENT_BINARY_DIR}/ui_lockfilepage.h
++  PROPERTIES GENERATED TRUE
++)
+ 
+ ecm_qt_declare_logging_category(mboxresource_SRCS HEADER mboxresource_debug.h IDENTIFIER MBOXRESOURCE_LOG CATEGORY_NAME org.kde.pim.mboxresource)
+ 
+@@ -29,6 +37,7 @@ qt5_add_dbus_adaptor(mboxresource_SRCS
+ )
+ 
+ add_executable(akonadi_mbox_resource ${mboxresource_SRCS})
++add_dependencies(akonadi_mbox_resource generated_headers)
+ 
+ if( APPLE )
+   set_target_properties(akonadi_mbox_resource PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/../Info.plist.template)
+-- 
+cgit v1.1

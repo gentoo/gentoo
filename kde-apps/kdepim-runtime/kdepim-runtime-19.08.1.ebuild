@@ -74,6 +74,8 @@ RDEPEND="${COMMON_DEPEND}
 	!kde-misc/akonadi-ews
 "
 
+PATCHES=( "${FILESDIR}/${PN}-19.04.3-ui_compactpage-race-condition.patch" ) # bug #691938
+
 RESTRICT+=" test"
 
 src_prepare() {
