@@ -80,9 +80,9 @@ local_src_compile() {
 	esac
 
 	case "$(tc-getCXX)" in
+		*clang*) comp="clang" ;;
 		*g++*) comp="gcc" ;;
 		*ic*c) comp="icc" ;;
-		*clang*) comp="clang" ;;
 		*) die "compiler $(tc-getCXX) not supported by build system" ;;
 	esac
 
