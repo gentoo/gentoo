@@ -4,7 +4,7 @@
 EAPI="6"
 CMAKE_MAKEFILE_GENERATOR="emake"
 SSL_DEPS_SKIP=1
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 inherit cmake-utils ruby-single ssl-cert systemd toolchain-funcs user
 
