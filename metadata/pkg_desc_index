@@ -2494,7 +2494,7 @@ app-text/kjots 5.0.2: Note taking utility by KDE
 app-text/krop 0.5.1 9999: A tool to crop PDF files
 app-text/landslide 1.1.3: Generates a slideshow using the slides that power the html5-slides presentation
 app-text/languagetool 4.5 4.6: A proof-reading tool for many languages
-app-text/lcdf-typetools 2.106 2.107: Font utilities for eg manipulating OTF
+app-text/lcdf-typetools 2.106 2.107 2.108: Font utilities for eg manipulating OTF
 app-text/lesspipe 1.83 1.83-r1 1.84: a preprocessor for less
 app-text/letterize 1.3 1.4: Generate English-plausible alphabetic mnemonics for a phone number
 app-text/libabw 0.1.2 0.1.3: Library parsing abiword documents
@@ -15855,7 +15855,7 @@ net-vpn/peervpn 0.044-r4: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.7.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.0.5 0.4.1.5 0.4.1.6: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.0.5 0.4.1.6 0.4.2.1_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
