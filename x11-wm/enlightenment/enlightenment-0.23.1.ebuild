@@ -98,6 +98,7 @@ pkg_postinst() {
 	xdg_mimeinfo_database_update
 
 	einfo "Additional programs to complete full EFL suite: "
+	optfeature "office file thumbnails" app-office/libreoffice app-office/libreoffice-bin
 	optfeature "an EFL-based IDE" dev-util/edi
 	optfeature "image viewer" media-gfx/ephoto
 	optfeature "ConnMan user interface for Enlightenment" net-misc/econnman
