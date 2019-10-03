@@ -51,7 +51,6 @@ media-gfx/imagemagick heif
 
 # Ben Kohler <bkohler@gentoo.org> (2018-08-23)
 # Mask iwd support until net-wireless/iwd is keyworded
-net-misc/connman iwd
 net-misc/networkmanager iwd
 
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
