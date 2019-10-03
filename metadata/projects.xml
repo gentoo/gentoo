@@ -2234,7 +2234,7 @@
   </project>
   <project>
     <email>office@gentoo.org</email>
-    <name>Gentoo Office project</name>
+    <name>Office project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Office</url>
     <description>The Office project manages the office implementations and related packages in Gentoo.</description>
     <member>
@@ -2378,7 +2378,7 @@
   </project>
   <project>
     <email>perl@gentoo.org</email>
-    <name>Gentoo Perl Project</name>
+    <name>Perl Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Perl</url>
     <description>We maintain everything perlish in Gentoo.</description>
     <member>
@@ -2653,9 +2653,9 @@
   </project>
   <project>
     <email>printing@gentoo.org</email>
-    <name>Gentoo Printing Project</name>
+    <name>Printing Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Printing</url>
-    <description>Printing related stuff, net-print category (+ some extra stuff).</description>
+    <description>Printing related stuff in Gentoo, namely the net-print category and some extra stuff</description>
     <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
@@ -2978,9 +2978,9 @@
   </project>
   <project>
     <email>riscv@gentoo.org</email>
-    <name>Gentoo Linux RISC-V development</name>
+    <name>RISC-V development project</name>
     <url>https://wiki.gentoo.org/wiki/Project:RISC-V</url>
-    <description>RISC-V architecture support project</description>
+    <description>Gentoo RISC-V architecture support project</description>
     <member>
       <email>alexxy@gentoo.org</email>
       <name>Alexey Shvetsov</name>
@@ -3580,9 +3580,9 @@
   </project>
   <project>
     <email>tex@gentoo.org</email>
-    <name>Gentoo TeX Project</name>
+    <name>TeX Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:TeX</url>
-    <description>The TeX project maintains ebuilds for TeXLive and TeX related packages. This includes [https://packages.gentoo.org/packages/app-text/texlive app-text/texlive], the [https://packages.gentoo.org/categories/dev-texlive dev-texlive] category, most of [https://packages.gentoo.org/categories/dev-tex dev-tex] and a few others.</description>
+    <description>The Gentoo TeX project maintains ebuilds for TeXLive and TeX related packages. This includes [https://packages.gentoo.org/packages/app-text/texlive app-text/texlive], the [https://packages.gentoo.org/categories/dev-texlive dev-texlive] category, most of [https://packages.gentoo.org/categories/dev-tex dev-tex] and a few others.</description>
     <member is-lead="1">
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
