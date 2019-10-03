@@ -33,14 +33,6 @@ DEPEND="
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
 	)
-	doc? (
-		>=dev-python/openstackdocstheme-1.18.1[${PYTHON_USEDEP}]
-		>=dev-python/sphinxcontrib-httpdomain-1.3.0[${PYTHON_USEDEP}]
-		>=dev-python/reno-2.5.0[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.6.2[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.6.6[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.6.7[${PYTHON_USEDEP}]
-	)
 "
 
 RDEPEND="
@@ -71,19 +63,9 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_compile_all() {
-	use doc && esetup.py build_sphinx
-}
-
 python_test() {
 	rm -rf .testrepository || die "couldn't remove '.testrepository' under ${EPYTHON}"
 
 	testr init
 	testr run || die "testsuite failed under ${EPYTHON}"
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( doc/build/html/. )
-
-	distutils-r1_python_install_all
 }
