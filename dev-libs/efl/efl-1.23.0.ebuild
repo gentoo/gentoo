@@ -73,6 +73,7 @@ RDEPEND="
 	gles2? (
 		media-libs/mesa[egl,gles2]
 		virtual/opengl
+		drm? ( dev-libs/wayland )
 	)
 	glib? ( dev-libs/glib:2 )
 	gstreamer? (
