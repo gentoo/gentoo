@@ -49,8 +49,6 @@ app-admin/sudo -sssd
 # Mart Raudsepp <leio@gentoo.org> (2018-11-01)
 # net-wireless/iwd not stable yet
 net-misc/networkmanager iwd
-# Ben Kohler <bkohler@gentoo.org> (2019-05-22)
-net-misc/connman iwd
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-09-27)
 # sys-devel/lld is unstable
