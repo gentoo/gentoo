@@ -26,5 +26,6 @@
 		<flag name="pretty-printer">Enable pretty-printer plugin</flag>
 		<flag name="scope">Enable the scope plugin which is a graphical GDB front-end</flag>
 		<flag name="soup">Enable updatechecker and geniuspaste plugins which require <pkg>net-libs/libsoup</pkg></flag>
+		<flag name="workbench">Enable workbench plugin</flag>
 	</use>
 </pkgmetadata>
