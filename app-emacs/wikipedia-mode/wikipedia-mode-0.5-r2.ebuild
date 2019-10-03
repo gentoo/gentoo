@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit elisp eutils
+inherit elisp
 
 DESCRIPTION="Mode for editing Wikipedia articles off-line"
 HOMEPAGE="https://www.emacswiki.org/emacs/WikipediaMode"
@@ -14,11 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="outline-magic"
 
-DEPEND="outline-magic? ( app-emacs/outline-magic )"
-RDEPEND="${DEPEND}"
+RDEPEND="outline-magic? ( app-emacs/outline-magic )"
+BDEPEND="${RDEPEND}"
 
 SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
-	use outline-magic && epatch "${FILESDIR}/${P}-require-outline-magic.patch"
+	use outline-magic && eapply "${FILESDIR}"/${P}-require-outline-magic.patch
+	eapply_user
 }
