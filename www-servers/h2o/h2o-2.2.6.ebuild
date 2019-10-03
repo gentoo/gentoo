@@ -6,15 +6,15 @@ CMAKE_MAKEFILE_GENERATOR="emake"
 SSL_DEPS_SKIP=1
 USE_RUBY="ruby24 ruby25 ruby26"
 
-inherit cmake-utils git-r3 ruby-single ssl-cert systemd toolchain-funcs user
+inherit cmake-utils ruby-single ssl-cert systemd toolchain-funcs user
 
 DESCRIPTION="H2O - the optimized HTTP/1, HTTP/2 server"
 HOMEPAGE="https://h2o.examp1e.net/"
-EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="libressl +mruby"
 
 RDEPEND="dev-lang/perl
@@ -32,7 +32,10 @@ DEPEND="${RDEPEND}
 		virtual/pkgconfig
 	)"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.3-mruby.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2-libressl-2.7.patch
+	"${FILESDIR}"/${PN}-2.2-mruby.patch
+)
 
 pkg_setup() {
 	enewgroup ${PN}
