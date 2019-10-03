@@ -16,7 +16,7 @@ HOMEPAGE="https://iovisor.github.io/bcc/"
 # This bundles libbpf, I tried to unbundle it, but I am not good enough
 # with cmake to do it. Patches accepted...
 SRC_URI="https://github.com/iovisor/bcc/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
-	https://github.com/libbpf/libbpf/archive/${LIBBPF_VER}.tar.gz -> libbpf-${LIBBPF_VER}.tar.gz"
+	https://github.com/libbpf/libbpf/archive/v${LIBBPF_VER}.tar.gz -> libbpf-${LIBBPF_VER}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
