@@ -1126,18 +1126,6 @@ dev-lang/php:7.4
 # Requires >=dev-lang/lua-5.2 which is masked
 >=app-admin/conky-1.11.4
 
-# Patrick Lauer <patrick@gentoo.org> (2019-05-23)
-# PostgreSQL beta and release candidate releases are pre-release testing
-# versions, not meant for production use. They are feature-frozen, and are
-# released to the public for testing before final release
-#
-# NOTE: Successive beta or candidate releases may not be backwards compatible,
-# so it is important that you review the release notes before upgrading.
-#
-# For more information about beta and release candidate versions, see:
-#     https://www.postgresql.org/developer/beta/
-dev-db/postgresql:12
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2019-05-11)
 # Perl 5.24 will be removed soon. Please upgrade.
 <dev-lang/perl-5.26.2
