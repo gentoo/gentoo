@@ -4700,7 +4700,7 @@ dev-libs/actor-framework 0.14.5: The C++ Actor Framework (CAF)
 dev-libs/amdgpu-pro-opencl 18.20.684755 19.30.838629: Proprietary OpenCL implementation for AMD GPUs
 dev-libs/angelscript 2.34.0: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2: The ANTLR3 C Runtime
-dev-libs/appstream 0.12.7 0.12.8: Cross-distro effort for providing metadata for software in the Linux ecosystem
+dev-libs/appstream 0.12.7 0.12.8 0.12.9: Cross-distro effort for providing metadata for software in the Linux ecosystem
 dev-libs/appstream-glib 0.7.9 0.7.15: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.6.3-r4 1.6.5-r1 1.7.0-r1: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.4 1.5.4-r3 1.6.1-r3: Apache Portable Runtime Utility Library
@@ -13027,7 +13027,7 @@ media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion too
 media-gfx/kcoloredit 2.0.0_p20171121-r1: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.5: Tool for indexing, searching, and viewing images
-media-gfx/krita 4.1.8-r1 4.2.6: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 4.1.8-r1 4.2.6 4.2.7.1: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.0-r2: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.11.7 2.12.2 2.12.3: Palette quantization library that powers pngquant and other PNG optimizers
