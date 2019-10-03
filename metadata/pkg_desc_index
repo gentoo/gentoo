@@ -3150,7 +3150,7 @@ dev-db/pgcli 2.0.2: CLI for Postgres with auto-completion and syntax highlightin
 dev-db/pgmemcache 2.1.2 2.2.0 2.3.0: A PostgreSQL API based on libmemcached to interface with memcached
 dev-db/pgmodeler 0.9.1: PostgreSQL Database Modeler
 dev-db/pgpool2 3.7.10 4.0.5 9999: Connection pool server for PostgreSQL
-dev-db/pgrouting 2.5.2 2.6.2 2.6.2-r1: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
+dev-db/pgrouting 2.6.2-r1: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
 dev-db/pgtap 0.99.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.8.5 4.9.0.1: Web-based administration for MySQL database in PHP
@@ -10741,7 +10741,7 @@ dev-util/ftnchek 3.3.1-r2: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 3.3 4.1: A Python script for summarizing gcov data
 dev-util/gdbus-codegen 2.58.3 2.60.6 2.60.7: GDBus code and documentation generator
-dev-util/geany 1.30.1 1.34.1 1.35 9999: GTK+ based fast and lightweight IDE
+dev-util/geany 1.30.1 1.34.1 1.35 1.36 9999: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.30 1.34 1.35: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.3.2 1.4.0 1.5.0 1.6.0 9999: Gertty is a console-based interface to the Gerrit Code Review system.
@@ -12640,7 +12640,7 @@ mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.92-r3 4.92-r4 4.92.1-r1 4.92.2 4.92.3: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.06: a small null client that forwards mail via QMQP to a full qmail server
-mail-mta/msmtp 1.8.3 1.8.4 1.8.5 1.8.5-r1: An SMTP client and SMTP plugin for mail user agents such as Mutt
+mail-mta/msmtp 1.8.3 1.8.4 1.8.5 1.8.5-r1 1.8.6: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r2 1.06-r4 1.06-r6 1.06-r7: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.3_p1-r1 6.4.0_p1: Lightweight but featured SMTP daemon from OpenBSD
@@ -13232,7 +13232,7 @@ media-libs/gstreamer-editing-services 1.14.3 1.14.5: SDK for making video editor
 media-libs/guilib 1.2.1 1.2.1-r1: Simple widget set for SDL
 media-libs/gupnp-dlna 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.1 3.2 3.3: Ham radio backend rig control libraries
-media-libs/harfbuzz 2.3.1 2.5.3 2.6.0 2.6.1 9999: An OpenType text shaping engine
+media-libs/harfbuzz 2.3.1 2.5.3 2.6.0 2.6.1 2.6.2 9999: An OpenType text shaping engine
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
 media-libs/icc-profiles-openicc 1.3.1: ICC color profiles by OpenICC
 media-libs/icclib 2.14: Library for reading and writing ICC color profile files
@@ -18040,7 +18040,7 @@ sys-libs/libapparmor 2.13.1 2.13.3: Library to support AppArmor userspace utilit
 sys-libs/libavc1394 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.20-r2 2.22 2.23 9999: A library for manipulating block devices
 sys-libs/libcap 2.26-r2 2.27: POSIX 1003.1e capabilities
-sys-libs/libcap-ng 0.7.8 0.7.9: POSIX 1003.1e capabilities
+sys-libs/libcap-ng 0.7.8 0.7.9 0.7.10: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.4: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 6.0.1 7.1.0 8.0.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: New implementation of the C++ standard library, targeting C++11
 sys-libs/libcxxabi 6.0.1 7.1.0 8.0.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: Low level support for a standard C++ library
