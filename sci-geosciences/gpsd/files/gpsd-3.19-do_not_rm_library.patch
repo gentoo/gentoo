@@ -1,0 +1,11 @@
+--- gpsd-3.19/SConstruct.orig	2019-07-01 19:00:17.000000000 -0700
++++ gpsd-3.19/SConstruct	2019-10-02 11:49:06.080655901 -0700
+@@ -1980,8 +1980,6 @@ # third-party client programs should not
+ binaryinstall.append(env.Install(installdir('bindir'), bin_binaries))
+ binaryinstall.append(LibraryInstall(env, installdir('libdir'), libgps_shared,
+                                     libgps_version))
+-# Work around a minor bug in InstallSharedLib() link handling
+-env.AddPreAction(binaryinstall, 'rm -f %s/libgps.*' % (installdir('libdir'), ))
+ 
+ if qt_env:
+     binaryinstall.append(LibraryInstall(qt_env, installdir('libdir'),
