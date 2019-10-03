@@ -8,5 +8,5 @@ KEYWORDS=~alpha amd64 ppc ppc64 ~sparc x86
 LICENSE=MIT
 RDEPEND=x11-libs/libXrender x11-libs/libX11
 SLOT=0
-SRC_URI=mirror://xorg/app/rendercheck-1.5.tar.bz2
-_md5_=4ea92bc4db3f1fcb428bc6c2a9157e71
+SRC_URI=https://www.x.org/releases/individual/app/rendercheck-1.5.tar.bz2
+_md5_=0c63225330a1d41a1d9719763449f93c
