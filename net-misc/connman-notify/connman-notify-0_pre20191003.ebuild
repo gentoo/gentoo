@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
 inherit desktop python-single-r1 vcs-snapshot
 
-MY_COMMIT="0ed9b5e4a0e1f03c83c4589cabf410cac66cd11d"
+MY_COMMIT="4f1e0a6b27ebf5d9b7508594188fe0f86c34ec52"
 
 DESCRIPTION="Desktop notification integration for connman"
 HOMEPAGE="https://gitlab.com/wavexx/connman-notify/"
@@ -21,11 +21,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="${PYTHON_DEPS}"
-RDEPEND="${DEPEND}
-	dev-python/notify-python[${PYTHON_USEDEP}]
+RDEPEND="${PYTHON_DEPS}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/pygobject:2[${PYTHON_USEDEP}]
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	net-misc/connman
 	virtual/notification-daemon"
 
