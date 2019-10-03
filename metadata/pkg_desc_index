@@ -1123,7 +1123,7 @@ app-editors/curses-hexedit 0.9.7: full screen curses hex editor (with insert/del
 app-editors/dav 0.8.5-r2: A minimal console text editor
 app-editors/dhex 0.68: ncurses-based hex-editor with diff mode
 app-editors/diakonos 0.9.4: A Linux editor for the masses
-app-editors/e3 2.8: Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings
+app-editors/e3 2.8.2: Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings
 app-editors/editra 0.7.20-r2: Multi-platform text editor supporting over 50 programming languages
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/elvis 2.2.0-r6 2.2.0-r7: A vi/ex clone
@@ -1388,7 +1388,7 @@ app-emacs/wanderlust 2.15.9_p20180814 2.15.9_p20190623: Yet Another Message Inte
 app-emacs/websocket 1.9 1.10: A websocket implementation in elisp
 app-emacs/wgrep 2.1.10: Writable grep buffer and apply the changes to files
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
-app-emacs/wikipedia-mode 0.5-r1: Mode for editing Wikipedia articles off-line
+app-emacs/wikipedia-mode 0.5-r2: Mode for editing Wikipedia articles off-line
 app-emacs/windows 2.49: Window manager for GNU Emacs
 app-emacs/with-editor 2.7.2 2.7.4 2.8.0 2.8.3: Use the Emacsclient as the $EDITOR of child processes
 app-emacs/xclip 1.3 1.9: Emacs Interface to XClip
