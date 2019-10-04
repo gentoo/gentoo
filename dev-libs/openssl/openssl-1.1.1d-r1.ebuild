@@ -55,6 +55,22 @@ MULTILIB_WRAPPED_HEADERS=(
 	usr/include/openssl/opensslconf.h
 )
 
+pkg_setup() {
+	[[ ${MERGE_TYPE} == binary ]] && return
+
+	# must check in pkg_setup; sysctl don't work with userpriv!
+	if has test ${FEATURES}; then
+		if use sctp; then
+			# test_ssl_new will fail with "Ensure SCTP AUTH chunks are enabled in kernel"
+			# if sctp.auth_enable is not enabled.
+			local sctp_auth_status=$(sysctl -n net.sctp.auth_enable 2>/dev/null)
+			if [[ -z "${sctp_auth_status}" || ${sctp_auth_status} != 1 ]]; then
+				die "FEATURES=test with USE=sctp requires net.sctp.auth_enable=1!"
+			fi
+		fi
+	fi
+}
+
 src_prepare() {
 	if use bindist; then
 		mv "${WORKDIR}"/bindist-patches/hobble-openssl "${WORKDIR}" || die
