@@ -1992,7 +1992,7 @@ app-misc/joy2key 1.6.3-r1: An application that translates joystick events to key
 app-misc/joymouse 0.5: An application that translates joystick events to mouse events
 app-misc/jq 1.5-r3 1.6-r3: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
-app-misc/khal 0.9.7 0.9.8 0.9.9-r1 0.9.10: A CalDAV based calendar
+app-misc/khal 0.9.7 0.9.8 0.9.9-r1 0.9.10 0.10.1: A CalDAV based calendar
 app-misc/khard 0.11.4 0.12.2 0.13.0: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/kryoflux-dtc 2.6: KryoFlux Host Software
@@ -15316,7 +15316,7 @@ net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network 
 net-misc/arpsponge 3.12.2 3.17.11: Sweeps up stray ARP queries from a peering LAN
 net-misc/asterisk 11.25.3 13.23.1: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk
-net-misc/asterisk-extra-sounds 1.4.11 1.4.11-r1: Extra sounds for asterisk
+net-misc/asterisk-extra-sounds 1.4.11-r1: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.9: G.729 codec and supporting files for asterisk
 net-misc/asterisk-moh-opsound 2.03: asterisk moh music
 net-misc/astmanproxy 1.28.2: Proxy for the Asterisk manager interface
@@ -15342,7 +15342,7 @@ net-misc/capi4hylafax 01.03.00.99.300.20-r2: capi4hylafax adds a faxcapi modem t
 net-misc/casync 2_p20190407: Content-Addressable Data Synchronization Tool
 net-misc/cbqinit 0.7.3-r3: Sets up class-based queue traffic control (QoS) with iproute2
 net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
-net-misc/cfengine 2.2.10-r4 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
+net-misc/cfengine 2.2.10-r5 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.9.2 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
 net-misc/cgterm 1.6: Connect to C64 telnet BBS's with the correct colours and font
 net-misc/charm 1.9.2-r1: A text based livejournal client
