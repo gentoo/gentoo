@@ -166,6 +166,7 @@ src_configure() {
 		$(meson_use physics)
 		$(meson_use pulseaudio)
 		$(meson_use sdl)
+		$(meson_use sound audio)
 		$(meson_use systemd)
 		$(meson_use tslib)
 		$(meson_use v4l v4l2)
