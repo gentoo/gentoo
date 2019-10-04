@@ -2,28 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-EGIT_REPO_URI="https://github.com/lathiat/nss-mdns"
-inherit autotools git-r3 multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="Name Service Switch module for Multicast DNS"
 HOMEPAGE="https://github.com/lathiat/nss-mdns"
-SRC_URI=""
+SRC_URI="https://github.com/lathiat/nss-mdns/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( >=dev-libs/check-0.11[${MULTILIB_USEDEP}] )"
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 multilib_src_configure() {
 	local myconf=(

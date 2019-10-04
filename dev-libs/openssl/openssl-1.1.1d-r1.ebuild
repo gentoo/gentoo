@@ -45,6 +45,8 @@ PDEPEND="app-misc/ca-certificates"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
+	"${FILESDIR}"/${P}-fix-zlib.patch
+	"${FILESDIR}"/${P}-fix-potential-memleaks-w-BN_to_ASN1_INTEGER.patch
 )
 
 S="${WORKDIR}/${MY_P}"
@@ -52,6 +54,22 @@ S="${WORKDIR}/${MY_P}"
 MULTILIB_WRAPPED_HEADERS=(
 	usr/include/openssl/opensslconf.h
 )
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} == binary ]] && return
+
+	# must check in pkg_setup; sysctl don't work with userpriv!
+	if has test ${FEATURES}; then
+		if use sctp; then
+			# test_ssl_new will fail with "Ensure SCTP AUTH chunks are enabled in kernel"
+			# if sctp.auth_enable is not enabled.
+			local sctp_auth_status=$(sysctl -n net.sctp.auth_enable 2>/dev/null)
+			if [[ -z "${sctp_auth_status}" || ${sctp_auth_status} != 1 ]]; then
+				die "FEATURES=test with USE=sctp requires net.sctp.auth_enable=1!"
+			fi
+		fi
+	fi
+}
 
 src_prepare() {
 	if use bindist; then
@@ -92,6 +110,16 @@ src_prepare() {
 	fi
 
 	eapply_user #332661
+
+	if has test ${FEATURES}; then
+		if use sctp; then
+			if has network-sandbox ${FEATURES}; then
+				ebegin "Disabling test '80-test_ssl_new.t' which is known to fail with FEATURES=network-sandbox"
+				rm test/recipes/80-test_ssl_new.t || die
+				eend $?
+			fi
+		fi
+	fi
 
 	# make sure the man pages are suffixed #302165
 	# don't bother building man pages if they're disabled
