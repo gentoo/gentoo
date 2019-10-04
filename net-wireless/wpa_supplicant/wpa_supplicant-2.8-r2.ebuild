@@ -289,6 +289,9 @@ src_configure() {
 	if use p2p ; then
 		Kconfig_style_config P2P
 		Kconfig_style_config WIFI_DISPLAY
+	else
+		Kconfig_style_config P2P n
+		Kconfig_style_config WIFI_DISPLAY n
 	fi
 
 	# Access Point Mode
