@@ -401,7 +401,7 @@ app-arch/lz4 1.8.3 1.9.1 1.9.2 9999: Extremely Fast Compression algorithm
 app-arch/lz5 2.0: An efficient compressor with very fast decompression
 app-arch/lzip 1.21: lossless data compressor based on the LZMA algorithm
 app-arch/lziprecover 1.21: Lziprecover is a data recovery tool and decompressor for lzip compressed files
-app-arch/lzlib 1.9: Library for lzip compression
+app-arch/lzlib 1.9 1.11: Library for lzip compression
 app-arch/lzma 9.20-r1: LZMA Stream Compressor from the SDK
 app-arch/lzop 1.04: Utility for fast (even real-time) compression/decompression
 app-arch/makeself 2.2.0-r2: shell script that generates a self-extractible tar.gz
@@ -413,12 +413,12 @@ app-arch/par2cmdline 0.7.3 0.7.4 0.8.0: A PAR-2.0 file verification and repair t
 app-arch/patool 1.12: Portable archive file manager
 app-arch/pax 20161104: pax (Portable Archive eXchange) is the POSIX standard archive tool
 app-arch/pbzip2 1.1.12 1.1.12-r1 1.1.13: Parallel bzip2 (de)compressor using libbz2
-app-arch/pdlzip 1.8: Public-domain version of lzip compressor
+app-arch/pdlzip 1.8 1.10: Public-domain version of lzip compressor
 app-arch/pdv 1.5.1-r3: build a self-extracting and self-installing binary package
 app-arch/pet2tgz 0.3: Puppy Linux .pet to .tar.gz converter
 app-arch/pigz 2.4: A parallel implementation of gzip
 app-arch/pixz 1.0.6-r1 9999: Parallel Indexed XZ compressor
-app-arch/plzip 1.6: Parallel lzip compressor
+app-arch/plzip 1.6 1.8: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029 9999: parallel LZMA compressor (no parallel decompression!)
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
@@ -5111,7 +5111,7 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.19.0-r2: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.5.1: A collection of special mathematical functions
-dev-libs/openssl 1.0.2t-r1 1.1.0l 1.1.1d: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 1.0.2t-r1 1.1.0l 1.1.1d-r1: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/openssl-compat 0.9.8z_p8-r1 1.0.2t-r1: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
@@ -17491,7 +17491,7 @@ sys-auth/libnss-nis 1.4: NSS module to provide NIS support
 sys-auth/libnss-pgsql 1.4.0 1.5.0_beta: Name Service Switch module for use with PostgreSQL
 sys-auth/libyubikey 1.12 1.13: Yubico C low-level library
 sys-auth/munge 0.5.10-r2 0.5.13 0.5.13-r1: An authentication service for creating and validating credentials
-sys-auth/nss-mdns 0.13 9999: Name Service Switch module for Multicast DNS
+sys-auth/nss-mdns 0.13 0.14.1 9999: Name Service Switch module for Multicast DNS
 sys-auth/nss-myhostname 0.3: Name Service Switch module for resolving the local hostname
 sys-auth/nss-pam-ldapd 0.8.14-r2 0.9.9 0.9.10: NSS module for name lookups using LDAP
 sys-auth/nss_ldap 265-r5: NSS LDAP Module
