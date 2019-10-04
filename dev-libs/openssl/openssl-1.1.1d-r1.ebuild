@@ -45,6 +45,7 @@ PDEPEND="app-misc/ca-certificates"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
+	"${FILESDIR}"/${P}-fix-zlib.patch
 )
 
 S="${WORKDIR}/${MY_P}"

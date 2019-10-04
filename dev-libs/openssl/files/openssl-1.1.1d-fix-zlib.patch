@@ -1,0 +1,52 @@
+From 86ed78676c660b553696cc10c682962522dfeb6c Mon Sep 17 00:00:00 2001
+From: Tomas Mraz <tmraz@fedoraproject.org>
+Date: Thu, 12 Sep 2019 12:27:36 +0200
+Subject: [PATCH] BIO_f_zlib: Properly handle BIO_CTRL_PENDING and
+ BIO_CTRL_WPENDING calls.
+
+There can be data to write in output buffer and data to read that were
+not yet read in the input stream.
+
+Fixes #9866
+
+Reviewed-by: Richard Levitte <levitte@openssl.org>
+(Merged from https://github.com/openssl/openssl/pull/9877)
+
+(cherry picked from commit 6beb8b39ba8e4cb005c1fcd2586ba19e17f04b95)
+---
+ crypto/comp/c_zlib.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/crypto/comp/c_zlib.c b/crypto/comp/c_zlib.c
+index d688deee5f2..7c1be358fd7 100644
+--- a/crypto/comp/c_zlib.c
++++ b/crypto/comp/c_zlib.c
+@@ -598,6 +598,28 @@ static long bio_zlib_ctrl(BIO *b, int cmd, long num, void *ptr)
+         BIO_copy_next_retry(b);
+         break;
+ 
++    case BIO_CTRL_WPENDING:
++        if (ctx->obuf == NULL)
++            return 0;
++
++        if (ctx->odone) {
++            ret = ctx->ocount;
++        } else {
++            ret = ctx->ocount;
++            if (ret == 0)
++                /* Unknown amount pending but we are not finished */
++                ret = 1;
++        }
++        if (ret == 0)
++            ret = BIO_ctrl(next, cmd, num, ptr);
++        break;
++
++    case BIO_CTRL_PENDING:
++        ret = ctx->zin.avail_in;
++        if (ret == 0)
++            ret = BIO_ctrl(next, cmd, num, ptr);
++        break;
++
+     default:
+         ret = BIO_ctrl(next, cmd, num, ptr);
+         break;
