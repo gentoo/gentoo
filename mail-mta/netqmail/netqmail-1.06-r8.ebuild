@@ -66,12 +66,11 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
-	>=net-mail/dot-forward-0.71-r3
-	>=sys-apps/ucspi-tcp-0.88-r17
+	sys-apps/ucspi-tcp
 	virtual/checkpassword
 	virtual/daemontools
 	authcram? ( >=net-mail/cmd5checkpw-0.30 )
-	ssl? ( >=sys-apps/ucspi-ssl-0.70-r1 )
+	ssl? ( sys-apps/ucspi-ssl )
 	!mail-mta/courier
 	!mail-mta/esmtp
 	!mail-mta/exim
