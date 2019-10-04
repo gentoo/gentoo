@@ -50,8 +50,7 @@ COMMON_DEPEND="
 	>=app-eselect/eselect-php-0.9.1[apache2?,fpm?]
 	>=dev-libs/libpcre2-10.30[unicode]
 	fpm? ( acl? ( sys-apps/acl ) )
-	apache2? ( || ( >=www-servers/apache-2.4[apache2_modules_unixd,threads=]
-		<www-servers/apache-2.4[threads=] ) )
+	apache2? ( www-servers/apache[apache2_modules_unixd(+),threads=] )
 	argon2? ( app-crypt/argon2:= )
 	berkdb? ( || (	sys-libs/db:5.3
 					sys-libs/db:5.1
