@@ -38,10 +38,6 @@ dev-qt/qtsql oci8
 # Mask experimental contrib repo
 media-libs/opencv contrib contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2d gflags glog tesseract
 
-# Brian Evans <grknight@gentoo.org> (2018-12-06)
-# Unmask argon2 for php
-dev-lang/php -argon2
-
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # unmask sssd for sudo
 app-admin/sudo -sssd
