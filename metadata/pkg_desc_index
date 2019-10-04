@@ -1702,7 +1702,7 @@ app-i18n/scim-tables 0.5.13: Smart Common Input Method (SCIM) Generic Table Inpu
 app-i18n/scim-tomoe 0.6.0-r3: Japanese input method Tomoe IMEngine for SCIM
 app-i18n/scim-uim 0.2.0-r2: An input module for Smart Common Input Method (SCIM) which uses uim as backend
 app-i18n/scim-wijesekera 0.3.3-r1: Wijesekara keyboard for Sinhala input using scim
-app-i18n/scim-wnn 0.2.4 1.0.0-r1: Japanese input method Wnn IMEngine for SCIM
+app-i18n/scim-wnn 1.0.0-r1: Japanese input method Wnn IMEngine for SCIM
 app-i18n/skk-jisyo 201605 201805 999999: Jisyo (dictionary) files for the SKK Japanese-input software
 app-i18n/skkfep 0.87-r1: A SKK-like Japanese input method for console
 app-i18n/skkserv 9.6-r3: Dictionary server for the SKK Japanese-input software
@@ -2607,7 +2607,7 @@ app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellcheckin
 app-text/stardict 3.0.6-r3 4.0.0_pre20170304: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.7.4-r1 1.8.1-r1: Library for Bible reading software
 app-text/sword-modules 1: A collection of modules for the SWORD project
-app-text/t1utils 1.39 1.41-r1 1.41-r2: Type 1 Font utilities
+app-text/t1utils 1.41-r2: Type 1 Font utilities
 app-text/tabler 2-r1: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
 app-text/teckit 2.5.6: Text Encoding Conversion toolkit
@@ -3225,7 +3225,7 @@ dev-embedded/gpsim 0.29.0 0.30.0: A simulator for the Microchip PIC microcontrol
 dev-embedded/gputils 1.5.0: Tools including assembler, linker and librarian for PIC microcontrollers
 dev-embedded/icdprog 0.5: Microchip PIC Programmer using ICD hardware
 dev-embedded/include 0.4.2: A collection of useful, independent include files for C/Assembler developers
-dev-embedded/jal 0.4.60 0.4.62: A high-level language for Microchip PIC and Ubicom SX microcontrollers
+dev-embedded/jal 0.4.62: A high-level language for Microchip PIC and Ubicom SX microcontrollers
 dev-embedded/kobs-ng 3.0.35.4.1.0: utility to write u-boot images to NAND on Freescale iMX devices
 dev-embedded/libdisasm 0.23: Provides basic disassembly of Intel x86 instructions from a binary stream
 dev-embedded/libftd2xx 1.1.12-r1: Library that allows a direct access to a USB device
@@ -3236,7 +3236,7 @@ dev-embedded/mcu8051ide 1.4.10: Graphical IDE for microcontrollers based on 8051
 dev-embedded/mspdebug 0.24 0.25: A free debugger for use with MSP430 MCUs
 dev-embedded/nodemcu-uploader 0.4.3: Simple tool for uploading files to the filesystem of an ESP8266 running NodeMCU
 dev-embedded/openocd 0.9.0 0.10.0 0.10.0-r1 9999: OpenOCD - Open On-Chip Debugger
-dev-embedded/parapin 1.0.0 1.5.0 1.5.1_beta1: A parallel port pin programming library
+dev-embedded/parapin 1.5.0 1.5.1_beta1: A parallel port pin programming library
 dev-embedded/picasm 1.14: An assembler and disassembler for 12 and 14-bit PIC chips
 dev-embedded/picp 0.6.8: A commandline interface to Microchip's PICSTART+ programmer
 dev-embedded/picprog 1.9.1: A PIC16, PIC18 and dsPIC microcontroller programmer software for the serial port
@@ -3247,7 +3247,7 @@ dev-embedded/platformio 4.0.3: An open source ecosystem for IoT development
 dev-embedded/ponyprog 2.07c-r2 3.0.0: EEPROM and microcontroller programmer/flasher
 dev-embedded/powersoftplus-libftdi 0.1.8-r1: Library which includes a table of VIDs and PIDs of Ever UPS devices
 dev-embedded/sdcc 3.8.0-r1 9999: Small device C compiler (for various microprocessors)
-dev-embedded/sgpp-lite-arm-eabi-bin 2010.09.51 2014.05.28: Regular, validated releases of the GNU Toolchain for arm processors
+dev-embedded/sgpp-lite-arm-eabi-bin 2014.05.28: Regular, validated releases of the GNU Toolchain for arm processors
 dev-embedded/sgpp-lite-arm-linux-bin 2010.09.50: Regular, validated releases of the GNU Toolchain for arm processors
 dev-embedded/sgpp-lite-arm-uclinux-bin 2010.09.58: Regular, validated releases of the GNU Toolchain for arm processors
 dev-embedded/smdk-dltool 0.20-r3 0.20-r4: Tool to communicate with Samsung SMDK boards
@@ -4610,7 +4610,7 @@ dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Pr
 dev-lang/go 1.12.9 1.12.10 1.13 1.13.1 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
-dev-lang/helium 1.6 1.8.1: The Helium Compiler
+dev-lang/helium 1.8.1: The Helium Compiler
 dev-lang/hy 0.10.0 0.10.1 0.11.1 0.12.0 0.12.1 0.13.0 0.13.1 0.14.0 0.15.0 0.16.0: A LISP dialect running in python
 dev-lang/icon 9.5.1-r1 9.5.1-r2: very high level language
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
@@ -5155,7 +5155,7 @@ dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
 dev-libs/rocm-opencl-driver 2.6.0 2.7.0 2.8.0: Radeon Open Compute OpenCL Compiler Tool Driver
 dev-libs/rocm-opencl-runtime 2.6.0-r1 2.8.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 2.0.0 2.6.0-r1 2.7.0 2.8.0 2.8.0-r1 9999: Radeon Open Compute Runtime
-dev-libs/roct-thunk-interface 2.0.0 2.6.0 2.7.0 2.8.0 2.9.0 9999: Radeon Open Compute Thunk Interface
+dev-libs/roct-thunk-interface 2.0.0 2.6.0 2.7.0 2.8.0 2.9.0-r1 9999: Radeon Open Compute Thunk Interface
 dev-libs/rote 0.2.8: simple C library for VT102 terminal emulation
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/satyr 0.26 0.27: Satyr is a collection of low-level algorithms for program failure processing
@@ -10423,7 +10423,7 @@ dev-tcltk/expect 5.45 5.45.4: tool for automating interactive applications
 dev-tcltk/expect-lite 4.6.1 4.7.2 4.8.0 4.9.0: quick and easy command line automation tool built on top of expect
 dev-tcltk/itcl 3.4.1 4.0.3 4.1.1: Object Oriented Enhancements for Tcl/Tk
 dev-tcltk/itk 3.4.1 4.0.0 4.0.1 4.1.0: Object Oriented Enhancements for Tcl/Tk
-dev-tcltk/iwidgets 4.0.1 4.0.1-r3 4.1.1: Widget collection for incrTcl/incrTk
+dev-tcltk/iwidgets 4.1.1: Widget collection for incrTcl/incrTk
 dev-tcltk/mysqltcl 3.052-r1: TCL MySQL Interface
 dev-tcltk/scwoop 4.1: Simple Composite Widget Object Oriented Package
 dev-tcltk/snack 2.2.10-r6 2.2.10-r7 2.2.10-r8: The Snack Sound Toolkit (Tcl)
@@ -10718,7 +10718,7 @@ dev-util/dput-ng 1.10: Next generation Debian package upload tool
 dev-util/drone 0.8.5 0.8.6 0.8.7 0.8.9: A Continuous Delivery platform built on Docker, written in Go
 dev-util/drone-cli 0.8.6 1.0.8 1.1.0 1.1.1 1.1.3 1.1.4: Command-line interface for Drone
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
-dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
+dev-util/duma 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.12 1.13 1.15 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.1 2.1.2: diff-like program operating at word level instead of line level
 dev-util/edb-debugger 0.9.21 1.0.0-r2 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
@@ -10812,7 +10812,7 @@ dev-util/lttng-tools 2.6.1 2.7.1 2.7.3 2.8.0 2.10.5: Linux Trace Toolkit - next 
 dev-util/lttng-ust 2.6.5 2.7.1 2.7.4 2.8.1 2.10.1: Linux Trace Toolkit - UST library
 dev-util/lxqt-build-tools 0.6.0: LXQt Build tools
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
-dev-util/makepp 1.18 2.0.99.1 2.0.99.2: GNU make replacement
+dev-util/makepp 2.0.99.1 2.0.99.2: GNU make replacement
 dev-util/massif-visualizer 0.7.0-r1: Tool visualising massif data
 dev-util/mdds 1.4.3 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.20.1: A graphical diff and merge tool
@@ -10967,7 +10967,7 @@ dev-util/weka 3.7.13 3.8.0: A Java data mining package
 dev-util/wiggle 0.9-r1 1.0: tool for applying patches that patch cannot apply because of conflicting changes
 dev-util/wstool 0.1.13 0.1.17 9999: Commands to manage several local SCM repositories for ROS
 dev-util/wxglade 0.8.2: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
-dev-util/xdelta 1.1.4-r1 3.0.11 3.1.0: Computes changes between binary or text files and creates deltas
+dev-util/xdelta 1.1.4-r1 1.1.4-r2 3.0.11 3.1.0: Computes changes between binary or text files and creates deltas
 dev-util/xesam-tools 0.7.0-r1: Development tools and examples for the Xesam desktop search API
 dev-util/xfce4-dev-tools 4.12.0-r1 4.13.0 4.14.0: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r2: XML stream reformatter for ASCII text, but not UTF-8, written in ANSI C
