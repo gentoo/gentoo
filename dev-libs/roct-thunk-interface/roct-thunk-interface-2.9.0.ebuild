@@ -13,9 +13,6 @@ else
 	S="${WORKDIR}/ROCT-Thunk-Interface-roc-${PV}"
 	KEYWORDS="~amd64"
 fi
-PATCHES=(
-	"${FILESDIR}/${PN}-2.6.0-pc-prefix.patch"
-)
 
 DESCRIPTION="Radeon Open Compute Thunk Interface"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface"
@@ -30,6 +27,13 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	sed -e "s:get_version ( \"1.0.0\" ):get_version ( \"${PV}\" ):" -i CMakeLists.txt || die
 	cmake-utils_src_prepare
+}
+src_configure() {
+	local mycmakeargs=(
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/"
+		-DCPACK_PACKAGING_INSTALL_PREFIX="${EPREFIX}/usr/"
+	)
+	cmake-utils_src_configure
 }
 src_compile() {
 	cmake-utils_src_compile build-dev
