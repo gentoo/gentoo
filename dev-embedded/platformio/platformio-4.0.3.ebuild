@@ -28,5 +28,9 @@ RDEPEND="${DEPEND}
 	<dev-python/pyserial-4[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.4[${PYTHON_USEDEP}]
 	<dev-python/requests-3[${PYTHON_USEDEP}]
-	>=dev-python/semantic_version-2.5.0[${PYTHON_USEDEP}]
-	<dev-python/semantic_version-3[${PYTHON_USEDEP}]"
+	>=dev-python/semantic_version-2.8.1[${PYTHON_USEDEP}]
+	<dev-python/semantic_version-3[${PYTHON_USEDEP}]
+	>=dev-python/tabulate-0.8.3[${PYTHON_USEDEP}]
+	<dev-python/tabulate-1[${PYTHON_USEDEP}]
+	>=dev-python/pyelftools-0.25[${PYTHON_USEDEP}]
+	<dev-python/pyelftools-1[${PYTHON_USEDEP}]"

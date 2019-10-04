@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-10-04)
+# Unmaintained.  EAPI 0.  Last release in 2009.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #696176.
+mail-filter/procmail-lib
+
 # Patrice Clement <monsieurp@gentoo.org> (2019-10-02)
 # OTR support is fully integrated within irssi since version 1.2.0. Type /help otr
 # at the command prompt to find out more. The OTR module is therefore obsolete
@@ -1055,28 +1061,6 @@ media-libs/fmod
 # Unmaintained.  Tests fail to build.  Last release in 2014.  No reverse
 # dependencies.  Removal in 30 days.  Bug #640860.
 dev-cpp/xsd
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-09-04)
-# EAPI 2. Brutally outdated and untouched for ages. Removal in
-# 30 days, bug 688504
-sci-libs/openfoam-bin
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-04)
-# EAPI 0.  Keyworded only for x86-fbsd which is dead.  Practically untouched
-# since 2007.  Removal in 30 days.  Bug #693504.
-app-admin/consolehm
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-04)
-# Unmaintained.  EAPI 0.  Last touched in 2010.  No real homepage.
-# No clear advantage over app-text/tree.
-# Removal in 30 days.  Bug #693502.
-app-text/ddir
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-04)
-# A metapackage without a really clear purpose.  No reverse
-# dependencies.
-# Removal in 30 days.
-app-text/docbook-sgml
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
