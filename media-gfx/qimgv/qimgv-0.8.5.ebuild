@@ -12,10 +12,9 @@ SRC_URI="https://github.com/easymodo/qimgv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="exif kde"
+IUSE="exif kde video"
 
 BDEPEND="
-	dev-util/cmake
 	virtual/pkgconfig
 "
 DEPEND="
@@ -23,9 +22,9 @@ DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
-	media-video/mpv[libmpv]
-	exif? ( media-libs/libexif )
+	exif? ( media-gfx/exiv2 )
 	kde? ( kde-frameworks/kwindowsystem:5 )
+	video? ( media-video/mpv[libmpv] )
 "
 RDEPEND="
 	${DEPEND}
@@ -41,6 +40,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DEXIV2=$(usex exif)
 		-DKDE_SUPPORT=$(usex kde)
+		-DVIDEO_SUPPORT=$(usex video)
 	)
 	cmake-utils_src_configure
 }
