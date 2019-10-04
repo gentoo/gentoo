@@ -5155,7 +5155,7 @@ dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
 dev-libs/rocm-opencl-driver 2.6.0 2.7.0 2.8.0: Radeon Open Compute OpenCL Compiler Tool Driver
 dev-libs/rocm-opencl-runtime 2.6.0-r1 2.8.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 2.0.0 2.6.0-r1 2.7.0 2.8.0 2.8.0-r1 9999: Radeon Open Compute Runtime
-dev-libs/roct-thunk-interface 2.0.0 2.6.0 2.7.0 2.8.0 9999: Radeon Open Compute Thunk Interface
+dev-libs/roct-thunk-interface 2.0.0 2.6.0 2.7.0 2.8.0 2.9.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rote 0.2.8: simple C library for VT102 terminal emulation
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/satyr 0.26 0.27: Satyr is a collection of low-level algorithms for program failure processing
