@@ -1,9 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit perl-app
+GENTOO_DEPEND_ON_PERL_SUBSLOT="no"
+inherit perl-module
 
 DESCRIPTION="Monitors process table to slay aggressive, and spawn dead, processes"
 HOMEPAGE="http://www.psmon.com/"
