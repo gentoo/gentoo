@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-10-04)
+# Unmaintained.  EAPI 0.  Last release in 2009.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #696176.
+mail-filter/procmail-lib
+
 # Patrice Clement <monsieurp@gentoo.org> (2019-10-02)
 # OTR support is fully integrated within irssi since version 1.2.0. Type /help otr
 # at the command prompt to find out more. The OTR module is therefore obsolete
