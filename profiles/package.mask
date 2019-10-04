@@ -31,6 +31,67 @@
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
 # Unmaintained, EAPI 0 packages.  No reverse dependencies.  If you want
+# them to stay, please port them to EAPI 7, and preferably become
+# the maintainer.
+# Removal in 30 days.  Bug #696252.
+app-benchmarks/volanomark
+app-cdr/mode2cdmaker
+app-cdr/xdvdfs-tools
+app-mobilephone/cobex
+app-office/tedia2sql
+app-text/mht-rip
+dev-embedded/gnap
+dev-libs/xplc
+dev-util/smem
+dev-vcs/cvsd
+dev-vcs/cvsq
+dev-vcs/svn2cl
+mail-client/biabam
+mail-client/pinepgp
+mail-filter/clamassassin
+mail-filter/clamsmtp
+mail-filter/disspam
+mail-filter/sqlgrey
+media-gfx/cthumb
+media-gfx/fblogo
+net-dialup/globespan-adsl
+net-dns/bind-dns-keygen
+net-firewall/fwanalog
+net-firewall/fwipsec
+net-firewall/quicktables
+net-firewall/shapecfg
+net-irc/dircproxy
+net-irc/jircii
+net-irc/miau
+net-mail/hotwayd
+net-mail/popick
+net-mail/poppassd_ceti
+net-mail/qmail-notify
+net-mail/spamcup
+net-mail/vacation
+net-mail/yosucker
+net-misc/cgterm
+net-misc/clockspeed-conf
+net-misc/fmirror
+net-misc/hashcash
+net-misc/ng-utils
+net-misc/sendfile
+net-news/yencode
+net-nntp/slrnconf
+net-nntp/ubh
+net-p2p/createtorrent
+net-p2p/ctcs
+net-proxy/ratproxy
+net-wireless/airsnort
+sys-apps/hwdata-redhat
+sys-auth/pam-afs-session
+sys-auth/pam_chroot
+sys-auth/pam_require
+sys-block/dellmgr
+sys-fs/gt5
+
+# Michał Górny <mgorny@gentoo.org> (2019-10-04)
+# Unmaintained, EAPI 0 packages.  No reverse dependencies.  If you want
 # them to stay, please sacrifice the 30 minutes of your life needed
 # to port them to EAPI 7, recheck license, update URIs, etc.
 # Removal in 30 days.  Bug #696248.
