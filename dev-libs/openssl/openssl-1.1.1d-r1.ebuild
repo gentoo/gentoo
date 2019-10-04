@@ -111,6 +111,16 @@ src_prepare() {
 
 	eapply_user #332661
 
+	if has test ${FEATURES}; then
+		if use sctp; then
+			if has network-sandbox ${FEATURES}; then
+				ebegin "Disabling test '80-test_ssl_new.t' which is known to fail with FEATURES=network-sandbox"
+				rm test/recipes/80-test_ssl_new.t || die
+				eend $?
+			fi
+		fi
+	fi
+
 	# make sure the man pages are suffixed #302165
 	# don't bother building man pages if they're disabled
 	# Make DOCDIR Gentoo compliant
