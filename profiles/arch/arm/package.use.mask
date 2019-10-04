@@ -516,10 +516,6 @@ dev-qt/qtwebkit -jit
 # unkeyworded deps for bug 379657 and bug 379651
 app-admin/packagekit-base entropy
 
-# Robin H. Johnson <robbat2@gentoo.org> (2011-09-03)
-# Remove this for your arch after you keyword dev-utils/google-perftools and virtual/gsasl (bug #381737)
-dev-libs/libmemcached sasl
-
 # Sebastian Pipping <sping@gentoo.org> (2011-02-22)
 # No media-sound/lilypond here, yet (bug #356069)
 app-text/asciidoc test
