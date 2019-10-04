@@ -3342,6 +3342,7 @@ dev-go/go-colortext 0_pre20150720: Change the console foreground and background 
 dev-go/go-crypto 0_pre20160126 0_pre20180816 9999: Go supplementary cryptography libraries
 dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
 dev-go/go-gitlab-client 0_pre20160305: A simple gitlab api client written in Go
+dev-go/go-license-detector 3.0.0: Scan a source directory and report the license
 dev-go/go-md2man 1.0.3 1.0.6 1.0.8: A utility to convert markdown to man pages
 dev-go/go-net 0_pre20160216 0_pre20180816 9999: Go supplementary network libraries
 dev-go/go-oauth2 0_pre20150701 0_pre20160222 9999: Go client implementation for OAuth 2.0 spec
