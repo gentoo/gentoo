@@ -4607,7 +4607,7 @@ dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting langu
 dev-lang/fpc 2.6.4 3.0.0 3.0.2 3.0.2-r1 3.0.4: Free Pascal Compiler
 dev-lang/gdl 0.9.6-r2: GNU Data Language
 dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the ANSI Forth language
-dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5: The Glasgow Haskell Compiler
+dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r3 2017 2018-r2 2019: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
 dev-lang/go 1.12.9 1.12.10 1.13 1.13.1 9999: A concurrent garbage collected and typesafe programming language
@@ -17646,7 +17646,7 @@ sys-boot/systemd-boot 241 243: UEFI boot manager from systemd (formerly gummiboo
 sys-boot/systemrescuecd-x86-grub 0.1-r1 0.2: Grub menu entries for the .iso image of systemrescuecd-x86
 sys-boot/tboot 1.9.6_p20171118: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015-r1 2018 2018-r1: Tianocore UEFI Development kit
-sys-boot/unetbootin 661 661-r1: UNetbootin installs Linux/BSD distributions to a partition or USB drive
+sys-boot/unetbootin 661 661-r1 675: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/vboot-utils 59_p20170413 72_p20181229-r1: Chrome OS verified boot tools
 sys-boot/woeusb 3.3.0: Creates windows installer on usb media from an iso image
 sys-boot/yaboot 1.3.14-r2 1.3.16 1.3.17-r2 1.3.17-r3: PPC Bootloader
