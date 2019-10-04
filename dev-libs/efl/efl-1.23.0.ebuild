@@ -60,6 +60,8 @@ RDEPEND="
 	connman? ( net-misc/connman )
 	drm? (
 		dev-libs/libinput
+		dev-libs/wayland
+		media-libs/mesa[gbm]
 		x11-libs/libdrm
 		x11-libs/libxkbcommon
 	)
@@ -73,7 +75,6 @@ RDEPEND="
 	gles2? (
 		media-libs/mesa[egl,gles2]
 		virtual/opengl
-		drm? ( dev-libs/wayland )
 	)
 	glib? ( dev-libs/glib:2 )
 	gstreamer? (
@@ -85,7 +86,7 @@ RDEPEND="
 	jpeg2k? ( media-libs/openjpeg:= )
 	json? ( dev-libs/rlottie )
 	lua? ( dev-lang/lua:* )
-	luajit? ( dev-lang/luajit )
+	luajit? ( dev-lang/luajit:* )
 	mono? ( dev-lang/mono )
 	opengl? ( virtual/opengl )
 	pdf? ( app-text/poppler:=[cxx] )
