@@ -1,0 +1,52 @@
+Don't pass CPP options. Otherwise ghc-8.8.1 can't build itself.
+Eventually ghc will fix it's headers at propagate defines.
+
+https://gitlab.haskell.org/ghc/ghc/commit/cfd3e0f1cfd16c8f35cae139d2a871a32eb4d2e1
+https://gitlab.haskell.org/ghc/ghc/issues/17146
+
+--- a/compiler/main/DriverPipeline.hs
++++ b/compiler/main/DriverPipeline.hs
+@@ -1190,6 +1190,9 @@ runPhase (RealPhase Cmm) input_fn dflags
+ -----------------------------------------------------------------------------
+ -- Cc phase
+ 
++-- we don't support preprocessing .c files (with -E) now.  Doing so introduces
++-- way too many hacks, and I can't say I've ever used it anyway.
++
+ runPhase (RealPhase cc_phase) input_fn dflags
+    | any (cc_phase `eqPhase`) [Cc, Ccxx, HCc, Cobjc, Cobjcxx]
+    = do
+@@ -1211,16 +1214,6 @@ runPhase (RealPhase cc_phase) input_fn dflags
+               (includePathsQuote cmdline_include_paths)
+         let include_paths = include_paths_quote ++ include_paths_global
+ 
+-        -- pass -D or -optP to preprocessor when compiling foreign C files
+-        -- (#16737). Doing it in this way is simpler and also enable the C
+-        -- compiler to performs preprocessing and parsing in a single pass,
+-        -- but it may introduce inconsistency if a different pgm_P is specified.
+-        let more_preprocessor_opts = concat
+-              [ ["-Xpreprocessor", i]
+-              | not hcc
+-              , i <- getOpts dflags opt_P
+-              ]
+-
+         let gcc_extra_viac_flags = extraGccViaCFlags dflags
+         let pic_c_flags = picCCOpts dflags
+ 
+@@ -1230,7 +1223,7 @@ runPhase (RealPhase cc_phase) input_fn dflags
+         -- hc code doesn't not #include any header files anyway, so these
+         -- options aren't necessary.
+         pkg_extra_cc_opts <- liftIO $
+-          if hcc
++          if cc_phase `eqPhase` HCc
+              then return []
+              else getPackageExtraCcOpts dflags pkgs
+ 
+@@ -1312,7 +1305,6 @@ runPhase (RealPhase cc_phase) input_fn dflags
+                        ++ [ "-include", ghcVersionH ]
+                        ++ framework_paths
+                        ++ include_paths
+-                       ++ more_preprocessor_opts
+                        ++ pkg_extra_cc_opts
+                        ))
+ 
