@@ -15011,7 +15011,7 @@ net-libs/ccrtp 2.1.2: GNU ccRTP - Implementation of the IETF real-time transport
 net-libs/courier-authlib 0.65.0-r3 0.66.4 0.67.0 0.68.0-r1 0.69.0-r1: Courier authentication library
 net-libs/courier-unicode 1.3 1.4 2.1: Unicode library used by the courier mail server
 net-libs/cppzmq 0_pre130717-r1 0_pre150606: High-level CPP Binding for ZeroMQ
-net-libs/cvm 0.76 0.96-r1 0.97: Credential Validation Modules by Bruce Guenter
+net-libs/cvm 0.96-r1 0.97: Credential Validation Modules by Bruce Guenter
 net-libs/czmq 2.2.0-r2 3.0.2: High-level C Binding for ZeroMQ
 net-libs/daq 0.6.2 0.6.2-r1 2.0.0 2.0.2 2.0.6-r1: Data Acquisition library, for packet I/O
 net-libs/davix 0.6.7 0.7.3 0.7.4 0.7.5: High-performance file management over WebDAV/HTTP
@@ -19385,7 +19385,7 @@ x11-themes/constantine-backgrounds 12.1.1.4-r1: Fedora 12 official background ar
 x11-themes/e-gtk-theme 0.19.3: A GTK theme to match Enlightenment WM's default theme
 x11-themes/e16-themes 1.0.2: All the official E16 themes
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
-x11-themes/elementary-xfce-icon-theme 0.11 0.13.1: Elementary icons forked from upstream, extended and maintained for Xfce
+x11-themes/elementary-xfce-icon-theme 0.11 0.13.1 0.14: Elementary icons forked from upstream, extended and maintained for Xfce
 x11-themes/experience 3.04-r1: GTK+2 themes which copy and improve the look of XP Luna
 x11-themes/faenza-icon-theme 1.3.1: A scalable icon theme called Faenza
 x11-themes/fedora-backgrounds 27.0.1 28.1.5 29.1.3 30.1.2 31.0.3: A set of default and supplemental wallpapers for Fedora
@@ -19591,7 +19591,7 @@ xfce-extra/xfce4-dict 0.8.2: A dict.org querying application and panel plug-in f
 xfce-extra/xfce4-diskperf-plugin 2.6.1-r1 2.6.2: A panel plug-in for disk usage and performance statistics
 xfce-extra/xfce4-embed-plugin 1.6.0-r2: A plug-in for embedding arbitrary application windows into the Xfce panel
 xfce-extra/xfce4-equake-plugin 1.3.8.1: Panel plug-in that displays information about earthquakes at regular intervals
-xfce-extra/xfce4-eyes-plugin 4.4.5-r2: A panel plug-in which adds classic eyes to your every step
+xfce-extra/xfce4-eyes-plugin 4.4.5-r2 4.5.0: A panel plug-in which adds classic eyes to your every step
 xfce-extra/xfce4-fsguard-plugin 1.1.0 1.1.1: A filesystem guard plug-in for the Xfce panel
 xfce-extra/xfce4-genmon-plugin 4.0.1 4.0.2: Cyclically spawned executable output on the panel
 xfce-extra/xfce4-hdaps 0.0.9-r2: A plugin to indicate the status of the IBM Hard Drive Active Protection System
@@ -19619,7 +19619,7 @@ xfce-extra/xfce4-timer-plugin 1.7.0: A simple timer plug-in for the Xfce desktop
 xfce-extra/xfce4-vala 4.10.3-r5 4.10.3-r6: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
-xfce-extra/xfce4-wavelan-plugin 0.6.0: A panel plug-in to display wireless interface statistics
+xfce-extra/xfce4-wavelan-plugin 0.6.0 0.6.1: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.9.1 0.10.0: A weather plug-in for the Xfce desktop environment
 xfce-extra/xfce4-whiskermenu-plugin 2.3.2 2.3.3: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r1: Xfce plugin puts the maximized window title and windows buttons on the panel
