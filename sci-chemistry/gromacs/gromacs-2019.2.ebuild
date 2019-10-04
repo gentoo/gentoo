@@ -73,6 +73,8 @@ REQUIRED_USE="
 
 DOCS=( AUTHORS README )
 
+RESTRICT="!test? ( test )"
+
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi

@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
@@ -51,7 +51,7 @@ CDEPEND="
 	mpi? ( virtual/mpi )
 	${PYTHON_DEPS}
 	"
-DEPEND="${CDEPEND}
+BDEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
@@ -72,6 +72,8 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}"
 
 DOCS=( AUTHORS README )
+
+RESTRICT="!test? ( test )"
 
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
@@ -233,9 +235,11 @@ src_configure() {
 		mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}
 			-DGMX_THREAD_MPI=OFF
-			-DGMX_MPI=ON ${cuda}
+			-DGMX_MPI=ON
 			-DGMX_OPENMM=OFF
 			-DGMXAPI=OFF
+			"${opencl[@]}"
+			"${cuda[@]}"
 			-DGMX_BUILD_MDRUN_ONLY=ON
 			-DBUILD_SHARED_LIBS=OFF
 			-DGMX_BUILD_MANUAL=OFF
@@ -289,14 +293,14 @@ src_install() {
 		doins src/external/tng_io/include/tng/*h
 	fi
 	# drop unneeded stuff
-	rm "${ED}"usr/bin/GMXRC* || die
-	for x in "${ED}"usr/bin/gmx-completion-*.bash ; do
+	rm "${ED}"/usr/bin/GMXRC* || die
+	for x in "${ED}"/usr/bin/gmx-completion-*.bash ; do
 		local n=${x##*/gmx-completion-}
 		n="${n%.bash}"
-		cat "${ED}"usr/bin/gmx-completion.bash "$x" > "${T}/${n}" || die
+		cat "${ED}"/usr/bin/gmx-completion.bash "$x" > "${T}/${n}" || die
 		newbashcomp "${T}"/"${n}" "${n}"
 	done
-	rm "${ED}"usr/bin/gmx-completion*.bash || die
+	rm "${ED}"/usr/bin/gmx-completion*.bash || die
 	readme.gentoo_create_doc
 }
 
