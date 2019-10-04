@@ -1078,12 +1078,6 @@ app-admin/consolehm
 # Removal in 30 days.  Bug #693502.
 app-text/ddir
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-04)
-# A metapackage without a really clear purpose.  No reverse
-# dependencies.
-# Removal in 30 days.
-app-text/docbook-sgml
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
