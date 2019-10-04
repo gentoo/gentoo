@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit perl-app
+inherit perl-functions
 
 COMMIT="e9ef93debd12d85e70676dd79b4bd78ac2b05271"
 
@@ -29,7 +29,7 @@ DEPEND="dev-lang/perl
 		${COMMON_DEPEND}
 		virtual/perl-File-Temp
 		)"
-RDEPEND="dev-lang/perl
+RDEPEND="dev-lang/perl:=
 ${COMMON_DEPEND}"
 
 S="${WORKDIR}/${PN}-${COMMIT}"
@@ -56,6 +56,7 @@ src_test() {
 }
 
 src_install() {
+	perl_set_version
 	dobin git-deploy
 
 	insinto $VENDOR_LIB

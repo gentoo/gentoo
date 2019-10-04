@@ -30,7 +30,7 @@ GPSD_PROTOCOLS=(
 	tripmate tsip ublox
 )
 IUSE_GPSD_PROTOCOLS=${GPSD_PROTOCOLS[@]/#/gpsd_protocols_}
-IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug ipv6 latency_timing ncurses ntp python qt5 +shm +sockets static test udev usb X"
+IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug ipv6 latency-timing ncurses ntp python qt5 +shm +sockets static test udev usb X"
 REQUIRED_USE="X? ( python )
 	gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -124,7 +124,7 @@ src_configure() {
 		$(use_scons debug clientdebug)
 		$(use_scons dbus dbus_export)
 		$(use_scons ipv6)
-		$(use_scons latency_timing timing)
+		$(use_scons latency-timing timing)
 		$(use_scons ncurses)
 		$(use_scons ntp ntpshm)
 		$(use_scons ntp pps)
