@@ -66,10 +66,6 @@ media-plugins/grilo-plugins chromaprint
 kde-apps/kipi-plugins mediawiki vkontakte
 media-gfx/digikam dnn vkontakte
 
-# Brian Evans <grknight@gentoo.org> (2018-12-06)
-# Mask USE flag since argon2 dependency is not stable on most arches
-dev-lang/php argon2
-
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # sssd is only stable for amd64 and x86
 app-admin/sudo sssd
