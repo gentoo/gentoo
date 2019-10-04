@@ -84,7 +84,7 @@ src_prepare() {
 		die "please sync ebuild & source"
 	fi
 
-	epatch "${FILESDIR}"/${P}-do_not_rm_library.patch
+	epatch "${FILESDIR}"/${PN}-3.19-do_not_rm_library.patch
 	# Merged upstream
 	#epatch "${FILESDIR}"/${P}-scons-print.patch
 	#epatch "${FILESDIR}"/${P}-scons-py3.patch
@@ -112,14 +112,14 @@ python_prepare_all() {
 	use gpsd_protocols_greis && pybins+="+ ['zerk']"
 	local pysrcs=$(sed -n '/^ *python_extensions = {/,/}/{s:^ *::;s:os[.]sep:"/":g;p}' SConstruct)
 	local packet=$("${PYTHON}" -c "${pysrcs}; print(python_extensions['gps/packet'])")
-	local client=$("${PYTHON}" -c "${pysrcs}; print(python_extensions['gps/clienthelpers'])")
+	# Post 3.19 the clienthelpers were merged into gps.packet
 	sed \
 		-e "s|@VERSION@|$(pyvar gpsd_version)|" \
 		-e "s|@URL@|$(pyvar website)|" \
 		-e "s|@EMAIL@|$(pyvar devmail)|" \
 		-e "s|@SCRIPTS@|${pybins}|" \
 		-e "s|@GPS_PACKET_SOURCES@|${packet}|" \
-		-e "s|@GPS_CLIENT_SOURCES@|${client}|" \
+		-e "/@GPS_CLIENT_SOURCES@/d" \
 		-e "s|@SCRIPTS@|${pybins}|" \
 		"${FILESDIR}"/${PN}-3.3-setup.py > setup.py || die
 	distutils-r1_python_prepare_all
