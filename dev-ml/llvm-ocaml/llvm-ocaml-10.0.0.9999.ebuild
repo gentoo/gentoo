@@ -65,8 +65,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 
-		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_SHARED_LIBS=OFF
+		-DLLVM_BUILD_LLVM_DYLIB=ON
+		-DLLVM_LINK_LLVM_DYLIB=ON
 		-DLLVM_OCAML_OUT_OF_TREE=ON
+
 		# cheap hack: LLVM combines both anyway, and the only difference
 		# is that the former list is explicitly verified at cmake time
 		-DLLVM_TARGETS_TO_BUILD=""
