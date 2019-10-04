@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Patrick Lauer <patrick@gentoo.org> (2019-10-04)
+# No postgres-12 stable yet
+postgres_targets_postgres12
+
 # Zac Medico <zmedico@gentoo.org> (2016-09-01)
 # Needs virtual/pypy* stable
 python_targets_pypy
