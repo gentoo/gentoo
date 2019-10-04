@@ -84,7 +84,7 @@ src_prepare() {
 		die "please sync ebuild & source"
 	fi
 
-	epatch "${FILESDIR}"/${P}-do_not_rm_library.patch
+	epatch "${FILESDIR}"/${PN}-3.19-do_not_rm_library.patch
 	# Merged upstream
 	#epatch "${FILESDIR}"/${P}-scons-print.patch
 	#epatch "${FILESDIR}"/${P}-scons-py3.patch
