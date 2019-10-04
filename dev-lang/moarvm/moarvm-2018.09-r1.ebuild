@@ -37,6 +37,7 @@ DOCS=( CREDITS README.markdown )
 RESTRICT=test
 
 src_configure() {
+	MAKEOPTS+=" NOISY=1"
 	use doc && DOCS+=( docs/* )
 	local prefix="${EPREFIX%/}/usr"
 	local libdir="${EPREFIX%/}/usr/$(get_libdir)"
