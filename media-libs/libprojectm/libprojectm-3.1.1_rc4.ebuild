@@ -12,9 +12,10 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/projectM-visualizer/projectm.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/projectM-visualizer/projectm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	MY_PV="${PV/_/-}"
+	SRC_URI="https://github.com/projectM-visualizer/projectm/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~sparc ~x86"
-	S=${WORKDIR}/projectm-${PV}/
+	S=${WORKDIR}/projectm-${MY_PV}/
 fi
 
 LICENSE="LGPL-2"
