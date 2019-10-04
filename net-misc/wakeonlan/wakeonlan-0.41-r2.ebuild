@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-
-inherit eutils perl-app
+GENTOO_DEPEND_ON_PERL_SUBSLOT=no
+inherit eutils perl-module
 
 DESCRIPTION="Client for Wake-On-LAN"
 HOMEPAGE="http://gsd.di.uminho.pt/jpo/software/wakeonlan/"
@@ -18,6 +18,7 @@ DEPEND="virtual/perl-ExtUtils-MakeMaker"
 
 src_prepare() {
 	epatch "${FILESDIR}"/"${P}"-ethers-lookup.patch
+	perl-module_src_prepare
 }
 
 src_install() {
