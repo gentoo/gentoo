@@ -30,6 +30,20 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
+# Unmaintained, EAPI 0 packages.  No reverse dependencies.  If you want
+# them to stay, please sacrifice the 30 minutes of your life needed
+# to port them to EAPI 7, recheck license, update URIs, etc.
+# Removal in 30 days.  Bug #696248.
+app-dicts/dictd-devils
+app-dicts/dictd-dicts
+app-dicts/dictd-elements
+app-dicts/dictd-foldoc
+app-dicts/dictd-gazetteer
+app-dicts/dictd-jargon
+app-dicts/dictd-misc
+app-dicts/dictd-web1913
+
+# Michał Górny <mgorny@gentoo.org> (2019-10-04)
 # Unmaintained.  EAPI 0.  Last release in 2009.  No reverse
 # dependencies.
 # Removal in 30 days.  Bug #696176.
