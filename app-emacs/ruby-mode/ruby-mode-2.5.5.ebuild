@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Emacs major mode for editing Ruby code"
 HOMEPAGE="https://www.ruby-lang.org/"
-SRC_URI="mirror://ruby/ruby-${PV}.tar.xz"
+SRC_URI="https://cache.ruby-lang.org/pub/ruby/ruby-${PV}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
