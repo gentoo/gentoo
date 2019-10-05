@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Like cowsay, but different because it involves robots and kittens"
 HOMEPAGE="http://www.robotfindskitten.org/"
-SRC_URI="mirror://gentoo/${PN}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

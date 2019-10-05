@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Yet another Java library for parsing and writing XML"
 HOMEPAGE="http://dev2dev.bea.com/xml/stax.html"
-SRC_URI="mirror://gentoo/${PN}.jar -> ${P}.jar"
+SRC_URI="mirror://gentoo/${P}.jar"
 
 LICENSE="bea.ri.jsr173"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Live Source Client For IceCast"
 HOMEPAGE="http://star.arm.ac.uk/~spm/software/liveice.html"
-SRC_URI="mirror://gentoo/liveice.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

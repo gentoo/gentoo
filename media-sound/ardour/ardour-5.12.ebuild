@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="mirror://gentoo/Ardour-${PV}.0.tar.bz2 -> ${P}.tar.bz2"
+	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 

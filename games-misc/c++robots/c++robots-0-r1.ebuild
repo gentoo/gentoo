@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="ongoing 'King of the Hill' (KotH) tournament"
 HOMEPAGE="http://www.gamerz.net/c++robots/"
-SRC_URI="mirror://gentoo/${PN}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
