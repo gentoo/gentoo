@@ -1,14 +1,14 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 PHP_EXT_NAME="event"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 DOCS=( README.md )
 
-USE_PHP="php5-6 php7-0 php7-1 php7-2"
+USE_PHP="php7-1 php7-2 php7-3"
 
 inherit php-ext-pecl-r3
 
@@ -20,13 +20,17 @@ SLOT="0"
 
 DEPEND="
 	>=dev-libs/libevent-2.0.2
-	ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
-	php_targets_php5-6? ( dev-lang/php:5.6[sockets?] )
-	php_targets_php7-0? ( dev-lang/php:7.0[sockets?] )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	php_targets_php7-1? ( dev-lang/php:7.1[sockets?] )
-	php_targets_php7-2? ( dev-lang/php:7.2[sockets?] )"
+	php_targets_php7-2? ( dev-lang/php:7.2[sockets?] )
+	php_targets_php7-3? ( dev-lang/php:7.3[sockets?] )"
 
-RDEPEND="${DEPEND} !dev-php/pecl-libevent"
+RDEPEND="
+	${DEPEND}
+	!dev-php/pecl-libevent"
 
 IUSE="debug examples +extra libressl +sockets +ssl threads"
 
