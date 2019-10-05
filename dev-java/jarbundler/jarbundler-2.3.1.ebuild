@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Jar Bundler Ant Task"
 HOMEPAGE="https://github.com/UltraMixer/JarBundler"
-SRC_URI="mirror://gentoo/${PN}.zip -> ${P}.zip"
+SRC_URI="mirror://gentoo/${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

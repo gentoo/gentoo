@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A program to align cDNA and genomic DNA"
 HOMEPAGE="http://globin.cse.psu.edu/html/docs/sim4.html"
-SRC_URI="mirror://gentoo/${PN}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

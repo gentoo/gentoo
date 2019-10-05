@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Icons for use with FVWM"
 HOMEPAGE="http://www.fvwm.org/"
-SRC_URI="mirror://gentoo/fvwm_icons.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2 FVWM"
 SLOT="0"

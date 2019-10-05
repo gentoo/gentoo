@@ -7,7 +7,7 @@ inherit sgml-catalog eutils
 
 DESCRIPTION="DTDs for the eXtensible HyperText Markup Language 1.0"
 HOMEPAGE="http://www.w3.org/TR/xhtml1/"
-SRC_URI="mirror://gentoo/xhtml1.tgz -> ${P}.tgz"
+SRC_URI="mirror://gentoo/${P}.tgz"
 LICENSE="W3C"
 
 SLOT="0"

@@ -11,7 +11,7 @@ MY_V=${PV//./_}
 
 DESCRIPTION="JGoodies Animation Library"
 HOMEPAGE="http://www.jgoodies.com/"
-SRC_URI="mirror://gentoo/animation-${MY_V}.zip -> ${P}.zip"
+SRC_URI="mirror://gentoo/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"

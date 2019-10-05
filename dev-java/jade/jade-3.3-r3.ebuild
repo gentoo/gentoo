@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="JADE is FIPA-compliant Java Agent Development Environment"
 HOMEPAGE="http://jade.cselt.it/"
-SRC_URI="mirror://gentoo/JADE-src-${PV}.zip -> ${P}.zip"
+SRC_URI="mirror://gentoo/${P}.zip"
 
 LICENSE="LGPL-2"
 KEYWORDS="amd64 x86"
