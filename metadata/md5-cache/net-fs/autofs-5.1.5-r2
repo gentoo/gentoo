@@ -9,6 +9,6 @@ KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/util-linux-2.20 dmalloc? ( dev-libs/dmalloc[threads] ) ldap? ( >=net-nds/openldap-2.0 sasl? ( dev-libs/cyrus-sasl dev-libs/libxml2 virtual/krb5 ) ) systemd? ( sys-apps/systemd ) libtirpc? ( net-libs/libtirpc ) !libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
 SLOT=0
-SRC_URI=mirror://kernel/linux/daemons/autofs/v5/autofs-5.1.5.tar.xz
+SRC_URI=https://www.kernel.org/pub/linux/daemons/autofs/v5/autofs-5.1.5.tar.xz
 _eclasses_=linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=567752cccb37aebd3628cd7cd616c3a3
+_md5_=56a48af6eac5f9ff87c1a4fcf7ce5596

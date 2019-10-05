@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=MIT
 RDEPEND=gtk? ( x11-libs/gtk+:2 ) llvm? ( >=sys-devel/llvm-3.0 ) xml? ( dev-libs/libxml2 )
 SLOT=0
-SRC_URI=mirror://kernel/software/devel/sparse/dist/sparse-0.6.0.tar.xz
+SRC_URI=https://www.kernel.org/pub/software/devel/sparse/dist/sparse-0.6.0.tar.xz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=20b93d662ded25279860674c0bb662fb
+_md5_=094290b31e0b8a9bcda0b0cdd110e6bc

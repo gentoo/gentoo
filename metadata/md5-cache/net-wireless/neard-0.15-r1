@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.28:2 dev-libs/libnl systemd? ( sys-apps/systemd:0 ) >=sys-apps/dbus-1.2.24
 SLOT=0
-SRC_URI=mirror://kernel/linux/network/nfc/neard-0.15.tar.xz
-_md5_=8cb96d0791fff01c23538f28a356c834
+SRC_URI=https://www.kernel.org/pub/linux/network/nfc/neard-0.15.tar.xz
+_md5_=71f5781c8808c0afbc965e8c467c0260

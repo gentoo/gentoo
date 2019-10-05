@@ -10,6 +10,6 @@ LICENSE=GPL-2
 RDEPEND=virtual/libusb:1= virtual/libudev:= sys-apps/hwids python? ( python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python3_6? ( dev-lang/python:3.6 ) python_single_target_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_5(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),python_single_target_python3_5(+)?,python_single_target_python3_6(+)?,python_single_target_python3_7(+)?] )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 ) )
 SLOT=0
-SRC_URI=mirror://kernel/linux/utils/usb/usbutils/usbutils-012.tar.xz
+SRC_URI=https://www.kernel.org/pub/linux/utils/usb/usbutils/usbutils-012.tar.xz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=596cd1be3979d365f3f3634cb8ec394d
+_md5_=623bd8be0910304f0987b256928f5505

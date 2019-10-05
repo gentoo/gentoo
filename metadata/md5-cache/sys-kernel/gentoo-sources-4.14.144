@@ -9,6 +9,6 @@ LICENSE=GPL-2
 RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf )
 RESTRICT=binchecks strip
 SLOT=4.14.144
-SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.14.tar.xz mirror://gentoo/genpatches-4.14-153.base.tar.xz mirror://gentoo/genpatches-4.14-153.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.14-153.experimental.tar.xz )
-_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	43ddf5aaffa7a8d0482df54d25a66a1f	kernel-2	d8ffb340027c53001eede0f9d32f3f14	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz mirror://gentoo/genpatches-4.14-153.base.tar.xz mirror://gentoo/genpatches-4.14-153.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.14-153.experimental.tar.xz )
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	43ddf5aaffa7a8d0482df54d25a66a1f	kernel-2	6af9d2d3dc661bc7d81186849717aa07	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
 _md5_=1ec027a3cb18946c3e6cf33c1289acdb

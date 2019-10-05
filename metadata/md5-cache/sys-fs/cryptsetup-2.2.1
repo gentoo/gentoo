@@ -10,6 +10,6 @@ LICENSE=GPL-2+
 RDEPEND=static-libs? ( dev-libs/json-c:=[static-libs(+)] dev-libs/libgpg-error[static-libs(+)] dev-libs/popt[static-libs(+)] >=sys-apps/util-linux-2.31-r1[static-libs(+)] argon2? ( app-crypt/argon2:=[static-libs(+)] ) gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] ) nettle? ( >=dev-libs/nettle-2.4[static-libs(+)] ) openssl? ( !libressl? ( dev-libs/openssl:0=[static-libs(+)] ) libressl? ( dev-libs/libressl:0=[static-libs(+)] ) ) pwquality? ( dev-libs/libpwquality[static-libs(+)] ) sys-fs/lvm2[static-libs(+)] udev? ( virtual/libudev[static-libs(+)] ) ) dev-libs/json-c:= dev-libs/libgpg-error dev-libs/popt >=sys-apps/util-linux-2.31-r1 argon2? ( app-crypt/argon2:= ) gcrypt? ( dev-libs/libgcrypt:0= ) nettle? ( >=dev-libs/nettle-2.4 ) openssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) pwquality? ( dev-libs/libpwquality ) sys-fs/lvm2 udev? ( virtual/libudev )
 REQUIRED_USE=^^ ( gcrypt kernel nettle openssl ) libressl? ( openssl ) static? ( !gcrypt )
 SLOT=0/12
-SRC_URI=mirror://kernel/linux/utils/cryptsetup/v2.2/cryptsetup-2.2.1.tar.xz
+SRC_URI=https://www.kernel.org/pub/linux/utils/cryptsetup/v2.2/cryptsetup-2.2.1.tar.xz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=2a3bc027d1f916dd974e1db309870fee
+_md5_=7c3b812f919a0e355288346858c375b1

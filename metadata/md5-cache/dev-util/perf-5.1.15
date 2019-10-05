@@ -9,6 +9,6 @@ LICENSE=GPL-2
 RDEPEND=audit? ( sys-process/audit ) crypt? ( dev-libs/openssl:0= ) clang? ( sys-devel/clang:* sys-devel/llvm:* ) demangle? ( sys-libs/binutils-libs:= ) gtk? ( x11-libs/gtk+:2 ) java? ( virtual/jre:* ) lzma? ( app-arch/xz-utils ) numa? ( sys-process/numactl ) perl? ( dev-lang/perl ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] ) slang? ( sys-libs/slang ) systemtap? ( dev-util/systemtap ) unwind? ( sys-libs/libunwind ) zlib? ( sys-libs/zlib ) dev-libs/elfutils
 REQUIRED_USE=python? ( python_targets_python2_7 )
 SLOT=0
-SRC_URI=mirror://kernel/linux/kernel/v5.x/patch-5.1.15.xz mirror://kernel/linux/kernel/v5.x/linux-5.1.tar.xz
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/patch-5.1.15.xz https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=041382de114c3a2f56d1e52ebfe5c513
+_md5_=0a82e2d6da93b3603f12ff796afd5cf7
