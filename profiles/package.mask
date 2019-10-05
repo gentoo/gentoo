@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-10-05)
+# Open vulnerability for two years.  No maintainer activity since 2017.
+# Upstream is not making any new releases, and patches are accumulating.
+# Removal in 30 days.  Bug #662878.
+net-libs/openslp
+
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
 # Unmaintained, EAPI 0 packages.  No reverse dependencies.  If you want
 # them to stay, please port them to EAPI 7, and preferably become
