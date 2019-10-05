@@ -7,7 +7,7 @@ inherit autotools-multilib eutils unpacker autotools
 
 DESCRIPTION="Library for capturing video (dv or mpeg2) over the IEEE 1394 bus"
 HOMEPAGE="http://dennedy.org/cgi-bin/gitweb.cgi?p=dennedy.org/libiec61883.git"
-SRC_URI="mirror://kernel/linux/libs/ieee1394/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/libs/ieee1394/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 GPL-2 )"
 SLOT="0"

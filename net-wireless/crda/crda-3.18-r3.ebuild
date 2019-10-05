@@ -9,7 +9,7 @@ inherit toolchain-funcs python-any-r1 udev
 DESCRIPTION="Central Regulatory Domain Agent for wireless networks"
 HOMEPAGE="https://wireless.wiki.kernel.org/en/developers/regulatory/crda"
 SRC_URI="http://linuxwireless.org/download/crda/${P}.tar.xz
-	mirror://kernel/software/network/crda/${P}.tar.xz"
+	https://www.kernel.org/pub/software/network/crda/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0"

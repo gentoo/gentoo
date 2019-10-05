@@ -6,7 +6,7 @@ inherit multilib multilib-minimal
 
 DESCRIPTION="Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers"
 HOMEPAGE="https://git.kernel.org/?p=bluetooth/sbc.git http://www.bluez.org/sbc-10/"
-SRC_URI="mirror://kernel/linux/bluetooth/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/bluetooth/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

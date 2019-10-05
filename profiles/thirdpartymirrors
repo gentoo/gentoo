@@ -13,7 +13,6 @@ hackage		https://hackage.haskell.org/
 idsoftware	ftp://ftp.fu-berlin.de/pc/games/idgames/idstuff ftp://ftp.gamers.org/pub/idgames/idstuff
 imagemagick	https://www.imagemagick.org/download/ https://mirror.checkdomain.de/imagemagick/ https://ftp.acc.umu.se/mirror/imagemagick.org/ftp/ https://ftp.nluug.nl/ImageMagick/ ftp://ftp.fifi.org/pub/ImageMagick/
 kde		https://download.kde.org http://mirror.csclub.uwaterloo.ca/kde ftp://mirrors.dotsrc.org/kde ftp://kde.mirror.anlx.net
-kernel		https://www.kernel.org/pub
 lokigames	http://updates.lokigames.com
 mplayer		https://www1.mplayerhq.hu/MPlayer http://www2.mplayerhq.hu/MPlayer http://www5.mplayerhq.hu/MPlayer http://www7.mplayerhq.hu/MPlayer http://www8.mplayerhq.hu/MPlayer ftp://ftp1.mplayerhq.hu/MPlayer/ ftp://ftp6.mplayerhq.hu/MPlayer/ ftp://ftp7.mplayerhq.hu/MPlayer/ ftp://ftp8.mplayerhq.hu/MPlayer/
 mysql		https://artfiles.org/mysql/ https://www.mirrorservice.org/sites/ftp.mysql.com/ https://ftp.gwdg.de/pub/misc/mysql/ https://ftp.jaist.ac.jp/pub/mysql/ http://mysql.he.net/ http://mysql.mirrors.ovh.net/ftp.mysql.com/ http://mirror.switch.ch/ftp/mirror/mysql/ http://vesta.informatik.rwth-aachen.de/mysql/ http://ftp.ntua.gr/pub/databases/mysql/ http://mysql.linux.cz/ http://linorg.usp.br/mysql/

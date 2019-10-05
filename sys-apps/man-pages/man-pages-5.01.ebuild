@@ -7,8 +7,8 @@ GENTOO_PATCH=2
 
 DESCRIPTION="A somewhat comprehensive collection of Linux man pages"
 HOMEPAGE="https://www.kernel.org/doc/man-pages/"
-SRC_URI="mirror://kernel/linux/docs/man-pages/Archive/${P}.tar.xz
-	mirror://kernel/linux/docs/man-pages/${P}.tar.xz
+SRC_URI="https://www.kernel.org/pub/linux/docs/man-pages/Archive/${P}.tar.xz
+	https://www.kernel.org/pub/linux/docs/man-pages/${P}.tar.xz
 	mirror://gentoo/man-pages-gentoo-${GENTOO_PATCH}.tar.bz2
 	https://dev.gentoo.org/~cardoe/files/man-pages-gentoo-${GENTOO_PATCH}.tar.bz2"
 

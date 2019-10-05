@@ -23,7 +23,7 @@ HOMEPAGE="http://tigcc.ticalc.org"
 
 SRC_URI="mirror://gentoo/tigcc-0.96_beta7.tar.bz2
 	ftp://gcc.gnu.org/pub/gcc/snapshots/4.1-${GCC_SNAPSHOT}/gcc-4.1-${GCC_SNAPSHOT}.tar.bz2
-	mirror://kernel/linux/devel/binutils/binutils-${BASE_BINUTILS}.tar.bz2
+	https://www.kernel.org/pub/linux/devel/binutils/binutils-${BASE_BINUTILS}.tar.bz2
 	http://members.chello.at/gerhard.kofler/kevin/ti89prog/libfargo.zip
 	http://members.chello.at/gerhard.kofler/kevin/ti89prog/flashosa.zip"
 

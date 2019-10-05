@@ -5,7 +5,7 @@ EAPI="5"
 
 DESCRIPTION="Near Field Communication (NFC) management daemon"
 HOMEPAGE="https://01.org/linux-nfc/"
-SRC_URI="mirror://kernel/linux/network/nfc/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/network/nfc/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
