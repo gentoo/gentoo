@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{5..7} )
 
-inherit gnome2-utils python-single-r1
+inherit python-single-r1 xdg-utils
 
 DESCRIPTION="Actions gestures on your touchpad using libinput"
 HOMEPAGE="https://github.com/bulletmark/libinput-gestures"
@@ -39,7 +39,7 @@ src_prepare() {
 src_test() { :; }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 
 	elog "You must be in the input group to read the touchpad device."
 
@@ -52,5 +52,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
