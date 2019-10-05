@@ -1,0 +1,39 @@
+From 29dd8f91cf83441aba074dae5af10fe09d095f6b Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Sat, 5 Oct 2019 10:39:21 +0200
+Subject: [PATCH 1/2] include stdlib.h for exit() and malloc()
+
+---
+ alloc.c     | 4 ++--
+ queue-fix.c | 1 +
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/alloc.c b/alloc.c
+index c661453..0ed63b5 100644
+--- a/alloc.c
++++ b/alloc.c
+@@ -1,7 +1,7 @@
+ #include "alloc.h"
+ #include "error.h"
+-extern char *malloc();
+-extern void free();
++
++#include <stdlib.h>
+ 
+ #define ALIGNMENT 16 /* XXX: assuming that this alignment is enough */
+ #define SPACE 4096 /* must be multiple of ALIGNMENT */
+diff --git a/queue-fix.c b/queue-fix.c
+index be9b080..b164dfb 100644
+--- a/queue-fix.c
++++ b/queue-fix.c
+@@ -9,6 +9,7 @@
+ #include <sys/stat.h>
+ #include <pwd.h>
+ #include <grp.h>
++#include <stdlib.h>
+ #include "stralloc.h"
+ #include "direntry.h"
+ #include "fmt.h"
+-- 
+2.16.4
+
