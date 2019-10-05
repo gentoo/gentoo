@@ -38,6 +38,8 @@ src_install() {
 	doins -r dnsapi/*.sh
 	insinto /usr/share/acme.sh/deploy
 	doins -r deploy/*.sh
+	insinto /usr/share/acme.sh/notify
+	doins -r notify/*.sh
 
 	dosym ../share/acme.sh/acme.sh usr/bin/acme.sh
 }
