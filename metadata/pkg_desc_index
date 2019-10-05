@@ -14998,7 +14998,7 @@ net-irc/unrealircd 4.2.4.1: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.5-r1 2.6 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.4 1.7.5 9999: An advanced IRC Bouncer
-net-libs/NativeThread 0_pre20080330 0_pre20190914: NativeThread for priorities on linux for freenet
+net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for freenet
 net-libs/accounts-qt 1.15: Qt5 bindings for libaccounts-glib
 net-libs/aqbanking 5.7.8 5.8.2: Generic Online Banking Interface
 net-libs/axtls 1.5.3 2.1.3 2.1.4 2.1.5: Embedded client/server TLSv1 SSL library and small HTTP(S) server
@@ -15428,7 +15428,7 @@ net-misc/hylafaxplus 5.5.5 5.6.1: Enterprise client-server fax package for class
 net-misc/iaxmodem 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
 net-misc/icaclient 19.6.0.60-r1 19.8.0.20: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.4: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
-net-misc/ices 2.0.1-r1 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
+net-misc/ices 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
 net-misc/igmpproxy 0.2.1-r2: A multicast routing daemon which uses IGMP forwarding
 net-misc/ip-sentinel 0.12: Prevent unauthorized usage of IPs in the local ethernet broadcastdomain by answering ARP-requests
@@ -15554,7 +15554,7 @@ net-misc/r8168 8.045.08 8.047.04: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.9 3.6.14 3.7.3-r1 3.7.9 3.7.10 3.7.11 3.7.13 3.7.17: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.14 2.17-r1 2.17-r2 2.18: Linux IPv6 Router Advertisement Daemon
 net-misc/rclone 1.45 1.47.0 9999: A program to sync files to and from various cloud storage providers
-net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
+net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.4-r1 1.8.4-r2 1.8.6 1.8.6-r1: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
 net-misc/remmina 1.3.4 1.3.6-r1: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
@@ -15576,7 +15576,7 @@ net-misc/sendfile 2.1b-r1: SAFT implementation for asynchronous sending of files
 net-misc/ser2net 2.10.0: Serial To Network Proxy
 net-misc/sgopherd 17.09 18.08: Small Gopher Server written in GNU Bash
 net-misc/shigofumi 0.3-r1 9999: Command line client for ISDS
-net-misc/shmux 1.0 1.0.2 1.0.2-r1: run the same command across many hosts in parallel
+net-misc/shmux 1.0.2 1.0.2-r1: run the same command across many hosts in parallel
 net-misc/shout 0.8.0-r2: Shout is a program for creating mp3 stream for use with icecast or shoutcast
 net-misc/sipcalc 1.1.6: Sipcalc is an advanced console-based IP subnet calculator
 net-misc/sipsak 0.9.6_p1-r1 0.9.6_p1-r2: small command line tool for testing SIP applications and devices
@@ -17329,8 +17329,8 @@ sys-apps/lm-sensors 3.5.0 3.5.0_p20190505: Hardware Monitoring user-space utilit
 sys-apps/lmctfy 0.2.0 0.3.0 0.3.1 0.5.0 0.5.0-r1: Linux application container management from Google
 sys-apps/lnxhc 1.2-r1: Linux Health Checker
 sys-apps/logwatch 7.5.1 7.5.2 9999: Analyzes and Reports on system logs
-sys-apps/lsadb 0.1.3 0.1.3-r1: Prints out information on all devices attached to the ADB bus
-sys-apps/lsb-release 1.4 1.4-r1 1.4-r2 1.4-r3: LSB version query program
+sys-apps/lsadb 0.1.3-r1: Prints out information on all devices attached to the ADB bus
+sys-apps/lsb-release 1.4-r3: LSB version query program
 sys-apps/lsd 0.14.0 0.15.1 0.16.0: A modern ls with a lot of pretty colors and awesome icons
 sys-apps/lshw 02.18b 02.18b-r1: Hardware Lister
 sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
@@ -19269,14 +19269,14 @@ x11-plugins/wmblob 1.0.3 1.0.4: a fancy but useless dockapp with moving blobs
 x11-plugins/wmbutton 0.7.0 0.7.1: a dockapp application that displays nine configurable buttons
 x11-plugins/wmcalc 0.6-r1 0.7: A WindowMaker DockApp calculator
 x11-plugins/wmcalendar 0.5.2-r2: a calendar dockapp
-x11-plugins/wmcdplay 1.0_beta1 1.1-r1: CD player applet for WindowMaker
+x11-plugins/wmcdplay 1.1-r1: CD player applet for WindowMaker
 x11-plugins/wmcliphist 2.1-r2: Dockable clipboard history application for Window Maker
 x11-plugins/wmclock 1.0.16-r1: a dockapp that displays time and date (same style as NEXTSTEP(tm) OS)
 x11-plugins/wmclockmon 0.8.1-r1: a nice digital clock with 7 different styles either in LCD or LED style
 x11-plugins/wmcms 0.3.5-r3: WindowMaker CPU and Memory Usage Monitor Dock App
 x11-plugins/wmcoincoin 2.6.2_p20140602 2.6.3: a dockapp for browsing dacode news and board sites
 x11-plugins/wmcp 1.2.8-r1: A pager dockapp
-x11-plugins/wmcpuload 1.1.0_pre5 1.1.1: a dockapp for monitoring CPU usage with a LCD display
+x11-plugins/wmcpuload 1.1.1: a dockapp for monitoring CPU usage with a LCD display
 x11-plugins/wmcpuwatch 0.2-r1: dockapp showing the load of every logical CPU on the system
 x11-plugins/wmcube 1.0.2: a dockapp cpu monitor with spinning 3d objects
 x11-plugins/wmdiskmon 0.0.2-r1: a dockapp to display disk space usage
@@ -19308,7 +19308,7 @@ x11-plugins/wmmisc 1.2: a monitoring dockapp for system load, user amount, fork 
 x11-plugins/wmmixer 1.8: A mixer designed for WindowMaker
 x11-plugins/wmmon 1.4: Dockable system resources monitor applet for WindowMaker
 x11-plugins/wmmon+smp 1.0-r3: Dockapp CPU monitor resembling Xosview, support for smp
-x11-plugins/wmmoonclock 1.27-r1 1.29: dockapp that shows lunar ephemeris to a high accuracy
+x11-plugins/wmmoonclock 1.29: dockapp that shows lunar ephemeris to a high accuracy
 x11-plugins/wmmp 0.10.0-r1: A Window Maker dock app client for Music Player Daemon(media-sound/mpd)
 x11-plugins/wmmp3 0.12-r1: Mp3 player dock app for WindowMaker; frontend to mpg123
 x11-plugins/wmnd 0.4.17-r1: WindowMaker Network Devices (dockapp)
@@ -19316,7 +19316,7 @@ x11-plugins/wmnet 1.06-r2: WMnet is a dock.app network monitor
 x11-plugins/wmnetload 1.3-r6: Network interface monitor dockapp
 x11-plugins/wmpager 1.2-r2: A simple pager docklet for the WindowMaker window manager
 x11-plugins/wmpasman 0.8.5.3 2.0 2.2: Password storage/retrieval in a dockapp
-x11-plugins/wmpinboard 1.0 1.0.1: Window Maker dock applet resembling a miniature pinboard
+x11-plugins/wmpinboard 1.0.1: Window Maker dock applet resembling a miniature pinboard
 x11-plugins/wmping 0.2.1-r1: a simple host status monitoring dockapp
 x11-plugins/wmpop3 0.5.6a-r1: dockapp for checking pop3 accounts
 x11-plugins/wmpop3lb 2.4.2-r3: dockapp for checking up to 7 pop3 accounts
@@ -19335,7 +19335,7 @@ x11-plugins/wmtimer 2.92-r2: Dockable clock which can run in alarm, countdown ti
 x11-plugins/wmtop 0.85: dockapp for monitoring the top three processes using cpu or memory
 x11-plugins/wmtz 0.7_p20150816: dockapp that shows the time in multiple timezones
 x11-plugins/wmudmount 2.2-r2 3.0: A filesystem mounter that uses udisks to handle notification and mounting
-x11-plugins/wmweather 2.4.4 2.4.6 2.4.7: a dockable weather monitor for standard METAR stations using ICAO location
+x11-plugins/wmweather 2.4.7: a dockable weather monitor for standard METAR stations using ICAO location
 x11-plugins/wmweather+ 2.17: A dockapp for displaying data collected from METAR, AVN, ETA, and MRF forecasts
 x11-plugins/wmwifi 0.6-r1: wireless network interface monitor dockapp
 x11-plugins/wmwork 0.2.5-r1: a dockapp that lets you easily track time spent on different projects
