@@ -12568,7 +12568,7 @@ mail-client/hap 3.7-r1: A terminal mail notification program (replacement for bi
 mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20160123: The $ mail program, which is used to send mail via shell scripts
-mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
+mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.10.1 1.11.4 1.12.1 1.12.2: A small but very powerful text-based mail client
 mail-client/neomutt 20180223 20180323 20180512 20180622 20180716 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
@@ -12684,7 +12684,7 @@ media-fonts/andika 5.000: Sans-serif font designed for literacy use
 media-fonts/anonymous-pro 1.002-r1: Monospaced truetype font designed with coding in mind
 media-fonts/aquafont 2.7-r4: Handwritten Japanese fixed-width TrueType font
 media-fonts/aquapfont 2.6-r2: Very pretty Japanese proportional truetype font
-media-fonts/arabeyes-fonts 2.0 2.0-r1: Arabeyes Arabic TrueType fonts
+media-fonts/arabeyes-fonts 2.0-r1: Arabeyes Arabic TrueType fonts
 media-fonts/arkpandora 2.04: Arkpandora MS-TTF replacement font pack
 media-fonts/arphicfonts 0.2.20080216.1-r2: Chinese TrueType Arphic Fonts
 media-fonts/artwiz-aleczapka-en 1.3: Artwiz Aleczapko fonts
@@ -12821,7 +12821,7 @@ media-fonts/mix-mplus-ipa 20130617-r1: Mixing mplus and IPA fonts
 media-fonts/monafont 2.90-r2: Japanese bitmap and TrueType fonts suitable for browsing 2ch
 media-fonts/monoid 0.60 0.61: Open source coding font
 media-fonts/montecarlo 0-r1: monospace font, created by programmers, for programmers
-media-fonts/mplus-fonts 2.2.4 2.2.4-r1: M+ Japanese bitmap fonts
+media-fonts/mplus-fonts 2.2.4-r1: M+ Japanese bitmap fonts
 media-fonts/mplus-outline-fonts 0_pre063 0_pre063_p1: M+ Japanese outline fonts
 media-fonts/nanum 3.0: The Nanum Korean fonts distributed by Naver
 media-fonts/nanumfont 2.0-r2: Korean monospace font distributed by NHN
@@ -13081,7 +13081,7 @@ media-gfx/pqiv 2.11 9999: powerful GTK 3 based command-line image viewer with a 
 media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
 media-gfx/printrun 20150310-r3 99999999: GUI interface for 3D printing on RepRap and other printers
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
-media-gfx/psftools 1.0.7 1.0.10: Utilities for manipulation of console fonts in PSF format
+media-gfx/psftools 1.0.10: Utilities for manipulation of console fonts in PSF format
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
 media-gfx/pycam 0.5.1 0.6.2 0.6.4: Open Source CAM - Toolpath Generation for 3-Axis CNC machining
 media-gfx/qimgv 0.8.5 9999: A cross-platform image viewer with webm support. Written in qt5.
@@ -13981,7 +13981,7 @@ media-sound/gmusicbrowser 1.1.15_p20160530 9999: An open-source jukebox for larg
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
 media-sound/gnome-music 3.30.2: Music management for Gnome
 media-sound/gnome-sound-recorder 3.28.2: Simple sound recorder
-media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
+media-sound/gnump3d 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gogglesmm 1.2.1: Fast and light music player
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
 media-sound/gpodder 3.9.1 3.10.5: A free cross-platform podcast aggregator
@@ -14041,7 +14041,7 @@ media-sound/mac 4.11.4.5.7-r1: Monkey's Audio Codecs
 media-sound/madplay 0.15.2b-r1: The MAD audio player
 media-sound/mangler 1.2.5-r1: Open source VOIP client capable of connecting to Ventrilo 3.x servers
 media-sound/marrie 0.3.2-r1 9999: A simple podcast client that runs on the Command Line Interface
-media-sound/mcdp 0.4a 0.4b: A very small console cd player
+media-sound/mcdp 0.4b: A very small console cd player
 media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audio system
 media-sound/mhwaveedit 1.4.22 1.4.23: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.8: A console MOD-Player based on libmikmod
@@ -14151,7 +14151,7 @@ media-sound/rhythmbox 3.4.3: Music management and playback software for GNOME
 media-sound/rip 1.07: A command-line based audio CD ripper and mp3 encoder
 media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them to the Ogg, MP3, or FLAC formats
 media-sound/rosegarden 17.12.1: MIDI and audio sequencer and notation editor
-media-sound/rplay 3.3.2-r1 3.3.2-r2 3.3.2-r3: Play sounds on remote Unix systems without data transfer
+media-sound/rplay 3.3.2-r3: Play sounds on remote Unix systems without data transfer
 media-sound/saydate 0.3.0: A Linux shell program that talks the date and system uptime
 media-sound/sc2mpd 1.1.5: Implements the SongCast protocol for use by upmpdcli and mpd
 media-sound/schismtracker 20180810: Free implementation of Impulse Tracker, a tool used to create high quality music
@@ -14259,7 +14259,7 @@ media-tv/mythtv 29.1-r1 30.0_p20190808: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/plex-media-server 1.11.3 1.12.3 1.13.2-r1 1.14.1: A free media library that is intended for use with a plex client.
-media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
+media-tv/shoutcast2vdr 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser-bin 4.0.1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 4.2.8 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvnamer 2.4 2.5: Automatic TV episode file renamer, data from thetvdb.com
@@ -14667,7 +14667,7 @@ net-analyzer/sniffit 0.3.7-r4: Interactive Packet Sniffer
 net-analyzer/snmptt 1.2 1.4: SNMP Trap Translator
 net-analyzer/snort 2.9.8.3-r2 2.9.12: The de facto standard for intrusion detection/prevention
 net-analyzer/snortalog 2.4.3-r1: a powerful perl script that summarizes snort logs
-net-analyzer/snortsam 2.50-r1 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
+net-analyzer/snortsam 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
 net-analyzer/softflowd 0.9.9-r1: flow-based network traffic analyser capable of Cisco NetFlow data export
 net-analyzer/speedtest-cli 2.1.1 2.1.2: Command line interface for testing internet bandwidth using speedtest.net
 net-analyzer/sqlninja 0.2.6_p1-r1: A SQL Server injection & takeover tool
