@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Small tool for altering forwarded network data in real time"
 HOMEPAGE="http://freshmeat.net/projects/netsed"
-SRC_URI="mirror://gentoo/${PN}.tgz -> ${P}.tgz
+SRC_URI="mirror://gentoo/${P}.tgz
 	mirror://gentoo/${PN}_0.01c-2.diff.gz"
 
 LICENSE="LGPL-2"

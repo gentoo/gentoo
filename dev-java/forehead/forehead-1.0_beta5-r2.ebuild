@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A framework to assist in controlling the run-time ClassLoader"
 HOMEPAGE="http://forehead.werken.com"
-SRC_URI="mirror://gentoo/forehead-${PV}.tbz2 -> ${P}.tbz2"
+SRC_URI="mirror://gentoo/${P}.tbz2"
 
 LICENSE="Werken-1.1.1.1"
 SLOT="0"

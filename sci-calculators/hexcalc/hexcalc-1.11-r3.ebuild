@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A simple hex calculator for X"
 HOMEPAGE="ftp://ftp.x.org/R5contrib/"
-SRC_URI="mirror://gentoo/${PN}.tar.Z -> ${P}.tar.Z"
+SRC_URI="mirror://gentoo/${P}.tar.Z"
 
 LICENSE="GPL-2"
 SLOT="0"
