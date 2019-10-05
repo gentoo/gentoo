@@ -25,6 +25,7 @@ src_prepare() {
 	default
 	sed -i -e "/vendor\/github.com\/jteeuwen\/go-bindata\/go-bindata/d" -e "s/-s -w/-w/" src/${EGO_PN}/hack/lib/golang.sh || die
 	sed -i -e "/export PATH/d" src/${EGO_PN}/hack/generate-bindata.sh || die
+	rm src/${EGO_PN}/go.mod || die
 }
 
 src_compile() {
