@@ -145,7 +145,6 @@ src_configure() {
 
 		-D edje-sound-and-video=true
 		-D eeze=true
-		-D elua=true
 		-D libmount=true
 		-D native-arch-optimization=true
 		-D xinput2=true
@@ -162,6 +161,7 @@ src_configure() {
 		$(meson_use gstreamer)
 		$(meson_use harfbuzz)
 		$(meson_use hyphen)
+		$(meson_use luajit elua)
 		$(meson_use nls)
 		$(meson_use physics)
 		$(meson_use pulseaudio)
