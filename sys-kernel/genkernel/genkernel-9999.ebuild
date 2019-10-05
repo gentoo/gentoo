@@ -45,7 +45,7 @@ DM_HOME="https://people.redhat.com/~heinzm/sw/dmraid/src"
 BB_HOME="https://busybox.net/downloads"
 
 COMMON_URI="
-	mirror://sourceforge/boost/boost_${VERSION_BOOST//./_}.tar.bz2
+	https://dl.bintray.com/boostorg/release/${VERSION_BOOST}/source/boost_${VERSION_BOOST//./_}.tar.bz2
 	mirror://kernel/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v${VERSION_BTRFS_PROGS}.tar.xz
 	https://www.busybox.net/downloads/busybox-${VERSION_BUSYBOX}.tar.bz2
 	mirror://kernel/linux/utils/cryptsetup/v$(ver_cut 1-2 ${VERSION_CRYPTSETUP})/cryptsetup-${VERSION_CRYPTSETUP}.tar.xz
