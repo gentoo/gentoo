@@ -68,3 +68,4 @@ sys-libs/libcap-ng python
 sys-process/audit gssapi python
 sys-process/procps test
 sys-fs/squashfs-tools-ng lz4 lzo zstd
+dev-libs/libusb doc
