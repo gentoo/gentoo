@@ -26,6 +26,8 @@ DEPEND=">=net-libs/ldns-${PV}[dane?,ecdsa?,ed25519?,ed448?,gost?]
 	examples? ( net-libs/libpcap )"
 RDEPEND="${DEPEND}"
 
+RESTRICT="test"
+
 S=${WORKDIR}/${MY_P}
 
 src_configure() {
