@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 
 inherit cmake-utils gnome2-utils python-single-r1 xdg-utils
 
@@ -15,12 +15,12 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-IUSE="aqbanking smartcard debug doc examples gnome-keyring +gui mysql nls ofx
-	  postgres python quotes -register2 sqlite test"
+IUSE="aqbanking debug doc examples gnome-keyring +gui mysql nls ofx postgres
+	  python quotes -register2 smartcard sqlite test"
 
 REQUIRED_USE="
-	smartcard? ( aqbanking )
-	python? ( ${PYTHON_REQUIRED_USE} )"
+	python? ( ${PYTHON_REQUIRED_USE} )
+	smartcard? ( aqbanking )"
 
 # libdbi version requirement for sqlite taken from bug #455134
 #
@@ -29,11 +29,11 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/glib-2.46.0:2
 	>=dev-libs/libxml2-2.7.0:2
-	>=sys-libs/zlib-1.1.4
-	>=dev-scheme/guile-2.2.0:12=[deprecated,regex]
 	dev-libs/boost:=[icu,nls]
 	dev-libs/icu:=
 	dev-libs/libxslt
+	>=dev-scheme/guile-2.2.0:12=[deprecated,regex]
+	>=sys-libs/zlib-1.1.4
 	aqbanking? (
 		>=net-libs/aqbanking-5[ofx?]
 		sys-libs/gwenhywfar
@@ -88,7 +88,6 @@ PATCHES=(
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-	xdg_environment_reset
 }
 
 src_unpack() {
@@ -100,6 +99,7 @@ src_unpack() {
 
 src_prepare() {
 	cmake-utils_src_prepare
+	xdg_environment_reset
 
 	# Fix tests writing to /tmp
 	local fixtestfiles=(
