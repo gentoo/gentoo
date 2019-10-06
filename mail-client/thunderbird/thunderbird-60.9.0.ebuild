@@ -144,11 +144,9 @@ DEPEND="${CDEPEND}
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	elibc_glibc? (
-		virtual/cargo
 		virtual/rust
 	)
 	elibc_musl? (
-		virtual/cargo
 		virtual/rust
 	)
 	amd64? (
