@@ -1,14 +1,14 @@
 BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=configure install prepare
-DEPEND=>=dev-libs/dbus-glib-0.100 >=dev-libs/glib-2.38:2 sys-apps/dbus:= introspection? ( dev-libs/gobject-introspection:= ) kernel_linux? ( virtual/libusb:1 virtual/libgudev:= virtual/udev ios? ( >=app-pda/libimobiledevice-1:= >=app-pda/libplist-1:= ) ) doc? ( dev-util/gtk-doc ) dev-libs/libxslt app-text/docbook-xsl-stylesheets >=sys-devel/gettext-0.19.8 virtual/pkgconfig
+DEPEND=>=dev-libs/glib-2.38:2 sys-apps/dbus:= introspection? ( dev-libs/gobject-introspection:= ) kernel_linux? ( virtual/libusb:1 virtual/libgudev:= virtual/udev ios? ( >=app-pda/libimobiledevice-1:= >=app-pda/libplist-1:= ) ) doc? ( dev-util/gtk-doc ) dev-libs/libxslt app-text/docbook-xsl-stylesheets >=sys-devel/gettext-0.19.8 virtual/pkgconfig
 DESCRIPTION=D-Bus abstraction for enumerating power devices, querying history and statistics
 EAPI=7
 HOMEPAGE=https://upower.freedesktop.org/
 IUSE=doc +introspection ios kernel_FreeBSD kernel_linux selinux
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
 LICENSE=GPL-2
-RDEPEND=>=dev-libs/dbus-glib-0.100 >=dev-libs/glib-2.38:2 sys-apps/dbus:= introspection? ( dev-libs/gobject-introspection:= ) kernel_linux? ( virtual/libusb:1 virtual/libgudev:= virtual/udev ios? ( >=app-pda/libimobiledevice-1:= >=app-pda/libplist-1:= ) ) selinux? ( sec-policy/selinux-devicekit )
+RDEPEND=>=dev-libs/glib-2.38:2 sys-apps/dbus:= introspection? ( dev-libs/gobject-introspection:= ) kernel_linux? ( virtual/libusb:1 virtual/libgudev:= virtual/udev ios? ( >=app-pda/libimobiledevice-1:= >=app-pda/libplist-1:= ) ) selinux? ( sec-policy/selinux-devicekit )
 SLOT=0/3
 SRC_URI=https://gitlab.freedesktop.org/upower/upower/uploads/93cfe7c8d66ed486001c4f3f55399b7a/upower-0.99.11.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=94a5870fc9d82b74e555b22c591c8135
+_md5_=788db7540e24cd355f16995b0f18a269

@@ -458,7 +458,7 @@ app-arch/zoo 2.10-r5: Manipulate archives of files in compressed form
 app-arch/zopfli 1.0.2: Very good, but slow, deflate or zlib compression
 app-arch/zpaq 7.15: Journaling incremental deduplicating archiving compressor
 app-arch/zpaq-extras 3: A set of additional compression profiles for app-arch/zpaq
-app-arch/zstd 1.1.3 1.3.4-r1 1.3.7-r1 1.3.8 1.4.0 1.4.1 1.4.2: zstd fast compression library
+app-arch/zstd 1.1.3 1.3.4-r1 1.3.7-r1 1.3.8 1.4.0 1.4.1 1.4.2 1.4.3: zstd fast compression library
 app-backup/amanda 3.3.9 3.4.1 3.4.2 3.4.3 3.4.4 3.4.5 3.5-r1 3.5.1-r1: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/attic 0.16-r1 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.2.0_pre20180221 9999: Backup system inspired by TimeVault and FlyBack
@@ -14584,7 +14584,7 @@ net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
 net-analyzer/netdata 1.13.0 1.14.0 1.14.0-r1 1.15.0 1.15.0-r1 1.15.0-r2 1.16.0 1.16.1 1.17.0 1.17.1 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.3_beta6-r3: An active/passive address reconnaissance tool
 net-analyzer/nethogs 0.8.5-r1: A small 'net top' tool, grouping bandwidth by process
-net-analyzer/neti 2.0 2.0-r1: NETI@Home research project from GATech
+net-analyzer/neti 2.0-r1: NETI@Home research project from GATech
 net-analyzer/netio 1.32-r1: measures net throughput with NetBIOS and TCP/IP protocols
 net-analyzer/netperf 2.7.0-r2: Network performance benchmark
 net-analyzer/netpipe 3.7.2: network protocol independent performance evaluator
@@ -14664,7 +14664,7 @@ net-analyzer/slurm 0.3.3-r2 0.4.3: Realtime network interface monitor based on F
 net-analyzer/smokeping 2.6.9-r1 2.7.2 2.7.3: A powerful latency measurement tool
 net-analyzer/sngrep 1.4.6-r1: Ncurses SIP Messages flow viewer
 net-analyzer/sniffit 0.3.7-r4: Interactive Packet Sniffer
-net-analyzer/snmptt 1.2 1.4: SNMP Trap Translator
+net-analyzer/snmptt 1.4: SNMP Trap Translator
 net-analyzer/snort 2.9.8.3-r2 2.9.12: The de facto standard for intrusion detection/prevention
 net-analyzer/snortalog 2.4.3-r1: a powerful perl script that summarizes snort logs
 net-analyzer/snortsam 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
@@ -17517,7 +17517,7 @@ sys-auth/pam_passwdqc 1.0.5 1.3.0: Stub ebuild to help migrate to newer package 
 sys-auth/pam_radius 1.3.17-r1: PAM RADIUS authentication module
 sys-auth/pam_require 0.7: Allows you to require a special group or user to access a service
 sys-auth/pam_skey 1.1.5-r6: PAM interface for the S/Key authentication system
-sys-auth/pam_smb 2.0.0_rc6-r1 2.0.0_rc6-r2: PAM module for authenticating against an SMB (such as the Win_x families) server
+sys-auth/pam_smb 2.0.0_rc6-r2: PAM module for authenticating against an SMB (such as the Win_x families) server
 sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users against their ssh-agent keys
 sys-auth/pam_u2f 1.0.4-r1 1.0.6 1.0.7 1.0.8: Library for authenticating against PAM with a Yubikey
