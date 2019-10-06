@@ -9,6 +9,6 @@
 The project provides a database of photographic lenses and a library that allows advanced access to the database including functions to correct images based on intimate knowledge of lens characteristics and calibration data.
 </longdescription>
 	<upstream>
-		<remote-id type="sourceforge">lensfun</remote-id>
+		<remote-id type="github">lensfun/lensfun</remote-id>
 	</upstream>
 </pkgmetadata>
