@@ -5,7 +5,7 @@ EAPI=7
 
 MY_P="${P}-src"
 MY_V="${PV//\./-}"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_6 )
 PYTHON_REQ_USE="threads,xml"
 inherit cmake-utils python-r1
 
@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/ukoethe/${PN}/releases/download/Version-${MY_V}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~amd64 ~arm64 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="MIT"
@@ -91,9 +91,6 @@ src_prepare() {
 	vigra_disable png
 	vigra_disable tiff
 	vigra_disable zlib
-
-	# Don't use python_fix_shebang because we can't put this behind USE="python"
-	sed -i -e '/env/s:python:python2:' config/vigra-config.in || die
 }
 
 src_configure() {
