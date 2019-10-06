@@ -1,0 +1,386 @@
+From b819ef6a35495e12a204cbb241cdb2502c4cd11e Mon Sep 17 00:00:00 2001
+From: Valerii Malov <jazzvoid@gmail.com>
+Date: Sun, 22 Sep 2019 21:20:47 +0300
+Subject: Cleanup ViewModel a bit and try to fix crash on exit
+
+Summary:
+removeTorrent makes changes to torrent list we are currently iterating
+on per-item basis, this causees heap-use-after-free in onExit
+Just call removeRows which should be functionally the same, but should
+delete all items in one batch
+
+CCBUG: 383127
+
+Compact ViewModel::Item::update
+Fix a few warnings (0 as nullptr, c-style casts)
+Remove useless ViewModel::torrentFromIndex variant
+Remove unused headers
+add CMakeLists.txt.user to gitignore
+
+Test Plan: build with asan, run & exit, see asan stacktrace before changing onExit
+
+Reviewers: stikonas
+
+Differential Revision: https://phabricator.kde.org/D24149
+---
+ .gitignore                  |   1 +
+ ktorrent/CMakeLists.txt     |   1 +
+ ktorrent/view/viewmodel.cpp | 197 ++++++++++++--------------------------------
+ ktorrent/view/viewmodel.h   |  21 +++--
+ 4 files changed, 63 insertions(+), 157 deletions(-)
+
+diff --git a/.gitignore b/.gitignore
+index 2ad76d6..d88e731 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,3 +1,4 @@
+ build
+ .kdev4/
+ ktorrent.kdev4
++CMakeLists.txt.user
+diff --git a/ktorrent/CMakeLists.txt b/ktorrent/CMakeLists.txt
+index 75ba8a1..bf605a5 100644
+--- a/ktorrent/CMakeLists.txt
++++ b/ktorrent/CMakeLists.txt
+@@ -91,6 +91,7 @@ set(KTORRENT_ICONS_PNG
+ ecm_add_app_icon(ktorrent_SRC ICONS ${KTORRENT_ICONS_PNG})
+ 
+ add_executable(ktorrent_app ${ktorrent_SRC})
++set_property(TARGET ktorrent_app PROPERTY CXX_STANDARD 14)
+ set_target_properties(ktorrent_app  PROPERTIES OUTPUT_NAME ktorrent)
+ 
+ target_link_libraries(ktorrent_app
+diff --git a/ktorrent/view/viewmodel.cpp b/ktorrent/view/viewmodel.cpp
+index 6834186..b9feeab 100644
+--- a/ktorrent/view/viewmodel.cpp
++++ b/ktorrent/view/viewmodel.cpp
+@@ -32,18 +32,17 @@
+ 
+ #include <KLocalizedString>
+ 
+-#include <util/log.h>
+-#include <util/sha1hash.h>
+-#include <util/functions.h>
++#include <groups/group.h>
+ #include <interfaces/torrentinterface.h>
+-#include <interfaces/trackerinterface.h>
+-#include <torrent/timeestimator.h>
+ #include <torrent/queuemanager.h>
+-#include <groups/group.h>
++#include <torrent/timeestimator.h>
++#include <util/functions.h>
++#include <util/sha1hash.h>
++
+ #include "core.h"
+-#include "viewdelegate.h"
+-#include "view.h"
+ #include "settings.h"
++#include "view.h"
++#include "viewdelegate.h"
+ 
+ using namespace bt;
+ 
+@@ -80,125 +79,45 @@ namespace kt
+     {
+         bool ret = false;
+         const TorrentStats& s = tc->getStats();
+-        if (status != s.status)
+-        {
+-            to_update.append(model->index(row, NAME));
+-            status = s.status;
+-            if (sort_column == NAME)
+-                ret = true;
+-        }
+-
+-        if (bytes_downloaded != s.bytes_downloaded)
+-        {
+-            to_update.append(model->index(row, BYTES_DOWNLOADED));
+-            bytes_downloaded = s.bytes_downloaded;
+-            if (sort_column == BYTES_DOWNLOADED)
+-                ret = true;
+-        }
+-
+-        if (total_bytes_to_download != s.total_bytes_to_download)
+-        {
+-            to_update.append(model->index(row, TOTAL_BYTES_TO_DOWNLOAD));
+-            total_bytes_to_download = s.total_bytes_to_download;
+-            if (sort_column == TOTAL_BYTES_TO_DOWNLOAD)
+-                ret = true;
+-        }
+-
+-        if (bytes_uploaded != s.bytes_uploaded)
+-        {
+-            to_update.append(model->index(row, BYTES_UPLOADED));
+-            bytes_uploaded = s.bytes_uploaded;
+-            if (sort_column == BYTES_UPLOADED)
+-                ret = true;
+-        }
+-
+-        if (bytes_left != s.bytes_left_to_download)
+-        {
+-            to_update.append(model->index(row, BYTES_LEFT));
+-            bytes_left = s.bytes_left_to_download;
+-            if (sort_column == BYTES_LEFT)
+-                ret = true;
+-        }
+-
+-        if (download_rate != s.download_rate)
+-        {
+-            to_update.append(model->index(row, DOWNLOAD_RATE));
+-            download_rate = s.download_rate;
+-            if (sort_column == DOWNLOAD_RATE)
+-                ret = true;
+-        }
+-
+-        if (upload_rate != s.upload_rate)
+-        {
+-            to_update.append(model->index(row, UPLOAD_RATE));
+-            upload_rate = s.upload_rate;
+-            if (sort_column == UPLOAD_RATE)
+-                ret = true;
+-        }
+ 
+-        int neta = tc->getETA();
+-        if (eta != neta)
+-        {
+-            to_update.append(model->index(row, ETA));
+-            eta = neta;
+-            if (sort_column == ETA)
+-                ret = true;
+-        }
+-
+-        if (seeders_connected_to != s.seeders_connected_to || seeders_total != s.seeders_total)
+-        {
+-            to_update.append(model->index(row, SEEDERS));
+-            seeders_connected_to = s.seeders_connected_to;
+-            seeders_total = s.seeders_total;
+-            if (sort_column == SEEDERS)
+-                ret = true;
+-        }
+-
+-        if (leechers_total != s.leechers_total || leechers_connected_to != s.leechers_connected_to)
+-        {
+-            to_update.append(model->index(row, LEECHERS));
+-            leechers_total = s.leechers_total;
+-            leechers_connected_to = s.leechers_connected_to;
+-            if (sort_column == LEECHERS)
+-                ret = true;
+-        }
+-
+-        double perc = Percentage(s);
+-        if (fabs(percentage - perc) > 0.001)
+-        {
+-            to_update.append(model->index(row, PERCENTAGE));
+-            percentage = perc;
+-            if (sort_column == PERCENTAGE)
+-                ret = true;
+-        }
+-
+-        float ratio = s.shareRatio();
+-        if (fabsf(share_ratio - ratio) > 0.001)
+-        {
+-            to_update.append(model->index(row, SHARE_RATIO));
+-            share_ratio = ratio;
+-            if (sort_column == SHARE_RATIO)
+-                ret = true;
+-        }
++        const auto update_if_differs = [&](auto &target, const auto &source, int column){
++            if (target != source) {
++                to_update.append(model->index(row, column));
++                target = source;
++                ret |= (sort_column == column);
++            }
++        };
+ 
+-        Uint32 rdl = tc->getRunningTimeDL();
+-        if (runtime_dl != rdl)
+-        {
+-            to_update.append(model->index(row, DOWNLOAD_TIME));
+-            runtime_dl = rdl;
+-            if (sort_column == DOWNLOAD_TIME)
+-                ret = true;
+-        }
++        const auto update_if_differs_float = [&](auto &target, const auto &source, int column){
++            if (fabs(target - source) > 0.001) {
++                to_update.append(model->index(row, column));
++                target = source;
++                ret |= (sort_column == column);
++            }
++        };
++
++        update_if_differs(status, s.status, NAME);
++        update_if_differs(bytes_downloaded, s.bytes_downloaded, BYTES_DOWNLOADED);
++        update_if_differs(total_bytes_to_download, s.total_bytes_to_download, TOTAL_BYTES_TO_DOWNLOAD);
++        update_if_differs(bytes_uploaded, s.bytes_uploaded, BYTES_UPLOADED);
++        update_if_differs(bytes_left, s.bytes_left, BYTES_LEFT);
++        update_if_differs(download_rate, s.download_rate, DOWNLOAD_RATE);
++        update_if_differs(upload_rate, s.upload_rate, UPLOAD_RATE);
++        update_if_differs(eta, tc->getETA(), ETA);
++        update_if_differs(seeders_connected_to, s.seeders_connected_to, SEEDERS);
++        update_if_differs(seeders_total, s.seeders_total, SEEDERS);
++        update_if_differs(leechers_connected_to, s.leechers_connected_to, LEECHERS);
++        update_if_differs(leechers_total, s.leechers_total, LEECHERS);
++
++        update_if_differs_float(percentage, Percentage(s), PERCENTAGE);
++        update_if_differs_float(share_ratio, s.shareRatio(), SHARE_RATIO);
++
++        update_if_differs(runtime_dl, tc->getRunningTimeDL(), DOWNLOAD_TIME);
++        const auto rul = (tc->getRunningTimeUL() >= tc->getRunningTimeDL()
++                              ? tc->getRunningTimeUL() - tc->getRunningTimeDL()
++                              : 0);
++        update_if_differs(runtime_ul, rul, SEED_TIME);
+ 
+-        Uint32 rul = tc->getRunningTimeUL();
+-        rul = rul >= rdl ? rul - rdl : 0; // make sure rul cannot go negative
+-        if (runtime_ul != rul)
+-        {
+-            to_update.append(model->index(row, SEED_TIME));
+-            runtime_ul = rul;
+-            if (sort_column == SEED_TIME)
+-                ret = true;
+-        }
+         return ret;
+     }
+ 
+@@ -223,13 +142,11 @@ namespace kt
+                 return BytesPerSecToString(download_rate);
+             else
+                 return QVariant();
+-            break;
+         case UPLOAD_RATE:
+             if (upload_rate >= 103) // lowest "visible" speed, all below will be 0,0 Kb/s
+                 return BytesPerSecToString(upload_rate);
+             else
+                 return QVariant();
+-            break;
+         case ETA:
+             if (eta == bt::TimeEstimator::NEVER)
+                 return QString(QChar(0x221E)); // infinity
+@@ -237,7 +154,6 @@ namespace kt
+                 return DurationToString(eta);
+             else
+                 return QVariant();
+-            break;
+         case SEEDERS:
+             return QString(QString::number(seeders_connected_to) + QLatin1String(" (") + QString::number(seeders_total) + QLatin1Char(')'));
+         case LEECHERS:
+@@ -397,7 +313,7 @@ namespace kt
+         connect(core, &Core::torrentRemoved, this, &ViewModel::removeTorrent);
+         sort_column = 0;
+         sort_order = Qt::AscendingOrder;
+-        group = 0;
++        group = nullptr;
+         num_visible = 0;
+ 
+         kt::QueueManager* qman = core->getQueueManager();
+@@ -635,7 +551,7 @@ namespace kt
+         if (!index.isValid() || index.row() >= torrents.count())
+             return QVariant();
+ 
+-        Item* item = (Item*)index.internalPointer();
++        Item* item = reinterpret_cast<Item*>(index.internalPointer());
+         if (!item)
+             return QVariant();
+ 
+@@ -699,7 +615,7 @@ namespace kt
+             return false;
+ 
+         QString name = value.toString();
+-        Item* item = (Item*)index.internalPointer();
++        Item* item = reinterpret_cast<Item*>(index.internalPointer());
+         if (!item)
+             return false;
+ 
+@@ -796,28 +712,20 @@ namespace kt
+         }
+     }
+ 
+-    const bt::TorrentInterface* ViewModel::torrentFromIndex(const QModelIndex& index) const
+-    {
+-        if (index.isValid() && index.row() < torrents.count())
+-            return torrents[index.row()]->tc;
+-        else
+-            return 0;
+-    }
+-
+-    bt::TorrentInterface* ViewModel::torrentFromIndex(const QModelIndex& index)
++    bt::TorrentInterface* ViewModel::torrentFromIndex(const QModelIndex& index) const
+     {
+         if (index.isValid() && index.row() < torrents.count())
+             return torrents[index.row()]->tc;
+         else
+-            return 0;
++            return nullptr;
+     }
+ 
+-    bt::TorrentInterface* ViewModel::torrentFromRow(int index)
++    bt::TorrentInterface* ViewModel::torrentFromRow(int index) const
+     {
+         if (index < torrents.count() && index >= 0)
+             return torrents[index]->tc;
+         else
+-            return 0;
++            return nullptr;
+     }
+ 
+     void ViewModel::allTorrents(QList<bt::TorrentInterface*> & tlist) const
+@@ -854,10 +762,7 @@ namespace kt
+     void ViewModel::onExit()
+     {
+         // items should be removed before Core delete their tc data.
+-        for (Item* item : qAsConst(torrents))
+-        {
+-            removeTorrent(item->tc);
+-        }
++        removeRows(0, rowCount(), QModelIndex());
+     }
+ 
+     class ViewModelItemCmp
+diff --git a/ktorrent/view/viewmodel.h b/ktorrent/view/viewmodel.h
+index d4e0a64..6422396 100644
+--- a/ktorrent/view/viewmodel.h
++++ b/ktorrent/view/viewmodel.h
+@@ -22,9 +22,15 @@
+ #ifndef KTVIEWMODEL_H
+ #define KTVIEWMODEL_H
+ 
+-#include <QList>
+ #include <QAbstractTableModel>
+-#include <interfaces/torrentinterface.h>
++#include <QList>
++
++#include <torrent/torrentstats.h>
++#include <util/constants.h>
++
++namespace bt {
++    class TorrentInterface;
++}
+ 
+ namespace kt
+ {
+@@ -98,21 +104,14 @@ namespace kt
+          * @param index The model index
+          * @return The torrent if the index is valid and in the proper range, 0 otherwise
+          */
+-        const bt::TorrentInterface* torrentFromIndex(const QModelIndex& index) const;
+-
+-        /**
+-         * Get a torrent from a model index.
+-         * @param index The model index
+-         * @return The torrent if the index is valid and in the proper range, 0 otherwise
+-         */
+-        bt::TorrentInterface* torrentFromIndex(const QModelIndex& index);
++        bt::TorrentInterface *torrentFromIndex(const QModelIndex& index) const;
+ 
+         /**
+          * Get a torrent from a row.
+          * @param index The row index
+          * @return The torrent if the index is valid and in the proper range, 0 otherwise
+          */
+-        bt::TorrentInterface* torrentFromRow(int index);
++        bt::TorrentInterface* torrentFromRow(int index) const;
+ 
+         /**
+          * Get all torrents
+-- 
+cgit v1.1
