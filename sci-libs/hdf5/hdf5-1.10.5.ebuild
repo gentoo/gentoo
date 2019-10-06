@@ -17,7 +17,7 @@ SRC_URI="http://www.hdfgroup.org/ftp/HDF5/releases/${MAJOR_P}/${MY_P}/src/${MY_P
 LICENSE="NCSA-HDF"
 SLOT="0/${PV%%_p*}"
 KEYWORDS="alpha amd64 ~arm arm64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="cxx debug examples fortran +hl mpi static-libs szip threads zlib"
+IUSE="cxx debug examples fortran +hl mpi szip threads zlib"
 
 REQUIRED_USE="
 	cxx? ( !mpi ) mpi? ( !cxx )
@@ -79,10 +79,10 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--enable-deprecated-symbols \
+		--enable-deprecated-symbols --disable-static \
 		$(use debug && echo --enable-build-mode=debug || echo --enable-build-mode=production) \
-		$(use_enable debug codestack) \
 		$(use_enable cxx) \
+		$(use_enable debug codestack) \
 		$(use_enable fortran) \
 		$(use_enable hl) \
 		$(use_enable mpi parallel) \
