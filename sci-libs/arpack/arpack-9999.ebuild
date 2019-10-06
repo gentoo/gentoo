@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools eutils fortran-2 toolchain-funcs
 
@@ -19,7 +19,7 @@ DESCRIPTION="Arnoldi package library to solve large scale eigenvalue problems"
 HOMEPAGE="http://www.caam.rice.edu/software/ARPACK/ https://github.com/opencollab/arpack-ng"
 LICENSE="BSD"
 SLOT="0"
-IUSE="examples mpi static-libs"
+IUSE="examples mpi"
 
 RDEPEND="
 	virtual/blas
@@ -35,6 +35,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--disable-static \
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
 		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)" \
 		$(use_enable mpi)
