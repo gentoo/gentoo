@@ -36,6 +36,7 @@ dev-libs/iniparser doc
 dev-libs/libgcrypt doc
 dev-libs/libnl python
 dev-libs/libtasn1 valgrind
+dev-libs/libusb doc
 dev-libs/libxslt python
 dev-libs/libyaml doc
 dev-python/cython doc test
@@ -69,4 +70,3 @@ sys-libs/libcap-ng python
 sys-process/audit gssapi python
 sys-process/procps test
 sys-fs/squashfs-tools-ng lz4 lzo zstd
-dev-libs/libusb doc
