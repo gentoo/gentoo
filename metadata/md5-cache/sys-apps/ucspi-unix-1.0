@@ -3,10 +3,10 @@ DEPEND=>=dev-libs/bglibs-2.04
 DESCRIPTION=A UCSPI implementation for Unix domain sockets
 EAPI=7
 HOMEPAGE=https://untroubled.org/ucspi-unix/
-KEYWORDS=~amd64 ~ppc ~sparc ~x86
+KEYWORDS=~amd64 ~ppc ~sparc x86
 LICENSE=GPL-2+
 RDEPEND=!net-analyzer/mk-livestatus
 SLOT=0
 SRC_URI=https://untroubled.org/ucspi-unix/archive/ucspi-unix-1.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=1a8a7cf5ac257498f2916ed502aa1f7c
+_md5_=d4c9582ea3465fdb595d6261d6e0f968
