@@ -1,8 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic multilib multilib-minimal toolchain-funcs versionator
+EAPI=7
+inherit eutils flag-o-matic multilib multilib-minimal toolchain-funcs
 
 DESCRIPTION="Lossy speech compression library and tool"
 HOMEPAGE="https://packages.qa.debian.org/libg/libgsm.html"
@@ -13,14 +13,16 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
-S=${WORKDIR}/${PN}-"$(replace_version_separator 2 '-pl' )"
+S=${WORKDIR}/${PN}-"$(ver_rs 2 '-pl' )"
 
 DOCS=( ChangeLog MACHINES MANIFEST README )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-shared.patch \
+	eapply "${FILESDIR}"/${P}-shared.patch \
 		"${FILESDIR}"/${PN}-1.0.12-memcpy.patch \
 		"${FILESDIR}"/${PN}-1.0.12-64bit.patch
+	eapply_user
+	sed -e 's/\$(GSM_INSTALL_LIB)\/libgsm.a	//g' -i Makefile || die
 	multilib_copy_sources
 }
 
@@ -44,7 +46,7 @@ multilib_src_install() {
 		TOAST_INSTALL_MAN="${ED}"/usr/share/man/man1 \
 		install
 
-	dolib lib/libgsm.so*
+	dolib.so lib/libgsm.so*
 
 	dosym ../gsm/gsm.h /usr/include/libgsm/gsm.h
 }
