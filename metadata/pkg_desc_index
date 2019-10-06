@@ -13378,7 +13378,7 @@ media-libs/libplacebo 1.18.0 9999: Reusable library for GPU-accelerated image pr
 media-libs/libpng 1.2.59 1.5.30 1.6.37: Portable Network Graphics library
 media-libs/libpostproc 0.8.0.20121125 10.20140517 10.20140517-r1 9999: Video post processing library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
-media-libs/libprojectm 2.1.0-r2 3.1.0-r1 3.1.1_rc4 9999: A graphical music visualization plugin similar to milkdrop
+media-libs/libprojectm 2.1.0-r2 3.1.0-r1 3.1.1_rc4 3.1.1_rc5 9999: A graphical music visualization plugin similar to milkdrop
 media-libs/libqaccessibilityclient 0.4.1: Library for writing accessibility clients such as screen readers
 media-libs/libquicktime 1.2.4-r3: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.4.1 0.4.1-r1 0.4.1-r2 0.9.3 0.9.4 0.9.4-r1: Library for parsing video download links
