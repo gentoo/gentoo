@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 ROS_REPO_URI="https://github.com/ros/ros_comm"
 KEYWORDS="~amd64 ~arm"
@@ -28,7 +28,7 @@ RDEPEND="
 	dev-ros/genpy[${PYTHON_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-libs/console_bridge:=
-	dev-python/pycrypto[${PYTHON_USEDEP}]
+	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/python-gnupg[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
