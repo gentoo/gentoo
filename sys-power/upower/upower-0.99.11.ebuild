@@ -20,7 +20,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbs
 IUSE="doc +introspection ios kernel_FreeBSD kernel_linux selinux"
 
 COMMON_DEPS="
-	>=dev-libs/dbus-glib-0.100
 	>=dev-libs/glib-2.38:2
 	sys-apps/dbus:=
 	introspection? ( dev-libs/gobject-introspection:= )
