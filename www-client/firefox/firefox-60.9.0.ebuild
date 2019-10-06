@@ -139,6 +139,7 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}/firefox"
+	eapply "${FILESDIR}"/firefox-60.9.0-rust-1.38-compat.patch
 
 	# Enable gnomebreakpad
 	if use debug ; then
