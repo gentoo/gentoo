@@ -12693,7 +12693,7 @@ media-fonts/baekmuk-fonts 2.2-r2: Korean Baekmuk Font
 media-fonts/bitstream-cyberbit 2.0-r2: Cyberbit Unicode (including CJK) font
 media-fonts/cantarell 0.101 0.111: Default fontset for GNOME Shell
 media-fonts/cardo 1.04: Unicode font for classicists, medievalists and linguists
-media-fonts/cascadia-code 1909.16: A monospaced font developed for Windows Terminal
+media-fonts/cascadia-code 1909.16 1910.04: A monospaced font developed for Windows Terminal
 media-fonts/cheapskatefonts 1.0: Dustismo's decorative font collection
 media-fonts/clearsans 1.00: OpenType font optimized for readability on small screens
 media-fonts/cm-unicode 0.7.0-r1: Computer Modern Unicode fonts
@@ -13499,7 +13499,7 @@ media-libs/sdl2-ttf 2.0.14 2.0.15: library that allows you to use TrueType fonts
 media-libs/sdlmm 0.1.8-r1: A C++ Wrapper for the Simple DirectMedia Layer
 media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
-media-libs/shaderc 2017.2-r1 2018.0 9999: Collection of tools, libraries and tests for shader compilation
+media-libs/shaderc 2018.0: Collection of tools, libraries and tests for shader compilation
 media-libs/simage 1.7.0-r1 1.7.1a_beta_pre20180312: Image and video texturing library
 media-libs/skstream 0.3.9: FreeSockets - Portable C++ classes for IP (sockets) applications
 media-libs/slv2 0.6.6-r2: A library to make the use of LV2 plugins as simple as possible for applications
@@ -15721,7 +15721,7 @@ net-p2p/go-ethereum 1.8.15: Official golang implementation of the Ethereum proto
 net-p2p/go-ipfs-bin 0.4.19 0.4.20 0.4.22: Main implementation of IPFS
 net-p2p/gtk-gnutella 1.1.14 1.1.15: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
-net-p2p/ktorrent 5.1.1-r1 5.1.2-r1: Powerful BitTorrent client based on KDE Frameworks
+net-p2p/ktorrent 5.1.1-r1 5.1.2-r2: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/mktorrent 1.0-r1 1.1_p20180502: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mktorrent-borg 0.9.9: Console .torrent file creator. It support Multi Trackers (tier groups)
@@ -17471,7 +17471,7 @@ sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xdg-desktop-portal 1.4.2-r1: Desktop integration portal
 sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
-sys-apps/yarn 1.9.4 1.10.1 1.12.3 1.13.0 1.15.2 1.16.0 1.17.3: Fast, reliable, and secure node dependency management
+sys-apps/yarn 1.9.4 1.10.1 1.12.3 1.13.0 1.15.2 1.16.0 1.17.3 1.19.0: Fast, reliable, and secure node dependency management
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/authenticator 0.2.4 9999: Two-factor authentication code generator for GNOME
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0 1.2.1 9999: Framework for defining and tracking users, login sessions and seats
@@ -18029,7 +18029,7 @@ sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1: Standard GNU database libraries
 sys-libs/glibc 2.19-r2 2.24-r4 2.25-r11 2.26-r7 2.27-r6 2.28-r6 2.29-r2 2.29-r4 2.29-r5 2.30 2.30-r1 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.20.0 4.20.2: Multi-platform helper library for other libraries
-sys-libs/kpmcore 4.0.0: Library for managing partitions
+sys-libs/kpmcore 4.0.0 4.0.1: Library for managing partitions
 sys-libs/ldb 1.1.29-r1 1.1.31 1.2.4 1.3.6 1.3.8 1.4.7 1.5.4 1.5.5 1.6.3 2.0.5 2.0.7: An LDAP-like embedded database
 sys-libs/lib-compat 1.5: Compatibility C++ library for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
@@ -18128,7 +18128,7 @@ sys-power/pm-utils 1.4.1-r6 1.4.1-r7: Suspend and hibernation utilities
 sys-power/pmtools 20110323-r1: Collection of tools for ACPI and power management
 sys-power/powermgmt-base 1.31: Script to test whether computer is running on AC power
 sys-power/powernowd 1.00-r4 1.00-r5: Daemon to control the speed and voltage of CPUs
-sys-power/powerstat 0.02.15 0.02.17 0.02.18 9999: Laptop power measuring tool
+sys-power/powerstat 0.02.18 0.02.20 9999: Laptop power measuring tool
 sys-power/powertop 2.10 9999: tool to diagnose issues with power consumption and power management
 sys-power/sispmctl 4.0: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20150810-r1 1.0_p20190605: Userspace Software Suspend and S2Ram
