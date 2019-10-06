@@ -36,6 +36,7 @@ dev-libs/iniparser doc
 dev-libs/libgcrypt doc
 dev-libs/libnl python
 dev-libs/libtasn1 valgrind
+dev-libs/libusb doc
 dev-libs/libxslt python
 dev-libs/libyaml doc
 dev-python/cython doc test
@@ -46,6 +47,7 @@ dev-python/snakeoil test
 dev-util/catalyst iso
 dev-util/meson test
 dev-util/ninja doc test
+dev-util/patchutils test
 dev-util/pkgconf test
 dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
 media-libs/freetype harfbuzz png
