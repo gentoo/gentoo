@@ -17,14 +17,14 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="test"
 
-RDEPEND=">=dev-lang/erlang-19.3[ssl]"
+RDEPEND=">=dev-lang/erlang-21.3[ssl]
+	<dev-lang/erlang-23.0[ssl]"
 DEPEND="${RDEPEND}
 	app-arch/zip
 	app-arch/unzip
 	app-text/docbook-xml-dtd:4.5
 	app-text/xmlto
 	>=dev-lang/elixir-1.6.6
-	<dev-lang/elixir-1.7.0
 	dev-libs/libxslt
 	$(python_gen_any_dep 'dev-python/simplejson[${PYTHON_USEDEP}]')
 "
@@ -60,7 +60,7 @@ src_install() {
 	done
 
 	# install the init script
-	newinitd "${FILESDIR}"/rabbitmq-server.init-r3 rabbitmq
+	newinitd "${FILESDIR}"/rabbitmq-server.init-r4 rabbitmq
 	systemd_dounit "${FILESDIR}/rabbitmq.service"
 
 	# install documentation
