@@ -76,7 +76,10 @@ RDEPEND="${COMMON_DEPEND}
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.1.1-singlefile-torrent.patch" ) # git master
+PATCHES=(
+	"${FILESDIR}/${PN}-5.1.1-singlefile-torrent.patch" # git master
+	"${FILESDIR}/${P}-crash-on-exit.patch" # bug #632588
+)
 
 src_configure() {
 	local mycmakeargs=(
