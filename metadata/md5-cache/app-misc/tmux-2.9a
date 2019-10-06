@@ -5,10 +5,10 @@ DESCRIPTION=Terminal multiplexer
 EAPI=7
 HOMEPAGE=https://tmux.github.io/
 IUSE=debug selinux utempter vim-syntax kernel_FreeBSD kernel_linux
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=ISC
 RDEPEND=dev-libs/libevent:0= sys-libs/ncurses:0= utempter? ( kernel_linux? ( sys-libs/libutempter ) kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-lib-9.0 sys-libs/libutempter ) ) ) selinux? ( sec-policy/selinux-screen ) vim-syntax? ( app-vim/vim-tmux )
 SLOT=0
 SRC_URI=https://github.com/tmux/tmux/releases/download/2.9a/tmux-2.9a.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=77a8e3e52c4bbb998c1b17fb3420efff
+_md5_=754193ee5cb81eb2c6b6bfb59ffe67f4
