@@ -9308,7 +9308,7 @@ dev-python/zope-schema 4.5.0: Zope schema Architecture
 dev-python/zope-testing 4.6.2 4.7: Zope testing helpers
 dev-python/zope-testrunner 4.7.0: Zope testrunner script
 dev-python/zsi 2.1_alpha1-r1: Web Services for Python
-dev-python/zstandard 0.8.1 0.11.0: Zstandard Bindings for Python
+dev-python/zstandard 0.8.1 0.11.0 0.12.0: Zstandard Bindings for Python
 dev-qt/assistant 5.12.3 5.12.5: Tool for viewing on-line documentation in Qt help file format
 dev-qt/designer 5.12.3 5.12.5: WYSIWYG tool for designing and building graphical user interfaces with QtWidgets
 dev-qt/linguist 5.12.3 5.12.5: Graphical tool for translating Qt applications
