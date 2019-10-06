@@ -1522,9 +1522,9 @@ app-emulation/winetricks 20190310 20190912 99999999: Easy way to install DLLs ne
 app-emulation/x48 0.6.4-r1: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.10.3-r1 4.11.1-r3 4.12.0-r1: The Xen virtual machine monitor
-app-emulation/xen-pvgrub 4.10.3 4.11.1 4.12.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.10.3-r2 4.11.1-r5 4.12.0-r3: Xen tools including QEMU and xl
+app-emulation/xen 4.10.3-r1 4.11.1-r3 4.11.2 4.12.0-r1: The Xen virtual machine monitor
+app-emulation/xen-pvgrub 4.10.3 4.11.1 4.11.2 4.12.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
+app-emulation/xen-tools 4.10.3-r2 4.11.1-r5 4.11.2 4.12.0-r3: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r4 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.2: Manages the {,/usr}/bin/awk symlink
@@ -10864,7 +10864,7 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 4.14.33 4.14.33-r1 4.20.3 5.1.15: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.6.6 0.6.7 9999: pkgcore-based QA utility
+dev-util/pkgcheck 0.6.8 9999: pkgcore-based QA utility
 dev-util/pkgconf 1.5.4 1.6.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgconfig-openbsd 20130507-r2: A perl based version of pkg-config from OpenBSD
@@ -12573,7 +12573,7 @@ mail-client/mutt 1.10.1 1.11.4 1.12.1 1.12.2: A small but very powerful text-bas
 mail-client/neomutt 20180223 20180323 20180512 20180622 20180716 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
-mail-client/roundcube 1.3.8 1.3.9: A browser-based multilingual IMAP client with an application-like user interface
+mail-client/roundcube 1.3.8 1.3.9 1.3.10: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
 mail-client/thunderbird 52.9.1 60.9.0 68.1.1: Thunderbird Mail Client
@@ -17305,7 +17305,7 @@ sys-apps/intel-performance-counter-monitor 2.10: Intel Performance Counter Monit
 sys-apps/intel-sa-00075-tools 1.0: Tools from Intel to detect and mitigate the AMT/MEI vulnerability
 sys-apps/inxi 3.0.33.1 3.0.34.1 3.0.36.1: The CLI inxi collects and prints hardware and system information
 sys-apps/iotools 1.5: Simple commands to access hardware device registers
-sys-apps/ipmicfg 1.29.0.181029: An in-band utility for configuring Supermicro IPMI devices
+sys-apps/ipmicfg 1.30.0.190710: An in-band utility for configuring Supermicro IPMI devices
 sys-apps/ipmitool 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6 3.0.9 3.1.3 3.1.4: IPMI Management Utilities
 sys-apps/iproute2 4.19.0-r1 5.1.0 5.2.0-r1 5.3.0 9999: kernel routing and traffic control utilities
@@ -17427,9 +17427,9 @@ sys-apps/setserial 2.17-r5: Configure your serial ports with it
 sys-apps/sg3_utils 1.42 1.44: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.6 4.7: Utilities to deal with user accounts
 sys-apps/smartmontools 7.0-r1 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
-sys-apps/smc-sum 2.2.0.20190220-r1: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
+sys-apps/smc-sum 2.3.0.20190808: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
 sys-apps/smc-sum-driver 1.6.0.20151201-r3: Supermicro Update Manager (SUM) kernel module
-sys-apps/smcipmitool 2.21.0.181029: An out-of-band utility for interfacing with SuperBlade and IPMI devices via CLI
+sys-apps/smcipmitool 2.21.0.181029 2.22.0.190701: An out-of-band utility for interfacing with SuperBlade and IPMI devices via CLI
 sys-apps/sparc-utils 1.9-r5: Various sparc utilities from Debian GNU/Linux
 sys-apps/spu-tools 2.3.0.136: CELL spu ps and top alike utilities
 sys-apps/stroke 0.1.3-r1: A powerful tool to change file timestamps (including ctimes)

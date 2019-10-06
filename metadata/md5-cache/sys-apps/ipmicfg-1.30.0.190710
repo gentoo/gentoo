@@ -7,5 +7,5 @@ KEYWORDS=-* ~amd64 ~x86
 LICENSE=supermicro
 RESTRICT=bindist fetch mirror
 SLOT=0
-SRC_URI=ftp://ftp.supermicro.com/utility/IPMICFG/IPMICFG_1.29.0_build.181029.zip
-_md5_=9c770ea3f3ae4853b236d61a62fa0a2b
+SRC_URI=ftp://ftp.supermicro.com/utility/IPMICFG/IPMICFG_1.30.0_build.190710.zip
+_md5_=ff05836d5e874e127ac7ec70831d5d03
