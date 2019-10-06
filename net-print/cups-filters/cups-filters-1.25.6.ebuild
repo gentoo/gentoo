@@ -48,10 +48,6 @@ DEPEND="${RDEPEND}
 	test? ( media-fonts/dejavu )
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-missing_cstring.patch" #693498
-)
-
 src_prepare() {
 	default
 	[[ "${PV}" == "9999" ]] && eautoreconf
