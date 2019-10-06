@@ -1,0 +1,63 @@
+From 518214ee85e10c5bc99d3b115ae7ac9cc3fc14fc Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Mon, 29 Apr 2013 23:02:25 -0400
+Subject: [PATCH] Avoid build-time dependency on NetworkManager
+
+Needed to prevent a dependency loop:
+nm -> libsoup -> glib-networking -> libproxy -> nm
+
+https://bugs.gentoo.org/467696
+
+* asturm@gentoo.org: Rebased on top of 0.4.15
+---
+ libproxy/cmake/modules/network_networkmanager.cmk |  4 ++--
+ libproxy/modules/network_networkmanager.cpp       | 23 +++++++++++++++++------
+ 2 files changed, 19 insertions(+), 8 deletions(-)
+
+--- a/libproxy/cmake/modules/network_networkmanager.cmk	2017-05-11 11:33:33.000000000 +0200
++++ b/libproxy/cmake/modules/network_networkmanager.cmk	2019-10-06 15:17:37.881932672 +0200
+@@ -1,6 +1,6 @@
+ if (NOT WIN32 AND NOT APPLE)
+-  px_check_modules(NM libnm dbus-1)
++  px_check_modules(NM dbus-1)
+   if (NOT NM_FOUND)
+-    px_check_modules(NMold NetworkManager dbus-1)
++    px_check_modules(NMold dbus-1)
+   endif (NOT NM_FOUND)
+ endif()
+
+--- a/libproxy/modules/network_networkmanager.cpp	2017-05-11 11:33:33.000000000 +0200
++++ b/libproxy/modules/network_networkmanager.cpp	2019-10-06 15:24:21.621173178 +0200
+@@ -23,13 +23,24 @@
+ using namespace libproxy;
+ 
+ #include <dbus/dbus.h>
+-#include <NetworkManager.h>
+ 
+-// Backwards compatibility: with the switch to libnm, NM_STATE_CONNECTED is no
+-// longer defined. NM_STATE_CONNECTED_GLOBAL appeared with NM 0.9 and was aliased
+-#ifndef NM_STATE_CONNECTED
+-  #define NM_STATE_CONNECTED NM_STATE_CONNECTED_GLOBAL
+-#endif
++/*
++ * copy-pasted from NetworkManager-0.9.6.4's NetworkManager.h to prevent
++ * a circular dependency; https://bugs.gentoo.org/467696
++ */
++#define	NM_DBUS_PATH                        "/org/freedesktop/NetworkManager"
++#define	NM_DBUS_INTERFACE                   "org.freedesktop.NetworkManager"
++typedef enum {
++	NM_STATE_UNKNOWN          = 0,
++	NM_STATE_ASLEEP           = 10,
++	NM_STATE_DISCONNECTED     = 20,
++	NM_STATE_DISCONNECTING    = 30,
++	NM_STATE_CONNECTING       = 40,
++	NM_STATE_CONNECTED_LOCAL  = 50,
++	NM_STATE_CONNECTED_SITE   = 60,
++	NM_STATE_CONNECTED_GLOBAL = 70
++} NMState;
++#define NM_STATE_CONNECTED NM_STATE_CONNECTED_GLOBAL
+ 
+ class networkmanager_network_extension : public network_extension {
+ public:
+-- 
+1.8.2.1
