@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit eutils
 
@@ -18,12 +18,17 @@ RDEPEND="|| ( www-client/links
 		www-client/elinks
 		www-client/lynx )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-bash-shabang.patch
+	"${FILESDIR}"/${P}-empty-dirs.patch
+)
+
+src_prepare() {
+	default
+}
+
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-
-	epatch "${FILESDIR}/${P}-bash-shabang.patch" \
-		"${FILESDIR}/${P}-empty-dirs.patch"
 }
 
 src_install() {
