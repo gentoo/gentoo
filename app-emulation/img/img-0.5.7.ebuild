@@ -21,7 +21,7 @@ RESTRICT="test"
 src_compile() {
 	local TAGS=$(usex seccomp 'seccomp' '')
 	pushd src/${EGO_PN} || die
-	GOPATH="${S}" go build -tags "noembed ${TAGS}" -v -ldflags "-X ${EGO_PN}/version.GITCOMMIT=${GIT_COMMIT} -X ${EGO_PN}/version.VERSION=${PV}" -o "${S}"/bin/img . || die
+	GOPATH="${S}" go build -mod vendor -tags "noembed ${TAGS}" -v -ldflags "-X ${EGO_PN}/version.GITCOMMIT=${GIT_COMMIT} -X ${EGO_PN}/version.VERSION=${PV}" -o "${S}"/bin/img . || die
 	popd || die
 }
 

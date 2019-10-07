@@ -12,9 +12,10 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/projectM-visualizer/projectm.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/projectM-visualizer/projectm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	MY_PV="${PV/_/-}"
+	SRC_URI="https://github.com/projectM-visualizer/projectm/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~sparc ~x86"
-	S=${WORKDIR}/projectm-${PV}/
+	S=${WORKDIR}/projectm-${MY_PV}/
 fi
 
 LICENSE="LGPL-2"
@@ -34,8 +35,10 @@ RDEPEND="gles2? ( media-libs/mesa[gles2] )
 	sdl? ( >=media-libs/libsdl2-2.0.5 )
 	sys-libs/zlib"
 
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	default
@@ -43,9 +46,11 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable gles2 gles ) \
-		$(use_enable qt5 qt ) \
-		$(use_enable sdl ) \
+	local myeconfargs=(
+		$(use_enable gles2 gles)
+		$(use_enable qt5 qt)
+		$(use_enable sdl)
 		--enable-emscripten=no
+	)
+	econf "${myeconfargs[@]}"
 }
