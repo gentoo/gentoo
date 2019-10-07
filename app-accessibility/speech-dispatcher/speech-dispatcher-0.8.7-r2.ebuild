@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{5,6} )
 
 inherit eutils python-r1
 
@@ -13,8 +13,8 @@ SRC_URI="http://www.freebsoft.org/pub/projects/speechd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="alsa ao +espeak flite nas pulseaudio python static-libs"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+IUSE="alsa ao +espeak flite nas pulseaudio python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -41,7 +41,7 @@ src_configure() {
 
 	local myeconfargs=(
 		--disable-python
-		$(use_enable static-libs static)
+		--disable-static
 		$(use_with alsa)
 		$(use_with ao libao)
 		$(use_with espeak)
@@ -103,7 +103,7 @@ pkg_postinst() {
 		editconfig="y"
 	fi
 	if [[ "${editconfig}" == "y" ]]; then
-		ewarn "You must edit ${EROOT}/etc/speech-dispatcher/speechd.conf"
+		ewarn "You must edit ${EROOT}etc/speech-dispatcher/speechd.conf"
 		ewarn "and make sure the settings there match your system."
 		ewarn
 	fi
