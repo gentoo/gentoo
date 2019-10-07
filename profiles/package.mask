@@ -1054,62 +1054,6 @@ games-emulation/daphne
 # Removal in 30 days.  Bug #693746.
 mail-mta/mini-qmail
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Unmaintained.  Beta version from 2012.  The ebuild is currently
-# broken, and since it relies on CD install, so it needs someone with
-# the CD to fix it.  The original maintainer suggests trying Serious Sam
-# Fusion in wine instead.
-# Removal in 30 days.  Bug #551174.
-games-fps/serious-sam-tfe
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Has a build failure repoted.  Last bumped in 2006.  Homepage is gone,
-# and (newer) sources are nowhere to be found.
-# Removal in 30 days.  Bug #617188.
-sys-cluster/lspbs
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# sci-mathematics/kodkod: reported to fail to build.  Last bumped
-# in 2012.  Homepage is gone, and sources are nowhere to be found.
-#
-# Removal in 30 days.  Bug #685802.
-sci-mathematics/kodkod
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Unmaintained.  Not bumped since 2011.
-# Removal in 30 days.  Bug #693232.
-net-mail/kuvert
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Both packages are (now) mirror-restricted and have non-working
-# SRC_URI.
-# Removal in 30 days.  Bug #601052.
-games-action/mutantstorm-demo
-games-action/spacetripper-demo
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Mirror-restricted, SRC_URI down and sources nowhere to be found.
-# Removal in 30 days.  Bug #692798.
-sys-apps/adjtime
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Unmaintained.  Installs world-writable directory.  Last release
-# in 2004.
-# Removal in 30 days.  Bug #692522.
-app-admin/yaala
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Last release in 2004.  EAPI 0.  x86-only.  Upstream recommends
-# switching to XML Forms.
-# Removal in 30 days.  Bug #693658.
-app-text/fdftk
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Proprietary, fetch-restricted package.  Last bumped in 2007.  EAPI 0.
-# No reverse dependencies.
-# Removal in 30 days.  Bug #693656.
-dev-java/jdbc-informix
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
@@ -1509,7 +1453,6 @@ app-admin/amazon-ec2-init
 # See bugs #515926 and #510960.
 sys-libs/lib-compat
 sys-libs/lib-compat-loki
-games-action/mutantstorm-demo
 games-action/phobiaii
 games-fps/rtcw
 games-fps/unreal

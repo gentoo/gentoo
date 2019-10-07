@@ -21,7 +21,6 @@ dev-python/aiohttp-socks test
 # Kent Fredric <kentnl@gentoo.org> (2019-07-30)
 # These features require dev-perl/GD, which currently can't be
 # considered stable due to serious defects upstream. Bug #661634
-app-admin/yaala gd
 app-misc/gcstar stats
 app-misc/g15daemon perl
 dev-lang/php coverage

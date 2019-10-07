@@ -47,13 +47,11 @@ games-action/heretic2-demo
 games-action/hotline-miami
 games-action/intrusion2
 games-action/lugaru
-games-action/mutantstorm-demo
 games-action/phobiaii
 games-action/rune
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
 games-action/solar2
-games-action/spacetripper-demo
 games-action/swordandsworcery
 games-action/trine-enchanted-edition
 games-action/trine2
@@ -101,7 +99,6 @@ games-fps/rtcw
 games-fps/rtcwmp-demo
 games-fps/rtcwsp-demo
 games-fps/sauerbraten
-games-fps/serious-sam-tfe
 games-fps/serious-sam-tse
 games-fps/soldieroffortune
 games-fps/unreal-tournament
