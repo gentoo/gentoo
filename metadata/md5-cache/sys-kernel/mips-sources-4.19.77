@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
 DEPEND=>=sys-devel/gcc-4.7.0 >=sys-devel/patch-2.7.4 !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
-DESCRIPTION=Linux-Mips GIT sources for MIPS-based machines, dated 20180705
+DESCRIPTION=Kernel.org sources for MIPS-based machines
 EAPI=6
-HOMEPAGE=https://www.linux-mips.org/ https://www.gentoo.org/
+HOMEPAGE=https://www.kernel.org/ https://www.linux-mips.org/ https://www.gentoo.org/
 IUSE=experimental ip27 ip28 ip30 symlink build
 KEYWORDS=-* ~mips
 LICENSE=GPL-2
 RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf )
 RESTRICT=binchecks strip
-SLOT=4.17.19
-SRC_URI=https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.17.19.xz https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.xz mirror://gentoo/mipsgit-4.17.0-20180705.diff.xz mirror://gentoo/mips-sources-4.17.0-patches-v1.tar.xz
+SLOT=4.19.77
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.77.xz https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz mirror://gentoo/mips-sources-4.19.0-patches-v1.tar.xz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	kernel-2	6af9d2d3dc661bc7d81186849717aa07	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=21a2581acc260da5444d50d70d20288c
+_md5_=bb04ef497e99943eda5e1f70015d173a
