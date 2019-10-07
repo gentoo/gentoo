@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs user
 
@@ -23,18 +23,19 @@ fi
 
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
-IUSE="mysql openssl postgres samples"
+IUSE="mysql +openssl postgres samples"
 
 DEPEND="
 	dev-libs/boost:=
 	dev-cpp/gtest
 	dev-libs/log4cplus
 	mysql? ( dev-db/mysql-connector-c )
-	!openssl? ( dev-libs/botan:0= )
+	!openssl? ( dev-libs/botan:2= )
 	openssl? ( dev-libs/openssl:0= )
 	postgres? ( dev-db/postgresql:* )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -49,12 +50,14 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-static
+		--enable-perfdhcp
+		--localstatedir="${EPREFIX}/var"
+		--without-werror
 		$(use_with mysql)
 		$(use_with openssl)
 		$(use_with postgres pgsql)
 		$(use_enable samples install-configurations)
-		--disable-static
-		--without-werror
 	)
 	econf "${myeconfargs[@]}"
 }
@@ -63,7 +66,8 @@ src_install() {
 	default
 	newconfd "${FILESDIR}"/${PN}-confd ${PN}
 	newinitd "${FILESDIR}"/${PN}-initd ${PN}
-	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
+	keepdir /var/{lib,run}/${PN} /var/log
+	find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
 }
 
 pkg_preinst() {
