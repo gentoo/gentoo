@@ -90,6 +90,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/2.0.0-rc4-libressl.patch
+	"${FILESDIR}"/2.0.0-rc4-bitmap-endian.patch
 	"${DISTDIR}"/freerdp-2.0.0-rc4-fix-NTLM-AvPair-lists.patch
 )
 
