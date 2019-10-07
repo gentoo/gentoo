@@ -6,10 +6,6 @@
 # One example: https://tracker.ceph.com/issues/41523
 >=sys-cluster/ceph-14.2 dpdk
 
-# Aaron Bauman <bman@gentoo.org> (2019-04-14)
-# Masked due to vulnerability in dev-libs/ace
-dev-cpp/xsd ace
-
 # Jason Zaman <perfinion@gentoo.org> (2015-09-06)
 # This is masked in base/package.use.mask as Linux only.
 sys-auth/consolekit -cgroups

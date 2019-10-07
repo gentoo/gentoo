@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -14,9 +14,10 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="readline"
 
-RDEPEND="x11-libs/libX11
+RDEPEND="
+	x11-libs/libX11
 	x11-libs/libXext
-	readline? ( sys-libs/readline:5 )"
+	readline? ( sys-libs/readline:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-libs/libXt"
@@ -28,7 +29,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply_user
+	default
 	sed -i '698s/inline/static inline/' src/emulate.c || die
 	eautoreconf
 }
@@ -38,10 +39,10 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
+
 	insinto /usr/share/"${PN}"/romdump
 	doins -r romdump/{README,ROMDump*}
-	dodoc AUTHORS README ChangeLog
 }
 
 pkg_postinst() {

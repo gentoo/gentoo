@@ -1110,54 +1110,6 @@ app-text/fdftk
 # Removal in 30 days.  Bug #693656.
 dev-java/jdbc-informix
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Unmaintained.  EAPI 0.  Last (pre-alpha) release in 2001.  No reverse
-# dependencies.  Removal in 30 days.  Bug #693644.
-media-libs/sdlmm
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Has reported build and test failures.  Last release in 2013.  Current
-# stable is EAPI 0, and there is no point in stabilizing the newer
-# version.  No reverse dependencies.
-# Removal in 30 days.  Bug #622340.
-media-libs/sdif
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Unmaintained.  EAPI 0.  Last bumped in 2005.  Upstream homepage
-# and sources gone.  No reverse dependencies.
-# Removal in 30 days.  Bug #693642.
-media-libs/libopendaap
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Does not install correctly on multilib systems.  EAPI 0.  Multiple
-# other QA issues.  Obscure format with unlikely real use.  The domain
-# for homepage expired.  Last upstream commit in 2013.
-# Removal in 30 days.  Bug #313087.
-media-libs/libnut
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Has a build failure reported.  Project discontinued and homepage gone.
-# Last bumped in 2007.  No reverse dependencies.
-# Removal in 30 days.  Bug #664494.
-media-libs/libjackasyn
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Last (and only) release in 2005.  EAPI 0.  No reverse dependencies.
-# Removal in 30 days.  Bug #693640.
-media-libs/libipod
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Proprietary software with restricted download access.  Last bumped
-# in 2011.  Still at EAPI 0.  Of the two revdeps, both make FMOD
-# optional and support alternative sound systems.
-# Removal in 30 days.  Bug #453748.
-media-libs/fmod
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-06)
-# Unmaintained.  Tests fail to build.  Last release in 2014.  No reverse
-# dependencies.  Removal in 30 days.  Bug #640860.
-dev-cpp/xsd
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
