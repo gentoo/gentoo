@@ -15434,7 +15434,7 @@ net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/kafka-bin 1.1.1 2.0.1 2.1.0 2.1.1 2.2.0 2.2.1 2.3.0: A high-throughput distributed messaging system
 net-misc/kafkacat 1.3.1 1.5.0: Generic command line non-JVM Apache Kafka producer and consumer
-net-misc/kea 1.5.0 1.6.0 9999: High-performance production grade DHCPv4 & DHCPv6 server
+net-misc/kea 1.6.0 1.7.0 9999: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.1 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
 net-misc/knemo 0.8.0_pre20161211: Plasma Network Monitor
 net-misc/knock 0.7: A simple port-knocking daemon
@@ -17477,7 +17477,7 @@ sys-auth/libyubikey 1.12 1.13: Yubico C low-level library
 sys-auth/munge 0.5.10-r2 0.5.13 0.5.13-r1: An authentication service for creating and validating credentials
 sys-auth/nss-mdns 0.13 0.14.1 9999: Name Service Switch module for Multicast DNS
 sys-auth/nss-myhostname 0.3: Name Service Switch module for resolving the local hostname
-sys-auth/nss-pam-ldapd 0.8.14-r2 0.9.9 0.9.10: NSS module for name lookups using LDAP
+sys-auth/nss-pam-ldapd 0.8.14-r2 0.9.9 0.9.10 0.9.11: NSS module for name lookups using LDAP
 sys-auth/nss_ldap 265-r5: NSS LDAP Module
 sys-auth/oath-toolkit 2.6.1 2.6.2: Toolkit for using one-time password authentication with HOTP/TOTP algorithms
 sys-auth/openpam 20140912-r2: Open source PAM library
