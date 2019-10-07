@@ -9,7 +9,7 @@ SRC_URI="ftp://ftp.suse.com/pub/people/kukuk/ipv6/${P}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips s390 ~sh ~sparc x86"
+KEYWORDS="amd64 ~arm ~mips s390 ~sh ~sparc x86"
 
 S="${WORKDIR}/${PN}"
 
