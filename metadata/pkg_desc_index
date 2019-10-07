@@ -242,7 +242,7 @@ app-admin/keepassxc 2.4.3-r1 9999: KeePassXC - KeePass Cross-platform Community 
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.2 3.3: A command line interface to KeePass database files
 app-admin/ksonnet 0.13.1: CLI-supported framework for extensible Kubernetes configurations
-app-admin/kube-bench 0.0.33 0.0.34: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
+app-admin/kube-bench 0.0.34: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
 app-admin/kubectx 0.6.3: Fast way to switch between clusters and namespaces in kubectl
 app-admin/lastpass-binary-component 4.19.0: Binary component required by the LastPass Password Manager browser extension
 app-admin/lastpass-cli 1.3.1-r1 1.3.2 1.3.3: Interfaces with LastPass.com from the command line.
@@ -18446,7 +18446,7 @@ www-apps/drupal 7.67 8.6.16 8.7.5 8.7.6 8.7.7: PHP-based open-source platform an
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/gitea 1.8.0 1.8.2 1.8.3: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
-www-apps/grafana-bin 6.3.4 6.3.5 6.3.6: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
+www-apps/grafana-bin 6.3.5 6.3.6 6.4.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hiawatha-monitor 1.6: Monitoring application for www-servers/hiawatha
 www-apps/hugo 0.48: A Fast and Flexible Static Site Generator built with love in Go
 www-apps/icingaweb2 2.6.3 2.7.1 9999: Icinga Web 2 - Frontend for icinga2
