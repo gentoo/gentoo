@@ -11,7 +11,7 @@ SRC_URI="http://quotatool.ekenberg.se/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~amd64 ppc x86"
 IUSE=""
 
 RDEPEND="sys-fs/quota"
