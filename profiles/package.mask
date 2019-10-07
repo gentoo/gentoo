@@ -1080,12 +1080,6 @@ sci-mathematics/kodkod
 # Removal in 30 days.  Bug #693232.
 net-mail/kuvert
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Both packages are (now) mirror-restricted and have non-working
-# SRC_URI.
-# Removal in 30 days.  Bug #601052.
-games-action/mutantstorm-demo
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
@@ -1485,7 +1479,6 @@ app-admin/amazon-ec2-init
 # See bugs #515926 and #510960.
 sys-libs/lib-compat
 sys-libs/lib-compat-loki
-games-action/mutantstorm-demo
 games-action/phobiaii
 games-fps/rtcw
 games-fps/unreal
