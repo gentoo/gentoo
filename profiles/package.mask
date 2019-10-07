@@ -1146,13 +1146,6 @@ media-libs/libjackasyn
 # Removal in 30 days.  Bug #693640.
 media-libs/libipod
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Proprietary software with restricted download access.  Last bumped
-# in 2011.  Still at EAPI 0.  Of the two revdeps, both make FMOD
-# optional and support alternative sound systems.
-# Removal in 30 days.  Bug #453748.
-media-libs/fmod
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
