@@ -40,7 +40,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix)"
+		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix ${LLVM_MAX_SLOT})"
 		-DLLVM_BUILD_TOOLS=$(usex tools "ON" "OFF")
 		$(usex test "-DLLVM_INCLUDE_TESTS=ON" "")
 	)

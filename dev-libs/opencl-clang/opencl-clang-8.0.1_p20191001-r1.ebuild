@@ -29,7 +29,7 @@ PATCHES=(
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix)"
+		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix ${LLVM_MAX_SLOT})"
 		-DCLANG_LIBRARY_DIRS="${EPREFIX}"/usr/lib/clang
 	)
 	cmake-utils_src_configure

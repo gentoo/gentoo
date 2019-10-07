@@ -28,7 +28,7 @@ S="${WORKDIR}"/${PN}-igc-${PV}
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_LIBRARY_PATH=$(get_llvm_prefix)/$(get_libdir)
+		-DCMAKE_LIBRARY_PATH=$(get_llvm_prefix ${LLVM_MAX_SLOT})/$(get_libdir)
 		-DIGC_OPTION__FORCE_SYSTEM_LLVM=ON
 		-DIGC_PREFERRED_LLVM_VERSION=8
 	)
