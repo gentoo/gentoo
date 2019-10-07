@@ -33,6 +33,7 @@ each_ruby_prepare() {
 }
 
 all_ruby_prepare() {
+	sed -i -e 's/git ls-files/find/' ${RUBY_FAKEGEM_GEMSPEC} || die
 	sed -i -e '/bundler/ s:^:#:' \
 		-e '1i require "tempfile"; gem "activerecord", "~>5.2.0"' spec/cases/helper.rb || die
 	sed -i -e '3irequire "timeout"' spec/spec_helper.rb || die
