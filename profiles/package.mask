@@ -1062,12 +1062,6 @@ mail-mta/mini-qmail
 # Removal in 30 days.  Bug #551174.
 games-fps/serious-sam-tfe
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Has a build failure repoted.  Last bumped in 2006.  Homepage is gone,
-# and (newer) sources are nowhere to be found.
-# Removal in 30 days.  Bug #617188.
-sys-cluster/lspbs
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
