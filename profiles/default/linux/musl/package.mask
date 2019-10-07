@@ -28,7 +28,6 @@ games-action/rune
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
 games-action/solar2
-games-action/spacetripper-demo
 games-action/swordandsworcery
 games-action/trine
 games-action/trine-enchanted-edition

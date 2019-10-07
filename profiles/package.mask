@@ -1085,7 +1085,6 @@ net-mail/kuvert
 # SRC_URI.
 # Removal in 30 days.  Bug #601052.
 games-action/mutantstorm-demo
-games-action/spacetripper-demo
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
