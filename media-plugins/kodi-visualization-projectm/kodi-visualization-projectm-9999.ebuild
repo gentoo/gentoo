@@ -30,7 +30,7 @@ IUSE=""
 DEPEND="
 	~media-tv/kodi-9999
 	~media-libs/kodi-platform-9999
-	>=media-libs/libprojectm-3.1.1_rc4
+	>=media-libs/libprojectm-3.1.1_rc4:=
 	>=media-libs/glm-0.9.9.5
 	virtual/opengl
 	"
