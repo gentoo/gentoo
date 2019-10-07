@@ -14438,7 +14438,7 @@ net-analyzer/angst 0.4b-r2: an active sniffer that provides methods for aggressi
 net-analyzer/apinger 0.4.1: Alarm Pinger
 net-analyzer/argus 3.0.8.2-r1: network Audit Record Generation and Utilization System
 net-analyzer/argus-clients 3.0.8 3.0.8.2 3.0.8.2-r2 3.0.8.2-r3: Clients for net-analyzer/argus
-net-analyzer/arp-scan 1.9 1.9.5: ARP scanning and fingerprinting tool
+net-analyzer/arp-scan 1.9 1.9.5 99999: ARP scanning and fingerprinting tool
 net-analyzer/arp-sk 0.0.16-r2: A swiss knife tool for ARP
 net-analyzer/arping 2.17 2.19 2.20 9999: A utility to see if a specific IP address is taken and what MAC address owns it
 net-analyzer/arpoison 0.6-r2: A utility to poison ARP caches
