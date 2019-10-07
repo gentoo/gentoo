@@ -15486,7 +15486,7 @@ net-misc/netprofiles-ims 0.1.0134: Netprofiles Interface Management System manag
 net-misc/netsed 0.01b-r1: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.18.2: A set of co-operative tools that make networking simple and straightforward
-net-misc/nextcloud-client 2.5.2: Desktop Syncing Client for Nextcloud
+net-misc/nextcloud-client 2.5.2 2.6.0: Desktop Syncing Client for Nextcloud
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
