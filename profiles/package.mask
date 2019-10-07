@@ -1104,12 +1104,6 @@ app-admin/yaala
 # Removal in 30 days.  Bug #693658.
 app-text/fdftk
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Proprietary, fetch-restricted package.  Last bumped in 2007.  EAPI 0.
-# No reverse dependencies.
-# Removal in 30 days.  Bug #693656.
-dev-java/jdbc-informix
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
