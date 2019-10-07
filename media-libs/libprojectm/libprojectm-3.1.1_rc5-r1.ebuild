@@ -35,8 +35,10 @@ RDEPEND="gles2? ( media-libs/mesa[gles2] )
 	sdl? ( >=media-libs/libsdl2-2.0.5 )
 	sys-libs/zlib"
 
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	default
@@ -44,9 +46,11 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable gles2 gles ) \
-		$(use_enable qt5 qt ) \
-		$(use_enable sdl ) \
+	local myeconfargs=(
+		$(use_enable gles2 gles)
+		$(use_enable qt5 qt)
+		$(use_enable sdl)
 		--enable-emscripten=no
+	)
+	econf "${myeconfargs[@]}"
 }
