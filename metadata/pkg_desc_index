@@ -17667,7 +17667,7 @@ sys-cluster/kube-controller-manager 1.13.10 1.14.6 1.14.7 1.15.3 1.15.4 1.16.0: 
 sys-cluster/kube-proxy 1.13.10 1.14.6 1.14.7 1.15.3 1.15.4 1.16.0: Kubernetes Proxy service
 sys-cluster/kube-router 0.3.1: A turnkey solution for Kubernetes networking
 sys-cluster/kube-scheduler 1.13.10 1.14.6 1.14.7 1.15.3 1.15.4 1.16.0: Kubernetes Scheduler
-sys-cluster/kubeadm 1.13.10 1.14.6 1.14.7 1.15.3 1.15.4 1.16.0: CLI to Easily bootstrap a secure Kubernetes cluster
+sys-cluster/kubeadm 1.14.7 1.15.4 1.16.0: CLI to Easily bootstrap a secure Kubernetes cluster
 sys-cluster/kubectl 1.13.10 1.14.6 1.14.7 1.15.3 1.15.4 1.16.0: CLI to run commands against Kubernetes clusters
 sys-cluster/kubelet 1.13.10 1.14.6 1.14.7 1.15.3 1.15.4 1.16.0: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
