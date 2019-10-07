@@ -13,7 +13,7 @@ SRC_URI="mirror://debian/pool/main/x/${PN}/${MY_P}.orig.tar.gz
 
 LICENSE="XCIN GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~amd64 ppc x86"
 IUSE="debug nls unicode"
 
 RDEPEND=">=sys-libs/db-4.5
