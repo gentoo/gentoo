@@ -15164,7 +15164,7 @@ net-libs/rabbitmq-c 0.9.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.11: A parsing library for RIPE Atlas result strings
 net-libs/roadrunner 0.9.1: RoadRunner library provides API for using Blocks Extensible Exchange Protocol
-net-libs/rpc2 2.0 2.10 2.14: Remote procedure call package for IP/UDP (used by Coda)
+net-libs/rpc2 2.14: Remote procedure call package for IP/UDP (used by Coda)
 net-libs/rpcsvc-proto 0 1.4: rpcsvc protocol definitions from glibc
 net-libs/serf 1.3.8 1.3.8-r1 1.3.9: HTTP client library
 net-libs/shairplay 0_pre20170118 0_pre20180824 0_pre20180824-r1 9999: Apple airplay and raop protocol server
@@ -18958,7 +18958,7 @@ x11-misc/lightdm 1.26.0-r1 1.28.0 1.30.0: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 2.0.5-r1 2.0.6: LightDM GTK+ Greeter
 x11-misc/lightdm-mini-greeter 0.3.2 0.3.4: A Minimal, Configurable, Single-User GTK3 LightDM Greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1 0.9.0-r2: Mute/unmute and other macros for LINEAK
-x11-misc/lineak-xosdplugin 0.9.0-r1 0.9.0-r2: Xosd plugin for LINEAK
+x11-misc/lineak-xosdplugin 0.9.0-r2: Xosd plugin for LINEAK
 x11-misc/lineakd 0.9.0-r2: Linux support for Easy Access and Internet Keyboards
 x11-misc/lndir 1.0.3-r2 9999: create a shadow directory of symbolic links to another directory tree
 x11-misc/lsw 0.3: list window names
