@@ -12,7 +12,7 @@ HOMEPAGE="http://policyd.sf.net/"
 SRC_URI="http://policyd.sourceforge.net/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa x86"
 IUSE="libressl"
 DEPEND="dev-db/mysql-connector-c:0=
 	!libressl? ( dev-libs/openssl:0= )

@@ -17,7 +17,7 @@ SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_P
 
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LANGS=" ca cs de es fi fr hu ja nb nl pl pt-BR ru sl"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
