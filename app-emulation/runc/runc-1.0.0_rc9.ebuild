@@ -10,7 +10,7 @@ else
 	MY_PV="${PV/_/-}"
 	RUNC_COMMIT="d736ef14f0288d6993a1845745d6756cfc9ddd5a" # Change this when you update the ebuild
 	SRC_URI="https://${EGO_PN}/archive/${RUNC_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
 	inherit golang-build golang-vcs-snapshot
 fi
 
