@@ -68,7 +68,7 @@ src_configure() {
 
 	if use opengl && use truetype; then
 			myconf=( --with-ftgl )
-			append-flags -DFTGL213
+			append-cppflags -DFTGL213
 		else
 			myconf=( --without-ftgl )
 	fi
