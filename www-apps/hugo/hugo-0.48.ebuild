@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -87,7 +87,7 @@ RESTRICT="test"
 
 src_compile() {
 	pushd src/${EGO_PN} || die
-	GOPATH="${S}" go install -v -ldflags "-X ${EGO_PN}/hugolib.CommitHash=${GIT_COMMIT}" $(usex sass "-tags extended" "") || die
+	GOPATH="${S}" go install -mod vendor -v -ldflags "-X ${EGO_PN}/hugolib.CommitHash=${GIT_COMMIT}" $(usex sass "-tags extended" "") || die
 	popd || die
 	bin/hugo gen man || die
 	bin/hugo gen autocomplete --completionfile hugo || die
