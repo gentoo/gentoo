@@ -4066,7 +4066,7 @@ dev-java/ant-apache-resolver 1.9.13 1.10.5: Apache Ant's optional tasks dependin
 dev-java/ant-apache-xalan2 1.9.13 1.10.5: Apache Ant's optional tasks depending on xalan
 dev-java/ant-commons-logging 1.9.13 1.10.5: Apache Ant's optional tasks depending on commons-logging
 dev-java/ant-commons-net 1.9.13 1.10.5: Apache Ant's optional tasks depending on commons-net
-dev-java/ant-contrib 1.0_beta3-r2: A collection of tasks for Apache Ant
+dev-java/ant-contrib 1.0_beta2-r2 1.0_beta3-r2: A collection of tasks for Apache Ant
 dev-java/ant-core 1.9.13-r2 1.10.5-r2: Java-based build tool similar to 'make' that uses XML configuration files
 dev-java/ant-eclipse-ecj 4.2.1 4.4.2 4.5.1 4.10: Ant Compiler Adapter for Eclipse Java Compiler
 dev-java/ant-ivy 1.4.1-r1 2.3.0-r2: Ivy is a free java based dependency manager
