@@ -15363,7 +15363,7 @@ net-misc/dleyna-server 0.5.0: library for implementing services that allow clien
 net-misc/dmr_utils 9999: Python utilities for working with DMR
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2017.75 2018.76: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 48.3.56 58.3.88 58.3.88-r1 81.4.195: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 48.3.56 58.3.88 58.3.88-r1 81.4.195 82.4.155: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0 1.6.0-r1 19: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
@@ -17662,14 +17662,14 @@ sys-cluster/hpx 0.9.99 1.0.0 1.1.0 1.2.0 1.2.1 9999: C++ runtime system for para
 sys-cluster/ipvsadm 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 2.0.10-r1 2.0.11 2.0.12 2.0.13 2.0.13-r1 2.0.15 2.0.16 2.0.17 2.0.18: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3 9999: High-Performance Intra-Node MPI Communication
-sys-cluster/kube-apiserver 1.13.10 1.14.6 1.14.7 1.15.3 1.15.4 1.16.0: Kubernetes API server
-sys-cluster/kube-controller-manager 1.13.10 1.14.6 1.14.7 1.15.3 1.15.4 1.16.0: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.13.10 1.14.6 1.14.7 1.15.3 1.15.4 1.16.0: Kubernetes Proxy service
+sys-cluster/kube-apiserver 1.14.7 1.15.4 1.16.0: Kubernetes API server
+sys-cluster/kube-controller-manager 1.14.7 1.15.4 1.16.0: Kubernetes Controller Manager
+sys-cluster/kube-proxy 1.14.7 1.15.4 1.16.0: Kubernetes Proxy service
 sys-cluster/kube-router 0.3.1: A turnkey solution for Kubernetes networking
-sys-cluster/kube-scheduler 1.13.10 1.14.6 1.14.7 1.15.3 1.15.4 1.16.0: Kubernetes Scheduler
+sys-cluster/kube-scheduler 1.14.7 1.15.4 1.16.0: Kubernetes Scheduler
 sys-cluster/kubeadm 1.14.7 1.15.4 1.16.0: CLI to Easily bootstrap a secure Kubernetes cluster
 sys-cluster/kubectl 1.13.10 1.14.6 1.14.7 1.15.3 1.15.4 1.16.0: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.13.10 1.14.6 1.14.7 1.15.3 1.15.4 1.16.0: Kubernetes Node Agent
+sys-cluster/kubelet 1.14.7 1.15.4 1.16.0: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1: API for distributing embarrassingly parallel workloads using self-stabilization
 sys-cluster/libqb 0.17.1 0.17.2 1.0.1: Library providing high performance logging, tracing, ipc, and poll
