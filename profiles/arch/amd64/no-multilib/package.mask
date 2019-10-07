@@ -99,7 +99,6 @@ games-fps/rtcw
 games-fps/rtcwmp-demo
 games-fps/rtcwsp-demo
 games-fps/sauerbraten
-games-fps/serious-sam-tfe
 games-fps/serious-sam-tse
 games-fps/soldieroffortune
 games-fps/unreal-tournament
