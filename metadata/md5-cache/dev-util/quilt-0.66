@@ -3,11 +3,11 @@ DESCRIPTION=quilt patch manager
 EAPI=6
 HOMEPAGE=https://savannah.nongnu.org/projects/quilt
 IUSE=emacs graphviz elibc_Darwin elibc_SunOS
-KEYWORDS=amd64 ~arm ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris
+KEYWORDS=amd64 ~arm ~mips ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris
 LICENSE=GPL-2
 PDEPEND=emacs? ( app-emacs/quilt-el )
 RDEPEND=sys-apps/ed dev-util/diffstat graphviz? ( media-gfx/graphviz ) elibc_Darwin? ( app-misc/getopt ) elibc_SunOS? ( app-misc/getopt ) >=sys-apps/coreutils-8.5
 SLOT=0
 SRC_URI=https://savannah.nongnu.org/download/quilt/quilt-0.66.tar.gz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=be9f0e2d912f19a6146cf76aeecb345c
+_md5_=c843ae76e5cc1c591e5211f785299baa

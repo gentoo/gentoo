@@ -3,10 +3,10 @@ DEPEND=>=dev-lang/go-1.12 >=dev-lang/go-1.10
 DESCRIPTION=Prometheus Utility Tool
 EAPI=6
 HOMEPAGE=https://github.com/prometheus/promu
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=Apache-2.0
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/prometheus/promu/archive/v0.5.0.tar.gz -> promu-0.5.0.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
-_md5_=91a13c345cc0d0e191be32d79289deb9
+_md5_=c7cd85b2df68173b26227a4ef27bb174
