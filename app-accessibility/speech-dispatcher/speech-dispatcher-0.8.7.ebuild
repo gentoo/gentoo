@@ -14,7 +14,7 @@ SRC_URI="http://www.freebsoft.org/pub/projects/speechd/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="alsa ao +espeak flite nas pulseaudio python static-libs"
+IUSE="alsa ao +espeak flite nas pulseaudio python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -41,7 +41,7 @@ src_configure() {
 
 	local myeconfargs=(
 		--disable-python
-		$(use_enable static-libs static)
+		--disable-static
 		$(use_with alsa)
 		$(use_with ao libao)
 		$(use_with espeak)
