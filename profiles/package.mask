@@ -1135,12 +1135,6 @@ media-libs/libopendaap
 # Removal in 30 days.  Bug #313087.
 media-libs/libnut
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Has a build failure reported.  Project discontinued and homepage gone.
-# Last bumped in 2007.  No reverse dependencies.
-# Removal in 30 days.  Bug #664494.
-media-libs/libjackasyn
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
