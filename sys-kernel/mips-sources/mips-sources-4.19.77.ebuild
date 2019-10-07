@@ -7,11 +7,10 @@ EAPI="6"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GITDATE="20180128"			# Date of diff between kernel.org and lmo GIT
-GENPATCHREV="2"				# Tarball revision for patches
+GENPATCHREV="1"				# Tarball revision for patches
 
 # Directories
-S="${WORKDIR}/linux-${OKV}-${GITDATE}"
+S="${WORKDIR}/linux-${OKV}"
 MIPS_PATCHES="${WORKDIR}/mips-patches"
 
 # Kernel-2 Vars
@@ -19,7 +18,7 @@ K_SECURITY_UNSUPPORTED="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
-K_BASE_VER="4.13"
+K_BASE_VER="4.18"
 K_FROM_GIT="yes"
 ETYPE="sources"
 
@@ -33,7 +32,7 @@ BASE_KV="$(ver_cut 1-2).0"
 [[ "${EXTRAVERSION}" = -rc* ]] && KVE="${EXTRAVERSION}"
 
 # Portage Vars
-HOMEPAGE="https://www.linux-mips.org/ https://www.gentoo.org/"
+HOMEPAGE="https://www.kernel.org/ https://www.linux-mips.org/ https://www.gentoo.org/"
 KEYWORDS="-* ~mips"
 IUSE="experimental ip27 ip28 ip30"
 RDEPEND=""
@@ -59,13 +58,9 @@ SV_IP28=""				# 	    DO_IP28 == "no", 			   IP28
 SV_IP30=""				# 	    DO_IP30 == "no", 			   IP30
 SV_IP32=""				# 	    DO_IP32 == "no", 			   IP32
 
-DESCRIPTION="Linux-Mips GIT sources for MIPS-based machines, dated ${GITDATE}"
+DESCRIPTION="Kernel.org sources for MIPS-based machines"
 SRC_URI="${KERNEL_URI}
-	 mirror://gentoo/mipsgit-${BASE_KV}${KVE}-${GITDATE}.diff.xz
 	 mirror://gentoo/${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
-
-UNIPATCH_STRICTORDER="yes"
-UNIPATCH_LIST="${DISTDIR}/mipsgit-${BASE_KV}${KVE}-${GITDATE}.diff.xz"
 
 #//------------------------------------------------------------------------------
 
@@ -193,10 +188,8 @@ show_ip22_info() {
 
 show_ip27_info() {
 	echo -e ""
-	ewarn "Heavy disk I/O on recent kernels may randomly trigger a VM_BUG_ON_PAGE()"
-	ewarn "in move_freepages() in mm/page_alloc.c.  The exact trigger cause is"
-	ewarn "unknown at this time.  Please report any oops messages from this"
-	ewarn "bug to bugs.gentoo.org (assign to mips@gentoo.org)"
+	ewarn "IP27 on the Origin 2k/Onyx2 systems may be prone to sudden hard lockups."
+	ewarn "The exact trigger is unknown at this time."
 	echo -e ""
 }
 
@@ -321,16 +314,17 @@ src_unpack() {
 	# Rename the source tree to match the linux-mips git checkout date and
 	# machine type.
 	local fkv="${F_KV%-*}"
-	local v="${fkv}-${GITDATE}"
+	local v="${fkv}"
 	for x in {ip27,ip28,ip30}; do
 		use ${x} && v="${v}.${x}" && break
 	done
-	mv "${WORKDIR}/linux-${fkv/_/-}" "${WORKDIR}/linux-${v}" || die
-	S="${WORKDIR}/linux-${v}"
 
-	# Set the EXTRAVERSION to linux-VERSION-mipsgit-GITDATE
-	EXTRAVERSION="${EXTRAVERSION}-mipsgit-${GITDATE}"
-	unpack_set_extraversion
+	local old="${WORKDIR}/linux-${fkv/_/-}"
+	local new="${WORKDIR}/linux-${v}"
+	if [ "${old}" != "${new}" ]; then
+		mv "${old}" "${new}" || die
+	fi
+	S="${new}"
 }
 
 src_prepare() {
