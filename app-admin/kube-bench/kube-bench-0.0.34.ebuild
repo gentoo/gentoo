@@ -49,7 +49,7 @@ RESTRICT="test"
 
 src_compile() {
 	pushd src/${EGO_PN} || die
-	GOPATH="${S}" go build -v -ldflags "-X github.com/aquasecurity/kube-bench/cmd.KubeBenchVersion=${PV}" -o ${PN} . || die
+	GOPATH="${S}" go build -mod vendor -v -ldflags "-X github.com/aquasecurity/kube-bench/cmd.KubeBenchVersion=${PV}" -o ${PN} . || die
 	popd || die
 }
 
