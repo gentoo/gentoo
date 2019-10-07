@@ -1153,11 +1153,6 @@ media-libs/libipod
 # Removal in 30 days.  Bug #453748.
 media-libs/fmod
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-06)
-# Unmaintained.  Tests fail to build.  Last release in 2014.  No reverse
-# dependencies.  Removal in 30 days.  Bug #640860.
-dev-cpp/xsd
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.

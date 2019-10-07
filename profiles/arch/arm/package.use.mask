@@ -124,7 +124,6 @@ media-libs/opencv contrib_dnn
 
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Moved from use.mask since they are flags local to one package.
-dev-cpp/xsd ace
 media-tv/tvheadend hdhomerun
 
 # Michał Górny <mgorny@gentoo.org> (2017-11-29)
