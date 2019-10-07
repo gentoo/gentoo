@@ -1916,7 +1916,7 @@ app-misc/dvorak7min 1.6.1: Simple ncurses-based typing tutor for learning the Dv
 app-misc/dvorakng 0.6.0: Dvorak typing tutor
 app-misc/dvtm 0.14-r1 0.15-r2 0.15-r3 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4-r1: Wrapper scripts that will execute EDITOR or PAGER
-app-misc/egads 0.9.5 0.9.5-r1: Entropy Gathering And Distribution System
+app-misc/egads 0.9.5-r1: Entropy Gathering And Distribution System
 app-misc/elasticsearch 5.6.16 6.6.1 6.7.1 6.8.1 6.8.3 7.0.0 7.2.0 7.2.1 7.3.2: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.6.2-r1 2.8.4 2.8.8: Utilities to convert emails to trac tickets
 app-misc/emelfm2 0.9.1-r1 0.9.1-r2: A file manager that implements the popular two-pane design
@@ -10782,7 +10782,7 @@ dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
 dev-util/its4 1.1.1 1.1.1-r1: ITS4: Software Security Tool
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
-dev-util/jconfig 2.8.5 2.9: Utility that provides a simple API for the management of properties
+dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
 dev-util/jenkins-bin 2.176.3 2.176.4 2.190.1 2.192 2.197: Extensible continuous integration server
 dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -12552,7 +12552,7 @@ mail-client/balsa 2.5.6-r1: Email client for GNOME
 mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
 mail-client/bower 0.9 0.10: A curses terminal client for the Notmuch email system
 mail-client/claws-mail 3.17.3-r1 3.17.4 9999: An email client (and news reader) based on GTK+
-mail-client/clawsker 0.7.8 1.1.0: Applet to edit Claws Mail's hidden preferences
+mail-client/clawsker 1.1.0: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 1.0: CONE: COnsole News reader and Emailer
 mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on libEtPan
 mail-client/evolution 3.30.5 3.32.4: Integrated mail, addressbook and calendaring functionality
@@ -12603,7 +12603,7 @@ mail-filter/mimedefang 2.84: Antispam, antivirus and other customizable filters 
 mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded messages
 mail-filter/opendkim 2.10.3-r16: A milter providing DKIM signing and verification
 mail-filter/opendmarc 1.1.3 1.3.2-r1 1.3.2-r2 1.3.2-r3: Open source DMARC implementation
-mail-filter/policyd 1.82-r1 1.82-r3: Policy daemon for postfix and other MTAs
+mail-filter/policyd 1.82-r3: Policy daemon for postfix and other MTAs
 mail-filter/policyd-weight 0.1.15.2-r2: Weighted Policy daemon for Postfix
 mail-filter/popfile 1.1.3-r1: Anti-spam bayesian filter
 mail-filter/postforward 1.1.0 1.1.1: Postfix Sender Rewriting Scheme forwarding agent
@@ -12624,7 +12624,7 @@ mail-filter/spamassassin 3.4.2-r2 3.4.2-r6: An extensible mail filter which can 
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
 mail-filter/spambayes 1.1_beta2: An anti-spam filter using on Bayesian filtering
 mail-filter/spamdyke 4.3.0 5.0.1: A drop-in connection-time spam filter for qmail
-mail-filter/spampd 2.30 2.42: spampd is a program to scan messages for Unsolicited Commercial E-mail content
+mail-filter/spampd 2.42: spampd is a program to scan messages for Unsolicited Commercial E-mail content
 mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using Bayesian analysis
 mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a grey-listing policy
 mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
@@ -13539,7 +13539,7 @@ media-plugins/ams-lv2 1.1.0 1.2.1: A port of the AMS internal modules to LV2 plu
 media-plugins/audacious-plugins 3.9-r2 3.10.1 9999: Lightweight and versatile audio player
 media-plugins/calf 0.90.1 9999: A set of open source instruments and effects for digital audio workstations
 media-plugins/caps-plugins 0.9.24: The CAPS Audio Plugin Suite - LADSPA plugin suite
-media-plugins/fil-plugins 0.3.0 0.3.0-r1: FIL-plugins ladspa plugin package. Filters by Fons Adriaensen
+media-plugins/fil-plugins 0.3.0-r1: FIL-plugins ladspa plugin package. Filters by Fons Adriaensen
 media-plugins/frei0r-plugins 1.6.1: A minimalistic plugin API for video effects
 media-plugins/g2reverb 0.7.1: Stereo reverb LADSPA plugin.
 media-plugins/gimp-lensfun 0.2.4-r1: Gimp plugin to correct lens distortions
@@ -14473,7 +14473,7 @@ net-analyzer/flent 1.0.1-r1: The FLExible Network Tester
 net-analyzer/flow-tools 0.68.5.1-r9 0.68.5.1-r10: library and programs to process reports from NetFlow data
 net-analyzer/flowgrind 0.7.1 0.8.0: Network performance measurement tool
 net-analyzer/fping 2.4_beta2_p161-r2 3.13 4.0 4.1 4.2: A utility to ping multiple hosts at once
-net-analyzer/fprobe 1.1 1.1-r3: libpcap-based tool to collect network traffic data and emit it as NetFlow flows
+net-analyzer/fprobe 1.1-r3: libpcap-based tool to collect network traffic data and emit it as NetFlow flows
 net-analyzer/fragroute 1.2.6-r1 1.2.6-r2: Testing of network intrusion detection systems, firewalls and TCP/IP stacks
 net-analyzer/ftester 1.0: Firewall and Intrusion Detection System testing tool
 net-analyzer/fwlogwatch 1.4 1.5: A packet filter and firewall log analyzer
@@ -15144,7 +15144,7 @@ net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter
 net-libs/nghttp2 1.39.2 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 0.12.18 4.9.1 6.14.4 6.17.1 8.12.0 8.16.1 10.16.3 12.10.0 12.11.1 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 6.14.4 6.17.1 8.12.0 8.16.1 10.16.3 12.10.0 12.11.1 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -15194,7 +15194,7 @@ net-mail/Freemail 9999-r1: Anonymous IMAP/SMTP e-mail server over Freenet
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03-r5: A log analyzer for amavisd-new
 net-mail/archivemail 0.9.0-r1: Tool written archiving old email in mailboxes
-net-mail/asmail 2.1 2.1-r1: a small mail monitor similar to xbiff
+net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
 net-mail/automx 0.10.2-r1 0.10.2-r2: A mail user agent auto configuration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
 net-mail/checkpassword 0.90-r2 0.90-r3: A uniform password checking interface for root applications
