@@ -30,7 +30,7 @@ DEPEND="
 	dev-cpp/gtest
 	dev-libs/log4cplus
 	mysql? ( dev-db/mysql-connector-c )
-	!openssl? ( dev-libs/botan:0= )
+	!openssl? ( dev-libs/botan:2= )
 	openssl? ( dev-libs/openssl:0= )
 	postgres? ( dev-db/postgresql:* )
 "
