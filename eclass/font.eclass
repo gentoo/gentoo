@@ -106,7 +106,7 @@ font_cleanup_dirs() {
 	local d f g generated candidate otherfile
 
 	ebegin "Cleaning up font directories"
-	find -L "${EROOT%/}"/usr/share/fonts/ -type d -print0 | while read -d $'\0' d; do
+	while read -d $'\0' -r; do
 		candidate=false
 		otherfile=false
 		for f in "${d}"/*; do
@@ -141,7 +141,7 @@ font_cleanup_dirs() {
 			# if there's nothing left remove the directory
 			find "${d}" -maxdepth 0 -type d -empty -delete || eerror "failed to purge ${d}"
 		fi
-	done
+	done < <(find -L "${EROOT%/}"/usr/share/fonts/ -type d -print0)
 	eend 0
 }
 
