@@ -3,10 +3,10 @@ DEPEND=>=virtual/emacs-23
 DESCRIPTION=Emacs major mode for editing eselect files
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Eselect
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/eselect/eselect-1.4.15.tar.xz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=006537770dbce9538346e4ae996ff453
+_md5_=24a0e081fe91e0341364fb44031d461a

@@ -1322,7 +1322,7 @@ app-emacs/nxml-gentoo-schemas 20170302 20180611: Extension for nxml-mode with Ge
 app-emacs/nxml-libvirt-schemas 1.2.1: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 3.12.1-r1 4.00.1: Emacs mode for OCaml
-app-emacs/org-mode 8.3.2-r1 9.1.13 9.2.6: An Emacs mode for notes and project planning
+app-emacs/org-mode 8.3.2-r1 9.2.6: An Emacs mode for notes and project planning
 app-emacs/outline-magic 0.9: Outline mode extensions for Emacs
 app-emacs/paredit 23-r1: Minor mode for performing structured editing of S-expressions
 app-emacs/pariemacs 3.14: sci-mathematics/pari emacs mode
@@ -1371,7 +1371,7 @@ app-emacs/template 3.1c-r1: Use templates, decorate comments, auto-update buffer
 app-emacs/tempo-snippets 0.1.5: Visual insertion of tempo templates
 app-emacs/thinks 1.9: Insert text in a think bubble
 app-emacs/treepy 0.1.1: Generic tree traversing tools for Emacs Lisp
-app-emacs/tuareg-mode 2.0.7 2.0.10 2.2.0: An Objective Caml/Camllight mode for Emacs
+app-emacs/tuareg-mode 2.0.10 2.2.0: An Objective Caml/Camllight mode for Emacs
 app-emacs/twittering-mode 2.0.0 3.0.0 9999: Emacs major mode for Twitter
 app-emacs/typing 1.1.4: The Typing of Emacs -- an Elisp parody of The Typing of the Dead for Dreamcast
 app-emacs/uboat 1.2: Generate u-boat-death messages, patterned after Iron Coffins
