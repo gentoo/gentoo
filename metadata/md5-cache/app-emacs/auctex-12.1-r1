@@ -4,10 +4,10 @@ DESCRIPTION=Extensible package for writing and formatting TeX files in Emacs
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/auctex/
 IUSE=preview-latex
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=GPL-3+ FDL-1.3+
 RDEPEND=virtual/latex-base preview-latex? ( app-text/dvipng app-text/ghostscript-gpl ) >=virtual/emacs-24
 SLOT=0
 SRC_URI=mirror://gnu/auctex/auctex-12.1.tar.gz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=cd8deb389af022223b67285533d1d800
+_md5_=035dfad6f340867e894489f7236ca419
