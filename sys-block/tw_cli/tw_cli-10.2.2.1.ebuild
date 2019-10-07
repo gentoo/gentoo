@@ -53,7 +53,7 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
-RESTRICT="strip primaryuri"
+RESTRICT="strip"
 QA_PREBUILT="/opt/tw_cli/tw_cli"
 
 # binary packages
