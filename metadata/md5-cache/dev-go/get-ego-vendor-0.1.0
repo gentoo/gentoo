@@ -1,0 +1,12 @@
+BDEPEND=>=dev-lang/go-1.12
+DEFINED_PHASES=compile install postinst unpack
+DESCRIPTION=Utility to generate EGO_VENDOR data for ebuilds
+EAPI=7
+HOMEPAGE=http://github.com/williamh/get-ego-vendor
+KEYWORDS=~amd64
+LICENSE=BSD
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/williamh/get-ego-vendor/archive/v0.1.0.tar.gz -> get-ego-vendor-0.1.0.tar.gz
+_eclasses_=go-module	ab2b956f1b3888b8418581b8662fe211
+_md5_=8c1ca47fbff71f186791206fd9e6435f

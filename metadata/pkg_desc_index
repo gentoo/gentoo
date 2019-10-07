@@ -3332,6 +3332,7 @@ dev-go/coveraggregator 0_pre20170216: Cover profile aggregator for golang
 dev-go/delve 1.0.0: A source-level debugger for the Go programming language
 dev-go/ed25519 0_pre20160420 0_pre20170117: ed25519 for Go
 dev-go/fuzzy 0.0.3 0.0.5: Go library that provides fuzzy string matching
+dev-go/get-ego-vendor 0.1.0: Utility to generate EGO_VENDOR data for ebuilds
 dev-go/glide 0.13.2: Vendor Package Managment for Golang
 dev-go/go-bindata 1.0.0: A small utility which generates Go code from any file
 dev-go/go-bindata-assetfs 1.0.0_p20180223: Serve embedded files from jteeuwen/go-bindata with net/http
