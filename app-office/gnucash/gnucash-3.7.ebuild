@@ -190,7 +190,7 @@ src_install() {
 
 pkg_postinst() {
 	if use gui ; then
-		gnome2_icon_cache_update
+		xdg_icon_cache_update
 		gnome2_schemas_update
 	fi
 	xdg_desktop_database_update
@@ -204,7 +204,7 @@ pkg_postinst() {
 
 pkg_postrm() {
 	if use gui ; then
-		gnome2_icon_cache_update
+		xdg_icon_cache_update
 		gnome2_schemas_update
 	fi
 	xdg_desktop_database_update
