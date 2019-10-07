@@ -132,7 +132,7 @@ app-accessibility/epos 2.5.37-r2: language independent text-to-speech system
 app-accessibility/espeak 1.47.11-r1 1.48.04 1.48.04-r1: Speech synthesizer for English and other languages
 app-accessibility/espeakup 0.71-r1 0.80 9999: espeakup is a small lightweight connector for espeak and speakup
 app-accessibility/flite 1.4-r4: Flite text to speech engine
-app-accessibility/freetts 1.2.1-r2 1.2.2: A speech synthesis system written entirely in Java
+app-accessibility/freetts 1.2.2: A speech synthesis system written entirely in Java
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes samples
 app-accessibility/nfbtrans 7.74-r2: braille translator from the National Federation of the Blind
@@ -1567,7 +1567,7 @@ app-eselect/eselect-sh 0.4-r2: Manages the /bin/sh (POSIX shell) symlink
 app-eselect/eselect-sndpeek 1.0.1: Manages the /usr/bin/sndpeek symlink
 app-eselect/eselect-timezone 0.2: Manages timezone selection
 app-eselect/eselect-timidity 20110513: Manages configuration of TiMidity++ patchsets
-app-eselect/eselect-unison 0.3 0.4: unison module for eselect
+app-eselect/eselect-unison 0.4: unison module for eselect
 app-eselect/eselect-vdr 0.0.3: Manages the VDR plugins
 app-eselect/eselect-vi 1.1.9 1.1.9-r1: Manages the /usr/bin/vi symlink
 app-eselect/eselect-wine 1.2.2: Manage active wine version
@@ -1720,7 +1720,7 @@ app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
 app-i18n/unicode-cldr 31.0.1 33.0 35.1: Unicode Common Locale Data Repository
 app-i18n/unicode-data 9.0.0 10.0.0 11.0.0 12.0.0 12.1.0: Unicode data from unicode.org
 app-i18n/unicode-emoji 5.0 11.0 12.0: UTS #51 Unicode Emoji
-app-i18n/xcin 2.5.3_pre3-r2 2.5.3_pre3-r3: Chinese X Input Method
+app-i18n/xcin 2.5.3_pre3-r3: Chinese X Input Method
 app-i18n/xsunpinyin 3.0.0_rc1: A standalone XIM server for SunPinyin
 app-i18n/xvnkb 0.2.8a-r1 0.2.9a-r1: Vietnamese input keyboard for X
 app-i18n/yaskkserv 1.1.0 1.1.1: Yet Another SKK server
@@ -4066,7 +4066,7 @@ dev-java/ant-apache-resolver 1.9.13 1.10.5: Apache Ant's optional tasks dependin
 dev-java/ant-apache-xalan2 1.9.13 1.10.5: Apache Ant's optional tasks depending on xalan
 dev-java/ant-commons-logging 1.9.13 1.10.5: Apache Ant's optional tasks depending on commons-logging
 dev-java/ant-commons-net 1.9.13 1.10.5: Apache Ant's optional tasks depending on commons-net
-dev-java/ant-contrib 1.0_beta2-r2 1.0_beta3-r2: A collection of tasks for Apache Ant
+dev-java/ant-contrib 1.0_beta3-r2: A collection of tasks for Apache Ant
 dev-java/ant-core 1.9.13-r2 1.10.5-r2: Java-based build tool similar to 'make' that uses XML configuration files
 dev-java/ant-eclipse-ecj 4.2.1 4.4.2 4.5.1 4.10: Ant Compiler Adapter for Eclipse Java Compiler
 dev-java/ant-ivy 1.4.1-r1 2.3.0-r2: Ivy is a free java based dependency manager
@@ -4632,7 +4632,7 @@ dev-lang/micropython 1.9.3 1.9.4: Python implementation for microcontrollers
 dev-lang/mlton 20130715 20180207: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20160804 20160804-r1: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/moarvm 2018.06-r1 2018.08-r1 2018.09-r1 2018.12-r1 2019.03-r1 2019.07-r1 2019.07.1-r1 9999: A 6model-based VM for NQP and Rakudo Perl 6
-dev-lang/mono 4.4.1.0 4.8.0.524 5.14.0.177 5.16.0.220 5.18.1.0 5.20.1.19-r1 6.0.0.334: Mono runtime and class libraries, a C# compiler/interpreter
+dev-lang/mono 4.4.1.0 4.8.0.524 5.14.0.177 5.16.0.220 5.18.1.0 5.20.1.19-r1 6.0.0.334 6.4.0.198: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 1.4.0-r3 1.4.0-r4: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r2: The Mozart Standard Library
@@ -4745,7 +4745,7 @@ dev-libs/crc32c 1.0.6: CRC32C implementation with support for CPU-specific accel
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
 dev-libs/crypto++ 5.6.5-r1 7.0.0-r3 8.2.0 8.2.0-r2: C++ class library of cryptographic schemes
 dev-libs/cudnn 6.0 7.0.5-r1 7.1.4 7.4.1.5 7.4.2.24 7.5.0.56 7.6.0.64 7.6.1.34 7.6.2.24: NVIDIA Accelerated Deep Learning on GPU library
-dev-libs/cvector 1.0.3-r1 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
+dev-libs/cvector 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p13: REINER SCT cyberJack USB chipcard reader user space driver
 dev-libs/cygwin 1.5.25.15: Linux-like environment for Windows
@@ -10779,7 +10779,7 @@ dev-util/indent 2.2.11-r1 2.2.11_p5 2.2.12: Indent program source files
 dev-util/intel-graphics-compiler 1.0.11-r1: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
 dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1: Intel's implementation of the OpenCL standard
 dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
-dev-util/its4 1.1.1 1.1.1-r1: ITS4: Software Security Tool
+dev-util/its4 1.1.1-r1: ITS4: Software Security Tool
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
@@ -12629,7 +12629,7 @@ mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using 
 mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a grey-listing policy
 mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
 mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
-mail-mta/esmtp 1.2 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
+mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.92-r3 4.92-r4 4.92.1-r1 4.92.2 4.92.3: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.8.3 1.8.5-r1 1.8.6: An SMTP client and SMTP plugin for mail user agents such as Mutt
@@ -13884,7 +13884,7 @@ media-sound/audacity 2.2.2 2.3.2: Free crossplatform audio editor
 media-sound/audex 0.95_pre20190721: Tool for ripping compact discs
 media-sound/audicle 1.0.0.7-r2: A Context-sensitive, On-the-fly Audio Programming Environ/mentality
 media-sound/audiocompress 2.0: Very gentle 1-band dynamic range compressor
-media-sound/audiotag 0.19 0.19-r1: Command-line tool for mass tagging/renaming of audio files
+media-sound/audiotag 0.19-r1: Command-line tool for mass tagging/renaming of audio files
 media-sound/audiotools 3.1.1: A collection of command line audio tools
 media-sound/aumix 2.9.1: Aumix volume/mixer control program
 media-sound/awesfx 0.5.1e: AWE32 Sound Driver Utility Programs
@@ -14500,7 +14500,7 @@ net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for 
 net-analyzer/ifstatus 1.1.0-r2 2.0.0: A simple CLI program for displaying network statistics in real time
 net-analyzer/iftop 1.0_pre4-r2 1.0_pre4-r3 1.0_pre4-r4 9999999: display bandwidth usage on an interface
 net-analyzer/ike-scan 1.9-r1 1.9-r2: A utility for finding, fingerprinting and testing IKE VPN servers
-net-analyzer/ipaudit 1.0_beta2 1.0_beta2-r1: IPAudit monitors network activity on a network by host, protocol and port
+net-analyzer/ipaudit 1.0_beta2-r1: IPAudit monitors network activity on a network by host, protocol and port
 net-analyzer/ipband 0.8.1-r1: A pcap based IP traffic and bandwidth monitor with configurable reporting and alarm abilities
 net-analyzer/ipcad 3.7.3: IP Cisco Accounting Daemon
 net-analyzer/ipgen 9999: Generate list of IP addresses from a network specification
@@ -14674,7 +14674,7 @@ net-analyzer/tcping 1.3.5-r1: Ping implementation that uses the TCP protocol
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
 net-analyzer/tcpreplay 4.3.2 999999: utilities for editing and replaying previously captured network traffic
 net-analyzer/tcpslice 1.2a_p3-r1: Extract and concatenate portions of pcap files
-net-analyzer/tcpstat 1.5 1.5-r1 1.5-r2 1.5-r3: Reports network interface statistics
+net-analyzer/tcpstat 1.5-r3: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7_p4_p1 6.6.7_p5: A Tool for analyzing network packet dumps
 net-analyzer/tcptraceroute 1.5_beta7-r2: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
@@ -15025,7 +15025,7 @@ net-libs/gupnp-av 0.12.11: Utility library aiming to ease the handling UPnP A/V 
 net-libs/gupnp-igd 0.2.5: Library to handle UPnP IGD port mapping for GUPnP
 net-libs/gupnp-ui 0.1.1: Collection of simple GTK+ widgets on top of GUPnP
 net-libs/http-parser 2.8.1 2.9.1 2.9.2 99999: HTTP request/response parser for C
-net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
+net-libs/iax 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-msgs 1.0.0: Protobuf messages and functions for robot applications
 net-libs/ignition-transport 4.0.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
 net-libs/jreen 1.3.0-r1: Qt XMPP library
@@ -17437,7 +17437,7 @@ sys-apps/uam 0.3.2-r1 9999: Simple udev-based automounter for removable USB medi
 sys-apps/ucspi-proxy 0.99 1.1: Proxy program for two connections set up by a UCSPI server and a UCSPI client
 sys-apps/ucspi-ssl 0.94-r1 0.97 0.98b 0.99 0.99e: Command-line tools for building SSL client-server applications
 sys-apps/ucspi-tcp 0.88-r18: Collection of tools for managing UNIX services
-sys-apps/ucspi-unix 0.36-r3 0.36-r4 1.0: A UCSPI implementation for Unix domain sockets
+sys-apps/ucspi-unix 1.0: A UCSPI implementation for Unix domain sockets
 sys-apps/udevil 0.4.4-r3: mount and unmount removable devices without a password
 sys-apps/unscd 0.52-r2 0.53: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.2.6 2.3.0 2.4.0-r1 2.5.2: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
@@ -17557,7 +17557,7 @@ sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration an
 sys-block/ms-sys 2.5.3 2.6.0: A command-line program for writing Microsoft compatible boot records
 sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
 sys-block/nbd 3.18 3.19 3.20 9999: Userland client/server for kernel network block device
-sys-block/noflushd 2.7.3 2.8: A daemon to spin down your disks and force accesses to be cached
+sys-block/noflushd 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
 sys-block/open-iscsi 2.0.873-r1 2.0.875 2.0.877 2.0.878: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.97 0.98 0.99: iSNS server and client for Linux
@@ -17867,7 +17867,7 @@ sys-fs/davl 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.46 1.99.8: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.21-r1 1.23 1.24: Copy data from one file or block device to another with read-error recovery
 sys-fs/dfc 3.1.1: A simple CLI tool that display file system usage, with colors
-sys-fs/diskdev_cmds 332.14_p1 332.14_p1-r1: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
+sys-fs/diskdev_cmds 332.14_p1-r1: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
 sys-fs/dislocker 0.7.1-r1 9999: Dislocker is used to read BitLocker encrypted partitions.
 sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4: Device-mapper RAID tool and library
@@ -17933,7 +17933,7 @@ sys-fs/owfs 3.2_p2-r2: Access 1-Wire devices like a filesystem
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
 sys-fs/pysize 0.2-r1 0.2-r2: A graphical and console tool for exploring the size of directories
 sys-fs/quota 4.04-r2 4.05: Linux quota tools
-sys-fs/quotatool 1.4.6 1.4.13 1.6.2: command-line utility for filesystem quotas
+sys-fs/quotatool 1.6.2: command-line utility for filesystem quotas
 sys-fs/rar2fs 1.27.2-r1: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/rarfs 0.1.1-r2: Fuse module to mount uncompressed RAR archives
 sys-fs/reiser4progs 1.1.0 1.2.0 1.2.1: reiser4progs: mkfs, fsck, etc...
@@ -18118,7 +18118,7 @@ sys-power/thermald 1.7.1 1.8-r1: Thermal daemon for Intel architectures
 sys-power/uhubctl 1.8-r1: USB hub per-port power control
 sys-power/upower 0.99.9-r1 0.99.11: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-process/acct 6.6.4-r1: GNU system accounting utilities
-sys-process/anacron 2.3-r2 2.3-r4: a periodic command scheduler
+sys-process/anacron 2.3-r4: a periodic command scheduler
 sys-process/at 3.1.18-r1 3.1.20 3.1.23: Queues jobs for later execution
 sys-process/atop 2.3.0-r1 2.4.0: Resource-specific view of processes
 sys-process/audit 2.6.4 2.7.1 2.8.2 2.8.3 2.8.4: Userspace utilities for storing and processing auditing records
@@ -18411,7 +18411,7 @@ www-apache/mod_rpaf 0.6-r1: Reverse proxy add forward module
 www-apache/mod_scgi 1.14-r1: Apache module for a replacement of the CGI protocol, similar to FastCGI
 www-apache/mod_security 2.9.1-r1 2.9.3: Application firewall and intrusion detection for Apache
 www-apache/mod_umask 0.1.0: Sets the Unix umask of the Apache2 webserver process after it has started
-www-apache/mod_vdbh 1.0.3-r1 1.0.3-r2: An Apache2 module for mass virtual hosting using a MySQL database
+www-apache/mod_vdbh 1.0.3-r2: An Apache2 module for mass virtual hosting using a MySQL database
 www-apache/mod_vhost_ldap 2.4.0-r1: Store and configure Apache virtual hosts using LDAP
 www-apache/mod_whatkilledus 2.01: Debug segmentation faults in Apache threads
 www-apache/mod_wsgi 4.5.13 4.5.17 4.5.21 4.6.5: An Apache2 module for running Python WSGI applications
