@@ -14504,7 +14504,7 @@ net-analyzer/hexinject 1.5 1.6 1.6-r1: Network packet sniffer and injector
 net-analyzer/hping 3_pre20051105-r6 3_pre20141226: A ping-like TCP/IP packet assembler/analyzer
 net-analyzer/httping 2.5 9999999: like ping but for HTTP requests
 net-analyzer/hunt 1.5-r1 1.5-r3: tool for checking well known weaknesses in the TCP/IP protocol
-net-analyzer/hydra 8.1 8.5-r1 8.6-r1 8.9.1 9.0 9999999: Parallelized network login hacker
+net-analyzer/hydra 8.1 8.9.1 9.0 9999999: Parallelized network login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
 net-analyzer/icinga 1.14.2: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.14.1: Icinga Web - new Web Interface
