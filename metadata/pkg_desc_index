@@ -2447,7 +2447,7 @@ app-text/fictionup 0.1: A command-line markdown to fb2 convertor
 app-text/flpsed 0.7.0 0.7.2 0.7.3: Pseudo PostScript editor
 app-text/freepwing 1.4.3: FreePWING is a free JIS X 4081 (subset of EPWING V1) formatter
 app-text/getxbook 1.0-r1 1.2: Download books from google, amazon, barnes and noble
-app-text/ghostscript-gpl 9.26: Interpreter for the PostScript language and PDF
+app-text/ghostscript-gpl 9.26 9.28_rc4: Interpreter for the PostScript language and PDF
 app-text/glosung 3.6.2-r1 3.6.4: Watch word program for the GNOME2 desktop (watch word (german): losung)
 app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for the Gnome project
 app-text/gnopaster 0.0.9: A submitter for gnopaste, a nopaste service like http://nopaste.info
@@ -13240,7 +13240,7 @@ media-libs/ilmbase 2.3.0: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r5: Image loading and rendering library
 media-libs/imlib2 1.5.1-r1: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/intel-mediasdk 18.3.0 18.4.1 9999: Intel Media SDK
-media-libs/jbig2dec 0.14: A decoder implementation of the JBIG2 image compression format
+media-libs/jbig2dec 0.14 0.17: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
 media-libs/jpeg 6b-r12 8d-r2 9c: Library to load, handle and manipulate images in the JPEG format
