@@ -5102,7 +5102,7 @@ dev-libs/ntl 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++
 dev-libs/ocl-icd 2.2.11 2.2.12 2.2.12-r1: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/onigmo 6.1.3: Onigmo is a regular expressions library forked from Oniguruma
 dev-libs/oniguruma 6.9.3-r1: Regular expression library for different character encodings
-dev-libs/opencl-clang 8.0.0 8.0.1 8.0.1_p20191001: OpenCL-oriented thin wrapper library around clang
+dev-libs/opencl-clang 8.0.1_p20191001-r1: OpenCL-oriented thin wrapper library around clang
 dev-libs/opencryptoki 3.4.1 3.6.1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
@@ -10776,7 +10776,7 @@ dev-util/ignition-cmake 0.2.0 0.4.0: CMake modules to be used by the Ignition pr
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 6.0 7.0 8.0: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1 2.2.11_p5 2.2.12: Indent program source files
-dev-util/intel-graphics-compiler 1.0.8 1.0.9 1.0.11: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
+dev-util/intel-graphics-compiler 1.0.11-r1: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
 dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1: Intel's implementation of the OpenCL standard
 dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
 dev-util/its4 1.1.1 1.1.1-r1: ITS4: Software Security Tool
@@ -10919,7 +10919,7 @@ dev-util/smem 20071119_p1: A tool to parse smaps statistics
 dev-util/source-highlight 3.1.7-r2 3.1.8 3.1.8-r1: Generate highlighted source code as an (x)html document
 dev-util/spec-cleaner 1.0.6 1.0.7 9999: SUSE spec file cleaner and formatter
 dev-util/spirv-headers 1.3.4_pre20190302 9999: Machine-readable files for the SPIR-V Registry
-dev-util/spirv-llvm-translator 8.0.1.1-r1 8.0.1.2: Bi-directional translator between SPIR-V and LLVM IR
+dev-util/spirv-llvm-translator 8.0.1.2-r1: Bi-directional translator between SPIR-V and LLVM IR
 dev-util/spirv-tools 2018.5 2019.1-r1 2019.1-r2 9999: Provides an API and commands for processing SPIR-V modules
 dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
@@ -18527,7 +18527,7 @@ www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web b
 www-client/midori 7.0 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2: a free, open source web browser
-www-client/opera 63.0.3368.94: A fast and secure web browser
+www-client/opera 63.0.3368.94 63.0.3368.107: A fast and secure web browser
 www-client/opera-beta 64.0.3417.32 64.0.3417.41: A fast and secure web browser
 www-client/opera-developer 65.0.3454.0 65.0.3459.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
