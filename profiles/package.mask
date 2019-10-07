@@ -1115,13 +1115,6 @@ dev-java/jdbc-informix
 # dependencies.  Removal in 30 days.  Bug #693644.
 media-libs/sdlmm
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# Has reported build and test failures.  Last release in 2013.  Current
-# stable is EAPI 0, and there is no point in stabilizing the newer
-# version.  No reverse dependencies.
-# Removal in 30 days.  Bug #622340.
-media-libs/sdif
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
