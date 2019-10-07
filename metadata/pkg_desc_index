@@ -16797,7 +16797,7 @@ sci-mathematics/relational 2.5: Educational tool for relational algebra
 sci-mathematics/rkward 0.7.0b: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
 sci-mathematics/rstudio 1.1.383-r1 1.1.453 1.1.463 1.1.463-r1 1.2.1335: IDE for the R language
-sci-mathematics/rw 0.7-r2: Compute rank-width decompositions of graphs
+sci-mathematics/rw 0.8: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0 5.6_p1: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 3.1.6 4.0.2 4.0.3: Computer algebra system for polynomial computations
 sci-mathematics/slepc 3.11.1: Scalable Library for Eigenvalue Problem Computations
