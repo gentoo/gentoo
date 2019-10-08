@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-r1
+inherit cmake-utils python-r1 flag-o-matic
 
 DESCRIPTION="High-performance regular expression matching library"
 SRC_URI="https://github.com/01org/hyperscan/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -23,6 +23,12 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 
 REQUIRED_USE="cpu_flags_x86_ssse3 ${PYTHON_REQUIRED_USE}"
+
+src_prepare() {
+	# upstream workaround
+	append-cxxflags -Wno-redundant-move
+	cmake-utils_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
