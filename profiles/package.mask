@@ -966,12 +966,6 @@ media-video/xanim-export
 # Removal in 30 days.  Bug #693802.
 media-sound/imp3sh
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-08)
-# Last bumped in 2007.  EAPI 0.  Known to be broken on amd64.
-# Homepage dead.
-# Removal in 30 days.  Bug #693800.
-media-sound/hearnet
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
