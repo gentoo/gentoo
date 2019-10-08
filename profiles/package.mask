@@ -979,13 +979,6 @@ media-sound/hearnet
 # Removal in 30 days.  Bug #693798.
 sys-boot/psoload
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-08)
-# Added in 2003 and not updated since.  Unclear license.  EAPI 0.
-# No amd64 keywords.  Homepage and SRC_URI are dead, and we probably
-# shouldn't be mirroring distfiles in the first place.
-# Removal in 30 days.  Bug #693796.
-net-misc/netprofiles-ims
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
