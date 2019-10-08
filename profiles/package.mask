@@ -931,7 +931,6 @@ net-mail/fastforward
 # themselves.  Almost all packages are EAPI 0, and date back
 # to 2002-2010 (one is EAPI 5 / 2015 but has no revdeps).
 # Removal in 30 days.  Bug #693820.
-dev-libs/vanessa-adt
 dev-libs/vanessa-logger
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
