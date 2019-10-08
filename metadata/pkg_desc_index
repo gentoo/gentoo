@@ -18467,7 +18467,7 @@ www-apps/kibana-bin 5.6.16 6.6.1 6.7.1 6.8.1 6.8.3 7.0.0 7.2.0 7.3.2: Analytics 
 www-apps/klaus 1.3.0 1.4.0: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making
-www-apps/mediawiki 1.32.0 1.32.2: The MediaWiki wiki web application (as used on wikipedia.org)
+www-apps/mediawiki 1.32.0 1.32.2 1.33.1: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/metadot 6.1.6-r1 6.4.5.4-r2: Metadot is a CMS with file, page and link management, and collaboration features
 www-apps/mirmon 2.10: Simple webapp to monitor the status of mirrors
 www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module using Apache
@@ -18530,9 +18530,9 @@ www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web b
 www-client/midori 7.0 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2: a free, open source web browser
-www-client/opera 63.0.3368.94 63.0.3368.107: A fast and secure web browser
+www-client/opera 63.0.3368.94 63.0.3368.107 64.0.3417.47: A fast and secure web browser
 www-client/opera-beta 64.0.3417.32 64.0.3417.41: A fast and secure web browser
-www-client/opera-developer 65.0.3454.0 65.0.3459.0: A fast and secure web browser
+www-client/opera-developer 65.0.3459.0 65.0.3466.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 2.1.1 2.1.1-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
@@ -18885,7 +18885,7 @@ x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11v
 x11-misc/bumblebee 3.2.1 3.2.1_p20170123 3.2.1_p20170130 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.4-r1: An analog clock displaying the system-time
 x11-misc/calise 0.4.2: Computes ambient brightness and sets screen's correct backlight using a webcam
-x11-misc/cbatticon 1.6.5 1.6.7 1.6.8 1.6.9: A lightweight and fast battery icon that sits in your system tray
+x11-misc/cbatticon 1.6.5 1.6.9 1.6.10: A lightweight and fast battery icon that sits in your system tray
 x11-misc/cdm 0.6.1_pre20180107 0.7: The Console Display Manager
 x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolutions
 x11-misc/colord 1.3.5: System service to accurately color manage input and output devices
