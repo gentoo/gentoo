@@ -12,7 +12,7 @@ else
 	GIT_COMMIT="51379a041174ad953dc6ad437712f3b279f81919"
 	SRC_URI="https://github.com/ngtcp2/nghttp3/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${GIT_COMMIT}"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~hppa"
 fi
 
 DESCRIPTION="HTTP/3 library written in C"

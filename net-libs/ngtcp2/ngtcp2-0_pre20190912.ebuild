@@ -12,7 +12,7 @@ else
 	GIT_COMMIT="5122d9e5e1e91c718ebc3933252ee42522c6e942"
 	SRC_URI="https://github.com/ngtcp2/ngtcp2/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${GIT_COMMIT}"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~hppa"
 fi
 
 DESCRIPTION="Implementation of the IETF QUIC Protocol"

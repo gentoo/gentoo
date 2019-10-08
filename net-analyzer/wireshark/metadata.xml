@@ -38,12 +38,12 @@ be exported to XML, PostScript®, CSV, or plain text.
 <flag name="dpauxmon">Install dpauxmon, an external capture interface (extcap) that captures DisplayPort AUX channel data from linux kernel drivers</flag>
 <flag name="dumpcap">Install dumpcap, to dump network traffic from inside wireshark</flag>
 <flag name="editcap">Install editcap, to edit and/or translate the format of capture files</flag>
+<flag name="http2">Use <pkg>net-libs/nghttp2</pkg> for HTTP/2 support</flag>
 <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for handling XML configuration in dissectors</flag>
 <flag name="maxminddb">Use <pkg>dev-libs/libmaxminddb</pkg> for IP address geolocation</flag>
 <flag name="mergecap">Install mergecap, to merge two or more capture files into one</flag>
 <flag name="minizip">Build with zip file compression support</flag>
 <flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
-<flag name="nghttp2">Use <pkg>net-libs/nghttp2</pkg> for HTTP/2 support</flag>
 <flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
 <flag name="plugin-ifdemo">Install plugin interface demo</flag>
 <flag name="plugins">Install plugins</flag>
