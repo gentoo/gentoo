@@ -949,11 +949,6 @@ net-libs/roadrunner
 # Removal in 30 days.  Bug #693812.
 net-dns/tinystats
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-08)
-# Last bumped in 2009, last release in 2010.  EAPI 0.  No amd64 keyword.
-# Removal in 30 days.  Bug #693808.
-net-dialup/dgcmodem
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
