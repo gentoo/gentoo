@@ -41,7 +41,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.4-disable-py3-only-linters.patch
-	"${FILESDIR}"/${PN}-0.9.8-pynslcd-module-paths.patch
+	"${FILESDIR}"/${PN}-0.9.11-pynslcd-module-paths.patch
 )
 
 pkg_setup() {
