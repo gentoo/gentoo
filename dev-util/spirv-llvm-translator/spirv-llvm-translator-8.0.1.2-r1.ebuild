@@ -18,6 +18,8 @@ SLOT="8"
 KEYWORDS="~amd64"
 IUSE="test tools"
 
+RESTRICT="!test? ( test )"
+
 S="${WORKDIR}/${MY_P}"
 
 COMMON="sys-devel/clang:8=[${MULTILIB_USEDEP}]"
