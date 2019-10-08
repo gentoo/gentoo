@@ -1,0 +1,36 @@
+From c99ef350b7b2eea490710bbe22eacd0bd28fdfeb Mon Sep 17 00:00:00 2001
+From: David Heidelberg <david@ixit.cz>
+Date: Sun, 27 Oct 2019 17:25:35 +0100
+Subject: [PATCH 6/6] fix compilation on GCC 9.x, add #pragma
+
+Fixes:
+In function 'strncpy',
+    inlined from 'idle_server_connection_send_async' at idle-server-connection.c:593:2:
+/usr/include/bits/string_fortified.h:106:10: error: '__builtin_strncpy' specified bound 512 equals destination size [-Werror=stringop-truncation]
+  106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+
+Signed-off-by: David Heidelberg <david@ixit.cz>
+---
+ src/idle-server-connection.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/idle-server-connection.c b/src/idle-server-connection.c
+index 878b199..c463fe0 100644
+--- a/src/idle-server-connection.c
++++ b/src/idle-server-connection.c
+@@ -590,7 +590,10 @@ void idle_server_connection_send_async(IdleServerConnection *conn, const gchar *
+          * with null bytes gives us cleaner debug messages, without
+          * affecting the readability of the code.
+          */
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wstringop-truncation"
+ 	strncpy(priv->output_buffer, cmd, output_buffer_size);
++#pragma GCC diagnostic pop
+ 
+ 	priv->nwritten = 0;
+ 
+-- 
+2.23.0
+
