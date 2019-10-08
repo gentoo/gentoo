@@ -993,12 +993,6 @@ net-misc/netprofiles-ims
 # Removal in 30 days.  Bug #693794.
 media-video/maven-poke
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-08)
-# Last bumped in 2009.  EAPI 0.  Keyworded only for the dead x86-bsd
-# port.  No reverse dependencies.
-# Removal in 30 days.  Bug #693768.
-dev-libs/libvolume_id
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
