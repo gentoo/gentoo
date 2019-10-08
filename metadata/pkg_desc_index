@@ -2555,7 +2555,7 @@ app-text/pdfsandwich 0.1.4-r1: generator of sandwich OCR pdf files
 app-text/pdfshuffler 0.6.0-r1: GUI app that can merge or split pdfs and rotate, crop and rearrange their pages
 app-text/pdftk 3.0.0 9999: gcj-free version of pdftk written in Java
 app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG grammar
-app-text/pelican 3.7.1 4.0.0 4.0.1 9999: A tool to generate a static blog, with restructured text or markdown input files
+app-text/pelican 3.7.1 4.0.0 4.0.1 4.1.2 9999: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5 0.6.10-r7 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.47-r1 0.55 0.56: Tools to ease the translation of documentation
