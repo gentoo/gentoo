@@ -12,7 +12,7 @@ SRC_URI="http://cdn-fastly.deb.debian.org/debian/pool/main/t/tamuanova/tamuanova
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-linux"
 LICENSE="GPL-2"
-IUSE="static-libs"
+IUSE=""
 
 RDEPEND="sci-libs/gsl"
 DEPEND="
@@ -32,8 +32,12 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure(){
+	econf --disable-static
+}
+
 src_install(){
 	emake DESTDIR="${D}" install
 	einstalldocs
-	use static-libs || find "${D}" -type f -name "*.a" -exec rm -f {} \; || die
+	find "${D}" -name '*.la' -delete || die
 }
