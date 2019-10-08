@@ -1,0 +1,31 @@
+diff -Naur cutter-1.8.0-orig/src/Cutter.pro cutter-1.8.0/src/Cutter.pro
+--- cutter-1.8.0-orig/src/Cutter.pro	2019-03-27 12:14:42.436446303 -0400
++++ cutter-1.8.0/src/Cutter.pro	2019-03-27 12:16:26.971448895 -0400
+@@ -118,10 +118,6 @@
+ # Libraries
+ include(lib_radare2.pri)
+ 
+-!win32 {
+-    CONFIG += link_pkgconfig
+-}
+-
+ CUTTER_ENABLE_PYTHON {
+     win32 {
+         PYTHON_EXECUTABLE = $$system("where python", lines)
+@@ -140,10 +136,13 @@
+             LIBS += -F$$PYTHON_FRAMEWORK_DIR -framework Python
+             DEFINES += MACOS_PYTHON_FRAMEWORK_BUNDLED
+         } else {
+-            !packagesExist(python3) {
+-                error("ERROR: Python 3 could not be found. Make sure it is available to pkg-config.")
++            system(type python3-config) {
++                LIBS += $$system(python3-config --libs)
++                TMP = $$system(python3-config --includes)
++                INCLUDEPATH += $$replace(TMP, "-I", "")
++            } else {
++                error("ERROR: Python 3 could not be found. Make sure it is available to python3-config.")
+             }
+-            PKGCONFIG += python3
+         }
+     }
+ 
