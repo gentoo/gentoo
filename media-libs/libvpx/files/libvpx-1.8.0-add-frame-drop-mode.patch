@@ -1,0 +1,204 @@
+From 5a0242ba5c8fddbf32766bfa2ffbbd25f3cd6167 Mon Sep 17 00:00:00 2001
+From: Marco Paniconi <marpan@google.com>
+Date: Fri, 30 Aug 2019 10:58:15 -0700
+Subject: [PATCH] vp9-svc: Add new frame drop mode for SVC
+
+add SVC framedrop mode: Lower spatial layers
+are constrained to drop if current spatial layer
+needs to drop.
+
+No change in behavior to other existing modes.
+
+Change-Id: I2d37959caf8c4b453b405904831b550367f716ba
+---
+ vp9/encoder/vp9_encoder.c          | 21 +++++++--------------
+ vp9/encoder/vp9_ratectrl.c         | 29 +++++++++++++++++------------
+ vp9/encoder/vp9_ratectrl.h         |  2 ++
+ vp9/encoder/vp9_svc_layercontext.c | 27 +++++++++++++++++++++++++++
+ vp9/encoder/vp9_svc_layercontext.h |  1 +
+ vpx/vp8cx.h                        |  2 ++
+ 6 files changed, 56 insertions(+), 26 deletions(-)
+
+diff --git a/vp9/encoder/vp9_encoder.c b/vp9/encoder/vp9_encoder.c
+index 25464b3b8d..c18e3d5aaa 100644
+--- a/vp9/encoder/vp9_encoder.c
++++ b/vp9/encoder/vp9_encoder.c
+@@ -4982,12 +4982,15 @@ static void encode_frame_to_data_rate(VP9_COMP *cpi, size_t *size,
+   TX_SIZE t;
+ 
+   // SVC: skip encoding of enhancement layer if the layer target bandwidth = 0.
+-  // If in constrained layer drop mode (svc.framedrop_mode != LAYER_DROP) and
+-  // base spatial layer was dropped, no need to set svc.skip_enhancement_layer,
+-  // as whole superframe will be dropped.
++  // No need to set svc.skip_enhancement_layer if whole superframe will be
++  // dropped.
+   if (cpi->use_svc && cpi->svc.spatial_layer_id > 0 &&
+       cpi->oxcf.target_bandwidth == 0 &&
+       !(cpi->svc.framedrop_mode != LAYER_DROP &&
++        (cpi->svc.framedrop_mode != CONSTRAINED_FROM_ABOVE_DROP ||
++         cpi->svc
++             .force_drop_constrained_from_above[cpi->svc.number_spatial_layers -
++                                                1]) &&
+         cpi->svc.drop_spatial_layer[0])) {
+     cpi->svc.skip_enhancement_layer = 1;
+     vp9_rc_postencode_update_drop_frame(cpi);
+@@ -4995,17 +4998,7 @@ static void encode_frame_to_data_rate(VP9_COMP *cpi, size_t *size,
+     cpi->last_frame_dropped = 1;
+     cpi->svc.last_layer_dropped[cpi->svc.spatial_layer_id] = 1;
+     cpi->svc.drop_spatial_layer[cpi->svc.spatial_layer_id] = 1;
+-    if (cpi->svc.framedrop_mode == LAYER_DROP ||
+-        cpi->svc.drop_spatial_layer[0] == 0) {
+-      // For the case of constrained drop mode where the base is dropped
+-      // (drop_spatial_layer[0] == 1), which means full superframe dropped,
+-      // we don't increment the svc frame counters. In particular temporal
+-      // layer counter (which is incremented in vp9_inc_frame_in_layer())
+-      // won't be incremented, so on a dropped frame we try the same
+-      // temporal_layer_id on next incoming frame. This is to avoid an
+-      // issue with temporal alignement with full superframe dropping.
+-      vp9_inc_frame_in_layer(cpi);
+-    }
++    vp9_inc_frame_in_layer(cpi);
+     return;
+   }
+ 
+diff --git a/vp9/encoder/vp9_ratectrl.c b/vp9/encoder/vp9_ratectrl.c
+index 548f2645f2..4148694404 100644
+--- a/vp9/encoder/vp9_ratectrl.c
++++ b/vp9/encoder/vp9_ratectrl.c
+@@ -504,7 +504,7 @@ static int check_buffer_below_thresh(VP9_COMP *cpi, int drop_mark) {
+   }
+ }
+ 
+-static int drop_frame(VP9_COMP *cpi) {
++int vp9_test_drop(VP9_COMP *cpi) {
+   const VP9EncoderConfig *oxcf = &cpi->oxcf;
+   RATE_CONTROL *const rc = &cpi->rc;
+   SVC *svc = &cpi->svc;
+@@ -609,13 +609,15 @@ int vp9_rc_drop_frame(VP9_COMP *cpi) {
+   SVC *svc = &cpi->svc;
+   int svc_prev_layer_dropped = 0;
+   // In the constrained or full_superframe framedrop mode for svc
+-  // (framedrop_mode !=  LAYER_DROP), if the previous spatial layer was
+-  // dropped, drop the current spatial layer.
++  // (framedrop_mode != (LAYER_DROP && CONSTRAINED_FROM_ABOVE)),
++  // if the previous spatial layer was dropped, drop the current spatial layer.
+   if (cpi->use_svc && svc->spatial_layer_id > 0 &&
+       svc->drop_spatial_layer[svc->spatial_layer_id - 1])
+     svc_prev_layer_dropped = 1;
+-  if ((svc_prev_layer_dropped && svc->framedrop_mode != LAYER_DROP) ||
+-      drop_frame(cpi)) {
++  if ((svc_prev_layer_dropped && svc->framedrop_mode != LAYER_DROP &&
++       svc->framedrop_mode != CONSTRAINED_FROM_ABOVE_DROP) ||
++      svc->force_drop_constrained_from_above[svc->spatial_layer_id] ||
++      vp9_test_drop(cpi)) {
+     vp9_rc_postencode_update_drop_frame(cpi);
+     cpi->ext_refresh_frame_flags_pending = 0;
+     cpi->last_frame_dropped = 1;
+@@ -625,14 +627,17 @@ int vp9_rc_drop_frame(VP9_COMP *cpi) {
+       svc->drop_count[svc->spatial_layer_id]++;
+       svc->skip_enhancement_layer = 1;
+       if (svc->framedrop_mode == LAYER_DROP ||
++          (svc->framedrop_mode == CONSTRAINED_FROM_ABOVE_DROP &&
++           svc->force_drop_constrained_from_above[svc->number_spatial_layers -
++                                                  1] == 0) ||
+           svc->drop_spatial_layer[0] == 0) {
+-        // For the case of constrained drop mode where the base is dropped
+-        // (drop_spatial_layer[0] == 1), which means full superframe dropped,
+-        // we don't increment the svc frame counters. In particular temporal
+-        // layer counter (which is incremented in vp9_inc_frame_in_layer())
+-        // won't be incremented, so on a dropped frame we try the same
+-        // temporal_layer_id on next incoming frame. This is to avoid an
+-        // issue with temporal alignement with full superframe dropping.
++        // For the case of constrained drop mode where full superframe is
++        // dropped, we don't increment the svc frame counters.
++        // In particular temporal layer counter (which is incremented in
++        // vp9_inc_frame_in_layer()) won't be incremented, so on a dropped
++        // frame we try the same temporal_layer_id on next incoming frame.
++        // This is to avoid an issue with temporal alignement with full
++        // superframe dropping.
+         vp9_inc_frame_in_layer(cpi);
+       }
+       if (svc->spatial_layer_id == svc->number_spatial_layers - 1) {
+diff --git a/vp9/encoder/vp9_ratectrl.h b/vp9/encoder/vp9_ratectrl.h
+index 1100ce7342..7dbe17dc56 100644
+--- a/vp9/encoder/vp9_ratectrl.h
++++ b/vp9/encoder/vp9_ratectrl.h
+@@ -267,6 +267,8 @@ void vp9_rc_update_rate_correction_factors(struct VP9_COMP *cpi);
+ // Post encode drop for CBR mode.
+ int post_encode_drop_cbr(struct VP9_COMP *cpi, size_t *size);
+ 
++int vp9_test_drop(struct VP9_COMP *cpi);
++
+ // Decide if we should drop this frame: For 1-pass CBR.
+ // Changes only the decimation count in the rate control structure
+ int vp9_rc_drop_frame(struct VP9_COMP *cpi);
+diff --git a/vp9/encoder/vp9_svc_layercontext.c b/vp9/encoder/vp9_svc_layercontext.c
+index bfe803b24d..32ee6e064f 100644
+--- a/vp9/encoder/vp9_svc_layercontext.c
++++ b/vp9/encoder/vp9_svc_layercontext.c
+@@ -74,6 +74,7 @@ void vp9_init_layer_context(VP9_COMP *const cpi) {
+     svc->fb_idx_upd_tl0[sl] = -1;
+     svc->drop_count[sl] = 0;
+     svc->spatial_layer_sync[sl] = 0;
++    svc->force_drop_constrained_from_above[sl] = 0;
+   }
+   svc->max_consec_drop = INT_MAX;
+ 
+@@ -770,6 +771,32 @@ int vp9_one_pass_cbr_svc_start_layer(VP9_COMP *const cpi) {
+   svc->mi_rows[svc->spatial_layer_id] = cpi->common.mi_rows;
+   svc->mi_cols[svc->spatial_layer_id] = cpi->common.mi_cols;
+ 
++  // For constrained_from_above drop mode: before encoding superframe (i.e.,
++  // at SL0 frame) check all spatial layers (starting from top) for possible
++  // drop, and if so, set a flag to force drop of that layer and all its lower
++  // layers.
++  if (svc->spatial_layer_to_encode == svc->first_spatial_layer_to_encode) {
++    int sl;
++    for (sl = 0; sl < svc->number_spatial_layers; sl++)
++      svc->force_drop_constrained_from_above[sl] = 0;
++    if (svc->framedrop_mode == CONSTRAINED_FROM_ABOVE_DROP) {
++      for (sl = svc->number_spatial_layers - 1;
++           sl >= svc->first_spatial_layer_to_encode; sl--) {
++        int layer = sl * svc->number_temporal_layers + svc->temporal_layer_id;
++        LAYER_CONTEXT *const lc = &svc->layer_context[layer];
++        cpi->rc = lc->rc;
++        cpi->oxcf.target_bandwidth = lc->target_bandwidth;
++        if (vp9_test_drop(cpi)) {
++          int sl2;
++          // Set flag to force drop in encoding for this mode.
++          for (sl2 = sl; sl2 >= svc->first_spatial_layer_to_encode; sl2--)
++            svc->force_drop_constrained_from_above[sl2] = 1;
++          break;
++        }
++      }
++    }
++  }
++
+   if (svc->temporal_layering_mode == VP9E_TEMPORAL_LAYERING_MODE_0212) {
+     set_flags_and_fb_idx_for_temporal_mode3(cpi);
+   } else if (svc->temporal_layering_mode ==
+diff --git a/vp9/encoder/vp9_svc_layercontext.h b/vp9/encoder/vp9_svc_layercontext.h
+index 77d4382665..4b20963b1b 100644
+--- a/vp9/encoder/vp9_svc_layercontext.h
++++ b/vp9/encoder/vp9_svc_layercontext.h
+@@ -138,6 +138,7 @@ typedef struct SVC {
+   int drop_spatial_layer[VPX_MAX_LAYERS];
+   int framedrop_thresh[VPX_MAX_LAYERS];
+   int drop_count[VPX_MAX_LAYERS];
++  int force_drop_constrained_from_above[VPX_MAX_LAYERS];
+   int max_consec_drop;
+   SVC_LAYER_DROP_MODE framedrop_mode;
+ 
+diff --git a/vpx/vp8cx.h b/vpx/vp8cx.h
+index 7451621700..95e2493b1e 100644
+--- a/vpx/vp8cx.h
++++ b/vpx/vp8cx.h
+@@ -839,6 +839,8 @@ typedef enum {
+   /**< Upper layers are constrained to drop if current layer drops. */
+   LAYER_DROP,           /**< Any spatial layer can drop. */
+   FULL_SUPERFRAME_DROP, /**< Only full superframe can drop. */
++  CONSTRAINED_FROM_ABOVE_DROP,
++  /**< Lower layers are constrained to drop if current layer drops. */
+ } SVC_LAYER_DROP_MODE;
+ 
+ /*!\brief vp9 svc frame dropping parameters.
