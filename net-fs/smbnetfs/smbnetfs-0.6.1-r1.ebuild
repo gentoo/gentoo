@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-linux"
 IUSE="gnome-keyring"
 
-RDEPEND=">=sys-fs/fuse-2.3
+RDEPEND=">=sys-fs/fuse-2.3:0=
 	>=net-fs/samba-4.2
 	>=dev-libs/glib-2.30
 	gnome-keyring? ( app-crypt/libsecret )"
