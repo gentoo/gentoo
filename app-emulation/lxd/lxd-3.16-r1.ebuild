@@ -11,6 +11,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 IUSE="+daemon +ipv6 +dnsmasq nls test tools"
+RESTRICT="!test? ( test )"
 
 inherit autotools bash-completion-r1 linux-info systemd user
 
@@ -45,7 +46,7 @@ RDEPEND="
 		net-libs/libnsl:0=
 		net-misc/rsync[xattr]
 		sys-apps/iproute2[ipv6?]
-		sys-fs/fuse
+		sys-fs/fuse:0=
 		sys-fs/lxcfs
 		sys-fs/squashfs-tools
 		virtual/acl
