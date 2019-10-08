@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -20,7 +20,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-util/ragel
 	dev-libs/boost
 	net-libs/libpcap"
-DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}"
 
 REQUIRED_USE="cpu_flags_x86_ssse3 ${PYTHON_REQUIRED_USE}"
 
