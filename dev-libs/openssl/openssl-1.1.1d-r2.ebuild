@@ -51,6 +51,9 @@ PATCHES=(
 
 S="${WORKDIR}/${MY_P}"
 
+# force upgrade to prevent broken login, bug 696950
+RDEPEND+=" !<net-misc/openssh-8.0_p1-r3"
+
 MULTILIB_WRAPPED_HEADERS=(
 	usr/include/openssl/opensslconf.h
 )
