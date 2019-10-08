@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit eutils cmake-utils flag-o-matic
 
@@ -20,10 +20,10 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="ruby"
 
-DEPEND="sys-fs/fuse:*
+BDEPEND="ruby? ( dev-lang/ruby:2.4 )"
+DEPEND="sys-fs/fuse:0=
 	net-libs/mbedtls
-	ruby? ( dev-lang/ruby:2.4 )"
-
+"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
