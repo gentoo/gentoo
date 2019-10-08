@@ -71,7 +71,7 @@ RDEPEND="${DEPEND}
 	virtual/checkpassword
 	virtual/daemontools
 	authcram? ( >=net-mail/cmd5checkpw-0.30 )
-	ssl? ( >=sys-apps/ucspi-ssl-0.70-r1 )
+	ssl? ( sys-apps/ucspi-ssl )
 	!mail-mta/courier
 	!mail-mta/esmtp
 	!mail-mta/exim
