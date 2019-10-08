@@ -7,12 +7,9 @@ PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
 inherit autotools gnome2-utils python-single-r1
 
-BOOST_M4_GIT_VERSION=282b1e01f5bc5ae94347474fd8c35cb2f7a7e65d
-
 DESCRIPTION="Intelligent Pinyin and Bopomofo input methods based on LibPinyin for IBus"
 HOMEPAGE="https://github.com/libpinyin/ibus-libpinyin https://sourceforge.net/projects/libpinyin/"
 SRC_URI="https://github.com/libpinyin/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	boost? ( https://github.com/tsuna/boost.m4/raw/${BOOST_M4_GIT_VERSION}/build-aux/boost.m4 -> boost.${BOOST_M4_GIT_VERSION}.m4 )
 "
 
 LICENSE="GPL-2"
@@ -37,10 +34,6 @@ DEPEND="${PYTHON_DEPS}
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	if use boost; then
-		cp "${DISTDIR}/boost.${BOOST_M4_GIT_VERSION}.m4" "m4/boost.m4" \
-			|| die "copying newer version of boost.m4 file failed"
-	fi
 	default
 	eautoreconf
 }
