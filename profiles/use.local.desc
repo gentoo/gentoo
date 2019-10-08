@@ -657,7 +657,6 @@ app-emulation/virtualbox-bin:sdk - Enable building of SDK
 app-emulation/virtualbox-bin:vboxwebsrv - Install the VirtualBox webservice
 app-emulation/virtualbox-modules:pax_kernel - Apply patch needed for pax enabled kernels
 app-emulation/vkd3d:spirv-tools - Enable SPIRV shader debugging support using dev-util/spirv-tools
-app-emulation/vov:gprof - build with profiling support
 app-emulation/wine-any:capi - Enable ISDN support via CAPI
 app-emulation/wine-any:custom-cflags - Bypass strip-flags; use at your own peril
 app-emulation/wine-any:d3d9 - Apply highly experimental patches for Gallium Nine support. This patch may break some applications.

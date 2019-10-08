@@ -1511,7 +1511,6 @@ app-emulation/virtualbox-modules 5.2.26 5.2.32 6.0.10 6.0.12: Kernel Modules for
 app-emulation/vkd3d 1.0 1.1 9999: D3D12 to Vulkan translation library
 app-emulation/vmips 1.3 1.3.1: A virtual machine simulator based on a MIPS R3000 processor
 app-emulation/vmips-cross-bin 1.0: vmips cross-development tools
-app-emulation/vov 2.0.0: A tool that emulates the behavior of a Von-Neumann machine
 app-emulation/wine-any 3.20 3.21 4.0 4.1 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
 app-emulation/wine-d3d9 3.20 3.21 4.0 4.1 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
@@ -2445,7 +2444,6 @@ app-text/fbpdf 0_p20190202: framebuffer pdf and djvu viewer
 app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/fictionup 0.1: A command-line markdown to fb2 convertor
 app-text/flpsed 0.7.0 0.7.2 0.7.3: Pseudo PostScript editor
-app-text/freepwing 1.4.3: FreePWING is a free JIS X 4081 (subset of EPWING V1) formatter
 app-text/getxbook 1.0-r1 1.2: Download books from google, amazon, barnes and noble
 app-text/ghostscript-gpl 9.26 9.28_rc4: Interpreter for the PostScript language and PDF
 app-text/glosung 3.6.2-r1 3.6.4: Watch word program for the GNOME2 desktop (watch word (german): losung)
@@ -3180,7 +3178,6 @@ dev-db/tokumx 1.5.0-r2 2.0.2-r2: An open source, high-performance distribution o
 dev-db/tokyocabinet 1.4.48-r1: A library of routines for managing a database
 dev-db/tora 3.2-r1 9999: SQL IDE for Oracle, MySQL and PostgreSQL dbs
 dev-db/unixODBC 2.3.5-r1 2.3.7: A complete ODBC driver manager
-dev-db/vbisam 2.0: replacement for IBM's C-ISAM
 dev-db/vsqlite++ 0.3.13-r1: VSQLite++ - A welldesigned and portable SQLite3 Wrapper for C++
 dev-db/wxsqlite3 3.2.1-r1: C++ wrapper around the public domain SQLite 3.x database
 dev-db/xbase 3.1.2: xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library
@@ -4609,7 +4606,6 @@ dev-lang/gnat-gpl 2016-r3 2017 2018-r2 2019: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
 dev-lang/go 1.12.9 1.12.10 1.13 1.13.1 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
-dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
 dev-lang/helium 1.8.1: The Helium Compiler
 dev-lang/hy 0.10.0 0.10.1 0.11.1 0.12.0 0.12.1 0.13.0 0.13.1 0.14.0 0.15.0 0.16.0: A LISP dialect running in python
 dev-lang/icon 9.5.1-r1 9.5.1-r2: very high level language
@@ -4678,7 +4674,6 @@ dev-lang/swig 2.0.9 3.0.12 4.0.0: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.26-r3 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.5.17-r100 8.5.17-r101 8.6.8 8.6.9: Tool Command Language
 dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolog
-dev-lang/tinycobol 0.65.9: COBOL for linux
 dev-lang/tk 8.5.17-r1 8.5.17-r100 8.5.17-r101 8.6.8 8.6.9 8.6.9.1: Tk Widget Set
 dev-lang/tuprolog 2.9.2 3.0.1 3.1.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/vala 0.36.18 0.36.19 0.36.20 0.40.14 0.40.15 0.40.16 0.42.7 0.44.7 0.44.8 0.46.1: Compiler for the GObject type system
@@ -4702,7 +4697,6 @@ dev-libs/appstream-glib 0.7.9 0.7.15: Provides GObjects and helper methods to re
 dev-libs/apr 1.6.3-r4 1.6.5-r1 1.7.0-r1: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.4 1.5.4-r3 1.6.1-r3: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line options with minimal fuss
-dev-libs/asyncresolv 0.0.3: Asynchronous DNS query library written in C++
 dev-libs/atcore 1.0.0: API to manage the serial connection between the computer and 3D Printers
 dev-libs/atf 0.21-r2: Libraries to write tests in C, C++ and shell
 dev-libs/atk 2.28.1 2.30.0 2.32.0: GTK+ & GNOME Accessibility Toolkit
@@ -4742,7 +4736,6 @@ dev-libs/collada-dom 2.5.0 9999: COLLADA Document Object Model (DOM) C++ Library
 dev-libs/concurrencykit 0.5.2 0.6.0: A library with concurrency related algorithms and data structures in C
 dev-libs/confuse 3.0 3.2.2: a configuration file parser library
 dev-libs/console_bridge 0.4.0 0.4.2 0.4.3 9999: A ROS-independent package for logging into rosconsole/rosout
-dev-libs/cpl-stratego 0.4: Choice library mostly used by Stratego
 dev-libs/cppcodec 0.2 9999: C++11 library to encode/decode base64, base64url, base32, base32hex and hex
 dev-libs/crc32c 1.0.6: CRC32C implementation with support for CPU-specific acceleration instructions
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
@@ -5047,7 +5040,6 @@ dev-libs/libvarlink 16: C implementation of the Varlink protocol and command lin
 dev-libs/libverto 0.2.5-r1 0.3.0: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvoikko 4.2: Spell checking, hyphenation and morphological analysis tool for Finnish language
-dev-libs/libvolume_id 0.81.1: Library to provide file system information
 dev-libs/libvterm 0.0_pre20181126 0.1.1: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libwacom 0.33 1.0: Library for identifying Wacom tablets and their model-specific features
@@ -5204,8 +5196,6 @@ dev-libs/utfcpp 2.3.4 3.1 9999: UTF-8 C++ library
 dev-libs/uthash 2.0.2: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
 dev-libs/vala-common 0.40.14 0.42.7 0.44.7 0.44.8 0.46.1: Build infrastructure for packages that use Vala
-dev-libs/vanessa-adt 0.0.6 0.0.9: Abstract Data Types. Includes queue, dynamic array, hash and key value ADT
-dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
 dev-libs/vc 1.3.0 1.3.3 1.4.1: SIMD Vector Class Library for C++
 dev-libs/voikko-fi 2.3: Finnish dictionary for libvoikko based spell checkers (vvfst format)
 dev-libs/volume_key 0.3.11 0.3.12: Library for manipulating and storing storage volume encryption keys
@@ -11340,7 +11330,6 @@ games-emulation/advancemame 3.7: GNU/Linux port of the MAME emulator with GUI me
 games-emulation/advancescan 1.16-r1: A command line rom manager for MAME, MESS, AdvanceMAME, AdvanceMESS and Raine
 games-emulation/atari800 3.1.0-r1: Atari 800 emulator
 games-emulation/caps 20071115: Support library for accessing and using C.A.P.S. images
-games-emulation/daphne 1.0: Laserdisc Arcade Game Emulator
 games-emulation/desmume 0.9.11-r1: Nintendo DS emulator
 games-emulation/dgen-sdl 1.33-r1: A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator
 games-emulation/dolphin 5.0 9999: Gamecube and Wii game emulator
@@ -12634,7 +12623,6 @@ mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
 mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.92-r3 4.92-r4 4.92.1-r1 4.92.2 4.92.3: A highly configurable, drop-in replacement for sendmail
-mail-mta/mini-qmail 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.8.3 1.8.5-r1 1.8.6: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r4 1.06-r7: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
@@ -13986,7 +13974,6 @@ media-sound/gtklick 0.6.4-r1: A simple metronome with an easy-to-use GTK interfa
 media-sound/guayadeque 0.4.5_p20170110 9999: Music management program designed for all music enthusiasts
 media-sound/guimup 0.3.2: A client for MPD with a clean, GTK interface
 media-sound/guitarix 0.38.1-r1: Virtual guitar amplifier for Linux
-media-sound/hearnet 0.0.9: Listen to your network
 media-sound/helm 0.9.0: Open source polyphonic software synthesizer with lots of modulation
 media-sound/herrie 2.2-r1: Herrie is a command line music player
 media-sound/horgand 1.14-r1: Opensource software organ
@@ -13997,7 +13984,6 @@ media-sound/id3ed 1.10.4-r1: ID3 tag editor for mp3 files
 media-sound/id3ted 1.0: A Command-line ID3 Tag Editor
 media-sound/id3tool 1.2a: Tool for easy manipulation of the ID3 tags present in MP3 audio files
 media-sound/id3v2 0.1.12-r1: A command line editor for id3v2 tags
-media-sound/imp3sh 0.2.4: flexible playlist manipulation shell and song player/streamer
 media-sound/jaaa 0.8.4: JACK and ALSA Audio Analyser is an audio signal generator and spectrum analyser
 media-sound/jack 3.1.1-r2: A frontend for several cd-rippers and mp3 encoders
 media-sound/jack-audio-connection-kit 0.125.0: A low-latency audio server
@@ -14330,7 +14316,6 @@ media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping 
 media-video/m2vrequantizer 0.0.2_pre20060306-r1: Tool to requantize mpeg2 videos
 media-video/makemkv 1.14.5: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
-media-video/maven-poke 0.0.1: Matrox utility to read and set maven registers (tune tvout)
 media-video/mediainfo 19.07 19.09: MediaInfo supplies technical and tag information about media files
 media-video/minitube 2.5.2-r1: Qt5 YouTube Client
 media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
@@ -14415,7 +14400,6 @@ media-video/vobcopy 1.2.0: copies DVD .vob files to harddisk, decrypting them on
 media-video/vstrip 0.8f: A program to split non-css dvd vobs into individual chapters
 media-video/webcamoid 8.1.0: A full featured webcam capture application
 media-video/x264-encoder 0.0.20190214 0.0.20190903 9999: A free commandline encoder for X264/AVC streams
-media-video/xanim-export 2.80.1-r5: XAnim with Quicktime and RAW Audio export functions
 media-video/xine-ui 0.99.10: Xine movie player
 media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
@@ -14709,7 +14693,6 @@ net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the
 net-dialup/accel-ppp 1.11.1_p20170508 1.11.1_p20180320 1.11.9999 9999: High performance PPTP, PPPoE and L2TP server
 net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers using RADIUS
 net-dialup/cutecom 0.51.0: CuteCom is a serial terminal, like minicom, written in qt
-net-dialup/dgcmodem 1.10: Driver for Connexant DGC modems
 net-dialup/dial 1.2-r2: A simple client for DWUN
 net-dialup/diald 1.0-r3: Daemon that provides on demand IP links via SLIP or PPP
 net-dialup/dwun 0.96e-r4: Dialer Without a Useful Name (DWUN)
@@ -14792,7 +14775,6 @@ net-dns/resolv_wrapper 1.1.4 1.1.5: A wrapper for DNS name resolving or DNS faki
 net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writable location
 net-dns/s6-dns 2.2.0.1 2.3.0.0 2.3.0.1 2.3.0.2: Suite of DNS client programs and libraries for Unix systems
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
-net-dns/tinystats 1.1: A tinydns logging helper app
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
 net-dns/unbound 1.9.0 1.9.1 1.9.1-r1 1.9.2 1.9.3 1.9.4: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
@@ -15124,7 +15106,7 @@ net-libs/libssh2 1.8.0-r1 1.8.0-r2 1.8.2 1.9.0 1.9.0-r1 9999: Library implementi
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 1.1.4: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
-net-libs/libtorrent-rasterbar 1.1.10 1.1.12 1.1.13 1.2.0 1.2.1 1.2.2: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/libtorrent-rasterbar 1.1.10 1.1.10-r1 1.1.12 1.1.12-r1 1.1.13 1.1.13-r1 1.2.0 1.2.0-r1 1.2.1 1.2.1-r1 1.2.2 1.2.2-r1: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.8 4.0.9_p1 4.0.9_p1-r1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.2 1.8.3-r1 1.8.4: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
@@ -15165,7 +15147,6 @@ net-libs/qxmpp 0.9.3-r2 9999: A cross-platform C++ XMPP client library based on 
 net-libs/rabbitmq-c 0.9.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.11: A parsing library for RIPE Atlas result strings
-net-libs/roadrunner 0.9.1: RoadRunner library provides API for using Blocks Extensible Exchange Protocol
 net-libs/rpc2 2.14: Remote procedure call package for IP/UDP (used by Coda)
 net-libs/rpcsvc-proto 0 1.4: rpcsvc protocol definitions from glibc
 net-libs/serf 1.3.8 1.3.8-r1 1.3.9: HTTP client library
@@ -15185,8 +15166,6 @@ net-libs/telepathy-qt 0.9.7-r1: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0.2.8 0.2.9 0.2.9-r1 9999: Encrypted P2P, messaging, and audio/video calling platform
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
-net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
-net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.24.4: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3 4.6.1-r4 4.6.1-r5 4.6.1_p14-r1 99999: A network programming library in C++
@@ -15297,7 +15276,6 @@ net-misc/AQtion 2.2.7: Aquantia AQC multigigabit NIC linux driver (atlantic) - d
 net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
-net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/anydesk 4.0.1-r1 5.0.0 5.1.2: Feature rich multi-platform remote desktop application
 net-misc/apt-cacher-ng 3.2 3.2_p2-r2: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
@@ -15485,7 +15463,6 @@ net-misc/netkit-telnetd 0.17-r10 0.17-r12: Standard Linux telnet client and serv
 net-misc/netkit-timed 0.17-r10: Netkit - timed
 net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using UDP broadcasting techniques
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
-net-misc/netprofiles-ims 0.1.0134: Netprofiles Interface Management System manages network configurations
 net-misc/netsed 0.01b-r1: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.18.2: A set of co-operative tools that make networking simple and straightforward
@@ -15723,7 +15700,6 @@ net-p2p/qbittorrent 4.1.7 4.1.8 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.3-r1 0.6.4 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
-net-p2p/saku 3.11.0-r2: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
 net-p2p/syncthing 1.1.4 1.2.1 1.3.0: Open Source Continuous File Synchronization
@@ -17615,7 +17591,6 @@ sys-boot/os-prober 1.76-r1 1.77: Utility to detect other OSs on a set of drives
 sys-boot/palo 2.12 9999: PALO : PArisc Linux Loader
 sys-boot/plymouth 0.9.3-r1 0.9.3-r2 0.9.4-r1 9999: Graphical boot animation (splash) and logger
 sys-boot/plymouth-openrc-plugin 0.1.2-r1: Plymouth plugin for OpenRC
-sys-boot/psoload 2.0: Load home brewed code onto the GameCube with Phantasy Star Online
 sys-boot/raincoat 0.11: Flash the Xbox boot chip
 sys-boot/raspberrypi-firmware 1.20190215 1.20190709 9999: Raspberry Pi (all versions) bootloader and GPU firmware
 sys-boot/raspberrypi-mkimage 0_p20120201: Raspberry Pi kernel mangling tool mkimage/imagetool-uncompressed.py
