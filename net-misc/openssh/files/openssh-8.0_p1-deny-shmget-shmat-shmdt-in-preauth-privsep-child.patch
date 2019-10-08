@@ -1,0 +1,31 @@
+From 3ef92a657444f172b61f92d5da66d94fa8265602 Mon Sep 17 00:00:00 2001
+From: Lonnie Abelbeck <lonnie@abelbeck.com>
+Date: Tue, 1 Oct 2019 09:05:09 -0500
+Subject: [PATCH] Deny (non-fatal) shmget/shmat/shmdt in preauth privsep child.
+
+New wait_random_seeded() function on OpenSSL 1.1.1d uses shmget, shmat, and shmdt
+in the preauth codepath, deny (non-fatal) in seccomp_filter sandbox.
+---
+ sandbox-seccomp-filter.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/sandbox-seccomp-filter.c b/sandbox-seccomp-filter.c
+index 840c5232b..39dc289e3 100644
+--- a/sandbox-seccomp-filter.c
++++ b/sandbox-seccomp-filter.c
+@@ -168,6 +168,15 @@ static const struct sock_filter preauth_insns[] = {
+ #ifdef __NR_stat64
+ 	SC_DENY(__NR_stat64, EACCES),
+ #endif
++#ifdef __NR_shmget
++	SC_DENY(__NR_shmget, EACCES),
++#endif
++#ifdef __NR_shmat
++	SC_DENY(__NR_shmat, EACCES),
++#endif
++#ifdef __NR_shmdt
++	SC_DENY(__NR_shmdt, EACCES),
++#endif
+ 
+ 	/* Syscalls to permit */
+ #ifdef __NR_brk
