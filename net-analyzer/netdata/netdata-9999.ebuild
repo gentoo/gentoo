@@ -116,7 +116,7 @@ src_install() {
 	keepdir /var/lib/netdata
 	keepdir /var/lib/netdata/registry
 
-	fowners -Rc root:newdata /usr/share/${PN}
+	fowners -Rc root:netdata /usr/share/${PN}
 
 	newinitd system/netdata-openrc ${PN}
 	systemd_dounit system/netdata.service
