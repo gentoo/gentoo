@@ -960,12 +960,6 @@ net-dialup/dgcmodem
 # Removal in 30 days.  Bug #693804.
 media-video/xanim-export
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-08)
-# Last bumped in 2007.  EAPI 0.  Multiple QA issues.  x86-only.
-# Homepage is long gone.
-# Removal in 30 days.  Bug #693802.
-media-sound/imp3sh
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
