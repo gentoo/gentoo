@@ -933,7 +933,6 @@ net-mail/fastforward
 # Removal in 30 days.  Bug #693820.
 dev-libs/vanessa-adt
 dev-libs/vanessa-logger
-net-libs/vanessa-socket
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
