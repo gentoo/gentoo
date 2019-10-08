@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils cmake-utils flag-o-matic
+inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Dislocker is used to read BitLocker encrypted partitions."
 HOMEPAGE="https://github.com/Aorimn/dislocker"
@@ -20,10 +20,11 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="ruby"
 
-DEPEND="sys-fs/fuse:*
-	net-libs/mbedtls
-	ruby? ( dev-lang/ruby:2.3 )"
-
+DEPEND="
+	sys-fs/fuse:0=
+	net-libs/mbedtls:0=
+	ruby? ( dev-lang/ruby:* )
+"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
