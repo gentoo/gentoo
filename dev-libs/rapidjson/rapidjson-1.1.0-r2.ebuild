@@ -14,7 +14,6 @@ SLOT="0"
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/miloyip/rapidjson.git"
-	EGIT_SUBMODULES=()
 	inherit git-r3
 else
 	SRC_URI="https://github.com/miloyip/rapidjson/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -29,6 +28,10 @@ DEPEND="
 		dev-util/valgrind
 	)"
 RDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}/${P}-gcc-7.patch"
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
