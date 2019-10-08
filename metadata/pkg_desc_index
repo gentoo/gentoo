@@ -31,6 +31,7 @@ acct-group/msmtpd 0: System group: msmtpd
 acct-group/murmur 0: System group: murmur
 acct-group/mysql 0: MySQL program group
 acct-group/mythtv 0: Mythtv mythbackend server/deamon group
+acct-group/netdata 0: System group: netdata
 acct-group/nofiles 0: System group: nofiles
 acct-group/nsd 0: System group: nsd
 acct-group/ntp 0: System group: ntp
@@ -88,6 +89,7 @@ acct-user/msmtpd 0: user for msmtp daemon
 acct-user/murmur 0: user for murmur daemon
 acct-user/mysql 0: MySQL program user
 acct-user/mythtv 0: Mythtv mythbackend server/deamon user
+acct-user/netdata 0: user for netdata
 acct-user/nsd 0: user for nsd daemon
 acct-user/ntp 0: user for ntp daemon
 acct-user/pdnsd 0: user for pdns daemon
@@ -7762,7 +7764,7 @@ dev-python/dynd-python 0.7.2-r1: Python exposure of multidimensionnal array libr
 dev-python/e4u 0.1_rc5-r1: A library for handling unicode emoji and carrier's emoji
 dev-python/easy-thumbnails 2.2 2.3 2.4.1: Easy thumbnails for Django
 dev-python/ebuildtester 0.1.12 0.1.13 0.1.14: A dockerized approach to test a Gentoo package within a clean stage3 container
-dev-python/ecdsa 0.13 0.13.2: ECDSA cryptographic signature library in pure Python
+dev-python/ecdsa 0.13 0.13.2 0.13.3: ECDSA cryptographic signature library in pure Python
 dev-python/ed25519ll 0.6: A low-level ctypes wrapper for Ed25519 digital signatures.
 dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python object
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
@@ -13670,7 +13672,7 @@ media-plugins/kodi-pvr-filmon 2.4.4 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-hts 4.4.12 4.4.13 4.4.14 4.4.16 4.4.17 4.4.18 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
 media-plugins/kodi-pvr-iptvsimple 3.8.0 3.8.1 3.8.3 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 3.5.16 3.5.17 9999: Kodi's MediaPortal TVServer client addon
-media-plugins/kodi-pvr-mythtv 5.10.9 5.10.11 5.10.12 9999: MythTV PVR for Kodi
+media-plugins/kodi-pvr-mythtv 5.10.9 5.10.11 5.10.12 5.10.13 9999: MythTV PVR for Kodi
 media-plugins/kodi-pvr-nextpvr 3.3.8 3.3.11 3.3.12 3.3.13 3.3.14 3.3.15 9999: Kodi's NextPVR client addon
 media-plugins/kodi-pvr-njoy 3.4.2 9999: Kodi's Njoy N7 client addon
 media-plugins/kodi-pvr-pctv 2.4.5 9999: Kodi's PCTV client addon
@@ -14568,7 +14570,7 @@ net-analyzer/nessus-agent-bin 7.4.0 7.4.1 7.4.2: A remote security scanner for L
 net-analyzer/nessus-bin 8.4.0 8.5.2: A remote security scanner for Linux
 net-analyzer/net-snmp 5.8-r1 5.8-r2 5.8-r4 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
-net-analyzer/netdata 1.13.0 1.14.0 1.14.0-r1 1.15.0 1.15.0-r1 1.15.0-r2 1.16.0 1.16.1 1.17.0 1.17.1 9999: Linux real time system monitoring, done right!
+net-analyzer/netdata 1.13.0 1.14.0 1.14.0-r1 1.15.0 1.15.0-r1 1.15.0-r2 1.16.0 1.16.1 1.17.0 1.17.1 1.17.1-r1 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.3_beta6-r3: An active/passive address reconnaissance tool
 net-analyzer/nethogs 0.8.5-r1: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0-r1: NETI@Home research project from GATech
@@ -15839,7 +15841,7 @@ net-vpn/peervpn 0.044-r4: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.7.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.0.5 0.4.1.6 0.4.2.1_alpha: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.0.5 0.4.1.6 0.4.2.2_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
