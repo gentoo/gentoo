@@ -1040,12 +1040,6 @@ app-text/freepwing
 # Removal in 30 days.  Bug #693748.
 app-emulation/vov
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-08)
-# Does not start.  Last bumped in 2012, numerous releases behind
-# upstream.
-# Removal in 30 days.  Bug #609652.
-net-p2p/saku
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
