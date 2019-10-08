@@ -1017,15 +1017,6 @@ dev-libs/asyncresolv
 # Removal in 30 days.  Bug #693756.
 dev-lang/gwydion-dylan-bin
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-08)
-# Both packages are unmaintained, EAPI 0, not keyworded on amd64.
-# Both were last bumped in 2010.  Tinycobol had one release afterwards,
-# after which it has been declared dead (in 2011).  It is the only
-# reverse dependency of vbisam, and it has no reverse dependencies
-# itself.
-# Removal in 30 days.  Bug #693752.
-dev-db/vbisam
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
