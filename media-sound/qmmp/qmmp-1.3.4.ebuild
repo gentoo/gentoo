@@ -75,7 +75,7 @@ RDEPEND="
 	projectm? (
 		dev-qt/qtgui:5[-gles2]
 		dev-qt/qtopengl:5
-		media-libs/libprojectm
+		media-libs/libprojectm:=
 	)
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.9 )
 	qtmedia? ( dev-qt/qtmultimedia:5 )
