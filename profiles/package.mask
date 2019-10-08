@@ -986,13 +986,6 @@ sys-boot/psoload
 # Removal in 30 days.  Bug #693796.
 net-misc/netprofiles-ims
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-08)
-# Added in 2004 and not updated since.  Unclear license.  EAPI 0.
-# Homepage and SRC_URI are dead, and we probably shouldn't be mirroring
-# them in the first place.
-# Removal in 30 days.  Bug #693794.
-media-video/maven-poke
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
