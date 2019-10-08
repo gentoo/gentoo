@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -69,7 +69,7 @@ RDEPEND="
 	!mail-mta/opensmtpd
 	!mail-mta/ssmtp
 	>=sys-apps/ucspi-tcp-0.88-r17
-	ssl? ( >=sys-apps/ucspi-ssl-0.70-r1 )
+	ssl? ( sys-apps/ucspi-ssl )
 	virtual/daemontools
 	>=net-mail/dot-forward-0.71-r3
 	${DEPEND}
