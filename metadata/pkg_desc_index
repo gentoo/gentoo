@@ -472,7 +472,7 @@ app-backup/borgbackup 1.1.8 1.1.9 1.1.10 1.1.10-r1 9999: Deduplicating backup pr
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.24.0-r1 0.25.1-r1 0.26.0 0.26.1 0.27.0 0.27.1 0.27.1-r1 0.27.2 0.28.0 0.28.1 0.28.2 0.28.3 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/bup 0.28.1 0.29.2: A highly efficient backup system based on the git packfile format
-app-backup/burp 2.1.32-r1 2.2.18 2.2.18-r1: Network backup and restore client and server for Unix and Windows
+app-backup/burp 2.2.18 2.2.18-r1: Network backup and restore client and server for Unix and Windows
 app-backup/buttersink 0.6.8 9999: rsync-like utility for btrfs snapshots
 app-backup/cachedir 1.4: Tag/untag cache directories
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
@@ -1963,7 +1963,7 @@ app-misc/golly 3.2: simulator for Conway's Game of Life and other cellular autom
 app-misc/goobook 1.9 3.3: Access your Google contacts from the command line
 app-misc/gourmet 0.17.4-r2: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
-app-misc/gramps 4.2.8 5.0.1 5.0.2: Genealogical Research and Analysis Management Programming System
+app-misc/gramps 5.0.1 5.0.2: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 0.1.9 1.0.2: Contains the lowlevel lcd drivers for GraphLCD
 app-misc/grc 1.5 1.9 1.11-r1: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2: Real-time Sunlight Wallpaper
@@ -3332,7 +3332,7 @@ dev-go/blackfriday 1.2_p20150720 1.4 9999: a markdown processor implemented in G
 dev-go/cli 0_pre20160306: A small package for building command line apps in Go
 dev-go/coveraggregator 0_pre20170216: Cover profile aggregator for golang
 dev-go/delve 1.0.0: A source-level debugger for the Go programming language
-dev-go/ed25519 0_pre20160420 0_pre20170117: ed25519 for Go
+dev-go/ed25519 0_pre20170117: ed25519 for Go
 dev-go/fuzzy 0.0.3 0.0.5: Go library that provides fuzzy string matching
 dev-go/get-ego-vendor 0.1.0: Utility to generate EGO_VENDOR data for ebuilds
 dev-go/glide 0.13.2: Vendor Package Managment for Golang
@@ -3359,13 +3359,13 @@ dev-go/godep 74 9999: dependency tool for go
 dev-go/gogo-protobuf 0.4_p20170815: Protocol Buffers for Go with Gadgets
 dev-go/golint 0_pre20180702: a linter for Go
 dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for ruby
-dev-go/goptlib 0.6 1.0.0 1.1.0: Go Tor pluggable transports library
+dev-go/goptlib 1.1.0: Go Tor pluggable transports library
 dev-go/goversion 1.2.0: Print version used to build Go executables
 dev-go/gox 0.4.0: A dead simple, no frills Go cross compile tool
 dev-go/logrus 1.4.1: Structured, pluggable logging for Go
 dev-go/qr 0_p20161121: Basic QR code library for Go
 dev-go/sanitized-anchor-name 0_pre20150822 0_pre20151027 9999: A Go function to provide sanitized anchor names
-dev-go/siphash 1.0.0 1.1.0 1.2.1: Go implementation of SipHash-2.4
+dev-go/siphash 1.0.0 1.2.1: Go implementation of SipHash-2.4
 dev-go/toml 0.2.0_p20160716 9999: TOML parser for Golang with reflection
 dev-go/twofactor 0_p20180418: Two-factor authentication library for Go
 dev-go/zglob 0_p20171230: Unix-optimized file globbing and directory walking for Go
@@ -4823,7 +4823,7 @@ dev-libs/ilbc-rfc3951 0-r1: iLBC is a speech codec suitable for robust voice com
 dev-libs/iniparser 3.1 3.1-r1 4.1: A free stand-alone ini file parsing library
 dev-libs/injeqt 1.2.0: Dependency injection framework for Qt5
 dev-libs/input-pad 1.0.99_pre20140916: On-screen input pad to send characters with mouse
-dev-libs/intel-neo 19.16.12873 19.22.13062 19.30.13641 19.38.14237: Intel Graphics Compute Runtime for OpenCL, for Gen8 (Broadwell) and beyond
+dev-libs/intel-neo 19.22.13062 19.30.13641 19.38.14237: Intel Graphics Compute Runtime for OpenCL, for Gen8 (Broadwell) and beyond
 dev-libs/isl 0.12.2 0.13 0.14 0.14.1 0.15 0.16.1 0.17.1 0.18 0.19 0.20 0.21: A library for manipulating integer points bounded by linear constraints
 dev-libs/ivykis 0.42.2 0.42.3-r1 0.42.4: Library for asynchronous I/O readiness notification
 dev-libs/jansson 2.10 2.11 2.12: C library for encoding, decoding and manipulating JSON data
@@ -8551,7 +8551,7 @@ dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pyh2o 9999: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 1.9.0 1.9.0-r1: Hamcrest framework for matcher objects
 dev-python/pyhcl 0.2.3 0.3.6: HCL configuration parser for python
-dev-python/pyicu 2.0.2 2.3 2.3.1: Python bindings for dev-libs/icu
+dev-python/pyicu 2.3 2.3.1: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyifp 0.2.2-r1: Python bindings for libifp library for accessing iRiver iFP devices
 dev-python/pyilmbase 2.3.0: IlmBase Python bindings
@@ -13178,7 +13178,7 @@ media-libs/dumb 0.9.3-r3: IT/XM/S3M/MOD player library with click removal and IT
 media-libs/elles_icc_profiles 20160501.0932 20160501.0932-r1: Elle Stone's well-behaved RGB and grey ICC profiles
 media-libs/esdl 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 11.60 11.63 11.65: Read and write meta information in image, audio and video files
+media-libs/exiftool 11.65 11.69: Read and write meta information in image, audio and video files
 media-libs/faac 1.29.9.2: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.8.8: AAC audio decoding library
 media-libs/fdk-aac 0.1.5 0.1.6 2.0.0: Fraunhofer AAC codec library
@@ -14566,8 +14566,8 @@ net-analyzer/nbtscan 1.5.1-r3: NBTscan is a program for scanning IP networks for
 net-analyzer/nbwmon 0.5.2: ncurses bandwidth monitor
 net-analyzer/ndoutils 2.1.3-r2: Nagios addon to store Nagios data in a MySQL database
 net-analyzer/ndsad 1.33-r1 1.33-r2: Cisco netflow probe from libpcap, ULOG, tee/divert sources
-net-analyzer/nessus-agent-bin 7.4.0 7.4.1 7.4.2: A remote security scanner for Linux - agent component
-net-analyzer/nessus-bin 8.4.0 8.5.2: A remote security scanner for Linux
+net-analyzer/nessus-agent-bin 7.4.2: A remote security scanner for Linux - agent component
+net-analyzer/nessus-bin 8.5.2: A remote security scanner for Linux
 net-analyzer/net-snmp 5.8-r1 5.8-r2 5.8-r4 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
 net-analyzer/netdata 1.13.0 1.14.0 1.14.0-r1 1.15.0 1.15.0-r1 1.15.0-r2 1.16.0 1.16.1 1.17.0 1.17.1 1.17.1-r1 9999: Linux real time system monitoring, done right!
@@ -15309,7 +15309,7 @@ net-misc/asterisk-extra-sounds 1.4.11-r1: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.9: G.729 codec and supporting files for asterisk
 net-misc/asterisk-moh-opsound 2.03: asterisk moh music
 net-misc/astmanproxy 1.28.2: Proxy for the Asterisk manager interface
-net-misc/autossh 1.4e 1.4f 1.4g: Automatically restart SSH sessions and tunnels
+net-misc/autossh 1.4g: Automatically restart SSH sessions and tunnels
 net-misc/autoupnp 0.4.7 9999: Automatic open port forwarder using UPnP
 net-misc/axel 2.4-r3 2.12 2.14.1 2.15 9999: Light Unix download accelerator
 net-misc/babeld 1.8.2 1.9.1: a loop-free distance-vector routing protocol
@@ -15726,7 +15726,7 @@ net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r2: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
-net-p2p/syncthing 1.1.4 1.2.1: Open Source Continuous File Synchronization
+net-p2p/syncthing 1.1.4 1.2.1 1.3.0: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6-r1 1.8.6-r2: A torrent file parser
 net-p2p/transmission 2.94-r1 9999: A fast, easy, and free BitTorrent client
@@ -17850,7 +17850,7 @@ sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk part
 sys-fs/aufs-headers 4.1_p20170130 4.14_p20180709 4.14_p20190603: User space headers for aufs3
 sys-fs/aufs-util 4.1_p20170130 4.14_p20180709 4.14_p20190603: Utilities are always necessary for aufs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
-sys-fs/avfs 1.0.6 1.1.0 1.1.1: AVFS is a virtual filesystem that allows browsing of compressed files
+sys-fs/avfs 1.1.1: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bees 0.6.1 9999: Best-Effort Extent-Same, a btrfs dedup agent
@@ -17981,7 +17981,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta19 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.189 4.4.192 4.4.193 4.4.194 4.4.195 4.4.196 4.9.189 4.9.192 4.9.193 4.9.194 4.9.195 4.9.196 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4: Full sources including the Gentoo patchset for the 5.3 kernel tree
+sys-kernel/gentoo-sources 4.4.189 4.4.192 4.4.193 4.4.194 4.4.195 4.4.196 4.9.189 4.9.192 4.9.193 4.9.194 4.9.195 4.9.196 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5: Full sources including the Gentoo patchset for the 5.3 kernel tree
 sys-kernel/git-sources 5.4_rc1 5.4_rc2: The very latest -git version of the Linux kernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
@@ -19107,7 +19107,7 @@ x11-misc/xflux-gui 1.2.0-r1: A GUI for f.lux
 x11-misc/xfractint 20.04_p14: A fractal generator
 x11-misc/xgestures 0.4: A mouse gesture recognition program for X11 desktops
 x11-misc/xhkeys 2.2.1: assign particular actions to any key or key combination
-x11-misc/xiccd 0.2.4 0.3.0: A desktop environment-independent bridge between colord and X
+x11-misc/xiccd 0.3.0: A desktop environment-independent bridge between colord and X
 x11-misc/xidle 26052015: Monitors inactivity in X and runs the specified program when a timeout occurs
 x11-misc/xkbd 0.8.16-r1: onscreen soft keyboard for X11
 x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the current XKB layout

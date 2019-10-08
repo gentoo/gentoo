@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=sci-biology/bioperl sci-libs/htslib:= dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AV/AVULLO/Bio-DB-HTS-2.11.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	20c90ae7e826995a597683580cdfcdcb
-_md5_=d19dd7112de61a10609d7e8b32c2a4da
+_md5_=a46637d800a96051da6de3fc6e9be7f9

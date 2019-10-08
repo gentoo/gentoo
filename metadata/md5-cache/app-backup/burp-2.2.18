@@ -8,7 +8,8 @@ IUSE=acl ipv6 libressl test xattr
 KEYWORDS=amd64 ~arm x86
 LICENSE=AGPL-3
 RDEPEND=dev-libs/uthash net-libs/librsync sys-libs/ncurses:0= sys-libs/zlib !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) acl? ( sys-apps/acl ) xattr? ( sys-apps/attr ) virtual/logger
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/grke/burp/archive/2.2.18.tar.gz -> burp-2.2.18.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=b2ecc61723c5af5bc53274547ca2cbb2
+_md5_=22ae41112f789d8d9bf15c6d6ca9a6e5
