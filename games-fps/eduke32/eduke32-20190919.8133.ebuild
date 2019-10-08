@@ -56,14 +56,18 @@ MY_DEPEND_RDEPEND="
 	media-libs/sdl2-mixer[flac?,fluidsynth?,midi,timidity?,vorbis?]
 	sys-libs/zlib:=
 	flac? ( media-libs/flac )
-		gtk? ( x11-libs/gtk+:2 )
-	opengl? ( virtual/glu
-		virtual/opengl )
+	gtk? ( x11-libs/gtk+:2 )
+	opengl? (
+		virtual/glu
+		virtual/opengl
+	)
 	png? ( media-libs/libpng:0= )
 	timidity? ( media-sound/timidity-freepats )
 	vpx? ( media-libs/libvpx:= )
-	vorbis? ( media-libs/libogg
-		media-libs/libvorbis )
+	vorbis? (
+		media-libs/libogg
+		media-libs/libvorbis
+	)
 	xmp? ( media-libs/exempi:= )
 "
 
@@ -194,6 +198,7 @@ src_install() {
 
 	keepdir /usr/share/games/eduke32
 	insinto /usr/share/games/eduke32
+
 	if use hrp; then
 		doins "${DISTDIR}"/duke3d_hrp-${MY_PV_HRP}.zip
 	fi
@@ -222,6 +227,7 @@ src_install() {
 	make_desktop_entry mapster32 Mapster32 eduke32 Game
 
 	local DOCS=( package/sdk/samples/*.txt source/build/doc/*.txt source/duke3d/src/lunatic/doc/*.txt )
+
 	if use hrp; then
 		DOCS+=( "${WORKDIR}"/hrp_readme.txt "${WORKDIR}"/hrp_todo.txt )
 	fi
@@ -237,6 +243,7 @@ src_install() {
 	if use voxels; then
 		DOCS+=( "${WORKDIR}"/voxelpack_readme.txt )
 	fi
+
 	einstalldocs
 }
 
