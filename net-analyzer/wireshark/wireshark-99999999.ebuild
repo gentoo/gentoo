@@ -14,8 +14,8 @@ SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
 	adns androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc
-	dpauxmon +dumpcap +editcap kerberos libxml2 lua lz4 maxminddb +mergecap
-	+minizip +netlink nghttp2 +plugins plugin-ifdemo +pcap +qt5 +randpkt
+	dpauxmon +dumpcap +editcap http2 kerberos libxml2 lua lz4 maxminddb
+	+mergecap +minizip +netlink +plugins plugin-ifdemo +pcap +qt5 +randpkt
 	+randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl
 	sdjournal +text2pcap tfshark +tshark +udpdump zlib
 "
@@ -29,6 +29,7 @@ CDEPEND="
 	brotli? ( app-arch/brotli )
 	ciscodump? ( >=net-libs/libssh-0.6 )
 	filecaps? ( sys-libs/libcap )
+	http2? ( net-libs/nghttp2 )
 	kerberos? ( virtual/krb5 )
 	libxml2? ( dev-libs/libxml2 )
 	lua? ( >=dev-lang/lua-5.1:* )
@@ -36,7 +37,6 @@ CDEPEND="
 	maxminddb? ( dev-libs/libmaxminddb )
 	minizip? ( sys-libs/zlib[minizip] )
 	netlink? ( dev-libs/libnl:3 )
-	nghttp2? ( net-libs/nghttp2 )
 	pcap? ( net-libs/libpcap )
 	qt5? (
 		dev-qt/qtcore:5
@@ -160,7 +160,7 @@ src_configure() {
 		-DENABLE_LZ4=$(usex lz4)
 		-DENABLE_MINIZIP=$(usex minizip)
 		-DENABLE_NETLINK=$(usex netlink)
-		-DENABLE_NGHTTP2=$(usex nghttp2)
+		-DENABLE_NGHTTP2=$(usex http2)
 		-DENABLE_PCAP=$(usex pcap)
 		-DENABLE_PLUGINS=$(usex plugins)
 		-DENABLE_PLUGIN_IFDEMO=$(usex plugin-ifdemo)
