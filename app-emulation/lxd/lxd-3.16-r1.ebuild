@@ -45,7 +45,7 @@ RDEPEND="
 		net-libs/libnsl:0=
 		net-misc/rsync[xattr]
 		sys-apps/iproute2[ipv6?]
-		sys-fs/fuse
+		sys-fs/fuse:0=
 		sys-fs/lxcfs
 		sys-fs/squashfs-tools
 		virtual/acl
