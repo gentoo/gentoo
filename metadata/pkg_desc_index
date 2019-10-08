@@ -13687,9 +13687,9 @@ media-plugins/kodi-visualization-goom 9999: Goom visualizer for Kodi
 media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
 media-plugins/kodi-visualization-projectm 2.1.0 2.2.0 2.3.0 2.3.1 9999: ProjectM visualizer for Kodi
 media-plugins/kodi-visualization-shadertoy 1.1.5 1.1.8 1.1.9 1.1.10 1.2.1 9999: Shadertoy visualizer for Kodi
-media-plugins/kodi-visualization-spectrum 1.1.1 2.0.3 2.0.4 3.0.0 3.0.1 9999: Spectrum visualizer for Kodi
-media-plugins/kodi-visualization-starburst 2.0.0 2.0.1 9999: StarBurst visualizer for Kodi
-media-plugins/kodi-visualization-waveform 2.0.1 3.0.2 9999: Waveform visualizer for Kodi
+media-plugins/kodi-visualization-spectrum 1.1.1 2.0.3 2.0.4 3.0.0 3.0.1 3.0.2 9999: Spectrum visualizer for Kodi
+media-plugins/kodi-visualization-starburst 2.0.0 2.0.1 2.0.2 9999: StarBurst visualizer for Kodi
+media-plugins/kodi-visualization-waveform 2.0.1 3.0.2 3.1.0 9999: Waveform visualizer for Kodi
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0-r1: A libvisual graphical music visualization plugin similar to milkdrop
@@ -16777,7 +16777,7 @@ sci-mathematics/relational 2.5: Educational tool for relational algebra
 sci-mathematics/rkward 0.7.0b: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
 sci-mathematics/rstudio 1.1.383-r1 1.1.453 1.1.463 1.1.463-r1 1.2.1335: IDE for the R language
-sci-mathematics/rw 0.8: Compute rank-width decompositions of graphs
+sci-mathematics/rw 0.8-r1: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0 5.6_p1: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 3.1.6 4.0.2 4.0.3: Computer algebra system for polynomial computations
 sci-mathematics/slepc 3.11.1: Scalable Library for Eigenvalue Problem Computations
