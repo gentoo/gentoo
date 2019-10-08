@@ -1,10 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
-PYTHON_REQ_USE="sqlite(+)"
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
 inherit autotools gnome2-utils python-single-r1
 
@@ -22,17 +21,20 @@ KEYWORDS="~amd64 ~x86"
 IUSE="boost lua opencc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
+BDEPEND="
+	virtual/pkgconfig"
+
+DEPEND="${PYTHON_DEPS}
 	app-i18n/ibus[python(+),${PYTHON_USEDEP}]
 	>=app-i18n/libpinyin-2.1.0:=
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	virtual/libintl
+	dev-db/sqlite:3
 	boost? ( dev-libs/boost:= )
 	lua? ( dev-lang/lua:0 )
 	opencc? ( app-i18n/opencc:= )"
 
-DEPEND="${RDEPEND}
-	virtual/libintl
-	virtual/pkgconfig"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	if use boost; then
