@@ -8,14 +8,13 @@ PYTHON_REQ_USE="threads"
 DISTUTILS_OPTIONAL=true
 DISTUTILS_IN_SOURCE_BUILD=true
 
-inherit autotools distutils-r1 flag-o-matic
+inherit distutils-r1 flag-o-matic
 
 MY_PV=$(ver_rs 1-2 '_')
-MY_P=${PN/-rasterbar}-${MY_PV}
 
 DESCRIPTION="C++ BitTorrent implementation focusing on efficiency and scalability"
-HOMEPAGE="https://libtorrent.org https://github.com/arvidn/libtorrent"
-SRC_URI="https://github.com/arvidn/libtorrent/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://libtorrent.org"
+SRC_URI="https://github.com/arvidn/libtorrent/releases/download/libtorrent_${MY_PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/9"
@@ -41,13 +40,7 @@ DEPEND="${RDEPEND}
 	sys-devel/libtool
 "
 
-S="${WORKDIR}/${PN/-rasterbar}-${MY_P}"
-
 src_prepare() {
-	mkdir "${S}"/build-aux/ || die
-	touch "${S}"/build-aux/config.rpath || die
-	eautoreconf
-
 	default
 
 	# bug 578026
@@ -65,9 +58,9 @@ src_configure() {
 
 	local myeconfargs=(
 		$(use_enable debug)
-		$(use_enable debug export-all)
 		$(use_enable debug logging)
-		$(use_enable dht)
+		$(use_enable debug disk-stats)
+		$(use_enable dht dht $(usex debug logging $(usex ('yes' 'no'))))
 		$(use_enable examples)
 		$(use_enable ssl encryption)
 		$(use_enable static-libs static)

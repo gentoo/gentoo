@@ -80,7 +80,7 @@ src_configure() {
 		python_configure() {
 			econf "${myeconfargs[@]}" \
 				--enable-python-binding \
-				--with-boost-python="${EPYTHON#python}"
+				--with-boost-python="boost_${EPYTHON/./}"
 		}
 		distutils-r1_src_configure
 	fi
