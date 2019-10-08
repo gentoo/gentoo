@@ -68,7 +68,7 @@ COMMON_DEPEND="
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	projectm? (
 		media-libs/glew:=
-		>=media-libs/libprojectm-1.2.0
+		>=media-libs/libprojectm-1.2.0:=
 		virtual/opengl
 	)
 "
