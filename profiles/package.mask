@@ -1046,13 +1046,6 @@ app-emulation/vov
 # Removal in 30 days.  Bug #609652.
 net-p2p/saku
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-08)
-# Last bumped in 2008.  Needs porting out of games.eclass.  Apparently
-# does not work in testing mode, and requires rare hardware and media
-# for normal operation.
-# Removal in 30 days.  Bug #654290.
-games-emulation/daphne
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
