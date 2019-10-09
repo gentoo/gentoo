@@ -18740,7 +18740,7 @@ x11-libs/libGLw 8.0.0: Mesa GLw library
 x11-libs/libICE 1.0.10: X.Org Inter-Client Exchange library
 x11-libs/libQGLViewer 2.7.1: C++ library based on Qt that eases the creation of OpenGL 3D viewers
 x11-libs/libSM 1.2.3: X.Org Session Management library
-x11-libs/libX11 1.6.8: X.Org X11 library
+x11-libs/libX11 1.6.8 1.6.9: X.Org X11 library
 x11-libs/libXScrnSaver 1.2.3: X.Org XScrnSaver library
 x11-libs/libXau 1.0.9: X.Org X authorization library
 x11-libs/libXaw 1.0.13-r1: X.Org Xaw library
