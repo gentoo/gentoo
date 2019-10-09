@@ -4956,7 +4956,6 @@ media-tv/mythtv:autostart - Use a custom autostart configuration
 media-tv/mythtv:bluray - Use the system libbluray for BluRay support
 media-tv/mythtv:cec - Allows control of CEC enabled TVs via HDMI
 media-tv/mythtv:ceton - Ceton InfiniTV 4 a CableCARD-enabled tuner support
-media-tv/mythtv:crystalhd - Broadcom CrystalHD hardware support
 media-tv/mythtv:debug - Instructs Qt to use the 'debug' target
 media-tv/mythtv:egl - EGL video output support
 media-tv/mythtv:fftw - Support visualizations via sci-libs/fftw
@@ -4976,6 +4975,7 @@ media-tv/mythtv:vpx - Enable VP8/VP9 support for media-libs/libvpx
 media-tv/mythtv:wrapper - Use Ubuntu mythtfrontend wrapper
 media-tv/mythtv:x265 - Enable h265 encoding using x265
 media-tv/mythtv:xmltv - Support media-tv/xmltv TV listing - not used by Schedules Direct]
+media-tv/mythtv:xnvctrl - External XNVCtrl support using Nvidia proprietary driver
 media-tv/tvheadend:capmt - Enable support for capmt (dvbapi) protocol
 media-tv/tvheadend:constcw - Enable support for the constcw protocol
 media-tv/tvheadend:cwc - Enable support for the cwc (newcamd) protocol
