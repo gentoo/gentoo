@@ -12,7 +12,6 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2.1 BSD-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="+static-libs"
 
 COMMON_DEPEND="virtual/libelf
 	!<=dev-util/bcc-0.7.0"
@@ -28,18 +27,14 @@ PATCHES=(
 
 src_compile() {
 	emake \
-		BUILD_SHARED=y \
 		LIBSUBDIR="$(get_libdir)" \
-		$(usex static-libs 'BUILD_STATIC=y' '' '' '') \
 		CC="$(tc-getCC)"
 }
 
 src_install() {
 	emake \
-		BUILD_SHARED=y \
 		LIBSUBDIR="$(get_libdir)" \
 		DESTDIR="${D}" \
-		$(usex static-libs 'BUILD_STATIC=y' '' '' '') \
 		install install_uapi_headers
 
 	insinto /usr/$(get_libdir)/pkgconfig
