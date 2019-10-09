@@ -14692,7 +14692,7 @@ net-analyzer/yersinia 0.7.3 0.8.2: A framework for layer 2 attacks
 net-analyzer/zabbix 2.2.16-r1 2.2.21-r1 2.2.23-r1 3.0.26 3.2.11-r1 3.4.15 4.0.6 4.0.7 4.0.9 4.2.3: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
-net-dialup/accel-ppp 1.11.1_p20180320 9999: High performance PPTP, PPPoE and L2TP server
+net-dialup/accel-ppp 1.11.1_p20180320 1.12.0 9999: High performance PPTP, PPPoE and L2TP server
 net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers using RADIUS
 net-dialup/cutecom 0.51.0: CuteCom is a serial terminal, like minicom, written in qt
 net-dialup/dial 1.2-r2: A simple client for DWUN
