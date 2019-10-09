@@ -13685,7 +13685,7 @@ media-plugins/kodi-vfs-sftp 1.0.1 9999: SFTP VFS addon for Kodi
 media-plugins/kodi-visualization-fishbmc 5.1.1 9999: Fische visualizer for Kodi
 media-plugins/kodi-visualization-goom 9999: Goom visualizer for Kodi
 media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
-media-plugins/kodi-visualization-projectm 2.1.0 2.2.0 2.3.0 2.3.1 9999: ProjectM visualizer for Kodi
+media-plugins/kodi-visualization-projectm 2.1.0 2.2.0 2.3.0 2.3.1 2.3.2 9999: ProjectM visualizer for Kodi
 media-plugins/kodi-visualization-shadertoy 1.1.5 1.1.8 1.1.9 1.1.10 1.2.1 9999: Shadertoy visualizer for Kodi
 media-plugins/kodi-visualization-spectrum 1.1.1 2.0.3 2.0.4 3.0.0 3.0.1 3.0.2 9999: Spectrum visualizer for Kodi
 media-plugins/kodi-visualization-starburst 2.0.0 2.0.1 2.0.2 9999: StarBurst visualizer for Kodi
@@ -15485,7 +15485,7 @@ net-misc/omniORB 4.1.4-r2 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0 1.0-r1 1.0_p20180614: A driver for NTPd for people who are firewall-challenged
 net-misc/openntpd 6.0_p1 6.2_p3: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
-net-misc/openssh 7.5_p1-r4 7.7_p1-r9 7.9_p1-r4 8.0_p1-r3: Port of OpenBSD's free SSH release
+net-misc/openssh 7.5_p1-r4 7.7_p1-r9 7.9_p1-r4 8.0_p1-r3 8.0_p1-r4: Port of OpenBSD's free SSH release
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvswitch 2.10.2 2.11.1-r1: Production quality, multilayer virtual switch
 net-misc/owncloud-client 2.5.3.11470-r1 2.5.4.11654: Synchronize files from ownCloud Server with your computer
