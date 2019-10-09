@@ -8,6 +8,8 @@ PYTHON_COMPAT=( python2_7 pypy )
 
 inherit cmake-multilib python-any-r1
 
+MY_PV=1.10.x
+
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/google/googletest"

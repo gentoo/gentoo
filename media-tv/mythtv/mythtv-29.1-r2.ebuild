@@ -15,14 +15,14 @@ MYTHTV_BRANCH="fixes/29"
 
 DESCRIPTION="Homebrew PVR project"
 HOMEPAGE="https://www.mythtv.org"
-SRC_URI="https://github.com/MythTV/mythtv/archive/${BACKPORTS}.tar.gz -> ${PF}.tar.gz"
+SRC_URI="https://github.com/MythTV/mythtv/archive/${BACKPORTS}.tar.gz -> ${P}-r1.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0/${PV}"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
-IUSE="alsa altivec autostart bluray cec crystalhd debug dvb dvd egl fftw +hls \
+IUSE="alsa altivec autostart bluray cec debug dvb dvd egl fftw +hls \
 	ieee1394 jack lcd libass lirc mythlogserver perl pulseaudio python systemd +theora \
 	vaapi vdpau +vorbis +wrapper +xml xmltv +xvid zeroconf ${IUSE_INPUT_DEVICES}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -47,7 +47,6 @@ COMMON="
 	media-libs/taglib
 	>=media-sound/lame-3.93.1
 	sys-libs/zlib
-	virtual/mysql
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXext
@@ -63,9 +62,6 @@ COMMON="
 		sys-fs/udisks:2
 	)
 	cec? ( dev-libs/libcec )
-	dvb? (
-		virtual/linuxtv-dvb-headers
-	)
 	dvd? (
 		dev-libs/libcdio:=
 		sys-fs/udisks:2
@@ -73,7 +69,7 @@ COMMON="
 	egl? ( media-libs/mesa[egl] )
 	fftw? ( sci-libs/fftw:3.0= )
 	hls? (
-		<media-libs/libvpx-1.7.0:=
+		<media-libs/libvpx-1.8.0:=
 		>=media-libs/x264-0.0.20111220:=
 	)
 	ieee1394? (
@@ -139,6 +135,10 @@ S="${WORKDIR}/${PF}/mythtv"
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
+If a MYSQL server is installed, a mythtv MySQL user and mythconverg database
+is created if it does not already exist.
+You will be prompted for your MySQL root password.
+
 To have this machine operate as recording host for MythTV,
 mythbackend must be running. Run the following:
 rc-update add mythbackend default
@@ -242,7 +242,6 @@ src_configure() {
 	# Video
 	myconf="${myconf} $(use_enable vdpau)"
 	myconf="${myconf} $(use_enable vaapi)"
-	myconf="${myconf} $(use_enable crystalhd)"
 
 	# Input
 	use input_devices_joystick || myconf="${myconf} --disable-joystick-menu"
@@ -366,7 +365,7 @@ pkg_info() {
 }
 
 pkg_config() {
-	echo "Creating mythtv MySQL user and mythconverg database if it does not"
-	echo "already exist. You will be prompted for your MySQL root password."
-	"${EROOT}"/usr/bin/mysql -u root -p < "${EROOT}"/usr/share/mythtv/database/mc.sql
+	if [[ -e "${EROOT}"/usr/bin/mysql ]]; then
+		"${EROOT}"/usr/bin/mysql -u root -p < "${EROOT}"/usr/share/mythtv/database/mc.sql
+	fi
 }

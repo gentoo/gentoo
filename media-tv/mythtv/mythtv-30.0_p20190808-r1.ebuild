@@ -10,7 +10,7 @@ BACKPORTS="5cde0578d84926171b20c8f7e95a101e9b0b9457" # August 8, 2019
 MY_P=${P%_p*}
 MY_PV=${PV%_p*}
 
-inherit eutils flag-o-matic python-single-r1 qmake-utils readme.gentoo-r1 systemd vcs-snapshot
+inherit eutils flag-o-matic python-single-r1 qmake-utils readme.gentoo-r1 systemd user vcs-snapshot
 
 MYTHTV_BRANCH="fixes/${P%.*}"
 
@@ -24,9 +24,9 @@ SLOT="0/${PV}"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
 IUSE_VIDEO_CAPTURE_DEVICES="v4l ivtv ieee1394 hdpvr hdhomerun vbox ceton"
-IUSE="alsa altivec asi autostart bluray cdda cdr cec crystalhd debug dvd dvb egl exif fftw jack java
+IUSE="alsa altivec asi autostart bluray cdda cdr cec debug dvd dvb egl exif fftw jack java
 	+lame lcd libass lirc +opengl oss perl pulseaudio python raw systemd vaapi vdpau vpx
-	+wrapper x264 x265 +xml xmltv +xvid +X zeroconf
+	+wrapper x264 x265 +xml xmltv xnvctrl +xvid +X zeroconf
 	${IUSE_INPUT_DEVICES} ${IUSE_VIDEO_CAPTURE_DEVICES}"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -57,7 +57,6 @@ COMMON="
 	media-libs/taglib
 	lame? ( >=media-sound/lame-3.93.1 )
 	sys-libs/zlib
-	virtual/mysql
 	opengl? ( virtual/opengl )
 	X? (
 		x11-libs/libX11:=
@@ -111,7 +110,8 @@ COMMON="
 	systemd? ( sys-apps/systemd:= )
 	vaapi? ( x11-libs/libva:=[opengl] )
 	vdpau? ( x11-libs/libvdpau )
-	vpx? ( media-libs/libvpx:= )
+	vpx? ( <media-libs/libvpx-1.8.0:= )
+	xnvctrl? ( x11-drivers/nvidia-drivers:=[tools,static-libs] )
 	x264? (	>=media-libs/x264-0.0.20111220:= )
 	x265? (	media-libs/x265 )
 	xml? ( >=dev-libs/libxml2-2.6.0 )
@@ -150,12 +150,13 @@ PATCHES=(
 )
 
 # mythtv and mythplugins are separate builds in the github mythtv project
-S="${WORKDIR}/${PF}/mythtv"
+S="${WORKDIR}/${P}/mythtv"
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
-Creating mythtv MySQL user and mythconverg database if it does not
-already exist. You will be prompted for your MySQL root password.
+If a MYSQL server is installed, a mythtv MySQL user and mythconverg database
+is created if it does not already exist.
+You will be prompted for your MySQL root password.
 
 Mythtv is updated to use correct FHS/Gentoo policy paths.
 Updating mythtv installations may report:
@@ -264,7 +265,7 @@ src_configure() {
 	# Video Output Support
 	myconf+=(
 		$(use_enable X x11)
-		$(use_enable X xnvctrl)
+		$(use_enable xnvctrl)
 		$(use_enable X xrandr)
 		$(use_enable X xv)
 	)
@@ -272,7 +273,6 @@ src_configure() {
 	# Hardware accellerators
 	myconf+=(
 		$(use_enable vdpau)
-		$(use_enable crystalhd)
 		$(use_enable vaapi)
 		$(use_enable vaapi vaapi2)
 		$(use_enable opengl opengl-video)
@@ -376,12 +376,10 @@ src_install() {
 	fi
 
 	if use autostart; then
-		local mythtv_homedir="$( egethome mythtv )"
-
-		echo CONFIG_PROTECT="\"${mythtv_homedir}\"" > "${T}"/95mythtv
+		echo CONFIG_PROTECT=\"$(egethome mythtv)\" > "${T}"/95mythtv
 		doenvd "${T}"/95mythtv
 
-		insinto "${mythtv_homedir}"
+		insinto $(egethome mythtv)
 		newins "${FILESDIR}"/bash_profile .bash_profile
 		newins "${FILESDIR}"/xinitrc-r1 .xinitrc
 	fi
@@ -403,10 +401,6 @@ src_install() {
 	done
 }
 
-pkg_preinst() {
-	export CONFIG_PROTECT="${CONFIG_PROTECT} ${EROOT}$( egethome mythtv )"
-}
-
 pkg_postinst() {
 	readme.gentoo_print_elog
 }
@@ -416,5 +410,7 @@ pkg_info() {
 }
 
 pkg_config() {
-	"${EROOT}"/usr/bin/mysql -u root -p < "${EROOT}"/usr/share/mythtv/database/mc.sql
+	if [[ -e "${EROOT}"/usr/bin/mysql ]]; then
+		"${EROOT}"/usr/bin/mysql -u root -p < "${EROOT}"/usr/share/mythtv/database/mc.sql
+	fi
 }
