@@ -2513,7 +2513,6 @@ dev-perl/Coro:event - Build support for using dev-perl/Event as an event-loop vi
 dev-perl/DBD-MariaDB:mariadb - Use dev-db/mariadb-connector-c as the client library
 dev-perl/DBD-MariaDB:mysql - Use dev-db/mysql-connector-c as the client library
 dev-perl/DBD-SQLite:system-sqlite - Use the system-wide dev-db/sqlite installation
-dev-perl/DBD-mysql:embedded - Support embedded server (libmysqld)
 dev-perl/DBD-mysql:mariadb - Use dev-db/mariadb-connector-c as the client library
 dev-perl/DBD-mysql:mysql - Use dev-db/mysql-connector-c as the client library
 dev-perl/DBD-mysql:ssl - Compile in support for SSL connections via libmysqlclient
