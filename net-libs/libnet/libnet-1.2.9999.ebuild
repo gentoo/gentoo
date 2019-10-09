@@ -11,16 +11,12 @@ EGIT_REPO_URI="https://github.com/libnet/libnet"
 LICENSE="BSD BSD-2 HPND"
 SLOT="1.1"
 KEYWORDS=""
-IUSE="doc static-libs"
+IUSE="static-libs"
 
 DOCS=(
-	README.md doc/{CHANGELOG,CONTRIB,DESIGN_NOTES,MIGRATION}
-	doc/{PACKET_BUILDING,PORTED,RAWSOCKET_NON_SEQUITUR,TODO}
+	ChangeLog.md README.md doc/{MIGRATION,RAWSOCKET_NON_SEQUITUR,TODO}
 )
 S=${WORKDIR}/${P/_/-}
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.2-socklen_t.patch
-)
 
 src_prepare() {
 	default
@@ -34,13 +30,6 @@ src_configure() {
 
 src_install() {
 	default
-
-	if use doc ; then
-		docinto html
-		dodoc -r doc/html/*
-		docinto sample
-		dodoc sample/*.[ch]
-	fi
 
 	find "${D}" -name '*.la' -delete || die
 }
