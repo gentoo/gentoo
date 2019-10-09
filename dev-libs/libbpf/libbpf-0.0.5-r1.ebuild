@@ -21,18 +21,8 @@ RDEPEND="${COMMON_DEPEND}"
 
 S="${WORKDIR}/${P}/src"
 
-src_compile() {
-	emake \
-		LIBSUBDIR="$(get_libdir)" \
-		CC="$(tc-getCC)"
-}
-
-src_install() {
-	emake \
-		LIBSUBDIR="$(get_libdir)" \
-		DESTDIR="${D}" \
-		install
-
-	insinto /usr/$(get_libdir)/pkgconfig
-	doins ${PN}.pc
+src_configure() {
+	tc-export CC
+	export PREFIX="${EPREFIX}/usr"
+	export LIBSUBDIR="$(get_libdir)"
 }
