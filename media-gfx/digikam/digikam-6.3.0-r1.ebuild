@@ -61,10 +61,16 @@ COMMON_DEPEND="
 	media-libs/tiff:0
 	virtual/jpeg:0
 	addressbook? (
+		|| (
+			$(add_frameworks_dep kcontacts)
+			$(add_kdeapps_dep kcontacts)
+		)
 		$(add_kdeapps_dep akonadi-contacts)
-		$(add_kdeapps_dep kcontacts)
 	)
-	calendar? ( $(add_kdeapps_dep kcalcore) )
+	calendar? ( || (
+		$(add_frameworks_dep kcalendarcore)
+		$(add_kdeapps_dep kcalcore)
+	) )
 	dnn? ( >=media-libs/opencv-3.1.0:=[contrib,contrib_dnn] )
 	gphoto2? ( media-libs/libgphoto2:= )
 	imagemagick? ( media-gfx/imagemagick:= )
