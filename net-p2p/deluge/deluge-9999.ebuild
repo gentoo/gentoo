@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,7 +6,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 PLOCALES="af ar ast be bg bn bs ca cs cy da de el en_AU en_CA en_GB eo es et eu fa fi fo fr fy ga gl he hi hr hu id is it iu ja ka kk km kn ko ku ky la lb lt lv mk ml ms nap nb nds nl nn oc pl pms pt pt_BR ro ru si sk sl sr sv ta te th tl tlh tr uk ur vi zh_CN zh_HK zh_TW"
-inherit distutils-r1 eutils systemd user l10n
+inherit distutils-r1 eutils systemd l10n
 
 DESCRIPTION="BitTorrent client with a client/server model"
 HOMEPAGE="https://deluge-torrent.org/"
@@ -36,7 +36,9 @@ PATCHES=(
 CDEPEND=">=net-libs/libtorrent-rasterbar-0.14.9[python,${PYTHON_USEDEP}]"
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-util/intltool"
+	dev-util/intltool
+	acct-group/deluge
+	acct-user/deluge"
 RDEPEND="${CDEPEND}
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
@@ -117,8 +119,6 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
 	elog
 	elog "If, after upgrading, deluge doesn't work, please remove the"
 	elog "'~/.config/deluge' directory and try again, but make a backup"
