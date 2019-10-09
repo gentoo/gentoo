@@ -2,31 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3
 
 DESCRIPTION="library providing an API for commonly used low-level network functions"
 HOMEPAGE="http://libnet-dev.sourceforge.net/ https://github.com/libnet/libnet"
-EGIT_REPO_URI="https://github.com/libnet/libnet"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV/_/-}/${P/_/-}.tar.gz"
 
 LICENSE="BSD BSD-2 HPND"
 SLOT="1.1"
-KEYWORDS=""
-IUSE="doc static-libs"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+IUSE="static-libs"
 
 DOCS=(
-	README.md doc/{CHANGELOG,CONTRIB,DESIGN_NOTES,MIGRATION}
-	doc/{PACKET_BUILDING,PORTED,RAWSOCKET_NON_SEQUITUR,TODO}
+	ChangeLog.md README.md doc/{MIGRATION,RAWSOCKET_NON_SEQUITUR,TODO}
 )
 S=${WORKDIR}/${P/_/-}
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.2-socklen_t.patch
-)
-
-src_prepare() {
-	default
-
-	eautoreconf
-}
 
 src_configure() {
 	econf $(use_enable static-libs static)
@@ -34,13 +23,6 @@ src_configure() {
 
 src_install() {
 	default
-
-	if use doc ; then
-		docinto html
-		dodoc -r doc/html/*
-		docinto sample
-		dodoc sample/*.[ch]
-	fi
 
 	find "${D}" -name '*.la' -delete || die
 }
