@@ -133,7 +133,6 @@ DEPEND="${RDEPEND}
 	app-text/asciidoc
 	virtual/pkgconfig
 	sys-devel/gettext
-	virtual/cargo
 	virtual/rust
 "
 
