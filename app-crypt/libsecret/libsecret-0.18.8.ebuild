@@ -18,7 +18,7 @@ IUSE="+crypt +introspection test +vala"
 REQUIRED_USE="test? ( introspection )
 	vala? ( introspection )"
 
-KEYWORDS="alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd"
 
 RDEPEND="
 	>=dev-libs/glib-2.44:2[${MULTILIB_USEDEP}]
