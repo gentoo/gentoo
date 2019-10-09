@@ -325,7 +325,7 @@ app-admin/setools 4.1.1-r1 4.2.1 4.2.2 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
 app-admin/spectre-meltdown-checker 0.39 0.40 0.41 0.42 9999: Spectre & Meltdown vulnerability/mitigation checker for Linux
 app-admin/sshguard 2.4.0 99999: protects hosts from brute force attacks against ssh
-app-admin/stow 2.2.2-r1: GNU Stow is a symlink farm manager
+app-admin/stow 2.2.2-r1 2.3.1: GNU Stow is a symlink farm manager
 app-admin/su-exec 0.2: Switch user and group id and exec
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
 app-admin/sudo 1.8.27-r1 1.8.28_rc2 9999: Allows users or groups to run commands as other users
@@ -17925,7 +17925,7 @@ sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.3.0: Simple MTP fuse filesystem driver
 sys-fs/snapraid 6.2 6.3 7.0 7.1 8.1 10.0 11.0-r1 11.2: a backup program for disk array for home media centers
 sys-fs/squashfs-tools 4.3-r2 4.3_p7 4.3_p12 4.4 9999: tools to create and extract Squashfs filesystems
-sys-fs/squashfs-tools-ng 0.5 0.6.1 9999: A new set of tools for working with SquashFS images
+sys-fs/squashfs-tools-ng 0.7 9999: A new set of tools for working with SquashFS images
 sys-fs/squashfuse 0.1.100 0.1.103: FUSE filesystem to mount squashfs archives
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
