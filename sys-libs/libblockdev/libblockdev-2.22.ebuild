@@ -13,7 +13,6 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/storaged-project/libblockdev.git"
 	BDEPEND="
 		sys-devel/autoconf-archive
-		gtk-doc? ( dev-util/gtk-doc )
 	"
 else
 	MY_PV="${PV}-1"
@@ -60,6 +59,7 @@ DEPEND="
 BDEPEND+="
 	>=dev-libs/gobject-introspection-1.3.0
 	dev-util/gtk-doc-am
+	gtk-doc? ( dev-util/gtk-doc )
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
