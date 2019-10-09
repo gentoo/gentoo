@@ -21,10 +21,6 @@ RDEPEND="${COMMON_DEPEND}"
 
 S="${WORKDIR}/${P}/src"
 
-PATCHES=(
-	"${FILESDIR}/libbpf-0.0.5-paths.patch"
-)
-
 src_compile() {
 	emake \
 		LIBSUBDIR="$(get_libdir)" \
@@ -35,7 +31,7 @@ src_install() {
 	emake \
 		LIBSUBDIR="$(get_libdir)" \
 		DESTDIR="${D}" \
-		install install_uapi_headers
+		install
 
 	insinto /usr/$(get_libdir)/pkgconfig
 	doins ${PN}.pc
