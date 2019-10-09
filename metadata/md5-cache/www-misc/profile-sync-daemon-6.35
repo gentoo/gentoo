@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Symlinks and syncs browser profile dirs to RAM
+EAPI=7
+HOMEPAGE=https://wiki.archlinux.org/index.php/Profile-sync-daemon
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=app-shells/bash net-misc/rsync[xattr] sys-apps/systemd
+SLOT=0
+SRC_URI=https://github.com/graysky2/profile-sync-daemon/archive/v6.35.tar.gz -> profile-sync-daemon-6.35.tar.gz
+_md5_=597a1ddf774480843a740f4ed80fbca7
