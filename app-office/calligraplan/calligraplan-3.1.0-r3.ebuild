@@ -60,8 +60,14 @@ DEPEND="
 		app-crypt/qca:2[qt5(+)]
 	)
 	pim? (
-		$(add_kdeapps_dep kcalcore)
-		$(add_kdeapps_dep kcontacts)
+		|| (
+			$(add_frameworks_dep kcalendarcore)
+			$(add_kdeapps_dep kcalcore)
+		)
+		|| (
+			$(add_frameworks_dep kcontacts)
+			$(add_kdeapps_dep kcontacts)
+		)
 	)
 	X? (
 		$(add_qt_dep qtx11extras)
