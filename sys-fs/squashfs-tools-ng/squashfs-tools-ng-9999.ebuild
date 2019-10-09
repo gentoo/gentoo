@@ -13,9 +13,9 @@ else
 	SRC_URI="https://infraroot.at/pub/squashfs/${P}.tar.xz"
 fi
 
-LICENSE="GPL-3+"
+LICENSE="LGPL-3+ tools? ( GPL-3+ )"
 SLOT="0"
-IUSE="lz4 lzo selinux +xz zstd"
+IUSE="lz4 lzo selinux +tools +xz zstd"
 
 DEPEND="
 	sys-libs/zlib:=
@@ -34,11 +34,18 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
+		--disable-static
 		$(use_with lz4)
 		$(use_with lzo)
 		$(use_with selinux)
+		$(use_with tools)
 		$(use_with xz)
 		$(use_with zstd)
 	)
 	econf "${myconf[@]}"
+}
+
+src_install() {
+	default
+	find "${D}" -name "*.la" -delete || die
 }
