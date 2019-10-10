@@ -14,6 +14,7 @@ IUSE="consolekit elogind +locking opengl pam systemd"
 
 # Xrandr: optional but automagic
 RDEPEND="
+	>=dev-libs/dbus-glib-0.30
 	>=dev-libs/glib-2.50:2
 	>=x11-libs/gtk+-3.22:3
 	>=x11-libs/libwnck-3.20:3
