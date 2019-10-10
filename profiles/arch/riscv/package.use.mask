@@ -49,6 +49,7 @@ dev-util/meson test
 dev-util/ninja doc test
 dev-util/patchutils test
 dev-util/pkgconf test
+dev-util/strace unwind
 dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
 media-libs/freetype harfbuzz png
 media-libs/tiff jbig jpeg test webp zstd
