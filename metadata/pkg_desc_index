@@ -12628,7 +12628,7 @@ mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.92-r3 4.92-r4 4.92.1-r1 4.92.2 4.92.3: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.3 1.8.5-r1 1.8.6: An SMTP client and SMTP plugin for mail user agents such as Mutt
-mail-mta/netqmail 1.06-r4 1.06-r7: qmail -- a secure, reliable, efficient, simple message transfer agent
+mail-mta/netqmail 1.06-r4 1.06-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.3_p1-r1 6.4.0_p1: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 2.10.9 3.4.5-r1 3.4.6 3.4.7 3.5_pre20190922: A fast and secure drop-in replacement for sendmail
