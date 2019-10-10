@@ -6,7 +6,7 @@
 # qmail-bugs@gentoo.org
 # @BLURB: common qmail functions
 
-inherit flag-o-matic toolchain-funcs fixheadtails user
+inherit flag-o-matic toolchain-funcs fixheadtails
 
 # hardcoded paths
 QMAIL_HOME="/var/qmail"
