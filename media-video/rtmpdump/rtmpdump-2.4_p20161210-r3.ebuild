@@ -32,7 +32,6 @@ PATCHES=(
 )
 
 if [[ ${PV} == *9999 ]] ; then
-	KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 	SRC_URI=""
 	EGIT_REPO_URI="https://git.ffmpeg.org/rtmpdump.git"
 	inherit git-r3

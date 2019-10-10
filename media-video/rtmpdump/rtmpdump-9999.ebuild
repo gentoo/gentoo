@@ -32,7 +32,6 @@ PATCHES=(
 )
 
 if [[ ${PV} == *9999 ]] ; then
-	KEYWORDS=""
 	SRC_URI=""
 	EGIT_REPO_URI="https://git.ffmpeg.org/rtmpdump.git"
 	inherit git-r3
