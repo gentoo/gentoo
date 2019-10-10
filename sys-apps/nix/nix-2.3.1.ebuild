@@ -41,10 +41,8 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.11.6-systemd.patch
-	"${FILESDIR}"/${PN}-1.11.6-respect-CXXFLAGS.patch
-	"${FILESDIR}"/${PN}-1.11.6-respect-LDFLAGS.patch
-	"${FILESDIR}"/${PN}-2.0-user-path.patch
+	"${FILESDIR}"/${PN}-2.3-libpaths.patch
+	"${FILESDIR}"/${PN}-2.3-bootstrap.patch
 )
 
 DISABLE_AUTOFORMATTING=yes
@@ -95,11 +93,7 @@ src_configure() {
 }
 
 src_compile() {
-	local make_vars=(
-		OPTIMIZE=0 # disable hardcoded -O3
-		V=1 # verbose build
-	)
-	emake "${make_vars[@]}"
+	emake V=1
 }
 
 src_install() {
