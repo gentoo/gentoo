@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ykonotopov@gnome.org</email>
+		<name>Yuri Konotopov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/libretro/retroarch-assets/issues</bugs-to>
+		<remote-id type="github">libretro/retroarch-assets</remote-id>
+	</upstream>
+	<use>
+		<flag name="materialui">Install assets for MaterialUI menu</flag>
+		<flag name="ozone">Install assets for Ozone menu</flag>
+		<flag name="rgui">Install assets for RGUI menu</flag>
+		<flag name="xmb">Install assets for XMB menu</flag>
+	</use>
+</pkgmetadata>
