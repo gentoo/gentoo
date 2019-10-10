@@ -64,7 +64,7 @@ is_prime() {
 
 dospp() {
 	insinto "${QMAIL_HOME}"/plugins/
-	insopts -o root -g "$GROUP_ROOT" -m 0755
+	insopts -o root -g "${GROUP_ROOT}" -m 0755
 	newins $1 ${2:-$(basename $1)}
 }
 
@@ -77,8 +77,8 @@ dosupervise() {
 	local runfile=${2:-${service}} logfile=${3:-${service}-log}
 	[[ -z "${service}" ]] && die "no service given"
 
-	insopts -o root -g "$GROUP_ROOT" -m 0755
-	diropts -o root -g "$GROUP_ROOT" -m 0755
+	insopts -o root -g "${GROUP_ROOT}" -m 0755
+	diropts -o root -g "${GROUP_ROOT}" -m 0755
 
 	dodir ${SUPERVISE_DIR}/${service}{,/log}
 	fperms +t ${SUPERVISE_DIR}/${service}{,/log}
@@ -169,11 +169,13 @@ qmail_full_install() {
 	einfo "Installing all qmail software"
 	insopts -o root -g qmail -m 755
 	doins bouncesaying condredirect config-fast except preline qbiff \
-		qmail-{pop3d,qmqpd,qmtpd,qread,qstat,smtpd,tcpok,tcpto} \
+		qmail-{qmqpd,qmtpd,qread,qstat,smtpd,tcpok,tcpto} \
 		qreceipt qsmhook tcp-env
+	use pop3 && doins qmail-pop3d
 
 	insopts -o root -g qmail -m 711
-	doins qmail-{clean,getpw,local,popup,pw2u,remote,rspawn,send} splogger
+	doins qmail-{clean,getpw,local,pw2u,remote,rspawn,send} splogger
+	use pop3 && doins qmail-popup
 
 	insopts -o root -g qmail -m 700
 	doins qmail-{lspawn,newmrh,newu,start}
@@ -188,12 +190,12 @@ qmail_full_install() {
 qmail_config_install() {
 	einfo "Installing stock configuration files"
 	insinto "${QMAIL_HOME}"/control
-	insopts -o root -g "$GROUP_ROOT" -m 644
+	insopts -o root -g "${GROUP_ROOT}" -m 644
 	doins "${GENQMAIL_S}"/control/{conf-*,defaultdelivery}
 
 	einfo "Installing configuration sanity checker and launcher"
 	insinto "${QMAIL_HOME}"/bin
-	insopts -o root -g "$GROUP_ROOT" -m 644
+	insopts -o root -g "${GROUP_ROOT}" -m 644
 	doins "${GENQMAIL_S}"/control/qmail-config-system
 
 	declare -F qmail_config_install_hook >/dev/null && \
@@ -244,9 +246,9 @@ qmail_maildir_install() {
 	done
 
 	einfo "Setting up default maildirs in the account skeleton"
-	diropts -o root -g "$GROUP_ROOT" -m 755
+	diropts -o root -g "${GROUP_ROOT}" -m 755
 	insinto /etc/skel
-	insopts -o root -g "$GROUP_ROOT" -m 644
+	insopts -o root -g "${GROUP_ROOT}" -m 644
 	newins "${GENQMAIL_S}"/control/defaultdelivery .qmail.sample
 	"${MAILDIRMAKE}" "${D}"/etc/skel/.maildir
 	keepdir /etc/skel/.maildir/{cur,new,tmp}
@@ -258,10 +260,16 @@ qmail_maildir_install() {
 qmail_tcprules_install() {
 	dodir "${TCPRULES_DIR}"
 	insinto "${TCPRULES_DIR}"
-	insopts -o root -g "$GROUP_ROOT" -m 0644
+	insopts -o root -g "${GROUP_ROOT}" -m 0644
 	doins "${GENQMAIL_S}"/tcprules/Makefile.qmail
 	doins "${GENQMAIL_S}"/tcprules/tcp.qmail-*
-	use ssl || rm -f "${D}${TCPRULES_DIR}"/tcp.qmail-pop3sd
+	use ssl && use pop3 || rm -f "${D}${TCPRULES_DIR}"/tcp.qmail-pop3sd
+}
+
+qmail_supervise_install_one() {
+	dosupervise ${i}
+	diropts -o qmaill -g "${GROUP_ROOT}" -m 755
+	keepdir /var/log/qmail/${i}
 }
 
 qmail_supervise_install() {
@@ -269,16 +277,13 @@ qmail_supervise_install() {
 
 	cd "${GENQMAIL_S}"/supervise
 
-	for i in qmail-{send,smtpd,qmtpd,qmqpd,pop3d}; do
-		dosupervise ${i}
-		diropts -o qmaill -g "$GROUP_ROOT" -m 755
-		keepdir /var/log/qmail/${i}
+	for i in qmail-{send,smtpd,qmtpd,qmqpd}; do
+		qmail_supervise_install_one ${i}
 	done
 
-	if use ssl; then
-		dosupervise qmail-pop3sd
-		diropts -o qmaill -g "$GROUP_ROOT" -m 755
-		keepdir /var/log/qmail/qmail-pop3sd
+	if use pop3; then
+		qmail_supervise_install_one qmail-pop3d
+		use ssl && qmail_supervise_install_one qmail-pop3sd
 	fi
 
 	declare -F qmail_supervise_install_hook >/dev/null && \
@@ -288,7 +293,7 @@ qmail_supervise_install() {
 qmail_spp_install() {
 	einfo "Installing qmail-spp configuration files"
 	insinto "${QMAIL_HOME}"/control/
-	insopts -o root -g "$GROUP_ROOT" -m 0644
+	insopts -o root -g "${GROUP_ROOT}" -m 0644
 	doins "${GENQMAIL_S}"/spp/smtpplugins
 
 	einfo "Installing qmail-spp plugins"
@@ -308,16 +313,16 @@ qmail_ssl_install() {
 
 	einfo "Installing SSL Certificate creation script"
 	insinto "${QMAIL_HOME}"/control
-	insopts -o root -g "$GROUP_ROOT" -m 0644
+	insopts -o root -g "${GROUP_ROOT}" -m 0644
 	doins "${GENQMAIL_S}"/ssl/servercert.cnf
 
 	insinto "${QMAIL_HOME}"/bin
-	insopts -o root -g "$GROUP_ROOT" -m 0755
+	insopts -o root -g "${GROUP_ROOT}" -m 0755
 	doins "${GENQMAIL_S}"/ssl/mkservercert
 
 	einfo "Installing RSA key generation cronjob"
 	insinto /etc/${CRON_FOLDER}
-	insopts -o root -g "$GROUP_ROOT" -m 0755
+	insopts -o root -g "${GROUP_ROOT}" -m 0755
 	doins "${GENQMAIL_S}"/ssl/qmail-genrsacert.sh
 
 	keepdir "${QMAIL_HOME}"/control/tlshosts
@@ -375,7 +380,9 @@ qmail_rootmail_fixup() {
 
 qmail_tcprules_fixup() {
 	mkdir -p "${TCPRULES_DIR}"
-	for f in {smtp,qmtp,qmqp,pop3}{,.cdb}; do
+	local POP_FILES=
+	use pop3 && POP_FILES="pop3 pop3.cdb"
+	for f in {smtp,qmtp,qmqp}{,.cdb} ${POP_FILES}; do
 		old="/etc/tcp.${f}"
 		new="${TCPRULES_DIR}/tcp.qmail-${f}"
 		fail=0
@@ -417,13 +424,15 @@ qmail_supervise_config_notice() {
 	elog "ln -s ${SUPERVISE_DIR}/qmail-send /service/qmail-send"
 	elog "ln -s ${SUPERVISE_DIR}/qmail-smtpd /service/qmail-smtpd"
 	elog
-	elog "To start the pop3 server as well, create the following link:"
-	elog "ln -s ${SUPERVISE_DIR}/qmail-pop3d /service/qmail-pop3d"
-	elog
-	if use ssl; then
-		elog "To start the pop3s server as well, create the following link:"
-		elog "ln -s ${SUPERVISE_DIR}/qmail-pop3sd /service/qmail-pop3sd"
+	if use pop3; then
+		elog "To start the pop3 server as well, create the following link:"
+		elog "ln -s ${SUPERVISE_DIR}/qmail-pop3d /service/qmail-pop3d"
 		elog
+		if use ssl; then
+			elog "To start the pop3s server as well, create the following link:"
+			elog "ln -s ${SUPERVISE_DIR}/qmail-pop3sd /service/qmail-pop3sd"
+			elog
+		fi
 	fi
 	elog "Additionally, the QMTP and QMQP protocols are supported, "
 	elog "and can be started as:"
