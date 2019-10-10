@@ -10,5 +10,5 @@ RDEPEND=office_implementation_libreoffice? ( || ( app-office/libreoffice app-off
 REQUIRED_USE=|| ( office_implementation_libreoffice office_implementation_openoffice )
 SLOT=0
 SRC_URI=https://extensions.libreoffice.org/extensions/ct2n-convert-text-to-number-and-dates/1.5/@@download/file/converttexttonumber-1-5.0.oxt
-_eclasses_=office-ext-r1	d7582f0ee7df020fba46c135384aff44
+_eclasses_=office-ext-r1	453cdb053d3c4ce0b7e0fb6ca8d331b8
 _md5_=178cd95b4122e101d4877d59daac5c21

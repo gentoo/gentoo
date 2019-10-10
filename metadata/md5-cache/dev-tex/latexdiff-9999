@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=>=dev-lang/perl-5.8 virtual/latex-base dev-texlive/texlive-plaingeneric dev-perl/Algorithm-Diff
 SLOT=0
 _eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
-_md5_=6a2b57839b42f0207137220550b5de10
+_md5_=a2ed5c8a33ce0af28fd516d495a391c0

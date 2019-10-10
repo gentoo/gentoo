@@ -7,5 +7,5 @@ KEYWORDS=-* ~amd64 ~x86
 LICENSE=Avago LSI BSD
 SLOT=0/7.10
 SRC_URI=https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MR_SAS_Unified_StorCLI_007.1017.0000.0000.zip -> storcli-7.1017.zip
-_eclasses_=pax-utils	db85a3c508cf82c45f24b2723791cc93
+_eclasses_=pax-utils	a41d1fd1c111289ffa04490de6ee79d7
 _md5_=8700e6c4242459f2da0125a39d309f6b

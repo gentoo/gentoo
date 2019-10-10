@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=app-arch/bzip2 >=sys-apps/file-5.04 sys-apps/util-linux >=sys-fs/e2fsprogs-1.41.9 sys-libs/zlib
 SLOT=0
 SRC_URI=mirror://sourceforge/ext4magic/ext4magic-0.3.2.tar.gz
-_md5_=37c5dd10433bf1637d338f122d65d5de
+_md5_=cde1cfa6f74e7e997f4c6741dcc33d6e

@@ -10,5 +10,5 @@ RDEPEND=app-text/dvisvgm virtual/tex-base office_implementation_libreoffice? ( |
 REQUIRED_USE=|| ( office_implementation_libreoffice office_implementation_openoffice )
 SLOT=0
 SRC_URI=mirror://sourceforge/texmaths/TexMaths-0.48.oxt
-_eclasses_=office-ext-r1	d7582f0ee7df020fba46c135384aff44
+_eclasses_=office-ext-r1	453cdb053d3c4ce0b7e0fb6ca8d331b8
 _md5_=af86e90c2a3798ae7e28e3feb92f9014

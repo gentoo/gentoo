@@ -10,5 +10,5 @@ RDEPEND=app-arch/zip dev-libs/libxml2 office_implementation_libreoffice? ( || ( 
 REQUIRED_USE=|| ( office_implementation_libreoffice office_implementation_openoffice )
 SLOT=0
 SRC_URI=mirror://sourceforge/fbtools/files/release/OOoFBTools-2.55.zip
-_eclasses_=office-ext-r1	d7582f0ee7df020fba46c135384aff44
+_eclasses_=office-ext-r1	453cdb053d3c4ce0b7e0fb6ca8d331b8
 _md5_=cf574051564f7f25d4e6049db11b5217
