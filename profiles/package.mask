@@ -879,12 +879,6 @@ net-wireless/orinoco-fwutils
 # Removal in 30 days.  Bug #693886.
 net-p2p/xnap
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-09)
-# Unmaintained.  Added in 2004, last release in 2002.  EAPI 0.
-# QA issues.  No amd64 keyword.
-# Removal in 30 days.  Bug #693884.
-net-p2p/smet2html
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
