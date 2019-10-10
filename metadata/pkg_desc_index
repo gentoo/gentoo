@@ -6,6 +6,8 @@ acct-group/cdrom 0: System group: cdrom
 acct-group/dialout 0: System group: dialout
 acct-group/disk 0: System group: disk
 acct-group/dnscrypt-proxy 0: Group for net-dns/dnscrypt-proxy
+acct-group/dovecot 0: System group: dovecot
+acct-group/dovenull 0: System group: dovenull
 acct-group/elasticsearch 0: Elasticsearch program group
 acct-group/epmd 0: Group for Erlang Portmapper Daemon
 acct-group/ftp 0: File Transfer Protocol server user
@@ -72,6 +74,8 @@ acct-user/alias 0: alias user for qmail mail delivery
 acct-user/bitcoin 0: System-wide Bitcoin services user
 acct-user/burp 0: User for the app-backup/burp server
 acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
+acct-user/dovecot 0: user for dovecot daemon
+acct-user/dovenull 0: user for dovecot daemon
 acct-user/elasticsearch 0: Elasticsearch program user
 acct-user/epmd 0: User for Erlang Protmapper Daemon
 acct-user/ftp 0: File Transfer Protocol server user
@@ -15191,7 +15195,7 @@ net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's 
 net-mail/cyrus-imapd 3.0.10-r1 3.0.11: The Cyrus IMAP Server
 net-mail/dbmail 3.2.3-r1 3.2.3-r2: Fast and scalable sql based email services
 net-mail/dot-forward 0.71-r3 0.71-r4: reads sendmail's .forward files under qmail
-net-mail/dovecot 2.2.36.4 2.3.7.2: An IMAP and POP3 server written with security primarily in mind
+net-mail/dovecot 2.2.36.4 2.3.7.2 2.3.8: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 6.0.0 7.0.0-r3: Simple yet powerful mailing list manager for qmail
