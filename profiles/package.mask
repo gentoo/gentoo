@@ -833,12 +833,6 @@ sys-fs/scan-ffs
 # Removal in 30 days.  Bug #693932.
 sys-cluster/ocfs
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-09)
-# Added in 2005, no upstream releases since.  EAPI 0.  No amd64 keyword.
-# -master is reported to fail to build.
-# Removal in 30 days.  Bug #693930.
-sys-cluster/feedbackd-agent
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
