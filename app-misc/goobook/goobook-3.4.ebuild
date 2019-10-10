@@ -20,8 +20,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-python/google-api-python-client-1.6.4[${PYTHON_USEDEP}]"
 # dev-python/{simplejson,oauth2client} are deps for the above
 
-DEPEND="${PYTHON_DEPS}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="${PYTHON_DEPS}"
 
 DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS="

@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 python_install_all() {
-	use doc && HTML_DOCS=( docs/dist/html/*.html docs/dist/html/man{1,7}/*.html )
+	use doc && local HTML_DOCS=( docs/dist/html/*.html docs/dist/html/man{1,7}/*.html )
 	distutils-r1_python_install_all
 
 	doman docs/dist/man/man1/*.1 docs/dist/man/man7/*.7
