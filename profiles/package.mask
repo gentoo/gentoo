@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-10-10)
+# Unmaintained.  Does not build.  EAPI 0.
+# Removal in 30 days.  Bug #696294.
+mail-mta/qmail-ldap
+
 # Matt Turner <mattst88@gentoo.org> (2019-10-09)
 # Needs unreleased xorgproto. Bug #697098.
 =x11-libs/libX11-1.6.9
