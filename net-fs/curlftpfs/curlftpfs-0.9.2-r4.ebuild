@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="File system for accessing ftp hosts based on FUSE"
 HOMEPAGE="http://curlftpfs.sourceforge.net/"
@@ -21,17 +21,19 @@ RDEPEND=">=net-misc/curl-7.17.0
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-64bit_filesize.patch
+	"${FILESDIR}"/${PN}-0.9.2-darwin.patch
+	"${FILESDIR}"/${PN}-0.9.2-memleak.patch
+	"${FILESDIR}"/${PN}-0.9.2-memleak-nocache.patch
+	"${FILESDIR}"/${PN}-0.9.2-fix-escaping.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-64bit_filesize.patch
-	epatch "${FILESDIR}"/${PN}-0.9.2-darwin.patch
-	epatch "${FILESDIR}"/${PN}-0.9.2-memleak.patch
-	epatch "${FILESDIR}"/${PN}-0.9.2-memleak-nocache.patch
-	epatch "${FILESDIR}"/${PN}-0.9.2-fix-escaping.patch
+	default
 
 	# automake-1.13.1 obsoletes AM_* bit #469818
 	sed -i -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.ac || die
-
-	epatch_user
 
 	eautoreconf
 }
