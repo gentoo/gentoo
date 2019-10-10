@@ -641,7 +641,7 @@ app-crypt/dehydrated 0.6.5: a client for signing certificates with an ACME-serve
 app-crypt/dieharder 3.31.1-r3: An advanced suite for testing the randomness of RNG's
 app-crypt/easy-rsa 3.0.4 3.0.5 3.0.6: Small RSA key management package, based on OpenSSL
 app-crypt/efitools 1.7.0 1.8.1 1.9.2: Tools for manipulating UEFI secure boot platforms
-app-crypt/eid-mw 4.4.1 4.4.19 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
+app-crypt/eid-mw 4.4.1 4.4.19 4.4.23 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
 app-crypt/ekeyd 1.1.4-r2 1.1.5 1.1.5-r1: Entropy Key userspace daemon
 app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/envchain 1.0.0: Save environment variables in a secret vault
@@ -13149,7 +13149,7 @@ media-libs/audiofile 0.3.6-r3: An elegant API for accessing audio files
 media-libs/avidemux-core 2.7.3 2.7.4: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.3 2.7.4: Plugins for the video editor media-video/avidemux
 media-libs/babl 0.1.12 0.1.38 0.1.62 0.1.64 0.1.66 9999: A dynamic, any to any, pixel format conversion library
-media-libs/bcg729 1.0.4: encoder and decoder of the ITU G729 Annex A/B speech codec
+media-libs/bcg729 1.0.4 999999: encoder and decoder of the ITU G729 Annex A/B speech codec
 media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Blinkenlights
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
