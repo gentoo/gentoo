@@ -5,3 +5,14 @@
  doc_DATA = \
  	conf/smbnetfs.conf \
  	doc/ENGLISH.FAQ \
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -296,7 +296,7 @@ build_alias = @build_alias@
+ builddir = @builddir@
+ datadir = @datadir@
+ datarootdir = @datarootdir@
+-docdir = $(datadir)/doc/$(distdir)
++docdir = @docdir@
+ dvidir = @dvidir@
+ exec_prefix = @exec_prefix@
+ host_alias = @host_alias@

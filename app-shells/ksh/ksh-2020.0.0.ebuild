@@ -24,6 +24,23 @@ SLOT="0"
 
 RDEPEND="!app-shells/pdksh"
 
+PATCHES=(
+	"${FILESDIR}"/ksh-2020.0.0-ensure-user-set.patch
+	"${FILESDIR}"/ksh-2020.0.0-skip-api-test.patch
+)
+
+src_test() {
+	local cmd=(
+		meson test
+		-C "${BUILD_DIR}"
+		--num-processes "$(makeopts_jobs ${NINJAOPTS:-${MAKEOPTS}})"
+	)
+
+	echo "${cmd[@]}" >&2
+	# https://github.com/att/ast/issues/1392
+	env -u T "${cmd[@]}" || die
+}
+
 src_install() {
 	meson_src_install
 	dodir /bin

@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit cmake-utils
 
 DESCRIPTION="C++ libraries for building network-based applications"
@@ -11,7 +12,7 @@ LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
 
-IUSE="7z cppparser +crypto +data examples +file2pagecompiler +json +pagecompiler iodbc libressl mariadb +mongodb mysql +net odbc pdf pocodoc sqlite +ssl test +util +xml +zip"
+IUSE="7z cppparser +crypto +data examples +file2pagecompiler iodbc +json libressl mariadb +mongodb mysql +net odbc +pagecompiler pdf pocodoc sqlite +ssl test +util +xml +zip"
 REQUIRED_USE="
 	7z? ( xml )
 	file2pagecompiler? ( pagecompiler )
@@ -21,48 +22,48 @@ REQUIRED_USE="
 	odbc? ( data )
 	pagecompiler? ( json net util xml )
 	pocodoc? ( cppparser util xml )
-	ssl? ( util )
 	sqlite? ( data )
+	ssl? ( util )
 	test? ( data? ( sqlite ) json util xml )
 "
 
+BDEPEND="
+	virtual/pkgconfig
+"
 RDEPEND="
 	>=dev-libs/libpcre-8.42
-	xml? ( dev-libs/expat )
 	mysql? ( !mariadb? ( dev-db/mysql-connector-c:0= )
 		 mariadb? ( dev-db/mariadb-connector-c:0= ) )
 	odbc? ( iodbc? ( dev-db/libiodbc )
 		!iodbc? ( dev-db/unixODBC ) )
+	sqlite? ( dev-db/sqlite:3 )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	sqlite? ( dev-db/sqlite:3 )
+	xml? ( dev-libs/expat )
 	zip? ( sys-libs/zlib )
 "
-DEPEND="${DEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}-${P}-release"
 
 PATCHES=( "${FILESDIR}/${PN}-1.7.2-iodbc-incdir.patch" )
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	if use test ; then
 		# ignore missing tests on experimental library
 		# and tests requiring running DB-servers, internet connections, etc.
-		sed -i \
-			-e '/testsuite/d' \
+		sed -i -e '/testsuite/d' \
 			{Data/{MySQL,ODBC},MongoDB,Net,NetSSL_OpenSSL,PDF,Redis}/CMakeLists.txt || die
 		# Poco expands ~ using passwd, which does not match $HOME in the build environment
-		sed -i \
-			-e '/CppUnit_addTest.*testExpand/d' \
+		sed -i -e '/CppUnit_addTest.*testExpand/d' \
 			Foundation/testsuite/src/PathTest.cpp || die
 		# ignore failing Crypto test since upstream does not seem to care,
 		# see https://github.com/pocoproject/poco/issues/1209
-		sed -i \
-			-e '/RSATest, testRSACipherLarge/d' \
+		sed -i -e '/RSATest, testRSACipherLarge/d' \
 			Crypto/testsuite/src/RSATest.cpp || die
 	fi
 
@@ -82,6 +83,10 @@ src_prepare() {
 	mkdir -p Encodings/testsuite/data || die
 
 	cmake-utils_src_prepare
+
+	if ! use iodbc ; then
+		sed -i -e 's|iodbc||' cmake/FindODBC.cmake || die
+	fi
 }
 
 src_configure() {
@@ -110,10 +115,6 @@ src_configure() {
 		-DENABLE_XML="$(usex xml)"
 		-DENABLE_ZIP="$(usex zip)"
 	)
-
-	if ! use iodbc ; then
-		sed -i -e 's|iodbc||' cmake/FindODBC.cmake || die
-	fi
 
 	cmake-utils_src_configure
 }
