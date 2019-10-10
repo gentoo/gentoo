@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ykonotopov@gnome.org</email>
+		<name>Yuri Konotopov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/libretro/RetroArch/issues</bugs-to>
+		<remote-id type="github">libretro/RetroArch</remote-id>
+	</upstream>
+	<use>
+		<flag name="alsa">Build ALSA audio driver</flag>
+		<flag name="cg">Enable Cg shader support</flag>
+		<flag name="cpu_flags_x86_sse">Enable x86 SSE optimizations (SSE, SSE2)</flag>
+		<flag name="dbus">Enable dbus support</flag>
+		<flag name="egl">Enable EGL context support</flag>
+		<flag name="ffmpeg">Enable FFmpeg support</flag>
+		<flag name="flac">Compile in flac support</flag>
+		<flag name="freetype">Enable FreeType support</flag>
+		<flag name="gles">Use GLESv2 instead of desktop GL</flag>
+		<flag name="gles3">Enable OpenGLES3 support</flag>
+		<flag name="kms">Enable KMS context support</flag>
+		<flag name="libcaca">Enable Libcaca support</flag>
+		<flag name="libusb">Enable Libusb HID support</flag>
+		<flag name="materialui">Enable MaterialUI menu</flag>
+		<flag name="miniupnpc">Enable Mini UPnP client library (for NAT traversal)</flag>
+		<flag name="openal">Build OpenAL audio driver</flag>
+		<flag name="opengl">Build OpenGL 2.0 video driver</flag>
+		<flag name="ozone">Enable Ozone menu</flag>
+		<flag name="pulseaudio">Build PulseAudio audio driver</flag>
+		<flag name="qt">Enable Qt companion support</flag>
+		<flag name="rgui">Enable RGUI menu</flag>
+		<flag name="sdl">Enable SDL suppoer</flag>
+		<flag name="sdl2">Enable SDL2 support (disables SDL 1.x)</flag>
+		<flag name="sixel">Enable Libsixel support</flag>
+		<flag name="subtitles">Enable SSA/ASS for FFmpeg subtitle support</flag>
+		<flag name="ssl">Enable SSL/mbedtls support</flag>
+		<flag name="stripes">Enable Stripes menu</flag>
+		<flag name="systemd">Enable Systemd support</flag>
+		<flag name="tinyalsa">Build TinyALSA audio driver</flag>
+		<flag name="udev">Enable Udev/Evdev gamepad support</flag>
+		<flag name="vulkan">Build Vulkan video driver</flag>
+		<flag name="X">Enable Xorg support</flag>
+		<flag name="xrandr">Enable Xrandr support</flag>
+		<flag name="xmb">Enable XMB menu</flag>
+		<flag name="xv">Enable XVideo support</flag>
+		<flag name="wayland">Enable Wayland support</flag>
+		<flag name="zlib">Enable zlib support (ZIP extract, PNG decoding/encoding)</flag>
+	</use>
+</pkgmetadata>
