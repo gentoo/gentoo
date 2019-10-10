@@ -7,7 +7,7 @@ EAPI="6"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GENPATCHREV="1"				# Tarball revision for patches
+GENPATCHREV="2"				# Tarball revision for patches
 
 # Directories
 S="${WORKDIR}/linux-${OKV}"
@@ -318,13 +318,18 @@ src_unpack() {
 	for x in {ip27,ip28,ip30}; do
 		use ${x} && v="${v}.${x}" && break
 	done
+	mv "${WORKDIR}/linux-${fkv/_/-}" "${WORKDIR}/linux-${v}" || die
+	S="${WORKDIR}/linux-${v}"
 
-	local old="${WORKDIR}/linux-${fkv/_/-}"
-	local new="${WORKDIR}/linux-${v}"
-	if [ "${old}" != "${new}" ]; then
-		mv "${old}" "${new}" || die
-	fi
-	S="${new}"
+	# Set the EXTRAVERSION to linux-VERSION-mipsgit-GITDATE
+	EXTRAVERSION="${EXTRAVERSION}-gentoo-mips"
+	unpack_set_extraversion
+#	local old="${WORKDIR}/linux-${fkv/_/-}"
+#	local new="${WORKDIR}/linux-${v}"
+#	if [ "${old}" != "${new}" ]; then
+#		mv "${old}" "${new}" || die
+#	fi
+#	S="${new}"
 }
 
 src_prepare() {
