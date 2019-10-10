@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV/_}"
 PVM=$(ver_cut 1-2)
 PVM_S=$(ver_rs 1-2 "")
 
-MY_PATCHSET="ghostscript-gpl-9.28-patchset-1.tar.xz"
+MY_PATCHSET="ghostscript-gpl-9.28-patchset-2.tar.xz"
 
 SRC_URI="https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${PVM_S}/${MY_P}.tar.xz"
 if [[ -n "${MY_PATCHSET}" ]] ; then
@@ -43,7 +43,7 @@ DEPEND="
 	cups? ( >=net-print/cups-1.3.8 )
 	dbus? ( sys-apps/dbus )
 	gtk? ( || ( x11-libs/gtk+:3 x11-libs/gtk+:2 ) )
-	unicode? ( net-dns/libidn:= )
+	unicode? ( net-dns/libidn:0= )
 	tiff? ( >=media-libs/tiff-4.0.1:0= )
 	X? ( x11-libs/libXt x11-libs/libXext )
 "
