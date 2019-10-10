@@ -176,7 +176,7 @@ app-admin/bcfg2 1.2.4-r1: Configuration management tool
 app-admin/calamares 3.2.12: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
-app-admin/cdist 4.10.6 5.1.3: A usable configuration management system
+app-admin/cdist 5.1.3 6.0.0: A usable configuration management system
 app-admin/certmgr 2.0.1: Automated certificate management using a CFSSL CA
 app-admin/cgmanager 0.41 0.42: Control Group manager daemon
 app-admin/checksec 1.7.5 1.8.0 1.9.0 1.11.1 2.0.1 2.1.0: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
@@ -1967,7 +1967,7 @@ app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency o
 app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
 app-misc/go-jira 1.0.17 1.0.20: A simple JIRA commandline client in Go
 app-misc/golly 3.2: simulator for Conway's Game of Life and other cellular automata
-app-misc/goobook 1.9 3.3: Access your Google contacts from the command line
+app-misc/goobook 1.9 3.4: Access your Google contacts from the command line
 app-misc/gourmet 0.17.4-r2: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 5.0.1 5.0.2: Genealogical Research and Analysis Management Programming System
@@ -3173,7 +3173,7 @@ dev-db/soci 3.2.3-r1: Makes the illusion of embedding SQL queries in the regular
 dev-db/spatialite 4.3.0-r1 4.3.0a: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/spatialite-tools 4.3.0-r1: A collection of CLI tools supporting SpatiaLite
 dev-db/sqlcipher 3.4.2 4.0.1: Full Database Encryption for SQLite
-dev-db/sqlcl-bin 19.1.0.094.1619: Oracle SQLcl is the new SQL*Plus
+dev-db/sqlcl-bin 19.2.1.206.1649: Oracle SQLcl is the new SQL*Plus
 dev-db/sqldeveloper 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
 dev-db/sqlite 3.28.0 3.29.0: SQL database engine
 dev-db/sqlitebrowser 3.11.1-r1: SQLite Database Browser
@@ -10686,7 +10686,7 @@ dev-util/cucumber-tag_expressions 1.1.1: Cucumber tag expressions for ruby
 dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
-dev-util/cutter 1.0 1.4 1.6 1.7 1.7.4 1.8.0 1.8.2: A Qt and C++ GUI for radare2 reverse engineering framework
+dev-util/cutter 1.0 1.4 1.6 1.7 1.7.4 1.8.0 1.8.2 1.9.0: A Qt and C++ GUI for radare2 reverse engineering framework
 dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/d-feet 0.3.14: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 15.04.0_p100: Run executables under a new DBus session for testing
