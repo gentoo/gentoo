@@ -161,7 +161,7 @@ app-admin/abrt 2.10.10-r2 2.12.0-r1: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4 6.0.13: A webserver log analyzer
-app-admin/ansible 2.7.13 2.7.13-r1 2.8.4 2.8.4-r1 2.8.5 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.7.13 2.7.13-r1 2.8.5 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 3.4.23 4.0.1: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.2.34 2.4.41: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -270,7 +270,7 @@ app-admin/lsyncd 2.2.0 2.2.1 2.2.2 2.2.3: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/matter 302: Automated Packages Builder for Portage and Entropy
 app-admin/mcelog 162 164: A tool to log and decode Machine Check Exceptions
-app-admin/mcollective 2.12.3 2.12.4: Framework to build server orchestration or parallel job execution systems
+app-admin/mcollective 2.12.4 2.12.5: Framework to build server orchestration or parallel job execution systems
 app-admin/mei-amt-check 0_p20170515: AMT status checker
 app-admin/metalog 3-r2 20181125: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 1.0.0 1.0.1: Bash scripts to install tripwire and generate tripwire policy files
@@ -1422,7 +1422,7 @@ app-emulation/cri-o 1.10.6 1.13.9 1.15.1 1.15.2: OCI-based implementation of Kub
 app-emulation/cri-tools 1.14.0 1.15.0 1.16.0 1.16.1: CLI and validation tools for Kubelet Container Runtime (CRI)
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0 15.3.0 15.3.1 16.0.0 16.2.5 17.5.0 17.5.0-r1 17.5.1 18.0.0 18.1.0 18.5.0: Commercial version of app-emulation/wine with paid support.
 app-emulation/dinero 4.7-r1: Cache simulator
-app-emulation/diskimage-builder 2.26.1 2.27.2 9999: Golden Disk Image builder.
+app-emulation/diskimage-builder 2.27.2 2.28.0 9999: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 18.09.9 19.03.2 19.03.3: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
@@ -8313,7 +8313,7 @@ dev-python/oslo-serialization 2.24.0-r1 2.28.2: Oslo Serialization library
 dev-python/oslo-service 1.31.8 1.38.0: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-upgradecheck 0.2.1: Oslo i18n library
-dev-python/oslo-utils 3.36.4 3.40.3: Oslo Utility library
+dev-python/oslo-utils 3.36.4 3.40.3 3.40.4: Oslo Utility library
 dev-python/oslo-versionedobjects 1.33.3 1.35.1: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.26.0 2.32.2: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.2.0 3.7.1: Oslo test framework
@@ -10887,7 +10887,7 @@ dev-util/rebar 2.6.4: A sophisticated build-tool for Erlang projects that follow
 dev-util/rebar-bin 3.6.2: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/redo 0.41 0.42 99999: Smaller, easier, more powerful, and more reliable than make
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
-dev-util/rej 0.16: A utility for solving diff/patch rejects
+dev-util/rej 0.16 0.16-r1: A utility for solving diff/patch rejects
 dev-util/repo 1.12.37 1.13.2: Google tool for managing git, particularly multiple repos
 dev-util/reswrap 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
 dev-util/rocm-cmake 0.2 2.7.0 2.8.0 2.9.0 9999: Radeon Open Compute CMake Modules
@@ -14108,7 +14108,7 @@ media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/pulseaudio 12.2 12.2-r1 12.2-r2 13.0: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.66: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth (alongside SBC and native+ofono headset)
-media-sound/pulseeffects 4.6.6 4.6.7 4.6.8 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
+media-sound/pulseeffects 4.6.7 4.6.8 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
@@ -17650,7 +17650,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 13.0.4 14.0.2 2018.2.9999 2019.1.9999: A virtual network service for Openstack
-sys-cluster/nova 18.2.2 19.0.2 19.0.3 2018.2.9999 2019.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 18.2.2 18.2.3 19.0.2 19.0.3 2018.2.9999 2019.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
