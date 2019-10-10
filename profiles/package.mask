@@ -923,12 +923,6 @@ net-mail/gensig
 net-mail/qmail-lint
 net-mail/qmail-qsanity
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-09)
-# Unmaintained.  Added in 2001, no new releases since.  EAPI 0.
-# Multiple QA issues.  No amd64 keywords.
-# Removal in 30 days.  Bug #693864.
-net-mail/fastforward
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
