@@ -827,12 +827,6 @@ sys-libs/lrmi
 # Removal in 30 days.  Bug #693934.
 sys-fs/scan-ffs
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-09)
-# Added in 2005, not bumped since.  Last upstream release in 2007.
-# EAPI 0.  No amd64 keyword.
-# Removal in 30 days.  Bug #693932.
-sys-cluster/ocfs
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
