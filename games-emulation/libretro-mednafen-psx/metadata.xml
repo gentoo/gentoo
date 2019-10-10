@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ykonotopov@gnome.org</email>
+		<name>Yuri Konotopov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">libretro/beetle-psx-libretro</remote-id>
+	</upstream>
+	<use>
+		<flag name="opengl">Build with OpenGL support</flag>
+		<flag name="vulkan">Build with Vulkan support</flag>
+	</use>
+</pkgmetadata>
