@@ -1,11 +1,12 @@
-DEFINED_PHASES=compile install setup
+DEFINED_PHASES=install pretend setup
 DESCRIPTION=Intel (R) Wireless WiFi Link 6250-AGN ucode
-EAPI=0
-HOMEPAGE=http://intellinuxwireless.org/?p=iwlwifi
+EAPI=6
+HOMEPAGE=https://intellinuxwireless.org/?p=iwlwifi
 IUSE=kernel_linux
-KEYWORDS=amd64 x86
+KEYWORDS=~amd64 ~x86
 LICENSE=ipw3945
+RDEPEND=!sys-kernel/linux-firmware[-savedconfig]
 SLOT=0
-SRC_URI=http://intellinuxwireless.org/iwlwifi/downloads/iwlwifi-6050-ucode-41.28.5.1.tgz
+SRC_URI=https://intellinuxwireless.org/iwlwifi/downloads/iwlwifi-6050-ucode-41.28.5.1.tgz
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=4c02bd30acd9a7381855e1cd50d9037d
+_md5_=6bf4f68456815612b7df61c6928d38d7
