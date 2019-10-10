@@ -897,13 +897,6 @@ net-p2p/myster
 # Removal in 30 days.  Bug #693880.
 net-p2p/mktorrent-borg
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-09)
-# Added in 2002 and not bumped since.  EAPI 0.  No amd64 keyword.
-# Sources are no longer to be found on the homepage, and upstream
-# explicitly points to third-party applications.
-# Removal in 30 days.  Bug #693878.
-net-misc/shout
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
