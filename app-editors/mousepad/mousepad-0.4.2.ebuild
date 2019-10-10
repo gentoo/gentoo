@@ -10,7 +10,7 @@ SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dbus +gtk3"
 # D-Bus code fails to build against GTK+2
 # https://bugzilla.xfce.org/show_bug.cgi?id=15755
