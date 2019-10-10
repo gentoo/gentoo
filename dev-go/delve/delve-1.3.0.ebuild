@@ -23,3 +23,4 @@ src_compile() {
 src_install() {
 	dodoc README.md CHANGELOG.md
 	dobin dlv
+}
