@@ -109,7 +109,6 @@ net-mail/yosucker
 net-misc/cgterm
 net-misc/clockspeed-conf
 net-misc/fmirror
-net-misc/hashcash
 net-misc/ng-utils
 net-misc/sendfile
 net-news/yencode
