@@ -4,11 +4,11 @@ DESCRIPTION=GTK+-based editor for the Xfce Desktop Environment
 EAPI=7
 HOMEPAGE=https://git.xfce.org/apps/mousepad/about/
 IUSE=dbus +gtk3
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.42:2= >=xfce-base/xfconf-4.12:= !gtk3? ( >=x11-libs/gtk+-2.24:2= x11-libs/gtksourceview:2.0= ) gtk3? ( >=x11-libs/gtk+-3.20:3= x11-libs/gtksourceview:3.0= )
 REQUIRED_USE=dbus? ( gtk3 )
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/apps/mousepad/0.4/mousepad-0.4.2.tar.bz2
 _eclasses_=gnome2-utils	532371cfcba45b2ab0d2950547c97d95	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=9d4cd4f33586840f60fa72448fdf2297
+_md5_=087430b5e04ffb527bd4e82fec4cd9ea
