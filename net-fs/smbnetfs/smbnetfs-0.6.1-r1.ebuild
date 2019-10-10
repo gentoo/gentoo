@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils readme.gentoo-r1
+EAPI=7
+inherit readme.gentoo-r1
 
 DESCRIPTION="FUSE filesystem for SMB shares"
 HOMEPAGE="https://sourceforge.net/projects/smbnetfs"
@@ -21,7 +21,10 @@ RDEPEND=">=sys-fs/fuse-2.3:0=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=("${FILESDIR}"/${P}-use-proper-xattr.patch)
+PATCHES=(
+	"${FILESDIR}"/${P}-use-proper-xattr.patch
+	"${FILESDIR}"/${P}-docdir.patch
+)
 
 DISABLE_AUTOFORMATTING=yes
 DOC_CONTENTS="
