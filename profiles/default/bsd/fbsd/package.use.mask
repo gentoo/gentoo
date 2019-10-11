@@ -49,11 +49,6 @@ mail-client/claws-mail pda
 # miscfiles.. that in turn does not work
 net-irc/rbot spell
 
-# Diego Pettenò <flameeyes@gentoo.org> (2007-01-18)
-# Vixie-Cron uses pam useflag for pam_limits.so that is provided
-# by Linux-PAM we don't use for now.
-sys-process/vixie-cron pam
-
 x11-misc/xscreensaver new-login
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2007-10-22)
