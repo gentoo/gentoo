@@ -12,11 +12,6 @@ SRC_URI="http://www.hashcash.org/source/${P}.tgz"
 LICENSE="CPL-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
-
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
 
 src_prepare() {
 	default
