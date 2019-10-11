@@ -6338,7 +6338,7 @@ dev-perl/Mail-Mbox-MessageParser 1.510.500: A fast and simple mbox folder reader
 dev-perl/Mail-Message 3.2.0: General Message Object for MIME Messsage Handling
 dev-perl/Mail-POP3Client 2.190.0: POP3 client module for Perl
 dev-perl/Mail-Procmail 1.80.0-r1: Mail sorting/delivery module for Perl
-dev-perl/Mail-SPF 2.9.0-r1 2.9.0-r2: An object-oriented implementation of Sender Policy Framework
+dev-perl/Mail-SPF 2.9.0-r2: An object-oriented implementation of Sender Policy Framework
 dev-perl/Mail-SRS 0.310.0-r2: Interface to Sender Rewriting Scheme
 dev-perl/Mail-Sender 0.903.0: Module for sending mails with attachments through an SMTP server
 dev-perl/Mail-Sendmail 0.790.0-r1 0.800.0: Simple platform independent mailer
@@ -6975,7 +6975,7 @@ dev-perl/Unicode-LineBreak 2017.4.0-r1: UAX #14 Unicode Line Breaking Algorithm
 dev-perl/Unicode-Map 0.112.0-r1: Map charsets from and to utf16 code
 dev-perl/Unicode-Map8 0.130.0 0.130.0-r1: Convert between most 8bit encodings
 dev-perl/Unicode-MapUTF8 1.110.0-r1 1.110.0-r2: Conversions to and from arbitrary character sets and UTF8
-dev-perl/Unicode-String 2.90.0-r1 2.100.0: String manipulation for Unicode strings
+dev-perl/Unicode-String 2.100.0: String manipulation for Unicode strings
 dev-perl/Unicode-Stringprep 1.105.0-r1 1.105.0-r2: Preparation of Internationalized Strings (RFC 3454)
 dev-perl/Unicode-UTF8 0.620.0: Encoding and decoding of UTF-8 encoding form
 dev-perl/Unicode-UTF8simple 1.60.0: Conversions to/from UTF8 from/to charactersets
@@ -7045,7 +7045,7 @@ dev-perl/XML-Handler-YAWriter 0.230.0-r1 0.230.0-r2: A Perl module providing a s
 dev-perl/XML-LibXML 2.13.200 2.20.100: Perl binding for libxml2
 dev-perl/XML-LibXML-Iterator 1.40.0-r1: Iterator class for XML::LibXML parsed documents
 dev-perl/XML-LibXML-Simple 0.970.0 0.990.0: XML::LibXML based XML::Simple clone
-dev-perl/XML-LibXSLT 1.940.0 1.960.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
+dev-perl/XML-LibXSLT 1.960.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
 dev-perl/XML-Mini 1.380.0-r1: pure perl API to create and parse XML
 dev-perl/XML-NamespaceSupport 1.120.0: A Perl module that offers a simple to process namespaced XML names
 dev-perl/XML-NodeFilter 0.10.0-r1: Generic XML::NodeFilter Class
@@ -7062,7 +7062,7 @@ dev-perl/XML-SAX-Base 1.90.0: Base class SAX Drivers and Filters
 dev-perl/XML-SAX-Expat 0.510.0: SAX2 Driver for Expat
 dev-perl/XML-SAX-ExpatXS 1.330.0: Perl SAX 2 XS extension to Expat parser
 dev-perl/XML-SAX-Writer 0.560.0 0.570.0: SAX2 XML Writer
-dev-perl/XML-Simple 2.200.0-r1 2.220.0 2.250.0: An API for simple XML files
+dev-perl/XML-Simple 2.250.0: An API for simple XML files
 dev-perl/XML-Simple-DTDReader 0.40.0-r1: Simple XML file reading based on their DTDs
 dev-perl/XML-SimpleObject 0.530.0-r1: A Perl XML Simple package
 dev-perl/XML-Smart 1.790.0: Access or create XML from fields, data and URLs.
