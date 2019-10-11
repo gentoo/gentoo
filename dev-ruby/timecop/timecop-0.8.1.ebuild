@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/travisjeffery/timecop"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm hppa ppc ppc64 sparc x86"
 IUSE=""
 
 # Missing testdep activesupport

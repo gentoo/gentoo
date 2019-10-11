@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/uwabami/rdtool"
 
 LICENSE="Ruby GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 ~sparc x86"
 IUSE="emacs"
 
 RDEPEND="${RDEPEND} emacs? ( virtual/emacs )"
