@@ -138,7 +138,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/epmd.init-r2 epmd
 	newconfd "${FILESDIR}"/epmd.confd-r1 epmd
-	use systemd && systemd_dounit "${FILESDIR}"/epmd.service-r1 epmd.service
+	use systemd && systemd_newunit "${FILESDIR}"/epmd.service-r1 epmd.service
 }
 
 pkg_postinst() {
