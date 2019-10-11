@@ -18,7 +18,7 @@ REQUIRED_USE="
 	input_devices_wacom? ( udev )
 	wayland? ( udev )
 "
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 # >=polkit-0.114 for ITS translation rules of .policy files
 COMMON_DEPEND="
