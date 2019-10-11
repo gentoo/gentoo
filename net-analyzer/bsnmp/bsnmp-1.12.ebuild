@@ -11,7 +11,7 @@ SRC_URI="http://people.freebsd.org/~harti/bsnmp/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~amd64-fbsd"
 IUSE="tcpd"
 
 DEPEND="dev-libs/libbegemot
