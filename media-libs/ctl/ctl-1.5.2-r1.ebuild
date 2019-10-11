@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}/archive/ctl-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AMPAS"
 SLOT="0"
-KEYWORDS="amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 hppa ia64 ppc ppc64 sparc x86"
 
 RDEPEND="media-libs/ilmbase:=
 	media-libs/openexr:=
