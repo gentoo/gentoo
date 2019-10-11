@@ -29,6 +29,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-10-11)
+# FreeBSD-only packages.  The project has been discontinued,
+# and the core FreeBSD packages are already gone.
+# Removal in 14 days.  Bug #683284.
+dev-libs/libexecinfo
+net-analyzer/bsnmp
+sys-apps/flock
+sys-auth/openpam
+sys-block/eject-bsd
+sys-process/pidof-bsd
+
 # Michał Górny <mgorny@gentoo.org> (2019-10-10)
 # Upstream gone.  Last bumped in 2006.  EAPI 0.  net-misc/sipcalc seems
 # like a good replacement.
