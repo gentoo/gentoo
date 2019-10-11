@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_5,3_6,3_7} )
+CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 inherit cmake-utils python-single-r1 xdg-utils
 
@@ -21,7 +22,7 @@ HOMEPAGE="https://obsproject.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+alsa fdk imagemagick jack luajit nvenc pulseaudio python speex truetype v4l"
+IUSE="+alsa fdk imagemagick jack luajit nvenc pulseaudio python speex +ssl truetype v4l vlc"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="
@@ -60,15 +61,15 @@ DEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
 	speex? ( media-libs/speexdsp )
+	ssl? ( net-libs/mbedtls )
 	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype
 	)
 	v4l? ( media-libs/libv4l )
+	vlc? ( media-video/vlc:= )
 "
 RDEPEND="${DEPEND}"
-
-CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -84,9 +85,11 @@ src_configure() {
 		-DDISABLE_PULSEAUDIO=$(usex !pulseaudio)
 		-DDISABLE_SPEEXDSP=$(usex !speex)
 		-DDISABLE_V4L2=$(usex !v4l)
+		-DDISABLE_VLC=$(usex !vlc)
 		-DLIBOBS_PREFER_IMAGEMAGICK=$(usex imagemagick)
 		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
 		-DUNIX_STRUCTURE=1
+		-DWITH_RTMPS=$(usex ssl)
 	)
 
 	if use luajit || use python; then
