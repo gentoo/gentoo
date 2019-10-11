@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~amd64-fbsd"
 IUSE=""
 
 RDEPEND="!sys-libs/pam"
