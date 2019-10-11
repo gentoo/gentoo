@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ocaml/tuareg/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 S="${WORKDIR}/tuareg-${PV}"
 SITEFILE="50${PN}-gentoo.el"

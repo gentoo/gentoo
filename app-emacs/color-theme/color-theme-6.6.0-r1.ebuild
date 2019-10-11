@@ -11,7 +11,7 @@ SRC_URI="http://download.savannah.gnu.org/releases-noredirect/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ~arm ppc sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 ELISP_PATCHES="${P}-replace-in-string.patch"
 ELISP_REMOVE="color-theme-autoloads.*"
