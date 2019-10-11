@@ -7,7 +7,7 @@ XORG_DRI=always
 inherit xorg-2
 
 DESCRIPTION="VMware SVGA video driver"
-KEYWORDS="amd64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE="kernel_linux"
 
 RDEPEND="kernel_linux? (
