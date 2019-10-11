@@ -13,7 +13,7 @@ SRC_URI="http://crm114.sourceforge.net/tarballs/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="examples mew mimencode nls normalizemime static test"
 
 RDEPEND="

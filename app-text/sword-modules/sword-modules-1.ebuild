@@ -7,7 +7,7 @@ HOMEPAGE="http://www.crosswire.org/sword/"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND=""
