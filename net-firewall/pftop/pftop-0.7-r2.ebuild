@@ -13,7 +13,7 @@ SRC_URI="http://www.eee.metu.edu.tr/~canacar/${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86-fbsd"
+KEYWORDS=""
 IUSE="altq"
 
 RDEPEND="sys-libs/ncurses"
