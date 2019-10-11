@@ -20,7 +20,7 @@ SRC_URI="https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV}/${
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 x86 ~amd64-fbsd"
+KEYWORDS="amd64 arm arm64 x86"
 IUSE="elibc_glibc elibc_musl +libcxxabi libcxxrt +libunwind +static-libs test"
 REQUIRED_USE="libunwind? ( || ( libcxxabi libcxxrt ) )
 	?? ( libcxxabi libcxxrt )"

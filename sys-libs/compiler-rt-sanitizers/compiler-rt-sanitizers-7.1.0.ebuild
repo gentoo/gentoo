@@ -21,7 +21,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="${PV%_*}"
-KEYWORDS="amd64 arm arm64 ~ppc64 x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 arm arm64 ~ppc64 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="+clang +libfuzzer +profile +sanitize test +xray elibc_glibc"
 # FIXME: libfuzzer does not enable all its necessary dependencies
 REQUIRED_USE="libfuzzer? ( || ( sanitize xray ) )"
