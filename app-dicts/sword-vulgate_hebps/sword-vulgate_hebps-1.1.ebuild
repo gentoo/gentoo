@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Latin Vulgate Psalms from Hebrew"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Vulgate_HebPs"
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

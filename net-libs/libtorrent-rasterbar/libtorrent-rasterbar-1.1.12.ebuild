@@ -18,7 +18,7 @@ SRC_URI="https://github.com/arvidn/libtorrent/releases/download/libtorrent_${MY_
 
 LICENSE="BSD"
 SLOT="0/9"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
 IUSE="debug +dht doc examples libressl python +ssl static-libs test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

@@ -17,7 +17,7 @@ SRC_URI="https://github.com/mgorny/gemato/archive/v${MY_PV}.tar.gz -> ${MY_P}.ta
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux"
 IUSE="+blake2 bzip2 +gpg lzma sha3 test tools"
 RESTRICT="!test? ( test )"
 

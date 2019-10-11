@@ -45,7 +45,7 @@ QA_PREBUILT="/usr/bin/mbrola"
 
 SLOT="0"
 LICENSE="MBROLA"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
 
 src_unpack () {
 	unpack ${A}

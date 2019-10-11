@@ -16,7 +16,7 @@ if [[ ${PV} = 9999 ]]; then
 	S="${WORKDIR}/${PN}"
 else
 	SRC_URI="ftp://pcc.ludd.ltu.se/pub/pcc-releases/${P}.tgz"
-	KEYWORDS="~amd64 ~x86 ~amd64-fbsd"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="BSD"

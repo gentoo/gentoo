@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Chinese Union Version Traditional"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=ChiUn"
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

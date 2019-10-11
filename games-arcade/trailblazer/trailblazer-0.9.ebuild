@@ -10,7 +10,7 @@ SRC_URI="http://www.autismuk.freeserve.co.uk/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=media-libs/libsdl-1.2.7[video]"

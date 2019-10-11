@@ -14,7 +14,7 @@ SRC_URI="mirror://gentoo/${MY_PN}-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-python/pygame[${PYTHON_USEDEP}]

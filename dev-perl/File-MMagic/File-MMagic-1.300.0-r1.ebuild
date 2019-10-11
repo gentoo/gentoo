@@ -12,5 +12,5 @@ SRC_TEST="do"
 
 SLOT="0"
 LICENSE="File-MMagic"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
 IUSE=""

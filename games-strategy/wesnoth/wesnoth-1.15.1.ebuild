@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 # uneven minor versions are development versions
 if [[ $(( $(ver_cut 2) % 2 )) == 0 ]] ; then
-	KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+	KEYWORDS="~amd64 ~x86"
 fi
 IUSE="dbus dedicated doc fribidi libressl nls server"
 

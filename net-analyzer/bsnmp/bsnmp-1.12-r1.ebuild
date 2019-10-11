@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -11,7 +11,7 @@ SRC_URI="http://people.freebsd.org/~harti/bsnmp/${P}.tar.gz"
 
 LICENSE="BSD GPL-2" # GPL-2 init script
 SLOT="0"
-KEYWORDS="~amd64-fbsd ~x86-fbsd"
+KEYWORDS=""
 IUSE="tcpd"
 
 DEPEND="dev-libs/libbegemot

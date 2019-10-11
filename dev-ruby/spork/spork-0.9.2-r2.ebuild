@@ -16,6 +16,6 @@ DESCRIPTION="Spork is Tim Harper's implementation of test server"
 HOMEPAGE="https://github.com/sporkrb/spork"
 LICENSE="MIT"
 
-KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 ~sparc x86"
 SLOT="0"
 IUSE=""

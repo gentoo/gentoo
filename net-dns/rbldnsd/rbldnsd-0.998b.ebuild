@@ -12,7 +12,7 @@ SRC_URI="https://github.com/spamhaus/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~hppa ~sparc ~x86"
 IUSE="ipv6 test zlib"
 
 RDEPEND="zlib? ( sys-libs/zlib )"

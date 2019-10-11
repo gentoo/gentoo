@@ -11,7 +11,7 @@ SRC_URI="http://jdolan.dyndns.org/jaydolan/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-fbsd"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="media-video/mplayer

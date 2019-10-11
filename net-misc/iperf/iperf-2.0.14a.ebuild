@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/${PN}2/${PN}-2.0.13.tar.gz"
 
 LICENSE="HPND"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~m68k-mint"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~m68k-mint"
 IUSE="ipv6 threads debug"
 
 DOCS="INSTALL README"

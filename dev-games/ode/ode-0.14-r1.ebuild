@@ -10,7 +10,7 @@ SRC_URI="https://bitbucket.org/odedevs/ode/downloads/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1+ BSD )"
 SLOT="0/6"
-KEYWORDS="amd64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc double-precision examples gyroscopic static-libs"
 
 RDEPEND="examples? (

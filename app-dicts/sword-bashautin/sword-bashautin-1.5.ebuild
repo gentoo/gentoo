@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="1571 Navarro-Labourdin Basque NT"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=BasHautin"
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

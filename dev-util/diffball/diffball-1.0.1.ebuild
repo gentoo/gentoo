@@ -11,7 +11,7 @@ SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ia64 ~mips ppc ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="alpha amd64 ~hppa ia64 ~mips ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="debug"
 
 RDEPEND=">=sys-libs/zlib-1.1.4

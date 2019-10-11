@@ -10,7 +10,7 @@ SRC_URI="http://koti.mbnet.fi/makegho/c/betna/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[video]"

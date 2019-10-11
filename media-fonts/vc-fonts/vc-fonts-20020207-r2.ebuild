@@ -10,7 +10,7 @@ SRC_URI="http://vico.kleinplanet.de/files/${P}.tar.bz2
 		mirror://gentoo/bleed3.bdf.gz"
 HOMEPAGE="http://vico.kleinplanet.de/"
 
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 s390 sh sparc x86"
 LICENSE="GPL-2"
 SLOT=0
 IUSE=""

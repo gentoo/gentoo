@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/xdb/${PN}64-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm hppa ppc ppc64 x86"
 IUSE="doc static-libs"
 
 S="${WORKDIR}"/${PN}64-${PV}

@@ -5,6 +5,6 @@ EAPI=5
 
 DESCRIPTION="Virtual for Kerberos V implementation"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 
 RDEPEND="|| ( app-crypt/mit-krb5 app-crypt/heimdal )"

@@ -10,7 +10,7 @@ SRC_URI="http://www.gentoo.com/di/${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="nls"
 
 RESTRICT="test" #405205, #405471

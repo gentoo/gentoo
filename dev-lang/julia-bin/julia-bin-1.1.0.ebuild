@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86 ~amd64-fbsd"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="elibc_glibc elibc_FreeBSD"
 
 RDEPEND="!dev-lang/julia"

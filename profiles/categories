@@ -143,7 +143,6 @@ sys-cluster
 sys-devel
 sys-fabric
 sys-firmware
-sys-freebsd
 sys-fs
 sys-kernel
 sys-libs

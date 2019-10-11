@@ -10,7 +10,7 @@ SRC_URI="http://download.fedoraproject.org/pub/fedora/linux/releases/15/Everythi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND="x11-libs/gtk+:2"
 DEPEND="${RDEPEND}

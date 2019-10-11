@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="John Wycliffe Bible (1395)"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Wycliffe"
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

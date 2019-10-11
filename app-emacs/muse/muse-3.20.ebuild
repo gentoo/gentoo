@@ -11,7 +11,7 @@ SRC_URI="http://download.gna.org/muse-el/${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.2+ GPL-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86"
 #IUSE="test"
 RESTRICT="test"					#426546
 

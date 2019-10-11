@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/xavierleroy/cryptokit"
 SRC_URI="https://github.com/xavierleroy/cryptokit/archive/release$(replace_all_version_separators '').tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc"
 IUSE="zlib"
 
 DEPEND="zlib? ( >=sys-libs/zlib-1.1 )

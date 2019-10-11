@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Romanian Cornilescu Version"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=RomCor"
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

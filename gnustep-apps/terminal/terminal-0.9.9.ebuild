@@ -12,7 +12,7 @@ HOMEPAGE="http://www.nongnu.org/terminal/"
 SRC_URI="https://savannah.nongnu.org/download/gap/${P/t/T}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
 

@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Finnish Pyh, Raamattu (1992)"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=FinPR92"
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

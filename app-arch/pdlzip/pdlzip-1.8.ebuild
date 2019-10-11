@@ -11,7 +11,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/lzip/pdlzip/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~mips ~x86"
 IUSE=""
 
 src_configure() {

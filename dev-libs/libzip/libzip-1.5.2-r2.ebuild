@@ -11,7 +11,7 @@ SRC_URI="https://www.nih.at/libzip/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0/5"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="bzip2 doc gnutls libressl mbedtls ssl static-libs test"
 
 DEPEND="

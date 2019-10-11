@@ -13,7 +13,7 @@ HOMEPAGE="http://www.nongnu.org/gnustep-nonfsf/gnumail/index.html"
 SRC_URI="mirror://nongnu/gnustep-nonfsf/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1 Elm"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE=""
 

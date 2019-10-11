@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/ngrep/${P}.tar.bz2"
 
 LICENSE="ngrep"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ipv6"
 
 DEPEND="

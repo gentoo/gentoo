@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-base
 inherit gstreamer
 
 DESCRIPTION="Visualization elements for GStreamer"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="

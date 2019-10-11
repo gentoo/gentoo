@@ -6,7 +6,7 @@ EAPI=6
 DESCRIPTION="Virtual for Wine that supports multiple variants and slotting"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE="+abi_x86_32 +abi_x86_64 d3d9 staging"
 
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )"

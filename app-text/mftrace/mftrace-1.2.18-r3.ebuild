@@ -12,7 +12,7 @@ HOMEPAGE="http://lilypond.org/mftrace/"
 SRC_URI="http://lilypond.org/downloads/sources/mftrace/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~hppa ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~hppa ppc x86"
 # SLOT 1 was used in pktrace ebuild
 SLOT="1"
 IUSE="test truetype"

@@ -14,7 +14,7 @@ SRC_URI="https://github.com/transmission/transmission-releases/raw/master/${P}.t
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT=0
 IUSE="ayatana gtk libressl lightweight systemd qt5 xfs"
-KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 x86 ~x86-fbsd ~amd64-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 x86 ~amd64-linux"
 
 ACCT_DEPEND="
 	acct-group/transmission

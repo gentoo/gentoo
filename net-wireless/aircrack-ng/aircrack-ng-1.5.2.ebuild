@@ -18,7 +18,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_PV=${PV/_/-}
 	SRC_URI="https://download.aircrack-ng.org/${P}.tar.gz"
-	KEYWORDS="amd64 arm ~arm64 ~ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm ~arm64 ~ppc x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2"

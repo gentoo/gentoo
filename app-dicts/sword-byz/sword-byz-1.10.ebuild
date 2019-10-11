@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Byzantine/Majority Text (2000)"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Byz"
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

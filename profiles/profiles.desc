@@ -205,12 +205,6 @@ x86             default/linux/x86/17.0/desktop/plasma/systemd   stable
 x86             default/linux/x86/17.0/developer                stable
 x86		default/linux/x86/17.0/systemd			stable
 
-# Gentoo/FreeBSD Profiles
-# @MAINTAINER: bsd@gentoo.org
-amd64-fbsd	default/bsd/fbsd/amd64/11.1			exp
-amd64-fbsd	default/bsd/fbsd/amd64/11.1/clang		exp
-x86-fbsd	default/bsd/fbsd/x86/11.1			exp
-
 # musl profiles
 # @MAINTAINER: musl@gentoo.org
 amd64		default/linux/amd64/17.0/musl				exp

@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Robertson's Word Pictures"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=RWP"
 LICENSE="public-domain free-noncomm"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

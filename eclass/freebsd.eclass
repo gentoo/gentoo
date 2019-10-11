@@ -1,5 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# @DEAD
+# FreeBSD project is dead, and all consumers are gone.
+# Bug #683284.  Removal in 14 days.
+
 #
 # @MAINTAINER:
 # maintainer-needed@gentoo.org

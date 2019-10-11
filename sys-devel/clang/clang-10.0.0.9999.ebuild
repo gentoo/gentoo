@@ -104,6 +104,126 @@ src_unpack() {
 	git-r3_checkout "${EGIT_REPO_URI}" "${S}"
 }
 
+check_distribution_components() {
+	if [[ ${CMAKE_MAKEFILE_GENERATOR} == ninja ]]; then
+		local all_targets=() my_targets=() l
+		cd "${BUILD_DIR}" || die
+
+		while read -r l; do
+			if [[ ${l} == install-*-stripped:* ]]; then
+				l=${l#install-}
+				l=${l%%-stripped*}
+
+				case ${l} in
+					# meta-targets
+					clang-libraries|distribution)
+						continue
+						;;
+					# tools
+					clang|clangd|clang-*)
+						;;
+					# static libraries
+					clang*|findAllSymbols)
+						continue
+						;;
+				esac
+
+				all_targets+=( "${l}" )
+			fi
+		done < <(ninja -t targets all)
+
+		while read -r l; do
+			my_targets+=( "${l}" )
+		done < <(get_distribution_components $"\n")
+
+		local add=() remove=()
+		for l in "${all_targets[@]}"; do
+			if ! has "${l}" "${my_targets[@]}"; then
+				add+=( "${l}" )
+			fi
+		done
+		for l in "${my_targets[@]}"; do
+			if ! has "${l}" "${all_targets[@]}"; then
+				remove+=( "${l}" )
+			fi
+		done
+
+		if [[ ${#add[@]} -gt 0 || ${#remove[@]} -gt 0 ]]; then
+			eqawarn "get_distribution_components() is outdated!"
+			eqawarn "   Add: ${add[*]}"
+			eqawarn "Remove: ${remove[*]}"
+		fi
+		cd - >/dev/null || die
+	fi
+}
+
+get_distribution_components() {
+	local sep=${1-;}
+
+	local out=(
+		# common stuff
+		clang-cmake-exports
+		clang-headers
+		clang-resource-headers
+		libclang-headers
+
+		# libs
+		clang-cpp
+		libclang
+	)
+
+	if multilib_is_native_abi; then
+		out+=(
+			# common stuff
+			bash-autocomplete
+			libclang-python-bindings
+
+			# tools
+			c-index-test
+			clang
+			clang-format
+			clang-import-test
+			clang-offload-bundler
+			clang-offload-wrapper
+			clang-refactor
+			clang-rename
+			clang-scan-deps
+			diagtool
+			hmaptool
+
+			# extra tools
+			clang-apply-replacements
+			clang-change-namespace
+			clang-doc
+			clang-include-fixer
+			clang-move
+			clang-query
+			clang-reorder-fields
+			clang-tidy
+			clangd
+			find-all-symbols
+			modularize
+			pp-trace
+		)
+
+		use doc && out+=(
+			docs-clang-html
+			docs-clang-man
+			docs-clang-tools-html
+			docs-clang-tools-man
+		)
+
+		use static-analyzer && out+=(
+			clang-check
+			clang-extdef-mapping
+			scan-build
+			scan-view
+		)
+	fi
+
+	printf "%s${sep}" "${out[@]}"
+}
+
 multilib_src_configure() {
 	local llvm_version=$(llvm-config --version) || die
 	local clang_version=$(ver_cut 1-3 "${llvm_version}")
@@ -114,7 +234,10 @@ multilib_src_configure() {
 		# relative to bindir
 		-DCLANG_RESOURCE_DIR="../../../../lib/clang/${clang_version}"
 
-		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_SHARED_LIBS=OFF
+		-DCLANG_LINK_CLANG_DYLIB=ON
+		-DLLVM_DISTRIBUTION_COMPONENTS=$(get_distribution_components)
+
 		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 		-DLLVM_BUILD_TESTS=$(usex test)
 
@@ -177,6 +300,8 @@ multilib_src_configure() {
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 	cmake-utils_src_configure
+
+	multilib_is_native_abi && check_distribution_components
 }
 
 multilib_src_compile() {
@@ -249,7 +374,7 @@ src_install() {
 }
 
 multilib_src_install() {
-	cmake-utils_src_install
+	DESTDIR=${D} cmake-utils_src_make install-distribution
 
 	# move headers to /usr/include for wrapping & ABI mismatch checks
 	# (also drop the version suffix from runtime headers)

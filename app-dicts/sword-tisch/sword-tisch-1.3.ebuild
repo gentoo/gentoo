@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Tischendorf's Eighth Edition GNT"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Tisch"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

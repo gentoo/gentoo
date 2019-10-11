@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Bulgarian New Testament from 1914, known as 'Tsarigrad Edition'"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=BulCarigradNT"
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

@@ -15,7 +15,7 @@ SRC_URI="https://www.cosc.canterbury.ac.nz/greg.ewing/python/Pyrex/${MY_P}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="examples"
 
 S="${WORKDIR}/${MY_P}"

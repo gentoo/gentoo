@@ -15,7 +15,7 @@ SRC_URI="https://www.gajim.org/downloads/$(ver_cut 1-2)/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-#KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
+#KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 KEYWORDS="~amd64 ~x86"
 IUSE="+crypt geolocation jingle networkmanager remote rst +spell upnp
 	+webp"

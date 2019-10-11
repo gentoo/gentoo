@@ -17,7 +17,7 @@ SRC_URI="https://github.com/mmottl/sqlite3-ocaml/releases/download/v${PV}/${MY_P
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND=">=dev-db/sqlite-3.3.3

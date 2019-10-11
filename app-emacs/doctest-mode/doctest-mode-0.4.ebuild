@@ -11,7 +11,7 @@ SRC_URI="http://python-mode.svn.sourceforge.net/viewvc/*checkout*/python-mode/tr
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh x86 ~x86-fbsd"
+KEYWORDS="amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh x86"
 
 DEPEND="!<app-emacs/python-mode-5.1.0"
 RDEPEND="${DEPEND}"

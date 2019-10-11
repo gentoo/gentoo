@@ -9,7 +9,7 @@ SRC_URI="http://caca.zoy.org/raw-attachment/wiki/${PN}/${P}.tar.gz"
 
 LICENSE="WTFPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND=">=media-libs/libcaca-0.99_beta18"

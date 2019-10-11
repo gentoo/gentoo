@@ -50,7 +50,7 @@ SLOT="0"
 
 # This package can never enter stable, it can't be mirrored and upstream
 # can remove the distfiles from their mirror anytime.
-KEYWORDS="-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 RESTRICT="strip"

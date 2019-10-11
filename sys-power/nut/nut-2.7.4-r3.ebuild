@@ -13,7 +13,7 @@ HOMEPAGE="https://www.networkupstools.org/"
 SRC_URI="https://networkupstools.org/source/${PV%.*}/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ppc ppc64 x86"
 
 IUSE="cgi gui ipmi snmp +usb selinux ssl tcpd xml zeroconf"
 REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"

@@ -36,7 +36,7 @@ else
 		)
 		binary? ( https://dev.gentoo.org/~tamiko/distfiles/${P}-bin.tar.xz )
 		"
-	KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86 ~x86-fbsd"
+	KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
 	IUSE="+binary"
 	REQUIRED_USE+="
 		!amd64? ( binary )

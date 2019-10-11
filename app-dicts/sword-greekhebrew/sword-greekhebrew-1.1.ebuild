@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Greek to Hebrew Dictionary of Septuagint Words"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=GreekHebrew"
 LICENSE="free-noncomm"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
