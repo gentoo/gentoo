@@ -17,7 +17,7 @@ SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="2/${PV}"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux"
 IUSE="+template-haskell"
 
 RDEPEND="dev-haskell/extensible-exceptions:=[profile?]

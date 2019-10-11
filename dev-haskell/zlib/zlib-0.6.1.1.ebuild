@@ -14,7 +14,7 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd ~ppc-macos ~x86-macos"
+KEYWORDS="~amd64 ~x86 ~ppc-macos ~x86-macos"
 IUSE=""
 
 RESTRICT=test # needs porting to new test tools
