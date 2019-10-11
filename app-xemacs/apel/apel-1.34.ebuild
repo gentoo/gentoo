@@ -10,6 +10,6 @@ XEMACS_PKG_CAT="standard"
 RDEPEND="app-xemacs/fsf-compat
 app-xemacs/xemacs-base
 "
-KEYWORDS="alpha amd64 ~arm64 hppa ppc ppc64 sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 ~arm64 hppa ppc ppc64 sparc x86"
 
 inherit xemacs-packages
