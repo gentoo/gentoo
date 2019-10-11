@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mgorny/eclean-kernel/archive/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="kernel_linux? ( dev-python/pymountboot[${PYTHON_USEDEP}] )"
