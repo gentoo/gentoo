@@ -28,11 +28,11 @@ RDEPEND="
 	sys-libs/zlib[abi_x86_32(-)]
 	virtual/libudev[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
-	x11-libs/gtk+:2[abi_x86_32(-)]
+	x11-libs/gtk+:3[abi_x86_32(-)]
 	x11-libs/libICE[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
-	x11-libs/wxGTK:3.0-gtk3[abi_x86_32(-),-sdl,X]
+	>=x11-libs/wxGTK-3.0.4-r301:3.0-gtk3[abi_x86_32(-),X]
 "
 # Ensure no incompatible headers from eselect-opengl are installed, bug #510730
 DEPEND="${RDEPEND}
