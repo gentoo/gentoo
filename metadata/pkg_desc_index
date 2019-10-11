@@ -6162,7 +6162,7 @@ dev-perl/HTTP-Cache-Transparent 1.400.0: Cache the result of http get-requests p
 dev-perl/HTTP-CookieJar 0.8.0: A minimalist HTTP user agent cookie jar
 dev-perl/HTTP-Cookies 6.40.0: Storage of cookies
 dev-perl/HTTP-DAV 0.480.0: A WebDAV client library for Perl5
-dev-perl/HTTP-Daemon 6.10.0-r1 6.10.0-r2: Base class for simple HTTP servers
+dev-perl/HTTP-Daemon 6.10.0-r2 6.60.0: Base class for simple HTTP servers
 dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
 dev-perl/HTTP-Entity-Parser 0.200.0: PSGI compliant HTTP Entity Parser
 dev-perl/HTTP-Headers-Fast 0.210.0 0.220.0: Faster implementation of HTTP::Headers
@@ -7042,7 +7042,7 @@ dev-perl/XML-Filter-DOMFilter-LibXML 0.40.0: SAX Filter allowing DOM processing 
 dev-perl/XML-Generator 1.40.0-r1: Perl XML::Generator - A module to help in generating XML documents
 dev-perl/XML-Grove 0.46_alpha-r2 0.460.0_rc-r1: A Perl module providing a simple API to parsed XML instances
 dev-perl/XML-Handler-YAWriter 0.230.0-r1 0.230.0-r2: A Perl module providing a simple API to parsed XML instances
-dev-perl/XML-LibXML 2.12.800-r1 2.12.900 2.13.200 2.20.100: Perl binding for libxml2
+dev-perl/XML-LibXML 2.13.200 2.20.100: Perl binding for libxml2
 dev-perl/XML-LibXML-Iterator 1.40.0-r1: Iterator class for XML::LibXML parsed documents
 dev-perl/XML-LibXML-Simple 0.970.0 0.990.0: XML::LibXML based XML::Simple clone
 dev-perl/XML-LibXSLT 1.940.0 1.960.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
