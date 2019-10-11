@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	EHG_REPO_URI="https://hg.icculus.org/icculus/physfs"
 	inherit mercurial
 else
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc64 x86 ~x86-fbsd"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc64 x86"
 	SRC_URI="https://icculus.org/physfs/downloads/${P}.tar.bz2"
 fi
 
