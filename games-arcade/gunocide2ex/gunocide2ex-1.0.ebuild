@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/g2ex/g2ex-setup.run"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~x86-fbsd"
+KEYWORDS="~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[video]
