@@ -1,4 +1,0 @@
-# Adjust the time zone if the CMOS clock keeps local time, as opposed to
-# UTC time.  See adjkerntz(8) for details.
-1,31    0-5     *       *       *       root    /sbin/adjkerntz -a
-

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
-inherit bash-completion-r1 flag-o-matic git-r3 pax-utils python-any-r1 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic git-r3 pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -89,6 +89,8 @@ src_prepare() {
 }
 
 src_configure() {
+	xdg_environment_reset
+
 	local myconf=(
 		--shared-cares --shared-http-parser --shared-libuv --shared-nghttp2
 		--shared-zlib
