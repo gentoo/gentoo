@@ -793,13 +793,6 @@ sys-freebsd/ubin-wrappers
 # Removal in 30 days.  Bug #694036.
 sys-process/vixie-cron
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-11)
-# Unmaintained.  Last bumped in 2013.  No apparent advantage over
-# the two other implementations in Gentoo (dev-util/pkgconfig,
-# dev-util/pkgconf).
-# Removal in 30 days.  Bug #694034.
-dev-util/pkgconfig-openbsd
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
