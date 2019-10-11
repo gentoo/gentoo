@@ -1,6 +1,16 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Craig Andrews <candrews@gentoo.org> (2019-10-08)
+# net-libs/quiche is not available on all arches
+# Track addition arch keywording of quiche at:
+# https://bugs.gentoo.org/694320
+net-misc/curl quiche
+
+# Craig Andrews <candrews@gentoo.org> (2019-10-08)
+# net-libs/nghttp3 net-libs/ngtcp2[ssl] are not available on all arches
+net-misc/curl nghttp3
+
 # Nick Sarnie <sarnex@gentoo.org> (2019-10-14)
 # No longer updated or supported by the Wine project
 # wine-d3d9 superceeded by nine-standalone

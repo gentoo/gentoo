@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Craig Andrews <candrews@gentoo.org> (2019-10-08)
+# net-misc/quiche is available on this arch
+net-misc/curl -quiche
+
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is stable on amd64
 sys-firmware/seabios -debug
