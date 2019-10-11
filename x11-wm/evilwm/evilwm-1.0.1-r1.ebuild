@@ -10,7 +10,7 @@ SRC_URI="http://www.6809.org.uk/evilwm/${P}.tar.gz"
 
 LICENSE="MIT 9wm"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc64-solaris"
+KEYWORDS="alpha amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc64-solaris"
 IUSE=""
 
 RDEPEND="x11-libs/libXext

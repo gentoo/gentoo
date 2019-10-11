@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=" amd64 ~mips ppc x86 ~x86-fbsd"
+KEYWORDS=" amd64 ~mips ppc x86"
 IUSE="contrib debug themes truetype xinerama"
 
 RDEPEND="

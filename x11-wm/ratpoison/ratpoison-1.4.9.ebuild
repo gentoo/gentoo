@@ -10,7 +10,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ~ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 hppa ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE="debug emacs +history sloppy +xft +xrandr"
 
 RDEPEND="
