@@ -757,7 +757,6 @@ sys-freebsd/freebsd-mk-defs
 sys-freebsd/freebsd-pam-modules
 sys-freebsd/freebsd-pf
 sys-freebsd/freebsd-rescue
-sys-freebsd/freebsd-sbin
 sys-freebsd/freebsd-share
 sys-freebsd/freebsd-sources
 
