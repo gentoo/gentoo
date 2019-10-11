@@ -4,10 +4,10 @@ DESCRIPTION=Frame configuration management for GNU Emacs modelled after GNU Scre
 EAPI=7
 HOMEPAGE=https://www.emacswiki.org/emacs/EmacsLispScreen https://github.com/knu/elscreen
 IUSE=wanderlust
-KEYWORDS=amd64 ~hppa ~ia64 ~ppc ~ppc64 sparc x86
+KEYWORDS=amd64 hppa ~ia64 ~ppc ~ppc64 sparc x86
 LICENSE=GPL-2+ GPL-3+
 RDEPEND=wanderlust? ( app-emacs/wanderlust ) >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/knu/elscreen/archive/20180321.tar.gz -> elscreen-20180321.tar.gz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=f12e52ff67c0b0046ce58920b7efa2b2
+_md5_=681e88f748c177f8e5f695e5609bd0b2
