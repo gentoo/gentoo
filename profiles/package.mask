@@ -749,7 +749,6 @@ dev-libs/actor-framework
 #
 # Removal in 30 days.  Bug #683284.
 sys-freebsd/boot0
-sys-freebsd/freebsd-bin
 sys-freebsd/freebsd-cddl
 sys-freebsd/freebsd-lib
 sys-freebsd/freebsd-libexec
