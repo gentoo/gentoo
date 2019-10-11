@@ -733,23 +733,6 @@ dev-libs/cgicc
 # Removal in 30 days.  Bug #691264.
 dev-libs/actor-framework
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-11)
-# Gentoo/FreeBSD project is effectively dead.  The core packages are
-# outdated and vulnerable.  We do not have a fully working install,
-# and I have not been able to find anyone knowing how to create one.
-# Leaf packages are failing to build more and more frequently, some
-# simply because of our outdated base system.  The profiles were marked
-# exp two months ago not to stall other developers, core packages are
-# masked for at least two months, and nowadays they have unsatisfied
-# dependencies already.
-#
-# If anyone wishes to take the effort over, please consider it urgent.
-# If not, I will slowly start removing remaining parts of FreeBSD
-# after this batch, and checking which packages can be salvaged.
-#
-# Removal in 30 days.  Bug #683284.
-sys-freebsd/boot0
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
