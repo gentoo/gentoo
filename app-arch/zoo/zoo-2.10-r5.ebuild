@@ -12,7 +12,7 @@ SRC_URI="http://http.debian.net/debian/pool/main/z/${PN}/${PN}_${PV}.orig.tar.gz
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~m68k-mint ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~m68k-mint ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 S="${WORKDIR}/${P}.orig"

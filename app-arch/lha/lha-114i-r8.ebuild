@@ -11,7 +11,7 @@ HOMEPAGE="http://lha.sourceforge.jp"
 SRC_URI="mirror://sourceforge.jp/${PN}/22231/${MY_P}.tar.gz"
 LICENSE="lha"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~m68k-mint"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~m68k-mint"
 IUSE=""
 
 S="${WORKDIR}/${MY_P}"
