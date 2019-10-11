@@ -9,7 +9,7 @@ HOMEPAGE="http://www.kde-look.org/content/show.php?content=17158"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 sparc x86"
 IUSE=""
 
 S=${WORKDIR}/FlatSVG

@@ -10,7 +10,7 @@ SRC_URI="http://tango.freedesktop.org/releases/${P}.tar.gz"
 
 LICENSE="CC-BY-SA-2.5"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="png"
 
 RDEPEND=">=x11-themes/tango-icon-theme-0.8.90"

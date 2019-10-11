@@ -30,7 +30,7 @@ SRC_URI="pixmaps? (
 	)"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Artwork"
 
-KEYWORDS="alpha amd64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~mips ppc ppc64 sparc x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="kde offensive +icons +pixmaps +grub lilo"
