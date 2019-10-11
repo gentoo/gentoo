@@ -11,7 +11,7 @@ SRC_URI="https://nethack.org/download/${PV}/nethack-${MY_PV}-src.tgz"
 
 LICENSE="nethack"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="X"
 
 RDEPEND="acct-group/gamestat

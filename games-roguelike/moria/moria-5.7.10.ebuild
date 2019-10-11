@@ -12,7 +12,7 @@ SRC_URI="https://github.com/dungeons-of-moria/umoria/archive/v${PV}.tar.gz -> ${
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~m68k ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~m68k ~x86"
 IUSE=""
 
 RDEPEND="acct-group/gamestat
