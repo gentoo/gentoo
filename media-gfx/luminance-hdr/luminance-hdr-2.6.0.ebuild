@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/qtpfsgui/${P/_/.}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="cpu_flags_x86_sse2 fits openmp test"
 
 BDEPEND="
