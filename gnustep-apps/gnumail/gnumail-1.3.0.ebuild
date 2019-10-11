@@ -11,7 +11,7 @@ S=${WORKDIR}/${MY_P}
 DESCRIPTION="A fully featured mail application for GNUstep"
 HOMEPAGE="http://www.nongnu.org/gnustep-nonfsf/gnumail/index.html"
 SRC_URI="mirror://nongnu/gnustep-nonfsf/${MY_P}.tar.gz"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 
