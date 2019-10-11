@@ -11,7 +11,7 @@ SRC_URI="http://www.zonov.org/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~amd64-fbsd"
 IUSE=""
 
 RDEPEND=""
