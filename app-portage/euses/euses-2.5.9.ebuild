@@ -9,7 +9,7 @@ SRC_URI="http://www.xs4all.nl/~rooversj/gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ppc ppc64 sparc x86"
 IUSE=""
 
 S=${WORKDIR}

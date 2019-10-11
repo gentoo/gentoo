@@ -12,7 +12,7 @@ SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~amd64 ~mips ~x86"
 IUSE=""
 
 RDEPEND="app-portage/flaggie[${PYTHON_USEDEP}]"
