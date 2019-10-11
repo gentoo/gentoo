@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A virtual to choose between different icon themes"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 RDEPEND="|| (
 	x11-themes/adwaita-icon-theme

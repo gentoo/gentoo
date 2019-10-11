@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Virtual for notification daemon dbus service"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="gnome kde"
 
 RDEPEND="

@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="Virtual for static HTML-enabled webservers"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
 
 RDEPEND="|| (
 	www-servers/apache
