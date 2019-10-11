@@ -3,6 +3,7 @@ acct-group/audio 0: System group: audio
 acct-group/bitcoin 0: A group for users with access to system-wide Bitcoin services
 acct-group/burp 0: Group for the app-backup/burp server
 acct-group/cdrom 0: System group: cdrom
+acct-group/deluge 0: System group: deluge
 acct-group/dialout 0: System group: dialout
 acct-group/disk 0: System group: disk
 acct-group/dnscrypt-proxy 0: Group for net-dns/dnscrypt-proxy
@@ -73,6 +74,7 @@ acct-group/wheel 0: System group: wheel
 acct-user/alias 0: alias user for qmail mail delivery
 acct-user/bitcoin 0: System-wide Bitcoin services user
 acct-user/burp 0: User for the app-backup/burp server
+acct-user/deluge 0: user for deluge
 acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/dovecot 0: user for dovecot daemon
 acct-user/dovenull 0: user for dovecot daemon
@@ -3712,7 +3714,6 @@ dev-haskell/keys 3.10.2 3.11: Keyed functors and containers
 dev-haskell/language-bash 0.6.1: Parsing and pretty-printing Bash shell scripts
 dev-haskell/language-c 0.4.2 0.4.7 0.7.1: Analysis and generation of C code
 dev-haskell/language-css 0.0.3: CSS 2.1 syntax
-dev-haskell/language-docker 6.0.4 7.0.0: Dockerfile parser, pretty-printer and embedded DSL
 dev-haskell/language-dot 0.1.0: A library for the analysis and creation of Graphviz DOT files
 dev-haskell/language-ecmascript 0.17.1.0-r1: JavaScript parser and pretty-printer library
 dev-haskell/language-glsl 0.2.0: GLSL abstract syntax tree, parser, and pretty-printer
@@ -4787,7 +4788,6 @@ dev-libs/freexl 1.0.1 1.0.2: Simple XLS data extraction library
 dev-libs/fribidi 1.0.5: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.3.0: Frame Streams implementation in C
 dev-libs/gdl 3.28.0: GNOME docking library
-dev-libs/gecode 3.7.3-r1 4.4.0-r2: An environment for developing constraint-based applications
 dev-libs/geoip 1.6.9-r1 1.6.10 1.6.11 1.6.12: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1 1.2: C/C++ routines for fast arithmetic in GF(2)[x]
@@ -9828,7 +9828,6 @@ dev-ruby/debugger-linecache 1.2.0: A module to read and cache file information o
 dev-ruby/deep_merge 1.2.1: A simple set of utility functions for Hash
 dev-ruby/delayer 0.0.2 1.0.0: Delay the processing
 dev-ruby/delayer-deferred 2.0.0 2.1.0 2.1.1: Ruby implementation of JSDeferred
-dev-ruby/dep_selector 1.0.5: constraint based package dependency resolver
 dev-ruby/dependor 1.0.1: Reduces duplication when doing manual dependency injection
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/descendants_tracker 0.0.4: Module that adds descendant tracking to a class
@@ -10763,7 +10762,6 @@ dev-util/gtk-doc 1.25-r1: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.25-r1: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.24.3 3.24.8 3.24.11: GTK update icon cache
 dev-util/gyp 20170904022846 99999999999999: GYP (Generate Your Projects) meta-build system
-dev-util/hadolint 1.12.0: Dockerfile linter, validate inline bash, written in Haskell
 dev-util/heaptrack 9999: A fast heap memory profiler
 dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory models
 dev-util/hfstospell 0.5.1: HFST spell checker library and command line tool
@@ -10867,7 +10865,6 @@ dev-util/perf 4.14.33 4.14.33-r1 4.20.3 5.1.15: Userland tools for Linux Perform
 dev-util/pkgcheck 0.6.8 9999: pkgcore-based QA utility
 dev-util/pkgconf 1.5.4 1.6.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
-dev-util/pkgconfig-openbsd 20130507-r2: A perl based version of pkg-config from OpenBSD
 dev-util/plan9port 20140306-r4: Port of many Plan 9 programs and libraries
 dev-util/ply 0_pre20160313: Dynamic instrumentation of the Linux kernel with BPF and kprobes
 dev-util/premake 3.7 4.3-r1 4.4_beta5 5.0.0_alpha12: A makefile generation tool
@@ -13691,7 +13688,7 @@ media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 9999: Libarchive VFS add-on for Ko
 media-plugins/kodi-vfs-rar 2.0.5 2.0.6 2.0.7 9999: RAR VFS addon for Kodi
 media-plugins/kodi-vfs-sacd 9999: SACD VFS addon for Kodi
 media-plugins/kodi-vfs-sftp 1.0.1 9999: SFTP VFS addon for Kodi
-media-plugins/kodi-visualization-fishbmc 5.1.1 9999: Fische visualizer for Kodi
+media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 9999: Fische visualizer for Kodi
 media-plugins/kodi-visualization-goom 9999: Goom visualizer for Kodi
 media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
 media-plugins/kodi-visualization-projectm 2.1.0 2.2.0 2.3.0 2.3.1 2.3.2 9999: ProjectM visualizer for Kodi
@@ -15140,7 +15137,7 @@ net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter
 net-libs/nghttp2 1.39.2 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 6.14.4 6.17.1 8.12.0 8.16.1 8.16.2 10.16.3 12.10.0 12.11.1 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 8.12.0 8.16.1 8.16.2 10.16.3 12.10.0 12.11.1 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -15676,12 +15673,12 @@ net-p2p/bitcoind 0.16.3 0.17.1 0.18.0: Original Bitcoin crypto-currency wallet f
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.3.18-r4 0.4.1_p20160925-r1: John Hoffman's fork of the original bittorrent
 net-p2p/classified-ads 0.11 0.12 0.13: Program for displaying classified advertisement items
-net-p2p/cpuminer-opt 3.9.6.2 3.9.7 3.9.8 3.9.8.1 9999: Optimized multi algo CPU miner
+net-p2p/cpuminer-opt 3.9.6.2 3.9.7 3.9.8 3.9.8.1 3.9.9 9999: Optimized multi algo CPU miner
 net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
 net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clients
 net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
-net-p2p/deluge 1.3.15-r2 1.3.15-r3 1.3.9999 9999: BitTorrent client with a client/server model
+net-p2p/deluge 1.3.15-r2 1.3.15-r3 1.3.15-r4 1.3.9999 2.0.3 9999: BitTorrent client with a client/server model
 net-p2p/ed2k_hash 0.4.0-r2: Tool for generating eDonkey2000 links
 net-p2p/eiskaltdcpp 2.2.10 9999: Qt/DC++ based client for DirectConnect and ADC protocols
 net-p2p/fms 0.3.79 0.3.80: A spam-resistant message board application for Freenet
@@ -17795,21 +17792,6 @@ sys-firmware/tt-s2-6400-firmware 0.5.0 0.5.1: Firmware for the Technotrend S2-64
 sys-firmware/vgabios 0.7a 0.7a-r1: VGA BIOS implementation
 sys-firmware/zd1201-firmware 0.14: Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices
 sys-firmware/zd1211-firmware 1.5: Firmware for ZyDAS ZD1211 USB-WLAN devices supported by the zd1211rw driver
-sys-freebsd/boot0 11.1: FreeBSD's bootloader
-sys-freebsd/freebsd-bin 11.1: FreeBSD /bin tools
-sys-freebsd/freebsd-cddl 9.1 11.1: FreeBSD CDDL (opensolaris/zfs) extra software
-sys-freebsd/freebsd-lib 9.1-r11 11.1-r1: FreeBSD's base system libraries
-sys-freebsd/freebsd-libexec 9.1-r2: FreeBSD libexec things
-sys-freebsd/freebsd-mk-defs 11.1: Makefile definitions used for building and installing libraries and system files
-sys-freebsd/freebsd-pam-modules 11.1: FreeBSD's PAM authentication modules
-sys-freebsd/freebsd-pf 11.1: FreeBSD's base system libraries
-sys-freebsd/freebsd-rescue 11.1: FreeBSD's rescue binaries
-sys-freebsd/freebsd-sbin 11.1: FreeBSD sbin utils
-sys-freebsd/freebsd-share 11.1 11.1_p1: FreeBSD shared tools/files
-sys-freebsd/freebsd-sources 11.1_p2 11.1_p3: FreeBSD kernel sources
-sys-freebsd/freebsd-ubin 9.1-r2 9.1-r3 11.1 11.1-r1: FreeBSD's base system source for /usr/bin
-sys-freebsd/freebsd-usbin 11.1 11.1_p1: FreeBSD /usr/sbin tools
-sys-freebsd/ubin-wrappers 0: /usr/bin wrapper scripts for FreeBSD script compatibility
 sys-fs/android-file-transfer-linux 3.8 3.9 9999: Android File Transfer for Linux
 sys-fs/archivemount 0.8.12: Mount archives using libarchive and FUSE
 sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
@@ -18135,7 +18117,6 @@ sys-process/top-apple 73: Apple's top from Mac OS X Lion 10.7
 sys-process/uksmd 0_pre20190726: Userspace KSM helper daemon
 sys-process/unixtop 3.8_beta1-r3: top for UNIX systems
 sys-process/usbtop 0.2 1.0: utility that shows an estimated instantaneous bandwidth on USB buses and devices
-sys-process/vixie-cron 4.1-r15: Paul Vixie's cron daemon, a fully featured crond implementation
 sys-process/wait_on_pid 0.0.2-r1: small utility to wait for an arbitrary process to exit
 sys-process/watchpid 0.1-r2: Watches a process for termination
 sys-process/xjobs 20190725: Reads commands line by line and executes them in parallel
