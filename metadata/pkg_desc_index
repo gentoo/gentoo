@@ -17559,7 +17559,7 @@ sys-block/tgt 1.0.78 1.0.79: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.7.0 0.7.6 0.8.3 0.8.5 9999: A suite of tools for thin provisioning on Linux
 sys-block/tw_cli 10.2.2.1 10.2.2.1-r1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 20 23 24: vblade exports a block device using AoE
-sys-block/viaideinfo 0.5: Query VIA IDE controllers for various information
+sys-block/viaideinfo 0.5 0.5-r1: Query VIA IDE controllers for various information
 sys-block/whdd 2.2 3.0 9999: Diagnostic and recovery tool for block devices
 sys-block/zram-init 8.1 9999: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/aboot 1.0_pre20040408-r3: Alpha Linux boot loader for SRM
