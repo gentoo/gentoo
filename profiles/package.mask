@@ -751,7 +751,6 @@ dev-libs/actor-framework
 sys-freebsd/boot0
 sys-freebsd/freebsd-cddl
 sys-freebsd/freebsd-lib
-sys-freebsd/freebsd-libexec
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
