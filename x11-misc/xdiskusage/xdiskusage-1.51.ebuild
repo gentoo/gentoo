@@ -9,7 +9,7 @@ SRC_URI="${HOMEPAGE}${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND="
 	>=x11-libs/fltk-1.3:1
