@@ -11,7 +11,7 @@ DESCRIPTION="XS implementation of parts of Class::Load"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 hppa ppc ppc64 sparc x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 hppa ppc ppc64 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
 
 RDEPEND="

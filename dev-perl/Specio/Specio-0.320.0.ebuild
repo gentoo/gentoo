@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Type constraints and coercions for Perl"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~hppa ~x86"
 IUSE="test"
 
 RDEPEND="

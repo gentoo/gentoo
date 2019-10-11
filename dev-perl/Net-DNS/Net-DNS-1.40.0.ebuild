@@ -10,7 +10,7 @@ inherit toolchain-funcs perl-module
 DESCRIPTION="Perl Net::DNS - Perl DNS Resolver Module"
 
 SLOT="0"
-KEYWORDS="~m68k ~sh ~x86-fbsd"
+KEYWORDS="~m68k ~sh"
 IUSE="ipv6 test"
 
 RDEPEND="
