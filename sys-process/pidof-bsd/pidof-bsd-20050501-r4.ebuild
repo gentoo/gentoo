@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~amd64-fbsd"
 IUSE=""
 
 DEPEND="sys-freebsd/freebsd-mk-defs"
