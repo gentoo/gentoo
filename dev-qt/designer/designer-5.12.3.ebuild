@@ -8,7 +8,7 @@ inherit desktop gnome2-utils qt5-build
 DESCRIPTION="WYSIWYG tool for designing and building graphical user interfaces with QtWidgets"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 x86 ~amd64-fbsd"
+	KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 x86"
 fi
 
 IUSE="declarative webkit"
