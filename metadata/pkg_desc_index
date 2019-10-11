@@ -17534,7 +17534,7 @@ sys-block/noflushd 2.8: A daemon to spin down your disks and force accesses to b
 sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
 sys-block/open-iscsi 2.0.873-r1 2.0.875 2.0.877 2.0.878: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.97 0.98 0.99: iSNS server and client for Linux
-sys-block/parted 3.2-r1 3.2_p20-r1 3.2_p23 3.2_p25 99999: Create, destroy, resize, check, copy partitions and file systems
+sys-block/parted 3.2-r1 3.2_p23 3.2_p25 3.3 99999: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9-r1: Console-based application to efficiently save raw partition data to image file
 sys-block/partitionmanager 4.0.0: Utility for management of disks, partitions and file systems
 sys-block/perccli 7.5.007.0529 7.5.007.0529-r2: LINUX PERCCLI Utility For All Dell HBA/PERC Controllers
