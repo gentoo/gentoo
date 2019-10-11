@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Create BitTorrent files easily"
 HOMEPAGE="http://www.createtorrent.com/"
