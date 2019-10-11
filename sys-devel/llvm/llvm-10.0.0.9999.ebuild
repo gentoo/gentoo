@@ -59,6 +59,7 @@ DEPEND="${RDEPEND}
 	gold? ( sys-libs/binutils-libs )"
 BDEPEND="
 	dev-lang/perl
+	sys-devel/gnuconfig
 	|| ( >=sys-devel/gcc-3.0 >=sys-devel/llvm-3.5
 		( >=sys-freebsd/freebsd-lib-9.1-r10 sys-libs/libcxx )
 	)
@@ -185,6 +186,9 @@ src_prepare() {
 
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
+
+	# Update config.guess to support more systems
+	cp "${BROOT}/usr/share/gnuconfig/config.guess" cmake/ || die
 
 	# User patches + QA
 	cmake-utils_src_prepare
