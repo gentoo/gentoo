@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gentoo.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc sparc x86"
 IUSE=""
 
 DEPEND=""
