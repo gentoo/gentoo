@@ -1,14 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils flag-o-matic
+EAPI=7
 
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
 HOMEPAGE="https://www.gnu.org/software/parted"
 SRC_URI="
-	mirror://gnu/${PN}/${P/_p*/}.tar.xz
-	mirror://debian/pool/main/p/${PN}/${PN}_${PV/_p/-}.debian.tar.xz
+	mirror://gnu/${PN}/${P}.tar.xz
 "
 
 LICENSE="GPL-3"
@@ -32,21 +30,8 @@ DEPEND="
 	virtual/pkgconfig
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.2-devmapper.patch
 	"${FILESDIR}"/${PN}-3.2-po4a-mandir.patch
-	"${FILESDIR}"/${PN}-3.2-sysmacros.patch
 )
-S=${WORKDIR}/${P/_p*/}
-
-src_prepare() {
-	default
-	sed -i -e '/atari\.patch/d' "${WORKDIR}"/debian/patches/series || die
-	for patch in $(< "${WORKDIR}"/debian/patches/series); do
-		eapply "${WORKDIR}/debian/patches/$patch"
-	done
-
-	eautoreconf
-}
 
 src_configure() {
 	use elibc_uclibc && append-libs -liconv
@@ -66,5 +51,5 @@ DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/{API,FAT,USER.jp} )
 src_install() {
 	default
 
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
