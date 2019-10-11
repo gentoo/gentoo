@@ -734,12 +734,6 @@ dev-libs/cgicc
 dev-libs/actor-framework
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-11)
-# Unmaintained.  Last bumped in 2016, many versions behind now.
-# Has test failures reported.  No reverse dependencies.
-# Removal in 30 days.  Bug #694056.
-dev-libs/gecode
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-11)
 # Gentoo/FreeBSD project is effectively dead.  The core packages are
 # outdated and vulnerable.  We do not have a fully working install,
 # and I have not been able to find anyone knowing how to create one.
