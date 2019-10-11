@@ -16,7 +16,7 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ~sparc x86"
 IUSE="doc examples X"
 
 DEPEND="dev-python/numpy[${PYTHON_USEDEP}]

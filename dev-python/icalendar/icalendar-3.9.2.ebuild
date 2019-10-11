@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/i/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE="doc test"
 DOCS="README.rst"
 

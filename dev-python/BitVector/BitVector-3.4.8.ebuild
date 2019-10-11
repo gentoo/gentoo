@@ -14,7 +14,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=""
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-fbsd"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 

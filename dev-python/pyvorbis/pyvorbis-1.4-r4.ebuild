@@ -12,7 +12,7 @@ SRC_URI="http://ekyo.nerim.net/software/pyogg/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND=">=dev-python/pyogg-1.1[${PYTHON_USEDEP}]

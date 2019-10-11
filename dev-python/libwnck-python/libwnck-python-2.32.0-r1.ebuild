@@ -12,7 +12,7 @@ inherit gnome-python-common-r1 eutils
 DESCRIPTION="Python bindings for the libwnck library"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 ~sh sparc x86"
 IUSE="examples"
 
 RDEPEND=">=x11-libs/libwnck-2.19.3:1

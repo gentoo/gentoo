@@ -13,7 +13,7 @@ DESCRIPTION="GtkSpell bindings for Python"
 # an ebuild, currently. Punt till we actually have to face the issue.
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="doc examples"
 
 RDEPEND="app-text/gtkspell:2"

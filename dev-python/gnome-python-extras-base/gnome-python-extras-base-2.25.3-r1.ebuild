@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	gnome-base/gnome-common"
 # eautoreconf needs gnome-base/gnome-common
 
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
