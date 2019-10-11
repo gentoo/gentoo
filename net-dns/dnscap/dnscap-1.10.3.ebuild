@@ -12,11 +12,11 @@ SLOT="0"
 LICENSE="ISC"
 IUSE=""
 
-RDEPEND="net-libs/libpcap
-	net-libs/ldns
-	sys-libs/zlib
-	dev-libs/openssl:=
-	dev-perl/YAML"
+RDEPEND="dev-libs/openssl:0=
+	dev-perl/YAML
+	net-libs/ldns:=
+	net-libs/libpcap
+	sys-libs/zlib"
 
 DEPEND="${RDEPEND}"
 
