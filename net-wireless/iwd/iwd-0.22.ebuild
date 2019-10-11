@@ -19,7 +19,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3"
 
-COMMON_DEPEND="~dev-libs/ell-9999
+COMMON_DEPEND=">=dev-libs/ell-0.24
 	sys-apps/dbus
 	client? ( sys-libs/readline:0= )"
 
