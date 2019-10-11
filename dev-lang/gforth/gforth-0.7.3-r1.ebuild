@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/gforth/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
+KEYWORDS="~amd64 ~ppc ~x86 ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
 IUSE="emacs"
 
 DEPEND="dev-libs/ffcall

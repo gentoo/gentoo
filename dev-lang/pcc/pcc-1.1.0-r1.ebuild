@@ -12,7 +12,7 @@ SRC_URI="ftp://pcc.ludd.ltu.se/pub/pcc-releases/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 DEPEND=">=dev-libs/pcc-libs-${PV}"
 RDEPEND="${DEPEND}"
