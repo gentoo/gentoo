@@ -9848,7 +9848,7 @@ dev-ruby/elasticsearch-transport 6.1.0 6.3.0 6.3.1 6.8.0: Ruby integrations for 
 dev-ruby/em-websocket 0.5.1: EventMachine based WebSocket server
 dev-ruby/equalizer 0.0.11: Module to define equality, equivalence and inspection methods
 dev-ruby/equatable 0.5.0 0.6.0 0.6.1: Allows ruby objects to implement equality comparison and inspection methods
-dev-ruby/erubi 1.7.0 1.7.1 1.8.0: a ERB template engine for ruby; a simplified fork of Erubis
+dev-ruby/erubi 1.7.0 1.7.1 1.8.0 1.9.0: a ERB template engine for ruby; a simplified fork of Erubis
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
 dev-ruby/escape_utils 1.2.1: Faster string escaping routines for your ruby apps
 dev-ruby/ethon 0.11.0 0.12.0: Very lightweight libcurl wrapper
@@ -10006,6 +10006,7 @@ dev-ruby/minitar 0.8 0.9: Provides POSIX tarchive management from Ruby programs
 dev-ruby/minitest 4.7.5-r2 5.10.3 5.11.3 5.12.0 5.12.2: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
 dev-ruby/minitest-around 0.5.0: Alternative for setup/teardown dance
 dev-ruby/minitest-bonus-assertions 3.0: Bonus assertions for minitest
+dev-ruby/minitest-global_expectations 1.0.1: Support minitest expectation methods for all objects
 dev-ruby/minitest-hooks 1.5.0: Adds around and before_all/after_all/around_all hooks for Minitest
 dev-ruby/minitest-power_assert 0.3.0: Power Assert for Minitest
 dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing them in MiniTest
@@ -10182,6 +10183,7 @@ dev-ruby/rspec-json_expectations 2.1.0 2.2.0: Set of matchers and helpers to all
 dev-ruby/rspec-mocks 2.99.2 3.7.0 3.8.1 3.8.2: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-rails 3.7.2 3.8.2: RSpec's official Ruby on Rails plugin
 dev-ruby/rspec-retry 0.6.1: Retry intermittently failing rspec examples
+dev-ruby/rspec-stubbed_env 1.0.0: Stub environment variables in a scoped context for testing
 dev-ruby/rspec-support 3.7.1 3.8.2: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.70.7 0.70.8: RSpec support and matchers
 dev-ruby/ruby-atk 3.3.2 3.3.6 3.3.7: Ruby Atk bindings
