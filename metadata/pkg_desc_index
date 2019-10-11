@@ -2866,7 +2866,7 @@ app-vim/vimclojure 2.3.6-r3: vim plugin: Clojure syntax highlighting, filetype a
 app-vim/vimcommander 0.81: vim plugin: Total Commander style file explorer
 app-vim/vimoutliner 0.3.6-r1 0.3.6-r2 0.4.0_p20180301-r1: Vim plugin for easy and fast outlining
 app-vim/vimpress 3.2.0: vim plugin: manage wordpress blogs from vim
-app-vim/vimpython 1.13-r1 1.13-r2: vim plugin: A set of menus/shortcuts to work with Python files
+app-vim/vimpython 1.13-r2: vim plugin: A set of menus/shortcuts to work with Python files
 app-vim/vimtex 20160324 20180324 99999999: vim plugin: a modern vim plugin for editing LaTeX files
 app-vim/voom 5.1 5.1-r1: vim plugin: emulates a two-pane text outliner
 app-vim/webapi 0.3: vim plugin: interface to Web APIs
@@ -11355,7 +11355,7 @@ games-emulation/gngeo 0.8-r1: A NeoGeo emulator
 games-emulation/gnuboy 1.0.3-r2: Gameboy emulator with multiple renderers
 games-emulation/hatari 2.1.0-r1: Atari ST emulator
 games-emulation/higan 106_p1-r1: A multi-system game emulator formerly known as bsnes
-games-emulation/jrommanager 1.6_p20-r1 1.7_p24-r1 1.8_p27-r1: A Mame and Retrogaming Rom Manager, Java alternative to ClrMamePro
+games-emulation/jrommanager 1.8_p27-r1: A Mame and Retrogaming Rom Manager, Java alternative to ClrMamePro
 games-emulation/libretro-bnes 0.0.1_pre20180723 9999: bNES libretro port
 games-emulation/libretro-dosbox 0.0.1_pre20180723 9999: DOSBox libretro port
 games-emulation/libretro-fceumm 0.0.1_pre20180723 9999: FCEUmm libretro port
