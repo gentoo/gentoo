@@ -10,7 +10,7 @@ SRC_URI="http://www.balabit.com/downloads/files/eventlog/0.2//eventlog_${PV}.tar
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~m68k-mint"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~m68k-mint"
 IUSE="static-libs"
 
 DEPEND=""

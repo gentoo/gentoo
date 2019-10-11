@@ -11,7 +11,7 @@ SRC_URI="http://people.freebsd.org/~harti/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=""
