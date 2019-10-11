@@ -10,7 +10,7 @@ SRC_URI="http://www.nog.net/~tony/warez/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc64 ~x86 ~x86-fbsd ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc64 ~x86 ~x64-solaris"
 IUSE=""
 
 RDEPEND=">=dev-lang/perl-5"
