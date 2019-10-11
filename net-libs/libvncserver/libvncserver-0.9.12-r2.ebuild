@@ -15,7 +15,7 @@ SRC_URI="https://github.com/LibVNC/${PN}/archive/${MY_P}.tar.gz"
 LICENSE="GPL-2+ LGPL-2.1+ BSD MIT"
 # no sub slot wanted (yet), see #578958
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+24bpp gcrypt gnutls ipv6 +jpeg libressl lzo +png sasl ssl systemd +threads +zlib"
 # https://bugs.gentoo.org/690202
 # https://bugs.gentoo.org/435326
