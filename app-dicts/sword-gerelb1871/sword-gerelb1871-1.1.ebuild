@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="German Elberfelder (1871)"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=GerElb1871"
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

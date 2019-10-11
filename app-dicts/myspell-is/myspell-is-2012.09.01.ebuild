@@ -22,5 +22,5 @@ SRC_URI="http://extensions.libreoffice.org/extension-center/hunspell-is-the-icel
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86"
 IUSE=""

@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Korean Bible"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Korean"
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

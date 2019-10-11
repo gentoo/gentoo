@@ -22,4 +22,4 @@ DESCRIPTION="Russian dictionaries for myspell/hunspell"
 LICENSE="LGPL-2.1 myspell-ru_RU-AlexanderLebedev"
 HOMEPAGE="http://lingucomponent.openoffice.org/"
 
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux"

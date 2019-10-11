@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Spanish Valera New Testament (1858)"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=SpaVNT"
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

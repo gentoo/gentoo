@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Day By Day By Grace - Bob Hoekstra"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=DBD"
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

@@ -25,7 +25,7 @@ SRC_URI="mirror://sourceforge/project/aoo-extensions/1057/8/dict-de_de-1901_olds
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86"
 
 src_prepare() {
 	default
