@@ -82,8 +82,6 @@ src_prepare() {
 	# Add missing directory that breaks the build
 	mkdir -p Encodings/testsuite/data || die
 
-	cmake-utils_src_prepare
-
 	if ! use iodbc ; then
 		sed -i -e 's|iodbc||' cmake/FindODBC.cmake || die
 	fi
