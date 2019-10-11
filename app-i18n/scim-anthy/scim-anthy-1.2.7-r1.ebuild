@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge.jp/scim-imengine/37309/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ppc sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm ppc sparc x86"
 IUSE="+gtk3 nls kasumi"
 
 DEPEND=">=app-i18n/scim-1.2[gtk3=]
