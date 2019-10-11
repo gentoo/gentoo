@@ -11,7 +11,7 @@ SRC_URI="http://gsd.di.uminho.pt/jpo/software/wakeonlan/downloads/${P}.tar.gz"
 
 LICENSE="Artistic GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ppc sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND="virtual/perl-ExtUtils-MakeMaker"
