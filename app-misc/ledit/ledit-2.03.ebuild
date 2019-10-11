@@ -17,7 +17,7 @@ RDEPEND="${DEPEND}"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86"
 RESTRICT="!ocamlopt? ( strip )"
 
 src_compile() {
