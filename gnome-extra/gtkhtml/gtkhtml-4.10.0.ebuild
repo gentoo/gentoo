@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/Archive/gtkhtml"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="4.0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 # orbit is referenced in configure, but is not used anywhere else
