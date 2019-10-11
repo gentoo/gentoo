@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2005-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 DESCRIPTION="A high quality set of animated mouse cursors"
 HOMEPAGE="https://www.gentoo.org/"
@@ -19,7 +19,8 @@ S="${WORKDIR}/cursors"
 
 src_install() {
 	dodir /usr/share/cursors/xorg-x11
-	cp -pPR "${S}"/* "${D}"/usr/share/cursors/xorg-x11/ || die
+	insinto /usr/share/cursors/xorg-x11
+	doins -r *
 }
 
 pkg_postinst() {
