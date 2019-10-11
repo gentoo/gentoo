@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2019-10-11)
+# Inactive upstream for many years.
+# Several open bugs.
+# Please migrate to sys-apps/man-db.
+sys-apps/man
+
 # Michał Górny <mgorny@gentoo.org> (2019-10-11)
 # FreeBSD-only packages.  The project has been discontinued,
 # and the core FreeBSD packages are already gone.
