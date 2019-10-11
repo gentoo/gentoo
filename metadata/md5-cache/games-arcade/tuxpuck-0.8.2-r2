@@ -3,10 +3,10 @@ DEPEND=media-libs/libsdl media-libs/libpng:0= virtual/jpeg:0 media-libs/libvorbi
 DESCRIPTION=Hover hockey
 EAPI=6
 HOMEPAGE=http://home.no.net/munsuun/tuxpuck/
-KEYWORDS=~alpha ~amd64 ~x86 ~x86-fbsd
+KEYWORDS=~alpha ~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=media-libs/libsdl media-libs/libpng:0= virtual/jpeg:0 media-libs/libvorbis
 SLOT=0
 SRC_URI=http://home.no.net/munsuun/tuxpuck/files/tuxpuck-0.8.2.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
-_md5_=8708a74f1b25419f7b55b97a0e5dbaa6
+_md5_=4a5e1ffefb5ff56a620d984848b3bf1e

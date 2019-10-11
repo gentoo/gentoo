@@ -3,10 +3,10 @@ DEPEND=>=virtual/emacs-23
 DESCRIPTION=Extension for nxml-mode with Gentoo-specific schemas
 EAPI=6
 HOMEPAGE=https://gitweb.gentoo.org/proj/nxml-gentoo-schemas.git/
-KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=HPND
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/nxml-gentoo-schemas-20170302.tar.xz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=95da40e82ccf2e7f44697bb4af120db8
+_md5_=d79e578e115bf2f9b12b796c1126a957

@@ -3,10 +3,10 @@ DEPEND=>=app-emacs/apel-10.3 >=virtual/emacs-23
 DESCRIPTION=A library to provide basic features about message representation or encoding
 EAPI=5
 HOMEPAGE=http://git.chise.org/elisp/flim/
-KEYWORDS=alpha amd64 ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=GPL-2+
 RDEPEND=>=app-emacs/apel-10.3 !app-emacs/limit >=virtual/emacs-23
 SLOT=0
 SRC_URI=http://git.chise.org/elisp/dist/flim/flim-1.14/flim-1.14.9.tar.gz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54
-_md5_=9b3835a95753d7271eb65319fd74a24f
+_md5_=84e942a9c13f603f31d35d2312dd289d

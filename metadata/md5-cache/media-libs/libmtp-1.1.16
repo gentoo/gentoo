@@ -5,10 +5,10 @@ DESCRIPTION=Implementation of Microsoft's Media Transfer Protocol (MTP)
 EAPI=7
 HOMEPAGE=http://libmtp.sourceforge.net/
 IUSE=+crypt doc examples static-libs
-KEYWORDS=amd64 ~arm arm64 ~hppa ia64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd
+KEYWORDS=amd64 ~arm arm64 ~hppa ia64 ppc ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=acct-group/plugdev virtual/libusb:1 crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )
 SLOT=0/9
 SRC_URI=mirror://sourceforge/libmtp/libmtp-1.1.16.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=1b08c0d819b464d8ff41f6a47a142f6f
+_md5_=f94b6c348903a6add0be4d8ed991c800

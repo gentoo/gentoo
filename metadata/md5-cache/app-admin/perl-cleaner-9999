@@ -8,4 +8,4 @@ PROPERTIES=live
 RDEPEND=app-shells/bash dev-lang/perl || ( ( sys-apps/portage app-portage/portage-utils ) sys-apps/pkgcore )
 SLOT=0
 _eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	prefix	c2993e4c430c1ee24f278983d6189501
-_md5_=26b70e92bc806f03cc44b8e037ffd09e
+_md5_=1eaff13c94670cbe09adf4e906ec8db1

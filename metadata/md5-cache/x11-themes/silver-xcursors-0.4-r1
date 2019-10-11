@@ -2,8 +2,8 @@ DEFINED_PHASES=install
 DESCRIPTION=A high quality set of Xfree 4.3.0 animated mouse cursors
 EAPI=6
 HOMEPAGE=http://www.kde-look.org/content/show.php?content=5533
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86 ~x86-fbsd
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86
 LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=http://www.kde-look.org/CONTENT/content-files/5533-Silver-XCursors-3D-0.4.tar.bz2
-_md5_=2e846910ff27c94b9822c2b73e075e88
+_md5_=7acaed38d624a8169386643ff9882afd

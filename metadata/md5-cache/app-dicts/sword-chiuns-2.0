@@ -3,10 +3,10 @@ DEPEND=app-arch/unzip
 DESCRIPTION=Chinese Union Version Simplified
 EAPI=5
 HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=ChiUns
-KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=freedist
 RDEPEND=app-text/sword
 SLOT=0
 SRC_URI=mirror://gentoo/ChiUns-2.0.zip
 _eclasses_=sword-module	f93b38348e60d75f292f55df132bbac4
-_md5_=57662af2040229a65a4ff81c94199609
+_md5_=71bfc5a40eb216f900976b6791e5e525

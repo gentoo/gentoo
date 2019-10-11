@@ -4,11 +4,11 @@ DESCRIPTION=C library for manipulating tar archives
 EAPI=6
 HOMEPAGE=https://repo.or.cz/w/libtar.git/
 IUSE=static-libs zlib
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 RDEPEND=zlib? ( sys-libs/zlib:= ) !zlib? ( app-arch/gzip )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/libtar-1.2.20.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=c24ff3a55fea1bf267394e8c500a2ed4
+_md5_=cd9bea22c6c95fe0b933084c7f3f6217

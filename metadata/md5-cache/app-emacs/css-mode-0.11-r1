@@ -3,10 +3,10 @@ DEPEND=>=virtual/emacs-23
 DESCRIPTION=A major mode for editing Cascading Style Sheets (CSS)
 EAPI=5
 HOMEPAGE=http://www.garshol.priv.no/download/software/css-mode/
-KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd
+KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=mirror://gentoo/css-mode-0.11.tar.bz2
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54
-_md5_=f7443342a076810d5d14663373a0bae1
+_md5_=7120a4e02f62562a51d09b8b75a83933

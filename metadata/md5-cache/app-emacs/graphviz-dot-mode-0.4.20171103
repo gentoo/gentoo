@@ -3,10 +3,10 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Emacs mode for editing and previewing Graphviz dot graphs
 EAPI=7
 HOMEPAGE=http://users.skynet.be/ppareit/projects/graphviz-dot-mode/graphviz-dot-mode.html https://github.com/ppareit/graphviz-dot-mode https://www.graphviz.org/
-KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/ppareit/graphviz-dot-mode/archive/c456a2b65c734089e6c44e87209a5a432a741b1a.tar.gz -> graphviz-dot-mode-0.4.20171103.tar.gz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=d3dfc4fbb680f55807b9e426bcdb1cde
+_md5_=3d7f8b6f0a8090125fb2f3dd563d095a

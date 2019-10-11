@@ -3,11 +3,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=An authoring and publishing environment for Emacs
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/emacs-muse/
-KEYWORDS=amd64 ppc x86 ~x86-fbsd
+KEYWORDS=amd64 ppc x86
 LICENSE=GPL-3+ FDL-1.2+ GPL-2 MIT
 RDEPEND=>=virtual/emacs-23
 RESTRICT=test
 SLOT=0
 SRC_URI=http://download.gna.org/muse-el/muse-3.20.tar.gz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=d5895126e7f2ac923f8e71a386723fff
+_md5_=49c5bf3ec17d0b02c7d42aa4dc3fb246

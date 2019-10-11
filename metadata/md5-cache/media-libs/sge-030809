@@ -4,10 +4,10 @@ DESCRIPTION=Graphics extensions library for SDL
 EAPI=6
 HOMEPAGE=http://www.etek.chalmers.se/~e8cal1/sge/
 IUSE=doc examples image truetype
-KEYWORDS=amd64 ~ia64 ppc x86 ~x86-fbsd
+KEYWORDS=amd64 ~ia64 ppc x86
 LICENSE=LGPL-2.1
 RDEPEND=media-libs/libsdl image? ( media-libs/sdl-image ) truetype? ( >=media-libs/freetype-2 )
 SLOT=0
 SRC_URI=http://www.etek.chalmers.se/~e8cal1/sge/files/sge030809.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=9746bee564e6ea7205c2245576862481
+_md5_=fb44ac07346cc3b629630cc7c40b6fd4

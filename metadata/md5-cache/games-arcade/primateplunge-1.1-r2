@@ -3,11 +3,11 @@ DEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer >=app-portage/elt-pat
 DESCRIPTION=Help poor Monkey navigate his way down through treacherous areas
 EAPI=6
 HOMEPAGE=https://www.aelius.com/primateplunge/
-KEYWORDS=~amd64 ~x86 ~x86-fbsd
+KEYWORDS=~amd64 ~x86
 LICENSE=Primate-Plunge
 RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=https://www.aelius.com/primateplunge/primateplunge-1.1.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=8d91ba1eaac150b7772e6d5d81e37138
+_md5_=040a6c3b2de5ffed2cfa1dc53efd7a90

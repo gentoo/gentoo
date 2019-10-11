@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=!<sys-apps/openrc-0.23 selinux? ( sec-policy/selinux-base-policy )
 SLOT=0
 _eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	prefix	c2993e4c430c1ee24f278983d6189501
-_md5_=115a6f8795524bad88dca31b701134f3
+_md5_=6cce652af51d03411f028cdc75656198

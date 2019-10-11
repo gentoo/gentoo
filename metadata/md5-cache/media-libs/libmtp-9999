@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=acct-group/plugdev virtual/libusb:1 crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )
 SLOT=0/9
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=079e0d4ff1db5d8b519ff0b811ceb2e4
+_md5_=8d4d348ad17234dc3faec1b1ff7e0a06

@@ -4,11 +4,11 @@ DESCRIPTION=Fast-paced, 3D, first-person shoot/dodge-'em-up, in the vain of Temp
 EAPI=6
 HOMEPAGE=http://accelerator3d.sourceforge.net/
 IUSE=python_targets_python2_7
-KEYWORDS=~amd64 ~x86 ~x86-fbsd
+KEYWORDS=~amd64 ~x86
 LICENSE=Artistic
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygame[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyode[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyopengl[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=mirror://sourceforge/accelerator3d/accelerator-0.1.1.tar.bz2
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=a2f0e8cceae4bdad184de0484976dda5
+_md5_=80e3fc00304d60d5996ba7a9b7985d64

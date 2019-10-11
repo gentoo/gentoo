@@ -3,10 +3,10 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Extension for nxml-mode with Gentoo-specific schemas
 EAPI=7
 HOMEPAGE=https://gitweb.gentoo.org/proj/nxml-gentoo-schemas.git/
-KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=HPND
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/nxml-gentoo-schemas-20180611.tar.xz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=cf324e107eb80e512fb846accccb6d18
+_md5_=3b290b5c2735bc9e777a6a91fd8839d3

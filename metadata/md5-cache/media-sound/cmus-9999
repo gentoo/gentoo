@@ -11,4 +11,4 @@ RDEPEND=sys-libs/ncurses:0=[unicode?] aac? ( media-libs/faad2 ) alsa? ( >=media-
 REQUIRED_USE=tremor? ( vorbis ) mp4? ( aac )
 SLOT=0
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=f600084015861e38f031ff12577896e1
+_md5_=e3d25555c0356c8a291f0c5d7cc8af2c

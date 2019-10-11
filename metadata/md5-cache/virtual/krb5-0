@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for Kerberos V implementation
 EAPI=5
-KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 RDEPEND=|| ( app-crypt/mit-krb5 app-crypt/heimdal )
 SLOT=0
-_md5_=ecad92fb74458c49ad82059459f6d35c
+_md5_=e54c2f4ecfa16de6403c1a131596e5fa

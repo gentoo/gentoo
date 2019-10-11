@@ -3,10 +3,10 @@ DEPEND=>=virtual/emacs-23
 DESCRIPTION=A Portable Emacs Library is a library for making portable Emacs Lisp programs
 EAPI=6
 HOMEPAGE=http://cvs.m17n.org/elisp/APEL/
-KEYWORDS=alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=GPL-2
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=ftp://ftp.jpl.org/pub/elisp/apel/apel-10.8.tar.gz https://dev.gentoo.org/~gienah/2big4tree/app-emacs/apel/apel-10.8-030_Use-new-style-backquotes.patch.gz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=8bb31feb9598e66a21e6713b8678855f
+_md5_=f0a07a64d83c9a62cdf5703f126e921d
