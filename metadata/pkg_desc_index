@@ -17164,6 +17164,7 @@ sys-apps/ckbcomp 1.164: Compile an XKB keymap for loadkeys
 sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/collectl 3.7.4 4.0.5 4.1.0 4.1.3 4.2.0 4.3.0 4.3.1: Performance monitoring tool capable of interactive reporting and logging to disk
 sys-apps/colorized-logs 2.4: Tools for logs with ANSI color
+sys-apps/consolation 0.0.7: libinput based console mouse daemon
 sys-apps/conspy 1.10: Remote control for Linux virtual consoles
 sys-apps/coreutils 8.30 8.31 8.31-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/cpint 2.5.3: Linux/390 Interface to z/VM's Control Program
@@ -17294,7 +17295,7 @@ sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/makedev 3.23.1-r1: program used for creating device files in /dev
 sys-apps/man 1.6g-r1: Standard commands to read man pages
 sys-apps/man-db 2.7.6.1-r2 2.8.6.1 2.8.7 9999: a man replacement that utilizes berkdb instead of flat files
-sys-apps/man-pages 5.01 5.02: A somewhat comprehensive collection of Linux man pages
+sys-apps/man-pages 5.01 5.02 5.03: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
 sys-apps/mawk 1.3.4_p20161120 1.3.4_p20171017-r1 1.3.4_p20190203: an (often faster than gawk) awk-interpreter
