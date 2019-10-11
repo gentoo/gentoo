@@ -13,7 +13,7 @@ SRC_URI="http://www.farsiweb.ir/font/farsifonts-${PV}.zip"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~ppc s390 sh sparc x86 ~x86-fbsd ~ppc-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ~ppc s390 sh sparc x86 ~ppc-macos ~x86-macos"
 IUSE=""
 
 FONT_SUFFIX="ttf"

@@ -10,7 +10,7 @@ SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~ppc x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE=""
 
 FONT_SUFFIX="ttf"

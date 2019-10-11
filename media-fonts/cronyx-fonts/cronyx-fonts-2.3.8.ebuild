@@ -13,7 +13,7 @@ SRC_URI="mirror://debian/pool/main/x/xfonts-cronyx/${MY_P}.orig.tar.gz
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_P//_/-}.orig"

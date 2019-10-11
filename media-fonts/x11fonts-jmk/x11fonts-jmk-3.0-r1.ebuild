@@ -12,7 +12,7 @@ SRC_URI="http://www.pobox.com/~jmknoble/fonts/${MY_P}.tar.gz"
 HOMEPAGE="http://www.jmknoble.net/fonts/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ia64 ppc s390 sh sparc x86"
 IUSE=""
 
 DEPEND="x11-misc/imake

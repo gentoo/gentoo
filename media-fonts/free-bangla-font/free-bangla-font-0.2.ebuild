@@ -20,7 +20,7 @@ SRC_URI="${SRC_BASE}/${AKAASH_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc s390 sh x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ia64 ppc s390 sh x86"
 IUSE=""
 
 FONT_SUFFIX="ttf TTF"

@@ -18,7 +18,7 @@ SRC_URI="https://github.com/adobe-fonts/source-sans-pro/archive/${SANSV}.tar.gz 
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd ~x64-macos"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 ~sh sparc x86 ~x64-macos"
 IUSE="cjk"
 
 RDEPEND="media-libs/fontconfig
