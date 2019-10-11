@@ -18,7 +18,6 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/cursors"
 
 src_install() {
-	dodir /usr/share/cursors/xorg-x11
 	insinto /usr/share/cursors/xorg-x11
 	doins -r *
 }
