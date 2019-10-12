@@ -32,7 +32,7 @@ IUSE="caps gnutls ipv6 pam ldap libressl samba sasl kerberos nis radius ssl snmp
 BDEPEND="dev-lang/perl"
 
 COMMON_DEPEND="caps? ( >=sys-libs/libcap-2.16 )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	ldap? ( net-nds/openldap )
 	kerberos? ( virtual/krb5 )
 	qos? ( net-libs/libnetfilter_conntrack )
@@ -45,7 +45,7 @@ COMMON_DEPEND="caps? ( >=sys-libs/libcap-2.16 )
 	ecap? ( net-libs/libecap:1 )
 	esi? ( dev-libs/expat dev-libs/libxml2 )
 	gnutls? ( >=net-libs/gnutls-3.1.5 )
-	!x86-fbsd? ( logrotate? ( app-admin/logrotate ) )
+	logrotate? ( app-admin/logrotate )
 	>=sys-libs/db-4:*
 	dev-libs/libltdl:0"
 DEPEND="${COMMON_DEPEND}

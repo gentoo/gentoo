@@ -16,7 +16,7 @@ IUSE="pam utils"
 
 RDEPEND="
 	pam? (
-		virtual/pam
+		sys-libs/pam
 		!<sys-auth/pam_passwdqc-1.3.0
 	)"
 DEPEND="${RDEPEND}"

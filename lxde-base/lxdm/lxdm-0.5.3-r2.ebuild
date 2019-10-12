@@ -21,7 +21,7 @@ DEPEND="consolekit? ( sys-auth/consolekit )
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( x11-libs/gtk+:2 )
 	nls? ( sys-devel/gettext )
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
 # We only use the pam modules and not actually link to the code
 RDEPEND="${DEPEND}
 	elogind? ( sys-auth/elogind[pam] )

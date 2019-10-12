@@ -1,9 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit multilib
 
 DESCRIPTION="Library for authenticating against PAM with a Yubikey"
 HOMEPAGE="https://github.com/Yubico/yubico-pam"
@@ -15,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="ldap test"
 
 RDEPEND="
-	virtual/pam
+	sys-libs/pam
 	sys-auth/libyubikey
 	>=sys-auth/ykclient-2.15
 	>=sys-auth/ykpers-1.6
