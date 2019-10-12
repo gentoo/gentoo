@@ -7834,39 +7834,37 @@ sys-apps/firejail-lts:whitelist - Enable file and directory whitelisting
 sys-apps/flashrom:atahpt - Highpoint (HPT) ATA/RAID controller support
 sys-apps/flashrom:atapromise - Support for Promise PDC2026x (FastTrak/Ultra)
 sys-apps/flashrom:atavia - Support for VIA VT6421A SATA controllers
-sys-apps/flashrom:bitbang_spi - Bitbanging SPI infrastructure
-sys-apps/flashrom:buspirate_spi - Enable Bus Pirate SPI programmer
-sys-apps/flashrom:ch341a_spi - Enable WCH CH341A SPI programmer
+sys-apps/flashrom:buspirate-spi - Enable Bus Pirate SPI programmer
+sys-apps/flashrom:ch341a-spi - Enable WCH CH341A SPI programmer
 sys-apps/flashrom:dediprog - Dediprog SF100 support
-sys-apps/flashrom:developerbox_spi - Enable Devloperbox SPI recovery support
-sys-apps/flashrom:digilent_spi - Enable support for Digilent iCEblink40 development board
+sys-apps/flashrom:developerbox-spi - Enable Devloperbox SPI recovery support
+sys-apps/flashrom:digilent-spi - Enable support for Digilent iCEblink40 development board
 sys-apps/flashrom:drkaiser - Enable Dr. Kaiser programmer
 sys-apps/flashrom:dummy - Enable dummy tracing
-sys-apps/flashrom:ft2232_spi - Enable ftdi programmer, flashing through FTDI/SPI USB interface
+sys-apps/flashrom:ft2232-spi - Enable ftdi programmer, flashing through FTDI/SPI USB interface
 sys-apps/flashrom:gfxnvidia - Enable NVIDIA programmer
 sys-apps/flashrom:internal - Enable internal/onboard support
-sys-apps/flashrom:internal_dmi - Enable internal DMI decoding rather than use sys-apps/dmidecode
+sys-apps/flashrom:internal-dmi - Enable internal DMI decoding rather than use sys-apps/dmidecode
 sys-apps/flashrom:it8212 - Support for ITE IT8212F ATA/RAID controllers
-sys-apps/flashrom:jlink_spi - Support for SEGGER J-Link and compatible devices
-sys-apps/flashrom:linux_mtd - Enable support for Linux mtd SPI flash devices
-sys-apps/flashrom:linux_spi - Enable support for Linux userspace spidev interface
-sys-apps/flashrom:mstarddc_spi - Support for SPI flash ROMs accessible through DDC in MSTAR-equipped displays
+sys-apps/flashrom:jlink-spi - Support for SEGGER J-Link and compatible devices
+sys-apps/flashrom:linux-mtd - Enable support for Linux mtd SPI flash devices
+sys-apps/flashrom:linux-spi - Enable support for Linux userspace spidev interface
+sys-apps/flashrom:mstarddc-spi - Support for SPI flash ROMs accessible through DDC in MSTAR-equipped displays
 sys-apps/flashrom:nic3com - Enable 3Com NIC programmer
 sys-apps/flashrom:nicintel - Support for Intel NICs
-sys-apps/flashrom:nicintel_eeprom - Support for EEPROMs on Intel Gigabit network cards
-sys-apps/flashrom:nicintel_spi - Support for SPI on Intel NICs
+sys-apps/flashrom:nicintel-eeprom - Support for EEPROMs on Intel Gigabit network cards
+sys-apps/flashrom:nicintel-spi - Support for SPI on Intel NICs
 sys-apps/flashrom:nicnatsemi - Support for National Semiconductor NICs
 sys-apps/flashrom:nicrealtek - Support for Realtek NICs
-sys-apps/flashrom:ogp_spi - Enable support for OGP (Open Graphics Project) SPI flashing
-sys-apps/flashrom:pickit2_spi - SUpport for SPI flash ROMs accessible via Microchip PICkit2
-sys-apps/flashrom:pony_spi - Enable support for SI-Prog like hardware by Lancos
-sys-apps/flashrom:rayer_spi - RayeR SPIPGM hardware support
+sys-apps/flashrom:ogp-spi - Enable support for OGP (Open Graphics Project) SPI flashing
+sys-apps/flashrom:pickit2-spi - SUpport for SPI flash ROMs accessible via Microchip PICkit2
+sys-apps/flashrom:pony-spi - Enable support for SI-Prog like hardware by Lancos
+sys-apps/flashrom:rayer-spi - RayeR SPIPGM hardware support
 sys-apps/flashrom:satamv - Enable programmer for Marvell SATA controllers
 sys-apps/flashrom:satasii - Enable programmer for SiI SATA controllers
 sys-apps/flashrom:serprog - Enable Serial Flasher programmer
 sys-apps/flashrom:tools - Install additional tools
-sys-apps/flashrom:usbblaster - Enable support for Altera USB-Blaster dongles
-sys-apps/flashrom:usbblaster_spi - Enable support for Altera USB-Blaster dongles
+sys-apps/flashrom:usbblaster-spi - Enable support for Altera USB-Blaster dongles
 sys-apps/flashrom:wiki - Enable wiki informations, like supported devices etc.
 sys-apps/fwupd:agent - Enable update notification agent
 sys-apps/fwupd:colorhug - Enable ColorHug support throughx11-misc/colord package
