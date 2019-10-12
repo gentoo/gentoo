@@ -19,7 +19,7 @@ COMMON_DEPEND="
 	sys-libs/libcap
 	virtual/libudev:=
 	acl? ( sys-apps/acl )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	selinux? ( sys-libs/libselinux )
 "
 DEPEND="${COMMON_DEPEND}
