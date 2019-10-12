@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="pam"
 
-DEPEND="pam? ( virtual/pam )
+DEPEND="pam? ( sys-libs/pam )
 	!<net-ftp/proftpd-1.2.10-r6
 	!<net-ftp/pure-ftpd-1.0.20-r2
 	!<net-ftp/vsftpd-2.0.3-r1"
