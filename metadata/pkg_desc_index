@@ -10410,11 +10410,11 @@ dev-tcltk/tdom 0.8.3-r4 0.9.1: A XML/DOM/XPath/XSLT Implementation for Tcl
 dev-tcltk/thread 2.7.1 2.7.3 2.8.2: Tcl Thread extension
 dev-tcltk/tix 8.4.3-r1: A widget library for Tcl/Tk
 dev-tcltk/tkXwin 1.0-r4: Tcl/Tk library to detect idle periods of an X session
-dev-tcltk/tkcon 2.5: Tk GUI console
+dev-tcltk/tkcon 2.5 2.5-r1: Tk GUI console
 dev-tcltk/tkdnd 2.8: Extension that adds native drag & drop capabilities to the tk toolkit
 dev-tcltk/tkimg 1.4-r9 1.4.7: Adds a lot of image formats to Tcl/Tk
 dev-tcltk/tklib 0.6-r1 0.6-r2: Collection of utility modules for Tk, and a companion to Tcllib
-dev-tcltk/tkpiechart 6.5-r1: create and update 2D or 3D pie charts in a Tcl/Tk application
+dev-tcltk/tkpiechart 6.5-r1 6.5-r2: create and update 2D or 3D pie charts in a Tcl/Tk application
 dev-tcltk/tkpng 0.9: Implements support for loading and using PNG images with Tcl/Tk
 dev-tcltk/tktable 2.10: full-featured 2D table widget
 dev-tcltk/tktray 1.3.9: System Tray Icon Support for Tk on X11
@@ -14943,7 +14943,7 @@ net-irc/redirbot 0.0.5-r1: IRCBot, telling people they should contact you on dif
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
-net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
+net-irc/telepathy-idle 0.2.0-r1: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.2.4.1: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.5-r1 2.6 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
@@ -15139,7 +15139,7 @@ net-libs/srt 1.3.2 9999: Open-source implementation of the Secure Real-time Tran
 net-libs/stem 1.5.4 1.6.0 1.7.0 1.7.1: Stem is a Python controller library for Tor
 net-libs/telepathy-accounts-signon 2.0: Mission control plugin for Telepathy to provide IM accounts and authentication
 net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream to handle Call channels
-net-libs/telepathy-glib 0.24.1: GLib bindings for the Telepathy D-Bus protocol
+net-libs/telepathy-glib 0.24.1 0.24.1-r1: GLib bindings for the Telepathy D-Bus protocol
 net-libs/telepathy-logger-qt 17.08.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.7-r1: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0.2.8 0.2.9 0.2.9-r1 9999: Encrypted P2P, messaging, and audio/video calling platform
