@@ -12,12 +12,11 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-linux ~x86-linux"
-IUSE="berkdb +gdbm +manpager nls selinux static-libs zlib"
+IUSE="+berkdb gdbm +manpager nls selinux static-libs zlib"
 
 CDEPEND=">=dev-libs/libpipeline-1.4.0
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
-	!berkdb? ( !gdbm? ( sys-libs/gdbm:= ) )
 	sys-apps/groff
 	zlib? ( sys-libs/zlib )
 	!sys-apps/man"
@@ -32,15 +31,12 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-mandb )
 "
 PDEPEND="manpager? ( app-text/manpager )"
+REQUIRED_USE="^^ ( berkdb gdbm )"
 
 pkg_setup() {
 	# Create user now as Makefile in src_install does setuid/chown
 	enewgroup man 15
 	enewuser man 13 -1 /usr/share/man man
-
-	if (use gdbm && use berkdb) || (use !gdbm && use !berkdb) ; then #496150
-		ewarn "Defaulting to USE=gdbm due to ambiguous berkdb/gdbm USE flag settings"
-	fi
 }
 
 src_configure() {

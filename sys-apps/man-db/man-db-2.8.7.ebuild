@@ -17,7 +17,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="berkdb +gdbm +manpager nls +seccomp selinux static-libs zlib"
+IUSE="+berkdb gdbm +manpager nls +seccomp selinux static-libs zlib"
 
 CDEPEND="
 	!sys-apps/man
@@ -25,7 +25,6 @@ CDEPEND="
 	sys-apps/groff
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
-	!berkdb? ( !gdbm? ( sys-libs/gdbm:= ) )
 	seccomp? ( sys-libs/libseccomp )
 	zlib? ( sys-libs/zlib )
 "
@@ -45,12 +44,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-mandb )
 "
 PDEPEND="manpager? ( app-text/manpager )"
-
-pkg_setup() {
-	if (use gdbm && use berkdb) || (use !gdbm && use !berkdb) ; then #496150
-		ewarn "Defaulting to USE=gdbm due to ambiguous berkdb/gdbm USE flag settings"
-	fi
-}
+REQUIRED_USE="^^ ( berkdb gdbm )"
 
 src_configure() {
 	export ac_cv_lib_z_gzopen=$(usex zlib)
