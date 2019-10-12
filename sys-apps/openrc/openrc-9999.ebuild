@@ -25,7 +25,7 @@ COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-proc
 	ncurses? ( sys-libs/ncurses:0= )
 	pam? (
 		sys-auth/pambase
-		virtual/pam
+		sys-libs/pam
 	)
 	audit? ( sys-process/audit )
 	kernel_linux? (
