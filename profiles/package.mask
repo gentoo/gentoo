@@ -642,12 +642,6 @@ dev-libs/ltxml
 # Removal in 30 days.  Bug #694212.
 dev-libs/log4shib
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-12)
-# Unmaintained.  Old GNOME library, last release in 2000.  No reverse
-# dependencies.
-# Removal in 30 days.  Bug #694208.
-dev-libs/libunicode
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
