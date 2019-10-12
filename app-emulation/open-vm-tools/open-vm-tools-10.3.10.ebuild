@@ -25,7 +25,7 @@ RDEPEND="
 	net-libs/libtirpc
 	deploypkg? ( dev-libs/libmspack )
 	fuse? ( sys-fs/fuse:0 )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	ssl? ( dev-libs/openssl:0 )
 	vgauth? (
 		dev-libs/libxml2
