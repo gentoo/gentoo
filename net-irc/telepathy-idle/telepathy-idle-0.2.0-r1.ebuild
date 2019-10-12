@@ -10,7 +10,7 @@ DESCRIPTION="Full-featured IRC connection manager for Telepathy"
 HOMEPAGE="https://cgit.freedesktop.org/telepathy/telepathy-idle"
 SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
 IUSE="test"
