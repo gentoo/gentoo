@@ -68,6 +68,9 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+# vulkan-loader required for vulkan backend
+RDEPEND="${RDEPEND} media-libs/vulkan-loader"
+
 src_prepare() {
 	cmake-utils_src_prepare
 
