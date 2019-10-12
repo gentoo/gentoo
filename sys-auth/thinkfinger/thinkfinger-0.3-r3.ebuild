@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug pam static-libs"
 
 RDEPEND="virtual/libusb:0
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
 DEPEND="${RDEPEND}
 	sys-devel/libtool
 	virtual/pkgconfig"
