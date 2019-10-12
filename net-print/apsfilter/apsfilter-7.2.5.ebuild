@@ -5,7 +5,7 @@ EAPI=0
 
 DESCRIPTION="Apsfilter Prints So Fine, It Leads To Extraordinary Results"
 HOMEPAGE="http://www.apsfilter.org"
-KEYWORDS="alpha ppc sparc x86"
+KEYWORDS="~alpha ppc sparc x86"
 IUSE="cups"
 SLOT="0"
 LICENSE="GPL-2"
