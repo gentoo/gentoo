@@ -31,7 +31,7 @@ RDEPEND="
 		virtual/glu
 		truetype? ( >=media-libs/ftgl-2.1.3_rc5 )
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	truetype? ( media-libs/freetype:2 )
 	x11-libs/libX11
 	x11-libs/libXext
