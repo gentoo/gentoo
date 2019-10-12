@@ -311,7 +311,7 @@ CDEPEND="
 	)
 	nginx_modules_http_xslt? ( dev-libs/libxml2:= dev-libs/libxslt )
 	nginx_modules_http_lua? ( dev-lang/luajit:2= )
-	nginx_modules_http_auth_pam? ( virtual/pam )
+	nginx_modules_http_auth_pam? ( sys-libs/pam )
 	nginx_modules_http_metrics? ( dev-libs/yajl:= )
 	nginx_modules_http_dav_ext? ( dev-libs/libxml2 )
 	nginx_modules_http_security? (
