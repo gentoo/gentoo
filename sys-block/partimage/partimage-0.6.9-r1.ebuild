@@ -18,7 +18,7 @@ LIBS_DEPEND="app-arch/bzip2
 	>=sys-libs/slang-2
 	sys-libs/zlib:=
 	ssl? ( dev-libs/openssl:0= )"
-PAM_DEPEND="!static? ( pam? ( virtual/pam ) )"
+PAM_DEPEND="!static? ( pam? ( sys-libs/pam ) )"
 RDEPEND="${PAM_DEPEND}
 	!static? ( ${LIBS_DEPEND} )"
 DEPEND="${PAM_DEPEND}
