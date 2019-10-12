@@ -101,9 +101,9 @@ pkg_pretend() {
 	fi
 
 	# Make sure people who are using tcp wrappers are notified of its removal. #531156
-	if grep -qs '^ *sshd *:' "${EROOT%/}"/etc/hosts.{allow,deny} ; then
+	if grep -qs '^ *sshd *:' "${EROOT}"/etc/hosts.{allow,deny} ; then
 		ewarn "Sorry, but openssh no longer supports tcp-wrappers, and it seems like"
-		ewarn "you're trying to use it.  Update your ${EROOT}etc/hosts.{allow,deny} please."
+		ewarn "you're trying to use it.  Update your ${EROOT}/etc/hosts.{allow,deny} please."
 	fi
 }
 
