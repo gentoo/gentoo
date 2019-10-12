@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,7 +28,7 @@ DEPEND=">=dev-libs/libpcre-3.4
 	ldap? ( net-nds/openldap )
 	ldap-bind? ( net-nds/openldap[sasl] )
 	mysql? ( virtual/mysql )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	postgres? ( dev-db/postgresql:* )
 	sasl? (  >=dev-libs/cyrus-sasl-2 )
 	sqlite? ( dev-db/sqlite:3 )
