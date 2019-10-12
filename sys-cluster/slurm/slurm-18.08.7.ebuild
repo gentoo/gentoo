@@ -42,7 +42,7 @@ CDEPEND="
 		slurmdbd? ( || ( dev-db/mariadb dev-db/mysql ) )
 		)
 	munge? ( sys-auth/munge )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	ssl? ( dev-libs/openssl:0= )
 	lua? ( dev-lang/lua:0= )
 	!lua? ( !dev-lang/lua )
