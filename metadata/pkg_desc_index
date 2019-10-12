@@ -15940,7 +15940,7 @@ perl-core/Text-Tabs+Wrap 2013.52.300-r1: Expand/unexpand tabs per unix expand an
 perl-core/Thread-Semaphore 2.120.0-r1: Thread-safe semaphores
 perl-core/Time-HiRes 1.972.600-r1: Perl Time::HiRes. High resolution alarm, sleep, gettimeofday, interval timers
 perl-core/Time-Local 1.230.0-r1: Implements timelocal() and timegm()
-perl-core/Unicode-Collate 1.140.0 1.190.0 1.210.0 1.250.0: Unicode Collate Algorithm
+perl-core/Unicode-Collate 1.210.0 1.250.0: Unicode Collate Algorithm
 perl-core/Unicode-Normalize 1.250.0: Unicode Normalization Forms
 perl-core/libnet 1.270.0: A URI Perl Module
 perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at compile time
@@ -18444,7 +18444,7 @@ www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web b
 www-client/midori 7.0 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2: a free, open source web browser
-www-client/opera 63.0.3368.94 63.0.3368.107 64.0.3417.47: A fast and secure web browser
+www-client/opera 63.0.3368.94 63.0.3368.107 64.0.3417.47 64.0.3417.54: A fast and secure web browser
 www-client/opera-beta 64.0.3417.32 64.0.3417.41: A fast and secure web browser
 www-client/opera-developer 65.0.3459.0 65.0.3466.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
