@@ -22,7 +22,7 @@ RDEPEND="
 	app-misc/ca-certificates
 	>=dev-libs/libgcrypt-1.2.2:0=
 	caps? ( sys-libs/libcap-ng )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	selinux? ( sec-policy/selinux-gnome )
 	>=app-crypt/gnupg-2.0.28:=
 	ssh-agent? ( net-misc/openssh )
