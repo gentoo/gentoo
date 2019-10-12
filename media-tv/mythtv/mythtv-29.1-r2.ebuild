@@ -131,7 +131,7 @@ DEPEND="${COMMON}
 	x11-base/xorg-proto
 "
 
-S="${WORKDIR}/${PF}/mythtv"
+S="${WORKDIR}/${P}-r1/mythtv"
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
