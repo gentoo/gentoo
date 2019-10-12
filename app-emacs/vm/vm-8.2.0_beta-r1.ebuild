@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/vm/${PV%.*}.x/${MY_PV}/+download/${MY_P}.tgz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 x86"
 IUSE="bbdb ssl"
 
 DEPEND="bbdb? ( app-emacs/bbdb )"
