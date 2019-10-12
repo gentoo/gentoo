@@ -4773,7 +4773,7 @@ dev-libs/double-conversion 3.1.4-r1: Binary-decimal and decimal-binary conversio
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.16.0: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
-dev-libs/efl 1.22.2 1.22.5 1.22.6 1.23.0: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.22.2 1.22.5 1.22.6 1.23.0 1.23.1: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.176-r1 0.177: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.9 0.20 0.21 0.22 0.23 0.24 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
@@ -10422,7 +10422,7 @@ dev-tcltk/tktreectrl 2.4.1: A flexible listbox widget for Tk
 dev-tcltk/tkzinc 3.3.6: A Tk widget library
 dev-tcltk/tls 1.6-r3 1.6.7 1.7.11 1.7.16: TLS OpenSSL extension to Tcl
 dev-tcltk/togl 2.0-r2: A Tk widget for OpenGL rendering
-dev-tcltk/vtcl 1.6.0-r1: Visual Tcl is a high-quality application development environment
+dev-tcltk/vtcl 1.6.0-r1 1.6.0-r2: Visual Tcl is a high-quality application development environment
 dev-tex/aastex 5.2: LaTeX package for American Astronomical Society journals. (AASTeX)
 dev-tex/abntex 0.9_beta2-r1: LaTeX macros for writing documents following the ABNT norms
 dev-tex/bera 20040930: LaTeX package for the Bera Type1 font family
