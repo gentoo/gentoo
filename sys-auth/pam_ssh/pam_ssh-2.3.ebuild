@@ -15,7 +15,7 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc 
 IUSE=""
 
 # Only supports OpenSSH via `ssh-agent` #282993
-DEPEND="virtual/pam
+DEPEND="sys-libs/pam
 	dev-libs/openssl:0="
 RDEPEND="${DEPEND}
 	net-misc/openssh"
