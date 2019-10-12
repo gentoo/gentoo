@@ -72,12 +72,6 @@ COMMON_DEPEND="
 		virtual/opengl
 	)
 "
-# Note: sqlite driver of dev-qt/qtsql is bundled, so no sqlite use is required; check if this can be overcome someway;
-# Libprojectm-1.2 seems to work fine, so no reason to use bundled version; check clementine's patches:
-# https://github.com/clementine-player/Clementine/tree/master/3rdparty/libprojectm/patches
-# Still possibly essential but not applied yet patches are:
-# 06-fix-numeric-locale.patch
-# 08-stdlib.h-for-rand.patch
 RDEPEND="${COMMON_DEPEND}
 	media-plugins/gst-plugins-meta:1.0
 	media-plugins/gst-plugins-soup:1.0
