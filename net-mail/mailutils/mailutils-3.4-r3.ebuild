@@ -35,7 +35,7 @@ RDEPEND="!mail-client/nmh
 	ldap? ( net-nds/openldap )
 	mysql? ( virtual/mysql )
 	nls? ( sys-devel/gettext )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	postgres? ( dev-db/postgresql:= )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( virtual/gsasl )
