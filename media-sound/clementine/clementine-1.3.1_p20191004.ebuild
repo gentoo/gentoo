@@ -11,6 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 	inherit git-r3
 else
+	COMMIT=664c5a31f9cf519af5a4c3adcb30dbbc73d037d6
 	SRC_URI="https://github.com/${PN}-player/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN^}-${COMMIT}"
@@ -42,7 +43,7 @@ BDEPEND="
 COMMON_DEPEND="
 	app-crypt/qca:2[qt5(+)]
 	dev-db/sqlite:=
-	dev-libs/crypto++:=
+	dev-libs/crypto++:=[asm]
 	dev-libs/glib:2
 	dev-libs/libxml2
 	dev-libs/protobuf:=
@@ -92,6 +93,8 @@ DEPEND="${COMMON_DEPEND}
 	seafile? ( dev-cpp/sparsehash )
 	skydrive? ( dev-cpp/sparsehash )
 "
+
+RESTRICT="test"
 
 DOCS=( Changelog README.md )
 
