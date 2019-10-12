@@ -29,7 +29,7 @@ DEPEND="caps? ( sys-libs/libcap )
 		dev-db/mariadb-connector-c
 		dev-db/mysql-connector-c
 	) )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	postgres? ( dev-db/postgresql:= )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] )
