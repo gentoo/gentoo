@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~sparc ~x86"
 
 # peculiar testing depending on https://github.com/BurntSushi/toml-test. Not
 # particularly worth the trouble.
