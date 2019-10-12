@@ -179,7 +179,7 @@ games-board/stockfish armv7
 
 # Mike Frysinger <vapier@gentoo.org> (2014-08-04)
 # Mask flashrom drivers that only work on x86 due to in/out asm insns #454024
-sys-apps/flashrom atahpt nic3com nicnatsemi nicrealtek rayer_spi satamv
+sys-apps/flashrom atahpt nic3com nicnatsemi nicrealtek rayer-spi satamv
 
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2014-04-24)
 # It's only supported on amd64

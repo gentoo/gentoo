@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,14 +13,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	dev-libs/libite
-	dev-libs/libuev"
+	>=dev-libs/libite-1.5
+	>=dev-libs/libuev-2.2"
 
 RDEPEND="
 	${DEPEND}
 	!net-misc/uftp
 	!net-ftp/atftp"
-
-src_install() {
-	emake DESTDIR="${D}" install doc_DATA=README.md
-}
