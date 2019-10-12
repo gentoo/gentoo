@@ -17,7 +17,7 @@ RDEPEND="
 	acct-group/mail
 	acct-user/mail
 	acct-user/postmaster
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
 
 S=${WORKDIR}
 
