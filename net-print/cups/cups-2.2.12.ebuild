@@ -44,7 +44,7 @@ CDEPEND="
 	java? ( >=virtual/jre-1.6:* )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	!lprng-compat? ( !net-print/lprng )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	python? ( ${PYTHON_DEPS} )
 	ssl? ( >=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd )
