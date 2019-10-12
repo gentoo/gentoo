@@ -53,7 +53,7 @@ DEPEND="
 		app-text/docbook-xml-dtd:4.3
 	)
 	fuse? ( sys-fs/fuse:0= )
-	kauth? ( virtual/pam )
+	kauth? ( sys-libs/pam )
 	kerberos? ( virtual/krb5 )
 	ncurses? ( sys-libs/ncurses:0= )"
 RDEPEND="${DEPEND}"
