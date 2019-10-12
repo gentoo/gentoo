@@ -26,6 +26,7 @@ SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd
 
 LICENSE="google-chrome"
 SLOT="0"
+IUSE="selinux"
 RESTRICT="bindist mirror strip"
 
 DEPEND=""
@@ -42,6 +43,7 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype:2
 	net-print/cups
+	selinux? ( sec-policy/selinux-chromium )
 	sys-apps/dbus
 	sys-libs/libcap
 	x11-libs/cairo
