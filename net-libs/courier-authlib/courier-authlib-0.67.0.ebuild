@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ DEPEND="net-mail/mailbase
 		libressl? ( dev-libs/libressl:= )
 		ldap? ( >=net-nds/openldap-1.2.11 )
 		mysql? ( virtual/mysql )
-		pam? ( virtual/pam )
+		pam? ( sys-libs/pam )
 		postgres? ( dev-db/postgresql:= )
 		sqlite? ( dev-db/sqlite:3 )"
 

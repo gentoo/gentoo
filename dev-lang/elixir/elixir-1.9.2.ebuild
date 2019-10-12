@@ -19,7 +19,7 @@ RDEPEND="${DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.9.0-disable-network-tests.patch
+	"${FILESDIR}"/${PN}-1.9.1-disable-network-tests.patch
 )
 
 src_compile() {
