@@ -12,7 +12,7 @@ SRC_URI="https://marlam.de/msmtp/releases/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="daemon doc gnome-keyring idn +mta nls sasl ssl vim-syntax"
+IUSE="daemon doc gnome-keyring idn +mta nls sasl split-usr ssl vim-syntax"
 
 # fcaps.eclass unconditionally defines "filecaps" USE flag which we need for
 # USE="daemon" in order to set the caps we need.
@@ -101,8 +101,10 @@ src_install() {
 	fi
 
 	if use mta ; then
-		dodir /usr/sbin
-		dosym ../bin/msmtp /usr/sbin/sendmail
+		if use split-usr ; then
+			dodir /usr/sbin
+			dosym ../bin/msmtp /usr/sbin/sendmail
+		fi
 		dosym msmtp /usr/bin/sendmail
 		dosym ../bin/msmtp /usr/$(get_libdir)/sendmail
 	fi
