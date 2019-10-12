@@ -26,7 +26,7 @@ RDEPEND="
 	x11-libs/libXmu
 	x11-libs/libXt
 	consolekit? ( sys-auth/consolekit )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	systemd? ( >=sys-apps/systemd-209 )
 	truetype? (
 		x11-libs/libXrender
