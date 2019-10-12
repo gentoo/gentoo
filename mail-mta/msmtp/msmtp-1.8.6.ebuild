@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2004-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -101,8 +101,6 @@ src_install() {
 	fi
 
 	if use mta ; then
-		dodir /usr/sbin
-		dosym ../bin/msmtp /usr/sbin/sendmail
 		dosym msmtp /usr/bin/sendmail
 		dosym ../bin/msmtp /usr/$(get_libdir)/sendmail
 	fi
