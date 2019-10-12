@@ -3,6 +3,7 @@ acct-group/audio 0: System group: audio
 acct-group/bitcoin 0: A group for users with access to system-wide Bitcoin services
 acct-group/burp 0: Group for the app-backup/burp server
 acct-group/cdrom 0: System group: cdrom
+acct-group/ddclient 0: A group for the dynamic DNS client
 acct-group/deluge 0: System group: deluge
 acct-group/dialout 0: System group: dialout
 acct-group/disk 0: System group: disk
@@ -11,6 +12,7 @@ acct-group/dovecot 0: System group: dovecot
 acct-group/dovenull 0: System group: dovenull
 acct-group/elasticsearch 0: Elasticsearch program group
 acct-group/epmd 0: Group for Erlang Portmapper Daemon
+acct-group/fhem 0: A group for the FHEM perl server for house automation
 acct-group/ftp 0: File Transfer Protocol server user
 acct-group/gamestat 0: Group for shared high-score and game state files
 acct-group/git 0: System group: git
@@ -53,6 +55,7 @@ acct-group/slurm 0: A group for the slurm - Highly Scalable Resource Manager
 acct-group/spectrum 0: A group for the Spectrum messaging transport
 acct-group/spire 0: System group: spire
 acct-group/stdiscosrv 0: Group for the Syncthing discovery server
+acct-group/steamcmd 0: A group for the SteamCMD server
 acct-group/strelaysrv 0: Group for the Syncthing relay server
 acct-group/syncthing 0: Group for the system-wide net-p2p/syncthing server
 acct-group/systemd-coredump 0: System group: systemd-coredump
@@ -74,12 +77,14 @@ acct-group/wheel 0: System group: wheel
 acct-user/alias 0: alias user for qmail mail delivery
 acct-user/bitcoin 0: System-wide Bitcoin services user
 acct-user/burp 0: User for the app-backup/burp server
+acct-user/ddclient 0: A user for the dynamic DNS client
 acct-user/deluge 0: user for deluge
 acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/dovecot 0: user for dovecot daemon
 acct-user/dovenull 0: user for dovecot daemon
 acct-user/elasticsearch 0: Elasticsearch program user
 acct-user/epmd 0: User for Erlang Protmapper Daemon
+acct-user/fhem 0: A user for the FHEM perl server for house automation
 acct-user/ftp 0: File Transfer Protocol server user
 acct-user/git 0: Git repository hosting user
 acct-user/gkrellmd 0: user for gkrellm daemon
@@ -118,6 +123,7 @@ acct-user/slurm 0: User for the slurm - Highly Scalable Resource Manager
 acct-user/spectrum 0: A user for the Spectrum messaging transport
 acct-user/spire 0: user for spiffe runtime environment
 acct-user/stdiscosrv 0: User for the Syncthing discovery server
+acct-user/steamcmd 0: A user for the SteamCMD server
 acct-user/strelaysrv 0: User for the Syncthing relay server
 acct-user/syncthing 0: User for the system-wide net-p2p/syncthing server
 acct-user/systemd-coredump 0: System user: systemd-coredump
@@ -1939,7 +1945,7 @@ app-misc/evtest 1.33 1.34: test program for capturing input device events
 app-misc/faq 0.0.2: Format agnostic jQ
 app-misc/fdupes 1.5.1 1.6.1 1.6.1-r1 9999: Identify/delete duplicate files residing within specified directories
 app-misc/fdutils 5.5.20060227 5.5.20060227-r1: utilities for configuring and debugging the Linux floppy driver
-app-misc/fhem 5.9: A GPL'd perl server for house automation
+app-misc/fhem 5.9 5.9-r1: A GPL'd perl server for house automation
 app-misc/figlet 2.2.5 2.2.5-r1: program for making large letters out of ordinary text
 app-misc/flirc 3.22.4 3.24.0: Allows you to pair any remote control with your computer or media center
 app-misc/fslint 2.46: A utility to find various forms of lint on a filesystem
@@ -10218,7 +10224,7 @@ dev-ruby/sanitize 4.6.6 5.0.0 5.1.0: Sanitize is a whitelist-based HTML sanitize
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.3 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-listen 4.0.0: Fork of guard/listen provides a stable API for users of the ruby Sass CLI
 dev-ruby/sass-rails 5.0.7 5.0.8: Official Ruby-on-Rails Integration with Sass
-dev-ruby/sassc 2.0.1-r1: Use libsass with Ruby
+dev-ruby/sassc 2.0.1-r1 2.2.1: Use libsass with Ruby
 dev-ruby/sassc-rails 2.1.1 2.1.2: Integrate SassC-Ruby with Rails
 dev-ruby/sawyer 0.8.2: Secret User Agent of HTTP
 dev-ruby/sdoc 1.0.0: rdoc generator html with javascript search index
@@ -11776,7 +11782,7 @@ games-server/monopd 0.10.2-r1: server for atlantik games
 games-server/mtavc 0.5-r1: dedicated server for GTA3 multiplayer
 games-server/nwn-ded 1.69-r1: Neverwinter Nights Dedicated server
 games-server/pvpgn 1.8.5-r2: A gaming server for Battle.Net compatible clients
-games-server/steamcmd 1.0-r1: This is the command-line version of the Steam client for dedicated servers
+games-server/steamcmd 1.0-r1 1.0-r2: This is the command-line version of the Steam client for dedicated servers
 games-server/ut2004-ded 3369.3-r1: Unreal Tournament 2004 Linux Dedicated Server
 games-simulation/bcs-demo 1.3-r1: design and build bridges and then stress test them with trains
 games-simulation/cannonsmash 0.6.6-r1: 3D tabletennis game
@@ -14705,7 +14711,7 @@ net-dns/bind-dns-keygen 9.3.2.39-r1: A simple BIND key generator
 net-dns/bind-tools 9.14.4 9.14.5 9.14.6 9.15.4: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.13.0 1.14.0 1.15.0: C library that resolves names asynchronously
 net-dns/coredns 1.3.1: A DNS server that chains middleware
-net-dns/ddclient 3.9.0-r2: Perl client used to update dynamic DNS entries
+net-dns/ddclient 3.9.0-r2 3.9.0-r3: Perl client used to update dynamic DNS entries
 net-dns/djbdns 1.05-r33: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r2: A caching DNS proxy server
 net-dns/dnscap 1.10.2 1.10.3: Network capture utility designed specifically for DNS traffic
