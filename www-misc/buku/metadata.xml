@@ -12,4 +12,7 @@
 	<upstream>
 		<remote-id type="github">jarun/Buku</remote-id>
 	</upstream>
+	<use>
+		<flag name="server">Install the "bukuserver" program (a web server)</flag>
+	</use>
 </pkgmetadata>
