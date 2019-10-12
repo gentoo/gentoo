@@ -709,7 +709,6 @@ dev-libs/libhome
 # (#664762, #663712).  No reverse dependencies.
 # Removal in 30 days.  Bug #694182.
 dev-libs/libcxml
-dev-libs/locked_sstream
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
