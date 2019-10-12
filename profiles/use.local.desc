@@ -2055,18 +2055,6 @@ dev-lang/swig:ccache - build ccache-swig(a fast compiler cache)
 dev-lang/vala:valadoc - Installs valadoc documentation generation tool
 dev-lang/yap:R - Enable support for connecting R to Prolog
 dev-lang/zig:experimental - Enable builds that do not support all of LLVM's target architectures
-dev-libs/actor-framework:benchmarks - Due to the number of out-of-tree deps, these only get installed as docs
-dev-libs/actor-framework:boost - Make use of Boost's ASIO functionality
-dev-libs/actor-framework:cash - Build the C Actor Shell for introspection and debugging
-dev-libs/actor-framework:debug - Raises log-level to DEBUG, enables runtime checks and address sanitizer
-dev-libs/actor-framework:doc - Compiles and installs the documentation as PDF and HTML
-dev-libs/actor-framework:examples - Installs the provided example source files
-dev-libs/actor-framework:mem_management - Enables built-in memory management
-dev-libs/actor-framework:nexus - Nexus is the central component for CAF's runtime inspection
-dev-libs/actor-framework:opencl - Compiles against the provided opencl implementation
-dev-libs/actor-framework:riac - Runtime inspection and configuration
-dev-libs/actor-framework:static - Provides a static build
-dev-libs/actor-framework:test - Builds the provided unit tests
 dev-libs/antlr-c:debugger - Compiles debug info into the library
 dev-libs/appstream:apt - Enables Debians APT support
 dev-libs/appstream-glib:fonts - Enable fonts support for appstream-builder.
@@ -2272,7 +2260,6 @@ dev-libs/libisoburn:launch-frontend-setuid - Enable the tcl gui for xorriso unde
 dev-libs/libisofs:verbose-debug - Enable verbose debug messages
 dev-libs/liblogging:rfc3195 - Enables RFC 3195 protocol (aka syslog-reliable) support. If you don't know what this is, you don't need it!
 dev-libs/liblogging:stdlog - Enables liblogging's core component (think of it as a the next version of the syslog(3) API).
-dev-libs/libmail:apop - Enables the APOP authentication method
 dev-libs/libmemcached:hsieh - Use Hsieh hash algorithm.
 dev-libs/libmemcached:libevent - Use the libevent event loop interface.
 dev-libs/libmemcached:sasl - Use sasl auth for communications.
