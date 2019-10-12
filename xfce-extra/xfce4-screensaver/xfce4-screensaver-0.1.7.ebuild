@@ -30,7 +30,7 @@ RDEPEND="
 	consolekit? ( sys-auth/consolekit )
 	elogind? ( sys-auth/elogind )
 	locking? (
-		pam? ( virtual/pam )
+		pam? ( sys-libs/pam )
 	)
 	opengl? ( virtual/opengl )
 	systemd? ( sys-apps/systemd:= )
