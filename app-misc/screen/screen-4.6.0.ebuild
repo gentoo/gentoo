@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ IUSE="debug nethack pam selinux multiuser"
 
 CDEPEND="
 	>=sys-libs/ncurses-5.2:0=
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-screen )"
 DEPEND="${CDEPEND}
