@@ -13,4 +13,4 @@ PIDFILE="/var/run/minetest.pid"
 MINETESTBIN="@BINDIR@/minetestserver"
 
 # additional arguments for the server
-ARGS="--logfile /var/lib/minetest/minetest-server.log"
+ARGS="--logfile /var/log/minetest/minetest-server.log"
