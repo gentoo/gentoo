@@ -3,7 +3,7 @@
 
 # @ECLASS: bsdmk.eclass
 # @MAINTAINER:
-# bsd@gentoo.org
+# maintainer-needed@gentoo.org
 # @BLURB: Some functions for BSDmake
 
 inherit toolchain-funcs portability flag-o-matic

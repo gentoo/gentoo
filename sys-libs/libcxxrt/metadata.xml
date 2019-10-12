@@ -5,10 +5,6 @@
     <email>aballier@gentoo.org</email>
     <name>Alexis Ballier</name>
   </maintainer>
-  <maintainer type="project">
-    <email>bsd@gentoo.org</email>
-    <name>BSD Project</name>
-  </maintainer>
   <maintainer type="person">
     <email>mgorny@gentoo.org</email>
     <name>Michał Górny</name>
