@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DIST_AUTHOR=AMBS
-DIST_VERSION=0.80
+DIST_VERSION=0.88
 DIST_EXAMPLES=( "examples/*" "scripts/*" )
 
 inherit perl-module
@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="A Perl library for reading, parsing, and processing BibTeX files"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="test"
 
 RDEPEND="
