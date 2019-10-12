@@ -11,7 +11,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+ GPL-1+ FDL-1.3+"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="tex vm"
 RESTRICT="test" #631700
 
