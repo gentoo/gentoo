@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86"
 IUSE="+daemon elibc_musl pam static-libs test +tools"
 
-RDEPEND="pam? ( virtual/pam )"
+RDEPEND="pam? ( sys-libs/pam )"
 
 DEPEND="
 	${RDEPEND}

@@ -24,7 +24,7 @@ BDEPEND="
 	sys-devel/flex
 	elibc_musl? ( sys-libs/fts-standalone )
 "
-DEPEND="pam? ( virtual/pam )"
+DEPEND="pam? ( sys-libs/pam )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
