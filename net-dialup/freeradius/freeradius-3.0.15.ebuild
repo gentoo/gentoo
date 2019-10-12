@@ -37,7 +37,7 @@ RDEPEND="!net-dialup/cistronradius
 	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
 	firebird? ( dev-db/firebird )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
