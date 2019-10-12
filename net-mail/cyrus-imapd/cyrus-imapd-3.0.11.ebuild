@@ -33,7 +33,7 @@ CDEPEND="
 	mysql? ( dev-db/mysql-connector-c:0= )
 	nntp? ( !net-nntp/leafnode )
 	pam? (
-			virtual/pam
+			sys-libs/pam
 			>=net-mail/mailbase-1
 		)
 	perl? ( dev-lang/perl:= )
