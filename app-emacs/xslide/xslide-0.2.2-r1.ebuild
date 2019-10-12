@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/xslide/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc x86"
+KEYWORDS="alpha amd64 ppc x86"
 
 SITEFILE="50${PN}-gentoo.el"
 DOCS="ChangeLog NEWS README.TXT TODO"
