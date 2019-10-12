@@ -29,7 +29,7 @@ COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
 		app-admin/cgmanager
 		>=sys-libs/libnih-1.0.2[dbus]
 		)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	policykit? ( >=sys-auth/polkit-0.110 )"
 # pm-utils: bug 557432
 RDEPEND="${COMMON_DEPEND}

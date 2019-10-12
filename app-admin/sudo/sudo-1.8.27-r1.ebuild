@@ -39,7 +39,7 @@ CDEPEND="
 		>=net-nds/openldap-2.1.30-r1
 		dev-libs/cyrus-sasl
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	sasl? ( dev-libs/cyrus-sasl )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
 	sssd? ( sys-auth/sssd[sudo] )

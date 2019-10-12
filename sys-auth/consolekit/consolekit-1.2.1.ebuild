@@ -34,7 +34,7 @@ COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
 		virtual/libudev
 		x11-libs/libdrm:=
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	policykit? ( >=sys-auth/polkit-0.110 )
 	selinux? ( sys-libs/libselinux )"
 # pm-utils: bug 557432

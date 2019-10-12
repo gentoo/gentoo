@@ -25,7 +25,7 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=
 		sys-apps/acl:=
 		>=virtual/udev-200
 		)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	policykit? ( >=sys-auth/polkit-0.110 )"
 RDEPEND="${COMMON_DEPEND}
 	kernel_linux? ( sys-apps/coreutils[acl?] )

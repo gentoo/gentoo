@@ -18,7 +18,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	>=sys-libs/cracklib-2.8:=[static-libs(+)?]
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}

@@ -24,7 +24,7 @@ DEPEND="debug? ( dev-libs/dmalloc:= )
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 RDEPEND="${DEPEND}

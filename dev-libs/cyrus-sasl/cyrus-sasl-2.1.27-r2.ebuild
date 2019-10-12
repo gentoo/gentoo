@@ -25,7 +25,7 @@ CDEPEND="
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	openldap? ( >=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}] )
 	mysql? ( dev-db/mysql-connector-c:0=[${MULTILIB_USEDEP}] )
-	pam? ( >=virtual/pam-0-r1[${MULTILIB_USEDEP}] )
+	pam? ( >=sys-libs/pam-0-r1[${MULTILIB_USEDEP}] )
 	postgres? ( dev-db/postgresql:* )
 	sqlite? ( >=dev-db/sqlite-3.8.2:3[${MULTILIB_USEDEP}] )
 	ssl? (

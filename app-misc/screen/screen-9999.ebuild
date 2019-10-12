@@ -24,7 +24,7 @@ IUSE="debug nethack pam selinux multiuser utmp"
 
 CDEPEND="
 	>=sys-libs/ncurses-5.2:0=
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-screen )
 	utmp? (
