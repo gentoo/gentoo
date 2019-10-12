@@ -31,7 +31,7 @@ RDEPEND="
 	>=xfce-base/xfconf-4.12.1:=
 	consolekit? ( sys-auth/consolekit )
 	locking? (
-		pam? ( virtual/pam )
+		pam? ( sys-libs/pam )
 	)
 	opengl? ( virtual/opengl )
 	systemd? ( sys-apps/systemd:= )
