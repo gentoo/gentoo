@@ -84,7 +84,7 @@ COMMON_DEPEND="
 	)
 	server? (
 		oqgraph? ( >=dev-libs/boost-1.40.0:0= dev-libs/judy:0= )
-		pam? ( virtual/pam:0= )
+		pam? ( sys-libs/pam:0= )
 	)
 	!client-libs? ( dev-db/mysql-connector-c[${MULTILIB_USEDEP},static-libs?] )
 "
