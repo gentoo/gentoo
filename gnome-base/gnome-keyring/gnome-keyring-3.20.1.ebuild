@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ RDEPEND="
 	app-misc/ca-certificates
 	>=dev-libs/libgcrypt-1.2.2:0=
 	caps? ( sys-libs/libcap-ng )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	selinux? ( sec-policy/selinux-gnome )
 	>=app-crypt/gnupg-2.0.28:=
 "

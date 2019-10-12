@@ -27,7 +27,7 @@ CDEPEND="
 		iproute2? ( sys-apps/iproute2[-minimal] )
 		!iproute2? ( >=sys-apps/net-tools-1.60_p20160215155418 )
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	ssl? (
 		!mbedtls? (
 			!libressl? ( >=dev-libs/openssl-0.9.8:0= )

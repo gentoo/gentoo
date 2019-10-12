@@ -40,7 +40,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	dev-libs/libpcre
 	idn? ( net-dns/libidn:= net-dns/libidn2:= )
 	perl? ( dev-lang/perl:= )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )

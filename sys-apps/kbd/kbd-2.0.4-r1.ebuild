@@ -25,7 +25,7 @@ RDEPEND="
 	app-arch/gzip
 	pam? (
 		!app-misc/vlock
-		virtual/pam
+		sys-libs/pam
 	)
 "
 DEPEND="${RDEPEND}"

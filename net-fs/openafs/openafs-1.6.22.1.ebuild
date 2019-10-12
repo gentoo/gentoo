@@ -30,7 +30,7 @@ CDEPEND="
 	fuse? ( sys-fs/fuse:0= )
 	kerberos? ( virtual/krb5 )
 	ncurses? ( sys-libs/ncurses:0= )
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
 
 DEPEND="${CDEPEND}
 	virtual/yacc

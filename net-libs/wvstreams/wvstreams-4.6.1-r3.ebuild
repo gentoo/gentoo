@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,7 @@ RDEPEND="sys-libs/readline:0=
 	sys-libs/zlib
 	dbus? ( >=sys-apps/dbus-1.4.20 )
 	<dev-libs/openssl-1.1:0=
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
