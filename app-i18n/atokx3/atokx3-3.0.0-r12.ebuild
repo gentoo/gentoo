@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -28,7 +28,7 @@ RDEPEND="dev-libs/atk
 	media-libs/fontconfig
 	media-libs/libpng
 	sys-apps/tcp-wrappers
-	virtual/pam
+	sys-libs/pam
 	x11-libs/cairo
 	>=x11-libs/gtk+-2.4.13:2
 	x11-libs/libICE
@@ -51,7 +51,7 @@ RDEPEND="dev-libs/atk
 		>=media-libs/fontconfig-2.10.92[abi_x86_32(-)]
 		>=media-libs/libpng-1.2.51[abi_x86_32(-)]
 		>=sys-apps/tcp-wrappers-7.6.22-r1[abi_x86_32(-)]
-		>=virtual/pam-0-r1[abi_x86_32(-)]
+		>=sys-libs/pam-0-r1[abi_x86_32(-)]
 		>=x11-libs/cairo-1.12.14-r4[abi_x86_32(-)]
 		>=x11-libs/gtk+-2.24.23:2[abi_x86_32(-)]
 		>=x11-libs/libICE-1.0.8-r1[abi_x86_32(-)]
