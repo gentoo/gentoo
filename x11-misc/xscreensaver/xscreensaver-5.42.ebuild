@@ -41,7 +41,7 @@ COMMON_DEPEND="
 		virtual/glu
 		virtual/opengl
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	xinerama? ( x11-libs/libXinerama )
 "
 # For USE="perl" see output of `qlist xscreensaver | grep bin | xargs grep '::'`
