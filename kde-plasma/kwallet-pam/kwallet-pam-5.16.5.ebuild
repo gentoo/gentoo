@@ -13,7 +13,7 @@ IUSE=""
 DEPEND="
 	$(add_frameworks_dep kwallet)
 	dev-libs/libgcrypt:0=
-	virtual/pam
+	sys-libs/pam
 "
 RDEPEND="${DEPEND}
 	net-misc/socat
