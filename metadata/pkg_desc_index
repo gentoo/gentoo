@@ -4953,7 +4953,6 @@ dev-libs/libmissing 1.0.0-r1: Library with missing functions based on GNUlib
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.1.4: Modbus library which supports RTU communication over a serial line or a TCP link
 dev-libs/libmoe 1.5.8-r3: Multi octet character encoding handling library
-dev-libs/libmongo-client 0.1.7 0.1.8: The alternative C driver for MongoDB
 dev-libs/libmowgli 1.0.0-r1 2.1.3 9999: Useful set of performance and usability-oriented extensions to C
 dev-libs/libmspack 0.9.1_alpha-r1 9999: A library for Microsoft compression formats
 dev-libs/libnatspec 0.2.6-r1 0.3.0: library to smooth charset/localization issues
@@ -4961,7 +4960,6 @@ dev-libs/libnfc 1.4.2 1.5.1-r1 1.7.1: Near Field Communications (NFC) library
 dev-libs/libnl 1.1.4 1.1.4-r1 3.4.0 3.5.0 99999999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.2.0-r1: framebuffer abstraction library, written in C
 dev-libs/libnsutils 0.0.5-r1: base64 and time library, written in C
-dev-libs/libntru 0.4.1-r1: C Implementation of NTRUEncrypt
 dev-libs/libofx 0.9.10 0.9.14-r1: A library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17-r2: Library of simple functions that are optimized for various CPUs
 dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backends
@@ -4981,7 +4979,6 @@ dev-libs/libpo6 0.6.0 0.7.0 0.8.0: Hyperdex libpo6 support library
 dev-libs/libpqxx 6.4.5: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libprelude 3.0.0 3.1.0-r1 4.0.0 4.1.0: Prelude-SIEM Framework Library
 dev-libs/libpreludedb 3.0.0-r1 3.1.0-r1 4.0.0-r1 4.1.0-r1: Framework to easy access to the Prelude database
-dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
 dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.4.0 1.4.1: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 3.3.1: A Qt implementation of XDG standards
@@ -5002,7 +4999,6 @@ dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression lib
 dev-libs/libsodium 1.0.11-r1 1.0.15-r1 1.0.16-r2 1.0.18: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libspnav 0.2.2 0.2.3: libspnav is a replacement for the magellan library with a cleaner API
 dev-libs/libspt 1.1-r2 1.1-r3 1.1-r4: Library for handling root privilege
-dev-libs/libsqlora8 2.3.3-r1: Simple C-library to access Oracle databases via the OCI interface
 dev-libs/libstrl 0.5.1-r1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
 dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
 dev-libs/libstrophe 0.9.2: A simple, lightweight C library for writing XMPP clients
@@ -5014,15 +5010,12 @@ dev-libs/libtomfloat 0.02: library for floating point number manipulation
 dev-libs/libtommath 0.42.0-r1 1.0.1 1.1.0: Optimized and portable routines for integer theoretic applications
 dev-libs/libtompoly 0.04: portable ISO C library for polynomial basis arithmetic
 dev-libs/libtpms 0.7.0: Library providing software emultion of a TPM
-dev-libs/libtrain 0.9b: Library for calculating fastest train routes
 dev-libs/libtreadstone 0.1.0 0.2.0: Hyperdex libtreadstone support library
 dev-libs/libtsm 3: Terminal Emulator State Machine
 dev-libs/libtubo 5.0.15: small and simple interprocess communication library
-dev-libs/libucl 0.7.3: Universal configuration library parser
 dev-libs/libuev 2.1.0 2.1.2 2.2.0 2.3.0: A collection of useful BSD APIs
 dev-libs/libugpio 0.0.6: Lib for the use of linux kernel's sysfs gpio interface from C programs
 dev-libs/libunibreak 4.0 4.1: Line and word breaking library
-dev-libs/libunicode 0.4-r2: Unicode library
 dev-libs/libuninum 2.7: A library for converting unicode strings to numbers and vice versa
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
 dev-libs/libunistring 0.9.10: Library for manipulating Unicode and C strings according to Unicode standard
@@ -5058,16 +5051,12 @@ dev-libs/log4cplus 1.2.0: C++ port of the Log for Java (log4j) logging library
 dev-libs/log4cpp 1.1: C++ classes for flexible logging to files, syslog and other destinations
 dev-libs/log4cxx 0.10.0-r1: Library of C++ classes for logging to files, syslog and other destinations
 dev-libs/log4sh 1.4.2: A flexible logging framework for shell scripts
-dev-libs/log4shib 1.0.4-r1: Internet2 version for OpenSAML of log4cpp logging framework
-dev-libs/ltxml 1.2.9: Integrated set of XML tools and a developers tool-kit with C API
 dev-libs/luise-bin 0.1.1: Programming interface for the Wallbraun LCD-USB-Interface
 dev-libs/lzo 2.10: An extremely fast compression and decompression library
 dev-libs/m17n-lib 1.7.0 1.8.0: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
-dev-libs/mapm 4.9.5-r1: Mike's Arbitrary Precision Math Library
 dev-libs/marisa 0.2.4 0.2.5 9999: Matching Algorithm with Recursively Implemented StorAge
 dev-libs/mathjax 2.7.0 2.7.4: JavaScript display engine for LaTeX, MathML and AsciiMath
-dev-libs/mdsplib 0.11: METAR Decoder Software Package Library
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
 dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder and encoder
@@ -5104,12 +5093,10 @@ dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
 dev-libs/pcc-libs 1.1.0 9999: pcc compiler support libs
 dev-libs/pcl 1.12-r1: Portable Coroutine Library
-dev-libs/pcre++ 0.9.5-r1: A C++ support library for libpcre
 dev-libs/pegtl 1.3.1-r1 2.0_pre1 2.0.0 2.1.4: header-only library for creating parsers according to Parsing Expression Grammar
 dev-libs/pigpio 67 68 70 71: A library for the Raspberry which allows control of the GPIOs
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
 dev-libs/poco 1.9.0-r2: C++ libraries for building network-based applications
-dev-libs/polylib 9999: ppl port of cloog
 dev-libs/popt 1.16-r2: Parse Options - Command line parser
 dev-libs/ppl 1.1 1.2: The Parma Polyhedra Library for numerical analysis of complex systems
 dev-libs/processor-trace 1.6.1 1.6.2 2.0: Intel(R) Processor Trace decoder library
@@ -5142,10 +5129,8 @@ dev-libs/rocm-opencl-driver 2.6.0 2.7.0 2.8.0 2.9.0: Radeon Open Compute OpenCL 
 dev-libs/rocm-opencl-runtime 2.6.0-r1 2.8.0 2.9.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 2.0.0 2.6.0-r1 2.7.0 2.8.0 2.8.0-r1 2.9.0 9999: Radeon Open Compute Runtime
 dev-libs/roct-thunk-interface 2.0.0 2.6.0 2.7.0 2.8.0 2.9.0-r1 9999: Radeon Open Compute Thunk Interface
-dev-libs/rote 0.2.8: simple C library for VT102 terminal emulation
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/satyr 0.26 0.27: Satyr is a collection of low-level algorithms for program failure processing
-dev-libs/sblim-sfcc 2.2.8: Small Footprint CIM Client Library
 dev-libs/sdformat 6.0.0 6.1.0 6.2.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.28.0-r1: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9 2.01 2.01-r1: Library to drive several displays with built-in controllers or display modules
@@ -5154,7 +5139,6 @@ dev-libs/sink 0.8.0-r1: Data access layer handling synchronization, caching and 
 dev-libs/skalibs 2.3.2.0 2.6.1.0 2.6.3.0 2.6.4.0 2.7.0.0 2.8.1.0: General-purpose libraries from skarnet.org
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
-dev-libs/socketstream 0.7.0-r1: C++ Streaming sockets library
 dev-libs/softhsm 2.5.0: A software PKCS#11 implementation
 dev-libs/sord 0.16.0-r1: Library for storing RDF data in memory
 dev-libs/spdlog 1.2.1 1.3.0 1.3.1 9999: Very fast, header only, C++ logging library
@@ -5163,9 +5147,7 @@ dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
 dev-libs/starpu 1.2.6: Unified runtime system for heterogeneous multicore architectures
 dev-libs/stb 20180211: single-file public domain (or MIT licensed) libraries for C/C++
 dev-libs/stfl 0.24: A library which implements a curses-based widget set for text terminals
-dev-libs/stlsoft 1.9.111: Robust, Lightweight, Cross-platform, Template Software
 dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
-dev-libs/syncdir 1.0-r2: Provides an alternate implementation for open, link, rename, and unlink
 dev-libs/template-glib 3.32.0: Templating library for GLib
 dev-libs/tinyxml 2.6.2-r2 2.6.2-r3: Simple and small C++ XML parser
 dev-libs/tinyxml2 6.2.0 7.0.1-r1 7.1.0: A simple, small, efficient, C++ XML parser
@@ -5202,11 +5184,8 @@ dev-libs/xapian 1.2.24 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12: Xapi
 dev-libs/xapian-bindings 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12: SWIG and JNI bindings for Xapian
 dev-libs/xbyak 5.73: JIT assembler for x86(IA-32)/x64(AMD64, x86-64)
 dev-libs/xerces-c 3.2.2-r1 9999: A validating XML parser written in a portable subset of C++
-dev-libs/xml-security-c 2.0.2-r1: Apache C++ XML security libraries
 dev-libs/xmlrpc-c 1.32.05-r1 1.39.11-r1: A lightweigt RPC library based on XML and HTTP
-dev-libs/xmlrpc-epi 0.54.2: Epinions implementation of XML-RPC protocol in C
 dev-libs/xmlsec 1.2.28: Command line tool for signing, verifying, encrypting and decrypting XML
-dev-libs/xmlwrapp 0.8.1: modern style C++ library that provides a simple and easy interface to libxml2
 dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
 dev-libs/xxhash 0.6.5 0.7.0 0.7.1: Extremely fast non-cryptographic hash algorithm
 dev-libs/yajl 2.1.0-r1 2.1.0-r2: Small event-driven (SAX-style) JSON parser

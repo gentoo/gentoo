@@ -2301,13 +2301,8 @@ dev-libs/libslz:tools - Install additional tools (zenc, zdec)
 dev-libs/libsodium:asm - Enables assembly implementations
 dev-libs/libsodium:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/libspt:libtirpc - Build against net-libs/libtirpc for RPC support
-dev-libs/libsqlora8:orathreads - Use Oracle threads
 dev-libs/libtasn1:valgrind - Enable usage of dev-util/valgrind in debug
 dev-libs/libtermkey:demos - Install demos, which pulls in dev-libs/glib
-dev-libs/libucl:regex - Enable regex checking for schema
-dev-libs/libucl:signatures - Enable signatures check
-dev-libs/libucl:urlfetch - Enable URLs fetch
-dev-libs/libucl:utils - Install the chargen and objdump utilities
 dev-libs/libunibreak:doc - Install html API documentation.
 dev-libs/libunibreak:man - Generate man pages with doxygen.
 dev-libs/libverto:glib - Support event loops using dev-libs/glib
@@ -2417,8 +2412,6 @@ dev-libs/xapian:inmemory - Enabled inmemory backend db support
 dev-libs/xapian:remote - Enabled remote backend db support
 dev-libs/xerces-c:iconv - Use iconv (virtual/libiconv) as message loader and transcoder (in general it would be possible to use iconv only as message loader and something else like icu or the native method as transcoder and vice-versa, but this is a less common case and hard to handle)
 dev-libs/xerces-c:threads - Enable threading support through pthread (or other libraries on AIX, IRIX, HPUX, Solars). Highly recommended
-dev-libs/xml-security-c:nss - Use dev-libs/nss for certain crypto operations (configureable at runtime)
-dev-libs/xml-security-c:xalan - Enable support for XSLT and XPath parsing by dev-libs/xalan-c
 dev-libs/xmlrpc-c:abyss - Build the Abyss mini web-server.
 dev-libs/xmlrpc-c:libxml2 - Use dev-libs/libxml2 to parse XML instead of the internal expat library.
 dev-libs/xmlrpc-c:threads - Controls whether to build the Abyss web-server with pthreads or fork 'threading'.
