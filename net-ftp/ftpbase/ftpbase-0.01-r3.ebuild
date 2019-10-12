@@ -11,10 +11,10 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="pam"
 
-DEPEND="pam? ( virtual/pam )
+DEPEND="pam? ( sys-libs/pam )
 	!<net-ftp/proftpd-1.2.10-r6
 	!<net-ftp/pure-ftpd-1.0.20-r2
 	!<net-ftp/vsftpd-2.0.3-r1"

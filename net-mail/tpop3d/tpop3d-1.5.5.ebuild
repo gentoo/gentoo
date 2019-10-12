@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -18,10 +18,10 @@ IUSE="authexternal debug flatfile gdbm ldap maildir mbox mysql offensive
 RDEPEND="sha1?		( >=dev-libs/openssl-0.9.6 )
 	ssl?		( >=dev-libs/openssl-0.9.6 )
 	ldap? 		( >=net-nds/openldap-2.0.7 )
-	mysql? 		( virtual/mysql )
+	mysql?  	( virtual/mysql )
 	postgres?	( dev-db/postgresql[server] )
 	perl?		( >=dev-lang/perl-5.6.1 )
-	pam? 		( virtual/pam
+	pam? 		( sys-libs/pam
 				  >=net-mail/mailbase-0.00-r8 )
 	tcpd?		( >=sys-apps/tcp-wrappers-7.6 )"
 

@@ -40,7 +40,7 @@ RDEPEND="!net-dialup/cistronradius
 	mysql? ( dev-db/mysql-connector-c )
 	postgres? ( dev-db/postgresql:= )
 	firebird? ( dev-db/firebird )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	rest? ( dev-libs/json-c:= )
 	samba? ( net-fs/samba )
 	redis? ( dev-libs/hiredis:= )

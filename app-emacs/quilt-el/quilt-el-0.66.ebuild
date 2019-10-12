@@ -13,7 +13,7 @@ SRC_URI="mirror://nongnu/quilt/${MY_P}.tar.gz"
 
 LICENSE="GPL-1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~mips ppc ppc64 ~sparc x86"
 
 RDEPEND="dev-util/quilt"
 

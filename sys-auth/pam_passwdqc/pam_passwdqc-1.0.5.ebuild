@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -13,7 +13,7 @@ LICENSE="Openwall BSD public-domain"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
 
-DEPEND="virtual/pam"
+DEPEND="sys-libs/pam"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
