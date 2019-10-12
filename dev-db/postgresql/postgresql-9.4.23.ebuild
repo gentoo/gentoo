@@ -33,7 +33,7 @@ sys-apps/less
 virtual/libintl
 kerberos? ( virtual/krb5 )
 ldap? ( net-nds/openldap )
-pam? ( virtual/pam )
+pam? ( sys-libs/pam )
 perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )
 readline? ( sys-libs/readline:0= )
