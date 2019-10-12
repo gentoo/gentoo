@@ -19,7 +19,7 @@ COMMON_DEP="
 	net-nds/openldap[${MULTILIB_USEDEP}]
 	sasl? ( dev-libs/cyrus-sasl[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
-	virtual/pam[${MULTILIB_USEDEP}]
+	sys-libs/pam[${MULTILIB_USEDEP}]
 	utils? ( ${PYTHON_DEPS} )
 	pynslcd? (
 		dev-python/python-ldap[${PYTHON_USEDEP}]

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ DEPEND="
 	net-nds/openldap
 	sasl? ( dev-libs/cyrus-sasl )
 	kerberos? ( virtual/krb5 )
-	virtual/pam
+	sys-libs/pam
 	!sys-auth/nss_ldap
 	!sys-auth/pam_ldap"
 RDEPEND="${DEPEND}"
