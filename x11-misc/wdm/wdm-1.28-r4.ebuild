@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ COMMON_DEPEND=">=x11-wm/windowmaker-0.70.0
 	x11-libs/libXmu
 	x11-libs/libXt
 	x11-libs/libXpm
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
 DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext"
 RDEPEND="${COMMON_DEPEND}

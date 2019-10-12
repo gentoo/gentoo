@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ RDEPEND="x11-libs/libXmu
 	x11-apps/sessreg
 	consolekit? ( sys-auth/consolekit
 		sys-apps/dbus )
-	pam? (	virtual/pam
+	pam? (	sys-libs/pam
 		!x11-misc/slimlock )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,7 +41,7 @@ COMMON_DEPEND="
 		virtual/glu
 		virtual/opengl
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	xinerama? ( x11-libs/libXinerama )
 "
 # For USE="perl" see output of `qlist xscreensaver | grep bin | xargs grep '::'`
