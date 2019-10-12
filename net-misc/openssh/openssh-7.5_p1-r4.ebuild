@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -56,7 +56,7 @@ LIB_DEPEND="
 	>=sys-libs/zlib-1.2.3:=[static-libs(+)]"
 RDEPEND="
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )"
 DEPEND="${RDEPEND}

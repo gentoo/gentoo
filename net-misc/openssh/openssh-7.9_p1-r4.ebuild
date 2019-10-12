@@ -69,7 +69,7 @@ LIB_DEPEND="
 	>=sys-libs/zlib-1.2.3:=[static-libs(+)]"
 RDEPEND="
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	kerberos? ( virtual/krb5 )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
