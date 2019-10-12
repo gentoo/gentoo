@@ -711,12 +711,6 @@ dev-libs/libhome
 dev-libs/libcxml
 dev-libs/locked_sstream
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-12)
-# Unmaintained.  No reverse dependencies.  Its presence breaks
-# pulseaudio (#672468).
-# Removal in 30 days.  Bug #694180.
-dev-libs/libcli
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
