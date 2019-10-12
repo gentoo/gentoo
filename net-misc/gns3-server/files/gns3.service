@@ -1,0 +1,19 @@
+[Unit]
+Description=GNS3 server
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=forking
+User=gns3
+Group=gns3
+PermissionsStartOnly=true
+ExecStartPre=/bin/mkdir -p /var/log/gns3 /run/gns3
+ExecStartPre=/bin/chown -R gns3:gns3 /var/log/gns3 /run/gns3
+ExecStart=/usr/bin/gns3server --log /var/log/gns3/gns3.log \
+ --pid /run/gns3/gns3.pid --daemon
+Restart=on-abort
+PIDFile=/run/gns3/gns3.pid
+
+[Install]
+WantedBy=multi-user.target

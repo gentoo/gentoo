@@ -1,0 +1,50 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+GNS3_BINARY="${GNS3_BINARY:-/usr/bin/gns3server}"
+GNS3_CONFIGFILE="${GNS3_CONFIGFILE:-/etc/gns3-server/gns3_server.conf}"
+GNS3_LOGFILE="${GNS3_LOGFILE:-/var/log/gns3/gns3.log}"
+GNS3_PIDFILE="${GNS3_PIDFILE:-/run/gns3-server/${RC_SVCNAME}.pid}"
+GNS3_TERMTIMEOUT="${GNS3_TERMTIMEOUT:-"TERM/25/KILL/5"}"
+
+USER="gns3"
+GROUP="gns3"
+
+description="A GNS3 server"
+command="${GNS3_BINARY}"
+command_user="${USER}:${GROUP}"
+command_args="
+	--daemon
+	--config ${GNS3_CONFIGFILE}
+	--log ${GNS3_LOGFILE}
+	--pid ${GNS3_PIDFILE}
+	${GNS3_OPTS}"
+
+pidfile="${GNS3_PIDFILE}"
+retry="${GNS3_TERMTIMEOUT}"
+extra_commands="checkconfig"
+
+depend() {
+	after net
+}
+
+checkconfig() {
+	local piddir="$(dirname -- "${GNS3_PIDFILE}")"
+
+	if ! [ -d "${piddir}" ]; then
+		checkpath -q -d -o ${USER}:${GROUP} -m 0755 "${piddir}" || return 1
+	fi
+
+	if ! [ -f "${GNS3_CONFIGFILE}" ]; then
+		eerror "You need an ${GNS3_CONFIGFILE} file to run ${RC_SVCNAME}"
+		eerror "There is a sample file in /usr/share/doc/gns3-server-*"
+		return 1
+	fi
+}
+
+start_pre() {
+	checkconfig || return 1
+}
+
+# vim: set ft=gentoo-init-d ts=4 :

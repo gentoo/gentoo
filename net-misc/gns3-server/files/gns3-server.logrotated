@@ -1,0 +1,8 @@
+/var/log/gns3/gns3.log {
+	compress
+	weekly
+	rotate 4
+	notifempty
+	missingok
+	nocreate
+}

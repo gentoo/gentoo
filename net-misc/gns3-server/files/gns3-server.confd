@@ -1,0 +1,10 @@
+# /etc/conf.d/gns3-server: config file for /etc/init.d/gns3-server
+
+# Server side configuration (needs to be absolute path)
+#GNS3_CONFIGFILE="/etc/gns3-server/gns3_server.conf"
+
+# Path to log file (needs to be absolute path)
+#GNS3_LOGFILE="/var/log/gns3/gns3.log"
+
+# See more: gns3server --help
+GNS3_OPTS=""
