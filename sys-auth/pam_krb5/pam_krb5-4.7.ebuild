@@ -16,7 +16,7 @@ IUSE=""
 
 DEPEND="
 	virtual/krb5
-	virtual/pam"
+	sys-libs/pam"
 
 RDEPEND="${DEPEND}"
 
