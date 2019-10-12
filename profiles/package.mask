@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-10-12)
+# Bad quality package.  Last commit in 2016 (unpackaged in Gentoo).
+# GTK+2 only.  Most of the settings provided are also found in xfwm4
+# settings dialog.
+# Removal in 30 days.  Bug #697546.
+xfce-extra/xfce4-composite-editor
+
 # David Seifert <soap@gentoo.org> (2019-10-12)
 # Last release over 6.5 years ago, no code activity.
 # Scons build system very brittle, python 3 impl bumps
