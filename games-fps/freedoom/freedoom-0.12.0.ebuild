@@ -3,15 +3,15 @@
 
 EAPI=7
 
-DESCRIPTION="A 32-level game designed for competitive deathmatch play."
+DESCRIPTION="A complete free-content single-player focused game based on the Doom engine"
 HOMEPAGE="https://freedoom.github.io"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 RDEPEND="
-	~games-fps/freedm-data-${PV}
+	~games-fps/freedoom-data-${PV}
 	|| (
 		games-fps/gzdoom[nonfree(+)]
 		games-engines/odamex
@@ -21,5 +21,5 @@ RDEPEND="
 "
 
 pkg_postinst() {
-	elog "If you are looking for a single-player focused game, please install games-fps/freedoom."
+	elog "If you are looking for a multiplayer-focused deathmatch game, consider games-fps/freedm."
 }
