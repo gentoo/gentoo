@@ -79,9 +79,9 @@ RDEPEND="
 		>=dev-qt/qtwidgets-${QT_VER}:${QT_SLOT}
 		>=dev-qt/qtxml-${QT_VER}:${QT_SLOT}
 		>=dev-qt/qtxmlpatterns-${QT_VER}:${QT_SLOT}
-		server? ( virtual/pam )
+		server? ( sys-libs/pam )
 	)
-	dedicated? ( virtual/pam )"
+	dedicated? ( sys-libs/pam )"
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	dev-java/ant-core
