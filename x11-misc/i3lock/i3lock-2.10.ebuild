@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ IUSE=""
 RDEPEND="
 	>=x11-libs/libxkbcommon-0.5.0[X]
 	dev-libs/libev
-	virtual/pam
+	sys-libs/pam
 	x11-libs/cairo[xcb]
 	x11-libs/libxcb[xkb]
 	x11-libs/xcb-util
