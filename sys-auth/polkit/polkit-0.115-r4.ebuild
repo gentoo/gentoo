@@ -35,7 +35,7 @@ DEPEND="
 	elogind? ( sys-auth/elogind )
 	pam? (
 		sys-auth/pambase
-		virtual/pam
+		sys-libs/pam
 	)
 	systemd? ( sys-apps/systemd:0=[policykit] )
 "
