@@ -671,12 +671,6 @@ dev-libs/libsqlora8
 # Removal in 30 days.  Bug #694200.
 dev-libs/libproccpuinfo
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-12)
-# Unmaintained.  Current version from 2015, last release in 2016.
-# No reverse dependencies.
-# Removal in 30 days.  Bug #694198.
-dev-libs/libntru
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
