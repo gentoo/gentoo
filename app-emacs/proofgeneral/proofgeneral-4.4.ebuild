@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ProofGeneral/PG/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2+ GPL-2 GPL-3+ HPND CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND=">=app-emacs/mmm-mode-0.4.8-r2"
 BDEPEND="${RDEPEND}"
