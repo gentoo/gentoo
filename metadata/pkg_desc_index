@@ -5342,7 +5342,7 @@ dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.5: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.2 8.06.3: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.11: A cross-platform library for manipulating the terminal
-dev-ml/llvm-ocaml 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: OCaml bindings for LLVM
+dev-ml/llvm-ocaml 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: OCaml bindings for LLVM
 dev-ml/logs 0.6.2: Logging infrastructure for OCaml
 dev-ml/lwt 3.0.0 3.1.0: Cooperative light-weight thread library for OCaml
 dev-ml/lwt_glib 1.0.1: GLib integration for Lwt
@@ -6428,7 +6428,7 @@ dev-perl/Net-CIDR 0.180.0: Manipulate netblock lists in CIDR notation
 dev-perl/Net-CIDR-Lite 0.210.0 0.210.0-r1: Perl extension for merging IPv4 or IPv6 CIDR addresses
 dev-perl/Net-CUPS 0.630.0 0.640.0: CUPS C API Interface
 dev-perl/Net-DBus 1.1.0: Perl extension for the DBus message system
-dev-perl/Net-DNS 1.40.0 1.100.0 1.130.0: Perl Interface to the Domain Name System
+dev-perl/Net-DNS 1.100.0 1.130.0: Perl Interface to the Domain Name System
 dev-perl/Net-DNS-Async 1.70.0-r1: Asynchronous DNS helper for high volume applications
 dev-perl/Net-DNS-Resolver-Mock 1.201.710.310: Mock a DNS Resolver object for testing
 dev-perl/Net-DNS-Resolver-Programmable 0.3.0-r1 0.9.0: programmable DNS resolver class for offline emulation of DNS
@@ -6853,7 +6853,7 @@ dev-perl/Test2-Suite 0.0.77: A rich set of tools built upon the Test2 framework
 dev-perl/Text-Aligner 0.130.0: Used to justify strings to various alignment styles
 dev-perl/Text-Aspell 0.90.0-r1 0.90.0-r2: Perl interface to the GNU Aspell Library
 dev-perl/Text-Autoformat 1.740.0: Automatic text wrapping and reformatting
-dev-perl/Text-BibTeX 0.800.0 0.850.0: A Perl library for reading, parsing, and processing BibTeX files
+dev-perl/Text-BibTeX 0.850.0 0.880.0: A Perl library for reading, parsing, and processing BibTeX files
 dev-perl/Text-CSV 1.940.0 1.950.0: Manipulate comma-separated value strings
 dev-perl/Text-CSV-Simple 1.0.0-r1: Text::CSV::Simple - Simpler parsing of CSV files
 dev-perl/Text-CSV_XS 1.340.0: Comma-separated values manipulation routines
@@ -7560,7 +7560,7 @@ dev-python/cherrytemplate 1.0.0-r1: Easy and powerful templating module for Pyth
 dev-python/chump 1.5.2 1.6.0: API wrapper for Pushover
 dev-python/citeproc-py 0.4.0: Yet another Python CSL Processor
 dev-python/cjkwrap 2.2: A library for wrapping and filling UTF-8 CJK text
-dev-python/clang-python 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: Python bindings for sys-devel/clang
+dev-python/clang-python 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: Python bindings for sys-devel/clang
 dev-python/cli_helpers 0.2.0 1.0.0 1.0.1 1.2.1 9999: Python helpers for common CLI tasks
 dev-python/cliapp 1.20170823 1.20180812.1: Framework for Unix-like command line programs
 dev-python/click 5.1 6.6 6.7 6.7-r1 7.0: A Python package for creating beautiful command line interfaces
@@ -8083,7 +8083,7 @@ dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/libzilla 1.4 1.5: Library for managing Bugzilla bug reports from the CLI
 dev-python/line_profiler 2.0 2.1.2 9999: Line-by-line profiler
 dev-python/linecache2 1.0.0: Backports of the linecache module
-dev-python/lit 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: A stand-alone install of the LLVM suite testing tool
+dev-python/lit 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.4.1 2.5.2: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.3.2 1.3.4 1.3.5: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.26.0 0.28.0 0.29.0 0.30.0: Python wrapper around the llvm C++ library
@@ -10773,7 +10773,7 @@ dev-util/kyua 0.13-r2: Testing framework for infrastructure software
 dev-util/lcov 1.9-r1 1.11 1.13-r2 1.14 9999: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
-dev-util/lldb 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: The LLVM debugger
+dev-util/lldb 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: The LLVM debugger
 dev-util/lockrun 20120508-r1: Lockrun - runs cronjobs with overrun protection
 dev-util/lsuio 0.2.0: list available userspace I/O (UIO) devices
 dev-util/ltrace 0.7.2 0.7.3 0.7.3_p4: trace library calls made at runtime
@@ -17669,9 +17669,9 @@ sys-devel/bison 3.1 3.2.4 3.3.2 3.4.1 3.4.2: A general-purpose (yacc-compatible)
 sys-devel/bmake 20170421 20170510 20170812: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.6-r1 9999: Compiler-based Application Analysis
-sys-devel/clang 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: C language family frontend for LLVM
-sys-devel/clang-common 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: Common files shared between multiple slots of clang
-sys-devel/clang-runtime 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: Meta-ebuild for clang runtime libraries
+sys-devel/clang 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: C language family frontend for LLVM
+sys-devel/clang-common 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: Common files shared between multiple slots of clang
+sys-devel/clang-runtime 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.3.0: Extensible perl-based build utility
 sys-devel/crossdev 20181020 20181202 20190311 20190712 20190901 20190908 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
@@ -17689,9 +17689,9 @@ sys-devel/gnuconfig 20170101 20180101 20190804 99999999: Updated config.sub and 
 sys-devel/icecream 0.9.7-r1 1.0.0-r1 1.0.0-r2: Distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.4 4.7.3 4.7.4 4.8.3 4.8.5 4.9.4 5.4.0 6.3.0 6.4.0 7.2.0 7.3.0 8.2.0 8.3.0 9.1.0 9.2.0: 64bit kernel compiler
 sys-devel/libtool 2.4.6-r3 2.4.6-r4 2.4.6-r5 9999: A shared library tool for developers
-sys-devel/lld 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: The LLVM linker (link editor)
-sys-devel/llvm 6.0.1 6.0.1-r2 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: Low Level Virtual Machine
-sys-devel/llvm-common 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: Common files shared between multiple slots of LLVM
+sys-devel/lld 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: The LLVM linker (link editor)
+sys-devel/llvm 6.0.1 6.0.1-r2 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: Low Level Virtual Machine
+sys-devel/llvm-common 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: Common files shared between multiple slots of LLVM
 sys-devel/llvm-roc 2.6.0-r1 2.7.0 2.8.0 2.9.0: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 6 7 8 9 10: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18-r1: GNU macro processor
@@ -17894,7 +17894,7 @@ sys-fs/zerofree 1.0.4: Zero's out all free space on a filesystem
 sys-fs/zfs 0.7.13 0.8.1 0.8.2 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-auto-snapshot 1.2.4 9999: ZFS Automatic Snapshot Service for Linux
 sys-fs/zfs-kmod 0.7.13 0.8.1 0.8.2 9999: Linux ZFS kernel module for sys-fs/zfs
-sys-kernel/aufs-sources 4.14.127 4.14.128 4.14.129 4.14.130 4.14.131 4.14.132 4.14.133 4.19.52 4.19.53 4.19.55 4.19.56 4.19.57 4.19.58 4.19.59 5.1.11 5.1.12 5.1.14 5.1.15 5.1.16 5.1.17 5.1.18 5.2.0 5.2.1: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
+sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
 sys-kernel/ck-sources 4.9.120 4.9.123 4.9.124 4.9.126 4.9.128 4.9.130 4.9.132 4.9.135 4.9.137 4.14.63 4.14.66 4.14.67 4.14.69 4.14.71 4.14.73 4.14.75 4.14.78 4.14.81 4.18.5 4.18.7 4.18.9 4.18.11 4.18.13 4.18.16 4.18.19 4.19.2 5.1.7 5.2.3: Gentoo's genpatches for Linux 5.2, with Con Kolivas' MuQSS process scheduler.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r2 9999: Generic initramfs generation tool
@@ -17919,8 +17919,8 @@ sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 4.14.9999 4.15.9999 4.16.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.27 2.28.1 2.29.1-r1 2.30-r4 2.31.1-r6 2.32-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
-sys-libs/compiler-rt 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: Compiler runtime library for clang (built-in part)
-sys-libs/compiler-rt-sanitizers 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
+sys-libs/compiler-rt 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: Compiler runtime library for clang (built-in part)
+sys-libs/compiler-rt-sanitizers 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
@@ -17945,8 +17945,8 @@ sys-libs/libblockdev 2.20-r2 2.22 2.23 9999: A library for manipulating block de
 sys-libs/libcap 2.26-r2 2.27: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8 0.7.9 0.7.10: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.4: Library for accessing chip cards via chip card readers (terminals)
-sys-libs/libcxx 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: New implementation of the C++ standard library, targeting C++11
-sys-libs/libcxxabi 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: Low level support for a standard C++ library
+sys-libs/libcxx 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: New implementation of the C++ standard library, targeting C++11
+sys-libs/libcxxabi 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: Low level support for a standard C++ library
 sys-libs/libcxxrt 0.0_p20180311 9999: C++ Runtime from PathScale, FreeBSD and NetBSD
 sys-libs/libfaketime 0.9.6-r1 0.9.6-r2 0.9.7: Report faked system time to programs
 sys-libs/libhugetlbfs 2.21 2.22: easy hugepage access
@@ -17956,7 +17956,7 @@ sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library includi
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libmath++ 0.0.4-r1: C++ Template math library, for symbolic and numeric calculus applications
 sys-libs/libnih 1.0.3-r3: Light-weight 'standard library' of C functions
-sys-libs/libomp 6.0.1-r1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: OpenMP runtime library for LLVM/clang compiler
+sys-libs/libomp 6.0.1-r1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.2.0 1.3.0 1.4.0: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.0-r1 2.1.1 2.1.2: library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 2.0.2: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
@@ -17977,7 +17977,7 @@ sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write 
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.1.3 2.2.4 2.2.5 2.2.6: Library implementation for listing vpds
 sys-libs/libxcrypt 2.4: A replacement for libcrypt with DES, MD5 and blowfish support
-sys-libs/llvm-libunwind 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: C++ runtime stack unwinder from LLVM
+sys-libs/llvm-libunwind 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.5: Multitouch Protocol Translation Library
