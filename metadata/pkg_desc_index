@@ -874,7 +874,7 @@ app-dicts/myspell-pl 20130306: Polish dictionaries for myspell/hunspell
 app-dicts/myspell-pt 20120420: Portuguese dictionaries for myspell/hunspell
 app-dicts/myspell-pt-br 3.0.0: Brazilian dictionaries for myspell/hunspell
 app-dicts/myspell-ro 3.3.10: Romanian dictionaries for myspell/hunspell
-app-dicts/myspell-ru 20060316 20150711 20150711-r1 20150711-r2: Russian spellcheck dictionary based on works of AOT group for myspell/hunspell
+app-dicts/myspell-ru 20150711-r2: Russian spellcheck dictionary based on works of AOT group for myspell/hunspell
 app-dicts/myspell-sk 20110224: Slovak dictionaries for myspell/hunspell
 app-dicts/myspell-sl 2012.01.04: Slovenian dictionaries for myspell/hunspell
 app-dicts/myspell-sq 1.6.4: Albanian dictionaries for myspell/hunspell
@@ -2040,7 +2040,7 @@ app-misc/muttprint 0.73-r4: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r2: A modified version of mv, used to convert filenames to lower/upper case
 app-misc/mx5000tools 0.1.2-r1: Tools for controlling the LCD on a Logitech MX5000 keyboard
 app-misc/neofetch 6.0.0 6.1.0 9999: Simple information system script
-app-misc/nnn 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6: The missing terminal file browser for X
+app-misc/nnn 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7: The missing terminal file browser for X
 app-misc/no-more-secrets 9999: recreate decrypting text from 1992 movie 'Sneakers'
 app-misc/notary 0.6.1-r1: A project that allows anyone to have trust over arbitrary collections of data
 app-misc/note 1.3.3-r1 1.3.3-r2: A note taking perl program
@@ -4903,7 +4903,7 @@ dev-libs/libevdev 1.8.0 9999: Handler library for evdev events
 dev-libs/libevent 2.1.8 2.1.11 2.1.9999 9999: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libexecinfo 1.1: A library for inspecting program's backtrace
-dev-libs/libezV24 0.1.1 0.1.1-r1: library that provides an easy API to Linux serial ports
+dev-libs/libezV24 0.1.1-r1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.2.1 3.2.1-r1 3.2.1-r2 3.2.1-r3 3.3_rc0: a portable, high level programming interface to various calling conventions
@@ -10671,8 +10671,8 @@ dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 1.1.2 2.0.0: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.14.0 9999: C++ port of the famous JUnit framework for unit testing
 dev-util/cpputest 3.8: unit testing and mocking framework for C/C++
-dev-util/cproto 4.7e 4.7o: Generate C function prototypes from C source code
-dev-util/cpuinfo-collection 20070104 20101114: huge collection of /proc/cpuinfo files
+dev-util/cproto 4.7o: Generate C function prototypes from C source code
+dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7: Functional testing framework for command line applications
 dev-util/crash 7.2.5: Red Hat crash utility; used for analyzing kernel core dumps
 dev-util/creduce 2.8.0_pre20180411 2.8.0_pre20180411-r1 2.8.0 2.9.0_pre20190414-r1 9999: C-Reduce - a plugin-based C program reducer
@@ -14889,7 +14889,7 @@ net-im/err 5.2.0-r1: Multiprotocol chatbot designed to be easily deployable and 
 net-im/gajim 1.0.3 1.0.3-r1 1.1.3: Jabber client written in PyGTK
 net-im/gg-transport 2.2.6: Gadu-Gadu transport for Jabber
 net-im/gitter-bin 3.1.0 4.1.0: Chat and network platform
-net-im/jabber-base 0.01 0.01-r1: Jabber servers and transports layout package
+net-im/jabber-base 0.01-r1: Jabber servers and transports layout package
 net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/libcommuni 3.5.0_p20180116 3.5.0_p20190110: A cross-platform IRC framework written with Qt
@@ -15198,7 +15198,7 @@ net-mail/dot-forward 0.71-r3 0.71-r4: reads sendmail's .forward files under qmai
 net-mail/dovecot 2.2.36.4 2.3.7.2 2.3.8: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
-net-mail/ezmlm-idx 6.0.0 7.0.0-r3: Simple yet powerful mailing list manager for qmail
+net-mail/ezmlm-idx 7.0.0-r3: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.9 2.0: fetch, filter and deliver mail
 net-mail/fetchmail 6.3.26-r4 6.4.0_rc4: the legendary remote-mail retrieval and forwarding utility
 net-mail/getmail 5.13 5.14: A mail retriever with reliable Maildir and mbox delivery
@@ -15211,7 +15211,7 @@ net-mail/lbdb 0.41 0.47: Little Brother database
 net-mail/libdbx 1.0.3: Tools and library for reading Outlook Express mailboxes (.dbx format)
 net-mail/libpst 0.6.66-r1 0.6.66-r2: Tools and library for reading Outlook files (.pst format)
 net-mail/list-remote-forwards 0.0.1-r1: List all remote forwards for mail accounts stored in a database
-net-mail/mailbase 1.1 1.3 1.4 1.5 1.5-r1: MTA layout package
+net-mail/mailbase 1.5-r1: MTA layout package
 net-mail/mailbox-count 0.0.2-r1: Count mailboxes in a SQL database
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailfront 2.22: Mail server network protocol front-ends
@@ -15712,7 +15712,7 @@ net-p2p/vuze 4.8.1.2-r1 5.7.2.0 5.7.2.0-r1: BitTorrent client in Java, formerly 
 net-p2p/vuze-coreplugins 4.8.1.2 5.7.2.0: Core plugins for Vuze that are included in upstream distribution
 net-p2p/xmr-stak 2.7.0 2.7.1 2.8.0 2.8.2 2.8.3 2.9.0 2.10.0 2.10.1 2.10.2 2.10.3 2.10.4 2.10.5 2.10.6 2.10.7 9999: Unified all-in-one Monero miner
 net-print/adobeps 1.0.6-r1: Adobe PostScript drivers for Windows for use with CUPS
-net-print/apsfilter 7.2.5 7.2.8-r1: Apsfilter Prints So Fine, It Leads To Extraordinary Results
+net-print/apsfilter 7.2.8-r1: Apsfilter Prints So Fine, It Leads To Extraordinary Results
 net-print/brlaser 4: Brother laser printer driver
 net-print/c2esp 26 27: A CUPS filter for Kodak ESP printers
 net-print/cndrvcups-common-lb 3.60-r1: Common files for Canon drivers
@@ -16692,7 +16692,7 @@ sci-libs/tensorflow-estimator 1.13.0 1.14.0 1.15.0 2.0.0: A high-level TensorFlo
 sci-libs/tnt 1.2.6 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
 sci-libs/trilinos 12.14.1: Scientific library collection for large scale problems
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
-sci-libs/ufconfig 3.5.0 3.6.1 3.7.0 3.7.1: Common configuration scripts for the SuiteSparse libraries
+sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse libraries
 sci-libs/umfpack 5.6.2: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/vecmath-objectclub 1.14: Unofficial free implementation of Sun javax.vecmath by Kenji Hiranabe
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
@@ -17701,7 +17701,7 @@ sys-devel/byfl 1.6-r1 9999: Compiler-based Application Analysis
 sys-devel/clang 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: C language family frontend for LLVM
 sys-devel/clang-common 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: Common files shared between multiple slots of clang
 sys-devel/clang-runtime 6.0.1 7.1.0 8.0.1 9.0.0 9.0.0.9999 10.0.0.9999: Meta-ebuild for clang runtime libraries
-sys-devel/cons 2.2.0 2.3.0: Extensible perl-based build utility
+sys-devel/cons 2.3.0: Extensible perl-based build utility
 sys-devel/crossdev 20181020 20181202 20190311 20190712 20190901 20190908 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
@@ -18417,7 +18417,7 @@ www-apps/mirmon 2.10: Simple webapp to monitor the status of mirrors
 www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module using Apache
 www-apps/moodle 3.5.8 3.6.6 3.7.2: The Moodle Course Management System
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
-www-apps/nanoblogger 3.2.3 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
+www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
 www-apps/nanoc 4.10.4 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5: IP address and data center infrastructure management tool
@@ -18800,7 +18800,7 @@ x11-libs/xcb-util-renderutil 0.3.9-r2: X C-language Bindings sample implementati
 x11-libs/xcb-util-wm 0.4.1-r2: X C-language Bindings sample implementations
 x11-libs/xcb-util-xrm 1.0 1.2 1.3: X C-language Bindings sample implementations
 x11-libs/xforms 1.2.4: A graphical user interface toolkit for X
-x11-libs/xosd 2.2.14-r1 2.2.14_p2_p1: Library for overlaying text in X-Windows X-On-Screen-Display
+x11-libs/xosd 2.2.14_p2_p1: Library for overlaying text in X-Windows X-On-Screen-Display
 x11-libs/xpa 2.1.15 2.1.17 2.1.18: Messaging system providing communication between programs
 x11-libs/xtrans 1.4.0: X.Org xtrans library
 x11-misc/3ddesktop 0.2.9-r1: OpenGL virtual desktop switching
@@ -18888,7 +18888,7 @@ x11-misc/iconbox 0.2: App for placing icons in a menu which auto-hides
 x11-misc/idesk 0.7.5-r3: Utility to place icons on the root window
 x11-misc/idesk-extras 1.37-r2: Graphical configuration for iDesk plus icons
 x11-misc/imake 1.0.8: C preprocessor interface to the make utility
-x11-misc/imwheel 1.0.0_pre12 1.0.0_pre13_p20100827: mouse tool for advanced features such as wheels and 3+ buttons
+x11-misc/imwheel 1.0.0_pre13_p20100827: mouse tool for advanced features such as wheels and 3+ buttons
 x11-misc/ipager 1.1.0-r1: A themable desktop pager for fluxbox and other window managers
 x11-misc/j4-dmenu-desktop 2.17: A fast desktop replacement for i3-dmenu-desktop
 x11-misc/kapow 1.5.8 1.5.9: A punch clock program designed to easily keep track of your hours
@@ -19104,7 +19104,7 @@ x11-plugins/asapm 3.1-r1: APM monitor for AfterStep
 x11-plugins/asclock 2.0.12-r3: Clock applet for AfterStep
 x11-plugins/ascpu 1.11-r1: CPU statistics monitor utility for X Windows
 x11-plugins/asmem 1.12-r1: Monitor the utilization level of memory, cache and swap space
-x11-plugins/asmon 0.71 0.71-r1: WindowMaker/AfterStep system monitor dockapp
+x11-plugins/asmon 0.71-r1: WindowMaker/AfterStep system monitor dockapp
 x11-plugins/astime 2.8-r2: Analogue clock utility for X Windows
 x11-plugins/bfm 0.6.4-r3: a dockapp and gkrellm plug-in combining timecop's bubblemon and wmfishtime
 x11-plugins/bubblemon 1.46-r3: A fun monitoring applet for your desktop, complete with swimming duck
@@ -19477,7 +19477,7 @@ x11-wm/stumpwm-contrib 20180128 99999999: Extension Modules for StumpWM
 x11-wm/subtle 0.11.3244 9999: A manual tiling window manager
 x11-wm/treewm 0.4.5-r2: WindowManager that arranges the windows in a tree (not in a list)
 x11-wm/twm 1.0.10: X.Org Tab Window Manager
-x11-wm/vtwm 5.4.6a 5.4.7-r2: TWM descendant that implements a Virtual Desktop
+x11-wm/vtwm 5.4.7-r2: TWM descendant that implements a Virtual Desktop
 x11-wm/windowlab 1.40-r1: small and simple window manager of novel design
 x11-wm/windowmaker 0.95.7 0.95.8-r1 9999: The fast and light GNUstep window manager
 x11-wm/wm2 4-r1: Small, unconfigurable window manager
