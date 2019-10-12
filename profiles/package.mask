@@ -740,12 +740,6 @@ dev-libs/hashit
 # Removal in 30 days.  Bug #694170.
 dev-libs/fampp2
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-12)
-# Unmaintained.  The current release is from 2005, pending version bump
-# since 2012.  No reverse dependencies.
-# Removal in 30 days.  Bug #694168.
-dev-libs/elfio
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
