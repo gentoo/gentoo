@@ -2008,7 +2008,7 @@ app-misc/joy2key 1.6.3-r1: An application that translates joystick events to key
 app-misc/joymouse 0.5: An application that translates joystick events to mouse events
 app-misc/jq 1.5-r3 1.6-r3: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
-app-misc/khal 0.9.7 0.9.8 0.9.9-r1 0.9.10 0.10.1: A CalDAV based calendar
+app-misc/khal 0.9.7 0.9.8 0.9.9-r1 0.9.10 0.10.1-r1: A CalDAV based calendar
 app-misc/khard 0.11.4 0.12.2 0.13.0: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/kryoflux-dtc 2.6: KryoFlux Host Software
