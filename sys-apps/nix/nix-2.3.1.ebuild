@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic readme.gentoo-r1 user
+inherit autotools flag-o-matic linux-info readme.gentoo-r1 user
 
 DESCRIPTION="A purely functional package manager"
 HOMEPAGE="https://nixos.org/nix"
@@ -64,6 +64,13 @@ DOC_CONTENTS=" Quick start user guide on Gentoo:
 Next steps:
 	nix package manager user manual: http://nixos.org/nix/manual/
 "
+
+pkg_pretend() {
+	# USER_NS is used to run builders in a default setting in linux:
+	#     https://nixos.wiki/wiki/Nix#Sandboxing
+	local CONFIG_CHECK="~USER_NS"
+	check_extra_config
+}
 
 pkg_setup() {
 	enewgroup nixbld

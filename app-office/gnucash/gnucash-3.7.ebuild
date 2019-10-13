@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 
 inherit cmake-utils gnome2-utils python-single-r1 xdg-utils
 
@@ -15,12 +15,12 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-IUSE="aqbanking chipcard debug doc examples gnome-keyring +gui mysql nls ofx
-	  postgres python quotes -register2 sqlite test"
+IUSE="aqbanking debug doc examples gnome-keyring +gui mysql nls ofx postgres
+	  python quotes -register2 smartcard sqlite test"
 
 REQUIRED_USE="
-	chipcard? ( aqbanking )
-	python? ( ${PYTHON_REQUIRED_USE} )"
+	python? ( ${PYTHON_REQUIRED_USE} )
+	smartcard? ( aqbanking )"
 
 # libdbi version requirement for sqlite taken from bug #455134
 #
@@ -29,21 +29,22 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/glib-2.46.0:2
 	>=dev-libs/libxml2-2.7.0:2
-	>=sys-libs/zlib-1.1.4
-	>=dev-scheme/guile-2.2.0:12=[deprecated,regex]
 	dev-libs/boost:=[icu,nls]
 	dev-libs/icu:=
 	dev-libs/libxslt
+	>=dev-scheme/guile-2.2.0:12=[deprecated,regex]
+	>=sys-libs/zlib-1.1.4
 	aqbanking? (
-		>=net-libs/aqbanking-5[gtk,ofx?]
-		sys-libs/gwenhywfar[gtk]
-		chipcard? ( sys-libs/libchipcard )
+		>=net-libs/aqbanking-5[ofx?]
+		sys-libs/gwenhywfar
+		smartcard? ( sys-libs/libchipcard )
 	)
 	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
 	gui? (
 		gnome-base/dconf
 		net-libs/webkit-gtk:4=
 		>=x11-libs/gtk+-3.14.0:3
+		aqbanking? ( >=sys-libs/gwenhywfar-4.20.2[gtk] )
 	)
 	mysql? (
 		dev-db/libdbi
@@ -80,11 +81,13 @@ PDEPEND="doc? (
 	gnome-extra/yelp
 )"
 
-PATCHES=( "${FILESDIR}"/${PN}-3.2-no-gui.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.2-no-gui.patch
+	"${FILESDIR}"/${PN}-3.7-include-checksymbolexists.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-	xdg_environment_reset
 }
 
 src_unpack() {
@@ -94,15 +97,33 @@ src_unpack() {
 		|| die "Failed copying scm"
 }
 
+src_prepare() {
+	cmake-utils_src_prepare
+	xdg_environment_reset
+
+	# Fix tests writing to /tmp
+	local fixtestfiles=(
+		"${S}"/gnucash/report/report-system/test/test-commodity-utils.scm
+		"${S}"/gnucash/report/report-system/test/test-extras.scm
+		"${S}"/gnucash/report/report-system/test/test-report-html.scm
+		"${S}"/gnucash/report/report-system/test/test-report-system.scm
+		"${S}"/libgnucash/backend/xml/test/test-xml-pricedb.cpp
+		"${S}"/libgnucash/backend/dbi/test/test-backend-dbi-basic.cpp
+	)
+	for x in "${fixtestfiles[@]}"; do
+		sed -i -e "s|\"/tmp/|\"${T}/|g" "${x}" || die "sed of "${x}" failed"
+	done
+}
+
 src_configure() {
+	export GUILE_AUTO_COMPILE=0
+
 	local sql_on_off="OFF"
 	if use mysql || use postgres || use sqlite ; then
 		sql_on_off="ON"
 	fi
 
 	local mycmakeargs=(
-		# Disable fallback to guile-2.0
-		-DCMAKE_DISABLE_FIND_PACKAGE_GUILE2=ON
 		-DCOMPILE_GSCHEMAS=OFF
 		-DDISABLE_NLS=$(usex !nls)
 		-DENABLE_REGISTER2=$(usex register2)
@@ -169,7 +190,7 @@ src_install() {
 
 pkg_postinst() {
 	if use gui ; then
-		gnome2_icon_cache_update
+		xdg_icon_cache_update
 		gnome2_schemas_update
 	fi
 	xdg_desktop_database_update
@@ -183,7 +204,7 @@ pkg_postinst() {
 
 pkg_postrm() {
 	if use gui ; then
-		gnome2_icon_cache_update
+		xdg_icon_cache_update
 		gnome2_schemas_update
 	fi
 	xdg_desktop_database_update

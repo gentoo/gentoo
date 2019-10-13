@@ -9,7 +9,7 @@ SRC_URI="https://github.com/cracklib/cracklib/releases/download/${P/-words}/${P}
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE=""
 
 S=${WORKDIR}

@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+# TODO: EAPI-7 needs gnome2-utils fixes - ${EROOT%/} and co usage for EAPI-7 in gdk_pixbuf_*
+# TODO: functions and eutils inherit for emktemp or some other solution
 
 inherit gnome.org gnome2-utils meson multilib multilib-minimal xdg
 
@@ -10,11 +12,11 @@ HOMEPAGE="https://git.gnome.org/browse/gdk-pixbuf"
 
 LICENSE="LGPL-2+"
 SLOT="2"
-KEYWORDS="alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="X gtk-doc +introspection jpeg tiff"
 
 # TODO: For windows/darwin support: shared-mime-info conditional, native_windows_loaders option review
-COMMON_DEPEND="
+DEPEND="
 	>=dev-libs/glib-2.48.0:2[${MULTILIB_USEDEP}]
 	x11-misc/shared-mime-info
 	>=media-libs/libpng-1.4:0=[${MULTILIB_USEDEP}]
@@ -23,20 +25,21 @@ COMMON_DEPEND="
 	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
-DEPEND="${COMMON_DEPEND}
-	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt
-	dev-util/glib-utils
-	gtk-doc? ( >=dev-util/gtk-doc-1.20 )
-	>=sys-devel/gettext-0.19.8
-	virtual/pkgconfig
-"
 # librsvg blocker is for the new pixbuf loader API, you lose icons otherwise
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	!<gnome-base/gail-1000
 	!<gnome-base/librsvg-2.31.0
 	!<x11-libs/gtk+-2.21.3:2
 	!<x11-libs/gtk+-2.90.4:3
+"
+DEPEND="
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt
+	dev-util/glib-utils
+	gtk-doc? ( >=dev-util/gtk-doc-1.20
+		app-text/docbook-xml-dtd:4.3 )
+	>=sys-devel/gettext-0.19.8
+	virtual/pkgconfig
 "
 
 MULTILIB_CHOST_TOOLS=(
@@ -108,14 +111,15 @@ pkg_preinst() {
 		# Make sure loaders.cache belongs to gdk-pixbuf alone
 		local cache="usr/$(get_libdir)/${PN}-2.0/2.10.0/loaders.cache"
 
-		if [[ -e ${EROOT}${cache} ]]; then
-			cp "${EROOT}"${cache} "${ED}"/${cache} || die
+		if [[ -e ${EROOT%/}/${cache} ]]; then
+			cp "${EROOT%/}"/${cache} "${ED}"/${cache} || die
 		else
-			touch "${ED}"/${cache} || die
+			touch "${ED%/}"/${cache} || die
 		fi
 	}
 
 	multilib_foreach_abi multilib_pkg_preinst
+	gnome2_gdk_pixbuf_savelist
 }
 
 pkg_postinst() {
@@ -124,19 +128,12 @@ pkg_postinst() {
 
 	xdg_pkg_postinst
 	multilib_foreach_abi gnome2_gdk_pixbuf_update
-
-	# Migration snippet for when this was handled by gtk+
-	if [ -e "${EROOT}"usr/lib/gtk-2.0/2.*/loaders ]; then
-		elog "You need to rebuild ebuilds that installed into" "${EROOT}"usr/lib/gtk-2.0/2.*/loaders
-		elog "to do that you can use qfile from portage-utils:"
-		elog "emerge -va1 \$(qfile -qC ${EPREFIX}/usr/lib/gtk-2.0/2.*/loaders)"
-	fi
 }
 
 pkg_postrm() {
 	xdg_pkg_postrm
 
 	if [[ -z ${REPLACED_BY_VERSION} ]]; then
-		rm -f "${EROOT}"usr/lib*/${PN}-2.0/2.10.0/loaders.cache
+		rm -f "${EROOT%/}"/usr/lib*/${PN}-2.0/2.10.0/loaders.cache
 	fi
 }

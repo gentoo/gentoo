@@ -70,6 +70,7 @@ net-analyzer/bsnmp
 net-firewall/pftop
 sys-apps/flock
 sys-auth/openpam
+virtual/pam
 sys-block/eject-bsd
 sys-fs/fuse4bsd
 sys-process/pidof-bsd
@@ -129,7 +130,6 @@ app-office/tedia2sql
 app-text/mht-rip
 dev-embedded/gnap
 dev-libs/xplc
-dev-util/smem
 dev-vcs/cvsd
 dev-vcs/cvsq
 dev-vcs/svn2cl

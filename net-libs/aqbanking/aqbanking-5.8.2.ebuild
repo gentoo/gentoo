@@ -10,7 +10,7 @@ SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/107/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="chipcard debug doc ebics examples ofx"
+IUSE="debug doc ebics examples ofx smartcard"
 
 BDEPEND="
 	sys-devel/gettext
@@ -22,13 +22,13 @@ RDEPEND="
 	dev-libs/gmp:0=
 	sys-libs/gwenhywfar:=
 	virtual/libintl
-	chipcard? ( >=sys-libs/libchipcard-5.0.2 )
 	ebics? ( dev-libs/xmlsec[gcrypt,gnutls] )
 	ofx? ( >=dev-libs/libofx-0.9.5 )
+	smartcard? ( >=sys-libs/libchipcard-5.0.2 )
 "
 DEPEND="${RDEPEND}"
 
-# DOCS=( AUTHORS ChangeLog NEWS README TODO )
+DOCS=( AUTHORS ChangeLog NEWS README TODO )
 
 MAKEOPTS="${MAKEOPTS} -j1" # 5.7.8 still fails with > -j1
 
