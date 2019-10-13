@@ -5,10 +5,6 @@
 		<email>titanofold@gentoo.org</email>
 		<name>Aaron W. Swenson</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
 	<use>
 		<flag name="aqbanking">
 			Connect to some internet banks via AqBanking
