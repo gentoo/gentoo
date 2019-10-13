@@ -188,7 +188,7 @@ show_ip22_info() {
 
 show_ip27_info() {
 	echo -e ""
-	ewarn "IP27 on the Origin 2k/Onyx2 systems may be prone to sudden hard lockups."
+	ewarn "IP27 Origin 2k/Onyx2 systems may be prone to sudden hard lockups."
 	ewarn "The exact trigger is unknown at this time."
 	echo -e ""
 }
@@ -318,18 +318,16 @@ src_unpack() {
 	for x in {ip27,ip28,ip30}; do
 		use ${x} && v="${v}.${x}" && break
 	done
-	mv "${WORKDIR}/linux-${fkv/_/-}" "${WORKDIR}/linux-${v}" || die
-	S="${WORKDIR}/linux-${v}"
+	local old="${WORKDIR}/linux-${fkv/_/-}"
+	local new="${WORKDIR}/linux-${v}"
+	if [ "${old}" != "${new}" ]; then
+		mv "${old}" "${new}" || die
+	fi
+	S="${new}"
 
 	# Set the EXTRAVERSION to linux-VERSION-mipsgit-GITDATE
 	EXTRAVERSION="${EXTRAVERSION}-gentoo-mips"
 	unpack_set_extraversion
-#	local old="${WORKDIR}/linux-${fkv/_/-}"
-#	local new="${WORKDIR}/linux-${v}"
-#	if [ "${old}" != "${new}" ]; then
-#		mv "${old}" "${new}" || die
-#	fi
-#	S="${new}"
 }
 
 src_prepare() {
