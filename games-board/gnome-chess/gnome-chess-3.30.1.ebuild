@@ -3,6 +3,7 @@
 
 EAPI=6
 VALA_MIN_API_VERSION="0.40"
+VALA_MAX_API_VERSION="0.44"
 
 inherit gnome.org gnome2-utils meson readme.gentoo-r1 vala xdg
 
