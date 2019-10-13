@@ -620,6 +620,11 @@
       <name>Ultrabug</name>
       <role>developer</role>
     </member>
+    <member>
+      <email>zlogene@gentoo.org</email>
+      <name>Mikle Kolyada</name>
+      <role>developer (OpenMPI/Slurm)</role>
+    </member>
   </project>
   <project>
     <email>comrel@gentoo.org</email>
