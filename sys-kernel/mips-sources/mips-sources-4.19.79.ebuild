@@ -318,6 +318,7 @@ src_unpack() {
 	for x in {ip27,ip28,ip30}; do
 		use ${x} && v="${v}.${x}" && break
 	done
+
 	local old="${WORKDIR}/linux-${fkv/_/-}"
 	local new="${WORKDIR}/linux-${v}"
 	if [ "${old}" != "${new}" ]; then
