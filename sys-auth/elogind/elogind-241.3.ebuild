@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 sparc x86"
 IUSE="+acl debug doc +pam +policykit selinux"
 
 COMMON_DEPEND="

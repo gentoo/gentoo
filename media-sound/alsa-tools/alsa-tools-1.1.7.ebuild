@@ -10,7 +10,7 @@ SRC_URI="https://www.alsa-project.org/files/pub/tools/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0.9"
-KEYWORDS="amd64 ~hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~hppa ~mips ppc ppc64 sparc x86"
 
 IUSE="fltk gtk alsa_cards_hdsp alsa_cards_hdspm alsa_cards_mixart
 alsa_cards_vx222 alsa_cards_usb-usx2y alsa_cards_sb16 alsa_cards_sbawe
