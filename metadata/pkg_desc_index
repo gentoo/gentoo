@@ -4684,7 +4684,7 @@ dev-lang/spark 2017 2018: Software development for high-reliability applications
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 1.8.5-r7 1.8.5-r9 17.0.0-r5 38.3.0 45.0.2 52.9.1_pre1 52.9.1_pre1-r1 60.5.2_p0-r2 60.5.2_p0-r3: Stand-alone JavaScript C++ library
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 8.0.3 8.1.12 8.1.13: versatile implementation of the Prolog programming language
+dev-lang/swi-prolog 8.0.3 8.1.12 8.1.13 8.1.14: versatile implementation of the Prolog programming language
 dev-lang/swig 2.0.9 3.0.12 4.0.0: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.26-r3 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.5.17-r100 8.5.17-r101 8.6.8 8.6.9: Tool Command Language
@@ -4773,7 +4773,7 @@ dev-libs/double-conversion 3.1.4-r1: Binary-decimal and decimal-binary conversio
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.16.0: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
-dev-libs/efl 1.22.2 1.22.5 1.22.6 1.23.0 1.23.1: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.22.2 1.22.6 1.23.1: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.176-r1 0.177: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.9 0.20 0.21 0.22 0.23 0.24 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
@@ -10618,7 +10618,7 @@ dev-util/clair 2.0.8: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.5 1.5-r1: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06 9999: A tool to display info about the system's OpenCL capabilities
-dev-util/clion 2019.2.1: A complete toolset for C and C++ development
+dev-util/clion 2019.2.3: A complete toolset for C and C++ development
 dev-util/cloc 1.72 1.76-r1 1.80 1.82: Count Lines of Code
 dev-util/cmake 3.13.5 3.14.6 3.14.7 3.15.3 3.15.4 3.16.0_rc1: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
@@ -10679,7 +10679,7 @@ dev-util/diffuse 0.4.8: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
 dev-util/dissembler 0.9-r1: polymorphs bytecode to a printable ASCII string
 dev-util/distro-info 0.14: Provides information about the Debian distributions' releases
-dev-util/distro-info-data 0.29 0.32: Information about the Debian distributions' releases (data files)
+dev-util/distro-info-data 0.29 0.32 0.42: Information about the Debian distributions' releases (data files)
 dev-util/dmake 4.12.2: Improved make
 dev-util/docker-distribution-pruner 0_p20170401: Clean all old container revisions from registry
 dev-util/docker-ls 0.3.1: Tools for browsing and manipulating docker registries
@@ -11967,7 +11967,7 @@ gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-boxes 3.30.3: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-calculator 3.30.1 3.32.2: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.30.1 3.32.2: Manage your online calendars with simple and modern interface
-gnome-extra/gnome-characters 3.30.0: Unicode character map viewer and library
+gnome-extra/gnome-characters 3.30.0 3.32.1: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.30.1: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.30.0-r1 3.32.0: GNOME color profile tools
 gnome-extra/gnome-commander 1.10.0 1.10.1: A graphical, full featured, twin-panel file manager
@@ -12896,7 +12896,7 @@ media-gfx/dcraw 9.28.0-r1: Command-line decoder for raw digital photos
 media-gfx/digikam 6.2.0 6.3.0-r1: Digital photo management application
 media-gfx/displaycal 3.7.2.0-r1 3.8.1.1 3.8.3.0 3.8.5.0 3.8.7.0: Display calibration and characterization powered by Argyll CMS
 media-gfx/ditaa 0.10 0.11.0: A utility that converts ascii-art diagrams to bitmap diagrams
-media-gfx/dmtx-utils 0.7.5: Tools for reading and writing Data Matrix barcodes
+media-gfx/dmtx-utils 0.7.5 0.7.6: Tools for reading and writing Data Matrix barcodes
 media-gfx/dpic 20130310 20160824: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
@@ -12941,7 +12941,7 @@ media-gfx/gimp 2.8.22-r1 2.9.8-r1 2.10.8-r1 2.10.10-r1 2.10.12 9999: GNU Image M
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.7.0 2.7.1 2.7.2: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
-media-gfx/gnome-font-viewer 3.30.0: Font viewer utility for GNOME
+media-gfx/gnome-font-viewer 3.30.0 3.32.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.30.1-r1: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.30.0: Screenshot utility for GNOME
@@ -13228,7 +13228,6 @@ media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.14.0: Library for SSA/ASS subtitles rendering
 media-libs/libbdplus 0.1.2 9999: Blu-ray library for BD+ decryption
 media-libs/libbluray 1.1.2 9999: Blu-ray playback libraries
-media-libs/libbmp 0.1.3: C library for reading, writing, and modifying Windows bitmap image files
 media-libs/libbs2b 3.1.0-r2: Bauer stereophonic-to-binaural DSP library
 media-libs/libbsb 0.0.7: A portable C library for reading and writing BSB format image files
 media-libs/libcaca 0.99_beta19: A library that creates colored ASCII-art graphics
@@ -13305,7 +13304,6 @@ media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
 media-libs/libmediainfo 19.07 19.09: MediaInfo libraries
 media-libs/libmetalink 0.1.3: Library for handling Metalink files
 media-libs/libmikmod 3.3.11.1: A library to play a wide range of module formats
-media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
 media-libs/libmng 2.0.3: Multiple Image Networkgraphics lib (animated png's)
 media-libs/libmodplug 0.8.9.0: Library for playing MOD-like music files
@@ -13440,7 +13438,6 @@ media-libs/raul 0.8.0-r1: C++ utility library primarily aimed at audio/musical a
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rtaudio 4.1.2 5.0.0: A set of cross-platform C++ classes for realtime audio I/O
 media-libs/rubberband 1.8.2: An audio time-stretching and pitch-shifting library and utility program
-media-libs/sampleicc 1.6.8: C++ library for reading, writing, manipulating, and applying ICC profiles
 media-libs/sbc 1.4: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
 media-libs/sdl-gfx 2.0.25 2.0.26: Graphics drawing primitives library for SDL
 media-libs/sdl-image 1.2.12-r2: image file loading library
@@ -14245,7 +14242,7 @@ media-video/bluray_info 1.3: Blu-ray disc tools: bluray_info, bluray_copy
 media-video/ccextractor 0.85-r2: Extract closed captioning subtitles from video to SRT
 media-video/cclive 0.9.3-r2: Command line tool for extracting videos from various websites
 media-video/chaplin 1.10-r2: This is a program to raw copy chapters from a dvd using libdvdread
-media-video/cheese 3.30.0: A cheesy program to take pictures and videos from your webcam
+media-video/cheese 3.30.0 3.32.1: A cheesy program to take pictures and videos from your webcam
 media-video/cinelerra 2.3: The most advanced non-linear video editor and compositor
 media-video/clive 2.3.0.1: Command line tool for extracting videos from various websites
 media-video/cpvts 1.2: raw copy title sets from a DVD to your harddisc
@@ -14959,8 +14956,6 @@ net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
 net-libs/biblesync 1.1.2-r2 2.0.1: A multicast protocol to support Bible software shared co-navigation
 net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
-net-libs/ccnet 6.1.8: Ccnet is a framework for writing networked applications in C
-net-libs/ccrtp 2.1.2: GNU ccRTP - Implementation of the IETF real-time transport protocol
 net-libs/courier-authlib 0.65.0-r3 0.66.4 0.67.0 0.68.0-r1 0.69.0-r1: Courier authentication library
 net-libs/courier-unicode 1.3 1.4 2.1: Unicode library used by the courier mail server
 net-libs/cppzmq 0_pre130717-r1 0_pre150606: High-level CPP Binding for ZeroMQ
@@ -14971,7 +14966,6 @@ net-libs/davix 0.6.7 0.7.3 0.7.4 0.7.5: High-performance file management over We
 net-libs/dleyna-connector-dbus 0.2.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-core 0.5.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-renderer 0.5.0: library implementing services that allow clients to discover and manipulate DLNA renderers
-net-libs/dslib 3.0-r1: Library to access Czech eGov system "Datove schranky"
 net-libs/enet 1.2.2-r1 1.3.13: relatively thin, simple and robust network communication layer on top of UDP
 net-libs/farstream 0.2.8-r1 0.2.8-r2: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/freaklabs-chibiarduino 1.0.8_p20190329 9999: freaklabs fork of the lightweight wireless sensor library for Arduino
@@ -15019,7 +15013,6 @@ net-libs/libetpan 1.9.3: A portable, efficient middleware for different kinds of
 net-libs/libflowmanager 3.0.0-r1: A library that measures and reports on packet flows
 net-libs/libgadu 1.11.4 1.12.2: This library implements the client side of the Gadu-Gadu protocol
 net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
-net-libs/libgmail 0.1.11-r1: Python bindings to access Google's gmail service
 net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS/Atom/Pie feeds
 net-libs/libgsasl 1.8.0-r1: The GNU SASL library
 net-libs/libgssglue 0.4-r1: Exports a gssapi interface which calls other random gssapi libraries
@@ -15075,7 +15068,6 @@ net-libs/libpsl 0.20.2 0.21.0: C library for the Public Suffix List
 net-libs/libqmi 1.12.6 1.14.0 1.16.0 1.16.2 1.16.4 1.18.0 1.18.2 1.20.0 1.20.2 1.22.2 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librsync 0.9.7-r3 2.0.1-r1 2.0.2 2.1.0: Remote delta-compression library
-net-libs/libs3 2.0-r1: A C Library API for Amazon S3
 net-libs/libsearpc 3.0.8-r3: A simple C language RPC framework
 net-libs/libsignon-glib 2.1: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
@@ -15093,7 +15085,6 @@ net-libs/libupnp 1.6.21 1.6.25 1.8.2 1.8.3-r1 1.8.4: An Portable Open Source UPn
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.12-r2: library for creating vnc servers
 net-libs/libwebsockets 1.7.9 2.0.2 2.1.1 2.4.2: canonical libwebsockets.org websocket library
-net-libs/libyahoo2 1.0.1: interface to the new Yahoo! Messenger protocol
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for software-defined radios
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
@@ -15101,7 +15092,6 @@ net-libs/mbedtls 2.10.0 2.12.0 2.16.3 2.17.0: Cryptographic library for embedded
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 2.1.20190625 2.1.20190824: UPnP client library and a simple UPnP client
 net-libs/nDPI 2.0 2.2 2.8: Open Source Deep Packet Inspection Software Toolkit
-net-libs/nacl 0_p20110221: high-speed software library for network communication, encryption, decryption, signatures
 net-libs/nativebiginteger 0.8.7 0.9.36 0.9.36-r1: jbigi library used by net-vpn/i2p
 net-libs/neon 0.30.2: HTTP and WebDAV client library
 net-libs/net6 1.3.14-r2: Network access framework for IPv4/IPv6 written in C++
@@ -17194,7 +17184,7 @@ sys-apps/gawk 4.2.1-r1 5.0.0 5.0.1: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
 sys-apps/gentoo-functions 0.12 9999: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7 9999: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.30.2-r1: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.30.2-r1 3.32.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 1.0.3 1.0.4: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257 3.1.201708012022: Administrative interface for the grsecurity Role Based Access Control system
@@ -18671,7 +18661,6 @@ x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for 
 x11-libs/gtkdatabox 0.9.2.0 0.9.3.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
 x11-libs/gtkglarea 2.0.1-r1 2.1.0: OpenGL canvas and context provider for GTK+
 x11-libs/gtkglext 1.2.0-r4: GL extensions for Gtk+ 2.0
-x11-libs/gtkhotkey 0.2.1-r1: Cross platform library for using desktop wide hotkeys
 x11-libs/gtkmathview 0.8.0-r3: Rendering engine for MathML documents
 x11-libs/gtksourceview 2.10.5-r3 3.24.11 4.2.0: A text widget implementing syntax highlighting and other features
 x11-libs/libFS 1.0.8: X.Org FS library
@@ -18708,7 +18697,6 @@ x11-libs/libXvMC 1.0.11 1.0.12: X.Org XvMC library
 x11-libs/libXxf86dga 1.1.5: X.Org Xxf86dga library
 x11-libs/libXxf86misc 1.0.4: X.Org Xxf86misc library
 x11-libs/libXxf86vm 1.1.4-r1: X.Org Xxf86vm library
-x11-libs/libaosd 0.2.7: An advanced on screen display (OSD) library
 x11-libs/libast 0.7-r2: LIBrary of Assorted Spiffy Things
 x11-libs/libcryptui 3.12.2-r1: User interface components for OpenPGP
 x11-libs/libdlo 0.1.2-r1: A fully open source driver which supports all DisplayLink devices
@@ -18724,7 +18712,6 @@ x11-libs/libgxim 0.5.0: GObject-based XIM protocol library
 x11-libs/libnotify 0.7.7-r1 0.7.8: A library for sending desktop notifications
 x11-libs/liboglappth 1.0.0: Libary for OpenGL applications with easy-to-code scene setup and selection
 x11-libs/libpciaccess 0.16: Library providing generic access to the PCI bus and devices
-x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality from the GNUstep environment
 x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, such as Rodent filemanager
 x11-libs/libtinynotify 0.2.1 9999: A lightweight implementation of Desktop Notification Spec
 x11-libs/libtinynotify-cli 1.2.1 9999: Common CLI routines for tinynotify-send & sw-notify-send
