@@ -20,7 +20,7 @@
 		<flag name="webcam">Add support for setting a profile photo in <pkg>media-video/cheese</pkg></flag>
 	</use>
 	<upstream>
-		<bugs-to>https://bugs.launchpad.net/mugshot</bugs-to>
-		<remote-id type="launchpad">mugshot</remote-id>
+		<bugs-to>https://github.com/bluesabre/mugshot/issues</bugs-to>
+		<remote-id type="github">bluesabre/mugshot</remote-id>
 	</upstream>
 </pkgmetadata>

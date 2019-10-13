@@ -1,9 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 VALA_MIN_API_VERSION="0.40"
-VALA_MAX_API_VERSION="0.44"
 
 inherit gnome.org gnome2-utils meson readme.gentoo-r1 vala xdg
 
@@ -12,15 +11,18 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Chess"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	>=x11-libs/gtk+-3.20.0:3
-	>=gnome-base/librsvg-2.32.0:2[vala]
+	>=gnome-base/librsvg-2.32.0:2
 "
 DEPEND="${RDEPEND}
+	gnome-base/librsvg:2[vala]
+"
+BDEPEND="
 	$(vala_depend)
 	dev-util/itstool
 	dev-libs/appstream-glib
@@ -28,8 +30,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-DOC_CONTENTS="For being able to play against computer you will
-need to install a chess engine like, for example, games-board/gnuchess"
+DOC_CONTENTS="To be able to play against a computer you will need
+to install a chess engine package, for example games-board/gnuchess"
 
 src_prepare() {
 	xdg_src_prepare

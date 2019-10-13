@@ -1,8 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python3_{5,6} )
+EAPI=7
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 inherit gnome.org gnome2-utils meson python-single-r1 xdg
 
@@ -14,12 +14,12 @@ SLOT="0"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
-COMMON_DEPEND="${PYTHON_DEPS}
+DEPEND="${PYTHON_DEPS}
 	net-libs/gnome-online-accounts[introspection]
 	>=dev-libs/gobject-introspection-1.54:=
-	>=x11-libs/gtk+-3.19.3:3[introspection]
+	>=x11-libs/gtk+-3.23.1:3[introspection]
 	>=dev-libs/libdazzle-3.28.0[introspection]
 	>=media-libs/libmediaart-1.9.1:2.0[introspection]
 	net-libs/libsoup:2.4[introspection]
@@ -31,7 +31,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 "
 # xdg-user-dirs-update needs to be there to create needed dirs
 # https://bugzilla.gnome.org/show_bug.cgi?id=731613
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	|| (
 		>=app-misc/tracker-miners-1.99.1[gstreamer]
 		>=app-misc/tracker-miners-1.99.1[ffmpeg]
@@ -43,12 +43,14 @@ RDEPEND="${COMMON_DEPEND}
 	media-plugins/grilo-plugins:0.3[tracker]
 	x11-misc/xdg-user-dirs
 "
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	dev-libs/libxml2:2
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+
+RESTRICT="test" # only does desktop and appdata validation, and latter needs network to validate screenshot from https
 
 pkg_setup() {
 	python_setup
@@ -61,7 +63,7 @@ src_prepare() {
 
 src_install() {
 	meson_src_install
-	python_fix_shebang "${D}"usr/bin/gnome-music
+	python_fix_shebang "${D}"/usr/bin/gnome-music
 	python_optimize
 }
 
