@@ -37,6 +37,8 @@ RDEPEND="
 	perl? ( dev-lang/perl )
 "
 
+PATCHES=( "${FILESDIR}"/${P}-linux-5.3-compat.patch )
+
 src_prepare() {
 	default
 
