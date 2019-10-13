@@ -1,0 +1,75 @@
+https://github.com/strace/strace/commit/60da39553ff92cf741bf7f54daff636bb28cbb3c
+https://bugs.gentoo.org/695260
+
+--- a/xlat/v4l2_pix_fmts.h
++++ b/xlat/v4l2_pix_fmts.h
+@@ -269,19 +269,23 @@ DIAG_POP_IGNORE_TAUTOLOGICAL_COMPARE
+ #else
+ # define V4L2_PIX_FMT_MPEG1 v4l2_fourcc('M', 'P', 'G', '1')
+ #endif
+-#if defined(V4L2_PIX_FMT_BGRA444) || (defined(HAVE_DECL_V4L2_PIX_FMT_BGRA444) && HAVE_DECL_V4L2_PIX_FMT_BGRA444)
++#if defined(V4L2_PIX_FMT_SGRBG12) || (defined(HAVE_DECL_V4L2_PIX_FMT_SGRBG12) && HAVE_DECL_V4L2_PIX_FMT_SGRBG12)
+ DIAG_PUSH_IGNORE_TAUTOLOGICAL_COMPARE
+-static_assert((V4L2_PIX_FMT_BGRA444) == (v4l2_fourcc('B', 'A', '1', '2')), "V4L2_PIX_FMT_BGRA444 != v4l2_fourcc('B', 'A', '1', '2')");
++static_assert((V4L2_PIX_FMT_SGRBG12) == (v4l2_fourcc('B', 'A', '1', '2')), "V4L2_PIX_FMT_SGRBG12 != v4l2_fourcc('B', 'A', '1', '2')");
+ DIAG_POP_IGNORE_TAUTOLOGICAL_COMPARE
+ #else
+-# define V4L2_PIX_FMT_BGRA444 v4l2_fourcc('B', 'A', '1', '2')
++# define V4L2_PIX_FMT_SGRBG12 v4l2_fourcc('B', 'A', '1', '2')
+ #endif
+-#if defined(V4L2_PIX_FMT_SGRBG12) || (defined(HAVE_DECL_V4L2_PIX_FMT_SGRBG12) && HAVE_DECL_V4L2_PIX_FMT_SGRBG12)
++#ifndef STRACE_WORKAROUND_FOR_V4L2_PIX_FMT_BGRA444
++# define STRACE_WORKAROUND_FOR_V4L2_PIX_FMT_BGRA444
++# undef V4L2_PIX_FMT_BGRA444
++#endif
++#if defined(V4L2_PIX_FMT_BGRA444) || (defined(HAVE_DECL_V4L2_PIX_FMT_BGRA444) && HAVE_DECL_V4L2_PIX_FMT_BGRA444)
+ DIAG_PUSH_IGNORE_TAUTOLOGICAL_COMPARE
+-static_assert((V4L2_PIX_FMT_SGRBG12) == (v4l2_fourcc('B', 'A', '1', '2')), "V4L2_PIX_FMT_SGRBG12 != v4l2_fourcc('B', 'A', '1', '2')");
++static_assert((V4L2_PIX_FMT_BGRA444) == (v4l2_fourcc('G', 'A', '1', '2')), "V4L2_PIX_FMT_BGRA444 != v4l2_fourcc('G', 'A', '1', '2')");
+ DIAG_POP_IGNORE_TAUTOLOGICAL_COMPARE
+ #else
+-# define V4L2_PIX_FMT_SGRBG12 v4l2_fourcc('B', 'A', '1', '2')
++# define V4L2_PIX_FMT_BGRA444 v4l2_fourcc('G', 'A', '1', '2')
+ #endif
+ #if defined(V4L2_PIX_FMT_RGBA444) || (defined(HAVE_DECL_V4L2_PIX_FMT_RGBA444) && HAVE_DECL_V4L2_PIX_FMT_RGBA444)
+ DIAG_PUSH_IGNORE_TAUTOLOGICAL_COMPARE
+@@ -1343,8 +1347,17 @@ const struct xlat v4l2_pix_fmts[] = {
+  XLAT(V4L2_PIX_FMT_H264_NO_SC),
+  XLAT(V4L2_PIX_FMT_PWC1),
+  XLAT(V4L2_PIX_FMT_MPEG1),
+- XLAT(V4L2_PIX_FMT_BGRA444),
+  XLAT(V4L2_PIX_FMT_SGRBG12),
++#ifndef STRACE_WORKAROUND_FOR_V4L2_PIX_FMT_BGRA444
++# define STRACE_WORKAROUND_FOR_V4L2_PIX_FMT_BGRA444
++/*
++* V4L2_PIX_FMT_BGRA444 was introduced in Linux commit v5.2-rc1~33^2~24 with
++* the value of v4l2_fourcc('B', 'A', '1', '2') and changed in commit
++* v5.2-rc5-403-g22be8233b34f as it clashed with V4L2_PIX_FMT_SGRBG12.
++*/
++# undef V4L2_PIX_FMT_BGRA444
++#endif
++ XLAT(V4L2_PIX_FMT_BGRA444),
+  XLAT(V4L2_PIX_FMT_RGBA444),
+  XLAT(V4L2_PIX_FMT_ABGR444),
+  XLAT(V4L2_PIX_FMT_SGBRG12),
+--- a/xlat/v4l2_pix_fmts.in
++++ b/xlat/v4l2_pix_fmts.in
+@@ -37,8 +37,17 @@ V4L2_PIX_FMT_RGB332  v4l2_fourcc('R', 'G', 'B', '1') /*  8  RGB-3-3-2     */
+ V4L2_PIX_FMT_H264_NO_SC v4l2_fourcc('A', 'V', 'C', '1') /* H264 without start codes */
+ V4L2_PIX_FMT_PWC1     v4l2_fourcc('P', 'W', 'C', '1') /* pwc older webcam */
+ V4L2_PIX_FMT_MPEG1    v4l2_fourcc('M', 'P', 'G', '1') /* MPEG-1 ES     */
+-V4L2_PIX_FMT_BGRA444 v4l2_fourcc('B', 'A', '1', '2') /* 16  bbbbgggg rrrraaaa */
+ V4L2_PIX_FMT_SGRBG12 v4l2_fourcc('B', 'A', '1', '2') /* 12  GRGR.. BGBG.. */
++#ifndef STRACE_WORKAROUND_FOR_V4L2_PIX_FMT_BGRA444
++# define STRACE_WORKAROUND_FOR_V4L2_PIX_FMT_BGRA444
++/*
++ * V4L2_PIX_FMT_BGRA444 was introduced in Linux commit v5.2-rc1~33^2~24 with
++ * the value of v4l2_fourcc('B', 'A', '1', '2') and changed in commit
++ * v5.2-rc5-403-g22be8233b34f as it clashed with V4L2_PIX_FMT_SGRBG12.
++ */
++# undef V4L2_PIX_FMT_BGRA444
++#endif
++V4L2_PIX_FMT_BGRA444 v4l2_fourcc('G', 'A', '1', '2') /* 16  bbbbgggg rrrraaaa */
+ V4L2_PIX_FMT_RGBA444 v4l2_fourcc('R', 'A', '1', '2') /* 16  rrrrgggg bbbbaaaa */
+ V4L2_PIX_FMT_ABGR444 v4l2_fourcc('A', 'B', '1', '2') /* 16  aaaabbbb ggggrrrr */
+ V4L2_PIX_FMT_SGBRG12 v4l2_fourcc('G', 'B', '1', '2') /* 12  GBGB.. RGRG.. */
