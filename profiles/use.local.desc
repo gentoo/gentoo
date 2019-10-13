@@ -3032,7 +3032,6 @@ dev-util/gtk-doc:vim - Enable source code highlighting through app-editors/vim
 dev-util/idea-community:custom-jdk - Install and use IntelliJ's custom JRE.
 dev-util/idea-community:jbr11 - Install and use the Java 11 based version of JetBrains Runtime.
 dev-util/idea-community:jbr8 - Install and use the Java 8 based version of JetBrains Runtime.
-dev-util/idea-ultimate:custom-jdk - Install and use IntelliJ's custom JRE.
 dev-util/intel-ocl-sdk:android - Install android related files
 dev-util/intel-ocl-sdk:system-boost - Use system boost (dev-libs/boost) instead of bundled one
 dev-util/intel-ocl-sdk:system-clang - Use system clang (sys-devel/clang) instead of bundled one
