@@ -116,6 +116,7 @@ pkg_preinst() {
 	}
 
 	multilib_foreach_abi multilib_pkg_preinst
+	gnome2_gdk_pixbuf_savelist
 }
 
 pkg_postinst() {
