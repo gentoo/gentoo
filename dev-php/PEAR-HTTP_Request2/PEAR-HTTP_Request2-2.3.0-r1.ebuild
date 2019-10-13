@@ -9,7 +9,7 @@ DESCRIPTION="Provides an easy way to perform HTTP requests"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ~ppc ~ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 ~arm hppa ia64 ~ppc ~ppc64 ~s390 ~sh sparc x86"
 IUSE="+curl +fileinfo +ssl test +zlib"
 
 RDEPEND="dev-lang/php:*[curl?,fileinfo?,ssl?,zlib?]
