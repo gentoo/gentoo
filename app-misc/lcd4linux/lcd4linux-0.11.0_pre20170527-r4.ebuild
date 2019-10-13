@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -40,10 +40,10 @@ IUSE_LCD_DEVICES=(
 # - seti: SETI@home software was replaced by sci-misc/boinc, which is not compatible.
 # - xmms: XMMS software was replaced by media-sound/xmms2, which is not compatible.
 IUSE_LCD4LINUX_PLUGINS=(
-	apm asterisk button_exec cpuinfo dbus diskstats dvb exec event
-	fifo file gps hddtemp huawei i2c_sensors iconv isdn kvv
-	loadavg meminfo mpd mpris_dbus mysql netdev netinfo pop3
-	proc_stat python qnaplog raspi sample statfs uname uptime
+	apm asterisk button-exec cpuinfo dbus diskstats dvb exec event
+	fifo file gps hddtemp huawei i2c-sensors iconv isdn kvv
+	loadavg meminfo mpd mpris-dbus mysql netdev netinfo pop3
+	proc-stat python qnaplog raspi sample statfs uname uptime
 	w1retap wireless
 )
 
@@ -107,13 +107,8 @@ DEPEND_LCD4LINUX_PLUGINS="
 	hddtemp? ( app-admin/hddtemp )
 	iconv? ( virtual/libiconv )
 	mpd? ( media-libs/libmpd )
-	mpris_dbus? ( sys-apps/dbus )
-	mysql? (
-		|| (
-			dev-db/mariadb-connector-c
-			dev-db/mysql-connector-c
-		)
-	)
+	mpris-dbus? ( sys-apps/dbus )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	python? ( ${PYTHON_DEPS} )
 	wireless? (
 		|| (
@@ -155,7 +150,7 @@ src_configure() {
 	local myeconfargs_lcd4linux_plugins
 	for lcd4linux_plugin in "${IUSE_LCD4LINUX_PLUGINS[@]}"; do
 		if use "${lcd4linux_plugin}"; then
-			myeconfargs_lcd4linux_plugins+=",${lcd4linux_plugin}"
+			myeconfargs_lcd4linux_plugins+=",${lcd4linux_plugin/-/_}"
 		fi
 	done
 
@@ -182,5 +177,5 @@ src_install() {
 	insopts -m 0600
 	doins lcd4linux.conf.sample
 
-	newinitd "${FILESDIR}/lcd4linux-r1.initd" lcd4linux
+	newinitd "${FILESDIR}/lcd4linux-r2.initd" lcd4linux
 }
