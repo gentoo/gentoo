@@ -16,12 +16,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 KEYWORDS="amd64 ~arm64 x86"
 
-# At 3.30.2 libdazzle only used from .ui file, thus introspection not needed
 COMMON_DEPEND="${PYTHON_DEPS}
 	net-libs/gnome-online-accounts[introspection]
 	>=dev-libs/gobject-introspection-1.54:=
 	>=x11-libs/gtk+-3.19.3:3[introspection]
-	>=dev-libs/libdazzle-3.28.0
+	>=dev-libs/libdazzle-3.28.0[introspection]
 	>=media-libs/libmediaart-1.9.1:2.0[introspection]
 	net-libs/libsoup:2.4[introspection]
 	>=app-misc/tracker-1.99.1:=[introspection(+)]
