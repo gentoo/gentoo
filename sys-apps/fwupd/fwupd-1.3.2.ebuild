@@ -14,10 +14,11 @@ SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="agent amt consolekit dell gtk-doc elogind +gpg introspection +man nvme pkcs7 redfish synaptics systemd test thunderbolt uefi"
+IUSE="agent amt consolekit dell gtk-doc elogind minimal +gpg introspection +man nvme pkcs7 redfish synaptics systemd test thunderbolt uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	^^ ( consolekit elogind systemd )
+	^^ ( consolekit elogind minimal systemd )
 	dell? ( uefi )
+	minimal? ( !introspection )
 "
 RESTRICT="!test? ( test )"
 
@@ -41,13 +42,12 @@ DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.45.8:2
 	dev-libs/json-glib
 	dev-libs/libgpg-error
-	>=dev-libs/libgusb-0.2.9[introspection]
+	>=dev-libs/libgusb-0.2.9[introspection?]
 	>=dev-libs/libxmlb-0.1.7
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
-	>=net-libs/libsoup-2.51.92:2.4[introspection]
-	>=sys-auth/polkit-0.103
+	>=net-libs/libsoup-2.51.92:2.4[introspection?]
 	virtual/libelf:0=
 	virtual/libgudev:=
 	virtual/udev
@@ -60,6 +60,9 @@ DEPEND="${PYTHON_DEPS}
 	gpg? (
 		app-crypt/gpgme
 		dev-libs/libgpg-error
+	)
+	!minimal? (
+		>=sys-auth/polkit-0.103
 	)
 	nvme? ( sys-libs/efivar )
 	pkcs7? ( >=net-libs/gnutls-3.4.4.1:= )
@@ -91,10 +94,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	sed -e "s/'--create'/'--absolute-name', '--create'/" \
-		-i data/tests/builder/meson.build || die
-	sed -e "/'-Werror',/d" \
-		-i plugins/uefi/efi/meson.build || die
 	# c.f. https://github.com/fwupd/fwupd/issues/1414
 	sed -e "/test('thunderbolt-self-test', e, env: test_env, timeout : 120)/d" \
 		-i plugins/thunderbolt/meson.build || die
@@ -104,6 +103,7 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		--localstatedir "${EPREFIX}"/var
+		-Dbuild="$(usex minimal standalone all)"
 		$(meson_use agent)
 		$(meson_use amt plugin_amt)
 		$(meson_use consolekit)
