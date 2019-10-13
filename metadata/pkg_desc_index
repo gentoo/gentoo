@@ -1325,7 +1325,7 @@ app-emacs/mediawiki 2.2.4.1 2.2.9-r1: MediaWiki client for Emacs
 app-emacs/mew 6.6 6.8: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
 app-emacs/mldonkey 0.0.4b-r2: An Emacs Lisp interface to the MLDonkey core
-app-emacs/mmm-mode 0.5.4 0.5.7: Enables the user to edit different parts of a file in different major modes
+app-emacs/mmm-mode 0.5.7: Enables the user to edit different parts of a file in different major modes
 app-emacs/moccur-edit 2.16: An improved interface to color-moccur for editing
 app-emacs/mode-compile 2.29.1: Smart command for compiling files according to major-mode
 app-emacs/mpg123-el 1.59 1.60: Emacs front-end to mpg123 audio player and OggVorbis audio player
@@ -1350,7 +1350,7 @@ app-emacs/po-mode 0.19.3 0.19.4 0.19.8.1: Major mode for GNU gettext PO files
 app-emacs/popup 0.5.3: Visual popup interface library for Emacs
 app-emacs/popwin 1.0.0: Popup window manager for Emacs
 app-emacs/pov-mode 3.3-r1: Major mode for Povray scene files
-app-emacs/proofgeneral 4.2 4.4: A generic interface for proof assistants
+app-emacs/proofgeneral 4.4: A generic interface for proof assistants
 app-emacs/protbuf 1.7-r1: Protect Emacs buffers from accidental killing
 app-emacs/psgml 1.4.0: A GNU Emacs Major Mode for editing SGML and XML coded documents
 app-emacs/puppet-mode 0.3-r1 0.3.20180813: Emacs major mode for editing Puppet manifests
@@ -2206,7 +2206,7 @@ app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking u
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/impressive 0.11.2 0.12.0: Stylish way of giving presentations with Python
 app-office/kexi 3.2.0-r1: Visual database applications creator
-app-office/kmymoney 5.0.5 5.0.6: Personal finance manager based on KDE Frameworks
+app-office/kmymoney 5.0.5 5.0.6-r1: Personal finance manager based on KDE Frameworks
 app-office/kraft 0.82-r1: Software to manage quotes and invoices in small enterprises
 app-office/ledger 3.1.2: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2-r1: Library with common classes and functionality used by KDE finance applications

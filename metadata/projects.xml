@@ -2386,15 +2386,15 @@
       <name>Aaron Bauman</name>
       <role>Developer</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
-      <role>Developer</role>
+      <role>Lead</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>kentnl@gentoo.org</email>
       <name>Kent Fredric</name>
-      <role>Developer</role>
+      <role>Lead</role>
     </member>
     <member>
       <email>monsieurp@gentoo.org</email>
@@ -2411,10 +2411,10 @@
       <name>Aaron W. Swenson</name>
       <role>Developer</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Lead</role>
+      <role>Developer</role>
     </member>
   </project>
   <project>
