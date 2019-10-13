@@ -8,5 +8,5 @@ KEYWORDS=-* ~amd64 ~x86
 LICENSE=supermicro
 RESTRICT=bindist fetch mirror
 SLOT=0
-SRC_URI=SuperDiag_1.1.0_20180731_package.zip
-_md5_=bb95c9742fc7807614bc051ead406e3f
+SRC_URI=SuperDiag_1.2.0_20190711.zip
+_md5_=8cda46354479945220f16a0af2f12c78

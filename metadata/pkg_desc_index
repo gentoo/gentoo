@@ -1104,7 +1104,7 @@ app-doc/eclass-manpages 20190728 20190908 99999999: Collection of Gentoo eclass 
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.10.03 4.10.05: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.8.2: GNU Image Manipulation Program help files
-app-doc/gnucash-docs 3.2-r2 3.3-r1 3.4-r1 3.5-r1 3.6-r1: Documentation package for GnuCash
+app-doc/gnucash-docs 3.2-r2 3.3-r1 3.4-r1 3.5-r1 3.6-r1 3.7: Documentation package for GnuCash
 app-doc/halibut 1.1 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
 app-doc/kicad-doc 4.0.7 4.0.7-r1 5.0.0 5.0.1 5.1.0 5.1.2 5.1.4: Electronic Schematic and PCB design tools manuals
@@ -2197,7 +2197,7 @@ app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various sou
 app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and drop support
 app-office/geierlein 0.10.0: Submit tax forms (Umsatzsteuervoranmeldung) to German ELSTER
 app-office/glabels 3.4.1: Program for creating labels and business cards
-app-office/gnucash 3.2-r2 3.3 3.3-r1 3.4 3.5 3.6: A personal finance manager
+app-office/gnucash 3.2-r2 3.3 3.3-r1 3.4 3.5 3.6 3.7: A personal finance manager
 app-office/gnumeric 1.12.39 1.12.43 1.12.44: The GNOME Spreadsheet
 app-office/grisbi 1.0.4 1.2.1 1.2.2: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.3.1: Personal organizer for the GNOME desktop environment
@@ -4997,7 +4997,7 @@ dev-libs/libressl 2.6.5 2.8.3 2.9.1 2.9.2 3.0.0 3.0.1: Free version of the SSL/T
 dev-libs/librevenge 0.0.4-r1 9999: Helper library for REVerse ENGineered formats filters
 dev-libs/libsass 3.5.5 3.6.1 9999: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsavitar 3.4.1 3.6.0 4.2.0: C++ implementation of 3mf loading with SIP python bindings
-dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 0.1_pre20170928 9999: Optimized C library for EC operations on curve secp256k1
+dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 0.1_pre20170928: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserialport 0.1.1 9999: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.10.1: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.11 2.12 2.12-r1: Library for handling page faults in user mode
@@ -10887,7 +10887,7 @@ dev-util/shelltestrunner 1.3.4 1.3.5 1.3.5-r1: A tool for testing command-line p
 dev-util/shflags 1.0.3 1.2.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
-dev-util/smem 20071119_p1: A tool to parse smaps statistics
+dev-util/smem 1.4: A tool that can give numerous reports on memory usage on Linux systems
 dev-util/source-highlight 3.1.7-r2 3.1.8 3.1.8-r1: Generate highlighted source code as an (x)html document
 dev-util/spec-cleaner 1.0.6 1.0.7 9999: SUSE spec file cleaner and formatter
 dev-util/spirv-headers 1.3.4_pre20190302 9999: Machine-readable files for the SPIR-V Registry
@@ -16583,7 +16583,7 @@ sci-libs/magma 1.4.0 1.4.1: Matrix Algebra on GPU and Multicore Architectures
 sci-libs/mathgl 2.4.1: Math Graphics Library
 sci-libs/matio 1.5.13 1.5.16: Library for reading and writing matlab files
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
-sci-libs/med 4.0.0-r1: Modeling and Exchange of Data library
+sci-libs/med 4.0.0-r1 4.0.0-r2: A library to store and exchange meshed data or computation results
 sci-libs/metis 4.0.3 5.1.0-r2 5.1.0-r3: A package for unstructured serial graph partitioning
 sci-libs/minfx 1.0.3-r1 1.0.4_pre98 1.0.4 1.0.5 1.0.6 1.0.10 1.0.11: Numerical optimisation library
 sci-libs/minuit 5.34.14: A C++ physics analysis tool for function minimization
@@ -17115,7 +17115,7 @@ sys-apps/apply-default-acl 0.4.2: Apply default POSIX ACLs to files and director
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.47-r2 2.4.48-r2 2.4.48-r3: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
-sys-apps/baobab 3.30.0: Disk usage browser for GNOME
+sys-apps/baobab 3.30.0 3.34.0: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.4.1-r2 2.6-r1 9999: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0 0.1.0-r1: Baselayout for Java
@@ -17142,7 +17142,7 @@ sys-apps/conspy 1.10: Remote control for Linux virtual consoles
 sys-apps/coreutils 8.30 8.31 8.31-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/cpint 2.5.3: Linux/390 Interface to z/VM's Control Program
 sys-apps/cpuid 20180419 20180519: Linux tool to dump x86 CPUID information about the CPUs
-sys-apps/cracklib-words 2.9.6 20080507: large set of crack/cracklib dictionaries
+sys-apps/cracklib-words 2.9.6: large set of crack/cracklib dictionaries
 sys-apps/crazydiskinfo 1.0.2: Interactive TUI S.M.A.R.T viewer
 sys-apps/daemonize 1.7.4 1.7.8: Runs a command as a Unix daemon
 sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
@@ -17363,7 +17363,7 @@ sys-apps/smcipmitool 2.21.0.181029 2.22.0.190701: An out-of-band utility for int
 sys-apps/sparc-utils 1.9-r5: Various sparc utilities from Debian GNU/Linux
 sys-apps/spu-tools 2.3.0.136: CELL spu ps and top alike utilities
 sys-apps/stroke 0.1.3-r1: A powerful tool to change file timestamps (including ctimes)
-sys-apps/superdiag 1.1.0.20180731: Provides the capability to determine the health of Supermicro servers components
+sys-apps/superdiag 1.2.0.20190711: Provides the capability to determine the health of Supermicro servers components
 sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functionality
 sys-apps/sydbox 1.0.7: ptrace-based sandbox
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
@@ -17935,7 +17935,7 @@ sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1: Standard GNU database libraries
 sys-libs/glibc 2.19-r2 2.24-r4 2.25-r11 2.26-r7 2.27-r6 2.28-r6 2.29-r2 2.29-r4 2.29-r5 2.30 2.30-r1 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
-sys-libs/gwenhywfar 4.20.0 4.20.2: Multi-platform helper library for other libraries
+sys-libs/gwenhywfar 4.20.0 4.20.2-r1: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.0.0 4.0.1: Library for managing partitions
 sys-libs/ldb 1.1.29-r1 1.1.31 1.2.4 1.3.6 1.3.8 1.4.7 1.5.4 1.5.5 1.6.3 2.0.5 2.0.7: An LDAP-like embedded database
 sys-libs/lib-compat 1.5: Compatibility C++ library for very old programs
@@ -18659,7 +18659,7 @@ x11-libs/flowcanvas 0.7.1-r1 0.7.1-r2: Gtkmm/Gnomecanvasmm widget for boxes and 
 x11-libs/fltk 1.3.3-r3 1.3.4 1.3.5-r2 1.3.9999 1.4.9999: C++ user interface toolkit for X and OpenGL
 x11-libs/fox 1.6.49 1.6.50 1.7.54: C++ Toolkit for developing Graphical User Interfaces easily and effectively
 x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
-x11-libs/gdk-pixbuf 2.36.12 2.38.1 2.38.2: Image loading library for GTK+
+x11-libs/gdk-pixbuf 2.36.12 2.38.1-r1 2.38.2-r1 2.40.0: Image loading library for GTK+
 x11-libs/gdk-pixbuf-loader-webp 20160328234507: WebP Image format GdkPixbuf loader
 x11-libs/gl2ps 1.3.9 1.4.0: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
