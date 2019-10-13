@@ -1,0 +1,7 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Bernardo Meurer <bernardo@standard.ai> (2019-09-28)
+# Requires app-crypt/tpm2-tss which is pending ~x86 vide
+# https://bugs.gentoo.org/695758
+>=sys-apps/fwupd-1.3.2
