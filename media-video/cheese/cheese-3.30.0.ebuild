@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Cheese"
 LICENSE="GPL-2+"
 SLOT="0/8" # subslot = libcheese soname version
 IUSE="+introspection"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.39.90:2
