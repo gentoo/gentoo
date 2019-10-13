@@ -20,7 +20,7 @@ BDEPEND="
 RDEPEND="
 	app-misc/ktoblzcheck
 	dev-libs/gmp:0=
-	sys-libs/gwenhywfar:=
+	>=sys-libs/gwenhywfar-4.20.2-r1:=
 	virtual/libintl
 	ebics? ( dev-libs/xmlsec[gcrypt,gnutls] )
 	ofx? ( >=dev-libs/libofx-0.9.5 )
