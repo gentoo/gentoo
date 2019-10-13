@@ -51,8 +51,8 @@ src_install() {
 
 	if use doc ; then
 		java-pkg_dohtml -r docs/*
-		dohtml INSTALL.htm faq.htm prologAPI.htm
-		dohtml -r images
+		dodoc INSTALL.htm faq.htm prologAPI.htm
+		dodoc -r images
 		dodoc PaperEPIA01.doc
 	fi
 }
