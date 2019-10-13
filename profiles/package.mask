@@ -543,11 +543,6 @@ dev-util/idea-ultimate
 # Removal in 30 days.  Bug #694274.
 dev-util/webstorm
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-13)
-# Unmaintained.  No reverse dependencies.
-# Removal in 30 days.  Bug #694260.
-sys-libs/libmath++
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
