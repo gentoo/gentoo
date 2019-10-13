@@ -578,14 +578,6 @@ net-libs/libgmail
 net-libs/libs3
 net-libs/libyahoo2
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-13)
-# Unmaintained.  No reverse dependencies.
-#
-# media-libs/libbmp: 2010, homepage gone.
-#
-# Removal in 30 days.  Bug #694254.
-media-libs/libbmp
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
