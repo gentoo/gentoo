@@ -26,6 +26,7 @@ SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd
 
 LICENSE="google-chrome"
 SLOT="0"
+IUSE="selinux"
 RESTRICT="bindist mirror strip"
 
 DEPEND=""
@@ -61,6 +62,7 @@ RDEPEND="
 	x11-libs/libxcb
 	x11-libs/pango
 	x11-misc/xdg-utils
+	selinux? ( sec-policy/selinux-chromium )
 "
 
 QA_PREBUILT="*"
