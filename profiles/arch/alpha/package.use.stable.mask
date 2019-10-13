@@ -18,8 +18,8 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2019-10-13)
-# Depends on www-servers/lighttpd[php], and php is use.stable.mask'd
-net-analyzer/nagios-core lighttpd
+# Depends on php which is stable.mask'd
+net-analyzer/nagios-core web
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-12-02)
 # gnome-base/nautilus is not stable
