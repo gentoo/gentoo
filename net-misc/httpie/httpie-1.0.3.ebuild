@@ -22,10 +22,18 @@ RDEPEND="dev-python/pygments[${PYTHON_USEDEP}]
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
+
+# Extend list of expected strings in test
+PATCHES=(
+	"${FILESDIR}/${PN}-1.0.2-fix-test_ssl.patch"
+	"${FILESDIR}/${PN}-1.0.3-test_binary.patch"
+	"${FILESDIR}/${PN}-1.0.3-test_stream.patch"
+)
 
 python_test() {
 	pytest -vv || die "Tests failed with ${EPYTHON}"
