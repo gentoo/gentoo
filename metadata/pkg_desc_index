@@ -8436,7 +8436,7 @@ dev-python/pyamg 2.1.0 2.2.1 3.0.2 3.2.1 3.2.1-r1: Algebraic multigrid solvers i
 dev-python/pyao 0.82-r3: Python bindings for the libao library
 dev-python/pyasn1 0.2.3 0.3.7 0.4.2 0.4.3: ASN.1 library for Python
 dev-python/pyasn1-modules 0.0.5-r1 0.0.8 0.0.10 0.1.4 0.1.5 0.2.1: pyasn1 modules
-dev-python/pyatspi 2.30.0: Python binding to at-spi library
+dev-python/pyatspi 2.30.0 2.32.1: Python binding to at-spi library
 dev-python/pyaudio 0.2.11: Python bindings for PortAudio
 dev-python/pyavm 0.9.4: Python module for Astronomy Visualization Metadata i/o
 dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
@@ -11917,7 +11917,7 @@ games-util/xgame-gtk2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.26.1 0.30.1 0.32.0-r1: Simple low-level configuration system
-gnome-base/dconf-editor 3.30.2: Graphical tool for editing the dconf configuration database
+gnome-base/dconf-editor 3.30.2 3.34.2: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.30.3-r3 3.32.0: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.30.2: Meta package for GNOME 3, merge this package to install
@@ -11991,12 +11991,12 @@ gnome-extra/gnome-shell-extensions 3.30.1 3.32.1: JavaScript extensions for GNOM
 gnome-extra/gnome-shell-extensions-topicons-plus 22-r1: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.30.2 3.32.1: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.30.6: Gnome install & update software
-gnome-extra/gnome-system-monitor 3.30.0: The Gnome System Monitor
+gnome-extra/gnome-system-monitor 3.30.0 3.32.1: The Gnome System Monitor
 gnome-extra/gnome-tweaks 3.30.2 3.32.0: Customize advanced GNOME 3 options
 gnome-extra/gnome-user-docs 3.30.2 3.32.3: GNOME end user documentation
 gnome-extra/gnome-user-share 3.28.0: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
-gnome-extra/gnome-weather 3.26.0: A weather application for GNOME
+gnome-extra/gnome-weather 3.26.0 3.32.2: A weather application for GNOME
 gnome-extra/gtkhtml 4.10.0 4.10.0-r1: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 10.0.3 11.0.3 12.0.1: Unicode character map viewer and library
 gnome-extra/libgda 5.2.8-r1: GNOME database access library
@@ -12946,7 +12946,7 @@ media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematica
 media-gfx/gnome-font-viewer 3.30.0 3.32.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.30.1-r1: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
-media-gfx/gnome-screenshot 3.30.0: Screenshot utility for GNOME
+media-gfx/gnome-screenshot 3.30.0 3.32.0: Screenshot utility for GNOME
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.20: Free, redistributable digital camera software application
