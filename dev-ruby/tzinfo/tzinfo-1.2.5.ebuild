@@ -29,4 +29,7 @@ ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"
 all_ruby_prepare() {
 	# Set the secure permissions that tests expect.
 	chmod 0755 "${HOME}" || die "Failed to fix permissions on home"
+
+	# Avoid taint tests that throw SecurityErrors on newer ruby versions.
+	sed -i -e '/_info_tainted/askip"SecurityError"' test/tc_ruby_data_source.rb || die
 }
