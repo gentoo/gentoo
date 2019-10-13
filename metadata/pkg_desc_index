@@ -3101,7 +3101,7 @@ dev-db/cpp-driver 2.9.0 2.11.0: DataStax C/C++ Driver for Cassandra
 dev-db/cppdb 0.3.1-r3: SQL connectivity library for platform and database independent connectivity
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
-dev-db/etcd 3.3.15 3.3.16 3.4.1 3.4.2: Highly-available key value store for shared configuration and service discovery
+dev-db/etcd 3.3.15 3.3.17 3.4.2: Highly-available key value store for shared configuration and service discovery
 dev-db/firebird 3.0.4.33054.0: Relational database offering many ANSI SQL:2003 and some SQL:2008 features
 dev-db/freetds 1.00.558: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
@@ -10682,14 +10682,14 @@ dev-util/diffstat 1.60 1.61: Display a histogram of diff changes
 dev-util/diffuse 0.4.8: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
 dev-util/dissembler 0.9-r1: polymorphs bytecode to a printable ASCII string
-dev-util/distro-info 0.14: Provides information about the Debian distributions' releases
+dev-util/distro-info 0.14 0.22: Provides information about the Debian distributions' releases
 dev-util/distro-info-data 0.29 0.32 0.42: Information about the Debian distributions' releases (data files)
 dev-util/dmake 4.12.2: Improved make
 dev-util/docker-distribution-pruner 0_p20170401: Clean all old container revisions from registry
 dev-util/docker-ls 0.3.1: Tools for browsing and manipulating docker registries
 dev-util/dogtail 0.9.10: GUI test tool and automation framework using accessibility framework
 dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
-dev-util/dput-ng 1.10: Next generation Debian package upload tool
+dev-util/dput-ng 1.10 1.28: Next generation Debian package upload tool
 dev-util/drone 0.8.5 0.8.6 0.8.7 0.8.9: A Continuous Delivery platform built on Docker, written in Go
 dev-util/drone-cli 0.8.6 1.0.8 1.1.0 1.1.1 1.1.3 1.1.4: Command-line interface for Drone
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
@@ -11252,7 +11252,7 @@ games-board/cockatrice 20190304-r1: An open-source multiplatform software for pl
 games-board/crafty 24.1-r1: Bob Hyatt's strong chess engine
 games-board/domination 1.1.1.6-r1: The well-known board game, written in java
 games-board/eboard 1.1.1-r2: chess interface for POSIX systems
-games-board/four-in-a-row 3.28.0: Make lines of the same color to win
+games-board/four-in-a-row 3.28.0 3.32.0: Make lines of the same color to win
 games-board/freedoko 0.7.16 0.7.16-r1: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1-r1: UCI-only chess engine
 games-board/gambit 1.0.4: Qt-based chess application + engine "gupta"
@@ -11627,7 +11627,7 @@ games-puzzle/einstein 2.1.1: A puzzle game inspired by Albert Einstein
 games-puzzle/enigma 1.21-r3: Puzzle game similar to Oxyd
 games-puzzle/fbg 0.9-r2: A Tetris clone written in OpenGL
 games-puzzle/fish-fillets 1.0.1-r1: Underwater puzzle game - find a safe way out
-games-puzzle/five-or-more 3.28.0 3.30.0: Remove colored balls from the board by forming lines
+games-puzzle/five-or-more 3.28.0 3.30.0 3.32.0: Remove colored balls from the board by forming lines
 games-puzzle/flobopuyo 0.20-r2: Clone of the famous PuyoPuyo game
 games-puzzle/freesweep 0.92-r1: Console Minesweeper
 games-puzzle/galaxis 1.8-r1: Curses-based clone of the nifty little Macintosh freeware game Galaxis
@@ -14734,7 +14734,7 @@ net-dns/getdns 1.5.1 1.5.2-r2: Modern asynchronous DNS API
 net-dns/hash-slinger 2.6-r1 2.7-r1: Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
-net-dns/knot 2.7.8 2.8.4: High-performance authoritative-only DNS server
+net-dns/knot 2.8.4 2.9.0: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.7.0-r1 1.7.1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33-r2 1.33-r99 1.35: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.1.1a-r1 2.2.0 99999: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
@@ -15356,7 +15356,7 @@ net-misc/hath 0.5.0: Hath manipulates network blocks in CIDR notation
 net-misc/hsc 1.0b: An HTML preprocessor using ML syntax
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
 net-misc/htpdate 1.0.7 1.2.0 1.2.2: Synchronize local workstation with time offered by remote webservers
-net-misc/httpie 0.9.2 0.9.3 0.9.4 0.9.9 1.0.0 1.0.2 1.0.2-r1: Modern command line HTTP client
+net-misc/httpie 1.0.2-r1 1.0.3: Modern command line HTTP client
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/hylafaxplus 5.5.5 5.6.1: Enterprise client-server fax package for class 1 and 2 fax modems
 net-misc/iaxmodem 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
@@ -18424,9 +18424,9 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0 60.9.0 68.1.0 69.0.2 69.0.3: Firefox Web Browser
 www-client/firefox-bin 52.9.0 60.9.0 68.1.0 69.0.3: Firefox Web Browser
-www-client/google-chrome 77.0.3865.90: The web browser from Google
-www-client/google-chrome-beta 78.0.3904.34: The web browser from Google
-www-client/google-chrome-unstable 79.0.3921.0: The web browser from Google
+www-client/google-chrome 77.0.3865.120: The web browser from Google
+www-client/google-chrome-beta 78.0.3904.50: The web browser from Google
+www-client/google-chrome-unstable 79.0.3938.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.1 3.49.2-r1 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.14-r1 2.16 2.17 2.18: A fast and lightweight web browser running in both graphics and text mode
@@ -18475,7 +18475,7 @@ www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.4-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 32.0.0.270: Adobe Flash Player
 www-plugins/browserpass 3.0.6: WebExtension host binary for pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 77.0.3865.90 78.0.3904.34_beta 79.0.3921.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 77.0.3865.120 78.0.3904.50_beta 79.0.3938.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.1 9999: High performance flash player
