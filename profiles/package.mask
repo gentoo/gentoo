@@ -554,11 +554,9 @@ sys-libs/system-config-base
 # Unmaintained.  All look pretty dead.  No reverse dependencies.
 #
 # x11-libs/gtkhotkey: 2009
-# x11-libs/libaosd: 2010
 #
 # Removal in 30 days.  Bug #694258.
 x11-libs/gtkhotkey
-x11-libs/libaosd
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
