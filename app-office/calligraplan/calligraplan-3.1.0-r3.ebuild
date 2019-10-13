@@ -60,14 +60,8 @@ DEPEND="
 		app-crypt/qca:2[qt5(+)]
 	)
 	pim? (
-		|| (
-			$(add_frameworks_dep kcalendarcore)
-			$(add_kdeapps_dep kcalcore)
-		)
-		|| (
-			$(add_frameworks_dep kcontacts)
-			$(add_kdeapps_dep kcontacts)
-		)
+		$(add_frameworks_dep kcalendarcore)
+		$(add_frameworks_dep kcontacts)
 	)
 	X? (
 		$(add_qt_dep qtx11extras)
@@ -87,7 +81,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-qca.patch
 	"${FILESDIR}"/${P}-missing-header.patch
 	"${FILESDIR}"/${P}-unused-deps.patch
-	"${FILESDIR}"/${P}-kcalcore-19.08-{1,2,3}.patch
+	"${FILESDIR}"/${P}-kcalcore-19.08-{1,2}.patch
 )
 
 src_configure() {
