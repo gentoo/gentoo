@@ -38,6 +38,7 @@ RDEPEND="
 	dev-libs/check
 	net-misc/curl
 	media-libs/libpng:0=
+	sys-apps/dbus
 	sys-libs/zlib
 	virtual/jpeg:0=
 	X? (
