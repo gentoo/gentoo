@@ -87,6 +87,7 @@ valgrind
 vaapi
 librtmp
 rtmp
+v4l
 vpx
 kde
 quvi
