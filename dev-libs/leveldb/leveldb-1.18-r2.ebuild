@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils multilib toolchain-funcs versionator
 
 DESCRIPTION="a fast key-value storage library written at Google"
-HOMEPAGE="http://leveldb.org/ https://github.com/google/leveldb"
+HOMEPAGE="https://github.com/google/leveldb"
 SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
