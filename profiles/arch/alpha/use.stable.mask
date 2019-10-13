@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Matt Turner <mattst88@gentoo.org> (2019‑10-13)
+# dev-lang/php is unstable-only on alpha
+php
+
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependency not yet stable (dev-libs/libappindicator).
 ayatana
