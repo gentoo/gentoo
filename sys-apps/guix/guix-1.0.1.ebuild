@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools readme.gentoo-r1 systemd user
+inherit autotools linux-info readme.gentoo-r1 systemd user
 
 DESCRIPTION="GNU package manager (nix sibling)"
 HOMEPAGE="https://www.gnu.org/software/guix/"
@@ -89,6 +89,13 @@ DOC_CONTENTS="Quick start user guide on Gentoo:
 Next steps:
 	guix package manager user manual: https://www.gnu.org/software/guix/manual/guix.html
 "
+
+pkg_pretend() {
+	# USER_NS is used to run builders in a default setting in linux
+	# and for 'guix environment --container'.
+	local CONFIG_CHECK="~USER_NS"
+	check_extra_config
+}
 
 pkg_setup() {
 	enewgroup guixbuild
