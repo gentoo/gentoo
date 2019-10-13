@@ -10110,7 +10110,7 @@ dev-ruby/ref 2.0.0: Implements weak, soft, and strong references in Ruby
 dev-ruby/regexp_parser 0.5.0 1.4.0 1.5.1 1.6.0: A library for tokenizing, lexing, and parsing Ruby regular expressions
 dev-ruby/regexp_property_values 0.3.4 0.3.5 1.0.0: See which property values are supported by the regular expression engine
 dev-ruby/request_store 1.0.5 1.4.1: Per-request global storage for Rack
-dev-ruby/rest-client 2.0.2: Simple Simple HTTP and REST client for Ruby
+dev-ruby/rest-client 2.0.2 2.1.0: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rex-arch 0.1.13: architecture specific information for Rex
 dev-ruby/rex-bin_tools 0.1.6: suite of tools for analyzing executables to find specific chunks of code
 dev-ruby/rex-core 0.1.13: Core libraries required for the Ruby Exploitation(Rex) Suite
