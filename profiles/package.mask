@@ -572,7 +572,6 @@ net-libs/nacl
 # Unmaintained.  No reverse dependencies.
 # Removal in 30 days.  Bug #694256.
 net-libs/ccnet
-net-libs/ccrtp
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
