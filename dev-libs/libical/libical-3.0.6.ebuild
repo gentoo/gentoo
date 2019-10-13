@@ -21,19 +21,19 @@ BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
+	introspection? ( dev-libs/gobject-introspection )
 	test? ( ${PYTHON_DEPS} )
 	vala? ( $(vala_depend) )
 "
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/icu:=
 	berkdb? ( sys-libs/db:= )
-	introspection? (
-		dev-libs/glib:2
-		dev-libs/gobject-introspection:=
-		dev-libs/libxml2:2
-	)
+	introspection? ( dev-libs/glib:2 )
 "
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	introspection? ( dev-libs/libxml2:2 )
+"
+RDEPEND="${COMMON_DEPEND}
 	sys-libs/timezone-data
 "
 
