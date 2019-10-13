@@ -70,6 +70,7 @@ net-analyzer/bsnmp
 net-firewall/pftop
 sys-apps/flock
 sys-auth/openpam
+virtual/pam
 sys-block/eject-bsd
 sys-fs/fuse4bsd
 sys-process/pidof-bsd
