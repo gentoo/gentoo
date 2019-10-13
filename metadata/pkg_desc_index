@@ -4956,7 +4956,7 @@ dev-libs/libmcrypt 2.5.8-r4: libmcrypt provides uniform interface to access seve
 dev-libs/libmelf 0.4.0-r1: libmelf is a library interface for manipulating ELF object files
 dev-libs/libmemcached 1.0.18-r3: a C client library to the memcached server
 dev-libs/libmirage 3.2.2 3.2.3: CD and DVD image access library
-dev-libs/libmissing 1.0.0-r1: Library with missing functions based on GNUlib
+dev-libs/libmissing 1.1.0: Library with missing functions based on GNUlib
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.1.4: Modbus library which supports RTU communication over a serial line or a TCP link
 dev-libs/libmoe 1.5.8-r3: Multi octet character encoding handling library
@@ -8698,7 +8698,7 @@ dev-python/python-debian 0.1.28 0.1.31 0.1.32: Python modules to work with Debia
 dev-python/python-designateclient 2.7.0 2.9.0 2.11.0: Python bindings to the Designate API.
 dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Digest Authentication
 dev-python/python-discid 1.1.1: Python bindings for libdiscid
-dev-python/python-distutils-extra 2.38 2.39: Gettext support, themed icons and scrollkeeper-based documentation in distutils
+dev-python/python-distutils-extra 2.38 2.39 2.42: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-djvulibre 0.8: Set of Python bindings for the DjVuLibre library
 dev-python/python-docs 2.7.14 3.4.5 3.4.6 3.5.4 3.6.3 3.6.4 3.7.0: HTML documentation for Python
 dev-python/python-dsv 1.4.1-r2: Python module for importing and exporting DSV files
@@ -11257,7 +11257,7 @@ games-board/freedoko 0.7.16 0.7.16-r1: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1-r1: UCI-only chess engine
 games-board/gambit 1.0.4: Qt-based chess application + engine "gupta"
 games-board/gmchess 0.29.6-r2: Chinese chess with gtkmm and c++
-games-board/gnome-chess 3.30.1: Play the classic two-player boardgame of chess
+games-board/gnome-chess 3.30.1 3.34.0: Play the classic two-player boardgame of chess
 games-board/gnome-hearts 0.3.1-r2: A clone of classic hearts card game
 games-board/gnome-mahjongg 3.22.0: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mines 3.20.1 3.30.1.1: Clear hidden mines from a minefield
@@ -11634,7 +11634,7 @@ games-puzzle/galaxis 1.8-r1: Curses-based clone of the nifty little Macintosh fr
 games-puzzle/gemdropx 0.9-r2: A puzzle game where it's your job to clear the screen of gems
 games-puzzle/gfifteen 1.0.3-r1: Graphical implementation of the sliding puzzle game fifteen
 games-puzzle/glightoff 1.0.0-r1: A simple (but not so easy to solve!) puzzle game
-games-puzzle/gnome-klotski 3.22.3: Slide blocks to solve the puzzle
+games-puzzle/gnome-klotski 3.22.3 3.34.0: Slide blocks to solve the puzzle
 games-puzzle/gnome-sudoku 3.30.0: Test your logic skills in this number grid puzzle
 games-puzzle/gnome-taquin 3.30.0: Move tiles so that they reach their places
 games-puzzle/gnome-tetravex 3.22.0: Complete the puzzle by matching numbered tiles
@@ -12944,7 +12944,7 @@ media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, h
 media-gfx/gmic 2.7.0 2.7.1 2.7.2: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.30.0 3.32.0: Font viewer utility for GNOME
-media-gfx/gnome-photos 3.30.1-r1: Access, organize and share your photos on GNOME
+media-gfx/gnome-photos 3.30.1-r1 3.32.1: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.30.0 3.32.0: Screenshot utility for GNOME
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
@@ -13563,7 +13563,7 @@ media-plugins/gst-plugins-jpeg 1.14.4 1.14.5: JPEG image encoder/decoder plugin 
 media-plugins/gst-plugins-kate 1.14.3 1.14.5: Kate overlay codec suppport plugin for GStreamer
 media-plugins/gst-plugins-ladspa 1.14.3 1.14.5: Ladspa elements for Gstreamer
 media-plugins/gst-plugins-lame 1.14.4 1.14.5: MP3 encoder plugin for GStreamer
-media-plugins/gst-plugins-libav 1.14.4.3.4.5 1.14.4.4.1.3_p20190329: FFmpeg based gstreamer plugin
+media-plugins/gst-plugins-libav 1.14.4.4.1.3_p20190329: FFmpeg based gstreamer plugin
 media-plugins/gst-plugins-libde265 1.14.3 1.14.5: H.265 decoder plugin for GStreamer
 media-plugins/gst-plugins-libmms 1.14.3 1.14.5: Microsoft Multi Media Server source plugin for GStreamer
 media-plugins/gst-plugins-libnice 0.1.13-r100 0.1.15-r100: GStreamer plugin for ICE (RFC 5245) support
@@ -13936,7 +13936,7 @@ media-sound/gmpc 11.8.16-r1: A GTK+2 client for the Music Player Daemon
 media-sound/gmtp 1.3.10 1.3.11: A simple MTP client for MP3 players
 media-sound/gmusicbrowser 1.1.15_p20160530 9999: An open-source jukebox for large collections of mp3/ogg/flac files
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
-media-sound/gnome-music 3.30.2: Music management for Gnome
+media-sound/gnome-music 3.30.2 3.32.2: Music management for Gnome
 media-sound/gnome-sound-recorder 3.28.2: Simple sound recorder
 media-sound/gnump3d 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gogglesmm 1.2.1: Fast and light music player
@@ -18876,7 +18876,7 @@ x11-misc/menumaker 0.99.10 0.99.11: Utility that scans through the system and ge
 x11-misc/mgm 1.2-r1: Moaning Goat Meter: load and status meter written in Perl
 x11-misc/mixer_app 1.8.0-r1: mixer_app has volume controllers that can be configured to handle sound sources
 x11-misc/mozo 1.22.0 1.22.1: Mozo menu editor for MATE
-x11-misc/mugshot 0.4.1: A lightweight user-configuration application
+x11-misc/mugshot 0.4.1 0.4.2: A lightweight user-configuration application
 x11-misc/netwmpager 2.05: Pager that works with Openbox and other EWMH compliant window managers
 x11-misc/nitrogen 1.6.1 1.6.1-r1: A background browser and setter for X
 x11-misc/notification-daemon 0.5.0 3.14.1 3.18.2 3.20.0: Notification daemon
