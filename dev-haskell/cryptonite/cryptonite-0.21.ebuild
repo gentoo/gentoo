@@ -16,7 +16,7 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE="+cpu-flags-x86-rdrand +cpu_flags_x86_aes cpu_flags_x86_sse cpu_flags_x86_sse4_1 +integer-gmp"
+IUSE="cpu-flags-x86-rdrand cpu_flags_x86_aes cpu_flags_x86_sse cpu_flags_x86_sse4_1 +integer-gmp"
 
 RDEPEND=">=dev-haskell/memory-0.8:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
