@@ -550,14 +550,6 @@ sys-libs/libmath++
 sys-libs/rvm
 sys-libs/system-config-base
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-13)
-# Unmaintained.  All look pretty dead.  No reverse dependencies.
-#
-# x11-libs/gtkhotkey: 2009
-#
-# Removal in 30 days.  Bug #694258.
-x11-libs/gtkhotkey
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
