@@ -21,8 +21,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
-
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/libgcrypt:0=
 	dev-libs/libgpg-error
 	libressl? ( dev-libs/libressl:0= )
@@ -55,12 +54,14 @@ DEPEND="
 	)
 	sensors? ( dev-qt/qtsensors:5 )
 	serialport? ( dev-qt/qtserialport:5 )
-	test? ( dev-qt/qttest:5 )
 	webkit? ( dev-qt/qtwebkit:5 )
 "
-
-RDEPEND="${DEPEND}
-	gtk? ( !<app-office/gnucash-3.7[aqbanking] )"
+DEPEND="${COMMON_DEPEND}
+	test? ( dev-qt/qttest:5 )
+"
+RDEPEND="${COMMON_DEPEND}
+	gtk? ( !<app-office/gnucash-3.7[aqbanking] )
+"
 
 # broken upstream, reported but got no reply
 RESTRICT="test"
