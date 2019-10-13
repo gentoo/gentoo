@@ -619,7 +619,7 @@ app-cdr/uif2iso 0.1.7c-r1: Convert CD images from uif (MagicISO) to iso
 app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
-app-cdr/xfburn 0.5.5-r1: GTK+ based CD and DVD burning application
+app-cdr/xfburn 0.5.5-r2: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 0.37.0 0.38.0 0.39.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
@@ -5785,7 +5785,7 @@ dev-perl/DBD-mysql 4.44.0-r1 4.44.0-r2 4.50.0: MySQL driver for the Perl5 Databa
 dev-perl/DBI 1.637.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r2: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.50.0: create a temporary database from a DBIx::Class::Schema
-dev-perl/DBIx-Class 0.82.840 0.82.841 0.82.841-r1: Extensible and flexible object <-> relational mapper
+dev-perl/DBIx-Class 0.82.841-r1: Extensible and flexible object <-> relational mapper
 dev-perl/DBIx-Class-DynamicDefault 0.40.0: Automatically set and update fields
 dev-perl/DBIx-Class-InflateColumn-Boolean 0.3.0: Auto-create boolean objects from columns
 dev-perl/DBIx-Class-InflateColumn-IP 0.20.30-r1: Auto-create NetAddr::IP objects from columns
@@ -5936,8 +5936,8 @@ dev-perl/Email-Date 1.104.0-r1 1.104.0-r2: Find and Format Date Headers
 dev-perl/Email-Date-Format 1.5.0: Produce RFC 822 date strings
 dev-perl/Email-Filter 1.34.0: Simple filtering of RFC2822 message format and headers
 dev-perl/Email-Find 0.100.0-r1: Find RFC 822 email addresses in plain text
-dev-perl/Email-FolderType 0.814.0 0.814.0-r1: Determine the type of a mail folder
-dev-perl/Email-LocalDelivery 1.200.0-r1 1.200.0-r2: Local delivery of RFC2822 message format and headers
+dev-perl/Email-FolderType 0.814.0-r1: Determine the type of a mail folder
+dev-perl/Email-LocalDelivery 1.200.0-r2: Local delivery of RFC2822 message format and headers
 dev-perl/Email-MIME 1.940.0 1.946.0: Easy MIME message parsing
 dev-perl/Email-MIME-Attachment-Stripper 1.317.0-r1: Strip the attachments from a mail
 dev-perl/Email-MIME-ContentType 1.18.0 1.22.0: Parse a MIME Content-Type Header or Content-Disposition Header
@@ -5962,7 +5962,7 @@ dev-perl/Eval-Closure 0.130.0 0.140.0: safely and cleanly create closures via st
 dev-perl/Eval-LineNumbers 0.340.0: Add line numbers to hereis blocks that contain perl source code
 dev-perl/Event 1.240.0 1.260.0: Fast, generic event loop
 dev-perl/Event-ExecFlow 0.640.0-r1: High level API for event-based execution flow control
-dev-perl/Event-RPC 1.50.0 1.80.0 1.100.0: Event based transparent Client/Server RPC framework
+dev-perl/Event-RPC 1.80.0 1.100.0: Event based transparent Client/Server RPC framework
 dev-perl/Exception-Base 0.250.100: Error handling with exception class
 dev-perl/Exception-Class 1.430.0: A module that allows you to declare real exception classes in Perl
 dev-perl/Exception-Died 0.60.0-r2: Convert simple die into real exception object
@@ -19485,7 +19485,7 @@ xfce-extra/xfce4-genmon-plugin 4.0.1 4.0.2: Cyclically spawned executable output
 xfce-extra/xfce4-hdaps 0.0.9-r2: A plugin to indicate the status of the IBM Hard Drive Active Protection System
 xfce-extra/xfce4-indicator-plugin 2.3.4: A panel plugin that uses indicator-applet to show new messages
 xfce-extra/xfce4-kbdleds-plugin 0.0.6-r2: A panel plug-in to show state of Caps, Num and Scroll Lock keys
-xfce-extra/xfce4-mailwatch-plugin 1.2.0-r3: An mail notification panel plug-in for the Xfce desktop environment
+xfce-extra/xfce4-mailwatch-plugin 1.2.0-r4: An mail notification panel plug-in for the Xfce desktop environment
 xfce-extra/xfce4-mount-plugin 1.1.3: An mount plug-in for the Xfce panel
 xfce-extra/xfce4-mpc-plugin 0.5.1 0.5.2: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.3.1 1.3.2: A network load plug-in for the Xfce panel
