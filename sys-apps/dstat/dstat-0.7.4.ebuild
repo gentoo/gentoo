@@ -26,6 +26,15 @@ DEPEND=""
 
 PATCHES=( "${FILESDIR}/dstat-${PV}-skip-non-sandbox-tests.patch" )
 
+src_prepare() {
+
+	# bug fix: allow delay to be specified
+	# backport from: https://github.com/dagwieers/dstat/pull/167/files
+	sed -i -e 's; / op\.delay; // op.delay;' "dstat"
+
+	eapply_user
+}
+
 src_install() {
 	emake DESTDIR="${ED}" install
 
