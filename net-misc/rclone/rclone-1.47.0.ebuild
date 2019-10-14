@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit golang-build bash-completion-r1
-EGO_PN="github.com/ncw/${PN}"
+EGO_PN="github.com/rclone/${PN}"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit golang-vcs
@@ -19,10 +19,7 @@ HOMEPAGE="https://rclone.org/"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}"
 
 src_install() {
 	dobin ${PN}
