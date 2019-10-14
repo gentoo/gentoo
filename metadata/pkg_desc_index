@@ -11839,7 +11839,7 @@ games-strategy/freesynd 0.7.1-r1: Portable reimplementation of engine for the cl
 games-strategy/galaxyhack 1.74-r1: Multiplayer AI script based strategy game
 games-strategy/glob2 0.9.4.4-r2: Real Time Strategy (RTS) game involving a brave army of globs
 games-strategy/gwp 0.4.0-r3: GNOME client for the classic PBEM strategy game VGA Planets 3
-games-strategy/hedgewars 0.9.25: A turn-based strategy, artillery, action and comedy game
+games-strategy/hedgewars 0.9.25 1.0.0: A turn-based strategy, artillery, action and comedy game
 games-strategy/heroes3 1.3.1a-r2: Heroes of Might and Magic III: The Restoration of Erathia
 games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SDL
 games-strategy/ja2-stracciatella-data 1: A port of Jagged Alliance 2 to SDL (data files)
@@ -11889,7 +11889,7 @@ games-util/glbsp 2.24: A node builder specially designed for OpenGL ports of the
 games-util/grfcodec 6.0.6: A suite of programs to modify openttd/Transport Tycoon Deluxe's GRF files
 games-util/gslist 0.8.11a-r1: A GameSpy server browser
 games-util/higan-purify 03: Rom purifier for higan
-games-util/joystick 1.6.0 1.6.1: joystick testing utilities
+games-util/joystick 1.6.1 1.7.0: joystick testing utilities
 games-util/lgogdownloader 3.5 9999: Unofficial GOG.com downloader for Linux
 games-util/linux-wbfs-manager 0.1.12 9999: WBFS manager for Linux using GTK+
 games-util/loki_patch 20091105: Loki Software binary patch tool
@@ -17973,7 +17973,7 @@ sys-libs/llvm-libunwind 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: C++ runt
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.5: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.22 1.1.23 9999: Light, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.22 1.1.23 1.1.24 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/musl-nscd 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/native-uuid 1.0: .pc file for uuid
 sys-libs/ncurses 6.1_p20181020 6.1_p20190609: console display library
