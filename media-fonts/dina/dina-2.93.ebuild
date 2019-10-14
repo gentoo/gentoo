@@ -10,7 +10,7 @@ SRC_URI="http://www.donationcoder.com/forum/index.php?action=dlattach;topic=3604
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
