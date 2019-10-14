@@ -58,6 +58,9 @@ export CTARGET=${CTARGET:-${CHOST}}
 if [[ ${CTARGET} == ${CHOST} ]] ; then
 	if [[ ${CATEGORY} == cross-* ]] ; then
 		export CTARGET=${CATEGORY#cross-}
+		# portage's attempt to strip breaks non-native bianries
+		# at least on arm: bug #697428
+		RESTRICT=strip
 	fi
 fi
 
