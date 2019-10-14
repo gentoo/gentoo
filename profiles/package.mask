@@ -438,12 +438,6 @@ dev-util/atomic-install
 # Removal in 30 days.  Bug #694390.
 dev-go/go-oauth2
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-14)
-# Unmaintained.  All of them were not bumped since 2016.  No reverse
-# dependencies.
-# Removal in 30 days.  Bug #694398.
-dev-go/cli
-
 # Thomas Sachau <tommy@gentoo.org> (2019-09-14)
 # Freemail has been completly rewritten so the current
 # ebuild does no longer work for it. In addition the source
