@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils toolchain-funcs
+EAPI=7
+inherit toolchain-funcs
 
 MY_P="linuxconsoletools-${PV}"
 DESCRIPTION="joystick testing utilities"
@@ -14,16 +14,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="sdl udev"
 
-DEPEND="sdl? ( media-libs/libsdl:0[video] )
+DEPEND="sdl? ( media-libs/libsdl2:0[video] )
 	!<x11-libs/tslib-1.0-r2"
 RDEPEND="${DEPEND}
 	udev? ( virtual/udev )"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.0-build.patch
-	"${FILESDIR}"/${PN}-1.4.8-udev.patch
 )
 
 src_prepare() {
@@ -36,7 +35,7 @@ src_prepare() {
 
 src_install() {
 	default
-	if use !udev ; then
-		rm "${D}"/usr/bin/jscal-{re,}store || die
+	if ! use udev ; then
+		rm "${ED}"/usr/bin/jscal-{re,}store || die
 	fi
 }
