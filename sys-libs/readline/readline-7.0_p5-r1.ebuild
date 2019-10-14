@@ -42,9 +42,9 @@ esac
 LICENSE="GPL-3"
 SLOT="0/7"  # subslot matches SONAME major
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-linux ~x86-linux"
-IUSE="static-libs utils"
+IUSE="static-libs +unicode utils"
 
-RDEPEND=">=sys-libs/ncurses-5.9-r3:0=[static-libs?,${MULTILIB_USEDEP}]"
+RDEPEND=">=sys-libs/ncurses-5.9-r3:0=[static-libs?,unicode?,${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -70,7 +70,7 @@ src_prepare() {
 
 	# Force ncurses linking. #71420
 	# Use pkg-config to get the right values. #457558
-	local ncurses_libs=$($(tc-getPKG_CONFIG) ncurses --libs)
+	local ncurses_libs=$($(tc-getPKG_CONFIG) ncurses$(usex unicode w '') --libs)
 	sed -i \
 		-e "/^SHLIB_LIBS=/s:=.*:='${ncurses_libs}':" \
 		support/shobj-conf || die
