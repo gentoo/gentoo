@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake-utils eutils xdg
 
 DESCRIPTION="Vim-fork focused on extensibility and agility."
 HOMEPAGE="https://neovim.io"
@@ -18,7 +18,7 @@ fi
 
 LICENSE="Apache-2.0 vim"
 SLOT="0"
-IUSE="+clipboard +luajit +nvimpager python remote ruby +tui"
+IUSE="+luajit +nvimpager +tui"
 
 BDEPEND="
 	dev-util/gperf
@@ -49,10 +49,6 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	app-eselect/eselect-vi
-	python? ( dev-python/neovim-python-client )
-	ruby? ( dev-ruby/neovim-ruby-client )
-	remote? ( dev-python/neovim-remote )
-	clipboard? ( || ( x11-misc/xsel x11-misc/xclip ) )
 "
 
 CMAKE_BUILD_TYPE=Release
@@ -87,9 +83,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
+	xdg_pkg_postinst
+	optfeature "clipboard support" x11-misc/xsel x11-misc/xclip gui-apps/wl-clipboard
+	optfeature "Python plugin support" dev-python/neovim-python-client
+	optfeature "Ruby plugin support" dev-ruby/neovim-ruby-client
+	optfeature "remote/nvr support" dev-python/neovim-remote
 }
