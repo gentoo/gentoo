@@ -433,11 +433,6 @@ app-emulation/vmips-cross-bin
 # Removal in 30 days.  Bug #694514.
 dev-util/atomic-install
 
-# Fabian Groffen <grobian@gentoo.org> (2019-09-15)
-# Incorporated in >=app-portage/portage-utils-0.80 as qmanifest
-# Removal in 30 days.  Bug #694428
-app-portage/hashgen
-
 # Zac Medico <zmedico@gentoo.org> (2019-09-14)
 # No reverse dependencies.
 # Removal in 30 days.  Bug #694390.
