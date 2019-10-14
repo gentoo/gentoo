@@ -16,7 +16,7 @@ IUSE="nls truetype debug"
 
 RDEPEND="x11-libs/libXft
 	x11-libs/libXt
-	nls? ( sys-devel/gettext )
+	nls? ( >=sys-devel/gettext-0.20 )
 	truetype? ( media-libs/freetype )"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
