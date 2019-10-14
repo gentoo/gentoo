@@ -7,7 +7,7 @@ inherit multilib cmake-utils
 
 DESCRIPTION="Signal Protocol C Library"
 HOMEPAGE="https://www.whispersystems.org/"
-SRC_URI="https://github.com/signalapp/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/signalapp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 LICENSE="GPL-3"
