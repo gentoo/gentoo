@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils multilib-minimal
+inherit eutils multilib-minimal
 
 DESCRIPTION="Library to execute a function when a specific event occurs on a file descriptor"
 HOMEPAGE="https://libevent.org/ https://github.com/libevent/libevent/"
@@ -30,11 +30,6 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 S=${WORKDIR}/${P}-stable
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 multilib_src_configure() {
 	# fix out-of-source builds
