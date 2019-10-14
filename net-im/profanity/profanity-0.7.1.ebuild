@@ -11,7 +11,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="libnotify otr gpg xscreensaver"
+IUSE="libnotify omemo otr gpg xscreensaver"
 
 DEPEND="
 	dev-libs/expat
@@ -23,6 +23,10 @@ DEPEND="
 	sys-libs/ncurses:=[unicode]
 	gpg? ( app-crypt/gpgme:= )
 	libnotify? ( x11-libs/libnotify )
+	omemo? (
+		net-libs/libsignal-protocol-c
+		dev-libs/libgcrypt
+	)
 	otr? ( net-libs/libotr )
 	xscreensaver? (
 		x11-libs/libXScrnSaver
@@ -33,6 +37,7 @@ RDEPEND="${DEPEND}"
 src_configure() {
 	econf \
 		$(use_enable libnotify notifications) \
+		$(use_enable omemo) \
 		$(use_enable otr) \
 		$(use_enable gpg pgp) \
 		$(use_with xscreensaver)
