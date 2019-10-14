@@ -3342,7 +3342,6 @@ dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 1.2.4: A general purpose tile map editor
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/blackfriday 1.2_p20150720 1.4 9999: a markdown processor implemented in Go
-dev-go/cli 0_pre20160306: A small package for building command line apps in Go
 dev-go/coveraggregator 0_pre20170216: Cover profile aggregator for golang
 dev-go/delve 1.0.0 1.3.0: A source-level debugger for the Go programming language
 dev-go/ed25519 0_pre20170117: ed25519 for Go
@@ -3354,7 +3353,6 @@ dev-go/go-bindata-assetfs 1.0.0_p20180223: Serve embedded files from jteeuwen/go
 dev-go/go-colortext 0_pre20150720: Change the console foreground and background colors
 dev-go/go-crypto 0_pre20160126 0_pre20180816 9999: Go supplementary cryptography libraries
 dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
-dev-go/go-gitlab-client 0_pre20160305: A simple gitlab api client written in Go
 dev-go/go-license-detector 3.0.0: Scan a source directory and report the license
 dev-go/go-md2man 1.0.3 1.0.6 1.0.8: A utility to convert markdown to man pages
 dev-go/go-net 0_pre20160216 0_pre20180816 9999: Go supplementary network libraries
@@ -3379,7 +3377,6 @@ dev-go/logrus 1.4.1: Structured, pluggable logging for Go
 dev-go/qr 0_p20161121: Basic QR code library for Go
 dev-go/sanitized-anchor-name 0_pre20150822 0_pre20151027 9999: A Go function to provide sanitized anchor names
 dev-go/siphash 1.0.0 1.2.1: Go implementation of SipHash-2.4
-dev-go/toml 0.2.0_p20160716 9999: TOML parser for Golang with reflection
 dev-go/twofactor 0_p20180418: Two-factor authentication library for Go
 dev-go/zglob 0_p20171230: Unix-optimized file globbing and directory walking for Go
 dev-haskell/abstract-deque 0.2.2 0.3: Abstract, parameterized interface to mutable Deques
@@ -15474,7 +15471,6 @@ net-misc/pssh 2.3.1-r1: PSSH provides parallel versions of OpenSSH and related t
 net-misc/ptpd 2.3.1-r1 2.3.1-r2: Precision Time Protocol daemon
 net-misc/puf 1.0.0-r1: A download tool for UNIX-like systems
 net-misc/pulseaudio-dlna 0.5.2 0.5.2-r1 9999: A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio
-net-misc/pump 0.8.24-r4: This is the DHCP/BOOTP client written by RedHat
 net-misc/putty 0.73 9999: A Free Telnet/SSH Client
 net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your command line
 net-misc/pyhoca-cli 0.5.0.4 0.6.0.0 0.6.0.1: X2Go command line client
@@ -16100,7 +16096,6 @@ sci-biology/gibbs 3.1: Identify motifs, conserved regions, in DNA or protein seq
 sci-biology/glimmer 3.02-r3 3.02b: An HMM-based microbial gene finding system from TIGR
 sci-biology/glimmerhmm 3.0.1-r1: A eukaryotic gene finding system from TIGR
 sci-biology/gmap 2015.12.31.5: A Genomic Mapping and Alignment Program for mRNA and EST Sequences
-sci-biology/goby-cpp 1.9.7.3 1.9.8.1 2.0.1: A DNA sequencing data management framework - C/C++ API
 sci-biology/hmmer 2.3.2-r4 3.1_beta2: Sequence analysis using profile hidden Markov models
 sci-biology/iedera 1.05-r1: A subset seed design tool for DNA sequence alignment
 sci-biology/infernal 1.0.2-r1: Inference of RNA alignments
