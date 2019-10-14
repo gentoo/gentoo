@@ -47,6 +47,7 @@ RDEPEND="${CDEPEND}
 HTML_DOCS=( docs/html )
 
 PATCHES=(
+	"${FILESDIR}/${PN}-0.102.0-libxml2_pkgconfig.patch" #661328
 	"${FILESDIR}/${PN}-0.101.2-tinfo.patch" #670729
 )
 
