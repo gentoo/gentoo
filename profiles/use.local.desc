@@ -5913,6 +5913,7 @@ net-im/pidgin:silc - Enable SILC protocol support
 net-im/pidgin:xscreensaver - Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events
 net-im/pidgin:zephyr - Enable Zephyr protocol support
 net-im/profanity:gpg - Enable OpenPGP encryption
+net-im/profanity:omemo - Enable OMEMO encryption
 net-im/profanity:otr - Enable encrypted conversations using Off-The-Records messaging
 net-im/prosody:jit - Use LuaJIT instead of vanilla Lua
 net-im/prosody:libevent - Use libevent for event handling

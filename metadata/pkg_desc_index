@@ -3084,7 +3084,7 @@ dev-cpp/sparsehash 2.0.3-r1: An extremely memory-efficient hash_map implementati
 dev-cpp/tbb 2017.20161128 2018.20180312 2019.8: High level abstract threading library
 dev-cpp/tclap 1.2.1 1.2.2: Simple templatized C++ library for parsing command line arguments
 dev-cpp/tree 2.81: An STL-like tree class
-dev-cpp/waylandpp 0.2.3 0.2.4 0.2.5 0.2.6 9999: Wayland C++ bindings
+dev-cpp/waylandpp 0.2.3 0.2.4 0.2.5 0.2.6 0.2.7 9999: Wayland C++ bindings
 dev-cpp/websocketpp 0.8.1-r1: C++/Boost Asio based websocket client/server library
 dev-cpp/yaml-cpp 0.6.2: YAML parser and emitter in C++
 dev-db/4store 1.1.5-r1: 4store is an efficient, scalable and stable RDF database
@@ -14872,7 +14872,7 @@ net-im/openfire 4.2.3-r1 4.2.3-r2: Openfire (formerly wildfire) real time collab
 net-im/openmittsu 0.9.13.32 0.9.13.46: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.13.0 2.13.0-r1: GTK Instant Messenger client
 net-im/poezio 0.12 9999: Console XMPP client that looks like most famous IRC clients
-net-im/profanity 0.6.0: A console based XMPP client inspired by Irssi
+net-im/profanity 0.6.0 0.7.1: A console based XMPP client inspired by Irssi
 net-im/prosody 0.9.14 0.11.1 0.11.2 0.11.2-r1: Prosody is a flexible communications server for Jabber/XMPP written in Lua
 net-im/psi 1.4 9999: Qt XMPP client
 net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
@@ -15070,6 +15070,7 @@ net-libs/libqmi 1.12.6 1.14.0 1.16.0 1.16.2 1.16.4 1.18.0 1.18.2 1.20.0 1.20.2 1
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librsync 0.9.7-r3 2.0.1-r1 2.0.2 2.1.0: Remote delta-compression library
 net-libs/libsearpc 3.0.8-r3: A simple C language RPC framework
+net-libs/libsignal-protocol-c 2.3.2 9999: Signal Protocol C Library
 net-libs/libsignon-glib 2.1: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
 net-libs/libsoup 2.58.2 2.62.3 2.64.2 2.66.2 2.66.3 2.66.4: HTTP client/server library for GNOME
