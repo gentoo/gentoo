@@ -2589,7 +2589,7 @@ app-text/pybookreader 0.5.0-r1: A book reader for .fb2 .html and plain text (pos
 app-text/pylize 1.3b-r1: Python HTML Slideshow Generator using HTML and CSS
 app-text/pytextile 2.3.3 3.0.3: A Python port of Textile, A humane web text generator
 app-text/q-text-as-data 1.5.0: A CLI tool that allows direct execution of SQL-like queries on text
-app-text/qpdf 7.0.0 7.1.1 8.2.1 8.4.1 8.4.2 9.0.0: Command-line tool for structural, content-preserving transformation of PDF files
+app-text/qpdf 8.2.1 8.4.1 8.4.2 9.0.0 9.0.1: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.16 0.4.18_pre3-r1 0.4.18_pre4: A tabbed document viewer
 app-text/queequeg 0.91-r2: A checker for English grammar, for people who are not native English
 app-text/rarian 0.8.1-r3: A documentation metadata library
@@ -11016,7 +11016,7 @@ dev-vcs/rcs 5.8.2 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
 dev-vcs/stgit 0.16-r2 0.18 0.19 0.20: Manage a stack of patches using GIT as a backend
-dev-vcs/subversion 1.12.2: Advanced version control system
+dev-vcs/subversion 1.12.2 1.13.0_rc1: Advanced version control system
 dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.11-r1 1.0.12 1.0.13 1.0.13-r1 1.0.16 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.3.2 1.4.2: Tool collecting path entries across SVN history
@@ -11797,7 +11797,7 @@ games-simulation/lincity 1.13.1-r1: city/country simulation game for X and Linux
 games-simulation/lincity-ng 2.9_beta: City simulation game
 games-simulation/micropolis 1.0-r1 1.0-r2: Free version of the well-known city building simulation
 games-simulation/openrct2 0.2.0 0.2.1 9999: An open source re-implementation of RollerCoaster Tycoon 2
-games-simulation/openttd 1.9.1 1.9.2 9999: OpenTTD is a clone of Transport Tycoon Deluxe
+games-simulation/openttd 1.9.1 1.9.2 1.9.3 9999: OpenTTD is a clone of Transport Tycoon Deluxe
 games-simulation/pmars-sdl 0.9.2e-r1: Portable redcode simulator's sdl port for core war
 games-simulation/searchandrescue 1.5.0-r1: Helicopter based air rescue flight simulator
 games-simulation/senken 0.3.0-r1: city simulation game
@@ -13040,7 +13040,7 @@ media-gfx/pngquant 2.12.2 2.12.3: command-line utility and library for lossy com
 media-gfx/pngrewrite 1.4.0: Utility which reduces large palettes in PNG images
 media-gfx/pngtoico 1.0.1-r1: Convert png images to MS ico format
 media-gfx/pngtools 0.4-r2: A series of tools for the PNG image format
-media-gfx/potrace 1.15: Transforming bitmaps into vector graphics
+media-gfx/potrace 1.15 1.16: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
 media-gfx/pqiv 2.11 9999: powerful GTK 3 based command-line image viewer with a minimal UI
@@ -15474,7 +15474,7 @@ net-misc/ptpd 2.3.1-r1 2.3.1-r2: Precision Time Protocol daemon
 net-misc/puf 1.0.0-r1: A download tool for UNIX-like systems
 net-misc/pulseaudio-dlna 0.5.2 0.5.2-r1 9999: A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio
 net-misc/pump 0.8.24-r4: This is the DHCP/BOOTP client written by RedHat
-net-misc/putty 0.71-r2 0.72 0.73 9999: A Free Telnet/SSH Client
+net-misc/putty 0.73 9999: A Free Telnet/SSH Client
 net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your command line
 net-misc/pyhoca-cli 0.5.0.4 0.6.0.0 0.6.0.1: X2Go command line client
 net-misc/pyhoca-gui 0.5.0.7 0.5.0.8: X2Go graphical client applet
@@ -18434,8 +18434,8 @@ www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web b
 www-client/midori 7.0 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2: a free, open source web browser
-www-client/opera 63.0.3368.94 63.0.3368.107 64.0.3417.47 64.0.3417.54: A fast and secure web browser
-www-client/opera-beta 64.0.3417.32 64.0.3417.41: A fast and secure web browser
+www-client/opera 64.0.3417.54: A fast and secure web browser
+www-client/opera-beta 64.0.3417.41: A fast and secure web browser
 www-client/opera-developer 65.0.3459.0 65.0.3466.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 2.1.1 2.1.1-r1: A headless WebKit scriptable with a JavaScript API

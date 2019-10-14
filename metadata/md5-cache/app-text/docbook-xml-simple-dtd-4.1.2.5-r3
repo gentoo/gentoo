@@ -3,10 +3,10 @@ DEPEND=>=app-arch/unzip-5.41
 DESCRIPTION=Simplified Docbook DTD for XML
 EAPI=7
 HOMEPAGE=http://www.oasis-open.org/docbook/xml/simple/4.1.2.5/
-KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 s390 sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris
+KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris
 LICENSE=docbook
 RDEPEND=>=app-text/build-docbook-catalog-1.6 >=app-text/sgml-common-0.6.3-r7
 SLOT=4.1.2.5
 SRC_URI=https://www.oasis-open.org/docbook/xml/simple/4.1.2.5/simple4125.zip
 _eclasses_=sgml-catalog-r1	d8b0f83f3e731fd3f34507d50d8bc7e2
-_md5_=b0adc1c1f2b9d7b48d13b554a5f45eaa
+_md5_=4c690e3a17f872f2c49a4c5dabe57dae
