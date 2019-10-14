@@ -7259,7 +7259,7 @@ dev-php/pecl-http 2.6.0 2.6.0-r1 2.6.0-r2 3.1.0 3.1.0-r1 3.1.0-r2 3.2.0 3.2.1: E
 dev-php/pecl-imagick 3.4.4: PHP wrapper for the ImageMagick library
 dev-php/pecl-libevent 0.1.0-r2: PHP wrapper for libevent
 dev-php/pecl-lzf 1.6.6 1.6.7: This package handles LZF de/compression
-dev-php/pecl-mailparse 2.1.6-r4 3.0.2 3.0.2-r1 3.0.3: PHP extension for parsing and working with RFC822 and MIME compliant messages
+dev-php/pecl-mailparse 2.1.6-r4 3.0.2-r1 3.0.3-r1: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-mcrypt 1.0.1 1.0.2: Bindings for the libmcrypt library
 dev-php/pecl-memcache 3.0.8-r2 3.0.8-r3: PHP extension for using memcached
 dev-php/pecl-memcached 2.2.0-r2 3.0.4 3.1.3 3.1.3-r1: Interface PHP with memcached via libmemcached library
@@ -7995,7 +7995,7 @@ dev-python/isort 4.2.5 4.3.15: A python utility/library to sort imports
 dev-python/itsdangerous 0.24 0.24-r1: Various helpers to pass trusted data to untrusted environments and back
 dev-python/itypes 1.1.0: basic immutable container types for python
 dev-python/jaraco-classes 1.4 1.5-r1 2.0: Classes used by other projects by developer jaraco
-dev-python/jaraco-collections 1.5.3-r1 1.6.0-r1 2.0: Models and classes to supplement the stdlib collections module
+dev-python/jaraco-collections 1.5.3-r1 1.6.0-r1 2.0 2.1: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-functools 1.19-r1 1.20-r1 2.0: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 2.3-r1 3.0.0-r1 4.4.2: Tools for working with iterables. Complements itertools and more_itertools
 dev-python/jaraco-logging 1.5 1.5.2-r1 2.0: Additional facilities to supplement Python's stdlib logging module
@@ -13151,7 +13151,7 @@ media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 11.65 11.69: Read and write meta information in image, audio and video files
 media-libs/faac 1.29.9.2: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.8.8: AAC audio decoding library
-media-libs/fdk-aac 0.1.5 0.1.6 2.0.0: Fraunhofer AAC codec library
+media-libs/fdk-aac 2.0.0 2.0.1: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
 media-libs/fidlib 0.9.10 0.9.10-r1: Run-time filter design and execution library
 media-libs/flac 1.3.2-r1 1.3.3: free lossless audio encoder and decoder
@@ -13943,7 +13943,7 @@ media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
 media-sound/gpodder 3.9.1 3.10.5: A free cross-platform podcast aggregator
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
 media-sound/gramofile 1.6_p9: Transfer sound from gramophone records to CD
-media-sound/grip 3.9.0 3.10.1 3.10.2: GTK+ based Audio CD Player/Ripper
+media-sound/grip 3.9.0 3.10.2 4.0.0: GTK+ based Audio CD Player/Ripper
 media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gst123 0.3.4 0.3.5: A GStreamer based command line media player
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
@@ -14163,7 +14163,7 @@ media-sound/traverso 0.49.5: Professional Audio Tools for GNU/Linux
 media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
 media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnostic volume management daemon
 media-sound/tunapie 2.1.17-r1 2.1.19: Directory browser for Radio and TV streams
-media-sound/twolame 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
+media-sound/twolame 0.3.13-r2 0.4.0: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2-r1: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.16a-r1 0.2.17-r1 0.2.17-r2 0.2.17-r3 9999: Minimalistic Murmur (Mumble server)
 media-sound/upmpdcli 1.4.0 1.4.2: UPnP Media Renderer front-end for MPD, the Music Player Daemon
@@ -19251,7 +19251,7 @@ x11-terms/terminator 1.91: Multiple GNOME terminals in one window
 x11-terms/terminology 1.5.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.8.7.4 0.8.8: A terminal emulator for the Xfce desktop environment
-x11-terms/xterm 327 337 347 348: Terminal Emulator for X Windows
+x11-terms/xterm 327 337 348 349: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/QGnomePlatform 0.5: A Qt Platform Theme aimed to accommodate GNOME settings
