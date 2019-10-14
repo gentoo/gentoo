@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools eutils fcaps flag-o-matic
 
 DESCRIPTION="My TraceRoute, an Excellent network diagnostic tool"
-HOMEPAGE="http://www.bitwizard.nl/mtr/"
-SRC_URI="ftp://ftp.bitwizard.nl/mtr/${P}.tar.gz"
+HOMEPAGE="https://www.bitwizard.nl/mtr/"
+SRC_URI="https://www.bitwizard.nl/mtr/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

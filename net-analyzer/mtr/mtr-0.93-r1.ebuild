@@ -5,8 +5,8 @@ EAPI=6
 inherit autotools eutils fcaps flag-o-matic
 
 DESCRIPTION="My TraceRoute, an Excellent network diagnostic tool"
-HOMEPAGE="http://www.bitwizard.nl/mtr/"
-SRC_URI="ftp://ftp.bitwizard.nl/mtr/${P}.tar.gz"
+HOMEPAGE="https://www.bitwizard.nl/mtr/"
+SRC_URI="https://www.bitwizard.nl/mtr/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
