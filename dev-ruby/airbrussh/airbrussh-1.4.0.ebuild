@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 USE_RUBY="ruby24 ruby25 ruby26"
 
-RUBY_FAKEGEM_RECIPE_DOC="rdoc"
-
 RUBY_FAKEGEM_BINWRAP=""
+
+RUBY_FAKEGEM_GEMSPEC="airbrussh.gemspec"
 
 inherit ruby-fakegem
 
@@ -24,6 +24,8 @@ ruby_add_rdepend ">dev-ruby/sshkit-1.7.0"
 ruby_add_bdepend "test? ( dev-ruby/mocha )"
 
 all_ruby_prepare() {
+	sed -i -e 's/git ls-files -z/find . -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
 	rm -f test/support/minitest_reporters.rb || die
 
 	# Avoid a test poluting the environment
