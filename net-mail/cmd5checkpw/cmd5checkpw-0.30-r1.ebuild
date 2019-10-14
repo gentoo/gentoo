@@ -8,8 +8,8 @@ inherit eutils fixheadtails user
 MY_VER="030"
 
 DESCRIPTION="A checkpassword compatible authentication program that used CRAM-MD5 authentication mode"
-SRC_URI="http://www.fehcom.de/qmail/auth/${PN}-${MY_VER}_tgz.bin"
-HOMEPAGE="http://www.fehcom.de/qmail/smtpauth.html"
+SRC_URI="https://www.fehcom.de/qmail/auth/${PN}-${MY_VER}_tgz.bin"
+HOMEPAGE="https://www.fehcom.de/qmail/smtpauth.html"
 
 LICENSE="public-domain RSA"
 SLOT="0"
