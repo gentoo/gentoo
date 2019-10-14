@@ -18,7 +18,7 @@ HPN_PATCHES=(
 )
 
 SCTP_VER="1.2" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
-#X509_VER="12.1" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
+X509_VER="12.3" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
 
 PATCH_SET="openssh-7.9p1-patches-1.0"
 
@@ -129,7 +129,6 @@ src_prepare() {
 	if use X509 ; then
 		pushd "${WORKDIR}" &>/dev/null || die
 		eapply "${FILESDIR}/${P}-X509-glue-"${X509_VER}".patch"
-		eapply "${FILESDIR}/${P}-X509-dont-make-piddir-"${X509_VER}".patch"
 		popd &>/dev/null || die
 
 		eapply "${WORKDIR}"/${X509_PATCH%.*}
