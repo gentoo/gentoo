@@ -11,34 +11,32 @@ inherit bash-completion-r1 mount-boot
 # Whenever you bump a GKPKG, check if you have to move
 # or add new patches!
 VERSION_BOOST="1.71.0"
-VERSION_BTRFS_PROGS="5.2.1"
+VERSION_BTRFS_PROGS="5.2.2"
 VERSION_BUSYBOX="1.31.0"
 VERSION_CRYPTSETUP="2.2.1"
 VERSION_DMRAID="1.0.0.rc16-3"
 VERSION_DROPBEAR="2019.78"
-VERSION_EUDEV="3.2.8"
 VERSION_EXPAT="2.2.8"
 VERSION_E2FSPROGS="1.45.4"
 VERSION_FUSE="2.9.9"
 VERSION_GPG="1.4.23"
-VERSION_ISCSI="2.0.875"
+VERSION_ISCSI="2.0.878"
 VERSION_JSON_C="0.13.1"
+VERSION_KMOD="26"
 VERSION_LIBAIO="0.3.112"
 VERSION_LIBGCRYPT="1.8.5"
 VERSION_LIBGPGERROR="1.36"
 VERSION_LVM="2.02.186"
 VERSION_LZO="2.10"
 VERSION_MDADM="4.1"
-VERSION_MULTIPATH_TOOLS="0.8.0"
 VERSION_POPT="1.16"
 VERSION_STRACE="5.3"
 VERSION_THIN_PROVISIONING_TOOLS="0.8.5"
 VERSION_UNIONFS_FUSE="2.0"
-VERSION_USERSPACE_RCU="0.10.2"
 VERSION_UTIL_LINUX="2.34"
 VERSION_XFSPROGS="5.2.1"
 VERSION_ZLIB="1.2.11"
-VERSION_ZSTD="1.4.2"
+VERSION_ZSTD="1.4.3"
 
 RH_HOME="ftp://sourceware.org/pub"
 DM_HOME="https://people.redhat.com/~heinzm/sw/dmraid/src"
@@ -51,25 +49,23 @@ COMMON_URI="
 	https://www.kernel.org/pub/linux/utils/cryptsetup/v$(ver_cut 1-2 ${VERSION_CRYPTSETUP})/cryptsetup-${VERSION_CRYPTSETUP}.tar.xz
 	https://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-${VERSION_DMRAID}.tar.bz2
 	https://matt.ucc.asn.au/dropbear/releases/dropbear-${VERSION_DROPBEAR}.tar.bz2
-	https://dev.gentoo.org/~blueness/eudev/eudev-${VERSION_EUDEV}.tar.gz
 	https://github.com/libexpat/libexpat/releases/download/R_${VERSION_EXPAT//\./_}/expat-${VERSION_EXPAT}.tar.xz
 	https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${VERSION_E2FSPROGS}/e2fsprogs-${VERSION_E2FSPROGS}.tar.xz
 	https://github.com/libfuse/libfuse/releases/download/fuse-${VERSION_FUSE}/fuse-${VERSION_FUSE}.tar.gz
 	mirror://gnupg/gnupg/gnupg-${VERSION_GPG}.tar.bz2
 	https://github.com/open-iscsi/open-iscsi/archive/${VERSION_ISCSI}.tar.gz -> open-iscsi-${VERSION_ISCSI}.tar.gz
 	https://s3.amazonaws.com/json-c_releases/releases/json-c-${VERSION_JSON_C}.tar.gz
+	https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-${VERSION_KMOD}.tar.xz
 	https://releases.pagure.org/libaio/libaio-${VERSION_LIBAIO}.tar.gz
 	mirror://gnupg/libgcrypt/libgcrypt-${VERSION_LIBGCRYPT}.tar.bz2
 	mirror://gnupg/libgpg-error/libgpg-error-${VERSION_LIBGPGERROR}.tar.bz2
 	https://mirrors.kernel.org/sourceware/lvm2/LVM2.${VERSION_LVM}.tgz
 	https://www.oberhumer.com/opensource/lzo/download/lzo-${VERSION_LZO}.tar.gz
 	https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-${VERSION_MDADM}.tar.xz
-	https://git.opensvc.com/?p=multipath-tools/.git;a=snapshot;h=${VERSION_MULTIPATH_TOOLS};sf=tgz -> multipath-tools-${VERSION_MULTIPATH_TOOLS}.tar.gz
 	http://ftp.rpm.org/mirror/popt/popt-${VERSION_POPT}.tar.gz
 	https://github.com/strace/strace/releases/download/v${VERSION_STRACE}/strace-${VERSION_STRACE}.tar.xz
 	https://github.com/jthornber/thin-provisioning-tools/archive/v${VERSION_THIN_PROVISIONING_TOOLS}.tar.gz -> thin-provisioning-tools-${VERSION_THIN_PROVISIONING_TOOLS}.tar.gz
 	https://github.com/rpodgorny/unionfs-fuse/archive/v${VERSION_UNIONFS_FUSE}.tar.gz -> unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.gz
-	https://lttng.org/files/urcu/userspace-rcu-${VERSION_USERSPACE_RCU}.tar.bz2
 	https://www.kernel.org/pub/linux/utils/util-linux/v${VERSION_UTIL_LINUX:0:4}/util-linux-${VERSION_UTIL_LINUX}.tar.xz
 	https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-${VERSION_XFSPROGS}.tar.xz
 	https://zlib.net/zlib-${VERSION_ZLIB}.tar.gz
@@ -159,6 +155,7 @@ src_prepare() {
 		-e "s:VERSION_GPG:${VERSION_GPG}:"\
 		-e "s:VERSION_ISCSI:${VERSION_ISCSI}:"\
 		-e "s:VERSION_JSON_C:${VERSION_JSON_C}:"\
+		-e "s:VERSION_KMOD:${VERSION_KMOD}:"\
 		-e "s:VERSION_LIBAIO:${VERSION_LIBAIO}:"\
 		-e "s:VERSION_LIBGCRYPT:${VERSION_LIBGCRYPT}:"\
 		-e "s:VERSION_LIBGPGERROR:${VERSION_LIBGPGERROR}:"\
