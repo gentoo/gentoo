@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,7 @@ DEPEND="=media-video/vdr-2.2*
 	pcre? ( dev-libs/libpcre )
 	tre? ( dev-libs/tre )"
 RDEPEND="${DEPEND}"
+QA_FLAGS_IGNORED="usr/lib/vdr/plugins/libvdr-.* usr/lib64/vdr/plugins/libvdr-.* usr/bin/createcats"
 
 REQUIRED_USE="?? ( pcre tre )"
 
@@ -30,7 +31,7 @@ src_prepare() {
 	# remove untranslated .po files
 	rm "${S}"/po/{ca_ES,da_DK,el_GR,et_EE,hr_HR,hu_HU,nn_NO,pl_PL,pt_PT,ro_RO,ru_RU,sl_SI,sv_SE,tr_TR}.po
 
-	eapply "${FILESDIR}/${P}_makefile.diff"
+	eapply "${FILESDIR}/vdr-epgsearch-1.x.makefile.patch"
 
 	use conflictcheckonly || sed -e "s:install-\$(PLUGIN3)::" -i Makefile
 	use epgsearchonly || sed -e "s:install-\$(PLUGIN2)::" -i Makefile
