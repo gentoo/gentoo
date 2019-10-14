@@ -1860,11 +1860,6 @@
       <name>Jimi Huotari</name>
       <role>Non-Technical Lead</role>
     </member>
-    <member is-lead="1">
-      <email>dracwyrm@gentoo.org</email>
-      <name>Jonathan Scruggs</name>
-      <role>Technical Lead</role>
-    </member>
   </project>
   <project>
     <email>layman@gentoo.org</email>
@@ -3755,11 +3750,6 @@
     <name>Gentoo VDR project</name>
     <url>https://wiki.gentoo.org/wiki/Project:VDR</url>
     <description>The Gentoo VDR Project maintains and updates the VDR packages in the portage tree. It integrates them with Gentoo as tight as possible. VDR is the abbreviation for Video Disk Recorder.</description>
-    <member>
-      <email>hd_brummy@gentoo.org</email>
-      <name>Joerg Bornkessel</name>
-      <role>Member</role>
-    </member>
     <member>
       <email>idl0r@gentoo.org</email>
       <name>Christian Ruppert</name>
