@@ -438,27 +438,6 @@ dev-util/atomic-install
 # Removal in 30 days.  Bug #694390.
 dev-go/go-oauth2
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-14)
-# Unmaintained.  All of them were not bumped since 2016.  No reverse
-# dependencies.
-# Removal in 30 days.  Bug #694398.
-dev-go/cli
-dev-go/go-gitlab-client
-dev-go/toml
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-14)
-# sci-biology/goby has been removed.  This package makes little sense
-# without it.
-# Removal in 30 days.
-sci-biology/goby-cpp
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-14)
-# Unmaintained.  Vulnerable to arbitrary code execution.  Debian (being
-# its current upstream) removed it.  The recommended replacement
-# is net-misc/dhcpcd.
-# Removal in 30 days.  Bug #694314.
-net-misc/pump
-
 # Thomas Sachau <tommy@gentoo.org> (2019-09-14)
 # Freemail has been completly rewritten so the current
 # ebuild does no longer work for it. In addition the source
