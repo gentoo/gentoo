@@ -12,7 +12,7 @@ SRC_URI="https://releases.pagure.org/lohit/${PN}-${FONT_SUFFIX}-${PV}.tar.gz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 s390 ~sh sparc x86 ~ppc-macos ~x86-macos"
 IUSE=""
 
 DEPEND="!<media-fonts/lohit-fonts-2.20150220"

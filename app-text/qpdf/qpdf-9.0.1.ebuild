@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Command-line tool for structural, content-preserving transformation of PDF files"
 HOMEPAGE="http://qpdf.sourceforge.net/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/qpdf/${P}.tar.gz"
 LICENSE="|| ( Apache-2.0 Artistic-2 )"
 
 # subslot = libqpdf soname version
-SLOT="0/18"
+SLOT="0/26"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~m68k-mint ~sparc-solaris"
 IUSE="doc examples perl static-libs test"
@@ -34,9 +34,11 @@ RDEPEND="${CDEPEND}
 DOCS=( ChangeLog README.md TODO )
 
 src_configure() {
-	CONFIG_SHELL=/bin/bash econf \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		$(use_enable static-libs static)
 		$(use_enable test test-compare-images)
+	)
+	CONFIG_SHELL=/bin/bash econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -51,5 +53,5 @@ src_install() {
 		dobin examples/build/.libs/*
 	fi
 
-	find "${ED}" -name '*.la' -exec rm -f {} +
+	find "${ED}" -name '*.la' -delete || die
 }

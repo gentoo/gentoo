@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="mirror://debian/pool/main/x/xfonts-cronyx/${MY_P}.orig.tar.gz
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ppc s390 ~sh sparc x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_P//_/-}.orig"

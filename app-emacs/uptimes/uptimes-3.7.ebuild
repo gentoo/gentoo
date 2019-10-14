@@ -12,7 +12,7 @@ SRC_URI="https://github.com/davep/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ppc ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 SITEFILE="50${PN}-gentoo.el"
