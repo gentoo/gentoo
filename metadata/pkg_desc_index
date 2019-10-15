@@ -1228,7 +1228,7 @@ app-emacs/bbdb 3.1.2-r1: The Insidious Big Brother Database
 app-emacs/binclock 1.11: Display the current time using a binary clock
 app-emacs/bison-mode 0.3: Emacs major mode for Bison, Yacc and Lex grammars
 app-emacs/blogmax 20170321: Blogging in Emacs
-app-emacs/bm 1.32_p20140214: Visible bookmarks in buffer
+app-emacs/bm 1.32_p20140214 201905: Visible bookmarks in buffer
 app-emacs/bongo 1.1: Buffer-oriented media player for Emacs
 app-emacs/boxquote 2.1: Quote text with a semi-box
 app-emacs/browse-kill-ring 2.0.0: An improved interface to kill-ring
@@ -1240,8 +1240,8 @@ app-emacs/circe 2.11: A great IRC client for Emacs
 app-emacs/cldoc 1.16: Show Common Lisp operators and variables information in echo area
 app-emacs/color-browser 0.3-r1: A utility for designing Emacs color themes
 app-emacs/color-moccur 2.73: Major mode for color moccur
-app-emacs/color-theme 6.6.0-r1: Install color themes (includes many themes)
-app-emacs/company-mode 0.6.14 0.7: In-buffer completion front-end
+app-emacs/color-theme 6.6.0-r1 6.6.0-r2: Install color themes (includes many themes)
+app-emacs/company-mode 0.7 0.9.10: In-buffer completion front-end
 app-emacs/crontab-mode 1.20: Mode for editing crontab files
 app-emacs/crypt++ 2.92 2.94_pre20080430: Handle all sorts of compressed and encrypted files
 app-emacs/csharp-mode 0.9.0: A derived Emacs mode implementing most of the C# rules
