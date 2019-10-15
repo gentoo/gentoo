@@ -497,7 +497,6 @@ dev-python/kaa-base
 dev-python/kaa-display
 dev-python/kaa-imlib2
 dev-python/kaa-metadata
-dev-python/python-dsv
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
