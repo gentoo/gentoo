@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Nick Sarnie <sarnex@gentoo.org> (2019-10-14)
+# Allow on stable for now
+app-emulation/wine-d3d9 -d3d9
+virtual/wine -d3d9
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-09-13)
 # media-video/pipewire is not stable yet
 dev-libs/weston pipewire

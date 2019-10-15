@@ -1,6 +1,14 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Nick Sarnie <sarnex@gentoo.org> (2019-10-14)
+# No longer updated or supported by the Wine project
+# wine-d3d9 superceeded by nine-standalone
+# wine-any has no value without wine-d3d9
+# Removal in 30 days
+app-emulation/wine-d3d9 d3d9
+virtual/wine d3d9
+
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # Moved from arch/powerpc/ppc64 as it applies to most architectures.
 sys-firmware/seabios debug
