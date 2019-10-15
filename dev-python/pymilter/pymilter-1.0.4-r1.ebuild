@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="mail-filter/libmilter"
+DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-${P}"
