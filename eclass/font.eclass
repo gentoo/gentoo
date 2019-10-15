@@ -113,13 +113,11 @@ font_cleanup_dirs() {
 			generated=false
 			# make sure this is a file and not a subdir
 			[[ -e ${f} || -L ${f} ]] || continue
-			for g in ${genfiles}; do
-				if [[ ${f##*/} == ${g} ]]; then
-					# this is a generated file
-					generated=true
-					break
-				fi
-			done
+			if has ${f##*/} ${genfiles}; then
+				# this is a generated file
+				generated=true
+				break
+			fi
 			# if the file is a generated file then we know this is a font dir (as
 			# opposed to something like encodings or util) and a candidate for
 			# removal.  if it's not generated then it's an "otherfile".
