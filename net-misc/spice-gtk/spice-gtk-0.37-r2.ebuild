@@ -74,6 +74,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
+	"${FILESDIR}"/${P}-adjust-to-window-scaling.patch
 )
 
 src_prepare() {
