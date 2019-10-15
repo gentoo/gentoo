@@ -7079,7 +7079,7 @@ dev-perl/gtk2-spell 1.40.0-r1 1.40.0-r2: Bindings for GtkSpell with Gtk2.x
 dev-perl/gtk2-trayicon 0.60.0-r2: Perl wrappers for the egg cup Gtk2::TrayIcon utilities
 dev-perl/gtk2-traymanager 0.50.0-r1 0.50.0-r2: Perl bindings for EggTrayManager
 dev-perl/indirect 0.360.0 0.370.0: Lexically warn about using the indirect method call syntax
-dev-perl/libintl-perl 1.240.0-r2 1.280.0 1.310.0: High-Level Interface to Uniforum Message Translation
+dev-perl/libintl-perl 1.280.0 1.310.0: High-Level Interface to Uniforum Message Translation
 dev-perl/librg-utils-perl 1.0.43-r1: Parsers and format conversion utilities used by (e.g.) profphd
 dev-perl/libwww-perl 6.150.0 6.270.0: A collection of Perl Modules for the WWW
 dev-perl/libxml-perl 0.80.0-r1 0.80.0-r2: Collection of Perl modules for working with XML
