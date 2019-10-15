@@ -497,7 +497,6 @@ dev-python/kaa-base
 dev-python/kaa-display
 dev-python/kaa-imlib2
 dev-python/kaa-metadata
-dev-python/larch
 dev-python/pybloomfiltermmap
 dev-python/pylirc
 dev-python/pyringe
