@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic linux-info multilib-minimal pam systemd toolchain-funcs
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+
+inherit autotools flag-o-matic linux-info multilib-minimal pam python-r1 systemd toolchain-funcs
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="https://pagure.io/SSSD/sssd"
@@ -12,8 +14,10 @@ KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl autofs +locator +netlink nfsv4 nls +manpages samba selinux sudo ssh test"
+IUSE="acl autofs +locator +netlink nfsv4 nls +manpages python samba selinux sudo ssh test"
 RESTRICT="!test? ( test )"
+
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMON_DEP="
 	>=sys-libs/pam-0-r1[${MULTILIB_USEDEP}]
@@ -54,6 +58,7 @@ COMMON_DEP="
 
 RDEPEND="${COMMON_DEP}
 	>=sys-libs/glibc-2.17[nscd]
+	python? ( ${PYTHON_DEPS} )
 	selinux? ( >=sec-policy/selinux-sssd-2.20120725-r9 )
 	"
 DEPEND="${COMMON_DEP}
@@ -61,7 +66,7 @@ DEPEND="${COMMON_DEP}
 	manpages? (
 		>=dev-libs/libxslt-1.1.26
 		app-text/docbook-xml-dtd:4.4
-		)"
+	)"
 
 CONFIG_CHECK="~KEYS"
 
@@ -106,6 +111,19 @@ multilib_src_configure() {
 	#Work around linker dependency problem.
 	append-ldflags "-Wl,--allow-shlib-undefined"
 
+	local python2_configure=--without-python2-bindings
+	local python3_configure=--without-python3-bindings
+	if use python; then
+		python_configure() {
+			if python_is_python3 ; then
+				python3_configure=--with-python3-bindings
+			else
+				python2_configure=--with-python2-bindings
+			fi
+		}
+		python_foreach_impl python_configure
+	fi
+
 	myconf+=(
 		--localstatedir="${EPREFIX}"/var
 		--enable-nsslibdir="${EPREFIX}"/$(get_libdir)
@@ -134,8 +152,8 @@ multilib_src_configure() {
 		$(multilib_native_use_with ssh)
 		--with-crypto="nss"
 		--with-initscript="sysv"
-		--without-python2-bindings
-		--without-python3-bindings
+		${python2_configure}
+		${python3_configure}
 
 		KRB5_CONFIG=/usr/bin/${CHOST}-krb5-config
 	)
