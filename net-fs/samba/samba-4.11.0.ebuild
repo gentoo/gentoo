@@ -52,7 +52,7 @@ CDEPEND="
 	>=net-libs/gnutls-3.2.0
 	net-libs/libnsl:=[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-2.0.6[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-2.0.7[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	<sys-libs/ldb-2.2.0[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/libcap
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
