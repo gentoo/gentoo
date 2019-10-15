@@ -4813,8 +4813,8 @@ dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
 dev-libs/hyperscan 5.1.0 5.1.1 5.2.0: High-performance regular expression matching library
 dev-libs/hyphen 2.8.8 2.8.8-r1: ALTLinux hyphenation library
-dev-libs/icu 64.2: International Components for Unicode
-dev-libs/icu-layoutex 64.2: External layout part of International Components for Unicode
+dev-libs/icu 64.2 65.1: International Components for Unicode
+dev-libs/icu-layoutex 64.2 65.1: External layout part of International Components for Unicode
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/igraph 0.7.1-r2: Creating and manipulating undirected and directed graphs
 dev-libs/iksemel 1.4-r1: eXtensible Markup Language parser library designed for Jabber applications
@@ -6388,7 +6388,7 @@ dev-perl/MooseX-Aliases 0.110.0-r1: Easy aliasing of methods and attributes in M
 dev-perl/MooseX-ClassAttribute 0.290.0: Declare class attributes Moose-style
 dev-perl/MooseX-ConfigFromFile 0.140.0: An abstract Moose role for setting attributes from a configfile
 dev-perl/MooseX-FollowPBP 0.50.0 0.50.0-r1: Name your accessors get_foo() and set_foo(), whatever that may mean
-dev-perl/MooseX-Getopt 0.710.0 0.740.0: A Moose role for processing command line options
+dev-perl/MooseX-Getopt 0.740.0: A Moose role for processing command line options
 dev-perl/MooseX-GlobRef 0.70.100: Store a Moose object in glob reference
 dev-perl/MooseX-Has-Sugar 1.0.6: Sugar Syntax for moose 'has' fields
 dev-perl/MooseX-LazyRequire 0.110.0: Required attributes which fail only when trying to use them
