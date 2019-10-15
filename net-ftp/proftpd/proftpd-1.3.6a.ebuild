@@ -18,7 +18,7 @@ HOMEPAGE="http://www.proftpd.org/
 	http://gssmod.sourceforge.net/"
 SRC_URI="ftp://ftp.proftpd.org/distrib/source/${P/_/}.tar.gz
 	case? ( http://www.castaglia.org/${PN}/modules/${PN}-mod-case-${MOD_CASE}.tar.gz )
-	clamav? ( https://github.com/jbenden/mod_clamav/archive/v${MOD_CLAMAV}.tar.gz -> ${P}-mod_clamav-${MOD_CLAMAV}.tar.gz )
+	clamav? ( https://github.com/jbenden/mod_clamav/archive/v${MOD_CLAMAV}.tar.gz -> ${PN}-mod_clamav-${MOD_CLAMAV}.tar.gz )
 	diskuse? ( http://www.castaglia.org/${PN}/modules/${PN}-mod-diskuse-${MOD_DISKUSE}.tar.gz )
 	kerberos? ( mirror://sourceforge/gssmod/mod_gss-${MOD_GSS}.tar.gz )
 	msg? ( http://www.castaglia.org/${PN}/modules/${PN}-mod-msg-${MOD_MSG}.tar.gz )
