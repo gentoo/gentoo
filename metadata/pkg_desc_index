@@ -10833,7 +10833,7 @@ dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 4.14.33 4.14.33-r1 4.20.3 5.1.15: Userland tools for Linux Performance Counters
 dev-util/pkgcheck 0.6.8 9999: pkgcore-based QA utility
-dev-util/pkgconf 1.5.4 1.6.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
+dev-util/pkgconf 1.6.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/plan9port 20140306-r4: Port of many Plan 9 programs and libraries
 dev-util/ply 0_pre20160313: Dynamic instrumentation of the Linux kernel with BPF and kprobes
@@ -15570,7 +15570,7 @@ net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.20.3-r1 1.20.3-r2: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
-net-misc/whois 5.4.3 5.5.0 5.5.1 5.5.2 9999: improved Whois Client
+net-misc/whois 5.4.3 5.5.2 9999: improved Whois Client
 net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1 0.7.1-r2: Implements Wake On LAN (Magic Paket) functionality in a small program
 net-misc/wput 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
@@ -17198,7 +17198,7 @@ sys-apps/hbaapi 2.2: The Host Bus Adapter API for managing Fibre Channel Host Bu
 sys-apps/hd-idle 1.05: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.56 9.58: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715 070715-r1: Heirloom toolchest - original Unix tools
-sys-apps/help2man 1.47.6 1.47.10 1.47.11: GNU utility to convert program --help output to a man page
+sys-apps/help2man 1.47.10 1.47.11: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
@@ -17875,7 +17875,7 @@ sys-fs/vhba 20190410 20190827 20190831: Virtual (SCSI) Host Bus Adapter kernel m
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/wpflash 0: flash the firmware on a Webpal
 sys-fs/xfsdump 3.1.6 3.1.8: xfs dump/restore utilities
-sys-fs/xfsprogs 4.19.0 5.1.0 5.2.0 5.2.1: xfs filesystem utilities
+sys-fs/xfsprogs 4.19.0 5.2.1: xfs filesystem utilities
 sys-fs/xwmfs 0.83: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
@@ -18853,8 +18853,8 @@ x11-misc/kronometer 2.2.3: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
 x11-misc/libinput-gestures 2.40 2.41 9999: Actions gestures on your touchpad using libinput
 x11-misc/light-locker 1.8.0-r1 1.9.0-r2: A simple locker using lightdm
-x11-misc/lightdm 1.26.0-r1 1.28.0 1.30.0: A lightweight display manager
-x11-misc/lightdm-gtk-greeter 2.0.5-r1 2.0.6: LightDM GTK+ Greeter
+x11-misc/lightdm 1.28.0 1.30.0: A lightweight display manager
+x11-misc/lightdm-gtk-greeter 2.0.6: LightDM GTK+ Greeter
 x11-misc/lightdm-mini-greeter 0.3.2 0.3.4: A Minimal, Configurable, Single-User GTK3 LightDM Greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1 0.9.0-r2: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r2: Xosd plugin for LINEAK
