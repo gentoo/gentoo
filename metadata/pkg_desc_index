@@ -1248,11 +1248,11 @@ app-emacs/csharp-mode 0.9.0: A derived Emacs mode implementing most of the C# ru
 app-emacs/css-mode 0.11-r1: A major mode for editing Cascading Style Sheets (CSS)
 app-emacs/csv-mode 0_pre20040823 1.9: A major mode for editing comma-separated value files
 app-emacs/cycle-buffer 2.16: Select buffer by cycling through
-app-emacs/d-mode 2.0.6: Emacs major mode for editing D code
+app-emacs/d-mode 2.0.6 2.0.10: Emacs major mode for editing D code
 app-emacs/dash 2.14.1 2.16.0: A modern list library for Emacs
 app-emacs/ddskk 16.2: One Japanese input methods on Emacs
 app-emacs/desktop+ 0.2: desktop+ extends standard desktop module
-app-emacs/develock 0.45: An Emacs minor mode for highlighting broken formatting rules
+app-emacs/develock 0.45 0.47: An Emacs minor mode for highlighting broken formatting rules
 app-emacs/df-mode 20050509-r1: Minor mode to show space left on devices in the mode line
 app-emacs/dictionary 1.10: Emacs package for talking to a dictionary server
 app-emacs/dircolors 1.0-r2: Provide the same facility of ls --color inside Emacs
