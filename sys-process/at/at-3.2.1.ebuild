@@ -1,13 +1,16 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools eutils flag-o-matic pam user systemd
 
+MY_P="${PN}_${PV}"
+
 DESCRIPTION="Queues jobs for later execution"
-HOMEPAGE="https://packages.qa.debian.org/a/at.html"
-SRC_URI="mirror://debian/pool/main/a/at/${PN}_${PV}.orig.tar.gz"
+HOMEPAGE="http://blog.calhariz.com/tag/at https://packages.qa.debian.org/a/at.html"
+SRC_URI="http://software.calhariz.com/at/${MY_P}.orig.tar.gz
+	mirror://debian/pool/main/a/at/${MY_P}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -35,6 +38,7 @@ PATCHES=(
 )
 
 pkg_setup() {
+	# Cannot be moved into pkg_preinst!
 	enewgroup at 25
 	enewuser at 25 -1 /var/spool/at/atjobs at
 }
@@ -45,17 +49,17 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=()
-	use pam || my_conf+=( --without-pam )
-	use selinux && my_conf+=( --with-selinux )
-	econf \
-		--sysconfdir=/etc/at \
-		--with-jobdir=/var/spool/at/atjobs \
-		--with-atspool=/var/spool/at/atspool \
-		--with-etcdir=/etc/at \
-		--with-daemon_username=at \
-		--with-daemon_groupname=at \
-		${my_conf[@]}
+	local my_conf=(
+		--sysconfdir="${EPREFIX}"/etc/at
+		--with-jobdir="${EPREFIX}"/var/spool/at/atjobs
+		--with-atspool="${EPREFIX}"/var/spool/at/atspool
+		--with-etcdir="${EPREFIX}"/etc/at
+		--with-daemon_username=at
+		--with-daemon_groupname=at
+		$(usex pam '' --without-pam)
+		$(use_with selinux)
+	)
+	econf ${my_conf[@]}
 }
 
 src_install() {
@@ -66,18 +70,19 @@ src_install() {
 	newpamd "${FILESDIR}"/at.pamd-3.1.13-r1 atd
 
 	# Preserve existing .SEQ files (bug #386625)
-	local seq_file="${ROOT}/var/spool/at/atjobs/.SEQ"
-	if [ -f "${seq_file}" ] ; then
+	local seq_file="${EROOT}/var/spool/at/atjobs/.SEQ"
+	if [[ -f "${seq_file}" ]] ; then
 		einfo "Preserving existing .SEQ file (bug #386625)."
-		cp -p "${seq_file}" "${D}"/var/spool/at/atjobs/ || die
+		cp -p "${seq_file}" "${ED}"/var/spool/at/atjobs/ || die
 	fi
 
 	systemd_dounit "${FILESDIR}/atd.service"
+	keepdir /var/spool/at/atspool
 }
 
 pkg_postinst() {
 	einfo "Forcing correct permissions on /var/spool/at"
-	local atspooldir="${ROOT}/var/spool/at"
+	local atspooldir="${EROOT}/var/spool/at"
 	chown at:at "${atspooldir}/atjobs"
 	chmod 1770  "${atspooldir}/atjobs"
 	chown at:at "${atspooldir}/atjobs/.SEQ"
