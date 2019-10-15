@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
 if [[ ${PV} == "99999999" ]] ; then
@@ -9,18 +9,18 @@ if [[ ${PV} == "99999999" ]] ; then
 	EHG_REPO_URI="http://d-rats.com/hg/chirp.hg"
 fi
 
-inherit distutils-r1 ${SCM}
+inherit distutils-r1 xdg-utils ${SCM}
 
 DESCRIPTION="Free open-source tool for programming your amateur radio"
 HOMEPAGE="http://chirp.danplanet.com"
 
+RESTRICT="test"
 if [[ ${PV} == "99999999" ]] ; then
 	KEYWORDS=""
 else
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="http://trac.${PN}.danplanet.com/${PN}_daily/daily-${PV}/${PN}-daily-${PV}.tar.gz"
 	S="${WORKDIR}/${PN}-daily-${PV}"
-	RESTRICT="test"
 fi
 LICENSE="GPL-3"
 SLOT="0"
