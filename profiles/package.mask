@@ -31,11 +31,9 @@
 
 # Nick Sarnie <sarnex@gentoo.org> (2019-10-14)
 # No longer updated or supported by the Wine project
-# wine-d3d9 superceeded by nine-standalone
 # wine-any has no value without wine-d3d9
 # Removal in 30 days
 app-emulation/wine-any
-app-emulation/wine-d3d9
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-13)
 # Last release in 2008.  Declared dead upstream, apparently broken
