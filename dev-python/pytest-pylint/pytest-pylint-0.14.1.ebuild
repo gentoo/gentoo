@@ -1,14 +1,14 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 inherit distutils-r1
 
 DESCRIPTION="pytest plugin to check source code with pylint"
 HOMEPAGE="https://github.com/carsongee/pytest-pylint"
-SRC_URI="https://github.com/carsongee/pytest-pylint/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/carsongee/pytest-pylint/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]
+	dev-python/pylint[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
