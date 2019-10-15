@@ -15750,7 +15750,7 @@ net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices
 net-wireless/broadcom-sta 6.30.223.271-r5: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8-r1: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
-net-wireless/chirp 20190718 99999999: Free open-source tool for programming your amateur radio
+net-wireless/chirp 20190925 99999999: Free open-source tool for programming your amateur radio
 net-wireless/cpyrit-cuda 0.5.0: A sub-package that adds CUDA-capability to Pyrit
 net-wireless/cpyrit-opencl 0.5.0: A sub-package that adds OpenCL-capability to Pyrit
 net-wireless/crackle 0.1 9999: Crackle cracks BLE Encryption (AKA Bluetooth Smart)
