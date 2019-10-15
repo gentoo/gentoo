@@ -458,8 +458,6 @@ net-mail/Freemail
 # a few have been declared discontinued upstream.  None of them has
 # any reverse dependency.
 # Removal in 30 days.  Bug #694280.
-dev-python/parse
-dev-python/parse-type
 dev-python/pycallgraph
 dev-python/pyroma
 dev-python/pytest-raisesregexp
