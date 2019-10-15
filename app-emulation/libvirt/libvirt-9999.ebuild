@@ -50,6 +50,7 @@ RDEPEND="
 	acct-user/qemu
 	policykit? ( acct-group/libvirt )
 	app-misc/scrub
+	>=dev-libs/glib-2.48.0
 	dev-libs/libgcrypt:0
 	dev-libs/libnl:3
 	>=dev-libs/libxml2-2.7.6
