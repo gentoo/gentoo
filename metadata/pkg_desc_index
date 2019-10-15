@@ -2589,7 +2589,7 @@ app-text/pybookreader 0.5.0-r1: A book reader for .fb2 .html and plain text (pos
 app-text/pylize 1.3b-r1: Python HTML Slideshow Generator using HTML and CSS
 app-text/pytextile 2.3.3 3.0.3: A Python port of Textile, A humane web text generator
 app-text/q-text-as-data 1.5.0: A CLI tool that allows direct execution of SQL-like queries on text
-app-text/qpdf 8.2.1 8.4.1 8.4.2 9.0.0 9.0.1: Command-line tool for structural, content-preserving transformation of PDF files
+app-text/qpdf 8.2.1 8.4.1 8.4.2 9.0.1 9.0.2: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.16 0.4.18_pre3-r1 0.4.18_pre4: A tabbed document viewer
 app-text/queequeg 0.91-r2: A checker for English grammar, for people who are not native English
 app-text/rarian 0.8.1-r3: A documentation metadata library
@@ -7236,7 +7236,7 @@ dev-php/mockery 0.9.0-r1: Simple yet flexible PHP mock object framework for use 
 dev-php/myclabs-deepcopy 1.6.0 1.6.1: Create deep copies (clones) of your objects
 dev-php/onphp 1.0.11_pre20141124: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.10.1-r1 1.10.3: PEAR - PHP Extension and Application Repository
-dev-php/pecl-amqp 1.8.0 1.9.0 1.9.3 1.9.4: PHP Bindings for AMQP 0-9-1 compatible brokers
+dev-php/pecl-amqp 1.9.4 1.9.4-r1: PHP Bindings for AMQP 0-9-1 compatible brokers
 dev-php/pecl-apcu 4.0.11 5.1.12 5.1.17-r1: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.4 1.0.4-r1 1.0.5: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-bbcode 1.0.3_beta1-r2: A quick and efficient BBCode Parsing Library
@@ -13643,7 +13643,7 @@ media-plugins/kodi-pvr-pctv 2.4.5 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 3.4.8 3.4.9 3.4.10 9999: Kodi's Stalker client addon
 media-plugins/kodi-pvr-vbox 4.4.6 4.4.7 4.4.8 9999: Kodi's VBox Home TV Gateway PVR client addon
 media-plugins/kodi-pvr-vdr-vnsi 3.6.2 3.6.3 3.6.3-r1 9999: Kodi PVR addon VNSI
-media-plugins/kodi-pvr-vuplus 3.28.0 3.28.1 3.28.2 3.28.4 3.28.5 9999: Kodi's VuPlus client addon
+media-plugins/kodi-pvr-vuplus 3.28.0 3.28.1 3.28.2 3.28.4 3.28.5 3.28.6 9999: Kodi's VuPlus client addon
 media-plugins/kodi-pvr-wmc 2.4.4 2.4.5 9999: Kodi's Windows Media Center client addon
 media-plugins/kodi-screensaver-asteroids 2.1.0 9999: Asteroids screensaver for Kodi
 media-plugins/kodi-screensaver-biogenesis 1.1.0 2.0.0 9999: Biogenesis screensaver for Kodi
@@ -14809,7 +14809,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83: Amazon S3 mounting via fuse
 net-fs/s3ql 2.24 2.25 2.26 2.28 2.32 2.33: A full-featured file system for online data storage
-net-fs/samba 4.5.16 4.8.6-r2 4.8.6-r3 4.8.12 4.9.11 4.9.13 4.10.2 4.10.6 4.10.7 4.10.8 4.11.0_rc3: Samba Suite Version 4
+net-fs/samba 4.5.16 4.8.6-r2 4.8.6-r3 4.8.12 4.9.13 4.10.2 4.10.8 4.11.0: Samba Suite Version 4
 net-fs/smbnetfs 0.6.1 0.6.1-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 2.10-r1 3.5.0 3.5.1 3.5.2: Fuse-filesystem utilizing the sftp service
@@ -17970,7 +17970,7 @@ sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.5: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.22 1.1.23 1.1.24 9999: Light, fast and simple C library focused on standards-conformance and safety
-sys-libs/musl-nscd 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
+sys-libs/musl-nscd 1.0.2 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/native-uuid 1.0: .pc file for uuid
 sys-libs/ncurses 6.1_p20181020 6.1_p20190609: console display library
 sys-libs/ncurses-compat 5.9: console display library
@@ -17991,7 +17991,7 @@ sys-libs/suacomp 0.6.14 9999: library wrapping the interix lib-c to make it less
 sys-libs/talloc 2.1.9 2.1.14 2.1.16 2.2.0 2.3.0: Samba talloc library
 sys-libs/tapi 1.30 2.0.0: Text-based Application Programming Interface
 sys-libs/tdb 1.3.13 1.3.16 1.3.18 1.4.0 1.4.2: A simple database API
-sys-libs/tevent 0.9.28 0.9.31-r1 0.9.37 0.9.38 0.9.39 0.10.0: Samba tevent library
+sys-libs/tevent 0.9.31-r1 0.9.37 0.9.38 0.9.39 0.10.0 0.10.1: Samba tevent library
 sys-libs/timezone-data 2018i 2019a 2019b-r1 2019b-r2: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc-ng 1.0.26 1.0.30-r1 1.0.31 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.1 1.2.4 1.2.7: A wrapper to fake privilege separation

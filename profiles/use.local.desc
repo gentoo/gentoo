@@ -6474,11 +6474,13 @@ net-misc/crossbar:tor - include tor services connections support
 net-misc/csync:sftp - Enable sftp transfer support via net-libs/libssh
 net-misc/curl:alt-svc - Enable alt-svc support
 net-misc/curl:brotli - Enable brotli compression support
-net-misc/curl:http2 - Enabled HTTP/2.0 support
+net-misc/curl:http2 - Enable HTTP/2.0 support
 net-misc/curl:metalink - Enable metalink support
+net-misc/curl:nghttp3 - Enable HTTP/3.0 support using net-libs/nghttp3 and net-libs/ngtcp2
 net-misc/curl:progress-meter - Enable the progress meter
+net-misc/curl:quiche - Enable HTTP/3.0 support using net-libs/quiche
 net-misc/curl:rtmp - Enable RTMP Streaming Media support
-net-misc/curl:ssh - Enabled SSH urls in curl using libssh2
+net-misc/curl:ssh - Enable SSH urls in curl using libssh2
 net-misc/curl:ssl - Enable crypto engine support (via openssl if USE='-gnutls -nss')
 net-misc/dahdi:flash - Support (short) flash on FXS
 net-misc/dahdi-tools:ppp - Enables PPP/DAHDIRAS support
