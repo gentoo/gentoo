@@ -9,7 +9,7 @@ inherit flag-o-matic pam python-single-r1 linux-info autotools
 
 DESCRIPTION="eCryptfs userspace utilities"
 HOMEPAGE="https://launchpad.net/ecryptfs"
-SRC_URI="https://bazaar.launchpad.net/~ecryptfs/ecryptfs/trunk/tarball/894 -> ${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~bkohler/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
