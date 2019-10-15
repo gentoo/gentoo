@@ -458,7 +458,6 @@ net-mail/Freemail
 # a few have been declared discontinued upstream.  None of them has
 # any reverse dependency.
 # Removal in 30 days.  Bug #694280.
-dev-python/pyuv
 dev-python/safety
 dev-python/sphinxcontrib-cheeseshop
 dev-python/structlog
