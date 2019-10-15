@@ -97,7 +97,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DIST_ROOT="${ED}" install 
+	emake DIST_ROOT="${ED}" install
 	emake DIST_ROOT="${ED}" install-dev
 
 	# removing unnecessary .la files if not needed
