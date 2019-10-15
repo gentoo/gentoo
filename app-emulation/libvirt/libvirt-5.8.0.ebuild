@@ -338,6 +338,7 @@ src_install() {
 	# libvirtd is able to create them on demand
 	rm -rf "${D}"/etc/sysconfig
 	rm -rf "${D}"/var
+	rm -rf "${D}"/run
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
