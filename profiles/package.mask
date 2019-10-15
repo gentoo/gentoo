@@ -484,14 +484,6 @@ dev-python/twilio
 dev-python/xonsh
 dev-python/yubiotp
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-14)
-# The following packages are unmaintained and do not declare support
-# for Python 3.  Most of them are either in need of version bumps,
-# or are dead upstream (haven't had a release since 2009-2015).
-# None of them have any reverse dependencies.
-# Removal in 30 days.  Bug #694280.
-dev-python/Ming
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
 # Masked for removal.
