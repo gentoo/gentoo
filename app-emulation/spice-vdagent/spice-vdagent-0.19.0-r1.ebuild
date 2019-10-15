@@ -15,7 +15,7 @@ SRC_URI="https://www.spice-space.org/download/releases/${MY_P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="consolekit selinux systemd"
+IUSE="consolekit gtk selinux systemd"
 S="${WORKDIR}/${MY_P}"
 
 CDEPEND="
@@ -28,6 +28,7 @@ CDEPEND="
 	x11-libs/libX11
 	x11-libs/libXinerama
 	consolekit? ( sys-auth/consolekit sys-apps/dbus )
+	gtk? ( x11-libs/gtk+:3 )
 	systemd? ( sys-apps/systemd )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
@@ -56,6 +57,7 @@ src_configure() {
 	econf \
 		--with-init-script=systemd \
 		--localstatedir="${EPREFIX}"/var \
+		$(use_with gtk) \
 		"${opt[@]}"
 }
 

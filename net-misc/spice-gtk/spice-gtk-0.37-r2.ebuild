@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/json-glib:0=
 	media-libs/gst-plugins-base:1.0
 	media-libs/gst-plugins-good:1.0
-	media-libs/gstreamer:1.0
+	media-libs/gstreamer:1.0[introspection?]
 	media-libs/opus
 	sys-libs/zlib
 	virtual/jpeg:0=
@@ -74,6 +74,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
+	"${FILESDIR}"/${P}-adjust-to-window-scaling.patch
 )
 
 src_prepare() {

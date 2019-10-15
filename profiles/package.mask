@@ -440,14 +440,6 @@ app-text/gnopaster
 app-emulation/vmips
 app-emulation/vmips-cross-bin
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-15)
-# This was an attempt to provide more reliable package merging mechanism
-# for Portage.  However, it was never finished and with Portage's
-# concept of bug-by-bug neverending backwards compatibility it would
-# never be accepted anyway.
-# Removal in 30 days.  Bug #694514.
-dev-util/atomic-install
-
 # Zac Medico <zmedico@gentoo.org> (2019-09-14)
 # No reverse dependencies.
 # Removal in 30 days.  Bug #694390.
@@ -514,12 +506,6 @@ dev-python/python-dsv
 dev-python/python-gudev
 dev-python/python-spidermonkey
 dev-python/python-virtkey
-dev-python/rtf2xml
-dev-python/tmdb3
-dev-python/tracing
-dev-python/txsocksx
-dev-python/wsgilog
-dev-python/xmpppy
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
