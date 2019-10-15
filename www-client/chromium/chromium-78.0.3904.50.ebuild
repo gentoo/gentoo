@@ -13,7 +13,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
-	https://dev.gentoo.org/~floppym/dist/chromium-78-revert-noexcept.patch
+	https://dev.gentoo.org/~floppym/dist/chromium-78-revert-noexcept-r1.patch.gz
 	https://dev.gentoo.org/~floppym/dist/chromium-78-revert-pm-observer.patch
 "
 
@@ -151,8 +151,9 @@ PATCHES=(
 	"${FILESDIR}/chromium-77-clang.patch"
 	"${FILESDIR}/chromium-77-pulseaudio-13.patch"
 	"${FILESDIR}/chromium-78-include.patch"
+	"${FILESDIR}/chromium-78-icon.patch"
 	"${FILESDIR}/chromium-78-protobuf-export.patch"
-	"${DISTDIR}/chromium-78-revert-noexcept.patch"
+	"${WORKDIR}/chromium-78-revert-noexcept-r1.patch"
 	"${DISTDIR}/chromium-78-revert-pm-observer.patch"
 	"${FILESDIR}/chromium-78-gcc-enum-range.patch"
 	"${FILESDIR}/chromium-78-gcc-std-vector.patch"
