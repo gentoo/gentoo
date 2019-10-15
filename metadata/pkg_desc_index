@@ -1300,7 +1300,7 @@ app-emacs/h4x0r 0.13-r1: Aid in writing like a script kiddie does
 app-emacs/haskell-mode 2.9.1 13.07 16.1: Mode for editing (and running) Haskell programs in Emacs
 app-emacs/helm 3.2: Emacs incremental completion and selection narrowing framework
 app-emacs/helm-system-packages 1.10.1: A Helm interface to the package manager of your operating system
-app-emacs/hexrgb 0_p957: Functions to manipulate colors, including RGB hex strings
+app-emacs/hexrgb 0_p957 0_p1019: Functions to manipulate colors, including RGB hex strings
 app-emacs/highline 7.2.2: Minor mode to highlight current line in buffer
 app-emacs/howm 1.4.3: Note-taking tool on Emacs
 app-emacs/htmlize 1.54: HTML-ize font-lock buffers in Emacs
@@ -1381,7 +1381,7 @@ app-emacs/session 2.3a: When you start Emacs, Session restores various variables
 app-emacs/setnu 1.06: Display line numbers in Emacs buffers
 app-emacs/slime 2.15 2.20 2.20-r1 2.21: SLIME, the Superior Lisp Interaction Mode (Extended)
 app-emacs/sml-mode 6.4: Emacs major mode for editing Standard ML
-app-emacs/sokoban 1.4: Implementation of Sokoban for Emacs
+app-emacs/sokoban 1.4 1.4.8: Implementation of Sokoban for Emacs
 app-emacs/ssh 20120709: Support for SSH sessions in Emacs shell buffers
 app-emacs/stripes 0.2-r2: An Emacs mode that alternates the background color of lines
 app-emacs/sumibi 0.7.4: Statistical Japanese input method using the Internet as a large corpus
@@ -1397,7 +1397,7 @@ app-emacs/uboat 1.2: Generate u-boat-death messages, patterned after Iron Coffin
 app-emacs/undo-tree 0.6.6: Undo trees and visualization
 app-emacs/uptimes 3.7: Track and display emacs session uptimes
 app-emacs/vhdl-mode 3.38.1: VHDL-mode for Emacs
-app-emacs/visual-basic-mode 1.4.12: A mode for editing Visual Basic programs
+app-emacs/visual-basic-mode 1.4.12 1.5: A mode for editing Visual Basic programs
 app-emacs/vm 8.2.0_beta-r1: The VM mail reader for Emacs
 app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
 app-emacs/w3mnav 0.5-r3: Add Info-like navigation keys to the emacs-w3m web browser
@@ -18027,7 +18027,7 @@ sys-power/uhubctl 1.8-r1: USB hub per-port power control
 sys-power/upower 0.99.9-r1 0.99.11: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r4: a periodic command scheduler
-sys-process/at 3.1.18-r1 3.1.20 3.1.23: Queues jobs for later execution
+sys-process/at 3.1.18-r1 3.1.23 3.2.1: Queues jobs for later execution
 sys-process/atop 2.3.0-r1 2.4.0: Resource-specific view of processes
 sys-process/audit 2.6.4 2.7.1 2.8.2 2.8.3 2.8.4: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10 0.11: A new cron system designed with secure operations in mind by Bruce Guenter
