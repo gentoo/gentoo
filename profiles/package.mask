@@ -505,7 +505,6 @@ dev-python/pystdf
 dev-python/python-dsv
 dev-python/python-gudev
 dev-python/python-spidermonkey
-dev-python/python-virtkey
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
