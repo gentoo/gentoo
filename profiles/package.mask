@@ -458,13 +458,6 @@ net-mail/Freemail
 # a few have been declared discontinued upstream.  None of them has
 # any reverse dependency.
 # Removal in 30 days.  Bug #694280.
-dev-python/attrdict
-dev-python/behave
-dev-python/cfgio
-dev-python/django-opensearch
-dev-python/django-otp-yubikey
-dev-python/django-phonenumber-field
-dev-python/grafanalib
 dev-python/libasyncns-python
 dev-python/maybe
 dev-python/mockredispy
@@ -483,29 +476,6 @@ dev-python/torment
 dev-python/twilio
 dev-python/xonsh
 dev-python/yubiotp
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-14)
-# The following packages are unmaintained and do not declare support
-# for Python 3.  Most of them are either in need of version bumps,
-# or are dead upstream (haven't had a release since 2009-2015).
-# None of them have any reverse dependencies.
-# Removal in 30 days.  Bug #694280.
-dev-python/Ming
-dev-python/casuarius
-dev-python/imdbpy
-dev-python/kaa-base
-dev-python/kaa-display
-dev-python/kaa-imlib2
-dev-python/kaa-metadata
-dev-python/larch
-dev-python/pybloomfiltermmap
-dev-python/pylirc
-dev-python/pyringe
-dev-python/pystdf
-dev-python/python-dsv
-dev-python/python-gudev
-dev-python/python-spidermonkey
-dev-python/python-virtkey
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
