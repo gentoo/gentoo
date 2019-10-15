@@ -25,7 +25,7 @@ LICENSE="LGPL-2.1"
 IUSE="
 	apparmor audit +caps +dbus dtrace firewalld fuse glusterfs iscsi
 	iscsi-direct +libvirtd lvm libssh lxc +macvtap nfs nls numa openvz
-	parted pcap phyp policykit +qemu rbd sasl selinux +udev +vepa
+	parted pcap phyp pm-utils policykit +qemu rbd sasl selinux +udev +vepa
 	virtualbox virt-network wireshark-plugins xen zfs
 "
 
@@ -50,7 +50,6 @@ RDEPEND="
 	acct-user/qemu
 	policykit? ( acct-group/libvirt )
 	app-misc/scrub
-	>=dev-libs/glib-2.48.0
 	dev-libs/libgcrypt:0
 	dev-libs/libnl:3
 	>=dev-libs/libxml2-2.7.6
@@ -88,6 +87,7 @@ RDEPEND="
 		sys-fs/lvm2[-device-mapper-only(-)]
 	)
 	pcap? ( >=net-libs/libpcap-1.0.0 )
+	pm-utils? ( sys-power/pm-utils )
 	policykit? ( >=sys-auth/polkit-0.9 )
 	qemu? (
 		>=app-emulation/qemu-1.5.0
@@ -266,6 +266,7 @@ src_configure() {
 		$(use_with parted storage-disk)
 		$(use_with pcap libpcap)
 		$(use_with phyp)
+		$(use_with pm-utils )
 		$(use_with policykit polkit)
 		$(use_with qemu)
 		$(use_with qemu yajl)
@@ -294,7 +295,8 @@ src_configure() {
 		--disable-static
 		--disable-werror
 
-		--localstatedir=/var
+		--localstatedir="$EPREFIX/var"
+		--with-runstatedir="$EPREFIX/run"
 	)
 
 	if use virtualbox && has_version app-emulation/virtualbox-ose; then
@@ -336,6 +338,7 @@ src_install() {
 	# libvirtd is able to create them on demand
 	rm -rf "${D}"/etc/sysconfig
 	rm -rf "${D}"/var
+	rm -rf "${D}"/run
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!

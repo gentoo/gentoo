@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI="https://www.spice-space.org/download/releases/${MY_P}.tar.bz2
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+consolekit selinux systemd"
+IUSE="consolekit selinux systemd"
 S="${WORKDIR}/${MY_P}"
 
 CDEPEND="
