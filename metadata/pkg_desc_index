@@ -1227,14 +1227,14 @@ app-emacs/basic-toolkit 0.3: Basic edit toolkit
 app-emacs/bbdb 3.1.2-r1: The Insidious Big Brother Database
 app-emacs/binclock 1.11: Display the current time using a binary clock
 app-emacs/bison-mode 0.3: Emacs major mode for Bison, Yacc and Lex grammars
-app-emacs/blogmax 20110305 20170321: Blogging in Emacs
+app-emacs/blogmax 20170321: Blogging in Emacs
 app-emacs/bm 1.32_p20140214: Visible bookmarks in buffer
 app-emacs/bongo 1.1: Buffer-oriented media player for Emacs
 app-emacs/boxquote 2.1: Quote text with a semi-box
 app-emacs/browse-kill-ring 2.0.0: An improved interface to kill-ring
 app-emacs/bubblet 0.74-r1: A bubble-popping game
 app-emacs/buffer-extension 0.1: Some enhanced functions for buffer manipulate
-app-emacs/calfw 1.3 1.6: A calendar framework for Emacs
+app-emacs/calfw 1.6: A calendar framework for Emacs
 app-emacs/chess 2.0.4: A chess client and library for Emacs
 app-emacs/circe 2.11: A great IRC client for Emacs
 app-emacs/cldoc 1.16: Show Common Lisp operators and variables information in echo area
@@ -1244,12 +1244,12 @@ app-emacs/color-theme 6.6.0-r1: Install color themes (includes many themes)
 app-emacs/company-mode 0.6.14 0.7: In-buffer completion front-end
 app-emacs/crontab-mode 1.20: Mode for editing crontab files
 app-emacs/crypt++ 2.92 2.94_pre20080430: Handle all sorts of compressed and encrypted files
-app-emacs/csharp-mode 0.7.0-r1 0.9.0: A derived Emacs mode implementing most of the C# rules
+app-emacs/csharp-mode 0.9.0: A derived Emacs mode implementing most of the C# rules
 app-emacs/css-mode 0.11-r1: A major mode for editing Cascading Style Sheets (CSS)
 app-emacs/csv-mode 1.50: A major mode for editing comma-separated value files
 app-emacs/cycle-buffer 2.16: Select buffer by cycling through
 app-emacs/d-mode 2.0.6: Emacs major mode for editing D code
-app-emacs/dash 2.13.0 2.14.1 2.16.0: A modern list library for Emacs
+app-emacs/dash 2.14.1 2.16.0: A modern list library for Emacs
 app-emacs/ddskk 16.2: One Japanese input methods on Emacs
 app-emacs/desktop+ 0.2: desktop+ extends standard desktop module
 app-emacs/develock 0.45: An Emacs minor mode for highlighting broken formatting rules
@@ -1257,13 +1257,13 @@ app-emacs/df-mode 20050509-r1: Minor mode to show space left on devices in the m
 app-emacs/dictionary 1.10: Emacs package for talking to a dictionary server
 app-emacs/dircolors 1.0-r2: Provide the same facility of ls --color inside Emacs
 app-emacs/dired-sort-menu 1.26: Sort entries in Dired mode
-app-emacs/distel 4.0.6 4.1.1: Distributed Emacs Lisp for Erlang
+app-emacs/distel 4.1.1: Distributed Emacs Lisp for Erlang
 app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
 app-emacs/dts-mode 0.1.0_pre20141014: Emacs major mode for devicetree sources
 app-emacs/ebuild-mode 1.46 1.47: Emacs modes for editing ebuilds and other Gentoo specific files
-app-emacs/ecb 2.41_pre20140215-r1 2.50_pre20170728: Source code browser for Emacs
+app-emacs/ecb 2.50_pre20170728: Source code browser for Emacs
 app-emacs/edb 1.32: EDB, The Emacs Database
 app-emacs/edit-list 0.3: Edit a single list
 app-emacs/edit-server 1.15: Service edit requests from a web browser for editing of textareas
@@ -1276,7 +1276,7 @@ app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
 app-emacs/emacs-w3m 1.4.625_pre20180518 1.4.632_pre20181112: emacs-w3m is an interface program of w3m on Emacs
 app-emacs/emacs-wget 0.5.0-r1: Wget interface for Emacs
 app-emacs/emhacks 20070920-r1: Useful Emacs Lisp libraries, including gdiff, jjar, jmaker, swbuff, and tabbar
-app-emacs/emms 3.0-r1 4.1 4.3 4.4: The Emacs Multimedia System
+app-emacs/emms 4.3 4.4: The Emacs Multimedia System
 app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
 app-emacs/eselect-mode 1.4.14 1.4.15 9999: Emacs major mode for editing eselect files
 app-emacs/ess 17.11 18.10.2-r1: Emacs Speaks Statistics
@@ -1287,7 +1287,7 @@ app-emacs/fff 20050517: Fast file finder for Emacs
 app-emacs/filladapt 2.12-r1: Filladapt enhances the behavior of Emacs' fill functions
 app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and answers
 app-emacs/flim 1.14.9-r2 1.14.9_p20190526: A library to provide basic features about message representation or encoding
-app-emacs/folding 2012.0226.1623 2013.0613.1821: A folding-editor-like Emacs minor mode
+app-emacs/folding 2013.0613.1821: A folding-editor-like Emacs minor mode
 app-emacs/ghc-mod 5.4.0.0 5.5.0.0-r1 5.7.0.0: Happy Haskell Programming
 app-emacs/ghub 2.0.0 2.0.1 3.0.0: Minuscule client library for the Git forge APIs
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
@@ -1295,7 +1295,7 @@ app-emacs/gnuserv 3.12.8-r4: Attach to an already running Emacs
 app-emacs/go-mode 1.4.0 1.5.0: An improved Go mode for emacs
 app-emacs/google-c-style 20140929: Provides the google C/C++ coding style
 app-emacs/graphql 0.1.1: GraphQL utilities
-app-emacs/graphviz-dot-mode 0.3.7 0.4 0.4.20171103 0.4.20181118: Emacs mode for editing and previewing Graphviz dot graphs
+app-emacs/graphviz-dot-mode 0.4 0.4.20181118: Emacs mode for editing and previewing Graphviz dot graphs
 app-emacs/h4x0r 0.13-r1: Aid in writing like a script kiddie does
 app-emacs/haskell-mode 2.9.1 13.07 16.1: Mode for editing (and running) Haskell programs in Emacs
 app-emacs/helm 3.2: Emacs incremental completion and selection narrowing framework
@@ -1305,7 +1305,7 @@ app-emacs/highline 7.2.2: Minor mode to highlight current line in buffer
 app-emacs/howm 1.4.3: Note-taking tool on Emacs
 app-emacs/htmlize 1.54: HTML-ize font-lock buffers in Emacs
 app-emacs/httpd 1.1: A HTTP server embedded in the Emacs
-app-emacs/icicles 2013.04.23.23400 2018.02.13.23733: Minibuffer input completion and cycling
+app-emacs/icicles 2018.02.13.23733: Minibuffer input completion and cycling
 app-emacs/igrep 2.113: An improved interface to "grep" and "find"
 app-emacs/inform-mode 1.5.8 1.6.2: A major mode for editing Inform programs
 app-emacs/initsplit 1.7_pre20140203: Split customizations into different files
@@ -1320,19 +1320,19 @@ app-emacs/lyskom-elisp-client 0.48_p20180410: Elisp client for the LysKOM confer
 app-emacs/magit 2.11.0 2.12.1 2.13.1 2.90.1: A Git porcelain inside Emacs
 app-emacs/magit-popup 2.12.3 2.12.4 2.13.0: Define prefix-infix-suffix command combos
 app-emacs/mailcrypt 3.5.9-r1: Provides a simple interface to public key cryptography with OpenPGP
-app-emacs/markdown-mode 2.1 2.3: Major mode for editing Markdown-formatted text files
+app-emacs/markdown-mode 2.3: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
-app-emacs/mediawiki 2.2.4.1 2.2.9-r1: MediaWiki client for Emacs
-app-emacs/mew 6.6 6.8: Great MIME mail reader for Emacs/XEmacs
+app-emacs/mediawiki 2.2.9-r1: MediaWiki client for Emacs
+app-emacs/mew 6.8: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
 app-emacs/mldonkey 0.0.4b-r2: An Emacs Lisp interface to the MLDonkey core
 app-emacs/mmm-mode 0.5.7: Enables the user to edit different parts of a file in different major modes
 app-emacs/moccur-edit 2.16: An improved interface to color-moccur for editing
 app-emacs/mode-compile 2.29.1: Smart command for compiling files according to major-mode
 app-emacs/mpg123-el 1.59 1.60: Emacs front-end to mpg123 audio player and OggVorbis audio player
-app-emacs/mu-cite 8.1_p201202272330 8.1_p201808232348: Message citation utilities for emacsen
+app-emacs/mu-cite 8.1_p201808232348: Message citation utilities for emacsen
 app-emacs/multi-term 1.4: Manage multiple terminal buffers in Emacs
-app-emacs/multiple-cursors 1.3.0 1.4.0: Multiple cursors for Emacs
+app-emacs/multiple-cursors 1.4.0: Multiple cursors for Emacs
 app-emacs/muse 3.20: An authoring and publishing environment for Emacs
 app-emacs/nagios-mode 0.3-r1: Major mode for editing Nagios configuration files
 app-emacs/navi2ch 1.8.4-r1: A navigator for the Japanese textboard 2ch
@@ -1373,7 +1373,7 @@ app-emacs/rudel 0.3_pre20110721-r1 0.3.1: Collaborative editing environment for 
 app-emacs/rust-mode 0.3.0_p20180221 0.3.0_p20190125: A major emacs mode for editing Rust source code
 app-emacs/s 1.11.0 1.12.0: The long lost Emacs string manipulation library
 app-emacs/scala-mode 2.10.3: Scala mode for Emacs
-app-emacs/scheme-complete 0.8.11 0.9.8: Scheme tab-completion and word-completion for Emacs
+app-emacs/scheme-complete 0.9.8: Scheme tab-completion and word-completion for Emacs
 app-emacs/scim-bridge-el 0.8.2: a SCIM-Bridge client for Emacs
 app-emacs/scss-mode 0.5.0_p20150107 0.5.0_p20180123-r1: Major mode for editing SCSS files in Emacs
 app-emacs/semi 1.14.6-r2 1.14.7_p20190517: A library to provide MIME feature for GNU Emacs
@@ -1390,7 +1390,7 @@ app-emacs/template 3.1c-r1: Use templates, decorate comments, auto-update buffer
 app-emacs/tempo-snippets 0.1.5: Visual insertion of tempo templates
 app-emacs/thinks 1.9: Insert text in a think bubble
 app-emacs/treepy 0.1.1: Generic tree traversing tools for Emacs Lisp
-app-emacs/tuareg-mode 2.0.10 2.2.0: An Objective Caml/Camllight mode for Emacs
+app-emacs/tuareg-mode 2.2.0: An Objective Caml/Camllight mode for Emacs
 app-emacs/twittering-mode 2.0.0 3.0.0 9999: Emacs major mode for Twitter
 app-emacs/typing 1.1.4: The Typing of Emacs -- an Elisp parody of The Typing of the Dead for Dreamcast
 app-emacs/uboat 1.2: Generate u-boat-death messages, patterned after Iron Coffins
@@ -1408,7 +1408,7 @@ app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r2: Mode for editing Wikipedia articles off-line
 app-emacs/windows 2.49: Window manager for GNU Emacs
 app-emacs/with-editor 2.7.2 2.7.4 2.8.0 2.8.3: Use the Emacsclient as the $EDITOR of child processes
-app-emacs/xclip 1.3 1.9: Emacs Interface to XClip
+app-emacs/xclip 1.9: Emacs Interface to XClip
 app-emacs/xrdb-mode 3.0: An Emacs major mode for editing X resource database files
 app-emacs/xslide 0.2.2-r1: An Emacs major mode for editing XSL stylesheets and running XSL processes
 app-emacs/yaml-mode 0.0.13 0.0.14: A major mode for GNU Emacs for editing YAML files
