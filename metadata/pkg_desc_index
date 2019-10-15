@@ -1287,7 +1287,7 @@ app-emacs/fff 20050517: Fast file finder for Emacs
 app-emacs/filladapt 2.12-r1: Filladapt enhances the behavior of Emacs' fill functions
 app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and answers
 app-emacs/flim 1.14.9-r2 1.14.9_p20190526: A library to provide basic features about message representation or encoding
-app-emacs/folding 2013.0613.1821: A folding-editor-like Emacs minor mode
+app-emacs/folding 2013.0613.1821 2019.0524.1621: A folding-editor-like Emacs minor mode
 app-emacs/ghc-mod 5.4.0.0 5.5.0.0-r1 5.7.0.0: Happy Haskell Programming
 app-emacs/ghub 2.0.0 2.0.1 3.0.0: Minuscule client library for the Git forge APIs
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
@@ -1315,7 +1315,7 @@ app-emacs/jde 2.4.1: Java Development Environment for Emacs
 app-emacs/keywiz 1.4: Emacs key sequence quiz
 app-emacs/ledger-mode 3.1.1: An Emacs major mode for editing ledger files
 app-emacs/lookup 1.99.96_pre20180209: An interface to search CD-ROM books and network dictionaries
-app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
+app-emacs/lua-mode 20130419 20151025: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20180410: Elisp client for the LysKOM conference system
 app-emacs/magit 2.11.0 2.12.1 2.13.1 2.90.1: A Git porcelain inside Emacs
 app-emacs/magit-popup 2.12.3 2.12.4 2.13.0: Define prefix-infix-suffix command combos
@@ -1357,7 +1357,7 @@ app-emacs/psgml 1.4.0: A GNU Emacs Major Mode for editing SGML and XML coded doc
 app-emacs/puppet-mode 0.3-r1 0.3.20180813: Emacs major mode for editing Puppet manifests
 app-emacs/pymacs 0.25-r2: A tool that allows both-side communication beetween Python and Emacs Lisp
 app-emacs/python-mode 6.1.2 6.2.3: An Emacs major mode for editing Python source
-app-emacs/quack 0.47: Enhances Emacs support for Scheme
+app-emacs/quack 0.47 0.48: Enhances Emacs support for Scheme
 app-emacs/quilt-el 0.48.0 0.66: Quilt mode for Emacs
 app-emacs/qwerty 1.1: Switch between QWERTY and DVORAK without changing the console keymap
 app-emacs/redo+ 1.19: Redo/undo system for Emacs
@@ -1388,7 +1388,7 @@ app-emacs/sumibi 0.7.4: Statistical Japanese input method using the Internet as 
 app-emacs/teco 7-r2: TECO interpreter for GNU Emacs
 app-emacs/template 3.1c-r1: Use templates, decorate comments, auto-update buffers
 app-emacs/tempo-snippets 0.1.5: Visual insertion of tempo templates
-app-emacs/thinks 1.9: Insert text in a think bubble
+app-emacs/thinks 1.9 1.12: Insert text in a think bubble
 app-emacs/treepy 0.1.1: Generic tree traversing tools for Emacs Lisp
 app-emacs/tuareg-mode 2.2.0: An Objective Caml/Camllight mode for Emacs
 app-emacs/twittering-mode 2.0.0 3.0.0 9999: Emacs major mode for Twitter
@@ -1403,7 +1403,7 @@ app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
 app-emacs/w3mnav 0.5-r3: Add Info-like navigation keys to the emacs-w3m web browser
 app-emacs/wanderlust 2.15.9_p20180814 2.15.9_p20190623: Yet Another Message Interface on Emacsen
 app-emacs/websocket 1.9 1.10: A websocket implementation in elisp
-app-emacs/wgrep 2.1.10: Writable grep buffer and apply the changes to files
+app-emacs/wgrep 2.1.10 2.3.0: Writable grep buffer and apply the changes to files
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r2: Mode for editing Wikipedia articles off-line
 app-emacs/windows 2.49: Window manager for GNU Emacs
@@ -8541,7 +8541,7 @@ dev-python/pymad 0.6-r1: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdstat 0.4.2: Python library to parse Linux /proc/mdstat
 dev-python/pymediainfo 4.0 4.1: A wrapper around the mediainfo library
 dev-python/pymetar 0.21 1.1: Downloads and decodes to the weather report for a given station ID
-dev-python/pymilter 1.0.4: Python interface to sendmail milter API
+dev-python/pymilter 1.0.4-r1: Python interface to sendmail milter API
 dev-python/pyminuit 1.2.1-r1: Minuit numerical function minimization in Python
 dev-python/pyml 0.7.13.3: Python machine learning package
 dev-python/pymoc 0.5.0: Python Multi-Order Coverage maps for Virtual Observatory
