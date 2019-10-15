@@ -1,6 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Peter Levine <plevine457@gmail.com> (2019-10-01)
+# Native inotify support is preferred on linux.
+# https://bugs.gentoo.org/697476
+net-fs/samba fam
+
 # Patrick McLean <chutzpah@gentoo.org> (2019-09-17)
 # Masked due to upstream build failures (bug #693018)
 # One example: https://tracker.ceph.com/issues/41523
