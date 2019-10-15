@@ -9,18 +9,20 @@ RUBY_FAKEGEM_RECIPE_DOC="none"
 
 RUBY_FAKEGEM_GEMSPEC="faker.gemspec"
 
+RUBY_FAKEGEM_BINWRAP=""
+
 inherit ruby-fakegem
 
 DESCRIPTION="A library for generating fake data such as names, addresses, and phone numbers"
 HOMEPAGE="https://github.com/stympy/faker"
-SRC_URI="https://github.com/stympy/faker/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/stympy/faker/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="$(ver_cut 1)"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
 
-ruby_add_rdepend ">=dev-ruby/i18n-1.6 !!<dev-ruby/faker-1.9.6-r1"
+ruby_add_rdepend ">=dev-ruby/i18n-0.7:*"
 
 ruby_add_bdepend "test? ( dev-ruby/timecop )"
 
