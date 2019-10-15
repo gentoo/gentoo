@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-10-15)
+# Fails self-tests badly, no revdeps, upstream doesnt care
+# since 1999. Removal in 30 days. Bug 641530.
+dev-perl/NetxAP
+
 # Lars Wendler <polynomial-c@gentoo.org> (2019-10-15)
 # Masked until webkit based packages no longer fail to build against
 >=dev-libs/icu-65.1
