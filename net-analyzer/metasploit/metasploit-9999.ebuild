@@ -44,7 +44,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/bit-struct
 	dev-ruby/bundler
 	dev-ruby/dnsruby
-	dev-ruby/faker
+	dev-ruby/faker:0
 	dev-ruby/filesize:*
 	dev-ruby/jsobfu:*
 	dev-ruby/json:*
