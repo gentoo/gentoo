@@ -497,7 +497,6 @@ dev-python/kaa-base
 dev-python/kaa-display
 dev-python/kaa-imlib2
 dev-python/kaa-metadata
-dev-python/pystdf
 dev-python/python-dsv
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
