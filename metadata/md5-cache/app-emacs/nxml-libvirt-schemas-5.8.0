@@ -1,0 +1,13 @@
+BDEPEND=app-text/trang >=virtual/emacs-23
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=Extension for nxml-mode with libvirt schemas
+EAPI=7
+HOMEPAGE=http://www.libvirt.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1+
+RDEPEND=>=virtual/emacs-23
+RESTRICT=test
+SLOT=0
+SRC_URI=http://libvirt.org/sources/libvirt-5.8.0.tar.xz
+_eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=1dff5e30f6f7b2c943961d23d82999af
