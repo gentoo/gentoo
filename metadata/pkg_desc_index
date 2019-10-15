@@ -8048,7 +8048,7 @@ dev-python/keyczar 0.715: Toolkit for safe and simple cryptography
 dev-python/keyring 13.2.1 13.2.1-r1 15.0.0 18.0.1: Provides access to the system keyring service
 dev-python/keyrings_alt 2.3: Alternate keyring implementations
 dev-python/keystoneauth 3.1.0 3.4.0 3.10.0 3.13.1: This package contains tools for authenticating to an OpenStack-based cloud.
-dev-python/keystonemiddleware 4.17.0 4.21.0 6.0.0: A middleware for the OpenStack Keystone API
+dev-python/keystonemiddleware 4.17.0 4.21.0 6.0.0 7.0.1: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kitchen 1.2.4 1.2.5: A cornucopia of useful code
 dev-python/kivy-garden 0.1.1 0.1.4: Kivys Garden tool to manage flowers
@@ -8271,10 +8271,10 @@ dev-python/oslo-config 6.4.1 6.8.1: Oslo Configuration API
 dev-python/oslo-context 2.21.0 2.22.1: Helpers to maintain useful information about a request context
 dev-python/oslo-db 4.40.0 4.45.0: OpenStack Common DB Code
 dev-python/oslo-i18n 3.19.0 3.23.1: Oslo i18n library
-dev-python/oslo-log 3.39.2 3.42.3: OpenStack logging config library, configuration for all openstack projects.
+dev-python/oslo-log 3.39.2 3.42.3 3.44.1: OpenStack logging config library, configuration for all openstack projects.
 dev-python/oslo-messaging 8.1.2 9.5.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 3.34.0 3.37.1: Components injected into wsgi pipelines to intercept request/response flows.
-dev-python/oslo-policy 1.38.1 2.1.1: Support for RBAC policy enforcement across all OpenStack services
+dev-python/oslo-policy 1.38.1 2.1.1 2.3.2: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.29.2 1.32.1: OpenStack library for privilege separation.
 dev-python/oslo-reports 1.26.0 1.29.2: generified reports for openstack
 dev-python/oslo-rootwrap 5.13.0 5.15.2: Allows fine filtering of shell commands to run as root from OpenStack services
@@ -8720,7 +8720,7 @@ dev-python/python-iptables 0.12.0 0.13.0: Python bindings for iptables
 dev-python/python-ironicclient 1.17.0 2.2.1 2.7.1 2.7.2: Python bindings for the Ironic API
 dev-python/python-iwscan 20080402-r1: A Python extension for iwscan access
 dev-python/python-jose 3.0.1: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
-dev-python/python-keystoneclient 3.15.0 3.17.0 3.19.0: Client Library for OpenStack Identity
+dev-python/python-keystoneclient 3.15.0 3.17.0 3.19.0 3.21.0: Client Library for OpenStack Identity
 dev-python/python-ldap 2.4.19-r1 2.4.32 3.1.0-r1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.11.2 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.1: LHA archive support for Python
@@ -17399,7 +17399,7 @@ sys-auth/fprintd 0.8.1 0.8.1-r1: D-Bus service to access fingerprint readers
 sys-auth/google-authenticator 1.05 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-libpam-hardened 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-wrappers 1 2 3: Set of scripts to manage google-auth setup on Gentoo Infra
-sys-auth/keystone 14.1.0-r1 15.0.0 2018.2.9999 2019.1.9999: The Openstack authentication, authorization, and service catalog
+sys-auth/keystone 14.1.0-r1 15.0.0 2018.2.9999 2019.1.9999 2019.2.9999: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.99.0 1.0: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-compat 1.2: NSS module to provide compat entry support
