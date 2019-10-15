@@ -10,7 +10,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~sparc-solaris ~sparc64-solaris"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ppc64 ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~sparc-solaris ~sparc64-solaris"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.22.6-docdirs.patch
 )
