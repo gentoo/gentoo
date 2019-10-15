@@ -34,6 +34,7 @@ app-i18n/xcin unicode
 # OpenSSL (as of version 1.1.1) doesn't have APIs for QUIC support
 # see https://github.com/openssl/openssl/pull/8797
 net-libs/ngtcp2 ssl
+net-libs/curl nghttp3
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-08)
 # LLVM 5 is being removed.

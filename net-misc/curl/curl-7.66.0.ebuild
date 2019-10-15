@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="adns alt-svc brotli http2 idn ipv6 kerberos ldap metalink +progress-meter rtmp samba ssh ssl static-libs test threads"
 IUSE+=" curl_ssl_gnutls curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss +curl_ssl_openssl curl_ssl_winssl"
+IUSE+=" nghttp3 quiche"
 IUSE+=" elibc_Winnt"
 
 #lead to lots of false negatives, bug #285669
@@ -43,6 +44,11 @@ RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 		)
 	)
 	http2? ( net-libs/nghttp2[${MULTILIB_USEDEP}] )
+	nghttp3? (
+		net-libs/nghttp3[${MULTILIB_USEDEP}]
+		net-libs/ngtcp2[ssl,${MULTILIB_USEDEP}]
+	)
+	quiche? ( net-libs/quiche[${MULTILIB_USEDEP}] )
 	idn? ( net-dns/libidn2:0=[static-libs?,${MULTILIB_USEDEP}] )
 	adns? ( net-dns/c-ares:0[${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
@@ -201,9 +207,9 @@ multilib_src_configure() {
 		$(use_with kerberos gssapi "${EPREFIX}"/usr) \
 		$(use_with metalink libmetalink) \
 		$(use_with http2 nghttp2) \
-		--without-nghttp3 \
-		--without-ngtcp2 \
-		--without-quiche \
+		$(use_with nghttp3) \
+		$(use_with nghttp3 ngtcp2) \
+		$(use_with quiche) \
 		$(use_with rtmp librtmp) \
 		$(use_with brotli) \
 		--without-schannel \
@@ -229,6 +235,14 @@ multilib_src_configure() {
 	if use http2; then
 		libs+=( "-lnghttp2" )
 		priv+=( "libnghttp2" )
+	fi
+	if use quiche; then
+		libs+=( "-lquiche" )
+		priv+=( "libquiche" )
+	fi
+	if use nghttp3; then
+		libs+=( "-lnghttp3" "-lngtcp2" )
+		priv+=( "libnghttp3" "-libtcp2" )
 	fi
 	if use ssl && use curl_ssl_openssl; then
 		libs+=( "-lssl" "-lcrypto" )
