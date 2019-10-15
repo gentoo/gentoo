@@ -91,6 +91,10 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags "-fpermissive"
+	use kernel_linux && append-cflags "-Dlinux"
+	append-cxxflags "-std=c++03"
+
 	econf \
 		$(use_enable tk gui) \
 		$(use_enable tk tcl-qstat) \
