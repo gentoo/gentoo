@@ -13595,7 +13595,7 @@ media-plugins/kodi-pvr-pctv 2.4.5 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 3.4.8 3.4.9 3.4.10 9999: Kodi's Stalker client addon
 media-plugins/kodi-pvr-vbox 4.4.6 4.4.7 4.4.8 9999: Kodi's VBox Home TV Gateway PVR client addon
 media-plugins/kodi-pvr-vdr-vnsi 3.6.2 3.6.3 3.6.3-r1 9999: Kodi PVR addon VNSI
-media-plugins/kodi-pvr-vuplus 3.28.0 3.28.1 3.28.2 3.28.4 3.28.5 3.28.6 9999: Kodi's VuPlus client addon
+media-plugins/kodi-pvr-vuplus 3.28.0 3.28.1 3.28.2 3.28.4 3.28.5 3.28.6 3.28.7 9999: Kodi's VuPlus client addon
 media-plugins/kodi-pvr-wmc 2.4.4 2.4.5 9999: Kodi's Windows Media Center client addon
 media-plugins/kodi-screensaver-asteroids 2.1.0 9999: Asteroids screensaver for Kodi
 media-plugins/kodi-screensaver-biogenesis 1.1.0 2.0.0 9999: Biogenesis screensaver for Kodi
@@ -18569,7 +18569,7 @@ x11-drivers/xf86-input-void 1.4.1: null input driver
 x11-drivers/xf86-input-wacom 0.36.0-r2: Driver for Wacom tablets and drawing devices
 x11-drivers/xf86-video-amdgpu 19.0.1 19.1.0 9999: Accelerated Open Source driver for AMDGPU cards
 x11-drivers/xf86-video-ast 1.1.5: X.Org driver for ASpeedTech cards
-x11-drivers/xf86-video-ati 19.0.1 9999: ATI video driver
+x11-drivers/xf86-video-ati 19.0.1 19.1.0 9999: ATI video driver
 x11-drivers/xf86-video-dummy 0.3.8: X.Org driver for dummy cards
 x11-drivers/xf86-video-fbdev 0.5.0: video driver for framebuffer device
 x11-drivers/xf86-video-geode 2.11.20: AMD Geode GX2 and LX video driver
