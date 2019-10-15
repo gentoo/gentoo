@@ -73,6 +73,7 @@ src_configure() {
 
 		-DLLDB_INCLUDE_TESTS=$(usex test)
 
+		-DCLANG_LINK_CLANG_DYLIB=ON
 		# TODO: fix upstream to detect this properly
 		-DHAVE_LIBDL=ON
 		-DHAVE_LIBPTHREAD=ON
