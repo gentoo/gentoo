@@ -1231,12 +1231,12 @@ app-emacs/blogmax 20110305 20170321: Blogging in Emacs
 app-emacs/bm 1.32_p20140214: Visible bookmarks in buffer
 app-emacs/bongo 1.1: Buffer-oriented media player for Emacs
 app-emacs/boxquote 2.1: Quote text with a semi-box
-app-emacs/browse-kill-ring 1.3c 2.0.0: An improved interface to kill-ring
+app-emacs/browse-kill-ring 2.0.0: An improved interface to kill-ring
 app-emacs/bubblet 0.74-r1: A bubble-popping game
 app-emacs/buffer-extension 0.1: Some enhanced functions for buffer manipulate
 app-emacs/calfw 1.3 1.6: A calendar framework for Emacs
 app-emacs/chess 2.0.4: A chess client and library for Emacs
-app-emacs/circe 1.3 2.7 2.11: A great IRC client for Emacs
+app-emacs/circe 2.11: A great IRC client for Emacs
 app-emacs/cldoc 1.16: Show Common Lisp operators and variables information in echo area
 app-emacs/color-browser 0.3-r1: A utility for designing Emacs color themes
 app-emacs/color-moccur 2.73: Major mode for color moccur
@@ -1395,7 +1395,7 @@ app-emacs/twittering-mode 2.0.0 3.0.0 9999: Emacs major mode for Twitter
 app-emacs/typing 1.1.4: The Typing of Emacs -- an Elisp parody of The Typing of the Dead for Dreamcast
 app-emacs/uboat 1.2: Generate u-boat-death messages, patterned after Iron Coffins
 app-emacs/undo-tree 0.6.6: Undo trees and visualization
-app-emacs/uptimes 2.3-r2 3.7: Track and display emacs session uptimes
+app-emacs/uptimes 3.7: Track and display emacs session uptimes
 app-emacs/vhdl-mode 3.38.1: VHDL-mode for Emacs
 app-emacs/visual-basic-mode 1.4.12: A mode for editing Visual Basic programs
 app-emacs/vm 8.2.0_beta-r1: The VM mail reader for Emacs
