@@ -491,7 +491,6 @@ dev-python/yubiotp
 # None of them have any reverse dependencies.
 # Removal in 30 days.  Bug #694280.
 dev-python/Ming
-dev-python/kaa-display
 dev-python/kaa-imlib2
 dev-python/kaa-metadata
 
