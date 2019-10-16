@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_AUTODEPS="false"
 KDE_DEBUG="false"
@@ -12,10 +12,10 @@ HOMEPAGE="https://cgit.kde.org/oxygen-fonts.git"
 SRC_URI="mirror://kde/unstable/plasma/$(ver_cut 1-3)/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
-DEPEND="
+BDEPEND="
 	$(add_frameworks_dep extra-cmake-modules)
 	$(add_qt_dep qtcore)
 	media-gfx/fontforge
