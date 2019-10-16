@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit user golang-build golang-vcs-snapshot systemd
 
 EGO_PN="github.com/prometheus/pushgateway"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
-GIT_COMMIT="44d7ae6"
+GIT_COMMIT="b73d22c"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
