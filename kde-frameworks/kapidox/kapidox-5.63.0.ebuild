@@ -5,6 +5,7 @@ EAPI=7
 
 KDE_AUTODEPS="false"
 KDE_DEBUG="false"
+KDE_QTHELP="false"
 KDE_TEST="false"
 DISTUTILS_SINGLE_IMPL="true"
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
