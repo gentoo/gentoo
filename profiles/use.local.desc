@@ -5985,7 +5985,7 @@ net-im/vacuum:jabbersearch - Enable searching contacts in Jabber networks
 net-im/vacuum:messagearchiver - Enable saving the communication history both locally and on the server
 net-im/vacuum:messagecarbons - Allows to keep all user IM clients engaged in a conversation
 net-im/vacuum:multiuserchat - Enable Jabber multi-user conferences
-net-im/vacuum:pepmanager - Allows other plugins to recieve and publish PEP events
+net-im/vacuum:pepmanager - Allows other plugins to receive and publish PEP events
 net-im/vacuum:privacylists - Enable blocking the undesirable contacts
 net-im/vacuum:privatestorage - Allow other modules to store arbitrary data on the server
 net-im/vacuum:recentcontacts - Displays a recently used contacts
