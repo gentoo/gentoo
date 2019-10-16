@@ -36,7 +36,7 @@ src_configure() {
 src_compile() {
 	cmake-utils_src_make
 	if use doc; then
-		doxygen
+		doxygen || die
 		mv docs/html . || die
 		find html -name '*.md5' -or -name '*.map' -delete || die
 		DOCS+=( html )
