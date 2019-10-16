@@ -51,7 +51,7 @@ RESTRICT="bindist"
 
 S="${WORKDIR}/${PN}_${MY_DATE}-${MY_BUILD}"
 
-MY_DEPEND_RDEPEND="
+RDEPEND="
 	media-libs/libsdl2[joystick,opengl?,sound,video]
 	media-libs/sdl2-mixer[flac?,fluidsynth?,midi,timidity?,vorbis?]
 	sys-libs/zlib:=
@@ -62,7 +62,6 @@ MY_DEPEND_RDEPEND="
 		virtual/opengl
 	)
 	png? ( media-libs/libpng:0= )
-	timidity? ( media-sound/timidity-freepats )
 	vpx? ( media-libs/libvpx:= )
 	vorbis? (
 		media-libs/libogg
@@ -71,14 +70,14 @@ MY_DEPEND_RDEPEND="
 	xmp? ( media-libs/exempi:= )
 "
 
-RDEPEND="
-	${MY_DEPEND_RDEPEND}
+DEPEND="
+	${RDEPEND}
 	cdinstall? ( games-fps/duke3d-data )
 	demo? ( games-fps/duke3d-demodata )
+	timidity? ( media-sound/timidity++ )
 "
 
-DEPEND="
-	${MY_DEPEND_RDEPEND}
+BDEPEND="
 	app-arch/unzip
 	x86? ( dev-lang/nasm )
 "
