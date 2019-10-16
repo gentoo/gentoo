@@ -6,7 +6,4 @@
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
 <stabilize-allarches/>
-<upstream>
-  <remote-id type="sourceforge">psgml</remote-id>
-</upstream>
 </pkgmetadata>
