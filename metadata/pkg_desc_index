@@ -4542,7 +4542,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.21 1.2.23: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.36 4.1.40 5.5.27-r1 5.5.34 5.5.36 6.0.44-r1 6.0.53 6.0.53-r1 7.0.82 7.0.96 8.0.53 8.0.53-r1 8.5.23 8.5.43 8.5.45 8.5.46 9.0.7 9.0.24 9.0.26: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
+dev-java/tomcat-servlet-api 4.1.36 4.1.40 5.5.27-r1 5.5.34 5.5.36 6.0.44-r1 6.0.53 6.0.53-r1 7.0.82 7.0.96 8.5.23 8.5.43 8.5.45 8.5.46 9.0.7 9.0.24 9.0.26: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -12749,7 +12749,7 @@ media-fonts/oldstandard 2.2: Old Standard - font with wide range of Latin, Greek
 media-fonts/open-sans 1 1-r1: Clean and modern sans-serif typeface designed for legibility across interfaces
 media-fonts/opendesktop-fonts 1.4.2 1.4.2-r1: Chinese TrueType Fonts
 media-fonts/oto 0.5: Open Type Organizer
-media-fonts/oxygen-fonts 5.4.3 5.4.3-r1: Desktop/GUI font family for integrated use with the KDE Plasma desktop
+media-fonts/oxygen-fonts 5.4.3-r1: Desktop/GUI font family for integrated use with the KDE Plasma desktop
 media-fonts/paratype 2.5: ParaType font collection for languages of Russia
 media-fonts/paratype-astra 1001: ParaType Astra Sans/Serif fonts metrically compatible with Times New Roman
 media-fonts/pcf2bdf 1.04-r1: Converts PCF fonts to BDF fonts
