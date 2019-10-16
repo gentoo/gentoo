@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -18,7 +18,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86"
 IUSE="truetype"
 
 DEPEND="x11-apps/bdftopcf
-		x11-apps/mkfontdir
+		>=x11-apps/mkfontscale-1.2.0
 		dev-lang/perl
 		>=sys-apps/sed-4
 		app-arch/unzip"

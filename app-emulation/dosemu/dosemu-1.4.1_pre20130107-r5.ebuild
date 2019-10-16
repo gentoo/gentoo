@@ -28,7 +28,7 @@ RDEPEND="X? ( x11-libs/libX11
 		x11-apps/xset
 		x11-apps/xlsfonts
 		x11-apps/bdftopcf
-		x11-apps/mkfontdir )
+		>=x11-apps/mkfontscale-1.2.0 )
 	svga? ( media-libs/svgalib )
 	gpm? ( sys-libs/gpm )
 	alsa? ( media-libs/alsa-lib )

@@ -17,7 +17,7 @@ KEYWORDS="~alpha amd64 ~arm ~ia64 ppc s390 ~sh sparc x86"
 IUSE=""
 
 DEPEND="x11-misc/imake
-	x11-apps/mkfontdir
+	>=x11-apps/mkfontscale-1.2.0
 	x11-apps/bdftopcf"
 RDEPEND=""
 
