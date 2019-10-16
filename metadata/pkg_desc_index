@@ -1323,7 +1323,7 @@ app-emacs/magit 2.11.0 2.12.1 2.13.1 2.90.1: A Git porcelain inside Emacs
 app-emacs/magit-popup 2.12.3 2.12.4 2.13.0: Define prefix-infix-suffix command combos
 app-emacs/mailcrypt 3.5.9-r1: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/markdown-mode 2.3: Major mode for editing Markdown-formatted text files
-app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
+app-emacs/matlab 3.3.2_pre20130829 3.3.6_pre20191010: Major modes for MATLAB .m and .tlc files
 app-emacs/mediawiki 2.2.9-r1: MediaWiki client for Emacs
 app-emacs/mew 6.8: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
@@ -1342,7 +1342,7 @@ app-emacs/nxml-docbook5-schemas 5.0 5.1: Add support for DocBook 5 schemas to NX
 app-emacs/nxml-gentoo-schemas 20170302 20180611: Extension for nxml-mode with Gentoo-specific schemas
 app-emacs/nxml-libvirt-schemas 1.2.1 5.8.0: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
-app-emacs/ocaml-mode 3.12.1-r1 4.00.1: Emacs mode for OCaml
+app-emacs/ocaml-mode 4.00.1 4.05.0: Emacs mode for OCaml
 app-emacs/org-mode 8.3.2-r1 9.2.6: An Emacs mode for notes and project planning
 app-emacs/outline-magic 0.9: Outline mode extensions for Emacs
 app-emacs/paredit 23-r1: Minor mode for performing structured editing of S-expressions
@@ -1355,9 +1355,9 @@ app-emacs/popwin 1.0.0: Popup window manager for Emacs
 app-emacs/pov-mode 3.3-r1: Major mode for Povray scene files
 app-emacs/proofgeneral 4.4: A generic interface for proof assistants
 app-emacs/protbuf 1.7-r1: Protect Emacs buffers from accidental killing
-app-emacs/psgml 1.4.0: A GNU Emacs Major Mode for editing SGML and XML coded documents
+app-emacs/psgml 1.4.0 1.4.1: A GNU Emacs Major Mode for editing SGML and XML coded documents
 app-emacs/puppet-mode 0.3-r1 0.3.20180813: Emacs major mode for editing Puppet manifests
-app-emacs/pymacs 0.25-r2: A tool that allows both-side communication beetween Python and Emacs Lisp
+app-emacs/pymacs 0.25-r2 0.26: A tool that allows both-side communication beetween Python and Emacs Lisp
 app-emacs/python-mode 6.1.2 6.2.3: An Emacs major mode for editing Python source
 app-emacs/quack 0.47 0.48: Enhances Emacs support for Scheme
 app-emacs/quilt-el 0.48.0 0.66: Quilt mode for Emacs
@@ -1379,16 +1379,16 @@ app-emacs/scheme-complete 0.9.8: Scheme tab-completion and word-completion for E
 app-emacs/scim-bridge-el 0.8.2: a SCIM-Bridge client for Emacs
 app-emacs/scss-mode 0.5.0_p20150107 0.5.0_p20180123-r1: Major mode for editing SCSS files in Emacs
 app-emacs/semi 1.14.6-r2 1.14.7_p20190517: A library to provide MIME feature for GNU Emacs
-app-emacs/session 2.3a: When you start Emacs, Session restores various variables from your last session
+app-emacs/session 2.3a 2.4b: When you start Emacs, Session restores various variables from your last session
 app-emacs/setnu 1.06: Display line numbers in Emacs buffers
 app-emacs/slime 2.15 2.20 2.20-r1 2.21: SLIME, the Superior Lisp Interaction Mode (Extended)
-app-emacs/sml-mode 6.4: Emacs major mode for editing Standard ML
+app-emacs/sml-mode 6.4 6.9: Emacs major mode for editing Standard ML
 app-emacs/sokoban 1.4 1.4.8: Implementation of Sokoban for Emacs
 app-emacs/ssh 20120709: Support for SSH sessions in Emacs shell buffers
 app-emacs/stripes 0.2-r2: An Emacs mode that alternates the background color of lines
 app-emacs/sumibi 0.7.4: Statistical Japanese input method using the Internet as a large corpus
 app-emacs/teco 7-r2: TECO interpreter for GNU Emacs
-app-emacs/template 3.1c-r1: Use templates, decorate comments, auto-update buffers
+app-emacs/template 3.1c-r1 3.3b: Use templates, decorate comments, auto-update buffers
 app-emacs/tempo-snippets 0.1.5: Visual insertion of tempo templates
 app-emacs/thinks 1.9 1.12: Insert text in a think bubble
 app-emacs/treepy 0.1.1: Generic tree traversing tools for Emacs Lisp
