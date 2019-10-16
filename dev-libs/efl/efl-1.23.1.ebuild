@@ -152,6 +152,7 @@ src_configure() {
 		-D xinput22=true
 
 		$(meson_use X x11)
+		$(meson_use debug debug-threads)
 		$(meson_use drm)
 		$(meson_use elogind)
 		$(meson_use examples build-examples)
