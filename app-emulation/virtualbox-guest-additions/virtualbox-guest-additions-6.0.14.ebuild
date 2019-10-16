@@ -71,10 +71,6 @@ src_prepare() {
 	eend
 	popd &>/dev/null || die
 
-	pushd src/VBox &>/dev/null || die
-	eapply "${FILESDIR}"/virtualbox-guest-additions-6.0.12-linux-5.3+-compatibility.patch
-	popd &>/dev/null || die
-
 	# PaX fixes (see bug #298988)
 	pushd "${VBOX_MOD_SRC_DIR}" &>/dev/null || die
 	eapply "${FILESDIR}"/vboxguest-6.0.6-log-use-c99.patch
