@@ -1,5 +1,6 @@
 acct-group/adm 0: System group: adm
 acct-group/audio 0: System group: audio
+acct-group/bacula 0: A group for the bacula backup system
 acct-group/bitcoin 0: A group for users with access to system-wide Bitcoin services
 acct-group/burp 0: Group for the app-backup/burp server
 acct-group/cdrom 0: System group: cdrom
@@ -75,6 +76,7 @@ acct-group/video 0: System group: video
 acct-group/vpopmail 0: System group: vpopmail
 acct-group/wheel 0: System group: wheel
 acct-user/alias 0: alias user for qmail mail delivery
+acct-user/bacula 0: A group for the bacula backup system
 acct-user/bitcoin 0: System-wide Bitcoin services user
 acct-user/burp 0: User for the app-backup/burp server
 acct-user/ddclient 0: A user for the dynamic DNS client
@@ -482,7 +484,7 @@ app-backup/backintime 1.2.0_pre20180221 9999: Backup system inspired by TimeVaul
 app-backup/backup-manager 0.7.14: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1-r1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
-app-backup/bacula 5.2.13-r7 9.0.8-r1 9.2.2-r2 9.4.1-r2 9.4.2-r1 9.4.3-r1 9.4.4-r1: Featureful client/server network backup suite
+app-backup/bacula 5.2.13-r7 9.0.8-r1 9.2.2-r2 9.4.1-r2 9.4.2-r1 9.4.3-r1 9.4.4-r1 9.4.4-r2: Featureful client/server network backup suite
 app-backup/bareos 16.2.7-r1 17.2.6 17.2.7-r1 18.2.6: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.8 1.1.9 1.1.10 1.1.10-r1 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
