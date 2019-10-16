@@ -7793,7 +7793,6 @@ sec-policy/selinux-base-policy:unconfined - Enable support for the unconfined SE
 sys-apps/accountsservice:consolekit - Use sys-auth/consolekit for session tracking
 sys-apps/accountsservice:elogind - Use sys-auth/elogind for session tracking
 sys-apps/accountsservice:systemd - Use sys-apps/systemd for session tracking
-sys-apps/baselayout:split-usr - Enable this if /bin and /usr/bin are separate directories
 sys-apps/baselayout-prefix:split-usr - Enable this if /bin and /usr/bin are separate directories
 sys-apps/busybox:make-symlinks - Create all the appropriate symlinks in /bin and /sbin.
 sys-apps/busybox:math - Enable math support in gawk (requires libm)
