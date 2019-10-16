@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 DESCRIPTION="Wrapper to select either confix1.py or confix2.py"
 HOMEPAGE="http://confix.sourceforge.net"
@@ -10,10 +10,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE=""
+S=${WORKDIR}
 
-src_install() {
-	dodir /usr/bin
-	cat >> "${ED:-${D}}"usr/bin/confix <<EOF
+src_unpack() {
+	cat >> confix <<EOF || die
 #! ${EPREFIX:-}/bin/sh
 confixpy=
 if [ -f ./Confix2.dir ]; then
@@ -28,6 +28,8 @@ case \$# in
 *) exec \${confixpy} "\$@" ;;
 esac
 EOF
-	fperms a+x /usr/bin/confix || die "cannot set permissions"
-	dosym confix /usr/bin/confix.py || die "cannot create 'confix' symlink"
+}
+
+src_install() {
+	dobin confix
 }
