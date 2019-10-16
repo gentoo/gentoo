@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -14,10 +14,6 @@ SRC_URI="https://beesbuzz.biz/code/audiocompress/${MY_P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
-IUSE=""
-
-RDEPEND=""
-DEPEND=""
 
 S=${WORKDIR}/${MY_P}
 
@@ -26,10 +22,10 @@ src_compile() {
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		CC="$(tc-getCC)" \
-		CXX="$(tc-getCXX)" || die "emake failed"
+		CXX="$(tc-getCXX)"
 }
 
 src_install() {
-	dobin AudioCompress || die "dobin failed"
-	dodoc ChangeLog README TODO
+	dobin AudioCompress
+	einstalldocs
 }
