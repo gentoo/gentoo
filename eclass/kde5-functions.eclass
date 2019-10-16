@@ -4,7 +4,7 @@
 # @ECLASS: kde5-functions.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Common ebuild functions for packages based on KDE Frameworks 5.
 # @DESCRIPTION:
 # This eclass contains functions shared by the other KDE eclasses and forms
@@ -19,7 +19,6 @@ inherit toolchain-funcs
 
 case ${EAPI} in
 	7) ;;
-	6) inherit eapi7-ver ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
@@ -38,10 +37,7 @@ case ${CATEGORY} in
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
 		;;
 	kde-plasma)
-		if [[ ${PV} = 5.15.5 ]]; then
-			: ${FRAMEWORKS_MINIMAL:=5.57.0}
-			: ${QT_MINIMAL:=5.11.1}
-		fi
+		[[ ${PV} = 5.17* ]] && : ${FRAMEWORKS_MINIMAL:=5.63.0}
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
 		;;
 esac
@@ -252,57 +248,12 @@ add_qt_dep() {
 
 	if [[ -z ${version} ]]; then
 		version=${QT_MINIMAL}
-		if [[ ${1} = qtwebkit ]]; then
-			version=5.9.1
-			[[ ${EAPI} != 6 ]] && die "${FUNCNAME} is disallowed for 'qtwebkit' in EAPI 7 and later"
-		fi
 	fi
 	if [[ -z ${slot} ]]; then
 		slot="5"
 	fi
 
 	_add_category_dep dev-qt "${1}" "${2}" "${version}" "${slot}"
-}
-
-# @FUNCTION: get_kde_version [version]
-# @DESCRIPTION:
-# Translates an ebuild version into a major.minor KDE release version, taking
-# into account KDE's prerelease versioning scheme.
-# For example, get_kde_version 17.07.80 will return "17.08".
-# If the version equals 9999, "live" is returned.
-# If no version is specified, ${PV} is used.
-get_kde_version() {
-	[[ ${EAPI} != 6 ]] && die "${FUNCNAME} is banned in EAPI 7 and later"
-	local ver=${1:-${PV}}
-	local major=$(ver_cut 1 ${ver})
-	local minor=$(ver_cut 2 ${ver})
-	local micro=$(ver_cut 3 ${ver})
-	if [[ ${ver} == 9999 ]]; then
-		echo live
-	else
-		(( micro < 50 )) && echo ${major}.${minor} || echo ${major}.$((minor + 1))
-	fi
-}
-
-# @FUNCTION: kde_l10n2lingua
-# @USAGE: <l10n>...
-# @INTERNAL
-# @DESCRIPTION:
-# Output KDE lingua flag name(s) (without prefix(es)) appropriate for
-# given l10n(s).
-kde_l10n2lingua() {
-	[[ ${EAPI} != 6 ]] && die "${FUNCNAME} is banned in EAPI 7 and later"
-	local l
-	for l; do
-		case ${l} in
-			ca-valencia) echo ca@valencia;;
-			sr-ijekavsk) echo sr@ijekavian;;
-			sr-Latn-ijekavsk) echo sr@ijekavianlatin;;
-			sr-Latn) echo sr@latin;;
-			uz-Cyrl) echo uz@cyrillic;;
-			*) echo "${l/-/_}";;
-		esac
-	done
 }
 
 # @FUNCTION: punt_bogus_dep
