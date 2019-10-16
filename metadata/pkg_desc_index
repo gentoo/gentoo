@@ -15433,7 +15433,7 @@ net-misc/rabbitmq-server 3.6.9 3.6.14 3.7.13 3.7.17 3.8.0: RabbitMQ is a high-pe
 net-misc/radvd 2.14 2.17-r1 2.17-r2 2.18: Linux IPv6 Router Advertisement Daemon
 net-misc/rclone 1.45 1.47.0 9999: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
-net-misc/rdesktop 1.8.4-r1 1.8.4-r2 1.8.6 1.8.6-r1: A Remote Desktop Protocol Client
+net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
 net-misc/remmina 1.3.4 1.3.6-r1: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
@@ -15588,7 +15588,7 @@ net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
 net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clients
 net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
-net-p2p/deluge 1.3.15-r2 1.3.15-r3 1.3.15-r4 1.3.9999 2.0.3 9999: BitTorrent client with a client/server model
+net-p2p/deluge 1.3.15-r2 1.3.15-r3 1.3.15-r4 1.3.9999 2.0.3-r1 9999: BitTorrent client with a client/server model
 net-p2p/ed2k_hash 0.4.0-r2: Tool for generating eDonkey2000 links
 net-p2p/eiskaltdcpp 2.2.10 9999: Qt/DC++ based client for DirectConnect and ADC protocols
 net-p2p/fms 0.3.79 0.3.80: A spam-resistant message board application for Freenet
