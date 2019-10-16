@@ -161,51 +161,53 @@ LLVM_DEPSTR_AMDGPU=${LLVM_DEPSTR//]/,llvm_targets_AMDGPU(-)]}
 CLANG_DEPSTR=${LLVM_DEPSTR//llvm/clang}
 CLANG_DEPSTR_AMDGPU=${CLANG_DEPSTR//]/,llvm_targets_AMDGPU(-)]}
 RDEPEND="${RDEPEND}
-	llvm? (
-		opencl? (
-			video_cards_r600? (
-				${CLANG_DEPSTR_AMDGPU}
-			)
-			!video_cards_r600? (
-				video_cards_radeonsi? (
+	gallium?
+		llvm? (
+			opencl? (
+				video_cards_r600? (
 					${CLANG_DEPSTR_AMDGPU}
 				)
-			)
-			!video_cards_r600? (
-				!video_cards_radeonsi? (
-					video_cards_radeon? (
+				!video_cards_r600? (
+					video_cards_radeonsi? (
 						${CLANG_DEPSTR_AMDGPU}
 					)
 				)
-			)
-			!video_cards_r600? (
-				!video_cards_radeon? (
+				!video_cards_r600? (
 					!video_cards_radeonsi? (
-						${CLANG_DEPSTR}
+						video_cards_radeon? (
+							${CLANG_DEPSTR_AMDGPU}
+						)
+					)
+				)
+				!video_cards_r600? (
+					!video_cards_radeon? (
+						!video_cards_radeonsi? (
+							${CLANG_DEPSTR}
+						)
 					)
 				)
 			)
-		)
-		!opencl? (
-			video_cards_r600? (
-				${LLVM_DEPSTR_AMDGPU}
-			)
-			!video_cards_r600? (
-				video_cards_radeonsi? (
+			!opencl? (
+				video_cards_r600? (
 					${LLVM_DEPSTR_AMDGPU}
 				)
-			)
-			!video_cards_r600? (
-				!video_cards_radeonsi? (
-					video_cards_radeon? (
+				!video_cards_r600? (
+					video_cards_radeonsi? (
 						${LLVM_DEPSTR_AMDGPU}
 					)
 				)
-			)
-			!video_cards_r600? (
-				!video_cards_radeon? (
+				!video_cards_r600? (
 					!video_cards_radeonsi? (
-						${LLVM_DEPSTR}
+						video_cards_radeon? (
+							${LLVM_DEPSTR_AMDGPU}
+						)
+					)
+				)
+				!video_cards_r600? (
+					!video_cards_radeon? (
+						!video_cards_radeonsi? (
+							${LLVM_DEPSTR}
+						)
 					)
 				)
 			)
