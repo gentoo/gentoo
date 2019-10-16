@@ -10585,7 +10585,7 @@ dev-util/complexity 1.10: a tool designed for analyzing the complexity of C prog
 dev-util/conan 1.18.1 1.18.1-r1: Distributed C/C++ package manager
 dev-util/conf2struct 1.0 9999: Create C parsers for libconfig and command-line
 dev-util/confix 2.3.5-r2 2.3.5-r3 9999: Confix: A Build Tool on Top of GNU Automake
-dev-util/confix-wrapper 0: Wrapper to select either confix1.py or confix2.py
+dev-util/confix-wrapper 1: Wrapper to select either confix1.py or confix2.py
 dev-util/cookiecutter 1.6.0: Command-line utility to create projects from cookiecutters (project templates)
 dev-util/cppcheck 1.86 1.87 1.88 9999: Static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
@@ -12556,7 +12556,7 @@ mail-mta/msmtp 1.8.3 1.8.5-r1 1.8.6: An SMTP client and SMTP plugin for mail use
 mail-mta/netqmail 1.06-r4 1.06-r8 1.06-r9: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.3_p1-r1 6.4.0_p1: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 2.10.9 3.4.5-r1 3.4.6 3.4.7 3.5_pre20190922: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 2.10.9 3.4.5-r1 3.4.6 3.4.7 3.5_pre20191013: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge-bin 1.1.6 1.2.2: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
@@ -19298,7 +19298,7 @@ x11-themes/oxygen-gtk 1.4.1-r1 1.4.6-r1: Official GTK+:2 port of KDE's Oxygen wi
 x11-themes/pearlgrey-xcursors 1.0: A simple crispy white-grey xcursor theme
 x11-themes/pidgin-penguins-smileys 1.0: Penguins pidgin smiley theme
 x11-themes/pulse-glass 20100616: The Pulse Glass x11 mouse cursor theme
-x11-themes/qtcurve 1.9.0 1.9.0-r1 9999: Widget styles for Qt and GTK2
+x11-themes/qtcurve 1.9.0-r1 9999: Widget styles for Qt and GTK2
 x11-themes/redhat-artwork 5.0.8-r4: RedHat's Bluecurve theme for GTK2, KDE, GDM, Metacity and Nautilus
 x11-themes/sawfish-themes 0.0.1-r3: Some nice themes for Sawfish
 x11-themes/shiki-colors 4.6: Mixes the elegance of a dark theme with the usability of a light theme
