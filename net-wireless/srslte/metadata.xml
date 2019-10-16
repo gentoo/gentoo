@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
+	</maintainer>
+	<use>
+		<flag name="uhd">support Ettus Research hardware</flag>
+		<flag name="bladerf">support Nuand BladeRF hardware</flag>
+		<flag name="soapysdr">use soapysdr to support various hardware</flag>
+		<flag name="simcard">support hardware sim cards</flag>
+		<flag name="zeromq">enable zeromq message passing</flag>
+	</use>
+</pkgmetadata>
