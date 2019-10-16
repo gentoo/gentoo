@@ -17971,7 +17971,7 @@ sys-power/powerstat 0.02.18 0.02.20 9999: Laptop power measuring tool
 sys-power/powertop 2.10 9999: tool to diagnose issues with power consumption and power management
 sys-power/sispmctl 4.0: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20150810-r1 1.0_p20190605: Userspace Software Suspend and S2Ram
-sys-power/thermald 1.7.1 1.8-r1: Thermal daemon for Intel architectures
+sys-power/thermald 1.8-r1 1.9: Thermal daemon for Intel architectures
 sys-power/uhubctl 1.8-r1: USB hub per-port power control
 sys-power/upower 0.99.9-r1 0.99.11: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-process/acct 6.6.4-r1: GNU system accounting utilities
