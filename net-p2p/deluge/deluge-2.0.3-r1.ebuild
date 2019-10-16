@@ -51,7 +51,7 @@ RDEPEND="dev-python/chardet[${PYTHON_USEDEP}]
 		libnotify? ( x11-libs/libnotify )
 	)
 	net-libs/libtorrent-rasterbar[python,${PYTHON_USEDEP}]
-	webinterface? ( dev-python/mako[${PYTHON_USEDEP}] )"
+	dev-python/mako[${PYTHON_USEDEP}]"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0.3-setup.py.patch"

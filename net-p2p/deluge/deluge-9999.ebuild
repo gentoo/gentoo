@@ -51,7 +51,7 @@ RDEPEND="dev-python/chardet[${PYTHON_USEDEP}]
 		libnotify? ( x11-libs/libnotify )
 	)
 	net-libs/libtorrent-rasterbar[python,${PYTHON_USEDEP}]
-	webinterface? ( dev-python/mako[${PYTHON_USEDEP}] )"
+	dev-python/mako[${PYTHON_USEDEP}]"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0.3-setup.py.patch"
@@ -99,7 +99,7 @@ python_install_all() {
 	if use webinterface; then
 		newinitd "${FILESDIR}/deluge-web.init" deluge-web
 		newconfd "${FILESDIR}/deluge-web.conf" deluge-web
-		systemd_newunit "${FILESDIR}/deluge-web.service-2" deluge-web.service
+		systemd_newunit "${FILESDIR}/deluge-web.service-3" deluge-web.service
 		systemd_install_serviced "${FILESDIR}/deluge-web.service.conf"
 	else
 		rm -rf "${D}/usr/$(get_libdir)/python2.7/site-packages/deluge/ui/web/" || die
