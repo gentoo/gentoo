@@ -29,6 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-10-16)
+# Binary-only slot that provides libmpfr.so.1. If you need that
+# library please add a note to describe use case to the bug #697822.
+# Masked for removal in a year.
+dev-libs/mpfr:1
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-10-16)
+# Binary-only slot that provides libgmp.so.3. If you need that
+# library please add a note to describe use case to the bug #697826.
+# Masked for removal in a year.
+dev-libs/gmp:3
+
 # Lars Wendler <polynomial-c@gentoo.org> (2019-10-16)
 # Fails with checksum errors when being compiled with gcc-9
 # Bug #697672
@@ -436,31 +448,6 @@ sys-fs/wpflash
 # Unmaintained.  Fails to build.  Last release in 2004.  EAPI 0.
 # Removal in 30 days.  Bug #592360.
 net-mail/mailsync
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-16)
-# Unmaintained.  Does not work anymore.  Last release in 2007.
-# Our recommended alternative is app-text/wgetpaste.
-# Removal in 30 days.  Bug #678554.
-app-text/gnopaster
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-16)
-# Unmaintained.  Last touched in 2005.  Keyworded ppc only.  Upstream
-# is still alive, so this thing needs a major version bump.
-# Removal in 30 days.  Bug #694562.
-app-emulation/vmips
-app-emulation/vmips-cross-bin
-
-# Zac Medico <zmedico@gentoo.org> (2019-09-14)
-# No reverse dependencies.
-# Removal in 30 days.  Bug #694390.
-dev-go/go-oauth2
-
-# Thomas Sachau <tommy@gentoo.org> (2019-09-14)
-# Freemail has been completly rewritten so the current
-# ebuild does no longer work for it. In addition the source
-# has moved. So masking for removal.
-# Removal in 30 days. Bug #628914
-net-mail/Freemail
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
