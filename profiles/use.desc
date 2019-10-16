@@ -296,7 +296,7 @@ source - Zip the sources and install them
 sox - Add support for Sound eXchange (SoX)
 speex - Add support for the speex audio codec (used for speech)
 spell - Add dictionary support
-split-usr - Enable behavior to support maintaining /bin and /lib separately from /usr/bin and /usr/lib
+split-usr - Enable behavior to support maintaining /bin, /lib*, /sbin and /usr/sbin  separately from /usr/bin and /usr/lib*
 sqlite - Add support for sqlite - embedded sql database
 ssl - Add support for SSL/TLS connections (Secure Socket Layer / Transport Layer Security)
 startup-notification - Enable application startup event feedback mechanism
