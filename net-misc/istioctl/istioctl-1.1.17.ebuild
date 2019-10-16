@@ -5,7 +5,7 @@ EAPI=6
 
 inherit golang-vcs-snapshot
 
-GIT_COMMIT="473d9b3"
+GIT_COMMIT="149c2fc"
 
 KEYWORDS="~amd64"
 DESCRIPTION="Istio configuration command line utility"
