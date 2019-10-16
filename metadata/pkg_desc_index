@@ -1528,8 +1528,6 @@ app-emulation/virtualbox-extpack-oracle 5.2.26.128414 5.2.32.132073 6.0.10.13207
 app-emulation/virtualbox-guest-additions 5.2.26 5.2.32 6.0.10 6.0.12: VirtualBox kernel modules and user-space tools for Gentoo guests
 app-emulation/virtualbox-modules 5.2.26 5.2.32 6.0.10 6.0.12: Kernel Modules for Virtualbox
 app-emulation/vkd3d 1.0 1.1 9999: D3D12 to Vulkan translation library
-app-emulation/vmips 1.3 1.3.1: A virtual machine simulator based on a MIPS R3000 processor
-app-emulation/vmips-cross-bin 1.0: vmips cross-development tools
 app-emulation/wine-any 3.20 3.21 4.0 4.1 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
 app-emulation/wine-d3d9 3.20 3.21 4.0 4.1 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
@@ -2466,7 +2464,6 @@ app-text/getxbook 1.0-r1 1.2: Download books from google, amazon, barnes and nob
 app-text/ghostscript-gpl 9.26 9.28_rc4-r1: Interpreter for the PostScript language and PDF
 app-text/glosung 3.6.2-r1 3.6.4: Watch word program for the GNOME2 desktop (watch word (german): losung)
 app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for the Gnome project
-app-text/gnopaster 0.0.9: A submitter for gnopaste, a nopaste service like http://nopaste.info
 app-text/gocr 0.49 0.50: An OCR (Optical Character Recognition) reader
 app-text/goldendict 1.5.0_rc2-r2: Feature-rich dictionary lookup program
 app-text/grip 4.2.0: Preview GitHub Markdown files like Readme locally before committing them
@@ -3358,7 +3355,6 @@ dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
 dev-go/go-license-detector 3.0.0: Scan a source directory and report the license
 dev-go/go-md2man 1.0.3 1.0.6 1.0.8: A utility to convert markdown to man pages
 dev-go/go-net 0_pre20160216 0_pre20180816 9999: Go supplementary network libraries
-dev-go/go-oauth2 0_pre20150701 0_pre20160222 9999: Go client implementation for OAuth 2.0 spec
 dev-go/go-protobuf 1.3.2: Go support for Google's protocol buffers
 dev-go/go-snappy 0_pre20150729 0_pre20160213 9999: The Snappy compression format in the Go programming language.
 dev-go/go-spew 0_pre20150619 9999: Implements a deep pretty printer for Go data structures to aid in debugging
@@ -4546,7 +4542,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.21 1.2.23: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.53 7.0.82 7.0.96 8.0.53 8.5.23 8.5.43 8.5.45 8.5.46 9.0.7 9.0.24 9.0.26: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
+dev-java/tomcat-servlet-api 4.1.36 4.1.40 5.5.27-r1 5.5.34 5.5.36 6.0.44-r1 6.0.53 6.0.53-r1 7.0.82 7.0.96 8.0.53 8.0.53-r1 8.5.23 8.5.43 8.5.45 8.5.46 9.0.7 9.0.24 9.0.26: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -12036,7 +12032,7 @@ java-virtuals/jms 1.1: Virtual for Java Message Service (JMS) API
 java-virtuals/jmx 1.0-r4: Virtual for Java Management Extensions (JMX)
 java-virtuals/saaj-api 1.3-r3: Virtual for SAAJ 1.3 (AKA JSR-67 MR3) API
 java-virtuals/script-api 1.0-r1: Virtual for Java Scripting API (jsr223)
-java-virtuals/servlet-api 2.2 2.3 2.4 2.5-r2 3.0-r2 3.1-r1: Virtual for servlet api
+java-virtuals/servlet-api 2.3 2.4 2.5-r2 3.0-r2 3.1-r1: Virtual for servlet api
 java-virtuals/stax-api 1-r4: Virtual for Streaming API for XML (StAX)
 java-virtuals/transaction-api 1.1: Virtual for Transaction API (javax.transaction)
 java-virtuals/xmlrpc-api 0: Virtual for XML RPC API (javax.xml.rpc)
@@ -15096,7 +15092,6 @@ net-libs/wvstreams 4.6.1-r3 4.6.1-r4 4.6.1-r5 4.6.1_p14-r1 99999: A network prog
 net-libs/xrootd 4.8.3 4.9.0 4.10.1: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.5 4.3.2: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
-net-mail/Freemail 9999-r1: Anonymous IMAP/SMTP e-mail server over Freenet
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03-r5: A log analyzer for amavisd-new
 net-mail/archivemail 0.9.0-r1: Tool written archiving old email in mailboxes
@@ -16651,7 +16646,7 @@ sci-mathematics/gimps 29.4.7 29.4.8 29.8.6: The Great Internet Mersenne Prime Se
 sci-mathematics/ginac 1.6.6 1.7.2 1.7.4: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.63: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1: Generic C++ template library for sparse, dense and skyline matrices
-sci-mathematics/gmp-ecm 6.4.3-r5 6.4.4-r1 7.0.4-r1 9999: Elliptic Curve Method for Integer Factorization
+sci-mathematics/gmp-ecm 6.4.4-r1 7.0.4-r1 9999: Elliptic Curve Method for Integer Factorization
 sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series library
 sci-mathematics/gsl-shell 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
 sci-mathematics/jags 3.4.0 4.0.0 4.1.0 4.2.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
@@ -18458,7 +18453,7 @@ www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections base
 www-servers/spawn-fcgi 1.6.3-r1 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.7.2: A fast and very simple Ruby web server
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.96 8.0.53 8.5.43 8.5.45 8.5.46 9.0.7 9.0.24 9.0.26: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+www-servers/tomcat 7.0.96 8.5.43 8.5.45 8.5.46 9.0.7 9.0.24 9.0.26: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1 4.5.1 4.5.3 5.0.2 5.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.17 2.0.17.1 2.0.17.1-r1 2.0.18: uWSGI server for Python web applications
 www-servers/varnish 4.0.5 4.1.8 5.1.3 5.2.1 6.0.1 6.1.0 6.1.1 6.2.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
