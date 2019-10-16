@@ -1521,12 +1521,12 @@ app-emulation/virt-manager 2.0.0 2.2.0 2.2.1 9999: A graphical tool for administ
 app-emulation/virt-viewer 7.0 8.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.18 1.19: Detects if the current machine is running in a virtual machine
 app-emulation/virtio-win 0.1.160: VirtIO drivers for Windows virtual machines running on KVM
-app-emulation/virtualbox 5.2.26-r1 5.2.32 6.0.10-r2 6.0.12: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-additions 5.2.26 5.2.32 6.0.10 6.0.12: CD image containing guest additions for VirtualBox
-app-emulation/virtualbox-bin 5.2.26.128414 5.2.32.132073 6.0.12.133076: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-extpack-oracle 5.2.26.128414 5.2.32.132073 6.0.10.132072 6.0.12.133076: PUEL extensions for VirtualBox
-app-emulation/virtualbox-guest-additions 5.2.26 5.2.32 6.0.10 6.0.12: VirtualBox kernel modules and user-space tools for Gentoo guests
-app-emulation/virtualbox-modules 5.2.26 5.2.32 6.0.10 6.0.12: Kernel Modules for Virtualbox
+app-emulation/virtualbox 5.2.32 5.2.34 6.0.12 6.0.14: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-additions 5.2.32 5.2.34 6.0.12 6.0.14: CD image containing guest additions for VirtualBox
+app-emulation/virtualbox-bin 5.2.32.132073 5.2.34.133893 6.0.12.133076 6.0.14.133895: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-extpack-oracle 5.2.32.132073 5.2.34.133893 6.0.12.133076 6.0.14.133895: PUEL extensions for VirtualBox
+app-emulation/virtualbox-guest-additions 5.2.32 5.2.34 6.0.12 6.0.14: VirtualBox kernel modules and user-space tools for Gentoo guests
+app-emulation/virtualbox-modules 5.2.32 5.2.34 6.0.12 6.0.14: Kernel Modules for Virtualbox
 app-emulation/vkd3d 1.0 1.1 9999: D3D12 to Vulkan translation library
 app-emulation/wine-any 3.20 3.21 4.0 4.1 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
 app-emulation/wine-d3d9 3.20 3.21 4.0 4.1 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
@@ -4078,7 +4078,7 @@ dev-java/ant-commons-logging 1.9.13 1.10.5: Apache Ant's optional tasks dependin
 dev-java/ant-commons-net 1.9.13 1.10.5: Apache Ant's optional tasks depending on commons-net
 dev-java/ant-contrib 1.0_beta2-r2 1.0_beta3-r2: A collection of tasks for Apache Ant
 dev-java/ant-core 1.9.13-r2 1.10.5-r2: Java-based build tool similar to 'make' that uses XML configuration files
-dev-java/ant-eclipse-ecj 4.2.1 4.4.2 4.5.1 4.10: Ant Compiler Adapter for Eclipse Java Compiler
+dev-java/ant-eclipse-ecj 4.2.1 4.4.2 4.5.1 4.10-r1 4.13: Ant Compiler Adapter for Eclipse Java Compiler
 dev-java/ant-ivy 1.4.1-r1 2.3.0-r2: Ivy is a free java based dependency manager
 dev-java/ant-jai 1.9.13 1.10.5: Apache Ant's optional tasks depending on sun-jai-bin
 dev-java/ant-javamail 1.9.13 1.10.5: Apache Ant's optional tasks depending on gnu-jaf-1
@@ -4178,7 +4178,7 @@ dev-java/dynalang 0.4-r1: Library of interoperable metaobject protocols for dyna
 dev-java/easymock 3.3.1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/easymock-classextension 3.2-r1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/ecj-gcj 4.4.2: Subset of Eclipse Compiler for Java compiled by gcj, serving as javac in gcj-jdk
-dev-java/eclipse-ecj 4.2.1 4.4.2-r1 4.5.1 4.10: Eclipse Compiler for Java
+dev-java/eclipse-ecj 4.2.1 4.4.2-r1 4.5.1 4.10 4.13: Eclipse Compiler for Java
 dev-java/eclipsito 0_pre20130713 20180510: A small subset of Eclipse core libraries for modular applications
 dev-java/ecs 1.4.2-r2: Java library to generate markup language text such as HTML and XML
 dev-java/edtftpj 2.4.0: FTP client library written in Java
@@ -4542,7 +4542,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.21 1.2.23: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.36 4.1.40 5.5.27-r1 5.5.34 5.5.36 6.0.44-r1 6.0.53 6.0.53-r1 7.0.82 7.0.96 8.5.23 8.5.43 8.5.45 8.5.46 8.5.47 9.0.7 9.0.24 9.0.26: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
+dev-java/tomcat-servlet-api 4.1.36 4.1.40 5.5.27-r1 5.5.34 5.5.36 6.0.44-r1 6.0.53 6.0.53-r1 7.0.82 7.0.96 8.5.23 8.5.43 8.5.45 8.5.46 8.5.47 9.0.7 9.0.24 9.0.26 9.0.27: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -15323,7 +15323,7 @@ net-misc/iputils 20180629 20190515 20190709 99999999: Network monitoring tools i
 net-misc/ipv6calc 1.0.0 2.1.0: IPv6 address calculator
 net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/irrtree 1.2.1: The BGP swiss army knife of networking
-net-misc/istioctl 1.1.8 1.1.12: Istio configuration command line utility
+net-misc/istioctl 1.1.17: Istio configuration command line utility
 net-misc/jlj 2.12-r1: Simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing and/or controlling a distance PC
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
@@ -18453,7 +18453,7 @@ www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections base
 www-servers/spawn-fcgi 1.6.3-r1 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.7.2: A fast and very simple Ruby web server
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.96 8.5.43 8.5.45 8.5.46 8.5.47 9.0.7 9.0.24 9.0.26: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+www-servers/tomcat 7.0.96 8.5.43 8.5.45 8.5.46 8.5.47 9.0.7 9.0.24 9.0.26 9.0.27: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1 4.5.1 4.5.3 5.0.2 5.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.17 2.0.17.1 2.0.17.1-r1 2.0.18: uWSGI server for Python web applications
 www-servers/varnish 4.0.5 4.1.8 5.1.3 5.2.1 6.0.1 6.1.0 6.1.1 6.2.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
@@ -18477,8 +18477,8 @@ x11-apps/mesa-progs 8.4.0 9999: Mesa's OpenGL utility and demo programs (glxgear
 x11-apps/mkfontdir 1.2.0: create an index of X font files in a directory
 x11-apps/mkfontscale 1.2.1: create an index of scalable font files for X
 x11-apps/oclock 1.0.4: round X clock
-x11-apps/radeon-profile 20190311 20190603 99999999: Read current clocks of ATi/AMD Radeon cards
-x11-apps/radeon-profile-daemon 20190309-r2 20190603 99999999: Daemon for radeon-profile GUI
+x11-apps/radeon-profile 20190603 20190903 99999999: Read current clocks of ATi/AMD Radeon cards
+x11-apps/radeon-profile-daemon 20190603 99999999: Daemon for radeon-profile GUI
 x11-apps/rgb 1.0.5 1.0.6: uncompile an rgb color-name database
 x11-apps/rstart 1.0.5-r1: X.Org rstart application
 x11-apps/scripts 1.0.1-r1: start an X program on a remote machine
