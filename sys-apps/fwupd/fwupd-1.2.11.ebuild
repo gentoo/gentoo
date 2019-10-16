@@ -81,10 +81,6 @@ BDEPEND="
 # NOT a build time dependency. The build system does not check for dbus.
 PDEPEND="sys-apps/dbus"
 
-PATCHES=(
-	"${FILESDIR}/${P}-without_systemd_build_fix.patch"
-)
-
 src_prepare() {
 	default
 	sed -e "s/'--create'/'--absolute-name', '--create'/" \
@@ -106,6 +102,9 @@ src_configure() {
 		-Dman="$(usex man true false)"
 		-Dpkcs7="$(usex pkcs7 true false)"
 		-Dplugin_dell="$(usex dell true false)"
+		# Requires libflashrom which our sys-apps/flashrom
+		# package does not provide
+		-Dplugin_flashrom="false"
 		# Dependencies are not available (yet?)
 		-Dplugin_modem_manager="false"
 		-Dplugin_nvme="$(usex nvme true false)"

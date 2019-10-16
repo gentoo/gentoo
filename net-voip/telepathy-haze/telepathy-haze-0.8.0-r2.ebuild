@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	virtual/pkgconfig
 	test? (
+		dev-python/pygobject:2
 		|| (
 			$(python_gen_any_dep 'dev-python/twisted[${PYTHON_USEDEP}]')
 			$(python_gen_any_dep 'dev-python/twisted-words[${PYTHON_USEDEP}]')
