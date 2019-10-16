@@ -31,8 +31,8 @@
 
 # Mikle Kolyada <zlogene@gentoo.org> (2019-10-16)
 # not needed due to openpam removal. Please
-# update your packages running emerge with
-# --changed-deps oprion if you have problems
+# update your packages running emerge with the
+# --changed-deps option if you have problems
 # with your system.
 virtual/pam
 
