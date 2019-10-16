@@ -37,10 +37,6 @@ case ${CATEGORY} in
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
 		;;
 	kde-plasma)
-		if [[ ${PV} = 5.15.5 ]]; then
-			: ${FRAMEWORKS_MINIMAL:=5.57.0}
-			: ${QT_MINIMAL:=5.11.1}
-		fi
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
 		;;
 esac
