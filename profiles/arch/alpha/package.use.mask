@@ -28,10 +28,6 @@ app-admin/sudo sssd
 # Optional dependency blocking security cleanup, bug #627316
 media-sound/mpd wildmidi
 
-# Joonas Niilola <juippis@gentoo.org> (2018-06-17)
-# Optional dependency not available for this arch
-dev-libs/efl vlc
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-06)
 # Needs sys-apps/fakechroot which isn't keyworded
 app-arch/rpm test
@@ -230,10 +226,6 @@ dev-python/urllib3 test
 # Gilles Dartiguelongue <eva@gentoo.org> (2015-06-09)
 # dev-lua/lgi lacks alpha keyword, bug #551540
 dev-libs/libpeas lua
-
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
 
 # Michał Górny <mgorny@gentoo.org> (2015-02-22)
 # Dependency not keyworded for some reason.
