@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Inline test suite support for Perl"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 hppa ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="test"
 
 RDEPEND="
