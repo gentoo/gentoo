@@ -59,11 +59,6 @@ dev-libs/mpfr:1
 # Masked for removal in a year.
 dev-libs/gmp:3
 
-# Lars Wendler <polynomial-c@gentoo.org> (2019-10-16)
-# Fails with checksum errors when being compiled with gcc-9
-# Bug #697672
-=net-misc/dhcpcd-8.1.0
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-10-15)
 # Unmaintained and broken with current Frameworks.
 # Removal in 30 days. Bug #697780
