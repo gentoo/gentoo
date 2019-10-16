@@ -41,7 +41,7 @@ DEPEND="${RDEPEND}
 		x11-base/xorg-proto
 		x11-misc/xbitmaps
 		app-text/rman
-		x11-apps/mkfontdir
+		>=x11-apps/mkfontscale-1.2.0
 		x11-apps/bdftopcf
 	)"
 

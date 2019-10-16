@@ -29,9 +29,8 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~am
 IUSE="fontforge"
 
 DEPEND="fontforge? (
-		x11-apps/mkfontscale
+		>=x11-apps/mkfontscale-1.2.0
 		>=media-gfx/fontforge-20080429
-		x11-apps/mkfontdir
 		dev-perl/Font-TTF
 		app-i18n/unicode-data
 		>media-libs/fontconfig-2.6.0:1.0 )

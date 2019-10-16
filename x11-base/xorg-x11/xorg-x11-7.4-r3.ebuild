@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,8 +21,7 @@ RDEPEND="${RDEPEND}
 	x11-apps/bitmap
 	x11-apps/iceauth
 	x11-apps/luit
-	x11-apps/mkfontdir
-	x11-apps/mkfontscale
+	>=x11-apps/mkfontscale-1.2.0
 	x11-apps/sessreg
 	x11-apps/setxkbmap
 	x11-apps/smproxy

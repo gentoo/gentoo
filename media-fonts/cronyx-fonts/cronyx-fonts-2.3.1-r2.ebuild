@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -10,7 +10,7 @@ SRC_URI="http://koi8.pp.ru/dist/x6rus-${PV}-bin.tgz"
 KEYWORDS="alpha amd64 arm ia64 ppc s390 sh sparc x86"
 SLOT="0"
 LICENSE="freedist"
-DEPEND="x11-apps/mkfontdir"
+DEPEND=">=x11-apps/mkfontscale-1.2.0"
 RDEPEND=""
 IUSE=""
 

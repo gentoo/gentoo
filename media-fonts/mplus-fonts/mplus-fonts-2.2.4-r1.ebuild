@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
 IUSE="X"
 
-DEPEND="x11-apps/mkfontdir
+DEPEND=">=x11-apps/mkfontscale-1.2.0
 	x11-apps/bdftopcf"
 RDEPEND=""
 
