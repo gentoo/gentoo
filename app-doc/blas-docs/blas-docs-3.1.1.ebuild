@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 DESCRIPTION="Documentation reference and man pages for blas implementations"
 HOMEPAGE="http://www.netlib.org/blas"
@@ -17,13 +17,13 @@ IUSE=""
 S=${WORKDIR}/lapack-${PV}/manpages
 
 src_install() {
-	# rename because doman do not yet understand manl files
-	# Not all systems have the rename command, like say FreeBSD
-	local f= t=
+	# rename because doman does not yet understand manl files
+	local f t
 	for f in blas/man/manl/*.l; do
 		t="${f%%.l}.n"
-		mv "${f}" "${t}"
+		mv "${f}" "${t}" || die
 	done
-	doman blas/man/manl/*.n || die "doman failed"
-	dodoc README "${DISTDIR}"/blas{-report,qr}.ps || die "dodoc failed"
+
+	doman blas/man/manl/*.n
+	dodoc README "${DISTDIR}"/blas{-report,qr}.ps
 }
