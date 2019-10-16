@@ -74,12 +74,12 @@ src_configure() {
 	JSONUSE=""
 
 	if [ use clamsubmit ] || [ use metadata-analysis-api ]; then
-	    # either of those 2 requires libjson.
-	    # clamsubmit will be built as soon as libjson and curl are found
-	    # but we only install the binary if requested
-	    JSONUSE="--with-libjson=/usr"
+		# either of those 2 requires libjson.
+		# clamsubmit will be built as soon as libjson and curl are found
+		# but we only install the binary if requested
+		JSONUSE="--with-libjson=/usr"
 	else
-	    JSONUSE="--without-libjson"
+		JSONUSE="--without-libjson"
 	fi
 
 	econf \
@@ -98,7 +98,6 @@ src_configure() {
 		--with-system-libmspack \
 		--cache-file="${S}"/config.cache \
 		--disable-experimental \
-		--disable-gcc-vcheck \
 		--disable-zlib-vcheck \
 		--enable-id-check \
 		--with-dbdir="${EPREFIX}"/var/lib/clamav \
