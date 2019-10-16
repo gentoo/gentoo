@@ -27,8 +27,8 @@ RDEPEND="net-libs/libsearpc
 	dev-qt/qtdbus:5
 	shibboleth? ( dev-qt/qtwebengine:5[widgets] )"
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
 	test? ( dev-qt/qttest:5 )"
+BDEPEND="dev-qt/linguist-tools:5"
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-select-qt5.patch"
