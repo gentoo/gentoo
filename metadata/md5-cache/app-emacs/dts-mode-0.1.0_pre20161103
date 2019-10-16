@@ -1,0 +1,12 @@
+BDEPEND=>=virtual/emacs-23
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=Emacs major mode for devicetree sources
+EAPI=7
+HOMEPAGE=https://github.com/bgamari/dts-mode
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://github.com/bgamari/dts-mode/archive/9ee0854446dcc6c53d2b8d2941051768dba50344.tar.gz -> dts-mode-0.1.0_pre20161103.tar.gz
+_eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=e8b695cc744fac577ee31bc10b1aff7b

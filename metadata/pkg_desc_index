@@ -1263,7 +1263,7 @@ app-emacs/distel 4.1.1: Distributed Emacs Lisp for Erlang
 app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
-app-emacs/dts-mode 0.1.0_pre20141014: Emacs major mode for devicetree sources
+app-emacs/dts-mode 0.1.0_pre20161103: Emacs major mode for devicetree sources
 app-emacs/ebuild-mode 1.46 1.47: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.50_pre20170728: Source code browser for Emacs
 app-emacs/edb 1.32: EDB, The Emacs Database
@@ -1310,7 +1310,7 @@ app-emacs/httpd 1.1: A HTTP server embedded in the Emacs
 app-emacs/icicles 2018.02.13.23733: Minibuffer input completion and cycling
 app-emacs/igrep 2.113: An improved interface to "grep" and "find"
 app-emacs/inform-mode 1.5.8 1.6.2: A major mode for editing Inform programs
-app-emacs/initsplit 1.7_pre20140203: Split customizations into different files
+app-emacs/initsplit 1.7_pre20140203 1.8_pre20160919: Split customizations into different files
 app-emacs/jam-mode 0.3: An Emacs major mode for editing Jam files
 app-emacs/jasmin 1.2-r2: An Emacs major mode for editing Jasmin Java bytecode assembler files
 app-emacs/jde 2.4.1: Java Development Environment for Emacs
@@ -1856,7 +1856,7 @@ app-metrics/postgres_exporter 0.4.7: PostgreSQL stats exporter for Prometheus
 app-metrics/process-exporter 0.4.0 0.4.0-r1: Process exporter for prometheus
 app-metrics/prom2json 0.1.0_p20170523: A tool to scrape a Prometheus client and dump the result as JSON
 app-metrics/prometheus 2.9.2 2.11.2 2.12.0 2.13.0: Prometheus monitoring system and time series database
-app-metrics/pushgateway 0.9.0 0.9.1: Prometheus push acceptor for ephemeral and batch jobs
+app-metrics/pushgateway 0.9.1 0.10.0: Prometheus push acceptor for ephemeral and batch jobs
 app-metrics/rabbitmq_exporter 0.29.0: Rabbitmq exporter for Prometheus
 app-metrics/redis_exporter 0.20.2 1.1.1 1.2.0 1.2.1: Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
 app-metrics/snmp_exporter 0.13.0 0.14.0-r2 0.15.0: Prometheus exporter for snmp metrics
@@ -17540,14 +17540,14 @@ sys-cluster/hpx 0.9.99 1.0.0 1.1.0 1.2.0 1.2.1 9999: C++ runtime system for para
 sys-cluster/ipvsadm 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 2.0.10-r1 2.0.11 2.0.12 2.0.13 2.0.13-r1 2.0.15 2.0.16 2.0.17 2.0.18: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3 9999: High-Performance Intra-Node MPI Communication
-sys-cluster/kube-apiserver 1.14.7 1.15.4 1.16.0: Kubernetes API server
-sys-cluster/kube-controller-manager 1.14.7 1.15.4 1.16.0: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.14.7 1.15.4 1.16.0: Kubernetes Proxy service
+sys-cluster/kube-apiserver 1.14.7 1.14.8 1.15.5 1.16.2: Kubernetes API server
+sys-cluster/kube-controller-manager 1.14.7 1.14.8 1.15.5 1.16.2: Kubernetes Controller Manager
+sys-cluster/kube-proxy 1.14.7 1.14.8 1.15.5 1.16.2: Kubernetes Proxy service
 sys-cluster/kube-router 0.3.1: A turnkey solution for Kubernetes networking
-sys-cluster/kube-scheduler 1.14.7 1.15.4 1.16.0: Kubernetes Scheduler
-sys-cluster/kubeadm 1.14.7 1.15.4 1.16.0: CLI to Easily bootstrap a secure Kubernetes cluster
-sys-cluster/kubectl 1.13.10 1.14.6 1.14.7 1.15.3 1.15.4 1.16.0: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.14.7 1.15.4 1.16.0: Kubernetes Node Agent
+sys-cluster/kube-scheduler 1.14.7 1.14.8 1.15.5 1.16.2: Kubernetes Scheduler
+sys-cluster/kubeadm 1.14.7 1.14.8 1.15.5 1.16.2: CLI to Easily bootstrap a secure Kubernetes cluster
+sys-cluster/kubectl 1.14.7 1.14.8 1.15.5 1.16.2: CLI to run commands against Kubernetes clusters
+sys-cluster/kubelet 1.14.7 1.14.8 1.15.5 1.16.2: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1: API for distributing embarrassingly parallel workloads using self-stabilization
 sys-cluster/libqb 0.17.1 0.17.2 1.0.1: Library providing high performance logging, tracing, ipc, and poll
