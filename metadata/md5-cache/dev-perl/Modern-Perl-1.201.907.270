@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-IO virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.980.0 ) dev-lang/perl
+DESCRIPTION=enable all of the features of Modern Perl with one import
+EAPI=6
+HOMEPAGE=https://metacpan.org/release/Modern-Perl
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-IO dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/C/CH/CHROMATIC/Modern-Perl-1.20190727.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	20c90ae7e826995a597683580cdfcdcb
+_md5_=7692502da8954323bb65ee9d6441ea8a

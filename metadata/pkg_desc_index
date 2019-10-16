@@ -5738,7 +5738,7 @@ dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
 dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1: Encrypt Data with Cipher Block Chaining Mode
 dev-perl/Crypt-CipherSaber 1.10.0-r1: Perl module implementing CipherSaber encryption
-dev-perl/Crypt-Cracklib 1.700.0-r1: Perl interface to Alec Muffett's Cracklib
+dev-perl/Crypt-Cracklib 1.700.0-r1 1.700.0-r2: Perl interface to Alec Muffett's Cracklib
 dev-perl/Crypt-Curve25519 0.60.0: Shared secret elliptic-curve Diffie-Hellman generator
 dev-perl/Crypt-DES 2.70.0-r1: Perl DES encryption module
 dev-perl/Crypt-DES_EDE3 0.10.0-r1: Triple-DES EDE encryption/decryption
@@ -5769,7 +5769,7 @@ dev-perl/Crypt-SmbHash 0.120.0-r1 0.120.0-r2: LM/NT hashing, for Samba's smbpass
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.360.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
-dev-perl/CryptX 0.53.0: Self-contained crypto toolkit
+dev-perl/CryptX 0.53.0 0.64.0: Self-contained crypto toolkit
 dev-perl/Curses 1.360.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r2: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r2: Provide high level APIs for rapid user interface design on the console in Perl
@@ -5988,7 +5988,7 @@ dev-perl/FLV-AudioExtractor 0.010.0: Extract audio from Flash Videos
 dev-perl/Fatal-Exception 0.50.0-r2: Succeed or throw exception
 dev-perl/Feed-Find 0.70.0-r2: Syndication feed auto-discovery
 dev-perl/Festival-Client-Async 0.30.300-r1 0.30.300-r2: Non-blocking interface to a Festival server
-dev-perl/File-BOM 0.150.0 0.160.0: Utilities for handling Byte Order Marks
+dev-perl/File-BOM 0.160.0: Utilities for handling Byte Order Marks
 dev-perl/File-BaseDir 0.30.0-r1 0.70.0: Use the Freedesktop.org base directory specification
 dev-perl/File-Copy-Link 0.140.0: Perl extension for replacing a link by a copy of the linked file
 dev-perl/File-Copy-Recursive 0.380.0-r1: uses File::Copy to recursively copy dirs
@@ -6345,7 +6345,7 @@ dev-perl/Mixin-Linewise 0.108.0: write your linewise code for handles; this does
 dev-perl/Mo 0.400.0: Perl Micro Object framework
 dev-perl/Mock-Config 0.30.0: Temporarily set Config or XSConfig values
 dev-perl/Modem-Vgetty 0.30.0-r2: Interface to voice modems using vgetty
-dev-perl/Modern-Perl 1.201.701.170: enable all of the features of Modern Perl with one import
+dev-perl/Modern-Perl 1.201.701.170 1.201.907.270: enable all of the features of Modern Perl with one import
 dev-perl/Module-Build 0.422.400: Build and install Perl modules
 dev-perl/Module-Build-Tiny 0.39.0: A tiny replacement for Module::Build
 dev-perl/Module-Build-WithXSpp 0.140.0: XS++ enhanced flavour of Module::Build
@@ -7067,7 +7067,7 @@ dev-perl/constant-defer 6.0.0: constant subs with deferred value calculation
 dev-perl/enum 1.110.0: C style enumerated types and bitmask flags in Perl
 dev-perl/forks 0.360.0-r1: Emulate threads with fork
 dev-perl/frontier-rpc 0.07_beta4-r1 0.07_beta4-r2: Perform remote procedure calls using extensible markup language
-dev-perl/glib-perl 1.325.0 1.326.0: Glib - Perl wrappers for the GLib utility and Object libraries
+dev-perl/glib-perl 1.326.0 1.329.100: Glib - Perl wrappers for the GLib utility and Object libraries
 dev-perl/gnome2-canvas 1.2.0-r2: Perl interface to the Gnome Canvas
 dev-perl/gnome2-perl 1.46.0: Perl interface to the 2.x series of the Gnome libraries
 dev-perl/gnome2-vfs-perl 1.81.0-r1 1.83.0: Perl interface to the 2.x series of the Gnome Virtual File System libraries
