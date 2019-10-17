@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2019-10-17)
+# Masked for testing
+=x11-base/xorg-proto-2019.2
+=x11-libs/libX11-1.6.9
+=x11-libs/libXvMC-1.0.12
+
 # Michał Górny <mgorny@gentoo.org> (2019-10-17)
 # Homepage gone.  EAPI 0.  Used to be used with old versions
 # of www-apps/gallery that were removed back in 2016.
@@ -160,10 +166,6 @@ net-misc/ipsc
 # Unmaintained.  Does not build.  EAPI 0.
 # Removal in 30 days.  Bug #696294.
 mail-mta/qmail-ldap
-
-# Matt Turner <mattst88@gentoo.org> (2019-10-09)
-# Needs unreleased xorgproto. Bug #697098.
-=x11-libs/libX11-1.6.9
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-07)
 # Unmaintained.  A few versions behind upstream.  Forces an old version
@@ -411,10 +413,6 @@ games-server/ut2004-ded
 # dependencies on dev-python/pmw.
 # Removal in 30 days.
 virtual/python-pmw
-
-# Ulrich Müller <ulm@gentoo.org> (2019-09-26)
-# Blocks its own dependency. Bug #695606.
-=x11-libs/libXvMC-1.0.12
 
 # Joonas Niilola <juippis@gentoo.org> (2019-09-24)
 # Upstream decided to deprecate this service, and app. Removal in 
