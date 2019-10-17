@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit elisp toolchain-funcs
 
@@ -14,8 +14,8 @@ LICENSE="GPL-3+ FDL-1.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
-DEPEND="media-libs/taglib"
-RDEPEND="${DEPEND}"
+RDEPEND="media-libs/taglib"
+DEPEND="${RDEPEND}"
 
 # EMMS can use almost anything for playing media files therefore the dependency
 # possibilities are so broad that we refrain from setting anything explicitly
