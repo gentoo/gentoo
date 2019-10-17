@@ -1,9 +1,0 @@
-diff -up xbase64-3.1.2/xbase64/xbnode.cpp.BAD xbase64-3.1.2/xbase64/xbnode.cpp
---- xbase64-3.1.2/xbase64/xbnode.cpp.BAD	2009-08-19 23:10:38.444059289 -0400
-+++ xbase64-3.1.2/xbase64/xbnode.cpp	2009-08-19 23:10:47.348202984 -0400
-@@ -1,4 +1,4 @@
--#include "xbNode.h"
-+#include "xbnode.h"
- 
- void xbNodeLink::AddNode(xbNodeLink* node)
- {
