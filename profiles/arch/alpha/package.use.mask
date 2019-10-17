@@ -260,10 +260,6 @@ dev-haskell/vector test
 media-video/vlc opencv
 media-gfx/shotwell opencv
 
-# Pacho Ramos <pacho@gentoo.org> (2014-11-11)
-# Missing keywords, bug #523686
->=dev-libs/libgdata-0.16.1 test
-
 # Tobias Klausmann <klausman@gentoo.org> (2014-10-11)
 # app-emulation/qemu is not keyworded on alpha, masking flag that triggers
 # dependency
