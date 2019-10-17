@@ -29,7 +29,7 @@ RDEPEND="dev-python/pycairo[${PYTHON_USEDEP}]
 
 DEPEND="${PYTHON_DEPS}"
 
-PATCHES=( "${FILESDIR}"/${P}-no_compress_man.patch )
+PATCHES=( "${FILESDIR}"/${PN}-4.14.0-no_compress_man.patch )
 
 src_prepare() {
 	default

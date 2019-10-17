@@ -12,7 +12,7 @@ SRC_URI="https://archive.apache.org/dist/tomcat/tomcat-5/v${PV}/src/${MY_P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="2.4"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc source"
 
 DEPEND=">=virtual/jdk-1.8

@@ -5,17 +5,17 @@ EAPI=6
 
 inherit eutils webapp
 
-DESCRIPTION="Personal cloud that runs on your own server"
-HOMEPAGE="http://nextcloud.com"
-SRC_URI="http://download.nextcloud.com/server/releases/${P}.tar.bz2"
+DESCRIPTION="Web-based storage application where all your data is under your own control"
+HOMEPAGE="https://owncloud.org"
+SRC_URI="https://download.owncloud.org/community/${P}.tar.bz2 -> ${PF}.tar.bz2"
 LICENSE="AGPL-3"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+curl mysql postgres +sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 DEPEND=""
-RDEPEND="dev-lang/php[curl?,filter,gd,hash(+),intl,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,truetype,xmlreader,xmlwriter,zip]
+RDEPEND="<dev-lang/php-7.3[curl?,filter,gd,hash(+),intl,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,xmlreader,xmlwriter,zip]
 	virtual/httpd-php"
 
 S=${WORKDIR}/${PN}
@@ -37,4 +37,11 @@ src_install() {
 	webapp_configfile "${MY_HTDOCSDIR}"/.htaccess
 
 	webapp_src_install
+}
+
+pkg_postinst() {
+	elog "Additional applications (calendar, ...) are no longer provided by default."
+	elog "You can install them after login via the applications management page"
+	elog "(check the recommended tab). No application data is lost."
+	webapp_pkg_postinst
 }
