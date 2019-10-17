@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index a19d32f..ed86e49 100644
+--- a/setup.py
++++ b/setup.py
+@@ -18,7 +18,7 @@ setup(name             = "aiodns",
+       url              = "http://github.com/saghul/aiodns",
+       description      = "Simple DNS resolver for asyncio",
+       long_description = codecs.open("README.rst", encoding="utf-8").read(),
+-      install_requires = ['pycares>=3.0.0', 'typing; python_version<"3.7"'],
++      install_requires = ['pycares>=3.0.0', 'typing; python_version<"3.5"'],
+       packages         = ['aiodns'],
+       platforms        = ["POSIX", "Microsoft Windows"],
+       classifiers      = [

@@ -21,6 +21,8 @@ RDEPEND=">=dev-python/pycares-3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
+PATCHES=( "${FILESDIR}"/${P}-fix-typing-dependency.patch )
+
 python_test() {
 	"${EPYTHON}" tests.py -v || die
 }
