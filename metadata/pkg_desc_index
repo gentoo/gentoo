@@ -8951,7 +8951,7 @@ dev-python/spectral-cube 0.4.0: Manipulate astronomical data cubes with Python
 dev-python/specutils 0.2 0.2.2: Python package for astronomy spectral operations
 dev-python/speg 0.3: A PEG-based parser interpreter with memoization
 dev-python/sphinx 1.2.2-r1 1.2.3-r1 1.7.5-r1 2.0.1: Python documentation generator
-dev-python/sphinx-aiohttp-theme 0.1.4 0.1.5: Sphinx theme for aiohttp
+dev-python/sphinx-aiohttp-theme 0.1.4 0.1.5 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-better-theme 0.1.5: A nice-looking, customizable theme for Sphinx
 dev-python/sphinx-bootstrap-theme 0.4.9 0.6.0 0.6.5: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-gallery 0.1.12 0.3.1: Sphinx extension to automatically generate an examples gallery
@@ -13202,8 +13202,8 @@ media-libs/libdvbcsa 1.1.0: Free implementation of the DVB Common Scrambling Alg
 media-libs/libdvbpsi 1.3.1 1.3.2: library for MPEG TS/DVB PSI tables decoding and generation
 media-libs/libdvd-audio 1.0.0: library for extracting audio from DVD-Audio discs
 media-libs/libdvdcss 1.4.2: A portable abstraction library for DVD decryption
-media-libs/libdvdnav 6.0.0 9999: Library for DVD navigation tools
-media-libs/libdvdread 6.0.0 6.0.1 9999: Library for DVD navigation tools
+media-libs/libdvdnav 6.0.0 6.0.1 9999: Library for DVD navigation tools
+media-libs/libdvdread 6.0.0 6.0.1 6.0.2 9999: Library for DVD navigation tools
 media-libs/libebur128 1.2.3 1.2.4: A library implementing the EBU R128 loudness standard
 media-libs/libemf 1.0.4-r1 1.0.7: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01 9999: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
@@ -14114,7 +14114,7 @@ media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnost
 media-sound/tunapie 2.1.17-r1 2.1.19: Directory browser for Radio and TV streams
 media-sound/twolame 0.3.13-r2 0.4.0: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2-r1: Program for adjusting soundcard volumes
-media-sound/umurmur 0.2.16a-r1 0.2.17-r1 0.2.17-r2 0.2.17-r3 9999: Minimalistic Murmur (Mumble server)
+media-sound/umurmur 0.2.17-r3 9999: Minimalistic Murmur (Mumble server)
 media-sound/upmpdcli 1.4.0 1.4.2: UPnP Media Renderer front-end for MPD, the Music Player Daemon
 media-sound/vb2rip 1.4: Konami VB2 sound format ripping utility
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
@@ -15308,7 +15308,7 @@ net-misc/httpie 1.0.2-r1 1.0.3: Modern command line HTTP client
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/hylafaxplus 5.5.5 5.6.1: Enterprise client-server fax package for class 1 and 2 fax modems
 net-misc/iaxmodem 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
-net-misc/icaclient 19.6.0.60-r1 19.8.0.20: ICA Client for Citrix Presentation servers
+net-misc/icaclient 19.8.0.20 19.10.0.15: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.4: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
