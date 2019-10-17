@@ -14,7 +14,7 @@ SRC_URI="https://www.iana.org/time-zones/repository/releases/tzdata${data_ver}.t
 
 LICENSE="BSD public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390  sh  sparc  x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 IUSE="nls leaps-timezone elibc_FreeBSD"
 
 DEPEND="nls? ( virtual/libintl )"
@@ -85,7 +85,7 @@ src_compile() {
 
 src_test() {
 	# VALIDATE_ENV is used for extended/web based tests.  Punt on them.
-	emake -j1 check VALIDATE_ENV=true
+	emake check VALIDATE_ENV=true
 }
 
 src_install() {
