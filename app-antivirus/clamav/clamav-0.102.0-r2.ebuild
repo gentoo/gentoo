@@ -92,7 +92,6 @@ src_configure() {
 		$(use_with xml) \
 		$(use_with iconv) \
 		$(use_with metadata-analysis-api libjson /usr) \
-		#		$(use_with clamsubmit libjson /usr) \
 		${JSONUSE} \
 		$(use_enable libclamav-only) \
 		--with-system-libmspack \
