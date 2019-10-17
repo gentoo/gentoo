@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2019-10-17)
+# clamav-milter completely broken, #697688
+~app-antivirus/clamav-0.102.0
+
 # Matt Turner <mattst88@gentoo.org> (2019-10-17)
 # Masked for testing
 =x11-base/xorg-proto-2019.2
