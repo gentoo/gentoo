@@ -9827,9 +9827,9 @@ dev-ruby/hashicorp-checkpoint 0.1.5: Internal HashiCorp service to check version
 dev-ruby/hashie 2.1.2-r1 3.5.7 3.6.0: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.1: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
-dev-ruby/hiera 3.4.3 3.4.4 3.4.5 3.5.0: A simple pluggable Hierarchical Database
+dev-ruby/hiera 3.4.3 3.4.4 3.4.5 3.5.0 3.6.0: A simple pluggable Hierarchical Database
 dev-ruby/hiera-eyaml 3.0.0: Encrypted YAML backend for hiera
-dev-ruby/hiera-eyaml-gpg 0.7.2 0.7.3: A GPG backend for hiera-eyaml
+dev-ruby/hiera-eyaml-gpg 0.7.2 0.7.3 0.7.4: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6-r1: A plaintext backend for hiera-eyaml
 dev-ruby/highline 1.7.8 2.0.1 2.0.2 2.0.3: Highline is a high-level command-line IO library for ruby
 dev-ruby/hipchat 1.6.0: Ruby library to interact with HipChat
@@ -10143,7 +10143,7 @@ dev-ruby/ruby-odbc 0.99999: RubyODBC - For accessing ODBC data sources from the 
 dev-ruby/ruby-oembed 0.12.0: An oEmbed consumer library written in Ruby.
 dev-ruby/ruby-ole 1.2.12.1 1.2.12.2: Ruby library for easy read/write access to OLE compound documents
 dev-ruby/ruby-opengl 0.10.0: OpenGL / GLUT bindings for ruby
-dev-ruby/ruby-openid 2.7.0 2.9.1: A robust library for verifying and serving OpenID identities
+dev-ruby/ruby-openid 2.7.0 2.9.1 2.9.2: A robust library for verifying and serving OpenID identities
 dev-ruby/ruby-pango 3.3.2 3.3.6 3.3.7: Ruby Pango bindings
 dev-ruby/ruby-poppler 3.3.2 3.3.6 3.3.7: Ruby poppler-glib bindings
 dev-ruby/ruby-prof 0.18.0: A module for profiling Ruby code
