@@ -36,7 +36,10 @@ DEPEND="
 	sys-libs/zlib:=
 	ldap? (
 		>=net-nds/openldap-2.1.30-r1
-		dev-libs/cyrus-sasl
+		sasl? (
+			dev-libs/cyrus-sasl
+			net-nds/openldap[sasl]
+		)
 	)
 	pam? ( sys-libs/pam )
 	sasl? ( dev-libs/cyrus-sasl )
@@ -182,6 +185,14 @@ src_install() {
 		# uri, binddn, bindpw, sudoers_base, sudoers_debug
 		# tls_{checkpeer,cacertfile,cacertdir,randfile,ciphers,cert,key}
 		EOF
+
+		if use sasl ; then
+			cat <<-EOF >> "${T}"/ldap.conf.sudo
+
+			# SASL directives: use_sasl, sasl_mech, sasl_auth_id
+			# sasl_secprops, rootuse_sasl, rootsasl_auth_id, krb5_ccname
+			EOF
+		fi
 
 		insinto /etc
 		doins "${T}"/ldap.conf.sudo
