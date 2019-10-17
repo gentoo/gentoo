@@ -453,7 +453,6 @@ sys-boot/systemrescuecd-x86-grub
 # Michał Górny <mgorny@gentoo.org> (2019-09-17)
 # Unmaintained EAPI 0 Apache modules + mod_access_dnsbl as a revdep.
 # Removal in 30 days.  Bug #694608.
-www-apache/mod_dnsbl_lookup
 www-apache/mod_flvx
 www-apache/mod_geoip2
 www-apache/mod_macro
