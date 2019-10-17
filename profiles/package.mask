@@ -462,11 +462,6 @@ www-apache/mod_geoip2
 www-apache/mod_macro
 www-apache/mod_umask
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-17)
-# Unmaintained libraries with no reverse dependencies.
-# Removal in 30 days.  Bug #694602.
-dev-db/xbsql
-
 # Michał Górny <mgorny@gentoo.org> (2019-09-16)
 # Unmaintained.  Fails to build.  Last release in 2004.  EAPI 0.
 # Removal in 30 days.  Bug #592360.
