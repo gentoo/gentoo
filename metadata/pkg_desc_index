@@ -1471,7 +1471,7 @@ app-emulation/gxemul 0.6.0-r1: A Machine Emulator, Mainly emulates MIPS, but sup
 app-emulation/hercules 3.10 3.12: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
 app-emulation/hyperd 0.7.0-r1: Hypervisor-based Runtime for OCI
 app-emulation/img 0.5.7: Standalone daemon-less unprivileged Dockerfile and OCI container image builder
-app-emulation/kompose 1.16.0: Tool to move from docker-compose to Kubernetes
+app-emulation/kompose 1.16.0 1.19.0: Tool to move from docker-compose to Kubernetes
 app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect and modifying virtual machine (VM) disk images
@@ -18290,7 +18290,7 @@ www-apps/drupal 7.67 8.6.16 8.7.5 8.7.6 8.7.7 8.7.8: PHP-based open-source platf
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/gitea 1.8.0 1.8.2 1.8.3: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
-www-apps/grafana-bin 6.3.5 6.3.6 6.4.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
+www-apps/grafana-bin 6.3.5 6.3.6 6.4.1 6.4.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hiawatha-monitor 1.6: Monitoring application for www-servers/hiawatha
 www-apps/hugo 0.48 0.50: The world's fastest framework for building websites
 www-apps/icingaweb2 2.6.3 2.7.1 9999: Icinga Web 2 - Frontend for icinga2
