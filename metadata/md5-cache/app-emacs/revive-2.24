@@ -1,12 +1,12 @@
+BDEPEND=>=virtual/emacs-23
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=>=virtual/emacs-23
 DESCRIPTION=Resume Emacs
-EAPI=6
-HOMEPAGE=http://www.gentei.org/~yuuji/software/
-KEYWORDS=~amd64
-LICENSE=yuuji
+EAPI=7
+HOMEPAGE=https://www.gentei.org/~yuuji/software/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
 RDEPEND=>=virtual/emacs-23
 SLOT=0
-SRC_URI=https://github.com/gavv/distfiles/raw/master/revive-2.23.el.xz
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/revive-2.24.el.xz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=98b19388c02e94f02e99f204863785b8
+_md5_=3dccdc46beff89c1ebb4d15ff43f7acc

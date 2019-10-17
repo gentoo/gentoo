@@ -3,10 +3,10 @@ DEPEND=>=virtual/emacs-23
 DESCRIPTION=Select buffer by cycling through
 EAPI=6
 HOMEPAGE=https://www.emacswiki.org/emacs/cycle-buffer.el
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~x86
 LICENSE=public-domain
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/gavv/distfiles/raw/master/cycle-buffer-2.16.el.xz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=4be7ed4e297b2ed839d87a67103beca2
+_md5_=fba97e86a9b234e1f601a7ab8c34c249
