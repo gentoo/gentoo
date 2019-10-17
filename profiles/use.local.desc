@@ -1413,10 +1413,6 @@ dev-db/clickhouse:mongodb - Enabled support for MongoDB-based dictionaries
 dev-db/clickhouse:server - Build server.
 dev-db/clickhouse:tools - Build various tools, like benchmark, copier, etc.
 dev-db/clickhouse:zookeeper - Enable support for clustering (based on Zookeeper).
-dev-db/cppdb:mysql_internal - Don't build a separate mysql loadable module but rather build it into the cppdb library itself
-dev-db/cppdb:odbc_internal - Don't build a separate postgresql loadable module but rather build it into the cppdb library itself
-dev-db/cppdb:postgres_internal - Don't build a separate odbc loadable module but rather build it into the cppdb library itself
-dev-db/cppdb:sqlite_internal - Don't build a separate sqlite3 loadable module but rather build it into the cppdb library itself
 dev-db/etcd:server - Installs etcd daemon
 dev-db/firebird:server - Install the server components of Firebird, not just the client
 dev-db/firebird:xinetd - Install ClassicServer
@@ -1509,8 +1505,6 @@ dev-db/postgresql:server - Disable to build and install the clients and librarie
 dev-db/postgresql:uuid - Enable server side UUID generation (via dev-libs/ossp-uuid).
 dev-db/psqlodbc:iodbc - Use dev-db/libiodbc. Disable to use dev-db/unixODBC.
 dev-db/redis:tcmalloc - Use tcmalloc from dev-util/google-perftools for allocations.
-dev-db/soci:boost - Enable boost support
-dev-db/soci:empty - Build the sample backend called Empty
 dev-db/spatialite:geos - Add the sci-libs/geos library for exact topological tests
 dev-db/spatialite:proj - Add the sci-libs/proj library for reprojection features
 dev-db/spatialite:xls - Add the dev-libs/freexl library for xls import support
