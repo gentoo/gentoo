@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools multilib-minimal
 
@@ -19,9 +19,12 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="static-libs"
 
-RDEPEND=">=media-libs/libdvdread-5.0.3[${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig" # To get pkg.m4 for eautoreconf #414391
+RDEPEND=">=media-libs/libdvdread-6.0.0[${MULTILIB_USEDEP}]"
+DEPEND="${RDEPEND}"
+# To get pkg.m4 for eautoreconf #414391
+BDEPEND="
+	virtual/pkgconfig
+"
 
 DOCS=( AUTHORS ChangeLog doc/dvd_structures doc/library_layout README TODO )
 
@@ -39,5 +42,5 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	find "${ED}" -name "*.la" -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 }
