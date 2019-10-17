@@ -6035,6 +6035,7 @@ dev-perl/Filesys-Df 0.920.0-r2: Disk free based on Filesys::Statvfs
 dev-perl/Filesys-DiskSpace 0.50.0-r2: Disk space information
 dev-perl/Filesys-Notify-Simple 0.120.0: Simple and dumb file system watcher
 dev-perl/Filesys-SmbClient 3.200.0-r3: Provide Perl API for libsmbclient.so
+dev-perl/Filesys-Statvfs 0.820.0: Disk free based on Filesys::Statvfs
 dev-perl/Filter 1.570.0: Interface for creation of Perl Filters
 dev-perl/Finance-Quote 1.470.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0-r1: Get stock quotes from Yahoo! Finance
@@ -6042,7 +6043,7 @@ dev-perl/Font-AFM 1.200.0-r1: Parse Adobe Font Metric files
 dev-perl/Font-TTF 1.20.0-r1 1.60.0: module for compiling and altering fonts
 dev-perl/Format-Human-Bytes 0.60.0-r1: Format a bytecount and make it human readable
 dev-perl/FreezeThaw 0.500.100-r1: converting Perl structures to strings and back
-dev-perl/Fuse 0.16.1: Fuse module for perl
+dev-perl/Fuse 0.16.1 0.16.1-r1: Fuse module for perl
 dev-perl/GD 2.560.0-r1 2.560.0-r2 2.660.0: Interface to Thomas Boutell's gd library
 dev-perl/GD-Barcode 1.150.0-r1: GD::Barcode - Create barcode image with GD
 dev-perl/GD-Graph3d 0.630.0-r1 0.630.0-r2: Create 3D Graphs with GD and GD::Graph
@@ -6946,6 +6947,7 @@ dev-perl/Unicode-Stringprep 1.105.0-r1 1.105.0-r2: Preparation of Internationali
 dev-perl/Unicode-UTF8 0.620.0: Encoding and decoding of UTF-8 encoding form
 dev-perl/Unicode-UTF8simple 1.60.0: Conversions to/from UTF8 from/to charactersets
 dev-perl/Unix-Getrusage 0.030.0 0.30.0-r1: Perl interface to the Unix getrusage system call
+dev-perl/Unix-Mknod 0.40.0: Filesys-Statvfs
 dev-perl/Unix-Syslog 1.100.0-r1 1.100.0-r2: A Perl module which provides access to the system logger
 dev-perl/User-Identity 0.990.0: Maintains info about a physical person
 dev-perl/VM-EC2 1.280.0: Interface to Amazon EC2, VPC, ELB, Autoscaling, and Relational DB services
