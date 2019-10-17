@@ -7247,7 +7247,7 @@ dev-php/pecl-dbase 5.1.1 7.0.0_beta1-r1 7.0.0: dBase database file access functi
 dev-php/pecl-dbx 1.1.2-r2: The dbx module is a database abstraction layer
 dev-php/pecl-dio 0.1.0-r1: Direct I/O functions for PHP
 dev-php/pecl-eio 2.0.2-r1 2.0.4: PHP wrapper for libeio library
-dev-php/pecl-event 2.2.1 2.3.0-r1 2.4.0 2.4.1 2.4.3 2.5.2: PHP wrapper for libevent2
+dev-php/pecl-event 2.2.1 2.5.3: PHP wrapper for libevent2
 dev-php/pecl-geoip 1.1.1-r4: PHP extension to map IP address to geographic places
 dev-php/pecl-gnupg 1.4.0-r2: PHP wrapper around the gpgme library
 dev-php/pecl-haru 1.0.4-r3: An interface to libharu, a PDF generator
