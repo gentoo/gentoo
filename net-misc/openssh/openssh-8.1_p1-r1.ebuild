@@ -72,13 +72,14 @@ RDEPEND="
 	kerberos? ( virtual/krb5 )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
-	virtual/pkgconfig
-	virtual/os-headers
-	sys-devel/autoconf"
+	virtual/os-headers"
 RDEPEND="${RDEPEND}
 	pam? ( >=sys-auth/pambase-20081028 )
 	userland_GNU? ( virtual/shadow )
 	X? ( x11-apps/xauth )"
+BDEPEND="
+	virtual/pkgconfig
+	sys-devel/autoconf"
 
 S="${WORKDIR}/${PARCH}"
 
