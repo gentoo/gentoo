@@ -212,7 +212,7 @@ app-admin/diamond 4.0-r1 4.0.515 9999: Python daemon that collects and publishes
 app-admin/dio 1.5.2-r1: A device I/O monitoring tool
 app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
 app-admin/doas 6.0: Run commands as super user or another user, alternative to sudo from OpenBSD
-app-admin/docker-bench 0_p20171206: Docker Bench for Security runs the CIS Docker Benchmark
+app-admin/docker-bench 0_p20171206 0_p20190822: Docker Bench for Security runs the CIS Docker Benchmark
 app-admin/drush 6.7.0-r1: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
 app-admin/dxf 7.5.1 7.5.2: Docker registry v2 client in Python
