@@ -33,12 +33,6 @@
 # clamav-milter completely broken, #697688
 ~app-antivirus/clamav-0.102.0
 
-# Matt Turner <mattst88@gentoo.org> (2019-10-17)
-# Masked for testing
-=x11-base/xorg-proto-2019.2
-=x11-libs/libX11-1.6.9
-=x11-libs/libXvMC-1.0.12
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-17)
 # Homepage gone.  EAPI 0.  Used to be used with old versions
 # of www-apps/gallery that were removed back in 2016.
