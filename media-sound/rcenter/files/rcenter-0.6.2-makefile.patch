@@ -1,8 +1,13 @@
-Index: rcenter-0.6.2/Makefile
-===================================================================
---- rcenter-0.6.2.orig/Makefile
-+++ rcenter-0.6.2/Makefile
-@@ -19,9 +19,9 @@ button.o : button.c
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,4 @@
+ ALLFILES = *.c *.h Makefile LICENSE HISTORY README config
+-CC = gcc
+-CFLAGS = -O2
+ BINARIES = rcenter
+ PREFIX= /usr/local
+ 
+@@ -19,9 +17,9 @@
  main.o : main.c
  
  rcenter : main.o lowlevel.o handler.o button.o
