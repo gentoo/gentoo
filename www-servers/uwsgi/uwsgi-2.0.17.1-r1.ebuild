@@ -111,7 +111,7 @@ CDEPEND="
 	uwsgi_plugins_systemd_logger? ( sys-apps/systemd )
 	uwsgi_plugins_webdav? ( dev-libs/libxml2 )
 	uwsgi_plugins_xslt? ( dev-libs/libxslt )
-	go? ( dev-lang/go:=[gccgo] )
+	go? ( sys-devel/gcc:=[go] )
 	lua? ( dev-lang/lua:= )
 	mono? ( dev-lang/mono:= )
 	perl? ( dev-lang/perl:= )
