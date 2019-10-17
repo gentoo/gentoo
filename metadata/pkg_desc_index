@@ -8656,7 +8656,7 @@ dev-python/python-cstruct 1.7: C-style structs for Python
 dev-python/python-ctags 1.2.4 1.3.0: Exuberant Ctags indexing python bindings
 dev-python/python-daap 0.7.1-r1: PyDaap is a DAAP client implemented in Python, based on PyTunes
 dev-python/python-daemon 1.6-r1 2.1.1 2.1.2: Library to implement a well-behaved Unix daemon process
-dev-python/python-dateutil 2.6.1 2.7.1 2.7.2 2.7.2-r1 2.7.3 2.7.4 2.7.5: Extensions to the standard Python datetime module
+dev-python/python-dateutil 2.6.1 2.7.1 2.7.2 2.7.2-r1 2.7.3 2.7.4 2.7.5 2.8.0: Extensions to the standard Python datetime module
 dev-python/python-ddp 0.1.5: An event driven ddp client
 dev-python/python-debian 0.1.28 0.1.31 0.1.32: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 2.7.0 2.9.0 2.11.0: Python bindings to the Designate API.
@@ -14118,7 +14118,7 @@ media-sound/vimpc 0.09.2 0.09.2-r1 9999: An ncurses based mpd client with vi lik
 media-sound/vitunes 2.3: A curses media indexer and player for vi users
 media-sound/vkeybd 0.1.18d: A virtual MIDI keyboard for X
 media-sound/vlevel 0.5-r1: Dynamic compressor to amplify quiet parts of music
-media-sound/vlorb 1.2: a high quality Audio CD to audio file encoder
+media-sound/vlorb 1.2: A high quality Audio CD to audio file encoder
 media-sound/vmpk 0.6.2a: Virtual MIDI Piano Keyboard
 media-sound/volti 0.2.3-r1: GTK+ application for controlling audio volume from system tray/notification area
 media-sound/volumeicon 0.4.6 0.5.1-r1: A lightweight volume control that sits in your systray
