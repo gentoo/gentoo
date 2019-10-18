@@ -17,6 +17,8 @@ RDEPEND="dev-lang/perl
 	virtual/perl-Term-ANSIColor
 	>=dev-perl/PortageXS-0.02.04"
 
+S=${WORKDIR}
+
 src_install() {
 	dobin ${PN}
 }
