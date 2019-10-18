@@ -2898,11 +2898,6 @@
       <name>Sebastian Pipping</name>
       <role>Member</role>
     </member>
-    <member>
-      <email>vdupras@gentoo.org</email>
-      <name>Virgil Dupras</name>
-      <role>Member</role>
-    </member>
   </project>
   <project>
     <email>qt@gentoo.org</email>
@@ -3697,11 +3692,6 @@
       <name>Pacho Ramos</name>
       <role>Member</role>
     </member>
-    <member>
-      <email>vdupras@gentoo.org</email>
-      <name>Virgil Dupras</name>
-      <role>Member</role>
-    </member>
   </project>
   <project>
     <email>udev-bugs@gentoo.org</email>
@@ -3840,10 +3830,6 @@
     <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-    </member>
-    <member>
-      <email>vdupras@gentoo.org</email>
-      <name>Virgil Dupras</name>
     </member>
   </project>
   <project>
