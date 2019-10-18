@@ -1,26 +1,22 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{3_5,3_6,3_7} )
 
 inherit distutils-r1
 
 DESCRIPTION="Module implementing munkres algorithm for the Assignment Problem"
 HOMEPAGE="https://pypi.org/project/munkres/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/bmc/munkres/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test doc"
+
+S="${WORKDIR}/${PN}-release-${PV}"
 
 python_test() {
-	"${PYTHON}" "${PN}.py" || die
-}
-
-src_install() {
-	distutils-r1_src_install
-	use doc && dohtml -r html/
+	"${EPYTHON}" ${PN}.py || die
 }
