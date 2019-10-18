@@ -91,6 +91,7 @@ src_prepare() {
 		cd unix/xserver || die
 		eapply "${FILESDIR}"/xserver120.patch
 		eapply "${FILESDIR}"/xserver120-drmfourcc-header.patch
+		sed -i -e 's/"gl >= .*"/"gl"/' configure.ac || die
 		eautoreconf
 	fi
 }
