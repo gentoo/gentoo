@@ -103,6 +103,9 @@ pkg_setup() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# Apply 4e9f04a1e11e84a8c513ee334cf2bc1c013d8c11 for bug 697906.
+	sed -e 's|\(self\.config\.layouts\)\[1:\]|\1|' -i lib/portage/_emirrordist/DeletionTask.py || die
+
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
 		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
