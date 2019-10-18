@@ -14,5 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 S="${WORKDIR}/matlab-emacs-src"
-SITEFILE="50${PN}-gentoo.el"
+SITEFILE="50${PN}-gentoo-3.3.6.el"
 DOCS="README.org INSTALL ChangeLog*"
+
+src_compile() {
+	elisp-compile *.el
+	elisp-make-autoload-file matlab-load.el
+}
