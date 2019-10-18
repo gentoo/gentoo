@@ -1253,7 +1253,7 @@ app-emacs/cycle-buffer 2.16: Select buffer by cycling through
 app-emacs/d-mode 2.0.6 2.0.10: Emacs major mode for editing D code
 app-emacs/dash 2.14.1 2.16.0: A modern list library for Emacs
 app-emacs/ddskk 16.2: One Japanese input methods on Emacs
-app-emacs/desktop+ 0.2-r1: desktop+ extends standard desktop module
+app-emacs/desktop+ 0.2-r2: desktop+ extends standard desktop module
 app-emacs/develock 0.45 0.47: An Emacs minor mode for highlighting broken formatting rules
 app-emacs/df-mode 20050509-r1: Minor mode to show space left on devices in the mode line
 app-emacs/dictionary 1.10: Emacs package for talking to a dictionary server
