@@ -96,7 +96,7 @@ pkg_setup() {
 
 src_prepare() {
 	local n PATCHES v
-	PATCHES=( emacs-0 rmaxima-0 wish-2 xdg-utils-1 )
+	PATCHES=( emacs-0 rmaxima-0 wish-2 xdg-utils-1 texinfo-0 )
 
 	n=${#PATCHES[*]}
 	for ((n--; n >= 0; n--)); do
