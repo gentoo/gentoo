@@ -5,6 +5,9 @@
 # Packages: app-dicts/myspell-*
 # Maintainer: maintainer-needed@gentoo.org
 
+# @DEAD
+# Replaced by myspell-r2.eclass. Removal in 14 days.
+
 inherit multilib
 
 EXPORT_FUNCTIONS src_install pkg_preinst pkg_postinst
