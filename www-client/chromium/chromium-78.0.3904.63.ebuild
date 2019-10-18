@@ -14,7 +14,6 @@ DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://dev.gentoo.org/~floppym/dist/chromium-78-revert-noexcept-r1.patch.gz
-	https://dev.gentoo.org/~floppym/dist/chromium-78-revert-pm-observer.patch
 "
 
 LICENSE="BSD"
@@ -153,8 +152,8 @@ PATCHES=(
 	"${FILESDIR}/chromium-78-include.patch"
 	"${FILESDIR}/chromium-78-icon.patch"
 	"${FILESDIR}/chromium-78-protobuf-export.patch"
+	"${FILESDIR}/chromium-78-pm-crash.patch"
 	"${WORKDIR}/chromium-78-revert-noexcept-r1.patch"
-	"${DISTDIR}/chromium-78-revert-pm-observer.patch"
 	"${FILESDIR}/chromium-78-gcc-enum-range.patch"
 	"${FILESDIR}/chromium-78-gcc-std-vector.patch"
 	"${FILESDIR}/chromium-78-gcc-noexcept.patch"
