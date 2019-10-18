@@ -6,4 +6,4 @@
 (autoload 'desktop+-create-auto "desktop+"
   "Create a new session, identified by the current working directory." t)
 (autoload 'desktop+-load-auto "desktop+"
-  "Load a session previously created using `desktop+-create-auto'. t)
+  "Load a session previously created using `desktop+-create-auto'." t)
