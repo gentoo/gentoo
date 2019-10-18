@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 MY_P=checkmate-${PV}
 
@@ -12,11 +12,7 @@ SRC_URI="http://checkmate.linuxonly.nl/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
-IUSE=""
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc ABOUT_FIXING AUTHORS ChangeLog HISTORY README
-}
+DOCS=( ABOUT_FIXING AUTHORS ChangeLog HISTORY NEWS README TODO )

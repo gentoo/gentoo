@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit libtool
 
@@ -12,18 +12,12 @@ SRC_URI="http://people.freebsd.org/~harti/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
-DEPEND=""
-
-src_compile() {
+src_prepare() {
+	default
 	elibtoolize
-	econf || die "econf failed"
-	emake -j1 || die "emake failed"
 }
 
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-
-	dodoc README
+src_compile() {
+	emake -j1
 }
