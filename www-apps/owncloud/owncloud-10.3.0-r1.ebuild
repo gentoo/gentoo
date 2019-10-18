@@ -7,7 +7,7 @@ inherit eutils webapp
 
 DESCRIPTION="Web-based storage application where all your data is under your own control"
 HOMEPAGE="https://owncloud.org"
-SRC_URI="https://download.owncloud.org/community/${P}.tar.bz2 -> ${PF}.tar.bz2"
+SRC_URI="https://download.owncloud.org/community/${P}.tar.bz2"
 LICENSE="AGPL-3"
 
 KEYWORDS="~amd64 ~arm ~x86"
@@ -15,7 +15,7 @@ IUSE="+curl mysql postgres +sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 DEPEND=""
-RDEPEND="<dev-lang/php-7.3[curl?,filter,gd,hash(+),intl,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,xmlreader,xmlwriter,zip]
+RDEPEND=">=dev-lang/php-7.0[curl?,filter,gd,hash(+),intl,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,xmlreader,xmlwriter,zip]
 	virtual/httpd-php"
 
 S=${WORKDIR}/${PN}
