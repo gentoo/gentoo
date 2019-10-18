@@ -11783,7 +11783,7 @@ games-strategy/freesynd 0.7.1-r1: Portable reimplementation of engine for the cl
 games-strategy/galaxyhack 1.74-r1: Multiplayer AI script based strategy game
 games-strategy/glob2 0.9.4.4-r2: Real Time Strategy (RTS) game involving a brave army of globs
 games-strategy/gwp 0.4.0-r3: GNOME client for the classic PBEM strategy game VGA Planets 3
-games-strategy/hedgewars 0.9.25 1.0.0: A turn-based strategy, artillery, action and comedy game
+games-strategy/hedgewars 1.0.0-r1: A turn-based strategy, artillery, action and comedy game
 games-strategy/heroes3 1.3.1a-r2: Heroes of Might and Magic III: The Restoration of Erathia
 games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SDL
 games-strategy/ja2-stracciatella-data 1: A port of Jagged Alliance 2 to SDL (data files)
