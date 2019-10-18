@@ -1,0 +1,88 @@
+***** puppet-fix-tests-6.4.1.patch *****
+PWD: /var/tmp/portage/app-admin/puppet-6.10.1/work/all/puppet-6.10.1
+PATCH TOOL: patch -> /usr/bin/patch
+VERSION INFO:
+GNU patch 2.7.6
+Copyright (C) 2003, 2009-2012 Free Software Foundation, Inc.
+Copyright (C) 1988 Larry Wall
+
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by Larry Wall and Paul Eggert
+
+========================================
+
+PATCH COMMAND:  patch -p0 -g0 -E --no-backup-if-mismatch  --dry-run -f < '/var/tmp/portage/app-admin/puppet-6.10.1/files/puppet-fix-tests-6.4.1.patch'
+
+========================================
+checking file spec/unit/network/http/api/indirected_routes_spec.rb
+Hunk #1 FAILED at 144.
+1 out of 1 hunk FAILED
+
+patch program exited with status 1
+========================================
+
+PATCH COMMAND:  patch -p1 -g0 -E --no-backup-if-mismatch  --dry-run -f < '/var/tmp/portage/app-admin/puppet-6.10.1/files/puppet-fix-tests-6.4.1.patch'
+
+========================================
+can't find file to patch at input line 3
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|--- spec/unit/network/http/api/indirected_routes_spec.rb	2018-09-17 19:36:56.000000000 -0500
+|+++ spec/unit/network/http/api/indirected_routes_spec.rb	2018-09-19 10:52:35.841614932 -0500
+--------------------------
+No file to patch.  Skipping patch.
+1 out of 1 hunk ignored
+
+patch program exited with status 1
+========================================
+
+PATCH COMMAND:  patch -p2 -g0 -E --no-backup-if-mismatch  --dry-run -f < '/var/tmp/portage/app-admin/puppet-6.10.1/files/puppet-fix-tests-6.4.1.patch'
+
+========================================
+can't find file to patch at input line 3
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|--- spec/unit/network/http/api/indirected_routes_spec.rb	2018-09-17 19:36:56.000000000 -0500
+|+++ spec/unit/network/http/api/indirected_routes_spec.rb	2018-09-19 10:52:35.841614932 -0500
+--------------------------
+No file to patch.  Skipping patch.
+1 out of 1 hunk ignored
+
+patch program exited with status 1
+========================================
+
+PATCH COMMAND:  patch -p3 -g0 -E --no-backup-if-mismatch  --dry-run -f < '/var/tmp/portage/app-admin/puppet-6.10.1/files/puppet-fix-tests-6.4.1.patch'
+
+========================================
+can't find file to patch at input line 3
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|--- spec/unit/network/http/api/indirected_routes_spec.rb	2018-09-17 19:36:56.000000000 -0500
+|+++ spec/unit/network/http/api/indirected_routes_spec.rb	2018-09-19 10:52:35.841614932 -0500
+--------------------------
+No file to patch.  Skipping patch.
+1 out of 1 hunk ignored
+
+patch program exited with status 1
+========================================
+
+PATCH COMMAND:  patch -p4 -g0 -E --no-backup-if-mismatch  --dry-run -f < '/var/tmp/portage/app-admin/puppet-6.10.1/files/puppet-fix-tests-6.4.1.patch'
+
+========================================
+can't find file to patch at input line 3
+Perhaps you used the wrong -p or --strip option?
+The text leading up to this was:
+--------------------------
+|--- spec/unit/network/http/api/indirected_routes_spec.rb	2018-09-17 19:36:56.000000000 -0500
+|+++ spec/unit/network/http/api/indirected_routes_spec.rb	2018-09-19 10:52:35.841614932 -0500
+--------------------------
+No file to patch.  Skipping patch.
+1 out of 1 hunk ignored
+
+patch program exited with status 1
