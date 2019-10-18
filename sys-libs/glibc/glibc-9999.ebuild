@@ -80,7 +80,6 @@ fi
 #   losing it's '.symtab' entries.
 # As Gentoo's strip does not allow us to pass less aggressive stripping
 # options and does not check the machine target we strip selectively.
-RESTRICT=strip
 
 # We need a new-enough binutils/gcc to match upstream baseline.
 # Also we need to make sure our binutils/gcc supports TLS,
@@ -1204,7 +1203,7 @@ glibc_do_src_install() {
 
 	# Avoid stripping binaries not targeted by ${CHOST}. Or else
 	# ${CHOST}-strip would break binaries build for ${CTARGET}.
-	is_crosscompile || dostrip /
+	is_crosscompile && dostrip -x /
 	# gdb thread introspection relies on local libpthreas symbols. stripping breaks it
 	# See Note [Disable automatic stripping]
 	dostrip -x $(alt_libdir)/libpthread-${upstream_pv}.so
