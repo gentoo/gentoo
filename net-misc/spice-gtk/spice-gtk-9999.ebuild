@@ -3,12 +3,10 @@
 
 EAPI=7
 
-GCONF_DEBUG="no"
-WANT_AUTOMAKE="1.12"
 VALA_MIN_API_VERSION="0.14"
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools desktop eutils git-r3 readme.gentoo-r1 vala xdg-utils
+inherit desktop eutils git-r3 meson readme.gentoo-r1 vala xdg-utils
 
 DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI"
 HOMEPAGE="https://www.spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"
@@ -17,7 +15,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/spice-gtk.git"
 KEYWORDS=""
-IUSE="+gtk3 +introspection lz4 mjpeg policykit pulseaudio sasl smartcard static-libs usbredir vala webdav libressl"
+IUSE="+gtk3 +introspection lz4 mjpeg policykit pulseaudio sasl smartcard usbredir vala webdav libressl"
 
 # TODO:
 # * check if sys-freebsd/freebsd-lib (from virtual/acl) provides acl/libacl.h
@@ -80,8 +78,6 @@ src_prepare() {
 
 	default
 
-	eautoreconf
-
 	use vala && vala_src_prepare
 }
 
@@ -94,28 +90,22 @@ src_configure() {
 	# Clean up environment, bug #586642
 	xdg_environment_reset
 
-	local myconf
-	myconf="
-		$(use_with gtk3 gtk 3.0)
-		$(use_enable introspection)
-		$(use_enable mjpeg builtin-mjpeg)
-		$(use_enable policykit polkit)
-		$(use_enable pulseaudio pulse)
-		$(use_with sasl)
-		$(use_enable smartcard)
-		$(use_enable static-libs static)
-		$(use_enable usbredir)
-		$(use_with usbredir usb-acl-helper-dir /usr/libexec)
-		$(use_with usbredir usb-ids-path /usr/share/misc/usb.ids)
-		$(use_enable vala)
-		$(use_enable webdav)
-		--disable-celt051
-		--disable-gtk-doc
-		--disable-maintainer-mode
-		--disable-werror
-		--enable-pie"
+	local emesonargs=(
+		$(meson_feature gtk3 gtk)
+		$(meson_feature introspection)
+		$(meson_use mjpeg builtin-mjpeg)
+		$(meson_feature policykit polkit)
+		$(meson_feature pulseaudio pulse)
+		$(meson_feature sasl)
+		$(meson_feature smartcard)
+		$(meson_feature usbredir)
+		$(usex usbredir -Dusb-acl-helper-dir=/usr/libexec)
+		$(usex usbredir -Dusb-ids-path=/usr/share/misc/usb.ids)
+		$(meson_feature vala vapi)
+		$(meson_feature webdav)
+	)
 
-	econf ${myconf}
+	meson_src_configure
 }
 
 src_compile() {
@@ -124,14 +114,11 @@ src_compile() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
 	addpredict /dev
 
-	default
+	meson_src_compile
 }
 
 src_install() {
-	default
-
-	# Remove .la files if they're not needed
-	use static-libs || find "${D}" -name '*.la' -delete || die
+	meson_src_install
 
 	make_desktop_entry spicy Spicy "utilities-terminal" "Network;RemoteAccess;"
 	readme.gentoo_create_doc
