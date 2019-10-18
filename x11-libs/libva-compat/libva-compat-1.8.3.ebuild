@@ -14,7 +14,7 @@ SRC_URI="https://github.com/01org/libva/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="+drm egl opengl vdpau wayland X"
 
 VIDEO_CARDS="nvidia intel i965 nouveau"
