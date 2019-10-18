@@ -1,0 +1,14 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,11 +51,9 @@
+ if(cmake_build_type_tolower STREQUAL "debug")
+   message(STATUS "Build Type: Debug")
+   set(CMAKE_BUILD_TYPE "Debug")
+-  set(CMAKE_C_FLAGS "-Wall -Werror -pedantic -O0 -g")
+ else()
+   message(STATUS "Build Type: Release")
+   set(CMAKE_BUILD_TYPE "Release")
+-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror")
+ endif()
+ 
+ include_directories(
