@@ -6,8 +6,8 @@ EAPI=0
 inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="A uniform password checking interface for root applications"
-HOMEPAGE="http://cr.yp.to/checkpwd.html"
-SRC_URI="http://cr.yp.to/checkpwd/${P}.tar.gz"
+HOMEPAGE="https://cr.yp.to/checkpwd.html"
+SRC_URI="https://cr.yp.to/checkpwd/${P}.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
