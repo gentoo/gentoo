@@ -142,7 +142,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~a
 # FIXME: Move to apache-2.eclass once this has reached stable.
 IUSE="${IUSE/apache2_modules_http2/+apache2_modules_http2}"
 # New suexec options (since 2.4.34)
-IUSE="${IUSE} +suexec-caps suexec-syslog"
+IUSE="${IUSE} +suexec-caps suexec-syslog split-usr"
 
 CDEPEND="apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
 	apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 )
@@ -210,7 +210,7 @@ src_install() {
 	# old location until all ebuilds and eclasses have been modified to
 	# use the new location.
 	dobin support/apxs
-	dosym ../bin/apxs /usr/sbin/apxs
+	use split-usr && dosym ../bin/apxs /usr/sbin/apxs
 
 	# Note: wait for mod_systemd to be included in some forthcoming release,
 	# Then apache2.4.service can be used and systemd support controlled
