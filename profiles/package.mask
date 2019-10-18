@@ -436,15 +436,6 @@ games-action/minetest_game
 # Removal in 30 days.  Bug #680726.
 sci-chemistry/azara
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-18)
-# Distributing an entire prebuilt distribution as a package turned out
-# to be a bad idea.  All current upstream versions contain vulnerable
-# packages and lack correct license information.  Upstream does not
-# provide a publicly accessible bug tracker, and does not reply to mail.
-# Removal in 30 days.  Bug #683724.
-app-admin/systemrescuecd-x86
-sys-boot/systemrescuecd-x86-grub
-
 # Michał Górny <mgorny@gentoo.org> (2019-09-16)
 # Unmaintained.  Fails to build.  Last release in 2004.  EAPI 0.
 # Removal in 30 days.  Bug #592360.
