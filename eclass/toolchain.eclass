@@ -501,6 +501,21 @@ gcc_quick_unpack() {
 
 #---->> src_prepare <<----
 
+# 'epatch' is not available in EAPI=7. Abstract away patchset application
+# until we eventually get all gcc ebuilds on EAPI=7 or later.
+tc_apply_patches() {
+	[[ ${#@} -lt 2 ]] && die "usage: tc_apply_patches <message> <patches...>"
+
+	einfo "$1"; shift
+
+	case ${EAPI:-0} in
+		# Note: even for EAPI=6 we used 'epatch' semantics. To avoid
+		# breaking existing ebuilds use 'eapply' only in EAPI=7 or later.
+		5*|6) epatch "$@" ;;
+		*) die "Update apply_patches() for ${EAPI}." ;;
+	esac
+}
+
 toolchain_src_prepare() {
 	export BRANDING_GCC_PKGVERSION="Gentoo ${GCC_PVR}"
 	cd "${S}"
@@ -604,7 +619,9 @@ toolchain_src_prepare() {
 	sed -i 's|A-Za-z0-9|[:alnum:]|g' "${S}"/gcc/*.awk #215828
 
 	# Prevent new texinfo from breaking old versions (see #198182, #464008)
-	tc_version_is_at_least 4.1 && epatch "${FILESDIR}"/gcc-configure-texinfo.patch
+	if tc_version_is_at_least 4.1; then
+		tc_apply_patches "Remove texinfo (bug #198182, bug ##464008)" "${FILESDIR}"/gcc-configure-texinfo.patch
+	fi
 
 	if [[ -x contrib/gcc_update ]] ; then
 		einfo "Touching generated files"
@@ -615,24 +632,14 @@ toolchain_src_prepare() {
 	fi
 }
 
-guess_patch_type_in_dir() {
-	[[ -n $(ls "$1"/*.bz2 2>/dev/null) ]] \
-		&& EPATCH_SUFFIX="patch.bz2" \
-		|| EPATCH_SUFFIX="patch"
-}
-
 do_gcc_gentoo_patches() {
 	if ! use vanilla ; then
 		if [[ -n ${PATCH_VER} ]] ; then
-			guess_patch_type_in_dir "${WORKDIR}"/patch
-			EPATCH_MULTI_MSG="Applying Gentoo patches ..." \
-			epatch "${WORKDIR}"/patch
+			tc_apply_patches "Applying Gentoo patches ..." "${WORKDIR}"/patch/*.patch
 			BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION} p${PATCH_VER}"
 		fi
 		if [[ -n ${UCLIBC_VER} ]] ; then
-			guess_patch_type_in_dir "${WORKDIR}"/uclibc
-			EPATCH_MULTI_MSG="Applying uClibc patches ..." \
-			epatch "${WORKDIR}"/uclibc
+			tc_apply_patches "Applying uClibc patches ..." "${WORKDIR}"/uclibc/*.patch
 		fi
 	fi
 }
@@ -641,7 +648,7 @@ do_gcc_HTB_patches() {
 	use_if_iuse boundschecking || return 0
 
 	# modify the bounds checking patch with a regression patch
-	epatch "${WORKDIR}/bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch"
+	tc_apply_patches "Bounds checking patch" "${WORKDIR}/bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch"
 	BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, HTB-${HTB_GCC_VER}-${HTB_VER}"
 }
 
@@ -649,9 +656,7 @@ do_gcc_PIE_patches() {
 	want_pie || return 0
 	use vanilla && return 0
 
-	guess_patch_type_in_dir "${WORKDIR}"/piepatch/
-	EPATCH_MULTI_MSG="Applying pie patches ..." \
-	epatch "${WORKDIR}"/piepatch/
+	tc_apply_patches "Applying pie patches ..." "${WORKDIR}"/piepatch/*.patch
 
 	BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, pie-${PIE_VER}"
 }
@@ -663,9 +668,7 @@ do_gcc_CYGWINPORTS_patches() {
 	local p d="${WORKDIR}/gcc-${CYGWINPORTS_GITREV}"
 	# readarray -t is available since bash-4.4 only, #690686
 	local patches=( $(sed -e '1,/PATCH_URI="/d;/"/,$d' < "${d}"/gcc.cygport) )
-	for p in ${patches[*]}; do
-		epatch "${d}/${p}"
-	done
+	tc_apply_patches "Applying cygwin port patches ..." ${patches[*]}
 }
 
 # configure to build with the hardened GCC specs as the default
