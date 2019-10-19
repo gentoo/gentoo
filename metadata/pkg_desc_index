@@ -1533,8 +1533,8 @@ app-emulation/wine-d3d9 3.20 3.21 4.0 4.1 9999: Free implementation of Windows(t
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 4.14 4.15 4.16 4.17 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.14 4.15 4.16 4.17 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 4.15 4.16 4.17 4.18 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.15 4.16 4.17 4.18 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20190310 20190912 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -12795,7 +12795,7 @@ media-fonts/urwvn-fonts 3.05: fonts gpl'd by Han The Thanh, based on URW++ fonts
 media-fonts/vc-fonts 20020207-r2: Vico bitmap Fonts
 media-fonts/vdrsymbols-ttf 20100612: Font that contains symbols needed for VDR
 media-fonts/viga 1: A sans-serif font with great personality and good on-screen performance
-media-fonts/vlgothic 20110722 20141206: Japanese TrueType font from Vine Linux
+media-fonts/vlgothic 20141206: Japanese TrueType font from Vine Linux
 media-fonts/vollkorn 2.1: Vollkorn, the free and healthy typeface for bread and butter use
 media-fonts/webby-fonts 1: A small proportional bitmap font for use in webpages
 media-fonts/wqy-bitmapfont 1.0.0_rc1: WenQuanYi Bitmap Song CJK font
