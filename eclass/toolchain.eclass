@@ -522,19 +522,7 @@ toolchain_src_prepare() {
 	export BRANDING_GCC_PKGVERSION="Gentoo ${GCC_PVR}"
 	cd "${S}"
 
-	if ! use vanilla ; then
-		if [[ -n ${PATCH_VER} ]] ; then
-			guess_patch_type_in_dir "${WORKDIR}"/patch
-			EPATCH_MULTI_MSG="Applying Gentoo patches ..." \
-			epatch "${WORKDIR}"/patch
-			BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION} p${PATCH_VER}"
-		fi
-		if [[ -n ${UCLIBC_VER} ]] ; then
-			guess_patch_type_in_dir "${WORKDIR}"/uclibc
-			EPATCH_MULTI_MSG="Applying uClibc patches ..." \
-			epatch "${WORKDIR}"/uclibc
-		fi
-	fi
+	do_gcc_gentoo_patches
 	do_gcc_HTB_patches
 	do_gcc_PIE_patches
 	do_gcc_CYGWINPORTS_patches
@@ -648,6 +636,22 @@ guess_patch_type_in_dir() {
 	[[ -n $(ls "$1"/*.bz2 2>/dev/null) ]] \
 		&& EPATCH_SUFFIX="patch.bz2" \
 		|| EPATCH_SUFFIX="patch"
+}
+
+do_gcc_gentoo_patches() {
+	if ! use vanilla ; then
+		if [[ -n ${PATCH_VER} ]] ; then
+			guess_patch_type_in_dir "${WORKDIR}"/patch
+			EPATCH_MULTI_MSG="Applying Gentoo patches ..." \
+			epatch "${WORKDIR}"/patch
+			BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION} p${PATCH_VER}"
+		fi
+		if [[ -n ${UCLIBC_VER} ]] ; then
+			guess_patch_type_in_dir "${WORKDIR}"/uclibc
+			EPATCH_MULTI_MSG="Applying uClibc patches ..." \
+			epatch "${WORKDIR}"/uclibc
+		fi
+	fi
 }
 
 do_gcc_HTB_patches() {
