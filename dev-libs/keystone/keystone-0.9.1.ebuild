@@ -5,7 +5,7 @@ EAPI=6
 
 DISTUTILS_OPTIONAL=1
 CMAKE_MIN_VERSION=3.8.7
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 inherit cmake-utils distutils-r1 llvm
 
@@ -25,12 +25,14 @@ LICENSE="GPL-2"
 SLOT="0"
 
 # Keep in sync with llvm/CMakeLists.txt, subset of sys-devel/llvm
-ALL_LLVM_TARGETS=( AArch64 ARM Hexagon Mips PowerPC Sparc SystemZ X86 )
+ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
+	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
-
 IUSE="python ${ALL_LLVM_TARGETS[*]}"
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
+	>=sys-devel/llvm-3.8:=[${LLVM_TARGET_USEDEPS// /,}]
+	${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}"
 REQUIRED_USE="
