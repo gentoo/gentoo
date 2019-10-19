@@ -66,8 +66,8 @@ COMMON_DEPEND="
 	cdda? ( dev-libs/libcdio-paranoia )
 	drm? ( x11-libs/libdrm )
 	dvd? (
-		>=media-libs/libdvdnav-4.2.0
-		>=media-libs/libdvdread-4.1.0
+		>=media-libs/libdvdnav-4.2.0:=
+		>=media-libs/libdvdread-4.1.0:=
 	)
 	egl? ( media-libs/mesa[egl,gbm(-)?,wayland(-)?] )
 	iconv? (

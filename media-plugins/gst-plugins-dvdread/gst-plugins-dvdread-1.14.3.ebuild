@@ -10,5 +10,5 @@ DESCRIPTION="DVD read plugin for GStreamer"
 KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86"
 IUSE=""
 
-RDEPEND=">=media-libs/libdvdread-4.2.0-r1[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-libs/libdvdread-4.2.0-r1:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
