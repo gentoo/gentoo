@@ -358,7 +358,6 @@ get_gcc_src_uri() {
 	[[ -n ${PATCH_VER} ]] && \
 		GCC_SRC_URI+=" $(gentoo_urls gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.bz2)"
 
-	# strawberry pie, Cappuccino and a Gauloises (it's a good thing)
 	[[ -n ${PIE_VER} ]] && \
 		PIE_CORE=${PIE_CORE:-gcc-${PIE_GCC_VER}-piepatches-v${PIE_VER}.tar.bz2} && \
 		GCC_SRC_URI+=" $(gentoo_urls ${PIE_CORE})"
@@ -625,6 +624,7 @@ toolchain_src_prepare() {
 		tc_apply_patches "Remove texinfo (bug #198182, bug ##464008)" "${FILESDIR}"/gcc-configure-texinfo.patch
 	fi
 
+	# >=gcc-4
 	if [[ -x contrib/gcc_update ]] ; then
 		einfo "Touching generated files"
 		./contrib/gcc_update --touch | \
@@ -675,11 +675,10 @@ do_gcc_CYGWINPORTS_patches() {
 
 # configure to build with the hardened GCC specs as the default
 make_gcc_hard() {
-
 	local gcc_hard_flags=""
 
 	# If we use gcc-6 or newer with pie enable to compile older gcc we need to pass -no-pie
-	# to stage1; bug 618908
+	# to stage1; bug #618908
 	if ! tc_version_is_at_least 6.0 && [[ $(gcc-major-version) -ge 6 ]] ; then
 		einfo "Disabling PIE in stage1 (only) ..."
 		sed -i -e "/^STAGE1_LDFLAGS/ s/$/ -no-pie/" "${S}"/Makefile.in || die
@@ -694,7 +693,10 @@ make_gcc_hard() {
 			einfo "Updating gcc to use automatic SSP building ..."
 		fi
 		if use_if_iuse hardened ; then
-			# Will add some optimatizion as default.
+			# Will add some hardened options as default, like:
+			# -fstack-clash-protection
+			# -z now
+			# see *_all_extra-options.patch gcc patches.
 			gcc_hard_flags+=" -DEXTRA_OPTIONS"
 			# rebrand to make bug reports easier
 			BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/Gentoo/Gentoo Hardened}
@@ -946,9 +948,9 @@ toolchain_src_configure() {
 	tc_version_is_at_least 3.4 || confgcc+=( --disable-libunwind-exceptions )
 
 	# Use the default ("release") checking because upstream usually neglects
-	# to test "disabled" so it has a history of breaking. #317217
+	# to test "disabled" so it has a history of breaking. bug #317217
 	if tc_version_is_at_least 3.4 && in_iuse debug ; then
-		# The "release" keyword is new to 4.0. #551636
+		# The "release" keyword is new to 4.0. bug #551636
 		local off=$(tc_version_is_at_least 4.0 && echo release || echo no)
 		confgcc+=( --enable-checking="${GCC_CHECKS_LIST:-$(usex debug yes ${off})}" )
 	fi
@@ -966,12 +968,12 @@ toolchain_src_configure() {
 
 	# allow gcc to search for clock funcs in the main C lib.
 	# if it can't find them, then tough cookies -- we aren't
-	# going to link in -lrt to all C++ apps.  #411681
+	# going to link in -lrt to all C++ apps. bug #411681
 	if tc_version_is_at_least 4.4 && is_cxx ; then
 		confgcc+=( --enable-libstdcxx-time )
 	fi
 
-	# Build compiler using LTO
+	# Build compiler itself using LTO
 	if tc_version_is_at_least 9.1 && use_if_iuse lto ; then
 		confgcc+=( --with-build-config=bootstrap-lto )
 	fi
@@ -984,7 +986,9 @@ toolchain_src_configure() {
 	# The jit language requires this.
 	is_jit && confgcc+=( --enable-host-shared )
 
-	# # Turn on the -Wl,--build-id flag by default for ELF targets. #525942
+	# build-id was disabled for file collisions: bug #526144
+	#
+	# # Turn on the -Wl,--build-id flag by default for ELF targets. bug #525942
 	# # This helps with locating debug files.
 	# case ${CTARGET} in
 	# *-linux-*|*-elf|*-eabi)
@@ -1025,10 +1029,12 @@ toolchain_src_configure() {
 		*-klibc)		 needed_libc=klibc;;
 		*-musl*)		 needed_libc=musl;;
 		*-uclibc*)
+			# Enable shared library support only on targets
+			# that support it: bug #291870
 			if ! echo '#include <features.h>' | \
 			   $(tc-getCPP ${CTARGET}) -E -dD - 2>/dev/null | \
 			   grep -q __HAVE_SHARED__
-			then #291870
+			then
 				confgcc+=( --disable-shared )
 			fi
 			needed_libc=uclibc-ng
@@ -1751,7 +1757,7 @@ toolchain_src_test() {
 toolchain_src_install() {
 	cd "${WORKDIR}"/build
 
-	# Do allow symlinks in private gcc include dir as this can break the build
+	# Don't allow symlinks in private gcc include dir as this can break the build
 	find gcc/include*/ -type l -delete
 
 	# Copy over the info pages.  We disabled their generation earlier, but the
@@ -1847,7 +1853,7 @@ toolchain_src_install() {
 		fi
 	fi
 
-	# TODO: implement stripping (we use RESTRICT=strip)
+	# TODO(bug #686512): implement stripping (we use RESTRICT=strip)
 	# As gcc installs object files both build against ${CHOST} and ${CTARGET}
 	# we will ned to run stripping using different tools:
 	# Using ${CHOST} tools:
