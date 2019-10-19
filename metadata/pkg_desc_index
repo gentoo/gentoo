@@ -12749,7 +12749,7 @@ media-fonts/oxygen-fonts 5.4.3-r1: Desktop/GUI font family for integrated use wi
 media-fonts/paratype 2.5: ParaType font collection for languages of Russia
 media-fonts/paratype-astra 1001: ParaType Astra Sans/Serif fonts metrically compatible with Times New Roman
 media-fonts/pcf2bdf 1.04-r1: Converts PCF fonts to BDF fonts
-media-fonts/pigiarniq 1 2: Nunavut's official Inuktitut font
+media-fonts/pigiarniq 2: Nunavut's official Inuktitut font
 media-fonts/polarsys-b612-fonts 1.003 1.008: Font designed for aircraft cockpit displays
 media-fonts/pothana2k 2006-r1: Pothana 2000 and Vemana fonts for the Telugu script
 media-fonts/powerline-symbols 20150224 20170508: OpenType Unicode font with symbols for Powerline/Airline
