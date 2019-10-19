@@ -67,8 +67,6 @@ GCC_BRANCH_VER=$(ver_cut 1-2 ${GCC_PV})
 GCCMAJOR=$(ver_cut 1 ${GCC_PV})
 GCCMINOR=$(ver_cut 2 ${GCC_PV})
 GCCMICRO=$(ver_cut 3 ${GCC_PV})
-[[ ${BRANCH_UPDATE-notset} == "notset" ]] && \
-	BRANCH_UPDATE=$(ver_cut 4 ${GCC_PV})
 
 # According to gcc/c-cppbuiltin.c, GCC_CONFIG_VER MUST match this regex.
 # ([^0-9]*-)?[0-9]+[.][0-9]+([.][0-9]+)?([- ].*)?
@@ -282,14 +280,6 @@ gentoo_urls() {
 #			the ebuild has a _pre suffix, this variable is ignored and the
 #			prerelease tarball is used instead.
 #
-#	BRANCH_UPDATE
-#			If set, this variable signals that we should be using the main
-#			release tarball (determined by ebuild version) and applying a
-#			CVS branch update patch against it. The location of this branch
-#			update patch is assumed to be in ${GENTOO_TOOLCHAIN_BASE_URI}.
-#			Just like with SNAPSHOT, this variable is ignored if the ebuild
-#			has a _pre suffix.
-#
 #	PATCH_VER
 #	PATCH_GCC_VER
 #			This should be set to the version of the gentoo patch tarball.
@@ -360,9 +350,6 @@ get_gcc_src_uri() {
 		else
 			GCC_SRC_URI="mirror://gnu/gcc/gcc-${GCC_PV}/gcc-${GCC_RELEASE_VER}.tar.bz2"
 		fi
-		# we want all branch updates to be against the main release
-		[[ -n ${BRANCH_UPDATE} ]] && \
-			GCC_SRC_URI+=" $(gentoo_urls gcc-${GCC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2)"
 	fi
 
 	[[ -n ${UCLIBC_VER} ]] && \
@@ -471,12 +458,6 @@ gcc_quick_unpack() {
 			unpack gcc-${GCC_RELEASE_VER}.tar.xz
 		else
 			unpack gcc-${GCC_RELEASE_VER}.tar.bz2
-		fi
-		# We want branch updates to be against a release tarball
-		if [[ -n ${BRANCH_UPDATE} ]] ; then
-			pushd "${S}" > /dev/null
-			epatch "${DISTDIR}"/gcc-${GCC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2
-			popd > /dev/null
 		fi
 	fi
 
@@ -826,7 +807,6 @@ gcc_version_patch() {
 	tc_version_is_at_least 4.3 && return 0
 
 	local version_string=${GCC_CONFIG_VER}
-	[[ -n ${BRANCH_UPDATE} ]] && version_string+=" ${BRANCH_UPDATE}"
 
 	einfo "patching gcc version: ${version_string} (${BRANDING_GCC_PKGVERSION})"
 
@@ -2290,10 +2270,6 @@ toolchain_pkg_postrm() {
 	if [[ ! -e ${LIBPATH}/libstdc++.so ]] ; then
 		einfo "Running 'fix_libtool_files.sh ${GCC_RELEASE_VER}'"
 		fix_libtool_files.sh ${GCC_RELEASE_VER}
-		if [[ -n ${BRANCH_UPDATE} ]] ; then
-			einfo "Running 'fix_libtool_files.sh ${GCC_RELEASE_VER}-${BRANCH_UPDATE}'"
-			fix_libtool_files.sh ${GCC_RELEASE_VER}-${BRANCH_UPDATE}
-		fi
 	fi
 
 	return 0
