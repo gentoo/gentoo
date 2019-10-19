@@ -1,0 +1,67 @@
+From fc159e5c4c8ffeabdc7319514c6bb19c9c9e1d3b Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Mon, 13 Jun 2016 10:36:34 +0200
+Subject: [PATCH] Fix build with Clang 3.8
+
+error: invalid suffix on literal; C++11 requires a space between literal and identifier
+
+https://bugzilla.gnome.org/show_bug.cgi?id=767578
+---
+ elements/gstqtvideosink/delegates/basedelegate.cpp             | 2 +-
+ elements/gstqtvideosink/delegates/qwidgetvideosinkdelegate.cpp | 2 +-
+ elements/gstqtvideosink/gstqtquick2videosink.cpp               | 2 +-
+ elements/gstqtvideosink/gstqtvideosinkbase.cpp                 | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/elements/gstqtvideosink/delegates/basedelegate.cpp b/elements/gstqtvideosink/delegates/basedelegate.cpp
+index 7dde59c..65f364c 100644
+--- a/elements/gstqtvideosink/delegates/basedelegate.cpp
++++ b/elements/gstqtvideosink/delegates/basedelegate.cpp
+@@ -155,7 +155,7 @@ bool BaseDelegate::event(QEvent *event)
+         BufferEvent *bufEvent = dynamic_cast<BufferEvent*>(event);
+         Q_ASSERT(bufEvent);
+ 
+-        GST_TRACE_OBJECT(m_sink, "Received buffer %"GST_PTR_FORMAT, bufEvent->buffer);
++        GST_TRACE_OBJECT(m_sink, "Received buffer %" GST_PTR_FORMAT, bufEvent->buffer);
+ 
+         if (isActive()) {
+             gst_buffer_replace (&m_buffer, bufEvent->buffer);
+diff --git a/elements/gstqtvideosink/delegates/qwidgetvideosinkdelegate.cpp b/elements/gstqtvideosink/delegates/qwidgetvideosinkdelegate.cpp
+index 8f23dc2..c42513f 100644
+--- a/elements/gstqtvideosink/delegates/qwidgetvideosinkdelegate.cpp
++++ b/elements/gstqtvideosink/delegates/qwidgetvideosinkdelegate.cpp
+@@ -36,7 +36,7 @@ QWidget *QWidgetVideoSinkDelegate::widget() const
+ 
+ void QWidgetVideoSinkDelegate::setWidget(QWidget *widget)
+ {
+-    GST_LOG_OBJECT(m_sink, "Setting \"widget\" property to %"GST_PTR_FORMAT, widget);
++    GST_LOG_OBJECT(m_sink, "Setting \"widget\" property to %" GST_PTR_FORMAT, widget);
+ 
+     if (m_widget) {
+         m_widget.data()->removeEventFilter(this);
+diff --git a/elements/gstqtvideosink/gstqtquick2videosink.cpp b/elements/gstqtvideosink/gstqtquick2videosink.cpp
+index 7889fbf..bedc074 100644
+--- a/elements/gstqtvideosink/gstqtquick2videosink.cpp
++++ b/elements/gstqtvideosink/gstqtquick2videosink.cpp
+@@ -248,7 +248,7 @@ gst_qt_quick2_video_sink_show_frame(GstVideoSink *sink, GstBuffer *buffer)
+ {
+     GstQtQuick2VideoSink *self = GST_QT_QUICK2_VIDEO_SINK (sink);
+ 
+-    GST_TRACE_OBJECT(self, "Posting new buffer (%"GST_PTR_FORMAT") for rendering.", buffer);
++    GST_TRACE_OBJECT(self, "Posting new buffer (%" GST_PTR_FORMAT ") for rendering.", buffer);
+ 
+     QCoreApplication::postEvent(self->priv->delegate, new BaseDelegate::BufferEvent(buffer));
+ 
+diff --git a/elements/gstqtvideosink/gstqtvideosinkbase.cpp b/elements/gstqtvideosink/gstqtvideosinkbase.cpp
+index 118d0a2..a707e02 100644
+--- a/elements/gstqtvideosink/gstqtvideosinkbase.cpp
++++ b/elements/gstqtvideosink/gstqtvideosinkbase.cpp
+@@ -207,7 +207,7 @@ GstFlowReturn GstQtVideoSinkBase::show_frame(GstVideoSink *video_sink, GstBuffer
+ {
+     GstQtVideoSinkBase *sink = GST_QT_VIDEO_SINK_BASE(video_sink);
+ 
+-    GST_TRACE_OBJECT(sink, "Posting new buffer (%"GST_PTR_FORMAT") for rendering.", buffer);
++    GST_TRACE_OBJECT(sink, "Posting new buffer (%" GST_PTR_FORMAT ") for rendering.", buffer);
+ 
+     QCoreApplication::postEvent(sink->delegate, new BaseDelegate::BufferEvent(buffer));
+ 

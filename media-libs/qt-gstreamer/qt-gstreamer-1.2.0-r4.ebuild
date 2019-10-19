@@ -19,6 +19,9 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="test"
 
+BDEPEND="
+	dev-util/glib-utils
+"
 RDEPEND="
 	dev-libs/boost:=
 	dev-libs/glib:2
@@ -30,16 +33,16 @@ RDEPEND="
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
 "
-DEPEND="${RDEPEND}"
-BDEPEND="
-	dev-util/glib-utils
+DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
 PATCHES=(
 	"${FILESDIR}/${P}-gstreamer15.patch"
+	"${FILESDIR}/${P}-gstreamer16.patch"
 	"${FILESDIR}/${P}-boost157.patch"
 	"${FILESDIR}/${P}-qt-5.11b3.patch"
+	"${FILESDIR}/${P}-clang-38.patch"
 )
 
 # bug 497880
