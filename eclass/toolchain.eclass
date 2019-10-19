@@ -1014,7 +1014,7 @@ toolchain_src_configure() {
 		# disable a bunch of features or gcc goes boom
 		local needed_libc=""
 		case ${CTARGET} in
-		*-linux)		 needed_libc=no-fucking-clue;;
+		*-linux)		 needed_libc=error-unknown-libc;;
 		*-dietlibc)		 needed_libc=dietlibc;;
 		*-elf|*-eabi)
 			needed_libc=newlib
@@ -1042,7 +1042,6 @@ toolchain_src_configure() {
 		*-cygwin)		 needed_libc=cygwin;;
 		x86_64-*-mingw*|\
 		*-w64-mingw*)	 needed_libc=mingw64-runtime;;
-		mingw*|*-mingw*) needed_libc=mingw-runtime;;
 		avr)			 confgcc+=( --enable-shared --disable-threads );;
 		esac
 		if [[ -n ${needed_libc} ]] ; then
