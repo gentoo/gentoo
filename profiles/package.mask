@@ -461,11 +461,6 @@ app-office/geierlein
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.26
 
-# James Le Cuirot <chewi@gentoo.org> (2019-09-19)
-# Minetest Game is now installed and managed through the Minetest
-# engine in games-action/minetest. Removal in 30 days.
-games-action/minetest_game
-
 # Michał Górny <mgorny@gentoo.org> (2019-09-16)
 # Unmaintained.  Fails to build.  Last release in 2004.  EAPI 0.
 # Removal in 30 days.  Bug #592360.
