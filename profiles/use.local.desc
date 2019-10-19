@@ -3320,6 +3320,7 @@ games-fps/eduke32:xmp - Enable support for media-libs/exempi.
 games-fps/gzdoom:gtk2 - Enable support for GTK+2 instead of GTK+3
 games-fps/gzdoom:nonfree - Enable non-free components
 games-fps/nexuiz:maps - Install the community map pack
+games-fps/openarena:client - Build OpenArena client
 games-fps/prboom-plus:dumb - Enable support for various tracker-style music formats via media-libs/dumb
 games-fps/prboom-plus:fluidsynth - Enable support for MIDI via media-sound/fluidsynth
 games-fps/prboom-plus:net - Enable support for network play
