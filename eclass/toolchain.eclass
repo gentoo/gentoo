@@ -6,7 +6,6 @@
 
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
-RESTRICT="strip" # cross-compilers need controlled stripping
 
 inherit eutils fixheadtails flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
 
@@ -30,6 +29,17 @@ case ${EAPI:-0} in
 	7) ;;
 	*) die "I don't speak EAPI ${EAPI}." ;;
 esac
+
+tc_supports_dostrip() {
+	case ${EAPI:-0} in
+		5*|6) return 1 ;;
+		7) return 0 ;;
+		*) die "Update apply_patches() for ${EAPI}." ;;
+	esac
+}
+
+tc_supports_dostrip || RESTRICT="strip" # cross-compilers need controlled stripping
+
 EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
 	src_compile src_test src_install pkg_postinst pkg_postrm
 
@@ -1852,15 +1862,17 @@ toolchain_src_install() {
 		fi
 	fi
 
-	# TODO(bug #686512): implement stripping (we use RESTRICT=strip)
-	# As gcc installs object files both build against ${CHOST} and ${CTARGET}
-	# we will ned to run stripping using different tools:
+	# As gcc installs object files built against bost ${CHOST} and ${CTARGET}
+	# ideally we will need to strip them using different tools:
 	# Using ${CHOST} tools:
 	#  - "${D}${BINPATH}"
 	#  - (for is_crosscompile) "${D}${HOSTLIBPATH}"
 	#  - "${D}${PREFIX}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}"
 	# Using ${CTARGET} tools:
 	#  - "${D}${LIBPATH}"
+	# As dostrip does not specify host to override ${CHOST} tools just skip
+	# non-native binary stripping.
+	is_crosscompile && tc_supports_dostrip && dostrip -x "${LIBPATH}"
 
 	cd "${S}"
 	if is_crosscompile; then
