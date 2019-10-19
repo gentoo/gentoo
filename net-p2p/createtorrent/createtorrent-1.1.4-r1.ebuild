@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Create BitTorrent files easily"
 HOMEPAGE="http://www.createtorrent.com/"
@@ -12,14 +12,13 @@ SRC_URI="http://www.createtorrent.com/${PN}-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE=""
 
 DEPEND="dev-libs/openssl"
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 
 src_prepare() {
-	eapply_user
-
 	sed -i "s:[[]ssl[]]:[crypto]:" configure.in || die "sed failed..."
+	eapply_user
+	eautoreconf
 }
