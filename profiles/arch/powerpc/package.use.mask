@@ -116,10 +116,6 @@ media-libs/mesa vulkan vulkan-overlay
 # Requires USE=opencl that is masked in this profile.
 net-misc/bfgminer adl lm-sensors
 
-# Jason Zaman <perfinion@gentoo.org> (2017-05-09)
-# x11-libs/libXpresent is not keyworded on ppc
-xfce-base/xfwm4 xpresent
-
 # Michael Weber <xmw@gentoo.org> (2017-04-06)
 # mask unkeyworded dep pymongo -> mongodb
 app-portage/g-sorcery bson
