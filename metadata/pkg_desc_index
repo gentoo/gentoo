@@ -5019,7 +5019,7 @@ dev-libs/libusb 1.0.19-r1 1.0.21 1.0.22 1.0.23: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
 dev-libs/libutf8proc 2.2.0_p1-r1 2.4.0: mapping tool for UTF-8 strings
-dev-libs/libuv 1.28.0 1.31.0 1.32.0 1.33.0 9999: Cross-platform asychronous I/O
+dev-libs/libuv 1.28.0 1.31.0 1.32.0 1.33.1 9999: Cross-platform asychronous I/O
 dev-libs/libvarlink 16: C implementation of the Varlink protocol and command line tool
 dev-libs/libverto 0.2.5-r1 0.3.0: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
@@ -12710,7 +12710,7 @@ media-fonts/lklug 0.6-r1: Sinhala font
 media-fonts/lohit-assamese 2.91.5: The Lohit Assamese font
 media-fonts/lohit-bengali 2.91.5: The Lohit Bengali font
 media-fonts/lohit-devanagari 2.95.4: The Lohit Devanagari font
-media-fonts/lohit-fonts 2.4.2 2.20150220: Meta ebuild for the Lohit family of Indic fonts
+media-fonts/lohit-fonts 2.20150220: Meta ebuild for the Lohit family of Indic fonts
 media-fonts/lohit-gujarati 2.92.4: The Lohit Gujarati font
 media-fonts/lohit-gurmukhi 2.91.2: The Lohit Gurmukhi font
 media-fonts/lohit-kannada 2.5.4: The Lohit Kannada font
@@ -12799,7 +12799,7 @@ media-fonts/vlgothic 20141206: Japanese TrueType font from Vine Linux
 media-fonts/vollkorn 2.1: Vollkorn, the free and healthy typeface for bread and butter use
 media-fonts/webby-fonts 1: A small proportional bitmap font for use in webpages
 media-fonts/wqy-bitmapfont 1.0.0_rc1: WenQuanYi Bitmap Song CJK font
-media-fonts/wqy-microhei 0.2.0_beta 0.2.0_beta-r1: A droid derived Sans-Serif style CJK font
+media-fonts/wqy-microhei 0.2.0_beta-r1: A droid derived Sans-Serif style CJK font
 media-fonts/wqy-unibit 1.1.0_p1-r1: WenQuanYi Unibit CJK font
 media-fonts/wqy-zenhei 0.9.46: WenQuanYi Hei-Ti Style (sans-serif) Chinese outline font
 media-fonts/x11fonts-jmk 3.0-r3: This package contains character-cell fonts for use with X
