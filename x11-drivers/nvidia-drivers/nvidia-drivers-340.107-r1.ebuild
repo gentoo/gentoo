@@ -268,7 +268,7 @@ src_install() {
 
 		# Ensures that our device nodes are created when not using X
 		exeinto "$(get_udevdir)"
-		newexe "${FILESDIR}"/nvidia-udev.sh-r1 nvidia-udev.sh
+		newexe "${FILESDIR}"/nvidia-udev.sh-r2 nvidia-udev.sh-r1 nvidia-udev.sh
 		udev_newrules "${FILESDIR}"/nvidia.udev-rule 99-nvidia.rules
 	elif use kernel_FreeBSD; then
 		if use x86-fbsd; then
