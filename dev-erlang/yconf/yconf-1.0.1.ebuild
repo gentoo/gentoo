@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 
 DEPEND=">=dev-lang/erlang-17.1
-	>=dev-erlang/fast_yaml-1.0.20"
+	>=dev-erlang/fast_yaml-1.0.21"
 RDEPEND="${DEPEND}"
 
 DOCS=( CHANGELOG.md )
