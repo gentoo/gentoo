@@ -5,6 +5,9 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<use>
+		<flag name="client">Build OpenArena client</flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">oarena</remote-id>
 	</upstream>
