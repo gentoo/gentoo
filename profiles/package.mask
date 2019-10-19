@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2019-10-19)
+# EAPI 0, tarball completely broken, only contains
+# symlinks to /usr/portage/distdir.
+# Removal in 15 days. Bug #697306.
+media-fonts/jsmath-extra-light
+
+# David Seifert <soap@gentoo.org> (2019-10-19)
 # EAPI 0, broken build system, unmaintained,
 # Removal in 30 days.  Bug #679304, #688906, #697356.
 app-i18n/scim-wnn
