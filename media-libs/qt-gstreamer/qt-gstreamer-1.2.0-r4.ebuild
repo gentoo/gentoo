@@ -3,20 +3,15 @@
 
 EAPI=7
 
-if [[ ${PV} != *9999* ]]; then
-	SRC_URI="https://gstreamer.freedesktop.org/src/qt-gstreamer/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
-else
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/gstreamer/qt-gstreamer.git"
-	inherit git-r3
-fi
 inherit cmake-utils
 
 DESCRIPTION="C++ bindings for GStreamer with a Qt-style API"
 HOMEPAGE="https://gstreamer.freedesktop.org/modules/qt-gstreamer.html"
+SRC_URI="https://gstreamer.freedesktop.org/src/qt-gstreamer/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
 IUSE="test"
 
 BDEPEND="
