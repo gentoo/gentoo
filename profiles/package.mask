@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2019-10-19)
+# EAPI 0, broken build system, unmaintained,
+# Removal in 30 days.  Bug #679304, #688906, #697356.
+app-i18n/scim-wnn
+dev-libs/wnn7sdk
+
 # Agostino Sarubbo <ago@gentoo.org> (2019-10-18)
 # Superseded by app-admin/checksec
 # Removal in 30 days.
