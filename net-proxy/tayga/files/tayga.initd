@@ -4,7 +4,7 @@
 #
 
 description='tayga NAT64 gateway'
-pidfile=${pidfile:=/var/run/tayga.pid}
+pidfile=${pidfile:=/run/tayga.pid}
 user=${user:=nobody}
 group=${group:=nogroup}
 datadir=${datadir:=/var/db/tayga}
