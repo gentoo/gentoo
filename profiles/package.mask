@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2019-10-19)
+# EAPI 0, broken build system, unmaintained,
+# Removal in 30 days.  Bug #679304, #688906, #697356.
+app-i18n/scim-wnn
+dev-libs/wnn7sdk
+
 # Michał Górny <mgorny@gentoo.org> (2019-10-19)
 # sci-chemistry/ccpn is unfetchable and mirror-restricted.
 # sci-chemistry/aria is its reverse dependency which can't be installed
@@ -460,17 +466,6 @@ app-office/geierlein
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-09-21)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.26
-
-# James Le Cuirot <chewi@gentoo.org> (2019-09-19)
-# Minetest Game is now installed and managed through the Minetest
-# engine in games-action/minetest. Removal in 30 days.
-games-action/minetest_game
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-19)
-# Last bumped in 2010.  Homepage & SRC_URI gone, redistribution
-# is forbidden by license.
-# Removal in 30 days.  Bug #680726.
-sci-chemistry/azara
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-16)
 # Unmaintained.  Fails to build.  Last release in 2004.  EAPI 0.
