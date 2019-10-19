@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop gnome2-utils
+inherit desktop xdg-utils
 
 # get the major version from PV
 MV=${PV:0:1}
@@ -23,7 +23,7 @@ RESTRICT="bindist mirror strip"
 
 RDEPEND="
 	dev-libs/glib:2
-	x11-libs/gtk+:2
+	x11-libs/gtk+:3
 	x11-libs/libX11
 	dbus? ( sys-apps/dbus )"
 
@@ -43,22 +43,22 @@ src_install() {
 	dosym ../../opt/${PN}${MV}/sublime_text /usr/bin/subl
 
 	local size
-	for size in 32 48 128 256; do
+	for size in 16 32 48 128 256; do
 		dosym ../../../../../../opt/${PN}${MV}/Icon/${size}x${size}/sublime-text.png \
 			/usr/share/icons/hicolor/${size}x${size}/apps/subl.png
 	done
 
-	make_desktop_entry "subl" "Sublime Text ${MV}" "subl" \
+	make_desktop_entry "subl %F" "Sublime Text ${MV}" subl \
 		"TextEditor;IDE;Development" "StartupNotify=true"
 
 	# needed to get WM_CLASS lookup right
-	mv "${ED%/}"/usr/share/applications/subl{-sublime-text,}.desktop || die
+	mv "${ED}"/usr/share/applications/subl{_%F-sublime-text,}.desktop || die
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
