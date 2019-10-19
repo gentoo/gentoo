@@ -1,0 +1,25 @@
+From 6e4fb2f3fcfb453c5522c66457ac5ed8c3b1b05c Mon Sep 17 00:00:00 2001
+From: George Kiagiadakis <george.kiagiadakis@collabora.com>
+Date: Sat, 7 Sep 2019 10:49:38 +0300
+Subject: [PATCH] QGst/caps: compilation fix from
+ https://bugs.kde.org/show_bug.cgi?id=406676#c2
+
+Because the macro version of gst_caps_copy() confuses the C++ compiler
+---
+ src/QGst/caps.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/QGst/caps.cpp b/src/QGst/caps.cpp
+index 3824d82..a15b701 100644
+--- a/src/QGst/caps.cpp
++++ b/src/QGst/caps.cpp
+@@ -54,7 +54,8 @@ QString Caps::toString() const
+ 
+ void Caps::append(const CapsPtr & caps2)
+ {
+-    gst_caps_append(object<GstCaps>(), gst_caps_copy(caps2));
++    const GstCaps * caps2ptr = caps2;
++    gst_caps_append(object<GstCaps>(), gst_caps_copy(caps2ptr));
+ }
+ 
+ CapsPtr Caps::merge(CapsPtr & caps2)
