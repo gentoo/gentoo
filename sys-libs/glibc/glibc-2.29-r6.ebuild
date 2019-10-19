@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit python-any-r1 prefix eutils eapi7-ver toolchain-funcs flag-o-matic gnuconfig usr-ldscript \
+inherit python-any-r1 prefix eutils toolchain-funcs flag-o-matic gnuconfig usr-ldscript \
 	multilib systemd multiprocessing
 
 DESCRIPTION="GNU libc C library"
@@ -28,9 +28,9 @@ RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER=20180511
 
 # Gentoo patchset
-PATCH_VER=5
+PATCH_VER=6
 
-SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~slyfox/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
 IUSE="audit caps cet compile-locales doc gd headers-only +multiarch multilib nscd profile selinux +ssp suid systemtap test vanilla"
@@ -78,13 +78,21 @@ fi
 #   Thus our main goal here is to prevent 'libpthread.so.0' from
 #   losing it's '.symtab' entries.
 # As Gentoo's strip does not allow us to pass less aggressive stripping
-# options and does not check the machine target we disable stripping
-# entirely.
-RESTRICT=strip
+# options and does not check the machine target we strip selectively.
 
 # We need a new-enough binutils/gcc to match upstream baseline.
 # Also we need to make sure our binutils/gcc supports TLS,
 # and that gcc already contains the hardened patches.
+BDEPEND="
+	${PYTHON_DEPS}
+	>=app-misc/pax-utils-0.1.10
+	sys-devel/bison
+	!<sys-apps/sandbox-1.6
+	!<sys-apps/portage-2.1.2
+	!<sys-devel/bison-2.7
+	!<sys-devel/make-4
+	doc? ( sys-apps/texinfo )
+"
 COMMON_DEPEND="
 	nscd? ( selinux? (
 		audit? ( sys-process/audit )
@@ -95,14 +103,6 @@ COMMON_DEPEND="
 	systemtap? ( dev-util/systemtap )
 "
 DEPEND="${COMMON_DEPEND}
-	${PYTHON_DEPS}
-	>=app-misc/pax-utils-0.1.10
-	sys-devel/bison
-	!<sys-apps/sandbox-1.6
-	!<sys-apps/portage-2.1.2
-	!<sys-devel/bison-2.7
-	!<sys-devel/make-4
-	doc? ( sys-apps/texinfo )
 	test? ( >=net-dns/libidn2-2.0.5 )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -112,17 +112,17 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 if [[ ${CATEGORY} == cross-* ]] ; then
-	DEPEND+=" !headers-only? (
+	BDEPEND+=" !headers-only? (
 		>=${CATEGORY}/binutils-2.24
 		>=${CATEGORY}/gcc-6
 	)"
 	[[ ${CATEGORY} == *-linux* ]] && DEPEND+=" ${CATEGORY}/linux-headers"
 else
-	DEPEND+="
+	BDEPEND+="
 		>=sys-devel/binutils-2.24
 		>=sys-devel/gcc-6
-		virtual/os-headers
 	"
+	DEPEND+=" virtual/os-headers "
 	RDEPEND+="
 		>=net-dns/libidn2-2.0.5
 		vanilla? ( !sys-libs/timezone-data )
@@ -536,7 +536,7 @@ check_devpts() {
 	[[ ${MERGE_TYPE} == "buildonly" ]] && return
 
 	# Only sanity check when installing the native glibc.
-	[[ ${ROOT} != "/" ]] && return
+	[[ -n ${ROOT} ]] && return
 
 	# If they're opting in to the old suid code, then no need to check.
 	use suid && return
@@ -624,7 +624,7 @@ sanity_prechecks() {
 
 	# Prevent native builds from downgrading
 	if [[ ${MERGE_TYPE} != "buildonly" ]] && \
-	   [[ ${ROOT} == "/" ]] && \
+	   [[ -z ${ROOT} ]] && \
 	   [[ ${CBUILD} == ${CHOST} ]] && \
 	   [[ ${CHOST} == ${CTARGET} ]] ; then
 
@@ -1116,7 +1116,7 @@ src_configure() {
 }
 
 do_src_compile() {
-	emake -C "$(builddir nptl)" || die "make nptl for ${ABI} failed"
+	emake -C "$(builddir nptl)"
 }
 
 src_compile() {
@@ -1164,7 +1164,7 @@ run_locale_gen() {
 
 	local locale_list="${root}/etc/locale.gen"
 
-	pushd "${ED}"/$(get_libdir)
+	pushd "${ED}"/$(get_libdir) >/dev/null
 
 	if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
 		[[ -z ${inplace} ]] && ewarn "Generating all locales; edit /etc/locale.gen to save time/space"
@@ -1174,14 +1174,14 @@ run_locale_gen() {
 	locale-gen ${inplace} --jobs $(makeopts_jobs) --config "${locale_list}" \
 		--destdir "${root}"
 
-	popd
+	popd >/dev/null
 }
 
 glibc_do_src_install() {
 	local builddir=$(builddir nptl)
 	cd "${builddir}"
 
-	emake install_root="${D}$(build_eprefix)$(alt_prefix)" install || die
+	emake install_root="${D}/$(build_eprefix)$(alt_prefix)" install
 
 	# This version (2.26) provides some compatibility libraries for the NIS/NIS+ support
 	# which come without headers etc. Only needed for binary packages since the
@@ -1194,13 +1194,20 @@ glibc_do_src_install() {
 	# '#define VERSION "2.26.90"' -> '2.26.90'
 	local upstream_pv=$(sed -n -r 's/#define VERSION "(.*)"/\1/p' "${S}"/version.h)
 
-	if [[ -e ${ED}$(alt_usrlibdir)/libm-${upstream_pv}.a ]] ; then
+	# Avoid stripping binaries not targeted by ${CHOST}. Or else
+	# ${CHOST}-strip would break binaries build for ${CTARGET}.
+	is_crosscompile && dostrip -x /
+	# gdb thread introspection relies on local libpthreas symbols. stripping breaks it
+	# See Note [Disable automatic stripping]
+	dostrip -x $(alt_libdir)/libpthread-${upstream_pv}.so
+
+	if [[ -e ${ED}/$(alt_usrlibdir)/libm-${upstream_pv}.a ]] ; then
 		# Move versioned .a file out of libdir to evade portage QA checks
 		# instead of using gen_usr_ldscript(). We fix ldscript as:
 		# "GROUP ( /usr/lib64/libm-<pv>.a ..." -> "GROUP ( /usr/lib64/glibc-<pv>/libm-<pv>.a ..."
-		sed -i "s@\(libm-${upstream_pv}.a\)@${P}/\1@" "${ED}"$(alt_usrlibdir)/libm.a || die
+		sed -i "s@\(libm-${upstream_pv}.a\)@${P}/\1@" "${ED}"/$(alt_usrlibdir)/libm.a || die
 		dodir $(alt_usrlibdir)/${P}
-		mv "${ED}"$(alt_usrlibdir)/libm-${upstream_pv}.a "${ED}"$(alt_usrlibdir)/${P}/libm-${upstream_pv}.a || die
+		mv "${ED}"/$(alt_usrlibdir)/libm-${upstream_pv}.a "${ED}"/$(alt_usrlibdir)/${P}/libm-${upstream_pv}.a || die
 	fi
 
 	# We'll take care of the cache ourselves
@@ -1358,7 +1365,7 @@ glibc_do_src_install() {
 
 	# Generate all locales if this is a native build as locale generation
 	if use compile-locales && ! is_crosscompile ; then
-		run_locale_gen --inplace-glibc "${ED}"
+		run_locale_gen --inplace-glibc "${ED}/"
 		sed -e 's:COMPILED_LOCALES="":COMPILED_LOCALES="1":' -i "${ED}"/usr/sbin/locale-gen || die
 	fi
 }
@@ -1366,7 +1373,7 @@ glibc_do_src_install() {
 glibc_headers_install() {
 	local builddir=$(builddir "headers")
 	cd "${builddir}"
-	emake install_root="${D}$(build_eprefix)$(alt_prefix)" install-headers
+	emake install_root="${D}/$(build_eprefix)$(alt_prefix)" install-headers
 
 	insinto $(alt_headers)/gnu
 	doins "${S}"/include/gnu/stubs.h
@@ -1437,7 +1444,7 @@ pkg_preinst() {
 		einfo "Defaulting /etc/host.conf:multi to on"
 	fi
 
-	[[ ${ROOT} != "/" ]] && return 0
+	[[ -n ${ROOT} ]] && return 0
 	[[ -d ${ED}/$(get_libdir) ]] || return 0
 	[[ -z ${BOOTSTRAP_RAP} ]] && glibc_sanity_check
 }
@@ -1448,15 +1455,11 @@ pkg_postinst() {
 
 	if ! tc-is-cross-compiler && [[ -x ${EROOT}/usr/sbin/iconvconfig ]] ; then
 		# Generate fastloading iconv module configuration file.
-		"${EROOT}"/usr/sbin/iconvconfig --prefix="${ROOT}"
+		"${EROOT}"/usr/sbin/iconvconfig --prefix="${ROOT}/"
 	fi
 
-	if ! is_crosscompile && [[ ${ROOT} == "/" ]] ; then
-		# Reload init ... if in a chroot or a diff init package, ignore
-		# errors from this step #253697
-		/sbin/telinit U 2>/dev/null
-
-		use compile-locales || run_locale_gen "${EROOT}"
+	if ! is_crosscompile && [[ -z ${ROOT} ]] ; then
+		use compile-locales || run_locale_gen "${EROOT}/"
 	fi
 
 	# Check for sanity of /etc/nsswitch.conf, take 2
