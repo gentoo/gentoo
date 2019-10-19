@@ -83,7 +83,8 @@ CDEPEND="${PYTHON_DEPS}
 	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
 	system-mitkrb5? ( app-crypt/mit-krb5[${MULTILIB_USEDEP}] )
-	systemd? ( sys-apps/systemd:0= )"
+	systemd? ( sys-apps/systemd:0= )
+	zeroconf? ( net-dns/avahi )"
 DEPEND="${CDEPEND}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
