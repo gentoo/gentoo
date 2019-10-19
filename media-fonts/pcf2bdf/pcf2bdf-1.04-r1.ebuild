@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="Converts PCF fonts to BDF fonts"
 HOMEPAGE="http://www.tsg.ne.jp/GANA/S/pcf2bdf/"
@@ -16,20 +16,18 @@ IUSE=""
 
 S=${WORKDIR}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-64bit.patch
-	epatch "${FILESDIR}"/${P}-gzip.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-64bit.patch
+	"${FILESDIR}"/${P}-gzip.patch
+)
 
 src_compile() {
-	emake -f Makefile.gcc CC="$(tc-getCXX)" CFLAGS="${CXXFLAGS}" || die "emake failed"
+	emake -f Makefile.gcc CC="$(tc-getCXX)" CFLAGS="${CXXFLAGS}"
 }
 
 src_install() {
 	emake -f Makefile.gcc \
-		PREFIX="${D}/usr" \
-		MANPATH="${D}/usr/share/man/man1" \
-		install || die
+		PREFIX="${ED}/usr" \
+		MANPATH="${ED}/usr/share/man/man1" \
+		install
 }
