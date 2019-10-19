@@ -48,11 +48,11 @@ src_install() {
 			/usr/share/icons/hicolor/${size}x${size}/apps/subl.png
 	done
 
-	make_desktop_entry "subl" "Sublime Text ${MV}" "subl" \
+	make_desktop_entry "subl %F" "Sublime Text ${MV}" subl \
 		"TextEditor;IDE;Development" "StartupNotify=true"
 
 	# needed to get WM_CLASS lookup right
-	mv "${ED}"/usr/share/applications/subl{-sublime-text,}.desktop || die
+	mv "${ED}"/usr/share/applications/subl{_%F-sublime-text,}.desktop || die
 }
 
 pkg_postrm() {
