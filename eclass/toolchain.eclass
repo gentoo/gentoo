@@ -2,11 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6
+# @SUPPORTED_EAPIS: 5 6 7
 
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
-RESTRICT="strip" # cross-compilers need controlled stripping
 
 inherit eutils fixheadtails flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
 
@@ -27,8 +26,20 @@ FEATURES=${FEATURES/multilib-strict/}
 case ${EAPI:-0} in
 	0|1|2|3|4*) die "Need to upgrade to at least EAPI=5" ;;
 	5*|6) inherit eapi7-ver ;;
+	7) ;;
 	*) die "I don't speak EAPI ${EAPI}." ;;
 esac
+
+tc_supports_dostrip() {
+	case ${EAPI:-0} in
+		5*|6) return 1 ;;
+		7) return 0 ;;
+		*) die "Update apply_patches() for ${EAPI}." ;;
+	esac
+}
+
+tc_supports_dostrip || RESTRICT="strip" # cross-compilers need controlled stripping
+
 EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
 	src_compile src_test src_install pkg_postinst pkg_postrm
 
@@ -67,8 +78,6 @@ GCC_BRANCH_VER=$(ver_cut 1-2 ${GCC_PV})
 GCCMAJOR=$(ver_cut 1 ${GCC_PV})
 GCCMINOR=$(ver_cut 2 ${GCC_PV})
 GCCMICRO=$(ver_cut 3 ${GCC_PV})
-[[ ${BRANCH_UPDATE-notset} == "notset" ]] && \
-	BRANCH_UPDATE=$(ver_cut 4 ${GCC_PV})
 
 # According to gcc/c-cppbuiltin.c, GCC_CONFIG_VER MUST match this regex.
 # ([^0-9]*-)?[0-9]+[.][0-9]+([.][0-9]+)?([- ].*)?
@@ -282,14 +291,6 @@ gentoo_urls() {
 #			the ebuild has a _pre suffix, this variable is ignored and the
 #			prerelease tarball is used instead.
 #
-#	BRANCH_UPDATE
-#			If set, this variable signals that we should be using the main
-#			release tarball (determined by ebuild version) and applying a
-#			CVS branch update patch against it. The location of this branch
-#			update patch is assumed to be in ${GENTOO_TOOLCHAIN_BASE_URI}.
-#			Just like with SNAPSHOT, this variable is ignored if the ebuild
-#			has a _pre suffix.
-#
 #	PATCH_VER
 #	PATCH_GCC_VER
 #			This should be set to the version of the gentoo patch tarball.
@@ -360,9 +361,6 @@ get_gcc_src_uri() {
 		else
 			GCC_SRC_URI="mirror://gnu/gcc/gcc-${GCC_PV}/gcc-${GCC_RELEASE_VER}.tar.bz2"
 		fi
-		# we want all branch updates to be against the main release
-		[[ -n ${BRANCH_UPDATE} ]] && \
-			GCC_SRC_URI+=" $(gentoo_urls gcc-${GCC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2)"
 	fi
 
 	[[ -n ${UCLIBC_VER} ]] && \
@@ -370,7 +368,6 @@ get_gcc_src_uri() {
 	[[ -n ${PATCH_VER} ]] && \
 		GCC_SRC_URI+=" $(gentoo_urls gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.bz2)"
 
-	# strawberry pie, Cappuccino and a Gauloises (it's a good thing)
 	[[ -n ${PIE_VER} ]] && \
 		PIE_CORE=${PIE_CORE:-gcc-${PIE_GCC_VER}-piepatches-v${PIE_VER}.tar.bz2} && \
 		GCC_SRC_URI+=" $(gentoo_urls ${PIE_CORE})"
@@ -454,6 +451,8 @@ gcc_quick_unpack() {
 	export HTB_GCC_VER=${HTB_GCC_VER:-${GCC_RELEASE_VER}}
 	export SPECS_GCC_VER=${SPECS_GCC_VER:-${GCC_RELEASE_VER}}
 
+	# Injection point for more tarballs. dev-lang/gnat-gpl uses
+	# 'GCC_A_FAKEIT' to specify it's own source and binary tarballs.
 	if [[ -n ${GCC_A_FAKEIT} ]] ; then
 		unpack ${GCC_A_FAKEIT}
 	elif [[ -n ${PRERELEASE} ]] ; then
@@ -469,12 +468,6 @@ gcc_quick_unpack() {
 			unpack gcc-${GCC_RELEASE_VER}.tar.xz
 		else
 			unpack gcc-${GCC_RELEASE_VER}.tar.bz2
-		fi
-		# We want branch updates to be against a release tarball
-		if [[ -n ${BRANCH_UPDATE} ]] ; then
-			pushd "${S}" > /dev/null
-			epatch "${DISTDIR}"/gcc-${GCC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2
-			popd > /dev/null
 		fi
 	fi
 
@@ -518,30 +511,34 @@ gcc_quick_unpack() {
 
 #---->> src_prepare <<----
 
+# 'epatch' is not available in EAPI=7. Abstract away patchset application
+# until we eventually get all gcc ebuilds on EAPI=7 or later.
+tc_apply_patches() {
+	[[ ${#@} -lt 2 ]] && die "usage: tc_apply_patches <message> <patches...>"
+
+	einfo "$1"; shift
+
+	case ${EAPI:-0} in
+		# Note: even for EAPI=6 we used 'epatch' semantics. To avoid
+		# breaking existing ebuilds use 'eapply' only in EAPI=7 or later.
+		5*|6) epatch "$@" ;;
+		7) eapply "$@" ;;
+		*) die "Update apply_patches() for ${EAPI}." ;;
+	esac
+}
+
 toolchain_src_prepare() {
 	export BRANDING_GCC_PKGVERSION="Gentoo ${GCC_PVR}"
 	cd "${S}"
 
-	if ! use vanilla ; then
-		if [[ -n ${PATCH_VER} ]] ; then
-			guess_patch_type_in_dir "${WORKDIR}"/patch
-			EPATCH_MULTI_MSG="Applying Gentoo patches ..." \
-			epatch "${WORKDIR}"/patch
-			BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION} p${PATCH_VER}"
-		fi
-		if [[ -n ${UCLIBC_VER} ]] ; then
-			guess_patch_type_in_dir "${WORKDIR}"/uclibc
-			EPATCH_MULTI_MSG="Applying uClibc patches ..." \
-			epatch "${WORKDIR}"/uclibc
-		fi
-	fi
+	do_gcc_gentoo_patches
 	do_gcc_HTB_patches
 	do_gcc_PIE_patches
 	do_gcc_CYGWINPORTS_patches
 
 	case ${EAPI:-0} in
 		5*) epatch_user;;
-		6) eapply_user ;;
+		6|7) eapply_user ;;
 		*) die "Update toolchain_src_prepare() for ${EAPI}." ;;
 	esac
 
@@ -633,8 +630,11 @@ toolchain_src_prepare() {
 	sed -i 's|A-Za-z0-9|[:alnum:]|g' "${S}"/gcc/*.awk #215828
 
 	# Prevent new texinfo from breaking old versions (see #198182, #464008)
-	tc_version_is_at_least 4.1 && epatch "${FILESDIR}"/gcc-configure-texinfo.patch
+	if tc_version_is_at_least 4.1; then
+		tc_apply_patches "Remove texinfo (bug #198182, bug ##464008)" "${FILESDIR}"/gcc-configure-texinfo.patch
+	fi
 
+	# >=gcc-4
 	if [[ -x contrib/gcc_update ]] ; then
 		einfo "Touching generated files"
 		./contrib/gcc_update --touch | \
@@ -644,17 +644,23 @@ toolchain_src_prepare() {
 	fi
 }
 
-guess_patch_type_in_dir() {
-	[[ -n $(ls "$1"/*.bz2 2>/dev/null) ]] \
-		&& EPATCH_SUFFIX="patch.bz2" \
-		|| EPATCH_SUFFIX="patch"
+do_gcc_gentoo_patches() {
+	if ! use vanilla ; then
+		if [[ -n ${PATCH_VER} ]] ; then
+			tc_apply_patches "Applying Gentoo patches ..." "${WORKDIR}"/patch/*.patch
+			BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION} p${PATCH_VER}"
+		fi
+		if [[ -n ${UCLIBC_VER} ]] ; then
+			tc_apply_patches "Applying uClibc patches ..." "${WORKDIR}"/uclibc/*.patch
+		fi
+	fi
 }
 
 do_gcc_HTB_patches() {
 	use_if_iuse boundschecking || return 0
 
 	# modify the bounds checking patch with a regression patch
-	epatch "${WORKDIR}/bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch"
+	tc_apply_patches "Bounds checking patch" "${WORKDIR}/bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch"
 	BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, HTB-${HTB_GCC_VER}-${HTB_VER}"
 }
 
@@ -662,23 +668,7 @@ do_gcc_PIE_patches() {
 	want_pie || return 0
 	use vanilla && return 0
 
-	if tc_version_is_at_least 4.3.2 ; then
-		guess_patch_type_in_dir "${WORKDIR}"/piepatch/
-		EPATCH_MULTI_MSG="Applying pie patches ..." \
-		epatch "${WORKDIR}"/piepatch/
-	else
-		guess_patch_type_in_dir "${WORKDIR}"/piepatch/upstream
-
-		# corrects startfile/endfile selection and shared/static/pie flag usage
-		EPATCH_MULTI_MSG="Applying upstream pie patches ..." \
-		epatch "${WORKDIR}"/piepatch/upstream
-		# adds non-default pie support (rs6000)
-		EPATCH_MULTI_MSG="Applying non-default pie patches ..." \
-		epatch "${WORKDIR}"/piepatch/nondef
-		# adds default pie support (rs6000 too) if DEFAULT_PIE[_SSP] is defined
-		EPATCH_MULTI_MSG="Applying default pie patches ..." \
-		epatch "${WORKDIR}"/piepatch/def
-	fi
+	tc_apply_patches "Applying pie patches ..." "${WORKDIR}"/piepatch/*.patch
 
 	BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, pie-${PIE_VER}"
 }
@@ -690,18 +680,15 @@ do_gcc_CYGWINPORTS_patches() {
 	local p d="${WORKDIR}/gcc-${CYGWINPORTS_GITREV}"
 	# readarray -t is available since bash-4.4 only, #690686
 	local patches=( $(sed -e '1,/PATCH_URI="/d;/"/,$d' < "${d}"/gcc.cygport) )
-	for p in ${patches[*]}; do
-		epatch "${d}/${p}"
-	done
+	tc_apply_patches "Applying cygwin port patches ..." ${patches[*]}
 }
 
 # configure to build with the hardened GCC specs as the default
 make_gcc_hard() {
-
 	local gcc_hard_flags=""
 
 	# If we use gcc-6 or newer with pie enable to compile older gcc we need to pass -no-pie
-	# to stage1; bug 618908
+	# to stage1; bug #618908
 	if ! tc_version_is_at_least 6.0 && [[ $(gcc-major-version) -ge 6 ]] ; then
 		einfo "Disabling PIE in stage1 (only) ..."
 		sed -i -e "/^STAGE1_LDFLAGS/ s/$/ -no-pie/" "${S}"/Makefile.in || die
@@ -716,7 +703,10 @@ make_gcc_hard() {
 			einfo "Updating gcc to use automatic SSP building ..."
 		fi
 		if use_if_iuse hardened ; then
-			# Will add some optimatizion as default.
+			# Will add some hardened options as default, like:
+			# -fstack-clash-protection
+			# -z now
+			# see *_all_extra-options.patch gcc patches.
 			gcc_hard_flags+=" -DEXTRA_OPTIONS"
 			# rebrand to make bug reports easier
 			BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/Gentoo/Gentoo Hardened}
@@ -820,7 +810,6 @@ gcc_version_patch() {
 	tc_version_is_at_least 4.3 && return 0
 
 	local version_string=${GCC_CONFIG_VER}
-	[[ -n ${BRANCH_UPDATE} ]] && version_string+=" ${BRANCH_UPDATE}"
 
 	einfo "patching gcc version: ${version_string} (${BRANDING_GCC_PKGVERSION})"
 
@@ -969,9 +958,9 @@ toolchain_src_configure() {
 	tc_version_is_at_least 3.4 || confgcc+=( --disable-libunwind-exceptions )
 
 	# Use the default ("release") checking because upstream usually neglects
-	# to test "disabled" so it has a history of breaking. #317217
+	# to test "disabled" so it has a history of breaking. bug #317217
 	if tc_version_is_at_least 3.4 && in_iuse debug ; then
-		# The "release" keyword is new to 4.0. #551636
+		# The "release" keyword is new to 4.0. bug #551636
 		local off=$(tc_version_is_at_least 4.0 && echo release || echo no)
 		confgcc+=( --enable-checking="${GCC_CHECKS_LIST:-$(usex debug yes ${off})}" )
 	fi
@@ -989,12 +978,12 @@ toolchain_src_configure() {
 
 	# allow gcc to search for clock funcs in the main C lib.
 	# if it can't find them, then tough cookies -- we aren't
-	# going to link in -lrt to all C++ apps.  #411681
+	# going to link in -lrt to all C++ apps. bug #411681
 	if tc_version_is_at_least 4.4 && is_cxx ; then
 		confgcc+=( --enable-libstdcxx-time )
 	fi
 
-	# Build compiler using LTO
+	# Build compiler itself using LTO
 	if tc_version_is_at_least 9.1 && use_if_iuse lto ; then
 		confgcc+=( --with-build-config=bootstrap-lto )
 	fi
@@ -1007,7 +996,9 @@ toolchain_src_configure() {
 	# The jit language requires this.
 	is_jit && confgcc+=( --enable-host-shared )
 
-	# # Turn on the -Wl,--build-id flag by default for ELF targets. #525942
+	# build-id was disabled for file collisions: bug #526144
+	#
+	# # Turn on the -Wl,--build-id flag by default for ELF targets. bug #525942
 	# # This helps with locating debug files.
 	# case ${CTARGET} in
 	# *-linux-*|*-elf|*-eabi)
@@ -1033,7 +1024,7 @@ toolchain_src_configure() {
 		# disable a bunch of features or gcc goes boom
 		local needed_libc=""
 		case ${CTARGET} in
-		*-linux)		 needed_libc=no-fucking-clue;;
+		*-linux)		 needed_libc=error-unknown-libc;;
 		*-dietlibc)		 needed_libc=dietlibc;;
 		*-elf|*-eabi)
 			needed_libc=newlib
@@ -1048,10 +1039,12 @@ toolchain_src_configure() {
 		*-klibc)		 needed_libc=klibc;;
 		*-musl*)		 needed_libc=musl;;
 		*-uclibc*)
+			# Enable shared library support only on targets
+			# that support it: bug #291870
 			if ! echo '#include <features.h>' | \
 			   $(tc-getCPP ${CTARGET}) -E -dD - 2>/dev/null | \
 			   grep -q __HAVE_SHARED__
-			then #291870
+			then
 				confgcc+=( --disable-shared )
 			fi
 			needed_libc=uclibc-ng
@@ -1059,7 +1052,6 @@ toolchain_src_configure() {
 		*-cygwin)		 needed_libc=cygwin;;
 		x86_64-*-mingw*|\
 		*-w64-mingw*)	 needed_libc=mingw64-runtime;;
-		mingw*|*-mingw*) needed_libc=mingw-runtime;;
 		avr)			 confgcc+=( --enable-shared --disable-threads );;
 		esac
 		if [[ -n ${needed_libc} ]] ; then
@@ -1774,7 +1766,7 @@ toolchain_src_test() {
 toolchain_src_install() {
 	cd "${WORKDIR}"/build
 
-	# Do allow symlinks in private gcc include dir as this can break the build
+	# Don't allow symlinks in private gcc include dir as this can break the build
 	find gcc/include*/ -type l -delete
 
 	# Copy over the info pages.  We disabled their generation earlier, but the
@@ -1870,15 +1862,17 @@ toolchain_src_install() {
 		fi
 	fi
 
-	# TODO: implement stripping (we use RESTRICT=strip)
-	# As gcc installs object files both build against ${CHOST} and ${CTARGET}
-	# we will ned to run stripping using different tools:
+	# As gcc installs object files built against bost ${CHOST} and ${CTARGET}
+	# ideally we will need to strip them using different tools:
 	# Using ${CHOST} tools:
 	#  - "${D}${BINPATH}"
 	#  - (for is_crosscompile) "${D}${HOSTLIBPATH}"
 	#  - "${D}${PREFIX}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}"
 	# Using ${CTARGET} tools:
 	#  - "${D}${LIBPATH}"
+	# As dostrip does not specify host to override ${CHOST} tools just skip
+	# non-native binary stripping.
+	is_crosscompile && tc_supports_dostrip && dostrip -x "${LIBPATH}"
 
 	cd "${S}"
 	if is_crosscompile; then
@@ -2284,10 +2278,6 @@ toolchain_pkg_postrm() {
 	if [[ ! -e ${LIBPATH}/libstdc++.so ]] ; then
 		einfo "Running 'fix_libtool_files.sh ${GCC_RELEASE_VER}'"
 		fix_libtool_files.sh ${GCC_RELEASE_VER}
-		if [[ -n ${BRANCH_UPDATE} ]] ; then
-			einfo "Running 'fix_libtool_files.sh ${GCC_RELEASE_VER}-${BRANCH_UPDATE}'"
-			fix_libtool_files.sh ${GCC_RELEASE_VER}-${BRANCH_UPDATE}
-		fi
 	fi
 
 	return 0

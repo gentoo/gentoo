@@ -168,7 +168,6 @@ test_var_assert GCC_BRANCH_VER  7.3
 test_var_assert GCCMAJOR        7
 test_var_assert GCCMINOR        3
 test_var_assert GCCMICRO        0
-test_var_assert BRANCH_UPDATE   ''
 test_var_assert GCC_CONFIG_VER  7.3.0
 test_var_assert PREFIX          /usr
 

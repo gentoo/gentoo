@@ -416,7 +416,6 @@ just_headers() {
 glibc_banner() {
 	local b="Gentoo ${PVR}"
 	[[ -n ${SNAP_VER} ]] && b+=" snapshot ${SNAP_VER}"
-	[[ -n ${BRANCH_UPDATE} ]] && b+=" branch ${BRANCH_UPDATE}"
 	[[ -n ${PATCH_VER} ]] && ! use vanilla && b+=" p${PATCH_VER}"
 	echo "${b}"
 }
@@ -740,17 +739,6 @@ toolchain-glibc_src_unpack() {
 }
 
 toolchain-glibc_src_prepare() {
-	# XXX: We should do the branchupdate, before extracting the manpages and
-	# infopages else it does not help much (mtimes change if there is a change
-	# to them with branchupdate)
-	if [[ -n ${BRANCH_UPDATE} ]] ; then
-		epatch "${DISTDIR}"/glibc-${RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2
-
-		# Snapshot date patch
-		einfo "Patching version to display snapshot date ..."
-		sed -i -e "s:\(#define RELEASE\).*:\1 \"${BRANCH_UPDATE}\":" version.h
-	fi
-
 	# tag, glibc is it
 	if ! version_is_at_least 2.17 ; then
 		[[ -e csu/Banner ]] && die "need new banner location"
