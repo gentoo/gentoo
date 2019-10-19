@@ -23,7 +23,8 @@ RDEPEND="
 		>=media-libs/clutter-gtk-1:1.0 )
 	gstreamer? (
 		media-libs/gstreamer:1.0
-		media-libs/gst-plugins-base:1.0 )
+		media-libs/gst-plugins-base:1.0
+		media-plugins/gst-plugins-gtk:1.0 )
 	raw? ( >=media-libs/libraw-0.14:= )
 	http? ( >=net-libs/libsoup-2.42.0:2.4 )
 	gnome-keyring? ( >=app-crypt/libsecret-0.11 )
