@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6
+# @SUPPORTED_EAPIS: 5 6 7
 
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
@@ -27,6 +27,7 @@ FEATURES=${FEATURES/multilib-strict/}
 case ${EAPI:-0} in
 	0|1|2|3|4*) die "Need to upgrade to at least EAPI=5" ;;
 	5*|6) inherit eapi7-ver ;;
+	7) ;;
 	*) die "I don't speak EAPI ${EAPI}." ;;
 esac
 EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
@@ -512,6 +513,7 @@ tc_apply_patches() {
 		# Note: even for EAPI=6 we used 'epatch' semantics. To avoid
 		# breaking existing ebuilds use 'eapply' only in EAPI=7 or later.
 		5*|6) epatch "$@" ;;
+		7) eapply "$@" ;;
 		*) die "Update apply_patches() for ${EAPI}." ;;
 	esac
 }
@@ -527,7 +529,7 @@ toolchain_src_prepare() {
 
 	case ${EAPI:-0} in
 		5*) epatch_user;;
-		6) eapply_user ;;
+		6|7) eapply_user ;;
 		*) die "Update toolchain_src_prepare() for ${EAPI}." ;;
 	esac
 
