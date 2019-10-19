@@ -6,3 +6,7 @@
 dev-ml/llvm-ocaml llvm_targets_Sparc
 sys-devel/clang llvm_targets_Sparc
 sys-devel/llvm llvm_targets_Sparc
+
+# Nicholas Sielicki <sielicki@yandex.com> (2019-10-19)
+# Force the host target to avoid dependency hell
+dev-libs/keystone llvm_targets_Sparc

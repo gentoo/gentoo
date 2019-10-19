@@ -11,6 +11,10 @@ dev-ml/llvm-ocaml llvm_targets_ARM
 sys-devel/clang llvm_targets_ARM
 sys-devel/llvm llvm_targets_ARM
 
+# Nicholas Sielicki <sielicki@yandex.com> (2019-10-19)
+# Force the host target to avoid dependency hell
+dev-libs/keystone llvm_targets_ARM
+
 # Anthony G. Basile <blueness@gentoo.org> (2012-11-11)
 # Only gnome-base/gdm has stable keywording. If x11-misc/lightdm or kde-plasma/kdm
 # gets stable keyword, this line can be removed.

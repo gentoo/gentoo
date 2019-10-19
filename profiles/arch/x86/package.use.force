@@ -10,6 +10,10 @@ sys-kernel/vanilla-kernel -savedconfig
 # iasl is stable on x86
 sys-firmware/seabios -binary
 
+# Nicholas Sielicki <sielicki@yandex.com> (2019-10-19)
+# Force the host target to avoid dependency hell
+dev-libs/keystone llvm_targets_X86
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2018-05-14)
 # Force the host target to avoid dependency hell
 dev-lang/rust llvm_targets_X86
