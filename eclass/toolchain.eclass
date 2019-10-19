@@ -454,6 +454,8 @@ gcc_quick_unpack() {
 	export HTB_GCC_VER=${HTB_GCC_VER:-${GCC_RELEASE_VER}}
 	export SPECS_GCC_VER=${SPECS_GCC_VER:-${GCC_RELEASE_VER}}
 
+	# Injection point for more tarballs. dev-lang/gnat-gpl uses
+	# 'GCC_A_FAKEIT' to specify it's own source and binary tarballs.
 	if [[ -n ${GCC_A_FAKEIT} ]] ; then
 		unpack ${GCC_A_FAKEIT}
 	elif [[ -n ${PRERELEASE} ]] ; then
