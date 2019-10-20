@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Stephan Hartmann <stha09@googlemail.com> (2019-10-21)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-79
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-10-24)
 # Collides with kde-apps/systemsettings, unmaintained upstream.
 # Use app-admin/systemdgenie instead. Removal in 30 days. Bug #698448
