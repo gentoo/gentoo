@@ -11911,14 +11911,14 @@ gnome-extra/gnome-boxes 3.30.3: Simple GNOME 3 application to access remote or v
 gnome-extra/gnome-calculator 3.30.1 3.32.2: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.30.1 3.32.2: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.30.0 3.32.1: Unicode character map viewer and library
-gnome-extra/gnome-clocks 3.30.1: Clocks application for GNOME
+gnome-extra/gnome-clocks 3.30.1 3.32.0: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.30.0-r1 3.32.0: GNOME color profile tools
 gnome-extra/gnome-commander 1.10.0 1.10.1: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.30.2 3.32.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.10 0.1.11: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.30.1: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
-gnome-extra/gnome-getting-started-docs 3.30.0: Help a new user get started in GNOME
+gnome-extra/gnome-getting-started-docs 3.30.0 3.32.2: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.30.0: Log messages and event viewer
 gnome-extra/gnome-packagekit 3.24.0 3.30.0: PackageKit client for the GNOME desktop
@@ -14915,7 +14915,7 @@ net-libs/freaklabs-chibiarduino 1.0.8_p20190329 9999: freaklabs fork of the ligh
 net-libs/glib-networking 2.58.0 2.60.3: Network-related giomodules for glib
 net-libs/gloox 1.0.22: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
-net-libs/gnome-online-accounts 3.30.2: GNOME framework for accessing online accounts
+net-libs/gnome-online-accounts 3.30.2 3.32.1: GNOME framework for accessing online accounts
 net-libs/gnutls 3.6.7 3.6.9 3.6.10: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/google-cloud-cpp 0.2.0-r1 0.5.0 0.9.0 0.10.0: Google Cloud Client Library for C++
 net-libs/grpc 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1-r1 1.21.1-r1 1.22.1 1.23.0: Modern open source high performance RPC framework
@@ -15718,7 +15718,7 @@ net-vpn/openfortivpn 1.9.0 1.10.0: Fortinet compatible VPN client
 net-vpn/openvpn 2.4.6 2.4.6-r1 2.4.7-r1 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/peervpn 0.044-r4: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
-net-vpn/strongswan 5.7.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
+net-vpn/strongswan 5.7.2 5.8.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17: tinc is an easy to configure VPN implementation
 net-vpn/tor 0.4.0.5 0.4.1.6 0.4.2.2_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
