@@ -4938,6 +4938,7 @@ dev-libs/libltdl 1.3.5 1.5.26 2.4.6: A shared library tool for developers
 dev-libs/liblzw 0.2-r1: small C library for reading LZW compressed files (.Z)
 dev-libs/libmaa 1.3.2: Library with low-level data structures which are helpful for writing compilers
 dev-libs/libmacaroons 0.2.0-r1 0.3.0: Hyperdex macaroons support library
+dev-libs/libmanette 0.2.3: Simple GObject game controller library
 dev-libs/libmateweather 1.22.0-r1: MATE library to access weather information from online services
 dev-libs/libmaxminddb 1.3.2 99999: C library for the MaxMind DB file format
 dev-libs/libmba 0.9.1-r3: A library of generic C modules
@@ -11096,7 +11097,7 @@ games-arcade/gav 0.9.0-r1: GPL Arcade Volleyball
 games-arcade/gish-demo 1.6-r1: Play as an amorphous ball of tar that rolls and squishes around
 games-arcade/gnake 0.94b-r1: An ncurses-based Nibbles clone
 games-arcade/gnome-nibbles 3.24.1 3.32.0: Nibbles clone for Gnome
-games-arcade/gnome-robots 3.22.3: Avoid the robots and make them crash into each other
+games-arcade/gnome-robots 3.22.3 3.32.0: Avoid the robots and make them crash into each other
 games-arcade/gnujump 1.0.8-r1: Xjump clone with added features
 games-arcade/grande-KXL 0.6-r1: ZANAC type game
 games-arcade/gunocide2ex 1.0: fast-paced 2D shoot'em'up
@@ -11200,7 +11201,7 @@ games-board/gmchess 0.29.6-r2: Chinese chess with gtkmm and c++
 games-board/gnome-chess 3.30.1 3.34.0: Play the classic two-player boardgame of chess
 games-board/gnome-hearts 0.3.1-r2: A clone of classic hearts card game
 games-board/gnome-mahjongg 3.22.0 3.34.0: Disassemble a pile of tiles by removing matching pairs
-games-board/gnome-mines 3.20.1 3.30.1.1: Clear hidden mines from a minefield
+games-board/gnome-mines 3.20.1 3.30.1.1 3.34.0: Clear hidden mines from a minefield
 games-board/gnono 1.9.1-r1: A rewrite for GNOME of the Windows card game WUNO
 games-board/gnubg 1.05.000-r1: GNU BackGammon
 games-board/gnuchess 6.2.4 6.2.5: Console based chess interface
@@ -11212,7 +11213,7 @@ games-board/grhino 0.16.1-r1 0.16.1-r2: Reversi game for GNOME, supporting the G
 games-board/gtkatlantic 0.6.1-r1: Monopoly-like game that works with the monopd server
 games-board/gtkboard 0.11_pre0-r1: Board games system
 games-board/hexxagon 1.0.2-r1: Clone of the original DOS game
-games-board/iagno 3.30.0: Dominate the board in a classic version of Reversi
+games-board/iagno 3.30.0 3.32.0: Dominate the board in a classic version of Reversi
 games-board/mah-jong 1.14-r1: A networked Mah Jong program, together with a computer player
 games-board/maitretarot 0.1.98-r1: server for the french tarot game maitretarot
 games-board/megamek 0.34.10-r1: an unofficial, online version of the Classic BattleTech board game
@@ -11237,7 +11238,7 @@ games-board/sjeng 11.2-r2: Console based chess interface
 games-board/spider 1.2_p4-r2: Spider Solitaire
 games-board/stockfish 8 9 10: Free UCI chess engine, claimed to be the strongest in the world
 games-board/tablebase-syzygy 0_pre20131213 0_pre20131213-r100: Syzygy chess endgame tablebases for up to 6 pieces
-games-board/tali 3.22.0: Beat the odds in a poker-style dice game
+games-board/tali 3.22.0 3.32.1: Beat the odds in a poker-style dice game
 games-board/teg 0.11.2 0.11.2-r1: Gnome Risk Clone
 games-board/tetzle 2.1.3: Jigsaw puzzle game that uses tetrominoes for the pieces
 games-board/xboard 4.9.1: GUI for gnuchess and for internet chess servers
@@ -11575,9 +11576,9 @@ games-puzzle/gemdropx 0.9-r2: A puzzle game where it's your job to clear the scr
 games-puzzle/gfifteen 1.0.3-r1: Graphical implementation of the sliding puzzle game fifteen
 games-puzzle/glightoff 1.0.0-r1: A simple (but not so easy to solve!) puzzle game
 games-puzzle/gnome-klotski 3.22.3 3.34.0: Slide blocks to solve the puzzle
-games-puzzle/gnome-sudoku 3.30.0: Test your logic skills in this number grid puzzle
-games-puzzle/gnome-taquin 3.30.0: Move tiles so that they reach their places
-games-puzzle/gnome-tetravex 3.22.0: Complete the puzzle by matching numbered tiles
+games-puzzle/gnome-sudoku 3.30.0 3.34.1: Test your logic skills in this number grid puzzle
+games-puzzle/gnome-taquin 3.30.0 3.32.0: Move tiles so that they reach their places
+games-puzzle/gnome-tetravex 3.22.0 3.34.1: Complete the puzzle by matching numbered tiles
 games-puzzle/gnudoku 0.93-r1: A program for creating and solving Su Doku puzzles
 games-puzzle/gnurobbo 0.66-r1: Robbo, a popular Atari XE/XL game ported to Linux
 games-puzzle/gottet 1.1.6: A tetris clone based on Qt5
@@ -11589,11 +11590,11 @@ games-puzzle/gweled 0.9.1-r2: Bejeweled clone game
 games-puzzle/hangman 0.9.2-r1: The classic word guessing game
 games-puzzle/hexalate 1.1.3: A color matching game
 games-puzzle/hexamine 0.2.1-r1: Hexagonal Minesweeper
-games-puzzle/hitori 3.22.4: Logic puzzle game for GNOME
+games-puzzle/hitori 3.22.4 3.34.0: Logic puzzle game for GNOME
 games-puzzle/icebreaker 1.9.6-r1: Trap and capture penguins on Antarctica
 games-puzzle/jools 0.20-r3: clone of Bejeweled, a popular pattern-matching game
 games-puzzle/ksokoban 0.5.0_pre20190225 9999: The japanese warehouse keeper game
-games-puzzle/lightsoff 3.30.0: Turn off all the lights
+games-puzzle/lightsoff 3.30.0 3.34.0: Turn off all the lights
 games-puzzle/lmarbles 1.0.8: puzzle game inspired by Atomix and written in SDL
 games-puzzle/lpairs 1.0.4-r1: A classical memory game
 games-puzzle/ltris 1.0.19-r1: Very polished Tetris clone
@@ -11615,7 +11616,7 @@ games-puzzle/pingus 0.7.6-r2 9999: free Lemmings clone
 games-puzzle/pipepanic 0.1.3-r1: A simple pipe connecting game
 games-puzzle/pipewalker 0.9.4-r1: Rotating pieces puzzle game
 games-puzzle/quadra 1.2.0-r1: A tetris clone with multiplayer support
-games-puzzle/quadrapassel 3.22.0: Fit falling blocks together
+games-puzzle/quadrapassel 3.22.0 3.32.0: Fit falling blocks together
 games-puzzle/rezerwar 0.4.2-r1: Puzzle game like the known tetromino and the average pipe games
 games-puzzle/scramble 0.9.5-r1: Create as many words as you can before the time runs out
 games-puzzle/sdl-jewels 1.1.1-r1: Swap and match 3 or more jewels in a line in order to score points
@@ -11623,7 +11624,7 @@ games-puzzle/seatris 0.0.14: A color ncurses tetris clone
 games-puzzle/sgt-puzzles 20190415 99999999: Simon Tatham's Portable Puzzle Collection
 games-puzzle/skoosh 2.5.0-r1: Sliding tile puzzle for Gnome 2
 games-puzzle/splice 20121120: An experimental and artistic puzzler set in a microbial world
-games-puzzle/swell-foop 3.30.0: Clear the screen by removing groups of colored and shaped tiles
+games-puzzle/swell-foop 3.30.0 3.34.1: Clear the screen by removing groups of colored and shaped tiles
 games-puzzle/tanglet 1.5.3: Single player word finding game based on Boggle
 games-puzzle/tetrinet 0.11-r1: Console based tetrinet inc. standalone server
 games-puzzle/textmaze 1.2-r1: An ncurses-based maze solving game written in Perl
@@ -11867,7 +11868,7 @@ gnome-base/gnome-control-center 3.30.3-r1 3.32.2: GNOME's main interface to conf
 gnome-base/gnome-core-apps 3.30.2 3.32.2: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.30.2 3.32.2: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 2.32.1-r2 3.30.2.3 3.32.2: Library with common API for various GNOME modules
-gnome-base/gnome-extra-apps 3.30.2: Sub-meta package for the applications of GNOME 3
+gnome-base/gnome-extra-apps 3.30.2 3.32.2: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.32.0: GNOME Flashback session
 gnome-base/gnome-keyring 3.28.2 3.31.91-r1: Password and keyring managing daemon
 gnome-base/gnome-light 3.22.0 3.26.2 3.30.2 3.32.2: Meta package for GNOME-Light, merge this package to install
@@ -14017,7 +14018,7 @@ media-sound/potamus 16: A lightweight audio player with a simple interface and a
 media-sound/pragha 1.3.4 1.3.99 1.3.99.1: A lightweight music player (for Xfce)
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
-media-sound/pulseaudio 12.2 12.2-r1 12.2-r2 13.0: A networked sound server with an advanced plugin system
+media-sound/pulseaudio 12.2-r1 12.2-r2 13.0: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.66: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.3 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth (alongside SBC and native+ofono headset)
 media-sound/pulseeffects 4.6.8 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
@@ -15685,7 +15686,7 @@ net-proxy/tsocks 1.8_beta5-r8 1.8_beta5-r9: Transparent SOCKS v4 proxying librar
 net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Internet connections
 net-proxy/ziproxy 3.3.1-r1: A forwarding, non-caching, compressing web proxy server
 net-voip/telepathy-gabble 0.18.4-r1: A XMPP connection manager, handles single and multi user chats and voice calls
-net-voip/telepathy-haze 0.8.0-r1 0.8.0-r2: Telepathy connection manager providing libpurple supported protocols
+net-voip/telepathy-haze 0.8.0-r2: Telepathy connection manager providing libpurple supported protocols
 net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based around the Sofia-SIP library
 net-voip/telepathy-salut 0.8.1-r2: A link-local XMPP connection manager for Telepathy
 net-voip/yate 6.0.0 6.1.0 9999: The Yate AV Suite
