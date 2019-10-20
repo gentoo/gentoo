@@ -24,5 +24,6 @@
 		<flag name="ofed">Add Infiniband support via ofed</flag>
 		<flag name="slurmdbd">Install SQL server for slurmdbd</flag>
 		<flag name="torque">Enable perl scripts that emulates pbs (qstat, qsub etc.)</flag>
+		<flag name="ucx">Enable Unified Communication X library support</flag>
 	</use>
 </pkgmetadata>
