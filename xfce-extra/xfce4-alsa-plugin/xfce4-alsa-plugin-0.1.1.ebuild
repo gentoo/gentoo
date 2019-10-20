@@ -19,8 +19,8 @@ IUSE=""
 
 RDEPEND="
 	media-libs/alsa-lib
-	xfce-base/xfce4-panel[gtk2(+)]
 	x11-libs/gtk+:2
+	<xfce-base/xfce4-panel-4.15:=[gtk2(+)]
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
