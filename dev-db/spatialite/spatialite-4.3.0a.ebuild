@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit flag-o-matic
+
 MY_PN="lib${PN}"
 MY_P="${MY_PN}-${PV}"
 
@@ -19,7 +21,7 @@ RDEPEND="
 	>=dev-db/sqlite-3.7.5:3[extensions(+)]
 	sys-libs/zlib
 	geos? ( >=sci-libs/geos-3.4 )
-	proj? ( sci-libs/proj )
+	proj? ( sci-libs/proj:= )
 	xls? ( dev-libs/freexl )
 	xml? ( dev-libs/libxml2 )
 "
@@ -30,6 +32,9 @@ REQUIRED_USE="test? ( iconv )"
 S="${WORKDIR}/${MY_P}"
 
 src_configure() {
+	if use proj && has_version ">=sci-libs/proj-6.0.0"; then
+		append-flags "-DACCEPT_USE_OF_DEPRECATED_PROJ_API_H"
+	fi
 	econf \
 		--disable-examples \
 		--disable-static \
