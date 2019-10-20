@@ -30,7 +30,7 @@ RDEPEND="
 "
 DEPEND=">=app-text/xmlto-0.0.26-r1[text(+)]"
 
-DOCS=( README RELEASE_NOTES TODO ) # ChangeLog is bogus, see git instead
+DOCS=( ChangeLog README RELEASE_NOTES TODO )
 
 RESTRICT="test" # Disabled because of sandbox violation(s)
 
