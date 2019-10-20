@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://github.com/EHfive/${PN}"
 # https://github.com/EHfive/pulseaudio-modules-bt/issues/83
 EGIT_OVERRIDE_COMMIT_PULSEAUDIO_PULSEAUDIO="v13.0"
 
-LICENSE="LGPL-2.1"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
