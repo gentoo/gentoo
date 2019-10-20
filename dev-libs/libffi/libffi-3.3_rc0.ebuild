@@ -56,10 +56,6 @@ multilib_src_configure() {
 		$(use_enable debug)
 }
 
-multilib_src_test() {
-	emake check RUNTESTFLAGS='-a -v'
-}
-
 multilib_src_install_all() {
 	find "${ED}" -name "*.la" -delete || die
 	einstalldocs
