@@ -1179,7 +1179,7 @@ app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20171014 20180408: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.9 1.10: A powerful and user-friendly console text editor
-app-editors/mousepad 0.4.1 0.4.2: GTK+-based editor for the Xfce Desktop Environment
+app-editors/mousepad 0.4.2: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 4.2 4.4 4.5 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 3.1.1: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1 5.6-r2 5.7: Multi-purpose text editor for the X Window System
@@ -2310,7 +2310,7 @@ app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-pac
 app-portage/overlint 0.5.2 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
 app-portage/pfl 3.0-r2 3.0.1-r2 3.0.1-r3: Searchable online file/package database for Gentoo
-app-portage/portage-utils 0.74 0.74-r1 0.80 9999: Small and fast Portage helper tools written in C
+app-portage/portage-utils 0.74 0.74-r1 0.80 0.81 9999: Small and fast Portage helper tools written in C
 app-portage/porthole 0.6.1-r5: A GTK+-based frontend to Portage
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.27: A helper program for maintaining the package.keyword and package.unmask files
@@ -9046,7 +9046,7 @@ dev-python/tgmochikit 1.4.2-r1: MochiKit packaged as TurboGears widgets
 dev-python/theano 0.7.0 0.8.2 0.9.0 1.0.4: Define and optimize multi-dimensional arrays mathematical expressions
 dev-python/thrift 0.11.0: Python implementation of Thrift
 dev-python/thriftpy 0.3.9: Pure python implementation of Apache Thrift
-dev-python/thunarx-python 0.3.0-r2 0.5.1: Python bindings for the Thunar file manager
+dev-python/thunarx-python 0.5.1: Python bindings for the Thunar file manager
 dev-python/timelib 0.2.4-r1: parse english textual date descriptions
 dev-python/tinycss 0.3 0.4: A complete yet simple CSS parser for Python
 dev-python/tinycss2 0.5 0.6.1 1.0.2: A complete yet simple CSS parser for Python
@@ -10549,7 +10549,7 @@ dev-util/byacc 20170201 20180609 20190617: the best variant of the Yacc parser g
 dev-util/cargo-ebuild 0.2.0: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/cargo-tree 0.23.0 0.24.0 0.25.0 0.26.0: Cargo subcommand that visualizes crate dependency graph in a tree-like format
 dev-util/catalyst 3.0.5 3.0.6 3.0.7 9999: Release metatool used for creating releases based on Gentoo Linux
-dev-util/catfish 1.4.7 1.4.8 1.4.8-r1 1.4.9 1.4.10: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
+dev-util/catfish 1.4.10: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.9.1: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.1 3.7.2 3.7.3 3.7.4: fast compiler cache
@@ -10881,7 +10881,7 @@ dev-util/wstool 0.1.13 0.1.17 9999: Commands to manage several local SCM reposit
 dev-util/wxglade 0.8.2: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
 dev-util/xdelta 1.1.4-r1 1.1.4-r2 3.0.11 3.1.0: Computes changes between binary or text files and creates deltas
 dev-util/xesam-tools 0.7.0-r1: Development tools and examples for the Xesam desktop search API
-dev-util/xfce4-dev-tools 4.12.0-r1 4.13.0 4.14.0: A set of scripts and m4/autoconf macros that ease build system maintenance
+dev-util/xfce4-dev-tools 4.14.0: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r2: XML stream reformatter for ASCII text, but not UTF-8, written in ANSI C
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
 dev-util/xxdiff 4.0.1_p20170622: A graphical file and directories comparator and merge tool
@@ -13000,7 +13000,7 @@ media-gfx/qvv 4.04: QVV Image Viewer and Browser
 media-gfx/raw-thumbnailer 0.2.1-r1: A lightweight and fast raw image thumbnailer
 media-gfx/rawtherapee 5.6 5.7: A powerful cross-platform raw image processing program
 media-gfx/recoverjpeg 2.2.3-r1: Recover JPEG pictures from a possibly corrupted disk image
-media-gfx/ristretto 0.8.4 0.8.5 0.10.0: A fast and lightweight picture viewer for Xfce
+media-gfx/ristretto 0.10.0: A fast and lightweight picture viewer for Xfce
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
 media-gfx/sam2p 0.49.1 0.49.2 0.49.3: Utility to convert raster images to EPS, PDF and many others
 media-gfx/sane-backends 1.0.27-r3: Scanner Access Now Easy - Backends
@@ -14131,7 +14131,7 @@ media-sound/wavsplit 1.2.1-r2: Simple command line tool to split WAV files
 media-sound/whipper 0.7.3-r1: A Python CD-DA ripper preferring accuracy over speed (forked from morituri)
 media-sound/wildmidi 0.3.13: Midi processing library and a midi player using the gus patch set
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
-media-sound/xfmpc 0.2.3-r1 0.2.90 0.3.0: Music Player Daemon (MPD) client for the Xfce desktop environment
+media-sound/xfmpc 0.3.0: Music Player Daemon (MPD) client for the Xfce desktop environment
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
 media-sound/xmms2 0.8_p20161122-r3 0.8_p20161122-r4 0.8_p20161122-r5: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xmms2-scrobbler 0.4.0: XMMS2 AudioScrobbler client
@@ -14262,7 +14262,7 @@ media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and 
 media-video/openshot 2.4.0-r1 2.4.4: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/orion 1.6.1 1.6.5 1.6.6: Cross-platform Twitch client
 media-video/oxine 0.7.1-r2: OSD frontend for Xine
-media-video/parole 1.0.2 1.0.3 1.0.4: A simple Xfce4 media player using GStreamer
+media-video/parole 1.0.4: A simple Xfce4 media player using GStreamer
 media-video/peek 1.3.1-r2 1.4.0: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 3.7.1: Movie slideshow creator using Ken Burns effect
@@ -18360,7 +18360,7 @@ www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.14-r1 2.16 2.17 2.18: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2017.08.10 9999: A fast, light, simple to use micro-browser using WebKit and Lua
 www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web browser with ssl support
-www-client/midori 7.0 9.0: A lightweight web browser based on WebKitGTK+
+www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2: a free, open source web browser
 www-client/opera 64.0.3417.61: A fast and secure web browser
@@ -18751,7 +18751,7 @@ x11-misc/gbdfed 1.6: gbdfed Bitmap Font Editor
 x11-misc/gccmakedep 1.0.3-r1 9999: create dependencies in makefiles using 'gcc -M'
 x11-misc/gcolor2 0.4-r4: A GTK+ color selector
 x11-misc/genmenu 1.1.0-r1: menu generator for *box, WindowMaker, and Enlightenment
-x11-misc/gigolo 0.4.2-r1 0.4.91 0.4.91-r1 0.5.0: a frontend to easily manage connections to remote filesystems using GIO/GVfs
+x11-misc/gigolo 0.5.0: a frontend to easily manage connections to remote filesystems using GIO/GVfs
 x11-misc/gmrun 0.9.2-r1 0.9.2-r2: A GTK-2 based launcher box with bash style auto completion!
 x11-misc/googsystray 1.3.1-r1: System tray application for Google Voice, GMail, Calendar, Reader, and Wave
 x11-misc/gpaste 3.20.3: Clipboard management system
@@ -19179,7 +19179,7 @@ x11-terms/st 0.8.2 9999: simple terminal implementation for X
 x11-terms/terminator 1.91: Multiple GNOME terminals in one window
 x11-terms/terminology 1.5.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1: A drop down terminal, similar to the consoles found in first person shooters
-x11-terms/xfce4-terminal 0.8.7.4 0.8.8: A terminal emulator for the Xfce desktop environment
+x11-terms/xfce4-terminal 0.8.8: A terminal emulator for the Xfce desktop environment
 x11-terms/xterm 327 337 348 349: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
@@ -19201,7 +19201,7 @@ x11-themes/constantine-backgrounds 12.1.1.4-r1: Fedora 12 official background ar
 x11-themes/e-gtk-theme 0.19.3: A GTK theme to match Enlightenment WM's default theme
 x11-themes/e16-themes 1.0.2: All the official E16 themes
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
-x11-themes/elementary-xfce-icon-theme 0.11 0.13.1 0.14: Elementary icons forked from upstream, extended and maintained for Xfce
+x11-themes/elementary-xfce-icon-theme 0.14: Elementary icons forked from upstream, extended and maintained for Xfce
 x11-themes/experience 3.04-r1: GTK+2 themes which copy and improve the look of XP Luna
 x11-themes/faenza-icon-theme 1.3.1: A scalable icon theme called Faenza
 x11-themes/fedora-backgrounds 27.0.1 28.1.5 29.1.3 30.1.2 31.0.4: A set of default and supplemental wallpapers for Fedora
@@ -19374,70 +19374,70 @@ x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1 0.12 0.13 0.15: A tiling window manager
 x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12 0.13 0.15: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 2.2.2-r1 2.2.6-r2 2.4.3: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
-xfce-base/exo 0.12.4 0.12.7 0.12.8: Extensions, widgets and framework library with session support for Xfce
-xfce-base/garcon 0.6.2-r1 0.6.3 0.6.4-r1: Xfce's freedesktop.org specification compatible menu implementation library
-xfce-base/libxfce4ui 4.13.4 4.13.7 4.14.1: Unified widget and session management libs for Xfce
-xfce-base/libxfce4util 4.13.2 4.13.5 4.14.0: A basic utility library for the Xfce desktop environment
-xfce-base/thunar 1.6.16-r1 1.6.17 1.8.7 1.8.8 1.8.9: File manager for the Xfce desktop environment
-xfce-base/xfce4-appfinder 4.12.0-r2 4.13.5 4.14.0: A tool to find and launch installed applications for the Xfce desktop
-xfce-base/xfce4-meta 4.12-r1 4.14-r1: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.12.2 4.14.0 4.14.1: Panel for the Xfce desktop environment
-xfce-base/xfce4-session 4.12.1-r2 4.13.3 4.13.4 4.14.0: A session manager for the Xfce desktop environment
-xfce-base/xfce4-settings 4.12.4-r1 4.14.0 4.14.1: Configuration system for the Xfce desktop environment
-xfce-base/xfconf 4.12.1-r1 4.13.7 4.13.8 4.14.1: A configuration management system for Xfce
-xfce-base/xfdesktop 4.12.4 4.12.5-r1 4.13.5 4.13.6 4.14.0 4.14.1: Desktop manager for the Xfce desktop environment
-xfce-base/xfwm4 4.12.5-r1 4.14.0-r1: Window manager for the Xfce desktop environment
+xfce-base/exo 0.12.4 0.12.8: Extensions, widgets and framework library with session support for Xfce
+xfce-base/garcon 0.6.4-r1: Xfce's freedesktop.org specification compatible menu implementation library
+xfce-base/libxfce4ui 4.13.4 4.14.1: Unified widget and session management libs for Xfce
+xfce-base/libxfce4util 4.13.2 4.14.0: A basic utility library for the Xfce desktop environment
+xfce-base/thunar 1.8.9: File manager for the Xfce desktop environment
+xfce-base/xfce4-appfinder 4.14.0: A tool to find and launch installed applications for the Xfce desktop
+xfce-base/xfce4-meta 4.14-r1: The Xfce Desktop Environment (meta package)
+xfce-base/xfce4-panel 4.14.1: Panel for the Xfce desktop environment
+xfce-base/xfce4-session 4.12.1-r2 4.14.0: A session manager for the Xfce desktop environment
+xfce-base/xfce4-settings 4.14.1: Configuration system for the Xfce desktop environment
+xfce-base/xfconf 4.12.1-r1 4.14.1: A configuration management system for Xfce
+xfce-base/xfdesktop 4.14.1: Desktop manager for the Xfce desktop environment
+xfce-base/xfwm4 4.14.0-r1: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4-r1: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3-r2: A port of the GNOME multiload applet for the Xfce panel
-xfce-extra/thunar-archive-plugin 0.3.1-r3 0.4.0: Archive plug-in for the Thunar filemanager
-xfce-extra/thunar-media-tags-plugin 0.2.1-r1 0.3.0: Adds special features for media files to the Thunar File Manager
-xfce-extra/thunar-shares-plugin 0.2.0_p20101105-r1 0.3.0: Thunar plugin to share files using Samba
-xfce-extra/thunar-vcs-plugin 0.1.5-r1 0.2.0: Adds Subversion and GIT actions to the context menu of thunar
-xfce-extra/thunar-volman 0.8.1-r2 0.9.4 0.9.5: Daemon that enforces volume-related policies
+xfce-extra/thunar-archive-plugin 0.4.0: Archive plug-in for the Thunar filemanager
+xfce-extra/thunar-media-tags-plugin 0.3.0: Adds special features for media files to the Thunar File Manager
+xfce-extra/thunar-shares-plugin 0.3.0: Thunar plugin to share files using Samba
+xfce-extra/thunar-vcs-plugin 0.2.0: Adds Subversion and GIT actions to the context menu of thunar
+xfce-extra/thunar-volman 0.9.5: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503-r1: A small daemon to watch for window creation and set window transparency values
-xfce-extra/tumbler 0.2.3 0.2.6 0.2.7: A thumbnail service for Thunar
-xfce-extra/xfce4-alsa-plugin 0.1.1 0.2.0 0.2.1: Simple ALSA volume control for xfce4-panel
-xfce-extra/xfce4-battery-plugin 1.1.2 1.1.3: A battery monitor panel plugin for the Xfce desktop environment
+xfce-extra/tumbler 0.2.7: A thumbnail service for Thunar
+xfce-extra/xfce4-alsa-plugin 0.2.1: Simple ALSA volume control for xfce4-panel
+xfce-extra/xfce4-battery-plugin 1.1.3: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-clipman-plugin 1.4.3: A clipboard manager plug-in for the Xfce panel
 xfce-extra/xfce4-composite-editor 0-r1: An graphical interface to modify composite settings
 xfce-extra/xfce4-cpufreq-plugin 1.2.1: A panel plugin for showing information about cpufreq settings
-xfce-extra/xfce4-cpugraph-plugin 1.0.5-r2 1.0.90 1.0.91 1.1.0: A system load plug-in for the Xfce panel
-xfce-extra/xfce4-datetime-plugin 0.7.0 0.7.1 0.8.0: A panel plug-in with date, time and embedded calender
-xfce-extra/xfce4-dict 0.8.2 0.8.3: A dict.org querying application and panel plug-in for the Xfce desktop
-xfce-extra/xfce4-diskperf-plugin 2.6.1-r1 2.6.2: A panel plug-in for disk usage and performance statistics
+xfce-extra/xfce4-cpugraph-plugin 1.1.0: A system load plug-in for the Xfce panel
+xfce-extra/xfce4-datetime-plugin 0.8.0: A panel plug-in with date, time and embedded calender
+xfce-extra/xfce4-dict 0.8.3: A dict.org querying application and panel plug-in for the Xfce desktop
+xfce-extra/xfce4-diskperf-plugin 2.6.2: A panel plug-in for disk usage and performance statistics
 xfce-extra/xfce4-embed-plugin 1.6.0-r2: A plug-in for embedding arbitrary application windows into the Xfce panel
 xfce-extra/xfce4-equake-plugin 1.3.8.1: Panel plug-in that displays information about earthquakes at regular intervals
-xfce-extra/xfce4-eyes-plugin 4.4.5-r2 4.5.0: A panel plug-in which adds classic eyes to your every step
-xfce-extra/xfce4-fsguard-plugin 1.1.0 1.1.1: A filesystem guard plug-in for the Xfce panel
-xfce-extra/xfce4-genmon-plugin 4.0.1 4.0.2: Cyclically spawned executable output on the panel
+xfce-extra/xfce4-eyes-plugin 4.5.0: A panel plug-in which adds classic eyes to your every step
+xfce-extra/xfce4-fsguard-plugin 1.1.1: A filesystem guard plug-in for the Xfce panel
+xfce-extra/xfce4-genmon-plugin 4.0.2: Cyclically spawned executable output on the panel
 xfce-extra/xfce4-hdaps 0.0.9-r2: A plugin to indicate the status of the IBM Hard Drive Active Protection System
 xfce-extra/xfce4-indicator-plugin 2.3.4: A panel plugin that uses indicator-applet to show new messages
 xfce-extra/xfce4-kbdleds-plugin 0.0.6-r2: A panel plug-in to show state of Caps, Num and Scroll Lock keys
 xfce-extra/xfce4-mailwatch-plugin 1.2.0-r4: An mail notification panel plug-in for the Xfce desktop environment
 xfce-extra/xfce4-mount-plugin 1.1.3: An mount plug-in for the Xfce panel
-xfce-extra/xfce4-mpc-plugin 0.5.1 0.5.2: Music Player Daemon (mpd) panel plugin
-xfce-extra/xfce4-netload-plugin 1.3.1 1.3.2: A network load plug-in for the Xfce panel
+xfce-extra/xfce4-mpc-plugin 0.5.2: Music Player Daemon (mpd) panel plugin
+xfce-extra/xfce4-netload-plugin 1.3.2: A network load plug-in for the Xfce panel
 xfce-extra/xfce4-notes-plugin 1.8.1-r2: Xfce4 panel sticky notes plugin
-xfce-extra/xfce4-notifyd 0.4.3-r1 0.4.4: Notification daemon for the Xfce desktop environment
-xfce-extra/xfce4-panel-profiles 1.0.8 1.0.9: Simple application to manage Xfce panel layouts
-xfce-extra/xfce4-places-plugin 1.7.0-r2 1.8.0 1.8.1: A panel plug-in to provide quick access to files, folders and removable media
-xfce-extra/xfce4-power-manager 1.6.1 1.6.3 1.6.4 1.6.5: Power manager for the Xfce desktop environment
-xfce-extra/xfce4-pulseaudio-plugin 0.4.1 0.4.2: A panel plug-in for PulseAudio volume control
-xfce-extra/xfce4-screensaver 0.1.4-r1 0.1.6 0.1.7 0.1.8: Screen saver and locker (port of MATE screensaver)
-xfce-extra/xfce4-screenshooter 1.9.5 1.9.6: Xfce4 screenshooter application and panel plugin
+xfce-extra/xfce4-notifyd 0.4.4: Notification daemon for the Xfce desktop environment
+xfce-extra/xfce4-panel-profiles 1.0.9: Simple application to manage Xfce panel layouts
+xfce-extra/xfce4-places-plugin 1.8.1: A panel plug-in to provide quick access to files, folders and removable media
+xfce-extra/xfce4-power-manager 1.6.5: Power manager for the Xfce desktop environment
+xfce-extra/xfce4-pulseaudio-plugin 0.4.2: A panel plug-in for PulseAudio volume control
+xfce-extra/xfce4-screensaver 0.1.8: Screen saver and locker (port of MATE screensaver)
+xfce-extra/xfce4-screenshooter 1.9.6: Xfce4 screenshooter application and panel plugin
 xfce-extra/xfce4-sensors-plugin 1.3.0-r1 1.3.92-r1: A panel plug-in for acpi, lm-sensors and hddtemp sensors
-xfce-extra/xfce4-smartbookmark-plugin 0.5.0 0.5.1: Smart bookmark plug-in for the Xfce desktop environment
+xfce-extra/xfce4-smartbookmark-plugin 0.5.1: Smart bookmark plug-in for the Xfce desktop environment
 xfce-extra/xfce4-statusnotifier-plugin 0.2.1: A panel area for fd.o Status Notifiers (systray replacement)
-xfce-extra/xfce4-systemload-plugin 1.2.2 1.2.3: System load plug-in for Xfce panel
+xfce-extra/xfce4-systemload-plugin 1.2.3: System load plug-in for Xfce panel
 xfce-extra/xfce4-taskmanager 1.2.2: Easy to use task manager
-xfce-extra/xfce4-time-out-plugin 1.0.2-r1 1.0.3-r1: A panel plug-in to take periodical breaks from the computer
+xfce-extra/xfce4-time-out-plugin 1.0.3-r1: A panel plug-in to take periodical breaks from the computer
 xfce-extra/xfce4-timer-plugin 1.7.0: A simple timer plug-in for the Xfce desktop environment
-xfce-extra/xfce4-vala 4.10.3-r5 4.10.3-r6: Vala bindings for the Xfce desktop environment
+xfce-extra/xfce4-vala 4.10.3-r6: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
-xfce-extra/xfce4-wavelan-plugin 0.6.0 0.6.1: A panel plug-in to display wireless interface statistics
-xfce-extra/xfce4-weather-plugin 0.9.1 0.10.0: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 2.3.2 2.3.3: Alternate application launcher for Xfce
+xfce-extra/xfce4-wavelan-plugin 0.6.1: A panel plug-in to display wireless interface statistics
+xfce-extra/xfce4-weather-plugin 0.10.0: A weather plug-in for the Xfce desktop environment
+xfce-extra/xfce4-whiskermenu-plugin 2.3.3: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r1: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
-xfce-extra/xfdashboard 0.6.1 0.7.5: Maybe a GNOME shell like dashboard for the Xfce desktop environment
+xfce-extra/xfdashboard 0.7.5: Maybe a GNOME shell like dashboard for the Xfce desktop environment
