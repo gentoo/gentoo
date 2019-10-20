@@ -469,16 +469,12 @@ sci-libs/parmgridgen
 # packagse are its reverse dependencies, some of them unfetchable
 # as well.
 # Removal in 30 days.  Bug #601402.
-games-fps/ut2004
 games-fps/ut2004-action
 games-fps/ut2004-airbuccaneers
 games-fps/ut2004-bonuspack-cbp1
 games-fps/ut2004-bonuspack-cbp2
-games-fps/ut2004-bonuspack-ece
-games-fps/ut2004-bonuspack-mega
 games-fps/ut2004-cor
 games-fps/ut2004-crossfire
-games-fps/ut2004-data
 games-fps/ut2004-deathball
 games-fps/ut2004-fragops
 games-fps/ut2004-hamsterbash
