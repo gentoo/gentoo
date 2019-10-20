@@ -1,10 +1,10 @@
-DEFINED_PHASES=-
-DEPEND=app-text/asciidoc
+BDEPEND=app-text/asciidoc
+DEFINED_PHASES=configure install
 DESCRIPTION=COmputer Language Manipulation
-EAPI=6
+EAPI=7
 HOMEPAGE=https://www.colm.net/open-source/colm/
 KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~x86 ~amd64-linux ~x86-linux
-LICENSE=GPL-2
+LICENSE=MIT
 SLOT=0
 SRC_URI=https://www.colm.net/files/colm/colm-0.13.0.6.tar.gz
-_md5_=9827f68f8e1624fa79112b580db8238d
+_md5_=0eb3f982503fbc5c8cdbfcf27a6f8761
