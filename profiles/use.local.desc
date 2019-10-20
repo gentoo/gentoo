@@ -5600,7 +5600,6 @@ net-dns/bind:dnsrps - Enable the DNS Response Policy Service (DNSRPS) API, a mec
 net-dns/bind:dnstap - Enables dnstap packet logging
 net-dns/bind:fixed-rrset - Enables fixed rrset-order option
 net-dns/bind:geoip2 - Enable GeoIP2 API from MaxMind
-net-dns/bind:gost - Enables gost OpenSSL engine support
 net-dns/bind:gssapi - Enable gssapi support
 net-dns/bind:json - Enable JSON statistics channel
 net-dns/bind:lmdb - Enable LMDB support to store configuration for 'addzone' zones
