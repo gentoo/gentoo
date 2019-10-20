@@ -70,7 +70,6 @@ S="${WORKDIR}/${P/_/}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.6-use-trace.patch
-	"${FILESDIR}"/${PN}-1.3.6-mysql-8.patch
 	"${FILESDIR}"/${PN}-1.3.6a-fix-libcheck.patch
 )
 
