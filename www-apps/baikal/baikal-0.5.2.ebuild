@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~arm ~ppc64"
 IUSE="+mysql sqlite"
 REQUIRED_USE="|| ( mysql sqlite )"
 
+DEPEND="app-arch/unzip"
 RDEPEND=">=dev-lang/php-5.5[ctype,filter,json,pdo,session,xml,xmlreader,xmlwriter,mysql?,sqlite?]
 	mysql? ( virtual/mysql )
 	sqlite? ( dev-db/sqlite )
