@@ -18262,10 +18262,10 @@ www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
 www-apache/passenger 5.3.7 6.0.2 6.0.3 6.0.4: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
-www-apps/agendav 1.2.6.2 2.2.0: multilanguage CalDAV web client
+www-apps/agendav 2.2.0: multilanguage CalDAV web client
 www-apps/airdcpp-webui 2.6.0 2.6.1: Web interface for airdcpp-webclient
 www-apps/ampache 3.8.3 3.8.8: PHP-based tool for managing,updating and playing audio files via a web interface
-www-apps/baikal 0.4.6 0.5.2 0.6.0: Lightweight CalDAV+CardDAV server
+www-apps/baikal 0.5.2 0.6.0: Lightweight CalDAV+CardDAV server
 www-apps/blazeblogger 1.2.0-r1: Simple, capable content management system for producing static content
 www-apps/blohg 0.13-r3 9999: A Mercurial (or Git) based blogging engine
 www-apps/blohg-tumblelog 0.2 9999: A blohg extension with reStructuredText directives to run a tumblelog
