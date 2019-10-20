@@ -1,0 +1,114 @@
+From b561bd29d8797ae2e72d45df8fc122164fc88b6c Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sun, 20 Oct 2019 14:57:43 +0300
+Subject: [PATCH] build: Support disabling introspection and vapi generation
+
+---
+ meson_options.txt | 14 +++++++++++
+ src/meson.build   | 64 ++++++++++++++++++++++++++---------------------
+ 2 files changed, 49 insertions(+), 29 deletions(-)
+
+diff --git a/meson_options.txt b/meson_options.txt
+index a7ce738..c794d4b 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -4,3 +4,17 @@ option (
+   description: 'Find devices via udev',
+   value: 'auto'
+ )
++
++option (
++  'introspection',
++  type: 'boolean',
++  description: 'Generate introspection data (requires gobject-introspection)',
++  value: true
++)
++
++option (
++  'vapi',
++  type: 'boolean',
++  description: 'Generate vapi data (requires vapigen and introspection option)',
++  value: true
++)
+diff --git a/src/meson.build b/src/meson.build
+index 7ac916b..50cad92 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -90,39 +90,45 @@ if gudev.found()
+   libmanette_gir_includes += [ 'GUdev-1.0' ]
+ endif
+ 
+-libmanette_gir = gnome.generate_gir(
+-  libmanette_lib,
+-  extra_args: libmanette_gir_args,
+-  export_packages: libmanette_module,
+-  sources: libmanette_headers + libmanette_sources,
+-  nsversion: api_version,
+-  namespace: 'Manette',
+-  identifier_prefix: 'Manette',
+-  includes: libmanette_gir_includes,
+-  header: libmanette_main_header,
+-  install: true,
+-  symbol_prefix: 'manette',
+-)
+-
+-libmanette_vapi_packages = [
+-  'gobject-2.0',
+-  'gio-2.0',
+-]
+-
+-if gudev.found()
+-  libmanette_vapi_packages += [ 'gudev-1.0' ]
++built_girs = []
++if get_option('introspection')
++  libmanette_gir = gnome.generate_gir(
++    libmanette_lib,
++    extra_args: libmanette_gir_args,
++    export_packages: libmanette_module,
++    sources: libmanette_headers + libmanette_sources,
++    nsversion: api_version,
++    namespace: 'Manette',
++    identifier_prefix: 'Manette',
++    includes: libmanette_gir_includes,
++    header: libmanette_main_header,
++    install: true,
++    symbol_prefix: 'manette',
++  )
++  built_girs += [ libmanette_gir ]
++
++  if get_option('vapi')
++    libmanette_vapi_packages = [
++      'gobject-2.0',
++      'gio-2.0',
++    ]
++
++    if gudev.found()
++      libmanette_vapi_packages += [ 'gudev-1.0' ]
++    endif
++
++    gnome.generate_vapi(
++      libmanette_module,
++      install: true,
++      packages: libmanette_vapi_packages,
++      sources: libmanette_gir[0],
++    )
++  endif
+ endif
+ 
+-gnome.generate_vapi(
+-  libmanette_module,
+-  install: true,
+-  packages: libmanette_vapi_packages,
+-  sources: libmanette_gir[0],
+-)
+-
+ libmanette_dep = declare_dependency(
+   link_with: libmanette_lib,
+-  sources: libmanette_gir,
++  sources: built_girs,
+   include_directories: confinc,
+   dependencies: libmanette_deps,
+ )
+-- 
+2.20.1
+
