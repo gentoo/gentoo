@@ -1,0 +1,70 @@
+From d26e3fc037f477648b6265ff9cdcb2c616942fae Mon Sep 17 00:00:00 2001
+From: Raphael Kubo da Costa <raphael.kubo.da.costa@intel.com>
+Date: Tue, 15 Oct 2019 14:56:07 +0000
+Subject: [PATCH] ui/display: Include <bitset> for std::bitset
+
+Follow-up to commit 1b7e6d75f ("ui/display: extend EdidParser for HDR
+metadata") to fix the build with libstdc++ (and maybe MSVC):
+
+./../../ui/display/util/edid_parser.cc:416:22: error: no template named 'bitset' in namespace 'std'
+          const std::bitset<kMaxNumColorimetryEntries>
+                ~~~~~^
+./../../ui/display/util/edid_parser.cc:430:22: error: no template named 'bitset' in namespace 'std'
+          const std::bitset<kMaxNumHDRStaticMedatataEntries>
+                ~~~~~^
+
+Bug: 957519, 1012846
+Change-Id: Ic3c9c9416ac446bde9f190b9575ef1a386aa8e8e
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1862917
+Commit-Queue: Raphael Kubo da Costa <raphael.kubo.da.costa@intel.com>
+Commit-Queue: Miguel Casas <mcasas@chromium.org>
+Auto-Submit: Raphael Kubo da Costa <raphael.kubo.da.costa@intel.com>
+Reviewed-by: Miguel Casas <mcasas@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#705965}
+---
+
+diff --git a/ui/display/util/edid_parser.cc b/ui/display/util/edid_parser.cc
+index 44f2fdb..1adebb7 100644
+--- a/ui/display/util/edid_parser.cc
++++ b/ui/display/util/edid_parser.cc
+@@ -7,6 +7,7 @@
+ #include <stddef.h>
+ 
+ #include <algorithm>
++#include <bitset>
+ 
+ #include "base/hash/hash.h"
+ #include "base/strings/string_util.h"
+
+IWYU: add missing algorithm
+---
+
+diff --git a/ui/gfx/font.cc b/ui/gfx/font.cc
+index 21367fd..085baeb 100644
+--- a/ui/gfx/font.cc
++++ b/ui/gfx/font.cc
+@@ -8,6 +8,8 @@
+ #include "build/build_config.h"
+ #include "ui/gfx/platform_font.h"
+ 
++#include <algorithm>
++
+ namespace gfx {
+ 
+ ////////////////////////////////////////////////////////////////////////////////
+
+IWYU: add missing vector
+---
+
+diff --git a/chrome/browser/apps/launch_service/launch_manager.h b/chrome/browser/apps/launch_service/launch_manager.h
+index 00aeb9d..76570ea 100644
+--- a/chrome/browser/apps/launch_service/launch_manager.h
++++ b/chrome/browser/apps/launch_service/launch_manager.h
+@@ -6,6 +6,7 @@
+ #define CHROME_BROWSER_APPS_LAUNCH_SERVICE_LAUNCH_MANAGER_H_
+ 
+ #include <string>
++#include <vector>
+ 
+ #include "base/macros.h"
+ 
