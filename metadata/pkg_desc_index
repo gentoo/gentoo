@@ -160,7 +160,7 @@ app-accessibility/orca 3.30.2: Extensible screen reader that provides access to 
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
 app-accessibility/simon 9999: Open-source speech recognition program for replacing mouse and keyboard
 app-accessibility/sound-icons 0.1: a collection of Sound Icons for speech-dispatcher
-app-accessibility/speech-dispatcher 0.8.7 0.8.7-r1: Speech synthesis interface
+app-accessibility/speech-dispatcher 0.8.7-r2 0.8.7-r3: Speech synthesis interface
 app-accessibility/speech-tools 2.1-r4: Speech tools for Festival Text to Speech engine
 app-accessibility/speechd-el 2.5: Emacs speech support
 app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
@@ -9457,7 +9457,7 @@ dev-ros/robot_state_publisher 1.13.5 1.13.6-r1 9999: Package for publishing the 
 dev-ros/ros_environment 1.2.0-r1 9999: ROS environment variables
 dev-ros/rosapi 0.8.6 0.9.0 0.10.1 0.11.1 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
 dev-ros/rosauth 0.1.7 9999: Server Side tools for Authorization and Authentication of ROS Clients
-dev-ros/rosbag 1.14.3-r1 9999: Set of tools for recording from and playing back to ROS topics
+dev-ros/rosbag 1.14.3-r2 9999: Set of tools for recording from and playing back to ROS topics
 dev-ros/rosbag_migration_rule 1.0.0 9999: Allows to export rosbag migration rule files without depending on rosbag
 dev-ros/rosbag_storage 1.14.2-r1 1.14.3-r2 9999: Set of tools for recording from and playing back ROS message
 dev-ros/rosbash 1.14.0 1.14.1 1.14.2 1.14.3 1.14.4 1.14.6 9999: Assorted shell commands for using ros with bash
