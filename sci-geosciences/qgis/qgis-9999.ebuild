@@ -53,7 +53,7 @@ COMMON_DEPEND="
 	>=sci-libs/gdal-2.2.3:=[geos]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
-	sci-libs/proj
+	sci-libs/proj:=
 	>=x11-libs/qscintilla-2.10.1:=[qt5(+)]
 	>=x11-libs/qwt-6.1.2:6=[qt5(+),svg]
 	3d? ( >=dev-qt/qt3d-${QT_MIN_VER}:5 )
