@@ -5,8 +5,7 @@ EAPI=7
 
 inherit autotools
 
-MY_PV=${PV/_beta/b}
-S=${WORKDIR}/${PN}-${MY_PV}
+MY_PV="${PV/_beta/b}"
 
 DESCRIPTION="HTTP/HTML indexing and searching system"
 HOMEPAGE="http://www.htdig.org"
@@ -18,12 +17,15 @@ KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-lin
 IUSE="libressl ssl"
 
 DEPEND="
-	>=sys-libs/zlib-1.1.3
+	sys-libs/zlib
 	app-arch/unzip
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)"
+RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc4.patch
@@ -33,8 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-musl.patch
 	"${FILESDIR}"/${P}-drop-bogus-assignment.patch #638720
 )
-
-HTML_DOCS=( htdoc )
+HTML_DOCS=( htdoc/. )
 
 src_prepare() {
 	default
@@ -62,6 +63,10 @@ src_install () {
 		"${ED}"/etc/${PN}/${PN}.conf \
 		"${ED}"/usr/bin/rundig \
 		|| die "sed failed (removing \${D} from installed files)"
+
 	# symlink htsearch so it can be easily found. see bug #62087
 	dosym ../../var/www/localhost/cgi-bin/htsearch /usr/bin/htsearch
+
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }
