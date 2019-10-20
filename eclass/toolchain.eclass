@@ -9,16 +9,16 @@ HOMEPAGE="https://gcc.gnu.org/"
 
 inherit eutils fixheadtails flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
 
-if [[ ${PV} == *_pre9999* ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="git://gcc.gnu.org/git/gcc.git"
 	# naming style:
-	# gcc-4.7.1_pre9999 -> gcc-4_7-branch
+	# gcc-10.1.0_pre9999 -> gcc-10-branch
 	#  Note that the micro version is required or lots of stuff will break.
 	#  To checkout master set gcc_LIVE_BRANCH="master" in the ebuild before
 	#  inheriting this eclass.
-	EGIT_BRANCH="${PN}-${PV%.?_pre9999}-branch"
+	EGIT_BRANCH="${PN}-${PV%.?.?_pre9999}-branch"
 	EGIT_BRANCH=${EGIT_BRANCH//./_}
-	inherit git-2
+	inherit git-r3
 fi
 
 FEATURES=${FEATURES/multilib-strict/}
@@ -260,7 +260,9 @@ PDEPEND=">=sys-devel/gcc-config-1.7"
 # Set the source directory depending on whether we're using
 # a prerelease, snapshot, or release tarball.
 S=$(
-	if [[ -n ${PRERELEASE} ]] ; then
+	if [[ ${PV} == *9999* ]]; then
+		echo ${EGIT_CHECKOUT_DIR}
+	elif [[ -n ${PRERELEASE} ]] ; then
 		echo ${WORKDIR}/gcc-${PRERELEASE}
 	elif [[ -n ${SNAPSHOT} ]] ; then
 		echo ${WORKDIR}/gcc-${SNAPSHOT}
@@ -437,7 +439,7 @@ toolchain_pkg_setup() {
 
 toolchain_src_unpack() {
 	if [[ ${PV} == *9999* ]]; then
-		git-2_src_unpack
+		git-r3_src_unpack
 	else
 		gcc_quick_unpack
 	fi
