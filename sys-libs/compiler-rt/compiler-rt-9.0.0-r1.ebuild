@@ -37,6 +37,12 @@ BDEPEND="
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+PATCHES=(
+	# Fix building broken crtbegin/crtend
+	# https://bugs.gentoo.org/698086
+	"${FILESDIR}"/9.0.0/0001-compiler-rt-crt-make-test-case-nontrivial-in-check_c.patch
+)
+
 pkg_pretend() {
 	if ! use clang && ! tc-is-clang; then
 		ewarn "Building using a compiler other than clang may result in broken atomics"
