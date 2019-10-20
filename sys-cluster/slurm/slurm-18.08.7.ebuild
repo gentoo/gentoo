@@ -67,7 +67,7 @@ REQUIRED_USE="torque? ( perl )"
 LIBSLURM_PERL_S="${WORKDIR}/${MY_P}/contribs/perlapi/libslurm/perl"
 LIBSLURMDB_PERL_S="${WORKDIR}/${MY_P}/contribs/perlapi/libslurmdb/perl"
 
-RESTRICT="primaryuri test"
+RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-disable-sview.patch
