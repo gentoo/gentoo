@@ -21,7 +21,7 @@ COMMON_DEPEND="
 	>=app-crypt/libsecret-0.7
 	>=dev-libs/libpwquality-1.0.0
 	>=media-libs/libcanberra-0.1[gtk3]
-	>=media-libs/libdvdread-4.2.0
+	>=media-libs/libdvdread-4.2.0:0=
 	>=x11-libs/libnotify-0.7:=
 	>=app-arch/xz-utils-5.0.5
 	elogind? ( >=sys-auth/elogind-209 )
