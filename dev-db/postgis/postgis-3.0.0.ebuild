@@ -17,19 +17,19 @@ HOMEPAGE="http://postgis.net"
 SRC_URI="http://download.osgeo.org/postgis/source/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="address-standardizer doc gtk static-libs mapbox test topology"
 
 RDEPEND="
 	${POSTGRES_DEP}
 	dev-libs/json-c:=
 	dev-libs/libxml2:2
-	>=sci-libs/geos-3.5.0
+	>=sci-libs/geos-3.6.0
 	>=sci-libs/proj-4.6.0
 	>=sci-libs/gdal-1.10.0
 	address-standardizer? ( dev-libs/libpcre )
 	gtk? ( x11-libs/gtk+:2 )
-	mapbox? ( dev-libs/protobuf )
+	dev-libs/protobuf
 "
 
 DEPEND="${RDEPEND}
@@ -61,6 +61,8 @@ QA_FLAGS_IGNORED="usr/lib(64)?/(rt)?postgis-${PGIS}\.so"
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-2.2.0-arflags.patch"
 
+	# funky misdetection if enabled but --without-protobuf
+
 	local AT_M4DIR="macros"
 	eautoreconf
 
@@ -73,7 +75,7 @@ src_configure() {
 	use gtk                  && myargs+=" --with-gui"
 
 	use address-standardizer || myargs+=" --without-address-standardizer"
-	use mapbox               || myargs+=" --without-protobuf"
+	myargs+=" --with-protobuf"
 	use topology             || myargs+=" --without-topology"
 
 	postgres-multi_foreach econf ${myargs}
