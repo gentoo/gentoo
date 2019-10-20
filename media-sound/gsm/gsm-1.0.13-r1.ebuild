@@ -34,8 +34,6 @@ src_configure() {
 	# From upstream Makefile. Define this if your host multiplies
 	# floats faster than integers, e.g. on a SPARCstation.
 	use sparc && append-flags -DUSE_FLOAT_MUL -DFAST
-
-	multilib-minimal_src_compile
 }
 
 multilib_src_compile() {
