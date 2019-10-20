@@ -3,10 +3,11 @@
 
 EAPI=7
 
-DESCRIPTION="PROJ coordinate transformation software"
-HOMEPAGE="https://proj4.org/"
 DATUMGRID="${PN}-datumgrid-1.8.tar.gz"
 EUROPE_DATUMGRID="${PN}-datumgrid-europe-1.4.tar.gz"
+
+DESCRIPTION="PROJ coordinate transformation software"
+HOMEPAGE="https://proj4.org/"
 SRC_URI="
 	https://download.osgeo.org/proj/${P}.tar.gz
 	https://download.osgeo.org/proj/${DATUMGRID}
