@@ -16588,7 +16588,7 @@ sci-libs/superlu_mt 3.1: Multithreaded sparse LU factorization library
 sci-libs/symengine 0.3.0-r1 0.4.0: Fast symbolic manipulation library, written in C++
 sci-libs/szip 2.1-r2: Extended-Rice lossless compression algorithm implementation
 sci-libs/ta-lib 0.4.0: Technical Analysis Library for analyzing financial markets trends
-sci-libs/tamu_anova 0.2.1: ANOVA Extensions to the GNU Scientific Library
+sci-libs/tamu_anova 0.2-r1: ANOVA Extensions to the GNU Scientific Library
 sci-libs/taucs 2.2: C library of sparse linear solvers
 sci-libs/tensorflow 1.13.1 1.14.0-r1 1.14.0-r2 1.15.0_rc0 2.0.0: Computation framework using data flow graphs for scalable machine learning
 sci-libs/tensorflow-estimator 1.13.0 1.14.0 1.15.0 2.0.0: A high-level TensorFlow API that greatly simplifies machine learning programming
@@ -18308,7 +18308,7 @@ www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module us
 www-apps/moodle 3.5.8 3.6.6 3.7.2: The Moodle Course Management System
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
-www-apps/nanoc 4.10.4 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
+www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5: IP address and data center infrastructure management tool
 www-apps/nextcloud 14.0.14 15.0.12 16.0.5 17.0.0: Personal cloud that runs on your own server
