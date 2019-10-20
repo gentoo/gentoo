@@ -177,7 +177,7 @@ src_install() {
 	fi
 	if use torque; then
 		emake DESTDIR="${D}" -C contribs/torque
-		rm -f "${ED}/usr/bin/mpiexec" || die
+		rm -f "${D}"/usr/bin/mpiexec || die
 	fi
 	use static-libs || find "${ED}" -name '*.la' -exec rm {} +
 	# install sample configs
@@ -221,7 +221,7 @@ src_install() {
 
 pkg_preinst() {
 	if use munge; then
-		sed -i 's,\(SLURM_USE_MUNGE=\).*,\11,' "${ED}"etc/conf.d/slurm || die
+		sed -i 's,\(SLURM_USE_MUNGE=\).*,\11,' "${D}"/etc/conf.d/slurm || die
 	fi
 }
 
@@ -233,11 +233,11 @@ create_folders_and_fix_permissions() {
 
 pkg_postinst() {
 	paths=(
-		"${EROOT}"var/${PN}/checkpoint
-		"${EROOT}"var/${PN}
-		"${EROOT}"var/spool/${PN}/slurmd
-		"${EROOT}"var/spool/${PN}
-		"${EROOT}"var/log/${PN}
+		"${EROOT}"/var/${PN}/checkpoint
+		"${EROOT}"/var/${PN}
+		"${EROOT}"/var/spool/${PN}/slurmd
+		"${EROOT}"/var/spool/${PN}
+		"${EROOT}"/var/log/${PN}
 		/var/tmp/${PN}/${PN}d
 		/var/tmp/${PN}
 		/run/${PN}
