@@ -14,7 +14,7 @@ SLOT="0/2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc static-libs"
 
-RDEPEND="sci-libs/proj"
+RDEPEND="sci-libs/proj:="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
