@@ -1,0 +1,13 @@
+diff --git a/net/dns/dns_util.cc b/net/dns/dns_util.cc
+index 14997c4..1543e91 100644
+--- a/net/dns/dns_util.cc
++++ b/net/dns/dns_util.cc
+@@ -144,7 +144,7 @@ const std::vector<DohUpgradeEntry>& GetDohUpgradeList() {
+   // DohProviderId histogram suffix list in
+   // tools/metrics/histograms/histograms.xml.
+   static const base::NoDestructor<std::vector<DohUpgradeEntry>>
+-      upgradable_servers({
++      upgradable_servers(std::initializer_list<DohUpgradeEntry>{
+           DohUpgradeEntry(
+               "CleanBrowsingAdult",
+               {"185.228.168.10", "185.228.169.11", "2a0d:2a00:1::1",
