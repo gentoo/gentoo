@@ -14,7 +14,7 @@ SRC_URI="https://github.com/annulen/webkit/releases/download/${MY_P}/${MY_P}.tar
 
 LICENSE="BSD LGPL-2+"
 SLOT="5/5.212"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 ~x86"
 IUSE="geolocation gles2 +gstreamer +hyphen +jit multimedia nsplugin opengl orientation +printsupport qml webp X"
 
 REQUIRED_USE="
