@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 inherit gnome.org gnome2-utils meson readme.gentoo-r1 xdg
 
 DESCRIPTION="Archive manager for GNOME"
@@ -44,7 +43,7 @@ and install the relevant package. For example:
 7-zip   - app-arch/p7zip
 ace     - app-arch/unace
 arj     - app-arch/arj
-brotli	- app-arch/brotli
+brotli  - app-arch/brotli
 cpio    - app-arch/cpio
 deb     - app-arch/dpkg
 iso     - app-cdr/cdrtools
@@ -59,7 +58,7 @@ zoo     - app-arch/zoo"
 
 src_prepare() {
 	# File providing Gentoo package names for various archivers
-	cp -v "${FILESDIR}"/3.22-packages.match data/packages.match || die
+	cp -v "${FILESDIR}"/3.32-packages.match data/packages.match || die
 
 	xdg_src_prepare
 }
