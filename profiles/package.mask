@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
+# Testing version that breaks multiple plugins.  Let's keep it masked
+# until upstream releases fixed versions.
+~xfce-base/xfce4-panel-4.15.0
+
+# Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # The XFCE GTK+ engines have been abandoned upstream.  They do not work
 # well with modern GTK+ versions, and have no seen any updates
 # since 2015.
