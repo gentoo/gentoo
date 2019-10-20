@@ -14,7 +14,7 @@ SRC_URI="
 "
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/15"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="europe static-libs test"
 REQUIRED_USE="test? ( !europe )"
