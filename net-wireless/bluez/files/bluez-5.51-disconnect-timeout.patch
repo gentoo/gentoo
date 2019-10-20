@@ -1,0 +1,104 @@
+From 52faac4648500dd45c06b6aa41f1be426c43a125 Mon Sep 17 00:00:00 2001
+From: Luiz Augusto von Dentz <luiz.von.dentz@intel.com>
+Date: Fri, 11 Oct 2019 15:40:04 +0300
+Subject: audio: Fix cancelling disconnect timeout
+
+If AVDTP session has been connected but no stream has been setup calls
+to service->connect would return -EBUSY to avoid stream setup collision
+but it also takes a reference to the session cancelling the disconnect
+timeout and disabling the stream_setup logic that would attempt to
+estabilish a stream.
+---
+ profiles/audio/sink.c   | 25 ++++++++++++-------------
+ profiles/audio/source.c | 25 ++++++++++++-------------
+ 2 files changed, 24 insertions(+), 26 deletions(-)
+
+diff --git a/profiles/audio/sink.c b/profiles/audio/sink.c
+index 7cac21034..966440534 100644
+--- a/profiles/audio/sink.c
++++ b/profiles/audio/sink.c
+@@ -256,11 +256,18 @@ gboolean sink_setup_stream(struct btd_service *service, struct avdtp *session)
+ 	if (sink->connect_id > 0 || sink->disconnect_id > 0)
+ 		return FALSE;
+ 
+-	if (session && !sink->session)
+-		sink->session = avdtp_ref(session);
+-
+-	if (!sink->session)
+-		return FALSE;
++	if (!sink->session) {
++		if (session)
++			sink->session = avdtp_ref(session);
++		else
++			sink->session = a2dp_avdtp_get(
++					btd_service_get_device(service));
++
++		if (!sink->session) {
++			DBG("Unable to get a session");
++			return FALSE;
++		}
++	}
+ 
+ 	sink->connect_id = a2dp_discover(sink->session, discovery_complete,
+ 								sink);
+@@ -274,14 +281,6 @@ int sink_connect(struct btd_service *service)
+ {
+ 	struct sink *sink = btd_service_get_user_data(service);
+ 
+-	if (!sink->session)
+-		sink->session = a2dp_avdtp_get(btd_service_get_device(service));
+-
+-	if (!sink->session) {
+-		DBG("Unable to get a session");
+-		return -EIO;
+-	}
+-
+ 	if (sink->connect_id > 0 || sink->disconnect_id > 0)
+ 		return -EBUSY;
+ 
+diff --git a/profiles/audio/source.c b/profiles/audio/source.c
+index 4081e1970..0ac20fe40 100644
+--- a/profiles/audio/source.c
++++ b/profiles/audio/source.c
+@@ -257,11 +257,18 @@ gboolean source_setup_stream(struct btd_service *service,
+ 	if (source->connect_id > 0 || source->disconnect_id > 0)
+ 		return FALSE;
+ 
+-	if (session && !source->session)
+-		source->session = avdtp_ref(session);
+-
+-	if (!source->session)
+-		return FALSE;
++	if (!source->session) {
++		if (session)
++			source->session = avdtp_ref(session);
++		else
++			source->session = a2dp_avdtp_get(
++					btd_service_get_device(service));
++
++		if (!source->session) {
++			DBG("Unable to get a session");
++			return FALSE;
++		}
++	}
+ 
+ 	source->connect_id = a2dp_discover(source->session, discovery_complete,
+ 								source);
+@@ -275,14 +282,6 @@ int source_connect(struct btd_service *service)
+ {
+ 	struct source *source = btd_service_get_user_data(service);
+ 
+-	if (!source->session)
+-		source->session = a2dp_avdtp_get(btd_service_get_device(service));
+-
+-	if (!source->session) {
+-		DBG("Unable to get a session");
+-		return -EIO;
+-	}
+-
+ 	if (source->connect_id > 0 || source->disconnect_id > 0)
+ 		return -EBUSY;
+ 
+-- 
+cgit 1.2-0.3.lf.el7
+
