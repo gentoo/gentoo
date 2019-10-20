@@ -81,8 +81,6 @@ DEPEND="${RDEPEND}
 PATCHES+=(
 	"${FILESDIR}/${PN}-5.12.0-nouveau-disable-gpu.patch" # bug 609752
 	"${FILESDIR}/${P}-pulseaudio-13.patch" # bug 694960
-	# QTBUG-76963, not yet upstream:
-	"${FILESDIR}/${PN}-5.12.4-webrtc-missing-header-w-linux-headers-5.2.patch"
 )
 
 src_prepare() {

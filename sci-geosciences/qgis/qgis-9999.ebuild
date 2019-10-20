@@ -53,7 +53,7 @@ COMMON_DEPEND="
 	>=sci-libs/gdal-2.2.3:=[geos]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
-	sci-libs/proj
+	sci-libs/proj:=
 	>=x11-libs/qscintilla-2.10.1:=[qt5(+)]
 	>=x11-libs/qwt-6.1.2:6=[qt5(+),svg]
 	3d? ( >=dev-qt/qt3d-${QT_MIN_VER}:5 )
@@ -206,9 +206,6 @@ pkg_postinst() {
 		elog "But some installed python-plugins import the psycopg2 module."
 		elog "If you do not need these plugins just disable them"
 		elog "in the Plugins menu, else you need to set USE=\"postgres\""
-	fi
-	if has_version "<sci-geosciences/qgis-3"; then
-		elog "QGIS is now based on PyQt5. Old scripts may not work anymore."
 	fi
 
 	xdg_pkg_postinst

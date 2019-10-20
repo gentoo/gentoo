@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sci-geosciences@gentoo.org</email>
-    <name>Gentoo Geosciences Project</name>
-  </maintainer>
-  <longdescription>Proj.4 cartograpic projection code for forward and inverse 
-coordinate and projection transformations.</longdescription>
+	<maintainer type="project">
+		<email>sci-geosciences@gentoo.org</email>
+		<name>Gentoo Geosciences Project</name>
+	</maintainer>
+	<longdescription>
+		PROJ enables the transformation of geospatial coordinates
+		between coordinate reference systems.
+	</longdescription>
+	<use>
+		<flag name="europe">Install the PROJ collection of European grids and init-files</flag>
+	</use>
 </pkgmetadata>
