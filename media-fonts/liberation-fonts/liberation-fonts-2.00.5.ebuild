@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 inherit font python-any-r1
 
@@ -27,7 +27,6 @@ DEPEND="
 		media-gfx/fontforge
 		dev-python/fonttools
 	)"
-RDEPEND=""
 
 pkg_setup() {
 	if use fontforge; then
