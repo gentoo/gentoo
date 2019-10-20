@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-10-20)
+# A dummy package with no revdeps.  Replaced by app-text/rarian.
+# Removal in 30 days.  Bug #697376.
+app-text/scrollkeeper
+
 # David Seifert <soap@gentoo.org> (2019-10-19)
 # EAPI 0, tarball completely broken, only contains
 # symlinks to /usr/portage/distdir.
