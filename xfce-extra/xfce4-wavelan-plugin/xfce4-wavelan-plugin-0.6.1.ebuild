@@ -21,6 +21,14 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+src_prepare() {
+	# fix build failure w/ xfce4-panel-4.15.0
+	# https://git.xfce.org/panel-plugins/xfce4-wavelan-plugin/commit/?id=c0033c32ec28bbdd5f735f9b52d212e881eb2219
+	sed -i -e 's@<libxfce4panel/xfce-panel-plugin\.h>@<libxfce4panel/libxfce4panel.h>@' \
+		panel-plugin/wavelan.c || die
+	default
+}
+
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
