@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -23,6 +23,10 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	econf --disable-static
+}
+
 src_test() {
 	cd "${S}"/test || die
 	./runtests.in || die
@@ -34,4 +38,5 @@ src_install() {
 		doins ragel.vim
 	fi
 	default
+	find "${D}" -name '*.la' -delete || die
 }

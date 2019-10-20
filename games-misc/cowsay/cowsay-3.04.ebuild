@@ -1,19 +1,25 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=7
 
-DESCRIPTION="configurable talking ASCII cow (and other characters)"
-HOMEPAGE="http://www.nog.net/~tony/warez/cowsay.shtml"
-SRC_URI="http://www.nog.net/~tony/warez/${P}.tar.gz"
+DESCRIPTION="Configurable talking ASCII cow (and other characters)"
+HOMEPAGE="https://github.com/tnalpgge/rank-amateur-cowsay"
+SRC_URI="https://github.com/tnalpgge/rank-amateur-${PN}/archive/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc64 ~x86 ~x64-solaris"
-IUSE=""
 
 RDEPEND=">=dev-lang/perl-5"
+BDEPEND="${RDEPEND}"
+PATCHES=(
+	"${FILESDIR}/${P}-tongue.patch"
+	"${FILESDIR}/${P}-mech.patch"
+	"${FILESDIR}/${P}-utf8.patch"
+	"${FILESDIR}/${P}-version.patch" )
+
+S="${WORKDIR}/rank-amateur-${PN}-${P}"
 
 src_prepare() {
 	sed	-i \
@@ -25,10 +31,12 @@ src_prepare() {
 	sed -i \
 		-e "s|%PREFIX%/share/cows|${EPREFIX}/usr/share/${P}/cows|" cowsay.1 \
 			|| die "sed cowsay.1 failed"
-	epatch \
-		"${FILESDIR}/${P}"-tongue.patch \
-		"${FILESDIR}/${P}"-mech.patch \
-		"${FILESDIR}/${P}"-utf8.patch
+
+	default
+}
+
+src_compile() {
+	./install.sh "${D}"
 }
 
 src_install() {
@@ -36,6 +44,7 @@ src_install() {
 	doman cowsay.1
 	dosym cowsay /usr/bin/cowthink
 	dosym cowsay.1 /usr/share/man/man1/cowthink.1
-	dodir /usr/share/${P}/cows
-	cp -r cows "${ED}"/usr/share/${P}/ || die "cp failed"
+	insinto /usr/share/${P}
+	doins -r cows
+	einstalldocs
 }
