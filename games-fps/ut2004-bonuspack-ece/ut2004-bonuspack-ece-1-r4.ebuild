@@ -1,29 +1,34 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-MOD_DESC="Editor's Choice Edition bonus pack"
-MOD_NAME="Editor's Choice Edition"
-
-inherit games games-mods
+EAPI=7
 
 MY_P="ut2004megapack-linux.tar.bz2"
+
+DESCRIPTION="UT2004 Editor's Choice Edition - Editor's Choice Edition bonus pack"
 HOMEPAGE="http://www.unrealtournament2004.com/"
-SRC_URI="http://ut2004.ut-files.com/BonusPacks/${MY_P}
+SRC_URI="
+	http://ut2004.ut-files.com/BonusPacks/${MY_P}
 	http://unrealmassdestruction.com/downloads/ut2k4/essentials/UT2004-ONSBonusMapPack.zip"
 
 LICENSE="ut2003"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+
+BDEPEND="app-arch/unzip"
+
+S="${WORKDIR}"
 
 src_unpack() {
-	unpack ${MY_P}
+	unpack "${MY_P}"
+
 	cd UT2004MegaPack/Maps || die
 	unpack UT2004-ONSBonusMapPack.zip # bug #278002
 }
 
 src_prepare() {
+	default
+
 	mv -f UT2004MegaPack/* . || die
 	rmdir UT2004MegaPack || die
 
@@ -53,4 +58,11 @@ src_prepare() {
 	rm System/{Manifest.in{i,t},OnslaughtFull.int} || die
 	rm System/{Core.int,Engine.int,Setup.int,Window.int} || die
 	rm System/{OnslaughtFull.u,OnslaughtBP.u} || die
+}
+
+src_install() {
+	insinto /opt/ut2004
+	doins -r Animations Help Maps Sounds StaticMeshes System Textures
+
+	dosym ut2004 /opt/ut2004-ded
 }
