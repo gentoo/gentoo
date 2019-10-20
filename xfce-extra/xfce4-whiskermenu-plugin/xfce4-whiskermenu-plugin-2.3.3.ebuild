@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake-utils xdg-utils
 
 DESCRIPTION="Alternate application launcher for Xfce"
-HOMEPAGE="https://gottcode.org/xfce4-whiskermenu-plugin"
+HOMEPAGE="https://gottcode.org/xfce4-whiskermenu-plugin/"
 SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
