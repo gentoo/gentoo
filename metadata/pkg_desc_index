@@ -3163,7 +3163,7 @@ dev-db/pgtap 0.99.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.8.5 4.9.0.1 4.9.1: Web-based administration for MySQL database in PHP
 dev-db/plr 8.3.0.17: R language extension for postgresql database
-dev-db/postgis 2.4.6 2.4.7 2.4.8 2.5.1-r1 2.5.2 2.5.3 3.0.0_alpha4 3.0.0_rc2 9999: Geographic Objects for PostgreSQL
+dev-db/postgis 2.4.6 2.4.7 2.4.8 2.5.1-r1 2.5.2 2.5.3 3.0.0 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.4.22 9.4.22-r1 9.4.23 9.4.24 9.5.17 9.5.17-r1 9.5.18 9.5.19 9.6.13 9.6.13-r1 9.6.14 9.6.15 10.9 10.10 11.4 11.5 12.0 9999: PostgreSQL RDBMS
 dev-db/pspg 1.6.5 1.6.8: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000 11.01.0000: Official ODBC driver for PostgreSQL
@@ -18344,7 +18344,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.2.4: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.1: Web-based interactive data analytics notebook launcher
-www-client/chromium 77.0.3865.90 77.0.3865.120 78.0.3904.50: Open-source version of Google Chrome web browser
+www-client/chromium 77.0.3865.90 77.0.3865.120 78.0.3904.63: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.4 3.30.5 3.32.4 3.32.5: GNOME webbrowser based on Webkit
