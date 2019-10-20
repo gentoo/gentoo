@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-10-20)
+# Full of ancient StarOffice era templates, last updated in 2006.
+# Removal in 30 days. Bug #697400
+app-office/ooextras
+
 # Hans de Graaff <graaff@gentoo.org> (2019-10-19)
 # ruby24-only packages with no reverse dependencies and no recent
 # releases. Masked for removal in 30 days.
