@@ -18,4 +18,8 @@
 		is lacking and nostalgic value is absent. What I wanted was a font that
 		fills my virtual terminal window with the magic hacking glow.
 	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/svofski/glasstty/issues</bugs-to>
+		<remote-id type="github">svofski/glasstty</remote-id>
+	</upstream>
 </pkgmetadata>
