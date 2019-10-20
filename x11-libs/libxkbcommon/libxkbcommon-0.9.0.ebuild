@@ -15,6 +15,7 @@ inherit meson multilib-minimal ${GIT_ECLASS}
 
 DESCRIPTION="keymap handling library for toolkits and window systems"
 HOMEPAGE="https://xkbcommon.org/ https://github.com/xkbcommon/libxkbcommon/"
+LICENSE="MIT"
 IUSE="X doc test"
 SLOT="0"
 
