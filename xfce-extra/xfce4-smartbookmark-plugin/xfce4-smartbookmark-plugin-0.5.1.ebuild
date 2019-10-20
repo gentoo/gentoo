@@ -24,6 +24,10 @@ DOCS=( AUTHORS ChangeLog NEWS README )
 src_prepare() {
 	# substitute default bugtracker
 	sed -i -e '/bugs/s:bugs\.debian:bugs.gentoo:' src/smartbookmark.c || die
+	# fix build failure w/ xfce4-panel-4.15.0
+	# https://git.xfce.org/panel-plugins/xfce4-smartbookmark-plugin/commit/?id=856d73b51f5d237d3cf6792f5e9f55220e5facf1
+	sed -i -e 's@<libxfce4panel/xfce-panel-plugin\.h>@<libxfce4panel/libxfce4panel.h>@' \
+		src/smartbookmark.c || die
 	default
 }
 
