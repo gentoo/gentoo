@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.11-install-examples.patch
 	"${FILESDIR}"/${PN}-1.11.1_p20181028-version-1.11.2.patch
+	"${FILESDIR}"/${PN}-1.11.1_p20181028-libdir.patch
 )
 
 MULTILIB_CHOST_TOOLS=(
