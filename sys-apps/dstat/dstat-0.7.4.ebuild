@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 
 inherit python-r1
 
@@ -14,33 +14,33 @@ SRC_URI="https://github.com/dagwieers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="wifi doc examples"
+IUSE="doc examples wifi"
 REQUIRED_USE="wifi? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
+	dev-python/six[${PYTHON_USEDEP}]
 	wifi? (
 		${PYTHON_DEPS}
 		net-wireless/python-wifi
 	)"
 DEPEND=""
 
-PATCHES=( "${FILESDIR}/dstat-${PV}-skip-non-sandbox-tests.patch" )
+PATCHES=( \
+	"${FILESDIR}/dstat-${PV}-skip-non-sandbox-tests.patch" \
+	"${FILESDIR}/fix-collections-deprecation-warning.patch" \
+)
 
 src_prepare() {
 
 	# bug fix: allow delay to be specified
 	# backport from: https://github.com/dagwieers/dstat/pull/167/files
-	sed -i -e 's; / op\.delay; // op.delay;' "dstat"
+	sed -i -e 's; / op\.delay; // op.delay;' "dstat" || die
 
-	eapply_user
+	default
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install
-
-	python_replicate_script "${ED}"/usr/bin/${PN}
-
-	einstalldocs
+	default
 
 	if use examples; then
 		dodoc examples/{mstat,read}.py

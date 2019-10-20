@@ -1,0 +1,25 @@
+diff --git a/dstat b/dstat
+index 9359965..777242f 100755
+--- a/dstat
++++ b/dstat
+@@ -19,6 +19,11 @@
+ from __future__ import absolute_import, division, generators, print_function
+ __metaclass__ = type
+ 
++try:
++    from collections.abc import Sequence
++except ImportError:
++    from collections import Sequence
++
+ import collections
+ import fnmatch
+ import getopt
+@@ -512,7 +517,7 @@ class dstat:
+                 scale = self.scales[i]
+             else:
+                 scale = self.scale
+-            if isinstance(self.val[name], collections.Sequence) and not isinstance(self.val[name], six.string_types):
++            if isinstance(self.val[name], Sequence) and not isinstance(self.val[name], six.string_types):
+                 line = line + cprintlist(self.val[name], ctype, self.width, scale)
+                 sep = theme['frame'] + char['colon']
+                 if i + 1 != len(self.vars):
