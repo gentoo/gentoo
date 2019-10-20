@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 inherit distutils-r1 eutils
 
 DESCRIPTION="Tool suite for analysis and visualization of DNS and DNSSEC"
-HOMEPAGE="http://dnsviz.net/"
+HOMEPAGE="https://dnsviz.net/"
 SRC_URI="https://github.com/dnsviz/dnsviz/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
