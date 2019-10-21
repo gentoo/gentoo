@@ -9,5 +9,6 @@ python-augeas is a set of Python bindings around augeas.
   </longdescription>
   <upstream>
     <remote-id type="pypi">python-augeas</remote-id>
+    <remote-id type="github">hercules-team/python-augeas</remote-id>
   </upstream>
 </pkgmetadata>
