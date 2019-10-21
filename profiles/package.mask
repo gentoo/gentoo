@@ -64,7 +64,6 @@ dev-ruby/escape_utils
 dev-ruby/ruby-beautify
 dev-ruby/termcolor
 dev-ruby/terrapin
-dev-ruby/vcard
 www-servers/thin
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
