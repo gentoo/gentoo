@@ -9,15 +9,13 @@ DESCRIPTION="Client for keybase.io"
 HOMEPAGE="https://keybase.io/"
 SRC_URI="https://github.com/keybase/client/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="
-	~app-crypt/kbfs-2.11.0"
-RDEPEND="
-	app-crypt/gnupg"
+DEPEND=""
+RDEPEND="app-crypt/gnupg"
 
 src_unpack() {
 	unpack "${P}.tar.gz"
