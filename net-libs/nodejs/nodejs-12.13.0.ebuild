@@ -30,11 +30,13 @@ RDEPEND="
 	icu? ( >=dev-libs/icu-64.2:= )
 	ssl? ( >=dev-libs/openssl-1.1.1:0= )
 "
-DEPEND="
-	${RDEPEND}
+BDEPEND="
 	${PYTHON_DEPS}
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
+"
+DEPEND="
+	${RDEPEND}
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
