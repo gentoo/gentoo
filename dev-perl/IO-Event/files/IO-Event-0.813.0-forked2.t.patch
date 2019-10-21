@@ -1,0 +1,35 @@
+From e11dc91080151bb59d73e72c3c0a3409c1b999ef Mon Sep 17 00:00:00 2001
+From: Niko Tyni <ntyni@debian.org>
+Date: Sat, 12 Dec 2015 11:33:34 +0200
+Subject: [PATCH] Fix undeterministic test failures in t/forked2.t
+
+The parent process may get both the eof event from an old connection
+and the connect event from a new connection at the same time, and in an
+unpredictable order. If the connect event comes first, the handler may
+decrement the test counter to zero and make the eof handler think the
+testing is already over.
+
+Having the child synchronize on the eof event before making a new
+connection fixes this race.
+
+Bug-Debian: https://bugs.debian.org/730908
+Bug: https://rt.cpan.org/Ticket/Display.html?id=92200
+---
+ t/forked.tt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/t/forked.tt b/t/forked.tt
+index e56c7fa..0d9ce18 100755
+--- a/t/forked.tt
++++ b/t/forked.tt
+@@ -265,6 +265,7 @@ if ($child = fork()) {
+ 		}
+ 		print "# CHILD closing\n";
+ 		close($s);
++		syncto("e");
+ 	}
+ } else {
+ 	die "fork: $!";
+-- 
+2.6.2
+
