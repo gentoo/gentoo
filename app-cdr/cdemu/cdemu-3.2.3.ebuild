@@ -14,7 +14,7 @@ SRC_URI="https://download.sourceforge.net/cdemu/cdemu-client/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="+cdemu-daemon"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
