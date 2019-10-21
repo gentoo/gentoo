@@ -130,6 +130,7 @@ pkg_setup() {
 # FIXME: Unbundle libraw (libs/rawengine/libraw)
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_TESTING=OFF # bug #698192
 		-DENABLE_APPSTYLES=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_Jasper=ON
 		-DENABLE_AKONADICONTACTSUPPORT=$(usex addressbook)
