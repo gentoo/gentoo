@@ -30,11 +30,13 @@ RDEPEND="
 	icu? ( >=dev-libs/icu-60.1:= )
 	ssl? ( =dev-libs/openssl-1.0.2*:0=[-bindist] )
 "
-DEPEND="
-	${RDEPEND}
+BDEPEND="
 	${PYTHON_DEPS}
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
+"
+DEPEND="
+	${RDEPEND}
 "
 PATCHES=(
 	"${FILESDIR}"/nodejs-10.3.0-global-npm-config.patch
