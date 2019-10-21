@@ -10560,7 +10560,7 @@ dev-util/cdiff 1.0 9999: Colored, side-by-side diff terminal viewer
 dev-util/cflow 1.6: C function call hierarchy analyzer
 dev-util/cgdb 0.6.8 0.7.0-r1 9999: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.3: Minimal command-line source browsing tool similar to cscope
-dev-util/checkbashisms 2.19.6: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.19.6 2.19.7: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/clair 2.0.8: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.5 1.5-r1: Compiler plugin which allows clang to understand Qt semantics
@@ -13069,7 +13069,7 @@ media-libs/aubio 0.4.7 0.4.8 0.4.9: Library for audio labelling
 media-libs/audiofile 0.3.6-r3: An elegant API for accessing audio files
 media-libs/avidemux-core 2.7.3 2.7.4: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.3 2.7.4: Plugins for the video editor media-video/avidemux
-media-libs/babl 0.1.12 0.1.38 0.1.62 0.1.64 0.1.66 9999: A dynamic, any to any, pixel format conversion library
+media-libs/babl 0.1.12 0.1.38 0.1.62 0.1.64 0.1.66 0.1.72 9999: A dynamic, any to any, pixel format conversion library
 media-libs/bcg729 1.0.4 999999: encoder and decoder of the ITU G729 Annex A/B speech codec
 media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Blinkenlights
