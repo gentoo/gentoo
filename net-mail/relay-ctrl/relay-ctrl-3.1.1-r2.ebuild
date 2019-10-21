@@ -57,8 +57,9 @@ src_install() {
 	echo "1800" > ${D}${RELAYCTRL_CONFDIR}/RELAY_CTRL_EXPIRY || die
 
 	dodir /etc/cron.hourly
+	echo "#!/bin/sh" > ${D}/etc/cron.hourly/relay-ctrl-age
 	echo "/usr/bin/envdir ${RELAYCTRL_CONFDIR} ${RELAYCTRL_BINDIR}/relay-ctrl-age" \
-		> "${D}"/etc/cron.hourly/relay-ctrl-age
+		>> "${D}"/etc/cron.hourly/relay-ctrl-age
 	fperms 755 /etc/cron.hourly/relay-ctrl-age
 }
 
