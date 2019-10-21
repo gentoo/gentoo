@@ -3093,7 +3093,7 @@ dev-db/apgdiff 1.4 2.2.1 2.2.2 2.3 2.4: A simple PostgreSQL diff tool that is us
 dev-db/barman 2.1 2.3 2.4: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
-dev-db/clickhouse 18.6.0-r1 18.10.3-r1 18.12.17-r1 19.5.3.8-r1 19.9.5.36-r1 19.13.1.11-r2 19.13.1.11-r3: An OSS column-oriented database management system for real-time data analysis
+dev-db/clickhouse 18.6.0-r1 18.10.3-r1 18.12.17-r1 19.5.3.8-r1 19.9.5.36-r1 19.13.1.11-r2 19.13.1.11-r3 19.15.2.2: An OSS column-oriented database management system for real-time data analysis
 dev-db/cockroach 2.1.5 19.1.1: open source database for building cloud services
 dev-db/cpp-driver 2.9.0 2.11.0: DataStax C/C++ Driver for Cassandra
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
@@ -9241,7 +9241,7 @@ dev-qt/qtbluetooth 5.12.3 5.12.5: Bluetooth support library for the Qt5 framewor
 dev-qt/qtcharts 5.12.3 5.12.5: Chart component library for the Qt5 framework
 dev-qt/qtchooser 66: Tool to quickly switch between multiple Qt installations
 dev-qt/qtconcurrent 5.12.3 5.12.5: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 5.12.3 5.12.5: Cross-platform application development framework
+dev-qt/qtcore 5.12.3 5.12.5-r1: Cross-platform application development framework
 dev-qt/qtdatavis3d 5.12.3 5.12.5: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 5.12.3 5.12.5: Qt5 module for inter-process communication over the D-Bus protocol
 dev-qt/qtdeclarative 5.12.3 5.12.5: The QML and Quick modules for the Qt5 framework
