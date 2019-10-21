@@ -29,8 +29,8 @@ IUSE=""
 
 DEPEND="
 	=dev-libs/libplatform-2*
-	~media-tv/kodi-9999
-	~media-libs/kodi-platform-9999
+	=media-tv/kodi-18*
+	=media-libs/kodi-platform-18*
 	sys-libs/zlib
 	dev-libs/rapidxml
 	"
