@@ -1,0 +1,33 @@
+From 394128e8d58b58bbd7cef9a4523ae346f94cd456 Mon Sep 17 00:00:00 2001
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@ruhr-uni-bochum.de>
+Date: Sat, 27 Jul 2019 11:12:34 +0200
+Subject: Another include file fix
+
+---
+ rkward/rkward.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/rkward/rkward.cpp b/rkward/rkward.cpp
+index 1a4a7e3..bb2f69c 100644
+--- a/rkward/rkward.cpp
++++ b/rkward/rkward.cpp
+@@ -26,6 +26,9 @@
+ #include <QMenuBar>
+ #include <QStatusBar>
+ #include <QInputDialog>
++#include <QVBoxLayout>
++#include <QHBoxLayout>
++#include <QIcon>
+ 
+ // include files for KDE
+ #include <kmessagebox.h>
+@@ -41,7 +44,6 @@
+ #include <krecentfilesaction.h>
+ #include <ktoolbar.h>
+ #include <kactionmenu.h>
+-#include <QIcon>
+ #include <KSharedConfig>
+ #include <KConfigGroup>
+ 
+-- 
+cgit v1.1

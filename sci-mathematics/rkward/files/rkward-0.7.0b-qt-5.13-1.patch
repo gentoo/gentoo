@@ -1,0 +1,23 @@
+From b51802243f478d1d89120edc343bec7eb5ef8285 Mon Sep 17 00:00:00 2001
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@ruhr-uni-bochum.de>
+Date: Wed, 24 Jul 2019 19:36:51 +0200
+Subject: Fix compilation
+
+---
+ rkward/windows/rkworkplace.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/rkward/windows/rkworkplace.cpp b/rkward/windows/rkworkplace.cpp
+index 0dbf36a..94b3378 100644
+--- a/rkward/windows/rkworkplace.cpp
++++ b/rkward/windows/rkworkplace.cpp
+@@ -31,6 +31,7 @@
+ #include <QDir>
+ #include <QApplication>
+ #include <QMimeDatabase>
++#include <QLayout>
+ 
+ #include "detachedwindowcontainer.h"
+ #include "rkcommandeditorwindow.h"
+-- 
+cgit v1.1

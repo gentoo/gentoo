@@ -48,3 +48,5 @@ RDEPEND="${DEPEND}
 	virtual/libintl
 	!sci-mathematics/rkward:4
 "
+
+PATCHES=( "${FILESDIR}"/${P}-qt-5.13-{1,2,3}.patch)
