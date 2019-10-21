@@ -13,11 +13,9 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/LMMS/lmms.git"
 	inherit git-r3
 else
-	# Upstream again fsckd-up their release process
-	SRC_URI="https://github.com/LMMS/lmms/releases/download/v${PV/_/-}/${PN}_${PV/_*}.rc7.1.tar.xz -> ${P}.tar.xz"
+	SRC_URI="https://github.com/LMMS/lmms/releases/download/v${PV/_/-}/${PN}_${PV/_/-}.tar.xz -> ${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
-	#S="${WORKDIR}/${P/_/-}"
-	S="${WORKDIR}/${P/_*}~rc7.1"
+	S="${WORKDIR}/${P/_/-}"
 fi
 
 LICENSE="GPL-2 LGPL-2"
