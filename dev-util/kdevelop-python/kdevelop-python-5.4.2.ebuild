@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{5,6,7} )
 inherit kde5 python-single-r1
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 fi
 
 DESCRIPTION="Python plugin for KDevelop"
