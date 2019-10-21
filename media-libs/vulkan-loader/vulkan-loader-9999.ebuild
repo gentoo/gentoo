@@ -21,7 +21,7 @@ else
 	S="${WORKDIR}"/${MY_P}
 fi
 
-inherit python-any-r1 cmake-multilib
+inherit toolchain-funcs python-any-r1 cmake-multilib
 
 DESCRIPTION="Vulkan Installable Client Driver (ICD) Loader"
 HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Loader"
@@ -40,6 +40,11 @@ DEPEND="${PYTHON_DEPS}
 	)"
 
 multilib_src_configure() {
+	# Integrated clang assembler doesn't work with x86 - Bug #698164
+	if [[ tc-is-clang && ${ABI} == x86 ]]; then
+		append-cflags -fno-integrated-as
+	fi
+
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=True
 		-DBUILD_TESTS=False
