@@ -9,7 +9,7 @@ SRC_URI="https://alt-ergo.ocamlpro.com/http/${P}/${P}.tar.gz"
 
 LICENSE="CeCILL-C"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="examples gtk +ocamlopt"
 
 DEPEND=">=dev-lang/ocaml-3.12.1[ocamlopt?]
