@@ -34,7 +34,6 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.3-sysmacros.patch
-	"${FILESDIR}"/${PN}-4.3-aligned-data.patch
 )
 
 use10() { usex $1 1 0 ; }
@@ -64,5 +63,5 @@ src_compile() {
 
 src_install() {
 	dobin "${WORKDIR}"/${P}/${PN}/{mksquashfs,unsquashfs}
-	dodoc CHANGES README RELEASE-README RELEASE-READMEs/*
+	dodoc CHANGES README RELEASE-READMEs/*
 }
