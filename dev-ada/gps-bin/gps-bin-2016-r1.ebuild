@@ -13,7 +13,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5739cefdc7a447658e0b016b -> ${MY_P}.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND="${ADA_DEPS}"
