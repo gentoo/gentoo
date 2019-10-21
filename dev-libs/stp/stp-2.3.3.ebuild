@@ -39,6 +39,6 @@ src_install() {
 	cmake-utils_src_install
 
 	# don't install to /usr/man
-	doman "${D}/usr/man/man1/stp.1" || die
+	doman "${D}/usr/man/man1/stp.1"
 	rm -r "${D}/usr/man" || die
 }
