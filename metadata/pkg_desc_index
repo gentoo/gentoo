@@ -253,7 +253,7 @@ app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for 
 app-admin/haskell-updater 1.2.9 1.2.10 1.2.12-r1 1.3.1: Rebuild Haskell dependencies in Gentoo
 app-admin/hcloud 1.12.0 1.13.0: A command-line interface for Hetzner Cloud
 app-admin/hddtemp 0.3_beta15-r28: A simple utility to read the temperature of SMART capable hard drives
-app-admin/helm 2.14.3: Kubernetes Package Manager
+app-admin/helm 2.14.3 2.15.0: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
 app-admin/integrit 4.1-r1: file integrity verification program
@@ -1435,14 +1435,14 @@ app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 2.27.2 2.28.0 2.28.2 9999: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
-app-emulation/docker 18.09.9 19.03.2 19.03.3: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 18.09.9 19.03.2 19.03.3 19.03.4: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
 app-emulation/docker-compose 1.24.0 1.24.1: Multi-container orchestration for Docker
 app-emulation/docker-credential-helpers 0.6.0 0.6.3: A suite of programs to use native stores to keep Docker credentials safe
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.13.0: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.10.0: KVM driver for docker-machine
-app-emulation/docker-proxy 0.8.0_p20190513 0.8.0_p20190604 0.8.0_p20190807: Docker container networking
+app-emulation/docker-proxy 0.8.0_p20190513 0.8.0_p20190604 0.8.0_p20190807 0.8.0_p20191011: Docker container networking
 app-emulation/docker-registry 2.7.1: Docker Registry 2.0
 app-emulation/docker-runc 1.0.0_rc4_p20180122: runc container cli tools (docker fork)
 app-emulation/docker-swarm 1.2.5: A Docker-native clustering system
