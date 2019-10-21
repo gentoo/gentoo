@@ -14,7 +14,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/57399029c7a447658e0aff71
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-ada/gnat_util[${ADA_USEDEP}]
