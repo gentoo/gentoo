@@ -14,7 +14,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf8f4e31e87a8f1d42509f ->
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="${ADA_DEPS}"
