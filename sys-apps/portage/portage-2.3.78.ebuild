@@ -103,6 +103,9 @@ pkg_setup() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# Apply 0299aedef74e47c0a68acf7905d8714c9578f125 for bug 698046.
+	sed -e 's|rsync -avP|rsync -LtvP|' -i lib/portage/tests/util/test_getconfig.py || die
+
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
 		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
