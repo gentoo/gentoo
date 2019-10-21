@@ -5118,7 +5118,6 @@ dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Fr
 dev-libs/redland-bindings 1.0.14.1-r2: Language bindings for Redland
 dev-libs/replicant 0.6.4 0.7.1 0.8.0 0.8.1: Hyperdex replicant support library
 dev-libs/rlog 1.4: A C++ logging library
-dev-libs/rlottie 0.0.1_pre20190920: A platform independent standalone library that plays Lottie Animations
 dev-libs/rocm-comgr 2.6.0 2.7.0 2.8.0 2.9.0: Radeon Open Compute Code Object Manager
 dev-libs/rocm-device-libs 2.6.0 2.7.0 2.8.0 2.9.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
@@ -13380,6 +13379,7 @@ media-libs/raspberrypi-userland 0_pre20160424 9999: Raspberry Pi userspace tools
 media-libs/raspberrypi-userland-bin 1.20170303 1.20190709: Raspberry Pi userspace tools and libraries
 media-libs/raul 0.8.0-r1: C++ utility library primarily aimed at audio/musical applications
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
+media-libs/rlottie 0.0.1_pre20190920: A platform independent standalone library that plays Lottie Animations
 media-libs/rtaudio 4.1.2 5.0.0: A set of cross-platform C++ classes for realtime audio I/O
 media-libs/rubberband 1.8.2: An audio time-stretching and pitch-shifting library and utility program
 media-libs/sbc 1.4: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
