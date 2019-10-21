@@ -1416,7 +1416,7 @@ app-emacs/xslide 0.2.2-r1: An Emacs major mode for editing XSL stylesheets and r
 app-emacs/yaml-mode 0.0.13 0.0.14: A major mode for GNU Emacs for editing YAML files
 app-emacs/yasnippet 0.13.0: Yet another snippet extension for Emacs
 app-emacs/yasnippet-snippets 0.3: A collection of yasnippet snippets for many languages
-app-emacs/yatex 1.77 1.80: Yet Another TeX mode for Emacs
+app-emacs/yatex 1.80: Yet Another TeX mode for Emacs
 app-emacs/yc 4.0.13 5.2.1: Yet another Canna client on Emacsen
 app-emacs/zenburn 20110907-r1: Zenburn color theme for Emacs
 app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs text editor
@@ -3361,6 +3361,7 @@ dev-go/go-tour 0_p20180810 0_p20190829: A Tour of Go
 dev-go/godebug-pretty 0_p20170819: Pretty printing for Go
 dev-go/godep 74 9999: dependency tool for go
 dev-go/gogo-protobuf 0.4_p20170815: Protocol Buffers for Go with Gadgets
+dev-go/golicense 0.1.1: detect licenses used in Go binaries
 dev-go/golint 0_pre20180702: a linter for Go
 dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for ruby
 dev-go/goptlib 1.1.0: Go Tor pluggable transports library
