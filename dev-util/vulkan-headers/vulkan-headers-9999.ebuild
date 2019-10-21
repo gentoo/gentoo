@@ -26,6 +26,3 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Headers"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-
-# Old packaging will cause file collisions
-RDEPEND="!<=media-libs/vulkan-loader-1.1.70.0-r999"
