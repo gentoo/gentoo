@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 PYTHON_REQ_USE="threads"
 inherit bash-completion-r1 flag-o-matic git-r3 pax-utils python-any-r1 toolchain-funcs xdg-utils
 
@@ -20,10 +20,10 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.30.1:=
+	>=dev-libs/libuv-1.33.1:=
 	>=net-dns/c-ares-1.15.0
 	>=net-libs/http-parser-2.9.0:=
-	>=net-libs/nghttp2-1.39.1
+	>=net-libs/nghttp2-1.39.2
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-64.2:= )
 	ssl? ( >=dev-libs/openssl-1.1.1:0= )
@@ -57,7 +57,6 @@ src_prepare() {
 
 	# make sure we use python2.* while using gyp
 	sed -i -e "s/python/${EPYTHON}/" deps/npm/node_modules/node-gyp/gyp/gyp || die
-	sed -i -e "s/|| 'python2'/|| '${EPYTHON}'/" deps/npm/node_modules/node-gyp/lib/configure.js || die
 
 	# less verbose install output (stating the same as portage, basically)
 	sed -i -e "/print/d" tools/install.py || die
