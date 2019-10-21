@@ -14,7 +14,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5b0819e0c7a447df26c27abd
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 gnat_2019"
 
 RDEPEND="dev-ada/xmlada[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
