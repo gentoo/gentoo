@@ -4,10 +4,10 @@ DESCRIPTION=Yet Another TeX mode for Emacs
 EAPI=6
 HOMEPAGE=http://www.yatex.org/
 IUSE=l10n_ja
-KEYWORDS=amd64 ~ppc ~ppc64 x86
+KEYWORDS=amd64 ppc ~ppc64 x86
 LICENSE=BSD-2
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=http://www.yatex.org/yatex1.80.tar.gz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=a963581110f6e921caaaf0705a56186a
+_md5_=89ba6ab186f306abd8e72e767d7f8c21
