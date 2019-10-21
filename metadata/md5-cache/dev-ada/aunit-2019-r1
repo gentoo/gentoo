@@ -10,5 +10,5 @@ RDEPEND=ada_target_gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) ada_target_gnat_2017? 
 REQUIRED_USE=^^ ( ada_target_gnat_2016 ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 )
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/5cdf859431e87aa2cdf16b18 -> aunit-2019-20190429-18B77-src.tar.gz
-_eclasses_=ada	0781826afb3b12db9c444433239d7e28	multiprocessing	cac3169468f893670dac3e7cb940e045
+_eclasses_=ada	9205d12ceb057a9282bea2a773e7c681	multiprocessing	cac3169468f893670dac3e7cb940e045
 _md5_=ae5ae8c8020b335ef6bba5da9f62c4bc

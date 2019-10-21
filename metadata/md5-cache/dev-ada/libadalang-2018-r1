@@ -4,11 +4,11 @@ DESCRIPTION=high performance semantic engine for the Ada programming language
 EAPI=6
 HOMEPAGE=https://libre.adacore.com/
 IUSE=gnat_2017 +gnat_2018 gnat_2019 +shared static-libs python_targets_python2_7
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3 gcc-runtime-library-exception-3.1
 RDEPEND=dev-python/pyyaml dev-ada/gnatcoll-bindings[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?] dev-ada/gnatcoll-bindings[iconv,shared=,static-libs=] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)]
 REQUIRED_USE=python_targets_python2_7 ^^ ( gnat_2017 gnat_2018 gnat_2019 )
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/5b0cf9adc7a4475263382c18 -> libadalang-gpl-2018-src.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=b848910f808d92b29b791fc367f90a94
+_md5_=1a02fba09ccf5042f5aac886cb4c2938
