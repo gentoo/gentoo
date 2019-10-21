@@ -11,7 +11,7 @@ SRC_URI="http://gallium.inria.fr/~fpottier/menhir/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="examples +ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-4.02:=[ocamlopt?]"
