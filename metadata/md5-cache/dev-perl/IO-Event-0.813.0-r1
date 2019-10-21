@@ -9,4 +9,4 @@ RDEPEND=dev-perl/AnyEvent dev-perl/Event dev-perl/List-MoreUtils virtual/perl-Ti
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MU/MUIR/modules/IO-Event-0.813.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=f7268821396558c4c1a3a68132e6757b
+_md5_=9ad92adc7076b71cda51f41074e1632b

@@ -6154,7 +6154,7 @@ dev-perl/IO-BufferedSelect 1.0.0-r2: Perl module that implements a line-buffered
 dev-perl/IO-Capture 0.50.0-r2: Abstract Base Class to build modules to capture output
 dev-perl/IO-CaptureOutput 1.110.400 1.110.400-r1: Capture STDOUT and STDERR from Perl code, subprocesses or XS
 dev-perl/IO-Digest 0.110.0-r2: IO::Digest - Calculate digests while reading or writing
-dev-perl/IO-Event 0.813.0 0.813.0-r1: Tied Filehandles for Nonblocking IO with Object Callbacks
+dev-perl/IO-Event 0.813.0-r1: Tied Filehandles for Nonblocking IO with Object Callbacks
 dev-perl/IO-HTML 1.1.0: Open an HTML file with automatic charset detection
 dev-perl/IO-Handle-Util 0.10.0: Functions for working with IO::Handle like objects
 dev-perl/IO-Interactive 1.22.0: Utilities for interactive I/O
