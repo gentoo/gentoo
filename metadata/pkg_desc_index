@@ -15386,7 +15386,7 @@ net-misc/ntpsec 1.1.4 1.1.6 1.1.7 9999: The NTP reference implementation, refact
 net-misc/nx 3.5.0.33 3.5.99.16 3.5.99.17 3.5.99.20: NX compression technology core libraries
 net-misc/nxplayer 5.1.24.1: Client for NoMachine remote servers
 net-misc/nyx 2.0.4 2.1.0: Utility to monitor real time Tor status information
-net-misc/ofono 1.16 1.28 1.29: Open Source mobile telephony (GSM/UMTS) daemon
+net-misc/ofono 1.16 1.28 1.29 1.30: Open Source mobile telephony (GSM/UMTS) daemon
 net-misc/oidentd 2.0.8-r6 2.3.2: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.6.1 0.9.6.1-r1 0.9.7 0.9.8: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2 4.2.2: A robust, high-performance CORBA 2 ORB
@@ -19432,6 +19432,7 @@ xfce-extra/xfce4-smartbookmark-plugin 0.5.1: Smart bookmark plug-in for the Xfce
 xfce-extra/xfce4-statusnotifier-plugin 0.2.1: A panel area for fd.o Status Notifiers (systray replacement)
 xfce-extra/xfce4-systemload-plugin 1.2.3: System load plug-in for Xfce panel
 xfce-extra/xfce4-taskmanager 1.2.2: Easy to use task manager
+xfce-extra/xfce4-time-out-plugin 1.0.3-r2: A panel plug-in to take periodical breaks from the computer
 xfce-extra/xfce4-timer-plugin 1.7.0: A simple timer plug-in for the Xfce desktop environment
 xfce-extra/xfce4-vala 4.10.3-r6: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
