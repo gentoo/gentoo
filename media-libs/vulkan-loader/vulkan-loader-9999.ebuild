@@ -9,10 +9,16 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
+	if [[ -z ${SNAPSHOT_COMMIT} ]]; then
+		MY_PV=v${PV}
+		MY_P=Vulkan-Loader-${PV}
+	else
+		MY_PV=${SNAPSHOT_COMMIT}
+		MY_P=Vulkan-Loader-${SNAPSHOT_COMMIT}
+	fi
 	KEYWORDS="~amd64"
-	EGIT_COMMIT="979f925d939e4daa3c823bd2b9d46ca479481fe9"
-	SRC_URI="https://github.com/KhronosGroup/Vulkan-Loader/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/Vulkan-Loader-${EGIT_COMMIT}"
+	SRC_URI="https://github.com/KhronosGroup/Vulkan-Loader/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}"/${MY_P}
 fi
 
 inherit python-any-r1 cmake-multilib
@@ -26,7 +32,7 @@ IUSE="layers wayland X"
 
 PDEPEND="layers? ( media-libs/vulkan-layers:=[${MULTILIB_USEDEP}] )"
 DEPEND="${PYTHON_DEPS}
-	>=dev-util/vulkan-headers-1.1.114
+	>=dev-util/vulkan-headers-${PV}
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
