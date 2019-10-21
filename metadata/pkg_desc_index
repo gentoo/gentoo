@@ -18951,7 +18951,7 @@ x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r1: Program suite to record, replay and distribute user actions
-x11-misc/xnots 0.2.1-r1 0.2.1-r2 9999: A desktop sticky note program for the unix geek
+x11-misc/xnots 0.2.1-r2 9999: A desktop sticky note program for the unix geek
 x11-misc/xorg-cf-files 1.0.6-r1: Old Imake-related build files
 x11-misc/xosview 1.20-r1 1.21: X11 operating system viewer
 x11-misc/xowl 9999: X11 Obstinate Window Lister
