@@ -1,0 +1,24 @@
+diff --git a/src/pip/_internal/cli/req_command.py b/src/pip/_internal/cli/req_command.py
+index 203e86a4..a2183f10 100644
+--- a/src/pip/_internal/cli/req_command.py
++++ b/src/pip/_internal/cli/req_command.py
+@@ -129,17 +129,8 @@ class IndexGroupCommand(Command, SessionCommandMixin):
+         # Make sure the index_group options are present.
+         assert hasattr(options, 'no_index')
+ 
+-        if options.disable_pip_version_check or options.no_index:
+-            return
+-
+-        # Otherwise, check if we're using the latest version of pip available.
+-        session = self._build_session(
+-            options,
+-            retries=0,
+-            timeout=min(5, options.timeout)
+-        )
+-        with session:
+-            pip_self_version_check(session, options)
++        # Disabled on Gentoo
++        return
+ 
+ 
+ class RequirementCommand(IndexGroupCommand):
