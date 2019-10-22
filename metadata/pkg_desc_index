@@ -4796,7 +4796,7 @@ dev-libs/gobject-introspection 1.56.1 1.58.3 1.60.2: Introspection system for GO
 dev-libs/gobject-introspection-common 1.56.1 1.58.3 1.60.2: Build infrastructure for GObject Introspection
 dev-libs/gom 0.3.2-r1: GObject to SQLite object mapper library
 dev-libs/gost-engine 1.1.0.3_p20181031-r1 9999: A reference implementation of the Russian GOST crypto algorithms for OpenSSL
-dev-libs/granite 0.5.0 5.2.5 5.2.5-r1: Elementary OS library that extends GTK+
+dev-libs/granite 5.2.5-r1: Elementary OS library that extends GTK+
 dev-libs/grantlee 5.1.0: C++ string template engine based on the Django template system
 dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib testing framework
 dev-libs/gumbo 0.10.1: The HTML5 parsing algorithm implemented as a pure C99 library
