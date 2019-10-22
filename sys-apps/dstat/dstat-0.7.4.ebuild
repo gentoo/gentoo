@@ -40,7 +40,8 @@ src_prepare() {
 }
 
 src_install() {
-	default
+	emake DESTDIR="${ED}"
+	einstalldocs
 
 	if use examples; then
 		dodoc examples/{mstat,read}.py
