@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 DEPEND="test? ( dev-php/phpunit )"
-RDEPEND="dev-lang/php:*[pdo,postgres,xml]"
+RDEPEND="dev-lang/php:*[pdo,xml]"
 
 S="${WORKDIR}"
 
