@@ -15,7 +15,7 @@ REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
 	>=dev-libs/glib-2.50:2
-	udev? ( dev-libs/libgudev )
+	udev? ( dev-libs/libgudev[introspection?] )
 	dev-libs/libevdev
 	introspection? ( >=dev-libs/gobject-introspection-1.56:= )
 "
