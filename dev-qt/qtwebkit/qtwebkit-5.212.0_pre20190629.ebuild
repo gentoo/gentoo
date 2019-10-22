@@ -77,6 +77,8 @@ S="${WORKDIR}/${MY_P}"
 
 CHECKREQS_DISK_BUILD="16G" # bug 417307
 
+PATCHES=( "${FILESDIR}/${P}-icu-65.patch" )
+
 _check_reqs() {
 	if [[ ${MERGE_TYPE} != binary ]] && is-flagq "-g*" && ! is-flagq "-g*0"; then
 		einfo "Checking for sufficient disk space to build ${PN} with debugging flags"
