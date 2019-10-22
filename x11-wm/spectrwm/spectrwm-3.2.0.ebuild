@@ -11,9 +11,11 @@ SRC_URI="${HOMEPAGE}/archive/${PN^^}_${PV//./_}.tar.gz -> ${P}.tar.gz"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="x11-misc/dmenu"
+RDEPEND="
+	!x11-wm/scrotwm
+	x11-misc/dmenu
+"
 DEPEND="
 	x11-libs/libX11
 	x11-libs/libXcursor
