@@ -7985,7 +7985,7 @@ dev-python/jaraco-itertools 2.3-r1 3.0.0-r1 4.4.2: Tools for working with iterab
 dev-python/jaraco-logging 1.5 1.5.2-r1 2.0: Additional facilities to supplement Python's stdlib logging module
 dev-python/jaraco-packaging 4.1 5.1-r1 6.1 6.2: Tools to supplement packaging Python releases
 dev-python/jaraco-stream 1.1.1 1.2-r1 2.0-r1: Routines for handling streaming data
-dev-python/jaraco-text 1.10.1-r1 3.0 3.0.1: Text utilities used by other projects by developer jaraco
+dev-python/jaraco-text 1.10.1-r1 3.0.1 3.1: Text utilities used by other projects by developer jaraco
 dev-python/jaxml 3.02-r1: XML generator written in Python
 dev-python/jdcal 1.0 1.2 1.4: Julian dates from proleptic Gregorian and Julian calendars
 dev-python/jedi 0.10.2 0.11.1 0.12.0 0.12.1: Autocompletion library for Python
@@ -8774,7 +8774,7 @@ dev-python/pywinrm 0.3.0: Windows Remote Management through Python
 dev-python/pyx 0.12.1-r1 0.14.1 0.14.1-r1: Python package for the generation of encapsulated PostScript figures
 dev-python/pyxattr 0.6.0-r1 0.6.1: Python interface to xattr
 dev-python/pyxdg 0.25-r1 0.26 0.26-r1: A Python module to deal with freedesktop.org specifications
-dev-python/pyxenstore 0.0.2 9999: Provides Python interfaces for Xen's XenStore
+dev-python/pyxenstore 0.0.2: Provides Python interfaces for Xen's XenStore
 dev-python/pyyaml 3.12 3.13 5.1: YAML parser and emitter for Python
 dev-python/pyzbar 0.1.5 0.1.7: Read one-dimensional barcodes and QR codes from Python
 dev-python/pyzmq 16.0.2 17.1.0: Lightweight and super-fast messaging library built on top of the ZeroMQ library
@@ -14757,7 +14757,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83: Amazon S3 mounting via fuse
 net-fs/s3ql 2.24 2.25 2.26 2.28 2.32 2.33: A full-featured file system for online data storage
-net-fs/samba 4.5.16 4.8.6-r2 4.8.6-r3 4.8.12 4.9.13 4.10.2 4.10.8 4.11.0: Samba Suite Version 4
+net-fs/samba 4.5.16 4.8.6-r2 4.8.6-r3 4.8.12 4.9.13 4.10.2 4.10.8 4.11.0 4.11.1: Samba Suite Version 4
 net-fs/smbnetfs 0.6.1 0.6.1-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 2.10-r1 3.5.0 3.5.1 3.5.2: Fuse-filesystem utilizing the sftp service
@@ -18946,7 +18946,7 @@ x11-misc/xidle 26052015: Monitors inactivity in X and runs the specified program
 x11-misc/xkbd 0.8.16-r1: onscreen soft keyboard for X11
 x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the current XKB layout
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
-x11-misc/xkeyboard-config 2.27 9999: X keyboard configuration database
+x11-misc/xkeyboard-config 2.27 2.28 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2: GUI frontend to xmodmap
 x11-misc/xlockmore 5.50 5.58 5.59: Just another screensaver application for X
 x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
@@ -19362,7 +19362,7 @@ x11-wm/ratpoison 1.4.8-r1 1.4.9 9999: window manager without mouse dependency
 x11-wm/sawfish 1.12.0: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1-r1: window manager selector tool
 x11-wm/sithwm 1.2.3: Minimalist Window Manager for X
-x11-wm/spectrwm 3.1.0: Small dynamic tiling window manager for X11
+x11-wm/spectrwm 3.1.0 3.2.0: Small dynamic tiling window manager for X11
 x11-wm/stumpwm 18.05: Stumpwm is a Window Manager written entirely in Common Lisp.
 x11-wm/stumpwm-contrib 20180128 99999999: Extension Modules for StumpWM
 x11-wm/subtle 0.11.3244 9999: A manual tiling window manager
