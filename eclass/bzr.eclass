@@ -1,10 +1,6 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# @DEAD
-# No consumers in tree anymore, bzr is dead and py2 only
-# and will go away in the future.  Removal in 30 days.
-
 # @ECLASS: bzr.eclass
 # @MAINTAINER:
 # Ulrich Müller <ulm@gentoo.org>
@@ -201,7 +197,7 @@ bzr_update() {
 			|| die "${EBZR}: can't chdir to ${branch_dir}"
 		${EBZR_UPDATE_CMD} ${EBZR_OPTIONS} "${repo_uri}" \
 			|| die "${EBZR}: can't pull from ${repo_uri}"
-		popd > /dev/null
+		popd > /dev/null || die "${EBZR}: popd failed"
 	fi
 }
 
@@ -282,7 +278,7 @@ bzr_fetch() {
 	einfo \
 		"revision ${EBZR_REVISION:-${EBZR_REVNO}} is now in ${EBZR_UNPACK_DIR}"
 
-	popd > /dev/null
+	popd > /dev/null || die "${EBZR}: popd failed"
 }
 
 # @FUNCTION: bzr_src_unpack
