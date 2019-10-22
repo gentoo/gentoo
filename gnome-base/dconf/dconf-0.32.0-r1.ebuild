@@ -17,7 +17,8 @@ RDEPEND="
 	>=dev-libs/glib-2.44.0:2
 	sys-apps/dbus
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
@@ -25,7 +26,8 @@ DEPEND="${RDEPEND}
 	gtk-doc? ( >=dev-util/gtk-doc-1.15 )
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-"
+	<dev-util/meson-0.52
+" # problem with meson-0.52+ https://gitlab.gnome.org/GNOME/dconf/issues/59
 
 PATCHES=(
 	"${FILESDIR}"/0.30.1-bash-completion-dir.patch
