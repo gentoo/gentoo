@@ -27,10 +27,12 @@ IUSE="curl_ssl_gnutls curl_ssl_libressl curl_ssl_nss +curl_ssl_openssl examples 
 # does not need to initialize gcrypt threading and we do not need to
 # explicitly link to libgcrypt.
 RDEPEND="
-	>=net-misc/curl-7.25.0-r1[ssl=]
+	>=net-misc/curl-7.25.0-r1:=[ssl=]
 	ssl? (
 		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_libressl(-)=,curl_ssl_nss(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-)]
-		curl_ssl_gnutls? ( >=net-libs/gnutls-2.11.0 )
+		curl_ssl_gnutls? ( >=net-libs/gnutls-2.11.0:= )
+		curl_ssl_libressl? ( dev-libs/libressl:= )
+		curl_ssl_openssl? ( dev-libs/openssl:= )
 	)"
 
 # bottle-0.12.7: https://github.com/pycurl/pycurl/issues/180
