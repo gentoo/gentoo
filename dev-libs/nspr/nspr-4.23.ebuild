@@ -21,7 +21,7 @@ MULTILIB_CHOST_TOOLS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.7.0-prtime.patch
+	"${FILESDIR}"/${PN}-4.23-prtime.patch
 	"${FILESDIR}"/${PN}-4.7.1-solaris.patch
 	"${FILESDIR}"/${PN}-4.10.6-solaris.patch
 	"${FILESDIR}"/${PN}-4.8.4-darwin-install_name.patch
@@ -41,6 +41,8 @@ src_prepare() {
 	if [[ -e "${S}"/nspr/configure.in ]] ; then
 		einfo "Renaming configure.in to configure.ac"
 		mv "${S}"/nspr/configure.{in,ac} || die
+	else
+		elog "configure.in rename logic can be removed from ebuild."
 	fi
 
 	# We must run eautoconf to regenerate configure
