@@ -217,14 +217,16 @@ pkg_postrm() {
 }
 
 upgradewarning() {
-	ewarn
-	ewarn "Massive important warning if you are upgrading to 5.2.1-r8 or older"
-	ewarn "The internal structure of the mail storage has changed for"
-	ewarn "consistancy with the rest of Gentoo! Please review and utilize the "
-	ewarn "script at ${VPOP_HOME}/bin/vpopmail-Maildir-dotmaildir-fix.sh"
-	ewarn "to upgrade your system! (It can do conversions both ways)."
-	ewarn "You should be able to run it right away without any changes."
-	ewarn
+	if has_version "<=net-mail/vpopmail-5.2.1-r8"; then
+		ewarn
+		ewarn "Massive important warning if you are upgrading to 5.2.1-r8 or older"
+		ewarn "The internal structure of the mail storage has changed for"
+		ewarn "consistancy with the rest of Gentoo! Please review and utilize the "
+		ewarn "script at ${VPOP_HOME}/bin/vpopmail-Maildir-dotmaildir-fix.sh"
+		ewarn "to upgrade your system! (It can do conversions both ways)."
+		ewarn "You should be able to run it right away without any changes."
+		ewarn
+	fi
 
 	elog
 	elog "Use of vpopmail's tcp.smtp[.cdb] is also deprecated now, consider"
@@ -232,10 +234,12 @@ upgradewarning() {
 	elog
 
 	if use mysql; then
-		elog
-		elog "If you are upgrading from 5.4.17 or older, you have to fix your"
-		elog "MySQL tables, please see the UPGRADE file in the documentation!"
-		elog
+		if has_version "<=net-mail/vpopmail-5.4.17"; then
+			elog
+			elog "If you are upgrading from 5.4.17 or older, you have to fix your"
+			elog "MySQL tables, please see the UPGRADE file in the documentation!"
+			elog
+		fi
 	fi
 
 	ewarn
