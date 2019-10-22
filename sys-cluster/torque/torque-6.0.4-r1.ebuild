@@ -47,8 +47,10 @@ RDEPEND="${DEPEND_COMMON}
 S="${WORKDIR}"/${PN}-6a0b37f85c7d644e9217cbab1542792d646f59a6
 
 PATCHES=(
+	"${FILESDIR}"/${P}-gcc7.patch
 	"${FILESDIR}"/${PN}-6.0.3-fix-emptystring-comparison.patch
 	"${FILESDIR}"/${P}-no-openssl.patch
+	"${FILESDIR}"/${P}-error_buf_overflow_prevent.patch
 )
 
 pkg_setup() {
@@ -92,8 +94,6 @@ src_prepare() {
 
 src_configure() {
 	append-cflags "-fpermissive"
-	use kernel_linux && append-cflags "-Dlinux"
-	append-cxxflags "-std=c++03"
 
 	econf \
 		$(use_enable tk gui) \
