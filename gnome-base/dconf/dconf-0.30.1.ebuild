@@ -25,7 +25,8 @@ DEPEND="${RDEPEND}
 	gtk-doc? ( >=dev-util/gtk-doc-1.15 )
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-"
+	<dev-util/meson-0.52
+" # problem with meson-0.52+ https://gitlab.gnome.org/GNOME/dconf/issues/59
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-bash-completion-dir.patch
