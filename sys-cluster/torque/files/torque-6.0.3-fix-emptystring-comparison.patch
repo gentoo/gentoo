@@ -19,3 +19,52 @@
    while ((current != NULL) && 
           (*current != '\0'))
      {
+--- a/src/cmds/qsub_functions.c	2017-01-24 18:35:27.000000000 -0500
++++ b/src/cmds/qsub_functions.c	2017-11-21 13:40:27.201964749 -0500
+@@ -900,7 +900,7 @@
+   else
+     {
+     char *tmp_host = pbs_default();
+-    if (tmp_host == '\0')
++    if (*tmp_host == '\0')
+       hash_add_or_exit(job_attr, ATTR_pbs_o_server, qsub_host, LOGIC_DATA);
+     else
+       hash_add_or_exit(job_attr, ATTR_pbs_o_server, tmp_host, LOGIC_DATA);
+--- a/src/cmds/pbsnodes.c 2017-01-24 18:35:27.000000000 -0500
++++ b/src/cmds/pbsnodes.c 2017-11-21 13:40:27.201964749 -0500
+@@ -900,7 +900,7 @@
+         {
+         nodeargs = (char **)calloc(2, sizeof(char *));
+         nodeargs[0] = strdup("");
+-        nodeargs[1] = '\0';
++        nodeargs[1] = NULL;
+         }
+       }
+     }
+@@ -1020,7 +1020,7 @@
+ 
+         MXMLCreateE(&DE, "Data");
+ 
+-        for (lindex = 0;nodeargs[lindex] != '\0';lindex++)
++        for (lindex = 0;nodeargs[lindex] != NULL;lindex++)
+           {
+           bstatus = statnode(con, nodeargs[lindex]);
+ 
+@@ -1041,7 +1041,7 @@
+         }
+       else
+         {
+-        for (lindex = 0;nodeargs[lindex] != '\0';lindex++)
++        for (lindex = 0;nodeargs[lindex] != NULL;lindex++)
+           {
+           bstatus = statnode(con, nodeargs[lindex]);
+ 
+@@ -1065,7 +1065,7 @@
+ 
+       /* list any node that is DOWN, OFFLINE, or UNKNOWN */
+ 
+-      for (lindex = 0;nodeargs[lindex] != '\0';lindex++)
++      for (lindex = 0;nodeargs[lindex] != NULL;lindex++)
+         {
+         bstatus = statnode(con, nodeargs[lindex]);
+ 
