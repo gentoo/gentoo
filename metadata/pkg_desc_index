@@ -10725,9 +10725,9 @@ dev-util/lldb 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: The LLVM debugger
 dev-util/lockrun 20120508-r1: Lockrun - runs cronjobs with overrun protection
 dev-util/lsuio 0.2.0: list available userspace I/O (UIO) devices
 dev-util/ltrace 0.7.2 0.7.3 0.7.3_p4: trace library calls made at runtime
-dev-util/lttng-modules 2.6.4 2.7.1 2.7.4 2.8.0 2.10.6-r1: LTTng Kernel Tracer Modules
-dev-util/lttng-tools 2.6.1 2.7.1 2.7.3 2.8.0 2.10.5: Linux Trace Toolkit - next generation
-dev-util/lttng-ust 2.6.5 2.7.1 2.7.4 2.8.1 2.10.1: Linux Trace Toolkit - UST library
+dev-util/lttng-modules 2.6.4 2.7.1 2.7.4 2.8.0 2.10.6-r1 2.11.0: LTTng Kernel Tracer Modules
+dev-util/lttng-tools 2.6.1 2.7.1 2.7.3 2.8.0 2.10.5 2.11.0: Linux Trace Toolkit - next generation
+dev-util/lttng-ust 2.6.5 2.7.1 2.7.4 2.8.1 2.10.1 2.11.0: Linux Trace Toolkit - UST library
 dev-util/lxqt-build-tools 0.6.0: LXQt Build tools
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
 dev-util/makepp 2.0.99.1 2.0.99.2: GNU make replacement
