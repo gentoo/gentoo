@@ -1,5 +1,5 @@
---- gps-9999/aclocal.m4.old	2017-05-13 21:59:20.129039064 +0200
-+++ gps-9999/aclocal.m4	2017-05-13 22:02:12.637234659 +0200
+--- a/aclocal.m4	2017-05-13 21:59:20.129039064 +0200
++++ b/aclocal.m4	2017-05-13 22:02:12.637234659 +0200
 @@ -37,7 +37,7 @@
    HAVE_GNAT_PROJECT_$1=yes
  else
@@ -27,8 +27,8 @@
    min_gtk_version=ifelse([$1], ,2.0.0,$1)
    AC_MSG_CHECKING(for GtkAda - version >= $min_gtk_version)
    GTKADA_PRJ=`$GNATDRV ls -vP1 -Pgtkada 2>&1 | grep gtkada.gpr | grep Parsing | cut -d'"' -f2 | head -1`
---- gps-gps-17.0/templates_parser/templates_parser.gpr.old	2017-05-18 21:34:42.892039427 +0200
-+++ gps-gps-17.0/templates_parser/templates_parser.gpr	2017-05-18 21:35:16.661512990 +0200
+--- a/templates_parser/templates_parser.gpr	2017-05-18 21:34:42.892039427 +0200
++++ b/templates_parser/templates_parser.gpr	2017-05-18 21:35:16.661512990 +0200
 @@ -55,7 +55,7 @@
  
     end Naming;
@@ -38,8 +38,8 @@
     --  Common options used for the Debug and Release modes
  
     Debug_Options :=
---- gps-gps-17.0/shared.gpr.in.old	2017-05-18 21:35:56.475892075 +0200
-+++ gps-gps-17.0/shared.gpr.in	2017-05-18 21:36:24.972447550 +0200
+--- a/shared.gpr.in	2017-05-18 21:35:56.475892075 +0200
++++ b/shared.gpr.in	2017-05-18 21:36:24.972447550 +0200
 @@ -24,7 +24,7 @@
     end IDE;
  
@@ -57,8 +57,8 @@
     end Linker;
  
  end Shared;
---- gps-gps-17.0/common/common_with_xmlada.gpr.in.old	2017-05-18 21:37:25.302506085 +0200
-+++ gps-gps-17.0/common/common_with_xmlada.gpr.in	2017-05-18 21:37:58.472988222 +0200
+--- a/common/common_with_xmlada.gpr.in	2017-05-18 21:37:25.302506085 +0200
++++ b/common/common_with_xmlada.gpr.in	2017-05-18 21:37:58.472988222 +0200
 @@ -13,7 +13,7 @@
        for Switches ("Ada") use Shared.Compiler'Switches ("Ada");
        for Switches ("C") use Shared.Compiler'Switches ("C");
@@ -68,8 +68,8 @@
  
        No_Checks := ("-g", "-O2", "-gnat2012", "-gnatpn");
  
---- gps-gps-17.0/common/common_no_xmlada.gpr.in.old	2017-05-18 21:37:31.406410812 +0200
-+++ gps-gps-17.0/common/common_no_xmlada.gpr.in	2017-05-18 21:38:14.796733359 +0200
+--- a/common/common_no_xmlada.gpr.in	2017-05-18 21:37:31.406410812 +0200
++++ b/common/common_no_xmlada.gpr.in	2017-05-18 21:38:14.796733359 +0200
 @@ -12,7 +12,7 @@
        for Switches ("Ada") use Shared.Compiler'Switches ("Ada");
        for Switches ("C") use Shared.Compiler'Switches ("C");
@@ -79,8 +79,8 @@
  
        No_Checks := ("-g", "-O2", "-gnat2012", "-gnatpn");
  
---- gps-gps-17.0/widgets/widgets.gpr.old	2017-05-18 22:26:05.117847006 +0200
-+++ gps-gps-17.0/widgets/widgets.gpr	2017-05-18 22:21:01.646368091 +0200
+--- a/widgets/widgets.gpr	2017-05-18 22:26:05.117847006 +0200
++++ b/widgets/widgets.gpr	2017-05-18 22:21:01.646368091 +0200
 @@ -12,6 +12,7 @@
     package Compiler extends Shared.Compiler is
        for Switches ("C") use
@@ -89,8 +89,8 @@
     end Compiler;
  
     package IDE renames Shared.IDE;
---- gps-gps-17.0/cli/Makefile.old	2017-05-19 08:07:44.591042479 +0200
-+++ gps-gps-17.0/cli/Makefile	2017-05-19 08:08:50.086991123 +0200
+--- a/cli/Makefile	2017-05-19 08:07:44.591042479 +0200
++++ b/cli/Makefile	2017-05-19 08:08:50.086991123 +0200
 @@ -1,8 +1,9 @@
  GPRBUILD=gprbuild
  GPRCLEAN=gprclean
@@ -102,8 +102,8 @@
  
  clean:
  	$(GPRCLEAN) -q -r -Pcli
---- gps-gps-17.0/gps/gps.gpr.old	2017-05-19 09:24:19.438123599 +0200
-+++ gps-gps-17.0/gps/gps.gpr	2017-05-19 09:24:58.639492518 +0200
+--- a/gps/gps.gpr	2017-05-19 09:24:19.438123599 +0200
++++ b/gps/gps.gpr	2017-05-19 09:24:58.639492518 +0200
 @@ -75,7 +75,7 @@
        end case;
        for Switches ("Ada") use Linker'Switches ("Ada")
@@ -113,8 +113,8 @@
        --  for Switches ("Ada") use ("-lgmem");
        --  for Switches ("Ada") use ("-pg");
     end Linker;
---- gps-gps-17.0/testsuite/Makefile.old	2017-05-19 11:08:48.966913663 +0200
-+++ gps-gps-17.0/testsuite/Makefile	2017-05-19 11:06:17.245366714 +0200
+--- a/testsuite/Makefile	2017-05-19 11:08:48.966913663 +0200
++++ b/testsuite/Makefile	2017-05-19 11:06:17.245366714 +0200
 @@ -1,5 +1,6 @@
  GPRBUILD=gprbuild
  GPRCLEAN=gprclean
@@ -131,8 +131,8 @@
  
  package:
  	mkdir -p share/doc
---- gps-gps-17.0/testsuite/testsuite_drivers.gpr.old	2017-05-19 11:21:20.645705481 +0200
-+++ gps-gps-17.0/testsuite/testsuite_drivers.gpr	2017-05-19 11:15:42.163206405 +0200
+--- a/testsuite/testsuite_drivers.gpr	2017-05-19 11:21:20.645705481 +0200
++++ b/testsuite/testsuite_drivers.gpr	2017-05-19 11:15:42.163206405 +0200
 @@ -10,6 +10,10 @@
     for Object_Dir use "obj";
     for Exec_Dir use "bin";
@@ -144,8 +144,8 @@
     package Builder is
        for Switches ("Ada") use ("-gnat12", "-ws", "-g", "-j0", "-m", "-gnaty");
     end Builder;
---- gps-gps-17.0/Makefile.in.old	2017-05-19 11:49:47.172018411 +0200
-+++ gps-gps-17.0/Makefile.in	2017-05-19 11:50:24.653412280 +0200
+--- a/Makefile.in	2017-05-19 11:49:47.172018411 +0200
++++ b/Makefile.in	2017-05-19 11:50:24.653412280 +0200
 @@ -10,7 +10,7 @@
  INSTALL_PROGRAM = @INSTALL_PROGRAM@
  INSTALL_DATA    = @INSTALL_DATA@
@@ -155,16 +155,16 @@
  bindir          = $(prefix)/bin
  sharedir        = $(prefix)/share
  examplesdir     = $(prefix)/share/examples/gps
---- gps-gps-17.0/docs/Makefile.in.old	2017-05-19 11:54:52.805076624 +0200
-+++ gps-gps-17.0/docs/Makefile.in	2017-05-19 11:55:24.332566945 +0200
+--- a/docs/Makefile.in	2017-05-19 11:54:52.805076624 +0200
++++ b/docs/Makefile.in	2017-05-19 11:55:24.332566945 +0200
 @@ -1,4 +1,4 @@
 -prefix = @prefix@
 +prefix = $(DESTDIR)@prefix@
  docdir = $(prefix)/share/doc/gps
  sharedir = $(prefix)/share/gps
  
---- gps-gpl-2017-src/share/support/core/gnat_help_menus.py.old	2017-11-23 21:41:11.897912345 +0100
-+++ gps-gpl-2017-src/share/support/core/gnat_help_menus.py	2017-11-23 21:44:53.019038030 +0100
+--- a/share/support/core/gnat_help_menus.py	2017-11-23 21:41:11.897912345 +0100
++++ b/share/support/core/gnat_help_menus.py	2017-11-23 21:44:53.019038030 +0100
 @@ -25,7 +25,7 @@
     # GPRbuild
     'gprbuild': {"GPR Tools User's Guide":
@@ -185,8 +185,8 @@
              ex = os_utils.locate_exec_on_path(executable)
              if ex:
                  for descr, tup in _DOC_ENTRIES[exec_name].iteritems():
---- gps-gpl-2017-src/share/support/core/toolchains.py.old	2017-11-23 21:46:11.969652447 +0100
-+++ gps-gpl-2017-src/share/support/core/toolchains.py	2017-11-23 21:47:21.723427305 +0100
+--- a/share/support/core/toolchains.py	2017-11-23 21:46:11.969652447 +0100
++++ b/share/support/core/toolchains.py	2017-11-23 21:47:21.723427305 +0100
 @@ -16,11 +16,11 @@
         nullified by using an empty value in the corresponding tag
    -->
@@ -202,8 +202,8 @@
      <compiler lang="c">gcc</compiler>
      <compiler lang="c++">g++</compiler>
      <compiler lang="asm">gcc</compiler>
---- gps-gpl-2017-src/share/support/core/projects.py.old	2017-11-23 21:49:13.477462632 +0100
-+++ gps-gpl-2017-src/share/support/core/projects.py	2017-11-23 21:51:53.774640693 +0100
+--- a/share/support/core/projects.py	2017-11-23 21:49:13.477462632 +0100
++++ b/share/support/core/projects.py	2017-11-23 21:51:53.774640693 +0100
 @@ -143,7 +143,7 @@
            <string />
         </index>
@@ -231,8 +231,8 @@
         <string />
     </project_attribute>
  
---- gps-gpl-2017-src/cli/src/gps-cli_utils.adb.old	2017-11-23 22:00:22.716652753 +0100
-+++ gps-gpl-2017-src/cli/src/gps-cli_utils.adb	2017-11-23 22:01:19.885640611 +0100
+--- a/cli/src/gps-cli_utils.adb	2017-11-23 22:00:22.716652753 +0100
++++ b/cli/src/gps-cli_utils.adb	2017-11-23 22:01:19.885640611 +0100
 @@ -166,7 +166,7 @@
  
        --  Set GNAT version
@@ -242,8 +242,8 @@
     end Create_Kernel_Context;
  
     ----------------------------
---- gps-gpl-2017-src/toolchains_editor/core/src/toolchains.adb.old	2017-11-23 22:02:52.819994229 +0100
-+++ gps-gpl-2017-src/toolchains_editor/core/src/toolchains.adb	2017-11-23 22:07:20.326248295 +0100
+--- a/toolchains_editor/core/src/toolchains.adb	2017-11-23 22:02:52.819994229 +0100
++++ b/toolchains_editor/core/src/toolchains.adb	2017-11-23 22:07:20.326248295 +0100
 @@ -309,12 +309,13 @@
                 else
                    Set_Command
@@ -295,8 +295,8 @@
        end if;
  
        if Get_Compiler (Native_Toolchain, "C") = No_Compiler then
---- gps-gpl-2017-src/gps/Makefile.old	2017-12-10 20:29:18.267622400 +0100
-+++ gps-gpl-2017-src/gps/Makefile	2017-12-10 20:29:34.564312700 +0100
+--- a/gps/Makefile	2017-12-10 20:29:18.267622400 +0100
++++ b/gps/Makefile	2017-12-10 20:29:34.564312700 +0100
 @@ -45,7 +45,8 @@
  	for f in ../kernel/generated/*; do cat $$f | tr -d '\015' > $$f-aux; mv -f $$f-aux $$f; done
  endif
@@ -307,8 +307,8 @@
  
  resources:
  ifeq ($(OS),Windows_NT)
---- gps-gpl-2017-src/common/common_no_xmlada.gpr.in.old	2017-12-10 20:48:13.986166250 +0100
-+++ gps-gpl-2017-src/common/common_no_xmlada.gpr.in	2017-12-10 20:48:29.654872055 +0100
+--- a/common/common_no_xmlada.gpr.in	2017-12-10 20:48:13.986166250 +0100
++++ b/common/common_no_xmlada.gpr.in	2017-12-10 20:48:29.654872055 +0100
 @@ -22,6 +22,7 @@
               for Switches ("dynamic_arrays.adb") use No_Checks;
            when "Debug" =>
@@ -317,8 +317,8 @@
     end Compiler;
  
     package Naming is
---- gps-gpl-2017-src/common/common_with_xmlada.gpr.in.old	2017-12-10 20:48:37.352727540 +0100
-+++ gps-gpl-2017-src/common/common_with_xmlada.gpr.in	2017-12-10 20:48:50.423482155 +0100
+--- a/common/common_with_xmlada.gpr.in	2017-12-10 20:48:37.352727540 +0100
++++ b/common/common_with_xmlada.gpr.in	2017-12-10 20:48:50.423482155 +0100
 @@ -23,6 +23,7 @@
               for Switches ("dynamic_arrays.adb") use No_Checks;
            when "Debug" =>
@@ -327,8 +327,8 @@
     end Compiler;
  
     package Binder is
---- gps-gpl-2017-src/shared.gpr.in.old	2017-12-10 20:52:51.117967249 +0100
-+++ gps-gpl-2017-src/shared.gpr.in	2017-12-10 20:53:15.627507886 +0100
+--- a/shared.gpr.in	2017-12-10 20:52:51.117967249 +0100
++++ b/shared.gpr.in	2017-12-10 20:53:15.627507886 +0100
 @@ -56,6 +56,7 @@
                 );
              for Switches ("C") use Optimize & ("-g", "-O2");
