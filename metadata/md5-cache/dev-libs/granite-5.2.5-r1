@@ -5,11 +5,11 @@ DESCRIPTION=Elementary OS library that extends GTK+
 EAPI=7
 HOMEPAGE=https://github.com/elementary/granite
 IUSE=doc +introspection test
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=amd64 ~arm x86
 LICENSE=LGPL-3+
 RDEPEND=>=dev-libs/glib-2.50:2 dev-libs/libgee:0.8[introspection=] >=x11-libs/gtk+-3.22:3[introspection=]
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/elementary/granite/archive/5.2.5.tar.gz -> granite-5.2.5.tar.gz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	meson	b5ee7a05833ab91225acf30ffdeed006	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	vala	682da46cf615b9f7a7d3680058139dcd	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=5fbd3e6550bbeefe321eee07c790e75b
+_md5_=56d30e7800345a8436a0851b7cb55917
