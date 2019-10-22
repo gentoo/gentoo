@@ -19,7 +19,9 @@ IUSE="doc test"
 
 RDEPEND="
 	dev-python/jaraco-functools[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' pypy pypy3 python2_7 python3_5 python3_6)
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
