@@ -14,7 +14,7 @@ SRC_URI="https://github.com/balabit/syslog-ng/releases/download/${P}/${P}.tar.gz
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
-IUSE="amqp caps dbi geoip geoip2 http ipv6 json kafka libressl mongodb pacct python redis smtp snmp spoof-source systemd tcpd"
+IUSE="amqp caps dbi geoip2 http ipv6 json kafka libressl mongodb pacct python redis smtp snmp spoof-source systemd tcpd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 # unit tests require https://github.com/Snaipe/Criterion with additional deps
 RESTRICT="test"
@@ -27,7 +27,6 @@ RDEPEND="
 	amqp? ( >=net-libs/rabbitmq-c-0.8.0:=[ssl] )
 	caps? ( sys-libs/libcap )
 	dbi? ( >=dev-db/libdbi-0.9.0 )
-	geoip? ( >=dev-libs/geoip-1.5.0 )
 	geoip2? ( dev-libs/libmaxminddb:= )
 	http? ( net-misc/curl )
 	json? ( >=dev-libs/json-c-0.9:= )
@@ -50,9 +49,6 @@ BDEPEND="
 DOCS=( AUTHORS NEWS.md CONTRIBUTING.md contrib/syslog-ng.conf.{HP-UX,RedHat,SunOS,doc}
 	contrib/syslog2ng "${T}/syslog-ng.conf.gentoo.hardened"
 	"${T}/syslog-ng.logrotate.hardened" "${FILESDIR}/README.hardened" )
-
-# bug #695176
-PATCHES=( "${FILESDIR}/patches/${PN}-3.23.1-fix-sigabrt.patch" )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -116,7 +112,6 @@ src_configure() {
 		$(usex amqp --with-librabbitmq-client=system --without-librabbitmq-client)
 		$(use_enable caps linux-caps)
 		$(use_enable dbi sql)
-		$(use_enable geoip)
 		$(use_enable geoip2)
 		$(use_enable http)
 		$(use_enable ipv6)
