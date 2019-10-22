@@ -14,9 +14,6 @@
 		it provides complex widgets and convenience functions designed for
 		use in apps built for elementary OS.
 	</longdescription>
-	<use>
-		<flag name="demo">Build the Granite demo application (to present all available UI features provided by the library)</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">elementary/granite</remote-id>
 	</upstream>
