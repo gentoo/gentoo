@@ -44,7 +44,8 @@ RESTRICT="!bindist? ( bindist )"
 RDEPEND="gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	kerberos? ( >=app-crypt/mit-krb5-1.11.4[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
-	!=dev-libs/openssl-1.0.2*:0"
+	!=dev-libs/openssl-1.0.2*:0
+	!dev-libs/openssl:1.0.0"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-lang/perl-5
