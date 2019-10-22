@@ -3035,7 +3035,7 @@ dev-ada/libgpr 2018-r1 2019 2019-r1: Ada library to handle GPRbuild project file
 dev-ada/xmlada 2018 2019 2019-r1: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15 0.04.15-r1: Multi-platform class and template library
 dev-cpp/aixlog 1.2.1 9999: Header-only C++ logging library
-dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1 4.7.1: The ANTLR 4 C++ Runtime
+dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1 4.7.1 4.7.2: The ANTLR 4 C++ Runtime
 dev-cpp/asio 1.10.8 1.12.2 1.13.0 1.14.0: Asynchronous Network Library
 dev-cpp/atkmm 2.24.2 2.28.0: C++ interface for the ATK library
 dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
