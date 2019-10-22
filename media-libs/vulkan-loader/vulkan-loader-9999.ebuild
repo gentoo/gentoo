@@ -41,7 +41,7 @@ DEPEND="${PYTHON_DEPS}
 
 multilib_src_configure() {
 	# Integrated clang assembler doesn't work with x86 - Bug #698164
-	if [[ tc-is-clang && ${ABI} == x86 ]]; then
+	if tc-is-clang && [[ ${ABI} == x86 ]]; then
 		append-cflags -fno-integrated-as
 	fi
 
