@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{5,6} )
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/KhronosGroup/Vulkan-Tools.git"
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	EGIT_COMMIT="119e7c3bbae122f6cc5d778d068fb91e0e85d6a9"
+	EGIT_COMMIT="2abb69904b9ad017d39d3da1e7fc3dec1a584cd8"
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-Tools/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-Tools-${EGIT_COMMIT}"
@@ -23,8 +23,8 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Tools"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+cube +vulkaninfo +X wayland"
-COMMON_DEPEND=">=dev-util/vulkan-headers-1.1.125
-	>=media-libs/vulkan-loader-1.1.125:=[${MULTILIB_USEDEP},wayland?,X?]
+COMMON_DEPEND="<dev-util/vulkan-headers-1.1.125
+	media-libs/vulkan-loader:=[${MULTILIB_USEDEP},wayland?,X?]
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
