@@ -16,10 +16,11 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 x86"
 IUSE="bbdb ssl"
 
-DEPEND="bbdb? ( app-emacs/bbdb )"
-RDEPEND="${DEPEND}
+BDEPEND="bbdb? ( app-emacs/bbdb )"
+RDEPEND="${BDEPEND}
 	ssl? ( net-misc/stunnel )"
-BDEPEND="sys-apps/texinfo"
+BDEPEND="${BDEPEND}
+	sys-apps/texinfo"
 
 S="${WORKDIR}/${MY_P}"
 SITEFILE="50${PN}-gentoo.el"
