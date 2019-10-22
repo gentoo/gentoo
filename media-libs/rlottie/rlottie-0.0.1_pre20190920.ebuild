@@ -26,6 +26,7 @@ PATCHES=( "${FILESDIR}"/rlottie-0.0.1_pre20190920-disable-werror.patch )
 
 src_configure() {
 	local emesonargs=(
+		-D example=false
 		$(meson_use test)
 	)
 
