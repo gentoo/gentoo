@@ -1,13 +1,13 @@
-DEFINED_PHASES=install prepare setup unpack
+DEFINED_PHASES=install postinst prepare setup unpack
 DEPEND=virtual/pkgconfig
 DESCRIPTION=UniFi Video Server
 EAPI=6
 HOMEPAGE=https://www.ubnt.com/download/unifi-video/
 KEYWORDS=~amd64
 LICENSE=GPL-3
-RDEPEND=dev-db/mongodb dev-java/commons-daemon sys-apps/lsb-release sys-libs/libcap virtual/jre:1.8
+RDEPEND=dev-db/mongodb dev-java/commons-daemon sys-apps/lsb-release sys-apps/util-linux sys-libs/libcap virtual/jre:1.8
 RESTRICT=mirror
 SLOT=0
-SRC_URI=https://dl.ubnt.com/firmwares/ufv/v3.9.12/unifi-video.Ubuntu16.04_amd64.v3.9.12.deb
+SRC_URI=https://dl.ubnt.com/firmwares/ufv/v3.10.10/unifi-video.Ubuntu18.04_amd64.v3.10.10.deb
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=06f946574edac6b92e4dffac196ede3b
+_md5_=08c2908b8c3afdcf44a7e293d3ef10cd

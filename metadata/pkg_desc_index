@@ -1400,7 +1400,7 @@ app-emacs/undo-tree 0.6.6: Undo trees and visualization
 app-emacs/uptimes 3.7: Track and display emacs session uptimes
 app-emacs/vhdl-mode 3.38.1: VHDL-mode for Emacs
 app-emacs/visual-basic-mode 1.4.12 1.5: A mode for editing Visual Basic programs
-app-emacs/vm 8.2.0_beta-r1: The VM mail reader for Emacs
+app-emacs/vm 8.2.0_beta-r1 9999: The VM mail reader for Emacs
 app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
 app-emacs/w3mnav 0.5-r3: Add Info-like navigation keys to the emacs-w3m web browser
 app-emacs/wanderlust 2.15.9_p20180814 2.15.9_p20190623: Yet Another Message Interface on Emacsen
@@ -14308,7 +14308,7 @@ media-video/tovid 0.35.2-r1: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 2.6.11-r1: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6_p1 0.19.6_p1-r1: Tool for cutting MPEG files especially for removing commercials
-media-video/unifi-video 3.9.12 3.10.1 3.10.4 3.10.5: UniFi Video Server
+media-video/unifi-video 3.10.5 3.10.10: UniFi Video Server
 media-video/ushare 1.1a-r8: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/v4l2loopback 0.12.0 0.12.1.1_pre 9999: v4l2 loopback device which output is it's own input
 media-video/vamps 0.99.2 0.99.2-r1: Very fast requantisizing tool for backup DVDs
@@ -15827,7 +15827,7 @@ net-wireless/spectools 2011.08.1-r2 2011.08.1_p20140618-r1 2016.01.1 9999: Spect
 net-wireless/srslte 19.06: Open source SDR LTE software suite from Software Radio Systems
 net-wireless/ubertooth 2018.08.1 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.10.3.0 3.11.0.0 3.12.0.0 3.13.0.1 3.13.1.0 3.14.0.0 3.14.1.1: Universal Software Radio Peripheral (USRP) Hardware Driver
-net-wireless/unifi 5.6.42-r1 5.11.50 5.11.52 5.12.13 5.12.16: A Management Controller for Ubiquiti Networks UniFi APs
+net-wireless/unifi 5.6.42-r1 5.11.50 5.11.52 5.12.16 5.12.19: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/urh 1.6.4.1 2.7.5 9999: Universal Radio Hacker: investigate wireless protocols like a boss
 net-wireless/wavemon 0.7.6 0.8.0: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 net-wireless/wepattack 0.1.3-r5: WLAN tool for breaking 802.11 WEP keys
