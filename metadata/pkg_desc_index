@@ -10666,7 +10666,7 @@ dev-util/gertty 1.3.2 1.4.0 1.5.0 1.6.0 9999: Gertty is a console-based interfac
 dev-util/glade 3.20.4 3.22.1: A user interface designer for GTK+ and GNOME
 dev-util/glib-utils 2.58.3 2.60.6 2.60.7: Build utilities for GLib using projects
 dev-util/global 6.3.1 6.5.7: tag system to find an object location in various sources
-dev-util/glslang 7.9.2888 7.11.3114_pre20190415-r1 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
+dev-util/glslang 7.9.2888 7.11.3114_pre20190415-r1 7.12.3352 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1463 0.1544 0.1616: GN is a meta-build system that generates build files for Ninja
 dev-util/gnome-builder 3.30.3: An IDE for writing GNOME-based software
 dev-util/gnome-devel-docs 3.30.2: Documentation for developing for the GNOME desktop environment
@@ -13400,7 +13400,7 @@ media-libs/sdl2-net 2.0.1: Simple Direct Media Layer Network Support Library
 media-libs/sdl2-ttf 2.0.14 2.0.15: library that allows you to use TrueType fonts in SDL applications
 media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
-media-libs/shaderc 2018.0: Collection of tools, libraries and tests for shader compilation
+media-libs/shaderc 2018.0 2019.0: Collection of tools, libraries and tests for shader compilation
 media-libs/simage 1.7.0-r1 1.7.1a_beta_pre20180312: Image and video texturing library
 media-libs/skstream 0.3.9: FreeSockets - Portable C++ classes for IP (sockets) applications
 media-libs/slv2 0.6.6-r2: A library to make the use of LV2 plugins as simple as possible for applications
