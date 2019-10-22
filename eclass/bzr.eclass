@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-#
+
+# @DEAD
+# No consumers in tree anymore, bzr is dead and py2 only
+# and will go away in the future.  Removal in 30 days.
+
 # @ECLASS: bzr.eclass
 # @MAINTAINER:
 # Ulrich Müller <ulm@gentoo.org>
