@@ -197,7 +197,7 @@ bzr_update() {
 			|| die "${EBZR}: can't chdir to ${branch_dir}"
 		${EBZR_UPDATE_CMD} ${EBZR_OPTIONS} "${repo_uri}" \
 			|| die "${EBZR}: can't pull from ${repo_uri}"
-		popd > /dev/null
+		popd > /dev/null || die "${EBZR}: popd failed"
 	fi
 }
 
@@ -278,7 +278,7 @@ bzr_fetch() {
 	einfo \
 		"revision ${EBZR_REVISION:-${EBZR_REVNO}} is now in ${EBZR_UNPACK_DIR}"
 
-	popd > /dev/null
+	popd > /dev/null || die "${EBZR}: popd failed"
 }
 
 # @FUNCTION: bzr_src_unpack
