@@ -375,7 +375,6 @@ net-irc/jircii
 net-irc/miau
 net-mail/hotwayd
 net-mail/popick
-net-mail/poppassd_ceti
 net-mail/spamcup
 net-mail/vacation
 net-mail/yosucker
