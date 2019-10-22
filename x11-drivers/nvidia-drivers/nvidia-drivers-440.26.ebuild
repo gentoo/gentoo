@@ -83,6 +83,9 @@ RDEPEND="
 "
 QA_PREBUILT="opt/* usr/lib*"
 S=${WORKDIR}/
+PATCHES=(
+	"${FILESDIR}"/${PN}-440.26-locale.patch
+)
 
 nvidia_drivers_versions_check() {
 	if use amd64 && has_multilib_profile && \
