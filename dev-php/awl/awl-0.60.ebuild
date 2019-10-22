@@ -10,10 +10,10 @@ SRC_URI="https://www.davical.org/downloads/${PN}_${PV}.orig.tar.xz -> ${P}.tar.x
 LICENSE="GPL-2 GPL-2+ GPL-3+ LGPL-2+ LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
+IUSE="test postgres"
 
 BDEPEND="test? ( dev-php/phpunit )"
-RDEPEND="dev-lang/php:*[pdo,postgres,xml]"
+RDEPEND="dev-lang/php:*[pdo,postgres?,xml]"
 
 S="${WORKDIR}"
 
