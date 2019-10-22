@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -29,7 +29,7 @@ RDEPEND="
 		xscreensaver? ( x11-libs/libXScrnSaver )
 	)
 	~dev-lang/tcl-${PV}:8.5=
-	!=dev-lang/tk-8.5:0"
+	!~dev-lang/tk-8.5:0"
 DEPEND="${RDEPEND}
 	!aqua? ( x11-base/xorg-proto )"
 
