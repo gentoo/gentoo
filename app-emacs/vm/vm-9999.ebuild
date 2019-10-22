@@ -3,17 +3,14 @@
 
 EAPI=7
 
-inherit elisp
+inherit elisp bzr autotools
 
-MY_PV="${PV/_beta/b}"
-MY_P="${PN}-${MY_PV}"
 DESCRIPTION="The VM mail reader for Emacs"
 HOMEPAGE="http://www.nongnu.org/viewmail/"
-SRC_URI="https://launchpad.net/vm/${PV%.*}.x/${MY_PV}/+download/${MY_P}.tgz"
+EBZR_REPO_URI="lp:vm"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 x86"
 IUSE="bbdb ssl"
 
 BDEPEND="bbdb? ( app-emacs/bbdb )"
@@ -22,21 +19,16 @@ RDEPEND="${BDEPEND}
 BDEPEND="${BDEPEND}
 	sys-apps/texinfo"
 
-S="${WORKDIR}/${MY_P}"
 SITEFILE="50${PN}-gentoo.el"
-PATCHES=(
-	"${FILESDIR}"/${P}-datadir.patch
-	"${FILESDIR}"/${P}-texinfo-5.patch
-	"${FILESDIR}"/${P}-optional-args.patch
-	"${FILESDIR}"/${P}-texinfo-encoding.patch
-)
 
 src_prepare() {
-	elisp_src_prepare
+	eapply "${FILESDIR}"/vm-8.2.0_beta-texinfo-encoding.patch
 	if ! use bbdb; then
 		elog "Excluding vm-pcrisis.el since the \"bbdb\" USE flag is not set."
 		eapply "${FILESDIR}/${PN}-8.0-no-pcrisis.patch"
 	fi
+	eapply_user
+	eautoreconf
 }
 
 src_configure() {
@@ -59,7 +51,6 @@ src_install() {
 	# delete duplicate documentation
 	find "${D}/${SITEETC}/${PN}" -type d -name pixmaps -prune \
 		-o -type f -exec rm '{}' '+' || die
-	rm "${D}/usr/share/doc/${PF}/COPYING" || die
 
 	dodoc example.vm
 	# NEWS is accessed from lisp and must not be compressed
