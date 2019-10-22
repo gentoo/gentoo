@@ -351,7 +351,7 @@ app-admin/supervisor 3.1.4 3.3.5 4.0.3 4.0.4: A system for controlling process s
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
 app-admin/sxid 4.2-r2: suid, sgid file and directory checking
 app-admin/sysklogd 1.5.1-r1: Standard log daemons
-app-admin/syslog-ng 3.22.1 3.23.1-r1: syslog replacement with advanced filtering features
+app-admin/syslog-ng 3.22.1 3.24.1: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1 1.14-r2: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17: Daemon providing access to the kernel sysrq functions via network
 app-admin/sysstat 12.0.5 12.0.6 12.1.6 12.1.7 999999: System performance tools for Linux
@@ -12685,7 +12685,7 @@ media-fonts/hunkyfonts 0.3.1: Free TrueType fonts based on Bitstream's Vera font
 media-fonts/ibm-plex 1.2.3 1.3.0 1.3.1 1.4.1 2.0.0: The package of IBM's typeface
 media-fonts/inconsolata 20140821: A sans-serif monotype font for code listings
 media-fonts/inconsolata-hellenic 1.19-r1: Hellenisation of the wonderful, monospace, open/free font Inconsolata
-media-fonts/inconsolata-lgc 1.1.0_p20140917: Modified version of Inconsolata Hellenic adding the Cyrillic alphabet
+media-fonts/inconsolata-lgc 1.3.0: Modified version of Inconsolata Hellenic adding the Cyrillic alphabet
 media-fonts/infinality-ultimate-meta 1: Meta package for infinality-ultimate with fonts
 media-fonts/intlfonts 1.2.1: International X11 fixed fonts
 media-fonts/iosevka 1.14.1: Slender typeface for code, from code
@@ -13277,7 +13277,7 @@ media-libs/libopusenc 0.2.1: High-level API for encoding .opus files
 media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents
 media-libs/libpano13 2.9.18 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.11.32 6.12.27: Library to load, handle and manipulate images in the PGF format
-media-libs/libplacebo 1.18.0 9999: Reusable library for GPU-accelerated image processing primitives
+media-libs/libplacebo 1.18.0 1.21.0 9999: Reusable library for GPU-accelerated image processing primitives
 media-libs/libpng 1.2.59 1.5.30 1.6.37: Portable Network Graphics library
 media-libs/libpostproc 0.8.0.20121125 10.20140517 10.20140517-r1 9999: Video post processing library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
