@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 2016-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="dnsmasq Exporter for Prometheus"
+command="/usr/bin/dnsmasq_exporter"
+command_background=true
+command_user="${RC_SVCNAME}:${RC_SVCNAME}"
+error_log=/var/log/dnsmasq_exporter/${RC_SVCNAME}.log
+output_log=/var/log/dnsmasq_exporter/${RC_SVCNAME}.log
+pidfile=/var/run/${RC_SVCNAME}.pid
+
+depend() {
+	after dnsmasq net
+}
