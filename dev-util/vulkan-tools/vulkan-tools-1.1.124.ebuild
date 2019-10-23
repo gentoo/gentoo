@@ -33,7 +33,8 @@ COMMON_DEPEND=">=dev-util/vulkan-headers-1.1.125
 
 BDEPEND="${PYTHON_DEPS}
 	cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )"
-DEPEND="${COMMON_DEPEND}"
+DEPEND=">=dev-util/vulkan-headers-1.1.125
+	${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
 # Vulkaninfo does not support wayland
