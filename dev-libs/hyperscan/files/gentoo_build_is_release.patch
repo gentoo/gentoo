@@ -1,0 +1,12 @@
+--- a/CMakeLists.txt      2019-10-17 19:29:27.772358197 -0000
++++ b/CMakeLists.txt      2019-10-17 19:29:50.118357398 -0000
+@@ -30,7 +30,7 @@
+     message(STATUS "Build type ${CMAKE_BUILD_TYPE}")
+ endif()
+ 
+-if(CMAKE_BUILD_TYPE MATCHES RELEASE|RELWITHDEBINFO|MINSIZEREL)
++if(CMAKE_BUILD_TYPE MATCHES RELEASE|RELWITHDEBINFO|MINSIZEREL|GENTOO)
+     message(STATUS "using release build")
+     set(RELEASE_BUILD TRUE)
+ else()
+

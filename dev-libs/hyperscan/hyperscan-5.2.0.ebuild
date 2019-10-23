@@ -24,16 +24,13 @@ BDEPEND="${RDEPEND}"
 
 REQUIRED_USE="cpu_flags_x86_ssse3 ${PYTHON_REQUIRED_USE}"
 
-src_prepare() {
-	# upstream workaround
-	append-cxxflags -Wno-redundant-move
-	cmake-utils_src_prepare
-}
+PATCHES=( "${FILESDIR}/gentoo_build_is_release.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=$(usex static-libs OFF ON)
-		-DBUILD_STATIC_AND_SHARED=$(usex static-libs ON OFF)
+		-DBUILD_SHARED_LIBS=$(usex '!static-libs')
+		-DBUILD_STATIC_AND_SHARED=$(usex static-libs)
+		-DRELEASE_BUILD=yes
 	)
 	cmake-utils_src_configure
 }
