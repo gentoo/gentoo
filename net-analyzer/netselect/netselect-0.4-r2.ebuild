@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit toolchain-funcs
+inherit fcaps toolchain-funcs
 
 DESCRIPTION="Ultrafast implementation of ping"
 HOMEPAGE="http://apenwarr.ca/netselect/"
@@ -23,12 +23,20 @@ PATCHES=(
 
 DOCS=( HISTORY README )
 
+FILECAPS=( -g wheel cap_net_raw /usr/bin/netselect )
+
 S=${WORKDIR}/${PN}-${P}
 
 src_prepare() {
 	use ipv6 && eapply "${WORKDIR}"/${PN}-0.4-ipv6.patch
 
 	default
+
+	# Don't warn about "root privileges required" when running as
+	# an unprivileged user with filecaps
+	if ! use prefix && use filecaps; then
+		sed -i -e '/if (geteuid () != 0)/,+2d' "${S}"/netselect.c || die
+	fi
 }
 
 src_compile() {
@@ -38,12 +46,11 @@ src_compile() {
 src_install() {
 	dobin netselect
 
-	if ! use prefix ; then
-		fowners root:wheel /usr/bin/netselect
-		fperms 4711 /usr/bin/netselect
-	fi
-
 	einstalldocs
 
 	doman netselect.1
+}
+
+pkg_postinst() {
+	! use prefix && fcaps_pkg_postinst
 }
