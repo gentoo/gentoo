@@ -11,7 +11,7 @@ SRC_URI="https://www.eventd.org/download/eventd/${P}.tar.xz"
 
 LICENSE="GPL-3+ LGPL-3+ ISC MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug fbcon +introspection ipv6 libcanberra libnotify +notification
 	pulseaudio purple speech systemd test upnp wayland webhook websocket
 	+X zeroconf"
