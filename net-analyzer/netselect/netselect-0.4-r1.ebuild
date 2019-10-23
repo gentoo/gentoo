@@ -26,8 +26,10 @@ src_prepare() {
 	use ipv6 && eapply "${WORKDIR}"/${PN}-0.4-ipv6.patch
 
 	default
+}
 
-	tc-export CC
+src_compile() {
+	emake CC="$(tc-getCC)" LDFLAGS="${CFLAGS} ${LDFLAGS}"
 }
 
 src_install () {
