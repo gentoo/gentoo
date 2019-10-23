@@ -1,0 +1,48 @@
+From f8e716524435c0fc2bfec2aa36183e5c99e12d42 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 15 Oct 2019 18:33:45 +0200
+Subject: [PATCH] Fix Name conflict between plasma.desktop and
+ plasmawayland.desktop
+
+Summary:
+SDDM until 0.18.1 appends " (Wayland)" to the name of any session file it
+finds in wayland-sessions dir, and Plasma is relying on that behaviour to
+distinguish between its X11 and Wayland sessions. This leads to duplicate
+"Plasma" entries on any other DM not applying the same hack, e.g. lightdm,
+and users are lost without downstream patching.
+
+SDDM in 0.19 only appends " (Wayland)" in case the session name does
+not already end with this, to avoid duplicating it.
+
+CCBUG: https://bugs.kde.org/show_bug.cgi?id=368409
+See also: https://github.com/sddm/sddm/pull/997
+
+Reviewers: #plasma, davidedmundson, fvogt, ngraham
+
+Reviewed By: #plasma, davidedmundson, ngraham
+
+Subscribers: ngraham, pino, rdieter, fvogt, davidedmundson, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D22210
+---
+ login-sessions/plasmawayland.desktop.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/login-sessions/plasmawayland.desktop.cmake b/login-sessions/plasmawayland.desktop.cmake
+index 1207621e0..c114959a2 100644
+--- a/login-sessions/plasmawayland.desktop.cmake
++++ b/login-sessions/plasmawayland.desktop.cmake
+@@ -2,7 +2,7 @@
+ Exec=dbus-run-session ${CMAKE_INSTALL_FULL_BINDIR}/startplasma-wayland
+ TryExec=${CMAKE_INSTALL_FULL_BINDIR}/startplasma-wayland
+ DesktopNames=KDE
+-Name=Plasma
++Name=Plasma (Wayland)
+ Name[ar]=بلازما
+ Name[bs]=Plazma
+ Name[ca]=Plasma
+-- 
+2.23.0
+
