@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils toolchain-funcs
 
 DESCRIPTION="Ultrafast implementation of ping"
 HOMEPAGE="http://apenwarr.ca/netselect/"
