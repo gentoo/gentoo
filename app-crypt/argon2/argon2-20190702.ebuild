@@ -30,18 +30,24 @@ src_prepare() {
 		Makefile || die
 
 	tc-export CC
+
+	if use amd64 || use x86; then
+		OPTTEST=0
+	else
+		OPTTEST=1
+	fi
 }
 
 src_compile() {
-	emake OPTTEST=0 LIBRARY_REL="$(get_libdir)"
+	emake OPTTEST="${OPTTEST}" LIBRARY_REL="$(get_libdir)"
 }
 
 src_test() {
-	emake OPTTEST=0 test
+	emake OPTTEST="${OPTTEST}" test
 }
 
 src_install() {
-	emake OPTTEST=0 DESTDIR="${ED}" LIBRARY_REL="$(get_libdir)" install
+	emake OPTTEST="${OPTTEST}" DESTDIR="${ED}" LIBRARY_REL="$(get_libdir)" install
 	einstalldocs
 	doman man/argon2.1
 }
