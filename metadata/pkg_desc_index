@@ -9,6 +9,7 @@ acct-group/deluge 0: System group: deluge
 acct-group/dialout 0: System group: dialout
 acct-group/disk 0: System group: disk
 acct-group/dnscrypt-proxy 0: Group for net-dns/dnscrypt-proxy
+acct-group/dnsmasq_exporter 0: System group: dnsmasq_exporter
 acct-group/dovecot 0: System group: dovecot
 acct-group/dovenull 0: System group: dovenull
 acct-group/elasticsearch 0: Elasticsearch program group
@@ -82,6 +83,7 @@ acct-user/burp 0: User for the app-backup/burp server
 acct-user/ddclient 0: A user for the dynamic DNS client
 acct-user/deluge 0: user for deluge
 acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
+acct-user/dnsmasq_exporter 0: user for dnsmasq_exporter
 acct-user/dovecot 0: user for dovecot daemon
 acct-user/dovenull 0: user for dovecot daemon
 acct-user/elasticsearch 0: Elasticsearch program user
@@ -1841,6 +1843,7 @@ app-metrics/buildbot-prometheus 17.7.2-r2: A Prometheus metrics exporter for Bui
 app-metrics/burrow_exporter 0.0.6 0.0.6-r1: Prometheus exporter for Burrow
 app-metrics/collectd 5.8.1-r1 5.9.1-r2 5.9.2: Collects system statistics and provides mechanisms to store the values
 app-metrics/consul_exporter 0.4.0: Prometheus exporter for consul metrics
+app-metrics/dnsmasq_exporter 0.2.0: prometheus exporter for dnsmasq
 app-metrics/elasticsearch_exporter 1.0.2 1.0.4_rc1 1.1.0_rc1 1.1.0: Elasticsearch stats exporter for Prometheus
 app-metrics/github-exporter 04 04-r1: Github statistics exporter for prometheus
 app-metrics/grok_exporter 0.2.6: Unstructured log data exporter for Prometheus
