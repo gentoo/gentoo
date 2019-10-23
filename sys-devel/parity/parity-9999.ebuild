@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/haubi/parity"
 
 parity-vcarchs() { echo x64 x86 ; }
 parity-vcvers-legacy() { echo 7_0 7_1 8_0 9_0 ; }
-parity-vcvers-current() { echo 10_0 11_0 12_0 14_0 15_0 16_2 ; }
+parity-vcvers-current() { echo 10_0 11_0 12_0 14_0 15 16 ; }
 parity-vcvers() {
 	parity-vcvers-legacy
 	parity-vcvers-current
