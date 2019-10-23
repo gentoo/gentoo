@@ -1625,7 +1625,7 @@ app-i18n/atokx3 3.0.0-r12: ATOK X3 for Linux - The most famous Japanese Input Me
 app-i18n/bidiv 1.5-r1 1.5_p4: A commandline tool displaying logical Hebrew/Arabic
 app-i18n/canfep 1.0 1.0-r1: Canna Japanese kana-kanji frontend processor on console
 app-i18n/canna 3.7_p3-r1 3.7_p3-r2 3.7_p3-r3: A client-server based Kana-Kanji conversion system
-app-i18n/cstools 3.42 3.42-r1: A charset conversion tool cstocs and two Perl modules for Czech language
+app-i18n/cstools 3.42-r1: A charset conversion tool cstocs and two Perl modules for Czech language
 app-i18n/dbskkd-cdb 2.00 3.00: SKK dictionary server based on cdb
 app-i18n/enca 1.19-r1: Detect and convert encoding of text files
 app-i18n/fbterm 1.7-r4 1.7-r5: Fast terminal emulator for the Linux framebuffer
@@ -2062,9 +2062,9 @@ app-misc/pax-utils 1.2.3 1.2.3-r3 1.2.4: ELF utils that can check files for secu
 app-misc/pdfpc 4.3.0 4.3.2: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.3.6: Simple command-line snippet manager
-app-misc/pfm 2.12.3 2.12.3-r1: A terminal-based file manager written in Perl
+app-misc/pfm 2.12.3-r1: A terminal-based file manager written in Perl
 app-misc/physlock 11-r1: lightweight Linux console locking tool
-app-misc/pip 1.2-r2 1.2-r3: Wrapper around programs that don't support stdin/stdout
+app-misc/pip 1.2-r3: Wrapper around programs that don't support stdin/stdout
 app-misc/pipeworks 0.4-r1: A small utility that measures throughput between stdin and stdout
 app-misc/plod 1.9-r2: A tool to help administrators keep track of daily activities
 app-misc/prog-express 3.7.8-r1 3.8.3: A modern and intuitive control software for the Batronix USB programming devices
@@ -10511,7 +10511,7 @@ dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
 dev-util/artifactory-bin 6.3.3: The world's most advanced repository manager for maven
 dev-util/aruba 0.6.2-r2 0.8.1 0.14.12: Cucumber steps for driving out command line applications
 dev-util/astyle 3.0.1-r1 3.1-r2: Artistic Style is a re-indenter and reformatter for C++, C and Java source code
-dev-util/autodia 2.140.0-r1 2.140.0-r2: Parses source code, XML or data and produces an XML document in Dia format
+dev-util/autodia 2.140.0-r2: Parses source code, XML or data and produces an XML document in Dia format
 dev-util/autoproject 0.20_p5: Start a programming project using autotools and a command line parser generator
 dev-util/babeltrace 1.2.3 1.2.4: A command-line tool and library to read and convert trace files
 dev-util/bakefile 0.2.9-r1: Native makefiles generator
