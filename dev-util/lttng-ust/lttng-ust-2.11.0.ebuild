@@ -15,9 +15,12 @@ SRC_URI="http://lttng.org/files/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0/${MY_SLOT}"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
-IUSE="examples"
+IUSE="examples numa"
 
-DEPEND="dev-libs/userspace-rcu:="
+DEPEND="
+	dev-libs/userspace-rcu:=
+	numa? ( sys-process/numactl )
+	"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MY_P}
@@ -31,5 +34,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --docdir=/usr/share/doc/${PF}
+	econf \
+		$(use_enable numa) \
+		--docdir=/usr/share/doc/${PF}
 }
