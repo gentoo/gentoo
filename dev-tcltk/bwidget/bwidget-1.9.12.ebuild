@@ -31,8 +31,7 @@ src_install() {
 	doins *.tcl
 	doins -r images lang
 
-	insinto /usr/share/doc/${PF}/
-	doins -r demo
+	dodoc -r demo
 	dodoc ChangeLog README.txt
 
 	docinto html
