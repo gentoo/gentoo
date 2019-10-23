@@ -3101,7 +3101,7 @@ dev-db/cockroach 2.1.5 19.1.1: open source database for building cloud services
 dev-db/cpp-driver 2.9.0 2.11.0: DataStax C/C++ Driver for Cassandra
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
-dev-db/etcd 3.3.15 3.3.17 3.4.2: Highly-available key value store for shared configuration and service discovery
+dev-db/etcd 3.3.15 3.3.17 3.4.2 3.4.3: Highly-available key value store for shared configuration and service discovery
 dev-db/firebird 3.0.4.33054.0: Relational database offering many ANSI SQL:2003 and some SQL:2008 features
 dev-db/freetds 1.00.558: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
@@ -10719,6 +10719,7 @@ dev-util/kdevelop-python 5.3.3 5.4.2 5.4.3: Python plugin for KDevelop
 dev-util/kdstatemachineeditor 1.2.4 9999: Framework for creating Qt State Machine metacode using graphical user interfaces
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/kernelshark 1.0 9999: Graphical reader for trace-cmd output
+dev-util/kubebuilder 2.0.1: SDK for building Kubernetes APIs using CRDs
 dev-util/kup 0.3.4-r1: kernel.org uploader tool
 dev-util/kyua 0.13-r2: Testing framework for infrastructure software
 dev-util/lcov 1.9-r1 1.11 1.13-r2 1.14 9999: A graphical front-end for GCC's coverage testing tool gcov
