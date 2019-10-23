@@ -11,7 +11,7 @@ SRC_URI="https://www.adelton.com/perl/Cstools/${MY_P}.tar.gz"
 HOMEPAGE="https://www.adelton.com/perl/Cstools/"
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-perl/MIME-tools"
