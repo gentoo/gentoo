@@ -1,0 +1,22 @@
+# conf.d file for snapserver
+
+# Options for running Snapserver as daemon
+#
+#       -d, --daemon [=arg(=0)]
+#               Daemonize
+#               Optional process priority [-20..19]
+#
+#       --user arg
+#               The user[:group] to run snapserver as when daemonized
+#
+#       -c, --config arg (=/etc/snapserver.conf)
+#               Path to the configuration file
+#
+# For all command line options, please see man snapserver
+
+# NOTE: With Snapcast 0.16.0, the server configuration moved to
+# /etc/snapserver.conf. Please add your pipes to said file.
+
+SNAPSERVER_USER="--user snapserver:snapserver"
+
+SNAPSERVER_OPTS=""
