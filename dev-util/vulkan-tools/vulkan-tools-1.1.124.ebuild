@@ -23,8 +23,7 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Tools"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+cube +vulkaninfo +X wayland"
-COMMON_DEPEND=">=dev-util/vulkan-headers-1.1.125
-	>=media-libs/vulkan-loader-1.1.125:=[${MULTILIB_USEDEP},wayland?,X?]
+COMMON_DEPEND=">=media-libs/vulkan-loader-1.1.125:=[${MULTILIB_USEDEP},wayland?,X?]
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
