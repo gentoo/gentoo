@@ -11,7 +11,7 @@ SRC_URI="https://download.strongswan.org/${P}.tar.bz2"
 LICENSE="GPL-2 RSA DES"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
-IUSE="+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11"
+IUSE="+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11 ikev1 +legacy-ipsec-script"
 
 STRONGSWAN_PLUGINS_STD="led lookip systime-fix unity vici"
 STRONGSWAN_PLUGINS_OPT="aesni blowfish ccm chapoly ctr forecast gcm ha ipseckey newhope ntru padlock rdrand save-keys unbound whitelist"
@@ -134,7 +134,7 @@ src_configure() {
 
 	econf \
 		--disable-static \
-		--enable-ikev1 \
+		$(use_enable ikev1 ikev1) \
 		--enable-ikev2 \
 		--enable-swanctl \
 		--enable-socket-dynamic \
@@ -169,6 +169,9 @@ src_configure() {
 		$(use_enable pkcs11) \
 		$(use_enable sqlite) \
 		$(use_enable systemd) \
+		$(use_enable legacy-ipsec-script charon) \
+		$(use_enable legacy-ipsec-script stroke) \
+		$(use_enable legacy-ipsec-script scepclient) \
 		$(use_with caps capabilities libcap) \
 		--with-piddir=/run \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
@@ -196,15 +199,17 @@ src_install() {
 	fi
 
 	diropts -m 0750 -o ${dir_ugid} -g ${dir_ugid}
-	dodir /etc/ipsec.d \
-		/etc/ipsec.d/aacerts \
-		/etc/ipsec.d/acerts \
-		/etc/ipsec.d/cacerts \
-		/etc/ipsec.d/certs \
-		/etc/ipsec.d/crls \
-		/etc/ipsec.d/ocspcerts \
-		/etc/ipsec.d/private \
-		/etc/ipsec.d/reqs
+	if use legacy-ipsec-script; then
+		dodir /etc/ipsec.d \
+			/etc/ipsec.d/aacerts \
+			/etc/ipsec.d/acerts \
+			/etc/ipsec.d/cacerts \
+			/etc/ipsec.d/certs \
+			/etc/ipsec.d/crls \
+			/etc/ipsec.d/ocspcerts \
+			/etc/ipsec.d/private \
+			/etc/ipsec.d/reqs
+	fi
 
 	dodoc NEWS README TODO || die
 

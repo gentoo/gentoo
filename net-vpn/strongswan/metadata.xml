@@ -19,6 +19,8 @@
 		<flag name="eap">Enable support for the different EAP modules that are supported</flag>
 		<flag name="farp">Enable faking of ARP responses for virtual IP addresses assigned to clients (IKEv2 only)</flag>
 		<flag name="gcrypt">Enable <pkg>dev-libs/libgcrypt</pkg> plugin which provides 3DES, AES, Blowfish, Camellia, CAST, DES, Serpent and Twofish ciphers along with MD4, MD5 and SHA1/2 hash algorithms, RSA and DH groups 1,2,5,14-18 and 22-24(4.4+). Also includes a software random number generator.</flag>
+		<flag name="ikev1">Enable IKEv1 support</flag>
+		<flag name="legacy-ipsec-script">Enable legacy ipsec script</flag>
 		<flag name="non-root">Force IKEv1/IKEv2 daemons to normal user privileges. This might impose some restrictions mainly to the IKEv1 daemon. Disable only if you really require superuser privileges.</flag>
 		<flag name="openssl">Enable <pkg>dev-libs/openssl</pkg> plugin which is required for Elliptic Curve Cryptography (DH groups 19-21,25,26) and ECDSA. Also provides 3DES, AES, Blowfish, Camellia, CAST, DES, IDEA and RC5 ciphers along with MD2, MD4, MD5 and SHA1/2 hash algorithms, RSA and DH groups 1,2,5,14-18 and 22-24(4.4+) <pkg>dev-libs/openssl</pkg> has to be compiled with USE="-bindist".</flag>
 		<flag name="pkcs11">Enable pkcs11 support</flag>
