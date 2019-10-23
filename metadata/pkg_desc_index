@@ -690,7 +690,7 @@ app-crypt/keybase 3.0.0 4.4.2 4.5.0 4.7.0 9999: Client for keybase.io
 app-crypt/keylookup 2.2: A tool to fetch PGP keys from keyservers
 app-crypt/kstart 4.1 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
 app-crypt/libb2 0.98 0.98.1-r1: C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
-app-crypt/libmd 1.0.0 1.0.0-r1 1.0.1: Message Digest functions from BSD systems
+app-crypt/libmd 1.0.0 1.0.0-r1 1.0.1 99999: Message Digest functions from BSD systems
 app-crypt/libnitrokey 3.5 9999: Support library for the Nitrokey
 app-crypt/libscrypt 1.21: Shared library to impliment the scrypt algorithm
 app-crypt/libsecret 0.18.6-r1 0.18.8: GObject library for accessing the freedesktop.org Secret Service API
