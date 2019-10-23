@@ -12676,7 +12676,7 @@ media-fonts/freefont 20120503: OpenType and TrueType Unicode fonts from the Free
 media-fonts/freefonts 0.10-r3: A Collection of Free Type1 Fonts
 media-fonts/fs-fonts 0.1_alpha3: Japanese TrueType fonts designed for screen and print
 media-fonts/gidole 2.0.2: Open source modern DIN fonts
-media-fonts/glass-tty-vt220 001.3: Hacking with Style: TrueType VT220 Font
+media-fonts/glass-tty-vt220 001.3 001.3-r1: Hacking with Style: TrueType VT220 Font
 media-fonts/hack 3.003: A typeface designed for source code
 media-fonts/hermit 1.1 1.21: A monospace font designed to be clear, pragmatic and very readable
 media-fonts/heuristica 1.0.2: A font based on Adobe Utopia
@@ -15097,7 +15097,7 @@ net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
 net-mail/automx 0.10.2-r1 0.10.2-r2: A mail user agent auto configuration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
 net-mail/checkpassword 0.90-r2 0.90-r3: A uniform password checking interface for root applications
-net-mail/checkpassword-pam 0.99: checkpassword-compatible authentication program w/pam support
+net-mail/checkpassword-pam 0.99 0.99-r1: checkpassword-compatible authentication program w/pam support
 net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 net-mail/courier-imap 4.17.3 4.18.2 5.0.7: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's password from across a network
@@ -15268,7 +15268,7 @@ net-misc/ena-driver 2.0.2 2.0.3: Amazon EC2 Elastic Network Adapter (ENA) kernel
 net-misc/endlessh 1.0 9999: SSH tarpit that slowly sends and endless banner
 net-misc/ethercard-diag 20050321.1g 20050321.1g-r1: low level mii diagnostic tools including mii-diag and etherwake (merge of netdiag/isa-diag)
 net-misc/ethertypes 0: Maps ethernet frame ids to symbolic names
-net-misc/eventd 0.21.0 0.24.1: A small daemon to act on remote or local events
+net-misc/eventd 0.27.0: A small daemon to act on remote or local events
 net-misc/exabgp 3.2.17 3.4.26-r1 4.0.10: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
@@ -15527,7 +15527,7 @@ net-misc/x2goserver 4.1.0.2 4.1.0.3: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270 0.4.1355: utility to download media contents from the web
 net-misc/youtube-dl 2019.10.16 2019.10.22 99999999: Download videos from YouTube.com (and more sites...)
-net-misc/youtube-viewer 3.5.4 3.5.5 3.5.8 9999: A command line utility for viewing youtube-videos in Mplayer
+net-misc/youtube-viewer 3.5.4 3.5.5 3.5.8-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
