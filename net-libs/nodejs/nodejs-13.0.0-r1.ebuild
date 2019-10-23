@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-PYTHON_REQ_USE="threads"
+PYTHON_REQ_USE="threads(+)"
 inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
