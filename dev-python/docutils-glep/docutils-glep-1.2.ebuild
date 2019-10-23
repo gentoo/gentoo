@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_PN=${PN/-/_}
 MY_P=${MY_PN}-${PV}
 DESCRIPTION="Gentoo GLEP support for docutils"
-HOMEPAGE="https://github.com/gentoo/docutils-glep/"
+HOMEPAGE="https://github.com/mgorny/docutils-glep/"
 SRC_URI="mirror://pypi/${MY_PN::1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="public-domain"
