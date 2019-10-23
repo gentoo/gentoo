@@ -1,6 +1,15 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
+# This eclass is dead and all its consumers have been removed from
+# the tree.
+# Please use perl-module.eclass if you need phase functions, and
+# perl-functions.eclass if you don't.
+# In overlays, perl-app.eclass usage can be replaced by
+# perl-module.eclass without further changes.
+# Bug 637836.  Removal in 14 days.
+
 # Author: Michael Cummings <mcummings@gentoo.org>
 # Maintained by the Perl herd <perl@gentoo.org>
 # @SUPPORTED_EAPIS: 5
