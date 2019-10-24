@@ -13,6 +13,7 @@
 		<flag name="cuda">Enable cuda non-bonded kernels</flag>
 		<flag name="double-precision">More precise calculations at the expense of speed</flag>
 		<flag name="gmxapi">Add support for gmxapi library</flag>
+		<flag name="gmxapi-legacy">Enable installing lagacy headers</flag>
 		<flag name="hwloc">Enable HWLoc lib support</flag>
 		<flag name="lmfit">Use external <pkg>sci-libs/lmfit</pkg></flag>
 		<flag name="opencl">Enable opencl non-bonded kernels</flag>
