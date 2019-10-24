@@ -13576,7 +13576,7 @@ media-plugins/kodi-game-libretro-nestopia 1.50.0.3 1.50.0.4 1.50.0.5 1.50.0.6 99
 media-plugins/kodi-game-libretro-snes9x 1.58.0.6 1.60.0.7 1.60.0.8 9999: Snes9x GameClient for Kodi
 media-plugins/kodi-game-libretro-twentyfortyeight 1.0.0.106 1.0.0.107 1.0.0.108 9999: 2048 for Kodi
 media-plugins/kodi-inputstream-adaptive 2.4.2 9999: Kodi's Adaptive inputstream addon
-media-plugins/kodi-inputstream-rtmp 2.0.4 2.0.5 9999: Kodi's RTMP inputstream addon
+media-plugins/kodi-inputstream-rtmp 2.0.4 2.0.5 2.0.6 9999: Kodi's RTMP inputstream addon
 media-plugins/kodi-peripheral-joystick 1.4.6 1.4.7 1.4.8 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-peripheral-steamcontroller 9999: Steam controller driver for Kodi
 media-plugins/kodi-pvr-argustv 3.5.4 9999: Kodi's ARGUS TV client addon
