@@ -1541,9 +1541,9 @@ app-emulation/winetricks 20190310 20190912 99999999: Easy way to install DLLs ne
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.10.3-r1 4.11.1-r3 4.11.2 4.12.0-r1: The Xen virtual machine monitor
-app-emulation/xen-pvgrub 4.10.3 4.11.1 4.11.2 4.12.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.10.3-r2 4.11.1-r5 4.11.2 4.12.0-r3: Xen tools including QEMU and xl
+app-emulation/xen 4.11.2 4.12.0-r1: The Xen virtual machine monitor
+app-emulation/xen-pvgrub 4.11.2 4.12.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
+app-emulation/xen-tools 4.11.2 4.12.0-r3: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r4 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.2: Manages the {,/usr}/bin/awk symlink
@@ -16644,7 +16644,7 @@ sci-mathematics/geogebra 5.0.339.0_p20170308-r1: Mathematics software for geomet
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.5-r1: Compute Groebner fans and tropical varities
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
-sci-mathematics/gimps 29.4.7 29.4.8 29.8.6: The Great Internet Mersenne Prime Search
+sci-mathematics/gimps 29.8.6: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.6.6 1.7.2 1.7.4: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.63: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1: Generic C++ template library for sparse, dense and skyline matrices
