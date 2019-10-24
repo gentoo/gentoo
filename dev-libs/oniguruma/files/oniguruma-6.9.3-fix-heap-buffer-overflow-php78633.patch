@@ -1,0 +1,25 @@
+https://bugs.php.net/bug.php?id=78633
+https://github.com/kkos/oniguruma/commit/15c4228aa2ffa02140a99912dd3177df0b1841c6
+
+--- a/src/regcomp.c
++++ b/src/regcomp.c
+@@ -734,8 +734,8 @@ add_compile_string(UChar* s, int mb_len, int str_len,
+     COP(reg)->exact_n.s = p;
+   }
+   else {
++    xmemset(COP(reg)->exact.s, 0, sizeof(COP(reg)->exact.s));
+     xmemcpy(COP(reg)->exact.s, s, (size_t )byte_len);
+-    COP(reg)->exact.s[byte_len] = '\0';
+   }
+ 
+   return 0;
+--- a/src/regexec.c
++++ b/src/regexec.c
+@@ -2889,6 +2889,7 @@ match_at(regex_t* reg, const UChar* str, const UChar* end,
+           DATA_ENSURE(0);
+           q = lowbuf;
+           while (len-- > 0) {
++            if (ps >= endp) goto fail;
+             if (*ps != *q) goto fail;
+             ps++; q++;
+           }
