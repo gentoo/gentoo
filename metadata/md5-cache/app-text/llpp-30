@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install postinst postrm prepare
-DEPEND=x11-misc/xsel !static? ( >=app-text/mupdf-1.12.0:0= media-libs/openjpeg:2 media-libs/fontconfig:1.0 media-libs/freetype:2 media-libs/jbig2dec sys-libs/zlib virtual/jpeg:0 x11-libs/libX11 ) app-text/asciidoc virtual/pkgconfig static? ( >=app-text/mupdf-1.12.0:0=[static-libs] media-libs/openjpeg:2[static-libs] media-libs/fontconfig:1.0[static-libs] media-libs/freetype:2[static-libs] media-libs/jbig2dec[static-libs] sys-libs/zlib[static-libs] virtual/jpeg:0[static-libs] x11-libs/libX11[static-libs] app-arch/bzip2[static-libs] media-libs/libXcm[static-libs] x11-libs/libXau[static-libs] x11-libs/libXdmcp[static-libs] x11-libs/libXmu[static-libs] ) >=dev-lang/ocaml-4.02[ocamlopt?] dev-ml/lablgl[glut,ocamlopt?]
+DEPEND=x11-misc/xsel !static? ( >=app-text/mupdf-1.12.0:0= media-libs/openjpeg:2 media-libs/fontconfig:1.0 media-libs/freetype:2 media-libs/jbig2dec:= sys-libs/zlib virtual/jpeg:0 x11-libs/libX11 ) app-text/asciidoc virtual/pkgconfig static? ( >=app-text/mupdf-1.12.0:0=[static-libs] media-libs/openjpeg:2[static-libs] media-libs/fontconfig:1.0[static-libs] media-libs/freetype:2[static-libs] media-libs/jbig2dec:=[static-libs] sys-libs/zlib[static-libs] virtual/jpeg:0[static-libs] x11-libs/libX11[static-libs] app-arch/bzip2[static-libs] media-libs/libXcm[static-libs] x11-libs/libXau[static-libs] x11-libs/libXdmcp[static-libs] x11-libs/libXmu[static-libs] ) >=dev-lang/ocaml-4.02[ocamlopt?] dev-ml/lablgl[glut,ocamlopt?]
 DESCRIPTION=graphical PDF viewer which aims to superficially resemble less(1)
 EAPI=6
 HOMEPAGE=https://github.com/moosotc/llpp
 IUSE=+ocamlopt static
 KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-3
-RDEPEND=x11-misc/xsel !static? ( >=app-text/mupdf-1.12.0:0= media-libs/openjpeg:2 media-libs/fontconfig:1.0 media-libs/freetype:2 media-libs/jbig2dec sys-libs/zlib virtual/jpeg:0 x11-libs/libX11 )
+RDEPEND=x11-misc/xsel !static? ( >=app-text/mupdf-1.12.0:0= media-libs/openjpeg:2 media-libs/fontconfig:1.0 media-libs/freetype:2 media-libs/jbig2dec:= sys-libs/zlib virtual/jpeg:0 x11-libs/libX11 )
 RESTRICT=!ocamlopt? ( strip )
 SLOT=0
 SRC_URI=https://github.com/moosotc/llpp/archive/v30.tar.gz -> llpp-30.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=7c97418b9f5ae1a2430a298fdb37646b
+_md5_=80df97fbfd97a2a221d6b21a94af9635
