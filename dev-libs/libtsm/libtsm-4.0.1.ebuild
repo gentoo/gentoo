@@ -8,7 +8,7 @@ inherit cmake-utils
 
 DESCRIPTION="Terminal Emulator State Machine"
 HOMEPAGE="https://github.com/Aetf/libtsm"
-SRC_URI="https://github.com/Aetf/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/Aetf/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1 MIT"
 SLOT="0/4"
