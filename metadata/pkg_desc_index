@@ -7760,7 +7760,7 @@ dev-python/fdsend 0.1: flexible file descriptor passing
 dev-python/fedmsg 0.18.3: Fedora Messaging Client API
 dev-python/feedgenerator 1.9: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.2.1: Parse RSS and Atom feeds in Python
-dev-python/fido2 0.3.0 0.4.0 0.5.0 0.6.0 0.7.0 0.7.1 0.7.2: Python based FIDO 2.0 library
+dev-python/fido2 0.3.0 0.4.0 0.5.0 0.6.0 0.7.0 0.7.1 0.7.3: Python based FIDO 2.0 library
 dev-python/fields 5.0.0 5.0.0-r1: Container class boilerplate killer
 dev-python/figleaf 0.6.1-r1: Code coverage tool
 dev-python/filelock 3.0.10: A platform independent file lock for Python
@@ -13220,7 +13220,7 @@ media-libs/libggimisc 2.2.2-r1: Adds support for some special graphical target f
 media-libs/libggiwmh 0.3.2-r1: Window manager hints extensions for libggi
 media-libs/libgig 4.1.0: C++ library for loading Gigasampler and DLS level 1/2 files
 media-libs/libgii 1.0.2-r2: Easy to use, but yet powerful, API for all possible input sources
-media-libs/libglvnd 1.2.0 9999: The GL Vendor-Neutral Dispatch library
+media-libs/libglvnd 1.2.0-r1 9999: The GL Vendor-Neutral Dispatch library
 media-libs/libgphoto2 2.5.20 2.5.22: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library.
@@ -13333,7 +13333,7 @@ media-libs/lv2 1.14.0-r1: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mediastreamer 2.9.0-r2: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 19.1.7 19.1.8 19.2.0 19.2.1 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 19.1.7 19.1.8 19.2.2 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.16.0-r1 6.16.0-r2: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
