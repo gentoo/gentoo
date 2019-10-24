@@ -11366,7 +11366,7 @@ games-fps/freedm-data 0.12.0: Game resources for FreeDM
 games-fps/freedoom 0.12.0: A complete free-content single-player focused game based on the Doom engine
 games-fps/freedoom-data 0.12.0: Game resources for Freedoom: Phase 1+2
 games-fps/glxquake-bin 0-r2: A binary that works with any 3D-graphics-card that supports the glx X-extension
-games-fps/gzdoom 4.2.1: A modder-friendly OpenGL source port based on the DOOM engine
+games-fps/gzdoom 4.2.3: A modder-friendly OpenGL source port based on the DOOM engine
 games-fps/industri 1.01: Quake/Tenebrae based, single player game
 games-fps/legends 0.4.1.43-r2: Fast-paced first-person-shooter online multiplayer game, similar to Tribes
 games-fps/nexuiz 2.5.2-r1: Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
