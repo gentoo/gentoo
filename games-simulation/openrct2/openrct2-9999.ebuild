@@ -79,6 +79,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DDISABLE_HTTP_TWITCH="$(usex !twitch)"
 		-DDISABLE_NETWORK="$(usex !multiplayer)"
 		-DDISABLE_OPENGL="$(usex !opengl)"
