@@ -106,6 +106,9 @@ python_prepare_all() {
 	# Apply 0299aedef74e47c0a68acf7905d8714c9578f125 for bug 698046.
 	sed -e 's|rsync -avP|rsync -LtvP|' -i lib/portage/tests/util/test_getconfig.py || die
 
+	# Apply 26fd7ffdd5b74af3aeedf0e6a87ac6b3d1243848 for bug 698474.
+	sed -e 's|if "local" in custommirrors:|if try_mirrors and "local" in custommirrors:|' -i lib/portage/package/ebuild/fetch.py || die
+
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
 		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
