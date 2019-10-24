@@ -7253,6 +7253,7 @@ sci-chemistry/ghemical:seamonkey - Add support for the Seamonkey web-browser
 sci-chemistry/gromacs:cuda - Enable cuda non-bonded kernels
 sci-chemistry/gromacs:double-precision - More precise calculations at the expense of speed
 sci-chemistry/gromacs:gmxapi - Add support for gmxapi library
+sci-chemistry/gromacs:gmxapi-legacy - Enable installing lagacy headers
 sci-chemistry/gromacs:hwloc - Enable HWLoc lib support
 sci-chemistry/gromacs:lmfit - Use external sci-libs/lmfit
 sci-chemistry/gromacs:mkl - Use sci-libs/mkl for fft, blas, lapack routines

@@ -16169,7 +16169,7 @@ sci-chemistry/gelemental 1.2.0-r1 2.0.0: Periodic table viewer with detailed inf
 sci-chemistry/ghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
-sci-chemistry/gromacs 2018.7 2018.8 2018.9999 2019.2 2019.3 2019.4 2019.9999 9999: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 2018.7 2018.8 2018.9999 2019.2 2019.3 2019.4 2019.9999 2020_beta1 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
 sci-chemistry/ksdssp 040728 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
