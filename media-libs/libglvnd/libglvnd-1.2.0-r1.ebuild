@@ -27,7 +27,7 @@ IUSE="X"
 
 RDEPEND="
 	!media-libs/mesa[-libglvnd(-)]
-	!<media-libs/mesa-19.2.0_rc1
+	!<media-libs/mesa-19.2.2
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
@@ -43,7 +43,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	myconf=(
-		--disable-headers
 		$(use_enable X x11)
 		$(use_enable X glx)
 	)
