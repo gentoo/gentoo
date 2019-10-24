@@ -37,6 +37,10 @@ python_prepare_all()  {
 		sed -e '/^NETSELECT_SUPPORTS_IPV4_IPV6 =/s|False|True|' \
 			-i mirrorselect/selectors.py || die
 	fi
+
+	# Apply e69ec2d046626fa2079d460aab469d04256182cd for bug 698470.
+	sed -e 's|key = lex.get_token()|\0\n\t\t\tif key is None:\n\t\t\t\tbreak|' -i mirrorselect/configs.py || die
+
 	distutils-r1_python_prepare_all
 }
 
