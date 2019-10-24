@@ -38,6 +38,7 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}
+	!kde-misc/systemd-kcm
 	$(add_frameworks_dep kirigami)
 "
 
