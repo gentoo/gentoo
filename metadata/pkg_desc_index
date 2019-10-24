@@ -10211,7 +10211,7 @@ dev-ruby/source_map 3.0.1: Provides an API for parsing, and an API for generatin
 dev-ruby/sourcemap 0.1.1: Ruby source maps
 dev-ruby/sparklines 0.5.2-r6: Create sparklines, small graphs to be used inline in texts
 dev-ruby/spork 0.9.2-r2: Spork is Tim Harper's implementation of test server
-dev-ruby/spreadsheet 1.1.9 1.2.2 1.2.4: Ruby library to read and write spreadsheet documents
+dev-ruby/spreadsheet 1.1.9 1.2.2 1.2.4 1.2.5: Ruby library to read and write spreadsheet documents
 dev-ruby/spring 2.0.2 2.1.0: Rails application preloader
 dev-ruby/sprockets 3.7.2: Ruby library for compiling and serving web assets
 dev-ruby/sprockets-rails 3.2.1: Sprockets implementation for Rails 4.x (and beyond) Asset Pipeline
