@@ -30,9 +30,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-g${PV}"
+
 PATCHES=(
-	"${FILESDIR}/${P}-install_soundfonts.patch"
-	"${FILESDIR}/${P}-Introduce-the-BUILD_NONFREE-option.patch"
+	"${FILESDIR}/${PN}-4.2.1-install_soundfonts.patch"
+	"${FILESDIR}/${PN}-4.2.1-Introduce-the-BUILD_NONFREE-option.patch"
 )
 
 src_prepare() {
