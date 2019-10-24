@@ -76,7 +76,7 @@ KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
 
 DEPEND=">=virtual/rust-1.31.0"
-RDEPEND="${DEPEND}"
+RDEPEND=""
 
 QA_FLAGS_IGNORED="/usr/bin/fd"
 
