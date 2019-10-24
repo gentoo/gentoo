@@ -16,13 +16,13 @@ SRC_URI="https://dev.gentoo.org/~zmedico/dist/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+IUSE="ipv6"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
 RDEPEND="
 	dev-util/dialog
-	>=net-analyzer/netselect-0.4[ipv6(+)]
+	>=net-analyzer/netselect-0.4[ipv6(+)?]
 	>=dev-python/ssl-fetch-0.3[${PYTHON_USEDEP}]
 	"
 
@@ -31,6 +31,16 @@ python_prepare_all()  {
 	eprefixify setup.py mirrorselect/main.py
 	echo Now setting version... VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	VERSION="${PVR}" "${PYTHON}" setup.py set_version || die "setup.py set_version failed"
+	if use ipv6; then
+		# The netselect --ipv4 and --ipv6 options are supported only
+		# with >=net-analyzer/netselect-0.4[ipv6(+)] (bug 688214).
+		sed -e '/^NETSELECT_SUPPORTS_IPV4_IPV6 =/s|False|True|' \
+			-i mirrorselect/selectors.py || die
+	fi
+
+	# Apply e69ec2d046626fa2079d460aab469d04256182cd for bug 698470.
+	sed -e 's|key = lex.get_token()|\0\n\t\t\tif key is None:\n\t\t\t\tbreak|' -i mirrorselect/configs.py || die
+
 	distutils-r1_python_prepare_all
 }
 
