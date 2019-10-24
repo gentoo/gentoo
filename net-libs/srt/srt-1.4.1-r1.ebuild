@@ -1,4 +1,4 @@
-# Copyright 2018-2019 Gentoo Authors
+# Copyright 2018-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,9 +18,9 @@ fi
 
 LICENSE="MPL-2.0"
 SLOT="0"
-IUSE="gnutls libressl test"
+IUSE="gnutls libressl"
 
-RDEPEND="
+DEPEND="
 	gnutls? (
 		dev-libs/nettle:0=[${MULTILIB_USEDEP}]
 		net-libs/gnutls:0=[${MULTILIB_USEDEP}]
@@ -30,11 +30,9 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	)
 "
-DEPEND="${RDEPEND}
-	test? ( dev-cpp/gtest )
-"
+RDEPEND="${DEPEND}"
 
-RESTRICT="!test? ( test )"
+DOCS=( README.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-always-GNUInstallDirs.patch"
@@ -42,14 +40,13 @@ PATCHES=(
 
 src_prepare() {
 	cmake-utils_src_prepare
-	sed -i -e "s:hcrypt_ut.c::" haicrypt/*.maf || die
+	sed -i -e "s:hcrypt_ut.c::" "${S}"/haicrypt/*.maf || die
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_STATIC=OFF
 		-DUSE_GNUTLS=$(usex gnutls)
-		-DENABLE_UNITTESTS=$(usex test)
 	)
 	cmake-multilib_src_configure
 }
