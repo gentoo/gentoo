@@ -40,7 +40,7 @@ src_prepare() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}"
+	emake DESTDIR="${ED}" install
 	einstalldocs
 
 	if use examples; then
