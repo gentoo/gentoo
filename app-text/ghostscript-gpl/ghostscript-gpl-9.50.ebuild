@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV/_}"
 PVM=$(ver_cut 1-2)
 PVM_S=$(ver_rs 1-2 "")
 
-MY_PATCHSET="ghostscript-gpl-9.28-patchset-2.tar.xz"
+MY_PATCHSET="ghostscript-gpl-9.50-patchset-1.tar.xz"
 
 SRC_URI="https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${PVM_S}/${MY_P}.tar.xz"
 if [[ -n "${MY_PATCHSET}" ]] ; then
@@ -34,7 +34,7 @@ DEPEND="
 	app-text/libpaper
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.9:2=
-	>=media-libs/jbig2dec-0.16
+	>=media-libs/jbig2dec-0.16:=
 	>=media-libs/lcms-2.6:2
 	>=media-libs/libpng-1.6.2:0=
 	>=media-libs/openjpeg-2.1.0:2=
@@ -62,7 +62,9 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	if [[ -n "${MY_PATCHSET}" ]] ; then
 		# apply various patches, many borrowed from Fedora
-		# http://pkgs.fedoraproject.org/cgit/ghostscript.git
+		# https://src.fedoraproject.org/rpms/ghostscript
+		# and Debian
+		# https://salsa.debian.org/printing-team/ghostscript/tree/debian/master/debian/patches
 		eapply "${WORKDIR}/patches/"*.patch
 	fi
 
