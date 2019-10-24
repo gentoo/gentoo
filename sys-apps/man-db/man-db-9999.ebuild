@@ -8,7 +8,7 @@ inherit systemd
 DESCRIPTION="a man replacement that utilizes berkdb instead of flat files"
 HOMEPAGE="http://www.nongnu.org/man-db/"
 if [[ "${PV}" = 9999* ]] ; then
-	inherit git-r3
+	inherit autotools git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/man-db.git"
 else
 	SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
@@ -49,6 +49,36 @@ PDEPEND="manpager? ( app-text/manpager )"
 pkg_setup() {
 	if (use gdbm && use berkdb) || (use !gdbm && use !berkdb) ; then #496150
 		ewarn "Defaulting to USE=gdbm due to ambiguous berkdb/gdbm USE flag settings"
+	fi
+}
+
+src_unpack() {
+	if [[ "${PV}" == *9999 ]] ; then
+		git-r3_src_unpack
+
+		# We need to mess with gnulib :-/
+		EGIT_REPO_URI="https://git.savannah.gnu.org/r/gnulib.git" \
+		EGIT_CHECKOUT_DIR="${WORKDIR}/gnulib" \
+		git-r3_src_unpack
+	else
+		default
+	fi
+}
+
+src_prepare() {
+	default
+	if [[ "${PV}" == *9999 ]] ; then
+		local bootstrap_opts=(
+			--gnulib-srcdir=../gnulib
+			--no-bootstrap-sync
+			--copy
+			--no-git
+		)
+		AUTORECONF="/bin/true" \
+		LIBTOOLIZE="/bin/true" \
+		sh ./bootstrap "${bootstrap_opts[@]}" || die
+
+		eautoreconf
 	fi
 }
 
