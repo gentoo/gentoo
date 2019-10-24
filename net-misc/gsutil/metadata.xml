@@ -9,8 +9,8 @@
     <email>zmedico@gentoo.org</email>
     <name>Zac Medico</name>
   </maintainer>
-	<upstream>
-		<remote-id type="google-code">gsutil</remote-id>
-		<remote-id type="github">GoogleCloudPlatform/gsutil</remote-id>
-	</upstream>
+  <upstream>
+    <remote-id type="google-code">gsutil</remote-id>
+    <remote-id type="github">GoogleCloudPlatform/gsutil</remote-id>
+  </upstream>
 </pkgmetadata>
