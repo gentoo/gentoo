@@ -2307,7 +2307,7 @@ app-portage/kuroo 0.90.5_p20180410 9999: Graphical Portage frontend based on KDE
 app-portage/layman 2.0.0-r1 2.0.0-r3 2.2.0-r7 2.4.1-r1 2.4.2-r1 2.4.2-r2 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.6.2-r1 0.6.3 0.6.4.2 0.6.5 0.6.5-r1 0.6.6-r1 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 2 3: Handy scripts for ebuild development and more
-app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.5 2.2.6 9999: Tool to help select distfiles mirrors for Gentoo
+app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.2 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
