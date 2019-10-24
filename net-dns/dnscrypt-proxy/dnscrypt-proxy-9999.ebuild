@@ -18,7 +18,7 @@ fi
 DESCRIPTION="A flexible DNS proxy, with support for encrypted DNS protocols"
 HOMEPAGE="https://github.com/jedisct1/dnscrypt-proxy"
 
-LICENSE="ISC"
+LICENSE="Apache-2.0 BSD ISC MIT MPL-2.0"
 SLOT="0"
 IUSE="pie"
 
