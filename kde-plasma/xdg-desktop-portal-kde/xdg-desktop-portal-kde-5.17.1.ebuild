@@ -22,7 +22,6 @@ COMMON_DEPEND="
 	$(add_qt_dep qtprintsupport 'cups')
 	$(add_qt_dep qtwidgets)
 	screencast? (
-		dev-libs/glib:2
 		media-libs/libepoxy
 		media-libs/mesa[gbm]
 		media-video/pipewire:=
@@ -39,7 +38,6 @@ RDEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package screencast GLIB2)
 		$(cmake-utils_use_find_package screencast PipeWire)
 		$(cmake-utils_use_find_package screencast GBM)
 		$(cmake-utils_use_find_package screencast Epoxy)
