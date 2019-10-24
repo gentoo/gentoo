@@ -2226,7 +2226,7 @@ app-office/moneydance 2017.10 2019.3.1880: A cross-platform personal finance app
 app-office/moneyguru 2.13.1-r1 3.0.1-r1: Future-aware personal finances management
 app-office/multitalk 1.4-r1: A new type of presentation program
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
-app-office/openoffice-bin 4.1.6 4.1.7: Apache OpenOffice productivity suite
+app-office/openoffice-bin 4.1.7: Apache OpenOffice productivity suite
 app-office/orage 4.12.1-r1: A time managing application (and panel plug-in) for the Xfce desktop environment
 app-office/pinpoint 0.1.8-r1: A tool for making hackers do excellent presentations
 app-office/plan 1.10: Motif based schedule planner
@@ -10001,7 +10001,7 @@ dev-ruby/pdf-reader 1.4.1-r2 2.2.0 2.2.1: PDF parser conforming as much as possi
 dev-ruby/permutation 0.1.8-r1: Library performing operations with permutations of sequences (strings, arrays)
 dev-ruby/pg 0.21.0 1.0.0 1.1.4: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r2: Simple library to parse PostgreSQL arrays into a array of strings
-dev-ruby/pkg-config 1.2.8 1.3.7 1.3.8 1.3.9: A pkg-config implementation by Ruby
+dev-ruby/pkg-config 1.2.8 1.3.7 1.3.8 1.3.9 1.4.0: A pkg-config implementation by Ruby
 dev-ruby/plist 3.4.0 3.5.0: A library to manipulate Property List files, also known as plists
 dev-ruby/pluggaloid 1.1.2 1.2.0: Pluggaloid is extensible plugin system for mikutter
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
@@ -10055,7 +10055,7 @@ dev-ruby/rcairo 1.15.11 1.16.2 1.16.4: Ruby bindings for cairo
 dev-ruby/rdiscount 2.2.0.1: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 5.1.0 5.1.0-r1 6.1.1 6.1.2 6.2.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
-dev-ruby/recog 2.1.31 2.1.46 2.3.2 2.3.4: Pattern recognition for hosts, services, and content
+dev-ruby/recog 2.1.31 2.1.46 2.3.2 2.3.4 2.3.5: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.4.0 3.5.0: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.3.2-r1: A module for using Textile in Ruby
 dev-ruby/redis 3.3.5 4.0.1: A Ruby client library for Redis
@@ -10093,7 +10093,7 @@ dev-ruby/rmagick 3.1.0 3.2.0 4.0.0: An interface between Ruby and the ImageMagic
 dev-ruby/roadie 3.4.0 3.5.0 3.5.1: Making HTML emails comfortable for the Rails rockstars
 dev-ruby/roadie-rails 1.2.1 1.3.0: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
-dev-ruby/rouge 3.8.0 3.9.0 3.10.0 3.11.0 3.11.1: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
+dev-ruby/rouge 3.8.0 3.9.0 3.10.0 3.11.0 3.11.1 3.12.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
 dev-ruby/rqrcode 0.10.1: Library for encoding QR Codes
 dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.6.0 1.7.1-r1 1.7.2: Ruby bindings for rrdtool
