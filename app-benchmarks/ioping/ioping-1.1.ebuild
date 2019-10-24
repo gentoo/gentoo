@@ -12,7 +12,12 @@ SRC_URI="https://github.com/koct9i/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
+IUSE="netdata"
+
+src_prepare() {
+	use netdata && eapply "${FILESDIR}/${P}-netdata.patch"
+	eapply_user
+}
 
 src_configure() {
 	tc-export CC
