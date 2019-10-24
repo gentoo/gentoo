@@ -5011,7 +5011,7 @@ dev-libs/libtommath 0.42.0-r1 1.0.1 1.1.0: Optimized and portable routines for i
 dev-libs/libtompoly 0.04: portable ISO C library for polynomial basis arithmetic
 dev-libs/libtpms 0.7.0: Library providing software emultion of a TPM
 dev-libs/libtreadstone 0.1.0 0.2.0: Hyperdex libtreadstone support library
-dev-libs/libtsm 3: Terminal Emulator State Machine
+dev-libs/libtsm 3 4.0.1: Terminal Emulator State Machine
 dev-libs/libtubo 5.0.15: small and simple interprocess communication library
 dev-libs/libuev 2.1.0 2.1.2 2.2.0 2.3.0: A collection of useful BSD APIs
 dev-libs/libugpio 0.0.6: Lib for the use of linux kernel's sysfs gpio interface from C programs
@@ -17185,7 +17185,7 @@ sys-apps/kcheck 0.0.2 9999: Record and check required kernel symbols are set
 sys-apps/kexec-tools 2.0.19-r1 2.0.20 9999: Load another kernel from the currently executing Linux kernel
 sys-apps/keyutils 1.5.9-r4 1.5.11-r1 1.6 1.6.1: Linux Key Management Utilities
 sys-apps/kmod 25 26-r2 9999: library and tools for managing linux kernel modules
-sys-apps/kmscon 8: KMS/DRM based virtual Console Emulator
+sys-apps/kmscon 8-r1 8_p20180906: KMS/DRM based virtual Console Emulator
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdtest 1.18: Displays test patterns to spot dead/hot pixels on LCD screens
 sys-apps/lcdutils 0.2: Cobalt RaQ/Qube LCD Writing and Button reading utilities
