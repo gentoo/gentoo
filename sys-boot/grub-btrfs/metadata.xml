@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>beatussum@protonmail.com</email>
+		<name>Mattéo Rossillol‑‑Laruelle</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		- automatically list snapshots existing on root partition (btrfs)&#xA;
+		- automatically detect if "/boot" is in separate partition&#xA;
+		- automatically detect kernel, initramfs and intel microcode in "/boot"
+		directory on snapshots&#xA;
+		- automatically create corresponding "menuentry" in `grub.cfg`&#xA;
+		- automatically detect snapper and use snapper's  snapshot  description
+		if available&#xA;
+		- automatically generate `grub.cfg` if you  use  the  provided  systemd 
+		service
+	</longdescription>
+	<longdescription lang="fr">
+		- liste automatiquement les instantanés existant sur  la  partition
+		racine (btrfs)&#xA;
+		- détecte automatiquement si "/boot" est dans une partition séparée&#xA;
+		- détecte automatiquement le noyau, les initramfs et  le  microcode
+		intel du répertoire "/boot" dans les instantanés&#xA;
+		- crée automatiquement le "menuentry" correspondant dans `grub.cfg`&#xA;
+		- détecte automatiquement la présence  de  snapper  et  utilise  la
+		description de l'instantané si disponible&#xA;
+		- génére automatiquement `grub.cfg` si  vous  utilisez  le  service
+		systemd fourni
+	</longdescription>
+	<upstream>
+		<maintainer status="active">
+			<name>Antynea</name>
+		</maintainer>
+		<bugs-to>https://github.com/Antynea/grub-btrfs/issues</bugs-to>
+		<remote-id type="github">Antynea/grub-btrfs</remote-id>
+	</upstream>
+</pkgmetadata>

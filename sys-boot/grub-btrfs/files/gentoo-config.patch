@@ -1,0 +1,12 @@
+diff --git a/config b/config
+index c5df175..f5113b1 100644
+--- a/config
++++ b/config
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env bash
+ 
+-# GRUB_BTRFS_SUBMENUNAME="Arch Linux snapshots"                              # Name appearing in the Grub menu
++GRUB_BTRFS_SUBMENUNAME="Gentoo snapshots"                                    # Name appearing in the Grub menu
+ # GRUB_BTRFS_PREFIXENTRY="Snapshot:"                                         # Add a name ahead your snapshots entries in the Grub menu
+ # GRUB_BTRFS_DISPLAY_PATH_SNAPSHOT="true"                                    # Show full path snapshot or only name in the Grub menu
+ # GRUB_BTRFS_TITLE_FORMAT="p/d/n"                                            # Custom title, shows/hides p"prefix" d"date" n"name" in the Grub menu, separator "/", custom order available
