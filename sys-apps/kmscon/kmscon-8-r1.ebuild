@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ IUSE="debug doc +drm +fbdev +gles2 +optimizations +pango pixman static-libs syst
 COMMON_DEPEND="
 	>=virtual/udev-172
 	x11-libs/libxkbcommon
-	dev-libs/libtsm
+	dev-libs/libtsm:=
 	media-libs/mesa[X(+)]
 	drm? ( x11-libs/libdrm
 		>=media-libs/mesa-8.0.3[egl,gbm] )
