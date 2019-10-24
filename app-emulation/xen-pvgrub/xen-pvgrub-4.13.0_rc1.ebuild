@@ -8,6 +8,8 @@ PYTHON_REQ_USE='xml,threads'
 
 inherit flag-o-matic multilib python-single-r1 toolchain-funcs
 
+MY_PV=${PV/_/-}
+
 XEN_EXTFILES_URL="http://xenbits.xensource.com/xen-extfiles"
 LIBPCI_URL=ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci
 GRUB_URL=mirror://gnu-alpha/grub
@@ -18,7 +20,7 @@ UPSTREAM_VER=
 		https://github.com/hydrapolic/gentoo-dist/raw/master/xen/${P/-pvgrub/}-upstream-patches-${UPSTREAM_VER}.tar.xz"
 
 SRC_URI="
-		https://downloads.xenproject.org/release/xen/${PV}/xen-${PV}.tar.gz
+		https://downloads.xenproject.org/release/xen/${MY_PV}/xen-${MY_PV}.tar.gz
 		$GRUB_URL/grub-0.97.tar.gz
 		$XEN_EXTFILES_URL/zlib-1.2.3.tar.gz
 		$LIBPCI_URL/pciutils-2.2.9.tar.bz2
@@ -27,7 +29,7 @@ SRC_URI="
 		$XEN_EXTFILES_URL/polarssl-1.1.4-gpl.tgz
 		${UPSTREAM_PATCHSET_URI}"
 
-S="${WORKDIR}/xen-${PV}"
+S="${WORKDIR}/xen-${MY_PV}"
 
 DESCRIPTION="allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem"
 HOMEPAGE="https://www.xenproject.org"
