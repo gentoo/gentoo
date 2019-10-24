@@ -8,7 +8,7 @@ MY_PV=VERSION_${PV}
 inherit qmake-utils
 
 DESCRIPTION="OAuth2 plugin for Signon daemon"
-HOMEPAGE="https://01.org/gsso/"
+HOMEPAGE="https://gitlab.com/accounts-sso/signon-plugin-oauth2"
 SRC_URI="https://gitlab.com/accounts-sso/${MY_PN}/-/archive/${MY_PV}/${MY_PN}-${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
@@ -34,9 +34,11 @@ PATCHES=(
 
 src_prepare() {
 	default
-
+	sed -i -e '/QMAKE_CXXFLAGS.*Werror/s/^/#DONT /' common-project-config.pri ||
+		die "failed to disable -Werror"
 	if ! use test; then
-		sed -i -e '/^SUBDIRS/s/tests//' signon-oauth2.pro || die "Failed to disable tests"
+		sed -i -e '/^SUBDIRS/s/tests//' signon-oauth2.pro ||
+			die "Failed to disable tests"
 	fi
 }
 
