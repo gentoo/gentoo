@@ -747,7 +747,7 @@ app-crypt/seahorse-sharing 3.8.0_p20151117: Daemon for PGP public key sharing us
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signify 20 23 24: Cryptographically sign and verify files
-app-crypt/signing-party 2.9: A collection of several tools related to OpenPGP
+app-crypt/signing-party 2.9 2.10: A collection of several tools related to OpenPGP
 app-crypt/simple-tpm-pk11 0.06: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.14.1: Computes context triggered piecewise hashes (fuzzy hashes)
 app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
@@ -12485,7 +12485,7 @@ mail-client/mail-notification 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20160123: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.10.1 1.11.4 1.12.1 1.12.2: A small but very powerful text-based mail client
-mail-client/neomutt 20180512 20180622 20180716 99999999: A small but very powerful text-based mail client
+mail-client/neomutt 20180512 20180622 20180716 20180716-r1 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.3.8 1.3.9 1.3.10: A browser-based multilingual IMAP client with an application-like user interface
@@ -18352,7 +18352,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.2.4: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.1: Web-based interactive data analytics notebook launcher
-www-client/chromium 77.0.3865.120 78.0.3904.70: Open-source version of Google Chrome web browser
+www-client/chromium 77.0.3865.120 78.0.3904.70 79.0.3941.4: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.4 3.30.5 3.32.4 3.32.5: GNOME webbrowser based on Webkit
