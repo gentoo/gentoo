@@ -6556,7 +6556,7 @@ dev-perl/Parse-ErrorString-Perl 0.270.0: Parse error messages from the perl inte
 dev-perl/Parse-ExuberantCTags 1.20.0-r1: Efficiently parse exuberant ctags files
 dev-perl/Parse-RecDescent 1.967.15: Generate Recursive-Descent Parsers
 dev-perl/Parse-Syslog 1.100.0-r1: Parse::Syslog - Parse Unix syslog files
-dev-perl/Parse-Yapp 1.50.0-r1 1.210.0: Compiles yacc-like LALR grammars to generate Perl OO parser modules
+dev-perl/Parse-Yapp 1.210.0: Compiles yacc-like LALR grammars to generate Perl OO parser modules
 dev-perl/Passwd-Linux 1.300.0: Perl module for manipulating the passwd and shadow files
 dev-perl/Passwd-Unix 0.710.0: access to standard unix passwd files
 dev-perl/PatchReader 0.9.6-r1: Module for reading diff-compatible patch files
