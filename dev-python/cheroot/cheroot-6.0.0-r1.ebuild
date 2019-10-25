@@ -18,7 +18,7 @@ IUSE="test"
 RDEPEND=">=dev-python/six-1.11.0[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-2.6[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	<dev-python/setuptools-41.4.0[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	test? (
 		dev-python/portend[${PYTHON_USEDEP}]
