@@ -70,7 +70,7 @@ src_install() {
 			bin/policytool || die
 	fi
 
-	mv lib/security/cacerts lib/security/cacerts.orig || die
+	rm -v lib/security/cacerts || die
 
 	dodir "${dest}"
 	cp -pPR * "${ddest}" || die

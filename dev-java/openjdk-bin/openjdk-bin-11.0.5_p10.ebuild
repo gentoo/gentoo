@@ -7,7 +7,7 @@ inherit java-vm-2
 
 abi_uri() {
 	echo "${2-$1}? (
-			https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk-${MY_PV}/OpenJDK${SLOT}U-jre_${1}_linux_hotspot_${MY_PV//+/_}.tar.gz
+			https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk-${MY_PV}/OpenJDK${SLOT}U-jdk_${1}_linux_hotspot_${MY_PV//+/_}.tar.gz
 		)"
 }
 
@@ -15,24 +15,26 @@ MY_PV=${PV/_p/+}
 SLOT=${MY_PV%%[.+]*}
 
 SRC_URI="
+	$(abi_uri arm)
+	$(abi_uri ppc64le ppc64)
 	$(abi_uri x64 amd64)
 "
 
-DESCRIPTION="Prebuilt Java JRE binaries provided by AdoptOpenJDK"
+DESCRIPTION="Prebuilt Java JDK binaries provided by AdoptOpenJDK"
 HOMEPAGE="https://adoptopenjdk.net"
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64"
-IUSE="alsa cups +gentoo-vm headless-awt nsplugin selinux +webstart"
+KEYWORDS="~amd64 ~arm ~ppc64"
+IUSE="alsa cups doc examples +gentoo-vm headless-awt nsplugin selinux source +webstart"
 
 RDEPEND="
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
-	>net-libs/libnet-1.1
 	>=sys-apps/baselayout-java-0.1.0-r1
 	>=sys-libs/glibc-2.2.5:*
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
+	doc? ( dev-java/java-sdk-docs:${SLOT} )
 	selinux? ( sec-policy/selinux-java )
 	!headless-awt? (
 		x11-libs/libX11
@@ -48,7 +50,13 @@ PDEPEND="webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
 RESTRICT="preserve-libs splitdebug"
 QA_PREBUILT="*"
 
-S="${WORKDIR}/jdk-${MY_PV}-jre"
+S="${WORKDIR}/jdk-${MY_PV}"
+
+pkg_pretend() {
+	if [[ "$(tc-is-softfloat)" != "no" ]]; then
+		die "These binaries require a hardfloat system."
+	fi
+}
 
 src_install() {
 	local dest="/opt/${P}"
@@ -65,11 +73,19 @@ src_install() {
 		rm -v lib/libjsound.* || die
 	fi
 
+	if ! use examples ; then
+		rm -vr demo/ || die
+	fi
+
 	if use headless-awt ; then
 		rm -v lib/lib*{[jx]awt,splashscreen}* || die
 	fi
 
-	mv lib/security/cacerts lib/security/cacerts.orig || die
+	if ! use source ; then
+		rm -v lib/src.zip || die
+	fi
+
+	rm -v lib/security/cacerts || die
 
 	dodir "${dest}"
 	cp -pPR * "${ddest}" || die
@@ -86,13 +102,14 @@ pkg_postinst() {
 	java-vm-2_pkg_postinst
 
 	if use gentoo-vm ; then
-		ewarn "WARNING! You have enabled the gentoo-vm USE flag, making this JRE"
-		ewarn "recognised by the system. This will almost certainly break things."
+		ewarn "WARNING! You have enabled the gentoo-vm USE flag, making this JDK"
+		ewarn "recognised by the system. This will almost certainly break"
+		ewarn "many java ebuilds as they are not ready for openjdk-11"
 	else
-		ewarn "The experimental gentoo-vm USE flag has not been enabled so this JRE"
+		ewarn "The experimental gentoo-vm USE flag has not been enabled so this JDK"
 		ewarn "will not be recognised by the system. For example, simply calling"
 		ewarn "\"java\" will launch a different JVM. This is necessary until Gentoo"
-		ewarn "fully supports Java 11. This JRE must therefore be invoked using its"
+		ewarn "fully supports Java 11. This JDK must therefore be invoked using its"
 		ewarn "absolute location under ${EPREFIX}/opt/${P}."
 	fi
 }
