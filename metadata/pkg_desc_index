@@ -5118,7 +5118,7 @@ dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
 dev-libs/re2 0.2016.05.01 0.2016.11.01-r1 0.2017.03.01 0.2018.04.01 0.2018.10.01 0.2019.08.01 0.2019.09.01: An efficient, principled regular expression library
 dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Framework
-dev-libs/redland-bindings 1.0.14.1-r2: Language bindings for Redland
+dev-libs/redland-bindings 1.0.14.1-r2 1.0.17.1: Language bindings for Redland
 dev-libs/replicant 0.6.4 0.7.1 0.8.0 0.8.1: Hyperdex replicant support library
 dev-libs/rlog 1.4: A C++ logging library
 dev-libs/rocm-comgr 2.6.0 2.7.0 2.8.0 2.9.0: Radeon Open Compute Code Object Manager
@@ -17778,7 +17778,7 @@ sys-fs/loop-aes 3.7n: Linux kernel module to encrypt disk partitions with AES ci
 sys-fs/lsscsi 0.29 0.30: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r3: User-mode filesystem implementation
-sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.183 2.02.184-r4 2.02.185-r1 2.02.186 2.03.05-r1: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.183 2.02.184-r4 2.02.185-r1 2.02.186 2.03.06: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
