@@ -53,7 +53,7 @@ S="${WORKDIR}/${PN/lvm/LVM}.${PV}"
 
 PATCHES=(
 	# Gentoo specific modification(s):
-	"${FILESDIR}"/${PN}-2.03.05-example.conf.in.patch
+	"${FILESDIR}"/${PN}-2.03.06-example.conf.in.patch
 
 	# For upstream -- review and forward:
 	#"${FILESDIR}"/${PN}-2.02.63-always-make-static-libdm.patch # FIXME: breaks libdm/dm-tools build
