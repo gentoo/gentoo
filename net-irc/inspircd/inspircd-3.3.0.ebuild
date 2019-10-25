@@ -83,7 +83,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D%/}" install
+	emake DESTDIR="${D}" install
 
 	# Default is '0750', which causes init errors.
 	fperms 0755 /usr/bin/inspircd{,-genssl}
