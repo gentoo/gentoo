@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit latex-package texlive-common
 
@@ -12,7 +12,6 @@ SRC_URI="mirror://sourceforge/jadetex/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE=""
 RESTRICT="test"
 
 DEPEND=">=app-text/openjade-1.3.1
@@ -34,14 +33,14 @@ src_install() {
 	doins dsssl.def jadetex.ltx jadetex.cfg {pdf,}jadetex.ini *.sty
 
 	insinto /var/lib/texmf
-	doins -r texmf-var/*
+	doins -r texmf-var
 
 	etexlinks "${FILESDIR}/format.jadetex.cnf"
 
 	# Doc/manpages
 	dodoc ChangeLog*
 	doman *.1
-	dohtml -r .
+	dodoc -r .
 
 	# Support for our latex setup
 	insinto /etc/texmf/texmf.d

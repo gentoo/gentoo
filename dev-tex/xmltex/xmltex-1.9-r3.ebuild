@@ -1,11 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit latex-package texlive-common
-
-IUSE=""
 
 DESCRIPTION="A non validating namespace aware XML parser implemented in TeX"
 HOMEPAGE="http://www.dcarlisle.demon.co.uk/xmltex/manual.html"
@@ -22,8 +20,7 @@ TEXMF=/usr/share/texmf-site
 
 DEPEND="virtual/latex-base"
 
-RDEPEND="${DEPEND}
-	!=dev-texlive/texlive-htmlxml-2007*"
+RDEPEND="${DEPEND}"
 
 src_compile() {
 	fmt_call="$(has_version '>=app-text/texlive-core-2019' \
@@ -35,7 +32,7 @@ src_compile() {
 
 src_install() {
 	insinto /var/lib/texmf
-	doins -r texmf-var/*
+	doins -r texmf-var
 
 	insinto ${TEXMF}/tex/xmltex/base
 	doins *.{xmt,cfg,xml,tex}
@@ -46,6 +43,6 @@ src_install() {
 	insinto /etc/texmf/fmtutil.d
 	doins "${FILESDIR}/format.${PN}.cnf"
 
-	dohtml *.html
+	dodoc *.html
 	dodoc readme.txt
 }
