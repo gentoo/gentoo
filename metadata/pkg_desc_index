@@ -2075,6 +2075,7 @@ app-misc/ps3pf_utils 2.3: Utilities to set the ps3 specific features
 app-misc/pwsafe 0.2.0-r4: A Password Safe compatible command-line password manager
 app-misc/pysmssend 1.48-r2: Python Application for sending sms over multiple ISPs
 app-misc/pystopwatch 2012.12.24.1-r1: clock and two countdown functions that can minimize to the tray
+app-misc/qcma 0.4.1 0.4.2_pre20181227 9999: Cross-platform content manager assistant for the PS Vita
 app-misc/qlcplus 4.11.1: A software to control DMX or analog lighting systems
 app-misc/radeontop 1.2 9999: Utility to view Radeon GPU utilization
 app-misc/ranger 1.9.2 9999: A vim-inspired file manager for the console
