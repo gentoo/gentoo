@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201910-01">
+  <title>PHP: Arbitrary code execution</title>
+  <synopsis>A vulnerability in PHP might allow an attacker to execute arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">php</product>
+  <announced>2019-10-25</announced>
+  <revised count="1">2019-10-25</revised>
+  <bug>698452</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="ge">7.1.33</unaffected>
+      <unaffected range="ge">7.2.24</unaffected>
+      <unaffected range="ge">7.3.11</unaffected>
+      <vulnerable range="lt">7.1.33</vulnerable>
+      <vulnerable range="lt">7.2.24</vulnerable>
+      <vulnerable range="lt">7.3.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PHP is an open source general-purpose scripting language that is
+      especially suited for web development.
+    </p>
+  </background>
+  <description>
+    <p>A underflow in env_path_info in PHP-FPM under certain configurations can
+      be exploited to gain remote code execution.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker, by sending special crafted HTTP requests, could
+      possibly execute arbitrary code with the privileges of the process, or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>If patching is not feasible, the suggested workaround is to include
+      checks to verify whether or not a file exists before passing to PHP.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All PHP 7.1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-7.1.33"
+    </code>
+    
+    <p>All PHP 7.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-7.2.24"
+    </code>
+    
+    <p>All PHP 7.3 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-7.3.11"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11043">CVE-2019-11043</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-10-24T23:39:18Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2019-10-25T11:01:56Z">whissi</metadata>
+</glsa>
