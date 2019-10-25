@@ -1517,7 +1517,7 @@ app-emulation/spice-vdagent 0.17.0_p20180319-r1 0.19.0-r1: SPICE VD Linux Guest 
 app-emulation/spim 8.0-r3: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/umoci 0.2.1: Manipulation tool for OCI images
-app-emulation/vagrant 2.1.5 2.2.2-r2 2.2.4 2.2.5: A tool for building and distributing development environments
+app-emulation/vagrant 2.1.5 2.2.2-r2 2.2.4 2.2.5 2.2.6: A tool for building and distributing development environments
 app-emulation/vice 3.1: Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 2.0.0 2.2.0 2.2.1 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 7.0 8.0: Graphical console client for connecting to virtual machines
@@ -2345,7 +2345,7 @@ app-shells/heirloom-sh 050706-r1: Heirloom Bourne Shell, derived from OpenSolari
 app-shells/hstr 2.0: Shell history suggest box
 app-shells/ksh 2020.0.0 9999: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
-app-shells/loksh 6.4 6.5: Linux port of OpenBSD's ksh
+app-shells/loksh 6.4 6.5 6.6: Linux port of OpenBSD's ksh
 app-shells/mcfly 0.3.4: Context-aware bash history search replacement (crtl-r)
 app-shells/mksh 56c 57 57-r1 9999: MirBSD Korn Shell
 app-shells/mpibash 1.2 1.3 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
