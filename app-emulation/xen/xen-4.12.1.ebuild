@@ -37,7 +37,7 @@ DESCRIPTION="The Xen virtual machine monitor"
 HOMEPAGE="https://www.xenproject.org"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="custom-cflags debug efi flask"
+IUSE="debug efi flask"
 
 DEPEND="${PYTHON_DEPS}
 	efi? ( >=sys-devel/binutils-2.22[multitarget] )
@@ -100,28 +100,12 @@ src_prepare() {
 
 	eapply "${FILESDIR}"/${PN}-4.6-efi.patch
 
-	# https://src.fedoraproject.org/rpms/xen/blob/master/f/xen.gcc9.fixes.patch
-	eapply "${FILESDIR}"/${PN}.gcc9.fixes.patch
-
 	# Drop .config
 	sed -e '/-include $(XEN_ROOT)\/.config/d' -i Config.mk || die "Couldn't	drop"
 
 	if use efi; then
 		export EFI_VENDOR="gentoo"
 		export EFI_MOUNTPOINT="boot"
-	fi
-
-	# if the user *really* wants to use their own custom-cflags, let them
-	if use custom-cflags; then
-		einfo "User wants their own CFLAGS - removing defaults"
-		# try and remove all the default custom-cflags
-		find "${S}" -name Makefile -o -name Rules.mk -o -name Config.mk -exec sed \
-			-e 's/CFLAGS\(.*\)=\(.*\)-O3\(.*\)/CFLAGS\1=\2\3/' \
-			-e 's/CFLAGS\(.*\)=\(.*\)-march=i686\(.*\)/CFLAGS\1=\2\3/' \
-			-e 's/CFLAGS\(.*\)=\(.*\)-fomit-frame-pointer\(.*\)/CFLAGS\1=\2\3/' \
-			-e 's/CFLAGS\(.*\)=\(.*\)-g3*\s\(.*\)/CFLAGS\1=\2 \3/' \
-			-e 's/CFLAGS\(.*\)=\(.*\)-O2\(.*\)/CFLAGS\1=\2\3/' \
-			-i {} \; || die "failed to re-set custom-cflags"
 	fi
 
 	default
@@ -132,14 +116,10 @@ src_configure() {
 
 	use debug && myopt="${myopt} debug=y"
 
-	if use custom-cflags; then
-		filter-flags -fPIE -fstack-protector
-		replace-flags -O3 -O2
-	else
-		unset CFLAGS
-		unset LDFLAGS
-		unset ASFLAGS
-	fi
+	# remove flags
+	unset CFLAGS
+	unset LDFLAGS
+	unset ASFLAGS
 }
 
 src_compile() {

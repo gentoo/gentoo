@@ -17,7 +17,7 @@ if [[ $PV == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=0
+	UPSTREAM_VER=
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
 	GENTOO_VER=18
@@ -28,7 +28,7 @@ else
 
 	SEABIOS_VER=1.12.0
 	EDK2_COMMIT=ef529e6ab7c31290a33045bb1f1837447cc0eb56
-	IPXE_COMMIT=d2063b7693e0e35db97b2264aa987eb6341ae779
+	IPXE_COMMIT=1dd56dbd11082fb622c2ed21cfaced4f47d798a6
 
 	[[ -n ${UPSTREAM_VER} ]] && \
 		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-tools/}-upstream-patches-${UPSTREAM_VER}.tar.xz
@@ -62,7 +62,7 @@ SLOT="0/$(ver_cut 1-2)"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api custom-cflags debug doc flask +hvm +ipxe ocaml ovmf +pam pygrub python +qemu +qemu-traditional +rombios screen sdl static-libs system-ipxe system-qemu system-seabios"
+IUSE="api debug doc flask +hvm +ipxe ocaml ovmf +pam pygrub python +qemu +qemu-traditional +rombios screen sdl static-libs system-ipxe system-qemu system-seabios"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -251,9 +251,6 @@ src_prepare() {
 	# ipxe
 	if use ipxe; then
 		cp "${DISTDIR}/ipxe-git-${IPXE_COMMIT}.tar.gz" tools/firmware/etherboot/_ipxe.tar.gz || die
-		cp "${WORKDIR}/patches-gentoo/${PN}-4.12.0-ipxe-gcc9.patch" \
-			tools/firmware/etherboot/patches/ipxe-gcc9.patch || die
-		echo "ipxe-gcc9.patch" >> tools/firmware/etherboot/patches/series || die
 	fi
 
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
@@ -268,25 +265,11 @@ src_prepare() {
 	# Drop .config, fixes to gcc-4.6
 	sed -e '/-include $(XEN_ROOT)\/.config/d' -i Config.mk || die "Couldn't	drop"
 
-	# if the user *really* wants to use their own custom-cflags, let them
-	if use custom-cflags; then
-		einfo "User wants their own CFLAGS - removing defaults"
-
-		# try and remove all the default cflags
-		find "${S}" \( -name Makefile -o -name Rules.mk -o -name Config.mk \) \
-			-exec sed \
-				-e 's/CFLAGS\(.*\)=\(.*\)-O3\(.*\)/CFLAGS\1=\2\3/' \
-				-e 's/CFLAGS\(.*\)=\(.*\)-march=i686\(.*\)/CFLAGS\1=\2\3/' \
-				-e 's/CFLAGS\(.*\)=\(.*\)-fomit-frame-pointer\(.*\)/CFLAGS\1=\2\3/' \
-				-e 's/CFLAGS\(.*\)=\(.*\)-g3*\s\(.*\)/CFLAGS\1=\2 \3/' \
-				-e 's/CFLAGS\(.*\)=\(.*\)-O2\(.*\)/CFLAGS\1=\2\3/' \
-				-i {} + || die "failed to re-set custom-cflags"
-	else
-		unset CFLAGS
-		unset LDFLAGS
-		unset ASFLAGS
-		unset CPPFLAGS
-	fi
+	# drop flags
+	unset CFLAGS
+	unset LDFLAGS
+	unset ASFLAGS
+	unset CPPFLAGS
 
 	if ! use pygrub; then
 		sed -e '/^SUBDIRS-y += pygrub/d' -i tools/Makefile || die

@@ -34,7 +34,7 @@ HOMEPAGE="https://www.xenproject.org"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="custom-cflags"
+IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -82,19 +82,6 @@ src_prepare() {
 			eapply "${WORKDIR}"/patches-upstream
 	fi
 
-	# if the user *really* wants to use their own custom-cflags, let them
-	if use custom-cflags; then
-		einfo "User wants their own CFLAGS - removing defaults"
-		# try and remove all the default custom-cflags
-		find "${S}" -name Makefile -o -name Rules.mk -o -name Config.mk -exec sed \
-			-e 's/CFLAGS\(.*\)=\(.*\)-O3\(.*\)/CFLAGS\1=\2\3/' \
-			-e 's/CFLAGS\(.*\)=\(.*\)-march=i686\(.*\)/CFLAGS\1=\2\3/' \
-			-e 's/CFLAGS\(.*\)=\(.*\)-fomit-frame-pointer\(.*\)/CFLAGS\1=\2\3/' \
-			-e 's/CFLAGS\(.*\)=\(.*\)-g3*\s\(.*\)/CFLAGS\1=\2 \3/' \
-			-e 's/CFLAGS\(.*\)=\(.*\)-O2\(.*\)/CFLAGS\1=\2\3/' \
-			-i {} \;
-	fi
-
 	# Patch the unmergeable newlib, fix most of the leftover gcc QA issues
 	cp "${FILESDIR}"/newlib-implicits.patch stubdom || die
 
@@ -122,7 +109,7 @@ src_configure() {
 }
 
 src_compile() {
-	use custom-cflags || unset CFLAGS
+	unset CFLAGS
 	if test-flag-CC -fno-strict-overflow; then
 		append-flags -fno-strict-overflow
 	fi
