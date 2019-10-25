@@ -10103,10 +10103,10 @@ dev-ruby/rspec-expectations 2.99.2 3.7.0 3.8.4 3.8.6: A Behaviour Driven Develop
 dev-ruby/rspec-its 1.2.0-r1 1.3.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-json_expectations 2.1.0 2.2.0: Set of matchers and helpers to allow you test your APIs responses.
 dev-ruby/rspec-mocks 2.99.2 3.7.0 3.8.1 3.8.2: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-rails 3.7.2 3.8.2: RSpec's official Ruby on Rails plugin
+dev-ruby/rspec-rails 3.7.2 3.8.2 3.8.3: RSpec's official Ruby on Rails plugin
 dev-ruby/rspec-retry 0.6.1: Retry intermittently failing rspec examples
 dev-ruby/rspec-stubbed_env 1.0.0: Stub environment variables in a scoped context for testing
-dev-ruby/rspec-support 3.7.1 3.8.2: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-support 3.7.1 3.8.2 3.8.3: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.70.7 0.70.8: RSpec support and matchers
 dev-ruby/ruby-atk 3.3.2 3.3.6 3.3.7: Ruby Atk bindings
 dev-ruby/ruby-augeas 0.5.0-r3: Ruby bindings for Augeas
