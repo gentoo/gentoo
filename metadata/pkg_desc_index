@@ -7546,7 +7546,7 @@ dev-python/chardet 3.0.4: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cheetah3 3.2.3: Python-powered template engine and code generator
-dev-python/cheroot 6.0.0 6.0.0-r1 6.5.4: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
+dev-python/cheroot 6.0.0 6.0.0-r1 6.5.4 8.2.1: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
 dev-python/cherrypy 3.8.0 13.1.0 13.1.0-r1 17.4.1-r1 18.1.0-r1: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/cherrytemplate 1.0.0-r1: Easy and powerful templating module for Python
 dev-python/chump 1.5.2 1.6.0: API wrapper for Pushover
