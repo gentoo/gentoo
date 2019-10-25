@@ -1,0 +1,21 @@
+From: Ronny Lindner <ronny.lindner@unister.de>
+Subject: Correct summary calculation
+Bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=758645
+
+---
+ gt5 |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/gt5
++++ b/gt5
+@@ -671,9 +671,9 @@ Debug_pipe 1c  |
+ 	    printf("%s %s\n", $0, $0)
+ 	}
+ 
++	me        = $3
+ 	size[me]  = $1
+ 	osize[me] = $2
+-	me        = $3
+ 	e         = 0
+ 
+ 	while ( i = index( substr(me, e + 1), "/") )

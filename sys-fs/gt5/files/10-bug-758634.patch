@@ -1,0 +1,27 @@
+From: Ronny Lindner <ronny.lindner@unister.de>
+Subject: Respect command line arguments
+Bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=758634
+
+---
+ gt5 |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/gt5
++++ b/gt5
+@@ -503,7 +503,6 @@ trap At_exit 0 1 3 15
+ 
+ Initialize
+ Initialize_tempdir
+-Options "$@"
+ 
+ SPACE="_escaped_${RANDOM}_space_"
+ TAB="_escaped_${RANDOM}_tab_"
+@@ -517,6 +516,8 @@ DIFFS=1
+ UNIT=K
+ X=x
+ 
++Options "$@"
++
+ # Treat options: ------------------------------------------------------
+ 
+ [ "$CD" ] && cd "$OLDPWD"
