@@ -81,6 +81,7 @@ DEPEND="${RDEPEND}
 PATCHES+=(
 	"${FILESDIR}/${PN}-5.12.0-nouveau-disable-gpu.patch" # bug 609752
 	"${FILESDIR}/${P}-pulseaudio-13.patch" # bug 694960
+	"${FILESDIR}/${P}-icu-65.patch"
 )
 
 src_prepare() {
