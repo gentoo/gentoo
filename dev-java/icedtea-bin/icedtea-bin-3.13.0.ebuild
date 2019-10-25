@@ -42,6 +42,7 @@ RDEPEND=">=dev-libs/glib-2.58:2%
 	>=media-libs/fontconfig-2.13:1.0%
 	>=media-libs/freetype-2.9.1:2%
 	>=media-libs/lcms-2.9:2%
+	>=sys-apps/baselayout-java-0.1.0-r1
 	>=sys-libs/zlib-1.2.11-r1%
 	virtual/jpeg-compat:62%
 	alsa? ( >=media-libs/alsa-lib-1.0% )
