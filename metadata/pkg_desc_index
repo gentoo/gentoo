@@ -7504,8 +7504,8 @@ dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/bokeh 0.11.1 0.12.6: Statistical and interactive HTML plots for Python
 dev-python/booleanOperations 0.8.0 0.8.2: Boolean operations on paths
 dev-python/boto 2.41.0 2.48.0 2.49.0: Amazon Web Services API
-dev-python/boto3 1.9.4-r1 1.9.122 9999: The AWS SDK for Python
-dev-python/botocore 1.12.4-r1 1.12.81 1.12.122 1.12.205 1.12.210 1.12.223 1.12.251 9999: Low-level, data-driven core of boto 3.
+dev-python/boto3 1.9.4-r1 1.9.122 1.10.2 9999: The AWS SDK for Python
+dev-python/botocore 1.12.4-r1 1.12.81 1.12.122 1.12.205 1.12.210 1.12.223 1.12.251 1.13.2 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12 0.12.13 0.12.16: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.0.0 1.2.1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.17.1 0.18: Syntax highlighting and autocompletion for the Python interpreter
@@ -8876,7 +8876,7 @@ dev-python/ruledispatch 0.5_pre2306-r2: Rule-based Dispatching and Generic Funct
 dev-python/runsnakerun 2.0.4: GUI Viewer for Python profiling runs
 dev-python/ryu 4.14 4.21 4.26 4.26-r1: Component-based Software-defined Networking Framework
 dev-python/s3fs 0.1.2 0.1.5: Pythonic file interface to S3
-dev-python/s3transfer 0.1.13-r1 0.2.0: An Amazon S3 Transfer Manager
+dev-python/s3transfer 0.1.13-r1 0.2.0 0.2.1: An Amazon S3 Transfer Manager
 dev-python/sabyenc 3.3.5: Module providing raw yEnc encoding/decoding for SABnzbd
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4-r1: Sancho is a unit testing framework
