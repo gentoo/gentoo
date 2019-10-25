@@ -6025,10 +6025,10 @@ net-irc/inspircd:ldap - Enable LDAP support
 net-irc/inspircd:maxminddb - Add support for geolocation using libMaxMindDB
 net-irc/inspircd:mbedtls - Add support for TLS using the mbedTLS library
 net-irc/inspircd:mysql - Enable MySQL database backend
-net-irc/inspircd:pcre - Adds support for Perl Compatible Regular Expressions
+net-irc/inspircd:pcre - Add support for Perl Compatible Regular Expressions
 net-irc/inspircd:postgres - Enable PostgreSQL database backend
 net-irc/inspircd:re2 - Add support for Google RE2 regular expressions library
-net-irc/inspircd:regex-posix - Adds support for POSIX Regular Expressions
+net-irc/inspircd:regex-posix - Add support for POSIX Regular Expressions
 net-irc/inspircd:regex-stdlib - Add support for C++ stdlib regular expressions
 net-irc/inspircd:sqlite - Enable Sqlite database backend
 net-irc/inspircd:ssl - Enable SSL support
