@@ -5,6 +5,10 @@
 		<email>andrey_utkin@gentoo.org</email>
 		<name>Andrey Utkin</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">boto/botocore</remote-id>
 		<remote-id type="pypi">botocore</remote-id>
