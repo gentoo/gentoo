@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/libircclient/${P}.tar.gz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ppc ~ppc64 ~sparc x86"
 IUSE="doc ipv6 libressl ssl static-libs threads"
 
 DEPEND="ssl? (
