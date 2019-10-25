@@ -107,6 +107,7 @@ src_prepare() {
 	sed \
 		-e 's:sysconfig/.*:conf.d/slurm:g' \
 		-e 's:var/run/:run/slurm/:g' \
+		-e '/^EnvironmentFile=.*/d' \
 		-i "${S}/etc"/*.service.in \
 		|| die "Can't sed systemd services for sysconfig or var/run/"
 
@@ -216,12 +217,6 @@ src_install() {
 	# install systemd files
 	systemd_newtmpfilesd "${FILESDIR}/slurm.tmpfiles" slurm.conf
 	systemd_dounit etc/slurmd.service etc/slurmctld.service etc/slurmdbd.service
-
-	cd "${D}"/lib/systemd/system || die
-
-	for file in slurm*; do
-		sed -i -e '/^EnvironmentFile=.*/d' ${file} || die
-	done
 }
 
 pkg_preinst() {
