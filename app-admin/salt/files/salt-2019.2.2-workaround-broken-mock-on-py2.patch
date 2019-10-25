@@ -1,0 +1,28 @@
+diff --git a/tests/unit/utils/test_network.py b/tests/unit/utils/test_network.py
+index af5cbbab2b..15236c127a 100644
+--- a/tests/unit/utils/test_network.py
++++ b/tests/unit/utils/test_network.py
+@@ -1,6 +1,7 @@
+ # -*- coding: utf-8 -*-
+ # Import Python libs
+ from __future__ import absolute_import, unicode_literals, print_function
++import sys
+ import logging
+ import socket
+ import textwrap
+@@ -249,6 +250,7 @@ class NetworkTestCase(TestCase):
+                 log.error('bad host_port value: "%s" failed to trigger ValueError exception', host_port)
+                 raise _e_
+ 
++    @skipIf(sys.hexversion < 0x03000000, "https://github.com/testing-cabal/mock/issues/323")
+     def test_dns_check(self):
+         hosts = [
+             {'host': '10.10.0.3',
+@@ -302,6 +304,7 @@ class NetworkTestCase(TestCase):
+                                         "Invalid or unresolveable address"):
+                 network.dns_check('foo', '1')
+ 
++    @skipIf(sys.hexversion < 0x03000000, "https://github.com/testing-cabal/mock/issues/323")
+     def test_test_addrs(self):
+         # subset of real data from getaddrinfo against saltstack.com
+         addrinfo = [(30, 2, 17, '', ('2600:9000:21eb:a800:8:1031:abc0:93a1', 0, 0, 0)),

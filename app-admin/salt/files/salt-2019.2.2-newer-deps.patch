@@ -1,0 +1,136 @@
+diff --git a/salt/modules/dockercompose.py b/salt/modules/dockercompose.py
+index 61e937536c..0f37e0d43a 100644
+--- a/salt/modules/dockercompose.py
++++ b/salt/modules/dockercompose.py
+@@ -241,7 +241,7 @@ def __load_docker_compose(path):
+                                     None, None)
+     try:
+         with salt.utils.files.fopen(file_path, 'r') as fl:
+-            loaded = yaml.load(fl)
++            loaded = yaml.safe_load(fl)
+     except EnvironmentError:
+         return None, __standardize_result(False,
+                                     'Could not read {0}'.format(file_path),
+@@ -371,7 +371,7 @@ def __load_compose_definitions(path, definition):
+                                               None, None)
+     else:
+         try:
+-            loaded_definition = yaml.load(definition)
++            loaded_definition = yaml.safe_load(definition)
+         except yaml.YAMLError as yerr:
+             msg = 'Could not parse {0} {1}'.format(definition, yerr)
+             return None, None, __standardize_result(False, msg,
+diff --git a/tests/integration/utils/test_win_runas.py b/tests/integration/utils/test_win_runas.py
+index 3042a77991..d4057a4d03 100644
+--- a/tests/integration/utils/test_win_runas.py
++++ b/tests/integration/utils/test_win_runas.py
+@@ -539,7 +539,7 @@ class RunAsTest(ModuleCase):
+         win32serviceutil.StartService('test service')
+         wait_for_service('test service')
+         with salt.utils.files.fopen(RUNAS_OUT, 'r') as fp:
+-            ret = yaml.load(fp)
++            ret = yaml.safe_load(fp)
+         assert ret['retcode'] == 1, ret
+
+     @with_system_user('test-runas', on_existing='delete', delete=True,
+@@ -560,7 +560,7 @@ class RunAsTest(ModuleCase):
+         win32serviceutil.StartService('test service')
+         wait_for_service('test service')
+         with salt.utils.files.fopen(RUNAS_OUT, 'r') as fp:
+-            ret = yaml.load(fp)
++            ret = yaml.safe_load(fp)
+         assert ret['retcode'] == 1, ret
+
+     @with_system_user('test-runas-admin', on_existing='delete', delete=True,
+@@ -581,7 +581,7 @@ class RunAsTest(ModuleCase):
+         win32serviceutil.StartService('test service')
+         wait_for_service('test service')
+         with salt.utils.files.fopen(RUNAS_OUT, 'r') as fp:
+-            ret = yaml.load(fp)
++            ret = yaml.safe_load(fp)
+         assert ret['retcode'] == 0, ret
+
+     @with_system_user('test-runas-admin', on_existing='delete', delete=True,
+@@ -602,7 +602,7 @@ class RunAsTest(ModuleCase):
+         win32serviceutil.StartService('test service')
+         wait_for_service('test service')
+         with salt.utils.files.fopen(RUNAS_OUT, 'r') as fp:
+-            ret = yaml.load(fp)
++            ret = yaml.safe_load(fp)
+         assert ret['retcode'] == 0, ret
+
+     def test_runas_service_system_user(self):
+@@ -621,5 +621,5 @@ class RunAsTest(ModuleCase):
+         win32serviceutil.StartService('test service')
+         wait_for_service('test service')
+         with salt.utils.files.fopen(RUNAS_OUT, 'r') as fp:
+-            ret = yaml.load(fp)
++            ret = yaml.safe_load(fp)
+         assert ret['retcode'] == 0, ret
+diff --git a/tests/unit/utils/test_schema.py b/tests/unit/utils/test_schema.py
+index a07fcbab6b..79072bb89e 100644
+--- a/tests/unit/utils/test_schema.py
++++ b/tests/unit/utils/test_schema.py
+@@ -5,6 +5,7 @@
+
+ # Import python libs
+ from __future__ import absolute_import, print_function, unicode_literals
++import sys
+ import copy
+
+ # Import Salt Testing Libs
+@@ -506,10 +507,7 @@ class ConfigTestCase(TestCase):
+                 {'personal_access_token': 'foo'},
+                 Requirements.serialize()
+             )
+-        if JSONSCHEMA_VERSION >= _LooseVersion('3.0.0'):
+-            self.assertIn('\'ssh_key_file\' is a required property', excinfo.exception.message)
+-        else:
+-            self.assertIn('is not valid under any of the given schemas', excinfo.exception.message)
++        self.assertIn('\'ssh_key_file\' is a required property', excinfo.exception.message)
+
+     def test_boolean_config(self):
+         item = schema.BooleanItem(title='Hungry', description='Are you hungry?')
+@@ -1733,10 +1731,11 @@ class ConfigTestCase(TestCase):
+
+         with self.assertRaises(jsonschema.exceptions.ValidationError) as excinfo:
+             jsonschema.validate({'item': {'sides': '4', 'color': 'blue'}}, TestConf.serialize())
+-        if JSONSCHEMA_VERSION >= _LooseVersion('3.0.0'):
+-            self.assertIn('\'4\' is not of type \'boolean\'', excinfo.exception.message)
++
++        if sys.hexversion >= 0x03000000:
++            self.assertIn("'4' is not of type 'boolean'", excinfo.exception.message)
+         else:
+-            self.assertIn('is not valid under any of the given schemas', excinfo.exception.message)
++            self.assertIn("u'4' is not of type u'boolean'", excinfo.exception.message)
+
+         class TestConf(schema.Schema):
+             item = schema.DictItem(
+@@ -1839,10 +1838,10 @@ class ConfigTestCase(TestCase):
+
+         with self.assertRaises(jsonschema.exceptions.ValidationError) as excinfo:
+             jsonschema.validate({'item': ['maybe']}, TestConf.serialize())
+-        if JSONSCHEMA_VERSION >= _LooseVersion('3.0.0'):
+-            self.assertIn('\'maybe\' is not one of [\'yes\']', excinfo.exception.message)
++        if sys.hexversion >= 0x03000000:
++            self.assertIn("'maybe' is not one of ['yes']", excinfo.exception.message)
+         else:
+-            self.assertIn('is not valid under any of the given schemas', excinfo.exception.message)
++            self.assertIn("u'maybe' is not one of [u'yes']", excinfo.exception.message)
+
+         with self.assertRaises(jsonschema.exceptions.ValidationError) as excinfo:
+             jsonschema.validate({'item': 2}, TestConf.serialize())
+@@ -1894,10 +1893,10 @@ class ConfigTestCase(TestCase):
+
+         with self.assertRaises(jsonschema.exceptions.ValidationError) as excinfo:
+             jsonschema.validate({'item': ['maybe']}, TestConf.serialize())
+-        if JSONSCHEMA_VERSION >= _LooseVersion('3.0.0'):
+-            self.assertIn('\'maybe\' is not one of [\'yes\']', excinfo.exception.message)
++        if sys.hexversion >= 0x03000000:
++            self.assertIn("'maybe' is not one of ['yes']", excinfo.exception.message)
+         else:
+-            self.assertIn('is not valid under any of the given schemas', excinfo.exception.message)
++            self.assertIn("u'maybe' is not one of [u'yes']", excinfo.exception.message)
+
+         with self.assertRaises(jsonschema.exceptions.ValidationError) as excinfo:
+             jsonschema.validate({'item': 2}, TestConf.serialize())
