@@ -27,7 +27,7 @@ RDEPEND=">=dev-libs/glib-2.56.0:2
 	>=media-libs/freetype-2.1.7
 	>=media-libs/harfbuzz-0.9.19
 	>=media-libs/gexiv2-0.10.6
-	>=media-libs/libmypaint-1.3.0
+	>=media-libs/libmypaint-1.3.0:=
 	>=media-gfx/mypaint-brushes-1.3.0
 	>=media-libs/fontconfig-2.12.4
 	sys-libs/zlib
