@@ -2289,7 +2289,7 @@ app-portage/fquery 0.2.2 0.2.3: Installed package query tool for Gentoo Linux
 app-portage/g-cpan 0.16.5 0.16.6 0.16.7 0.16.9-r1 9999: Autogenerate and install ebuilds for CPAN modules
 app-portage/g-octave 0.4.1-r6: A tool that generates and installs ebuilds for Octave-Forge
 app-portage/g-sorcery 0.1-r1 0.2-r1 0.2.1 0.2.1-r1 9999: framework for ebuild generators
-app-portage/gemato 14.1 14.1m 14.2 9999 9999m: Stand-alone Manifest generation & verification tool
+app-portage/gemato 14.1 14.1m 14.2 14.3 9999 9999m: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1 0.30.10-r1 0.30.10-r2 9999: A nice emerge.log parser
 app-portage/gentoolkit 0.4.2-r1 0.4.5 0.4.6 9999: Collection of administration scripts for Gentoo
 app-portage/gentoopm 0.3.0 9999: A common interface to Gentoo package managers
@@ -4277,7 +4277,7 @@ dev-java/java-apicheck 0_p20150907: Command line tool to check Java packages for
 dev-java/java-config 2.2.0-r4: Java environment configuration query tool
 dev-java/java-dep-check 0.3-r1 0.4: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
-dev-java/java-sdk-docs 1.8.0.202 9.0.4 11.0.2: Oracle's documentation bundle (including API) for Java SE
+dev-java/java-sdk-docs 1.8.0.202 9.0.4 11.0.5: Oracle's documentation bundle (including API) for Java SE
 dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to install a Java Application as daemon
 dev-java/javacc 5.0-r3: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
