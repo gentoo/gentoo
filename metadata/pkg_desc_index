@@ -15813,7 +15813,7 @@ net-wireless/portapack-havoc 0.0_p20180612: Custom firmware for the HackRF SDR +
 net-wireless/pyrit 0.4.0-r1 0.5.0: GPU-accelerated attack against WPA-PSK authentication
 net-wireless/python-wifi 0.5.0-r3: Provides r/w access to a wireless network card's capabilities
 net-wireless/qradiolink 9999: Multimode SDR experimentation GUI for GNUradio
-net-wireless/reaver 1.4-r3: Brute force attack against Wifi Protected Setup
+net-wireless/reaver 1.6.5: Brute force attack against Wifi Protected Setup
 net-wireless/rfcat 0.0.170508 0.0.190423 9999: The swiss army knife of subGHz
 net-wireless/rfkill 0.5-r2 0.5-r3: Tool to read and control rfkill status through /dev/rfkill
 net-wireless/rtl-sdr 0.5.3_p20170919 0.5.4 0.6.0-r1 9999: turns your Realtek RTL2832 based DVB dongle into a SDR receiver
