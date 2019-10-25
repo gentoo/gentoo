@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,6 +45,8 @@ PATCHES=(
 	"${FILESDIR}/${P}"-0017-Kill-any-GnuPG-agent-before-and-after-the-test-suite.patch
 	"${FILESDIR}/${P}"-0018-Use-a-short-temporary-homedir-during-the-test-suite.patch
 	"${FILESDIR}/${P}"-0019-Make-things-work-with-gpg1-assuming-plain-gpg-is-mod.patch
+	"${FILESDIR}/${P}"-0030-gpg-2.2.6.patch
+	"${FILESDIR}/${P}"-0031-gpg-2.2.8.patch
 )
 
 src_prepare() {
