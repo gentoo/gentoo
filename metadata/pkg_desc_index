@@ -2497,7 +2497,7 @@ app-text/iso-codes 3.76: ISO language, territory, currency, script codes and the
 app-text/itex2mml 1.5.6: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 3.7 3.8 3.8.1 3.8.2 4.0 4.1 4.3.1 4.9999: Java GUI manages bibliographies in a BibTeX database
-app-text/jadetex 3.13-r7: TeX macros used by Jade TeX output
+app-text/jadetex 3.13-r8: TeX macros used by Jade TeX output
 app-text/jo 1.1: JSON output from a shell
 app-text/kbibtex 0.9: BibTeX editor to edit bibliographies used with LaTeX
 app-text/kchmviewer 7.7-r1: Feature rich chm file viewer, based on Qt
@@ -10388,7 +10388,7 @@ dev-tex/bibtexu 3.71_p20190410: 8-bit Implementation of BibTeX 0.99 with a Very 
 dev-tex/catdvi 0.14-r2: DVI to plain text translator
 dev-tex/cdcover 1.3b: LaTeX package used to create CD case covers
 dev-tex/chktex 1.7.1 1.7.6: Checks latex source for common mistakes
-dev-tex/circuit_macros 8.3.2 8.4 8.4.1: M4 Macros for Electric circuit diagrams in TeX or LaTeX
+dev-tex/circuit_macros 8.4 8.4.1: M4 Macros for Electric circuit diagrams in TeX or LaTeX
 dev-tex/cjk-latex 4.8.4: LaTeX package to use CJK (Chinese/Japanese/Korean) scripts in various encodings
 dev-tex/cpp2latex 2.3-r2: A program to convert C++ code to LaTeX source
 dev-tex/crosstex 0.6-r2: CrossTeX - object oriented BibTeX replacement
@@ -10455,7 +10455,7 @@ dev-tex/translator 1.00: A package for translating words in TeX
 dev-tex/tth 3.77 4.08: Translate TEX into HTML
 dev-tex/vc 0.6: The vc (version control) bundle
 dev-tex/xcolor 2.12-r1: Easy driver-independent access to colors
-dev-tex/xmltex 1.9-r2: A non validating namespace aware XML parser implemented in TeX
+dev-tex/xmltex 1.9-r3: A non validating namespace aware XML parser implemented in TeX
 dev-texlive/texlive-basic 2019-r1: TeXLive Essential programs and files
 dev-texlive/texlive-bibtexextra 2019: TeXLive BibTeX additional styles
 dev-texlive/texlive-context 2019: TeXLive ConTeXt and packages
