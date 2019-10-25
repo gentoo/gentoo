@@ -10,4 +10,4 @@ RDEPEND=>=app-crypt/gnupg-1.2.1-r1 virtual/perl-autodie >=virtual/perl-Math-BigI
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AL/ALEXMV/GnuPG-Interface-0.52.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=5057fc8e6477f0ed1eb85699c393c666
+_md5_=128586701ef4b9b0ed00558bf92208a4

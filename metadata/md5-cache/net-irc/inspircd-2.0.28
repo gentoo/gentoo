@@ -10,4 +10,4 @@ RDEPEND=acct-group/inspircd acct-user/inspircd dev-lang/perl ssl? ( dev-libs/ope
 SLOT=0
 SRC_URI=https://github.com/inspircd/inspircd/archive/v2.0.28.tar.gz -> inspircd-2.0.28.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=d89138ccca14d121f0726f723a638088
+_md5_=b79d7f43d6cade752a45b0a477c389eb
