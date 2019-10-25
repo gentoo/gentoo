@@ -30,7 +30,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( docs/. )
-PATCHES=( "${FILESDIR}"/${P}-fix-path-builds.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.0.27-fix-path-builds.patch )
 
 src_prepare() {
 	default

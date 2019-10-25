@@ -30,7 +30,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( docs/. )
-PATCHES=( "${FILESDIR}"/${P}-fix-path-builds.patch )
+PATCHES=( "${FILESDIR}"/${PN}-3.2.0-fix-path-builds.patch )
 
 pkg_setup() {
 	enewgroup ${PN}
