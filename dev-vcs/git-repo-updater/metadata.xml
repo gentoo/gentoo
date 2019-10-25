@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">earwig/git-repo-updater</remote-id>
+  </upstream>
+  <longdescription lang="en">
+    gitup is a tool for updating multiple git repositories at once. It is smart
+    enough to handle several remotes, dirty working directories, diverged local
+    branches, detached HEADs, and more. It was originally created to manage a
+    large collection of projects and deal with sporadic internet access.
+  </longdescription>
+</pkgmetadata>
