@@ -150,6 +150,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-79-swiftshader-linux.patch"
 	"${FILESDIR}/chromium-79-system-hb.patch"
 	"${FILESDIR}/chromium-79-include.patch"
+	"${FILESDIR}/chromium-79-icu-65.patch"
 	"${FILESDIR}/chromium-79-gcc-ambiguous-nodestructor.patch"
 	"${FILESDIR}/chromium-79-gcc-permissive.patch"
 	"${FILESDIR}/chromium-79-gcc-alignas.patch"
