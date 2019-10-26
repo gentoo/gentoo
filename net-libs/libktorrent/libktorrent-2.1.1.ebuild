@@ -51,7 +51,7 @@ src_prepare() {
 src_test() {
 	# failing network tests
 	local myctestargs=(
-		-E "(fin|packetloss|send|transmit)"
+		-E "(fin|packetloss|send|superseedtest|transmit|utppolltest)"
 	)
 
 	kde5_src_test
