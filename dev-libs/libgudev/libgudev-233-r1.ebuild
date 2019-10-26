@@ -15,7 +15,7 @@ IUSE="introspection static-libs"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.38.0:2[${MULTILIB_USEDEP},static-libs?]
-	>=virtual/libudev-199:=[${MULTILIB_USEDEP},static-libs?]
+	>=virtual/libudev-199:=[${MULTILIB_USEDEP},static-libs(-)?]
 	introspection? ( >=dev-libs/gobject-introspection-1.31.1 )
 "
 RDEPEND="${COMMON_DEPEND}
