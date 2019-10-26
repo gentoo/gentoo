@@ -33,6 +33,8 @@ src_compile() {
 }
 
 pkg_postinst() {
+	font_pkg_postinst
+
 	einfo "Since the GlassTTY VT220 font is fixed,"
 	einfo "you must use a font size of 15 for best quality."
 }
