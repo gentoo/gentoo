@@ -9835,7 +9835,7 @@ dev-ruby/highline 1.7.8 2.0.1 2.0.2 2.0.3: Highline is a high-level command-line
 dev-ruby/hipchat 1.6.0: Ruby library to interact with HipChat
 dev-ruby/hiredis 0.6.1 0.6.3: Wrapper for hiredis (protocol serialization/deserialization and blocking I/O)
 dev-ruby/hitimes 1.2.6 1.3.0 1.3.1 2.0.0: A fast, high resolution timer library
-dev-ruby/hocon 1.2.5: This is a port of the Typesafe Config library to Ruby.
+dev-ruby/hocon 1.2.5 1.2.6: This is a port of the Typesafe Config library to Ruby.
 dev-ruby/hoe 3.16.0 3.17.1 3.17.2 3.18.0 3.18.1: Hoe extends rake to provide full project automation
 dev-ruby/hoe-seattlerb 1.3.5: Hoe plugins providing tasks used by seattle.rb
 dev-ruby/hpricot 0.8.6-r5: A fast and liberal HTML parser for Ruby
