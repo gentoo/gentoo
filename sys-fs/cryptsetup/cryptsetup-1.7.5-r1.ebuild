@@ -34,12 +34,12 @@ LIB_DEPEND="dev-libs/libgpg-error[static-libs(+)]
 	)
 	pwquality? ( dev-libs/libpwquality[static-libs(+)] )
 	sys-fs/lvm2[static-libs(+)]
-	udev? ( virtual/libudev[static-libs(+)] )"
+	udev? ( virtual/libudev[static-libs(-)] )"
 # We have to always depend on ${LIB_DEPEND} rather than put behind
 # !static? () because we provide a shared library which links against
 # these other packages. #414665
 RDEPEND="static-libs? ( ${LIB_DEPEND} )
-	${LIB_DEPEND//\[static-libs\(+\)\]}
+	${LIB_DEPEND//\[static-libs\([+-]\)\]}
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
