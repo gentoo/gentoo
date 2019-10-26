@@ -416,7 +416,7 @@ app-arch/lcab 1.0_beta12: CAB file creation tool
 app-arch/lha 114i-r7 114i-r8 114i-r9: Utility for creating and opening lzh archives
 app-arch/libarchive 3.3.3 3.4.0: Multi-format archive and compression library
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
-app-arch/lrzip 0.621 0.631-r1: Long Range ZIP or Lzma RZIP optimized for compressing large files
+app-arch/lrzip 0.621 0.631-r1 0.631_p20190619: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lz4 1.8.3 1.9.1 1.9.2 9999: Extremely Fast Compression algorithm
 app-arch/lz5 2.0: An efficient compressor with very fast decompression
 app-arch/lzip 1.21: lossless data compressor based on the LZMA algorithm
