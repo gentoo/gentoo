@@ -84,7 +84,7 @@ src_configure() {
 		$(meson_use ipv6)
 		$(meson_use systemd)
 		$(meson_use notification notification-daemon)
-		$(meson_use wayland)
+		$(meson_use wayland nd-wayland)
 		$(meson_use X nd-xcb)
 		$(meson_use fbcon nd-fbdev)
 		$(meson_use purple im)
