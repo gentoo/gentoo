@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/sekrit-twc/zimg"
 
 LICENSE="WTFPL-2"
 SLOT="0"
-IUSE="cpu_flags_x86_sse"
+IUSE="cpu_flags_x86_sse debug static-libs"
 
 src_prepare() {
 	default
@@ -27,6 +27,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		--disable-static \
-		$(use_enable cpu_flags_x86_sse x86simd)
+		$(use_enable debug) \
+		$(use_enable cpu_flags_x86_sse x86simd) \
+		$(use_enable static-libs static)
 }
