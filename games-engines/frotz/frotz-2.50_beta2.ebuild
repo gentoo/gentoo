@@ -5,7 +5,7 @@ EAPI=7
 
 inherit toolchain-funcs
 
-MY_PV="57e915b5f5b8997d1e4a1e0dac4ace2e62b7f6e9"
+MY_PV="${PV/_beta/b}"
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="Interpreter for Z-code based text games"
 HOMEPAGE="https://661.org/proj/if/frotz/"
@@ -20,13 +20,19 @@ REQUIRED_USE="sound? ( || ( ncurses sdl ) )"
 DEPEND="
 	ncurses? (
 		sys-libs/ncurses:0=[unicode?]
-		sound? ( media-libs/libao )
+		sound? (
+			media-libs/libao
+			media-libs/libmodplug
+			media-libs/libsamplerate[sndfile]
+			media-libs/libsndfile[-minimal]
+			media-libs/libvorbis
+		)
 	)
 	sdl? (
 		media-libs/freetype:2
 		media-libs/libpng:0=
 		media-libs/libsdl2[sound,threads,video]
-		media-libs/sdl2-mixer
+		media-libs/sdl2-mixer[mod,vorbis,wav]
 		sys-libs/zlib
 		virtual/jpeg:0=
 	)
@@ -36,6 +42,10 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/dumb-ldflags.patch
+)
 
 src_compile() {
 	emake \
