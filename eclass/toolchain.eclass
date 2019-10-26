@@ -1547,6 +1547,13 @@ gcc_do_filter_flags() {
 		filter-flags -Wstack-protector
 	fi
 
+	if tc_version_is_between 6 8 ; then
+		# -mstackrealign triggers crashes in exception throwing
+		# at least on ada: bug #688580
+		# The reason is unknown. Drop the flag for now.
+		filter-flags -mstackrealign
+	fi
+
 	if tc_version_is_at_least 3.4 ; then
 		case $(tc-arch) in
 			amd64|x86)
