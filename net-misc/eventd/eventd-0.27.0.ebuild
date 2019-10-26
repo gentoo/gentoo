@@ -37,7 +37,7 @@ COMMON_DEPEND="
 		x11-libs/gdk-pixbuf:2
 		X? (
 			x11-libs/cairo[xcb]
-			x11-libs/libxcb:=
+			x11-libs/libxcb:=[xkb]
 			x11-libs/xcb-util
 			x11-libs/xcb-util-wm
 		)
@@ -84,7 +84,7 @@ src_configure() {
 		$(meson_use ipv6)
 		$(meson_use systemd)
 		$(meson_use notification notification-daemon)
-		$(meson_use wayland)
+		$(meson_use wayland nd-wayland)
 		$(meson_use X nd-xcb)
 		$(meson_use fbcon nd-fbdev)
 		$(meson_use purple im)
