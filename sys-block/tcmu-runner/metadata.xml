@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name="fbo">Enable the file optional backend support</flag>
+		<flag name="glfs">Enable glusterfs backend support via sys-cluster/glusterfs</flag>
+		<flag name="qcow">Enable qcow image backend support</flag>
+		<flag name="rbd">Enable rados block device backend support via sys-cluster/ceph</flag>
+		<flag name="zbc">Enable zoned block device backend support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">open-iscsi/tcmu-runner</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>rtgiskard@gmail.com</email>
+		<name>giskard</name>
+	</maintainer>
+	<longdescription lang="en">
+		Torguard is a vpn service provider with support for various kinds of proxy/vpn protocols.
+		This is a binary released package original for 64bit archlinux from the official.
+	</longdescription>
+</pkgmetadata>
