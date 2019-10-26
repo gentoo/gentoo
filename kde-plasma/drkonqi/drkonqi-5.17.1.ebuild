@@ -46,6 +46,15 @@ src_configure() {
 	kde5_src_configure
 }
 
+src_test() {
+	# needs network access, bug #698510
+	local myctestargs=(
+		-E "(connectiontest)"
+	)
+
+	kde5_src_test
+}
+
 pkg_postinst() {
 	kde5_pkg_postinst
 	if ! has_version "sys-devel/gdb"; then
