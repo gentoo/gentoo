@@ -25,7 +25,7 @@ COMMON_DEPEND=">=media-libs/xine-lib-1.1.20[gtk]
 	nsplugin? ( dev-libs/nspr
 		x11-libs/libXaw
 		x11-libs/libXt )
-	udev? ( virtual/libgudev:= )
+	udev? ( dev-libs/libgudev:= )
 	xcb? ( x11-libs/libxcb )
 	xinerama? ( x11-libs/libXinerama )"
 DEPEND="${COMMON_DEPEND}

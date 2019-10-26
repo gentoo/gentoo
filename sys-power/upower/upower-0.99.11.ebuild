@@ -24,8 +24,8 @@ COMMON_DEPS="
 	sys-apps/dbus:=
 	introspection? ( dev-libs/gobject-introspection:= )
 	kernel_linux? (
+		dev-libs/libgudev:=
 		virtual/libusb:1
-		virtual/libgudev:=
 		virtual/udev
 		ios? (
 			>=app-pda/libimobiledevice-1:=

@@ -48,11 +48,11 @@ RDEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib:2
 	>=dev-libs/libgaminggear-0.15.1
+	dev-libs/libgudev:=
 	sys-apps/dbus
 	x11-libs/cairo
 	x11-libs/gtk+:2
 	x11-libs/libX11
-	virtual/libgudev:=
 	virtual/libusb:1
 	input_devices_roccat_ryosmk? ( ${LUA_DEPEND} )
 	input_devices_roccat_ryosmkfx? ( ${LUA_DEPEND} )

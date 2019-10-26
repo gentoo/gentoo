@@ -61,11 +61,11 @@ RDEPEND="
 		>=x11-libs/gtk+-3.10
 		dev-libs/dbus-glib
 		dev-libs/glib:2
+		dev-libs/libgudev:=
 		x11-libs/cairo
 		x11-libs/gdk-pixbuf:2
 		x11-libs/libnotify
 		x11-libs/pango
-		virtual/libgudev:=
 	)
 	fdk? ( media-libs/fdk-aac )
 	x265? ( >=media-libs/x265-2.9:0= )

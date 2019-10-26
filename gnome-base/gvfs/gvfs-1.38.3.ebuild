@@ -35,7 +35,7 @@ RDEPEND="
 		dev-libs/libxml2:2
 		>=net-libs/libsoup-2.42.0:2.4 )
 	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
-	udev? ( >=virtual/libgudev-147:= )
+	udev? ( >=dev-libs/libgudev-147:= )
 	fuse? ( >=sys-fs/fuse-2.8.0:0 )
 	udisks? ( >=sys-fs/udisks-1.97:2 )
 	systemd? ( >=sys-apps/systemd-206:0= )

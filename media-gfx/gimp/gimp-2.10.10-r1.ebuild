@@ -63,7 +63,7 @@ RDEPEND=">=dev-libs/glib-2.56.0:2
 	app-arch/bzip2
 	>=app-arch/xz-utils-5.0.0
 	postscript? ( app-text/ghostscript-gpl )
-	udev? ( virtual/libgudev:= )
+	udev? ( dev-libs/libgudev:= )
 	unwind? ( sys-libs/libunwind:= )
 	heif? ( >=media-libs/libheif-1.1.0:= )"
 DEPEND="${RDEPEND}

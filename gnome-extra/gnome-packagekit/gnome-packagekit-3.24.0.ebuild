@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ RDEPEND="
 
 	systemd? ( >=sys-apps/systemd-42 )
 	!systemd? ( sys-auth/consolekit )
-	udev? ( virtual/libgudev:= )
+	udev? ( dev-libs/libgudev:= )
 "
 DEPEND="${RDEPEND}
 	app-text/docbook-sgml-utils

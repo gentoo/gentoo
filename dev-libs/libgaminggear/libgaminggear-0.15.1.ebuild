@@ -26,7 +26,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	virtual/libgudev
+	dev-libs/libgudev
 "
 BDEPEND="
 	dev-util/glib-utils

@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	>=sys-auth/polkit-0.114
 	>=sys-power/upower-0.99:=
 	x11-libs/libX11
-	udev? ( virtual/libgudev:= )
+	udev? ( dev-libs/libgudev:= )
 	wayland? ( dev-libs/wayland )
 	input_devices_wacom? ( >=dev-libs/libwacom-0.7
 		>=x11-libs/pango-1.20.0
