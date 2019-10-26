@@ -237,6 +237,7 @@ multilib_src_configure() {
 		# make sure we get /bin:/sbin in PATH
 		-Dsplit-usr=$(usex split-usr true false)
 		-Drootprefix="$(usex split-usr "${EPREFIX:-/}" "${EPREFIX}/usr")"
+		-Drootlibdir="${EPREFIX}/usr/$(get_libdir)"
 		-Dsysvinit-path=
 		-Dsysvrcnd-path=
 		# Avoid infinite exec recursion, bug 642724
@@ -305,12 +306,6 @@ multilib_src_configure() {
 		-Dstatic-libudev=$(usex static-libs true false)
 	)
 
-	if multilib_is_native_abi; then
-		myconf+=( -Drootlibdir="${EPREFIX}$(usex split-usr '' /usr)/$(get_libdir)" )
-	else
-		myconf+=( -Drootlibdir="${EPREFIX}/usr/$(get_libdir)" )
-	fi
-
 	meson_src_configure "${myconf[@]}"
 }
 
@@ -370,12 +365,9 @@ multilib_src_install_all() {
 		# Avoid breaking boot/reboot
 		dosym ../../../lib/systemd/systemd /usr/lib/systemd/systemd
 		dosym ../../../lib/systemd/systemd-shutdown /usr/lib/systemd/systemd-shutdown
-
-		if use static-libs; then
-			mv "${ED}/$(get_libdir)"/lib{systemd,udev}.a "${ED}/usr/$(get_libdir)/" || die
-			gen_usr_ldscript lib{systemd,udev}.so
-		fi
 	fi
+
+	gen_usr_ldscript -a systemd udev
 }
 
 migrate_locale() {
