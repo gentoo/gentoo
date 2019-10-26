@@ -63,8 +63,8 @@
 # needed app-text/texlive-core.
 
 # @ECLASS-VARIABLE: TL_MODULE_INFORMATION
-# @DESCRIPTION:
 # @DEFAULT_UNSET
+# @DESCRIPTION:
 # Information to display about the package.
 # e.g. for enabling/disabling a feature
 
