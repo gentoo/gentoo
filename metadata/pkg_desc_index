@@ -12553,7 +12553,7 @@ mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a
 mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
 mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
-mail-mta/exim 4.92-r3 4.92-r4 4.92.1-r1 4.92.2 4.92.3: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.92.2 4.92.3: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.3 1.8.5-r1 1.8.6: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r4 1.06-r8 1.06-r9: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
@@ -17308,7 +17308,7 @@ sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functiona
 sys-apps/sydbox 1.0.7: ptrace-based sandbox
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 242-r6 242-r7 243 243-r1 9999: System and service manager for Linux
+sys-apps/systemd 242-r6 242-r7 243 243-r2 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.93 2.95-r1 2.96: /sbin/init - parent of all processes
 sys-apps/tas 1.5.2.180622: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
@@ -18365,7 +18365,7 @@ www-client/firefox-bin 52.9.0 60.9.0 68.2.0 69.0.3 70.0: Firefox Web Browser
 www-client/google-chrome 78.0.3904.70: The web browser from Google
 www-client/google-chrome-beta 78.0.3904.70: The web browser from Google
 www-client/google-chrome-unstable 79.0.3945.8: The web browser from Google
-www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.1 3.49.2-r1 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
+www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.14-r1 2.16 2.17 2.18: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2017.08.10 9999: A fast, light, simple to use micro-browser using WebKit and Lua
