@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=>=dev-libs/openssl-1.0.2:0=[-bindist] >=dev-libs/protobuf-3.7.0:= >=net-dns/c-ares-1.15.0:= sys-libs/zlib:= perftools? ( dev-util/google-perftools:= ) systemtap? ( dev-util/systemtap )
+DESCRIPTION=Modern open source high performance RPC framework
+EAPI=7
+HOMEPAGE=https://www.grpc.io
+IUSE=examples doc perftools systemtap static-libs
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=dev-libs/openssl-1.0.2:0=[-bindist] >=dev-libs/protobuf-3.7.0:= >=net-dns/c-ares-1.15.0:= sys-libs/zlib:= perftools? ( dev-util/google-perftools:= ) systemtap? ( dev-util/systemtap )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/grpc/grpc/archive/v1.24.3.tar.gz -> grpc-1.24.3.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_md5_=e9bd843ba8f78f8f3c3cb62b567a1dae

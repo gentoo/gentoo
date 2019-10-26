@@ -7886,9 +7886,9 @@ dev-python/graphviz 0.7.1 0.10.1 0.13: Simple Python interface for Graphviz
 dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.12 0.4.13 0.4.15: Lightweight in-process concurrent programming
 dev-python/greenstalk 0.5.2 1.0.1: A Python 3 client for the beanstalkd work queue
-dev-python/grpcio 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1 1.21.1 1.22.1 1.23.0: High-performance RPC framework (python libraries)
-dev-python/grpcio-testing 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1 1.21.1 1.22.1 1.23.0: Testing utilities for gRPC Python
-dev-python/grpcio-tools 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1 1.21.1 1.22.1 1.23.0: Protobuf code generator for gRPC
+dev-python/grpcio 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1 1.21.1 1.22.1 1.23.0 1.24.3: High-performance RPC framework (python libraries)
+dev-python/grpcio-testing 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1 1.21.1 1.22.1 1.23.0 1.24.3: Testing utilities for gRPC Python
+dev-python/grpcio-tools 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1 1.21.1 1.22.1 1.23.0 1.24.3: Protobuf code generator for gRPC
 dev-python/gsd 1.5.3: GSD - file format specification and a library to read and write it
 dev-python/gst-python 1.14.1-r1: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
@@ -14927,7 +14927,7 @@ net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.30.2 3.32.1: GNOME framework for accessing online accounts
 net-libs/gnutls 3.6.7 3.6.9 3.6.10: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/google-cloud-cpp 0.2.0-r1 0.5.0 0.9.0 0.10.0: Google Cloud Client Library for C++
-net-libs/grpc 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1-r1 1.21.1-r1 1.22.1 1.23.0: Modern open source high performance RPC framework
+net-libs/grpc 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1-r1 1.21.1-r1 1.22.1 1.23.0 1.24.3: Modern open source high performance RPC framework
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.8.84 2.8.87 2.8.91 2.8.93: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.3: A GObject-based API for handling resource discovery and announcement over SSDP
