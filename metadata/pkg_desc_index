@@ -9238,7 +9238,7 @@ dev-qt/pixeltool 5.12.3 5.12.5: Qt screen magnifier
 dev-qt/qdbus 5.12.3 5.12.5: Interface to Qt applications communicating over D-Bus
 dev-qt/qdbusviewer 5.12.3 5.12.5: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.12.3 5.12.5: Qt documentation generator
-dev-qt/qt-creator 4.8.2 4.10.0_rc1 9999: Lightweight IDE for C++/QML development centering around Qt
+dev-qt/qt-creator 4.8.2 4.10.0_rc1 4.10.1 9999: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.12.3_p201904161302 5.12.5_p201908230013: Qt5 documentation, for use with Qt Creator and other tools
 dev-qt/qt3d 5.12.3 5.12.5: 3D rendering module for the Qt5 framework
 dev-qt/qtbluetooth 5.12.3 5.12.5: Bluetooth support library for the Qt5 framework
@@ -13099,7 +13099,7 @@ media-libs/esdl 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 11.65 11.69: Read and write meta information in image, audio and video files
 media-libs/faac 1.29.9.2: Free MPEG-4 audio codecs by AudioCoding.com
-media-libs/faad2 2.8.8: AAC audio decoding library
+media-libs/faad2 2.8.8 2.9.0: AAC audio decoding library
 media-libs/fdk-aac 2.0.0 2.0.1: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
 media-libs/fidlib 0.9.10 0.9.10-r1: Run-time filter design and execution library
