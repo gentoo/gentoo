@@ -13,22 +13,20 @@ SRC_URI="https://github.com/twilio/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="doc examples paging test"
 RESTRICT="!test? ( test )"
+IUSE="doc examples test"
 
 RDEPEND="
 	>=dev-python/aniso8601-0.82[${PYTHON_USEDEP}]
 	>=dev-python/flask-0.8[${PYTHON_USEDEP}]
 	>=dev-python/six-1.3.0[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
-	paging? ( >=dev-python/pycrypto-2.6[${PYTHON_USEDEP}] )
 "
 DEPEND="${RDEPEND}
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/pycrypto[${PYTHON_USEDEP}]
 	)
 "
 
