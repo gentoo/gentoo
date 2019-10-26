@@ -135,7 +135,7 @@ python_install_all() {
 	newins "${DISTDIR}/keystone.conf.sample-${PV}" keystone.conf.sample
 	doins etc/logging.conf.sample
 	doins etc/default_catalog.templates
-	doins etc/policy.v3cloudsample.json
+#	doins etc/policy.v3cloudsample.json
 	insinto /etc/keystone/httpd
 	doins httpd/*
 
