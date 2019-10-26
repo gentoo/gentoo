@@ -11316,7 +11316,7 @@ games-engines/box2d 2.1.2 2.2.1 2.3.1: A C++ engine for simulating rigid bodies 
 games-engines/devilutionx 9999: Diablo engine for modern operating systems
 games-engines/exult 9999: an Ultima 7 game engine that runs on modern operating systems
 games-engines/frobtads 1.2.3-r1 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
-games-engines/frotz 2.45_pre20190903: Interpreter for Z-code based text games
+games-engines/frotz 2.50_beta2: Interpreter for Z-code based text games
 games-engines/gargoyle 2011.1-r1: An Interactive Fiction (IF) player supporting all major formats
 games-engines/gemrb 0.8.3-r1: Reimplementation of the Infinity engine
 games-engines/love 0.7.2-r2 0.8.0-r1 0.8.0-r2 0.10.2 11.1 9999: A framework for 2D games in Lua
@@ -13595,7 +13595,7 @@ media-plugins/kodi-pvr-nextpvr 3.3.8 3.3.11 3.3.12 3.3.13 3.3.14 3.3.15 9999: Ko
 media-plugins/kodi-pvr-njoy 3.4.2 9999: Kodi's Njoy N7 client addon
 media-plugins/kodi-pvr-pctv 2.4.5 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 3.4.8 3.4.9 3.4.10 9999: Kodi's Stalker client addon
-media-plugins/kodi-pvr-vbox 4.4.6 4.4.7 4.4.8 4.5.0 4.6.0 9999: Kodi's VBox Home TV Gateway PVR client addon
+media-plugins/kodi-pvr-vbox 4.4.6 4.4.7 4.4.8 4.5.0 4.6.0 4.7.0 9999: Kodi's VBox Home TV Gateway PVR client addon
 media-plugins/kodi-pvr-vdr-vnsi 3.6.2 3.6.3 3.6.3-r1 9999: Kodi PVR addon VNSI
 media-plugins/kodi-pvr-vuplus 3.28.0 3.28.1 3.28.2 3.28.4 3.28.5 3.28.6 3.28.7 3.28.8 9999: Kodi's VuPlus client addon
 media-plugins/kodi-pvr-wmc 2.4.4 2.4.5 9999: Kodi's Windows Media Center client addon
