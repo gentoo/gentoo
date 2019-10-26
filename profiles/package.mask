@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-10-26)
+# Incorrect LICENSE entry, and no clear license information to be found.
+# Homepage gone, and source of some of the files unknown.
+# Removal in 30 days.  Bug #698050.
+media-fonts/vc-fonts
+
 # Stephan Hartmann <stha09@googlemail.com> (2019-10-25)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
