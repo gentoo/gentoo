@@ -5,15 +5,12 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} pypy{,3} )
 
-if [[ ${PV} == *9999 ]]; then
-	inherit autotools git-r3
-	EGIT_REPO_URI="https://github.com/erikd/libsndfile.git"
-else
-	SRC_URI="http://www.mega-nerd.com/libsndfile/files/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-fi
-inherit python-any-r1 multilib-minimal
+inherit autotools python-any-r1 multilib-minimal
 
+MY_COMMIT="97a361afc24202b16489d8c06910277c06b18b53"
+
+SRC_URI="https://github.com/erikd/libsndfile/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 DESCRIPTION="C library for reading and writing files containing sampled sound"
 HOMEPAGE="http://www.mega-nerd.com/libsndfile"
 
@@ -33,24 +30,20 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	test? ( ${PYTHON_DEPS} )"
-if [[ ${PV} == *9999 ]]; then
-	BDEPEND+="
-		${PYTHON_DEPS}
-		sys-devel/autogen
+	${PYTHON_DEPS}
+	sys-devel/autogen
 	"
-fi
+
+S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 pkg_setup() {
-	if use test || [[ ${PV} == *9999 ]]; then
-		python-any-r1_pkg_setup
-	fi
+	python-any-r1_pkg_setup
 }
 
 src_prepare() {
 	default
 
-	[[ ${PV} == *9999 ]] && eautoreconf
+	eautoreconf
 }
 
 multilib_src_configure() {
