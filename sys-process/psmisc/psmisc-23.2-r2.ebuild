@@ -36,12 +36,6 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
-src_compile() {
-	# peekfd is a fragile crap hack #330631
-	nonfatal emake -C src peekfd || touch src/peekfd{.o,}
-	emake
-}
-
 src_install() {
 	default
 
