@@ -15390,7 +15390,7 @@ net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
 net-misc/ntp 4.2.8_p13 4.2.8_p13-r1 4.2.8_p13-r2: Network Time Protocol suite/programs
 net-misc/ntpclient 2018.244 2018.244-r1: A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
-net-misc/ntpsec 1.1.4 1.1.6 1.1.7 9999: The NTP reference implementation, refactored
+net-misc/ntpsec 1.1.4 1.1.6 1.1.7-r1 9999: The NTP reference implementation, refactored
 net-misc/nx 3.5.0.33 3.5.99.16 3.5.99.17 3.5.99.20: NX compression technology core libraries
 net-misc/nxplayer 5.1.24.1: Client for NoMachine remote servers
 net-misc/nyx 2.0.4 2.1.0: Utility to monitor real time Tor status information
@@ -17308,7 +17308,7 @@ sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functiona
 sys-apps/sydbox 1.0.7: ptrace-based sandbox
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 242-r6 242-r7 243 9999: System and service manager for Linux
+sys-apps/systemd 242-r6 242-r7 243 243-r1 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.93 2.95-r1 2.96: /sbin/init - parent of all processes
 sys-apps/tas 1.5.2.180622: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
