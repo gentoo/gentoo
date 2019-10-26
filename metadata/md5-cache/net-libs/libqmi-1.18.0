@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=dev-libs/glib-2.32 virtual/libgudev mbim? ( >=net-libs/libmbim-1.14.0 ) doc? ( dev-util/gtk-doc ) virtual/pkgconfig
+DEPEND=>=dev-libs/glib-2.32 dev-libs/libgudev mbim? ( >=net-libs/libmbim-1.14.0 ) doc? ( dev-util/gtk-doc ) virtual/pkgconfig
 DESCRIPTION=Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
 EAPI=6
 HOMEPAGE=https://cgit.freedesktop.org/libqmi/
 IUSE=doc +mbim static-libs
 KEYWORDS=~amd64 ~arm ~arm64 ~mips ~x86
 LICENSE=LGPL-2
-RDEPEND=>=dev-libs/glib-2.32 virtual/libgudev mbim? ( >=net-libs/libmbim-1.14.0 )
+RDEPEND=>=dev-libs/glib-2.32 dev-libs/libgudev mbim? ( >=net-libs/libmbim-1.14.0 )
 SLOT=0/5.1
 SRC_URI=https://www.freedesktop.org/software/libqmi/libqmi-1.18.0.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=2d142d90b7746b4de1d0c6878796b4a1
+_md5_=47236fbd16fd5fab2cfc7e30b3de79b4

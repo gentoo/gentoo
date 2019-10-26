@@ -1,14 +1,14 @@
 BDEPEND=dev-util/glib-utils
 DEFINED_PHASES=configure install
-DEPEND=>=dev-libs/glib-2.36:2 udev? ( virtual/libgudev:= ) dev-util/gtk-doc-am virtual/pkgconfig
+DEPEND=>=dev-libs/glib-2.36:2 udev? ( dev-libs/libgudev:= ) dev-util/gtk-doc-am virtual/pkgconfig
 DESCRIPTION=Mobile Broadband Interface Model (MBIM) modem protocol helper library
 EAPI=7
 HOMEPAGE=https://cgit.freedesktop.org/libmbim/
 IUSE=static-libs udev
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86
 LICENSE=LGPL-2
-RDEPEND=>=dev-libs/glib-2.36:2 udev? ( virtual/libgudev:= )
+RDEPEND=>=dev-libs/glib-2.36:2 udev? ( dev-libs/libgudev:= )
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/libmbim/libmbim-1.18.0.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=ccf821af376ea29ce892b2c51c1175fa
+_md5_=84841e135c7782f5254e6d3a20bc5163

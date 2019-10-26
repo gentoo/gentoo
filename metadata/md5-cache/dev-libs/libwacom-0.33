@@ -1,14 +1,14 @@
 BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DEFINED_PHASES=configure install prepare
-DEPEND=dev-libs/glib:2 virtual/libgudev:=
+DEPEND=dev-libs/glib:2 dev-libs/libgudev:=
 DESCRIPTION=Library for identifying Wacom tablets and their model-specific features
 EAPI=7
 HOMEPAGE=https://github.com/linuxwacom/libwacom
 IUSE=doc static-libs
 KEYWORDS=alpha amd64 arm ia64 ppc ppc64 sparc x86
 LICENSE=MIT
-RDEPEND=dev-libs/glib:2 virtual/libgudev:=
+RDEPEND=dev-libs/glib:2 dev-libs/libgudev:=
 SLOT=0
 SRC_URI=https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.33/libwacom-0.33.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=82ff824ad4124edfe6ed544ed892b321
+_md5_=9900782dd6ebdbafd015cf8efeb0d5b9
