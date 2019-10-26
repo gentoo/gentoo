@@ -92,6 +92,12 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+src_compile() {
+	cmake-utils_src_compile \
+		XDG_CONFIG_DIRS="${HOME}" \
+		XDG_DATA_DIRS="${HOME}"
+}
+
 src_test() {
 	USE_PUBLIC_NETWORK_TESTS=false \
 	USE_ODBC_TESTS=false \
