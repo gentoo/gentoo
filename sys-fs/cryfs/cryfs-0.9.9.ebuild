@@ -30,7 +30,7 @@ fi
 RDEPEND=">=dev-libs/boost-1.56:=
 	>=dev-libs/crypto++-5.6.3:=
 	net-misc/curl:=
-	>=sys-fs/fuse-2.8.6:=
+	>=sys-fs/fuse-2.8.6:0
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:= )"
 DEPEND="${RDEPEND}
