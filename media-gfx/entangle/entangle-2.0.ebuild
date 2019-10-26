@@ -20,6 +20,7 @@ DEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/glib-2.36:2
 	>=dev-libs/gobject-introspection-1.54.0
+	dev-libs/libgudev:=
 	>=dev-libs/libpeas-1.2.0[gtk,${PYTHON_USEDEP}]
 	>=media-libs/gexiv2-0.10[introspection]
 	>=media-libs/libgphoto2-2.5.0:=
@@ -30,8 +31,7 @@ DEPEND="
 	>=x11-libs/gdk-pixbuf-2.12.0:2
 	>=x11-libs/gtk+-3.22:3[introspection]
 	>=x11-libs/libXext-1.3.0
-	x11-themes/adwaita-icon-theme
-	virtual/libgudev:="
+	x11-themes/adwaita-icon-theme"
 RDEPEND="${DEPEND}"
 
 # perl for pod2man

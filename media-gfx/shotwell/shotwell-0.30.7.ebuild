@@ -26,7 +26,7 @@ DEPEND="
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
 	>=media-libs/libgphoto2-2.5:=
-	udev? ( >=virtual/libgudev-145:= )
+	udev? ( >=dev-libs/libgudev-145:= )
 	>=media-libs/gexiv2-0.10.4
 	>=media-libs/libraw-0.13.2:=
 	>=media-libs/libexif-0.6.16:=

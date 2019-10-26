@@ -57,14 +57,14 @@ RDEPEND="
 	gles2? ( media-libs/mesa[gles2] )
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13 )
 	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
-	udev? ( >=virtual/libgudev-232:= )
+	udev? ( >=dev-libs/libgudev-232:= )
 	wayland? (
+		>=dev-libs/libgudev-232:=
 		>=dev-libs/libinput-1.4
 		>=dev-libs/wayland-1.13.0
 		>=dev-libs/wayland-protocols-1.9
 		>=media-libs/mesa-10.3[egl,gbm,wayland]
 		sys-apps/systemd
-		>=virtual/libgudev-232:=
 		>=virtual/libudev-136:=
 		x11-base/xorg-server[wayland]
 		x11-libs/libdrm:=

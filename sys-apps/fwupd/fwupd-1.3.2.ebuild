@@ -42,6 +42,7 @@ DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.45.8:2
 	dev-libs/json-glib
 	dev-libs/libgpg-error
+	dev-libs/libgudev:=
 	>=dev-libs/libgusb-0.2.9[introspection?]
 	>=dev-libs/libxmlb-0.1.7
 	dev-python/pillow[${PYTHON_USEDEP}]
@@ -49,7 +50,6 @@ DEPEND="${PYTHON_DEPS}
 	dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 	>=net-libs/libsoup-2.51.92:2.4[introspection?]
 	virtual/libelf:0=
-	virtual/libgudev:=
 	virtual/udev
 	consolekit? ( >=sys-auth/consolekit-1.0.0 )
 	dell? (

@@ -11,7 +11,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
-	virtual/libgudev:=[${MULTILIB_USEDEP}]
+	dev-libs/libgudev:=[${MULTILIB_USEDEP}]
 	virtual/libusb:1[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"

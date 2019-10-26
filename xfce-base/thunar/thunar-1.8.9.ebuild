@@ -29,7 +29,7 @@ COMMON_DEPEND=">=dev-lang/perl-5.6
 	libnotify? ( >=x11-libs/libnotify-0.7 )
 	pcre? ( >=dev-libs/libpcre-6:= )
 	trash-panel-plugin? ( >=xfce-base/xfce4-panel-4.10:= )
-	udisks? ( virtual/libgudev:= )"
+	udisks? ( dev-libs/libgudev:= )"
 RDEPEND="${COMMON_DEPEND}
 	>=dev-util/desktop-file-utils-0.20-r1
 	x11-misc/shared-mime-info

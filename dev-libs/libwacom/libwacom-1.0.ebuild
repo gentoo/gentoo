@@ -20,7 +20,7 @@ BDEPEND="
 "
 RDEPEND="
 	dev-libs/glib:2
-	virtual/libgudev:=
+	dev-libs/libgudev:=
 "
 DEPEND="${RDEPEND}"
 

@@ -23,7 +23,7 @@ RDEPEND=">=dev-libs/glib-2.32:=
 	gstreamer? (
 		media-libs/gstreamer:1.0=
 		media-libs/gst-plugins-base:1.0= )
-	udev? ( virtual/libgudev:= )"
+	udev? ( dev-libs/libgudev:= )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext

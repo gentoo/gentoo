@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,11 +46,11 @@ RDEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib:2
 	>=dev-libs/libgaminggear-0.15.1
+	dev-libs/libgudev:=
 	sys-apps/dbus
 	x11-libs/cairo
 	x11-libs/gtk+:2
 	x11-libs/libX11
-	virtual/libgudev:=
 	virtual/libusb:1
 	input_devices_roccat_ryosmk? ( || ( dev-lang/lua:5.1 dev-lang/lua:0 ) )
 	input_devices_roccat_ryosmkfx? ( || ( dev-lang/lua:5.1 dev-lang/lua:0 ) )

@@ -60,7 +60,7 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	app-arch/bzip2
 	>=app-arch/xz-utils-5.0.0
 	postscript? ( app-text/ghostscript-gpl )
-	udev? ( virtual/libgudev:= )"
+	udev? ( dev-libs/libgudev:= )"
 DEPEND="${RDEPEND}
 	>=dev-lang/perl-5.10.0
 	dev-libs/appstream-glib

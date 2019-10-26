@@ -34,7 +34,7 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3=
 	playlist? ( >=dev-libs/totem-pl-parser-2.26:= )
 	rygel? ( >=net-misc/rygel-0.20:= )
 	soup? ( >=net-libs/libsoup-2.38:= )
-	udev? ( virtual/libgudev:= )"
+	udev? ( dev-libs/libgudev:= )"
 RDEPEND="${COMMON_DEPEND}
 	media-plugins/gst-plugins-meta:1.0"
 DEPEND="${COMMON_DEPEND}

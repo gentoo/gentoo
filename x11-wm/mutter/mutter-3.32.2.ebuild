@@ -65,8 +65,8 @@ DEPEND="
 		elogind? ( sys-auth/elogind )
 		x11-base/xorg-server[wayland]
 	)
-	udev? ( >=virtual/libudev-228:=
-		>=virtual/libgudev-232:= )
+	udev? ( >=dev-libs/libgudev-232:=
+		>=virtual/libudev-228:= )
 	x11-libs/libSM
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13 )
 	>=x11-libs/startup-notification-0.7

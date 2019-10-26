@@ -54,7 +54,7 @@ RDEPEND=">=dev-libs/glib-2.30.2:2
 	sys-libs/zlib
 	bzip2? ( app-arch/bzip2 )
 	postscript? ( app-text/ghostscript-gpl )
-	udev? ( virtual/libgudev:= )"
+	udev? ( dev-libs/libgudev:= )"
 DEPEND="${RDEPEND}
 	sys-apps/findutils
 	virtual/pkgconfig

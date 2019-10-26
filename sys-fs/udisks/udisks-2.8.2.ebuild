@@ -18,9 +18,9 @@ REQUIRED_USE="?? ( elogind systemd )"
 COMMON_DEPEND="
 	>=dev-libs/glib-2.50:2
 	>=dev-libs/libatasmart-0.19
+	>=dev-libs/libgudev-165:=
 	>=sys-auth/polkit-0.110
 	>=sys-libs/libblockdev-2.19[cryptsetup,lvm?,vdo?]
-	>=virtual/libgudev-165:=
 	virtual/udev
 	acl? ( virtual/acl )
 	elogind? ( >=sys-auth/elogind-219 )

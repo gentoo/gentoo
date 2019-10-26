@@ -13,7 +13,7 @@ IUSE="udev"
 RDEPEND="
 	>=media-libs/libv4l-0.9.5[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP}]
-	udev? ( >=virtual/libgudev-208:=[${MULTILIB_USEDEP}] )
+	udev? ( >=dev-libs/libgudev-208:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
 	virtual/os-headers

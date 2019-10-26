@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,8 +14,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2
+	dev-libs/libgudev:=
 	>=media-libs/libv4l-0.6
-	virtual/libgudev:=
 	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

@@ -27,7 +27,7 @@ RDEPEND="
 	sys-auth/polkit
 	packagekit? ( >=app-admin/packagekit-base-1.1.0 )
 	firmware? ( >=sys-apps/fwupd-1.0.3 )
-	udev? ( virtual/libgudev )
+	udev? ( dev-libs/libgudev )
 	>=gnome-base/gsettings-desktop-schemas-3.11.5
 "
 DEPEND="${RDEPEND}

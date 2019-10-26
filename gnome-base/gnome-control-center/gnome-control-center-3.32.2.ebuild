@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	v4l? (
 		>=media-video/cheese-3.28.0 )
 	ibus? ( >=app-i18n/ibus-1.5.2 )
-	wayland? ( virtual/libgudev )
+	wayland? ( dev-libs/libgudev )
 	networkmanager? (
 		>=gnome-extra/nm-applet-1.8.0
 		>=net-misc/networkmanager-1.10.0:=[modemmanager]
