@@ -37,7 +37,7 @@ COMMON_DEPEND="
 		x11-libs/gdk-pixbuf:2
 		X? (
 			x11-libs/cairo[xcb]
-			x11-libs/libxcb:=
+			x11-libs/libxcb:=[xkb]
 			x11-libs/xcb-util
 			x11-libs/xcb-util-wm
 		)
