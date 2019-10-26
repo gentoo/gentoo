@@ -23,9 +23,7 @@ DEPEND="
 	>=dev-python/coverage-4.4.1[${PYTHON_USEDEP}]
 	>=dev-python/six-1.1[${PYTHON_USEDEP}]
 "
-RDEPEND="${DEPEND}
-	>=dev-python/cov-core-1.12[${PYTHON_USEDEP}]
-"
+RDEPEND="${DEPEND}"
 
 python_compile_all() {
 	use doc && emake -C docs html
