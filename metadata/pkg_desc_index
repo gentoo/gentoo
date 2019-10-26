@@ -9462,7 +9462,7 @@ dev-ros/robot_state_publisher 1.13.5 1.13.6-r1 9999: Package for publishing the 
 dev-ros/ros_environment 1.2.0-r1 9999: ROS environment variables
 dev-ros/rosapi 0.8.6 0.9.0 0.10.1 0.11.1 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
 dev-ros/rosauth 0.1.7 9999: Server Side tools for Authorization and Authentication of ROS Clients
-dev-ros/rosbag 1.14.3-r2 9999: Set of tools for recording from and playing back to ROS topics
+dev-ros/rosbag 1.14.3-r1 9999: Set of tools for recording from and playing back to ROS topics
 dev-ros/rosbag_migration_rule 1.0.0 9999: Allows to export rosbag migration rule files without depending on rosbag
 dev-ros/rosbag_storage 1.14.2-r1 1.14.3-r2 9999: Set of tools for recording from and playing back ROS message
 dev-ros/rosbash 1.14.0 1.14.1 1.14.2 1.14.3 1.14.4 1.14.6 9999: Assorted shell commands for using ros with bash
@@ -18744,7 +18744,6 @@ x11-misc/e16-keyedit 0.9: Key binding editor for Enlightenment DR16
 x11-misc/e16menuedit2 0.0.3: Menu editor for Enlightenment DR16 written in GTK2
 x11-misc/easystroke 0.6.0-r3: a gesture-recognition application for X11
 x11-misc/efax-gtk 3.2.9 3.2.13: A graphical frontend for the 'efax' application
-x11-misc/enlightenment-extra 0.0.1: An app for downloading themes and add-ons to Enlightenment WM
 x11-misc/evolvotron 0.7.1: Generative art image evolver
 x11-misc/fbdesk 1.4.1: fluxbox-util application that creates and manage icons on your Fluxbox desktop
 x11-misc/fbpager 20090221-r1: A Pager for fluxbox
