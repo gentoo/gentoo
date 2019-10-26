@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2019-10-26)
+# Breaks at least libreoffice (and perhaps more revdeps)
+~app-text/poppler-0.82.0
+
 # Michał Górny <mgorny@gentoo.org> (2019-10-26)
 # Incorrect LICENSE entry, and no clear license information to be found.
 # Homepage gone, and source of some of the files unknown.
