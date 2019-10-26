@@ -8197,7 +8197,7 @@ dev-python/nose-exclude 0.4.1 0.5.0: Exclude specific directories from nosetests
 dev-python/nose-parameterized 0.5.0: Parameterized testing with any Python test framework
 dev-python/nose-show-skipped 0.1: A nose plugin to show skipped tests and their messages
 dev-python/nose-testconfig 0.9 0.10: Test Configuration plugin for nosetests
-dev-python/nose2 0.6.5 0.9.1: Next generation unittest with plugins
+dev-python/nose2 0.6.5 0.9.1-r1: Next generation unittest with plugins
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r2: A python module to inject warning filters during nosetest
 dev-python/nosehtmloutput 0.0.5: Nose plugin to produce test results in html
