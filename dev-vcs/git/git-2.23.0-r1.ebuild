@@ -144,6 +144,8 @@ PATCHES=(
 
 	# Make submodule output quiet
 	"${FILESDIR}"/git-2.21.0-quiet-submodules-testcase.patch
+
+	"${FILESDIR}"/${P}-avoid_empty_remote_line.patch #698384
 )
 
 pkg_setup() {
