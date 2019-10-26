@@ -29,7 +29,7 @@ DEPEND="
 	sys-apps/util-linux[static-libs?]
 	sys-libs/zlib[static-libs(+)?]
 	virtual/awk
-	virtual/libudev[static-libs?]
+	virtual/libudev[static-libs(-)?]
 	libressl? ( dev-libs/libressl:0=[static-libs?] )
 	!libressl? ( dev-libs/openssl:0=[static-libs?] )
 	python? (
