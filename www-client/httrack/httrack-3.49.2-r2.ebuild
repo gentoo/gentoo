@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="libressl static-libs"
 
 RDEPEND=">=sys-libs/zlib-1.2.5.1-r1
-	!libressl? ( dev-libs/openssl:= )
+	!libressl? ( >=dev-libs/openssl-1.1.0:= )
 	libressl? ( dev-libs/libressl )
 	"
 DEPEND="${RDEPEND}"

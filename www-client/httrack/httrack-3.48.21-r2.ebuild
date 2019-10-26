@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="libressl static-libs"
 
 RDEPEND=">=sys-libs/zlib-1.2.5.1-r1
-	!libressl? ( dev-libs/openssl:= )
+	!libressl? ( <dev-libs/openssl-1.1.0:= )
 	libressl? ( dev-libs/libressl )
 	"
 DEPEND="${RDEPEND}"
