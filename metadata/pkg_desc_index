@@ -10699,7 +10699,7 @@ dev-util/idea-community 2018.3.1.183.4588.61-r1 2018.3.3.183.5153.38 2018.3.4.18
 dev-util/idutils 4.6: Fast, high-capacity, identifier database tool
 dev-util/ignition-cmake 0.2.0 0.4.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
-dev-util/include-what-you-use 6.0 7.0 8.0: Find unused include directives in C/C++ programs
+dev-util/include-what-you-use 6.0 7.0 8.0 9.0: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1 2.2.11_p5 2.2.12: Indent program source files
 dev-util/intel-graphics-compiler 1.0.11-r1: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
 dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1: Intel's implementation of the OpenCL standard
