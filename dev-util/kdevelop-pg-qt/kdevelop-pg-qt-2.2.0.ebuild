@@ -16,6 +16,8 @@ HOMEPAGE="https://www.kdevelop.org/"
 LICENSE="LGPL-2+ LGPL-2.1+"
 IUSE=""
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.14.patch" )
+
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
