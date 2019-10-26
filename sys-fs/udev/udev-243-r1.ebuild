@@ -96,9 +96,6 @@ src_prepare() {
 		eapply "${WORKDIR}/patches"
 	fi
 
-	local PATCHES=(
-	)
-
 	default
 }
 
@@ -190,9 +187,9 @@ multilib_src_install() {
 		exeinto /lib/udev
 		doexe src/udev/{ata_id,cdrom_id,mtd_probe,scsi_id,v4l_id}
 
-		rm rules.d/99-systemd.rules || die
+		rm rules/99-systemd.rules || die
 		insinto /lib/udev/rules.d
-		doins rules.d/*.rules
+		doins rules/*.rules
 
 		insinto /usr/share/pkgconfig
 		doins src/udev/udev.pc
@@ -216,7 +213,7 @@ multilib_src_install_all() {
 	# see src_prepare() for content of 40-gentoo.rules
 	insinto /lib/udev/rules.d
 	doins "${T}"/40-gentoo.rules
-	doins "${S}"/rules.d/*.rules
+	doins "${S}"/rules/*.rules
 
 	dobashcomp shell-completion/bash/udevadm
 
