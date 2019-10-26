@@ -2719,10 +2719,12 @@ dev-qt/qt-creator:autotools - Enable autotools project manager plugin
 dev-qt/qt-creator:baremetal - Build plugin for bare metal devices
 dev-qt/qt-creator:bazaar - Add support for dev-vcs/bzr version control system
 dev-qt/qt-creator:beautifier - Build the beautifier plugin (supports astyle, clang-format, and uncrustify)
+dev-qt/qt-creator:boot2qt - Build plugin for Boot2Qt devices
 dev-qt/qt-creator:clang - Build clang-based plugins (code model, formatting, refactoring, static analysis)
 dev-qt/qt-creator:clearcase - Add support for IBM ClearCase version control system (requires manual installation of ClearCase client)
 dev-qt/qt-creator:cmake - Enable cmake project manager plugin
 dev-qt/qt-creator:cppcheck - Enable integration with dev-util/cppcheck
+dev-qt/qt-creator:ctfvisualizer - Build the Chrome Trace Format Visualizer plugin
 dev-qt/qt-creator:designer - Enable designer for QtWidgets-based UIs
 dev-qt/qt-creator:glsl - Enable GLSL source code editor
 dev-qt/qt-creator:help - Build the help plugin
@@ -5165,6 +5167,7 @@ media-video/mpv:cplugins - Enable C plugins support
 media-video/mpv:cuda - Enable hardware video decoding via Nvidia CUDA
 media-video/mpv:drm - Enable Kernel Mode Setting / Direct Rendering Manager based video output
 media-video/mpv:egl - Enable support for various EGL-based video outputs / backends
+media-video/mpv:gamepad - Enable gamepad input support
 media-video/mpv:gbm - Enable Graphics Buffer Manager based EGL video backend
 media-video/mpv:jpeg - Enable support for saving screenshots in JPEG format
 media-video/mpv:libass - Enable OSD (On Screen Display) and subtitles support via media-libs/libass
@@ -5177,6 +5180,7 @@ media-video/mpv:sdl - Enable media-libs/libsdl2 based video and audio outputs (N
 media-video/mpv:tools - Install extra tools: mpv_identify.sh, mpv_idet.sh, and umpv
 media-video/mpv:uchardet - Enable subtitles charset discovery via app-i18n/uchardet
 media-video/mpv:vulkan - Enable support for various Vulkan-based video backends
+media-video/mpv:zimg - Enable libzimg support (for vf_fingerprint)
 media-video/noad:libmpeg2 - Build support for mpeg2 over media-libs/libmpeg2 rather than using ffmpeg
 media-video/nvidia_video_sdk:tools - Build and install example tools.
 media-video/obs-studio:fdk - Enable libfdk support for AAC encoding.
