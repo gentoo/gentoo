@@ -1,0 +1,97 @@
+From 14b61d48e8bad6223a08843cf363ef48f09c479b Mon Sep 17 00:00:00 2001
+From: Christian Ehrlicher <ch.ehrlicher@gmx.de>
+Date: Fri, 11 Oct 2019 20:53:49 +0200
+Subject: [PATCH] QPSQL: Add support for PostgreSQL 12
+
+Add proper version check and replace long deprecated and now removed
+access to pg_attrdef.adsrc.
+
+[ChangeLog][QtSql][QPSQL] added support for PostgreSQL 12
+
+Fixes: QTBUG-79033
+Fixes: QTBUG-79064
+Change-Id: Iec1b13945c34ea017139ad1c5539ab5b7f1e03aa
+Reviewed-by: Edward Welbourne <edward.welbourne@qt.io>
+---
+ src/plugins/sqldrivers/psql/qsql_psql.cpp | 43 +++++++++++++++++--------------
+ src/plugins/sqldrivers/psql/qsql_psql_p.h |  1 +
+ 2 files changed, 25 insertions(+), 19 deletions(-)
+
+diff --git a/src/plugins/sqldrivers/psql/qsql_psql.cpp b/src/plugins/sqldrivers/psql/qsql_psql.cpp
+index 3803f05b9f9..760685f64b4 100644
+--- a/src/plugins/sqldrivers/psql/qsql_psql.cpp
++++ b/src/plugins/sqldrivers/psql/qsql_psql.cpp
+@@ -1078,8 +1078,10 @@ static QPSQLDriver::Protocol qMakePSQLVersion(int vMaj, int vMin)
+         return QPSQLDriver::Version10;
+     case 11:
+         return QPSQLDriver::Version11;
++    case 12:
++        return QPSQLDriver::Version12;
+     default:
+-        if (vMaj > 11)
++        if (vMaj > 12)
+             return QPSQLDriver::UnknownLaterVersion;
+         break;
+     }
+@@ -1439,26 +1441,29 @@ QSqlRecord QPSQLDriver::record(const QString &tablename) const
+     else
+         schema = std::move(schema).toLower();
+ 
+-    QString stmt = QLatin1String("select pg_attribute.attname, pg_attribute.atttypid::int, "
+-                                 "pg_attribute.attnotnull, pg_attribute.attlen, pg_attribute.atttypmod, "
+-                                 "pg_attrdef.adsrc "
+-                                 "from pg_class, pg_attribute "
+-                                 "left join pg_attrdef on (pg_attrdef.adrelid = "
+-                                 "pg_attribute.attrelid and pg_attrdef.adnum = pg_attribute.attnum) "
+-                                 "where %1 "
+-                                 "and pg_class.relname = '%2' "
+-                                 "and pg_attribute.attnum > 0 "
+-                                 "and pg_attribute.attrelid = pg_class.oid "
+-                                 "and pg_attribute.attisdropped = false "
+-                                 "order by pg_attribute.attnum");
+-    if (schema.isEmpty())
+-        stmt = stmt.arg(QLatin1String("pg_table_is_visible(pg_class.oid)"));
+-    else
+-        stmt = stmt.arg(QString::fromLatin1("pg_class.relnamespace = (select oid from "
+-                                            "pg_namespace where pg_namespace.nspname = '%1')").arg(schema));
++    const QString adsrc = protocol() < Version8
++        ? QStringLiteral("pg_attrdef.adsrc")
++        : QStringLiteral("pg_get_expr(pg_attrdef.adbin, pg_attrdef.adrelid)");
++    const QString nspname = schema.isEmpty()
++        ? QStringLiteral("pg_table_is_visible(pg_class.oid)")
++        : QStringLiteral("pg_class.relnamespace = (SELECT oid FROM "
++                         "pg_namespace WHERE pg_namespace.nspname = '%1')").arg(schema);
++    const QString stmt =
++        QStringLiteral("SELECT pg_attribute.attname, pg_attribute.atttypid::int, "
++                       "pg_attribute.attnotnull, pg_attribute.attlen, pg_attribute.atttypmod, "
++                       "%1 "
++                       "FROM pg_class, pg_attribute "
++                       "LEFT JOIN pg_attrdef ON (pg_attrdef.adrelid = "
++                       "pg_attribute.attrelid AND pg_attrdef.adnum = pg_attribute.attnum) "
++                       "WHERE %2 "
++                       "AND pg_class.relname = '%3' "
++                       "AND pg_attribute.attnum > 0 "
++                       "AND pg_attribute.attrelid = pg_class.oid "
++                       "AND pg_attribute.attisdropped = false "
++                       "ORDER BY pg_attribute.attnum").arg(adsrc, nspname, tbl);
+ 
+     QSqlQuery query(createResult());
+-    query.exec(stmt.arg(tbl));
++    query.exec(stmt);
+     while (query.next()) {
+         int len = query.value(3).toInt();
+         int precision = query.value(4).toInt();
+diff --git a/src/plugins/sqldrivers/psql/qsql_psql_p.h b/src/plugins/sqldrivers/psql/qsql_psql_p.h
+index 99e0b5f60f5..9ac1fb50d79 100644
+--- a/src/plugins/sqldrivers/psql/qsql_psql_p.h
++++ b/src/plugins/sqldrivers/psql/qsql_psql_p.h
+@@ -93,6 +93,7 @@ public:
+         Version9_6 = 22,
+         Version10 = 23,
+         Version11 = 24,
++        Version12 = 25,
+         UnknownLaterVersion = 100000
+     };
+ 
+-- 
+2.16.3
