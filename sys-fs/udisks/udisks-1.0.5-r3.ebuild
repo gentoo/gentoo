@@ -16,6 +16,7 @@ IUSE="debug +lvm nls remote-access selinux"
 COMMON_DEPEND=">=dev-libs/dbus-glib-0.100
 	>=dev-libs/glib-2.30
 	>=dev-libs/libatasmart-0.19
+	dev-libs/libgudev:=
 	>=sys-auth/polkit-0.110
 	>=sys-apps/dbus-1.6
 	>=sys-apps/sg3_utils-1.27.20090411
@@ -24,7 +25,6 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.100
 		>=sys-fs/lvm2-2.02.66
 		<sys-fs/lvm2-2.02.183
 	)
-	virtual/libgudev:=
 	virtual/libudev:=
 	virtual/udev
 	selinux? ( sec-policy/selinux-devicekit )"

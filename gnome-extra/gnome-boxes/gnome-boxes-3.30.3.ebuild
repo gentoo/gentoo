@@ -29,6 +29,7 @@ COMMON_DEPEND="
 	>=dev-libs/gobject-introspection-1.54:=
 	>=x11-libs/gtk+-3.22.20:3[introspection]
 	>=net-libs/gtk-vnc-0.8.0-r1[gtk3(+)]
+	>=dev-libs/libgudev-165:=
 	>=sys-libs/libosinfo-1.1.0
 	app-crypt/libsecret
 	>=net-libs/libsoup-2.44:2.4
@@ -38,7 +39,6 @@ COMMON_DEPEND="
 	>=net-misc/spice-gtk-0.32[gtk3(+),smartcard,usbredir]
 	app-misc/tracker:0/2.0
 	net-libs/webkit-gtk:4
-	>=virtual/libgudev-165:=
 	rdp? ( net-misc/freerdp:= )
 "
 DEPEND="${COMMON_DEPEND}

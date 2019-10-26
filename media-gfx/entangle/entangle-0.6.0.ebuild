@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ IUSE=""
 DEPEND=">=dev-libs/glib-2.26:2
 	>=x11-libs/gdk-pixbuf-2.12.0:2
 	>=x11-libs/gtk+-3.3.18:3[introspection]
-	virtual/libgudev:=
+	dev-libs/libgudev:=
 	>=dev-libs/dbus-glib-0.60
 	>=dev-libs/gobject-introspection-0.9.3
 	>=media-libs/libgphoto2-2.4.11:=

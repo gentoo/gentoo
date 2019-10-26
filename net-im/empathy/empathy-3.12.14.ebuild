@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -62,9 +62,9 @@ COMMON_DEPEND="
 		>=app-text/enchant-1.2
 		>=app-text/iso-codes-0.35 )
 	v4l? (
+		dev-libs/libgudev:=
 		media-plugins/gst-plugins-v4l2:1.0
-		>=media-video/cheese-3.4:=
-		virtual/libgudev:= )
+		>=media-video/cheese-3.4:= )
 "
 
 # >=empathy-3.4 is incompatible with telepathy-rakia-0.6, bug #403861

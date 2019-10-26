@@ -16,7 +16,7 @@ KEYWORDS="alpha amd64 arm ~arm64 ~ia64 ppc ppc64 ~sparc x86"
 IUSE="libnotify"
 
 COMMON_DEPEND=">=dev-libs/glib-2.30
-	virtual/libgudev:=
+	dev-libs/libgudev:=
 	>=x11-libs/gtk+-3.20:3
 	>=xfce-base/exo-0.10:=
 	>=xfce-base/libxfce4ui-4.12:=
