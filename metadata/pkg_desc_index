@@ -17567,7 +17567,7 @@ sys-cluster/nova 18.2.2 18.2.3 19.0.2 19.0.3 20.0.0 2018.2.9999 2019.1.9999 2019
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
-sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.7 2.0.2 2.0.4 2.1.6 3.0.4 3.1.4 4.0.1-r1: A high-performance message passing library (MPI)
+sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.7 2.0.2 2.0.4 2.1.6 3.0.4 3.1.4 4.0.1-r1 4.0.2: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2018.2.9999 2019.1.9999 2019.2.0 2019.2.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
 sys-cluster/pacemaker 1.1.16 1.1.19: Pacemaker CRM
@@ -17724,7 +17724,7 @@ sys-fs/clamfs 1.0.1-r3: A FUSE-based user-space file system with on-access anti-
 sys-fs/compsize 1.1 9999: Utility to find btrfs compression ratio
 sys-fs/copyfs 1.0.1-r1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
-sys-fs/cryfs 0.9.9 0.10.2 9999: Encrypted FUSE filesystem that conceals metadata
+sys-fs/cryfs 0.9.9-r1 0.10.2 9999: Encrypted FUSE filesystem that conceals metadata
 sys-fs/cryptmount 5.3.1: A utility for management and user-mode mounting of encrypted filesystems
 sys-fs/cryptsetup 1.7.5-r1 2.0.5-r1 2.0.6 2.1.0 2.2.0 2.2.1: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
