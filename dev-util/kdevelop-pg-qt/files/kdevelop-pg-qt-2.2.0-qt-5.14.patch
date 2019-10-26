@@ -1,0 +1,60 @@
+From d05d0b19e9d6f47fee3e11d837c2c21125589763 Mon Sep 17 00:00:00 2001
+From: Alexey Min <alexey.min@gmail.com>
+Date: Thu, 24 Oct 2019 14:34:45 +0300
+Subject: Fix build with Qt 5.14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Summary:
+Trying to build kdevelop-pg-qt with Qt 5.14 results in an error:
+```
+.../kdev-pg/kdev-pg-regexp.cpp:44:23: error: redefinition of ‘struct std::hash<QBitArray>’
+     template<> struct hash< type >                          \
+                       ^~~~~~~~~~~~
+.../kdev-pg/kdev-pg-regexp.cpp:53:1: note: in expansion of macro ‘q_Hash_to_tr1_hash’
+ q_Hash_to_tr1_hash(QBitArray)
+ ^~~~~~~~~~~~~~~~~~
+In file included from .../prefix514/include/QtCore/qvector.h:47:0,
+                 from .../prefix514/include/QtCore/QVector:1,
+                 from .../kdevelop-pg-qt/include/kdev-pg-char-sets.h:36,
+                 from .../kdevelop-pg-qt/kdev-pg/kdev-pg-regexp.cpp:20:
+.../prefix514/include/QtCore/qhashfunctions.h:209:1: note: previous definition of ‘struct std::hash<QBitArray>’
+ QT_SPECIALIZE_STD_HASH_TO_CALL_QHASH_BY_CREF(QBitArray)
+ ^
+```
+
+std::hash<QBitArray> is already specialized in Qt 5.14, so avoid redefinition with conditional compilation
+
+Test Plan: try to build with Qt 5.14
+
+Reviewers: apol
+
+Reviewed By: apol
+
+Subscribers: kdevelop-devel
+
+Tags: #kdevelop
+
+Differential Revision: https://phabricator.kde.org/D24914
+---
+ kdev-pg/kdev-pg-regexp.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/kdev-pg/kdev-pg-regexp.cpp b/kdev-pg/kdev-pg-regexp.cpp
+index 8cc0b95..9fee81c 100644
+--- a/kdev-pg/kdev-pg-regexp.cpp
++++ b/kdev-pg/kdev-pg-regexp.cpp
+@@ -50,7 +50,10 @@ namespace std                                               \
+     };                                                      \
+ }
+ 
++#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
++// Qt >= 5.14 already has std::hash for QBitArray
+ q_Hash_to_tr1_hash(QBitArray)
++#endif
+ 
+ namespace KDevPG
+ {
+-- 
+cgit v1.1
