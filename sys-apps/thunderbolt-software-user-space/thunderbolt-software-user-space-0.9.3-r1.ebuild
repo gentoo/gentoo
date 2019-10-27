@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+# man needs app-text/txt2tags which is dormant upstream, so it is shipped pregenerated
 DEPEND="dev-libs/boost:="
 RDEPEND="${DEPEND}"
 
