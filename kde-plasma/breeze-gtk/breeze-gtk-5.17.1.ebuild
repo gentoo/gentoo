@@ -26,3 +26,20 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 	kde5_pkg_setup
 }
+
+src_prepare() {
+	kde5_src_prepare
+	if has_version "<dev-util/cmake-3.16_rc1"; then
+		eapply "${FILESDIR}"/${PN}-5.16.5-cmake-pre-3.16.patch
+	fi
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DPython3_EXECUTABLE="${PYTHON}"
+	)
+	if has_version "<dev-util/cmake-3.16_rc1"; then
+		mycmakeargs=( -DPYTHON_EXECUTABLE="${PYTHON}" )
+	fi
+	kde5_src_configure
+}
