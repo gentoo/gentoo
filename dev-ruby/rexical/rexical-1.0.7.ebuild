@@ -27,6 +27,11 @@ ruby_add_bdepend "
 		dev-ruby/minitest
 	)"
 
+all_ruby_prepare() {
+	# Avoid dependency on unpackaged rubocop
+	sed -i -e '/test_rubocop_security/askip "not packaged"' test/test_generator.rb || die
+}
+
 all_ruby_install() {
 	all_fakegem_install
 
