@@ -186,7 +186,13 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 9.1 && IUSE+=" lto"
 fi
 
-SLOT="${GCC_CONFIG_VER}"
+if tc_version_is_at_least 10; then
+	# Note: currently we pull in prereleases, snapshots and
+	# git versions into the same SLOT.
+	SLOT="${GCCMAJOR}"
+else
+	SLOT="${GCC_CONFIG_VER}"
+fi
 
 #---->> DEPEND <<----
 
