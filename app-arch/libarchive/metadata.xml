@@ -9,6 +9,9 @@
 		C library and command-line tools for reading and writing tar, cpio, zip, ISO, and other archive formats.
 	</longdescription>
 	<use>
+		<flag name="blake2">
+			Enable Blake2 hash support via <pkg>app-crypt/libb2</pkg>.
+		</flag>
 		<flag name="bzip2">
 			Allow accessing bzip2-compressed archives through libbz2 (which
 			comes with <pkg>app-arch/bzip2</pkg>). This only affects
