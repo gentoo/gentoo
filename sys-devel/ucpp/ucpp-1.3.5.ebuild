@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="A C preprocessor compliant to ISO-C99"
+DESCRIPTION="Library for preprocessing C compliant to ISO-C99"
 HOMEPAGE="https://gitlab.com/scarabeusiv/ucpp"
 SRC_URI="https://gitlab.com/scarabeusiv/${PN}/uploads/79f08e39c676f15ed8a59335f6c9b924/${P}.tar.xz"
 
@@ -22,5 +22,5 @@ src_install() {
 	default
 
 	# package provides .pc files
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -type f -delete || die
 }
