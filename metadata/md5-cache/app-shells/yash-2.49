@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=sys-libs/ncurses:= nls? ( virtual/libintl ) nls? ( sys-devel/gettext ) test? ( sys-apps/ed )
+DESCRIPTION=Yash is a POSIX-compliant command line shell
+EAPI=7
+HOMEPAGE=https://yash.osdn.jp/
+IUSE=nls test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=sys-libs/ncurses:= nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/yash/71638/yash-2.49.tar.xz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_md5_=4d4078315bab9f1b8d9bf16617f4d469

@@ -2098,7 +2098,7 @@ app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
 app-misc/rundeck-cli-bin 0.1.8 0.1.11: Command line tool for rundeck
 app-misc/scope 0.04-r1: Serial Line Analyser
 app-misc/screen 4.4.0 4.5.1 4.6.0 4.6.1 4.6.2 4.6.2-r1 4.7.0 9999: screen manager with VT100/ANSI terminal emulation
-app-misc/screenfetch 3.8.0-r1 9999: Bash Screenshot Information Tool
+app-misc/screenfetch 3.8.0-r1 3.9.0 9999: Bash Screenshot Information Tool
 app-misc/screenie 1.30.0-r1: screen(1) frontend that is designed to be a session handler
 app-misc/scrub 2.5.2 2.6.1: Overwrite files with iterative patterns.
 app-misc/selecta 0.0.7 9999: A fuzzy text selector for files and anything else you need to select
@@ -2371,7 +2371,7 @@ app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell usin
 app-shells/tcsh 6.20.00 6.21.00: Enhanced version of the Berkeley C shell (csh)
 app-shells/thefuck 3.27 3.28: Magnificent app which corrects your previous console command
 app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
-app-shells/yash 2.47 2.48: Yash is a POSIX-compliant command line shell
+app-shells/yash 2.48 2.49: Yash is a POSIX-compliant command line shell
 app-shells/zsh 5.6.2 5.7.1 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.29.0 0.31.0 9999: Additional completion definitions for Zsh
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
@@ -15115,7 +15115,7 @@ net-mail/email 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.9 2.0: fetch, filter and deliver mail
-net-mail/fetchmail 6.3.26-r4 6.4.0_rc4: the legendary remote-mail retrieval and forwarding utility
+net-mail/fetchmail 6.3.26-r4 6.4.0_rc4 6.4.1: the legendary remote-mail retrieval and forwarding utility
 net-mail/getmail 5.13 5.14: A mail retriever with reliable Maildir and mbox delivery
 net-mail/gnubiff 2.2.17-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
