@@ -33,6 +33,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	python? ( !dev-python/python-magic )"
 
+PATCHES=( "${FILESDIR}"/${P}-CVE-2019-18218.patch )
+
 src_prepare() {
 	default
 
