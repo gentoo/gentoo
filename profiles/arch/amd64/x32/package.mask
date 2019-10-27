@@ -1,6 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-10-27)
+# requires net-libs/nodejs | sys-apps/yarn
+>=net-analyzer/greenbone-security-assistant-8.0.1
+net-analyzer/gvm
+
 # Marek Szuba <marecki@gentoo.org> (2019-07-26)
 # Binary-only package with no x32 support
 dev-libs/amdgpu-pro-opencl
