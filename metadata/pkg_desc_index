@@ -14317,7 +14317,7 @@ media-video/ttcut 0.19.6_p1 0.19.6_p1-r1: Tool for cutting MPEG files especially
 media-video/unifi-video 3.10.5 3.10.10: UniFi Video Server
 media-video/ushare 1.1a-r8: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/v4l2loopback 0.12.0 0.12.1.1_pre 9999: v4l2 loopback device which output is it's own input
-media-video/vamps 0.99.2 0.99.2-r1: Very fast requantisizing tool for backup DVDs
+media-video/vamps 0.99.2 0.99.2-r1 0.99.2-r2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 0.7.24 2.0.1: GNU VCDimager
 media-video/vcsi 7: Create thumbnail sheets from video files
 media-video/vdr 2.0.6-r1 2.2.0-r3: Video Disk Recorder - turns a pc into a powerful set top box for DVB
