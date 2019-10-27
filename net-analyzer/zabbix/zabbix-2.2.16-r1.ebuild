@@ -70,7 +70,7 @@ DEPEND="${COMMON_DEPEND}
 	postgres? ( dev-db/postgresql:*[static-libs] )
 	libxml2? ( dev-libs/libxml2[static-libs] )
 	curl? ( net-misc/curl[static-libs] )
-	ssh? ( net-libs/libssh2[static-libs] )
+	ssh? ( net-libs/libssh2 )
 	odbc? ( dev-db/unixODBC[static-libs] )
 	)
 	virtual/pkgconfig"
@@ -169,7 +169,7 @@ src_install() {
 		doins "${FILESDIR}/2.2"/zabbix_server.conf
 		doinitd "${FILESDIR}/2.2"/init.d/zabbix-server
 		dosbin src/zabbix_server/zabbix_server
-		fowners zabbix:zabbix /etc/zabbix/zabbix_server.conf
+		fowners root:zabbix /etc/zabbix/zabbix_server.conf
 		fperms 0640 /etc/zabbix/zabbix_server.conf
 		dodir /usr/share/zabbix
 		/bin/cp -R "${S}/database/" "${D}"/usr/share/zabbix/
