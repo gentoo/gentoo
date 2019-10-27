@@ -11,7 +11,7 @@ SRC_URI="https://github.com/numixproject/numix-icon-theme-circle/archive/${PV}.t
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="x11-themes/numix-icon-theme"
 RDEPEND="${DEPEND}"
