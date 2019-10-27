@@ -6,8 +6,7 @@ EAPI=7
 inherit cdrom desktop eutils portability unpacker xdg-utils
 
 DESCRIPTION="Unreal Tournament 2004 - This is the data portion of UT2004"
-HOMEPAGE="http://www.unrealtournament2004.com/"
-SRC_URI=""
+HOMEPAGE="https://liandri.beyondunreal.com/Unreal_Tournament_2004"
 
 LICENSE="ut2003"
 SLOT="0"
@@ -15,8 +14,11 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
 	games-util/uz2unpack
-	>=app-arch/unshield-0.5-r1"
-PDEPEND="games-fps/ut2004"
+	>=app-arch/unshield-0.5-r1
+"
+
+PDEPEND=">=games-fps/ut2004-3369.3-r2"
+RDEPEND="!games-fps/ut2004-ded"
 
 S="${WORKDIR}"
 
@@ -329,8 +331,6 @@ src_install() {
 	for j in {CSVs,Logs,Results} ;do
 		keepdir /opt/ut2004/Benchmark/${j}
 	done
-
-	make_wrapper ut2004 ./ut2004-bin /opt/ut2004/System /opt/ut2004/System /opt/ut2004
 
 	# Remove unneccessary files
 	rm -f "${Ddir}"/*.{bat,exe,EXE,int} || die
