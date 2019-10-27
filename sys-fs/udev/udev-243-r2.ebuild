@@ -116,7 +116,7 @@ multilib_src_configure() {
 		-Dlink-udev-shared=false
 		-Dsplit-usr=true
 		-Drootlibdir="${EPREFIX}/usr/$(get_libdir)"
-		-Dlibudev-static=$(usex static-libs true false)
+		-Dstatic-libudev=$(usex static-libs true false)
 
 		# Prevent automagic deps
 		-Dgcrypt=false
