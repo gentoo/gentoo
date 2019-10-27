@@ -14,12 +14,9 @@ KEYWORDS="~amd64 ~mips ~ppc ~x86"
 RDEPEND="dev-libs/libxslt
 	dev-vcs/subversion"
 
-src_prepare() {
-	# the wrapper script looks for the xsl files in the
-	# same directory as the script.
-	eapply -p0 "${FILESDIR}"/0.9-wrapper.patch
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}"/0.14-wrapper.patch
+)
 
 src_install() {
 	newbin svn2cl.sh svn2cl
