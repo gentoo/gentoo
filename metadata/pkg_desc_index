@@ -4917,7 +4917,7 @@ dev-libs/libgnome-games-support 1.4.3 1.4.4: Library for code common to Gnome ga
 dev-libs/libgpg-error 1.27-r1 1.29 1.32 1.32-r1 1.36: Contains error handling functions used by GnuPG software
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
-dev-libs/libgudev 232 233: GObject bindings for libudev
+dev-libs/libgudev 232 233-r1: GObject bindings for libudev
 dev-libs/libgusb 0.2.11: GObject wrapper for libusb
 dev-libs/libgweather 3.24.1 3.26.2 3.28.3 3.32.1 3.32.2-r1: Location and timezone database and weather-lookup library
 dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
@@ -5020,7 +5020,7 @@ dev-libs/libunibreak 4.0 4.1: Line and word breaking library
 dev-libs/libuninum 2.7: A library for converting unicode strings to numbers and vice versa
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
 dev-libs/libunistring 0.9.10: Library for manipulating Unicode and C strings according to Unicode standard
-dev-libs/libusb 1.0.19-r1 1.0.21 1.0.22 1.0.23: Userspace access to USB devices
+dev-libs/libusb 1.0.19-r1 1.0.21-r1 1.0.22 1.0.23-r1: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
 dev-libs/libutf8proc 2.2.0_p1-r1 2.4.0: mapping tool for UTF-8 strings
@@ -17246,7 +17246,7 @@ sys-apps/osinfo-db-tools 1.2.0 1.3.0 1.4.0: Tools for managing the osinfo databa
 sys-apps/pacman 5.0.2-r2: Archlinux's binary package manager
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.2.2: PaX flags maintenance daemon
-sys-apps/pciutils 3.5.6 3.6.1 3.6.2: Various utilities dealing with the PCI bus
+sys-apps/pciutils 3.5.6-r1 3.6.1 3.6.2-r1: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.24 1.8.25 1.8.25-r1: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
@@ -17726,7 +17726,7 @@ sys-fs/copyfs 1.0.1-r1: fuse-based filesystem for maintaining configuration file
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryfs 0.9.9-r1 0.10.2 9999: Encrypted FUSE filesystem that conceals metadata
 sys-fs/cryptmount 5.3.1: A utility for management and user-mode mounting of encrypted filesystems
-sys-fs/cryptsetup 1.7.5-r1 2.2.1: Tool to setup encrypted devices with dm-crypt
+sys-fs/cryptsetup 1.7.5-r1 2.2.1-r1: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.46 1.99.8: Similar to dd but can copy from source with errors
@@ -17781,7 +17781,7 @@ sys-fs/loop-aes 3.7n: Linux kernel module to encrypt disk partitions with AES ci
 sys-fs/lsscsi 0.29 0.30: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r3: User-mode filesystem implementation
-sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.183 2.02.184-r4 2.02.185-r1 2.02.186 2.03.06: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.183 2.02.184-r5 2.02.185-r1 2.02.186-r1 2.03.06: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
@@ -17831,7 +17831,7 @@ sys-fs/xwmfs 0.83: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.4: Zero's out all free space on a filesystem
-sys-fs/zfs 0.7.13 0.8.1 0.8.2 9999: Userland utilities for ZFS Linux kernel module
+sys-fs/zfs 0.7.13-r1 0.8.1 0.8.2-r1 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-auto-snapshot 1.2.4 9999: ZFS Automatic Snapshot Service for Linux
 sys-fs/zfs-kmod 0.7.13 0.8.1 0.8.2 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
@@ -18083,7 +18083,7 @@ virtual/libgudev 215-r3 230 232: Virtual for libgudev providers
 virtual/libiconv 0 0-r1 0-r2: Virtual for the GNU conversion library
 virtual/libintl 0 0-r1 0-r2: Virtual for the GNU Internationalization Library
 virtual/libstdc++ 3.3: Virtual for the GNU Standard C++ Library for <gcc-3.4
-virtual/libudev 215-r1 232: Virtual for libudev providers
+virtual/libudev 215-r1 232-r1 232-r2: Virtual for libudev providers
 virtual/libusb 0-r2 1-r1 1-r2: Virtual for libusb
 virtual/linux-sources 3 3-r1: Virtual for Linux kernel sources
 virtual/linuxtv-dvb-headers 5.8: Virtual Package installing the Header files for DVB
