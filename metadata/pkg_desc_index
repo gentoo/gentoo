@@ -4733,7 +4733,7 @@ dev-libs/capstone 3.0.5_rc2 3.0.5_rc2-r1 4.0 4.0.1: disassembly/disassembler fra
 dev-libs/cdk 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.2.1 1.2.2: header-only C++11 serialization library
 dev-libs/cgilib 0.7-r1: A simple and lightweight interface to the CGI for C and C++ programs
-dev-libs/check 0.10.0-r1 0.12.0: A unit test framework for C
+dev-libs/check 0.10.0-r1 0.12.0 0.13.0: A unit test framework for C
 dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
 dev-libs/cityhash 1.0.3 1.1.0 1.1.1: Google's CityHash family of hash functions
 dev-libs/cl 1.2.3 1.2.4 9999: OpenCL bindings for Erlang
