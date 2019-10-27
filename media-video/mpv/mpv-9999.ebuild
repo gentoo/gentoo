@@ -31,7 +31,7 @@ SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda debug doc drm dvb
 	dvd +egl gamepad gbm +iconv jack javascript jpeg lcms +libass libcaca libmpv +lua
 	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
-	selinux test tools +uchardet v4l vaapi vdpau vulkan wayland +X +xv zlib zimg"
+	selinux test tools +uchardet vaapi vdpau vulkan wayland +X +xv zlib zimg"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
@@ -47,7 +47,6 @@ REQUIRED_USE="
 	test? ( opengl )
 	tools? ( cli )
 	uchardet? ( iconv )
-	v4l? ( || ( alsa oss ) )
 	vaapi? ( || ( gbm X wayland ) )
 	vdpau? ( X )
 	vulkan? ( || ( X wayland ) )
@@ -95,7 +94,6 @@ COMMON_DEPEND="
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl2[sound,threads,video] )
-	v4l? ( media-libs/libv4l )
 	vaapi? ( x11-libs/libva:=[drm?,X?,wayland?] )
 	vdpau? ( x11-libs/libvdpau )
 	vulkan? (
@@ -130,7 +128,6 @@ DEPEND="${COMMON_DEPEND}
 			dev-python/rst2pdf )
 	dvb? ( virtual/linuxtv-dvb-headers )
 	test? ( >=dev-util/cmocka-1.0.0 )
-	v4l? ( virtual/os-headers )
 "
 RDEPEND="${COMMON_DEPEND}
 	cuda? ( x11-drivers/nvidia-drivers[X] )
@@ -238,7 +235,6 @@ src_configure() {
 		$(use_enable cuda cuda-hwaccel)
 
 		# TV features:
-		$(use_enable v4l tv)
 		$(use_enable dvb dvbin)
 
 		# Miscellaneous features:
