@@ -9,6 +9,10 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Ruby project</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">goshrine/whole_history_rating</remote-id>
   </upstream>
