@@ -176,7 +176,7 @@ src_install() {
 		doins "${FILESDIR}/3.0"/zabbix_server.conf
 		doinitd "${FILESDIR}/3.0"/init.d/zabbix-server
 		dosbin src/zabbix_server/zabbix_server
-		fowners zabbix:zabbix /etc/zabbix/zabbix_server.conf
+		fowners root:zabbix /etc/zabbix/zabbix_server.conf
 		fperms 0640 /etc/zabbix/zabbix_server.conf
 		dodir /usr/share/zabbix
 		/bin/cp -R "${S}/database/" "${D}"/usr/share/zabbix/
@@ -189,6 +189,8 @@ src_install() {
 		dosbin src/zabbix_proxy/zabbix_proxy
 		insinto /etc/zabbix
 		doins "${FILESDIR}/3.0"/zabbix_proxy.conf
+		fowners root:zabbix /etc/zabbix/zabbix_proxy.conf
+		fperms 0640 /etc/zabbix/zabbix_proxy.conf
 		dodir /usr/share/zabbix
 		/bin/cp -R "${S}/database/" "${D}"/usr/share/zabbix/
 		systemd_dounit "${FILESDIR}/zabbix-proxy.service"
@@ -198,12 +200,13 @@ src_install() {
 	if use agent; then
 		insinto /etc/zabbix
 		doins "${FILESDIR}/3.0"/zabbix_agentd.conf
+		fowners root:zabbix /etc/zabbix/zabbix_agentd.conf
+		fperms 0640 /etc/zabbix/zabbix_agentd.conf
 		doinitd "${FILESDIR}/3.0"/init.d/zabbix-agentd
 		dosbin src/zabbix_agent/zabbix_agentd
 		dobin \
 			src/zabbix_sender/zabbix_sender \
 			src/zabbix_get/zabbix_get
-		fowners zabbix:zabbix /etc/zabbix/zabbix_agentd.conf
 		fperms 0640 /etc/zabbix/zabbix_agentd.conf
 		systemd_dounit "${FILESDIR}/zabbix-agentd.service"
 		systemd_newtmpfilesd "${FILESDIR}/zabbix-agentd.tmpfiles" zabbix-agentd.conf
