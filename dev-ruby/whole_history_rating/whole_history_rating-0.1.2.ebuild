@@ -24,3 +24,8 @@ ruby_add_bdepend "
 		dev-ruby/test-unit:2
 	)
 "
+
+all_ruby_prepare (){
+	sed -i 's/git ls-files/ls -1/g' "${RUBY_FAKEGEM_GEMSPEC}" || die
+	default
+}
