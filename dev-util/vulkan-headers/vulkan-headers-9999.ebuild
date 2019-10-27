@@ -21,6 +21,9 @@ else
 	S="${WORKDIR}"/${MY_P}
 fi
 
+RDEPEND="!<dev-util/vulkan-tools-1.1.124
+	 !<media-libs/vulkan-layers-1.1.125"
+
 DESCRIPTION="Vulkan Header files and API registry"
 HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Headers"
 
