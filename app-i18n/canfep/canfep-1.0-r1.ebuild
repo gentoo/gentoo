@@ -6,8 +6,9 @@ EAPI="6"
 inherit toolchain-funcs
 
 DESCRIPTION="Canna Japanese kana-kanji frontend processor on console"
-HOMEPAGE="http://www.geocities.co.jp/SiliconValley-Bay/7584/canfep/"
-SRC_URI="http://www.geocities.co.jp/SiliconValley-Bay/7584/${PN}/${P}.tar.gz
+#HOMEPAGE="http://www.geocities.co.jp/SiliconValley-Bay/7584/canfep/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.gz
 	unicode? ( http://hp.vector.co.jp/authors/VA020411/patches/${PN}_utf8.diff )"
 
 LICENSE="canfep"
