@@ -12901,7 +12901,7 @@ media-gfx/gphoto2 2.5.20: Free, redistributable digital camera software applicat
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.4 0.2.5 0.2.5-r1: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
-media-gfx/graphicsmagick 1.3.30 1.3.32 1.3.33 9999: Collection of tools and libraries for many image formats
+media-gfx/graphicsmagick 1.3.32 1.3.33 9999: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.10 1.3.13: Library providing rendering capabilities for complex non-Roman writing systems
 media-gfx/graphviz 2.40.1-r1 2.42.1: Open Source Graph Visualization Software
 media-gfx/greycstoration 2.9-r2: Image regularization algorithm for denoising, inpainting and resizing
