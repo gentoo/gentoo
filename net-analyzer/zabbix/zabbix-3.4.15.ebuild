@@ -172,7 +172,7 @@ src_install() {
 		doins "${FILESDIR}/3.0"/zabbix_server.conf
 		doinitd "${FILESDIR}/3.0"/init.d/zabbix-server
 		dosbin src/zabbix_server/zabbix_server
-		fowners zabbix:zabbix /etc/zabbix/zabbix_server.conf
+		fowners root:zabbix /etc/zabbix/zabbix_server.conf
 		fperms 0640 /etc/zabbix/zabbix_server.conf
 		dodir /usr/share/zabbix
 		/bin/cp -R "${S}/database/" "${D}"/usr/share/zabbix/
