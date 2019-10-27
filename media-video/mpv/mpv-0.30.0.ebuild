@@ -11,7 +11,7 @@ WAF_PV=2.0.9
 inherit eapi7-ver flag-o-matic gnome2-utils pax-utils python-r1 toolchain-funcs waf-utils xdg-utils
 
 DESCRIPTION="Media player based on MPlayer and mplayer2"
-HOMEPAGE="https://mpv.io/"
+HOMEPAGE="https://mpv.io/ https://github.com/mpv-player/mpv"
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -99,8 +99,8 @@ COMMON_DEPEND="
 	vaapi? ( x11-libs/libva:=[drm?,X?,wayland?] )
 	vdpau? ( x11-libs/libvdpau )
 	vulkan? (
+		media-libs/libplacebo[vulkan]
 		media-libs/shaderc
-		media-libs/vulkan-loader[X?,wayland?]
 	)
 	wayland? (
 		>=dev-libs/wayland-1.6.0
@@ -169,7 +169,7 @@ src_configure() {
 
 		$(use_enable doc html-build)
 		$(use_enable doc pdf-build)
-		$(use_enable doc manpage build)
+		$(use_enable doc manpage-build)
 		$(use_enable cplugins)
 		$(use_enable test)
 
@@ -242,13 +242,11 @@ src_configure() {
 		$(use_enable dvb dvbin)
 
 		# Miscellaneous features:
-		--disable-apple-remote # Needs testing first. See Gentoo bug 577332.
 		$(use_enable zimg)
 	)
 
 	if use vaapi && use X; then
 		mywafargs+=(
-			$(use_enable opengl vaapi-glx)
 			$(use_enable egl vaapi-x-egl)
 		)
 	fi
@@ -264,6 +262,8 @@ src_configure() {
 		--disable-apple-remote
 		--disable-macos-touchbar
 		--disable-macos-cocoa-cb
+		--disable-tvos
+		--disable-egl-angle-win32
 	)
 
 	# Create reproducible non-live builds.
