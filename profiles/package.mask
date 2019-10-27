@@ -36,7 +36,6 @@
 # Masked for removal in 30 days. Bug #
 net-analyzer/openvas
 <=net-analyzer/openvas-libraries-8.0.0
-net-analyzer/openvas-manager
 net-analyzer/openvas-cli
 net-analyzer/openvas-tools
 dev-ruby/openvas-omp
