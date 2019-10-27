@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson
+inherit meson xdg-utils
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -20,7 +20,7 @@ HOMEPAGE="https://pwmt.org/projects/zathura-pdf-mupdf/"
 LICENSE="ZLIB"
 SLOT="0"
 
-DEPEND="app-text/mupdf
+DEPEND="app-text/mupdf:=
 	>=app-text/zathura-0.3.9
 	dev-libs/girara
 	dev-libs/glib:2
@@ -35,6 +35,18 @@ BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	sed -i -e '/mupdfthird/d' meson.build || die "sed failed"
-	eapply "${FILESDIR}"/${PV}-compile-fix.patch
+
+	if has_version '<app-text/mupdf-1.16.1'; then
+		eapply "${FILESDIR}"/${PV}-compile-fix.patch
+	fi
+
 	default
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
