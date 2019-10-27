@@ -17816,7 +17816,7 @@ sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/tmsu 0.6.1 0.7.0: Files tagger and virtual tag-based filesystem
 sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
-sys-fs/udev 242 243 243-r1 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
+sys-fs/udev 242 243 243-r2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 33 9999: udev startup scripts for openrc
 sys-fs/udftools 2.0-r2 2.1: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 1.1.1 1.7.5 1.7.7: An automatic disk mounting service using udisks
@@ -18353,7 +18353,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.2.4: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.1: Web-based interactive data analytics notebook launcher
-www-client/chromium 77.0.3865.120 78.0.3904.70 79.0.3941.4: Open-source version of Google Chrome web browser
+www-client/chromium 78.0.3904.70 79.0.3941.4: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.4 3.30.5 3.32.4 3.32.5: GNOME webbrowser based on Webkit
