@@ -29,13 +29,14 @@ fi
 QTC_PLUGINS=(android +autotest baremetal bazaar beautifier boot2qt
 	'+clang:clangcodemodel|clangformat|clangpchmanager|clangrefactoring|clangtools' clearcase
 	cmake:cmakeprojectmanager cppcheck ctfvisualizer cvs +designer git glsl:glsleditor +help ios
-	lsp:languageclient mercurial modeling:modeleditor nim perforce perfprofiler python
+	lsp:languageclient mcu:mcusupport mercurial modeling:modeleditor nim perforce perfprofiler python
 	qbs:qbsprojectmanager +qmldesigner qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal
-	silversearcher subversion valgrind winrt)
+	silversearcher subversion valgrind webassembly winrt)
 IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
 REQUIRED_USE="
 	boot2qt? ( remotelinux )
 	clang? ( test? ( qbs ) )
+	mcu? ( cmake )
 	python? ( lsp )
 	qnx? ( remotelinux )
 "
