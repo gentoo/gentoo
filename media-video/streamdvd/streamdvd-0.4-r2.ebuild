@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit eutils toolchain-funcs
 
@@ -23,22 +23,22 @@ DEPEND="media-libs/libdvdread
 	>=media-video/dvdauthor-0.6.5
 	>=app-cdr/dvd+rw-tools-5.13.4.7.4 )"
 
-S=${WORKDIR}/StreamDVD-${PV}
+S="${WORKDIR}"/StreamDVD-${PV}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	use X && epatch "${FILESDIR}"/${P}.patch
+src_prepare() {
+	use X && eapply "${FILESDIR}"/${P}.patch
 
-	epatch "${FILESDIR}"/${P}-makefile.patch
-	epatch "${FILESDIR}"/${P}-gcc41.patch
-	epatch "${FILESDIR}"/${P}-libdvdread.patch
-	epatch "${FILESDIR}"/${P}-gcc43.patch
-	epatch "${FILESDIR}"/${P}-gcc44.patch
+	eapply "${FILESDIR}"/${P}-makefile.patch
+	eapply "${FILESDIR}"/${P}-gcc41.patch
+	eapply "${FILESDIR}"/${P}-libdvdread.patch
+	eapply "${FILESDIR}"/${P}-gcc43.patch
+	eapply "${FILESDIR}"/${P}-gcc44.patch
+
+	eapply_user
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" all addon || die  # compile also optional packages
+	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" all addon  # compile also optional packages
 }
 
 src_install() {
@@ -48,8 +48,7 @@ src_install() {
 	newdoc contrib/lsdvd/AUTHORS AUTHORS.lsdvd
 	newdoc contrib/lsdvd/README README.lsdvd
 	newdoc contrib/StreamAnalyze/README README.streamanalyze
-	if use X
-	then
+	if use X; then
 		eval `perl '-V:installvendorlib'`
 		insinto "$installvendorlib/StreamDVD"
 		doins Gui/StreamDVD/*.pm
