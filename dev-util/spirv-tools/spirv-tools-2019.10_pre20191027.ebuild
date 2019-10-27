@@ -8,7 +8,8 @@ inherit cmake-multilib cmake-utils python-any-r1
 
 DESCRIPTION="Provides an API and commands for processing SPIR-V modules"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-Tools"
-SRC_URI="https://github.com/KhronosGroup/SPIRV-Tools/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_COMMIT="ec12de9131244a076c34ddca2e8d7451288be7e1"
+SRC_URI="https://github.com/KhronosGroup/SPIRV-Tools/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -23,8 +24,7 @@ RDEPEND=""
 BDEPEND="${PYTHON_DEPS}
 	${COMMON_DEPEND}"
 
-EGIT_COMMIT="d65513e92c3fc2832248ce4a4b4343c6220caffc"
-S="${WORKDIR}/SPIRV-Tools-${PV}"
+S="${WORKDIR}/SPIRV-Tools-${EGIT_COMMIT}"
 
 multilib_src_configure() {
 	local mycmakeargs=(
