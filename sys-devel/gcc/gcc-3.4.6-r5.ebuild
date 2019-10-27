@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-PATCH_VER="1.8"
+PATCH_VER="3"
 UCLIBC_VER="1.1"
 UCLIBC_GCC_VER="3.4.5"
 HTB_VER="1.00.1"
@@ -12,7 +12,7 @@ D_VER="0.24"
 
 inherit eutils toolchain
 
-KEYWORDS="-* alpha amd64 arm ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="-* ~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
 # we need a proper glibc version for the Scrt1.o provided to the pie-ssp specs
 # NOTE: we SHOULD be using at least binutils 2.15.90.0.1 everywhere for proper
