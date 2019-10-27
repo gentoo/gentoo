@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,12 +18,12 @@ IUSE="dns +kmod static-libs +udev zlib"
 # our libpci.a depends on libz.a/etc... at runtime.
 LIB_DEPEND="
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+),${MULTILIB_USEDEP}] )
-	udev? ( >=virtual/libudev-208[static-libs(+),${MULTILIB_USEDEP}] )
+	udev? ( >=virtual/libudev-208[static-libs(-),${MULTILIB_USEDEP}] )
 "
 DEPEND="
 	kmod? ( sys-apps/kmod )
 	static-libs? ( ${LIB_DEPEND} )
-	!static-libs? ( ${LIB_DEPEND//static-libs(+),} )
+	!static-libs? ( ${LIB_DEPEND//static-libs([+-]),} )
 "
 RDEPEND="
 	${DEPEND}
