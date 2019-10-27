@@ -260,7 +260,7 @@ app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
 app-admin/integrit 4.1-r1: file integrity verification program
 app-admin/keepass 2.42.1 2.43: A free, open source, light-weight and easy-to-use password manager
-app-admin/keepassxc 2.4.3-r1 9999: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.4.3-r1 2.5.0 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.2 3.3: A command line interface to KeePass database files
 app-admin/ksonnet 0.13.1: CLI-supported framework for extensible Kubernetes configurations
