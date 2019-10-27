@@ -38,4 +38,3 @@ multilib_src_install() {
 	# vulkan-tools needs this to build
 	echo "${EGIT_VERSION}" > "${D}/usr/include/${PN}/${PN}-commit.h" || die
 }
-
