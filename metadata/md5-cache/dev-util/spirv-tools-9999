@@ -1,6 +1,6 @@
-BDEPEND=|| ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 ) >=dev-util/spirv-headers-1.3.4_pre20190302 dev-util/ninja >=dev-util/cmake-3.9.6 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=|| ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 ) >=dev-util/spirv-headers-1.5.1 dev-util/ninja >=dev-util/cmake-3.9.6 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install prepare setup test unpack
-DEPEND=>=dev-util/spirv-headers-1.3.4_pre20190302
+DEPEND=>=dev-util/spirv-headers-1.5.1
 DESCRIPTION=Provides an API and commands for processing SPIR-V modules
 EAPI=7
 HOMEPAGE=https://github.com/KhronosGroup/SPIRV-Tools
@@ -10,4 +10,4 @@ PROPERTIES=live
 RESTRICT=test
 SLOT=0
 _eclasses_=cmake-multilib	9400794da450ca9e38faef6eefbb3957	cmake-utils	91d6ef31dc426240577497cacbf2508c	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	git-r3	562b380fc59ae6a8622171d0acb777d1	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=c6e11cc14498d9901188e5aeb5beb4e9
+_md5_=fb177431193f4390c33aa4c96a5747de
