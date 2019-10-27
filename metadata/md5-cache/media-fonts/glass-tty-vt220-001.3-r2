@@ -9,4 +9,4 @@ LICENSE=Unlicense
 SLOT=0
 SRC_URI=https://github.com/svofski/glasstty/archive/8d5bcafe971ee94df4aa20317f197d407df672e9.tar.gz -> glass-tty-vt220-001.3.tar.gz
 _eclasses_=font	7b670476b6d316929f7ac88e1022ab88
-_md5_=8bacad0f6a46a529a3097324a5d28e87
+_md5_=b39cc53b365c4d9e248d7b4f97ffa6c2
