@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -72,7 +72,7 @@ DEPEND="${COMMON_DEPEND}
 	postgres? ( dev-db/postgresql:*[static-libs] )
 	libxml2? ( dev-libs/libxml2[static-libs] )
 	curl? ( net-misc/curl[static-libs] )
-	ssh? ( net-libs/libssh2[static-libs] )
+	ssh? ( net-libs/libssh2 )
 	odbc? ( dev-db/unixODBC[static-libs] )
 	)
 	virtual/pkgconfig"

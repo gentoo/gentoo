@@ -70,7 +70,7 @@ DEPEND="${COMMON_DEPEND}
 	postgres? ( dev-db/postgresql:*[static-libs] )
 	libxml2? ( dev-libs/libxml2[static-libs] )
 	curl? ( net-misc/curl[static-libs] )
-	ssh? ( net-libs/libssh2[static-libs] )
+	ssh? ( net-libs/libssh2 )
 	odbc? ( dev-db/unixODBC[static-libs] )
 	)
 	virtual/pkgconfig"
