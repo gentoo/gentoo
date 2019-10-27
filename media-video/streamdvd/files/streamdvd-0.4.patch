@@ -1,5 +1,5 @@
---- Gui/StreamDVD/Gui.pm.orig	2004-03-08 23:10:53.000000000 +0100
-+++ Gui/StreamDVD/Gui.pm	2004-05-30 13:24:38.342490078 +0200
+--- a/Gui/StreamDVD/Gui.pm	2004-03-08 23:10:53.000000000 +0100
++++ b/Gui/StreamDVD/Gui.pm	2004-05-30 13:24:38.342490078 +0200
 @@ -18,7 +18,7 @@
  use Tk::BrowseEntry;
  use Tk::LabFrame;
@@ -9,8 +9,8 @@
  use StreamDVD::Defs;
  use StreamDVD::Calc;
  use strict;
---- Gui/StreamDVD/Config.pm.orig	2004-03-08 23:10:53.000000000 +0100
-+++ Gui/StreamDVD/Config.pm	2004-05-30 13:24:28.314195864 +0200
+--- a/Gui/StreamDVD/Config.pm	2004-03-08 23:10:53.000000000 +0100
++++ b/Gui/StreamDVD/Config.pm	2004-05-30 13:24:28.314195864 +0200
 @@ -284,7 +284,7 @@
     $self->{MOUNT}          = "/dvd";
     $self->{TEMPDIR}        = "/tmp";
