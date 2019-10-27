@@ -17118,7 +17118,7 @@ sys-apps/fakeroot 1.22 1.23 1.24: A fake root environment by means of LD_PRELOAD
 sys-apps/fakeroot-ng 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/fd 7.3.0-r1: Alternative to find that provides sensible defaults for 80% of the use cases
-sys-apps/file 5.36 5.37 9999: identify a file's format by scanning binary data for patterns
+sys-apps/file 5.36 5.37-r1 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.6.0-r1 4.7.0: GNU utilities for finding files
 sys-apps/firejail 0.9.50 0.9.60-r1 9999: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.38.10 0.9.38.12 0.9.56.2 0.9.56.2-r1: Security sandbox for any type of processes; LTS version
@@ -17726,7 +17726,7 @@ sys-fs/copyfs 1.0.1-r1: fuse-based filesystem for maintaining configuration file
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryfs 0.9.9-r1 0.10.2 9999: Encrypted FUSE filesystem that conceals metadata
 sys-fs/cryptmount 5.3.1: A utility for management and user-mode mounting of encrypted filesystems
-sys-fs/cryptsetup 1.7.5-r1 2.0.5-r1 2.0.6 2.1.0 2.2.0 2.2.1: Tool to setup encrypted devices with dm-crypt
+sys-fs/cryptsetup 1.7.5-r1 2.2.1: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.46 1.99.8: Similar to dd but can copy from source with errors
