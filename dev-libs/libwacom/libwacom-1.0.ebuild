@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools udev
+inherit autotools udev toolchain-funcs
 
 DESCRIPTION="Library for identifying Wacom tablets and their model-specific features"
 HOMEPAGE="https://github.com/linuxwacom/libwacom"
@@ -23,6 +23,10 @@ RDEPEND="
 	dev-libs/libgudev:=
 "
 DEPEND="${RDEPEND}"
+
+pkg_setup() {
+	tc-ld-disable-gold # bug https://github.com/linuxwacom/libwacom/issues/170
+}
 
 src_prepare() {
 	default
