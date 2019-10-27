@@ -2567,7 +2567,7 @@ app-text/pdf2djvu 0.9.8 0.9.11 0.9.12: A tool to create DjVu files from PDF file
 app-text/pdf2html 1.4: Converts pdf files to html files
 app-text/pdf2oo 20090715-r1: Converts pdf files to odf
 app-text/pdfgrep 1.4.1-r1 2.0.1 2.1.2: A tool similar to grep which searches text in PDFs
-app-text/pdfjam 2.08: pdfnup, pdfjoin and pdf90
+app-text/pdfjam 2.08 2.08-r1: pdfnup, pdfjoin and pdf90
 app-text/pdfminer 20140328 20140328-r1: Python tool for extracting information from PDF documents
 app-text/pdfsandwich 0.1.4-r1: generator of sandwich OCR pdf files
 app-text/pdfshuffler 0.6.0-r1: GUI app that can merge or split pdfs and rotate, crop and rearrange their pages
@@ -8154,7 +8154,7 @@ dev-python/mwlib-ext 0.13.2: Extension module to mwlib to pull in reportlab
 dev-python/myghty 1.2-r1: Template and view-controller framework derived from HTML::Mason
 dev-python/myghtyutils 0.52-r1: Set of utility classes used by Myghty templating
 dev-python/mygpoclient 1.8: A gpodder.net client library
-dev-python/mypy 0.570 0.590 0.600 0.630 0.660 0.670 0.700 0.701: Optional static typing for Python
+dev-python/mypy 0.570 0.590 0.600 0.630 0.660 0.670 0.700 0.701 0.740: Optional static typing for Python
 dev-python/mypy_extensions 0.4.1: Optional static typing for Python
 dev-python/mysql-connector-python 2.1.7 2.1.7-r1 8.0.18: Python client library for MariaDB/MySQL
 dev-python/mysql-python 1.2.3-r1 1.2.5-r1 1.2.5-r2: Python interface to MySQL
@@ -10411,7 +10411,7 @@ dev-tex/flabels 1.0: Macros for typesetting lables for the back of files or bind
 dev-tex/floatflt 1.31a-r1: LaTeX package used to warp text around figures
 dev-tex/foiltex 2.1.4b: LaTeX package used to create foils and slides
 dev-tex/frakturx 20070103-r1: Collection of blackletter fonts for LaTeX
-dev-tex/g-brief 4.0.2: LaTeX styles for formless letters in German or English
+dev-tex/g-brief 4.0.2 4.0.2-r1: LaTeX styles for formless letters in German or English
 dev-tex/glossaries 3.04 4.12-r1 4.41: Create glossaries and lists of acronyms
 dev-tex/harvard 2.0.5: The harvard family of bibliographic styles
 dev-tex/herm-pic 1.0.2: LaTeX class for creating ERM and HER diagramms
@@ -14249,7 +14249,7 @@ media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout
 media-video/mediainfo 19.07 19.09: MediaInfo supplies technical and tag information about media files
 media-video/minitube 2.5.2-r1: Qt5 YouTube Client
 media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
-media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
+media-video/mjpg-streamer 0_pre20120621-r2: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.10: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.5.2: mkvalidator is a command line tool to verify Matroska files for spec conformance
 media-video/mkvtoolnix 35.0.0 37.0.0 9999: Tools to create, alter, and inspect Matroska files
@@ -14294,7 +14294,7 @@ media-video/smplayer 18.6.0 19.1.0-r1 19.5.0: Great Qt GUI front-end for mplayer
 media-video/smtube 19.6.0: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sonic-snap 1.7-r1: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
-media-video/streamdvd 0.4-r1: fast tool to backup Video DVDs 'on the fly'
+media-video/streamdvd 0.4-r2: fast tool to backup Video DVDs 'on the fly'
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
 media-video/subcheck 0.78.2-r1: Subcheck checks srt subtitle files for errors
 media-video/subdl 1.0.3: A command-line tool for downloading subs from opensubtitles.org
@@ -14617,7 +14617,7 @@ net-analyzer/wireshark 3.0.3 3.0.4 3.0.5 3.0.6 3.1.0 99999999: A network protoco
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2: A framework for layer 2 attacks
-net-analyzer/zabbix 2.2.16-r1 2.2.21-r1 2.2.23-r1 3.0.26 3.2.11-r1 3.4.15 4.0.6 4.0.7 4.0.9 4.2.3: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 2.2.16-r1 3.0.28 3.4.15 4.0.13 4.2.7 4.4.0: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.11.1_p20180320 1.12.0 9999: High performance PPTP, PPPoE and L2TP server

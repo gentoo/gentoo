@@ -5117,16 +5117,15 @@ media-video/libva-utils:drm - Enables VA/DRM API support.
 media-video/makemkv:gui - Build the Qt5 GUI
 media-video/minitube:download - Enable support for downloading YouTube videos
 media-video/mjpegtools:sdlgfx - Enables y4mhist to display a graphical histogram
-media-video/mjpg-streamer:input_control - Plugin giving ability to control camera movement (only specific cameras)
-media-video/mjpg-streamer:input_file - Plugin that watches given directory and send it's content
-media-video/mjpg-streamer:input_testpicture - Plugin for sending compiled in, test pictures
-media-video/mjpg-streamer:input_uvc - Plugin that sends video stream from UVC compatible camera
-media-video/mjpg-streamer:output_autofocus - Auto focusing plugin
-media-video/mjpg-streamer:output_file - Plugin that saves received content under given location
-media-video/mjpg-streamer:output_http - Small HTTP server plugin which sends WWW directory content and streams image content
-media-video/mjpg-streamer:output_rtsp - Plugin which provides a mechanism to take snapshots with a trigger from a UDP packet
-media-video/mjpg-streamer:output_udp - Plugin receiving content over UDP and storing to a directory
-media-video/mjpg-streamer:v4l - Uses media-libs/libv4l function mapping for input_uvc plugin
+media-video/mjpg-streamer:input-control - Plugin giving ability to control camera movement (only specific cameras)
+media-video/mjpg-streamer:input-file - Plugin that watches given directory and send it's content
+media-video/mjpg-streamer:input-testpicture - Plugin for sending compiled in, test pictures
+media-video/mjpg-streamer:input-uvc - Plugin that sends video stream from UVC compatible camera
+media-video/mjpg-streamer:output-autofocus - Auto focusing plugin
+media-video/mjpg-streamer:output-file - Plugin that saves received content under given location
+media-video/mjpg-streamer:output-http - Small HTTP server plugin which sends WWW directory content and streams image content
+media-video/mjpg-streamer:output-rtsp - Plugin which provides a mechanism to take snapshots with a trigger from a UDP packet
+media-video/mjpg-streamer:output-udp - Plugin receiving content over UDP and storing to a directory
 media-video/mjpg-streamer:www - Installs WWW content
 media-video/motion:mmal - Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.
 media-video/motiontrack:multiprocess - Enables multi-process support (SMP/cluster) for motiontrack programs
