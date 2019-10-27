@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 WEBAPP_MANUAL_SLOT="yes"
 KEYWORDS="~amd64 ~x86"
-IUSE="+agent java curl frontend ipv6 xmpp ldap libxml2 mysql openipmi oracle postgres proxy server ssh snmp sqlite odbc static"
+IUSE="+agent java curl frontend ipv6 xmpp ldap libxml2 mysql openipmi oracle postgres proxy server ssh ssl snmp sqlite odbc static"
 REQUIRED_USE="|| ( agent frontend proxy server )
 	proxy? ( ^^ ( mysql oracle postgres sqlite odbc ) )
 	server? ( ^^ ( mysql oracle postgres sqlite odbc ) )
@@ -38,7 +38,8 @@ COMMON_DEPEND="snmp? ( net-analyzer/net-snmp )
 	openipmi? ( sys-libs/openipmi )
 	ssh? ( net-libs/libssh2 )
 	java? ( virtual/jdk:* )
-	odbc? ( dev-db/unixODBC )"
+	odbc? ( dev-db/unixODBC )
+	ssl? ( dev-libs/openssl:=[-bindist] )"
 
 RDEPEND="${COMMON_DEPEND}
 	proxy? ( net-analyzer/fping )
@@ -65,12 +66,12 @@ DEPEND="${COMMON_DEPEND}
 			=dev-libs/cyrus-sasl-2*[static-libs]
 			net-libs/gnutls[static-libs]
 		)
-	mysql? ( >=virtual/mysql-5.0.3 dev-db/mysql-connector-c:=[static-libs] )
+	mysql? ( >=virtual/mysql-5.0.3[static-libs] )
 	sqlite? ( >=dev-db/sqlite-3.3.5[static-libs] )
 	postgres? ( dev-db/postgresql:*[static-libs] )
 	libxml2? ( dev-libs/libxml2[static-libs] )
 	curl? ( net-misc/curl[static-libs] )
-	ssh? ( net-libs/libssh2[static-libs] )
+	ssh? ( net-libs/libssh2 )
 	odbc? ( dev-db/unixODBC[static-libs] )
 	)
 	virtual/pkgconfig"
@@ -136,6 +137,7 @@ src_configure() {
 		$(use_with ssh ssh2) \
 		$(use_with libxml2) \
 		$(use_with odbc unixodbc) \
+		$(use_with ssl openssl) \
 		|| die "econf failed"
 }
 
@@ -166,8 +168,8 @@ src_install() {
 
 	if use server; then
 		insinto /etc/zabbix
-		doins "${FILESDIR}/2.2"/zabbix_server.conf
-		doinitd "${FILESDIR}/2.2"/init.d/zabbix-server
+		doins "${FILESDIR}/3.0"/zabbix_server.conf
+		doinitd "${FILESDIR}/3.0"/init.d/zabbix-server
 		dosbin src/zabbix_server/zabbix_server
 		fowners zabbix:zabbix /etc/zabbix/zabbix_server.conf
 		fperms 0640 /etc/zabbix/zabbix_server.conf
@@ -178,13 +180,10 @@ src_install() {
 	fi
 
 	if use proxy; then
-		doinitd \
-			"${FILESDIR}/2.2"/init.d/zabbix-proxy
-		dosbin \
-			src/zabbix_proxy/zabbix_proxy
+		doinitd "${FILESDIR}/3.0"/init.d/zabbix-proxy
+		dosbin src/zabbix_proxy/zabbix_proxy
 		insinto /etc/zabbix
-		doins \
-			"${FILESDIR}/2.2"/zabbix_proxy.conf
+		doins "${FILESDIR}/3.0"/zabbix_proxy.conf
 		dodir /usr/share/zabbix
 		/bin/cp -R "${S}/database/" "${D}"/usr/share/zabbix/
 		systemd_dounit "${FILESDIR}/zabbix-proxy.service"
@@ -193,22 +192,14 @@ src_install() {
 
 	if use agent; then
 		insinto /etc/zabbix
-		doins \
-			"${FILESDIR}/2.2"/zabbix_agent.conf \
-			"${FILESDIR}/2.2"/zabbix_agentd.conf
-		doinitd "${FILESDIR}/2.2"/init.d/zabbix-agentd
-		dosbin \
-			src/zabbix_agent/zabbix_agent \
-			src/zabbix_agent/zabbix_agentd
+		doins "${FILESDIR}/3.0"/zabbix_agentd.conf
+		doinitd "${FILESDIR}/3.0"/init.d/zabbix-agentd
+		dosbin src/zabbix_agent/zabbix_agentd
 		dobin \
 			src/zabbix_sender/zabbix_sender \
 			src/zabbix_get/zabbix_get
-		fowners zabbix:zabbix \
-			/etc/zabbix/zabbix_agent.conf \
-			/etc/zabbix/zabbix_agentd.conf
-		fperms 0640 \
-			/etc/zabbix/zabbix_agent.conf \
-			/etc/zabbix/zabbix_agentd.conf
+		fowners zabbix:zabbix /etc/zabbix/zabbix_agentd.conf
+		fperms 0640 /etc/zabbix/zabbix_agentd.conf
 		systemd_dounit "${FILESDIR}/zabbix-agentd.service"
 		systemd_newtmpfilesd "${FILESDIR}/zabbix-agentd.tmpfiles" zabbix-agentd.conf
 	fi
@@ -231,7 +222,6 @@ src_install() {
 		/var/log/zabbix
 
 	dodoc README INSTALL NEWS ChangeLog \
-		conf/zabbix_agent.conf \
 		conf/zabbix_agentd.conf \
 		conf/zabbix_proxy.conf \
 		conf/zabbix_agentd/userparameter_examples.conf \

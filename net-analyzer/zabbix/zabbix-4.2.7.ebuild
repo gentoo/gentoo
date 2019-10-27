@@ -11,15 +11,15 @@ DESCRIPTION="ZABBIX is software for monitoring of your applications, network and
 HOMEPAGE="https://www.zabbix.com/"
 MY_P=${P/_/}
 MY_PV=${PV/_/}
-SRC_URI="https://prdownloads.sourceforge.net/zabbix/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 WEBAPP_MANUAL_SLOT="yes"
 KEYWORDS="~amd64 ~x86"
-IUSE="+agent java curl frontend ipv6 xmpp ldap libxml2 mysql openipmi oracle postgres proxy server ssh ssl snmp sqlite odbc static"
+IUSE="+agent java curl frontend ipv6 xmpp ldap libxml2 mysql openipmi oracle +postgres proxy server ssh ssl snmp sqlite odbc static"
 REQUIRED_USE="|| ( agent frontend proxy server )
 	proxy? ( ^^ ( mysql oracle postgres sqlite odbc ) )
-	server? ( ^^ ( mysql oracle postgres sqlite odbc ) )
+	server? ( ^^ ( mysql oracle postgres odbc ) )
 	static? ( !oracle !snmp )"
 
 COMMON_DEPEND="snmp? ( net-analyzer/net-snmp )
@@ -30,7 +30,7 @@ COMMON_DEPEND="snmp? ( net-analyzer/net-snmp )
 	)
 	mysql? ( >=virtual/mysql-5.0.3 )
 	sqlite? ( >=dev-db/sqlite-3.3.5 )
-	postgres? ( dev-db/postgresql:* )
+	postgres? ( >=dev-db/postgresql-8.1:* )
 	oracle? ( >=dev-db/oracle-instantclient-basic-10.0.0.0 )
 	xmpp? ( dev-libs/iksemel )
 	libxml2? ( dev-libs/libxml2 )
@@ -39,18 +39,22 @@ COMMON_DEPEND="snmp? ( net-analyzer/net-snmp )
 	ssh? ( net-libs/libssh2 )
 	java? ( virtual/jdk:* )
 	odbc? ( dev-db/unixODBC )
+	server? ( sys-libs/zlib )
+	proxy?  ( sys-libs/zlib )
 	ssl? ( dev-libs/openssl:=[-bindist] )"
 
 RDEPEND="${COMMON_DEPEND}
-	proxy? ( net-analyzer/fping )
-	server? ( net-analyzer/fping
-		app-admin/webapp-config )
+	proxy? ( net-analyzer/fping[suid] )
+	server? ( net-analyzer/fping[suid]
+		app-admin/webapp-config
+		dev-libs/libpcre
+		dev-libs/libevent )
 	java?	(
 		>=virtual/jre-1.4
 		dev-java/slf4j-api
 	)
 	frontend? (
-		>=dev-lang/php-5.3.0[bcmath,ctype,sockets,gd,truetype,xml,session,xmlreader,xmlwriter,nls,sysvipc,unicode]
+		>=dev-lang/php-5.4.0[bcmath,ctype,sockets,gd,truetype,xml,session,xmlreader,xmlwriter,nls,sysvipc,unicode]
 		|| ( dev-lang/php[apache2] dev-lang/php[cgi] dev-lang/php[fpm] )
 		mysql? ( dev-lang/php[mysqli] )
 		odbc? ( dev-lang/php[odbc] )
@@ -68,10 +72,10 @@ DEPEND="${COMMON_DEPEND}
 		)
 	mysql? ( >=virtual/mysql-5.0.3[static-libs] )
 	sqlite? ( >=dev-db/sqlite-3.3.5[static-libs] )
-	postgres? ( dev-db/postgresql:*[static-libs] )
+	postgres? ( >=dev-db/postgresql-8.1:*[static-libs] )
 	libxml2? ( dev-libs/libxml2[static-libs] )
 	curl? ( net-misc/curl[static-libs] )
-	ssh? ( net-libs/libssh2[static-libs] )
+	ssh? ( net-libs/libssh2 )
 	odbc? ( dev-db/unixODBC[static-libs] )
 	)
 	virtual/pkgconfig"
@@ -114,7 +118,8 @@ java_prepare() {
 }
 
 src_prepare() {
-	default
+	eapply -p1 "${FILESDIR}/4.0/patches/zbx401-modulepathfix.patch"
+	eapply_user
 }
 
 src_configure() {
@@ -238,27 +243,24 @@ src_install() {
 	fi
 
 	if use java; then
-	   dodir \
-	   	/${ZABBIXJAVA_BASE} \
-		/${ZABBIXJAVA_BASE}/bin \
-		/${ZABBIXJAVA_BASE}/lib
-	   keepdir /${ZABBIXJAVA_BASE}
-	   exeinto /${ZABBIXJAVA_BASE}/bin
-	   doexe src/zabbix_java/bin/zabbix-java-gateway-${MY_PV}.jar
-	   exeinto /${ZABBIXJAVA_BASE}/lib
-	   doexe \
-	   	src/zabbix_java/lib/logback-classic-0.9.27.jar \
-		src/zabbix_java/lib/logback-console.xml \
-		src/zabbix_java/lib/logback-core-0.9.27.jar \
-		src/zabbix_java/lib/logback.xml \
-		src/zabbix_java/lib/android-json-4.3_r3.1.jar \
-		src/zabbix_java/lib/slf4j-api-1.6.1.jar
-	   exeinto /${ZABBIXJAVA_BASE}/
-	   doexe \
-	   	src/zabbix_java/settings.sh \
-		src/zabbix_java/startup.sh \
-		src/zabbix_java/shutdown.sh
-	   fowners -R zabbix:zabbix /${ZABBIXJAVA_BASE}
+		dodir \
+			/${ZABBIXJAVA_BASE} \
+			/${ZABBIXJAVA_BASE}/bin \
+			/${ZABBIXJAVA_BASE}/lib
+		keepdir /${ZABBIXJAVA_BASE}
+		exeinto /${ZABBIXJAVA_BASE}/bin
+		doexe src/zabbix_java/bin/zabbix-java-gateway-${MY_PV}.jar
+		exeinto /${ZABBIXJAVA_BASE}/lib
+		doexe \
+			src/zabbix_java/lib/logback-classic-0.9.27.jar \
+			src/zabbix_java/lib/logback-console.xml \
+			src/zabbix_java/lib/logback-core-0.9.27.jar \
+			src/zabbix_java/lib/logback.xml \
+			src/zabbix_java/lib/android-json-4.3_r3.1.jar \
+			src/zabbix_java/lib/slf4j-api-1.6.1.jar
+		fowners -R zabbix:zabbix /${ZABBIXJAVA_BASE}
+		doinitd "${FILESDIR}"/3.0/init.d/zabbix-jmx-proxy
+		doconfd "${FILESDIR}"/3.0/conf.d/zabbix-jmx-proxy
 	fi
 }
 
