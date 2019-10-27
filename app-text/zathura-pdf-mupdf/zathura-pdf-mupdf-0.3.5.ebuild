@@ -35,5 +35,6 @@ BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	sed -i -e '/mupdfthird/d' meson.build || die "sed failed"
+	eapply "${FILESDIR}"/${PV}-compile-fix.patch
 	default
 }
