@@ -29,12 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (2019-10-27)
-# Unpatched privilege escalation vulnerability for over two years.
-# A lot of other unresolved bugs.
-# Removal in 30 days.  Bug #629882.
-net-analyzer/zabbix
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-10-26)
 # Version in Gentoo is years old, does not work, no one stepped up
 # to maintain it. Package needs Google API key to actually work.
