@@ -5,98 +5,80 @@ EAPI=7
 
 inherit desktop eutils
 
-MY_P="${PN}-lnxpatch${PV%.*}-2.tar.bz2"
-
+PATCH_P="${PN}-lnxpatch${PV%.*}-2.tar.bz2"
 DESCRIPTION="Editor's Choice Edition plus Mega Pack for the well-known first-person shooter"
-HOMEPAGE="http://www.unrealtournament2004.com/"
+HOMEPAGE="https://liandri.beyondunreal.com/Unreal_Tournament_2004"
 SRC_URI="
-	http://ut2004.ut-files.com/index.php?dir=Patches/Linux/&file=${MY_P} -> ${MY_P}
-	http://storage.guntoo.de/downs/downloads/Patch/ut2004-v${PV/./-}-linux-dedicated.7z
-	mirror://gentoo/ut2004-v${PV/./-}-linux-dedicated.7z"
+	https://ut2004.ut-files.com/Patches/Linux/${PATCH_P}
+	https://dev.gentoo.org/~chewi/distfiles/ut2004-v${PV/./-}-linux-dedicated.7z
+"
 
 LICENSE="ut2003"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="dedicated opengl"
+KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="bindist mirror strip"
 
-UIDEPEND="
+RDEPEND="
+	!games-server/ut2004-ded
+	games-fps/ut2004-bonuspack-ece
+	games-fps/ut2004-bonuspack-mega
+	>=games-fps/ut2004-data-3186-r5
+	media-libs/libsdl
+	media-libs/openal
+	sys-libs/glibc
 	~virtual/libstdc++-3.3
 	virtual/opengl
-	x11-libs/libXext
 	x11-libs/libX11
 	x11-libs/libXau
 	x11-libs/libXdmcp
-	media-libs/libsdl
-	media-libs/openal"
-RDEPEND="
-	sys-libs/glibc
-	games-fps/ut2004-data
-	games-fps/ut2004-bonuspack-ece
-	games-fps/ut2004-bonuspack-mega
-	dedicated? ( !games-server/ut2004-ded )
-	opengl? ( ${UIDEPEND} )
-	!dedicated? ( !opengl? ( ${UIDEPEND} ) )"
+	x11-libs/libXext
+"
+
 BDEPEND="app-arch/p7zip"
 
 S="${WORKDIR}/${PN^^}-Patch"
+DIR="/opt/${PN}"
 
-# The executable pages are required #114733
-QA_PREBUILT="
-	/opt/${PN}/System/ut2004-bin
-	/opt/${PN}/System/ucc-bin"
+# The executable pages are required. Bug #114733.
+QA_PREBUILT="*"
 
 src_prepare() {
 	default
 
-	cd System || die
-
-	# These files are owned by ut2004-bonuspack-mega
-	rm -f Manifest.in{i,t} Packages.md5 ucc-bin* || die
-
-	if use amd64 ; then
-		mv -f ut2004-bin-linux-amd64 ut2004-bin || die
+	if use amd64; then
+		mv System/${PN}-bin{-linux-amd64,} || die
+		mv ../${PN}-ucc-bin-09192008/ucc-bin-linux-amd64 System/ucc-bin || die
 	else
-		rm -f ut2004-bin-linux-amd64 || die
+		rm System/${PN}-bin-linux-amd64 || die
+		mv ../${PN}-ucc-bin-09192008/ucc-bin System/ucc-bin || die
 	fi
 
-	cd "${WORKDIR}"/ut2004-ucc-bin-09192008 || die
-	if use amd64 ; then
-		mv -f ucc-bin-linux-amd64 "${S}"/System/ucc-bin || die
-	else
-		mv -f ucc-bin "${S}"/System/ || die
-	fi
-
-	if use dedicated && ! use opengl ; then
-		rm -f "${S}"/System/ut2004-bin || die
-	fi
+	# In ut2004-bonuspack-mega.
+	rm System/{Manifest.in[it],Packages.md5} || die
 }
 
 src_install() {
-	insinto /opt/${PN}
+	insinto "${DIR}"
 	doins -r .
-	fperms +x /opt/${PN}/System/ucc-bin
+	fperms +x "${DIR}"/System/{ucc,${PN}}-bin
 
-	if use opengl || ! use dedicated ; then
-		fperms +x /opt/${PN}/System/ut2004-bin
+	dosym ../../../usr/$(get_libdir)/libopenal.so "${DIR}"/System/openal.so
+	dosym ../../../usr/$(get_libdir)/libSDL-1.2.so.0 "${DIR}"/System/libSDL-1.2.so.0
 
-		dosym ../../../usr/$(get_libdir)/libopenal.so /opt/${PN}/System/openal.so
-		dosym ../../../usr/$(get_libdir)/libSDL-1.2.so.0 /opt/${PN}/System/libSDL-1.2.so.0
+	make_wrapper ${PN} ./${PN}-bin "${DIR}"/System "${DIR}"
+	make_wrapper ${PN}-ded "./ucc-bin server" "${DIR}"/System
 
-		make_wrapper ut2004 ./ut2004 /opt/${PN} /opt/${PN}
-		make_desktop_entry ut2004 "Unreal Tournament 2004"
-	fi
+	make_desktop_entry ${PN} "Unreal Tournament 2004"
 
-	if use dedicated ; then
-		make_wrapper ut2004-ded "./ucc-bin server" /opt/${PN}/System
-	fi
+	newconfd "${FILESDIR}"/${PN}-ded.confd ${PN}-ded
+	newinitd "${FILESDIR}"/${PN}-ded.initd ${PN}-ded
 }
 
 pkg_postinst() {
-	# Here is where we check for the existence of a cdkey...
-	# If we don't find one, we ask the user for it
-	if [[ -f "${EROOT}"/opt/${PN}/System/cdkey ]] ; then
-		einfo "A cdkey file is already present in /opt/${PN}/System"
+	# Here is where we check for the existence of a cdkey.
+	# If we don't find one, we ask the user for it.
+	if [[ -f "${EROOT}${DIR}"/System/cdkey ]] ; then
+		einfo "A cdkey file is already present in ${EPREFIX}${DIR}/System"
 	else
 		ewarn "You MUST run this before playing the game:"
 		ewarn "emerge --config =${CATEGORY}/${PF}"
@@ -112,7 +94,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	ewarn "This package leaves a cdkey file in ${EROOT}/opt/${PN}/System that you need"
+	ewarn "This package leaves a cdkey file in ${EROOT}${DIR}/System that you need"
 	ewarn "to remove to completely get rid of this game's files."
 }
 
@@ -131,7 +113,7 @@ pkg_config() {
 			echo "You entered a blank CD key. Try again."
 		else
 			if [[ ${CDKEY1} == ${CDKEY2} ]] ; then
-				echo "${CDKEY1}" | tr [:lower:] [:upper:] > "${EROOT}"/opt/${PN}/System/cdkey || die
+				echo "${CDKEY1^^}" > "${EROOT}${DIR}"/System/cdkey || die
 				einfo "Thank you!"
 				break
 			else
