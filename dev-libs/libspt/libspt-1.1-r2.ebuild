@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-gentoo.patch"
+	"${FILESDIR}/${PN}-glibc-2.30.patch"
 	"${FILESDIR}/${PN}-rpc.patch"
 )
 
