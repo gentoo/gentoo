@@ -2655,7 +2655,7 @@ app-text/uudeview 0.5.20-r2: uu, xx, base64, binhex decoder
 app-text/vilistextum 2.6.9-r1: Html to ascii converter specifically programmed to handle incorrect html
 app-text/vlna 1.5: Add nonbreakable spaces after some prepositions in Czech texts
 app-text/wdiff 1.2.2 1.2.2-r1: Create a diff disregarding formatting
-app-text/webgen 1.5.2: A template-based static website generator
+app-text/webgen 1.5.2 1.7.0: A template-based static website generator
 app-text/wgetpaste 2.28-r2 2.29-r1: Command-line interface to various pastebins
 app-text/wiki2beamer 0.9.5-r1 0.10.0: Tool to produce LaTeX Beamer code from wiki-like input
 app-text/wklej 0.2.1-r1: A wklej.org submitter
