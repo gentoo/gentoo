@@ -1,18 +1,18 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 PLOCALES="en ja"
 
 inherit flag-o-matic l10n toolchain-funcs
 
 DESCRIPTION="Yash is a POSIX-compliant command line shell"
 HOMEPAGE="https://yash.osdn.jp/"
-SRC_URI="mirror://sourceforge.jp/${PN}/69353/${P}.tar.gz"
+SRC_URI="mirror://sourceforge.jp/${PN}/71638/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls test"
 
 RDEPEND="sys-libs/ncurses:=
