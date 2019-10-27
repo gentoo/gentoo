@@ -27,7 +27,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "You can find samples of svn2html.css and authors.xml in"
-	einfo "/usr/share/doc/${PF}/"
-	einfo "Read man page for details."
+	elog "You can find samples of svn2html.css and authors.xml in"
+	elog "/usr/share/doc/${PF}/"
+	elog "Read man page for details."
 }
