@@ -15028,7 +15028,7 @@ net-libs/libsoup 2.58.2 2.62.3 2.64.2 2.66.2 2.66.3 2.66.4: HTTP client/server l
 net-libs/libsrsirc 0.0.14-r1: A lightweight, cross-platform IRC library
 net-libs/libsrtp 1.6.0 1.6.0-r1 2.2.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.9.0 0.9.1 9999: Access a working SSH implementation by means of a library
-net-libs/libssh2 1.8.0-r1 1.8.0-r2 1.8.2 1.9.0 1.9.0-r1 9999: Library implementing the SSH2 protocol
+net-libs/libssh2 1.9.0 1.9.0-r1 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 1.1.4: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
