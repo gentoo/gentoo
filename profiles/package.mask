@@ -754,10 +754,6 @@ dev-java/eclipse-ecj:4.10
 <mail-client/thunderbird-60.0
 <mail-client/thunderbird-bin-60.0
 
-# Brian Evans <grknight@gentoo.org> (2018-11-05)
-# Causes a dependency loop in the OpenRC script. Bug #651998
-=sys-fs/cryptsetup-2.0.5-r1
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
 # EOL and has known vulnerabilities. Please move to
 # Firefox 60 or newer if you can.
