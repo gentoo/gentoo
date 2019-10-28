@@ -18075,7 +18075,7 @@ virtual/libgudev 215-r3 230 232: Virtual for libgudev providers
 virtual/libiconv 0 0-r1 0-r2: Virtual for the GNU conversion library
 virtual/libintl 0 0-r1 0-r2: Virtual for the GNU Internationalization Library
 virtual/libstdc++ 3.3: Virtual for the GNU Standard C++ Library for <gcc-3.4
-virtual/libudev 215-r1 232-r1 232-r2: Virtual for libudev providers
+virtual/libudev 215-r1 232-r1 232-r2 232-r3: Virtual for libudev providers
 virtual/libusb 0-r2 1-r1 1-r2: Virtual for libusb
 virtual/linux-sources 3 3-r1: Virtual for Linux kernel sources
 virtual/linuxtv-dvb-headers 5.8: Virtual Package installing the Header files for DVB
