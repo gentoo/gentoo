@@ -8,7 +8,7 @@ inherit autotools flag-o-matic
 DESCRIPTION="Delta compression suite for using/generating binary patches"
 HOMEPAGE="https://github.com/zmedico/diffball"
 SRC_URI="https://github.com/zmedico/diffball/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/zmedico/diffball/pull/1.patch -> bug_543310_diffball_stack_buffer_overflows.patch"
+	https://github.com/zmedico/diffball/pull/1.patch -> ${P}-bug_543310_stack_buffer_overflows.patch"
 
 LICENSE="BSD"
 SLOT="0"
@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 # Invalid RESTRICT for source package. Investigate.
 RESTRICT="strip"
 
-PATCHES=("${DISTDIR}/bug_543310_diffball_stack_buffer_overflows.patch")
+PATCHES=("${DISTDIR}/${P}-bug_543310_stack_buffer_overflows.patch")
 
 src_prepare() {
 	# fix bug 548316 by restoring pre-GCC5 inline semantics
