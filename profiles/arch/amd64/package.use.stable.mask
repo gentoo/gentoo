@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2019-10-28)
+# net-libs/quiche is an early HTTP/3 implementation
+# not yet ready for everyone.
+net-misc/curl quiche
+
 # Nick Sarnie <sarnex@gentoo.org> (2019-10-14)
 # Allow on stable for now
 app-emulation/wine-d3d9 -d3d9
