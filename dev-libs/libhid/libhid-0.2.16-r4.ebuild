@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils python-single-r1
 
 DESCRIPTION="Provides a generic and flexible way to access and interact with USB HID devices"
-HOMEPAGE="hhttps://wiki.gentoo.org/wiki/No_homepage"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://alioth-archive.debian.org/releases/${PN}/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
