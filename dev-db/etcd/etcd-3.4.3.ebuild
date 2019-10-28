@@ -81,6 +81,6 @@ src_install() {
 
 src_test() {
 	pushd src/${EGO_PN} || die
-	GO111MODULES=off ./test || die
+	GO111MODULE=off ./test || die
 	popd || die
 }
