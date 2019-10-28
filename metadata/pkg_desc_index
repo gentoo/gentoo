@@ -13394,7 +13394,7 @@ media-libs/sdl2-net 2.0.1: Simple Direct Media Layer Network Support Library
 media-libs/sdl2-ttf 2.0.14 2.0.15: library that allows you to use TrueType fonts in SDL applications
 media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
-media-libs/shaderc 2018.0 2019.0: Collection of tools, libraries and tests for shader compilation
+media-libs/shaderc 2018.0 2019.0-r1: Collection of tools, libraries and tests for shader compilation
 media-libs/simage 1.7.0-r1 1.7.1a_beta_pre20180312: Image and video texturing library
 media-libs/skstream 0.3.9: FreeSockets - Portable C++ classes for IP (sockets) applications
 media-libs/slv2 0.6.6-r2: A library to make the use of LV2 plugins as simple as possible for applications
