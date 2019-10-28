@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/zsnes/${PN}${PV//./}src.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="ao custom-cflags +debug opengl pax_kernel png"
+IUSE="ao custom-cflags +debug opengl png"
 
 RDEPEND="
 	media-libs/libsdl[sound,video,abi_x86_32(-)]
@@ -109,9 +109,7 @@ src_install() {
 	QA_TEXTRELS="usr/bin/zsnes"
 
 	dobin zsnes
-	if use pax_kernel; then
-		pax-mark m "${D}""${GAMES_BINDIR}"/zsnes || die
-	fi
+	pax-mark m "${ED}${GAMES_BINDIR}"/zsnes
 
 	newman linux/zsnes.1 zsnes.6
 
