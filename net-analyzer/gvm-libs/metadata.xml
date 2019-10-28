@@ -10,15 +10,14 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="cron">Install a cron job to update GVM's feed daily.</flag>
 		<flag name="extras">Html docs support</flag>
 	</use>
 	<longdescription lang="en">
-	Open Vulnerability Assessment System (OpenVAS) Scanner is the Greenbone Vulnerability Management (GVM) Solution.
-	It is used for the Greenbone Security Manager appliances and is a full-featured scan engine that executes a continuously 
-	updated and extended feed of Network Vulnerability Tests (NVTs).
+	This is the libraries module for the Greenbone Vulnerability Management Solution.
+	It is used for the Greenbone Security Manager appliances and provides various 
+	functionalities to support the integrated service daemons.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">greenbone/openvas-scanner</remote-id>
+		<remote-id type="github">greenbone/gvm-libs</remote-id>
 	</upstream>
 </pkgmetadata>

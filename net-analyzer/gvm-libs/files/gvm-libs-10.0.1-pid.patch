@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2019-04-05 11:27:07.000000000 +0300
++++ b/CMakeLists.txt	2019-07-14 23:42:42.723081614 +0300
+@@ -172,7 +172,7 @@
+ endif (NOT DATADIR)
+ 
+ if (NOT GVM_PID_DIR)
+-  set (GVM_PID_DIR "${LOCALSTATEDIR}/run")
++  set (GVM_PID_DIR "/var/lib/gvm")
+ endif (NOT GVM_PID_DIR)
+ 
+ if (NOT GVM_SYSCONF_DIR)
