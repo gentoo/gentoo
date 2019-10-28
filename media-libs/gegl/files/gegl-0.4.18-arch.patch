@@ -1,0 +1,11 @@
+--- a/meson.build
++++ b/meson.build
+@@ -88,8 +88,6 @@
+   have_ppc = true
+   config.set10('ARCH_PPC',    true)
+   config.set10('ARCH_PPC64',  true)
+-else
+-  error('Unknown host architecture')
+ endif
+ 
+ ################################################################################
