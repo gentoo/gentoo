@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="A straightforward implementation of DBM"
 HOMEPAGE="https://fallabs.com/kyotocabinet/"
-SRC_URI="${HOMEPAGE}pkg/${P}.tar.gz"
+SRC_URI="https://fallabs.com/kyotocabinet/pkg/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
