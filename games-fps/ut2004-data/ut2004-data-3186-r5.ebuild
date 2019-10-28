@@ -1,25 +1,26 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils unpacker cdrom portability games
+EAPI=7
+
+inherit cdrom desktop eutils portability unpacker xdg-utils
 
 DESCRIPTION="Unreal Tournament 2004 - This is the data portion of UT2004"
-HOMEPAGE="http://www.unrealtournament2004.com/"
-SRC_URI=""
+HOMEPAGE="https://liandri.beyondunreal.com/Unreal_Tournament_2004"
 
 LICENSE="ut2003"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="games-util/uz2unpack
-	>=app-arch/unshield-0.5-r1"
-PDEPEND="games-fps/ut2004"
+BDEPEND="
+	games-util/uz2unpack
+	>=app-arch/unshield-0.5-r1
+"
 
-S=${WORKDIR}
-dir=${GAMES_PREFIX_OPT}/ut2004
-Ddir=${D}/${dir}
+PDEPEND=">=games-fps/ut2004-3369.3-r2"
+RDEPEND="!games-fps/ut2004-ded"
+
+S="${WORKDIR}"
 
 check_dvd() {
 	# The following is a nasty mess to determine if we are installing from
@@ -64,17 +65,35 @@ grabdirs() {
 		# Is flexible to handle CD_ROOT vs CD_ROOT_1 mixups
 		[[ -d ${srcdir} ]] || srcdir=${CDROM_ROOT}/${d}
 		if [[ -d ${srcdir} ]] ; then
-			insinto "${dir}"
+			insinto /opt/ut2004
 			doins -r "${srcdir}"
 		fi
 	done
 }
 
-pkg_setup() {
-	games_pkg_setup
+ut_unpack() {
+	local ut_unpack="$1"
+	local f=
 
+	if [[ -z ${ut_unpack} ]] ; then
+		die "You must provide an argument to ut_unpack"
+	fi
+	if [[ -f ${ut_unpack} ]] ; then
+		uz2unpack "${ut_unpack}" "${ut_unpack%.uz2}" \
+			|| die "uncompressing file ${ut_unpack}"
+	fi
+	if [[ -d ${ut_unpack} ]] ; then
+		while read f ; do
+			uz2unpack "${ut_unpack}/${f}" "${ut_unpack}/${f%.uz2}" \
+				|| die "uncompressing file ${f}"
+			rm -f "${ut_unpack}/${f}" || die "deleting compressed file ${f}"
+		done < <(find "${ut_unpack}" -maxdepth 1 -name '*.uz2' -printf '%f\n' 2>/dev/null)
+	fi
+}
+
+pkg_setup() {
 	ewarn "This is a huge package. If you do not have at least 7GB of free"
-	ewarn "disk space in ${PORTAGE_TMPDIR} and also in ${GAMES_PREFIX_OPT}"
+	ewarn "disk space in ${PORTAGE_TMPDIR} and also in /opt"
 	ewarn "then you should abort this installation now and free up some space."
 }
 
@@ -136,15 +155,16 @@ src_unpack() {
 
 src_install() {
 	local j
+	local Ddir="${ED}"/opt/ut2004
 
 	if [[ ${USE_MIDWAY_DVD} -eq 1 ]] ; then
 		einfo "Copying files from UT2004 Midway DVD."
 
 		if [[ -f ${CDROM_ROOT}/Manual/Manual.pdf ]] ; then
-			insinto "${dir}"/Manual
+			insinto /opt/ut2004/Manual
 			doins "${CDROM_ROOT}"/Manual/Manual.pdf
 		elif [[ -f ${CDROM_ROOT}/Manual.pdf ]] ; then
-			insinto "${dir}"/Manual
+			insinto /opt/ut2004/Manual
 			doins "${CDROM_ROOT}"/Manual.pdf
 		fi
 
@@ -162,7 +182,7 @@ src_install() {
 
 		if [[ -d 4_UT2004_Animations ]] ; then
 			# Delete the other games on the Anthology DVD
-			rm -rf {1,2,3}_Unreal* 4_UT2004_EXE Launcher_* OCXFiles
+			rm -rf {1,2,3}_Unreal* 4_UT2004_EXE Launcher_* OCXFiles || die
 			# Rename directories to be same as Midway UT2004-only DVD,
 			# i.e. rename "4_UT2004_Animations" to "Animations".
 			for j in 4_UT2004_* ; do
@@ -171,8 +191,8 @@ src_install() {
 		fi
 
 		# The "logging" subdirectory is created by unshield.
-		rm -rf logging
-		rm -f *.{cab,hdr}
+		rm -rf logging || die
+		rm -f *.{cab,hdr} || die
 
 		for j in Animations Benchmark ForceFeedback Help KarmaData \
 			Manual Maps Music Sounds Speech StaticMeshes \
@@ -266,19 +286,19 @@ src_install() {
 
 		# The big install
 		einfo "Installing UT2004 directories..."
-		insinto "${dir}"
-		doins -r *
+		insinto /opt/ut2004
+		doins -r .
 	else
 		# Disk 1
 		einfo "Copying files from Disk 1..."
-		insinto "${dir}"
+		insinto /opt/ut2004
 		doins -r "${CDROM_ROOT}"/${DISK1}/{Animations,ForceFeedback,Help,KarmaData,Maps,Sounds,Web}
-		insinto "${dir}"/System
+		insinto /opt/ut2004/System
 		doins -r "${CDROM_ROOT}"/${DISK1}/System/{editorres,*.{bat,bmp,dat,det,est,frt,ini,int,itt,kot,md5,smt,tmt,u,ucl,upl,url}}
-		insinto "${dir}"/Manual
+		insinto /opt/ut2004/Manual
 		doins "${CDROM_ROOT}"/${DISK1}/Manual/Manual.pdf
-		insinto "${dir}"/Benchmark/Stuff
-		doins -r "${CDROM_ROOT}"/${DISK1}/Benchmark/Stuff/*
+		insinto /opt/ut2004/Benchmark/Stuff
+		doins -r "${CDROM_ROOT}"/${DISK1}/Benchmark/Stuff/.
 		cdrom_load_next_cd
 
 		local diskno
@@ -294,7 +314,7 @@ src_install() {
 		grabdirs "${DISK6}"
 
 		# Install extra help files
-		insinto "${dir}"/Help
+		insinto /opt/ut2004/Help
 		doins README.linux Unreal.bmp UT2004_EULA.txt ut2004.xpm
 
 		doicon ut2004.xpm
@@ -302,76 +322,76 @@ src_install() {
 		# Uncompress files
 		einfo "Uncompressing files... this *will* take a while..."
 		for j in Animations Maps Sounds StaticMeshes Textures ; do
-			fperms -R u+w "${dir}/${j}" || die
-			games_ut_unpack "${Ddir}"/${j}
+			fperms -R u+w /opt/ut2004/${j}
+			ut_unpack "${Ddir}"/${j}
 		done
 	fi
 
 	# Create empty files in Benchmark
 	for j in {CSVs,Logs,Results} ;do
-		keepdir "${dir}"/Benchmark/${j}
+		keepdir /opt/ut2004/Benchmark/${j}
 	done
 
-	make_wrapper ut2004 ./ut2004-bin "${dir}"/System "${dir}"/System "${dir}"
-
 	# Remove unneccessary files
-	rm -f "${Ddir}"/*.{bat,exe,EXE,int}
-	rm -f "${Ddir}"/Help/{.DS_Store,SAPI-EULA.txt}
-	rm -f "${Ddir}"/Manual/*.exe
-	rm -rf "${Ddir}"/Speech/Redist
-	rm -f "${Ddir}"/System/*.{bat,dll,exe,tar}
-	rm -f "${Ddir}"/System/{{License,Manifest}.smt,{ucc,StdOut}.log}
-	rm -f "${Ddir}"/System/{User,UT2004}.ini
+	rm -f "${Ddir}"/*.{bat,exe,EXE,int} || die
+	rm -f "${Ddir}"/Help/{.DS_Store,SAPI-EULA.txt} || die
+	rm -f "${Ddir}"/Manual/*.exe || die
+	rm -rf "${Ddir}"/Speech/Redist || die
+	rm -f "${Ddir}"/System/*.{bat,dll,exe,tar} || die
+	rm -f "${Ddir}"/System/{{License,Manifest}.smt,{ucc,StdOut}.log} || die
+	rm -f "${Ddir}"/System/{User,UT2004}.ini || die
 
 	# Remove file collisions with ut2004-3369-r4
-	rm -f "${Ddir}"/Animations/ONSNewTank-A.ukx
-	rm -f "${Ddir}"/Help/UT2004Logo.bmp
-	rm -f "${Ddir}"/System/{ALAudio.kot,AS-{Convoy,FallenCity,Glacier}.kot,AS-{Convoy,FallenCity,Glacier,Junkyard,Mothership,RobotFactory}.int,bonuspack.{det,est,frt},BonusPack.{int,itt,u},BR-Serenity.int}
-	rm -f "${Ddir}"/System/CTF-{AbsoluteZero,BridgeOfFate,DE-ElecFields,DoubleDammage,January,LostFaith}.int
-	rm -f "${Ddir}"/System/DM-{1on1-Albatross,1on1-Desolation,1on1-Mixer,Corrugation,IronDeity,JunkYard}.int
-	rm -f "${Ddir}"/System/{DOM-Atlantis.int,OnslaughtBP.{kot,u,ucl},OnslaughtFull.int}
-	rm -f "${Ddir}"/System/{Build.ini,CacheRecords.ucl,Core.{est,frt,kot,int,itt,u},CTF-January.kot,D3DDrv.kot,DM-1on1-Squader.kot}
-	rm -f "${Ddir}"/System/{Editor,Engine,Gameplay,GamePlay,UnrealGame,UT2k4Assault,XInterface,XPickups,xVoting,XVoting,XWeapons,XWebAdmin}.{det,est,frt,int,itt,u}
-	rm -f "${Ddir}"/System/{Fire.u,IpDrv.u,License.int,ONS-ArcticStronghold.kot}
-	rm -f "${Ddir}"/System/{OnslaughtFull,onslaughtfull,UT2k4AssaultFull}.{det,est,frt,itt,u}
-	rm -f "${Ddir}"/System/{GUI2K4,Onslaught,skaarjpack,SkaarjPack,XGame}.{det,est,frt,int,itt,kot,u}
-	rm -f "${Ddir}"/System/{Setup,Window}.{det,est,frt,int,itt,kot}
-	rm -f "${Ddir}"/System/XPlayers.{det,est,frt,int,itt}
-	rm -f "${Ddir}"/System/{UnrealEd.u,UTClassic.u,UTV2004c.u,UTV2004s.u,UWeb.u,Vehicles.kot,Vehicles.u,Xweapons.itt,UT2K4AssaultFull.int,UTV2004.kot,UTV2004s.kot}
-	rm -f "${Ddir}"/System/{XAdmin.kot,XAdmin.u,XMaps.det,XMaps.est}
-	rm -f "${Ddir}"/Textures/jwfasterfiles.utx
-	rm -f "${Ddir}"/Web/ServerAdmin/{admins_home.htm,current_bots.htm,ut2003.css,current_bots_species_group.inc}
-	rm -f "${Ddir}"/Web/ServerAdmin/ClassicUT/current_bots.htm
-	rm -f "${Ddir}"/Web/ServerAdmin/UnrealAdminPage/{adminsframe.htm,admins_home.htm,admins_menu.htm,current_bots.htm,currentframe.htm,current_menu.htm}
-	rm -f "${Ddir}"/Web/ServerAdmin/UnrealAdminPage/{defaultsframe.htm,defaults_menu.htm,footer.inc,mainmenu.htm,mainmenu_itemd.inc,rootframe.htm,UnrealAdminPage.css}
-	rm -f "${Ddir}"/Web/ServerAdmin/UT2K3Stats/{admins_home.htm,current_bots.htm,ut2003stats.css}
+	rm -f "${Ddir}"/Animations/ONSNewTank-A.ukx || die
+	rm -f "${Ddir}"/Help/UT2004Logo.bmp || die
+	rm -f "${Ddir}"/System/{ALAudio.kot,AS-{Convoy,FallenCity,Glacier}.kot,AS-{Convoy,FallenCity,Glacier,Junkyard,Mothership,RobotFactory}.int,bonuspack.{det,est,frt},BonusPack.{int,itt,u},BR-Serenity.int} || die
+	rm -f "${Ddir}"/System/CTF-{AbsoluteZero,BridgeOfFate,DE-ElecFields,DoubleDammage,January,LostFaith}.int || die
+	rm -f "${Ddir}"/System/DM-{1on1-Albatross,1on1-Desolation,1on1-Mixer,Corrugation,IronDeity,JunkYard}.int || die
+	rm -f "${Ddir}"/System/{DOM-Atlantis.int,OnslaughtBP.{kot,u,ucl},OnslaughtFull.int} || die
+	rm -f "${Ddir}"/System/{Build.ini,CacheRecords.ucl,Core.{est,frt,kot,int,itt,u},CTF-January.kot,D3DDrv.kot,DM-1on1-Squader.kot} || die
+	rm -f "${Ddir}"/System/{Editor,Engine,Gameplay,GamePlay,UnrealGame,UT2k4Assault,XInterface,XPickups,xVoting,XVoting,XWeapons,XWebAdmin}.{det,est,frt,int,itt,u} || die
+	rm -f "${Ddir}"/System/{Fire.u,IpDrv.u,License.int,ONS-ArcticStronghold.kot} || die
+	rm -f "${Ddir}"/System/{OnslaughtFull,onslaughtfull,UT2k4AssaultFull}.{det,est,frt,itt,u} || die
+	rm -f "${Ddir}"/System/{GUI2K4,Onslaught,skaarjpack,SkaarjPack,XGame}.{det,est,frt,int,itt,kot,u} || die
+	rm -f "${Ddir}"/System/{Setup,Window}.{det,est,frt,int,itt,kot} || die
+	rm -f "${Ddir}"/System/XPlayers.{det,est,frt,int,itt} || die
+	rm -f "${Ddir}"/System/{UnrealEd.u,UTClassic.u,UTV2004c.u,UTV2004s.u,UWeb.u,Vehicles.kot,Vehicles.u,Xweapons.itt,UT2K4AssaultFull.int,UTV2004.kot,UTV2004s.kot} || die
+	rm -f "${Ddir}"/System/{XAdmin.kot,XAdmin.u,XMaps.det,XMaps.est} || die
+	rm -f "${Ddir}"/Textures/jwfasterfiles.utx || die
+	rm -f "${Ddir}"/Web/ServerAdmin/{admins_home.htm,current_bots.htm,ut2003.css,current_bots_species_group.inc} || die
+	rm -f "${Ddir}"/Web/ServerAdmin/ClassicUT/current_bots.htm || die
+	rm -f "${Ddir}"/Web/ServerAdmin/UnrealAdminPage/{adminsframe.htm,admins_home.htm,admins_menu.htm,current_bots.htm,currentframe.htm,current_menu.htm} || die
+	rm -f "${Ddir}"/Web/ServerAdmin/UnrealAdminPage/{defaultsframe.htm,defaults_menu.htm,footer.inc,mainmenu.htm,mainmenu_itemd.inc,rootframe.htm,UnrealAdminPage.css} || die
+	rm -f "${Ddir}"/Web/ServerAdmin/UT2K3Stats/{admins_home.htm,current_bots.htm,ut2003stats.css} || die
 
 	# Remove file collisions with ut2004-bonuspack-ece
-	rm -f "${Ddir}"/Animations/{MechaSkaarjAnims,MetalGuardAnim,NecrisAnim,ONSBPAnimations}.ukx
-	rm -f "${Ddir}"/Help/BonusPackReadme.txt
-	rm -f "${Ddir}"/Maps/ONS-{Adara,IslandHop,Tricky,Urban}.ut2
-	rm -f "${Ddir}"/Sounds/{CicadaSnds,DistantBooms,ONSBPSounds}.uax
-	rm -f "${Ddir}"/StaticMeshes/{BenMesh02,BenTropicalSM01,HourAdara,ONS-BPJW1,PC_UrbanStatic}.usx
-	rm -f "${Ddir}"/System/{ONS-Adara.int,ONS-IslandHop.int,ONS-Tricky.int,ONS-Urban.int,OnslaughtBP.int,xaplayersl3.upl}
-	rm -f "${Ddir}"/Textures/{AW-2k4XP,BenTex02,BenTropical01,BonusParticles,CicadaTex,Construction_S}.utx
-	rm -f "${Ddir}"/Textures/{HourAdaraTexor,ONSBPTextures,ONSBP_DestroyedVehicles,PC_UrbanTex,UT2004ECEPlayerSkins}.utx
+	rm -f "${Ddir}"/Animations/{MechaSkaarjAnims,MetalGuardAnim,NecrisAnim,ONSBPAnimations}.ukx || die
+	rm -f "${Ddir}"/Help/BonusPackReadme.txt || die
+	rm -f "${Ddir}"/Maps/ONS-{Adara,IslandHop,Tricky,Urban}.ut2 || die
+	rm -f "${Ddir}"/Sounds/{CicadaSnds,DistantBooms,ONSBPSounds}.uax || die
+	rm -f "${Ddir}"/StaticMeshes/{BenMesh02,BenTropicalSM01,HourAdara,ONS-BPJW1,PC_UrbanStatic}.usx || die
+	rm -f "${Ddir}"/System/{ONS-Adara.int,ONS-IslandHop.int,ONS-Tricky.int,ONS-Urban.int,OnslaughtBP.int,xaplayersl3.upl} || die
+	rm -f "${Ddir}"/Textures/{AW-2k4XP,BenTex02,BenTropical01,BonusParticles,CicadaTex,Construction_S}.utx || die
+	rm -f "${Ddir}"/Textures/{HourAdaraTexor,ONSBPTextures,ONSBP_DestroyedVehicles,PC_UrbanTex,UT2004ECEPlayerSkins}.utx || die
 
 	# Remove file collisions with ut2004-bonuspack-mega
-	rm -f "${Ddir}"/Help/MegapackReadme.txt
-	rm -f "${Ddir}"/Maps/{AS-BP2-Acatana,AS-BP2-Jumpship,AS-BP2-Outback,AS-BP2-SubRosa,AS-BP2-Thrust}.ut2
-	rm -f "${Ddir}"/Maps/{CTF-BP2-Concentrate,CTF-BP2-Pistola,DM-BP2-Calandras,DM-BP2-GoopGod}.ut2
-	rm -f "${Ddir}"/Music/APubWithNoBeer.ogg
-	rm -f "${Ddir}"/Sounds/A_Announcer_BP2.uax
-	rm -f "${Ddir}"/StaticMeshes/{JumpShipObjects,Ty_RocketSMeshes}.usx
-	rm -f "${Ddir}"/System/{AssaultBP.u,Manifest.in{i,t},Packages.md5}
-	rm -f "${Ddir}"/Textures/{JumpShipTextures,T_Epic2k4BP2,Ty_RocketTextures}.utx
-
-	prepgamesdirs
+	rm -f "${Ddir}"/Help/MegapackReadme.txt || die
+	rm -f "${Ddir}"/Maps/{AS-BP2-Acatana,AS-BP2-Jumpship,AS-BP2-Outback,AS-BP2-SubRosa,AS-BP2-Thrust}.ut2 || die
+	rm -f "${Ddir}"/Maps/{CTF-BP2-Concentrate,CTF-BP2-Pistola,DM-BP2-Calandras,DM-BP2-GoopGod}.ut2 || die
+	rm -f "${Ddir}"/Music/APubWithNoBeer.ogg || die
+	rm -f "${Ddir}"/Sounds/A_Announcer_BP2.uax || die
+	rm -f "${Ddir}"/StaticMeshes/{JumpShipObjects,Ty_RocketSMeshes}.usx || die
+	rm -f "${Ddir}"/System/{AssaultBP.u,Manifest.in{i,t},Packages.md5} || die
+	rm -f "${Ddir}"/Textures/{JumpShipTextures,T_Epic2k4BP2,Ty_RocketTextures}.utx || die
 }
 
 pkg_postinst() {
-	games_pkg_postinst
+	xdg_icon_cache_update
 
 	elog "This is only the data portion of the game. To play UT2004,"
 	elog "you still need to install games-fps/ut2004."
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
