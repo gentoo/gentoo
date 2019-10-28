@@ -104,11 +104,6 @@ dev-python/pandas doc
 # solution is found, e.g., transition to a free font package.
 app-text/ghostscript-gpl l10n_ja
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-04-17)
-# Mask jre useflags for use as system java-vm until it's proven to work
-dev-java/openjdk-jre-bin:8 gentoo-vm
-dev-java/openjdk-jre-bin:11 gentoo-vm
-
 # Michał Górny <mgorny@gentoo.org> (2019-04-10)
 # media-sound/aacplusenc is slated for removal.
 media-video/h264enc aac
@@ -134,11 +129,6 @@ dev-db/mariadb-connector-c mysqlcompat
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-03-05)
 # Not keyworded on non-x86 arches
 app-admin/conserver freeipmi
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-01-17)
-# Mask openjdk:8 for use as system java-vm until it's proven to work
-dev-java/openjdk:8 gentoo-vm
-dev-java/openjdk-bin:8 gentoo-vm
 
 # William Hubbs <williamh@gentoo.org> (2019-01-13)
 # For memtest86+ mask the floppy use flag since it requires grub:0 which
@@ -256,6 +246,7 @@ media-video/ffmpeg appkit
 # gentoo-vm flag allows us to provide it without it breaking Gentoo
 # packages. Those who wish to experiment with it as a fully recognised
 # Gentoo JVM can unmask the flag.
+dev-java/openjdk-jre-bin:11 gentoo-vm
 dev-java/oracle-jdk-bin:11 gentoo-vm
 dev-java/openjdk-bin:11 gentoo-vm
 dev-java/openjdk:11 gentoo-vm
