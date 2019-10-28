@@ -2568,7 +2568,7 @@ app-text/pdf2html 1.4: Converts pdf files to html files
 app-text/pdf2oo 20090715-r1: Converts pdf files to odf
 app-text/pdfgrep 1.4.1-r1 2.0.1 2.1.2: A tool similar to grep which searches text in PDFs
 app-text/pdfjam 2.08 2.08-r1: pdfnup, pdfjoin and pdf90
-app-text/pdfminer 20140328 20140328-r1: Python tool for extracting information from PDF documents
+app-text/pdfminer 20140328 20140328-r1 20191020: Python tool for extracting information from PDF documents
 app-text/pdfsandwich 0.1.4-r1: generator of sandwich OCR pdf files
 app-text/pdfshuffler 0.6.0-r1: GUI app that can merge or split pdfs and rotate, crop and rearrange their pages
 app-text/pdftk 3.0.0 9999: gcj-free version of pdftk written in Java
