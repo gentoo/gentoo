@@ -21,5 +21,11 @@ PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
 	default
+	mv configure.{in,ac}
 	eautoreconf
+}
+
+src_compile() {
+	emake depend
+	default
 }
