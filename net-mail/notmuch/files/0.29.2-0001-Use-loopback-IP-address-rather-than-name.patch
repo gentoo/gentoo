@@ -1,0 +1,61 @@
+From 59b5bfb6e2095c62925b31e087571506edae7956 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Amadeusz=20Piotr=20=C5=BBo=C5=82nowski?=
+ <aidecoe@aidecoe.name>
+Date: Sun, 7 Jul 2019 11:33:09 +0100
+Subject: [PATCH] Use loopback IP address rather than name
+
+---
+ test/smtp-dummy.c | 8 ++++----
+ test/test-lib.sh  | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/test/smtp-dummy.c b/test/smtp-dummy.c
+index a7c1fe4f..822a986a 100644
+--- a/test/smtp-dummy.c
++++ b/test/smtp-dummy.c
+@@ -76,7 +76,7 @@ process_command (FILE *peer, FILE *output, const char *command)
+ 	fprintf (peer, "502 not implemented\r\n");
+ 	fflush (peer);
+     } else if (STRNCMP_LITERAL (command, "HELO ") == 0) {
+-	fprintf (peer, "250 localhost\r\n");
++	fprintf (peer, "250 127.0.0.1\r\n");
+ 	fflush (peer);
+     } else if (STRNCMP_LITERAL (command, "MAIL FROM:") == 0 ||
+ 	       STRNCMP_LITERAL (command, "RCPT TO:") == 0) {
+@@ -105,7 +105,7 @@ do_smtp_to_file (FILE *peer, FILE *output)
+     size_t line_size;
+     ssize_t line_len;
+ 
+-    fprintf (peer, "220 localhost smtp-dummy\r\n");
++    fprintf (peer, "220 127.0.0.1 smtp-dummy\r\n");
+     fflush (peer);
+ 
+     while ((line_len = getline (&line, &line_size, peer)) != -1) {
+@@ -183,9 +183,9 @@ main (int argc, char *argv[])
+ 	goto DONE;
+     }
+ 
+-    hostinfo = gethostbyname ("localhost");
++    hostinfo = gethostbyname ("127.0.0.1");
+     if (hostinfo == NULL) {
+-	fprintf (stderr, "Unknown host: localhost\n");
++	fprintf (stderr, "Unknown host: 127.0.0.1\n");
+ 	ret = 1;
+ 	goto DONE;
+     }
+diff --git a/test/test-lib.sh b/test/test-lib.sh
+index 616cb674..dd887773 100644
+--- a/test/test-lib.sh
++++ b/test/test-lib.sh
+@@ -336,7 +336,7 @@ emacs_deliver_message ()
+     test_emacs \
+ 	"(let ((message-send-mail-function 'message-smtpmail-send-it)
+ 	       (mail-host-address \"example.com\")
+-	       (smtpmail-smtp-server \"localhost\")
++	       (smtpmail-smtp-server \"127.0.0.1\")
+ 	       (smtpmail-smtp-service \"${smtp_dummy_port}\"))
+ 	   (notmuch-mua-mail)
+ 	   (message-goto-to)
+-- 
+2.19.2
+
