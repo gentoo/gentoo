@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Customizable and lightweight notification-daemon"
-HOMEPAGE="http://www.knopwob.org/dunst/ https://github.com/dunst-project/dunst"
+HOMEPAGE="https://dunst-project.org/ https://github.com/dunst-project/dunst"
 SRC_URI="https://github.com/${PN}-project/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
