@@ -19,13 +19,13 @@ DESCRIPTION="Tool for creating snapshots and remote backups of btrfs subvolumes"
 HOMEPAGE="https://digint.ch/btrbk/"
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+doc"
+IUSE="+mbuffer +doc"
 
 DEPEND="doc? ( >=dev-ruby/asciidoctor-1.5.7 )"
 
 RDEPEND="dev-lang/perl
 	net-misc/openssh
-	>=sys-block/mbuffer-20180505
+	mbuffer? ( >=sys-block/mbuffer-20180505 )
 	>=sys-fs/btrfs-progs-4.12"
 
 src_compile() {
