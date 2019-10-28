@@ -15,7 +15,7 @@ if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/jaagr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/jaagr/xpp/archive/${XPP_VERSION}.tar.gz -> xpp-${XPP_VERSION}.tar.gz
 		https://github.com/jaagr/i3ipcpp/archive/v${I3IPCPP_VERSION}.tar.gz -> i3ipcpp-${I3IPCPP_VERSION}.tar.gz"
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/jaagr/${PN}.git"
