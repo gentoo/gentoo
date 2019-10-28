@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install prepare
+DESCRIPTION=UT2004 Community Bonus Pack 2 Volume 1 and 2
+EAPI=7
+HOMEPAGE=https://liandri.beyondunreal.com/Unreal_Tournament_2004
+KEYWORDS=~amd64 ~x86
+LICENSE=freedist
+RDEPEND=|| ( games-fps/ut2004 >=games-server/ut2004-ded-3369.3-r2 ) games-fps/ut2004-bonuspack-cbp1 games-fps/ut2004-bonuspack-mega
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://ut2004.ut-files.com/BonusPacks/cbp2-volume1_zip.zip https://ut2004.ut-files.com/BonusPacks/cbp2-volume2_zip.zip
+_md5_=7ebe464809fb43742f71178d735bcc14

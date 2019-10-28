@@ -1,0 +1,10 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=UT2004 Editor's Choice Edition - Editor's Choice Edition bonus pack
+EAPI=7
+HOMEPAGE=http://www.unrealtournament2004.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=ut2003
+SLOT=0
+SRC_URI=http://ut2004.ut-files.com/BonusPacks/ut2004megapack-linux.tar.bz2 http://unrealmassdestruction.com/downloads/ut2k4/essentials/UT2004-ONSBonusMapPack.zip
+_md5_=eaacbfe1557bc04153b9505c1526c03f

@@ -1,0 +1,13 @@
+BDEPEND=games-util/uz2unpack >=app-arch/unshield-0.5-r1
+DEFINED_PHASES=install postinst postrm setup unpack
+DESCRIPTION=Unreal Tournament 2004 - This is the data portion of UT2004
+EAPI=7
+HOMEPAGE=https://liandri.beyondunreal.com/Unreal_Tournament_2004
+KEYWORDS=~amd64 ~x86
+LICENSE=ut2003
+PDEPEND=>=games-fps/ut2004-3369.3-r2
+PROPERTIES=interactive
+RDEPEND=!games-fps/ut2004-ded
+SLOT=0
+_eclasses_=cdrom	6ffe90ac67bc6ac95249cae335323907	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	portability	2b88d3ecc35035a3b8ab628b49cafb0e	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=cc48eee771dd34ddfb985e00ac12cfdb

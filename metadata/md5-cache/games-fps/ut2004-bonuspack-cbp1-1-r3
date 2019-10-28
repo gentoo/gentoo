@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=UT2003 Community Bonus Pack for UT2004 Volume 1
+EAPI=7
+HOMEPAGE=https://liandri.beyondunreal.com/Unreal_Tournament_2004
+KEYWORDS=~amd64 ~x86
+LICENSE=freedist
+RDEPEND=|| ( games-fps/ut2004 >=games-server/ut2004-ded-3369.3-r2 )
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://ut2004.ut-files.com/BonusPacks/cbp1.zip
+_md5_=55999b2c7288e0ebfce8c8bbfe3ee442

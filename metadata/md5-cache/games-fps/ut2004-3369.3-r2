@@ -1,0 +1,13 @@
+BDEPEND=app-arch/p7zip
+DEFINED_PHASES=config install postinst postrm prepare
+DESCRIPTION=Editor's Choice Edition plus Mega Pack for the well-known first-person shooter
+EAPI=7
+HOMEPAGE=https://liandri.beyondunreal.com/Unreal_Tournament_2004
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=ut2003
+RDEPEND=!games-server/ut2004-ded games-fps/ut2004-bonuspack-ece games-fps/ut2004-bonuspack-mega >=games-fps/ut2004-data-3186-r5 media-libs/libsdl media-libs/openal sys-libs/glibc ~virtual/libstdc++-3.3 virtual/opengl x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext
+RESTRICT=bindist mirror strip
+SLOT=0
+SRC_URI=https://ut2004.ut-files.com/Patches/Linux/ut2004-lnxpatch3369-2.tar.bz2 https://dev.gentoo.org/~chewi/distfiles/ut2004-v3369-3-linux-dedicated.7z
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8
+_md5_=57845ba6eb9b8159b38337e04a9c2ca3

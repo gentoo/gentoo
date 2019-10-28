@@ -10624,7 +10624,7 @@ dev-util/dejagnu 1.6: Framework for testing other programs
 dev-util/desktop-file-utils 0.23 0.24: Command line utilities to work with desktop menu entries
 dev-util/devhelp 3.30.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20190808: tool to display dialog boxes from a shell
-dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
+dev-util/diffball 1.0.1 1.0.1-r1: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffoscope 87 88: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61: Display a histogram of diff changes
@@ -11435,24 +11435,13 @@ games-fps/ut2003-bonuspack-de 1: Digital Extremes Bonus Pack for UT2003
 games-fps/ut2003-bonuspack-epic 1: Epic Bonus Pack for UT2003
 games-fps/ut2003-data 2107: Unreal Tournament 2003 - Sequel to the 1999 multi-player first-person shooter
 games-fps/ut2003-demo 2206-r3: Demo for the sequel to the 1999 multi-player first-person shooter
-games-fps/ut2004 3369.3-r1: Editor's Choice Edition plus Mega Pack for the well-known first-person shooter
-games-fps/ut2004-action 1: UT2004 Action - Action movie mod
-games-fps/ut2004-airbuccaneers 1.6-r2: UT2004 Air Buccaneers - Pirate-style conversion with flying wooden ships
-games-fps/ut2004-bonuspack-cbp1 1-r2: UT2004 Community Bonus Pack Vol 1 - UT2003 Community Bonus Pack for UT2004
-games-fps/ut2004-bonuspack-cbp2 1-r2: UT2004 Community Bonus Pack 2 Vol 1 and 2 - Community Bonus Pack 2 Vol 1 and 2
-games-fps/ut2004-bonuspack-ece 1-r3: UT2004 Editor's Choice Edition - Editor's Choice Edition bonus pack
-games-fps/ut2004-bonuspack-mega 1-r2: UT2004 Megapack - Megapack bonus pack
-games-fps/ut2004-cor 1.01-r1: UT2004 Counter Organic Revolution - Shape-shifting robot teamplay mod
-games-fps/ut2004-crossfire 1.95: UT2004 Crossfire - Special Forces vs Terrorists
-games-fps/ut2004-data 3186-r4: Unreal Tournament 2004 - This is the data portion of UT2004
-games-fps/ut2004-deathball 2.4w: UT2004 Deathball - Fast-paced first person sport mod
+games-fps/ut2004 3369.3-r2: Editor's Choice Edition plus Mega Pack for the well-known first-person shooter
+games-fps/ut2004-bonuspack-cbp1 1-r3: UT2003 Community Bonus Pack for UT2004 Volume 1
+games-fps/ut2004-bonuspack-cbp2 1-r3: UT2004 Community Bonus Pack 2 Volume 1 and 2
+games-fps/ut2004-bonuspack-ece 1-r4: UT2004 Editor's Choice Edition - Editor's Choice Edition bonus pack
+games-fps/ut2004-bonuspack-mega 1-r3: UT2004 Megapack - Megapack bonus pack
+games-fps/ut2004-data 3186-r5: Unreal Tournament 2004 - This is the data portion of UT2004
 games-fps/ut2004-demo 3334: Demo for the critically-acclaimed first-person shooter
-games-fps/ut2004-fragops 2.20: UT2004 Frag Ops - realism mod
-games-fps/ut2004-hamsterbash 1: UT2004 Hamster Bash - Cute and violent hamster cage rampage mod
-games-fps/ut2004-muralis 1.15: UT2004 Muralis - third-person hand-to-hand single/multiplayer mod
-games-fps/ut2004-strikeforce 4.1: UT2004 Strike Force - a terrorist vs. strike force mod
-games-fps/ut2004-troopers 6.0: UT2004 Troopers - Star Wars mod
-games-fps/ut2004-unwheel 0_beta5: UT2004 UnWheel - multiplayer driving mod focusing on fun driving
 games-fps/wolfgl 0.93-r2: Wolfenstein and Spear of Destiny port using OpenGL
 games-fps/worldofpadman 1.6-r1: A cartoon style multiplayer first-person shooter
 games-fps/xonotic 0.8.2: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
@@ -11732,7 +11721,7 @@ games-server/mtavc 0.5-r1: dedicated server for GTA3 multiplayer
 games-server/nwn-ded 1.69-r1: Neverwinter Nights Dedicated server
 games-server/pvpgn 1.8.5-r2: A gaming server for Battle.Net compatible clients
 games-server/steamcmd 1.0-r1 1.0-r2: This is the command-line version of the Steam client for dedicated servers
-games-server/ut2004-ded 3369.3-r1: Unreal Tournament 2004 Linux Dedicated Server
+games-server/ut2004-ded 3369.3-r2: Unreal Tournament 2004 Linux Dedicated Server
 games-simulation/bcs-demo 1.3-r1: design and build bridges and then stress test them with trains
 games-simulation/cannonsmash 0.6.6-r1: 3D tabletennis game
 games-simulation/corsix-th 0.62: Open source clone of Theme Hospital

@@ -1,0 +1,13 @@
+BDEPEND=app-arch/p7zip app-arch/unzip
+DEFINED_PHASES=install postinst prepare pretend setup
+DESCRIPTION=Unreal Tournament 2004 Linux Dedicated Server
+EAPI=7
+HOMEPAGE=https://liandri.beyondunreal.com/Unreal_Tournament_2004
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=ut2003
+RDEPEND=!games-fps/ut2004 !games-fps/ut2004-data games-fps/ut2004-bonuspack-ece games-fps/ut2004-bonuspack-mega sys-libs/glibc
+RESTRICT=bindist mirror strip
+SLOT=0
+SRC_URI=https://ut2004.ut-files.com/Entire_Server_Download/dedicatedserver3339-bonuspack.zip https://ut2004.ut-files.com/Patches/Linux/ut2004-lnxpatch3369-2.tar.bz2 https://dev.gentoo.org/~chewi/distfiles/ut2004-v3369-3-linux-dedicated.7z
+_eclasses_=check-reqs	5e40a693d9c828e8f3655184116e8b73	eutils	6e6c2737b59a4b982de6fb3ecefd87f8
+_md5_=26e385279304d0b2870623171ef8cf89
