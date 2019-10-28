@@ -19,8 +19,7 @@ DEPEND="
 		elibc_musl? ( sys-libs/obstack-standalone )
 	)
 "
-RDEPEND="${DEPEND}"
-BDEPEND="
+RDEPEND="${DEPEND}
 	sys-apps/debianutils
 "
 
