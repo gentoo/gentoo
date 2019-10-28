@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install
-DEPEND=>=dev-lang/ocaml-3.12.1[ocamlopt?] dev-ml/zarith gtk? ( >=dev-ml/lablgtk-2.14[sourceview,ocamlopt?] ) dev-ml/camlzip sci-mathematics/psmt2-frontend >=dev-ml/ocplib-simplex-0.4 >=dev-ml/menhir-20181006 dev-ml/dune
+DEPEND=>=dev-lang/ocaml-3.12.1[ocamlopt?] dev-ml/zarith gtk? ( >=dev-ml/lablgtk-2.14[sourceview,ocamlopt?] ) dev-ml/camlzip sci-mathematics/psmt2-frontend >=dev-ml/ocplib-simplex-0.4 >=dev-ml/menhir-20181006 dev-ml/seq dev-ml/dune
 DESCRIPTION=Automatic theorem prover
 EAPI=7
 HOMEPAGE=https://alt-ergo.ocamlpro.com
 IUSE=examples gtk +ocamlopt
 KEYWORDS=amd64
 LICENSE=CeCILL-C
-RDEPEND=>=dev-lang/ocaml-3.12.1[ocamlopt?] dev-ml/zarith gtk? ( >=dev-ml/lablgtk-2.14[sourceview,ocamlopt?] ) dev-ml/camlzip sci-mathematics/psmt2-frontend >=dev-ml/ocplib-simplex-0.4 >=dev-ml/menhir-20181006 dev-ml/dune
+RDEPEND=>=dev-lang/ocaml-3.12.1[ocamlopt?] dev-ml/zarith gtk? ( >=dev-ml/lablgtk-2.14[sourceview,ocamlopt?] ) dev-ml/camlzip sci-mathematics/psmt2-frontend >=dev-ml/ocplib-simplex-0.4 >=dev-ml/menhir-20181006 dev-ml/seq dev-ml/dune
 SLOT=0
 SRC_URI=https://alt-ergo.ocamlpro.com/http/alt-ergo-2.3.0/alt-ergo-2.3.0.tar.gz
-_md5_=1ba7f688e33e848e2e0b41c55f3fabc5
+_md5_=a7958d1d38a3c1c82a14e76292765f5c
