@@ -19,6 +19,7 @@ DEPEND=">=dev-lang/ocaml-3.12.1[ocamlopt?]
 	sci-mathematics/psmt2-frontend
 	>=dev-ml/ocplib-simplex-0.4
 	>=dev-ml/menhir-20181006
+	dev-ml/seq
 	dev-ml/dune"
 RDEPEND="${DEPEND}"
 
