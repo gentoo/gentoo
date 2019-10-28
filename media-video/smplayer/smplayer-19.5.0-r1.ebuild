@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-17.1.0-advertisement_crap.patch"
 	"${FILESDIR}/${PN}-18.2.0-jobserver.patch"
 	"${FILESDIR}/${PN}-18.3.0-disable-werror.patch"
+	"${FILESDIR}/${P}-mpv-0.30.0.patch" #698738
 )
 
 src_prepare() {
