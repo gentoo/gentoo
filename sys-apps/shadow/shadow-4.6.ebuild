@@ -6,7 +6,7 @@ EAPI=6
 inherit libtool pam
 
 DESCRIPTION="Utilities to deal with user accounts"
-HOMEPAGE="https://github.com/shadow-maint/shadow http://pkg-shadow.alioth.debian.org/"
+HOMEPAGE="https://github.com/shadow-maint/shadow"
 SRC_URI="https://github.com/shadow-maint/shadow/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
