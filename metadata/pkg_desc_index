@@ -1102,7 +1102,7 @@ app-doc/cppman 0.4.8: C++ man pages for Linux, with source from cplusplus.com an
 app-doc/csound-manual 6.06 6.07 6.08: The Csound reference manual
 app-doc/devmanual 0_pre20141116 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
-app-doc/doxygen 1.8.14-r1 1.8.14-r2 1.8.15 9999: Documentation system for most programming languages
+app-doc/doxygen 1.8.14-r1 1.8.14-r2 1.8.15 1.8.16 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
 app-doc/eclass-manpages 20190728 20190908 99999999: Collection of Gentoo eclass manpages
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3: The GNU Emacs Lisp Reference Manual
@@ -19255,7 +19255,7 @@ x11-themes/human-icon-theme 0.36: A nice and well polished icon theme
 x11-themes/iceicons 0.10.0-r1: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM
 x11-themes/icewm-extra-themes 1.1 1.2: Extra themes for IceWM
 x11-themes/kfaenza 0.8.9-r2: Faenza-Cupertino icon theme for KDE Plasma
-x11-themes/kvantum 0.11.0-r1: SVG-based theme engine for Qt4/Qt5, KDE and LXQt
+x11-themes/kvantum 0.12.1: SVG-based theme engine for Qt5, KDE and LXQt
 x11-themes/larry-backgrounds 20110822-r1: Wallpapers featuring Gentoo mascot Larry the cow
 x11-themes/laughlin-backgrounds 14.1.0.3-r1: Fedora 14 official background artwork
 x11-themes/leonidas-backgrounds 11.0.0.2-r1: Fedora 11 official background artwork
