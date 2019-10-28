@@ -27,7 +27,7 @@ fi
 DESCRIPTION="Advanced framework for developing, testing, and using vulnerability exploit code"
 HOMEPAGE="http://www.metasploit.org/"
 LICENSE="BSD"
-IUSE="development +java nexpose openvas oracle +pcap test"
+IUSE="development +java nexpose oracle +pcap test"
 
 #multiple known bugs with tests reported upstream and ignored
 #http://dev.metasploit.com/redmine/issues/8418 - worked around (fix user creation when possible)
@@ -101,7 +101,6 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/xmlrpc
 	java? ( dev-ruby/rjb )
 	nexpose? ( dev-ruby/nexpose )
-	openvas? ( dev-ruby/openvas-omp )
 	oracle? ( dev-ruby/ruby-oci8 )
 	pcap? ( dev-ruby/pcaprub:*
 		dev-ruby/network_interface )
@@ -216,9 +215,6 @@ all_ruby_prepare() {
 	#if ! use nessus; then
 		sed -i -e "/nessus/d" metasploit-framework.gemspec || die
 	#fi
-	if ! use openvas; then
-		sed -i -e "/openvas-omp/d" metasploit-framework.gemspec || die
-	fi
 	#even if we pass --without=blah bundler still calculates the deps and messes us up
 	if ! use development; then
 		sed -i -e "/^group :development do/,/^end$/d" Gemfile || die
