@@ -6,7 +6,7 @@ inherit cmake-utils
 
 DESCRIPTION="A clean, light window manager"
 HOMEPAGE="https://ctwm.org/"
-SRC_URI="${HOMEPAGE}dist/${P}.tar.xz"
+SRC_URI="https://ctwm.org/dist/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
