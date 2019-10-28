@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit cmake-utils eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="A clean, light window manager"
 HOMEPAGE="http://ctwm.org/"
-SRC_URI="${HOMEPAGE}dist/${P}.tar.xz"
+SRC_URI="http://ctwm.org/dist/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
