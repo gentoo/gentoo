@@ -34,7 +34,7 @@ DEPEND="test? ( ${RDEPEND}
 	virtual/jre:1.8 )"
 
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/sphinx-1.3.1-r1[${PYTHON_USEDEP}]"
+	>=dev-python/sphinx-1.3.1-r1"
 
 python_prepare_all() {
 	sed -e '/coverage/d' \

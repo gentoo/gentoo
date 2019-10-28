@@ -5,21 +5,21 @@ EAPI=7
 
 inherit cmake-utils kodi-addon
 
-DESCRIPTION="SFTP VFS addon for Kodi"
-HOMEPAGE="https://github.com/xbmc/vfs.sftp"
+DESCRIPTION="Shadertoy visualizer for Kodi"
+HOMEPAGE="https://github.com/xbmc/visualization.shadertoy"
 SRC_URI=""
 
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/xbmc/vfs.sftp.git"
+	EGIT_REPO_URI="https://github.com/xbmc/visualization.shadertoy.git"
 	inherit git-r3
 	;;
 *)
 	CODENAME="Leia"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/xbmc/vfs.sftp/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/vfs.sftp-${PV}-${CODENAME}"
+	SRC_URI="https://github.com/xbmc/visualization.shadertoy/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/visualization.shadertoy-${PV}-${CODENAME}"
 	;;
 esac
 
@@ -29,9 +29,13 @@ IUSE=""
 
 DEPEND="
 	=dev-libs/libplatform-2*
-	net-libs/libssh[sftp]
-	~media-libs/kodi-platform-9999
-	~media-tv/kodi-9999
+	=media-tv/kodi-18*
+	media-libs/glm
+	virtual/opengl
+	"
+
+RDEPEND="
+	${DEPEND}
 	"
 
 src_prepare(){

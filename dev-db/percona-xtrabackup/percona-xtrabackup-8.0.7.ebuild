@@ -7,10 +7,13 @@ CMAKE_MAKEFILE_GENERATOR="emake"
 
 inherit cmake-utils flag-o-matic
 
+BOOST_VER="1_69_0"
+MY_PV="$(ver_rs 2 '-')"
+
 DESCRIPTION="Hot backup utility for MySQL based servers"
 HOMEPAGE="https://www.percona.com/software/mysql-database/percona-xtrabackup"
-SRC_URI="https://www.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0-6/source/tarball/${P}.tar.gz
-	mirror://sourceforge/boost/boost_1_68_0.tar.gz"
+SRC_URI="https://www.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-${MY_PV}/source/tarball/${P}.tar.gz
+	mirror://sourceforge/boost/boost_${BOOST_VER}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -43,7 +46,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_CONFIG=xtrabackup_release
 		-DBUILD_SHARED_LIBS=OFF
-		-DWITH_BOOST="${WORKDIR}/boost_1_68_0"
+		-DWITH_BOOST="${WORKDIR}/boost_${BOOST_VER}"
 		-DWITH_SYSTEM_LIBS=ON
 	)
 	local CMAKE_BUILD_TYPE="Release"
