@@ -25,7 +25,6 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sp
 
 COMMON_DEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
 DEPEND="${COMMON_DEPEND}
-	>=sys-apps/texinfo-4.7
 	nls? ( sys-devel/gettext )"
 # Need a newer binutils-config that'll reset include/lib symlinks for us.
 RDEPEND="${COMMON_DEPEND}
@@ -105,6 +104,12 @@ multilib_src_configure() {
 
 	ECONF_SOURCE=${S} \
 	econf "${myconf[@]}"
+
+	# Prevent makeinfo from running as we don't build docs here.
+	# bug #622652
+	sed -i \
+		-e '/^MAKEINFO/s:=.*:= true:' \
+		Makefile || die
 }
 
 multilib_src_install() {
