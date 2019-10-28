@@ -6,8 +6,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils python-single-r1
 
 DESCRIPTION="Provides a generic and flexible way to access and interact with USB HID devices"
-HOMEPAGE="http://libhid.alioth.debian.org/"
-SRC_URI="http://beta.magicaltux.net/${P}.tar.gz"
+HOMEPAGE="hhttps://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="https://alioth-archive.debian.org/releases/${PN}/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,11 +18,13 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	virtual/libusb:0
 "
+
 DEPEND="
 	${RDEPEND}
 	doc? ( app-doc/doxygen )
 	python? ( dev-lang/swig )
 "
+
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 src_prepare() {
