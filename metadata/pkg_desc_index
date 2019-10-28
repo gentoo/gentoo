@@ -14044,7 +14044,7 @@ media-sound/rgain 1.2.1-r1: Set of programmes and Python modules to deal with Re
 media-sound/rhythmbox 3.4.3: Music management and playback software for GNOME
 media-sound/rip 1.07: A command-line based audio CD ripper and mp3 encoder
 media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them to the Ogg, MP3, or FLAC formats
-media-sound/rosegarden 17.12.1: MIDI and audio sequencer and notation editor
+media-sound/rosegarden 17.12.1 19.06: MIDI and audio sequencer and notation editor
 media-sound/rplay 3.3.2-r3: Play sounds on remote Unix systems without data transfer
 media-sound/saydate 0.3.0: A Linux shell program that talks the date and system uptime
 media-sound/sc2mpd 1.1.5: Implements the SongCast protocol for use by upmpdcli and mpd
@@ -17709,7 +17709,7 @@ sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices 
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bees 0.6.1 9999: Best-Effort Extent-Same, a btrfs dedup agent
 sys-fs/bindfs 1.14.0 1.14.1: FUSE filesystem for bind mounting with altered permissions
-sys-fs/btrfs-progs 3.18.2 4.1.2 4.4.1 4.9.1 4.10.2 4.14.1 4.19 4.19.1 5.1.1 5.2.2 5.3 9999: Btrfs filesystem utilities
+sys-fs/btrfs-progs 3.18.2 4.1.2 4.4.1 4.9.1 4.10.2 4.14.1 4.19 4.19.1 5.1.1 5.2.2 5.3 5.3.1 9999: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4 0.4.1-r1 0.4.2: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.9 0.10.10-r1: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.0.1-r3: A FUSE-based user-space file system with on-access anti-virus file scanning
