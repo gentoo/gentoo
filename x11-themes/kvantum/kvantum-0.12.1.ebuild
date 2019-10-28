@@ -1,13 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils
 
 MY_PN="Kvantum"
 
-DESCRIPTION="SVG-based theme engine for Qt4/Qt5, KDE and LXQt"
+DESCRIPTION="SVG-based theme engine for Qt5, KDE and LXQt"
 HOMEPAGE="https://github.com/tsujan/Kvantum"
 SRC_URI="https://github.com/tsujan/${MY_PN}/archive/V${PV}.tar.gz -> ${P}.tar.gz"
 
