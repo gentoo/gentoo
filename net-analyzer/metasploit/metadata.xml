@@ -9,7 +9,6 @@
 	<use>
 		<flag name="development">Install dependencies needed for metasploit and exploit development</flag>
 		<flag name="nexpose">Enable the plugin to integrate with nexpose</flag>
-		<flag name="openvas">Enable the plugin to integrate <pkg>net-analyzer/openvas</pkg></flag>
 		<flag name="oracle">Enable restricted oracle modules which have additional deps</flag>
 		<flag name="pcap">Enable libpcap for packet sniffing</flag>
 	</use>
