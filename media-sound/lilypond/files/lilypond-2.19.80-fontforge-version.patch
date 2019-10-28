@@ -1,0 +1,16 @@
+The version test fails for two reasons:
+* fontforge --version does not print anything that resembles what the configure
+  script expects a version to look like
+* fontforge fails to print a version if it cannot connect to an X display
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -236,7 +236,7 @@
+ 
+ STEPMAKE_PYTHON_DEVEL(REQUIRED, 2.4, 3.0)
+ 
+-STEPMAKE_PATH_PROG(FONTFORGE, fontforge, REQUIRED, 20110222)
++STEPMAKE_PATH_PROG(FONTFORGE, fontforge, REQUIRED,)
+ 
+ STEPMAKE_PATH_PROG(T1ASM, t1asm, REQUIRED)
+ 

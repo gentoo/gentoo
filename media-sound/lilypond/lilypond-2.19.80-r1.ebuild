@@ -55,7 +55,10 @@ DEPEND="${RDEPEND}
 # Correct output data for tests isn't bundled with releases
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}"/${P}-remove-ly-protect.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-remove-ly-protect.patch
+	"${FILESDIR}"/${P}-fontforge-version.patch
+)
 
 DOCS=( DEDICATION HACKING README.txt ROADMAP )
 
