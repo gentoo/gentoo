@@ -5331,6 +5331,13 @@ net-analyzer/gr-fosphor:glfw - enable GLFW based interface
 net-analyzer/graphite-web:carbon - Enable carbon support
 net-analyzer/graphite-web:memcached - Enable memcached support
 net-analyzer/greenbone-security-assistant:extras - Pdf results, extra fonts, html docs support
+net-analyzer/gvm:cli - Command Line Interface for OpenVAS Scanner
+net-analyzer/gvm:cron - A cron job to update GVM's vulnerability feeds daily
+net-analyzer/gvm:extras - Extra fonts, pdf-results! and html docs support
+net-analyzer/gvm:gsa - Greenbone Security Assistant (WebUI)
+net-analyzer/gvm:ospd - Enable support for scanner wrappers
+net-analyzer/gvm-libs:extras - Html docs support
+net-analyzer/gvmd:extras - Html docs support
 net-analyzer/hexinject:experimental - Install experimental packets.tcl
 net-analyzer/hexinject:tools - Install hex2raw and prettypacket tools
 net-analyzer/httping:tfo - Enable support for TCP Fast Open
@@ -5356,7 +5363,6 @@ net-analyzer/ipsumdump:nanotimestamp - Enable timestamps with nano-second resolu
 net-analyzer/linkchecker:sqlite - Mozilla Bookmark parsing
 net-analyzer/metasploit:development - Install dependencies needed for metasploit and exploit development
 net-analyzer/metasploit:nexpose - Enable the plugin to integrate with nexpose
-net-analyzer/metasploit:openvas - Enable the plugin to integrate net-analyzer/openvas
 net-analyzer/metasploit:oracle - Enable restricted oracle modules which have additional deps
 net-analyzer/metasploit:pcap - Enable libpcap for packet sniffing
 net-analyzer/mk-livestatus:nagios4 - Generate a net-analyzer/nagios-4 compatible plugin
@@ -5442,6 +5448,7 @@ net-analyzer/openvas-libraries:extras - Html docs support
 net-analyzer/openvas-libraries:ldap - Enable support for ldap
 net-analyzer/openvas-libraries:radius - Enable support for radius
 net-analyzer/openvas-manager:extras - Html docs support
+net-analyzer/openvas-scanner:cron - Install a cron job to update GVM's feed daily.
 net-analyzer/openvas-scanner:extras - Html docs support
 net-analyzer/ospd:extras - Html docs support
 net-analyzer/ossec-hids:agent - Build "agent" installation target (see package description)

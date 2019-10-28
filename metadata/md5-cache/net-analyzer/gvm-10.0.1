@@ -1,0 +1,12 @@
+DEFINED_PHASES=postinst
+DESCRIPTION=Greenbone Vulnerability Management,previously named OpenVAS
+EAPI=7
+HOMEPAGE=https://www.greenbone.net/en/
+IUSE=cli +cron +extras +gsa ldap ospd postgres radius +sqlite
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-analyzer/gvm-libs-10.0.1[extras?,ldap?,radius?] >=net-analyzer/gvmd-8.0.1[extras?,postgres?,sqlite?] ~net-analyzer/openvas-scanner-6.0.1[cron?,extras?] !net-analyzer/openvas cli? ( >=net-analyzer/gvm-tools-1.4.1 ) gsa? ( ~net-analyzer/greenbone-security-assistant-8.0.1[extras?] ) ospd? ( >=net-analyzer/ospd-1.3.2[extras?] )
+REQUIRED_USE=|| ( postgres sqlite )
+SLOT=0
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8
+_md5_=727788d338847bc24062f896d0cb8cdf
