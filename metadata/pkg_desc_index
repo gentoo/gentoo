@@ -8902,7 +8902,7 @@ dev-python/serpent 1.19 1.28: A simple serialization library based on ast.litera
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 14.0.0 16.0.0 17.0.0 17.0.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.10 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 36.7.2 40.6.3 41.1.0 41.2.0 41.4.0 9999: Collection of extensions to Distutils
+dev-python/setuptools 36.7.2 40.6.3 41.1.0 41.2.0 41.4.0 41.5.0 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.15.6-r1 1.15.7 3.2.0 3.3.1: package to manage versions by scm tags via setuptools
@@ -15276,7 +15276,7 @@ net-misc/freerdp 2.0.0_rc2-r1 2.0.0_rc4 9999: Free implementation of the Remote 
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.32.2 0.34: A daemon to serve the gopher protocol
-net-misc/gerbera 1.2.0-r1 1.3.1 1.3.2 9999: UPnP Media Server (Based on MediaTomb)
+net-misc/gerbera 1.2.0-r1 1.3.2 1.3.3 9999: UPnP Media Server (Based on MediaTomb)
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.30.0: Crawls through your online content
 net-misc/gnome-remote-desktop 0.1.7: Remote desktop daemon for GNOME using pipewire
