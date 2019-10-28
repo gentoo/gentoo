@@ -21,6 +21,7 @@ DEPEND="gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
 DOCS=(README.txt)
 PATCHES=("${FILESDIR}/makefile.patch")
 UDK_WORKSPACE="${T}/udk"
+LIBDIR="/usr/lib"
 
 pkg_pretend() {
 	if use custom-cflags; then
@@ -49,11 +50,11 @@ src_prepare() {
 
 	# bug 598647 - PIE not supported
 	sed -e '/^CFLAGS/s:$: -fno-PIE:' -i Make.common || die
-
+	LIB_DIR="$(get_libdir)" || die
 	# Prepare UDK workspace
 	if ! use gnuefi; then
 		mkdir "${UDK_WORKSPACE}" || die
-		ln -s "${EPREFIX}/usr/lib/udk/"{Mde,IntelFramework}{,Module}Pkg \
+		ln -s "${EPREFIX}${LIB_DIR}/udk/"{Mde,IntelFramework}{,Module}Pkg \
 			"${UDK_WORKSPACE}" || die "Could not link UDK files"
 	fi
 }
@@ -111,9 +112,9 @@ src_compile() {
 }
 
 src_install() {
-	exeinto "/usr/lib/${PN}"
+	exeinto "${LIB_DIR}/${PN}"
 	doexe refind-install
-	dosym "../lib/${PN}/refind-install" "/usr/sbin/refind-install"
+	dosym "${LIB_DIR}/${PN}/refind-install" "/usr/sbin/refind-install"
 
 	if use doc; then
 		doman "docs/man/"*
@@ -121,7 +122,7 @@ src_install() {
 	fi
 	einstalldocs
 
-	insinto "/usr/lib/${PN}/refind"
+	insinto "${LIB_DIR}/${PN}/refind"
 	doins "refind/refind_${EFIARCH}.efi"
 	doins "refind.conf-sample"
 	doins -r images icons fonts banners
@@ -130,7 +131,7 @@ src_install() {
 		doins -r "drivers_${EFIARCH}"
 	fi
 
-	insinto "/usr/lib/${PN}/refind/tools_${EFIARCH}"
+	insinto "${LIB_DIR}/${PN}/refind/tools_${EFIARCH}"
 	doins "gptsync/gptsync_${EFIARCH}.efi"
 
 	insinto "/etc/refind.d"
@@ -142,7 +143,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "rEFInd has been built and installed into ${EROOT}/usr/lib/${PN}"
+	elog "rEFInd has been built and installed into ${EROOT}${LIB_DIR}/${PN}"
 	elog "You will need to use the command 'refind-install' to install"
 	elog "the binaries into your EFI System Partition"
 	elog ""
@@ -155,7 +156,7 @@ pkg_postinst() {
 		elog "refind-mkdefault requires >=dev-lang/python-3"
 		elog ""
 		elog "A sample configuration can be found at"
-		elog "${EROOT}/usr/lib/${PN}/refind/refind.conf-sample"
+		elog "${EROOT}${LIB_DIR}/${PN}/refind/refind.conf-sample"
 	else
 		if ver_test "${REPLACING_VERSIONS}" -lt "0.10.3"; then
 			elog "The new refind-mkdefault script requires >=dev-lang/python-3"
