@@ -7,7 +7,8 @@ inherit cmake-utils
 
 DESCRIPTION="OpenGL Mathematics"
 HOMEPAGE="http://glm.g-truc.net/"
-SRC_URI="https://github.com/g-truc/glm/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/g-truc/glm/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~tupone/distfiles/${P}-install.patch.gz"
 
 LICENSE="|| ( HappyBunny MIT )"
 SLOT="0"
@@ -16,15 +17,10 @@ IUSE="test cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_avx cpu_flags_x86
 
 RDEPEND="virtual/opengl"
 
-PATCHES=( "${FILESDIR}"/${P}-simd.patch )
-
-src_prepare() {
-	cmake-utils_src_prepare
-	sed \
-		-e "s:@CMAKE_INSTALL_PREFIX@:${EPREFIX}/usr:" \
-		-e "s:@GLM_VERSION@:0.9.9:" \
-		"${FILESDIR}"/glm.pc.in > glm.pc || die
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-simd.patch
+	"${WORKDIR}"/${P}-install.patch
+)
 
 src_configure() {
 	if use test; then
@@ -38,11 +34,4 @@ src_configure() {
 	fi
 
 	cmake-utils_src_configure
-}
-
-src_install() {
-	doheader -r glm
-	dodoc -r *md doc/*
-	insinto /usr/$(get_libdir)/pkgconfig
-	doins glm.pc
 }
