@@ -200,6 +200,8 @@ src_install() {
 	# Don't install into /run as that is a tmpfs most of the time
 	# (bug #504854)
 	rm -rf "${ED}"/run
+
+	find "${ED}" -type f -name "*.la" -delete || die #697812
 }
 
 pkg_postinst() {
