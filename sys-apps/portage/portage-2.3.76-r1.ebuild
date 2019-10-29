@@ -16,7 +16,7 @@ DESCRIPTION="Portage is the package management and distribution system for Gento
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86"
 SLOT="0"
 IUSE="build doc epydoc gentoo-dev +ipc +native-extensions +rsync-verify selinux xattr"
 
@@ -103,8 +103,12 @@ pkg_setup() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
-	# Apply 4e9f04a1e11e84a8c513ee334cf2bc1c013d8c11 for bug 697906.
-	sed -e 's|\(self\.config\.layouts\)\[1:\]|\1|' -i lib/portage/_emirrordist/DeletionTask.py || die
+	# Apply 03c54e340073620f489ca85bca94267a198174fe,
+	# 0299aedef74e47c0a68acf7905d8714c9578f125, and
+	# 1ca5b822133171b131cef3dc15dc43583893ad6b for bug 698046.
+	sed -e 's|rsync -avP|rsync -LtvP|' -i cnf/make.globals lib/portage/tests/util/test_getconfig.py || die
+	sed -e 's|if os.stat(download_path).st_size == 0:|mystat = os.lstat(download_path)\n\t\t\t\t\t\tif mystat.st_size == 0 or (stat.S_ISLNK(mystat.st_mode) and not os.path.exists(download_path)):|' \
+		-i lib/portage/package/ebuild/fetch.py || die
 
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
