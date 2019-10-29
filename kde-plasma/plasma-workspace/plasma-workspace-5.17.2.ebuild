@@ -118,7 +118,7 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.14.2-split-libkworkspace.patch"
-	"${FILESDIR}/${PN}-5.17.0-waylandsessionrename.patch"
+	"${FILESDIR}/${P}-waylandsessionrename.patch"
 )
 
 RESTRICT+=" test"
