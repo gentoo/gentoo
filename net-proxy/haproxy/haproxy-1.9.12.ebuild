@@ -1,20 +1,20 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 [[ ${PV} == *9999 ]] && SCM="git-r3"
-inherit user versionator toolchain-funcs flag-o-matic systemd linux-info $SCM
+inherit user toolchain-funcs flag-o-matic systemd linux-info $SCM
 
 MY_P="${PN}-${PV/_beta/-dev}"
 
 DESCRIPTION="A TCP/HTTP reverse proxy for high availability environments"
 HOMEPAGE="http://www.haproxy.org"
 if [[ ${PV} != *9999 ]]; then
-	SRC_URI="http://haproxy.1wt.eu/download/$(get_version_component_range 1-2)/src/${MY_P}.tar.gz"
+	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc ~x86"
 else
-	EGIT_REPO_URI="http://git.haproxy.org/git/haproxy-$(get_version_component_range 1-2).git/"
+	EGIT_REPO_URI="http://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
 	EGIT_BRANCH=master
 fi
 
@@ -52,9 +52,9 @@ S="${WORKDIR}/${MY_P}"
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS README )
 CONTRIBS=( halog iprange )
 # ip6range is present in 1.6, but broken.
-version_is_at_least 1.7.0 $PV && CONTRIBS+=( ip6range spoa_example tcploop )
+ver_test $PV -ge 1.7.0 && CONTRIBS+=( ip6range spoa_example tcploop )
 # TODO: mod_defender - requires apache / APR, modsecurity - the same
-version_is_at_least 1.8.0 $PV && CONTRIBS+=( hpack )
+ver_test $PV -ge 1.8.0 && CONTRIBS+=( hpack )
 
 haproxy_use() {
 	(( $# != 2 )) && die "${FUNCNAME} <USE flag> <make option>"
@@ -74,6 +74,7 @@ pkg_setup() {
 
 src_compile() {
 	local -a args=(
+		V=1
 		TARGET=linux2628
 		USE_GETADDRINFO=1
 		USE_TFO=1
@@ -85,6 +86,8 @@ src_compile() {
 	args+=( $(haproxy_use net_ns NS) )
 	args+=( $(haproxy_use pcre PCRE) )
 	args+=( $(haproxy_use pcre-jit PCRE_JIT) )
+	args+=( $(haproxy_use pcre2 PCRE2) )
+	args+=( $(haproxy_use pcre2-jit PCRE2_JIT) )
 	args+=( $(haproxy_use ssl OPENSSL) )
 	args+=( $(haproxy_use slz SLZ) )
 	args+=( $(haproxy_use zlib ZLIB) )
@@ -102,8 +105,9 @@ src_compile() {
 
 	if use tools ; then
 		for contrib in ${CONTRIBS[@]} ; do
+			# Those two includes are a workaround for hpack Makefile missing those
 			emake -C contrib/${contrib} \
-				CFLAGS="${CFLAGS}" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
+				CFLAGS="${CFLAGS} -I../../include/ -I../../ebtree/" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
 		done
 	fi
 }
@@ -163,7 +167,7 @@ pkg_postinst() {
 		if [[ -d "${EROOT}/usr/share/doc/${PF}" ]]; then
 			einfo "Please consult the installed documentation for learning the configuration file's syntax."
 			einfo "The documentation and sample configuration files are installed here:"
-			einfo "   ${EROOT}usr/share/doc/${PF}"
+			einfo "   ${EROOT}/usr/share/doc/${PF}"
 		fi
 	fi
 }
