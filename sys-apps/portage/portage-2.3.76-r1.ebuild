@@ -103,6 +103,13 @@ pkg_setup() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# Apply 03c54e340073620f489ca85bca94267a198174fe,
+	# 0299aedef74e47c0a68acf7905d8714c9578f125, and
+	# 1ca5b822133171b131cef3dc15dc43583893ad6b for bug 698046.
+	sed -e 's|rsync -avP|rsync -LtvP|' -i cnf/make.globals lib/portage/tests/util/test_getconfig.py || die
+	sed -e 's|if os.stat(download_path).st_size == 0:|mystat = os.lstat(download_path)\n\t\t\t\t\t\tif mystat.st_size == 0 or (stat.S_ISLNK(mystat.st_mode) and not os.path.exists(download_path)):|' \
+		-i lib/portage/package/ebuild/fetch.py || die
+
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
 		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
