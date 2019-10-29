@@ -239,11 +239,6 @@ net-misc/knemo
 # since 1999. Removal in 30 days. Bug 641530.
 dev-perl/NetxAP
 
-# Lars Wendler <polynomial-c@gentoo.org> (2019-10-15)
-# Masked until webkit based packages no longer fail to build against
->=dev-libs/icu-65.1
->=dev-libs/icu-layoutex-65.1
-
 # Nick Sarnie <sarnex@gentoo.org> (2019-10-14)
 # No longer updated or supported by the Wine project
 # wine-any has no value without wine-d3d9
