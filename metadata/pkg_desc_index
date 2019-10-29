@@ -1983,7 +1983,7 @@ app-misc/golly 3.2: simulator for Conway's Game of Life and other cellular autom
 app-misc/goobook 1.9 3.4: Access your Google contacts from the command line
 app-misc/gourmet 0.17.4-r2: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
-app-misc/gramps 5.0.1 5.0.2: Genealogical Research and Analysis Management Programming System
+app-misc/gramps 5.0.1 5.0.2 5.1.1: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 1.0.2: Contains the lowlevel lcd drivers for GraphLCD
 app-misc/grc 1.5 1.9 1.11-r1: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2: Real-time Sunlight Wallpaper
