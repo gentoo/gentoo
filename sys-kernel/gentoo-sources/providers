@@ -1,0 +1,2 @@
+Providers: number : 1
+Provider 0: id: 0x4b cap: 0xb, Source Output, Sink Output, Sink Offload crtcs: 4 outputs: 8 associated providers: 0 name:Intel
