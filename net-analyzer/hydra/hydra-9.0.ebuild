@@ -12,7 +12,7 @@ SRC_URI="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="
 	debug firebird gcrypt gtk idn libressl memcached mongodb mysql ncp ncurses
 	oracle pcre postgres rdp libssh subversion zlib
