@@ -8,7 +8,7 @@ LTRACE_V=${PV/_p*/}
 DB_V=${PV/*_p/}
 
 DESCRIPTION="trace library calls made at runtime"
-HOMEPAGE="https://www.ltrace.org/"
+HOMEPAGE="https://gitlab.com/cespedes/ltrace"
 SRC_URI="
 	mirror://debian/pool/main/l/${PN}/${PN}_${LTRACE_V}.orig.tar.bz2
 	mirror://debian/pool/main/l/${PN}/${PN}_${LTRACE_V}-${DB_V}.debian.tar.gz
