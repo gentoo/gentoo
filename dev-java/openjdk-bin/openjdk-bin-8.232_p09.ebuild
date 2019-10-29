@@ -24,7 +24,7 @@ SRC_URI="
 LICENSE="GPL-2-with-classpath-exception"
 KEYWORDS="~amd64 ~ppc64"
 
-IUSE="alsa cups doc examples +gentoo-vm headless-awt nsplugin selinux source +webstart"
+IUSE="alsa cups examples +gentoo-vm headless-awt nsplugin selinux source +webstart"
 
 RDEPEND="
 	media-libs/fontconfig:1.0
@@ -34,7 +34,6 @@ RDEPEND="
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
-	doc? ( dev-java/java-sdk-docs:1.${SLOT} )
 	selinux? ( sec-policy/selinux-java )
 	!headless-awt? (
 		x11-libs/libX11
