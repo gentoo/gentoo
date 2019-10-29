@@ -134,11 +134,6 @@ app-doc/doxygen clang
 # Requires dev-libs/mongo-c-driver which isn't keyworded
 >=app-admin/rsyslog-8.31 mongodb
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-10-11)
-# Required dependency dev-qt/qtspeech is not keyworded, bug #675340
-kde-frameworks/knotifications speech
-kde-frameworks/ktextwidgets speech
-
 # Patrice Clement <monsieurp@gentoo.org> (2017-09-24)
 # Unmask Raspberry Pi support on arm.
 media-video/mpv -raspberry-pi
