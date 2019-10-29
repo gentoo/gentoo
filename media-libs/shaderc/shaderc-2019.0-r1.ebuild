@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
-	>=dev-util/glslang-7.12.3353_pre20191027[${MULTILIB_USEDEP}]
+	>=dev-util/glslang-7.12.3353_pre20191027-r1[${MULTILIB_USEDEP}]
 	>=dev-util/spirv-tools-2019.10_pre20191027[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
