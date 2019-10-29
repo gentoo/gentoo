@@ -1,18 +1,17 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/mooltipass/moolticute.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/mooltipass/moolticute/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
 fi
 
-inherit gnome2-utils qmake-utils udev
+inherit xdg-utils qmake-utils udev
 
 DESCRIPTION="Mooltipass crossplatform daemon/tools"
 HOMEPAGE="https://github.com/mooltipass/moolticute"
@@ -23,6 +22,7 @@ IUSE=""
 
 RDEPEND="
 	>=dev-libs/libusb-1.0.20
+	dev-qt/qtdbus:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -30,7 +30,7 @@ RDEPEND="
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 "
 
@@ -58,9 +58,9 @@ src_install() {
 
 pkg_postinst() {
 	udev_reload
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

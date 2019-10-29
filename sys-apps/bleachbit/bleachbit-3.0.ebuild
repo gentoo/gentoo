@@ -10,17 +10,17 @@ inherit desktop distutils-r1
 
 DESCRIPTION="Clean junk to free disk space and to maintain privacy"
 HOMEPAGE="https://www.bleachbit.org"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://download.bleachbit.org/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+gtk"
+IUSE=""
 
 RDEPEND="
 	dev-python/chardet[$PYTHON_USEDEP]
+	dev-python/pygobject:3[$PYTHON_USEDEP]
 	dev-python/scandir[$PYTHON_USEDEP]
-	gtk? ( dev-python/pygobject:3[$PYTHON_USEDEP] )
 "
 BDEPEND="
 	dev-python/setuptools[$PYTHON_USEDEP]
@@ -29,7 +29,7 @@ BDEPEND="
 
 python_prepare_all() {
 	# choose correct Python implementation, bug #465254
-	sed -i 's/python/$(PYTHON)/g' po/Makefile || die
+	sed -i 's/python/${EPYTHON}/g' po/Makefile || die
 
 	distutils-r1_python_prepare_all
 }

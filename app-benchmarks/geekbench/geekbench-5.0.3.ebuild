@@ -11,7 +11,7 @@ KEYWORDS="-* ~amd64"
 LICENSE="geekbench"
 SLOT="5"
 
-RESTRICT="bindist fetch mirror strip"
+RESTRICT="bindist mirror"
 
 S="${WORKDIR}/Geekbench-${PV}-Linux"
 
