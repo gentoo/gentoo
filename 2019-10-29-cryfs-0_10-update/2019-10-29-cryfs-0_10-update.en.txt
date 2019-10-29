@@ -1,0 +1,25 @@
+Title: sys-fs/cryfs-0.10.2 update
+Author: Andreas Sturmlechner <asturm@gentoo.org>
+Posted: 2019-10-29
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: <sys-fs/cryfs-0.10
+
+Filesystems created with CryFS 0.9.x are incompatible with the new storage
+format. [1] Migration is necessary before mounting with CryFS 0.10 and
+possible for old containers going back as far as CryFS 0.9.4. [2]
+
+However, upstream recommend to create new containers with 0.10 to avoid
+potential data loss from a failed migration, and in order to benefit from all
+performance advantages of the new format.
+
+Before updating, copy all data from cryfs containers to a temporary and secure
+location. After the update, move it back into a newly created container. Don't
+forget to remove the temporary files afterwards.
+
+Users of KDE Plasma Vaults should follow the same procedure. To check the type
+of existing containers, open them using the Vaults widget. It is part of the
+path as displayed in dolphin.
+
+[1] https://bugs.gentoo.org/690324
+[2] https://github.com/cryfs/cryfs/releases/tag/0.10.1
