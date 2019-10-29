@@ -91,7 +91,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/ruby-macho
 	dev-ruby/rubyntlm
 	dev-ruby/ruby_smb:*
-	dev-ruby/rubyzip
+	dev-ruby/rubyzip:*
 	dev-ruby/sqlite3
 	dev-ruby/sshkey
 	dev-ruby/tzinfo:*
@@ -214,6 +214,12 @@ all_ruby_prepare() {
 	#if ! use nessus; then
 		sed -i -e "/nessus/d" metasploit-framework.gemspec || die
 	#fi
+
+	#OpenVAS support dropped on net-analyzer/metasploit. Bug:692076
+	#openvas-omp is deprecated and masked for removal. Bug:692076
+	#Remove openvas-omp in gemspec. Bug:698762
+	sed -i -e "/openvas-omp/d" metasploit-framework.gemspec || die
+
 	#even if we pass --without=blah bundler still calculates the deps and messes us up
 	if ! use development; then
 		sed -i -e "/^group :development do/,/^end$/d" Gemfile || die
