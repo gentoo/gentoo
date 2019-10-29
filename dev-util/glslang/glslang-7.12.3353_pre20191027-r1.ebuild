@@ -17,3 +17,6 @@ LICENSE="BSD"
 SLOT="0"
 
 PATCHES=( "${FILESDIR}/${P}-fix-relative-includes.patch" )
+
+# Bug 698850
+RESTRICT="test"
