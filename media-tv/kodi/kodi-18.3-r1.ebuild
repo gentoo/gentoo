@@ -127,7 +127,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		media-libs/mesa[wayland]
 		>=dev-libs/wayland-protocols-1.7
 	)
-	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages] )
+	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages(+)] )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXrandr
