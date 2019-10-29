@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 SCM=""
 if [[ "${PV}" == "9999" ]]; then
@@ -21,15 +21,13 @@ LICENSE="BSD-2"
 SLOT="0/3"
 IUSE="+8bit +10bit +asm"
 
-ASM_DEPEND=">=dev-lang/nasm-2.13"
-RDEPEND=""
-DEPEND="${RDEPEND}
-	asm? (
+ASM_DEPEND=">=dev-lang/nasm-2.13.02"
+BDEPEND="asm? (
 		abi_x86_32? ( ${ASM_DEPEND} )
 		abi_x86_64? ( ${ASM_DEPEND} )
 	)"
 
-DOCS=( README.md doc/PATENTS )
+DOCS=( README.md doc/PATENTS THANKS.md )
 
 multilib_src_configure() {
 	local -a bits=()
