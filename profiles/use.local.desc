@@ -3796,6 +3796,7 @@ kde-plasma/plasma-meta:pulseaudio - Install Plasma applet for PulseAudio volume 
 kde-plasma/plasma-meta:qrcode - Enable support for easy WiFi network sharing using QR codes with kde-plasma/plasma-nm
 kde-plasma/plasma-meta:sddm - Pull in the x11-misc/sddm display manager and system settings module
 kde-plasma/plasma-meta:sdk - Pull in kde-plasma/plasma-sdk for Plasma development
+kde-plasma/plasma-meta:thunderbolt - Pull in kde-plasma/plasma-thunderbolt control center module
 kde-plasma/plasma-meta:wallpapers - Install wallpapers for the Plasma Workspace
 kde-plasma/plasma-nm:modemmanager - Enable support for mobile broadband devices
 kde-plasma/plasma-nm:openconnect - Build support for the OpenConnect VPN client
