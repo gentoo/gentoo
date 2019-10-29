@@ -10,6 +10,7 @@ HOMEPAGE="https://cgit.kde.org/breeze.git"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="wayland X"
 
+# drop qtwidgets subslot operator when QT_MINIMAL >= 5.13.0
 RDEPEND="
 	$(add_frameworks_dep frameworkintegration)
 	$(add_frameworks_dep kcmutils)
@@ -24,7 +25,7 @@ RDEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
-	$(add_qt_dep qtwidgets)
+	$(add_qt_dep qtwidgets '' '' '5=')
 	sci-libs/fftw:3.0=
 	wayland? ( $(add_frameworks_dep kwayland) )
 	X? (

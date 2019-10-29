@@ -32,8 +32,7 @@ DEPEND="${COMMON_DEPEND}
 	$(add_qt_dep qtconcurrent)
 "
 RDEPEND="${COMMON_DEPEND}
-	screencast? ( sys-apps/xdg-desktop-portal[screencast] )
-	!screencast? ( sys-apps/xdg-desktop-portal )
+	sys-apps/xdg-desktop-portal[screencast?]
 "
 
 src_configure() {

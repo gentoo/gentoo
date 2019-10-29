@@ -10,7 +10,7 @@ DESCRIPTION="Plasma crash handler, gives the user feedback if a program crashed"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="X"
 
-COMMON_DEPEND="
+RDEPEND="
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
@@ -32,11 +32,8 @@ COMMON_DEPEND="
 	$(add_qt_dep qtxml)
 	X? ( $(add_qt_dep qtx11extras) )
 "
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	$(add_qt_dep qtconcurrent)
-"
-RDEPEND="${COMMON_DEPEND}
-	!<kde-plasma/plasma-workspace-5.10.95:5
 "
 
 src_configure() {

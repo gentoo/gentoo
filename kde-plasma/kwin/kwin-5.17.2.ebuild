@@ -87,8 +87,6 @@ PDEPEND="
 
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${P}-dont-use-MESA_EGL_NO_X11_HEADERS.patch" )
-
 src_prepare() {
 	kde5_src_prepare
 	use multimedia || eapply "${FILESDIR}/${PN}-5.16.80-gstreamer-optional.patch"
