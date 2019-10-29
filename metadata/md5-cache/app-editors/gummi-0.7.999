@@ -1,0 +1,13 @@
+BDEPEND=dev-util/intltool sys-devel/gettext virtual/pkgconfig
+DEFINED_PHASES=postinst postrm
+DEPEND=app-text/gtkspell:3 app-text/poppler[cairo] dev-libs/glib:2 dev-texlive/texlive-latex dev-texlive/texlive-latexextra x11-libs/gtk+:3 x11-libs/gtksourceview:3.0 x11-libs/pango
+DESCRIPTION=Simple LaTeX editor for GTK+ users
+EAPI=7
+HOMEPAGE=https://github.com/alexandervdm/gummi
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=MIT
+RDEPEND=app-text/gtkspell:3 app-text/poppler[cairo] dev-libs/glib:2 dev-texlive/texlive-latex dev-texlive/texlive-latexextra x11-libs/gtk+:3 x11-libs/gtksourceview:3.0 x11-libs/pango
+SLOT=0
+SRC_URI=https://github.com/alexandervdm/gummi/releases/download/0.7.999/gummi-0.7.999.tar.gz
+_eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=ee82692b97a99b5a023cc1a81637e5ed

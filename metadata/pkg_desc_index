@@ -552,7 +552,7 @@ app-benchmarks/cpuburn 1.4a-r3: CPU testing utilities in optimized assembler for
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workload Generator
 app-benchmarks/forkbomb 1.4-r1: Controlled fork() bomber for testing heavy system load
-app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.4.1 5.0.2: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
+app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.4.1 5.0.3: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
 app-benchmarks/hey 0.1.1_p20181017: HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
 app-benchmarks/httperf 0.9.1_p20181111 0.9.1_p20181111-r1: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
@@ -710,7 +710,7 @@ app-crypt/minisign 0.8 9999: Dead simple tool to sign files and verify signature
 app-crypt/mit-krb5 1.17-r1: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39 0.41 0.42: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
-app-crypt/moolticute 0.30.1 0.30.8 9999: Mooltipass crossplatform daemon/tools
+app-crypt/moolticute 0.42.1 9999: Mooltipass crossplatform daemon/tools
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
 app-crypt/nitrocli 0.2.3-r1 0.2.4: A command line application for interacting with Nitrokey devices
 app-crypt/nitrokey-app 1.4 9999: Cross platform personalization tool for the Nitrokey
@@ -1159,7 +1159,7 @@ app-editors/gedit-plugins 3.30.1 3.32.2: Official plugins for gedit
 app-editors/ghex 3.18.4-r1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.8.0: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gnome-latex 3.28.1: Integrated LaTeX environment for GNOME
-app-editors/gummi 0.6.6-r2: Simple LaTeX editor for GTK+ users
+app-editors/gummi 0.6.6-r2 0.7.999: Simple LaTeX editor for GTK+ users
 app-editors/gvim 8.1.1486 8.1.1846 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
@@ -17055,7 +17055,7 @@ sys-apps/baselayout-prefix 2.2-r5 2.6-r1 2.6-r2: Filesystem baselayout and init 
 sys-apps/bat 0.12.0: cat(1) clone with syntax highlighting and Git integration
 sys-apps/biosdevname 0.7.2 0.7.3: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/biosdisk 0_p20171116: A script that creates floppy boot images to flash Dell BIOSes
-sys-apps/bleachbit 2.2 2.3: Clean junk to free disk space and to maintain privacy
+sys-apps/bleachbit 2.2 3.0: Clean junk to free disk space and to maintain privacy
 sys-apps/bolt 0.7 0.8: Userspace system daemon to enable security levels for Thunderbolt 3.
 sys-apps/bubblewrap 0.3.1-r1: Unprivileged sandboxing tool, namespaces-powered chroot-like solution
 sys-apps/busybox 1.30.1 1.31.1 9999: Utilities for rescue and embedded systems
