@@ -3,36 +3,28 @@
 
 EAPI=7
 
-inherit systemd user
+inherit systemd
 
 DESCRIPTION="Open Source, Distributed, RESTful, Search Engine"
 HOMEPAGE="https://www.elastic.co/products/elasticsearch"
-SRC_URI="x-pack? ( https://artifacts.elastic.co/downloads/${PN}/${P}.tar.gz )
-	!x-pack? ( https://artifacts.elastic.co/downloads/${PN}/${PN}-oss-${PV}.tar.gz )"
+SRC_URI="x-pack? ( https://artifacts.elastic.co/downloads/${PN}/${P}-no-jdk-linux-x86_64.tar.gz )
+	!x-pack? ( https://artifacts.elastic.co/downloads/${PN}/${PN}-oss-${PV}-no-jdk-linux-x86_64.tar.gz )"
 LICENSE="Apache-2.0 BSD-2 LGPL-3 MIT public-domain x-pack? ( Elastic )"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="x-pack"
 
-RDEPEND="virtual/jre:1.8"
+RDEPEND="acct-group/elasticsearch
+	acct-user/elasticsearch
+	virtual/jre"
 
 QA_PRESTRIPPED="usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/\(bin\|lib\)/.*"
-
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 /bin/bash /usr/share/${PN} ${PN}
-}
 
 src_prepare() {
 	default
 
-	rm bin/*.{bat,exe} LICENSE.txt NOTICE.txt || die
+	rm LICENSE.txt NOTICE.txt || die
 	rmdir logs || die
-
-	if use x-pack; then
-		rm bin/x-pack/*.bat || die
-		rm -r modules/x-pack-ml/platform/{darwin,windows}-x86_64 || die
-	fi
 }
 
 src_install() {
@@ -67,7 +59,7 @@ src_install() {
 	newins "${FILESDIR}/${PN}.sysctl.d" ${PN}.conf
 
 	newconfd "${FILESDIR}/${PN}.conf.3" ${PN}
-	newinitd "${FILESDIR}/${PN}.init.5" ${PN}
+	newinitd "${FILESDIR}/${PN}.init.7" ${PN}
 
 	systemd_install_serviced "${FILESDIR}/${PN}.service.conf"
 	systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles.d" ${PN}.conf

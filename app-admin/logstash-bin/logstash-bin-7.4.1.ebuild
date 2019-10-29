@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
-inherit java-pkg-2 user
+inherit java-pkg-2
 
 MY_PN="${PN%-bin}"
 MY_P="${MY_PN}-${PV}"
@@ -24,7 +24,7 @@ QA_PREBUILT="opt/logstash/vendor/jruby/lib/jni/*/libjffi*.so"
 
 RDEPEND="acct-group/logstash
 	acct-user/logstash
-	virtual/jre:1.8"
+	virtual/jre"
 
 S="${WORKDIR}/${MY_P}"
 

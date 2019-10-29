@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,12 +7,12 @@ DESCRIPTION="Lightweight log shipper for Logstash and Elasticsearch"
 HOMEPAGE="https://www.elastic.co/products/beats"
 SRC_URI="https://github.com/elastic/beats/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
-DEPEND=">=dev-lang/go-1.10.3"
+DEPEND=">=dev-lang/go-1.12.9"
 RDEPEND="!app-admin/filebeat-bin"
 
 # Do not complain about CFLAGS etc since go projects do not use them.
@@ -41,6 +41,7 @@ src_compile() {
 }
 
 src_install() {
+	keepdir /etc/${PN}
 	keepdir /var/{lib,log}/${PN}
 
 	fperms 0750 /var/{lib,log}/${PN}
