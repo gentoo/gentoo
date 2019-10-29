@@ -46,7 +46,7 @@ net-analyzer/icinga2 mariadb
 
 # Luca Barbato <lu_zero@gentoo.org> (2018-08-12)
 # grub pc is not supported on powerpc
-sys-boot/grub:2 grub_platforms_pc grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_xen
+sys-boot/grub:2 grub_platforms_pc grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_xen grub_platforms_xen-pvh
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2018-06-08)
 # Requires unported sys-libs/netbsd-csu
