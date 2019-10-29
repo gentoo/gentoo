@@ -1,0 +1,135 @@
+From e925deab264e5ebc3c5c13415aa3d44a746e8d45 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Fri, 25 Oct 2019 14:53:51 +0000
+Subject: [PATCH] GCC: avoid clash of WebThemeEngine::ForcedColors with ForcedColors enum class
+
+GCC fails to build because the declaration of the enum class ForcedColors
+clashes with the GetForcedColors method.
+
+Bug: 819294
+Change-Id: I5c7647978d15c771f5372a8c70ac6aeb2284fb2f
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1879452
+Reviewed-by: Kentaro Hara <haraken@chromium.org>
+Commit-Queue: José Dapena Paz <jose.dapena@lge.com>
+Cr-Commit-Position: refs/heads/master@{#709469}
+
+(backported to M79)
+---
+
+diff --git a/content/child/webthemeengine_impl_android.cc b/content/child/webthemeengine_impl_android.cc
+index 2e703d6..3759f6c 100644
+--- a/content/child/webthemeengine_impl_android.cc
++++ b/content/child/webthemeengine_impl_android.cc
+@@ -228,7 +228,7 @@ void WebThemeEngineAndroid::Paint(
+       native_theme_extra_params, NativeColorScheme(color_scheme));
+ }
+ 
+-blink::ForcedColors WebThemeEngineAndroid::ForcedColors() const {
++blink::ForcedColors WebThemeEngineAndroid::GetForcedColors() const {
+   return forced_colors_;
+ }
+ 
+diff --git a/content/child/webthemeengine_impl_android.h b/content/child/webthemeengine_impl_android.h
+index 0c113a88..95e2744 100644
+--- a/content/child/webthemeengine_impl_android.h
++++ b/content/child/webthemeengine_impl_android.h
+@@ -22,7 +22,7 @@
+              const blink::WebRect& rect,
+              const blink::WebThemeEngine::ExtraParams* extra_params,
+              blink::WebColorScheme color_scheme) override;
+-  blink::ForcedColors ForcedColors() const override;
++  blink::ForcedColors GetForcedColors() const override;
+   void SetForcedColors(const blink::ForcedColors forced_colors) override;
+   blink::PreferredColorScheme PreferredColorScheme() const override;
+   void SetPreferredColorScheme(
+diff --git a/content/child/webthemeengine_impl_default.cc b/content/child/webthemeengine_impl_default.cc
+index 84db298..04af6c6 100644
+--- a/content/child/webthemeengine_impl_default.cc
++++ b/content/child/webthemeengine_impl_default.cc
+@@ -232,7 +232,7 @@
+ }
+ #endif
+ 
+-blink::ForcedColors WebThemeEngineDefault::ForcedColors() const {
++blink::ForcedColors WebThemeEngineDefault::GetForcedColors() const {
+   return ui::NativeTheme::GetInstanceForWeb()->UsesHighContrastColors()
+              ? blink::ForcedColors::kActive
+              : blink::ForcedColors::kNone;
+diff --git a/content/child/webthemeengine_impl_default.h b/content/child/webthemeengine_impl_default.h
+index 73579db..1f08f67 100644
+--- a/content/child/webthemeengine_impl_default.h
++++ b/content/child/webthemeengine_impl_default.h
+@@ -39,7 +39,7 @@
+                                     int32_t vertical_arrow_bitmap_height,
+                                     int32_t horizontal_arrow_bitmap_width);
+ #endif
+-  blink::ForcedColors ForcedColors() const override;
++  blink::ForcedColors GetForcedColors() const override;
+   void SetForcedColors(const blink::ForcedColors forced_colors) override;
+   blink::PreferredColorScheme PreferredColorScheme() const override;
+   void SetPreferredColorScheme(
+diff --git a/content/child/webthemeengine_impl_mac.cc b/content/child/webthemeengine_impl_mac.cc
+index 9cb279e..553eedb 100644
+--- a/content/child/webthemeengine_impl_mac.cc
++++ b/content/child/webthemeengine_impl_mac.cc
+@@ -6,7 +6,7 @@
+ 
+ namespace content {
+ 
+-blink::ForcedColors WebThemeEngineMac::ForcedColors() const {
++blink::ForcedColors WebThemeEngineMac::GetForcedColors() const {
+   return forced_colors_;
+ }
+ 
+diff --git a/content/child/webthemeengine_impl_mac.h b/content/child/webthemeengine_impl_mac.h
+index b3dafa1..c0b66c0 100644
+--- a/content/child/webthemeengine_impl_mac.h
++++ b/content/child/webthemeengine_impl_mac.h
+@@ -13,7 +13,7 @@
+  public:
+   ~WebThemeEngineMac() override {}
+ 
+-  blink::ForcedColors ForcedColors() const override;
++  blink::ForcedColors GetForcedColors() const override;
+   void SetForcedColors(const blink::ForcedColors forced_colors) override;
+   blink::PreferredColorScheme PreferredColorScheme() const override;
+   void SetPreferredColorScheme(
+diff --git a/third_party/blink/public/platform/web_theme_engine.h b/third_party/blink/public/platform/web_theme_engine.h
+index d642462..aa2da1b 100644
+--- a/third_party/blink/public/platform/web_theme_engine.h
++++ b/third_party/blink/public/platform/web_theme_engine.h
+@@ -227,7 +227,7 @@
+     return base::nullopt;
+   }
+ 
+-  virtual ForcedColors ForcedColors() const { return ForcedColors::kNone; }
++  virtual ForcedColors GetForcedColors() const { return ForcedColors::kNone; }
+   virtual void SetForcedColors(const blink::ForcedColors forced_colors) {}
+   virtual blink::PreferredColorScheme PreferredColorScheme() const {
+     return PreferredColorScheme::kNoPreference;
+diff --git a/third_party/blink/renderer/core/css/media_values.cc b/third_party/blink/renderer/core/css/media_values.cc
+index 045d793..f7c0484 100644
+--- a/third_party/blink/renderer/core/css/media_values.cc
++++ b/third_party/blink/renderer/core/css/media_values.cc
+@@ -221,7 +221,7 @@
+ 
+ ForcedColors MediaValues::CalculateForcedColors() {
+   if (Platform::Current() && Platform::Current()->ThemeEngine())
+-    return Platform::Current()->ThemeEngine()->ForcedColors();
++    return Platform::Current()->ThemeEngine()->GetForcedColors();
+   else
+     return ForcedColors::kNone;
+ }
+diff --git a/third_party/blink/renderer/core/dom/document.cc b/third_party/blink/renderer/core/dom/document.cc
+index 64b0d23..02cce1f 100644
+--- a/third_party/blink/renderer/core/dom/document.cc
++++ b/third_party/blink/renderer/core/dom/document.cc
+@@ -8625,7 +8625,7 @@
+ bool Document::InForcedColorsMode() const {
+   return RuntimeEnabledFeatures::ForcedColorsEnabled() && Platform::Current() &&
+          Platform::Current()->ThemeEngine() &&
+-         Platform::Current()->ThemeEngine()->ForcedColors() !=
++         Platform::Current()->ThemeEngine()->GetForcedColors() !=
+              ForcedColors::kNone;
+ }
+ 
