@@ -17,3 +17,8 @@ LICENSE="BSD"
 SLOT="0"
 
 PATCHES=( "${FILESDIR}/${P}-fix-relative-includes.patch" )
+
+RDEPEND="!<media-libs/shaderc-2019-r1"
+
+# Bug 698850
+RESTRICT="test"
