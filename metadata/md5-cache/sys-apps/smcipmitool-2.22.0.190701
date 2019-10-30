@@ -10,5 +10,5 @@ RDEPEND=net-misc/stunnel sys-libs/ncurses-compat:5 virtual/jre:1.8 >=dev-java/ja
 RESTRICT=bindist fetch mirror
 SLOT=0
 SRC_URI=ftp://ftp.supermicro.com/utility/SMCIPMItool/Linux/SMCIPMITool_2.22.0_build.190701_bundleJRE_Linux_x64.tar.gz
-_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	dd352559d0e143500ec878acc74da909	prefix	c2993e4c430c1ee24f278983d6189501
+_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	82402a1c36ab4bf38f3313a543f9e827	prefix	c2993e4c430c1ee24f278983d6189501
 _md5_=301bbf7a74f6ed6f446df9e652b97595
