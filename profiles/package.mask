@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-10-30)
+# In preparation...
+=dev-lang/perl-5.30.1*
+~virtual/perl-Module-CoreList-5.201.910.270
+
 # Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-10-28)
 # OpenVAS project name has been renamed in
 # Greenbone Vulnerability Management (GVM).
