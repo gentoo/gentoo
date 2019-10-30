@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ivan A. Labutin <barracuda72@bk.ru> (2019-10-30)
+# Masked for testing
+# Bug #697842
+=dev-lang/python-3.8.0
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2019-10-30)
 # In preparation...
 =dev-lang/perl-5.30.1*
