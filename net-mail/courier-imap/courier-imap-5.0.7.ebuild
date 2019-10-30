@@ -62,7 +62,7 @@ For a quick-start howto please refer to
 ${PN}-gentoo.readme in /usr/share/doc/${PF}
 
 Please convert maildir to utf8
-and rerun mkdhparams if needed. Locatio has changed
+and rerun mkdhparams if needed. Location has changed
 "
 
 PATCHES=(
@@ -244,4 +244,11 @@ pkg_postinst() {
 	fperms 0755 "${ROOT}/usr/$(get_libdir)/${PN}"
 
 	readme.gentoo_print_elog
+
+	elog ""
+	elog "Courier Imap now run as user mail:mail."
+	elog ""
+	elog "This require you to enable read/write access to the caches:"
+	elog "/var/lib/courier-imap/courierssl*cache (chown mail:mail)"
+	elog "and read access to the certificates (e.g. /etc/courier-imap/pop3d.pem )"
 }
