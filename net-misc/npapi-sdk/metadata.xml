@@ -5,10 +5,6 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>anarchy@gentoo.org</email>
-		<name>Jory A. Pratt</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>mozilla@gentoo.org</email>
 		<name>Gentoo Mozilla Team</name>
