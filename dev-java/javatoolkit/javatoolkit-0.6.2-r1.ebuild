@@ -23,5 +23,5 @@ python_prepare_all() {
 
 python_install() {
 	distutils-r1_python_install \
-		--install-scripts="${EPREFIX}"/usr/$(get_libdir)/${PN}/bin
+		--install-scripts="${EPREFIX}"/usr/libexec/${PN}
 }
