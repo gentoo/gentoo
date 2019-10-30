@@ -65,6 +65,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 RDEPEND="${COMMON_DEPEND}
 	dev-python/netifaces[${PYTHON_USEDEP}]
 	dev-python/rencode[${PYTHON_USEDEP}]
+	dev-python/pillow[jpeg?,${PYTHON_USEDEP}]
 	virtual/ssh
 	x11-apps/xmodmap
 	cups? ( dev-python/pycups[${PYTHON_USEDEP}] )
@@ -74,7 +75,6 @@ RDEPEND="${COMMON_DEPEND}
 	opengl? (
 		client? ( dev-python/pyopengl_accelerate[${PYTHON_USEDEP}] )
 	)
-	pillow? ( dev-python/pillow[${PYTHON_USEDEP}] )
 	server? ( x11-base/xorg-server[-minimal,xvfb]
 		x11-drivers/xf86-input-void
 	)
