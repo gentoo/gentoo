@@ -1,0 +1,31 @@
+From c8953944c5d34095d42f604f911022fbe144918c Mon Sep 17 00:00:00 2001
+From: Andreas Steinmetz <ast@domdv.de>
+Date: Wed, 30 Oct 2019 16:57:00 +0100
+Subject: [PATCH] Old kernels don't know statx calls and return EINVAL
+
+On a system with glibc-2.29 and kernel 4.9.128 nfs v3 mount fails as
+statx() with mask=STATX_BASIC_STATS returns EINVAL, probably from
+glibc, as strace of rpc.mountd shows no system call.
+
+Fixes: https://bugs.gentoo.org/688644
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ support/misc/xstat.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/support/misc/xstat.c b/support/misc/xstat.c
+index fa047880..6aca6e29 100644
+--- a/support/misc/xstat.c
++++ b/support/misc/xstat.c
+@@ -47,6 +47,8 @@ statx_do_stat(int fd, const char *pathname, struct stat *statbuf, int flags)
+ 			statx_copy(statbuf, &stxbuf);
+ 			return 0;
+ 		}
++		if (errno == EINVAL)
++			errno = ENOSYS;
+ 		if (errno == ENOSYS)
+ 			statx_supported = 0;
+ 	} else
+-- 
+2.24.0.rc1
+
