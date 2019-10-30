@@ -19,6 +19,7 @@ acct-group/ftp 0: File Transfer Protocol server user
 acct-group/gamestat 0: Group for shared high-score and game state files
 acct-group/git 0: System group: git
 acct-group/gkrellmd 0: System group: gkrellmd
+acct-group/gvm 0: Greenbone vulnerability management program group
 acct-group/i2pd 0: Group for the system-wide net-vpn/i2pd server
 acct-group/input 0: System group: input
 acct-group/inspircd 0: System group: inspircd
@@ -92,6 +93,7 @@ acct-user/fhem 0: A user for the FHEM perl server for house automation
 acct-user/ftp 0: File Transfer Protocol server user
 acct-user/git 0: Git repository hosting user
 acct-user/gkrellmd 0: user for gkrellm daemon
+acct-user/gvm 0: Greenbone vulnerability management program user
 acct-user/i2pd 0: User for the system-wide net-vpn/i2pd server
 acct-user/inspircd 0: User for InspIRCd server daemon
 acct-user/ipfs 0: User for the system-wide net-p2p/go-ipfs-bin server
@@ -14748,7 +14750,7 @@ net-fs/mc 2019.07.17.22.13.42 2019.07.31.19.17.35: Minio client provides alterna
 net-fs/minio 2019.09.11.19.53.16: An Amazon S3 compatible object storage server
 net-fs/ncpfs 2.2.6-r3 2.2.6-r4 2.2.6-r5: Provides access to Netware services using the NCP protocol
 net-fs/netatalk 3.1.12: Open Source AFP server
-net-fs/nfs-utils 2.4.1-r2: NFS client and server daemons
+net-fs/nfs-utils 2.4.1-r3: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.3 0.3.5: Commandline and GUI tools that deal directly with NFSv4 ACLs
 net-fs/nfstest 1.0.2 2.1.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.22.1 1.6.22.2 1.8.2-r1: The OpenAFS distributed file system
@@ -17843,7 +17845,7 @@ sys-kernel/linux-docs 4.19: Developer documentation generated from the Linux ker
 sys-kernel/linux-firmware 20190603 20190815 20190904 20190923 20191008 20191022 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.13 4.14-r1 4.15-r1 4.16 4.16-r2 4.17 4.18 4.19 4.20 5.0 5.0-r1 5.1 5.2 5.3: Linux system headers
 sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.1_p7 5.2_p8 5.3_p1 5.3_p2 5.3_p3 5.3_p4: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.1_p7 5.2_p8 5.3_p1 5.3_p2 5.3_p3 5.3_p4 5.3_p5: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999 4.13.9999 4.14.9999 4.19.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4.164_p176 4.9.115_p93 4.9.146_p125 4.14.71_p44 4.14.78_p47 4.14.87_p49 4.16.18_p12 4.18.16_p9 4.19.5_p4 4.19.10_p8: Full Linux 4.19 kernel sources with the CONFIG_PREEMPT_RT patch
@@ -18429,7 +18431,7 @@ www-servers/lighttpd 1.4.53 1.4.54 9999: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.16.1-r1 1.17.3-r1 1.17.4 1.17.5: Robust, small and high performance http and reverse proxy server
-www-servers/nginx-unit 1.8.0 1.11.0 1.12.0 1.12.0-r1: Dynamic web and application server
+www-servers/nginx-unit 1.8.0 1.12.0 1.12.0-r1 1.12.0-r2: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3.3 9999: Pretty small HTTP server -- a command-line tool to share files
