@@ -69,6 +69,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.4-no-werror.patch
 	"${FILESDIR}"/${P}-gssd-Look-in-lib32-for-gss-libs-aswell.patch
 	"${FILESDIR}"/${P}-Fix-include-order-between-config.h-and-stat.h.patch
+	"${FILESDIR}"/${PN}-2.4.1-statx.patch #688644
 )
 
 pkg_setup() {
