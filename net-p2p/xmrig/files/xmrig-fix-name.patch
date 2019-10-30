@@ -1,0 +1,11 @@
+diff --git a/cmake/OpenSSL.cmake b/cmake/OpenSSL.cmake
+index ea46081..a010885 100644
+--- a/cmake/OpenSSL.cmake
++++ b/cmake/OpenSSL.cmake
+@@ -26,6 +26,4 @@ else()
+     set(TLS_SOURCES "")
+     set(OPENSSL_LIBRARIES "")
+     remove_definitions(/DXMRIG_FEATURE_TLS)
+-
+-    set(CMAKE_PROJECT_NAME "${CMAKE_PROJECT_NAME}-notls")
+ endif()

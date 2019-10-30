@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>matt@offtopica.uk</email>
+		<name>Matt Smith</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="asm">
+			Use architecture specific ASM where possible
+		</flag>
+		<flag name="hwloc">
+			Use hwloc library for detecting system info
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">xmrig/xmrig</remote-id>
+	</upstream>
+</pkgmetadata>
