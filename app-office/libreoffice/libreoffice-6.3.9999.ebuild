@@ -252,7 +252,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 
 	# master branch
-	"${FILESDIR}/${PN}-6.3.2.2-mysql-connector-c-8.patch" # bug #692422
+	"${FILESDIR}/${PN}-6.3.3.2-mysql-connector-c-8.patch" # bug #692422
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
