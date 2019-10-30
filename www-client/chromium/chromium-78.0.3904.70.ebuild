@@ -158,6 +158,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-78-gcc-std-vector.patch"
 	"${FILESDIR}/chromium-78-gcc-noexcept.patch"
 	"${FILESDIR}/chromium-78-gcc-alignas.patch"
+	"${FILESDIR}/chromium-79-icu-65.patch"
 )
 
 pre_build_checks() {
