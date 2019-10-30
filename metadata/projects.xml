@@ -675,7 +675,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:ComRes</url>
     <description>Community Resources is an umbrella project comprising the Recruiters, Retirement and Community Relations subprojects. It acts as a central place for all the human-resources related projects.</description>
     <subproject ref="comrel@gentoo.org" inherit-members="1"/>
-    <subproject ref="mentors@gentoo.org" inherit-members="1"/>
     <subproject ref="proctors@gentoo.org"/>
     <subproject ref="recruiters@gentoo.org" inherit-members="1"/>
   </project>
@@ -2067,12 +2066,6 @@
       <name>David Seifert</name>
       <role>Mathematics, Numerics, Statistics</role>
     </member>
-  </project>
-  <project>
-    <email>mentors@gentoo.org</email>
-    <name>Mentors</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Mentors</url>
-    <description>The Mentors project acts as a matchmaking service between prospective developers and volunteer mentors.</description>
   </project>
   <project>
     <email>mozilla@gentoo.org</email>
