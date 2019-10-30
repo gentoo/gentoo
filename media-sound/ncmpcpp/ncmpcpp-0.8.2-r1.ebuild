@@ -10,16 +10,16 @@ SRC_URI="${HOMEPAGE}stable/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm hppa ~ppc ~ppc64 ~sparc x86"
-IUSE="clock icu outputs taglib visualizer"
+IUSE="clock outputs taglib visualizer"
 
 RDEPEND="
 	!dev-libs/boost:0/1.57.0
 	>=media-libs/libmpdclient-2.1
-	dev-libs/boost:=[icu?,nls,threads]
+	dev-libs/boost:=[icu,nls,threads]
+	dev-libs/icu:=
 	net-misc/curl
-	sys-libs/ncurses:=
+	sys-libs/ncurses:=[unicode]
 	sys-libs/readline:*
-	icu? ( dev-libs/icu:= )
 	taglib? ( media-libs/taglib )
 	visualizer? ( sci-libs/fftw:3.0= )
 "
