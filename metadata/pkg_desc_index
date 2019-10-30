@@ -717,7 +717,7 @@ app-crypt/nitrocli 0.2.3-r1 0.2.4: A command line application for interacting wi
 app-crypt/nitrokey-app 1.4 9999: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.25: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
-app-crypt/openpgp-keys-gentoo-release 20190427: OpenPGP keys used for Gentoo releases (snapshots, stages)
+app-crypt/openpgp-keys-gentoo-release 20190427 20191030: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
 app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced by certain debian versions in 2006-2008
 app-crypt/ophcrack 3.6.0 3.7.0 3.8.0: A time-memory-trade-off-cracker
