@@ -2729,10 +2729,13 @@ java-pkg_jar-list() {
 java-pkg_verify-classes() {
 	#$(find ${D} -type f -name '*.jar' -o -name '*.class')
 
-	local version_verify="/usr/bin/class-version-verify.py"
+	local version_verify_1="${EPREFIX}/usr/$(get_libdir)/javatoolkit/bin/class-version-verify.py"
+	local version_verify_2="${EPREFIX}/usr/libexec/javatoolkit/class-version-verify.py"
 
-	if [[ ! -x "${version_verify}" ]]; then
-		version_verify="/usr/$(get_libdir)/javatoolkit/bin/class-version-verify.py"
+	if [[ -x "${version_verify_1}" ]]; then
+		local version_verify=${version_verify_1}
+	else
+		local version_verify=${version_verify_2}
 	fi
 
 	if [[ ! -x "${version_verify}" ]]; then
