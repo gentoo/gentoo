@@ -1,0 +1,8 @@
+--- sqlgrey-1.8.0/init/sqlgrey.gentoo.orig	2019-10-30 14:47:45.567552114 +0100
++++ sqlgrey-1.8.0/init/sqlgrey.gentoo	2019-10-30 14:48:11.716811599 +0100
+@@ -1,4 +1,4 @@
+-#!/sbin/runscript
++#!/sbin/openrc-run
+ # Copyright 1999-2004 Lionel Bouton
+ # Distributed under the terms of the GNU General Public License v2
+ 
