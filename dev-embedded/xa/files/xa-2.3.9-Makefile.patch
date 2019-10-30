@@ -1,0 +1,18 @@
+--- a/Makefile.orig	2019-05-18 09:07:31.331089966 -0700
++++ b/Makefile	2019-05-18 09:10:15.274673364 -0700
+@@ -17,11 +17,11 @@
+ #CFLAGS =
+ #LD = ld
+ 
+-DESTDIR = /usr/local
++PREFIX ?= /usr
+ 
+-BINDIR = $(DESTDIR)/bin
+-MANDIR = $(DESTDIR)/share/man/man1
+-DOCDIR = $(DESTDIR)/share/doc
++BINDIR = $(DESTDIR)/$(PREFIX)/bin
++MANDIR = $(DESTDIR)/$(PREFIX)/share/man/man1
++DOCDIR = $(DESTDIR)/$(PREFIX)/share/doc
+ 
+ MKDIR = mkdir -p
+ INSTALL = install
