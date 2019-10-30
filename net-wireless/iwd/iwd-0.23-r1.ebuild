@@ -19,7 +19,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3"
 
-COMMON_DEPEND=">=dev-libs/ell-0.25
+COMMON_DEPEND="~dev-libs/ell-0.25
 	sys-apps/dbus
 	client? ( sys-libs/readline:0= )"
 
@@ -123,8 +123,7 @@ src_configure() {
 		--enable-external-ell \
 		--enable-systemd-service \
 		--with-systemd-unitdir="$(systemd_get_systemunitdir)" \
-		--with-systemd-modloaddir=$(_systemd_get_dir modulesloaddir /usr/lib/modules-load.d) \
-		--with-systemd-networkdir="$(systemd_get_utildir)/network"
+		--with-systemd-modloaddir=$(_systemd_get_dir modulesloaddir /usr/lib/modules-load.d)
 }
 
 src_install() {
