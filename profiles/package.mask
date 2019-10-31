@@ -507,7 +507,6 @@ sys-libs/libstdc++-v3-bin
 # games-strategy/mindrover-demo: #640586
 # media-fonts/hkscs-ming: #640590
 # net-print/adobeps: #687000
-# sci-chemistry/xdsstat-bin: #673962
 #
 # Removal in 30 days.
 games-fps/enemy-territory-etpro
@@ -517,7 +516,6 @@ games-server/nwn-ded
 games-strategy/mindrover-demo
 media-fonts/hkscs-ming
 net-print/adobeps
-sci-chemistry/xdsstat-bin
 
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
