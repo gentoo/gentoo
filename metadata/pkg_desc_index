@@ -7999,6 +7999,7 @@ dev-python/jdcal 1.0 1.2 1.4: Julian dates from proleptic Gregorian and Julian c
 dev-python/jedi 0.10.2 0.11.1 0.12.0 0.12.1: Autocompletion library for Python
 dev-python/jeepney 0.3.1: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.7.2: Python module for doing approximate and phonetic matching of strings
+dev-python/jikanpy 3.4.1: Python wrapper for jikan.moe API.
 dev-python/jinja 2.10.1: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
@@ -12506,7 +12507,7 @@ mail-filter/libmilter 1.0.2: The Sendmail Filter API (Milter)
 mail-filter/libsieve 2.2.7: A library for parsing, sorting and filtering your mail
 mail-filter/libspf2 1.2.10: libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocols
 mail-filter/libsrs2 1.0.18: libsrs2 is the next generation Sender Rewriting Scheme library
-mail-filter/libsrs_alt 1.0: Sender Rewriting Scheme library
+mail-filter/libsrs_alt 1.0 1.0-r1: Sender Rewriting Scheme library for use with Exim
 mail-filter/maildrop 3.0.0: Mail delivery agent/filter
 mail-filter/mailfilter 0.8.4: Mailfilter is a utility to get rid of unwanted spam mails
 mail-filter/mapson 3.3: A challenge/response-based white-list spam filter
@@ -15485,7 +15486,7 @@ net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
 net-misc/teamviewer 14.6.2452 14.7.1965: All-In-One Solution for Remote Access and Support over the Internet
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
-net-misc/throttle 1.2: Bandwidth limiting pipe
+net-misc/throttle 1.2 1.2-r1: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
 net-misc/tigervnc 1.9.0-r1: Remote desktop viewer display system
 net-misc/tipcutils 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)

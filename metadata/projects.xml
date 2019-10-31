@@ -1494,6 +1494,11 @@
     <name>Hardened musl</name>
     <url>https://wiki.gentoo.org/wiki/Project:Hardened_musl</url>
     <description>This subproject aims to port the hardened tool chain to musl based systems for a variety of architectures. The project treats musl as an alternative to glibc and uClibc, and not necessarily as "embedded".</description>
+    <member>
+      <email>anarchy@gentoo.org</email>
+      <name>Jory A. Pratt</name>
+      <role>Developer</role>
+    </member>
     <member is-lead="1">
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
@@ -2072,6 +2077,11 @@
     <name>Mozilla Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Mozilla</url>
     <description>Mozilla and related applications</description>
+    <member is-lead="1">
+      <email>anarchy@gentoo.org</email>
+      <name>Jory A. Pratt</name>
+      <role>Team Lead</role>
+    </member>
     <member>
       <email>axs@gentoo.org</email>
       <name>Ian Stakenvicius</name>
