@@ -17,7 +17,7 @@ if [[ $PV == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=0
+	UPSTREAM_VER=1
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
 	GENTOO_VER=18
@@ -407,7 +407,7 @@ src_install() {
 	python_fix_shebang "${D}"
 
 	# Remove RedHat-specific stuff
-	rm -rf "${D}"/tmp || die
+	rm -rf "${D}/tmp" || die
 
 	if use doc; then
 		emake DESTDIR="${D}" DOCDIR="/usr/share/doc/${PF}" install-docs
