@@ -101,7 +101,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 RDEPEND="${COMMON_DEPEND}
-	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
+	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/mysql !dev-db/mysql-cluster
 	selinux? ( sec-policy/selinux-mysql )
 	!prefix? (
 		acct-group/mysql acct-user/mysql
