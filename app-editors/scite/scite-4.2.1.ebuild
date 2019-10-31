@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome2-utils toolchain-funcs xdg-utils
+inherit toolchain-funcs xdg-utils
 
 MY_PV=${PV//./}
 DESCRIPTION="A very powerful, highly configurable, small editor with syntax coloring"
@@ -16,12 +16,12 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="lua"
 
 RDEPEND="
-dev-libs/glib:=
-x11-libs/cairo
-x11-libs/gdk-pixbuf
-x11-libs/gtk+:3=
-x11-libs/pango
-lua? ( >=dev-lang/lua-5:= )
+	dev-libs/glib:=
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf
+	x11-libs/gtk+:3=
+	x11-libs/pango
+	lua? ( >=dev-lang/lua-5:= )
 "
 
 DEPEND="${RDEPEND}
@@ -37,7 +37,7 @@ pkg_pretend() {
 		die "Sorry, SCiTE uses C++17 Features and needs >sys-devel/clang-5
 		($(clang-major-version))."
 
-		elif tc-is-gcc; then
+	elif tc-is-gcc; then
 		# older gcc is not supported
 		[[ "${MERGE_TYPE}" != "binary" &&
 		$(gcc-major-version) -lt 7 ]] &&
