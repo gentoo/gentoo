@@ -1,13 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
 
 inherit perl-module
 
 DESCRIPTION="Advanced command-line tools to perform a variety of MySQL and system tasks"
 HOMEPAGE="https://www.percona.com/software/mysql-tools/percona-toolkit"
-SRC_URI="https://www.percona.com/downloads/${PN}/${PV}/tarball/${P}.tar.gz"
+SRC_URI="https://www.percona.com/downloads/${PN}/${PV}/source/tarball/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 Artistic )"
 SLOT="0"
@@ -34,11 +34,18 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	virtual/perl-ExtUtils-MakeMaker"
 
-src_prepare() {
-	# Bug #501904 - CVE-2014-2029
-	# sed -i -e '/^=item --\[no\]version-check/,/^default: yes/{/^default: yes/d}' bin/*
-	eapply -p2 "${FILESDIR}"/${PN}-2.2.7-no-versioncheck.patch
-	eapply -p1 "${FILESDIR}"/${PN}-2.2.17-fix-package-name.patch
+# Bug #501904 - CVE-2014-2029
+# sed -i -e '/^=item --\[no\]version-check/,/^default: yes/{/^default: yes/d}' bin/*
+# ^ is *-no-versioncheck.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.0.7-no-versioncheck.patch
+	"${FILESDIR}"/${PN}-3.0.10-slave-delay-fix.patch
+)
 
+src_prepare() {
 	default
+
+	sed -i \
+		-e "s/=> 'percona-toolkit',/=> 'Percona::Toolkit',/g" \
+		Makefile.PL || die
 }

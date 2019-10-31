@@ -2,21 +2,26 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-MY_EXTRAS_VER="20191016-1722Z"
+MY_EXTRAS_VER="20191031-0134Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
 inherit cmake-utils flag-o-matic linux-info \
 	multiprocessing prefix toolchain-funcs check-reqs
 
-MY_PV="${PV//_pre*}"
+MY_BOOST_VERSION="1.69.0"
+MY_PV=$(ver_rs 3 '-')
+MY_PV="${MY_PV//_pre*}"
+MY_PN="Percona-Server"
 MY_P="${PN}-${MY_PV}"
+MY_MAJOR_PV=$(ver_cut 1-2)
+MY_RELEASE_NOTES_URI="https://www.percona.com/doc/percona-server/${MY_MAJOR_PV}/"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-SRC_URI="https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-${MY_PV}.tar.gz
-	https://cdn.mysql.com/archives/mysql-8.0/mysql-boost-${MY_PV}.tar.gz
-	http://downloads.mysql.com/archives/MySQL-8.0/${PN}-boost-${MY_PV}.tar.gz"
+SRC_URI="https://www.percona.com/downloads/${MY_PN}-${MY_MAJOR_PV}/${MY_PN}-${MY_PV}/source/tarball/${PN}-${MY_PV}.tar.gz
+	https://dl.bintray.com/boostorg/release/${MY_BOOST_VERSION}/source/boost_$(ver_rs 1- _ ${MY_BOOST_VERSION}).tar.bz2
+"
 
 # Gentoo patches to MySQL
 if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]] ; then
@@ -25,12 +30,12 @@ if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]] ; then
 		https://gitweb.gentoo.org/proj/mysql-extras.git/snapshot/mysql-extras-${MY_EXTRAS_VER}.tar.bz2"
 fi
 
-HOMEPAGE="https://www.mysql.com/"
-DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
+HOMEPAGE="https://www.percona.com/software/mysql-database/percona-server"
+DESCRIPTION="Fully compatible, enhanced and open source drop-in replacement for MySQL"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="cjk cracklib debug jemalloc latin1 libressl numa +perl profiling
-	router selinux +server tcmalloc test"
+	rocksdb router selinux +server tcmalloc test tokudb tokudb-backup-plugin"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
 RESTRICT="libressl? ( test )"
@@ -55,11 +60,13 @@ fi
 
 PATCHES=(
 	"${MY_PATCH_DIR}"/20001_all_fix-minimal-build-cmake-mysql-8.0.17.patch
-	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-8.0.18.patch
+	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-8.0.17.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-fix-grant_user_lock-a-root.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-8.0.18-without-clientlibs-tools.patch
+	"${MY_PATCH_DIR}"/20018_all_percona-server-8.0.17-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-8.0.17-add-protobuf-3.8+-support.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-8.0.18-fix-libressl-support.patch
+	"${MY_PATCH_DIR}"/20018_all_percona-server-8.0.17-fix-libressl-support.patch
+	"${MY_PATCH_DIR}"/20018_all_percona-server-8.0.16-dont-install-tokudb-misc-files.patch
+	"${MY_PATCH_DIR}"/20038_all_percona-server-8.0.16-PS-5873.patch
 )
 
 # Be warned, *DEPEND are version-dependant
@@ -84,6 +91,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
+	dev-libs/re2
 	>=dev-libs/protobuf-3.8
 	net-libs/rpcsvc-proto
 	virtual/yacc
@@ -244,7 +252,7 @@ src_configure(){
 		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
 		-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 		-DWITH_CURL=system
-		-DWITH_BOOST="${S}/boost"
+		-DWITH_BOOST="${WORKDIR}/boost_$(ver_rs 1- _ ${MY_BOOST_VERSION})"
 		-DWITH_ROUTER=$(usex router ON OFF)
 	)
 	if use test ; then
@@ -264,6 +272,7 @@ src_configure(){
 
 	mycmakeargs+=(
 		-DWITH_ICU=system
+		-DWITH_RE2=system
 		-DWITH_LIBEVENT=system
 		-DWITH_LZ4=system
 		-DWITH_PROTOBUF=system
@@ -320,6 +329,8 @@ src_configure(){
 			-DWITH_INNODB_MEMCACHED=0
 			-DWITH_MYISAMMRG_STORAGE_ENGINE=1
 			-DWITH_MYISAM_STORAGE_ENGINE=1
+			-DWITH_ROCKSDB=$(usex rocksdb 1 0)
+			-DWITH_TOKUDB=$(usex tokudb 1 0)
 		)
 	else
 		mycmakeargs+=(
@@ -400,10 +411,10 @@ src_test() {
 	disabled_tests+=( "main.window_std_var;0;Known rounding error with latest AMD processors -- no upstream bug yet")
 	disabled_tests+=( "main.window_std_var_optimized;0;Known rounding error with latest AMD processors -- no upstream bug yet")
 	disabled_tests+=( "rpl_gtid.rpl_gtid_stm_drop_table;90612;Known test failure" )
-	disabled_tests+=( "rpl_gtid.rpl_multi_source_mtr_includes;0;Known failure - no upstream bug yet" )
+	disabled_tests+=( "rpl_gtid.rpl_multi_source_mtr_includes;0;Know failure - no upstream bug yet" )
 	disabled_tests+=( "sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware")
-	disabled_tests+=( "x.connection;0;Known failure - no upstream bug yet" )
-	disabled_tests+=( "main.mysqlpump_basic_lz4;0;Extra tool output causes false positive" )
+	disabled_tests+=( "main.mysqlpump_basic_lz4;6042;Extra tool output causes false positive" )
+	disabled_tests+=( "main.ssl_bug75311;5996;Known test failure" )
 
 	local test_ds
 	for test_infos_str in "${disabled_tests[@]}" ; do
