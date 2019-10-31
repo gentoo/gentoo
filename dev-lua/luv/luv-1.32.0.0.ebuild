@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
-	dev-libs/libuv:=
+	>=dev-libs/libuv-1.32.0:=
 	luajit? ( dev-lang/luajit:2 )
 	!luajit? ( dev-lang/lua:0 )
 "
@@ -56,6 +56,6 @@ src_configure() {
 src_test() {
 	local elua="$(usex luajit luajit lua)"
 	# We need to copy the library back so that the tests see it
-	cp "${BUILD_DIR}/libluv.so" "./luv.so" || die "Failed to copy library for tests"
+	ln -s "${BUILD_DIR}/libluv.so" "./luv.so" || die "Failed to symlink library for tests"
 	${elua} "tests/run.lua" || die "Tests failed"
 }
