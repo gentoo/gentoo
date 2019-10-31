@@ -206,7 +206,8 @@ llvm_check_deps() {
 		fi
 	fi
 
-	einfo "Will use LLVM slot ${LLVM_SLOT}!"
+	# <EAPI 7 workaround, #695668
+	einfo "Will use LLVM slot ${LLVM_SLOT}!" >&2
 }
 
 pkg_setup() {
