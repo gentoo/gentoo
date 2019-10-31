@@ -77,9 +77,9 @@ COMMON_DEPEND="
 		dev-libs/libaio:0=
 		sys-process/procps:0=
 	)
-	numa? ( sys-process/numactl )
-	!libressl? ( >=dev-libs/openssl-1.0.0:0= )
 	libressl? ( dev-libs/libressl:0= )
+	!libressl? ( >=dev-libs/openssl-1.0.0:0= )
+	numa? ( sys-process/numactl )
 	tcmalloc? ( dev-util/google-perftools:0= )
 "
 DEPEND="${COMMON_DEPEND}
@@ -373,6 +373,8 @@ src_test() {
 			unset info_msg
 			MTR_PARALLEL=4
 		fi
+	else
+		einfo "MTR_PARALLEL is set to '${MTR_PARALLEL}'"
 	fi
 
 	# create directories because mysqladmin might run out of order
@@ -395,12 +397,8 @@ src_test() {
 	disabled_tests+=( "gis.spatial_utility_function_simplify;5452;Known rounding error with latest AMD processors (PS)")
 	disabled_tests+=( "gis.spatial_op_testingfunc_mix;5452;Known rounding error with latest AMD processors (PS)")
 	disabled_tests+=( "gis.spatial_analysis_functions_distance;5452;Known rounding error with latest AMD processors (PS)")
-	disabled_tests+=( "main.mysqlslap;1253001;Known failure - no upstream bug yet (RH)" )
 	disabled_tests+=( "main.window_std_var;0;Known rounding error with latest AMD processors -- no upstream bug yet")
 	disabled_tests+=( "main.window_std_var_optimized;0;Known rounding error with latest AMD processors -- no upstream bug yet")
-	disabled_tests+=( "perfschema.idx_threads;0;Known failure - no upstream bug yet" )
-	disabled_tests+=( "perfschema.idx_session_connect_attrs;0;Known failure - no upstream bug yet" )
-	disabled_tests+=( "perfschema.idx_session_account_connect_attrs;0;Known failure - no upstream bug yet" )
 	disabled_tests+=( "rpl_gtid.rpl_gtid_stm_drop_table;90612;Known test failure" )
 	disabled_tests+=( "rpl_gtid.rpl_multi_source_mtr_includes;0;Known failure - no upstream bug yet" )
 	disabled_tests+=( "sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware")
