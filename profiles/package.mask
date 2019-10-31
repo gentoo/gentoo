@@ -504,14 +504,12 @@ sys-libs/libstdc++-v3-bin
 # games-rpg/runescape-launcher: #625884
 # games-server/bf1942-lnxded: #640576
 # games-server/nwn-ded: #640578
-# games-strategy/mindrover-demo: #640586
 #
 # Removal in 30 days.
 games-fps/enemy-territory-etpro
 games-rpg/runescape-launcher
 games-server/bf1942-lnxded
 games-server/nwn-ded
-games-strategy/mindrover-demo
 
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
