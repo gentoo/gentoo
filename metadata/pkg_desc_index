@@ -19003,7 +19003,7 @@ x11-plugins/bubblemon 1.46-r3: A fun monitoring applet for your desktop, complet
 x11-plugins/cputnik 0.2.0-r1: cputnik is a simple cpu monitor dockapp
 x11-plugins/docker 1.5-r1 1.5-r2: Openbox app which acts as a system tray for KDE and GNOME2
 x11-plugins/e16-epplets 0.16: Enlightenment DR16 epplets
-x11-plugins/enigmail 2.0.8-r1 2.0.12-r1 2.1.2 9999: Mozilla extension to provide GPG support in mail clients
+x11-plugins/enigmail 2.0.8-r1 2.0.12-r1 2.1.2 2.1.2-r1 9999: Mozilla extension to provide GPG support in mail clients
 x11-plugins/fsviewer 0.2.6-r2: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4-r1: Nice analog clock for GKrellM2
 x11-plugins/gkrellfire 0.4.2-r1: CPU load flames for GKrellM 2
