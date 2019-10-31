@@ -1487,6 +1487,7 @@ dev-db/percona-server:libressl - Enable SSL connections and crypto functions usi
 dev-db/percona-server:numa - Enable NUMA support using sys-process/numactl (NUMA kernel support is also required)
 dev-db/percona-server:profiling - Add support for statement profiling (requires USE=community).
 dev-db/percona-server:rocksdb - Add support for RocksDB; a key/value, LSM database optimized for flash storage
+dev-db/percona-server:router - Build the MySQL router program
 dev-db/percona-server:server - Build the server program
 dev-db/percona-server:systemtap - Build support for profiling and tracing using dev-util/systemtap
 dev-db/percona-server:tokudb - Add support for TokuDB storage engine
