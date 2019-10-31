@@ -76,9 +76,7 @@
 	</flag>
 	<flag name="macvtap">
 		Support for MAC-based TAP (macvlan/macvtap). For networking instead
-		of the normal TUN/TAP. It has its advantages and disadvantages.
-		macvtap support requires very new kernels and is
-		currently evolving. Support for this is experimental at best.
+		of the normal TUN/TAP.
 	</flag>
 	<flag name="vepa">Virtual Ethernet Port Aggregator (VEPA) / 802.1Qbg
 		support. Relies on macvtap support.</flag>
