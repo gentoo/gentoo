@@ -18,14 +18,11 @@
 	</upstream>
 	<use>
 		<flag name="apparmor">Enable support for custom AppArmor profiles</flag>
-		<flag name="bind">Enable custom bind mounts</flag>
 		<flag name="chroot">Enable chrooting to custom directory</flag>
 		<flag name="contrib">Install contrib scripts</flag>
 		<flag name="file-transfer">Enable file transfers between sandboxes and the host system</flag>
 		<flag name="globalcfg">Enable global config file</flag>
 		<flag name="network">Enable networking features</flag>
-		<flag name="network-restricted">Grant access to --interface, --net=ethXXX and --netfilter only to root user;
-										regular users are	only allowed --net=none</flag>
 		<flag name="overlayfs">Enable overlayfs</flag>
 		<flag name="private-home">Enable private home feature</flag>
 		<flag name="seccomp">Enable system call filtering</flag>
