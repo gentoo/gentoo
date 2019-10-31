@@ -8260,7 +8260,7 @@ dev-python/oslo-context 2.21.0 2.22.1: Helpers to maintain useful information ab
 dev-python/oslo-db 4.40.0 4.45.0: OpenStack Common DB Code
 dev-python/oslo-i18n 3.19.0 3.23.1: Oslo i18n library
 dev-python/oslo-log 3.39.2 3.42.3 3.44.1: OpenStack logging config library, configuration for all openstack projects.
-dev-python/oslo-messaging 8.1.2 9.5.0: Messaging API for RPC and notifications over different messaging transports
+dev-python/oslo-messaging 8.1.2 9.5.0 10.2.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 3.34.0 3.37.1: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 1.38.1 2.1.1 2.3.2: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.29.2 1.32.1 1.33.3: OpenStack library for privilege separation.
