@@ -1,15 +1,15 @@
 BDEPEND=virtual/pkgconfig dev-util/ninja >=dev-util/cmake-3.9.6
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-libs/libuv:= luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:0 )
+DEPEND=>=dev-libs/libuv-1.32.0:= luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:0 )
 DESCRIPTION=Bare libuv bindings for lua
 EAPI=7
 HOMEPAGE=https://github.com/luvit/luv
 IUSE=luajit test
 KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0 MIT
-RDEPEND=dev-libs/libuv:= luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:0 )
+RDEPEND=>=dev-libs/libuv-1.32.0:= luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:0 )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/luvit/luv/archive/1.30.1-1.tar.gz -> luv-1.30.1.1.tar.gz https://github.com/keplerproject/lua-compat-5.3/archive/v0.7.tar.gz -> luv-lua-compat-0.7.tar.gz
+SRC_URI=https://github.com/luvit/luv/archive/1.32.0-0.tar.gz -> luv-1.32.0.0.tar.gz https://github.com/keplerproject/lua-compat-5.3/archive/v0.7.tar.gz -> luv-lua-compat-0.7.tar.gz
 _eclasses_=cmake-utils	91d6ef31dc426240577497cacbf2508c	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=0cc6b46997e3cf843f1f2155bec6c18a
+_md5_=c22934d0dc78cb44d55136419e275c0a
