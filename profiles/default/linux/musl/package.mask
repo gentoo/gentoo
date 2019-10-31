@@ -41,7 +41,6 @@ games-emulation/nestra
 games-emulation/zinc
 games-emulation/zsnes
 games-fps/enemy-territory
-games-fps/enemy-territory-etpro
 games-fps/enemy-territory-truecombat
 games-fps/etqw-demo
 games-fps/glxquake-bin

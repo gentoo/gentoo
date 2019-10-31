@@ -80,7 +80,6 @@ games-fps/doom3-lms
 games-fps/doom3-mitm
 games-fps/doom3-roe
 games-fps/enemy-territory
-games-fps/enemy-territory-etpro
 games-fps/enemy-territory-omnibot
 games-fps/enemy-territory-truecombat
 games-fps/etqw-bin

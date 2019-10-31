@@ -497,14 +497,6 @@ media-libs/libtxc_dxtn
 # in 30 days.
 sys-libs/libstdc++-v3-bin
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-28)
-# All of the following packages are unfetchable and mirror-restricted.
-#
-# games-fps/enemy-territory-etpro: #638092
-#
-# Removal in 30 days.
-games-fps/enemy-territory-etpro
-
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
