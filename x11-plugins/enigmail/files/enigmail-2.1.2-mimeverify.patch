@@ -1,0 +1,44 @@
+From 745d8a0e6929e61a66b0e6c1474175d4b0a84cd6 Mon Sep 17 00:00:00 2001
+From: Jonas Witschel <diabonas@gmx.de>
+Date: Sun, 29 Sep 2019 22:07:52 +0200
+Subject: [PATCH] mimeVerify: fix incorrect newline treatment in PGP/MIME
+ messages
+
+RFC 3156 specifies:
+
+Upon receipt of a signed message, an application MUST:
+
+(1)   Convert line endings to the canonical <CR><LF> sequence before
+      the signature can be verified.  This is necessary since the
+      local MTA may have converted to a local end of line convention.
+
+The code in this commit was originally added in
+ab1b9a2d1c023c5bdf9c058681b93da99ee95465 to fix SourceForge bugs #209
+and #4, but was later accidentally removed during refactoring. This
+commit restores the previous state so that signed messages created by
+MUAs such as alot or NeoMutt can be verified successfully.
+
+Fixes: c36bef32a70ee9f2eac1b839cb8644e2fddb32ca
+Closes: #1020 (SourceForge)
+---
+ package/mimeVerify.jsm | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/package/mimeVerify.jsm b/package/mimeVerify.jsm
+index 7cc1b228..a6e01d86 100644
+--- a/package/mimeVerify.jsm
++++ b/package/mimeVerify.jsm
+@@ -497,6 +497,10 @@ MimeVerify.prototype = {
+         mimeSignatureFile: sigFileName
+       };
+       const cApi = EnigmailCryptoAPI();
++
++      // ensure all lines end with CRLF as specified in RFC 3156, section 5
++      this.signedData = this.signedData.replace(/\r\n/g, "\n").replace(/\n/g, "\r\n");
++
+       this.returnStatus = cApi.sync(cApi.verifyMime(this.signedData, options));
+       this.exitCode = this.returnStatus.exitCode;
+ 
+-- 
+2.22.0
+
