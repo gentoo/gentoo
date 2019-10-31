@@ -4976,7 +4976,7 @@ dev-libs/libp11 0.4.10: Abstraction layer to simplify PKCS#11 API
 dev-libs/libparserutils 0.2.3 0.2.4-r1: library for building efficient parsers, written in C
 dev-libs/libpcre 8.41-r1 8.42 8.43: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r1: libpcre(posix).so.3 symlinks for compatibility with Debian
-dev-libs/libpcre2 10.32 10.33: Perl-compatible regular expression library
+dev-libs/libpcre2 10.32 10.33 10.33-r1: Perl-compatible regular expression library
 dev-libs/libpeas 1.22.0: A GObject plugins library
 dev-libs/libpfm 4.4.0 4.6.0 4.8.0 4.10.1: Hardware-based performance monitoring interface for Linux
 dev-libs/libpipeline 1.4.2 1.5.0 1.5.1: a pipeline manipulation library
