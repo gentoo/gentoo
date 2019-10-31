@@ -19,6 +19,7 @@ else
 		https://tarballs.openstack.org/${PN}/openstack-${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
+S="${WORKDIR}/openstack-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
