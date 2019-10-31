@@ -14,6 +14,7 @@
   <flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg> (NUMA kernel support is also required)</flag>
   <flag name="profiling">Add support for statement profiling (requires USE=community).</flag>
   <flag name="rocksdb">Add support for RocksDB; a key/value, LSM database optimized for flash storage</flag>
+  <flag name="router">Build the MySQL router program</flag>
   <flag name="server">Build the server program</flag>
   <flag name="systemtap">Build support for profiling and tracing using <pkg>dev-util/systemtap</pkg></flag>
   <flag name="tokudb">Add support for TokuDB storage engine</flag>
