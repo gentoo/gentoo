@@ -486,11 +486,6 @@ dev-php/suhosin
 dev-php/xcache
 <dev-php/xhprof-0.9.10
 
-# Matt Turner <mattst88@gentoo.org> (2019-09-28)
-# Merged into Mesa. No reverse dependencies. Bug #654464
-# Removal in 30 days
-media-libs/libtxc_dxtn
-
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
