@@ -1,10 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 USE_RUBY="ruby24 ruby25 ruby26"
-
-RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="History.rdoc Manifest.txt README.rdoc"
@@ -32,9 +30,6 @@ all_ruby_prepare() {
 	# Skip test depending on specifics of gem command name
 	sed -i -e '/test_nosudo/,/^  end/ s:^:#:' test/test_hoe.rb || die
 
-	# Gem.bin_wrapper does not work as expected on Gentoo.
-	sed -i -e 's/#{Gem.bin_wrapper "rdoc"}/-S rdoc/' lib/hoe/rcov.rb lib/hoe/publish.rb test/test_hoe_publish.rb || die
-
 	# Avoid test with random sort order
 	sed -i -e '/test_possibly_better/askip "ordering issues"' test/test_hoe.rb || die
 }
@@ -43,6 +38,7 @@ all_ruby_compile() {
 	all_fakegem_compile
 
 	if use doc; then
-		rdoc --title "seattlerb's hoe-3.5.1 Documentation" -o doc --main README.txt lib History.txt Manifest.txt README.txt || die
+		rdoc --title "seattlerb's hoe-${PV} Documentation" -o doc --main README.txt lib History.txt Manifest.txt README.txt || die
+		rm -f doc/js/*.gz || die
 	fi
 }
