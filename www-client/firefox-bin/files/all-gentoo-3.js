@@ -12,4 +12,4 @@ defaultPref("intl.locale.requested", "");
 pref("browser.EULA.override", true);
 
 // We believe in user choice - disable DNS-over-HTTPS by default
-pref("network.trr.mode", 5);
+defaultPref("network.trr.mode", 5);
