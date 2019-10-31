@@ -486,42 +486,6 @@ dev-php/suhosin
 dev-php/xcache
 <dev-php/xhprof-0.9.10
 
-# Matt Turner <mattst88@gentoo.org> (2019-09-28)
-# Merged into Mesa. No reverse dependencies. Bug #654464
-# Removal in 30 days
-media-libs/libtxc_dxtn
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-09-28)
-# ppc64/ia64 binary-only package was needed to workaround
-# gcc-3.3 bugs. Should not be needed anymore. To be removed
-# in 30 days.
-sys-libs/libstdc++-v3-bin
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-28)
-# All of the following packages are unfetchable and mirror-restricted.
-#
-# games-fps/enemy-territory-etpro: #638092
-# games-rpg/runescape-launcher: #625884
-# games-server/bf1942-lnxded: #640576
-# games-server/nwn-ded: #640578
-# games-strategy/mindrover-demo: #640586
-# media-fonts/hkscs-ming: #640590
-# net-print/adobeps: #687000
-# sci-chemistry/xdsstat-bin: #673962
-# sci-libs/parmgridgen (+ revdep sci-libs/openfoam): #633888
-#
-# Removal in 30 days.
-games-fps/enemy-territory-etpro
-games-rpg/runescape-launcher
-games-server/bf1942-lnxded
-games-server/nwn-ded
-games-strategy/mindrover-demo
-media-fonts/hkscs-ming
-net-print/adobeps
-sci-chemistry/xdsstat-bin
-sci-libs/openfoam
-sci-libs/parmgridgen
-
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0

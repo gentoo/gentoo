@@ -197,11 +197,6 @@ app-emulation/vice ffmpeg
 # yet (bug #542210)
 net-analyzer/pmacct mongodb
 
-# Pacho Ramos <pacho@gentoo.org>
-# sci-visualization/paraview is not ready for stabilization yet
-# See bug #541012
-sci-libs/openfoam paraview
-
 # Ben de Groot <yngwin@gentoo.org>
 # Mask experimental feature on stable. This also needs not yet stable mupdf.
 app-text/qpdfview fitz

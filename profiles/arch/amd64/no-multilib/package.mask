@@ -80,7 +80,6 @@ games-fps/doom3-lms
 games-fps/doom3-mitm
 games-fps/doom3-roe
 games-fps/enemy-territory
-games-fps/enemy-territory-etpro
 games-fps/enemy-territory-omnibot
 games-fps/enemy-territory-truecombat
 games-fps/etqw-bin
@@ -116,7 +115,6 @@ games-rpg/dungeon-defenders
 games-rpg/eschalon-book-1-demo
 games-rpg/wasteland2
 games-server/etqw-ded
-games-server/nwn-ded
 games-simulation/bcs-demo
 games-strategy/darwinia
 games-strategy/darwinia-demo
