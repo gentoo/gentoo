@@ -11361,7 +11361,6 @@ games-fps/duke3d-data 1.0-r4: Duke Nukem 3D data files
 games-fps/duke3d-demodata 1.3: Duke Nukem 3D 1.3d shareware data
 games-fps/eduke32 20190919.8133-r1: An open source engine port of the classic PC first person shooter Duke Nukem 3D
 games-fps/enemy-territory 2.60b-r1: standalone multi-player game based on Return to Castle Wolfenstein
-games-fps/enemy-territory-etpro 3.2.6-r1: Enemy Territory ETPro - Minor additions to Enemy Territory to make it more fun
 games-fps/enemy-territory-omnibot 0.85: Enemy Territory Omnibot - Bots for Ennemy Territory
 games-fps/enemy-territory-truecombat 0.49b: Enemy Territory True Combat - a team-based realism modification
 games-fps/etqw-bin 1.5-r2: Enemy Territory: Quake Wars
@@ -11703,7 +11702,6 @@ games-rpg/manaplus 1.8.12.8 1.9.3.23 9999: OpenSource 2D MMORPG client for Evol 
 games-rpg/openglad 0.98-r1: An SDL clone of Gladiator, a classic RPG game
 games-rpg/pcgen 6.04.01-r1: D&D character generator
 games-rpg/queen 1-r1: Flight of the Amazon Queen - 2D point-and-click adventure game set in the 1940s
-games-rpg/runescape-launcher 2.2.4-r2: Official RuneScape NXT client launcher
 games-rpg/sakura-spirit 0: Adult-themed visual novel and dating simulator set in Japan
 games-rpg/soltys 1.0-r2: Classic adventure game
 games-rpg/sumwars 0.5.8-r1: a multi-player, 3D action role-playing game
@@ -11716,14 +11714,12 @@ games-rpg/wastesedge 0.3.5-r1: role playing game to showcase the adonthell engin
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0-r1: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0-r1: A free 2D Zelda fangame parody
-games-server/bf1942-lnxded 1.61-r1: dedicated server for Battlefield 1942
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
 games-server/minecraft-server 1.14.4: The official server for the sandbox video game
 games-server/monopd 0.10.2-r1: server for atlantik games
 games-server/mtavc 0.5-r1: dedicated server for GTA3 multiplayer
-games-server/nwn-ded 1.69-r1: Neverwinter Nights Dedicated server
 games-server/pvpgn 1.8.5-r2: A gaming server for Battle.Net compatible clients
 games-server/steamcmd 1.0-r1 1.0-r2: This is the command-line version of the Steam client for dedicated servers
 games-server/ut2004-ded 3369.3-r2: Unreal Tournament 2004 Linux Dedicated Server
@@ -11793,7 +11789,6 @@ games-strategy/majesty-demo 1.0.0-r1: Control your own kingdom in this simulatio
 games-strategy/maxr 0.2.9: Mechanized Assault and Exploration Reloaded
 games-strategy/megaglest 3.11.1-r1: Cross-platform 3D realtime strategy game
 games-strategy/megaglest-data 3.11.1: Data files for the cross-platform 3D realtime strategy game MegaGlest
-games-strategy/mindrover-demo 1.07b: Control a robot as it races across Europa
 games-strategy/naev 0.6.1-r1: A 2D space trading and combat game, in a similar vein to Escape Velocity
 games-strategy/netherearth 0.52-r1: A remake of the SPECTRUM game Nether Earth
 games-strategy/openra 20190314: A free RTS engine supporting games like Command & Conquer, Red Alert and Dune2k
@@ -12679,7 +12674,6 @@ media-fonts/glass-tty-vt220 001.3 001.3-r2: Hacking with Style: TrueType VT220 F
 media-fonts/hack 3.003: A typeface designed for source code
 media-fonts/hermit 1.1 1.21: A monospace font designed to be clear, pragmatic and very readable
 media-fonts/heuristica 1.0.2: A font based on Adobe Utopia
-media-fonts/hkscs-ming 1.0_pre20030919-r2: Hong Kong Official Reference Chinese Font that implements ISO10646 & HKSCS-2001
 media-fonts/hunkyfonts 0.3.1: Free TrueType fonts based on Bitstream's Vera fonts with additional letters
 media-fonts/ibm-plex 1.2.3 1.3.0 1.3.1 1.4.1 2.0.0: The package of IBM's typeface
 media-fonts/inconsolata 20140821: A sans-serif monotype font for code listings
@@ -13306,7 +13300,6 @@ media-libs/libtaginfo 0.2.1: a library for reading media metadata
 media-libs/libtheora 1.1.1-r2: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
 media-libs/libtimidity 0.2.4: MIDI to WAVE converter library
-media-libs/libtxc_dxtn 1.0.1-r4: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231-r1: Library of unicode annotation data
 media-libs/libuvc 0.0.6-r1: A cross-platform library for USB video devices, built atop libusb
 media-libs/libv4l 1.6.2 1.10.1 1.16.3 1.16.6: Separate libraries ebuild from upstream v4l-utils package
@@ -15622,7 +15615,6 @@ net-p2p/tvrss 1.8_beta: TV RSS is a tool for automating torrent downloads
 net-p2p/vuze 4.8.1.2-r1 5.7.2.0-r1 5.7.6.0: BitTorrent client in Java, formerly called Azureus
 net-p2p/vuze-coreplugins 4.8.1.2 5.7.2.0 5.7.6.0: Core plugins for Vuze that are included in upstream distribution
 net-p2p/xmr-stak 2.7.0 2.7.1 2.8.0 2.8.2 2.8.3 2.9.0 2.10.0 2.10.1 2.10.2 2.10.3 2.10.4 2.10.5 2.10.6 2.10.7 9999: Unified all-in-one Monero miner
-net-print/adobeps 1.0.6-r1: Adobe PostScript drivers for Windows for use with CUPS
 net-print/apsfilter 7.2.8-r1: Apsfilter Prints So Fine, It Leads To Extraordinary Results
 net-print/brlaser 4: Brother laser printer driver
 net-print/c2esp 26 27: A CUPS filter for Kodak ESP printers
@@ -16235,7 +16227,6 @@ sci-chemistry/votca-ctp 1.5 9999: Votca charge transport module
 sci-chemistry/votca-xtp 1.4 1.4.1 1.5 9999: Votca excitation and charge properties module
 sci-chemistry/wxmacmolplt 7.5-r1: Chemical 3D graphics program with GAMESS input builder
 sci-chemistry/xds-bin 20170930: Software for processing single-crystal X-ray monochromatic diffraction data
-sci-chemistry/xdsstat-bin 171217: Prints various statistics (that are not available from XDS itself)
 sci-chemistry/xyza2pipe 20121001: Cross conversion environment of NMR spectra
 sci-electronics/Stage 4.1.1 4.3.0 9999: The Stage Robot Simulator
 sci-electronics/alliance 5.0.20110203: Digital IC design tools (simulation, synthesis, place/route, etc...)
@@ -16547,13 +16538,11 @@ sci-libs/octomap 1.9.0 9999: An Efficient Probabilistic 3D Mapping Framework Bas
 sci-libs/ogdi 3.2.0_beta2 3.2.0: Open Geographical Datastore Interface, a GIS support library
 sci-libs/openblas 0.3.6 0.3.7: Optimized BLAS library based on GotoBLAS2
 sci-libs/opencascade 7.3.0: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
-sci-libs/openfoam 2.2.1 2.2.2 2.3.0-r1 2.3.1-r1 2.4.0-r1: Open Field Operation and Manipulation - CFD Simulation Toolbox
 sci-libs/openlibm 0.5.4: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
 sci-libs/orocos_kdl 1.3.1-r1 1.4.0 9999: Kinematics and Dynamics Library (KDL)
 sci-libs/p4est 1.0 1.1 2.0 2.2 9999: Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees
 sci-libs/parmetis 4.0.3: Parallel (MPI) unstructured graph partitioning library
-sci-libs/parmgridgen 1.0-r1: Software for parallel (mpi) generating coarse grids
 sci-libs/pastix 5.2.2.22-r1 5.2.3: Parallel solver for very large sparse linear systems
 sci-libs/pcl 1.9.1 9999: 2D/3D image and point cloud processing
 sci-libs/pgplot 5.2.2-r6 5.2.2-r7: FORTRAN/C device-independent scientific graphic library
@@ -17905,7 +17894,6 @@ sys-libs/libsmbios 2.3.2 2.3.3 2.4.1 2.4.2: Provide access to (SM)BIOS informati
 sys-libs/libspe2 2.2.80_p95-r1 2.3.0_p135: A wrapper library to adapt the JSRE SPU usage model to SPUFS
 sys-libs/libstatgrab 0.91: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6-r2: Compatibility package for binaries linked against a pre gcc 3.4 libstdc++
-sys-libs/libstdc++-v3-bin 3.3.6: Compatibility package for running binaries linked against a <gcc-3.4 libstdc++
 sys-libs/libtermcap-compat 2.0.8-r3 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
 sys-libs/libunwind 1.1-r1 1.2.1-r1 1.2.1-r2 1.2.1-r3: Portable and efficient API to determine the call-chain of a program
