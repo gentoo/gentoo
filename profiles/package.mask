@@ -508,7 +508,7 @@ sys-libs/libstdc++-v3-bin
 # media-fonts/hkscs-ming: #640590
 # net-print/adobeps: #687000
 # sci-chemistry/xdsstat-bin: #673962
-# sci-libs/parmgridgen (+ revdep sci-libs/openfoam): #633888
+# sci-libs/parmgridgen: #633888
 #
 # Removal in 30 days.
 games-fps/enemy-territory-etpro
@@ -519,7 +519,6 @@ games-strategy/mindrover-demo
 media-fonts/hkscs-ming
 net-print/adobeps
 sci-chemistry/xdsstat-bin
-sci-libs/openfoam
 sci-libs/parmgridgen
 
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
