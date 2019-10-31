@@ -25,7 +25,6 @@ games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
 games-action/trine
 games-fps/enemy-territory
-games-fps/enemy-territory-etpro
 games-fps/enemy-territory-truecombat
 games-fps/etqw-bin
 games-fps/glxquake-bin
