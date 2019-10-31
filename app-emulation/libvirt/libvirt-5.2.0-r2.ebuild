@@ -341,6 +341,9 @@ src_install() {
 	rm -rf "${D}"/etc/sysconfig
 	rm -rf "${D}"/var
 
+	newbashcomp "${S}/tools/bash-completion/vsh" virsh
+	bashcomp_alias virsh virt-admin
+
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
@@ -356,9 +359,6 @@ src_install() {
 
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die
-
-	newbashcomp "${S}/tools/bash-completion/vsh" virsh
-	bashcomp_alias virsh virt-admin
 
 	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true
