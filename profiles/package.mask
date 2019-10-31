@@ -491,12 +491,6 @@ dev-php/xcache
 # Removal in 30 days
 media-libs/libtxc_dxtn
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-09-28)
-# ppc64/ia64 binary-only package was needed to workaround
-# gcc-3.3 bugs. Should not be needed anymore. To be removed
-# in 30 days.
-sys-libs/libstdc++-v3-bin
-
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
