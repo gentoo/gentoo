@@ -17075,7 +17075,7 @@ sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/collectl 3.7.4 4.0.5 4.1.0 4.1.3 4.2.0 4.3.0 4.3.1: Performance monitoring tool capable of interactive reporting and logging to disk
 sys-apps/colorized-logs 2.4: Tools for logs with ANSI color
 sys-apps/consolation 0.0.7: libinput based console mouse daemon
-sys-apps/conspy 1.10: Remote control for Linux virtual consoles
+sys-apps/conspy 1.10 1.14: Remote control for Linux virtual consoles
 sys-apps/coreutils 8.30 8.31 8.31-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/cpint 2.5.3: Linux/390 Interface to z/VM's Control Program
 sys-apps/cpuid 20180419 20180519: Linux tool to dump x86 CPUID information about the CPUs
