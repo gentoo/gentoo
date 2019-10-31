@@ -1,6 +1,27 @@
---- libvncserver-LibVNCServer-0.9.12/CMakeLists.txt
-+++ libvncserver-LibVNCServer-0.9.12/CMakeLists.txt
-@@ -666,8 +666,8 @@
+From 3348a7e42e86dfb98dd7458ad29def476cf6096f Mon Sep 17 00:00:00 2001
+From: Christian Beier <dontmind@freeshell.org>
+Date: Sat, 9 Feb 2019 13:23:26 +0100
+Subject: [PATCH 02/51] CMake: replace hardcoded 'lib' with
+ ${CMAKE_INSTALL_LIBDIR}
+
+Closes #281
+---
+ CMakeLists.txt | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 873cc7b..55f7e65 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,6 +9,7 @@ include(CheckTypeSize)
+ include(TestBigEndian)
+ include(CheckCSourceCompiles)
+ include(CheckCSourceRuns)
++include(GNUInstallDirs)
+ 
+ enable_testing()
+ 
+@@ -666,8 +667,8 @@ get_link_libraries(PRIVATE_LIBS vncclient)
  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libvncclient.pc.cmakein ${CMAKE_CURRENT_BINARY_DIR}/libvncclient.pc @ONLY)
  
  
@@ -11,7 +32,7 @@
  install_files(/include/rfb FILES
      rfb/keysym.h
      rfb/rfb.h
-@@ -677,7 +677,7 @@
+@@ -677,7 +678,7 @@ install_files(/include/rfb FILES
      rfb/rfbregion.h
  )
  
@@ -20,3 +41,6 @@
      libvncserver.pc
      libvncclient.pc
  )
+-- 
+2.23.0
+
