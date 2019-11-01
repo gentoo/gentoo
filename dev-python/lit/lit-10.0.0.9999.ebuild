@@ -9,10 +9,8 @@ inherit distutils-r1 git-r3 multiprocessing
 DESCRIPTION="A stand-alone install of the LLVM suite testing tool"
 HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-S=${WORKDIR}/${P}/utils/lit
-
-EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
-	https://github.com/llvm-mirror/llvm.git"
+EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+S=${WORKDIR}/${P}/llvm/utils/lit
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -31,7 +29,7 @@ BDEPEND="
 
 src_unpack() {
 	git-r3_fetch
-	git-r3_checkout '' '' '' utils/lit
+	git-r3_checkout '' '' '' llvm/utils/lit
 }
 
 python_test() {
