@@ -13,8 +13,8 @@ inherit cmake-utils git-r3 llvm multiprocessing python-any-r1
 DESCRIPTION="OCaml bindings for LLVM"
 HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
-	https://github.com/llvm-mirror/llvm.git"
+EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+S=${WORKDIR}/${P}/llvm
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC AVR )
@@ -51,6 +51,11 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 pkg_setup() {
 	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
 	python-any-r1_pkg_setup
+}
+
+src_unpack() {
+	git-r3_fetch
+	git-r3_checkout '' '' '' llvm
 }
 
 src_prepare() {

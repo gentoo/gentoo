@@ -14,9 +14,9 @@ inherit check-reqs cmake-utils flag-o-matic git-r3 llvm \
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/compiler-rt.git
-	https://github.com/llvm-mirror/compiler-rt.git"
-EGIT_BRANCH="release_90"
+EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+EGIT_BRANCH="release/9.x"
+S=${WORKDIR}/${P}/compiler-rt
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="$(ver_cut 1-3)"
@@ -61,18 +61,10 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if use test; then
-		# needed for patched gtest
-		git-r3_fetch "https://git.llvm.org/git/llvm.git
-			https://github.com/llvm-mirror/llvm.git"
-	fi
+	local dirs=( compiler-rt )
+	use test && dirs+=( llvm/utils/unittest )
 	git-r3_fetch
-
-	if use test; then
-		git-r3_checkout https://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm '' utils/unittest
-	fi
-	git-r3_checkout
+	git-r3_checkout '' '' '' "${dirs[@]}"
 }
 
 src_prepare() {
@@ -89,7 +81,7 @@ src_prepare() {
 
 src_configure() {
 	# pre-set since we need to pass it to cmake
-	BUILD_DIR=${WORKDIR}/${P}_build
+	BUILD_DIR=${WORKDIR}/${P}/compiler-rt_build
 
 	if use clang; then
 		local -x CC=${CHOST}-clang
@@ -114,7 +106,7 @@ src_configure() {
 	)
 	if use test; then
 		mycmakeargs+=(
-			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
+			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/${P}/llvm"
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 
