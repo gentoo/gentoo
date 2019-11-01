@@ -12847,7 +12847,7 @@ media-gfx/eog-plugins 3.26.3 3.26.4: Eye of GNOME plugins
 media-gfx/eom 1.22.0 1.22.1: The MATE image viewer
 media-gfx/ephoto 1.5: Enlightenment image viewer written with EFL
 media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend
-media-gfx/evoluspencil 3.0.4: A simple GUI prototyping tool to create mockups
+media-gfx/evoluspencil 3.0.4 3.1.0: A simple GUI prototyping tool to create mockups
 media-gfx/exact-image 0.8.1-r3: A fast, modern and generic image processing library
 media-gfx/exif 0.6.21: Small CLI util to show EXIF infos hidden in JPEG files
 media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
