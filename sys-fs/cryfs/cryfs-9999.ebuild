@@ -53,6 +53,10 @@ src_prepare() {
 	# remove tests that require internet access to comply with Gentoo policy
 	sed -e "/CurlHttpClientTest.cpp/d" -e "/FakeHttpClientTest.cpp/d" \
 		-i test/cpp-utils/CMakeLists.txt || die
+
+	# /dev/fuse access denied
+	sed -e "/CliTest_IntegrityCheck/d" \
+		-i test/cryfs-cli/CMakeLists.txt || die
 }
 
 src_configure() {
@@ -69,15 +73,12 @@ src_configure() {
 
 src_test() {
 	local TMPDIR="${T}"
-	addread /dev/fuse
-	addwrite /dev/fuse
 	local tests_failed=()
 
-	for i in gitversion cpp-utils parallelaccessstore blockstore blobstore fspp cryfs cryfs-cli ; do
+	# fspp fuse tests hang, bug # 699044
+	for i in gitversion cpp-utils parallelaccessstore blockstore blobstore cryfs cryfs-cli ; do
 		"${BUILD_DIR}"/test/${i}/${i}-test || tests_failed+=( "${i}" )
 	done
-
-	adddeny /dev/fuse
 
 	if [[ -n ${tests_failed[@]} ]] ; then
 		eerror "The following tests failed:"
