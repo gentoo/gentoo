@@ -4,14 +4,12 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit cmake-utils git-r3 llvm multiprocessing python-any-r1
+inherit cmake-utils llvm llvm.org multiprocessing python-any-r1
 
 DESCRIPTION="OCaml bindings for LLVM"
 HOMEPAGE="https://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
-EGIT_BRANCH="release/9.x"
-S=${WORKDIR}/${P}/llvm
+LLVM_COMPONENTS=( llvm )
+llvm.org_set_globals
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -46,11 +44,6 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 pkg_setup() {
 	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
 	python-any-r1_pkg_setup
-}
-
-src_unpack() {
-	git-r3_fetch
-	git-r3_checkout '' '' '' llvm
 }
 
 src_prepare() {
