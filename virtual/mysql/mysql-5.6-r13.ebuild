@@ -10,9 +10,9 @@ IUSE="embedded +server static"
 
 RDEPEND="|| (
 		>=dev-db/mariadb-10.0[embedded(-)?,server?,static?]
-		>=dev-db/mysql-${PV}[embedded(-)?,server?,static?]
-		>=dev-db/percona-server-${PV}[embedded(-)?,server?,static?]
+		>=dev-db/mysql-${PV}[embedded(-)?,server?,static(-)?]
+		>=dev-db/percona-server-${PV}[embedded(-)?,server?,static(-)?]
 		dev-db/mariadb-galera[embedded(-)?,server?,static?]
-		>=dev-db/mysql-cluster-7.3[embedded(-)?,server?,static?]
+		>=dev-db/mysql-cluster-7.3[embedded(-)?,server?,static(-)?]
 	)
 "
