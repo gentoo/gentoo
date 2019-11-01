@@ -8,8 +8,8 @@ inherit bash-completion-r1 git-r3
 DESCRIPTION="Common files shared between multiple slots of clang"
 HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/clang.git
-	https://github.com/llvm-mirror/clang.git"
+EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+S=${WORKDIR}/${P}/clang
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -20,7 +20,7 @@ PDEPEND="sys-devel/clang:*"
 
 src_unpack() {
 	git-r3_fetch
-	git-r3_checkout '' '' '' utils/bash-autocomplete.sh
+	git-r3_checkout '' '' '' clang/utils/bash-autocomplete.sh
 }
 
 src_configure() { :; }
