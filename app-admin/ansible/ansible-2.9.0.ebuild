@@ -56,11 +56,6 @@ python_compile_all() {
 	fi
 }
 
-python_prepare_all() {
-	rm -fv MANIFEST.in || die
-	distutils-r1_python_prepare_all
-}
-
 python_test() {
 	nosetests -d -w test/units -v --with-coverage --cover-package=ansible --cover-branches || die
 }
