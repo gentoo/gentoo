@@ -106,18 +106,3 @@ src_install() {
 
 	use source && java-pkg_dosrc src/main/*
 }
-
-pkg_postinst() {
-	if [[ -n ${REPLACING_VERSIONS} ]]; then
-		if _ver_compare ${REPLACING_VERSIONS} 1.7.0 -eq 1; then
-			elog "The way of packaging ant in Gentoo has changed significantly since"
-			elog "the 1.7.0 version, For more information, please see:"
-			elog "https://www.gentoo.org/proj/en/java/ant-guide.xml"
-		fi
-
-		if _ver_compare ${REPLACING_VERSIONS} 1.7.1 -eq 1; then
-			elog "Since 1.7.1, the ant-tasks meta-ebuild has been removed and its USE"
-			elog "flags have been moved to dev-java/ant."
-		fi
-	fi
-}
