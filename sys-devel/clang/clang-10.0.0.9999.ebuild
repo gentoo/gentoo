@@ -14,11 +14,9 @@ inherit cmake-utils git-r3 llvm multilib-minimal multiprocessing \
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
 SRC_URI=""
+EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
 # We need extra level of indirection for CLANG_RESOURCE_DIR
-S=${WORKDIR}/x/y/${P}
-
-EGIT_REPO_URI="https://git.llvm.org/git/clang.git
-	https://github.com/llvm-mirror/clang.git"
+S=${WORKDIR}/x/${P}/clang
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC AVR )
@@ -82,26 +80,16 @@ pkg_setup() {
 
 src_unpack() {
 	# create extra parent dir for CLANG_RESOURCE_DIR
-	mkdir -p x/y || die
-	cd x/y || die
+	mkdir -p x || die
 
-	git-r3_fetch "https://git.llvm.org/git/clang-tools-extra.git
-		https://github.com/llvm-mirror/clang-tools-extra.git"
-	if use test; then
-		# needed for patched gtest
-		git-r3_fetch "https://git.llvm.org/git/llvm.git
-			https://github.com/llvm-mirror/llvm.git"
-	fi
+	local dirs=( clang clang-tools-extra )
+	use test && dirs+=(
+		llvm/lib/Testing/Support llvm/utils/{lit,llvm-lit,unittest}
+	)
 	git-r3_fetch
-
-	git-r3_checkout https://llvm.org/git/clang-tools-extra.git \
-		"${S}"/tools/extra
-	if use test; then
-		git-r3_checkout https://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm '' \
-			lib/Testing/Support utils/{lit,llvm-lit,unittest}
-	fi
-	git-r3_checkout "${EGIT_REPO_URI}" "${S}"
+	git-r3_checkout "${EGIT_REPO_URI}" "${WORKDIR}/x/${P}" '' "${dirs[@]}"
+	mv "${WORKDIR}/x/${P}/clang-tools-extra" \
+		"${WORKDIR}/x/${P}/clang/tools/extra" || die
 }
 
 check_distribution_components() {
@@ -258,7 +246,7 @@ multilib_src_configure() {
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
 	)
 	use test && mycmakeargs+=(
-		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
+		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/x/${P}/llvm"
 		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
 
