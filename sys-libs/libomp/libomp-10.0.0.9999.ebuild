@@ -13,8 +13,8 @@ inherit cmake-multilib git-r3 linux-info multiprocessing python-any-r1
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
 SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/openmp.git
-	https://github.com/llvm-mirror/openmp.git"
+EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+S=${WORKDIR}/${P}/openmp
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
@@ -69,6 +69,11 @@ pkg_pretend() {
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
+}
+
+src_unpack() {
+	git-r3_fetch
+	git-r3_checkout '' '' '' openmp
 }
 
 multilib_src_configure() {
