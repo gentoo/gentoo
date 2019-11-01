@@ -4,13 +4,12 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
-inherit python-r1
+inherit llvm.org python-r1
 
-MY_P=cfe-${PV/_/}.src
 DESCRIPTION="Python bindings for sys-devel/clang"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz"
-S=${WORKDIR}/${MY_P}/bindings/python
+LLVM_COMPONENTS=( clang/bindings/python )
+llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -27,11 +26,6 @@ RDEPEND="
 	!sys-devel/clang:0[python(-)]
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
-
-src_unpack() {
-	einfo "Unpacking parts of ${MY_P}.tar.xz ..."
-	tar -xJf "${DISTDIR}/${MY_P}.tar.xz" "${MY_P}/bindings/python" || die
-}
 
 python_test() {
 	"${EPYTHON}" -m unittest discover -v || die "Tests fail with ${EPYTHON}"
