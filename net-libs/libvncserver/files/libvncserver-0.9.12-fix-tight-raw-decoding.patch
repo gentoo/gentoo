@@ -1,0 +1,40 @@
+From 6b87d6154200667a66212f80068f7468eaa0f048 Mon Sep 17 00:00:00 2001
+From: DRC <information@virtualgl.org>
+Date: Sat, 28 Sep 2019 14:54:30 -0500
+Subject: [PATCH 50/51] LibVNCClient: Fix regression in Tight/Raw decoding
+
+Introduced by d7b1462 in LibVNCServer 0.9.12.  This regression caused
+the pixels in some RFB rectangles to become corrupted/garbled when the
+Tight encoding was used, without the JPEG subencoding, with a 15-bit or
+16-bit color depth.
+
+Fixes #335
+Fixes https://gitlab.com/Remmina/Remmina/issues/1824
+---
+ libvncclient/tight.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/libvncclient/tight.c b/libvncclient/tight.c
+index df01812..0586f47 100644
+--- a/libvncclient/tight.c
++++ b/libvncclient/tight.c
+@@ -1,5 +1,5 @@
+ /*
+- *  Copyright (C) 2017 D. R. Commander.  All Rights Reserved.
++ *  Copyright (C) 2017, 2019 D. R. Commander.  All Rights Reserved.
+  *  Copyright (C) 2004-2008 Sun Microsystems, Inc.  All Rights Reserved.
+  *  Copyright (C) 2004 Landmark Graphics Corporation.  All Rights Reserved.
+  *  Copyright (C) 2000, 2001 Const Kaplinsky.  All Rights Reserved.
+@@ -360,7 +360,8 @@ FilterCopyBPP (rfbClient* client, int srcx, int srcy, int numRows)
+ #endif
+ 
+   for (y = 0; y < numRows; y++)
+-    memcpy (&dst[y*client->width], &client->buffer[y*client->rectWidth],
++    memcpy (&dst[y*client->width],
++            &client->buffer[y * client->rectWidth * (BPP / 8)],
+             client->rectWidth * (BPP / 8));
+ }
+ 
+-- 
+2.23.0
+

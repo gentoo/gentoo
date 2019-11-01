@@ -120,6 +120,7 @@ src_prepare() {
 			PATCHES+=( "${T}/${QMAIL_TLS_F}"
 				"${DISTDIR}/${QMAIL_TLS_CVE}"
 				"${FILESDIR}/qmail-smtputf8.patch"
+				"${FILESDIR}/qmail-smtputf8-crlf-fix.patch"
 			)
 		fi
 		if use highvolume; then
