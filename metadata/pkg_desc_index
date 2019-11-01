@@ -11835,7 +11835,7 @@ games-util/lutris 0.5.2.1 0.5.2.2 0.5.3 9999: An open source gaming platform for
 games-util/mcrcon 0.6.1: Remote connection client for Minecraft servers
 games-util/nml 0.4.5 0.4.5-r1: Compiler of NML files into grf/nfo files
 games-util/pogo-manager-bin 0.1.6 0.1.7: Pokemon Go manager
-games-util/pyfa 1.34.0 1.35.0 1.35.1 1.37.0 9999: Python Fitting Assistant - a ship fitting application for EVE Online
+games-util/pyfa 1.34.0 1.35.0 1.35.1 1.37.0 2.14.1 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.3.0: Translate gamepad/joystick input into key strokes/mouse actions in X
 games-util/qstat 2.11 2.14: Server statics collector supporting many FPS games
 games-util/springlobby 0.266 0.267: The official lobby client for SpringRTS community games
