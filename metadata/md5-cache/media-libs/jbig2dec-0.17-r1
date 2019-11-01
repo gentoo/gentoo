@@ -10,5 +10,5 @@ LICENSE=AGPL-3
 RDEPEND=png? ( media-libs/libpng:0= )
 SLOT=0/0.17
 SRC_URI=https://github.com/ArtifexSoftware/jbig2dec/archive/0.17.tar.gz -> jbig2dec-0.17.tar.gz test? ( http://jbig2dec.sourceforge.net/ubc/jb2streams.zip )
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	25291c381052933ddf86bcffbfaff2ed	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
 _md5_=28b5413a98322bcfee36130922d4a589
