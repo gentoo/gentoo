@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools flag-o-matic linux-info systemd
+inherit flag-o-matic linux-info systemd
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/network/wireless/iwd.git"
-	inherit git-r3
+	inherit autotools git-r3
 else
 	SRC_URI="https://www.kernel.org/pub/linux/network/wireless/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~sparc ~x86"
@@ -110,7 +110,9 @@ src_unpack() {
 
 src_prepare() {
 	default
-	eautoreconf
+	if [[ ${PV} == *9999* ]] ; then
+		eautoreconf
+	fi
 }
 
 src_configure() {
