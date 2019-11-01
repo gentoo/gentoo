@@ -4,13 +4,13 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit cmake-multilib git-r3 llvm multiprocessing python-any-r1
+inherit cmake-multilib llvm llvm.org multiprocessing python-any-r1
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
-S=${WORKDIR}/${P}/libunwind
+LLVM_COMPONENTS=( libunwind )
+LLVM_TEST_COMPONENTS=( libcxx{,abi} )
+llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
@@ -28,13 +28,6 @@ BDEPEND="
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
-
-src_unpack() {
-	local dirs=( libunwind )
-	use test && dirs+=( libcxx{,abi} )
-	git-r3_fetch
-	git-r3_checkout '' '' '' "${dirs[@]}"
-}
 
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
@@ -66,7 +59,7 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="-vv;-j;${jobs};--param=cxx_under_test=${clang_path}"
-			-DLIBUNWIND_LIBCXX_PATH="${WORKDIR}/${P}/libcxx"
+			-DLIBUNWIND_LIBCXX_PATH="${WORKDIR}/libcxx"
 		)
 	fi
 
@@ -75,7 +68,7 @@ multilib_src_configure() {
 
 build_libcxxabi() {
 	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/$(get_libdir)"
-	local CMAKE_USE_DIR=${WORKDIR}/${P}/libcxxabi
+	local CMAKE_USE_DIR=${WORKDIR}/libcxxabi
 	local BUILD_DIR=${BUILD_DIR}/libcxxabi
 	local mycmakeargs=(
 		-DLIBCXXABI_LIBDIR_SUFFIX=
@@ -84,7 +77,7 @@ build_libcxxabi() {
 		-DLIBCXXABI_USE_LLVM_UNWINDER=ON
 		-DLIBCXXABI_INCLUDE_TESTS=OFF
 
-		-DLIBCXXABI_LIBCXX_INCLUDES="${WORKDIR}/${P}"/libcxx/include
+		-DLIBCXXABI_LIBCXX_INCLUDES="${WORKDIR}"/libcxx/include
 		-DLIBCXXABI_LIBUNWIND_INCLUDES="${S}"/include
 	)
 
@@ -94,7 +87,7 @@ build_libcxxabi() {
 
 build_libcxx() {
 	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/libcxxabi/lib -L${BUILD_DIR}/$(get_libdir)"
-	local CMAKE_USE_DIR=${WORKDIR}/${P}/libcxx
+	local CMAKE_USE_DIR=${WORKDIR}/libcxx
 	local BUILD_DIR=${BUILD_DIR}/libcxx
 	local mycmakeargs=(
 		-DLIBCXX_LIBDIR_SUFFIX=
@@ -103,7 +96,7 @@ build_libcxx() {
 		-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF
 		-DLIBCXXABI_USE_LLVM_UNWINDER=ON
 		-DLIBCXX_CXX_ABI=libcxxabi
-		-DLIBCXX_CXX_ABI_INCLUDE_PATHS="${WORKDIR}/${P}"/libcxxabi/include
+		-DLIBCXX_CXX_ABI_INCLUDE_PATHS="${WORKDIR}"/libcxxabi/include
 		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
 		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
 		-DLIBCXX_HAS_GCC_S_LIB=OFF
