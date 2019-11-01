@@ -6,7 +6,7 @@ EAPI=6
 inherit flag-o-matic qmake-utils autotools git-r3 xdg-utils
 
 DESCRIPTION="Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections"
-HOMEPAGE="http://qjackctl.sourceforge.net/"
+HOMEPAGE="https://qjackctl.sourceforge.io/"
 EGIT_REPO_URI="https://git.code.sf.net/p/qjackctl/code"
 
 LICENSE="GPL-2"
