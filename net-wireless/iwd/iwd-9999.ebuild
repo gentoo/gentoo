@@ -5,8 +5,9 @@ EAPI=6
 inherit flag-o-matic linux-info systemd
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="https://git.kernel.org/pub/scm/network/wireless/iwd.git"
 	inherit autotools git-r3
+	IWD_EGIT_REPO_URI="https://git.kernel.org/pub/scm/network/wireless/iwd.git"
+	ELL_EGIT_REPO_URI="https://git.kernel.org/pub/scm/libs/ell/ell.git"
 else
 	SRC_URI="https://www.kernel.org/pub/linux/network/wireless/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~sparc ~x86"
@@ -101,8 +102,8 @@ pkg_pretend() {
 
 src_unpack() {
 	if [[ ${PV} == *9999* ]] ; then
-		git-r3_src_unpack
-		git clone git://git.kernel.org/pub/scm/libs/ell/ell.git "${WORKDIR}"/ell
+		EGIT_REPO_URI=${IWD_EGIT_REPO_URI} git-r3_src_unpack
+		EGIT_REPO_URI=${ELL_EGIT_REPO_URI} EGIT_CHECKOUT_DIR=${S}/ell git-r3_src_unpack
 	else
 		default
 	fi
