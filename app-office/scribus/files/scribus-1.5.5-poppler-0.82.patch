@@ -1,0 +1,89 @@
+From 615b6185c70c70928cab1aab6e1340ba5f80c174 Mon Sep 17 00:00:00 2001
+From: Craig Bradney <mrb@scribus.info>
+Date: Mon, 28 Oct 2019 22:11:56 +0000
+Subject: [PATCH] Work around poppler 0.82 signature changes
+
+git-svn-id: svn://scribus.net/trunk/Scribus@23287 11d20701-8431-0410-a711-e3c959e3b870
+
+Use same mechanism as with previous poppler versions to support change of constness in function signatures
+
+git-svn-id: svn://scribus.net/trunk/Scribus@23289 11d20701-8431-0410-a711-e3c959e3b870
+---
+ scribus/plugins/import/pdf/importpdfconfig.h | 6 ++++++
+ scribus/plugins/import/pdf/slaoutput.cpp     | 6 +++---
+ scribus/plugins/import/pdf/slaoutput.h       | 6 +++---
+ 3 files changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/scribus/plugins/import/pdf/importpdfconfig.h b/scribus/plugins/import/pdf/importpdfconfig.h
+index 2a13b0d10..9913ee382 100644
+--- a/scribus/plugins/import/pdf/importpdfconfig.h
++++ b/scribus/plugins/import/pdf/importpdfconfig.h
+@@ -52,4 +52,10 @@ for which a new license (GPL+exception) is in place.
+ #define POPPLER_REF
+ #endif
+ 
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(0, 82, 0)
++#define POPPLER_CONST_082 const
++#else
++#define POPPLER_CONST_082
++#endif
++
+ #endif
+diff --git a/scribus/plugins/import/pdf/slaoutput.cpp b/scribus/plugins/import/pdf/slaoutput.cpp
+index 6094f3d9e..520474f65 100644
+--- a/scribus/plugins/import/pdf/slaoutput.cpp
++++ b/scribus/plugins/import/pdf/slaoutput.cpp
+@@ -2784,7 +2784,7 @@ void SlaOutputDev::drawMaskedImage(GfxState *state, Object *ref, Stream *str,  i
+ 	delete[] mbuffer;
+ }
+ 
+-void SlaOutputDev::drawImage(GfxState *state, Object *ref, Stream *str, int width, int height, GfxImageColorMap *colorMap, GBool interpolate, int *maskColors, GBool inlineImg)
++void SlaOutputDev::drawImage(GfxState *state, Object *ref, Stream *str, int width, int height, GfxImageColorMap *colorMap, GBool interpolate, POPPLER_CONST_082 int* maskColors, GBool inlineImg)
+ {
+ 	ImageStream * imgStr = new ImageStream(str, width, colorMap->getNumPixelComps(), colorMap->getBits());
+ //	qDebug() << "Image Components" << colorMap->getNumPixelComps() << "Mask" << maskColors;
+@@ -3365,7 +3365,7 @@ err1:
+ 		fontsrc->unref();
+ }
+ 
+-void SlaOutputDev::drawChar(GfxState *state, double x, double y, double dx, double dy, double originX, double originY, CharCode code, int nBytes, Unicode *u, int uLen)
++void SlaOutputDev::drawChar(GfxState *state, double x, double y, double dx, double dy, double originX, double originY, CharCode code, int nBytes, POPPLER_CONST_082 Unicode *u, int uLen)
+ {
+ 	double x1, y1, x2, y2;
+ 	int render;
+@@ -3452,7 +3452,7 @@ void SlaOutputDev::drawChar(GfxState *state, double x, double y, double dx, doub
+ 	}
+ }
+ 
+-GBool SlaOutputDev::beginType3Char(GfxState *state, double x, double y, double dx, double dy, CharCode code, Unicode *u, int uLen)
++GBool SlaOutputDev::beginType3Char(GfxState *state, double x, double y, double dx, double dy, CharCode code, POPPLER_CONST_082 Unicode *u, int uLen)
+ {
+ //	qDebug() << "beginType3Char";
+ 	GfxFont *gfxFont;
+diff --git a/scribus/plugins/import/pdf/slaoutput.h b/scribus/plugins/import/pdf/slaoutput.h
+index bc4350a03..14a590d55 100644
+--- a/scribus/plugins/import/pdf/slaoutput.h
++++ b/scribus/plugins/import/pdf/slaoutput.h
+@@ -229,7 +229,7 @@ public:
+ 
+ 	//----- image drawing
+ 	void drawImageMask(GfxState *state, Object *ref, Stream *str, int width, int height, GBool invert, GBool interpolate, GBool inlineImg) override;
+-	void drawImage(GfxState *state, Object *ref, Stream *str, int width, int height, GfxImageColorMap *colorMap, GBool interpolate, int *maskColors, GBool inlineImg) override;
++	void drawImage(GfxState *state, Object *ref, Stream *str, int width, int height, GfxImageColorMap *colorMap, GBool interpolate, POPPLER_CONST_082 int *maskColors, GBool inlineImg) override;
+ 	void drawSoftMaskedImage(GfxState *state, Object *ref, Stream *str,
+ 				   int width, int height,
+ 				   GfxImageColorMap *colorMap,
+@@ -261,8 +261,8 @@ public:
+ 	//----- text drawing
+ 	void  beginTextObject(GfxState *state) override;
+ 	void  endTextObject(GfxState *state) override;
+-	void  drawChar(GfxState *state, double /*x*/, double /*y*/, double /*dx*/, double /*dy*/, double /*originX*/, double /*originY*/, CharCode /*code*/, int /*nBytes*/, Unicode * /*u*/, int /*uLen*/) override;
+-	GBool beginType3Char(GfxState * /*state*/, double /*x*/, double /*y*/, double /*dx*/, double /*dy*/, CharCode /*code*/, Unicode * /*u*/, int /*uLen*/) override;
++	void  drawChar(GfxState *state, double /*x*/, double /*y*/, double /*dx*/, double /*dy*/, double /*originX*/, double /*originY*/, CharCode /*code*/, int /*nBytes*/, POPPLER_CONST_082 Unicode * /*u*/, int /*uLen*/) override;
++	GBool beginType3Char(GfxState * /*state*/, double /*x*/, double /*y*/, double /*dx*/, double /*dy*/, CharCode /*code*/, POPPLER_CONST_082 Unicode * /*u*/, int /*uLen*/) override;
+ 	void  endType3Char(GfxState * /*state*/) override;
+ 	void  type3D0(GfxState * /*state*/, double /*wx*/, double /*wy*/) override;
+ 	void  type3D1(GfxState * /*state*/, double /*wx*/, double /*wy*/, double /*llx*/, double /*lly*/, double /*urx*/, double /*ury*/) override;
+-- 
+2.23.0
+

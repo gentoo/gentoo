@@ -67,6 +67,9 @@ RDEPEND="${DEPEND}
 "
 
 PATCHES=(
+	# upstream svn trunk
+	"${FILESDIR}"/${P}-poppler-0.82.patch
+	# non(?)-upstreamable
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
 	"${FILESDIR}"/${P}-docdir.patch
 	"${FILESDIR}"/${P}-findhyphen.patch
