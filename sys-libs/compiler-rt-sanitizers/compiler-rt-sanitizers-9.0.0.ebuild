@@ -4,17 +4,14 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit check-reqs cmake-utils flag-o-matic llvm \
+inherit check-reqs cmake-utils flag-o-matic llvm llvm.org \
 	multiprocessing python-any-r1
-
-MY_P=compiler-rt-${PV/_/}.src
-LLVM_P=llvm-${PV/_/}.src
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz
-	test? ( https://releases.llvm.org/${PV}/${LLVM_P}.tar.xz )"
-S=${WORKDIR}/${MY_P}
+LLVM_COMPONENTS=( compiler-rt )
+LLVM_TEST_COMPONENTS=( llvm/utils/unittest )
+llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="$(ver_cut 1-3)"
@@ -58,18 +55,6 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
-src_unpack() {
-	einfo "Unpacking ${MY_P}.tar.xz ..."
-	tar -xf "${DISTDIR}/${MY_P}.tar.xz" || die
-
-	if use test; then
-		einfo "Unpacking parts of ${LLVM_P}.tar.xz ..."
-		tar -xf "${DISTDIR}/${LLVM_P}.tar.xz" \
-			"${LLVM_P}"/utils/unittest || die
-		mv "${LLVM_P}" llvm || die
-	fi
-}
-
 src_prepare() {
 	cmake-utils_src_prepare
 
@@ -84,7 +69,7 @@ src_prepare() {
 
 src_configure() {
 	# pre-set since we need to pass it to cmake
-	BUILD_DIR=${WORKDIR}/${P}_build
+	BUILD_DIR=${WORKDIR}/compiler-rt_build
 
 	if use clang; then
 		local -x CC=${CHOST}-clang
