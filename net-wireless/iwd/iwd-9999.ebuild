@@ -126,7 +126,8 @@ src_configure() {
 		--enable-external-ell \
 		--enable-systemd-service \
 		--with-systemd-unitdir="$(systemd_get_systemunitdir)" \
-		--with-systemd-modloaddir=$(_systemd_get_dir modulesloaddir /usr/lib/modules-load.d)
+		--with-systemd-modloaddir=$(_systemd_get_dir modulesloaddir /usr/lib/modules-load.d) \
+		--with-systemd-networkdir="$(systemd_get_utildir)/network"
 }
 
 src_install() {
