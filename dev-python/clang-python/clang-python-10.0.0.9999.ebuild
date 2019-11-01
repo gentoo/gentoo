@@ -9,10 +9,8 @@ inherit git-r3 python-r1
 DESCRIPTION="Python bindings for sys-devel/clang"
 HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-S=${WORKDIR}/${P}/bindings/python
-
-EGIT_REPO_URI="https://git.llvm.org/git/clang.git
-	https://github.com/llvm-mirror/clang.git"
+EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+S=${WORKDIR}/${P}/clang/bindings/python
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -32,7 +30,7 @@ DEPEND="${RDEPEND}"
 
 src_unpack() {
 	git-r3_fetch
-	git-r3_checkout '' '' '' bindings/python
+	git-r3_checkout '' '' '' clang/bindings/python
 }
 
 python_test() {
