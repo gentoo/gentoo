@@ -86,8 +86,8 @@ pkg_pretend() {
 	check_extra_config
 
 	if ! use crda; then
-		if [[ $(getfilevar CONFIG_CFG80211 /usr/src/linux/.config) == y ]] \
-			&& [[ $(getfilevar CONFIG_EXTRA_FIRMWARE /usr/src/linux/.config) != *regulatory.db* ]]
+		if linux_config_exists && linux_chkconfig_builtin CFG80211 &&
+			[[ $(linux_chkconfig_string EXTRA_FIRMWARE) != *regulatory.db* ]]
 		then
 			ewarn ""
 			ewarn "REGULATORY DOMAIN PROBLEM:"
