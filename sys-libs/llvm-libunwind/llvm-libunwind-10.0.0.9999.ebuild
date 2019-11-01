@@ -12,8 +12,8 @@ inherit cmake-multilib git-r3 llvm multiprocessing python-any-r1
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
 SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/libunwind.git
-	https://github.com/llvm-mirror/libunwind.git"
+EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+S=${WORKDIR}/${P}/libunwind
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
@@ -32,30 +32,19 @@ BDEPEND="
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+src_unpack() {
+	local dirs=( libunwind )
+	use test && dirs+=( libcxx{,abi} )
+	git-r3_fetch
+	git-r3_checkout '' '' '' "${dirs[@]}"
+}
+
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
-}
-
-src_unpack() {
-	if use test; then
-		git-r3_fetch "https://git.llvm.org/git/libcxx.git
-			https://github.com/llvm-mirror/libcxx.git"
-		git-r3_fetch "https://git.llvm.org/git/libcxxabi.git
-			https://github.com/llvm-mirror/libcxxabi.git"
-	fi
-	git-r3_fetch
-
-	if use test; then
-		git-r3_checkout https://llvm.org/git/libcxx.git \
-			"${WORKDIR}"/libcxx
-		git-r3_checkout https://llvm.org/git/libcxxabi.git \
-			"${WORKDIR}"/libcxxabi
-	fi
-	git-r3_checkout
 }
 
 multilib_src_configure() {
@@ -80,7 +69,7 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="-vv;-j;${jobs};--param=cxx_under_test=${clang_path}"
-			-DLIBUNWIND_LIBCXX_PATH="${WORKDIR}"/libcxx
+			-DLIBUNWIND_LIBCXX_PATH="${WORKDIR}/${P}/libcxx"
 		)
 	fi
 
@@ -89,7 +78,7 @@ multilib_src_configure() {
 
 build_libcxxabi() {
 	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/$(get_libdir)"
-	local CMAKE_USE_DIR=${WORKDIR}/libcxxabi
+	local CMAKE_USE_DIR=${WORKDIR}/${P}/libcxxabi
 	local BUILD_DIR=${BUILD_DIR}/libcxxabi
 	local mycmakeargs=(
 		-DLIBCXXABI_LIBDIR_SUFFIX=
@@ -98,7 +87,7 @@ build_libcxxabi() {
 		-DLIBCXXABI_USE_LLVM_UNWINDER=ON
 		-DLIBCXXABI_INCLUDE_TESTS=OFF
 
-		-DLIBCXXABI_LIBCXX_INCLUDES="${WORKDIR}"/libcxx/include
+		-DLIBCXXABI_LIBCXX_INCLUDES="${WORKDIR}/${P}"/libcxx/include
 		-DLIBCXXABI_LIBUNWIND_INCLUDES="${S}"/include
 	)
 
@@ -108,7 +97,7 @@ build_libcxxabi() {
 
 build_libcxx() {
 	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/libcxxabi/lib -L${BUILD_DIR}/$(get_libdir)"
-	local CMAKE_USE_DIR=${WORKDIR}/libcxx
+	local CMAKE_USE_DIR=${WORKDIR}/${P}/libcxx
 	local BUILD_DIR=${BUILD_DIR}/libcxx
 	local mycmakeargs=(
 		-DLIBCXX_LIBDIR_SUFFIX=
@@ -117,7 +106,7 @@ build_libcxx() {
 		-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF
 		-DLIBCXXABI_USE_LLVM_UNWINDER=ON
 		-DLIBCXX_CXX_ABI=libcxxabi
-		-DLIBCXX_CXX_ABI_INCLUDE_PATHS="${WORKDIR}"/libcxxabi/include
+		-DLIBCXX_CXX_ABI_INCLUDE_PATHS="${WORKDIR}/${P}"/libcxxabi/include
 		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
 		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
 		-DLIBCXX_HAS_GCC_S_LIB=OFF
