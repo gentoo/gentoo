@@ -244,15 +244,15 @@ else
 fi
 
 PATCHES=(
+	# master branch
+	"${FILESDIR}/${P}-mysql-connector-c-8.patch" # bug #692422
+	"${FILESDIR}/${PN}-6.2.8.2-poppler-0.82.patch"
 	# "${WORKDIR}"/${PATCHSET/.tar.xz/}
 
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
-
-	# master branch
-	"${FILESDIR}/${P}-mysql-connector-c-8.patch" # bug #692422
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"

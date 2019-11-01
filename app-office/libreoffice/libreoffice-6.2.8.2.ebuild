@@ -246,6 +246,7 @@ fi
 PATCHES=(
 	# master branch
 	"${FILESDIR}/${PN}-6.2-ldap-optional.patch"
+	"${FILESDIR}/${P}-poppler-0.82.patch"
 	# "${WORKDIR}"/${PATCHSET/.tar.xz/}
 
 	# not upstreamable stuff
