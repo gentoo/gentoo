@@ -14,9 +14,9 @@ inherit cmake-utils git-r3 multilib-minimal multiprocessing pax-utils \
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
-	https://github.com/llvm-mirror/llvm.git"
-EGIT_BRANCH="release_90"
+EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+EGIT_BRANCH="release/9.x"
+S=${WORKDIR}/${P}/llvm
 
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -86,6 +86,11 @@ python_check_deps() {
 
 	has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
 	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
+
+src_unpack() {
+	git-r3_fetch
+	git-r3_checkout '' '' '' llvm
 }
 
 src_prepare() {

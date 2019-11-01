@@ -14,8 +14,8 @@ inherit cmake-utils git-r3 multilib-minimal multiprocessing pax-utils \
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
-	https://github.com/llvm-mirror/llvm.git"
+EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+S=${WORKDIR}/${P}/llvm
 
 # Those are in lib/Targets, without explicit CMakeLists.txt mention
 ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC AVR )
@@ -89,6 +89,11 @@ python_check_deps() {
 
 	has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
 	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
+
+src_unpack() {
+	git-r3_fetch
+	git-r3_checkout '' '' '' llvm
 }
 
 check_live_ebuild() {
