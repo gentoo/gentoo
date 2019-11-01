@@ -13026,7 +13026,7 @@ media-gfx/transfig 3.2.5e: A set of tools for creating TeX documents with graphi
 media-gfx/ttygif 1.80_p20181218: Convert terminal recordings to animated gifs
 media-gfx/tuxpaint 0.9.21-r2: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628-r1: Set of 'Rubber Stamp' images which can be used within Tux Paint
-media-gfx/ufraw 0.22-r2 0.22-r3: RAW Image format viewer and GIMP plugin
+media-gfx/ufraw 0.22-r3: RAW Image format viewer and GIMP plugin
 media-gfx/uniconvertor 2.0_pre379-r1 2.0_pre379-r2: Convert vector graphic file formats like .cdr, .svg, wmf and more.
 media-gfx/valentina 0.6.1 9999: Cloth patternmaking software
 media-gfx/videorbits 2.205: a collection of programs for creating high dynamic range images
