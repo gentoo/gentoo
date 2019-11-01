@@ -20,8 +20,8 @@ IUSE="bluetooth"
 
 RDEPEND="virtual/libusb:1
 	bluetooth? ( net-wireless/bluez )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
