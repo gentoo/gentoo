@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,6 +28,9 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${ED}" install
+
+	# Decompress the man page to enable PM auto compression
+	gzip -d "${ED}"/usr/share/man/man8/mbpfan.8.gz || die
 
 	# Remove the empty systemd unit directory
 	# It doesn't actually install the unit file
