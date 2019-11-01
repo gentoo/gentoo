@@ -2047,7 +2047,7 @@ app-misc/metromap 0.1.4-r1: Metromap is simple pygtk+2 programm for finding path
 app-misc/mime-types 9: Provides /etc/mime.types file
 app-misc/mkcert 1.4.0: A zero-config tool to make locally trusted development certificates
 app-misc/mmv 1.01b_p18 1.01b_p18-r1: Move/copy/append/link multiple files according to a set of wildcard patterns
-app-misc/mosquitto 1.5.6 1.6.7: An Open Source MQTT v3 Broker
+app-misc/mosquitto 1.6.7: An Open Source MQTT v3 Broker
 app-misc/mouseremote 0.90-r2: X10 MouseRemote
 app-misc/mswinurl_launcher 1.0: Launcher and desktop association for MS Windows *.URL (text/x-uri) files
 app-misc/mtail 1.1.1-r3 1.2.0: Tail workalike, that performs output colourising
@@ -8281,7 +8281,7 @@ dev-python/owslib 0.16.0-r1 0.17.1: Library for client programming with Open Geo
 dev-python/pSQL 1.2.1: MySQL abstraction layer for python
 dev-python/packaging 16.8 17.1 18.0: Core utilities for Python packages
 dev-python/pafy 0.5.3.1 0.5.4 9999: Python library to retrieve YouTube content and metadata
-dev-python/paho-mqtt 1.1 1.3.1 1.4.0: A client class with support for both MQTT v3.1 and v3.1.1
+dev-python/paho-mqtt 1.4.0: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/paisley 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
 dev-python/pandas 0.19.1 0.23.4 0.24.2 9999: Powerful data structures for data analysis and statistics
@@ -14371,7 +14371,7 @@ net-analyzer/echoping 6.0.2_p434-r2 6.0.2_p434-r3: Small program to test perform
 net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.14 0.9.17 0.9.18: A graphical network monitor for Unix modeled after etherman
 net-analyzer/ethloop 10-r3: Local simulator for testing Linux QoS disciplines
-net-analyzer/ettercap 0.8.2-r2 0.8.3 9999: A suite for man in the middle attacks
+net-analyzer/ettercap 0.8.3 9999: A suite for man in the middle attacks
 net-analyzer/fail2ban 0.10.4 0.10.4-r2 99999999: scans log files and bans IPs that show malicious signs
 net-analyzer/firewalk 5.0-r1: A tool for determining a firewall's rule set
 net-analyzer/flent 1.0.1-r1: The FLExible Network Tester
