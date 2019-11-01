@@ -4,6 +4,9 @@
 EAPI=6
 inherit flag-o-matic linux-info systemd
 
+#Set this variable to the required external ell version
+ELL_REQ=""
+
 if [[ ${PV} == *9999* ]]; then
 	inherit autotools git-r3
 	IWD_EGIT_REPO_URI="https://git.kernel.org/pub/scm/network/wireless/iwd.git"
@@ -20,9 +23,10 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3"
 
-COMMON_DEPEND="~dev-libs/ell-9999
-	sys-apps/dbus
+COMMON_DEPEND="sys-apps/dbus
 	client? ( sys-libs/readline:0= )"
+
+[[ -z "${ELL_REQ}" ]] || COMMON_DEPEND+="~dev-libs/ell-${ELL_REQ}"
 
 RDEPEND="${COMMON_DEPEND}
 	net-wireless/wireless-regdb
