@@ -1,0 +1,27 @@
+From f6e72a23052339253daa79095391625cf01c96f1 Mon Sep 17 00:00:00 2001
+From: Christoph Cullmann <cullmann@kde.org>
+Date: Mon, 28 Oct 2019 20:32:13 +0100
+Subject: fix crash
+
+BUG: 413474
+---
+ src/utils/katevariableexpansionhelpers.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/utils/katevariableexpansionhelpers.cpp b/src/utils/katevariableexpansionhelpers.cpp
+index db71d0f..89aab3d 100644
+--- a/src/utils/katevariableexpansionhelpers.cpp
++++ b/src/utils/katevariableexpansionhelpers.cpp
+@@ -278,7 +278,9 @@ KateVariableExpansionDialog::KateVariableExpansionDialog(QWidget *parent)
+     connect(m_listView, &QAbstractItemView::activated, [this, lblDescription, lblCurrentValue](const QModelIndex &index) {
+         if (index.isValid()) {
+             const auto &var = m_variables[m_filterModel->mapToSource(index).row()];
+-            const auto name = QStringLiteral("%{") + var.name() + QLatin1Char('}');
++
++            // not auto, don't fall for string builder, see bug 413474
++            const QString name = QStringLiteral("%{") + var.name() + QLatin1Char('}');
+ 
+             if (parentWidget() && parentWidget()->window()) {
+                 auto currentWidget = parentWidget()->window()->focusWidget();
+-- 
+cgit v1.1
