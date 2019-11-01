@@ -1,0 +1,127 @@
+From 0f8b2babcc69c490ae6548bda7ceeb1ffd27a9e3 Mon Sep 17 00:00:00 2001
+From: Volker Krause <vkrause@kde.org>
+Date: Sun, 29 Sep 2019 12:51:57 +0200
+Subject: Fix compatibility with Poppler 0.82
+
+---
+ CMakeLists.txt                       | 17 ++++++-----------
+ src/config-kitinerary.h.cmake        |  1 +
+ src/pdf/pdfextractoroutputdevice.cpp |  2 +-
+ src/pdf/pdfextractoroutputdevice_p.h |  3 ++-
+ src/pdf/popplertypes_p.h             | 30 ++++++++++++++++++++++++++++++
+ 5 files changed, 40 insertions(+), 13 deletions(-)
+ create mode 100644 src/pdf/popplertypes_p.h
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cb222d9..1d66d3b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,17 +62,12 @@ if(TARGET Poppler::Core)
+     if (${Poppler_VERSION} VERSION_GREATER 0.68)
+         set(HAVE_POPPLER_0_69 ON)
+     endif()
+-    set(CMAKE_REQUIRED_LIBRARIES Poppler::Core Qt5::Core)
+-    check_cxx_source_compiles("
+-    #include <goo/GooString.h>
+-    #include <QString>
+-    int main()
+-    {
+-        GooString s;
+-        QString val = QString::fromUtf8(s.c_str());
+-        return 0;
+-    }
+-    " HAVE_POPPLER_0_72)
++    if (${Poppler_VERSION} VERSION_GREATER 0.71)
++        set(HAVE_POPPLER_0_72 ON)
++    endif()
++    if (${Poppler_VERSION} VERSION_GREATER 0.81)
++        set(HAVE_POPPLER_0_82 ON)
++    endif()
+ endif()
+ 
+ if (TARGET ZXing::Core)
+diff --git a/src/config-kitinerary.h.cmake b/src/config-kitinerary.h.cmake
+index b0bda20..6d3b156 100644
+--- a/src/config-kitinerary.h.cmake
++++ b/src/config-kitinerary.h.cmake
+@@ -24,6 +24,7 @@
+ #cmakedefine HAVE_POPPLER_0_58
+ #cmakedefine HAVE_POPPLER_0_69
+ #cmakedefine HAVE_POPPLER_0_72
++#cmakedefine HAVE_POPPLER_0_82
+ 
+ #cmakedefine HAVE_ZXING
+ 
+diff --git a/src/pdf/pdfextractoroutputdevice.cpp b/src/pdf/pdfextractoroutputdevice.cpp
+index 2a06c82..0027cad 100644
+--- a/src/pdf/pdfextractoroutputdevice.cpp
++++ b/src/pdf/pdfextractoroutputdevice.cpp
+@@ -30,7 +30,7 @@ PdfExtractorOutputDevice::PdfExtractorOutputDevice()
+ {
+ }
+ 
+-void PdfExtractorOutputDevice::drawImage(GfxState* state, Object* ref, Stream* str, int width, int height, GfxImageColorMap* colorMap, bool interpolate, int* maskColors, bool inlineImg)
++void PdfExtractorOutputDevice::drawImage(GfxState* state, Object* ref, Stream* str, int width, int height, GfxImageColorMap* colorMap, bool interpolate, PopplerMaskColors* maskColors, bool inlineImg)
+ {
+     Q_UNUSED(str);
+     Q_UNUSED(interpolate);
+diff --git a/src/pdf/pdfextractoroutputdevice_p.h b/src/pdf/pdfextractoroutputdevice_p.h
+index 9241f9f..5d448d3 100644
+--- a/src/pdf/pdfextractoroutputdevice_p.h
++++ b/src/pdf/pdfextractoroutputdevice_p.h
+@@ -21,6 +21,7 @@
+ #include <config-kitinerary.h>
+ 
+ #include "pdfvectorpicture_p.h"
++#include "popplertypes_p.h"
+ 
+ #ifdef HAVE_POPPLER
+ #include <TextOutputDev.h>
+@@ -43,7 +44,7 @@ public:
+     void finalize();
+ 
+     bool needNonText() override { return true; }
+-    void drawImage(GfxState *state, Object *ref, Stream *str, int width, int height, GfxImageColorMap *colorMap, bool interpolate, int *maskColors, bool inlineImg) override;
++    void drawImage(GfxState *state, Object *ref, Stream *str, int width, int height, GfxImageColorMap *colorMap, bool interpolate, PopplerMaskColors *maskColors, bool inlineImg) override;
+ 
+     // operations used to detect vector barcodes
+     void saveState(GfxState *state) override;
+diff --git a/src/pdf/popplertypes_p.h b/src/pdf/popplertypes_p.h
+new file mode 100644
+index 0000000..f9d844a
+--- /dev/null
++++ b/src/pdf/popplertypes_p.h
+@@ -0,0 +1,30 @@
++/*
++    Copyright (C) 2019 Volker Krause <vkrause@kde.org>
++
++    This program is free software; you can redistribute it and/or modify it
++    under the terms of the GNU Library General Public License as published by
++    the Free Software Foundation; either version 2 of the License, or (at your
++    option) any later version.
++
++    This program is distributed in the hope that it will be useful, but WITHOUT
++    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Library General Public
++    License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program.  If not, see <https://www.gnu.org/licenses/>.
++*/
++
++#ifndef KITINERARY_POPPLERTYPES_P_H
++#define KITINERARY_POPPLERTYPES_P_H
++
++#include <config-kitinerary.h>
++
++#ifdef HAVE_POPPLER_0_82
++using PopplerMaskColors = const int;
++#else
++using PopplerMaskColors = int;
++#endif
++
++#endif // KITINERARY_POPPLERTYPES_P_H
++
+-- 
+cgit v1.1
+
