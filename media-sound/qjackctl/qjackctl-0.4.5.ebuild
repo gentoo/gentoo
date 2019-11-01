@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit flag-o-matic qmake-utils
 
 DESCRIPTION="Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections"
-HOMEPAGE="http://qjackctl.sourceforge.net/"
+HOMEPAGE="https://qjackctl.sourceforge.io/"
 SRC_URI="mirror://sourceforge/qjackctl/${P}.tar.gz"
 
 LICENSE="GPL-2"
