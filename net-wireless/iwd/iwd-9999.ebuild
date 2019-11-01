@@ -103,7 +103,7 @@ pkg_pretend() {
 src_unpack() {
 	if [[ ${PV} == *9999* ]] ; then
 		EGIT_REPO_URI=${IWD_EGIT_REPO_URI} git-r3_src_unpack
-		EGIT_REPO_URI=${ELL_EGIT_REPO_URI} EGIT_CHECKOUT_DIR=${S}/ell git-r3_src_unpack
+		EGIT_REPO_URI=${ELL_EGIT_REPO_URI} EGIT_CHECKOUT_DIR=${WORKDIR}/ell git-r3_src_unpack
 	else
 		default
 	fi
@@ -118,16 +118,19 @@ src_prepare() {
 
 src_configure() {
 	append-cflags "-fsigned-char"
-	econf --sysconfdir="${EPREFIX}"/etc/iwd --localstatedir="${EPREFIX}"/var \
+	local myeconfargs=(
+		--sysconfdir="${EPREFIX}"/etc/iwd --localstatedir="${EPREFIX}"/var \
 		$(use_enable client) \
 		$(use_enable monitor) \
 		$(use_enable ofono) \
 		$(use_enable wired) \
-		--enable-external-ell \
 		--enable-systemd-service \
 		--with-systemd-unitdir="$(systemd_get_systemunitdir)" \
 		--with-systemd-modloaddir=$(_systemd_get_dir modulesloaddir /usr/lib/modules-load.d) \
 		--with-systemd-networkdir="$(systemd_get_utildir)/network"
+	)
+	[[ ${PV} == *9999* ]] || myeconfargs+=(--enable-external-ell)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
