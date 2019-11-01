@@ -1432,7 +1432,7 @@ app-emulation/buildah 1.11.2 1.11.3: A tool that facilitates building OCI images
 app-emulation/cadvisor 0.33.0-r1 0.33.1 0.34.0: Analyzes resource usage and performance characteristics of running containers
 app-emulation/cloud-init 17.2 18.4-r1 18.5 9999: Cloud instance initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
-app-emulation/conmon 0.3.0 0.4.0 2.0.0 2.0.1: An OCI container runtime monitor
+app-emulation/conmon 2.0.1 2.0.2: An OCI container runtime monitor
 app-emulation/containerd 1.2.6 1.2.7 1.2.10 1.3.0: A daemon to control runC
 app-emulation/containers-storage 1.13.1 1.13.3 1.13.5: containers/storage library
 app-emulation/cri-o 1.10.6 1.13.9 1.15.1 1.15.2: OCI-based implementation of Kubernetes Container Runtime Interface
