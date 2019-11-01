@@ -1,23 +1,17 @@
 certificate version 0.1
-pusher Alice Ferrazzi <alicef@gentoo.org> 1572589748 +0900
+pusher Mikle Kolyada <zlogene@gentoo.org> 1572590400 +0300
 pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1572589748-32f6e6ba17e305bcb634f4b67da0d106a1a42349
+nonce 1572590397-eb6fc3ec58623390b1747fb20ddb941e32271cc2
 
-ec0981a2772f9677cdf81eb8dd918354e429dcca 333863269dcd930a274e176d37e7cdb1c0acf6a4 refs/heads/master
+333863269dcd930a274e176d37e7cdb1c0acf6a4 5bda9e060fdfa9909e5701c8357d12452b4ea4ad refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQJGBAABCAAwFiEEKxPnsvZf+7NCDYpgQq+TvR6UnvMFAl270LQSHGFsaWNlZkBn
-ZW50b28ub3JnAAoJEEKvk70elJ7zneEP/0vJPzyO7FOLeBIsOW4xHvrMG6vF5v6f
-x8fylGJkb1Ve/q53tPRd4epUQEXCAg9RTtbVeUA4nRqpc6XgiX9ieT589lnJ/N85
-GrBpiLhqApBhw6o8iPVj1/PsJKFshNcUkzKSpQ9JYAAgYDAPk08pa5dZjInT4nbD
-UM764fAG+fzrt+cH2qGACyX5nKKTMbnbFED28ODaHqIp/CFbnSzqqFFHbiTqz2jj
-9vXKHHZbCxMk8+5Mz219nOXrkhPVeA11iYNrI6bkHQM/NU41QpmY99oEHB7+rzz2
-qt+7BoWmOgBRqvf/Km2PaF2psoIuQoXrgtEVv6bDvNM+P80Kvw6+JqT+gPpnafH9
-SeXK6CBtnYFaYCdYiO+T8ZhPIoCzMKvTBKhKmbWuM656zME45i/GrrYQD9gwyzkg
-h+cMM0AzzZdwK7rqJFUMwVtpwq4YmEXdNZ/AsjuT7wYhkTDfaVC/JoVjq/0i/KKk
-mB03JIyUbtfP4vPx55exs9qMEZCGqJKbJ+Q7SC60s1KqhQSAiZ78hUP9zQgv3I3F
-yanS2MpiHtOvacp7RslhKMhqUXeaFzDjvAdN/hKuouNsgJBwM0QcBYWFiDYCwf3x
-FO73U1fZditEaaDXrFIzru+Kp2CdXkjPcLaeFCeqdbcejgHprttCZ/6dKXaEF0G0
-Pq9D1xrz/Epq
-=SBv4
+iQFHBAABCgAxFiEEWmyBGnI+Eihw6dN8HICQJIqVl8cFAl2700ATHHpsb2dlbmVA
+Z2VudG9vLm9yZwAKCRAcgJAkipWXx3/QB/sE4ykOcKLdUkqKYfm85X4bg4ahgWzM
+f9v+O4oqo97SiGENBUGYfCe5gvoxdv3AImbPk9pkorynO3IJoHWG63M7UUgBuPL+
+IQn5QLiAyl5froK1ZzgXiwRq6hskqMw9rztr/6QW0xdRFWA8wW98rkaZpsiagRVk
+vdJrnfDLvaZUQ0yu1fcl9ojLW5p+tpmXi/5x7fxVuXS9ARkI9qML4lufeYYIfYti
+W2ofKiXISuSFJVM1baDF9gv+lFsq6Ir2adkygRhTtm7bgadSXrluO11okzXZzPqU
+VJxqQ8wpjJzRrS6wgoMH6ISa06G0vyZH8CM9YUSblqU2F6DjLkJHDK8i
+=lO5E
 -----END PGP SIGNATURE-----
