@@ -8569,10 +8569,10 @@ dev-python/pyprof2calltree 1.4.0: convert python profile data to kcachegrind cal
 dev-python/pyproj 1.9.5.1-r1: Python interface to PROJ.4 library
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
 dev-python/pyptlib 0.0.6: Python library for tor's pluggable transport managed-proxy protocol
-dev-python/pypy 7.1.1 7.2.0 9999: A fast, compliant alternative implementation of the Python language
-dev-python/pypy-bin 7.1.1 7.2.0: Pre-built version of PyPy
-dev-python/pypy3 7.1.1 7.2.0 9999: A fast, compliant alternative implementation of the Python (3.6) language
-dev-python/pypy3-bin 7.1.1 7.1.1-r1 7.2.0: Pre-built version of PyPy3
+dev-python/pypy 7.2.0 9999: A fast, compliant alternative implementation of the Python language
+dev-python/pypy-bin 7.2.0: Pre-built version of PyPy
+dev-python/pypy3 7.2.0-r1 9999: A fast, compliant alternative implementation of the Python (3.6) language
+dev-python/pypy3-bin 7.2.0-r1: Pre-built version of PyPy3
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.3.0: distutils extension to work with PyQt applications and UI files
 dev-python/pyqtgraph 0.10.0-r1: A pure-python graphics and GUI library built on PyQt and numpy
@@ -10714,7 +10714,7 @@ dev-util/its4 1.1.1-r1: ITS4: Software Security Tool
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.176.3 2.176.4 2.190.1 2.192 2.197: Extensible continuous integration server
+dev-util/jenkins-bin 2.190.1 2.190.2 2.197: Extensible continuous integration server
 dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.0-r1: Graphical debugger interface
@@ -18183,8 +18183,8 @@ virtual/perl6 0: Convenience virtual for perl6
 virtual/pkgconfig 0-r1 1: Virtual for the pkg-config implementation
 virtual/pmake 1: Virtual for BSD-like make (to be used with get_bmake)
 virtual/podofo-build 0.9.6_pre20170508-r1 0.9.6_pre20171027 0.9.6: Virtual package for building against PoDoFo
-virtual/pypy 7.1.1 7.2.0: A virtual for PyPy Python implementation
-virtual/pypy3 7.1.1 7.2.0: A virtual for PyPy3 Python implementation
+virtual/pypy 7.2.0: A virtual for PyPy Python implementation
+virtual/pypy3 7.2.0: A virtual for PyPy3 Python implementation
 virtual/python-backports_abc 0: A virtual for the Python 3.3+ collections.abc module
 virtual/python-cffi 0: A virtual for the Python cffi package
 virtual/python-enum34 2: A virtual for Python enum34 module
