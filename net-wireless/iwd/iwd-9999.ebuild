@@ -117,7 +117,7 @@ src_prepare() {
 
 src_configure() {
 	append-cflags "-fsigned-char"
-	econf --sysconfdir=/etc/iwd --localstatedir=/var \
+	econf --sysconfdir="${EPREFIX}"/etc/iwd --localstatedir="${EPREFIX}"/var \
 		$(use_enable client) \
 		$(use_enable monitor) \
 		$(use_enable ofono) \
