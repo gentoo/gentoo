@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop flag-o-matic qmake-utils
 
 DESCRIPTION="A Qt application to control FluidSynth"
-HOMEPAGE="http://qsynth.sourceforge.net/"
+HOMEPAGE="https://qsynth.sourceforge.io/"
 SRC_URI="mirror://sourceforge/qsynth/${P}.tar.gz"
 
 LICENSE="GPL-2"
