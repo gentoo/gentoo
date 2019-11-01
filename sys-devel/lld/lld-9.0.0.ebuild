@@ -4,16 +4,13 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit cmake-utils llvm multiprocessing python-any-r1
-
-MY_P=${P/_/}.src
-LLVM_P=llvm-${PV/_/}.src
+inherit cmake-utils llvm llvm.org multiprocessing python-any-r1
 
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz
-	test? ( https://releases.llvm.org/${PV}/${LLVM_P}.tar.xz )"
-S=${WORKDIR}/${MY_P}
+LLVM_COMPONENTS=( lld )
+LLVM_TEST_COMPONENTS=( llvm/utils/{lit,unittest} )
+llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -35,18 +32,6 @@ python_check_deps() {
 pkg_setup() {
 	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
 	use test && python-any-r1_pkg_setup
-}
-
-src_unpack() {
-	einfo "Unpacking ${MY_P}.tar.xz ..."
-	tar -xf "${DISTDIR}/${MY_P}.tar.xz" || die
-
-	if use test; then
-		einfo "Unpacking parts of ${LLVM_P}.tar.xz ..."
-		tar -xf "${DISTDIR}/${LLVM_P}.tar.xz" \
-			"${LLVM_P}"/utils/{lit,unittest} || die
-		mv "${LLVM_P}" llvm || die
-	fi
 }
 
 src_configure() {
