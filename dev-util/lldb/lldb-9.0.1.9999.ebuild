@@ -4,15 +4,14 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit cmake-utils git-r3 llvm multiprocessing python-single-r1 \
+inherit cmake-utils llvm llvm.org multiprocessing python-single-r1 \
 	toolchain-funcs
 
 DESCRIPTION="The LLVM debugger"
 HOMEPAGE="https://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
-EGIT_BRANCH="release/9.x"
-S=${WORKDIR}/${P}/lldb
+LLVM_COMPONENTS=( lldb )
+LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
+llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -45,13 +44,6 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
-src_unpack() {
-	local dirs=( lldb )
-	use test && dirs+=( llvm/lib/Testing/Support llvm/utils/unittest )
-	git-r3_fetch
-	git-r3_checkout '' '' '' "${dirs[@]}"
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DLLDB_DISABLE_CURSES=$(usex !ncurses)
@@ -78,7 +70,7 @@ src_configure() {
 		-DLLDB_TEST_C_COMPILER="$(type -P clang)"
 		-DLLDB_TEST_CXX_COMPILER="$(type -P clang++)"
 
-		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/${P}/llvm"
+		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
