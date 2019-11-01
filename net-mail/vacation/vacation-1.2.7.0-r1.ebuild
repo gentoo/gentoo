@@ -17,25 +17,19 @@ RDEPEND="virtual/mta
 DEPEND="${RDEPEND}
 	!mail-mta/sendmail"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-}
-
 src_prepare() {
-	eapply_user
+	default
 
 	sed -i -e "s:install -s -m:install -m:" Makefile || die "sed failed!"
 	sed -i -e "s:-Xlinker:${LDFLAGS} -Xlinker:" Makefile || die "sed failed!"
 }
 
 src_compile () {
-	emake CC=$(tc-getCC) ARCH=$(tc-arch-kernel) CFLAGS="${CFLAGS} -DMAIN" || die "emake failed."
+	emake CC=$(tc-getCC) ARCH=$(tc-arch-kernel) CFLAGS="${CFLAGS} -DMAIN"
 }
 
 src_install () {
 	dodir /usr/bin
 	dodir /usr/share/man/man1
-	emake BINDIR="${D}/usr/bin" MANDIR="${D}/usr/share/man/man" install || die \
-	"make install failed"
+	emake BINDIR="${D}/usr/bin" MANDIR="${D}/usr/share/man/man" install
 }
