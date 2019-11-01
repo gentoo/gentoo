@@ -4881,7 +4881,7 @@ dev-libs/libdazzle 3.30.2 3.32.3: Experimental new features for GTK+ and GLib
 dev-libs/libdbh 5.0.19 5.0.22: A small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 16.04.0: Library to pass menu structure across DBus
 dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r3: Library providing Qt implementation of DBusMenu specification
-dev-libs/libdivecomputer 0.4.1 0.4.2 9999: Library for communication with dive computers from various manufacturers
+dev-libs/libdivecomputer 0.6.0 9999: Library for communication with dive computers from various manufacturers.
 dev-libs/libdivsufsort 2.0.1-r1 9999: Suffix-sorting library (for BWT)
 dev-libs/libdnet 1.12 1.12-r1: simplified, portable interface to several low-level networking routines
 dev-libs/libdnsres 0.1a-r2: A non-blocking DNS resolver library
@@ -12545,7 +12545,7 @@ mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.92.2 4.92.3: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.3 1.8.5-r1 1.8.6: An SMTP client and SMTP plugin for mail user agents such as Mutt
-mail-mta/netqmail 1.06-r4 1.06-r8 1.06-r9: qmail -- a secure, reliable, efficient, simple message transfer agent
+mail-mta/netqmail 1.06-r4 1.06-r10: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.3_p1-r1 6.4.0_p1: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 2.10.9 3.4.5-r1 3.4.6 3.4.7 3.5_pre20191019: A fast and secure drop-in replacement for sendmail
@@ -14392,7 +14392,7 @@ net-analyzer/gsm-receiver 9999: GSM receiver block from the airprobe suite
 net-analyzer/gspoof 3.2-r3: A simple GTK/command line TCP/IP packet generator
 net-analyzer/gvm 10.0.1: Greenbone Vulnerability Management,previously named OpenVAS
 net-analyzer/gvm-libs 10.0.1: Greenbone vulnerability management libraries, previously named openvas-libraries
-net-analyzer/gvm-tools 1.4.1: Remote control for Greenbone Vulnerability Manager, previously named openvas-cli
+net-analyzer/gvm-tools 1.4.1 2.0.0: Remote control for Greenbone Vulnerability Manager, previously named openvas-cli
 net-analyzer/gvmd 8.0.1: Greenbone vulnerability manager, previously named openvas-manager
 net-analyzer/hexinject 1.5 1.6 1.6-r1: Network packet sniffer and injector
 net-analyzer/hping 3_pre20051105-r6 3_pre20141226: A ping-like TCP/IP packet assembler/analyzer
@@ -14512,7 +14512,7 @@ net-analyzer/openvas-manager 7.0.3: A remote security manager for Linux (openvas
 net-analyzer/openvas-scanner 5.1.3 6.0.1: Open Vulnerability Assessment Scanner
 net-analyzer/openvas-tools 0_pre20512: A remote security scanner for Linux (extra tools)
 net-analyzer/opsgenie-lamp 2.5.1_p20181102: command line client for the opsgenie service
-net-analyzer/ospd 1.3.2: Base class for scanner wrappers,communication protocol for GVM
+net-analyzer/ospd 1.3.2 2.0.0: Base class for scanner wrappers,communication protocol for GVM
 net-analyzer/ossec-hids 3.1.0 3.2.0 3.2.0-r1 3.3.0: Open Source Host-based Intrusion Detection System
 net-analyzer/ostinato 0.9_p20180522: A packet generator and analyzer
 net-analyzer/p0f 3.09_beta: A tool to perform passive OS detection based on SYN packets
@@ -15027,7 +15027,7 @@ net-libs/libtorrent-rasterbar 1.1.10-r1 1.1.12-r1 1.1.13-r1 1.2.0-r1 1.2.1-r1 1.
 net-libs/libtrace 4.0.8 4.0.9_p1 4.0.9_p1-r1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.2 1.8.3-r1 1.8.4: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
-net-libs/libvncserver 0.9.12-r2: library for creating vnc servers
+net-libs/libvncserver 0.9.12-r2 0.9.12-r3: library for creating vnc servers
 net-libs/libwebsockets 1.7.9 2.0.2 2.1.1 2.4.2: canonical libwebsockets.org websocket library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for software-defined radios
@@ -18281,7 +18281,7 @@ www-apps/gitea 1.8.0 1.8.2 1.8.3: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.3.5 6.3.6 6.4.1 6.4.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hiawatha-monitor 1.6: Monitoring application for www-servers/hiawatha
-www-apps/hugo 0.48 0.50: The world's fastest framework for building websites
+www-apps/hugo 0.50 0.58.3: The world's fastest framework for building websites
 www-apps/icingaweb2 2.6.3 2.7.1 2.7.3 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 1.0.1-r1 9999: Icinga Web 2 plugin for Graphite
