@@ -4,13 +4,12 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit cmake-multilib linux-info multiprocessing python-any-r1
+inherit cmake-multilib linux-info llvm.org multiprocessing python-any-r1
 
-MY_P=openmp-${PV}.src
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
-SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz"
-S=${WORKDIR}/${MY_P}
+LLVM_COMPONENTS=( openmp )
+llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"

@@ -4,14 +4,12 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit cmake-multilib git-r3 linux-info multiprocessing python-any-r1
+inherit cmake-multilib linux-info llvm.org multiprocessing python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
-EGIT_BRANCH="release/9.x"
-S=${WORKDIR}/${P}/openmp
+LLVM_COMPONENTS=( openmp )
+llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
@@ -66,11 +64,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
-}
-
-src_unpack() {
-	git-r3_fetch
-	git-r3_checkout '' '' '' openmp
 }
 
 multilib_src_configure() {
