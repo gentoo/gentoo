@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
 	"${FILESDIR}"/${PN}-99999999-llhttp.patch
 )
+RESTRICT="test"
 S="${WORKDIR}/node-v${PV}"
 
 pkg_pretend() {
