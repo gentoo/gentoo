@@ -3,7 +3,7 @@
 
 EAPI=7
 
-EGIT_COMMIT="8455ce1ef385120deb827d0f0588c04357bad4c4"
+EGIT_COMMIT="65fe0226d85b69fc9e527e376795c9791199153d"
 DESCRIPTION="An OCI container runtime monitor"
 HOMEPAGE="https://github.com/containers/conmon"
 SRC_URI="https://github.com/containers/conmon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -21,8 +21,8 @@ src_prepare() {
 	default
 
 	if ! use systemd; then
-		sed -e 's| pkg-config --exists libsystemd-journal | false |' \
-			-e 's| pkg-config --exists libsystemd | false |' \
+		sed -e 's| $(PKG_CONFIG) --exists libsystemd-journal | false |' \
+			-e 's| $(PKG_CONFIG) --exists libsystemd | false |' \
 			-i Makefile || die
 	fi
 }
