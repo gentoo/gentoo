@@ -4,13 +4,12 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
-inherit distutils-r1 git-r3 multiprocessing
+inherit distutils-r1 llvm.org multiprocessing
 
 DESCRIPTION="A stand-alone install of the LLVM suite testing tool"
 HOMEPAGE="https://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
-S=${WORKDIR}/${P}/llvm/utils/lit
+LLVM_COMPONENTS=( llvm/utils/lit )
+llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -26,11 +25,6 @@ BDEPEND="
 		sys-devel/llvm )"
 
 # TODO: move the manpage generation here (from sys-devel/llvm)
-
-src_unpack() {
-	git-r3_fetch
-	git-r3_checkout '' '' '' llvm/utils/lit
-}
 
 python_test() {
 	local -x LIT_PRESERVES_TMP=1
