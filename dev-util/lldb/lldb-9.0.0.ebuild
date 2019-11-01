@@ -4,17 +4,14 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6}} )
-inherit cmake-utils llvm multiprocessing python-single-r1 \
+inherit cmake-utils llvm llvm.org multiprocessing python-single-r1 \
 	toolchain-funcs
-
-MY_P=${P/_/}.src
-LLVM_P=llvm-${PV/_/}.src
 
 DESCRIPTION="The LLVM debugger"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz
-	test? ( https://releases.llvm.org/${PV}/${LLVM_P}.tar.xz )"
-S=${WORKDIR}/${MY_P}
+LLVM_COMPONENTS=( lldb )
+LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
+llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -45,18 +42,6 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 pkg_setup() {
 	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
 	python-single-r1_pkg_setup
-}
-
-src_unpack() {
-	einfo "Unpacking ${MY_P}.tar.xz ..."
-	tar -xf "${DISTDIR}/${MY_P}.tar.xz" || die
-
-	if use test; then
-		einfo "Unpacking parts of ${LLVM_P}.tar.xz ..."
-		tar -xf "${DISTDIR}/${LLVM_P}.tar.xz" \
-			"${LLVM_P}"/{lib/Testing/Support,utils/unittest} || die
-		mv "${LLVM_P}" llvm || die
-	fi
 }
 
 src_configure() {
