@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop flag-o-matic qmake-utils
+inherit desktop flag-o-matic qmake-utils xdg-utils
 
 DESCRIPTION="A Qt application to control FluidSynth"
 HOMEPAGE="http://qsynth.sourceforge.net/"
@@ -11,8 +11,8 @@ SRC_URI="mirror://sourceforge/qsynth/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa debug jack pulseaudio"
-KEYWORDS="amd64 ppc x86"
+IUSE="+alsa debug jack pulseaudio"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -59,4 +59,12 @@ src_install () {
 	fi
 
 	make_desktop_entry "${cmd}" Qsynth qsynth
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
