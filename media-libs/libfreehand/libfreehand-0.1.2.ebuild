@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )
 "
 
+PATCHES=( "${FILESDIR}/${P}-icu-65.patch" )
+
 src_prepare() {
 	default
 	[[ -d m4 ]] || mkdir "m4"
