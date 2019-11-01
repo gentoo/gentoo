@@ -13,9 +13,9 @@ inherit cmake-utils git-r3 llvm multiprocessing python-any-r1
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/lld.git
-	https://github.com/llvm-mirror/lld.git"
-EGIT_BRANCH="release_90"
+EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+EGIT_BRANCH="release/9.x"
+S=${WORKDIR}/${P}/lld
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -40,18 +40,10 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if use test; then
-		# needed for patched gtest
-		git-r3_fetch "https://git.llvm.org/git/llvm.git
-			https://github.com/llvm-mirror/llvm.git"
-	fi
+	local dirs=( lld )
+	use test && dirs+=( llvm/utils/{lit,unittest} )
 	git-r3_fetch
-
-	if use test; then
-		git-r3_checkout https://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm '' utils/{lit,unittest}
-	fi
-	git-r3_checkout
+	git-r3_checkout '' '' '' "${dirs[@]}"
 }
 
 src_configure() {
@@ -62,7 +54,7 @@ src_configure() {
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_BUILD_TESTS=ON
-		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
+		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/${P}/llvm"
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
