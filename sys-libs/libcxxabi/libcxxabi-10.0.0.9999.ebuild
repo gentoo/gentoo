@@ -13,8 +13,8 @@ inherit cmake-multilib git-r3 llvm multiprocessing python-any-r1
 DESCRIPTION="Low level support for a standard C++ library"
 HOMEPAGE="https://libcxxabi.llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/libcxxabi.git
-	https://github.com/llvm-mirror/libcxxabi.git"
+EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+S=${WORKDIR}/${P}/libcxxabi
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
@@ -49,14 +49,9 @@ pkg_setup() {
 }
 
 src_unpack() {
-	# we need the headers
-	git-r3_fetch "https://git.llvm.org/git/libcxx.git
-		https://github.com/llvm-mirror/libcxx.git"
 	git-r3_fetch
-
-	git-r3_checkout https://llvm.org/git/libcxx.git \
-		"${WORKDIR}"/libcxx ''
-	git-r3_checkout
+	# we always need libcxx for the headers
+	git-r3_checkout '' '' '' libcxx{,abi}
 }
 
 multilib_src_configure() {
@@ -68,7 +63,7 @@ multilib_src_configure() {
 		-DLIBCXXABI_USE_LLVM_UNWINDER=$(usex libunwind)
 		-DLIBCXXABI_INCLUDE_TESTS=$(usex test)
 
-		-DLIBCXXABI_LIBCXX_INCLUDES="${WORKDIR}"/libcxx/include
+		-DLIBCXXABI_LIBCXX_INCLUDES="${WORKDIR}/${P}"/libcxx/include
 		# upstream is omitting standard search path for this
 		# probably because gcc & clang are bundling their own unwind.h
 		-DLIBCXXABI_LIBUNWIND_INCLUDES="${EPREFIX}"/usr/include
@@ -89,7 +84,7 @@ multilib_src_configure() {
 
 build_libcxx() {
 	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/$(get_libdir)"
-	local CMAKE_USE_DIR=${WORKDIR}/libcxx
+	local CMAKE_USE_DIR=${WORKDIR}/${P}/libcxx
 	local BUILD_DIR=${BUILD_DIR}/libcxx
 	local mycmakeargs=(
 		-DLIBCXX_LIBDIR_SUFFIX=
