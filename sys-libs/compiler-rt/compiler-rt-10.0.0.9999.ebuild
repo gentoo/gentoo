@@ -14,8 +14,8 @@ inherit cmake-utils flag-o-matic git-r3 llvm multiprocessing \
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
 HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/compiler-rt.git
-	https://github.com/llvm-mirror/compiler-rt.git"
+EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+S=${WORKDIR}/${P}/compiler-rt
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="$(ver_cut 1-3)"
@@ -47,6 +47,11 @@ pkg_pretend() {
 pkg_setup() {
 	llvm_pkg_setup
 	python-any-r1_pkg_setup
+}
+
+src_unpack() {
+	git-r3_fetch
+	git-r3_checkout '' '' '' compiler-rt
 }
 
 test_compiler() {
