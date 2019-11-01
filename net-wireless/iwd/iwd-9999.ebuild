@@ -130,7 +130,7 @@ src_configure() {
 		$(use_enable wired) \
 		--enable-systemd-service \
 		--with-systemd-unitdir="$(systemd_get_systemunitdir)" \
-		--with-systemd-modloaddir=$(_systemd_get_dir modulesloaddir /usr/lib/modules-load.d) \
+		--with-systemd-modloaddir="${EPREFIX}/usr/lib/modules-load.d" \
 		--with-systemd-networkdir="$(systemd_get_utildir)/network"
 	)
 	[[ ${PV} == *9999* ]] || myeconfargs+=(--enable-external-ell)
