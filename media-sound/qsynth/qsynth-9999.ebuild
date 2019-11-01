@@ -3,16 +3,16 @@
 
 EAPI=7
 
-inherit desktop flag-o-matic qmake-utils xdg-utils
+inherit desktop flag-o-matic qmake-utils xdg-utils git-r3 autotools
 
 DESCRIPTION="A Qt application to control FluidSynth"
 HOMEPAGE="https://qsynth.sourceforge.io/"
-SRC_URI="mirror://sourceforge/qsynth/${P}.tar.gz"
+EGIT_REPO_URI="https://git.code.sf.net/p/qsynth/code"
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+alsa debug jack pulseaudio"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS=""
 
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -29,6 +29,12 @@ RDEPEND="${DEPEND}"
 REQUIRED_USE="|| ( alsa jack pulseaudio )"
 
 PATCHES=( "${FILESDIR}/${PN}-0.4.0-qt5-tagging.patch" )
+
+src_prepare() {
+	eautoreconf
+
+	default
+}
 
 src_configure() {
 	append-cxxflags -std=c++11
