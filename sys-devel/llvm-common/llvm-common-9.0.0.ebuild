@@ -3,11 +3,12 @@
 
 EAPI=7
 
-MY_P=llvm-${PV/_/}.src
+inherit llvm.org
+
 DESCRIPTION="Common files shared between multiple slots of LLVM"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz"
-S=${WORKDIR}/${MY_P}
+LLVM_COMPONENTS=( llvm/utils/vim )
+llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -16,19 +17,10 @@ IUSE=""
 
 RDEPEND="!sys-devel/llvm:0"
 
-src_unpack() {
-	einfo "Unpacking parts of ${MY_P}.tar.xz ..."
-	tar -xJf "${DISTDIR}/${MY_P}.tar.xz" "${MY_P}/utils/vim" || die
-}
-
-src_configure() { :; }
-src_compile() { :; }
-src_test() { :; }
-
 src_install() {
 	insinto /usr/share/vim/vimfiles
-	doins -r utils/vim/*/
+	doins -r */
 	# some users may find it useful
-	newdoc utils/vim/README README.vim
-	dodoc utils/vim/vimrc
+	newdoc README README.vim
+	dodoc vimrc
 }
