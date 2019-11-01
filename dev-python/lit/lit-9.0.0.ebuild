@@ -4,13 +4,12 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
-inherit distutils-r1 multiprocessing
+inherit distutils-r1 llvm.org multiprocessing
 
-MY_P=llvm-${PV/_/}.src
 DESCRIPTION="A stand-alone install of the LLVM suite testing tool"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz"
-S=${WORKDIR}/${MY_P}/utils/lit
+LLVM_COMPONENTS=( llvm/utils/lit )
+llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -26,11 +25,6 @@ BDEPEND="
 		sys-devel/llvm )"
 
 # TODO: move the manpage generation here (from sys-devel/llvm)
-
-src_unpack() {
-	einfo "Unpacking parts of ${MY_P}.tar.xz ..."
-	tar -xJf "${DISTDIR}/${MY_P}.tar.xz" "${MY_P}/utils/lit" || die
-}
 
 python_test() {
 	local -x LIT_PRESERVES_TMP=1
