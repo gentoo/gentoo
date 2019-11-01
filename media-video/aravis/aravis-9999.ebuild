@@ -36,7 +36,7 @@ BDEPEND="
 	introspection? ( dev-libs/gobject-introspection:= )
 "
 DEPEND="
-	>=dev-libs/glib-2.34:2
+	dev-libs/glib:2[gtk-doc?]
 	dev-libs/libxml2:2
 	sys-libs/zlib
 	gstreamer? ( ${GST_DEPEND} )
@@ -44,7 +44,7 @@ DEPEND="
 	usb? ( virtual/libusb:1 )
 	viewer? (
 		${GST_DEPEND}
-		>=x11-libs/gtk+-3.12:3
+		x11-libs/gtk+:3
 		x11-libs/libnotify
 	)
 "
@@ -65,24 +65,4 @@ src_configure() {
 		$(meson_use viewer)
 	)
 	meson_src_configure
-}
-
-src_install() {
-	meson_src_install
-	# Aravis appends the major and min versions (but not the patch) to it's
-	# binaries and it's folder in /usr/share. Things then end up like
-	# `arv-tool-0.6`. We use this little hack to find out the version of the
-	# current build in a way that works even for a -9999 ebuild.
-	local install_pv="$(ls ${ED}/usr/share | grep aravis- | cut -f 2 -d '-')"
-	local install_p="${PN}-${install_pv}"
-
-	# Properly place icons
-	if use viewer; then
-		cp -r "${ED}/usr/share/${install_p}/icons" "${ED}/usr/share" || die "Failed to copy icons"
-	fi
-
-	# Symlink versioned binaries to non-versioned
-	dosym "arv-tool-${install_pv}" "usr/bin/arv-tool"
-	dosym "arv-fake-gv-camera-${install_pv}" "usr/bin/arv-fake-gv-camera"
-	use viewer && dosym "arv-viewer-${install_pv}" "usr/bin/arv-viewer"
 }
