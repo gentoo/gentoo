@@ -25,7 +25,7 @@ src_prepare() {
 }
 
 src_compile () {
-	emake CC=$(tc-getCC) ARCH=$(tc-arch-kernel) CFLAGS="${CFLAGS} -DMAIN"
+	emake CFLAGS="${CFLAGS} -DMAIN"
 }
 
 src_install () {
