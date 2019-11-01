@@ -76,7 +76,7 @@ COMMON_DEPEND="
 	kerberos? ( virtual/krb5 )
 	ldap? ( >=net-nds/openldap-1.2.11 )
 	ldap-sasl? ( dev-libs/cyrus-sasl )
-	libedit? ( || ( sys-freebsd/freebsd-lib dev-libs/libedit ) )
+	libedit? ( dev-libs/libedit )
 	lmdb? ( dev-db/lmdb:= )
 	mssql? ( dev-db/freetds[mssql] )
 	nls? ( sys-devel/gettext )
