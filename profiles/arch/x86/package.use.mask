@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Tomáš Mózes <hydrapolic@gmail.com> (2019-11-02)
+# Requires dev-db/mongodb which has dropped x86 support
+dev-php/pecl-mongodb test
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-10-29)
 # Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are keyworded
 # bugs #697860, #698172
