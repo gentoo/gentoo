@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=>=dev-lang/erlang-21.0 dev-lang/erlang dev-util/rebar >=sys-apps/gawk-4.1
+DESCRIPTION=Erlang IDNA implementation
+EAPI=6
+HOMEPAGE=https://github.com/benoitc/erlang-idna
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=dev-lang/erlang
+SLOT=0
+SRC_URI=https://github.com/benoitc/erlang-idna/archive/6.0.0.tar.gz -> idna-6.0.0.tar.gz
+_eclasses_=rebar	2500a38e0c20a46f90fe5e172a2c4267
+_md5_=fa311e6772586bcc30056b77f32a4bbe

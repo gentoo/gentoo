@@ -3288,6 +3288,7 @@ dev-erlang/fast_yaml 1.0.9 1.0.20 1.0.21: Fast Yaml native library for Erlang an
 dev-erlang/goldrush 0.1.9 0.2.0: Small Erlang app that provides fast event stream processing
 dev-erlang/hamcrest 0.1.0_p20160709: Erlang port of Hamcrest
 dev-erlang/iconv 1.0.4 1.0.10: Fast encoding conversion library for Erlang and Elixir
+dev-erlang/idna 6.0.0: Erlang IDNA implementation
 dev-erlang/jiffy 0.14.9 0.14.11 1.0.1: JSON NIFs for Erlang
 dev-erlang/jose 1.9.0: JSON Object Signing and Encryption (JOSE) for Erlang and Elixir
 dev-erlang/lager 3.2.4 3.8.0: Logging framework for Erlang/OTP
@@ -10799,8 +10800,8 @@ dev-util/premake 3.7 4.3-r1 4.4_beta5 5.0.0_alpha12: A makefile generation tool
 dev-util/pretrace 0.4-r1: start dynamically linked applications under debugging environment
 dev-util/promu 0.5.0: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
-dev-util/pycharm-community 2019.2.3: Intelligent Python IDE with unique code assistance and analysis
-dev-util/pycharm-professional 2019.2.3: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-community 2019.2.3 2019.2.4: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-professional 2019.2.3 2019.2.4: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.12.2 1.13.1: Modern build tool for software projects
 dev-util/qdevicemonitor 1.0.1-r1 9999: Crossplatform log viewer for Android, iOS and text files
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
@@ -17736,7 +17737,7 @@ sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system
 sys-fs/ext4magic 0.3.2-r1: Tool for recovery of deleted or overwritten files on ext3/ext4 filesystems
 sys-fs/extundelete 0.2.4: A utility to undelete files from an ext3 or ext4 partition
 sys-fs/f2fs-tools 1.10.0 1.11.0-r1 1.12.0-r1 1.13.0: Tools for Flash-Friendly File System (F2FS)
-sys-fs/fatcat 1.0.6: FAT filesystems explore, extract, repair, and forensic tool
+sys-fs/fatcat 1.0.6 1.1.0: FAT filesystems explore, extract, repair, and forensic tool
 sys-fs/fatresize 1.0.4: Resize FAT partitions using libparted
 sys-fs/fatsort 1.5.0: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
