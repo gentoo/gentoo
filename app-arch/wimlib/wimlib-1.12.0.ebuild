@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,6 @@ else
 	MY_PV="${PV/_/-}"
 	MY_PV="${MY_PV^^}"
 	SRC_URI="https://wimlib.net/downloads/${PN}-${MY_PV}.tar.gz -> ${P}.tar.gz"
-	RESTRICT="primaryuri"
 	KEYWORDS="~amd64 ~x86"
 fi
 
