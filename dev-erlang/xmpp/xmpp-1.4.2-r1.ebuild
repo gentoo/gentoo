@@ -12,14 +12,15 @@ SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64"
 
-RDEPEND="dev-lang/erlang
+RDEPEND=">=dev-lang/erlang-20.0
 	>=dev-erlang/ezlib-1.0.6
 	>=dev-erlang/fast_tls-1.1.2
 	>=dev-erlang/fast_xml-1.1.37
 	>=dev-erlang/p1_utils-1.0.16
-	>=dev-erlang/stringprep-1.0.17"
+	>=dev-erlang/stringprep-1.0.17
+	>=dev-erlang/idna-6.0.0"
 DEPEND="${RDEPEND}"
 
 DOCS=( CHANGELOG.md README.md )
