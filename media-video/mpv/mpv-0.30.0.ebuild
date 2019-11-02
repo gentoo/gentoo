@@ -123,7 +123,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	virtual/pkgconfig
-	cuda? ( >=media-libs/nv-codec-headers-8.1.24.1 )
+	cuda? ( >=media-libs/nv-codec-headers-8.2.15.7 )
 	doc? (  dev-python/docutils
 			dev-python/rst2pdf )
 	dvb? ( virtual/linuxtv-dvb-headers )
