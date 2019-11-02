@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm setup
+DEPEND=dev-db/sqlite:3 =dev-lang/lua-5.1*:0= sys-libs/zlib !ncurses? ( !tiles? ( sys-libs/ncurses:0 ) ) ncurses? ( sys-libs/ncurses:0 ) tiles? ( media-fonts/dejavu media-libs/freetype:2 media-libs/libpng:0 sound? ( media-libs/libsdl2[X,opengl,sound,video] media-libs/sdl2-mixer ) !sound? ( media-libs/libsdl2[X,opengl,video] ) media-libs/sdl2-image[png] virtual/glu virtual/opengl ) dev-lang/perl dev-python/pyyaml sys-devel/flex tiles? ( sys-libs/ncurses:0 ) virtual/pkgconfig virtual/yacc
+DESCRIPTION=Role-playing roguelike game of exploration and treasure-hunting in dungeons
+EAPI=7
+HOMEPAGE=http://crawl.develz.org/wordpress/
+IUSE=debug ncurses sound test +tiles
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT
+RDEPEND=dev-db/sqlite:3 =dev-lang/lua-5.1*:0= sys-libs/zlib !ncurses? ( !tiles? ( sys-libs/ncurses:0 ) ) ncurses? ( sys-libs/ncurses:0 ) tiles? ( media-fonts/dejavu media-libs/freetype:2 media-libs/libpng:0 sound? ( media-libs/libsdl2[X,opengl,sound,video] media-libs/sdl2-mixer ) !sound? ( media-libs/libsdl2[X,opengl,video] ) media-libs/sdl2-image[png] virtual/glu virtual/opengl )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://crawl.develz.org/release/0.24/stone_soup-0.24.0.tar.xz https://dev.gentoo.org/~hasufell/distfiles/stone-soup.png https://dev.gentoo.org/~hasufell/distfiles/stone-soup.svg
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=df388be1d8de68f4d348c81ab4add604
