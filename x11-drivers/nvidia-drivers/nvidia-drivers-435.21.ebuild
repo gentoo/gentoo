@@ -24,7 +24,6 @@ SRC_URI="
 EMULTILIB_PKG="true"
 KEYWORDS="-* amd64"
 LICENSE="GPL-2 NVIDIA-r2"
-RESTRICT="bindist mirror test"
 SLOT="0/${PV%.*}"
 
 IUSE="acpi compat +driver gtk3 kernel_FreeBSD kernel_linux +kms libglvnd multilib static-libs +tools uvm wayland +X"
