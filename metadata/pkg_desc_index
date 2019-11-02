@@ -5224,7 +5224,7 @@ dev-lua/busted 2.0_rc11_p0 2.0_rc12_p1: Elegant Lua unit testing
 dev-lua/dkjson 2.5: David Kolf's JSON module for Lua
 dev-lua/lanes 3.10.0: lightweight, native, lazy evaluating multithreading library
 dev-lua/ldoc 1.4.6: A LuaDoc-compatible documentation generation system
-dev-lua/lgi 0.6.2 0.6.2-r1 0.7.2 0.9.0 0.9.0-r1: Lua bindings using gobject-introspection
+dev-lua/lgi 0.6.2 0.6.2-r1 0.7.2 0.9.0 0.9.0-r1 0.9.2: Lua bindings using gobject-introspection
 dev-lua/lpeg 1.0.1 1.0.2: Parsing Expression Grammars for Lua
 dev-lua/lua-cjson 2.1.0.6 2.1.0.7: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.7.3: OpenSSL binding for Lua
@@ -8781,7 +8781,7 @@ dev-python/pyvtk 0.4.74: Tools for manipulating VTK files in Python
 dev-python/pywavelets 0.5.2 0.5.2-r1: Discrete Wavelet Transforms in Python
 dev-python/pywinrm 0.3.0: Windows Remote Management through Python
 dev-python/pyx 0.12.1-r1 0.14.1 0.14.1-r1: Python package for the generation of encapsulated PostScript figures
-dev-python/pyxattr 0.6.0-r1 0.6.1: Python interface to xattr
+dev-python/pyxattr 0.6.0-r1 0.6.1 0.6.1-r1: Python interface to xattr
 dev-python/pyxdg 0.25-r1 0.26 0.26-r1: A Python module to deal with freedesktop.org specifications
 dev-python/pyxenstore 0.0.2: Provides Python interfaces for Xen's XenStore
 dev-python/pyyaml 3.12 3.13 5.1: YAML parser and emitter for Python
@@ -15093,7 +15093,7 @@ net-mail/archivemail 0.9.0-r1: Tool written archiving old email in mailboxes
 net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
 net-mail/automx 0.10.2-r1 0.10.2-r2: A mail user agent auto configuration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
-net-mail/checkpassword 0.90-r2 0.90-r3: A uniform password checking interface for root applications
+net-mail/checkpassword 0.90-r2 0.90-r4: A uniform password checking interface for root applications
 net-mail/checkpassword-pam 0.99 0.99-r1: checkpassword-compatible authentication program w/pam support
 net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 net-mail/courier-imap 4.17.3 4.18.2 5.0.7: An IMAP daemon designed specifically for maildirs
