@@ -12,7 +12,7 @@ inherit autotools distutils-r1 eutils linux-info readme.gentoo-r1 systemd
 
 DESCRIPTION="Single Packet Authorization and Port Knocking application"
 HOMEPAGE="https://www.cipherdyne.org/fwknop/"
-SRC_URI="${HOMEPAGE}/download/${P}.tar.gz"
+SRC_URI="https://www.cipherdyne.org/fwknop/download/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
