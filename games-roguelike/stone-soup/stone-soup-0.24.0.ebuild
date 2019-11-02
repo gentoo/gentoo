@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-## TODO
-# add sound support (no sound files)
+# TODO
+# - attempt +test, linked bug claims to be fixed
 
-EAPI=6
+EAPI=7
 VIRTUALX_REQUIRED="manual"
-inherit eutils gnome2-utils toolchain-funcs eapi7-ver
+inherit desktop eutils xdg-utils toolchain-funcs
 
 MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
@@ -24,14 +24,14 @@ SRC_URI="
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug luajit ncurses test +tiles"
+IUSE="debug ncurses sound test +tiles"
 # test is broken
 # see https://crawl.develz.org/mantis/view.php?id=6121
 RESTRICT="test"
 
 RDEPEND="
 	dev-db/sqlite:3
-	luajit? ( >=dev-lang/luajit-2.0.0 )
+	=dev-lang/lua-5.1*:0=
 	sys-libs/zlib
 	!ncurses? ( !tiles? ( sys-libs/ncurses:0 ) )
 	ncurses? ( sys-libs/ncurses:0 )
@@ -39,23 +39,31 @@ RDEPEND="
 		media-fonts/dejavu
 		media-libs/freetype:2
 		media-libs/libpng:0
-		media-libs/libsdl2[X,opengl,video]
+		sound? (
+			   media-libs/libsdl2[X,opengl,sound,video]
+			   media-libs/sdl2-mixer
+		)
+		!sound? ( media-libs/libsdl2[X,opengl,video] )
 		media-libs/sdl2-image[png]
 		virtual/glu
 		virtual/opengl
 	)"
 DEPEND="${RDEPEND}
 	dev-lang/perl
+	dev-python/pyyaml
 	sys-devel/flex
-	virtual/pkgconfig
-	virtual/yacc
 	tiles? (
 		sys-libs/ncurses:0
-	)"
+	)
+	virtual/pkgconfig
+	virtual/yacc
+	"
 
 S=${WORKDIR}/${MY_P}/source
 S_TEST=${WORKDIR}/${MY_P}_test/source
 PATCHES=(
+	"${FILESDIR}"/gitless.patch
+	"${FILESDIR}"/pyyaml-safe-load.patch
 	"${FILESDIR}"/rltiles-ldflags-libs.patch
 )
 
@@ -65,24 +73,27 @@ pkg_setup() {
 		ewarn "selected, choosing ncurses only."
 		ewarn "Note that you can also enable both."
 	fi
-}
 
-src_prepare() {
-	default
-
-	rm -r contrib/{fonts,freetype,libpng,pcre,sdl2,sdl2-image,sdl2-mixer,sqlite,zlib} || die
+	if use sound && use !tiles ; then
+		ewarn "Sound support is only available with tiles."
+	fi
 }
 
 src_compile() {
+
+	# Insurance that we're not using bundled lib sources
+	rm -rf contrib || die "Couldn't delete contrib directory"
+
 	export HOSTCXX=$(tc-getBUILD_CXX)
 
 	# leave DATADIR at the top
 	myemakeargs=(
 		$(usex debug "FULLDEBUG=y DEBUG=y" "")
-		$(usex luajit "" "BUILD_LUA=yes") # luajit is not bundled
+		BUILD_LUA=
 		AR="$(tc-getAR)"
 		CFOPTIMIZE=''
 		CFOTHERS="${CXXFLAGS}"
+		CONTRIBS=
 		DATADIR="/usr/share/${PN}"
 		GCC="$(tc-getCC)"
 		GXX="$(tc-getCXX)"
@@ -91,8 +102,9 @@ src_compile() {
 		PKGCONFIG="$(tc-getPKG_CONFIG)"
 		RANLIB="$(tc-getRANLIB)"
 		SAVEDIR="~/.crawl"
+		SOUND=$(usex sound "y" "")
 		STRIP=touch
-		USE_LUAJIT=$(usex luajit "yes" "")
+		USE_LUAJIT=
 		V=1
 		prefix="/usr"
 	)
@@ -116,6 +128,8 @@ src_install() {
 	# don't relocate docs, needed at runtime
 	rm -rf "${D}/usr/share/${PN}"/docs/license
 
+	doman "${WORKDIR}/${MY_P}"/docs/crawl.6
+
 	# icons and menu for graphical build
 	if use tiles ; then
 		doicon -s 48 "${DISTDIR}"/${PN}.png
@@ -124,12 +138,8 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 
 	if use tiles && use ncurses ; then
 		elog "Since you have enabled both tiles and ncurses frontends"
@@ -139,5 +149,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
