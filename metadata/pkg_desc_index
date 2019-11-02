@@ -15158,7 +15158,7 @@ net-mail/qmhandle 1.3.2: Qmail message queue tool
 net-mail/qmrtg 2.1-r1: A tool to analyze qmail activity with the goal to graph everything through MRTG
 net-mail/qprint 1.1: MIME quoted-printable data encoding and decoding utility
 net-mail/qtools 0.56: Utilities for use with qmail, typically as part of .qmail command processing
-net-mail/queue-fix 1.4-r2: Qmail Queue Repair Application with support for big-todo
+net-mail/queue-fix 1.4-r2 1.4-r3: Qmail Queue Repair Application with support for big-todo
 net-mail/queue-repair 0.9.0-r1: A toolkit for dealing with the qmail queue directory structure
 net-mail/randomsig 1.10.0: randomsig - perl script for generating random .signature files
 net-mail/relay-ctrl 3.1.1-r2: SMTP Relaying Control designed for qmail & tcpserver
