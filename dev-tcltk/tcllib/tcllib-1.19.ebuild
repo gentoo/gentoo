@@ -27,6 +27,8 @@ DOCS=(
 )
 HTML_DOCS=( devdoc/devguide.html devdoc/releaseguide.html )
 
+PATCHES=( "${FILESDIR}"/${P}-test.patch )
+
 src_prepare() {
 	default
 	if has_version ">=dev-lang/tcl-8.6.9"; then
