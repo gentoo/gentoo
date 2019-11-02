@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit autotools eutils multilib
+inherit autotools
 
 KEYWORDS="~amd64 ~x86"
 
@@ -18,30 +18,23 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-db/postgresql"
+RDEPEND="dev-db/postgresql:*"
 DEPEND="${RDEPEND}
 		app-text/xmlto"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/${P}-gentoo.patch"
+src_prepare() {
+	eapply "${FILESDIR}/${P}-gentoo.patch"
+	eapply_user
 	eautoreconf
 }
 
-src_compile() {
-	econf \
-		--htmldir=/usr/share/doc/${PF}/html || die "econf failed"
-	emake || die "emake failed"
-}
-
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 	find "${D}" -name '*.la' -delete || die
 
-	dodoc AUTHORS ChangeLog NEWS README || die
+	dodoc AUTHORS ChangeLog NEWS README
 	insinto /usr/share/doc/${PF}/examples
-	doins conf/* || die
+	doins conf/*
 }
 
 pkg_postinst() {
