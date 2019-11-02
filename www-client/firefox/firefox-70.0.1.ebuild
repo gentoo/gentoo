@@ -56,7 +56,11 @@ IUSE="bindist clang cpu_flags_x86_avx2 debug eme-free geckodriver
 	+screenshot selinux startup-notification +system-av1
 	+system-harfbuzz +system-icu +system-jpeg +system-libevent
 	+system-sqlite +system-libvpx +system-webp test wayland wifi"
-RESTRICT="!bindist? ( bindist )"
+
+REQUIRED_USE="pgo? ( lto )"
+
+RESTRICT="!bindist? ( bindist )
+	!test? ( test )"
 
 PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c,whissi}/mozilla/patchsets/${PATCH}.tar.xz )
 SRC_URI="${SRC_URI}
@@ -174,9 +178,6 @@ DEPEND="${CDEPEND}
 		x86? ( >=dev-lang/nasm-2.13 )
 	)"
 
-REQUIRED_USE="pgo? ( lto )"
-
-RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/firefox-${PV%_*}"
 
