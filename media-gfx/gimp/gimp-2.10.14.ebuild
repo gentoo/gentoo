@@ -34,8 +34,8 @@ RDEPEND=">=dev-libs/glib-2.56.0:2
 	dev-libs/libxml2
 	dev-libs/libxslt
 	x11-themes/hicolor-icon-theme
-	>=media-libs/babl-0.1.66
-	>=media-libs/gegl-0.4.16:0.4[cairo]
+	>=media-libs/babl-0.1.72
+	>=media-libs/gegl-0.4.18:0.4[cairo]
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
 	aqua? ( x11-libs/gtk-mac-integration )
