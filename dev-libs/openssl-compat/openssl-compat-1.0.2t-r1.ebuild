@@ -39,7 +39,9 @@ LICENSE="openssl"
 SLOT="1.0.0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc x86 ~x86-linux"
 IUSE="+asm bindist gmp kerberos rfc3779 sctp cpu_flags_x86_sse2 sslv2 +sslv3 static-libs test +tls-heartbeat vanilla zlib"
-RESTRICT="!bindist? ( bindist )"
+
+RESTRICT="!bindist? ( bindist )
+	test"
 
 RDEPEND="gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	kerberos? ( >=app-crypt/mit-krb5-1.11.4[${MULTILIB_USEDEP}] )
@@ -54,8 +56,6 @@ BDEPEND="
 		sys-apps/diffutils
 		sys-devel/bc
 	)"
-
-RESTRICT="test"
 
 # Do not install any docs
 DOCS=()
