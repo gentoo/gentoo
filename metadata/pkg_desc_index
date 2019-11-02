@@ -3308,7 +3308,7 @@ dev-erlang/riakc 2.4.2: Erlang clients for Riak
 dev-erlang/sqlite3 1.1.5 1.1.6: SQLite gen_server port for Erlang
 dev-erlang/stringprep 1.0.8 1.0.17: Fast Stringprep implementation for Erlang and Elixir
 dev-erlang/stun 1.0.10 1.0.25 1.0.29: STUN and TURN library for Erlang and Elixir
-dev-erlang/xmpp 1.1.9 1.2.5 1.4.2: XMPP parsing and serialization library on top of Fast XML
+dev-erlang/xmpp 1.1.9 1.2.5 1.4.2-r1: XMPP parsing and serialization library on top of Fast XML
 dev-erlang/yconf 1.0.1: YAML configuration processor
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 1.1.6 1.1.7: Animated sprite editor & pixel art tool
