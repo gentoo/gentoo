@@ -5,14 +5,6 @@
 # Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are keyworded
 kde-plasma/plasma-meta thunderbolt
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-08-18)
-# media-video/pipewire is not keyworded yet
-dev-libs/weston pipewire
-kde-apps/krfb wayland
-kde-plasma/xdg-desktop-portal-kde screencast
-sys-apps/xdg-desktop-portal screencast
-x11-wm/mutter screencast
-
 # Michał Górny <mgorny@gentoo.org> (2019-07-13)
 # app-forensics/libewf is not keyworded here.
 app-admin/testdisk ewf
