@@ -10578,7 +10578,7 @@ dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2019.2.4: A complete toolset for C and C++ development
 dev-util/cloc 1.72 1.76-r1 1.80 1.82: Count Lines of Code
-dev-util/cmake 3.13.5 3.14.6 3.14.7 3.15.4 3.15.5 3.16.0_rc2: Cross platform Make
+dev-util/cmake 3.13.5 3.14.6 3.14.7 3.15.4 3.15.5 3.16.0_rc3: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
@@ -17969,7 +17969,7 @@ sys-process/audit 2.6.4 2.7.1 2.8.2 2.8.3 2.8.4: Userspace utilities for storing
 sys-process/bcron 0.10 0.11: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 3.6 3.11 3.12: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
-sys-process/cronie 1.5.4-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
+sys-process/cronie 1.5.4-r1 1.5.5: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
 sys-process/ctop 0.5.1: Top-like interface for container-metrics
 sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
