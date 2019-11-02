@@ -18,7 +18,7 @@ RESTRICT="mirror bindist"
 PATCHES=(
 	"${FILESDIR}"/${P}-errno.patch
 	"${FILESDIR}"/${P}-exit.patch
-	"${FILESDIR}"/${P}-headers.diff
+	"${FILESDIR}"/${P}-headers.patch
 )
 
 src_prepare() {
