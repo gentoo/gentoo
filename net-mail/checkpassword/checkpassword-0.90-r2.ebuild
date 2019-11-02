@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -18,7 +18,7 @@ RESTRICT="mirror bindist"
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/${PV}-errno.patch
+	epatch "${FILESDIR}"/${P}-errno.patch
 	epatch "${FILESDIR}"/${PV}-head-1.patch
 
 	use static && append-ldflags -static
