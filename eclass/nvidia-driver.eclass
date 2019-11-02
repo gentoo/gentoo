@@ -14,6 +14,7 @@
 inherit readme.gentoo-r1 versionator
 
 DEPEND="sys-apps/pciutils"
+RESTRICT="bindist mirror test"
 
 # Variables for readme.gentoo.eclass:
 DISABLE_AUTOFORMATTING="yes"
