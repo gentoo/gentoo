@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )"
 BDEPEND="dev-qt/linguist-tools:5"
 
+RESTRICT="!test? ( test )"
+
 S="${WORKDIR}/QtPass-${PV}"
 
 DOCS=( {CHANGELOG,CONTRIBUTING,FAQ,README}.md )
