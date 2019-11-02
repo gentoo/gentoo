@@ -17345,7 +17345,7 @@ sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-compat 1.2: NSS module to provide compat entry support
 sys-auth/libnss-mysql 1.5_p20060915-r4: NSS MySQL Library
 sys-auth/libnss-nis 1.4: NSS module to provide NIS support
-sys-auth/libnss-pgsql 1.4.0 1.5.0_beta: Name Service Switch module for use with PostgreSQL
+sys-auth/libnss-pgsql 1.5.0_beta-r1: Name Service Switch module for use with PostgreSQL
 sys-auth/libyubikey 1.12 1.13: Yubico C low-level library
 sys-auth/munge 0.5.10-r2 0.5.13 0.5.13-r1: An authentication service for creating and validating credentials
 sys-auth/nss-mdns 0.13 0.14.1 9999: Name Service Switch module for Multicast DNS
