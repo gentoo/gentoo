@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,10 +14,9 @@ SLOT="1.8"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="blocking-tcp debug doc ipv6 +reuseaddr samples static-libs"
 
-DOCS="NEWS ChangeLog"
+DOCS="ChangeLog"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.6.19-docs-install.patch
 	"${FILESDIR}"/${PN}-1.6.21-cflags.patch
 )
 
@@ -38,8 +37,7 @@ src_configure() {
 		$(use_enable ipv6) \
 		$(use_enable reuseaddr) \
 		$(use_enable static-libs static) \
-		$(use_enable samples) \
-		$(use_with doc documentation "${EPREFIX}/usr/share/doc/${PF}")
+		$(use_enable samples)
 }
 
 src_install () {
