@@ -5,6 +5,6 @@
 		<email>ejabberd@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">davisp/jiffy</remote-id>
+		<remote-id type="github">benoitc/erlang-idna</remote-id>
 	</upstream>
 </pkgmetadata>
