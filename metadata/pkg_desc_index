@@ -2389,7 +2389,7 @@ app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
-app-text/asciidoc 8.6.9-r2 8.6.9-r6 8.6.10 8.6.10_p20181016: A plain text human readable/writable document format
+app-text/asciidoc 8.6.10_p20181016: A plain text human readable/writable document format
 app-text/aspell 0.60.7_rc1 0.60.7 0.60.8: A spell checker replacement for ispell
 app-text/atril 1.22.1: Atril document viewer for MATE
 app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
@@ -7619,7 +7619,7 @@ dev-python/curtsies 0.2.11 0.3.0 0.3.0-r1: Curses-like terminal wrapper, with co
 dev-python/cvxopt 1.1.9: Python package for convex optimization
 dev-python/cx_Freeze 4.3.4 5.0.2: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0: Composable style cycles
-dev-python/cython 0.29.4 0.29.12 0.29.13: A Python to C compiler
+dev-python/cython 0.29.4 0.29.12 0.29.13 0.29.14: A Python to C compiler
 dev-python/cytoolz 0.8.0 0.8.2 0.10.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
@@ -8784,7 +8784,7 @@ dev-python/pyx 0.12.1-r1 0.14.1 0.14.1-r1: Python package for the generation of 
 dev-python/pyxattr 0.6.0-r1 0.6.1 0.6.1-r1: Python interface to xattr
 dev-python/pyxdg 0.25-r1 0.26 0.26-r1: A Python module to deal with freedesktop.org specifications
 dev-python/pyxenstore 0.0.2: Provides Python interfaces for Xen's XenStore
-dev-python/pyyaml 3.12 3.13 5.1: YAML parser and emitter for Python
+dev-python/pyyaml 5.1: YAML parser and emitter for Python
 dev-python/pyzbar 0.1.5 0.1.7: Read one-dimensional barcodes and QR codes from Python
 dev-python/pyzmq 16.0.2 17.1.0: Lightweight and super-fast messaging library built on top of the ZeroMQ library
 dev-python/pyzor 1.0.0-r1: A distributed, collaborative spam detection and filtering network
