@@ -23,12 +23,12 @@ SRC_URI="
 	)
 "
 
-LICENSE="GPL-2 NVIDIA-r2"
-SLOT="0/${PV%.*}"
-KEYWORDS="-* amd64 x86"
-IUSE="acpi multilib kernel_FreeBSD kernel_linux static-libs +tools +X"
-RESTRICT="bindist mirror"
 EMULTILIB_PKG="true"
+IUSE="acpi multilib kernel_FreeBSD kernel_linux static-libs +tools +X"
+KEYWORDS="-* amd64 x86"
+LICENSE="GPL-2 NVIDIA-r2"
+RESTRICT="bindist mirror test"
+SLOT="0/${PV%.*}"
 
 COMMON="
 	app-eselect/eselect-opencl
