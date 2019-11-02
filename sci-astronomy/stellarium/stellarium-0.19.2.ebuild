@@ -45,6 +45,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
+RESTRICT="!test? ( test )"
+
 src_prepare() {
 	cmake-utils_src_prepare
 	use debug || append-cppflags -DQT_NO_DEBUG #415769
