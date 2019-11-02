@@ -10,4 +10,4 @@ RDEPEND=dev-lang/tcl:0= dev-tcltk/tdom
 SLOT=0
 SRC_URI=mirror://sourceforge/tcllib/tcllib/1.19/tcllib-1.19.tar.xz
 _eclasses_=virtualx	53625127887b62eabb9ec61d3d943462
-_md5_=b626f60b53c5d55ea4ad066122fadea8
+_md5_=d277519db1da29b4a53d0fb076fdce6b
