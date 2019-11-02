@@ -4711,6 +4711,7 @@ media-sound/hydrogen:archive - Use libarchive instead of libtar
 media-sound/hydrogen:portmidi - Add portmidi support
 media-sound/jack-audio-connection-kit:pam - Add basic realtime configuration via sys-auth/realtime-base
 media-sound/jack2:classic - Enable building of jackd
+media-sound/jack2:metadata - Enable metadata API
 media-sound/jack2:pam - Add basic realtime configuration via sys-auth/realtime-base
 media-sound/jalv:gtk2 - Adds support for GTK+2 in addition to GTK+3 controlled by the gtk useflag.
 media-sound/jalv:gtkmm - Adds support for dev-cpp/gtkmm: C++ interface for GTK+2
