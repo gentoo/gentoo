@@ -1598,7 +1598,7 @@ app-eselect/eselect-wine 1.2.2: Manage active wine version
 app-eselect/eselect-wxwidgets 20140423 20180529: Eselect module and wrappers for wxWidgets
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
 app-forensics/afflib 3.7.18: Library that implements the AFF image standard
-app-forensics/afl 2.52b 2.55b: american fuzzy lop - compile-time instrumentation fuzzer
+app-forensics/afl 2.52b 2.55b 2.56b: american fuzzy lop - compile-time instrumentation fuzzer
 app-forensics/aide 0.16-r1: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
 app-forensics/air 2.0.0-r2: A GUI front-end to dd/dc3dd
 app-forensics/chkrootkit 0.52 0.53: Tool to locally check for signs of a rootkit
@@ -18344,7 +18344,7 @@ www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced 
 www-client/epiphany 3.30.4 3.30.5 3.32.4 3.32.5: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 52.9.0 60.9.0 68.1.0 68.2.0 70.0 70.0.1: Firefox Web Browser
+www-client/firefox 52.9.0 60.9.0 68.1.0 68.2.0 70.0.1: Firefox Web Browser
 www-client/firefox-bin 52.9.0 60.9.0 68.2.0 69.0.3 70.0.1: Firefox Web Browser
 www-client/google-chrome 78.0.3904.87: The web browser from Google
 www-client/google-chrome-beta 79.0.3945.16: The web browser from Google
