@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/pkgcore/pkgcheck"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="doc network test"
+IUSE="doc network perl test"
 RESTRICT="!test? ( test )"
 
 if [[ ${PV} == *9999 ]]; then
@@ -35,6 +35,7 @@ RDEPEND+="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	network? ( dev-python/requests[${PYTHON_USEDEP}] )
+	perl? ( dev-perl/Gentoo-PerlMod-Version )
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
