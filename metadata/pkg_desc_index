@@ -9957,7 +9957,7 @@ dev-ruby/narray 0.6.1.2: Numerical N-dimensional Array class
 dev-ruby/naught 1.1.0: A toolkit for building Null Objects in Ruby
 dev-ruby/necromancer 0.5.0: Conversion from one object type to another with a bit of black magic
 dev-ruby/nenv 0.3.0: Convenient wrapper for Ruby's ENV
-dev-ruby/neovim-ruby-client 0.7.1 0.8.1 0.8.1-r1: Ruby bindings for Neovim
+dev-ruby/neovim-ruby-client 0.8.1 0.8.1-r1: Ruby bindings for Neovim
 dev-ruby/net-http-digest_auth 1.4.1: An implementation of RFC 2617 - Digest Access Authentication
 dev-ruby/net-http-persistent 3.0.0 3.0.1 3.1.0: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
 dev-ruby/net-http-pipeline 1.0.1: An HTTP/1.1 pipelining implementation atop Net::HTTP
@@ -10004,9 +10004,9 @@ dev-ruby/pdf-core 0.7.0 0.8.1: Implements low level PDF features for Prawn
 dev-ruby/pdf-inspector 1.3.0: A tool for analyzing PDF output
 dev-ruby/pdf-reader 1.4.1-r2 2.2.0 2.2.1: PDF parser conforming as much as possible to the PDF specification from Adobe
 dev-ruby/permutation 0.1.8-r1: Library performing operations with permutations of sequences (strings, arrays)
-dev-ruby/pg 0.21.0 1.0.0 1.1.4: Ruby extension library providing an API to PostgreSQL
+dev-ruby/pg 0.21.0 1.1.4: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r2: Simple library to parse PostgreSQL arrays into a array of strings
-dev-ruby/pkg-config 1.2.8 1.3.7 1.3.8 1.3.9 1.4.0: A pkg-config implementation by Ruby
+dev-ruby/pkg-config 1.2.8 1.3.9 1.4.0: A pkg-config implementation by Ruby
 dev-ruby/plist 3.4.0 3.5.0: A library to manipulate Property List files, also known as plists
 dev-ruby/pluggaloid 1.1.2 1.2.0: Pluggaloid is extensible plugin system for mikutter
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
@@ -10109,7 +10109,7 @@ dev-ruby/rspec-expectations 2.99.2 3.8.4 3.8.6 3.9.0: A Behaviour Driven Develop
 dev-ruby/rspec-its 1.2.0-r1 1.3.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-json_expectations 2.1.0 2.2.0: Set of matchers and helpers to allow you test your APIs responses.
 dev-ruby/rspec-mocks 2.99.2 3.8.1 3.8.2 3.9.0: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-rails 3.7.2 3.8.2 3.8.3 3.9.0: RSpec's official Ruby on Rails plugin
+dev-ruby/rspec-rails 3.8.2 3.8.3 3.9.0: RSpec's official Ruby on Rails plugin
 dev-ruby/rspec-retry 0.6.1: Retry intermittently failing rspec examples
 dev-ruby/rspec-stubbed_env 1.0.0: Stub environment variables in a scoped context for testing
 dev-ruby/rspec-support 3.8.2 3.8.3 3.9.0: A Behaviour Driven Development (BDD) framework for Ruby
@@ -17113,7 +17113,7 @@ sys-apps/flashrom 0.9.8 1.0 1.1 9999: Utility for reading, writing, erasing and 
 sys-apps/flock 2.19: Manage locks from shell scripts
 sys-apps/frandom 1.1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwts 17.02.00: Firmware Test Suite
-sys-apps/fwupd 1.2.8 1.2.10 1.2.11 1.3.2: Aims to make updating firmware on Linux automatic, safe and reliable
+sys-apps/fwupd 1.2.8 1.2.11 1.3.2 1.3.3: Aims to make updating firmware on Linux automatic, safe and reliable
 sys-apps/fwupdate 10 12: Tools for using the ESRT and UpdateCapsule() to apply firmware updates
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.0 5.0.1: GNU awk pattern-matching language
@@ -17712,7 +17712,7 @@ sys-fs/copyfs 1.0.1-r1: fuse-based filesystem for maintaining configuration file
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryfs 0.9.9-r1 0.10.2 9999: Encrypted FUSE filesystem that conceals metadata
 sys-fs/cryptmount 5.3.1: A utility for management and user-mode mounting of encrypted filesystems
-sys-fs/cryptsetup 1.7.5-r1 2.2.1-r1: Tool to setup encrypted devices with dm-crypt
+sys-fs/cryptsetup 1.7.5-r1 2.2.1-r1 2.2.2: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.46 1.99.8: Similar to dd but can copy from source with errors
