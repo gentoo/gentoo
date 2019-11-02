@@ -12446,7 +12446,7 @@ lxqt-base/liblxqt 0.14.1: Common base library for the LXQt desktop environment
 lxqt-base/libsysstat 0.4.2: A Qt-based interface to system statistics
 lxqt-base/lxqt-about 0.14.1: LXQt about dialog
 lxqt-base/lxqt-admin 0.14.1: LXQt system administration tool
-lxqt-base/lxqt-config 0.14.1: LXQt system configuration control center
+lxqt-base/lxqt-config 0.14.1-r1: LXQt system configuration control center
 lxqt-base/lxqt-globalkeys 0.14.1: Daemon and library for global keyboard shortcuts registration
 lxqt-base/lxqt-meta 0.14.1-r1: Meta ebuild for LXQt, the Lightweight Desktop Environment
 lxqt-base/lxqt-notificationd 0.14.1: LXQt notification daemon and library
