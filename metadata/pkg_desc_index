@@ -326,7 +326,7 @@ app-admin/pwgen 2.08: Password Generator
 app-admin/pwman3 0.9.11 0.10.0: A lightweight password-manager with multiple database backends
 app-admin/pydf 12-r1: Enhanced df with colors
 app-admin/qpage 3.3: Sends messages to an alphanumeric pager via TAP protocol
-app-admin/qtpass 1.2.3: multi-platform GUI for pass, the standard unix password manager
+app-admin/qtpass 1.2.3 1.3.2: multi-platform GUI for pass, the standard unix password manager
 app-admin/quickswitch 1.05: Utility to switch network profiles on the fly
 app-admin/r10k 3.2.0 3.3.0 3.3.1 3.3.2 3.3.3: Puppet environment and module deployment
 app-admin/radmind 1.15.1: Command-line tools and server to remotely administer multiple Unix filesystems
@@ -2218,10 +2218,10 @@ app-office/kmymoney 5.0.5 5.0.6-r1 5.0.7: Personal finance manager based on KDE 
 app-office/kraft 0.82-r1: Software to manage quotes and invoices in small enterprises
 app-office/ledger 3.1.2: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2-r1: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 6.2.5.2 6.2.8.2 6.3.3.2 6.3.9999 9999: A full office productivity suite
-app-office/libreoffice-bin 6.2.5.2 6.2.8.2: A full office productivity suite. Binary package
-app-office/libreoffice-bin-debug 6.2.5.2 6.2.8.2: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 6.2.5.2 6.2.8.2 6.3.3.2: Translations for the Libreoffice suite
+app-office/libreoffice 6.2.8.2 6.3.3.2 6.3.9999 9999: A full office productivity suite
+app-office/libreoffice-bin 6.2.8.2: A full office productivity suite. Binary package
+app-office/libreoffice-bin-debug 6.2.8.2: LibreOffice, a full office productivity suite. Binary package, debug info
+app-office/libreoffice-l10n 6.2.8.2 6.3.3.2: Translations for the Libreoffice suite
 app-office/libreoffice-voikko 5.0: Free Finnish spell checking and hyphenation for LibreOffice
 app-office/lyx 2.3.3: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
@@ -4969,7 +4969,7 @@ dev-libs/libnsutils 0.0.5-r1: base64 and time library, written in C
 dev-libs/libofx 0.9.15: Library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17-r2: Library of simple functions that are optimized for various CPUs
 dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backends
-dev-libs/liborcus 0.14.1 9999: Standalone file import filter library for spreadsheet documents
+dev-libs/liborcus 0.14.1-r1 9999: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13 0.9.16: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.31-r1 0.32-r1: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.4.10: Abstraction layer to simplify PKCS#11 API
@@ -15963,7 +15963,7 @@ sci-astronomy/sextractor 2.19.5 2.19.5-r1: Extract catalogs of sources from astr
 sci-astronomy/skycat 3.1.2-r2 3.1.3: ESO astronomical image visualizer with catalog access
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
 sci-astronomy/sofa_c 20150209a 20160503c 20170420: Library for algorithms for models in fundamental astronomy
-sci-astronomy/stellarium 0.19.0 0.19.1: 3D photo-realistic skies in real time
+sci-astronomy/stellarium 0.19.0 0.19.1 0.19.2: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
 sci-astronomy/swarp 2.38.0: Resample and coadd astronomical FITS images
