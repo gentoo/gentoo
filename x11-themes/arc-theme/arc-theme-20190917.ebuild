@@ -11,12 +11,12 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell"
-HOMEPAGE="https://github.com/NicoHood/arc-theme"
-SRC_URI="https://github.com/NicoHood/${PN}/releases/download/${PV}/${P}.tar.xz
+HOMEPAGE="https://github.com/arc-design/arc-theme"
+SRC_URI="https://github.com/arc-design/${PN}/releases/download/${PV}/${P}.tar.xz
 	pre-rendered? ( https://dev.gentoo.org/~chewi/distfiles/${P}-pngs.tar.xz )"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="cinnamon gnome-shell +gtk2 +gtk3 mate +pre-rendered xfce"
 
 SASSC_DEPEND="
@@ -32,13 +32,15 @@ SVG_DEPEND="
 
 # Supports various GTK+3 versions and uses pkg-config to determine which
 # set of files to install. Updates will break it but only this fix will
-# help. https://github.com/horst3180/arc-theme/pull/436
+# help. See https://github.com/horst3180/arc-theme/pull/436. The same
+# applies to GNOME Shell but I don't know whether that's fixable.
 BDEPEND="
 	cinnamon? (
 		${SASSC_DEPEND}
 	)
 	gnome-shell? (
 		${SASSC_DEPEND}
+		>=gnome-base/gnome-shell-3.18
 	)
 	gtk2? (
 		${SVG_DEPEND}

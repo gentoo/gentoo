@@ -29,5 +29,6 @@ app-misc/workrave gnome
 net-misc/wicd gnome-shell
 x11-misc/gpaste gnome
 x11-terms/gnome-terminal gnome-shell
+x11-themes/arc-theme gnome-shell
 x11-themes/zukitwo gnome-shell
 net-wireless/bluez user-session
