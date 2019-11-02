@@ -1,0 +1,91 @@
+diff -up ./lib/py/tvh/tsreader.py.orig ./lib/py/tvh/tsreader.py
+--- ./lib/py/tvh/tsreader.py.orig	2018-10-08 14:37:05.000000000 +0200
++++ ./lib/py/tvh/tsreader.py	2018-10-15 11:53:53.766850060 +0200
+@@ -31,7 +31,7 @@ def encode_utf8(c):
+ 
+ def conv_8859(tnum, data):
+     r = u''
+-    print 'TBL %d' % tnum
++    print('TBL %d' % tnum)
+     tbl = conv_8859_table[tnum]
+     for c in data:
+         if ord(c) <= 0x7f:
+@@ -46,8 +46,8 @@ def conv_8859(tnum, data):
+ 
+ 
+ def dvb_convert_string(data, conv):
+-    print 'convert(%d)' % conv
+-    print repr(data)
++    print('convert(%d)' % conv)
++    print(repr(data))
+     if not conv:
+         return data
+     return conv_8859(conv, data)
+@@ -83,8 +83,8 @@ class TsSection(object):
+         # print self.tid, self.len, len(data)
+ 
+     def process(self):
+-        print 'TS Section:'
+-        print self.tid, self.len, len(self.data)
++        print('TS Section:')
++        print(self.tid, self.len, len(self.data))
+         # print str2hex(self.data, 16)
+         # print self.data
+ 
+@@ -112,7 +112,7 @@ class TsSection(object):
+         if l + 1 > dlen:
+             return (None, -1)
+         c = ord(data[1])
+-        print c
++        print(c)
+         conv = None
+         if c == 0:
+             return (None, -1)
+@@ -162,14 +162,14 @@ class TsSection(object):
+         eid = (hdr[0] << 8) + hdr[1]
+         start = dvb_convert_date(hdr[2:])
+ 
+-        print 'process event (%d):' % dllen
+-        print '  EID       :   %d' % eid
+-        print '  START     : %d' % start
++        print('process event (%d):' % dllen)
++        print('  EID       :   %d' % eid)
++        print('  START     : %d' % start)
+ 
+         while dllen > 2:
+             dtag = ord(data[0])
+             dlen = ord(data[1])
+-            print 'dtag = 0x%02x, dlen = %d' % (dtag, dlen)
++            print('dtag = 0x%02x, dlen = %d' % (dtag, dlen))
+ 
+             dllen = dllen - 2
+             data = data[2:]
+@@ -178,8 +178,8 @@ class TsSection(object):
+ 
+             if dtag == 0x4d:
+                 (title, summary) = self.short_event(data, dlen)
+-                print '  TITLE     : %s' % title
+-                print '  SUMMARY   : %s' % summary
++                print('  TITLE     : %s' % title)
++                print('  SUMMARY   : %s' % summary)
+ 
+             dllen = dllen - dlen
+             data = data[dlen:]
+@@ -216,7 +216,7 @@ if __name__ == '__main__':
+         # Complete?
+         if cur:
+             if len(cur.data) >= cur.len:
+-                print 'Process Section:'
++                print('Process Section:')
+                 # try:
+                 cur.process()
+                 # except: pass
+@@ -224,7 +224,7 @@ if __name__ == '__main__':
+                 print
+                 sys.exit(0)
+             else:
+-                print 'waiting for %d bytes' % (cur.len - len(cur.data))
++                print('waiting for %d bytes' % (cur.len - len(cur.data)))
+ 
+         # Next
+         if nxt:
