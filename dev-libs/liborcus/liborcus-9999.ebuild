@@ -22,7 +22,7 @@ SLOT="0/0.15" # based on SONAME of liborcus.so
 IUSE="python +spreadsheet-model static-libs tools"
 
 RDEPEND="
-	dev-libs/boost:=
+	dev-libs/boost:=[zlib(+)]
 	sys-libs/zlib
 	python? ( ${PYTHON_DEPS} )
 	spreadsheet-model? ( >=dev-libs/libixion-0.15.0:= )
