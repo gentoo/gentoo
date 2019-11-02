@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils git-r3 toolchain-funcs
+EAPI=7
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="A console-based network monitoring utility"
-HOMEPAGE="http://fedorahosted.org/iptraf-ng/"
-EGIT_REPO_URI="https://git.fedorahosted.org/git/iptraf-ng.git"
+HOMEPAGE="https://github.com/iptraf-ng/iptraf-ng"
+EGIT_REPO_URI="https://github.com/iptraf-ng/iptraf-ng"
 
 LICENSE="GPL-2 doc? ( FDL-1.1 )"
 SLOT="0"
@@ -25,6 +25,8 @@ DEPEND="
 "
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e '/^CC =/d' \
 		-e '/^CFLAGS/s:= -g -O2:+= :' \
@@ -54,7 +56,11 @@ src_install() {
 
 	doman src/*.8
 	dodoc AUTHORS CHANGES FAQ README* RELEASE-NOTES
-	use doc && dohtml -a gif,html,png -r Documentation/*
+
+	if use doc; then
+		docinto html
+		dodoc -r Documentation
+	fi
 
 	keepdir /var/{lib,log}/iptraf-ng #376157
 }
