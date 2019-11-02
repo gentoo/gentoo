@@ -26,11 +26,11 @@ SRC_URI="
 	)
 "
 
-LICENSE="GPL-2 NVIDIA-r2"
-SLOT="0/${PV%.*}"
-KEYWORDS="-* amd64 x86"
-RESTRICT="bindist mirror"
 EMULTILIB_PKG="true"
+KEYWORDS="-* amd64 x86"
+LICENSE="GPL-2 NVIDIA-r2"
+RESTRICT="bindist mirror test"
+SLOT="0/${PV%.*}"
 
 IUSE="acpi compat +driver gtk3 kernel_FreeBSD kernel_linux +kms multilib static-libs +tools uvm wayland +X"
 REQUIRED_USE="
