@@ -38,7 +38,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		sys-apps/dbus[${MULTILIB_USEDEP}]
 	)
 	ieee1394? ( media-libs/libffado:=[${MULTILIB_USEDEP}] )
-	metadata? ( sys-libs/db )
+	metadata? ( sys-libs/db:* )
 	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
