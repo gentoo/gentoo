@@ -81,18 +81,8 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
-src_compile() {
-	default_src_compile
-
-	if use python; then
-		cd python || die
-		distutils-r1_src_compile
-	fi
-}
-
 src_install() {
 	default_src_install
-	prune_libtool_files --modules
 
 	if use extras; then
 		dodoc extras/apparmor/usr.sbin.fwknopd
@@ -114,6 +104,8 @@ src_install() {
 		cd python || die
 		distutils-r1_src_install
 	fi
+
+	find "${ED}" -type f -name "*.la" -delete || die
 }
 
 pkg_postinst() {
