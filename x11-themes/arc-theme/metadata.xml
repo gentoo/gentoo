@@ -6,7 +6,7 @@
 		<name>James Le Cuirot</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">horst3180/arc-theme</remote-id>
+		<remote-id type="github">arc-design/arc-theme</remote-id>
 	</upstream>
 	<use>
 		<flag name="cinnamon">Install theme for <pkg>gnome-extra/cinnamon</pkg></flag>
