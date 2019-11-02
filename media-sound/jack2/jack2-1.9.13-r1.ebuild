@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_5 python3_6 python3_7 )
+PYTHON_COMPAT=( python2_7 python3_5 python3_6 python3_7 )
 PYTHON_REQ_USE="threads(+)"
 inherit python-single-r1 waf-utils multilib-minimal
 
@@ -25,10 +25,11 @@ LICENSE="GPL-2"
 SLOT="2"
 IUSE="alsa +classic dbus doc ieee1394 libsamplerate metadata opus pam readline sndfile"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	|| ( classic dbus )"
 
-COMMON_DEPEND="${PYTHON_DEPS}
+CDEPEND="${PYTHON_DEPS}
 	media-libs/libsamplerate
 	media-libs/libsndfile
 	sys-libs/readline:0=
@@ -40,15 +41,15 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	ieee1394? ( media-libs/libffado:=[${MULTILIB_USEDEP}] )
 	metadata? ( sys-libs/db )
 	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )"
-DEPEND="${COMMON_DEPEND}
+DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${CDEPEND}
 	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
 	pam? ( sys-auth/realtime-base )
 	!media-sound/jack-audio-connection-kit:0"
 
-DOCS=( AUTHORS.rst ChangeLog.rst README.rst README_NETJACK2 )
+DOCS=( ChangeLog.rst README.rst README_NETJACK2 )
 
 src_prepare() {
 	default
