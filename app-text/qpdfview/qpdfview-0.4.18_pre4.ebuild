@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~grozin/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cups +dbus djvu fitz +pdf postscript +sqlite +svg synctex"
 
 REQUIRED_USE="?? ( fitz pdf )"
