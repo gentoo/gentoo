@@ -14,6 +14,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="vies test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="vies? ( || ( dev-python/zeep dev-python/suds ) )"
 DEPEND="${DEPEND}
