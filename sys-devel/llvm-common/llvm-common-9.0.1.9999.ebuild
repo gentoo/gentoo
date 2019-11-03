@@ -3,14 +3,12 @@
 
 EAPI=7
 
-inherit git-r3
+inherit llvm.org
 
 DESCRIPTION="Common files shared between multiple slots of LLVM"
 HOMEPAGE="https://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
-EGIT_BRANCH="release/9.x"
-S=${WORKDIR}/${P}/llvm
+LLVM_COMPONENTS=( llvm/utils/vim )
+llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -19,19 +17,10 @@ IUSE=""
 
 RDEPEND="!sys-devel/llvm:0"
 
-src_unpack() {
-	git-r3_fetch
-	git-r3_checkout '' '' '' llvm/utils/vim
-}
-
-src_configure() { :; }
-src_compile() { :; }
-src_test() { :; }
-
 src_install() {
 	insinto /usr/share/vim/vimfiles
-	doins -r utils/vim/*/
+	doins -r */
 	# some users may find it useful
-	newdoc utils/vim/README README.vim
-	dodoc utils/vim/vimrc
+	newdoc README README.vim
+	dodoc vimrc
 }

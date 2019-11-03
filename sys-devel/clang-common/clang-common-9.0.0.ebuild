@@ -3,13 +3,13 @@
 
 EAPI=7
 
-inherit bash-completion-r1
+inherit bash-completion-r1 llvm.org
 
-MY_P=cfe-${PV/_/}.src
 DESCRIPTION="Common files shared between multiple slots of clang"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz"
-S=${WORKDIR}/${MY_P}
+LLVM_COMPONENTS=( clang/utils/bash-autocomplete.sh )
+llvm.org_set_globals
+S=${WORKDIR}/clang/utils
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -18,15 +18,6 @@ IUSE=""
 
 PDEPEND="sys-devel/clang:*"
 
-src_unpack() {
-	einfo "Unpacking parts of ${MY_P}.tar.xz ..."
-	tar -xJf "${DISTDIR}/${MY_P}.tar.xz" "${MY_P}/utils/bash-autocomplete.sh" || die
-}
-
-src_configure() { :; }
-src_compile() { :; }
-src_test() { :; }
-
 src_install() {
-	newbashcomp utils/bash-autocomplete.sh clang
+	newbashcomp bash-autocomplete.sh clang
 }

@@ -4,14 +4,14 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit check-reqs cmake-utils flag-o-matic git-r3 llvm \
+inherit check-reqs cmake-utils flag-o-matic llvm llvm.org \
 	multiprocessing python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
-S=${WORKDIR}/${P}/compiler-rt
+LLVM_COMPONENTS=( compiler-rt )
+LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
+llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="$(ver_cut 1-3)"
@@ -55,13 +55,6 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
-src_unpack() {
-	local dirs=( compiler-rt )
-	use test && dirs+=( llvm/lib/Testing/Support llvm/utils/unittest )
-	git-r3_fetch
-	git-r3_checkout '' '' '' "${dirs[@]}"
-}
-
 src_prepare() {
 	cmake-utils_src_prepare
 
@@ -76,7 +69,7 @@ src_prepare() {
 
 src_configure() {
 	# pre-set since we need to pass it to cmake
-	BUILD_DIR=${WORKDIR}/${P}/compiler-rt_build
+	BUILD_DIR=${WORKDIR}/compiler-rt_build
 
 	if use clang; then
 		local -x CC=${CHOST}-clang
@@ -101,7 +94,7 @@ src_configure() {
 	)
 	if use test; then
 		mycmakeargs+=(
-			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/${P}/llvm"
+			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 

@@ -4,14 +4,13 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit cmake-utils git-r3 multilib-minimal multiprocessing pax-utils \
-	python-any-r1 toolchain-funcs
+inherit cmake-utils llvm.org multilib-minimal multiprocessing \
+	pax-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
-S=${WORKDIR}/${P}/llvm
+LLVM_COMPONENTS=( llvm )
+llvm.org_set_globals
 
 # Those are in lib/Targets, without explicit CMakeLists.txt mention
 ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC AVR )
@@ -85,11 +84,6 @@ python_check_deps() {
 
 	has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
 	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
-
-src_unpack() {
-	git-r3_fetch
-	git-r3_checkout '' '' '' llvm
 }
 
 check_live_ebuild() {

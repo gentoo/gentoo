@@ -4,15 +4,19 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit cmake-utils git-r3 llvm multilib-minimal multiprocessing \
+inherit cmake-utils llvm llvm.org multilib-minimal multiprocessing \
 	pax-utils python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+LLVM_COMPONENTS=( clang clang-tools-extra )
+LLVM_TEST_COMPONENTS=(
+	llvm/lib/Testing/Support
+	llvm/utils/{lit,llvm-lit,unittest}
+)
+llvm.org_set_globals
 # We need extra level of indirection for CLANG_RESOURCE_DIR
-S=${WORKDIR}/x/${P}/clang
+S=${WORKDIR}/x/y/clang
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC AVR )
@@ -76,16 +80,10 @@ pkg_setup() {
 
 src_unpack() {
 	# create extra parent dir for CLANG_RESOURCE_DIR
-	mkdir -p x || die
-
-	local dirs=( clang clang-tools-extra )
-	use test && dirs+=(
-		llvm/lib/Testing/Support llvm/utils/{lit,llvm-lit,unittest}
-	)
-	git-r3_fetch
-	git-r3_checkout "${EGIT_REPO_URI}" "${WORKDIR}/x/${P}" '' "${dirs[@]}"
-	mv "${WORKDIR}/x/${P}/clang-tools-extra" \
-		"${WORKDIR}/x/${P}/clang/tools/extra" || die
+	mkdir -p x/y || die
+	cd x/y || die
+	llvm.org_src_unpack
+	mv clang-tools-extra clang/tools/extra || die
 }
 
 check_distribution_components() {
@@ -242,7 +240,7 @@ multilib_src_configure() {
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
 	)
 	use test && mycmakeargs+=(
-		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/x/${P}/llvm"
+		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/x/y/llvm"
 		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
 

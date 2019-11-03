@@ -4,15 +4,13 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit cmake-multilib git-r3 llvm multiprocessing python-any-r1 \
+inherit cmake-multilib llvm llvm.org multiprocessing python-any-r1 \
 	toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
-EGIT_BRANCH="release/9.x"
-S=${WORKDIR}/${P}/libcxx
+LLVM_COMPONENTS=( libcxx )
+llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
@@ -66,11 +64,6 @@ pkg_setup() {
 		eerror "gcc-4.7 or later version."
 		die
 	fi
-}
-
-src_unpack() {
-	git-r3_fetch
-	git-r3_checkout '' '' '' libcxx
 }
 
 test_compiler() {

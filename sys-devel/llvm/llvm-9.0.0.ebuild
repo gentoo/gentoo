@@ -4,15 +4,15 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit cmake-utils multilib-minimal multiprocessing pax-utils \
-	python-any-r1 toolchain-funcs
+inherit cmake-utils llvm.org multilib-minimal multiprocessing \
+	pax-utils python-any-r1 toolchain-funcs
 
-MY_P=${P}.src
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://releases.llvm.org/${PV}/${MY_P}.tar.xz
+SRC_URI="
 	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/${P}-manpages.tar.bz2 )"
-S=${WORKDIR}/${MY_P}
+LLVM_COMPONENTS=( llvm )
+llvm.org_set_globals
 
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -82,6 +82,16 @@ python_check_deps() {
 
 	has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
 	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
+
+src_unpack() {
+	llvm.org_src_unpack
+
+	if ! use doc; then
+		ebegin "Unpacking llvm-${PV}-manpages.tar.bz2"
+		tar -xf "${DISTDIR}/llvm-${PV}-manpages.tar.bz2" || die
+		eend
+	fi
 }
 
 src_prepare() {
