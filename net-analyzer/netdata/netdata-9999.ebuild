@@ -121,3 +121,9 @@ src_install() {
 	insinto /etc/netdata
 	doins system/netdata.conf
 }
+
+pkg_postinst() {
+	if use xen ; then
+		fcaps 'cap_dac_override' 'usr/libexec/netdata/plugins.d/xenstat.plugin'
+	fi
+}
