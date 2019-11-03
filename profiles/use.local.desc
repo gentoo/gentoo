@@ -3886,9 +3886,11 @@ mail-client/mutt:gpgme - Build gpgme backend to support S/MIME, PGP/MIME and tra
 mail-client/mutt:hcache - Enable header cache, one database backend needs to be enabled
 mail-client/mutt:lmdb - Enable dev-db/lmdb database backend for header caching
 mail-client/mutt:notmuch - Enable support for net-mail/notmuch
+mail-client/mutt:pgp-classic - Build classic_pgp backend to support PGP/MIME and traditional/inline PGP
 mail-client/mutt:pgp_classic - Build classic_pgp backend to support PGP/MIME and traditional/inline PGP
 mail-client/mutt:pop - Enable support for POP3 mailboxes
 mail-client/mutt:smime - Enable support for smime
+mail-client/mutt:smime-classic - Build classic_smime backend to support S/MIME
 mail-client/mutt:smime_classic - Build classic_smime backend to support S/MIME
 mail-client/mutt:smtp - Enable support for direct SMTP delivery
 mail-client/mutt:tokyocabinet - Enable dev-db/tokyocabinet database backend for header caching
