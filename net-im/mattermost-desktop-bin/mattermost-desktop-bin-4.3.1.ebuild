@@ -84,7 +84,7 @@ src_install() {
 	exeinto "/opt/${MY_PN}"
 	doexe *.so "${MY_PN}"
 
-	dosym "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
+	dosym "../../opt/${MY_PN}/${MY_PN}" "${EROOT}/usr/bin/${MY_PN}"
 
 	newicon "${S}/icon.svg" "${MY_PN}.svg"
 	make_desktop_entry "${MY_PN}" Mattermost "${MY_PN}"
