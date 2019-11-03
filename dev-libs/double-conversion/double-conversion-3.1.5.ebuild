@@ -11,13 +11,9 @@ SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/3"
-KEYWORDS="amd64 arm arm64 hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
-
-PATCHES=(
-	"${FILESDIR}/0001-CMake-install-to-correct-lib-dir.patch"
-)
 
 pkg_setup() {
 	MULTIBUILD_VARIANTS=( shared $(usev static-libs) )
