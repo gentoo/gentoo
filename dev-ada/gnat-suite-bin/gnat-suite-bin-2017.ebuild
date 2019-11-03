@@ -11,7 +11,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/591c6d80c7a447af2deed1d7
 
 LICENSE="GPL-2 GPL-3"
 SLOT="${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND=""
