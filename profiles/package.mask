@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2019-11-03)
+# Infinite loop in TAILQ_FOREACH_SAFE when running for some time
+# Bug #698856
+=net-misc/dhcpcd-8.1.1
+
 # Michał Górny <mgorny@gentoo.org> (2019-11-03)
 # Discontinued upstream.  Relies on app-portage/flaggie make.conf
 # editing support that was fragile and therefore was removed.
@@ -736,11 +741,6 @@ dev-java/eclipse-ecj:4.10
 # New package. Needs to interact with media-libs/mesa and
 # x11-drivers/nvidia-drivers. Work in progress.
 media-libs/libglvnd
-
-# Brian Evans <grknight@gentoo.org> (2018-04-20)
-# Likely to break a lot of software
-# Masked for initial testing
->=dev-db/mysql-connector-c++-8.0.0
 
 # James Le Cuirot <chewi@gentoo.org> (2017-12-17)
 # Java 9+ is not yet fully supported on Gentoo. Packages cannot depend
