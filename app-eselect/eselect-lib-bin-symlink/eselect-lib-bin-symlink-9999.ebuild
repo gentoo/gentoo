@@ -1,10 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=1
-inherit autotools-utils git-r3
+inherit autotools git-r3
 
 DESCRIPTION="An eselect library to manage executable symlinks"
 HOMEPAGE="https://github.com/mgorny/eselect-lib-bin-symlink/"
@@ -16,3 +15,8 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="app-admin/eselect"
+
+src_prepare() {
+	default
+	eautoreconf
+}
