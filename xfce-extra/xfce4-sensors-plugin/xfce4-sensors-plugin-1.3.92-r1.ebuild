@@ -24,7 +24,6 @@ RDEPEND=">=x11-libs/gtk+-3.20:3=
 		|| (
 			net-analyzer/openbsd-netcat
 			net-analyzer/netcat
-			net-analyzer/gnu-netcat
 		)
 	)
 	libnotify? ( >=x11-libs/libnotify-0.7:= )
