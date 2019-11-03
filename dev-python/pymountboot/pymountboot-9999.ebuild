@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} pypy )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python extension module to (re)mount /boot"
-HOMEPAGE="https://bitbucket.org/mgorny/pymountboot/"
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+HOMEPAGE="https://github.com/mgorny/pymountboot/"
+EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
