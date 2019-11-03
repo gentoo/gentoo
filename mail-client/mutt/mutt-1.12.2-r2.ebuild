@@ -255,7 +255,7 @@ pkg_postinst() {
 		elog "   https://wiki.gentoo.org/wiki/Mutt"
 		echo
 	fi
-	if use gpg_classic || use smime_classic ; then
+	if use pgp_classic || use smime_classic ; then
 		ewarn "Please note that crypto related USE-flags of mutt have changed."
 		ewarn "To compile to PMS, the following USE-flags are renamed:"
 		ewarn "(see https://bugs.gentoo.org/695078)"
