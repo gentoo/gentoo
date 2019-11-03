@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>fordfrog@gentoo.org</email>
+	<description>Miroslav Šulc</description>
+</maintainer>
+<longdescription>A tool for visualizing changes in Linux software packages</longdescription>
+</pkgmetadata>
