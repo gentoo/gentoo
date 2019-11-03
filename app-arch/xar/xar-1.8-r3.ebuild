@@ -45,6 +45,12 @@ src_prepare() {
 	# strip RPATH pointing to ED
 	cd "${S}"/src || die
 	sed -i -e 's/@RPATH@//' Makefile.inc.in || die
+
+	# avoid GNU make (bug?) behaviour of removing xar.o as intermediate
+	# file, this doesn't happen outside portage, but it does from the
+	# ebuild env, causing the install phase to re-compile xar.o and link
+	# the executable
+	echo ".PRECIOUS: @objroot@src/%.o" >> Makefile.inc.in || die
 }
 
 multilib_src_configure() {
