@@ -33,8 +33,8 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die
 
 	dodoc AUTHORS ChangeLog NEWS README
-	insinto /usr/share/doc/${PF}/examples
-	doins conf/*
+	docinto examples
+	dodoc conf/*
 }
 
 pkg_postinst() {
