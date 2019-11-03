@@ -12,6 +12,7 @@ LICENSE="BSD"
 SLOT="0/${PV%%.*}"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 # upstream killed static lib support with build system update
 # (and we have packages depending on the flag)
 REQUIRED_USE="!static-libs"
