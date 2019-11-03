@@ -1,14 +1,14 @@
 BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) virtual/pkgconfig
 DEFINED_PHASES=compile configure install prepare pretend setup unpack
-DEPEND=>=x11-libs/libdrm-2.4.89[video_cards_radeon] >=x11-libs/libpciaccess-0.8.0 glamor? ( x11-base/xorg-server[glamor] ) udev? ( virtual/libudev:= ) x11-base/xorg-proto x11-base/xorg-proto x11-base/xorg-server[-minimal] x11-libs/libdrm >=x11-base/xorg-server-1.20[xorg] >=x11-libs/libpciaccess-0.14
+DEPEND=>=x11-libs/libdrm-2.4.89[video_cards_radeon] >=x11-libs/libpciaccess-0.8.0 x11-base/xorg-server[-minimal] udev? ( virtual/libudev:= ) x11-base/xorg-proto x11-base/xorg-proto x11-base/xorg-server[-minimal] x11-libs/libdrm >=x11-base/xorg-server-1.20[xorg] >=x11-libs/libpciaccess-0.14
 DESCRIPTION=ATI video driver
 EAPI=7
 HOMEPAGE=https://www.x.org/wiki/ati/
-IUSE=+glamor udev kernel_linux
+IUSE=udev kernel_linux
 KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=MIT
-RDEPEND=>=x11-libs/libdrm-2.4.89[video_cards_radeon] >=x11-libs/libpciaccess-0.8.0 glamor? ( x11-base/xorg-server[glamor] ) udev? ( virtual/libudev:= ) x11-base/xorg-server:= x11-base/xorg-server[-minimal] x11-libs/libdrm >=x11-base/xorg-server-1.20[xorg] >=x11-libs/libpciaccess-0.14
+RDEPEND=>=x11-libs/libdrm-2.4.89[video_cards_radeon] >=x11-libs/libpciaccess-0.8.0 x11-base/xorg-server[-minimal] udev? ( virtual/libudev:= ) x11-base/xorg-server:= x11-base/xorg-server[-minimal] x11-libs/libdrm >=x11-base/xorg-server-1.20[xorg] >=x11-libs/libpciaccess-0.14
 SLOT=0
 SRC_URI=https://www.x.org/releases/individual/driver/xf86-video-ati-19.1.0.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xorg-3	f7ca8dca6425a439b1b40844e6eb1ae7
-_md5_=cfffd3b5bc5a4693fcda86f9f878638a
+_md5_=a0adcf808d0accc9b09b6956e2b20a48

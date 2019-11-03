@@ -8325,7 +8325,7 @@ dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.2.1 4.6.0: Python module for spawning child apps and responding to expected patterns
 dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/pgspecial 1.11.5: Python implementation of postgres meta commands
-dev-python/phonenumbers 8.10.18: Python port of Google's libphonenumber
+dev-python/phonenumbers 8.10.22: Python port of Google's libphonenumber
 dev-python/photutils 0.3.1 0.3.2: Python package for image astronomical photometry
 dev-python/pickleshare 0.7.3 0.7.4-r1: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.1.1 2.2.0: Pidfile featuring stale detection and file-locking
@@ -8741,7 +8741,7 @@ dev-python/python-sense-hat 2.2.0-r1: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-socketio 1.7.4 1.8.0 2.0.0: Python implementation of the Socket.IO realtime server.
 dev-python/python-sqlparse 0.2.3 0.2.4 0.3.0: A non-validating SQL parser module for Python
-dev-python/python-stdnum 1.11: A module to handle standardized numbers and codes
+dev-python/python-stdnum 1.12: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.7.0: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 233 234: Python module for native access to the systemd facilities
 dev-python/python-termstyle 0.1.10: console colouring for python
@@ -16267,7 +16267,7 @@ sci-electronics/librepcb 0.1.0-r1 9999: Free EDA software to develop printed cir
 sci-electronics/linsmith 0.99.30-r1 0.99.31: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
 sci-electronics/netgen 1.3.11 1.4.52: LVS tool (layout versus schematic comparison)
-sci-electronics/ngspice 27 27-r1: The Next Generation Spice (Electronic Circuit Simulator)
+sci-electronics/ngspice 27 27-r1 31: The Next Generation Spice (Electronic Circuit Simulator)
 sci-electronics/oregano 0.69.1-r1 0.82: Application for the schematic capturing and simulation of electrical circuits
 sci-electronics/osqoop 1.2.0_pre20170131: Multi-platform open source software oscilloscope based on Qt
 sci-electronics/pcb 0_p20140316 4.0.2: GPL Electronic Design Automation: Printed Circuit Board editor
