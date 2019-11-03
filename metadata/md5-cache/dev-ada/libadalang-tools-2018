@@ -1,11 +1,11 @@
 DEFINED_PHASES=install
-DEPEND=dev-ada/libadalang[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,static-libs]
+DEPEND=dev-ada/libadalang[gnat_2017(-)?,gnat_2018(-)?,static-libs]
 DESCRIPTION=Libadalang-based tools: gnatpp, gnatmetric and gnatstub
 EAPI=6
 HOMEPAGE=https://www.adacore.com/community
-IUSE=gnat_2016 gnat_2017 +gnat_2018
+IUSE=gnat_2017 +gnat_2018
 KEYWORDS=amd64 x86
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a59 -> libadalang-tools-gpl-2018-src.tar.gz
-_md5_=24a58fe8d71269032d6b66dd865fde4a
+_md5_=206105c3050aa72e970ed80759050d93
