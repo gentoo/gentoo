@@ -103,7 +103,7 @@ media-libs/opencv contrib_xfeatures2d
 
 # Rick Farina <zerochaos@gentoo.org> (2017-05-11)
 # the needed deps are amd64/x86 only
-net-analyzer/metasploit nexpose openvas
+net-analyzer/metasploit nexpose
 
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # dev-libs/libmaxminddb is only keyworded on amd64 and x86 at the moment
