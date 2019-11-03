@@ -117,8 +117,8 @@ media-libs/opencv -contrib_xfeatures2d
 net-wireless/pyrit cuda
 
 # Rick Farina <zerochaos@gentoo.org> (2017-05-11)
-# nexpose and openvas work on amd64
-net-analyzer/metasploit -nexpose -openvas
+# nexpose work on amd64
+net-analyzer/metasploit -nexpose
 
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # dev-libs/libmaxminddb is keyworded on amd64
