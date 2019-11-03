@@ -28,4 +28,4 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
-
+BDEPEND="app-arch/unzip"
