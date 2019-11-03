@@ -3032,7 +3032,7 @@ dev-ada/gnatcoll-db 2018-r1 2019: GNAT Component Collection
 dev-ada/gnatmem 2019 2019-r1: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2018 2019 2019-r1: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2017-r2 2019 2019-r1: Multi-Language Management
-dev-ada/gps 2017 2018-r1: The GNAT Programming Studio
+dev-ada/gps 2018-r1: The GNAT Programming Studio
 dev-ada/gps-bin 2016 2016-r1: The GNAT Programming Studio
 dev-ada/gtkada 2017 2017-r1 2018-r1 2018-r2 2019 2019-r1: A complete Ada graphical toolkit
 dev-ada/langkit 2017 2018 2019: A Python framework to generate language parsers
