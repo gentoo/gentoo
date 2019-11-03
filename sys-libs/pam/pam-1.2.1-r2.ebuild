@@ -34,7 +34,6 @@ PDEPEND="sys-auth/pambase"
 
 RDEPEND="${RDEPEND}
 	!<sys-apps/openrc-0.11.8
-	!sys-auth/openpam
 	!sys-auth/pam_userdb"
 
 S="${WORKDIR}/${MY_P}"
