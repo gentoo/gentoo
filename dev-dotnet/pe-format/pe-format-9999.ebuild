@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools git-r3 systemd xdg-utils
 
 DESCRIPTION="Intelligent PE executable wrapper for binfmt_misc"
-HOMEPAGE="https://bitbucket.org/mgorny/pe-format2/"
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}2.git"
+HOMEPAGE="https://github.com/mgorny/pe-format2/"
+EGIT_REPO_URI="https://github.com/mgorny/pe-format2.git"
 
 LICENSE="GPL-2"
 SLOT="0"
