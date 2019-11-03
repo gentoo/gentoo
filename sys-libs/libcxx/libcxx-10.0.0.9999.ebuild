@@ -3,13 +3,7 @@
 
 EAPI=7
 
-# Ninja provides better scalability and cleaner verbose output, and is used
-# throughout all LLVM projects.
-: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-# (needed due to CMAKE_BUILD_TYPE != Gentoo)
-CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-
 inherit cmake-multilib git-r3 llvm multiprocessing python-any-r1 \
 	toolchain-funcs
 
