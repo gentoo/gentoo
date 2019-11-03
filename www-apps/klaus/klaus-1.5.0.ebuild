@@ -29,3 +29,8 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 # The tests can only be run from a git repository
 # so they are not included in the source distributions
+
+python_install_all() {
+	distutils-r1_python_install_all
+	doman ${PN}.1
+}

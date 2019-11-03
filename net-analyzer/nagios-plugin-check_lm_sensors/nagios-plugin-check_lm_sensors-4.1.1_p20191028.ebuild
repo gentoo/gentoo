@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit perl-module vcs-snapshot
 
 MY_PN="${PN/nagios-plugin-/}"
-MY_COMMIT="36e453f791f0c8e32c2ead204f68511fd2ad4529"
+MY_COMMIT="80db8aa58be8f5d7800564d62305281be1ec8e6b"
 
 DESCRIPTION="Nagios plugin to monitor the values of onboard sensors and disk temperatures"
 HOMEPAGE="https://github.com/matteocorti/check_lm_sensors"
@@ -18,6 +18,7 @@ KEYWORDS="~amd64"
 
 DEPEND="dev-perl/Module-Install"
 RDEPEND="
+	dev-perl/JSON-MaybeXS
 	dev-perl/Monitoring-Plugin
 	virtual/perl-Getopt-Long
 "
