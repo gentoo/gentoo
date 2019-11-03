@@ -3,11 +3,11 @@ DEPEND=acct-group/nofiles acct-group/qmail >=sys-apps/sed-4 >=sys-apps/sed-4
 DESCRIPTION=reads sendmail's .forward files under qmail
 EAPI=7
 HOMEPAGE=http://cr.yp.to/dot-forward.html
-KEYWORDS=~alpha amd64 ~arm hppa ~ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86
 LICENSE=public-domain
 RDEPEND=acct-group/nofiles acct-group/qmail
 RESTRICT=test
 SLOT=0
 SRC_URI=http://cr.yp.to/software/dot-forward-0.71.tar.gz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmail	a8f96aa715f96082a61d6815f5968c5b	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=2af5a87ba3b170da5a481271bdaa3883
+_md5_=a4d12477916e28df33f5ab9ef7924675
