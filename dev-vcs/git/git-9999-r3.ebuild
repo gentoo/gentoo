@@ -139,6 +139,8 @@ REQUIRED_USE="
 	perforce? ( ${PYTHON_REQUIRED_USE} )
 "
 
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	# bug #350330 - automagic CVS when we don't want it is bad.
 	"${FILESDIR}"/git-2.22.0_rc0-optional-cvs.patch
