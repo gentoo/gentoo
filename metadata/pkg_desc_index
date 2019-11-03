@@ -10711,6 +10711,7 @@ dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1: Intel's implementation of the Ope
 dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
 dev-util/its4 1.1.1-r1: ITS4: Software Security Tool
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
+dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
 dev-util/jenkins-bin 2.190.1 2.190.2 2.197: Extensible continuous integration server
@@ -10793,6 +10794,7 @@ dev-util/perf 4.14.33-r1 4.20.3 5.3.7: Userland tools for Linux Performance Coun
 dev-util/pkgcheck 0.6.8 9999: pkgcore-based QA utility
 dev-util/pkgconf 1.6.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
+dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
 dev-util/plan9port 20140306-r4: Port of many Plan 9 programs and libraries
 dev-util/ply 0_pre20160313: Dynamic instrumentation of the Linux kernel with BPF and kprobes
 dev-util/premake 3.7 4.3-r1 4.4_beta5 5.0.0_alpha12: A makefile generation tool
@@ -14453,7 +14455,7 @@ net-analyzer/nagios-check_pidfile 1: A nagios plugin for checking daemons via pi
 net-analyzer/nagios-check_rbl 1.4.1: Monitor whether or not a host is blacklisted
 net-analyzer/nagios-core 4.3.4 4.4.5-r3: Nagios core - monitoring daemon, web GUI, and documentation
 net-analyzer/nagios-icinga-openvpn 0.0.1: A Nagios plugin to check whether an OpenVPN server is alive
-net-analyzer/nagios-plugin-check_lm_sensors 4.1.1_p20170912: Nagios plugin to monitor the values of onboard sensors and disk temperatures
+net-analyzer/nagios-plugin-check_lm_sensors 4.1.1_p20191028: Nagios plugin to monitor the values of onboard sensors and disk temperatures
 net-analyzer/nagios-plugin-check_raid 4.0.0-r1 4.0.0_p20151215 4.0.0_p20160215 4.0.1 4.0.2 4.0.8: Nagios/Icinga plugin to check current server's RAID status
 net-analyzer/nagios-plugins 2.2.1-r3 2.2.1-r4: Official plugins for Nagios
 net-analyzer/nagios-plugins-flameeyes 9999: Flameeyes's custom Nagios/Icinga plugins
@@ -18286,7 +18288,7 @@ www-apps/jekyll-sitemap 0.13.0: Automatically generate a sitemap.xml for your Je
 www-apps/jekyll-watch 2.2.1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/karma-bin 0.24 0.27 0.33 0.39 0.40 0.41 0.43: Alerts dashboard for Prometheus Alertmanager
 www-apps/kibana-bin 5.6.16 6.7.1 6.8.4 7.2.0 7.3.2 7.4.1: Analytics and search dashboard for Elasticsearch
-www-apps/klaus 1.3.0 1.4.0: A simple, easy-to-set-up Git web viewer
+www-apps/klaus 1.4.0 1.5.0: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making
 www-apps/mediawiki 1.32.2 1.33.1: The MediaWiki wiki web application (as used on wikipedia.org)

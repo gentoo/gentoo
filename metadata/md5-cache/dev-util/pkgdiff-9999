@@ -1,0 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-lang/perl-5
+DESCRIPTION=Package Changes Analyzer (pkgdiff)
+EAPI=7
+HOMEPAGE=https://github.com/lvc/pkgdiff
+LICENSE=GPL-2
+PROPERTIES=live
+RDEPEND=>=dev-lang/perl-5 sys-apps/diffutils app-text/wdiff sys-apps/gawk sys-devel/binutils
+SLOT=0
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
+_md5_=83b338fdcb27eeef4e4e41b24961bbd7
