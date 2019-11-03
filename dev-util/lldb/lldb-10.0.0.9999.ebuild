@@ -3,11 +3,7 @@
 
 EAPI=7
 
-: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-# (needed due to CMAKE_BUILD_TYPE != Gentoo)
-CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-
 inherit cmake-utils git-r3 llvm multiprocessing python-single-r1 \
 	toolchain-funcs
 
@@ -20,12 +16,13 @@ S=${WORKDIR}/${P}/lldb
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
-IUSE="libedit ncurses +python test"
+IUSE="libedit lzma ncurses +python test"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	libedit? ( dev-libs/libedit:0= )
+	lzma? ( app-arch/xz-utils:= )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0= )
 	python? ( dev-python/six[${PYTHON_USEDEP}]
 		${PYTHON_DEPS} )
@@ -60,6 +57,7 @@ src_configure() {
 		-DLLDB_DISABLE_CURSES=$(usex !ncurses)
 		-DLLDB_DISABLE_LIBEDIT=$(usex !libedit)
 		-DLLDB_DISABLE_PYTHON=$(usex !python)
+		-DLLDB_ENABLE_LZMA=$(usex lzma)
 		-DLLDB_USE_SYSTEM_SIX=1
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
 
