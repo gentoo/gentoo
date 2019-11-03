@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-11-03)
+# Discontinued upstream.  Relies on app-portage/flaggie make.conf
+# editing support that was fragile and therefore was removed.
+# Removal in 30 days.  Bug #699244.
+app-portage/install-mask
+
+# Michał Górny <mgorny@gentoo.org> (2019-11-03)
 # This was only used by my packages, and the last revdep is gone now.
 # Removal in 14 days.  Bug #699238.
 sys-devel/systemd-m4
