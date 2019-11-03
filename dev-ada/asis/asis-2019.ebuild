@@ -19,10 +19,7 @@ IUSE="gnat_2017 gnat_2018 +gnat_2019"
 RDEPEND="
 	dev-ada/gnat_util[gnat_2017(-)?]
 	dev-ada/gnat_util[gnat_2018(-)?,gnat_2019(-)?]
-	|| (
-		dev-ada/gnatcoll-core[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?,shared]
-		dev-ada/gnatcoll[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?,projects,shared]
-	)"
+	dev-ada/gnatcoll-core[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?,shared]"
 DEPEND="${RDEPEND}
 dev-ada/gprbuild[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
 

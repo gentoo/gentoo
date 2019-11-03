@@ -18,10 +18,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-ada/gnat_util[${ADA_USEDEP}]
-	|| (
-		dev-ada/gnatcoll[${ADA_USEDEP},projects,shared]
-		dev-ada/gnatcoll-core[${ADA_USEDEP},shared]
-	)"
+	dev-ada/gnatcoll-core[${ADA_USEDEP},shared]"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
