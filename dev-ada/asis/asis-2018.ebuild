@@ -17,10 +17,7 @@ KEYWORDS="amd64 x86"
 IUSE="gnat_2017 +gnat_2018"
 
 RDEPEND="dev-ada/gnat_util[gnat_2017(-)?,gnat_2018(-)?]
-	|| (
-		dev-ada/gnatcoll-core[gnat_2017(-)?,gnat_2018(-)?,shared]
-		dev-ada/gnatcoll[gnat_2017(-)?,gnat_2018(-)?,projects,shared]
-	)"
+	dev-ada/gnatcoll-core[gnat_2017(-)?,gnat_2018(-)?,shared]"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2017(-)?,gnat_2018(-)?]"
 
