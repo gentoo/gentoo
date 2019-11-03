@@ -87,6 +87,7 @@ src_configure() {
 		-DDISABLE_VLC=$(usex !vlc)
 		-DLIBOBS_PREFER_IMAGEMAGICK=$(usex imagemagick)
 		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
+		-DOBS_VERSION_OVERRIDE=${PV}
 		-DUNIX_STRUCTURE=1
 		-DWITH_RTMPS=$(usex ssl)
 	)
