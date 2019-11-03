@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>ejabberd@gentoo.org</email>
+	</maintainer>
 	<longdescription lang="en">
 		p1_utils is an application containing ProcessOne modules and tools that
 		are leveraged in other development projects.
