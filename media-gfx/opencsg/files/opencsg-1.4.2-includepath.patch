@@ -3,8 +3,8 @@
 
 Gentoo-bug: 623840
 
---- a/src.pro
-+++ b/src.pro
+--- a/src/src.pro
++++ b/src/src.pro
 @@ -7,14 +7,14 @@
  }
  
