@@ -10,4 +10,4 @@ RDEPEND=dev-db/postgresql:*
 SLOT=0
 SRC_URI=http://pgfoundry.org/frs/download.php/1878/libnss-pgsql-1.5.0-beta.tgz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=decc734f734b13e651d09a6e4959394a
+_md5_=1207c3929cc237c615d3fe7e144bf78b

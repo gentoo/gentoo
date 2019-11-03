@@ -625,7 +625,7 @@ app-cdr/uif2iso 0.1.7c-r1: Convert CD images from uif (MagicISO) to iso
 app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
-app-cdr/xfburn 0.5.5-r2: GTK+ based CD and DVD burning application
+app-cdr/xfburn 0.5.5-r2 0.6.0: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 0.38.0 0.39.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
@@ -10254,13 +10254,13 @@ dev-ruby/tidy-ext 0.1.14-r3: W3C HTML Tidy library implemented as a Ruby extensi
 dev-ruby/tidy_table 0.0.5-r4 0.0.5-r5: Tool to convert an array of struct into an HTML table
 dev-ruby/tilt 2.0.9 2.0.10: Thin interface over template engines to make their usage as generic as possible
 dev-ruby/timecop 0.8.1 0.9.1: A gem providing 'time travel' and 'time freezing' capabilities
-dev-ruby/timers 4.1.2 4.2.0 4.3.0: Pure Ruby one-shot and periodic timers
+dev-ruby/timers 4.2.0 4.3.0: Pure Ruby one-shot and periodic timers
 dev-ruby/tins 1.20.2 1.20.3 1.21.0 1.21.1 1.22.0: All the stuff that isn't good enough for a real library
 dev-ruby/tokyocabinet 1.32.0: Ruby bindings for Tokyo Cabinet
-dev-ruby/tomlrb 1.2.6 1.2.8: A racc based toml parser
+dev-ruby/tomlrb 1.2.8: A racc based toml parser
 dev-ruby/totoridipjp 0.1.0: A ruby binding to use totori.dip.jp Web API
 dev-ruby/transaction-simple 1.4.0.2-r2: Provides transaction support at the object level
-dev-ruby/travis 1.8.9-r1 1.8.10: Travis CI Client (CLI and Ruby library)
+dev-ruby/travis 1.8.10: Travis CI Client (CLI and Ruby library)
 dev-ruby/treetop 1.6.10: Treetop is a language for describing languages
 dev-ruby/trollop 2.1.3: Trollop is a commandline option parser for Ruby
 dev-ruby/ttfunk 1.5.1: A TrueType font parser written in pure ruby
@@ -10273,7 +10273,7 @@ dev-ruby/tty-prompt 0.19.0: A beautiful and powerful interactive command line pr
 dev-ruby/tty-reader 0.6.0-r1: Methods for processing keyboard input in character, line and multiline modes
 dev-ruby/tty-screen 0.7.0: Terminal screen size detection which works on Linux, OS X and Windows/Cygwin
 dev-ruby/tty-which 0.4.1: Platform independent implementation of Unix which command
-dev-ruby/turbolinks 2.5.4 5.2.0: Makes following links in your web application faster
+dev-ruby/turbolinks 2.5.4 5.2.0 5.2.1: Makes following links in your web application faster
 dev-ruby/turbolinks-source 5.2.0: Turbolinks JavaScript assets
 dev-ruby/twitter 6.2.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.14.7 2.1.0 3.0.0: Text handling for Twitter
@@ -10281,7 +10281,7 @@ dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Array
 dev-ruby/typhoeus 0.6.9-r1 1.3.1: Runs HTTP requests in parallel while cleanly encapsulating handling logic
 dev-ruby/tzinfo 1.2.5 2.0.0: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
-dev-ruby/uglifier 4.1.19 4.1.20 4.2.0: Ruby wrapper for UglifyJS JavaScript compressor
+dev-ruby/uglifier 4.1.20 4.2.0: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
 dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
 dev-ruby/unf_ext 0.0.7.5 0.0.7.6: Unicode Normalization Form support library for CRuby
@@ -10296,7 +10296,7 @@ dev-ruby/warden 1.2.8: General Rack Authentication Framework
 dev-ruby/web-console 2.3.0 3.7.0 4.0.1: A debugging tool for your Ruby on Rails applications
 dev-ruby/webmock 2.3.2 3.6.2 3.7.2 3.7.3 3.7.5 3.7.6: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.2-r1: A library to help write robots.txt compliant web robots
-dev-ruby/websocket 1.2.7 1.2.8: Universal Ruby library to handle WebSocket protocol
+dev-ruby/websocket 1.2.8: Universal Ruby library to handle WebSocket protocol
 dev-ruby/websocket-driver 0.6.5 0.7.0 0.7.1: A complete implementation of the WebSocket protocols
 dev-ruby/websocket-extensions 0.1.3 0.1.4: Generic extension manager for WebSocket connections
 dev-ruby/whole_history_rating 0.1.2 0.1.2-r1: A pure ruby implementation of Remi Coulom's Whole-History Rating algorithm
@@ -10612,8 +10612,8 @@ dev-util/ctags 20190331: Exuberant Ctags creates tags files for code browsing in
 dev-util/cucumber 3.1.2: Executable feature scenarios
 dev-util/cucumber-core 3.2.1: Executable feature scenarios
 dev-util/cucumber-expressions 6.0.1: a simpler alternative to Regular Expressions
-dev-util/cucumber-messages 2.1.1 2.1.2: Protocol Buffer messages for Cucumber's inter-process communication
-dev-util/cucumber-rails 1.6.0 1.7.0 1.8.0: Executable feature scenarios for Rails
+dev-util/cucumber-messages 2.1.2: Protocol Buffer messages for Cucumber's inter-process communication
+dev-util/cucumber-rails 1.7.0 1.8.0: Executable feature scenarios for Rails
 dev-util/cucumber-tag_expressions 1.1.1: Cucumber tag expressions for ruby
 dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
@@ -18254,7 +18254,7 @@ www-apache/mod_xsendfile 1.0_beta1: Apache module that processes X-SENDFILE head
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 3.0.2 3.1.0: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 5.3.7 6.0.2 6.0.3 6.0.4: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 6.0.2 6.0.3 6.0.4: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 2.2.0: multilanguage CalDAV web client
