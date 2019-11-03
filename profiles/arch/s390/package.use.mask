@@ -56,11 +56,6 @@ dev-libs/efl physics
 # Not tested
 app-portage/layman g-sorcery
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2014-09-16)
-# Needs libepoxy keywording, bug #510940
-x11-base/xorg-server glamor wayland
-x11-drivers/xf86-video-ati glamor
-
 # Mikle Kolyada <zlogene@gentoo.org> (2014-01-11)
 # too much unkeyworded dependencies (bug #497068)
 dev-vcs/git mediawiki mediawiki-experimental
