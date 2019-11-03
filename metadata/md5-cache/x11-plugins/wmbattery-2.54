@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure
+DEPEND=apm? ( sys-apps/apmd ) x11-libs/libX11 x11-libs/libXext x11-libs/libXpm upower? ( >=sys-power/upower-0.9.23 )
+DESCRIPTION=A dockable app to report APM, ACPI, or SPIC battery status
+EAPI=7
+HOMEPAGE=https://www.dockapps.net/wmbattery
+IUSE=apm +upower
+KEYWORDS=~amd64 ~ppc -sparc ~x86
+LICENSE=GPL-2
+RDEPEND=apm? ( sys-apps/apmd ) x11-libs/libX11 x11-libs/libXext x11-libs/libXpm upower? ( >=sys-power/upower-0.9.23 )
+SLOT=0
+SRC_URI=https://www.dockapps.net/download/wmbattery-2.54.tar.gz
+_md5_=96520aa25619f27dbff6085bdc8f15d7
