@@ -338,10 +338,6 @@ mail-mta/qmail-ldap
 # Removal in 30 days.  Bug #696916.
 net-im/openfire
 
-# Stefan Strogin <steils@gentoo.org> (2019-10-05)
-# Masked for testing
->=dev-libs/libressl-3.0.1
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-05)
 # Apparently included in apache-2.4, rendering split package obsolete.
 # Removal in 30 days.  Bug #680768.
