@@ -19,16 +19,13 @@ REQUIRED_USE="?? ( consolekit elogind systemd )"
 MIN_PAM_REQ=1.1.3
 
 RDEPEND="
-	|| (
-		>=sys-libs/pam-${MIN_PAM_REQ}
-		( sys-auth/openpam sys-freebsd/freebsd-pam-modules )
-	)
+	>=sys-libs/pam-${MIN_PAM_REQ}
 	consolekit? ( sys-auth/consolekit[pam] )
 	cracklib? ( sys-libs/pam[cracklib] )
 	elogind? ( sys-auth/elogind[pam] )
 	mktemp? ( sys-auth/pam_mktemp )
 	pam_krb5? (
-		|| ( >=sys-libs/pam-${MIN_PAM_REQ} sys-auth/openpam )
+		>=sys-libs/pam-${MIN_PAM_REQ} 
 		sys-auth/pam_krb5
 	)
 	pam_ssh? ( sys-auth/pam_ssh )
