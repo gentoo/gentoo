@@ -15,7 +15,7 @@ if [[ ${PV} != 9999* ]]; then
 fi
 
 IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug elogind +glamor ipv6 libressl libglvnd minimal selinux +suid systemd +udev unwind xcsecurity"
+IUSE="${IUSE_SERVERS} debug elogind ipv6 libressl libglvnd minimal selinux +suid systemd +udev unwind xcsecurity"
 
 CDEPEND="libglvnd? (
 		media-libs/libglvnd
@@ -52,11 +52,6 @@ CDEPEND="libglvnd? (
 		>=x11-libs/libXres-1.0.3
 		>=x11-libs/libXtst-1.0.99.2
 	)
-	glamor? (
-		media-libs/libepoxy[X,egl(+)]
-		>=media-libs/mesa-18[egl,gbm]
-		!x11-libs/glamor
-	)
 	kdrive? (
 		>=x11-libs/libXext-1.0.5
 		x11-libs/libXv
@@ -72,7 +67,8 @@ CDEPEND="libglvnd? (
 	!minimal? (
 		>=x11-libs/libX11-1.1.5
 		>=x11-libs/libXext-1.0.5
-		>=media-libs/mesa-18[X(+)]
+		>=media-libs/mesa-18[X(+),egl,gbm]
+		media-libs/libepoxy[X,egl(+)]
 	)
 	udev? ( virtual/libudev:= )
 	unwind? ( sys-libs/libunwind )
@@ -119,7 +115,7 @@ REQUIRED_USE="!minimal? (
 	)
 	elogind? ( udev )
 	?? ( elogind systemd )
-	minimal? ( !glamor !wayland )
+	minimal? ( !wayland )
 	xephyr? ( kdrive )"
 
 UPSTREAMED_PATCHES=(
@@ -136,9 +132,10 @@ PATCHES=(
 )
 
 pkg_setup() {
-	if use wayland && ! use glamor; then
+	if use wayland && use minimal; then
 		ewarn "glamor is necessary for acceleration under Xwayland."
 		ewarn "Performance may be unacceptable without it."
+		ewarn "Build with USE=-minimal to enable glamor."
 	fi
 
 	# localstatedir is used for the log location; we need to override the default
@@ -150,7 +147,6 @@ pkg_setup() {
 		$(use_enable ipv6)
 		$(use_enable debug)
 		$(use_enable dmx)
-		$(use_enable glamor)
 		$(use_enable kdrive)
 		$(use_enable unwind libunwind)
 		$(use_enable wayland xwayland)
@@ -159,6 +155,7 @@ pkg_setup() {
 		$(use_enable !minimal dri)
 		$(use_enable !minimal dri2)
 		$(use_enable !minimal dri3)
+		$(use_enable !minimal glamor)
 		$(use_enable !minimal glx)
 		$(use_enable xcsecurity)
 		$(use_enable xephyr)
