@@ -10228,7 +10228,7 @@ dev-ruby/sshkey 1.9.0 2.0.0: SSH private and public key generator in pure Ruby
 dev-ruby/sshkit 1.18.2 1.19.1 1.20.0: SSHKit makes it easy to write structured, testable SSH commands in Ruby
 dev-ruby/stamp 0.6.0: Date and time formatting for humans
 dev-ruby/state_machine 1.2.0: Adds support for creating state machines for attributes on any Ruby class
-dev-ruby/stomp 1.4.4: Ruby bindings for the stomp messaging protocol
+dev-ruby/stomp 1.4.4 1.4.8: Ruby bindings for the stomp messaging protocol
 dev-ruby/stringex 2.8.5: Extensions for Ruby's String class
 dev-ruby/strptime 0.2.3: A fast strptime/strftime engine which uses VM
 dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
@@ -10236,7 +10236,7 @@ dev-ruby/syntax 1.2.2: Syntax highlighting for sourcecode and HTML
 dev-ruby/syslogger 1.6.5: Drop-in replacement for the standard Logger, that logs to the syslog
 dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of child process PID
 dev-ruby/tdiff 0.3.3-r1 0.3.4: Calculates the differences between two tree-like structures
-dev-ruby/temple 0.8.0 0.8.1 0.8.2: An abstraction and a framework for compiling templates to pure Ruby
+dev-ruby/temple 0.8.0 0.8.2: An abstraction and a framework for compiling templates to pure Ruby
 dev-ruby/term-ansicolor 1.7.1: Small Ruby library that colors strings using ANSI escape sequences
 dev-ruby/termcolor 1.2.2: a library for ANSI color formatting like HTML for output in terminal
 dev-ruby/terrapin 0.6.0: Run shell commands safely, even with user-supplied values
