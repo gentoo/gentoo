@@ -4,7 +4,7 @@
 EAPI=5
 
 #if LIVE
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/eselect-lib-bin-symlink.git"
 AUTOTOOLS_AUTORECONF=1
 inherit git-r3
 #endif
@@ -12,8 +12,8 @@ inherit git-r3
 inherit autotools-utils
 
 DESCRIPTION="An eselect library to manage executable symlinks"
-HOMEPAGE="https://bitbucket.org/mgorny/eselect-lib-bin-symlink/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/eselect-lib-bin-symlink/"
+SRC_URI="https://github.com/mgorny/eselect-lib-bin-symlink/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
