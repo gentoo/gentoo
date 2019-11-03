@@ -14,13 +14,12 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf8f4e31e87a8f1d42509f ->
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="gnat_2016 gnat_2017 gnat_2018 +gnat_2019"
+IUSE="gnat_2017 gnat_2018 +gnat_2019"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	dev-ada/libadalang[gnat_2016(-)?]
 	dev-ada/libadalang[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?,static-libs]
-	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]
+	dev-ada/gprbuild[gnat_2017(-)?,gnat_2018(-)?]
 	dev-ada/gprbuild[gnat_2019(-)?]"
 
 S="${WORKDIR}"/${MYP}-src
