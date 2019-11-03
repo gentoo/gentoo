@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2019-11-03)
+# No more needed. Substituted by dev-ada/gnatcoll-core and others
+# Removal in 30 days.
+dev-ada/gnatcoll
+
 # Thomas Deutschmann <whissi@gentoo.org> (2019-11-03)
 # Infinite loop in TAILQ_FOREACH_SAFE when running for some time
 # Bug #698856
