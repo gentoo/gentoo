@@ -19,8 +19,7 @@ media-sound/pulseaudio native-headset ofono-headset
 
 # Matt Turner <mattst88@gentoo.org> (2017-02-25)
 # Needs libepoxy keywording, bug #510940
-x11-base/xorg-server glamor wayland
-x11-drivers/xf86-video-ati glamor
+x11-base/xorg-server wayland
 
 # Sergey Popov <pinkbyte@gentoo.org> (2015-10-24)
 # Not tested
