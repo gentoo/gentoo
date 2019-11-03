@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<use>
+	<flag name="curl">Support fetching and pushing over http:// and https:// protocols</flag>
+	<flag name="debug">Installs with debug symbols</flag>
+	<flag name="smartcard">Enables usage of OpenPGP cards.</flag>
+	<flag name="test">Enables and run tests</flag>
+</use>
+</pkgmetadata>
