@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2019-11-03)
+# The binary for gps are included in dev-ada/gnat-suite-bin
+# Removal in 30 days.
+dev-ada/gps-bin
+
 # Michał Górny <mgorny@gentoo.org> (2019-11-01)
 # Both make no sense with dev-embedded/gnap removed.
 # Removal in 14 days.  Bug #699072.
