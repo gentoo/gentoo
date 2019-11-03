@@ -369,7 +369,6 @@ dev-embedded/gnap
 dev-libs/xplc
 dev-vcs/cvsd
 dev-vcs/cvsq
-dev-vcs/svn2cl
 mail-client/biabam
 mail-client/pinepgp
 mail-filter/clamassassin
