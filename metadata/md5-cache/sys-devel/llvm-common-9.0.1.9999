@@ -1,5 +1,5 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install test unpack
+DEFINED_PHASES=install unpack
 DESCRIPTION=Common files shared between multiple slots of LLVM
 EAPI=7
 HOMEPAGE=https://llvm.org/
@@ -7,5 +7,5 @@ LICENSE=Apache-2.0-with-LLVM-exceptions UoI-NCSA
 PROPERTIES=live
 RDEPEND=!sys-devel/llvm:0
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
-_md5_=995ae4baf811e75e40ea236dea15b127
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	llvm.org	d4ab0d2fd42477ead909a966ffb2e175
+_md5_=1fde7d764b5367d5d305df04145053d0
