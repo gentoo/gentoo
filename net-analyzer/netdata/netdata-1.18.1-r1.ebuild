@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
-inherit autotools fcaps linux-info python-r1 systemd user
+inherit autotools fcaps linux-info python-r1 systemd
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/netdata/${PN}.git"
@@ -27,14 +27,14 @@ REQUIRED_USE="
 
 # most unconditional dependencies are for plugins.d/charts.d.plugin:
 RDEPEND="
+	acct-group/netdata
+	acct-user/netdata
 	app-misc/jq
 	>=app-shells/bash-4:0
 	|| (
 		net-analyzer/openbsd-netcat
 		net-analyzer/netcat
 	)
-	net-analyzer/tcpdump
-	net-analyzer/traceroute
 	net-misc/curl
 	net-misc/wget
 	sys-apps/util-linux
@@ -73,18 +73,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-: ${NETDATA_USER:=netdata}
-: ${NETDATA_GROUP:=netdata}
-
 FILECAPS=(
 	'cap_dac_read_search,cap_sys_ptrace+ep' 'usr/libexec/netdata/plugins.d/apps.plugin'
 )
 
 pkg_setup() {
 	linux-info_pkg_setup
-
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 / ${PN}
 }
 
 src_prepare() {
@@ -95,7 +89,8 @@ src_prepare() {
 src_configure() {
 	econf \
 		--localstatedir="${EPREFIX}"/var \
-		--with-user=${NETDATA_USER} \
+		--with-user=netdata \
+		--disable-jsonc \
 		$(use_enable cups plugin-cups) \
 		$(use_enable dbengine) \
 		$(use_enable nfacct plugin-nfacct) \
@@ -113,16 +108,18 @@ src_install() {
 	# Remove unneeded .keep files
 	find "${ED}" -name ".keep" -delete || die
 
-	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/log/netdata
+	fowners -Rc netdata:netdata /var/log/netdata
 	keepdir /var/log/netdata
-	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/lib/netdata
+	fowners -Rc netdata:netdata /var/lib/netdata
 	keepdir /var/lib/netdata
 	keepdir /var/lib/netdata/registry
 
-	fowners -Rc root:${NETDATA_GROUP} /usr/share/${PN}
+	fowners -Rc root:netdata /usr/share/${PN}
 
 	newinitd system/netdata-openrc ${PN}
 	systemd_dounit system/netdata.service
 	insinto /etc/netdata
 	doins system/netdata.conf
+
+	doenvd 99netdata
 }

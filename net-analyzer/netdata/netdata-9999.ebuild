@@ -35,8 +35,6 @@ RDEPEND="
 		net-analyzer/openbsd-netcat
 		net-analyzer/netcat
 	)
-	net-analyzer/tcpdump
-	net-analyzer/traceroute
 	net-misc/curl
 	net-misc/wget
 	sys-apps/util-linux
@@ -123,6 +121,5 @@ src_install() {
 	insinto /etc/netdata
 	doins system/netdata.conf
 
-	echo "CONFIG_PROTECT=\"${EPREFIX}/usr/$(get_libdir)/netdata/conf.d\"" > 99netdata
 	doenvd 99netdata
 }
