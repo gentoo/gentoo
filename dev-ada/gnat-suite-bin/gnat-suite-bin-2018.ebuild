@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~tupone/distfiles/${P}.txz"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND=""
