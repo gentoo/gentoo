@@ -1564,7 +1564,7 @@ app-eselect/eselect-infinality 1-r1 1.1: Eselect module to choose an infinality 
 app-eselect/eselect-java 0.4.0: A set of eselect modules for Java
 app-eselect/eselect-lapack 0.1 0.2: LAPACK module for eselect
 app-eselect/eselect-lcdfilter 1 2: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
-app-eselect/eselect-lib-bin-symlink 0.1.1 9999: An eselect library to manage executable symlinks
+app-eselect/eselect-lib-bin-symlink 0.1.1 0.1.1-r1 9999: An eselect library to manage executable symlinks
 app-eselect/eselect-lua 1: Lua eselect module
 app-eselect/eselect-metasploit 0.16 0.17: eselect module for metasploit
 app-eselect/eselect-miniaudicle 1.0.1-r2: Manages the /usr/bin/miniAudicle symlink
@@ -14475,7 +14475,7 @@ net-analyzer/nessus-agent-bin 7.4.2: A remote security scanner for Linux - agent
 net-analyzer/nessus-bin 8.5.2: A remote security scanner for Linux
 net-analyzer/net-snmp 5.8-r1 5.8-r2 5.8-r4 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
-net-analyzer/netdata 1.13.0 1.14.0 1.14.0-r1 1.15.0 1.15.0-r1 1.15.0-r2 1.16.0 1.16.1 1.17.0 1.17.1 1.17.1-r1 1.18.0 1.18.1 9999: Linux real time system monitoring, done right!
+net-analyzer/netdata 1.18.1 1.18.1-r1 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.3_beta6-r3: An active/passive address reconnaissance tool
 net-analyzer/nethogs 0.8.5-r1: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0-r1: NETI@Home research project from GATech

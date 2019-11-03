@@ -1,11 +1,11 @@
-DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=dev-vcs/git-1.8.2.1[curl] >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=prepare unpack
 DESCRIPTION=An eselect library to manage executable symlinks
-EAPI=5
-HOMEPAGE=https://bitbucket.org/mgorny/eselect-lib-bin-symlink/
+EAPI=7
+HOMEPAGE=https://github.com/mgorny/eselect-lib-bin-symlink/
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=app-admin/eselect
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	autotools-utils	95db0904ad0f62535e18e5ccb67cce5e	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=1970b45293ed4a5888e9e1956e3be617
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_md5_=115ae87c2ea96801b60ed1069e006d4e
