@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Create a GNU-style ChangeLog from subversion's svn log --xml output"
 HOMEPAGE="https://arthurdejong.org/svn2cl/"
-SRC_URI="https://arthurdejong.org/svn2cl/${PN}/${P}.tar.gz"
+SRC_URI="https://arthurdejong.org/svn2cl/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
