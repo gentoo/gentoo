@@ -30,7 +30,6 @@ big-endian - Big-endian toolchain support
 bindist - Flag to enable or disable options for prebuilt (GRP) packages (eg. due to licensing issues)
 blas - Add support for the virtual/blas numerical library
 bluetooth - Enable Bluetooth Support
-bootstrap - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during original system bootstrapping [make stage2]
 branding - Enable Gentoo specific branding
 build - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used for creating build images and the first half of bootstrapping [make stage1]
 bzip2 - Use the bzlib compression library

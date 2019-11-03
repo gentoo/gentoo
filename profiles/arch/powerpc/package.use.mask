@@ -291,7 +291,7 @@ net-vpn/tor tor-hardening
 
 # Pacho Ramos <pacho@gentoo.org> (2012-05-07)
 # libhid is not keyworded
-app-misc/lcdproc hid lcd_devices_mdm166a
+app-misc/lcdproc lcd_devices_mdm166a
 
 # Brent Baude <ranger@gentoo.org> (2012-03-06)
 # masking wimax use flag

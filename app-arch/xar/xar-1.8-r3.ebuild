@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit flag-o-matic multilib-minimal multilib ltprune
+inherit flag-o-matic multilib-minimal multilib
 
 APPLE_PV=417.1
 DESCRIPTION="An easily extensible archive format"
@@ -60,5 +60,5 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }

@@ -34,7 +34,7 @@ app-i18n/xcin unicode
 # OpenSSL (as of version 1.1.1) doesn't have APIs for QUIC support
 # see https://github.com/openssl/openssl/pull/8797
 net-libs/ngtcp2 ssl
-net-libs/curl nghttp3
+net-misc/curl nghttp3
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-08)
 # LLVM 5 is being removed.
@@ -220,7 +220,6 @@ app-emulation/fuse backend-svga
 # Brian Evans <grknight@gentoo.org> (2018-03-05)
 # Mask embedded USE on virtual/mysql and friends to transition it to be obsolete
 virtual/mysql embedded
-dev-perl/DBD-mysql embedded
 
 # Brian Evans <grknight@gentoo.org> (2018-02-28)
 # Mask client-libs USE to force users to install alternative standard pacakges
@@ -287,11 +286,6 @@ sys-boot/refind custom-cflags
 # static and shared libs. The flag is preserved not to break USE
 # depenencies.
 >=app-arch/snappy-1.1.5 static-libs
-
-# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2017-06-18)
-# Libav is basically unsupported by mpv, see upstream issues 3923, 3925.
-# Needs patch to even build, subs are broken and not supported anymore.
-media-video/mpv libav
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-29)
 # Does not build
