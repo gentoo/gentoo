@@ -161,7 +161,7 @@ dev-libs/wnn7sdk
 # Removal in 30 days.  Bug #695784.
 sci-chemistry/aria
 sci-chemistry/ccpn
-sci-chemistry/ccpn-data
+sci-libs/ccpn-data
 sci-chemistry/cns
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-19)
