@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2019-11-03)
+# Infinite loop in TAILQ_FOREACH_SAFE when running for some time
+# Bug #698856
+=net-misc/dhcpcd-8.1.1
+
 # Michał Górny <mgorny@gentoo.org> (2019-11-03)
 # Discontinued upstream.  Relies on app-portage/flaggie make.conf
 # editing support that was fragile and therefore was removed.
