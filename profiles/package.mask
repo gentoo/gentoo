@@ -742,11 +742,6 @@ dev-java/eclipse-ecj:4.10
 # x11-drivers/nvidia-drivers. Work in progress.
 media-libs/libglvnd
 
-# Brian Evans <grknight@gentoo.org> (2018-04-20)
-# Likely to break a lot of software
-# Masked for initial testing
->=dev-db/mysql-connector-c++-8.0.0
-
 # James Le Cuirot <chewi@gentoo.org> (2017-12-17)
 # Java 9+ is not yet fully supported on Gentoo. Packages cannot depend
 # on it so these virtuals are not yet required. If you wish to use
