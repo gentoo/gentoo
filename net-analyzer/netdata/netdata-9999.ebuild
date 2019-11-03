@@ -120,6 +120,4 @@ src_install() {
 	systemd_dounit system/netdata.service
 	insinto /etc/netdata
 	doins system/netdata.conf
-
-	doenvd 99netdata
 }
