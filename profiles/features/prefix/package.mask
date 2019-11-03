@@ -15,7 +15,6 @@ gnome-extra/gnome-logs
 gnome-extra/gnome-user-share
 gnome-extra/office-runner
 kde-misc/systemd-kcm
-<sys-apps/bolt-0.5
 sys-apps/gentoo-systemd-integration
 sys-apps/systemd-readahead
 sys-process/systemd-cron

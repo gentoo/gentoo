@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors.
+# Copyright 1999-2019 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 sys-libs/uclibc-ng
@@ -13,7 +13,6 @@ dev-libs/elfutils
 >virtual/libelf-2
 
 # packages that need masked packages or multilib
-dev-games/gtkradiant
 dev-games/ps2-packer
 games-action/beathazardultra
 games-action/brutal-legend
