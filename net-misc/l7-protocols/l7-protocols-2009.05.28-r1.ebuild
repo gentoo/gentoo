@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit eutils fixheadtails toolchain-funcs
 
@@ -16,21 +16,21 @@ SRC_URI="mirror://sourceforge/l7-filter/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~amd64 ~arm ~x86"
 S=${WORKDIR}/${MY_P}
 
-src_unpack() {
-	unpack ${A}
-
-	cd "${S}"
-	sed -e "s|gcc.*\-o|$(tc-getCC) ${CFLAGS} ${LDFLAGS} -o|g" \
-		-e "s|g++.*\-o|$(tc-getCXX) ${CXXFLAGS} ${LDFLAGS} -o|g" \
-			-i testing/Makefile
+src_prepare() {
+	sed -e "s|gcc.*\-o|$(tc-getCC) ${CFLAGS} ${LDFLAGS} -o|" \
+		-e "s|g++.*\-o|$(tc-getCXX) ${CFLAGS} ${LDFLAGS} -o|" \
+			-i testing/Makefile || die
+	sed -e "s|f in data|f in ${EPREFIX}/usr/share/l7-protocols/data|" \
+		testing/timeit.sh || die
 	ht_fix_file testing/*.sh
+	eapply_user
 }
 
 src_compile() {
-	emake -C testing || die
+	emake -C testing
 }
 
 # NOTE Testing mechanism is currently broken:
@@ -46,20 +46,21 @@ src_compile() {
 #}
 
 src_install() {
-	dodir /usr/share/${PN}
-	pushd testing > /dev/null
-	cp -pPR randprintable randchars test_speed-{kernel,userspace} README \
-		match_kernel *.sh data "${D}"/usr/share/${PN}
-	popd > /dev/null
-	mv example_traffic "${D}"/usr/share/${PN}
+	dodir /usr/{share,lib}/${PN}
+	mv testing/data example_traffic "${ED}"/usr/share/${PN} || die
 
-	dodoc README CHANGELOG HOWTO WANTED || die
+	pushd testing >/dev/null || die
+	cp -pPR randprintable randchars test_speed-{kernel,userspace} README \
+		match_kernel *.sh "${ED}"/usr/lib/${PN} || die
+	popd >/dev/null || die
+
+	dodoc README CHANGELOG HOWTO WANTED
 	for dir in extra file_types malware ; do
 		newdoc ${dir}/README README.${dir}
 	done
-	rm -rf README CHANGELOG HOWTO LICENSE Makefile WANTED */README testing
+	rm -rf README CHANGELOG HOWTO LICENSE Makefile WANTED */README testing || die
 
 	dodir /etc/l7-protocols
-	cp -R * "${D}"/etc/l7-protocols
-	chown -R root:0 "${D}"
+	cp -R * "${ED}"/etc/l7-protocols || die
+	chown -R root:0 "${ED}" || die
 }
