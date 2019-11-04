@@ -370,13 +370,11 @@ dev-embedded/gnap
 dev-libs/xplc
 dev-vcs/cvsd
 dev-vcs/cvsq
-dev-vcs/svn2cl
 mail-client/biabam
 mail-client/pinepgp
 mail-filter/clamassassin
 mail-filter/clamsmtp
 mail-filter/disspam
-mail-filter/sqlgrey
 media-gfx/cthumb
 media-gfx/fblogo
 net-dialup/globespan-adsl
@@ -392,7 +390,6 @@ net-mail/hotwayd
 net-mail/popick
 net-mail/poppassd_ceti
 net-mail/spamcup
-net-mail/vacation
 net-mail/yosucker
 net-misc/cgterm
 net-misc/clockspeed-conf
@@ -402,7 +399,6 @@ net-misc/sendfile
 net-news/yencode
 net-nntp/slrnconf
 net-nntp/ubh
-net-p2p/createtorrent
 net-p2p/ctcs
 net-proxy/ratproxy
 net-wireless/airsnort
@@ -411,7 +407,6 @@ sys-auth/pam-afs-session
 sys-auth/pam_chroot
 sys-auth/pam_require
 sys-block/dellmgr
-sys-fs/gt5
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
 # Unmaintained, EAPI 0 packages.  No reverse dependencies.  If you want
