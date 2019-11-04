@@ -550,7 +550,7 @@ src_install() {
 		# but upstream installs in /usr/share/gitweb
 		# so we will install a symlink and use their location for compat with other
 		# distros
-		dosym /usr/share/gitweb /usr/share/${PN}/gitweb
+		dosym ../gitweb /usr/share/${PN}/gitweb
 
 		# INSTALL discusses configuration issues, not just installation
 		docinto /
