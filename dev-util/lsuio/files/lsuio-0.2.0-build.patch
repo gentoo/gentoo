@@ -1,5 +1,5 @@
---- uio_helper.h
-+++ uio_helper.h
+--- a/uio_helper.h
++++ b/uio_helper.h
 @@ -68,5 +68,6 @@
  void uio_free_dev_attrs(struct uio_info_t* info);
  void uio_free_info(struct uio_info_t* info);
