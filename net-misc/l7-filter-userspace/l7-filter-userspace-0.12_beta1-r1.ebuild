@@ -1,15 +1,13 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils versionator
-
-MY_P=${PN}-$(replace_version_separator 2 '-')
+MY_P=${PN}-$(ver_rs 2 -)
 
 DESCRIPTION="Userspace utilities for layer 7 iptables QoS"
-HOMEPAGE="http://l7-filter.clearfoundation.com/"
-SRC_URI="http://download.clearfoundation.com/l7-filter/${MY_P}.tar.gz"
+HOMEPAGE="https://l7-filter.clearos.com http://l7-filter.sourceforge.net"
+SRC_URI="https://dev.gentoo.org/~bircoph/distfiles/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~x86"
@@ -26,7 +24,5 @@ S=${WORKDIR}/${MY_P}
 
 DOCS=( README TODO BUGS THANKS AUTHORS )
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.11-libnetfilter_conntrack-0.0.100.patch" \
-		"${FILESDIR}/${PN}-0.11-datatype.patch"
-}
+PATCHES=( "${FILESDIR}/${PN}-0.11-libnetfilter_conntrack-0.0.100.patch"
+		  "${FILESDIR}/${PN}-0.11-datatype.patch" )
