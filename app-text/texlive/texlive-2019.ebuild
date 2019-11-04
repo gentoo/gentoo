@@ -44,7 +44,6 @@ RDEPEND="${DEPEND}
 	>=${TEXLIVE_CAT}/texlive-latex-${PV}
 	luatex? ( >=${TEXLIVE_CAT}/texlive-luatex-${PV} )
 	>=${TEXLIVE_CAT}/texlive-latexrecommended-${PV}
-	>=dev-tex/xcolor-2.11
 	>=dev-tex/latex-beamer-3.36
 	metapost? (
 		>=${TEXLIVE_CAT}/texlive-metapost-${PV}
