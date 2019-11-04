@@ -15185,7 +15185,7 @@ net-mail/vpopmail 5.4.33 5.4.33-r4: Collection of programs to manage virtual ema
 net-mail/vqadmin 2.3.7: A web based control pannel to manage Virtual Qmail Domains. Works with qmailadmin
 net-mail/yosucker 73 77: Downloads mail from a Yahoo! webmail account to a local mail spool, an mbox file, or to procmail
 net-mail/ytnef 1.9.3: Yeraze's TNEF Stream Reader - for winmail.dat files
-net-misc/AQtion 2.2.7: Aquantia AQC multigigabit NIC linux driver (atlantic) - development preview
+net-misc/AQtion 2.2.7 2.3.1: Aquantia AQC multigigabit NIC linux driver (atlantic) - development preview
 net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
