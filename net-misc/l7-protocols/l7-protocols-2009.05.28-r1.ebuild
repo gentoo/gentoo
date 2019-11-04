@@ -10,7 +10,8 @@ IUSE=""
 MY_P=${PN}-${PV//./-}
 
 DESCRIPTION="Protocol definitions of l7-filter kernel modules"
-HOMEPAGE="http://l7-filter.sourceforge.net/protocols"
+HOMEPAGE="http://l7-filter.sourceforge.net/protocols
+	https://l7-filter.clearos.com/docs/start"
 
 SRC_URI="mirror://sourceforge/l7-filter/${MY_P}.tar.gz"
 
