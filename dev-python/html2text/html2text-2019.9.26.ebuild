@@ -14,6 +14,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # pkg_resources is used for entry points
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
