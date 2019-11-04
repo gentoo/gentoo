@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=List available userspace I/O (UIO) devices
+EAPI=7
+HOMEPAGE=https://www.osadl.org/UIO.uio.0.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://www.osadl.org/uploads/media/lsuio-0.2.0.tar.gz
+_md5_=e3e221e2ab47aae908cd61c2eb52829f
