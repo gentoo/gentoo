@@ -13,6 +13,7 @@ LICENSE="BSD GPL-2"
 
 SLOT="0"
 IUSE="X debug deprecated doc examples fftw openmp +readline +shared tcl"
+RESTRICT="!test? ( test )"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x64-macos"
 
 DEPEND="sys-libs/ncurses:0=
