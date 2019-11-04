@@ -13,6 +13,8 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND="app-shells/ksh"
+
 PATCHES=(
 	"${FILESDIR}"/kshdb-1.0.0-remove-COLORFGBG-message.patch
 )
