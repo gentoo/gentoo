@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PLOCALES="da de eo es fr hu ja nb nl pl pt_BR ru sr sv uk vi zh_CN zh_TW"
 
@@ -10,11 +10,12 @@ inherit l10n toolchain-funcs
 DESCRIPTION="Convert DOS or MAC text files to UNIX format or vice versa"
 HOMEPAGE="http://www.xs4all.nl/~waterlan/dos2unix.html https://sourceforge.net/projects/dos2unix/"
 SRC_URI="
-	http://www.xs4all.nl/~waterlan/${PN}/${P}.tar.gz
-	mirror://sourceforge/${PN}/${P}.tar.gz"
+	http://www.xs4all.nl/~waterlan/${PN}/${P/_/-}.tar.gz
+	mirror://sourceforge/${PN}/${P/_/-}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
+[[ "${PV}" == *_beta* ]] || \
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris"
 IUSE="debug nls test"
 
@@ -24,9 +25,13 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	nls? ( sys-devel/gettext )
 	test? ( virtual/perl-Test-Simple )
-	dev-lang/perl"
+"
+BDEPEND="
+	dev-lang/perl
+	nls? ( sys-devel/gettext )
+"
+S="${WORKDIR}/${P/_/-}"
 
 handle_locales() {
 	# Make sure locale list is kept up-to-date.
