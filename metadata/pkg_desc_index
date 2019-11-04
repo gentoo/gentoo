@@ -10438,7 +10438,7 @@ dev-tex/latexmk 435 441 443a 444 445 448 452c 453a 456 465: Perl script for auto
 dev-tex/lazylist 1.0a-r1: Lists in TeX's mouth - lambda-calculus and list-handling macros
 dev-tex/leaflet 20041222: LaTeX package used to create leaflet-type brochures
 dev-tex/lgrind 3.67-r3: A pretty printer for various programming languages with tex output.
-dev-tex/luatex 0.70.1-r2 0.76.0: An extended version of pdfTeX using Lua as an embedded scripting language
+dev-tex/luatex 0.70.1-r3 0.76.0-r1: An extended version of pdfTeX using Lua as an embedded scripting language
 dev-tex/metapost 1.780 1.803 1.902: System for producing graphics
 dev-tex/minted 2.0 2.1 2.4.1: LaTeX package for source code syntax highlighting
 dev-tex/newlfm 8.3-r1: Extensive LaTeX class for writing letters
