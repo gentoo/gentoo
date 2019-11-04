@@ -6,7 +6,7 @@
 # tex@gentoo.org
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
-# @SUPPORTED_EAPIS: 3 4 5 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Provide generic install functions so that modular texlive's texmf ebuild will only have to inherit this eclass
 # @DESCRIPTION:
 # Purpose: Provide generic install functions so that modular texlive's texmf ebuilds will
@@ -24,7 +24,7 @@
 # bash array.
 
 # @ECLASS-VARIABLE: TEXLIVE_MODULE_CONTENTS
-# @REQUIRED 
+# @REQUIRED
 # @DESCRIPTION:
 # The list of packages that will be installed. This variable will be expanded to
 # SRC_URI:
@@ -68,16 +68,9 @@
 # Information to display about the package.
 # e.g. for enabling/disabling a feature
 
-# @ECLASS-VARIABLE: PATCHES
-# @DESCRIPTION:
-# Array variable specifying any patches to be applied.
-
 case "${EAPI:-0}" in
-	0|1|2)
+	0|1|2|3|4|5|6)
 		die "EAPI='${EAPI}' is not supported anymore"
-		;;
-	3|4|5)
-		inherit texlive-common eutils
 		;;
 	*)
 		inherit texlive-common
@@ -92,19 +85,12 @@ IUSE="source"
 
 # Starting from TeX Live 2009, upstream provides .tar.xz modules.
 PKGEXT=tar.xz
-case "${EAPI:-0}" in
-	0|1|2|3|4|5|6)
-		DEPEND="${COMMON_DEPEND}
-			app-arch/xz-utils"
-		;;
-	*)
-		# We do not need anything from SYSROOT:
-		#   Everything is built from the texlive install in /
-		#   Generated files are noarch
-		BDEPEND="${COMMON_DEPEND}
-			app-arch/xz-utils"
-		;;
-esac
+
+# We do not need anything from SYSROOT:
+#   Everything is built from the texlive install in /
+#   Generated files are noarch
+BDEPEND="${COMMON_DEPEND}
+	app-arch/xz-utils"
 
 for i in ${TEXLIVE_MODULE_CONTENTS}; do
 	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.${PKGEXT}"
@@ -162,22 +148,6 @@ texlive-module_src_unpack() {
 	for i in $(<"${T}/reloclist"); do
 		mv "${i}" "${RELOC_TARGET}"/$(dirname "${i}") || die "failed to relocate ${i} to ${RELOC_TARGET}/$(dirname ${i})"
 	done
-}
-
-# @FUNCTION: texlive-module_src_prepare
-# @DESCRIPTION:
-# Apply patches from the PATCHES array and user patches, if any.
-
-texlive-module_src_prepare() {
-	case "${EAPI:-0}" in
-		0|1|2|3|4|5)
-			[[ ${#PATCHES[@]} -gt 0 ]] && epatch "${PATCHES[@]}"
-			epatch_user
-			;;
-		*)
-			die "texlive-module_src_prepare is not to be used in EAPI ${EAPI}"
-			;;
-	esac
 }
 
 # @FUNCTION: texlive-module_add_format
@@ -429,12 +399,4 @@ texlive-module_pkg_postrm() {
 	etexmf-update
 }
 
-case "${EAPI:-0}" in
-	0|1|2|3|4|5)
-		EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install \
-			pkg_postinst pkg_postrm
-		;;
-	*)
-		EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_postinst pkg_postrm
-		;;
-esac
+EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_postinst pkg_postrm
