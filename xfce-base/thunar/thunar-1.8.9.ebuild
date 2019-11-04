@@ -66,6 +66,13 @@ src_install() {
 }
 
 pkg_postinst() {
+	elog "If you were using an older Xfce version and Thunar fails to start"
+	elog "with a message similar to:"
+	elog "  Failed to register: Timeout was reached"
+	elog "you may need to reset your xfce4 session:"
+	elog "  rm ~/.cache/sessions/xfce4-session-*"
+	elog "See https://bugs.gentoo.org/698914."
+
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 }
