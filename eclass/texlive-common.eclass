@@ -6,7 +6,7 @@
 # tex@gentoo.org
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
-# @SUPPORTED_EAPIS: 3 4 5 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Provide various functions used by both texlive-core and texlive modules
 # @DESCRIPTION:
 # Purpose: Provide various functions used by both texlive-core and texlive
@@ -15,7 +15,7 @@
 # Note that this eclass *must* not assume the presence of any standard tex tool
 
 case "${EAPI:-0}" in
-	0|1|2)
+	0|1|2|3|4|5|6)
 		die "EAPI='${EAPI}' is not supported anymore"
 		;;
 	*)
