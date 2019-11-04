@@ -4,7 +4,7 @@
 EAPI=7
 
 PLOCALES="cs da de en es fi fr nb pl pt_BR pt_PT ru sv tr"
-inherit qmake-utils l10n xdg
+inherit desktop qmake-utils l10n xdg
 
 MY_PN="GPXSee"
 MY_P="${MY_PN}-${PV}"
@@ -59,10 +59,8 @@ src_install() {
 		[ -f "${lang}" ] && doins "${lang}"
 	done
 
-	insinto /usr/share/applications
-	doins pkg/${PN}.desktop
+	domenu pkg/${PN}.desktop
 	insinto /usr/share/mime/packages
 	doins pkg/${PN}.xml
-	insinto /usr/share/pixmaps
-	doins icons/${PN}.png
+	doicon icons/${PN}.png
 }
