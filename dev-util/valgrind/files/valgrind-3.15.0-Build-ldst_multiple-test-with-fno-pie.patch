@@ -1,0 +1,22 @@
+From beab8d9f8d65230567270331017184c8762faa42 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Mon, 4 Nov 2019 09:12:16 -0800
+Subject: [PATCH] Build ldst_multiple test with -fno-pie
+
+Bug: https://bugs.gentoo.org/685070
+---
+ none/tests/ppc32/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/none/tests/ppc32/Makefile.am b/none/tests/ppc32/Makefile.am
+index 11697c99a..222efd3f2 100644
+--- a/none/tests/ppc32/Makefile.am
++++ b/none/tests/ppc32/Makefile.am
+@@ -156,3 +156,4 @@ test_isa_2_07_part2_LDADD = -lm
+ test_tm_LDADD = -lm
+ test_touch_tm_LDADD = -lm
+ 
++ldst_multiple_CFLAGS = $(AM_CFLAGS) -fno-pie
+-- 
+2.23.0
+
