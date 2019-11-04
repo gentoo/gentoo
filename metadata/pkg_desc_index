@@ -35,6 +35,7 @@ acct-group/mail 0: Mail program group
 acct-group/man 0: System group: man
 acct-group/messagebus 0: System group: messagebus
 acct-group/minecraft 0: A group for the Minecraft server
+acct-group/mongodb 0: MongoDB program group
 acct-group/mosquitto 0: A group for the mosquitto MQTT broker
 acct-group/msmtpd 0: System group: msmtpd
 acct-group/murmur 0: System group: murmur
@@ -68,6 +69,7 @@ acct-group/systemd-network 0: System group: systemd-network
 acct-group/systemd-resolve 0: System group: systemd-resolve
 acct-group/systemd-timesync 0: System group: systemd-timesync
 acct-group/tape 0: System group: tape
+acct-group/tox 0: Group management for package net-libs/tox
 acct-group/transmission 0: System group: transmission
 acct-group/tty 0: System group: tty
 acct-group/unifi 0: A group for the UniFi controller
@@ -104,6 +106,7 @@ acct-user/mail 0: Mail program user
 acct-user/man 1: System user: man
 acct-user/messagebus 0: System user: messagebus
 acct-user/minecraft 0: A user for the Minecraft server
+acct-user/mongodb 0: MongoDB program user
 acct-user/mosquitto 0: A user for the mosquitto MQTT broker
 acct-user/msmtpd 0: user for msmtp daemon
 acct-user/murmur 0: user for murmur daemon
@@ -137,6 +140,7 @@ acct-user/systemd-journal-remote 0: System user: systemd-journal-remote
 acct-user/systemd-network 0: System user: systemd-network
 acct-user/systemd-resolve 0: System user: systemd-resolve
 acct-user/systemd-timesync 0: System user: systemd-timesync
+acct-user/tox 0: User for package net-libs/tox
 acct-user/transmission 1: System user: transmission
 acct-user/unifi 0: A user for the UniFi Controller
 acct-user/unrealircd 0: System user: unrealircd
@@ -9726,7 +9730,7 @@ dev-ruby/colorator 1.1.0: Colorize your text in the terminal
 dev-ruby/colored 1.2: Console coloring
 dev-ruby/colorize 0.8.1: Adds methods to set color, background color and text effect on console easier
 dev-ruby/columnize 0.9.0: Sorts an array in column order
-dev-ruby/combustion 1.1.0 1.1.1: Elegant Rails Engine Testing
+dev-ruby/combustion 1.1.0 1.1.1 1.1.2: Elegant Rails Engine Testing
 dev-ruby/commander 4.4.6 4.4.7: The complete solution for Ruby command-line executables
 dev-ruby/compass 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
@@ -14713,7 +14717,7 @@ net-firewall/firewalld 0.6.3 0.7.1: A firewall daemon with D-BUS interface provi
 net-firewall/fwanalog 0.6.4: Script to parse firewall logs and analyze them with Analog
 net-firewall/fwbuilder 5.3.7: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
-net-firewall/fwknop 2.6.9-r1: Single Packet Authorization and Port Knocking application
+net-firewall/fwknop 2.6.9-r1 2.6.10: Single Packet Authorization and Port Knocking application
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
 net-firewall/ipset 6.29 6.30 6.32 6.34 6.38 7.0 7.1: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.3 2.4 9999: Netflow iptables module
@@ -15078,7 +15082,7 @@ net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream
 net-libs/telepathy-glib 0.24.1 0.24.1-r1: GLib bindings for the Telepathy D-Bus protocol
 net-libs/telepathy-logger-qt 17.08.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.7-r1: Qt bindings for the Telepathy D-Bus protocol
-net-libs/tox 0.2.8 0.2.9 0.2.9-r1 9999: Encrypted P2P, messaging, and audio/video calling platform
+net-libs/tox 0.2.8 0.2.9 0.2.9-r1 0.2.10 9999: Encrypted P2P, messaging, and audio/video calling platform
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1: C library for simple and efficient file IO
@@ -18416,7 +18420,7 @@ www-servers/lighttpd 1.4.53 1.4.54 9999: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.16.1-r1 1.17.3-r1 1.17.4 1.17.5: Robust, small and high performance http and reverse proxy server
-www-servers/nginx-unit 1.8.0 1.12.0 1.12.0-r1 1.12.0-r2: Dynamic web and application server
+www-servers/nginx-unit 1.8.0 1.12.0 1.12.0-r1 1.12.0-r2 1.12.0-r3: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3.3 9999: Pretty small HTTP server -- a command-line tool to share files
