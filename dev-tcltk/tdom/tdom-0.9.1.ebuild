@@ -21,12 +21,6 @@ DEPEND="
 	dev-libs/expat"
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/"${P}.patch
-	"${FILESDIR}/"${P}-tnc.patch
-	"${FILESDIR}/"${PN}-0.8.3-soname.patch
-)
-
 src_prepare() {
 	append-libs -lm
 	sed \
