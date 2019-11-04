@@ -5,7 +5,4 @@
     <email>toolchain@gentoo.org</email>
     <name>Gentoo Toolchain Project</name>
   </maintainer>
-  <use>
-    <flag name="regression-test">Run the testsuite and install the results (requires FEATURES=test)</flag>
-  </use>
 </pkgmetadata>
