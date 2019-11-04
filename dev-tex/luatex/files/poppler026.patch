@@ -4,8 +4,8 @@ http://cvsweb.de.netbsd.org/cgi-bin/cvsweb.cgi/pkgsrc/print/luatex/patches/
 
 
 diff -ruN luatex-beta-0.76.0.orig/source/texk/web2c/luatexdir/image/epdf.h luatex-beta-0.76.0/source/texk/web2c/luatexdir/image/epdf.h
---- luatex-beta-0.76.0.orig/source/texk/web2c/luatexdir/image/epdf.h	2013-04-05 12:58:37.000000000 +0200
-+++ luatex-beta-0.76.0/source/texk/web2c/luatexdir/image/epdf.h	2014-05-01 01:39:39.838462783 +0200
+--- a/texk/web2c/luatexdir/image/epdf.h	2013-04-05 12:58:37.000000000 +0200
++++ b/texk/web2c/luatexdir/image/epdf.h	2014-05-01 01:39:39.838462783 +0200
 @@ -37,6 +37,7 @@
  #  include <sys/stat.h>
  #  include <dirent.h>
@@ -15,8 +15,8 @@ diff -ruN luatex-beta-0.76.0.orig/source/texk/web2c/luatexdir/image/epdf.h luate
  #  include <goo/gmem.h>
  #  include <goo/gfile.h>
 diff -ruN luatex-beta-0.76.0.orig/source/texk/web2c/luatexdir/lua/lepdflib.cc luatex-beta-0.76.0/source/texk/web2c/luatexdir/lua/lepdflib.cc
---- luatex-beta-0.76.0.orig/source/texk/web2c/luatexdir/lua/lepdflib.cc	2013-04-05 12:58:37.000000000 +0200
-+++ luatex-beta-0.76.0/source/texk/web2c/luatexdir/lua/lepdflib.cc	2014-05-01 01:40:15.698461067 +0200
+--- a/texk/web2c/luatexdir/lua/lepdflib.cc	2013-04-05 12:58:37.000000000 +0200
++++ b/texk/web2c/luatexdir/lua/lepdflib.cc	2014-05-01 01:40:15.698461067 +0200
 @@ -48,25 +48,26 @@
  
  //**********************************************************************
