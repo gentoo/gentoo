@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGES README.md"
 
@@ -11,18 +11,19 @@ RUBY_FAKEGEM_TASK_DOC="yard"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
-inherit ruby-fakegem
+inherit eapi7-ver ruby-fakegem
 
 DESCRIPTION="A template language aiming to reduce the syntax to the essential parts"
 HOMEPAGE="http://slim-lang.com/"
 LICENSE="MIT"
 
-KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 x86"
-SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+SLOT="$(ver_cut 1)"
 IUSE="doc"
 
-ruby_add_rdepend ">=dev-ruby/tilt-1.3.3:* <dev-ruby/tilt-2.1:*
-	>=dev-ruby/temple-0.7.6:0.7"
+ruby_add_rdepend ">=dev-ruby/tilt-2.0.6:* =dev-ruby/tilt-2.0*:*
+	>=dev-ruby/temple-0.7.6:0.7
+	!!<dev-ruby/slim-3.0.9-r1"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard dev-ruby/redcarpet )"
 
