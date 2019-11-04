@@ -19,7 +19,7 @@ DEPEND=""
 BDEPEND="sys-devel/libtool
 	doc? (
 		app-doc/doxygen
-		dev-tex/xcolor
+		dev-texlive/texlive-latexrecommended
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
