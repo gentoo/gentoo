@@ -22,7 +22,5 @@ RDEPEND="${DEPEND}
 
 S=${WORKDIR}/${MY_P}
 
-DOCS=( README TODO BUGS THANKS AUTHORS )
-
 PATCHES=( "${FILESDIR}/${PN}-0.11-libnetfilter_conntrack-0.0.100.patch"
 		  "${FILESDIR}/${PN}-0.11-datatype.patch" )
