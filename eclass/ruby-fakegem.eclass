@@ -155,20 +155,24 @@ esac
 case ${RUBY_FAKEGEM_RECIPE_TEST} in
 	rake)
 		IUSE+=" test"
+		RESTRICT+=" !test? ( test )"
 		ruby_add_bdepend "test? ( dev-ruby/rake )"
 		;;
 	rspec)
 		IUSE+=" test"
+		RESTRICT+=" !test? ( test )"
 		# Also require a new enough rspec-core version that installs the
 		# rspec-2 wrapper.
 		ruby_add_bdepend "test? ( dev-ruby/rspec:2 >=dev-ruby/rspec-core-2.14.8-r2 )"
 		;;
 	rspec3)
 		IUSE+=" test"
+		RESTRICT+=" !test? ( test )"
 		ruby_add_bdepend "test? ( dev-ruby/rspec:3 )"
 		;;
 	cucumber)
 		IUSE+=" test"
+		RESTRICT+=" !test? ( test )"
 		ruby_add_bdepend "test? ( dev-util/cucumber )"
 		;;
 	*)
