@@ -17,7 +17,7 @@ LICENSE="MIT"
 # this should probably be pkgmoved to 2.0 for sake of consistency.
 SLOT="2"
 KEYWORDS=""
-IUSE="lua52compat static-libs"
+IUSE="gc64 lua52compat static-libs"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -39,7 +39,11 @@ _emake() {
 }
 
 src_compile() {
-	_emake XCFLAGS="$(usex lua52compat "-DLUAJIT_ENABLE_LUA52COMPAT" "")"
+	local xcflags=(
+		$(usex gc64 "-DLUAJIT_ENABLE_GC64" "")
+		$(usex lua52compat " -DLUAJIT_ENABLE_LUA52COMPAT" "")
+	)
+	_emake XCFLAGS="${xcflags[*]}"
 }
 
 src_install(){

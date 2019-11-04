@@ -6,6 +6,9 @@
     <name>Rafael G. Martins</name>
   </maintainer>
   <use>
+    <flag name="gc64">
+      Enable GC64 mode allowing 64-bit GC objects
+    </flag>
     <flag name="lua52compat">
       Enable some upwards-compatible features
       from Lua 5.2 that are unlikely to break existing code.
