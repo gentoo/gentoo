@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=>=net-libs/libnetfilter_conntrack-0.0.100 >=net-libs/libnetfilter_queue-1.0.0 net-libs/libnfnetlink
+DESCRIPTION=Userspace utilities for layer 7 iptables QoS
+EAPI=7
+HOMEPAGE=https://l7-filter.clearos.com http://l7-filter.sourceforge.net
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-libs/libnetfilter_conntrack-0.0.100 >=net-libs/libnetfilter_queue-1.0.0 net-libs/libnfnetlink net-misc/l7-protocols
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~bircoph/distfiles/l7-filter-userspace-0.12-beta1.tar.gz
+_md5_=37f90cf8a30aee1339583a31c579c645

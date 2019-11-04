@@ -10099,7 +10099,7 @@ dev-ruby/ritex 1.0.1: Converts expressions from WebTeX into MathML
 dev-ruby/rjb 1.5.7 1.6.1: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
 dev-ruby/rmagick 3.1.0 3.2.0 4.0.0: An interface between Ruby and the ImageMagick(TM) image processing library
-dev-ruby/roadie 3.4.0 3.5.0 3.5.1 4.0.0: Making HTML emails comfortable for the Rails rockstars
+dev-ruby/roadie 3.5.0 3.5.1 4.0.0: Making HTML emails comfortable for the Rails rockstars
 dev-ruby/roadie-rails 1.2.1 1.3.0: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
 dev-ruby/rouge 3.8.0 3.9.0 3.10.0 3.11.0 3.11.1 3.12.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
@@ -10111,7 +10111,7 @@ dev-ruby/rspec-collection_matchers 1.1.3-r1 1.2.0: A Behaviour Driven Developmen
 dev-ruby/rspec-core 2.99.2-r2 3.8.2 3.9.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-expectations 2.99.2 3.8.4 3.8.6 3.9.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-its 1.2.0-r1 1.3.0: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-json_expectations 2.1.0 2.2.0: Set of matchers and helpers to allow you test your APIs responses.
+dev-ruby/rspec-json_expectations 2.2.0: Set of matchers and helpers to allow you test your APIs responses.
 dev-ruby/rspec-mocks 2.99.2 3.8.1 3.8.2 3.9.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-rails 3.8.2 3.8.3 3.9.0: RSpec's official Ruby on Rails plugin
 dev-ruby/rspec-retry 0.6.1: Retry intermittently failing rspec examples
@@ -10173,7 +10173,7 @@ dev-ruby/ruby2ruby 2.4.2 2.4.3 2.4.4: Generates readable ruby from ParseTree
 dev-ruby/ruby_dep 1.5.0: Creates a version constraint of supported Rubies,suitable for a gemspec file
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.13.1 3.14.0 3.14.1: A ruby parser written in pure ruby
-dev-ruby/ruby_smb 1.0.2 1.0.3 1.0.5 1.1.0: pure Ruby implementation of the SMB Protocol Family
+dev-ruby/ruby_smb 1.0.5 1.1.0: pure Ruby implementation of the SMB Protocol Family
 dev-ruby/rubygems 2.7.9 2.7.10 3.0.3 3.0.4-r1 3.0.6: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.2: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.7.0: A Ruby port of the SmartyPants PHP library
@@ -10183,7 +10183,7 @@ dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 1.2.2 1.2.3 1.2.4 1.3.0 2.0.0: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.5: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sanitize 4.6.6 5.0.0 5.1.0: Sanitize is a whitelist-based HTML sanitizer
-dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.3 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
+dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-listen 4.0.0: Fork of guard/listen provides a stable API for users of the ruby Sass CLI
 dev-ruby/sass-rails 5.0.7 5.0.8 5.1.0: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sassc 2.0.1-r1 2.2.1: Use libsass with Ruby
@@ -15331,7 +15331,7 @@ net-misc/kea 1.6.0 1.7.0 1.7.1 9999: High-performance production grade DHCPv4 & 
 net-misc/keychain 2.8.1 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
 net-misc/knemo 0.8.0_pre20161211: Plasma Network Monitor
 net-misc/knock 0.7: A simple port-knocking daemon
-net-misc/l7-filter-userspace 0.11 0.12_beta1: Userspace utilities for layer 7 iptables QoS
+net-misc/l7-filter-userspace 0.12_beta1-r1: Userspace utilities for layer 7 iptables QoS
 net-misc/l7-protocols 2009.05.28-r1: Protocol definitions of l7-filter kernel modules
 net-misc/lambdamoo 1.8.1-r3: networked mud that can be used for different types of collaborative software
 net-misc/lanmap 81-r1 81-r2: lanmap sits quietly on a network and builds a picture of what it sees
@@ -16271,7 +16271,7 @@ sci-electronics/librepcb 0.1.0-r1 9999: Free EDA software to develop printed cir
 sci-electronics/linsmith 0.99.30-r1 0.99.31: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
 sci-electronics/netgen 1.3.11 1.4.52: LVS tool (layout versus schematic comparison)
-sci-electronics/ngspice 27 27-r1 31: The Next Generation Spice (Electronic Circuit Simulator)
+sci-electronics/ngspice 27 27-r1 31-r1: The Next Generation Spice (Electronic Circuit Simulator)
 sci-electronics/oregano 0.69.1-r1 0.82: Application for the schematic capturing and simulation of electrical circuits
 sci-electronics/osqoop 1.2.0_pre20170131: Multi-platform open source software oscilloscope based on Qt
 sci-electronics/pcb 0_p20140316 4.0.2: GPL Electronic Design Automation: Printed Circuit Board editor
