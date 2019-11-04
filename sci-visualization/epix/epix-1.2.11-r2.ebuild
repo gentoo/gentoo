@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ DEPEND="
 	dev-texlive/texlive-pstricks
 	dev-texlive/texlive-pictures
 	dev-texlive/texlive-latexextra
-	dev-tex/xcolor
+	dev-texlive/texlive-latexrecommended
 	emacs? ( virtual/emacs )"
 RDEPEND="${DEPEND}"
 SITEFILE=50${PN}-gentoo.el

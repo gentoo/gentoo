@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,6 @@ DEPEND="${COMMON_DEPEND}
 	app-arch/unzip
 	doc? (
 		app-doc/doxygen
-		dev-tex/xcolor
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
