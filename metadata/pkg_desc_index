@@ -13364,7 +13364,7 @@ media-libs/plib 1.8.5-r1 1.8.5-r2: multimedia library used by many games
 media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
 media-libs/portaudio 19.06.00-r1 19.06.00-r2: A free, cross-platform, open-source, audio I/O library
-media-libs/portmidi 217-r1: Library for real time MIDI input and output
+media-libs/portmidi 217-r2: Library for real time MIDI input and output
 media-libs/ptex 2.3.2: Per-Face Texture Mapping for Production Rendering
 media-libs/pyliblo 0.10.0-r1: A Python wrapper for the liblo OSC library
 media-libs/pymemphis 0.2.1-r2: Python bindings for the libmemphis library
@@ -16744,7 +16744,7 @@ sci-physics/vgm 4.4 4.4-r1 4.5 9999: Virtual Geometry Model for High Energy Phys
 sci-physics/xfoil 6.97-r1 6.99: Design and analysis of subsonic isolated airfoils
 sci-physics/yoda 1.6.5 1.7.0: Yet more Objects for (High Energy Physics) Data Analysis
 sci-visualization/circos 0.55-r1: Circular layout visualization of genomic and other data
-sci-visualization/epix 1.2.11-r1: 2- and 3-D plotter for creating images (to be used in LaTeX)
+sci-visualization/epix 1.2.11-r2: 2- and 3-D plotter for creating images (to be used in LaTeX)
 sci-visualization/fig2sxd 0.22.1: Utility to convert files in xfig format to OpenOffice.org Draw format
 sci-visualization/fityk 1.2.9 1.3.1: General-purpose nonlinear curve fitting and data analysis
 sci-visualization/g3data 1.5.4: Tool for extracting data from graphs
