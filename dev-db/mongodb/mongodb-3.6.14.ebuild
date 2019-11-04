@@ -10,7 +10,7 @@ CHECKREQS_DISK_BUILD="2400M"
 CHECKREQS_DISK_USR="512M"
 CHECKREQS_MEMORY="1024M"
 
-inherit check-reqs flag-o-matic multiprocessing pax-utils python-any-r1 scons-utils systemd toolchain-funcs user
+inherit check-reqs flag-o-matic multiprocessing pax-utils python-any-r1 scons-utils systemd toolchain-funcs
 
 MY_P=${PN}-src-r${PV/_rc/-rc}
 
@@ -23,7 +23,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="debug kerberos libressl lto mms-agent ssl test +tools"
 
-RDEPEND=">=app-arch/snappy-1.1.3
+RDEPEND="acct-group/mongodb
+	acct-user/mongodb
+	>=app-arch/snappy-1.1.3
 	>=dev-cpp/yaml-cpp-0.5.3:=
 	>=dev-libs/boost-1.60:=[threads(+)]
 	>=dev-libs/libpcre-8.41[cxx]
@@ -54,6 +56,7 @@ PDEPEND="tools? ( >=app-admin/mongo-tools-${PV} )"
 PATCHES=(
 	"${FILESDIR}/${PN}-3.6.1-fix-scons.patch"
 	"${FILESDIR}/${PN}-3.6.1-no-compass.patch"
+	"${FILESDIR}/${PN}-4.0.12-boost-1.71-cxxabi-include.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
@@ -68,13 +71,6 @@ pkg_pretend() {
 			ewarn "Be sure to set featureCompatibilityVersion to 3.4 before upgrading."
 		fi
 	fi
-}
-
-pkg_setup() {
-	enewgroup mongodb
-	enewuser mongodb -1 -1 /var/lib/${PN} mongodb
-
-	python-any-r1_pkg_setup
 }
 
 src_prepare() {

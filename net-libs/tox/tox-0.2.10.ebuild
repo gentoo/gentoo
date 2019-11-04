@@ -3,33 +3,39 @@
 
 EAPI=7
 
-inherit cmake-utils git-r3 systemd
+inherit cmake-utils systemd
 
+MY_P="c-toxcore-${PV}"
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
 HOMEPAGE="https://tox.chat"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/TokTok/c-toxcore.git"
+SRC_URI="https://github.com/TokTok/c-toxcore/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0/0.2"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+av daemon dht-node ipv6 log-debug +log-error log-info log-trace log-warn static-libs test"
 
-REQUIRED_USE="^^ ( log-debug log-error log-info log-trace log-warn )
+REQUIRED_USE="?? ( log-debug log-error log-info log-trace log-warn )
 		daemon? ( dht-node )"
+RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="
-	av? ( media-libs/libvpx
-		media-libs/opus )
-	daemon? ( acct-group/tox
-		acct-user/tox
-		dev-libs/libconfig )
-	>=dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]"
 BDEPEND="virtual/pkgconfig"
 
-DEPEND="${COMMON_DEPEND}"
+DEPEND="
+	>dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]
+	av? (
+		media-libs/libvpx
+		media-libs/opus
+	)
+	daemon? ( dev-libs/libconfig )"
+RDEPEND="
+	${DEPEND}
+	daemon? (
+		acct-group/tox
+		acct-user/tox
+	)"
 
-RDEPEND="${COMMON_DEPEND}"
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -43,6 +49,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DAUTOTEST=$(usex test)
 		-DBOOTSTRAP_DAEMON=$(usex daemon)
+		-DBUILD_MISC_TESTS=$(usex test)
 		-DBUILD_TOXAV=$(usex av)
 		-DDHT_BOOTSTRAP=$(usex dht-node)
 		-DENABLE_SHARED=ON
@@ -71,8 +78,9 @@ src_configure() {
 		mycmakeargs+=(-DMIN_LOGGER_LEVEL="ERROR")
 	else
 		mycmakeargs+=(-DMIN_LOGGER_LEVEL="")
-		einfo "Logging Disabled"
+		einfo "Logging disabled"
 	fi
+
 	cmake-utils_src_configure
 }
 
@@ -90,12 +98,9 @@ src_install() {
 
 pkg_postinst() {
 	if use dht-node; then
-		ewarn "There is currently an unresolved issue with tox"
-		ewarn "DHT Bootstrap node that causes the program to be"
-		ewarn "built with a null library reference. This"
-		ewarn "causes an infinite loop for certain rev-dep-rebuild"
-		ewarn "commands. If you aren't running a node, please"
-		ewarn "consider disabling the dht-node flag"
+		ewarn "There is currently an unresolved issue with tox DHT Bootstrap node that causes the program to be"
+		ewarn "built with a null library reference. This causes an infinite loop for certain revdep-rebuild"
+		ewarn "commands. If you aren't running a node, please consider disabling the dht-node use flag."
 	fi
 	if use daemon; then
 		if [[ -f ${EROOT}/var/lib/tox-dht-bootstrap/key ]]; then
