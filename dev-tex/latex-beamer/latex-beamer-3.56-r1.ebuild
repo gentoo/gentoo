@@ -16,7 +16,7 @@ IUSE="doc"
 
 DEPEND="dev-texlive/texlive-latex"
 RDEPEND=">=dev-tex/pgf-1.10
-	dev-tex/xcolor
+	dev-texlive/texlive-latexrecommended
 	!dev-tex/translator"
 
 S=${WORKDIR}/beamer-${PV}

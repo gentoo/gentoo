@@ -44,7 +44,7 @@ DEPEND="${COMMON_DEPEND}
 		virtual/latex-base
 		>=dev-texlive/texlive-fontsrecommended-2012
 		>=dev-texlive/texlive-latexextra-2012
-		dev-tex/xcolor
+		dev-texlive/texlive-latexrecommended
 	)
 	java? ( >=virtual/jdk-1.5 )
 	test? ( dev-util/cppunit )"
