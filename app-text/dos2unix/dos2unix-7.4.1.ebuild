@@ -30,6 +30,9 @@ BDEPEND="
 	dev-lang/perl
 	nls? ( sys-devel/gettext )
 "
+
+RESTRICT="!test? ( test )"
+
 handle_locales() {
 	# Make sure locale list is kept up-to-date.
 	local detected sorted

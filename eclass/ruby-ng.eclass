@@ -234,7 +234,10 @@ ruby_add_rdepend() {
 		4|5|6) DEPEND="${DEPEND} test? ( ${dependency} )" ;;
 		*) BDEPEND="${BDEPEND} test? ( ${dependency} )" ;;
 	esac
-	has test "$IUSE" || IUSE="${IUSE} test"
+	if ! has test "$IUSE"; then
+		IUSE+=" test"
+		RESTRICT+=" !test? ( test )"
+	fi
 }
 
 # @FUNCTION: ruby_add_bdepend
