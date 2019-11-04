@@ -17423,7 +17423,7 @@ sys-block/kvpm 0.9.10-r1: GUI front end for Linux LVM2 and GNU parted based on K
 sys-block/libzbc 5.5.1: A library and tools for working with ZBC and ZAC disks
 sys-block/lsiutil 1.62-r1 1.62-r2: LSI Logic Fusion MPT Command Line Interface management tool
 sys-block/mbuffer 20150412 20171011 20181119 20190127 20190725: M(easuring)buffer is a replacement for buffer with additional functionality
-sys-block/megacli 8.07.10 8.07.14 8.07.14-r1: LSI Logic MegaRAID Command Line Interface management tool
+sys-block/megacli 8.07.10 8.07.14 8.07.14-r1 8.07.14-r2: LSI Logic MegaRAID Command Line Interface management tool
 sys-block/megactl 0.4.1-r3: LSI MegaRAID control utility
 sys-block/megamgr 5.20-r2: LSI Logic MegaRAID Text User Interface management tool
 sys-block/megarc 1.11-r2: LSI Logic MegaRAID Text User Interface management tool
