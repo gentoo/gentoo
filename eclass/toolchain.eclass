@@ -137,15 +137,8 @@ else
 	LICENSE="GPL-2+ LGPL-2.1+ FDL-1.1+"
 fi
 
-if tc_version_is_at_least 8.3; then
-	GCC_EBUILD_TEST_FLAG='test'
-else
-	# Don't force USE regression-test->test change on every
-	# gcc ebuild just yet. Let's do the change when >=gcc-8.3
-	# is commonly used as a main compiler.
-	GCC_EBUILD_TEST_FLAG='regression-test'
-fi
-IUSE="${GCC_EBUILD_TEST_FLAG} vanilla +nls"
+IUSE="test vanilla +nls"
+RESTRICT="!test? ( test )"
 
 TC_FEATURES=()
 
@@ -234,7 +227,7 @@ DEPEND="${RDEPEND}
 	>=sys-devel/bison-1.875
 	>=sys-devel/flex-2.5.4
 	nls? ( sys-devel/gettext )
-	${GCC_EBUILD_TEST_FLAG}? (
+	test? (
 		>=dev-util/dejagnu-1.4.4
 		>=sys-devel/autogen-5.5.4
 	)"
@@ -1769,11 +1762,9 @@ gcc_do_make() {
 #---->> src_test <<----
 
 toolchain_src_test() {
-	if use ${GCC_EBUILD_TEST_FLAG} ; then
-		cd "${WORKDIR}"/build
-		# enable verbose test run and result logging
-		emake -k check RUNTESTFLAGS='-a -v'
-	fi
+	cd "${WORKDIR}"/build
+	# enable verbose test run and result logging
+	emake -k check
 }
 
 #---->> src_install <<----
@@ -1911,13 +1902,6 @@ toolchain_src_install() {
 
 	# prune empty dirs left behind
 	find "${ED}" -depth -type d -delete 2>/dev/null
-
-	# install testsuite results
-	if use ${GCC_EBUILD_TEST_FLAG}; then
-		docinto testsuite
-		find "${WORKDIR}"/build -type f -name "*.sum" -exec dodoc {} +
-		find "${WORKDIR}"/build -type f -path "*/testsuite/*.log" -exec dodoc {} +
-	fi
 
 	# Rather install the script, else portage with changing $FILESDIR
 	# between binary and source package borks things ....
@@ -2251,11 +2235,6 @@ toolchain_pkg_postinst() {
 		# Since these aren't critical files and portage sucks with
 		# handling of binpkgs, don't require these to be found
 		cp "${ROOT%/}${DATAPATH}"/c{89,99} "${EROOT%/}"/usr/bin/ 2>/dev/null
-	fi
-
-	if use ${GCC_EBUILD_TEST_FLAG} ; then
-		elog "Testsuite results have been installed into /usr/share/doc/${PF}/testsuite"
-		echo
 	fi
 
 	if [[ -n ${PRERELEASE}${SNAPSHOT} ]] ; then
