@@ -1,4 +1,4 @@
-BDEPEND=sys-devel/libtool doc? ( app-doc/doxygen dev-tex/xcolor dev-texlive/texlive-latex dev-texlive/texlive-latexextra virtual/latex-base )
+BDEPEND=sys-devel/libtool doc? ( app-doc/doxygen dev-texlive/texlive-latexrecommended dev-texlive/texlive-latex dev-texlive/texlive-latexextra virtual/latex-base )
 DEFINED_PHASES=compile configure install prepare test
 DESCRIPTION=Bruce Guenter's Libraries Collection
 EAPI=7
@@ -9,4 +9,4 @@ LICENSE=LGPL-2.1+
 SLOT=0/2
 SRC_URI=https://untroubled.org/bglibs/archive/bglibs-2.04.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=ee7439e158c822e7178783676b861bad
+_md5_=5259059138da0ebb678f8f9c3cb68d31

@@ -4726,7 +4726,7 @@ dev-libs/bareos-fastlzlib 0_pre20140912 0_pre20150524: Fork of zlib-like interfa
 dev-libs/bcm2835 1.52 1.57: Provides access to GPIO and other IO functions on the Broadcom BCM2835
 dev-libs/beignet 1.3.2-r3: OpenCL implementation for Intel Sandy Bridge, Ivy Bridge and Haswell GPUs
 dev-libs/bemenu 9999: dmenu clone for wayland
-dev-libs/bglibs 2.04: Bruce Guenter's Libraries Collection
+dev-libs/bglibs 2.04-r1: Bruce Guenter's Libraries Collection
 dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 7.2e 7.4.2 7.6.4 7.6.10 8.0.2 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.65.0 1.70.0 1.71.0: Boost Libraries for C++
@@ -10430,7 +10430,7 @@ dev-tex/hlatex 1.0.1-r1: HLaTeX is a LaTeX package to use Hangul with LaTeX
 dev-tex/html2latex 1.1-r1: Perl script to convert HTML files into formatted LaTeX
 dev-tex/hyphen_show 20000425-r1: Show hyphenations in DVI files
 dev-tex/ivritex 1.1.2: Hebrew support for TeX
-dev-tex/latex-beamer 3.36 3.55 3.56: LaTeX class for creating presentations using a video projector
+dev-tex/latex-beamer 3.56-r1: LaTeX class for creating presentations using a video projector
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
 dev-tex/latex2html 2015 2017.2-r2: Convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.3.11 2.3.15: LaTeX to RTF converter
@@ -10495,7 +10495,7 @@ dev-texlive/texlive-langportuguese 2019: TeXLive Portuguese
 dev-texlive/texlive-langspanish 2019: TeXLive Spanish
 dev-texlive/texlive-latex 2019: TeXLive LaTeX fundamental packages
 dev-texlive/texlive-latexextra 2019-r2: TeXLive LaTeX additional packages
-dev-texlive/texlive-latexrecommended 2019: TeXLive LaTeX recommended packages
+dev-texlive/texlive-latexrecommended 2019 2019-r1: TeXLive LaTeX recommended packages
 dev-texlive/texlive-luatex 2019: TeXLive LuaTeX packages
 dev-texlive/texlive-mathscience 2019: TeXLive Mathematics, natural sciences, computer science packages
 dev-texlive/texlive-metapost 2019: TeXLive MetaPost and Metafont packages
@@ -13175,7 +13175,7 @@ media-libs/libbdplus 0.1.2 9999: Blu-ray library for BD+ decryption
 media-libs/libbluray 1.1.2 9999: Blu-ray playback libraries
 media-libs/libbs2b 3.1.0-r2: Bauer stereophonic-to-binaural DSP library
 media-libs/libbsb 0.0.7: A portable C library for reading and writing BSB format image files
-media-libs/libcaca 0.99_beta19: A library that creates colored ASCII-art graphics
+media-libs/libcaca 0.99_beta19-r1: A library that creates colored ASCII-art graphics
 media-libs/libcanberra 0.30-r5: Portable sound event library
 media-libs/libcdaudio 0.99.12-r2: Library of cd audio related routines
 media-libs/libcddb 1.3.2 1.3.2-r1: A library for accessing a CDDB server
@@ -16619,7 +16619,7 @@ sci-mathematics/axiom 200805: Axiom is a general purpose Computer Algebra system
 sci-mathematics/bertini 1.4: Software for Numerical Algebraic Geometry
 sci-mathematics/calc 2.12.4.13-r1 2.12.5.4: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.11.3: C++ library for geometric algorithms and data structures
-sci-mathematics/coq 8.6 8.6.1 8.9.1: Proof assistant written in O'Caml
+sci-mathematics/coq 8.6.1-r1 8.9.1-r1: Proof assistant written in O'Caml
 sci-mathematics/cvc4 1.6 1.7: automatic theorem prover for satisfiability modulo theories (SMT) problems
 sci-mathematics/dataplot 20090821 20131220: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
