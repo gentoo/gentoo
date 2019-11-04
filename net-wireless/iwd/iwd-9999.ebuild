@@ -123,14 +123,14 @@ src_prepare() {
 src_configure() {
 	append-cflags "-fsigned-char"
 	local myeconfargs=(
-		--sysconfdir="${EPREFIX}"/etc/iwd --localstatedir="${EPREFIX}"/var \
-		$(use_enable client) \
-		$(use_enable monitor) \
-		$(use_enable ofono) \
-		$(use_enable wired) \
-		--enable-systemd-service \
-		--with-systemd-unitdir="$(systemd_get_systemunitdir)" \
-		--with-systemd-modloaddir="${EPREFIX}/usr/lib/modules-load.d" \
+		--sysconfdir="${EPREFIX}"/etc/iwd --localstatedir="${EPREFIX}"/var
+		$(use_enable client)
+		$(use_enable monitor)
+		$(use_enable ofono)
+		$(use_enable wired)
+		--enable-systemd-service
+		--with-systemd-unitdir="$(systemd_get_systemunitdir)"
+		--with-systemd-modloaddir="${EPREFIX}/usr/lib/modules-load.d"
 		--with-systemd-networkdir="$(systemd_get_utildir)/network"
 	)
 	[[ ${PV} == *9999* ]] || myeconfargs+=(--enable-external-ell)
