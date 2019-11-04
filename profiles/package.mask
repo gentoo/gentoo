@@ -109,12 +109,6 @@ media-video/minitube
 # Removal in 30 days.  Bug #698050.
 media-fonts/vc-fonts
 
-# Stephan Hartmann <stha09@googlemail.com> (2019-10-25)
-# Dev channel releases are only for people who
-# are developers or want more experimental features
-# and accept a more unstable release.
->=www-client/chromium-79
-
 # Hans de Graaff <graaff@gentoo.org> (2019-10-25)
 # ruby24-only, no longer supported by upstream.
 # Migrate to Rails 5.2 instead. Masked for removal in 30 days.
