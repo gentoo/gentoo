@@ -10214,7 +10214,7 @@ dev-ruby/simplecov-html 0.10.2: Generates a HTML report of your SimpleCov ruby c
 dev-ruby/sinatra 1.4.8 2.0.5 2.0.7: A DSL for quickly creating web applications in Ruby with minimal effort
 dev-ruby/sinatra-partial 1.0.1: Just the partials helper in a gem
 dev-ruby/six 0.2.0: An ultra lite authorization library
-dev-ruby/slim 3.0.9 4.0.1: A template language aiming to reduce the syntax to the essential parts
+dev-ruby/slim 3.0.9 3.0.9-r1 4.0.1 4.0.1-r1: A template language aiming to reduce the syntax to the essential parts
 dev-ruby/slop 4.6.2 4.7.0: A simple option parser with an easy to remember syntax and friendly API
 dev-ruby/slow_enumerator_tools 1.1.0: Transform Ruby enumerators that produce data slowly and unpredictably
 dev-ruby/source_map 3.0.1: Provides an API for parsing, and an API for generating source maps in ruby
@@ -10225,8 +10225,8 @@ dev-ruby/spreadsheet 1.1.9 1.2.2 1.2.4 1.2.5: Ruby library to read and write spr
 dev-ruby/spring 2.0.2 2.1.0: Rails application preloader
 dev-ruby/sprockets 3.7.2: Ruby library for compiling and serving web assets
 dev-ruby/sprockets-rails 3.2.1: Sprockets implementation for Rails 4.x (and beyond) Asset Pipeline
-dev-ruby/spy 0.4.5 1.0.0: A simple opinionated mocking framework
-dev-ruby/sqlite3 1.3.13 1.4.0 1.4.1: An extension library to access a SQLite database from Ruby
+dev-ruby/spy 1.0.0: A simple opinionated mocking framework
+dev-ruby/sqlite3 1.3.13 1.4.1: An extension library to access a SQLite database from Ruby
 dev-ruby/sshkey 1.9.0 2.0.0: SSH private and public key generator in pure Ruby
 dev-ruby/sshkit 1.18.2 1.19.1 1.20.0: SSHKit makes it easy to write structured, testable SSH commands in Ruby
 dev-ruby/stamp 0.6.0: Date and time formatting for humans
