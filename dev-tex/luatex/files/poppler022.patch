@@ -5,8 +5,8 @@ poppler-0.18.patch and poppler-0.20.patch. Here to solve bug 449538.
 
 diff -ruN luatex-beta-0.70.1.gentoo/source/texk/web2c/luatexdir/lua/lepdflib.cc 
 luatex-beta-0.70.1/source/texk/web2c/luatexdir/lua/lepdflib.cc
---- luatex-beta-0.70.1.gentoo/source/texk/web2c/luatexdir/lua/lepdflib.cc	2013-03-10 13:31:22.000000000 +0100
-+++ luatex-beta-0.70.1/source/texk/web2c/luatexdir/lua/lepdflib.cc	2013-03-10 13:47:24.000000000 +0100
+--- a/texk/web2c/luatexdir/lua/lepdflib.cc	2013-03-10 13:31:22.000000000 +0100
++++ b/texk/web2c/luatexdir/lua/lepdflib.cc	2013-03-10 13:47:24.000000000 +0100
 @@ -1,7 +1,7 @@
  /* lepdflib.cc
  

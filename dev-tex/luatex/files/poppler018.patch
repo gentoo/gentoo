@@ -2,8 +2,8 @@ by Martin von Gagern
 https://bugs.gentoo.org/show_bug.cgi?id=384875
 http://thread.gmane.org/gmane.comp.tex.luatex/2630
 
---- luatex-beta-0.70.1/source/texk/web2c/luatexdir/lua/lepdflib.cc	
-+++ luatex-beta-0.70.1/source/texk/web2c/luatexdir/lua/lepdflib.cc	
+--- a/texk/web2c/luatexdir/lua/lepdflib.cc	
++++ b/texk/web2c/luatexdir/lua/lepdflib.cc	
 @@ -89,7 +89,6 @@ new_poppler_userdata(AnnotBorder);
  new_poppler_userdata(Annots);
  new_poppler_userdata(Array);

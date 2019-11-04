@@ -1,6 +1,6 @@
 diff -ruN luatex-beta-0.70.1.patched.orig/source/texk/web2c/luatexdir/image/epdf.h luatex-beta-0.70.1.patched/source/texk/web2c/luatexdir/image/epdf.h
---- luatex-beta-0.70.1.patched.orig/source/texk/web2c/luatexdir/image/epdf.h	2011-05-19 07:38:37.000000000 +0200
-+++ luatex-beta-0.70.1.patched/source/texk/web2c/luatexdir/image/epdf.h	2014-10-11 12:17:00.028331243 +0200
+--- a/texk/web2c/luatexdir/image/epdf.h	2011-05-19 07:38:37.000000000 +0200
++++ b/texk/web2c/luatexdir/image/epdf.h	2014-10-11 12:17:00.028331243 +0200
 @@ -33,6 +33,7 @@
  #  include <sys/stat.h>
  #  include <dirent.h>
@@ -10,8 +10,8 @@ diff -ruN luatex-beta-0.70.1.patched.orig/source/texk/web2c/luatexdir/image/epdf
  #  include <goo/gmem.h>
  #  include <goo/gfile.h>
 diff -ruN luatex-beta-0.70.1.patched.orig/source/texk/web2c/luatexdir/lua/lepdflib.cc luatex-beta-0.70.1.patched/source/texk/web2c/luatexdir/lua/lepdflib.cc
---- luatex-beta-0.70.1.patched.orig/source/texk/web2c/luatexdir/lua/lepdflib.cc	2014-10-11 12:24:52.509357663 +0200
-+++ luatex-beta-0.70.1.patched/source/texk/web2c/luatexdir/lua/lepdflib.cc	2014-10-11 12:42:03.665415321 +0200
+--- a/texk/web2c/luatexdir/lua/lepdflib.cc	2014-10-11 12:24:52.509357663 +0200
++++ b/texk/web2c/luatexdir/lua/lepdflib.cc	2014-10-11 12:42:03.665415321 +0200
 @@ -48,23 +48,24 @@
  
  //**********************************************************************

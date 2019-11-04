@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit libtool eutils flag-o-matic texlive-common
+inherit flag-o-matic libtool texlive-common
 
 DESCRIPTION="An extended version of pdfTeX using Lua as an embedded scripting language"
 HOMEPAGE="http://www.luatex.org/"
@@ -18,10 +18,12 @@ IUSE="doc"
 RDEPEND="dev-libs/zziplib
 	>=media-libs/libpng-1.4
 	app-text/poppler:=[xpdf-headers(+)]
-	sys-libs/zlib
+	sys-libs/zlib:*
 	>=dev-libs/kpathsea-6.0.1_p20110627"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+
+DEPEND="${RDEPEND}"
+
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${PN}-beta-${PV}/source"
 PRELIBS="libs/obsdcompat"
@@ -29,12 +31,13 @@ PRELIBS="libs/obsdcompat"
 #kpathsea_extraconf="--disable-shared --disable-largefile"
 
 src_prepare() {
-	has_version '>=app-text/poppler-0.18.0:0' && epatch "${FILESDIR}/poppler018.patch"
-	has_version '>=app-text/poppler-0.20.0:0' && epatch "${FILESDIR}/poppler020.patch"
-	has_version '>=app-text/poppler-0.22.0:0' && epatch "${FILESDIR}/poppler022.patch"
-	has_version '>=app-text/poppler-0.26.0:0' && epatch "${FILESDIR}/poppler026-backport.patch"
+	default
+	has_version '>=app-text/poppler-0.18.0:0' && eapply "${FILESDIR}/poppler018.patch"
+	has_version '>=app-text/poppler-0.20.0:0' && eapply "${FILESDIR}/poppler020.patch"
+	has_version '>=app-text/poppler-0.22.0:0' && eapply "${FILESDIR}/poppler022.patch"
+	has_version '>=app-text/poppler-0.26.0:0' && eapply "${FILESDIR}/poppler026-backport.patch"
 	has_version '>=app-text/poppler-0.57.0:0' && append-cxxflags -std=c++11 # bug 627538
-	epatch "${FILESDIR}/kpathsea2012.patch" \
+	eapply "${FILESDIR}/kpathsea2012.patch" \
 		"${FILESDIR}/remove-zlib-version-check.patch"
 	S="${S}/build-aux" elibtoolize --shallow
 }
@@ -49,7 +52,7 @@ src_configure() {
 	myconf=""
 	#has_version '>=app-text/texlive-core-2009' && myconf="--with-system-kpathsea"
 
-	cd "${S}/texk/web2c"
+	cd "${S}/texk/web2c" || die
 	econf \
 		--disable-cxx-runtime-hack \
 		--disable-all-pkgs	\
@@ -81,7 +84,7 @@ src_configure() {
 		local j=$(basename $i)_extraconf
 		local myconf
 		eval myconf=\${$j}
-		cd "${S}/${i}"
+		cd "${S}/${i}" || die
 		econf ${myconf}
 	done
 }
@@ -89,23 +92,23 @@ src_configure() {
 src_compile() {
 	texk/web2c/luatexdir/getluatexsvnversion.sh || die
 	for i in ${PRELIBS} ; do
-		cd "${S}/${i}"
-		emake || die "failed to build ${i}"
+		cd "${S}/${i}" || die
+		emake
 	done
-	cd "${WORKDIR}/${PN}-beta-${PV}/source/texk/web2c"
-	emake luatex || die "failed to build luatex"
+	cd "${WORKDIR}/${PN}-beta-${PV}/source/texk/web2c" || die
+	emake luatex
 }
 
 src_install() {
-	cd "${WORKDIR}/${PN}-beta-${PV}/source/texk/web2c"
+	cd "${WORKDIR}/${PN}-beta-${PV}/source/texk/web2c" || die
 	emake DESTDIR="${D}" bin_PROGRAMS="luatex" SUBDIRS="" nodist_man_MANS="" \
-		install-exec-am || die
+		install-exec-am
 
-	dodoc "${WORKDIR}/${PN}-beta-${PV}/README" || die
-	doman "${WORKDIR}/texmf/doc/man/man1/"*.1 || die
+	dodoc "${WORKDIR}/${PN}-beta-${PV}/README"
+	doman "${WORKDIR}/texmf/doc/man/man1/"*.1
 	if use doc ; then
-		dodoc "${WORKDIR}/${PN}-beta-${PV}/manual/"*.pdf || die
-		dodoc "${WORKDIR}/texmf/doc/man/man1/"*.pdf || die
+		dodoc "${WORKDIR}/${PN}-beta-${PV}/manual/"*.pdf
+		dodoc "${WORKDIR}/texmf/doc/man/man1/"*.pdf
 	fi
 }
 
