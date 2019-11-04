@@ -31,6 +31,9 @@ BDEPEND="
 	dev-lang/perl
 	nls? ( sys-devel/gettext )
 "
+
+RESTRICT="!test? ( test )"
+
 S="${WORKDIR}/${P/_/-}"
 
 handle_locales() {
