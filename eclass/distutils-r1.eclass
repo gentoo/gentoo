@@ -232,6 +232,66 @@ fi
 # }
 # @CODE
 
+# @FUNCTION: distutils_enable_tests
+# @USAGE: <test-runner>
+# @DESCRIPTION:
+# Set up IUSE, RESTRICT, BDEPEND and python_test() for running tests
+# with the specified test runner.  Also copies the current value
+# of RDEPEND to test?-BDEPEND.  The test-runner argument must be one of:
+#
+# - nose: nosetests (dev-python/nose)
+# - pytest: dev-python/pytest
+# - unittest: for built-in Python unittest module
+#
+# This function is meant as a helper for common use cases, and it only
+# takes care of basic setup.  You still need to list additional test
+# dependencies manually.  If you have uncommon use case, you should
+# not use it and instead enable tests manually.
+#
+# This function must be called in global scope, after RDEPEND has been
+# declared.  Take care not to overwrite the variables set by it.
+distutils_enable_tests() {
+	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes exactly one argument: test-runner"
+
+	[[ ${EAPI} == [56] ]] && local BDEPEND
+
+	IUSE+=" test"
+	RESTRICT+=" !test? ( test )"
+	BDEPEND+=" test? ("
+
+	case ${1} in
+		nose)
+			BDEPEND+=" dev-python/nose[${PYTHON_USEDEP}]"
+			python_test() {
+				nosetests -v || die "Tests fail with ${EPYTHON}"
+			}
+			;;
+		pytest)
+			BDEPEND+=" dev-python/pytest[${PYTHON_USEDEP}]"
+			python_test() {
+				pytest -vv || die "Tests fail with ${EPYTHON}"
+			}
+			;;
+		unittest)
+			python_test() {
+				"${EPYTHON}" -m unittest discover -v ||
+					die "Tests fail with ${EPYTHON}"
+			}
+			;;
+		*)
+			die "${FUNCNAME}: unsupported argument: ${1}"
+	esac
+
+	BDEPEND+=" ${RDEPEND} )"
+
+	[[ ${EAPI} == [56] ]] && DEPEND+=" ${BDEPEND}"
+
+	# we need to ensure successful return in case we're called last,
+	# otherwise Portage may wrongly assume sourcing failed
+	return 0
+}
+
 # @FUNCTION: esetup.py
 # @USAGE: [<args>...]
 # @DESCRIPTION:
