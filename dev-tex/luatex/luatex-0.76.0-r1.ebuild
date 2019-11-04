@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit libtool eutils flag-o-matic texlive-common
+inherit libtool flag-o-matic texlive-common
 
 MY_P=${PN}-beta-${PV}
 DESCRIPTION="An extended version of pdfTeX using Lua as an embedded scripting language"
@@ -22,17 +22,20 @@ RDEPEND="dev-libs/zziplib
 	>=x11-libs/cairo-1.12
 	>x11-libs/pixman-0.18
 	app-text/poppler:=[xpdf-headers(+)]
-	sys-libs/zlib
+	sys-libs/zlib:*
 	>=dev-libs/kpathsea-6.1.0_p20120701"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+
+DEPEND="${RDEPEND}"
+
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}/source"
 
 src_prepare() {
-	has_version '>=app-text/poppler-0.26.0:0' && epatch "${FILESDIR}/poppler026.patch"
+	default
+	has_version '>=app-text/poppler-0.26.0:0' && eapply "${FILESDIR}/poppler026.patch"
 	has_version '>=app-text/poppler-0.57.0:0' && append-cxxflags -std=c++11 # bug 627538
-	epatch "${FILESDIR}/remove-zlib-version-check.patch" \
+	eapply "${FILESDIR}/remove-zlib-version-check.patch" \
 		"${FILESDIR}/includes.patch"
 	S="${S}/build-aux" elibtoolize --shallow
 }
@@ -43,7 +46,7 @@ src_configure() {
 	# So we set LC_ALL to C in order to avoid problems.
 	export LC_ALL=C
 
-	cd "${S}/texk/web2c"
+	cd "${S}/texk/web2c" || die
 	econf \
 		--disable-cxx-runtime-hack \
 		--disable-all-pkgs	\
@@ -76,18 +79,18 @@ src_configure() {
 
 src_compile() {
 	texk/web2c/luatexdir/getluatexsvnversion.sh || die
-	cd "${WORKDIR}/${MY_P}/source/texk/web2c"
+	cd "${WORKDIR}/${MY_P}/source/texk/web2c" || die
 	emake luatex
 }
 
 src_install() {
-	cd "${WORKDIR}/${MY_P}/source/texk/web2c"
+	cd "${WORKDIR}/${MY_P}/source/texk/web2c" || die
 	emake DESTDIR="${D}" bin_PROGRAMS="luatex" SUBDIRS="" nodist_man_MANS="" \
 		install-exec-am
 
 	dodoc "${WORKDIR}/${MY_P}/README" luatexdir/NEWS
-	cp source/texk/web2c/man
-	cp man/luatex.man "${T}/luatex.1"
+	cp source/texk/web2c/man || die
+	cp man/luatex.man "${T}/luatex.1" || die
 	doman "${T}/luatex.1"
 	use doc && dodoc "${WORKDIR}/${MY_P}/manual/"*.pdf
 }
