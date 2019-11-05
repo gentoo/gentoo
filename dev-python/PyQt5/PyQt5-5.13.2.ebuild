@@ -193,7 +193,6 @@ src_install() {
 	einstalldocs
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
+		dodoc -r examples
 	fi
 }
