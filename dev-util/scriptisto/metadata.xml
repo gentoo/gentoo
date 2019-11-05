@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ipetruk@google.com</email>
+		<name>Igor Petruk</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>igor.petrouk@gmail.com</email>
+		<name>Igor Petruk</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+			It is tool to enable writing one file scripts in languages that require compilation, dependencies fetching or preprocessing.
+
+			It works as a "shebang" for those scripts, extracting build instructions from comments. If a script is changed, scriptisto rebuilds it and caches the result. If a script was already built, scriptisto immediately delegates to a binary with only ms overhead.
+
+			Builds in Docker are available.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">igor-petruk/scriptisto</remote-id>
+	</upstream>
+</pkgmetadata>
