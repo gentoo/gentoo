@@ -391,7 +391,6 @@ dev-embedded/gnap
 dev-libs/xplc
 dev-vcs/cvsd
 dev-vcs/cvsq
-mail-client/biabam
 mail-filter/clamsmtp
 sys-auth/pam_require
 
