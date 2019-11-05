@@ -13971,7 +13971,7 @@ media-sound/mpd 0.21.14 0.21.15 0.21.16: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
-media-sound/mpg123 1.25.10-r1 1.25.11 1.25.12: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
+media-sound/mpg123 1.25.10-r1 1.25.12 1.25.13: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mps-youtube 0.2.7.1 0.2.8 9999: Terminal-based YouTube player and downloader
@@ -14283,7 +14283,7 @@ media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webc
 media-video/shotcut 19.06.15: A free, open source, cross-platform video editor
 media-video/shrip 0.6.0-r1: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/simplescreenrecorder 0.3.11-r2 9999: A Simple Screen Recorder
-media-video/smplayer 18.6.0 19.5.0 19.5.0-r1: Great Qt GUI front-end for mplayer/mpv
+media-video/smplayer 18.6.0 19.5.0 19.5.0-r1 19.10.0: Great Qt GUI front-end for mplayer/mpv
 media-video/smtube 19.6.0: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sonic-snap 1.7-r1: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
@@ -14757,7 +14757,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83: Amazon S3 mounting via fuse
 net-fs/s3ql 2.24 2.25 2.26 2.28 2.32 2.33: A full-featured file system for online data storage
-net-fs/samba 4.5.16 4.8.6-r2 4.8.6-r3 4.8.12 4.9.13 4.10.2 4.10.8 4.11.0 4.11.1: Samba Suite Version 4
+net-fs/samba 4.5.16 4.8.6-r2 4.8.6-r3 4.8.12 4.9.13 4.9.15 4.10.2 4.10.8 4.10.10 4.11.1 4.11.2: Samba Suite Version 4
 net-fs/smbnetfs 0.6.1 0.6.1-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 2.10-r1 3.5.0 3.5.1 3.5.2: Fuse-filesystem utilizing the sftp service
@@ -17861,7 +17861,7 @@ sys-libs/glibc 2.19-r2 2.24-r4 2.25-r11 2.26-r7 2.27-r6 2.28-r6 2.29-r2 2.29-r5 
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.20.0 4.20.2-r1 4.99.22_rc6: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.0.1: Library for managing partitions
-sys-libs/ldb 1.1.29-r1 1.1.31 1.2.4 1.3.6 1.3.8 1.4.7 1.5.4 1.5.5 1.6.3 2.0.5 2.0.7: An LDAP-like embedded database
+sys-libs/ldb 1.1.29-r1 1.1.31 1.2.4 1.3.6 1.3.8 1.4.7 1.4.8 1.5.4 1.5.5 1.5.6 1.6.3 2.0.5 2.0.7: An LDAP-like embedded database
 sys-libs/lib-compat 1.5: Compatibility C++ library for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
