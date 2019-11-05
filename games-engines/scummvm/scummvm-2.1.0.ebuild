@@ -11,12 +11,11 @@ SRC_URI="https://scummvm.org/frs/scummvm/${PV}/${P}.tar.xz"
 LICENSE="GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="a52 aac alsa debug flac fluidsynth jpeg lua mpeg2 mp3 opengl png speech theora truetype unsupported vorbis zlib"
+IUSE="a52 aac alsa debug flac fluidsynth jpeg lua mpeg2 mp3 net opengl png speech theora truetype unsupported vorbis zlib"
 RESTRICT="test"  # it only looks like there's a test there #77507
 
 RDEPEND="
 	>=media-libs/libsdl2-2.0.0[sound,joystick,video]
-	media-libs/sdl2-net
 	a52? ( media-libs/a52dec )
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
@@ -25,6 +24,7 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	mp3? ( media-libs/libmad )
 	mpeg2? ( media-libs/libmpeg2 )
+	net? ( media-libs/sdl2-net )
 	opengl? ( virtual/opengl )
 	png? ( media-libs/libpng:0 )
 	speech? ( app-accessibility/speech-dispatcher )
@@ -84,6 +84,7 @@ src_configure() {
 		$(use_enable lua)
 		$(use_enable mp3 mad)
 		$(use_enable mpeg2)
+		$(use_enable net sdlnet)
 		$(use_enable png)
 		$(use_enable speech tts)
 		$(use_enable theora theoradec)
