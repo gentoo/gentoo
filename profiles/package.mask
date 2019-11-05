@@ -415,7 +415,6 @@ net-misc/cgterm
 net-misc/clockspeed-conf
 net-misc/fmirror
 net-misc/ng-utils
-net-misc/sendfile
 sys-auth/pam_require
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
