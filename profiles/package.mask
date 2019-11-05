@@ -382,7 +382,6 @@ app-benchmarks/volanomark
 app-cdr/mode2cdmaker
 app-cdr/xdvdfs-tools
 app-mobilephone/cobex
-app-office/tedia2sql
 mail-filter/clamsmtp
 sys-auth/pam_require
 
