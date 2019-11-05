@@ -388,7 +388,6 @@ app-mobilephone/cobex
 app-office/tedia2sql
 app-text/mht-rip
 dev-embedded/gnap
-dev-libs/xplc
 mail-filter/clamsmtp
 sys-auth/pam_require
 
