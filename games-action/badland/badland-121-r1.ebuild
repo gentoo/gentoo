@@ -24,7 +24,7 @@ RDEPEND="
 	dev-db/sqlite:3[abi_x86_32]
 	media-libs/fontconfig:1.0[abi_x86_32]
 	media-libs/freetype:2[abi_x86_32]
-	media-libs/libpng:1.2[abi_x86_32]
+	media-libs/libpng-compat:1.2[abi_x86_32]
 	media-libs/libsdl2[abi_x86_32,joystick,opengl,sound,threads,video]
 	net-misc/curl[abi_x86_32]
 	>=sys-devel/gcc-4.6[cxx]
