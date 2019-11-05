@@ -25,6 +25,7 @@ RDEPEND=">=dev-libs/libmowgli-2.1.0:2
 	pcre? ( dev-libs/libpcre )
 	ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}
+	dev-vcs/git
 	virtual/pkgconfig"
 
 PATCHES=("${FILESDIR}"/${P}-configure-logdir.patch)
