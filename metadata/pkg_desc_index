@@ -3036,7 +3036,7 @@ dev-ada/gnatcoll-db 2018-r1 2019: GNAT Component Collection
 dev-ada/gnatmem 2019 2019-r1: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2018 2019 2019-r1: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2017-r2 2019 2019-r1: Multi-Language Management
-dev-ada/gps 2018-r1: The GNAT Programming Studio
+dev-ada/gps 2018-r1 2018-r2: The GNAT Programming Studio
 dev-ada/gps-bin 2016 2016-r1: The GNAT Programming Studio
 dev-ada/gtkada 2017 2017-r1 2018-r1 2018-r2 2019 2019-r1: A complete Ada graphical toolkit
 dev-ada/langkit 2018 2019: A Python framework to generate language parsers
@@ -8334,7 +8334,7 @@ dev-python/photutils 0.3.1 0.3.2: Python package for image astronomical photomet
 dev-python/pickleshare 0.7.3 0.7.4-r1: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.1.1 2.2.0: Pidfile featuring stale detection and file-locking
 dev-python/piddle 1.0.15-r1: Cross-media, cross-platform 2D graphics package
-dev-python/piexif 1.0.12 1.0.13 1.1.0_beta0: Exif manipulation with pure Python
+dev-python/piexif 1.0.12 1.0.13 1.1.0_beta0 1.1.3: Exif manipulation with pure Python
 dev-python/pika 0.10.0 0.13.0: Pure-Python implementation of the AMQP
 dev-python/pika-pool 0.1.3: A connection pool for pika.
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
