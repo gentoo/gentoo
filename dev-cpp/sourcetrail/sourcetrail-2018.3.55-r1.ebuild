@@ -24,7 +24,7 @@ RDEPEND="
 	)
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/libpng:1.2
+	media-libs/libpng-compat:1.2
 	sys-libs/libudev-compat
 	virtual/opengl
 	x11-libs/libdrm
