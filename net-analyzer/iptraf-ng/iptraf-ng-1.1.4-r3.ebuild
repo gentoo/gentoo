@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic git-r3 toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A console-based network monitoring utility"
-HOMEPAGE="https://github.com/iptraf-ng/iptraf-ng"
-EGIT_REPO_URI="https://github.com/iptraf-ng/iptraf-ng"
+HOMEPAGE="https://github.com/iptraf-ng/iptraf-ng/"
+SRC_URI="${HOMEPAGE}archive/v${PV}.tar.gz -> ${P}-github.tar.gz"
 
 LICENSE="GPL-2 doc? ( FDL-1.1 )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="doc"
 
 RDEPEND="
@@ -21,6 +21,11 @@ DEPEND="
 	virtual/os-headers
 	!net-analyzer/iptraf
 "
+PATCHES=(
+	"${FILESDIR}"/${P}-printf-format.patch
+	"${FILESDIR}"/${P}-sprintf-format.patch
+	"${FILESDIR}"/${P}-tcplog_flowrate_msg.patch
+)
 RESTRICT="test"
 
 src_prepare() {
