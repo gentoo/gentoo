@@ -3953,8 +3953,6 @@ mail-filter/amavisd-new:rspamd-https - Add support for mail-filter/rspamd extens
 mail-filter/amavisd-new:spamassassin - Add support for mail-filter/spamassassin
 mail-filter/amavisd-new:zmq - Add support for zeromq sockets
 mail-filter/bogofilter:tokyocabinet - Enable Tokyo Cabinet database support
-mail-filter/clamassassin:clamd - Use the app-antivirus/clamav daemon for virus checking
-mail-filter/clamassassin:subject-rewrite - Adds support for subject rewriting
 mail-filter/dcc:rrdtool - Enable net-analyzer/rrdtool interface scripts
 mail-filter/dspam:daemon - Enable support for DSPAM to run in --daemon mode
 mail-filter/dspam:debug - Enable debugging support (don't enable this unless something needs testing!)
@@ -6307,7 +6305,6 @@ net-mail/fdm:courierauth - Add support for Courier authentication library
 net-mail/fetchmail:socks - Enable support for socks proxy
 net-mail/fetchmail:tk - Enable support for Tk GUI toolkit, in particular it installs fetchmailconf
 net-mail/gnubiff:password - Enable save passwords to connect mail servers in user space
-net-mail/hotwayd:smtp - Build SMTP proxy (hotsmtpd)
 net-mail/isync:compat - Enable legacy utilities
 net-mail/lbdb:abook - Enables app-misc/abook support
 net-mail/lbdb:bbdb - Include support for app-emacs/bbdb

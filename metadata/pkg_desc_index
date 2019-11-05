@@ -576,7 +576,6 @@ app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POS
 app-benchmarks/stress-ng 0.10.07: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.15-r1 1.0.16-r1 1.0.17-r1 9999: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
-app-benchmarks/volanomark 2.5.0.9: Java server benchmark utility
 app-benchmarks/wrk 4.1.0-r1: A HTTP benchmarking tool
 app-cdr/b5i2iso 0.2-r1: Convert CD images from b5i (BlindWrite) to iso
 app-cdr/bashburn 3.1.0: A shell script for burning optical media
@@ -617,7 +616,6 @@ app-cdr/isomaster 1.3.13 1.3.14: Graphical CD image editor for reading, modifyin
 app-cdr/kcdemu 0.7.3: Frontend to cdemu daemon based on KDE Frameworks
 app-cdr/mirage2iso 0.4.2 9999: CD/DVD image converter using libmirage
 app-cdr/mkcdtoc 1.0: command-line utility to create toc-files for cdrdao
-app-cdr/mode2cdmaker 1.5.1: Utility to create mode-2 CDs, for example XCDs
 app-cdr/mp3burn 0.4.2: Burn mp3s without filling up your disk with .wav files
 app-cdr/multicd 1.7.5-r1: Tool for making direct copies of your files to multiple cd's
 app-cdr/nrg2iso 0.4-r2: Convert CD images from nrg (Nero) to iso
@@ -628,7 +626,6 @@ app-cdr/tkdvd 4.0.9-r1: A Tcl/Tk GUI for writing DVDs and CDs
 app-cdr/uif2iso 0.1.7c-r1: Convert CD images from uif (MagicISO) to iso
 app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
-app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.5-r2 0.6.0 0.6.1: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 0.38.0 0.39.0 9999: An implementation of the ACME protocol
@@ -2178,7 +2175,6 @@ app-misc/zisofs-tools 1.0.8: User utilities for zisofs
 app-misc/zygrib 8.0.1-r1: GRIB File Viewer - Weather data visualization
 app-mobilephone/adb-sync 0_p20181127-r1: Synchronize files between a PC and an Android device using ADB
 app-mobilephone/anyremote 6.5: Bluetooth, infrared or cable remote control service
-app-mobilephone/cobex 0.2.13: small implementation of Obex for phones using the DCU-11 USB-to-serial adapter
 app-mobilephone/dfu-util 0.9 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
 app-mobilephone/gammu 1.38.5 1.39.0-r1 1.40.0: A tool to handle your cellular phone
 app-mobilephone/ganyremote 6.3.3: Gnome frontend to Anyremote
@@ -2244,7 +2240,6 @@ app-office/sc 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.5.5_pre20190429 1.5.5 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.20.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
-app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.99.6-r2 1.99.9 1.99.10 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0-r1 5.0.3: A nice LaTeX-IDE
 app-office/texstudio 2.11.2-r2 2.12.2-r1 2.12.4-r1 2.12.6-r1 2.12.8-r1 2.12.10 2.12.14 2.12.16_beta2-r1 2.12.16: Free cross-platform LaTeX editor (fork from texmakerX)
@@ -2549,7 +2544,6 @@ app-text/master-pdf-editor 5.2.20 5.3.02 5.3.12 5.3.22 5.4.38: A complete soluti
 app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
 app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mftrace 1.2.18-r3 1.2.19-r1: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
-app-text/mht-rip 0.8: convert mht/mhtml files to something usable
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/msort 8.53: A program for sorting files in sophisticated ways
 app-text/multitail 6.4.1 6.4.2: Tail with multiple windows
@@ -3233,7 +3227,6 @@ dev-embedded/dfu-programmer 0.7.2-r1: A Device Firmware Update based USB program
 dev-embedded/esptool 2.1 2.6: Utility to communicate with the ROM bootloader in Espressif ESP8266 and ESP32
 dev-embedded/freaklabs-boards 1.0.0: Arduino hardware definitions for freaklabs boards
 dev-embedded/ftdi_eeprom 0.3-r1 1.0: Utility to program external EEPROM for FTDI USB chips
-dev-embedded/gnap 2.0: Gentoo-based Network Appliance building system
 dev-embedded/gnap-dev 2.0: Gentoo-based Network Appliance building system development tools
 dev-embedded/gnap-ext 2.0: Gentoo-based Network Appliance extensions and remastering tool
 dev-embedded/gnome-avrdude 0.1: GNOME GUI for avrdude
@@ -5195,7 +5188,6 @@ dev-libs/xbyak 5.73: JIT assembler for x86(IA-32)/x64(AMD64, x86-64)
 dev-libs/xerces-c 3.2.2-r1 9999: A validating XML parser written in a portable subset of C++
 dev-libs/xmlrpc-c 1.32.05-r1 1.39.11-r1: A lightweigt RPC library based on XML and HTTP
 dev-libs/xmlsec 1.2.28 1.2.29: Command line tool for signing, verifying, encrypting and decrypting XML
-dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
 dev-libs/xxhash 0.6.5 0.7.0 0.7.1: Extremely fast non-cryptographic hash algorithm
 dev-libs/yajl 2.1.0-r1 2.1.0-r2: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
@@ -10917,10 +10909,8 @@ dev-vcs/cvs 1.12.12-r12: Concurrent Versions System - source code revision contr
 dev-vcs/cvs-fast-export 1.47 1.48: fast-export history from a CVS repository or RCS collection
 dev-vcs/cvs2cl 2.71-r1: produces a GNU-style ChangeLog for CVS-controlled sources
 dev-vcs/cvs2svn 2.4.0-r1 2.5.0: Convert a CVS repository to a Subversion repository
-dev-vcs/cvsd 1.0.17: CVS pserver daemon
 dev-vcs/cvsgraph 1.7.0: CVS/RCS repository grapher
 dev-vcs/cvsps 2.1-r1 2.2_beta1 3.13-r1: Generates patchset information from a CVS repository (supports fast-import)
-dev-vcs/cvsq 0.4.4: A tool to work offline with CVS by queuing the commits
 dev-vcs/cvsspam 0.2.12: Utility to send colored HTML CVS-mails
 dev-vcs/cvsutils 0.2.5-r1: A small bundle of utilities to work with CVS repositories
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
@@ -12467,7 +12457,6 @@ mail-client/aerc 0.2.1: Email client for your terminal
 mail-client/alot 0.3.7-r1 0.5.1 0.6 0.7 0.7-r1 0.8.1: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.00-r7 2.21.1 2.21.1-r1: An easy to use text-based based mail and news client
 mail-client/balsa 2.5.6-r1: Email client for GNOME
-mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
 mail-client/bower 0.10 0.11: Curses terminal client for the Notmuch email system
 mail-client/claws-mail 3.17.3-r1 3.17.4 9999: An email client (and news reader) based on GTK+
 mail-client/clawsker 1.1.0: Applet to edit Claws Mail's hidden preferences
@@ -12483,7 +12472,6 @@ mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.10.1 1.11.4 1.12.1 1.12.2-r1 1.12.2-r2: A small but very powerful text-based mail client
 mail-client/neomutt 20180512 20180622 20180716 20180716-r1 20191102 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
-mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.3.8 1.3.9 1.3.10: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
@@ -12496,11 +12484,9 @@ mail-filter/amavisd-milter 1.5.0-r1 1.6.0-r1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.11.1-r3 2.12.0: High-performance interface between the MTA and content checkers
 mail-filter/bmf 0.9.4-r2 0.9.4-r3: A fast and small Bayesian spam filter
 mail-filter/bogofilter 1.2.4-r2: Bayesian spam filter designed with fast algorithms, and tuned for speed
-mail-filter/clamassassin 1.2.4: Simple spamassassin-like script for virus scanning and filtering e-mail messages
 mail-filter/clamsmtp 1.10: An SMTP filter to check for viruses using the ClamAV anti-virus software
 mail-filter/couriersrs 0.1.2: SRS (Sender Rewriting Scheme) wrapper for the courier MTA
 mail-filter/dcc 1.3.154 1.3.158: Distributed Checksum Clearinghouse
-mail-filter/disspam 0.14: A Perl script that removes spam from POP3 mailboxes based on RBLs
 mail-filter/dkimproxy 1.4.1: An SMTP proxy server for adding DKIM headers
 mail-filter/dovecot_deleted_to_trash 0.6: Deleted to trash IMAP plugin for Dovecot
 mail-filter/dspam 3.10.2-r1 3.10.2-r2: A statistical-algorithmic hybrid anti-spam filter
@@ -12830,7 +12816,6 @@ media-gfx/converseen 0.9.6.2: Batch image converter and resizer based on ImageMa
 media-gfx/cptutils 1.68 1.71: A number of utilities for the manipulation of color gradient files
 media-gfx/cropgui 0.2-r1 0.3 9999: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
-media-gfx/cthumb 4.2: Create a statical HTML Image gallery with captions for each image
 media-gfx/cura 3.4.1 3.6.0 4.2.1 4.3.0: A 3D model slicing application for 3D printing
 media-gfx/curaengine 3.4.1 3.6.0 4.2.0 4.3.0: A 3D model slicing engine for 3D printing
 media-gfx/darktable 2.6.2 9999: A virtual lighttable and darkroom for photographers
@@ -12859,7 +12844,6 @@ media-gfx/exiv2 0.27.2: EXIF, IPTC and XMP metadata C++ library and command line
 media-gfx/farbfeld 4 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12 2.13-r1 2.14 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
-media-gfx/fblogo 0.5.2: Creates images to substitute Linux boot logo
 media-gfx/fdm-materials 3.4.1 3.6.0 4.2.0 4.3.0: FDM materials for media-gfx/cura
 media-gfx/feh 3.2.1: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but simpler
@@ -14623,7 +14607,6 @@ net-dialup/dwun 0.96e-r4: Dialer Without a Useful Name (DWUN)
 net-dialup/fbgetty 0.1.698-r1: An extended getty for the framebuffer console
 net-dialup/freeradius 3.0.15 3.0.17 3.0.18-r1: Highly configurable free RADIUS server
 net-dialup/freeradius-client 1.1.7: FreeRADIUS Client framework
-net-dialup/globespan-adsl 0.11-r1 0.12: Driver for various ADSL modems. Also known as EciAdsl
 net-dialup/isdn-firmware 2005.8.15.2: ISDN firmware for active ISDN cards (AVM, Eicon, etc.)
 net-dialup/kpnadsl4linux 1.11: ADSL4Linux, a PPTP start/stop/etc. program especially for Dutch users
 net-dialup/linux-atm 2.5.2: Tools for ATM
@@ -14652,7 +14635,6 @@ net-dialup/xc 4.3.2-r3 4.3.2-r4: Modem dialout & serial terminal program
 net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
 net-dns/avahi 0.6.32 0.7-r1 0.7-r2: System which facilitates service discovery on a local network
 net-dns/bind 9.14.7 9.15.5: Berkeley Internet Name Domain - Name Server
-net-dns/bind-dns-keygen 9.3.2.39-r1: A simple BIND key generator
 net-dns/bind-tools 9.14.7 9.15.5: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.13.0 1.14.0 1.15.0: C library that resolves names asynchronously
 net-dns/coredns 1.3.1: A DNS server that chains middleware
@@ -14712,9 +14694,7 @@ net-firewall/ebtables 2.0.10.4 2.0.10.4-r1 2.0.10.4-r2: Controls Ethernet frame 
 net-firewall/ferm 2.4 2.4.1: Command line util for managing firewall rules
 net-firewall/firehol 3.1.6: iptables firewall generator
 net-firewall/firewalld 0.6.3 0.7.1: A firewall daemon with D-BUS interface providing a dynamic firewall
-net-firewall/fwanalog 0.6.4: Script to parse firewall logs and analyze them with Analog
 net-firewall/fwbuilder 5.3.7: A firewall GUI
-net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
 net-firewall/fwknop 2.6.9-r1 2.6.10: Single Packet Authorization and Port Knocking application
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
 net-firewall/ipset 6.29 6.30 6.32 6.34 6.38 7.0 7.1: IPset tool for iptables, successor to ippool
@@ -14727,10 +14707,8 @@ net-firewall/nftables 0.9.0-r4 0.9.0-r5 0.9.1-r1 0.9.2-r1: Linux kernel (3.13+) 
 net-firewall/nufw 2.2.22-r3: An enterprise grade authenticating firewall based on netfilter
 net-firewall/pglinux 2.3.1_p20171006: Privacy oriented firewall application
 net-firewall/psad 2.2.5 2.4.5 2.4.6: Port Scanning Attack Detection daemon
-net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7-r1 4.18: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
-net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
 net-firewall/shorewall 5.2.3.4: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.35-r1 0.36: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
@@ -14847,7 +14825,6 @@ net-irc/atheme-services 7.2.10_p2: A portable and secure set of open-source and 
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
 net-irc/cgiirc 0.5.10: A perl/CGI program to use IRC from a web browser
 net-irc/dccserver 0.5-r1: linux implementation of the mirc dccserver command
-net-irc/dircproxy 1.2.0_rc1: an IRC proxy server
 net-irc/eggdrop 1.8.3 1.8.4: An IRC bot extensible with C or TCL
 net-irc/emech 3.0.3-r1 3.0.99_p3: UNIX compatible IRC bot programmed in the C language
 net-irc/epic5 2.0.1: Epic5 IRC Client
@@ -14863,11 +14840,9 @@ net-irc/iroffer-dinoex 3.30-r1 3.31 3.32: IRC fileserver using DCC
 net-irc/irssi 1.2.2 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-xmpp 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75-r1: Generates HTML IRC stats based on irssi logs
-net-irc/jircii 41: jIRCii - IRC client written in Java
 net-irc/konversation 1.7.5-r1: User friendly IRC Client
 net-irc/kvirc 5.2_pre20190628041642 9999: Advanced IRC Client
 net-irc/limnoria 20150523 20150829 20171025 99999999: Python based extensible IRC infobot and channel bot
-net-irc/miau 0.6.6: Persistent IRC bouncer with multi-client support - a fork of muh
 net-irc/muh 2.2a-r1: Persistent IRC bouncer
 net-irc/nebula 0.5: An IRC client for X11 and Motif
 net-irc/ngircd 23-r1 24: An IRC server written from scratch
@@ -15051,7 +15026,6 @@ net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
 net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Service (JMS)
 net-libs/openpgm 5.1.118-r1 5.2.122: Open source implementation of the Pragmatic General Multicast specification
-net-libs/openslp 1.2.1-r3 2.0.0-r4 2.0.0-r5: An open-source implementation of Service Location Protocol
 net-libs/ortp 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-libs/osptoolkit 4.13.0: Open Settlement Protocol development kit
 net-libs/pacparser 1.3.7: Library to parse proxy auto-config files
@@ -15111,7 +15085,6 @@ net-mail/fetchmail 6.3.26-r4 6.4.1: the legendary remote-mail retrieval and forw
 net-mail/getmail 5.13 5.14: A mail retriever with reliable Maildir and mbox delivery
 net-mail/gnubiff 2.2.17-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
-net-mail/hotwayd 0.8.4: Hotmail to pop3 daemon
 net-mail/imapsync 1.592-r1 1.836 1.882: Tool for incremental and recursive IMAP transfers between mailboxes
 net-mail/isync 1.3.0-r1 1.3.1 9999: MailDir mailbox synchronizer
 net-mail/lbdb 0.41 0.47: Little Brother database
@@ -15147,7 +15120,6 @@ net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Po
 net-mail/pop-before-smtp 1.42: a simple daemon to allow email relay control based on successful POP or IMAP logins
 net-mail/pop2imap 1.18 1.21: Synchronize mailboxes between a pop and an imap servers
 net-mail/popa3d 1.0.2-r1: A security oriented POP3 server
-net-mail/popick 0.1: POP3 mailbox deleter using regular expressions to match message headers and delete messages
 net-mail/poppassd_ceti 1.8.5-r2 1.8.7: Password change daemon with PAM support
 net-mail/postfix-logwatch 1.40.03-r3: A log analyzer for postfix
 net-mail/qlogtools 3.1 3.1-r1: Qmail Log processing tools
@@ -15172,7 +15144,6 @@ net-mail/sendEmail 1.56-r1 1.56-r2: Command line based, SMTP email agent
 net-mail/serialmail 0.75-r4: A serialmail is a collection of tools for passing mail across serial links
 net-mail/signify 1.14: A (semi-)random e-mail signature rotator
 net-mail/smtptools 0.2.3: A collection of tools to send or receive mails with SMTP
-net-mail/spamcup 1.09: This script does the same you would do when you report spam with your browser in Spamcop.net
 net-mail/swaks 20130209.0-r1: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 net-mail/t-prot 3.4: TOFU protection - display filter for RFC822 messages
 net-mail/tnef 1.4.15 1.4.17: Decodes MS-TNEF MIME attachments
@@ -15181,7 +15152,6 @@ net-mail/vacation 1.2.7.0: automatic mail answering program
 net-mail/vchkuser 0.4: qmail-spp plugin to check recipient existance with vpopmail
 net-mail/vpopmail 5.4.33 5.4.33-r4: Collection of programs to manage virtual email on Qmail servers
 net-mail/vqadmin 2.3.7: A web based control pannel to manage Virtual Qmail Domains. Works with qmailadmin
-net-mail/yosucker 73 77: Downloads mail from a Yahoo! webmail account to a local mail spool, an mbox file, or to procmail
 net-mail/ytnef 1.9.3: Yeraze's TNEF Stream Reader - for winmail.dat files
 net-misc/AQtion 2.2.7 2.3.1: Aquantia AQC multigigabit NIC linux driver (atlantic) - development preview
 net-misc/adjtimex 1.29-r2: display or set the kernel time variables
@@ -15222,12 +15192,10 @@ net-misc/cbqinit 0.7.3-r3: Sets up class-based queue traffic control (QoS) with 
 net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 2.2.10-r5 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.9.2 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
-net-misc/cgterm 1.6: Connect to C64 telnet BBS's with the correct colours and font
 net-misc/charm 1.9.2-r1: A text based livejournal client
 net-misc/chrome-remote-desktop 63.0.3239.17-r1 77.0.3865.32: access remote computers via Chrome!
 net-misc/chrony 3.1 3.3 3.4 3.5-r2 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
-net-misc/clockspeed-conf 0.4.5-r1: scripts to setup a clockspeed client and/or a taiclockd server
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2019.01.13: Qt GUI for Connman with system tray icon
 net-misc/cni-plugins 0.7.5 0.7.6 0.8.1 0.8.2: Standard networking plugins for container networking
@@ -15271,7 +15239,6 @@ net-misc/exabgp 3.2.17 3.4.26-r1 4.0.10: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
-net-misc/fmirror 0.8.4-r2: FTP mirror utility
 net-misc/freerdp 2.0.0_rc2-r1 2.0.0_rc4 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
@@ -15377,7 +15344,6 @@ net-misc/netsed 0.01b-r1 0.01c: Small tool for altering forwarded network data i
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.18.2 1.18.4-r1: A set of co-operative tools that make networking simple and straightforward
 net-misc/nextcloud-client 2.5.2 2.6.0: Desktop Syncing Client for Nextcloud
-net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
 net-misc/ntp 4.2.8_p13 4.2.8_p13-r1 4.2.8_p13-r2: Network Time Protocol suite/programs
@@ -15446,7 +15412,6 @@ net-misc/seafile 6.2.11 7.0.2: File syncing and sharing software with file encry
 net-misc/seafile-client 6.2.11 7.0.2: Seafile desktop client
 net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and SCP connections
 net-misc/selfdhcp 0.2a-r1: a small stealth network autoconfigure software
-net-misc/sendfile 2.1b-r1: SAFT implementation for asynchronous sending of files in the Internet
 net-misc/ser2net 2.10.0: Serial To Network Proxy
 net-misc/sgopherd 17.09 18.08: Small Gopher Server written in GNU Bash
 net-misc/shigofumi 0.3-r1 9999: Command line client for ISDS
@@ -15554,7 +15519,6 @@ net-news/rssguard 3.5.5 9999: A tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
 net-news/snownews 1.5.12-r1 1.5.13 1.6.10: Command-line RSS feed reader
-net-news/yencode 0.46: yEnc encoder/decoder package
 net-news/yydecode 0.2.10-r1: A decoder for yENC format, popular on Usenet
 net-nntp/brag 1.4.3: Brag collects and assembles multipart binary attachments from newsgroups
 net-nntp/kwooty 1.1.0_p20150623: Friendly nzb linux usenet binary client
@@ -15564,11 +15528,9 @@ net-nntp/nzbget 20.0 21.0_pre2302 21.0: A command-line based binary newsgrabber 
 net-nntp/pan 0.145: A newsreader for GNOME
 net-nntp/sabnzbd 2.3.9: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
-net-nntp/slrnconf 0.8.4: slrnconf is a graphical configuration utility for the newsreader slrn
 net-nntp/sn 0.3.8: Hassle-free Usenet news system for small sites
 net-nntp/suck 4.3.3-r1: Grab news from a remote NNTP server and feed them to another
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
-net-nntp/ubh 2.5: The Usenet Binary Harvester
 net-p2p/airdcpp-webclient 2.6.0 2.6.1: Cross-platform Direct Connect client
 net-p2p/amule 2.3.2-r2 2.3.2-r3: aMule, the all-platform eMule p2p client
 net-p2p/automatic 0.8.3: RSS downloader for Tranmission
@@ -15581,7 +15543,6 @@ net-p2p/bittornado 0.3.18-r4 0.4.1_p20160925-r1: John Hoffman's fork of the orig
 net-p2p/classified-ads 0.11 0.12 0.13: Program for displaying classified advertisement items
 net-p2p/cpuminer-opt 3.9.6.2 3.9.7 3.9.8 3.9.8.1 3.9.9 3.9.9.1 9999: Optimized multi algo CPU miner
 net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
-net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clients
 net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
 net-p2p/deluge 1.3.15-r2 1.3.15-r3 1.3.15-r4 1.3.9999 2.0.3-r1 9999: BitTorrent client with a client/server model
@@ -15670,7 +15631,6 @@ net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
 net-proxy/piper 1.14: Piper (a tool for manipulating SOCKS5 servers)
 net-proxy/polipo 1.1.1-r4 9999: A caching web proxy
 net-proxy/privoxy 3.0.26 3.0.28: A web proxy with advanced filtering capabilities for enhancing privacy
-net-proxy/ratproxy 1.58: A semi-automated, largely passive web application security audit tool
 net-proxy/redsocks 0.5 9999: Transparent redirector of any TCP connection to proxy
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
 net-proxy/shadowsocks-libev 3.3.1 3.3.2: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
@@ -15727,7 +15687,6 @@ net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, e
 net-vpn/wireguard 0.0.20191012 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-wireless/aircrack-ng 1.5.2 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
-net-wireless/airsnort 0.2.7e: 802.11b Wireless Packet Sniffer/WEP Cracker
 net-wireless/airtraf 1.1-r3: AirTraf 802.11b Wireless traffic sniffer
 net-wireless/b43-fwcutter 019: Firmware Tool for Broadcom 43xx based wireless network devices using the mac80211 wireless stack
 net-wireless/bcm43xx-fwcutter 006: Firmware Tool for Broadcom 43xx based wireless network devices
@@ -17145,7 +17104,6 @@ sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hponcfg 4.6.0.0 5.4.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
 sys-apps/hprofile 3.0.6 3.1.1 3.2.2 6.1.3: Utility to manage hardware, network, power or other profiles (fork)
 sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
-sys-apps/hwdata-redhat 0.217: Hardware identification and configuration data
 sys-apps/hwids 20190316 20190818 20191025 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
 sys-apps/hwinfo 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.11.2-r1 1.11.10 1.11.13 2.0.4: displays the hardware topology in convenient formats
@@ -17354,12 +17312,10 @@ sys-auth/nss-pam-ldapd 0.8.14-r2 0.9.9 0.9.10 0.9.11: NSS module for name lookup
 sys-auth/nss_ldap 265-r5: NSS LDAP Module
 sys-auth/oath-toolkit 2.6.1 2.6.2: Toolkit for using one-time password authentication with HOTP/TOTP algorithms
 sys-auth/otpcalc 0.97-r8: A One Time Password and S/Key calculator for X
-sys-auth/pam-afs-session 1.6: OpenAFS PAM Module
 sys-auth/pam-pgsql 0.7.3.2: pam module to authenticate users via PostgreSQL
 sys-auth/pam-script 1.1.8 1.1.9: PAM module for running scripts during authorization, password change and session
 sys-auth/pam_abl 0.6.0: PAM module for blacklisting hosts and users repeatedly failed authentication
 sys-auth/pam_blue 0.9.0-r1: PAM module providing ability to authenticate via a bluetooth compatible device
-sys-auth/pam_chroot 0.9.2: Linux-PAM module that allows a user to be chrooted in auth, account, or session
 sys-auth/pam_dotfile 0.7-r2: pam module to allow password-storing in $HOME/dotfiles
 sys-auth/pam_fprint 0.2-r1: a simple PAM module which uses libfprint's functionality for authentication
 sys-auth/pam_krb5 4.6 4.7: Kerberos V PAM Authentication Module
@@ -17400,7 +17356,6 @@ sys-block/blktrace 1.1.0 1.1.0-r1 1.2.0: show detailed info about what is happen
 sys-block/blocks 0.1.4_pre131210-r1 9999: Conversion tools for block devices
 sys-block/buffer 1.19-r2: a tapedrive tool for speeding up reading from and writing to tape
 sys-block/cec 14: Coraid Ethernet Console client
-sys-block/dellmgr 5.32-r1: Dell PERC 2/3/4 RAID controller management tool
 sys-block/devio 1.2: correctly read (or write) a region of a block device
 sys-block/di 4.47 4.47.1 4.47.2: Disk Information Utility
 sys-block/disktype 9: Detect the content format of a disk or disk image
@@ -17415,7 +17370,6 @@ sys-block/hdrecover 0.5: Attempts to recover a hard disk that has bad blocks on 
 sys-block/hpacucli 9.30.15.0 9.40.12.0: HP Array Config Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
 sys-block/hpssacli 2.40.13.0-r1 3.10.3.0: HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)
 sys-block/io-scheduler-udev-rules 1: Udev rules to allow easier customization of kernel I/O schedulers
-sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p20130821 9999: Open Source iSCSI target with professional features
 sys-block/kvpm 0.9.10-r1: GUI front end for Linux LVM2 and GNU parted based on KDE Frameworks
 sys-block/libzbc 5.5.1: A library and tools for working with ZBC and ZAC disks
 sys-block/lsiutil 1.62-r1 1.62-r2: LSI Logic Fusion MPT Command Line Interface management tool
@@ -17955,7 +17909,7 @@ sys-power/powernowd 1.00-r4 1.00-r5: Daemon to control the speed and voltage of 
 sys-power/powerstat 0.02.18 0.02.20 9999: Laptop power measuring tool
 sys-power/powertop 2.10 9999: tool to diagnose issues with power consumption and power management
 sys-power/sispmctl 4.0: GEMBIRD SiS-PM control utility
-sys-power/suspend 1.0_p20150810-r1 1.0_p20190605: Userspace Software Suspend and S2Ram
+sys-power/suspend 1.0_p20190605: Userspace Software Suspend and S2Ram
 sys-power/thermald 1.8-r1 1.9: Thermal daemon for Intel architectures
 sys-power/uhubctl 1.8-r1: USB hub per-port power control
 sys-power/upower 0.99.9-r1 0.99.11: D-Bus abstraction for enumerating power devices, querying history and statistics
@@ -18245,7 +18199,6 @@ www-apache/mod_vdbh 1.0.3-r2: An Apache2 module for mass virtual hosting using a
 www-apache/mod_vhost_ldap 2.4.0-r1: Store and configure Apache virtual hosts using LDAP
 www-apache/mod_whatkilledus 2.01: Debug segmentation faults in Apache threads
 www-apache/mod_wsgi 4.5.13 4.5.17 4.5.21 4.6.5: An Apache2 module for running Python WSGI applications
-www-apache/mod_xml2enc 1.0.3 1.0.4: An Apache2 module to provide libxml2 encoding
 www-apache/mod_xsendfile 1.0_beta1: Apache module that processes X-SENDFILE headers registered by the output handler
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 3.0.2 3.1.0: Core Rule Set for ModSecurity
