@@ -424,7 +424,6 @@ net-proxy/ratproxy
 net-wireless/airsnort
 sys-apps/hwdata-redhat
 sys-auth/pam-afs-session
-sys-auth/pam_chroot
 sys-auth/pam_require
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
