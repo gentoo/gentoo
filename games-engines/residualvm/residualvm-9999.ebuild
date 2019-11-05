@@ -18,7 +18,7 @@ SLOT="0"
 IUSE="alsa debug jpeg mpeg2 mp3 opengl png truetype vorbis zlib"
 
 # TODO: fix dynamic plugin support
-# games crash without media-libs/libsdl[alsa]
+# games crash without media-libs/libsdl2[alsa]
 RDEPEND="
 	media-libs/glew:0=
 	media-libs/libsdl2[X,sound,alsa,joystick,opengl,video]
@@ -79,16 +79,4 @@ src_compile() {
 src_install() {
 	default
 	doicon -s 256 icons/${PN}.png
-}
-
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }
