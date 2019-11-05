@@ -10,7 +10,7 @@ if [[ ${PV} =~ 99999999$ ]]; then
 	EGIT_REPO_URI="https://github.com/neomutt/neomutt.git"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/neomutt-${P}"
 else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -69,8 +69,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 src_configure() {
 	local myconf=(
-		"$(use_enable doc)"
-		"$(usex doc --full-doc)"
+		"$(usex doc --full-doc --disable-doc)"
 		"$(use_enable nls)"
 		"$(use_enable notmuch)"
 
