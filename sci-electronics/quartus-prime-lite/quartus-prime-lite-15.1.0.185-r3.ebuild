@@ -19,7 +19,7 @@ SLOT="0"
 # No keywords as per bug 575684
 KEYWORDS=""
 
-RDEPEND="media-libs/libpng:1.2[abi_x86_32]
+RDEPEND="media-libs/libpng-compat:1.2[abi_x86_32]
 		x11-libs/libXft[abi_x86_32]
 		app-arch/bzip2[abi_x86_32]
 		sys-libs/zlib[abi_x86_32]
