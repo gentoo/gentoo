@@ -380,7 +380,6 @@ net-libs/openslp
 # Removal in 30 days.  Bug #696252.
 app-benchmarks/volanomark
 app-cdr/mode2cdmaker
-app-cdr/xdvdfs-tools
 mail-filter/clamsmtp
 sys-auth/pam_require
 
