@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,7 +41,7 @@ RDEPEND="
 	virtual/opengl[abi_x86_32]
 	launcher? (
 		dev-libs/glib:2[abi_x86_32]
-		media-libs/libpng:1.2[abi_x86_32]
+		media-libs/libpng-compat:1.2[abi_x86_32]
 		x11-libs/gdk-pixbuf:2[abi_x86_32,X]
 		x11-libs/gtk+:2[abi_x86_32]
 		x11-libs/libX11[abi_x86_32]
