@@ -22,7 +22,7 @@ IUSE="dbus X"
 DEPEND="dev-util/patchelf"
 RDEPEND="
 	app-crypt/mit-krb5[keyutils]
-	media-libs/libpng:1.2
+	media-libs/libpng-compat:1.2
 	dbus? ( sys-apps/dbus )
 	X? (
 		media-libs/fontconfig
