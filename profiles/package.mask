@@ -393,7 +393,6 @@ dev-vcs/cvsd
 dev-vcs/cvsq
 mail-client/biabam
 mail-client/pinepgp
-mail-filter/clamassassin
 mail-filter/clamsmtp
 sys-auth/pam_require
 
