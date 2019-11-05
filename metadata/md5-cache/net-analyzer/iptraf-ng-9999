@@ -1,5 +1,5 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install prepare unpack
+DEFINED_PHASES=configure install prepare unpack
 DEPEND=>=sys-libs/ncurses-5.7-r7:0= virtual/os-headers !net-analyzer/iptraf
 DESCRIPTION=A console-based network monitoring utility
 EAPI=7
@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=>=sys-libs/ncurses-5.7-r7:0=
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=0850795a74ce459a1a9630c48739a749
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_md5_=58f20932bd579f30c2d85a923364829e
