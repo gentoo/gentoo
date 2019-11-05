@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,7 +38,7 @@ RDEPEND="
 	launcher? (
 		dev-libs/expat[abi_x86_32]
 		dev-libs/glib:2[abi_x86_32]
-		media-libs/libpng:1.2[abi_x86_32]
+		media-libs/libpng-compat:1.2[abi_x86_32]
 		sys-apps/dbus[abi_x86_32]
 		sys-apps/util-linux[abi_x86_32]
 		x11-libs/gdk-pixbuf:2[abi_x86_32,X]
