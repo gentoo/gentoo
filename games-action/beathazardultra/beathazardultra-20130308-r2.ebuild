@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: unbundle allegro[gtk...] (no multilib on amd64 and 5.0.9 soname)
@@ -23,7 +23,7 @@ RDEPEND="
 	virtual/opengl
 	amd64? (
 		!bundled-libs? (
-			>=media-libs/libpng-1.2.51:1.2[abi_x86_32(-)]
+			>=media-libs/libpng-compat-1.2.51:1.2[abi_x86_32(-)]
 			>=virtual/jpeg-0-r2[abi_x86_32(-)]
 		)
 		>=x11-libs/gtk+-2.24.23:2[abi_x86_32(-)]
@@ -40,7 +40,7 @@ RDEPEND="
 		x11-libs/libXinerama
 		x11-libs/libXrandr
 		!bundled-libs? (
-			media-libs/libpng:1.2
+			media-libs/libpng-compat:1.2
 			virtual/jpeg
 		)
 	)"
