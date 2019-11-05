@@ -67,8 +67,7 @@ RDEPEND="${CDEPEND}
 
 src_configure() {
 	local myconf=(
-		"$(use_enable doc)"
-		"$(usex doc --full-doc)"
+		"$(usex doc --full-doc --disable-doc)"
 		"$(use_enable nls)"
 		"$(use_enable notmuch)"
 
