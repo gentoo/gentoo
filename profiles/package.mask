@@ -379,7 +379,6 @@ net-libs/openslp
 # the maintainer.
 # Removal in 30 days.  Bug #696252.
 app-benchmarks/volanomark
-app-cdr/mode2cdmaker
 mail-filter/clamsmtp
 sys-auth/pam_require
 
