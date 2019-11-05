@@ -14955,7 +14955,7 @@ net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of pro
 net-libs/libdom 0.3.3-r1: implementation of the W3C DOM, written in C
 net-libs/libecap 0.2.0 1.0.0: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6-r3: lib that implements the client side of the SMTP protocol
-net-libs/libetpan 1.9.3: A portable, efficient middleware for different kinds of mail access
+net-libs/libetpan 1.9.3 1.9.4: A portable, efficient middleware for different kinds of mail access
 net-libs/libflowmanager 3.0.0-r1: A library that measures and reports on packet flows
 net-libs/libgadu 1.11.4 1.12.2: This library implements the client side of the Gadu-Gadu protocol
 net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
