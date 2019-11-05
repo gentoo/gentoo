@@ -407,7 +407,6 @@ net-firewall/shapecfg
 net-irc/dircproxy
 net-irc/jircii
 net-irc/miau
-net-mail/hotwayd
 sys-auth/pam_require
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
