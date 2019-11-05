@@ -129,7 +129,7 @@ src_configure() {
 		# Dependencies are not available (yet?)
 		-Dplugin_modem_manager="false"
 	)
-
+	export CACHE_DIRECTORY="${T}"
 	meson_src_configure
 }
 
