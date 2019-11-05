@@ -378,7 +378,6 @@ net-libs/openslp
 # them to stay, please port them to EAPI 7, and preferably become
 # the maintainer.
 # Removal in 30 days.  Bug #696252.
-app-benchmarks/volanomark
 mail-filter/clamsmtp
 sys-auth/pam_require
 
