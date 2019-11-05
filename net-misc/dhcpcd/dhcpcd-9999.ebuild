@@ -34,9 +34,9 @@ src_configure() {
 		--localstatedir="${EPREFIX}/var"
 		--prefix="${EPREFIX}"
 		--with-hook=ntp.conf
+		$(use_enable debug)
 		$(use_enable embedded)
 		$(use_enable ipv6)
-		$(usex debug --debug '')
 		$(usex elibc_glibc '--with-hook=yp.conf' '')
 		$(usex kernel_linux '--rundir=${EPREFIX}/run' '')
 		$(usex udev '' '--without-dev --without-udev')
