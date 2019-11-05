@@ -418,7 +418,6 @@ net-misc/ng-utils
 net-misc/sendfile
 net-news/yencode
 net-nntp/slrnconf
-net-nntp/ubh
 sys-auth/pam_require
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
