@@ -400,7 +400,6 @@ media-gfx/cthumb
 media-gfx/fblogo
 net-dialup/globespan-adsl
 net-dns/bind-dns-keygen
-net-firewall/fwanalog
 sys-auth/pam_require
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
