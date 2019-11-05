@@ -383,7 +383,6 @@ app-cdr/mode2cdmaker
 app-cdr/xdvdfs-tools
 app-mobilephone/cobex
 app-office/tedia2sql
-app-text/mht-rip
 mail-filter/clamsmtp
 sys-auth/pam_require
 
