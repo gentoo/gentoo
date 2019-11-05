@@ -4814,7 +4814,7 @@ dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib t
 dev-libs/gumbo 0.10.1: The HTML5 parsing algorithm implemented as a pure C99 library
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/hiredis 0.13.3 0.14.0: Minimalistic C client library for the Redis database
-dev-libs/hsa-ext-rocr 1.1.9.112: Proprietary image-support library for Radeon Open Compute
+dev-libs/hsa-ext-rocr 1.1.9.112 1.1.9.122: Proprietary image-support library for Radeon Open Compute
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
 dev-libs/hyperscan 5.1.0 5.1.1 5.2.0: High-performance regular expression matching library
@@ -19430,7 +19430,7 @@ xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the X
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.1: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.10.0: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 2.3.3: Alternate application launcher for Xfce
+xfce-extra/xfce4-whiskermenu-plugin 2.3.3 2.3.4: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r2: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
 xfce-extra/xfdashboard 0.7.5: Maybe a GNOME shell like dashboard for the Xfce desktop environment

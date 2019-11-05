@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Proprietary image-support library for Radeon Open Compute
+EAPI=7
+HOMEPAGE=https://github.com/RadeonOpenCompute/ROCm#closed-source-components
+IUSE=-deprecated
+KEYWORDS=~amd64
+LICENSE=AMD-GPU-PRO-EULA
+RESTRICT=bindist strip
+SLOT=0
+SRC_URI=http://repo.radeon.com/rocm/apt/debian/pool/main/h/hsa-ext-rocr-dev/hsa-ext-rocr-dev_1.1.9-122-ge5c4efb_amd64.deb
+_eclasses_=unpacker	3cd8bad0d31e525cd26be1bfa4e61631
+_md5_=73222d136d8517c4df2d8f49f65af7d2
