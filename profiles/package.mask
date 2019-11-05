@@ -402,7 +402,6 @@ net-dialup/globespan-adsl
 net-dns/bind-dns-keygen
 net-firewall/fwanalog
 net-firewall/fwipsec
-net-firewall/quicktables
 sys-auth/pam_require
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
