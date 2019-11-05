@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
- <!-- maintainer-needed -->
- <longdescription>An interactive, curses-based POP3 mail deleter that allows you to match messages with regexes.</longdescription>
-</pkgmetadata>
