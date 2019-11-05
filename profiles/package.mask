@@ -410,7 +410,6 @@ net-irc/miau
 net-mail/hotwayd
 net-mail/popick
 net-mail/spamcup
-net-mail/yosucker
 sys-auth/pam_require
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
