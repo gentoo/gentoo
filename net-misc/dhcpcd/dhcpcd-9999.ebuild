@@ -7,7 +7,7 @@ inherit systemd toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://roy.marples.name/git/dhcpcd.git"
+	EGIT_REPO_URI="https://roy.marples.name/cgit/dhcpcd.git"
 else
 	MY_P="${P/_alpha/-alpha}"
 	MY_P="${MY_P/_beta/-beta}"
@@ -21,7 +21,7 @@ DESCRIPTION="A fully featured, yet light weight RFC2131 compliant DHCP client"
 HOMEPAGE="https://roy.marples.name/projects/dhcpcd"
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="elibc_glibc +embedded ipv6 kernel_linux +udev"
+IUSE="debug elibc_glibc +embedded ipv6 kernel_linux +udev"
 
 COMMON_DEPEND="udev? ( virtual/udev )"
 DEPEND="${COMMON_DEPEND}"
@@ -36,6 +36,7 @@ src_configure() {
 		--with-hook=ntp.conf
 		$(use_enable embedded)
 		$(use_enable ipv6)
+		$(usex debug --debug '')
 		$(usex elibc_glibc '--with-hook=yp.conf' '')
 		$(usex kernel_linux '--rundir=${EPREFIX}/run' '')
 		$(usex udev '' '--without-dev --without-udev')
