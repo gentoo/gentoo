@@ -405,7 +405,6 @@ net-firewall/fwipsec
 net-firewall/quicktables
 net-firewall/shapecfg
 net-irc/dircproxy
-net-irc/jircii
 sys-auth/pam_require
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
