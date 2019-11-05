@@ -1,7 +1,8 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install postinst prepare unpack
-DEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft
 DESCRIPTION=Simple plaintext presentation tool
-EAPI=6
+EAPI=7
 HOMEPAGE=https://tools.suckless.org/sent/
 IUSE=savedconfig
 LICENSE=MIT
@@ -9,4 +10,4 @@ PROPERTIES=live
 RDEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft !savedconfig? ( media-gfx/farbfeld )
 SLOT=0
 _eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	356fd0a7591e9b51742c209d13b729e1	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=69300e5c195803672b33a3ccfe11e371
+_md5_=6080da427b7212cb251f9fb00841ce77
