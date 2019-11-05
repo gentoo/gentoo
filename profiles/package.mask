@@ -401,7 +401,6 @@ media-gfx/fblogo
 net-dialup/globespan-adsl
 net-dns/bind-dns-keygen
 net-firewall/fwanalog
-net-firewall/fwipsec
 sys-auth/pam_require
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
