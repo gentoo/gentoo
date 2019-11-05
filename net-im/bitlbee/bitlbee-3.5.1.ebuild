@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -114,6 +114,7 @@ src_configure() {
 		--datadir=/usr/share/bitlbee \
 		--etcdir=/etc/bitlbee \
 		--plugindir=/usr/$(get_libdir)/bitlbee \
+		--pcdir=/usr/$(get_libdir)/pkgconfig \
 		--systemdsystemunitdir=$(systemd_get_systemunitdir) \
 		--doc=1 \
 		--strip=0 \
