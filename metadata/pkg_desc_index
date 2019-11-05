@@ -10494,7 +10494,7 @@ dev-texlive/texlive-langportuguese 2019: TeXLive Portuguese
 dev-texlive/texlive-langspanish 2019: TeXLive Spanish
 dev-texlive/texlive-latex 2019: TeXLive LaTeX fundamental packages
 dev-texlive/texlive-latexextra 2019-r2: TeXLive LaTeX additional packages
-dev-texlive/texlive-latexrecommended 2019-r1: TeXLive LaTeX recommended packages
+dev-texlive/texlive-latexrecommended 2019-r2: TeXLive LaTeX recommended packages
 dev-texlive/texlive-luatex 2019: TeXLive LuaTeX packages
 dev-texlive/texlive-mathscience 2019: TeXLive Mathematics, natural sciences, computer science packages
 dev-texlive/texlive-metapost 2019: TeXLive MetaPost and Metafont packages
