@@ -47,7 +47,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# configure does not do very much we do not already control
+	# The configure script does not do very much we do not already control
 	append-cppflags '-DLOCKDIR=\"/run/lock/iptraf-ng\"'
 	tc-export CC
 }
@@ -57,6 +57,7 @@ src_install() {
 
 	doman src/*.8
 	dodoc AUTHORS CHANGES FAQ README* RELEASE-NOTES
+
 	if use doc; then
 		docinto html
 		dodoc -r Documentation/*
