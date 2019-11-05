@@ -13590,7 +13590,7 @@ media-plugins/kodi-pvr-pctv 2.4.5 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 3.4.8 3.4.9 3.4.10 9999: Kodi's Stalker client addon
 media-plugins/kodi-pvr-vbox 4.4.6 4.4.7 4.4.8 4.5.0 4.6.0 4.7.0 9999: Kodi's VBox Home TV Gateway PVR client addon
 media-plugins/kodi-pvr-vdr-vnsi 3.6.2 3.6.3 3.6.3-r1 9999: Kodi PVR addon VNSI
-media-plugins/kodi-pvr-vuplus 3.28.0 3.28.1 3.28.2 3.28.4 3.28.5 3.28.6 3.28.7 3.28.8 9999: Kodi's VuPlus client addon
+media-plugins/kodi-pvr-vuplus 3.28.0 3.28.1 3.28.2 3.28.4 3.28.5 3.28.6 3.28.7 3.28.8 3.28.9 9999: Kodi's VuPlus client addon
 media-plugins/kodi-pvr-wmc 2.4.4 2.4.5 9999: Kodi's Windows Media Center client addon
 media-plugins/kodi-screensaver-asteroids 2.1.0 9999: Asteroids screensaver for Kodi
 media-plugins/kodi-screensaver-biogenesis 1.1.0 2.0.0 9999: Biogenesis screensaver for Kodi
@@ -14479,7 +14479,7 @@ net-analyzer/nessus-agent-bin 7.4.2: A remote security scanner for Linux - agent
 net-analyzer/nessus-bin 8.5.2: A remote security scanner for Linux
 net-analyzer/net-snmp 5.8-r1 5.8-r2 5.8-r4 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
-net-analyzer/netdata 1.18.1 1.18.1-r1 9999: Linux real time system monitoring, done right!
+net-analyzer/netdata 1.18.1-r1 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.3_beta6-r3: An active/passive address reconnaissance tool
 net-analyzer/nethogs 0.8.5-r1: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0-r1: NETI@Home research project from GATech
