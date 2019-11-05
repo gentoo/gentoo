@@ -47,12 +47,11 @@ src_install() {
 	newbashcomp bash_completions epix
 	bashcomp_alias epix flix elaps laps
 	if use doc; then
-		insinto /usr/share/doc/${PF}
-		doins doc/*gz
+		dodoc doc/*gz
 	fi
 	if use examples; then
-		cd samples
-		insinto /usr/share/doc/${PF}/examples
+		cd samples || die
+		docinto examples
 		doins *.xp *.flx *c *h README
 	fi
 }
