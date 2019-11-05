@@ -3292,6 +3292,7 @@ games-engines/renpy:development - Install IDE for game developers and an empty g
 games-engines/residualvm:mpeg2 - enable mpeg2 codec for cutscenes
 games-engines/scummvm:fluidsynth - compile with support for fluidsynth
 games-engines/scummvm:mpeg2 - enable mpeg2 codec for cutscenes
+games-engines/scummvm:net - enable cloud support via media-libs/sdl2-net
 games-engines/scummvm:speech - enable text-to-speech support through app-accessibility/speech-dispatcher
 games-engines/scummvm:unsupported - enable unsupported and/or broken game engines (you're on your own)
 games-engines/solarus:doc - Install doxygen developer documentation.
