@@ -395,7 +395,6 @@ mail-client/biabam
 mail-client/pinepgp
 mail-filter/clamassassin
 mail-filter/clamsmtp
-mail-filter/disspam
 sys-auth/pam_require
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
