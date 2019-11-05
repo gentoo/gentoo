@@ -15,7 +15,7 @@ LICENSE="Quartus-prime-megacore"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="media-libs/libpng:1.2"
+RDEPEND="media-libs/libpng-compat:1.2"
 
 RESTRICT="fetch bindist"
 
