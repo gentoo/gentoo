@@ -13,6 +13,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="app-misc/jq
 	>=dev-python/pyyaml-3.11[${PYTHON_USEDEP}]
