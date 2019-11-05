@@ -9,12 +9,9 @@ MY_PV="$(ver_cut 4)"
 DESCRIPTION="WPS Office is an office productivity suite"
 HOMEPAGE="http://www.wps.cn/product/wpslinux/ http://wps-community.org/"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
-SRC_URI="
-	amd64? ( http://kdl.cc.ksosoft.com/wps-community/download/${MY_PV}/${PN}_${PV}_amd64.deb )
-	x86? ( http://kdl.cc.ksosoft.com/wps-community/download/${MY_PV}/${PN}_${PV}_i386.deb )
-"
+SRC_URI="http://kdl.cc.ksosoft.com/wps-community/download/${MY_PV}/${PN}_${PV}_amd64.deb"
 
 SLOT="0"
 RESTRICT="strip mirror" # mirror as explained at bug #547372
@@ -37,7 +34,7 @@ RDEPEND="
 	dev-libs/glib:2
 	sys-libs/zlib:0
 	net-print/cups
-	media-libs/libpng:1.2
+	media-libs/libpng-compat:1.2
 	virtual/glu
 
 	dev-libs/libpcre:3
