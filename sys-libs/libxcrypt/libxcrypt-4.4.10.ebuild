@@ -17,6 +17,9 @@ IUSE="split-usr test"
 BDEPEND="sys-apps/findutils
 	test? ( ${PYTHON_DEPS} )"
 
+# Gentoo CI complained about not having this
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	"${FILESDIR}/libxcrypt-4.4.10-pythonver.patch"
 )
