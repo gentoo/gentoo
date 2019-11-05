@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit linux-info meson python-single-r1 vala xdg
+inherit linux-info meson python-single-r1 vala xdg toolchain-funcs
 
 DESCRIPTION="Aims to make updating firmware on Linux automatic, safe and reliable"
 HOMEPAGE="https://fwupd.org"
@@ -87,6 +87,8 @@ RDEPEND="
 "
 
 pkg_setup() {
+	tc-ld-disable-gold # bug https://github.com/fwupd/fwupd/issues/1530
+
 	python-single-r1_pkg_setup
 	if use nvme; then
 		kernel_is -ge 4 4 || die "NVMe support requires kernel >= 4.4"
