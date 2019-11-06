@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=5
 
 FOX_COMPONENT="utils"
 FOX_PV="1.6.40"
