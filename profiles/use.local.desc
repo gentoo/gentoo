@@ -207,6 +207,7 @@ app-antivirus/clamav:clamsubmit - A tool to submit false positives / negatives
 app-antivirus/clamav:libclamav-only - Bypass building of libfreshclam and the ClamAV CLI applications.
 app-antivirus/clamav:metadata-analysis-api - Enables collection of file property metadata using ClamAV API for analysis by ClamAV bytecode programs.
 app-antivirus/clamav:xml - DMG and XAR support
+app-antivirus/clamav-unofficial-sigs:cron - Install an hourly cron job to /etc/cron.d that runs the updates as the clamav user (instead of root), with an appropriate home directory and shell. The same cron job is installed as documentation when this flag is disabled.
 app-antivirus/clamtk:kde - Install the Dolphin plugin.
 app-antivirus/clamtk:nautilus - Install the Nautilus plugin.
 app-antivirus/clamtk:nemo - Install the Nemo plugin.
