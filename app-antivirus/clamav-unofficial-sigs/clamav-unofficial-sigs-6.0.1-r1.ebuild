@@ -7,12 +7,12 @@ inherit user
 
 DESCRIPTION="Download and install third-party clamav signatures"
 HOMEPAGE="https://github.com/extremeshok/${PN}"
-SRC_URI="https://github.com/extremeshok/clamav-unofficial-sigs/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="cron"
 
 # The script relies on either net-misc/socat, or Perl's
 # IO::Socket::UNIX. We already depend on Perl, and Gentoo's Perl ships
@@ -41,6 +41,17 @@ src_install() {
 
 	doman "${FILESDIR}/${PN}.8"
 	dodoc README.md
+
+	if use cron; then
+		# Beware, this directory is not completely standard. However,
+		# we need this to run as "clamav" with a non-default shell and
+		# home directory (bug 694054), and this seems like the most
+		# reliable way to accomplish that.
+		insinto "/etc/cron.d"
+		newins "${FILESDIR}/${PN}.crond" "${PN}"
+	else
+		dodoc "${FILESDIR}/${PN}.crond"
+	fi
 }
 
 pkg_preinst() {
