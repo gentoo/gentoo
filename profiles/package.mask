@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-11-06)
+# Unmaintained.  EAPI 0.  Last revdep gone.
+# Removal in 30 days.  Bug #699438.
+net-mail/pflogsumm
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-11-05)
 # Ships broken libssh-config module breaking build of revdeps, bug #698940
 =net-libs/libssh-0.9.1
