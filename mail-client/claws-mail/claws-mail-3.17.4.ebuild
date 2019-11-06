@@ -21,6 +21,7 @@ SLOT="0"
 LICENSE="GPL-3"
 
 IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ipv6 ldap +libcanberra +libindicate +libnotify litehtml networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+
 REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
 	libnotify? ( notification )
@@ -105,7 +106,12 @@ RDEPEND="${COMMONDEPEND}
 	rss? (
 		dev-libs/libxml2
 		net-misc/curl
-	)"
+	)
+"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-libetpan_pkgconfig.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
