@@ -15781,7 +15781,7 @@ net-wireless/soapysdr 0.7.1 9999: vendor and platform neutral SDR support librar
 net-wireless/soapysdrplay 0.1.0 0.2.0 9999: Soapy SDR plugin for SDRPlay
 net-wireless/soapyuhd 0.3.6 9999: Soapy SDR plugins for UHD supported SDR devices
 net-wireless/spectools 2011.08.1-r2 2011.08.1_p20140618-r1 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
-net-wireless/srslte 19.06: Open source SDR LTE software suite from Software Radio Systems
+net-wireless/srslte 19.09: Open source SDR LTE software suite from Software Radio Systems
 net-wireless/ubertooth 2018.08.1 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.10.3.0 3.11.0.0 3.12.0.0 3.13.0.1 3.13.1.0 3.14.0.0 3.14.1.1: Universal Software Radio Peripheral (USRP) Hardware Driver
 net-wireless/unifi 5.6.42-r1 5.11.50 5.11.52 5.12.19 5.12.22: A Management Controller for Ubiquiti Networks UniFi APs
