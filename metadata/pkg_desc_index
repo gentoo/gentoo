@@ -1109,7 +1109,7 @@ app-doc/devmanual 0_pre20141116 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.14-r1 1.8.14-r2 1.8.15 1.8.16 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
-app-doc/eclass-manpages 20190728 20190908 99999999: Collection of Gentoo eclass manpages
+app-doc/eclass-manpages 20190908 99999999: Collection of Gentoo eclass manpages
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.10.03 4.10.05: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.8.2: GNU Image Manipulation Program help files
