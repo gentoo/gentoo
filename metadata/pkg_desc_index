@@ -4769,7 +4769,7 @@ dev-libs/double-conversion 3.1.4-r1: Binary-decimal and decimal-binary conversio
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.16.0: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
-dev-libs/efl 1.22.2 1.22.6 1.23.1 1.23.2: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.22.6 1.23.2: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.176-r1 0.177: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.9 0.20 0.21 0.22 0.23 0.24 0.25 0.26 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
