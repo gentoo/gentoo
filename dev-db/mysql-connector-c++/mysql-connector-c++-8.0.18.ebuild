@@ -28,13 +28,15 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/${P}-src"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-8.0.15-fix-build.patch"
+	"${FILESDIR}/${PN}-8.0.18-fix-build.patch"
 )
 
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_SSL=system
 		-DWITH_JDBC=$(usex legacy ON OFF)
+		$(usex legacy '-DMYSQLCLIENT_STATIC_BINDING=0' '')
+		$(usex legacy '-DMYSQLCLIENT_STATIC_LINKING=0' '')
 	)
 
 	cmake-utils_src_configure
