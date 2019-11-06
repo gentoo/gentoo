@@ -15751,7 +15751,7 @@ net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
 net-wireless/mfoc 0.10.7: Mifare Classic Offline Cracker
 net-wireless/mousejack 0.0_p20160726-r1: Firmware and research tools for nRF24LU1+ based USB dongles and breakout boards
 net-wireless/multimode 1.4_p20140831-r1 9999: multimode radio decoder for rtl-sdr devices using gnuradio
-net-wireless/nanovna-saver 9999: tool for reading, displaying and saving data from the NanoVNA
+net-wireless/nanovna-saver 0.1.5 9999: tool for reading, displaying and saving data from the NanoVNA
 net-wireless/ndiswrapper 1.61: Wrapper for using Windows drivers for some wireless cards
 net-wireless/neard 0.15-r1: Near Field Communication (NFC) management daemon
 net-wireless/openbsc 9999: OpenBSC, OsmoSGSN, OsmoBSC and other programs
@@ -18289,7 +18289,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.2.4: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.1: Web-based interactive data analytics notebook launcher
-www-client/chromium 78.0.3904.87 79.0.3945.8: Open-source version of Google Chrome web browser
+www-client/chromium 78.0.3904.87 79.0.3945.16: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.4 3.30.5 3.32.4 3.32.5: GNOME webbrowser based on Webkit
