@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit user
+inherit user systemd
 
 DESCRIPTION="Download and install third-party clamav signatures"
 HOMEPAGE="https://github.com/extremeshok/${PN}"
@@ -52,6 +52,11 @@ src_install() {
 	else
 		dodoc "${FILESDIR}/${PN}.crond"
 	fi
+
+	# Install the systemd service and timer unconditionally, because
+	# the timer is disabled by default (and won't annoy people until
+	# after they've configured the script).
+	systemd_dounit "${FILESDIR}/${PN}".{service,timer}
 }
 
 pkg_preinst() {
