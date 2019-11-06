@@ -4,6 +4,14 @@
   <maintainer type="person">
     <email>mjo@gentoo.org</email>
   </maintainer>
+    <use>
+      <flag name="cron">
+        Install an hourly cron job to /etc/cron.d that runs the
+        updates as the clamav user (instead of root), with an
+        appropriate home directory and shell. The same cron job
+        is installed as documentation when this flag is disabled.
+      </flag>
+    </use>
   <upstream>
     <remote-id type="sourceforge">unofficial-sigs</remote-id>
     <remote-id type="github">extremeshok/clamav-unofficial-sigs</remote-id>
