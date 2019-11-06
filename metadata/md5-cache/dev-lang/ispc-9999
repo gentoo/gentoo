@@ -8,5 +8,5 @@ LICENSE=BSD BSD-2 UoI-NCSA
 PROPERTIES=live
 RDEPEND=>=sys-devel/clang-3.0:* >=sys-devel/llvm-3.0:*
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	25291c381052933ddf86bcffbfaff2ed	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	25291c381052933ddf86bcffbfaff2ed	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=1b7acdf976bfec937113ed25dfb40482

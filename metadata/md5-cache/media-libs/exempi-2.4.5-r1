@@ -10,5 +10,5 @@ LICENSE=BSD
 RDEPEND=>=dev-libs/expat-2:= sys-libs/zlib virtual/libiconv
 SLOT=2/3
 SRC_URI=https://libopenraw.freedesktop.org/download/exempi-2.4.5.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=1390bae3240e008fa8cc3fc539d23b93

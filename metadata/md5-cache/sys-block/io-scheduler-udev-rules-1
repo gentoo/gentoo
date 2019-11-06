@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/udev
 SLOT=0
 SRC_URI=https://gitlab.com/pachoramos/io-scheduler-udev-rules/-/archive/1/io-scheduler-udev-rules-1.tar.bz2
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=aad4daa649bd126cb12daaf3fbac3291

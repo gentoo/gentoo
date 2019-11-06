@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=sys-devel/bin86
 SLOT=0
 SRC_URI=http://v3.sk/~lkundrak/dev86/Dev86src-0.16.21.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=c8d2f4af7b7f1f6d320414a566ee80b1

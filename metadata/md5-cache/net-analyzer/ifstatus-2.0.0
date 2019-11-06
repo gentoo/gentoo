@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-libs/ncurses-4.2:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/ifstatus/ifstatus-v2.0.0.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=9efd4f0708896c124269fa85e05cb6eb

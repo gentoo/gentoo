@@ -10,5 +10,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=app-emulation/spice-protocol-0.14.0 media-libs/alsa-lib >=x11-libs/libpciaccess-0.10 x11-libs/libdrm x11-libs/libXfixes x11-libs/libXrandr x11-libs/libX11 x11-libs/libXinerama consolekit? ( sys-auth/consolekit sys-apps/dbus ) gtk? ( x11-libs/gtk+:3 ) systemd? ( sys-apps/systemd ) selinux? ( sec-policy/selinux-vdagent )
 SLOT=0
 SRC_URI=https://www.spice-space.org/download/releases/spice-vdagent-0.19.0.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=234904a75c9388d1708b20fb7654106e

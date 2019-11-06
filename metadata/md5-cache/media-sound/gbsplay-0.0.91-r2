@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=alsa? ( media-libs/alsa-lib:0 ) nas? ( media-libs/nas:0 )
 SLOT=0
 SRC_URI=mirror://gentoo/gbsplay-0.0.91.tar.gz
-_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=3c79abad2acff34858a79180fd58920b

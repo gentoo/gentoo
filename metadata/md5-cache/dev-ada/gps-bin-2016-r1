@@ -10,5 +10,5 @@ RDEPEND=ada_target_gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) dev-ada/gnatcoll[ada_t
 REQUIRED_USE=ada_target_gnat_2016
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/5739cefdc7a447658e0b016b -> gnat-gpl-2016-x86_64-linux-bin.tar.gz
-_eclasses_=ada	9205d12ceb057a9282bea2a773e7c681	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=ada	9205d12ceb057a9282bea2a773e7c681	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=384ff76255a627110eb4e0b77a1483de

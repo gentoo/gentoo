@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=app-crypt/gnupg dev-lang/perl net-dns/bind-tools || ( net-misc/wget net-misc/curl )
 SLOT=0
 SRC_URI=https://github.com/extremeshok/clamav-unofficial-sigs/archive/6.0.1.tar.gz -> clamav-unofficial-sigs-6.0.1.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
 _md5_=b73fb7e4837a9cfc3c8d569439547dd2

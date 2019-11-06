@@ -11,5 +11,5 @@ REQUIRED_USE=designer? ( qt5 ) qml? ( qt5 ) sensors? ( qt5 ) serialport? ( qt5 )
 RESTRICT=test
 SLOT=0/78
 SRC_URI=https://www.aquamaniac.de/rdm/attachments/download/202/gwenhywfar-4.99.22rc6.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=797bf35e8bb087b0e05e4f494f3bda79

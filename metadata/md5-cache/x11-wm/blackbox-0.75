@@ -10,5 +10,5 @@ LICENSE=MIT
 RDEPEND=x11-libs/libXft x11-libs/libXt nls? ( >=sys-devel/gettext-0.20 ) truetype? ( media-libs/freetype )
 SLOT=0
 SRC_URI=https://github.com/bbidulock/blackboxwm/archive/0.75.tar.gz -> blackbox-0.75.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=ff9cd775064f6fe22280626b6c90b197

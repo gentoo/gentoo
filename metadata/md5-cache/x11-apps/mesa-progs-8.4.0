@@ -9,5 +9,5 @@ LICENSE=LGPL-2
 RDEPEND=media-libs/mesa[egl?,gles2?] virtual/opengl x11-libs/libX11
 SLOT=0
 SRC_URI=https://mesa.freedesktop.org/archive/demos/mesa-demos-8.4.0.tar.bz2 https://mesa.freedesktop.org/archive/demos/8.4.0/mesa-demos-8.4.0.tar.bz2
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=69fcce3fe5ce54f272114edb9e9cbb48

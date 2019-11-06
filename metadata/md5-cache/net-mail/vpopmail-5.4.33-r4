@@ -11,5 +11,5 @@ RDEPEND=acct-group/vpopmail virtual/qmail maildrop? ( mail-filter/maildrop ) mys
 REQUIRED_USE=mysql? ( !postgres )
 SLOT=0
 SRC_URI=mirror://sourceforge/vpopmail/vpopmail-5.4.33.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmail	a8f96aa715f96082a61d6815f5968c5b	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmail	a8f96aa715f96082a61d6815f5968c5b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=5da87193507194d7d1cfa2f2ca86fc76

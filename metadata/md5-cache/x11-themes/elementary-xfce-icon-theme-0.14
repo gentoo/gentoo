@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=public-domain GPL-1 GPL-2 GPL-3
 SLOT=0
 SRC_URI=https://github.com/shimmerproject/elementary-xfce/archive/v0.14.tar.gz -> elementary-xfce-0.14.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=7ed366b404c09062a0c974163daaa2cd

@@ -8,5 +8,5 @@ LICENSE=MIT
 PROPERTIES=live
 RDEPEND=dev-perl/Monitoring-Plugin sys-apps/portage dev-perl/Time-Duration dev-perl/TimeDate smart? ( sys-apps/smartmontools app-admin/sudo ) samba? ( dev-perl/Filesys-SmbClient )
 SLOT=0
-_eclasses_=git-2	3aabf18eba60687bbe6855eba271f688	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
+_eclasses_=git-2	3aabf18eba60687bbe6855eba271f688	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=5e2dfe9d40792b608428995b82af2be9

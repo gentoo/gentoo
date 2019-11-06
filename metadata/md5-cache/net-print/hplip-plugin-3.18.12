@@ -9,5 +9,5 @@ RDEPEND=~net-print/hplip-3.18.12 virtual/udev
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://developers.hp.com/sites/default/files/hplip-3.18.12-plugin.run
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	udev	452708c3f55cf6e918b045adb949a9e6	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
 _md5_=027c49b47bcc3240c3bf9390d5aa12bd
