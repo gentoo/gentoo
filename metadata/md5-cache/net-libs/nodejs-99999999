@@ -1,14 +1,14 @@
-BDEPEND=|| ( dev-lang/python:3.7[threads] dev-lang/python:3.6[threads] dev-lang/python:3.5[threads] >=dev-lang/python-2.7.5-r2:2.7[threads] ) systemtap? ( dev-util/systemtap ) test? ( net-misc/curl ) >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=|| ( dev-lang/python:3.7[threads(+)] dev-lang/python:3.6[threads(+)] dev-lang/python:3.5[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) systemtap? ( dev-util/systemtap ) test? ( net-misc/curl ) >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst prepare pretend setup test unpack
-DEPEND=>=dev-libs/libuv-1.33.1:= >=net-dns/c-ares-1.15.0 >=net-libs/http-parser-2.9.0:= >=net-libs/nghttp2-1.39.2 sys-libs/zlib icu? ( >=dev-libs/icu-64.2:= ) ssl? ( >=dev-libs/openssl-1.1.1:0= )
+DEPEND=>=dev-libs/libuv-1.33.1:= >=net-dns/c-ares-1.15.0 >=net-libs/nghttp2-1.39.2 sys-libs/zlib icu? ( >=dev-libs/icu-64.2:= ) ssl? ( >=dev-libs/openssl-1.1.1:0= )
 DESCRIPTION=A JavaScript runtime built on Chrome's V8 JavaScript engine
 EAPI=7
 HOMEPAGE=https://nodejs.org/
 IUSE=cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap test
 LICENSE=Apache-1.1 Apache-2.0 BSD BSD-2 MIT
 PROPERTIES=live
-RDEPEND=>=dev-libs/libuv-1.33.1:= >=net-dns/c-ares-1.15.0 >=net-libs/http-parser-2.9.0:= >=net-libs/nghttp2-1.39.2 sys-libs/zlib icu? ( >=dev-libs/icu-64.2:= ) ssl? ( >=dev-libs/openssl-1.1.1:0= )
+RDEPEND=>=dev-libs/libuv-1.33.1:= >=net-dns/c-ares-1.15.0 >=net-libs/nghttp2-1.39.2 sys-libs/zlib icu? ( >=dev-libs/icu-64.2:= ) ssl? ( >=dev-libs/openssl-1.1.1:0= )
 REQUIRED_USE=inspector? ( icu ssl ) npm? ( ssl )
 SLOT=0
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	25291c381052933ddf86bcffbfaff2ed	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=5288a4fefea0f0314d4db23d60b97437
+_md5_=2c7897d9a9dc9139be5a843d5910090b
