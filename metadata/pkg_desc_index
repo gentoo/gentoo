@@ -4594,7 +4594,7 @@ dev-lang/bas 2.4: An interpreter for the classic dialect of the programming lang
 dev-lang/bashforth 0.58a: String-threaded Forth interpreter in Bash
 dev-lang/bff 1.0.5: A brainfuck interpreter
 dev-lang/c-intercal 30.0 31.0: C-INTERCAL - INTERCAL to binary (via C) compiler
-dev-lang/cfortran 4.4-r2 4.4-r3: Header file allowing to call Fortran routines from C and C++
+dev-lang/cfortran 4.4-r3: Header file allowing to call Fortran routines from C and C++
 dev-lang/cilk 5.4.6-r1 5.4.6-r2: Language for multithreaded parallel programming based on ANSI C
 dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.8.0 1.9.0-r1 1.10.0: General-purpose programming language with an emphasis on functional programming
@@ -5053,7 +5053,7 @@ dev-libs/log4cplus 1.2.0: C++ port of the Log for Java (log4j) logging library
 dev-libs/log4cpp 1.1 1.1.3: C++ classes for flexible logging to files, syslog and other destinations
 dev-libs/log4cxx 0.10.0-r1: Library of C++ classes for logging to files, syslog and other destinations
 dev-libs/log4sh 1.4.2: A flexible logging framework for shell scripts
-dev-libs/luise-bin 0.1.1 0.1.1-r1: Programming interface for the Wallbraun LCD-USB-Interface
+dev-libs/luise-bin 0.1.1-r1: Programming interface for the Wallbraun LCD-USB-Interface
 dev-libs/lzo 2.10: An extremely fast compression and decompression library
 dev-libs/m17n-lib 1.7.0 1.8.0: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
@@ -14745,7 +14745,7 @@ net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shel
 net-ftp/filezilla 3.39.0 3.42.1 3.43.0 3.44.1 3.44.2 3.45.0 3.45.1: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client
-net-ftp/ftpbase 0.01-r2 0.01-r3: FTP layout package
+net-ftp/ftpbase 0.01-r3: FTP layout package
 net-ftp/gftp 2.0.19-r3: Gnome based FTP Client
 net-ftp/gproftpd 8.3.2-r1: GTK frontend to proftpd
 net-ftp/lftp 4.8.4-r1 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
@@ -17444,7 +17444,7 @@ sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shim 15.5-r1: Fedora's signed UEFI shim
 sys-boot/shlilo-lantank 20040408: bootloader for the SuperH Lantank
 sys-boot/silo 1.4.14_p20120819-r1 1.4.14_p20170829: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
-sys-boot/syslinux 4.07 5.10 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
+sys-boot/syslinux 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/systemd-boot 241 243: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/tboot 1.9.6_p20171118: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015-r1 2018 2018-r1: Tianocore UEFI Development kit
