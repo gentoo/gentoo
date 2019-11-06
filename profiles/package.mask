@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-11-06)
+# EAPI 0.  Last bumped in 2008.  Homepage gone.
+# Removal in 30 days.  Bug #697156.
+www-apps/mod_survey
+
+# Michał Górny <mgorny@gentoo.org> (2019-11-06)
 # EAPI 0.  Last bumped in 2005.  Homepage gone.
 # Removal in 30 days.  Bug #697154.
 www-apps/drraw
