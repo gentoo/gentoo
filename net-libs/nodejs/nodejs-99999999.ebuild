@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-PYTHON_REQ_USE="threads"
+PYTHON_REQ_USE="threads(+)"
 inherit bash-completion-r1 flag-o-matic git-r3 pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
@@ -22,7 +22,6 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/libuv-1.33.1:=
 	>=net-dns/c-ares-1.15.0
-	>=net-libs/http-parser-2.9.0:=
 	>=net-libs/nghttp2-1.39.2
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-64.2:= )
@@ -93,8 +92,7 @@ src_configure() {
 	xdg_environment_reset
 
 	local myconf=(
-		--shared-cares --shared-http-parser --shared-libuv --shared-nghttp2
-		--shared-zlib
+		--shared-cares --shared-libuv --shared-nghttp2 --shared-zlib
 	)
 	use debug && myconf+=( --debug )
 	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
@@ -144,11 +142,6 @@ src_install() {
 	done
 
 	if use doc; then
-		# Patch docs to make them offline readable
-		for i in `grep -rl 'fonts.googleapis.com' "${S}"/out/doc/api/*`; do
-			sed -i '/fonts.googleapis.com/ d' $i;
-		done
-		# Install docs
 		docinto html
 		dodoc -r "${S}"/doc/*
 	fi
