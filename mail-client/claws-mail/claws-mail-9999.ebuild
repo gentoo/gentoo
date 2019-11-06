@@ -106,7 +106,8 @@ RDEPEND="${COMMONDEPEND}
 	rss? (
 		dev-libs/libxml2
 		net-misc/curl
-	)"
+	)
+"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -211,18 +212,10 @@ src_install() {
 	rm -f "${ED}"/usr/lib*/claws-mail/plugins/*.{a,la}
 }
 
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
 pkg_postinst() {
 	ewarn "When upgrading from version 3.9.0 or below some changes have happened:"
 	ewarn "- There are no individual plugins in mail-client/claws-mail-* anymore, but they are integrated mostly controlled through USE flags"
 	ewarn "- Plugins with no special dependencies are just built and can be loaded through the interface"
 	ewarn "- The gtkhtml2 and trayicon plugins have been dropped entirely"
 	xdg_pkg_postinst
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }
