@@ -1,0 +1,185 @@
+From 5c3bbbd845fe38a125553c62976c1165b2d9b8d7 Mon Sep 17 00:00:00 2001
+From: Thirunarayanan Balathandayuthapani <thiru@mariadb.com>
+Date: Wed, 6 Nov 2019 10:20:32 +0530
+Subject: [PATCH] MDEV-20987 InnoDB fails to start when fts table has FK
+ relation
+
+InnoDB: Assertion failure in file .../dict/dict0dict.cc line ...
+InnoDB: Failing assertion: table->can_be_evicted
+
+This fixes a regression that was caused by the fix of MDEV-20621
+(commit a41d429765c7ddb528b9b438c68b25ff55d3bd55).
+MySQL 5.6 (and MariaDB 10.0) introduced eviction of tables from
+the InnoDB data dictionary cache. Tables that are connected to
+FOREIGN KEY constraints or FULLTEXT INDEX are exempt of the eviction.
+With the problematic change, a table that would already be exempt
+from eviction due to FOREIGN KEY would cause the problem if there
+also was a FULLTEXT INDEX defined on it.
+
+dict_load_table(): Only prevent eviction if table->can_be_evicted holds.
+---
+ .../suite/innodb_fts/r/innodb_fts_misc.result | 21 ++++++----------
+ .../suite/innodb_fts/t/innodb_fts_misc.test   | 24 +++++++------------
+ storage/innobase/dict/dict0load.cc            |  2 +-
+ storage/xtradb/dict/dict0load.cc              |  2 +-
+ 4 files changed, 17 insertions(+), 32 deletions(-)
+
+diff --git a/mysql-test/suite/innodb_fts/r/innodb_fts_misc.result b/mysql-test/suite/innodb_fts/r/innodb_fts_misc.result
+index 71eded74be46..a2a73840723d 100644
+--- a/mysql-test/suite/innodb_fts/r/innodb_fts_misc.result
++++ b/mysql-test/suite/innodb_fts/r/innodb_fts_misc.result
+@@ -1,4 +1,3 @@
+-drop table if exists t1;
+ CREATE TABLE t1 (
+ id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+ a VARCHAR(200),
+@@ -415,7 +414,6 @@ AGAINST ('"following database"@10' IN BOOLEAN MODE);
+ id
+ 105
+ DROP TABLE t1;
+-drop table if exists t50;
+ set names utf8;
+ "----------Test1---------"
+ create table t50 (s1 varchar(60) character set utf8 collate utf8_bin) engine = innodb;
+@@ -670,9 +668,6 @@ s1
+ ŁŁŁŁ
+ LLLL
+ ŁŁŁŁ ŁŁŁŁ
+-DROP TABLE if EXISTS t2;
+-Warnings:
+-Note	1051	Unknown table 'test.t2'
+ CREATE TABLE t2 (s1 VARCHAR(60) CHARACTER SET UTF8 COLLATE UTF8_POLISH_CI) ENGINE = InnoDB;
+ CREATE FULLTEXT INDEX i ON t2 ( s1);
+ Warnings:
+@@ -739,7 +734,12 @@ ALTER TABLE t2 DROP a;
+ SET @@autocommit=0;
+ CREATE FULLTEXT INDEX i ON t1 (char_column);
+ INSERT INTO t1 values (1,'aaa');
+-"restart server..."
++CREATE TABLE mdev20987_1(f1 INT NOT NULL, PRIMARY KEY(f1))ENGINE=InnoDB;
++CREATE TABLE mdev20987_2(f1 INT NOT NULL, f2 CHAR(100),
++FULLTEXT(f2),
++FOREIGN KEY(f1) REFERENCES mdev20987_1(f1))ENGINE=InnoDB;
++INSERT INTO mdev20987_1 VALUES(1);
++INSERT INTO mdev20987_2 VALUES(1, 'mariadb');
+ SHOW CREATE TABLE t2;
+ Table	Create Table
+ t2	CREATE TABLE `t2` (
+@@ -747,12 +747,8 @@ t2	CREATE TABLE `t2` (
+   PRIMARY KEY (`FTS_DOC_ID`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+ DELETE FROM t1 WHERE MATCH(char_column) AGAINST ('bbb');
+-SET @@autocommit=1;
+-DROP TABLE t1, t2;
++DROP TABLE t1, t2, mdev20987_2, mdev20987_1;
+ "----------Test28---------"
+-drop table if exists `fts_test`;
+-Warnings:
+-Note	1051	Unknown table 'test.fts_test'
+ create table `fts_test`(`a` text,fulltext key(`a`))engine=innodb;
+ set session autocommit=0;
+ insert into `fts_test` values ('');
+@@ -942,9 +938,6 @@ id	title	body
+ 2	How To Use MySQL Well	After you went through a ...
+ 3	Optimizing MySQL	In this tutorial we will show ...
+ DROP TABLE articles;
+-drop table if exists t1;
+-Warnings:
+-Note	1051	Unknown table 'test.t1'
+ create table t1 (FTS_DOC_ID bigint unsigned auto_increment not null primary key,
+ title varchar(200),body text,fulltext(title,body)) engine=innodb;
+ insert into t1 set body='test';
+diff --git a/mysql-test/suite/innodb_fts/t/innodb_fts_misc.test b/mysql-test/suite/innodb_fts/t/innodb_fts_misc.test
+index e226b2769664..2e8ff4ea48e2 100644
+--- a/mysql-test/suite/innodb_fts/t/innodb_fts_misc.test
++++ b/mysql-test/suite/innodb_fts/t/innodb_fts_misc.test
+@@ -5,10 +5,6 @@
+ let collation=UTF8_UNICODE_CI;
+ --source include/have_collation.inc
+ 
+---disable_warnings
+-drop table if exists t1;
+---enable_warnings
+-
+ # Create FTS table
+ CREATE TABLE t1 (
+         id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+@@ -401,10 +397,6 @@ DROP TABLE t1;
+ #------------------------------------------------------------------------------
+ # More FTS test from peter's testing
+ #------------------------------------------------------------------------------
+---disable_warnings
+-drop table if exists t50;
+---enable_warnings
+-
+ set names utf8;
+ 
+ 
+@@ -606,7 +598,6 @@ CREATE FULLTEXT INDEX i ON t1 (s1);
+ INSERT INTO t1 VALUES
+ ('a'),('b'),('c'),('d'),('ŁŁŁŁ'),('LLLL'),(NULL),('ŁŁŁŁ ŁŁŁŁ'),('LLLLLLLL');
+ SELECT * FROM t1 WHERE MATCH(s1) AGAINST ('LLLL' COLLATE UTF8_UNICODE_520_CI);
+-DROP TABLE if EXISTS t2;
+ CREATE TABLE t2 (s1 VARCHAR(60) CHARACTER SET UTF8 COLLATE UTF8_POLISH_CI) ENGINE = InnoDB;
+ CREATE FULLTEXT INDEX i ON t2 ( s1);
+ INSERT INTO t2 VALUES
+@@ -672,16 +663,19 @@ ALTER TABLE t2 DROP a;
+ SET @@autocommit=0;
+ CREATE FULLTEXT INDEX i ON t1 (char_column);
+ INSERT INTO t1 values (1,'aaa');
+-echo "restart server...";
+-# Restart the server
++
++CREATE TABLE mdev20987_1(f1 INT NOT NULL, PRIMARY KEY(f1))ENGINE=InnoDB;
++CREATE TABLE mdev20987_2(f1 INT NOT NULL, f2 CHAR(100),
++                FULLTEXT(f2),
++                FOREIGN KEY(f1) REFERENCES mdev20987_1(f1))ENGINE=InnoDB;
++INSERT INTO mdev20987_1 VALUES(1);
++INSERT INTO mdev20987_2 VALUES(1, 'mariadb');
+ --source include/restart_mysqld.inc
+ SHOW CREATE TABLE t2;
+ DELETE FROM t1 WHERE MATCH(char_column) AGAINST ('bbb');
+-SET @@autocommit=1;
+-DROP TABLE t1, t2;
++DROP TABLE t1, t2, mdev20987_2, mdev20987_1;
+ 
+ --echo "----------Test28---------"
+-drop table if exists `fts_test`;
+ create table `fts_test`(`a` text,fulltext key(`a`))engine=innodb;
+ set session autocommit=0;
+ insert into `fts_test` values ('');
+@@ -870,8 +864,6 @@ DROP TABLE articles;
+ # Test for Bug 13940669 - 64901: INNODB: ASSERTION FAILURE IN
+ # THREAD 34387022112 IN FILE REM0CMP.CC LINE 5
+ 
+-drop table if exists t1;
+-
+ create table t1 (FTS_DOC_ID bigint unsigned auto_increment not null primary key,
+ title varchar(200),body text,fulltext(title,body)) engine=innodb;
+ 
+diff --git a/storage/innobase/dict/dict0load.cc b/storage/innobase/dict/dict0load.cc
+index 3a6851cff892..484c4c5e9669 100644
+--- a/storage/innobase/dict/dict0load.cc
++++ b/storage/innobase/dict/dict0load.cc
+@@ -2551,7 +2551,7 @@ dict_load_table(
+ 			fts_free(table);
+ 		} else if (fts_optimize_wq) {
+ 			fts_optimize_add_table(table);
+-		} else {
++		} else if (table->can_be_evicted) {
+ 			/* fts_optimize_thread is not started yet.
+ 			So make the table as non-evictable from cache. */
+ 			dict_table_move_from_lru_to_non_lru(table);
+diff --git a/storage/xtradb/dict/dict0load.cc b/storage/xtradb/dict/dict0load.cc
+index 292a1752771d..531174bc11fe 100644
+--- a/storage/xtradb/dict/dict0load.cc
++++ b/storage/xtradb/dict/dict0load.cc
+@@ -2573,7 +2573,7 @@ dict_load_table(
+ 			fts_free(table);
+ 		} else if (fts_optimize_wq) {
+ 			fts_optimize_add_table(table);
+-		} else {
++		} else if (table->can_be_evicted) {
+ 			/* fts_optimize_thread is not started yet.
+ 			So make the table as non-evictable from cache. */
+ 			dict_table_move_from_lru_to_non_lru(table);
