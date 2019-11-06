@@ -31,5 +31,5 @@ src_compile() {
 }
 
 src_install() {
-	emake install ECLASSDIR=eclass DESTDIR="${D}" PREFIX=/usr
+	emake install ECLASSDIR=eclass DESTDIR="${D}" PREFIX="${EPREFIX}/usr"
 }

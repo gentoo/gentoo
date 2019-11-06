@@ -16,5 +16,5 @@ DEPEND="app-arch/xz-utils
 	sys-apps/gawk"
 
 src_install() {
-	emake install DESTDIR="${D}" PREFIX=/usr
+	emake install DESTDIR="${D}" PREFIX="${EPREFIX}/usr"
 }
