@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~mips ~x86"
 
 PATCHES=(
-	"${FILESDIR}/include-stdlib.h-for-exit.patch"
+	"${FILESDIR}/${P}-include-stdlib.h-for-exit.patch"
 	"${FILESDIR}/${P}-makefile.patch"
 )
 
