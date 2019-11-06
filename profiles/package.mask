@@ -362,7 +362,6 @@ net-im/openfire
 # the maintainer.
 # Removal in 30 days.  Bug #696252.
 mail-filter/clamsmtp
-sys-auth/pam_require
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-04)
 # Unmaintained, EAPI 0 packages.  No reverse dependencies.  If you want
