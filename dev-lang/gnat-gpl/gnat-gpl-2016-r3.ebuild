@@ -51,7 +51,7 @@ SRC_URI+="
 LICENSE+=" GPL-2 GPL-3"
 SLOT="${TOOLCHAIN_GCC_PV}"
 KEYWORDS="amd64 x86"
-IUSE="bootstrap"
+IUSE="+bootstrap"
 
 RDEPEND="!sys-devel/gcc:${TOOLCHAIN_GCC_PV}"
 DEPEND="${RDEPEND}
