@@ -172,4 +172,28 @@ if type -P pathcc &>/dev/null; then
 	tend $?
 fi
 
+for compiler in gcc clang; do
+	if type -P ${compielr} &>/dev/null; then
+		tbegin "tc-cpp-is-true ($compiler, defined)"
+		(
+			export CC=${compiler}
+			tc-cpp-is-true "defined(SOME_DEFINED_SYMBOL)" -DSOME_DEFINED_SYMBOL
+		)
+		tend $?
+		tbegin "tc-cpp-is-true ($compiler, not defined)"
+		(
+			export CC=${compiler}
+			! tc-cpp-is-true "defined(SOME_UNDEFINED_SYMBOL)"
+		)
+		tend $?
+
+		tbegin "tc-cpp-is-true ($compiler, defined on -ggdb3)"
+		(
+			export CC=${compiler}
+			tc-cpp-is-true "defined(SOME_DEFINED_SYMBOL)" -DSOME_DEFINED_SYMBOL -ggdb3
+		)
+		tend $?
+	fi
+done
+
 texit
