@@ -1,6 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-11-06)
+# Upstream plans to drop libcrypt.so.1/crypt.h from glibc
+# distribution and rely on external providers lke libxcrypt.
+# Gentoo will follow the suit but today we are not ready.
+# Unmask at your risk. Bug #699422 tracks the effort.
+sys-libs/glibc crypt
+
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd, so force USE=guile2
 media-sound/lilypond guile2
