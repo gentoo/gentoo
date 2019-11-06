@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CMAKE_REMOVE_MODULES="yes"
 CMAKE_REMOVE_MODULES_LIST="FindFreetype FindDoxygen FindZLIB"
@@ -16,7 +16,7 @@ SRC_URI="https://bitbucket.org/sinbad/ogre/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.
 
 LICENSE="MIT public-domain"
 SLOT="0/2.1"
-KEYWORDS=""
+KEYWORDS="~amd64"
 
 IUSE="+cache debug doc egl examples +freeimage gles2 json +legacy-animations
 	mobile +opengl profile tools"

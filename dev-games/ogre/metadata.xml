@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <maintainer type="person">
+    <email>yamakuzure@gmx.net</email>
+    <name>Sven Eden</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <maintainer type="project">
     <email>games@gentoo.org</email>
     <name>Gentoo Games Project</name>
@@ -109,7 +117,7 @@ Exporters
         sensitive lookup. Some demos might not work with this setting.
         (default: case-insensitive + sensitive lookup in all groups)
     </flag>
-    <flag name="resman-strict">
+    <flag name="resman-strict" restrict="&lt;dev-games/ogre-1.12">
         Resource Manager STRICT : search in default group if not specified otherwise.
         Case sensitive lookup. Some demos might not work with this setting.
         (default: case-insensitive + sensitive lookup in all groups)
@@ -119,5 +127,7 @@ Exporters
   </use>
   <upstream>
     <remote-id type="bitbucket">sinbad/ogre</remote-id>
+    <remote-id type="github">OGRECave/ogre</remote-id>
+    <remote-id type="github">OGRECave/ogre-next</remote-id>
   </upstream>
 </pkgmetadata>
