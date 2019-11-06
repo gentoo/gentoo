@@ -39,11 +39,9 @@
 #
 # app-admin/certmgr: #694690
 # app-admin/ksonnet: #694710
-# dev-go/delve: #694382
 # Removal in 30 days.
 app-admin/certmgr
 app-admin/ksonnet
-dev-go/delve
 
 # Mikle Kolyada <zlogene@gentoo.org> (2019-11-04)
 # xcolor has been a part of dev-texlive/texlive-latexrecommended
