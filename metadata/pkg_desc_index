@@ -889,7 +889,7 @@ app-dicts/myspell-pl 20130306: Polish dictionaries for myspell/hunspell
 app-dicts/myspell-pt 20120420: Portuguese dictionaries for myspell/hunspell
 app-dicts/myspell-pt-br 3.0.0: Brazilian dictionaries for myspell/hunspell
 app-dicts/myspell-ro 3.3.10: Romanian dictionaries for myspell/hunspell
-app-dicts/myspell-ru 20150711-r2: Russian spellcheck dictionary based on works of AOT group for myspell/hunspell
+app-dicts/myspell-ru 20150711-r2 20180627: Russian spellcheck dictionary based on works of AOT group for myspell/hunspell
 app-dicts/myspell-sk 20110224: Slovak dictionaries for myspell/hunspell
 app-dicts/myspell-sl 2012.01.04: Slovenian dictionaries for myspell/hunspell
 app-dicts/myspell-sq 1.6.4: Albanian dictionaries for myspell/hunspell
