@@ -29,6 +29,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-11-06)
+# Old EAPI 0 graphics-related packages.
+#
+# media-gfx/aoi was last bumped in Nov 2009.  It is still actively
+# developed upstream, and it's waiting for a bump since Dec 2009.
+# It suffers from bundled dependencies (#177026).
+#
+# media-gfx/exiftags was last bumped in 2007.  It did not have any new
+# releases since, and does not seem to have any unique features.
+# media-gfx/exiv2 seems to be a more commonly installed replacement.
+#
+# media-gfx/jpeg2ps was last bumped in 2004.  The upstream homepage
+# is gone.  The package is non-free.
+#
+# Removal in 30 days.  Bug #697288.
+media-gfx/aoi
+media-gfx/exiftags
+media-gfx/jpeg2ps
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-11-05)
 # Ships broken libssh-config module breaking build of revdeps, bug #698940
 =net-libs/libssh-0.9.1
@@ -108,12 +127,6 @@ media-video/minitube
 # Homepage gone, and source of some of the files unknown.
 # Removal in 30 days.  Bug #698050.
 media-fonts/vc-fonts
-
-# Stephan Hartmann <stha09@googlemail.com> (2019-10-25)
-# Dev channel releases are only for people who
-# are developers or want more experimental features
-# and accept a more unstable release.
->=www-client/chromium-79
 
 # Hans de Graaff <graaff@gentoo.org> (2019-10-25)
 # ruby24-only, no longer supported by upstream.
