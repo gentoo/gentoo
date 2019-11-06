@@ -35,6 +35,9 @@ all_ruby_prepare() {
 
 	# Avoid encoding tests since not all locales may be available.
 	sed -i -e '/test_kjconv/,/^  end/ s:^:#:' test/test.rb || die
+
+	# Fix build on openjdk-11
+	sed -i -e 's#javah -classpath ../data/rjb jp.co.infoseek.hp.arton.rjb.RBridge#javac -h . -classpath ../data/rjb RBridge.java#g' ext/extconf.rb || die
 }
 
 each_ruby_prepare() {
