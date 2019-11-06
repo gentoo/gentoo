@@ -16,7 +16,7 @@ IUSE="berkdb debug fam +gdbm gnutls ipv6 libressl selinux trashquota"
 REQUIRED_USE="|| ( berkdb gdbm )"
 
 CDEPEND="
-	gnutls? ( net-libs/gnutls )
+	gnutls? ( net-libs/gnutls[tools] )
 	!gnutls? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
