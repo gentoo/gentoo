@@ -30,16 +30,6 @@ case ${EAPI:-0} in
 	*) die "I don't speak EAPI ${EAPI}." ;;
 esac
 
-tc_supports_dostrip() {
-	case ${EAPI:-0} in
-		5*|6) return 1 ;;
-		7) return 0 ;;
-		*) die "Update apply_patches() for ${EAPI}." ;;
-	esac
-}
-
-tc_supports_dostrip || RESTRICT="strip" # cross-compilers need controlled stripping
-
 EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
 	src_compile src_test src_install pkg_postinst pkg_postrm
 
@@ -139,6 +129,16 @@ fi
 
 IUSE="test vanilla +nls"
 RESTRICT="!test? ( test )"
+
+tc_supports_dostrip() {
+	case ${EAPI:-0} in
+		5*|6) return 1 ;;
+		7) return 0 ;;
+		*) die "Update apply_patches() for ${EAPI}." ;;
+	esac
+}
+
+tc_supports_dostrip || RESTRICT+=" strip" # cross-compilers need controlled stripping
 
 TC_FEATURES=()
 
