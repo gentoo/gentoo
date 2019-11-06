@@ -1,0 +1,19 @@
+#
+# Run clamav-unofficial-sigs hourly.
+#
+# This file should be copied to /etc/cron.d rather than, say,
+# /etc/cron.hourly because it needs to run as the clamav user (to
+# alter the databases), but the default settings for that user in
+# Gentoo are insufficient (see bug 694054).
+#
+# In particular, the clamav user needs a Bash shell and a home
+# directory since clamav-unofficial-sigs is written in Bash and
+# because otherwise cron will complain about trying to chdir to a
+# nonexistent home directory. When run out of /etc/cron.d, we can set
+# HOME and SHELL to appropriate values, unlike with scripts in
+# /etc/cron.hourly.
+#
+HOME=/var/lib/clamav-unofficial-sigs
+SHELL=/bin/bash
+
+01 * * * * clamav /usr/sbin/clamav-unofficial-sigs.sh
