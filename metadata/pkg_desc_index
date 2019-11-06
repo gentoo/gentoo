@@ -15115,7 +15115,7 @@ net-mail/muchsync 3 4 5: Synchronizes mail messages and notmuch tags across mach
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.28.4 0.29.1 0.29.1-r1 0.29.2: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 7.2.4: Powerful IMAP/Maildir synchronization and reader support
-net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
+net-mail/pflogsumm 1.1.5 1.1.5-r1: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
 net-mail/pop-before-smtp 1.42: a simple daemon to allow email relay control based on successful POP or IMAP logins
 net-mail/pop2imap 1.18 1.21: Synchronize mailboxes between a pop and an imap servers
