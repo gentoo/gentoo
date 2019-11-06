@@ -4690,7 +4690,7 @@ dev-lang/tuprolog 2.9.2 3.0.1 3.1.0: tuProlog is a light-weight Prolog for Inter
 dev-lang/vala 0.36.18 0.36.19 0.36.20 0.40.14 0.40.15 0.40.16 0.42.7 0.44.7 0.44.8 0.44.9 0.46.3: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.6.0 3.6.0-r1 3.7.0-r1: XSB is a logic programming and deductive database system
-dev-lang/yap 6.3.3 6.3.3-r1: YAP is a high-performance Prolog compiler
+dev-lang/yap 6.3.3-r1: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.2.0-r1 1.3.0 9999: An assembler for x86 and x86_64 instruction sets
 dev-lang/zig 0.4.0-r1 0.5.0 9999: A robust, optimal, and maintainable programming language
 dev-libs/389-adminutil 1.1.15: 389 adminutil
@@ -13796,6 +13796,7 @@ media-sound/bplay 0.991: No-frills command-line buffered player and recorder
 media-sound/bpmdetect 0.7.0_pre20170810: Automatic BPM detection utility
 media-sound/bristol 0.60.11-r1: Synthesizer keyboard emulation package: Moog, Hammond and others
 media-sound/brutefir 1.0k-r2: Software convolution engine for applying long FIR filters
+media-sound/cadence 0.9.0 9999: Collection of tools useful for audio production
 media-sound/cantata 2.3.3-r1: Featureful and configurable Qt client for the music player daemon (MPD)
 media-sound/cd-discid 1.3 1.4: returns the disc id for the cd in the cd-rom drive
 media-sound/cdcd 0.6.6-r2: a simple yet powerful command line cd player
@@ -17779,7 +17780,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta20 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.189 4.4.192 4.4.193 4.4.194 4.4.195 4.4.196 4.4.197 4.4.198 4.4.199 4.9.189 4.9.192 4.9.193 4.9.194 4.9.195 4.9.196 4.9.197 4.9.198 4.9.199 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.14.151 4.14.152 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 4.19.81 4.19.82 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7 5.3.8 5.3.9: Full sources including the Gentoo patchset for the 5.3 kernel tree
+sys-kernel/gentoo-sources 4.4.189 4.4.192 4.4.197 4.4.198 4.4.199 4.9.189 4.9.192 4.9.197 4.9.198 4.9.199 4.14.138 4.14.143 4.14.151 4.14.152 4.19.66 4.19.72 4.19.81 4.19.82 5.3.8 5.3.9: Full sources including the Gentoo patchset for the 5.3 kernel tree
 sys-kernel/git-sources 5.4_rc1 5.4_rc2 5.4_rc3 5.4_rc4 5.4_rc5 5.4_rc6: The very latest -git version of the Linux kernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
@@ -18476,7 +18477,7 @@ x11-apps/xwd 1.0.6 1.0.7: dump an image of an X window
 x11-apps/xwininfo 1.1.5: window information utility for X
 x11-apps/xwud 1.0.5: image displayer for X
 x11-base/xcb-proto 1.13: X C-language Bindings protocol headers
-x11-base/xorg-drivers 1.20 9999: Meta package containing deps on all xorg drivers
+x11-base/xorg-drivers 1.20-r1 9999: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2019.1 2019.2 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.5 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
