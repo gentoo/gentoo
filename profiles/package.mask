@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-11-06)
+# EAPI 0.  Last upstream release in 2006.
+# Removal in 30 days.  Bug #697372.
+app-text/info2html
+
+# Michał Górny <mgorny@gentoo.org> (2019-11-06)
 # EAPI 0.  Last bumped in 2004.  Upstream is active, so this really
 # needs a major version bump.  Multiple bugs reported.
 # Removal in 30 days.  Bug #697392.
