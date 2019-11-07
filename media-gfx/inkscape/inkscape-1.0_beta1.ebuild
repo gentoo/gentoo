@@ -145,8 +145,6 @@ src_configure() {
 }
 
 src_install() {
-	default
-
 	find "${ED}" -type f -name "*.la" -delete || die
 
 	# No extensions are present in beta1
