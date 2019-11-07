@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Wrapper integrating aria2 into portage's FETCHCOMMAND"
 HOMEPAGE="https://github.com/hartwork/fetchcommandwrapper"
-SRC_URI="https://github.com/hartwork/fetchcommandwrapper/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
