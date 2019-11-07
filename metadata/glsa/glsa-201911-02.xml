@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201911-02">
+  <title>pump: User-assisted execution of arbitrary code</title>
+  <synopsis>A buffer overflow in pump might allow remote attacker to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">pump</product>
+  <announced>2019-11-07</announced>
+  <revised count="1">2019-11-07</revised>
+  <bug>694314</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/pump" auto="yes" arch="*">
+      <vulnerable range="le">0.8.24-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BOOTP and DHCP client for automatic IP configuration.</p>
+  </background>
+  <description>
+    <p>It was discovered that there was an arbitrary code execution
+      vulnerability in the pump DHCP/BOOTP client.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to connect to a malicious server,
+      could cause the execution of arbitrary code with the privileges of the
+      user running pump DHCP/BOOTP client.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for pump. We recommend that users
+      unmerge pump:
+    </p>
+    
+    <code>
+      # emerge --unmerge "net-misc/pump"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://bugs.debian.org/933674">Debian Bug Report 933674</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-10-26T18:02:26Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2019-11-07T19:05:32Z">whissi</metadata>
+</glsa>
