@@ -1,0 +1,11 @@
+--- a/bindings/python/_prelude.cxx	2019-07-12 07:19:49.365476420 +0200
++++ b/bindings/python/_prelude.cxx	2019-07-12 07:20:02.458213034 +0200
+@@ -3132,7 +3132,7 @@
+ 
+ SWIGINTERN void
+ SwigPyStaticVar_dealloc(PyDescrObject *descr) {
+-  _PyObject_GC_UNTRACK(descr);
++  PyObject_GC_UnTrack(descr);
+   Py_XDECREF(PyDescr_TYPE(descr));
+   Py_XDECREF(PyDescr_NAME(descr));
+   PyObject_GC_Del(descr);
