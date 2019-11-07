@@ -83,6 +83,7 @@ acct-user/alias 0: alias user for qmail mail delivery
 acct-user/bacula 0: A group for the bacula backup system
 acct-user/bitcoin 0: System-wide Bitcoin services user
 acct-user/burp 0: User for the app-backup/burp server
+acct-user/cmd5checkpw 0: User for cmd5checkpw
 acct-user/ddclient 0: A user for the dynamic DNS client
 acct-user/deluge 0: user for deluge
 acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
@@ -15071,7 +15072,7 @@ net-mail/automx 0.10.2-r1 0.10.2-r2: A mail user agent auto configuration servic
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
 net-mail/checkpassword 0.90-r2 0.90-r4: A uniform password checking interface for root applications
 net-mail/checkpassword-pam 0.99 0.99-r1: checkpassword-compatible authentication program w/pam support
-net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
+net-mail/cmd5checkpw 0.30-r1 0.30-r2: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 net-mail/courier-imap 4.17.3 4.18.2 5.0.7: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's password from across a network
 net-mail/cyrus-imapd 3.0.10-r1 3.0.11: The Cyrus IMAP Server
