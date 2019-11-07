@@ -14,6 +14,8 @@ LICENSE="GPL-3 LGPL-3"
 SLOT="2"
 KEYWORDS="~amd64"
 
+RESTRICT="!test? ( test )"
+
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
 IUSE="alsa aalib altivec aqua debug doc openexr gnome heif postscript jpeg2k cpu_flags_x86_mmx mng python cpu_flags_x86_sse udev unwind vector-icons webp wmf xpm"
 
@@ -82,6 +84,8 @@ DEPEND="${RDEPEND}
 DOCS="AUTHORS ChangeLog* HACKING NEWS README*"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+PATCHES="${FILESDIR}/${P}_fix_test-appdata.patch"
 
 pkg_setup() {
 	if use python; then
