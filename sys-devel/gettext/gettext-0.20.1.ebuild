@@ -36,6 +36,9 @@ RDEPEND="${DEPEND}
 	!git? ( cvs? ( dev-vcs/cvs ) )
 	git? ( dev-vcs/git )
 	java? ( >=virtual/jre-1.4 )"
+BDEPEND="
+	git? ( dev-vcs/git )
+"
 PDEPEND="emacs? ( app-emacs/po-mode )"
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -114,7 +117,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
-	emake -j1 DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 
 	if multilib_is_native_abi ; then
 		dosym msgfmt /usr/bin/gmsgfmt #43435

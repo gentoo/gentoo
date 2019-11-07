@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="User-mode filesystem implementation"
 HOMEPAGE="https://sourceforge.net/projects/lufs/"
@@ -17,43 +17,48 @@ IUSE="debug"
 RDEPEND="sys-fs/lufis"
 DEPEND="${RDEPEND}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+PATCHES=(
+	"${FILESDIR}"/${P}-fPIC.patch
+	"${FILESDIR}"/${PN}-automount-port.diff
+	"${FILESDIR}"/${P}-enable-gnome-2.patch
+	"${FILESDIR}"/${PN}-no-kernel.patch
+	"${FILESDIR}"/${P}-gcc43.patch
+)
 
-	epatch "${FILESDIR}"/${P}-fPIC.patch
-	epatch "${FILESDIR}"/lufs-automount-port.diff
-	epatch "${FILESDIR}"/${P}-enable-gnome-2.patch
-	epatch "${FILESDIR}"/lufs-no-kernel.patch
-	epatch "${FILESDIR}"/${P}-gcc43.patch
-
+pkg_setup() {
 	filesystems="ftpfs localfs"
 	use amd64 || filesystems+=" sshfs"
+}
 
+src_prepare() {
+	default
 	eautoreconf
+}
+
+src_configure() {
+	unset ARCH
+	econf $(use_enable debug)
 }
 
 src_compile() {
 	einfo "Compiling for ${filesystems}"
-	unset ARCH
-	econf $(use_enable debug) || die
 
-	cd filesystems
+	cd filesystems || die
 	local i
 	for i in ${filesystems} ; do
-		cd ${i}
-		emake || die "emake ${i} failed"
-		cd ..
+		pushd ${i} &>/dev/null || die
+		emake
+		popd &>/dev/null || die
 	done
 }
 
 src_install() {
-	cd filesystems
+	cd filesystems || die
 	local i
 	for i in ${filesystems} ; do
-		cd ${i}
-		emake DESTDIR="${D}" install || die "emake install ${i} failed"
-		cd ..
+		pushd ${i} &>/dev/null || die
+		emake DESTDIR="${D}" install
+		popd &>/dev/null || die
 	done
 }
 

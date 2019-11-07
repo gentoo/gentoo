@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{5,6,7} )
 PYTHON_REQ_USE="xml"
 
-inherit cmake-utils flag-o-matic xdg-utils xdg toolchain-funcs python-single-r1
+inherit cmake-utils flag-o-matic xdg toolchain-funcs python-single-r1
 
 MY_P="${P/_/}"
 
@@ -145,8 +145,6 @@ src_configure() {
 }
 
 src_install() {
-	default
-
 	find "${ED}" -type f -name "*.la" -delete || die
 
 	# No extensions are present in beta1
@@ -157,18 +155,4 @@ src_install() {
 	fi
 
 	cmake-utils_src_install
-}
-
-pkg_preinst() {
-	xdg_icon_savelist
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
 }
