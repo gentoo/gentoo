@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>maintainer-needed@gentoo.org</email>
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
 	</maintainer>
 	<longdescription lang="en">
 		This program forms part of the required functionality of
