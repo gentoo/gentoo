@@ -21,8 +21,8 @@ RCS file: /var/CVSROOT/bdb42/dbinc/db.in,v
 retrieving revision 1.1.1.1
 retrieving revision 1.2
 diff -u -r1.1.1.1 -r1.2
---- dbinc/db.in	25 Nov 2003 21:58:02 -0000	1.1.1.1
-+++ dbinc/db.in	17 Jul 2004 16:07:23 -0000	1.2
+--- a/dbinc/db.in	25 Nov 2003 21:58:02 -0000	1.1.1.1
++++ b/dbinc/db.in	17 Jul 2004 16:07:23 -0000	1.2
 @@ -839,6 +839,7 @@
  #define	TXN_NOWAIT	0x040		/* Do not wait on locks. */
  #define	TXN_RESTORED	0x080		/* Transaction has been restored. */
@@ -37,8 +37,8 @@ RCS file: /var/CVSROOT/bdb42/txn/txn.c,v
 retrieving revision 1.1.1.2
 retrieving revision 1.2
 diff -u -r1.1.1.2 -r1.2
---- txn/txn.c	17 Dec 2003 21:43:53 -0000	1.1.1.2
-+++ txn/txn.c	17 Jul 2004 16:07:27 -0000	1.2
+--- a/txn/txn.c	17 Dec 2003 21:43:53 -0000	1.1.1.2
++++ b/txn/txn.c	17 Jul 2004 16:07:27 -0000	1.2
 @@ -127,7 +127,7 @@
  	if ((ret = __db_fchk(dbenv,
  	    "txn_begin", flags,
