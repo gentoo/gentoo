@@ -20,7 +20,10 @@ DEPEND="system? (
 	)"
 RDEPEND="${DEPEND}"
 BDEPEND="sys-apps/findutils
-	test? ( ${PYTHON_DEPS} )"
+	test? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-python/passlib[${PYTHON_USEDEP}]')
+	)"
 
 # Gentoo CI complained about not having this
 RESTRICT="!test? ( test )"
@@ -84,7 +87,7 @@ src_compile() {
 }
 
 multilib_src_test() {
-	multibuild_foreach_variant run_in_build_dir emake check
+	emake check
 }
 
 src_test() {
