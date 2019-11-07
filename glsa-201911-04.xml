@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201911-04">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple information disclosure vulnerabilities in OpenSSL allow
+    attackers to obtain sensitive information.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>2019-11-07</announced>
+  <revised count="1">2019-11-07</revised>
+  <bug>694162</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2t</unaffected>
+      <vulnerable range="lt">1.0.2t</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+      purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSSL. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.2t"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1547">CVE-2019-1547</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1563">CVE-2019-1563</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-09-12T14:09:32Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2019-11-07T19:09:02Z">whissi</metadata>
+</glsa>
