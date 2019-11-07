@@ -36,13 +36,16 @@ src_prepare() {
 }
 
 src_compile() {
-	emake wads/freedoom{1,2}.wad
+	emake wads/freedoom{1,2}.wad \
+		freedoom{1,2}.6 \
+		{NEWS,README}.html
 }
 
 src_install() {
-	emake install-freedoom{1,2} \
+	emake install-freedoom \
 		prefix="${ED}/usr/" \
 		bindir="bin/" \
+		docdir="share/doc/${P}" \
 		mandir="share/man/" \
 		waddir="${DOOMWADPATH}/"
 }

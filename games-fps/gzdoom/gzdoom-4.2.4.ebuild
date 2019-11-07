@@ -76,7 +76,7 @@ pkg_postinst() {
 		ewarn "GZDoom installed without nonfree components."
 		ewarn "Note: The nonfree game_support.pk3 file is needed to play"
 		ewarn "      games natively supported by GZDoom."
-		ewarn "A list of games natively supported by GZDoom may be found"
+		ewarn "A list of games natively supported by GZDoom is available"
 		ewarn "on the ZDoom wiki: https://zdoom.org/wiki/IWAD"
 		ewarn
 	fi

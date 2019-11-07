@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,7 +38,7 @@ src_install() {
 	python_optimize "${ED}/usr/share/${PN}"
 
 	dodir /usr/bin
-	dosym "${ED}/usr/share/${PN}/angrydd.py" "/usr/bin/${PN}"
+	dosym "../share/${PN}/angrydd.py" "/usr/bin/${PN}"
 	doman angrydd.6
 	dodoc README TODO HACKING
 
