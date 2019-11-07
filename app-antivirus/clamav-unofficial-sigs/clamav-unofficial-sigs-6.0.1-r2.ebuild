@@ -6,8 +6,8 @@ EAPI=7
 inherit user systemd
 
 DESCRIPTION="Download and install third-party clamav signatures"
-HOMEPAGE="https://github.com/extremeshok/${PN}"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/extremeshok/clamav-unofficial-sigs"
+SRC_URI="https://github.com/extremeshok/clamav-unofficial-sigs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
