@@ -22,7 +22,7 @@ IUSE="cdr dia dbus exif gnome graphicsmagick +imagemagick openmp postscript inkj
 IUSE+=" lcms nls spell static-libs visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	^^ ( imagemagick graphicsmagick )"
+	?? ( imagemagick graphicsmagick )"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/poppler-0.57.0:=[cairo]
@@ -51,6 +51,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( dev-libs/dbus-glib )
 	exif? ( media-libs/libexif )
 	gnome? ( >=gnome-base/gnome-vfs-2.0 )
+	graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	imagemagick? ( <media-gfx/imagemagick-7:=[cxx] )
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
