@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils flag-o-matic qmail
+inherit flag-o-matic qmail
 
 DESCRIPTION="Collection of tools for managing UNIX services"
 HOMEPAGE="http://cr.yp.to/daemontools.html"
@@ -19,14 +19,16 @@ DEPEND=""
 RDEPEND="selinux? ( sec-policy/selinux-daemontools )
 	!app-doc/daemontools-man"
 
-S="${WORKDIR}"/admin/${P}/src
+S="${WORKDIR}/admin/${P}/src"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+PATCHES=(
+	"${FILESDIR}"/${PV}-errno.patch
+	"${FILESDIR}"/${PV}-warnings.patch
+)
 
-	epatch "${FILESDIR}"/${PV}-errno.patch
-	epatch "${FILESDIR}"/${PV}-warnings.patch
+src_prepare() {
+	default
+
 	ht_fix_file Makefile print-{cc,ld}.sh
 
 	use static && append-ldflags -static
@@ -34,14 +36,14 @@ src_unpack() {
 }
 
 src_compile() {
-	touch home
-	emake || die
+	touch home || die
+	emake
 }
 
 src_install() {
 	keepdir /service
 
-	dobin $(<../package/commands) || die
+	dobin $(<../package/commands)
 	dodoc CHANGES ../package/README TODO
 	doman "${WORKDIR}"/${PN}-man/*.8
 
