@@ -716,7 +716,7 @@ app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT K
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39 0.41 0.42: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/moolticute 0.42.1 9999: Mooltipass crossplatform daemon/tools
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
-app-crypt/nitrocli 0.2.3-r1 0.2.4: A command line application for interacting with Nitrokey devices
+app-crypt/nitrocli 0.2.4: A command line application for interacting with Nitrokey devices
 app-crypt/nitrokey-app 1.4 9999: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.25: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
@@ -3342,7 +3342,7 @@ dev-games/tiled 1.2.4 1.2.5: A general purpose tile map editor
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/blackfriday 1.2_p20150720 1.4 9999: a markdown processor implemented in Go
 dev-go/coveraggregator 0_pre20170216: Cover profile aggregator for golang
-dev-go/delve 1.0.0 1.3.0: A source-level debugger for the Go programming language
+dev-go/delve 1.3.0: A source-level debugger for the Go programming language
 dev-go/ed25519 0_pre20170117: ed25519 for Go
 dev-go/fuzzy 0.0.3 0.0.5: Go library that provides fuzzy string matching
 dev-go/get-ego-vendor 0.1.0: Utility to generate EGO_VENDOR data for ebuilds
@@ -12455,7 +12455,7 @@ lxqt-base/lxqt-session 0.14.1: LXQT session manager
 lxqt-base/lxqt-sudo 0.14.1: LXQt GUI frontend for sudo
 mail-client/aerc 0.2.1: Email client for your terminal
 mail-client/alot 0.3.7-r1 0.5.1 0.6 0.7 0.7-r1 0.8.1: Experimental terminal UI for net-mail/notmuch written in Python
-mail-client/alpine 2.00-r7 2.21.1 2.21.1-r1: An easy to use text-based based mail and news client
+mail-client/alpine 2.00-r7 2.21.1 2.21.1-r1 2.21.1-r2: An easy to use text-based based mail and news client
 mail-client/balsa 2.5.6-r1: Email client for GNOME
 mail-client/bower 0.10 0.11: Curses terminal client for the Notmuch email system
 mail-client/claws-mail 3.17.3-r1 3.17.4 9999: An email client (and news reader) based on GTK+
@@ -17853,7 +17853,7 @@ sys-libs/libunwind 1.1-r1 1.2.1-r1 1.2.1-r2 1.2.1-r3: Portable and efficient API
 sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.1.3 2.2.4 2.2.5 2.2.6: Library implementation for listing vpds
-sys-libs/libxcrypt 2.4 4.4.10: Extended crypt library for descrypt, md5crypt, bcrypt, and others
+sys-libs/libxcrypt 2.4 4.4.10-r1: Extended crypt library for descrypt, md5crypt, bcrypt, and others
 sys-libs/llvm-libunwind 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mars 1.0.1: Multicore Application Runtime System
@@ -18227,7 +18227,7 @@ www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management f
 www-apps/drraw 2.0.1 2.1.3: drraw is a simple web based presentation front-end for RRDtool
 www-apps/drupal 7.67 8.6.16 8.7.5 8.7.6 8.7.7 8.7.8: PHP-based open-source platform and content management system
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
-www-apps/gitea 1.8.0 1.8.2 1.8.3: A painless self-hosted Git service
+www-apps/gitea 1.8.3 1.9.5: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.3.5 6.3.6 6.4.1 6.4.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hiawatha-monitor 1.6: Monitoring application for www-servers/hiawatha
