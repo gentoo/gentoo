@@ -150,7 +150,9 @@ src_install() {
 	find "${ED}" -type f -name "*.la" -delete || die
 
 	# No extensions are present in beta1
-	if [[ -n $(find "${ED}"/usr/share/${PN}/extensions -mindepth 1) ]]; then
+	local extdir="${ED}"/usr/share/${PN}/extensions
+
+	if [[ -e "${extdir}" ]] && [[ -n $(find "${extdir}" -mindepth 1) ]]; then
 		python_optimize "${ED}"/usr/share/${PN}/extensions
 	fi
 
