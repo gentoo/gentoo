@@ -3,8 +3,6 @@
 
 EAPI=7
 
-EGO_PN="github.com/${PN}/${PN}"
-
 EGO_VENDOR=(
 	"github.com/AudriusButkevicius/go-nat-pmp 452c97607362b2ab5a7839b8d1704f0396b640ca"
 	"github.com/AudriusButkevicius/pfilter 0.0.5"
@@ -67,12 +65,12 @@ EGO_VENDOR=(
 	"github.com/prometheus/procfs v0.0.4"
 )
 
-inherit golang-vcs-snapshot systemd xdg-utils
+inherit go-module systemd xdg-utils
 
 DESCRIPTION="Open Source Continuous File Synchronization"
 HOMEPAGE="https://syncthing.net"
-SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	${EGO_VENDOR_URI}"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	$(go-module_vendor_uris)"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0 Unlicense"
 SLOT="0"
@@ -96,30 +94,26 @@ src_prepare() {
 	default
 	sed -i \
 		's|^ExecStart=.*|ExecStart=/usr/libexec/syncthing/strelaysrv|' \
-		src/${EGO_PN}/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service \
+		cmd/strelaysrv/etc/linux-systemd/strelaysrv.service \
 		|| die
 
 	# As of 1.3.1, stupgrades fails to compile. This command was not present
 	# in releases older than 1.3.0, is not compiled in by default (USE=tools
 	# must be set) an in any case we do not really need this, therefore just
 	# get rid of the offending code until upstream has fixed it.
-	rm -rf src/${EGO_PN}/cmd/stupgrades
+	rm -rf cmd/stupgrades
 }
 
 src_compile() {
-	export GOPATH="${S}:$(get_golibdir_gopath)"
-	cd src/${EGO_PN} || die
 	go run build.go -version "v${PV}" -no-upgrade install \
 		$(usex tools "all" "") || die "build failed"
 }
 
 src_test() {
-	cd src/${EGO_PN} || die
 	go run build.go test || die "test failed"
 }
 
 src_install() {
-	pushd src/${EGO_PN} >& /dev/null || die
 	doman man/*.[157]
 	einstalldocs
 
@@ -131,11 +125,10 @@ src_install() {
 			[[ "${exe}" == "bin/syncthing" ]] || doexe "${exe}"
 		done
 	fi
-	popd >& /dev/null || die
 
 	# openrc and systemd service files
-	systemd_dounit src/${EGO_PN}/etc/linux-systemd/system/${PN}{@,-resume}.service
-	systemd_douserunit src/${EGO_PN}/etc/linux-systemd/user/${PN}.service
+	systemd_dounit etc/linux-systemd/system/${PN}{@,-resume}.service
+	systemd_douserunit etc/linux-systemd/user/${PN}.service
 	newconfd "${FILESDIR}/${PN}.confd" ${PN}
 	newinitd "${FILESDIR}/${PN}.initd" ${PN}
 
@@ -151,7 +144,7 @@ src_install() {
 		newconfd "${FILESDIR}/stdiscosrv.confd" stdiscosrv
 		newinitd "${FILESDIR}/stdiscosrv.initd" stdiscosrv
 
-		systemd_dounit src/${EGO_PN}/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service
+		systemd_dounit cmd/strelaysrv/etc/linux-systemd/strelaysrv.service
 		newconfd "${FILESDIR}/strelaysrv.confd" strelaysrv
 		newinitd "${FILESDIR}/strelaysrv.initd" strelaysrv
 
