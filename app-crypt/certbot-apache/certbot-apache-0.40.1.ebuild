@@ -22,6 +22,7 @@ HOMEPAGE="https://github.com/certbot/certbot https://letsencrypt.org/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=app-crypt/acme-0.29.0[${PYTHON_USEDEP}]
 	>=app-crypt/certbot-0.39.0[${PYTHON_USEDEP}]
