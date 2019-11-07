@@ -1,0 +1,46 @@
+
+# HG changeset patch
+# User Todd C. Miller <Todd.Miller@sudo.ws>
+# Date 1573059314 25200
+# Node ID f85ff5ee2caf19cefca67ae49c1d6048d61125cb
+# Parent  5cdcfd9a6c33a157a12f1b1893e397c3198b206b
+Do not warn about a missing /etc/environment file on Linux without PAM.
+Bug #907
+
+diff -r 5cdcfd9a6c33 -r f85ff5ee2caf plugins/sudoers/env.c
+--- a/plugins/sudoers/env.c	Tue Nov 05 15:18:34 2019 -0700
++++ b/plugins/sudoers/env.c	Wed Nov 06 09:55:14 2019 -0700
+@@ -940,7 +940,8 @@
+ #endif /* HAVE_LOGIN_CAP_H */
+ #if defined(_AIX) || (defined(__linux__) && !defined(HAVE_PAM))
+ 	    /* Insert system-wide environment variables. */
+-	    read_env_file(_PATH_ENVIRONMENT, true, false);
++	    if (!read_env_file(_PATH_ENVIRONMENT, true, false))
++		sudo_warn("%s", _PATH_ENVIRONMENT);
+ #endif
+ 	    for (ep = env.envp; *ep; ep++)
+ 		env_update_didvar(*ep, &didvar);
+@@ -1218,8 +1219,10 @@
+     efl = calloc(1, sizeof(*efl));
+     if (efl != NULL) {
+ 	if ((efl->fp = fopen(path, "r")) == NULL) {
+-	    free(efl);
+-	    efl = NULL;
++	    if (errno != ENOENT) {
++		free(efl);
++		efl = NULL;
++	    }
+ 	}
+     }
+     debug_return_ptr(efl);
+@@ -1259,6 +1262,9 @@
+     debug_decl(env_file_next_local, SUDOERS_DEBUG_ENV)
+ 
+     *errnum = 0;
++    if (efl->fp == NULL)
++	debug_return_ptr(NULL);
++
+     for (;;) {
+ 	if (sudo_parseln(&efl->line, &efl->linesize, NULL, efl->fp, PARSELN_CONT_IGN) == -1) {
+ 	    if (!feof(efl->fp))
+
