@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2019-11-07)
+# EAPI 0. It's been almost a decade since that openssl bug.
+# Removal in 30 days.  Bug #697218.
+net-misc/openssh-blacklist
+
 # Michał Górny <mgorny@gentoo.org> (2019-11-06)
 # EAPI 0.  Last upstream release in 2006.
 # Removal in 30 days.  Bug #697372.
