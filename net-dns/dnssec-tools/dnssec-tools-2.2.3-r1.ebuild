@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="static-libs"
 
 RDEPEND="
-	dev-lang/perl
+	dev-lang/perl:=
 	dev-perl/CGI
 	dev-perl/Crypt-OpenSSL-Random
 	dev-perl/Getopt-GUI-Long
