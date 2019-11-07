@@ -21,7 +21,8 @@ KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="cdr dia dbus exif gnome graphicsmagick +imagemagick openmp postscript inkjar jpeg svg2 jemalloc"
 IUSE+=" lcms nls spell static-libs visio wpg"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE} ^^ ( imagemagick graphicsmagick )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	^^ ( imagemagick graphicsmagick )"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/poppler-0.57.0:=[cairo]
@@ -86,6 +87,8 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.65
+"
+BDEPEND="
 	dev-util/glib-utils
 	>=dev-util/intltool-0.40
 	>=sys-devel/gettext-0.17
@@ -118,13 +121,13 @@ src_configure() {
 	# aliasing unsafe wrt #310393
 	append-flags -fno-strict-aliasing
 
-mycmakeargs=(
+	mycmakeargs=(
 	-DWITH_DBUS="$(usex dbus ON OFF)"   # Compile with support for DBus interface
 	-DENABLE_LCMS="$(usex lcms ON OFF)"   # Compile with LCMS support
 	-DWITH_SVG2="$(usex svg2 ON OFF)"   # Compile with support for new SVG2 features
-#    -DWITH_LPETOOL   # Compile with LPE Tool and experimental LPEs enabled
+	#-DWITH_LPETOOL   # Compile with LPE Tool and experimental LPEs enabled
 	-DWITH_OPENMP="$(usex openmp ON OFF)"   # Compile with OpenMP support
-#    -DWITH_PROFILING   # Turn on profiling
+	#-DWITH_PROFILING   # Turn on profiling
 	-DBUILD_SHARED_LIBS="$(usex !static-libs ON OFF)"  # Compile libraries as shared and not static
 	-DENABLE_POPPLER=ON   # Compile with support of libpoppler
 	-DENABLE_POPPLER_CAIRO=ON   # Compile with support of libpoppler-cairo for rendering PDF preview (depends on ENABLE_POPPLER)
@@ -135,7 +138,7 @@ mycmakeargs=(
 	-DWITH_LIBWPG="$(usex wpg ON OFF)"   # Compile with support of libwpg for WordPerfect Graphics
 	-DWITH_NLS="$(usex nls ON OFF)"   # Compile with Native Language Support (using gettext)
 	-DWITH_JEMALLOC="$(usex jemalloc ON OFF)"   # Compile with JEMALLOC support
-)
+	)
 
 	cmake-utils_src_configure
 }
@@ -143,10 +146,10 @@ mycmakeargs=(
 src_install() {
 	default
 
-	find "${ED}" -name "*.la" -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 
 	# No extensions are present in beta1
-	if [ -n $(find "${ED}"/usr/share/${PN}/extensions -mindepth 1) ]; then
+	if [[ -n $(find "${ED}"/usr/share/${PN}/extensions -mindepth 1) ]]; then
 		python_optimize "${ED}"/usr/share/${PN}/extensions
 	fi
 
