@@ -122,6 +122,7 @@ src_prepare() {
 	# loads system one (from potentially older version of guix).
 	# To work it around we bump last modification timestamp of
 	# '*.scm' files.
+	# http://debbugs.gnu.org/cgi/bugreport.cgi?bug=38112
 	find "${S}" -name "*.scm" -exec touch {} + || die
 
 	# Gentoo stores systemd unit files in lib, never in lib64: bug #689772
