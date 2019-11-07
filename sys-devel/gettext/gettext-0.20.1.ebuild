@@ -117,7 +117,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
-	emake -j1 DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 
 	if multilib_is_native_abi ; then
 		dosym msgfmt /usr/bin/gmsgfmt #43435
