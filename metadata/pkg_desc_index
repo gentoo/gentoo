@@ -2424,7 +2424,7 @@ app-text/crm114 20100106-r1: A powerful text processing tool, mainly used for sp
 app-text/csvfix 1.6: A stream editor for manipulating CSV files
 app-text/cuneiform 1.1.0-r3: An enterprise quality OCR engine by Cognitive Technologies
 app-text/cutemarked 0.11.3-r1: Qt5 markdown editor
-app-text/cwtext 0.96: Text to Morse Code converter
+app-text/cwtext 0.96 0.96-r1: Text to Morse Code converter
 app-text/dbacl 1.14 1.14.1: Digramic Bayesian text classifier
 app-text/dblatex 0.3.7 0.3.10-r1: Transform DocBook using TeX macros
 app-text/delta 20060803: Heuristically minimizes interesting files
