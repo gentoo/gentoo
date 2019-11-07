@@ -74,6 +74,7 @@ src_prepare() {
 	pushd "${WORKDIR}/Slic3r-${PV}" || die
 	sed -i lib/Slic3r.pm -e "s@FindBin::Bin@FindBin::RealBin@g" || die
 	eapply "${FILESDIR}"/${P}-no-locallib.patch
+	eapply "${FILESDIR}"/${P}-boost.patch
 	eapply_user
 	popd || die
 	# drop std=c++11 to compiler defaults...

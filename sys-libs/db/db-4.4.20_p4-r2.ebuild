@@ -27,7 +27,7 @@ for (( i=1 ; i<=${PATCHNO} ; i++ )) ; do
 done
 
 LICENSE="Sleepycat BSD"
-SLOT="4.4"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="tcl java doc cxx rpc"
 
@@ -81,7 +81,7 @@ src_prepare() {
 	done
 	# END of 4.5+earlier specific
 	pushd dist &>/dev/null || die
-	rm -f aclocal/libtool.{m4,ac} || die
+	rm aclocal/libtool.{m4,ac} || die
 
 	AT_M4DIR="aclocal aclocal_java" eautoreconf
 
@@ -102,13 +102,6 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		--prefix="${EPREFIX}"/usr
-		--mandir="${EPREFIX}"/usr/share/man
-		--infodir="${EPREFIX}"/usr/share/info
-		--datadir="${EPREFIX}"/usr/share
-		--sysconfdir="${EPREFIX}"/etc
-		--localstatedir="${EPREFIX}"/var/lib
-		--libdir="${EPREFIX}"/usr/"$(get_libdir)"
 		--enable-compat185
 		--enable-o_direct
 		--without-uniquename
@@ -128,8 +121,6 @@ src_configure() {
 			--with-javac-flags="$(java-pkg_javac-args)"
 		)
 	fi
-
-	[[ -n ${CBUILD} ]] && myconf+=( --build=${CBUILD} )
 
 	# the entire testsuite needs the TCL functionality
 	if use tcl && use test ; then
