@@ -74,7 +74,7 @@ diff -ruN inkscape-0.92.1.orig/configure.ac inkscape-0.92.1/configure.ac
 +
 +magick_ok="no"
 +if test "x$enable_magick" = "xyes"; then
-+	PKG_CHECK_MODULES(IMAGEMAGICK, ImageMagick++, magick_ok=yes, magick_ok=no)
++	PKG_CHECK_MODULES(IMAGEMAGICK, Magick++, magick_ok=yes, magick_ok=no)
 +	if test "x$magick_ok" = "xyes"; then
 +		AC_DEFINE(WITH_IMAGE_MAGICK,1,[Image Magick++ support for bitmap effects])
 +	fi
