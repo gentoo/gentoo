@@ -27,31 +27,32 @@ done
 
 LICENSE="Sleepycat"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
-IUSE="tcl java doc cxx rpc"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ppc ppc64 s390 sh sparc x86"
+IUSE="doc java cxx tcl test rpc"
 
+# the entire testsuite needs the TCL functionality
 DEPEND="tcl? ( >=dev-lang/tcl-8.4 )
-	java? ( >=virtual/jdk-1.4 )"
+	test? ( >=dev-lang/tcl-8.4 )
+	java? ( >=virtual/jdk-1.5 )
+	>=sys-devel/binutils-2.16.1"
 RDEPEND="tcl? ( dev-lang/tcl )
-	java? ( >=virtual/jre-1.4 )"
+	java? ( >=virtual/jre-1.5 )"
 
 PATCHES=(
-	"${FILESDIR}"/"${PN}"-4.2.52_p2-TXN.patch
-	"${FILESDIR}"/"${PN}"-"${SLOT}"-libtool.patch
+	"${FILESDIR}"/"${PN}"-4.6-libtool.patch
 
 	# use the includes from the prefix
-	"${FILESDIR}"/"${PN}"-"${SLOT}"-jni-check-prefix-first.patch
-	"${FILESDIR}"/"${PN}"-"${SLOT}"-listen-to-java-options.patch
-	"${FILESDIR}"/"${PN}"-4.0.14-fix-dep-link.patch
+	"${FILESDIR}"/"${PN}"-4.6-jni-check-prefix-first.patch
+	"${FILESDIR}"/"${PN}"-4.3-listen-to-java-options.patch
 )
 
 # Required to avoid unpack attempt of patches
 src_unpack() {
-	unpack ${MY_P}.tar.gz
+	unpack "${MY_P}".tar.gz
 }
 
 src_prepare() {
-	pushd "${WORKDIR}/${MY_P}" &>/dev/null || die
+	pushd "${WORKDIR}"/"${MY_P}" &>/dev/null || die
 	for (( i=1 ; i<=${PATCHNO} ; i++ ))
 	do
 		eapply -p0 "${DISTDIR}"/patch."${MY_PV}"."${i}"
@@ -68,24 +69,13 @@ src_prepare() {
 		-e '/jarfile=.*\.jar$/s,(.jar$),-$(LIBVERSION)\1,g' \
 		-i dist/Makefile.in || die
 
-	# START of 4.5+earlier specific
-	# Upstream sucks, they normally concat these
-	local i j
-	for j in dist/aclocal{,_java} ; do
-		pushd ${j} &>/dev/null || die
-		for i in * ; do
-			ln -s ${i} ${i%.ac}.m4 || die
-		done
-		popd &>/dev/null || die
-	done
-	# END of 4.5+earlier specific
 	pushd dist &>/dev/null || die
-	rm aclocal/libtool.{m4,ac} || die
+	rm aclocal/libtool.m4 || die
 	sed \
 		-e '/AC_PROG_LIBTOOL$/aLT_OUTPUT' \
 		-i configure.ac || die
 	sed \
-		-e '/^AC_PATH_TOOL/s/ sh, missing_sh/ bash, missing_sh/' \
+		-e '/^AC_PATH_TOOL/s/ sh, none/ bash, none/' \
 		-i aclocal/programs.m4 || die
 
 	AT_M4DIR="aclocal aclocal_java" eautoreconf
@@ -106,17 +96,24 @@ src_prepare() {
 }
 
 src_configure() {
+	# compilation with -O0 fails on amd64, see bug #171231
+	if use amd64 ; then
+		replace-flags -O0 -O2
+		is-flagq -O[s123] || append-flags -O2
+	fi
+
 	local myconf=(
 		--enable-compat185
-		--with-uniquename
+		--enable-o_direct
+		--without-uniquename
 		$(use_enable rpc)
-		--host="${CHOST}"
 
 		$(usex amd64 '--with-mutex=x86/gcc-assembly' '')
 		$(use_enable cxx)
 		$(use_enable tcl)
 		$(usex tcl "--with-tcl=${EPREFIX}/usr/$(get_libdir)" '') #"
 		$(use_enable java)
+		$(use_enable test)
 	)
 
 	if use java; then
@@ -126,32 +123,35 @@ src_configure() {
 		)
 	fi
 
-	# the entire testsuite needs the TCL functionality
-	if use tcl && use test; then
+	# Bug #270851: test needs TCL support
+	if use tcl && use test ; then
 		myconf+=( --enable-test )
 	else
 		myconf+=( --disable-test )
 	fi
 
-	ECONF_SOURCE="${S}"/../dist \
-	econf "${myconf[@]}"
-}
+	# Add linker versions to the symbols. Easier to do, and safer than header file
+	# mumbo jumbo.
+	if use userland_GNU ; then
+		append-ldflags -Wl,--default-symver
+	fi
 
-src_compile() {
-	# This isn't safe for prefix (Darwin should be .jnilib), but I can't get the
-	# build system to behave itself, it generates libtool too late.
-	sed \
-		-e 's/-shrext  $(SOFLAGS)/-shrext .so $(SOFLAGS)/g' \
-		-i Makefile || die
-	emake
+	ECONF_SOURCE="${S}"/../dist \
+	STRIP="true" \
+	econf "${myconf[@]}"
+
+	# The embedded assembly on ARM does not work on newer hardware
+	# so you CANNOT use --with-mutex=ARM/gcc-assembly anymore.
+	# Specifically, it uses the SWPB op, which was deprecated:
+	# http://www.keil.com/support/man/docs/armasm/armasm_dom1361289909499.htm
+
+	# The op ALSO cannot be used in ARM-Thumb mode.
+	# Trust the compiler instead.
+	# >=db-6.1 uses LDREX instead.
 }
 
 src_install() {
-	emake \
-		DESTDIR="${D}" \
-		libdir="${EPREFIX}/usr/$(get_libdir)" \
-		strip="${EPREFIX}/bin/strip" \
-		install
+	emake DESTDIR="${D}" install
 
 	db_src_install_usrbinslot
 
