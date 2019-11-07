@@ -17361,7 +17361,7 @@ sys-block/cec 14: Coraid Ethernet Console client
 sys-block/devio 1.2: correctly read (or write) a region of a block device
 sys-block/di 4.47 4.47.1 4.47.2: Disk Information Utility
 sys-block/disktype 9: Detect the content format of a disk or disk image
-sys-block/endpoint 0.1.0: Endpoint turns a Linux machine with a firewire card into an SBP-2 device
+sys-block/endpoint 0.1.0-r1: Endpoint turns a Linux machine with a firewire card into an SBP-2 device
 sys-block/f3 7.0 7.1 7.2: Utilities to detect broken or counterfeit flash storage
 sys-block/fio 2.15 2.16 3.2 3.7: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
@@ -17407,7 +17407,7 @@ sys-block/seekwatcher 0.12_p20091015-r1: generates graphs from blktrace to help 
 sys-block/smp_utils 0.97 0.98 0.99_beta4_p151: Utilities for SAS management protocol (SMP)
 sys-block/spindown 0.4.0-r5: Spindown is a daemon that can spin down idle disks
 sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02 7.0504 7.0606 7.0709-r1 7.1017: MegaRAID StorCLI (successor of the MegaCLI)
-sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
+sys-block/tapecat 1.0.0-r1: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/targetcli-fb 2.1.48-r2 2.1.49: Command shell for managing Linux LIO kernel target
 sys-block/tgt 1.0.78 1.0.79: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.7.0 0.7.6 0.8.3 0.8.5 9999: A suite of tools for thin provisioning on Linux
@@ -17720,7 +17720,7 @@ sys-fs/libfat 0.3a-r1: Support library to access and manipulate FAT12 / FAT16 / 
 sys-fs/loop-aes 3.7n: Linux kernel module to encrypt disk partitions with AES cipher
 sys-fs/lsscsi 0.29 0.30: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
-sys-fs/lufs 0.9.7-r3: User-mode filesystem implementation
+sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
 sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.183 2.02.184-r5 2.02.185-r1 2.02.186-r1 2.03.06: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
@@ -17804,7 +17804,7 @@ sys-libs/compiler-rt-sanitizers 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: 
 sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
-sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r2 5.1.29-r1 5.3.28-r2 5.3.28-r3 6.0.35 6.0.35-r1 6.1.36 6.1.38 6.2.32-r1 6.2.38 18.1.25 18.1.32: Oracle Berkeley DB
+sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r2 5.1.29-r1 5.3.28-r2 5.3.28-r3 6.0.35-r1 6.1.38 6.2.38 18.1.32: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.44.5 1.45.2 1.45.3 1.45.4: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 30 31 32 32-r1 35 37: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
@@ -17926,7 +17926,7 @@ sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.4-r1 1.5.5: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
 sys-process/ctop 0.5.1: Top-like interface for container-metrics
-sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
+sys-process/daemontools 0.76-r8: Collection of tools for managing UNIX services
 sys-process/daemontools-encore 1.10 1.11: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r1 4.5-r2: A cute little cron from Matt Dillon
 sys-process/dumb-init 1.2.0 1.2.1: A minimal init system for Linux containers
