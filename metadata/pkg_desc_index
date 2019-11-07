@@ -5750,7 +5750,7 @@ dev-perl/Crypt-OpenPGP 1.120.0: Pure-Perl OpenPGP-compatible PGP implementation
 dev-perl/Crypt-OpenSSL-Bignum 0.90.0: OpenSSL's multiprecision integer arithmetic
 dev-perl/Crypt-OpenSSL-DSA 0.190.0-r1: Digital Signature Algorithm using OpenSSL
 dev-perl/Crypt-OpenSSL-EC 1.310.0: Perl extension for OpenSSL EC (Elliptic Curves) library
-dev-perl/Crypt-OpenSSL-ECDSA 0.80.0-r1 0.80.0-r2: OpenSSL ECDSA (Elliptic Curve Digital Signature Algorithm) Perl extension
+dev-perl/Crypt-OpenSSL-ECDSA 0.80.0-r2: OpenSSL ECDSA (Elliptic Curve Digital Signature Algorithm) Perl extension
 dev-perl/Crypt-OpenSSL-RSA 0.280.0-r3: Crypt::OpenSSL::RSA module for perl
 dev-perl/Crypt-OpenSSL-Random 0.110.0: OpenSSL/LibreSSL pseudo-random number generator access
 dev-perl/Crypt-PasswdMD5 1.400.0: Provides interoperable MD5-based crypt() functions
