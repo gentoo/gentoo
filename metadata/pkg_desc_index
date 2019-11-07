@@ -12476,8 +12476,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.3.8 1.3.9 1.3.10: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
-mail-client/thunderbird 52.9.1 68.2.1: Thunderbird Mail Client
-mail-client/thunderbird-bin 52.9.1-r1 60.9.0 68.2.1: Thunderbird Mail Client
+mail-client/thunderbird 52.9.1 68.2.2: Thunderbird Mail Client
+mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.2.2: Thunderbird Mail Client
 mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.1.0 1.2.0 1.3.0: Initial tagging script for Notmuch
@@ -18820,7 +18820,7 @@ x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
 x11-misc/sxhkd 0.5.9 0.6.0 0.6.1: Simple X hotkey daemon
 x11-misc/synergy 1.9.1 2.0.0: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
-x11-misc/tint2 16.2 16.6 16.6.1: tint2 is a lightweight panel/taskbar for Linux.
+x11-misc/tint2 16.2 16.6 16.6.1 16.7: tint2 is a lightweight panel/taskbar for Linux.
 x11-misc/tintwizard 0.3.4-r2: GUI wizard which generates config files for tint2 panels
 x11-misc/tinynotify-send 1.2.1-r1 9999: A notification sending utility (using libtinynotify)
 x11-misc/touchcal 0.80: Touchscreen calibration utility
