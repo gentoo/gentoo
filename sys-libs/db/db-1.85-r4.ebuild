@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils toolchain-funcs multilib multilib
+inherit toolchain-funcs multilib
 
 DESCRIPTION="old berk db kept around for really old packages"
 HOMEPAGE="http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html"
 SRC_URI="http://download.oracle.com/berkeley-db/db.${PV}.tar.gz
-		 mirror://gentoo/${PF}.1.patch.bz2"
+		 mirror://gentoo/${P}-r3.1.patch.bz2"
 # The patch used by Gentoo is from Fedora, and includes all 5 patches found on
 # the Oracle page, plus others.
 
@@ -19,13 +19,16 @@ IUSE=""
 
 DEPEND=""
 
-S=${WORKDIR}/db.${PV}
+S="${WORKDIR}/db.${PV}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${WORKDIR}"/${PF}.1.patch
-	epatch "${FILESDIR}"/${P}-gentoo-paths.patch
+PATCHES=(
+	"${WORKDIR}"/${P}-r3.1.patch
+	"${FILESDIR}"/${P}-gentoo-paths.patch
+)
+
+src_prepare() {
+	default
+
 	sed -i \
 		-e "s:@GENTOO_LIBDIR@:$(get_libdir):" \
 		PORT/linux/Makefile || die
@@ -33,16 +36,17 @@ src_unpack() {
 
 src_compile() {
 	tc-export CC AR RANLIB
-	emake -C PORT/linux OORG="${CFLAGS}" || die
+	emake -C PORT/linux OORG="${CFLAGS}"
 }
 
 src_install() {
 	make -C PORT/linux install DESTDIR="${ED}" || die
 
 	# binary compat symlink
-	dosym libdb1.so.2 /usr/$(get_libdir)/libdb.so.2 || die
+	dosym libdb1.so.2 /usr/$(get_libdir)/libdb.so.2
 
-	dosed "s:<db.h>:<db1/db.h>:" /usr/include/db1/ndbm.h
+	sed -e "s:<db.h>:<db1/db.h>:" \
+		-i "${ED}"/usr/include/db1/ndbm.h || die
 	dosym db1/ndbm.h /usr/include/ndbm.h
 
 	dodoc changelog README
