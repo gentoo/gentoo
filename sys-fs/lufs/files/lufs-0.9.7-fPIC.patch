@@ -1,5 +1,5 @@
---- filesystems/gnetfs/Makefile.in	2004-03-18 15:59:28.391299639 +0000
-+++ filesystems/gnetfs/Makefile.in	2004-03-18 15:59:45.316142704 +0000
+--- a/filesystems/gnetfs/Makefile.in
++++ b/filesystems/gnetfs/Makefile.in
 @@ -197,7 +197,7 @@
  @AMDEP_TRUE@	./$(DEPDIR)/vtree.Plo ./$(DEPDIR)/xfer.Plo
 -COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
