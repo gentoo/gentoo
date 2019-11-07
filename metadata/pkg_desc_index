@@ -15002,7 +15002,7 @@ net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C 
 net-libs/libtirpc 1.1.4: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.1.10-r1 1.1.12-r1 1.1.13-r1 1.2.0-r1 1.2.1-r1 1.2.2-r1: C++ BitTorrent implementation focusing on efficiency and scalability
-net-libs/libtrace 4.0.8 4.0.9_p1 4.0.9_p1-r1 99999: A library and tools for trace processing
+net-libs/libtrace 4.0.9_p1-r1 4.0.10_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.4 1.8.5: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.12-r2 0.9.12-r3: library for creating vnc servers
@@ -17918,7 +17918,7 @@ sys-power/upower 0.99.9-r1 0.99.11: D-Bus abstraction for enumerating power devi
 sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r4: a periodic command scheduler
 sys-process/at 3.1.18-r1 3.1.23 3.2.1: Queues jobs for later execution
-sys-process/atop 2.3.0-r1 2.4.0 2.5.0: Resource-specific view of processes
+sys-process/atop 2.3.0-r1 2.4.0 2.5.0-r1: Resource-specific view of processes
 sys-process/audit 2.6.4 2.7.1 2.8.2 2.8.3 2.8.4: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10 0.11: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 3.6 3.11 3.12: utility to checkpoint/restore a process tree
@@ -18904,7 +18904,7 @@ x11-misc/xplanetFX 2.6.12 2.6.13 2.6.14: GUI to configure, run or daemonize xpla
 x11-misc/xprintidle 2.0 2.1: Prints user's X server idle time in milliseconds
 x11-misc/xrestop 0.4: 'Top' like statistics of X11 client's server side resource usage
 x11-misc/xrootconsole 0.6-r1: A utility that displays its input in a text box on your root window
-x11-misc/xscreensaver 5.38 5.42 5.43-r1: A modular screen saver and locker for the X Window System
+x11-misc/xscreensaver 5.38 5.42 5.43-r1 5.43-r2: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0-r1 9999: Command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.70-r1: A hardware health information viewer, interface to lm-sensors
