@@ -1,20 +1,20 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils db flag-o-matic java-pkg-opt-2 autotools multilib multilib-minimal toolchain-funcs
+inherit autotools db flag-o-matic java-pkg-opt-2 multilib multilib-minimal toolchain-funcs
 
 #Number of official patches
 #PATCHNO=`echo ${PV}|sed -e "s,\(.*_p\)\([0-9]*\),\2,"`
-PATCHNO=${PV/*.*.*_p}
+PATCHNO="${PV/*.*.*_p}"
 if [[ ${PATCHNO} == "${PV}" ]] ; then
-	MY_PV=${PV}
-	MY_P=${P}
+	MY_PV="${PV}"
+	MY_P="${P}"
 	PATCHNO=0
 else
-	MY_PV=${PV/_p${PATCHNO}}
-	MY_P=${PN}-${MY_PV}
+	MY_PV="${PV/_p${PATCHNO}}"
+	MY_P="${PN}-${MY_PV}"
 fi
 
 S="${WORKDIR}/${MY_P}/build_unix"
@@ -26,7 +26,7 @@ for (( i=1 ; i<=${PATCHNO} ; i++ )) ; do
 done
 
 LICENSE="Sleepycat"
-SLOT="4.8"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="doc java cxx tcl test"
 
@@ -40,51 +40,68 @@ DEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )
 RDEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )
 	java? ( >=virtual/jre-1.5 )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.8-libtool.patch
+	"${FILESDIR}"/${PN}-4.8.24-java-manifest-location.patch
+	"${FILESDIR}"/${PN}-4.8.30-rename-atomic-compare-exchange.patch
+
+	# use the includes from the prefix
+	"${FILESDIR}"/${PN}-4.6-jni-check-prefix-first.patch
+	"${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
+)
+
 src_prepare() {
 	cd "${WORKDIR}"/"${MY_P}" || die
 	for (( i=1 ; i<=${PATCHNO} ; i++ ))
 	do
-		epatch "${DISTDIR}"/patch."${MY_PV}"."${i}"
+		eapply -p0 "${DISTDIR}"/patch."${MY_PV}"."${i}"
 	done
-	epatch "${FILESDIR}"/${PN}-4.8-libtool.patch
-	epatch "${FILESDIR}"/${PN}-4.8.24-java-manifest-location.patch
-	epatch "${FILESDIR}"/${PN}-4.8.30-rename-atomic-compare-exchange.patch
 
-	# use the includes from the prefix
-	epatch "${FILESDIR}"/${PN}-4.6-jni-check-prefix-first.patch
-	epatch "${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
+	default
 
 	sed -e "/^DB_RELEASE_DATE=/s/%B %e, %Y/%Y-%m-%d/" -i dist/RELEASE \
 		|| die
 
 	# Include the SLOT for Java JAR files
 	# This supersedes the unused jarlocation patches.
-	sed -r -i \
+	sed -r \
 		-e '/jarfile=.*\.jar$/s,(.jar$),-$(LIBVERSION)\1,g' \
-		"${S}"/../dist/Makefile.in || die
+		-i dist/Makefile.in || die
 
-	cd "${S}"/../dist || die
-	rm -f aclocal/libtool.m4
-	sed -i \
+	cd dist || die
+	rm aclocal/libtool.m4 || die
+	sed \
 		-e '/AC_PROG_LIBTOOL$/aLT_OUTPUT' \
-		configure.ac || die
-	sed -i \
+		-i configure.ac || die
+	sed \
 		-e '/^AC_PATH_TOOL/s/ sh, none/ bash, none/' \
-		aclocal/programs.m4 || die
+		-i aclocal/programs.m4 || die
+
 	AT_M4DIR="aclocal aclocal_java" eautoreconf
+
 	# Upstream sucks - they do autoconf and THEN replace the version variables.
 	. ./RELEASE
-	sed -i \
+	sed \
 		-e "s/__EDIT_DB_VERSION_MAJOR__/$DB_VERSION_MAJOR/g" \
 		-e "s/__EDIT_DB_VERSION_MINOR__/$DB_VERSION_MINOR/g" \
 		-e "s/__EDIT_DB_VERSION_PATCH__/$DB_VERSION_PATCH/g" \
 		-e "s/__EDIT_DB_VERSION_STRING__/$DB_VERSION_STRING/g" \
 		-e "s/__EDIT_DB_VERSION_UNIQUE_NAME__/$DB_VERSION_UNIQUE_NAME/g" \
-		-e "s/__EDIT_DB_VERSION__/$DB_VERSION/g" configure || die
+		-e "s/__EDIT_DB_VERSION__/$DB_VERSION/g" \
+		-i configure || die
 }
 
 multilib_src_configure() {
-	local myconf=()
+	local myconf=(
+		--enable-compat185
+		--enable-o_direct
+		--without-uniquename
+		$([[ ${ABI} == amd64 ]] && echo --with-mutex=x86/gcc-assembly)
+		$(use_enable cxx)
+		$(use_enable cxx stl)
+		$(multilib_native_use_enable java)
+		$(use_enable test)
+	)
 
 	tc-ld-disable-gold #470634
 
@@ -121,16 +138,8 @@ multilib_src_configure() {
 
 	ECONF_SOURCE="${S}"/../dist \
 	STRIP="true" \
-	econf \
-		--enable-compat185 \
-		--enable-o_direct \
-		--without-uniquename \
-		$([[ ${ABI} == amd64 ]] && echo --with-mutex=x86/gcc-assembly) \
-		$(use_enable cxx) \
-		$(use_enable cxx stl) \
-		$(multilib_native_use_enable java) \
-		"${myconf[@]}" \
-		$(use_enable test)
+	econf "${myconf[@]}"
+
 	# The embedded assembly on ARM does not work on newer hardware
 	# so you CANNOT use --with-mutex=ARM/gcc-assembly anymore.
 	# Specifically, it uses the SWPB op, which was deprecated:
@@ -143,7 +152,7 @@ multilib_src_configure() {
 multilib_src_test() {
 	multilib_is_native_abi || return
 
-	S=${BUILD_DIR} db_src_test
+	S="${BUILD_DIR}" db_src_test
 }
 
 multilib_src_install() {

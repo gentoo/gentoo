@@ -1,19 +1,19 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils db flag-o-matic java-pkg-opt-2 autotools multilib toolchain-funcs
+EAPI=7
+inherit autotools db flag-o-matic java-pkg-opt-2 multilib toolchain-funcs
 
 #Number of official patches
 #PATCHNO=`echo ${PV}|sed -e "s,\(.*_p\)\([0-9]*\),\2,"`
-PATCHNO=${PV/*.*.*_p}
+PATCHNO="${PV/*.*.*_p}"
 if [[ ${PATCHNO} == "${PV}" ]] ; then
-	MY_PV=${PV}
-	MY_P=${P}
+	MY_PV="${PV}"
+	MY_P="${P}"
 	PATCHNO=0
 else
-	MY_PV=${PV/_p${PATCHNO}}
-	MY_P=${PN}-${MY_PV}
+	MY_PV="${PV/_p${PATCHNO}}"
+	MY_P="${PN}-${MY_PV}"
 fi
 
 S_BASE="${WORKDIR}/${MY_P}"
@@ -26,7 +26,7 @@ for (( i=1 ; i<=${PATCHNO} ; i++ )) ; do
 done
 
 LICENSE="Sleepycat"
-SLOT="5.1"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="doc java cxx tcl test"
 
@@ -40,70 +40,91 @@ DEPEND="tcl? ( >=dev-lang/tcl-8.4:0 )
 RDEPEND="tcl? ( dev-lang/tcl:0 )
 	java? ( >=virtual/jre-1.5 )"
 
-src_prepare() {
-	cd "${WORKDIR}"/"${MY_P}"
-	for (( i=1 ; i<=${PATCHNO} ; i++ ))
-	do
-		epatch "${DISTDIR}"/patch."${MY_PV}"."${i}"
-	done
-	epatch "${FILESDIR}"/${PN}-4.8-libtool.patch
-	epatch "${FILESDIR}"/${PN}-4.8.24-java-manifest-location.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.8-libtool.patch
+	"${FILESDIR}"/${PN}-4.8.24-java-manifest-location.patch
 
 	# use the includes from the prefix
-	epatch "${FILESDIR}"/${PN}-4.6-jni-check-prefix-first.patch
-	epatch "${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
+	"${FILESDIR}"/${PN}-4.6-jni-check-prefix-first.patch
+	"${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
 
 	# upstream autoconf fails to build DBM when it's supposed to
 	# merged upstream in 5.0.26
-	#epatch "${FILESDIR}"/${PN}-5.0.21-enable-dbm-autoconf.patch
+	#"${FILESDIR}"/${PN}-5.0.21-enable-dbm-autoconf.patch
 
 	# Needed when compiling with clang
-	epatch "${FILESDIR}"/${P}-rename-atomic-compare-exchange.patch
+	"${FILESDIR}"/${P}-rename-atomic-compare-exchange.patch
+)
+
+src_prepare() {
+	cd "${S_BASE}" || die
+	for (( i=1 ; i<=${PATCHNO} ; i++ ))
+	do
+		eapply -p0 "${DISTDIR}"/patch."${MY_PV}"."${i}"
+	done
+
+	default
 
 	# Upstream release script grabs the dates when the script was run, so lets
 	# end-run them to keep the date the same.
 	export REAL_DB_RELEASE_DATE="$(awk \
 		'/^DB_VERSION_STRING=/{ gsub(".*\\(|\\).*","",$0); print $0; }' \
 		"${S_BASE}"/dist/configure)"
-	sed -r -i \
+	sed -r \
 		-e "/^DB_RELEASE_DATE=/s~=.*~='${REAL_DB_RELEASE_DATE}'~g" \
-		"${S_BASE}"/dist/RELEASE
+		-i dist/RELEASE || die
 
 	# Include the SLOT for Java JAR files
 	# This supersedes the unused jarlocation patches.
-	sed -r -i \
+	sed -r \
 		-e '/jarfile=.*\.jar$/s,(.jar$),-$(LIBVERSION)\1,g' \
-		"${S_BASE}"/dist/Makefile.in
+		-i dist/Makefile.in || die
 
-	cd "${S_BASE}"/dist
-	rm -f aclocal/libtool.m4
-	sed -i \
+	cd dist || die
+	rm aclocal/libtool.m4 || die
+	sed \
 		-e '/AC_PROG_LIBTOOL$/aLT_OUTPUT' \
-		configure.ac
-	sed -i \
+		-i configure.ac || die
+	sed \
 		-e '/^AC_PATH_TOOL/s/ sh, none/ bash, none/' \
-		aclocal/programs.m4
+		-i aclocal/programs.m4 || die
+
 	AT_M4DIR="aclocal aclocal_java" eautoreconf
+
 	# Upstream sucks - they do autoconf and THEN replace the version variables.
 	. ./RELEASE
+	local v ev
 	for v in \
 		DB_VERSION_{FAMILY,LETTER,RELEASE,MAJOR,MINOR} \
 		DB_VERSION_{PATCH,FULL,UNIQUE_NAME,STRING,FULL_STRING} \
 		DB_VERSION \
 		DB_RELEASE_DATE ; do
-		local ev="__EDIT_${v}__"
-		sed -i -e "s/${ev}/${!v}/g" configure
+		ev="__EDIT_${v}__"
+		sed -e "s/${ev}/${!v}/g" -i configure || die
 	done
 
 	# This is a false positive skip in the tests as the test-reviewer code
 	# looks for 'Skipping\s'
-	sed -i \
+	sed \
 		-e '/db_repsite/s,Skipping:,Skipping,g' \
-		"${S_BASE}"/test/tcl/reputils.tcl || die
+		-i "${S_BASE}"/test/tcl/reputils.tcl || die
 }
 
 src_configure() {
-	local myconf=''
+	local myconf=(
+		--enable-compat185
+		--enable-dbm
+		--enable-o_direct
+		--without-uniquename
+		--enable-sql
+		--enable-sql_codegen
+		--disable-sql_compat
+		$(use amd64 && echo --with-mutex=x86/gcc-assembly)
+		$(use_enable cxx)
+		$(use_enable cxx stl)
+		$(use_enable java)
+		$(use_enable test)
+	)
 
 	tc-ld-disable-gold #470634
 
@@ -113,12 +134,11 @@ src_configure() {
 		is-flagq -O[s123] || append-flags -O2
 	fi
 
-	# use `set` here since the java opts will contain whitespace
-	set --
 	if use java ; then
-		set -- "$@" \
-			--with-java-prefix="${JAVA_HOME}" \
+		myconf+=(
+			--with-java-prefix="${JAVA_HOME}"
 			--with-javac-flags="$(java-pkg_javac-args)"
+		)
 	fi
 
 	# Add linker versions to the symbols. Easier to do, and safer than header file
@@ -129,32 +149,22 @@ src_configure() {
 
 	# Bug #270851: test needs TCL support
 	if use tcl || use test ; then
-		myconf="${myconf} --enable-tcl"
-		myconf="${myconf} --with-tcl=${EPREFIX}/usr/$(get_libdir)"
+		myconf+=(
+			--enable-tcl
+			--with-tcl="${EPREFIX}/usr/$(get_libdir)"
+		)
 	else
-		myconf="${myconf} --disable-tcl"
+		myconf+=( --disable-tcl )
 	fi
 
 	# sql_compat will cause a collision with sqlite3
 	# --enable-sql_compat
-	cd "${S}"
+	cd "${S}" || die
+
 	ECONF_SOURCE="${S_BASE}"/dist \
 	STRIP="true" \
-	econf \
-		--enable-compat185 \
-		--enable-dbm \
-		--enable-o_direct \
-		--without-uniquename \
-		--enable-sql \
-		--enable-sql_codegen \
-		--disable-sql_compat \
-		$(use amd64 && echo --with-mutex=x86/gcc-assembly) \
-		$(use_enable cxx) \
-		$(use_enable cxx stl) \
-		$(use_enable java) \
-		${myconf} \
-		$(use_enable test) \
-		"$@"
+	econf "${myconf[@]}"
+
 	# The embedded assembly on ARM does not work on newer hardware
 	# so you CANNOT use --with-mutex=ARM/gcc-assembly anymore.
 	# Specifically, it uses the SWPB op, which was deprecated:
@@ -164,12 +174,8 @@ src_configure() {
 	# >=db-6.1 uses LDREX instead.
 }
 
-src_compile() {
-	emake || die "make failed"
-}
-
 src_install() {
-	emake install DESTDIR="${D}" || die
+	emake DESTDIR="${D}" install
 
 	db_src_install_usrbinslot
 
@@ -181,8 +187,10 @@ src_install() {
 
 	dodir /usr/sbin
 	# This file is not always built, and no longer exists as of db-4.8
-	[[ -f "${ED}"/usr/bin/berkeley_db_svc ]] && \
-	mv "${ED}"/usr/bin/berkeley_db_svc "${ED}"/usr/sbin/berkeley_db"${SLOT/./}"_svc
+	if [[ -f "${ED}"/usr/bin/berkeley_db_svc ]] ; then
+		mv "${ED}"/usr/bin/berkeley_db_svc \
+			"${ED}"/usr/sbin/berkeley_db"${SLOT/./}"_svc || die
+	fi
 
 	if use java; then
 		java-pkg_regso "${ED}"/usr/"$(get_libdir)"/libdb_java*.so
@@ -207,9 +215,9 @@ src_test() {
 	#sed -ri \
 	#	-e '/set subs/s,multi_repmgr,,g' \
 	#	"${S_BASE}/test/testparams.tcl"
-	sed -ri \
+	sed -r \
 		-e '/multi_repmgr/d' \
-		"${S_BASE}/test/tcl/test.tcl"
+		-i "${S_BASE}/test/tcl/test.tcl" || die
 
 	db_src_test
 }

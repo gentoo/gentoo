@@ -131,7 +131,7 @@ src_compile() {
 	pushd "${S}"/build-static &>/dev/null || die
 	emake strip="${EPREFIX}"/bin/true
 	popd &>/dev/null || die
-	
+
 	einfo "Building ${P} (shared)..."
 	pushd build-shared &>/dev/null || die
 	emake strip="${EPREFIX}"/bin/true
