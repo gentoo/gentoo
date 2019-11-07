@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201911-03">
+  <title>Oniguruma: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Oniguruma, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">oniguruma</product>
+  <announced>2019-11-07</announced>
+  <revised count="1">2019-11-07</revised>
+  <bug>691832</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/oniguruma" auto="yes" arch="*">
+      <unaffected range="ge">6.9.3</unaffected>
+      <vulnerable range="lt">6.9.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Oniguruma is a regular expression library.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Oniguruma. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker, by enticing a user to process a specially crafted
+      string using an application linked against Oniguruma, could possibly
+      execute arbitrary code with the privileges of the process or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Oniguruma users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/oniguruma-6.9.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13224">CVE-2019-13224</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13225">CVE-2019-13225</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-09-12T21:09:00Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2019-11-07T19:07:37Z">whissi</metadata>
+</glsa>
