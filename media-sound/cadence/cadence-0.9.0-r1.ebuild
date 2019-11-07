@@ -8,12 +8,14 @@ inherit python-single-r1 xdg-utils desktop
 
 DESCRIPTION="Collection of tools useful for audio production"
 HOMEPAGE="http://kxstudio.linuxaudio.org/Applications:Cadence"
-SRC_URI="https://github.com/falkTX/Cadence/archive/v${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/falkTX/Cadence/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="-pulseaudio opengl"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	media-sound/jack2[dbus]

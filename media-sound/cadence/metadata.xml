@@ -5,4 +5,8 @@
 	<email>miroslav.sulc@fordfrog.com</email>
 	<name>Miroslav Šulc</name>
 </maintainer>
+<maintainer type="project">
+	<email>proaudio@gentoo.org</email>
+	<name>Gentoo ProAudio Project</name>
+</maintainer>
 </pkgmetadata>
