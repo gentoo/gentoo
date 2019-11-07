@@ -7,7 +7,6 @@ PLOCALES="af ar be bg bn br bs ca cs cy da de el en en_CA en_GB eo es et eu fa f
 
 MY_P="${P/_}"
 if [[ ${PV} == *9999* ]]; then
-	EGIT_BRANCH="qt5"
 	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 	inherit git-r3
 else
