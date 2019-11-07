@@ -2287,7 +2287,7 @@ app-portage/esearch 1.3-r2 9999: Replacement for 'emerge --search' with search-i
 app-portage/etc-proposals 1.4.3-r3: a set of tools for updating gentoo config files
 app-portage/euscan 0.1.1-r2 9999: Ebuild upstream scan utility
 app-portage/euses 2.5.9: look up USE flag descriptions fast
-app-portage/fetchcommandwrapper 0.8.1-r1: Wrapper integrating aria2 into portage's FETCHCOMMAND
+app-portage/fetchcommandwrapper 0.8.1-r1 0.8.2: Wrapper integrating aria2 into portage's FETCHCOMMAND
 app-portage/flaggie 0.2.1-r1 9999: A smart CLI mangler for package.* files
 app-portage/fquery 0.2.2 0.2.3: Installed package query tool for Gentoo Linux
 app-portage/g-cpan 0.16.5 0.16.6 0.16.7 0.16.9-r1 9999: Autogenerate and install ebuilds for CPAN modules
@@ -7464,7 +7464,7 @@ dev-python/backcall 0.1.0: Specifications for callback functions passed in to an
 dev-python/backports 1.0: Namespace for backported Python features
 dev-python/backports-abc 0.4 0.5: Backport of Python 3.5's 'collections.abc' module
 dev-python/backports-csv 1.0.5 1.0.7: Backport of Python 3's 'csv' module
-dev-python/backports-functools-lru-cache 1.3 1.4-r1 1.5: Backport of functools.lru_cache from Python 3.3
+dev-python/backports-functools-lru-cache 1.3 1.4-r1 1.5 1.6.1: Backport of functools.lru_cache from Python 3.3
 dev-python/backports-lzma 0.0.10 0.0.12 0.0.13: Backport of Python 3.3's lzma module for XZ/LZMA compressed files
 dev-python/backports-os 0.1.1: Backport of new features in Python's os module
 dev-python/backports-shutil_get_terminal_size 1.0.0-r1: A backport of the get_terminal_size function from Python 3.3's shutil
