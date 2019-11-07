@@ -81,8 +81,6 @@ src_configure() {
 		--enable-cxx
 		--enable-compat185
 		--enable-dump185
-		--libdir="${EPREFIX}"/usr/$(get_libdir)
-		--prefix="${EPREFIX}"/usr
 	)
 
 	local conf_shared=(
@@ -113,7 +111,7 @@ src_configure() {
 	pushd build-static &>/dev/null || die
 	strip="${EPREFIX}"/bin/true \
 	ECONF_SOURCE="${S}"/dist \
-	econf ${conf[@]} ${conf_static[@]}
+	econf "${conf[@]}" "${conf_static[@]}"
 	popd &>/dev/null || die
 
 	einfo "Configuring ${P} (shared)..."
@@ -121,7 +119,7 @@ src_configure() {
 	pushd build-shared &>/dev/null || die
 	strip="${EPREFIX}"/bin/true \
 	ECONF_SOURCE="${S}"/dist \
-	econf ${conf[@]} ${conf_shared[@]}
+	econf "${conf[@]}" "${conf_shared[@]}"
 	popd &>/dev/null || die
 }
 

@@ -1,20 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils db flag-o-matic java-pkg-opt-2 autotools multilib
+inherit autotools db flag-o-matic java-pkg-opt-2 multilib
 
 #Number of official patches
 #PATCHNO=`echo ${PV}|sed -e "s,\(.*_p\)\([0-9]*\),\2,"`
-PATCHNO=${PV/*.*.*_p}
+PATCHNO="${PV/*.*.*_p}"
 if [[ ${PATCHNO} == "${PV}" ]] ; then
-	MY_PV=${PV}
-	MY_P=${P}
+	MY_PV="${PV}"
+	MY_P="${P}"
 	PATCHNO=0
 else
-	MY_PV=${PV/_p${PATCHNO}}
-	MY_P=${PN}-${MY_PV}
+	MY_PV="${PV/_p${PATCHNO}}"
+	MY_P="${PN}-${MY_PV}"
 fi
 
 S="${WORKDIR}/${MY_P}/build_unix"
@@ -26,7 +26,7 @@ for (( i=1 ; i<=${PATCHNO} ; i++ )) ; do
 done
 
 LICENSE="Sleepycat"
-SLOT="4.5"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="tcl java doc cxx rpc"
 
@@ -36,86 +36,107 @@ DEPEND="tcl? ( >=dev-lang/tcl-8.4 )
 RDEPEND="tcl? ( dev-lang/tcl )
 	java? ( >=virtual/jre-1.4 )"
 
-src_unpack() {
-	unpack "${MY_P}".tar.gz
-	cd "${WORKDIR}"/"${MY_P}"
-	for (( i=1 ; i<=${PATCHNO} ; i++ ))
-	do
-		epatch "${DISTDIR}"/patch."${MY_PV}"."${i}"
-	done
-	epatch "${FILESDIR}"/"${PN}"-"${SLOT}"-libtool.patch
+PATCHES=(
+	"${FILESDIR}"/"${PN}"-"${SLOT}"-libtool.patch
 
 	# use the includes from the prefix
-	epatch "${FILESDIR}"/"${PN}"-4.3-jni-check-prefix-first.patch
-	epatch "${FILESDIR}"/"${PN}"-4.3-listen-to-java-options.patch
+	"${FILESDIR}"/"${PN}"-4.3-jni-check-prefix-first.patch
+	"${FILESDIR}"/"${PN}"-4.3-listen-to-java-options.patch
+)
 
-	sed -e "/^DB_RELEASE_DATE=/s/%B %e, %Y/%Y-%m-%d/" -i dist/RELEASE
+# Required to avoid unpack attempt of patches
+src_unpack() {
+	unpack "${MY_P}".tar.gz
+}
+
+src_prepare() {
+	pushd "${WORKDIR}"/"${MY_P}" &>/dev/null || die
+	for (( i=1 ; i<=${PATCHNO} ; i++ ))
+	do
+		eapply -p0 "${DISTDIR}"/patch."${MY_PV}"."${i}"
+	done
+
+	default
+
+	sed -e "/^DB_RELEASE_DATE=/s/%B %e, %Y/%Y-%m-%d/" \
+		-i dist/RELEASE || die
 
 	# Include the SLOT for Java JAR files
 	# This supersedes the unused jarlocation patches.
-	sed -r -i \
+	sed -r \
 		-e '/jarfile=.*\.jar$/s,(.jar$),-$(LIBVERSION)\1,g' \
-		"${S}"/../dist/Makefile.in
+		-i dist/Makefile.in || die
 
 	# START of 4.5+earlier specific
 	# Upstream sucks, they normally concat these
-	cd "${S}"/../dist/aclocal
-	for i in *; do ln -s $i ${i%.ac}.m4 ; done ;
-	cd "${S}"/../dist/aclocal_java
-	for i in *; do ln -s $i ${i%.ac}.m4 ; done ;
+	local i j
+	for j in dist/aclocal{,_java} ; do
+		pushd ${j} &>/dev/null || die
+		for i in * ; do
+			ln -s ${i} ${i%.ac}.m4 || die
+		done
+		popd &>/dev/null || die
+	done
 	# END of 4.5+earlier specific
-	cd "${S}"/../dist
-	rm -f aclocal/libtool.{m4,ac} aclocal.m4
-	sed -i \
+	pushd dist &>/dev/null || die
+	rm aclocal/libtool.{m4,ac} || die
+	sed \
 		-e '/AC_PROG_LIBTOOL$/aLT_OUTPUT' \
-		configure.ac
-	sed -i \
+		-i configure.ac || die
+	sed \
 		-e '/^AC_PATH_TOOL/s/ sh, none/ bash, none/' \
-		aclocal/programs.m4
+		-i aclocal/programs.m4 || die
+
 	AT_M4DIR="aclocal aclocal_java" eautoreconf
+
 	# Upstream sucks - they do autoconf and THEN replace the version variables.
 	. ./RELEASE
-	sed -i \
+	sed \
 		-e "s/__EDIT_DB_VERSION_MAJOR__/$DB_VERSION_MAJOR/g" \
 		-e "s/__EDIT_DB_VERSION_MINOR__/$DB_VERSION_MINOR/g" \
 		-e "s/__EDIT_DB_VERSION_PATCH__/$DB_VERSION_PATCH/g" \
 		-e "s/__EDIT_DB_VERSION_STRING__/$DB_VERSION_STRING/g" \
 		-e "s/__EDIT_DB_VERSION_UNIQUE_NAME__/$DB_VERSION_UNIQUE_NAME/g" \
-		-e "s/__EDIT_DB_VERSION__/$DB_VERSION/g" configure
+		-e "s/__EDIT_DB_VERSION__/$DB_VERSION/g" \
+		-i configure || die
+
+	popd &>/dev/null || die
+	popd &>/dev/null || die
 }
 
-src_compile() {
+src_configure() {
 	# compilation with -O0 fails on amd64, see bug #171231
-	if use amd64; then
+	if use amd64 ; then
 		replace-flags -O0 -O2
 		is-flagq -O[s123] || append-flags -O2
 	fi
 
-	local myconf=""
+	local myconf=(
+		--enable-compat185
+		--enable-o_direct
+		--without-uniquename
+		$(use_enable rpc)
+		--host="${CHOST}"
 
-	use amd64 && myconf="${myconf} --with-mutex=x86/gcc-assembly"
+		$(usex amd64 '--with-mutex=x86/gcc-assembly' '')
+		$(use_enable cxx)
+		$(use_enable tcl)
+		$(usex tcl "--with-tcl=${EPREFIX}/usr/$(get_libdir)" '') #"
+		$(use_enable java)
+	)
 
-	myconf="${myconf} $(use_enable cxx)"
-
-	use tcl \
-		&& myconf="${myconf} --enable-tcl --with-tcl=${EPREFIX}/usr/$(get_libdir)" \
-		|| myconf="${myconf} --disable-tcl"
-
-	myconf="${myconf} $(use_enable java)"
 	if use java; then
-		myconf="${myconf} --with-java-prefix=${JAVA_HOME}"
-		# Can't get this working any other way, since it returns spaces, and
-		# bash doesn't seem to want to pass correctly in any way i try
-		local javaconf="-with-javac-flags=$(java-pkg_javac-args)"
+		myconf+=(
+			--with-java-prefix="${JAVA_HOME}"
+			--with-javac-flags="$(java-pkg_javac-args)"
+		)
 	fi
-
-	[[ -n ${CBUILD} ]] && myconf="${myconf} --build=${CBUILD}"
 
 	# the entire testsuite needs the TCL functionality
 	if use tcl && use test ; then
-		myconf="${myconf} --enable-test"
+		myconf+=( --enable-test )
 	else
-		myconf="${myconf} --disable-test"
+		myconf+=( --disable-test )
 	fi
 
 	# Add linker versions to the symbols. Easier to do, and safer than header file
@@ -124,29 +145,18 @@ src_compile() {
 		append-ldflags -Wl,--default-symver
 	fi
 
-	cd "${S}" && ECONF_SOURCE="${S}"/../dist econf \
-		--prefix="${EPREFIX}"/usr \
-		--mandir="${EPREFIX}"/usr/share/man \
-		--infodir="${EPREFIX}"/usr/share/info \
-		--datadir="${EPREFIX}"/usr/share \
-		--sysconfdir="${EPREFIX}"/etc \
-		--localstatedir="${EPREFIX}"/var/lib \
-		--libdir="${EPREFIX}"/usr/"$(get_libdir)" \
-		--enable-compat185 \
-		--enable-o_direct \
-		--without-uniquename \
-		$(use_enable rpc) \
-		--host="${CHOST}" \
-		${myconf}  "${javaconf}" || die "configure failed"
+	ECONF_SOURCE="${S}"/../dist \
+	econf "${myconf[@]}"
 
-	sed -e "s,\(^STRIP *=\).*,\1\"true\"," Makefile > Makefile.cpy \
-	    && mv Makefile.cpy Makefile
-
-	emake || die "make failed"
+	sed -e "s,\(^STRIP *=\).*,\1\"true\"," -i Makefile || die
 }
 
 src_install() {
-	einstall libdir="${ED}/usr/$(get_libdir)" STRIP="true" || die
+	emake \
+		DESTDIR="${D}" \
+		libdir="${EPREFIX}/usr/$(get_libdir)" \
+		STRIP="true" \
+		install
 
 	db_src_install_usrbinslot
 
@@ -158,8 +168,10 @@ src_install() {
 
 	dodir /usr/sbin
 	# This file is not always built, and no longer exists as of db-4.8
-	[[ -f "${ED}"/usr/bin/berkeley_db_svc ]] && \
-	mv "${ED}"/usr/bin/berkeley_db_svc "${ED}"/usr/sbin/berkeley_db"${SLOT/./}"_svc
+	if [[ -f "${ED}"/usr/bin/berkeley_db_svc ]] ; then
+		mv "${ED}"/usr/bin/berkeley_db_svc \
+			"${ED}"/usr/sbin/berkeley_db"${SLOT/./}"_svc || die
+	fi
 
 	if use java; then
 		java-pkg_regso "${ED}"/usr/"$(get_libdir)"/libdb_java*.so
