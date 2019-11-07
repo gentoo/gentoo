@@ -11,4 +11,4 @@ RDEPEND=>=gnome-base/libglade-2 dev-libs/libxml2 media-libs/netpbm x11-apps/appr
 SLOT=0
 SRC_URI=https://www.jwz.org/xscreensaver/xscreensaver-5.43.tar.gz -> xscreensaver-5.43-r1.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	756a09f72c4cdbb55f2694c95f1e0860	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=17a3b9faded6494e2fd310f6f77b22b9
+_md5_=6cdd8d765239e58d5973b5a45ec5cdff
