@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201911-01">
+  <title>OpenSSH: Integer overflow</title>
+  <synopsis>An integer overflow in OpenSSH might allow an attacker to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">openssh</product>
+  <announced>2019-11-07</announced>
+  <revised count="1">2019-11-07</revised>
+  <bug>697046</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openssh" auto="yes" arch="*">
+      <unaffected range="ge">8.0_p1-r4</unaffected>
+      <vulnerable range="ge">8.0_p1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSH is a complete SSH protocol implementation that includes SFTP
+      client and server support.
+    </p>
+  </background>
+  <description>
+    <p>OpenSSH, when built with “xmss” USE flag enabled, has a
+      pre-authentication integer overflow if a client or server is configured
+      to use a crafted XMSS key.
+    </p>
+    
+    <p>NOTE: This USE flag is disabled by default!</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could connect to a vulnerable OpenSSH server using a
+      special crafted XMSS key possibly resulting in execution of arbitrary
+      code with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>Disable XMSS key type.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSH users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-misc/openssh/openssh-8.0_p1-r4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-16905">CVE-2019-16905</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-10-26T14:48:28Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2019-11-07T19:01:23Z">whissi</metadata>
+</glsa>
