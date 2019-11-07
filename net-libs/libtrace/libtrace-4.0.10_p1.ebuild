@@ -23,7 +23,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	app-doc/doxygen
+	app-doc/doxygen[dot]
 	sys-devel/flex
 	virtual/os-headers
 	virtual/pkgconfig
