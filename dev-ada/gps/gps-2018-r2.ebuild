@@ -104,5 +104,5 @@ src_install() {
 	cd ../gtk+-3.14.15-src
 	emake -C gtk DESTDIR="${D}" install-libLTLIBRARIES
 	rm "${D}"/usr/$(get_libdir)/libgtk-3.{la,so,so.0} || die
-	dosym "${D}"/usr/$(get_libdir)/libgtk-3.so.0.* /usr/$(get_libdir)/gps/libgtk-3.so.0
+	dosym ../libgtk-3.so.0.1400.15 /usr/$(get_libdir)/gps/libgtk-3.so.0
 }
