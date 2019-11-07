@@ -59,8 +59,10 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/${PN}.service
 	systemd_dounit "${FILESDIR}"/atopacct.service
 
-	dodoc atop.cronsysv AUTHOR README ${PN}.daily
-	docompress -x /usr/share/doc/${PF}/${PN}.daily
+	dodoc atop.cronsysv AUTHOR README
+
+	exeinto /usr/share/${PN}
+	doexe ${PN}.daily
 
 	insinto /etc/default
 	newins ${PN}{.default,}
