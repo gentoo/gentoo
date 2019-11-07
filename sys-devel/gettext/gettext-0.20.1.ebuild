@@ -36,6 +36,9 @@ RDEPEND="${DEPEND}
 	!git? ( cvs? ( dev-vcs/cvs ) )
 	git? ( dev-vcs/git )
 	java? ( >=virtual/jre-1.4 )"
+BDEPEND="
+	git? ( dev-vcs/git )
+"
 PDEPEND="emacs? ( app-emacs/po-mode )"
 
 MULTILIB_WRAPPED_HEADERS=(
