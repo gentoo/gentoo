@@ -14651,7 +14651,7 @@ net-dns/dnsimple-dyndns 0.1: Dynamic DNS implementation, that relies on DNSimple
 net-dns/dnsmasq 2.79 2.80 2.80-r1: Small forwarding DNS server
 net-dns/dnssec-check 2.2: Tests local resolver for support of DNSSEC validation
 net-dns/dnssec-root 20181220: The DNSSEC root key(s)
-net-dns/dnssec-tools 2.2.3: Tools to ease the deployment of DNSSEC related technologies
+net-dns/dnssec-tools 2.2.3-r1: Tools to ease the deployment of DNSSEC related technologies
 net-dns/dnssec-validator 2.2.3: Tools to ease the validation of DNSSEC related technologies
 net-dns/dnstop 20140915 20140915-r2: Displays various tables of DNS traffic on your network
 net-dns/dnsviz 0.8.2: Tool suite for analysis and visualization of DNS and DNSSEC
