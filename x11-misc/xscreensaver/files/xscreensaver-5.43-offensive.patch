@@ -1,0 +1,68 @@
+--- a/hacks/barcode.c
++++ a/hacks/barcode.c
+@@ -118,8 +118,6 @@
+   "belly",
+   "bliss",
+   "bogosity",
+-  "boobies",
+-  "boobs",
+   "booty",
+   "bread",
+   "bubba",
+@@ -132,7 +130,6 @@
+   "children",
+   "chocolate",
+   "CLONE",
+-  "cock",
+   "constriction",
+   "contrition",
+   "cop",
+@@ -266,7 +263,6 @@
+   "punishment",
+   "punk rock",
+   "punk",
+-  "pussy",
+   "quagmire",
+   "quarantine",
+   "quartz",
+@@ -334,8 +330,6 @@
+   "vegetarian",
+   "venom",
+   "verifiability",
+-  "viagra",
+-  "vibrator",
+   "victim",
+   "vignette",
+   "villainy",
+--- a/hacks/glx/glsnake.c
++++ a/hacks/glx/glsnake.c
+@@ -565,17 +565,17 @@
+ 	ZERO, PIN, ZERO, ZERO, ZERO, ZERO, PIN, ZERO, ZERO, ZERO, ZERO,
+ 	ZERO, PIN, ZERO }
+     },
+-    { "erect penis",     /* thanks benno */
++    { "shuffle board",     /* thanks benno */
+       { PIN, ZERO, PIN, PIN, ZERO, ZERO, PIN, ZERO, ZERO, ZERO, PIN,
+ 	PIN, ZERO, ZERO, ZERO, RIGHT, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO,
+ 	ZERO, ZERO }
+     },
+-    { "flaccid penis",
++    { "flaccid anchor",
+       { PIN, ZERO, PIN, PIN, ZERO, ZERO, PIN, ZERO, ZERO, ZERO, PIN,
+ 	PIN, ZERO, ZERO, ZERO, RIGHT, PIN, ZERO, ZERO, ZERO, ZERO, ZERO,
+ 	ZERO, ZERO }
+     },
+-    { "vagina",
++    { "engagement ring",
+       { RIGHT, ZERO, ZERO, ZERO, RIGHT, ZERO, ZERO, PIN, ZERO, ZERO,
+ 	LEFT, ZERO, ZERO, ZERO, LEFT, ZERO, LEFT, PIN, LEFT, PIN, RIGHT,
+ 	PIN, RIGHT, ZERO }
+@@ -995,7 +995,7 @@
+     { "Parrot",
+         { ZERO, ZERO, ZERO, ZERO, RIGHT, RIGHT, ZERO, LEFT, PIN, RIGHT, ZERO, RIGHT, ZERO, RIGHT, ZERO, RIGHT, PIN, LEFT, ZERO, RIGHT, LEFT, ZERO, PIN, ZERO }
+     },
+-    { "Penis",
++    { "Shuttle",
+         { PIN, PIN, RIGHT, ZERO, PIN, PIN, ZERO, PIN, ZERO, ZERO, RIGHT, PIN, LEFT, ZERO, ZERO, PIN, ZERO, PIN, PIN, ZERO, LEFT, PIN, PIN, ZERO }
+     },
+     { "PictureComingSoon",
