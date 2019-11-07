@@ -50,7 +50,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( dev-libs/dbus-glib )
 	exif? ( media-libs/libexif )
 	gnome? ( >=gnome-base/gnome-vfs-2.0 )
-	imagemagick? ( media-gfx/imagemagick:=[cxx] )
+	imagemagick? ( <media-gfx/imagemagick-7:=[cxx] )
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
 	spell? (
