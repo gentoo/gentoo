@@ -1,0 +1,112 @@
+--+ a/src/libprelude-error/Makefile.am	2018-12-23 21:59:17.340000000 +0100
++++ b/src/libprelude-error/Makefile.am	2019-07-11 17:33:18.537430699 +0200
+@@ -53,7 +53,7 @@
+ 
+ errnos-sym.h: Makefile mkstrtable.awk errnos.in
+ 	LANG="" $(AWK) -f $(srcdir)/mkstrtable.awk -v textidx=2 -v nogettext=1 \
+-	-v prefix=PRELUDE_ERROR_ -v namespace=errnos_ \
++	-v prefix=PRELUDE_ERROR_ -v pkg_namespace=errnos_ \
+ 	$(srcdir)/errnos.in >$@
+ 
+ prelude-error.h: Makefile mkheader.awk err-sources.h.in err-codes.h.in errnos.in prelude-error.h.in
+--+ a/src/libprelude-error/Makefile.in	2018-12-23 22:01:05.090000000 +0100
++++ b/src/libprelude-error/Makefile.in	2019-07-11 17:33:10.202599542 +0200
+@@ -1834,7 +1834,7 @@
+ 
+ errnos-sym.h: Makefile mkstrtable.awk errnos.in
+ 	LANG="" $(AWK) -f $(srcdir)/mkstrtable.awk -v textidx=2 -v nogettext=1 \
+-	-v prefix=PRELUDE_ERROR_ -v namespace=errnos_ \
++	-v prefix=PRELUDE_ERROR_ -v pkg_namespace=errnos_ \
+ 	$(srcdir)/errnos.in >$@
+ 
+ prelude-error.h: Makefile mkheader.awk err-sources.h.in err-codes.h.in errnos.in prelude-error.h.in
+--+ a/src/libprelude-error/mkerrcodes.awk	2018-12-23 21:59:17.340000000 +0100
++++ b/src/libprelude-error/mkerrcodes.awk	2019-07-11 17:34:56.482462208 +0200
+@@ -78,7 +78,7 @@
+ }
+ 
+ !header {
+-  sub (/\#.+/, "");
++  sub (/#.+/, "");
+   sub (/[ 	]+$/, ""); # Strip trailing space and tab characters.
+ 
+   if (/^$/)
+--+ a/src/libprelude-error/mkerrcodes1.awk	2018-12-23 21:59:17.341000000 +0100
++++ b/src/libprelude-error/mkerrcodes1.awk	2019-07-11 17:35:02.737336699 +0200
+@@ -78,7 +78,7 @@
+ }
+ 
+ !header {
+-  sub (/\#.+/, "");
++  sub (/#.+/, "");
+   sub (/[ 	]+$/, ""); # Strip trailing space and tab characters.
+ 
+   if (/^$/)
+--+ a/src/libprelude-error/mkerrcodes2.awk	2018-12-23 21:59:17.341000000 +0100
++++ b/src/libprelude-error/mkerrcodes2.awk	2019-07-11 17:35:08.595219159 +0200
+@@ -91,7 +91,7 @@
+ }
+ 
+ !header {
+-  sub (/\#.+/, "");
++  sub (/#.+/, "");
+   sub (/[ 	]+$/, ""); # Strip trailing space and tab characters.
+ 
+   if (/^$/)
+--+ a/src/libprelude-error/mkerrnos.awk	2019-07-11 17:41:09.385940916 +0200
++++ b/src/libprelude-error/mkerrnos.awk	2019-07-11 17:41:22.455671539 +0200
+@@ -80,7 +80,7 @@
+ }
+ 
+ !header {
+-  sub (/\#.+/, "");
++  sub (/#.+/, "");
+   sub (/[ 	]+$/, ""); # Strip trailing space and tab characters.
+ 
+   if (/^$/)
+--+ a/src/libprelude-error/mkstrtable.awk	2018-12-23 21:59:17.341000000 +0100
++++ b/src/libprelude-error/mkstrtable.awk	2019-07-11 17:38:41.588950860 +0200
+@@ -77,7 +77,7 @@
+ #
+ # The variable prefix can be used to prepend a string to each message.
+ #
+-# The variable namespace can be used to prepend a string to each
++# The variable pkg_namespace can be used to prepend a string to each
+ # variable and macro name.
+ 
+ BEGIN {
+@@ -102,7 +102,7 @@
+       print "/* The purpose of this complex string table is to produce";
+       print "   optimal code with a minimum of relocations.  */";
+       print "";
+-      print "static const char " namespace "msgstr[] = ";
++      print "static const char " pkg_namespace "msgstr[] = ";
+       header = 0;
+     }
+   else
+@@ -110,7 +110,7 @@
+ }
+ 
+ !header {
+-  sub (/\#.+/, "");
++  sub (/#.+/, "");
+   sub (/[ 	]+$/, ""); # Strip trailing space and tab characters.
+ 
+   if (/^$/)
+@@ -150,14 +150,14 @@
+   else
+     print "  gettext_noop (\"" prefix last_msgstr "\");";
+   print "";
+-  print "static const int " namespace "msgidx[] =";
++  print "static const int " pkg_namespace "msgidx[] =";
+   print "  {";
+   for (i = 0; i < coded_msgs; i++)
+     print "    " pos[i] ",";
+   print "    " pos[coded_msgs];
+   print "  };";
+   print "";
+-  print "#define " namespace "msgidxof(code) (0 ? -1 \\";
++  print "#define " pkg_namespace "msgidxof(code) (0 ? -1 \\";
+ 
+ # Gather the ranges.
+   skip = code[0];
