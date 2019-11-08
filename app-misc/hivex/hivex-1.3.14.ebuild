@@ -27,7 +27,10 @@ RDEPEND="
 			 dev-ml/findlib[ocamlopt]
 			 )
 	readline? ( sys-libs/readline:0 )
-	perl? ( dev-perl/IO-stringy )
+	perl? (
+		dev-lang/perl:=
+		dev-perl/IO-stringy
+	)
 	ruby? ( $(ruby_implementations_depend) )
 	python? ( ${PYTHON_DEPS} )
 	"
