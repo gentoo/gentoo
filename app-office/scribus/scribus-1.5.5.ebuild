@@ -72,7 +72,7 @@ PATCHES=(
 	# non(?)-upstreamable
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
 	"${FILESDIR}"/${P}-docdir.patch
-	"${FILESDIR}"/${P}-findhyphen.patch
+	"${FILESDIR}"/${P}-findhyphen-{1,2}.patch
 )
 
 src_prepare() {
