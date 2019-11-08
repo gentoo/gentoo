@@ -7724,7 +7724,7 @@ dev-python/dynd-python 0.7.2-r1: Python exposure of multidimensionnal array libr
 dev-python/e4u 0.1_rc5-r1: A library for handling unicode emoji and carrier's emoji
 dev-python/easy-thumbnails 2.2 2.3 2.4.1: Easy thumbnails for Django
 dev-python/ebuildtester 0.1.12 0.1.13 0.1.14: A dockerized approach to test a Gentoo package within a clean stage3 container
-dev-python/ecdsa 0.13 0.13.2 0.13.3: ECDSA cryptographic signature library in pure Python
+dev-python/ecdsa 0.13 0.13.2 0.13.3 0.14.1: ECDSA cryptographic signature library in pure Python
 dev-python/ed25519ll 0.6: A low-level ctypes wrapper for Ed25519 digital signatures.
 dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python object
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
@@ -15210,7 +15210,7 @@ net-misc/connman-notify 0_pre20191003: Desktop notification integration for conn
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/crossbar 17.6.1_p3-r1 17.8.1 17.9.1 17.12.1 18.3.1: Crossbar.io - The Unified Application Router for the twisted framework
 net-misc/csync 0.50.0 0.50.0-r1: lightweight file synchronizer utility
-net-misc/curl 7.65.0 7.65.3 7.66.0: A Client that groks URLs
+net-misc/curl 7.65.0 7.65.3 7.66.0 7.67.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1 2.11.1-r1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2 2.11.1: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
@@ -17193,7 +17193,7 @@ sys-apps/osinfo-db 20190218 20190304 20190319: osinfo database files
 sys-apps/osinfo-db-tools 1.2.0 1.3.0 1.4.0: Tools for managing the osinfo database
 sys-apps/pacman 5.0.2-r2: Archlinux's binary package manager
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
-sys-apps/paxctld 1.2.2: PaX flags maintenance daemon
+sys-apps/paxctld 1.2.3: PaX flags maintenance daemon
 sys-apps/pciutils 3.5.6-r1 3.6.1 3.6.2-r1: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.24 1.8.25 1.8.25-r1: PC/SC Architecture smartcard middleware library
