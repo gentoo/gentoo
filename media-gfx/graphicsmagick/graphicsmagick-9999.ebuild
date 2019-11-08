@@ -31,7 +31,7 @@ RDEPEND="dev-libs/libltdl:0
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
 	lzma? ( app-arch/xz-utils )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	png? ( media-libs/libpng:0= )
 	postscript? ( app-text/ghostscript-gpl )
 	svg? ( dev-libs/libxml2 )
