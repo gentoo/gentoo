@@ -4368,6 +4368,7 @@ media-libs/libplacebo:lcms - Add support for color management via media-libs/lcm
 media-libs/libplacebo:shaderc - Use media-libs/shaderc to compile GLSL
 media-libs/libplacebo:vulkan - Add support for the vulkan graphics API
 media-libs/libpng:apng - support unofficial APNG (Animated PNG) spec
+media-libs/libpng-compat:apng - support unofficial APNG (Animated PNG) spec
 media-libs/libpostproc:pic - Force shared libraries to be built as PIC (this is slower).
 media-libs/libprojectm:gles2 - Provide support for OpenGL ES 2 and 3
 media-libs/libsdl:joystick - Control joystick support (disable at your own risk)

@@ -542,7 +542,7 @@ app-backup/rsnapshot 1.3.1-r2 1.4.1 1.4.2: A filesystem backup utility based on 
 app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling system based on DAR
 app-backup/simplebackup 1.8.1-r1: Cross-platform backup program
 app-backup/snapper 0.5.6-r1 0.8.3 0.8.4: Command-line program for btrfs and lvm snapshot management
-app-backup/spideroak-bin 7.5.0: Secure free online backup, storage, and sharing system
+app-backup/spideroak-bin 7.5.0-r1: Secure free online backup, storage, and sharing system
 app-backup/tarsnap 1.0.35 1.0.37 1.0.39: Online backups for the truly paranoid
 app-backup/tob 0.26-r2: A general driver for making and maintaining backups
 app-backup/tsm 7.1.8.0 8.1.6.0: IBM Spectrum Protect (former Tivoli Storage Manager) Backup/Archive Client, API
@@ -2247,7 +2247,7 @@ app-office/texstudio 2.11.2-r2 2.12.2-r1 2.12.4-r1 2.12.6-r1 2.12.8-r1 2.12.10 2
 app-office/unoconv 0.8.2 0.9: Convert between document formats supported by Libreoffice
 app-office/upwork 5.2.3.771: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
-app-office/wps-office 11.1.0.8372 11.1.0.8865: WPS Office is an office productivity suite
+app-office/wps-office 11.1.0.8372-r1 11.1.0.8865-r1: WPS Office is an office productivity suite
 app-officeext/barcode 1.3.5.0-r1: Extension for reading barcodes
 app-officeext/ct2n 1.5.0: Extension for converting text to numbers
 app-officeext/dmaths 3.4.9.0-r1: Mathematics Formula Editor Extension
@@ -3084,7 +3084,7 @@ dev-cpp/popl 1.2.0 9999: Header-only C++ program options parser library
 dev-cpp/pstreams 0.7.0 0.8.1 1.0.0 1.0.1: C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)
 dev-cpp/random123 1.09-r1: library of counter-based random number generators (CBRNGs)
 dev-cpp/rttr 0.9.6: Run Time Type Reflection - library adding reflection to C++
-dev-cpp/sourcetrail 2018.3.55-r1 2019.1.11 2019.2.39 2019.3.46 2019.3.46-r1: A cross-platform source explorer for C/C++ and Java
+dev-cpp/sourcetrail 2018.3.55-r1 2019.1.11 2019.2.39 2019.3.46 2019.3.46-r2: A cross-platform source explorer for C/C++ and Java
 dev-cpp/sparsehash 2.0.3-r1: An extremely memory-efficient hash_map implementation
 dev-cpp/tbb 2017.20161128 2018.20180312 2019.8: High level abstract threading library
 dev-cpp/tclap 1.2.1 1.2.2: Simple templatized C++ library for parsing command line arguments
@@ -10983,10 +10983,10 @@ games-action/accelerator3d 0.1.1-r3: Fast-paced, 3D, first-person shoot/dodge-'e
 games-action/apotheon 1.26v: Heroic action game set within the vibrant world of Ancient Greek Mythology
 games-action/armagetronad 0.2.8.3.3-r1: Fast-paced 3D lightcycle game based on Tron
 games-action/atanks 6.4-r1: Worms and Scorched Earth-like game
-games-action/badland 121: Atmospheric side-scrolling action adventure platformer set in a gorgeous forest
+games-action/badland 121-r1: Atmospheric side-scrolling action adventure platformer set in a gorgeous forest
 games-action/barrage 1.0.4-r1: A violent point-and-click shooting game
 games-action/battalion 1.4b-r1: Be a rampaging monster and destroy the city
-games-action/beathazardultra 20130308-r1: Intense music-driven arcade shooter powered by your music
+games-action/beathazardultra 20130308-r2: Intense music-driven arcade shooter powered by your music
 games-action/bomberclone 0.11.9: Bomberman clone with network game support
 games-action/brutal-legend 20130615-r2: Unleash the power of Heavy Metal to reign down fire from the sky
 games-action/btanks 0.9.8083: Fast 2D tank arcade game with multiplayer and split-screen modes
@@ -11050,8 +11050,8 @@ games-action/teeworlds 0.6.4: Online multi-player platform 2D shooter
 games-action/towbowl-tactics 0.5: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
 games-action/transcend 0.3-r1: Retro-style, abstract, 2D shooter
 games-action/trine 1.08-r3: A physics-based action game with character-dependent solutions to challenges
-games-action/trine-enchanted-edition 2.12.508-r1: The original sidescrolling action platformer under the Trine 2 engine
-games-action/trine2 2.01.425: Sidescrolling game of action, puzzles and platforming, Complete Story edition
+games-action/trine-enchanted-edition 2.12.508-r2: The original sidescrolling action platformer under the Trine 2 engine
+games-action/trine2 2.01.425-r1: Sidescrolling game of action, puzzles and platforming, Complete Story edition
 games-action/trosh 20-r1 20-r2: A game made in 20 hours for a friend. It has explosions
 games-action/tuxkart 0.4.0-r1: A racing game starring Tux, the Linux penguin
 games-action/violetland 0.4.3-r1: Help a girl named Violet in the struggle with hordes of monsters
@@ -13261,7 +13261,8 @@ media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of A
 media-libs/libpano13 2.9.18 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.11.32 6.12.27: Library to load, handle and manipulate images in the PGF format
 media-libs/libplacebo 1.18.0 1.21.0 9999: Reusable library for GPU-accelerated image processing primitives
-media-libs/libpng 1.2.59 1.5.30 1.6.37: Portable Network Graphics library
+media-libs/libpng 1.6.37: Portable Network Graphics library
+media-libs/libpng-compat 1.2.59 1.5.30: Portable Network Graphics library
 media-libs/libpostproc 0.8.0.20121125 10.20140517 10.20140517-r1 9999: Video post processing library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
 media-libs/libprojectm 2.1.0-r2 3.1.0-r1 3.1.1_rc4 3.1.1_rc5 3.1.1_rc5-r1 9999: A graphical music visualization plugin similar to milkdrop
@@ -16238,7 +16239,7 @@ sci-electronics/petrify 4.2-r1: Synthesize Petri nets into asynchronous circuits
 sci-electronics/puff 20100127-r1: microwave CAD software
 sci-electronics/pulseview 0.4.1 9999: Qt based logic analyzer GUI for sigrok
 sci-electronics/qelectrotech 0.61 9999: Qt5 application to design electric diagrams
-sci-electronics/quartus-prime-lite 15.1.0.185 15.1.0.185-r1: Full-featured EDA product for altera devices
+sci-electronics/quartus-prime-lite 15.1.0.185-r2 15.1.0.185-r3: Full-featured EDA product for altera devices
 sci-electronics/sigrok-cli 0.7.1 9999: Command-line client for the sigrok logic analyzer software
 sci-electronics/spice 3.5.5-r2: general-purpose circuit simulation program
 sci-electronics/splat 1.4.2: RF Signal Propagation, Loss, And Terrain analysis tool

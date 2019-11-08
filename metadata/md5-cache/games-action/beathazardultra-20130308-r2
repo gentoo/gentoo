@@ -6,9 +6,9 @@ HOMEPAGE=http://www.coldbeamgames.com/
 IUSE=bundled-libs
 KEYWORDS=-* ~amd64 ~x86
 LICENSE=all-rights-reserved
-RDEPEND=virtual/opengl amd64? ( !bundled-libs? ( >=media-libs/libpng-1.2.51:1.2[abi_x86_32(-)] >=virtual/jpeg-0-r2[abi_x86_32(-)] ) >=x11-libs/gtk+-2.24.23:2[abi_x86_32(-)] >=virtual/opengl-7.0-r1[abi_x86_32(-)] >=x11-libs/libX11-1.6.2[abi_x86_32(-)] >=x11-libs/libXcursor-1.1.14[abi_x86_32(-)] >=x11-libs/libXinerama-1.1.3[abi_x86_32(-)] >=x11-libs/libXrandr-1.4.2[abi_x86_32(-)] ) x86? ( x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXcursor x11-libs/libXinerama x11-libs/libXrandr !bundled-libs? ( media-libs/libpng:1.2 virtual/jpeg ) )
+RDEPEND=virtual/opengl amd64? ( !bundled-libs? ( >=media-libs/libpng-compat-1.2.51:1.2[abi_x86_32(-)] >=virtual/jpeg-0-r2[abi_x86_32(-)] ) >=x11-libs/gtk+-2.24.23:2[abi_x86_32(-)] >=virtual/opengl-7.0-r1[abi_x86_32(-)] >=x11-libs/libX11-1.6.2[abi_x86_32(-)] >=x11-libs/libXcursor-1.1.14[abi_x86_32(-)] >=x11-libs/libXinerama-1.1.3[abi_x86_32(-)] >=x11-libs/libXrandr-1.4.2[abi_x86_32(-)] ) x86? ( x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXcursor x11-libs/libXinerama x11-libs/libXrandr !bundled-libs? ( media-libs/libpng-compat:1.2 virtual/jpeg ) )
 RESTRICT=bindist fetch splitdebug
 SLOT=0
 SRC_URI=beathazard-installer_03-08-13
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=3a5d3da24b1736c56cccecbd7bb6aea4
+_md5_=da58e3761f7f5f0cf19c1abad29ee7b3
