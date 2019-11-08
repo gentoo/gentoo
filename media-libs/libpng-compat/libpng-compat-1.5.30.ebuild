@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,10 +7,12 @@ EAPI=6
 
 inherit eutils libtool multilib-minimal
 
+MY_P=libpng-${PV}
 DESCRIPTION="Portable Network Graphics library"
 HOMEPAGE="http://www.libpng.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz
-	apng? ( https://dev.gentoo.org/~polynomial-c/${P}-apng.patch.gz )"
+SRC_URI="mirror://sourceforge/libpng/${MY_P}.tar.xz
+	apng? ( https://dev.gentoo.org/~polynomial-c/${MY_P}-apng.patch.gz )"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="libpng"
 SLOT="1.5"
@@ -18,7 +20,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh
 IUSE="apng neon"
 
 RDEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
-	!=media-libs/libpng-1.5*:0"
+	!=media-libs/libpng-1.5*"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils"
 
