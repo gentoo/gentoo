@@ -8,4 +8,4 @@ LICENSE=LGPL-3+
 RDEPEND=>=dev-scheme/guile-2.0.11:= dev-scheme/bytestructures dev-libs/libgit2:=
 SLOT=0
 SRC_URI=https://gitlab.com/guile-git/guile-git/uploads/160f6a36c1be8d4fc1990a193081a04d/guile-git-0.2.0.tar.gz
-_md5_=711b6d20185239c5e1f7a0ab587f8488
+_md5_=4941d51c7951780835ba648e0d80967d
