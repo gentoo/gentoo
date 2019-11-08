@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils desktop
 
@@ -14,6 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -24,9 +27,10 @@ RDEPEND="
 	x11-libs/libXtst
 "
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
 	x11-base/xorg-proto
 "
+
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
 
 src_install() {
 	cmake-utils_src_install
