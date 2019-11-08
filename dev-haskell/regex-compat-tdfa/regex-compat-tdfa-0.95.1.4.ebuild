@@ -10,7 +10,7 @@ inherit haskell-cabal
 
 DESCRIPTION="Unicode Support version of Text.Regex, using regex-tdfa"
 HOMEPAGE="https://hub.darcs.net/shelarcy/regex-compat-tdfa"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

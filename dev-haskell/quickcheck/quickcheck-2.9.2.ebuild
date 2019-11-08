@@ -14,7 +14,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Automatic testing of Haskell programs"
 HOMEPAGE="https://github.com/nick8325/quickcheck"
-SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="2/${PV}"

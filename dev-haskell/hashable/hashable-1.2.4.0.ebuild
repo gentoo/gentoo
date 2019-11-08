@@ -11,7 +11,7 @@ inherit haskell-cabal
 
 DESCRIPTION="A class for types that can be converted to a hash value"
 HOMEPAGE="https://github.com/tibbe/hashable"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

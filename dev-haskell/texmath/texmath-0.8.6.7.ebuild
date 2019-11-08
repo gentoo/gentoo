@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit haskell-cabal
 
 DESCRIPTION="Conversion between formats used to represent mathematics"
 HOMEPAGE="https://github.com/jgm/texmath"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"

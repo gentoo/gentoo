@@ -8,7 +8,7 @@ inherit haskell-cabal
 
 DESCRIPTION="Arrow classes and transformers"
 HOMEPAGE="http://www.haskell.org/arrows/"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

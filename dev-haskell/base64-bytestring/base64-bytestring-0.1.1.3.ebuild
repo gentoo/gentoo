@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -8,7 +8,7 @@ inherit haskell-cabal
 
 DESCRIPTION="Fast base64 encoding and deconding for ByteStrings"
 HOMEPAGE="https://github.com/bos/base64-bytestring"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

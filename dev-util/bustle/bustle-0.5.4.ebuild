@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit eutils haskell-cabal
 
 DESCRIPTION="Draw sequence diagrams of D-Bus traffic"
 HOMEPAGE="http://hackage.haskell.org/package/bustle"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="LGPL-2 GPL-2 GPL-3"
 SLOT="0"

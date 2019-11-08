@@ -8,7 +8,7 @@ inherit eutils haskell-cabal
 
 DESCRIPTION="Rebuild Haskell dependencies in Gentoo"
 HOMEPAGE="https://wiki.haskell.org/Gentoo#haskell-updater"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
