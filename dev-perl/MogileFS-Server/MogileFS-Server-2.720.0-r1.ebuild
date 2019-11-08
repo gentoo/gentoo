@@ -10,7 +10,8 @@ inherit user perl-module
 DESCRIPTION="Server for the MogileFS distributed file system"
 HOMEPAGE="http://www.danga.com/mogilefs/ ${HOMEPAGE}"
 
-IUSE="mysql sqlite test postgres"
+IUSE="mysql +sqlite test postgres"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( sqlite ) || ( mysql sqlite postgres )"
 
 SLOT="0"
@@ -38,7 +39,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.720.0-gentoo-init-conf.patch"
 )
-DIST_TEST="never"
+DIST_TEST="never verbose"
 
 MOGILE_USER="mogile"
 
@@ -77,6 +78,9 @@ pkg_postinst() {
 	chown root:${MOGILE_USER} "${ROOT}"/etc/mogilefs/{mogilefsd,mogstored}.conf
 }
 
-#src_test() {
-#	emake test MOGTEST_DBUSER=mogile MOGTEST_DBNAME=tmp_mogiletest MOGTEST_DBTYPE=SQLite
-#}
+src_test() {
+	# these need to be in the env and the makeopts
+	export MOGTEST_DBUSER=mogile MOGTEST_DBNAME=tmp_mogiletest MOGTEST_DBTYPE=SQLite TMPDIR="${T}/mogile"
+	#perl-module_src_test
+	make -j1 test TEST_VERBOSE=1 MOGTEST_DBUSER=${MOGTEST_DBUSER} MOGTEST_DBNAME=${MOGTEST_DBNAME} MOGTEST_DBTYPE=${MOGTEST_DBTYPE} TMPDIR="${TMPDIR}"
+}
