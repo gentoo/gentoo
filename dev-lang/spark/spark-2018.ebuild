@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,6 +32,7 @@ PATCHES=( "${FILESDIR}"/${PN}-2017-gentoo.patch )
 
 src_prepare() {
 	ln -sf "${WORKDIR}"/gnat-gpl-2018-src/src/ada gnat2why/gnat_src || die
+	default
 	GCC_PV=7.3.1
 	sed -i \
 		-e "s:gnatmake:gnatmake-${GCC_PV}:g" \
@@ -39,7 +40,6 @@ src_prepare() {
 		Makefile \
 		gnatprove/configuration.adb \
 		gnat2why/Makefile || die
-	default
 }
 
 src_compile() {

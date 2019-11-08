@@ -35,10 +35,10 @@ PATCHES=( "${FILESDIR}"/${PN}-2017-gentoo.patch )
 
 src_prepare() {
 	ln -sf "${WORKDIR}"/gnat-gpl-2018-src/src/ada gnat2why/gnat_src || die
+	default
 	sed -i \
 		-e "s:gnatls:${GNATLS}:g" \
 		gnatprove/configuration.adb || die
-	default
 }
 
 src_compile() {
