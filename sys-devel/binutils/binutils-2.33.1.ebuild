@@ -21,7 +21,6 @@ REQUIRED_USE="default-gold? ( gold )"
 
 PATCH_VER=1
 PATCH_DEV=dilfridge
-PATCH_BINUTILS_VER=2.33.1
 
 case ${PV} in
 	9999)
@@ -43,6 +42,8 @@ case ${PV} in
 	*)
 		SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz"
 		SLOT=$(ver_cut 1-2)
+		# needs testing
+		#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
 		;;
 esac
 
