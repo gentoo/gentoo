@@ -143,8 +143,7 @@ src_configure() {
 		--with-env-editor
 		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/sudo
 		--with-rundir="${EPREFIX}"/run/sudo
-		$(use_with secure-path secure-path ${SECURE_PATH})
-		--with-secure-path="${SECURE_PATH}"
+		$(use_with secure-path secure-path "${SECURE_PATH}")
 		--with-vardir="${EPREFIX}"/var/db/sudo
 		--without-linux-audit
 		--without-opie
