@@ -10,7 +10,7 @@ inherit haskell-cabal
 
 DESCRIPTION="Lift computations from the bottom of a transformer stack"
 HOMEPAGE="https://github.com/mvv/transformers-base"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

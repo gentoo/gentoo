@@ -10,7 +10,7 @@ inherit haskell-cabal
 
 DESCRIPTION="Portable temporary file and directory support for Windows and Unix"
 HOMEPAGE="http://www.github.com/feuerbach/temporary"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -181,7 +181,7 @@ update_SRC_URI() {
 		set -- $p
 		pn=$1 pv=$2
 
-		SRC_URI+=" mirror://hackage/package/${pn}/${pn}-${pv}.tar.gz"
+		SRC_URI+=" https://hackage.haskell.org/package/${pn}/${pn}-${pv}.tar.gz"
 	done
 }
 

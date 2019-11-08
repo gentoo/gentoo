@@ -10,7 +10,7 @@ inherit haskell-cabal
 
 DESCRIPTION="A command-line interface for user input, written in Haskell"
 HOMEPAGE="https://github.com/judah/haskeline"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
