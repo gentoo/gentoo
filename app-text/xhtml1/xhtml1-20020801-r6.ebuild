@@ -5,7 +5,7 @@ EAPI=7
 inherit sgml-catalog-r1
 
 DESCRIPTION="DTDs for the eXtensible HyperText Markup Language 1.0"
-HOMEPAGE="http://www.w3.org/TR/xhtml1/"
+HOMEPAGE="https://www.w3.org/TR/xhtml1/"
 SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="W3C"
