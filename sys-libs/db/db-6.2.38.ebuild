@@ -16,6 +16,8 @@ else
 	MY_P=${PN}-${MY_PV}
 fi
 
+RESTRICT="!test? ( test )"
+
 S_BASE="${WORKDIR}/${MY_P}"
 S="${S_BASE}/build_unix"
 DESCRIPTION="Oracle Berkeley DB"
