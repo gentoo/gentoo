@@ -74,6 +74,11 @@ src_prepare() {
 		calamares.desktop || die
 	sed -i -e 's:Icon=calamares:Icon=drive-harddisk:' \
 		calamares.desktop || die
+
+	sed -i -e 's:etc/default:etc/env.d:' \
+		"${S}"/src/modules/localecfg/main.py || die
+	sed -i -e 's:"locale":"02locale":' \
+		"${S}"/src/modules/localecfg/main.py || die
 }
 
 src_configure() {
