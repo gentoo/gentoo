@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
 
@@ -181,22 +181,22 @@ src_install() {
 	for _lang in ${IUSE_L10N}; do
 		lang=$(map_lang ${_lang})
 		if ! use l10n_${lang}; then
-			safe_delete "${ED%/}"/usr/share/man/${_lang}
+			safe_delete "${ED}"/usr/share/man/${_lang}
 		fi
 	done
 
 	if ! use scripts; then
-		rm "${ED%/}"/usr/share/scribus/scripts/*.py || die
+		rm "${ED}"/usr/share/scribus/scripts/*.py || die
 	elif ! use tk; then
-		rm "${ED%/}"/usr/share/scribus/scripts/{FontSample,CalendarWizard}.py || die
+		rm "${ED}"/usr/share/scribus/scripts/{FontSample,CalendarWizard}.py || die
 	fi
 
 	use scripts && \
-		python_fix_shebang "${ED%/}"/usr/share/scribus/scripts && \
-		python_optimize "${ED%/}"/usr/share/scribus/scripts
+		python_fix_shebang "${ED}"/usr/share/scribus/scripts && \
+		python_optimize "${ED}"/usr/share/scribus/scripts
 
-	mv "${ED%/}"/usr/share/doc/${PF}/{en,html} || die
-	ln -sf html "${ED%/}"/usr/share/doc/${PF}/en || die
+	mv "${ED}"/usr/share/doc/${PF}/{en,html} || die
+	ln -sf html "${ED}"/usr/share/doc/${PF}/en || die
 	cat >> "${T}"/COPYING <<- EOF || die
 	${PN} is licensed under the "${LICENSE}".
 	Please visit https://www.gnu.org/licenses/gpl-2.0.html for the complete license text.
