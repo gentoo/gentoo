@@ -6,7 +6,7 @@ inherit sgml-catalog-r1
 
 MY_P=simple${PV//./}
 DESCRIPTION="Simplified Docbook DTD for XML"
-HOMEPAGE="http://www.oasis-open.org/docbook/xml/simple/4.1.2.5/"
+HOMEPAGE="https://www.oasis-open.org/docbook/xml/simple/4.1.2.5/"
 SRC_URI="https://www.oasis-open.org/docbook/xml/simple/${PV}/${MY_P}.zip"
 
 LICENSE="docbook"
