@@ -154,6 +154,8 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.0-cython-0.29.patch"
 	"${FILESDIR}/ceph-14.2.3-boost-1.70.patch"
 	"${FILESDIR}/ceph-14.2.3-dpdk-compile-fix-1.patch"
+	"${FILESDIR}/ceph-14.2.4-python-executable.patch"
+	"${FILESDIR}/ceph-14.2.4-undefined-behaviour.patch"
 )
 
 # dpdk and ninja don't get along
@@ -294,6 +296,8 @@ python_install() {
 	pushd "${BUILD_DIR}/src/pybind" >/dev/null || die
 	DESTDIR="${ED}" emake VERBOSE=1 install
 	popd >/dev/null || die
+
+	python_optimize
 }
 
 src_install() {
