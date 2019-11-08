@@ -3579,7 +3579,6 @@ gui-libs/libhandy:glade - Install module and catalog for dev-util/glade
 gui-libs/wlroots:X - Enable support for X11 applications (XWayland)
 gui-libs/wlroots:elogind - Enable support for rootless session via elogind
 gui-libs/wlroots:icccm - Use xcb-icccm (from x11-libs/xcb-util-wm) util library for improved Xwayland introspection
-gui-libs/wlroots:rootston - Build the rootston example compositor
 gui-libs/wlroots:x11-backend - Enable support for handling input/output devices through x11-libs/libxcb
 gui-wm/sway:X - Enable support for X11 applications (XWayland)
 gui-wm/sway:elogind - Enable support for rootless session via elogind
