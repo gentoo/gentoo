@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,8 @@ inherit user perl-module
 DESCRIPTION="Server for the MogileFS distributed file system"
 HOMEPAGE="http://www.danga.com/mogilefs/ ${HOMEPAGE}"
 
-IUSE="mysql sqlite postgres"
+IUSE="mysql sqlite test postgres"
+REQUIRED_USE="test? ( sqlite ) || ( mysql sqlite postgres )"
 
 SLOT="0"
 LICENSE="|| ( Artistic GPL-2 )"
@@ -35,9 +36,9 @@ RDEPEND="dev-perl/Net-Netmask
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-gentoo-init-conf.patch"
+	"${FILESDIR}/${PN}-2.720.0-gentoo-init-conf.patch"
 )
-DIST_TEST="do"
+DIST_TEST="never"
 
 MOGILE_USER="mogile"
 
@@ -75,3 +76,7 @@ pkg_postinst() {
 	chmod 640 "${ROOT}"/etc/mogilefs/{mogilefsd,mogstored}.conf
 	chown root:${MOGILE_USER} "${ROOT}"/etc/mogilefs/{mogilefsd,mogstored}.conf
 }
+
+#src_test() {
+#	emake test MOGTEST_DBUSER=mogile MOGTEST_DBNAME=tmp_mogiletest MOGTEST_DBTYPE=SQLite
+#}
