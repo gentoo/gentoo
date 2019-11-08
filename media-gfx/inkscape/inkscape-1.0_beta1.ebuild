@@ -101,6 +101,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${P}-detect-imagemagick.patch
 	"${FILESDIR}"/${P}-do-not-compress-man.patch
+	"${FILESDIR}"/${P}-poppler-0.82.patch
 )
 
 pkg_pretend() {
