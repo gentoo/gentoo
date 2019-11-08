@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
 
-PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
+PATCHES=( "${FILESDIR}/${PN}-4.3.0-cmake.patch" )
 
 src_install() {
 	cmake-utils_src_install
