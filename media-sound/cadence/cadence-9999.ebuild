@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{4,5,6} )
-inherit git-r3 python-single-r1 xdg-utils desktop
+PYTHON_COMPAT=( python3_{6,7} )
+inherit git-r3 python-single-r1 xdg desktop
 
 DESCRIPTION="Collection of tools useful for audio production"
 HOMEPAGE="http://kxstudio.linuxaudio.org/Applications:Cadence"
@@ -17,6 +17,7 @@ IUSE="-pulseaudio opengl"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+# for jack project rendering also needs media-sound/jack_capture which is not in the tree yet
 RDEPEND="${PYTHON_DEPS}
 	media-sound/jack2[dbus]
 	dev-python/PyQt5[dbus,gui,opengl?,svg,widgets,${PYTHON_USEDEP}]
@@ -55,8 +56,6 @@ src_install() {
 	rm -rf "${D}"/etc/X11/xinit/xinitrc.d/61cadence-session-inject
 	rm -rf "${D}"/etc/xdg/autostart/cadence-session-start.desktop
 	rm -rf "${D}"/usr/share/applications/*.desktop
-	rm -rf "${D}"/usr/bin/{catarina,claudia*}
-	rm -rf "${D}"/usr/share/cadence/icons/claudia-hicolor/
 
 	if use !pulseaudio; then
 		rm -rf "${D}"/usr/bin/cadence-pulse2{jack,loopback}
@@ -66,12 +65,5 @@ src_install() {
 	# Replace desktop entries with QA issues with these
 	make_desktop_entry cadence Cadence cadence "AudioVideo;AudioVideoEditing;Qt"
 	make_desktop_entry catia Catia catia "AudioVideo;AudioVideoEditing;Qt"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
+	make_desktop_entry catarina Catarina catarina "AudioVideo;AudioVideoEditing;Qt"
 }
