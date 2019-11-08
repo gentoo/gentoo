@@ -10890,7 +10890,7 @@ dev-util/weka 3.7.13 3.8.0: A Java data mining package
 dev-util/wiggle 0.9-r1 1.0: tool for applying patches that patch cannot apply because of conflicting changes
 dev-util/wstool 0.1.13 0.1.17 9999: Commands to manage several local SCM repositories for ROS
 dev-util/wxglade 0.8.2: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
-dev-util/xdelta 1.1.4-r1 1.1.4-r2 3.0.11 3.1.0: Computes changes between binary or text files and creates deltas
+dev-util/xdelta 1.1.4-r2 3.0.11 3.1.0: Computes changes between binary or text files and creates deltas
 dev-util/xesam-tools 0.7.0-r1: Development tools and examples for the Xesam desktop search API
 dev-util/xfce4-dev-tools 4.14.0: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r2: XML stream reformatter for ASCII text, but not UTF-8, written in ANSI C
