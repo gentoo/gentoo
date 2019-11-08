@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	>=app-misc/hivex-1.3.1
 	dev-libs/libpcre:3
 	app-arch/cpio
-	dev-lang/perl
+	dev-lang/perl:=
 	virtual/cdrtools
 	>=app-emulation/qemu-2.0[qemu_softmmu_targets_x86_64,systemtap?,selinux?,filecaps]
 	sys-apps/fakeroot
