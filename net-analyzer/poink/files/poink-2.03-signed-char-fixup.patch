@@ -1,6 +1,6 @@
 diff -Nuar poink-2.03.orig/poink.c poink-2.03/poink.c
---- poink-2.03.orig/poink.c	2002-11-03 03:12:56.000000000 -0800
-+++ poink-2.03/poink.c	2007-06-11 11:59:09.763490735 -0700
+--- a/poink.c	2002-11-03 03:12:56.000000000 -0800
++++ b/poink.c	2007-06-11 11:59:09.763490735 -0700
 @@ -109,7 +109,8 @@
  	SOCKADDR_IN s;
  	struct timeval ping_start, ping_end;
