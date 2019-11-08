@@ -6260,7 +6260,7 @@ dev-perl/Locale-Maketext-Lexicon 1.0.0: Use other catalog formats in Maketext
 dev-perl/Locale-Msgfmt 0.150.0-r1: Compile .po files to .mo files
 dev-perl/Locale-PO 0.270.0: Perl module for manipulating .po entries from GNU gettext
 dev-perl/Locale-gettext 1.70.0: A Perl module for accessing the GNU locale utilities
-dev-perl/LockFile-Simple 0.208.0-r1 0.208.0-r2: File locking module for Perl
+dev-perl/LockFile-Simple 0.208.0-r2: File locking module for Perl
 dev-perl/Log-Agent 1.1.0: A general logging framework
 dev-perl/Log-Any 1.701.0: Bringing loggers and listeners together
 dev-perl/Log-Dispatch 2.540.0 2.580.0 2.630.0 2.670.0: Dispatches messages to one or more outputs
@@ -6273,7 +6273,7 @@ dev-perl/Log-Report 1.260.0: A pluggable, multilingual handler driven problem re
 dev-perl/Log-Report-Optional 1.30.0: Lightweight implementation logger for Log::Report
 dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
 dev-perl/MARC-Charset 1.350.0-r1: convert MARC-8 encoded strings to UTF-8
-dev-perl/MARC-File-XML 1.0.3 1.0.5: Work with MARC data encoded as XML
+dev-perl/MARC-File-XML 1.0.5: Work with MARC data encoded as XML
 dev-perl/MARC-Record 2.0.7: Perl extension for handling MARC records
 dev-perl/MCE 1.831.0: Many-Core Engine providing parallel processing capabilities
 dev-perl/MD5 2.30.0-r1: The Perl MD5 Module
