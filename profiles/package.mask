@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-11-07)
+# Development stalled. Fails to build against modern
+# postgresql: bug #697452. Masked for removal in 30 days.
+dev-haskell/hsql-postgresql
+
 # Thomas Deutschmann <whissi@gentoo.org> (2019-11-07)
 # EAPI 0. It's been almost a decade since that openssl bug.
 # Removal in 30 days.  Bug #697218.
