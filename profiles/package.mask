@@ -30,6 +30,16 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-11-08)
+# Ancient vulnerable version of NumPy, plus all its revdeps.
+# Removal in 30 days.  Bug #627962.
+<dev-python/numpy-1.14.5
+dev-python/pyclimate
+dev-python/scientificpython
+sci-chemistry/parassign
+sci-chemistry/pymol-plugins-psico
+sci-libs/mmtk
+
+# Michał Górny <mgorny@gentoo.org> (2019-11-08)
 # Obsolete binary version.  Please use www-apps/trickster instead.
 # Removal in 30 days.  Bug #694884.
 www-apps/trickster-bin
