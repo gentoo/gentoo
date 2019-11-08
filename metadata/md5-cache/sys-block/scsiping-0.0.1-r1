@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install postinst prepare
+DESCRIPTION=SCSIPing pings a host on the SCSI-chain
+EAPI=7
+HOMEPAGE=https://www.vanheusden.com/Linux/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://www.vanheusden.com/Linux/scsiping-0.0.1.tgz
+_md5_=c5f1456715d8dc77878e6954d8e2b01c
