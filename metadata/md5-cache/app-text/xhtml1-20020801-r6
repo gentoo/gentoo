@@ -2,11 +2,11 @@ DEFINED_PHASES=install postinst postrm preinst
 DEPEND=app-text/sgml-common dev-libs/libxml2
 DESCRIPTION=DTDs for the eXtensible HyperText Markup Language 1.0
 EAPI=7
-HOMEPAGE=http://www.w3.org/TR/xhtml1/
+HOMEPAGE=https://www.w3.org/TR/xhtml1/
 KEYWORDS=amd64 ~arm64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=W3C
 RDEPEND=>=app-text/sgml-common-0.6.3-r7
 SLOT=0
 SRC_URI=mirror://gentoo/xhtml1-20020801.tgz
 _eclasses_=sgml-catalog-r1	d8b0f83f3e731fd3f34507d50d8bc7e2
-_md5_=45dc5e9a0e54053272cff2f590b0d026
+_md5_=643913db0e79b7ef467aa2714006eb0c
