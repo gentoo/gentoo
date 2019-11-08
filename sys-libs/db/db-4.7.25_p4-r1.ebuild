@@ -17,6 +17,8 @@ else
 	MY_P="${PN}-${MY_PV}"
 fi
 
+RESTRICT="!test? ( test )"
+
 S="${WORKDIR}/${MY_P}/build_unix"
 DESCRIPTION="Oracle Berkeley DB"
 HOMEPAGE="http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html"
