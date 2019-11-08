@@ -1,6 +1,0 @@
---- connman-1.33/scripts/connman_resolvconf.conf.in.old	2016-10-09 11:27:20.425341843 -0700
-+++ connman-1.33/scripts/connman_resolvconf.conf.in	2016-10-09 11:27:10.662476565 -0700
-@@ -1,2 +1,2 @@
- d	@runstatedir@/connman	- - - -
--L+	/etc/resolv.conf	- - - -	@runstatedir@/connman/resolv.conf
-+L	/etc/resolv.conf	- - - -	@runstatedir@/connman/resolv.conf
