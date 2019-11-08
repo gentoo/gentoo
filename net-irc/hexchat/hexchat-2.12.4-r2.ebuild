@@ -31,7 +31,7 @@ COMMON_DEPEND="dev-libs/glib:2
 	libnotify? ( x11-libs/libnotify )
 	lua? ( dev-lang/lua:= )
 	nls? ( virtual/libintl )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	plugin-sysinfo? ( sys-apps/pciutils )
 	python? ( ${PYTHON_DEPS} )
 	spell? ( app-text/iso-codes )
