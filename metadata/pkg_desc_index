@@ -17540,7 +17540,7 @@ sys-devel/autoconf 2.13-r1 2.64-r1 2.69-r4 9999: Used to create autoconfiguratio
 sys-devel/autoconf-archive 2018.03.13 2019.01.06: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13-r1: wrapper for autoconf to manage multiple autoconf versions
 sys-devel/autogen 5.18.4 5.18.4-r1 5.18.10 5.18.12 5.18.16 5.18.16-r1: Program and text file generation
-sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.15.1-r2 1.16-r2 1.16.1-r1 9999: Used to generate Makefile.in from Makefile.am
+sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.15.1-r2 1.16.1-r1 1.16.1-r2 9999: Used to generate Makefile.in from Makefile.am
 sys-devel/automake-wrapper 10 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2 1.07.1-r1 1.07.1-r2: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
@@ -17902,7 +17902,7 @@ sys-power/intel-undervolt 1.6 1.7 9999: Intel CPU undervolting and throttling co
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
 sys-power/nut 2.7.4-r1 2.7.4-r2 2.7.4-r3: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
-sys-power/nvram-reboot 2004.10.03: PowerOff Boot-Images for nvram-wakeup (not needed for GRUB)
+sys-power/nvram-reboot 2004.10.03-r1: PowerOff Boot-Images for nvram-wakeup (not needed for GRUB)
 sys-power/nvram-wakeup 1.1: read and write the WakeUp time in the BIOS
 sys-power/pm-quirks 20100619-r1: Video Quirks database for pm-utils
 sys-power/pm-utils 1.4.1-r6 1.4.1-r7: Suspend and hibernation utilities

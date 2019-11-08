@@ -1,0 +1,15 @@
+BDEPEND=app-arch/gzip sys-apps/help2man test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DEFINED_PHASES=install prepare setup
+DEPEND=dev-lang/perl >=sys-devel/automake-wrapper-11 >=sys-devel/autoconf-2.69:* sys-devel/gnuconfig
+DESCRIPTION=Used to generate Makefile.in from Makefile.am
+EAPI=7
+HOMEPAGE=https://www.gnu.org/software/automake/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl >=sys-devel/automake-wrapper-11 >=sys-devel/autoconf-2.69:* sys-devel/gnuconfig
+RESTRICT=!test? ( test )
+SLOT=1.16
+SRC_URI=mirror://gnu/automake/automake-1.16.1.tar.xz https://alpha.gnu.org/pub/gnu/automake/automake-1.16.1.tar.xz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	25291c381052933ddf86bcffbfaff2ed	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=eac0c91a7ecd3a92be0f7f3b8efd9722
