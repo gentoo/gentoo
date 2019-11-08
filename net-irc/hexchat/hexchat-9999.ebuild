@@ -37,7 +37,7 @@ RDEPEND="
 	libproxy? ( net-libs/libproxy )
 	libnotify? ( x11-libs/libnotify )
 	lua? ( dev-lang/lua:= )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	plugin-sysinfo? ( sys-apps/pciutils )
 	python? ( ${PYTHON_DEPS} )
 	ssl? (
