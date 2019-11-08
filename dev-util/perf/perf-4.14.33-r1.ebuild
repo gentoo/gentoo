@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,7 +42,7 @@ RDEPEND="audit? ( sys-process/audit )
 	demangle? ( sys-libs/binutils-libs:= )
 	gtk? ( x11-libs/gtk+:2 )
 	numa? ( sys-process/numactl )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	slang? ( dev-libs/newt )
 	unwind? ( sys-libs/libunwind )
