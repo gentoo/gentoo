@@ -1,0 +1,48 @@
+commit 2fe205b5e0b025200150c62581283e99598a80a6
+Author: Eray Aslan <eras@gentoo.org>
+Date:   Fri Nov 8 10:57:43 2019 +0300
+
+    save mailboxes as mbox for make test
+    
+    when default mailbox scheme is chosen as maildir, mda tests fail with
+    messages like:
+    
+            sed: read error on spool/root: Is a directory
+    
+    make sure we save the test mailboxes as mbox
+    
+    Signed-off-by: Eray Aslan <eras@gentoo.org>
+
+diff --git a/mda/tests/forward.at b/mda/tests/forward.at
+index 96170ad6a..75a9d6966 100644
+--- a/mda/tests/forward.at
++++ b/mda/tests/forward.at
+@@ -19,7 +19,7 @@ AT_KEYWORDS([maidag forward])
+ 
+ m4_pushdef([TESTMDA_CONF],[cat > testmda.conf <<EOF
+ mailbox {
+-  mailbox-pattern "$(pwd)/spool/\${user}";
++  mailbox-pattern "mbox:$(pwd)/spool/\${user}";
+ }  
+ 
+ mailer {
+diff --git a/mda/tests/mda.at b/mda/tests/mda.at
+index 6623fb623..083e7c318 100644
+--- a/mda/tests/mda.at
++++ b/mda/tests/mda.at
+@@ -16,7 +16,7 @@
+ 
+ m4_pushdef([TESTMDA_CONF],[cat > testmda.conf <<EOF
+ mailbox {
+-  mailbox-pattern "$(pwd)/spool/\${user}";
++  mailbox-pattern "mbox:$(pwd)/spool/\${user}";
+ }  
+ EOF
+ ])
+@@ -56,4 +56,4 @@ cat spool/root
+ 
+ AT_CLEANUP
+ 
+-m4_popdef([TESTMDA_CONF])
+\ No newline at end of file
++m4_popdef([TESTMDA_CONF])
