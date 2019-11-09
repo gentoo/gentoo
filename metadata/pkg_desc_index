@@ -3021,24 +3021,24 @@ app-xemacs/xslide 1.09 1.11: XSL editing support
 app-xemacs/xslt-process 1.14: XSLT processing support
 app-xemacs/xwem 1.22 1.23 1.26: X Emacs Window Manager
 app-xemacs/zenirc 1.16 1.18: ZENIRC IRC Client
-dev-ada/asis 2016 2016-r1 2018 2019 2019-r1: To develop tools for Ada software
+dev-ada/asis 2016-r1 2019-r1: To develop tools for Ada software
 dev-ada/aunit 2018 2019 2019-r1: Ada unit testing framework
-dev-ada/aws 2017 2018 2018-r1 2018-r2 2019 2019-r1: A complete Web development framework
+dev-ada/aws 2018-r2 2019-r1: A complete Web development framework
 dev-ada/gnat-suite-bin 2014 2016 2017 2018: GNAT Ada suite
 dev-ada/gnat_util 2017-r1 2017-r2 2018 2018-r1 2018-r2 2019 2019-r1: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll 2017 2017-r1: GNAT Component Collection
 dev-ada/gnatcoll-bindings 2018-r1 2019 2019-r1: GNAT Component Collection
 dev-ada/gnatcoll-core 2018-r1 2019 2019-r1: GNAT Component Collection Core packages
-dev-ada/gnatcoll-db 2018-r1 2019: GNAT Component Collection
+dev-ada/gnatcoll-db 2019: GNAT Component Collection
 dev-ada/gnatmem 2019 2019-r1: Monitors dynamic allocation and deallocation activity in a program
-dev-ada/gnatsymbolize 2018 2019 2019-r1: Translates addresses into filename, line number, and function names
+dev-ada/gnatsymbolize 2019-r1: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2017-r2 2019 2019-r1: Multi-Language Management
 dev-ada/gps 2018-r2: The GNAT Programming Studio
 dev-ada/gps-bin 2016 2016-r1: The GNAT Programming Studio
 dev-ada/gtkada 2017 2017-r1 2018-r1 2018-r2 2019 2019-r1: A complete Ada graphical toolkit
 dev-ada/langkit 2018 2019: A Python framework to generate language parsers
-dev-ada/libadalang 2018-r1 2018-r2 2019 2019-r1: high performance semantic engine for the Ada programming language
-dev-ada/libadalang-tools 2018 2019 2019-r1: Libadalang-based tools: gnatpp, gnatmetric and gnatstub
+dev-ada/libadalang 2018-r2 2019-r1: high performance semantic engine for the Ada programming language
+dev-ada/libadalang-tools 2019-r1: Libadalang-based tools: gnatpp, gnatmetric and gnatstub
 dev-ada/libgpr 2018-r1 2019 2019-r1: Ada library to handle GPRbuild project files
 dev-ada/xmlada 2018 2019 2019-r1: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15 0.04.15-r1: Multi-platform class and template library
@@ -15693,6 +15693,7 @@ net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, e
 net-vpn/wireguard 0.0.20191012 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-wireless/aircrack-ng 1.5.2 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
+net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
 net-wireless/airtraf 1.1-r3: AirTraf 802.11b Wireless traffic sniffer
 net-wireless/b43-fwcutter 019: Firmware Tool for Broadcom 43xx based wireless network devices using the mac80211 wireless stack
 net-wireless/bcm43xx-fwcutter 006: Firmware Tool for Broadcom 43xx based wireless network devices
@@ -15787,6 +15788,7 @@ net-wireless/soapysdrplay 0.1.0 0.2.0 9999: Soapy SDR plugin for SDRPlay
 net-wireless/soapyuhd 0.3.6 9999: Soapy SDR plugins for UHD supported SDR devices
 net-wireless/spectools 2011.08.1-r2 2011.08.1_p20140618-r1 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
 net-wireless/srslte 19.09: Open source SDR LTE software suite from Software Radio Systems
+net-wireless/tempestsdr 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.08.1 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.10.3.0 3.11.0.0 3.12.0.0 3.13.0.1 3.13.1.0 3.14.0.0 3.14.1.1: Universal Software Radio Peripheral (USRP) Hardware Driver
 net-wireless/unifi 5.6.42-r1 5.12.22: A Management Controller for Ubiquiti Networks UniFi APs
