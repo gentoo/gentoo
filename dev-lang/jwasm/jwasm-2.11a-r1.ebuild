@@ -1,13 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs versionator
+inherit toolchain-funcs
 
 # 2.10 -> 210s
 MY_PN=JWasm
-MY_PV="$(delete_version_separator 1)s"
+MY_PV="$(ver_rs 1 '')s"
 MY_P="${MY_PN}${MY_PV}"
 
 DESCRIPTION="MASM-compatible TASM-similar assembler (fork of Wasm)"
@@ -20,11 +20,15 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND=""
 DEPEND=""
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
+PATCHES=("${FILESDIR}"/${PN}-2.11-types-test.patch)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.11-types-test.patch
+	default
+
 	# don't strip binary
 	sed -i GccUnix.mak -e 's/ -s / /g' || die
 }
