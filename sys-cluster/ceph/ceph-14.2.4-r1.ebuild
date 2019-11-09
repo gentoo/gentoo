@@ -39,7 +39,7 @@ COMMON_DEPEND="
 	app-arch/zstd:=[static-libs?]
 	app-misc/jq:=[static-libs?]
 	dev-libs/crypto++:=[static-libs?]
-	dev-libs/leveldb:=[snappy,static-libs?,tcmalloc?]
+	dev-libs/leveldb:=[snappy,static-libs?,tcmalloc(-)?]
 	dev-libs/libaio:=[static-libs?]
 	dev-libs/libxml2:=[static-libs?]
 	dev-libs/nss:=
@@ -58,7 +58,7 @@ COMMON_DEPEND="
 		!libressl? ( dev-libs/openssl:=[static-libs?] )
 		libressl? ( dev-libs/libressl:=[static-libs?] )
 	)
-	xfs? ( sys-fs/xfsprogs:=[static-libs?] )
+	xfs? ( sys-fs/xfsprogs:=[static-libs(+)?] )
 	zfs? ( sys-fs/zfs:=[static-libs?] )
 	radosgw? (
 		dev-libs/expat:=[static-libs?]
