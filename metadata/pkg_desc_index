@@ -3022,15 +3022,15 @@ app-xemacs/xslt-process 1.14: XSLT processing support
 app-xemacs/xwem 1.22 1.23 1.26: X Emacs Window Manager
 app-xemacs/zenirc 1.16 1.18: ZENIRC IRC Client
 dev-ada/asis 2016-r1 2019-r1: To develop tools for Ada software
-dev-ada/aunit 2018 2019 2019-r1: Ada unit testing framework
+dev-ada/aunit 2019-r1: Ada unit testing framework
 dev-ada/aws 2018-r2 2019-r1: A complete Web development framework
 dev-ada/gnat-suite-bin 2014 2016 2017 2018: GNAT Ada suite
 dev-ada/gnat_util 2017-r1 2017-r2 2018 2018-r1 2018-r2 2019 2019-r1: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll 2017 2017-r1: GNAT Component Collection
-dev-ada/gnatcoll-bindings 2018-r1 2019 2019-r1: GNAT Component Collection
-dev-ada/gnatcoll-core 2018-r1 2019 2019-r1: GNAT Component Collection Core packages
+dev-ada/gnatcoll-bindings 2019-r1: GNAT Component Collection
+dev-ada/gnatcoll-core 2019-r1: GNAT Component Collection Core packages
 dev-ada/gnatcoll-db 2019: GNAT Component Collection
-dev-ada/gnatmem 2019 2019-r1: Monitors dynamic allocation and deallocation activity in a program
+dev-ada/gnatmem 2019-r1: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2019-r1: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2017-r2 2019 2019-r1: Multi-Language Management
 dev-ada/gps 2018-r2: The GNAT Programming Studio
@@ -10415,7 +10415,7 @@ dev-tex/flabels 1.0: Macros for typesetting lables for the back of files or bind
 dev-tex/floatflt 1.31a-r1: LaTeX package used to warp text around figures
 dev-tex/foiltex 2.1.4b: LaTeX package used to create foils and slides
 dev-tex/frakturx 20070103-r1: Collection of blackletter fonts for LaTeX
-dev-tex/g-brief 4.0.2 4.0.2-r1: LaTeX styles for formless letters in German or English
+dev-tex/g-brief 4.0.2-r1: LaTeX styles for formless letters in German or English
 dev-tex/glossaries 3.04 4.12-r1 4.41: Create glossaries and lists of acronyms
 dev-tex/harvard 2.0.5: The harvard family of bibliographic styles
 dev-tex/herm-pic 1.0.2: LaTeX class for creating ERM and HER diagramms
