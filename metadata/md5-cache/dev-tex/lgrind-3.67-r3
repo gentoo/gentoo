@@ -1,7 +1,7 @@
-DEFINED_PHASES=compile install postinst postrm unpack
-DEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
+BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DEFINED_PHASES=compile install postinst postrm prepare
 DESCRIPTION=A pretty printer for various programming languages with tex output.
-EAPI=0
+EAPI=7
 HOMEPAGE=http://www.tug.org/
 IUSE=examples
 KEYWORDS=amd64 ppc ~sparc x86
@@ -9,5 +9,5 @@ LICENSE=BSD LGrind-Jacobson
 RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~dilfridge/distfiles/lgrind-3.67.tgz
-_eclasses_=base	2ec5c64f5de125f0c65a927c4c128fef	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	latex-package	17f13abe0de88340745e52e6b627aee7	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=3c940578ee19fd63270c9ef432e5010f
+_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=b31af23f289c083ce0af97ffcbec55b5
