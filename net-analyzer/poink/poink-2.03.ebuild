@@ -9,12 +9,10 @@ DESCRIPTION="TCP/IP-based ping implementation"
 HOMEPAGE="https://directory.fsf.org/security/system/poink.html"
 SRC_URI="https://ep09.pld-linux.org/~mmazur/${PN}/${P}.tar.gz"
 
-KEYWORDS="amd64 ~ppc x86"
-
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
-DEPEND=""
 
 PATCHES=( "${FILESDIR}/${PN}-2.03-signed-char-fixup.patch" )
 
