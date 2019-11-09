@@ -9976,7 +9976,7 @@ dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over ht
 dev-ruby/oauth 0.5.4: A RubyGem for implementing both OAuth clients and servers
 dev-ruby/oauth2 1.4.0-r2 1.4.1: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
 dev-ruby/octokit 4.14.0: Ruby toolkit for the Github API
-dev-ruby/omniauth 1.8.1 1.9.0: A generalized Rack framework for multiple-provider authentication
+dev-ruby/omniauth 1.9.0: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.4: Open3::popen3 with exit status
 dev-ruby/openssl-ccm 1.2.1 1.2.2: OpenSSL CBC-MAC (CCM) ruby gem
 dev-ruby/openvas-omp 0.0.4: Communicate with OpenVAS manager through OMP
@@ -9987,9 +9987,9 @@ dev-ruby/origin 2.3.1: Origin is a simple DSL for generating MongoDB selectors a
 dev-ruby/ox 2.9.4 2.10.0 2.10.1 2.11.0: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.1.0 2.1.1: Terminal painter
-dev-ruby/parallel 1.16.2 1.17.0 1.18.0: Run any code in parallel Processes or Threads
+dev-ruby/parallel 1.17.0 1.18.0: Run any code in parallel Processes or Threads
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
-dev-ruby/parser 2.5.3.0 2.6.3.0 2.6.4.0 2.6.4.1 2.6.5.0: A production-ready Ruby parser written in pure Ruby
+dev-ruby/parser 2.6.4.0 2.6.4.1 2.6.5.0: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.8.2: A small PEG based parser library
 dev-ruby/pastel 0.7.2 0.7.3: Terminal strings styling with intuitive and clean API
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
@@ -10016,9 +10016,9 @@ dev-ruby/prawn 2.2.0: Fast, Nimble PDF Generation For Ruby
 dev-ruby/prawn-table 0.2.2-r1: Provides support for tables in Prawn
 dev-ruby/protected_attributes 1.1.4: Protect attributes from mass-assignment in ActiveRecord models
 dev-ruby/pry 0.12.2: Pry is a powerful alternative to the standard IRB shell for Ruby
-dev-ruby/psych 3.0.3 3.1.0: A libyaml wrapper for Ruby
+dev-ruby/psych 3.1.0: A libyaml wrapper for Ruby
 dev-ruby/public_suffix 3.1.1 4.0.1: Parse and decompose a domain name into top level domain, domain and subdomains
-dev-ruby/pundit 1.1.0 2.0.0 2.0.1 2.1.0: Object oriented authorization for Rails applications
+dev-ruby/pundit 1.1.0 2.1.0: Object oriented authorization for Rails applications
 dev-ruby/puppet_forge 2.2.9-r1 2.3.0: Tools to access Forge API information on Modules, Users, and Releases
 dev-ruby/puppetdb-termini 6.6.0 6.7.1: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
@@ -10026,7 +10026,7 @@ dev-ruby/pygments_rb 1.2.1: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
 dev-ruby/racc 1.4.14: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.6.11 2.0.6 2.0.7: A modular Ruby webserver interface
-dev-ruby/rack-attack 5.4.2 6.0.0 6.1.0 6.2.0 6.2.1: A DSL for blocking & throttling abusive clients
+dev-ruby/rack-attack 5.4.2 6.2.0 6.2.1: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.9.0 1.10.0: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-mount 0.8.3-r2: A stackable dynamic tree based Rack router
 dev-ruby/rack-openid 1.4.2: Provides a more HTTPish API around the ruby-openid library
