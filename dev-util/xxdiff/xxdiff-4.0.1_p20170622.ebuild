@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -62,6 +62,5 @@ src_install() {
 	dodoc CHANGES README* TODO doc/*.txt src/doc.txt
 
 	# example tools, use these to build your own ones
-	insinto /usr/share/doc/${PF}
-	doins -r tools
+	dodoc -r tools
 }
