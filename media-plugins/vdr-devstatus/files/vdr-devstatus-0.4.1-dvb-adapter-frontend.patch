@@ -1,0 +1,22 @@
+--- a/devstatus.c
++++ b/devstatus.c
+@@ -161,6 +161,10 @@
+ private:
+ public:
+      void deviceinfoAsString(cDevice *d) {
++        cDvbDevice *dvb = dynamic_cast<cDvbDevice *>(d);
++        if (dvb == NULL)
++           return;
++
+         struct dvb_frontend_info m_FrontendInfo;
+         int m_Frontend;
+         // fe_status_t status;
+@@ -170,7 +174,7 @@
+         char* output = NULL;
+ 
+         #define FRONTEND_DEVICE "/dev/dvb/adapter%d/frontend%d"
+-        cString dev = cString::sprintf(FRONTEND_DEVICE, d->CardIndex(), 0);
++        cString dev = cString::sprintf(FRONTEND_DEVICE, dvb->Adapter(), dvb->Frontend());
+         m_Frontend = open(dev, O_RDONLY | O_NONBLOCK);
+         if (m_Frontend < 0) {
+            return;
