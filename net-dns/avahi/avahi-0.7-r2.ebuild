@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	introspection? ( dev-libs/gobject-introspection:= )
 	mono? (
 		dev-lang/mono
-		gtk? ( dev-dotnet/gtk-sharp )
+		gtk? ( dev-dotnet/gtk-sharp:2 )
 	)
 	python? (
 		${PYTHON_DEPS}
@@ -68,7 +68,10 @@ RDEPEND="
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/avahi-qt5/qt-watch.h )
 
-PATCHES=( "${FILESDIR}/${P}-qt5.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-qt5.patch"
+	"${FILESDIR}/${P}-CVE-2017-6519.patch"
+)
 
 pkg_preinst() {
 	enewgroup netdev
