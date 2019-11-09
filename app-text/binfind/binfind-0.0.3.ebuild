@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Search files for a byte sequence specified on the command line"
-HOMEPAGE="http://www.lith.at/binfind"
+HOMEPAGE="http://www.lith.at/binfind/"
 SRC_URI="http://www.lith.at/binfind/${P}.tar.gz"
 
 LICENSE="GPL-2+"
