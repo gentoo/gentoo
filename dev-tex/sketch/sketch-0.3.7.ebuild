@@ -1,45 +1,46 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Produces drawings of two- or three-dimensional solid objects and scenes for TeX"
-HOMEPAGE="http://www.frontiernet.net/~eugene.ressler/"
-SRC_URI="http://www.frontiernet.net/~eugene.ressler/${P}.tgz"
-LICENSE="GPL-3"
+HOMEPAGE="https://www.frontiernet.net/~eugene.ressler/"
+SRC_URI="https://www.frontiernet.net/~eugene.ressler/${P}.tgz"
 
-SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
+
+LICENSE="GPL-3+"
+SLOT="0"
 IUSE="doc examples"
 
 DEPEND="dev-lang/perl"
 RDEPEND=""
 
-src_unpack() {
-	unpack ${A}
-
-	cd "${S}"
-	sed -i -e "s:\$(CC):\$(CC) \$(LDFLAGS):" makefile
+src_prepare() {
+	sed -i -e "s:\$(CC):\$(CC) \$(LDFLAGS):" makefile || die "Fixing Makefile failed"
+	eapply_user
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}" || die "emake failed"
+	emake CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
-	dobin sketch || die
+	dobin sketch
 	edos2unix Doc/sketch.info
-	doinfo Doc/sketch.info || die
-	dohtml updates.htm || die
+	doinfo Doc/sketch.info
+	dodoc -r updates.htm
+
 	if use doc ; then
 		insinto /usr/share/doc/${PF}
-		doins Doc/sketch.pdf || die
-		dohtml Doc/sketch/* || die
+		doins Doc/sketch.pdf
+		dodoc -r Doc/sketch/*
 	fi
+
 	if use examples ; then
 		insinto /usr/share/doc/${PF}/examples
-		doins Data/* || die "Failed to install examples"
+		doins Data/*
 	fi
 }
