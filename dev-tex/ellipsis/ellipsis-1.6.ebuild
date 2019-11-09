@@ -1,19 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit latex-package
 
 DESCRIPTION="Simple package that fixes the way LaTeX centers ellipses"
-HOMEPAGE="http://www.ctan.org/tex-archive/macros/latex/contrib/ellipsis/"
-# Downloaded from:
-# ftp://tug.ctan.org/tex-archive/macros/latex/contrib/ellipsis.zip
+HOMEPAGE="https://www.ctan.org/tex-archive/macros/latex/contrib/ellipsis/"
+# take from ftp://tug.ctan.org/tex-archive/macros/latex/contrib/ellipsis.zip
 SRC_URI="mirror://gentoo/${P}.zip"
-IUSE=""
+
 KEYWORDS="~amd64 ~x86"
+
 LICENSE="LPPL-1.2"
 SLOT="0"
+IUSE=""
 
 DEPEND="app-arch/unzip"
 
@@ -23,7 +24,5 @@ src_install() {
 	export VARTEXFONTS="${T}/fonts"
 
 	latex-package_src_install
-
-	dodoc README ellipsis.pdf \
-		|| die "Installing the documentation failed."
+	dodoc README ellipsis.pdf
 }

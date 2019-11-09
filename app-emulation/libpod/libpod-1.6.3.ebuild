@@ -46,6 +46,9 @@ src_prepare() {
 		-e 's/$(GO) build/$(GO) build -v -work -x/' \
 		-e 's/^\(install:.*\) install\.python$/\1/' \
 		-i Makefile || die
+
+	sed -e 's|OUTPUT="${CIRRUS_TAG:.*|OUTPUT='v${PV}'|' \
+		-i hack/get_release_info.sh || die
 }
 
 src_compile() {
