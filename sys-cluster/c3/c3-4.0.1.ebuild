@@ -1,15 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 DESCRIPTION="The Cluster Command and Control (C3) tool suite"
 HOMEPAGE="http://www.csm.ornl.gov/torc/C3/"
 SRC_URI="http://www.csm.ornl.gov/torc/C3/Software/${PV}/${P}.tar.gz"
+
 LICENSE="C3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
 # Everything it needs is in "system" (profiles/base/packages)
 DEPEND=""
 
@@ -31,13 +33,13 @@ src_install() {
 	exeinto ${C3DIR}
 	# Everything's in the same dir, so we need to weed out non-tool things
 	local TOOL
-	for TOOL in $(find ${S} -maxdepth 1 -type f -name 'c*' -not -name '*.*'); do
+	for TOOL in $(find . -maxdepth 1 -type f -name 'c*' -not -name '*.*'); do
 		doexe ${TOOL}
 	done
 	# Get systemimager-using tool out of bin, since systemimager isn't in
 	# portage
 	dodoc ${D}/${C3DIR}/cpushimage
-	rm ${D}/${C3DIR}/cpushimage
+	rm ${D}/${C3DIR}/cpushimage || die
 
 	dodoc README README.scale CHANGELOG KNOWN_BUGS
 	docinto contrib
@@ -45,10 +47,10 @@ src_install() {
 
 	doman man/man*/*
 
-	# Create env.d file
-	echo "PATH=${C3DIR}" > ${T}/40${PN}
-	echo "ROOTPATH=${C3DIR}" >> ${T}/40${PN}
-	doenvd ${T}/40${PN}
+	newenvd - 40${PN} <<-EOF
+		PATH=${C3DIR}
+		ROOTPATH=${C3DIR}
+	EOF
 }
 
 pkg_postinst() {

@@ -31,16 +31,12 @@ src_install() {
 	dobin sketch
 	edos2unix Doc/sketch.info
 	doinfo Doc/sketch.info
-	dodoc -r updates.htm
+	dodoc updates.htm
 
-	if use doc ; then
-		insinto /usr/share/doc/${PF}
-		doins Doc/sketch.pdf
-		dodoc -r Doc/sketch/*
-	fi
+	use doc && dodoc -r Doc/*
 
-	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples
-		doins Data/*
+	if use examples; then
+		docinto examples
+		dodoc -r Data/*
 	fi
 }

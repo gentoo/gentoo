@@ -33,8 +33,8 @@ src_install() {
 	dosym palm.eps /usr/share/texmf/tex/latex/newlfm/palmb.eps
 	dosym palm.pdf /usr/share/texmf/tex/latex/newlfm/palmb.pdf
 
-	insinto /usr/share/doc/${PF}/tests
-	doins test* extracd.tex # letrx.tex
-
 	dodoc manual.pdf README # README.uploads
+
+	docinto tests
+	dodoc test* extracd.tex # letrx.tex
 }
