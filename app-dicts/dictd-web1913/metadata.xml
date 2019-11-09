@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<name>Samuel May</name>
+	<email>ag.eitilt@gmail.com</email>
+	<description>Primary maintainer</description>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<upstream>
+	<maintainer>
+		<name>Patrick Cassidy</name>
+		<email>cassidy@micra.com</email>
+	</maintainer>
+</upstream>
+<longdescription>
+	A database for 'dict'-compatible dictionary software, based on the 1913 edition of Webster's Revised Unabridged Dictionary as digitized by MICRA, Inc.
+</longdescription>
+</pkgmetadata>
