@@ -14,6 +14,7 @@
 		This is the regular version. For a long term support version see sys-apps/firejail-lts.
 	</longdescription>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:firejail_project:firejail</remote-id>
 		<remote-id type="github">netblue30/firejail</remote-id>
 	</upstream>
 	<use>
