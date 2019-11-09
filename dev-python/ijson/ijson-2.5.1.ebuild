@@ -19,5 +19,5 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
-	"${EPYTHON}" tests.py || die
+	"${EPYTHON}" tests.py -v || die
 }
