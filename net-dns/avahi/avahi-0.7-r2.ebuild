@@ -6,15 +6,11 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="gdbm"
 
-WANT_AUTOMAKE=1.11
-
 inherit autotools eutils flag-o-matic multilib multilib-minimal mono-env python-r1 systemd user
 
 DESCRIPTION="System which facilitates service discovery on a local network"
 HOMEPAGE="http://avahi.org/"
 SRC_URI="https://github.com/lathiat/avahi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-
-S="${WORKDIR}/${P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
