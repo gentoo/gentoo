@@ -1,0 +1,28 @@
+From 252a301aba9a685b5b6df7824c576f52cc19fb81 Mon Sep 17 00:00:00 2001
+From: Stephen Arnold <nerdboy@gentoo.org>
+Date: Fri, 8 Nov 2019 16:41:16 -0800
+Subject: [PATCH] etc/logrotate-config.ntpd: make sure it has missingok
+
+* note master branch does not need this, but all the releases do
+
+Signed-off-by: Stephen Arnold <nerdboy@gentoo.org>
+---
+ etc/logrotate-config.ntpd | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/etc/logrotate-config.ntpd b/etc/logrotate-config.ntpd
+index e5d8616bf..a49129d45 100644
+--- a/etc/logrotate-config.ntpd
++++ b/etc/logrotate-config.ntpd
+@@ -5,6 +5,8 @@
+ 
+ /var/log/ntpd.log {
+     monthly
++    notifempty
++    missingok
+     postrotate
+       /usr/bin/killall -HUP ntpd
+     endscript
+-- 
+2.21.0
+
