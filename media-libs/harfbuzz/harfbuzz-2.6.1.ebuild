@@ -48,6 +48,10 @@ if [[ ${PV} = 9999 ]] ; then
 	"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-9.patch
+)
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 	if ! use debug ; then
