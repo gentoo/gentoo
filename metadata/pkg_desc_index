@@ -9701,7 +9701,7 @@ dev-ruby/capistrano 2.15.5-r2 3.11.0 3.11.1 3.11.2: A distributed application de
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
 dev-ruby/capybara 2.18.0 3.23.0 3.24.0 3.25.0 3.26.0 3.27.0 3.28.0 3.29.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2: Managing the core functions outlined in RFC-3280 for PKI
-dev-ruby/charlock_holmes 0.7.6: Character encoding detecting library for Ruby using ICU
+dev-ruby/charlock_holmes 0.7.6 0.7.7: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
 dev-ruby/childprocess 0.9.0 1.0.1-r1 2.0.0 3.0.0: Solution for controlling external programs running in the background
 dev-ruby/chronic 0.10.2: Chronic is a natural language date/time parser written in pure Ruby
@@ -9906,7 +9906,7 @@ dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object
 dev-ruby/maxitest 3.2.0 3.4.0 3.5.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
 dev-ruby/mechanize 2.7.6: A Ruby library used for automating interaction with websites
-dev-ruby/memoist 0.16.0: ActiveSupport::Memoizable with a few enhancements
+dev-ruby/memoist 0.16.0 0.16.1: ActiveSupport::Memoizable with a few enhancements
 dev-ruby/memoizable 0.4.2: Memoize method return values
 dev-ruby/memoize 1.3.1-r1: A Ruby library that lets you memoize methods
 dev-ruby/mercenary 0.3.6: Lightweight and flexible library for writing command-line apps
@@ -18377,7 +18377,7 @@ www-servers/nginx-unit 1.8.0 1.12.0 1.12.0-r1 1.12.0-r2 1.12.0-r3: Dynamic web a
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3.3 9999: Pretty small HTTP server -- a command-line tool to share files
-www-servers/puma 3.12.1 3.12.1-r1 4.0.0 4.0.1 4.2.0 4.2.1: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
+www-servers/puma 3.12.1 3.12.1-r1 4.2.0 4.2.1: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/resin 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections based on the hostname
