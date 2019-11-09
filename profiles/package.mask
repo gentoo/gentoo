@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-11-09)
+# Multimedia distribution with last release in 2005.  Its usefulness
+# with modern media is doubtful.
+# Removal in 30 days.  Bug #699694.
+media-video/emovix
+
 # Aaron Bauman <bman@gentoo.org> (2019-11-09)
 # upstream moved to Github. not bumped in years
 # EAPI=4 and maintainer-needed. Removal in 30 days
