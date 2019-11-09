@@ -85,6 +85,8 @@ DEPEND="${RDEPEND}
 		valgrind? ( dev-util/valgrind ) )
 "
 
+RESTRICT="!test? ( test )"
+
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}/${MY_P}"
