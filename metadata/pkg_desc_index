@@ -1628,7 +1628,7 @@ app-forensics/sleuthkit 4.5.0 4.6.5 4.6.6 4.6.7 4.7.0: A collection of file syst
 app-forensics/unhide 20121229 20130526: A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs
 app-forensics/volatility 2.6-r1: Framework for analyzing volatile memory
 app-forensics/yasat 848: Security and system auditing tool
-app-forensics/zzuf 0.13-r1 0.15: Transparent application input fuzzer
+app-forensics/zzuf 0.15: Transparent application input fuzzer
 app-i18n/anthy 9100h-r2: Anthy -- free and secure Japanese input system
 app-i18n/atokx3 3.0.0-r12: ATOK X3 for Linux - The most famous Japanese Input Method Engine
 app-i18n/bidiv 1.5-r1 1.5_p4: A commandline tool displaying logical Hebrew/Arabic
