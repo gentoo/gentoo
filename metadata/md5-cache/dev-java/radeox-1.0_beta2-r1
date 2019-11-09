@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install preinst prepare setup
-DEPEND=>=virtual/jdk-1.4 >=virtual/jre-1.4 =dev-java/commons-logging-1*:0 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
+DEPEND=>=virtual/jdk-1.4 >=virtual/jre-1.4:* =dev-java/commons-logging-1*:0 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
 DESCRIPTION=Radeox Wiki render engine
 EAPI=7
 HOMEPAGE=http://www.radeox.org
 IUSE=elibc_FreeBSD doc source elibc_FreeBSD
 KEYWORDS=amd64 x86
 LICENSE=LGPL-2.1+
-RDEPEND=>=virtual/jre-1.4 =dev-java/commons-logging-1*:0 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+RDEPEND=>=virtual/jre-1.4:* =dev-java/commons-logging-1*:0 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=1
 SRC_URI=ftp://snipsnap.org/radeox/radeox-1.0-BETA-2-src.tgz
 _eclasses_=java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	82402a1c36ab4bf38f3313a543f9e827	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=20bfa57dff312d37c814f66d887c7481
+_md5_=d76dac2a4bb88aa3a18547c237a56984

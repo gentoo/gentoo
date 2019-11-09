@@ -1484,7 +1484,7 @@ app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.36.1 1.38.0: VM appliance disk image used in libguestfs package
-app-emulation/libpod 1.5.1-r1 1.6.2 1.6.3: Library and podman tool for running OCI-based containers in Pods
+app-emulation/libpod 1.5.1-r1 1.6.3: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.2 1.4.4: Spectrum emulation library
 app-emulation/libvirt 5.2.0-r2 5.5.0-r1 5.6.0 5.8.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0: GLib and GObject mappings for libvirt
@@ -19330,7 +19330,7 @@ xfce-base/exo 0.12.4 0.12.8: Extensions, widgets and framework library with sess
 xfce-base/garcon 0.6.4-r1: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.13.4 4.14.1: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.13.2 4.14.0: A basic utility library for the Xfce desktop environment
-xfce-base/thunar 1.8.9: File manager for the Xfce desktop environment
+xfce-base/thunar 1.8.9 1.8.10: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r1: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.14.1 4.15.0: Panel for the Xfce desktop environment
