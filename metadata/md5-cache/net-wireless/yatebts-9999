@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure preinst prepare unpack
-DEPEND=virtual/pkgconfig =net-voip/yate-9999:=[gsm] bladerf? ( net-wireless/bladerf:= ) uhd? ( net-wireless/uhd ) virtual/libusb:1 >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DEPEND=virtual/pkgconfig =net-voip/yate-9999:=[gsm] bladerf? ( net-wireless/bladerf:= ) uhd? ( net-wireless/uhd ) virtual/libusb:1 >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 DESCRIPTION=The Yate GSM base station
 EAPI=6
 HOMEPAGE=https://yatebts.com
@@ -8,5 +8,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND==net-voip/yate-9999:=[gsm] bladerf? ( net-wireless/bladerf:= ) uhd? ( net-wireless/uhd ) virtual/libusb:1
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	subversion	76e4ab6ae9cda8407c34d0b9a086f81c	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	subversion	76e4ab6ae9cda8407c34d0b9a086f81c	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=af2db73e86eaffef85840d4c9724ad6e

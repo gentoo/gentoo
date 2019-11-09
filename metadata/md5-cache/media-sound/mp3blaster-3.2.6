@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=sys-libs/ncurses:0= lirc? ( app-misc/lirc ) sdl? ( media-libs/libsdl ) sid? ( media-libs/libsidplay:1 ) vorbis? ( media-libs/libvorbis ) x11-misc/imake oss? ( virtual/os-headers ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=sys-libs/ncurses:0= lirc? ( app-misc/lirc ) sdl? ( media-libs/libsdl ) sid? ( media-libs/libsidplay:1 ) vorbis? ( media-libs/libvorbis ) x11-misc/imake oss? ( virtual/os-headers ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Text console based program for playing audio files
 EAPI=6
 HOMEPAGE=http://www.mp3blaster.org/ http://mp3blaster.sourceforge.net/ https://github.com/stragulus/mp3blaster
@@ -10,5 +10,5 @@ RDEPEND=sys-libs/ncurses:0= lirc? ( app-misc/lirc ) sdl? ( media-libs/libsdl ) s
 REQUIRED_USE=|| ( oss sdl )
 SLOT=0
 SRC_URI=mirror://sourceforge/mp3blaster/mp3blaster-3.2.6.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=6712a6ef4b20b32ac2f5c82cee9930f4

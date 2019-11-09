@@ -1,4 +1,4 @@
-BDEPEND=>=sys-devel/bison-3 >=sys-devel/flex-2.5.36 virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=>=sys-devel/bison-3 >=sys-devel/flex-2.5.36 virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare test
 DEPEND=dev-libs/libxml2 dev-libs/libxslt curl? ( net-misc/curl ) json? ( dev-libs/yajl ) unicode? ( dev-libs/icu:= )
 DESCRIPTION=The RDF Parser Toolkit
@@ -10,5 +10,5 @@ LICENSE=Apache-2.0 GPL-2 LGPL-2.1
 RDEPEND=dev-libs/libxml2 dev-libs/libxslt curl? ( net-misc/curl ) json? ( dev-libs/yajl ) unicode? ( dev-libs/icu:= ) !media-libs/raptor:0
 SLOT=2
 SRC_URI=http://download.librdf.org/source/raptor2-2.0.15.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=ff4e9356abd45ba74d7c6d8a24459ad2

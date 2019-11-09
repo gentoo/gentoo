@@ -2040,7 +2040,7 @@ app-misc/lsx 0.1-r1: list executables
 app-misc/ltunify 0.2-r1: Tool for working with Logitech Unifying receivers and devices
 app-misc/lxsplit 0.2.4-r1: Command-line file splitter/joiner for Linux
 app-misc/matew 1.9: Make Album The Easy Way (Matew) is an HTML/CSS generator for static image albums
-app-misc/mc 4.8.22 4.8.23 4.8.23-r1 9999: GNU Midnight Commander is a text based file manager
+app-misc/mc 4.8.22 4.8.23-r1 9999: GNU Midnight Commander is a text based file manager
 app-misc/media-player-info 23: A repository of data files describing media player capabilities
 app-misc/mediacrush-cli 1.1.2 9999: A bash script for working with MediaCrush from a shell
 app-misc/mencal 3.0: Calendar to track menstruation cycles
@@ -4631,7 +4631,7 @@ dev-lang/jimtcl 0.76 0.78-r2: Small footprint implementation of Tcl programming 
 dev-lang/jsonnet 0.12.1 0.13.0 0.14.0: A data templating language for app and tool developers
 dev-lang/julia 1.1.0 1.1.1 1.2.0 9999: High-performance programming language for technical computing
 dev-lang/julia-bin 1.1.0 1.2.0: High-performance programming language for technical computing
-dev-lang/jwasm 2.11a: MASM-compatible TASM-similar assembler (fork of Wasm)
+dev-lang/jwasm 2.11a-r1: MASM-compatible TASM-similar assembler (fork of Wasm)
 dev-lang/lazarus 1.0.12 1.8.4-r2 2.0.2: Lazarus IDE is a feature rich visual programming environment emulating Delphi
 dev-lang/lfe 0.7 0.10.1 1.0 1.1.1: Lisp-flavoured Erlang
 dev-lang/lisaac 0.13.1-r2: Lisaac is an object prototype based language

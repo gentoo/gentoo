@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure postinst postrm preinst prepare
-DEPEND=>=dev-util/intltool-0.40 sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=>=dev-util/intltool-0.40 sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Standard Themes for GNOME Applications
 EAPI=6
 HOMEPAGE=https://gitlab.gnome.org/GNOME/gnome-themes-extra
@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1+
 RDEPEND=>=gnome-base/gsettings-desktop-schemas-3.4
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-themes-extra/3.28/gnome-themes-extra-3.28.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	43ddf5aaffa7a8d0482df54d25a66a1f	gnome.org	532d56d07b9eace4831aaa817d2b756a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	versionator	2352c3fc97241f6a02042773c8287748	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	43ddf5aaffa7a8d0482df54d25a66a1f	gnome.org	532d56d07b9eace4831aaa817d2b756a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	versionator	2352c3fc97241f6a02042773c8287748	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=bd9f758ba6373c9f21b11d1e68bd411b

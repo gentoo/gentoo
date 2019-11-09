@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=GTK2 binding for Gauche
 EAPI=6
 HOMEPAGE=http://practical-scheme.net/gauche/
@@ -10,5 +10,5 @@ RDEPEND=x11-libs/gtk+:2 dev-scheme/gauche opengl? ( x11-libs/gtkglext dev-scheme
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/shirok/Gauche-gtk2/archive/6fca535f7bb950f81db066bd1afdca9d55e9b460.tar.gz -> Gauche-gtk2-0.6_pre1.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=009b61ade49cb5687e3103202fa0c630

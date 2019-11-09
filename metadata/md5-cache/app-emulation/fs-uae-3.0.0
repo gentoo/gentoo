@@ -1,4 +1,4 @@
-BDEPEND=app-arch/zip sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=app-arch/zip sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst postrm prepare
 DEPEND=dev-libs/glib:2 media-libs/libpng:0= media-libs/libsdl2[opengl,X] media-libs/openal virtual/opengl x11-libs/libdrm x11-libs/libX11 fmv? ( media-libs/libmpeg2 ) glew? ( media-libs/glew:0= ) x11-base/xorg-proto
 DESCRIPTION=Integrates the most accurate Amiga emulation code available from WinUAE
@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 media-libs/libpng:0= media-libs/libsdl2[opengl,X] media-libs/openal virtual/opengl x11-libs/libdrm x11-libs/libX11 fmv? ( media-libs/libmpeg2 ) glew? ( media-libs/glew:0= )
 SLOT=0
 SRC_URI=https://fs-uae.net/stable/3.0.0/fs-uae-3.0.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=b8193b831c1f1e853154a7077ac6fc79

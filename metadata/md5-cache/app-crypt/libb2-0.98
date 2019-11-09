@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
 EAPI=6
 HOMEPAGE=https://github.com/BLAKE2/libb2
@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~ppc64 ~x64-macos ~sparc-solaris ~x64-solaris
 LICENSE=CC0-1.0
 SLOT=0
 SRC_URI=https://github.com/BLAKE2/libb2/archive/0d7015f6a640a63bc6c68562328e112445ea9d5c.tar.gz -> libb2-0.98.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=d975c37a3c40bcf335654b688f437669

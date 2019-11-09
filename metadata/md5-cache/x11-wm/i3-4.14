@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare test
-DEPEND=dev-libs/libev dev-libs/libpcre >=dev-libs/yajl-2.0.3 x11-libs/libxcb[xkb] x11-libs/libxkbcommon[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-keysyms x11-libs/xcb-util-wm x11-libs/xcb-util-xrm >=x11-libs/cairo-1.14.4[X,xcb] >=x11-libs/pango-1.30.0[X] app-text/asciidoc doc? ( app-text/xmlto dev-lang/perl ) test? ( dev-perl/Module-Install ) virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/libev dev-libs/libpcre >=dev-libs/yajl-2.0.3 x11-libs/libxcb[xkb] x11-libs/libxkbcommon[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-keysyms x11-libs/xcb-util-wm x11-libs/xcb-util-xrm >=x11-libs/cairo-1.14.4[X,xcb] >=x11-libs/pango-1.30.0[X] app-text/asciidoc doc? ( app-text/xmlto dev-lang/perl ) test? ( dev-perl/Module-Install ) virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=An improved dynamic tiling window manager
 EAPI=6
 HOMEPAGE=https://i3wm.org/
@@ -10,5 +10,5 @@ RDEPEND=dev-libs/libev dev-libs/libpcre >=dev-libs/yajl-2.0.3 x11-libs/libxcb[xk
 REQUIRED_USE=test? ( debug )
 SLOT=0
 SRC_URI=https://github.com/i3/i3/archive/4.14.tar.gz -> i3-4.14.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=34a06df89276b6341534f99618584e9b

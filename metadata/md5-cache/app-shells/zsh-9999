@@ -1,4 +1,4 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl] >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install postinst prepare test unpack
 DEPEND=sys-apps/groff >=sys-libs/ncurses-5.1:0= static? ( >=sys-libs/ncurses-5.7-r4:0=[static-libs] ) caps? ( sys-libs/libcap ) pcre? ( >=dev-libs/libpcre-3.9 static? ( >=dev-libs/libpcre-3.9[static-libs] ) ) gdbm? ( sys-libs/gdbm:= ) !<sys-apps/baselayout-2.4.1 app-text/yodl doc? ( sys-apps/texinfo app-text/texi2html virtual/latex-base )
 DESCRIPTION=UNIX Shell similar to the Korn shell
@@ -10,5 +10,5 @@ PDEPEND=examples? ( app-doc/zsh-lovers )
 PROPERTIES=live
 RDEPEND=>=sys-libs/ncurses-5.1:0= static? ( >=sys-libs/ncurses-5.7-r4:0=[static-libs] ) caps? ( sys-libs/libcap ) pcre? ( >=dev-libs/libpcre-3.9 static? ( >=dev-libs/libpcre-3.9[static-libs] ) ) gdbm? ( sys-libs/gdbm:= ) !<sys-apps/baselayout-2.4.1
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=a837ddbdab91448b8eaa91fffd0bb9f0

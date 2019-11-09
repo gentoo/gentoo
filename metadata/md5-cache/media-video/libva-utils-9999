@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl] >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare unpack
 DEPEND=>=x11-libs/libva-2.0.0:=[drm?,wayland?,X?] drm? ( >=x11-libs/libdrm-2.4 ) wayland? ( >=dev-libs/wayland-1.0.6 ) X? ( >=x11-libs/libX11-1.6.2 >=x11-libs/libXext-1.3.2 >=x11-libs/libXfixes-5.0.1 )
 DESCRIPTION=Collection of utilities and tests for VA-API
@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=>=x11-libs/libva-2.0.0:=[drm?,wayland?,X?] drm? ( >=x11-libs/libdrm-2.4 ) wayland? ( >=dev-libs/wayland-1.0.6 ) X? ( >=x11-libs/libX11-1.6.2 >=x11-libs/libXext-1.3.2 >=x11-libs/libXfixes-5.0.1 )
 REQUIRED_USE=|| ( drm wayland X )
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=4231e2cebaedf0f5a41d7bb92dbf3d96

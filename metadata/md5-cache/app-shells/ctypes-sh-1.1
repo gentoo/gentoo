@@ -1,5 +1,5 @@
 DEFINED_PHASES=prepare test
-DEPEND=virtual/libffi virtual/libelf app-arch/xz-utils app-arch/bzip2 app-shells/bash[plugins] virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=virtual/libffi virtual/libelf app-arch/xz-utils app-arch/bzip2 app-shells/bash[plugins] virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Foreign function interface for bash
 EAPI=6
 HOMEPAGE=http://ctypes.sh/
@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=virtual/libffi virtual/libelf app-arch/xz-utils app-arch/bzip2 app-shells/bash[plugins]
 SLOT=0
 SRC_URI=https://github.com/taviso/ctypes.sh/releases/download/v1.1/ctypes-sh-1.1.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=3a685bab891cb675bd59dbc15f199728

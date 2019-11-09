@@ -1,4 +1,4 @@
-BDEPEND=dev-libs/libev >=dev-libs/libpcre-3 dns? ( net-libs/udns ) sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=dev-libs/libev >=dev-libs/libpcre-3 dns? ( net-libs/udns ) sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst prepare test
 DEPEND=test? ( net-misc/curl )
 DESCRIPTION=Proxies incoming HTTP and TLS connections based on the hostname
@@ -10,5 +10,5 @@ LICENSE=BSD-2
 RDEPEND=dev-libs/libev >=dev-libs/libpcre-3 dns? ( net-libs/udns )
 SLOT=0
 SRC_URI=https://github.com/dlundquist/sniproxy/archive/0.6.0.tar.gz -> sniproxy-0.6.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
 _md5_=ed00025e6c0771754b533e532188a4b1

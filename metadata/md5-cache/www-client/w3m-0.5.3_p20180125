@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=dev-libs/boehm-gc:= sys-libs/ncurses:0= sys-libs/zlib X? ( x11-libs/libXdmcp x11-libs/libXext ) gdk-pixbuf? ( x11-libs/gdk-pixbuf[X?] ) !gdk-pixbuf? ( imlib? ( media-libs/imlib2[X?] ) ) gpm? ( sys-libs/gpm ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) xface? ( media-libs/compface ) virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/boehm-gc:= sys-libs/ncurses:0= sys-libs/zlib X? ( x11-libs/libXdmcp x11-libs/libXext ) gdk-pixbuf? ( x11-libs/gdk-pixbuf[X?] ) !gdk-pixbuf? ( imlib? ( media-libs/imlib2[X?] ) ) gpm? ( sys-libs/gpm ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) xface? ( media-libs/compface ) virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Text based WWW browser, supports tables and frames
 EAPI=6
 HOMEPAGE=https://github.com/tats/w3m
@@ -10,5 +10,5 @@ RDEPEND=dev-libs/boehm-gc:= sys-libs/ncurses:0= sys-libs/zlib X? ( x11-libs/libX
 REQUIRED_USE=X? ( ?? ( gdk-pixbuf imlib ) ) fbcon? ( ?? ( gdk-pixbuf imlib ) )
 SLOT=0
 SRC_URI=https://github.com/tats/w3m/archive/v0.5.3+git20180125.tar.gz -> w3m-0.5.3+git20180125.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=c16eb48c24792360f8ae48cd4eea661c

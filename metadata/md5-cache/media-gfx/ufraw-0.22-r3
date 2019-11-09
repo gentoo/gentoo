@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare
 DEPEND=dev-libs/glib:2 media-gfx/exiv2:= media-libs/lcms:2= >=media-libs/lensfun-0.2.5:= media-libs/libpng:0= media-libs/tiff virtual/jpeg:0= fits? ( sci-libs/cfitsio:= ) gimp? ( >=media-gfx/gimp-2 ) gnome? ( >=gnome-base/gconf-2 ) gtk? ( >=media-gfx/gtkimageview-1.5 >=x11-libs/gtk+-2.6:2 )
 DESCRIPTION=RAW Image format viewer and GIMP plugin
@@ -11,5 +11,5 @@ RDEPEND=dev-libs/glib:2 media-gfx/exiv2:= media-libs/lcms:2= >=media-libs/lensfu
 REQUIRED_USE=gimp? ( gtk )
 SLOT=0
 SRC_URI=mirror://sourceforge/ufraw/ufraw-0.22.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=9d871b4240803f029965805b9be9536e

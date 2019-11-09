@@ -1,4 +1,4 @@
-BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-lang/tk-8.6:= =dev-tcltk/itcl-4.1*
 DESCRIPTION=Object Oriented Enhancements for Tcl/Tk
@@ -10,5 +10,5 @@ LICENSE=BSD
 RDEPEND=>=dev-lang/tk-8.6:= =dev-tcltk/itcl-4.1*
 SLOT=0
 SRC_URI=mirror://sourceforge/project/incrtcl/%5Bincr%20Tcl_Tk%5D-4-source/itk%204.1.0/itk4.1.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	53625127887b62eabb9ec61d3d943462
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	53625127887b62eabb9ec61d3d943462
 _md5_=55a4723644561caa7f79633403901518

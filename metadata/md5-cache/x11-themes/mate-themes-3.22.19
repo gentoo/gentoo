@@ -1,4 +1,4 @@
-BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=postinst postrm preinst prepare
 DEPEND=>=x11-libs/gdk-pixbuf-2:2 >=x11-libs/gtk+-2:2 >=x11-themes/gtk-engines-2.15.3:2 x11-themes/gtk-engines-murrine >=dev-util/intltool-0.35 sys-devel/gettext >=sys-devel/autoconf-2.53 >=x11-misc/icon-naming-utils-0.8.7:0 virtual/pkgconfig dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A set of MATE themes, with sets for users with limited or low vision
@@ -10,5 +10,5 @@ RDEPEND=>=x11-libs/gdk-pixbuf-2:2 >=x11-libs/gtk+-2:2 >=x11-themes/gtk-engines-2
 RESTRICT=binchecks strip
 SLOT=0/3.22
 SRC_URI=https://pub.mate-desktop.org/releases/themes/3.22/mate-themes-3.22.19.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=4c765fcaa4c42b24323eaa27a5f55577
