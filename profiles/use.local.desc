@@ -1588,6 +1588,7 @@ dev-games/ogre:resman-strict - Resource Manager STRICT : search in default group
 dev-games/ogre:tbb - When USE=threads, use tbb for threading
 dev-games/ogre:tools - Build and install helper tools
 dev-games/openscenegraph:asio - Enable support for dev-cpp/asio library
+dev-games/openscenegraph:dicom - Enable DICOM medical image file support via sci-libs/dcmtk
 dev-games/openscenegraph:egl - Enable EGL support
 dev-games/openscenegraph:fox - Build examples using x11-libs/fox library
 dev-games/openscenegraph:gdal - Enable support for sci-libs/gdal library
@@ -4206,13 +4207,13 @@ media-gfx/imagemagick:opencl - Enable OpenCL support
 media-gfx/imagemagick:pango - Enable Pango support using x11-libs/pango
 media-gfx/imagemagick:q32 - Set quantum depth value to 32
 media-gfx/imagemagick:q8 - Set quantum depth value to 8
-media-gfx/inkscape:cdr - Enable support for CorelDRAW Diagrams
+media-gfx/inkscape:cdr - Enable support for CorelDRAW Diagrams via media-libs/libcdr
 media-gfx/inkscape:dia - pull in app-office/dia for dia import extension
 media-gfx/inkscape:inkjar - Enable support for OpenOffice.org SVG jar files
 media-gfx/inkscape:latex - pull in dependencies for LaTeX formulas
 media-gfx/inkscape:svg2 - Enable support for new SVG2 features
-media-gfx/inkscape:visio - Enable support for Microsoft Visio Diagrams
-media-gfx/inkscape:wpg - Enable support for WordPerfect Graphics
+media-gfx/inkscape:visio - Enable support for Microsoft Visio Diagrams via media-libs/libvisio
+media-gfx/inkscape:wpg - Enable support for WordPerfect Graphics via app-text/libwpg
 media-gfx/iscan-plugin-gt-f500:minimal - Install the firmware only, and not the plugin.
 media-gfx/jpeg2ps:metric - Default to A4 paper size
 media-gfx/kphotoalbum:kipi - Support for the KDE Image Plugin Interface
