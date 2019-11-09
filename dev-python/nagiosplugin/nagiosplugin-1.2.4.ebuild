@@ -8,7 +8,7 @@ PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6,7}} )
 inherit distutils-r1
 
 DESCRIPTION="A class library for writing nagios-compatible plugins"
-HOMEPAGE="https://bitbucket.org/flyingcircus/nagiosplugin/ https://pypi.org/project/nagiosplugin/"
+HOMEPAGE="https://github.com/mpounsett/nagiosplugin https://nagiosplugin.readthedocs.io"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
