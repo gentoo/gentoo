@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 DESCRIPTION="GPG Keyring Manager to handle large GPG keyrings more easily"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="mirror://gentoo/${PN}"
+SRC_URI="mirror://gentoo/${PN} -> ${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,18 +15,19 @@ IUSE=""
 DEPEND="dev-lang/perl
 	>=app-crypt/gnupg-1.2.1"
 
+S=${WORKDIR}
+
 src_unpack() {
-	mkdir ${P}
-	cp "${DISTDIR}"/${PN} "${S}" || die
+	cp "${DISTDIR}"/${P} ${PN} || die
 }
 
 src_compile() {
-	pod2man "${S}"/${PN} >"${S}/"${PN}.1
-	pod2html "${S}"/${PN} >"${S}"/${PN}.html
+	pod2man ${PN} > ${PN}.1 || die
+	pod2html ${PN} > ${PN}.html || die
 }
 
 src_install() {
-	dobin ${PN} || die
+	dobin ${PN}
 	doman ${PN}.1
-	dohtml ${PN}.html
+	dodoc ${PN}.html
 }
