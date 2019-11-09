@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<name>Samuel May</name>
+	<email>ag.eitilt@gmail.com</email>
+	<description>Primary ebuild maintainer</description>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<upstream>
+	<maintainer status="inactive">
+		<name>Jay Kominek</name>
+	</maintainer>
+</upstream>
+<longdescription>
+	A database for 'dict'-compatible dictionary software, based on Jay Kominek's descriptions of the atomic elements.
+</longdescription>
+</pkgmetadata>
