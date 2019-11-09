@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,8 @@ IUSE="+fuse postgres +sqlite"
 REQUIRED_USE="|| ( postgres sqlite )"
 
 DEPEND="virtual/perl-ExtUtils-MakeMaker"
-RDEPEND="dev-perl/Capture-Tiny
+RDEPEND="dev-lang/perl:=
+	dev-perl/Capture-Tiny
 	dev-perl/Config-Simple
 	dev-perl/File-BaseDir
 	dev-perl/File-ReadBackwards
