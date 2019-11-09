@@ -99,6 +99,9 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	sys-devel/flex
 	virtual/yacc"
+
+RESTRICT="!test? ( test )"
+
 if is_cross ; then
 	# The build assumes the host has libiberty and such when cross-compiling
 	# its build tools.  We should probably make binutils itself build a local
