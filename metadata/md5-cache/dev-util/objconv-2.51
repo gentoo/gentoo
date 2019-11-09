@@ -1,10 +1,11 @@
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=install prepare unpack
 DESCRIPTION=object code file converted (COFF, ELF, OMF, MACHO)
-EAPI=5
+EAPI=7
 HOMEPAGE=http://agner.org/optimize/#objconv
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 SLOT=0
-SRC_URI=https://dev.gentoo.org/~slyfox/distfiles/objconv-2.32_pre20131127.zip
+SRC_URI=https://dev.gentoo.org/~slyfox/distfiles/objconv-2.51.zip
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
-_md5_=f5fe1988ea0adbdb8b803e1eb78aafe8
+_md5_=c5ee6f6bb8ad18ec12853b62635d8f79

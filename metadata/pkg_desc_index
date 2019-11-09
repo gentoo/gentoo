@@ -10760,7 +10760,7 @@ dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
 dev-util/nvidia-cuda-sdk 6.5.19 7.5.18 8.0.44-r1 8.0.61 9.0.176 9.1.85 9.2.88: NVIDIA CUDA Software Development Kit
 dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61 9.0.176 9.1.85 9.2.88 10.0.130 10.1.105-r1 10.1.168 10.1.243: NVIDIA CUDA Toolkit (compiler and friends)
-dev-util/objconv 2.32_pre20131127 2.42: object code file converted (COFF, ELF, OMF, MACHO)
+dev-util/objconv 2.42 2.51: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/obs-service-cpanspec 20130318: Open Build Service client module - cpanspec service
 dev-util/obs-service-download_files 20130716: Open Build Service client module - download_files service
 dev-util/obs-service-download_src_package 20130318: Open Build Service client module - download_src_package service
@@ -13041,7 +13041,7 @@ media-gfx/zgv 5.9: A svgalib console image viewer
 media-libs/Field3D 1.7.2: A library for storing voxel data
 media-libs/SoXt 1.3.0: GUI binding for using Coin/Open Inventor with Xt/Motif
 media-libs/a52dec 0.7.4-r6 0.7.4-r7: library for decoding ATSC A/52 streams used in DVD
-media-libs/aalib 1.4_rc5-r6 1.4_rc5-r7 1.4_rc5-r8: A ASCII-Graphics Library
+media-libs/aalib 1.4_rc5-r8: A ASCII-Graphics Library
 media-libs/adplug 2.3.1 9999: A free, cross-platform, hardware independent AdLib sound player library
 media-libs/aften 0.0.8-r2: An A/52 (AC-3) audio encoder
 media-libs/aldumb 0.9.3: Allegro support for DUMB (an IT, XM, S3M, and MOD player library)
