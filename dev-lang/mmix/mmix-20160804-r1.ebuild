@@ -41,8 +41,5 @@ src_install() {
 	dobin ${PN} ${PN}al m${PN} mmotype abstime
 	dodoc README ${PN}.1
 
-	if use doc ; then
-		insinto /usr/share/doc/${PF}
-		doins *.ps
-	fi
+	use doc && dodoc *.ps
 }
