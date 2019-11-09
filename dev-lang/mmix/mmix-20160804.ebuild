@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,12 +36,9 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	dobin ${PN} ${PN}al m${PN} mmotype abstime
 	dodoc README ${PN}.1
 
-	if use doc ; then
-		insinto /usr/share/doc/${PF}
-		doins *.ps
-	fi
+	use doc && dodoc *.ps
 }
