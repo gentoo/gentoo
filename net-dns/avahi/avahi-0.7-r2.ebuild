@@ -191,6 +191,9 @@ multilib_src_install() {
 		insinto /usr/share/devhelp/books/avahi
 		doins avahi.devhelp || die
 	fi
+
+	# The build system creates an empty "/run" directory, so we clean it up here
+	rmdir "${ED}"/run
 }
 
 multilib_src_install_all() {
