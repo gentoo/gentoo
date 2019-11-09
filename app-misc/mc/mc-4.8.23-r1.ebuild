@@ -38,6 +38,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	"
 
+RESTRICT="!test? ( test )"
+
 S=${WORKDIR}/${MY_P}
 
 PATCHES=(
