@@ -5,10 +5,8 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 PYTHON_REQ_USE="xml"
-
-inherit cmake-utils flag-o-matic xdg toolchain-funcs python-single-r1
-
 MY_P="${P/_/}"
+inherit cmake-utils flag-o-matic xdg toolchain-funcs python-single-r1
 
 DESCRIPTION="SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
@@ -18,21 +16,30 @@ SRC_URI="https://inkscape.org/gallery/item/14917/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
-IUSE="cdr dia dbus exif gnome graphicsmagick +imagemagick openmp postscript inkjar jpeg svg2 jemalloc"
-IUSE+=" lcms nls spell static-libs visio wpg"
+IUSE="cdr dbus dia exif gnome graphicsmagick imagemagick inkjar jemalloc jpeg
+lcms nls openmp postscript spell static-libs svg2 visio wpg"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	?? ( imagemagick graphicsmagick )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+BDEPEND="
+	dev-util/glib-utils
+	>=dev-util/intltool-0.40
+	>=sys-devel/gettext-0.17
+	virtual/pkgconfig
+"
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/poppler-0.57.0:=[cairo]
-	>=dev-cpp/glibmm-2.54.1
 	>=dev-cpp/cairomm-1.12
+	>=dev-cpp/glibmm-2.54.1
+	dev-cpp/gtkmm:3.0
+	>=dev-cpp/pangomm-2.40
 	>=dev-libs/boehm-gc-7.1:=
+	dev-libs/double-conversion:=
 	>=dev-libs/glib-2.41
 	>=dev-libs/libsigc++-2.8
 	>=dev-libs/libxml2-2.7.4
 	>=dev-libs/libxslt-1.1.25
+	dev-libs/gdl:3
 	dev-libs/popt
 	dev-python/lxml[${PYTHON_USEDEP}]
 	media-gfx/potrace
@@ -40,9 +47,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/libpng:0=
+	net-libs/libsoup
 	sci-libs/gsl:=
 	x11-libs/libX11
 	>=x11-libs/pango-1.37.2
+	x11-libs/gtk+:3
 	cdr? (
 		app-text/libwpg:0.3
 		dev-libs/librevenge
@@ -51,8 +60,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( dev-libs/dbus-glib )
 	exif? ( media-libs/libexif )
 	gnome? ( >=gnome-base/gnome-vfs-2.0 )
-	graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
-	imagemagick? ( <media-gfx/imagemagick-7:=[cxx] )
+	imagemagick? (
+		!graphicsmagick? ( <media-gfx/imagemagick-7:=[cxx] )
+		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
+	)
+	jemalloc? ( dev-libs/jemalloc )
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
 	spell? (
@@ -68,15 +80,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		app-text/libwpg:0.3
 		dev-libs/librevenge
 	)
-	x11-libs/gtk+:3
-	dev-libs/gdl:3
-	dev-cpp/gtkmm:3.0
-	>=dev-cpp/pangomm-2.40
-	jemalloc? ( dev-libs/jemalloc )
-	net-libs/libsoup
-	dev-libs/double-conversion
 "
-
 # These only use executables provided by these packages
 # See share/extensions for more details. inkscape can tell you to
 # install these so we could of course just not depend on those and rely
@@ -89,12 +93,6 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.65
 "
-BDEPEND="
-	dev-util/glib-utils
-	>=dev-util/intltool-0.40
-	>=sys-devel/gettext-0.17
-	virtual/pkgconfig
-"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -103,6 +101,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${P}-detect-imagemagick.patch
 	"${FILESDIR}"/${P}-do-not-compress-man.patch
+	"${FILESDIR}"/${P}-poppler-0.82.patch
 )
 
 pkg_pretend() {
@@ -112,39 +111,39 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	einfo "Fixing doc directory path..."
-	sed -i "s%doc/inkscape%doc/${P}%g" CMakeScripts/ConfigCPack.cmake || die "Failed to fix doc directory path"
-
 	cmake-utils_src_prepare
+	sed -i "/install.*COPYING/d" CMakeScripts/ConfigCPack.cmake || die
 }
 
 src_configure() {
 	# aliasing unsafe wrt #310393
 	append-flags -fno-strict-aliasing
 
-	mycmakeargs=(
-	-DWITH_DBUS="$(usex dbus ON OFF)"   # Compile with support for DBus interface
-	-DENABLE_LCMS="$(usex lcms ON OFF)"   # Compile with LCMS support
-	-DWITH_SVG2="$(usex svg2 ON OFF)"   # Compile with support for new SVG2 features
-	#-DWITH_LPETOOL   # Compile with LPE Tool and experimental LPEs enabled
-	-DWITH_OPENMP="$(usex openmp ON OFF)"   # Compile with OpenMP support
-	#-DWITH_PROFILING   # Turn on profiling
-	-DBUILD_SHARED_LIBS="$(usex !static-libs ON OFF)"  # Compile libraries as shared and not static
-	-DENABLE_POPPLER=ON   # Compile with support of libpoppler
-	-DENABLE_POPPLER_CAIRO=ON   # Compile with support of libpoppler-cairo for rendering PDF preview (depends on ENABLE_POPPLER)
-	-DWITH_IMAGE_MAGICK="$(usex imagemagick ON OFF)"   # Compile with support of ImageMagick for raster extensions and image import resolution (requires ImageMagick 6; set to OFF if you prefer GraphicsMagick)
-	-DWITH_GRAPHICS_MAGICK="$(usex graphicsmagick ON OFF)"   # Compile with support of GraphicsMagick for raster extensions and image import resolution
-	-DWITH_LIBCDR="$(usex cdr ON OFF)"   # Compile with support of libcdr for CorelDRAW Diagrams
-	-DWITH_LIBVISIO="$(usex visio ON OFF)"   # Compile with support of libvisio for Microsoft Visio Diagrams
-	-DWITH_LIBWPG="$(usex wpg ON OFF)"   # Compile with support of libwpg for WordPerfect Graphics
-	-DWITH_NLS="$(usex nls ON OFF)"   # Compile with Native Language Support (using gettext)
-	-DWITH_JEMALLOC="$(usex jemalloc ON OFF)"   # Compile with JEMALLOC support
+	local mycmakeargs=(
+		# -DWITH_LPETOOL   # Compile with LPE Tool and experimental LPEs enabled
+		-DENABLE_POPPLER=ON
+		-DENABLE_POPPLER_CAIRO=ON
+		-DWITH_PROFILING=OFF
+		-DWITH_LIBCDR=$(usex cdr)
+		-DWITH_DBUS=$(usex dbus)
+		-DWITH_IMAGE_MAGICK=$(usex imagemagick) # requires ImageMagick 6
+		-DWITH_GRAPHICS_MAGICK=$(usex graphicsmagick)
+		-DWITH_JEMALLOC=$(usex jemalloc)
+		-DENABLE_LCMS=$(usex lcms)
+		-DWITH_NLS=$(usex nls)
+		-DWITH_OPENMP=$(usex openmp)
+		-DBUILD_SHARED_LIBS=$(usex !static-libs)
+		-DWITH_SVG2=$(usex svg2)
+		-DWITH_LIBVISIO=$(usex visio)
+		-DWITH_LIBWPG=$(usex wpg)
 	)
 
 	cmake-utils_src_configure
 }
 
 src_install() {
+	cmake-utils_src_install
+
 	find "${ED}" -type f -name "*.la" -delete || die
 
 	# No extensions are present in beta1
@@ -153,6 +152,4 @@ src_install() {
 	if [[ -e "${extdir}" ]] && [[ -n $(find "${extdir}" -mindepth 1) ]]; then
 		python_optimize "${ED}"/usr/share/${PN}/extensions
 	fi
-
-	cmake-utils_src_install
 }

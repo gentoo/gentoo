@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="OpenSceneGraph"
 MY_P=${MY_PN}-${PV}
@@ -15,13 +15,18 @@ SRC_URI="https://github.com/${PN}/${MY_PN}/archive/${MY_P}.tar.gz"
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/158" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
 KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
-IUSE="asio curl debug doc egl examples ffmpeg fltk fox gdal gif glut gstreamer gtk jpeg
-las libav lua openexr openinventor osgapps pdf png sdl sdl2 svg tiff
-truetype vnc wxwidgets xrandr zlib"
+IUSE="asio curl dicom debug doc egl examples ffmpeg fltk fox gdal gif glut
+gstreamer gtk jpeg las libav lua openexr openinventor osgapps pdf png sdl sdl2
+svg tiff truetype vnc wxwidgets xrandr +zlib"
 
-REQUIRED_USE="sdl2? ( sdl )"
+REQUIRED_USE="sdl2? ( sdl ) dicom? ( zlib ) openexr? ( zlib )"
 
-# TODO: COLLADA, FBX, GTA, NVTT, OpenVRML, Performer, DCMTK
+# TODO: COLLADA, FBX, GTA, NVTT, OpenVRML, Performer
+BDEPEND="
+	app-arch/unzip
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
 RDEPEND="
 	media-libs/mesa[egl?]
 	virtual/glu
@@ -42,7 +47,7 @@ RDEPEND="
 		libav? ( media-video/libav:0= )
 		!libav? ( media-video/ffmpeg:0= )
 	)
-	gdal? ( sci-libs/gdal )
+	gdal? ( sci-libs/gdal:= )
 	gif? ( media-libs/giflib:= )
 	gstreamer? (
 		media-libs/gstreamer:1.0
@@ -70,17 +75,14 @@ RDEPEND="
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}
-	app-arch/unzip
-	virtual/pkgconfig
 	x11-base/xorg-proto
-	doc? ( app-doc/doxygen )
 "
 
 S="${WORKDIR}/${MY_PN}-${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-cmake.patch
-	"${FILESDIR}"/${P}-docdir.patch
+	"${FILESDIR}"/${PN}-3.6.3-cmake.patch
+	"${FILESDIR}"/${PN}-3.6.3-docdir.patch
 )
 
 src_configure() {
@@ -95,7 +97,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DDYNAMIC_OPENSCENEGRAPH=ON
 		-DLIB_POSTFIX=${libdir/lib}
-		-DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PF}" # drop after EAPI-7 port
 		-DOPENGL_PROFILE=GL2 #GL1 GL2 GL3 GLES1 GLES3 GLES3
 		-DOSG_ENVVAR_SUPPORTED=ON
 		-DOSG_PROVIDE_READFILE=ON
@@ -103,7 +104,7 @@ src_configure() {
 		$(cmake-utils_use_find_package asio Asio)
 		$(cmake-utils_use_find_package curl CURL)
 		-DBUILD_DOCUMENTATION=$(usex doc)
-		-DBUILD_OSG_APPLICATIONS=$(usex osgapps)
+		$(cmake-utils_use_find_package dicom DCMTK)
 		$(cmake-utils_use_find_package egl EGL)
 		-DBUILD_OSG_EXAMPLES=$(usex examples)
 		$(cmake-utils_use_find_package ffmpeg FFmpeg)
@@ -120,6 +121,7 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_OpenCascade=ON
 		$(cmake-utils_use_find_package openexr OpenEXR)
 		$(cmake-utils_use_find_package openinventor Inventor)
+		-DBUILD_OSG_APPLICATIONS=$(usex osgapps)
 		$(cmake-utils_use_find_package pdf Poppler-glib)
 		$(cmake-utils_use_find_package png PNG)
 		$(cmake-utils_use_find_package sdl SDL)
