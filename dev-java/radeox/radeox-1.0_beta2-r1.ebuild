@@ -17,7 +17,7 @@ SLOT="1"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND=">=virtual/jre-1.4
+RDEPEND=">=virtual/jre-1.4:*
 	=dev-java/commons-logging-1*:0"
 DEPEND=">=virtual/jdk-1.4
 	${RDEPEND}"
