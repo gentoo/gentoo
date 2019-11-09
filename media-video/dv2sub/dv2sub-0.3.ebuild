@@ -1,15 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils
-
-DESCRIPTION="extract info or subtitles from DV stream"
+DESCRIPTION="Extract info or subtitles from DV stream"
 HOMEPAGE="http://dv2sub.sourceforge.net/"
 SRC_URI="mirror://sourceforge/dv2sub/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="kino"
@@ -23,8 +21,8 @@ RDEPEND="${DEPEND}
 	)"
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc AUTHORS ChangeLog README TODO
+	default
+
 	if use kino; then
 		insinto /usr/share/kino/scripts/exports
 		exeinto /usr/share/kino/scripts/exports
