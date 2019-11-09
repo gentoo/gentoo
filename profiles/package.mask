@@ -29,6 +29,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2019-11-09)
+# maintainer-needed, no known upstream homepage
+# what does it even do? EAPI=4  Removal in 30 days
+app-backup/furball
+
+# Aaron Bauman <bman@gentoo.org> (2019-11-09)
+# maintainer-need, upstream website is dead
+# EAPI=4. Removal in 30 days
+app-admin/durep
+
 # Michał Górny <mgorny@gentoo.org> (2019-11-08)
 # Ancient vulnerable version of NumPy, plus all its revdeps.
 # Removal in 30 days.  Bug #627962.
