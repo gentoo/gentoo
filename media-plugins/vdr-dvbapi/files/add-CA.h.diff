@@ -1,0 +1,38 @@
+diff -Naur vdr-plugin-dvbapi-2.2.3.orig/CA.h vdr-plugin-dvbapi-2.2.3/CA.h
+--- vdr-plugin-dvbapi-2.2.3.orig/CA.h	1970-01-01 01:00:00.000000000 +0100
++++ vdr-plugin-dvbapi-2.2.3/CA.h	2018-05-12 11:24:14.696723711 +0200
+@@ -0,0 +1,12 @@
++#ifndef ___CA_H
++#define ___CA_H
++
++/* aes key */
++
++typedef struct ca_descr_aes {
++  unsigned int index;
++  unsigned int parity;    /* 0 == even, 1 == odd */
++  unsigned char cw[16];
++} ca_descr_aes_t;
++
++#endif
+diff -Naur vdr-plugin-dvbapi-2.2.3.orig/DeCSA.h vdr-plugin-dvbapi-2.2.3/DeCSA.h
+--- vdr-plugin-dvbapi-2.2.3.orig/DeCSA.h	2016-05-19 12:20:32.000000000 +0200
++++ vdr-plugin-dvbapi-2.2.3/DeCSA.h	2018-05-12 11:25:13.753864681 +0200
+@@ -35,6 +35,7 @@
+ #define MAX_KEY_WAIT 25         // max seconds to consider a CW as valid
+ 
+ #include "DVBAPI.h"
++#include "CA.h"
+ 
+ using namespace std;
+ 
+diff -Naur vdr-plugin-dvbapi-2.2.3.orig/SocketHandler.h vdr-plugin-dvbapi-2.2.3/SocketHandler.h
+--- vdr-plugin-dvbapi-2.2.3.orig/SocketHandler.h	2016-05-19 12:20:32.000000000 +0200
++++ vdr-plugin-dvbapi-2.2.3/SocketHandler.h	2018-05-12 11:26:04.590847379 +0200
+@@ -32,6 +32,7 @@
+ #include <vdr/thread.h>
+ #include <linux/dvb/dmx.h>
+ #include "Filter.h"
++#include "CA.h"
+ 
+ #define DVBAPI_PROTOCOL_VERSION         2
+ 
