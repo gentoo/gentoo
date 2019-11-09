@@ -3033,7 +3033,7 @@ dev-ada/gnatcoll-db 2018-r1 2019: GNAT Component Collection
 dev-ada/gnatmem 2019 2019-r1: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2018 2019 2019-r1: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2017-r2 2019 2019-r1: Multi-Language Management
-dev-ada/gps 2018-r1 2018-r2: The GNAT Programming Studio
+dev-ada/gps 2018-r2: The GNAT Programming Studio
 dev-ada/gps-bin 2016 2016-r1: The GNAT Programming Studio
 dev-ada/gtkada 2017 2017-r1 2018-r1 2018-r2 2019 2019-r1: A complete Ada graphical toolkit
 dev-ada/langkit 2018 2019: A Python framework to generate language parsers
@@ -3127,7 +3127,7 @@ dev-db/libzdb 2.11.1 2.11.2 2.11.3 2.12 3.0 3.1 3.1-r1: A thread safe high level
 dev-db/lmdb 0.9.23 0.9.24: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
-dev-db/mariadb 5.5.65 10.1.38-r1 10.1.41-r1 10.2.22-r1 10.2.26-r1 10.2.27 10.2.29 10.3.17-r1 10.3.18 10.4.7-r1 10.4.8: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.65 10.1.38-r1 10.1.41-r1 10.2.22-r1 10.2.26-r1 10.2.27 10.2.29 10.3.17-r1 10.3.18 10.3.20 10.4.7-r1 10.4.8: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.0.6-r1 3.0.9 3.1.2 3.1.3 3.1.4 9999: C client library for MariaDB/MySQL
 dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 3.6.8 3.6.13 3.6.14 4.0.10 4.0.12 4.0.13 4.2.0-r2 4.2.1: A high-performance, open source, schema-free document-oriented database
@@ -4679,7 +4679,7 @@ dev-lang/scala 2.12.4: The Scala Programming Language
 dev-lang/scala-bin 2.12.4: The Scala Programming Language
 dev-lang/smlnj 110.75 110.82: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
-dev-lang/spark 2018 2018-r1: Software development for high-reliability applications.
+dev-lang/spark 2018-r1: Software development for high-reliability applications.
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 1.8.5-r7 1.8.5-r9 17.0.0-r5 38.3.0 45.0.2 52.9.1_pre1 52.9.1_pre1-r1 60.5.2_p0-r2 60.5.2_p0-r3: Stand-alone JavaScript C++ library
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
@@ -14182,7 +14182,7 @@ media-video/clive 2.3.0.1: Command line tool for extracting videos from various 
 media-video/cpvts 1.2 1.2-r1: raw copy title sets from a DVD to your harddisc
 media-video/devedeng 4.15.0 4.16.0 9999: DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD)
 media-video/dirac 1.0.2-r1: Open Source video codec
-media-video/dv2sub 0.3: extract info or subtitles from DV stream
+media-video/dv2sub 0.3: Extract info or subtitles from DV stream
 media-video/dvbackup 0.0.4-r2: A small utility for creating backups on DV tapes
 media-video/dvbsnoop 1.4.50-r1: DVB/MPEG stream analyzer program
 media-video/dvd9to5 0.1.7: Perl script to backup the main feature of a DVD-9 on DVD-5
@@ -14193,7 +14193,7 @@ media-video/dvdimagecmp 0.3-r1: Tool to compare a burned DVD with an image to ch
 media-video/dvdrip 0.98.11-r3 0.98.11-r4: dvd::rip is a graphical frontend for transcode
 media-video/dvdstyler 3.0.4: A cross-platform free DVD authoring application
 media-video/dvgrab 3.5-r1: Digital Video (DV) grabber for GNU/Linux
-media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every video file localized in the CD root
+media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play videos
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.2_pre20140701-r2: Movie creator from photos and video clips
 media-video/ffmpeg 3.4.6-r1 4.1.3 4.1.4 4.2.1 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
@@ -14281,7 +14281,7 @@ media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subview
 media-video/subcheck 0.78.2-r1: Subcheck checks srt subtitle files for errors
 media-video/subdl 1.0.3: A command-line tool for downloading subs from opensubtitles.org
 media-video/subliminal 2.0.5-r2 2.0.5-r3 9999: Python library to search and download subtitles
-media-video/submux-dvd 0.5.2: A subtitle multiplexer, muxes subtitles into .vob
+media-video/submux-dvd 0.5.2-r1: A subtitle multiplexer, muxes subtitles into .vob
 media-video/subsync 0.0.1: subsync is an program that synchronizes srt subtitle files
 media-video/subtitlecomposer 0.7.0: Text-based subtitles editor
 media-video/subtitleeditor 0.54.0: GTK+3 subtitle editing tool
