@@ -30,6 +30,14 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-11-09)
+# Remnants of 'Cluster Suite', with no external revdeps.  dlm-lib
+# does not build with modern kernels anymore.  EAPI 0.
+# Removal in 30 days.  Bug #533122.
+sys-cluster/cman-lib
+sys-cluster/dlm
+sys-cluster/dlm-lib
+
+# Michał Górny <mgorny@gentoo.org> (2019-11-09)
 # Multimedia distribution with last release in 2005.  Its usefulness
 # with modern media is doubtful.
 # Removal in 30 days.  Bug #699694.
