@@ -60,8 +60,8 @@ src_test() {
 }
 
 src_install() {
-	PATH="./bin:$PATH" _run ./koch install "${ED%/}"
-	rm -r "${ED%/}/usr/share/nim/doc" || die "failed to remove 'doc'"
+	PATH="./bin:$PATH" _run ./koch install "${ED}"
+	rm -r "${ED}/usr/share/nim/doc" || die "failed to remove 'doc'"
 
 	exeinto /usr/bin
 
@@ -73,10 +73,6 @@ src_install() {
 		doexe "${bin_exe}"
 	done
 
-	if use doc; then
-		insinto /usr/share/doc/${PF}
-		dodoc doc/html/*.html
-	fi
-
+	use doc && dodoc doc/html/*.html
 	newbashcomp tools/nim.bash-completion ${PN}
 }
