@@ -87,6 +87,8 @@ DEPEND="${RDEPEND}
 	virtual/yacc
 "
 
+RESTRICT="!test? ( test )"
+
 MY_BUILDDIR=${WORKDIR}/build
 S=${WORKDIR}/${P/-hppa64/}
 
