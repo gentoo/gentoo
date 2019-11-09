@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	introspection? ( dev-libs/gobject-introspection:= )
 	mono? (
 		dev-lang/mono
-		gtk? ( dev-dotnet/gtk-sharp )
+		gtk? ( dev-dotnet/gtk-sharp:2 )
 	)
 	python? (
 		${PYTHON_DEPS}
