@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<name>Samuel May</name>
+	<email>ag.eitilt@gmail.com</email>
+	<description>Primary ebuild maintainer</description>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<upstream>
+	<maintainer status="inactive">
+		<name>Eric Raymond</name>
+		<email>esr@thyrsus.com</email>
+	</maintainer>
+	<maintainer status="inactive">
+		<name>Guy Steele</name>
+		<email>gls@think.com</email>
+	</maintainer>
+</upstream>
+<longdescription>
+	A database for 'dict'-compatible dictionary software, based on the classic Jargon File describing the slang that developed around computer programming in the '70s and '80s.
+</longdescription>
+</pkgmetadata>
