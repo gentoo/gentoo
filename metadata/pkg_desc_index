@@ -1205,7 +1205,7 @@ app-editors/qhexedit2 0.8.4 0.8.4_p20170719: Hex editor library, Qt application 
 app-editors/qxmledit 0.9.12: Simple Qt-based XML editor
 app-editors/retext 7.0.3 7.0.4-r1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
-app-editors/scite 4.1.3 4.2.0: A very powerful, highly configurable, small editor with syntax coloring
+app-editors/scite 4.1.3 4.2.0 4.2.1: A very powerful, highly configurable, small editor with syntax coloring
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
 app-editors/sublime-text 3_p3211-r1: Sophisticated text editor for code, markup and prose
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
