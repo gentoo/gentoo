@@ -12479,7 +12479,6 @@ mail-filter/amavisd-milter 1.5.0-r1 1.6.0-r1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.11.1-r3 2.12.0: High-performance interface between the MTA and content checkers
 mail-filter/bmf 0.9.4-r2 0.9.4-r3: A fast and small Bayesian spam filter
 mail-filter/bogofilter 1.2.4-r2: Bayesian spam filter designed with fast algorithms, and tuned for speed
-mail-filter/clamsmtp 1.10: An SMTP filter to check for viruses using the ClamAV anti-virus software
 mail-filter/courier-pythonfilter 3.0.2: Python filtering architecture for the Courier MTA
 mail-filter/couriersrs 0.1.2: SRS (Sender Rewriting Scheme) wrapper for the courier MTA
 mail-filter/dcc 1.3.154 1.3.158: Distributed Checksum Clearinghouse
@@ -12536,7 +12535,6 @@ mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail 
 mail-mta/opensmtpd 6.0.3_p1-r1 6.4.0_p1: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 2.10.9 3.4.5-r1 3.4.6 3.4.7 3.5_pre20191019: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge-bin 1.1.6 1.2.2 1.2.3: Serves ProtonMail to IMAP/SMTP clients
-mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.14.9 8.15.2-r2: Widely-used Mail Transport Agent (MTA)
 mail-mta/ssmtp 2.64-r2 2.64-r3: Extremely simple MTA to get mail off the system to a Mailhub
@@ -12676,7 +12674,6 @@ media-fonts/jisx0213-fonts 20040425-r2: Japanese fixed fonts that cover JIS0213 
 media-fonts/jomolhari 0.003c: Bhutanese style dbu-can font for Tibetan/Dzongkha text named after Mt Jomolhari
 media-fonts/jsmath 1.0: Raster fonts for jsmath
 media-fonts/jsmath-extra-dark 1.0: Extra raster fonts for jsmath, dark version
-media-fonts/jsmath-extra-light 1.0: Extra raster fonts for jsmath, light version
 media-fonts/kacst-fonts 2.01: KACST Arabic TrueType Fonts
 media-fonts/kanjistrokeorders 4.002: Font for viewing stroke order diagrams for kanji, kana and other characters
 media-fonts/khmer 5.0-r1: Fonts for the Khmer language of Cambodia
@@ -14788,7 +14785,6 @@ net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pi
 net-im/mattermost-desktop-bin 4.2.3 4.3.1: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
-net-im/openfire 4.2.3-r1 4.2.3-r2: Openfire (formerly wildfire) real time collaboration (RTC) server
 net-im/openmittsu 0.9.13.32 0.9.13.46: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.13.0 2.13.0-r1: GTK Instant Messenger client
 net-im/poezio 0.12 9999: Console XMPP client that looks like most famous IRC clients
@@ -15096,7 +15092,6 @@ net-mail/mailfront 2.22: Mail server network protocol front-ends
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
 net-mail/mailman 2.1.29-r1 2.1.29-r2 3.1.1 3.2.1: Mailman -- the GNU mailing list manager
 net-mail/mailshears 0.0.3-r1: Mangle your mail garden
-net-mail/mailsync 5.2.1: A mailbox synchronizer
 net-mail/mailutils 3.4-r3 3.7 3.8: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.23 0.24: Indexes and searches Maildir/MH folders
 net-mail/mboxgrep 0.7.9-r1: Grep for mbox files
@@ -15277,7 +15272,6 @@ net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP addre
 net-misc/iperf 2.0.13 2.0.14a 2.99999.99999 3.6 3.7 3.99999.99999: A TCP, UDP, and SCTP network bandwidth measurement tool
 net-misc/ipmiview 2.15.0.190109 2.16.0.190815: A GUI application that allows to manage multiple target systems through BMC
 net-misc/iprange 1.0.4: iprange utility
-net-misc/ipsc 0.4.3.2-r2: IP Subnet Calculator
 net-misc/ipsorcery 2.0.9-r2: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
 net-misc/ipsvd 1.0.0-r2: ipsvd is a set of internet protocol service daemons for Unix
 net-misc/iputils 20180629 20190515 20190709 99999999: Network monitoring tools including ping and ping6

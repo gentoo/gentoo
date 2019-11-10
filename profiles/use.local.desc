@@ -4027,11 +4027,6 @@ mail-mta/postfix:ldap-bind - Add support for binding to LDAP backend using dev-l
 mail-mta/postfix:lmdb - Add support for using dev-db/lmdb for lookup tables
 mail-mta/postfix:memcached - Add support for using net-misc/memcached for lookup tables
 mail-mta/postfix:vda - Add support for virtual delivery agent quota enforcing
-mail-mta/qmail-ldap:cluster - Enable this if you want to have cluster support in qmail-ldap
-mail-mta/qmail-ldap:gencertdaily - Generate SSL certificates daily instead of hourly
-mail-mta/qmail-ldap:highvolume - Prepare qmail for high volume servers
-mail-mta/qmail-ldap:rfc2307 - Add support for RFC2307 compliant uid/gid attributes
-mail-mta/qmail-ldap:rfc822 - Add support for RFC822 compliant mail attributes
 mail-mta/qpsmtpd:postfix - create user with permissions for proper postfix interaction
 mail-mta/ssmtp:mta - Install symlinks for sendmail-compatible MTA.
 mate-base/caja:mate - Install x11-themes/mate-icon-theme which is needed when this package is used in the MATE desktop environment.
