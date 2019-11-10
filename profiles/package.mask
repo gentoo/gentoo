@@ -242,6 +242,7 @@ dev-embedded/gnap-ext
 # In preparation...
 =dev-lang/perl-5.30.1*
 ~virtual/perl-Module-CoreList-5.201.910.270
+~virtual/perl-Module-CoreList-5.201.911.100
 
 # Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-10-28)
 # OpenVAS project name has been renamed in
