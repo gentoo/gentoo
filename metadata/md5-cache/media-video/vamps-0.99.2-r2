@@ -3,10 +3,10 @@ DEPEND=>=media-libs/libdvdread-0.9.4
 DESCRIPTION=Very fast requantisizing tool for backup DVDs
 EAPI=7
 HOMEPAGE=http://vamps.sourceforge.net/
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=>=media-libs/libdvdread-0.9.4 >=media-video/dvdauthor-0.6.10
 SLOT=0
 SRC_URI=mirror://sourceforge/vamps/vamps-0.99.2.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=9c443183a9d95e3469b14eed2d20339f
+_md5_=3e757effe4d27f5cd705b15b9aaaac81
