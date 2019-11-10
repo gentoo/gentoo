@@ -14,7 +14,6 @@ RDEPEND="!prefix-guest? (
 		elibc_glibc? ( sys-libs/glibc:2.2 )
 		elibc_musl? ( sys-libs/musl )
 		elibc_uclibc? ( || ( sys-libs/uclibc-ng sys-libs/uclibc ) )
-		elibc_FreeBSD? ( sys-freebsd/freebsd-lib )
 	)
 	prefix-guest? (
 		elibc_Cygwin? ( sys-libs/cygwin-crypt )
