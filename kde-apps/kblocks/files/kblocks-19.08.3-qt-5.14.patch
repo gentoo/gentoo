@@ -1,0 +1,24 @@
+From 2f2d2f28fae9fb779fb5f8ae139c6ca28ccc83d0 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Wed, 30 Oct 2019 13:34:23 +0100
+Subject: Make it compile against qt5.15, This enum is unused
+
+---
+ KBlocksView.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/KBlocksView.cpp b/KBlocksView.cpp
+index a16d672..2ad0686 100644
+--- a/KBlocksView.cpp
++++ b/KBlocksView.cpp
+@@ -21,7 +21,7 @@ KBlocksView::KBlocksView(KBlocksScene *scene, QWidget *parent): QGraphicsView(sc
+     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+     setFrameStyle(QFrame::NoFrame);
+ 
+-    setOptimizationFlags(QGraphicsView::DontClipPainter |
++    setOptimizationFlags(
+                          QGraphicsView::DontSavePainterState /*|
+                           QGraphicsView::DontAdjustForAntialiasing*/);
+ 
+-- 
+cgit v1.1
