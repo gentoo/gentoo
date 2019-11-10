@@ -824,15 +824,7 @@ app-dicts/aspell-vi 0.01.1.1: Vietnamese language dictionary for aspell
 app-dicts/bookview 3.2.1: NDTP client written in Tcl/Tk
 app-dicts/canna-2ch 20040519: Japanese Canna dictionary for 2channelers
 app-dicts/canna-cannadic 0.95c: Japanese dictionary as a supplement/replacement to Canna3.5b2
-app-dicts/dictd-devils 0-r1: The Devil's Dictionary for dict
-app-dicts/dictd-dicts 1.0: A package to simplify installation of all dictd dictionaries
-app-dicts/dictd-elements 2000.22.07-r1: The elements database for dict
-app-dicts/dictd-foldoc 2001.03.13-r1: The Free On-line Dictionary of Computing for dict
-app-dicts/dictd-gazetteer 1.2-r1: The original U.S. Gazetteer Place and Zipcode Files for dict
-app-dicts/dictd-jargon 4.2.3-r1: Jargon lexicon
-app-dicts/dictd-misc 1.5b-r1: Easton's 1897 Bible Dictionary for dict
 app-dicts/dictd-vera 1.23: V.E.R.A. -- Virtual Entity of Relevant Acronyms for dict
-app-dicts/dictd-web1913 1.4-r1: Webster's Revised Unabridged Dictionary (1913) for dict
 app-dicts/dictd-wn 3.0_p33: WordNet for dict
 app-dicts/dikt 2s_p1: Dictionary application that implements the Dict protocol
 app-dicts/duali-data 0.1b-r1: Dictionary data for the Arab dictionary project duali
