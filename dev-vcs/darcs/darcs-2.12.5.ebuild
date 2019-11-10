@@ -11,7 +11,7 @@ inherit haskell-cabal
 
 DESCRIPTION="a distributed, interactive, smart revision control system"
 HOMEPAGE="http://darcs.net/"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
