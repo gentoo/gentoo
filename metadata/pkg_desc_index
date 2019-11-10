@@ -12785,7 +12785,7 @@ media-fonts/zh-kcfonts 1.05-r3: Kuo Chauo Chinese Fonts collection in BIG5 encod
 media-gfx/aaphoto 0.45: Automatic color correction and resizing of photos
 media-gfx/aewan 1.0.01-r1: A curses-based ascii-art editor
 media-gfx/ahoviewer 1.6.5: A GTK2 image viewer, manga reader, and booru browser
-media-gfx/album 4.07 4.13-r1 4.15: HTML photo album generator
+media-gfx/album 4.13-r1 4.15: HTML photo album generator
 media-gfx/alembic 1.7.9 1.7.11: Open framework for storing and sharing scene data
 media-gfx/aoi 2.5 2.7.2: A free, open-source 3D modelling and rendering studio
 media-gfx/apng2gif 1.8: create a GIF from an APNG
@@ -12869,7 +12869,7 @@ media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux d
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.20: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
-media-gfx/gpicview 0.2.4 0.2.5 0.2.5-r1: A Simple and Fast Image Viewer for X
+media-gfx/gpicview 0.2.5 0.2.5-r1: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.32 1.3.33 9999: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.10 1.3.13: Library providing rendering capabilities for complex non-Roman writing systems
