@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -10,13 +10,13 @@ HOMEPAGE="http://bcm43xx.berlios.de"
 #SRC_URI="mirror://berlios/bcm43xx/${P}.tar.bz2"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ppc ~ppc64 ~x86"
 IUSE=""
 
 src_compile() {
-	emake CC="$(tc-getCC)" || die "emake failed"
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
@@ -27,15 +27,13 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! [ -f /lib/firmware/${PN}_microcode2.fw ]; then
-		echo
-		einfo "You'll need to use bcm43xx-fwcutter to install the bcm43xx firmware."
-		einfo "Please read the bcm43xx-fwcutter readme for more details:"
-		einfo "README in /usr/share/doc/${P}"
-		echo
+	if [[ ! -f ${EROOT}/lib/firmware/${PN}_microcode2.fw ]]; then
+		elog "You'll need to use bcm43xx-fwcutter to install the bcm43xx firmware."
+		elog "Please read the bcm43xx-fwcutter readme for more details:"
+		elog "README in /usr/share/doc/${PF}"
+		elog
 	fi
 
-	einfo "Please read this forum thread for help and troubleshooting:"
-	einfo "https://forums.gentoo.org/viewtopic-t-409194.html"
-	echo
+	elog "Please read this forum thread for help and troubleshooting:"
+	elog "https://forums.gentoo.org/viewtopic-t-409194.html"
 }
