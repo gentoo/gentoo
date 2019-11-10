@@ -1,10 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=yes
-inherit autotools-utils git-r3
+inherit autotools git-r3
 
 DESCRIPTION="NPAPI headers bundle"
 HOMEPAGE="https://github.com/mgorny/npapi-sdk/"
@@ -16,3 +15,8 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="virtual/pkgconfig"
+
+src_prepare() {
+	default
+	eautoreconf
+}
