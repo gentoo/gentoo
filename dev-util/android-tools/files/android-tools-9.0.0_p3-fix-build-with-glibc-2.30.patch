@@ -1,0 +1,36 @@
+From d6ca31184b7d4e77ed39848994e1c5926648af61 Mon Sep 17 00:00:00 2001
+From: John Zimmermann <johnz@posteo.net>
+Date: Tue, 1 Oct 2019 12:38:21 +0200
+Subject: [PATCH] Use glibc's gettid when using glibc>=2.30
+
+---
+ libcutils/threads.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libcutils/threads.cpp b/libcutils/threads.cpp
+index a7e6b2d8e..d3c9af45c 100644
+--- a/libcutils/threads.cpp
++++ b/libcutils/threads.cpp
+@@ -32,7 +32,7 @@
+ #endif
+ 
+ // No definition needed for Android because we'll just pick up bionic's copy.
+-#ifndef __ANDROID__
++#if !defined(__ANDROID__) || !defined(__GLIBC__) || __GLIBC__ < 2 || (__GLIBC__ == 2 && __GLIBC_MINOR__ < 30)
+ pid_t gettid() {
+ #if defined(__APPLE__)
+   uint64_t tid;
+diff --git a/libcutils/include/cutils/threads.h b/libcutils/include/cutils/threads.h
+index a7e6b2d8e..d3c9af45c 100644
+--- a/libcutils/include/cutils/threads.h
++++ b/libcutils/include/cutils/threads.h
+@@ -33,7 +33,9 @@ extern "C" {
+ // Deprecated: use android::base::GetThreadId instead, which doesn't truncate on Mac/Windows.
+ //
+ 
++#if !defined(__GLIBC__) || __GLIBC__ < 2 || (__GLIBC__ == 2 && __GLIBC_MINOR__ < 30)
+ extern pid_t gettid();
++#endif
+ 
+ //
+ // Deprecated: use `_Thread_local` in C or `thread_local` in C++.
