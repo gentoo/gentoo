@@ -24,13 +24,13 @@ RDEPEND="
 	>=app-portage/portage-utils-0.55
 	app-shells/bash
 	sys-apps/gentoo-functions
-	!sys-devel/crossdev-wrappers"
+"
 DEPEND="app-arch/xz-utils"
 
 src_install() {
 	default
 
 	if [[ "${PV}" == "99999999" ]] ; then
-		sed -i "s:@CDEVPV@:${EGIT_VERSION}:" "${ED%/}"/usr/bin/crossdev || die
+		sed -i "s:@CDEVPV@:${EGIT_VERSION}:" "${ED}"/usr/bin/crossdev || die
 	fi
 }
