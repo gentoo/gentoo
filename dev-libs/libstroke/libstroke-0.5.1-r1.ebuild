@@ -11,7 +11,7 @@ SRC_URI="http://www.etla.net/libstroke/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11"
@@ -27,6 +27,6 @@ src_prepare() {
 }
 
 src_install () {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 	dodoc CREDITS ChangeLog README
 }
