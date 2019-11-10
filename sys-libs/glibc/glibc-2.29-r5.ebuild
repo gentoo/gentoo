@@ -98,7 +98,6 @@ DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	>=app-misc/pax-utils-0.1.10
 	sys-devel/bison
-	!<sys-apps/sandbox-1.6
 	!<sys-apps/portage-2.1.2
 	!<sys-devel/bison-2.7
 	!<sys-devel/make-4
