@@ -2558,7 +2558,7 @@ app-text/paperwork 1.2.4-r2 1.3.0: a personal document manager for scanned docum
 app-text/paperwork-backend 1.2.4 1.3.0: Backend part of Paperwork (Python API, no UI)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
 app-text/par 1.52-r1: a paragraph reformatter, vaguely similar to fmt, but better
-app-text/passivetex 1.25: A namespace-aware XML parser written in Tex
+app-text/passivetex 1.25-r1: A namespace-aware XML parser written in Tex
 app-text/pastebinit 1.5: A software that lets you send anything you want directly to a pastebin
 app-text/pdf2djvu 0.9.8 0.9.11 0.9.12: A tool to create DjVu files from PDF files
 app-text/pdf2html 1.4: Converts pdf files to html files
