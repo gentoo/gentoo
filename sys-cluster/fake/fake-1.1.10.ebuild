@@ -1,38 +1,31 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils
-
-DESCRIPTION="Fake has been designed to switch in backup servers on a LAN"
+DESCRIPTION="Switch in backup servers on a LAN"
 SRC_URI="http://www.vergenet.net/linux/${PN}/download/${PV}/${P}.tar.gz"
 HOMEPAGE="http://www.vergenet.net/linux/fake/"
 
 SLOT="0"
 KEYWORDS="~amd64 x86"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+PATCHES=(
+	"${FILESDIR}/fix-ldflags.patch"
+)
 
-src_unpack(){
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/fix-ldflags.patch"
-}
-
-src_compile(){
-	make patch || die "patching failed"
-	emake || die "make failed"
+src_prepare() {
+	default
+	emake patch
 }
 
 src_install(){
 	emake \
-		ROOT_DIR="${D}" \
-		MAN8_DIR="${D}/usr/share/man/man8" \
-		DOC_DIR="${D}/usr/share/doc/${P}" \
-		install || die "install failed"
+		ROOT_DIR="${ED}" \
+		MAN8_DIR="${ED}/usr/share/man/man8" \
+		DOC_DIR="${ED}/usr/share/doc/${PF}" \
+		install
 	dodoc AUTHORS ChangeLog README docs/*
 }
