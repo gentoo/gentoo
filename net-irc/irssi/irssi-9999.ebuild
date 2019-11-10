@@ -18,7 +18,6 @@ IUSE="otr +perl selinux socks5 +proxy libressl"
 
 CDEPEND="sys-libs/ncurses:0=
 	>=dev-libs/glib-2.6.0
-	!net-irc/irssi-otr
 	!libressl? ( dev-libs/openssl:= )
 	libressl? ( dev-libs/libressl:= )
 	otr? (
