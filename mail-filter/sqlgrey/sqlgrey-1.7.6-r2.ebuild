@@ -1,41 +1,42 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils systemd user
+inherit systemd user
 
-DESCRIPTION="SQLgrey is a postfix policy service implementing a grey-listing policy"
-SRC_URI="mirror://sourceforge/sqlgrey/${P}.tar.bz2"
+DESCRIPTION="A postfix policy service implementing a grey-listing policy"
 HOMEPAGE="http://sqlgrey.sourceforge.net/"
+SRC_URI="mirror://sourceforge/sqlgrey/${P}.tar.bz2"
+
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="mysql postgres sqlite"
+KEYWORDS="amd64 ~arm ~sparc x86"
+IUSE="mysql +postgres sqlite"
+REQUIRED_USE="|| ( mysql postgres sqlite )"
+
 RDEPEND="dev-lang/perl
 	dev-perl/DBI
-	dev-perl/Net-Server
 	dev-perl/Date-Calc
+	dev-perl/Net-Server
 	virtual/mailx
-	postgres? ( dev-perl/DBD-Pg )
-	sqlite? ( dev-perl/DBD-SQLite )
 	mysql? ( dev-perl/DBD-mysql )
-	!postgres? ( !mysql? ( !sqlite? ( dev-perl/DBD-Pg ) ) )"
-DEPEND="$RDEPEND
+	postgres? ( dev-perl/DBD-Pg )
+	sqlite? ( dev-perl/DBD-SQLite )"
+DEPEND="${RDEPEND}
 	sys-apps/sed"
-KEYWORDS="amd64 ~arm ~sparc x86"
+
+PATCHES=(
+	"${FILESDIR}/${P}-init.patch"
+)
 
 pkg_setup() {
 	enewgroup sqlgrey
 	enewuser sqlgrey -1 -1 /var/spool/sqlgrey sqlgrey
 }
 
-src_unpack() {
-	unpack ${A}
-	epatch "${FILESDIR}/${P}-init.patch"
-}
-
 src_install () {
-	make gentoo-install ROOTDIR="${D}"
+	emake gentoo-install ROOTDIR="${D}"
 	dodoc HOWTO FAQ README README.OPTINOUT README.PERF TODO Changelog
 
 	# keeps SQLgrey data in /var/spool/sqlgrey
@@ -46,34 +47,29 @@ src_install () {
 }
 
 pkg_postinst() {
-	echo
-	einfo "To make use of greylisting, please update your postfix config."
-	einfo
-	einfo "Put something like this in /etc/postfix/main.cf:"
-	einfo "    smtpd_recipient_restrictions ="
-	einfo "           ..."
-	einfo "           check_policy_service inet:127.0.0.1:2501"
-	einfo
-	einfo "Remember to restart Postfix after that change. Also remember"
-	einfo "to make the daemon start durig boot:"
-	einfo "  rc-update add sqlgrey default"
-	einfo
-	echo
-	einfo "To setup SQLgrey to run out-of-the-box on your system, run:"
-	einfo "emerge --config ${PN}"
-	echo
+	elog "To make use of greylisting, please update your postfix config."
+	elog
+	elog "Put something like this in /etc/postfix/main.cf:"
+	elog "    smtpd_recipient_restrictions ="
+	elog "           ..."
+	elog "           check_policy_service inet:127.0.0.1:2501"
+	elog
+	elog "Remember to restart Postfix after that change. Also remember"
+	elog "to make the daemon start durig boot:"
+	elog "  rc-update add sqlgrey default"
+	elog
+	elog
+	elog "To setup SQLgrey to run out-of-the-box on your system, run:"
+	elog "emerge --config ${PN}"
+	elog
 	ewarn "Read the documentation for more info (perldoc sqlgrey) or the"
 	ewarn "included howto /usr/share/doc/${PF}/HOWTO.gz"
-	echo
+	ewarn
 	ewarn "If you are using MySQL >= 4.1 use \"latin1\" as charset for"
 	ewarn "the SQLgrey db"
-	echo
-	ebeep 2
-	epause 5
 }
 
 pkg_config () {
-
 	# SQLgrey configuration file
 	local SQLgrey_CONFIG="/etc/sqlgrey/sqlgrey.conf"
 	local SQLgrey_DB_USER_NAME="sqlgrey"
