@@ -62,7 +62,6 @@ RESTRICT="
 "
 
 RDEPEND="
-	server? ( !dev-util/gdbserver )
 	client? (
 		dev-libs/mpfr:0=
 		>=sys-libs/ncurses-5.2-r2:0=
