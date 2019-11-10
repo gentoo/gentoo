@@ -47,6 +47,6 @@ RDEPEND="${CDEPEND}
 	>=dev-python/oslo-versionedobjects-1.31.2[${PYTHON_USEDEP}]
 	>=dev-python/osprofiler-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/setproctitle-1.1.10[${PYTHON_USEDEP}]
-	>=dev-python/weakrefmethod-1.0.2[$(python_gen_usedep 'python2_7')]
+	$(python_gen_cond_dep '>=dev-python/weakrefmethod-1.0.2[${PYTHON_USEDEP}]' 'python2_7')
 	>=dev-python/os-traits-0.9.0[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.7.1[${PYTHON_USEDEP}]"
