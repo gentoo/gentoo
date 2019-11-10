@@ -87,7 +87,6 @@ BDEPEND="
 	${PYTHON_DEPS}
 	>=app-misc/pax-utils-0.1.10
 	sys-devel/bison
-	!<sys-apps/portage-2.1.2
 	!<sys-devel/bison-2.7
 	!<sys-devel/make-4
 	doc? ( sys-apps/texinfo )
