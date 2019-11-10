@@ -29,15 +29,15 @@ if use otf; then
 	FONT_SUFFIX+="otf"
 
 	FONT_S="
-		"${S}"/IBM-Plex-Arabic/fonts/complete/otf
 		"${S}"/IBM-Plex-Devanagari/fonts/complete/otf
 		"${S}"/IBM-Plex-Mono/fonts/complete/otf
 		"${S}"/IBM-Plex-Sans-Condensed/fonts/complete/otf
+		"${S}"/IBM-Plex-Sans-Devanagari/fonts/complete/otf
 		"${S}"/IBM-Plex-Sans-Hebrew/fonts/complete/otf
 		"${S}"/IBM-Plex-Sans/fonts/complete/otf
 		"${S}"/IBM-Plex-Serif/fonts/complete/otf
-		"${S}"/IBM-Plex-Thai/fonts/complete/otf
-		"${S}"/IBM-Plex-Thai-Looped/fonts/complete/otf"
+		"${S}"/IBM-Plex-Sans-Thai-Looped/fonts/complete/otf
+		"${S}"/IBM-Plex-Sans-Variable/fonts/complete/otf"
 fi
 
 if use ttf; then
@@ -45,15 +45,14 @@ if use ttf; then
 	FONT_SUFFIX+="ttf"
 
 	FONT_S="
-		"${S}"/IBM-Plex-Arabic/fonts/complete/ttf
-		"${S}"/IBM-Plex-Devanagari/fonts/complete/ttf
 		"${S}"/IBM-Plex-Mono/fonts/complete/ttf
 		"${S}"/IBM-Plex-Sans-Condensed/fonts/complete/ttf
+		"${S}"/IBM-Plex-Sans-Devanagari/fonts/complete/ttf
 		"${S}"/IBM-Plex-Sans-Hebrew/fonts/complete/ttf
 		"${S}"/IBM-Plex-Sans/fonts/complete/ttf
 		"${S}"/IBM-Plex-Serif/fonts/complete/ttf
-		"${S}"/IBM-Plex-Thai/fonts/complete/ttf
-		"${S}"/IBM-Plex-Thai-Looped/fonts/complete/ttf"
+		"${S}"/IBM-Plex-Sans-Thai-Looped/fonts/complete/ttf
+		"${S}"/IBM-Plex-Sans-Variable/fonts/complete/ttf"
 fi
 
 font_src_install
