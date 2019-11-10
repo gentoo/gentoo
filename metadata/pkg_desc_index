@@ -10710,11 +10710,11 @@ dev-util/jenkins-bin 2.190.1 2.190.2 2.197: Extensible continuous integration se
 dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.0-r1: Graphical debugger interface
-dev-util/kdevelop 5.4.2 5.4.3: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.4.2 5.4.3 5.4.4: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-clang-tidy 0.3.3-r1: KDevelop plugin for clang-tidy static analysis support
 dev-util/kdevelop-pg-qt 2.2.0: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.4.2 5.4.3: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.4.2 5.4.3: Python plugin for KDevelop
+dev-util/kdevelop-php 5.4.2 5.4.3 5.4.4: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.4.2 5.4.3 5.4.4: Python plugin for KDevelop
 dev-util/kdstatemachineeditor 1.2.4 9999: Framework for creating Qt State Machine metacode using graphical user interfaces
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/kernelshark 1.0 9999: Graphical reader for trace-cmd output
@@ -11259,7 +11259,7 @@ games-emulation/desmume 0.9.11-r1 0.9.11-r2: Nintendo DS emulator
 games-emulation/dgen-sdl 1.33-r1: A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator
 games-emulation/dolphin 5.0 9999: Gamecube and Wii game emulator
 games-emulation/dosbox 0.74_p20160629 0.74_p20160629-r3 9999: DOS emulator
-games-emulation/emutos 0.9.4-r1 0.9.9.1: Single-user single-tasking operating system for 32 bit Atari computer emulators
+games-emulation/emutos 0.9.12: Single-user single-tasking operating system for 32-bit Atari computer emulators
 games-emulation/fakenes 0.5.8-r3: Portable, Open Source NES emulator which is written mostly in C
 games-emulation/fbzx 3.0.0-r1: Full Screen Sinclair Spectrum emulator
 games-emulation/fceux 2.2.3: A portable Famicom/NES emulator, an evolution of the original FCE Ultra
@@ -11270,7 +11270,7 @@ games-emulation/gens 2.15.5-r1: A Sega Genesis/CD/32X emulator
 games-emulation/gngb 20060309-r1: Gameboy / Gameboy Color emulator
 games-emulation/gngeo 0.8-r1: A NeoGeo emulator
 games-emulation/gnuboy 1.0.3-r2: Gameboy emulator with multiple renderers
-games-emulation/hatari 2.1.0-r1: Atari ST emulator
+games-emulation/hatari 2.2.1: Atari ST emulator
 games-emulation/higan 106_p1-r1: A multi-system game emulator formerly known as bsnes
 games-emulation/jrommanager 1.8_p27-r1: A Mame and Retrogaming Rom Manager, Java alternative to ClrMamePro
 games-emulation/libretro-bnes 0.0.1_pre20180723 9999: bNES libretro port
@@ -12018,326 +12018,326 @@ java-virtuals/servlet-api 2.3 2.4 2.5-r2 3.0-r2 3.1-r1: Virtual for servlet api
 java-virtuals/stax-api 1-r4: Virtual for Streaming API for XML (StAX)
 java-virtuals/transaction-api 1.1: Virtual for Transaction API (javax.transaction)
 java-virtuals/xmlrpc-api 0: Virtual for XML RPC API (javax.xml.rpc)
-kde-apps/akonadi 19.04.3-r1 19.08.2: Storage service for PIM data and libraries for PIM apps
-kde-apps/akonadi-calendar 19.04.3 19.08.2: Library for akonadi calendar integration
-kde-apps/akonadi-contacts 19.04.3 19.08.2: Library for akonadi contact integration
-kde-apps/akonadi-import-wizard 19.04.3 19.08.2: Assistant to import PIM data from other applications into Akonadi
-kde-apps/akonadi-mime 19.04.3 19.08.2: Library for akonadi mime types
-kde-apps/akonadi-notes 19.04.3 19.08.2: Library for akonadi notes integration
-kde-apps/akonadi-search 19.04.3 19.08.2: Libraries and daemons to implement searching in Akonadi
-kde-apps/akonadiconsole 19.04.3 19.08.2: Application for debugging Akonadi Resources
-kde-apps/akregator 19.04.3 19.08.2: News feed aggregator
-kde-apps/analitza 19.04.3 19.08.2: KDE library for mathematical features
-kde-apps/ark 19.04.3 19.08.2: KDE Archiving tool
-kde-apps/artikulate 19.04.3 19.08.2: Language learning application that helps improving pronunciation skills
-kde-apps/audiocd-kio 19.04.3 19.08.2: kioslave for accessing audio CDs
-kde-apps/baloo-widgets 19.04.3 19.08.2: Widget library for baloo
-kde-apps/blinken 19.04.3 19.08.2: Memory enhancement game based on KDE Frameworks
-kde-apps/bomber 19.04.3 19.08.2: Single player arcade bombing game
-kde-apps/bovo 19.04.3 19.08.2: Five-in-a-row Board Game
-kde-apps/calendarjanitor 19.04.3 19.08.2: Tool to scan calendar data for buggy instances
-kde-apps/calendarsupport 19.04.3 19.08.2: Calendar support library
-kde-apps/cantor 19.04.3 19.08.2: Interface for doing mathematics and scientific computing
-kde-apps/cervisia 19.04.3 19.08.2: CVS frontend by KDE
-kde-apps/dolphin 19.04.3 19.08.2: Plasma filemanager focusing on usability
-kde-apps/dolphin-plugins-bazaar 19.04.3 19.08.2: Dolphin plugin for Bazaar integration
-kde-apps/dolphin-plugins-dropbox 19.04.3 19.08.2: Dolphin plugin for Dropbox service integration
-kde-apps/dolphin-plugins-git 19.04.3 19.08.2: Dolphin plugin for Git integration
-kde-apps/dolphin-plugins-mercurial 19.04.3 19.08.2: Dolphin plugin for Mercurial integration
-kde-apps/dolphin-plugins-subversion 19.04.3 19.08.2: Dolphin plugin for Subversion integration
-kde-apps/dragon 19.04.3 19.08.2: A simple video player
-kde-apps/eventviews 19.04.3 19.08.2: Calendar viewer for KDE PIM
-kde-apps/ffmpegthumbs 19.04.3 19.08.2: FFmpeg based thumbnail generator for video files
-kde-apps/filelight 19.04.3 19.08.2: Visualise disk usage with interactive map of concentric, segmented rings
-kde-apps/granatier 19.04.3 19.08.2: KDE Bomberman game
-kde-apps/grantlee-editor 19.04.3 19.08.2: Utilities and tools to manage themes in KDE PIM applications
-kde-apps/grantleetheme 19.04.3 19.08.2: Library for Grantlee plugins
-kde-apps/gwenview 19.04.3 19.08.2: Image viewer by KDE
-kde-apps/incidenceeditor 19.04.3 19.08.2: Incidence editor for korganizer
-kde-apps/juk 19.04.3 19.08.2: Jukebox and music manager by KDE
-kde-apps/k3b 19.04.3 19.08.2: Full-featured burning and ripping application based on KDE Frameworks
-kde-apps/kaccounts-integration 19.04.3 19.08.2: Administer web accounts for the sites and services across the Plasma desktop
-kde-apps/kaccounts-providers 19.04.3 19.08.2: KDE accounts providers
-kde-apps/kaddressbook 19.04.3 19.08.2: Address book application based on KDE Frameworks
-kde-apps/kajongg 19.04.3 19.08.2: Classical Mah Jongg for four players
-kde-apps/kalarm 19.04.3 19.08.2: Application to manage alarms and other timer based alerts for the desktop
-kde-apps/kalarmcal 19.04.3 19.08.2: Client library to access and handling of KAlarm calendar data
-kde-apps/kalgebra 19.04.3 19.08.2: MathML-based 2D and 3D graph calculator by KDE
-kde-apps/kalzium 19.04.3 19.08.2: Periodic table of the elements
-kde-apps/kamera 19.04.3 19.08.2: Plasma integration for gphoto2 cameras
-kde-apps/kamoso 19.04.3 19.08.2: Application to take pictures and videos from your webcam by KDE
-kde-apps/kanagram 19.04.3 19.08.2: Game based on anagrams of words
-kde-apps/kapman 19.04.3 19.08.2: Pac-Man clone by KDE
-kde-apps/kapptemplate 19.04.3 19.08.2: Shell script to create the necessary framework to develop KDE applications
-kde-apps/kate 19.04.3 19.08.2: Multi-document editor with network transparency, Plasma integration and more
-kde-apps/katomic 19.04.3 19.08.2: KDE Atomic Entertainment Game
-kde-apps/kbackup 19.04.3 19.08.2: Program that lets you back up any directories or files
-kde-apps/kblackbox 19.04.3 19.08.2: Game of hide and seek played on a grid of boxes
-kde-apps/kblocks 19.04.3 19.08.2: Single-player Tetris-like KDE game
-kde-apps/kblog 19.04.3 19.08.2: Library providing client-side support for web application remote blogging APIs
-kde-apps/kbounce 19.04.3 19.08.2: KDE Bounce Ball Game
-kde-apps/kbreakout 19.04.3 19.08.2: Breakout-like game by KDE
-kde-apps/kbruch 19.04.3 19.08.2: Educational application to learn calculating with fractions
-kde-apps/kcachegrind 19.04.3 19.08.2: Frontend for Cachegrind by KDE
-kde-apps/kcalc 19.04.3 19.08.2: KDE calculator
+kde-apps/akonadi 19.04.3-r1 19.08.3: Storage service for PIM data and libraries for PIM apps
+kde-apps/akonadi-calendar 19.04.3 19.08.3: Library for akonadi calendar integration
+kde-apps/akonadi-contacts 19.04.3 19.08.3: Library for akonadi contact integration
+kde-apps/akonadi-import-wizard 19.04.3 19.08.3: Assistant to import PIM data from other applications into Akonadi
+kde-apps/akonadi-mime 19.04.3 19.08.3: Library for akonadi mime types
+kde-apps/akonadi-notes 19.04.3 19.08.3: Library for akonadi notes integration
+kde-apps/akonadi-search 19.04.3 19.08.3: Libraries and daemons to implement searching in Akonadi
+kde-apps/akonadiconsole 19.04.3 19.08.3: Application for debugging Akonadi Resources
+kde-apps/akregator 19.04.3 19.08.3: News feed aggregator
+kde-apps/analitza 19.04.3 19.08.3: KDE library for mathematical features
+kde-apps/ark 19.04.3 19.08.3: KDE Archiving tool
+kde-apps/artikulate 19.04.3 19.08.3: Language learning application that helps improving pronunciation skills
+kde-apps/audiocd-kio 19.04.3 19.08.3: kioslave for accessing audio CDs
+kde-apps/baloo-widgets 19.04.3 19.08.3: Widget library for baloo
+kde-apps/blinken 19.04.3 19.08.3: Memory enhancement game based on KDE Frameworks
+kde-apps/bomber 19.04.3 19.08.3: Single player arcade bombing game
+kde-apps/bovo 19.04.3 19.08.3: Five-in-a-row Board Game
+kde-apps/calendarjanitor 19.04.3 19.08.3: Tool to scan calendar data for buggy instances
+kde-apps/calendarsupport 19.04.3 19.08.3: Calendar support library
+kde-apps/cantor 19.04.3 19.08.3: Interface for doing mathematics and scientific computing
+kde-apps/cervisia 19.04.3 19.08.3: CVS frontend by KDE
+kde-apps/dolphin 19.04.3 19.08.3: Plasma filemanager focusing on usability
+kde-apps/dolphin-plugins-bazaar 19.04.3 19.08.3: Dolphin plugin for Bazaar integration
+kde-apps/dolphin-plugins-dropbox 19.04.3 19.08.3: Dolphin plugin for Dropbox service integration
+kde-apps/dolphin-plugins-git 19.04.3 19.08.3: Dolphin plugin for Git integration
+kde-apps/dolphin-plugins-mercurial 19.04.3 19.08.3: Dolphin plugin for Mercurial integration
+kde-apps/dolphin-plugins-subversion 19.04.3 19.08.3: Dolphin plugin for Subversion integration
+kde-apps/dragon 19.04.3 19.08.3: A simple video player
+kde-apps/eventviews 19.04.3 19.08.3: Calendar viewer for KDE PIM
+kde-apps/ffmpegthumbs 19.04.3 19.08.3: FFmpeg based thumbnail generator for video files
+kde-apps/filelight 19.04.3 19.08.3: Visualise disk usage with interactive map of concentric, segmented rings
+kde-apps/granatier 19.04.3 19.08.3: KDE Bomberman game
+kde-apps/grantlee-editor 19.04.3 19.08.3: Utilities and tools to manage themes in KDE PIM applications
+kde-apps/grantleetheme 19.04.3 19.08.3: Library for Grantlee plugins
+kde-apps/gwenview 19.04.3 19.08.3: Image viewer by KDE
+kde-apps/incidenceeditor 19.04.3 19.08.3: Incidence editor for korganizer
+kde-apps/juk 19.04.3 19.08.3: Jukebox and music manager by KDE
+kde-apps/k3b 19.04.3 19.08.3: Full-featured burning and ripping application based on KDE Frameworks
+kde-apps/kaccounts-integration 19.04.3 19.08.3: Administer web accounts for the sites and services across the Plasma desktop
+kde-apps/kaccounts-providers 19.04.3 19.08.3: KDE accounts providers
+kde-apps/kaddressbook 19.04.3 19.08.3: Address book application based on KDE Frameworks
+kde-apps/kajongg 19.04.3 19.08.3: Classical Mah Jongg for four players
+kde-apps/kalarm 19.04.3 19.08.3: Application to manage alarms and other timer based alerts for the desktop
+kde-apps/kalarmcal 19.04.3 19.08.3: Client library to access and handling of KAlarm calendar data
+kde-apps/kalgebra 19.04.3 19.08.3: MathML-based 2D and 3D graph calculator by KDE
+kde-apps/kalzium 19.04.3 19.08.3: Periodic table of the elements
+kde-apps/kamera 19.04.3 19.08.3: Plasma integration for gphoto2 cameras
+kde-apps/kamoso 19.04.3 19.08.3: Application to take pictures and videos from your webcam by KDE
+kde-apps/kanagram 19.04.3 19.08.3: Game based on anagrams of words
+kde-apps/kapman 19.04.3 19.08.3: Pac-Man clone by KDE
+kde-apps/kapptemplate 19.04.3 19.08.3: Shell script to create the necessary framework to develop KDE applications
+kde-apps/kate 19.04.3 19.08.3: Multi-document editor with network transparency, Plasma integration and more
+kde-apps/katomic 19.04.3 19.08.3: KDE Atomic Entertainment Game
+kde-apps/kbackup 19.04.3 19.08.3: Program that lets you back up any directories or files
+kde-apps/kblackbox 19.04.3 19.08.3: Game of hide and seek played on a grid of boxes
+kde-apps/kblocks 19.04.3 19.08.3: Single-player Tetris-like KDE game
+kde-apps/kblog 19.04.3 19.08.3: Library providing client-side support for web application remote blogging APIs
+kde-apps/kbounce 19.04.3 19.08.3: KDE Bounce Ball Game
+kde-apps/kbreakout 19.04.3 19.08.3: Breakout-like game by KDE
+kde-apps/kbruch 19.04.3 19.08.3: Educational application to learn calculating with fractions
+kde-apps/kcachegrind 19.04.3 19.08.3: Frontend for Cachegrind by KDE
+kde-apps/kcalc 19.04.3 19.08.3: KDE calculator
 kde-apps/kcalcore 19.04.3: Library for handling calendar data
-kde-apps/kcalutils 19.04.3 19.08.2: Library providing utility functions for the handling of calendar data
-kde-apps/kcharselect 19.04.3 19.08.2: KDE character selection utility
-kde-apps/kcolorchooser 19.04.3 19.08.2: KDE color selector/editor
+kde-apps/kcalutils 19.04.3 19.08.3: Library providing utility functions for the handling of calendar data
+kde-apps/kcharselect 19.04.3 19.08.3: KDE character selection utility
+kde-apps/kcolorchooser 19.04.3 19.08.3: KDE color selector/editor
 kde-apps/kcontacts 19.04.3: Address book API based on KDE Frameworks
-kde-apps/kcron 19.04.3 19.08.2: KDE Task Scheduler
-kde-apps/kdav 19.04.3 19.08.2: DAV protocol implemention with KJobs
-kde-apps/kde-apps-meta 19.04.3 19.08.2: Meta package for the KDE Applications collection
-kde-apps/kde-dev-scripts 19.04.3 19.08.2: KDE Development Scripts
-kde-apps/kde-dev-utils 19.04.3 19.08.2: KDE Development Utilities
-kde-apps/kde-meta 19.04.3 19.08.2: Merge this to pull in all KDE Plasma and Applications packages
-kde-apps/kdeaccessibility-meta 19.04.3 19.08.2: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
-kde-apps/kdeadmin-meta 19.04.3 19.08.2: KDE administration tools - merge this to pull in all kdeadmin-derived packages
-kde-apps/kdebase-meta 19.04.3 19.08.2: Transitional package to pull in plasma-meta plus basic applications
-kde-apps/kdebugsettings 19.04.3 19.08.2: Application to enable/disable qCDebug
-kde-apps/kdecore-meta 19.04.3 19.08.2: kdecore - merge this to pull in the most basic applications
-kde-apps/kdeedu-data 19.04.3 19.08.2: Shared icons, artwork and data files for educational applications
-kde-apps/kdeedu-meta 19.04.3 19.08.2: KDE educational apps - merge this to pull in all kdeedu-derived packages
-kde-apps/kdegames-meta 19.04.3 19.08.2: kdegames - merge this to pull in all kdegames-derived packages
-kde-apps/kdegraphics-meta 19.04.3 19.08.2: kdegraphics - merge this to pull in all kdegraphics-derived packages
-kde-apps/kdegraphics-mobipocket 19.04.3 19.08.2: Library to support mobipocket ebooks
-kde-apps/kdemultimedia-meta 19.04.3 19.08.2: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
-kde-apps/kdenetwork-filesharing 19.04.3 19.08.2: SMB filesharing config module for systemsettings
-kde-apps/kdenetwork-meta 19.04.3 19.08.2: kdenetwork - merge this to pull in all kdenetwork-derived packages
-kde-apps/kdenlive 19.04.3 19.08.2: Non-linear video editing suite by KDE
-kde-apps/kdepim-addons 19.04.3 19.08.2: Plugins for KDE Personal Information Management Suite
-kde-apps/kdepim-apps-libs 19.04.3 19.08.2: Libraries for KDE PIM applications
-kde-apps/kdepim-meta 19.04.3 19.08.2: KDE PIM - merge this to pull in all kdepim-derived packages
-kde-apps/kdepim-runtime 19.04.3 19.08.2: Runtime plugin collection to extend the functionality of KDE PIM
-kde-apps/kdesdk-kioslaves 19.04.3 19.08.2: kioslaves from kdesdk package
-kde-apps/kdesdk-meta 19.04.3 19.08.2: KDE SDK - merge this to pull in all kdesdk-derived packages
-kde-apps/kdesdk-thumbnailers 19.04.3 19.08.2: Thumbnail generator for PO files
-kde-apps/kdeutils-meta 19.04.3 19.08.2: kdeutils - merge this to pull in all kdeutils-derived packages
-kde-apps/kdf 19.04.3 19.08.2: KDE free disk space utility
-kde-apps/kdialog 19.04.3 19.08.2: Can be used to show nice dialog boxes from shell scripts
-kde-apps/kdiamond 19.04.3 19.08.2: Single player three-in-a-row game
-kde-apps/keditbookmarks 19.04.3 19.08.2: Bookmarks editor based on KDE Frameworks
-kde-apps/kfind 19.04.3 19.08.2: File finder utility based on KDE Frameworks
-kde-apps/kfloppy 19.04.3 19.08.2: Straightforward graphical means to format 3.5" and 5.25" floppy disks
-kde-apps/kfourinline 19.04.3 19.08.2: KDE four-in-a-row game
-kde-apps/kgeography 19.04.3 19.08.2: Geography learning tool
-kde-apps/kget 19.04.3 19.08.2: Advanced download manager by KDE
-kde-apps/kgoldrunner 19.04.3 19.08.2: Game of action and puzzle solving by KDE
-kde-apps/kgpg 19.04.3 19.08.2: Frontend for GnuPG, a powerful encryption utility by KDE
-kde-apps/khangman 19.04.3 19.08.2: Classical hangman game by KDE
-kde-apps/khelpcenter 19.04.3 19.08.2: The KDE Help Center
-kde-apps/kidentitymanagement 19.04.3 19.08.2: Library for managing identitites
-kde-apps/kig 19.04.3 19.08.2: KDE Interactive Geometry tool
-kde-apps/kigo 19.04.3 19.08.2: Go game by KDE
-kde-apps/killbots 19.04.3 19.08.2: Kill the bots or they kill you!
-kde-apps/kimagemapeditor 19.04.3 19.08.2: Generator of HTML image maps
-kde-apps/kimap 19.04.3 19.08.2: Library for interacting with IMAP servers
-kde-apps/kio-extras 19.04.3 19.08.2: KIO plugins present a filesystem-like view of arbitrary data
-kde-apps/kipi-plugins 5.9.1 19.08.2: Plugins for the KDE Image Plugin Interface
-kde-apps/kiriki 19.04.3 19.08.2: An addictive and fun dice game
-kde-apps/kiten 19.04.3 19.08.2: KDE Japanese dictionary and reference
-kde-apps/kitinerary 19.04.3 19.08.2: Data Model and Extraction System for Travel Reservation information
-kde-apps/kjumpingcube 19.04.3 19.08.2: Tactical one or two player game
-kde-apps/kldap 19.04.3 19.08.2: Library for interacting with LDAP servers
-kde-apps/kleopatra 19.04.3 19.08.2: Certificate manager and GUI for OpenPGP and CMS cryptography
-kde-apps/klettres 19.04.3 19.08.2: Alphabet learning application
-kde-apps/klickety 19.04.3 19.08.2: An adaptation of the Clickomania game
-kde-apps/klines 19.04.3 19.08.2: A little KDE game about balls and how to get rid of them
-kde-apps/kmag 19.04.3 19.08.2: KDE screen magnifier
-kde-apps/kmahjongg 19.04.3 19.08.2: A tile matching game for one or two players
-kde-apps/kmail 19.04.3 19.08.2: Email client, supporting POP3 and IMAP mailboxes.
-kde-apps/kmail-account-wizard 19.04.3 19.08.2: Assistant for KMail accounts configuration
-kde-apps/kmailtransport 19.04.3 19.08.2: Mail transport service
-kde-apps/kmbox 19.04.3 19.08.2: Library for accessing MBox format mail storages
-kde-apps/kmime 19.04.3 19.08.2: Libary for handling mail messages and newsgroup articles
-kde-apps/kmines 19.04.3 19.08.2: Classic mine sweeper game
-kde-apps/kmix 19.04.3 19.08.2: Plasma mixer gui
-kde-apps/kmousetool 19.04.3 19.08.2: KDE program that clicks the mouse for you
-kde-apps/kmouth 19.04.3 19.08.2: Text-to-speech synthesizer front end
-kde-apps/kmplot 19.04.3 19.08.2: Mathematical function plotter
-kde-apps/knavalbattle 19.04.3 19.08.2: Battleship clone by KDE
-kde-apps/knetwalk 19.04.3 19.08.2: KDE version of the popular NetWalk game for system administrators
-kde-apps/knights 19.04.3 19.08.2: Simple chess board based on KDE Frameworks
-kde-apps/knotes 19.04.3 19.08.2: Note taking application
-kde-apps/kolf 19.04.3 19.08.2: Minigolf game by KDE
-kde-apps/kollision 19.04.3 19.08.2: Simple ball dodging game
-kde-apps/kolourpaint 19.04.3 19.08.2: Paint Program by KDE
-kde-apps/kompare 19.04.3 19.08.2: A program to view the differences between files
-kde-apps/konqueror 19.04.3 19.08.2: Web browser and file manager based on KDE Frameworks
-kde-apps/konquest 19.04.3 19.08.2: Galactic Strategy KDE Game
-kde-apps/konsole 19.04.3 19.08.2: KDE's terminal emulator
-kde-apps/konsolekalendar 19.04.3 19.08.2: Command line interface to KDE calendars
-kde-apps/kontact 19.04.3 19.08.2: Container application to unify several major PIM applications within one
-kde-apps/kontactinterface 19.04.3 19.08.2: Library for embedding KParts in a Kontact component
-kde-apps/kopete 19.04.3 19.08.2: Multi-protocol IM client based on KDE Frameworks
-kde-apps/korganizer 19.04.3 19.08.2: Organizational assistant, providing calendars and other similar functionality
-kde-apps/kpat 19.04.3 19.08.2: KDE patience game
-kde-apps/kpimtextedit 19.04.3 19.08.2: A textedit with PIM-specific features
-kde-apps/kpkpass 19.04.3 19.08.2: Library to deal with Apple Wallet pass files
-kde-apps/kqtquickcharts 19.04.3 19.08.2: Qt Quick plugin for beautiful and interactive charts
-kde-apps/krdc 19.04.3 19.08.2: Remote desktop connection (RDP and VNC) client
-kde-apps/kreversi 19.04.3 19.08.2: Board game by KDE
-kde-apps/krfb 19.04.3 19.08.2: VNC-compatible server to share Plasma desktops
-kde-apps/kross-interpreters 19.04.3 19.04.3-r1 19.08.2: Kross interpreter plugins for programming languages
-kde-apps/kruler 19.04.3 19.08.2: Screen ruler for Plasma
-kde-apps/kshisen 19.04.3 19.08.2: A KDE game similiar to Mahjongg
-kde-apps/ksirk 19.04.3 19.08.2: Port of the board game risk
-kde-apps/ksmtp 19.04.3 19.08.2: Job-based library to send email through an SMTP server
-kde-apps/ksnakeduel 19.04.3 19.08.2: KDE Tron game
-kde-apps/kspaceduel 19.04.3 19.08.2: Space Game by KDE
-kde-apps/ksquares 19.04.3 19.08.2: KDE clone of the game squares
-kde-apps/ksudoku 19.04.3 19.08.2: Logic-based symbol placement puzzle by KDE
-kde-apps/ksystemlog 19.04.3 19.08.2: System log viewer by KDE
-kde-apps/kteatime 19.04.3 19.08.2: KDE timer for making a fine cup of tea
-kde-apps/ktimer 19.04.3 19.08.2: Little tool to execute programs after some time
-kde-apps/ktouch 19.04.3 19.08.2: Program that helps to learn and practice touch typing
-kde-apps/ktp-accounts-kcm 19.04.3 19.08.2: KDE Telepathy account management kcm
-kde-apps/ktp-approver 19.04.3 19.08.2: KDE Telepathy notification handler
-kde-apps/ktp-auth-handler 19.04.3 19.08.2: KDE Telepathy authentication handler
-kde-apps/ktp-call-ui 19.04.3 19.08.2: KDE Telepathy audio/video conferencing ui
-kde-apps/ktp-common-internals 19.04.3 19.08.2: KDE Telepathy common library
-kde-apps/ktp-contact-list 19.04.3 19.08.2: KDE Telepathy contact list
-kde-apps/ktp-contact-runner 19.04.3 19.08.2: KDE Telepathy krunner plugin
-kde-apps/ktp-desktop-applets 19.04.3 19.08.2: KDE Telepathy contact, presence and chat Plasma applets
-kde-apps/ktp-filetransfer-handler 19.04.3 19.08.2: KDE Telepathy file transfer handler
-kde-apps/ktp-kded-module 19.04.3 19.08.2: KDE Telepathy workspace integration
-kde-apps/ktp-send-file 19.04.3 19.08.2: KDE Telepathy file manager plugin to send files to contacts
-kde-apps/ktp-text-ui 19.04.3 19.08.2: KDE Telepathy text chat window
-kde-apps/ktuberling 19.04.3 19.08.2: Potato game for kids by KDE
-kde-apps/kturtle 19.04.3 19.08.2: Educational programming environment using the Logo programming language
-kde-apps/kubrick 19.04.3 19.08.2: Game based on the "Rubik's Cube" puzzle by KDE
-kde-apps/kwalletmanager 19.04.3 19.08.2: KDE Wallet management tool
-kde-apps/kwave 19.04.3 19.08.2: Sound editor built on KDE Frameworks 5 that can edit many types of audio files
-kde-apps/kwordquiz 19.04.3 19.08.2: Powerful flashcard and vocabulary learning program
-kde-apps/kwrite 19.04.3 19.08.2: KDE simple text editor
-kde-apps/libgravatar 19.04.3 19.08.2: Library for gravatar integration
-kde-apps/libkcddb 19.04.3 19.08.2: KDE library for CDDB
-kde-apps/libkcompactdisc 19.04.3 19.08.2: Library for playing & ripping CDs
-kde-apps/libkdcraw 19.04.3 19.08.2: Digital camera raw image library wrapper
-kde-apps/libkdegames 19.04.3 19.08.2: Base library common to many KDE games
-kde-apps/libkdepim 19.04.3 19.08.2: Common PIM libraries
-kde-apps/libkeduvocdocument 19.04.3 19.08.2: Library for reading/writing KVTML
-kde-apps/libkexiv2 19.04.3 19.08.2: Wrapper around exiv2 library
-kde-apps/libkgapi 19.04.3 19.08.2: Library for accessing Google calendar and contact resources
-kde-apps/libkgeomap 19.04.3 19.08.2: Wrapper library for world map components as marble, openstreetmap and googlemap
-kde-apps/libkipi 19.04.3 19.08.2: A library for image plugins accross KDE applications
-kde-apps/libkleo 19.04.3 19.08.2: Library for encryption handling
-kde-apps/libkmahjongg 19.04.3 19.08.2: Mahjongg library based on Qt/KDE Frameworks
-kde-apps/libkomparediff2 19.04.3 19.08.2: KDE library to compare files and strings
-kde-apps/libksane 19.04.3 19.08.2: SANE Library interface based on KDE Frameworks
-kde-apps/libksieve 19.04.3 19.08.2: Common PIM libraries
-kde-apps/libktnef 19.04.3 19.08.2: Library for handling TNEF data
-kde-apps/lokalize 19.04.3 19.08.2: KDE Applications 5 translation tool
-kde-apps/lskat 19.04.3 19.08.2: Skat game by KDE
-kde-apps/mailcommon 19.04.3 19.08.2: Common mail library
-kde-apps/mailimporter 19.04.3 19.08.2: Library to import mail from various sources
-kde-apps/marble 19.04.3 19.08.2: Virtual Globe and World Atlas to learn more about Earth
-kde-apps/mbox-importer 19.04.3 19.08.2: Import mbox email archives from various sources into Akonadi
-kde-apps/messagelib 19.04.3 19.08.2: Libraries for messaging functions
-kde-apps/minuet 19.04.3 19.08.2: Music Education software by KDE
-kde-apps/okular 19.04.3 19.08.2: Universal document viewer based on KDE Frameworks
-kde-apps/palapeli 19.04.3 19.08.2: Jigsaw puzzle game by KDE
-kde-apps/parley 19.04.3 19.08.2: A vocabulary trainer to help you memorize things
-kde-apps/picmi 19.04.3 19.08.2: Nonogram logic game by KDE
-kde-apps/pim-data-exporter 19.04.3 19.08.2: Assistant to backup and archive PIM data and configuration
-kde-apps/pim-sieve-editor 19.04.3 19.08.2: Assistant for editing IMAP Sieve filters
-kde-apps/pimcommon 19.04.3 19.08.2: Common PIM libraries
-kde-apps/plasma-telepathy-meta 19.04.3 19.08.2: Plasma Telepathy client
-kde-apps/poxml 19.04.3 19.08.2: KDE utility to translate DocBook XML files using gettext po files
-kde-apps/print-manager 19.04.3 19.08.2: Manage print jobs and printers in Plasma
-kde-apps/rocs 19.04.3 19.08.2: Interface to work with Graph Theory
-kde-apps/signon-kwallet-extension 19.04.3 19.08.2: KWallet extension for signond
-kde-apps/spectacle 19.04.3 19.08.2: Screenshot capture utility
-kde-apps/step 19.04.3 19.08.2: Interactive physics simulator
-kde-apps/svgpart 19.04.3 19.08.2: Kpart for viewing SVGs
-kde-apps/sweeper 19.04.3 19.08.2: Privacy settings widget to clean unwanted traces on the system
-kde-apps/thumbnailers 19.04.3 19.08.2: Thumbnail generators for PDF/PS and RAW files
-kde-apps/umbrello 19.04.3 19.08.2: KDE UML Modeller
-kde-apps/yakuake 3.0.5-r1 19.08.2: Quake-style terminal emulator based on konsole
-kde-apps/zeroconf-ioslave 19.04.3 19.08.2: DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
-kde-frameworks/attica 5.60.0 5.63.0: Framework providing access to Open Collaboration Services
-kde-frameworks/baloo 5.60.0 5.63.0: Framework for searching and managing metadata
-kde-frameworks/bluez-qt 5.60.0 5.63.0: Qt wrapper for Bluez 5 DBus API
-kde-frameworks/breeze-icons 5.60.0 5.63.0: Breeze SVG icon theme
-kde-frameworks/breeze-icons-rcc 5.60.0 5.63.0: Breeze SVG icon theme binary resource
-kde-frameworks/extra-cmake-modules 5.60.0 5.63.0: Extra modules and scripts for CMake
-kde-frameworks/frameworkintegration 5.60.0 5.63.0: Framework for integrating Qt applications with KDE Plasma workspaces
-kde-frameworks/kactivities 5.60.0 5.63.0: Framework for working with KDE activities
-kde-frameworks/kactivities-stats 5.60.0 5.63.0: Framework for getting the usage statistics collected by the activities service
-kde-frameworks/kapidox 5.60.0 5.63.0: Framework for building KDE API documentation in a standard format and style
-kde-frameworks/karchive 5.60.0 5.63.0: Framework for reading, creation, and manipulation of various archive formats
-kde-frameworks/kauth 5.60.0 5.63.0: Framework to let applications perform actions as a privileged user
-kde-frameworks/kbookmarks 5.60.0 5.63.0: Framework for managing bookmarks stored in XBEL format
-kde-frameworks/kcalendarcore 5.63.0: Library for interfacing with calendars
-kde-frameworks/kcmutils 5.60.0 5.63.0: Framework to work with KDE System Settings modules
-kde-frameworks/kcodecs 5.60.0 5.63.0: Framework for manipulating strings using various encodings
-kde-frameworks/kcompletion 5.60.0 5.63.0: Framework for common completion tasks such as filename or URL completion
-kde-frameworks/kconfig 5.60.0-r1 5.63.0: Framework for reading and writing configuration
-kde-frameworks/kconfigwidgets 5.60.0 5.63.0: Framework providing an assortment of configuration-related widgets
-kde-frameworks/kcontacts 5.63.0: Address book API based on KDE Frameworks
-kde-frameworks/kcoreaddons 5.60.0 5.63.0: Framework for solving common problems such as caching, randomisation, and more
-kde-frameworks/kcrash 5.60.0 5.63.0: Framework for intercepting and handling application crashes
-kde-frameworks/kdbusaddons 5.60.0 5.63.0: Framework for registering services and applications per freedesktop standards
-kde-frameworks/kdeclarative 5.60.0 5.63.0: Framework providing integration of QML and KDE work spaces
-kde-frameworks/kded 5.60.0 5.63.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs4support 5.60.0 5.63.0: Framework easing the development transition from KDELibs 4 to KF 5
-kde-frameworks/kdesignerplugin 5.60.0 5.63.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
-kde-frameworks/kdesu 5.60.0 5.63.0: Framework to handle super user actions
-kde-frameworks/kdewebkit 5.60.0 5.63.0: Framework providing KDE integration of QtWebKit
-kde-frameworks/kdnssd 5.60.0 5.63.0: Framework for network service discovery using Zeroconf
-kde-frameworks/kdoctools 5.60.0 5.63.0: Tools to generate documentation in various formats from DocBook files
-kde-frameworks/kemoticons 5.60.0 5.63.0: Framework for converting text emoticons to graphical representations
+kde-apps/kcron 19.04.3 19.08.3: KDE Task Scheduler
+kde-apps/kdav 19.04.3 19.08.3: DAV protocol implemention with KJobs
+kde-apps/kde-apps-meta 19.04.3 19.08.3: Meta package for the KDE Applications collection
+kde-apps/kde-dev-scripts 19.04.3 19.08.3: KDE Development Scripts
+kde-apps/kde-dev-utils 19.04.3 19.08.3: KDE Development Utilities
+kde-apps/kde-meta 19.04.3 19.08.3: Merge this to pull in all KDE Plasma and Applications packages
+kde-apps/kdeaccessibility-meta 19.04.3 19.08.3: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
+kde-apps/kdeadmin-meta 19.04.3 19.08.3: KDE administration tools - merge this to pull in all kdeadmin-derived packages
+kde-apps/kdebase-meta 19.04.3 19.08.3: Transitional package to pull in plasma-meta plus basic applications
+kde-apps/kdebugsettings 19.04.3 19.08.3: Application to enable/disable qCDebug
+kde-apps/kdecore-meta 19.04.3 19.08.3: kdecore - merge this to pull in the most basic applications
+kde-apps/kdeedu-data 19.04.3 19.08.3: Shared icons, artwork and data files for educational applications
+kde-apps/kdeedu-meta 19.04.3 19.08.3: KDE educational apps - merge this to pull in all kdeedu-derived packages
+kde-apps/kdegames-meta 19.04.3 19.08.3: kdegames - merge this to pull in all kdegames-derived packages
+kde-apps/kdegraphics-meta 19.04.3 19.08.3: kdegraphics - merge this to pull in all kdegraphics-derived packages
+kde-apps/kdegraphics-mobipocket 19.04.3 19.08.3: Library to support mobipocket ebooks
+kde-apps/kdemultimedia-meta 19.04.3 19.08.3: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
+kde-apps/kdenetwork-filesharing 19.04.3 19.08.3: SMB filesharing config module for systemsettings
+kde-apps/kdenetwork-meta 19.04.3 19.08.3: kdenetwork - merge this to pull in all kdenetwork-derived packages
+kde-apps/kdenlive 19.04.3 19.08.3: Non-linear video editing suite by KDE
+kde-apps/kdepim-addons 19.04.3 19.08.3: Plugins for KDE Personal Information Management Suite
+kde-apps/kdepim-apps-libs 19.04.3 19.08.3: Libraries for KDE PIM applications
+kde-apps/kdepim-meta 19.04.3 19.08.3: KDE PIM - merge this to pull in all kdepim-derived packages
+kde-apps/kdepim-runtime 19.04.3 19.08.3: Runtime plugin collection to extend the functionality of KDE PIM
+kde-apps/kdesdk-kioslaves 19.04.3 19.08.3: kioslaves from kdesdk package
+kde-apps/kdesdk-meta 19.04.3 19.08.3: KDE SDK - merge this to pull in all kdesdk-derived packages
+kde-apps/kdesdk-thumbnailers 19.04.3 19.08.3: Thumbnail generator for PO files
+kde-apps/kdeutils-meta 19.04.3 19.08.3: kdeutils - merge this to pull in all kdeutils-derived packages
+kde-apps/kdf 19.04.3 19.08.3: KDE free disk space utility
+kde-apps/kdialog 19.04.3 19.08.3: Can be used to show nice dialog boxes from shell scripts
+kde-apps/kdiamond 19.04.3 19.08.3: Single player three-in-a-row game
+kde-apps/keditbookmarks 19.04.3 19.08.3: Bookmarks editor based on KDE Frameworks
+kde-apps/kfind 19.04.3 19.08.3: File finder utility based on KDE Frameworks
+kde-apps/kfloppy 19.04.3 19.08.3: Straightforward graphical means to format 3.5" and 5.25" floppy disks
+kde-apps/kfourinline 19.04.3 19.08.3: KDE four-in-a-row game
+kde-apps/kgeography 19.04.3 19.08.3: Geography learning tool
+kde-apps/kget 19.04.3 19.08.3: Advanced download manager by KDE
+kde-apps/kgoldrunner 19.04.3 19.08.3: Game of action and puzzle solving by KDE
+kde-apps/kgpg 19.04.3 19.08.3: Frontend for GnuPG, a powerful encryption utility by KDE
+kde-apps/khangman 19.04.3 19.08.3: Classical hangman game by KDE
+kde-apps/khelpcenter 19.04.3 19.08.3: The KDE Help Center
+kde-apps/kidentitymanagement 19.04.3 19.08.3: Library for managing identitites
+kde-apps/kig 19.04.3 19.08.3: KDE Interactive Geometry tool
+kde-apps/kigo 19.04.3 19.08.3: Go game by KDE
+kde-apps/killbots 19.04.3 19.08.3: Kill the bots or they kill you!
+kde-apps/kimagemapeditor 19.04.3 19.08.3: Generator of HTML image maps
+kde-apps/kimap 19.04.3 19.08.3: Library for interacting with IMAP servers
+kde-apps/kio-extras 19.04.3 19.08.3: KIO plugins present a filesystem-like view of arbitrary data
+kde-apps/kipi-plugins 5.9.1 19.08.3: Plugins for the KDE Image Plugin Interface
+kde-apps/kiriki 19.04.3 19.08.3: An addictive and fun dice game
+kde-apps/kiten 19.04.3 19.08.3: KDE Japanese dictionary and reference
+kde-apps/kitinerary 19.04.3 19.08.3: Data Model and Extraction System for Travel Reservation information
+kde-apps/kjumpingcube 19.04.3 19.08.3: Tactical one or two player game
+kde-apps/kldap 19.04.3 19.08.3: Library for interacting with LDAP servers
+kde-apps/kleopatra 19.04.3 19.08.3: Certificate manager and GUI for OpenPGP and CMS cryptography
+kde-apps/klettres 19.04.3 19.08.3: Alphabet learning application
+kde-apps/klickety 19.04.3 19.08.3: An adaptation of the Clickomania game
+kde-apps/klines 19.04.3 19.08.3: A little KDE game about balls and how to get rid of them
+kde-apps/kmag 19.04.3 19.08.3: KDE screen magnifier
+kde-apps/kmahjongg 19.04.3 19.08.3: A tile matching game for one or two players
+kde-apps/kmail 19.04.3 19.08.3: Email client, supporting POP3 and IMAP mailboxes.
+kde-apps/kmail-account-wizard 19.04.3 19.08.3: Assistant for KMail accounts configuration
+kde-apps/kmailtransport 19.04.3 19.08.3: Mail transport service
+kde-apps/kmbox 19.04.3 19.08.3: Library for accessing MBox format mail storages
+kde-apps/kmime 19.04.3 19.08.3: Libary for handling mail messages and newsgroup articles
+kde-apps/kmines 19.04.3 19.08.3: Classic mine sweeper game
+kde-apps/kmix 19.04.3 19.08.3: Plasma mixer gui
+kde-apps/kmousetool 19.04.3 19.08.3: KDE program that clicks the mouse for you
+kde-apps/kmouth 19.04.3 19.08.3: Text-to-speech synthesizer front end
+kde-apps/kmplot 19.04.3 19.08.3: Mathematical function plotter
+kde-apps/knavalbattle 19.04.3 19.08.3: Battleship clone by KDE
+kde-apps/knetwalk 19.04.3 19.08.3: KDE version of the popular NetWalk game for system administrators
+kde-apps/knights 19.04.3 19.08.3: Simple chess board based on KDE Frameworks
+kde-apps/knotes 19.04.3 19.08.3: Note taking application
+kde-apps/kolf 19.04.3 19.08.3: Minigolf game by KDE
+kde-apps/kollision 19.04.3 19.08.3: Simple ball dodging game
+kde-apps/kolourpaint 19.04.3 19.08.3: Paint Program by KDE
+kde-apps/kompare 19.04.3 19.08.3: A program to view the differences between files
+kde-apps/konqueror 19.04.3 19.08.3: Web browser and file manager based on KDE Frameworks
+kde-apps/konquest 19.04.3 19.08.3: Galactic Strategy KDE Game
+kde-apps/konsole 19.04.3 19.08.3: KDE's terminal emulator
+kde-apps/konsolekalendar 19.04.3 19.08.3: Command line interface to KDE calendars
+kde-apps/kontact 19.04.3 19.08.3: Container application to unify several major PIM applications within one
+kde-apps/kontactinterface 19.04.3 19.08.3: Library for embedding KParts in a Kontact component
+kde-apps/kopete 19.04.3 19.08.3: Multi-protocol IM client based on KDE Frameworks
+kde-apps/korganizer 19.04.3 19.08.3: Organizational assistant, providing calendars and other similar functionality
+kde-apps/kpat 19.04.3 19.08.3: KDE patience game
+kde-apps/kpimtextedit 19.04.3 19.08.3: A textedit with PIM-specific features
+kde-apps/kpkpass 19.04.3 19.08.3: Library to deal with Apple Wallet pass files
+kde-apps/kqtquickcharts 19.04.3 19.08.3: Qt Quick plugin for beautiful and interactive charts
+kde-apps/krdc 19.04.3 19.08.3: Remote desktop connection (RDP and VNC) client
+kde-apps/kreversi 19.04.3 19.08.3: Board game by KDE
+kde-apps/krfb 19.04.3 19.08.3: VNC-compatible server to share Plasma desktops
+kde-apps/kross-interpreters 19.04.3 19.04.3-r1 19.08.3: Kross interpreter plugins for programming languages
+kde-apps/kruler 19.04.3 19.08.3: Screen ruler for Plasma
+kde-apps/kshisen 19.04.3 19.08.3: A KDE game similiar to Mahjongg
+kde-apps/ksirk 19.04.3 19.08.3: Port of the board game risk
+kde-apps/ksmtp 19.04.3 19.08.3: Job-based library to send email through an SMTP server
+kde-apps/ksnakeduel 19.04.3 19.08.3: KDE Tron game
+kde-apps/kspaceduel 19.04.3 19.08.3: Space Game by KDE
+kde-apps/ksquares 19.04.3 19.08.3: KDE clone of the game squares
+kde-apps/ksudoku 19.04.3 19.08.3: Logic-based symbol placement puzzle by KDE
+kde-apps/ksystemlog 19.04.3 19.08.3: System log viewer by KDE
+kde-apps/kteatime 19.04.3 19.08.3: KDE timer for making a fine cup of tea
+kde-apps/ktimer 19.04.3 19.08.3: Little tool to execute programs after some time
+kde-apps/ktouch 19.04.3 19.08.3: Program that helps to learn and practice touch typing
+kde-apps/ktp-accounts-kcm 19.04.3 19.08.3: KDE Telepathy account management kcm
+kde-apps/ktp-approver 19.04.3 19.08.3: KDE Telepathy notification handler
+kde-apps/ktp-auth-handler 19.04.3 19.08.3: KDE Telepathy authentication handler
+kde-apps/ktp-call-ui 19.04.3 19.08.3: KDE Telepathy audio/video conferencing ui
+kde-apps/ktp-common-internals 19.04.3 19.08.3: KDE Telepathy common library
+kde-apps/ktp-contact-list 19.04.3 19.08.3: KDE Telepathy contact list
+kde-apps/ktp-contact-runner 19.04.3 19.08.3: KDE Telepathy krunner plugin
+kde-apps/ktp-desktop-applets 19.04.3 19.08.3: KDE Telepathy contact, presence and chat Plasma applets
+kde-apps/ktp-filetransfer-handler 19.04.3 19.08.3: KDE Telepathy file transfer handler
+kde-apps/ktp-kded-module 19.04.3 19.08.3: KDE Telepathy workspace integration
+kde-apps/ktp-send-file 19.04.3 19.08.3: KDE Telepathy file manager plugin to send files to contacts
+kde-apps/ktp-text-ui 19.04.3 19.08.3: KDE Telepathy text chat window
+kde-apps/ktuberling 19.04.3 19.08.3: Potato game for kids by KDE
+kde-apps/kturtle 19.04.3 19.08.3: Educational programming environment using the Logo programming language
+kde-apps/kubrick 19.04.3 19.08.3: Game based on the "Rubik's Cube" puzzle by KDE
+kde-apps/kwalletmanager 19.04.3 19.08.3: KDE Wallet management tool
+kde-apps/kwave 19.04.3 19.08.3: Sound editor built on KDE Frameworks 5 that can edit many types of audio files
+kde-apps/kwordquiz 19.04.3 19.08.3: Powerful flashcard and vocabulary learning program
+kde-apps/kwrite 19.04.3 19.08.3: KDE simple text editor
+kde-apps/libgravatar 19.04.3 19.08.3: Library for gravatar integration
+kde-apps/libkcddb 19.04.3 19.08.3: KDE library for CDDB
+kde-apps/libkcompactdisc 19.04.3 19.08.3: Library for playing & ripping CDs
+kde-apps/libkdcraw 19.04.3 19.08.3: Digital camera raw image library wrapper
+kde-apps/libkdegames 19.04.3 19.08.3: Base library common to many KDE games
+kde-apps/libkdepim 19.04.3 19.08.3: Common PIM libraries
+kde-apps/libkeduvocdocument 19.04.3 19.08.3: Library for reading/writing KVTML
+kde-apps/libkexiv2 19.04.3 19.08.3: Wrapper around exiv2 library
+kde-apps/libkgapi 19.04.3 19.08.3: Library for accessing Google calendar and contact resources
+kde-apps/libkgeomap 19.04.3 19.08.3: Wrapper library for world map components as marble, openstreetmap and googlemap
+kde-apps/libkipi 19.04.3 19.08.3: A library for image plugins accross KDE applications
+kde-apps/libkleo 19.04.3 19.08.3: Library for encryption handling
+kde-apps/libkmahjongg 19.04.3 19.08.3: Mahjongg library based on Qt/KDE Frameworks
+kde-apps/libkomparediff2 19.04.3 19.08.3: KDE library to compare files and strings
+kde-apps/libksane 19.04.3 19.08.3: SANE Library interface based on KDE Frameworks
+kde-apps/libksieve 19.04.3 19.08.3: Common PIM libraries
+kde-apps/libktnef 19.04.3 19.08.3: Library for handling TNEF data
+kde-apps/lokalize 19.04.3 19.08.3: KDE Applications 5 translation tool
+kde-apps/lskat 19.04.3 19.08.3: Skat game by KDE
+kde-apps/mailcommon 19.04.3 19.08.3: Common mail library
+kde-apps/mailimporter 19.04.3 19.08.3: Library to import mail from various sources
+kde-apps/marble 19.04.3 19.08.3: Virtual Globe and World Atlas to learn more about Earth
+kde-apps/mbox-importer 19.04.3 19.08.3: Import mbox email archives from various sources into Akonadi
+kde-apps/messagelib 19.04.3 19.08.3: Libraries for messaging functions
+kde-apps/minuet 19.04.3 19.08.3: Music Education software by KDE
+kde-apps/okular 19.04.3 19.08.3: Universal document viewer based on KDE Frameworks
+kde-apps/palapeli 19.04.3 19.08.3: Jigsaw puzzle game by KDE
+kde-apps/parley 19.04.3 19.08.3: A vocabulary trainer to help you memorize things
+kde-apps/picmi 19.04.3 19.08.3: Nonogram logic game by KDE
+kde-apps/pim-data-exporter 19.04.3 19.08.3: Assistant to backup and archive PIM data and configuration
+kde-apps/pim-sieve-editor 19.04.3 19.08.3: Assistant for editing IMAP Sieve filters
+kde-apps/pimcommon 19.04.3 19.08.3: Common PIM libraries
+kde-apps/plasma-telepathy-meta 19.04.3 19.08.3: Plasma Telepathy client
+kde-apps/poxml 19.04.3 19.08.3: KDE utility to translate DocBook XML files using gettext po files
+kde-apps/print-manager 19.04.3 19.08.3: Manage print jobs and printers in Plasma
+kde-apps/rocs 19.04.3 19.08.3: Interface to work with Graph Theory
+kde-apps/signon-kwallet-extension 19.04.3 19.08.3: KWallet extension for signond
+kde-apps/spectacle 19.04.3 19.08.3: Screenshot capture utility
+kde-apps/step 19.04.3 19.08.3: Interactive physics simulator
+kde-apps/svgpart 19.04.3 19.08.3: Kpart for viewing SVGs
+kde-apps/sweeper 19.04.3 19.08.3: Privacy settings widget to clean unwanted traces on the system
+kde-apps/thumbnailers 19.04.3 19.08.3: Thumbnail generators for PDF/PS and RAW files
+kde-apps/umbrello 19.04.3 19.08.3: KDE UML Modeller
+kde-apps/yakuake 3.0.5-r1 19.08.3: Quake-style terminal emulator based on konsole
+kde-apps/zeroconf-ioslave 19.04.3 19.08.3: DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
+kde-frameworks/attica 5.60.0 5.64.0: Framework providing access to Open Collaboration Services
+kde-frameworks/baloo 5.60.0 5.64.0: Framework for searching and managing metadata
+kde-frameworks/bluez-qt 5.60.0 5.64.0: Qt wrapper for Bluez 5 DBus API
+kde-frameworks/breeze-icons 5.60.0 5.64.0: Breeze SVG icon theme
+kde-frameworks/breeze-icons-rcc 5.60.0 5.64.0: Breeze SVG icon theme binary resource
+kde-frameworks/extra-cmake-modules 5.60.0 5.64.0: Extra modules and scripts for CMake
+kde-frameworks/frameworkintegration 5.60.0 5.64.0: Framework for integrating Qt applications with KDE Plasma workspaces
+kde-frameworks/kactivities 5.60.0 5.64.0: Framework for working with KDE activities
+kde-frameworks/kactivities-stats 5.60.0 5.64.0: Framework for getting the usage statistics collected by the activities service
+kde-frameworks/kapidox 5.60.0 5.64.0: Framework for building KDE API documentation in a standard format and style
+kde-frameworks/karchive 5.60.0 5.64.0: Framework for reading, creation, and manipulation of various archive formats
+kde-frameworks/kauth 5.60.0 5.64.0: Framework to let applications perform actions as a privileged user
+kde-frameworks/kbookmarks 5.60.0 5.64.0: Framework for managing bookmarks stored in XBEL format
+kde-frameworks/kcalendarcore 5.64.0: Library for interfacing with calendars
+kde-frameworks/kcmutils 5.60.0 5.64.0: Framework to work with KDE System Settings modules
+kde-frameworks/kcodecs 5.60.0 5.64.0: Framework for manipulating strings using various encodings
+kde-frameworks/kcompletion 5.60.0 5.64.0: Framework for common completion tasks such as filename or URL completion
+kde-frameworks/kconfig 5.60.0-r1 5.64.0: Framework for reading and writing configuration
+kde-frameworks/kconfigwidgets 5.60.0 5.64.0: Framework providing an assortment of configuration-related widgets
+kde-frameworks/kcontacts 5.64.0: Address book API based on KDE Frameworks
+kde-frameworks/kcoreaddons 5.60.0 5.64.0: Framework for solving common problems such as caching, randomisation, and more
+kde-frameworks/kcrash 5.60.0 5.64.0: Framework for intercepting and handling application crashes
+kde-frameworks/kdbusaddons 5.60.0 5.64.0: Framework for registering services and applications per freedesktop standards
+kde-frameworks/kdeclarative 5.60.0 5.64.0: Framework providing integration of QML and KDE work spaces
+kde-frameworks/kded 5.60.0 5.64.0: Central daemon of KDE workspaces
+kde-frameworks/kdelibs4support 5.60.0 5.64.0: Framework easing the development transition from KDELibs 4 to KF 5
+kde-frameworks/kdesignerplugin 5.60.0 5.64.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
+kde-frameworks/kdesu 5.60.0 5.64.0: Framework to handle super user actions
+kde-frameworks/kdewebkit 5.60.0 5.64.0: Framework providing KDE integration of QtWebKit
+kde-frameworks/kdnssd 5.60.0 5.64.0: Framework for network service discovery using Zeroconf
+kde-frameworks/kdoctools 5.60.0 5.64.0: Tools to generate documentation in various formats from DocBook files
+kde-frameworks/kemoticons 5.60.0 5.64.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 5: Environment setting required for all KDE Frameworks apps to run
-kde-frameworks/kfilemetadata 5.60.0 5.63.0: Library for extracting file metadata
-kde-frameworks/kglobalaccel 5.60.0 5.63.0: Framework to handle global shortcuts
-kde-frameworks/kguiaddons 5.60.0 5.63.0: Framework providing assorted high-level user interface components
-kde-frameworks/kholidays 5.60.0 5.63.0: Library to determine holidays and other special events for a geographical region
-kde-frameworks/khtml 5.60.0 5.63.0: KHTML web rendering engine
-kde-frameworks/ki18n 5.60.0 5.63.0: Framework based on Gettext for internationalizing user interface text
-kde-frameworks/kiconthemes 5.60.0 5.63.0: Framework for icon theming and configuration
-kde-frameworks/kidletime 5.60.0 5.63.0: Framework for detection and notification of device idle time
-kde-frameworks/kimageformats 5.60.0 5.63.0: Framework providing additional format plugins for Qt's image I/O system
-kde-frameworks/kinit 5.60.0 5.63.0: Helper library to speed up start of applications on KDE work spaces
-kde-frameworks/kio 5.60.0 5.63.0: Framework providing transparent file and data management
-kde-frameworks/kirigami 5.60.0 5.63.0: Lightweight user interface framework for mobile and convergent applications
-kde-frameworks/kitemmodels 5.60.0 5.63.0: Framework providing data models to help with tasks such as sorting and filtering
-kde-frameworks/kitemviews 5.60.0 5.63.0: Framework providing additional widgets for item models
-kde-frameworks/kjobwidgets 5.60.0 5.63.0: Framework providing assorted widgets for showing the progress of jobs
-kde-frameworks/kjs 5.60.0 5.63.0: ECMAScipt compatible parser and engine
-kde-frameworks/kjsembed 5.60.0 5.63.0: Framework binding JavaScript objects to QObjects
-kde-frameworks/kmediaplayer 5.60.0 5.63.0: Framework providing a common interface for KParts that can play media files
-kde-frameworks/knewstuff 5.60.0 5.63.0: Framework for downloading and sharing additional application data
-kde-frameworks/knotifications 5.60.0 5.63.0: Framework for notifying the user of an event
-kde-frameworks/knotifyconfig 5.60.0 5.63.0: Framework for configuring desktop notifications
-kde-frameworks/kpackage 5.60.0 5.63.0: Framework to install and load packages of non binary content
-kde-frameworks/kparts 5.60.0 5.63.0: Framework providing elaborate user-interface components
-kde-frameworks/kpeople 5.60.0 5.63.0: KDE contact person abstraction library
-kde-frameworks/kplotting 5.60.0 5.63.0: Framework providing easy data-plotting functions
-kde-frameworks/kpty 5.60.0 5.63.0: Framework for pseudo terminal devices and running child processes
-kde-frameworks/kross 5.60.0 5.63.0: Framework for embedding scripting into applications
-kde-frameworks/krunner 5.60.0 5.63.0: Framework for providing different actions given a string query
-kde-frameworks/kservice 5.60.0 5.63.0: Advanced plugin and service introspection
-kde-frameworks/ktexteditor 5.60.0 5.63.0-r1: Framework providing a full text editor component
-kde-frameworks/ktextwidgets 5.60.0 5.63.0: Framework providing an assortment of widgets for displaying and editing text
-kde-frameworks/kunitconversion 5.60.0 5.63.0: Framework for converting units
-kde-frameworks/kwallet 5.60.0 5.63.0: Framework providing desktop-wide storage for passwords
-kde-frameworks/kwayland 5.60.0 5.63.0: Qt-style client and server library wrapper for Wayland libraries
-kde-frameworks/kwidgetsaddons 5.60.0 5.63.0: An assortment of high-level widgets for common tasks
-kde-frameworks/kwindowsystem 5.60.0 5.63.0: Framework providing access to properties and features of the window manager
-kde-frameworks/kxmlgui 5.60.0 5.63.0: Framework for managing menu and toolbar actions in an abstract way
-kde-frameworks/kxmlrpcclient 5.60.0 5.63.0: Framework providing client-side support for the XML-RPC protocol
-kde-frameworks/modemmanager-qt 5.60.0 5.63.0: ModemManager bindings for Qt
-kde-frameworks/networkmanager-qt 5.60.0 5.63.0: NetworkManager bindings for Qt
-kde-frameworks/oxygen-icons 5.60.0 5.63.0: Oxygen SVG icon theme
-kde-frameworks/plasma 5.60.0 5.63.0: Plasma framework
-kde-frameworks/prison 5.60.0 5.63.0: QRCode and data matrix barcode library
-kde-frameworks/purpose 5.60.0 5.63.0: Library for providing abstractions to get the developer's purposes fulfilled
-kde-frameworks/qqc2-desktop-style 5.60.0 5.63.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
-kde-frameworks/solid 5.60.0 5.63.0: Provider for platform independent hardware discovery, abstraction and management
-kde-frameworks/sonnet 5.60.0 5.63.0: Framework for providing spell-checking through abstraction of popular backends
-kde-frameworks/syndication 5.60.0 5.63.0: Library for parsing RSS and Atom feeds
-kde-frameworks/syntax-highlighting 5.60.0 5.63.0: Framework for syntax highlighting
-kde-frameworks/threadweaver 5.60.0 5.63.0: Framework for managing threads using job and queue-based interfaces
+kde-frameworks/kfilemetadata 5.60.0 5.64.0: Library for extracting file metadata
+kde-frameworks/kglobalaccel 5.60.0 5.64.0: Framework to handle global shortcuts
+kde-frameworks/kguiaddons 5.60.0 5.64.0: Framework providing assorted high-level user interface components
+kde-frameworks/kholidays 5.60.0 5.64.0: Library to determine holidays and other special events for a geographical region
+kde-frameworks/khtml 5.60.0 5.64.0: KHTML web rendering engine
+kde-frameworks/ki18n 5.60.0 5.64.0: Framework based on Gettext for internationalizing user interface text
+kde-frameworks/kiconthemes 5.60.0 5.64.0: Framework for icon theming and configuration
+kde-frameworks/kidletime 5.60.0 5.64.0: Framework for detection and notification of device idle time
+kde-frameworks/kimageformats 5.60.0 5.64.0: Framework providing additional format plugins for Qt's image I/O system
+kde-frameworks/kinit 5.60.0 5.64.0: Helper library to speed up start of applications on KDE work spaces
+kde-frameworks/kio 5.60.0 5.64.0: Framework providing transparent file and data management
+kde-frameworks/kirigami 5.60.0 5.64.0: Lightweight user interface framework for mobile and convergent applications
+kde-frameworks/kitemmodels 5.60.0 5.64.0: Framework providing data models to help with tasks such as sorting and filtering
+kde-frameworks/kitemviews 5.60.0 5.64.0: Framework providing additional widgets for item models
+kde-frameworks/kjobwidgets 5.60.0 5.64.0: Framework providing assorted widgets for showing the progress of jobs
+kde-frameworks/kjs 5.60.0 5.64.0: ECMAScipt compatible parser and engine
+kde-frameworks/kjsembed 5.60.0 5.64.0: Framework binding JavaScript objects to QObjects
+kde-frameworks/kmediaplayer 5.60.0 5.64.0: Framework providing a common interface for KParts that can play media files
+kde-frameworks/knewstuff 5.60.0 5.64.0: Framework for downloading and sharing additional application data
+kde-frameworks/knotifications 5.60.0 5.64.0: Framework for notifying the user of an event
+kde-frameworks/knotifyconfig 5.60.0 5.64.0: Framework for configuring desktop notifications
+kde-frameworks/kpackage 5.60.0 5.64.0: Framework to install and load packages of non binary content
+kde-frameworks/kparts 5.60.0 5.64.0: Framework providing elaborate user-interface components
+kde-frameworks/kpeople 5.60.0 5.64.0: KDE contact person abstraction library
+kde-frameworks/kplotting 5.60.0 5.64.0: Framework providing easy data-plotting functions
+kde-frameworks/kpty 5.60.0 5.64.0: Framework for pseudo terminal devices and running child processes
+kde-frameworks/kross 5.60.0 5.64.0: Framework for embedding scripting into applications
+kde-frameworks/krunner 5.60.0 5.64.0: Framework for providing different actions given a string query
+kde-frameworks/kservice 5.60.0 5.64.0: Advanced plugin and service introspection
+kde-frameworks/ktexteditor 5.60.0 5.64.0: Framework providing a full text editor component
+kde-frameworks/ktextwidgets 5.60.0 5.64.0: Framework providing an assortment of widgets for displaying and editing text
+kde-frameworks/kunitconversion 5.60.0 5.64.0: Framework for converting units
+kde-frameworks/kwallet 5.60.0 5.64.0: Framework providing desktop-wide storage for passwords
+kde-frameworks/kwayland 5.60.0 5.64.0: Qt-style client and server library wrapper for Wayland libraries
+kde-frameworks/kwidgetsaddons 5.60.0 5.64.0: An assortment of high-level widgets for common tasks
+kde-frameworks/kwindowsystem 5.60.0 5.64.0: Framework providing access to properties and features of the window manager
+kde-frameworks/kxmlgui 5.60.0 5.64.0: Framework for managing menu and toolbar actions in an abstract way
+kde-frameworks/kxmlrpcclient 5.60.0 5.64.0: Framework providing client-side support for the XML-RPC protocol
+kde-frameworks/modemmanager-qt 5.60.0 5.64.0: ModemManager bindings for Qt
+kde-frameworks/networkmanager-qt 5.60.0 5.64.0: NetworkManager bindings for Qt
+kde-frameworks/oxygen-icons 5.60.0 5.64.0: Oxygen SVG icon theme
+kde-frameworks/plasma 5.60.0 5.64.0: Plasma framework
+kde-frameworks/prison 5.60.0 5.64.0: QRCode and data matrix barcode library
+kde-frameworks/purpose 5.60.0 5.64.0: Library for providing abstractions to get the developer's purposes fulfilled
+kde-frameworks/qqc2-desktop-style 5.60.0 5.64.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
+kde-frameworks/solid 5.60.0 5.64.0: Provider for platform independent hardware discovery, abstraction and management
+kde-frameworks/sonnet 5.60.0 5.64.0: Framework for providing spell-checking through abstraction of popular backends
+kde-frameworks/syndication 5.60.0 5.64.0: Library for parsing RSS and Atom feeds
+kde-frameworks/syntax-highlighting 5.60.0 5.64.0: Framework for syntax highlighting
+kde-frameworks/threadweaver 5.60.0 5.64.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/basket 2.49b: Multiple information organizer - a DropDrawers clone
 kde-misc/colord-kde 0.5.0-r1: Provides interfaces and session daemon to colord
 kde-misc/gmailfeed 1.1-r1: Plasma 5 applet providing a list of unread emails from your Gmail inbox

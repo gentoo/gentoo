@@ -3251,6 +3251,9 @@ games-emulation/dosbox:core-inline - Enable memory-increasing inlines for better
 games-emulation/dosbox:glide - Enable unofficial Glide emulation via media-libs/openglide
 games-emulation/fceux:logo - Enable the ability to add a logo screen when creating AVIs
 games-emulation/generator:sdlaudio - Enable SDL Audio
+games-emulation/hatari:capsimage - Use dev-libs/spsdeclib to read .IPF, .RAW, and .CTR disk images
+games-emulation/hatari:microphone - Use media-libs/portaudio for Falcon microphone handling
+games-emulation/hatari:portmidi - Use media-libs/portmidi as an alternative MIDI backend
 games-emulation/hatari:sdl2 - Use libsdl2 instead of libsdl
 games-emulation/higan:icarus - Build icarus library manager
 games-emulation/higan:udev - Enable udev based input
