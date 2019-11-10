@@ -19,7 +19,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 
 DEPEND="app-arch/xz-utils
 	dev-lang/perl"
-RDEPEND="!!media-sound/alsa-headers"
+RDEPEND=""
 
 S=${WORKDIR}/gentoo-headers-base-${PV}
 

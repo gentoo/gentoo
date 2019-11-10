@@ -13,8 +13,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sp
 RDEPEND="!prefix-guest? (
 		elibc_glibc? ( sys-libs/glibc:2.2 )
 		elibc_musl? ( sys-libs/musl )
-		elibc_uclibc? ( || ( sys-libs/uclibc-ng sys-libs/uclibc ) )
-		elibc_FreeBSD? ( sys-freebsd/freebsd-lib )
+		elibc_uclibc? ( sys-libs/uclibc-ng )
 	)
 	prefix-guest? (
 		elibc_Cygwin? ( sys-libs/cygwin-crypt )
