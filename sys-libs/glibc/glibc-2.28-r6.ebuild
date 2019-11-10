@@ -78,7 +78,7 @@ fi
 # As Gentoo's strip does not allow us to pass less aggressive stripping
 # options and does not check the machine target we disable stripping
 # entirely.
-RESTRICT=strip
+RESTRICT="strip !test? ( test )"
 
 # We need a new-enough binutils/gcc to match upstream baseline.
 # Also we need to make sure our binutils/gcc supports TLS,

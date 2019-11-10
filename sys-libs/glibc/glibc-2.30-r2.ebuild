@@ -107,6 +107,8 @@ RDEPEND="${COMMON_DEPEND}
 	sys-apps/gentoo-functions
 "
 
+RESTRICT="!test? ( test )"
+
 if [[ ${CATEGORY} == cross-* ]] ; then
 	BDEPEND+=" !headers-only? (
 		>=${CATEGORY}/binutils-2.24
