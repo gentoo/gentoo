@@ -94,12 +94,10 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	>=app-misc/pax-utils-0.1.10
-	!<sys-apps/sandbox-1.6
-	!<sys-apps/portage-2.1.2"
+"
 RDEPEND="${COMMON_DEPEND}
-	!sys-kernel/ps3-sources
 	sys-apps/gentoo-functions
-	!sys-libs/nss-db"
+"
 
 if [[ ${CATEGORY} == cross-* ]] ; then
 	DEPEND+=" !headers-only? (

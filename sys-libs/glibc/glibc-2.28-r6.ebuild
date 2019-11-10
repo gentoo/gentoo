@@ -78,7 +78,7 @@ fi
 # As Gentoo's strip does not allow us to pass less aggressive stripping
 # options and does not check the machine target we disable stripping
 # entirely.
-RESTRICT=strip
+RESTRICT="strip !test? ( test )"
 
 # We need a new-enough binutils/gcc to match upstream baseline.
 # Also we need to make sure our binutils/gcc supports TLS,
@@ -95,8 +95,6 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	>=app-misc/pax-utils-0.1.10
 	sys-devel/bison
-	!<sys-apps/sandbox-1.6
-	!<sys-apps/portage-2.1.2
 	!<sys-devel/bison-2.7
 	!<sys-devel/make-4
 	doc? ( sys-apps/texinfo )
@@ -104,8 +102,6 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/gentoo-functions
-	!sys-kernel/ps3-sources
-	!sys-libs/nss-db
 "
 
 if [[ ${CATEGORY} == cross-* ]] ; then

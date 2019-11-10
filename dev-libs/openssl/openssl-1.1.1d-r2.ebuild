@@ -75,6 +75,10 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# allow openssl to be cross-compiled
+	cp "${FILESDIR}"/gentoo.config-1.0.2 gentoo.config || die
+	chmod a+rx gentoo.config || die
+
 	if use bindist; then
 		mv "${WORKDIR}"/bindist-patches/hobble-openssl "${WORKDIR}" || die
 		bash "${WORKDIR}"/hobble-openssl || die
@@ -141,10 +145,6 @@ src_prepare() {
 	# doesn't have well-split CFLAGS and we're making it even worse
 	# and 'make depend' uses -Werror for added fun (#417795 again)
 	[[ ${CC} == *clang* ]] && append-flags -Qunused-arguments
-
-	# allow openssl to be cross-compiled
-	cp "${FILESDIR}"/gentoo.config-1.0.2 gentoo.config || die
-	chmod a+rx gentoo.config || die
 
 	append-flags -fno-strict-aliasing
 	append-flags $(test-flags-CC -Wa,--noexecstack)
