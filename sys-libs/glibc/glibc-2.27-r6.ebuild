@@ -101,7 +101,6 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/gentoo-functions
-	!sys-kernel/ps3-sources
 "
 
 if [[ ${CATEGORY} == cross-* ]] ; then

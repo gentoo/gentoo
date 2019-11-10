@@ -97,7 +97,6 @@ DEPEND="${COMMON_DEPEND}
 	!<sys-apps/sandbox-1.6
 	!<sys-apps/portage-2.1.2"
 RDEPEND="${COMMON_DEPEND}
-	!sys-kernel/ps3-sources
 	sys-apps/gentoo-functions
 "
 
