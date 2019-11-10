@@ -84,7 +84,7 @@ multilib_src_configure() {
 		# We pull in all USE-flags that change ABI in an incompatible
 		# way. #666100
 		# USE=multitarget change size of global arrays
-		# USE=64-bit-bfd changes data structures of exported API 
+		# USE=64-bit-bfd changes data structures of exported API
 		--with-extra-soversion-suffix=gentoo-${CATEGORY}-${PN}-$(usex multitarget mt st)-$(usex 64-bit-bfd 64 def)
 	)
 
