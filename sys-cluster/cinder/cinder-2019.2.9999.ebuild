@@ -36,6 +36,7 @@ RDEPEND="
 	>=dev-python/decorator-3.4.0[${PYTHON_USEDEP}]
 	>=dev-python/defusedxml-0.5.0[${PYTHON_USEDEP}]
 	dev-python/enum34[$(python_gen_usedep 'python2_7')]
+	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'python2_7')
 	>=dev-python/eventlet-0.22.0[${PYTHON_USEDEP}]
 	!~dev-python/eventlet-0.23.0[${PYTHON_USEDEP}]
 	!~dev-python/eventlet-0.25.0[${PYTHON_USEDEP}]
