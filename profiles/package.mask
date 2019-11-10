@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2019-11-10)
+# Maintainer-needed, EAPI=0, Removal in 15 days
+# Upstream is dead and can't locate a new home
+net-p2p/createtorrent
+
 # Michał Górny <mgorny@gentoo.org> (2019-11-10)
 # Added in 2008 and not updated since.  Multiple releases behind
 # upstream.  Still at EAPI 0.
