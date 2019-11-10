@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools eutils git-r3
+inherit autotools git-r3
 
 DESCRIPTION="Automatic open port forwarder using UPnP"
 HOMEPAGE="https://github.com/mgorny/autoupnp/"
@@ -19,6 +19,7 @@ RDEPEND="net-libs/miniupnpc:0=
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
@@ -32,5 +33,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
