@@ -37,8 +37,8 @@ src_install() {
 	cmake-utils_src_install
 
 	if use udev; then
-		udev_newrules "${D}etc/udev/rules.d/52-airspy.rules" 52-airspy.rules
-		rm -rf "${D}etc"
+		udev_newrules "${ED}/etc/udev/rules.d/52-airspy.rules" 52-airspy.rules
+		rm -rf "${ED}/etc"
 	fi
 }
 

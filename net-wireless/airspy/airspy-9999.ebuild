@@ -23,7 +23,7 @@ SLOT="0"
 IUSE="+udev"
 
 DEPEND="virtual/udev
-		virtual/libusb:0"
+		virtual/libusb:1"
 RDEPEND="${DEPEND}"
 
 src_configure() {
@@ -37,8 +37,8 @@ src_install() {
 	cmake-utils_src_install
 
 	if use udev; then
-		udev_newrules "${D}etc/udev/rules.d/52-airspy.rules" 52-airspy.rules
-		rm -rf "${D}etc"
+		udev_newrules "${ED}/etc/udev/rules.d/52-airspy.rules" 52-airspy.rules
+		rm -rf "${ED}/etc"
 	fi
 }
 
