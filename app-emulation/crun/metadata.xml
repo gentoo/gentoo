@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dan@danmolik.com</email>
+		<name>Dan Molik</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		While most of the tools used in the Linux containers ecosystem are written in
+		Go, crun authors believe C is a better fit for a lower level tool like a
+		container runtime. runc; the most used implementation of the OCI runtime specs
+		written in Go, re-execs itself and use a module written in C for setting up
+		the environment before the container process starts.
+
+		crun aims to be also usable as a library that can be easily included in
+		programs without requiring an external process for managing OCI containers.
+	</longdescription>
+	<upstream>
+		<changelog>https://github.com/containers/crun/releases</changelog>
+		<remote-id type="github">containers/crun</remote-id>
+	</upstream>
+	<use>
+		<flag name="bpf">Enable in Kernel, eBPF (enhanced Berkley Packet Filter)
+			support for managing device controllers.
+		</flag>
+	</use>
+</pkgmetadata>
