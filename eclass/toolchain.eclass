@@ -147,11 +147,13 @@ tc_has_feature() {
 }
 
 if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
-	IUSE+=" altivec debug +cxx +fortran +nptl" TC_FEATURES+=(fortran nptl)
+	IUSE+=" altivec debug +cxx +nptl" TC_FEATURES+=(nptl)
 	[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
 	[[ -n ${HTB_VER} ]] && IUSE+=" boundschecking"
 	[[ -n ${D_VER}   ]] && IUSE+=" d"
 	[[ -n ${SPECS_VER} ]] && IUSE+=" nossp"
+	# fortran support appeared in 4.1, but 4.1 needs outdated mpfr
+	tc_version_is_at_least 4.2 && IUSE+=" +fortran" TC_FEATURES+=(fortran)
 	tc_version_is_at_least 3 && IUSE+=" doc hardened multilib objc"
 	tc_version_is_between 3 7 && IUSE+=" awt gcj" TC_FEATURES+=(gcj)
 	tc_version_is_at_least 3.3 && IUSE+=" pgo"
