@@ -285,12 +285,6 @@ www-servers/thin
 app-text/scrollkeeper
 
 # David Seifert <soap@gentoo.org> (2019-10-19)
-# EAPI 0, tarball completely broken, only contains
-# symlinks to /usr/portage/distdir.
-# Removal in 15 days. Bug #697306.
-media-fonts/jsmath-extra-light
-
-# David Seifert <soap@gentoo.org> (2019-10-19)
 # EAPI 0, broken build system, unmaintained,
 # Removal in 30 days.  Bug #679304, #688906, #697356.
 app-i18n/scim-wnn
@@ -439,30 +433,6 @@ sys-apps/man
 # This can be removed in 2019-11-11
 =sys-kernel/gentoo-sources-5.3.6
 
-# Michał Górny <mgorny@gentoo.org> (2019-10-10)
-# Upstream gone.  Last bumped in 2006.  EAPI 0.  net-misc/sipcalc seems
-# like a good replacement.
-# Removal in 30 days.  Bug #697236.
-net-misc/ipsc
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-10)
-# Unmaintained.  Does not build.  EAPI 0.
-# Removal in 30 days.  Bug #696294.
-mail-mta/qmail-ldap
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-07)
-# Unmaintained.  A few versions behind upstream.  Forces an old version
-# of dev-java/ant-contrib.
-# Removal in 30 days.  Bug #696916.
-net-im/openfire
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-04)
-# Unmaintained, EAPI 0 packages.  No reverse dependencies.  If you want
-# them to stay, please port them to EAPI 7, and preferably become
-# the maintainer.
-# Removal in 30 days.  Bug #696252.
-mail-filter/clamsmtp
-
 # Brian Evans <grknight@gentoo.org> (2019-10-01)
 # End of life.  Please upgrade.
 # Removal in 90 days. Bug 651784
@@ -524,11 +494,6 @@ dev-php/xcache
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-09-21)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.26
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-16)
-# Unmaintained.  Fails to build.  Last release in 2004.  EAPI 0.
-# Removal in 30 days.  Bug #592360.
-net-mail/mailsync
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
@@ -872,7 +837,7 @@ app-admin/amazon-ec2-init
 # Ulrich Müller <ulm@gentoo.org> (2014-07-15)
 # Permanently mask sys-libs/lib-compat and its reverse dependencies,
 # pending multiple security vulnerabilities and QA issues.
-# See bugs #515926 and #510960.
+# See bugs #515926 and #510960. Removal in 10 days.
 sys-libs/lib-compat
 sys-libs/lib-compat-loki
 games-action/phobiaii
@@ -927,6 +892,7 @@ dev-embedded/avr-libc
 
 # Chris Gianelloni <wolf31o2@gentoo.org> (2008-03-03)
 # Masking due to security bug #194607 and security bug #204067
+# Removal in 10 days
 games-fps/doom3
 games-fps/doom3-cdoom
 games-fps/doom3-chextrek
