@@ -195,7 +195,7 @@ multilib_src_install() {
 	fi
 
 	# The build system creates an empty "/run" directory, so we clean it up here
-	rmdir "${ED}"/run
+	rmdir "${ED}"/run || die
 }
 
 multilib_src_install_all() {
@@ -209,7 +209,7 @@ multilib_src_install_all() {
 
 	dodoc docs/{AUTHORS,NEWS,README,TODO}
 
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -type f -delete || die
 }
 
 pkg_postinst() {
