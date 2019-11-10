@@ -16,8 +16,7 @@ LICENSE="imagemagick"
 SLOT="0/${PV}"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="bzip2 corefonts cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
-
-RESTRICT="perl? ( userpriv )"
+RESTRICT="!test? ( test ) perl? ( userpriv )"
 
 RDEPEND="
 	dev-libs/libltdl:0
