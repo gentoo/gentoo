@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-11-10)
+# Does not build on new profiles.  EAPI 0.  No revdeps.
+# Removal in 30 days.  Bug #681186.
+dev-dotnet/gsf-sharp
+
+# Michał Górny <mgorny@gentoo.org> (2019-11-10)
 # Fails to build since 2017.  EAPI 0.  No revdeps.
 # Removal in 30 days.  Bug #618464.
 sys-cluster/osc-mpiexec
