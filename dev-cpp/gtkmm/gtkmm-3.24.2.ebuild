@@ -32,6 +32,8 @@ DEPEND="${RDEPEND}
 "
 # eautoreconf needs mm-common
 
+RESTRICT="!test? ( test )"
+
 src_prepare() {
 	if ! use test; then
 		# don't waste time building tests
