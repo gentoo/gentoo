@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit mount-boot
 
@@ -24,11 +24,11 @@ src_compile() { :; }
 
 src_install() {
 	into /
-	dosbin precompiled/lilo || die
+	dosbin precompiled/lilo
 	insinto /boot
-	doins precompiled/boot.b || die
+	doins precompiled/boot.b
 	dosym . /boot/boot
 	insinto /etc
-	doins "${FILESDIR}"/lilo.conf || die
+	doins "${FILESDIR}"/lilo.conf
 	dodoc ChangeLog README TODO
 }
