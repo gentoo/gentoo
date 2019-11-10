@@ -21,8 +21,7 @@ SLOT="0/4"
 IUSE="static-libs"
 
 RDEPEND=">=dev-libs/gmp-6.0.0[${MULTILIB_USEDEP}]
-	>=dev-libs/isl-0.15:0=[${MULTILIB_USEDEP}]
-	!dev-libs/cloog-ppl"
+	>=dev-libs/isl-0.15:0=[${MULTILIB_USEDEP}]"
 DEPEND="${DEPEND}
 	virtual/pkgconfig"
 
