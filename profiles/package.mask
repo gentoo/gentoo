@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-11-10)
+# Known to segfault.  EAPI 0.  Nobody should get near that ebuild
+# without a ten foot pole.  Stuck at a beta from 2006.
+# Removal in 30 days.  Bug #612384.
+dev-embedded/tigcc
+
+# Michał Górny <mgorny@gentoo.org> (2019-11-10)
 # Incorrect LICENSE (claims to be @FREE while it is @EULA).  EAPI 0.
 # Two of them are in 2010 versions, one in 2014.  No revdeps.
 # Removal in 30 days.  Bug #699736.
