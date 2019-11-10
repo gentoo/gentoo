@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{5,6} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit flag-o-matic python-r1 waf-utils systemd user
+inherit flag-o-matic python-r1 waf-utils systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -48,6 +48,8 @@ RDEPEND="${CDEPEND}
 	ntpviz? ( sci-visualization/gnuplot media-fonts/liberation-fonts )
 	!net-misc/ntp
 	!net-misc/openntpd
+	acct-group/ntp
+	acct-user/ntp
 "
 DEPEND="${CDEPEND}
 	app-text/asciidoc
@@ -59,11 +61,6 @@ DEPEND="${CDEPEND}
 "
 
 WAF_BINARY="${S}/waf"
-
-pkg_setup() {
-	enewgroup ntp 123
-	enewuser ntp 123 -1 /dev/null ntp
-}
 
 src_prepare() {
 	default
@@ -93,6 +90,7 @@ src_configure() {
 		--nopyc
 		--nopyo
 		--refclock="${CLOCKSTRING}"
+		--build-epoch="$(date +%s)"
 		$(use doc	&& echo "--enable-doc")
 		$(use early	&& echo "--enable-early-droproot")
 		$(use gdb	&& echo "--enable-debug-gdb")
@@ -122,6 +120,7 @@ src_install() {
 		waf-utils_src_install
 	}
 	python_foreach_impl run_in_build_dir python_install
+	python_foreach_impl python_optimize
 
 	# Install heat generating scripts
 	use heat && dosbin "${S}"/contrib/ntpheat{,usb}
