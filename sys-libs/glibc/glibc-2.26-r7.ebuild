@@ -106,7 +106,6 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!sys-kernel/ps3-sources
 	sys-apps/gentoo-functions
-	!sys-libs/nss-db
 "
 
 if [[ ${CATEGORY} == cross-* ]] ; then

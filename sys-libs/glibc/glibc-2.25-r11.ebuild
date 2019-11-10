@@ -101,8 +101,7 @@ DEPEND="${COMMON_DEPEND}
 	!<sys-apps/portage-2.1.2"
 RDEPEND="${COMMON_DEPEND}
 	!sys-kernel/ps3-sources
-	sys-apps/gentoo-functions
-	!sys-libs/nss-db"
+	sys-apps/gentoo-functions"
 
 if [[ ${CATEGORY} == cross-* ]] ; then
 	DEPEND+=" !headers-only? (
