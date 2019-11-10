@@ -99,7 +99,6 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	>=app-misc/pax-utils-0.1.10
-	!<sys-apps/portage-2.1.2
 	doc? ( sys-apps/texinfo )
 "
 RDEPEND="${COMMON_DEPEND}
