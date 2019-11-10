@@ -59,6 +59,8 @@ REQUIRED_USE="
 RESTRICT="
 	hppa? ( test )
 	ia64? ( test )
+
+	!test? ( test )
 "
 
 RDEPEND="
