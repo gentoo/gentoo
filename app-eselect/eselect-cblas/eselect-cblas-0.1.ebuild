@@ -1,11 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 DESCRIPTION="C-language BLAS module for eselect"
-HOMEPAGE="https://www.gentoo.org/proj/en/eselect/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI=""
+S=${WORKDIR}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -14,12 +15,9 @@ IUSE=""
 
 # Need skel.bash lib
 RDEPEND=">=app-admin/eselect-1.0.5"
-DEPEND="${RDEPEND}"
 
 src_install() {
-	local MODULEDIR="/usr/share/eselect/modules"
-	local MODULE="cblas"
-	insinto ${MODULEDIR}
-	newins "${FILESDIR}"/${MODULE}.eselect-${PVR} ${MODULE}.eselect
+	insinto /usr/share/eselect/modules
+	newins "${FILESDIR}"/cblas.eselect-${PVR} cblas.eselect
 	doman "${FILESDIR}"/cblas.eselect.5
 }
