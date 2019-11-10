@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="XMMS2 AudioScrobbler client"
 HOMEPAGE="http://code-monkey.de/pages/xmms2-scrobbler"
@@ -18,13 +18,13 @@ RDEPEND="media-sound/xmms2
 	net-misc/curl"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-ldflags.patch
-	epatch "${FILESDIR}"/${P}-libs.patch
-	epatch "${FILESDIR}"/${P}-ld-order.patch
-	epatch "${FILESDIR}"/${P}-gcc-7.patch
-	epatch "${FILESDIR}"/${P}-no-XPTR.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-libs.patch
+	"${FILESDIR}"/${P}-ld-order.patch
+	"${FILESDIR}"/${P}-gcc-7.patch
+	"${FILESDIR}"/${P}-no-XPTR.patch
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)" VERBOSE=1
