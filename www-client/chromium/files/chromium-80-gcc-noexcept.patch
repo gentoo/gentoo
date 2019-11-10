@@ -1,0 +1,48 @@
+From a75a2539ca600163f2136776fdc751111e887cd7 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Tue, 05 Nov 2019 17:57:52 +0100
+Subject: [PATCH] GCC: do not set noexcept on move assignment operator of ColorSet
+
+GCC build is broken because ColorSet default move assign operator is
+noexcept (because the color flat_map is not noexcept). It does not
+break clang because clang does not warn about this situation when
+building with -fno-exception.
+
+../../ui/color/color_set.cc:14:11: error: function ‘ui::ColorSet& ui::ColorSet::operator=(ui::ColorSet&&)’ defaulted on its redeclaration with an exception-specification that differs from the implicit exception-specification ‘’
+ ColorSet& ColorSet::operator=(ColorSet&&) noexcept = default;
+
+Bug: 819294
+Change-Id: I00f4374fbf3d41dced9f9451c90478db528cb986
+---
+
+diff --git a/ui/color/color_set.cc b/ui/color/color_set.cc
+index 56564d7..0d43b2b 100644
+--- a/ui/color/color_set.cc
++++ b/ui/color/color_set.cc
+@@ -9,9 +9,9 @@
+ ColorSet::ColorSet(ColorSetId id, ColorMap&& colors)
+     : id(id), colors(std::move(colors)) {}
+ 
+-ColorSet::ColorSet(ColorSet&&) noexcept = default;
++ColorSet::ColorSet(ColorSet&&) = default;
+ 
+-ColorSet& ColorSet::operator=(ColorSet&&) noexcept = default;
++ColorSet& ColorSet::operator=(ColorSet&&) = default;
+ 
+ ColorSet::~ColorSet() = default;
+ 
+diff --git a/ui/color/color_set.h b/ui/color/color_set.h
+index b273c48..3eaea42 100644
+--- a/ui/color/color_set.h
++++ b/ui/color/color_set.h
+@@ -28,8 +28,8 @@
+   using ColorMap = base::flat_map<ColorId, SkColor>;
+ 
+   ColorSet(ColorSetId id, ColorMap&& colors);
+-  ColorSet(ColorSet&&) noexcept;
+-  ColorSet& operator=(ColorSet&&) noexcept;
++  ColorSet(ColorSet&&);
++  ColorSet& operator=(ColorSet&&);
+   ~ColorSet();
+ 
+   ColorSetId id;
