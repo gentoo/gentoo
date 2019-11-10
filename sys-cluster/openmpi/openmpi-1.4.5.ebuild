@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,14 +18,13 @@ SLOT="0"
 RESTRICT="mpi-threads? ( test )"
 
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="+cxx elibc_FreeBSD fortran heterogeneous ipv6 mpi-threads pbs romio threads vt"
+IUSE="+cxx fortran heterogeneous ipv6 mpi-threads pbs romio threads vt"
 RDEPEND="
 	pbs? ( sys-cluster/torque )
 	vt? (
 		!dev-libs/libotf
 		!app-text/lcdf-typetools
 	)
-	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
 	!sys-cluster/mpiexec

@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools eutils versionator
+inherit autotools
 
-MY_P="${PN}-$(get_version_component_range 1-2)$(get_version_component_range 4-4)"
+MY_P="${PN}-$(ver_cut 1-2)$(ver_cut 4-5)"
 
 DESCRIPTION="Demonstration program for visual effects of aalib"
 HOMEPAGE="http://aa-project.sourceforge.net/"
@@ -13,24 +13,31 @@ SRC_URI="mirror://sourceforge/aa-project/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="mikmod"
 
 DEPEND="media-libs/aalib:=
 	dev-libs/lzo:=
-	mikmod? ( media-libs/libmikmod:= )
+	mikmod? ( media-libs/libmikmod:=[openal] )
 "
+# media-libs/libmikmod[openal] is due to bug #516964
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
+S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-noattr.patch
+	"${FILESDIR}"/${P}-fix-protos.patch
+	"${FILESDIR}"/${P}-messager-overlap.patch
+	"${FILESDIR}"/${P}-zbuff-fault.patch
+	"${FILESDIR}"/${P}-printf-cleanup.patch
+	"${FILESDIR}"/${P}-m4-stuff.patch
+	"${FILESDIR}"/${P}-protos.patch
+	"${FILESDIR}"/${P}-disable-pulse.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-noattr.patch"
-	epatch "${FILESDIR}/${P}-fix-protos.patch"
-	epatch "${FILESDIR}"/${P}-messager-overlap.patch
-	epatch "${FILESDIR}"/${P}-zbuff-fault.patch
-	epatch "${FILESDIR}"/${P}-printf-cleanup.patch
-	epatch "${FILESDIR}"/${P}-m4-stuff.patch
+	default
 
 	# unbundle lzo, #515286
 	rm -v README.LZO minilzo.{c,h} mylzo.h || die
@@ -55,7 +62,8 @@ src_prepare() {
 	    -e 's/bb_LDADD/bb_aalib_LDADD/'                   \
 		-i Makefile.am || die
 
-	AT_M4DIR="m4" eautoreconf
+	mv -v configure.{in,ac} || die
+	eautoreconf
 }
 
 pkg_postinst() {

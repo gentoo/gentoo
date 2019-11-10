@@ -56,7 +56,12 @@ RDEPEND="${DEPEND}
 		)
 	)
 	policykit? ( sys-auth/polkit )
-	pulseaudio? ( media-sound/pulseaudio[bluetooth] )
+	pulseaudio? (
+		|| (
+			media-sound/pulseaudio[bluetooth]
+			media-sound/pulseaudio-modules-bt
+		)
+	)
 	!net-wireless/gnome-bluetooth
 "
 

@@ -1,9 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit multilib
 DESCRIPTION="LuaDoc is a documentation tool for Lua source code"
 HOMEPAGE="http://luadoc.luaforge.net/"
 SRC_URI="http://luaforge.net/frs/download.php/3185/${P}.tar.gz"
@@ -17,9 +16,9 @@ DEPEND=""
 RDEPEND=">=dev-lang/lua-5.1.3
 	dev-lua/luafilesystem"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
+	default
+
 	sed -i \
 		-e "s|/usr/local|\$(DESTDIR)/usr|" \
 		-e "s|lib|$(get_libdir)|" \
@@ -27,11 +26,11 @@ src_unpack() {
 		config || die
 
 	# lua-5.1.3
-	find . -name '*.lua' | xargs sed -i -e "s/gfind/gmatch/g" || die
+	find . -name '*.lua' -exec sed -i -e "s/gfind/gmatch/g" {} + || die
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc README
-	dohtml -r doc/us/*
+	default
+	docinto html
+	dodoc -r doc/us/.
 }
