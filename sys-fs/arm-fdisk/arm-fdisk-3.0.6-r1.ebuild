@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DEB_VER=6.2
 DESCRIPTION="edit disk partitions on Acorn machines"
@@ -16,30 +16,26 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc s390 sh sparc x86"
 IUSE=""
 
-DEPEND=""
+src_prepare() {
+	default
+	eapply "${WORKDIR}"/acorn-fdisk_${PV}-${DEB_VER}.diff
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${WORKDIR}"/acorn-fdisk_${PV}-${DEB_VER}.diff
-
-	find "${S}" -name Makefile -print0 | xargs -0 \
-		sed -i \
+	find . -name Makefile -exec sed -i \
 		-e "s:-O2 -Wall\( -g\)\?::" \
 		-e "/^CFLAGS/s:=:+=:" \
 		-e "/^LDFLAGS/s:=:+=:" \
-		-e '/^STRIP/s:strip:true:'
+		-e '/^STRIP/s:strip:true:' {} + || die
 }
 
 src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
-		AR="$(tc-getAR)" || die
+		AR="$(tc-getAR)"
 }
 
 src_install() {
 	into /
-	newsbin fdisk ${PN} || die "sbin failed"
+	newsbin fdisk ${PN}
 	dosym ${PN} /sbin/acorn-fdisk
 	dodoc ChangeLog README debian/changelog
 }
