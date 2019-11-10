@@ -13,6 +13,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd
 
 IUSE="aqua doc test wayland X"
 REQUIRED_USE="|| ( aqua wayland X )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-cpp/glibmm-2.54.0:2[${MULTILIB_USEDEP}]
