@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit autotools eutils git-r3
 
 DESCRIPTION="Automatic open port forwarder using UPnP"
-HOMEPAGE="https://bitbucket.org/mgorny/autoupnp/"
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+HOMEPAGE="https://github.com/mgorny/autoupnp/"
+EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
