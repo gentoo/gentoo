@@ -18,6 +18,8 @@ DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	sys-devel/m4"
 
+RESTRICT="!test? ( test )"
+
 pkg_setup() {
 	if use test ; then
 		ewarn "The PPL testsuite will be run."
