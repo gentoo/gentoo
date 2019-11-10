@@ -6,8 +6,8 @@ EAPI=4
 inherit autotools-utils
 
 DESCRIPTION="NPAPI headers bundle"
-HOMEPAGE="https://bitbucket.org/mgorny/npapi-sdk/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/npapi-sdk/"
+SRC_URI="https://github.com/mgorny/npapi-sdk/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

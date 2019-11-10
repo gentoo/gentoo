@@ -7,8 +7,8 @@ AUTOTOOLS_AUTORECONF=yes
 inherit autotools-utils git-r3
 
 DESCRIPTION="NPAPI headers bundle"
-HOMEPAGE="https://bitbucket.org/mgorny/npapi-sdk/"
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+HOMEPAGE="https://github.com/mgorny/npapi-sdk/"
+EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
