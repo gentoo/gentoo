@@ -1,0 +1,59 @@
+https://bugs.gentoo.org/689538
+
+diff -ruN hatari-2.1.0.old/src/gui-sdl/sdlgui.c hatari-2.1.0/src/gui-sdl/sdlgui.c
+--- hatari-2.1.0.old/src/gui-sdl/sdlgui.c	2018-02-07 18:33:56.000000000 +0000
++++ hatari-2.1.0/src/gui-sdl/sdlgui.c	2019-07-08 23:55:50.481270799 +0100
+@@ -1329,12 +1329,28 @@
+ 				}
+ 				break;
+ 
++			 case SDL_JOYHATMOTION:
++				if (sdlEvent.jhat.value & SDL_HAT_LEFT)
++					retbutton = SDLGui_HandleShortcut(dlg, SG_SHORTCUT_LEFT);
++				else if (sdlEvent.jhat.value & SDL_HAT_RIGHT)
++					retbutton = SDLGui_HandleShortcut(dlg, SG_SHORTCUT_RIGHT);
++				if (sdlEvent.jhat.value & SDL_HAT_UP)
++				{
++					SDLGui_RemoveFocus(dlg, focused);
++					focused = SDLGui_FocusNext(dlg, focused, -1);
++				}
++				else if (sdlEvent.jhat.value & SDL_HAT_DOWN)
++				{
++					SDLGui_RemoveFocus(dlg, focused);
++					focused = SDLGui_FocusNext(dlg, focused, +1);
++				}
++				break;
++
+ 			 case SDL_JOYBUTTONDOWN:
+ 				retbutton = SDLGui_HandleSelection(dlg, focused, focused);
+ 				break;
+ 
+ 			 case SDL_JOYBALLMOTION:
+-			 case SDL_JOYHATMOTION:
+ 			 case SDL_MOUSEMOTION:
+ 				break;
+ 
+diff -ruN hatari-2.1.0.old/src/joy.c hatari-2.1.0/src/joy.c
+--- hatari-2.1.0.old/src/joy.c	2018-02-07 18:33:56.000000000 +0000
++++ hatari-2.1.0/src/joy.c	2019-07-09 14:46:36.502410790 +0100
+@@ -199,9 +199,20 @@
+  */
+ static bool Joy_ReadJoystick(int nSdlJoyID, JOYREADING *pJoyReading)
+ {
++	unsigned hat = SDL_JoystickGetHat(sdlJoystick[nSdlJoyID], 0);
++
+ 	/* Joystick is OK, read position from the configured joystick axis */
+ 	pJoyReading->XPos = SDL_JoystickGetAxis(sdlJoystick[nSdlJoyID], pJoyReading->XAxisID);
+ 	pJoyReading->YPos = SDL_JoystickGetAxis(sdlJoystick[nSdlJoyID], pJoyReading->YAxisID);
++	/* Similarly to other emulators that support hats, override axis readings with hats */
++	if (hat & SDL_HAT_LEFT)
++		pJoyReading->XPos = -32768;
++	if (hat & SDL_HAT_RIGHT)
++		pJoyReading->XPos = 32767;
++	if (hat & SDL_HAT_UP)
++		pJoyReading->YPos = -32768;
++	if (hat & SDL_HAT_DOWN)
++		pJoyReading->YPos = 32767;
+ 	/* Sets bit #0 if button #1 is pressed: */
+ 	pJoyReading->Buttons = SDL_JoystickGetButton(sdlJoystick[nSdlJoyID], 0);
+ 	/* Sets bit #1 if button #2 is pressed: */
