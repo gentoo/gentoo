@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install preinst prepare
-DEPEND=>=dev-lang/lua-5.1
+DEPEND=>=dev-lang/lua-5.1:=
 DESCRIPTION=Send commands to some microcontrollers, e.g., to change LEDs or sound a buzzer
 EAPI=7
 HOMEPAGE=http://qnap.nas-central.org/index.php/PIC_Control_Software
 KEYWORDS=arm
 LICENSE=GPL-3+
-RDEPEND=>=dev-lang/lua-5.1
+RDEPEND=>=dev-lang/lua-5.1:=
 SLOT=0
 SRC_URI=mirror://debian/pool/main/q/qcontrol/qcontrol_0.4.2.orig.tar.gz mirror://debian/pool/main/q/qcontrol/qcontrol_0.4.2-6.diff.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ab1497db28502cb95a4065c1ebde347f
+_md5_=28ee4d1f633c22d2a35978546e124646
