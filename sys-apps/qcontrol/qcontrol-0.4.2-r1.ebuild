@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="arm"
 IUSE=""
 
-DEPEND=">=dev-lang/lua-5.1"
+DEPEND=">=dev-lang/lua-5.1:="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
