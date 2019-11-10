@@ -30,5 +30,7 @@ src_compile() {
 src_install() {
 	dobin delta multidelta topformflat
 	dodoc Readme
-	dohtml www/*
+
+	docinto html
+	dodoc -r www/*
 }
