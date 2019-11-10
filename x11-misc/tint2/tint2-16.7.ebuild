@@ -3,11 +3,12 @@
 
 EAPI=7
 
-inherit cmake-utils vcs-snapshot xdg
+inherit cmake-utils xdg
 
 DESCRIPTION="tint2 is a lightweight panel/taskbar for Linux."
 HOMEPAGE="https://gitlab.com/o9000/tint2"
-SRC_URI="https://gitlab.com/o9000/${PN}/repository/archive.tar.gz?ref=v${PV} -> ${P}.tar.gz"
+SRC_URI="https://gitlab.com/o9000/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
+S=${WORKDIR}/${PN}-v${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
