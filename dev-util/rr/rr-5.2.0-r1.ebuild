@@ -31,6 +31,8 @@ DEPEND+="
 		sys-devel/gdb[xml]
 	)"
 
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-ucontext_t.patch
 	"${FILESDIR}"/${P}-c++14.patch
