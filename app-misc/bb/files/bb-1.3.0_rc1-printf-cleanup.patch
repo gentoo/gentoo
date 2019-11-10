@@ -8,8 +8,6 @@ zoom.c:260:113: warning: format '%i' expects type 'int', but argument 3 has type
 zoom.c: In function 'moveoldpoints':
 zoom.c:590:3: warning: format '%i' expects type 'int', but argument 3 has type 'long unsigned int'
 zoom.c:596:3: warning: format '%i' expects type 'int', but argument 3 has type 'long unsigned int'
-diff --git a/zoom.c b/zoom.c
-index 7450095..b86cc8b 100644
 --- a/zoom.c
 +++ b/zoom.c
 @@ -241,13 +241,13 @@ static /*INLINE */ void mkrealloc_table(register number_t * pos, realloc_t * rea
