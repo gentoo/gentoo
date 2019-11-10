@@ -9,7 +9,7 @@ WX_GTK_VER="3.0"
 
 inherit cmake-utils desktop gnome2-utils l10n pax-utils toolchain-funcs versionator wxwidgets
 
-SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="amd64"
 
 DESCRIPTION="Gamecube and Wii game emulator"
