@@ -6,7 +6,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A console-based network monitoring utility"
 HOMEPAGE="https://github.com/iptraf-ng/iptraf-ng/"
-SRC_URI="${HOMEPAGE}archive/v${PV}.tar.gz -> ${P}-github.tar.gz"
+SRC_URI="https://github.com/iptraf-ng/iptraf-ng/archive/v${PV}.tar.gz -> ${P}-github.tar.gz"
 
 LICENSE="GPL-2 doc? ( FDL-1.1 )"
 SLOT="0"
