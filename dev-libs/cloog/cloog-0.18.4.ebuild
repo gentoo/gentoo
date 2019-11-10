@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -21,8 +21,7 @@ SLOT="0/4"
 IUSE="static-libs"
 
 RDEPEND=">=dev-libs/gmp-6.0.0[${MULTILIB_USEDEP}]
-	>=dev-libs/isl-0.15:0=[${MULTILIB_USEDEP}]
-	!dev-libs/cloog-ppl"
+	>=dev-libs/isl-0.15:0=[${MULTILIB_USEDEP}]"
 DEPEND="${DEPEND}
 	virtual/pkgconfig"
 
