@@ -30,6 +30,7 @@ LICENSE="Sleepycat BSD"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="tcl java doc cxx rpc"
+RESTRICT="!test? ( test )"
 
 DEPEND="tcl? ( >=dev-lang/tcl-8.4 )
 	java? ( >=virtual/jdk-1.4 )
