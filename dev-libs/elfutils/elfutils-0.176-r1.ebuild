@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}
 	>=sys-devel/flex-2.5.4a
 	sys-devel/m4"
 
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.118-PaX-support.patch
 	"${FILESDIR}"/${PN}-0.175-disable-biarch-test-PR24158.patch
