@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 MY_PN="iwlwifi-6000g2a-ucode"
 
@@ -16,11 +16,9 @@ IUSE=""
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-src_compile() { :; }
-
 src_install() {
 	insinto /lib/firmware
-	doins "${S}/iwlwifi-6000g2a-5.ucode" || die
+	doins iwlwifi-6000g2a-5.ucode
 
-	dodoc README* || die "dodoc failed"
+	dodoc README*
 }
