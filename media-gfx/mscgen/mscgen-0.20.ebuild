@@ -1,16 +1,18 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
+
 inherit autotools
 
 DESCRIPTION="A message sequence chart generator"
 HOMEPAGE="http://www.mcternan.me.uk/mscgen/"
 SRC_URI="http://www.mcternan.me.uk/${PN}/software/${PN}-src-${PV}.tar.gz"
 
+KEYWORDS="amd64 arm ppc ppc64 x86 ~x64-solaris"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86 ~x64-solaris"
 IUSE="png truetype"
 
 RDEPEND="png? (	media-libs/gd[png,truetype?] )"
@@ -23,8 +25,9 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 src_prepare() {
-	sed -i -e '/dist_doc_DATA/d' Makefile.am || die
+	sed -i -e '/dist_doc_DATA/d' Makefile.am || die "Fixing Makefile.am failed"
 	eautoreconf
+	eapply_user
 }
 
 src_configure() {
