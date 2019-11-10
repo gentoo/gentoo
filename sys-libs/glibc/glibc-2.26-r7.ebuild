@@ -104,7 +104,6 @@ DEPEND="${COMMON_DEPEND}
 	doc? ( sys-apps/texinfo )
 "
 RDEPEND="${COMMON_DEPEND}
-	!sys-kernel/ps3-sources
 	sys-apps/gentoo-functions
 "
 
