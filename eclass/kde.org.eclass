@@ -55,11 +55,6 @@ case ${KDE_SELINUX_MODULE} in
 		;;
 esac
 
-if [[ ${CATEGORY} = kde-frameworks ]]; then
-	SLOT=5/${PV}
-	[[ ${KDE_BUILD_TYPE} = release ]] && SLOT=$(ver_cut 1)/$(ver_cut 1-2)
-fi
-
 # @ECLASS-VARIABLE: KDE_UNRELEASED
 # @INTERNAL
 # @DESCRIPTION
@@ -69,6 +64,18 @@ fi
 KDE_UNRELEASED=( )
 
 HOMEPAGE="https://kde.org/"
+
+case ${CATEGORY} in
+	kde-plasma)
+		HOMEPAGE="https://kde.org/plasma-desktop"
+		;;
+	kde-frameworks)
+		HOMEPAGE="https://kde.org/products/frameworks/"
+		SLOT=5/${PV}
+		[[ ${KDE_BUILD_TYPE} = release ]] && SLOT=$(ver_cut 1)/$(ver_cut 1-2)
+		;;
+	*) ;;
+esac
 
 _kde_is_unreleased() {
 	local pair
