@@ -1,8 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools-multilib eutils
+EAPI=7
+
+inherit multilib-minimal
 
 DESCRIPTION="LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP"
 HOMEPAGE="https://launchpad.net/libeatmydata/"
@@ -14,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 # sandbox fools LD_PRELOAD and libeatmydata does not get control
-# bug/feature in sandbox?
+# feature of sandbox
 #DEPEND="test? ( dev-util/strace )"
 RESTRICT=test
 
@@ -25,8 +26,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-105-undpkg.patch
 )
 
+ECONF_SOURCE=${S}
+
 multilib_src_install_all() {
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -type f -delete || die
 
 	dodoc AUTHORS README
 }
