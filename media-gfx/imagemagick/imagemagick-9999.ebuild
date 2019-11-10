@@ -24,6 +24,11 @@ SLOT="0/7.0.9"
 IUSE="bzip2 corefonts cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
 RESTRICT="!test? ( test )"
 
+REQUIRED_USE="corefonts? ( truetype )
+	test? ( corefonts )"
+
+RESTRICT="!test? ( test )"
+
 BDEPEND="virtual/pkgconfig"
 
 RDEPEND="
@@ -69,9 +74,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	!media-gfx/graphicsmagick[imagemagick]
 	X? ( x11-base/xorg-proto )"
-
-REQUIRED_USE="corefonts? ( truetype )
-	test? ( corefonts )"
 
 S="${WORKDIR}/${MY_P}"
 
