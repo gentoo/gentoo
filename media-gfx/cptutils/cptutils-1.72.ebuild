@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
 inherit python-single-r1
@@ -22,11 +22,12 @@ RDEPEND="${CDEPEND}
 	${PYTHON_DEPS}"
 DEPEND="${CDEPEND}
 	test? (
+		app-text/xml2
 		app-text/xmlstarlet
 		>=dev-util/cunit-2.1_p3
 	)"
 
-PATCHES=( "${FILESDIR}"/${P}-parallel-make.patch )
+RESTRICT="!test? ( test )"
 
 src_prepare() {
 	default
