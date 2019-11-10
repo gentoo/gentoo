@@ -3,6 +3,7 @@
 
 EAPI=6
 VALA_MIN_API_VERSION="0.34"
+
 inherit gnome.org gnome2-utils meson vala xdg
 
 DESCRIPTION="Simple document scanning utility"
@@ -43,6 +44,9 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
 	# Add control for optional dependencies
 	"${FILESDIR}"/3.26-add-control-optional-deps.patch
+	# libwepmix: Fix use of possibly unassigned local variable 'data'
+	# (from 3.34 branch)
+	"${FILESDIR}"/${PN}-3.32.2-unasigned-variable.patch
 )
 
 src_prepare() {
