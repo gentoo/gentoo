@@ -1,0 +1,33 @@
+From fe17299b2757d3c0106fbfff325440de0830048f Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Tue, 17 Sep 2019 13:39:44 +0200
+Subject: Make it compiles against qt5.14
+
+---
+ src/game-state.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/game-state.cpp b/src/game-state.cpp
+index c0c35d5..b2c2416 100644
+--- a/src/game-state.cpp
++++ b/src/game-state.cpp
+@@ -19,7 +19,7 @@
+ #include "game-state.h"
+ #include "settings.h"
+ 
+-#include <QTime>
++#include <QElapsedTimer>
+ #include <KLocalizedString>
+ #include <KNotification>
+ 
+@@ -32,7 +32,7 @@ public:
+     GameStatePrivate();
+     ~GameStatePrivate();
+ 
+-    QTime m_gameTime, m_pauseTime;
++    QElapsedTimer m_gameTime, m_pauseTime;
+ 
+     Mode m_mode;
+     State m_state;
+-- 
+cgit v1.1
