@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,11 +13,12 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc
 IUSE="+cxx doc lpsol pch static-libs test"
 
 RDEPEND=">=dev-libs/gmp-6[cxx]
-	lpsol? ( sci-mathematics/glpk )
-	!dev-libs/cloog-ppl"
+	lpsol? ( sci-mathematics/glpk )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	sys-devel/m4"
+
+RESTRICT="!test? ( test )"
 
 pkg_setup() {
 	if use test ; then
