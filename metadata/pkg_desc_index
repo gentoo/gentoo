@@ -646,7 +646,7 @@ app-crypt/asekey 3.7: ASEKey USB SIM Card Reader
 app-crypt/bcwipe 1.9.13: Secure file removal utility
 app-crypt/bsign 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU Privacy Guard) into files
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
-app-crypt/ccid 1.4.30: CCID free software driver
+app-crypt/ccid 1.4.30 1.4.31: CCID free software driver
 app-crypt/ccrypt 1.11 1.11-r1: Encryption and decryption
 app-crypt/certbot 0.38.0 0.39.0 0.40.1 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 0.38.0 0.39.0 0.40.1 9999: Apache plugin for certbot (Let's Encrypt Client)
@@ -1557,7 +1557,7 @@ app-eselect/eselect-fontconfig 1.1-r1: An eselect module to manage /etc/fonts/co
 app-eselect/eselect-gnome-shell-extensions 20180306: Manages system defaults for GNOME Shell extensions
 app-eselect/eselect-infinality 1-r1 1.1: Eselect module to choose an infinality font configuration style
 app-eselect/eselect-java 0.4.0: A set of eselect modules for Java
-app-eselect/eselect-lapack 0.1 0.2: LAPACK module for eselect
+app-eselect/eselect-lapack 0.2: LAPACK module for eselect
 app-eselect/eselect-lcdfilter 1 2: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
 app-eselect/eselect-lib-bin-symlink 0.1.1 0.1.1-r1 9999: An eselect library to manage executable symlinks
 app-eselect/eselect-lua 1: Lua eselect module
@@ -1748,7 +1748,7 @@ app-i18n/zinnia 0.06-r3: Zinnia - Online hand recognition system with machine le
 app-i18n/zinnia-tomoe 0.6.0_p20080911: Handwriting model files trained with Tomoe data
 app-laptop/batti 0.3.8-r4: A upower based battery monitor for the system tray, similar to batterymon
 app-laptop/dispad 0.3.1-r1: Daemon to disable trackpads while typing
-app-laptop/hdaps-gl 0.0.5: OpenGL visualization for HDAPS data
+app-laptop/hdaps-gl 0.0.5 0.0.5-r1: OpenGL visualization for HDAPS data
 app-laptop/hdapsd 20141203: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
 app-laptop/i8kutils 1.33-r1 1.42: Dell Inspiron and Latitude utilities
 app-laptop/ibam 0.5.2-r4: Intelligent Battery Monitor
@@ -1875,7 +1875,7 @@ app-misc/astrolog 5.40-r3: A many featured astrology chart calculation program
 app-misc/astrolog-ephemeris 5.40: ephemeris files for optional extended accuracy of astrolog's calculations
 app-misc/away 0.9.5-r2: Terminal locking program with few additional features
 app-misc/banner 1.3.3 1.3.4: The well known banner program for Linux
-app-misc/bb 1.3.0_rc1-r3 1.3.0_rc1-r4: Demonstration program for visual effects of aalib
+app-misc/bb 1.3.0_rc1-r5: Demonstration program for visual effects of aalib
 app-misc/beancounter 0.8.10-r1: Finance performance calculation engine with full data acquisition, SQL support
 app-misc/beanstalkd 1.10: A simple, fast work queue
 app-misc/beep 1.3-r3: The advanced PC speaker beeper
@@ -4072,7 +4072,7 @@ dev-java/ant-apache-resolver 1.9.13 1.10.5 1.10.7: Apache Ant's optional tasks d
 dev-java/ant-apache-xalan2 1.9.13 1.10.5 1.10.7: Apache Ant's optional tasks depending on xalan
 dev-java/ant-commons-logging 1.9.13 1.10.5 1.10.7: Apache Ant's optional tasks depending on commons-logging
 dev-java/ant-commons-net 1.9.13 1.10.5 1.10.7: Apache Ant's optional tasks depending on commons-net
-dev-java/ant-contrib 1.0_beta2-r2 1.0_beta3-r2: A collection of tasks for Apache Ant
+dev-java/ant-contrib 1.0_beta3-r2: A collection of tasks for Apache Ant
 dev-java/ant-core 1.9.13-r2 1.10.5-r2 1.10.7: Java-based build tool similar to 'make' that uses XML configuration files
 dev-java/ant-eclipse-ecj 4.2.1 4.4.2 4.5.1 4.10-r1 4.13: Ant Compiler Adapter for Eclipse Java Compiler
 dev-java/ant-ivy 1.4.1-r1 2.3.0-r2: Ivy is a free java based dependency manager
@@ -4661,7 +4661,7 @@ dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
 dev-lang/qu-prolog 10.1: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2018.06 2018.08 2018.09 2018.12 2019.03 9999: A compiler for the Perl 6 programming language
 dev-lang/rebol 9999: Relative Expression-Based Object Language
-dev-lang/rebol-bin 3_pre111 3_pre20140304: Relative Expression-Based Object Language
+dev-lang/rebol-bin 3_pre20140304: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.4.9 2.5.7 2.6.5: An object-oriented scripting language
 dev-lang/rust 1.34.2 1.35.0 1.36.0 1.37.0 1.38.0 1.39.0: Systems programming language from Mozilla
@@ -10752,7 +10752,7 @@ dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
 dev-util/nvidia-cuda-sdk 6.5.19 7.5.18 8.0.44-r1 8.0.61 9.0.176 9.1.85 9.2.88: NVIDIA CUDA Software Development Kit
 dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61 9.0.176 9.1.85 9.2.88 10.0.130 10.1.105-r1 10.1.168 10.1.243: NVIDIA CUDA Toolkit (compiler and friends)
-dev-util/objconv 2.42 2.51: object code file converted (COFF, ELF, OMF, MACHO)
+dev-util/objconv 2.51: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/obs-service-cpanspec 20130318: Open Build Service client module - cpanspec service
 dev-util/obs-service-download_files 20130716: Open Build Service client module - download_files service
 dev-util/obs-service-download_src_package 20130318: Open Build Service client module - download_src_package service
@@ -10905,7 +10905,7 @@ dev-vcs/cvs-fast-export 1.47 1.48: fast-export history from a CVS repository or 
 dev-vcs/cvs2cl 2.71-r1: produces a GNU-style ChangeLog for CVS-controlled sources
 dev-vcs/cvs2svn 2.4.0-r1 2.5.0: Convert a CVS repository to a Subversion repository
 dev-vcs/cvsgraph 1.7.0: CVS/RCS repository grapher
-dev-vcs/cvsps 2.2_beta1 3.13-r1: Generates patchset information from a CVS repository (supports fast-import)
+dev-vcs/cvsps 2.2_beta1 3.13-r2: Generates patchset information from a CVS repository (supports fast-import)
 dev-vcs/cvsspam 0.2.12: Utility to send colored HTML CVS-mails
 dev-vcs/cvsutils 0.2.5-r1: A small bundle of utilities to work with CVS repositories
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
@@ -11048,7 +11048,7 @@ games-action/trine-enchanted-edition 2.12.508-r2: The original sidescrolling act
 games-action/trine2 2.01.425-r1: Sidescrolling game of action, puzzles and platforming, Complete Story edition
 games-action/trosh 20-r1 20-r2: A game made in 20 hours for a friend. It has explosions
 games-action/tuxkart 0.4.0-r1: A racing game starring Tux, the Linux penguin
-games-action/violetland 0.4.3-r1: Help a girl named Violet in the struggle with hordes of monsters
+games-action/violetland 0.5: Help a girl named Violet in the struggle with hordes of monsters
 games-action/wordwarvi 1.00-r1: A retro side-scrolling shoot'em up based on the editor war story
 games-action/xblast 2.10.4-r1: Bomberman clone w/network support for up to 6 players
 games-action/xbomber 101-r1: Bomberman clone w/multiplayer support
@@ -11911,9 +11911,9 @@ gnome-extra/gnome-packagekit 3.24.0 3.30.0: PackageKit client for the GNOME desk
 gnome-extra/gnome-power-manager 3.30.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 5 6: Show tooltip with full name and description
-gnome-extra/gnome-shell-extension-dash-to-panel 23: An icon taskbar for the Gnome Shell
+gnome-extra/gnome-shell-extension-dash-to-panel 23 25: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 19.01.4: A GNOME Shell extension for providing desktop icons
-gnome-extra/gnome-shell-extension-gsconnect 26 27: KDE Connect implementation for Gnome Shell
+gnome-extra/gnome-shell-extension-gsconnect 26 28: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.30.1 3.32.1: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 22-r1: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.30.2 3.32.1: Unofficial extension pack providing GNOME 2-like features for GNOME 3
@@ -12524,7 +12524,7 @@ mail-filter/spambayes 1.1_beta2: An anti-spam filter using on Bayesian filtering
 mail-filter/spamdyke 4.3.0 5.0.1: A drop-in connection-time spam filter for qmail
 mail-filter/spampd 2.42: spampd is a program to scan messages for Unsolicited Commercial E-mail content
 mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using Bayesian analysis
-mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a grey-listing policy
+mail-filter/sqlgrey 1.7.6-r2: A postfix policy service implementing a grey-listing policy
 mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
 mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
@@ -13030,7 +13030,7 @@ media-gfx/zgv 5.9: A svgalib console image viewer
 media-libs/Field3D 1.7.2: A library for storing voxel data
 media-libs/SoXt 1.3.0: GUI binding for using Coin/Open Inventor with Xt/Motif
 media-libs/a52dec 0.7.4-r6 0.7.4-r7: library for decoding ATSC A/52 streams used in DVD
-media-libs/aalib 1.4_rc5-r8: A ASCII-Graphics Library
+media-libs/aalib 1.4_rc5-r8 1.4_rc5-r9: A ASCII-Graphics Library
 media-libs/adplug 2.3.1 9999: A free, cross-platform, hardware independent AdLib sound player library
 media-libs/aften 0.0.8-r2: An A/52 (AC-3) audio encoder
 media-libs/aldumb 0.9.3: Allegro support for DUMB (an IT, XM, S3M, and MOD player library)
@@ -14115,7 +14115,7 @@ media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
 media-sound/xfmpc 0.3.0: Music Player Daemon (MPD) client for the Xfce desktop environment
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
 media-sound/xmms2 0.8_p20161122-r4 0.8_p20161122-r5: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
-media-sound/xmms2-scrobbler 0.4.0: XMMS2 AudioScrobbler client
+media-sound/xmms2-scrobbler 0.4.0-r1: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.6: Digital vinyl emulation software
 media-sound/yarock 1.4.0: Qt-based music player
@@ -14711,7 +14711,7 @@ net-firewall/xtables-addons 2.13 3.3: iptables extensions not yet accepted in th
 net-fs/autofs 5.1.5-r2 5.1.6: Kernel based automounter
 net-fs/btfs 2.17 2.18 2.19: a bittorrent filesystem based on FUSE
 net-fs/cifs-utils 6.7 6.8-r1 6.9-r1: Tools for Managing Linux CIFS Client Filesystems
-net-fs/curlftpfs 0.9.2-r3 0.9.2-r4: File system for accessing ftp hosts based on FUSE
+net-fs/curlftpfs 0.9.2-r4: File system for accessing ftp hosts based on FUSE
 net-fs/cvmfs 2.3.5-r2: HTTP read-only file system for distributing software
 net-fs/davfs2 1.5.4 1.5.5: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
 net-fs/docker-volume-netshare 0.35: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
@@ -14730,7 +14730,7 @@ net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83: Amazon S3 mounting via fuse
 net-fs/s3ql 2.24 2.25 2.26 2.28 2.32 2.33: A full-featured file system for online data storage
 net-fs/samba 4.5.16 4.8.6-r2 4.8.6-r3 4.8.12 4.9.13 4.9.15 4.10.2 4.10.8 4.10.10 4.11.1 4.11.2: Samba Suite Version 4
-net-fs/smbnetfs 0.6.1 0.6.1-r1: FUSE filesystem for SMB shares
+net-fs/smbnetfs 0.6.1-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 2.10-r1 3.5.0 3.5.1 3.5.2: Fuse-filesystem utilizing the sftp service
 net-fs/tahoe-lafs 1.10.2: Secure, decentralized, data store
@@ -15687,8 +15687,8 @@ net-wireless/bladerf 2018.08 2019.07 9999: Libraries for supporing the BladeRF h
 net-wireless/bladerf-firmware 2.2.0 2.3.2: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.7.3 0.11.0: bladeRF FPGA bitstreams
 net-wireless/blueberry 1.1.13-r1 1.2.9: A Bluetooth configuration tool
-net-wireless/blueman 2.1.1 9999: Simple and intuitive GTK+ Bluetooth Manager
-net-wireless/bluez 5.50-r3 5.51 5.51-r1: Bluetooth Tools and System Daemons for Linux
+net-wireless/blueman 2.1.1-r1 9999: Simple and intuitive GTK+ Bluetooth Manager
+net-wireless/bluez 5.51 5.51-r2 5.52: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices for linux
 net-wireless/broadcom-sta 6.30.223.271-r5: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
@@ -17463,7 +17463,7 @@ sys-cluster/csync2 2.0 2.0-r2: Cluster synchronization tool
 sys-cluster/dlm 2.03.09 2.03.11: General-purpose Distributed Lock Manager
 sys-cluster/dlm-lib 2.03.09 2.03.11: General-purpose Distributed Lock Manager
 sys-cluster/drbd-utils 8.9.3 8.9.6 8.9.6-r1: mirror/replicate block-devices across a network-connection
-sys-cluster/fake 1.1.10: Fake has been designed to switch in backup servers on a LAN
+sys-cluster/fake 1.1.10: Switch in backup servers on a LAN
 sys-cluster/galera 25.3.25 25.3.26 26.4.2: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
@@ -17650,7 +17650,7 @@ sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices 
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bees 0.6.1 9999: Best-Effort Extent-Same, a btrfs dedup agent
 sys-fs/bindfs 1.14.0 1.14.1: FUSE filesystem for bind mounting with altered permissions
-sys-fs/btrfs-progs 3.18.2 4.1.2 4.4.1 4.9.1 4.10.2 4.14.1 4.19 4.19.1 5.1.1 5.2.2 5.3 5.3.1 9999: Btrfs filesystem utilities
+sys-fs/btrfs-progs 4.4.1 4.19 5.3.1 9999: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4 0.4.1-r1 0.4.2: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.9 0.10.10-r1: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.0.1-r3: A FUSE-based user-space file system with on-access anti-virus file scanning
@@ -17707,7 +17707,7 @@ sys-fs/jmtpfs 0.5 0.5-r1: A FUSE and libmtp based filesystem for accessing MTP d
 sys-fs/ldapfuse 1.0-r2: A virtual filesystem for FUSE which allows navigation of an LDAP tree
 sys-fs/lde 2.6.1-r1: ext2fs and minix disk editor for linux
 sys-fs/lessfs 1.7.0-r1: A high performance inline data deduplicating filesystem
-sys-fs/libeatmydata 65 82 82-r1 105-r1: LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP
+sys-fs/libeatmydata 105-r2: LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP
 sys-fs/libfat 0.3a-r1: Support library to access and manipulate FAT12 / FAT16 / FAT32 file systems
 sys-fs/loop-aes 3.7n: Linux kernel module to encrypt disk partitions with AES cipher
 sys-fs/lsscsi 0.29 0.30: SCSI sysfs query tool
@@ -17721,7 +17721,7 @@ sys-fs/mhddfs 0.1.39-r2: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.91-r1: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
 sys-fs/mtd-utils 1.5.2 2.0.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.18-r2 4.0.22 4.0.23: utilities to access MS-DOS disks from Unix without mounting them
-sys-fs/mtpfs 1.1-r4 1.1-r5: A FUSE filesystem providing access to MTP devices
+sys-fs/mtpfs 1.1-r5: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.6.4-r1 0.7.9 0.8.1 0.8.2 0.8.3: Device mapper target autoconfig
 sys-fs/ncdu 1.13 1.14 1.14.1: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux

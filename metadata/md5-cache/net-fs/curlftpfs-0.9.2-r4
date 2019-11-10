@@ -4,11 +4,11 @@ DEPEND=>=net-misc/curl-7.17.0 >=sys-fs/fuse-2.2:0= >=dev-libs/glib-2.0 virtual/p
 DESCRIPTION=File system for accessing ftp hosts based on FUSE
 EAPI=7
 HOMEPAGE=http://curlftpfs.sourceforge.net/
-KEYWORDS=~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=amd64 arm ~arm64 x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=GPL-2
 RDEPEND=>=net-misc/curl-7.17.0 >=sys-fs/fuse-2.2:0= >=dev-libs/glib-2.0
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/curlftpfs/curlftpfs-0.9.2.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=b1eff298ca93226b427ebf40494409ae
+_md5_=72040c4b58f34890bfca677e381d2949

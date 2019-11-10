@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=media-sound/xmms2 net-misc/curl
+DESCRIPTION=XMMS2 AudioScrobbler client
+EAPI=7
+HOMEPAGE=http://code-monkey.de/pages/xmms2-scrobbler
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=media-sound/xmms2 net-misc/curl
+SLOT=0
+SRC_URI=ftp://ftp.code-monkey.de/pub/xmms2-scrobbler/xmms2-scrobbler-0.4.0.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=3a8fe12cf721f4c325a4c81a309ce4c8
