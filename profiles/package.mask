@@ -892,6 +892,7 @@ dev-embedded/avr-libc
 
 # Chris Gianelloni <wolf31o2@gentoo.org> (2008-03-03)
 # Masking due to security bug #194607 and security bug #204067
+# Removal in 10 days
 games-fps/doom3
 games-fps/doom3-cdoom
 games-fps/doom3-chextrek
