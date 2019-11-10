@@ -117,11 +117,6 @@ Exporters
         sensitive lookup. Some demos might not work with this setting.
         (default: case-insensitive + sensitive lookup in all groups)
     </flag>
-    <flag name="resman-strict" restrict="&lt;dev-games/ogre-1.12">
-        Resource Manager STRICT : search in default group if not specified otherwise.
-        Case sensitive lookup. Some demos might not work with this setting.
-        (default: case-insensitive + sensitive lookup in all groups)
-    </flag>
     <flag name="tbb">When USE=threads, use tbb for threading</flag>
     <flag name="tools">Build and install helper tools</flag>
   </use>
