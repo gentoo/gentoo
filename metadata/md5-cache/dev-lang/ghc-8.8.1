@@ -3,13 +3,13 @@ DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm p
 DEPEND=>=dev-lang/perl-5.6.1 dev-libs/gmp:0= sys-libs/ncurses:0=[unicode] elfutils? ( dev-libs/elfutils ) !ghcmakebinary? ( virtual/libffi:= ) numa? ( sys-process/numactl ) binary? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) sys-libs/ncurses:0/6 ) doc? ( app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-python/sphinx >=dev-libs/libxslt-1.1.2 ) !ghcbootstrap? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) )
 DESCRIPTION=The Glasgow Haskell Compiler
 EAPI=7
-HOMEPAGE=http://www.haskell.org/ghc/
+HOMEPAGE=https://www.haskell.org/ghc/
 IUSE=doc elfutils ghcbootstrap ghcmakebinary +gmp numa profile test binary
 LICENSE=BSD
 PDEPEND=!ghcbootstrap? ( >=app-admin/haskell-updater-1.2 )
 RDEPEND=>=dev-lang/perl-5.6.1 dev-libs/gmp:0= sys-libs/ncurses:0=[unicode] elfutils? ( dev-libs/elfutils ) !ghcmakebinary? ( virtual/libffi:= ) numa? ( sys-process/numactl ) binary? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) sys-libs/ncurses:0/6 )
 REQUIRED_USE=?? ( ghcbootstrap binary )
 SLOT=0/8.8.1
-SRC_URI=!binary? ( http://downloads.haskell.org/~ghc/8.8.1/ghc-8.8.1-src.tar.xz test? ( http://downloads.haskell.org/~ghc/8.8.1/ghc-8.8.1-testsuite.tar.xz ) ) !ghcbootstrap? ( amd64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-8.8.1-x86_64-pc-linux-gnu.tbz2 ) x86? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-8.8.1-i686-pc-linux-gnu.tbz2 ) )
+SRC_URI=!binary? ( https://downloads.haskell.org/~ghc/8.8.1/ghc-8.8.1-src.tar.xz test? ( https://downloads.haskell.org/~ghc/8.8.1/ghc-8.8.1-testsuite.tar.xz ) ) !ghcbootstrap? ( amd64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-8.8.1-x86_64-pc-linux-gnu.tbz2 ) x86? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-8.8.1-i686-pc-linux-gnu.tbz2 ) )
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	check-reqs	5e40a693d9c828e8f3655184116e8b73	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	ghc-package	fac7ea2deca456f8e70b85a6ebef9e8a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=d1ef1bae0745afe4f27c08aaa1e6955b
+_md5_=32e4426c10e41f587c598935b7e40e98
