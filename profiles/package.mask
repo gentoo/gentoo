@@ -439,12 +439,6 @@ sys-apps/man
 # This can be removed in 2019-11-11
 =sys-kernel/gentoo-sources-5.3.6
 
-# Michał Górny <mgorny@gentoo.org> (2019-10-10)
-# Upstream gone.  Last bumped in 2006.  EAPI 0.  net-misc/sipcalc seems
-# like a good replacement.
-# Removal in 30 days.  Bug #697236.
-net-misc/ipsc
-
 # Brian Evans <grknight@gentoo.org> (2019-10-01)
 # End of life.  Please upgrade.
 # Removal in 90 days. Bug 651784
