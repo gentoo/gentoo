@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit eutils toolchain-funcs
 
@@ -20,10 +20,13 @@ DEPEND="${RDEPEND}
 
 RESTRICT=test # upstream does not ship tests
 
+PATCHES=("${FILESDIR}"/${P}-make.patch)
+
 src_prepare() {
+	default
+
 	local gentoo_name=${PN}-3
 
-	epatch "${FILESDIR}"/${P}-make.patch
 	mv ${PN}.asc ${gentoo_name}.asc || die
 	sed -i "s/${PN}/${gentoo_name}/g" ${gentoo_name}.asc || die
 	sed -i "s/PROG         = cvsps/PROG         = ${gentoo_name}/" Makefile || die
@@ -34,5 +37,6 @@ src_prepare() {
 
 src_install() {
 	default
+
 	dodoc README
 }
