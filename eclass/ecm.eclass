@@ -511,7 +511,7 @@ ecm_src_configure() {
 	fi
 
 	if [[ ${ECM_HANDBOOK} = optional ]] ; then
-		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=$(usex handbook) )
+		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=$(usex !handbook) )
 	fi
 
 	if in_iuse designer && [[ ${ECM_DESIGNERPLUGIN} = true ]]; then
