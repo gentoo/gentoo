@@ -426,7 +426,7 @@ ecm_src_prepare() {
 		cmake_comment_add_subdirectory ${ECM_HANDBOOK_DIR}
 
 		if [[ ${ECM_HANDBOOK} = forceoptional ]] ; then
-			punt_bogus_dep KF5 DocTools
+			ecm_punt_bogus_dep KF5 DocTools
 			sed -i -e "/kdoctools_install/ s/^/#DONT/" CMakeLists.txt || die
 		fi
 	fi
@@ -454,18 +454,18 @@ ecm_src_prepare() {
 	# only build unit tests when required
 	if ! { in_iuse test && use test; } ; then
 		if [[ ${ECM_TEST} = forceoptional ]] ; then
-			punt_bogus_dep Qt5 Test
+			ecm_punt_bogus_dep Qt5 Test
 			# if forceoptional, also cover non-kde categories
 			cmake_comment_add_subdirectory autotests test tests
 		elif [[ ${ECM_TEST} = forceoptional-recursive ]] ; then
-			punt_bogus_dep Qt5 Test
+			ecm_punt_bogus_dep Qt5 Test
 			local f pf="${T}/${P}"-tests-optional.patch
 			touch ${pf} || die "Failed to touch patch file"
 			for f in $(find . -type f -name "CMakeLists.txt" -exec \
 				grep -l "^\s*add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)" {} \;); do
 				cp ${f} ${f}.old || die "Failed to prepare patch origfile"
 				pushd ${f%/*} > /dev/null || die
-					punt_bogus_dep Qt5 Test
+					ecm_punt_bogus_dep Qt5 Test
 					sed -i CMakeLists.txt -e \
 						"/^#/! s/add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/" \
 						|| die
