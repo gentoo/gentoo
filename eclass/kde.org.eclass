@@ -155,7 +155,7 @@ _calculate_live_repo() {
 	EGIT_MIRROR=${EGIT_MIRROR:=https://anongit.kde.org}
 
 	if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
-		EGIT_BRANCH="Applications/$(ver_cut 1-2)"
+		EGIT_BRANCH="release/$(ver_cut 1-2)"
 	fi
 
 	if [[ ${PV} != 9999 && ${CATEGORY} = kde-plasma ]]; then
