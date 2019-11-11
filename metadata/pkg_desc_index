@@ -17356,7 +17356,7 @@ sys-block/di 4.47 4.47.1 4.47.2: Disk Information Utility
 sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/endpoint 0.1.0-r1: Endpoint turns a Linux machine with a firewire card into an SBP-2 device
 sys-block/f3 7.0 7.1 7.2: Utilities to detect broken or counterfeit flash storage
-sys-block/fio 2.15 2.16 3.2 3.7: Jens Axboe's Flexible IO tester
+sys-block/fio 2.15 2.16 3.2 3.7 3.16: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.3: Partition table rescue/guessing tool
