@@ -21,3 +21,8 @@ BDEPEND="
 DEPEND="test? ( dev-qt/qttest:5 )"
 
 RESTRICT+=" !test? ( test )"
+
+src_prepare() {
+	cmake-utils_src_prepare
+	use test || cmake_comment_add_subdirectory autotests
+}
