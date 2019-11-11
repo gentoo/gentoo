@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Stephan Hartmann <stha09@googlemail.com> (2019-11-11)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-80
+
 # Aaron Bauman <bman@gentoo.org> (2019-11-10)
 # Maintainer-needed, EAPI=0, Removal in 15 days
 # Upstream is dead and can't locate a new home
