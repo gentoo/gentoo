@@ -367,7 +367,7 @@ app-admin/sysklogd 1.5.1-r1: Standard log daemons
 app-admin/syslog-ng 3.22.1 3.24.1: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1 1.14-r2: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17: Daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 12.0.5 12.0.6 12.2.0 999999: System performance tools for Linux
+app-admin/sysstat 12.0.5 12.0.6-r1 12.2.0-r1 999999: System performance tools for Linux
 app-admin/system-config-printer 1.5.11-r1 1.5.11-r2: Graphical user interface for CUPS administration
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
@@ -3120,7 +3120,7 @@ dev-db/libzdb 2.11.1 2.11.2 2.11.3 2.12 3.0 3.1 3.1-r1: A thread safe high level
 dev-db/lmdb 0.9.23 0.9.24: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
-dev-db/mariadb 5.5.65 10.1.38-r1 10.1.41-r1 10.2.22-r1 10.2.26-r1 10.2.27 10.2.29 10.3.17-r1 10.3.18 10.3.20 10.4.7-r1 10.4.8: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.65 5.5.66 10.1.38-r1 10.1.41-r1 10.1.43 10.2.22-r1 10.2.26-r1 10.2.27 10.2.29 10.3.17-r1 10.3.18 10.3.20 10.4.7-r1 10.4.8 10.4.10: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.0.6-r1 3.0.9 3.1.2 3.1.3 3.1.4 9999: C client library for MariaDB/MySQL
 dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 3.6.8 3.6.13 3.6.14 4.0.10 4.0.12 4.0.13 4.2.0-r2 4.2.1: A high-performance, open source, schema-free document-oriented database
