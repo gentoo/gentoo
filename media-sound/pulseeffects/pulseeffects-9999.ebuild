@@ -23,7 +23,7 @@ IUSE="bs2b calf mda-lv2 rubberband"
 
 #TODO: optional : lilv, zam-plugins (check from archlinux pkg)
 RDEPEND="
-	>=dev-libs/boost-1.41
+	>=dev-libs/boost-1.41:=
 	>=dev-cpp/glibmm-2.56.0
 	>=dev-cpp/gtkmm-3.20:3.0
 	>=dev-libs/glib-2.56:2
