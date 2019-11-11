@@ -7909,7 +7909,7 @@ dev-python/hiredis 0.2.0-r1: Python extension that wraps hiredis
 dev-python/hiro 0.2 0.3 0.5: Time manipulation utilities for Python
 dev-python/hp3parclient 2.0.0 3.0.0: A python interface to sendfile(2) system call
 dev-python/hpack 2.3.0-r1 3.0.0: Pure-Python HPACK header compression
-dev-python/html2text 2018.1.9 2019.9.26: Turn HTML into equivalent Markdown-structured text
+dev-python/html2text 2018.1.9 2019.8.11 2019.9.26: Turn HTML into equivalent Markdown-structured text
 dev-python/html5-parser 0.4.4-r1 0.4.5: Fast C based HTML 5 parsing for python
 dev-python/html5lib 0.9999999 0.999999999 1.0.1: HTML parser based on the HTML5 specification
 dev-python/htmlgen 2.2.2-r1: HTMLgen - Python modules for the generation of HTML documents
