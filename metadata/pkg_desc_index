@@ -1337,7 +1337,7 @@ app-emacs/mpg123-el 1.60 1.61: Emacs front-end to mpg123 audio player and OggVor
 app-emacs/mu-cite 8.1_p201808232348: Message citation utilities for emacsen
 app-emacs/multi-term 1.4: Manage multiple terminal buffers in Emacs
 app-emacs/multiple-cursors 1.4.0: Multiple cursors for Emacs
-app-emacs/muse 3.20: An authoring and publishing environment for Emacs
+app-emacs/muse 3.20-r1: An authoring and publishing environment for Emacs
 app-emacs/nagios-mode 0.3-r1: Major mode for editing Nagios configuration files
 app-emacs/navi2ch 1.8.4-r1: A navigator for the Japanese textboard 2ch
 app-emacs/nxml-docbook5-schemas 5.0 5.1: Add support for DocBook 5 schemas to NXML
@@ -1350,7 +1350,7 @@ app-emacs/outline-magic 0.9: Outline mode extensions for Emacs
 app-emacs/paredit 23-r1: Minor mode for performing structured editing of S-expressions
 app-emacs/pariemacs 3.14: sci-mathematics/pari emacs mode
 app-emacs/php-mode 1.19.1: GNU Emacs major mode for editing PHP code
-app-emacs/planner 3.42: Maintain a local Wiki using Emacs-friendly markup
+app-emacs/planner 3.42-r1: Maintain a local Wiki using Emacs-friendly markup
 app-emacs/po-mode 0.19.3 0.19.8.1 0.20.1: Major mode for GNU gettext PO files
 app-emacs/popup 0.5.3: Visual popup interface library for Emacs
 app-emacs/popwin 1.0.0: Popup window manager for Emacs
@@ -1366,7 +1366,7 @@ app-emacs/quilt-el 0.66: Quilt mode for Emacs
 app-emacs/qwerty 1.1: Switch between QWERTY and DVORAK without changing the console keymap
 app-emacs/redo+ 1.19: Redo/undo system for Emacs
 app-emacs/regress 1.5.1: Regression test harness for Emacs Lisp code
-app-emacs/remember 2.0: Simplify writing short notes in emacs
+app-emacs/remember 2.0-r1: Simplify writing short notes in emacs
 app-emacs/revive 2.24: Resume Emacs
 app-emacs/rfcview 0.13: An Emacs mode that reformats IETF RFCs for display
 app-emacs/riece 9.0.0: A redesign of Liece IRC client

@@ -1,7 +1,7 @@
+BDEPEND=bbdb? ( app-emacs/bbdb ) planner? ( app-emacs/planner ) sys-apps/texinfo >=virtual/emacs-23
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=bbdb? ( app-emacs/bbdb ) planner? ( app-emacs/planner ) sys-apps/texinfo >=virtual/emacs-23
 DESCRIPTION=Simplify writing short notes in emacs
-EAPI=5
+EAPI=7
 HOMEPAGE=https://www.emacswiki.org/emacs/RememberMode
 IUSE=bbdb planner
 KEYWORDS=~amd64 ~ppc ~x86
@@ -9,6 +9,6 @@ LICENSE=GPL-3+ FDL-1.2+
 RDEPEND=bbdb? ( app-emacs/bbdb ) planner? ( app-emacs/planner ) >=virtual/emacs-23
 RESTRICT=test
 SLOT=0
-SRC_URI=http://download.gna.org/remember-el/remember-2.0.tar.gz
-_eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54
-_md5_=65e6a3d8d3467b646ddd8e0f83464b42
+SRC_URI=https://github.com/jwiegley/remember/archive/v2.0.tar.gz -> remember-2.0.tar.gz
+_eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=7717fe7ec6d7cf054a36115a58fb1e3f
