@@ -50,10 +50,11 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DDOC_INSTALL_DIR=/usr/share/doc/"${PF}"
 		-DBUILD_QTHELP_DOCS=$(usex doc)
 		-DBUILD_HTML_DOCS=$(usex doc)
 		-DBUILD_MAN_DOCS=$(usex doc)
-		-DDOC_INSTALL_DIR=/usr/share/doc/"${PF}"
+		-DBUILD_TESTING=$(usex test)
 	)
 
 	cmake-utils_src_configure
