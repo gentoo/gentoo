@@ -1,20 +1,22 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils flag-o-matic xdg-utils
+inherit desktop eutils flag-o-matic xdg-utils
 
 MY_P="${PN}libre-${PV#*_p}"
 
 DESCRIPTION="DjVu viewers, encoders and utilities"
 HOMEPAGE="http://djvu.sourceforge.net/"
-SRC_URI="mirror://sourceforge/djvu/${MY_P}.tar.gz"
+SRC_URI="http://downloads.sourceforge.net/djvu/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 IUSE="debug doc jpeg tiff xml"
+
+PATCHES=( "${FILESDIR}"/fix-CVE-2019-18804.patch )
 
 RDEPEND="jpeg? ( virtual/jpeg:0 )
 	tiff? ( media-libs/tiff:0= )"
@@ -38,7 +40,8 @@ DOCS=( NEWS README )
 
 src_install() {
 	default
-	prune_libtool_files
+
+	find "${ED}" -name '*.la' -delete || die
 
 	use doc && dodoc -r doc
 
