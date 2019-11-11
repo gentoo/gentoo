@@ -14,5 +14,6 @@ KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE=""
 
 DEPEND="dev-perl/Number-Format"
+RDEPEND="${DEPEND}"
 
 SRC_TEST=do

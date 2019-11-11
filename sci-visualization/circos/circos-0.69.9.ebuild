@@ -1,16 +1,21 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+MY_PV=$(ver_rs 2 '-')
+MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Circular layout visualization of genomic and other data"
 HOMEPAGE="http://mkweb.bcgsc.ca/circos/"
-SRC_URI="http://mkweb.bcgsc.ca/circos/distribution/${P}.tgz"
+SRC_URI="http://mkweb.bcgsc.ca/circos/distribution/${PN}-${MY_PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 KEYWORDS="~amd64 ~x86"
+IUSE=""
+
+S="${WORKDIR}/${MY_P}"
 
 DEPEND="dev-perl/Config-General
 	dev-perl/GD
@@ -22,12 +27,20 @@ DEPEND="dev-perl/Config-General
 	dev-perl/Regexp-Common
 	>=dev-perl/Set-IntSpan-1.11
 	dev-perl/Graphics-ColorObject
-	dev-perl/List-MoreUtils"
+	dev-perl/List-MoreUtils
+	dev-perl/Clone
+	dev-perl/Cwd-Guard
+	virtual/perl-File-Temp
+	dev-perl/Font-TTF
+	dev-perl/SVG
+	dev-perl/Text-Format
+	dev-perl/Statistics-Basic
+	virtual/perl-Text-Balanced"
 RDEPEND="${DEPEND}"
 
 src_install() {
 	insinto /opt/${PN}
-	doins -r */
+	doins -r .
 
 	exeinto /opt/${PN}/bin
 	doexe bin/circos bin/gddiag
