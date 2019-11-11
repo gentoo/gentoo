@@ -45,6 +45,33 @@ IUSE="${IUSE} acl argon2 bcmath berkdb bzip2 calendar cdb cjk
 	sysvipc systemd test tidy +tokenizer tokyocabinet truetype unicode webp
 	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zlib"
 
+# Without USE=readline or libedit, the interactive "php -a" CLI will hang.
+REQUIRED_USE="
+	|| ( cli cgi fpm apache2 embed phpdbg )
+	cli? ( ^^ ( readline libedit ) )
+	!cli? ( ?? ( readline libedit ) )
+	truetype? ( gd zlib )
+	webp? ( gd zlib )
+	cjk? ( gd zlib )
+	exif? ( gd zlib )
+	xpm? ( gd zlib )
+	gd? ( zlib )
+	simplexml? ( xml )
+	soap? ( xml )
+	xmlrpc? ( xml iconv )
+	xmlreader? ( xml )
+	xmlwriter? ( xml )
+	xslt? ( xml )
+	ldap-sasl? ( ldap )
+	qdbm? ( !gdbm )
+	session-mm? ( session !threads )
+	mysql? ( || ( mysqli pdo ) )
+	firebird? ( pdo )
+	mssql? ( pdo )
+"
+
+RESTRICT="!test? ( test )"
+
 # The supported (that is, autodetected) versions of BDB are listed in
 # the ./configure script. Other versions *work*, but we need to stick to
 # the ones that can be detected to avoid a repeat of bug #564824.
@@ -120,31 +147,6 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-devel/bison-3.0.1"
 
 BDEPEND="virtual/pkgconfig"
-
-# Without USE=readline or libedit, the interactive "php -a" CLI will hang.
-REQUIRED_USE="
-	|| ( cli cgi fpm apache2 embed phpdbg )
-	cli? ( ^^ ( readline libedit ) )
-	!cli? ( ?? ( readline libedit ) )
-	truetype? ( gd zlib )
-	webp? ( gd zlib )
-	cjk? ( gd zlib )
-	exif? ( gd zlib )
-	xpm? ( gd zlib )
-	gd? ( zlib )
-	simplexml? ( xml )
-	soap? ( xml )
-	xmlrpc? ( xml iconv )
-	xmlreader? ( xml )
-	xmlwriter? ( xml )
-	xslt? ( xml )
-	ldap-sasl? ( ldap )
-	qdbm? ( !gdbm )
-	session-mm? ( session !threads )
-	mysql? ( || ( mysqli pdo ) )
-	firebird? ( pdo )
-	mssql? ( pdo )
-"
 
 PHP_MV="$(ver_cut 1)"
 
