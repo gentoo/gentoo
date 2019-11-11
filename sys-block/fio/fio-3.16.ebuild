@@ -55,6 +55,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/fio-2.2.13-libmtd.patch
+	"${FILESDIR}"/fio-3.16-snprintf.patch
 )
 
 python_check_deps() {
