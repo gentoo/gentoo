@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND=""
 RDEPEND="${PYTHON_DEPS}"
 
-PATCHES=( "${FILESDIR}/fix-ignore-code.patch" )
+PATCHES=( "${FILESDIR}/${P}-fix-ignore-code.patch" )
 
 src_prepare() {
 	python_fix_shebang -f syslog-summary
