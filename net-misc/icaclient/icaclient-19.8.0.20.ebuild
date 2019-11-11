@@ -25,6 +25,7 @@ RDEPEND="
 	dev-libs/atk
 	dev-libs/glib:2
 	dev-libs/libxml2
+	dev-libs/openssl-compat:1.0.0
 	media-fonts/font-adobe-100dpi
 	media-fonts/font-misc-misc
 	media-fonts/font-cursor-misc
