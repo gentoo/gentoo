@@ -47,6 +47,9 @@ DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
 	test? ( media-fonts/dejavu )
 "
+BDEPEND="
+	>=sys-devel/gettext-0.18.3
+"
 
 src_prepare() {
 	default
