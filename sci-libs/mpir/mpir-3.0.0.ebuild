@@ -59,12 +59,16 @@ src_configure() {
 	# beware that cpudetection aka fat binaries is x86/amd64 only.
 	# Place mpir in profiles/arch/$arch/package.use.mask
 	# when making it available on $arch.
-	local myeconfargs+=(
+	local myeconfargs=(
 		$(use_enable cxx)
 		$(use_enable cpudetection fat)
 		$(use_enable static-libs static)
 	)
-	econf ${myeconfargs[@]}
+	# https://bugs.gentoo.org/661430
+	if !use amd64 && !use x86; then
+		myeconfargs+=( --with-yasm=/bin/false )
+	fi
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
