@@ -28,6 +28,5 @@ src_install() {
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	doinfo texi/muse.info
 	dodoc AUTHORS NEWS README ChangeLog*
-	insinto /usr/share/doc/${PF}
-	doins -r contrib etc examples experimental scripts
+	dodoc -r contrib etc examples experimental scripts
 }

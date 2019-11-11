@@ -43,8 +43,11 @@ RDEPEND="
 	tiff? ( media-libs/tiff:0 )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/gdbus-codegen
+	>=sys-devel/gettext-0.18.3
+	virtual/pkgconfig
 	test? ( media-fonts/dejavu )
 "
 
