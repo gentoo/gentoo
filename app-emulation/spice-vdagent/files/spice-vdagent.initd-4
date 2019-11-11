@@ -37,7 +37,7 @@ start() {
     fi
 
     # recreate the directory since /var/run may reside on a ramdisk
-    mkdir -p /var/run/spice-vdagentd
+    checkpath -D /var/run/spice-vdagentd
 
     # cleanup stalled socket
     rm -f /var/run/spice-vdagentd/spice-vdagent-sock
