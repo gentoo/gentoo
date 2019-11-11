@@ -37,7 +37,23 @@ _ECM_UTILS_ECLASS=1
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit cmake-utils flag-o-matic toolchain-funcs virtualx xdg
+# @ECLASS-VARIABLE: ECM_NONGUI
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# By default, for all CATEGORIES except kde-frameworks, assume we are building
+# a GUI application. Add dependency on kde-frameworks/breeze-icons or
+# kde-frameworks/oxygen-icons and run the xdg.eclass routines for pkg_preinst,
+# pkg_postinst and pkg_postrm. If set to "true", do nothing.
+if [[ ${CATEGORY} = kde-frameworks ]] ; then
+	: ${ECM_NONGUI:=true}
+fi
+: ${ECM_NONGUI:=false}
+
+inherit cmake-utils flag-o-matic toolchain-funcs virtualx
+
+if [[ ${ECM_NONGUI} = false ]] ; then
+	inherit xdg
+fi
 
 case ${EAPI} in
 	7) ;;
@@ -55,18 +71,6 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_po
 # Assume the package is using KDEInstallDirs macro and switch
 # KDE_INSTALL_USE_QT_SYS_PATHS to ON. If set to "false", do nothing.
 : ${ECM_KDEINSTALLDIRS:=true}
-
-# @ECLASS-VARIABLE: ECM_NONGUI
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# By default, for all CATEGORIES except kde-frameworks, assume we are building
-# a GUI application. Add dependency on kde-frameworks/breeze-icons or
-# kde-frameworks/oxygen-icons and run the xdg.eclass routines for pkg_preinst,
-# pkg_postinst and pkg_postrm. If set to "true", do nothing.
-if [[ ${CATEGORY} = kde-frameworks ]]; then
-	: ${ECM_NONGUI:=true}
-fi
-: ${ECM_NONGUI:=false}
 
 # @ECLASS-VARIABLE: ECM_DEBUG
 # @DESCRIPTION:
