@@ -3407,6 +3407,9 @@ games-rpg/daimonin-client:music - Install extra music
 games-rpg/drascula:sound - Install optional audio files
 games-rpg/dreamweb:doc - High-resolution scans of the written material in the original UK game box
 games-rpg/dungeon-defenders:bundled-libs - Use the upstream provided bundled libraries.
+games-rpg/freedroidrpg:devtools - Compile the additional dev tools
+games-rpg/freedroidrpg:profile - Enable the integration of the ingame real-time profiler
+games-rpg/freedroidrpg:sanitize - Compile with address sanitizer
 games-rpg/hatoful-boyfriend:gui - Install the GUI for configuring screen resolution and input
 games-rpg/hatoful-boyfriend-holiday-star:gui - Install the GUI for configuring screen resolution and input
 games-rpg/kqlives:cheats - Enable cheating mode

@@ -11683,7 +11683,7 @@ games-rpg/eternal-lands 1.9.5.3: A 3D fantasy MMORPG written in C and SDL
 games-rpg/freedink 108.4-r1: Dink Smallwood is an adventure/role-playing game, similar to Zelda (2D top view)
 games-rpg/freedink-data 1.08.20140901-r1 1.08.20170409: Freedink game data
 games-rpg/freedroid 1.0.2-r1: Freedroid - a Paradroid clone
-games-rpg/freedroidrpg 0.16-r1: A modification of the classical Freedroid engine into an RPG
+games-rpg/freedroidrpg 0.16-r1 1.0_rc2: A modification of the classical Freedroid engine into an RPG
 games-rpg/grimrock 20150707: Legend of Grimrock: The ultimate dungeon crawling RPG + modding engine
 games-rpg/gwiz 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/hatoful-boyfriend 0-r1: Japanese visual novel and dating simulator where birds rule the Earth
@@ -11729,7 +11729,7 @@ games-simulation/micropolis 1.0-r1 1.0-r2: Free version of the well-known city b
 games-simulation/openrct2 0.2.1 9999: An open source re-implementation of RollerCoaster Tycoon 2
 games-simulation/openttd 1.9.1 1.9.2 1.9.3 9999: OpenTTD is a clone of Transport Tycoon Deluxe
 games-simulation/pmars-sdl 0.9.2e-r1: Portable redcode simulator's sdl port for core war
-games-simulation/searchandrescue 1.5.0-r1: Helicopter based air rescue flight simulator
+games-simulation/searchandrescue 1.7.0: Helicopter based air rescue flight simulator
 games-simulation/senken 0.3.0-r1: city simulation game
 games-simulation/simutrans 0.120.2.2: A free Transport Tycoon clone
 games-simulation/singularity 0.30c-r2: Simulation of a true AI. Go from computer to computer, chased by the whole world
