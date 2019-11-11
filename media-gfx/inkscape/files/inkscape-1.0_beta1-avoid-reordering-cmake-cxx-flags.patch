@@ -1,0 +1,130 @@
+From 09319f688e10d47f9fc9be2b6feb831fb132660a Mon Sep 17 00:00:00 2001
+From: Patrick Storz <eduard.braun2@gmx.de>
+Date: Sat, 12 Oct 2019 15:56:14 +0200
+Subject: [PATCH] CMake: Avoid reordering CMAKE_CXX_FLAGS
+
+Order matters; the reordering caused the _FORTIFY_SOURCE flag to be
+always undefined (as we flipped a "-U" and "-D")
+
+Also skip removing duplicates to avoid similar pitfalls (we kept
+only the first occurrence but should've kept the last)
+It did not work properly anyway (we still had duplicates in the end)
+and was only required as we wrote the final CMAKE_CXX_FLAGS back to
+cache and consequently appended new flags with every run of CMAKE.
+---
+ CMakeLists.txt                           | 13 -----------
+ CMakeScripts/CanonicalizeFlagsVar.cmake  | 11 ----------
+ CMakeScripts/DefineDependsandFlags.cmake | 28 ++++++++++++++----------
+ 3 files changed, 17 insertions(+), 35 deletions(-)
+ delete mode 100644 CMakeScripts/CanonicalizeFlagsVar.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b30f013f38..aa14e13e01 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -207,19 +207,6 @@ if(GMOCK_PRESENT)
+     endif()
+ endif()
+ 
+-# -----------------------------------------------------------------------------
+-# Canonicalize the flags to speed up recompilation using ccache/etc.
+-# This should be the last thing we do:
+-# -----------------------------------------------------------------------------
+-include(CMakeScripts/CanonicalizeFlagsVar.cmake)
+-canonicalize_flags_var("${CMAKE_CXX_FLAGS}" _new_cxx)
+-set(CMAKE_CXX_FLAGS "${_new_cxx}" CACHE STRING "" FORCE)
+-canonicalize_flags_var("${CMAKE_CXX_FLAGS_DEBUG}" _new_cxx)
+-set(CMAKE_CXX_FLAGS_DEBUG "${_new_cxx}" CACHE STRING "" FORCE)
+-# message(FATAL_ERROR "CMAKE_CXX_FLAGS = <${CMAKE_CXX_FLAGS}>")
+-
+-
+-
+ 
+ # -----------------------------------------------------------------------------
+ # Clean Targets
+diff --git a/CMakeScripts/CanonicalizeFlagsVar.cmake b/CMakeScripts/CanonicalizeFlagsVar.cmake
+deleted file mode 100644
+index ddc5b7b5d3..0000000000
+--- a/CMakeScripts/CanonicalizeFlagsVar.cmake
++++ /dev/null
+@@ -1,11 +0,0 @@
+-# This file is copyright by Shlomi Fish, 2016.
+-#
+-# This file is licensed under the MIT/X11 license:
+-# https://opensource.org/licenses/mit-license.php
+-
+-macro (canonicalize_flags_var in_val out_var)
+-    string(REPLACE " " ";" _c "${in_val}")
+-    list(REMOVE_DUPLICATES _c)
+-    list(SORT _c)
+-    string(REPLACE ";" " " "${out_var}" "${_c}")
+-endmacro()
+diff --git a/CMakeScripts/DefineDependsandFlags.cmake b/CMakeScripts/DefineDependsandFlags.cmake
+index 996100b4d7..9dd7f7785f 100644
+--- a/CMakeScripts/DefineDependsandFlags.cmake
++++ b/CMakeScripts/DefineDependsandFlags.cmake
+@@ -2,6 +2,7 @@ set(INKSCAPE_LIBS "")
+ set(INKSCAPE_INCS "")
+ set(INKSCAPE_INCS_SYS "")
+ set(INKSCAPE_CXX_FLAGS "")
++set(INKSCAPE_CXX_FLAGS_DEBUG "")
+ 
+ list(APPEND INKSCAPE_INCS ${PROJECT_SOURCE_DIR}
+     ${PROJECT_SOURCE_DIR}/src
+@@ -98,7 +99,7 @@ list(APPEND INKSCAPE_INCS_SYS ${INKSCAPE_DEP_INCLUDE_DIRS})
+ add_definitions(${INKSCAPE_DEP_CFLAGS_OTHER})
+ 
+ find_package(DoubleConversion REQUIRED)  # lib2geom dependency
+-        
++
+ if(WITH_JEMALLOC)
+     find_package(JeMalloc)
+     if (JEMALLOC_FOUND)
+@@ -369,14 +370,6 @@ sanitize_ldflags_for_libs(SIGC++_LDFLAGS)
+ list(APPEND INKSCAPE_LIBS ${SIGC++_LDFLAGS})
+ list(APPEND INKSCAPE_CXX_FLAGS ${SIGC++_CFLAGS_OTHER})
+ 
+-list(REMOVE_DUPLICATES INKSCAPE_CXX_FLAGS)
+-foreach(flag ${INKSCAPE_CXX_FLAGS})
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag}" CACHE STRING "" FORCE)
+-endforeach()
+-foreach(flag ${INKSCAPE_CXX_FLAGS_DEBUG})
+-  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${flag}" CACHE STRING "" FORCE)
+-endforeach()
+-
+ # Some linkers, like gold, don't find symbols recursively. So we have to link against X11 explicitly
+ find_package(X11)
+ if(X11_FOUND)
+@@ -386,14 +379,27 @@ endif(X11_FOUND)
+ 
+ # end Dependencies
+ 
++
++
++# Set include directories and CXX flags
++# (INKSCAPE_LIBS are set as target_link_libraries for inkscape_base in src/CMakeLists.txt)
++
++foreach(flag ${INKSCAPE_CXX_FLAGS})
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag}")
++endforeach()
++foreach(flag ${INKSCAPE_CXX_FLAGS_DEBUG})
++    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${flag}")
++endforeach()
++
+ list(REMOVE_DUPLICATES INKSCAPE_LIBS)
+ list(REMOVE_DUPLICATES INKSCAPE_INCS_SYS)
+ 
+-# C/C++ Flags
+ include_directories(${INKSCAPE_INCS})
+ include_directories(SYSTEM ${INKSCAPE_INCS_SYS})
+ 
+-include(${CMAKE_CURRENT_LIST_DIR}/ConfigChecks.cmake)
++include(${CMAKE_CURRENT_LIST_DIR}/ConfigChecks.cmake) # TODO: Check if this needs to be "hidden" here
+ 
+ unset(INKSCAPE_INCS)
+ unset(INKSCAPE_INCS_SYS)
++unset(INKSCAPE_CXX_FLAGS)
++unset(INKSCAPE_CXX_FLAGS_DEBUG)
+-- 
+2.22.0
+
