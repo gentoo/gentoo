@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop flag-o-matic xdg-utils
+inherit desktop eutils flag-o-matic xdg-utils
 
 MY_P="${PN}libre-${PV#*_p}"
 
