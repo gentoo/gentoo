@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -14,7 +14,7 @@ SLOT="0"
 IUSE="rad1 usrp1 uhd +bladerf cpu_flags_x86_sse3 cpu_flags_x86_sse4_1"
 
 RDEPEND="
-	=net-voip/yate-${PV}:=[gsm]
+	>=net-voip/yate-6.0.0:=[gsm]
 	bladerf? ( net-wireless/bladerf:= )
 	uhd? ( net-wireless/uhd )
 	virtual/libusb:1"
