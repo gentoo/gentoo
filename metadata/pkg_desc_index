@@ -12995,7 +12995,7 @@ media-gfx/slic3r 1.1.7 1.3.0-r1 9999: A mesh slicer to generate G-code for fused
 media-gfx/solvespace 2.3: Parametric 2d/3d CAD
 media-gfx/springgraph 88: Generate spring graphs from graphviz input files
 media-gfx/svg2rlg 0.3: python tool to convert SVG files to reportlab graphics
-media-gfx/sxiv 24 25 9999: Simple (or small or suckless) X Image Viewer
+media-gfx/sxiv 25 9999: Simple (or small or suckless) X Image Viewer
 media-gfx/symboleditor 2.1.0: Application to create libraries of QPainterPath objects with rendering hints
 media-gfx/synnefo 1.1.0: Qt front end for the Oyranos Color Management System
 media-gfx/tachyon 0.99_beta6-r1: A portable, high performance parallel ray tracing system
