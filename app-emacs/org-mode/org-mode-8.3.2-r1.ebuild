@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -38,8 +38,7 @@ src_install() {
 
 	if use contrib; then
 		elisp-install ${PN}/contrib contrib/lisp/{org,ob,ox}*.el
-		insinto /usr/share/doc/${PF}/contrib
-		doins -r contrib/README contrib/scripts
+		( docinto contrib; dodoc -r contrib/README contrib/scripts )
 		find "${ED}/usr/share/doc/${PF}/contrib" -type f -name '.*' \
 			-exec rm -f '{}' '+'
 		# add the contrib subdirectory to load-path
