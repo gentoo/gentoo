@@ -25,6 +25,12 @@
 if [[ -z ${_KDE5_ECLASS} ]]; then
 _KDE5_ECLASS=1
 
+# Propagate KMNAME to kde.org.eclass
+# PORTING: Use KDE_ORG_NAME from kde.org.eclass instead
+if [[ -z ${KDE_ORG_NAME} ]]; then
+	KDE_ORG_NAME=${KMNAME:=$PN}
+fi
+
 # @ECLASS-VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
 # For proper description see virtualx.eclass manpage.
@@ -32,17 +38,13 @@ _KDE5_ECLASS=1
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit cmake-utils flag-o-matic kde5-functions virtualx xdg
-
-if [[ ${KDE_BUILD_TYPE} = live ]]; then
-	inherit git-r3
-fi
+inherit cmake-utils flag-o-matic kde.org kde5-functions virtualx xdg
 
 if [[ -v KDE_GCC_MINIMAL ]]; then
 	EXPORT_FUNCTIONS pkg_pretend
 fi
 
-EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
+EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
 
 # @ECLASS-VARIABLE: ECM_KDEINSTALLDIRS
 # @DESCRIPTION:
@@ -127,37 +129,19 @@ if [[ ${CATEGORY} = kde-frameworks ]]; then
 fi
 : ${KDE_TEST:=false}
 
-# @ECLASS-VARIABLE: KDE_SELINUX_MODULE
-# @DESCRIPTION:
-# If set to "none", do nothing.
-# For any other value, add selinux to IUSE, and depending on that useflag
-# add a dependency on sec-policy/selinux-${KDE_SELINUX_MODULE} to (R)DEPEND.
-: ${KDE_SELINUX_MODULE:=none}
-
 # @ECLASS-VARIABLE: KDE_SUBSLOT
 # @DESCRIPTION:
 # If set to "false", do nothing.
 # If set to "true", add a subslot to the package, where subslot is either
 # defined as major.minor version for kde-*/ categories or ${PV} if other.
 # For any other value, that value will be used as subslot.
+# PORTING: no replacement, define in ebuild
 : ${KDE_SUBSLOT:=false}
 
-# @ECLASS-VARIABLE: KDE_UNRELEASED
-# @INTERNAL
-# @DESCRIPTION
-# An array of $CATEGORY-$PV pairs of packages that are unreleased upstream.
-# Any package matching this will have fetch restriction enabled, and receive
-# a proper error message via pkg_nofetch.
-KDE_UNRELEASED=( )
-
-HOMEPAGE="https://kde.org/"
+# PORTING: LICENSE no longer set by eclass, define in ebuild
 LICENSE="GPL-2"
-
-SLOT=5
-
-if [[ ${CATEGORY} = kde-frameworks ]]; then
-	KDE_SUBSLOT=true
-fi
+# PORTING: SLOT no longer set by eclass except for kde-frameworks
+[[ ${CATEGORY} = kde-frameworks ]] || SLOT=5
 
 case ${KDE_SUBSLOT} in
 	false)  ;;
@@ -245,153 +229,9 @@ case ${KDE_TEST} in
 		;;
 esac
 
-case ${KDE_SELINUX_MODULE} in
-	none)   ;;
-	*)
-		IUSE+=" selinux"
-		RDEPEND+=" selinux? ( sec-policy/selinux-${KDE_SELINUX_MODULE} )"
-		;;
-esac
-
 DEPEND+=" ${COMMONDEPEND}"
 RDEPEND+=" ${COMMONDEPEND}"
 unset COMMONDEPEND
-
-if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KDE_BUILD_TYPE} = release ]]; then
-	S=${WORKDIR}/${KMNAME}-${PV}
-fi
-
-_kde_is_unreleased() {
-	local pair
-	for pair in "${KDE_UNRELEASED[@]}" ; do
-		if [[ "${pair}" = "${CATEGORY}-${PV}" ]]; then
-			return 0
-		fi
-	done
-
-	return 1
-}
-
-# Determine fetch location for released tarballs
-_calculate_src_uri() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	local _kmname
-
-	if [[ -n ${KMNAME} ]]; then
-		_kmname=${KMNAME}
-	else
-		_kmname=${PN}
-	fi
-
-	case ${PN} in
-		kdelibs4support | \
-		kdewebkit | \
-		khtml | \
-		kjs | \
-		kjsembed | \
-		kmediaplayer | \
-		kross)
-			_kmname="portingAids/${_kmname}"
-			;;
-		kdesignerplugin)
-			[[ ${PV} = 5.6[01].* ]] || _kmname="portingAids/${_kmname}"
-			;;
-	esac
-
-	case ${CATEGORY} in
-		kde-apps)
-			case ${PV} in
-				??.?.[6-9]? | ??.??.[6-9]? )
-					SRC_URI="mirror://kde/unstable/applications/${PV}/src/${_kmname}-${PV}.tar.xz"
-					RESTRICT+=" mirror"
-					;;
-				*)
-					SRC_URI="mirror://kde/stable/applications/${PV}/src/${_kmname}-${PV}.tar.xz" ;;
-			esac
-			;;
-		kde-frameworks)
-			SRC_URI="mirror://kde/stable/frameworks/${PV%.*}/${_kmname}-${PV}.tar.xz" ;;
-		kde-plasma)
-			local plasmapv=$(ver_cut 1-3)
-
-			case ${PV} in
-				5.?.[6-9]? | 5.??.[6-9]? )
-					# Plasma 5 beta releases
-					SRC_URI="mirror://kde/unstable/plasma/${plasmapv}/${_kmname}-${PV}.tar.xz"
-					RESTRICT+=" mirror"
-					;;
-				*)
-					# Plasma 5 stable releases
-					SRC_URI="mirror://kde/stable/plasma/${plasmapv}/${_kmname}-${PV}.tar.xz" ;;
-			esac
-			;;
-	esac
-
-	if [[ ${PN} = kdevelop* ]]; then
-		case ${PV} in
-			*.*.[6-9]? )
-				SRC_URI="mirror://kde/unstable/kdevelop/${PV}/src/${_kmname}-${PV}.tar.xz"
-				RESTRICT+=" mirror"
-				;;
-			*)
-				SRC_URI="mirror://kde/stable/kdevelop/${PV}/src/${_kmname}-${PV}.tar.xz" ;;
-		esac
-	fi
-
-	if _kde_is_unreleased ; then
-		RESTRICT+=" fetch"
-	fi
-}
-
-# Determine fetch location for live sources
-_calculate_live_repo() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	SRC_URI=""
-
-	# @ECLASS-VARIABLE: EGIT_MIRROR
-	# @DESCRIPTION:
-	# This variable allows easy overriding of default kde mirror service
-	# (anongit) with anything else you might want to use.
-	EGIT_MIRROR=${EGIT_MIRROR:=https://anongit.kde.org}
-
-	local _kmname
-
-	# @ECLASS-VARIABLE: EGIT_REPONAME
-	# @DESCRIPTION:
-	# This variable allows overriding of default repository
-	# name. Specify only if this differ from PN and KMNAME.
-	if [[ -n ${EGIT_REPONAME} ]]; then
-		# the repository and kmname different
-		_kmname=${EGIT_REPONAME}
-	elif [[ -n ${KMNAME} ]]; then
-		_kmname=${KMNAME}
-	else
-		_kmname=${PN}
-	fi
-
-	if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
-		EGIT_BRANCH="Applications/$(ver_cut 1-2)"
-	fi
-
-	if [[ ${PV} != 9999 && ${CATEGORY} = kde-plasma ]]; then
-		EGIT_BRANCH="Plasma/$(ver_cut 1-2)"
-	fi
-
-	if [[ ${PV} != 9999 && ${PN} = kdevelop* ]]; then
-		EGIT_BRANCH="$(ver_cut 1-2)"
-	fi
-
-	EGIT_REPO_URI="${EGIT_MIRROR}/${_kmname}"
-}
-
-case ${KDE_BUILD_TYPE} in
-	live) _calculate_live_repo ;;
-	*) _calculate_src_uri ;;
-esac
-
-debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
 
 # @FUNCTION: kde5_pkg_pretend
 # @DESCRIPTION:
@@ -410,49 +250,12 @@ kde5_pkg_setup() {
 	_check_gcc_version
 }
 
-# @FUNCTION: kde5_pkg_nofetch
-# @DESCRIPTION:
-# Intended for use in the KDE overlay. If this package matches something in
-# KDE_UNRELEASED, display a giant warning that the package has not yet been
-# released upstream and should not be used.
-kde5_pkg_nofetch() {
-	if ! _kde_is_unreleased ; then
-		return
-	fi
-
-	eerror " _   _ _   _ ____  _____ _     _____    _    ____  _____ ____  "
-	eerror "| | | | \ | |  _ \| ____| |   | ____|  / \  / ___|| ____|  _ \ "
-	eerror "| | | |  \| | |_) |  _| | |   |  _|   / _ \ \___ \|  _| | | | |"
-	eerror "| |_| | |\  |  _ <| |___| |___| |___ / ___ \ ___) | |___| |_| |"
-	eerror " \___/|_| \_|_| \_\_____|_____|_____/_/   \_\____/|_____|____/ "
-	eerror "                                                               "
-	eerror " ____   _    ____ _  __    _    ____ _____ "
-	eerror "|  _ \ / \  / ___| |/ /   / \  / ___| ____|"
-	eerror "| |_) / _ \| |   | ' /   / _ \| |  _|  _|  "
-	eerror "|  __/ ___ \ |___| . \  / ___ \ |_| | |___ "
-	eerror "|_| /_/   \_\____|_|\_\/_/   \_\____|_____|"
-	eerror
-	eerror "${CATEGORY}/${P} has not been released to the public yet"
-	eerror "and is only available to packagers right now."
-	eerror ""
-	eerror "This is not a bug. Please do not file bugs or contact upstream about this."
-	eerror ""
-	eerror "Please consult the upstream release schedule to see when this "
-	eerror "package is scheduled to be released:"
-	eerror "https://community.kde.org/Schedules"
-}
-
 # @FUNCTION: kde5_src_unpack
 # @DESCRIPTION:
 # Unpack the sources, automatically handling both release and live ebuilds.
 kde5_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	if [[ ${KDE_BUILD_TYPE} = live ]]; then
-		git-r3_src_unpack
-	else
-		default
-	fi
+	kde.org_src_unpack
 }
 
 # @FUNCTION: kde5_src_prepare

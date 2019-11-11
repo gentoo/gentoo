@@ -10,7 +10,7 @@
 # This eclass contains functions shared by the other KDE eclasses and forms
 # part of their public API.
 #
-# This eclass should (almost) never be inherited directly by an ebuild.
+# This eclass must not be inherited directly by an ebuild.
 
 if [[ -z ${_KDE5_FUNCTIONS_ECLASS} ]]; then
 _KDE5_FUNCTIONS_ECLASS=1
