@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
 DESCRIPTION="Simplify writing short notes in emacs"
 HOMEPAGE="https://www.emacswiki.org/emacs/RememberMode"
-SRC_URI="http://download.gna.org/${PN}-el/${P}.tar.gz"
+SRC_URI="https://github.com/jwiegley/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.2+"
 SLOT="0"
@@ -18,7 +18,7 @@ RESTRICT="test"
 
 RDEPEND="bbdb? ( app-emacs/bbdb )
 	planner? ( app-emacs/planner )"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	sys-apps/texinfo"
 
 ELISP_PATCHES="${PN}-1.9-make-elc.patch"
