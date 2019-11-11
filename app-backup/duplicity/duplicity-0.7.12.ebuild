@@ -32,6 +32,8 @@ RDEPEND="${CDEPEND}
 	s3? ( dev-python/boto[${PYTHON_USEDEP}] )
 "
 
+RESTRICT="!test? ( test )"
+
 python_prepare_all() {
 	# workaround until failing test is fixed
 	local PATCHES=( "${FILESDIR}"/${PN}-0.6.24-skip-test.patch )
