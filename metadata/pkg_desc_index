@@ -8261,7 +8261,7 @@ dev-python/oslo-serialization 2.24.0-r1 2.28.2: Oslo Serialization library
 dev-python/oslo-service 1.31.8 1.38.0 1.40.2: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-upgradecheck 0.2.1: Oslo i18n library
-dev-python/oslo-utils 3.36.4 3.40.3 3.40.4: Oslo Utility library
+dev-python/oslo-utils 3.40.4: Oslo Utility library
 dev-python/oslo-versionedobjects 1.33.3 1.35.1: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.26.0 2.32.2: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.2.0 3.7.1: Oslo test framework
