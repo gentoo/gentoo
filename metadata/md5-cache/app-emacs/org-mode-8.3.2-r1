@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://orgmode.org/org-8.3.2.tar.gz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=a2c8ea689a1b8dbc6bfaad3075ed5040
+_md5_=e4dde8c189eea224de4771a75427cb3e
