@@ -17774,7 +17774,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta20 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.189 4.4.192 4.4.197 4.4.198 4.4.199 4.9.189 4.9.192 4.9.197 4.9.198 4.9.199 4.14.138 4.14.143 4.14.151 4.14.152 4.19.66 4.19.72 4.19.81 4.19.82 4.19.83 5.3.8 5.3.9 5.3.10: Full sources including the Gentoo patchset for the 5.3 kernel tree
+sys-kernel/gentoo-sources 4.4.189 4.4.192 4.4.197 4.4.198 4.4.199 4.9.189 4.9.192 4.9.197 4.9.198 4.9.199 4.14.138 4.14.143 4.14.151 4.14.152 4.14.153 4.19.66 4.19.72 4.19.81 4.19.82 4.19.83 5.3.8 5.3.9 5.3.10: Full sources including the Gentoo patchset for the 5.3 kernel tree
 sys-kernel/git-sources 5.4_rc1 5.4_rc2 5.4_rc3 5.4_rc4 5.4_rc5 5.4_rc6: The very latest -git version of the Linux kernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
@@ -17789,6 +17789,7 @@ sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-sources 3.16.76 4.4.200 4.9.200 4.14.153 4.19.83 5.3.10: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
+sys-kernel/xnu-headers 3789.70.16 4570.71.2 4903.241.1: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 4.14.9999 4.15.9999 4.16.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.27 2.28.1 2.29.1-r1 2.30-r4 2.31.1-r6 2.32-r1 2.33.1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
@@ -17797,6 +17798,7 @@ sys-libs/compiler-rt-sanitizers 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: 
 sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
+sys-libs/darwin-libc-headers 1158.50.2 1244.50.9 1272.250.1: Darwin system headers from Libc 1272.250.1, macOS 10.14.4
 sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r2 4.3.29_p1-r2 4.4.20_p4-r2 4.5.20_p2-r2 4.6.21_p4-r1 4.7.25_p4-r1 4.8.30-r3 5.1.29-r2 5.3.28-r2 5.3.28-r4 6.0.35-r2 6.1.38 6.2.38 18.1.32: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.44.5 1.45.2 1.45.3 1.45.4: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 30 31 32 32-r1 35 37: Tools and library to manipulate EFI variables

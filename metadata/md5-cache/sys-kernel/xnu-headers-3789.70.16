@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=System headers provided by XNU-3789.70.16, macOS 10.12.6
+EAPI=7
+HOMEPAGE=https://opensource.apple.com/source/xnu
+IUSE=+man
+KEYWORDS=~x64-macos
+LICENSE=APSL-2
+SLOT=10.12
+SRC_URI=https://opensource.apple.com/tarballs/xnu/xnu-3789.70.16.tar.gz
+_md5_=fd5ab64e1f76563784ca381faf622462
