@@ -102,6 +102,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-detect-imagemagick.patch
 	"${FILESDIR}"/${P}-do-not-compress-man.patch
 	"${FILESDIR}"/${P}-poppler-0.82.patch
+	"${FILESDIR}"/${P}-avoid-reordering-cmake-cxx-flags.patch
 )
 
 pkg_pretend() {
