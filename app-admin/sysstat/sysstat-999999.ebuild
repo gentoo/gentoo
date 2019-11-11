@@ -53,9 +53,9 @@ src_configure() {
 	sa_lib_dir=/usr/lib/sa \
 		conf_dir=/etc \
 		econf \
-			$(use_enable debug debuginfo) \
 			$(use_enable lm-sensors sensors) \
 			$(use_enable nls) \
+			$(usex debug --enable-debuginfo '') \
 			--enable-copy-only \
 			--enable-documentation \
 			--enable-install-cron \
