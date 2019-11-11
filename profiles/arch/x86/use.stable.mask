@@ -12,6 +12,8 @@ audacious
 # dev-lang/python:3.7 is not stable.
 python_targets_python3_7
 python_single_target_python3_7
+python_targets_python3_8
+python_single_target_python3_8
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-26)
 # dev-db/firebird is keyworded ~x86
