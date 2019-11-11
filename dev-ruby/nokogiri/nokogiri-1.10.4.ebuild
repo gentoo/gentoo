@@ -46,6 +46,8 @@ all_ruby_prepare() {
 	# native building.
 	sed -i -e 's/cross_compile  = true/cross_compile = false/' Rakefile || die
 	sed -i -e '/cross_config_options/d' Rakefile || die
+
+	sed -i -e '/simplecov/,/^end/ s:^:#:' test/helper.rb || die
 }
 
 each_ruby_configure() {
