@@ -17,6 +17,7 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="cpu_flags_x86_sse4_2 garbd test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	dev-libs/openssl:0=
