@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/699886
+
+From 7044c5c6a8e64c737ba3cdb97187ff5c406e5162 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Emilio=20Cobos=20=C3=81lvarez?= <emilio@crisal.io>
+Date: Thu, 23 May 2019 23:18:26 +0200
+Subject: [PATCH] Fix build in newer glibc.
+
+Seems tgkill was added recently to glibc.
+
+build/32/tgkill.c:7:12: error: static declaration of 'tgkill' follows non-static declaration
+static int tgkill(int tgid, int tid, int sig) {
+           ^
+/usr/include/bits/signal_ext.h:29:12: note: previous declaration is here
+extern int tgkill (__pid_t __tgid, __pid_t __tid, int __signal);
+---
+ src/test/tgkill.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+--- a/src/test/tgkill.c
++++ b/src/test/tgkill.c
+@@ -4,9 +4,8 @@
+ 
+ static int num_signals_caught;
+ 
+-static int tgkill(int tgid, int tid, int sig) {
+-  return syscall(SYS_tgkill, tgid, tid, sig);
+-}
++#define tgkill(tgid, tid, sig) \
++  syscall(SYS_tgkill, (int)(tgid), (int)(tid), (int)(sig))
+ 
+ static void sighandler(int sig) {
+   atomic_printf("Task %d got signal %d\n", sys_gettid(), sig);
+-- 
+2.24.0
+

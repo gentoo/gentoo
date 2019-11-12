@@ -36,6 +36,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${P}-ucontext_t.patch
 	"${FILESDIR}"/${P}-c++14.patch
+	"${FILESDIR}"/${P}-tgkill-glibc-2.30.patch
 )
 
 pkg_setup() {
