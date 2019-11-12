@@ -141,7 +141,7 @@ src_compile() {
 
 src_install() {
 	pushd build-shared &>/dev/null || die
-	# build system does not support DESTDIR 
+	# build system does not support DESTDIR
 	emake \
 		libdb=libdb-3.2.a \
 		libcxx=libcxx_3.2.a \
