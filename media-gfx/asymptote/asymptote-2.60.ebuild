@@ -15,6 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="+boehm-gc doc emacs examples fftw gsl +imagemagick latex offscreen +opengl python sigsegv svg test vim-syntax X"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -133,7 +134,7 @@ src_install() {
 		insinto /usr/share/${PN}
 		doins -r GUI
 		chmod +x "${D}"usr/share/${PN}/GUI/xasy.py
-		dosym /usr/share/${PN}/GUI/xasy.py /usr/bin/xasy
+		dosym ../share/${PN}/GUI/xasy.py /usr/bin/xasy
 		doman doc/xasy.1x
 	fi
 
@@ -186,14 +187,12 @@ src_install() {
 	if use doc; then
 		cd doc || die
 		doinfo ${PN}.info*
+		dodoc ${PN}.pdf CAD.pdf
 		cd FAQ || die
 		dodoc asy-faq.ascii
 		doinfo asy-faq.info
-		insinto /usr/share/doc/${PF}/html/FAQ
-		doins asy-faq.html/*
-		cd .. || die
-		insinto /usr/share/doc/${PF}
-		doins ${PN}.pdf CAD.pdf
+		docinto html/FAQ
+		dodoc asy-faq.html/*
 	fi
 }
 
