@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=System headers provided by XNU-4903.241.1, macOS 10.14.3
+EAPI=7
+HOMEPAGE=https://opensource.apple.com/source/xnu
+IUSE=+man
+KEYWORDS=~x64-macos
+LICENSE=APSL-2
+SLOT=10.14
+SRC_URI=https://opensource.apple.com/tarballs/xnu/xnu-4903.241.1.tar.gz https://opensource.apple.com/tarballs/AvailabilityVersions/AvailabilityVersions-33.200.4.tar.gz
+_md5_=0cf263525205ed4de2b7eadcf7b81c3c
