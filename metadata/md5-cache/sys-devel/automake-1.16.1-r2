@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=1.16
 SRC_URI=mirror://gnu/automake/automake-1.16.1.tar.xz https://alpha.gnu.org/pub/gnu/automake/automake-1.16.1.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	93ff6f0f8518926f2951ca70ce36e887	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=eac0c91a7ecd3a92be0f7f3b8efd9722
+_md5_=4f9d37d7be579ba93d059f5f14f994cc
