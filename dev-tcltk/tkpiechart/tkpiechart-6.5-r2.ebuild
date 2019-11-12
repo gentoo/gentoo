@@ -10,7 +10,7 @@ HOMEPAGE="http://jfontain.free.fr/piechart6.htm"
 SRC_URI="http://jfontain.free.fr/${P}.tar.bz2"
 
 LICENSE="jfontain"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 SLOT="0"
 IUSE=""
 
