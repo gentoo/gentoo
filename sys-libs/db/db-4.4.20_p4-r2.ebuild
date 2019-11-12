@@ -42,8 +42,8 @@ PATCHES=(
 	"${FILESDIR}"/"${PN}"-"${SLOT}"-libtool.patch
 
 	# use the includes from the prefix
-	"${FILESDIR}"/"${PN}"-4.3-jni-check-prefix-first.patch
-	"${FILESDIR}"/"${PN}"-4.3-listen-to-java-options.patch
+	"${FILESDIR}"/"${PN}"-4.2-jni-check-prefix-first.patch
+	"${FILESDIR}"/"${PN}"-4.2-listen-to-java-options.patch
 )
 
 # Required to avoid unpack attempt of patches

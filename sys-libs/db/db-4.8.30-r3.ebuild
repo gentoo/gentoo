@@ -49,7 +49,7 @@ PATCHES=(
 
 	# use the includes from the prefix
 	"${FILESDIR}"/${PN}-4.6-jni-check-prefix-first.patch
-	"${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
+	"${FILESDIR}"/${PN}-4.2-listen-to-java-options.patch
 )
 
 src_prepare() {

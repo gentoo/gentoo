@@ -48,7 +48,7 @@ PATCHES=(
 
 	# use the includes from the prefix
 	"${FILESDIR}"/${PN}-4.6-jni-check-prefix-first.patch
-	"${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
+	"${FILESDIR}"/${PN}-4.2-listen-to-java-options.patch
 
 	# upstream autoconf fails to build DBM when it's supposed to
 	# merged upstream in 5.0.26

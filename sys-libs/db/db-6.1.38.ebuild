@@ -52,7 +52,7 @@ PATCHES=(
 
 	# use the includes from the prefix
 	"${FILESDIR}"/${PN}-6.2-jni-check-prefix-first.patch
-	"${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
+	"${FILESDIR}"/${PN}-4.2-listen-to-java-options.patch
 
 	# sqlite configure call has an extra leading ..
 	# upstreamed:5.2.36, missing in 5.3.x/6.x

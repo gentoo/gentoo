@@ -42,7 +42,7 @@ PATCHES=(
 
 	# use the includes from the prefix
 	"${FILESDIR}"/"${PN}"-"${SLOT}"-jni-check-prefix-first.patch
-	"${FILESDIR}"/"${PN}"-4.3-listen-to-java-options.patch
+	"${FILESDIR}"/"${PN}"-4.2-listen-to-java-options.patch
 )
 
 # Required to avoid unpack attempt of patches
