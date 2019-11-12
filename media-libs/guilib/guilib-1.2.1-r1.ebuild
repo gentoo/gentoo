@@ -13,7 +13,7 @@ SRC_URI="https://www.libsdl.org/projects/GUIlib/src/${MY_P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ppc x86"
 IUSE="static-libs"
 
 RDEPEND=">=media-libs/libsdl-1.0.1"
