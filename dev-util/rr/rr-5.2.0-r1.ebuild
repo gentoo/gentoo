@@ -31,7 +31,7 @@ DEPEND+="
 		sys-devel/gdb[xml]
 	)"
 
-RESTRICT="!test? ( test )"
+RESTRICT="test" # toolchain and kernel version dependent
 
 PATCHES=(
 	"${FILESDIR}"/${P}-ucontext_t.patch
