@@ -48,3 +48,75 @@
  	Tk_DrawChars(display, drawable, gc, font, fragPtr->text,
  	    fragPtr->count, x + fragPtr->x, y + fragPtr->y);
  #else
+--- a/src/bltWindow.c	2019-11-12 20:38:50.348383884 +0100
++++ b/src/bltWindow.c	2019-11-12 20:48:05.553043414 +0100
+@@ -362,6 +362,9 @@
+     Atom windowAtom;		/* Atom for TK_WINDOW. */
+     Atom clipboardAtom;		/* Atom for CLIPBOARD. */
+     Atom utf8Atom;		/* Atom for UTF8_STRING. */
++#if (TK_VERSION_NUMBER >= _VERSION(8,6,0))
++    Atom atomPairAtom;          /* Atom for ATOM_PAIR. */
++#endif
+ 
+     Tk_Window clipWindow;	/* Window used for clipboard ownership and to
+ 				 * retrieve selections between processes. NULL
+@@ -391,6 +394,7 @@
+     Atom appNameProperty;	/* X's name for property used to hold the
+ 				 * application name on each comm window. */
+ 
++#if (TK_VERSION_NUMBER < _VERSION(8,6,0))
+     /*
+      * Information used by tkXId.c only:
+      */
+@@ -408,7 +412,7 @@
+ 				/* If set, it means a call to WindowIdCleanup
+ 				 * has already been scheduled, 0 means it
+ 				 * hasn't. */
+-
++#endif
+     /*
+      * Information used by tkUnixWm.c and tkWinWm.c only:
+      */
+@@ -417,6 +421,7 @@
+     struct TkWmInfo *foregroundWmPtr;
+ 				/* Points to the foreground window. */
+ 
++#if (TK_VERSION_NUMBER < _VERSION(8,6,0))
+     /*
+      * Information maintained by tkWindow.c for use later on by tkXId.c:
+      */
+@@ -428,6 +433,7 @@
+ 				 * can re-use ids in windowStackPtr when
+ 				 * server has seen this request and event
+ 				 * queue is empty. */
++#endif
+ 
+     /*
+      * Information used by tkVisual.c only:
+@@ -460,7 +466,13 @@
+ 				 * display. */
+     Window mouseButtonWindow;	/* Window the button state was set in, added
+ 				 * in Tk 8.4. */
++#if (TK_VERSION_NUMBER >= _VERSION(8,6,0))
++    Tk_Window warpWindow;
++    Tk_Window warpMainwin;	/* For finding the root window for warping
++				 * purposes. */
++#else
+     Window warpWindow;
++#endif
+     int warpX;
+     int warpY;
+ 
+@@ -475,7 +487,11 @@
+ 
+     int iconDataSize;		/* Size of default iconphoto image data. */
+     unsigned char *iconDataPtr;	/* Default iconphoto image data, if set. */
+-
++#if (TK_VERSION_NUMBER >= _VERSION(8,6,0))
++#ifdef TK_USE_INPUT_METHODS
++    int ximGeneration;          /* Used to invalidate XIC */
++#endif /* TK_USE_INPUT_METHODS */
++#endif
+ } TkDisplay;
+ 
+ #else
