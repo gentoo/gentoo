@@ -53,6 +53,15 @@ src_prepare() {
 	sed -i 's:-Werror::' CMakeLists.txt || die #609192
 }
 
+src_test() {
+	if has usersandbox ${FEATURES} ; then
+		ewarn "Test suite fails under FEATURES=usersandbox (bug #632394). Skipping."
+		return 0
+	fi
+
+	cmake-utils_src_test
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTS=$(usex test)
