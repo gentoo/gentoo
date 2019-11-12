@@ -1,0 +1,65 @@
+From 4aa39aed1bd6c81dbf0d6dc9d312af5340f7caab Mon Sep 17 00:00:00 2001
+From: Rok Mandeljc <rok.mandeljc@gmail.com>
+Date: Tue, 12 Nov 2019 10:20:38 -0700
+Subject: [udisks2] fix media change detection for external optical drives
+
+Summary:
+If an external optical drive is connected after Solid does its initial introspection, the resulting UDI does not get a mediaChanged signal/slot connection, and thus fails to react to the media change. Consequently, disc content is not properly updated after the medium is ejected, causing bug #394348.
+
+This patch assumes that an addition of "org.freedesktop.UDisks2.Block" interface means that a new device has been added; in this case, it performs Device::mightBeOpticalDisc() check to add the slotMediaChanged() connection.
+
+BUG: 394348
+FIXED-IN: 5.65
+
+Test Plan:
+Test steps:
+1. Start KDE Plasma session. Make sure K3b is installed.
+2. Connect an external USB optical drive.
+3. Insert the disc
+4. Observe Device action notifications for the inserted disc.
+5. Eject the disc.
+6. Observe Device action notifications.
+
+Behavior before patch: after disc is ejected, a "Copy with K3b" action remains available for the drive
+See: https://bugs.kde.org/show_bug.cgi?id=394348
+
+Behavior after patch: after disc is ejected, no actions remain available for the drive
+
+Reviewers: bruns, broulik, dfaure, #frameworks, ngraham
+
+Reviewed By: ngraham
+
+Subscribers: ngraham, bugseforuns, kde-frameworks-devel
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D20508
+---
+ src/solid/devices/backends/udisks2/udisksmanager.cpp | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/src/solid/devices/backends/udisks2/udisksmanager.cpp b/src/solid/devices/backends/udisks2/udisksmanager.cpp
+index 4982aee..3b76423 100644
+--- a/src/solid/devices/backends/udisks2/udisksmanager.cpp
++++ b/src/solid/devices/backends/udisks2/udisksmanager.cpp
+@@ -191,6 +191,18 @@ void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const Vari
+ 
+     qCDebug(UDISKS2) << udi << "has new interfaces:" << interfaces_and_properties.keys();
+ 
++    // If device gained an org.freedesktop.UDisks2.Block interface, we
++    // should check if it is an optical drive, in order to properly
++    // register mediaChanged event handler with newly-plugged external
++    // drives
++    if (interfaces_and_properties.contains("org.freedesktop.UDisks2.Block")) {
++        Device device(udi);
++        if (device.mightBeOpticalDisc()) {
++            QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this,
++                SLOT(slotMediaChanged(QDBusMessage)));
++        }
++    }
++
+     updateBackend(udi);
+ 
+     // new device, we don't know it yet
+-- 
+cgit v1.1
