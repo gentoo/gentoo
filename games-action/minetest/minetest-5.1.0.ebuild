@@ -3,9 +3,9 @@
 
 EAPI=7
 
-inherit cmake-utils user xdg
+inherit cmake-utils xdg
 
-DESCRIPTION="An InfiniMiner/Minecraft inspired game"
+DESCRIPTION="A free open-source voxel game engine with easy modding and game creation"
 HOMEPAGE="https://www.minetest.net"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -29,9 +29,9 @@ RDEPEND="
 		x11-libs/libX11
 		x11-libs/libXxf86vm
 		sound? (
-			media-libs/libogg:=
-			media-libs/libvorbis:=
-			media-libs/openal:=
+			media-libs/libogg
+			media-libs/libvorbis
+			media-libs/openal
 		)
 		truetype? ( media-libs/freetype:2 )
 	)
@@ -41,8 +41,12 @@ RDEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
 	nls? ( virtual/libintl )
 	postgres? ( >=dev-db/postgresql-9.5:= )
-	redis? ( dev-libs/hiredis )
-	spatial? ( sci-libs/libspatialindex )"
+	redis? ( dev-libs/hiredis:= )
+	server? (
+		acct-group/minetest
+		acct-user/minetest
+	)
+	spatial? ( sci-libs/libspatialindex:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? (
@@ -50,13 +54,6 @@ BDEPEND="
 		media-gfx/graphviz
 	)
 	nls? ( sys-devel/gettext )"
-
-pkg_setup() {
-	if use server ; then
-		enewgroup ${PN}
-		enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
-	fi
-}
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -114,8 +111,11 @@ src_install() {
 	cmake-utils_src_install
 
 	if use server ; then
-		newinitd "${FILESDIR}"/minetestserver.initd minetest-server
+		keepdir /var/log/minetest
+		fowners minetest:minetest /var/log/minetest
+
 		newconfd "${T}"/minetestserver.confd minetest-server
+		newinitd "${FILESDIR}"/minetestserver.initd minetest-server
 	fi
 }
 
@@ -125,8 +125,6 @@ pkg_postinst() {
 	if use server ; then
 		elog
 		elog "Configure your server via /etc/conf.d/minetest-server"
-		elog "The user \"minetest\" is created with /var/lib/${PN} homedir."
-		elog "Default logfile is ~/minetest-server.log"
 		elog
 	fi
 
