@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/bmf/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 DEPEND="mysql? ( dev-db/mysql-connector-c:0= )
 	berkdb? ( >=sys-libs/db-3.2.9 )"
