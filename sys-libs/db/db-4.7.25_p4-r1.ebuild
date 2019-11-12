@@ -41,11 +41,11 @@ RDEPEND="tcl? ( dev-lang/tcl )
 	java? ( >=virtual/jre-1.5 )"
 
 PATCHES=(
-	"${FILESDIR}"/"${PN}"-4.6-libtool.patch
+	"${FILESDIR}"/"${PN}"-4.4-libtool.patch
 
 	# use the includes from the prefix
 	"${FILESDIR}"/"${PN}"-4.6-jni-check-prefix-first.patch
-	"${FILESDIR}"/"${PN}"-4.3-listen-to-java-options.patch
+	"${FILESDIR}"/"${PN}"-4.2-listen-to-java-options.patch
 )
 
 # Required to avoid unpack attempt of patches
