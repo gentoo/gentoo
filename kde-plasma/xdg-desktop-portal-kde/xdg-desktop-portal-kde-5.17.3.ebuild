@@ -3,7 +3,6 @@
 
 EAPI=7
 
-VIRTUALX_REQUIRED="test"
 KFMIN=5.64.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=5.12.3
