@@ -29,9 +29,9 @@ RDEPEND="
 		x11-libs/libX11
 		x11-libs/libXxf86vm
 		sound? (
-			media-libs/libogg:=
-			media-libs/libvorbis:=
-			media-libs/openal:=
+			media-libs/libogg
+			media-libs/libvorbis
+			media-libs/openal
 		)
 		truetype? ( media-libs/freetype:2 )
 	)
@@ -41,12 +41,12 @@ RDEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
 	nls? ( virtual/libintl )
 	postgres? ( >=dev-db/postgresql-9.5:= )
-	redis? ( dev-libs/hiredis )
+	redis? ( dev-libs/hiredis:= )
 	server? (
 		acct-group/minetest
 		acct-user/minetest
 	)
-	spatial? ( sci-libs/libspatialindex )"
+	spatial? ( sci-libs/libspatialindex:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? (
