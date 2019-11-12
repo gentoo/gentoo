@@ -79,7 +79,7 @@ multilib_src_configure() {
 		-DWITH_PCAP="$(usex pcap)"
 		-DWITH_SERVER="$(usex server)"
 		-DWITH_SFTP="$(usex sftp)"
-		-DWITH_STATIC_LIB="$(usex static-libs)"
+		-DBUILD_SHARED_LIBS="$(usex !static-libs)"
 		-DUNIT_TESTING="$(usex test)"
 		-DWITH_ZLIB="$(usex zlib)"
 	)
