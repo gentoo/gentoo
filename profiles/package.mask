@@ -456,32 +456,6 @@ dev-perl/NetxAP
 # Removal in 30 days
 app-emulation/wine-any
 
-# Michał Górny <mgorny@gentoo.org> (2019-10-13)
-# Last release in 2008.  Declared dead upstream, apparently broken
-# on newer systems.  EAPI 0.
-# Removal in 30 days.  Bug #697384.
-app-office/eqe
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-12)
-# Utility library that is used only by net-analyzer/bsnmp
-# (to be removed).
-# Removal in 30 days.  Bug #683284.
-dev-libs/libbegemot
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-12)
-# Bad quality package.  Last commit in 2016 (unpackaged in Gentoo).
-# GTK+2 only.  Most of the settings provided are also found in xfwm4
-# settings dialog.
-# Removal in 30 days.  Bug #697546.
-xfce-extra/xfce4-composite-editor
-
-# David Seifert <soap@gentoo.org> (2019-10-12)
-# Last release over 6.5 years ago, no code activity.
-# Scons build system very brittle, python 3 impl bumps
-# painful, no python 3.7, No reverse dependencies.
-# Removal in 30 days.  Bug #683140, #690800.
-dev-python/cgkit
-
 # Mike Gilbert <floppym@gentoo.org> (2019-10-11)
 # Inactive upstream for many years.
 # Several open bugs.
