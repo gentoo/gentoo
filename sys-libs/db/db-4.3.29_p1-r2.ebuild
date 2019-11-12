@@ -68,7 +68,7 @@ src_prepare() {
 	# This supersedes the unused jarlocation patches.
 	sed -r \
 		-e '/jarfile=.*\.jar$/s,(.jar$),-$(LIBVERSION)\1,g' \
-		dist/Makefile.in || die
+		-i dist/Makefile.in || die
 
 	# START of 4.5+earlier specific
 	# Upstream sucks, they normally concat these
