@@ -127,7 +127,7 @@ src_configure() {
 		-DWITH_PROFILING=OFF
 		-DWITH_LIBCDR=$(usex cdr)
 		-DWITH_DBUS=$(usex dbus)
-		-DWITH_IMAGE_MAGICK=$(usex imagemagick) # requires ImageMagick 6
+		-DWITH_IMAGE_MAGICK=$(use imagemagick && use !graphicsmagick && echo "yes" || echo "no") # requires ImageMagick 6
 		-DWITH_GRAPHICS_MAGICK=$(usex graphicsmagick)
 		-DWITH_JEMALLOC=$(usex jemalloc)
 		-DENABLE_LCMS=$(usex lcms)
