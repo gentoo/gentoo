@@ -9,7 +9,7 @@ SRC_URI="http://www.reactivated.net/software/viaideinfo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 DEPEND=">=sys-apps/pciutils-2.2.0"
 RDEPEND="${DEPEND}"
