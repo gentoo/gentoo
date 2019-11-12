@@ -23,6 +23,9 @@ IUSE="debug doc examples gcrypt gssapi libressl mbedtls pcap server +sftp static
 
 REQUIRED_USE="?? ( gcrypt mbedtls ) test? ( static-libs )"
 
+BDEPEND="
+	doc? ( app-doc/doxygen[dot] )
+"
 RDEPEND="
 	!gcrypt? (
 		!mbedtls? (
@@ -36,7 +39,6 @@ RDEPEND="
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[dot] )
 	test? ( >=dev-util/cmocka-0.3.1[${MULTILIB_USEDEP}] )
 "
 
@@ -77,7 +79,7 @@ multilib_src_configure() {
 		-DWITH_PCAP="$(usex pcap)"
 		-DWITH_SERVER="$(usex server)"
 		-DWITH_SFTP="$(usex sftp)"
-		-DWITH_STATIC_LIB="$(usex static-libs)"
+		-DBUILD_SHARED_LIBS="$(usex !static-libs)"
 		-DUNIT_TESTING="$(usex test)"
 		-DWITH_ZLIB="$(usex zlib)"
 	)
