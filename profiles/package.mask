@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
+# Depends on broken =sci-libs/vtk-6*, needs to be bumped to 3.0.2, bug #657952
+=sci-visualization/visit-2*
+
 # Mikle Kolyada <zlogene@gentoo.org> (2019-11-27)
 # luatex has been a part of texlive since at least 2014
 # no real consumers in the tree. Masked for removal
