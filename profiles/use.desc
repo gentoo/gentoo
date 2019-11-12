@@ -113,7 +113,7 @@ gnutls - Prefer net-libs/gnutls as SSL/TLS provider (ineffective with USE=-ssl)
 gphoto2 - Add digital camera support
 gpm - Add support for sys-libs/gpm (Console-based mouse driver)
 gps - Add support for Global Positioning System
-graphicsmagick - Build and link against GraphicsMagick instead of ImageMagick (might require USE=imagemagick if optional)
+graphicsmagick - Build and link against GraphicsMagick instead of ImageMagick (requires USE=imagemagick if optional)
 graphviz - Add support for the Graphviz library
 gsl - Use the GNU scientific library for calculations
 gsm - Add support for the gsm lossy speech compression codec
