@@ -6,8 +6,8 @@
 sys-firmware/seabios -debug
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-15)
-# sys-cluster/hpx, sci-libs/silo, sci-visualization/visit not keyworded
-sci-libs/libgeodecomp hpx silo visit
+# sys-cluster/hpx, sci-libs/silo not keyworded
+sci-libs/libgeodecomp hpx silo
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
 # app-text/libwpd and app-text/libwpg are not keyworded
