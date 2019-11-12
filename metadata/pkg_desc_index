@@ -10337,7 +10337,7 @@ dev-scheme/termite 0.15-r1: Erlang-style concurrency for Gambit Scheme
 dev-scheme/tinyscheme 1.41: Lightweight scheme interpreter
 dev-scheme/ypsilon 0.9.6_p3: R6RS-compliant Scheme implementation for real-time applications
 dev-tcltk/anigif 1.3-r1: Image rotation package
-dev-tcltk/blt 2.4z-r13: Extension to Tk, adding new widgets, geometry managers, and misc commands
+dev-tcltk/blt 2.4z-r13 2.4z-r14: Extension to Tk, adding new widgets, geometry managers, and misc commands
 dev-tcltk/bwidget 1.9.8 1.9.12: High-level widget set for Tcl/Tk
 dev-tcltk/combobox 2.3-r1: A combobox megawidget
 dev-tcltk/expect 5.45 5.45.4: tool for automating interactive applications
