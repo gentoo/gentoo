@@ -64,7 +64,6 @@ BDEPEND="
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 "
 
-
 MULTILIB_WRAPPED_HEADERS=( /usr/include/avahi-qt5/qt-watch.h )
 
 PATCHES=(
