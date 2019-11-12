@@ -38,7 +38,7 @@ RDEPEND="tcl? ( dev-lang/tcl )
 	java? ( >=virtual/jre-1.4 )"
 
 PATCHES=(
-	"${FILESDIR}"/"${PN}"-"${SLOT}"-libtool.patch
+	"${FILESDIR}"/"${PN}"-4.4-libtool.patch
 
 	# use the includes from the prefix
 	"${FILESDIR}"/"${PN}"-"${SLOT}"-jni-check-prefix-first.patch
