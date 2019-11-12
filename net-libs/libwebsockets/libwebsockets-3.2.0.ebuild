@@ -17,8 +17,7 @@ IUSE="access-log caps cgi client dbus generic-sessions http-proxy http2 ipv6
 	sqlite3 ssl static-libs threads zip"
 
 REQUIRED_USE="
-	generic-sessions? ( sqlite3 )
-	generic-sessions? ( smtp )
+	generic-sessions? ( smtp sqlite3 )
 	http-proxy? ( client )
 	smtp? ( libuv )
 	?? ( libev libevent )
@@ -26,13 +25,12 @@ REQUIRED_USE="
 
 RDEPEND="
 	sys-libs/zlib
-
-	caps?       ( sys-libs/libcap )
+	caps? ( sys-libs/libcap )
 	http-proxy? ( net-libs/libhubbub )
-	libev?      ( dev-libs/libev )
-	libevent?   ( dev-libs/libevent:= )
-	libuv?      ( dev-libs/libuv:= )
-	sqlite3?    ( dev-db/sqlite:= )
+	libev? ( dev-libs/libev )
+	libevent? ( dev-libs/libevent:= )
+	libuv? ( dev-libs/libuv:= )
+	sqlite3? ( dev-db/sqlite:= )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl?  ( dev-libs/libressl:0= )
