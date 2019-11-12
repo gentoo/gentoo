@@ -10,7 +10,7 @@ SRC_URI="https://github.com/yngwin/eselect-lcdfilter/tarball/v${PV} -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 RDEPEND="app-admin/eselect"
