@@ -8,7 +8,7 @@ HOMEPAGE="http://jfontain.free.fr/scwoop41.htm"
 SRC_URI="http://jfontain.free.fr/${P}.tar.gz"
 
 LICENSE="jfontain"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 SLOT="0"
 IUSE=""
 
