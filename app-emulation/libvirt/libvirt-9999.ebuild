@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit autotools bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd
+inherit autotools out-of-source bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -239,7 +239,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+my_src_configure() {
 	local myeconfargs=(
 		$(use_with apparmor)
 		$(use_with apparmor apparmor-profiles)
@@ -295,6 +295,7 @@ src_configure() {
 		--disable-werror
 
 		--localstatedir=/var
+		--enable-dependency-tracking
 	)
 
 	if use virtualbox && has_version app-emulation/virtualbox-ose; then
@@ -308,13 +309,11 @@ src_configure() {
 	if [[ ${PV} = *9999* ]]; then
 		# Restore gnulib's config.sub and config.guess
 		# bug #377279
-		(cd .gnulib && git reset --hard > /dev/null)
+		(cd ${S}/.gnulib && git reset --hard > /dev/null)
 	fi
 }
 
-src_test() {
-	cd "${BUILD_DIR}"
-
+my_src_test() {
 	# remove problematic tests, bug #591416, bug #591418
 	sed -i -e 's#commandtest$(EXEEXT) # #' \
 		-e 's#virfirewalltest$(EXEEXT) # #' \
@@ -326,7 +325,7 @@ src_test() {
 	HOME="${T}" emake check || die "tests failed"
 }
 
-src_install() {
+my_src_install() {
 	emake DESTDIR="${D}" \
 		SYSTEMD_UNIT_DIR="$(systemd_get_systemunitdir)" install
 
