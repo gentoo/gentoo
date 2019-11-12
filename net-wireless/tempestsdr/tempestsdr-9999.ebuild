@@ -30,8 +30,7 @@ src_prepare() {
 }
 
 src_compile() {
-	#this absolutely breaks in wierd ways when built parallel
-	emake -j1 all
+	emake all
 }
 
 src_install() {
