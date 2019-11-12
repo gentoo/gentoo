@@ -16,7 +16,9 @@ gentoo_path_check() {
 	# /home is not included as no ebuilds should install files there
 	local allowed_paths_toplevel=(
 		"${allowed_common_dirs[@]}"
-		boot dev etc nix opt srv usr var
+		boot dev etc opt srv usr var
+		nix # sys-apps/nix, bug #670902
+		gnu # sys-apps/guix, bug #670902
 	)
 
 	# directories in /usr which can be installed to by ebuilds
