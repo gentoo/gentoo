@@ -307,6 +307,10 @@ src_prepare() {
 		-e 's/ perror.1//' \
 		"${S}"/man/CMakeLists.txt || die
 
+	# Fix galera_recovery.sh script
+	sed -i -e "s~@bindir@/my_print_defaults~${EPREFIX}/usr/libexec/mariadb/my_print_defaults~" \
+		scripts/galera_recovery.sh || die
+
 	sed -i -e 's~ \$basedir/lib/\*/mariadb19/plugin~~' \
 		"${S}"/scripts/mysql_install_db.sh || die
 
