@@ -33,7 +33,7 @@ x11-wm/mutter screencast
 # Brian Evans <grknight@gentoo.org> (2019-05-22)
 # Allow python-exec to install all targets
 # Ack by mgorny
-dev-lang/python-exec -python_targets_python3_7
+dev-lang/python-exec -python_targets_python3_7 -python_targets_python3_8
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-21)
 # dev-db/oracle-instantclient ain't stable
