@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_PN}.zip"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ppc x86 ~x86-linux ~ppc-macos"
 
 BDEPEND="app-arch/unzip"
 
