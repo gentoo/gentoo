@@ -3,7 +3,6 @@
 
 EAPI=7
 
-VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks"
