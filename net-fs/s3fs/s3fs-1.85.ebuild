@@ -15,10 +15,13 @@ SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnutls nettle nss +openssl"
+IUSE="gnutls nettle nss +openssl test"
 REQUIRED_USE="
 	^^ ( gnutls nss openssl )
 	nettle? ( gnutls )"
+
+# Requires active internet connection
+RESTRICT="test"
 
 DEPEND="
 	dev-libs/libxml2:2
