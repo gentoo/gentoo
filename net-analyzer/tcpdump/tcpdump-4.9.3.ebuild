@@ -54,7 +54,7 @@ src_configure() {
 		$(use_enable samba smb) \
 		$(use_with drop-root chroot '') \
 		$(use_with smi) \
-		$(use_with ssl crypto "${EPREFIX}/usr") \
+		$(use_with ssl crypto "${ESYSROOT}/usr") \
 		$(usex drop-root "--with-user=tcpdump" "")
 }
 
