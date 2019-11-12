@@ -24,6 +24,7 @@ IUSE="+bullet +dds +elbeem +game-engine +openexr collada color-management \
 	cuda cycles debug doc ffmpeg fftw headless jack jemalloc jpeg2k libav \
 	llvm man ndof nls openal opencl openimageio openmp opensubdiv openvdb \
 	osl player sdl sndfile test tiff valgrind"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	cuda? ( cycles )
@@ -98,6 +99,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-fix-install-rules.patch"
 	"${FILESDIR}/${P}-gcc-8.patch"
 	"${FILESDIR}/${P}-ffmpeg-4-compat.patch"
+	"${FILESDIR}/${P}-fix-for-gcc9-new-openmp-data-sharing.patch"
 )
 
 blender_check_requirements() {
