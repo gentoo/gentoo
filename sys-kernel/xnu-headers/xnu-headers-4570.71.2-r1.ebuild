@@ -3,9 +3,11 @@
 
 EAPI=7
 
+AVM="AvailabilityVersions-32.60.1"
 DESCRIPTION="System headers provided by XNU-${PV}, macOS 10.13.6"
 HOMEPAGE="https://opensource.apple.com/source/xnu"
-SRC_URI="https://opensource.apple.com/tarballs/xnu/xnu-${PV}.tar.gz"
+SRC_URI="https://opensource.apple.com/tarballs/xnu/xnu-${PV}.tar.gz
+	https://opensource.apple.com/tarballs/${AVM%-*}/${AVM}.tar.gz"
 
 LICENSE="APSL-2"
 SLOT="10.13"
@@ -14,13 +16,32 @@ IUSE="+man"
 
 S=${WORKDIR}/xnu-${PV}
 
+src_prepare() {
+	default
+
+	# we don't install availability.pl, but generation needs it
+	local avpl="${WORKDIR}/${AVM}/availability.pl"
+	sed -i -e 's:${SDKROOT}/usr/local/libexec/availability.pl:'"${avpl}"':' \
+		bsd/sys/make_symbol_aliasing.sh || die
+}
+
 src_compile() {
-	: ; # nothing to compile
+	# crappy scripts that just about do the job
+	./bsd/kern/makesyscalls.sh \
+		bsd/kern/syscalls.master header >& /dev/null || die
+	./bsd/sys/make_posix_availability.sh \
+		_posix_availability.h >& /dev/null || die
+	./bsd/sys/make_symbol_aliasing.sh \
+		dummy _symbol_aliasing.h >& /dev/null || die
 }
 
 src_install() {
 	insinto /usr/include
 	doins EXTERNAL_HEADERS/AssertMacros.h EXTERNAL_HEADERS/Availability*.h
+
+	# generated during src_compile
+	insinto /usr/include/sys
+	doins syscall.h _posix_availability.h _symbol_aliasing.h
 
 	cd bsd || die
 
