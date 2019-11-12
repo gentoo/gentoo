@@ -187,14 +187,12 @@ src_install() {
 	if use doc; then
 		cd doc || die
 		doinfo ${PN}.info*
+		dodoc ${PN}.pdf CAD.pdf
 		cd FAQ || die
 		dodoc asy-faq.ascii
 		doinfo asy-faq.info
-		insinto /usr/share/doc/${PF}/html/FAQ
-		doins asy-faq.html/*
-		cd .. || die
-		insinto /usr/share/doc/${PF}
-		doins ${PN}.pdf CAD.pdf
+		docinto html/FAQ
+		dodoc asy-faq.html/*
 	fi
 }
 
