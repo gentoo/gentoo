@@ -24,6 +24,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~x86"
 LICENSE="MIT"
 SLOT="0"
 IUSE="conch crypt http2 serial +soap test"
+RESTRICT="!test? ( test )"
 
 # openssh-7.6_p1 test failures: bug https://twistedmatrix.com/trac/ticket/9311
 RDEPEND="

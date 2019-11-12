@@ -24,6 +24,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86"
 LICENSE="MIT"
 SLOT="0"
 IUSE="conch crypt http2 serial +soap test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/incremental-16.10.1[${PYTHON_USEDEP}]
