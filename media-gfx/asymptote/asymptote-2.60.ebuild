@@ -134,7 +134,7 @@ src_install() {
 		insinto /usr/share/${PN}
 		doins -r GUI
 		chmod +x "${D}"usr/share/${PN}/GUI/xasy.py
-		dosym /usr/share/${PN}/GUI/xasy.py /usr/bin/xasy
+		dosym ../share/${PN}/GUI/xasy.py /usr/bin/xasy
 		doman doc/xasy.1x
 	fi
 
