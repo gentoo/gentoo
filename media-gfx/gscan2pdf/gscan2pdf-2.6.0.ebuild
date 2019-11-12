@@ -15,6 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-perl/Config-General
@@ -46,7 +47,8 @@ RDEPEND="
 	media-gfx/sane-backends
 	media-libs/tiff"
 
-BDEPEND="test? (
+BDEPEND="
+	test? (
 		${RDEPEND}
 		dev-perl/Sub-Override
 		media-libs/fontconfig
