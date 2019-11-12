@@ -72,7 +72,7 @@ src_prepare() {
 # to depend on texinfo to regen things.  #464146 (among others)
 slot_info_pages() {
 	pushd "${ED}"/usr/share/info >/dev/null || die
-	rm dir || die
+	rm -f dir
 
 	# Rewrite all the references to other pages.
 	# before: * aclocal-invocation: (automake)aclocal Invocation.   Generating aclocal.m4.

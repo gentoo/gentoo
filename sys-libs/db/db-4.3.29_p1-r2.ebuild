@@ -41,8 +41,8 @@ PATCHES=(
 	"${FILESDIR}"/"${PN}"-"${SLOT}"-libtool.patch
 
 	# use the includes from the prefix
-	"${FILESDIR}"/"${PN}"-"${SLOT}"-jni-check-prefix-first.patch
-	"${FILESDIR}"/"${PN}"-"${SLOT}"-listen-to-java-options.patch
+	"${FILESDIR}"/"${PN}"-4.2-jni-check-prefix-first.patch
+	"${FILESDIR}"/"${PN}"-4.2-listen-to-java-options.patch
 
 	"${FILESDIR}"/"${PN}"-4.3.27-fix-dep-link.patch
 )
@@ -68,7 +68,7 @@ src_prepare() {
 	# This supersedes the unused jarlocation patches.
 	sed -r \
 		-e '/jarfile=.*\.jar$/s,(.jar$),-$(LIBVERSION)\1,g' \
-		dist/Makefile.in || die
+		-i dist/Makefile.in || die
 
 	# START of 4.5+earlier specific
 	# Upstream sucks, they normally concat these
