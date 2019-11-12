@@ -56,11 +56,13 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 	has_version app-text/djview || \
 		optfeature "For djviewer or browser plugin" app-text/djview
 }
 
 pkg_postrm() {
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
