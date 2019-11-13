@@ -2212,7 +2212,7 @@ app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking u
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/impressive 0.11.2 0.12.0: Stylish way of giving presentations with Python
 app-office/kexi 3.2.0-r1: Visual database applications creator
-app-office/kmymoney 5.0.5 5.0.6-r1 5.0.7: Personal finance manager based on KDE Frameworks
+app-office/kmymoney 5.0.5 5.0.7: Personal finance manager based on KDE Frameworks
 app-office/kraft 0.82-r1: Software to manage quotes and invoices in small enterprises
 app-office/ledger 3.1.2: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2-r1: Library with common classes and functionality used by KDE finance applications
@@ -4701,7 +4701,7 @@ dev-libs/OpenSRF 2.1.1: Framework for the high-level development of the Evergree
 dev-libs/amdgpu-pro-opencl 18.20.684755 19.30.838629: Proprietary OpenCL implementation for AMD GPUs
 dev-libs/angelscript 2.34.0: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2 3.5.2-r1: The ANTLR3 C Runtime
-dev-libs/appstream 0.12.7 0.12.8 0.12.9: Cross-distro effort for providing metadata for software in the Linux ecosystem
+dev-libs/appstream 0.12.7 0.12.9: Cross-distro effort for providing metadata for software in the Linux ecosystem
 dev-libs/appstream-glib 0.7.9 0.7.15: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.6.3-r4 1.6.5-r1 1.7.0-r1: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.4 1.5.4-r3 1.6.1-r3: Apache Portable Runtime Utility Library
@@ -12919,7 +12919,7 @@ media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.11.7 2.12.2 2.12.3: Palette quantization library that powers pngquant and other PNG optimizers
 media-gfx/librecad 2.1.3-r4 2.1.3-r5 9999: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r2 0.13.18 0.13.19: Command-line static web gallery generator
-media-gfx/luminance-hdr 2.5.1-r1 2.6.0: Graphical user interface that provides a workflow for HDR imaging
+media-gfx/luminance-hdr 2.6.0: Graphical user interface that provides a workflow for HDR imaging
 media-gfx/lximage-qt 0.14.1-r1: LXImage Image Viewer - GPicView replacement
 media-gfx/maim 5.5.3 9999: Commandline tool to take screenshots of the desktop
 media-gfx/mandelbulber 2.12-r1: Tool to render 3D fractals
@@ -14866,7 +14866,7 @@ net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.4 1.7.5 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for freenet
 net-libs/accounts-qt 1.15: Qt5 bindings for libaccounts-glib
-net-libs/aqbanking 5.7.8 5.8.2 5.99.40_beta: Generic Online Banking Interface
+net-libs/aqbanking 5.7.8 5.8.2 5.99.44_beta: Generic Online Banking Interface
 net-libs/axtls 1.5.3 2.1.3 2.1.4 2.1.5: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
@@ -17811,7 +17811,7 @@ sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1: Standard GNU database libraries
 sys-libs/glibc 2.19-r2 2.24-r4 2.25-r11 2.26-r7 2.27-r6 2.28-r6 2.29-r2 2.29-r5 2.29-r6 2.30-r2 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
-sys-libs/gwenhywfar 4.20.0 4.20.2-r1 4.99.22_rc6: Multi-platform helper library for other libraries
+sys-libs/gwenhywfar 4.20.0 4.20.2-r1 4.99.25_rc9: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.0.1: Library for managing partitions
 sys-libs/ldb 1.1.29-r1 1.1.31 1.2.4 1.3.6 1.3.8 1.4.7 1.4.8 1.5.4 1.5.5 1.5.6 1.6.3 2.0.5 2.0.7: An LDAP-like embedded database
 sys-libs/lib-compat 1.5: Compatibility C++ library for very old programs
@@ -17822,7 +17822,7 @@ sys-libs/libavc1394 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Di
 sys-libs/libblockdev 2.20-r2 2.22 2.23 9999: A library for manipulating block devices
 sys-libs/libcap 2.26-r2 2.27: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8 0.7.9 0.7.10: POSIX 1003.1e capabilities
-sys-libs/libchipcard 5.0.4 5.1.3_beta: Library for accessing chip cards via chip card readers (terminals)
+sys-libs/libchipcard 5.0.4 5.1.4_rc1: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: New implementation of the C++ standard library, targeting C++11
 sys-libs/libcxxabi 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: Low level support for a standard C++ library
 sys-libs/libcxxrt 0.0_p20180311 9999: C++ Runtime from PathScale, FreeBSD and NetBSD
