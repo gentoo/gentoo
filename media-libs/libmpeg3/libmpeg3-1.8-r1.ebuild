@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/heroines/${P}-src.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sh sparc x86"
 IUSE="cpu_flags_x86_mmx"
 
 RDEPEND="sys-libs/zlib
