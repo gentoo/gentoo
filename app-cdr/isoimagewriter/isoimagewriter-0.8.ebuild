@@ -3,23 +3,29 @@
 
 EAPI=7
 
-inherit kde5
+KFMIN=5.60.0
+QTMIN=5.12.3
+inherit ecm kde.org
 
 DESCRIPTION="Write hybrid ISO files onto a USB disk"
-HOMEPAGE="http://wiki.rosalab.com/en/index.php/Blog:ROSA_Planet/ROSA_Image_Writer"
-[[ ${PV} != *9999* ]] && SRC_URI="mirror://kde/unstable/${PN}/${PV}/${P}.tar.xz"
+HOMEPAGE="https://community.kde.org/ISOImageWriter"
+
+if [[ ${KDE_BUILD_TYPE} == release ]]; then
+	SRC_URI="mirror://kde/unstable/${PN}/${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64"
+fi
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64"
+SLOT="5"
 IUSE=""
 
 DEPEND="
-	$(add_frameworks_dep kauth)
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep ki18n)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtwidgets)
 	app-crypt/gpgme[cxx,qt5]
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=kde-frameworks/kauth-${KFMIN}:5
+	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
 	virtual/libudev:=
 "
 RDEPEND="${DEPEND}"
