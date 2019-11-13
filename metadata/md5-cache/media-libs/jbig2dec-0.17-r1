@@ -5,10 +5,10 @@ DESCRIPTION=A decoder implementation of the JBIG2 image compression format
 EAPI=7
 HOMEPAGE=https://jbig2dec.com/
 IUSE=png static-libs test
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=AGPL-3
 RDEPEND=png? ( media-libs/libpng:0= )
 SLOT=0/0.17
 SRC_URI=https://github.com/ArtifexSoftware/jbig2dec/archive/0.17.tar.gz -> jbig2dec-0.17.tar.gz test? ( http://jbig2dec.sourceforge.net/ubc/jb2streams.zip )
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	93ff6f0f8518926f2951ca70ce36e887	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=9d92c15c599125b3716cc2167d95208b
+_md5_=956d77cc184a0e7ed749b1fb6475210c
