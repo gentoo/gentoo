@@ -58,8 +58,6 @@ dev-libs/cygwin
 # sys-apps/ibm-powerpc-utils-papr (ppc*): bug #697210
 # sys-apps/lkcdutils (s390): bug #697212
 # sys-block/nwutil (arm): bug #697198
-# sys-boot/aboot (alpha): bug #697182
-# sys-boot/milo (alpha): bug #697180
 # sys-libs/libspe2 & sys-libs/mars (ppc64): bug #697158
 #
 # Removal in 30 days.
