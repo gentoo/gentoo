@@ -138,7 +138,9 @@ src_install() {
 		popd >/dev/null || die
 	fi
 
-	diropts -o transmission -g transmission
+	if [[ ${EUID} == 0 ]]; then
+		diropts -o transmission -g transmission
+	fi
 	keepdir /var/lib/transmission
 }
 

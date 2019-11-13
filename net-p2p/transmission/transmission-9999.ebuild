@@ -129,7 +129,9 @@ src_install() {
 	insinto /usr/lib/sysctl.d
 	doins "${FILESDIR}"/60-transmission.conf
 
-	diropts -o transmission -g transmission
+	if [[ ${EUID} == 0 ]]; then
+		diropts -o transmission -g transmission
+	fi
 	keepdir /var/lib/transmission
 }
 
