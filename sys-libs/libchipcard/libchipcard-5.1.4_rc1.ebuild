@@ -3,15 +3,15 @@
 
 EAPI=7
 
-MY_P="${P/_beta/beta}"
+MY_P="${P/_rc/rc}"
 
 DESCRIPTION="Library for accessing chip cards via chip card readers (terminals)"
 HOMEPAGE="https://www.aquamaniac.de/rdm/projects/libchipcard"
-SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/138/${MY_P}.tar.gz"
+SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/221/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-# KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc examples"
 
 BDEPEND="
@@ -22,7 +22,8 @@ DEPEND="
 	>=sys-apps/pcsc-lite-1.6.2
 	>=sys-libs/gwenhywfar-4.99.22_rc6:=
 	sys-libs/zlib
-	virtual/libintl"
+	virtual/libintl
+"
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README TODO doc/{CERTIFICATES,CONFIG,IPCCOMMANDS} )

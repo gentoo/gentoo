@@ -7,11 +7,11 @@ MY_P="${P/_beta/beta}"
 
 DESCRIPTION="Generic Online Banking Interface"
 HOMEPAGE="https://www.aquamaniac.de/sites/aqbanking/index.php"
-SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/203/${MY_P}.tar.gz"
+SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/224/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-# KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="debug doc ebics examples ofx"
 
 BDEPEND="
