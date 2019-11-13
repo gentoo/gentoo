@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit qmake-utils xdg-utils
+inherit qmake-utils xdg
 
 DESCRIPTION="Graphical frontend to the LinuxSampler engine"
 HOMEPAGE="https://qsampler.sourceforge.io/ https://www.linuxsampler.org/"
@@ -33,7 +33,7 @@ DEPEND="${COMMON_DEPEND}
 
 DOCS=( AUTHORS ChangeLog README TODO TRANSLATORS )
 
-PATCHES=( "${FILESDIR}/${P}-Makefile.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0.5.3-Makefile.patch" )
 
 src_configure() {
 	local myeconfargs=(
@@ -45,14 +45,4 @@ src_configure() {
 
 	cd src || die
 	eqmake5 src.pro -o Makefile
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }
