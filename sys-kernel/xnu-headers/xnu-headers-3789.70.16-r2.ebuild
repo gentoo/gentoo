@@ -38,24 +38,37 @@ src_compile() {
 src_install() {
 	insinto /usr/include
 	doins EXTERNAL_HEADERS/AssertMacros.h EXTERNAL_HEADERS/Availability*.h
+	doins libsyscall/wrappers/gethostuuid.h
+	doins -r libsyscall/mach/mach
 
 	# generated during src_compile
 	insinto /usr/include/sys
 	doins syscall.h _posix_availability.h _symbol_aliasing.h
 
-	cd bsd || die
+	pushd bsd > /dev/null || die
+
+	get_files_list() {
+		local s="$1"
+		local f="$2"/Makefile
+		sed -n -e '/^'"${s}"' \?=/,/^$/p' "${f}" \
+			| sed -e '1s/^'"${s}"' \?=//' -e '/\s*#/d' \
+			| sed -e 's/\\$//' -e '/^[A-Z]\+ \?=/,/^$/d'
+	}
 
 	get_datafiles() {
-		local f="$1"/Makefile
-		sed -n -e '/^DATAFILES \?=/,/^$/p' "${f}" \
-			| sed -e '1s/^DATAFILES \?=//' -e '/\s*#/d' \
-			| sed -e 's/\\$//'
+		local entry
+		get_files_list DATAFILES "$@" | while read entry ; do
+			[[ ${entry} == '${'?*'}' ]] \
+				&& get_files_list ${entry:2:-1} "$@" \
+				|| echo "${entry}"
+		done
 	}
 
 	local d
 	local files
-	for d in i386 machine miscfs/{devfs,specfs,union} net \
-		netinet{,6} netkey nfs sys{,/_types} uuid vfs ; do
+	for d in bsm i386 machine miscfs/{devfs,specfs,union} net \
+		netinet{,6} netkey nfs sys{,/_types} uuid vfs ;
+	do
 		insinto /usr/include/${d}
 		files=( $(get_datafiles ${d}) )
 		einfo "${d}:" ${files[*]}
@@ -63,4 +76,35 @@ src_install() {
 	done
 
 	use man && doman man/man*/*.[234579]
+
+	popd > /dev/null || die
+
+	pushd osfmk > /dev/null || die
+
+	for d in mach{,/i386,/machine} ; do
+		insinto /usr/include/${d}
+		files=( $(get_datafiles ${d}) )
+		einfo "${d}:" ${files[*]}
+		doins ${files[@]/#/$d/}
+	done
+
+	for d in i386 ; do
+		insinto /usr/include/${d}
+		files=( $(get_files_list INSTALL_MD_LIST ${d}) )
+		einfo "${d}:" ${files[*]}
+		doins ${files[@]/#/$d/}
+	done
+
+	popd > /dev/null || die
+
+	pushd libkern > /dev/null || die
+
+	for d in libkern{,/i386,/machine,/c++,/crypto} ; do
+		insinto /usr/include/${d}
+		files=( $(get_datafiles ${d}) )
+		einfo "${d}:" ${files[*]}
+		doins ${files[@]/#/$d/}
+	done
+
+	popd > /dev/null || die
 }
