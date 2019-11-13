@@ -63,7 +63,8 @@ src_prepare() {
 		-i Makefile.am || die
 
 	mv -v configure.{in,ac} || die
-	eautoreconf
+	# m4/ dir is added with 'm4-stuff.patch' patch
+	AT_M4DIR="m4" eautoreconf
 }
 
 pkg_postinst() {

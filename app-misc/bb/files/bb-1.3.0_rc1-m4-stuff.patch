@@ -7,7 +7,7 @@ Date:   Tue Feb 7 10:59:09 2012 +0300
     bb-1.3.0_rc1: bundle m4 source
 
 --- /dev/null
-+++ m4/aalib.m4
++++ a/m4/aalib.m4
 @@ -0,0 +1,169 @@
 +# Configure paths for AALIB
 +# Jan Hubicka 4/22/2001
@@ -179,7 +179,7 @@ Date:   Tue Feb 7 10:59:09 2012 +0300
 +  rm -f conf.aalibtest
 +])
 --- /dev/null
-+++ m4/libmikmod.m4
++++ a/m4/libmikmod.m4
 @@ -0,0 +1,207 @@
 +# Configure paths for libmikmod
 +#
