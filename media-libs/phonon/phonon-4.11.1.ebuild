@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop kde5
+inherit desktop ecm kde.org
 
 DESCRIPTION="KDE multimedia abstraction library"
 HOMEPAGE="https://phonon.kde.org/"
@@ -13,7 +13,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
-LICENSE="|| ( LGPL-2.1 LGPL-3 )"
+LICENSE="|| ( LGPL-2.1 LGPL-3 ) !pulseaudio? ( || ( GPL-2 GPL-3 ) )"
 SLOT="0"
 IUSE="debug designer gstreamer pulseaudio +vlc"
 
@@ -22,7 +22,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	!!dev-qt/qtphonon:4
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	designer? ( dev-qt/designer:5 )
@@ -44,11 +43,11 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_PulseAudio=$(usex !pulseaudio)
 		-DPHONON_BUILD_SETTINGS=$(usex !pulseaudio)
 	)
-	kde5_src_configure
+	ecm_src_configure
 }
 
 src_install() {
-	kde5_src_install
+	ecm_src_install
 	use pulseaudio || \
 		make_desktop_entry "${PN}settings" \
 			"Phonon Audio and Video" preferences-desktop-sound
