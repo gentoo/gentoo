@@ -13193,7 +13193,7 @@ media-libs/libggi 2.2.2-r1: Provides an opaque interface to the display's accele
 media-libs/libggigcp 1.0.2-r1: Libggi extension for advanced color and palette handling
 media-libs/libggimisc 2.2.2-r1: Adds support for some special graphical target features
 media-libs/libggiwmh 0.3.2-r1: Window manager hints extensions for libggi
-media-libs/libgig 4.1.0: C++ library for loading Gigasampler and DLS level 1/2 files
+media-libs/libgig 4.1.0 4.2.0: C++ library for loading Gigasampler and DLS level 1/2 files
 media-libs/libgii 1.0.2-r2: Easy to use, but yet powerful, API for all possible input sources
 media-libs/libglvnd 1.2.0-r1 9999: The GL Vendor-Neutral Dispatch library
 media-libs/libgphoto2 2.5.20 2.5.22: Library that implements support for numerous digital cameras
