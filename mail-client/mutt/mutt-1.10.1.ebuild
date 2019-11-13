@@ -153,7 +153,7 @@ src_configure() {
 		$(use !ssl &&                echo --without-gnutls --without-ssl)
 
 		$(use_with sasl)
-		$(use_with idn)
+		$(use_with idn) --without-idn  # avoid automagic libidn dep
 		$(use_with kerberos gss)
 		"$(use slang && echo --with-slang="${EPREFIX}"/usr || echo a=b)"
 		"$(use_with !slang curses "${EPREFIX}"/usr)"
