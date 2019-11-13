@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
+# sci-libs/vtk is not stable anymore
+media-libs/opencv vtk
+
 # Kent Fredric <kentnl@gentoo.org> (2019-08-29)
 # Support for DBD-mysql to use mariadb is sketchy. Use DBD-MariaDB
 # instead if you can.
