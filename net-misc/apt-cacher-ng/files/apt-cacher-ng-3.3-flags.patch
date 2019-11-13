@@ -1,0 +1,75 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,7 +14,7 @@
+ 
+ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+ set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+-#set(CMAKE_SKIP_BUILD_RPATH on) # no -rdynamic needed ever
++set(CMAKE_SKIP_BUILD_RPATH on) # no -rdynamic needed ever
+ 
+ INCLUDE(CheckIncludeFiles) 
+ INCLUDE(CheckCXXSourceCompiles)
+@@ -27,7 +27,7 @@
+ INCLUDE(GNUInstallDirs)
+ 
+ IF(NOT DEFINED(CMAKE_INSTALL_PREFIX))
+-set(CMAKE_INSTALL_PREFIX "/usr/local" CACHE STRING "Target file space")
++#_cmake_modify_IGNORE set(CMAKE_INSTALL_PREFIX "/usr/local" CACHE STRING "Target file space")
+ ENDIF()
+ IF(NOT DEFINED(LIBDIR))
+ 	set(LIBDIR "${CMAKE_INSTALL_PREFIX}/lib/${PACKAGE}" CACHE STRING "Location of ${PACKAGE} extra files")
+@@ -94,23 +94,6 @@
+         _append(ACNG_CXXFLAGS -fvisibility-inlines-hidden)
+ endif()
+ 
+-foreach(linkarg -Wl,--as-needed -Wl,-O1 -Wl,--discard-all -Wl,--no-undefined -Wl,--build-id=sha1 -Wl,-fuse-ld=gold)
+-	STRING(REGEX REPLACE "=|-|," "" optname "${linkarg}")
+-	set(CMAKE_REQUIRED_FLAGS "${linkarg}")
+-	CHECK_CXX_COMPILER_FLAG("" "LD_${optname}")
+-	if(LD_${optname})
+-          _append(CMAKE_EXE_LINKER_FLAGS ${linkarg})
+-	endif()
+-	set(CMAKE_REQUIRED_FLAGS "")
+-endforeach(linkarg)
+-
+-set(CMAKE_REQUIRED_FLAGS "-Wl,-fuse-ld=gold -Wl,--threads")
+-CHECK_CXX_COMPILER_FLAG("" LD_MULTITHREADED)
+-if(LD_MULTITHREADED)
+-	_append(CMAKE_EXE_LINKER_FLAGS "-Wl,-fuse-ld=gold -Wl,--threads")
+-endif()
+-set(CMAKE_REQUIRED_FLAGS "")
+-
+ option(USE_SSL "Use OpenSSL library for TLS and other crypto functionality" on)
+ 
+ IF(CMAKE_SYSTEM MATCHES "Darwin")
+@@ -132,15 +115,6 @@
+ if(CMAKE_BUILD_TYPE MATCHES Debug)
+    set(USE_LTO_DEFAULT off)
+    _append(ACNG_COMPFLAGS -DDEBUG)
+-else()
+-   set(CMAKE_REQUIRED_FLAGS "-Wl,--gc-sections")
+-   CHECK_CXX_COMPILER_FLAG("-Os -fdata-sections -ffunction-sections -Wl,--gc-sections" GC_SECTIONS)
+-   if(GC_SECTIONS)
+-           _append(ACNG_COMPFLAGS -fdata-sections -ffunction-sections)
+-           _append(CMAKE_EXE_LINKER_FLAGS -Wl,--gc-sections)
+-           _append(CMAKE_SHARED_LINKER_FLAGS -Wl,--gc-sections)
+-   endif()
+-   set(CMAKE_REQUIRED_FLAGS "")
+ endif()
+ 
+ option(USE_LTO "Enable Link Time Optimization (requires modern compilers)" ${USE_LTO_DEFAULT})
+@@ -385,3 +359,14 @@
+ LIBDIR: ${LIBDIR}
+ AVAHIDIR: ${AVAHIDIR}
+ ")
++
++MESSAGE(STATUS "<<< Gentoo configuration >>>
++Build type      ${CMAKE_BUILD_TYPE}
++Install path    ${CMAKE_INSTALL_PREFIX}
++Compiler flags:
++C               ${CMAKE_C_FLAGS}
++C++             ${CMAKE_CXX_FLAGS}
++Linker flags:
++Executable      ${CMAKE_EXE_LINKER_FLAGS}
++Module          ${CMAKE_MODULE_LINKER_FLAGS}
++Shared          ${CMAKE_SHARED_LINKER_FLAGS}\n")
