@@ -23,6 +23,7 @@ CDEPEND="
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/PyQt5[dbus,gui,opengl?,svg,widgets,${PYTHON_USEDEP}]
 	media-sound/jack2[dbus]
+	media-sound/jack_capture
 	a2jmidid? ( media-sound/a2jmidid[dbus] )
 	pulseaudio? ( media-sound/pulseaudio[jack] )
 "
