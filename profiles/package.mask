@@ -64,8 +64,6 @@ dev-libs/cygwin
 sys-apps/ibm-powerpc-utils-papr
 sys-apps/lkcdutils
 sys-block/nwutil
-sys-boot/aboot
-sys-boot/milo
 sys-libs/libspe2
 sys-libs/mars
 
