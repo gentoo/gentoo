@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils flag-o-matic
+inherit autotools eutils desktop xdg
 
 DESCRIPTION="An instrument editor for gig files"
 HOMEPAGE="http://www.linuxsampler.org/"
@@ -48,4 +48,6 @@ src_install() {
 
 	einfo "Removing static libs..."
 	find "${D}" -name "*.la" -delete || die "Failed to remove static libs"
+
+	make_desktop_entry gigedit GigEdit "" "AudioVideo;AudioVideoEditing"
 }
