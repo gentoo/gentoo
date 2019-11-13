@@ -216,7 +216,7 @@ app-admin/clustershell 1.7.3: Python framework for efficient cluster administrat
 app-admin/conky 1.10.8-r4 1.10.8-r8 1.11.5: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.2.3 8.2.4: Serial Console Manager
-app-admin/consul 1.4.4-r1 1.5.3 1.6.0: A tool for service discovery, monitoring and configuration
+app-admin/consul 1.4.4-r1 1.5.3 1.6.0 1.6.1: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.20.0 0.22.0: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2 2.4: Limits the CPU usage of a process
@@ -4926,8 +4926,8 @@ dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other compon
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
 dev-libs/libinput 1.14.1 1.14.2 1.14.3: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.7 0.19.8.1 0.20.1: the GNU international library (split out of gettext)
-dev-libs/libisoburn 1.5.0: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
-dev-libs/libisofs 1.5.0: Open-source library for reading, mastering and writing optical discs
+dev-libs/libisoburn 1.5.0 1.5.2: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
+dev-libs/libisofs 1.5.0 1.5.2: Open-source library for reading, mastering and writing optical discs
 dev-libs/libite 2.0.0 2.1.0: A collection of useful BSD APIs
 dev-libs/libixion 0.14.1 9999: General purpose formula parser & interpreter
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
