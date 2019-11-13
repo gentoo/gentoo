@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit cmake-utils toolchain-funcs user
 
 DESCRIPTION="Yet another caching HTTP proxy for Debian/Ubuntu software packages"
@@ -11,7 +11,10 @@ HOMEPAGE="
 "
 LICENSE="BSD-4 ZLIB public-domain"
 SLOT="0"
-SRC_URI="mirror://debian/pool/main/a/${PN}/${PN}_${PV}.orig.tar.xz"
+SRC_URI="
+	mirror://debian/pool/main/a/${PN}/${PN}_${PV/_*}.orig.tar.xz
+	mirror://debian/pool/main/a/${PN}/${PN}_${PV/_p/-}.debian.tar.xz
+"
 
 KEYWORDS="~amd64 ~x86"
 IUSE="doc fuse systemd tcpd"
@@ -25,7 +28,7 @@ COMMON_DEPEND="
 		sys-apps/systemd
 	)
 "
-DEPEND="
+BDEPEND="
 	${COMMON_DEPEND}
 	dev-util/cmake
 	>sys-devel/gcc-4.8
@@ -37,8 +40,10 @@ RDEPEND="
 	fuse? ( sys-fs/fuse )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
-
-S=${WORKDIR}/${P/_}
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.3-flags.patch
+)
+S=${WORKDIR}/${P/_*}
 
 pkg_pretend() {
 	if [[ $(gcc-major-version) -lt 4 ]]; then
@@ -55,28 +60,31 @@ pkg_setup() {
 }
 
 src_configure(){
-	mycmakeargs=( "-DCMAKE_INSTALL_PREFIX=/usr" )
+	mycmakeargs=(
+		"-DCMAKE_INSTALL_PREFIX=/usr"
+	)
 	if use fuse; then
 		mycmakeargs+=( "-DHAVE_FUSE_25=yes" )
 	else
 		mycmakeargs+=( "-DHAVE_FUSE_25=no" )
 	fi
 	if use tcpd; then
-		mycmakeargs=( "-DHAVE_LIBWRAP=yes" )
+		mycmakeargs+=( "-DHAVE_LIBWRAP=yes" )
 	else
-		mycmakeargs=( "-DHAVE_LIBWRAP=no" )
+		mycmakeargs+=( "-DHAVE_LIBWRAP=no" )
 	fi
 
 	cmake-utils_src_configure
 }
 
 src_install() {
-	pushd ${CMAKE_BUILD_DIR}
-	dosbin ${PN}
+	pushd "${BUILD_DIR}" || die
+	dosbin ${PN} acngtool
+	dolib.so libsupacng.so
 	if use fuse; then
 		dobin acngfs
 	fi
-	popd
+	popd || die
 
 	newinitd "${FILESDIR}"/initd-r1 ${PN}
 	newconfd "${FILESDIR}"/confd ${PN}
@@ -93,8 +101,11 @@ src_install() {
 	dodoc doc/README TODO VERSION INSTALL ChangeLog
 	if use doc; then
 		dodoc doc/*.pdf
+
 		docinto html
 		dodoc doc/html/*
+
+		find conf -name '*.gz' -exec gzip -d {} \; || die
 		docinto examples/conf
 		dodoc conf/*
 	fi
@@ -106,7 +117,7 @@ src_install() {
 
 	# default configuration
 	insinto /etc/${PN}
-	newins "${CMAKE_BUILD_DIR}"/conf/acng.conf ${PN}.conf
+	newins "${BUILD_DIR}"/conf/acng.conf ${PN}.conf
 	doins $( echo conf/* | sed 's|conf/acng.conf.in||g' )
 
 	keepdir /var/log/${PN}
