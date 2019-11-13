@@ -13,6 +13,7 @@ EGIT_REPO_URI="https://github.com/max-moser/network-manager-wireguard"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+glib +gtk +nls"
+REQUIRED_USE="glib? ( gtk )"
 
 RDEPEND="
 	net-misc/networkmanager
