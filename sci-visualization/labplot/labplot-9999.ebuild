@@ -3,16 +3,21 @@
 
 EAPI=7
 
-KDE_HANDBOOK="forceoptional"
-KDE_TEST="forceoptional"
-inherit kde5
+ECM_HANDBOOK="forceoptional"
+ECM_TEST="forceoptional"
+KFMIN=5.60.0
+QTMIN=5.12.3
+inherit ecm kde.org
 
 DESCRIPTION="Scientific data analysis and visualisation based on KDE Frameworks"
 HOMEPAGE="https://labplot.kde.org/ https://kde.org/applications/education/org.kde.labplot2"
-[[ ${KDE_BUILD_TYPE} != live ]] && SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
+if [[ ${KDE_BUILD_TYPE} = release ]]; then
+	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-2"
-KEYWORDS=""
+SLOT="5"
 IUSE="cantor fftw fits hdf5 libcerf netcdf root"
 
 # not packaged: dev-qt/qtmqtt, bug 683994
@@ -21,33 +26,33 @@ BDEPEND="
 	sys-devel/gettext
 "
 DEPEND="
-	$(add_frameworks_dep karchive)
-	$(add_frameworks_dep kcompletion)
-	$(add_frameworks_dep kconfig)
-	$(add_frameworks_dep kconfigwidgets)
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kiconthemes)
-	$(add_frameworks_dep kio)
-	$(add_frameworks_dep knewstuff)
-	$(add_frameworks_dep kcrash)
-	$(add_frameworks_dep ktextwidgets)
-	$(add_frameworks_dep kwidgetsaddons)
-	$(add_frameworks_dep kxmlgui)
-	$(add_frameworks_dep syntax-highlighting)
-	$(add_qt_dep qtconcurrent)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtnetwork)
-	$(add_qt_dep qtprintsupport)
-	$(add_qt_dep qtserialport)
-	$(add_qt_dep qtsql)
-	$(add_qt_dep qtsvg)
-	$(add_qt_dep qtwidgets)
+	>=dev-qt/qtconcurrent-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtnetwork-${QTMIN}:5
+	>=dev-qt/qtprintsupport-${QTMIN}:5
+	>=dev-qt/qtserialport-${QTMIN}:5
+	>=dev-qt/qtsql-${QTMIN}:5
+	>=dev-qt/qtsvg-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=kde-frameworks/karchive-${KFMIN}:5
+	>=kde-frameworks/kcompletion-${KFMIN}:5
+	>=kde-frameworks/kconfig-${KFMIN}:5
+	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
+	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
+	>=kde-frameworks/kiconthemes-${KFMIN}:5
+	>=kde-frameworks/kio-${KFMIN}:5
+	>=kde-frameworks/knewstuff-${KFMIN}:5
+	>=kde-frameworks/kcrash-${KFMIN}:5
+	>=kde-frameworks/ktextwidgets-${KFMIN}:5
+	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
+	>=kde-frameworks/kxmlgui-${KFMIN}:5
+	>=kde-frameworks/syntax-highlighting-${KFMIN}:5
 	>=sci-libs/gsl-1.15:=
 	cantor? (
-		$(add_frameworks_dep kparts)
-		$(add_frameworks_dep kservice)
-		$(add_kdeapps_dep cantor)
+		>=kde-frameworks/kparts-${KFMIN}:5
+		>=kde-frameworks/kservice-${KFMIN}:5
+		>=kde-apps/cantor-19.08.0:5
 	)
 	fftw? ( sci-libs/fftw:3.0= )
 	fits? ( sci-libs/cfitsio:= )
@@ -74,5 +79,5 @@ src_configure() {
 		-DENABLE_MQTT=OFF
 	)
 
-	kde5_src_configure
+	ecm_src_configure
 }
