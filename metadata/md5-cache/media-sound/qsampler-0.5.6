@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure postinst postrm preinst prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 media-libs/alsa-lib >=media-libs/liblscp-0.5.6:= x11-libs/libX11 libgig? ( >=media-libs/libgig-3.3.0:= ) dev-qt/linguist-tools:5 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Graphical frontend to the LinuxSampler engine
+EAPI=7
+HOMEPAGE=https://qsampler.sourceforge.io/ https://www.linuxsampler.org/
+IUSE=debug +libgig
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 media-libs/alsa-lib >=media-libs/liblscp-0.5.6:= x11-libs/libX11 libgig? ( >=media-libs/libgig-3.3.0:= ) >=media-sound/linuxsampler-0.5
+SLOT=0
+SRC_URI=mirror://sourceforge/qsampler/0.5.6/qsampler-0.5.6.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=240a7637bd2ed4bf2837f5ca1ce116ec
