@@ -1592,7 +1592,7 @@ app-eselect/eselect-sndpeek 1.0.1: Manages the /usr/bin/sndpeek symlink
 app-eselect/eselect-timezone 0.2: Manages timezone selection
 app-eselect/eselect-timidity 20110513: Manages configuration of TiMidity++ patchsets
 app-eselect/eselect-unison 0.4: unison module for eselect
-app-eselect/eselect-vdr 0.0.3: Manages the VDR plugins
+app-eselect/eselect-vdr 0.0.3 0.0.4: Manages the VDR plugins
 app-eselect/eselect-vi 1.1.9 1.1.9-r1: Manages the /usr/bin/vi symlink
 app-eselect/eselect-wine 1.2.2: Manage active wine version
 app-eselect/eselect-wxwidgets 20140423 20180529: Eselect module and wrappers for wxWidgets
@@ -17521,7 +17521,7 @@ sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemake
 sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
 sys-cluster/singularity 2.6.1: Application containers for Linux
 sys-cluster/slurm 18.08.7 19.05.3.2: A Highly Scalable Resource Manager
-sys-cluster/spark-bin 2.3.1 2.4.4: Lightning-fast unified analytics engine
+sys-cluster/spark-bin 2.3.1-r1 2.4.4-r1: Lightning-fast unified analytics engine
 sys-cluster/swift 2.21.0-r1 2.22.0 2.23.1 2019.1.9999 2019.2.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 4.0.9 4.0.10 4.1.1 4.1.4 9999: Modern SSH server for teams managing distributed infrastructure
 sys-cluster/torque 4.1.7-r1 4.2.10-r1 6.0.4-r1: Resource manager and queuing system based on OpenPBS
