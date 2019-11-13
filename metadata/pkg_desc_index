@@ -3039,7 +3039,7 @@ dev-ada/libgpr 2018-r1 2019 2019-r1: Ada library to handle GPRbuild project file
 dev-ada/xmlada 2018 2019 2019-r1: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15-r1: Multi-platform class and template library
 dev-cpp/aixlog 1.2.1 9999: Header-only C++ logging library
-dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 4.7.2: The ANTLR 4 C++ Runtime
+dev-cpp/antlr-cpp 2.7.7-r1 4.7.2: The ANTLR 4 C++ Runtime
 dev-cpp/asio 1.10.8 1.12.2 1.13.0 1.14.0: Asynchronous Network Library
 dev-cpp/atkmm 2.24.2 2.28.0: C++ interface for the ATK library
 dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
@@ -3165,7 +3165,7 @@ dev-db/pgpool2 3.7.10 4.0.5 9999: Connection pool server for PostgreSQL
 dev-db/pgrouting 2.6.2-r1: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
 dev-db/pgtap 0.99.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
-dev-db/phpmyadmin 4.8.5 4.9.0.1 4.9.1: Web-based administration for MySQL database in PHP
+dev-db/phpmyadmin 4.9.1: Web-based administration for MySQL database in PHP
 dev-db/plr 8.3.0.17: R language extension for postgresql database
 dev-db/postgis 2.4.6 2.4.7 2.4.8 2.5.1-r1 2.5.2 2.5.3 3.0.0 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.4.22 9.4.22-r1 9.4.23 9.4.24 9.5.17 9.5.17-r1 9.5.18 9.5.19 9.6.13 9.6.13-r1 9.6.14 9.6.15 10.9 10.10 11.4 11.5 12.0 9999: PostgreSQL RDBMS
@@ -18245,7 +18245,7 @@ www-apps/kibana-bin 5.6.16 6.7.1 6.8.4 7.2.0 7.3.2 7.4.1: Analytics and search d
 www-apps/klaus 1.4.0 1.5.0: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making
-www-apps/mediawiki 1.32.2 1.33.1: The MediaWiki wiki web application (as used on wikipedia.org)
+www-apps/mediawiki 1.33.1: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/mirmon 2.10: Simple webapp to monitor the status of mirrors
 www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module using Apache
 www-apps/moodle 3.5.9 3.6.7 3.7.3: The Moodle Course Management System
