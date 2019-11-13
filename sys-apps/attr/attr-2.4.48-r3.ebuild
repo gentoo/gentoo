@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit libtool toolchain-funcs multilib-minimal usr-ldscript
+inherit flag-o-matic libtool toolchain-funcs multilib-minimal usr-ldscript
 
 DESCRIPTION="Extended attributes tools"
 HOMEPAGE="https://savannah.nongnu.org/projects/attr"
@@ -20,6 +20,11 @@ PATCHES=(
 	"${FILESDIR}/${P}-perl-5.26.patch"
 	"${FILESDIR}/${P}-switch-back-to-syscall.patch"
 )
+
+pkg_setup() {
+	# Remove -flto* from flags as this breaks binaries (bug #644048)
+	filter-flags -flto*
+}
 
 src_prepare() {
 	default
