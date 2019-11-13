@@ -15154,7 +15154,7 @@ net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
 net-misc/anydesk 4.0.1-r1 5.0.0 5.1.2: Feature rich multi-platform remote desktop application
-net-misc/apt-cacher-ng 3.2 3.2_p2-r2: Yet another caching HTTP proxy for Debian/Ubuntu software packages
+net-misc/apt-cacher-ng 3.2_p2-r2 3.3_p1: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.12.2 3.17.11: Sweeps up stray ARP queries from a peering LAN
