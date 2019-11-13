@@ -2294,7 +2294,7 @@ app-portage/g-sorcery 0.1-r1 0.2-r1 0.2.1 0.2.1-r1 9999: framework for ebuild ge
 app-portage/gemato 14.1 14.1m 14.2 14.3 9999 9999m: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1 0.30.10-r1 0.30.10-r2 9999: A nice emerge.log parser
 app-portage/gentoolkit 0.4.2-r1 0.4.5 0.4.6 9999: Collection of administration scripts for Gentoo
-app-portage/gentoopm 0.3.0 9999: A common interface to Gentoo package managers
+app-portage/gentoopm 0.3.0 0.3.1 9999: A common interface to Gentoo package managers
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
 app-portage/golop 0.0.1 0.0.1-r1 9999: A pure Go re-implementation of genlop
 app-portage/gpytage 0.3.0_rc1-r1: GTK Utility to help manage Portage's user config files
@@ -13851,7 +13851,7 @@ media-sound/freebirth 0.3.2-r1: Free software bass synthesizer step sequencer
 media-sound/frescobaldi 3.0.0: A LilyPond sheet music text editor
 media-sound/galan 0.3.0_beta7: gAlan - Graphical Audio Language
 media-sound/gbsplay 0.0.91-r2: Nintendo Gameboy sound player for GBS format
-media-sound/gigedit 1.1.1: An instrument editor for gig files
+media-sound/gigedit 1.1.1-r1: An instrument editor for gig files
 media-sound/gimmix 0.5.7.2-r1: a graphical music player daemon (MPD) client using GTK+2
 media-sound/glmix 0.3: 3D widget for mixing up to eight JACK audio streams down to stereo
 media-sound/glurp 0.12.3: Glurp is a GTK2 based graphical client for the Music Player Daemon
