@@ -10,7 +10,7 @@ DRIVER_PV="418.87.00"
 
 DESCRIPTION="NVIDIA CUDA Toolkit (compiler and friends)"
 HOMEPAGE="https://developer.nvidia.com/cuda-zone"
-SRC_URI="https://developer.download.nvidia.com/compute/cuda/${MYD}/Prod/local_installers/cuda_${PV}_${DRIVER_PV}_linux.run -> cuda_${PV}_${DRIVER_PV}_linux.run"
+SRC_URI="https://developer.download.nvidia.com/compute/cuda/${MYD}/Prod/local_installers/cuda_${PV}_${DRIVER_PV}_linux.run"
 
 LICENSE="NVIDIA-CUDA"
 SLOT="0/${PV}"
@@ -134,7 +134,7 @@ pkg_postinst_check() {
 	if tc-is-gcc && \
 		ver_test $(gcc-version) -gt ${b}; then
 			ewarn ""
-			ewarn "gcc >= ${b} will not work with CUDA"
+			ewarn "gcc > ${b} will not work with CUDA"
 			ewarn "Make sure you set an earlier version of gcc with gcc-config"
 			ewarn "or append --compiler-bindir= pointing to a gcc bindir like"
 			ewarn "--compiler-bindir=${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/gcc${b}"
