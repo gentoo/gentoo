@@ -49,8 +49,3 @@ multilib_src_configure() {
 
 	cmake-utils_src_configure
 }
-
-multilib_src_test() {
-	# ctest does not work
-	emake -C "${BUILD_DIR}" check
-}
