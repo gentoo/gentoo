@@ -4,18 +4,17 @@
 EAPI=7
 
 ECM_HANDBOOK="optional" # see src/apps/marble-kde/CMakeLists.txt
-KDE_SUBSLOT="true"
 ECM_TEST="forceoptional"
-VIRTUALX_REQUIRED="test"
 KFMIN=5.60.0
 QTMIN=5.12.3
+VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Virtual Globe and World Atlas to learn more about Earth"
 HOMEPAGE="https://marble.kde.org/"
 
 LICENSE="GPL-2" # TODO: CHECK
-SLOT="5"
+SLOT="5/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="aprs +dbus designer gps +kde nls phonon +geolocation shapefile +webengine"
 
