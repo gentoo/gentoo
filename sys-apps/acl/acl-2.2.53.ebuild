@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit flag-o-matic libtool ltprune toolchain-funcs multilib-minimal usr-ldscript
+inherit flag-o-matic libtool toolchain-funcs multilib-minimal usr-ldscript
 
 DESCRIPTION="access control list utilities, libraries and headers"
 HOMEPAGE="https://savannah.nongnu.org/projects/acl"
@@ -49,5 +49,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	use static-libs || prune_libtool_files --all
+	if ! use static-libs ; then
+		find "${ED}" -type f -name "*.la" -delete || die
+	fi
 }
