@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 inherit java-pkg-2
 
@@ -48,13 +48,13 @@ src_install() {
 	doins -r sbin
 	doins -r yarn
 
-	dosym "${ED%/}"/usr/lib/spark/bin/beeline /usr/bin/beeline
-	dosym "${ED%/}"/usr/lib/spark/bin/pyspark /usr/bin/pyspark
-	dosym "${ED%/}"/usr/lib/spark/bin/pyspark /usr/bin/find-spark-home
-	dosym "${ED%/}"/usr/lib/spark/bin/spark-class /usr/bin/spark-class
-	dosym "${ED%/}"/usr/lib/spark/bin/spark-shell /usr/bin/spark-shell
-	dosym "${ED%/}"/usr/lib/spark/bin/spark-sql /usr/bin/spark-sql
-	dosym "${ED%/}"/usr/lib/spark/bin/spark-submit /usr/bin/spark-submit
+	dosym ../lib/spark/bin/beeline /usr/bin/beeline
+	dosym ../lib/spark/bin/find-spark-home /usr/bin/find-spark-home
+	dosym ../lib/spark/bin/pyspark /usr/bin/pyspark
+	dosym ../lib/spark/bin/spark-class /usr/bin/spark-class
+	dosym ../lib/spark/bin/spark-shell /usr/bin/spark-shell
+	dosym ../lib/spark/bin/spark-sql /usr/bin/spark-sql
+	dosym ../lib/spark/bin/spark-submit /usr/bin/spark-submit
 
 	doenvd "${FILESDIR}"/99spark
 	einstalldocs
