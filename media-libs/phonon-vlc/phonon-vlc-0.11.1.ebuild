@@ -4,7 +4,7 @@
 EAPI=7
 
 MY_PN="phonon-backend-vlc"
-inherit kde5
+inherit ecm kde.org
 
 DESCRIPTION="VLC backend for the Phonon multimedia library"
 HOMEPAGE="https://phonon.kde.org/"
