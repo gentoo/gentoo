@@ -21,6 +21,18 @@ IUSE=""
 
 DEPEND=""
 RDEPEND=""
+BDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}"/aboot-gcc-3.4.patch
+	"${FILESDIR}"/aboot-pt_note.patch
+	# Bug 364697
+	"${FILESDIR}"/aboot-define_stat_only_in_userspace.patch
+	"${FILESDIR}"/aboot-respect-AR.patch
+	"${FILESDIR}"/aboot-gnu90.patch
+	# Modified patch from Debian to add netboot support
+	"${WORKDIR}"/aboot_gentoo.diff
+)
 
 src_unpack() {
 	unpack ${A}
@@ -30,20 +42,7 @@ src_unpack() {
 	cd "${S}"/include
 	ln -s asm-alpha asm || die
 	touch linux/config.h || die
-}
-
-src_prepare() {
-	eapply "${FILESDIR}/aboot-gcc-3.4.patch"
-	eapply "${FILESDIR}/aboot-pt_note.patch"
-	# Bug 364697
-	eapply "${FILESDIR}/aboot-define_stat_only_in_userspace.patch"
-	eapply "${FILESDIR}"/aboot-respect-AR.patch
-	eapply "${FILESDIR}"/aboot-gnu90.patch
-
-	# Modified patch from Debian to add netboot support
-	eapply "${WORKDIR}"/aboot_gentoo.diff
-
-	eapply_user
+	cd "${S}"
 }
 
 src_compile() {
@@ -67,7 +66,6 @@ src_install() {
 
 	insinto /etc
 	newins "${FILESDIR}"/aboot.conf aboot.conf.example
-
 }
 
 pkg_postinst() {
