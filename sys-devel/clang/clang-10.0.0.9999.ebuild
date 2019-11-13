@@ -385,9 +385,8 @@ pkg_postinst() {
 
 	elog "You can find additional utility scripts in:"
 	elog "  ${EROOT}/usr/lib/llvm/${SLOT}/share/clang"
-	elog "To use these scripts, you will need Python 2.7. Some of them are vim"
-	elog "integration scripts (with instructions inside). The run-clang-tidy.py"
-	elog "scripts requires the following additional package:"
+	elog "Some of them are vim integration scripts (with instructions inside)."
+	elog "The run-clang-tidy.py script requires the following additional package:"
 	elog "  dev-python/pyyaml"
 }
 
