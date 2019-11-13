@@ -13,17 +13,21 @@ KEYWORDS=""
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="-pulseaudio opengl"
+IUSE="a2jmidid -pulseaudio opengl"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # for jack project rendering also needs media-sound/jack_capture which is not in the tree yet
-RDEPEND="${PYTHON_DEPS}
-	media-sound/jack2[dbus]
-	dev-python/PyQt5[dbus,gui,opengl?,svg,widgets,${PYTHON_USEDEP}]
+CDEPEND="
+	${PYTHON_DEPS}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
-	pulseaudio? ( media-sound/pulseaudio[jack] )"
-DEPEND=${RDEPEND}
+	dev-python/PyQt5[dbus,gui,opengl?,svg,widgets,${PYTHON_USEDEP}]
+	media-sound/jack2[dbus]
+	a2jmidid? ( media-sound/a2jmidid[dbus] )
+	pulseaudio? ( media-sound/pulseaudio[jack] )
+"
+RDEPEND="${CDEPEND}"
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-add-skip-stripping.patch )
 
@@ -39,6 +43,7 @@ src_prepare() {
 		data/catia \
 		data/claudia \
 		data/claudia-launcher || die "sed failed"
+
 	default
 }
 
@@ -46,6 +51,7 @@ src_compile() {
 	myemakeargs=(PREFIX="/usr"
 		SKIP_STRIPPING=true
 	)
+
 	emake "${myemakeargs[@]}"
 }
 
