@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 GENTOO_DEPEND_ON_PERL=no
 
@@ -43,8 +43,11 @@ RDEPEND="
 	tiff? ( media-libs/tiff:0 )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/gdbus-codegen
+	>=sys-devel/gettext-0.18.3
+	virtual/pkgconfig
 	test? ( media-fonts/dejavu )
 "
 
@@ -73,7 +76,6 @@ src_configure() {
 		$(use_enable pclm)
 		$(use_enable pdf mutool)
 		$(use_enable postscript ghostscript)
-		$(use_enable postscript ijs)
 		$(use_enable static-libs static)
 		$(use_enable zeroconf avahi)
 		$(use_with jpeg)
