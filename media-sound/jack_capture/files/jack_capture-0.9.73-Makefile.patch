@@ -1,0 +1,41 @@
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2017-07-07 17:42:49.613728707 -0400
++++ b/Makefile	2017-07-07 17:44:39.393726882 -0400
+@@ -3,16 +3,13 @@
+ 
+ VERSION=0.9.73
+ 
+-CC=gcc
+-CPP=g++
++CC ?= gcc
++CXX ?= g++
+ 
+ # Needed on OSX
+ CFLAGS += -I/opt/local/include
+ 
+-OPTIMIZE=-O3
+-#OPTIMIZE=-O0 -g
+-
+-COMPILEFLAGS=$(CFLAGS) $(OPTIMIZE) -DVERSION=\"$(VERSION)\" -Wall -Wextra -Wno-unused
++COMPILEFLAGS=$(CFLAGS) -DVERSION=\"$(VERSION)\" -Wall -Wextra -Wno-unused
+ LINKFLAGS=$(LDFLAGS) -ljack -lsndfile -lm -lpthread
+ 
+ OS := $(shell uname)
+@@ -41,7 +38,7 @@
+ 	which install
+ 	which pkg-config
+ 	which $(CC)
+-	which $(CPP)
++	which $(CXX)
+ 	$(CC) $(CFLAGS) -E testsndfile.c >/dev/null
+ 	@echo "All seems good "
+ 	@echo
+@@ -64,7 +61,7 @@
+ 
+ 
+ jack_capture_gui2: jack_capture_gui2.cpp
+-	$(CPP) $(CPPFLAGS) $(OPTIMIZE) jack_capture_gui2.cpp $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -o jack_capture_gui2
++	$(CXX) $(CXXFLAGS) jack_capture_gui2.cpp $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -o jack_capture_gui2
+ 
+ config_flags: Makefile das_config.h
+ 	cat das_config.h |grep COMPILEFLAGS|sed s/\\/\\/COMPILEFLAGS//|tr '\n' ' ' >config_flags
