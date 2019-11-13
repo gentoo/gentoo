@@ -19,6 +19,7 @@ SLOT="0"
 IUSE="debug"
 
 BDEPEND="
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
 DEPEND="
