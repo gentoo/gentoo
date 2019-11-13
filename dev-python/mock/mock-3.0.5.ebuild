@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 		>=dev-python/unittest2-1.1.0[${PYTHON_USEDEP}]
 	)"
 
+RESTRICT="!test? ( test )"
+
 python_test() {
 	nosetests --verbose || die "tests fail under ${EPYTHON}"
 }
