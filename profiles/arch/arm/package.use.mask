@@ -1,6 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
+# >=sci-libs/vtk-8 is not keyworded, bug #649054
+media-libs/opencv vtk
+sci-libs/pcl vtk
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-10-29)
 # Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are keyworded
 kde-plasma/plasma-meta thunderbolt
