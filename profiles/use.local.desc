@@ -506,7 +506,6 @@ app-emulation/faudio:ffmpeg - FAudio has optional support for decoding xWMA reso
 app-emulation/faudio:test - Build and run faudio testsuite.
 app-emulation/faudio:utils - Build all faudio utilities.
 app-emulation/faudio:xnasong - Build support for optional XNG_SONG component (note: this not required by app-emulation/wine-staging, app-emulation/wine-vanilla for faudio XAudio support).
-app-emulation/free42:alsa - Adds support for Advanced Linux Sound Architecture
 app-emulation/fs-uae:fmv - Enable support for CD32 FMV (full motion video)
 app-emulation/fs-uae:glew - Enable support for The OpenGL Extension Wrangler Library (media-libs/glew)
 app-emulation/fs-uae-launcher:lha - Enable LHA archive support
