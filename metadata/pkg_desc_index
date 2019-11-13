@@ -13793,7 +13793,7 @@ media-sound/bplay 0.991: No-frills command-line buffered player and recorder
 media-sound/bpmdetect 0.7.0_pre20170810: Automatic BPM detection utility
 media-sound/bristol 0.60.11-r1: Synthesizer keyboard emulation package: Moog, Hammond and others
 media-sound/brutefir 1.0k-r2: Software convolution engine for applying long FIR filters
-media-sound/cadence 0.9.0-r2 9999: Collection of tools useful for audio production
+media-sound/cadence 0.9.0-r3 9999: Collection of tools useful for audio production
 media-sound/cantata 2.3.3-r1: Featureful and configurable Qt client for the music player daemon (MPD)
 media-sound/cd-discid 1.4: returns the disc id for the cd in the cd-rom drive
 media-sound/cdcd 0.6.6-r2: a simple yet powerful command line cd player
@@ -15211,7 +15211,7 @@ net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 7.2.3 8.0.6 8.1.1 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 7.2.3 8.0.6 8.1.2 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
