@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit libtool ltprune toolchain-funcs multilib-minimal usr-ldscript
+inherit flag-o-matic libtool toolchain-funcs multilib-minimal usr-ldscript
 
 DESCRIPTION="access control list utilities, libraries and headers"
 HOMEPAGE="https://savannah.nongnu.org/projects/acl"
@@ -19,6 +19,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
+
+pkg_setup() {
+	# filter out -flto flags as they break getfacl/setfacl binaries
+	# (bug #667372)
+	filter-flags -flto*
+}
 
 src_prepare() {
 	default
@@ -43,5 +49,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	use static-libs || prune_libtool_files --all
+	if ! use static-libs ; then
+		find "${ED}" -type f -name "*.la" -delete || die
+	fi
 }
