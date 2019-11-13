@@ -6,6 +6,11 @@
 
 # SECTION: Unmask
 
+# Michał Górny <mgorny@gentoo.org> (2019-11-13)
+# Python 3.8 has reasonably keyworded packages here.
+-python_targets_python3_8
+-python_single_target_python3_8
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-11-17)
 # media-sound/audacious is keyworded on amd64
 -audacious
