@@ -11586,7 +11586,7 @@ games-puzzle/hexamine 0.2.1-r1: Hexagonal Minesweeper
 games-puzzle/hitori 3.22.4 3.34.0: Logic puzzle game for GNOME
 games-puzzle/icebreaker 1.9.6-r1: Trap and capture penguins on Antarctica
 games-puzzle/jools 0.20-r3: clone of Bejeweled, a popular pattern-matching game
-games-puzzle/ksokoban 0.5.0_pre20190225 9999: The japanese warehouse keeper game
+games-puzzle/ksokoban 0.5.0_pre20190225 9999: The Japanese warehouse keeper game
 games-puzzle/lightsoff 3.30.0 3.34.0: Turn off all the lights
 games-puzzle/lmarbles 1.0.8: puzzle game inspired by Atomix and written in SDL
 games-puzzle/lpairs 1.0.4-r1: A classical memory game
@@ -13193,7 +13193,7 @@ media-libs/libggi 2.2.2-r1: Provides an opaque interface to the display's accele
 media-libs/libggigcp 1.0.2-r1: Libggi extension for advanced color and palette handling
 media-libs/libggimisc 2.2.2-r1: Adds support for some special graphical target features
 media-libs/libggiwmh 0.3.2-r1: Window manager hints extensions for libggi
-media-libs/libgig 4.1.0 4.2.0: C++ library for loading Gigasampler and DLS level 1/2 files
+media-libs/libgig 4.2.0: C++ library for loading Gigasampler and DLS level 1/2 files
 media-libs/libgii 1.0.2-r2: Easy to use, but yet powerful, API for all possible input sources
 media-libs/libglvnd 1.2.0-r1 9999: The GL Vendor-Neutral Dispatch library
 media-libs/libgphoto2 2.5.20 2.5.22: Library that implements support for numerous digital cameras
