@@ -4,7 +4,7 @@
 EAPI=7
 
 PVCUT=$(ver_cut 1-3)
-inherit kde.org
+inherit kde.org ecm
 
 DESCRIPTION="Wallpapers for the Plasma workspace"
 
