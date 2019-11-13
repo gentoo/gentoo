@@ -34,7 +34,7 @@ python_test() {
 }
 
 python_install_all() {
-	local DOCS=( docs/{conf.py,index.txt} AUTHORS ChangeLog NEWS README.rst )
+	local DOCS=( CHANGELOG.rst README.rst )
 
 	distutils-r1_python_install_all
 }
