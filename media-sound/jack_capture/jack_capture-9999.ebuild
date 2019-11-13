@@ -12,15 +12,11 @@ EGIT_REPO_URI="https://github.com/kmatheussen/jack_capture.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="gtk mp3 ogg osc"
+IUSE="mp3 ogg osc"
 
-BDEPEND="
-	gtk? ( virtual/pkgconfig )
-"
 CDEPEND="
 	media-libs/libsndfile
 	virtual/jack
-	gtk? ( x11-libs/gtk+:2 )
 	mp3? ( media-sound/lame )
 	ogg? ( media-libs/libogg )
 	osc? ( media-libs/liblo )
@@ -47,15 +43,11 @@ src_compile()
 	tc-export CC CXX
 
 	emake PREFIX="${EPREFIX}/usr" jack_capture
-
-	use gtk && emake PREFIX="${EPREFIX}/usr" jack_capture_gui2
 }
 
 src_install()
 {
 	dobin jack_capture
-
-	use gtk && dobin jack_capture_gui2
 
 	dodoc "${DOCS[@]}"
 }
