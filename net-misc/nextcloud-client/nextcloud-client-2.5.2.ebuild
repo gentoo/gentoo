@@ -49,6 +49,8 @@ DEPEND="${COMMON_DEPEND}
 		dev-qt/qttest:5
 	)"
 
+RESTRICT="!test? ( test )"
+
 S=${WORKDIR}/desktop-${PV/_/-}
 
 src_prepare() {
