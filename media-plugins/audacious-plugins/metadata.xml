@@ -24,5 +24,6 @@
 		<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
 		<flag name="soxr">Build with SoX Resampler support</flag>
 		<flag name="speedpitch">Enable speed/pitch effects</flag>
+		<flag name="streamtuner">Build the streamtuner plugin</flag>
 	</use>
 </pkgmetadata>
