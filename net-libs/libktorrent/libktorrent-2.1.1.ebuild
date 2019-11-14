@@ -36,7 +36,10 @@ RDEPEND="${COMMON_DEPEND}
 	!dev-libs/botan[gmp(-)]
 "
 
-PATCHES=( "${FILESDIR}/${PN}-2.1-unused-link.patch" ) # git master
+PATCHES=(
+	"${FILESDIR}/${P}-fileops.patch" # bug 700090
+	"${FILESDIR}/${PN}-2.1-unused-link.patch" # git master
+)
 
 src_prepare() {
 	kde5_src_prepare
