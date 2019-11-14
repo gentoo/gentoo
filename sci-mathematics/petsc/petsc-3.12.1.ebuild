@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.7.0-disable-rpath.patch
 	"${FILESDIR}"/${PN}-3.9.0-fix_sandbox_violation.patch
 	"${FILESDIR}"/${PN}-3.12.1-make_hypre_configure.patch
+	"${FILESDIR}"/${PN}-3.12.1-do_not_run_mpiexec.patch
 )
 
 src_prepare() {

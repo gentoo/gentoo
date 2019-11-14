@@ -1,0 +1,32 @@
+diff --git a/config/BuildSystem/config/packages/MPI.py b/config/BuildSystem/config/packages/MPI.py
+index c85bb504..7720eba9 100644
+--- a/config/BuildSystem/config/packages/MPI.py
++++ b/config/BuildSystem/config/packages/MPI.py
+@@ -209,26 +209,11 @@ shared libraries and run with --known-mpi-shared-libraries=1')
+           raise RuntimeError('Could not locate MPIEXEC - please specify --with-mpiexec option')
+       # Support for spaces and () in executable names; also needs to handle optional arguments at the end
+       # TODO: This support for spaces and () should be moved to core BuildSystem
+-      self.mpiexec = self.mpiexec.replace(' ', '\\ ').replace('(', '\\(').replace(')', '\\)').replace('\ -',' -')
+-      if (hasattr(self, 'ompi_major_version') and int(self.ompi_major_version) >= 3):
+-        (out, err, ret) = Configure.executeShellCommand(self.mpiexec+' -help all', checkCommand = noCheck, timeout = 10, log = self.log)
+-        if out.find('--oversubscribe') >=0:
+-          self.mpiexec = self.mpiexec + ' --oversubscribe'
++      self.mpiexec = self.mpiexec + ' --oversubscribe'
+ 
+     # using mpiexec environmental variables make sure mpiexec matches the MPI libraries and save the variables for testing in PetscInitialize()
+     # the variable HAVE_MPIEXEC_ENVIRONMENTAL_VARIABLE is not currently used. PetscInitialize() can check the existence of the environmental variable to
+     # determine if the program has been started with the correct mpiexec (will only be set for parallel runs so not clear how to check appropriately)
+-    (out, err, ret) = Configure.executeShellCommand(self.mpiexec+' -n 1 printenv', checkCommand = noCheck, timeout = 10, log = self.log)
+-    if ret: raise RuntimeError('Unable to run '+self.mpiexec+' with option "-n 1"\n'+err)
+-    if out.find('MPIR_CVAR_CH3') > -1:
+-      if hasattr(self,'ompi_major_version'): raise RuntimeError("Your libraries are from OpenMPI but it appears your mpiexec is from MPICH");
+-      self.addDefine('HAVE_MPIEXEC_ENVIRONMENTAL_VARIABLE', 'MPIR_CVAR_CH3')
+-    elif  out.find('MPIR_CVAR_CH3') > -1:
+-      if hasattr(self,'ompi_major_version'): raise RuntimeError("Your libraries are from OpenMPI but it appears your mpiexec is from MPICH");
+-      self.addDefine('HAVE_MPIEXEC_ENVIRONMENTAL_VARIABLE', 'MPICH')
+-    elif out.find('OMPI_COMM_WORLD_SIZE') > -1:
+-      if hasattr(self,'mpich_numversion'): raise RuntimeError("Your libraries are from MPICH but it appears your mpiexec is from OpenMPI");
+-      self.addDefine('HAVE_MPIEXEC_ENVIRONMENTAL_VARIABLE', 'OMP')
+     self.addMakeMacro('MPIEXEC', self.mpiexec)
+     self.mpiexec = self.mpiexec + ' -n 1'
+ 
