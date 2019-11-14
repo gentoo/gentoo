@@ -7,17 +7,18 @@
 # @SUPPORTED_EAPIS: 7
 # @BLURB: Support eclass for packages that follow KDE packaging conventions.
 # @DESCRIPTION:
-# This eclass is intended to streamline the creation of ebuilds for packages
-# that follow KDE upstream packaging conventions. It's primarily intended for
-# the three upstream release groups (Frameworks, Plasma, Applications) but
-# is also for any package that follows similar conventions.
+# This eclass is *deprecated*. Please read the PORTING notes for switching to
+# ecm.eclass in case the package is using extra-cmake-modules, otherwise just
+# use cmake-utils.eclass instead. For projects hosted on kde.org infrastructure,
+# inherit kde.org.eclass to fetch and unpack sources independent of the build
+# system being used.
 #
 # This eclass unconditionally inherits kde5-functions.eclass and all its public
 # functions and variables may be considered as part of this eclass's API.
 #
-# This eclass unconditionally inherits cmake-utils.eclass and all its public
-# variables and helper functions (not phase functions) may be considered as part
-# of this eclass's API.
+# This eclass unconditionally inherits kde.org.eclass and cmake-utils.eclass
+# and all their public variables and helper functions (not phase functions) may
+# be considered as part of this eclass's API.
 #
 # This eclass's phase functions are not intended to be mixed and matched, so if
 # any phase functions are overridden the version here should also be called.
@@ -59,6 +60,7 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_in
 # For any other value, add dependencies on dev-qt/qtcore:5, kde-frameworks/kf-env
 # and kde-frameworks/extra-cmake-modules:5. Additionally, required blockers may
 # be set depending on the value of CATEGORY.
+# PORTING: no replacement
 : ${KDE_AUTODEPS:=true}
 
 # @ECLASS-VARIABLE: KDE_DEBUG
@@ -66,6 +68,7 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_in
 # If set to "false", add -DNDEBUG (via cmake-utils_src_configure) and -DQT_NO_DEBUG
 # to CPPFLAGS.
 # Otherwise, add debug to IUSE.
+# PORTING: ECM_DEBUG in ecm.eclass
 : ${KDE_DEBUG:=true}
 
 # @ECLASS-VARIABLE: KDE_DESIGNERPLUGIN
@@ -73,12 +76,14 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_in
 # If set to "false", do nothing.
 # Otherwise, add "designer" to IUSE to toggle build of designer plugins
 # and add the necessary DEPENDs.
+# PORTING: ECM_DESIGNERPLUGIN in ecm.eclass
 : ${KDE_DESIGNERPLUGIN:=false}
 
 # @ECLASS-VARIABLE: KDE_EXAMPLES
 # @DESCRIPTION:
 # If set to "false", unconditionally ignore a top-level examples subdirectory.
 # Otherwise, add "examples" to IUSE to toggle adding that subdirectory.
+# PORTING: ECM_EXAMPLES in ecm.eclass
 : ${KDE_EXAMPLES:=false}
 
 # @ECLASS-VARIABLE: KDE_HANDBOOK
@@ -90,16 +95,19 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_in
 # when USE=!handbook. In case package requires KF5KDELibs4Support, see next:
 # If set to "forceoptional", remove a KF5DocTools dependency from the root
 # CMakeLists.txt in addition to the above.
+# PORTING: ECM_HANDBOOK in ecm.eclass
 : ${KDE_HANDBOOK:=false}
 
 # @ECLASS-VARIABLE: KDE_DOC_DIR
 # @DESCRIPTION:
 # Specifies the location of the KDE handbook if not the default.
+# PORTING: ECM_HANDBOOK_DIR in ecm.eclass
 : ${KDE_DOC_DIR:=doc}
 
 # @ECLASS-VARIABLE: KDE_PO_DIRS
 # @DESCRIPTION:
 # Specifies the possible locations of KDE l10n files if not the default.
+# PORTING: ECM_PO_DIRS in ecm.eclass
 : ${KDE_PO_DIRS:="po poqm"}
 
 # @ECLASS-VARIABLE: KDE_QTHELP
@@ -107,6 +115,7 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_in
 # If set to "false", do nothing.
 # Otherwise, add "doc" to IUSE, add the appropriate dependency, generate
 # and install Qt compressed help files with -DBUILD_QCH=ON when USE=doc.
+# PORTING: ECM_QTHELP in ecm.eclass
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KDE_QTHELP:=true}
 fi
@@ -124,6 +133,7 @@ fi
 # autotest(s), unittest(s) and test(s) subdirs from *any* CMakeLists.txt in ${S}
 # and below conditional on BUILD_TESTING. This is always meant as a short-term
 # fix and creates ${T}/${P}-tests-optional.patch to refine and submit upstream.
+# PORTING: ECM_TEST in ecm.eclass
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KDE_TEST:=true}
 fi
@@ -322,6 +332,7 @@ kde5_src_prepare() {
 		done
 	fi
 
+	# PORTING: bogus, overzealous 'en' docbook disabling is not carried over
 	if [[ ${KDE_BUILD_TYPE} = release && ${CATEGORY} != kde-apps ]] ; then
 		if [[ ${KDE_HANDBOOK} != false && -d ${KDE_DOC_DIR} && -v LINGUAS ]] ; then
 			pushd ${KDE_DOC_DIR} > /dev/null || die
