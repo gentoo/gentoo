@@ -125,6 +125,7 @@ src_configure() {
 	local myeconfargs=(
 		--enable-mpris2
 		--enable-songchange
+		--disable-openmpt # not packaged
 		--disable-oss4
 		--disable-coreaudio
 		--disable-sndio
