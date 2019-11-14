@@ -10,6 +10,7 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<use>
-		<flag name="qt5">Build with Qt5 interface instead Gtk+</flag>
+		<flag name="gtk">Build with GTK interface instead of Qt5</flag>
+		<flag name="qt5">Build with Qt5 interface instead of GTK</flag>
 	</use>
 </pkgmetadata>
