@@ -29,10 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-12)
-# libssh-config module fixed, but revdeps still need patching, bug #698940
-=net-libs/libssh-0.9.2
-
 # Stephan Hartmann <stha09@googlemail.com> (2019-11-11)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
