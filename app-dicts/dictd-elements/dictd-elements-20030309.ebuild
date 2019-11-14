@@ -5,7 +5,8 @@ EAPI=7
 
 DESCRIPTION="Jay Kominek's database of the elements for dict"
 HOMEPAGE="http://www.dict.org"
-SRC_URI="https://web.archive.org/web/20121223051336/http://www.miranda.org:80/~jkominek/elements/elements.db -> $P.db"
+SRC_FILE="https://web.archive.org/web/20121223051336/http://www.miranda.org:80/~jkominek/elements/elements.db"
+SRC_URI="${SRC_FILE} -> ${P}.db"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -14,10 +15,10 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND=">=app-text/dictd-1.5.5"
 
-S="$WORKDIR"
+S="${WORKDIR}"
 
 src_unpack() {
-	cp "$DISTDIR/$A" elements.db
+	cp "${DISTDIR}/${A}" elements.db
 }
 
 src_prepare() {
@@ -27,8 +28,8 @@ src_prepare() {
 }
 
 src_compile() {
-	dictfmt -u "${SRC_URI% ->*}" \
-		-s "Jay Kominek's Elements database (version $PV)" \
+	dictfmt -u "${SRC_FILE}" \
+		-s "Jay Kominek's Elements database (version ${PV})" \
 		--headword-separator " " \
 		--columns 80 \
 		-p elements \
@@ -41,24 +42,22 @@ src_install() {
 	doins elements.dict.dz elements.index || die
 }
 
-pkg_preinst() {
-	HAS_OLD_VERSION=$(has_version app-dicts/$PN)
-}
-
 pkg_postinst() {
-	if $HAS_OLD_VERSION ; then
-		elog "You must restart your dictd server before the $PN dictionary is"
+	if [[ "${REPLACING_VERSIONS}" ]] ; then
+		elog "You must restart your dictd server before the ${PN} dictionary is"
 		elog "completely updated.  If you are using OpenRC, this may be accomplished by"
 		elog "running '/etc/init.d/dictd restart'."
 	else
-		elog "You must register $PN and restart your dictd server before the"
+		elog "You must register ${PN} and restart your dictd server before the"
 		elog "dictionary is available for use.  If you are using OpenRC, both tasks may be"
 		elog "accomplished by running '/etc/init.d/dictd restart'."
 	fi
 }
 
 pkg_postrm() {
-	elog "You must unregister $PN and restart your dictd server before the"
-	elog "dictionary is completely removed.  If you are using OpenRC, both tasks may be"
-	elog "accomplished by running '/etc/init.d/dictd restart'."
+	if [[ ! "${REPLACED_BY_VERSION}" ]] ; then
+		elog "You must unregister ${PN} and restart your dictd server before the"
+		elog "dictionary is completely removed.  If you are using OpenRC, both tasks may be"
+		elog "accomplished by running '/etc/init.d/dictd restart'."
+	fi
 }

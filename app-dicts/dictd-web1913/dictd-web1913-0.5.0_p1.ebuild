@@ -8,63 +8,64 @@ GV=${WV//.}
 
 SN="web1913-dict-patches"
 SV=${PV##*_}
-SD="$SN-$SV"
+SD="${SN}-${SV}"
 
 DESCRIPTION="Webster's Revised Unabridged Dictionary (1913) for dict"
 HOMEPAGE="http://www.micra.com/"
-SRC_URI="http://www.gutenberg.org/files/660/old/pgw${GV}ab.zip \
-	http://www.gutenberg.org/files/661/old/pgw${GV}c.zip \
-	http://www.gutenberg.org/files/662/old/pgw${GV}de.zip \
-	http://www.gutenberg.org/files/663/old/pgw${GV}fh.zip \
-	http://www.gutenberg.org/files/664/old/pgw${GV}il.txt \
-	http://www.gutenberg.org/files/665/old/pgw${GV}mo.zip \
-	http://www.gutenberg.org/files/666/old/pgw${GV}pq.zip \
-	http://www.gutenberg.org/files/667/old/pgw${GV}r.zip \
-	http://www.gutenberg.org/files/668/old/pgw${GV}s.zip \
-	http://www.gutenberg.org/files/669/old/pgw${GV}tw.zip \
-	http://www.gutenberg.org/files/670/old/pgw${GV}xz.zip \
-	https://git.sr.ht/~ag_eitilt/$SN/archive/$SV.tar.gz -> $SD.tar.gz"
+SRC_FILES="http://www.gutenberg.org/files/660/old/pgw${GV}ab.zip
+	http://www.gutenberg.org/files/661/old/pgw${GV}c.zip
+	http://www.gutenberg.org/files/662/old/pgw${GV}de.zip
+	http://www.gutenberg.org/files/663/old/pgw${GV}fh.zip
+	http://www.gutenberg.org/files/664/old/pgw${GV}il.txt
+	http://www.gutenberg.org/files/665/old/pgw${GV}mo.zip
+	http://www.gutenberg.org/files/666/old/pgw${GV}pq.zip
+	http://www.gutenberg.org/files/667/old/pgw${GV}r.zip
+	http://www.gutenberg.org/files/668/old/pgw${GV}s.zip
+	http://www.gutenberg.org/files/669/old/pgw${GV}tw.zip
+	http://www.gutenberg.org/files/670/old/pgw${GV}xz.zip"
+SRC_URI="${SRC_FILES}
+	https://git.sr.ht/~ag_eitilt/${SN}/archive/${SV}.tar.gz -> ${SD}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
 IUSE=""
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
-BDEPEND=">=app-text/dictd-1.5.5 \
-	app-arch/unzip \
+BDEPEND=">=app-text/dictd-1.5.5
+	app-arch/unzip
 	dev-libs/libxslt"
 
-S="$WORKDIR"
+S="${WORKDIR}"
 
 src_unpack() {
 	unpack ${A//pgw${GV}il.txt}
-	cp "$DISTDIR/pgw${GV}il.txt" .
-	cp "$SD/xhtml-lat1.ent" "$SD/xhtml-special.ent" "$SD/xhtml-symbol.ent" .
-	cp "$SD/dictfmt-elements.txt" web1913.txt
+	cp "${DISTDIR}/pgw${GV}il.txt" .
+	cp "${SD}/xhtml-lat1.ent" "${SD}/xhtml-special.ent" "${SD}/xhtml-symbol.ent" .
+	cp "${SD}/dictfmt-elements.txt" web1913.txt
 }
 
 src_prepare() {
-	eapply "$SD/tag-nesting.patch"
+	eapply "${SD}/tag-nesting.patch"
 	eapply_user
 
 	sed -e '/<! Begin file/,$ d' pgw050c.txt > COPYING.gutenberg
 
-	for f in $(ls pgw$GV?*.txt) ; do
-		echo "Cleaning '$f'"
-		sed -n -e '/<! Begin file/,$ p' -i "$f"
-		sed -f "$SD/cleanup.sed" -i "$f"
-		cat "$SD/micra-head.xml" "$f" "$SD/micra-foot.xml" > "${f%txt}xml"
+	for f in $(ls pgw${GV}?*.txt) ; do
+		echo "Cleaning '${f}'"
+		sed -n -e '/<! Begin file/,$ p' -i "${f}"
+		sed -f "${SD}/cleanup.sed" -i "${f}"
+		cat "${SD}/micra-head.xml" "${f}" "${SD}/micra-foot.xml" > "${f%txt}xml"
 	done
 }
 
 src_compile() {
 	for f in $(ls pgw050?*.xml) ; do
-		echo "Processing '$f'"
-		xsltproc "$SD/dictfmt-elements.xsl" "$f" >> web1913.txt
+		echo "Processing '${f}'"
+		xsltproc "${SD}/dictfmt-elements.xsl" "${f}" >> web1913.txt
 	done
 	echo "Building dictionary"
-	dictfmt -u " ${SRC_URI% * ->*}" \
-		-s "Webster's Revised Unabridged Dictionary, 1913 edition (v$WV $SV)" \
+	dictfmt -u " ${SRC_FILES}" \
+		-s "Webster's Revised Unabridged Dictionary, 1913 edition (v${WV} ${SV})" \
 		--headword-separator " / " \
 		--columns 73 \
 		--utf8 \
@@ -74,30 +75,28 @@ src_compile() {
 }
 
 src_install() {
-	dodoc COPYING.gutenberg "$SD/README"
-	newdoc "$SD/dictfmt-elements.txt" COPYING.micra
+	dodoc COPYING.gutenberg "${SD}/README"
+	newdoc "${SD}/dictfmt-elements.txt" COPYING.micra
 	insinto /usr/lib/dict
 	doins web1913.dict.dz web1913.index || die
 }
 
-pkg_preinst() {
-	HAS_OLD_VERSION=$(has_version app-dicts/$PN)
-}
-
 pkg_postinst() {
-	if $HAS_OLD_VERSION ; then
-		elog "You must restart your dictd server before the $PN dictionary is"
+	if [[ "${REPLACING_VERSIONS}" ]] ; then
+		elog "You must restart your dictd server before the ${PN} dictionary is"
 		elog "completely updated.  If you are using OpenRC, this may be accomplished by"
 		elog "running '/etc/init.d/dictd restart'."
 	else
-		elog "You must register $PN and restart your dictd server before the"
+		elog "You must register ${PN} and restart your dictd server before the"
 		elog "dictionary is available for use.  If you are using OpenRC, both tasks may be"
 		elog "accomplished by running '/etc/init.d/dictd restart'."
 	fi
 }
 
 pkg_postrm() {
-	elog "You must unregister $PN and restart your dictd server before the"
-	elog "dictionary is completely removed.  If you are using OpenRC, both tasks may be"
-	elog "accomplished by running '/etc/init.d/dictd restart'."
+	if [[ ! "${REPLACED_BY_VERSION}" ]] ; then
+		elog "You must unregister ${PN} and restart your dictd server before the"
+		elog "dictionary is completely removed.  If you are using OpenRC, both tasks may be"
+		elog "accomplished by running '/etc/init.d/dictd restart'."
+	fi
 }

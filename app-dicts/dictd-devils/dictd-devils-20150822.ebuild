@@ -5,20 +5,21 @@ EAPI=7
 
 DESCRIPTION="The Devil's Dictionary for dict"
 HOMEPAGE="http://www.dict.org/"
-SRC_URI="http://www.gutenberg.org/files/972/972.zip -> $P.zip"
+SRC_FILE="http://www.gutenberg.org/files/972/972.zip"
+SRC_URI="${SRC_FILE} -> ${P}.zip"
 
 LICENSE="public-domain"
 SLOT="0"
 IUSE=""
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
-BDEPEND=">=app-text/dictd-1.5.5 \
+BDEPEND=">=app-text/dictd-1.5.5
 	app-arch/unzip"
 
-S="$WORKDIR"
+S="${WORKDIR}"
 
 src_prepare() {
-	eapply "$FILESDIR/format.patch"
+	eapply "${FILESDIR}/format.patch"
 	eapply_user
 
 	sed -e 's/\r//g' -i 972.txt
@@ -30,7 +31,7 @@ src_prepare() {
 
 src_compile() {
 	head -n -6 972.txt | \
-		dictfmt -u "${SRC_URI% ->*}" \
+		dictfmt -u "${SRC_FILE}" \
 		-s "The Devil's Dictionary (2015-08-22 Project Gutenberg version)" \
 		--headword-separator " or " \
 		--columns 80 \
@@ -45,25 +46,21 @@ src_install() {
 	doins devils.dict.dz devils.index || die
 }
 
-pkg_preinst() {
-	HAS_OLD_VERSION=$(has_version app-dicts/$PN)
-}
-
 pkg_postinst() {
-	if $HAS_OLD_VERSION ; then
-		elog "You must restart your dictd server before the $PN dictionary is"
+	if [[ "${REPLACING_VERSIONS}" ]] ; then
+		elog "You must restart your dictd server before the ${PN} dictionary is"
 		elog "completely updated.  If you are using OpenRC, this may be accomplished by"
 		elog "running '/etc/init.d/dictd restart'."
 	else
-		elog "You must register $PN and restart your dictd server before the"
+		elog "You must register ${PN} and restart your dictd server before the"
 		elog "dictionary is available for use.  If you are using OpenRC, both tasks may be"
 		elog "accomplished by running '/etc/init.d/dictd restart'."
 	fi
 }
 
 pkg_postrm() {
-	if ! $HAS_OLD_VERSION ; then
-		elog "You must unregister $PN and restart your dictd server before the"
+	if [[ ! "${REPLACED_BY_VERSION}" ]] ; then
+		elog "You must unregister ${PN} and restart your dictd server before the"
 		elog "dictionary is completely removed.  If you are using OpenRC, both tasks may be"
 		elog "accomplished by running '/etc/init.d/dictd restart'."
 	fi

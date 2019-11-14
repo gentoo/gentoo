@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="The Free On-line Dictionary of Computing for dict"
 HOMEPAGE="https://foldoc.org/"
-SRC_URI="https://web.archive.org/web/20180405153121/http://foldoc.org/Dictionary -> $P.txt"
+SRC_URI="https://web.archive.org/web/20180405153121/http://foldoc.org/Dictionary -> ${P}.txt"
 
 LICENSE="FDL-1.1+"
 SLOT="0"
@@ -14,10 +14,10 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND=">=app-text/dictd-1.5.5"
 
-S="$WORKDIR"
+S="${WORKDIR}"
 
 src_unpack() {
-	cp "$DISTDIR/$A" foldoc.txt
+	cp "${DISTDIR}/${A}" foldoc.txt
 }
 
 src_prepare() {
@@ -27,8 +27,8 @@ src_prepare() {
 
 src_compile() {
 	tail -n +3 foldoc.txt | \
-		dictfmt -u "$HOMEPAGE/Dictionary" \
-		-s "The Free On-line Dictionary of Computing (version $PV)" \
+		dictfmt -u "${HOMEPAGE}/Dictionary" \
+		-s "The Free On-line Dictionary of Computing (version ${PV})" \
 		--utf8 \
 		-f foldoc
 	dictzip foldoc.dict
@@ -39,24 +39,22 @@ src_install() {
 	doins foldoc.dict.dz foldoc.index || die
 }
 
-pkg_preinst() {
-	HAS_OLD_VERSION=$(has_version app-dicts/$PN)
-}
-
 pkg_postinst() {
-	if $HAS_OLD_VERSION ; then
-		elog "You must restart your dictd server before the $PN dictionary is"
+	if [[ "${REPLACING_VERSIONS}" ]] ; then
+		elog "You must restart your dictd server before the ${PN} dictionary is"
 		elog "completely updated.  If you are using OpenRC, this may be accomplished by"
 		elog "running '/etc/init.d/dictd restart'."
 	else
-		elog "You must register $PN and restart your dictd server before the"
+		elog "You must register ${PN} and restart your dictd server before the"
 		elog "dictionary is available for use.  If you are using OpenRC, both tasks may be"
 		elog "accomplished by running '/etc/init.d/dictd restart'."
 	fi
 }
 
 pkg_postrm() {
-	elog "You must unregister $PN and restart your dictd server before the"
-	elog "dictionary is completely removed.  If you are using OpenRC, both tasks may be"
-	elog "accomplished by running '/etc/init.d/dictd restart'."
+	if [[ ! "${REPLACED_BY_VERSION}" ]] ; then
+		elog "You must unregister ${PN} and restart your dictd server before the"
+		elog "dictionary is completely removed.  If you are using OpenRC, both tasks may be"
+		elog "accomplished by running '/etc/init.d/dictd restart'."
+	fi
 }

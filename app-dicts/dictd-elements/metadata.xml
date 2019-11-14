@@ -4,7 +4,6 @@
 <maintainer type="person">
 	<name>Samuel May</name>
 	<email>ag.eitilt@gmail.com</email>
-	<description>Primary ebuild maintainer</description>
 </maintainer>
 <maintainer type="project">
 	<email>proxy-maint@gentoo.org</email>
