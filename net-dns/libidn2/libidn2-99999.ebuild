@@ -33,8 +33,9 @@ src_unpack() {
 src_prepare() {
 	mv "${WORKDIR}"/libunistring-0.9.10 unistring || die
 
-	einfo "./bootstrap"
-	./bootstrap --gnulib-srcdir=gnulib --no-bootstrap-sync --no-git --skip-po || die
+	AUTORECONF=: sh bootstrap \
+		--gnulib-srcdir=gnulib --no-bootstrap-sync --no-git --skip-po \
+	|| die
 
 	default
 
