@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Distributed C/C++ package manager"
 HOMEPAGE="https://conan.io/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/conan-io/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -44,11 +44,11 @@ RDEPEND="
 	>=dev-python/tqdm-4.28.1[${PYTHON_USEDEP}]
 	>=dev-python/typed-ast-1.1.0[${PYTHON_USEDEP}]
 "
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? (
-		${RDEPEND}
 		dev-lang/go
+		dev-vcs/git
+		dev-vcs/subversion
 		>=dev-python/mock-1.3.0[${PYTHON_USEDEP}]
 		>=dev-python/nose-1.3.7[${PYTHON_USEDEP}]
 		>=dev-python/parameterized-0.6.3[${PYTHON_USEDEP}]
@@ -64,10 +64,14 @@ src_prepare() {
 		-e "s:patch==1.16:patch>=1.16:g" \
 		-e "s:node-semver==0.6.1:node-semver>=0.6.1:g" \
 		-e "s:future==0.16.0:future>=0.16.0:g" \
-		conans/requirements.txt
+		conans/requirements.txt || die
 }
 
 python_test() {
-	cd "${BUILD_DIR}"/lib || die
-	PYTHONPATH=. nosetests -v . || die
+	nosetests -v conans.test \
+		-e test_ftp.* -e modify_values_test.* -e test_pkg_config_path.* \
+		-e rpath_optin_test -e test_variables -e system_package_tool_installed_test \
+		-e virtualbuildenv_test -e scm_test -e test_git_shallow -e tools_test \
+		-e test_environment_nested -e devflow_test -e shared_chain_test \
+		-A "not rest_api and not local_bottle" || die
 }

@@ -16,6 +16,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+glib +gtk +nls"
+REQUIRED_USE="glib? ( gtk )"
 
 RDEPEND="
 	net-misc/networkmanager

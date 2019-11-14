@@ -32,7 +32,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( docs/. )
-PATCHES=( "${FILESDIR}"/${PN}-3.2.0-fix-path-builds.patch )
+PATCHES=( "${FILESDIR}"/${PN}-3.4.0-fix-path-builds.patch )
 
 src_prepare() {
 	default
@@ -83,17 +83,10 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-
-	# Default is '0750', which causes init errors.
-	fperms 0755 /usr/bin/inspircd{,-genssl}
-	# Default is '0640', causing module load errors.
-	fperms -R 0755 "/usr/lib64/inspircd/modules/."
+	default
 
 	insinto "/usr/include/${PN}"
 	doins -r include/.
-
-	einstalldocs
 
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
