@@ -45,6 +45,8 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-lang/go
+		dev-vcs/git
+		dev-vcs/subversion
 		>=dev-python/mock-1.3.0[${PYTHON_USEDEP}]
 		>=dev-python/nose-1.3.7[${PYTHON_USEDEP}]
 		>=dev-python/parameterized-0.6.3[${PYTHON_USEDEP}]
