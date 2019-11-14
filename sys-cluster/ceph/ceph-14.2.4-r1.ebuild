@@ -348,8 +348,9 @@ src_install() {
 	python_fix_shebang "${ED}"/usr/{,s}bin/
 
 	# python_fix_shebang apparently is not idempotent
-	sed -i -r  's:(/usr/lib/python-exec/python[0-9]\.[0-9]/python)[0-9]\.[0-9]:\1:' \
-		"${ED}"/usr/sbin/{mount.*,ceph-volume{,-systemd}} || die "sed failed"
+	local shebang_regex='(/usr/lib/python-exec/python[0-9]\.[0-9]/python)[0-9]\.[0-9]'
+	grep -r -E -l --null "${shebang_regex}" "${ED}"/usr/{s,}bin/ \
+		| xargs --null --no-run-if-empty -- sed -i -r  "s:${shebang_regex}:\1:" || die
 
 	local -a rados_classes=( "${ED}/usr/$(get_libdir)/rados-classes"/* )
 	dostrip -x "${rados_classes[@]#${ED}}"
