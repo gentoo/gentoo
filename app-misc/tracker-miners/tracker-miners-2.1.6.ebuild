@@ -34,7 +34,7 @@ RDEPEND="
 	flac? ( >=media-libs/flac-1.2.1 )
 	raw? ( media-libs/gexiv2 )
 	>=dev-libs/icu-4.8.1.2:=
-	cue? ( media-libs/libcue )
+	cue? ( media-libs/libcue:= )
 	exif? ( >=media-libs/libexif-0.6 )
 	gsf? ( >=gnome-extra/libgsf-1.14.24:= )
 	xps? ( app-text/libgxps )
