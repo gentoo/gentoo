@@ -45,6 +45,8 @@ RDEPEND="${DEPEND}"
 
 DOCS=( README.md doc/ChangeLog doc/cmd.txt )
 
+PATCHES=( "${FILESDIR}/${P}-libssh-0.9.2.patch" )
+
 S="${S}-Source"
 
 pkg_setup() {

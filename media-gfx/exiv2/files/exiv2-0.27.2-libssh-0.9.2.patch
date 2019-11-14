@@ -1,0 +1,56 @@
+From c59eb810728572fde84492d43a932dcac89746d6 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 14 Nov 2019 15:06:38 +0100
+Subject: [PATCH] EXIV2_ENABLE_SSH: Fix compatibility with >=libssh-0.9.2
+
+0.9.1 remains broken regardless and is beyond fixing in this place.
+
+Build-tested with both libssh 0.9.0 and 0.9.2.
+
+Solution copied from KDE's kio-extras commit 24506c2af8d1904a99538543804306c6c2b81ca2
+---
+ cmake/findDependencies.cmake | 13 +++++++++++--
+ src/CMakeLists.txt           |  3 +--
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/cmake/findDependencies.cmake b/cmake/findDependencies.cmake
+index a458a0c9..ec3a43f5 100644
+--- a/cmake/findDependencies.cmake
++++ b/cmake/findDependencies.cmake
+@@ -26,8 +26,17 @@ if( EXIV2_ENABLE_WEBREADY )
+ 
+     if( EXIV2_ENABLE_SSH )
+         find_package(libssh CONFIG REQUIRED)
+-    endif( )
+-endif( )
++        # Define an imported target to have compatibility with <=libssh-0.9.0
++        # libssh-0.9.1 is broken regardless.
++        if(NOT TARGET ssh)
++            add_library(ssh SHARED IMPORTED)
++            set_target_properties(ssh PROPERTIES
++                IMPORTED_LOCATION "${LIBSSH_LIBRARIES}"
++                INTERFACE_INCLUDE_DIRECTORIES "${LIBSSH_INCLUDE_DIR}"
++            )
++        endif()
++    endif()
++endif()
+ 
+ if (EXIV2_ENABLE_XMP AND EXIV2_ENABLE_EXTERNAL_XMP)
+     message(FATAL_ERROR "EXIV2_ENABLE_XMP AND EXIV2_ENABLE_EXTERNAL_XMP are mutually exclusive.  You can only choose one of them")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 27f8dbb1..bdd83fa0 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -173,8 +173,7 @@ target_include_directories(exiv2lib_int PUBLIC
+ if (EXIV2_ENABLE_WEBREADY)
+ 
+     if( EXIV2_ENABLE_SSH )
+-        target_include_directories(exiv2lib SYSTEM PUBLIC ${LIBSSH_INCLUDE_DIR})
+-        target_link_libraries(exiv2lib PUBLIC ${LIBSSH_LIBRARIES})
++        target_link_libraries(exiv2lib PUBLIC ssh)
+     endif()
+ 
+     if( EXIV2_ENABLE_CURL )
+-- 
+2.24.0
+

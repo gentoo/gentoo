@@ -5,13 +5,14 @@ EAPI=7
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="optional"
-VIRTUALX_REQUIRED="test"
 KFMIN=5.60.0
 QTMIN=5.12.3
+VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="KIO plugins present a filesystem-like view of arbitrary data"
 HOMEPAGE="https://cgit.kde.org/kio-extras.git"
+
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
@@ -21,6 +22,12 @@ BDEPEND="
 	man? ( dev-util/gperf )
 "
 DEPEND="
+	>=dev-qt/qtdbus-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtnetwork-${QTMIN}:5
+	>=dev-qt/qtsvg-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-frameworks/karchive-${KFMIN}:5[bzip2,lzma]
 	>=kde-frameworks/kbookmarks-${KFMIN}:5
 	>=kde-frameworks/kcodecs-${KFMIN}:5
@@ -39,15 +46,9 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:5
-	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtnetwork-${QTMIN}:5
-	>=dev-qt/qtsvg-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=dev-qt/qtxml-${QTMIN}:5
 	activities? (
-		>=kde-frameworks/kactivities-${KFMIN}:5
 		>=dev-qt/qtsql-${QTMIN}:5
+		>=kde-frameworks/kactivities-${KFMIN}:5
 	)
 	man? ( >=kde-frameworks/khtml-${KFMIN}:5 )
 	mtp? ( >=media-libs/libmtp-1.1.16:= )
@@ -63,6 +64,8 @@ RDEPEND="${DEPEND}
 
 # requires running kde environment
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${P}-libssh-0.9.2.patch" )
 
 src_configure() {
 	local mycmakeargs=(
