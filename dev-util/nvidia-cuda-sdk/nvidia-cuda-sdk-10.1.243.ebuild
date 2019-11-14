@@ -133,9 +133,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use example && use prefix; then
+	if use examples && use prefix; then
 		ewarn "Gentoo Prefix does not manage kernel modules.  You need to make certain"
-		ewarn "the functionality counterpart to  >=x11-drivers/nvidia-drivers-${DRIVER_PV}[uvm]"
+		ewarn "the function counterpart to >=x11-drivers/nvidia-drivers-${DRIVER_PV}[uvm]"
 		ewarn "is available from the host"
 	fi
 }
