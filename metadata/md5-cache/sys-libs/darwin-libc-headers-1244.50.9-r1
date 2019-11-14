@@ -1,0 +1,11 @@
+BDEPEND=sys-apps/darwin-miscutils
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Darwin system headers from Libc 1244.50.9, macOS 10.13.6
+EAPI=7
+HOMEPAGE=https://opensource.apple.com/source/Libc
+IUSE=+man
+KEYWORDS=~x64-macos
+LICENSE=APSL-2
+SLOT=10.13
+SRC_URI=https://opensource.apple.com/tarballs/Libc/Libc-1244.50.9.tar.gz https://opensource.apple.com/tarballs/Libinfo/Libinfo-517.30.1.tar.gz https://opensource.apple.com/tarballs/CommonCrypto/CommonCrypto-60118.50.1.tar.gz https://opensource.apple.com/tarballs/libmalloc/libmalloc-140.50.6.tar.gz https://opensource.apple.com/tarballs/libpthread/libpthread-301.50.1.tar.gz https://opensource.apple.com/tarballs/libplatform/libplatform-161.50.1.tar.gz https://opensource.apple.com/tarballs/libunwind/libunwind-35.3.tar.gz https://opensource.apple.com/tarballs/libclosure/libclosure-67.tar.gz https://opensource.apple.com/tarballs/dyld/dyld-551.4.tar.gz https://dev.gentoo.org/~grobian/distfiles/darwin-libc-headers-10.13.tar.gz
+_md5_=5fb2e9102e0ac2ed9454fca82cfc6220
