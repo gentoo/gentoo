@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,12 +9,12 @@ inherit cmake-utils fortran-2 toolchain-funcs flag-o-matic
 
 DESCRIPTION="Parallel matrix preconditioners library"
 HOMEPAGE="https://computation.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods"
-SRC_URI="${HOMEPAGE}/download/${P}.tar.gz"
+SRC_URI="https://github.com/${PN}-space/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="debug doc examples fei fortran int64 openmp mpi"
+IUSE="debug examples fortran int64 openmp mpi"
 
 RDEPEND="
 	sci-libs/superlu:=
@@ -25,9 +25,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( CHANGELOG COPYRIGHT README )
-
-# 2.11.1: fei and mli wrappers still buggy with big integers
-REQUIRED_USE="int64? ( !fei )"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] &&\
@@ -78,8 +75,6 @@ src_configure() {
 		$(use_enable openmp hopscotch) \
 		$(use_enable int64 bigint) \
 		$(use_enable fortran) \
-		$(use_with fei) \
-		$(use_with fei mli) \
 		$(use_with openmp) \
 		$(use_with mpi MPI)
 }
@@ -99,7 +94,6 @@ src_install() {
 		  HYPRE_INSTALL_DIR="${ED}" \
 		  HYPRE_LIB_INSTALL="${ED}/usr/$(get_libdir)" \
 		  HYPRE_INC_INSTALL="${ED}$/usr/include/hypre"
-	use doc && dodoc docs/*.pdf
 	if use examples; then
 		insinto /usr/share/doc/${PF}
 		doins -r src/examples
