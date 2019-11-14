@@ -1,0 +1,38 @@
+--- magicrescue-1.1.9/config.d/50dbm	2008-06-27 00:24:05.000000000 +0400
++++ magicrescue-1.1.9.new//config.d/50dbm	2012-05-13 07:56:16.000000000 +0400
+@@ -14,18 +14,14 @@
+ 	    flag="`echo $flag|sed 's/./-l&/'`"
+ 	    echo "trying to link with flags [$flag]" >&5
+ 	    
+-	    bak_LDFLAGS="$LDFLAGS"
+-	    LDFLAGS="$LDFLAGS $flag"
++            LIBS="$flag"
+ 	    if conftest_link; then
+ 		# we found it!
+-		LDFLAGS="$bak_LDFLAGS"
+ 		DBM_LDFLAGS="$flag"
+ 		env_vars="$env_vars DBM_LDFLAGS"
+ 		echo "#define $dbmdef" >> config.h
+ 		echo "#define HAVE_NDBM" >> config.h
+ 		return 0
+-	    else
+-		LDFLAGS="$bak_LDFLAGS"
+ 	    fi
+ 	done
+ 	
+Common subdirectories: a/config.d and b/config.d
+diff -u a/configure b/configure
+--- a/configure	2018-11-24 20:21:20.000000000 +0100
++++ b/configure	2019-11-12 22:13:03.744338398 +0100
+@@ -63,9 +63,9 @@
+ }
+ 
+ conftest_link() {
+-    echo "$CC -o conftest conftest.o $LDFLAGS" >&5
++    echo "$CC -o conftest conftest.o $LDFLAGS $LIBS" >&5
+     echo >&5
+-    $CC -o conftest conftest.o $LDFLAGS >&5 2>&5 \
++    $CC -o conftest conftest.o $LDFLAGS $LIBS >&5 2>&5 \
+ 	&& [ -x conftest ] && ./conftest 2>&5
+ }
+ 
