@@ -1,0 +1,69 @@
+From 9bf6937633b35cc92bbf30e9eec91ef3c4bb6aad Mon Sep 17 00:00:00 2001
+From: Till Kamppeter <till.kamppeter@gmail.com>
+Date: Wed, 13 Nov 2019 18:49:01 +0100
+Subject: [PATCH] cups-browsed: Added missing memory allocations leading to a
+ segfault.
+
+---
+ NEWS                 |  5 +++++
+ utils/cups-browsed.c | 21 ++++++++++++---------
+ 2 files changed, 17 insertions(+), 9 deletions(-)
+
+diff --git a/NEWS b/NEWS
+index 67d1c18f..2de5dab4 100644
+--- a/NEWS
++++ b/NEWS
+@@ -1,6 +1,11 @@
+ NEWS - OpenPrinting CUPS Filters v1.25.12 - 2019-11-12
+ ------------------------------------------------------
+ 
++CHANGES IN V1.25.13
++
++	- cups-browsed: Added some missing memory allocations leading
++	  to a segfault (Issue #175).
++
+ CHANGES IN V1.25.12
+ 
+ 	- libcupsfilters: Use the text names "Draft", "Normal", and
+diff --git a/utils/cups-browsed.c b/utils/cups-browsed.c
+index adbf5002..f0e05746 100644
+--- a/utils/cups-browsed.c
++++ b/utils/cups-browsed.c
+@@ -2837,6 +2837,15 @@ void get_cluster_default_attributes(ipp_t** merged_attributes,
+       debug_printf("Default MediaType: %s\n", media_type);
+     }
+       
++    if (temp->media_type == NULL) {
++      if (cluster_supports_given_attribute(cluster_name, IPP_TAG_KEYWORD,
++					   "media-type-supported")) {
++        temp->media_type = (char*)malloc(sizeof(char)*32);
++        strcpy(temp->media_type, AUTO_OPTION);
++        debug_printf("Default MediaType: " AUTO_OPTION "\n");
++      }
++    }
++
+     if ((media_attr = ippFindAttribute(media_col, "media-source",
+ 				       IPP_TAG_KEYWORD)) != NULL) {
+       pwg_ppdize_name(ippGetString(media_attr, 0, NULL), media_source,
+@@ -2852,18 +2861,12 @@ void get_cluster_default_attributes(ipp_t** merged_attributes,
+     if (temp->media_source == NULL) {
+       if (cluster_supports_given_attribute(cluster_name, IPP_TAG_KEYWORD,
+ 					   "media-source-supported")) {
+-        strcpy(temp->media_source,AUTO_OPTION);
+-        debug_printf("Default MediaSource: %s\n", media_source);
++        temp->media_source = (char*)malloc(sizeof(char)*32);
++        strcpy(temp->media_source, AUTO_OPTION);
++        debug_printf("Default MediaSource: " AUTO_OPTION "\n");
+       }
+     }
+ 
+-    if (temp->media_type == NULL) {
+-      if (cluster_supports_given_attribute(cluster_name, IPP_TAG_KEYWORD,
+-					   "media-type-supported")) {
+-        strcpy(temp->media_type, AUTO_OPTION);
+-        debug_printf("Default MediaType: %s\n", media_type);
+-      }
+-    }
+     media_col_default = ippAddCollection(*merged_attributes, IPP_TAG_PRINTER,
+ 					 "media-col-default", NULL);
+     current_media = create_media_col(temp->x, temp->y, temp->left_margin,
