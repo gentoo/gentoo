@@ -105,8 +105,8 @@ src_configure() {
 	# The paths in the web server configuration files need to match
 	# those passed to econf above.
 	cp "${FILESDIR}/99_nagios4-r1.conf" \
-	   "${FILESDIR}/lighttpd_nagios4-r1.conf" \
-	   "${T}/" || die "failed to create copies of web server conf files"
+		"${FILESDIR}/lighttpd_nagios4-r1.conf" \
+		"${T}/" || die "failed to create copies of web server conf files"
 
 	sed -e "s|@CGIBINDIR@|${EPREFIX}/usr/$(get_libdir)/nagios/cgi-bin|g" \
 		-e "s|@WEBDIR@|${EPREFIX}/usr/share/nagios/htdocs|" \
@@ -189,7 +189,7 @@ src_install() {
 		if use apache2 ; then
 			# Install the Nagios configuration file for Apache.
 			insinto "/etc/apache2/modules.d"
-			doins "${T}/99_nagios4-r1.conf"
+			newins "${T}/99_nagios4-r1.conf" "99_nagios4.conf"
 		elif use lighttpd ; then
 			# Install the Nagios configuration file for Lighttpd.
 			insinto /etc/lighttpd
