@@ -1,0 +1,124 @@
+From d2810741c2166354d7c95d4101eea52035d4fdf5 Mon Sep 17 00:00:00 2001
+From: "Friedrich W. H. Kossebau" <kossebau@kde.org>
+Date: Mon, 4 Nov 2019 12:04:56 +0100
+Subject: Fix ECMSetupVersion tests for old policy with project() wo/ VERSION
+
+With min required cmake version now bumped to 3.5, the policy for CMP0048
+needs to be set explicitly to old now to prepare what the tests check.
+
+Fixup for 5ca01895e3c50322f79feeef5054d7f28b164d68
+---
+ tests/ECMSetupVersionTest/old_header/CMakeLists.txt                 | 1 +
+ tests/ECMSetupVersionTest/old_header_abspath/CMakeLists.txt         | 1 +
+ tests/ECMSetupVersionTest/old_simple/CMakeLists.txt                 | 1 +
+ tests/ECMSetupVersionTest/old_soversion/CMakeLists.txt              | 1 +
+ tests/ECMSetupVersionTest/old_version_file/CMakeLists.txt           | 1 +
+ tests/ECMSetupVersionTest/old_version_file_abspath/CMakeLists.txt   | 1 +
+ tests/ECMSetupVersionTest/old_version_file_anynewer/CMakeLists.txt  | 1 +
+ tests/ECMSetupVersionTest/old_version_file_exact/CMakeLists.txt     | 1 +
+ tests/ECMSetupVersionTest/old_version_file_samemajor/CMakeLists.txt | 1 +
+ 9 files changed, 9 insertions(+)
+
+(limited to 'tests')
+
+diff --git a/tests/ECMSetupVersionTest/old_header/CMakeLists.txt b/tests/ECMSetupVersionTest/old_header/CMakeLists.txt
+index ea5ef2b..2bf8374 100644
+--- a/tests/ECMSetupVersionTest/old_header/CMakeLists.txt
++++ b/tests/ECMSetupVersionTest/old_header/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ cmake_minimum_required(VERSION 3.5)
+ 
++cmake_policy(SET CMP0048 OLD)
+ project(old_header)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../modules)
+diff --git a/tests/ECMSetupVersionTest/old_header_abspath/CMakeLists.txt b/tests/ECMSetupVersionTest/old_header_abspath/CMakeLists.txt
+index 8fbc211..1080a0e 100644
+--- a/tests/ECMSetupVersionTest/old_header_abspath/CMakeLists.txt
++++ b/tests/ECMSetupVersionTest/old_header_abspath/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ cmake_minimum_required(VERSION 3.5)
+ 
++cmake_policy(SET CMP0048 OLD)
+ project(old_header_abspath)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../modules)
+diff --git a/tests/ECMSetupVersionTest/old_simple/CMakeLists.txt b/tests/ECMSetupVersionTest/old_simple/CMakeLists.txt
+index 80e670e..30a26fd 100644
+--- a/tests/ECMSetupVersionTest/old_simple/CMakeLists.txt
++++ b/tests/ECMSetupVersionTest/old_simple/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ cmake_minimum_required(VERSION 3.5)
+ 
++cmake_policy(SET CMP0048 OLD)
+ project(old_simple)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../modules)
+diff --git a/tests/ECMSetupVersionTest/old_soversion/CMakeLists.txt b/tests/ECMSetupVersionTest/old_soversion/CMakeLists.txt
+index 9d87e14..3e16b99 100644
+--- a/tests/ECMSetupVersionTest/old_soversion/CMakeLists.txt
++++ b/tests/ECMSetupVersionTest/old_soversion/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ cmake_minimum_required(VERSION 3.5)
+ 
++cmake_policy(SET CMP0048 OLD)
+ project(old_soversion)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../modules)
+diff --git a/tests/ECMSetupVersionTest/old_version_file/CMakeLists.txt b/tests/ECMSetupVersionTest/old_version_file/CMakeLists.txt
+index 8544e37..712a55a 100644
+--- a/tests/ECMSetupVersionTest/old_version_file/CMakeLists.txt
++++ b/tests/ECMSetupVersionTest/old_version_file/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ cmake_minimum_required(VERSION 3.5)
+ 
++cmake_policy(SET CMP0048 OLD)
+ project(old_version_file)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../modules)
+diff --git a/tests/ECMSetupVersionTest/old_version_file_abspath/CMakeLists.txt b/tests/ECMSetupVersionTest/old_version_file_abspath/CMakeLists.txt
+index ee4a5ee..6a17ce5 100644
+--- a/tests/ECMSetupVersionTest/old_version_file_abspath/CMakeLists.txt
++++ b/tests/ECMSetupVersionTest/old_version_file_abspath/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ cmake_minimum_required(VERSION 3.5)
+ 
++cmake_policy(SET CMP0048 OLD)
+ project(old_version_file_abspath)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../modules)
+diff --git a/tests/ECMSetupVersionTest/old_version_file_anynewer/CMakeLists.txt b/tests/ECMSetupVersionTest/old_version_file_anynewer/CMakeLists.txt
+index 445fd24..ba31da2 100644
+--- a/tests/ECMSetupVersionTest/old_version_file_anynewer/CMakeLists.txt
++++ b/tests/ECMSetupVersionTest/old_version_file_anynewer/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ cmake_minimum_required(VERSION 3.5)
+ 
++cmake_policy(SET CMP0048 OLD)
+ project(old_version_file_anynewer)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../modules)
+diff --git a/tests/ECMSetupVersionTest/old_version_file_exact/CMakeLists.txt b/tests/ECMSetupVersionTest/old_version_file_exact/CMakeLists.txt
+index fbf8e9a..4c80712 100644
+--- a/tests/ECMSetupVersionTest/old_version_file_exact/CMakeLists.txt
++++ b/tests/ECMSetupVersionTest/old_version_file_exact/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ cmake_minimum_required(VERSION 3.5)
+ 
++cmake_policy(SET CMP0048 OLD)
+ project(old_version_file_exact)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../modules)
+diff --git a/tests/ECMSetupVersionTest/old_version_file_samemajor/CMakeLists.txt b/tests/ECMSetupVersionTest/old_version_file_samemajor/CMakeLists.txt
+index 8ac01d1..27a9ba8 100644
+--- a/tests/ECMSetupVersionTest/old_version_file_samemajor/CMakeLists.txt
++++ b/tests/ECMSetupVersionTest/old_version_file_samemajor/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ cmake_minimum_required(VERSION 3.5)
+ 
++cmake_policy(SET CMP0048 OLD)
+ project(old_version_file_samemajor)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../modules)
+-- 
+cgit v1.1
