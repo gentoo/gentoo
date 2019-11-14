@@ -53,6 +53,10 @@ BDEPEND="
 	test? ( media-fonts/dejavu )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-browsed_segfault.patch" #700024
+)
+
 src_prepare() {
 	default
 	[[ "${PV}" == "9999" ]] && eautoreconf
