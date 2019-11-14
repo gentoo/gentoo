@@ -56,6 +56,8 @@ DEPEND="${RDEPEND}
 	>=dev-qt/qtnetwork-${QTMIN}:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-telepathy-0.9.8.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package sso KAccounts)
