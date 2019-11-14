@@ -144,7 +144,6 @@ PATCHES=(
 	"${FILESDIR}/chromium-fix-char_traits.patch"
 	"${FILESDIR}/chromium-unbundle-zlib-r1.patch"
 	"${FILESDIR}/chromium-77-system-icu.patch"
-	"${FILESDIR}/chromium-78-icon.patch"
 	"${FILESDIR}/chromium-78-protobuf-export.patch"
 	"${FILESDIR}/chromium-79-system-hb.patch"
 	"${FILESDIR}/chromium-79-include.patch"
