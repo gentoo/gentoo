@@ -17,11 +17,13 @@ HOMEPAGE="https://audacious-media-player.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac adplug +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify libsamplerate
-	lirc mms modplug mp3 nls opengl pulseaudio qt5 qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
+IUSE="aac adplug +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gtk http gme
+	jack lame libav libnotify libsamplerate lirc mms modplug mp3 nls opengl
+	pulseaudio qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
 	|| ( alsa jack pulseaudio qtmedia sdl )
-	ampache? ( qt5 http ) qtmedia? ( qt5 )"
+	ampache? ( http )
+	gtk? ( !ampache !qtmedia )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
 # builds do NOT install the libaudgui library & headers.
@@ -50,7 +52,7 @@ DEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib
 	dev-libs/libxml2:2
-	~media-sound/audacious-${PV}[qt5=]
+	~media-sound/audacious-${PV}[gtk=]
 	aac? ( >=media-libs/faad2-2.7 )
 	adplug? ( media-libs/adplug )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
@@ -68,6 +70,17 @@ DEPEND="
 		>=media-libs/libvorbis-1.0
 	)
 	fluidsynth? ( media-sound/fluidsynth:= )
+	gtk? (
+		x11-libs/gtk+:2
+		x11-libs/libXcomposite
+		x11-libs/libXrender
+	)
+	!gtk? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+		opengl? ( dev-qt/qtopengl:5 )
+	)
 	http? ( >=net-libs/neon-0.26.4 )
 	jack? (
 		>=media-libs/bio2jack-0.4
@@ -81,17 +94,6 @@ DEPEND="
 	modplug? ( media-libs/libmodplug )
 	mp3? ( >=media-sound/mpg123-1.12.1 )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
-	!qt5? (
-		x11-libs/gtk+:2
-		x11-libs/libXcomposite
-		x11-libs/libXrender
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		opengl? ( dev-qt/qtopengl:5 )
-	)
 	qtmedia? ( dev-qt/qtmultimedia:5 )
 	scrobbler? ( net-misc/curl )
 	sdl? ( media-libs/libsdl2[sound] )
@@ -137,6 +139,10 @@ src_configure() {
 		$(use_enable flac filewriter)
 		$(use_enable fluidsynth amidiplug)
 		$(use_enable gme console)
+		$(use_enable gtk aosd)
+		$(use_enable gtk gtk)
+		$(use_enable gtk hotkey)
+		$(use_enable !gtk qt)
 		$(use_enable http neon)
 		$(use_enable jack)
 		$(use_enable lame filewriter_mp3)
@@ -148,10 +154,6 @@ src_configure() {
 		$(use_enable mp3 mpg123)
 		$(use_enable nls)
 		$(use_enable pulseaudio pulse)
-		$(use_enable !qt5 aosd)
-		$(use_enable !qt5 gtk)
-		$(use_enable !qt5 hotkey)
-		$(use_enable qt5 qt)
 		$(use_enable qtmedia qtaudio)
 		$(use_enable scrobbler scrobbler2)
 		$(use_enable sdl sdlout)
@@ -163,7 +165,9 @@ src_configure() {
 		$(use_enable wavpack)
 		$(use_with ffmpeg ffmpeg $(usex libav libav ffmpeg))
 	)
-	use qt5 && myeconfargs+=( $(usex opengl --enable-qtglspectrum --disable-qtglspectrum) )
+	use !gtk && myeconfargs+=(
+		$(usex opengl --enable-qtglspectrum --disable-qtglspectrum)
+	)
 
 	econf "${myeconfargs[@]}"
 }
