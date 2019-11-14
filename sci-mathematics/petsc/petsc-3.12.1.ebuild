@@ -36,7 +36,7 @@ RDEPEND="
 	boost? ( dev-libs/boost )
 	fftw? ( sci-libs/fftw:3.0[mpi?] )
 	hdf5? ( sci-libs/hdf5[mpi?] )
-	hypre? ( >=sci-libs/hypre-2.8.0b[mpi?] )
+	hypre? ( >=sci-libs/hypre-2.18.0[mpi?] )
 	metis? ( >=sci-libs/parmetis-4 )
 	mpi? ( virtual/mpi[cxx?,fortran?] )
 	mumps? ( sci-libs/mumps[mpi?] sci-libs/scalapack )
@@ -53,8 +53,9 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.7.0-disable-rpath.patch \
+	"${FILESDIR}"/${PN}-3.7.0-disable-rpath.patch
 	"${FILESDIR}"/${PN}-3.9.0-fix_sandbox_violation.patch
+	"${FILESDIR}"/${PN}-3.12.1-make_hypre_configure.patch
 )
 
 src_prepare() {
