@@ -63,6 +63,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.3-makefile-dirs.patch
 	"${FILESDIR}"/${PN}-1.3.3-visibility.patch
 	"${FILESDIR}"/${PN}-1.3.4-conf-tests.patch
+	"${FILESDIR}"/${PN}-1.3.5-cmake.patch
+	"${FILESDIR}"/${PN}-1.3.5-optim.patch
 )
 
 src_prepare() {
@@ -77,10 +79,6 @@ src_prepare() {
 		-e "/^docdir/s:fltk:${PF}/html:" \
 		-e "/SILENT:/d" \
 		makeinclude.in || die
-	sed -e "s/7/${PV}/" \
-		< "${FILESDIR}"/FLTKConfig.cmake \
-		> CMake/FLTKConfig.cmake || die
-	sed -e 's:-Os::g' -i configure.ac || die
 
 	# also in Makefile:config.guess config.sub:
 	cp misc/config.{guess,sub} . || die
