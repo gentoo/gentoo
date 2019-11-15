@@ -42,7 +42,7 @@ pkg_preinst() {
 
 	_cleanup() {
 		local pyver=$("${PYTHON}" -c "from distutils.sysconfig import get_python_version; print(get_python_version())")
-		local egginfo="${ROOT%/}$(python_get_sitedir)/${P}-py${pyver}.egg-info"
+		local egginfo="${ROOT}$(python_get_sitedir)/${P}-py${pyver}.egg-info"
 		if [[ -d ${egginfo} ]]; then
 			rm -rv "${egginfo}" || die "Failed to remove egg-info directory"
 		fi
