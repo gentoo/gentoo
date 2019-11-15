@@ -42,9 +42,12 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
+		dev-python/argcomplete[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2)
+		dev-python/pexpect[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		!!dev-python/flaky
 	)"
