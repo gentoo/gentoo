@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-flex-2.6.3.patch
 	"${FILESDIR}"/${P}-ia16-ldflags.patch
 	"${FILESDIR}"/${P}-fix-inline.patch
+	"${FILESDIR}"/${P}-lto.patch
 )
 
 src_prepare() {
