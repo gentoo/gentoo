@@ -1,16 +1,15 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-EGO_PN=github.com/containers/skopeo
-COMMIT=e079f9d
-inherit golang-vcs-snapshot bash-completion-r1
+EAPI=7
+COMMIT=be6146b
+inherit go-module bash-completion-r1
 
 DESCRIPTION="Command line utility foroperations on container images and image repositories"
 HOMEPAGE="https://github.com/containers/skopeo"
 SRC_URI="https://github.com/containers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
@@ -24,14 +23,12 @@ DEPEND="${COMMON_DEPEND}
 	dev-go/go-md2man"
 RDEPEND="${COMMON_DEPEND}"
 
-S="${WORKDIR}/${P}/src/${EGO_PN}"
-
 RESTRICT="test"
 
 src_compile() {
 	local BUILDTAGS="containers_image_ostree_stub"
-	set -- env -u GOCACHE -u XDG_CACHE_HOME GOPATH="${WORKDIR}/${P}" \
-		go build -ldflags "-X main.gitCommit=${COMMIT}" \
+	set -- env -u GOCACHE -u XDG_CACHE_HOME \
+		go build -mod=vendor -ldflags "-X main.gitCommit=${COMMIT}" \
 		-gcflags "${GOGCFLAGS}" -tags "${BUILDTAGS}" \
 		-o skopeo ./cmd/skopeo
 	echo "$@"
