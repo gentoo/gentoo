@@ -34,6 +34,8 @@ BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/${PN}-release-${PV}
 
+RESTRICT="!test? ( test )"
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
