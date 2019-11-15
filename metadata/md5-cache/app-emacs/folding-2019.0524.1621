@@ -3,10 +3,10 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=A folding-editor-like Emacs minor mode
 EAPI=7
 HOMEPAGE=https://www.emacswiki.org/emacs/FoldingMode
-KEYWORDS=~alpha ~amd64 ~x86
+KEYWORDS=alpha amd64 x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/jaalto/project-emacs--folding-mode/archive/a1361aa154b27bd4db2e1cfe6c3b81b4fc1fdc9a.tar.gz -> folding-2019.0524.1621.tar.gz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=48f65dd11a0d2d74a3bebd89024a5edb
+_md5_=aef9c145a5d9cf4bdf57cb6aae0e55d1
