@@ -12,7 +12,7 @@ SRC_URI="https://github.com/joodland/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="amd64 ~sparc x86"
 
 ELISP_REMOVE="bm-tests.el"
 SITEFILE="50${PN}-gentoo.el"
