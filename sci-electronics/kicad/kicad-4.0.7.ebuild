@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,7 +37,7 @@ COMMON_DEPEND=">=x11-libs/wxGTK-3.0.2:${WX_GTK_VER}[X,opengl]
 		dev-python/wxpython:${WX_GTK_VER}[opengl,${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 	)
-	>=dev-libs/boost-1.61[context,nls,threads,python?,${PYTHON_USEDEP}]
+	>=dev-libs/boost-1.61:=[context,nls,threads,python?,${PYTHON_USEDEP}]
 	github? (
 		libressl? ( dev-libs/libressl:0= )
 		!libressl? ( dev-libs/openssl:0= )
