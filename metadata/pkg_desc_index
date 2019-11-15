@@ -4856,7 +4856,7 @@ dev-libs/libbase58 0.1.4: C implementation of Bitcoin's base58 encoding
 dev-libs/libbpf 0.0.3 0.0.4 0.0.5: Stand-alone build of libbpf from the Linux kernel
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
 dev-libs/libbsd 0.9.1 0.10.0: An library to provide useful functions commonly found on BSD systems
-dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0 1.13.1 1.14.0: Library routines related to building,parsing and iterating BSON documents
+dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0 1.13.1 1.14.0 1.15.1: Library routines related to building,parsing and iterating BSON documents
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.5.0 1.5.2: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 1.4 2.1: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
@@ -5060,7 +5060,7 @@ dev-libs/mathjax 2.7.0 2.7.4: JavaScript display engine for LaTeX, MathML and As
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
 dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder and encoder
-dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0: Client library written in C for MongoDB
+dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1: Client library written in C for MongoDB
 dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for MongoDB
 dev-libs/mpc 1.0.3 1.0.3-r2 1.1.0-r1: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 2.4.2_p3-r1 3.1.3_p4 3.1.4 3.1.5_p2 3.1.6 4.0.0-r1 4.0.1 4.0.2: library for multiple-precision floating-point computations with exact rounding
@@ -7259,7 +7259,7 @@ dev-php/pecl-mcrypt 1.0.1 1.0.2 1.0.3: Bindings for the libmcrypt library
 dev-php/pecl-memcache 3.0.8-r2 3.0.8-r3: PHP extension for using memcached
 dev-php/pecl-memcached 2.2.0-r2 3.0.4 3.1.3 3.1.3-r1: Interface PHP with memcached via libmemcached library
 dev-php/pecl-mongo 1.6.14-r1 1.6.16: Legacy MongoDB database driver for PHP
-dev-php/pecl-mongodb 1.3.3 1.5.3 1.5.3-r1 1.5.5: MongoDB database driver for PHP
+dev-php/pecl-mongodb 1.3.3 1.5.3 1.5.3-r1 1.5.5 1.6.0: MongoDB database driver for PHP
 dev-php/pecl-mysqlnd_ms 1.6.0_pre20141127: A replication and load balancing plugin for the mysqlnd library
 dev-php/pecl-mysqlnd_qc 1.2.0-r2: A query cache plugin for the mysqlnd library
 dev-php/pecl-ncurses 1.0.2-r5: Terminal screen handling and optimization package
@@ -17507,7 +17507,7 @@ sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster f
 sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.7 2.0.2 2.0.4 2.1.6 3.0.4 3.1.4 4.0.1-r1 4.0.2: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2019.1.9999 2019.2.1 2019.2.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
-sys-cluster/pacemaker 1.1.16 1.1.19: Pacemaker CRM
+sys-cluster/pacemaker 1.1.16 1.1.19 1.1.19-r1: Pacemaker CRM
 sys-cluster/pbs-python 4.3.3-r1: Python bindings to the Torque C API
 sys-cluster/pconsole 1.0-r4: Tool for managing multiple xterms simultaneously
 sys-cluster/placement 1.0.0-r1 2.0.0 2019.1.9999 2019.2.9999: A HTTP service for managing, selecting, and claiming cloud resources.
