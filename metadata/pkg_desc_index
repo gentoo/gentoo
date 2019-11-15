@@ -8271,7 +8271,7 @@ dev-python/ovs 2.7.0 2.7.2 2.8.1 2.9.2 2.10.0-r1 2.11.0: OVS bindings for python
 dev-python/ovsdbapp 0.12.2 0.15.0: A library for creating OVSDB applications
 dev-python/owslib 0.16.0-r1 0.17.1: Library for client programming with Open Geospatial Consortium web service
 dev-python/pSQL 1.2.1: MySQL abstraction layer for python
-dev-python/packaging 16.8 17.1 18.0: Core utilities for Python packages
+dev-python/packaging 16.8 18.0 19.2: Core utilities for Python packages
 dev-python/pafy 0.5.3.1 0.5.4 9999: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.4.0: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/paisley 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
@@ -8336,7 +8336,7 @@ dev-python/pkginfo 1.2.1 1.4.2: Provides an API for querying the distutils metad
 dev-python/pkipplib 0.07-r1: Pkipplib is a Python module which parses IPP requests
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
 dev-python/plotly 1.9.6: Browser-based graphing library for Python
-dev-python/pluggy 0.5.2 0.6.0 0.7.1 0.11.0 0.12.0: plugin and hook calling mechanisms for python
+dev-python/pluggy 0.5.2 0.7.1 0.11.0 0.12.0 0.13.0: plugin and hook calling mechanisms for python
 dev-python/pluginbase 0.5: Support library for building plugins sytems in Python
 dev-python/plumbum 1.6.4 1.6.7: A library for shell script-like programs in python
 dev-python/ply 3.6-r1 3.9 3.10 3.11: Python Lex-Yacc library
