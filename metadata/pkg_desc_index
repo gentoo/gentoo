@@ -16998,7 +16998,7 @@ sys-apps/apparmor 2.13.1-r1 2.13.3: Userspace utils and init scripts for the App
 sys-apps/apparmor-utils 2.13.1 2.13.3: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.4.2: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
-sys-apps/attr 2.4.47-r2 2.4.48-r3: Extended attributes tools
+sys-apps/attr 2.4.47-r2 2.4.48-r3 9999: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
 sys-apps/baobab 3.30.0 3.34.0: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
@@ -17520,7 +17520,7 @@ sys-cluster/rdma-core 24.0 25.0 26.0 9999: Userspace components for the Linux Ke
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
 sys-cluster/singularity 2.6.1: Application containers for Linux
-sys-cluster/slurm 18.08.7 19.05.3.2: A Highly Scalable Resource Manager
+sys-cluster/slurm 18.08.7 19.05.3.2 19.05.4.1: A Highly Scalable Resource Manager
 sys-cluster/spark-bin 2.3.1-r1 2.4.4-r1: Lightning-fast unified analytics engine
 sys-cluster/swift 2.21.0-r1 2.22.0 2.23.1 2019.1.9999 2019.2.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 4.0.9 4.0.10 4.1.1 4.1.4 9999: Modern SSH server for teams managing distributed infrastructure
