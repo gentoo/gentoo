@@ -1296,7 +1296,7 @@ app-emacs/fff 20050517: Fast file finder for Emacs
 app-emacs/filladapt 2.12-r1: Filladapt enhances the behavior of Emacs' fill functions
 app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and answers
 app-emacs/flim 1.14.9-r2 1.14.9_p20190526: A library to provide basic features about message representation or encoding
-app-emacs/folding 2013.0613.1821 2019.0524.1621: A folding-editor-like Emacs minor mode
+app-emacs/folding 2019.0524.1621: A folding-editor-like Emacs minor mode
 app-emacs/ghc-mod 5.4.0.0 5.5.0.0-r1 5.7.0.0: Happy Haskell Programming
 app-emacs/ghub 2.0.1 3.0.0 3.2.0: Minuscule client library for the Git forge APIs
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
@@ -1309,7 +1309,7 @@ app-emacs/h4x0r 0.13-r1: Aid in writing like a script kiddie does
 app-emacs/haskell-mode 16.1: Mode for editing (and running) Haskell programs in Emacs
 app-emacs/helm 3.2: Emacs incremental completion and selection narrowing framework
 app-emacs/helm-system-packages 1.10.1: A Helm interface to the package manager of your operating system
-app-emacs/hexrgb 0_p957 0_p1019: Functions to manipulate colors, including RGB hex strings
+app-emacs/hexrgb 0_p1019: Functions to manipulate colors, including RGB hex strings
 app-emacs/highline 7.2.2: Minor mode to highlight current line in buffer
 app-emacs/howm 1.4.3 1.4.5: Note-taking tool on Emacs
 app-emacs/htmlize 1.54: HTML-ize font-lock buffers in Emacs
@@ -1324,7 +1324,7 @@ app-emacs/jde 2.4.1: Java Development Environment for Emacs
 app-emacs/keywiz 1.4: Emacs key sequence quiz
 app-emacs/ledger-mode 3.1.1: An Emacs major mode for editing ledger files
 app-emacs/lookup 1.99.96_pre20180209: An interface to search CD-ROM books and network dictionaries
-app-emacs/lua-mode 20130419 20151025: An Emacs major mode for editing Lua scripts
+app-emacs/lua-mode 20151025: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20180410: Elisp client for the LysKOM conference system
 app-emacs/magit 2.11.0 2.12.1 2.13.1 2.90.1: A Git porcelain inside Emacs
 app-emacs/magit-popup 2.12.3 2.12.4 2.13.0: Define prefix-infix-suffix command combos
@@ -1389,14 +1389,14 @@ app-emacs/session 2.3a 2.4b: When you start Emacs, Session restores various vari
 app-emacs/setnu 1.06: Display line numbers in Emacs buffers
 app-emacs/slime 2.15 2.20 2.20-r1 2.21: SLIME, the Superior Lisp Interaction Mode (Extended)
 app-emacs/sml-mode 6.4 6.9: Emacs major mode for editing Standard ML
-app-emacs/sokoban 1.4 1.4.8: Implementation of Sokoban for Emacs
+app-emacs/sokoban 1.4.8: Implementation of Sokoban for Emacs
 app-emacs/ssh 20120709: Support for SSH sessions in Emacs shell buffers
 app-emacs/stripes 0.2-r2: An Emacs mode that alternates the background color of lines
 app-emacs/sumibi 0.7.4: Statistical Japanese input method using the Internet as a large corpus
 app-emacs/teco 7-r2: TECO interpreter for GNU Emacs
 app-emacs/template 3.1c-r1 3.3b: Use templates, decorate comments, auto-update buffers
 app-emacs/tempo-snippets 0.1.5: Visual insertion of tempo templates
-app-emacs/thinks 1.9 1.12: Insert text in a think bubble
+app-emacs/thinks 1.12: Insert text in a think bubble
 app-emacs/treepy 0.1.1: Generic tree traversing tools for Emacs Lisp
 app-emacs/tuareg-mode 2.2.0: An Objective Caml/Camllight mode for Emacs
 app-emacs/twittering-mode 2.0.0 3.0.0 9999: Emacs major mode for Twitter
@@ -1405,7 +1405,7 @@ app-emacs/uboat 1.2: Generate u-boat-death messages, patterned after Iron Coffin
 app-emacs/undo-tree 0.6.6: Undo trees and visualization
 app-emacs/uptimes 3.7: Track and display emacs session uptimes
 app-emacs/vhdl-mode 3.38.1: VHDL-mode for Emacs
-app-emacs/visual-basic-mode 1.4.12 1.5: A mode for editing Visual Basic programs
+app-emacs/visual-basic-mode 1.5: A mode for editing Visual Basic programs
 app-emacs/vm 8.2.0_beta-r1 9999: The VM mail reader for Emacs
 app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
 app-emacs/w3mnav 0.5-r3: Add Info-like navigation keys to the emacs-w3m web browser
@@ -14012,7 +14012,7 @@ media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.4.5 0.6.0 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.3-r1 0.6.4-r1: An arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 1.3.2 1.3.3 1.3.4 9999: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 1.3.2 1.3.4 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsampler 0.5.6: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.5.6 0.6.0 9999: A Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
