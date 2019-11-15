@@ -1,0 +1,269 @@
+diff --git a/tests/test_future/test_backports.py b/tests/test_future/test_backports.py
+index 9eeb741..63b1afe 100644
+--- a/tests/test_future/test_backports.py
++++ b/tests/test_future/test_backports.py
+@@ -87,7 +87,8 @@ class TestChainMap(unittest.TestCase):
+         d['b'] = 20
+         d['c'] = 30
+         self.assertEqual(d.maps, [{'b':20, 'c':30}, {'a':1, 'b':2}])  # check internal state
+-        self.assertEqual(d.items(), dict(a=1, b=20, c=30).items())    # check items/iter/getitem
++        self.assertEqual(sorted(d.items()),
++                         sorted(dict(a=1, b=20, c=30).items()))       # check items/iter/getitem
+         self.assertEqual(len(d), 3)                                   # check len
+         for key in 'abc':                                             # check contains
+             self.assertIn(key, d)
+@@ -96,7 +97,8 @@ class TestChainMap(unittest.TestCase):
+ 
+         del d['b']                                                    # unmask a value
+         self.assertEqual(d.maps, [{'c':30}, {'a':1, 'b':2}])          # check internal state
+-        self.assertEqual(d.items(), dict(a=1, b=2, c=30).items())     # check items/iter/getitem
++        self.assertEqual(sorted(d.items()),
++                         sorted(dict(a=1, b=2, c=30).items()))        # check items/iter/getitem
+         self.assertEqual(len(d), 3)                                   # check len
+         for key in 'abc':                                             # check contains
+             self.assertIn(key, d)
+diff --git a/tests/test_future/test_builtins.py b/tests/test_future/test_builtins.py
+index ca07b9e..944d97b 100644
+--- a/tests/test_future/test_builtins.py
++++ b/tests/test_future/test_builtins.py
+@@ -8,7 +8,7 @@ from future.builtins import (bytes, dict, int, range, round, str, super,
+                              ascii, chr, hex, input, next, oct, open, pow,
+                              filter, map, zip, min, max)
+ 
+-from future.utils import PY3, exec_, native_str, implements_iterator
++from future.utils import PYPY, PY2, PY3, exec_, native_str, implements_iterator
+ from future.tests.base import (unittest, skip26, expectedFailurePY2,
+                                expectedFailurePY26)
+ 
+@@ -699,12 +699,13 @@ class BuiltinTest(unittest.TestCase):
+         self.assertEqual(eval('dir()', g, m), list('xyz'))
+         self.assertEqual(eval('globals()', g, m), g)
+         self.assertEqual(eval('locals()', g, m), m)
+-        self.assertRaises(TypeError, eval, 'a', m)
++        if not (PYPY and PY2):
++            self.assertRaises(TypeError, eval, 'a', m)
+         class A:
+             "Non-mapping"
+             pass
+         m = A()
+-        self.assertRaises(TypeError, eval, 'a', g, m)
++        self.assertRaises((AttributeError, TypeError), eval, 'a', g, m)
+ 
+         # Verify that dict subclasses work as well
+         class D(dict):
+@@ -784,8 +785,9 @@ class BuiltinTest(unittest.TestCase):
+         # self.assertRaisesRegex(NameError, "name 'print' is not defined",
+         #                        exec_, code, {'__builtins__': {}})
+         # Now:
+-        self.assertRaises(NameError,
+-                          exec_, code, {'__builtins__': {}})
++        if not PYPY:
++            self.assertRaises(NameError,
++                              exec_, code, {'__builtins__': {}})
+         # __builtins__ must be a mapping type
+         # Was:
+         # self.assertRaises(TypeError,
+@@ -797,8 +799,9 @@ class BuiltinTest(unittest.TestCase):
+         # Was:
+         # self.assertRaisesRegex(NameError, "__build_class__ not found",
+         #                        exec_, code, {'__builtins__': {}})
+-        self.assertRaises(NameError,
+-                          exec_, code, {'__builtins__': {}})
++        if not PYPY:
++            self.assertRaises(NameError,
++                              exec_, code, {'__builtins__': {}})
+ 
+         class frozendict_error(Exception):
+             pass
+@@ -1304,8 +1307,9 @@ class BuiltinTest(unittest.TestCase):
+         self.assertAlmostEqual(pow(-1, 0.5), 1j)
+         self.assertAlmostEqual(pow(-1, 1/3), 0.5 + 0.8660254037844386j)
+ 
+-        # Raises TypeError in Python < v3.5, ValueError in v3.5:
+-        self.assertRaises((TypeError, ValueError), pow, -1, -2, 3)
++        if sys.hexversion < 0x03080000:
++            # Raises TypeError in Python < v3.5, ValueError in v3.5:
++            self.assertRaises((TypeError, ValueError), pow, -1, -2, 3)
+         self.assertRaises(ValueError, pow, 1, 2, 0)
+ 
+         self.assertRaises(TypeError, pow)
+diff --git a/tests/test_future/test_futurize.py b/tests/test_future/test_futurize.py
+index 0d7c42d..4590185 100644
+--- a/tests/test_future/test_futurize.py
++++ b/tests/test_future/test_futurize.py
+@@ -13,7 +13,7 @@ from lib2to3.pygram import token
+ 
+ from future.tests.base import (CodeHandler, unittest, skip26, reformat_code,
+                                order_future_lines, expectedFailurePY26)
+-from future.utils import PY2
++from future.utils import PY2, PY3, PYPY
+ 
+ 
+ class TestLibFuturize(unittest.TestCase):
+@@ -565,6 +565,7 @@ class TestFuturizeSimple(CodeHandler):
+         #     tarball.write(r2.content)
+ 
+     @expectedFailurePY26
++    @unittest.skipIf(PYPY and PY3, '')
+     def test_raw_input(self):
+         """
+         Passes in a string to the waiting input() after futurize
+diff --git a/tests/test_future/test_int.py b/tests/test_future/test_int.py
+index 573a0d5..6172e48 100644
+--- a/tests/test_future/test_int.py
++++ b/tests/test_future/test_int.py
+@@ -6,7 +6,7 @@ from __future__ import (absolute_import, division,
+                         print_function, unicode_literals)
+ from future.builtins import *
+ from future.tests.base import unittest, expectedFailurePY2
+-from future.utils import PY26, PY2, raise_from
++from future.utils import PY26, PY2, PY3, PYPY, raise_from
+ 
+ import sys
+ import random
+@@ -357,7 +357,8 @@ class IntTestCases(unittest.TestCase):
+         self.assertEqual(int(Foo0()), 42)
+         self.assertEqual(int(Foo1()), 42)
+         self.assertEqual(int(Foo2()), 42)
+-        self.assertEqual(int(Foo3()), 0)
++        if not (PYPY and PY3):
++            self.assertEqual(int(Foo3()), 0)
+         self.assertEqual(int(Foo4()), 42)
+         self.assertRaises(TypeError, int, Foo5())
+ 
+diff --git a/tests/test_future/test_isinstance.py b/tests/test_future/test_isinstance.py
+index 33c0a58..ccda709 100644
+--- a/tests/test_future/test_isinstance.py
++++ b/tests/test_future/test_isinstance.py
+@@ -4,6 +4,7 @@ From the Python 3.3 test suite
+ 
+ from __future__ import (absolute_import, division, unicode_literals)
+ from future.builtins import *
++from future.utils import PYPY
+ 
+ # Tests some corner cases with isinstance() and issubclass().  While these
+ # tests use new style classes and properties, they actually do whitebox
+@@ -264,11 +265,13 @@ class TestIsInstanceIsSubclass(unittest.TestCase):
+         self.assertEqual(True, issubclass(int, (int, (float, int))))
+         self.assertEqual(True, issubclass(str, (str, (Child, NewChild, str))))
+ 
++    @unittest.skipIf(PYPY, '')
+     def test_subclass_recursion_limit(self):
+         # make sure that issubclass raises RuntimeError before the C stack is
+         # blown
+         self.assertRaises(RuntimeError, blowstack, issubclass, str, str)
+ 
++    @unittest.skipIf(PYPY, '')
+     def test_isinstance_recursion_limit(self):
+         # make sure that issubclass raises RuntimeError before the C stack is
+         # blown
+diff --git a/tests/test_future/test_str.py b/tests/test_future/test_str.py
+index 5108548..eac602f 100644
+--- a/tests/test_future/test_str.py
++++ b/tests/test_future/test_str.py
+@@ -201,6 +201,7 @@ class TestStr(unittest.TestCase):
+         with self.assertRaises(TypeError):
+             s.join(byte_strings2)
+ 
++    @unittest.skipIf(utils.PYPY and utils.PY2, '')
+     def test_str_join_staticmethod(self):
+         """
+         Issue #33
+@@ -430,10 +431,11 @@ class TestStr(unittest.TestCase):
+             e = s * long(4)
+             self.assertTrue(isinstance(e, str))
+             self.assertEqual(e, u'ABCABCABCABC')
+-        with self.assertRaises(TypeError):
+-            s * 3.3
+-        with self.assertRaises(TypeError):
+-            s * (3.3 + 3j)
++        if not (utils.PYPY and utils.PY2):
++            with self.assertRaises(TypeError):
++                s * 3.3
++            with self.assertRaises(TypeError):
++                s * (3.3 + 3j)
+ 
+     def test_rmul(self):
+         s = str(u'XYZ')
+@@ -447,10 +449,11 @@ class TestStr(unittest.TestCase):
+             e = long(3) * s
+             self.assertTrue(isinstance(e, str))
+             self.assertEqual(e, u'XYZXYZXYZ')
+-        with self.assertRaises(TypeError):
+-            3.3 * s
+-        with self.assertRaises(TypeError):
+-            (3.3 + 3j) * s
++        if not (utils.PYPY and utils.PY2):
++            with self.assertRaises(TypeError):
++                3.3 * s
++            with self.assertRaises(TypeError):
++                (3.3 + 3j) * s
+ 
+     @unittest.skip('Fails on Python <= 2.7.6 due to string subclass slicing bug')
+     def test_slice(self):
+diff --git a/tests/test_future/test_urllib2.py b/tests/test_future/test_urllib2.py
+index 2d69dad..3750737 100644
+--- a/tests/test_future/test_urllib2.py
++++ b/tests/test_future/test_urllib2.py
+@@ -691,10 +691,7 @@ class HandlerTests(unittest.TestCase):
+         h = NullFTPHandler(data)
+         h.parent = MockOpener()
+ 
+-        # MIME guessing works in Python 3.8!
+         guessed_mime = None
+-        if sys.hexversion >= 0x03080000:
+-            guessed_mime = "image/gif"
+         for url, host, port, user, passwd, type_, dirs, filename, mimetype in [
+             ("ftp://localhost/foo/bar/baz.html",
+              "localhost", ftplib.FTP_PORT, "", "", "I",
+diff --git a/tests/test_past/test_builtins.py b/tests/test_past/test_builtins.py
+index d16978e..f37b26c 100644
+--- a/tests/test_past/test_builtins.py
++++ b/tests/test_past/test_builtins.py
+@@ -21,6 +21,7 @@ import random
+ from os import unlink
+ from operator import neg
+ from future.tests.base import unittest, expectedFailurePY3, skip26
++from future.utils import PYPY, PY2
+ 
+ # count the number of test runs.
+ # used to skip running test_execfile() multiple times
+@@ -423,6 +424,7 @@ class BuiltinTest(unittest.TestCase):
+         self.assertRaises(TypeError, eval, ())
+ 
+     @expectedFailurePY3
++    @unittest.skipIf(PYPY and PY2, '')
+     def test_general_eval(self):
+         # Tests that general mappings can be used for the locals argument
+ 
+@@ -1174,7 +1176,8 @@ class BuiltinTest(unittest.TestCase):
+             def __cmp__(self, other):
+                 raise RuntimeError
+             __hash__ = None # Invalid cmp makes this unhashable
+-        self.assertRaises(RuntimeError, range, a, a + 1, badzero(1))
++        if not (PYPY and PY2):
++            self.assertRaises(RuntimeError, range, a, a + 1, badzero(1))
+ 
+         # Reject floats.
+         self.assertRaises(TypeError, range, 1., 1., 1.)
+diff --git a/tests/test_past/test_olddict.py b/tests/test_past/test_olddict.py
+index 9f21060..539c277 100644
+--- a/tests/test_past/test_olddict.py
++++ b/tests/test_past/test_olddict.py
+@@ -7,7 +7,7 @@ from __future__ import absolute_import, unicode_literals, print_function
+ import os
+ import sys
+ 
+-from future.utils import implements_iterator, PY3
++from future.utils import implements_iterator, PYPY, PY2, PY3
+ from future.tests.base import unittest, skip26
+ from past.builtins import dict
+ 
+@@ -415,6 +415,7 @@ class Py2DictTest(unittest.TestCase):
+         self.assertRaises(Exc, d.setdefault, x, [])
+ 
+     @skip26
++    @unittest.skipIf(PYPY, '')
+     def test_setdefault_atomic(self):
+         # Issue #13521: setdefault() calls __hash__ and __eq__ only once.
+         class Hashed(object):
