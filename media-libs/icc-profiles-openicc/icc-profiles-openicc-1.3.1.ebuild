@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit xdg
+
 DESCRIPTION="ICC color profiles by OpenICC"
 HOMEPAGE="https://www.freedesktop.org/wiki/OpenIcc/ProfilePackages"
 SRC_URI="mirror://sourceforge/openicc/OpenICC-Profiles/${P}.tar.bz2"
