@@ -16640,7 +16640,7 @@ sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations 
 sci-mathematics/twelf 1.7.1 1.7.1-r1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
 sci-mathematics/why3-for-spark 2018 2019: Platform for deductive program verification
-sci-mathematics/wxmaxima 18.11.4 19.05.7 19.08.1 19.09.0 19.10.0: Graphical frontend to Maxima, using the wxWidgets toolkit
+sci-mathematics/wxmaxima 18.11.4 19.05.7 19.08.1 19.09.0 19.10.0 19.11.0: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/xmds 2.2.2: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-mathematics/yacas 1.7.0-r1: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
@@ -18286,7 +18286,7 @@ www-apps/webdavcgi 0.8.3 0.8.4 1.1.1: A Perl CGI for accessing and sharing files
 www-apps/webmcp 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
-www-apps/wordpress 5.2.4: Wordpress PHP and MySQL based content management system (CMS)
+www-apps/wordpress 5.2.4 5.3: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.1: Web-based interactive data analytics notebook launcher
 www-client/chromium 78.0.3904.97 79.0.3945.29 80.0.3962.2: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
