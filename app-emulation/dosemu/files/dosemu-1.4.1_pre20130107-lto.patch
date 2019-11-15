@@ -1,0 +1,27 @@
+'asmlinkage' macros are supposed to make symbol available
+for calling from inline (or not) assembly.
+
+'static' keyword is not compatible to it and breaks -flto
+when gcc's LTO partitioner separates assembly definitions
+from C definitions. This causes symbol resolution failures:
+
+  ld: /tmp/dosemu.bin.h8Y59G.ltrans0.ltrans.o: in function `stub_rep__':
+  <artificial>:(.text+0xe): undefined reference to `rep_movs_stos'
+
+The changes turns 'asmlinkage' into exported symbol.
+
+https://bugs.gentoo.org/700126
+--- a/src/emu-i386/simx86/cpatch.c
++++ b/src/emu-i386/simx86/cpatch.c
+@@ -37,9 +37,9 @@
+ #include "codegen-arch.h"
+ 
+ #ifdef __i386__
+-#define asmlinkage static __attribute__((used)) __attribute__((cdecl))
++#define asmlinkage __attribute__((used)) __attribute__((cdecl))
+ #else
+-#define asmlinkage static __attribute__((used))
++#define asmlinkage __attribute__((used))
+ #endif
+ 
+ int s_munprotect(unsigned int addr)
