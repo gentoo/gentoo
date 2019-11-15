@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,9 +6,9 @@ EAPI="6"
 inherit autotools eutils
 
 DESCRIPTION="Library to access J-Link devices"
-HOMEPAGE="http://git.zapb.de/libjaylink.git"
+HOMEPAGE="https://gitlab.zapb.de/zapb/libjaylink"
 
-SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz"
+SRC_URI="https://gitlab.zapb.de/zapb/libjaylink/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
