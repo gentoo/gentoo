@@ -8,7 +8,7 @@ KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="Utility providing information about the computer hardware"
-HOMEPAGE="https://kde.org/applications/system/kinfocenter/"
+HOMEPAGE="https://userbase.kde.org/KInfoCenter"
 SRC_URI+=" https://www.gentoo.org/assets/img/logo/gentoo-3d-small.png -> glogo-small.png"
 KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="gles2 ieee1394 +opengl +pci wayland"
