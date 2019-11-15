@@ -1853,10 +1853,10 @@
     <name>LXQt</name>
     <url>https://wiki.gentoo.org/wiki/Project:LXQt</url>
     <description>Maintains LXQt DE related packages.</description>
-    <member is-lead="1">
+    <member>
       <email>chiitoo@gentoo.org</email>
       <name>Jimi Huotari</name>
-      <role>Non-Technical Lead</role>
+      <role>Maintainer</role>
     </member>
   </project>
   <project>
