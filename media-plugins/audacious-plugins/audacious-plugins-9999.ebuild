@@ -113,6 +113,10 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+pkg_setup() {
+	use mp3 || ewarn "MP3 support is optional, you may want to enable the mp3 USE-flag"
+}
+
 src_prepare() {
 	default
 	if ! use nls; then
@@ -122,8 +126,6 @@ src_prepare() {
 }
 
 src_configure() {
-	use mp3 || ewarn "MP3 support is optional, you may want to enable the mp3 USE-flag"
-
 	local myeconfargs=(
 		--enable-mpris2
 		--enable-songchange
