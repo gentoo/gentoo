@@ -55,6 +55,8 @@ RDEPEND="${COMMON_DEPEND}
 
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.14.patch" )
+
 src_prepare() {
 	ecm_src_prepare
 
