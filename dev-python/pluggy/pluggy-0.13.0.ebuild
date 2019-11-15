@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} pypy pypy3 )
 
@@ -13,16 +13,12 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="test"
+KEYWORDS="~amd64 ~x86"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)"
+RDEPEND="$(python_gen_cond_dep \
+	'dev-python/importlib_metadata[${PYTHON_USEDEP}]' -2 python3_{5,6,7} pypy3)"
+DEPEND="${RDEPEND}"
 
-python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
-}
+PATCHES=( "${FILESDIR}/${PN}"-0.12.0-strip-setuptools_scm.patch )
+
+distutils_enable_tests pytest
