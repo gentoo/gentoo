@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="ARP scanning and fingerprinting tool"
 HOMEPAGE="https://github.com/royhills/arp-scan"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/royhills/arp-scan/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
