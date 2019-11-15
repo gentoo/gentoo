@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
 
 inherit distutils-r1
 
@@ -14,24 +14,20 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
+IUSE="doc"
 
-DEPEND="
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx )
-	test? ( >=dev-python/pytest-2.2.0[${PYTHON_USEDEP}] )"
+	doc? ( dev-python/sphinx )"
 
 PATCHES=(
 	"${FILESDIR}"/1.9.0-mapping.patch
 )
 
+distutils_enable_tests pytest
+
 python_compile_all() {
 	use doc && emake -C documentation html
-}
-
-python_test() {
-	pytest -vv || die "Testing failed with ${EPYTHON}"
 }
 
 python_install_all() {
