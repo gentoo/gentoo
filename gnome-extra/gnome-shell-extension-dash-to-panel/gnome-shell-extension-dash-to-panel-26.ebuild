@@ -8,12 +8,15 @@ MY_PN="${PN/gnome-shell-extension-/}"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="An icon taskbar for the Gnome Shell"
 HOMEPAGE="https://github.com/home-sweet-gnome/dash-to-panel"
-SRC_URI="https://github.com/home-sweet-gnome/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/home-sweet-gnome/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	branding? ( https://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )
+"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="branding"
 
 COMMON_DEPEND="dev-libs/glib:2"
 RDEPEND="${COMMON_DEPEND}
@@ -28,6 +31,12 @@ BDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	# Enable by default custom opacity to get panel slightly transparent
+	# as was done in older Gnome versions
+	"${FILESDIR}"/${PN}-26-opacity.patch
+)
+
 src_prepare() {
 	default
 
@@ -36,6 +45,17 @@ src_prepare() {
 
 	# Don't install README and COPYING in unwanted locations
 	sed -i -e 's/COPYING//g' -e 's/README.md//g' Makefile || die
+
+	# Provide fancy Gentoo icon when requested
+	use branding && eapply "${FILESDIR}"/${PN}-26-branding.patch
+}
+
+src_install() {
+	default
+	if use branding; then
+		insinto /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/img
+		doins "${WORKDIR}/tango-gentoo-v1.1/scalable/gentoo.svg"
+	fi
 }
 
 pkg_preinst() {
