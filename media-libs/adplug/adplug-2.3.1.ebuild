@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit out-of-source
 
 DESCRIPTION="A free, cross-platform, hardware independent AdLib sound player library"
-HOMEPAGE="http://adplug.sourceforge.net"
+HOMEPAGE="http://adplug.github.io/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
