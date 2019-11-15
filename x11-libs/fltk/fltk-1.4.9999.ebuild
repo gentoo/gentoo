@@ -171,7 +171,7 @@ multilib_src_install() {
 multilib_src_install_all() {
 	for app in fluid $(usex games "${FLTK_GAMES}" ''); do
 		dosym \
-			/usr/share/icons/hicolor/32x32/apps/${app}.png \
+			../icons/hicolor/32x32/apps/${app}.png \
 			/usr/share/pixmaps/${app}.png
 	done
 
