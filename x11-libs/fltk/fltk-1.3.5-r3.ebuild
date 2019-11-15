@@ -24,6 +24,7 @@ RDEPEND="
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
 	x11-libs/libXt[${MULTILIB_USEDEP}]
 	cairo? ( x11-libs/cairo[${MULTILIB_USEDEP},X] )
+	games? ( !sys-block/blocks )
 	opengl? (
 		virtual/glu[${MULTILIB_USEDEP}]
 		virtual/opengl[${MULTILIB_USEDEP}]
@@ -158,7 +159,7 @@ multilib_src_install() {
 multilib_src_install_all() {
 	for app in fluid $(usex games "${FLTK_GAMES}" ''); do
 		dosym \
-			/usr/share/icons/hicolor/32x32/apps/${app}.png \
+			../icons/hicolor/32x32/apps/${app}.png \
 			/usr/share/pixmaps/${app}.png
 	done
 
