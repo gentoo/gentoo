@@ -3,10 +3,10 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Visible bookmarks in buffer
 EAPI=7
 HOMEPAGE=http://joodland.github.io/bm/ https://www.emacswiki.org/emacs/VisibleBookmarks
-KEYWORDS=~amd64 ~sparc ~x86
+KEYWORDS=amd64 ~sparc x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/joodland/bm/archive/201905.tar.gz -> bm-201905.tar.gz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=17e6f17b04b28611810a0cda2aefd391
+_md5_=541265409ff659bffce3fc87a3de926f
