@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
@@ -25,15 +25,19 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 "
+# Temporary hack to avoid py38 keywording hell.  Please remove when
+# the test deps all have py38.  Also setuptools' test pass with py38,
+# so you need to hack them all in locally before bumping and test.
+TEST_USEDEP=$(python_gen_usedep python2_7 python3_{5,6,7} pypy{,3})
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pip[${PYTHON_USEDEP}]
-		>=dev-python/pytest-3.7.0[${PYTHON_USEDEP}]
-		dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
-		dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
-		dev-python/wheel[${PYTHON_USEDEP}]
+		dev-python/mock[${TEST_USEDEP}]
+		dev-python/pip[${TEST_USEDEP}]
+		>=dev-python/pytest-3.7.0[${TEST_USEDEP}]
+		dev-python/pytest-fixture-config[${TEST_USEDEP}]
+		dev-python/pytest-virtualenv[${TEST_USEDEP}]
+		dev-python/wheel[${TEST_USEDEP}]
 		virtual/python-futures[${PYTHON_USEDEP}]
 	)
 "
@@ -61,6 +65,15 @@ python_prepare_all() {
 }
 
 python_test() {
+	if [[ ${EPYTHON} == python3.8 ]]; then
+		if [[ ${PV} != 41.5.1 ]]; then
+			eerror "Please disable py38 hacks and test locally, then update this."
+			die "Python 3.8 support untested for ${PV}"
+		fi
+		einfo "Skipping testing on ${EPYTHON} due to unkeyworded deps"
+		return
+	fi
+
 	# test_easy_install raises a SandboxViolation due to ${HOME}/.pydistutils.cfg
 	# It tries to sandbox the test in a tempdir
 	HOME="${PWD}" pytest -vv ${PN} || die "Tests failed under ${EPYTHON}"
