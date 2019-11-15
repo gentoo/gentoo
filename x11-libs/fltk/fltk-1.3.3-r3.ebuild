@@ -22,6 +22,7 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXt
 	cairo? ( x11-libs/cairo[X] )
+	games? ( !sys-block/blocks )
 	opengl? ( virtual/glu virtual/opengl )
 	xft? ( x11-libs/libXft )
 	xinerama? ( x11-libs/libXinerama )
