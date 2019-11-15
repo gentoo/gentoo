@@ -21,6 +21,7 @@ HOMEPAGE="https://github.com/pypa/setuptools https://pypi.org/project/setuptools
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 "
