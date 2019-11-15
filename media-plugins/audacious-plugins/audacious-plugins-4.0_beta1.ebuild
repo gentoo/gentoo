@@ -1,18 +1,28 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
+MY_P="${P/_/-}"
+
+if [[ ${PV} == *9999 ]]; then
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://github.com/audacious-media-player/audacious-plugins.git"
+else
+	SRC_URI="https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
+	KEYWORDS="~amd64 ~x86"
+fi
 DESCRIPTION="Lightweight and versatile audio player"
 HOMEPAGE="https://audacious-media-player.org/"
-SRC_URI="https://distfiles.audacious-media-player.org/${P}-gtk3.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="aac +alsa bs2b cdda cue ffmpeg flac fluidsynth gnome http gme jack lame libav libnotify libsamplerate
-	lirc mms modplug mp3 nls pulseaudio scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
-REQUIRED_USE="|| ( alsa jack pulseaudio sdl )"
+IUSE="aac adplug +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth http gme
+	jack lame libav libnotify libsamplerate lirc mms modplug mp3 nls opengl
+	pulseaudio qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
+REQUIRED_USE="
+	|| ( alsa jack pulseaudio qtmedia sdl )
+	ampache? ( http )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
 # builds do NOT install the libaudgui library & headers.
@@ -31,18 +41,24 @@ REQUIRED_USE="|| ( alsa jack pulseaudio sdl )"
 #   hotkey
 #   notify
 #   statusicon
-RDEPEND="
+BDEPEND="
+	dev-util/gdbus-codegen
+	virtual/pkgconfig
+	nls? ( dev-util/intltool )
+"
+DEPEND="
 	app-arch/unzip
 	dev-libs/dbus-glib
 	dev-libs/glib
 	dev-libs/libxml2:2
-	media-libs/adplug
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
 	~media-sound/audacious-${PV}
-	x11-libs/gtk+:3
-	x11-libs/libXcomposite
-	x11-libs/libXrender
 	aac? ( >=media-libs/faad2-2.7 )
+	adplug? ( media-libs/adplug )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
+	ampache? ( =media-libs/ampache_browser-1* )
 	bs2b? ( media-libs/libbs2b )
 	cdda? (
 		dev-libs/libcdio:=
@@ -69,6 +85,8 @@ RDEPEND="
 	modplug? ( media-libs/libmodplug )
 	mp3? ( >=media-sound/mpg123-1.12.1 )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
+	opengl? ( dev-qt/qtopengl:5 )
+	qtmedia? ( dev-qt/qtmultimedia:5 )
 	scrobbler? ( net-misc/curl )
 	sdl? ( media-libs/libsdl2[sound] )
 	sid? ( >=media-libs/libsidplayfp-1.0.0 )
@@ -81,39 +99,36 @@ RDEPEND="
 	)
 	wavpack? ( >=media-sound/wavpack-4.50.1-r1 )
 "
-DEPEND="${RDEPEND}
-	dev-util/gdbus-codegen
-	virtual/pkgconfig
-	nls? ( dev-util/intltool )
-"
+RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${P}-gtk3"
+S="${WORKDIR}/${MY_P}"
+
+pkg_setup() {
+	use mp3 || ewarn "MP3 support is optional, you may want to enable the mp3 USE-flag"
+}
 
 src_prepare() {
 	default
 	if ! use nls; then
 		sed -e "/SUBDIRS/s/ po//" -i Makefile || die # bug #512698
 	fi
+	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 src_configure() {
-	use mp3 || ewarn "MP3 support is optional, you may want to enable the mp3 USE-flag"
-
 	local myeconfargs=(
-		--enable-aosd
-		--enable-gtk
-		--enable-hotkey
 		--enable-mpris2
+		--enable-qt
 		--enable-songchange
-		--disable-ampache
+		--disable-gtk
+		--disable-openmpt # not packaged
 		--disable-oss4
-		--disable-qt
-		--disable-qtaudio
-		--disable-qtglspectrum
 		--disable-coreaudio
 		--disable-sndio
 		$(use_enable aac)
+		$(use_enable adplug)
 		$(use_enable alsa)
+		$(use_enable ampache)
 		$(use_enable bs2b)
 		$(use_enable cdda cdaudio)
 		$(use_enable cue)
@@ -123,7 +138,6 @@ src_configure() {
 		$(use_enable gme console)
 		$(use_enable http neon)
 		$(use_enable jack)
-		$(use_enable gnome gnomeshortcuts)
 		$(use_enable lame filewriter_mp3)
 		$(use_enable libnotify notify)
 		$(use_enable libsamplerate resample)
@@ -132,7 +146,9 @@ src_configure() {
 		$(use_enable modplug)
 		$(use_enable mp3 mpg123)
 		$(use_enable nls)
+		$(use_enable opengl qtglspectrum)
 		$(use_enable pulseaudio pulse)
+		$(use_enable qtmedia qtaudio)
 		$(use_enable scrobbler scrobbler2)
 		$(use_enable sdl sdlout)
 		$(use_enable sid)
@@ -143,5 +159,6 @@ src_configure() {
 		$(use_enable wavpack)
 		$(use_with ffmpeg ffmpeg $(usex libav libav ffmpeg))
 	)
+
 	econf "${myeconfargs[@]}"
 }
