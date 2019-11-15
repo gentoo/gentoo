@@ -47,7 +47,6 @@ RDEPEND="
 		dev-libs/libcdio:=
 		dev-libs/libcdio-paranoia
 	)
-	cue? ( media-libs/libcue )
 	curl? ( net-misc/curl )
 	dbus? ( dev-qt/qtdbus:5 )
 	enca? ( app-i18n/enca )
