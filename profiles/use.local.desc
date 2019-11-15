@@ -4539,13 +4539,15 @@ media-plugins/audacious-plugins:bs2b - Enable Bauer Bauer stereophonic-to-binaur
 media-plugins/audacious-plugins:cue - Support CUE sheets using the libcue library
 media-plugins/audacious-plugins:fluidsynth - Support FluidSynth as MIDI synth backend
 media-plugins/audacious-plugins:gme - Support various gaming console music formats
+media-plugins/audacious-plugins:gtk - Build with GTK interface instead of Qt5
 media-plugins/audacious-plugins:http - Support HTTP streams through neon
-media-plugins/audacious-plugins:qt5 - Build with Qt5 interface instead Gtk+
+media-plugins/audacious-plugins:qt5 - Build with Qt5 interface instead of GTK
 media-plugins/audacious-plugins:qtmedia - Enable playback via dev-qt/qtmultimedia
 media-plugins/audacious-plugins:scrobbler - Build with scrobbler/LastFM submission support
 media-plugins/audacious-plugins:sid - Build with SID (Commodore 64 Audio) support
 media-plugins/audacious-plugins:soxr - Build with SoX Resampler support
 media-plugins/audacious-plugins:speedpitch - Enable speed/pitch effects
+media-plugins/audacious-plugins:streamtuner - Build the streamtuner plugin
 media-plugins/calf:experimental - Enable experimental features/plugins
 media-plugins/calf:lv2 - Add support for Ladspa V2
 media-plugins/frei0r-plugins:facedetect - Enables building of facedetect plugin, which depends on media-libs/opencv
@@ -4617,7 +4619,8 @@ media-sound/aqualung:systray - Enable system tray support
 media-sound/ario:idle - Enable experimental support for MPD's idle command to reduce bandwidth and cpu usage, requires MPD 0.14
 media-sound/ario:scrobbler - Enable audioscrobbler/last.fm support net-libs/libsoup
 media-sound/asunder:mac - Support for creation of Monkey's Audio files (APE)
-media-sound/audacious:qt5 - Build with Qt5 interface instead Gtk+
+media-sound/audacious:gtk - Build with GTK interface instead of Qt5
+media-sound/audacious:qt5 - Build with Qt5 interface instead of GTK
 media-sound/audacity:id3tag - Enables ID3 tagging with id3tag library
 media-sound/audacity:lv2 - Add support for Ladspa V2
 media-sound/audacity:midi - Enables MIDI support
@@ -4731,7 +4734,7 @@ media-sound/linuxsampler:lv2 - Add support for Ladspa V2
 media-sound/linuxsampler:sf2 - Add support for SoundFont 2 sound bank files
 media-sound/lmms:fluidsynth - Enables Fluidsynth MIDI software synthesis plugin.
 media-sound/lmms:libgig - Enables GIG player plugin.
-media-sound/lmms:soundio - Enalbes libsoundio support.
+media-sound/lmms:soundio - Enables libsoundio support.
 media-sound/lmms:stk - Enables STK Mallet plugin.
 media-sound/lmms:vst - Enables the VeSTige plugin to run VST plugins through Wine.
 media-sound/loudness-scanner:mpg123 - build the mpg123 plugin

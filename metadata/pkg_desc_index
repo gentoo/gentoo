@@ -13163,7 +13163,7 @@ media-libs/libclalsadrv 2.0.0-r1: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
 media-libs/libclthreads 2.4.0-r1: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/libclxclient 3.9.0: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
-media-libs/libcue 1.4.0: CUE Sheet Parser Library
+media-libs/libcue 1.4.0 2.2.1: CUE Sheet Parser Library
 media-libs/libcuefile 477-r1: Cue File library from Musepack
 media-libs/libdc1394 2.2.5-r1: Library to interface with IEEE 1394 cameras following the IIDC specification
 media-libs/libdca 0.0.5-r3: library for decoding DTS Coherent Acoustics streams used in DVD
@@ -13430,7 +13430,7 @@ media-plugins/alsa-plugins 1.1.1-r1 1.1.6 1.1.8 1.1.9 1.1.9-r1: ALSA extra plugi
 media-plugins/alsaequal 0.7.1: A real-time adjustable equalizer plugin for ALSA
 media-plugins/amb-plugins 0.8.1-r1: AMB-plugins ladspa plugin package. Filters by Fons Adriaensen
 media-plugins/ams-lv2 1.1.0 1.2.1: A port of the AMS internal modules to LV2 plugins to create modular synthesizers
-media-plugins/audacious-plugins 3.9-r2 3.10.1 9999: Lightweight and versatile audio player
+media-plugins/audacious-plugins 3.9-r2 3.10.1 4.0_beta1 9999: Lightweight and versatile audio player
 media-plugins/calf 0.90.1 9999: A set of open source instruments and effects for digital audio workstations
 media-plugins/caps-plugins 0.9.24: The CAPS Audio Plugin Suite - LADSPA plugin suite
 media-plugins/fil-plugins 0.3.0-r1: FIL-plugins ladspa plugin package. Filters by Fons Adriaensen
@@ -13773,7 +13773,7 @@ media-sound/ario 1.5.1-r1 1.6: GTK client for MPD inspired by Rhythmbox but much
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.9.3-r1 2.9.4 2.9.5: Graphical Audio CD ripper and encoder with support for many output formats
 media-sound/aucdtect 0.8.2-r1: Commandline FLAC CDDA authenticity verifier
-media-sound/audacious 3.9-r1 3.10.1 9999: Lightweight and versatile audio player
+media-sound/audacious 3.9-r1 3.10.1 4.0_beta1 9999: Lightweight and versatile audio player
 media-sound/audacity 2.2.2 2.3.2: Free crossplatform audio editor
 media-sound/audex 0.95_pre20190721: Tool for ripping compact discs
 media-sound/audicle 1.0.0.7-r2: A Context-sensitive, On-the-fly Audio Programming Environ/mentality
