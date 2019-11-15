@@ -7932,6 +7932,7 @@ sys-apps/kexec-tools:booke - Include support for Book-E memory management
 sys-apps/kexec-tools:lzma - Enables support for LZMA compressed kernel images
 sys-apps/kexec-tools:xen - Enable extended xen support
 sys-apps/kmod:lzma - Enable support for XZ compressed modules
+sys-apps/kmod:pkcs7 - Enable PKCS#7 signature parsing for modinfo.
 sys-apps/kmod:tools - Install module loading/unloading tools.
 sys-apps/kmod:zlib - Enable support for gzipped modules
 sys-apps/kmscon:drm - Enable Linux DRM for backend
