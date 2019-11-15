@@ -1,12 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="A library handling connections to a MPD server"
-HOMEPAGE="http://gmpc.wikia.com/wiki/Libmpd"
+HOMEPAGE="https://gmpclient.org/"
 SRC_URI="http://download.sarine.nl/Programs/gmpc/11.8/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -14,14 +12,14 @@ SLOT="0"
 KEYWORDS="amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc static-libs"
 
-RDEPEND=">=dev-libs/glib-2.16:2"
-DEPEND="${RDEPEND}
+BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+"
+DEPEND=">=dev-libs/glib-2.16:2"
+RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-remove-strndup.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-remove-strndup.patch )
 
 src_configure() {
 	econf \
@@ -35,8 +33,8 @@ src_compile() {
 }
 
 src_install() {
+	use doc && local HTML_DOCS=( doc/html/* )
 	default
-	use doc && dohtml -r doc/html/*
-	find "${ED}" -name "*.la" -exec rm -rf {} + || die
+	find "${D}" -name '*.la' -type f -delete || die
 	rm "${ED}"/usr/share/doc/${PF}/{README,ChangeLog} || die
 }
