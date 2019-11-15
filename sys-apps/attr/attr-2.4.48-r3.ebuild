@@ -24,6 +24,7 @@ PATCHES=(
 pkg_setup() {
 	# Remove -flto* from flags as this breaks binaries (bug #644048)
 	filter-flags -flto*
+	append-ldflags "-Wl,--no-gc-sections" #700116
 }
 
 src_prepare() {
