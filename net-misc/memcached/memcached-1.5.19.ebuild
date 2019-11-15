@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+RESTRICT="!test? ( test )"
+
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.2.2-fbsd.patch"
 	epatch "${FILESDIR}/${PN}-1.4.0-fix-as-needed-linking.patch"
