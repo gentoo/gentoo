@@ -1,0 +1,3 @@
+# Additional options that are passed to the Daemon.
+DAEMON_OPTS=" -c /etc/apt-cacher-ng "
+LOGDIR=""
