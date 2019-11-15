@@ -37,6 +37,7 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	acct-user/mpd
 	adplug? ( media-libs/adplug:= )
 	alsa? (
 		media-libs/alsa-lib
@@ -94,6 +95,8 @@ RDEPEND="
 	soundcloud? ( >=dev-libs/yajl-2:= )
 	sqlite? ( dev-db/sqlite:3 )
 	systemd? ( sys-apps/systemd )
+	tidal? ( dev-libs/yajl
+		net-misc/curl )
 	twolame? ( media-sound/twolame )
 	udisks? ( sys-fs/udisks:2 )
 	upnp? ( net-libs/libupnp:0 )
@@ -289,8 +292,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	# also change the homedir if the user has existed before
-	usermod -d "/var/lib/mpd" mpd || die "usermod failed"
 	xdg_icon_cache_update
 }
 
