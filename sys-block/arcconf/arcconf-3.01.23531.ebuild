@@ -13,7 +13,7 @@ SRC_URI="https://download.adaptec.com/raid/storage_manager/${PN}_${MY_PV}.zip"
 
 LICENSE="Microsemi"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 DEPEND="app-arch/unzip"
 
