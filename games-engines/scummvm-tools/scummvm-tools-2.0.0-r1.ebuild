@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="flac iconv mad png vorbis"
 RESTRICT="test" # some tests require external files
 
-RDEPEND=">=dev-libs/boost-1.32
+RDEPEND=">=dev-libs/boost-1.32:=
 	sys-libs/zlib
 	x11-libs/wxGTK:${WX_GTK_VER}
 	flac? ( media-libs/flac )
