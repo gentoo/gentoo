@@ -77,7 +77,7 @@ case ${CATEGORY} in
 	*) ;;
 esac
 
-_kde_is_unreleased() {
+_kde.org_is_unreleased() {
 	local pair
 	for pair in "${KDE_UNRELEASED[@]}" ; do
 		if [[ "${pair}" = "${CATEGORY}-${PV}" ]]; then
@@ -89,7 +89,7 @@ _kde_is_unreleased() {
 }
 
 # Determine fetch location for released tarballs
-_calculate_src_uri() {
+_kde.org_calculate_src_uri() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local _src_uri="mirror://kde/"
@@ -144,13 +144,13 @@ _calculate_src_uri() {
 
 	SRC_URI="${_src_uri}${KDE_ORG_NAME}-${PV}.tar.xz"
 
-	if _kde_is_unreleased ; then
+	if _kde.org_is_unreleased ; then
 		RESTRICT+=" fetch"
 	fi
 }
 
 # Determine fetch location for live sources
-_calculate_live_repo() {
+_kde.org_calculate_live_repo() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	SRC_URI=""
@@ -181,9 +181,9 @@ _calculate_live_repo() {
 }
 
 case ${KDE_BUILD_TYPE} in
-	live) _calculate_live_repo ;;
+	live) _kde.org_calculate_live_repo ;;
 	*)
-		_calculate_src_uri
+		_kde.org_calculate_src_uri
 		debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
 		;;
 esac
@@ -199,7 +199,7 @@ fi
 # KDE_UNRELEASED, display a giant warning that the package has not yet been
 # released upstream and should not be used.
 kde.org_pkg_nofetch() {
-	if ! _kde_is_unreleased ; then
+	if ! _kde.org_is_unreleased ; then
 		return
 	fi
 
