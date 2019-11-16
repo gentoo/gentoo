@@ -27,8 +27,8 @@
 # - Rename vars and function names as needed, see kde5.eclass PORTING comments
 # - Instead of FRAMEWORKS_MINIMAL, define KFMIN in ebuilds and use it for deps
 
-if [[ -z ${_ECM_UTILS_ECLASS} ]]; then
-_ECM_UTILS_ECLASS=1
+if [[ -z ${_ECM_ECLASS} ]]; then
+_ECM_ECLASS=1
 
 # @ECLASS-VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
