@@ -2638,6 +2638,7 @@ dev-python/networkx:pandas - Provides a DataFrame, which is a tabular data struc
 dev-python/networkx:scipy - Enables scipy backend
 dev-python/networkx:yaml - Provides YAML format reading and writing
 dev-python/nltk:numpy - Use numpy for the saved word tokenizer
+dev-python/nose:coverage - Pull in dev-python/coverage needed for nose-xcover plugin.
 dev-python/numexpr:mkl - Enable support for Intel Vector Math Library, part of sci-libs/mkl.
 dev-python/pandas:full-support - Pull all packages to give pandas full support
 dev-python/paramiko:server - Enable server feature
