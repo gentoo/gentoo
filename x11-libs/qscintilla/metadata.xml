@@ -17,7 +17,6 @@
 			<email>phil@riverbankcomputing.com</email>
 			<name>Phil Thompson</name>
 		</maintainer>
-		<changelog>https://www.riverbankcomputing.com/static/Downloads/QScintilla/ChangeLog</changelog>
 		<doc>https://www.riverbankcomputing.com/static/Docs/QScintilla/</doc>
 		<bugs-to>mailto:qscintilla@riverbankcomputing.com</bugs-to>
 	</upstream>
