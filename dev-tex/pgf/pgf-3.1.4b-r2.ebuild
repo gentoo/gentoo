@@ -31,12 +31,12 @@ src_install() {
 	cd "${S}/doc/generic/pgf" || die
 	dodoc AUTHORS ChangeLog README
 	if use doc; then
-		docinto /usr/share/doc/${P}/texdoc
+		docinto texdoc
 		# pgfmanual is now split from the main tar archive
 		newdoc "${DISTDIR}/${P}-pgfmanual.pdf" pgfmanual.pdf
 		doins -r images macros text-en version-*
 
-		dosym "${ED}/usr/share/doc/${P}/texdoc" "${TEXMF}/doc/latex/${PN}"
+		dosym "../../../doc/${PF}/texdoc" "${TEXMF}/doc/latex/${PN}"
 		docompress -x "/usr/share/doc/${P}/texdoc/"
 	fi
 }
