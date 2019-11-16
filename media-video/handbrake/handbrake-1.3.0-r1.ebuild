@@ -23,7 +23,7 @@ HOMEPAGE="http://handbrake.fr/"
 LICENSE="GPL-2"
 
 SLOT="0"
-IUSE="+fdk gstreamer gtk libav libav-aac nvenc x265"
+IUSE="+fdk gstreamer gtk libav libav-aac numa nvenc x265"
 
 REQUIRED_USE="^^ ( fdk libav-aac )"
 
@@ -71,7 +71,7 @@ RDEPEND="
 		x11-libs/pango
 	)
 	fdk? ( media-libs/fdk-aac )
-	x265? ( >=media-libs/x265-2.9:0= )
+	x265? ( >=media-libs/x265-3.2:0=[10bit,12bit,numa?] )
 	"
 
 DEPEND="${RDEPEND}
@@ -88,8 +88,8 @@ PATCHES=(
 	# Remove faac dependency; TODO: figure out if we need to do this at all.
 	"${FILESDIR}/${PN}-9999-remove-faac-dependency.patch"
 
-	# Fix missing -ldl
-	"${FILESDIR}/${PN}-9999-libdl-link.patch"
+	# Fix missing flags
+	"${FILESDIR}/${P}-missing-linker-flags.patch"
 )
 
 pkg_setup() {
@@ -125,6 +125,7 @@ src_configure() {
 		$(use_enable fdk fdk-aac) \
 		$(usex !gtk --disable-gtk) \
 		$(usex !gstreamer --disable-gst) \
+		$(use_enable numa) \
 		$(use_enable nvenc) \
 		$(use_enable x265) || die "Configure failed."
 }
