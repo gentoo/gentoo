@@ -1,35 +1,48 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Unittest extension with automatic test suite discovery and easy test authoring"
 HOMEPAGE="
 	https://pypi.org/project/nose/
 	https://nose.readthedocs.io/en/latest/
 	https://github.com/nose-devs/nose"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/nose-devs/${PN}.git"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
-IUSE="doc examples test"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="coverage doc examples test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	doc? ( || ( $(python_gen_useflags 'python2*') ) )"
 
 RDEPEND="
-	dev-python/coverage[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	coverage? ( dev-python/coverage[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-0.6[${PYTHON_USEDEP}] )
-	test? ( $(python_gen_cond_dep 'dev-python/twisted[${PYTHON_USEDEP}]' python2_7 python3_{5,6}) )"
+	test? (
+		dev-python/coverage[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/twisted[${PYTHON_USEDEP}]' python2_7 python3_{5,6})
+	)"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-python-3.5-backport.patch
+
+	# Patch against master found in an upstream PR, backported:
+	# https://github.com/nose-devs/nose/pull/1004
+	"${FILESDIR}"/${P}-coverage-4.1-support.patch
+
+	"${FILESDIR}"/${P}-python-3.6-test.patch
+)
 
 pkg_setup() {
 	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
@@ -72,7 +85,7 @@ python_compile_all() {
 }
 
 python_test() {
-	"${PYTHON}" selftest.py -v || die "Tests fail with ${EPYTHON}"
+	"${EPYTHON}" selftest.py -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {
