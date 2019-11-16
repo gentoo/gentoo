@@ -10,4 +10,7 @@
 		being a large collection of standard minimisation algorithms. The name minfx
 		is simply a shortening of the mathematical expression min f(x).
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">minfx</remote-id>
+	</upstream>
 </pkgmetadata>
