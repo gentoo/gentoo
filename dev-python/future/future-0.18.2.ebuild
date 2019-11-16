@@ -25,7 +25,7 @@ BDEPEND="
 		$(python_gen_any_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
 			dev-python/sphinx-bootstrap-theme[${PYTHON_USEDEP}]
-		' python{2_7,3_{5,6,7}})
+		')
 	)
 	test? (
 		$(python_gen_cond_dep 'dev-python/numpy[${PYTHON_USEDEP}]' \
