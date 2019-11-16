@@ -12,7 +12,7 @@ SLOT="0"
 IUSE="selinux"
 EGIT_COMMIT="v${PV}"
 GIT_COMMIT="7c97335"
-SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/containers/buildah/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 RDEPEND="app-crypt/gpgme:=
 	app-emulation/skopeo
 	dev-libs/libgpg-error:=
