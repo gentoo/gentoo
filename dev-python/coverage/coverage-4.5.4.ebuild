@@ -65,4 +65,7 @@ python_test() {
 		cp -l -- "${TEST_DIR}"/lib/*/coverage/*.so coverage/ || die
 		PATH="${bindir}:${PATH}" "${EPYTHON}" igor.py test_with_tracer c || die
 	fi
+
+	# clean up leftover "egg1" directory
+	rm -rf build/lib/egg1 || die
 }
