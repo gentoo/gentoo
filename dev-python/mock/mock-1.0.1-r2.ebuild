@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 # dev-python/unittest2 is not required with Python >=3.2.
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
