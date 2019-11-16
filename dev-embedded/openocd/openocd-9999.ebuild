@@ -29,7 +29,7 @@ RDEPEND="
 	acct-group/plugdev
 	>=dev-lang/jimtcl-0.76:0=
 	cmsis-dap? ( dev-libs/hidapi )
-	jlink? ( dev-embedded/libjaylink )
+	jlink? ( >=dev-embedded/libjaylink-0.2 )
 	usb? (
 		virtual/libusb:0
 		virtual/libusb:1
