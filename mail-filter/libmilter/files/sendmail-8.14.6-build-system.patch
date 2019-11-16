@@ -1,0 +1,211 @@
+diff -Nru sendmail-8.14.3.orig/cf/cf/Makefile sendmail-8.14.3/cf/cf/Makefile
+--- sendmail-8.14.3.orig/cf/cf/Makefile	2005-06-14 04:16:34.000000000 +0200
++++ sendmail-8.14.3/cf/cf/Makefile	2009-09-20 10:55:50.000000000 +0200
+@@ -80,10 +80,10 @@
+ install-cf:  install-sendmail-cf install-submit-cf
+ 
+ install-sendmail-cf: $(CF).cf
+-	$(INSTALL) -c -o $(CFOWN) -g $(CFGRP) -m $(CFMODE) $(CF).cf ${DESTDIR}$(MAILDIR)/sendmail.cf
++	$(INSTALL) -c -o $(CFOWN) -g $(CFGRP) -m $(CFMODE) $(CF).cf "${DESTDIR}$(MAILDIR)/sendmail.cf"
+ 
+ install-submit-cf: $(SUBMIT).cf
+-	$(INSTALL) -c -o $(CFOWN) -g $(CFGRP) -m $(CFMODE) $(SUBMIT).cf ${DESTDIR}$(MAILDIR)/submit.cf
++	$(INSTALL) -c -o $(CFOWN) -g $(CFGRP) -m $(CFMODE) $(SUBMIT).cf "${DESTDIR}$(MAILDIR)/submit.cf"
+ 
+ depend:
+
+diff -Nru sendmail-8.14.6.orig/devtools/M4/UNIX/defines.m4 sendmail-8.14.6/devtools/M4/UNIX/defines.m4
+--- sendmail-8.14.6.orig/devtools/M4/UNIX/defines.m4	2012-01-21 00:07:08.000000000 +0000
++++ sendmail-8.14.6/devtools/M4/UNIX/defines.m4	2012-12-27 08:13:15.792214375 +0000
+@@ -26,7 +26,7 @@
+ CCLINK = ifdef(`confCCLINK', `confCCLINK', `confCC')
+ # Linker for libraries
+ LD=	ifdef(`confLD', `confLD', `confCC')
+-LDOPTS=	ifdef(`confLDOPTS', `confLDOPTS') ifdef(`confMT', ifdef(`confMTLDOPTS', `confMTLDOPTS', `'), `')
++LDOPTS=	ifdef(`confLDOPTS', `confLDOPTS')
+ LDOPTS_SO= ${LDOPTS} ifdef(`confLDOPTS_SO', `confLDOPTS_SO', `-shared')
+ 
+ # Shell
+@@ -71,7 +71,7 @@
+ LIBADD= ifdef(`conf_'bldCURRENT_PRD`_LIBS', `conf_'bldCURRENT_PRD`_LIBS')
+ 
+ # libraries required on your system
+-LIBS= ${LIBADD} ifdef(`confLIBS', `confLIBS') ifdef(`conf_'bldCURRENT_PRD`_LIB_POST', `conf_'bldCURRENT_PRD`_LIB_POST')
++LIBS= ${LIBADD} ifdef(`confLIBS', `confLIBS') ifdef(`conf_'bldCURRENT_PRD`_LIB_POST', `conf_'bldCURRENT_PRD`_LIB_POST') ifdef(`confMT', ifdef(`confMTLDOPTS', `confMTLDOPTS', `'), `')
+ 
+ # location of sendmail binary (usually /usr/sbin or /usr/lib)
+ BINDIR=	ifdef(`confMBINDIR', `confMBINDIR', `/usr/sbin')
+diff -Nru sendmail-8.14.3.orig/devtools/M4/UNIX/executable.m4 sendmail-8.14.3/devtools/M4/UNIX/executable.m4
+--- sendmail-8.14.3.orig/devtools/M4/UNIX/executable.m4	2006-10-06 07:44:44.000000000 +0200
++++ sendmail-8.14.3/devtools/M4/UNIX/executable.m4	2009-09-20 10:50:36.000000000 +0200
+@@ -30,12 +30,12 @@
+ 
+ ifdef(`bldNO_INSTALL', ,
+ `install-`'bldCURRENT_PRODUCT: bldCURRENT_PRODUCT ifdef(`bldTARGET_INST_DEP', `bldTARGET_INST_DEP')
+-	ifdef(`confMKDIR', `if [ ! -d ${DESTDIR}${bldINSTALL_DIR`'BINDIR} ]; then confMKDIR -p ${DESTDIR}${bldINSTALL_DIR`'BINDIR}; else :; fi ')
+-	${INSTALL} -c -o ${bldBIN_TYPE`'BINOWN} -g ${bldBIN_TYPE`'BINGRP} -m ${bldBIN_TYPE`'BINMODE} bldCURRENT_PRODUCT ${DESTDIR}${bldINSTALL_DIR`'BINDIR}
++	ifdef(`confMKDIR', `if [ ! -d "${DESTDIR}${bldINSTALL_DIR`'BINDIR}" ]; then confMKDIR -p "${DESTDIR}${bldINSTALL_DIR`'BINDIR}"; else :; fi ')
++	${INSTALL} -c -o ${bldBIN_TYPE`'BINOWN} -g ${bldBIN_TYPE`'BINGRP} -m ${bldBIN_TYPE`'BINMODE} bldCURRENT_PRODUCT "${DESTDIR}${bldINSTALL_DIR`'BINDIR}"
+ ifdef(`bldTARGET_LINKS', `bldMAKE_TARGET_LINKS(${bldINSTALL_DIR`'BINDIR}/bldCURRENT_PRODUCT, ${bldCURRENT_PRODUCT`'TARGET_LINKS})')')
+ 
+ strip-`'bldCURRENT_PRODUCT: bldCURRENT_PRODUCT
+-	${STRIP} ${STRIPOPTS} ${DESTDIR}${bldINSTALL_DIR`'BINDIR}`'/bldCURRENT_PRODUCT
++	${STRIP} ${STRIPOPTS} "${DESTDIR}${bldINSTALL_DIR`'BINDIR}`'/bldCURRENT_PRODUCT"
+ 
+ bldCURRENT_PRODUCT-clean:
+ 	rm -f ${OBJS} bldCURRENT_PRODUCT ${MANPAGES}
+diff -Nru sendmail-8.14.3.orig/devtools/M4/UNIX/library.m4 sendmail-8.14.3/devtools/M4/UNIX/library.m4
+--- sendmail-8.14.3.orig/devtools/M4/UNIX/library.m4	2006-09-06 00:56:53.000000000 +0200
++++ sendmail-8.14.3/devtools/M4/UNIX/library.m4	2009-09-20 10:50:36.000000000 +0200
+@@ -27,8 +27,8 @@
+ ifdef(`bldLINK_SOURCES', `bldMAKE_SOURCE_LINKS(bldLINK_SOURCES)')
+ 
+ install-`'bldCURRENT_PRODUCT: bldCURRENT_PRODUCT.a
+-ifdef(`bldINSTALLABLE', `	ifdef(`confMKDIR', `if [ ! -d ${DESTDIR}${bldINSTALL_DIR`'LIBDIR} ]; then confMKDIR -p ${DESTDIR}${bldINSTALL_DIR`'LIBDIR}; else :; fi ')
+-	${INSTALL} -c -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} bldCURRENT_PRODUCT.a ${DESTDIR}${LIBDIR}')
++ifdef(`bldINSTALLABLE', `	ifdef(`confMKDIR', `if [ ! -d "${DESTDIR}${LIBDIR}" ]; then confMKDIR -p "${DESTDIR}${LIBDIR}"; else :; fi ')
++	${INSTALL} -c -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} bldCURRENT_PRODUCT.a "${DESTDIR}${LIBDIR}"')
+ 
+ bldCURRENT_PRODUCT-clean:
+ 	rm -f ${OBJS} bldCURRENT_PRODUCT.a ${MANPAGES}
+--- sendmail-8.14.6.orig/devtools/M4/UNIX/manpage.m4	2012-01-21 00:07:08.000000000 +0000
++++ sendmail-8.14.6/devtools/M4/UNIX/manpage.m4	2012-12-27 08:28:52.617502447 +0000
+@@ -68,11 +68,11 @@
+ ifdef(`confNO_MAN_INSTALL', `divert(-1)', `dnl')
+ define(`bldMAN_INSTALL_CMD',
+ `ifdef(`confDONT_INSTALL_CATMAN', `dnl',
+-`	ifdef(`confMKDIR', `if [ ! -d ${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)`SRC} ]; then confMKDIR -p ${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)`SRC}; else :; fi ')
+-	${INSTALL} -c -o ${MANOWN} -g ${MANGRP} -m ${MANMODE} bldGET_MAN_BASE_NAME($1).`${MAN'bldGET_MAN_SOURCE_NUM($1)`SRC}' `${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)}/bldGET_MAN_BASE_NAME($1)`.${MAN'bldGET_MAN_SOURCE_NUM($1)`EXT}'')
++`	ifdef(`confMKDIR', `if [ ! -d "`${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)}" ]; then confMKDIR -p "`${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)}"; else :; fi ')
++	${INSTALL} -c -o ${MANOWN} -g ${MANGRP} -m ${MANMODE} bldGET_MAN_BASE_NAME($1).`${MAN'bldGET_MAN_SOURCE_NUM($1)`SRC}' "`${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)}/bldGET_MAN_BASE_NAME($1)`.${MAN'bldGET_MAN_SOURCE_NUM($1)`EXT}''")
+ ifdef(`confINSTALL_RAWMAN',
+-`	ifdef(`confMKDIR', `if [ ! -d ${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)`MAN} ]; then confMKDIR -p ${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)`MAN}; else :; fi ')
+-	${INSTALL} -c -o ${MANOWN} -g ${MANGRP} -m ${MANMODE} bldGET_MAN_BASE_NAME($1).bldGET_MAN_SOURCE_NUM($1) `${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)`MAN}'/bldGET_MAN_BASE_NAME($1)`.${MAN'bldGET_MAN_SOURCE_NUM($1)`EXT}'', `dnl')'
++`	ifdef(`confMKDIR', `if [ ! -d "`${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)`MAN}'" ]; then confMKDIR -p "`${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)`MAN}'"; else :; fi ')
++	${INSTALL} -c -o ${MANOWN} -g ${MANGRP} -m ${MANMODE} bldGET_MAN_BASE_NAME($1).bldGET_MAN_SOURCE_NUM($1) "`${DESTDIR}${MAN'bldGET_MAN_SOURCE_NUM($1)`MAN}'/bldGET_MAN_BASE_NAME($1)`.${MAN'bldGET_MAN_SOURCE_NUM($1)`EXT}''", `dnl')'
+ )dnl
+ bldFOREACH(`bldMAN_INSTALL_CMD(', `bldMAN_PAGES')
+ ifdef(`confNO_MAN_INSTALL', `divert(0)', `dnl')
+diff -Nru sendmail-8.14.3.orig/libmilter/Makefile.m4 sendmail-8.14.3/libmilter/Makefile.m4
+--- sendmail-8.14.3.orig/libmilter/Makefile.m4	2008-04-08 07:23:44.000000000 +0200
++++ sendmail-8.14.3/libmilter/Makefile.m4	2009-09-20 10:50:36.000000000 +0200
+@@ -32,9 +32,9 @@
+ MFAPI=	${SRCDIR}/inc`'lude/libmilter/mfapi.h
+ MFDEF=	${SRCDIR}/inc`'lude/libmilter/mfdef.h
+ install-mfapi: ${MFAPI}
+-	if [ ! -d ${DESTDIR}${INCLUDEDIR}/libmilter ]; then mkdir -p ${DESTDIR}${INCLUDEDIR}/libmilter; else :; fi
+-	${INSTALL} -c -o ${INCOWN} -g ${INCGRP} -m ${INCMODE} ${MFAPI} ${DESTDIR}${INCLUDEDIR}/libmilter/mfapi.h
+-	${INSTALL} -c -o ${INCOWN} -g ${INCGRP} -m ${INCMODE} ${MFDEF} ${DESTDIR}${INCLUDEDIR}/libmilter/mfdef.h
++	if [ ! -d "${DESTDIR}${INCLUDEDIR}/libmilter" ]; then mkdir -p "${DESTDIR}${INCLUDEDIR}/libmilter"; else :; fi
++	${INSTALL} -c -o ${INCOWN} -g ${INCGRP} -m ${INCMODE} ${MFAPI} "${DESTDIR}${INCLUDEDIR}/libmilter/mfapi.h"
++	${INSTALL} -c -o ${INCOWN} -g ${INCGRP} -m ${INCMODE} ${MFDEF} "${DESTDIR}${INCLUDEDIR}/libmilter/mfdef.h"
+ divert(0)
+ 
+ bldFINISH
+diff -Nru sendmail-8.14.3.orig/mail.local/Makefile.m4 sendmail-8.14.3/mail.local/Makefile.m4
+--- sendmail-8.14.3.orig/mail.local/Makefile.m4	2006-06-28 23:08:02.000000000 +0200
++++ sendmail-8.14.3/mail.local/Makefile.m4	2009-09-20 10:56:24.000000000 +0200
+@@ -30,7 +30,7 @@
+ force-install: install-mail.local ifdef(`confNO_MAN_BUILD',, `install-docs')
+ 
+ install-mail.local: mail.local
+-	${INSTALL} -c -o ${UBINOWN} -g ${UBINGRP} -m ${UBINMODE} mail.local ${DESTDIR}${EBINDIR}
++	${INSTALL} -c -o ${UBINOWN} -g ${UBINGRP} -m ${UBINMODE} mail.local "${DESTDIR}${EBINDIR}"
+ divert
+ 
+ bldFINISH
+diff -Nru sendmail-8.14.3.orig/rmail/Makefile.m4 sendmail-8.14.3/rmail/Makefile.m4
+--- sendmail-8.14.3.orig/rmail/Makefile.m4	2006-06-28 23:08:04.000000000 +0200
++++ sendmail-8.14.3/rmail/Makefile.m4	2009-09-20 10:55:29.000000000 +0200
+@@ -31,7 +31,7 @@
+ force-install: install-rmail ifdef(`confNO_MAN_BUILD',, `install-docs')
+ 
+ install-rmail: rmail
+-	${INSTALL} -c -o ${UBINOWN} -g ${UBINGRP} -m ${UBINMODE} rmail ${DESTDIR}${UBINDIR}
++	${INSTALL} -c -o ${UBINOWN} -g ${UBINGRP} -m ${UBINMODE} rmail "${DESTDIR}${UBINDIR}"
+ divert
+ 
+ bldFINISH
+diff -Nru sendmail-8.14.3.orig/sendmail/Makefile.m4 sendmail-8.14.3/sendmail/Makefile.m4
+--- sendmail-8.14.3.orig/sendmail/Makefile.m4.orig	2008-03-27 17:13:33.000000000 +0100
++++ sendmail-8.14.3/sendmail/Makefile.m4	2009-09-20 11:07:24.000000000 +0200
+@@ -14,9 +14,9 @@
+ 
+ dnl hack: /etc/mail is not defined as "location of .cf" in the build system
+ define(`bldTARGET_INST_DEP', ifdef(`confINST_DEP', `confINST_DEP',
+-`${DESTDIR}/etc/mail/submit.cf ${DESTDIR}${MSPQ}'))dnl
++`"${DESTDIR}/etc/mail/submit.cf" "${DESTDIR}${MSPQ}"'))dnl
+ define(`bldTARGET_LINKS', ifdef(`confLINKS', `confLINKS',
+-`${DESTDIR}${UBINDIR}/newaliases ${DESTDIR}${UBINDIR}/mailq ${DESTDIR}${UBINDIR}/hoststat ${DESTDIR}${UBINDIR}/purgestat')
++`"${DESTDIR}${UBINDIR}/newaliases" "${DESTDIR}${UBINDIR}/mailq" "${DESTDIR}${UBINDIR}/hoststat" "${DESTDIR}${UBINDIR}/purgestat"')
+ )dnl
+ 
+ # location of sendmail statistics file (usually /etc/mail/ or /var/log)
+@@ -43,21 +43,21 @@
+ statistics:
+ 	${CP} /dev/null statistics
+ 
+-${DESTDIR}/etc/mail/submit.cf:
++"${DESTDIR}/etc/mail/submit.cf":
+ 	@echo "Please read INSTALL if anything fails while installing the binary."
+ 	@echo "${DESTDIR}/etc/mail/submit.cf will be installed now."
+ 	cd ${SRCDIR}/cf/cf && make install-submit-cf
+ 
+ MSPQ=ifdef(`confMSP_QUEUE_DIR', `confMSP_QUEUE_DIR', `/var/spool/clientmqueue')
+ 
+-${DESTDIR}${MSPQ}:
++"${DESTDIR}${MSPQ}":
+ 	@echo "Please read INSTALL if anything fails while installing the binary."
+ 	@echo "You must have setup a new user ${MSPQOWN} and a new group ${GBINGRP}"
+ 	@echo "as explained in sendmail/SECURITY."
+-	mkdir -p ${DESTDIR}${MSPQ}
+-	chown ${MSPQOWN} ${DESTDIR}${MSPQ}
+-	chgrp ${GBINGRP} ${DESTDIR}${MSPQ}
+-	chmod 0770 ${DESTDIR}${MSPQ}
++	mkdir -p "${DESTDIR}${MSPQ}"
++	chown ${MSPQOWN} "${DESTDIR}${MSPQ}"
++	chgrp ${GBINGRP} "${DESTDIR}${MSPQ}"
++	chmod 0770 "${DESTDIR}${MSPQ}"
+ 
+ divert(0)
+ 
+@@ -68,30 +68,30 @@
+ divert(bldTARGETS_SECTION)
+ 
+ install-set-user-id: bldCURRENT_PRODUCT ifdef(`confNO_HELPFILE_INSTALL',, `install-hf') ifdef(`confNO_STATISTICS_INSTALL',, `install-st') ifdef(`confNO_MAN_BUILD',, `install-docs')
+-	${INSTALL} -c -o ${S`'BINOWN} -g ${S`'BINGRP} -m ${S`'BINMODE} bldCURRENT_PRODUCT ${DESTDIR}${M`'BINDIR}
++	${INSTALL} -c -o ${S`'BINOWN} -g ${S`'BINGRP} -m ${S`'BINMODE} bldCURRENT_PRODUCT "${DESTDIR}${M`'BINDIR}"
+ 	for i in ${sendmailTARGET_LINKS}; do \
+ 		rm -f $$i; \
+ 		${LN} ${LNOPTS} ${M`'BINDIR}/sendmail $$i; \
+ 	done
+ 
+-define(`confMTA_LINKS', `${DESTDIR}${UBINDIR}/newaliases ${DESTDIR}${UBINDIR}/mailq ${DESTDIR}${UBINDIR}/hoststat ${DESTDIR}${UBINDIR}/purgestat')
++define(`confMTA_LINKS', `"${DESTDIR}${UBINDIR}/newaliases" "${DESTDIR}${UBINDIR}/mailq" "${DESTDIR}${UBINDIR}/hoststat" "${DESTDIR}${UBINDIR}/purgestat"')
+ install-sm-mta: bldCURRENT_PRODUCT
+-	${INSTALL} -c -o ${M`'BINOWN} -g ${M`'BINGRP} -m ${M`'BINMODE} bldCURRENT_PRODUCT ${DESTDIR}${M`'BINDIR}/sm-mta
++	${INSTALL} -c -o ${M`'BINOWN} -g ${M`'BINGRP} -m ${M`'BINMODE} bldCURRENT_PRODUCT "${DESTDIR}${M`'BINDIR}/sm-mta"
+ 	for i in confMTA_LINKS; do \
+ 		rm -f $$i; \
+ 		${LN} ${LNOPTS} ${M`'BINDIR}/sm-mta $$i; \
+ 	done
+ 
+ install-hf:
+-	if [ ! -d ${DESTDIR}${HFDIR} ]; then mkdir -p ${DESTDIR}${HFDIR}; else :; fi
+-	${INSTALL} -c -o ${UBINOWN} -g ${UBINGRP} -m 444 helpfile ${DESTDIR}${HFFILE}
++	if [ ! -d "${DESTDIR}${HFDIR}" ]; then mkdir -p "${DESTDIR}${HFDIR}"; else :; fi
++	${INSTALL} -c -o ${UBINOWN} -g ${UBINGRP} -m 444 helpfile "${DESTDIR}${HFFILE}"
+ 
+ install-st: statistics
+-	if [ ! -d ${DESTDIR}${STDIR} ]; then mkdir -p ${DESTDIR}${STDIR}; else :; fi
+-	${INSTALL} -c -o ${SBINOWN} -g ${UBINGRP} -m ifdef(`confSTMODE', `confSTMODE', `0600') statistics ${DESTDIR}${STPATH}
++	if [ ! -d "${DESTDIR}${STDIR}" ]; then mkdir -p "${DESTDIR}${STDIR}"; else :; fi
++	${INSTALL} -c -o ${SBINOWN} -g ${UBINGRP} -m ifdef(`confSTMODE', `confSTMODE', `0600') statistics "${DESTDIR}${STPATH}"
+ 
+-install-submit-st: statistics ${DESTDIR}${MSPQ}
+-	${INSTALL} -c -o ${MSPQOWN} -g ${GBINGRP} -m ifdef(`confSTMODE', `confSTMODE', `0600') statistics ${DESTDIR}${MSPQ}/${MSPSTFILE}
++install-submit-st: statistics "${DESTDIR}${MSPQ}"
++	${INSTALL} -c -o ${MSPQOWN} -g ${GBINGRP} -m ifdef(`confSTMODE', `confSTMODE', `0600') statistics "${DESTDIR}${MSPQ}/${MSPSTFILE}"
+ 
+ divert(0)
+ bldPRODUCT_END
