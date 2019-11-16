@@ -22,7 +22,7 @@ BDEPEND="
 		$(python_gen_any_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
 			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
-		' -2 python3_{5,6,7} pypy3)
+		')
 	)
 "
 
