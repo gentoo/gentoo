@@ -98,6 +98,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.91_pre3-sk-man.patch"
 	"${FILESDIR}/${PN}-0.48.4-epython.patch"
 	"${FILESDIR}/${PN}-0.92.4-poppler-0.76.0.patch" #684246
+	"${FILESDIR}/${PN}-0.92.4-poppler-0.82.0.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
