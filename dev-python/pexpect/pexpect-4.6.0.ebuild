@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -15,19 +15,16 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="doc examples test"
+IUSE="doc examples"
 
 RDEPEND=">=dev-python/ptyprocess-0.5[${PYTHON_USEDEP}]"
 DEPEND="
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+	doc? ( dev-python/sphinx )"
+
+distutils_enable_tests pytest
 
 python_compile_all() {
 	use doc && emake -C doc html
-}
-
-python_test() {
-	pytest -vv tests || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
