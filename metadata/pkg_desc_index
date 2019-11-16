@@ -1164,7 +1164,7 @@ app-editors/gedit-plugins 3.30.1 3.32.2: Official plugins for gedit
 app-editors/ghex 3.18.4-r1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.8.0: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gnome-latex 3.28.1: Integrated LaTeX environment for GNOME
-app-editors/gummi 0.6.6-r2 0.7.999: Simple LaTeX editor for GTK+ users
+app-editors/gummi 0.6.6-r2 0.8.0_rc2: Simple LaTeX editor for GTK+ users
 app-editors/gvim 8.1.1486 8.1.1846 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
@@ -9689,19 +9689,19 @@ dev-ruby/bson 4.4.2 4.5.0 4.6.0: A Ruby BSON implementation for MongoDB. (Includ
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.3: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.16.1 1.17.3: An easy way to vendor gem dependencies
-dev-ruby/bundler-audit 0.6.0 0.6.1: Provides patch-level verification for Bundled apps
+dev-ruby/bundler-audit 0.6.1: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.13.0 2.14.2 2.14.3: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.1.8 1.1.9 1.2.1: Run cross-platform executables
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/capistrano 2.15.5-r2 3.11.0 3.11.1 3.11.2: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
-dev-ruby/capybara 2.18.0 3.23.0 3.24.0 3.25.0 3.26.0 3.27.0 3.28.0 3.29.0: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 2.18.0 3.26.0 3.27.0 3.28.0 3.29.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.6 0.7.7: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
 dev-ruby/childprocess 0.9.0 1.0.1-r1 2.0.0 3.0.0: Solution for controlling external programs running in the background
 dev-ruby/chronic 0.10.2: Chronic is a natural language date/time parser written in pure Ruby
-dev-ruby/chunky_png 1.3.10 1.3.11: Pure Ruby library that can read and write PNG images
+dev-ruby/chunky_png 1.3.11: Pure Ruby library that can read and write PNG images
 dev-ruby/cinch 2.3.4: IRC Bot Building Framework
 dev-ruby/classifier-reborn 2.2.0: Module to allow Bayesian and other types of classifications
 dev-ruby/climate_control 0.2.0: Easily manage your environment
@@ -10604,7 +10604,7 @@ dev-util/ctags 20190331: Exuberant Ctags creates tags files for code browsing in
 dev-util/cucumber 3.1.2: Executable feature scenarios
 dev-util/cucumber-core 3.2.1: Executable feature scenarios
 dev-util/cucumber-expressions 6.0.1: a simpler alternative to Regular Expressions
-dev-util/cucumber-messages 2.1.2: Protocol Buffer messages for Cucumber's inter-process communication
+dev-util/cucumber-messages 7.0.0: Protocol Buffer messages for Cucumber's inter-process communication
 dev-util/cucumber-rails 1.7.0 1.8.0: Executable feature scenarios for Rails
 dev-util/cucumber-tag_expressions 1.1.1: Cucumber tag expressions for ruby
 dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
@@ -10777,7 +10777,7 @@ dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) forma
 dev-util/oprofile 1.3.0: A transparent low-overhead system-wide profiler
 dev-util/osc 0.152.0 0.154.0 9999: Command line tool for Open Build Service
 dev-util/ostree 2018.5 2018.9: Operating system and container binary deployment and upgrades
-dev-util/packer 1.3.5 1.4.0 1.4.1 1.4.4: A tool to create identical machine images for multiple platforms
+dev-util/packer 1.3.5 1.4.0 1.4.1 1.4.4 1.4.5: A tool to create identical machine images for multiple platforms
 dev-util/patchbin 20160208 99999999: Apply binary patches without git
 dev-util/patchelf 0.8 0.10: Small utility to modify the dynamic linker and RPATH of ELF executables
 dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch files
@@ -14801,7 +14801,7 @@ net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
 net-im/qtox 1.16.3 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.27.3: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.28.0: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.52.0.138 8.52.0.138-r1 8.53.0.85 8.54.0.85: Instant messaging client, with support for audio and video
@@ -15487,7 +15487,7 @@ net-misc/x2goserver 4.1.0.2 4.1.0.3: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270 0.4.1355: utility to download media contents from the web
 net-misc/youtube-dl 2019.11.05 99999999: Download videos from YouTube.com (and more sites...)
-net-misc/youtube-viewer 3.5.4 3.5.5 3.5.8-r1 9999: A command line utility for viewing youtube-videos in Mplayer
+net-misc/youtube-viewer 3.5.5 3.5.8-r1 3.5.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
