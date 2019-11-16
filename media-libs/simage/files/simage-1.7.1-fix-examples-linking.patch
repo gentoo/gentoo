@@ -1,0 +1,22 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8225dc4..de89fd0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -494,7 +494,7 @@ foreach(_source ${SIMAGE_EXAMPLE_SOURCE})
+   get_filename_component(_example ${_source} NAME_WE)
+   add_executable(${_example} ${_source})
+   target_compile_definitions(${_example} PRIVATE _CRT_NONSTDC_NO_DEPRECATE _CRT_SECURE_NO_DEPRECATE _CRT_SECURE_NO_WARNINGS _USE_MATH_DEFINES)
+-  target_link_libraries(${_example} simage)
++  target_link_libraries(${_example} simage sndfile)
+   if(UNIX)
+     target_link_libraries(${_example} m)
+   endif()
+@@ -507,7 +507,7 @@ endforeach()
+ enable_testing()
+ 
+ add_executable(loaders tests/loaders.c)
+-target_link_libraries(loaders simage)
++target_link_libraries(loaders simage sndfile)
+ target_compile_definitions(loaders PRIVATE _CRT_NONSTDC_NO_DEPRECATE _CRT_SECURE_NO_DEPRECATE _CRT_SECURE_NO_WARNINGS _USE_MATH_DEFINES)
+ if(UNIX)
+   target_link_libraries(loaders m)

@@ -1,18 +1,16 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils flag-o-matic
 
-MY_P=Coin3D-simage-3bd369da8f08
-
 DESCRIPTION="Image and video texturing library"
 HOMEPAGE="https://bitbucket.org/Coin3D/simage"
-SRC_URI="https://dev.gentoo.org/~reavertm/${MY_P}.tar.bz2"
+SRC_URI="https://bitbucket.org/Coin3D/simage/downloads/${P}-src.zip"
 
 LICENSE="public-domain mpeg2enc"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 SLOT="0"
 IUSE="debug gif jpeg png qt5 sndfile tiff vorbis"
 
@@ -31,12 +29,17 @@ RDEPEND="
 		media-libs/libvorbis
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	app-arch/unzip
+"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${PN}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.7.1-cmake-automagic-deps.patch"
+	"${FILESDIR}/${P}-cmake-automagic-deps.patch"
+	"${FILESDIR}/${P}-fix-examples-linking.patch"
+	"${FILESDIR}/${P}-disable-gif-quantize-buffer.patch"
 )
 
 DOCS=(AUTHORS ChangeLog NEWS README)
