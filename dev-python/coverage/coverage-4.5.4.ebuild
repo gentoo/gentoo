@@ -28,9 +28,15 @@ BDEPEND="
 	)
 "
 
+DISTUTILS_IN_SOURCE_BUILD=1
+
+PATCHES=(
+	"${FILESDIR}/coverage-4.5.4-tests.patch"
+)
+
 src_prepare() {
-	# avoid the dep on xdist
-	sed -i -e '/^addopts/s:-n3::' setup.cfg || die
+	# avoid the dep on xdist, run tests verbosely
+	sed -i -e '/^addopts/s:-n3:-v:' setup.cfg || die
 	distutils-r1_src_prepare
 }
 
@@ -45,6 +51,18 @@ python_compile() {
 
 python_test() {
 	distutils_install_for_testing
-	"${EPYTHON}" igor.py test_with_tracer py || die
-	"${EPYTHON}" igor.py test_with_tracer c || die
+	local bindir=${TEST_DIR}/scripts
+
+	pushd tests/eggsrc >/dev/null || die
+	distutils_install_for_testing
+	popd >/dev/null || die
+
+	"${EPYTHON}" igor.py zip_mods || die
+	PATH="${bindir}:${PATH}" "${EPYTHON}" igor.py test_with_tracer py || die
+
+	# No C extensions under pypy
+	if [[ ${EPYTHON} != pypy* ]]; then
+		cp -l -- "${TEST_DIR}"/lib/*/coverage/*.so coverage/ || die
+		PATH="${bindir}:${PATH}" "${EPYTHON}" igor.py test_with_tracer c || die
+	fi
 }
