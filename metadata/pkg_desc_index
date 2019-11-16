@@ -10015,7 +10015,7 @@ dev-ruby/pry 0.12.2: Pry is a powerful alternative to the standard IRB shell for
 dev-ruby/psych 3.1.0: A libyaml wrapper for Ruby
 dev-ruby/public_suffix 3.1.1 4.0.1: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/pundit 1.1.0 2.1.0: Object oriented authorization for Rails applications
-dev-ruby/puppet_forge 2.2.9-r1 2.3.0: Tools to access Forge API information on Modules, Users, and Releases
+dev-ruby/puppet_forge 2.2.9-r1 2.3.0 2.3.1: Tools to access Forge API information on Modules, Users, and Releases
 dev-ruby/puppetdb-termini 6.6.0 6.7.1: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
 dev-ruby/pygments_rb 1.2.1: Pygments syntax highlighting in ruby
@@ -10053,7 +10053,7 @@ dev-ruby/rcairo 1.16.2 1.16.4: Ruby bindings for cairo
 dev-ruby/rdiscount 2.2.0.1: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 5.1.0 5.1.0-r1 6.1.1 6.1.2 6.2.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
-dev-ruby/recog 2.1.46 2.3.2 2.3.4 2.3.5: Pattern recognition for hosts, services, and content
+dev-ruby/recog 2.1.46 2.3.2 2.3.4 2.3.5 2.3.6: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.4.0 3.5.0: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.3.2-r1: A module for using Textile in Ruby
 dev-ruby/redis 3.3.5 4.0.1: A Ruby client library for Redis
