@@ -199,7 +199,7 @@ do_compile_test() {
 	rm -f glibc-test*
 	printf '%b' "$*" > glibc-test.c
 
-	nonfatal emake -s glibc-test
+	nonfatal emake glibc-test
 	ret=$?
 
 	popd >/dev/null
@@ -247,7 +247,7 @@ setup_target_flags() {
 			# We could change main to _start and pass -nostdlib here so that we
 			# only test the gcc code compilation.  Or we could do a compile and
 			# then look for the symbol via scanelf.
-			if ! do_compile_test "" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n' 2>/dev/null ; then
+			if ! do_compile_test "" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n'; then
 				local t=${CTARGET_OPT:-${CTARGET}}
 				t=${t%%-*}
 				filter-flags '-march=*'
@@ -260,7 +260,7 @@ setup_target_flags() {
 			# Note: This test only matters when the x86 ABI is enabled, so we could
 			# optimize a bit and elide it.
 			# TODO: See cross-compile issues listed above for x86.
-			if ! do_compile_test "${CFLAGS_x86}" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n' 2>/dev/null ; then
+			if ! do_compile_test "${CFLAGS_x86}" 'void f(int i, void *p) {if (__sync_fetch_and_add(&i, 1)) f(i, p);}\nint main(){return 0;}\n'; then
 				local t=${CTARGET_OPT:-${CTARGET}}
 				t=${t%%-*}
 				# Normally the target is x86_64-xxx, so turn that into the -march that
