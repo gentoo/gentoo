@@ -7,7 +7,7 @@ DESCRIPTION="ALSA ucm configuration files"
 HOMEPAGE="https://www.alsa-project.org"
 # WTF upstream!
 SRC_URI="https://www.alsa-project.org/files/pub/lib/${P}.tar.bz2 -> ${P}.tar.xz"
-LICENSE="GPL-2+"
+LICENSE="BSD"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
