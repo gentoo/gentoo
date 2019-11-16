@@ -7768,7 +7768,7 @@ dev-python/fixtures 1.4.0 3.0.0: Fixtures, reusable state for writing clean test
 dev-python/flake8 2.1.0 2.2.5 2.5.4 3.5.0 3.6.0: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flake8-import-order 0.18: Flake8 plugin that checks import order against various Python Style Guides
 dev-python/flake8-polyfill 1.0.1: Polyfill package for Flake8 plugins
-dev-python/flaky 3.1.1 3.4.0 3.5.3: Plugin for nose or py.test that automatically reruns flaky tests
+dev-python/flaky 3.1.1 3.4.0 3.5.3 3.6.1: Plugin for nose or py.test that automatically reruns flaky tests
 dev-python/flask 0.12.2 1.0.2 1.0.4 1.1.1 9999: A microframework based on Werkzeug, Jinja2 and good intentions
 dev-python/flask-admin 1.0.6 1.5.0 1.5.1: Simple and extensible admin interface framework for Flask
 dev-python/flask-api 1.0 1.1: Browsable web APIs for Flask
