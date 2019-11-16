@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy pypy3 )
 
 inherit distutils-r1
 
@@ -32,7 +32,7 @@ python_test() {
 
 	local t
 	for t in testlex.py testyacc.py; do
-		"${PYTHON}" "${t}" || die "${t} fails with ${EPYTHON}"
+		"${EPYTHON}" "${t}" -v || die "${t} fails with ${EPYTHON}"
 	done
 }
 
