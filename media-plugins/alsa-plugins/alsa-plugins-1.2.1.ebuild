@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools flag-o-matic multilib multilib-minimal
 
 DESCRIPTION="ALSA extra plugins"
@@ -10,7 +10,7 @@ SRC_URI="https://www.alsa-project.org/files/pub/plugins/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~sh sparc x86 ~amd64-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux"
 IUSE="arcam_av debug ffmpeg jack libav libsamplerate +mix oss pulseaudio speex +usb_stream"
 
 RDEPEND="
@@ -27,12 +27,8 @@ RDEPEND="
 		media-libs/speexdsp[${MULTILIB_USEDEP}]
 	)
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.1.5-optional_plugins.patch"
-)
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
@@ -40,9 +36,9 @@ src_prepare() {
 	# For some reasons the polyp/pulse plugin does fail with alsaplayer with a
 	# failed assert. As the code works just fine with asserts disabled, for now
 	# disable them waiting for a better solution.
-	sed -i \
+	sed \
 		-e '/AM_CFLAGS/s:-Wall:-DNDEBUG -Wall:' \
-		pulse/Makefile.am || die
+		-i pulse/Makefile.am || die
 
 	eautoreconf
 }
@@ -51,9 +47,12 @@ multilib_src_configure() {
 	use debug || append-cppflags -DNDEBUG
 
 	local myeconfargs=(
+		# default does not contain $prefix: bug #673464
+		--with-alsalconfdir="${EPREFIX}"/etc/alsa/conf.d
+
 		--with-speex="$(usex speex lib no)"
 		$(use_enable arcam_av arcamav)
-		$(use_enable ffmpeg avcodec)
+		$(use_enable ffmpeg libav)
 		$(use_enable jack)
 		$(use_enable libsamplerate samplerate)
 		$(use_enable mix)
@@ -72,7 +71,7 @@ multilib_src_install_all() {
 	dodoc upmix.txt vdownmix.txt README-pcm-oss
 	use jack && dodoc README-jack
 	use libsamplerate && dodoc samplerate.txt
-	use ffmpeg && dodoc lavcrate.txt a52.txt
+	use ffmpeg && dodoc lavrate.txt a52.txt
 
 	if use pulseaudio; then
 		dodoc README-pulse
@@ -84,12 +83,14 @@ multilib_src_install_all() {
 		doins "${FILESDIR}"/51-pulseaudio-probe.conf
 		# bug #410261, comment 5+
 		# seems to work fine without any path
-		sed -i \
+		sed \
 			-e "s:/usr/lib/alsa-lib/::" \
-			"${ED%/}"/usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf || die #410261
+			-i "${ED}"/usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf || die #410261
+		dosym ../../../usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf \
+			/etc/alsa/conf.d/51-pulseaudio-probe.conf #670960
 	fi
 
-	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
+	find "${ED}" -type f \( -name '*.a' -o -name '*.la' \) -delete || die
 }
 
 pkg_postinst() {
