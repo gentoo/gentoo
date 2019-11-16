@@ -1,0 +1,17 @@
+diff -Naur kicad-5.1.5-orig/CMakeLists.txt kicad-5.1.5/CMakeLists.txt
+--- kicad-5.1.5-orig/CMakeLists.txt	2019-11-14 09:09:45.000000000 -0800
++++ kicad-5.1.5/CMakeLists.txt	2019-11-19 02:08:32.309282631 -0800
+@@ -355,10 +355,10 @@
+ 
+     elseif( NOT APPLE )
+         # Thou shalt not link vaporware and tell us it's a valid DSO (apple ld doesn't support it)
+-        set( CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined" )
+-        set( CMAKE_MODULE_LINKER_FLAGS "-Wl,--no-undefined" )
++        set( CMAKE_SHARED_LINKER_FLAGS "$ENV{LDFLAGS} -Wl,--no-undefined" )
++        set( CMAKE_MODULE_LINKER_FLAGS "$ENV{LDFLAGS} -Wl,--no-undefined" )
+ 
+-        set( CMAKE_EXE_LINKER_FLAGS_RELEASE "-s" )
++        set( CMAKE_EXE_LINKER_FLAGS_RELEASE "$ENV{LDFLAGS} -s" )
+ 
+         # Defeat ELF's ability to use the GOT to replace locally implemented functions
+         # with ones from another module.
