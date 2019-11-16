@@ -11,7 +11,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Utility providing information about the computer hardware"
-HOMEPAGE="https://kde.org/applications/system/kinfocenter/"
+HOMEPAGE="https://userbase.kde.org/KInfoCenter"
 SRC_URI+=" https://www.gentoo.org/assets/img/logo/gentoo-3d-small.png -> glogo-small.png"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
