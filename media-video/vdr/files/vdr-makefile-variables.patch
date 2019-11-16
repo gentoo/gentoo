@@ -1,0 +1,26 @@
+--- a/Makefile	2019-03-14 12:11:58.725197673 +0100
++++ b/Makefile	2019-03-14 12:12:22.333678224 +0100
+@@ -89,7 +89,7 @@
+ ifdef HDRDIR
+ HDRDIR   := -I$(HDRDIR)
+ endif
+-ifndef NO_KBD
++ifeq ($(USE_KBD),1)
+ DEFINES += -DREMOTE_KBD
+ endif
+ ifdef REMOTE
+@@ -98,12 +98,12 @@
+ ifdef VDR_USER
+ DEFINES += -DVDR_USER=\"$(VDR_USER)\"
+ endif
+-ifdef BIDI
++ifeq ($(BIDI),1)
+ INCLUDES += $(shell pkg-config --cflags fribidi)
+ DEFINES += -DBIDI
+ LIBS += $(shell pkg-config --libs fribidi)
+ endif
+-ifdef SDNOTIFY
++ifeq ($(SDNOTIFY),1)
+ INCLUDES += $(shell pkg-config --silence-errors --cflags libsystemd-daemon || pkg-config --cflags libsystemd)
+ DEFINES += -DSDNOTIFY
+ LIBS += $(shell pkg-config --silence-errors --libs libsystemd-daemon || pkg-config --libs libsystemd)

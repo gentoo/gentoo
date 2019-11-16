@@ -8,6 +8,7 @@
 	<use>
 		<flag name="alternatechannel">Use alternate channel on record</flag>
 		<flag name="bidi">fribidi support, for languages, written from right to left</flag>
+		<flag name="demoplugins">Install demo and example plugins coming with vanilla vdr</flag>
 		<flag name="ddepgentry">remove duplicate EPG entries</flag>
 		<flag name="dvlvidprefer">controls video-dir choice on recording</flag>
 		<flag name="graphtft">support for vdr-graphtft plugin up from version 0.1.7</flag>
