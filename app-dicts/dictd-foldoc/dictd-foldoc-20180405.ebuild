@@ -17,26 +17,28 @@ DEPEND=">=app-text/dictd-1.5.5"
 S="${WORKDIR}"
 
 src_unpack() {
-	cp "${DISTDIR}/${A}" foldoc.txt
+	cp "${DISTDIR}/${A}" foldoc.txt || die
 }
 
 src_prepare() {
+	eapply "${FILESDIR}/tab.patch"
 	eapply_user
-	sed -e '/^$/{N;s/\n\([^\t]\+\)/\1/g;T;h;n;d}' -i foldoc.txt
+	sed -f "${FILESDIR}/prepare.sed" -i foldoc.txt || die
 }
 
 src_compile() {
-	tail -n +3 foldoc.txt | \
-		dictfmt -u "${HOMEPAGE}/Dictionary" \
+	(dictfmt -u "${HOMEPAGE}/Dictionary" \
 		-s "The Free On-line Dictionary of Computing (version ${PV})" \
 		--utf8 \
-		-f foldoc
-	dictzip foldoc.dict
+		-f foldoc \
+		|| die) \
+		< <(tail -n +3 foldoc.txt || die)
+	dictzip foldoc.dict || die
 }
 
 src_install() {
 	insinto /usr/lib/dict
-	doins foldoc.dict.dz foldoc.index || die
+	doins foldoc.dict.dz foldoc.index
 }
 
 pkg_postinst() {

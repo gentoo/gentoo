@@ -1,0 +1,1564 @@
+--- a/foldoc.txt	2018-03-29 07:20:04.000000000 -0700
++++ b/foldoc.txt	2019-11-15 10:40:20.244955500 -0800
+@@ -6095,8 +6095,8 @@
+ 	defined using {pattern matching}:
+ 
+ 		depth :: Tree -> Int
+-		depth Empty	 = 0
+-		depth (Leaf n)	 = 1
++		depth Empty      = 0
++		depth (Leaf n)   = 1
+ 		depth (Node l r) = 1 + max (depth l) (depth r)
+ 
+ 	The most common algebraic data type is the list which has
+@@ -10759,22 +10759,22 @@
+ 	  /____\        ||     | \    /---V  `v'-            oo )
+ 	 /      \       ||---W||  *  * |--|   || |`.         |_/\
+ 
+-			//-o-\\
+-		 ____---=======---____
++	                //-o-\\
++	         ____---=======---____
+ 	     ====___\   /.. ..\   /___====      Klingons rule OK!
+ 	   //        ---\__O__/---        \\
+ 	   \_\                           /_/
+ 
+-					    _____
+-				    __...---'-----`---...__
+-			       _===============================
++	                                    _____
++	                            __...---'-----`---...__
++	                       _===============================
+ 	  ,----------------._/'      `---..._______...---'
+ 	  (_______________||_) . .  ,--'
+ 	      /    /.---'         `/
+ 	     '--------_- - - - - _/
+-		       `--------'
++	               `--------'
+ 
+-				   Figure 2.
++	                         Figure 2.
+ 
+ 	There is an important subgenre of ASCII art that puns on the
+ 	standard character names in the fashion of a rebus.
+@@ -10786,7 +10786,7 @@
+ 	 |        ^^^^^^^         B       ^^^^^^^^^               |
+ 	 |  ^^^^^^^^^          ^^^            ^^^^^^^^^^^^^^      |
+ 	 +--------------------------------------------------------+
+-		     "A Bee in the Carrot Patch"
++	             "A Bee in the Carrot Patch"
+ 
+ 	                       Figure 3.
+ 
+@@ -10794,15 +10794,15 @@
+ 	entire flourishing subgenre of pictures of silly cows.  One is
+ 	shown in Figure 2; here are three more:
+ 
+-		  (__)              (__)              (__)
+-		  (\/)              ($$)              (**)
++	          (__)              (__)              (__)
++	          (\/)              ($$)              (**)
+ 	   /-------\/        /-------\/        /-------\/
+ 	  / | 666 ||        / |=====||        / |     ||
+ 	 *  ||----||       *  ||----||       *  ||----||
+ 	    ~~    ~~          ~~    ~~          ~~    ~~
+ 	  Satanic cow    This cow is a Yuppie   Cow in love
+ 
+-				  Figure 4.
++	                       Figure 4.
+ 
+ 	{(http://gagme.wwa.com/~boba/scarecrow.html)}.
+ 
+@@ -12006,11 +12006,11 @@
+ 	ATA-4 Extensions Ultra DMA/33 Synchronous DMA Mode maximum {burst
+ 	transfer rates}:
+ 
+-		Mode 	Cycle Time 	Transfer Rate
+-			ns		MB/s
+-		0 	235 		16
+-		1 	160 		24
+-		2 	120 		33
++		Mode    Cycle Time      Transfer Rate
++		        ns              MB/s
++		0       235             16
++		1       160             24
++		2       120             33
+ 
+ 	This is achieved by improving timing windows in the {protocol}
+ 	on the ATA interface; reducing propagation delays by
+@@ -14117,7 +14117,7 @@
+ 	 <personal-part> ::= <name> | <initial> "."
+ 
+ 	 <name-part> ::= <personal-part> <last-name> [<jr-part>] <EOL>
+-		       | <personal-part> <name-part>
++	               | <personal-part> <name-part>
+ 
+ 	 <street-address> ::= [<apt>] <house-num> <street-name> <EOL>
+ 
+@@ -14886,12 +14886,12 @@
+ 	{pathname}, does not mention any of the {directories}
+ 	containing the file.  Examples:
+ 
+-		pathname	basename
+-		--------	--------
+-		/etc/hosts	hosts
+-		./alma		alma
+-		korte/a.a	a.a
+-		a.a		a.a
++		pathname        basename
++		--------        --------
++		/etc/hosts      hosts
++		./alma          alma
++		korte/a.a       a.a
++		a.a             a.a
+ 
+ 	See also {pathname}.
+ 
+@@ -17171,17 +17171,17 @@
+ 
+ 	Specific units of IEC 60027-2 A.2 and ISO/IEC 80000
+ 
+-	 IEC prefix	   Representations				Customary prefix
+-	 Name  Symbol  Base 2  Base		Base 10		Name	Symbol
+-						   1024		(approx)
+-	 kibi  Ki	   2^10	   1024^1	1.02x10^3	kilo	k, K
+-	 mebi  Mi	   2^20	   1024^2	1.05x10^6	mega	M
+-	 gibi  Gi	   2^30	   1024^3	1.07x10^9	giga	G
+-	 tebi  Ti	   2^40	   1024^4	1.10x10^12	tera	T
+-	 pebi  Pi	   2^50	   1024^5	1.13x10^15	peta	P
+-	 exbi  Ei	   2^60	   1024^6	1.15x10^18	exa     E
+-	 zebi  Zi	   2^70	   1024^7	1.18x10^21	zetta	Z
+-	 yobi  Yi	   2^80	   1024^8	1.21x10^24	yotta	Y
++	 IEC prefix        Representations                              Customary prefix
++	 Name  Symbol  Base 2  Base             Base 10         Name    Symbol
++	                                           1024         (approx)
++	 kibi  Ki          2^10    1024^1       1.02x10^3       kilo    k, K
++	 mebi  Mi          2^20    1024^2       1.05x10^6       mega    M
++	 gibi  Gi          2^30    1024^3       1.07x10^9       giga    G
++	 tebi  Ti          2^40    1024^4       1.10x10^12      tera    T
++	 pebi  Pi          2^50    1024^5       1.13x10^15      peta    P
++	 exbi  Ei          2^60    1024^6       1.15x10^18      exa     E
++	 zebi  Zi          2^70    1024^7       1.18x10^21      zetta   Z
++	 yobi  Yi          2^80    1024^8       1.21x10^24      yotta   Y
+ 
+ 	(2013-11-04)
+ 
+@@ -17239,7 +17239,7 @@
+ 	or child nodes.  In {Haskell} this could be represented as
+ 
+ 		data BTree a = NilTree
+-			     | Node a (BTree a) (BTree a)
++		             | Node a (BTree a) (BTree a)
+ 
+ 	See also {balanced tree}.
+ 
+@@ -17762,7 +17762,7 @@
+ 	to zero.  For example, if, in {C}, we want to test if bits 0
+ 	or 2 of x are set, we can write
+ 
+-		int mask = 5;	/* binary 101 */
++		int mask = 5;   /* binary 101 */
+ 
+ 		if (x & mask) ...
+ 
+@@ -18422,7 +18422,7 @@
+ 	English-speaking world.  One version ran in its entirety as
+ 	follows:
+ 
+-			ACHTUNG!  ALLES LOOKENSPEEPERS!
++	                ACHTUNG!  ALLES LOOKENSPEEPERS!
+ 
+ 	  Das computermachine ist nicht fuer gefingerpoken und
+ 	  mittengrabben.  Ist easy schnappen der springenwerk,
+@@ -23504,9 +23504,9 @@
+ 	E.g, in {Scheme}:
+ 
+ 	 (define (f k)
+-		 (k 1)
+-		 (k 2)
+-		 3)
++	         (k 1)
++	         (k 2)
++	         3)
+ 
+ 	 (display (call-with-current-continuation f))
+ 
+@@ -27317,10 +27317,10 @@
+ 	written:
+ 
+ 		church n = c
+-			   where
+-			   c f x = if n == 0 then x else c' f (f x)
+-				   where
+-				   c' = church (n-1)
++		           where
++		           c f x = if n == 0 then x else c' f (f x)
++		                   where
++		                   c' = church (n-1)
+ 
+ 	A function to turn a Church integer into an ordinary integer:
+ 
+@@ -29037,8 +29037,8 @@
+ 	part of the sum they come from, and a new {bottom} element.
+ 
+ 	 D (+) E = { bottom(D(+)E) }
+-		   U { (0,d) | d in D, d /= bottom(D) }
+-		   U { (1,e) | e in E, e /= bottom(E) }
++	           U { (0,d) | d in D, d /= bottom(D) }
++	           U { (1,e) | e in E, e /= bottom(E) }
+ 
+ 	The bottoms of the constituent domains are coalesced into a
+ 	single bottom in the sum.  This may be generalised to any
+@@ -29950,9 +29950,9 @@
+ 	combinators - S and K.  These two and a third, I, are defined
+ 	thus:
+ 
+-		S f g x	= f x (g x)
+-		K x y	= x
+-		I x	= x		= S K K x
++		S f g x = f x (g x)
++		K x y   = x
++		I x     = x             = S K K x
+ 
+ 	There is a simple translation between {combinatory logic} and
+ 	{lambda-calculus}.  The size of equivalent expressions in the
+@@ -30923,7 +30923,7 @@
+ 	With CIFS, once a file is open, state about the current access
+ 	to that file is stored on both the client and the server.
+ 	This allows changes on the server side to be notified to the
+-	clients	that are interested.
++	clients that are interested.
+ 
+ 	{Microsoft Overview
+ 	(http://msdn.microsoft.com/library/en-us/fileio/base/cifs_smb_protocol_overview.asp)}.
+@@ -34657,13 +34657,13 @@
+ 	continuation thus represents the whole of the rest of the
+ 	computation.  Some examples:
+ 
+-	 normal (direct style)		continuation passing style
++	 normal (direct style)          continuation passing style
+ 
+-	 square x = x * x			square x k = k (x * x)
++	 square x = x * x                       square x k = k (x * x)
+ 
+-	 g (square 23)				square 23 g
++	 g (square 23)                          square 23 g
+ 
+-	 (square 3) + 1				square 3 ( \ s . s + 1 )
++	 (square 3) + 1                         square 3 ( \ s . s + 1 )
+ 
+ 	(1995-04-04)
+ 
+@@ -35105,10 +35105,10 @@
+ 
+ 		A   B | A => B   B => A
+ 		------+----------------
+-		f   f |	  t	   t
+-		f   t |	  t	   f
+-		t   f |	  f	   t
+-		t   t |	  t	   t
++		f   f |   t        t
++		f   t |   t        f
++		t   f |   f        t
++		t   t |   t        t
+ 
+ 	(2002-07-12)
+ 
+@@ -43639,8 +43639,8 @@
+ 	difference is
+ 
+ 		D2 u(n) = D (D u(n))
+-			= (u(n+2) - u(n+1)) - (u(n+1) - u(n))
+-			= u(n+2) - 2u(n+1) + u(n)
++		        = (u(n+2) - u(n+1)) - (u(n+1) - u(n))
++		        = u(n+2) - 2u(n+1) + u(n)
+ 
+ 	And so on.  A {recurrence relation} such as
+ 
+@@ -45543,24 +45543,24 @@
+ 	In either case, switching software or switching display
+ 	systems was fraught with compatibility problems.
+ 
+-	 Display    Resolution Colours Sponsor	Systems
++	 Display    Resolution Colours Sponsor  System
+ 
+-	 MDA	    720x350 T	  2   	IBM     PC
+-	 CGA	    320x200	  4   	IBM     PC
+-	 EGA	    640x350	 16   	IBM     PC
+-	 PGA	    640x480	256   	IBM     PC
++	 MDA        720x350 T     2     IBM     PC
++	 CGA        320x200       4     IBM     PC
++	 EGA        640x350      16     IBM     PC
++	 PGA        640x480     256     IBM     PC
+ 
+-	 Hercules   729x348	  2   non-IBM	PC
++	 Hercules   729x348       2   non-IBM   PC
+ 
+-	 MCGA	    720x400 T
+-		    320x200 G	256		PS/2
++	 MCGA       720x400 T
++	            320x200 G   256             PS/2
+ 
+-	 VGA	    720x400 T
+-		    640x480 G	 16
++	 VGA        720x400 T
++	            640x480 G    16
+ 
+-	 SVGA	    800x600	 16	VESA
++	 SVGA       800x600      16     VESA
+ 
+-	 XVGA	   1024x768	256	(IBM name: 8514)
++	 XVGA      1024x768     256     (IBM name: 8514)
+ 
+ 	T: text,  G: graphics.
+ 
+@@ -45717,7 +45717,7 @@
+ 	Products supporting DDM include {AS/400}, {System/36},
+ 	{System/38} and {CICS/DDM}.
+ 
+-	On the AS/400, 	DDM controls remote file processing.
++	On the AS/400, DDM controls remote file processing.
+ 	DDM enables application programs running on one AS/400
+ 	system to access data files stored on another system
+ 	supporting DDM. Similarly, other systems that have DDM can
+@@ -52632,15 +52632,15 @@
+ 	Hundreds of emoticons have been proposed, but only a few are
+ 	in common use.  These include:
+ 
+-	 :-)	"smiley face" (for humour, laughter,
+-		friendliness, occasionally sarcasm)
++	 :-)    "smiley face" (for humour, laughter,
++	        friendliness, occasionally sarcasm)
+ 
+-	 :-(	"frowney face" (for sadness, anger, or upset)
++	 :-(    "frowney face" (for sadness, anger, or upset)
+ 
+-	 ;-)	"half-smiley" (ha ha only serious); also
+-		known as "semi-smiley" or "winkey face".
++	 ;-)    "half-smiley" (ha ha only serious); also
++	        known as "semi-smiley" or "winkey face".
+ 
+-	 :-/	"wry face"
++	 :-/    "wry face"
+ 
+ 	These are more recognisable if you tilt your head to the left.
+ 	The first two are by far the most frequently encountered.
+@@ -54704,7 +54704,7 @@
+ 
+ 	A range of standard circuit board sizes.
+ 
+-	Normal	       double Eurocard = 233.4 x 160 mm
++	Normal         double Eurocard = 233.4 x 160 mm
+ 	Extended       double Eurocard = 233.4 x 220 mm
+ 	Super extended double Eurocard = 233.4 x 250 mm
+ 	Hyper extended double Eurocard = 233.4 x 280 mm
+@@ -56680,7 +56680,7 @@
+ 	Factorial can be defined {recursively} as
+ 
+ 		0! = 1
+-		N! = N * (N-1)!		, N > 0
++		N! = N * (N-1)!         , N > 0
+ 
+ 	The {gamma function} is the equivalent for {real numbers}.
+ 
+@@ -58961,8 +58961,8 @@
+ 
+ 		filter p []     = []
+ 		filter p (x:xs) = if p x then x : rest else rest
+-				  where
+-				  rest = filter p xs
++		                  where
++		                  rest = filter p xs
+ 
+ 	See also {filter promotion}.
+ 
+@@ -59390,37 +59390,37 @@
+ 
+ 	 True
+ 	 False
+-	 p(t1,..tn)	where t1,..,tn are terms and p is a predicate.
++	 p(t1,..tn)     where t1,..,tn are terms and p is a predicate.
+ 
+ 	If F1, F2 and F3 are formulas and v is a variable then the
+ 	following are compound formulas:
+ 
+-	 F1 ^ F2	conjunction - true if both F1 and F2 are true,
++	 F1 ^ F2        conjunction - true if both F1 and F2 are true,
+ 
+-	 F1 V F2	disjunction - true if either or both are true,
++	 F1 V F2        disjunction - true if either or both are true,
+ 
+-	 F1 => F2	implication - true if F1 is false or F2 is
+-			true, F1 is the antecedent, F2 is the
+-			consequent (sometimes written with a thin
+-			arrow),
++	 F1 => F2       implication - true if F1 is false or F2 is
++	                true, F1 is the antecedent, F2 is the
++	                consequent (sometimes written with a thin
++	                arrow),
+ 
+-	 F1 <= F2	true if F1 is true or F2 is false,
++	 F1 <= F2       true if F1 is true or F2 is false,
+ 
+-	 F1 == F2	true if F1 and F2 are both true or both false
+-			(normally written with a three line
+-			equivalence symbol)
++	 F1 == F2       true if F1 and F2 are both true or both false
++	                (normally written with a three line
++	                equivalence symbol)
+ 
+-	 ~F1		negation - true if f1 is false (normally
+-			written as a dash '-' with a shorter vertical
+-			line hanging from its right hand end).
++	 ~F1            negation - true if f1 is false (normally
++	                written as a dash '-' with a shorter vertical
++	                line hanging from its right hand end).
+ 
+-	 For all v . F	universal quantification - true if F is true
+-			for all values of v (normally written with an
+-			inverted A).
++	 For all v . F  universal quantification - true if F is true
++	                for all values of v (normally written with an
++	                inverted A).
+ 
+-	 Exists v . F	existential quantification - true if there
+-			exists some value of v for which F is true.
+-			(Normally written with a reversed E).
++	 Exists v . F   existential quantification - true if there
++	                exists some value of v for which F is true.
++	                (Normally written with a reversed E).
+ 
+ 	The operators ^ V => <= == ~ are called connectives.  "For
+ 	all" and "Exists" are {quantifiers} whose {scope} is F.  A
+@@ -59530,7 +59530,7 @@
+ 
+ 		f = fix (\ f . \ x1 ... \ xN . E)
+ 		  = (\ f . \ x1 ... \xN . E)
+-			(fix (\ f . \ x1 ... \ xN . E))
++		        (fix (\ f . \ x1 ... \ xN . E))
+ 		  = let f = (fix (\ f . \ x1 ... \ xN . E))
+ 		    in \ x1 ... \xN . E
+ 
+@@ -60459,10 +60459,10 @@
+ 	The following formats are used on {IBM PCs} and elsewhere:
+ 
+ 	 Capacity  Density  Width
+-	  360K	   double   5.25"
+-	  720K	   double   3.5"
+-	  1.2M	   high	    5.25"
+-	 1.44M	   high	    3.5"
++	  360K     double   5.25"
++	  720K     double   3.5"
++	  1.2M     high     5.25"
++	 1.44M     high     3.5"
+ 
+ 	Double denisty and high density are usually abbreviated DD and
+ 	HD.  HD 3.5 inch disks have a second hole in the envelope and
+@@ -64341,8 +64341,8 @@
+ 	of two functions is replaced by in-lining them and combining
+ 	their bodies.  E.g.
+ 
+-		f x = g (h x)	==>	f x = g (2 * x)
+-		g x = x + 1		f x = 2 * x + 1
++		f x = g (h x)   ==>     f x = g (2 * x)
++		g x = x + 1             f x = 2 * x + 1
+ 		h x = 2 * x
+ 
+ 	This has the beneficial effect of reducing the number of
+@@ -64686,7 +64686,7 @@
+ 	{Thoth's games and recreations page
+ 	(http://cis.ufl.edu/~thoth/library/recreation.html)},
+ 	{Games Domain (http://wcl-rs.bham.ac.uk/GamesDomain)},
+-	{Zarf's	List of Games on the Web
++	{Zarf's List of Games on the Web
+ 	(http://leftfoot.com/games.html)},
+ 	{Dave's list of pointers to games resources
+ 	(http://wcl-rs.bham.ac.uk/~djh/index.html)},
+@@ -67417,7 +67417,7 @@
+ 	restriction: Copyleft; not all run-time sources are available
+ 	(yet)
+ 
+-	requires:	release 2.1.1 of the Exodus storage manager
++	requires: release 2.1.1 of the Exodus storage manager
+ 
+ 	E-mail: <exodus@cs.wisc.edu>.
+ 
+@@ -69902,10 +69902,10 @@
+ 	  Closure:     G is closed under *,  a*b in G
+ 	  Associative: * is associative on G, (a*b)*c = a*(b*c)
+ 	  Identity:    There is an identity element  e  such that
+-		       a*e = e*a = a.
++	               a*e = e*a = a.
+ 	  Inverse:     Every element has a unique inverse a' such that
+-		       a * a' = a' * a = e.  The inverse is usually
+-		       written with a superscript -1.
++	               a * a' = a' * a = e.  The inverse is usually
++	               written with a superscript -1.
+ 
+ 	(1998-10-03)
+ 
+@@ -73065,8 +73065,8 @@
+ 		E = 14   16^2 =  256   14* 256 =  3584
+ 		A = 10   16^1 =   16   10*  16 =   160
+ 		D = 13   16^0 =    1   13*   1 =    13
+-						 -----
+-					BEAD   = 48813
++		                                 -----
++		                        BEAD   = 48813
+ 
+ 	There are many conventions for distinguishing hexadecimal
+ 	numbers from decimal or other bases in programs.  In {C} for
+@@ -73432,9 +73432,9 @@
+ 	contain recursive definitions.  E.g.
+ 
+ 		map f l = m l
+-			  where
+-			  m []	   = []
+-			  m (x:xs) = f x : m xs
++		          where
++		          m []     = []
++		          m (x:xs) = f x : m xs
+ 
+ 	Expanding a call to this macro is equivalent to specialising a
+ 	call to map in its first argument.
+@@ -76911,16 +76911,16 @@
+ 
+ 	PC range
+ 
+-			Intro	  CPU	  Features
+-	 PC		Aug 1981   8088	  Floppy disk system
+-	 XT		Mar 1983   8088	  Slow hard disk
+-	 XT/370		Oct 1983   8088	  IBM 370 mainframe emulation
+-	 3270 PC	Oct 1983   8088	  with 3270 terminal emulation
+-	 PCjr		Nov 1983   8088	  Floppy-based home computer
+-	 PC Portable	Feb 1984   8088	  Floppy-based portable
+-	 AT		Aug 1984   286	  Medium-speed hard disk
+-	 Convertible	Apr 1986   8088	  Microfloppy laptop portable
+-	 XT 286		Sep 1986   286	  Slow hard disk
++	                Intro      CPU    Features
++	 PC             Aug 1981   8088   Floppy disk system
++	 XT             Mar 1983   8088   Slow hard disk
++	 XT/370         Oct 1983   8088   IBM 370 mainframe emulation
++	 3270 PC        Oct 1983   8088   with 3270 terminal emulation
++	 PCjr           Nov 1983   8088   Floppy-based home computer
++	 PC Portable    Feb 1984   8088   Floppy-based portable
++	 AT             Aug 1984   286    Medium-speed hard disk
++	 Convertible    Apr 1986   8088   Microfloppy laptop portable
++	 XT 286         Sep 1986   286    Slow hard disk
+ 
+ 	PS/2 range
+ 
+@@ -76938,23 +76938,23 @@
+ 
+ 	IBM PC compatible specifications
+ 
+-	 CPU   CPU    Clock    Bus	    Floppy	  Hard
+-	       bus    speed   width  RAM    disk	  disk	   OS
+-	       bit    Mhz     bit   byte    inch   byte	  Mbyte
++	 CPU   CPU    Clock    Bus          Floppy        Hard
++	       bus    speed   width  RAM    disk          disk    OS
++	       bit    Mhz     bit   byte    inch   byte   Mbyte
+ 
+-	 8088  16    4.8-9.5	8    1M*     5.25  360K	  10-40	  DOS
+-					     3.5   720K
+-					     3.5   1.44M
++	 8088  16    4.8-9.5    8    1M*     5.25  360K   10-40   DOS
++	                                     3.5   720K
++	                                     3.5   1.44M
+ 
+-	 8086  16     6-12     16    1M*		  20-60
++	 8086  16     6-12     16    1M*                  20-60
+ 
+-	 286   16     6-25     16   1-8M*    5.25  360K	  20-300  DOS
+-					     5.25  1.2M		  OS/2
++	 286   16     6-25     16   1-8M*    5.25  360K   20-300  DOS
++	                                     5.25  1.2M           OS/2
+ 
+-	 386   32     16-33    32   1-16M**  3.5   720K		  Unix
+-					     3.5   1.44M  40-600
++	 386   32     16-33    32   1-16M**  3.5   720K           Unix
++	                                     3.5   1.44M  40-600
+ 
+-	 386SX 32     16-33    16   1-16M**		  40-600
++	 386SX 32     16-33    16   1-16M**               40-600
+ 
+ 	*Under DOS, RAM is expanded beyond 1M with EMS memory boards
+ 
+@@ -80571,7 +80571,7 @@
+ 
+ 	{ IEEE Standards Process Automation (SPA) System
+ 	(http://stdsbbs.ieee.org/)},
+-	{telnet	(telnet:stdsbbs.ieee.org)} [140.98.1.11].
++	{telnet (telnet:stdsbbs.ieee.org)} [140.98.1.11].
+ 
+ 	(1995-03-10)
+ 
+@@ -80901,7 +80901,7 @@
+ 	There are different kinds of ISDN connection of varying
+ 	bandwidth (see {DS level}):
+ 
+-		DS0  =    1 channel  PCM at      64 kbps
++	        DS0  =    1 channel  PCM at      64 kbps
+ 	 T1  or DS1  =   24 channels PCM at   1.54  Mbps
+ 	 T1C or DS1C =   48 channels PCM at   3.15  Mbps
+ 	 T2  or DS2  =   96 channels PCM at   6.31  Mbps
+@@ -81196,14 +81196,14 @@
+ 
+ 	New instructions were also introduced as follows:
+ 
+-	 ENTER	Make stcak frame for procedure parameters
+-	 LEAVE	High-level procedure exit
+-	 PUSHA	Push all general registers
+-	 POPA	Pop all general registers
+-	 BOUND	Check array index against bounds
+-	 IMUL	Signed (integer) multiply
+-	 INS	Input from port to string
+-	 OUTS	Output string to port
++	 ENTER  Make stcak frame for procedure parameters
++	 LEAVE  High-level procedure exit
++	 PUSHA  Push all general registers
++	 POPA   Pop all general registers
++	 BOUND  Check array index against bounds
++	 IMUL   Signed (integer) multiply
++	 INS    Input from port to string
++	 OUTS   Output string to port
+ 
+ 	["The Evolution of the iAPX 286", Bob Greene, Intel
+ 	Corporation, PC Tech Journal, December 1984, page 134].
+@@ -85273,11 +85273,11 @@
+ 	recursion:
+ 
+ 		solve x n = if abs(new_x-x) > epsilon
+-			    then solve new_x n
+-			    else new_x
+-			    where new_x = 0.5 * (x + n/x)
++		            then solve new_x n
++		            else new_x
++		            where new_x = 0.5 * (x + n/x)
+ 
+-	        solve n/2 n
++		solve n/2 n
+ 
+ 	(1998-04-04)
+ 
+@@ -91425,21 +91425,21 @@
+ 	cause the scan data to be latched when pulsed high during
+ 	scan.
+ 
+-		  ____
+-		 |    |
++	          ____
++	         |    |
+ 	 Sin ----|S   |
+ 	 A ------|>   |
+-		 |   Q|---+--------------- Q1
++	         |   Q|---+--------------- Q1
+ 	 D1 -----|D   |   |
+-	 CLK1 ---|>   |	  |
+-		 |____|	  |    ____
+-			  |   |	   |
+-			  +---|S   |
++	 CLK1 ---|>   |   |
++	         |____|   |    ____
++	                  |   |    |
++	                  +---|S   |
+ 	 B -------------------|>   |
+-			      |	  Q|------ Q2 / SOut
++	                      |   Q|------ Q2 / SOut
+ 	 D2 ------------------|D   |
+ 	 CLK2 ----------------|>   |
+-			      |____|
++	                      |____|
+ 
+ 	In a single latch LSSD configuration, the second latch is used
+ 	only for scan operation.  Allowing it to be use as a second
+@@ -93244,7 +93244,7 @@
+ 	filter.  For instance the above example could be written:
+ 
+ 		filter p (concat (map (\ x -> map (\ y -> (x,y))
+-				 [1..x]) [1..6]))
++		                 [1..x]) [1..6]))
+ 		where
+ 		p (x,y) = x+y < 10
+ 
+@@ -98127,7 +98127,7 @@
+ 	contains variable assignments and rules of the form
+ 
+ 		target: inputs
+-			commands
++		        commands
+ 
+ 	which say if any of the files in "inputs" has been modified
+ 	more recently than file "target" (or if the target does not
+@@ -98327,7 +98327,7 @@
+ 	 Bits Sent:             1     1     0     0
+ 
+ 	 Signal:      High    ___________
+-		      Low                |___________
++	              Low                |___________
+ 
+ 	 Time: ->            .     .     .     .     .
+ 
+@@ -98347,7 +98347,7 @@
+ 	 Bits Sent:             1     1     0     0
+ 
+ 	 Signal:      High    __    __       __    __
+-		      Low       |__|  |_____|  |__|
++	              Low       |__|  |_____|  |__|
+ 
+ 	 Time: ->            .  '  .  '  .  '  .  '  .
+ 
+@@ -98366,7 +98366,7 @@
+ 	 Bits Sent:            1     1    0     0
+ 
+ 	 Signal:      High  ____       __    __    __
+-		      Low       |_____|  |__|  |__|
++	              Low       |_____|  |__|  |__|
+ 
+ 	 Time: ->            .  '  .  '  .  '  .  '  .
+ 
+@@ -99517,17 +99517,17 @@
+ 	network interfaces so it can be installed parallel to the
+ 	unicast router for those sites with configurations like this:
+ 
+-			+----------+
+-			| Backbone |
+-			|   Node   |
+-			+----------+
+-			     |
++	                +----------+
++	                | Backbone |
++	                |   Node   |
++	                +----------+
++	                     |
+ 	 ------------------------------------------ External DMZ Ethernet
+-		  |               |
++	          |               |
+ 	     +----------+    +----------+
+ 	     |  Router  |    |  mrouted |
+ 	     +----------+    +----------+
+-		  |               |
++	          |               |
+ 	 ------------------------------------------ Internal DMZ Ethernet
+ 
+ 	This configuration allows the mrouted machine to connect with
+@@ -104980,7 +104980,7 @@
+ 		type S a = State -> (a, State)
+ 		unitS a  = \ s0 -> (a, s0)
+ 		m `bindS` k = \ s0 -> let (a,s1) = m s0
+-				      in k a s1
++		                      in k a s1
+ 
+ 	Here unitS adds some initial state to an ordinary value and
+ 	bindS applies function k to a value m.  (`fun` is Haskell
+@@ -105009,9 +105009,9 @@
+ 
+ 		mapM :: (a -> M b) -> [a] -> M [b]
+ 		mapM f []     = returnM []
+-		mapM f (x:xs) = f x		   `thenM` ( \ x2 ->
++		mapM f (x:xs) = f x                `thenM` ( \ x2 ->
+ 		                mapM f xs          `thenM` ( \ xs2 ->
+-		    		returnM (x2 : xs2)         ))
++		                returnM (x2 : xs2)         ))
+ 
+ 	(2000-03-09)
+ 
+@@ -105226,8 +105226,8 @@
+ 	{degree} d>2 and {diameter} k:
+ 
+ 		N(d,k) <= d(d-1)^k - 2
+-			  ------------
+-			      d-2
++		          ------------
++		              d-2
+ 
+ Moore graph
+ 
+@@ -105256,13 +105256,13 @@
+ 
+ 	 Date      Chip     Transistors   MIPS clock/MHz
+ 	 -----------------------------------------------
+-	 Nov 1971  4004       	   2300   0.06	 0.108
+-	 Apr 1974  8080       	   6000   0.64	 2
+-	 Jun 1978  8086       	  29000   0.75	10
+-	 Feb 1982  80286      	 134000   2.66	12
+-	 Oct 1985  386DX      	 275000   5   	16
+-	 Apr 1989  80486      	1200000  20   	25
+-	 Mar 1993  Pentium    	3100000 112   	66
++	 Nov 1971  4004            2300   0.06   0.108
++	 Apr 1974  8080            6000   0.64   2
++	 Jun 1978  8086           29000   0.75  10
++	 Feb 1982  80286         134000   2.66  12
++	 Oct 1985  386DX         275000   5     16
++	 Apr 1989  80486        1200000  20     25
++	 Mar 1993  Pentium      3100000 112     66
+ 	 Nov 1995  Pentium Pro  5500000 428    200
+ 	 -----------------------------------------------
+ 
+@@ -107056,7 +107056,7 @@
+ MTOS
+ 
+ 	1. <operating system> A family of {real-time} {operating systems}
+-	for use in {embedded  systems}.	 It is	developed and marketed by
++	for use in {embedded  systems}.  It is developed and marketed by
+ 	{Industrial Programming, Inc.}.
+ 
+ 	2. <operating system> {MultiTOS}
+@@ -109076,7 +109076,7 @@
+ 		A | B | A NAND B
+ 		--+---+---------
+ 		F | F |    T
+-		F | T |	   T
++		F | T |    T
+ 		T | F |    T
+ 		T | T |    F
+ 
+@@ -109737,7 +109737,7 @@
+ 
+ 	 P[a]   For all x . P[x] -> Q[x]
+ 	 -------------------------------
+-		      Q[a]
++	              Q[a]
+ 
+ 	(If P is true for given "a" and P implies Q for all x then Q
+ 	is true for a).
+@@ -112873,7 +112873,7 @@
+ 		A | B | A NOR B
+ 		--+---+---------
+ 		F | F |    T
+-		F | T |	   F
++		F | T |    F
+ 		T | F |    F
+ 		T | T |    F
+ 
+@@ -114197,7 +114197,7 @@
+ 	 int F=00,OO=00;
+ 	 main(){F_OO();printf("%1.3f\n",4.*-F/OO/OO);}F_OO()
+ 	 {
+-		    _-_-_-_
++	            _-_-_-_
+ 	       _-_-_-_-_-_-_-_-_
+ 	    _-_-_-_-_-_-_-_-_-_-_-_
+ 	  _-_-_-_-_-_-_-_-_-_-_-_-_-_
+@@ -114211,8 +114211,8 @@
+ 	 _-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+ 	  _-_-_-_-_-_-_-_-_-_-_-_-_-_
+ 	    _-_-_-_-_-_-_-_-_-_-_-_
+-		_-_-_-_-_-_-_-_
+-		    _-_-_-_
++	        _-_-_-_-_-_-_-_
++	            _-_-_-_
+ 	 }
+ 
+ 	Note that this program works by computing its own area.  For
+@@ -115204,8 +115204,8 @@
+ 		  1     8^2 = 64   1* 64 = 64
+ 		  7     8^1 =  8   7*  8 = 56
+ 		  7     8^0 =  1   7*  1 =  7
+-				          ---
+-					  127
++		                          ---
++		                          127
+ 
+ 	Octal representation used to be widespread back when many
+ 	computers used six-bit {bytes}, as six-bits can be
+@@ -119459,10 +119459,10 @@
+ 	line-printer caused various actions after the line was
+ 	printed:
+ 
+-		space	return newline
+-		0	return newline return newline
+-		1	form-feed
+-		+	return
++		space   return newline
++		0       return newline return newline
++		1       form-feed
++		+       return
+ 
+ papermail
+ 
+@@ -120284,23 +120284,23 @@
+ 
+ 		pow x 0 = 1
+ 		pow x n = if even n
+-			  then pxn2 * pxn2
+-			  else x * pow x (n-1)
+-				where pxn2 = pow x (n/2)
++		          then pxn2 * pxn2
++		          else x * pow x (n-1)
++		                where pxn2 = pow x (n/2)
+ 		f x = pow x 5
+ 
+ 	Since n is known we can specialise pow in its second argument
+ 	and unfold the recursive calls:
+ 
+ 		pow5 x = x * x4 where x4 = x2 * x2
+-				      x2 = x * x
++		                      x2 = x * x
+ 		f x = pow5 x
+ 
+ 	pow5 is known as the residual.  We could now also unfold pow5
+ 	giving:
+ 
+ 		f x = x * x4 where x4 = x2 * x2
+-				   x2 = x  * x
++		                   x2 = x  * x
+ 
+ 	It is important that the partial evaluation algorithm should
+ 	terminate.  This is not guaranteed in the presence of
+@@ -120354,8 +120354,8 @@
+ 
+ 	where D' is a superset of D and
+ 
+-		ft x = f x	if x in D
+-		ft x = bottom	otherwise
++		ft x = f x      if x in D
++		ft x = bottom   otherwise
+ 
+ 	where lift(C) = C U {bottom}.  Bottom ({LaTeX} {\perp})
+ 	denotes "undefined".
+@@ -120697,7 +120697,7 @@
+ 
+ 	version:    Alpha
+ 
+-	parts:	            Compiler, run-time library
++	parts:              Compiler, run-time library
+ 
+ 	author:             Willem Jan Withagen <wjw@eb.ele.tue.nl>
+ 
+@@ -121047,8 +121047,8 @@
+ 	E.g. the above function could be transformed to
+ 
+ 		length l = case l of
+-			   []   -> 0
+-			   x:xs -> 1 : length xs
++		           []   -> 0
++		           x:xs -> 1 : length xs
+ 
+ 	Pattern matching is usually performed in textual order though
+ 	there are languages which match more specific patterns before
+@@ -121419,9 +121419,9 @@
+ 	Conformance: Revised^3 Report, also supports dialect used in
+ 	SICP.
+ 
+-	restriction:	official version is $95, contact <rww@ibuki.com>
++	restriction: official version is $95, contact <rww@ibuki.com>
+ 
+-	ports:		MS-DOS
++	ports: MS-DOS
+ 
+ 	See also {PCS/Geneva}.
+ 
+@@ -121572,12 +121572,12 @@
+ 	It is not intended to be the ultimate shell but rather a
+ 	usable ksh work alike.
+ 
+-	conformance:	Almost identical to ksh88, but missing arrays
++	conformance: Almost identical to ksh88, but missing arrays
+ 
+ 	E-mail: Simon J Gerraty <sjg@melb.bull.oz.au> (zen.void.oz.au
+ 	is down)
+ 
+-	ports:		Sun, 386bsd, ?
++	ports: Sun, 386bsd, ?
+ 
+ 	1993-10-11
+ 
+@@ -124538,8 +124538,8 @@
+ 	A compiler (ASP) is available on {Usenet} for producing them.
+ 	Typical animation components include:
+ 
+-	 Centipede:		 mmmmme
+-	 Lorry/Truck:		 oo-oP
++	 Centipede:              mmmmme
++	 Lorry/Truck:            oo-oP
+ 	 Andalusian Video Snail: _@/
+ 
+ 	In the mid-1990s {WWW} {home pages} largely supplanted .plan
+@@ -125870,7 +125870,7 @@
+ 	parameters.  E.g. the {polymorphic} function "twice" may be
+ 	written:
+ 
+-	 	twice = /\ t . \  (f :: t -> t) . \ (x :: t) . f (f x)
++		twice = /\ t . \  (f :: t -> t) . \ (x :: t) . f (f x)
+ 
+ 	(where "/\" is an upper case Greek lambda and "(v :: T)" is
+ 	usually written as v with subscript T).  The parameter t will
+@@ -129868,13 +129868,13 @@
+ 
+ 	Consonants are pronounced as in English but note:
+ 
+-		ch	soft, as in "church"
+-		g	hard, as in "got"
+-		gh	aspirated g+h of "bughouse" or "ragheap"
+-		j	voiced, as in "judge"
+-		kh	guttural of "loch" or "l'chaim"
+-		s	unvoiced, as in "pass"
+-		zh	as "s" in "pleasure"
++		ch      soft, as in "church"
++		g       hard, as in "got"
++		gh      aspirated g+h of "bughouse" or "ragheap"
++		j       voiced, as in "judge"
++		kh      guttural of "loch" or "l'chaim"
++		s       unvoiced, as in "pass"
++		zh      as "s" in "pleasure"
+ 
+ 	Uppercase letters are pronounced as their English letter
+ 	names; thus (for example) /H-L-L/ is equivalent to /aych el
+@@ -129883,30 +129883,30 @@
+ 
+ 	Vowels are represented as follows:
+ 
+-		a	back, that
+-		ah	father, palm (see note)
+-		ar	far, mark
+-		aw	flaw, caught
+-		ay	bake, rain
+-		e	less, men
+-		ee	easy, ski
+-		eir	their, software
+-		i	trip, hit
+-		i:	life, sky
+-		o	block, stock (see note)
+-		oh	flow, sew
+-		oo	loot, through
+-		or	more, door
+-		ow	out, how
+-		oy	boy, coin
+-		uh	but, some
+-		u	put, foot
++		a       back, that
++		ah      father, palm (see note)
++		ar      far, mark
++		aw      flaw, caught
++		ay      bake, rain
++		e       less, men
++		ee      easy, ski
++		eir     their, software
++		i       trip, hit
++		i:      life, sky
++		o       block, stock (see note)
++		oh      flow, sew
++		oo      loot, through
++		or      more, door
++		ow      out, how
++		oy      boy, coin
++		uh      but, some
++		u       put, foot
+ 		*r      fur, insert (only in stressed
+-			syllables; otherwise use just "r")
+-		y	yet, young
+-		yoo	few, chew
+-		[y]oo	/oo/ with optional fronting as
+-			in `news' (/nooz/ or /nyooz/)
++		        syllables; otherwise use just "r")
++		y       yet, young
++		yoo     few, chew
++		[y]oo   /oo/ with optional fronting as
++		        in `news' (/nooz/ or /nyooz/)
+ 
+ 	A /*/ is used for the `schwa' sound of unstressed or occluded
+ 	vowels (often written with an upside-down `e').  The schwa
+@@ -132356,8 +132356,8 @@
+ 		qsort               :: Ord a => [a] -> [a]
+ 		qsort []             = []
+ 		qsort (x:xs)         = qsort [ u | u<-xs, u<x ] ++
+-				       [ x ] ++
+-				       qsort [ u | u<-xs, u>=x ]
++		                       [ x ] ++
++		                       qsort [ u | u<-xs, u>=x ]
+ 
+ 	[Mark Jones, Gofer prelude.]
+ 
+@@ -135305,12 +135305,12 @@
+ 
+ 	The following standard RAID specifications exist:
+ 
+-	 RAID 0	Non-redundant striped array
+-	 RAID 1	Mirrored arrays
+-	 RAID 2	Parallel array with ECC
+-	 RAID 3	Parallel array with parity
+-	 RAID 4	Striped array with parity
+-	 RAID 5	Striped array with rotating parity
++	 RAID 0 Non-redundant striped array
++	 RAID 1 Mirrored arrays
++	 RAID 2 Parallel array with ECC
++	 RAID 3 Parallel array with parity
++	 RAID 4 Striped array with parity
++	 RAID 5 Striped array with rotating parity
+ 
+ 	RAID originated in a project at the computer science
+ 	department of the {University of California at Berkeley},
+@@ -135740,22 +135740,22 @@
+ 	Patterns in {Haskell} are normally refutable but may be made
+ 	irrefutable by prefixing them with a tilde (~).  For example,
+ 
+-		(\ (x,y) -> 1) undefined	==>	undefined
+-		(\ ~(x,y) -> 1) undefined	==>	1
++		(\ (x,y) -> 1) undefined        ==>     undefined
++		(\ ~(x,y) -> 1) undefined       ==>     1
+ 
+ 	Patterns in {Miranda} are refutable, except for {tuples} which are
+ 	irrefutable.  Thus
+ 
+ 		g [x] = 2
+-		g undefined			==>	undefined
++		g undefined                     ==>     undefined
+ 
+ 		f (x,y) = 1
+-		f undefined			==>	1
++		f undefined                     ==>     1
+ 
+ 	Pattern bindings in local definitions are irrefutable in both
+ 	languages:
+ 
+-		h = 1 where [x] = undefined	==>	1
++		h = 1 where [x] = undefined     ==>     1
+ 
+ 	Irrefutable patterns can be used to simulate {unlifted products}
+ 	because they effectively ignore the top-level constructor of the
+@@ -139133,7 +139133,7 @@
+ 	graphical displays by parsing relational data and generating
+ 	output code.
+ 
+-	requires:	Common Lisp
++	requires: Common Lisp
+ 
+ 	ports: Allegro Common Lisp 4.1, Macintosh Common Lisp 2.0
+ 
+@@ -139154,7 +139154,7 @@
+ 	documentation.  E-mail: Ian Searle <ians@eskimo.com>.
+ 	{(ftp://evans.ee.adfa.oz.au)}.  Requires {GNUPLOT},
+ 	lib[IF]77.a (from f2c).  Ported to many {platforms} including
+-	{Unix}, {OS/2},	{Amiga}.
++	{Unix}, {OS/2}, {Amiga}.
+ 
+ 	(1993-10-27)
+ 
+@@ -142379,15 +142379,15 @@
+ 
+ 	The most common design is a multiplexed {flip-flop}:
+ 
+-		      ___	  ____
+-	 normal in --|	 \	 |    |
+-		     |mux |------|D  Q|---- normal/scan
+-	 scan in ----|___/    	 |    |     output
+-		       |	 |flip|
++	              ___         ____
++	 normal in --|   \       |    |
++	             |mux |------|D  Q|---- normal/scan
++	 scan in ----|___/       |    |     output
++	               |         |flip|
+ 	 test mode ----+         |flop|
+-			         |    |
++	                         |    |
+ 	 clk --------------------|>   |
+-				 |____|
++	                         |____|
+ 
+ 	The addition of a {multiplexor} (mux) to each {flip-flop}'s
+ 	input allows operation in either normal or test mode.  The
+@@ -143539,23 +143539,23 @@
+ 	 X3T9.2/92-106    SCSI-3 Block Commands
+ 	 X3T9.2/91-189    SCSI-3 Serial Bus Protocol
+ 	 X3T9.2/92-105    SCSI-3 SCSI-3 Core Commands
+-			  SCSI-3 Common Command Set
++	                  SCSI-3 Common Command Set
+ 	 X3T9.2/92-108    SCSI-3 Graphic Commands
+ 	 X3T9.2/92-109    SCSI-3 Medium Changer Commands
+ 	 X3T9.2/91-11     SCSI-3 Interlocked Protocol
+ 	 X3T9.2/91-10     SCSI-3 Parallel Interface
+ 	 X3T9.2/92-107    SCSI-3 Stream Commands
+-			  SCSI-3 Scanner Commands
++	                  SCSI-3 Scanner Commands
+ 
+ 	Additional Documents for the Fibre Channel are also meant to
+ 	be included in the SCSI-3 framework, i.e.:
+ 
+-			  Fibre Channel SCSI Mapping
+-			  Fibre Channel Fabric Requirements
+-			  Fibre Channel Low Cost Topologies
++	                  Fibre Channel SCSI Mapping
++	                  Fibre Channel Fabric Requirements
++	                  Fibre Channel Low Cost Topologies
+ 	 X3T9.3/92-007    Fibre Channel Physical and Signalling Interface
+-			  Fibre Channel Single Byte Commands
+-			  Fibre Channel Cross Point Switch Topology
++	                  Fibre Channel Single Byte Commands
++	                  Fibre Channel Cross Point Switch Topology
+ 	 X3T9.2/92-103    SCSI-3 Fibre Channel Protocol (GPP & SBP)
+ 
+ 	As all of this is an ongoing effort of considerable
+@@ -144166,7 +144166,7 @@
+ 
+ Secure Hash Algorithm
+ 
+-	<algorithm, cryptography} (SHA)	A {one-way hash function}
++	<algorithm, cryptography} (SHA) A {one-way hash function}
+ 	developped by {NIST} and defined in standard {FIPS} 180.
+ 	SHA-1 is a revision published in 1994; it is also described
+ 	in {ANSI} standard X9.30 (part 2).
+@@ -147387,24 +147387,24 @@
+ 	 {RFC 1089} - SNMP over Ethernet
+ 	 {RFC 1140} - IAB Official Protocol Standards
+ 	 {RFC 1155} - Structure and Identification of Management
+-		      Information for TCP/IP based internets
++	              Information for TCP/IP based internets
+ 	 {RFC 1156} (H) - Management Information Base Network
+-			  Management of TCP/IP based internets
++	                  Management of TCP/IP based internets
+ 	 {RFC 1157} - A Simple Network Management Protocol
+ 	 {RFC 1158} - Management Information Base Network
+-		      Management of TCP/IP based internets: MIB-II
++	              Management of TCP/IP based internets: MIB-II
+ 	 {RFC 1161} (H) - SNMP over OSI
+ 	 {RFC 1187} - Bulk Table Retrieval with the SNMP
+ 	 {RFC 1212} - Concise MIB Definitions
+ 	 {RFC 1213} - Management Information Base for Network
+-		      Management of TCP/IP-based internets: MIB-II
++	              Management of TCP/IP-based internets: MIB-II
+ 	 {RFC 1215} (I) - A Convention for Defining
+-			  Traps for use with the SNMP
++	                  Traps for use with the SNMP
+ 	 {RFC 1224} - Techniques for Managing
+-		      Asynchronously Generated Alerts
++	              Asynchronously Generated Alerts
+ 	 {RFC 1270} (I) - SNMP Communication Services
+ 	 {RFC 1303} (I) - A Convention for Describing
+-			  SNMP-based Agents
++	                  SNMP-based Agents
+ 	 {RFC 1470} (I) - A Network Management Tool Catalog
+ 	 {RFC 1298} - SNMP over IPX
+ 	 {RFC 1418} - SNMP over OSI
+@@ -148244,12 +148244,12 @@
+ 	 micro-  *  1000^-2          * Abbreviation: Greek mu
+ 	 milli-  m  1000^-1
+ 
+-	 kilo- 	 k  1000^1  1024^1 = 2^10 = 1,024
+-	 mega- 	 M  1000^2  1024^2 = 2^20 = 1,048,576
+-	 giga- 	 G  1000^3  1024^3 = 2^30 = 1,073,741,824
+-	 tera- 	 T  1000^4  1024^4 = 2^40 = 1,099,511,627,776
+-	 peta- 	    1000^5  1024^5 = 2^50 = 1,125,899,906,842,624
+-	 exa-  	    1000^6  1024^6 = 2^60 = 1,152,921,504,606,846,976
++	 kilo-   k  1000^1  1024^1 = 2^10 = 1,024
++	 mega-   M  1000^2  1024^2 = 2^20 = 1,048,576
++	 giga-   G  1000^3  1024^3 = 2^30 = 1,073,741,824
++	 tera-   T  1000^4  1024^4 = 2^40 = 1,099,511,627,776
++	 peta-      1000^5  1024^5 = 2^50 = 1,125,899,906,842,624
++	 exa-       1000^6  1024^6 = 2^60 = 1,152,921,504,606,846,976
+ 	 zetta-     1000^7  1024^7 = 2^70 = 1,180,591,620,717,411,303,424
+ 	 yotta-     1000^8  1024^8 = 2^80 = 1,208,925,819,614,629,174,706,176
+ 
+@@ -149456,7 +149456,7 @@
+ 	{Linux
+ 	(ftp://ftp.dcs.glasgow.ac.uk/pub/linux/smlnj-0.82-linux.tar.Z)}.
+ 
+-	conformance:	superset
++	conformance: superset
+ 		+ first-class continuations,
+ 		+ asynchronous signal handling
+ 		+ separate compilation
+@@ -149465,7 +149465,7 @@
+ 	ports: IBM-RT Decstation3100 Omron-Luna-88k Sun-3 Sun-4
+ 	386(Mach)
+ 
+-	portability:	easy, easier than SML/NJ
++	portability: easy, easier than SML/NJ
+ 
+ 	E-mail: <david.tarditi@cs.cmu.edu>, <peter.lee@cs.cmu.edu>
+ 
+@@ -151388,12 +151388,12 @@
+ 	copied unchanged then subsequent letters are encoded as
+ 	follows:
+ 
+-		bfpv	 -> "1"
++		bfpv     -> "1"
+ 		cgjkqsxz -> "2"
+-		dt	  	 -> "3"
+-		l	  	 -> "4"
+-		mn	  	 -> "5"
+-		r	  	 -> "6"
++		dt       -> "3"
++		l        -> "4"
++		mn       -> "5"
++		r        -> "6"
+ 
+ 	Other characters are ignored and repeated characters are
+ 	encoded as though they were a single character.  Encoding
+@@ -151621,15 +151621,15 @@
+ 	an appropriate "chord" with the left hand on the shift keys,
+ 	you could get the following results:
+ 
+-	 L		lowercase l
++	 L              lowercase l
+ 
+-	 shift-L	uppercase L
++	 shift-L        uppercase L
+ 
+-	 front-L	lowercase lambda
++	 front-L        lowercase lambda
+ 
+-	 front-shift-L	uppercase lambda
++	 front-shift-L  uppercase lambda
+ 
+-	 top-L		two-way arrow
++	 top-L          two-way arrow
+ 
+ 	(front and shift are ignored) And of course each of these
+ 	might also be typed with any combination of the control, meta,
+@@ -153675,13 +153675,13 @@
+ 		lightweight processes (or threads), and the isolation
+ 		of unsafe features.
+ 
+-	conformance:	implements the language defined in SPwM3.
++	conformance: implements the language defined in SPwM3.
+ 
+ 	ports: i386/AIX 68020/DomainOS Acorn/RISCiX MIPS/Ultrix
+ 	68020/HP-UX RS/6000/AIX IBMRT/4.3 68000/NEXTSTEP i860/SVR4
+ 	SPARC/SunOS 68020/SunOS sun386/SunOS Multimax/4.3 VAX/Ultrix
+ 
+-	Mailing list:	comp.lang.modula3
++	Mailing list: comp.lang.modula3
+ 
+ 	E-mail: Bill Kalsow <kalsow@src.dec.com>
+ 
+@@ -156751,7 +156751,7 @@
+ 	the sum:
+ 
+ 		inA : A -> A+B       inB : B -> A+B
+-		inA(a) = (0,a)	     inB(b) = (1,b)
++		inA(a) = (0,a)       inB(b) = (1,b)
+ 
+ 	and a disassembly operation:
+ 
+@@ -159580,13 +159580,13 @@
+ 		f l  = f' l allocate_cons
+ 
+ 		f' []     p = { *p = nil;
+-				return *p
+-			      }
++		                return *p
++		              }
+ 		f' (x:xs) p = { cell = allocate_cons;
+-			        *p = cell;
+-				cell.head = 1;
+-				return f' xs &cell.tail
+-			      }
++		                *p = cell;
++		                cell.head = 1;
++		                return f' xs &cell.tail
++		              }
+ 
+ 	where allocate_cons returns the address of a new cons cell, *p
+ 	is the location pointed to by p and &c is the address of c.
+@@ -165112,10 +165112,10 @@
+ 
+ 	There have been several series of TTL logic:
+ 
+-	 7400:	10 ns propagation time, 10 mW/gate power consumption,
++	 7400:  10 ns propagation time, 10 mW/gate power consumption,
+ 		obsolete;
+ 
+-	 74L00:	Low power: higher resistances, less dissipation
++	 74L00: Low power: higher resistances, less dissipation
+ 		(1 mW), longer propagation time (30 ns);
+ 
+ 	 74H00: High power: lower resistances, more dissipation: less
+@@ -166385,7 +166385,7 @@
+ 	evaluation of a tuple may fail to terminate.  E.g. in Haskell:
+ 
+ 		f (x, y) = 1    -->    f bottom = bottom
+-				       f (bottom, bottom) = 1
++		                       f (bottom, bottom) = 1
+ 
+ 	With lifted tuples, a tuple pattern is refutable.  Thus in
+ 	Haskell, {pattern matching} on tuples is the same as pattern
+@@ -166399,7 +166399,7 @@
+ 	of the components may.  E.g. in {Miranda}:
+ 
+ 		f (x, y) = 1    -->    f bottom = 1
+-				       f (bottom, bottom) = 1
++		                       f (bottom, bottom) = 1
+ 
+ 	Thus in Miranda, any object whose type is compatible with a
+ 	tuple pattern is assumed to match at the top level without
+@@ -166446,13 +166446,13 @@
+ 			==>
+ 
+ 		mean l = s/n
+-			 where
+-			 (s,n) = sumLen l
++		         where
++		         (s,n) = sumLen l
+ 
+ 		sumLen []     = (0,0)
+ 		sumLen (x:xs) = (s+x, n+1)
+-				where
+-				(s,n) = sumLen xs
++		                where
++		                (s,n) = sumLen xs
+ 
+ 	In {procedural} languages this technique is known as
+ 	{horizontal loop combination} because it uses one loop to
+@@ -167223,7 +167223,7 @@
+ 	other using {DeMorgan's Theorem}:
+ 
+ 		A OR B   =  NOT ((NOT A) AND (NOT B))
+-		A AND B	 =  NOT ((NOT A) OR (NOT B))
++		A AND B  =  NOT ((NOT A) OR (NOT B))
+ 
+ 	In fact any Boolean function can be constructed using just NOR
+ 	or just NAND using the identities:
+@@ -167500,8 +167500,8 @@
+ 	variables X, Y, etc. for unknown types:
+ 
+ 		(plus :: Int -> Int -> Int)
+-			(((head :: [a] -> a) (l :: Y)) :: X)
+-			(1 :: Int)
++		        (((head :: [a] -> a) (l :: Y)) :: X)
++		        (1 :: Int)
+ 
+ 	We then use {unification} on {type variables} to match the
+ 	{partial application} of plus to its first argument against
+@@ -168211,31 +168211,31 @@
+ 
+ 		double l = case l of
+ 		           []   -> []
+-			   x:xs -> 2*x + double xs
++		           x:xs -> 2*x + double xs
+ 
+ 		==> (unfold double)
+ 
+ 		sumdouble l = sum (case l of
+-			           []   -> []
+-				   x:xs -> 2*x : double xs)
++		                   []   -> []
++		                   x:xs -> 2*x : double xs)
+ 
+ 		==> (distribute over case)
+ 
+ 		sumdouble l = case l of
+-			      []   -> sum []
+-			      x:xs -> sum (2*x : double xs)
++		              []   -> sum []
++		              x:xs -> sum (2*x : double xs)
+ 
+-	 	==> (unfold sum)
++		==> (unfold sum)
+ 
+ 		sumdouble l = case l of
+-			      []   -> 0
+-			      x:xs -> 2*x + sum (double xs)
++		              []   -> 0
++		              x:xs -> 2*x + sum (double xs)
+ 
+-	 	==> (fold sumdouble)
++		==> (fold sumdouble)
+ 
+ 		sumdouble l = case l of
+-			      []   -> 0
+-			      x:xs -> 2*x + sumdouble xs
++		              []   -> 0
++		              x:xs -> 2*x + sumdouble xs
+ 
+ 	(1994-11-03)
+ 
+@@ -169664,11 +169664,11 @@
+ 	"catagories":
+ 
+ 	 cat.   wires   transmission
+-	 1	two	voice no data (telephone cable)
+-	 2	four 	data up to 4 Mbps
+-	 3	four	data up to 10 Mbps
+-	 4	four	data up to 16 Mbps
+-	 5	four	data up to 100 Mbps
++	 1      two     voice no data (telephone cable)
++	 2      four    data up to 4 Mbps
++	 3      four    data up to 10 Mbps
++	 4      four    data up to 16 Mbps
++	 5      four    data up to 100 Mbps
+ 
+ 	(2003-07-04)
+ 
+@@ -171724,10 +171724,10 @@
+ 	below.
+ 
+ 	      source   ________inductor_________   load
+-			  |                |
+-		      capacitor        capacitor
+-			  |                |
+-		       ground           ground
++	                  |                |
++	              capacitor        capacitor
++	                  |                |
++	               ground           ground
+ 
+ 	This helps to shield the rest of the circuit from the noise
+ 	generated by the load.
+@@ -174379,10 +174379,10 @@
+ 	The von Neumann integer N is a {finite} set with N elements
+ 	which are the von Neumann integers 0 to N-1.  Thus
+ 
+-		0 = {}		= {}
+-		1 = {0}		= {{}}
+-		2 = {0, 1}	= {{}, {{}}}
+-		3 = {0, 1, 2}	= {{}, {{}}, {{}, {{}}}}
++		0 = {}          = {}
++		1 = {0}         = {{}}
++		2 = {0, 1}      = {{}, {{}}}
++		3 = {0, 1, 2}   = {{}, {{}}, {{}, {{}}}}
+ 		...
+ 
+ 	The set of von Neumann integers is {infinite}, even though
+@@ -175837,8 +175837,8 @@
+ 	empty argument list:
+ 
+ 		force D = apply D ()
+-			= apply (\ () . E) ()
+-			= E
++		        = apply (\ () . E) ()
++		        = E
+ 
+ 	(1994-10-31)
+ 
+@@ -177189,11 +177189,11 @@
+ 	A semantic superset of LOGIN and LeFun.  Syntax is similar to
+ 	prolog.
+ 
+-	bugs:		<life-bugs@prl.dec.com>
++	bugs: <life-bugs@prl.dec.com>
+ 
+-	ports:		MIPS-Ultrix
++	ports: MIPS-Ultrix
+ 
+-	Mailing list:	life-request@prl.dec.com
++	Mailing list: life-request@prl.dec.com
+ 
+ 	E-mail: Peter Van Roy <vanroy@prl.dec.com>
+ 
+@@ -180492,7 +180492,7 @@
+ 
+ 	ports: Sun, Solaris, NeXT, Linux, 386 BSD, IRIX, HP-UX
+ 
+-	portability:	Generally to 32-bit machines.
++	portability: Generally to 32-bit machines.
+ 
+ 	interpreter, preprocessor(HiLog), documentation
+ 
+@@ -180591,11 +180591,11 @@
+ 	out to the {expansion slots}.  Of these three, two are
+ 	normally allocated to machine functions:
+ 
+-	 DMA channel  Expansion	 Standard function
+-	 0	      No	 {dynamic RAM} refresh
+-	 1	      Yes	 add-on cards
+-	 2	      Yes	 {floppy disk} controller
+-	 3	      Yes	 {hard disc} controller
++	 DMA channel  Expansion  Standard function
++	 0            No         {dynamic RAM} refresh
++	 1            Yes        add-on cards
++	 2            Yes        {floppy disk} controller
++	 3            Yes        {hard disc} controller
+ 
+ 	(1997-09-15)
+ 

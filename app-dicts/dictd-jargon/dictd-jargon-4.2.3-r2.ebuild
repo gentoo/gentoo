@@ -18,37 +18,30 @@ DEPEND=">=app-text/dictd-1.5.5"
 S="${WORKDIR}"
 
 src_unpack() {
-	cp "${DISTDIR}/${A}" jargon.txt
+	cp "${DISTDIR}/${A}" jargon.txt || die
 }
 
 src_prepare() {
 	eapply_user
 	# This sed script works for all versions >=3.0.0 until <4.4.0 (when the
 	# entire format changes).
-	sed -e '/^The Jargon Lexicon/,/:(Lexicon Entries End Here):/!{w jargon.doc' -e 'd}' -i jargon.txt
-	sed -e 's/^    \s*/\t/' -e 's/^   //' -i jargon.txt
-	sed -e 's/\([^\t]\)\t/\1  /g' -i jargon.txt
-	sed -e 's/^\(:[^:]*:\)\s*/\1/' -i jargon.txt
-	sed -e '/^= . =/,/^$/d' -i jargon.txt
-	sed -e '/^\S/{: l;N;s/\n *\(.\)/ \1/g;t l}' \
-		-e 's/\([^A-Za-z ]\) \+\([2-9][0-9]\?\|1[0-9]\)\.\( \+\|$\)/\1\n\n\2. /g' \
-		-e 's/^\([2-9][0-9]\?\|1[0-9]\)\.\( \+\|$\)/\n\1. /g' \
-		-i jargon.txt
+	sed -f "${FILESDIR}/prepare.sed" -i jargon.txt || die
 }
 
 src_compile() {
-	dictfmt -u "${SRC_FILE}" \
+	(dictfmt -u "${SRC_FILE}" \
 		-s "The Jargon File (version ${PV})" \
 		--columns 80 \
 		-j jargon \
+		|| die) \
 		< jargon.txt
-	dictzip jargon.dict
+	dictzip jargon.dict || die
 }
 
 src_install() {
 	newdoc jargon.doc jargon.txt
 	insinto /usr/lib/dict
-	doins jargon.dict.dz jargon.index || die
+	doins jargon.dict.dz jargon.index
 }
 
 pkg_postinst() {

@@ -18,28 +18,28 @@ DEPEND=">=app-text/dictd-1.5.5"
 S="${WORKDIR}"
 
 src_unpack() {
-	cp "${DISTDIR}/${A}" elements.db
+	cp "${DISTDIR}/${A}" elements.db || die
 }
 
 src_prepare() {
 	eapply_user
-	sed -e '/^%h/{h;n;n;s/Symbol: //;T;x;G;s/\n/ /}' -i elements.db
-	sed -e '/^%h/{N;N;s/%h.*\n%d\n\(%h.*\)/\1\n%d/}' -i elements.db
+	sed -f "${FILESDIR}/prepare.sed" -i elements.db || die
 }
 
 src_compile() {
-	dictfmt -u "${SRC_FILE}" \
+	(dictfmt -u "${SRC_FILE}" \
 		-s "Jay Kominek's Elements database (version ${PV})" \
 		--headword-separator " " \
 		--columns 80 \
 		-p elements \
+		|| die) \
 		< elements.db
-	dictzip elements.dict
+	dictzip elements.dict || die
 }
 
 src_install() {
 	insinto /usr/lib/dict
-	doins elements.dict.dz elements.index || die
+	doins elements.dict.dz elements.index
 }
 
 pkg_postinst() {

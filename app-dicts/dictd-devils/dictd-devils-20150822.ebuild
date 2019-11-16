@@ -22,28 +22,25 @@ src_prepare() {
 	eapply "${FILESDIR}/format.patch"
 	eapply_user
 
-	sed -e 's/\r//g' -i 972.txt
-	sed -e "/^ *THE DEVIL'S DICTIONARY/,/^End of Project Gutenberg's The Devil's Dictionary/!{w COPYING.gutenberg" -e 'd}' -i 972.txt
-	sed -e '/^\S/{: l;N;s/\n *\(.\)/ \1/g;t l}' -i 972.txt
-	sed -e "s/^\\([A-Zor .'?-]*[^,A-Zor .'?-]\\)/ \1/" -i 972.txt
-	sed -e '/^ /y/,/\a/' -i 972.txt
+	sed -f "${FILESDIR}/prepare.sed" -i 972.txt || die
 }
 
 src_compile() {
-	head -n -6 972.txt | \
-		dictfmt -u "${SRC_FILE}" \
+	(dictfmt -u "${SRC_FILE}" \
 		-s "The Devil's Dictionary (2015-08-22 Project Gutenberg version)" \
 		--headword-separator " or " \
 		--columns 80 \
-		-h devils
-	sed -e 'y/\a/,/' -i devils.dict
-	dictzip devils.dict
+		-h devils \
+		|| die) \
+		< <(head -n -6 972.txt || die)
+	sed -f "${FILESDIR}/finalize.sed" -i devils.dict || die
+	dictzip devils.dict || die
 }
 
 src_install() {
 	dodoc COPYING.gutenberg
 	insinto /usr/lib/dict
-	doins devils.dict.dz devils.index || die
+	doins devils.dict.dz devils.index
 }
 
 pkg_postinst() {

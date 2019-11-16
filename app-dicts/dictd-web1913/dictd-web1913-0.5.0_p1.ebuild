@@ -39,46 +39,47 @@ S="${WORKDIR}"
 
 src_unpack() {
 	unpack ${A//pgw${GV}il.txt}
-	cp "${DISTDIR}/pgw${GV}il.txt" .
-	cp "${SD}/xhtml-lat1.ent" "${SD}/xhtml-special.ent" "${SD}/xhtml-symbol.ent" .
-	cp "${SD}/dictfmt-elements.txt" web1913.txt
+	cp "${DISTDIR}/pgw${GV}il.txt" . || die
+	cp "${SD}/xhtml-lat1.ent" "${SD}/xhtml-special.ent" "${SD}/xhtml-symbol.ent" . || die
+	cp "${SD}/dictfmt-elements.txt" web1913.txt || die
 }
 
 src_prepare() {
 	eapply "${SD}/tag-nesting.patch"
 	eapply_user
 
-	sed -e '/<! Begin file/,$ d' pgw050c.txt > COPYING.gutenberg
+	(sed -e '/<! Begin file/,$ d' pgw050c.txt || die) > COPYING.gutenberg
 
 	for f in $(ls pgw${GV}?*.txt) ; do
 		echo "Cleaning '${f}'"
-		sed -n -e '/<! Begin file/,$ p' -i "${f}"
-		sed -f "${SD}/cleanup.sed" -i "${f}"
-		cat "${SD}/micra-head.xml" "${f}" "${SD}/micra-foot.xml" > "${f%txt}xml"
+		sed -n -e '/<! Begin file/,$ p' -i "${f}" || die
+		sed -f "${SD}/cleanup.sed" -i "${f}" || die
+		(cat "${SD}/micra-head.xml" "${f}" "${SD}/micra-foot.xml" || die) > "${f%txt}xml"
 	done
 }
 
 src_compile() {
 	for f in $(ls pgw050?*.xml) ; do
 		echo "Processing '${f}'"
-		xsltproc "${SD}/dictfmt-elements.xsl" "${f}" >> web1913.txt
+		(xsltproc "${SD}/dictfmt-elements.xsl" "${f}" || die) >> web1913.txt
 	done
 	echo "Building dictionary"
-	dictfmt -u " ${SRC_FILES}" \
+	(dictfmt -u " ${SRC_FILES}" \
 		-s "Webster's Revised Unabridged Dictionary, 1913 edition (v${WV} ${SV})" \
 		--headword-separator " / " \
 		--columns 73 \
 		--utf8 \
 		-p web1913 \
+		|| die) \
 		< web1913.txt
-	dictzip web1913.dict
+	dictzip web1913.dict || die
 }
 
 src_install() {
 	dodoc COPYING.gutenberg "${SD}/README"
 	newdoc "${SD}/dictfmt-elements.txt" COPYING.micra
 	insinto /usr/lib/dict
-	doins web1913.dict.dz web1913.index || die
+	doins web1913.dict.dz web1913.index
 }
 
 pkg_postinst() {
