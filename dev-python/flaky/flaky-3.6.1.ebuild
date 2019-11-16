@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
 
@@ -27,20 +27,10 @@ DEPEND="${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
-python_prepare_all() {
-	cat >> test/__init__.py <<- EOF
-	# coding: utf-8
-
-	from __future__ import unicode_literals
-	EOF
-
-	distutils-r1_python_prepare_all
-}
-
 python_test() {
 	nosetests --with-flaky --exclude="test_nose_options_example" test/test_nose/ || die
-	py.test -k 'example and not options' --doctest-modules test/test_pytest/ || die
-	py.test -p no:flaky test/test_pytest/test_flaky_pytest_plugin.py || die
+	pytest -k 'example and not options' --doctest-modules test/test_pytest/ || die
+	pytest -p no:flaky test/test_pytest/test_flaky_pytest_plugin.py || die
 	nosetests --with-flaky --force-flaky --max-runs 2 test/test_nose/test_nose_options_example.py || die
-	py.test --force-flaky --max-runs 2  test/test_pytest/test_pytest_options_example.py || die
+	pytest --force-flaky --max-runs 2  test/test_pytest/test_pytest_options_example.py || die
 }
