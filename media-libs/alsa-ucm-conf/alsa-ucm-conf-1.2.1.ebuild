@@ -19,6 +19,6 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}"
 
 src_install() {
-	insinto /usr/share/alsa/ucm
-	doins -r ucm{,2}/*
+	insinto /usr/share/alsa
+	doins -r ucm{,2}
 }
