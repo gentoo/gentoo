@@ -10,7 +10,7 @@
 			<email>phil@riverbankcomputing.com</email>
 			<name>Phil Thompson</name>
 		</maintainer>
-		<changelog>https://www.riverbankcomputing.com/static/Downloads/sip/ChangeLog</changelog>
+		<changelog>https://www.riverbankcomputing.com/hg/sip/raw-file/tip/NEWS</changelog>
 		<doc>https://www.riverbankcomputing.com/static/Docs/sip/</doc>
 		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
 		<remote-id type="pypi">PyQt5-sip</remote-id>
