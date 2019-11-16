@@ -1,0 +1,25 @@
+From 81dc0f46754afd44358b8c97ea832030436ac7cb Mon Sep 17 00:00:00 2001
+From: Andy Postnikov <apostnikov@gmail.com>
+Date: Sun, 27 Jan 2019 03:27:18 +0200
+Subject: [PATCH] testing/py-apipkg: fix tests
+
+https://github.com/pytest-dev/apipkg/issues/14
+---
+ testing/py-apipkg/14.patch | 11 +++++++++++
+ testing/py-apipkg/APKBUILD |  7 ++++---
+ 2 files changed, 15 insertions(+), 3 deletions(-)
+ create mode 100644 testing/py-apipkg/14.patch
+
+[inner patch extracted for Gentoo use]
+
+--- a/test_apipkg.py
++++ b/test_apipkg.py
+@@ -13,7 +13,7 @@
+ class TestRealModule:
+ 
+     def setup_class(cls):
+-        cls.tmpdir = py.test.ensuretemp('test_apipkg')
++        cls.tmpdir = py.path.local('test_apipkg')
+         sys.path = [str(cls.tmpdir)] + sys.path
+         pkgdir = cls.tmpdir.ensure('realtest', dir=1)
+ 
