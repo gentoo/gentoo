@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy pypy3 )
 
 inherit distutils-r1
 
@@ -32,13 +32,17 @@ python_prepare_all() {
 	# remove self-dependency
 	sed -i -e "/arguments\.update/s@scm_config()@{'version': '${PV}'}@" \
 		-e "/__main__/i del sys.path[0]" setup.py || die
+	# incompatible pytest version?
+	sed -i -e '/@pytest.mark.issue/d' \
+		-e 's/, marks=pytest.mark.issue([0-9]*)//' \
+		testing/*.py || die
 
 	distutils-r1_python_prepare_all
 }
 
 python_test() {
 	PYTHONPATH= distutils_install_for_testing
-	py.test -v -v -x || die "Tests fail with ${EPYTHON}"
+	pytest -v -v -x || die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {

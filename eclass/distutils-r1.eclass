@@ -254,21 +254,16 @@ distutils_enable_tests() {
 	debug-print-function ${FUNCNAME} "${@}"
 	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes exactly one argument: test-runner"
 
-	[[ ${EAPI} == [56] ]] && local BDEPEND
-
-	IUSE+=" test"
-	RESTRICT+=" !test? ( test )"
-	BDEPEND+=" test? ("
-
+	local test_deps
 	case ${1} in
 		nose)
-			BDEPEND+=" dev-python/nose[${PYTHON_USEDEP}]"
+			test_deps="dev-python/nose[${PYTHON_USEDEP}]"
 			python_test() {
 				nosetests -v || die "Tests fail with ${EPYTHON}"
 			}
 			;;
 		pytest)
-			BDEPEND+=" dev-python/pytest[${PYTHON_USEDEP}]"
+			test_deps="dev-python/pytest[${PYTHON_USEDEP}]"
 			python_test() {
 				pytest -vv || die "Tests fail with ${EPYTHON}"
 			}
@@ -283,9 +278,15 @@ distutils_enable_tests() {
 			die "${FUNCNAME}: unsupported argument: ${1}"
 	esac
 
-	BDEPEND+=" ${RDEPEND} )"
-
-	[[ ${EAPI} == [56] ]] && DEPEND+=" ${BDEPEND}"
+	if [[ -n ${test_deps} || -n ${RDEPEND} ]]; then
+		IUSE+=" test"
+		RESTRICT+=" !test? ( test )"
+		if [[ ${EAPI} == [56] ]]; then
+			DEPEND+=" test? ( ${test_deps} ${RDEPEND} )"
+		else
+			BDEPEND+=" test? ( ${test_deps} ${RDEPEND} )"
+		fi
+	fi
 
 	# we need to ensure successful return in case we're called last,
 	# otherwise Portage may wrongly assume sourcing failed

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PLOCALES="af an ar az be be@latin bg bs ca ckb co cs da de el en_GB es et eu fa fi fr ga gl he hr hu hy id is it ja ka kab kk ko lt lv ms nb nl oc pa pl pt_BR pt_PT ro ru sk sl sq sr sv tg th tr uk uz vi zh_CN zh_TW"
 WX_GTK_VER=3.0-gtk3
@@ -25,9 +25,10 @@ RDEPEND="
 	dev-libs/icu:=
 	>=x11-libs/wxGTK-3.0.3:${WX_GTK_VER}[X]
 "
-
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	my_rm_loc() {
@@ -43,21 +44,11 @@ src_prepare() {
 }
 
 src_configure() {
-	# CLD2 and C++ Rest are not available in Gentoo
+	# CLD2 and C++ Rest are not available in Gentoo, bug 674916
 	local myeconfargs=(
 		--without-cld2
 		--without-cpprest
 	)
 
 	econf "${myeconfargs[@]}"
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
-	gnome2_icon_cache_update
 }
