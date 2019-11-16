@@ -18,25 +18,33 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-CDEPEND="
+RDEPEND="
 	>=dev-python/attrs-19.2.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'python2*' pypy)
 "
-RDEPEND="${CDEPEND}"
-DEPEND="${CDEPEND}
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		dev-python/flaky[${PYTHON_USEDEP}]
+		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pexpect[${PYTHON_USEDEP}]
 		>=dev-python/pytest-4.3[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)
 "
 
 S="${WORKDIR}/${PN}-${PN}-python-${PV}/${PN}-python"
 
+src_prepare() {
+	# avoid pytest-xdist dep for one test
+	sed -i -e 's:test_prints_statistics_given_option_under_xdist:_&:' \
+		tests/pytest/test_statistics.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
-	py.test -v tests/cover/test_testdecorators.py || die "Tests fail with ${EPYTHON}"
+	local pyver=$(python_is_python3 && echo 3 || echo 2)
+	pytest -vv tests/cover tests/pytest tests/py${pyver} ||
+		die "Tests fail with ${EPYTHON}"
 }
 
 pkg_postinst() {

@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
 
 inherit distutils-r1
 
@@ -13,33 +13,32 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="doc"
 
-RDEPEND=""
-DEPEND="
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	test? ( >=dev-python/pytest-2.4.2[${PYTHON_USEDEP}] )
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+	doc? ( dev-python/sphinx )"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.5.2-skip-apiwarn-pytest31.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.2-skip-apiwarn-pytest31.patch
+	"${FILESDIR}"/${P}-pytest-4.patch
+)
+
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	sed -e 's:intersphinx_mapping:#&:' -i doc/conf.py || die
+
 	distutils-r1_python_prepare_all
+
+	# broken, and relying on exact assertion strings
+	rm testing/code/test_assertion.py || die
 }
 
 python_compile_all() {
 	use doc && emake -C doc html
-}
-
-python_test() {
-	# 1 failure, test_comments, under both pypy only.
-	# Also appears the home repo has no issue tracker.
-	[[ "${EPYTHON}" == pypy ]] && return
-	py.test -v -v || die "testing failed with ${EPYTHON}"
 }
 
 python_install_all() {
