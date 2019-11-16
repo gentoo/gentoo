@@ -12492,7 +12492,7 @@ mail-filter/exim-geoip 0.1: This is an IPv4 and IPv6 capable GeoIP dlfunc librar
 mail-filter/exim-p0f 0.1: This is p0f version 3 dlfunc library for Exim
 mail-filter/gld 1.7-r2 1.7-r4: A standalone anti-spam greylisting algorithm on top of Postfix
 mail-filter/imapfilter 2.5.6 2.6.12: An IMAP mail filtering utility
-mail-filter/libmilter 1.0.2: The Sendmail Filter API (Milter)
+mail-filter/libmilter 1.0.2 1.0.2_p1: The Sendmail Filter API (Milter)
 mail-filter/libsieve 2.2.7: A library for parsing, sorting and filtering your mail
 mail-filter/libspf2 1.2.10: libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocols
 mail-filter/libsrs2 1.0.18: libsrs2 is the next generation Sender Rewriting Scheme library
@@ -12529,6 +12529,7 @@ mail-filter/spampd 2.42: spampd is a program to scan messages for Unsolicited Co
 mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using Bayesian analysis
 mail-filter/sqlgrey 1.7.6-r2: A postfix policy service implementing a grey-listing policy
 mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
+mail-filter/zdkimfilter 1.8: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.92.2 4.92.3: A highly configurable, drop-in replacement for sendmail
