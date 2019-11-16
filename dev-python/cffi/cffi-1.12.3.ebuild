@@ -5,7 +5,7 @@ EAPI=7
 
 # DO NOT ADD pypy to PYTHON_COMPAT
 # pypy bundles a modified version of cffi. Use python_gen_cond_dep instead.
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
 
 inherit distutils-r1 toolchain-funcs
 
@@ -17,13 +17,14 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/libffi:=
 	dev-python/pycparser[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	doc? ( dev-python/sphinx )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 # Avoid race on _configtest.c (distutils/command/config.py:_gen_temp_sourcefile)
@@ -38,10 +39,8 @@ python_compile_all() {
 }
 
 python_test() {
-	einfo "$PYTHONPATH"
-	$PYTHON -c "import _cffi_backend as backend" || die
-	PYTHONPATH="${PYTHONPATH}" \
-	py.test -x -v \
+	"${PYTHON}" -c "import _cffi_backend as backend" || die
+	pytest -x -vv \
 		--ignore testing/test_zintegration.py \
 		--ignore testing/embedding \
 		c/ testing/ \
