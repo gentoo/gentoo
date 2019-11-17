@@ -714,7 +714,7 @@ app-crypt/libykneomgr 0.1.8: YubiKey NEO CCID Manager C Library
 app-crypt/loop-aes-losetup 2.28.2: Loop-AES losetup utility
 app-crypt/manuale 1.1.0: A fully manual Let's Encrypt client
 app-crypt/mcrypt 2.6.8-r3: replacement of the old unix crypt(1)
-app-crypt/md4sum 0.02.03-r1 0.02.03-r2: md4 and edonkey hash algorithm tool
+app-crypt/md4sum 0.02.03-r2: md4 and edonkey hash algorithm tool
 app-crypt/md5deep 4.4: Expanded md5sum program with recursive and comparison options
 app-crypt/md6sum 1.0-r2: A C implementation of MD6
 app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large number of hash algorithms
