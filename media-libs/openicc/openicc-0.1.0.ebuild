@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-multilib
 
@@ -14,13 +14,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc static-libs test"
 
-RDEPEND="
-	dev-libs/yajl[${MULTILIB_USEDEP}]
-"
-DEPEND="${RDEPEND}
+BDEPEND="
 	sys-devel/gettext
 	doc? ( app-doc/doxygen )
 "
+DEPEND="
+	dev-libs/yajl[${MULTILIB_USEDEP}]
+"
+RDEPEND="${DEPEND}"
 
 REQUIRED_USE="test? ( static-libs )"
 
