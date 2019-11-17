@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,7 +32,6 @@ RDEPEND="
 	dev-python/pyflakes[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/pylint[${PYTHON_USEDEP}]
-	dev-python/PyQt5[${PYTHON_USEDEP},svg,webengine?,webkit?]
 	dev-python/pyzmq[${PYTHON_USEDEP}]
 	>=dev-python/qtawesome-0.4.1[${PYTHON_USEDEP}]
 	dev-python/qtconsole[${PYTHON_USEDEP}]
