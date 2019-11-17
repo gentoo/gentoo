@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Find deleted files in block devices"
 HOMEPAGE="https://github.com/jbj/magicrescue"
