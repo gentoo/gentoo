@@ -3030,7 +3030,7 @@ dev-ada/gnatcoll-db 2019: GNAT Component Collection
 dev-ada/gnatmem 2019-r1: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2019-r1: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2017-r2 2019 2019-r1: Multi-Language Management
-dev-ada/gps 2018-r2: The GNAT Programming Studio
+dev-ada/gps 2018-r2 2019: The GNAT Programming Studio
 dev-ada/gps-bin 2016 2016-r1: The GNAT Programming Studio
 dev-ada/gtkada 2017 2017-r1 2018-r1 2018-r2 2019 2019-r1: A complete Ada graphical toolkit
 dev-ada/langkit 2018 2019: A Python framework to generate language parsers
@@ -7101,7 +7101,7 @@ dev-perl/syntax 0.4.0-r1: Activate syntax extensions
 dev-perl/tkispell 0.180.0 0.180.0-r1: Perl/Tk user interface for ispell
 dev-perl/txt2html 2.520.100: Convert a plain text file to HTML
 dev-php/File_Iterator 1.3.4 1.4.2 1.4.3 2.0.2: FilterIterator implementation that filters files based on criteria
-dev-php/PEAR-Archive_Tar 1.4.5 1.4.7: Tar file management class
+dev-php/PEAR-Archive_Tar 1.4.5 1.4.7 1.4.8: Tar file management class
 dev-php/PEAR-Auth_SASL 1.1.0: Abstraction of various SASL mechanism responses
 dev-php/PEAR-Cache 1.5.6-r2: Framework for caching of arbitrary data
 dev-php/PEAR-Cache_Lite 1.8.2: Fast and safe little cache system
@@ -7152,7 +7152,7 @@ dev-php/PEAR-MDB2_Driver_oci8 1.5.0_beta4-r1: Database Abstraction Layer, oci8 d
 dev-php/PEAR-MDB2_Driver_pgsql 1.5.0_beta4-r1: Database Abstraction Layer, pgsql driver
 dev-php/PEAR-MIME_Type 1.4.1: Utility class for dealing with MIME types
 dev-php/PEAR-Mail 1.4.1-r1: Class that provides multiple interfaces for sending emails
-dev-php/PEAR-Mail_Mime 1.10.2-r1: Create and manipulate mime messages with PHP
+dev-php/PEAR-Mail_Mime 1.10.2-r1 1.10.4: Create and manipulate mime messages with PHP
 dev-php/PEAR-Mail_mimeDecode 1.5.6-r2: Provides a class to decode mime messages (split from PEAR-Mail_Mime)
 dev-php/PEAR-Math_BigInteger 1.0.3-r1: Pure-PHP arbitrary precision integer arithmetic library
 dev-php/PEAR-Net_DNS 1.0.7-r1: Resolver library used to communicate with a DNS server
@@ -7203,7 +7203,7 @@ dev-php/PEAR-XML_Parser 1.3.7-r1 1.3.8: XML parsing class based on PHP's SAX par
 dev-php/PEAR-XML_RSS 1.1.0_alpha1 1.1.0: PHP parser for RDF and RSS documents
 dev-php/PEAR-XML_Serializer 0.21.0-r1: Swiss-army knife for reading and writing XML files
 dev-php/PEAR-XML_Util 1.4.2 1.4.3: XML utility class
-dev-php/PHPMailer 5.2.27 6.0.7: Full-featured email creation and transfer class for PHP
+dev-php/PHPMailer 5.2.27 6.0.7 6.1.2: Full-featured email creation and transfer class for PHP
 dev-php/PHP_CodeCoverage 1.2.13 4.0.7 4.0.7-r1: Collection, processing, and rendering for PHP code coverage
 dev-php/PHP_CodeSniffer 3.2.1 3.4.2: Detect violations of PHP code standards
 dev-php/PHP_Timer 1.0.5 1.0.9: Utility class for timing
@@ -7216,7 +7216,7 @@ dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.59 0.60: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 1.8.6 1.9.0: Dependency Manager for PHP
+dev-php/composer 1.8.6 1.9.0 1.9.1: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6 2.6.1: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0: Utility to instantiate objects in PHP without invoking their constructors
@@ -7224,8 +7224,8 @@ dev-php/fedora-autoloader 0.2.1 1.0.0: Fedora's Static PSR-4, PSR-0, and classma
 dev-php/geos-php 1.0.0: A PHP interface to GEOS - Geometry Engine, Open Source
 dev-php/igbinary 2.0.8 3.0.1 3.0.1-r1: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 4.0.2 4.2.0: Object-oriented graphing library for PHP
-dev-php/json-schema 5.2.8: PHP implementation of JSON schema
-dev-php/jsonlint 1.7.1: JSON Lint for PHP
+dev-php/json-schema 5.2.8 5.2.9: PHP implementation of JSON schema
+dev-php/jsonlint 1.7.1 1.7.2: JSON Lint for PHP
 dev-php/libchart 1.3: Easy-to-use chart creation library for PHP
 dev-php/libvirt-php 0.5.3 0.5.4 9999: PHP bindings for libvirt
 dev-php/magickwand 1.0.9-r3: A native PHP-extension to the ImageMagick MagickWand API
@@ -7236,7 +7236,7 @@ dev-php/myclabs-deepcopy 1.6.0 1.6.1: Create deep copies (clones) of your object
 dev-php/onphp 1.0.11_pre20141124: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.10.1-r1 1.10.3: PEAR - PHP Extension and Application Repository
 dev-php/pecl-amqp 1.9.4 1.9.4-r1: PHP Bindings for AMQP 0-9-1 compatible brokers
-dev-php/pecl-apcu 4.0.11 5.1.12 5.1.17-r1: Stripped down version of APC supporting only user cache
+dev-php/pecl-apcu 4.0.11 5.1.12 5.1.17-r1 5.1.18: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.4 1.0.4-r1 1.0.5: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-bbcode 1.0.3_beta1-r2: A quick and efficient BBCode Parsing Library
 dev-php/pecl-cairo 0.3.2-r1: Cairo bindings for PHP
@@ -7251,14 +7251,14 @@ dev-php/pecl-geoip 1.1.1-r4: PHP extension to map IP address to geographic place
 dev-php/pecl-gnupg 1.4.0-r2: PHP wrapper around the gpgme library
 dev-php/pecl-haru 1.0.4-r3: An interface to libharu, a PDF generator
 dev-php/pecl-htscanner 1.0.1-r3: Enables .htaccess options for php-scripts running as cgi
-dev-php/pecl-http 2.6.0 2.6.0-r1 2.6.0-r2 3.1.0 3.1.0-r1 3.1.0-r2 3.2.0 3.2.1: Extended HTTP Support for PHP
+dev-php/pecl-http 2.6.0 2.6.0-r1 2.6.0-r2 3.1.0 3.1.0-r1 3.1.0-r2 3.2.0 3.2.1 3.2.3: Extended HTTP Support for PHP
 dev-php/pecl-imagick 3.4.4: PHP wrapper for the ImageMagick library
 dev-php/pecl-libevent 0.1.0-r2: PHP wrapper for libevent
 dev-php/pecl-lzf 1.6.6 1.6.7: This package handles LZF de/compression
 dev-php/pecl-mailparse 2.1.6-r4 3.0.2-r1 3.0.3-r1: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-mcrypt 1.0.1 1.0.2 1.0.3: Bindings for the libmcrypt library
 dev-php/pecl-memcache 3.0.8-r2 3.0.8-r3: PHP extension for using memcached
-dev-php/pecl-memcached 2.2.0-r2 3.0.4 3.1.3 3.1.3-r1: Interface PHP with memcached via libmemcached library
+dev-php/pecl-memcached 2.2.0-r2 3.0.4 3.1.3 3.1.3-r1 3.1.4: Interface PHP with memcached via libmemcached library
 dev-php/pecl-mongo 1.6.14-r1 1.6.16: Legacy MongoDB database driver for PHP
 dev-php/pecl-mongodb 1.3.3 1.5.3 1.5.3-r1 1.5.5 1.6.0: MongoDB database driver for PHP
 dev-php/pecl-mysqlnd_ms 1.6.0_pre20141127: A replication and load balancing plugin for the mysqlnd library
@@ -7269,8 +7269,8 @@ dev-php/pecl-pam 1.0.3-r3: This extension provides PAM (Pluggable Authentication
 dev-php/pecl-propro 1.0.2-r1 1.0.2-r2 2.0.1-r1 2.1.0: A reusable property proxy API for PHP
 dev-php/pecl-ps 1.3.7-r1 1.3.7-r2 1.4.0 1.4.1: PHP extension for creating PostScript files
 dev-php/pecl-radius 1.4.0_beta1-r2: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
-dev-php/pecl-raphf 1.1.2-r1 1.1.2-r2 2.0.0-r1 2.0.0-r2: A reusable, persistent handle and resource factory API
-dev-php/pecl-redis 3.1.6-r1 4.2.0 4.3.0 5.0.2: PHP extension for interfacing with Redis
+dev-php/pecl-raphf 1.1.2-r1 1.1.2-r2 2.0.0-r1 2.0.0-r2 2.0.1: A reusable, persistent handle and resource factory API
+dev-php/pecl-redis 3.1.6-r1 4.2.0 4.3.0 5.0.2 5.1.1: PHP extension for interfacing with Redis
 dev-php/pecl-rrd 1.1.3-r2 2.0.1-r3: RRDtool bindings for PHP
 dev-php/pecl-sphinx 1.3.3-r1: PHP extension to execute search queries on a sphinx daemon
 dev-php/pecl-spl_types 0.4.0-r2: Standard PHP library types add-on
@@ -7278,7 +7278,7 @@ dev-php/pecl-ssh2 0.13-r3 1.1.2 1.2 9999: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 1.0.9-r1 2.0.2: PHP extension to communicate with Stomp message brokers
 dev-php/pecl-svn 1.0.3-r1: PHP Bindings for the Subversion Revision control system
 dev-php/pecl-taint 2.0.2 2.0.4 2.0.5: Extension used for detecting XSS code (tainted strings)
-dev-php/pecl-timezonedb 2019.1: Timezone Database to be used with PHP's date and time functions
+dev-php/pecl-timezonedb 2019.3: Timezone Database to be used with PHP's date and time functions
 dev-php/pecl-translit 0.6.2-r2 0.6.3: Transliterates non-latin character sets to latin
 dev-php/pecl-uploadprogress 1.0.3.1-r4: An extension to track progress of a file upload
 dev-php/pecl-uuid 1.0.4-r2: A wrapper around libuuid
@@ -7304,7 +7304,7 @@ dev-php/phpspec-prophecy 1.7.0 1.8.0: Highly opinionated mocking framework
 dev-php/phptal 1.3.1: A templating engine for PHP5 that implements Zope Page Templates syntax
 dev-php/phpunit 5.7.15-r1 5.7.15-r2: A PHP Unit Testing framework
 dev-php/phpunit-mock-objects 3.4.3 3.4.3-r1: Mock Object library for PHPUnit
-dev-php/psr-log 1.0.2 1.1.0: Common interface for logging libraries
+dev-php/psr-log 1.0.2 1.1.0 1.1.2: Common interface for logging libraries
 dev-php/recaptcha 1.2.1: PHP client library for Google's reCAPTCHA service
 dev-php/sebastian-code-unit-reverse-lookup 1.0.1: Looks up which function or method a line of code belongs to
 dev-php/sebastian-comparator 1.2.4: Compare PHP values for equality
@@ -7337,8 +7337,8 @@ dev-php/theseer-tokenizer 1.1.0: Convert tokenized PHP source code into XML and 
 dev-php/twig 1.40.1-r1 1.42.3: PHP templating engine with syntax similar to Django
 dev-php/webmozart-assert 1.2.0 1.4.0: Assertions to validate method input/output with nice error messages
 dev-php/xcache 3.2.0-r2: A fast and stable PHP opcode cacher
-dev-php/xdebug 2.5.3 2.5.5 2.6.1 2.7.0 2.7.2: A PHP debugging and profiling extension
-dev-php/xdebug-client 2.5.3 2.5.5-r1 2.6.1 2.7.0 2.7.2: Xdebug client for the Common Debugger Protocol (DBGP)
+dev-php/xdebug 2.5.3 2.5.5 2.6.1 2.7.0 2.7.2 2.8.0: A PHP debugging and profiling extension
+dev-php/xdebug-client 2.5.3 2.5.5-r1 2.6.1 2.7.0 2.7.2 2.8.0: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-php/xdebug-handler 1.3.0 1.3.1: Restart a CLI process without loading the xdebug extension
 dev-php/xhprof 0.9.4_p20150226-r1 0.9.10: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
