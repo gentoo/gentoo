@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit distutils-r1
 
@@ -23,7 +23,9 @@ RDEPEND="
 	dev-python/numpy
 	sci-libs/hdf5
 	sci-libs/netcdf:=[hdf,hdf5]"
-DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}"
+
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}"/${MY_P}
 
