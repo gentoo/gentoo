@@ -7347,7 +7347,7 @@ dev-python/Babel 2.5.0 2.5.3 2.5.3-r1 2.6.0: Collection of tools for internation
 dev-python/BitVector 3.4.4 3.4.6 3.4.7 3.4.8: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5 0.11.7: The httplib2 caching algorithms packaged up for use with requests
 dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support for flask
-dev-python/GridDataFormats 0.4.0: Reading and writing of data on regular grids in Python
+dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/ImageHash 3.4 3.7 4.0: Image Hashing library
 dev-python/Kivy 1.9.1 1.9.1-r1 1.10.0 1.10.1: Library for rapid development of hardware-accelerated multitouch applications
@@ -7548,7 +7548,7 @@ dev-python/cheroot 6.0.0 6.0.0-r1 6.5.4 8.2.1: Cheroot is the high-performance, 
 dev-python/cherrypy 3.8.0 13.1.0 13.1.0-r1 17.4.1-r1 18.1.0-r1: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/cherrytemplate 1.0.0-r1: Easy and powerful templating module for Python
 dev-python/chump 1.5.2 1.6.0: API wrapper for Pushover
-dev-python/citeproc-py 0.4.0: Yet another Python CSL Processor
+dev-python/citeproc-py 0.4.0-r1: Yet another Python CSL Processor
 dev-python/cjkwrap 2.2: A library for wrapping and filling UTF-8 CJK text
 dev-python/clang-python 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: Python bindings for sys-devel/clang
 dev-python/cli_helpers 0.2.0 1.0.0 1.0.1 1.2.1 9999: Python helpers for common CLI tasks
@@ -7714,7 +7714,7 @@ dev-python/doublex 1.8.1: Python test doubles
 dev-python/doublex-expects 0.7.0_rc2: Expects matchers for Doublex test doubles assertions
 dev-python/dpkt 1.8-r1 1.8.8 1.9.1: Fast, simple packet creation / parsing
 dev-python/drf-yasg 1.14.0 1.16.0: Automated generation of Swagger/OpenAPI 2.0 schemas from Django Rest framework
-dev-python/duecredit 0.6.4: Publications (and donations) tracer
+dev-python/duecredit 0.6.4-r1: Publications (and donations) tracer
 dev-python/dugong 3.7.1 3.7.2 3.7.3: Python library for communicating with HTTP 1.1 servers
 dev-python/dulwich 0.18.5 0.18.6 0.19.4 0.19.6: Pure-Python implementation of the Git file formats and protocols
 dev-python/dynd-python 0.7.2-r1: Python exposure of multidimensionnal array library libdynd
@@ -7887,7 +7887,7 @@ dev-python/greenstalk 0.5.2 1.0.1: A Python 3 client for the beanstalkd work que
 dev-python/grpcio 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1 1.21.1 1.22.1 1.23.0 1.24.3 1.25.0: High-performance RPC framework (python libraries)
 dev-python/grpcio-testing 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1 1.21.1 1.22.1 1.23.0 1.24.3 1.25.0: Testing utilities for gRPC Python
 dev-python/grpcio-tools 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1 1.21.1 1.22.1 1.23.0 1.24.3 1.25.0: Protobuf code generator for gRPC
-dev-python/gsd 1.5.3: GSD - file format specification and a library to read and write it
+dev-python/gsd 1.5.3-r1: GSD - file format specification and a library to read and write it
 dev-python/gst-python 1.14.1-r1: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
 dev-python/guessit 3.0.0 9999: Python library for guessing information from video filenames
@@ -8129,7 +8129,7 @@ dev-python/mkdocs-bootstrap 0.1.1 0.1.1-r1: Bootstrap theme for MkDocs
 dev-python/mkdocs-bootswatch 0.4.0 0.4.0-r1: Bootswatch themes for MkDocs
 dev-python/mkpythonproj 1.9: Creates the framework for a new Python project or script
 dev-python/mmh3 2.3.1 2.5.1: Python library for MurmurHash3, fast and robust hash functions.
-dev-python/mmtf-python 1.1.2: The python implementation of the MMTF API, decoder and encoder
+dev-python/mmtf-python 1.1.2-r1: The python implementation of the MMTF API, decoder and encoder
 dev-python/mock 1.0.1-r2 1.3.0-r2 2.0.0 3.0.5-r1: Rolling backport of unittest.mock for all Pythons
 dev-python/mocker 1.1.1-r1: Platform for Python test doubles: mocks, stubs, fakes, and dummies
 dev-python/mockldap 0.2.3 0.3.0: A simple mock implementation of python-ldap
@@ -8178,7 +8178,7 @@ dev-python/ndg-httpsclient 0.4.0 0.4.2-r1: Provides enhanced HTTPS support for h
 dev-python/neovim-python-client 0.3.1-r1 0.3.2-r1: Python client for Neovim
 dev-python/neovim-remote 1.8.6 2.1.0 2.1.7 2.2.1 9999: A tool that helps control neovim processes
 dev-python/netaddr 0.7.12 0.7.13 0.7.14 0.7.15 0.7.17 0.7.18 0.7.19: Network address representation and manipulation library
-dev-python/netcdf4-python 1.2.2: Python/numpy interface to the netCDF C library
+dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.6 0.10.7 0.10.9: Portable network interface information
 dev-python/netmiko 1.4.2 2.1.1: Multi-vendor library to simplify Paramiko SSH connections to network devices
 dev-python/networkx 1.11 1.11-r1 2.1 2.2: Python tools to manipulate graphs and complex networks
@@ -16098,7 +16098,7 @@ sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
 sci-calculators/units 2.16 2.18 2.19: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.8.0: Python framework for Gromacs
-sci-chemistry/MDAnalysis 0.18.0: A python library to analyze and manipulate molecular dynamics trajectories
+sci-chemistry/MDAnalysis 0.18.0-r1: A python library to analyze and manipulate molecular dynamics trajectories
 sci-chemistry/ParmEd 2.7.3 3.0.3: Parameter/topology editor and molecular simulator
 sci-chemistry/apbs 1.4.1-r2: Evaluation of electrostatic properties of nanoscale biomolecular systems
 sci-chemistry/aqua 3.2-r3: Program suite in this distribution calculates restraint violations
