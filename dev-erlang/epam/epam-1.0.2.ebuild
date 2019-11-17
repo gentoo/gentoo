@@ -12,7 +12,7 @@ SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 sparc x86"
 
 DEPEND=">=dev-lang/erlang-17.1
 	sys-libs/pam"
