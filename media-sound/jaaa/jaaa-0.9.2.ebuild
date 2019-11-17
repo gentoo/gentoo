@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit toolchain-funcs
+
 DESCRIPTION="JACK and ALSA Audio Analyser is an audio signal generator and spectrum analyser"
 HOMEPAGE="http://kokkinizita.linuxaudio.org/linuxaudio/"
 SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${P}.tar.bz2"
@@ -28,6 +30,7 @@ PATCHES=(
 )
 
 src_compile() {
+	tc-export CXX
 	emake -C source PREFIX="${EPREFIX}"/usr
 }
 
