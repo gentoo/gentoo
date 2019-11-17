@@ -20,7 +20,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc hdf5"
 
 RDEPEND="
-	dev-python/PyQt5[${PYTHON_USEDEP},svg,webkit]
 	dev-python/QtPy[${PYTHON_USEDEP},svg,webkit]
 	dev-python/qtconsole[${PYTHON_USEDEP}]
 	>=dev-python/rope-0.10.7[${PYTHON_USEDEP}]
