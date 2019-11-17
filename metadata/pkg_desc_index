@@ -401,7 +401,7 @@ app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
 app-arch/alien 8.95 8.95-r1: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
 app-arch/arc 5.21p: Create & extract files from DOS .ARC files
 app-arch/arj 3.10.22-r7: Utility for opening arj archives
-app-arch/atool 0.39.0 0.39.0-r1: Script for managing file archives of various types
+app-arch/atool 0.39.0-r1: Script for managing file archives of various types
 app-arch/bloscpack 0.5.0 0.6.0 0.11.0: Command line interface for Blosc compression
 app-arch/brotli 1.0.2 1.0.3 1.0.3-r1 1.0.4 1.0.5 1.0.6 1.0.6-r1 1.0.7 9999: Generic-purpose lossless compression algorithm
 app-arch/bsdsfv 1.18-r2: all-in-one SFV checksum utility
@@ -505,7 +505,7 @@ app-backup/bareos 16.2.7-r1 17.2.6 17.2.7-r1 18.2.6: Featureful client/server ne
 app-backup/borgbackup 1.1.8 1.1.9 1.1.10 1.1.10-r1 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.24.0-r1 0.25.1-r1 0.26.0 0.26.1 0.27.0 0.27.1 0.27.1-r1 0.27.2 0.28.0 0.28.1 0.28.2 0.28.3 0.29.0 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
-app-backup/bup 0.28.1 0.29.2: A highly efficient backup system based on the git packfile format
+app-backup/bup 0.29.2: A highly efficient backup system based on the git packfile format
 app-backup/burp 2.2.18 2.2.18-r1: Network backup and restore client and server for Unix and Windows
 app-backup/buttersink 0.6.8 9999: rsync-like utility for btrfs snapshots
 app-backup/cachedir 1.4: Tag/untag cache directories
@@ -2342,7 +2342,7 @@ app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
 app-shells/fish 2.7.1 3.0.2 9999: Friendly Interactive SHell
 app-shells/fzy 1.0 9999: Fuzzy text selector (interactive grep) for console
 app-shells/gentoo-bashcomp 20180302 20190211: Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)
-app-shells/gentoo-zsh-completions 20150103 20180228 99999999: Gentoo specific zsh completion support (includes emerge and ebuild commands)
+app-shells/gentoo-zsh-completions 20180228 99999999: Gentoo specific zsh completion support (includes emerge and ebuild commands)
 app-shells/heirloom-sh 050706-r1: Heirloom Bourne Shell, derived from OpenSolaris code SVR4/SVID3
 app-shells/hstr 2.0: Shell history suggest box
 app-shells/ksh 2020.0.0 9999: The Original Korn Shell, 1993 revision (ksh93)
@@ -2683,7 +2683,7 @@ app-text/xmlto 0.0.28-r1: script for converting XML and DocBook documents to a v
 app-text/xournal 0.4.8 0.4.8-r1 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/xpdf 4.02: The PDF viewer and tools
 app-text/yelp-tools 3.18.0 3.28.0 3.32.2: Collection of tools for building and converting documentation
-app-text/yodl 4.01.00 4.02.00 4.02.01: Your Own Document Language: a pre-document language and tools to process it
+app-text/yodl 4.02.01: Your Own Document Language: a pre-document language and tools to process it
 app-text/zathura 0.4.3 0.4.4 9999: A highly customizable and functional document viewer
 app-text/zathura-cb 0.1.8 9999: Comic book plug-in for zathura with 7zip, rar, tar and zip support
 app-text/zathura-djvu 0.2.8 9999: DjVu plug-in for zathura
@@ -12473,7 +12473,7 @@ mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.10.1 1.11.4 1.12.1 1.12.2-r1 1.12.2-r2: A small but very powerful text-based mail client
 mail-client/neomutt 20180512 20180622 20180716 20180716-r1 20191102 20191111 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
-mail-client/roundcube 1.3.8 1.3.9 1.3.10: A browser-based multilingual IMAP client with an application-like user interface
+mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
 mail-client/thunderbird 52.9.1 68.2.2: Thunderbird Mail Client
@@ -12893,7 +12893,7 @@ media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.0 0.32.2 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.10.71 7.0.8.67 7.0.9.2 9999: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.10.73 7.0.9.4 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.1 0.3.3: Losslessly convert raster images to PDF
 media-gfx/imv 2.1.3 9999: Minimal image viewer designed for tiling window manager users
@@ -17222,7 +17222,7 @@ sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.57-r1: Script to rescan the SCSI bus without rebooting
 sys-apps/restartd 0.2.2-r1: A daemon for checking your running and not running processes
 sys-apps/restorecond 2.8 2.9 9999: Daemon to watch for creation and set default SELinux fcontexts
-sys-apps/ripgrep 0.10.0-r1 11.0.1 11.0.2: a search tool that combines the usability of ag with the raw speed of grep
+sys-apps/ripgrep 11.0.1 11.0.2: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rkflashtool 6.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 5-r2 6.6-r1 6.7-r1 6.7-r2 6.8: Daemon to use hardware random number generators
 sys-apps/roccat-tools 5.7.0 5.9.0: Utility for advanced configuration of Roccat devices
@@ -17949,7 +17949,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1 0.5-r2 0.5-r3 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20190722 20190822: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20190822 20191022: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment
@@ -18821,7 +18821,7 @@ x11-misc/sunflower 0.2_alpha59 0.3.61: Small and highly customizable twin-panel 
 x11-misc/superswitcher 0.6-r1: A more feature-full replacement of the Alt-Tab window switching behavior
 x11-misc/sux 1.0-r4: "su" wrapper which transfers X credentials
 x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
-x11-misc/sxhkd 0.5.9 0.6.0 0.6.1: Simple X hotkey daemon
+x11-misc/sxhkd 0.6.1: Simple X hotkey daemon
 x11-misc/synergy 1.9.1 2.0.0: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
 x11-misc/tint2 16.2 16.6 16.6.1 16.7: tint2 is a lightweight panel/taskbar for Linux.
@@ -18875,7 +18875,7 @@ x11-misc/xdg-user-dirs-gtk 0.10-r1: Integrates xdg-user-dirs into the Gnome desk
 x11-misc/xdg-utils 1.1.3-r1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.51: user-friendly program to show you what is using up all your disk space
-x11-misc/xdo 0.5 0.5.6 0.5.7: Small X utility to perform elementary actions on windows
+x11-misc/xdo 0.5.7: Small X utility to perform elementary actions on windows
 x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
 x11-misc/xdotool 3.20150503.1-r1 3.20160805.1: Simulate keyboard input and mouse activity, move and resize windows
 x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
@@ -19272,7 +19272,7 @@ x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm
 x11-wm/amiwm 0.21_p2: Windowmanager ala Amiga(R) Workbench(R)
 x11-wm/awesome 3.5.9-r2 4.2-r2 4.3 9999: A dynamic floating and tiling window manager
 x11-wm/blackbox 0.70.1-r1 0.75: A small, fast, full-featured window manager for X
-x11-wm/bspwm 0.9.7-r1 0.9.9: Tiling window manager based on binary space partitioning
+x11-wm/bspwm 0.9.9: Tiling window manager based on binary space partitioning
 x11-wm/ctwm 4.0.2 4.0.3: A clean, light window manager
 x11-wm/cwm 5.6 9999: OpenBSD fork of calmwm, a clean and lightweight window manager
 x11-wm/dwm 6.1-r1 6.2 9999: a dynamic window manager for X11
@@ -19283,7 +19283,7 @@ x11-wm/evilwm 1.0.1-r1 1.1.1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.7-r3 1.3.7-r4 9999: X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5-r3 2.6.8-r2: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
-x11-wm/herbstluftwm 0.7.0 0.7.1 0.7.2 9999: A manual tiling window manager for X
+x11-wm/herbstluftwm 0.7.2 9999: A manual tiling window manager for X
 x11-wm/i3 4.14 4.15 4.16 4.16.1 4.17.1 9999: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.16.1 4.16.1-r1 4.17.1: i3 fork with gaps and some more features
 x11-wm/icewm 1.5.5 1.6.1 1.6.2: Ice Window Manager with Themes
