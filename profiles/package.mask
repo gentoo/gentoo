@@ -39,12 +39,6 @@ dev-libs/qof
 dev-util/ccglue
 
 # Aaron Bauman <bman@gentoo.org> (2019-11-16)
-# EAPI=4. --filter=gay Really?!
-# rdeps too. Removal in 15 days
-app-misc/toilet
-net-irc/rbot
-
-# Aaron Bauman <bman@gentoo.org> (2019-11-16)
 # EAPI=4. If anyone has this hardware then speak up.
 # Removal in 15 days
 app-misc/rioutil
