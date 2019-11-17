@@ -15,6 +15,8 @@ SLOT="7"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="examples igbinary json sasl +session test"
 
+RESTRICT="!test? ( test )"
+
 COMMON_DEPEND=">=dev-libs/libmemcached-1.0.14[sasl?]
 	sys-libs/zlib
 "

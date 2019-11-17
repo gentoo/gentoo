@@ -318,12 +318,12 @@ src_install() {
 	newins "${FILESDIR}/${PN}-r1.logrotate" ${PN}
 
 	if use mysql; then
-		insinto /usr/share/doc/${PF}/scripts/mysql
+		insinto /usr/share/${PN}/scripts/mysql
 		doins plugins/ommysql/createDB.sql
 	fi
 
 	if use postgres; then
-		insinto /usr/share/doc/${PF}/scripts/pgsql
+		insinto /usr/share/${PN}/scripts/pgsql
 		doins plugins/ompgsql/createDB.sql
 	fi
 
