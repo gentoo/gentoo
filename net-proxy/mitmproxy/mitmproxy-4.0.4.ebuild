@@ -48,6 +48,8 @@ DEPEND="${RDEPEND}
 		>=dev-python/requests-2.9.1[${PYTHON_USEDEP}]
 	)"
 
+RESTRICT="!test? ( test )"
+
 python_prepare_all() {
 	# loosen dependencies
 	sed -i '/>/s/>.*/",/g' setup.py || die
