@@ -13,7 +13,7 @@ SRC_URI="https://tktray.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="debug threads test"
 
 DEPEND="
