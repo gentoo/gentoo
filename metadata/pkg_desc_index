@@ -476,7 +476,7 @@ app-arch/unar 1.10.1: unpacker for various archiving formats, e.g. rar v3
 app-arch/unarj 2.65: Utility for opening arj archives
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7_p1-r1: Script for unpacking various file formats
-app-arch/unrar 5.7.5 5.8.1 5.8.2 5.8.3: Uncompress rar files
+app-arch/unrar 5.7.5 5.8.1 5.8.2 5.8.3 5.8.4: Uncompress rar files
 app-arch/unrpa 1.4.1 1.4.2 9999: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4.3: InstallShield CAB file extractor
 app-arch/unzip 6.0_p21-r2 6.0_p25: unzipper for pkzip-compressed files
@@ -756,7 +756,7 @@ app-crypt/scdrand 0.3.4: Feed kernel entropy pool from smartcard's TRNG
 app-crypt/scrypt 1.2.0: A simple password-based encryption utility using scrypt key derivation function
 app-crypt/scute 1.5.0: A PKCS #11 module for OpenPGP smartcards
 app-crypt/seahorse 3.30.1.1 3.32.2: Manage your passwords and encryption keys
-app-crypt/seahorse-sharing 3.8.0_p20151117: Daemon for PGP public key sharing using DNS-SD and HKP
+app-crypt/seahorse-sharing 3.8.0_p20151117 3.8.0_p20181216: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signify 20 23 24: Cryptographically sign and verify files
@@ -3125,7 +3125,7 @@ dev-db/lmdb 0.9.23 0.9.24: An ultra-fast, ultra-compact key-value embedded data 
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
 dev-db/mariadb 5.5.66 10.1.38-r1 10.1.43 10.2.22-r1 10.2.29 10.3.20 10.4.10: An enhanced, drop-in replacement for MySQL
-dev-db/mariadb-connector-c 3.0.6-r1 3.0.9 3.1.2 3.1.3 3.1.4 9999: C client library for MariaDB/MySQL
+dev-db/mariadb-connector-c 3.0.6-r1 3.0.9 3.1.2 3.1.3 3.1.4 3.1.5 9999: C client library for MariaDB/MySQL
 dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 3.6.8 3.6.13 3.6.14 4.0.10 4.0.12 4.0.13 4.2.0-r2 4.2.1: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
@@ -4984,7 +4984,7 @@ dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing 
 dev-libs/libpwquality 1.4.0 1.4.1: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 3.3.1: A Qt implementation of XDG standards
 dev-libs/libratbag 0.9: Library to configure gaming mice
-dev-libs/librdkafka 1.1.0 1.2.1: Apache Kafka C/C++ client library
+dev-libs/librdkafka 1.1.0 1.2.1 1.2.2: Apache Kafka C/C++ client library
 dev-libs/librelp 1.2.18 1.3.0 1.4.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.9.5 2.10.0: Generic library for reporting software bugs
@@ -7455,7 +7455,7 @@ dev-python/automaton 0.8.0 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.3.2 1.3.3 1.3.5 1.4 1.4.3 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/aws-sam-translator 1.11.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.4.2: AWS X-Ray SDK for Python
-dev-python/awscli 1.16.104 1.16.125 1.16.148 1.16.190 1.16.215 1.16.220 1.16.233-r1 1.16.261 1.16.278: Universal Command Line Environment for AWS
+dev-python/awscli 1.16.104 1.16.125 1.16.148 1.16.190 1.16.215 1.16.220 1.16.233-r1 1.16.261 1.16.278 1.16.283: Universal Command Line Environment for AWS
 dev-python/axiom 0.7.2 0.7.5: Object database implemented on top of SQLite
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.1.0: Specifications for callback functions passed in to an API
@@ -7504,7 +7504,7 @@ dev-python/bokeh 0.11.1 0.12.6: Statistical and interactive HTML plots for Pytho
 dev-python/booleanOperations 0.8.0 0.8.2: Boolean operations on paths
 dev-python/boto 2.41.0 2.48.0 2.49.0: Amazon Web Services API
 dev-python/boto3 1.9.4-r1 1.9.122 1.10.2 9999: The AWS SDK for Python
-dev-python/botocore 1.12.4-r1 1.12.81 1.12.122 1.12.205 1.12.210 1.12.223 1.12.251 1.13.2 1.13.14 9999: Low-level, data-driven core of boto 3.
+dev-python/botocore 1.12.4-r1 1.12.81 1.12.122 1.12.205 1.12.210 1.12.223 1.12.251 1.13.2 1.13.14 1.13.19 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12 0.12.13 0.12.16: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.0.0 1.2.1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.17.1 0.18: Syntax highlighting and autocompletion for the Python interpreter
@@ -8412,7 +8412,7 @@ dev-python/pyamg 2.1.0 2.2.1 3.0.2 3.2.1 3.2.1-r1: Algebraic multigrid solvers i
 dev-python/pyao 0.82-r3: Python bindings for the libao library
 dev-python/pyasn1 0.2.3 0.3.7 0.4.2 0.4.3: ASN.1 library for Python
 dev-python/pyasn1-modules 0.0.5-r1 0.0.8 0.0.10 0.1.4 0.1.5 0.2.1: pyasn1 modules
-dev-python/pyatspi 2.30.0 2.32.1: Python binding to at-spi library
+dev-python/pyatspi 2.30.0 2.32.1 2.34.0: Python client bindings for D-Bus AT-SPI
 dev-python/pyaudio 0.2.11: Python bindings for PortAudio
 dev-python/pyavm 0.9.4: Python module for Astronomy Visualization Metadata i/o
 dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
@@ -18294,7 +18294,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.2.4 5.3: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.1: Web-based interactive data analytics notebook launcher
-www-client/chromium 78.0.3904.97 79.0.3945.29 80.0.3962.2: Open-source version of Google Chrome web browser
+www-client/chromium 78.0.3904.97 79.0.3945.36 80.0.3962.2: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.4 3.30.5 3.32.4 3.32.5: GNOME webbrowser based on Webkit
