@@ -4,18 +4,18 @@
 EAPI=7
 inherit linux-mod
 
-COMMIT="0401e47"
+COMMIT="0401e4754637144bb7480aafd6b89d93ed97825d"
 
 DESCRIPTION="Realtek 8821CU/RTL8811CU module for Linux kernel"
 HOMEPAGE="https://github.com/brektrou/rtl8821CU"
-SRC_URI="https://github.com/brektrou/rtl8821CU/tarball/${COMMIT} -> rtl8821cu-${PV}.tar.gz"
+SRC_URI="https://github.com/brektrou/rtl8821CU/archive/${COMMIT}.tar.gz -> rtl8821cu-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="virtual/linux-sources"
 
-S="${WORKDIR}/brektrou-rtl8821CU-${COMMIT}"
+S="${WORKDIR}/rtl8821CU-${COMMIT}"
 
 MODULE_NAMES="8821cu(net/wireless)"
 BUILD_TARGETS="all"
