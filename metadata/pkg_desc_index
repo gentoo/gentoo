@@ -18732,7 +18732,7 @@ x11-misc/kbdd 0.7.1: Very simple layout switcher
 x11-misc/kdocker 5.0-r1 5.1 5.2: Helper to dock any application into the system tray
 x11-misc/kronometer 2.2.3: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
-x11-misc/libinput-gestures 2.40 2.41 9999: Actions gestures on your touchpad using libinput
+x11-misc/libinput-gestures 2.41 2.45 9999: Actions gestures on your touchpad using libinput
 x11-misc/light-locker 1.8.0-r1 1.9.0-r2: A simple locker using lightdm
 x11-misc/lightdm 1.28.0 1.30.0: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 2.0.6: LightDM GTK+ Greeter
