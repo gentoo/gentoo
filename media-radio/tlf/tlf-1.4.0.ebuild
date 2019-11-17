@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="Console-mode amateur radio contest logger"
 HOMEPAGE="http://home.iae.nl/users/reinc/TLF-0.2.html"
-SRC_URI="http://www.hs-mittweida.de/tb/${P}.tar.gz"
+SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,5 +25,5 @@ DEPEND="
 
 src_configure() {
 	append-ldflags -L/usr/$(get_libdir)/hamlib
-	econf --docdir=/usr/share/doc/${PF} --enable-hamlib --enable-fldigi-xmlrpc
+	econf --docdir=/usr/share/doc/${PF} --enable-fldigi-xmlrpc
 }
