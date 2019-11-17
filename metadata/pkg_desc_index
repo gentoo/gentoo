@@ -1901,6 +1901,7 @@ app-misc/ca-certificates 20190110.3.43: Common CA Certificates PEM files
 app-misc/cadubi 1.3: An application that allows you to draw ASCII-Art images
 app-misc/calendar 0.9.1-r1: Standard unix calendar program for Linux, ported from OpenBSD
 app-misc/carbon-c-relay 3.4 3.5 3.6: Enhanced C version of Carbon relay, aggregator and rewriter
+app-misc/cargo-license 0.2.0: Cargo subcommand to see license of dependencies
 app-misc/cbrpager 0.9.22: a simple comic book pager
 app-misc/cbview 0.06-r1: viewer/converter for CBR/CBZ comic book archives
 app-misc/cdargs 1.35-r2: Bookmarks and browser for the shell builtin cd command
@@ -15152,7 +15153,7 @@ net-mail/tnef 1.4.15 1.4.17: Decodes MS-TNEF MIME attachments
 net-mail/tpop3d 1.5.5 1.5.5-r1: An extensible POP3 server with vmail-sql/MySQL support
 net-mail/vacation 1.2.7.0: automatic mail answering program
 net-mail/vchkuser 0.4: qmail-spp plugin to check recipient existance with vpopmail
-net-mail/vpopmail 5.4.33 5.4.33-r4: Collection of programs to manage virtual email on Qmail servers
+net-mail/vpopmail 5.4.33 5.4.33-r4 5.4.33-r5: Collection of programs to manage virtual email on Qmail servers
 net-mail/vqadmin 2.3.7: A web based control pannel to manage Virtual Qmail Domains. Works with qmailadmin
 net-mail/ytnef 1.9.3: Yeraze's TNEF Stream Reader - for winmail.dat files
 net-misc/AQtion 2.2.7 2.3.1: Aquantia AQC multigigabit NIC linux driver (atlantic) - development preview
