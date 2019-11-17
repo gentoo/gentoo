@@ -62,6 +62,10 @@ src_configure() {
 }
 
 src_test() {
+	# some tests require D-Bus
+	local myctestargs=(
+		-E "(BaseConnectionManager|BaseProtocol)"
+	)
 	pushd "${BUILD_DIR}" > /dev/null || die
 	virtx cmake-utils_src_test
 	popd > /dev/null || die
