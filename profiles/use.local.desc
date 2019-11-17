@@ -4582,7 +4582,6 @@ media-plugins/vdr-epgsearch:conflictcheckonly - install the "conflictcheckonly" 
 media-plugins/vdr-epgsearch:epgsearchonly - install the "epgsearchonly" vdr-plugin
 media-plugins/vdr-epgsearch:quicksearch - install the "quicksearch" vdr-plugin
 media-plugins/vdr-epgsearch:tre - Add support for unlimited fuzzy searching with help of dev-libs/tre library
-media-plugins/vdr-pvr350:yaepg - Enables full support for the output format of vdr-yaepg
 media-plugins/vdr-streamdev:client - Compile the VDR plugin vdr-streamdev-client that acts like a dvb-budget card
 media-plugins/vdr-streamdev:server - Compile the VDR plugin vdr-streamdev-server that allows remote systems to access the DVB cards used for the local VDR
 media-plugins/vdr-vdrmanager:stream - Add support for streaming Video to Android client
@@ -5238,8 +5237,8 @@ media-video/vdr:mainmenuhooks - Allows to replace main menu entries by some spec
 media-video/vdr:menuorg - Enables support for the media-plugins/vdr-menuorg
 media-video/vdr:menuselection - adds support for menu hotkeys of double digits
 media-video/vdr:naludump - Removes NALU fill data from h.264-Streams of TS files
-media-video/vdr:permashift - permanent timeshift by recording live TV on hard disk, need plugin media-plugins/vdr-permashift
-media-video/vdr:permashift_v1 - permanent timeshift by recording live TV on RAM, need plugin >=mediaplugins/vdr-permashift-1
+media-video/vdr:permashift - permanent timeshift by recording live TV into RAM, need plugin media-plugins/vdr-permashift
+media-video/vdr:permashift_v1 - permanent timeshift by recording live TV into RAM, need plugin media-plugins/vdr-permashift
 media-video/vdr:pinplugin - Support for media-plugins/vdr-pin
 media-video/vdr:resumereset - rreset resume of EOF
 media-video/vdr:rotor - Enable support for plugin vdr-rotor for dish-positioner.
