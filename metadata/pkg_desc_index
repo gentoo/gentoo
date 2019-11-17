@@ -7600,8 +7600,8 @@ dev-python/coverage-test-runner 1.15: fail Python program unit tests unless they
 dev-python/crcmod 1.7-r2 1.7-r3: Python CRC Generator module
 dev-python/croniter 0.3.17 0.3.29 0.3.30: Python module to provide iteration for datetime object
 dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
-dev-python/cryptography 2.2.2-r1 2.3 2.3.1 2.4.2 2.5 2.6.1 2.7: Library providing cryptographic recipes and primitives
-dev-python/cryptography-vectors 2.2.2 2.3 2.3.1 2.4.2 2.5 2.6.1 2.7: Test vectors for the cryptography package
+dev-python/cryptography 2.6.1 2.8: Library providing cryptographic recipes and primitives
+dev-python/cryptography-vectors 2.6.1 2.8: Test vectors for the cryptography package
 dev-python/css-parser 1.0.4 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 0.9.1 1.0.1 1.0.3: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.2.0: parses CSS3 Selectors and translates them to XPath 1.0
@@ -10706,7 +10706,7 @@ dev-util/intel-graphics-compiler 1.0.11-r1: LLVM-based OpenCL compiler targettin
 dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1: Intel's implementation of the OpenCL standard
 dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
 dev-util/its4 1.1.1-r1: ITS4: Software Security Tool
-dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
+dev-util/itstool 2.0.2 2.0.6: Translation tool for XML documents that uses gettext files and ITS rules
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
@@ -13168,7 +13168,7 @@ media-libs/libchamplain 0.12.19-r1 0.12.20: Clutter based world map renderer
 media-libs/libclalsadrv 2.0.0-r1: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
 media-libs/libclthreads 2.4.0-r1 2.4.2: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
-media-libs/libclxclient 3.9.0: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
+media-libs/libclxclient 3.9.0 3.9.2: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/libcue 1.4.0 2.2.1: CUE Sheet Parser Library
 media-libs/libcuefile 477-r1: Cue File library from Musepack
 media-libs/libdc1394 2.2.5-r1: Library to interface with IEEE 1394 cameras following the IIDC specification
