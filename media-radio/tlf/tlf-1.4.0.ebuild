@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND="sys-libs/ncurses:=
 	dev-libs/glib:2
 	media-libs/hamlib
