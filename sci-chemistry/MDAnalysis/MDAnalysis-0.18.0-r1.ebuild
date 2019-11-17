@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit distutils-r1
 
@@ -28,5 +28,7 @@ RDEPEND="
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/duecredit[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+
+RESTRICT="!test? ( test )"
