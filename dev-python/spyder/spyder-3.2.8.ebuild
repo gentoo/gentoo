@@ -33,7 +33,6 @@ RDEPEND="
 	dev-python/pyflakes[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/pylint[${PYTHON_USEDEP}]
-	dev-python/PyQt5[${PYTHON_USEDEP},svg,webengine?,webkit?]
 	dev-python/pyzmq[${PYTHON_USEDEP}]
 	>=dev-python/qtawesome-0.4.1[${PYTHON_USEDEP}]
 	dev-python/qtconsole[${PYTHON_USEDEP}]
