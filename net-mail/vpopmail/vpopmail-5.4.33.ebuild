@@ -16,6 +16,7 @@ IUSE="clearpasswd ipalias maildrop mysql spamassassin"
 
 DEPEND="
 	acct-group/vpopmail
+	acct-user/vpopmail
 	virtual/qmail
 	maildrop? ( mail-filter/maildrop )
 	mysql? ( virtual/mysql )
