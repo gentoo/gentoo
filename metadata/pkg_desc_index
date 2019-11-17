@@ -9669,7 +9669,7 @@ dev-ruby/aws-sigv4 1.0.3 1.1.0: Amazon Web Services Signature Version 4 signing 
 dev-ruby/axiom-types 0.1.1: Define types with optional constraints for use within axiom and other libraries
 dev-ruby/backports 3.11.4 3.13.0 3.14.0 3.15.0: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
-dev-ruby/barby 0.6.6 0.6.7 0.6.8: Ruby barcode generator that doesn't rely on 3rd party libraries
+dev-ruby/barby 0.6.7 0.6.8: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/base32 0.3.2: A library which provides base32 decoding and encoding
 dev-ruby/bcat 0.6.2-r3: Pipe to browser utility for use at the shell and within editors
 dev-ruby/bcrypt-ruby 3.1.11-r1 3.1.12 3.1.13: An easy way to keep your users' passwords secure
@@ -14718,7 +14718,7 @@ net-firewall/ufw 0.35-r1 0.36: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
 net-firewall/xtables-addons 2.13 3.3: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.5-r2 5.1.6: Kernel based automounter
-net-fs/btfs 2.17 2.18 2.19: a bittorrent filesystem based on FUSE
+net-fs/btfs 2.19 2.20: a bittorrent filesystem based on FUSE
 net-fs/cifs-utils 6.7 6.8-r1 6.9-r1: Tools for Managing Linux CIFS Client Filesystems
 net-fs/curlftpfs 0.9.2-r4: File system for accessing ftp hosts based on FUSE
 net-fs/cvmfs 2.3.5-r2: HTTP read-only file system for distributing software
@@ -17740,7 +17740,7 @@ sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs 
 sys-fs/pysize 0.2-r1 0.2-r2: A graphical and console tool for exploring the size of directories
 sys-fs/quota 4.04-r2 4.05: Linux quota tools
 sys-fs/quotatool 1.6.2: command-line utility for filesystem quotas
-sys-fs/rar2fs 1.27.2-r1: A FUSE based filesystem that can mount one or multiple RAR archive(s)
+sys-fs/rar2fs 1.27.2-r1 1.28.0: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/rarfs 0.1.1-r2: Fuse module to mount uncompressed RAR archives
 sys-fs/reiser4progs 1.1.0 1.2.0 1.2.1: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.2: Small defragmentation tool for reiserfs
