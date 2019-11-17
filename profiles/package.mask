@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2019-11-17)
+# Obsolete library with no consumers.
+# Removal in 30 days.  Bug #700332.
+dev-libs/qof
+
 # Aaron Bauman <bman@gentoo.org> (2019-11-16)
 # EAPI=4 and fails to build
 dev-util/ccglue
