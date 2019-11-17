@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils fixheadtails qmail
+inherit autotools fixheadtails qmail
 
 HOMEPAGE="http://www.inter7.com/index.php?page=vpopmail"
 DESCRIPTION="Collection of programs to manage virtual email on Qmail servers"
@@ -37,6 +37,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.4.33-fix-S-tag-in-case-spamassassin-changed-the-file-size.patch
 	"${FILESDIR}"/${PN}-5.4.33-strncat.patch
 	"${FILESDIR}"/${PN}-5.4.33-unistd.patch
+	"${FILESDIR}"/${PN}-5.4.33-check-crypt-return-value-for-NULL.patch
+	"${FILESDIR}"/${PN}-5.4.33-use-proper-printf-format-strings.patch
 )
 DOCS=(
 	ChangeLog
@@ -57,7 +59,7 @@ src_prepare() {
 	default
 
 	echo 'install-recursive: install-exec-am' \
-		>>"${S}"/Makefile.am
+		>>"${S}"/Makefile.am || die
 
 	# fix maildir paths
 	sed -i -e 's|Maildir|.maildir|g' \
@@ -70,7 +72,7 @@ src_prepare() {
 		vdelivermail.c vpopbull.c vqmaillocal.c || die
 
 	# automake/autoconf
-	mv -f "${S}"/configure.{in,ac} || die
+	mv "${S}"/configure.{in,ac} || die
 	sed -i -e 's,AM_CONFIG_HEADER,AC_CONFIG_HEADERS,g' \
 		configure.ac || die
 
@@ -84,30 +86,32 @@ src_prepare() {
 }
 
 src_configure() {
-	local authopts
+	local -a authopts
 	if use mysql; then
 		incdir=$(mysql_config --variable=pkgincludedir || die)
 		libdir=$(mysql_config --variable=pkglibdir || die)
-		authopts+=" --enable-auth-module=mysql"
-		authopts+=" --enable-incdir=${incdir}"
-		authopts+=" --enable-libdir=${libdir}"
-		authopts+=" --enable-sql-logging"
-		authopts+=" --enable-valias"
-		authopts+=" --disable-mysql-replication"
-		authopts+=" --enable-mysql-limits"
+		authopts+=( "--enable-auth-module=mysql"
+			"--enable-incdir=${incdir}"
+			"--enable-libdir=${libdir}"
+			"--enable-sql-logging"
+			"--enable-valias"
+			"--disable-mysql-replication"
+			"--enable-mysql-limits"
+		)
 	elif use postgres; then
 		libdir=$(pg_config --libdir || die)
 		incdir=$(pg_config --pkgincludedir || die)
-		authopts+=" --enable-auth-module=pgsql"
-		authopts+=" --enable-incdir=${incdir}"
-		authopts+=" --enable-libdir=${libdir}"
-		authopts+=" --enable-sql-logging"
-		authopts+=" --enable-valias"
+		authopts+=( "--enable-auth-module=pgsql"
+			"--enable-incdir=${incdir}"
+			"--enable-libdir=${libdir}"
+			"--enable-sql-logging"
+			"--enable-valias"
+		)
 	else
-		authopts+=" --enable-auth-module=cdb"
+		authopts+=( "--enable-auth-module=cdb" )
 	fi
 
-	econf ${authopts} \
+	econf ${authopts[@]} \
 		--sysconfdir=${VPOP_HOME}/etc \
 		--enable-non-root-build \
 		--enable-qmaildir=${QMAIL_HOME} \
@@ -145,23 +149,18 @@ src_install() {
 	mv doc/doc_html/ doc/man_html/ . || die
 	einstalldocs
 	rm -r "${D}/${VPOP_HOME}"/doc || die
-	dosym \
-		$(realpath --relative-to "${D}/${VPOP_HOME}"/ "${D}"/usr/share/doc/${PF}/ || die) \
-		"${VPOP_HOME}"/doc
 
 	# create /etc/vpopmail.conf
 	if use mysql; then
 		insinto /etc
 		newins "${D}${VPOP_HOME}"/etc/vpopmail.mysql vpopmail.conf
-		dosym \
-			$(realpath --relative-to "${D}/${VPOP_HOME}"/etc/ "${D}"/etc/vpopmail.conf || die) \
-			"${VPOP_HOME}"/etc/vpopmail.mysql
+		dosym ../../etc/vpopmail.conf "${VPOP_HOME}"/etc/vpopmail.mysql
 
-		sed -e '12d' -i "${D}"/etc/vpopmail.conf || die
-		echo '# Read-only DB' >> "${D}"/etc/vpopmail.conf
-		echo 'localhost|0|vpopmail|secret|vpopmail' >> "${D}"/etc/vpopmail.conf
-		echo '# Write DB' >> "${D}"/etc/vpopmail.conf
-		echo 'localhost|0|vpopmail|secret|vpopmail' >> "${D}"/etc/vpopmail.conf
+		sed 's/^[^#]/# &/' -i "${D}"/etc/vpopmail.conf || die
+		echo '# Read-only DB' >> "${D}"/etc/vpopmail.conf || die
+		echo 'localhost|0|vpopmail|secret|vpopmail' >> "${D}"/etc/vpopmail.conf || die
+		echo '# Write DB' >> "${D}"/etc/vpopmail.conf || die
+		echo 'localhost|0|vpopmail|secret|vpopmail' >> "${D}"/etc/vpopmail.conf || die
 
 		# lock down perms
 		fperms 640 /etc/vpopmail.conf
@@ -170,11 +169,10 @@ src_install() {
 
 	insinto "${VPOP_HOME}"/etc
 	doins vusagec.conf
-	dosym "${VPOP_HOME}"/etc/vusagec.conf /etc/vusagec.conf
+	dosym .."${VPOP_HOME}"/etc/vusagec.conf /etc/vusagec.conf
 	sed -i 's/Disable = False;/Disable = True;/g' "${D}${VPOP_HOME}"/etc/vusagec.conf || die
 
 	einfo "Installing env.d entry"
-	dodir /etc/env.d
 	doenvd "${FILESDIR}"/99vpopmail
 
 	einfo "Locking down vpopmail permissions"
