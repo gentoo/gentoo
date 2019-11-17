@@ -1,0 +1,11 @@
+# /etc/conf.d/vdr.dvbapi
+#
+# dvbapi - SoftCAM for OSCam
+#
+#  -o N,     --offset=N     add constant value to all adapter indexes when
+#                           communicating with OSCam (default: 0)
+#  -d,       --disable-exp  disable CW expiration check
+#
+#
+# uncomment the next line and adjust it to your needs
+# _EXTRAOPTS="--offset=2"
