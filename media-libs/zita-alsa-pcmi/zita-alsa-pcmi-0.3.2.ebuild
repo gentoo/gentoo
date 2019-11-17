@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib
+inherit toolchain-funcs multilib
 
 DESCRIPTION="Provides easy access to ALSA PCM devices"
 HOMEPAGE="http://kokkinizita.linuxaudio.org/linuxaudio/"
@@ -25,6 +25,7 @@ PATCHES=(
 )
 
 src_compile() {
+	tc-export CXX
 	cd "${S}"/source || "Failed to cd to sources dir"
 	emake PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 }
