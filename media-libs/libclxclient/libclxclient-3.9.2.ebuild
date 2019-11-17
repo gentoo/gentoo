@@ -29,6 +29,7 @@ DOCS=( AUTHORS )
 
 PATCHES=(
 	"${FILESDIR}/${P}-Makefile.patch"
+	"${FILESDIR}/${P}-enumip-include-fix.patch"
 )
 
 src_compile() {
