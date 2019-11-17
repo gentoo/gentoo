@@ -8,7 +8,7 @@ PLOCALES="af am ar as ast az be bg bn bn_IN br bs byn ca crh cs cy da de dz el e
 inherit eutils l10n python-any-r1
 
 DESCRIPTION="ISO language, territory, currency, script codes and their translations"
-HOMEPAGE="http://pkg-isocodes.alioth.debian.org/"
+HOMEPAGE="https://salsa.debian.org/iso-codes-team/iso-codes"
 SRC_URI="http://pkg-isocodes.alioth.debian.org/downloads/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
