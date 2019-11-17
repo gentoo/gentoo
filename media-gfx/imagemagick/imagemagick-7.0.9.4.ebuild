@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit eapi7-ver eutils flag-o-matic libtool perl-functions toolchain-funcs multilib
+inherit flag-o-matic libtool perl-functions toolchain-funcs multilib
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/ImageMagick/ImageMagick.git"
@@ -20,9 +20,16 @@ DESCRIPTION="A collection of tools and libraries for many image formats"
 HOMEPAGE="https://www.imagemagick.org/"
 
 LICENSE="imagemagick"
-SLOT="0/${PV}"
+SLOT="0/7.0.9"
 IUSE="bzip2 corefonts cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
 RESTRICT="!test? ( test )"
+
+REQUIRED_USE="corefonts? ( truetype )
+	test? ( corefonts )"
+
+RESTRICT="!test? ( test )"
+
+BDEPEND="virtual/pkgconfig"
 
 RDEPEND="
 	dev-libs/libltdl:0
@@ -63,13 +70,10 @@ RDEPEND="
 	xml? ( dev-libs/libxml2:= )
 	lzma? ( app-arch/xz-utils )
 	zlib? ( sys-libs/zlib:= )"
+
 DEPEND="${RDEPEND}
 	!media-gfx/graphicsmagick[imagemagick]
-	virtual/pkgconfig
 	X? ( x11-base/xorg-proto )"
-
-REQUIRED_USE="corefonts? ( truetype )
-	test? ( corefonts )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -151,6 +155,7 @@ src_configure() {
 		$(use_with jbig)
 		$(use_with jpeg)
 		$(use_with jpeg2k openjp2)
+		--without-jxl
 		$(use_with lcms)
 		$(use_with lqr)
 		$(use_with lzma)
@@ -201,7 +206,7 @@ src_install() {
 		DOCUMENTATION_PATH="${EPREFIX}"/usr/share/doc/${PF}/html \
 		install
 
-	rm -f "${ED%/}"/usr/share/doc/${PF}/html/{ChangeLog,LICENSE,NEWS.txt}
+	rm -f "${ED}"/usr/share/doc/${PF}/html/{ChangeLog,LICENSE,NEWS.txt}
 	dodoc {AUTHORS,README}.txt ChangeLog
 
 	if use perl; then
