@@ -1,0 +1,145 @@
+From 4df8fe8415eaf4abd5b93c3447452547c6ea9e5f Mon Sep 17 00:00:00 2001
+From: Lennart Poettering <lennart@poettering.net>
+Date: Thu, 14 Nov 2019 17:51:30 +0100
+Subject: [PATCH] seccomp: more comprehensive protection against libseccomp's
+ __NR_xyz namespace invasion
+
+A follow-up for 59b657296a2fe104f112b91bbf9301724067cc81, adding the
+same conditioning for all cases of our __NR_xyz use.
+
+Fixes: #14031
+---
+ src/basic/missing_syscall.h | 10 +++++-----
+ src/test/test-seccomp.c     | 19 ++++++++++---------
+ 2 files changed, 15 insertions(+), 14 deletions(-)
+
+diff --git a/src/basic/missing_syscall.h b/src/basic/missing_syscall.h
+index 6d9b12544d..1255d8b197 100644
+--- a/src/basic/missing_syscall.h
++++ b/src/basic/missing_syscall.h
+@@ -274,7 +274,7 @@ static inline int missing_renameat2(int oldfd, const char *oldname, int newfd, c
+ 
+ #if !HAVE_KCMP
+ static inline int missing_kcmp(pid_t pid1, pid_t pid2, int type, unsigned long idx1, unsigned long idx2) {
+-#  ifdef __NR_kcmp
++#  if defined __NR_kcmp && __NR_kcmp > 0
+         return syscall(__NR_kcmp, pid1, pid2, type, idx1, idx2);
+ #  else
+         errno = ENOSYS;
+@@ -289,7 +289,7 @@ static inline int missing_kcmp(pid_t pid1, pid_t pid2, int type, unsigned long i
+ 
+ #if !HAVE_KEYCTL
+ static inline long missing_keyctl(int cmd, unsigned long arg2, unsigned long arg3, unsigned long arg4, unsigned long arg5) {
+-#  ifdef __NR_keyctl
++#  if defined __NR_keyctl && __NR_keyctl > 0
+         return syscall(__NR_keyctl, cmd, arg2, arg3, arg4, arg5);
+ #  else
+         errno = ENOSYS;
+@@ -300,7 +300,7 @@ static inline long missing_keyctl(int cmd, unsigned long arg2, unsigned long arg
+ }
+ 
+ static inline key_serial_t missing_add_key(const char *type, const char *description, const void *payload, size_t plen, key_serial_t ringid) {
+-#  ifdef __NR_add_key
++#  if defined __NR_add_key && __NR_add_key > 0
+         return syscall(__NR_add_key, type, description, payload, plen, ringid);
+ #  else
+         errno = ENOSYS;
+@@ -311,7 +311,7 @@ static inline key_serial_t missing_add_key(const char *type, const char *descrip
+ }
+ 
+ static inline key_serial_t missing_request_key(const char *type, const char *description, const char * callout_info, key_serial_t destringid) {
+-#  ifdef __NR_request_key
++#  if defined __NR_request_key && __NR_request_key > 0
+         return syscall(__NR_request_key, type, description, callout_info, destringid);
+ #  else
+         errno = ENOSYS;
+@@ -496,7 +496,7 @@ enum {
+ static inline long missing_set_mempolicy(int mode, const unsigned long *nodemask,
+                            unsigned long maxnode) {
+         long i;
+-#  ifdef __NR_set_mempolicy
++#  if defined __NR_set_mempolicy && __NR_set_mempolicy > 0
+         i = syscall(__NR_set_mempolicy, mode, nodemask, maxnode);
+ #  else
+         errno = ENOSYS;
+diff --git a/src/test/test-seccomp.c b/src/test/test-seccomp.c
+index 018c20f8be..c6692043fe 100644
+--- a/src/test/test-seccomp.c
++++ b/src/test/test-seccomp.c
+@@ -28,7 +28,8 @@
+ #include "tmpfile-util.h"
+ #include "virt.h"
+ 
+-#if SCMP_SYS(socket) < 0 || defined(__i386__) || defined(__s390x__) || defined(__s390__)
++/* __NR_socket may be invalid due to libseccomp */
++#if !defined(__NR_socket) || __NR_socket <= 0 || defined(__i386__) || defined(__s390x__) || defined(__s390__)
+ /* On these archs, socket() is implemented via the socketcall() syscall multiplexer,
+  * and we can't restrict it hence via seccomp. */
+ #  define SECCOMP_RESTRICT_ADDRESS_FAMILIES_BROKEN 1
+@@ -304,14 +305,14 @@ static void test_protect_sysctl(void) {
+         assert_se(pid >= 0);
+ 
+         if (pid == 0) {
+-#if __NR__sysctl > 0
++#if defined __NR__sysctl && __NR__sysctl > 0
+                 assert_se(syscall(__NR__sysctl, NULL) < 0);
+                 assert_se(errno == EFAULT);
+ #endif
+ 
+                 assert_se(seccomp_protect_sysctl() >= 0);
+ 
+-#if __NR__sysctl > 0
++#if defined __NR__sysctl && __NR__sysctl > 0
+                 assert_se(syscall(__NR__sysctl, 0, 0, 0) < 0);
+                 assert_se(errno == EPERM);
+ #endif
+@@ -640,7 +641,7 @@ static void test_load_syscall_filter_set_raw(void) {
+                 assert_se(poll(NULL, 0, 0) == 0);
+ 
+                 assert_se(s = hashmap_new(NULL));
+-#if SCMP_SYS(access) >= 0
++#if defined __NR_access && __NR_access > 0
+                 assert_se(hashmap_put(s, UINT32_TO_PTR(__NR_access + 1), INT_TO_PTR(-1)) >= 0);
+ #else
+                 assert_se(hashmap_put(s, UINT32_TO_PTR(__NR_faccessat + 1), INT_TO_PTR(-1)) >= 0);
+@@ -656,7 +657,7 @@ static void test_load_syscall_filter_set_raw(void) {
+                 s = hashmap_free(s);
+ 
+                 assert_se(s = hashmap_new(NULL));
+-#if SCMP_SYS(access) >= 0
++#if defined __NR_access && __NR_access > 0
+                 assert_se(hashmap_put(s, UINT32_TO_PTR(__NR_access + 1), INT_TO_PTR(EILSEQ)) >= 0);
+ #else
+                 assert_se(hashmap_put(s, UINT32_TO_PTR(__NR_faccessat + 1), INT_TO_PTR(EILSEQ)) >= 0);
+@@ -672,7 +673,7 @@ static void test_load_syscall_filter_set_raw(void) {
+                 s = hashmap_free(s);
+ 
+                 assert_se(s = hashmap_new(NULL));
+-#if SCMP_SYS(poll) >= 0
++#if defined __NR_poll && __NR_poll > 0
+                 assert_se(hashmap_put(s, UINT32_TO_PTR(__NR_poll + 1), INT_TO_PTR(-1)) >= 0);
+ #else
+                 assert_se(hashmap_put(s, UINT32_TO_PTR(__NR_ppoll + 1), INT_TO_PTR(-1)) >= 0);
+@@ -689,7 +690,7 @@ static void test_load_syscall_filter_set_raw(void) {
+                 s = hashmap_free(s);
+ 
+                 assert_se(s = hashmap_new(NULL));
+-#if SCMP_SYS(poll) >= 0
++#if defined __NR_poll && __NR_poll > 0
+                 assert_se(hashmap_put(s, UINT32_TO_PTR(__NR_poll + 1), INT_TO_PTR(EILSEQ)) >= 0);
+ #else
+                 assert_se(hashmap_put(s, UINT32_TO_PTR(__NR_ppoll + 1), INT_TO_PTR(EILSEQ)) >= 0);
+@@ -767,8 +768,8 @@ static int real_open(const char *path, int flags, mode_t mode) {
+          * testing purposes that calls the real syscall, on architectures where SYS_open is defined. On
+          * other architectures, let's just fall back to the glibc call. */
+ 
+-#ifdef SYS_open
+-        return (int) syscall(SYS_open, path, flags, mode);
++#if defined __NR_open && __NR_open > 0
++        return (int) syscall(__NR_open, path, flags, mode);
+ #else
+         return open(path, flags, mode);
+ #endif
+-- 
+2.24.0
+
