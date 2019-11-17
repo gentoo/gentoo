@@ -16,7 +16,7 @@ SRC_URI="amd64? ( ${BASE_URI/@arch@/amd64} )
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="pax_kernel"
+IUSE=""
 RESTRICT="bindist mirror"
 
 S="${WORKDIR}"
@@ -38,7 +38,7 @@ src_unpack() {
 
 src_install() {
 	dobin usr/bin/rslsync
-	use pax_kernel && pax-mark m "${ED%/}"/usr/bin/rslsync
+	pax-mark m "${ED}"/usr/bin/rslsync
 
 	doman resilio-sync.1
 
@@ -55,7 +55,7 @@ src_install() {
 	# Generate sample config, uncomment config directives and change values
 	insopts -orslsync -grslsync -m0644
 	insinto /etc/resilio-sync
-	newins - config.json < <("${ED%/}"/usr/bin/rslsync --dump-sample-config | \
+	newins - config.json < <("${ED}"/usr/bin/rslsync --dump-sample-config | \
 		sed \
 			-e "/storage_path/s|//| |g" \
 			-e "/pid_file/s|//| |g" \
