@@ -29,16 +29,17 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		dev-libs/dbus-glib
-		dev-libs/glib:2
 		dev-qt/qttest:5
+	)
+"
+BDEPEND="${PYTHON_DEPS}
+	virtual/pkgconfig
+	test? (
+		dev-libs/glib:2
 		$(python_gen_any_dep '
 			dev-python/dbus-python[${PYTHON_USEDEP}]
 		')
 	)
-"
-BDEPEND="
-	${PYTHON_DEPS}
-	virtual/pkgconfig
 "
 RESTRICT="!test? ( test )"
 
