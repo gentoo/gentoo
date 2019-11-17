@@ -104,6 +104,10 @@ PATCHES=(
 
 	# https://bugzilla.abisource.com/show_bug.cgi?id=13697
 	"${WORKDIR}"/${P}-patchset/${PN}-3.0.2-bool-boolean.patch
+
+	# https://gitlab.gnome.org/World/AbiWord/issues/2
+	# https://bugs.gentoo.org/690162
+	"${FILESDIR}"/${P}-extern-C-template.patch
 )
 
 src_configure() {
