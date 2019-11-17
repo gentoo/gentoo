@@ -34,6 +34,7 @@ fi
 RDEPEND+="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
+	dev-python/pathspec[${PYTHON_USEDEP}]
 	network? ( dev-python/requests[${PYTHON_USEDEP}] )
 	perl? ( dev-perl/Gentoo-PerlMod-Version )
 "
