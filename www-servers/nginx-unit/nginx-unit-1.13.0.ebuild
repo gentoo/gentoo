@@ -51,6 +51,8 @@ src_configure() {
 		--state=/var/lib/${PN}
 	)
 	use ssl && opt+=( --openssl )
+	export AR="$(tc-getAR)"
+	export CC="$(tc-getCC)"
 	./configure ${opt[@]} --ld-opt="${LDFLAGS}" || die "Core configuration failed"
 	# Modules require position-independent code
 	append-cflags $(test-flags-CC -fPIC)

@@ -1,0 +1,133 @@
+From 95c7c85f776d6e4764f2146c8385d6e29762043d Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Sat, 16 Nov 2019 18:28:11 +0100
+Subject: [PATCH] Gentoo-specific: patch installation paths
+
+Patch parts of cmake to install into proper locations and handle slotting.
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ CMakeLists.txt              | 28 +++++++++++++++-------------
+ adm/cmake/occt_macros.cmake |  2 +-
+ 2 files changed, 16 insertions(+), 14 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0b445de9..1fd5779e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,6 +15,8 @@ macro (OCCT_INCLUDE_CMAKE_FILE BEING_INCLUDED_FILE)
+   endif()
+ endmacro()
+ 
++SET(CMAKE_INSTALL_DO_STRIP OFF)
++
+ # include variable description
+ OCCT_INCLUDE_CMAKE_FILE ("adm/cmake/vardescr")
+ 
+@@ -231,7 +233,7 @@ endif()
+ # place the libraries to <prefix>/lib folder for unix and leave old structure for windows
+ if (NOT DEFINED INSTALL_DIR_LIB)
+   if ("${INSTALL_DIR_LAYOUT}" STREQUAL "Unix")
+-    set (INSTALL_DIR_LIB "lib" CACHE PATH "${INSTALL_DIR_LIB_DESCR}")
++    set (INSTALL_DIR_LIB "lib${LIB_SUFFIX}" CACHE PATH "${INSTALL_DIR_LIB_DESCR}")
+   else()
+     set (INSTALL_DIR_LIB "${OS_WITH_BIT}/${COMPILER}/lib" CACHE PATH "${INSTALL_DIR_LIB_DESCR}")
+   endif()
+@@ -315,9 +317,9 @@ endif()
+ if (NOT DEFINED INSTALL_DIR_CMAKE)
+   if ("${INSTALL_DIR_LAYOUT}" STREQUAL "Unix")
+     if (INSTALL_DIR_WITH_VERSION)
+-      set (INSTALL_DIR_CMAKE "lib/cmake/opencascade-${OCC_VERSION_STRING_EXT}" CACHE PATH "${INSTALL_DIR_CMAKE_DESCR}")
++      set (INSTALL_DIR_CMAKE "lib${LIB_SUFFIX}/cmake/opencascade-${OCC_VERSION_STRING_EXT}" CACHE PATH "${INSTALL_DIR_CMAKE_DESCR}")
+     else()
+-      set (INSTALL_DIR_CMAKE "lib/cmake/opencascade" CACHE PATH "${INSTALL_DIR_CMAKE_DESCR}")
++      set (INSTALL_DIR_CMAKE "lib${LIB_SUFFIX}/cmake/opencascade-${OCC_VERSION_STRING_EXT}" CACHE PATH "${INSTALL_DIR_CMAKE_DESCR}")
+     endif()
+   else()
+     set (INSTALL_DIR_CMAKE "cmake" CACHE PATH "${INSTALL_DIR_CMAKE_DESCR}")
+@@ -868,10 +870,10 @@ if (${DRAWEXE_INDEX} GREATER -1)
+   # copy draw script to install script folder
+   if (BUILD_PATCH AND EXISTS "${BUILD_PATCH}/adm/templates/draw.${SCRIPT_EXT}")
+     install (FILES "${BUILD_PATCH}/adm/templates/draw.${SCRIPT_EXT}" DESTINATION  "${INSTALL_DIR_SCRIPT}"
+-            PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_WRITE GROUP_EXECUTE WORLD_READ WORLD_WRITE WORLD_EXECUTE)
++            PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+   else()
+     install (FILES "${CMAKE_SOURCE_DIR}/adm/templates/draw.${SCRIPT_EXT}" DESTINATION  "${INSTALL_DIR_SCRIPT}"
+-            PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_WRITE GROUP_EXECUTE WORLD_READ WORLD_WRITE WORLD_EXECUTE)
++            PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+   endif()
+ 
+   # copy draw script to CMake binary folder
+@@ -892,9 +894,9 @@ if (EXISTS "${INSTALL_DIR}/${INSTALL_DIR_SCRIPT}/custom.${SCRIPT_EXT}")
+ 
+   set (CUSTOM_CONTENT "${CUSTOM_CONTENT} ${ADDITIONAL_CUSTOM_CONTENT}")
+ 
+-  file (WRITE "${INSTALL_DIR}/${INSTALL_DIR_SCRIPT}/custom.${SCRIPT_EXT}" "${CUSTOM_CONTENT}")
++  file (WRITE "${CMAKE_BINARY_DIR}/custom.${SCRIPT_EXT}" "${CUSTOM_CONTENT}")
+ else()
+-  OCCT_CONFIGURE_AND_INSTALL ("adm/templates/custom.${SCRIPT_EXT}.main" "custom.${SCRIPT_EXT}" "custom.${SCRIPT_EXT}" "${INSTALL_DIR_SCRIPT}")
++  OCCT_CONFIGURE_AND_INSTALL ("adm/templates/custom.${SCRIPT_EXT}.main" "custom.${SCRIPT_EXT}" "custom.${SCRIPT_EXT}" "$ENV{DESTDIR}${INSTALL_DIR}/${INSTALL_DIR_SCRIPT}")
+ endif()
+ 
+ if (WIN32)
+@@ -1067,10 +1069,10 @@ if (BUILD_TOOL_TOOLKITS)
+   # copy tinspector script to install script folder
+   if (BUILD_PATCH AND EXISTS "${BUILD_PATCH}/adm/templates/inspector.${SCRIPT_EXT}")
+     install (FILES "${BUILD_PATCH}/adm/templates/inspector.${SCRIPT_EXT}" DESTINATION  "${INSTALL_DIR_SCRIPT}"
+-            PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_WRITE GROUP_EXECUTE WORLD_READ WORLD_WRITE WORLD_EXECUTE)
++            PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+   else()
+     install (FILES "${CMAKE_SOURCE_DIR}/adm/templates/inspector.${SCRIPT_EXT}" DESTINATION  "${INSTALL_DIR_SCRIPT}"
+-            PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_WRITE GROUP_EXECUTE WORLD_READ WORLD_WRITE WORLD_EXECUTE)
++            PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+   endif()
+ 
+   set (OpenCASCADE_BINARY_DIR "${INSTALL_DIR}/${INSTALL_DIR_BIN}")
+@@ -1122,7 +1124,7 @@ foreach (OCCT_CONFIGURATION ${CMAKE_CONFIGURATION_TYPES})
+ endforeach()
+ # install OpenCASCADE config file with compile definitions and C/C++ flags ONLY for current configuration
+ install (CODE "string (TOLOWER \"\${CMAKE_INSTALL_CONFIG_NAME}\" CMAKE_INSTALL_CONFIG_NAME_LOWER)")
+-install (CODE "configure_file(\"${CMAKE_BINARY_DIR}/OpenCASCADECompileDefinitionsAndFlags-\${CMAKE_INSTALL_CONFIG_NAME_LOWER}.cmake\" \"${INSTALL_DIR}/${INSTALL_DIR_CMAKE}/OpenCASCADECompileDefinitionsAndFlags-\${CMAKE_INSTALL_CONFIG_NAME_LOWER}.cmake\" COPYONLY)")
++install (CODE "configure_file(\"${CMAKE_BINARY_DIR}/OpenCASCADECompileDefinitionsAndFlags-\${CMAKE_INSTALL_CONFIG_NAME_LOWER}.cmake\" \"\$ENV{DESTDIR}${INSTALL_DIR_CMAKE}/opencascade-${OCC_VERSION_STRING_EXT}/OpenCASCADECompileDefinitionsAndFlags-\${CMAKE_INSTALL_CONFIG_NAME_LOWER}.cmake\" COPYONLY)")
+ 
+ foreach (OCCT_MODULE ${OCCT_MODULES})
+   if (BUILD_MODULE_${OCCT_MODULE})
+@@ -1163,7 +1165,7 @@ endif()
+ 
+ # Configure and install cmake config file
+ configure_file("${CMAKE_SOURCE_DIR}/adm/templates/OpenCASCADEConfig.cmake.in" "OpenCASCADEConfig.cmake" @ONLY)
+-install(FILES "${CMAKE_BINARY_DIR}/OpenCASCADEConfig.cmake" DESTINATION  "${INSTALL_DIR_CMAKE}")
++install(FILES "${CMAKE_BINARY_DIR}/OpenCASCADEConfig.cmake" DESTINATION  "${INSTALL_DIR_CMAKE}/opencascade-${OCC_VERSION_STRING_EXT}")
+ 
+ # Configure cmake version file
+ include(CMakePackageConfigHelpers)
+@@ -1172,11 +1174,11 @@ write_basic_package_version_file( ${CMAKE_BINARY_DIR}/OpenCASCADEConfigVersion.c
+                                   COMPATIBILITY ExactVersion )
+ 
+ # Install cmake version file
+-install (FILES "${CMAKE_BINARY_DIR}/OpenCASCADEConfigVersion.cmake" DESTINATION "${INSTALL_DIR_CMAKE}")
++install (FILES "${CMAKE_BINARY_DIR}/OpenCASCADEConfigVersion.cmake" DESTINATION "${INSTALL_DIR_CMAKE}/opencascade-${OCC_VERSION_STRING_EXT}")
+ 
+ # Install the export set for use with the install-tree for each configuration
+ foreach (OCCT_MODULE ${OCCT_MODULES_ENABLED})
+-  install(EXPORT OpenCASCADE${OCCT_MODULE}Targets DESTINATION "${INSTALL_DIR_CMAKE}")
++  install(EXPORT OpenCASCADE${OCCT_MODULE}Targets DESTINATION "${INSTALL_DIR_CMAKE}/opencascade-${OCC_VERSION_STRING_EXT}")
+ endforeach()
+ 
+ # Update generated OpenCASCADETargets-*.cmake files 
+diff --git a/adm/cmake/occt_macros.cmake b/adm/cmake/occt_macros.cmake
+index 8220ecd5..228d801b 100644
+--- a/adm/cmake/occt_macros.cmake
++++ b/adm/cmake/occt_macros.cmake
+@@ -598,7 +598,7 @@ macro (OCCT_UPDATE_TARGET_FILE)
+   "cmake_policy(PUSH)
+   cmake_policy(SET CMP0007 NEW)
+   string (TOLOWER \"\${CMAKE_INSTALL_CONFIG_NAME}\" CMAKE_INSTALL_CONFIG_NAME_LOWERCASE)
+-  file (GLOB ALL_OCCT_TARGET_FILES \"${INSTALL_DIR}/${INSTALL_DIR_CMAKE}/OpenCASCADE*Targets-\${CMAKE_INSTALL_CONFIG_NAME_LOWERCASE}.cmake\")
++  file (GLOB ALL_OCCT_TARGET_FILES \"\$ENV{DESTDIR}${INSTALL_DIR_CMAKE}/opencascade-${OCC_VERSION_STRING_EXT}/OpenCASCADE*Targets-\${CMAKE_INSTALL_CONFIG_NAME_LOWERCASE}.cmake\")
+   foreach(TARGET_FILENAME \${ALL_OCCT_TARGET_FILES})
+     file (STRINGS \"\${TARGET_FILENAME}\" TARGET_FILE_CONTENT)
+     file (REMOVE \"\${TARGET_FILENAME}\")
+-- 
+2.23.0
+
