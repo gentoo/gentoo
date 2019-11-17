@@ -36,7 +36,7 @@ COMMON_DEPEND="
 		media-libs/gst-plugins-base:1.0 )
 	introspection? ( >=dev-libs/gobject-introspection-1.34.2:= )
 	kms? (
-		media-libs/mesa[gbm]
+		media-libs/mesa[egl,gbm]
 		x11-libs/libdrm:= )
 	pango? ( >=x11-libs/pango-1.20.0[introspection?] )
 	wayland? (
@@ -114,5 +114,5 @@ src_install() {
 	gnome2_src_install
 
 	# Remove silly examples-data directory
-	rm -rvf "${ED}/usr/share/cogl/examples-data/" || die
+	rm -rv "${ED}/usr/share/cogl/examples-data/" || die
 }
