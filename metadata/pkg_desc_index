@@ -4792,7 +4792,7 @@ dev-libs/gf2x 1.0-r1 1.1 1.2: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.1 0.3.2 0.3.3 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.48.7 1.54.3 1.56.2: Javascript bindings for GNOME
 dev-libs/glib 2.58.3-r1 2.60.6 2.60.7: The GLib library of C routines
-dev-libs/gmime 2.6.23 3.2.3 3.2.4: Utilities for creating and parsing messages using MIME
+dev-libs/gmime 2.6.23-r1 3.2.3 3.2.4: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.1.2 6.1.2-r1: Library for arbitrary-precision arithmetic on different type of numbers
 dev-libs/gnulib 2016.12.21.08.39.01 2017.12.19.15.53.47 2019.03.17.09.24.57 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
 dev-libs/go-fuse 0_p20140812-r1 0_p20150422 9999: native bindings for the FUSE kernel module
@@ -18260,7 +18260,7 @@ www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browse
 www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
 www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
-www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5 2.6.6: IP address and data center infrastructure management tool
+www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5 2.6.6 2.6.7: IP address and data center infrastructure management tool
 www-apps/nextcloud 14.0.14 15.0.12 15.0.13 16.0.5 16.0.6 17.0.0 17.0.1: Personal cloud that runs on your own server
 www-apps/nikola 7.8.8 7.8.11 7.8.12 7.8.13 7.8.14 7.8.14-r1 7.8.15 7.8.15-r1: A static website and blog generator
 www-apps/novnc 0.6.2 0.6.2-r1 1.0.0 9999: noVNC is a VNC client implemented using HTML5 technologies
