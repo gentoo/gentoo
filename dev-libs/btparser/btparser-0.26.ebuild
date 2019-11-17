@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools gnome2 python-single-r1
 
 DESCRIPTION="Parser and analyzer for backtraces produced by GDB"
-HOMEPAGE="https://fedorahosted.org/btparser/"
+HOMEPAGE="https://github.com/abrt/btparser"
 SRC_URI="https://github.com/abrt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
