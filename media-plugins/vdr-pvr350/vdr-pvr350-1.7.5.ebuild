@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit vdr-plugin-2
 
@@ -14,27 +14,18 @@ SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="yaepg"
 
 DEPEND=">=media-video/vdr-2
 	media-sound/mpg123
 	media-sound/twolame
-	media-libs/a52dec
-	yaepg? ( >=media-video/vdr-2[yaepg] )"
+	media-libs/a52dec"
 RDEPEND="${DEPEND}"
-
-DEPEND="${DEPEND}
-	|| ( >=sys-kernel/linux-headers-2.6.38 )"
 
 S="${WORKDIR}/${P#vdr-}"
 
-pkg_setup() {
-	vdr-plugin-2_pkg_setup
-
-	if use yaepg; then
-		BUILD_PARAMS="SET_VIDEO_WINDOW=1"
-	fi
-}
+QA_FLAGS_IGNORED="
+	usr/lib/vdr/plugins/libvdr-.*
+	usr/lib64/vdr/plugins/libvdr-.*"
 
 src_prepare() {
 	# remove empty language files
