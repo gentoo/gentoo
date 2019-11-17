@@ -2444,7 +2444,7 @@ app-text/docbook-xsl-ns-stylesheets 1.78.0: XSL Stylesheets for Docbook
 app-text/docbook-xsl-stylesheets 1.79.1-r2: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/doconce 1.3 1.4.4: A markdown-like langauge to generate docs in html, LaTeX, and many other formats
-app-text/docx2txt 1.3 1.4: Convert MS Office docx files to plain text
+app-text/docx2txt 1.4: Convert MS Office docx files to plain text
 app-text/dos2unix 7.3.5 7.4.1 7.4.2_beta1: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/duali 0.2.0-r1: Arabic dictionary based on the DICT protocol
 app-text/dvipng 1.15-r1: Translate DVI files into PNG or GIF graphics
@@ -2672,7 +2672,7 @@ app-text/xhtml1 20020801-r6: DTDs for the eXtensible HyperText Markup Language 1
 app-text/xindy 2.4-r1: A Flexible Indexing System
 app-text/xiphos 4.0.6a-r1 4.1.0-r1: A bible study frontend for Sword (formerly known as GnomeSword)
 app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
-app-text/xlsx2csv 0.7.3 0.7.4: Convert MS Office xlsx files to CSV
+app-text/xlsx2csv 0.7.6: Convert MS Office xlsx files to CSV
 app-text/xml2 0.5: These tools are used to convert XML and HTML to and from a line-oriented format
 app-text/xml2doc 20030510-r1: Tool to convert simple XML to a variety of formats (pdf, html, txt, manpage)
 app-text/xmldiff 1.1.1: A tool that figures out the differences between two similar XML files
@@ -17199,7 +17199,7 @@ sys-apps/pcmciautils 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.24 1.8.25 1.8.25-r1: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.3: PC/SC Architecture smartcard tools
-sys-apps/pick 2.0.1 2.0.2 3.0.1: a fuzzy search tool for the command-line
+sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
 sys-apps/pkgcore 0.9.7 0.10.6 0.10.7 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
@@ -17658,7 +17658,7 @@ sys-fs/avfs 1.1.1: AVFS is a virtual filesystem that allows browsing of compress
 sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bees 0.6.1 9999: Best-Effort Extent-Same, a btrfs dedup agent
-sys-fs/bindfs 1.14.0 1.14.1: FUSE filesystem for bind mounting with altered permissions
+sys-fs/bindfs 1.14.1: FUSE filesystem for bind mounting with altered permissions
 sys-fs/btrfs-progs 4.4.1 4.19 5.3.1 9999: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4 0.4.1-r1 0.4.2: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.9 0.10.10-r1: Provides a caching directory on an already mounted filesystem
@@ -19302,7 +19302,7 @@ x11-wm/oroborus 2.0.20-r1: Small and fast window manager
 x11-wm/page 1.9.9-r2: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17-r1 0.1.17-r2: A lightweight window manager initially based on aewm++
 x11-wm/plwm 2.7_rc1-r1: Python classes for, and an implementation of, a window manager
-x11-wm/qtile 0.13.0 0.14.2 9999: A full-featured, hackable tiling window manager written in Python
+x11-wm/qtile 0.14.2 9999: A full-featured, hackable tiling window manager written in Python
 x11-wm/ratpoison 1.4.8-r1 1.4.9 9999: window manager without mouse dependency
 x11-wm/sawfish 1.12.0: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1-r1: window manager selector tool
