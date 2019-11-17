@@ -8298,6 +8298,7 @@ dev-python/path-and-address 1.1.0: Functions for server CLI applications used by
 dev-python/path-py 8.1.2 10.3.1 11.0.1: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
 dev-python/pathlib2 2.3.0 2.3.2: Fork of pathlib aiming to support the full stdlib Python API
+dev-python/pathspec 0.6.0: Utility library for gitignore style pattern matching of file paths.
 dev-python/pathtools 0.1.2-r2: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.4.1 0.5.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.4 1.3.4: Python-based software project scripting tool along the lines of Make
@@ -10970,7 +10971,7 @@ dev-vcs/svn2git 1.0.11-r1 1.0.12 1.0.13 1.0.13-r1 1.0.16 9999: Tool for one-time
 dev-vcs/svneverever 1.3.2 1.4.2: Tool collecting path entries across SVN history
 dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
 dev-vcs/tig 2.3.3 2.4.1 9999: text mode interface for git
-dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
+dev-vcs/tkcvs 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9-r1: A different patch queue manager
 dev-vcs/tortoisehg 4.9 4.9.1 5.0.2 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
@@ -13609,7 +13610,7 @@ media-plugins/qmmp-plugin-pack 1.3.0: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
 media-plugins/swh-lv2 1.0.16: Large collection of LV2 audio plugins/effects
 media-plugins/swh-plugins 0.4.15-r3: Large collection of LADSPA audio plugins/effects
-media-plugins/tap-plugins 0.7.2 0.7.3: A bunch of LADSPA plugins for audio processing
+media-plugins/tap-plugins 0.7.3: A bunch of LADSPA plugins for audio processing
 media-plugins/vamp-aubio-plugins 0.5.0 0.5.1: Onset detection, pitch tracking, note tracking and tempo tracking plugins
 media-plugins/vamp-libxtract-plugins 0.6.6.20121204: Vamp plugin encapsulating many of the functions of the LibXtract library
 media-plugins/vco-plugins 0.3.0 0.3.0-r1: SAW-VCO ladspa plugin package. Anti-aliased oscillators
@@ -15505,7 +15506,7 @@ net-nds/openldap 2.4.45 2.4.48: LDAP suite of application and development tools
 net-nds/phpldapadmin 1.2.3 1.2.3-r1: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
 net-nds/rpcbind 1.2.5 9999: portmap replacement which supports RPC over various protocols
 net-nds/shelldap 1.4.0 1.5.0: A handy shell-like interface for browsing LDAP servers and editing their content
-net-nds/smbldap-tools 0.9.8 0.9.9 0.9.10 0.9.10-r1: Samba LDAP management tools
+net-nds/smbldap-tools 0.9.8 0.9.10-r1: Samba LDAP management tools
 net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4 4.0.4.27a: An updated version of Cisco's TACACS+ server
 net-nds/yp-tools 4.2.3: Network Information Service tools
 net-news/amphetadesk 0.93.1-r1: AmphetaDesk is a free syndicated news aggregator
@@ -17162,7 +17163,7 @@ sys-apps/mawk 1.3.4_p20161120 1.3.4_p20171017-r1 1.3.4_p20190203: an (often fast
 sys-apps/mcstrans 2.8 2.9 9999: SELinux context translation to human readable names
 sys-apps/memtest86 4.3.7-r2: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 5.01-r4: Memory tester based on memtest86
-sys-apps/memtester 4.2.2 4.3.0: userspace utility for testing the memory subsystem for faults
+sys-apps/memtester 4.3.0: userspace utility for testing the memory subsystem for faults
 sys-apps/miller 5.3.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
 sys-apps/minijail 9: helper binary and library for sandboxing & restricting privs of service
 sys-apps/minised 1.15: a smaller, cheaper and faster sed implementation
