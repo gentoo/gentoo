@@ -32,18 +32,14 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_compile() {
-	distutils-r1_python_compile
-
-	# note: tables built by py3.5+ are incompatible with older versions
-	# because of 100 group limit of 're' module -- just generate them
-	# separately optimized for each target instead
-	pushd "${BUILD_DIR}"/lib/pycparser > /dev/null || die
-	"${PYTHON}" _build_tables.py || die
-	popd > /dev/null || die
-}
-
 python_test() {
 	# change workdir to avoid '.' import
 	nosetests -v -w tests || die
+}
+
+python_install() {
+	distutils-r1_python_install
+
+	# setup.py generates {c_ast,lextab,yacctab}.py with bytecode disabled.
+	python_optimize
 }
