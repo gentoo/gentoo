@@ -1742,7 +1742,7 @@ app-i18n/uchardet 0.0.6-r2 9999: An encoding detector library
 app-i18n/uim 1.8.6-r1 1.8.6-r2 1.8.8: A multilingual input method framework
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
 app-i18n/unicode-cldr 31.0.1 33.0 35.1: Unicode Common Locale Data Repository
-app-i18n/unicode-data 9.0.0 10.0.0 11.0.0 12.0.0 12.1.0: Unicode data from unicode.org
+app-i18n/unicode-data 12.0.0 12.1.0: Unicode data from unicode.org
 app-i18n/unicode-emoji 5.0 11.0 12.0: UTS #51 Unicode Emoji
 app-i18n/xcin 2.5.3_pre3-r3: Chinese X Input Method
 app-i18n/xsunpinyin 3.0.0_rc1: A standalone XIM server for SunPinyin
@@ -11931,7 +11931,7 @@ gnome-extra/gnome-user-share 3.28.0 3.32.0.1: Personal file sharing for the GNOM
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.26.0 3.32.2: A weather application for GNOME
 gnome-extra/gtkhtml 4.10.0 4.10.0-r1: Lightweight HTML rendering/printing/editing engine
-gnome-extra/gucharmap 3.0.1-r200 10.0.3 11.0.3 12.0.1: Unicode character map viewer and library
+gnome-extra/gucharmap 3.0.1-r200 12.0.1: Unicode character map viewer and library
 gnome-extra/libgda 5.2.8-r1: GNOME database access library
 gnome-extra/libgsf 1.14.43 1.14.45 1.14.46: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.12.0 3.32.0: Mouse accessibility enhancements for the GNOME desktop
