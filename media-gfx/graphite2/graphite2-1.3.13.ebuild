@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
@@ -22,8 +22,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	perl? (
-		dev-perl/Module-Build
 		dev-perl/Locale-Maketext-Lexicon
+		dev-perl/Module-Build
 	)
 	test? (
 		${PYTHON_DEPS}
@@ -87,7 +87,7 @@ multilib_src_test() {
 	if multilib_is_native_abi; then
 		cmake-utils_src_test
 	else
-		einfo Cannot test since python is not multilib.
+		einfo "Cannot test since python is not multilib."
 	fi
 }
 
