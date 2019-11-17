@@ -1,11 +1,12 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=install prepare
-DEPEND=>=media-libs/libcaca-0.99_beta18 virtual/pkgconfig
+DEPEND=>=media-libs/libcaca-0.99_beta18
 DESCRIPTION=The Other Implementations letters. Figlet replacement
-EAPI=4
+EAPI=7
 HOMEPAGE=http://caca.zoy.org/wiki/toilet
 KEYWORDS=amd64 arm ~ppc ~ppc64 ~sparc x86
 LICENSE=WTFPL-2
 RDEPEND=>=media-libs/libcaca-0.99_beta18
 SLOT=0
 SRC_URI=http://caca.zoy.org/raw-attachment/wiki/toilet/toilet-0.3.tar.gz
-_md5_=0469a35046ae6b362c7f564f22e8b0fe
+_md5_=c3132b6d30f240bbcbc4c1b87acfaecc
