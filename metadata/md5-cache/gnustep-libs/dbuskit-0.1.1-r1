@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install postinst prepare setup
 DEPEND=>=sys-apps/dbus-1.2.1 >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
 DESCRIPTION=framework that interfaces Objective-C applications with the D-Bus IPC service
 EAPI=6
-HOMEPAGE=http://www.gnustep.org
+HOMEPAGE=https://github.com/gnustep/libs-dbuskit
 IUSE=debug doc
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=LGPL-2.1
 RDEPEND=>=sys-apps/dbus-1.2.1 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 )
 SLOT=0
-SRC_URI=http://download.gna.org/gnustep/dbuskit-0.1.1.tar.gz
+SRC_URI=https://github.com/gnustep/libs-dbuskit/archive/0.1.1.tar.gz -> dbuskit-0.1.1.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	gnustep-2	836726825908137cacbf1063f76adb4c	gnustep-base	49f1b9591be3a4bf8eeb1f3a07605a2a	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=6fba3b11ca875ba4faf22a0eaf240d96
+_md5_=9ffb2b5eb09a42894d44996d52c76035
