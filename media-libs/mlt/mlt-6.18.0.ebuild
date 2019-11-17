@@ -105,7 +105,7 @@ src_prepare() {
 
 	sed -i -e "s/env ruby/${USE_RUBY}/" src/swig/ruby/* || die
 
-	python_fix_shebang src/swig/python
+	use python && python_fix_shebang src/swig/python
 }
 
 src_configure() {
