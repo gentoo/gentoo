@@ -17,8 +17,8 @@ IUSE=""
 DEPEND="|| ( sys-libs/gdbm sys-libs/db:* )"
 RDEPEND="${DEPEND}"
 
-PATCHES= ( "${FILESDIR}/${P}-ldflags.patch
-			${FILESDIR}/${P}-remove_toolsdir.patch" )
+PATCHES=( "${FILESDIR}/${P}-ldflags.patch"
+		  "${FILESDIR}/${P}-remove_toolsdir.patch" )
 
 src_prepare() {
 	tc-export CC
