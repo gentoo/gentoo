@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>martin.dummer@gmx.net</email>
+		<name>Martin Dummer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>vdr@gentoo.org</email>
 		<name>Gentoo VDR Project</name>
@@ -19,8 +27,8 @@
 		<flag name="menuorg">Enables support for the <pkg>media-plugins/vdr-menuorg</pkg></flag>
 		<flag name="menuselection">adds support for menu hotkeys of double digits</flag>
 		<flag name="naludump">Removes NALU fill data from h.264-Streams of TS files</flag>
-		<flag name="permashift">permanent timeshift by recording live TV on hard disk, need plugin <pkg>media-plugins/vdr-permashift</pkg></flag>
-		<flag name="permashift_v1">permanent timeshift by recording live TV on RAM, need plugin &gt;=mediaplugins/vdr-permashift-1</flag>
+		<flag name="permashift">permanent timeshift by recording live TV into RAM, need plugin <pkg>media-plugins/vdr-permashift</pkg></flag>
+		<flag name="permashift_v1">permanent timeshift by recording live TV into RAM, need plugin <pkg>media-plugins/vdr-permashift</pkg></flag>
 		<flag name="pinplugin">Support for <pkg>media-plugins/vdr-pin</pkg></flag>
 		<flag name="resumereset">rreset resume of EOF</flag>
 		<flag name="rotor">Enable support for plugin vdr-rotor for dish-positioner.</flag>
