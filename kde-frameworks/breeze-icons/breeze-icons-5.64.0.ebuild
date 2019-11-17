@@ -3,6 +3,7 @@
 
 EAPI=7
 
+PVCUT=$(ver_cut 1-2)
 inherit cmake-utils kde.org
 
 DESCRIPTION="Breeze SVG icon theme"
@@ -12,7 +13,7 @@ IUSE="test"
 
 BDEPEND="
 	dev-qt/qtcore:5
-	kde-frameworks/extra-cmake-modules:5
+	>=kde-frameworks/extra-cmake-modules-${PVCUT}:5
 	test? ( app-misc/fdupes )
 "
 DEPEND="test? ( dev-qt/qttest:5 )"
