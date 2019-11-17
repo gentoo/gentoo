@@ -46,6 +46,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-libhandy-0.0.10-compat.patch # compatibility with libhandy-0.0.10+
+)
+
 src_prepare() {
 	xdg_src_prepare
 	vala_src_prepare
