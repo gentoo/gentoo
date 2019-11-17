@@ -13167,7 +13167,7 @@ media-libs/libcdr 0.1.5 9999: Library parsing the Corel cdr documents
 media-libs/libchamplain 0.12.19-r1 0.12.20: Clutter based world map renderer
 media-libs/libclalsadrv 2.0.0-r1: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
-media-libs/libclthreads 2.4.0-r1: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
+media-libs/libclthreads 2.4.0-r1 2.4.2: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/libclxclient 3.9.0: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/libcue 1.4.0 2.2.1: CUE Sheet Parser Library
 media-libs/libcuefile 477-r1: Cue File library from Musepack
