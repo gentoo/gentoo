@@ -1,0 +1,29 @@
+From b398c84c158ac96bcfc9882b42bee94b074e7fa9 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Mon, 21 Oct 2019 22:55:12 +0200
+Subject: [PATCH] Do not #include evolution-data-server with C linkage
+
+Fixes #2 https://gitlab.gnome.org/World/AbiWord/issues/2
+Fixes https://bugs.gentoo.org/690162
+---
+ src/text/ptbl/xp/pd_DocumentRDF.cpp | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/text/ptbl/xp/pd_DocumentRDF.cpp b/src/text/ptbl/xp/pd_DocumentRDF.cpp
+index 4568bd598..d5849f96b 100644
+--- a/src/text/ptbl/xp/pd_DocumentRDF.cpp
++++ b/src/text/ptbl/xp/pd_DocumentRDF.cpp
+@@ -1879,9 +1879,7 @@ PD_RDFContact::className() const
+ 
+ 
+ #ifdef WITH_EVOLUTION_DATA_SERVER
+-extern "C" {
+-  #include <libebook/libebook.h>
+-};
++#include <libebook/libebook.h>
+ 
+ static std::string get( EVCard* c, const char* v )
+ {
+-- 
+2.22.0
+
