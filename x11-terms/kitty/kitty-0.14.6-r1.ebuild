@@ -54,8 +54,8 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-flags.patch
-	"${FILESDIR}"/${P}-svg-icon.patch
+	"${FILESDIR}"/${PN}-0.14.4-flags.patch
+	"${FILESDIR}"/${PN}-0.14.4-svg-icon.patch
 )
 
 src_prepare() {
