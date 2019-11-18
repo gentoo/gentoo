@@ -1,10 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-# pyblake2 & pysha3 are broken with pypy3
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} pypy )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7,3_8} pypy{,3} )
 PYTHON_REQ_USE='threads(+)'
 inherit distutils-r1 git-r3
 
@@ -24,7 +23,7 @@ MODULE_RDEPEND="
 	bzip2? ( $(python_gen_cond_dep 'dev-python/bz2file[${PYTHON_USEDEP}]' python2_7 pypy) )
 	gpg? ( app-crypt/gnupg )
 	lzma? ( $(python_gen_cond_dep 'dev-python/backports-lzma[${PYTHON_USEDEP}]' python2_7 pypy) )
-	sha3? ( $(python_gen_cond_dep 'dev-python/pysha3[${PYTHON_USEDEP}]' python{2_7,3_5} pypy{,3}) )"
+	sha3? ( $(python_gen_cond_dep 'dev-python/pysha3[${PYTHON_USEDEP}]' python{2_7,3_5} pypy) )"
 
 RDEPEND="${MODULE_RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"

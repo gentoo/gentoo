@@ -3,8 +3,7 @@
 
 EAPI=7
 
-# pysha3 is broken with pypy3
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7,3_8} pypy{,3} )
 PYTHON_REQ_USE='threads(+)'
 inherit distutils-r1
 
