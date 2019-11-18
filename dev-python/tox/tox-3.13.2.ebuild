@@ -17,6 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~sparc ~x86"
 
 # doc disabled because of missing deps in tree
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/filelock[${PYTHON_USEDEP}]
