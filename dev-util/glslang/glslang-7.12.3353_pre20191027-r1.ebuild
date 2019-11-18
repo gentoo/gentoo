@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit cmake-multilib cmake-utils
+PYTHON_COMPAT=(python{3_6,3_7})
+
+inherit cmake-multilib cmake-utils python-any-r1
 
 SNAPSHOT_COMMIT="b131630e7c749a5dc19faa458024260c71fb170f"
 SRC_URI="https://github.com/KhronosGroup/${PN}/archive/${SNAPSHOT_COMMIT}.tar.gz -> ${P}.tar.gz"
@@ -19,6 +21,7 @@ SLOT="0"
 PATCHES=( "${FILESDIR}/${P}-fix-relative-includes.patch" )
 
 RDEPEND="!<media-libs/shaderc-2019-r1"
+BDEPEND="${PYTHON_DEPS}"
 
 # Bug 698850
 RESTRICT="test"
