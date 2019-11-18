@@ -50,6 +50,7 @@ REQUIRED_USE="
 
 CDEPEND="
 	app-arch/lz4
+	app-arch/zstd
 	app-arch/xz-utils
 	fortran? ( dev-lang/cfortran )
 	dev-libs/libpcre:3
