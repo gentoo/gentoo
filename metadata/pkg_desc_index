@@ -17475,7 +17475,7 @@ sys-cluster/dlm 2.03.09 2.03.11: General-purpose Distributed Lock Manager
 sys-cluster/dlm-lib 2.03.09 2.03.11: General-purpose Distributed Lock Manager
 sys-cluster/drbd-utils 8.9.3 8.9.6 8.9.6-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/fake 1.1.10: Switch in backup servers on a LAN
-sys-cluster/galera 25.3.25 25.3.26 25.3.28 26.4.2 26.4.3: Synchronous multi-master replication engine that provides the wsrep API
+sys-cluster/galera 25.3.25 25.3.26 25.3.28 25.3.28-r1 26.4.2 26.4.3: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
