@@ -29,7 +29,13 @@ RDEPEND="
 	>=dev-python/pip-9.0.1[${PYTHON_USEDEP}]
 	dev-python/pylint[${PYTHON_USEDEP}]
 	>=dev-python/pyqtgraph-0.10.0[${PYTHON_USEDEP}]
-	dev-python/PyQt5[webengine,svg,testlib,${PYTHON_USEDEP}]
+	|| (
+		(
+			>=dev-python/PyQt5-5.12[svg,testlib,${PYTHON_USEDEP}]
+			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
+		)
+		<dev-python/PyQt5-5.12[svg,testlib,webengine,${PYTHON_USEDEP}]
+	)
 	dev-python/radon[${PYTHON_USEDEP}]
 	dev-python/serverfiles[${PYTHON_USEDEP}]
 	>=dev-python/xlrd-0.9.2[${PYTHON_USEDEP}]
@@ -45,7 +51,7 @@ DEPEND="${RDEPEND}
 		dev-python/numpydoc[${PYTHON_USEDEP}]
 		dev-python/recommonmark[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.3.0[${PYTHON_USEDEP}] )
-	postgres? (	dev-python/psycopg:2[${PYTHON_USEDEP}] )"
+	postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/orange3-${PV}"
 
