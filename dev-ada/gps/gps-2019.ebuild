@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
-ADA_COMPAT=( gnat_2018 )
+ADA_COMPAT=( gnat_201{8,9} )
 inherit ada python-single-r1 autotools desktop llvm multilib
 
 MYP=${PN}-gpl-${PV}-src
