@@ -10559,7 +10559,7 @@ dev-util/catalyst 3.0.5 3.0.6 3.0.7 9999: Release metatool used for creating rel
 dev-util/catfish 1.4.10: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.9.1: A tool for generating C bindings to Rust code
-dev-util/ccache 3.7.2 3.7.4 3.7.5: fast compiler cache
+dev-util/ccache 3.7.2 3.7.4 3.7.5 3.7.6: fast compiler cache
 dev-util/cccc 3.1.5-r1: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
 dev-util/cdiff 1.0 9999: Colored, side-by-side diff terminal viewer
@@ -12875,7 +12875,7 @@ media-gfx/gnome-screenshot 3.30.0 3.32.0: Screenshot utility for GNOME
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.20: Free, redistributable digital camera software application
-media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
+media-gfx/gphotofs 0.5 0.5-r1: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.5 0.2.5-r1: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.32 1.3.33 9999: Collection of tools and libraries for many image formats
