@@ -23,10 +23,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-	)"
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
+"
 [[ ${PV} == 9999 ]] && DEPEND+=" dev-python/cython[${PYTHON_USEDEP}]"
 
 python_test() {
