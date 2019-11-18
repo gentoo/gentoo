@@ -1,6 +1,8 @@
---- kitty-9999/setup.py	2019-07-16 18:04:24.052780940 -0500
-+++ kitty-9999/setup.py	2019-07-16 18:05:54.564383192 -0500
-@@ -202,7 +202,7 @@
+diff --git a/setup.py b/setup.py
+index 22423119..b1f4dfe0 100755
+--- a/setup.py
++++ b/setup.py
+@@ -202,7 +202,7 @@ def init_env(
      df = '-g3'
      if ccver >= (5, 0):
          df += ' -Og'
@@ -9,16 +11,16 @@
      sanitize_args = get_sanitize_args(cc, ccver) if sanitize else set()
      cppflags = os.environ.get(
          'OVERRIDE_CPPFLAGS', '-D{}DEBUG'.format('' if debug else 'N'),
-@@ -213,7 +213,7 @@
+@@ -213,7 +213,7 @@ def init_env(
      cflags = os.environ.get(
          'OVERRIDE_CFLAGS', (
-             '-Wextra -Wno-missing-field-initializers -Wall -Wstrict-prototypes -std=c11'
+             '-Wextra -Wfloat-conversion -Wno-missing-field-initializers -Wall -Wstrict-prototypes -std=c11'
 -            ' -pedantic-errors -Werror {} {} -fwrapv {} {} -pipe {} -fvisibility=hidden'
 +            ' -pedantic-errors {} {} -fwrapv {} {} {} -fvisibility=hidden'
          ).format(
              optimize,
              ' '.join(sanitize_args),
-@@ -227,7 +227,7 @@
+@@ -227,7 +227,7 @@ def init_env(
      )
      ldflags = os.environ.get(
          'OVERRIDE_LDFLAGS',
@@ -27,7 +29,7 @@
      )
      ldflags = shlex.split(ldflags)
      ldflags.append('-shared')
-@@ -606,20 +606,17 @@
+@@ -606,20 +606,17 @@ def safe_makedirs(path):
  
  
  def build_launcher(args, launcher_dir='.', bundle_type='source'):
