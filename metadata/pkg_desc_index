@@ -187,7 +187,7 @@ app-admin/abrt 2.10.10-r2 2.12.0-r1: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4 6.0.13: A webserver log analyzer
-app-admin/ansible 2.7.13 2.7.13-r1 2.7.14 2.7.15 2.8.5 2.8.6 2.8.7 2.9.0 2.9.1 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.7.14 2.7.15 2.8.6 2.8.7 2.9.0 2.9.1 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 3.4.23 4.0.1: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.2.34 2.4.41: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -1261,7 +1261,7 @@ app-emacs/d-mode 2.0.10: Emacs major mode for editing D code
 app-emacs/dash 2.14.1 2.16.0: A modern list library for Emacs
 app-emacs/ddskk 16.2: One Japanese input methods on Emacs
 app-emacs/desktop+ 0.2-r2: desktop+ extends standard desktop module
-app-emacs/develock 0.45 0.47: An Emacs minor mode for highlighting broken formatting rules
+app-emacs/develock 0.47: An Emacs minor mode for highlighting broken formatting rules
 app-emacs/df-mode 20050509-r1: Minor mode to show space left on devices in the mode line
 app-emacs/dictionary 1.10: Emacs package for talking to a dictionary server
 app-emacs/dircolors 1.0-r2: Provide the same facility of ls --color inside Emacs
@@ -9781,7 +9781,7 @@ dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing lib
 dev-ruby/execjs 2.7.0: ExecJS lets you run JavaScript code from Ruby
 dev-ruby/exifr 1.3.6: A library to read EXIF info from JPEG and TIFF images
 dev-ruby/expression_parser 0.9.0_p20130518: A math parser
-dev-ruby/facter 3.9.2-r1 3.14.3 3.14.5 9999: A cross-platform ruby library for retrieving facts from operating systems
+dev-ruby/facter 3.9.2-r1 3.14.3 3.14.5 3.14.6 9999: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.19.2 0.20.0 0.20.1: A fake filesystem. Use it in your tests
 dev-ruby/faker 1.9.6-r1 2.6.0 2.7.0: A library for generating fake data such as names, addresses, and phone numbers
@@ -18238,7 +18238,7 @@ www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git o
 www-apps/grafana-bin 6.3.5 6.3.6 6.4.1 6.4.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hiawatha-monitor 1.6: Monitoring application for www-servers/hiawatha
 www-apps/hugo 0.50 0.58.3: The world's fastest framework for building websites
-www-apps/icingaweb2 2.6.3 2.7.1 2.7.3 9999: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2 2.7.1 2.7.3 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 1.0.1-r1 9999: Icinga Web 2 plugin for Graphite
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
@@ -18737,7 +18737,7 @@ x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
 x11-misc/libinput-gestures 2.41 2.45 2.48 9999: Actions gestures on your touchpad using libinput
 x11-misc/light-locker 1.8.0-r1 1.9.0-r2: A simple locker using lightdm
 x11-misc/lightdm 1.28.0 1.30.0: A lightweight display manager
-x11-misc/lightdm-gtk-greeter 2.0.6: LightDM GTK+ Greeter
+x11-misc/lightdm-gtk-greeter 2.0.6 2.0.7: LightDM GTK+ Greeter
 x11-misc/lightdm-mini-greeter 0.3.2 0.3.4: A Minimal, Configurable, Single-User GTK3 LightDM Greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1 0.9.0-r2: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r2: Xosd plugin for LINEAK
