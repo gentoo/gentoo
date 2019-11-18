@@ -21,7 +21,7 @@ RDEPEND=""
 DOCS=( ChangeLog.md README.md )
 
 PATCHES=(
-	${FILESDIR}/${PN}-2.0-optional_logger.patch
+	"${FILESDIR}/${PN}-2.0-optional_logger.patch"
 )
 
 pkg_setup() {
@@ -37,7 +37,7 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		# we have logger from sys-apps/util-linux
-		#--without-logger
+		--without-logger
 		$(use_with klogd)
 		$(use_with systemd systemd $(systemd_get_systemunitdir))
 	)
