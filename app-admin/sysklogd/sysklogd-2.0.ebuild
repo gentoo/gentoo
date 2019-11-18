@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Standard log daemons"
-HOMEPAGE="https://github.com/troglobit/sysklogd"
+HOMEPAGE="https://troglobit.com/sysklogd.html https://github.com/troglobit/sysklogd"
 SRC_URI="https://github.com/troglobit/sysklogd/releases/download/v$(ver_cut 1-2)/${P}.tar.gz"
 
 LICENSE="BSD"
