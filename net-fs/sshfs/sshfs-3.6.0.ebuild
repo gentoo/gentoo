@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit meson
 
@@ -13,17 +13,14 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 
-CDEPEND=">=sys-fs/fuse-3.1.0:3
+DEPEND=">=sys-fs/fuse-3.1.0:3
 	>=dev-libs/glib-2.4.2"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	>=net-misc/openssh-4.4"
-DEPEND="${CDEPEND}
-	dev-python/docutils
+BDEPEND="dev-python/docutils
 	virtual/pkgconfig"
 
 # requires root privs and specific localhost sshd setup
 RESTRICT="test"
-
-PATCHES=( "${FILESDIR}"/${P}-rst2man.patch )
 
 DOCS=( AUTHORS ChangeLog.rst README.rst )
