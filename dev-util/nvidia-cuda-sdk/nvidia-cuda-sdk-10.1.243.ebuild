@@ -99,12 +99,12 @@ src_install() {
 	if use doc; then
 		ebegin "Installing docs ..."
 			while IFS="" read -d $'\0' -r f; do
-				treecopy "${f}" "${ED%/}"/usr/share/doc/${PF}/
+				treecopy "${f}" "${ED}"/usr/share/doc/${PF}/
 			done < <(find -type f \( -name 'readme.txt' -o -name '*.pdf' \) -print0)
 
 			while IFS="" read -d $'\0' -r f; do
-				docompress -x "${f#${ED%/}}"
-			done < <(find "${ED%/}"/usr/share/doc/${PF}/ -type f -name 'readme.txt' -print0)
+				docompress -x "${f#${ED}}"
+			done < <(find "${ED}"/usr/share/doc/${PF}/ -type f -name 'readme.txt' -print0)
 		eend
 	fi
 
