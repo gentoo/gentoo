@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit toolchain-funcs udev
+EAPI=7
+inherit toolchain-funcs
 
 DESCRIPTION="Tool for working with Logitech Unifying receivers and devices"
 HOMEPAGE="https://lekensteyn.nl/logitech-unifying.html https://git.lekensteyn.nl/ltunify/"
@@ -13,11 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 src_prepare() {
+	default
 	sed -i '/^override CFLAGS/d' Makefile || die
-
-	# allow plugdev group r/w access
-	sed -i 's/^#MODE=/MODE=/' udev/42-logitech-unify-permissions.rules || die
-
 	tc-export CC
 }
 
@@ -27,8 +24,5 @@ src_compile() {
 
 src_install() {
 	dobin ${PN}
-	dodoc NEWS README.txt
-
-	# avoid file collision with solaar
-	udev_newrules udev/42-logitech-unify-permissions.rules 42-logitech-unify-${PN}.rules
+	dodoc NEWS README.txt udev/42-logitech-unify-permissions.rules
 }
