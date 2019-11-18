@@ -1,12 +1,13 @@
+BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=sys-fs/fuse:* net-libs/mbedtls ruby? ( dev-lang/ruby:2.3 ) sys-devel/make >=dev-util/cmake-3.9.6 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=sys-fs/fuse:0= net-libs/mbedtls:0= ruby? ( dev-lang/ruby:* )
 DESCRIPTION=Dislocker is used to read BitLocker encrypted partitions.
-EAPI=5
+EAPI=7
 HOMEPAGE=https://github.com/Aorimn/dislocker
 IUSE=ruby
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=sys-fs/fuse:* net-libs/mbedtls ruby? ( dev-lang/ruby:2.3 )
+RDEPEND=sys-fs/fuse:0= net-libs/mbedtls:0= ruby? ( dev-lang/ruby:* )
 SLOT=0
-_eclasses_=cmake-utils	a5d9146ee60641275d46a91aab93d02f	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	git-r3	562b380fc59ae6a8622171d0acb777d1	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=4ada014db7a42c8f25aeb2badc6ff3fd
+_eclasses_=cmake-utils	a5d9146ee60641275d46a91aab93d02f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=7fe2b45596f8f8cc48f70e0107666cd7

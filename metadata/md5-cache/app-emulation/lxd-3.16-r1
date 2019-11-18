@@ -7,8 +7,9 @@ HOMEPAGE=https://linuxcontainers.org/lxd/introduction/
 IUSE=+daemon +ipv6 +dnsmasq nls test tools kernel_linux
 KEYWORDS=~amd64
 LICENSE=Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0
-RDEPEND=daemon? ( app-arch/xz-utils >=app-emulation/lxc-2.0.7[seccomp] dev-libs/libuv dev-libs/lzo dev-util/xdelta:3 dnsmasq? ( net-dns/dnsmasq[dhcp,ipv6?] ) net-firewall/ebtables net-firewall/iptables[ipv6?] net-libs/libnfnetlink net-libs/libnsl:0= net-misc/rsync[xattr] sys-apps/iproute2[ipv6?] sys-fs/fuse sys-fs/lxcfs sys-fs/squashfs-tools virtual/acl )
+RDEPEND=daemon? ( app-arch/xz-utils >=app-emulation/lxc-2.0.7[seccomp] dev-libs/libuv dev-libs/lzo dev-util/xdelta:3 dnsmasq? ( net-dns/dnsmasq[dhcp,ipv6?] ) net-firewall/ebtables net-firewall/iptables[ipv6?] net-libs/libnfnetlink net-libs/libnsl:0= net-misc/rsync[xattr] sys-apps/iproute2[ipv6?] sys-fs/fuse:0= sys-fs/lxcfs sys-fs/squashfs-tools virtual/acl )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://linuxcontainers.org/downloads/lxd/lxd-3.16.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=2a289ad072711ecb5898c90f2c8fa092
+_md5_=6c01a7fbfff8aff1e65f9e46617253ed
