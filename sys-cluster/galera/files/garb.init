@@ -26,7 +26,8 @@ start_pre() {
 
 	GALERA_PORT=${GALERA_PORT:-4567}
 
-	local OPTIONS="-a gcomm://${GALERA_NODES// /,} -g ${GALERA_GROUP}"
+	local nodes=$(echo "${GALERA_NODES}" | awk '{ gsub(" ", ",") ; print $0 }')
+	local OPTIONS="-a gcomm://${nodes} -g ${GALERA_GROUP}"
 	[ -n "${GALERA_OPTIONS}" ] && OPTIONS="${OPTIONS} -o ${GALERA_OPTIONS}"
 	[ -n "${LOG_FILE}" ]       && OPTIONS="${OPTIONS} -l ${LOG_FILE}"
 	[ -n "${NODE_NAME}" ]      && OPTIONS="${OPTIONS} -n ${NODE_NAME}"
