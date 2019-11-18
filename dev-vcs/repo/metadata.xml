@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>vapier@gentoo.org</email>
+</maintainer>
+<longdescription>
+Tool for managing multiple git repositories. From Google, useful for building Android.
+</longdescription>
+</pkgmetadata>
