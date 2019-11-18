@@ -863,11 +863,6 @@ app-admin/amazon-ec2-init
 # compression'.
 >=dev-util/xdelta-3.1.0
 
-# Tim Harder <radhermit@gentoo.org> (2016-11-03)
-# Masked for testing
-=sys-fs/fuse-3*
-=net-fs/sshfs-3*
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2016-04-03)
 # Can exhaust all available memory depending on task
 # but is made available for experts who heed this warning
