@@ -21,6 +21,8 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/filelock[${PYTHON_USEDEP}]
+	dev-python/importlib_metadata[${PYTHON_USEDEP}]
+	dev-python/packaging[${PYTHON_USEDEP}]
 	<dev-python/pluggy-1.0[${PYTHON_USEDEP}]
 	dev-python/pip[${PYTHON_USEDEP}]
 	dev-python/py[${PYTHON_USEDEP}]
@@ -34,17 +36,32 @@ DEPEND="${RDEPEND}
 		<dev-python/flaky-4
 		>=dev-python/freezegun-0.3.11[${PYTHON_USEDEP}]
 		dev-python/pathlib2[${PYTHON_USEDEP}]
-		>=dev-python/pytest-3.6[${PYTHON_USEDEP}]
+		>=dev-python/pytest-4.0.0[${PYTHON_USEDEP}]
 		<dev-python/pytest-mock-2.0[${PYTHON_USEDEP}]
 	)"
 
-# for some reason, --deselect doesn't work in tox's tests
 PATCHES=(
-	"${FILESDIR}/${PN}-3.12.1-skip-broken-tests.patch"
 	"${FILESDIR}/${PN}-3.9.0-strip-setuptools_scm.patch"
 )
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# broken without internet
+	sed -i -e 's:test_provision_non_canonical_dep:_&:' \
+		tests/unit/session/test_provision.py || die
+	sed -i -e 's:test_provision_interrupt_child:_&:' \
+		tests/integration/test_provision_int.py || die
+	# broken with our mock version (?)
+	sed -i -e 's:test_create_KeyboardInterrupt:_&:' \
+		tests/unit/test_venv.py || die
+	# broken with Gentoo Python layout
+	sed -i -e 's:test_tox_get_python_executable:_&:' \
+		-e 's:test_find_alias_on_path:_&:' \
+		tests/unit/interpreters/test_interpreters.py || die
+}
+
 python_test() {
 	distutils_install_for_testing
-	pytest -v --no-network || die "Testsuite failed under ${EPYTHON}"
+	pytest -vv --no-network || die "Testsuite failed under ${EPYTHON}"
 }

@@ -1,0 +1,28 @@
+In Gentoo we install libs to /usr/lib* and let gen_usr_ldscript
+handle /lib*.
+
+--- a/include/buildmacros
++++ b/include/buildmacros
+@@ -57,9 +57,10 @@ endif
+ ifeq ($(ENABLE_SHARED),yes)
+ INSTALL_LTLIB = \
+ 	cd $(TOPDIR)/$(LIBNAME)/.libs; \
+-	../$(INSTALL) -m 755 -d $(PKG_ROOT_LIB_DIR); \
+-	../$(INSTALL) -m 755 -T so_dot_version $(LIBNAME).lai $(PKG_ROOT_LIB_DIR); \
+-	../$(INSTALL) -T so_dot_current $(LIBNAME).lai $(PKG_ROOT_LIB_DIR)
++	../$(INSTALL) -m 755 -d $(PKG_LIB_DIR); \
++	../$(INSTALL) -m 755 -T so_dot_version $(LIBNAME).lai $(PKG_LIB_DIR); \
++	../$(INSTALL) -T so_dot_current $(LIBNAME).lai $(PKG_LIB_DIR); \
++	../$(INSTALL) -T so_base $(LIBNAME).lai $(PKG_LIB_DIR)
+ endif
+ 
+ # Libtool thinks the static and shared libs should be in the same dir, so
+@@ -68,7 +69,7 @@ endif
+ # Other things want the shared libs to appear in /usr/lib, else they'll
+ # link with the static libs there.  So, another symlink to get the .so into
+ # /usr/lib.
+-ifeq ($(ENABLE_SHARED),yes)
++ifeq ($(ENABLE_SHARED_HANDLED_BY_gen_usr_ldscript),yes)
+ INSTALL_LTLIB_DEV = \
+ 	cd $(TOPDIR)/$(LIBNAME)/.libs; \
+ 	../$(INSTALL) -m 755 -d $(PKG_LIB_DIR); \

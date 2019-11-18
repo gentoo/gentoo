@@ -11,18 +11,23 @@ HOMEPAGE="https://www.nvidia.com/"
 AMD64_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86_64-${PV}"
 AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${PV}"
 ARM_NV_PACKAGE="NVIDIA-Linux-armv7l-gnueabihf-${PV}"
+X86_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86-${PV}"
+X86_NV_PACKAGE="NVIDIA-Linux-x86-${PV}"
 
 NV_URI="https://us.download.nvidia.com/XFree86/"
 SRC_URI="
 	amd64-fbsd? ( ${NV_URI}FreeBSD-x86_64/${PV}/${AMD64_FBSD_NV_PACKAGE}.tar.gz )
 	amd64? ( ${NV_URI}Linux-x86_64/${PV}/${AMD64_NV_PACKAGE}.run )
+	arm? ( ${NV_URI}Linux-x86-ARM/${PV}/${ARM_NV_PACKAGE}.run )
+	x86-fbsd? ( ${NV_URI}FreeBSD-x86/${PV}/${X86_FBSD_NV_PACKAGE}.tar.gz )
+	x86? ( ${NV_URI}Linux-x86/${PV}/${X86_NV_PACKAGE}.run )
 	tools? (
 		https://download.nvidia.com/XFree86/nvidia-settings/nvidia-settings-${PV}.tar.bz2
 	)
 "
 
 EMULTILIB_PKG="true"
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64 ~x86"
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
 
@@ -106,7 +111,8 @@ nvidia_drivers_versions_check() {
 	nvidia-driver-check-warning
 
 	# Kernel features/options to check for
-	CONFIG_CHECK="!DEBUG_MUTEXES !I2C_NVIDIA_GPU ~!LOCKDEP ~MTRR ~SYSVIPC ~ZONE_DMA"
+	CONFIG_CHECK="!DEBUG_MUTEXES ~!LOCKDEP ~MTRR ~SYSVIPC ~ZONE_DMA"
+	use x86 && CONFIG_CHECK+=" ~HIGHMEM"
 
 	# Now do the above checks
 	use kernel_linux && check_extra_config
@@ -149,6 +155,7 @@ pkg_setup() {
 
 	# set variables to where files are in the package structure
 	if use kernel_FreeBSD; then
+		use x86-fbsd   && S="${WORKDIR}/${X86_FBSD_NV_PACKAGE}"
 		use amd64-fbsd && S="${WORKDIR}/${AMD64_FBSD_NV_PACKAGE}"
 		NV_DOC="${S}/doc"
 		NV_OBJ="${S}/obj"
@@ -166,12 +173,6 @@ pkg_setup() {
 	else
 		die "Could not determine proper NVIDIA package"
 	fi
-}
-
-src_configure() {
-	tc-export AR CC LD
-
-	default
 }
 
 src_prepare() {
@@ -197,6 +198,10 @@ src_prepare() {
 }
 
 src_compile() {
+	# This is already the default on Linux, as there's no toplevel Makefile, but
+	# on FreeBSD there's one and triggers the kernel module build, as we install
+	# it by itself, pass this.
+
 	cd "${NV_SRC}"
 	if use kernel_FreeBSD; then
 		MAKE="$(get_bmake)" CFLAGS="-Wno-sign-compare" emake CC="$(tc-getCC)" \
@@ -208,23 +213,27 @@ src_compile() {
 	fi
 
 	if use tools; then
-		emake -C "${S}"/nvidia-settings-${PV}/src/libXNVCtrl \
+		emake -C "${S}"/nvidia-settings-${PV}/src \
+			AR="$(tc-getAR)" \
+			CC="$(tc-getCC)" \
 			DO_STRIP= \
+			LD="$(tc-getCC)" \
 			LIBDIR="$(get_libdir)" \
 			NVLD="$(tc-getLD)" \
 			NV_VERBOSE=1 \
-			OUTPUTDIR=. \
-			RANLIB="$(tc-getRANLIB)"
+			RANLIB="$(tc-getRANLIB)" \
+			build-xnvctrl
 
 		emake -C "${S}"/nvidia-settings-${PV}/src \
+			CC="$(tc-getCC)" \
 			DO_STRIP= \
 			GTK3_AVAILABLE=$(usex gtk3 1 0) \
+			LD="$(tc-getCC)" \
 			LIBDIR="$(get_libdir)" \
 			NVLD="$(tc-getLD)" \
 			NVML_ENABLED=0 \
 			NV_USE_BUNDLED_LIBJANSSON=0 \
-			NV_VERBOSE=1 \
-			OUTPUTDIR=.
+			NV_VERBOSE=1
 	fi
 }
 
@@ -317,8 +326,8 @@ src_install() {
 		doins ${NV_X11}/nvidia_drv.so
 
 		# Xorg GLX driver
-		donvidia ${NV_X11}/libglxserver_nvidia.so.${NV_SOVER} \
-			/usr/$(get_libdir)/xorg/modules/extensions
+		donvidia ${NV_X11}/libglx.so.${NV_SOVER} \
+			/usr/$(get_libdir)/opengl/nvidia/extensions
 
 		# Xorg nvidia.conf
 		if has_version '>=x11-base/xorg-server-1.16'; then
@@ -375,13 +384,12 @@ src_install() {
 	if use tools; then
 		emake -C "${S}"/nvidia-settings-${PV}/src/ \
 			DESTDIR="${D}" \
-			DO_STRIP= \
 			GTK3_AVAILABLE=$(usex gtk3 1 0) \
 			LIBDIR="${D}/usr/$(get_libdir)" \
 			NV_USE_BUNDLED_LIBJANSSON=0 \
 			NV_VERBOSE=1 \
-			OUTPUTDIR=. \
 			PREFIX=/usr \
+			DO_STRIP= \
 			install
 
 		if use static-libs; then
@@ -477,7 +485,6 @@ src_install-libs() {
 			"libnvidia-fbc.so.${NV_SOVER}"
 			"libnvidia-glcore.so.${NV_SOVER}"
 			"libnvidia-glsi.so.${NV_SOVER}"
-			"libnvidia-glvkspirv.so.${NV_SOVER}"
 			"libnvidia-ifr.so.${NV_SOVER}"
 			"libnvidia-opencl.so.${NV_SOVER}"
 			"libnvidia-ptxjitcompiler.so.${NV_SOVER}"
@@ -487,7 +494,14 @@ src_install-libs() {
 		if use wayland && has_multilib_profile && [[ ${ABI} == "amd64" ]];
 		then
 			NV_GLX_LIBRARIES+=(
-				"libnvidia-egl-wayland.so.1.1.2"
+				"libnvidia-egl-wayland.so.1.0.2"
+			)
+		fi
+
+		if use kernel_linux && has_multilib_profile && [[ ${ABI} == "amd64" ]];
+		then
+			NV_GLX_LIBRARIES+=(
+				"libnvidia-wfb.so.${NV_SOVER}"
 			)
 		fi
 
@@ -500,16 +514,7 @@ src_install-libs() {
 		if use kernel_linux; then
 			NV_GLX_LIBRARIES+=(
 				"libnvidia-ml.so.${NV_SOVER}"
-				"libnvidia-tls.so.${NV_SOVER}"
-			)
-		fi
-
-		if use kernel_linux && has_multilib_profile && [[ ${ABI} == "amd64" ]];
-		then
-			NV_GLX_LIBRARIES+=(
-				"libnvidia-cbl.so.${NV_SOVER}"
-				"libnvidia-rtcore.so.${NV_SOVER}"
-				"libnvoptix.so.${NV_SOVER}"
+				"tls/libnvidia-tls.so.${NV_SOVER}"
 			)
 		fi
 
