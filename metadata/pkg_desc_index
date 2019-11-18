@@ -13076,7 +13076,7 @@ media-libs/dumb 0.9.3-r3: IT/XM/S3M/MOD player library with click removal and IT
 media-libs/elles_icc_profiles 20160501.0932 20160501.0932-r1: Elle Stone's well-behaved RGB and grey ICC profiles
 media-libs/esdl 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 11.69 11.75: Read and write meta information in image, audio and video files
+media-libs/exiftool 11.69 11.75 11.76: Read and write meta information in image, audio and video files
 media-libs/faac 1.29.9.2: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.8.8 2.9.0: AAC audio decoding library
 media-libs/fdk-aac 2.0.0 2.0.1: Fraunhofer AAC codec library
