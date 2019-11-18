@@ -20,6 +20,10 @@ IUSE="static-libs"
 # version here, just be safe and pull in the latest stable ones. #551248
 DEPEND=">=sys-kernel/linux-headers-4.3"
 
+PATCHES=(
+	"${FILESDIR}/${P}-missing_SNR_ppoll_defs.patch"
+)
+
 src_prepare() {
 	default
 	sed -i \
@@ -36,6 +40,6 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	find "${ED}" -type f -name libseccomp.la -delete
+	find "${ED}" -type f -name libseccomp.la -delete || die
 	einstalldocs
 }
