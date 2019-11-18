@@ -1,0 +1,100 @@
+From 2942c73cd3b3389ec1a35258f22ac9d0f0742de1 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@iewc.co.za>
+Date: Thu, 24 May 2018 15:40:33 +0200
+Subject: [PATCH] Fix support for --enable-ssl.
+
+This change enables the explicit use of --enable-ssl in such a way that
+package managers such as portage (Gentoo) that explicitly does
+--enable-ssl or --disable-ssl will get the results that it's looking
+for.
+
+Without this specifying --enable-ssl would end up actually disabling it.
+
+Additionally, if --enable-ssl is specified but the script ends up being
+unable to enable ssl it will fail.
+---
+ aconfigure    | 16 ++++++++++++----
+ aconfigure.ac | 15 ++++++++++++---
+ 2 files changed, 24 insertions(+), 7 deletions(-)
+
+diff --git a/aconfigure b/aconfigure
+index 0cf17faae..57bdfba87 100755
+--- a/aconfigure
++++ b/aconfigure
+@@ -8001,8 +8001,9 @@ if test "${enable_ssl+set}" = set; then :
+ $as_echo "Checking if SSL support is disabled... yes" >&6; }
+ 	        fi
+ 
+-else
++fi
+ 
++if test "x$ac_no_ssl" != "x1"; then
+ 	        if test "x$with_ssl" != "xno" -a "x$with_ssl" != "x"; then
+                     CFLAGS="$CFLAGS -I$with_ssl/include"
+                     CPPFLAGS="$CPPFLAGS -I$with_ssl/include"
+@@ -8317,16 +8318,23 @@ $as_echo "GnuTLS library found, SSL support enabled" >&6; }
+ 
+             		ac_ssl_backend="gnutls"
+         	    else
+-            		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ** No GnuTLS libraries found, disabling SSL support **" >&5
+-$as_echo "** No GnuTLS libraries found, disabling SSL support **" >&6; }
++			{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ** No GnuTLS libraries found **" >&5
++$as_echo "** No GnuTLS libraries found **" >&6; }
+         	    fi
+ 
+         	fi
+ 
++		if test "x$ac_ssl_backend" = "x"; then
++		    if test "x$enable_ssl" = "xyes"; then
++			as_fn_error $? "SSL Support requested but neither OpenSSL nor GnuTLS operational" "$LINENO" 5
++		    else
++			{ $as_echo "$as_me:${as_lineno-$LINENO}: result: No SSL detected, disabling SSL support" >&5
++$as_echo "No SSL detected, disabling SSL support" >&6; }
++		    fi
++		fi
+ fi
+ 
+ 
+-
+ # Check whether --with-opencore-amrnb was given.
+ if test "${with_opencore_amrnb+set}" = set; then :
+   withval=$with_opencore_amrnb; as_fn_error $? "This option is obsolete and replaced by --with-opencore-amr=DIR" "$LINENO" 5
+diff --git a/aconfigure.ac b/aconfigure.ac
+index 8d7d944a1..45c42756b 100644
+--- a/aconfigure.ac
++++ b/aconfigure.ac
+@@ -1607,7 +1607,8 @@ AC_ARG_ENABLE(ssl,
+ 		 AC_MSG_RESULT([Checking if SSL support is disabled... yes])
+ 	        fi
+ 	      ],
+-	      [
++	      [])
++if test "x$ac_no_ssl" != "x1"; then
+ 	        if test "x$with_ssl" != "xno" -a "x$with_ssl" != "x"; then
+                     CFLAGS="$CFLAGS -I$with_ssl/include"
+                     CPPFLAGS="$CPPFLAGS -I$with_ssl/include"
+@@ -1692,11 +1693,19 @@ AC_ARG_ENABLE(ssl,
+ 			AC_DEFINE(PJ_SSL_SOCK_IMP, PJ_SSL_SOCK_IMP_GNUTLS)
+             		ac_ssl_backend="gnutls"
+         	    else
+-            		AC_MSG_RESULT([** No GnuTLS libraries found, disabling SSL support **])
++			AC_MSG_RESULT([** No GnuTLS libraries found **])
+         	    fi
+         	
+         	fi
+-	      ])
++
++		if test "x$ac_ssl_backend" = "x"; then
++		    if test "x$enable_ssl" = "xyes"; then
++			AC_MSG_ERROR([SSL Support requested but neither OpenSSL nor GnuTLS operational])
++		    else
++			AC_MSG_RESULT([No SSL detected, disabling SSL support])
++		    fi
++		fi
++fi
+ 
+ dnl # Obsolete option --with-opencore-amrnb
+ AC_ARG_WITH(opencore-amrnb,
+-- 
+2.23.0
+
