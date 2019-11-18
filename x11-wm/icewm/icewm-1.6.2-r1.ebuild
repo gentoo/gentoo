@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ice-wm/icewm/releases/download/${PV}/${P}.tar.lz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="+alsa ao bidi debug nls truetype uclibc xinerama"
+IUSE="+alsa ao bidi debug +gdk-pixbuf nls truetype uclibc xinerama"
 
 # Tests broken in all versions, patches welcome, bug #323907, #389533
 RESTRICT="test"
@@ -22,15 +22,25 @@ REQUIRED_USE="|| ( alsa ao )"
 #fix for icewm preversion package names
 S="${WORKDIR}/${P/_}"
 
-RDEPEND="
+# These are the core dependencies of icewm.
+# Look into configure.ac and search for PKG_CHECK_MODULES([CORE]
+CORE_DEPEND="
 	media-libs/fontconfig
-	x11-libs/gdk-pixbuf:2[X]
+	x11-libs/libX11
+	x11-libs/libXcomposite
+	x11-libs/libXdamage
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXrender
+"
+
+RDEPEND="
+	${CORE_DEPEND}
 	x11-libs/libICE
 	x11-libs/libSM
-	x11-libs/libX11
 	x11-libs/libXft
+	x11-libs/libXpm
 	x11-libs/libXrandr
-	x11-libs/libXrender
 	alsa? (
 		media-libs/alsa-lib
 		media-libs/libsndfile[alsa]
@@ -40,15 +50,22 @@ RDEPEND="
 		media-libs/libsndfile
 	)
 	bidi? ( dev-libs/fribidi )
-	truetype? ( x11-libs/libXext )
+	gdk-pixbuf? (
+		x11-libs/gdk-pixbuf:2[X]
+	)
+	!gdk-pixbuf? (
+		media-libs/libpng:0=
+		virtual/jpeg
+	)
 	xinerama? ( x11-libs/libXinerama )
 "
 DEPEND="
 	${RDEPEND}
 	$(unpacker_src_uri_depends)
+	dev-libs/glib:2
 	gnome-base/librsvg
 	x11-base/xorg-proto
-	truetype? ( >=media-libs/freetype-2.0.9 )
+	gdk-pixbuf? ( gnome-base/librsvg:2 )
 "
 
 BDEPEND="
@@ -76,7 +93,6 @@ src_configure() {
 	fi
 
 	local myconf=(
-		--enable-gdk-pixbuf
 		--enable-logevents
 		--enable-xrandr
 		--with-cfgdir=/etc/icewm
@@ -85,6 +101,7 @@ src_configure() {
 		--with-libdir=/usr/share/icewm
 		$(use_enable bidi fribidi)
 		$(use_enable debug)
+		$(use_enable gdk-pixbuf)
 		$(use_enable nls i18n)
 		$(use_enable nls)
 		$(use_enable xinerama)
