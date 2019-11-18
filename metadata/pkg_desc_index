@@ -4680,7 +4680,7 @@ dev-lang/spark 2018-r1: Software development for high-reliability applications.
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 1.8.5-r7 1.8.5-r9 17.0.0-r5 38.3.0 45.0.2 52.9.1_pre1 52.9.1_pre1-r1 60.5.2_p0-r2 60.5.2_p0-r3: Stand-alone JavaScript C++ library
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 8.0.3 8.1.14 8.1.15: versatile implementation of the Prolog programming language
+dev-lang/swi-prolog 8.0.3 8.1.14 8.1.15 8.1.16: versatile implementation of the Prolog programming language
 dev-lang/swig 2.0.9 3.0.12 4.0.0: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.26-r3 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9: Tool Command Language
@@ -10375,7 +10375,7 @@ dev-tcltk/tktable 2.10: full-featured 2D table widget
 dev-tcltk/tktray 1.3.9: System Tray Icon Support for Tk on X11
 dev-tcltk/tktreectrl 2.4.1: A flexible listbox widget for Tk
 dev-tcltk/tkzinc 3.3.6: A Tk widget library
-dev-tcltk/tls 1.6-r3 1.6.7 1.7.11 1.7.16: TLS OpenSSL extension to Tcl
+dev-tcltk/tls 1.7.11 1.7.16: TLS OpenSSL extension to Tcl
 dev-tcltk/togl 2.0-r2 2.0-r3: A Tk widget for OpenGL rendering
 dev-tcltk/vtcl 1.6.0-r1 1.6.0-r2: Visual Tcl is a high-quality application development environment
 dev-tex/aastex 5.2: LaTeX package for American Astronomical Society journals. (AASTeX)
@@ -10814,7 +10814,6 @@ dev-util/rebar-bin 3.6.2: A sophisticated build-tool for Erlang projects that fo
 dev-util/redo 0.41 0.42 99999: Smaller, easier, more powerful, and more reliable than make
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
-dev-util/repo 1.12.37 1.13.2: Google tool for managing git, particularly multiple repos
 dev-util/reswrap 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
 dev-util/rocm-cmake 0.2 2.7.0 2.8.0 2.9.0 9999: Radeon Open Compute CMake Modules
 dev-util/rocminfo 2.6.0 2.7.0 2.8.0 2.9.0 9999: ROCm Application for Reporting System Info
@@ -10964,6 +10963,7 @@ dev-vcs/rabbitvcs 0.16-r1: Integrated version control support for your desktop
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.8.2 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
+dev-vcs/repo 1.26: Google tool for managing git, particularly multiple repos
 dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
 dev-vcs/stgit 0.19 0.20: Manage a stack of patches using GIT as a backend
 dev-vcs/subversion 1.12.2 1.13.0: Advanced version control system
