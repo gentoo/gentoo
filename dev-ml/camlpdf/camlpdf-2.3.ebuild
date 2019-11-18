@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit findlib eutils
+inherit findlib
 
 DESCRIPTION="OCaml library for reading, writing, and modifying PDF files"
 HOMEPAGE="https://github.com/johnwhitington/camlpdf/"
@@ -15,12 +15,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples"
 
-RDEPEND="dev-lang/ocaml:="
+RDEPEND="dev-lang/ocaml:=[ocamlopt]"
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	has_version '>=dev-lang/ocaml-4.03.0_beta1' && epatch "${FILESDIR}/ocaml43.patch"
-}
 
 src_compile() {
 	# parallel make bugs
@@ -33,7 +29,7 @@ src_install() {
 
 	if use doc ; then
 		dodoc introduction_to_camlpdf.pdf
-		dohtml doc/camlpdf/html/*
+		dodoc -r doc/camlpdf/html
 	fi
 
 	use examples && dodoc -r examples

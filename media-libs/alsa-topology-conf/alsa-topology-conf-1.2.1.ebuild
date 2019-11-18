@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="ALSA ucm configuration files"
+DESCRIPTION="ALSA topology configuration files"
 HOMEPAGE="https://www.alsa-project.org"
 SRC_URI="https://www.alsa-project.org/files/pub/lib/${P}.tar.bz2"
 LICENSE="BSD"
