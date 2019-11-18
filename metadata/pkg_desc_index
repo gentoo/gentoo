@@ -10654,7 +10654,7 @@ dev-util/electron 2.0.17-r2: Cross platform application development framework ba
 dev-util/elfkickers 3.0a 3.1: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
 dev-util/envman 1.2.0 1.2.1 2.1.0 2.1.1: Environment variable manager for Bitrise CLI
-dev-util/eric 17.12-r1 18.03: A full featured Python IDE using PyQt and QScintilla
+dev-util/eric 18.03: A full featured Python IDE using PyQt and QScintilla
 dev-util/fatrace 0.12: report file access events from all running processes
 dev-util/findbugs 3.0.1: Find Bugs in Java Programs
 dev-util/fix-la-relink-command 0.1.1: Helps prevent .la files from relinking to libraries outside a build tree
