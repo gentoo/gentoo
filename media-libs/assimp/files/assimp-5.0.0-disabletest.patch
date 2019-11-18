@@ -1,0 +1,13 @@
+--- a/test/unit/utVersion.cpp	2019-11-18 11:39:09.655298634 +0100
++++ b/test/unit/utVersion.cpp	2019-11-18 11:39:25.823299035 +0100
+@@ -66,10 +66,6 @@
+     EXPECT_NE( aiGetCompileFlags(), 0U );
+ }
+ 
+-TEST_F( utVersion, aiGetVersionRevisionTest ) {
+-    EXPECT_NE( aiGetVersionRevision(), 0U );
+-}
+-
+ TEST_F( utVersion, aiGetBranchNameTest ) {
+     EXPECT_NE( nullptr, aiGetBranchName() );
+ }
