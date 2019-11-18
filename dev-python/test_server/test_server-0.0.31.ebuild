@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 inherit distutils-r1
 
 DESCRIPTION="Server to test HTTP clients"
@@ -22,3 +22,14 @@ RDEPEND="
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# broken on py2.7, upstream knows
+	sed -i -e '5a\
+import sys' \
+		-e '/test_null_bytes/i\
+@pytest.mark.skipif(sys.hexversion < 0x03000000, reason="broken on py2")' \
+		test/server.py || die
+}
