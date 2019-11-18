@@ -1249,7 +1249,7 @@ app-emacs/cldoc 1.16: Show Common Lisp operators and variables information in ec
 app-emacs/color-browser 0.3-r1: A utility for designing Emacs color themes
 app-emacs/color-moccur 2.73: Major mode for color moccur
 app-emacs/color-theme 6.6.0-r2: Install color themes (includes many themes)
-app-emacs/company-mode 0.7 0.9.10: In-buffer completion front-end
+app-emacs/company-mode 0.9.10: In-buffer completion front-end
 app-emacs/crontab-mode 1.20: Mode for editing crontab files
 app-emacs/crypt++ 2.92 2.94_pre20080430: Handle all sorts of compressed and encrypted files
 app-emacs/csharp-mode 0.9.2: A derived Emacs mode implementing most of the C# rules
@@ -1257,7 +1257,7 @@ app-emacs/css-mode 0.11-r1: A major mode for editing Cascading Style Sheets (CSS
 app-emacs/css-sort-buffer 0.2: Sort CSS buffer
 app-emacs/csv-mode 1.9: A major mode for editing comma-separated value files
 app-emacs/cycle-buffer 2.16: Select buffer by cycling through
-app-emacs/d-mode 2.0.6 2.0.10: Emacs major mode for editing D code
+app-emacs/d-mode 2.0.10: Emacs major mode for editing D code
 app-emacs/dash 2.14.1 2.16.0: A modern list library for Emacs
 app-emacs/ddskk 16.2: One Japanese input methods on Emacs
 app-emacs/desktop+ 0.2-r2: desktop+ extends standard desktop module
@@ -1346,7 +1346,7 @@ app-emacs/nagios-mode 0.3-r1: Major mode for editing Nagios configuration files
 app-emacs/navi2ch 1.8.4-r1: A navigator for the Japanese textboard 2ch
 app-emacs/nxml-docbook5-schemas 5.0 5.1: Add support for DocBook 5 schemas to NXML
 app-emacs/nxml-gentoo-schemas 20170302 20180611: Extension for nxml-mode with Gentoo-specific schemas
-app-emacs/nxml-libvirt-schemas 1.2.1 5.8.0: Extension for nxml-mode with libvirt schemas
+app-emacs/nxml-libvirt-schemas 5.8.0: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 4.05.0: Emacs mode for OCaml
 app-emacs/org-mode 8.3.2-r1 9.2.6: An Emacs mode for notes and project planning
@@ -1365,7 +1365,7 @@ app-emacs/psgml 1.4.1: A GNU Emacs Major Mode for editing SGML and XML coded doc
 app-emacs/puppet-mode 0.3-r1 0.3.20180813: Emacs major mode for editing Puppet manifests
 app-emacs/pymacs 0.25-r2 0.26: A tool that allows both-side communication beetween Python and Emacs Lisp
 app-emacs/python-mode 6.2.3: An Emacs major mode for editing Python source
-app-emacs/quack 0.47 0.48: Enhances Emacs support for Scheme
+app-emacs/quack 0.48: Enhances Emacs support for Scheme
 app-emacs/quilt-el 0.66: Quilt mode for Emacs
 app-emacs/qwerty 1.1: Switch between QWERTY and DVORAK without changing the console keymap
 app-emacs/redo+ 1.19: Redo/undo system for Emacs
@@ -1376,7 +1376,7 @@ app-emacs/rfcview 0.13: An Emacs mode that reformats IETF RFCs for display
 app-emacs/riece 9.0.0: A redesign of Liece IRC client
 app-emacs/rnc-mode 1.0.6: An Emacs mode for editing Relax NG compact schema files
 app-emacs/rpm-spec-mode 0.15: Emacs mode to ease editing of RPM spec files
-app-emacs/ruby-mode 2.4.1 2.5.3 2.5.5 2.6.0 2.6.3: Emacs major mode for editing Ruby code
+app-emacs/ruby-mode 2.4.1 2.5.5 2.6.3: Emacs major mode for editing Ruby code
 app-emacs/rudel 0.3_pre20110721-r1 0.3.1: Collaborative editing environment for GNU Emacs
 app-emacs/rust-mode 0.3.0_p20180221 0.3.0_p20190125: A major emacs mode for editing Rust source code
 app-emacs/s 1.12.0: The long lost Emacs string manipulation library
@@ -1394,7 +1394,7 @@ app-emacs/ssh 20120709: Support for SSH sessions in Emacs shell buffers
 app-emacs/stripes 0.2-r2: An Emacs mode that alternates the background color of lines
 app-emacs/sumibi 0.7.4: Statistical Japanese input method using the Internet as a large corpus
 app-emacs/teco 7-r2: TECO interpreter for GNU Emacs
-app-emacs/template 3.1c-r1 3.3b: Use templates, decorate comments, auto-update buffers
+app-emacs/template 3.3b: Use templates, decorate comments, auto-update buffers
 app-emacs/tempo-snippets 0.1.5: Visual insertion of tempo templates
 app-emacs/thinks 1.12: Insert text in a think bubble
 app-emacs/treepy 0.1.1: Generic tree traversing tools for Emacs Lisp
@@ -1411,7 +1411,7 @@ app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
 app-emacs/w3mnav 0.5-r3: Add Info-like navigation keys to the emacs-w3m web browser
 app-emacs/wanderlust 2.15.9_p20180814 2.15.9_p20190623: Yet Another Message Interface on Emacsen
 app-emacs/websocket 1.9 1.10: A websocket implementation in elisp
-app-emacs/wgrep 2.1.10 2.3.0: Writable grep buffer and apply the changes to files
+app-emacs/wgrep 2.3.0: Writable grep buffer and apply the changes to files
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r2: Mode for editing Wikipedia articles off-line
 app-emacs/windows 2.53: Window manager for GNU Emacs

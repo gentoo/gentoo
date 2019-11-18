@@ -462,7 +462,6 @@ app-emacs/auctex:preview-latex - Use bundled preview-latex
 app-emacs/bbdb:tex - Install plain TeX support files
 app-emacs/bbdb:vm - Add support for app-emacs/vm
 app-emacs/calfw:howm - Add support for the app-emacs/howm note-taking tool
-app-emacs/company-mode:ropemacs - Install backend for dev-python/ropemacs
 app-emacs/elscreen:wanderlust - Include support for app-emacs/wanderlust
 app-emacs/emacs-common-gentoo:games - Support shared score files for games
 app-emacs/emacs-w3m:gzip-el - Compress bundled Emacs Lisp source
