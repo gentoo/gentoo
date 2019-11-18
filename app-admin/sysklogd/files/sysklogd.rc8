@@ -17,12 +17,24 @@ start_daemon() {
 	local retval=0
 	local daemon="$1"
 	local options="$2"
+	local fg_opt=""
 
-	[ -z "${daemon}" ] && return 1
+	case "${daemon}" in
+		syslogd)
+			fg_opt="-F"
+		;;
+		klogd)
+			fgopt="-n"
+		;;
+		*)
+			return 1
+		;;
+	esac
 
 	ebegin "sysklogd -> start: ${daemon}"
 	start-stop-daemon --start --exec /usr/sbin/"${daemon}" \
-		--pidfile /var/run/"${daemon}".pid -- ${options}
+		-b -m --pidfile /var/run/"${daemon}".pid \
+		-- ${fg_opt} ${options}
 	retval=$?
 	eend ${retval} "Failed to start ${daemon}"
 
