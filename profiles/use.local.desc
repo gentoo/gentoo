@@ -4575,6 +4575,21 @@ media-plugins/hexter:gtk2 - Enable x11-libs/gtk+:2 based GUI
 media-plugins/imlib2_loaders:eet - Enable Eet image loader
 media-plugins/imlib2_loaders:xcf - Enable XCF image loader
 media-plugins/mediastreamer-ilbc:20ms-frames - enable 20ms frame size (default is 30ms). Some VOIP providers such as Gizmo5 (aka Sipphone) require the codec to be compiled with the 30ms setting.
+media-plugins/mythplugins:cdr - Allows MythMusic to burn CD-Rs
+media-plugins/mythplugins:exif - Allows MythGallery to read EXIF data from photos
+media-plugins/mythplugins:fftw - Adds visual effects to MythMusic when playing back music
+media-plugins/mythplugins:hls - HTTP Live Streaming support
+media-plugins/mythplugins:mytharchive - Allows you to archive recorded content to CD or DVD
+media-plugins/mythplugins:mythbrowser - Adds a web browser within MythTV
+media-plugins/mythplugins:mythgallery - Adds a picture viewing gallery within MythTV
+media-plugins/mythplugins:mythgame - Adds a frontend to various ROM emulators within MythTV
+media-plugins/mythplugins:mythmusic - Adds the ability for MythTV to act as a music player
+media-plugins/mythplugins:mythnetvision - Adds the ability to view netvision devices within MythTV
+media-plugins/mythplugins:mythnews - Adds a news viewer within MythTV
+media-plugins/mythplugins:mythweather - Adds weather information within MythTV
+media-plugins/mythplugins:mythzmserver - Build mythzmserver daemon needed by zoneminder on LAN
+media-plugins/mythplugins:mythzoneminder - Adds support for zoneminder (requires active mythzmserver daemon on LAN).
+media-plugins/mythplugins:raw - Allows MythGallery to view photos saved in RAW format
 media-plugins/vdr-burn:dvdarchive - DMH DVD - Archive
 media-plugins/vdr-cdplayer:cdparanoia - Enable cdparanoia (audio CD ripper) support
 media-plugins/vdr-dvbapi:dvbcsa - use media-libs/libdvbcsa free implementation of the DVB Common Scrambling Algorithm

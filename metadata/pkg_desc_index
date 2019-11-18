@@ -883,7 +883,7 @@ app-dicts/myspell-mi 20060316-r1: Maori dictionaries for myspell/hunspell
 app-dicts/myspell-mk 20091211: Macedonian dictionaries for myspell/hunspell
 app-dicts/myspell-ms 20100407: Malay dictionaries for myspell/hunspell
 app-dicts/myspell-nb 2.0.10: Norwegian dictionaries for myspell/hunspell
-app-dicts/myspell-nl 2.10g-r1: Dutch dictionaries for myspell/hunspell
+app-dicts/myspell-nl 2.10g-r1 2.10g-r2: Dutch dictionaries for myspell/hunspell
 app-dicts/myspell-nn 2.0.10: Norwegian dictionaries for myspell/hunspell
 app-dicts/myspell-pl 20130306: Polish dictionaries for myspell/hunspell
 app-dicts/myspell-pt 20120420: Portuguese dictionaries for myspell/hunspell
@@ -2239,7 +2239,7 @@ app-office/pybliographer 1.4.0-r2: Pybliographer is a tool for working with bibl
 app-office/sc 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.5.5_pre20190429 1.5.5 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.20.0: Personal finances manager, aiming at being simple and intuitive
-app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
+app-office/taskcoach 1.4.3-r1 1.4.6: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2 1.99.9 1.99.10 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0-r1 5.0.3: A nice LaTeX-IDE
 app-office/texstudio 2.11.2-r2 2.12.2-r1 2.12.4-r1 2.12.6-r1 2.12.8-r1 2.12.10 2.12.14 2.12.16_beta2-r1 2.12.16: Free cross-platform LaTeX editor (fork from texmakerX)
@@ -13607,6 +13607,7 @@ media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band
 media-plugins/mediastreamer-bcg729 1.0.0 1.0.0-r1: Backported G729 implementation for Linphone
 media-plugins/mediastreamer-ilbc 2.0.3: mediastreamer plugin: add iLBC support
 media-plugins/mediastreamer-x264 1.4.1 1.4.2 1.4.2-r1: mediastreamer plugin: add H264 support
+media-plugins/mythplugins 30.0: Official WMythTV plugins
 media-plugins/qmmp-plugin-pack 1.3.0: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
 media-plugins/swh-lv2 1.0.16: Large collection of LV2 audio plugins/effects
@@ -14809,7 +14810,7 @@ net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(
 net-im/signal-desktop-bin 1.28.0: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
-net-im/skypeforlinux 8.52.0.138 8.52.0.138-r1 8.53.0.85 8.54.0.85: Instant messaging client, with support for audio and video
+net-im/skypeforlinux 8.52.0.138 8.52.0.138-r1 8.53.0.85 8.54.0.85 8.54.0.91: Instant messaging client, with support for audio and video
 net-im/slack-bin 2.1.2 3.1.1 3.4.2 4.0.2 4.1.1: Team collaboration tool
 net-im/spectrum2 2.0.12-r1: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
@@ -18733,7 +18734,7 @@ x11-misc/kbdd 0.7.1: Very simple layout switcher
 x11-misc/kdocker 5.0-r1 5.1 5.2: Helper to dock any application into the system tray
 x11-misc/kronometer 2.2.3: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
-x11-misc/libinput-gestures 2.41 2.45 9999: Actions gestures on your touchpad using libinput
+x11-misc/libinput-gestures 2.41 2.45 2.48 9999: Actions gestures on your touchpad using libinput
 x11-misc/light-locker 1.8.0-r1 1.9.0-r2: A simple locker using lightdm
 x11-misc/lightdm 1.28.0 1.30.0: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 2.0.6: LightDM GTK+ Greeter
