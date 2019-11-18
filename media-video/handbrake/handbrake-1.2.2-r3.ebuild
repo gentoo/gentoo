@@ -86,7 +86,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9999-remove-faac-dependency.patch"
 
 	# Fix missing x265 link flag
-	"${FILESDIR}/${PN}-9999-fix-missing-x265-link-flag.patch"
+	"${FILESDIR}/${P}-fix-missing-x265-link-flag.patch"
 
 	# Allow disabling nvenc etc
 	"${FILESDIR}/${P}-backport-hardware-configure.patch"
