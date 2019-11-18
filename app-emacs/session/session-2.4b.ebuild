@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/emacs-session/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 S="${WORKDIR}"
 SITEFILE="50${PN}-gentoo.el"
