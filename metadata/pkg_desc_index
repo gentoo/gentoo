@@ -14743,7 +14743,7 @@ net-fs/s3ql 2.24 2.25 2.26 2.28 2.32 2.33: A full-featured file system for onlin
 net-fs/samba 4.5.16 4.8.6-r2 4.8.6-r3 4.8.12 4.9.13 4.9.15 4.10.2 4.10.8 4.10.10 4.11.1 4.11.2: Samba Suite Version 4
 net-fs/smbnetfs 0.6.1-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
-net-fs/sshfs 2.10-r1 3.5.0 3.5.1 3.5.2: Fuse-filesystem utilizing the sftp service
+net-fs/sshfs 2.10-r1 3.6.0: Fuse-filesystem utilizing the sftp service
 net-fs/tahoe-lafs 1.10.2: Secure, decentralized, data store
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r5 0.7-r6 0.7.2: Advanced TFTP implementation client/server
@@ -17206,7 +17206,7 @@ sys-apps/pkgcore 0.9.7 0.10.6 0.10.7 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/policycoreutils 2.8-r1 2.9 9999: SELinux core utilities
-sys-apps/portage 2.3.66-r1 2.3.69 2.3.76-r1 2.3.78-r2 2.3.79 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.66-r1 2.3.69 2.3.76-r1 2.3.79 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.6: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
@@ -17698,8 +17698,8 @@ sys-fs/fatcat 1.0.6 1.1.0: FAT filesystems explore, extract, repair, and forensi
 sys-fs/fatresize 1.0.4: Resize FAT partitions using libparted
 sys-fs/fatsort 1.5.0: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
-sys-fs/fuse 2.9.8 2.9.9 2.9.9-r1 3.6.2: An interface for filesystems implemented in userspace
-sys-fs/fuse-common 3.2.6 3.3.0-r1 3.4.1: Common files for multiple slots of sys-fs/fuse
+sys-fs/fuse 2.9.8 2.9.9-r1 3.8.0: An interface for filesystems implemented in userspace
+sys-fs/fuse-common 3.2.6 3.8.0: Common files for multiple slots of sys-fs/fuse
 sys-fs/fuse-convmvfs 0.2.6-r1: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.2.8 1.3.0: exFAT filesystem FUSE module
 sys-fs/fuse-zip 0.4.5: FUSE file system to navigate, extract, create and modify ZIP archives
