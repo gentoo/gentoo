@@ -2035,7 +2035,7 @@ app-misc/lockfile-progs 0.1.17: Programs to safely lock/unlock files and mailbox
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
 app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
 app-misc/lsx 0.1-r1: list executables
-app-misc/ltunify 0.2-r1: Tool for working with Logitech Unifying receivers and devices
+app-misc/ltunify 0.2-r2: Tool for working with Logitech Unifying receivers and devices
 app-misc/lxsplit 0.2.4-r1: Command-line file splitter/joiner for Linux
 app-misc/matew 1.9: Make Album The Easy Way (Matew) is an HTML/CSS generator for static image albums
 app-misc/mc 4.8.22 4.8.23-r1 9999: GNU Midnight Commander is a text based file manager
@@ -15377,7 +15377,7 @@ net-misc/pmsvn 1.0.7: Server's configuration management and monitoring tool
 net-misc/portfwd 0.29-r1: Port Forwarding Daemon
 net-misc/portspoof 1.1 1.3 9999: return SYN+ACK for every port connection attempt
 net-misc/pps-tools 0.0.20120407 1.0.1 1.0.2: User-space tools for LinuxPPS
-net-misc/proxychains 4.12-r1: force any tcp connections to flow through a proxy (or proxy chain)
+net-misc/proxychains 4.12-r1 4.14: force any tcp connections to flow through a proxy (or proxy chain)
 net-misc/proxytunnel 1.9.1-r1 1.9.1-r2 9999: Connect stdin and stdout to a server via an HTTPS proxy
 net-misc/ps3mediaserver 1.90.1: DLNA compliant UPNP server for streaming media to Playstation 3
 net-misc/pssh 2.3.1-r1: PSSH provides parallel versions of OpenSSH and related tools
