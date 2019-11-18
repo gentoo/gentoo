@@ -15,6 +15,7 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="archive berkdb debug doc +gmp java +libedit libressl minimal odbc pcre qt5 readline ssl test uuid X yaml"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/ncurses:=
 	sys-libs/zlib
