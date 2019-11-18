@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 EGO_PN="github.com/gopasspw/gopass"
 
 inherit golang-vcs-snapshot golang-build bash-completion-r1
@@ -10,7 +10,7 @@ DESCRIPTION="a simple but powerful password manager for the terminal"
 HOMEPAGE="https://www.gopass.pw/"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="MIT Apache-2.0 BSD MPL-2.0 BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -20,8 +20,6 @@ RDEPEND="
 	dev-vcs/git
 	>=app-crypt/gnupg-2
 "
-
-PATCHES=( "${FILESDIR}"/${PN}-1.8.4-xc-tests.patch )
 
 src_install() {
 	dobin gopass
