@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
 
 inherit distutils-r1 eutils
 
@@ -14,14 +14,14 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
+IUSE="doc"
 
 RDEPEND="sys-apps/attr"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( >=dev-python/sphinx-1.3.1[${PYTHON_USEDEP}] )
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+	doc? ( >=dev-python/sphinx-1.3.1 )"
+
+distutils_enable_tests unittest
 
 python_prepare_all() {
 	sed -i -e 's:, "-Werror"::' setup.py || die
@@ -54,10 +54,6 @@ src_test() {
 	einfo "See https://bugs.gentoo.org/503946 for details."
 	einfo
 	distutils-r1_src_test
-}
-
-python_test() {
-	nosetests -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
