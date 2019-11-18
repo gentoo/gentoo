@@ -21,7 +21,7 @@ RDEPEND=""
 DOCS=( ChangeLog.md README.md )
 
 PATCHES=(
-	${FILESDIR}/${PN}-2.0-optional_logger.patch
+	"${FILESDIR}/${PN}-2.0-optional_logger.patch"
 )
 
 pkg_setup() {
