@@ -10679,7 +10679,7 @@ dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/goland 2019.1.2: Golang IDE by JetBrains
 dev-util/google-perftools 2.6.2 2.7: Fast, multi-threaded malloc() and nifty performance analysis tools
 dev-util/gource 0.49: A software version control visualization tool
-dev-util/gperf 3.0.4 3.1: A perfect hash function generator
+dev-util/gperf 3.1: A perfect hash function generator
 dev-util/gprof2dot 2013.05.17 2016.10.13 2017.09.19: Converts profiling output to dot graphs
 dev-util/gquilt 0.25-r1: A Python/GTK wrapper for quilt
 dev-util/gtk-builder-convert 2.24.32: Converts Glade files to GtkBuilder XML format
@@ -10843,7 +10843,7 @@ dev-util/shflags 1.0.3 1.2.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/smem 1.4: A tool that can give numerous reports on memory usage on Linux systems
-dev-util/source-highlight 3.1.7-r2 3.1.8 3.1.8-r1: Generate highlighted source code as an (x)html document
+dev-util/source-highlight 3.1.8 3.1.8-r1: Generate highlighted source code as an (x)html document
 dev-util/spec-cleaner 1.0.6 1.0.7 9999: SUSE spec file cleaner and formatter
 dev-util/spirv-headers 1.3.4_pre20190302 1.5.1 9999: Machine-readable files for the SPIR-V Registry
 dev-util/spirv-llvm-translator 8.0.1.2-r1: Bi-directional translator between SPIR-V and LLVM IR
@@ -12430,7 +12430,7 @@ lxde-base/lxde-icon-theme 0.5.0-r1 0.5.1: nuoveXT2 iconset
 lxde-base/lxde-meta 0.5.5-r6: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
 lxde-base/lxdm 0.5.3-r1 0.5.3-r2: LXDE Display Manager
 lxde-base/lxinput 0.3.5 0.3.5-r1: LXDE keyboard and mouse configuration tool
-lxde-base/lxlauncher 0.2.2 0.2.5: An open source clone of the Asus launcher for EeePC
+lxde-base/lxlauncher 0.2.5: An open source clone of the Asus launcher for EeePC
 lxde-base/lxmenu-data 0.1.5: Provides files needed for LXDE application menus
 lxde-base/lxpanel 0.9.2 0.9.3 0.9.3-r1 0.10.0: Lightweight X11 desktop panel for LXDE
 lxde-base/lxrandr 0.3.1 0.3.1-r1 0.3.2: LXDE GUI interface to RandR extention
@@ -14930,7 +14930,7 @@ net-libs/libcorkipset 1.1.1.20150311_p8: A small C helper library for storing se
 net-libs/libcrafter 0.3 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
 net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of protocols
 net-libs/libdom 0.3.3-r1: implementation of the W3C DOM, written in C
-net-libs/libecap 0.2.0 1.0.0: API for implementing ICAP content analysis and adaptation
+net-libs/libecap 1.0.0: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6-r3: lib that implements the client side of the SMTP protocol
 net-libs/libetpan 1.9.3 1.9.4: A portable, efficient middleware for different kinds of mail access
 net-libs/libflowmanager 3.0.0-r1: A library that measures and reports on packet flows

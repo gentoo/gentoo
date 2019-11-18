@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile install
 DEPEND=x11-libs/libXdamage x11-libs/libXcomposite x11-libs/libXfixes x11-libs/libXrender
 DESCRIPTION=Tool for set real compositing for windows through window's id, process' pid etc.
-EAPI=4
+EAPI=7
 HOMEPAGE=https://github.com/XVilka/set_opacity
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libXdamage x11-libs/libXcomposite x11-libs/libXfixes x11-libs/l
 SLOT=0
 SRC_URI=https://github.com/XVilka/set_opacity/archive-tarball/1.0 -> set_opacity-1.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=efb926ba924831b815f54731baf0b2bf
+_md5_=d0f9af30c8f31f801b2bc5fa78faa20f
