@@ -367,7 +367,7 @@ app-admin/supernova 2.2.0: novaclient wrapper for multiple nova environments
 app-admin/supervisor 3.1.4 3.3.5 4.0.3 4.0.4: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
 app-admin/sxid 4.2-r2: suid, sgid file and directory checking
-app-admin/sysklogd 1.5.1-r1: Standard log daemons
+app-admin/sysklogd 1.5.1-r1 2.0: Standard log daemons
 app-admin/syslog-ng 3.22.1 3.24.1: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1 1.14-r2 1.14-r3: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17: Daemon providing access to the kernel sysrq functions via network
@@ -1252,7 +1252,7 @@ app-emacs/color-theme 6.6.0-r2: Install color themes (includes many themes)
 app-emacs/company-mode 0.7 0.9.10: In-buffer completion front-end
 app-emacs/crontab-mode 1.20: Mode for editing crontab files
 app-emacs/crypt++ 2.92 2.94_pre20080430: Handle all sorts of compressed and encrypted files
-app-emacs/csharp-mode 0.9.0 0.9.2: A derived Emacs mode implementing most of the C# rules
+app-emacs/csharp-mode 0.9.2: A derived Emacs mode implementing most of the C# rules
 app-emacs/css-mode 0.11-r1: A major mode for editing Cascading Style Sheets (CSS)
 app-emacs/css-sort-buffer 0.2: Sort CSS buffer
 app-emacs/csv-mode 1.9: A major mode for editing comma-separated value files
@@ -1298,7 +1298,7 @@ app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and a
 app-emacs/flim 1.14.9-r2 1.14.9_p20190526: A library to provide basic features about message representation or encoding
 app-emacs/folding 2019.0524.1621: A folding-editor-like Emacs minor mode
 app-emacs/ghc-mod 5.4.0.0 5.5.0.0-r1 5.7.0.0: Happy Haskell Programming
-app-emacs/ghub 2.0.1 3.0.0 3.2.0: Minuscule client library for the Git forge APIs
+app-emacs/ghub 2.0.1 3.2.0: Minuscule client library for the Git forge APIs
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
 app-emacs/gnuserv 3.12.8-r5: Attach to an already running Emacs
 app-emacs/go-mode 1.5.0: An improved Go mode for emacs
@@ -1311,13 +1311,13 @@ app-emacs/helm 3.2: Emacs incremental completion and selection narrowing framewo
 app-emacs/helm-system-packages 1.10.1: A Helm interface to the package manager of your operating system
 app-emacs/hexrgb 0_p1019: Functions to manipulate colors, including RGB hex strings
 app-emacs/highline 7.2.2: Minor mode to highlight current line in buffer
-app-emacs/howm 1.4.3 1.4.5: Note-taking tool on Emacs
+app-emacs/howm 1.4.5: Note-taking tool on Emacs
 app-emacs/htmlize 1.54: HTML-ize font-lock buffers in Emacs
 app-emacs/httpd 1.1: A HTTP server embedded in the Emacs
 app-emacs/icicles 2018.02.13.23733: Minibuffer input completion and cycling
 app-emacs/igrep 2.113: An improved interface to "grep" and "find"
 app-emacs/inform-mode 1.6.2: A major mode for editing Inform programs
-app-emacs/initsplit 1.7_pre20140203 1.8_pre20160919: Split customizations into different files
+app-emacs/initsplit 1.8_pre20160919: Split customizations into different files
 app-emacs/jam-mode 0.3: An Emacs major mode for editing Jam files
 app-emacs/jasmin 1.2-r2: An Emacs major mode for editing Jasmin Java bytecode assembler files
 app-emacs/jde 2.4.1: Java Development Environment for Emacs
@@ -1328,9 +1328,9 @@ app-emacs/lua-mode 20151025: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20180410: Elisp client for the LysKOM conference system
 app-emacs/magit 2.11.0 2.12.1 2.13.1 2.90.1: A Git porcelain inside Emacs
 app-emacs/magit-popup 2.12.3 2.12.4 2.13.0: Define prefix-infix-suffix command combos
-app-emacs/mailcrypt 3.5.9-r2 3.5.9-r3: Provides a simple interface to public key cryptography with OpenPGP
+app-emacs/mailcrypt 3.5.9-r3: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/markdown-mode 2.3: Major mode for editing Markdown-formatted text files
-app-emacs/matlab 3.3.2_pre20130829 3.3.6_pre20191010-r1: Major modes for MATLAB .m and .tlc files
+app-emacs/matlab 3.3.6_pre20191010-r1: Major modes for MATLAB .m and .tlc files
 app-emacs/mediawiki 2.2.9-r1: MediaWiki client for Emacs
 app-emacs/mew 6.8: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
@@ -1348,20 +1348,20 @@ app-emacs/nxml-docbook5-schemas 5.0 5.1: Add support for DocBook 5 schemas to NX
 app-emacs/nxml-gentoo-schemas 20170302 20180611: Extension for nxml-mode with Gentoo-specific schemas
 app-emacs/nxml-libvirt-schemas 1.2.1 5.8.0: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
-app-emacs/ocaml-mode 4.00.1 4.05.0: Emacs mode for OCaml
+app-emacs/ocaml-mode 4.05.0: Emacs mode for OCaml
 app-emacs/org-mode 8.3.2-r1 9.2.6: An Emacs mode for notes and project planning
 app-emacs/outline-magic 0.9: Outline mode extensions for Emacs
 app-emacs/paredit 23-r1: Minor mode for performing structured editing of S-expressions
 app-emacs/pariemacs 3.14: sci-mathematics/pari emacs mode
 app-emacs/php-mode 1.19.1: GNU Emacs major mode for editing PHP code
 app-emacs/planner 3.42-r1: Maintain a local Wiki using Emacs-friendly markup
-app-emacs/po-mode 0.19.8.1 0.20.1: Major mode for GNU gettext PO files
+app-emacs/po-mode 0.20.1: Major mode for GNU gettext PO files
 app-emacs/popup 0.5.3: Visual popup interface library for Emacs
 app-emacs/popwin 1.0.0: Popup window manager for Emacs
 app-emacs/pov-mode 3.3-r1: Major mode for Povray scene files
 app-emacs/proofgeneral 4.4: A generic interface for proof assistants
 app-emacs/protbuf 1.7-r1: Protect Emacs buffers from accidental killing
-app-emacs/psgml 1.4.0 1.4.1: A GNU Emacs Major Mode for editing SGML and XML coded documents
+app-emacs/psgml 1.4.1: A GNU Emacs Major Mode for editing SGML and XML coded documents
 app-emacs/puppet-mode 0.3-r1 0.3.20180813: Emacs major mode for editing Puppet manifests
 app-emacs/pymacs 0.25-r2 0.26: A tool that allows both-side communication beetween Python and Emacs Lisp
 app-emacs/python-mode 6.2.3: An Emacs major mode for editing Python source
@@ -1385,10 +1385,10 @@ app-emacs/scheme-complete 0.9.8: Scheme tab-completion and word-completion for E
 app-emacs/scim-bridge-el 0.8.2: a SCIM-Bridge client for Emacs
 app-emacs/scss-mode 0.5.0_p20150107 0.5.0_p20180123-r1: Major mode for editing SCSS files in Emacs
 app-emacs/semi 1.14.6-r2 1.14.7_p20190517: A library to provide MIME feature for GNU Emacs
-app-emacs/session 2.3a 2.4b: When you start Emacs, Session restores various variables from your last session
+app-emacs/session 2.4b: When you start Emacs, Session restores various variables from your last session
 app-emacs/setnu 1.06: Display line numbers in Emacs buffers
 app-emacs/slime 2.15 2.20 2.20-r1 2.21: SLIME, the Superior Lisp Interaction Mode (Extended)
-app-emacs/sml-mode 6.4 6.9: Emacs major mode for editing Standard ML
+app-emacs/sml-mode 6.9: Emacs major mode for editing Standard ML
 app-emacs/sokoban 1.4.8: Implementation of Sokoban for Emacs
 app-emacs/ssh 20120709: Support for SSH sessions in Emacs shell buffers
 app-emacs/stripes 0.2-r2: An Emacs mode that alternates the background color of lines
@@ -17844,7 +17844,7 @@ sys-libs/libomp 6.0.1-r1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: OpenMP runtim
 sys-libs/libosinfo 1.2.0 1.3.0 1.4.0: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.0-r1 2.1.1 2.1.2: library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 2.0.2: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
-sys-libs/libseccomp 2.4.0 2.4.1 2.4.2: high level interface to Linux seccomp filter
+sys-libs/libseccomp 2.4.0 2.4.1 2.4.2-r1: high level interface to Linux seccomp filter
 sys-libs/libselinux 2.8-r1 2.9 2.9-r1 9999: SELinux userland library
 sys-libs/libsemanage 2.8 2.9 9999: SELinux kernel and policy management library
 sys-libs/libsepol 2.8 2.9 9999: SELinux binary policy representation library
