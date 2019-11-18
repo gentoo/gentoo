@@ -1,10 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-single-r1 toolchain-funcs gnome2-utils
+inherit python-single-r1 toolchain-funcs xdg
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/kovidgoyal/kitty.git"
@@ -49,9 +49,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	media-libs/mesa[X(+)]
 	sys-libs/ncurses
-	virtual/pkgconfig
 "
 [[ ${PV} == *9999 ]] && DEPEND+=" >=dev-python/sphinx-1.7[${PYTHON_USEDEP}]"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.14.4-flags.patch
@@ -90,8 +90,8 @@ src_test() {
 }
 
 src_install() {
-	mkdir -p "${ED}"usr || die
-	cp -r linux-package/* "${ED}usr" || die
+	mkdir -p "${ED}"/usr || die
+	cp -r linux-package/* "${ED}/usr" || die
 	python_fix_shebang "${ED}"
 
 	if ! use doc; then
@@ -100,9 +100,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

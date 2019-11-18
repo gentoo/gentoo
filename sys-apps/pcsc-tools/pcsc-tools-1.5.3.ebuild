@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils fdo-mime multilib toolchain-funcs
+inherit desktop toolchain-funcs xdg-utils
 
 DESCRIPTION="PC/SC Architecture smartcard tools"
 HOMEPAGE="http://ludovic.rousseau.free.fr/softwares/pcsc-tools/"
@@ -23,11 +23,6 @@ BDEPEND="virtual/pkgconfig"
 DOCS=(
 	README Changelog
 )
-
-src_prepare() {
-	default
-	sed -i -e 's:-Wall -O2:$(CFLAGS):g' Makefile
-}
 
 src_compile() {
 	# explicitly only build the pcsc_scan application, or the man
@@ -59,9 +54,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	use gtk && fdo-mime_desktop_database_update
+	use gtk && xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
