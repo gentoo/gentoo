@@ -30,8 +30,6 @@ CDEPEND="
 RDEPEND="${CDEPEND}"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-add-skip-stripping.patch )
-
 src_prepare() {
 	sed -i -e "s/python3/${EPYTHON}/" \
 		data/cadence \
