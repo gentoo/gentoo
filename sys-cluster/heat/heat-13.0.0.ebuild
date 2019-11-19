@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]];then
 else
 	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.train -> heat.conf.sample-${PV}
 		https://tarballs.openstack.org/${PN}/openstack-${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 S="${WORKDIR}/openstack-${P}"
 
