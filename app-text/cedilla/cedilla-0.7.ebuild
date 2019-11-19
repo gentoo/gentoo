@@ -7,7 +7,7 @@ DESCRIPTION="UTF-8 to postscript converter"
 HOMEPAGE="http://www.pps.jussieu.fr/~jch/software/cedilla/"
 SRC_URI="http://www.pps.jussieu.fr/~jch/software/files/${P}.tar.gz"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 LICENSE="GPL-2"
 

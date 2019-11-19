@@ -10,7 +10,7 @@ SRC_URI="https://www.snort.org/downloads/snort/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="ipv6 +afpacket +dump +pcap nfq ipq static-libs"
 
 PCAP_DEPEND=">=net-libs/libpcap-1.0.0"
