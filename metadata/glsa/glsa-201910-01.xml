@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">php</product>
   <announced>2019-10-25</announced>
-  <revised count="1">2019-10-25</revised>
+  <revised count="2">2019-11-19</revised>
   <bug>698452</bug>
   <access>remote</access>
   <affected>
@@ -15,9 +15,11 @@
       <unaffected range="ge">7.1.33</unaffected>
       <unaffected range="ge">7.2.24</unaffected>
       <unaffected range="ge">7.3.11</unaffected>
+      <unaffected range="ge">5.6.40-r7</unaffected>
       <vulnerable range="lt">7.1.33</vulnerable>
       <vulnerable range="lt">7.2.24</vulnerable>
       <vulnerable range="lt">7.3.11</vulnerable>
+      <vulnerable range="lt">5.6.40-r7</vulnerable>
     </package>
   </affected>
   <background>
@@ -42,6 +44,13 @@
     </p>
   </workaround>
   <resolution>
+    <p>All PHP 5.6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-5.6.40-r7"
+    </code>
+    
     <p>All PHP 7.1 users should upgrade to the latest version:</p>
     
     <code>
@@ -68,5 +77,5 @@
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11043">CVE-2019-11043</uri>
   </references>
   <metadata tag="requester" timestamp="2019-10-24T23:39:18Z">whissi</metadata>
-  <metadata tag="submitter" timestamp="2019-10-25T11:01:56Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2019-11-19T10:48:24Z">whissi</metadata>
 </glsa>
