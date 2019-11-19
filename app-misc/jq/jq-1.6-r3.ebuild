@@ -60,6 +60,16 @@ src_configure() {
 	econf "${econfargs[@]}"
 }
 
+src_test() {
+	if ! emake check; then
+		if [[ -r test-suite.log ]]; then
+			eerror "Tests failed, outputting testsuite log"
+			cat test-suite.log
+		fi
+		die "Tests failed"
+	fi
+}
+
 src_install() {
 	local DOCS=( AUTHORS README.md )
 	default
