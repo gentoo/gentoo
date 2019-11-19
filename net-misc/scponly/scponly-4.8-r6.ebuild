@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils multilib readme.gentoo toolchain-funcs user
+EAPI=7
+
+inherit multilib readme.gentoo-r1 toolchain-funcs user
 
 DESCRIPTION="A tiny pseudoshell which only permits scp and sftp"
 HOMEPAGE="https://github.com/scponly/scponly"
@@ -22,12 +23,18 @@ RDEPEND="
 	quota? ( sys-fs/quota )
 	rsync? ( net-misc/rsync )
 	subversion? ( dev-vcs/subversion )
+	unison? ( net-misc/unison:= )
 "
 DEPEND="${RDEPEND}"
 
 myuser="scponly"
 myhome="/home/${myuser}"
 mysubdir="/pub"
+
+PATCHES=(
+	"${FILESDIR}/${P}-rsync.patch"
+	"${FILESDIR}/${P}-gcc4.4.0.patch"
+)
 
 DOC_CONTENTS="
 	You might want to run\n
@@ -36,12 +43,6 @@ DOC_CONTENTS="
 	Please read the docs in /usr/share/doc/${PF} for more informations, also
 	the SECURITY file.
 "
-
-src_prepare() {
-	epatch "${FILESDIR}/${P}-rsync.patch"
-	# bug #269242
-	epatch "${FILESDIR}/${P}-gcc4.4.0.patch"
-}
 
 src_configure() {
 	CFLAGS="${CFLAGS} ${LDFLAGS}" econf \
@@ -126,7 +127,7 @@ pkg_config() {
 
 	# passwd compatibility
 	if has_version "=${CATEGORY}/${PF}[passwd]" ; then
-		BINARIES="${BINARIES} /bin/passwd"
+		BINARIES="${BINARIES} /usr/bin/passwd"
 	fi
 
 	# quota compatibility
@@ -197,7 +198,7 @@ pkg_config() {
 	for BIN in ${BINARIES}; do
 		einfo "Install ${BIN}"
 		install -o0 -g0 -m0755 -d "${myhome}$(dirname ${BIN})"
-		if [ "${BIN}" = "/bin/passwd" ]; then  # needs suid
+		if [ "${BIN}" = "/usr/bin/passwd" ]; then  # needs suid
 			install -p -o0 -g0 -m04711 "${BIN}" "${myhome}/${BIN}"
 		else
 			install -p -o0 -g0 -m0755 "${BIN}" "${myhome}/${BIN}"
