@@ -3,9 +3,9 @@
 
 EAPI=6
 
-inherit golang-vcs-snapshot
+inherit linux-info golang-vcs-snapshot
 
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 DESCRIPTION="Standard networking plugins for container networking"
 EGO_PN="github.com/containernetworking/plugins"
 HOMEPAGE="https://github.com/containernetworking/plugins"
@@ -13,6 +13,8 @@ SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="hardened"
+
+CONFIG_CHECK="~BRIDGE_VLAN_FILTERING"
 
 src_compile() {
 	pushd src || die
