@@ -16,6 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~
 IUSE="doc examples perl static-libs test"
 
 CDEPEND="
+	net-libs/gnutls:0=
 	sys-libs/zlib
 	virtual/jpeg:0=
 "
@@ -35,6 +36,10 @@ DOCS=( ChangeLog README.md TODO )
 
 src_configure() {
 	local myeconfargs=(
+		--disable-implicit-crypto
+		--enable-crypto-gnutls
+		--enable-crypto-native
+		--with-default-crypto=gnutls
 		$(use_enable static-libs static)
 		$(use_enable test test-compare-images)
 	)
@@ -53,5 +58,5 @@ src_install() {
 		dobin examples/build/.libs/*
 	fi
 
-	find "${ED}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 }
