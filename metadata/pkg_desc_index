@@ -17248,7 +17248,7 @@ sys-apps/sensei-raw-ctl 0.0_pre20180729: SteelSeries Sensei Raw configuration to
 sys-apps/servicelog 1.1.14: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
 sys-apps/sg3_utils 1.42 1.44: Apps for querying the sg SCSI interface
-sys-apps/shadow 4.6 4.7 4.7-r1: Utilities to deal with user accounts
+sys-apps/shadow 4.6 4.7 4.7-r1 4.7-r2: Utilities to deal with user accounts
 sys-apps/smartmontools 7.0-r1 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/smc-sum 2.3.0.20190808: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
 sys-apps/smc-sum-driver 1.6.0.20151201-r3: Supermicro Update Manager (SUM) kernel module
@@ -17286,7 +17286,7 @@ sys-apps/usbredir 0.7.1_p20170503 0.7.1_p20180211 0.8.0 9999: TCP daemon and set
 sys-apps/usbutils 009 010-r1 012: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3 20070815-r4: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.33-r1 2.33.1 2.33.2 2.34-r2 9999: Various useful Linux utilities
+sys-apps/util-linux 2.33.2 2.34-r2 9999: Various useful Linux utilities
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)
 sys-apps/watchdog 5.15: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path

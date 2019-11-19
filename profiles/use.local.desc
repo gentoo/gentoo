@@ -8018,6 +8018,7 @@ sys-apps/s390-tools:pfm - build the cpacfstats tool
 sys-apps/s390-tools:zlib - build the zgetdump and dump2tar utilities
 sys-apps/s6-linux-init:sysv-utils - Install sysvinit compatibility symlinks for telinit, halt, poweroff, reboot, and shutdown
 sys-apps/sed:forced-sandbox - Always enable --sandbox mode for simpler/secure runtime (disables e/r/w commands). Note: This may break many configure scripts, so it should be avoided on dev systems (and generally used on binpkg/final systems only).
+sys-apps/shadow:su - build the su program
 sys-apps/smartmontools:caps - Build against sys-libs/libcap-ng to allow smartd to drop its privileges.
 sys-apps/smartmontools:daemon - Install the monitoring daemon (smartd) and associated scripts.
 sys-apps/smartmontools:update_drivedb - Install a script to update the drivedb file.
@@ -8056,7 +8057,9 @@ sys-apps/util-linux:cramfs - build mkfs/fsck helpers for cramfs filesystems
 sys-apps/util-linux:fdformat - build fdformat (floppy disk format)
 sys-apps/util-linux:hardlink - build hardlink program
 sys-apps/util-linux:kill - build the kill program
+sys-apps/util-linux:logger - build the logger program
 sys-apps/util-linux:pam - build runuser helper
+sys-apps/util-linux:su - build the su program
 sys-apps/util-linux:suid - install mount/umount as setuid so non-root users may mount/umount devices, and wall/write as setgid so non-root users can notify other users
 sys-apps/util-linux:tty-helpers - install the mesg/wall/write tools for talking to local users
 sys-apps/watchdog:nfs - enable support for checking nfs mounts
