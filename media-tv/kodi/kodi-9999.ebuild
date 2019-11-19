@@ -277,7 +277,10 @@ src_configure() {
 	fi
 
 	if use X; then
-		mycmakeargs+=( -DCORE_PLATFORM_NAME="x11" )
+		mycmakeargs+=(
+			-DCORE_PLATFORM_NAME="x11"
+			-DX11_RENDER_SYSTEM="$(usex opengl gl gles)"
+		)
 	fi
 
 	cmake-utils_src_configure
