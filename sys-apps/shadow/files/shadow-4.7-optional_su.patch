@@ -1,0 +1,130 @@
+From ddb0553b2e559fd431fe8b460c37cb7fef8c06ee Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 19 Nov 2019 10:57:06 +0100
+Subject: [PATCH] build: Make build/installation of su and its support files
+ optional
+
+Enabled by default
+This is necessary because coreutils and util-linux can also provide su
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac          |  7 +++++++
+ etc/pam.d/Makefile.am |  7 +++++--
+ man/Makefile.am       |  5 ++++-
+ src/Makefile.am       | 10 ++++++++--
+ 4 files changed, 24 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 67625564..5629df98 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -286,6 +286,9 @@ AC_ARG_WITH(sssd,
+ AC_ARG_WITH(group-name-max-length,
+ 	[AC_HELP_STRING([--with-group-name-max-length], [set max group name length @<:@default=16@:>@])],
+ 	[with_group_name_max_length=$withval], [with_group_name_max_length=yes])
++AC_ARG_WITH(su,
++	[AC_HELP_STRING([--with-su], [build and install su program and man page @<:@default=yes@:>@])],
++	[with_su=$withval], [with_su=yes])
+ 
+ if test "$with_group_name_max_length" = "no" ; then
+ 	with_group_name_max_length=0
+@@ -313,6 +316,9 @@ if test "$with_sssd" = "yes"; then
+ 	              [AC_MSG_ERROR([posix_spawn is needed for sssd support])])
+ fi
+ 
++AS_IF([test "$with_su" != "no"], AC_DEFINE(WITH_SU, 1, [Build with su])])
++AM_CONDITIONAL([WITH_SU], [test "x$with_su" != "xno"])
++
+ dnl Check for some functions in libc first, only if not found check for
+ dnl other libraries.  This should prevent linking libnsl if not really
+ dnl needed (Linux glibc, Irix), but still link it if needed (Solaris).
+@@ -719,4 +725,5 @@ echo "	nscd support:			$with_nscd"
+ echo "	sssd support:			$with_sssd"
+ echo "	subordinate IDs support:	$enable_subids"
+ echo "	use file caps:			$with_fcaps"
++echo "	install su:			$with_su"
+ echo
+diff --git a/etc/pam.d/Makefile.am b/etc/pam.d/Makefile.am
+index d967eb95..38ff26ae 100644
+--- a/etc/pam.d/Makefile.am
++++ b/etc/pam.d/Makefile.am
+@@ -6,8 +6,7 @@ pamd_files = \
+ 	chsh \
+ 	groupmems \
+ 	login \
+-	passwd \
+-	su
++	passwd
+ 
+ pamd_acct_tools_files = \
+ 	chage \
+@@ -29,4 +28,8 @@ pamd_DATA += $(pamd_acct_tools_files)
+ endif
+ endif
+ 
++if WITH_SU
++pamd_files += su
++endif
++
+ EXTRA_DIST = $(pamd_files) $(pamd_acct_tools_files)
+diff --git a/man/Makefile.am b/man/Makefile.am
+index 3f040e05..8b64feba 100644
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -41,7 +41,6 @@ man_MANS = \
+ 	man1/sg.1 \
+ 	man3/shadow.3 \
+ 	man5/shadow.5 \
+-	man1/su.1 \
+ 	man5/suauth.5 \
+ 	man8/useradd.8 \
+ 	man8/userdel.8 \
+@@ -54,6 +53,10 @@ man_nopam = \
+ 	man5/login.access.5 \
+ 	man5/porttime.5
+ 
++if WITH_SU
++man_MANS += man1/su.1
++endif
++
+ if !USE_PAM
+ man_MANS += $(man_nopam)
+ endif
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 34690ced..06ee9545 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -23,12 +23,15 @@ AM_CPPFLAGS = \
+ # and installation would be much simpler (just two directories,
+ # $prefix/bin and $prefix/sbin, no install-data hacks...)
+ 
+-bin_PROGRAMS   = groups login su
++bin_PROGRAMS   = groups login
+ sbin_PROGRAMS  = nologin
+ ubin_PROGRAMS  = faillog lastlog chage chfn chsh expiry gpasswd newgrp passwd
+ if ENABLE_SUBIDS
+ ubin_PROGRAMS += newgidmap newuidmap
+ endif
++if WITH_SU
++bin_PROGRAMS  += su
++endif
+ usbin_PROGRAMS = \
+ 	chgpasswd \
+ 	chpasswd \
+@@ -52,8 +55,11 @@ usbin_PROGRAMS = \
+ # id and groups are from gnu, sulogin from sysvinit
+ noinst_PROGRAMS = id sulogin
+ 
+-suidbins       = su
++suidbins       =
+ suidubins      = chage chfn chsh expiry gpasswd newgrp
++if WITH_SU
++suidbins      += su
++endif
+ if !WITH_TCB
+ suidubins += passwd
+ endif
+-- 
+2.24.0
+
