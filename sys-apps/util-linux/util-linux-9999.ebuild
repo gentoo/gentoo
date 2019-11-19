@@ -25,7 +25,7 @@ HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/
 
 LICENSE="GPL-2 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
-IUSE="build caps +cramfs fdformat hardlink kill ncurses nls pam python +readline selinux slang static-libs +suid systemd test tty-helpers udev unicode userland_GNU"
+IUSE="build caps +cramfs fdformat hardlink kill +logger ncurses nls pam python +readline selinux slang static-libs su +suid systemd test tty-helpers udev unicode userland_GNU"
 
 # Most lib deps here are related to programs rather than our libs,
 # so we rarely need to specify ${MULTILIB_USEDEP}.
@@ -49,9 +49,14 @@ BDEPEND="
 "
 RDEPEND="${DEPEND}
 	hardlink? ( !app-arch/hardlink )
+	logger? ( !>=app-admin/sysklogd-2.0[logger] )
 	kill? (
 		!sys-apps/coreutils[kill]
 		!sys-process/procps[kill]
+	)
+	su? (
+		!<sys-apps/shadow-4.7-r2
+		!>=sys-apps/shadow-4.7-r2[su]
 	)
 	!net-wireless/rfkill
 	!sys-process/schedutils
@@ -168,7 +173,6 @@ multilib_src_configure() {
 			--disable-login
 			--disable-nologin
 			--disable-pylibmount
-			--disable-su
 			--enable-agetty
 			--enable-bash-completion
 			--enable-line
@@ -182,10 +186,12 @@ multilib_src_configure() {
 			$(use_enable cramfs)
 			$(use_enable fdformat)
 			$(use_enable hardlink)
+			$(use_enable kill)
+			$(use_enable logger)
+			$(use_enable su)
 			$(use_enable tty-helpers mesg)
 			$(use_enable tty-helpers wall)
 			$(use_enable tty-helpers write)
-			$(use_enable kill)
 		)
 	else
 		myeconfargs+=(
