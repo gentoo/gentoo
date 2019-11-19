@@ -4,9 +4,9 @@ DESCRIPTION=A lightweight volume control that sits in your systray
 EAPI=7
 HOMEPAGE=http://nullwise.com/volumeicon.html
 IUSE=libnotify
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=dev-libs/glib:2 media-libs/alsa-lib x11-libs/gtk+:3[X] x11-libs/libX11 libnotify? ( >=x11-libs/libnotify-0.7 )
 SLOT=0
 SRC_URI=http://nullwise.com/volumeicon/volumeicon-0.5.1.tar.gz
-_md5_=a0595dc109cd829db72a0041219ad3da
+_md5_=f0dca3b87fa2edfea856f48be0174ec5
