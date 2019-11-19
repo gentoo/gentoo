@@ -5,7 +5,7 @@ EAPI="7"
 
 inherit autotools flag-o-matic systemd
 
-PATCH_V="7.1.31bp"
+PATCH_V="7.1.33bp"
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://secure.php.net/"
