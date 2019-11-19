@@ -4,10 +4,10 @@ DEPEND=dev-libs/libsass:=
 DESCRIPTION=A libsass command line driver
 EAPI=7
 HOMEPAGE=https://github.com/sass/sassc
-KEYWORDS=amd64 ~arm arm64 ~ppc ~ppc64 ~x86 ~amd64-linux
+KEYWORDS=amd64 ~arm arm64 ~ppc ~ppc64 x86 ~amd64-linux
 LICENSE=MIT
 RDEPEND=dev-libs/libsass:=
 SLOT=0
 SRC_URI=https://github.com/sass/sassc/archive/3.6.0.tar.gz -> sassc-3.6.0.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=0e6ebf3659d6c8b1e8f283b4b0d3e5a9
+_md5_=233f2b314697d3b2d2e4011aeee9ea19
