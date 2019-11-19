@@ -2595,7 +2595,7 @@ app-text/pybookreader 0.5.0-r1: A book reader for .fb2 .html and plain text (pos
 app-text/pylize 1.3b-r1: Python HTML Slideshow Generator using HTML and CSS
 app-text/pytextile 2.3.3 3.0.3: A Python port of Textile, A humane web text generator
 app-text/q-text-as-data 1.5.0: A CLI tool that allows direct execution of SQL-like queries on text
-app-text/qpdf 8.2.1 8.4.1 8.4.2 9.0.1 9.0.2: Command-line tool for structural, content-preserving transformation of PDF files
+app-text/qpdf 9.0.2 9.1.0: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.16 0.4.18_pre3-r1 0.4.18_pre4: A tabbed document viewer
 app-text/queequeg 0.91-r2: A checker for English grammar, for people who are not native English
 app-text/rarian 0.8.1-r3: A documentation metadata library
