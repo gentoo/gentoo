@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils
+
+inherit desktop eutils toolchain-funcs
 
 DESCRIPTION="Free version of the well-known city building simulation"
 HOMEPAGE="http://www.donhopkins.com/home/micropolis/"
@@ -12,15 +13,14 @@ SRC_URI="http://www.donhopkins.com/home/micropolis/${PN}-activity-source.tgz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	media-libs/libsdl
 	media-libs/sdl-mixer
 	x11-libs/libX11
 	x11-libs/libXpm"
-DEPEND="${RDEPEND}
-	sys-devel/bison"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/bison"
 
 S=${WORKDIR}/${PN}-activity/
 
@@ -44,7 +44,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -C src LDFLAGS="${LDFLAGS}"
+	emake -C src LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)"
 }
 
 src_install() {
