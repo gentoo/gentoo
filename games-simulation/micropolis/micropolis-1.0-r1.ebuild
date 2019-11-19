@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+
+inherit desktop eutils toolchain-funcs
 
 DESCRIPTION="Free version of the well-known city building simulation"
 HOMEPAGE="http://www.donhopkins.com/home/micropolis/"
@@ -42,7 +43,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -C src LDFLAGS="${LDFLAGS}"
+	emake -C src LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)"
 }
 
 src_install() {
