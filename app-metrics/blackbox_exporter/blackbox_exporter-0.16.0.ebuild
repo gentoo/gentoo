@@ -6,7 +6,7 @@ inherit fcaps user golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/blackbox_exporter"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
-BLACKBOX_EXPORTER_COMMIT="3f726a8"
+BLACKBOX_EXPORTER_COMMIT="991f898"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
