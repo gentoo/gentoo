@@ -543,7 +543,7 @@ python_gen_any_dep() {
 
 			local i_depstr=${depstr//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
 			# note: need to strip '=' slot operator for || deps
-			out="( ${PYTHON_PKG_DEP%=} ${i_depstr} ) ${out}"
+			out="( ${PYTHON_PKG_DEP/:0=/:0} ${i_depstr} ) ${out}"
 		fi
 	done
 	echo "|| ( ${out})"
