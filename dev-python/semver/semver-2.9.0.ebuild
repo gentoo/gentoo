@@ -25,6 +25,8 @@ RDEPEND=""
 
 DEPEND="${RDEPEND}"
 
+RESTRICT="!test? ( test )"
+
 S="${WORKDIR}/python-${P}"
 
 python_test() {
