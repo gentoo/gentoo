@@ -44,7 +44,8 @@ src_prepare() {
 
 	find "${S}" -type f -name 'Makefile*' -print0 | \
 		xargs -0 -I '{}' \
-		sed -r -e 's:-\<Werror\>::g' -i '{}' \
+		sed -r -e 's:-\<Werror\>::g' -e "s:/usr:${EPREFIX}/usr:g" \
+		-i '{}' \
 		|| die
 
 	# BITS is tied to ARCH - please set appropriately if you add new keywords
