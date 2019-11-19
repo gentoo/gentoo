@@ -1,5 +1,5 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DEFINED_PHASES=configure install prepare
+DEFINED_PHASES=configure install prepare test
 DEPEND=>=sys-devel/bison-3.0 sys-devel/flex oniguruma? ( >=dev-libs/oniguruma-6.1.3:=[static-libs?] )
 DESCRIPTION=A lightweight and flexible command-line JSON processor
 EAPI=7
@@ -11,4 +11,4 @@ RDEPEND=!static-libs? ( oniguruma? ( >=dev-libs/oniguruma-6.1.3[static-libs?] ) 
 SLOT=0
 SRC_URI=https://github.com/stedolan/jq/releases/download/jq-1.6/jq-1.6.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=e65bb9bc8dac744e1ea4616b3c2e3d7d
+_md5_=aeaff4fd98cda9b4894c6e21157af84e
