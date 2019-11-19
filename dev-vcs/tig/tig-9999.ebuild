@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit bash-completion-r1
 
@@ -26,7 +26,7 @@ DEPEND="
 	sys-libs/readline:0="
 RDEPEND="${DEPEND}
 	dev-vcs/git"
-[[ ${PV} == "9999" ]] && DEPEND+=" app-text/asciidoc app-text/xmlto"
+[[ ${PV} == "9999" ]] && BDEPEND+=" app-text/asciidoc app-text/xmlto"
 
 # encoding/env issues
 RESTRICT="test"
