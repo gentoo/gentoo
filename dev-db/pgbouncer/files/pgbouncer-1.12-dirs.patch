@@ -1,0 +1,31 @@
+--- a/etc/pgbouncer.ini
++++ b/etc/pgbouncer.ini
+@@ -43,7 +43,9 @@
+ ;;;
+ 
+ logfile = /var/log/pgbouncer/pgbouncer.log
+-pidfile = /var/run/pgbouncer/pgbouncer.pid
++
++; Leave unset. This is handled in the initscript.
++;pidfile =
+ 
+ ;;;
+ ;;; Where to wait for clients
+@@ -53,11 +55,12 @@
+ listen_addr = 127.0.0.1
+ listen_port = 6432
+ 
+-;; Unix socket is also used for -R.
+-;; On Debian it should be /var/run/postgresql
+-;unix_socket_dir = /tmp
+-;unix_socket_mode = 0777
+-;unix_socket_group =
++; Unix socket is also used for -R (online restart), but the
++; initscripts can't do that. Generally, you'll want to leave these
++; alone. System-wide default is: /run/postgresql
++unix_socket_dir = /run/postgresql
++unix_socket_mode = 0777
++unix_socket_group = postgres
+ 
+ ;;;
+ ;;; TLS settings for accepting clients
