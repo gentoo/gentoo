@@ -321,10 +321,6 @@ kde-misc/systemd-kcm
 # Removal in 30 days
 dev-python/gnome-keyring-python
 
-# Matthew Thode <prometheanfire@gentoo.org> (2019-10-20)
-# defunct upstream, removal in 30 days. Bug #611580
-app-emulation/openstack-guest-agents-unix
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Fails to build.  Last release in 2009.  The stable version is EAPI 0.
 # Removal in 30 days.  Bug #698162.

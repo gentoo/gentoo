@@ -73,9 +73,9 @@ src_install() {
 
 	dodoc AUTHOR BUILDING-JAILS.TXT CHANGELOG CONTRIB README SECURITY TODO
 
+	( docinto chroot; dodoc setup_chroot.sh config.h )
 	# don't compress setup-script, so it is usable if necessary
-	insinto /usr/share/doc/${PF}/chroot
-	doins setup_chroot.sh config.h
+	docompress -x /usr/share/doc/${PF}/chroot
 
 	readme.gentoo_create_doc
 }

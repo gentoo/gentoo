@@ -15,6 +15,8 @@ SLOT="0/26"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~m68k-mint ~sparc-solaris"
 IUSE="doc examples perl static-libs test"
 
+RESTRICT="!test? ( test )"
+
 CDEPEND="
 	net-libs/gnutls:0=
 	sys-libs/zlib
