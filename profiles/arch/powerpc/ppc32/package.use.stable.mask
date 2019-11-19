@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,10 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Ulrich Müller <ulm@gentoo.org> (2019-11-19)
+# Depends on net-misc/unison which is not yet stable
+net-misc/scponly unison
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-08-15)
 # media-libs/libsidplay:2 appears to be broken, bug #660288
