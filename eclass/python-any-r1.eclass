@@ -156,7 +156,7 @@ _python_any_set_globals() {
 		python_export "${i}" PYTHON_PKG_DEP
 
 		# note: need to strip '=' slot operator for || deps
-		deps="${PYTHON_PKG_DEP%=} ${deps}"
+		deps="${PYTHON_PKG_DEP/:0=/:0} ${deps}"
 	done
 	deps="|| ( ${deps})"
 
