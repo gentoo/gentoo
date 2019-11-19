@@ -1492,7 +1492,6 @@ app-emulation/lxc-templates 3.0.3: Old style template scripts for LXC
 app-emulation/lxd 3.14 3.16-r1: Fast, dense and secure container management
 app-emulation/nemu 2.1.0 2.2.0 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 10.3.10: Opensourced tools for VMware guests
-app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1 1.39.1_p20170227: Unix Guest Agent for OpenStack
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.12 4.3.4: Set of scripts to easily install and use Windows games and software
 app-emulation/punes 0.104 0.105: Nintendo Entertainment System (NES) emulator
@@ -2409,7 +2408,7 @@ app-text/calibre 3.47.1 3.48.0 4.1.0-r1 4.2.0 4.3.0-r1: Ebook management applica
 app-text/capyt 1.1.1: A python3 CLI utility to interface with cpy.pt paste service
 app-text/catdoc 0.95: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/cb2bib 1.9.8 1.9.9 2.0.0: Tool for extracting unformatted bibliographic references
-app-text/cedilla 0.6 0.7: UTF-8 to postscript converter
+app-text/cedilla 0.7: UTF-8 to postscript converter
 app-text/chasen 2.4.4-r3: Japanese Morphological Analysis System, ChaSen
 app-text/cherrytree 0.37.0: A hierarchical note taking application
 app-text/cmark 0.29.0: CommonMark parsing and rendering library and program in C
@@ -3157,7 +3156,7 @@ dev-db/percona-xtrabackup 2.4.15 8.0.7: Hot backup utility for MySQL based serve
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
 dev-db/pg_activity 1.5.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
-dev-db/pgadmin4 4.5 4.8 4.10 4.13: GUI administration and development platform for PostgreSQL
+dev-db/pgadmin4 4.13: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3 4.0.0: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 10.3 11.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.9.0 1.10.0 1.11.0 1.12.0: Lightweight connection pooler for PostgreSQL
@@ -8721,7 +8720,7 @@ dev-python/python-ntpdshm 0.2.1: Python interface to ntpd shared memory driver 2
 dev-python/python-octaviaclient 1.4.0 1.8.0: A client for the OpenStack Zun API
 dev-python/python-oembed 0.2.4: A Python library that implements an OEmbed consumer
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
-dev-python/python-openstackclient 3.14.3 3.16.2 3.18.0: A client for the OpenStack APIs
+dev-python/python-openstackclient 3.14.3 3.16.2 3.18.0 3.18.1: A client for the OpenStack APIs
 dev-python/python-otrs 0.3.0: A programmatic interface to OTRS SOAP API
 dev-python/python-pam 0.1.4: A python interface to the PAM library on linux using ctypes
 dev-python/python-pluginloader 1.0.0: Library to manage python plugins/extensions
