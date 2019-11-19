@@ -12,11 +12,11 @@ SRC_URI="https://github.com/troglobit/sysklogd/releases/download/v$(ver_cut 1-2)
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="klogd logrotate systemd"
+IUSE="klogd logger logrotate systemd"
 RESTRICT="test"
 
-DEPEND=""
-RDEPEND=""
+DEPEND="!sys-apps/util-linux[logger]"
+RDEPEND="${DEPEND}"
 
 DOCS=( ChangeLog.md README.md )
 
@@ -37,8 +37,8 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		# we have logger from sys-apps/util-linux
-		--without-logger
 		$(use_with klogd)
+		$(use_with logger)
 		$(use_with systemd systemd $(systemd_get_systemunitdir))
 	)
 	econf "${myeconfargs[@]}"
