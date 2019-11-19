@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils qmake-utils
+inherit desktop qmake-utils
 
 DESCRIPTION="Cross-platform Twitch client"
 HOMEPAGE="https://alamminsalo.github.io/orion/"
