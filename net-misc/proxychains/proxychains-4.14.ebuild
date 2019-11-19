@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs multilib
+inherit toolchain-funcs
 
 MY_PN=${PN}-ng
 MY_P=${MY_PN}-${PV}
