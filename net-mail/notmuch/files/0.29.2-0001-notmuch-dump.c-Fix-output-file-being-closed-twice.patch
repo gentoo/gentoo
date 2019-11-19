@@ -1,0 +1,20 @@
+--- a/notmuch-dump.c	2019-07-24 17:11:02.899384482 +0200
++++ b/notmuch-dump.c	2019-07-24 17:12:08.100487117 +0200
+@@ -329,13 +329,15 @@
+ 	}
+     }
+ 
+-    if (gzclose_w (output) != Z_OK) {
++    ret = gzclose_w (output);
++    if (ret) {
+ 	fprintf (stderr, "Error closing %s: %s\n", name_for_error,
+ 		 gzerror (output, NULL));
+ 	ret = EXIT_FAILURE;
+ 	output = NULL;
+ 	goto DONE;
+-    }
++    } else
++        output = NULL;
+ 
+     if (output_file_name) {
+ 	ret = rename (tempname, output_file_name);

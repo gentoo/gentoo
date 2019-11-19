@@ -31,7 +31,7 @@ CDEPEND="
 	>=dev-libs/glib-2.22:2
 	>=dev-libs/gmime-3.0.3:3.0
 	>=dev-libs/xapian-1.4.8:=
-	dev-python/sphinx[${PYTHON_USEDEP}]
+	dev-python/sphinx
 	sys-apps/texinfo
 	>=sys-libs/zlib-1.2.5.2
 	sys-libs/talloc
@@ -74,6 +74,7 @@ SITEFILE="50${PN}-gentoo.el"
 MY_LD_LIBRARY_PATH="${WORKDIR}/${P}/lib"
 PATCHES=(
 	"${FILESDIR}"/${PV}-0001-Use-loopback-IP-address-rather-than-name.patch
+	"${FILESDIR}"/${PV}-0001-notmuch-dump.c-Fix-output-file-being-closed-twice.patch
 )
 
 bindings() {
