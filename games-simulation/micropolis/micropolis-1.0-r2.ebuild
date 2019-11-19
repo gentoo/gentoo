@@ -12,15 +12,14 @@ SRC_URI="http://www.donhopkins.com/home/micropolis/${PN}-activity-source.tgz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	media-libs/libsdl
 	media-libs/sdl-mixer
 	x11-libs/libX11
 	x11-libs/libXpm"
-DEPEND="${RDEPEND}
-	sys-devel/bison"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/bison"
 
 S=${WORKDIR}/${PN}-activity/
 
