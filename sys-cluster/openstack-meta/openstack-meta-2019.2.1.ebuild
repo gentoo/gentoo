@@ -11,7 +11,7 @@ SLOT="0"
 IUSE="cinder glance heat keystone neutron nova placement swift"
 
 if [[ ${PV} != *9999 ]];then
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 DEPEND=""
@@ -21,7 +21,7 @@ RDEPEND="
 	neutron? ( ~sys-cluster/neutron-15.0.0 )
 	glance? ( ~app-admin/glance-19.0.0 )
 	cinder? ( ~sys-cluster/cinder-15.0.0 )
-	nova? ( ~sys-cluster/nova-20.0.0 )
+	nova? ( ~sys-cluster/nova-20.0.1 )
 	heat? ( ~sys-cluster/heat-13.0.0 )
 	placement? ( ~sys-cluster/placement-2.0.0 )
 "
