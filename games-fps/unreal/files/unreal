@@ -1,3 +1,0 @@
-#!/bin/sh
-cd GENTOO_DIR
-exec ./UnrealTournament "$@"
