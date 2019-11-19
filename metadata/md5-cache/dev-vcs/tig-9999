@@ -1,7 +1,8 @@
+BDEPEND=app-text/asciidoc app-text/xmlto >=dev-vcs/git-1.8.2.1[curl] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=sys-libs/ncurses:0=[unicode?] sys-libs/readline:0= app-text/asciidoc app-text/xmlto >=dev-vcs/git-1.8.2.1[curl] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=sys-libs/ncurses:0=[unicode?] sys-libs/readline:0=
 DESCRIPTION=text mode interface for git
-EAPI=6
+EAPI=7
 HOMEPAGE=https://jonas.github.io/tig/
 IUSE=test unicode
 LICENSE=GPL-2
@@ -11,4 +12,4 @@ REQUIRED_USE=test? ( unicode )
 RESTRICT=test
 SLOT=0
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=cfec06a4560e3a5ec3887c12ee7838f6
+_md5_=573f3431693eec0adc3cebf17619c41c
