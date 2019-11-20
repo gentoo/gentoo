@@ -8,7 +8,7 @@ DESCRIPTION="A style to bend Qt applications to look like they belong into GNOME
 HOMEPAGE="https://github.com/FedoraQt/adwaita-qt"
 SRC_URI="https://github.com/FedoraQt/${PN}/archive/${PV}/${P}.tar.gz"
 
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 
