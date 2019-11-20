@@ -81,7 +81,7 @@ RDEPEND="
 		>=dev-libs/protobuf-2.5.0:=
 		>=net-libs/libmicrodns-0.0.9:=
 	)
-	dav1d? ( media-libs/dav1d )
+	dav1d? ( media-libs/dav1d:= )
 	dbus? ( sys-apps/dbus )
 	dc1394? (
 		media-libs/libdc1394:2
