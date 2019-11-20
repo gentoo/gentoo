@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 # dbus problems
 RESTRICT="test"
 
-S="${WORKDIR}/lib${PN}-VERSION_${PV}-5b272ae218ccdf1f67f4eed92e2cdbe21c56ceb8"
+S="${WORKDIR}/lib${PN}-VERSION_${PV}-525ec684cfa8d234f797d7e49e21c476eea04d8e"
 
 src_prepare() {
 	default
