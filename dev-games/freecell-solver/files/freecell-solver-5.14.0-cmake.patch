@@ -1,0 +1,19 @@
+Package wants to install all kinds of doc files. It does not help us.
+
+--- a/CMakeLists.txt	2019-09-12 23:04:19.628187073 +0200
++++ b/CMakeLists.txt	2019-09-12 23:06:38.928231282 +0200
+@@ -858,14 +858,6 @@
+     INSTALL_MAN ("${fc_solve_manpage}" 6)
+ ENDIF ()
+ 
+-INSTALL(
+-    FILES
+-        ${docs_to_install}
+-        "README.win32.txt"
+-    DESTINATION
+-        "share/doc/freecell-solver-5.14.0"
+-)
+-
+ SET (dest "include/freecell-solver")
+ INSTALL(
+     FILES
