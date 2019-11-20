@@ -341,11 +341,6 @@ www-servers/thin
 # Removal in 30 days.  Bug #697376.
 app-text/scrollkeeper
 
-# Agostino Sarubbo <ago@gentoo.org> (2019-10-18)
-# Superseded by app-admin/checksec
-# Removal in 30 days.
-app-admin/hardening-check
-
 # Thomas Deutschmann <whissi@gentoo.org> (2019-10-17)
 # clamav-milter completely broken, #697688
 ~app-antivirus/clamav-0.102.0
