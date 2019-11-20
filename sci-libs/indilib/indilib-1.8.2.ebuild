@@ -32,6 +32,8 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-cpp/gtest-1.8.0 )
 "
 
+RESTRICT="!test? ( test )"
+
 S="${WORKDIR}/${P/lib/}"
 
 src_configure() {
