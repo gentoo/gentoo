@@ -340,12 +340,6 @@ www-servers/thin
 # clamav-milter completely broken, #697688
 ~app-antivirus/clamav-0.102.0
 
-# David Seifert <soap@gentoo.org> (2019-10-17)
-# Dead upstream, EAPI 0, low quality ebuild,
-# hasn't been touched in ages
-# Removal in 30 days.  Bug #697274.
-media-sound/mserv
-
 # Mikle Kolyada <zlogene@gentoo.org> (2019-10-16)
 # not needed due to openpam removal. Please
 # update your packages running emerge with the
