@@ -25,8 +25,8 @@ SLOT="0"
 IUSE="X wayland"
 
 DEPEND="${PYTHON_DEPS}
-		>=dev-util/glslang-7.12.3353_pre20191027:=[${MULTILIB_USEDEP}]
-		~dev-util/spirv-tools-9999:=[${MULTILIB_USEDEP}]
+		>=dev-util/glslang-7.12.3353_pre20191027-r1:=[${MULTILIB_USEDEP}]
+		~dev-util/spirv-tools-2019.10_pre20191027:=[${MULTILIB_USEDEP}]
 		>=dev-util/vulkan-headers-1.1.125
 		wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 		X? (
