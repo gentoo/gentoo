@@ -241,7 +241,7 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	xdg_src_prepare # bug 608256
 
-	has_version '>=net-libs/libupnp-1.8.0' && \
+	has_version 'net-libs/libupnp:1.8' && \
 		eapply "${FILESDIR}"/${PN}-2.2.8-libupnp-slot-1.8.patch
 
 	# Bootstrap when we are on a git checkout.
