@@ -2,46 +2,46 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit golang-build golang-vcs-snapshot systemd
+inherit golang-build golang-vcs-snapshot bash-completion-r1
 
 EGO_PN="k8s.io/kubernetes"
 ARCHIVE_URI="https://github.com/kubernetes/kubernetes/archive/v${PV}.tar.gz -> kubernetes-${PV}.tar.gz"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
-DESCRIPTION="Kubernetes Node Agent"
+DESCRIPTION="CLI to run commands against Kubernetes clusters"
 HOMEPAGE="https://github.com/kubernetes/kubernetes https://kubernetes.io"
 SRC_URI="${ARCHIVE_URI}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="hardened"
+IUSE=""
 
-DEPEND="dev-go/go-bindata
-	>=dev-lang/go-1.11"
+DEPEND=">=dev-lang/go-1.12
+	dev-go/go-bindata"
 
 RESTRICT="test"
 
 src_prepare() {
 	default
-	sed -i -e "/vendor\/github.com\/jteeuwen\/go-bindata\/go-bindata/d"  -e "s/-s -w/-w/" src/${EGO_PN}/hack/lib/golang.sh || die
+	sed -i -e "/vendor\/github.com\/jteeuwen\/go-bindata\/go-bindata/d" -e "s/-s -w/-w/" src/${EGO_PN}/hack/lib/golang.sh || die
 	sed -i -e "/export PATH/d" src/${EGO_PN}/hack/generate-bindata.sh || die
 }
 
 src_compile() {
-	export CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')"
 	LDFLAGS="" GOPATH="${WORKDIR}/${P}" emake -j1 -C src/${EGO_PN} WHAT=cmd/${PN} GOFLAGS=-v
+	pushd src/${EGO_PN} || die
+	_output/bin/${PN} completion bash > ${PN}.bash || die
+	_output/bin/${PN} completion zsh > ${PN}.zsh || die
+	popd || die
 }
 
 src_install() {
 	pushd src/${EGO_PN} || die
 	dobin _output/bin/${PN}
+
+	newbashcomp ${PN}.bash ${PN}
+	insinto /usr/share/zsh/site-functions
+	newins ${PN}.zsh _${PN}
+
 	popd || die
-	keepdir /etc/kubernetes/manifests /var/log/kubelet /var/lib/kubelet
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/${PN}.logrotated ${PN}
-	systemd_dounit "${FILESDIR}"/${PN}.service
-	insinto /etc/kubernetes
-	newins "${FILESDIR}"/${PN}.env ${PN}.env
 }
