@@ -336,11 +336,6 @@ dev-ruby/termcolor
 dev-ruby/terrapin
 www-servers/thin
 
-# Michał Górny <mgorny@gentoo.org> (2019-10-20)
-# A dummy package with no revdeps.  Replaced by app-text/rarian.
-# Removal in 30 days.  Bug #697376.
-app-text/scrollkeeper
-
 # Thomas Deutschmann <whissi@gentoo.org> (2019-10-17)
 # clamav-milter completely broken, #697688
 ~app-antivirus/clamav-0.102.0
