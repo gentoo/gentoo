@@ -264,7 +264,6 @@ app-admin/gopass 1.8.6-r1: a simple but powerful password manager for the termin
 app-admin/graylog2 2.4.6 2.5.1: Free and open source log management
 app-admin/grubconfig 1.28-r2: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3: Graphical tool to show free disk space like df
-app-admin/hardening-check 2.5 2.6 2.7: Report the hardening characterists of a set of binaries
 app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.9 1.2.10 1.2.12-r1 1.3.1: Rebuild Haskell dependencies in Gentoo
 app-admin/hcloud 1.12.0 1.13.0 1.14.0: A command-line interface for Hetzner Cloud
@@ -1725,7 +1724,6 @@ app-i18n/scim-tables 0.5.13: Smart Common Input Method (SCIM) Generic Table Inpu
 app-i18n/scim-tomoe 0.6.0-r3: Japanese input method Tomoe IMEngine for SCIM
 app-i18n/scim-uim 0.2.0-r2: An input module for Smart Common Input Method (SCIM) which uses uim as backend
 app-i18n/scim-wijesekera 0.3.3-r1: Wijesekara keyboard for Sinhala input using scim
-app-i18n/scim-wnn 1.0.0-r1: Japanese input method Wnn IMEngine for SCIM
 app-i18n/skk-jisyo 201605 201805 999999: Jisyo (dictionary) files for the SKK Japanese-input software
 app-i18n/skkfep 0.87-r1: A SKK-like Japanese input method for console
 app-i18n/skkserv 9.6-r3: Dictionary server for the SKK Japanese-input software
@@ -2612,7 +2610,6 @@ app-text/rtf2html 0.2.0-r1: RTF to HTML converter
 app-text/sablotron 1.0.3-r1: An XSLT Parser in C++
 app-text/sary 1.2.0-r1: Sary: suffix array library and tools
 app-text/scdoc 1.3.1 1.5.2 1.8.1 1.9.3 1.9.3-r1 9999: Standalone tool for generating man pages with a simple syntax
-app-text/scrollkeeper 9999-r2: Dummy scrollkeeper for testing rarian
 app-text/scrollkeeper-dtd 1.0-r1: DTD from the Scrollkeeper package
 app-text/sdcv 0.5.2: Console version of Stardict program
 app-text/sgml-common 0.6.3-r7: Base ISO character entities and utilities for SGML
@@ -5181,7 +5178,6 @@ dev-libs/volume_key 0.3.11 0.3.12: Library for manipulating and storing storage 
 dev-libs/wayland 1.17.0 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.18 9999: Wayland protocol files
 dev-libs/weston 3.0.0 7.0.0 9999: Wayland reference compositor
-dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.24 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12 1.4.13: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12 1.4.13: SWIG and JNI bindings for Xapian
@@ -9713,7 +9709,6 @@ dev-ruby/classifier-reborn 2.2.0: Module to allow Bayesian and other types of cl
 dev-ruby/climate_control 0.2.0: Easily manage your environment
 dev-ruby/cliver 0.3.2: An easy way to detect and use command-line dependencies
 dev-ruby/cmdparse 2.0.6-r1 3.0.4: Advanced command line parser supporting commands
-dev-ruby/cocaine 0.6.0: A small library for doing command lines
 dev-ruby/coderay 1.1.2: A Ruby library for syntax highlighting
 dev-ruby/coercible 1.0.0: Powerful, flexible and configurable coercion library
 dev-ruby/coffee-rails 4.2.2-r1 5.0.0: Coffee Script adapter for the Rails asset pipeline
@@ -9752,7 +9747,6 @@ dev-ruby/ddmemoize 1.0.0: Adds support for memoizing functions
 dev-ruby/ddmetrics 1.0.1: Non-timeseries measurements for Ruby programs
 dev-ruby/ddplugin 1.0.2: Provides plugin management for Ruby projects
 dev-ruby/debug_inspector 0.0.3: A Ruby wrapper for the MRI 2.0 debug_inspector API
-dev-ruby/debugger-linecache 1.2.0: A module to read and cache file information of a Ruby program
 dev-ruby/deep_merge 1.2.1: A simple set of utility functions for Hash
 dev-ruby/delayer 0.0.2 1.0.0: Delay the processing
 dev-ruby/delayer-deferred 2.0.0 2.1.0 2.1.1: Ruby implementation of JSDeferred
@@ -9777,7 +9771,6 @@ dev-ruby/equalizer 0.0.11: Module to define equality, equivalence and inspection
 dev-ruby/equatable 0.5.0 0.6.0 0.6.1: Allows ruby objects to implement equality comparison and inspection methods
 dev-ruby/erubi 1.8.0 1.9.0: a ERB template engine for ruby; a simplified fork of Erubis
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
-dev-ruby/escape_utils 1.2.1: Faster string escaping routines for your ruby apps
 dev-ruby/ethon 0.12.0: Very lightweight libcurl wrapper
 dev-ruby/evented-spec 0.9.0: A set of helpers to help you test your asynchronous code
 dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing library for Ruby programs
@@ -10115,7 +10108,6 @@ dev-ruby/rspec-support 3.8.2 3.8.3 3.9.0: A Behaviour Driven Development (BDD) f
 dev-ruby/rspectacular 0.70.7 0.70.8: RSpec support and matchers
 dev-ruby/ruby-atk 3.3.2 3.3.6 3.3.7: Ruby Atk bindings
 dev-ruby/ruby-augeas 0.5.0-r3: Ruby bindings for Augeas
-dev-ruby/ruby-beautify 0.97.4: a cli tool (and module) to beautify ruby code
 dev-ruby/ruby-cairo-gobject 3.3.2 3.3.6 3.3.7: Ruby cairo-gobject bindings
 dev-ruby/ruby-clutter 3.3.2 3.3.6 3.3.7: Ruby Clutter bindings
 dev-ruby/ruby-clutter-gdk 3.3.2 3.3.6 3.3.7: Ruby binding of GDK specific API of Clutter
@@ -10236,8 +10228,6 @@ dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of c
 dev-ruby/tdiff 0.3.3-r1 0.3.4: Calculates the differences between two tree-like structures
 dev-ruby/temple 0.8.0 0.8.2: An abstraction and a framework for compiling templates to pure Ruby
 dev-ruby/term-ansicolor 1.7.1: Small Ruby library that colors strings using ANSI escape sequences
-dev-ruby/termcolor 1.2.2: a library for ANSI color formatting like HTML for output in terminal
-dev-ruby/terrapin 0.6.0: Run shell commands safely, even with user-supplied values
 dev-ruby/test-unit 3.2.7 3.3.2 3.3.3 3.3.4: An xUnit family unit testing framework for Ruby
 dev-ruby/test-unit-rr 1.0.5: RR adapter for Test::Unit
 dev-ruby/test_construct 2.0.1-r1 2.0.2: Creates temporary files and directories for testing
@@ -11377,7 +11367,6 @@ games-fps/industri 1.01: Quake/Tenebrae based, single player game
 games-fps/legends 0.4.1.43-r2: Fast-paced first-person-shooter online multiplayer game, similar to Tribes
 games-fps/nexuiz 2.5.2-r1: Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
 games-fps/openarena 0.8.8-r1: Open-source replacement for Quake 3 Arena
-games-fps/postal2 1409.2-r2: Postal 2: Share the Pain
 games-fps/prboom-plus 2.5.1.4: A Doom source port developed from the original PrBoom project
 games-fps/quake1-data 2.40: iD Software's Quake 1 ... the data files
 games-fps/quake1-demodata 1.06: Demo data for Quake 1
@@ -12861,7 +12850,6 @@ media-gfx/fr0st 1.4-r2: A fractal flame editor
 media-gfx/freepv 0.3.0-r5: Panorama viewer (Quicktime, PangeaVR, GLPanoView formats)
 media-gfx/freewrl 1.22.13-r5 2.3.3-r2 3.0.0-r1 9999: VRML97 and X3D compliant browser, library, and web-browser plugin
 media-gfx/frogr 1.3 1.5: flickr applications for GNOME
-media-gfx/galleryadd 2.30: Perl script to recursively adds directories/images to Gallery
 media-gfx/geeqie 1.4-r1 1.5 1.5.1 9999: A lightweight GTK image viewer forked from GQview
 media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
 media-gfx/gif2png 2.5.9 2.5.12 2.5.14: Converts images from gif format to png format
@@ -13967,7 +13955,6 @@ media-sound/mpg123 1.25.10-r1 1.25.12 1.25.13: a realtime MPEG 1.0/2.0/2.5 audio
 media-sound/mpg321 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mps-youtube 0.2.7.1 0.2.8 9999: Terminal-based YouTube player and downloader
-media-sound/mserv 0.35-r1: Jukebox-style music server
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
 media-sound/mumble 1.3.0 9999: Mumble is an open source, low-latency, high quality voice chat software
@@ -14458,7 +14445,6 @@ net-analyzer/nagios-plugins 2.2.1-r3 2.2.1-r4: Official plugins for Nagios
 net-analyzer/nagios-plugins-flameeyes 9999: Flameeyes's custom Nagios/Icinga plugins
 net-analyzer/nagios-plugins-linux-madrisan 25-r1: Additional and alternative Nagios plugins for Linux
 net-analyzer/nagios-plugins-snmp 0.6.0-r2: Additional Nagios plugins for monitoring SNMP capable devices
-net-analyzer/nagios-sap-ccms-plugin 0.7.3-r1 0.8: Nagios plugin that provides an interface to SAP CCMS Infrastructure
 net-analyzer/nagircbot 0.0.33: An irc bot that alerts you to nagios changes
 net-analyzer/nagstamon 2.0.1 3.0.2-r1 3.2.1: systray monitor for displaying realtime status of several monitoring systems
 net-analyzer/nagtrap 0.1.3-r1: Integrated snmptt visualization addon for the Nagios monitoring system
@@ -15949,7 +15935,6 @@ sci-biology/aaindex 9.1-r1: Amino acid indices and similarity matrices
 sci-biology/abyss 2.0.2-r1 2.0.3: Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
 sci-biology/amap 2.2-r3: Protein multiple-alignment-based sequence annealing
 sci-biology/amos 3.1.0-r4: A Modular, Open-Source whole genome assembler
-sci-biology/ariadne 1.3-r3: Protein sequences and profiles comparison
 sci-biology/augustus 2.5.5: Eukaryotic gene predictor
 sci-biology/bamtools 2.5.1 9999: A programmer's API and an end-user's toolkit for handling BAM files
 sci-biology/bcftools 1.5 1.9: Utilities for variant calling and manipulating VCF and BCF files
@@ -16107,20 +16092,17 @@ sci-chemistry/MDAnalysis 0.18.0-r1: A python library to analyze and manipulate m
 sci-chemistry/ParmEd 2.7.3 3.0.3: Parameter/topology editor and molecular simulator
 sci-chemistry/apbs 1.4.1-r2: Evaluation of electrostatic properties of nanoscale biomolecular systems
 sci-chemistry/aqua 3.2-r3: Program suite in this distribution calculates restraint violations
-sci-chemistry/aria 2.3.2_p20130826: Automated NOE assignment and NMR structure calculation
 sci-chemistry/autodock 4.2.6: A suite of automated docking tools
 sci-chemistry/autodock_vina 1.1.2: Program for drug discovery, molecular docking and virtual screening
 sci-chemistry/avogadro2 1.90.0_p20180211: Advanced molecule editor and visualizer 2
 sci-chemistry/bkchem 0.14.0_pre2-r2: Chemical drawing program
 sci-chemistry/bodr 9-r1 10: The Blue Obelisk Data Repository listing element and isotope properties
 sci-chemistry/cara-bin 1.8.4-r1: Analysis of NMR spectra and Computer Aided Resonance Assignment
-sci-chemistry/ccpn 2.4.1_p150226 2.4.2 2.4.2_p150325 2.4.2_p150413 2.4.2_p150421: The Collaborative Computing Project for NMR
 sci-chemistry/chemex 0.6.1: Program to fit chemical exchange induced shift and relaxation data
 sci-chemistry/chemical-mime-data 0.1.94-r2 0.1.94-r3: A collection of data files to add support for chemical MIME types
 sci-chemistry/chemtool 1.6.13 1.6.14: A GTK program for drawing organic molecules
 sci-chemistry/clashlist 3.17-r1: Build lists of van der Waals clashes from an input PDB file
 sci-chemistry/cluster 1.3.081231 1.3.081231-r1: Build lists of collections of interacting items
-sci-chemistry/cns 1.2.1-r8 1.3_p7-r1: Crystallography and NMR System
 sci-chemistry/dssp 2.2.1-r1: The protein secondary structure standard
 sci-chemistry/easychem 0.6-r1: Chemical structure drawing program - focused on presentation
 sci-chemistry/eden 5.3-r2: A crystallographic real-space electron-density refinement & optimization program
@@ -16309,7 +16291,7 @@ sci-geosciences/opencpn-plugin-weatherfax 1.3.20180316 9999: Weatherfax Plugin f
 sci-geosciences/opencpn-plugins-meta 4.2.0-r3: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0 0.96.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/qgis 3.2.3 3.4.12 9999: User friendly Geographic Information System
+sci-geosciences/qgis 3.4.12 9999: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.12.0 1.13.2 1.14.0: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
@@ -16345,7 +16327,6 @@ sci-libs/cbflib 0.9.3.3: Library providing a simple mechanism for accessing CBF 
 sci-libs/cblas-reference 20030223-r6 20151113-r2 20161223: C wrapper interface to the F77 reference BLAS implementation
 sci-libs/ccfits 2.4-r1 2.5: C++ interface for cfitsio
 sci-libs/ccolamd 2.8.0: Constrained Column approximate minimum degree ordering algorithm
-sci-libs/ccpn-data 2.3.1_p140425 2.4.0_p140425 2.4.1 2.4.2: The Collaborative Computing Project for NMR - Data
 sci-libs/cdd+ 077a: Another implementation of the double description method
 sci-libs/cddlib 094g 094h: C implementation of the Double Description Method of Motzkin et al
 sci-libs/cdf 3.4.1 3.5.0.2: Common Data Format I/O library for multi-dimensional data sets
@@ -17349,7 +17330,6 @@ sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklo
 sys-auth/polkit-qt 0.112.0_p20160416-r2 0.113.0: Qt wrapper around polkit-1 client libraries
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.11-r2 0.11-r3: Realtime Policy and Watchdog Daemon
-sys-auth/sakcl 0.1.0: OpenSSH AuthorizedKeysCmd provider utilizing LDAP
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
 sys-auth/ssh-ldap-pubkey 1.3.0-r2 1.3.1: Utility to manage SSH public keys stored in LDAP
 sys-auth/sssd 1.16.3-r3 2.1.0-r1 2.2.0-r1 2.2.2: System Security Services Daemon provides access to identity and authentication
@@ -18391,7 +18371,6 @@ www-servers/resin 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.3-r1 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
-www-servers/thin 1.7.2: A fast and very simple Ruby web server
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.96 8.5.46 8.5.47 9.0.7 9.0.26 9.0.27: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1 4.5.1 4.5.3 5.0.2 5.1: Python web framework and asynchronous networking library
@@ -19202,7 +19181,6 @@ x11-themes/gtk-engines-quartz 0.2: OSX GTK+ Theme Engine
 x11-themes/gtk-engines-rezlooks 0.6 0.6-r1: Rezlooks GTK+ Engine
 x11-themes/gtk-engines-ubuntulooks 0.9.12-r3: A derivative of the standard Clearlooks GTK+ 2.x engine with more orange feel
 x11-themes/gtk-engines-unico 1.0.3_pre20121212 1.0.3_pre20140109: The Unico GTK+ 3.x theming engine
-x11-themes/gtk-engines-xfce 3.2.0-r201 3.2.0-r301: A port of Xfce engine to GTK+ 3.x
 x11-themes/gtk-theme-switch 2.1.0-r1: Utility to switch and preview GTK+ theme
 x11-themes/haematite-xcursors 1.0: A simple crispy dark-grey xcursor theme
 x11-themes/hicolor-icon-theme 0.17: Fallback theme for the freedesktop icon theme specification
