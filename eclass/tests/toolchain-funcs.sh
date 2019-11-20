@@ -172,8 +172,8 @@ if type -P pathcc &>/dev/null; then
 	tend $?
 fi
 
-for compiler in gcc clang; do
-	if type -P ${compielr} &>/dev/null; then
+for compiler in gcc clang not-really-a-compiler; do
+	if type -P ${compiler} &>/dev/null; then
 		tbegin "tc-cpp-is-true ($compiler, defined)"
 		(
 			export CC=${compiler}
