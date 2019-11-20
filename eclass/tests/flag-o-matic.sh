@@ -63,7 +63,7 @@ CXXFLAGS="-O2 -B/foo -O1"
 LDFLAGS="-O2 -B/foo -O1"
 tbegin "strip-unsupported-flags for '-B/foo'"
 strip-unsupported-flags
-[[ ${CFLAGS} == "-O2 -O1" ]] && [[ ${CXXFLAGS} == "-O2 -O1" ]] && [[ ${LDFLAGS} == "" ]]
+[[ ${CFLAGS} == "-O2 -B/foo -O1" ]] && [[ ${CXXFLAGS} == "-O2 -B/foo -O1" ]] && [[ ${LDFLAGS} == "-O2 -B/foo -O1" ]]
 ftend
 
 CFLAGS="-O2 -B /foo -O1"
@@ -71,7 +71,7 @@ CXXFLAGS="-O2 -B /foo -O1"
 LDFLAGS="-O2 -B /foo -O1"
 tbegin "strip-unsupported-flags for '-B /foo'"
 strip-unsupported-flags
-[[ ${CFLAGS} == "-O2 -O1" ]] && [[ ${CXXFLAGS} == "-O2 -O1" ]] && [[ ${LDFLAGS} == "" ]]
+[[ ${CFLAGS} == "-O2 -B /foo -O1" ]] && [[ ${CXXFLAGS} == "-O2 -B /foo -O1" ]] && [[ ${LDFLAGS} == "-O2 -B /foo -O1" ]]
 ftend
 
 for var in $(all-flag-vars) ; do
