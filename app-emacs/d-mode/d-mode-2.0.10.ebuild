@@ -13,6 +13,7 @@ SRC_URI="https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode/archive/${PV}.
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="test"
 
 S="${WORKDIR}/Emacs-D-Mode-${PV}"
 SITEFILE="50${PN}-gentoo.el"
