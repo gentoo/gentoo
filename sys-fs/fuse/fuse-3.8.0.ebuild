@@ -13,7 +13,7 @@ SRC_URI="https://github.com/libfuse/libfuse/releases/download/${P}/${P}.tar.xz"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="test"
+IUSE="+suid test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig
@@ -44,6 +44,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	local emesonargs=(
+		-Duseroot=false
+	)
 	meson_src_configure
 }
 
@@ -65,8 +68,8 @@ multilib_src_install_all() {
 	# installed via fuse-common
 	rm -r "${ED}"/{etc,$(get_udevdir)} || die
 
-	# handled by the device manager
-	rm -r "${D}"/dev || die
+	# useroot=false prevents the build system from doing this.
+	use suid && fperms u+s /usr/bin/fusermount3
 
 	# manually install man pages to respect compression
 	rm -r "${ED}"/usr/share/man || die
