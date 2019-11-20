@@ -6,7 +6,8 @@ HOMEPAGE=https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode https://www.em
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
+RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode/archive/2.0.10.tar.gz -> d-mode-2.0.10.tar.gz
 _eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=8d4b6ae51b5b591b37298475c1070dca
+_md5_=dcec648f16c5b49dc4d769ca9fe570d9
