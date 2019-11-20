@@ -14,7 +14,7 @@ if [[ "${PV}" = *_rc* ]] ; then
 	S="${WORKDIR}/${PN}-${PN}-${MY_PV}"
 else
 	SRC_URI="mirror://sourceforge/nfs/${P}.tar.bz2"
-	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~riscv s390 sh sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -66,10 +66,11 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.4-mtab-sym.patch
 	"${FILESDIR}"/${PN}-1.2.8-cross-build.patch
-	"${FILESDIR}"/${PN}-2.3.4-no-werror.patch
-	"${FILESDIR}"/${P}-gssd-Look-in-lib32-for-gss-libs-aswell.patch
-	"${FILESDIR}"/${P}-Fix-include-order-between-config.h-and-stat.h.patch
+	"${FILESDIR}"/${PN}-2.4.2-no-werror.patch
 	"${FILESDIR}"/${PN}-2.4.1-statx.patch #688644
+	"${FILESDIR}"/${P}-Ensure-consistent-struct-stat.patch
+	"${FILESDIR}"/${P}-mountd-Add-check-for-struct-file_handle.patch
+	"${FILESDIR}"/${P}-mountd-Fix-compilation-for--disable-uuid.patch
 )
 
 pkg_setup() {

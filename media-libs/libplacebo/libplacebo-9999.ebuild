@@ -29,6 +29,8 @@ RDEPEND="glslang? ( dev-util/glslang[${MULTILIB_USEDEP}] )
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+RESTRICT="!test? ( test )"
+
 multilib_src_configure() {
 	local emesonargs=(
 		$(meson_feature glslang)

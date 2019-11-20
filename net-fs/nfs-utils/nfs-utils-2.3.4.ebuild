@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic linux-info multilib systemd
+inherit autotools flag-o-matic multilib systemd
 
 DESCRIPTION="NFS client and server daemons"
 HOMEPAGE="http://linux-nfs.org/"
@@ -14,7 +14,7 @@ if [[ "${PV}" = *_rc* ]] ; then
 	S="${WORKDIR}/${PN}-${PN}-${MY_PV}"
 else
 	SRC_URI="mirror://sourceforge/nfs/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~riscv s390 sh sparc x86"
 fi
 
 LICENSE="GPL-2"
@@ -38,7 +38,7 @@ DEPEND="
 	libmount? ( sys-apps/util-linux )
 	nfsv4? (
 		dev-libs/libevent:=
-		>=sys-apps/keyutils-1.5.9:=
+		>=sys-apps/keyutils-1.5.9
 		kerberos? (
 			>=net-libs/libtirpc-0.2.4-r1[kerberos]
 			app-crypt/mit-krb5
@@ -66,19 +66,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.4-mtab-sym.patch
 	"${FILESDIR}"/${PN}-1.2.8-cross-build.patch
-	"${FILESDIR}"/${PN}-2.4.2-no-werror.patch
-	"${FILESDIR}"/${PN}-2.4.1-statx.patch #688644
+	"${FILESDIR}"/${PN}-2.3.4-no-werror.patch
 )
-
-pkg_setup() {
-	linux-info_pkg_setup
-	if use nfsv4 && ! use nfsdcld && linux_config_exists && ! linux_chkconfig_present CRYPTO_MD5 ; then
-		ewarn "Your NFS server will be unable to track clients across server restarts!"
-		ewarn "Please enable the \"${HILITE}nfsdcld${NORMAL}\" USE flag to install the nfsdcltrack usermode"
-		ewarn "helper upcall program, or enable ${HILITE}CONFIG_CRYPTO_MD5${NORMAL} in your kernel to"
-		ewarn "support the legacy, in-kernel client tracker."
-	fi
-}
 
 src_prepare() {
 	default
@@ -138,9 +127,6 @@ src_install() {
 	mv "${ED}"/usr/sbin/rpc.statd "${ED}"/sbin/ || die
 
 	if use nfsv4 && use nfsidmap ; then
-		insinto /etc
-		doins support/nfsidmap/idmapd.conf
-
 		# Install a config file for idmappers in newer kernels. #415625
 		insinto /etc/request-key.d
 		echo 'create id_resolver * * /usr/sbin/nfsidmap -t 600 %k %d' > id_resolver.conf
