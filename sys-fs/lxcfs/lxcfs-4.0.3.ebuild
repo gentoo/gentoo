@@ -32,7 +32,8 @@ src_prepare() {
 
 src_configure() {
 	# Without the localstatedir the filesystem isn't mounted correctly
-	econf --localstatedir=/var
+	# Without with-distro ./configure will fail when cross-compiling
+	econf --localstatedir=/var --with-distro=gentoo
 }
 
 src_test() {
