@@ -42,7 +42,7 @@ RDEPEND="
 	sys-libs/ncurses:0/6
 	sys-libs/zlib:0/1
 	gdbm? ( sys-libs/gdbm:0= )
-	!libressl? ( dev-libs/openssl:0=[-bindist] )
+	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	sqlite? ( dev-db/sqlite:3= )
 	tk? (
