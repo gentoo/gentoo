@@ -95,6 +95,9 @@ multilib_src_configure() {
 		x86_64*) export AS=yasm;;
 	esac
 
+	# powerpc toolchain is not recognized anymore, #694368
+	[[ ${CHOST} == powerpc-* ]] && myconfargs+=( --force-target=generic-gnu )
+
 	# Build with correct toolchain.
 	tc-export CC CXX AR NM
 	# Link with gcc by default, the build system should override this if needed.
