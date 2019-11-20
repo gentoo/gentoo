@@ -5212,7 +5212,7 @@ dev-lisp/flexi-streams 1.0.16 1.0.17: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10 2.6.12: GNU Common Lisp
 dev-lisp/hyperspec 7.0-r1: Common Lisp ANSI-standard Hyperspec
 dev-lisp/roswell 19.08.10.101 19.09.12.102: A lisp installer and launcher for major environment
-dev-lisp/sbcl 1.3.11 1.4.9 1.5.3 1.5.6 1.5.7: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
+dev-lisp/sbcl 1.3.11 1.4.9 1.5.6 1.5.7: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/trivial-gray-streams 20170830 99999999: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.1.5 3.3.1 3.3.2: UIOP is a portability layer spun off ASDF3
 dev-lua/LuaBitOp 1.0.1-r1 1.0.2 1.0.2-r1: Bit Operations Library for the Lua Programming Language
@@ -13637,7 +13637,7 @@ media-plugins/vdr-coverviewer 0.0.2: VDR plugin: coverviewer for vdr-music
 media-plugins/vdr-cpumon 0.0.6_p1: VDR Plugin: Show cpu-usage on OSD
 media-plugins/vdr-ddci2 1.0.4 1.0.5 9999: VDR plugin: DDCI2 - Digital Devices CI support
 media-plugins/vdr-decruft 0.0.4-r1: VDR Plugin: Clean unwanted entries from channels.conf
-media-plugins/vdr-devstatus 0.4.1: VDR plugin: display the usa status of the available DVB devices
+media-plugins/vdr-devstatus 0.4.1 0.4.1-r1: VDR plugin: display the usage status of the available DVB devices
 media-plugins/vdr-dummydevice 2.0.0: VDR Plugin: dummy output device ,for recording server without any output devices
 media-plugins/vdr-duplicates 0.0.5 0.0.5-r1 0.1.0: VDR Plugin: show duplicated records
 media-plugins/vdr-dvbapi 2.1.1 2.2.2 2.2.4: VDR Plugin: allows connect VDR to OScam
@@ -18718,7 +18718,7 @@ x11-misc/grun 0.9.3-r1: A GTK based Run dialog resembling the Windows Run dialog
 x11-misc/gtk2fontsel 0.1-r1: A font selection tool similar to xfontsel
 x11-misc/gtkdialog 0.8.3-r2 99999: A small utility for fast and easy GUI building
 x11-misc/gxmessage 2.20.3 3.4.3: A GTK+ based xmessage clone
-x11-misc/habak 0.2.5-r2: A simple but powerful tool to set desktop wallpaper
+x11-misc/habak 0.2.5-r2 0.2.5-r3: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.2 1.0.2_p5: Tool which allows you to compose wallpapers ('root pixmaps') for X
 x11-misc/i3blocks 1.4-r1: highly flexible status line for the i3 window manager
 x11-misc/i3lock 2.10 2.11.1 2.12: Simple screen locker

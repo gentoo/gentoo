@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=media-libs/imlib2[X] x11-libs/libX11 virtual/pkgconfig x11-base/xorg-proto
+DESCRIPTION=A simple but powerful tool to set desktop wallpaper
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/fvwm-crystal/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/imlib2[X] x11-libs/libX11
+SLOT=0
+SRC_URI=https://sourceforge.net/projects/fvwm-crystal/files/habak/0.2.5/habak-0.2.5.tar.gz/download -> habak-0.2.5-sourceforge.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=249162e01f0138b2a4809938b3dab337
