@@ -10,7 +10,7 @@ SRC_URI="http://www.libimobiledevice.org/downloads/${P}.tar.bz2"
 # tools/iproxy.c is GPL-2+, everything else is LGPL-2.1+
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/4" # based on SONAME of libusbmuxd.so
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86"
 IUSE="kernel_linux static-libs"
 
 RDEPEND="
