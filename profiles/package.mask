@@ -325,13 +325,6 @@ net-analyzer/nagios-sap-ccms-plugin
 # until upstream releases fixed versions.
 ~xfce-base/xfce4-panel-4.15.0
 
-# Michał Górny <mgorny@gentoo.org> (2019-10-20)
-# The XFCE GTK+ engines have been abandoned upstream.  They do not work
-# well with modern GTK+ versions, and have no seen any updates
-# since 2015.
-# Removal in 30 days.  Bug #577252.
-x11-themes/gtk-engines-xfce
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-10-20)
 # Full of ancient StarOffice era templates, last updated in 2006.
 # Removal in 30 days. Bug #697400
