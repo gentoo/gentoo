@@ -361,11 +361,6 @@ dev-libs/mpfr:1
 # Masked for removal in a year.
 dev-libs/gmp:3
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-10-15)
-# Unmaintained and broken with current Frameworks.
-# Removal in 30 days. Bug #697780
-net-misc/knemo
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2019-10-15)
 # Fails self-tests badly, no revdeps, upstream doesnt care
 # since 1999. Removal in 30 days. Bug 641530.
