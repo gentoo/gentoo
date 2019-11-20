@@ -7614,7 +7614,7 @@ dev-python/curtsies 0.2.11 0.3.0 0.3.0-r1: Curses-like terminal wrapper, with co
 dev-python/cvxopt 1.1.9: Python package for convex optimization
 dev-python/cx_Freeze 4.3.4 5.0.2: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0: Composable style cycles
-dev-python/cython 0.29.4 0.29.12 0.29.13 0.29.14: A Python to C compiler
+dev-python/cython 0.29.4 0.29.12 0.29.13 0.29.14 0.29.14-r1: A Python to C compiler
 dev-python/cytoolz 0.8.0 0.8.2 0.10.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
