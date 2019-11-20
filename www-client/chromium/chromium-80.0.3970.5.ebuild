@@ -147,7 +147,10 @@ PATCHES=(
 	"${FILESDIR}/chromium-78-protobuf-export.patch"
 	"${FILESDIR}/chromium-79-gcc-alignas.patch"
 	"${FILESDIR}/chromium-80-unbundle-libxml.patch"
+	"${FILESDIR}/chromium-80-include.patch"
 	"${FILESDIR}/chromium-80-gcc-noexcept.patch"
+	"${FILESDIR}/chromium-80-gcc-quiche.patch"
+	"${FILESDIR}/chromium-80-gcc-blink.patch"
 )
 
 pre_build_checks() {
@@ -369,6 +372,7 @@ src_prepare() {
 		third_party/webrtc/rtc_base/third_party/sigslot
 		third_party/widevine
 		third_party/woff2
+		third_party/wuffs
 		third_party/zlib/google
 		tools/grit/third_party/six
 		url/third_party/mozilla

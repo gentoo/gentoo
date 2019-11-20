@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/core/core_initializer.h b/third_party/blink/renderer/core/core_initializer.h
+index 5e67f46..3b750c7 100644
+--- a/third_party/blink/renderer/core/core_initializer.h
++++ b/third_party/blink/renderer/core/core_initializer.h
+@@ -36,6 +36,8 @@
+ #include "third_party/blink/renderer/core/core_export.h"
+ #include "third_party/blink/renderer/platform/wtf/allocator/allocator.h"
+ 
++#include <memory>
++
+ namespace mojo {
+ class BinderMap;
+ }
