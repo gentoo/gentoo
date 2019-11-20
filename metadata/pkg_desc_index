@@ -1500,7 +1500,7 @@ app-emulation/qemu-guest-agent 3.1.0 4.0.0: QEMU Guest Agent (qemu-ga) for use w
 app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 3.1.0-r4: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
 app-emulation/qt-virt-manager 9999: A GUI application for managing virtual machines
-app-emulation/reg 0.16.0 0.16.0_p20190102: Docker registry v2 command line client
+app-emulation/reg 0.16.0 0.16.0_p20190102 0.16.1: Docker registry v2 command line client
 app-emulation/rex-client 9999: Remote EXexcution agent
 app-emulation/runc 1.0.0_rc8 1.0.0_rc9: runc container cli tools
 app-emulation/runv 0.7.0: Hypervisor-based Runtime for OCI
