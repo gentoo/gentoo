@@ -70,6 +70,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gssd-Look-in-lib32-for-gss-libs-aswell.patch
 	"${FILESDIR}"/${P}-Fix-include-order-between-config.h-and-stat.h.patch
 	"${FILESDIR}"/${PN}-2.4.1-statx.patch #688644
+	"${FILESDIR}"/${PN}-2.4.2-Ensure-consistent-struct-stat.patch
+	"${FILESDIR}"/${PN}-2.4.2-mountd-Add-check-for-struct-file_handle.patch
+	"${FILESDIR}"/${PN}-2.4.2-mountd-Fix-compilation-for--disable-uuid.patch
 )
 
 pkg_setup() {
