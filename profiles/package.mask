@@ -320,11 +320,6 @@ dev-python/gnome-keyring-python
 # until upstream releases fixed versions.
 ~xfce-base/xfce4-panel-4.15.0
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-10-20)
-# Full of ancient StarOffice era templates, last updated in 2006.
-# Removal in 30 days. Bug #697400
-app-office/ooextras
-
 # Thomas Deutschmann <whissi@gentoo.org> (2019-10-17)
 # clamav-milter completely broken, #697688
 ~app-antivirus/clamav-0.102.0
