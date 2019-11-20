@@ -90,11 +90,10 @@ PATCHES=(
 
 	# Fix missing flags
 	"${FILESDIR}/${P}-missing-linker-flags.patch"
-)
 
-pkg_setup() {
-	python-any-r1_pkg_setup
-}
+	# Use whichever python is set by portage
+	"${FILESDIR}/${P}-dont-search-for-python.patch"
+)
 
 src_prepare() {
 	# Get rid of leftover bundled library build definitions,
