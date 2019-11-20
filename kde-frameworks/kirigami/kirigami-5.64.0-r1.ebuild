@@ -37,6 +37,8 @@ RDEPEND="${DEPEND}
 # requires package to already be installed
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-one-qmlcomponentspool-instance-per-engine.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_EXAMPLES=$(usex examples)
