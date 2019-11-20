@@ -1,0 +1,13 @@
+BDEPEND=>=virtual/cargo-1.37.0 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install test unpack
+DEPEND=amd64? ( >=dev-lang/nasm-2.14 )
+DESCRIPTION=The fastest and safest AV1 encoder
+EAPI=7
+HOMEPAGE=https://github.com/xiph/rav1e/
+IUSE=debug
+LICENSE=BSD-2
+PROPERTIES=live
+RESTRICT=mirror
+SLOT=0
+_eclasses_=cargo	bccdcfbbe03fc5843eeb9f7e87005f6f	git-r3	562b380fc59ae6a8622171d0acb777d1	multiprocessing	cac3169468f893670dac3e7cb940e045
+_md5_=2b56942aa41fa9705aeac233643fdd33

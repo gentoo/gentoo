@@ -13062,7 +13062,7 @@ media-libs/bcg729 1.0.4 999999: encoder and decoder of the ITU G729 Annex A/B sp
 media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Blinkenlights
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
-media-libs/chromaprint 1.4.2 1.4.3: A client-side library that implements a custom algorithm for extracting fingerprints
+media-libs/chromaprint 1.4.3: A client-side library that implements a custom algorithm for extracting fingerprints
 media-libs/cimg 2.7.0 2.7.2: C++ template image processing toolkit
 media-libs/clutter 1.26.2-r1: Clutter is a library for creating graphical user interfaces
 media-libs/clutter-gst 3.0.27: GStreamer integration library for Clutter
@@ -14267,6 +14267,7 @@ media-video/plasma-mediacenter 5.7.5: Unified media experience for any device ca
 media-video/projectx 0.91.0.10-r1 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/pymp 1.1-r1: a lean, flexible frontend to mplayer written in python
 media-video/raspberrypi-omxplayer 0_p20160217 0_p20160528 0_p20160528-r1 9999: Command line media player for the Raspberry Pi
+media-video/rav1e 9999: The fastest and safest AV1 encoder
 media-video/recmpeg 1.0.5: Simple libfame-based video encoder, compresses raw video sequences to MPEG video
 media-video/recordmydesktop 0.3.8.1-r6: A desktop session recorder producing Ogg video/audio files
 media-video/rovclock 0.6e-r1: Overclocking utility for ATI Radeon cards
