@@ -83,6 +83,18 @@ fi
 test_var PYTHON_PKG_DEP python3_6 '*dev-lang/python*:3.6'
 test_var PYTHON_SCRIPTDIR python3_6 /usr/lib/python-exec/python3.6
 
+test_var EPYTHON python3_7 python3.7
+test_var PYTHON python3_7 /usr/bin/python3.7
+if [[ -x /usr/bin/python3.7 ]]; then
+	abiflags=$(/usr/bin/python3.7 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
+	test_var PYTHON_SITEDIR python3_7 "/usr/lib/python3.7/site-packages"
+	test_var PYTHON_INCLUDEDIR python3_7 "/usr/include/python3.7${abiflags}"
+	test_var PYTHON_LIBPATH python3_7 "/usr/lib*/libpython3.7${abiflags}$(get_libname)"
+	test_var PYTHON_CONFIG python3_7 "/usr/bin/python3.7${abiflags}-config"
+fi
+test_var PYTHON_PKG_DEP python3_7 '*dev-lang/python*:3.7'
+test_var PYTHON_SCRIPTDIR python3_7 /usr/lib/python-exec/python3.7
+
 test_var EPYTHON jython2_7 jython2.7
 test_var PYTHON jython2_7 /usr/bin/jython2.7
 if [[ -x /usr/bin/jython2.7 ]]; then
