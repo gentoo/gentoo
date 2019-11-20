@@ -14734,7 +14734,7 @@ net-fs/mc 2019.07.17.22.13.42 2019.07.31.19.17.35: Minio client provides alterna
 net-fs/minio 2019.09.11.19.53.16: An Amazon S3 compatible object storage server
 net-fs/ncpfs 2.2.6-r3 2.2.6-r4 2.2.6-r5: Provides access to Netware services using the NCP protocol
 net-fs/netatalk 3.1.12: Open Source AFP server
-net-fs/nfs-utils 2.4.1-r3 2.4.2: NFS client and server daemons
+net-fs/nfs-utils 2.3.4 2.4.1-r4 2.4.2-r1: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.3 0.3.5: Commandline and GUI tools that deal directly with NFSv4 ACLs
 net-fs/nfstest 1.0.2 2.1.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.22.1 1.6.22.2 1.8.2-r1: The OpenAFS distributed file system
