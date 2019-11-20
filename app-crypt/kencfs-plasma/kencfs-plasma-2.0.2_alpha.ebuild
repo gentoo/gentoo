@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_P="${P/_alpha/a}"
 inherit qmake-utils
 
 DESCRIPTION="GUI frontend for encfs"
 HOMEPAGE="https://www.linux-apps.com/p/1170068/"
-SRC_URI="https://dl.opendesktop.org/api/files/download/id/1486310914/${MY_P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -31,14 +31,14 @@ RDEPEND="${DEPEND}
 S=${WORKDIR}/${MY_P}
 
 PATCHES=(
-	"${FILESDIR}/${P}-include.patch"
-	"${FILESDIR}/${P}-qt-5.11.patch"
+	"${FILESDIR}/${PN}-2.0.1_alpha-include.patch"
+	"${FILESDIR}/${PN}-2.0.1_alpha-qt-5.11.patch"
 )
 
 src_prepare() {
 	default
 
-	sed -i ${PN}.pro -e "/^doc.path =/s/$/${PF}/" || die
+	sed -i ${PN}.pro -e "/^INSTALLS/s/ doc//" || die
 
 	# fix desktop validation
 	sed -i ${PN}.desktop -e "s|kencfs-plasma/kencfs-icon|/usr/share/icons/&.png|" || die
@@ -50,4 +50,5 @@ src_configure() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install
+	einstalldocs
 }
