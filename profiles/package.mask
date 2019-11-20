@@ -340,12 +340,6 @@ www-servers/thin
 # clamav-milter completely broken, #697688
 ~app-antivirus/clamav-0.102.0
 
-# Michał Górny <mgorny@gentoo.org> (2019-10-17)
-# Homepage gone.  EAPI 0.  Used to be used with old versions
-# of www-apps/gallery that were removed back in 2016.
-# Removal in 30 days.  Bug #697280.
-media-gfx/galleryadd
-
 # David Seifert <soap@gentoo.org> (2019-10-17)
 # Dead upstream, EAPI 0, low quality ebuild,
 # hasn't been touched in ages
