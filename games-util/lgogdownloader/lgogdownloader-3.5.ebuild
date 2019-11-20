@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="sys-apps/help2man
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/jsoncpp.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_QT_GUI=$(usex gui)

@@ -1,0 +1,27 @@
+From ff353126ecda61824cf866d3807c9ebada96282e Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Wed, 20 Nov 2019 22:24:10 +0000
+Subject: [PATCH] Fix find_path for newer jsoncpp release
+
+features.h was renamed but allocator.h wasn't so the latter works with
+both old and new versions.
+---
+ cmake/FindJsoncpp.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/FindJsoncpp.cmake b/cmake/FindJsoncpp.cmake
+index 5731980..0c8e0fb 100644
+--- a/cmake/FindJsoncpp.cmake
++++ b/cmake/FindJsoncpp.cmake
+@@ -10,7 +10,7 @@ pkg_check_modules(PC_JSONCPP REQUIRED jsoncpp)
+ 
+ find_path(JSONCPP_INCLUDE_DIR
+   NAMES
+-    json/features.h
++    json/allocator.h
+   HINTS
+     ${PC_JSONCPP_INCLUDEDIR}
+     ${PC_JSONCPP_INCLUDEDIRS}
+-- 
+2.23.0
+
