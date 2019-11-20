@@ -29,12 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Lars Wendler <polynomial-c@gentoo.org> (2019-11-18)
-# Brand new release with a couple of hiccups like:
-#   syslogd: Failed writing to /var/log/auth.log: Bad file descriptor
-# Also no log rotation currently available. Use at your own risk!
->=app-admin/sysklogd-2.0
-
 # Alfredo Tupone <tupone@gentoo.org> (2019-11-18)
 # No more needed.
 # Removal in 30 days.

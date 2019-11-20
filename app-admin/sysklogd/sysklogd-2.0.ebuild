@@ -36,7 +36,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		# we have logger from sys-apps/util-linux
 		$(use_with klogd)
 		$(use_with logger)
 		$(use_with systemd systemd $(systemd_get_systemunitdir))
@@ -51,8 +50,22 @@ src_install() {
 	doins syslog.conf
 	keepdir /etc/syslog.d
 
-	find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
-
 	newinitd "${FILESDIR}"/sysklogd.rc8 sysklogd
-	newconfd "${FILESDIR}"/sysklogd.confd sysklogd
+	newconfd "${FILESDIR}"/sysklogd.confd2 sysklogd
+
+	if use logrotate ; then
+		insinto /etc/logrotate.d
+		newins "${FILESDIR}"/sysklogd.logrotate sysklogd
+		sed 's@ -r 10M:10@@' -i "${ED}"/etc/conf.d/sysklogd || die
+	fi
+
+	find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
+}
+
+pkg_postinst() {
+	if ! use logrotate && [[ -n ${REPLACING_VERSIONS} ]] && ver_test ${REPLACING_VERSIONS} -lt 2.0 ; then
+		elog "Starting with version 2.0 syslogd has built in log rotation"
+		elog "functionality that does no longer require a running cron daemon."
+		elog "So we no longer install any log rotation cron files for sysklogd."
+	fi
 }
