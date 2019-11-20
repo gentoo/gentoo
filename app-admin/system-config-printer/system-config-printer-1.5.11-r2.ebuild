@@ -13,7 +13,7 @@ SRC_URI="https://github.com/zdohnal/${PN}/releases/download/${PV}/${P}.tar.xz
 	https://dev.gentoo.org/~asturm/distfiles/${P}-patchset-01.tar.xz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 ~sh ~sparc x86"
 SLOT="0"
 
 IUSE="doc gnome-keyring policykit"
