@@ -1,8 +1,8 @@
 #!/bin/bash
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 source tests-common.sh
 
 test_var() {
@@ -71,17 +71,17 @@ fi
 test_var PYTHON_PKG_DEP python2_7 '*dev-lang/python*:2.7'
 test_var PYTHON_SCRIPTDIR python2_7 /usr/lib/python-exec/python2.7
 
-test_var EPYTHON python3_4 python3.4
-test_var PYTHON python3_4 /usr/bin/python3.4
-if [[ -x /usr/bin/python3.4 ]]; then
-	abiflags=$(/usr/bin/python3.4 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
-	test_var PYTHON_SITEDIR python3_4 "/usr/lib*/python3.4/site-packages"
-	test_var PYTHON_INCLUDEDIR python3_4 "/usr/include/python3.4${abiflags}"
-	test_var PYTHON_LIBPATH python3_4 "/usr/lib*/libpython3.4${abiflags}$(get_libname)"
-	test_var PYTHON_CONFIG python3_4 "/usr/bin/python3.4${abiflags}-config"
+test_var EPYTHON python3_6 python3.6
+test_var PYTHON python3_6 /usr/bin/python3.6
+if [[ -x /usr/bin/python3.6 ]]; then
+	abiflags=$(/usr/bin/python3.6 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
+	test_var PYTHON_SITEDIR python3_6 "/usr/lib*/python3.6/site-packages"
+	test_var PYTHON_INCLUDEDIR python3_6 "/usr/include/python3.6${abiflags}"
+	test_var PYTHON_LIBPATH python3_6 "/usr/lib*/libpython3.6${abiflags}$(get_libname)"
+	test_var PYTHON_CONFIG python3_6 "/usr/bin/python3.6${abiflags}-config"
 fi
-test_var PYTHON_PKG_DEP python3_4 '*dev-lang/python*:3.4'
-test_var PYTHON_SCRIPTDIR python3_4 /usr/lib/python-exec/python3.4
+test_var PYTHON_PKG_DEP python3_6 '*dev-lang/python*:3.6'
+test_var PYTHON_SCRIPTDIR python3_6 /usr/lib/python-exec/python3.6
 
 test_var EPYTHON jython2_7 jython2.7
 test_var PYTHON jython2_7 /usr/bin/jython2.7
@@ -117,7 +117,7 @@ test_is "python_is_python3 pypy3" 0
 
 # generic shebangs
 test_fix_shebang '#!/usr/bin/python' python2.7 '#!/usr/bin/python2.7'
-test_fix_shebang '#!/usr/bin/python' python3.4 '#!/usr/bin/python3.4'
+test_fix_shebang '#!/usr/bin/python' python3.6 '#!/usr/bin/python3.6'
 test_fix_shebang '#!/usr/bin/python' pypy '#!/usr/bin/pypy'
 test_fix_shebang '#!/usr/bin/python' pypy3 '#!/usr/bin/pypy3'
 test_fix_shebang '#!/usr/bin/python' jython2.7 '#!/usr/bin/jython2.7'
@@ -126,9 +126,9 @@ test_fix_shebang '#!/usr/bin/python' jython2.7 '#!/usr/bin/jython2.7'
 test_fix_shebang '#!/usr/bin/python2' python2.7 '#!/usr/bin/python2.7'
 test_fix_shebang '#!/usr/bin/python3' python2.7 FAIL
 test_fix_shebang '#!/usr/bin/python3' python2.7 '#!/usr/bin/python2.7' --force
-test_fix_shebang '#!/usr/bin/python3' python3.4 '#!/usr/bin/python3.4'
-test_fix_shebang '#!/usr/bin/python2' python3.4 FAIL
-test_fix_shebang '#!/usr/bin/python2' python3.4 '#!/usr/bin/python3.4' --force
+test_fix_shebang '#!/usr/bin/python3' python3.6 '#!/usr/bin/python3.6'
+test_fix_shebang '#!/usr/bin/python2' python3.6 FAIL
+test_fix_shebang '#!/usr/bin/python2' python3.6 '#!/usr/bin/python3.6' --force
 
 # pythonX.Y matching (those mostly test the patterns)
 test_fix_shebang '#!/usr/bin/python2.7' python2.7 '#!/usr/bin/python2.7'
@@ -145,8 +145,8 @@ test_fix_shebang '#!/usr/bin/jython2.7' jython3.2 FAIL
 test_fix_shebang '#!/usr/bin/jython2.7' jython3.2 '#!/usr/bin/jython3.2' --force
 
 # fancy path handling
-test_fix_shebang '#!/mnt/python2/usr/bin/python' python3.4 \
-	'#!/mnt/python2/usr/bin/python3.4'
+test_fix_shebang '#!/mnt/python2/usr/bin/python' python3.6 \
+	'#!/mnt/python2/usr/bin/python3.6'
 test_fix_shebang '#!/mnt/python2/usr/bin/python2' python2.7 \
 	'#!/mnt/python2/usr/bin/python2.7'
 test_fix_shebang '#!/mnt/python2/usr/bin/env python' python2.7 \
@@ -168,9 +168,11 @@ test_is "_python_impl_supported python2_7" 0
 test_is "_python_impl_supported python3_1" 1
 test_is "_python_impl_supported python3_2" 1
 test_is "_python_impl_supported python3_3" 1
-test_is "_python_impl_supported python3_4" 0
+test_is "_python_impl_supported python3_4" 1
 test_is "_python_impl_supported python3_5" 0
 test_is "_python_impl_supported python3_6" 0
+test_is "_python_impl_supported python3_7" 0
+test_is "_python_impl_supported python3_8" 0
 test_is "_python_impl_supported pypy1_8" 1
 test_is "_python_impl_supported pypy1_9" 1
 test_is "_python_impl_supported pypy2_0" 1
