@@ -31,7 +31,7 @@ IUSE="+alsa +dbus debug g15 jack libressl +opus oss pch portaudio pulseaudio +rn
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
+	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
