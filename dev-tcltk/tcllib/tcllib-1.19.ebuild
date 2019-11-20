@@ -13,6 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="examples"
 KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc s390 sparc x86 ~amd64-linux ~x86-linux"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-lang/tcl:0=
