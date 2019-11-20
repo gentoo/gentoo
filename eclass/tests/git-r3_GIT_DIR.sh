@@ -15,6 +15,8 @@ cd "${testdir}" || die "unable to cd to testdir"
 EGIT3_STORE_DIR=store
 mkdir "${EGIT3_STORE_DIR}" || die "unable to mkdir store"
 
+git() { :; }
+
 # Test cleaning up canonical repo URI
 test_repouri() {
 	local uri=${1}
