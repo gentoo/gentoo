@@ -1,0 +1,14 @@
+BDEPEND=doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=x11-libs/libXtst
+DESCRIPTION=Helper library for the x11-misc/matchbox-keyboard package
+EAPI=7
+HOMEPAGE=https://www.yoctoproject.org/tools-resources/projects/matchbox
+IUSE=debug doc
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXtst
+SLOT=0
+SRC_URI=https://git.yoctoproject.org/cgit/cgit.cgi/libfakekey/snapshot/libfakekey-0.3.tar.bz2
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=bcc8fd96e68b16f7fc0fe57b26e8b2d2

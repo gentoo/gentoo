@@ -1,0 +1,12 @@
+BDEPEND=>=dev-lang/go-1.10 >=dev-lang/go-1.12
+DEFINED_PHASES=compile install postinst prepare unpack
+DESCRIPTION=A tool for building, changing, and combining infrastructure safely
+EAPI=7
+HOMEPAGE=https://www.terraform.io/
+KEYWORDS=~amd64
+LICENSE=Apache-2.0 BSD-2 BSD-4 ECL-2.0 imagemagick ISC JSON MIT MIT-with-advertising MPL-2.0 unicode
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/hashicorp/terraform/archive/v0.12.16.tar.gz -> terraform-0.12.16.tar.gz
+_eclasses_=go-module	ab2b956f1b3888b8418581b8662fe211	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892
+_md5_=7b18f1d9e26043119350dbc1af691471

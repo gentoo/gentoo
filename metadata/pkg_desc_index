@@ -376,7 +376,7 @@ app-admin/system-config-printer 1.5.11-r2: Graphical user interface for CUPS adm
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
 app-admin/tenshi 0.17: Log parsing and notification program
-app-admin/terraform 0.11.13 0.12.11 0.12.12 0.12.15: A tool for building, changing, and combining infrastructure safely
+app-admin/terraform 0.11.13 0.12.11 0.12.12 0.12.15 0.12.16: A tool for building, changing, and combining infrastructure safely
 app-admin/testdisk 7.1_pre20180922 7.1: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.14: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
@@ -699,7 +699,7 @@ app-crypt/johntheripper 1.8.0: fast password cracker
 app-crypt/johntheripper-jumbo 1.8.0 1.9.0 9999: fast password cracker
 app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
 app-crypt/kbfs 2.6.0 2.8.0 2.10.1 2.11.0-r1 9999: Keybase Filesystem (KBFS)
-app-crypt/kencfs-plasma 2.0.1_alpha: GUI frontend for encfs
+app-crypt/kencfs-plasma 2.0.2_alpha: GUI frontend for encfs
 app-crypt/keybase 3.0.0 4.4.2 4.5.0 4.7.0 4.7.2 9999: Client for keybase.io
 app-crypt/keylookup 2.2: A tool to fetch PGP keys from keyservers
 app-crypt/kstart 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
@@ -3315,7 +3315,7 @@ dev-games/cardpics 0.4 0.4-r1: set of free cards sets
 dev-games/cegui 0.8.7: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7 4.0.0: Multi-platform game development library
 dev-games/flatzebra 0.1.6: A generic game engine for 2D double-buffering animation
-dev-games/freecell-solver 5.6.0 5.6.0-r2: C library for automatically solving Freecell and some other solitaire variants
+dev-games/freecell-solver 5.6.0 5.6.0-r2 5.14.0: C library for automatically solving Freecell and some other solitaire variants
 dev-games/goatee 0.3.0 0.3.1.1 0.3.1.2: A monadic take on a 2,500-year-old board game - library
 dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using Allegro, SDL and/or OpenGL
 dev-games/hawknl 1.68-r2: A cross-platform network library designed for games
@@ -8593,7 +8593,7 @@ dev-python/pysmi 0.1.3 0.3.1 0.3.4: Python Lex & Yacc
 dev-python/pysnmp 4.4.4 4.4.10-r1 4.4.11 4.4.12 999999: Python SNMP library
 dev-python/pysnmp-apps 0.5.2 0.5.3: PySNMP applications
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
-dev-python/pysol_cards 0.6.2 0.6.2-r1: Deal PySol FreeCell cards
+dev-python/pysol_cards 0.6.2 0.8.6: Deal PySol FreeCell cards
 dev-python/pysolr 3.3.2 3.6.0 3.8.1: Lightweight python wrapper for Apache Solr
 dev-python/pyspf 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
 dev-python/pysrt 1.1.1 1.1.1-r1 9999: Python library used to edit or create SubRip files
@@ -14876,7 +14876,7 @@ net-irc/weechat 2.5-r1 2.6 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.4 1.7.5 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for freenet
-net-libs/accounts-qt 1.15: Qt5 bindings for libaccounts-glib
+net-libs/accounts-qt 1.15 1.16: Qt5 bindings for libaccounts-glib
 net-libs/aqbanking 5.7.8 5.8.2 5.99.44_beta: Generic Online Banking Interface
 net-libs/axtls 1.5.3 2.1.3 2.1.4 2.1.5: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
@@ -18586,7 +18586,7 @@ x11-libs/libdlo 0.1.2-r1: A fully open source driver which supports all DisplayL
 x11-libs/libdmx 1.1.4: X.Org dmx library
 x11-libs/libdockapp 0.7.2: Window Maker Dock Applet Library
 x11-libs/libdrm 2.4.99 2.4.100 9999: X.Org libdrm library
-x11-libs/libfakekey 0.1-r3: Helper library for the x11-misc/matchbox-keyboard package
+x11-libs/libfakekey 0.1-r3 0.3: Helper library for the x11-misc/matchbox-keyboard package
 x11-libs/libfm 1.2.5 1.3.1 9999: A library for file management
 x11-libs/libfm-extra 1.2.5 1.3.1: A library for file management
 x11-libs/libfm-qt 0.14.1-r2: Qt port of libfm, a library providing components to build desktop file managers
