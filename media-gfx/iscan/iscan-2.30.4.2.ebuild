@@ -126,7 +126,7 @@ src_install() {
 		done
 		if [[ "/plug-ins" != "${gimpplugindir}" ]]; then
 			dodir ${gimpplugindir}
-			dosym "${ED%/}"/usr/bin/iscan "${gimpplugindir}"/iscan
+			dosym $(realpath -s --relative-to="${gimpplugindir}" "${EPREFIX}/usr/bin/iscan" || die) "${gimpplugindir}"/iscan
 		else
 			ewarn "No idea where to find the gimp plugin directory"
 		fi
