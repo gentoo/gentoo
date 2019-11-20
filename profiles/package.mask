@@ -342,18 +342,6 @@ www-servers/thin
 app-text/scrollkeeper
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-19)
-# sci-chemistry/ccpn is unfetchable and mirror-restricted.
-# sci-chemistry/aria is its reverse dependency which can't be installed
-# as a result.
-# sci-chemistry/cns is fetch-restricted and the package request form
-# is dead.  Also, its only dependency is aria.
-# Removal in 30 days.  Bug #695784.
-sci-chemistry/aria
-sci-chemistry/ccpn
-sci-libs/ccpn-data
-sci-chemistry/cns
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-19)
 # The Linux installer/update is unfetchable, and can't be redistributed.
 # Removal in 30 days.  Bug #695778.
 games-fps/postal2
