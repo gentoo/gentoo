@@ -342,13 +342,6 @@ www-servers/thin
 app-text/scrollkeeper
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-19)
-# Upstream homepage and sources are gone.  The license raises doubt
-# as to whether we can redistribute it.  No new releases since being
-# added in 2005.
-# Removal in 30 days.  Bug #694926.
-sci-biology/ariadne
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-19)
 # Unmaintained package with incorrect LICENSE and a failing build
 # (#679204).
 # Removal in 30 days.  Bug #694450.
