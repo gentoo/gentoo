@@ -1,0 +1,19 @@
+commit 660dd2d57278e6f608bbaedcaaa4529ace557e41
+Author: Tsuyoshi Hombashi <tsuyoshi.hombashi@gmail.com>
+Date:   Mon Oct 8 23:32:53 2018 +0900
+
+    Change to avoid "DeprecationWarning: invalid escape sequence"
+
+diff --git a/toml/decoder.py b/toml/decoder.py
+index bed551b..aa468f2 100644
+--- a/toml/decoder.py
++++ b/toml/decoder.py
+@@ -44,7 +44,7 @@ except NameError:
+     FNFError = IOError
+ 
+ 
+-TIME_RE = re.compile("([0-9]{2}):([0-9]{2}):([0-9]{2})(\.([0-9]{3,6}))?")
++TIME_RE = re.compile(r"([0-9]{2}):([0-9]{2}):([0-9]{2})(\.([0-9]{3,6}))?")
+ 
+ 
+ class TomlDecodeError(ValueError):
