@@ -37,7 +37,7 @@ multilib_src_compile() {
 	mymake -C lib libzstd libzstd.a libzstd.pc
 
 	if multilib_is_native_abi ; then
-		mymake zstd
+		mymake HAVE_LZ4="$(usex lz4 1 0)" zstd
 
 		mymake -C contrib/pzstd
 	fi
