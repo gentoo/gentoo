@@ -341,12 +341,6 @@ www-servers/thin
 # Removal in 30 days.  Bug #697376.
 app-text/scrollkeeper
 
-# David Seifert <soap@gentoo.org> (2019-10-19)
-# EAPI 0, broken build system, unmaintained,
-# Removal in 30 days.  Bug #679304, #688906, #697356.
-app-i18n/scim-wnn
-dev-libs/wnn7sdk
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-19)
 # sci-chemistry/ccpn is unfetchable and mirror-restricted.
 # sci-chemistry/aria is its reverse dependency which can't be installed
