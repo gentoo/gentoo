@@ -1,0 +1,27 @@
+diff --git a/third_party/blink/renderer/core/editing/commands/delete_selection_command.cc b/third_party/blink/renderer/core/editing/commands/delete_selection_command.cc
+index 6ff6906..dd531ae 100644
+--- a/third_party/blink/renderer/core/editing/commands/delete_selection_command.cc
++++ b/third_party/blink/renderer/core/editing/commands/delete_selection_command.cc
+@@ -224,6 +224,10 @@ static Position TrailingWhitespacePosition(const Position& position,
+   return Position();
+ }
+ 
++static bool IsAHTMLTableRowElement(const Node* node) {
++  return IsA<HTMLTableRowElement>(node);
++}
++
+ void DeleteSelectionCommand::InitializePositionData(
+     EditingState* editing_state) {
+   DCHECK(!GetDocument().NeedsLayoutTreeUpdate());
+@@ -253,9 +257,9 @@ void DeleteSelectionCommand::InitializePositionData(
+   end_root_ = RootEditableElementOf(end);
+ 
+   start_table_row_ = To<HTMLTableRowElement>(
+-      EnclosingNodeOfType(start, &IsA<HTMLTableRowElement>));
++      EnclosingNodeOfType(start, &IsAHTMLTableRowElement));
+   end_table_row_ = To<HTMLTableRowElement>(
+-      EnclosingNodeOfType(end, &IsA<HTMLTableRowElement>));
++      EnclosingNodeOfType(end, &IsAHTMLTableRowElement));
+ 
+   // Don't move content out of a table cell.
+   // If the cell is non-editable, enclosingNodeOfType won't return it by
