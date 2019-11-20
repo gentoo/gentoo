@@ -8780,7 +8780,7 @@ dev-python/pyx 0.12.1-r1 0.14.1 0.14.1-r1: Python package for the generation of 
 dev-python/pyxattr 0.6.0-r1 0.6.1 0.6.1-r1: Python interface to xattr
 dev-python/pyxdg 0.25-r1 0.26 0.26-r1: A Python module to deal with freedesktop.org specifications
 dev-python/pyxenstore 0.0.2: Provides Python interfaces for Xen's XenStore
-dev-python/pyyaml 3.12 3.13 5.1: YAML parser and emitter for Python
+dev-python/pyyaml 3.12 3.13 5.1 5.1.2: YAML parser and emitter for Python
 dev-python/pyzbar 0.1.5 0.1.7: Read one-dimensional barcodes and QR codes from Python
 dev-python/pyzmq 16.0.2 17.1.0: Lightweight and super-fast messaging library built on top of the ZeroMQ library
 dev-python/pyzor 1.0.0-r1: A distributed, collaborative spam detection and filtering network
