@@ -493,7 +493,7 @@ app-arch/zoo 2.10-r5: Manipulate archives of files in compressed form
 app-arch/zopfli 1.0.2: Very good, but slow, deflate or zlib compression
 app-arch/zpaq 7.15: Journaling incremental deduplicating archiving compressor
 app-arch/zpaq-extras 3: A set of additional compression profiles for app-arch/zpaq
-app-arch/zstd 1.3.7-r1 1.4.4-r1: zstd fast compression library
+app-arch/zstd 1.3.7-r1 1.4.4-r2: zstd fast compression library
 app-backup/amanda 3.3.9 3.4.1 3.4.2 3.4.3 3.4.4 3.4.5 3.5-r1 3.5.1-r1: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/attic 0.16-r1 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.2.0_pre20180221 9999: Backup system inspired by TimeVault and FlyBack
@@ -12307,7 +12307,7 @@ kde-frameworks/kidletime 5.60.0 5.64.0: Framework for detection and notification
 kde-frameworks/kimageformats 5.60.0 5.64.0: Framework providing additional format plugins for Qt's image I/O system
 kde-frameworks/kinit 5.60.0 5.64.0: Helper library to speed up start of applications on KDE work spaces
 kde-frameworks/kio 5.60.0 5.64.0: Framework providing transparent file and data management
-kde-frameworks/kirigami 5.60.0 5.64.0-r1: Lightweight user interface framework for mobile and convergent applications
+kde-frameworks/kirigami 5.60.0 5.64.1: Lightweight user interface framework for mobile and convergent applications
 kde-frameworks/kitemmodels 5.60.0 5.64.0: Framework providing data models to help with tasks such as sorting and filtering
 kde-frameworks/kitemviews 5.60.0 5.64.0: Framework providing additional widgets for item models
 kde-frameworks/kjobwidgets 5.60.0 5.64.0: Framework providing assorted widgets for showing the progress of jobs
