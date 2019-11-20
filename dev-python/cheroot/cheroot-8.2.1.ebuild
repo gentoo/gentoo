@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/C/${PN/c/C}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 # Unit tests are temporarily disabled for this version, see below for
 # what needs to be done.
 #IUSE="test"
