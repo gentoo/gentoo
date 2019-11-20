@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-20)
+# media-libs/libplacebo is keyworded on x86
+media-video/vlc -libplacebo
+
 # Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
 # dev-python/pandas is keyworded for x86
 sys-block/fio -gnuplot
