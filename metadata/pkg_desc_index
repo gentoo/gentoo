@@ -15904,7 +15904,7 @@ sci-astronomy/gnuastro 0.3: GNU Astronomy Utilities
 sci-astronomy/healpix 3.30 3.31: Hierarchical Equal Area isoLatitude Pixelization of a sphere
 sci-astronomy/idlastro 20161220 99999999: Astronomical user routines for IDL
 sci-astronomy/kapteyn 2.3: Collection of python tools for astronomy
-sci-astronomy/kstars 3.2.3: Desktop Planetarium
+sci-astronomy/kstars 3.2.3 3.3.8: Desktop Planetarium
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
 sci-astronomy/montage 4.1 5.0: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
@@ -16404,7 +16404,7 @@ sci-libs/idlmarkwardt 20130418 20160319: Craig Markwardt IDL procedures (MPFIT, 
 sci-libs/ignition-math 4.0.0-r1: A small, fast, and high performance math library for robot applications
 sci-libs/iml 1.0.5: Integer Matrix Library
 sci-libs/inchi 1.04: Program and library for generating standard and non-standard InChI and InChIKeys
-sci-libs/indilib 1.7.5: INDI Astronomical Control Protocol library
+sci-libs/indilib 1.7.5 1.8.2: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.14.7: General purpose trace and experiment file reading/writing interface
 sci-libs/ipopt 3.11.7 3.11.8 3.12.12: Interior-Point Optimizer for large-scale nonlinear optimization
 sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and communication
@@ -16436,7 +16436,7 @@ sci-libs/libh2oxx 0.2-r1 9999: C++ bindings for libh2o
 sci-libs/libint 1.1.6 2.0.5: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
 sci-libs/libmems 1.6_p1-r3 9999: Library for sci-biology/mauve
 sci-libs/libmuscle 3.7-r3: Library for sci-biology/mauve
-sci-libs/libnova 0.15.0: Celestial Mechanics and Astronomical Calculation Library
+sci-libs/libnova 0.15.0 0.16.0: Celestial Mechanics and Astronomical Calculation Library
 sci-libs/liborigin 20110829-r1: Library for reading OriginLab OPJ project files
 sci-libs/libpdb 991112-r1: PDB Record I/O Libraries -- c version
 sci-libs/libpdb++ 040728-r1: PDB Record I/O Libraries -- c++ version
@@ -17767,7 +17767,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta20 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.189 4.4.192 4.4.197 4.4.198 4.4.199 4.4.200 4.4.201 4.4.202 4.9.189 4.9.192 4.9.197 4.9.198 4.9.199 4.9.200 4.9.201 4.9.202 4.14.138 4.14.143 4.14.151 4.14.152 4.14.153 4.14.154 4.14.155 4.19.66 4.19.72 4.19.81 4.19.82 4.19.83 4.19.84 5.3.8 5.3.9 5.3.10 5.3.11 5.3.12: Full sources including the Gentoo patchset for the 5.3 kernel tree
+sys-kernel/gentoo-sources 4.4.189 4.4.192 4.4.197 4.4.198 4.4.199 4.4.200 4.4.201 4.4.202 4.9.189 4.9.192 4.9.197 4.9.198 4.9.199 4.9.200 4.9.201 4.9.202 4.14.138 4.14.143 4.14.151 4.14.152 4.14.153 4.14.154 4.14.155 4.19.66 4.19.72 4.19.81 4.19.82 4.19.83 4.19.84 4.19.85 5.3.8 5.3.9 5.3.10 5.3.11 5.3.12: Full sources including the Gentoo patchset for the 5.3 kernel tree
 sys-kernel/git-sources 5.4_rc1 5.4_rc2 5.4_rc3 5.4_rc4 5.4_rc5 5.4_rc6 5.4_rc7 5.4_rc8: The very latest -git version of the Linux kernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
