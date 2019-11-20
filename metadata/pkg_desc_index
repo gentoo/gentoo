@@ -372,7 +372,7 @@ app-admin/syslog-ng 3.22.1 3.24.1: syslog replacement with advanced filtering fe
 app-admin/syslog-summary 1.14-r1 1.14-r2 1.14-r3: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17: Daemon providing access to the kernel sysrq functions via network
 app-admin/sysstat 12.0.5 12.0.6-r1 12.2.0-r1 999999: System performance tools for Linux
-app-admin/system-config-printer 1.5.11-r2: Graphical user interface for CUPS administration
+app-admin/system-config-printer 1.5.11-r2 1.5.12: Graphical user interface for CUPS administration
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
 app-admin/tenshi 0.17: Log parsing and notification program
@@ -13434,7 +13434,7 @@ media-libs/zita-alsa-pcmi 0.2.0 0.3.2: Provides easy access to ALSA PCM devices
 media-libs/zita-convolver 2.0.0-r1 3.1.0 4.0.3: C++ library implementing a real-time convolution matrix
 media-libs/zita-resampler 1.6.2: C++ library for real-time resampling of audio signals
 media-libs/zvbi 0.2.35-r1: VBI Decoding Library for Zapping
-media-libs/zxing-cpp 1.0.6: C++ Multi-format 1D/2D barcode image processing library
+media-libs/zxing-cpp 1.0.6 1.0.7: C++ Multi-format 1D/2D barcode image processing library
 media-plugins/alsa-plugins 1.1.1-r1 1.1.8 1.1.9 1.1.9-r1 1.2.1: ALSA extra plugins
 media-plugins/alsaequal 0.7.1: A real-time adjustable equalizer plugin for ALSA
 media-plugins/amb-plugins 0.8.1-r1: AMB-plugins ladspa plugin package. Filters by Fons Adriaensen
