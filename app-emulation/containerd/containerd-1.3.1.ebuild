@@ -11,9 +11,9 @@ if [[ ${PV} == *9999 ]]; then
 else
 	MY_PV="${PV/_rc/-rc.}"
 	EGIT_COMMIT="v${MY_PV}"
-	CONTAINERD_COMMIT="b34a5c8af56e510852c35414db4c1f4fa6172339"
+	CONTAINERD_COMMIT="c7a4f87"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 	inherit golang-vcs-snapshot
 fi
 
@@ -26,7 +26,7 @@ IUSE="apparmor +btrfs +cri hardened +seccomp"
 
 DEPEND="btrfs? ( sys-fs/btrfs-progs )
 	seccomp? ( sys-libs/libseccomp )"
-RDEPEND=">=app-emulation/runc-1.0.0_rc8
+RDEPEND=">=app-emulation/runc-1.0.0_rc9
 	seccomp? ( sys-libs/libseccomp )"
 
 S=${WORKDIR}/${P}/src/${EGO_PN}
