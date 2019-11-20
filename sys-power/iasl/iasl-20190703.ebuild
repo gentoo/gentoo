@@ -15,7 +15,7 @@ SRC_URI="http://www.acpica.org/sites/acpica/files/${MY_P}.tar.gz
 
 LICENSE="iASL"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ~x86"
+KEYWORDS="amd64 ~arm64 ppc x86"
 IUSE="test"
 
 DEPEND="sys-devel/bison
