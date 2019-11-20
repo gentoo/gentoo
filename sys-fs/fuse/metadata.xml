@@ -5,6 +5,9 @@
 		<email>bman@gentoo.org</email>
 		<name>Aaron BaumanM</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:fuse:fuse</remote-id>
 		<remote-id type="github">libfuse/libfuse</remote-id>

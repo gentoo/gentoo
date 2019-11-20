@@ -94,8 +94,8 @@ src_install() {
 		  HYPRE_INSTALL_DIR="${ED}" \
 		  HYPRE_LIB_INSTALL="${ED}/usr/$(get_libdir)" \
 		  HYPRE_INC_INSTALL="${ED}$/usr/include/hypre"
+
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r src/examples
+		dodoc -r src/examples
 	fi
 }
