@@ -17,10 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Ulrich Müller <ulm@gentoo.org> (2019-11-19)
-# Depends on net-misc/unison which is not yet stable
-net-misc/scponly unison
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-08-15)
 # media-libs/libsidplay:2 appears to be broken, bug #660288
 media-video/vlc sid

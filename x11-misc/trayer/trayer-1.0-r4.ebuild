@@ -1,17 +1,16 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Lightweight GTK+ based systray for UNIX desktop"
-HOMEPAGE="http://home.gna.org/fvwm-crystal/"
-SRC_URI="http://download.gna.org/fvwm-crystal/trayer/${P}.tar.gz"
+HOMEPAGE="https://sourceforge.net/projects/fvwm-crystal/"
+SRC_URI="https://sourceforge.net/projects/fvwm-crystal/files/${PN}/${PV}/${P}.tar.gz/download -> ${P}-sourceforge.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86"
-IUSE=""
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -33,11 +32,12 @@ PATCHES=(
 src_compile() {
 	tc-export PKG_CONFIG
 
-	emake -j1 CC=$(tc-getCC) CFLAGS="${CFLAGS}" CPPFLAGS="${CPPFLAGS}"
+	emake "CC=$(tc-getCC)" CFLAGS="${CFLAGS}" CPPFLAGS="${CPPFLAGS}" -C systray
+	emake "CC=$(tc-getCC)" CFLAGS="${CFLAGS}" CPPFLAGS="${CPPFLAGS}"
 }
 
 src_install() {
 	dobin trayer
-	doman trayer.1
+	doman "${FILESDIR}"/trayer.1
 	einstalldocs
 }

@@ -24,6 +24,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/libuv-1.33.1:=
 	>=net-dns/c-ares-1.15.0
+	>=net-libs/http-parser-2.9.0:=
 	>=net-libs/nghttp2-1.39.2
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-64.2:= )
@@ -39,6 +40,7 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
+	"${FILESDIR}"/${PN}-99999999-llhttp.patch
 )
 RESTRICT="test"
 S="${WORKDIR}/node-v${PV}"
@@ -93,7 +95,11 @@ src_configure() {
 	xdg_environment_reset
 
 	local myconf=(
-		--shared-cares --shared-libuv --shared-nghttp2 --shared-zlib
+		--shared-cares
+		--shared-http-parser
+		--shared-libuv
+		--shared-nghttp2
+		--shared-zlib
 	)
 	use debug && myconf+=( --debug )
 	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
@@ -189,7 +195,7 @@ src_install() {
 
 src_test() {
 	out/${BUILDTYPE}/cctest || die
-	"${EPYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
+	"${PYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
 }
 
 pkg_postinst() {
