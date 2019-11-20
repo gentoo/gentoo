@@ -9,25 +9,24 @@ inherit distutils-r1
 
 DESCRIPTION="Discover and load entry points from installed packages"
 HOMEPAGE="https://github.com/takluyver/entrypoints"
-SRC_URI="https://github.com//takluyver/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="doc test"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=dev-python/configparser-3.5.0[${PYTHON_USEDEP}]' 'python2*')
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 		virtual/python-pathlib[${PYTHON_USEDEP}]
 	)
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	"
 
 PATCHES=(
-	"${FILESDIR}/${P}"-setup.py.patch
 	"${FILESDIR}/${PN}"-0.2.1-init.py.patch
 )
 
@@ -38,8 +37,6 @@ python_prepare_all() {
 	fi
 
 	distutils-r1_python_prepare_all
-
-	mv "${WORKDIR}/${P}"/entrypoints.py "${WORKDIR}/${P}/${PN}/" || die
 }
 
 python_compile_all() {

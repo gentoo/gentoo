@@ -5,10 +5,10 @@ EAPI=7
 
 inherit desktop eutils toolchain-funcs
 
+COMMIT="cc31822e4ebe54c0109623ac0c5cdf0e3acad755"
 DESCRIPTION="Free version of the well-known city building simulation"
-HOMEPAGE="http://www.donhopkins.com/home/micropolis/"
-SRC_URI="http://www.donhopkins.com/home/micropolis/${PN}-activity-source.tgz
-	http://rmdir.de/~michael/${PN}_git.patch"
+HOMEPAGE="https://www.donhopkins.com/home/micropolis/"
+SRC_URI="https://gitlab.com/stargo/micropolis/-/archive/${COMMIT}/micropolis-${COMMIT}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -22,17 +22,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/bison"
 
-S=${WORKDIR}/${PN}-activity/
-
-PATCHES=(
-	"${DISTDIR}"/${PN}_git.patch
-	"${FILESDIR}/micropolis-glibc-2.27.patch"
-	"${FILESDIR}/micropolis-remove-matherr.patch"
-)
-
-src_unpack() {
-	unpack ${PN}-activity-source.tgz
-}
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
 	default
