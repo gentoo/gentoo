@@ -232,6 +232,102 @@ fi
 # }
 # @CODE
 
+# @FUNCTION: distutils_enable_sphinx
+# @USAGE: <subdir> [--no-autodoc | <plugin-pkgs>...]
+# @DESCRIPTION:
+# Set up IUSE, BDEPEND, python_check_deps() and python_compile_all() for
+# building HTML docs via dev-python/sphinx.  python_compile_all() will
+# append to HTML_DOCS if docs are enabled.
+#
+# This helper is meant for the most common case, that is a single Sphinx
+# subdirectory with standard layout, building and installing HTML docs
+# behind USE=doc.  It assumes it's the only consumer of the three
+# aforementioned functions.  If you need to use a custom implemention,
+# you can't use it.
+#
+# If your package uses additional Sphinx plugins, they should be passed
+# (without PYTHON_USEDEP) as <plugin-pkgs>.  The function will take care
+# of setting appropriate any-of dep and python_check_deps().
+#
+# If no plugin packages are specified, the eclass will still utilize
+# any-r1 API to support autodoc (documenting source code).
+# If the package uses neither autodoc nor additional plugins, you should
+# pass --no-autodoc to disable this API and simplify the resulting code.
+#
+# This function must be called in global scope.  Take care not to
+# overwrite the variables set by it.  If you need to extend
+# python_compile_all(), you can call the original implementation
+# as sphinx_compile_all.
+distutils_enable_sphinx() {
+	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${#} -ge 1 ]] || die "${FUNCNAME} takes at least one arg: <subdir>"
+
+	_DISTUTILS_SPHINX_SUBDIR=${1}
+	shift
+	_DISTUTILS_SPHINX_PLUGINS=( "${@}" )
+
+	local deps autodoc=1 d
+	for d; do
+		if [[ ${d} == --no-autodoc ]]; then
+			autodoc=
+		else
+			deps+="
+				${d}[\${PYTHON_USEDEP}]"
+		fi
+	done
+
+	if [[ ! ${autodoc} && -n ${deps} ]]; then
+		die "${FUNCNAME}: do not pass --no-autodoc if external plugins are used"
+	fi
+	if [[ ${autodoc} ]]; then
+		deps="$(python_gen_any_dep "
+			dev-python/sphinx[\${PYTHON_USEDEP}]
+			${deps}")"
+
+		python_check_deps() {
+			use doc || return 0
+			local p
+			for p in dev-python/sphinx "${_DISTUTILS_SPHINX_PLUGINS[@]}"; do
+				has_version "${p}[${PYTHON_USEDEP}]" || return 1
+			done
+		}
+	else
+		deps="dev-python/sphinx"
+	fi
+
+	sphinx_compile_all() {
+		use doc || return
+
+		local confpy=${_DISTUTILS_SPHINX_SUBDIR}/conf.py
+		[[ -f ${confpy} ]] ||
+			die "${confpy} not found, distutils_enable_sphinx call wrong"
+
+		if [[ ${_DISTUTILS_SPHINX_PLUGINS[0]} == --no-autodoc ]]; then
+			if grep -F -q 'sphinx.ext.autodoc' "${confpy}"; then
+				die "distutils_enable_sphinx: --no-autodoc passed but sphinx.ext.autodoc found in ${confpy}"
+			fi
+		else
+			if ! grep -F -q 'sphinx.ext.autodoc' "${confpy}"; then
+				die "distutils_enable_sphinx: sphinx.ext.autodoc not found in ${confpy}, pass --no-autodoc"
+			fi
+		fi
+
+		build_sphinx "${_DISTUTILS_SPHINX_SUBDIR}"
+	}
+	python_compile_all() { sphinx_compile_all; }
+
+	IUSE+=" doc"
+	if [[ ${EAPI} == [56] ]]; then
+		DEPEND+=" doc? ( ${deps} )"
+	else
+		BDEPEND+=" doc? ( ${deps} )"
+	fi
+
+	# we need to ensure successful return in case we're called last,
+	# otherwise Portage may wrongly assume sourcing failed
+	return 0
+}
+
 # @FUNCTION: distutils_enable_tests
 # @USAGE: <test-runner>
 # @DESCRIPTION:
