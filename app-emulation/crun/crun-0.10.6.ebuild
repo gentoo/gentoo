@@ -29,6 +29,11 @@ BDEPEND="
 	doc? ( dev-go/go-md2man )
 "
 
+# the crun test suite is comprehensive to the extent that tests will fail
+# within a sandbox environment, due to the nature of the priveledges
+# required to create linux "containers."
+RESTRICT="test"
+
 DOCS=README.md
 
 src_configure() {
