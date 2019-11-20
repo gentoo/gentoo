@@ -1,8 +1,0 @@
-#!/bin/bash
-
-export CCPNMR_TOP_DIR=gentoo_sitedir
-export PYTHONPATH=.:${CCPNMR_TOP_DIR}/ccpn/python
-export TCL_LIBRARY=gentootcl
-export TK_LIBRARY=gentootk
-export PSIPRED_DIR=gentoousr
-gentoopython -i -O ${CCPNMR_TOP_DIR}/ccpn/python/ccpnmr/analysis/AnalysisGui.py $1 $2 $3 $4 $5 $6

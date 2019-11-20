@@ -316,99 +316,18 @@ kde-misc/systemd-kcm
 dev-python/gnome-keyring-python
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
-# Fails to build.  Last release in 2009.  The stable version is EAPI 0.
-# Removal in 30 days.  Bug #698162.
-net-analyzer/nagios-sap-ccms-plugin
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
 ~xfce-base/xfce4-panel-4.15.0
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-20)
-# The XFCE GTK+ engines have been abandoned upstream.  They do not work
-# well with modern GTK+ versions, and have no seen any updates
-# since 2015.
-# Removal in 30 days.  Bug #577252.
-x11-themes/gtk-engines-xfce
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-10-20)
 # Full of ancient StarOffice era templates, last updated in 2006.
 # Removal in 30 days. Bug #697400
 app-office/ooextras
 
-# Hans de Graaff <graaff@gentoo.org> (2019-10-19)
-# ruby24-only packages with no reverse dependencies and no recent
-# releases. Masked for removal in 30 days.
-dev-ruby/cocaine
-dev-ruby/debugger-linecache
-dev-ruby/escape_utils
-dev-ruby/ruby-beautify
-dev-ruby/termcolor
-dev-ruby/terrapin
-www-servers/thin
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-20)
-# A dummy package with no revdeps.  Replaced by app-text/rarian.
-# Removal in 30 days.  Bug #697376.
-app-text/scrollkeeper
-
-# David Seifert <soap@gentoo.org> (2019-10-19)
-# EAPI 0, broken build system, unmaintained,
-# Removal in 30 days.  Bug #679304, #688906, #697356.
-app-i18n/scim-wnn
-dev-libs/wnn7sdk
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-19)
-# sci-chemistry/ccpn is unfetchable and mirror-restricted.
-# sci-chemistry/aria is its reverse dependency which can't be installed
-# as a result.
-# sci-chemistry/cns is fetch-restricted and the package request form
-# is dead.  Also, its only dependency is aria.
-# Removal in 30 days.  Bug #695784.
-sci-chemistry/aria
-sci-chemistry/ccpn
-sci-libs/ccpn-data
-sci-chemistry/cns
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-19)
-# The Linux installer/update is unfetchable, and can't be redistributed.
-# Removal in 30 days.  Bug #695778.
-games-fps/postal2
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-19)
-# Upstream homepage and sources are gone.  The license raises doubt
-# as to whether we can redistribute it.  No new releases since being
-# added in 2005.
-# Removal in 30 days.  Bug #694926.
-sci-biology/ariadne
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-19)
-# Unmaintained package with incorrect LICENSE and a failing build
-# (#679204).
-# Removal in 30 days.  Bug #694450.
-sys-auth/sakcl
-
-# Agostino Sarubbo <ago@gentoo.org> (2019-10-18)
-# Superseded by app-admin/checksec
-# Removal in 30 days.
-app-admin/hardening-check
-
 # Thomas Deutschmann <whissi@gentoo.org> (2019-10-17)
 # clamav-milter completely broken, #697688
 ~app-antivirus/clamav-0.102.0
-
-# Michał Górny <mgorny@gentoo.org> (2019-10-17)
-# Homepage gone.  EAPI 0.  Used to be used with old versions
-# of www-apps/gallery that were removed back in 2016.
-# Removal in 30 days.  Bug #697280.
-media-gfx/galleryadd
-
-# David Seifert <soap@gentoo.org> (2019-10-17)
-# Dead upstream, EAPI 0, low quality ebuild,
-# hasn't been touched in ages
-# Removal in 30 days.  Bug #697274.
-media-sound/mserv
 
 # Mikle Kolyada <zlogene@gentoo.org> (2019-10-16)
 # not needed due to openpam removal. Please
