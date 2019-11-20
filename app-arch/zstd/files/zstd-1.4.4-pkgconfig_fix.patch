@@ -1,0 +1,67 @@
+From a025c46969b76a10ce1618df4dbb11a09563c413 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 20 Nov 2019 16:41:18 +0100
+Subject: [PATCH] Revert "In pkg-config File, Derive Lib and Include Dir from
+ Prefix at Use-Time"
+
+This reverts commit 74bd76c3ffb3837a3fefc055edbc347620447236.
+
+This breaks systems that use lib32 and/or lib64 instead of lib
+See https://github.com/facebook/zstd/issues/1900
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ build/cmake/lib/CMakeLists.txt | 3 ++-
+ lib/Makefile                   | 2 ++
+ lib/libzstd.pc.in              | 5 ++---
+ 3 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/build/cmake/lib/CMakeLists.txt b/build/cmake/lib/CMakeLists.txt
+index 7adca875..77b389ca 100644
+--- a/build/cmake/lib/CMakeLists.txt
++++ b/build/cmake/lib/CMakeLists.txt
+@@ -134,10 +134,11 @@ if (UNIX)
+     # pkg-config
+     set(PREFIX "${CMAKE_INSTALL_PREFIX}")
+     set(LIBDIR "${CMAKE_INSTALL_FULL_LIBDIR}")
++    set(INCLUDEDIR "${CMAKE_INSTALL_FULL_INCLUDEDIR}")
+     set(VERSION "${zstd_VERSION_MAJOR}.${zstd_VERSION_MINOR}.${zstd_VERSION_PATCH}")
+     add_custom_target(libzstd.pc ALL
+             ${CMAKE_COMMAND} -DIN="${LIBRARY_DIR}/libzstd.pc.in" -DOUT="libzstd.pc"
+-            -DPREFIX="${PREFIX}" -DVERSION="${VERSION}"
++            -DPREFIX="${PREFIX}" -DLIBDIR="${LIBDIR}" -DINCLUDEDIR="${INCLUDEDIR}" -DVERSION="${VERSION}"
+             -P "${CMAKE_CURRENT_SOURCE_DIR}/pkgconfig.cmake"
+             COMMENT "Creating pkg-config file")
+ 
+diff --git a/lib/Makefile b/lib/Makefile
+index fd1710cf..97375ad2 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -244,6 +244,8 @@ libzstd.pc:
+ libzstd.pc: libzstd.pc.in
+ 	@echo creating pkgconfig
+ 	@sed -e 's|@PREFIX@|$(PREFIX)|' \
++             -e 's|@LIBDIR@|$(LIBDIR)|' \
++             -e 's|@INCLUDEDIR@|$(INCLUDEDIR)|' \
+              -e 's|@VERSION@|$(VERSION)|' \
+              $< >$@
+ 
+diff --git a/lib/libzstd.pc.in b/lib/libzstd.pc.in
+index e7880be4..1d07b91f 100644
+--- a/lib/libzstd.pc.in
++++ b/lib/libzstd.pc.in
+@@ -3,9 +3,8 @@
+ #   BSD 2-Clause License (http://www.opensource.org/licenses/bsd-license.php)
+ 
+ prefix=@PREFIX@
+-exec_prefix=${prefix}
+-includedir=${prefix}/include
+-libdir=${exec_prefix}/lib
++libdir=@LIBDIR@
++includedir=@INCLUDEDIR@
+ 
+ Name: zstd
+ Description: fast lossless compression algorithm library
+-- 
+2.24.0
+
