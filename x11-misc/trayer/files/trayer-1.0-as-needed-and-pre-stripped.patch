@@ -1,15 +1,3 @@
-From 6d0c1123441633660c2ec4f336e1e800b4dfebb5 Mon Sep 17 00:00:00 2001
-From: Harri Nieminen <moikkis@gmail.com>
-Date: Sat, 25 Mar 2017 12:18:13 +0200
-Subject: [PATCH 2/2] Fix for as-needed and pre-stripped files
-
-Gentoo bugs: #141707, #252098
----
- Makefile | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/Makefile b/Makefile
-index 9d7c4fb..faaa85d 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -36,9 +36,9 @@ endif
@@ -17,13 +5,10 @@ index 9d7c4fb..faaa85d 100644
  TARGET = trayer
  $(TARGET): $(OBJ) $(SYSTRAYOBJ)
 -	$(CC) $(LDFLAGS) $(LIBS) $(OBJ) $(SYSTRAYOBJ) -o $@
-+	$(CC) $(LDFLAGS) $(OBJ) $(SYSTRAYOBJ) $(LIBS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(SYSTRAYOBJ) $(LIBS) -o $@
  ifeq (,$(DEVEL))
 -	strip $@
 +	true $@
  endif
  
  TARGETMAN = $(TARGET).1.gz
--- 
-2.12.1
-
