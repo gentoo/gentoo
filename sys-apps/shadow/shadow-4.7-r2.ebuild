@@ -32,7 +32,7 @@ DEPEND="
 "
 BDEPEND="
 	app-arch/xz-utils
-	nls? ( sys-devel/gettext )
+	sys-devel/gettext
 "
 RDEPEND="
 	${DEPEND}
