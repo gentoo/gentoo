@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy )
 
 inherit distutils-r1 eutils toolchain-funcs
 
@@ -15,6 +15,7 @@ LICENSE="BSD ElementTree GPL-2 PSF-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc examples +threads test"
+RESTRICT="!test? ( test )"
 
 # Note: lib{xml2,xslt} are used as C libraries, not Python modules.
 RDEPEND="

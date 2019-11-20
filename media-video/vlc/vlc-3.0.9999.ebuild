@@ -34,10 +34,10 @@ IUSE="a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromeca
 	fluidsynth fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate
 	libass libav libcaca libnotify +libsamplerate libtar libtiger linsys lirc
 	live lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
-	neon nfs ogg omxil opencv optimisememory opus png postproc projectm pulseaudio
-	+qt5 rdp run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl
-	svg taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx
-	wayland +X x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
+	nfs ogg omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5 rdp
+	run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl svg taglib
+	theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx wayland +X
+	x264 x265 xml zeroconf zvbi cpu_flags_arm_neon cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	chromecast? ( encode )
@@ -81,7 +81,7 @@ RDEPEND="
 		>=dev-libs/protobuf-2.5.0:=
 		>=net-libs/libmicrodns-0.0.9:=
 	)
-	dav1d? ( media-libs/dav1d )
+	dav1d? ( media-libs/dav1d:= )
 	dbus? ( sys-apps/dbus )
 	dc1394? (
 		media-libs/libdc1394:2
@@ -241,7 +241,7 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	xdg_src_prepare # bug 608256
 
-	has_version '>=net-libs/libupnp-1.8.0' && \
+	has_version 'net-libs/libupnp:1.8' && \
 		eapply "${FILESDIR}"/${PN}-2.2.8-libupnp-slot-1.8.patch
 
 	# Bootstrap when we are on a git checkout.
@@ -294,6 +294,7 @@ src_configure() {
 		$(use_enable chromaprint)
 		$(use_enable chromecast)
 		$(use_enable chromecast microdns)
+		$(use_enable cpu_flags_arm_neon neon)
 		$(use_enable cpu_flags_x86_mmx mmx)
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable dav1d)
@@ -345,7 +346,6 @@ src_configure() {
 		$(use_enable mtp)
 		$(use_enable musepack mpc)
 		$(use_enable ncurses)
-		$(use_enable neon)
 		$(use_enable ogg)
 		$(use_enable omxil)
 		$(use_enable omxil omxil-vout)
@@ -394,7 +394,7 @@ src_configure() {
 		$(use_enable zeroconf avahi)
 		$(use_enable zvbi)
 		$(use_enable !zvbi telx)
-		--with-kde-solid=/usr/share/solid/actions
+		--with-kde-solid="${EPREFIX}"/usr/share/solid/actions
 		--disable-asdcp
 		--disable-coverage
 		--disable-cprof
@@ -446,7 +446,7 @@ src_configure() {
 	fi
 
 	if use truetype || use projectm; then
-		local dejavu="/usr/share/fonts/dejavu/"
+		local dejavu="${EPREFIX}/usr/share/fonts/dejavu/"
 		myeconfargs+=(
 			--with-default-font=${dejavu}/DejaVuSans.ttf
 			--with-default-font-family=Sans

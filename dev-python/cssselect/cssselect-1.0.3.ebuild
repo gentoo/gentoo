@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy )
 
 inherit distutils-r1
 
@@ -17,13 +17,19 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )
 	test? ( dev-python/lxml[${PYTHON_USEDEP}] )"
 
-RDEPEND=""
+distutils_enable_tests unittest
+
+python_check_deps() {
+	use doc || return 0
+	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
 
 python_prepare_all() {
 	# prevent non essential d'load of files in doc build
@@ -35,10 +41,6 @@ python_compile_all() {
 	if use doc ; then
 		esetup.py build_sphinx
 	fi
-}
-
-python_test() {
-	"${EPYTHON}" -m unittest discover -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
