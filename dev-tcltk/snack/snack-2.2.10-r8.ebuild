@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 KEYWORDS="amd64 ~hppa ~ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 SLOT="0"
 IUSE="alsa examples python vorbis"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-lang/tcl:0=
