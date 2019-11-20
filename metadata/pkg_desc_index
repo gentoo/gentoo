@@ -2227,7 +2227,6 @@ app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microso
 app-office/moneydance 2017.10 2019.3.1880: A cross-platform personal finance application
 app-office/moneyguru 2.13.1-r1 3.0.1-r1: Future-aware personal finances management
 app-office/multitalk 1.4-r1: A new type of presentation program
-app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
 app-office/openoffice-bin 4.1.7: Apache OpenOffice productivity suite
 app-office/orage 4.12.1-r1: A time managing application (and panel plug-in) for the Xfce desktop environment
 app-office/pinpoint 0.1.8-r1: A tool for making hackers do excellent presentations
@@ -15287,7 +15286,6 @@ net-misc/kafka-bin 1.1.1 2.0.1 2.1.0 2.1.1 2.2.0 2.2.1 2.3.0: A high-throughput 
 net-misc/kafkacat 1.3.1 1.5.0: Generic command line non-JVM Apache Kafka producer and consumer
 net-misc/kea 1.6.0 1.7.0 1.7.1 9999: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.1 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
-net-misc/knemo 0.8.0_pre20161211: Plasma Network Monitor
 net-misc/knock 0.7: A simple port-knocking daemon
 net-misc/l7-filter-userspace 0.12_beta1-r1: Userspace utilities for layer 7 iptables QoS
 net-misc/l7-protocols 2009.05.28-r1: Protocol definitions of l7-filter kernel modules
