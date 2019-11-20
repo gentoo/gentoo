@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 source tests-common.sh
@@ -27,7 +27,7 @@ test-scons_clean_makeopts() {
 }
 
 # jobcount expected for non-specified state
-jc=$(_scons_get_default_jobs)
+jc=$(( $(get_nproc) + 1 ))
 # failed test counter
 failed=0
 
