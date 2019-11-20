@@ -241,6 +241,7 @@ fi
 #
 # - nose: nosetests (dev-python/nose)
 # - pytest: dev-python/pytest
+# - setup.py: setup.py test (no deps included)
 # - unittest: for built-in Python unittest module
 #
 # This function is meant as a helper for common use cases, and it only
@@ -266,6 +267,11 @@ distutils_enable_tests() {
 			test_deps="dev-python/pytest[${PYTHON_USEDEP}]"
 			python_test() {
 				pytest -vv || die "Tests fail with ${EPYTHON}"
+			}
+			;;
+		setup.py)
+			python_test() {
+				esetup.py test --verbose
 			}
 			;;
 		unittest)
