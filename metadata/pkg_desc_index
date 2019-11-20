@@ -17705,6 +17705,7 @@ sys-fs/fuse 2.9.8 2.9.9-r1 3.8.0: An interface for filesystems implemented in us
 sys-fs/fuse-common 3.2.6 3.8.0: Common files for multiple slots of sys-fs/fuse
 sys-fs/fuse-convmvfs 0.2.6-r1: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.2.8 1.3.0: exFAT filesystem FUSE module
+sys-fs/fuse-overlayfs 0.7: FUSE implementation for overlayfs
 sys-fs/fuse-zip 0.4.5: FUSE file system to navigate, extract, create and modify ZIP archives
 sys-fs/fuseiso 20070708-r2: Fuse module to mount ISO9660
 sys-fs/genext2fs 1.4.1: generate ext2 file systems
