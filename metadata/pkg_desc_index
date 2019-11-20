@@ -278,7 +278,7 @@ app-admin/keepassxc 2.4.3-r1 2.5.0 2.5.1 9999: KeePassXC - KeePass Cross-platfor
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.3: A command line interface to KeePass database files
 app-admin/ksonnet 0.13.1: CLI-supported framework for extensible Kubernetes configurations
-app-admin/kube-bench 0.0.34: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
+app-admin/kube-bench 0.0.34 0.1.0: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
 app-admin/kubectx 0.6.3 0.7.1: Fast way to switch between clusters and namespaces in kubectl
 app-admin/lastpass-binary-component 4.19.0: Binary component required by the LastPass Password Manager browser extension
 app-admin/lastpass-cli 1.3.1-r1 1.3.2 1.3.3: Interfaces with LastPass.com from the command line.
@@ -1442,7 +1442,7 @@ app-emulation/crun 0.10.6: A fast and low-memory footprint OCI Container Runtime
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 2.28.2 2.29.1 9999: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
-app-emulation/docker 18.09.9 19.03.2 19.03.3 19.03.4: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 18.09.9 19.03.2 19.03.3 19.03.4 19.03.5: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
 app-emulation/docker-compose 1.24.0 1.24.1 1.25.0: Multi-container orchestration for Docker
 app-emulation/docker-credential-helpers 0.6.0 0.6.3: A suite of programs to use native stores to keep Docker credentials safe
@@ -5000,14 +5000,14 @@ dev-libs/libsigc++ 1.2.7 2.10.1: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.11 2.12 2.12-r1: Library for handling page faults in user mode
 dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression library
 dev-libs/libsodium 1.0.11-r1 1.0.15-r1 1.0.16-r2 1.0.18: A portable fork of NaCl, a higher-level cryptographic library
-dev-libs/libspnav 0.2.2 0.2.3: libspnav is a replacement for the magellan library with a cleaner API
+dev-libs/libspnav 0.2.3: libspnav is a replacement for the magellan library with a cleaner API
 dev-libs/libspt 1.1-r2 1.1-r4: Library for handling root privilege
 dev-libs/libstrl 0.5.1-r1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
 dev-libs/libstroke 0.5.1-r1: A Stroke and Gesture recognition Library
 dev-libs/libstrophe 0.9.2 0.9.3: A simple, lightweight C library for writing XMPP clients
 dev-libs/libtar 1.2.20-r4: C library for manipulating tar archives
 dev-libs/libtasn1 4.13 4.14: ASN.1 library
-dev-libs/libtecla 1.6.1-r2 1.6.2 1.6.3: Tecla command-line editing library
+dev-libs/libtecla 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.19 0.20 0.22: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtomfloat 0.02: library for floating point number manipulation
 dev-libs/libtommath 0.42.0-r1 1.0.1 1.1.0: Optimized and portable routines for integer theoretic applications
@@ -17946,7 +17946,7 @@ sys-process/ftop 1.0 1.0-r1: Monitor open files and filesystems
 sys-process/glances 2.11.1 3.1.0 3.1.1 3.1.2: CLI curses based monitoring tool
 sys-process/gnome-usage 3.32.0: A nice way to view information about use of system resources.
 sys-process/htop 2.2.0 3.0.0_beta5: interactive process viewer
-sys-process/incron 0.5.10-r1 0.5.12_p20191114: inotify based cron daemon
+sys-process/incron 0.5.12_p20191114: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5-r1: tool for identifying where in the system latency is happening
 sys-process/lsof 4.91 4.93.2-r1: Lists open files for running Unix processes
