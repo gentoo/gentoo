@@ -36,6 +36,10 @@ PATCHES=(
 
 SITEFILE=50cython-gentoo.el
 
+python_check_deps() {
+	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
+
 python_compile() {
 	if ! python_is_python3; then
 		local CFLAGS="${CFLAGS} -fno-strict-aliasing"
