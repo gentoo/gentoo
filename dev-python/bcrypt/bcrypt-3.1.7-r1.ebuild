@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy )
 
 inherit distutils-r1
 
@@ -25,8 +25,9 @@ DEPEND="${COMMON_DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( >=dev-python/pytest-3.2.1[${PYTHON_USEDEP}] )
 "
-RDEPEND="${COMMON_DEPEND}
-	!dev-python/py-bcrypt"
+RDEPEND="${COMMON_DEPEND}"
+
+RESTRICT="!test? ( test )"
 
 python_test() {
 	esetup.py test
