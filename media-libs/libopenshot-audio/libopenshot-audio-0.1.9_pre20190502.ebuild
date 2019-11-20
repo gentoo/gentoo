@@ -13,7 +13,7 @@ SRC_URI="https://github.com/OpenShot/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3+"
 SLOT="0/6"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	media-libs/alsa-lib
