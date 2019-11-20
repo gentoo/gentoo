@@ -5,9 +5,9 @@ DESCRIPTION=USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 EAPI=7
 HOMEPAGE=http://www.libimobiledevice.org/
 IUSE=kernel_linux static-libs
-KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm ~arm64 ppc ~ppc64 x86
 LICENSE=GPL-2+ LGPL-2.1+
 RDEPEND=>=app-pda/libplist-1.11:= virtual/libusb:1 !<app-pda/usbmuxd-1.0.8_p1
 SLOT=0/4
 SRC_URI=http://www.libimobiledevice.org/downloads/libusbmuxd-1.0.10.tar.bz2
-_md5_=9da01a641b10dba59c6372a9da1b41a7
+_md5_=5f7ee66ce9b1f6be655199ed792c913d

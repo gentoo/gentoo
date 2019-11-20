@@ -5,9 +5,9 @@ DESCRIPTION=A small and lightweight parser library for ATA S.M.A.R.T. hard disks
 EAPI=7
 HOMEPAGE=https://salsa.debian.org/utopia-team/libatasmart
 IUSE=static-libs
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~sh ~sparc ~x86
 LICENSE=LGPL-2.1
 RDEPEND=virtual/libudev:=
 SLOT=0/4
 SRC_URI=mirror://debian/pool/main/liba/libatasmart/libatasmart_0.19.orig.tar.xz mirror://debian/pool/main/liba/libatasmart/libatasmart_0.19-5.debian.tar.xz
-_md5_=9b9010275bcf68f981ed0907af255f50
+_md5_=7bc9a13d73ea529ea8536f22a744e4a1
