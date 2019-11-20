@@ -396,7 +396,7 @@ src_configure() {
 		$(use_enable zeroconf avahi)
 		$(use_enable zvbi)
 		$(use_enable !zvbi telx)
-		--with-kde-solid=/usr/share/solid/actions
+		--with-kde-solid="${EPREFIX}"/usr/share/solid/actions
 		--disable-asdcp
 		--disable-coverage
 		--disable-cprof
@@ -445,7 +445,7 @@ src_configure() {
 	fi
 
 	if use truetype || use projectm; then
-		local dejavu="/usr/share/fonts/dejavu/"
+		local dejavu="${EPREFIX}/usr/share/fonts/dejavu/"
 		myeconfargs+=(
 			--with-default-font=${dejavu}/DejaVuSans.ttf
 			--with-default-font-family=Sans
