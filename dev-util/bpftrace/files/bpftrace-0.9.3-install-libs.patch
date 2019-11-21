@@ -1,9 +1,9 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 8ff6e1f..a276ba2 100644
+index 5e0d770..d51edf6 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -43,9 +43,10 @@ find_package(FLEX REQUIRED)
- bison_target(bison_parser src/parser.yy ${CMAKE_BINARY_DIR}/parser.tab.cc)
+@@ -51,9 +51,10 @@ find_package(FLEX REQUIRED)
+ bison_target(bison_parser src/parser.yy ${CMAKE_BINARY_DIR}/parser.tab.cc VERBOSE)
  flex_target(flex_lexer src/lexer.l ${CMAKE_BINARY_DIR}/lex.yy.cc)
  add_flex_bison_dependency(flex_lexer bison_parser)
 -add_library(parser ${BISON_bison_parser_OUTPUTS} ${FLEX_flex_lexer_OUTPUTS})
@@ -31,25 +31,25 @@ index b8b0d96..0803c1e 100644
  function(embed_headers output)
    file(WRITE ${output} "#include \"headers.h\"\n\nnamespace bpftrace {\n")
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index b47f66d..36de26b 100644
+index 65f3a34..b001a83 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -27,7 +27,8 @@ endif(HAVE_BCC_CREATE_MAP)
- if(HAVE_GET_CURRENT_CGROUP_ID)
-   target_compile_definitions(bpftrace PRIVATE HAVE_GET_CURRENT_CGROUP_ID)
- endif(HAVE_GET_CURRENT_CGROUP_ID)
+@@ -56,7 +56,8 @@ if (ALLOW_UNSAFE_UPROBE)
+   target_compile_definitions(bpftrace PRIVATE HAVE_UNSAFE_UPROBE)
+ endif(ALLOW_UNSAFE_UPROBE)
+ 
 -target_link_libraries(bpftrace arch ast parser resources)
 +target_link_libraries(bpftrace bpftracearch bpftraceast bpftraceparser
-+	bpftraceresources)
++  bpftraceresources)
  
  if (STATIC_LINKING)
    target_link_libraries(bpftrace ${LIBBCC_LIBRARIES})
 diff --git a/src/arch/CMakeLists.txt b/src/arch/CMakeLists.txt
-index 425926e..13b5d31 100644
+index a26f610..53627e2 100644
 --- a/src/arch/CMakeLists.txt
 +++ b/src/arch/CMakeLists.txt
 @@ -1,5 +1,7 @@
- if(CMAKE_HOST_SYSTEM_PROCESSOR STREQUAL "aarch64")
+ if(CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")
 -    add_library(arch aarch64.cpp)
 +    add_library(bpftracearch aarch64.cpp)
  else()
@@ -59,7 +59,7 @@ index 425926e..13b5d31 100644
 +
 +install(TARGETS bpftracearch LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 diff --git a/src/ast/CMakeLists.txt b/src/ast/CMakeLists.txt
-index 64db7b9..1a2eb6e 100644
+index 4d77c9f..2a00572 100644
 --- a/src/ast/CMakeLists.txt
 +++ b/src/ast/CMakeLists.txt
 @@ -1,4 +1,4 @@
@@ -68,9 +68,13 @@ index 64db7b9..1a2eb6e 100644
    ast.cpp
    codegen_llvm.cpp
    irbuilderbpf.cpp
-@@ -6,12 +6,13 @@ add_library(ast
-   semantic_analyser.cpp
+@@ -7,15 +7,16 @@ add_library(ast
  )
+ 
+ if(HAVE_GET_CURRENT_CGROUP_ID)
+-  target_compile_definitions(ast PRIVATE HAVE_GET_CURRENT_CGROUP_ID)
++  target_compile_definitions(bpftraceast PRIVATE HAVE_GET_CURRENT_CGROUP_ID)
+ endif(HAVE_GET_CURRENT_CGROUP_ID)
  
 -target_include_directories(ast PUBLIC ${CMAKE_SOURCE_DIR}/src)
 -target_include_directories(ast PUBLIC ${CMAKE_SOURCE_DIR}/src/ast)
@@ -87,7 +91,7 @@ index 64db7b9..1a2eb6e 100644
  
  if (STATIC_LINKING)
    set(clang_libs
-@@ -31,16 +32,16 @@ if (STATIC_LINKING)
+@@ -35,16 +36,16 @@ if (STATIC_LINKING)
        clangSerialization
        clangToolingCore)
    llvm_map_components_to_libnames(llvm_libs bpfcodegen ipo irreader mcjit orcjit ${LLVM_TARGETS_TO_BUILD})
@@ -109,3 +113,17 @@ index 64db7b9..1a2eb6e 100644
 -  target_link_libraries(ast libclang)
 +  target_link_libraries(bpftraceast libclang)
  endif()
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 2d18277..f66a8b7 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -76,7 +76,8 @@ if(HAVE_BFD_DISASM)
+   target_link_libraries(bpftrace_test ${LIBOPCODES_LIBRARIES})
+ endif(HAVE_BFD_DISASM)
+ 
+-target_link_libraries(bpftrace_test arch ast parser resources)
++target_link_libraries(bpftrace_test bpftracearch bpftraceast bpftraceparser
++  bpftraceresources)
+ 
+ if (STATIC_LINKING)
+   target_link_libraries(bpftrace_test ${LIBBCC_LIBRARIES})

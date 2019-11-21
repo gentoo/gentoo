@@ -40,7 +40,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 QA_DT_NEEDED="/usr/lib.*/libbpftraceresources.so"
 
 PATCHES=(
-	"${FILESDIR}/bpftrace-0.10_pre20190614-install-libs.patch"
+	"${FILESDIR}/bpftrace-0.9.3-install-libs.patch"
 	"${FILESDIR}/bpftrace-mandir.patch"
 )
 
