@@ -9,7 +9,7 @@ SRC_URI="https://www.puimula.org/voikko-sources/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="app-office/libreoffice[odk]
 	dev-libs/voikko-fi"
