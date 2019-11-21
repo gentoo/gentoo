@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
 inherit distutils-r1
 
 MY_PN=${PN/-/.}
@@ -22,11 +22,9 @@ RDEPEND="dev-python/namespace-zope[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests setup.py
 
 python_install_all() {
 	distutils-r1_python_install_all
