@@ -11,6 +11,6 @@ PROPERTIES=live
 RDEPEND=nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap ) ) ) suid? ( caps? ( sys-libs/libcap ) ) selinux? ( sys-libs/libselinux ) systemtap? ( dev-util/systemtap ) sys-apps/gentoo-functions >=net-dns/libidn2-2.0.5 vanilla? ( !sys-libs/timezone-data )
 RESTRICT=!test? ( test )
 SLOT=2.2
-SRC_URI=https://dev.gentoo.org/~slyfox/distfiles/glibc-9999-patches-14.tar.xz multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-20180511.tar.xz )
+SRC_URI=https://dev.gentoo.org/~slyfox/distfiles/glibc-9999-patches-15.tar.xz multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-20180511.tar.xz )
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	git-r3	562b380fc59ae6a8622171d0acb777d1	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	c2993e4c430c1ee24f278983d6189501	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	93ff6f0f8518926f2951ca70ce36e887	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	usr-ldscript	766f0a506b45f02361ad1b8ca205b7e1
-_md5_=07efadfcb3a7f98e96cd1e0bc376c402
+_md5_=23a4f8b009b0a44c1f2f786102f13810
