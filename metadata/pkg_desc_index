@@ -18209,7 +18209,7 @@ www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from t
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 1.2.1 9999: a fast web-interface for git repositories
 www-apps/cgp 1_p20181209: A graphical web-based front-end for visualizing RRD collected by collectd
-www-apps/chromedriver-bin 2.24-r1 2.30-r1 2.35-r1 2.40 2.41 74.0.3729.6 76.0.3809.68 77.0.3865.40 78.0.3904.70: WebDriver for Chrome
+www-apps/chromedriver-bin 2.24-r1 2.30-r1 2.35-r1 2.40 2.41 74.0.3729.6 76.0.3809.68 77.0.3865.40 78.0.3904.70 78.0.3904.105: WebDriver for Chrome
 www-apps/curator 3.0_p20110120-r2: Gallery generator
 www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
 www-apps/davical 1.1.7-r2 1.1.8: A CalDAV and CardDAV Server
