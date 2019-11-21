@@ -13,7 +13,8 @@ if [[ ${PV} =~ 9{4,} ]]; then
 	EGIT_REPO_URI="https://github.com/iovisor/${PN}"
 	BDEPEND=""
 else
-	SRC_URI="https://github.com/iovisor/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	MY_PV="${PV//_/}"
+	SRC_URI="https://github.com/iovisor/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 	BDEPEND="app-arch/xz-utils "
 fi
@@ -35,6 +36,7 @@ BDEPEND+="dev-util/cmake
 	sys-devel/flex
 	sys-devel/bison"
 
+S="${WORKDIR}/${PN}-${MY_PV}"
 QA_DT_NEEDED="/usr/lib.*/libbpftraceresources.so"
 
 PATCHES=(
