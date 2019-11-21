@@ -4900,7 +4900,7 @@ dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.2.1 3.2.1-r1 3.2.1-r2 3.2.1-r3 3.3_rc0 3.3_rc1 3.3_rc2: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
-dev-libs/libfilezilla 0.15.1 0.16.0 0.17.1 0.18.0 0.18.1 0.18.2: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.15.1 0.16.0 0.17.1 0.18.2 0.19.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.2.0 0.3.0: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 4.1.0 5.1.0 5.2.0 5.2.1 5.3.0 6.0.0 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
@@ -14740,7 +14740,7 @@ net-fs/tahoe-lafs 1.10.2: Secure, decentralized, data store
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r5 0.7-r6 0.7.2: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.39.0 3.42.1 3.43.0 3.44.1 3.44.2 3.45.0 3.45.1: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.39.0 3.42.1 3.43.0 3.44.2 3.45.1: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r3: FTP layout package
