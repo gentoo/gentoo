@@ -8509,7 +8509,7 @@ dev-python/pykwalify 1.5.2 1.7.0 9999: Python lib/cli for JSON/YAML schema valid
 dev-python/pylama 7.6.5: Code audit tool for python
 dev-python/pylast 1.9.0: Python interface to last.fm and other api-compatible websites
 dev-python/pylibacl 0.5.0-r1 0.5.3: POSIX ACLs (Access Control Lists) for Python
-dev-python/pylibmc 1.5.1-r1: Libmemcached wrapper written as a Python extension
+dev-python/pylibmc 1.5.1-r1 1.6.1: Libmemcached wrapper written as a Python extension
 dev-python/pylibpcap 0.6.4-r1: Python interface to libpcap
 dev-python/pylint 1.6.5-r1 1.8.4 2.3.1: Python code static checker
 dev-python/pylzma 0.4.9: Python bindings for the LZMA compression library
