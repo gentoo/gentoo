@@ -7729,6 +7729,7 @@ dev-python/egenix-mx-base 3.2.5 3.2.8 3.2.9: eGenix utils for Python
 dev-python/egg-python 2.25.3-r1: EggTrayIcon bindings for Python
 dev-python/elasticsearch-curator 5.5.4-r1 5.6.0 5.8.1: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 6.3.1-r1 6.4.0 7.0.5: Official Python low-level client for Elasticsearch
+dev-python/elementpath 1.3.1: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/embedly 0.5.0-r1: Python Library for Embedly
@@ -9194,6 +9195,7 @@ dev-python/xlrd 0.9.4 1.2.0: Library to extract data from Microsoft Excel spread
 dev-python/xlsxwriter 0.7.8 0.9.8: Python module for creating Excel XLSX files
 dev-python/xlutils 1.7.1 2.0.0-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 1.2.0 1.3.0: Python library to create spreadsheet files compatible with Excel
+dev-python/xmlschema 1.0.16: An XML Schema validator and decoder
 dev-python/xmltodict 0.11.0 0.12.0: Makes working with XML feel like you are working with JSON
 dev-python/xstatic 1.0.1: XStatic base package with minimal support code
 dev-python/xstatic-bootstrap-scss 3.3.7.1: XStatic Bootstrap-SCSS package
@@ -14666,7 +14668,7 @@ net-dns/maradns 2.0.09-r2 2.0.14 2.0.16: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 4.2.2: An authoritative only, high performance, open source name server
+net-dns/nsd 4.2.2 4.2.3: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0: A framework for managing DNS information
