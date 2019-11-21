@@ -1,0 +1,36 @@
+diff --git a/importlib_metadata/tests/test_main.py b/importlib_metadata/tests/test_main.py
+index 38ec884..0ab1cf1 100644
+--- a/importlib_metadata/tests/test_main.py
++++ b/importlib_metadata/tests/test_main.py
+@@ -2,11 +2,17 @@
+ from __future__ import unicode_literals
+ 
+ import re
++import sys
+ import textwrap
+ import unittest
+ import importlib
+ import importlib_metadata
+ 
++if sys.hexversion > 0x3080000:
++    from importlib.metadata import (
++        Distribution as SysDistribution,
++        )
++
+ from . import fixtures
+ from .. import (
+     Distribution, EntryPoint, MetadataPathFinder,
+@@ -157,8 +163,12 @@ class DiscoveryTests(fixtures.EggInfoPkg,
+ 
+     def test_package_discovery(self):
+         dists = list(distributions())
++        if sys.hexversion > 0x3080000:
++            dist_classes = (Distribution, SysDistribution)
++        else:
++            dist_classes = (Distribution)
+         assert all(
+-            isinstance(dist, Distribution)
++            isinstance(dist, dist_classes)
+             for dist in dists
+             )
+         assert any(
