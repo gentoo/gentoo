@@ -4285,6 +4285,8 @@ media-libs/clutter:gtk - Use gdk-pixbuf from x11-libs/gtk+ as image rendering ba
 media-libs/cogl:gles2 - Enable OpenGL ES 2.0 support
 media-libs/cogl:kms - Enable KMS support.
 media-libs/cogl:pango - Build cogl-pango library for x11-libs/pango integration
+media-libs/coin:exceptions - Compile with C++ exceptions
+media-libs/coin:man - Build and install man pages
 media-libs/coin:qthelp - Build API documentation in QtHelp format
 media-libs/coin:simage - Texture loading via media-libs/simage library
 media-libs/dav1d:10bit - Add support for building 10-bit and 12-bit AV1.
