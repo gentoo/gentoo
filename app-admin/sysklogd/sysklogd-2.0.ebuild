@@ -17,8 +17,8 @@ RESTRICT="test"
 
 DEPEND="
 	logger? (
-		!<sys-apps/util-linux-2.34-r2
-		!>=sys-apps/util-linux-2.34-r2[logger]
+		!<sys-apps/util-linux-2.34-r3
+		!>=sys-apps/util-linux-2.34-r3[logger]
 	)
 "
 RDEPEND="${DEPEND}"
