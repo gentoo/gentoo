@@ -1,0 +1,19 @@
+diff -ur path.py-12.0.2.orig/path/__init__.py path.py-12.0.2/path/__init__.py
+--- path.py-12.0.2.orig/path/__init__.py	2019-11-20 17:17:03.644205243 -0800
++++ path.py-12.0.2/path/__init__.py	2019-11-20 17:17:57.356875924 -0800
+@@ -72,7 +72,13 @@
+ 
+     __version__ = importlib_metadata.version('path.py')
+ except Exception:
+-    __version__ = 'unknown'
++    try:
++        import importlib.metadata
++
++        __version__ = importlib.metadata.version('path.py')
++
++    except Exception:
++        __version__ = 'unknown'
+ 
+ 
+ class TreeWalkWarning(Warning):
+Only in path.py-12.0.2/path: .__init__.py.un~
