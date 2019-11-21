@@ -1343,6 +1343,31 @@ python_export_utf8_locale() {
 	return 0
 }
 
+# @FUNCTION: build_sphinx
+# @USAGE: <directory>
+# @DESCRIPTION:
+# Build HTML documentation using dev-python/sphinx in the specified
+# <directory>.  Takes care of disabling Intersphinx and appending
+# to HTML_DOCS.
+#
+# If <directory> is relative to the current directory, care needs
+# to be taken to run einstalldocs from the same directory
+# (usually ${S}).
+build_sphinx() {
+	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes 1 arg: <directory>"
+
+	local dir=${1}
+
+	sed -i -e 's:^intersphinx_mapping:disabled_&:' \
+		"${dir}"/conf.py || die
+	# not all packages include the Makefile in pypi tarball
+	sphinx-build -b html -d "${dir}"/_build/doctrees "${dir}" \
+		"${dir}"/_build/html || die
+
+	HTML_DOCS+=( "${dir}/_build/html/." )
+}
+
 # -- python.eclass functions --
 
 _python_check_dead_variables() {
