@@ -62,6 +62,7 @@ RDEPEND="${DEPEND}
 	!<app-shells/bash-completion-2.7-r1"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
 
