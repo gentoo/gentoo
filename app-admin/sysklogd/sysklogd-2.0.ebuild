@@ -15,7 +15,12 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="klogd logger logrotate systemd"
 RESTRICT="test"
 
-DEPEND="!sys-apps/util-linux[logger]"
+DEPEND="
+	logger? (
+		!<sys-apps/util-linux-2.34-r2
+		!>=sys-apps/util-linux-2.34-r2[logger]
+	)
+"
 RDEPEND="${DEPEND}"
 
 DOCS=( ChangeLog.md README.md )
