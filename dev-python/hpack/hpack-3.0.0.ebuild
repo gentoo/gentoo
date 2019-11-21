@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy)
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy)
 
 inherit distutils-r1
 
@@ -14,6 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
 # dev-python/pytest-relaxed causes tests to fail
@@ -33,5 +34,5 @@ python_prepare_all() {
 }
 
 python_test() {
-	py.test -vv hpack test || die "Tests fail with ${EPYTHON}"
+	pytest -vv hpack test || die "Tests fail with ${EPYTHON}"
 }
