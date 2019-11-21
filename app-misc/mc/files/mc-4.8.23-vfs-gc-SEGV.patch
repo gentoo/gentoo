@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/700708
+
+From 8411b93ff7cc955b0acf1541207977c52201bbfc Mon Sep 17 00:00:00 2001
+From: Andrew Borodin <aborodin@vmail.ru>
+Date: Wed, 11 Sep 2019 09:17:18 +0300
+Subject: [PATCH] (vfs_stamp_compare): fix NULL dereference.
+
+(vfs_stamp): likewise.
+
+Signed-off-by: Andrew Borodin <aborodin@vmail.ru>
+---
+ lib/vfs/gc.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/lib/vfs/gc.c
++++ b/lib/vfs/gc.c
+@@ -127,7 +127,7 @@ vfs_stamp_compare (gconstpointer a, gconstpointer b)
+     const struct vfs_stamping *vsa = (const struct vfs_stamping *) a;
+     const struct vfs_stamping *vsb = (const struct vfs_stamping *) b;
+ 
+-    return (vsa->v == vsb->v && vsa->id == vsb->id) ? 0 : 1;
++    return (vsa == NULL || vsb == NULL || (vsa->v == vsb->v && vsa->id == vsb->id)) ? 0 : 1;
+ }
+ 
+ /* --------------------------------------------------------------------------------------------- */
+@@ -163,7 +163,7 @@ vfs_stamp (struct vfs_class *v, vfsid id)
+     gboolean ret = FALSE;
+ 
+     stamp = g_slist_find_custom (stamps, &what, vfs_stamp_compare);
+-    if (stamp != NULL)
++    if (stamp != NULL && stamp->data != NULL)
+     {
+         gettimeofday (&(VFS_STAMPING (stamp->data)->time), NULL);
+         ret = TRUE;
+-- 
+2.24.0
+
