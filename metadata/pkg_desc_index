@@ -242,7 +242,7 @@ app-admin/entr 4.3: Run arbitrary commands when files change
 app-admin/equo 302: Entropy Package Manager text-based client
 app-admin/eselect 1.4.12 1.4.14 1.4.15 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
-app-admin/exo 1.5.0 1.5.1 1.6.0: Command-line tool for everything at Exoscale: compute, storage, dns.
+app-admin/exo 1.6.0: Command-line tool for everything at Exoscale: compute, storage, dns.
 app-admin/fam 2.7.0-r7 2.7.0_p17_p2: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
@@ -4659,7 +4659,7 @@ dev-lang/orc 0.4.28-r1 0.4.29: The Oil Runtime Compiler, a just-in-time compiler
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.24.3-r1 5.24.4 5.26.2 5.28.2-r1 5.30.0 5.30.1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.40-r7 7.1.33 7.2.24 7.3.11 7.4.0_rc6: The PHP language runtime engine
+dev-lang/php 5.6.40-r7 7.1.33 7.2.24 7.2.25 7.3.11 7.3.12 7.4.0_rc6: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.15 2.7.16 2.7.17 3.5.5 3.5.7 3.5.9 3.6.5 3.6.8 3.6.9 3.7.2 3.7.3 3.7.4-r1 3.7.5 3.7.5-r1 3.8.0: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
