@@ -12,6 +12,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
+RESTRICT="bindist mirror strip"
+
+BDEPEND="app-arch/unzip"
+
 RDEPEND="!www-client/chromium
 	www-client/google-chrome"
 
