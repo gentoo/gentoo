@@ -24,7 +24,9 @@ DEPEND="
 		dev-python/pytest[${PYTHON_USEDEP}]
 		virtual/python-pathlib[${PYTHON_USEDEP}]
 	)
-	"
+"
+
+RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}"-0.2.1-init.py.patch
