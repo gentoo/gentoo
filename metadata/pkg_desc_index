@@ -2611,7 +2611,7 @@ app-text/rpl 1.5.5-r1: Intelligent recursive search/replace utility
 app-text/rtf2html 0.2.0-r1: RTF to HTML converter
 app-text/sablotron 1.0.3-r1: An XSLT Parser in C++
 app-text/sary 1.2.0-r1: Sary: suffix array library and tools
-app-text/scdoc 1.3.1 1.5.2 1.8.1 1.9.3 1.9.3-r1 9999: Standalone tool for generating man pages with a simple syntax
+app-text/scdoc 1.3.1 1.5.2 1.8.1 1.9.3 1.9.3-r1 1.10.0 9999: Standalone tool for generating man pages with a simple syntax
 app-text/scrollkeeper-dtd 1.0-r1: DTD from the Scrollkeeper package
 app-text/sdcv 0.5.2: Console version of Stardict program
 app-text/sgml-common 0.6.3-r7: Base ISO character entities and utilities for SGML
@@ -12450,7 +12450,7 @@ lxqt-base/lxqt-qtplugin 0.14.0: LXQt system integration plugin for Qt
 lxqt-base/lxqt-runner 0.14.1: LXQt quick launcher
 lxqt-base/lxqt-session 0.14.1: LXQT session manager
 lxqt-base/lxqt-sudo 0.14.1: LXQt GUI frontend for sudo
-mail-client/aerc 0.2.1: Email client for your terminal
+mail-client/aerc 0.2.1 0.3.0: Email client for your terminal
 mail-client/alot 0.3.7-r1 0.5.1 0.6 0.7 0.7-r1 0.8.1: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.00-r7 2.21.1 2.21.1-r1 2.21.1-r2: An easy to use text-based based mail and news client
 mail-client/balsa 2.5.6-r1: Email client for GNOME

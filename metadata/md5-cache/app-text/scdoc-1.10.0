@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Standalone tool for generating man pages with a simple syntax
+EAPI=7
+HOMEPAGE=https://git.sr.ht/~sircmpwn/scdoc
+KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=https://git.sr.ht/~sircmpwn/scdoc/archive/1.10.0.tar.gz -> scdoc-1.10.0.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=91811b9bba7afac2d55e673a068b3bba
