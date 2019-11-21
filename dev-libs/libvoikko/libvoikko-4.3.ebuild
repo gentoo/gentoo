@@ -12,7 +12,7 @@ HOMEPAGE="https://voikko.puimula.org/"
 SRC_URI="https://www.puimula.org/voikko-sources/${PN}/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 IUSE="+expvfst +hfst"
 
