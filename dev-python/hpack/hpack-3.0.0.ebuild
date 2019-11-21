@@ -26,6 +26,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/hpack-3.0.0-hypothesis-healthcheck.patch
+)
+
 python_prepare_all() {
 	# Remove a test that is not part of the mainstream tests
 	# Also, it's data directory is not included in the release
