@@ -51,7 +51,7 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 
