@@ -37,7 +37,10 @@ PATCHES=(
 SITEFILE=50cython-gentoo.el
 
 python_check_deps() {
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+	if use doc; then
+		has_version "dev-python/sphinx[${PYTHON_USEDEP}]" || return ${?}
+	fi
+	return 0
 }
 
 python_compile() {
