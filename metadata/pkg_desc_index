@@ -9227,7 +9227,7 @@ dev-python/zope-exceptions 4.1.0: General purpose exceptions for Zope packages
 dev-python/zope-i18nmessageid 4.1.0: Zope i18nmessageid Architecture
 dev-python/zope-interface 4.1.1 4.3.2 4.4.3 4.5.0 4.6.0: Interfaces for Python
 dev-python/zope-schema 4.5.0: Zope schema Architecture
-dev-python/zope-testing 4.6.2 4.7: Zope testing helpers
+dev-python/zope-testing 4.6.2 4.7-r1: Zope testing helpers
 dev-python/zope-testrunner 4.7.0: Zope testrunner script
 dev-python/zsi 2.1_alpha1-r1: Web Services for Python
 dev-python/zstandard 0.8.1 0.11.0 0.12.0: Zstandard Bindings for Python
