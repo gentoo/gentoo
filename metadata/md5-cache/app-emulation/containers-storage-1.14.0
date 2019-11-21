@@ -1,0 +1,15 @@
+BDEPEND=>=dev-lang/go-1.12
+DEFINED_PHASES=compile install postinst prepare test unpack
+DEPEND=btrfs? ( sys-fs/btrfs-progs ) device-mapper? ( sys-fs/lvm2:= ) dev-go/go-md2man test? ( sys-fs/btrfs-progs sys-fs/lvm2 sys-apps/util-linux )
+DESCRIPTION=containers/storage library
+EAPI=7
+HOMEPAGE=https://github.com/containers/storage
+IUSE=btrfs +device-mapper test
+KEYWORDS=~amd64
+LICENSE=Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT
+RDEPEND=btrfs? ( sys-fs/btrfs-progs ) device-mapper? ( sys-fs/lvm2:= )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/containers/storage/archive/v1.14.0.tar.gz -> containers-storage-1.14.0.tar.gz
+_eclasses_=go-module	ab2b956f1b3888b8418581b8662fe211
+_md5_=ec25aa6242b97d2ace9d0b0b53967fb2
