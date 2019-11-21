@@ -1,0 +1,39 @@
+From 003cc45b1fa45c766e38c3230423a5662a00d371 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 21 Nov 2019 11:29:41 +0100
+Subject: [PATCH] Prepend to PYTHONPATH in test_console_script* instead of
+ replacing
+
+Modify _test_console_script() to prepend to PYTHONPATH instead of
+overwriting its value.  This is necessary so that it is able to find
+just-built version of argcomplete that is provided via PYTHONPATH
+(vs requiring it to be installed in system-wide directory prior).
+
+Otherwise, the tests are failing:
+
+  Traceback (most recent call last):
+    File "./bin/test-package", line 5, in <module>
+      from test_package import main
+    File "/tmp/argcomplete/test_dir_pychyg9vqx/test_package/__init__.py", line 4, in <module>
+      import argcomplete
+  ModuleNotFoundError: No module named 'argcomplete'
+---
+ test/test.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/test.py b/test/test.py
+index 98da760..ddf5a03 100755
+--- a/test/test.py
++++ b/test/test.py
+@@ -1185,7 +1185,7 @@ class TestBashGlobal(TestBash):
+         with TempDir(prefix='test_dir_py', dir='.'):
+             self.sh.run_command('cd ' + os.getcwd())
+             self.sh.run_command('export PATH=$PATH:./bin')
+-            self.sh.run_command('export PYTHONPATH=.')
++            self.sh.run_command('export PYTHONPATH=.:$PYTHONPATH')
+             test_package = os.path.join(TEST_DIR, 'test_package')
+             command = 'pip install {} --target .'.format(test_package)
+             if not wheel:
+-- 
+2.24.0
+
