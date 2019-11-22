@@ -27,8 +27,6 @@ DEPEND="
 #RESTRICT="test"
 RESTRICT="!test? ( test )"
 
-S="${WORKDIR}/${PN}-release-${PV}"
-
 PATCHES=(
 	"${FILESDIR}/psutil-5.6.5-tests.patch"
 )
