@@ -7553,7 +7553,7 @@ dev-python/cjkwrap 2.2: A library for wrapping and filling UTF-8 CJK text
 dev-python/clang-python 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1.9999 10.0.0.9999: Python bindings for sys-devel/clang
 dev-python/cli_helpers 0.2.0 1.0.0 1.0.1 1.2.1 9999: Python helpers for common CLI tasks
 dev-python/cliapp 1.20170823 1.20180812.1: Framework for Unix-like command line programs
-dev-python/click 5.1 6.6 6.7 6.7-r1 7.0: A Python package for creating beautiful command line interfaces
+dev-python/click 5.1 6.6 6.7 6.7-r1 7.0 7.0-r1: A Python package for creating beautiful command line interfaces
 dev-python/click-log 0.1.8 0.2.1 0.3.2: Logging integration for Click.
 dev-python/click-plugins 1.0.3: Module for click to enable registering CLI commands via setuptools entry-points
 dev-python/click-threading 0.3.0 0.4.4: Multithreaded Click apps made easy.
