@@ -26,8 +26,7 @@ SAPI_SLOT="3.0"
 COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
 	dev-java/tomcat-servlet-api:${SAPI_SLOT}"
 RDEPEND="${COMMON_DEP}
-	virtual/jre
-	!<dev-java/tomcat-native-1.1.24"
+	virtual/jre"
 DEPEND="${COMMON_DEP}
 	virtual/jdk:1.8
 	test? ( dev-java/ant-junit:0 )"

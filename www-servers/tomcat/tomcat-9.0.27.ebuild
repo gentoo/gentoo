@@ -36,7 +36,6 @@ COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
 	dev-java/tomcat-servlet-api:${SAPI_SLOT}
 	dev-java/wsdl4j:0"
 RDEPEND="${COMMON_DEP}
-	!<dev-java/tomcat-native-1.1.24
 	>=virtual/jre-11"
 DEPEND="${COMMON_DEP}
 	app-admin/pwgen
