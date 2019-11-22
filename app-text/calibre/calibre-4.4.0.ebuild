@@ -55,6 +55,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=sys-apps/dbus-1.10.8
 	dev-python/dnspython[${PYTHON_USEDEP}]
 	>=dev-python/feedparser-5.2.1[${PYTHON_USEDEP}]
+	>=dev-python/html2text-2019.8.11[${PYTHON_USEDEP}]
 	>=dev-python/html5-parser-0.4.3[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.8.0[${PYTHON_USEDEP}]
 	>=dev-python/markdown-3.0.1[${PYTHON_USEDEP}]
