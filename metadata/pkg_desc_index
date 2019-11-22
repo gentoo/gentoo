@@ -4544,7 +4544,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.21 1.2.23: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53 6.0.53-r1 7.0.96 8.5.46 8.5.47 9.0.7 9.0.26 9.0.27: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53 6.0.53-r1 7.0.96 8.5.46 8.5.47 9.0.7 9.0.26 9.0.27 9.0.29: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -5076,7 +5076,7 @@ dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.3 1.4 1.5 1.6 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r1: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.20 4.22 4.23: Netscape Portable Runtime
-dev-libs/nss 3.40.1-r1 3.46 3.46.1 3.47: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.40.1-r1 3.46 3.46.1 3.47 3.47.1: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.2.11 2.2.12 2.2.12-r1: Alternative to vendor specific OpenCL ICD loaders
@@ -10002,7 +10002,7 @@ dev-ruby/patron 0.13.1-r1 0.13.3: Patron is a Ruby HTTP client library based on 
 dev-ruby/pcaprub 0.12.4 0.13.0: Libpcap bindings for ruby compat
 dev-ruby/pdf-core 0.7.0 0.8.1: Implements low level PDF features for Prawn
 dev-ruby/pdf-inspector 1.3.0: A tool for analyzing PDF output
-dev-ruby/pdf-reader 1.4.1-r2 2.2.0 2.2.1 2.3.0: PDF parser conforming as much as possible to the PDF specification from Adobe
+dev-ruby/pdf-reader 1.4.1-r2 2.2.0 2.2.1 2.3.0 2.4.0: PDF parser conforming as much as possible to the PDF specification from Adobe
 dev-ruby/permutation 0.1.8-r1: Library performing operations with permutations of sequences (strings, arrays)
 dev-ruby/pg 0.21.0 1.1.4: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r2: Simple library to parse PostgreSQL arrays into a array of strings
@@ -10110,7 +10110,7 @@ dev-ruby/rspec-its 1.2.0-r1 1.3.0: A Behaviour Driven Development (BDD) framewor
 dev-ruby/rspec-json_expectations 2.2.0: Set of matchers and helpers to allow you test your APIs responses.
 dev-ruby/rspec-mocks 2.99.2 3.8.1 3.8.2 3.9.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-rails 3.8.2 3.8.3 3.9.0: RSpec's official Ruby on Rails plugin
-dev-ruby/rspec-retry 0.6.1: Retry intermittently failing rspec examples
+dev-ruby/rspec-retry 0.6.1 0.6.2: Retry intermittently failing rspec examples
 dev-ruby/rspec-stubbed_env 1.0.0: Stub environment variables in a scoped context for testing
 dev-ruby/rspec-support 3.8.2 3.8.3 3.9.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.70.7 0.70.8: RSpec support and matchers
@@ -15049,7 +15049,7 @@ net-libs/signon-ui 0.15_p20171022: Online accounts signon UI
 net-libs/signond 8.59-r1 8.60: Signon daemon for libaccounts-glib
 net-libs/socket_wrapper 1.1.6 1.1.7 1.1.9 1.2.1 1.2.3: A library passing all socket communications through unix sockets
 net-libs/sofia-sip 1.12.11: RFC3261 compliant SIP User-Agent library
-net-libs/srt 1.3.2 9999: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
+net-libs/srt 1.3.2 1.4.0 9999: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/stem 1.5.4 1.6.0 1.7.0 1.7.1: Stem is a Python controller library for Tor
 net-libs/telepathy-accounts-signon 2.0: Mission control plugin for Telepathy to provide IM accounts and authentication
 net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream to handle Call channels
