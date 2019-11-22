@@ -4,11 +4,11 @@ DESCRIPTION=X.Org libdrm library
 EAPI=6
 HOMEPAGE=https://dri.freedesktop.org/ https://gitlab.freedesktop.org/mesa/drm
 IUSE=video_cards_amdgpu video_cards_exynos video_cards_freedreno video_cards_intel video_cards_nouveau video_cards_omap video_cards_radeon video_cards_tegra video_cards_vc4 video_cards_vivante video_cards_vmware libkms valgrind abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_riscv_lp64d abi_riscv_lp64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha amd64 ~arm arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
 RDEPEND=elibc_FreeBSD? ( >=dev-libs/libpthread-stubs-0.4:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) video_cards_intel? ( >=x11-libs/libpciaccess-0.13.1-r1:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://dri.freedesktop.org/libdrm/libdrm-2.4.100.tar.bz2
 _eclasses_=meson	b5ee7a05833ab91225acf30ffdeed006	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	93ff6f0f8518926f2951ca70ce36e887	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=c0d267f969ad5960633c2bd5152e0c76
+_md5_=d5be8dd06c0d38fe52edf43c4d1593b2

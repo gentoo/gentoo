@@ -4544,7 +4544,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.21 1.2.23: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53 6.0.53-r1 7.0.96 8.5.46 8.5.47 9.0.7 9.0.26 9.0.27 9.0.29: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53 6.0.53-r1 7.0.96 8.5.46 8.5.47 8.5.49 9.0.7 9.0.26 9.0.27 9.0.29: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -10798,8 +10798,8 @@ dev-util/premake 3.7 4.3-r1 4.4_beta5 5.0.0_alpha12: A makefile generation tool
 dev-util/pretrace 0.4-r1: start dynamically linked applications under debugging environment
 dev-util/promu 0.5.0: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
-dev-util/pycharm-community 2019.2.3 2019.2.4: Intelligent Python IDE with unique code assistance and analysis
-dev-util/pycharm-professional 2019.2.3 2019.2.4: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-community 2019.2.3 2019.2.4 2019.2.5: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-professional 2019.2.3 2019.2.4 2019.2.5: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.12.2 1.13.1: Modern build tool for software projects
 dev-util/qdevicemonitor 1.0.1-r1 9999: Crossplatform log viewer for Android, iOS and text files
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
