@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-COMMIT="3722fc563b737d2d7933df6a771651c2154e6f7b"
+COMMIT="c300160d0a8292bc04e79dd59e6cc178aa648dec"
 
 inherit autotools eutils multilib-minimal
 
@@ -15,15 +15,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+sdl static-libs"
 
-RDEPEND="virtual/glu:=[${MULTILIB_USEDEP}]
-	virtual/opengl:=[${MULTILIB_USEDEP}]
+RDEPEND="virtual/glu[${MULTILIB_USEDEP}]
+	virtual/opengl[${MULTILIB_USEDEP}]
 	sdl? (
-		media-libs/libsdl:=[${MULTILIB_USEDEP}]
+		media-libs/libsdl[${MULTILIB_USEDEP}]
 	)
 	!sdl? (
-		x11-libs/libICE:=[${MULTILIB_USEDEP}]
-		x11-libs/libSM:=[${MULTILIB_USEDEP}]
-		x11-libs/libXxf86vm:=[${MULTILIB_USEDEP}]
+		x11-libs/libICE[${MULTILIB_USEDEP}]
+		x11-libs/libSM[${MULTILIB_USEDEP}]
+		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
 	)"
 
 DEPEND="${RDEPEND}"
@@ -56,6 +56,6 @@ multilib_src_install_all() {
 	newexe platform/dosbox/glide2x.ovl glide2x-dosbox.ovl
 	newexe platform/dosemu/glide2x.ovl glide2x-dosemu.ovl
 
-	prune_libtool_files
+	rm "${ED}"/usr/*/*.la || die
 	einstalldocs
 }
