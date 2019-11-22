@@ -1462,8 +1462,8 @@ app-emulation/faudio 19.06 19.09 9999: FAudio - Accuracy-focused XAudio reimplem
 app-emulation/firecracker 0.18.0: Secure and fast microVMs for serverless computing
 app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
 app-emulation/free42 2.0.20 2.5.10 2.5.11: An HP-42S Calculator Simulator
-app-emulation/fs-uae 3.0.0: Integrates the most accurate Amiga emulation code available from WinUAE
-app-emulation/fs-uae-launcher 3.0.0: PyQt5-based launcher for FS-UAE
+app-emulation/fs-uae 3.0.2: Integrates the most accurate Amiga emulation code available from WinUAE
+app-emulation/fs-uae-launcher 3.0.2: PyQt5-based launcher for FS-UAE
 app-emulation/fuse 1.5.6 1.5.7: Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/fuse-utils 1.4.1 1.4.3: Utils for the Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/gallium-nine-standalone 0.5 9999: A standalone version of the WINE parts of Gallium Nine
