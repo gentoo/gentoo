@@ -9,7 +9,7 @@ inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="Fast and simple packet creation and parsing library for Python"
 HOMEPAGE="https://gitlab.com/mike01/pypacker"
-SRC_URI="${HOMEPAGE}/-/archive/v${PV}/pypacker-v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://gitlab.com/mike01/pypacker/-/archive/v${PV}/pypacker-v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
