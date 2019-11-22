@@ -26,7 +26,7 @@ SRC_URI="
 LICENSE="GPL-2 BSD"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="~net-p2p/vuze-${PV}"
