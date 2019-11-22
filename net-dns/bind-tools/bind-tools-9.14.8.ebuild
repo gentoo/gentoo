@@ -22,14 +22,14 @@ IUSE="+caps doc gssapi idn ipv6 libedit libressl readline xml"
 
 COMMON_DEPEND="
 	caps? ( sys-libs/libcap )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	!libressl? ( dev-libs/openssl:= )
+	libressl? ( dev-libs/libressl:= )
 	xml? ( dev-libs/libxml2 )
 	idn? ( net-dns/libidn2:= )
 	gssapi? ( virtual/krb5 )
 	libedit? ( dev-libs/libedit )
 	!libedit? (
-		readline? ( sys-libs/readline:0= )
+		readline? ( sys-libs/readline:= )
 	)"
 DEPEND="${COMMON_DEPEND}"
 
