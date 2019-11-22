@@ -25,7 +25,7 @@ RDEPEND="
 	elogind? ( sys-auth/elogind[pam] )
 	mktemp? ( sys-auth/pam_mktemp )
 	pam_krb5? (
-		>=sys-libs/pam-${MIN_PAM_REQ} 
+		>=sys-libs/pam-${MIN_PAM_REQ}
 		sys-auth/pam_krb5
 	)
 	pam_ssh? ( sys-auth/pam_ssh )
