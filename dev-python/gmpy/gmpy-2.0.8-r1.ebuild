@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
 
@@ -15,9 +15,9 @@ HOMEPAGE="https://github.com/aleaxit/gmpy"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.zip"
 S="${WORKDIR}"/${MY_P}
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-3+"
 SLOT="2"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc mpir"
 
 RDEPEND="
@@ -25,7 +25,8 @@ RDEPEND="
 	>=dev-libs/mpfr-3.1.2:=
 	!mpir? ( dev-libs/gmp:0= )
 	mpir? ( sci-libs/mpir:= )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-arch/unzip
 	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )"
 
@@ -60,7 +61,10 @@ python_compile() {
 }
 
 python_compile_all() {
-	use doc && emake -C docs html
+	if use doc; then
+		emake -C docs html
+		HTML_DOCS=( docs/_build/html/. )
+	fi
 }
 
 python_test() {
@@ -72,9 +76,4 @@ python_test() {
 		cd ../test2 || die
 	fi
 	"${EPYTHON}" gmpy_test.py || die "tests failed under ${EPYTHON}"
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
 }
