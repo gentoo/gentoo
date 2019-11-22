@@ -1754,7 +1754,7 @@ app-i18n/zinnia 0.06-r3: Zinnia - Online hand recognition system with machine le
 app-i18n/zinnia-tomoe 0.6.0_p20080911: Handwriting model files trained with Tomoe data
 app-laptop/batti 0.3.8-r4: A upower based battery monitor for the system tray, similar to batterymon
 app-laptop/dispad 0.3.1-r1: Daemon to disable trackpads while typing
-app-laptop/hdaps-gl 0.0.5 0.0.5-r1: OpenGL visualization for HDAPS data
+app-laptop/hdaps-gl 0.0.5 0.0.7: OpenGL visualization for HDAPS data
 app-laptop/hdapsd 20141203: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
 app-laptop/i8kutils 1.33-r1 1.42: Dell Inspiron and Latitude utilities
 app-laptop/ibam 0.5.2-r4: Intelligent Battery Monitor
