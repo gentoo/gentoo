@@ -17283,7 +17283,7 @@ sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xdg-desktop-portal 1.4.2-r1: Desktop integration portal
 sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
-sys-apps/yarn 1.9.4 1.10.1 1.12.3 1.13.0 1.15.2 1.16.0 1.17.3 1.19.0 1.19.1: Fast, reliable, and secure node dependency management
+sys-apps/yarn 1.9.4 1.10.1 1.12.3 1.13.0 1.15.2 1.16.0 1.17.3 1.19.0 1.19.1 1.19.2: Fast, reliable, and secure node dependency management
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/authenticator 0.2.4 9999: Two-factor authentication code generator for GNOME
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0 1.2.1 9999: Framework for defining and tracking users, login sessions and seats
