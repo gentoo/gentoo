@@ -1,0 +1,20 @@
+diff --git a/tests/test_upload.py b/tests/test_upload.py
+index c87e16e..1487a0d 100644
+--- a/tests/test_upload.py
++++ b/tests/test_upload.py
+@@ -13,6 +13,7 @@
+ # limitations under the License.
+ import pretend
+ import pytest
++import unittest
+ from requests.exceptions import HTTPError
+ 
+ from twine.commands import upload
+@@ -298,6 +299,7 @@ def test_values_from_env(monkeypatch):
+     "https://test.pypi.org/",
+     "https://pypi.org/"
+ ])
++@unittest.skip("needs internet access")
+ def test_check_status_code_for_wrong_repo_url(repo_url, make_settings):
+     upload_settings = make_settings()
+ 
