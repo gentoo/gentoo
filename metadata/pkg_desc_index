@@ -8340,7 +8340,7 @@ dev-python/pkginfo 1.2.1 1.4.2: Provides an API for querying the distutils metad
 dev-python/pkipplib 0.07-r1: Pkipplib is a Python module which parses IPP requests
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
 dev-python/plotly 1.9.6: Browser-based graphing library for Python
-dev-python/pluggy 0.5.2 0.7.1 0.11.0 0.12.0 0.13.0: plugin and hook calling mechanisms for python
+dev-python/pluggy 0.5.2 0.7.1 0.11.0 0.12.0 0.13.0 0.13.1: plugin and hook calling mechanisms for python
 dev-python/pluginbase 0.5: Support library for building plugins sytems in Python
 dev-python/plumbum 1.6.4 1.6.7: A library for shell script-like programs in python
 dev-python/ply 3.6-r1 3.9 3.10 3.11: Python Lex-Yacc library
@@ -8640,7 +8640,7 @@ dev-python/pytest-services 2.0.1: Collection of fixtures and utility functions t
 dev-python/pytest-shutil 1.2.4 1.2.8 1.2.11: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testmon
-dev-python/pytest-timeout 1.2.0 1.2.1: py.test plugin to abort hanging tests
+dev-python/pytest-timeout 1.2.0 1.2.1 1.3.3: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.2.11: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.23.2 1.28.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.12.1 0.12.1-r1: Manage external processes across test runs
