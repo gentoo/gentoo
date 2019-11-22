@@ -347,18 +347,8 @@ src_install () {
 
 pkg_preinst() {
 	# move Info dir file to correct name
-	local infodir=/usr/share/info/${EMACS_SUFFIX} f
-	if [[ -f ${ED}${infodir}/dir.orig ]]; then
-		mv "${ED}"${infodir}/dir{.orig,} || die
-	elif [[ -d "${ED}"${infodir} ]]; then
-		# this should not happen in EAPI 4
-		ewarn "Regenerating Info directory index in ${infodir} ..."
-		rm -f "${ED}"${infodir}/dir{,.*}
-		for f in "${ED}"${infodir}/*; do
-			if [[ ${f##*/} != *-[0-9]* && -e ${f} ]]; then
-				install-info --info-dir="${ED}"${infodir} "${f}" || die
-			fi
-		done
+	if [[ -d ${ED}/usr/share/info ]]; then
+		mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{.orig,} || die
 	fi
 }
 
