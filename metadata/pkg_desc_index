@@ -2498,7 +2498,7 @@ app-text/htp 1.16-r1 1.19: An HTML preprocessor
 app-text/hunspell 1.6.2-r1 1.7.0-r1: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/info2html 2.0 2.0-r1: Converts GNU .info files to HTML
-app-text/iso-codes 3.76: ISO language, territory, currency, script codes and their translations
+app-text/iso-codes 3.76 4.4: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.6: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 3.7 3.8 3.8.1 3.8.2 4.0 4.1 4.3.1 4.9999: Java GUI manages bibliographies in a BibTeX database
@@ -9091,7 +9091,7 @@ dev-python/turbokid 1.0.5-r1: Python template plugin that supports Kid templates
 dev-python/turbolift 2.1.3: Openstack Swift sync/backup utility
 dev-python/tvdb_api 1.9 1.10_pre20150406-r1 2.0: Python interface to thetvdb.com API
 dev-python/tweepy 2.3 3.5.0: A Python library for accessing the Twitter API
-dev-python/twine 1.11.0 3.0.0: Collection of utilities for publishing packages on PyPI
+dev-python/twine 1.11.0 1.15.0 3.0.0: Collection of utilities for publishing packages on PyPI
 dev-python/twisted 16.6.0-r3 17.1.0-r2 17.9.0 18.4.0 18.7.0: An asynchronous networking framework written in Python
 dev-python/twisted-conch 13.2.0 15.2.1: Twisted SSHv2 implementation
 dev-python/twisted-core 13.2.0 15.2.1: An asynchronous networking framework written in Python
