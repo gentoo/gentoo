@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=tk? ( dev-lang/tk dev-tcltk/tcllib )
 SLOT=0
 SRC_URI=https://dianne.skoll.ca/projects/remind/download/remind-03.01.16.tar.gz
-_md5_=0b28b801c620b212e47a448e753fb0c6
+_md5_=c937c6d3c83f0396ffd0e405037548b9

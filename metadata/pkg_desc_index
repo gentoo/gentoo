@@ -8905,7 +8905,7 @@ dev-python/semver 2.8.1 2.9.0: A Python module for semantic versioning
 dev-python/send2trash 1.3.0 1.5.0: Sends files to the Trash (or Recycle Bin)
 dev-python/serpent 1.19 1.28: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
-dev-python/service_identity 14.0.0 16.0.0 17.0.0 17.0.0-r1: Service identity verification for pyOpenSSL
+dev-python/service_identity 14.0.0 16.0.0 17.0.0 17.0.0-r1 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.10 1.1.10-r1: Allow customization of the process title
 dev-python/setuptools 40.6.3 41.5.1 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
@@ -9081,7 +9081,7 @@ dev-python/translationstring 1.3: Utility library for i18n relied on by various 
 dev-python/transmissionrpc 0.11 9999: Python module that implements the Transmission bittorrent client RPC protocol
 dev-python/treq 0.2.1 16.12.0 17.3.1 17.8.0: A requests-like API built on top of twisted.web's Agent
 dev-python/trollius 2.1 2.2: Port of the asyncio project to Python 2.7 (deprecated)
-dev-python/trustme 0.5.0-r1 0.5.2: #1 quality TLS certs while you wait, for the discerning tester
+dev-python/trustme 0.5.0-r1 0.5.2 0.5.3: #1 quality TLS certs while you wait, for the discerning tester
 dev-python/ttfquery 1.0.5-r1: Font metadata and glyph outline extraction utility library
 dev-python/ttystatus 0.35 0.36: Terminal progress bar and status output for command line
 dev-python/turbocheetah 1.0-r1: TurboGears plugin to support use of Cheetah templates
