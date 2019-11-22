@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy pypy3 )
 
 inherit distutils-r1
 
@@ -14,13 +14,9 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc test"
+IUSE="doc"
 
-DEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}] )"
-
-python_test() {
-	nosetests -v || die "Testing failed with ${EPYTHON}"
-}
+distutils_enable_tests nose
 
 python_install_all() {
 	use doc && HTML_DOCS=( docs/html/. )
