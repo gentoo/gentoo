@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} pypy{,3} )
 
 inherit distutils-r1
 
@@ -21,20 +21,21 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-python/betamax[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
 
 DOCS=( AUTHORS.rst HISTORY.rst README.rst )
+
 PATCHES=(
 	"${FILESDIR}/requests-toolbelt-0.8.0-test-tracebacks.patch"
+	"${FILESDIR}/requests-toolbelt-0.9.1-tests.patch"
+
+	# disable python2.7 test failures with newer requests versions
+	# bug: https://bugs.gentoo.org/635824
+	# https://github.com/requests/toolbelt/issues/213
+	"${FILESDIR}/requests-toolbelt-0.9.1-tests-py2.patch"
+
+	# disable tests that require internet access
+	"${FILESDIR}/requests-toolbelt-0.9.1-tests-internet.patch"
 )
 
-# Known python2.7 test failures do to upstream
-# not testing with newer requests versions
-# bug: https://bugs.gentoo.org/635824
-# https://github.com/requests/toolbelt/issues/213
-RESTRICT=test
-
-python_test() {
-	py.test -v || die "Tests failed with ${EPYTHON}"
-}
+distutils_enable_tests pytest
