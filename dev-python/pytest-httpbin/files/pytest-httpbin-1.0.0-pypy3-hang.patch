@@ -1,0 +1,31 @@
+diff -dupr a/pytest_httpbin/serve.py b/pytest_httpbin/serve.py
+--- a/pytest_httpbin/serve.py	2019-02-11 20:54:14.000000000 +0100
++++ b/pytest_httpbin/serve.py	2019-11-22 15:50:17.407769297 +0100
+@@ -116,6 +116,7 @@ class Server(object):
+ 
+     def stop(self):
+         self._server.shutdown()
++        self._server.socket.close()
+ 
+     @property
+     def url(self):
+Only in b: pytest_httpbin.egg-info
+Only in b/tests: __pycache__
+diff -dupr a/tests/test_httpbin.py b/tests/test_httpbin.py
+--- a/tests/test_httpbin.py	2019-02-11 20:54:14.000000000 +0100
++++ b/tests/test_httpbin.py	2019-11-22 15:59:53.955324547 +0100
+@@ -1,3 +1,4 @@
++import sys
+ import unittest
+ import requests
+ import pytest_httpbin
+@@ -40,6 +41,8 @@ def test_httpbin_join(httpbin):
+ def test_httpbin_str(httpbin):
+     assert httpbin + '/foo' == httpbin.url + '/foo'
+ 
++@unittest.skipIf(hasattr(sys, 'pypy_version_info')
++                 and sys.hexversion >= 0x03000000, 'hangs on PyPy3')
+ def test_chunked_encoding(httpbin_both):
+     assert requests.get(httpbin_both.url + '/stream/20').status_code == 200
+ 
+Only in b: .tox

@@ -12,7 +12,7 @@ SRC_URI="https://www.keepalived.org/software/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="+bfd dbus debug -json regex snmp"
+IUSE="+bfd dbus -json regex snmp"
 
 RDEPEND="dev-libs/libnl:=
 	dev-libs/openssl:=
@@ -52,17 +52,10 @@ src_configure() {
 		--enable-vrrp \
 		$(use_enable bfd) \
 		$(use_enable dbus) \
-		$(use_enable dbus dbus-create-instance) \
-		$(use_enable debug) \
 		$(use_enable json) \
 		$(use_enable regex) \
-		$(use_enable regex regex-timers ) \
 		$(use_enable snmp) \
-		$(use_enable snmp snmp-checker) \
-		$(use_enable snmp snmp-rfc) \
-		$(use_enable snmp snmp-rfcv2) \
-		$(use_enable snmp snmp-rfcv3) \
-		$(use_enable snmp snmp-vrrp)
+		$(use_enable snmp snmp-rfc)
 }
 
 src_install() {
