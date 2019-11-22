@@ -5,8 +5,7 @@ EAPI=7
 
 DESCRIPTION="The Devil's Dictionary for dict"
 HOMEPAGE="http://www.dict.org/"
-SRC_FILE="http://www.gutenberg.org/files/972/972.zip"
-SRC_URI="${SRC_FILE} -> ${P}.zip"
+SRC_URI="ftp://aleph.gutenberg.org/9/7/972/972.zip -> ${P}.zip"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -26,7 +25,7 @@ src_prepare() {
 }
 
 src_compile() {
-	(dictfmt -u "${SRC_FILE}" \
+	(dictfmt -u "https://www.gutenberg.org/ebooks/972" \
 		-s "The Devil's Dictionary (2015-08-22 Project Gutenberg version)" \
 		--headword-separator " or " \
 		--columns 80 \
