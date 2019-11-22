@@ -8089,7 +8089,6 @@ sys-auth/pambase:consolekit - Enable pam_ck_connector module on local system log
 sys-auth/pambase:cracklib - Enable pam_cracklib module on system authentication stack. This produces warnings when changing password to something easily crackable. It requires the same USE flag to be enabled on sys-libs/pam or system login might be impossible.
 sys-auth/pambase:debug - Enable debug information logging on syslog(3) for all the modules supporting this in the system authentication and system login stacks.
 sys-auth/pambase:elogind - Use pam_elogind module to register user sessions with elogind.
-sys-auth/pambase:gnome-keyring - Enable pam_gnome_keyring module on system login stack. This enables proper Gnome Keyring access to logins, whether they are done with the login shell, a Desktop Manager or a remote login systems such as SSH.
 sys-auth/pambase:minimal - Disables the standard PAM modules that provide extra information to users on login; this includes pam_tally (and pam_tally2 for Linux PAM 1.1 and later), pam_lastlog, pam_motd and other similar modules. This might not be a good idea on a multi-user system but could reduce slightly the overhead on single-user non-networked systems.
 sys-auth/pambase:mktemp - Enable pam_mktemp module on system auth stack for session handling. This module creates a private temporary directory for the user, and sets TMP and TMPDIR accordingly.
 sys-auth/pambase:nullok - Enable the nullok option with the pam_unix module. This allows people to login with blank passwords.
