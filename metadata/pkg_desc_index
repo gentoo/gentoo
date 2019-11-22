@@ -7483,7 +7483,7 @@ dev-python/beaker 1.6.4-r1 1.8.1: A Session and Caching library with WSGI Middle
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
 dev-python/beautifulsoup 3.2.1-r1 4.5.1 4.6.3: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/bert 2.0.0 2.2.0: BERT Serialization Library
-dev-python/betamax 0.8.0: python-requests HTTP exchanges recorder
+dev-python/betamax 0.8.0 0.8.1: python-requests HTTP exchanges recorder
 dev-python/bibtexparser 0.6.2 1.1.0: A BibTeX parser written in python
 dev-python/bicyclerepair 0.9-r3: Bicycle Repair Man is the Python Refactoring Browser
 dev-python/billiard 3.3.0.23 3.5.0.0 3.5.0.2 3.6.0.0: Python multiprocessing fork
@@ -9070,6 +9070,7 @@ dev-python/toml 0.10.0 0.10.0-r1: Python library for handling TOML files
 dev-python/toolz 0.8.0 0.8.2 0.9.0: List processing tools and functional utilities
 dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
 dev-python/toro 1.0.1: Synchronization primitives for Tornado coroutines
+dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 2.9.1 3.2.1 3.12.1 3.13.2: virtualenv-based automation of test activities
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
 dev-python/tqdm 4.23.3 4.33.0 9999: Add a progress meter to your loops in a second
