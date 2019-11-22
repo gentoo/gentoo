@@ -13,28 +13,21 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="PSF-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="doc examples"
+IUSE="examples"
 
-DEPEND="
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx )
 "
-
-# Usual avoid d'loading un-needed objects.inv file
-PATCHES=( "${FILESDIR}"/mapping.patch )
 
 DOCS=( CHANGES.rst README.rst )
 
-python_compile_all() {
-	use doc && emake -C documentation html
-}
+distutils_enable_sphinx documentation --no-autodoc
 
 python_test() {
 	"${EPYTHON}" test/run_all_tests.py loop:// -v || die "Testing failed with ${EPYTHON}"
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( documentation/_build/html/. )
 	distutils-r1_python_install_all
 	if use examples; then
 		dodoc -r examples
