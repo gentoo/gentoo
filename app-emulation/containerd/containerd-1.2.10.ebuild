@@ -18,7 +18,7 @@ else
 fi
 
 DESCRIPTION="A daemon to control runC"
-HOMEPAGE="https://containerd.tools"
+HOMEPAGE="https://containerd.io/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
