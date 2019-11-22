@@ -172,6 +172,9 @@ src_compile() {
 src_install() {
 	toolchain_src_install
 	cd "${D}"${BINPATH}
+	if [[ -h gnatmake-${GCC_CONFIG_VER} ]] ; then
+		return
+	fi
 	for x in gnat*; do
 		# For some reason, g77 gets made instead of ${CTARGET}-g77...
 		# this should take care of that
@@ -183,11 +186,9 @@ src_install() {
 		fi
 
 		if [[ -f ${CTARGET}-${x} ]] ; then
-			if ! is_crosscompile ; then
-				ln -sf ${CTARGET}-${x} ${x}
-				dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
-					/usr/bin/${x}-${GCC_CONFIG_VER}
-			fi
+			ln -sf ${CTARGET}-${x} ${x}
+			dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
+				/usr/bin/${x}-${GCC_CONFIG_VER}
 			# Create versioned symlinks
 			dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
 				/usr/bin/${CTARGET}-${x}-${GCC_CONFIG_VER}
