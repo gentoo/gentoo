@@ -2704,6 +2704,7 @@ dev-python/twisted:conch - include Twisted SSHv2 implementation
 dev-python/twisted:http2 - include http2 support
 dev-python/twisted:serial - include serial port support
 dev-python/twisted-core:serial - include serial port support
+dev-python/urllib3:brotli - Enable support for brotli compression
 dev-python/vatnumber:vies - Enable VIES
 dev-python/ws4py:client - Install client modules
 dev-python/ws4py:server - Install server modules
