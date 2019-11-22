@@ -1,0 +1,21 @@
+diff --git a/tests/test_package.py b/tests/test_package.py
+index 8e4fbbb..35c9c52 100644
+--- a/tests/test_package.py
++++ b/tests/test_package.py
+@@ -214,11 +214,11 @@ TWINE_1_5_0_WHEEL_HEXDIGEST = package.Hexdigest(
+     'b657a4148d05bd0098c1d6d8cc4e14e766dbe93c3a5ab6723b969da27a87bac0',
+ )
+ 
+-if platform.python_implementation().lower() == 'pypy':
+-    # pyblake2 refuses to install on PyPy
+-    TWINE_1_5_0_WHEEL_HEXDIGEST = TWINE_1_5_0_WHEEL_HEXDIGEST._replace(
+-        blake2=None,
+-    )
++#if platform.python_implementation().lower() == 'pypy':
++#    # pyblake2 refuses to install on PyPy
++#    TWINE_1_5_0_WHEEL_HEXDIGEST = TWINE_1_5_0_WHEEL_HEXDIGEST._replace(
++#        blake2=None,
++#    )
+ 
+ 
+ def test_hash_manager():
