@@ -4,10 +4,10 @@ DEPEND=dev-libs/glib:2 dev-libs/json-glib >=net-im/bitlbee-3[plugins]
 DESCRIPTION=Facebook protocol plugin for BitlBee
 EAPI=7
 HOMEPAGE=https://github.com/bitlbee/bitlbee-facebook
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 dev-libs/json-glib >=net-im/bitlbee-3[plugins]
 SLOT=0
 SRC_URI=https://github.com/bitlbee/bitlbee-facebook/archive/v1.2.0.tar.gz -> bitlbee-facebook-1.2.0.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=64a32a23c970502ff8537e47d5211fb0
+_md5_=4d065d701dcad0e2b30b2d7c6e052fbb
