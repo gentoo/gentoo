@@ -1,0 +1,17 @@
+diff --git a/setup.py b/setup.py
+index 31f229c..62e1ad6 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,9 +1,7 @@
+-from setuptools import setup
++from setuptools import setup, find_packages
+ 
+ 
+ setup(
+-    setup_requires=['pbr>=3.0', 'setuptools>=17.1'],
+-    pbr=True,
+-    long_description_content_type='text/markdown; charset=UTF-8',
+-    keywords=['munch', 'dict', 'mapping', 'container', 'collection'],
++    find_packages(exclude=['tests']),
++    version="%VERSION%"
+ )
