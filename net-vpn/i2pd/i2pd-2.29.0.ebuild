@@ -94,7 +94,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ -f ${EROOT%/}/etc/i2pd/subscriptions.txt ]]; then
+	if [[ -f ${EROOT}/etc/i2pd/subscriptions.txt ]]; then
 		ewarn
 		ewarn "Configuration of the subscriptions has been moved from"
 		ewarn "subscriptions.txt to i2pd.conf. We recommend updating"
