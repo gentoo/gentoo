@@ -33,6 +33,10 @@ DEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/brotlipy-0.7.0-test-deadline.patch
+)
+
 src_prepare() {
 	# Inject the brotli lib.
 	rm -r "${WORKDIR}/${P}/libbrotli" || die "Could not remove the bundled brotli lib folder."
@@ -41,7 +45,7 @@ src_prepare() {
 	# Tests fail if we have this folder preserved within the lib.
 	rm -r "${WORKDIR}/${P}/libbrotli/python" || die "Could not remove 'python' subfolder."
 
-	eapply_user
+	distutils-r1_src_prepare
 }
 
 python_test() {
