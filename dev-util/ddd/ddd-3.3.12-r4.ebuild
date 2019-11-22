@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -41,6 +41,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-gdb-disassembler-bug.patch"
 	"${FILESDIR}/${PN}-3.3.12-man.patch"
 	"${FILESDIR}/${PN}-3.3.12-tinfo.patch"
+	"${FILESDIR}/${PN}-3.3.12-gcc9.patch"
+	"${FILESDIR}/${PN}-3.3.12-parallel.patch"
 )
 
 DOCS=(
