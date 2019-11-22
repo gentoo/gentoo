@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy )
 
 inherit distutils-r1
 
@@ -17,7 +17,7 @@ IUSE="doc examples"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	doc? ( dev-python/sphinx )
 "
 
 # Usual avoid d'loading un-needed objects.inv file
@@ -30,15 +30,14 @@ python_compile_all() {
 }
 
 python_test() {
-	${EPYTHON} test/run_all_tests.py || die "Testing failed with ${EPYTHON}"
+	"${EPYTHON}" test/run_all_tests.py loop:// -v || die "Testing failed with ${EPYTHON}"
 }
 
 python_install_all() {
 	use doc && local HTML_DOCS=( documentation/_build/html/. )
 	distutils-r1_python_install_all
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
+		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }
