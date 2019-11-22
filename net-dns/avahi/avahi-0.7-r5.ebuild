@@ -214,4 +214,6 @@ pkg_postinst() {
 		elog "addresses, just set config_<interface>=( autoipd ) in /etc/conf.d/net!"
 		elog
 	fi
+
+	systemd_reenable avahi-daemon.service
 }
