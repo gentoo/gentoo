@@ -1,0 +1,28 @@
+diff -dupr a/test/test_simple_compression.py b/test/test_simple_compression.py
+--- a/test/test_simple_compression.py	2017-05-30 10:20:01.000000000 +0200
++++ b/test/test_simple_compression.py	2019-11-22 11:37:31.248755016 +0100
+@@ -9,7 +9,7 @@ import brotli
+ 
+ import pytest
+ 
+-from hypothesis import given
++from hypothesis import given, settings
+ from hypothesis.strategies import binary, integers, sampled_from, one_of
+ 
+ 
+@@ -25,6 +25,7 @@ def test_roundtrip_compression_with_file
+     ) == uncompressed_data
+ 
+ 
++@settings(deadline=None)
+ @given(
+     chunk_size=integers(min_value=1, max_value=2**12),
+     mode=sampled_from(list(brotli.BrotliEncoderMode)),
+@@ -62,6 +63,7 @@ def test_streaming_compression(one_compr
+         assert decompressed == f.read()
+ 
+ 
++@settings(deadline=None)
+ @given(
+     chunk_size=integers(min_value=1, max_value=2**12),
+     mode=sampled_from(list(brotli.BrotliEncoderMode)),
