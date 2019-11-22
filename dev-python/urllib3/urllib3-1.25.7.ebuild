@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -37,7 +37,7 @@ BDEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		>=dev-python/trustme-0.5.3[${PYTHON_USEDEP}]
-		>=www-servers/tornado-4.2.1[$(python_gen_usedep 'python*')]
+		>=www-servers/tornado-4.2.1[$(python_gen_usedep python{2_7,3_{5,6,7}})]
 	)
 	doc? (
 		$(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')
