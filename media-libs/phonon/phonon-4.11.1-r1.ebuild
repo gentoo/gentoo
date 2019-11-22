@@ -41,14 +41,13 @@ src_configure() {
 		-DPHONON_BUILD_DESIGNER_PLUGIN=$(usex designer)
 		-DCMAKE_DISABLE_FIND_PACKAGE_GLIB2=$(usex !pulseaudio)
 		-DCMAKE_DISABLE_FIND_PACKAGE_PulseAudio=$(usex !pulseaudio)
-		-DPHONON_BUILD_SETTINGS=$(usex !pulseaudio)
+		-DPHONON_BUILD_SETTINGS=ON
 	)
 	ecm_src_configure
 }
 
 src_install() {
 	ecm_src_install
-	use pulseaudio || \
-		make_desktop_entry "${PN}settings" \
-			"Phonon Audio and Video" preferences-desktop-sound
+	make_desktop_entry "${PN}settings" \
+		"Phonon Audio and Video" preferences-desktop-sound
 }
