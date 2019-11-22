@@ -16178,10 +16178,10 @@ sci-chemistry/tinker 8.2.1: Molecular modeling package that includes force field
 sci-chemistry/tm-align 20150914: Quick & Accurate Structural Alignment
 sci-chemistry/viewmol 2.4.1-r3: Open-source graphical front end for computational chemistry programs
 sci-chemistry/vmd 1.9.2 1.9.3 1.9.3-r1: Visual Molecular Dynamics
-sci-chemistry/votca-csg 1.4 1.4.1 1.5 9999: Votca coarse-graining engine
-sci-chemistry/votca-csgapps 1.4 1.4.1 1.5 9999: Extra applications for votca-csg
-sci-chemistry/votca-ctp 1.5 9999: Votca charge transport module
-sci-chemistry/votca-xtp 1.4 1.4.1 1.5 9999: Votca excitation and charge properties module
+sci-chemistry/votca-csg 1.4 1.4.1 1.5 1.5.1 9999: Votca coarse-graining engine
+sci-chemistry/votca-csgapps 1.4 1.4.1 1.5 1.5.1 9999: Extra applications for votca-csg
+sci-chemistry/votca-ctp 1.5 1.5.1 9999: Votca charge transport module
+sci-chemistry/votca-xtp 1.4 1.4.1 1.5 1.5.1 9999: Votca excitation and charge properties module
 sci-chemistry/wxmacmolplt 7.5-r1: Chemical 3D graphics program with GAMESS input builder
 sci-chemistry/xds-bin 20170930: Software for processing single-crystal X-ray monochromatic diffraction data
 sci-chemistry/xyza2pipe 20121001: Cross conversion environment of NMR spectra
@@ -16551,7 +16551,7 @@ sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse librar
 sci-libs/umfpack 5.6.2: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/vecmath-objectclub 1.14: Unofficial free implementation of Sun javax.vecmath by Kenji Hiranabe
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
-sci-libs/votca-tools 1.4 1.4.1 1.5 9999: Votca tools library
+sci-libs/votca-tools 1.4 1.4.1 1.5 1.5.1 9999: Votca tools library
 sci-libs/vtk 6.1.0-r4 8.1.0-r3: The Visualization Toolkit
 sci-libs/vtkdata 6.1.0: Example data file for VTK
 sci-libs/xdmf2 1.0_p141226-r3: eXtensible Data Model and Format
@@ -18293,9 +18293,9 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0 68.2.0 70.0.1: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.2.0 70.0.1: Firefox Web Browser
-www-client/google-chrome 78.0.3904.87: The web browser from Google
-www-client/google-chrome-beta 79.0.3945.16: The web browser from Google
-www-client/google-chrome-unstable 79.0.3945.16: The web browser from Google
+www-client/google-chrome 78.0.3904.108: The web browser from Google
+www-client/google-chrome-beta 79.0.3945.45: The web browser from Google
+www-client/google-chrome-unstable 80.0.3970.5: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.14-r1 2.16 2.17 2.18: A fast and lightweight web browser running in both graphics and text mode
@@ -18344,7 +18344,7 @@ www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.4-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 32.0.0.293: Adobe Flash Player
 www-plugins/browserpass 3.0.6: WebExtension host binary for pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 78.0.3904.87 79.0.3945.16_alpha 79.0.3945.16_beta: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 78.0.3904.108 79.0.3945.45_beta 80.0.3970.5_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.1 9999: High performance flash player
