@@ -7,7 +7,7 @@ inherit fcaps flag-o-matic multilib python-r1 qmake-utils user xdg-utils cmake-u
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
-SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.xz"
+SRC_URI="https://www.wireshark.org/download/src/all-versions/${P/_/}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
