@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6,7,8}} )
 
 inherit distutils-r1
 
@@ -34,6 +34,10 @@ BDEPEND="
 		$(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/importlib_metadata-0.23-py38.patch"
+)
 
 distutils_enable_tests unittest
 
