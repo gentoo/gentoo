@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -40,6 +40,7 @@ COMMON_DEPEND="
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5
 	x11-libs/libX11
+	x11-libs/libXfixes
 	x11-libs/libXext
 	x11-libs/libXScrnSaver
 	gadu? ( >=net-libs/libgadu-1.12.2[threads] )
@@ -50,7 +51,7 @@ COMMON_DEPEND="
 	)
 	spell? ( app-text/enchant )
 	xmpp? (
-		net-dns/libidn
+		net-dns/libidn:*
 		>=net-libs/qxmpp-0.9.3-r1
 		sys-libs/zlib
 	)
@@ -102,6 +103,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.3-do-not-force-ccache.patch"
 	"${FILESDIR}/${PN}-4.3-fix-plugins-rpath.patch"
 	"${FILESDIR}/${PN}-4.3-gcc7.patch"
+	"${FILESDIR}/${PN}-4.3-find-x11-with-newer-cmake-modules.patch"
 )
 
 src_configure() {
