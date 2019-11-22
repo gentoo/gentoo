@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -33,16 +33,19 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		>=www-servers/tornado-4.2.1[$(python_gen_usedep 'python*')]
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
+		>=www-servers/tornado-4.2.1[$(python_gen_usedep python{2_7,3_{5,6,7}})]
 	)
 	doc? (
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
+		$(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')
 	)
 "
 
-# Testsuite written requiring mock to be installed under all Cpythons
+python_check_deps() {
+	use doc || return 0
+	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
 
 python_prepare_all() {
 	# skip appengine tests
@@ -52,17 +55,17 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	use doc && emake -C docs SPHINXOPTS= html
+	if use doc; then
+		emake -C docs SPHINXOPTS= html
+		HTML_DOCS=( docs/_build/html/. )
+	fi
 }
 
 python_test() {
 	# FIXME: get tornado ported
-	if [[ ${EPYTHON} == python* ]]; then
-		py.test -v || die "Tests fail with ${EPYTHON}"
-	fi
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	case ${EPYTHON} in
+		python2*|python3.[567])
+			pytest -vv || die "Tests fail with ${EPYTHON}"
+			;;
+	esac
 }
