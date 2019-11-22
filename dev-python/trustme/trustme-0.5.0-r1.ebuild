@@ -14,6 +14,7 @@ LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="<dev-python/cryptography-2.7[${PYTHON_USEDEP}]
 	dev-python/idna[${PYTHON_USEDEP}]
