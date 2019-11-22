@@ -5,7 +5,7 @@
     <email>mjo@gentoo.org</email>
     <name>Michael Orlitzky</name>
   </maintainer>
-  <upstream>
-    <remote-id type="sourceforge">hdaps</remote-id>
+    <upstream>
+    <remote-id type="github">linux-thinkpad/hdaps-gl</remote-id>
   </upstream>
 </pkgmetadata>
