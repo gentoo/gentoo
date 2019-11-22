@@ -1,0 +1,23 @@
+From 4c9f81249f0808af316f39c8f0e8b67e46ec0967 Mon Sep 17 00:00:00 2001
+From: Arfrever Frehtes Taifersar Arahesis <Arfrever@Apache.Org>
+Date: Mon, 18 Nov 2019 11:07:48 -0800
+Subject: [PATCH] Respect CMAKE_INSTALL_LIBDIR in installed CMake files
+
+Fixes #3017
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 19108f3a0..aecaf8d68 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -215,7 +215,7 @@ if(ENABLE_SPIRV_TOOLS_INSTALL)
+     endmacro()
+   else()
+     macro(spvtools_config_package_dir TARGET PATH)
+-      set(${PATH} lib/cmake/${TARGET})
++      set(${PATH} ${CMAKE_INSTALL_LIBDIR}/cmake/${TARGET})
+     endmacro()
+   endif()
+ 
