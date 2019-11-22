@@ -20,7 +20,7 @@ SRC_URI="https://github.com/webmproject/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="BSD"
 SLOT="0/6"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc +highbitdepth postproc static-libs svc test +threads"
 
 REQUIRED_USE="test? ( threads )"
@@ -83,9 +83,6 @@ multilib_src_configure() {
 		i?86*) export AS=yasm;;
 		x86_64*) export AS=yasm;;
 	esac
-
-	# powerpc toolchain is not recognized anymore, #694368
-	[[ ${CHOST} == powerpc-* ]] && myconfargs+=( --force-target=generic-gnu )
 
 	# Build with correct toolchain.
 	tc-export CC CXX AR NM
