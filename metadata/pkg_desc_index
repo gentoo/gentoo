@@ -4972,7 +4972,7 @@ dev-libs/libp11 0.4.10: Abstraction layer to simplify PKCS#11 API
 dev-libs/libparserutils 0.2.3 0.2.4-r1: library for building efficient parsers, written in C
 dev-libs/libpcre 8.41-r1 8.42 8.43: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r1: libpcre(posix).so.3 symlinks for compatibility with Debian
-dev-libs/libpcre2 10.32 10.33 10.33-r1: Perl-compatible regular expression library
+dev-libs/libpcre2 10.32 10.33-r1 10.34: Perl-compatible regular expression library
 dev-libs/libpeas 1.22.0: A GObject plugins library
 dev-libs/libpfm 4.4.0 4.6.0 4.8.0 4.10.1: Hardware-based performance monitoring interface for Linux
 dev-libs/libpipeline 1.4.2 1.5.0 1.5.1: a pipeline manipulation library
@@ -17150,7 +17150,7 @@ sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/makedev 3.23.1-r1: program used for creating device files in /dev
 sys-apps/man 1.6g-r1: Standard commands to read man pages
 sys-apps/man-db 2.7.6.1-r2 2.8.6.1 2.8.7 2.9.0 9999: a man replacement that utilizes berkdb instead of flat files
-sys-apps/man-pages 5.01 5.02 5.03: A somewhat comprehensive collection of Linux man pages
+sys-apps/man-pages 5.03 5.04: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
 sys-apps/mawk 1.3.4_p20161120 1.3.4_p20171017-r1 1.3.4_p20190203: an (often faster than gawk) awk-interpreter

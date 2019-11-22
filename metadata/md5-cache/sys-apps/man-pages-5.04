@@ -9,5 +9,5 @@ PDEPEND=nls? ( l10n_da? ( app-i18n/man-pages-da ) l10n_de? ( app-i18n/man-pages-
 RDEPEND=virtual/man !<sys-apps/keyutils-1.5.9-r4 !<sys-apps/attr-2.4.47-r2 !<dev-libs/libaio-0.3.109-r2 !<dev-libs/libbsd-0.8.3-r1
 RESTRICT=binchecks
 SLOT=0
-SRC_URI=https://www.kernel.org/pub/linux/docs/man-pages/Archive/man-pages-5.02.tar.xz https://www.kernel.org/pub/linux/docs/man-pages/man-pages-5.02.tar.xz mirror://gentoo/man-pages-gentoo-2.tar.bz2 https://dev.gentoo.org/~cardoe/files/man-pages-gentoo-2.tar.bz2
+SRC_URI=https://www.kernel.org/pub/linux/docs/man-pages/Archive/man-pages-5.04.tar.xz https://www.kernel.org/pub/linux/docs/man-pages/man-pages-5.04.tar.xz mirror://gentoo/man-pages-gentoo-2.tar.bz2 https://dev.gentoo.org/~cardoe/files/man-pages-gentoo-2.tar.bz2
 _md5_=85bd8bede8ff774d3e5373a606955fcc
