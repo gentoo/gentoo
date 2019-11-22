@@ -3,6 +3,12 @@
 
 EAPI=7
 
+# Sometimes build with ninja fails.
+# Please check occasionally if we can revert back to ninja.
+# Latest known issue:
+#   https://github.com/diasurgical/devilutionX/issues/490
+CMAKE_MAKEFILE_GENERATOR="emake"
+
 inherit cmake-utils desktop
 
 DESCRIPTION="Diablo engine for modern operating systems"
@@ -30,13 +36,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
-
-src_prepare() {
-	# https://github.com/diasurgical/devilutionX/issues/225
-	eapply -R "${FILESDIR}"/${PN}-facebookincubator_find_libsodium.patch
-
-	cmake-utils_src_prepare
-}
 
 src_configure() {
 	local mycmakeargs=(
