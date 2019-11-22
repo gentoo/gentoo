@@ -42,8 +42,8 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-# Makes testing easier; otherwise we get errors from pkg_resources.
-#DISTUTILS_IN_SOURCE_BUILD=1
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	"${FILESDIR}/webtest-2.0.33-no-pylons-theme.patch"
 )
