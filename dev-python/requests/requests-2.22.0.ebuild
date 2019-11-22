@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -36,10 +36,12 @@ BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		>=dev-python/PySocks-1.5.6[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/pytest-httpbin[${PYTHON_USEDEP}]
+			dev-python/pytest-mock[${PYTHON_USEDEP}]
+			>=dev-python/PySocks-1.5.6[${PYTHON_USEDEP}]
+		' python{2_7,3_{5,6,7}})
 	)
 "
 
@@ -62,6 +64,8 @@ src_prepare() {
 python_test() {
 	# tests hang with pypy & pypy3
 	[[ ${EPYTHON} == pypy* ]] && continue
+	# TODO: reenable when deps are ready
+	[[ ${EPYTHON} == python3_8 ]] && continue
 
 	pytest -vv || die "Tests failed with ${EPYTHON}"
 }
