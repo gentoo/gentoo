@@ -23,8 +23,6 @@ DEPEND="
 	)
 "
 
-# Many tests fail, even on a regular tox run on a upstream clone
-#RESTRICT="test"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
@@ -36,8 +34,9 @@ python_test() {
 		ewarn "Not running tests on ${EPYTHON} since they are broken"
 		return 0
 	fi
+
 	# since we are running in an environment a bit similar to CI,
 	# let's skip the tests that are disable for CI
-	TRAVIS=1 APPVEYOR=1 ${PYTHON} psutil/tests/__main__.py || \
+	TRAVIS=1 APPVEYOR=1 PYTHONPATH="${BUILD_DIR}/lib" ${PYTHON} psutil/tests/__main__.py || \
 		die "tests failed with ${EPYTHON}"
 }
