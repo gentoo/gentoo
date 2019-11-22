@@ -9170,7 +9170,7 @@ dev-python/webob 1.8.2 1.8.2-r1 1.8.5 1.8.5-r1: WSGI request and response object
 dev-python/webpy 0.37-r1 0.38: A small and simple web framework for Python
 dev-python/websocket-client 0.37.0 0.40.0 0.47.0 0.48.0: WebSocket client for python with hybi13 support
 dev-python/websockify 0.8.0: WebSockets support for any application/server
-dev-python/webtest 2.0.21 2.0.29 2.0.29-r1: Helper to test WSGI applications
+dev-python/webtest 2.0.21 2.0.29 2.0.29-r1 2.0.33: Helper to test WSGI applications
 dev-python/webut 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
 dev-python/werkzeug 0.12.2 0.14.1 0.15.4 0.15.5: Collection of various utilities for WSGI applications
