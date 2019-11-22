@@ -7,7 +7,7 @@ DESCRIPTION="The Devil's Dictionary for dict"
 HOMEPAGE="http://www.dict.org/"
 SRC_URI="ftp://aleph.gutenberg.org/9/7/972/972.zip -> ${P}.zip"
 
-LICENSE="public-domain"
+LICENSE="gutenberg"
 SLOT="0"
 IUSE=""
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
@@ -37,7 +37,6 @@ src_compile() {
 }
 
 src_install() {
-	dodoc COPYING.gutenberg
 	insinto /usr/lib/dict
 	doins devils.dict.dz devils.index
 }

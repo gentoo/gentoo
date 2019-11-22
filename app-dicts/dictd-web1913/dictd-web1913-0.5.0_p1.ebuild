@@ -25,7 +25,7 @@ SRC_URI="ftp://aleph.gutenberg.org/6/6/660/old/pgw${GV}ab.zip
 	ftp://aleph.gutenberg.org/6/7/670/old/pgw${GV}xz.zip
 	https://git.sr.ht/~ag_eitilt/${SN}/archive/${SV}.tar.gz -> ${SD}.tar.gz"
 
-LICENSE="public-domain"
+LICENSE="gutenberg"
 SLOT="0"
 IUSE=""
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
@@ -46,8 +46,6 @@ src_unpack() {
 src_prepare() {
 	eapply "${SD}/tag-nesting.patch"
 	eapply_user
-
-	(sed -e '/<! Begin file/,$ d' pgw050c.txt || die) > COPYING.gutenberg
 
 	for f in $(ls pgw${GV}?*.txt) ; do
 		echo "Cleaning '${f}'"
@@ -76,8 +74,6 @@ src_compile() {
 
 src_install() {
 	newdoc "${SD}/README" README.patches
-	dodoc COPYING.gutenberg
-	newdoc "${SD}/dictfmt-elements.txt" COPYING.micra
 	insinto /usr/lib/dict
 	doins web1913.dict.dz web1913.index
 }
