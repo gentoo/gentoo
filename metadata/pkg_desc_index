@@ -4605,7 +4605,7 @@ dev-lang/crystal 0.30.1 0.31.1: The Crystal Programming Language
 dev-lang/duktape 2.2.1 2.4.0: Embeddable Javascript engine
 dev-lang/elixir 1.4.5 1.6.6 1.8.1 1.8.2 1.9.2 1.9.4: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
-dev-lang/erlang 21.1.1 22.1.1 22.1.4 22.1.7 22.1.8: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 21.1.1 22.1.1 22.1.4 22.1.7 22.1.8 22.1.8-r1: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
