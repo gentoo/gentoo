@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic linux-info meson systemd user xdg-utils
+inherit flag-o-matic linux-info meson systemd xdg-utils
 
 DESCRIPTION="The Music Player Daemon (mpd)"
 HOMEPAGE="https://www.musicpd.org https://github.com/MusicPlayerDaemon/MPD"
@@ -119,8 +119,6 @@ PATCHES=(
 )
 
 pkg_setup() {
-	enewuser mpd "" "" "/var/lib/mpd" audio
-
 	if use eventfd; then
 		CONFIG_CHECK+=" ~EVENTFD"
 		ERROR_EVENTFD="${P} requires eventfd in-kernel support."
