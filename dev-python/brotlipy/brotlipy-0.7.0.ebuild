@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7,3_8} pypy{,3} )
 
 inherit distutils-r1
 
@@ -21,6 +21,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/python-cffi[${PYTHON_USEDEP}]"
 DEPEND="
@@ -32,6 +33,10 @@ DEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/brotlipy-0.7.0-test-deadline.patch
+)
+
 src_prepare() {
 	# Inject the brotli lib.
 	rm -r "${WORKDIR}/${P}/libbrotli" || die "Could not remove the bundled brotli lib folder."
@@ -40,7 +45,7 @@ src_prepare() {
 	# Tests fail if we have this folder preserved within the lib.
 	rm -r "${WORKDIR}/${P}/libbrotli/python" || die "Could not remove 'python' subfolder."
 
-	eapply_user
+	distutils-r1_src_prepare
 }
 
 python_test() {

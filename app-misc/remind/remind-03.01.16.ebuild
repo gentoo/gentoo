@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Ridiculously functional reminder program"
 HOMEPAGE="https://dianne.skoll.ca/projects/remind/"
-SRC_URI="${HOMEPAGE}download/${P}.tar.gz"
+SRC_URI="https://dianne.skoll.ca/projects/remind/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
