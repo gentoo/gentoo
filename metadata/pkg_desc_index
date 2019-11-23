@@ -4656,7 +4656,7 @@ dev-lang/ocaml 4.04.2-r1 4.05.0-r1: Type-inferring functional programming langua
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
 dev-lang/opendylan 2013.1-r1 2013.2 2014.1 9999: OpenDylan language runtime environment
 dev-lang/opendylan-bin 2011.1 2012.1 2013.1 2013.2 2014.1 2019.1: OpenDylan language runtime environment (prebuilt)
-dev-lang/orc 0.4.28-r1 0.4.29: The Oil Runtime Compiler, a just-in-time compiler for array operations
+dev-lang/orc 0.4.28-r1 0.4.29 0.4.31: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.24.3-r1 5.24.4 5.26.2 5.28.2-r1 5.30.0 5.30.1: Larry Wall's Practical Extraction and Report Language
