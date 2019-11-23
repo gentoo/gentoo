@@ -32,6 +32,9 @@ DEPEND="${RDEPEND}
 		dev-python/pyftpdlib[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/unittest2[${PYTHON_USEDEP}]
+		python_targets_python2_7? (
+			dev-python/backports-os[python_targets_python2_7]
+		)
 	)"
 
 python_test() {
