@@ -29,6 +29,7 @@ DEPEND="
 	dev-python/setuptools-git[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND} )
 "
+RESTRICT="!test? ( test )"
 
 python_test() {
 	# various pickling errors, but code works to run pytest-virtualenv tests
