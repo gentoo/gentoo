@@ -15443,7 +15443,7 @@ net-misc/ssvnc 1.0.29-r2: VNC viewer that adds encryption security to VNC connec
 net-misc/stargazer 2.408-r1: Billing system for small home and office networks
 net-misc/streamlink 0.14.2-r1 1.0.0 1.1.1 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
-net-misc/stunnel 5.43 5.50-r1 5.51-r1 5.54 5.55: TLS/SSL - Port Wrapper
+net-misc/stunnel 5.43 5.50-r1 5.51-r1 5.54 5.55 5.56: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.7 1.2.9 1.2.15: Open source implementation of the STUN protocol
 net-misc/suite3270 3.5_p10 3.5_p12 3.6_p4 3.6_p8: Complete 3270 access package
 net-misc/switzerland 0.1.0: Network Testing Tool
@@ -18249,7 +18249,7 @@ www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for propositio
 www-apps/mediawiki 1.33.1: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/mirmon 2.10: Simple webapp to monitor the status of mirrors
 www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module using Apache
-www-apps/moodle 3.5.9 3.6.7 3.7.3: The Moodle Course Management System
+www-apps/moodle 3.5.9 3.6.7 3.7.3 3.8: The Moodle Course Management System
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
 www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
