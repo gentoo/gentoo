@@ -4614,7 +4614,7 @@ dev-lang/fpc 2.6.4 3.0.0 3.0.2 3.0.2-r1 3.0.4: Free Pascal Compiler
 dev-lang/gdl 0.9.6-r2: GNU Data Language
 dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the ANSI Forth language
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1: The Glasgow Haskell Compiler
-dev-lang/gnat-gpl 2016-r3 2016-r4 2017 2017-r1 2018-r2 2018-r3 2019 2019-r1: GNAT Ada Compiler - GPL version
+dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r1: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
 dev-lang/go 1.12.9 1.12.10 1.12.11 1.12.12 1.12.13 1.13.4 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
@@ -9008,7 +9008,7 @@ dev-python/stestr 2.1.0: A parallel Python test runner built around subunit
 dev-python/stevedore 1.25.1 1.28.0 1.30.1: Manage dynamic plugins for Python applications
 dev-python/stomper 0.3.0: Transport neutral client implementation of the STOMP protocol
 dev-python/storm 0.20-r1: An object-relational mapper for Python developed at Canonical
-dev-python/strict-rfc3339 0.6 0.7: Strict, simple, lightweight RFC3339 functions
+dev-python/strict-rfc3339 0.6 0.7 0.7-r1: Strict, simple, lightweight RFC3339 functions
 dev-python/stripe 1.84.2 2.3.0 2.10.1 2.34.0: Stripe python bindings
 dev-python/stripogram 1.5-r1: Strip-o-Gram HTML Conversion Library
 dev-python/stsci-distutils 0.3.7: Utilities used to package some of STScI's Python projects
@@ -18362,7 +18362,7 @@ www-servers/caddy 0.10.11: Fast, cross-platform HTTP/2 web server with automatic
 www-servers/cherokee 1.2.104-r1: An extremely fast and tiny web server
 www-servers/civetweb 1.11: Embedded C/C++ web server
 www-servers/fnord 1.11-r1: Yet another small httpd
-www-servers/gatling 0.13-r1 0.15: High performance web server
+www-servers/gatling 0.15: High performance web server
 www-servers/gunicorn 19.8.1 19.9.0: A WSGI HTTP Server for UNIX
 www-servers/h2o 2.2.5 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
 www-servers/hiawatha 9.15: Advanced and secure webserver
