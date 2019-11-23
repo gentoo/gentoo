@@ -15,7 +15,7 @@ fi
 
 # TODO: linuxfb
 
-IUSE="accessibility dbus egl eglfs evdev +gif gles2 ibus jpeg
+IUSE="accessibility dbus egl eglfs evdev +gif gles2-only ibus jpeg
 	+libinput +png tslib tuio +udev vnc vulkan wayland +X"
 REQUIRED_USE="
 	|| ( eglfs X )
@@ -23,7 +23,7 @@ REQUIRED_USE="
 	eglfs? ( egl )
 	ibus? ( dbus )
 	libinput? ( udev )
-	X? ( gles2? ( egl ) )
+	X? ( gles2-only? ( egl ) )
 "
 
 COMMON_DEPEND="
@@ -42,7 +42,7 @@ COMMON_DEPEND="
 		x11-libs/libdrm
 	)
 	evdev? ( sys-libs/mtdev )
-	gles2? ( media-libs/mesa[gles2] )
+	gles2-only? ( media-libs/mesa[gles2] )
 	jpeg? ( virtual/jpeg:0 )
 	libinput? (
 		dev-libs/libinput:=
@@ -106,8 +106,8 @@ QT5_GENTOO_CONFIG=(
 	:system-freetype:FREETYPE
 	!:no-freetype:
 	!gif:no-gif:
-	gles2::OPENGL_ES
-	gles2:opengles2:OPENGL_ES_2
+	gles2-only::OPENGL_ES
+	gles2-only:opengles2:OPENGL_ES_2
 	!:no-gui:
 	:system-harfbuzz:
 	!:no-harfbuzz:
@@ -176,7 +176,7 @@ src_configure() {
 		-system-harfbuzz
 		$(qt_use jpeg libjpeg system)
 		$(qt_use libinput)
-		-opengl $(usex gles2 es2 desktop)
+		-opengl $(usex gles2-only es2 desktop)
 		$(qt_use png libpng system)
 		$(qt_use tslib)
 		$(qt_use vulkan)
