@@ -8820,7 +8820,7 @@ dev-python/redlock-py 1.0.8: Redis distributed locks in Python
 dev-python/rednose 0.4.1 0.4.3: coloured output for nosetests
 dev-python/reflink 0.2.1: RFC-compliant FQDN validation and manipulation for Python
 dev-python/regendoc 0.5 0.6.1: Check/update simple file/shell examples in documentation
-dev-python/regex 2017.04.05 2017.04.05-r1: Alternative regular expression module to replace re
+dev-python/regex 2017.04.05 2017.04.05-r1 2019.11.1: Alternative regular expression module to replace re
 dev-python/regions 0.2: Astropy affiliated package for region handling
 dev-python/rencode 1.0.5 1.0.5-r1: similar to bencode from the BitTorrent project
 dev-python/reno 2.7.0 2.11.2: Release notes manager, storing release notes in a git repo and building docs
@@ -8847,7 +8847,7 @@ dev-python/resumable-urlretrieve 0.1.5: Small library to fetch files over HTTP a
 dev-python/retry-decorator 1.0.0 1.0.0-r1: Decorator for retrying when exceptions occur
 dev-python/retrying 1.3.3: General-purpose retrying library
 dev-python/rfc3986 0.3.1 0.4.1 1.1.0 1.2.0 1.3.2: Validating URI References per RFC 3986
-dev-python/rfc3987 1.3.7 1.3.8: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
+dev-python/rfc3987 1.3.7 1.3.8 1.3.8-r1: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
 dev-python/riak-python-client 2.7.0-r1: The Riak client for Python.
 dev-python/rlcompleter2 0.98-r1: Python command line completion
 dev-python/rnc2rng 2.4 2.4.1 2.5 2.6.1: RELAX NG Compact to regular syntax conversion library
