@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86"
 
 # TODO: QtNfc, QtRemoteObjects (Qt >= 5.12)
-IUSE="bluetooth dbus debug declarative designer examples gles2 gui help location multimedia
+IUSE="bluetooth dbus debug declarative designer examples gles2-only gui help location multimedia
 	network networkauth opengl positioning printsupport sensors serialport sql +ssl svg
 	testlib webchannel webkit websockets widgets x11extras xmlpatterns"
 
@@ -69,7 +69,7 @@ RDEPEND="
 	)
 	declarative? ( >=dev-qt/qtdeclarative-${QT_PV}[widgets?] )
 	designer? ( >=dev-qt/designer-${QT_PV} )
-	gui? ( >=dev-qt/qtgui-${QT_PV}[gles2=] )
+	gui? ( >=dev-qt/qtgui-${QT_PV}[gles2-only=] )
 	help? ( >=dev-qt/qthelp-${QT_PV} )
 	location? ( >=dev-qt/qtlocation-${QT_PV} )
 	multimedia? ( >=dev-qt/qtmultimedia-${QT_PV}[widgets?] )
@@ -128,9 +128,9 @@ src_configure() {
 			$(usex declarative '' --no-qml-plugin)
 			$(pyqt_use_enable designer)
 			$(usex designer '' --no-designer-plugin)
-			$(usex gles2 '--disable-feature=PyQt_Desktop_OpenGL' '')
+			$(usex gles2-only '--disable-feature=PyQt_Desktop_OpenGL' '')
 			$(pyqt_use_enable gui)
-			$(pyqt_use_enable gui $(use gles2 && echo _QOpenGLFunctions_ES2 || echo _QOpenGLFunctions_{2_0,2_1,4_1_Core}))
+			$(pyqt_use_enable gui $(use gles2-only && echo _QOpenGLFunctions_ES2 || echo _QOpenGLFunctions_{2_0,2_1,4_1_Core}))
 			$(pyqt_use_enable help)
 			$(pyqt_use_enable location)
 			$(pyqt_use_enable multimedia QtMultimedia $(usex widgets QtMultimediaWidgets ''))
