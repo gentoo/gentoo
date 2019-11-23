@@ -88,6 +88,8 @@ PATCHES=(
 	"${WORKDIR}"/patches/
 	# Hack to not fail USE="-wayland,-gles2" builds with no mesa[gles2]
 	"${FILESDIR}"/3.28.3-no-gles2-fix.patch # requires eautoreconf
+
+	"${FILESDIR}"/3.30-eglmesaext-include.patch
 )
 
 src_prepare() {
