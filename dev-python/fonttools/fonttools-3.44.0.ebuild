@@ -26,6 +26,9 @@ DEPEND="${RDEPEND}
 		>=dev-python/fs-2.4.9[${PYTHON_USEDEP}]
 		app-arch/brotli[python,${PYTHON_USEDEP}]
 		app-arch/zopfli
+		python_targets_python2_7? (
+			dev-python/backports-os[python_targets_python2_7]
+		)
 	)"
 
 python_test() {
