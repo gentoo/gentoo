@@ -7747,7 +7747,7 @@ dev-python/errorhandler 1.1.1-r2 2.0.1: Logging framework handler
 dev-python/et_xmlfile 1.0.1: An implementation of lxml.xmlfile for the standard library
 dev-python/eunuchs 20050320.1-r1: Missing manly parts of UNIX API for Python
 dev-python/eventlet 0.18.4 0.20.0-r1 0.20.1-r1 0.21.0-r1 0.24.1 0.24.1-r1 0.25.1: Highly concurrent networking library
-dev-python/execnet 1.4.1 1.5.0: Rapid multi-Python deployment
+dev-python/execnet 1.4.1 1.5.0 1.7.1: Rapid multi-Python deployment
 dev-python/expects 0.8.0: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 0.0.3 1.0.0: Useful extra bits for Python that should be in the standard library
 dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
@@ -9040,7 +9040,7 @@ dev-python/tempest-lib 1.0.0: Functional or integrated test suites for OpenStack
 dev-python/tempita 0.5.3-r1 0.5.3-r2: A very small text templating language
 dev-python/tempora 1.7 1.12 1.14 1.14.1 1.14.1-r1: Objects and routines pertaining to date and time
 dev-python/tenacity 3.7.1 4.4.0 4.8.0: General-purpose retrying library
-dev-python/termcolor 1.1.0-r1: ANSII Color formatting for output in terminal
+dev-python/termcolor 1.1.0-r1 1.1.0-r2: ANSII Color formatting for output in terminal
 dev-python/terminado 0.5 0.6 0.8.1: Terminals served to term.js using Tornado websockets
 dev-python/terminaltables 3.1.0 9999: Generate simple tables in terminals from a nested list of strings
 dev-python/test_server 0.0.31: Server to test HTTP clients
