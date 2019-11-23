@@ -15,7 +15,7 @@ SRC_URI="https://github.com/annulen/webkit/releases/download/${MY_P}/${MY_P}.tar
 LICENSE="BSD LGPL-2+"
 SLOT="5/5.212"
 KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86"
-IUSE="geolocation gles2 +gstreamer +hyphen +jit multimedia nsplugin opengl orientation +printsupport qml webp X"
+IUSE="geolocation gles2-only +gstreamer +hyphen +jit multimedia nsplugin opengl orientation +printsupport qml webp X"
 
 REQUIRED_USE="
 	nsplugin? ( X )
@@ -55,8 +55,8 @@ DEPEND="
 	hyphen? ( dev-libs/hyphen )
 	multimedia? ( >=dev-qt/qtmultimedia-${QT_MIN_VER}[widgets] )
 	opengl? (
-		>=dev-qt/qtgui-${QT_MIN_VER}[gles2=]
-		>=dev-qt/qtopengl-${QT_MIN_VER}[gles2=]
+		>=dev-qt/qtgui-${QT_MIN_VER}[gles2-only=]
+		>=dev-qt/qtopengl-${QT_MIN_VER}[gles2-only=]
 	)
 	orientation? ( >=dev-qt/qtsensors-${QT_MIN_VER} )
 	printsupport? ( >=dev-qt/qtprintsupport-${QT_MIN_VER} )
