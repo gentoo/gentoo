@@ -12,7 +12,7 @@ HOMEPAGE="https://moodle.org"
 SRC_URI="https://download.moodle.org/${MY_BRANCH}/${P}.tgz"
 S="${WORKDIR}/${PN}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 #SLOT empty due to webapp
 
