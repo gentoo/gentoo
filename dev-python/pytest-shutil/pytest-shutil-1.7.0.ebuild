@@ -1,8 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 python3_5 )
+EAPI=7
+PYTHON_COMPAT=( python{2_7,3_{5,6,7,8}} pypy{,3} )
 
 inherit distutils-r1
 
@@ -12,26 +12,39 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~hppa ~mips ~s390 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="
 	dev-python/pytest[${PYTHON_USEDEP}]
-	dev-python/setuptools-git[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/contextlib2[${PYTHON_USEDEP}]
 	dev-python/execnet[${PYTHON_USEDEP}]
 	dev-python/path-py[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
+	dev-python/termcolor[${PYTHON_USEDEP}]
 "
 
-DEPEND="
+BDEPEND="
 	${RDEPEND}
 "
 
 RESTRICT="!test? ( test )"
 
+python_prepare_all() {
+	# keeps trying to install this in tests
+	sed -i 's:path.py::' setup.py || die
+
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
+	# at this point let's not fix python2 stuff
+	if ! python_is_python3; then
+		ewarn "Tests broken on python2, not runninge tests for ${EPYTHON}"
+		return 0
+	fi
+
 	distutils_install_for_testing
 
 	esetup.py test || die "Tests failed under ${EPYTHON}"

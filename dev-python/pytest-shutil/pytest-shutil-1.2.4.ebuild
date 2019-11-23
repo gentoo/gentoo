@@ -28,6 +28,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
+RESTRICT="!test? ( test )"
 
 python_test() {
 	distutils_install_for_testing
