@@ -15154,7 +15154,7 @@ net-mail/tpop3d 1.5.5 1.5.5-r1: An extensible POP3 server with vmail-sql/MySQL s
 net-mail/vacation 1.2.7.0: automatic mail answering program
 net-mail/vchkuser 0.4: qmail-spp plugin to check recipient existance with vpopmail
 net-mail/vpopmail 5.4.33 5.4.33-r4 5.4.33-r5: Collection of programs to manage virtual email on Qmail servers
-net-mail/vqadmin 2.3.7: A web based control pannel to manage Virtual Qmail Domains. Works with qmailadmin
+net-mail/vqadmin 2.3.7: A web based control pannel to manage Virtual Qmail Domains
 net-mail/ytnef 1.9.3: Yeraze's TNEF Stream Reader - for winmail.dat files
 net-misc/AQtion 2.2.7 2.3.1: Aquantia AQC multigigabit NIC linux driver (atlantic) - development preview
 net-misc/adjtimex 1.29-r2: display or set the kernel time variables

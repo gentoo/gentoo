@@ -1,12 +1,12 @@
-DEFINED_PHASES=compile install postinst unpack
+DEFINED_PHASES=configure install postinst prepare
 DEPEND=>=sys-apps/sed-4
 DESCRIPTION=SMTP Relaying Control designed for qmail & tcpserver
-EAPI=0
+EAPI=7
 HOMEPAGE=http://untroubled.org/relay-ctrl/
 KEYWORDS=amd64 ppc sparc x86
 LICENSE=GPL-2
 RDEPEND=sys-apps/ucspi-tcp virtual/daemontools
 SLOT=0
 SRC_URI=http://untroubled.org/relay-ctrl/archive/relay-ctrl-3.1.1.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=6e4de6f703ed657af16057386899a965
+_eclasses_=fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=768509cb8dbd985d2a05f7a0a68c4aaa
