@@ -8,8 +8,8 @@ AUTOTOOLS_AUTORECONF=1
 inherit autotools-utils
 
 DESCRIPTION="Library providing high performance logging, tracing, ipc, and poll"
-HOMEPAGE="https://github.com/asalkeld/libqb"
-SRC_URI="http://fedorahosted.org/releases/q/u/quarterback/${P}.tar.xz"
+HOMEPAGE="https://github.com/ClusterLabs/libqb"
+SRC_URI="https://github.com/ClusterLabs/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
