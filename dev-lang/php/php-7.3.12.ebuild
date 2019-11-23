@@ -153,6 +153,9 @@ REQUIRED_USE="
 	mysql? ( || ( mysqli pdo ) )
 	zip-encryption? ( zip )
 "
+
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	"${FILESDIR}/php-freetype-2.9.1.patch"
 )

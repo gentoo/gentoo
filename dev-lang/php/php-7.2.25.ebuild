@@ -151,11 +151,14 @@ REQUIRED_USE="
 	mysqli? ( hash )
 	zip-encryption? ( zip )
 "
+
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	"${FILESDIR}/php-freetype-2.9.1.patch"
 	"${FILESDIR}/php-7.2.13-intl-use-icu-namespace.patch"
 )
-RESTRICT="!test? ( test )"
+
 PHP_MV="$(ver_cut 1)"
 
 php_install_ini() {
