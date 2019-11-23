@@ -160,6 +160,7 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${FILESDIR}/${P}-icu-65.patch" # bug 698596
+	eapply "${FILESDIR}/${P}-eglmesaext-include.patch" # bug 699054
 	cmake-utils_src_prepare
 	gnome2_src_prepare
 }
