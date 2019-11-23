@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit webapp eutils autotools qmail
+inherit webapp autotools qmail
 
-DESCRIPTION="A web based control pannel to manage Virtual Qmail Domains. Works with qmailadmin"
+DESCRIPTION="A web based control pannel to manage Virtual Qmail Domains"
 HOMEPAGE="http://www.inter7.com/index.php?page=vqadmin"
 SRC_URI="http://www.inter7.com/vqadmin/${P}.tar.gz"
 
@@ -20,9 +20,8 @@ DEPEND="virtual/qmail
 RDEPEND="${DEPEND}
 	net-mail/qmailadmin"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
+	default
 
 	# fixes for sane webapp integration
 	sed -i \
@@ -30,18 +29,15 @@ src_unpack() {
 		-e "s|/images/vqadmin/|/vqadmin/|g" \
 		-e "s|/cgi-bin/vqadmin/|/cgi-bin/|g" \
 		-e "s|vqadmin\.cgi|vqadmin|g" \
-		*.h *.c html/*.html
+		*.h *.c html/*.html || die
 }
 
-src_compile() {
-	econf ${myopts} \
+src_configure() {
+	econf \
 		--enable-qmaildir="${QMAIL_HOME}" \
 		--enable-vpopuser=vpopmail \
 		--enable-vpopgroup=vpopmail \
-		--enable-cgibindir="${MY_CGIBINDIR}" \
-	|| die "econf failed"
-
-	emake || die "make failed"
+		--enable-cgibindir="${MY_CGIBINDIR}"
 }
 
 src_install () {
