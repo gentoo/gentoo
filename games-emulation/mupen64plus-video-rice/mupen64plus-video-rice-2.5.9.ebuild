@@ -13,13 +13,13 @@ SRC_URI="https://github.com/mupen64plus/${PN}/releases/download/${PV}/${MY_P}.ta
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gles2 cpu_flags_x86_sse"
+IUSE="gles2-only cpu_flags_x86_sse"
 
-RDEPEND=">=games-emulation/mupen64plus-core-2.5:0=[gles2=]
+RDEPEND=">=games-emulation/mupen64plus-core-2.5:0=[gles2-only=]
 	media-libs/libpng:0=
 	media-libs/libsdl2:0=[video]
 	virtual/opengl:0=
-	gles2? ( media-libs/libsdl2:0[gles] )"
+	gles2-only? ( media-libs/libsdl2:0[gles] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -67,7 +67,7 @@ src_compile() {
 		SDL_LDLIBS="$($(tc-getPKG_CONFIG) --libs sdl2)"
 
 		NO_ASM=$(usex cpu_flags_x86_sse 0 1)
-		USE_GLES=$(usex gles2 1 0)
+		USE_GLES=$(usex gles2-only 1 0)
 	)
 
 	use amd64 && MAKEARGS+=( HOST_CPU=x86_64 )
