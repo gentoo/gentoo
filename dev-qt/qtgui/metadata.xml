@@ -9,7 +9,6 @@
 		<flag name="egl">Enable EGL integration</flag>
 		<flag name="eglfs">Build the EGL Full Screen/Single Surface platform plugin</flag>
 		<flag name="evdev">Enable support for input devices via evdev</flag>
-		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
 		<flag name="ibus">Build the IBus input method plugin</flag>
 		<flag name="libinput">Enable support for input devices via <pkg>dev-libs/libinput</pkg></flag>
 		<flag name="tslib">Enable support for touchscreen devices via <pkg>x11-libs/tslib</pkg></flag>
