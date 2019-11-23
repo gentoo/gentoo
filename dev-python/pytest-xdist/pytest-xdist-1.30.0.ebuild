@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
 
 inherit distutils-r1
 
@@ -24,14 +24,14 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 
-DEPEND="${RDEPEND}
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/filelock[${PYTHON_USEDEP}] )
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	test? (
+		${RDEPEND}
+		dev-python/filelock[${PYTHON_USEDEP}]
+	)
 "
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.28.0-strip-setuptools-scm.patch"
-)
 
 python_test() {
 	distutils_install_for_testing

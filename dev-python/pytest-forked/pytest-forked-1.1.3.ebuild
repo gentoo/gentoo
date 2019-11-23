@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
 
 inherit distutils-r1
 
@@ -13,26 +13,19 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-python/pytest-2.6.0[${PYTHON_USEDEP}]"
+	>=dev-python/pytest-3.1.0[${PYTHON_USEDEP}]"
 
-DEPEND="
-	${RDEPEND}
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]"
-
-python_prepare_all() {
-	distutils-r1_python_prepare_all
-
-	# remove bundled bytecode
-	rm -r testing/__pycache__ || die
-}
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	test? ( ${RDEPEND} )"
 
 python_test() {
 	distutils_install_for_testing
-	py.test -v || die "Tests failed under ${EPYTHON}"
+	pytest -vv -p no:flaky || die "Tests failed under ${EPYTHON}"
 }
