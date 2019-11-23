@@ -37,22 +37,18 @@ RDEPEND="
 	dev-python/wcwidth[${PYTHON_USEDEP}]
 	virtual/python-funcsigs[${PYTHON_USEDEP}]"
 
-# Temporary hack to avoid py38 keywording hell.  Please remove when
-# the test deps all have py38.  Also pytest's test pass with py38,
-# so you need to hack them all in locally before bumping and test.
-TEST_USEDEP=$(python_gen_usedep python2_7 python3_{5,6,7} pypy{,3})
 # flake cause a number of tests to fail
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		dev-python/argcomplete[${TEST_USEDEP}]
-		>=dev-python/hypothesis-3.56[${TEST_USEDEP}]
-		dev-python/nose[${TEST_USEDEP}]
+		dev-python/argcomplete[${PYTHON_USEDEP}]
+		>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2)
-		dev-python/pexpect[${TEST_USEDEP}]
-		dev-python/pytest-xdist[${TEST_USEDEP}]
-		dev-python/requests[${TEST_USEDEP}]
+		dev-python/pexpect[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 		!!dev-python/flaky
 	)"
 
@@ -71,15 +67,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	if [[ ${EPYTHON} == python3.8 ]]; then
-		if [[ ${PV} != 4.6.6 ]]; then
-			eerror "Please disable py38 hacks and test locally, then update this."
-			die "Python 3.8 support untested for ${PV}"
-		fi
-		einfo "Skipping testing on ${EPYTHON} due to unkeyworded deps"
-		return
-	fi
-
 	# In v4.1.1, pytest started being picky about its own verbosity options.
 	# running pytest on itself with -vv made 3 tests fail. This is why we don't
 	# have it below.
