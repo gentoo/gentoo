@@ -114,5 +114,5 @@ src_install() {
 	gnome2_src_install
 
 	# Remove silly examples-data directory
-	rm -rv "${ED}/usr/share/cogl/examples-data/" || die
+	rm -rvf "${ED}/usr/share/cogl/examples-data/" || die
 }
