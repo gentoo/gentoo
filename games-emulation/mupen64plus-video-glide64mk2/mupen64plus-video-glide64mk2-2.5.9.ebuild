@@ -14,14 +14,14 @@ SRC_URI="https://github.com/mupen64plus/${PN}/releases/download/${PV}/${MY_P}.ta
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gles2 hires cpu_flags_x86_sse"
+IUSE="gles2-only hires cpu_flags_x86_sse"
 
-RDEPEND=">=games-emulation/mupen64plus-core-2.5:0=[gles2=]
+RDEPEND=">=games-emulation/mupen64plus-core-2.5:0=[gles2-only=]
 	media-libs/libpng:0=
 	media-libs/libsdl2:0=[video]
 	sys-libs/zlib:0=
 	virtual/opengl:0=
-	gles2? ( media-libs/libsdl2:0[gles] )
+	gles2-only? ( media-libs/libsdl2:0[gles] )
 	hires? ( dev-libs/boost:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -72,7 +72,7 @@ src_compile() {
 		NOSSE=$(usex cpu_flags_x86_sse 0 1)
 		HIRES=$(usex hires 1 0)
 		USE_FRAMESKIPPER=1
-		USE_GLES=$(usex gles2 1 0)
+		USE_GLES=$(usex gles2-only 1 0)
 		# use bundled lib
 		# https://bugs.gentoo.org/654470
 		TXCDXTN=0
