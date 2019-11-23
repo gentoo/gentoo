@@ -43,14 +43,14 @@ BDEPEND=">=dev-python/setuptools-19.6.2[${PYTHON_USEDEP}]
 
 DOCS=( docs/index.rst docs/changes.rst )
 
-# tests need internet access
-RESTRICT="test"
-
 # uncomment if line above is removed
-#RESTRICT="!test? ( test )"
+RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/virtualenv-16.7.7-tests.patch"
+
+	# disable tests that need internet access
+	"${FILESDIR}/virtualenv-16.7.7-tests-internet.patch"
 )
 
 python_check_deps() {
