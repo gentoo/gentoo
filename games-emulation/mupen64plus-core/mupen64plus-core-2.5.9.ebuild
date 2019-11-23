@@ -13,12 +13,12 @@ SRC_URI="https://github.com/mupen64plus/${PN}/releases/download/${PV}/${MY_P}.ta
 LICENSE="GPL-2+"
 SLOT="0/2-sdl2"
 KEYWORDS="~amd64 ~x86"
-IUSE="debugger gles2 lirc new-dynarec opencv +osd cpu_flags_x86_sse"
+IUSE="debugger gles2-only lirc new-dynarec opencv +osd cpu_flags_x86_sse"
 
 RDEPEND="media-libs/libpng:0=
 	media-libs/libsdl2:0=[joystick,opengl,video]
 	sys-libs/zlib:0=[minizip]
-	gles2? ( media-libs/libsdl2:0[gles] )
+	gles2-only? ( media-libs/libsdl2:0[gles] )
 	lirc? ( app-misc/lirc:0 )
 	opencv? ( media-libs/opencv:= )
 	osd? (
@@ -30,7 +30,7 @@ RDEPEND="media-libs/libpng:0=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-REQUIRED_USE="gles2? ( !osd )"
+REQUIRED_USE="gles2-only? ( !osd )"
 S=${WORKDIR}/${MY_P}
 
 PATCHES=( "${FILESDIR}"/${PN}-2.5.9-fix-gcc10-fno-common.patch )
@@ -82,7 +82,7 @@ src_compile() {
 		OPENCV=$(usex opencv 1 0)
 		DEBUGGER=$(usex debugger 1 0)
 		NEW_DYNAREC=$(usex new-dynarec 1 0)
-		USE_GLES=$(usex gles2 1 0)
+		USE_GLES=$(usex gles2-only 1 0)
 	)
 
 	use amd64 && MAKEARGS+=( HOST_CPU=x86_64 )
