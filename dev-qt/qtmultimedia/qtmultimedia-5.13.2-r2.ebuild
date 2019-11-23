@@ -7,14 +7,14 @@ inherit qt5-build
 DESCRIPTION="Multimedia (audio, video, radio, camera) library for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86"
+	KEYWORDS="arm"
 fi
 
-IUSE="alsa gles2 gstreamer openal pulseaudio qml widgets"
+IUSE="alsa gles2-only gstreamer openal pulseaudio qml widgets"
 
 RDEPEND="
 	~dev-qt/qtcore-${PV}
-	~dev-qt/qtgui-${PV}[gles2=]
+	~dev-qt/qtgui-${PV}[gles2-only=]
 	~dev-qt/qtnetwork-${PV}
 	alsa? ( media-libs/alsa-lib )
 	gstreamer? (
@@ -26,17 +26,19 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio[glib] )
 	qml? (
 		~dev-qt/qtdeclarative-${PV}
-		gles2? ( ~dev-qt/qtgui-${PV}[egl] )
+		gles2-only? ( ~dev-qt/qtgui-${PV}[egl] )
 		openal? ( media-libs/openal )
 	)
 	widgets? (
 		~dev-qt/qtopengl-${PV}
-		~dev-qt/qtwidgets-${PV}[gles2=]
+		~dev-qt/qtwidgets-${PV}[gles2-only=]
 	)
 "
 DEPEND="${RDEPEND}
 	gstreamer? ( x11-base/xorg-proto )
 "
+
+PATCHES=( "${FILESDIR}/${P}-gstreamer-crash.patch" ) # QTBUG-79753
 
 src_prepare() {
 	sed -i -e '/CONFIG\s*+=/ s/optimize_full//' \
