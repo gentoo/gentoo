@@ -2,22 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 QT5_MODULE="qtbase"
 inherit qt5-build
 
 DESCRIPTION="Set of components for creating classic desktop-style UIs for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86"
+	KEYWORDS="arm"
 fi
 
 # keep IUSE defaults in sync with qtgui
-IUSE="gles2 gtk +png +X"
+IUSE="gles2-only gtk +png +xcb"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
-	~dev-qt/qtgui-${PV}[gles2=,png=,X?]
+	~dev-qt/qtgui-${PV}[gles2-only=,png=,xcb?]
 	gtk? (
 		~dev-qt/qtgui-${PV}[dbus]
 		x11-libs/gtk+:3
@@ -45,13 +44,13 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 
 src_configure() {
 	local myconf=(
-		-opengl $(usex gles2 es2 desktop)
+		-opengl $(usex gles2-only es2 desktop)
 		$(qt_use gtk)
 		-gui
 		$(qt_use png libpng system)
 		-widgets
-		$(qt_use X xcb system)
-		$(usex X '-xcb-xlib -xcb-xinput -xkb -xkbcommon' '')
+		$(qt_use xcb xcb system)
+		$(usex xcb '-xcb-xlib -xcb-xinput -xkb -xkbcommon' '')
 	)
 	qt5-build_src_configure
 }
