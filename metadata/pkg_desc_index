@@ -1985,7 +1985,7 @@ app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency o
 app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
 app-misc/go-jira 1.0.17 1.0.20 1.0.22: A simple JIRA commandline client in Go
 app-misc/golly 3.2: simulator for Conway's Game of Life and other cellular automata
-app-misc/goobook 1.9 3.4: Access your Google contacts from the command line
+app-misc/goobook 3.4: Access your Google contacts from the command line
 app-misc/gourmet 0.17.4-r2: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 5.0.1 5.0.2 5.1.1: Genealogical Research and Analysis Management Programming System
