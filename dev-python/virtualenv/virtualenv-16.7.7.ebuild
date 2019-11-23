@@ -43,14 +43,14 @@ BDEPEND=">=dev-python/setuptools-19.6.2[${PYTHON_USEDEP}]
 
 DOCS=( docs/index.rst docs/changes.rst )
 
-# tests need internet access
-RESTRICT="test"
-
 # uncomment if line above is removed
-#RESTRICT="!test? ( test )"
+RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/virtualenv-16.7.7-tests.patch"
+
+	# disable tests that need internet access
+	"${FILESDIR}/virtualenv-16.7.7-tests-internet.patch"
 )
 
 python_check_deps() {
@@ -62,7 +62,15 @@ python_check_deps() {
 }
 
 python_compile_all() {
-	use doc && emake -C docs html
+	if use doc; then
+		sed -i -e 's:^intersphinx_mapping:disabled_&:' \
+			docs/conf.py || die
+
+		sphinx-build -b html -d docs/_build/doctrees docs \
+			docs/_build/html || die
+
+		HTML_DOCS+=( "docs/_build/html/." )
+	fi
 }
 
 python_install_all() {
