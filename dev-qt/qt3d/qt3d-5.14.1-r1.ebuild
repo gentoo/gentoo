@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 fi
 
 # TODO: tools
-IUSE="gamepad gles2 qml"
+IUSE="gamepad gles2-only qml"
 
 DEPEND="
 	~dev-qt/qtconcurrent-${PV}
@@ -20,7 +20,7 @@ DEPEND="
 	~dev-qt/qtnetwork-${PV}
 	>=media-libs/assimp-4.0.0
 	gamepad? ( ~dev-qt/qtgamepad-${PV} )
-	qml? ( ~dev-qt/qtdeclarative-${PV}[gles2=] )
+	qml? ( ~dev-qt/qtdeclarative-${PV}[gles2-only=] )
 "
 RDEPEND="${DEPEND}"
 
