@@ -1867,7 +1867,7 @@ app-metrics/prometheus 2.9.2 2.11.2 2.12.0 2.13.0 2.13.1: Prometheus monitoring 
 app-metrics/pushgateway 0.9.1 0.10.0 1.0.0: Prometheus push acceptor for ephemeral and batch jobs
 app-metrics/rabbitmq_exporter 0.29.0: Rabbitmq exporter for Prometheus
 app-metrics/redis_exporter 0.20.2 1.1.1 1.2.0 1.2.1: Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
-app-metrics/snmp_exporter 0.13.0 0.14.0-r2 0.15.0: Prometheus exporter for snmp metrics
+app-metrics/snmp_exporter 0.15.0: Prometheus exporter for snmp metrics
 app-metrics/uwsgi_exporter 0.7.0 0.8.0: uWSGI metrics exporter for prometheus.io
 app-metrics/vault_exporter 0.1.2: Vault exporter for Prometheus
 app-misc/abduco 0.5 0.6: lightweight session manager with {de,at}tach support
@@ -2377,7 +2377,7 @@ app-shells/thefuck 3.27 3.28: Magnificent app which corrects your previous conso
 app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
 app-shells/yash 2.48 2.49: Yash is a POSIX-compliant command line shell
 app-shells/zsh 5.6.2 5.7.1 9999: UNIX Shell similar to the Korn shell
-app-shells/zsh-completions 0.29.0 0.31.0 9999: Additional completion definitions for Zsh
+app-shells/zsh-completions 0.31.0 9999: Additional completion definitions for Zsh
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
 app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/agrep 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
@@ -7764,7 +7764,7 @@ dev-python/feedparser 5.2.1: Parse RSS and Atom feeds in Python
 dev-python/fido2 0.3.0 0.4.0 0.5.0 0.6.0 0.7.0 0.7.1 0.7.3: Python based FIDO 2.0 library
 dev-python/fields 5.0.0 5.0.0-r1: Container class boilerplate killer
 dev-python/figleaf 0.6.1-r1: Code coverage tool
-dev-python/filelock 3.0.10: A platform independent file lock for Python
+dev-python/filelock 3.0.10 3.0.12: A platform independent file lock for Python
 dev-python/filemagic 1.6: A Python API for libmagic, the library behind the Unix file command
 dev-python/fitsio 0.9.11: Python library to read from and write to FITS files
 dev-python/fixtures 1.4.0 3.0.0: Fixtures, reusable state for writing clean tests and more
@@ -8621,7 +8621,7 @@ dev-python/pytest-expect 1.1.0: py.test plugin that stores test expectations by 
 dev-python/pytest-fixture-config 1.2.11 1.7.0: Virtualenv fixture for py.test
 dev-python/pytest-flake8 0.8.1 0.9.1: py.test plugin for flake8
 dev-python/pytest-flakes 4.0.0: Collection of small Python functions & classes
-dev-python/pytest-forked 0.2: run tests in isolated forked subprocesses
+dev-python/pytest-forked 0.2 1.1.3: run tests in isolated forked subprocesses
 dev-python/pytest-helpers-namespace 2019.1.8: Provides a helpers pytest namespace
 dev-python/pytest-html 1.10.1 1.14.2 1.16.0: Plugin for generating HTML reports for py.test results
 dev-python/pytest-httpbin 0.2.3 1.0.0: Easily test your HTTP library against a local copy of httpbin
@@ -8643,7 +8643,7 @@ dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypoth
 dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testmon
 dev-python/pytest-timeout 1.2.0 1.2.1 1.3.3: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.2.11 1.7.0: Virtualenv fixture for py.test
-dev-python/pytest-xdist 1.23.2 1.28.0: Distributed testing and loop-on-failing modes
+dev-python/pytest-xdist 1.23.2 1.28.0 1.30.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.12.1 0.12.1-r1 0.12.1-r2: Manage external processes across test runs
 dev-python/python-afl 0.6.1 0.7.1: Enables American fuzzy lop fork server and instrumentation for pure-Python code
 dev-python/python-augeas 0.5.0 1.0.3: Python bindings for Augeas
@@ -10642,8 +10642,8 @@ dev-util/docker-ls 0.3.1: Tools for browsing and manipulating docker registries
 dev-util/dogtail 0.9.10: GUI test tool and automation framework using accessibility framework
 dev-util/doxy-coverage 151229: Source Code Documentation Coverage Measurement
 dev-util/dput-ng 1.10 1.28: Next generation Debian package upload tool
-dev-util/drone 0.8.5 0.8.6 0.8.7 0.8.9: A Continuous Delivery platform built on Docker, written in Go
-dev-util/drone-cli 0.8.6 1.0.8 1.1.0 1.1.1 1.1.3 1.1.4: Command-line interface for Drone
+dev-util/drone 0.8.9: A Continuous Delivery platform built on Docker, written in Go
+dev-util/drone-cli 0.8.6 1.1.4: Command-line interface for Drone
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.12 1.13 1.15 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
@@ -17790,7 +17790,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 9999: Raspberry
 sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999 4.13.9999 4.14.9999 4.19.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4.164_p176 4.9.115_p93 4.9.146_p125 4.14.71_p44 4.14.78_p47 4.14.87_p49 4.16.18_p12 4.18.16_p9 4.19.5_p4 4.19.10_p8: Full Linux 4.19 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
-sys-kernel/vanilla-sources 3.16.77 4.4.202 4.9.202 4.14.155 4.19.85 5.3.12: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.78 4.4.202 4.9.202 4.14.155 4.19.85 5.3.12: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r2 4570.71.2-r2 4903.241.1-r2: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 4.14.9999 4.15.9999 4.16.9999: The Zen Kernel Live Sources
