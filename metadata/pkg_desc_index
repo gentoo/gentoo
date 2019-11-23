@@ -231,7 +231,7 @@ app-admin/diamond 4.0-r1 4.0.515 9999: Python daemon that collects and publishes
 app-admin/dio 1.5.2-r1: A device I/O monitoring tool
 app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
 app-admin/doas 6.0: Run commands as super user or another user, alternative to sudo from OpenBSD
-app-admin/docker-bench 0_p20171206 0_p20190822: Docker Bench for Security runs the CIS Docker Benchmark
+app-admin/docker-bench 0_p20190822: Docker Bench for Security runs the CIS Docker Benchmark
 app-admin/drush 6.7.0-r1: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
 app-admin/dxf 7.5.1 7.5.2: Docker registry v2 client in Python
@@ -1503,7 +1503,7 @@ app-emulation/qemu-guest-agent 3.1.0 4.0.0: QEMU Guest Agent (qemu-ga) for use w
 app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 3.1.0-r4: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
 app-emulation/qt-virt-manager 9999: A GUI application for managing virtual machines
-app-emulation/reg 0.16.0 0.16.0_p20190102 0.16.1: Docker registry v2 command line client
+app-emulation/reg 0.16.1: Docker registry v2 command line client
 app-emulation/rex-client 9999: Remote EXexcution agent
 app-emulation/runc 1.0.0_rc8 1.0.0_rc9: runc container cli tools
 app-emulation/runv 0.7.0: Hypervisor-based Runtime for OCI
@@ -1857,13 +1857,13 @@ app-metrics/mongodb_exporter 0.6.2: Prometheus exporter for MongoDB
 app-metrics/mysqld_exporter 0.10.0-r1 0.11.0: Prometheus exporter for MySQL server metrics
 app-metrics/nginx-lua-prometheus 0.1_pre20170610: Library that exports Nginx metrics to Prometheus
 app-metrics/nginx-vts-exporter 0.10.3: Nginx virtual host traffic stats exporter for Prometheus
-app-metrics/node_exporter 0.17.0-r1 0.18.0 0.18.1: Prometheus exporter for machine metrics
+app-metrics/node_exporter 0.18.1: Prometheus exporter for machine metrics
 app-metrics/openvpn_exporter 0.2.1: Prometheus Exporter for OpenVPN
 app-metrics/postfix_exporter 0.1.2: Prometheus Exporter for Postfix
 app-metrics/postgres_exporter 0.4.7: PostgreSQL stats exporter for Prometheus
 app-metrics/process-exporter 0.4.0 0.4.0-r1: Process exporter for prometheus
 app-metrics/prom2json 0.1.0_p20170523: A tool to scrape a Prometheus client and dump the result as JSON
-app-metrics/prometheus 2.9.2 2.11.2 2.12.0 2.13.0 2.13.1: Prometheus monitoring system and time series database
+app-metrics/prometheus 2.13.1: Prometheus monitoring system and time series database
 app-metrics/pushgateway 0.9.1 0.10.0 1.0.0: Prometheus push acceptor for ephemeral and batch jobs
 app-metrics/rabbitmq_exporter 0.29.0: Rabbitmq exporter for Prometheus
 app-metrics/redis_exporter 0.20.2 1.1.1 1.2.0 1.2.1: Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
