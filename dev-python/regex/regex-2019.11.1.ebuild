@@ -20,23 +20,17 @@ PATCHES=(
 	"${FILESDIR}/regex-2019.11.1-pypy.patch"
 )
 
-python_prepare_all() {
-	#append-flags '-DVERBOSE'
-	distutils-r1_python_prepare_all
-}
-
 python_test() {
 	distutils_install_for_testing
 
 	pushd "${TEST_DIR}/lib" > /dev/null || die
 	"${EPYTHON}" -m unittest discover -v || die "Tests fail with ${EPYTHON}"
-	#"${EPYTHON}" -m unittest regex.test_regex.RegexTests.test_sub_template_numeric_escape || die
 	popd > /dev/null || die
 }
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/Features.html )
-	local DOCS=( README.rst docs/*.rst )
+	local DOCS=( README docs/*.rst )
 
 	distutils-r1_python_install_all
 }
