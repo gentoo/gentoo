@@ -1,13 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit qmail eutils webapp autotools
-
-# the RESTRICT is because the vpopmail lib directory is locked down
-# and non-root can't access them.
-RESTRICT="userpriv"
+inherit qmail webapp autotools
 
 MY_P=${P/_rc/-rc}
 
@@ -20,22 +16,25 @@ SLOT="0"
 WEBAPP_MANUAL_SLOT="yes"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~s390 ~sh ~sparc ~x86"
 IUSE="maildrop"
+# the RESTRICT is because the vpopmail lib directory is locked down
+# and non-root can't access them.
+RESTRICT="userpriv"
 
 DEPEND="virtual/qmail
 	>=net-mail/vpopmail-5.4.33
 	net-mail/autorespond
 	maildrop? ( >=mail-filter/maildrop-2.0.1 )"
+DEPEND=${RDEPEND}
 
 S="${WORKDIR}"/${MY_P}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-1.2.9-maildir.patch
+src_prepare() {
+	eapply "${FILESDIR}"/${PN}-1.2.9-maildir.patch
+	eapply_user
 	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	# Pass spam stuff through $@ so we get the quoting right
 	if use maildrop ; then
 		set -- --enable-modify-spam \
@@ -66,27 +65,25 @@ src_compile() {
 		--enable-maxaliasesperpage=50 \
 		--enable-vpopuser=vpopmail \
 		--enable-vpopgroup=vpopmail \
-		"$@" \
-		|| die "econf failed"
-
-	emake || die "make failed"
+		"$@"
 }
 
 src_install() {
 	webapp_src_preinst
 
-	make DESTDIR="${D}" install || die "make install failed"
-
-	dodoc AUTHORS INSTALL README.hooks BUGS TODO ChangeLog \
-		TRANSLATORS NEWS FAQ README contrib/*
+	local DOCS=(
+		AUTHORS INSTALL README.hooks BUGS TODO ChangeLog TRANSLATORS
+		NEWS FAQ README contrib/*
+	)
+	default
 
 	webapp_src_install
 
 	# CGI needs to be able to read /etc/vpopmail.conf
 	# Which is 0640 root:vpopmail, as it contains passwords
 	cgi=/usr/share/webapps/${PN}/${PV}/hostroot/cgi-bin/qmailadmin
-	fowners root:vpopmail $cgi
-	fperms g+s $cgi
+	fowners root:vpopmail ${cgi}
+	fperms g+s ${cgi}
 }
 
 pkg_postinst() {
