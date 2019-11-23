@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="OpenGL visualization for HDAPS data"
 HOMEPAGE="https://github.com/linux-thinkpad/${PN}"
-SRC_URI="${HOMEPAGE}/releases/download/${PV}/${P}.tar.xz"
+SRC_URI="https://github.com/linux-thinkpad/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
