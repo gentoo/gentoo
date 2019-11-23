@@ -4220,7 +4220,7 @@ dev-java/glassfish-transaction-api 1.1.2.2.04-r1: Java Transaction API
 dev-java/glassfish-xmlrpc-api 1.1.1: Project GlassFish XML RPC API
 dev-java/glazedlists 1.8.0-r1: A toolkit for list transformations
 dev-java/gnu-classpath 0.98-r6: Free core class libraries for use with Java VMs and compilers
-dev-java/gnu-crypto 2.0.1-r2 2.0.1-r3: GNU Crypto cryptographic primitives for Java
+dev-java/gnu-crypto 2.0.1-r3: GNU Crypto cryptographic primitives for Java
 dev-java/gnu-hylafax 1.0.3-r2: Java API designed to implement the client protocol portion of the hfaxd server
 dev-java/gnu-jaf 1.1.1-r1 1.1.2: GNU implementation of the JavaBeans Activation Framework
 dev-java/gnu-regexp 1.1.4-r3: GNU regular expression package for Java
@@ -4464,7 +4464,7 @@ dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build mult
 dev-java/oracle-jdk-bin 1.8.0.202 11.0.2: Oracle's Java SE Development Kit
 dev-java/oracle-jre-bin 1.8.0.202: Oracle's Java SE Runtime Environment
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
-dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
+dev-java/osgi-core-api 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
 dev-java/osgi-enterprise-api 5.0.0: OSGi Enterprise Release 5 Companion Code
 dev-java/osgi-foundation 1.2.0-r1: OSGi R4 Foundation EE by Apache Felix
 dev-java/osgi-obr 1.0.2: OSGi Service OBR by Apache
@@ -11943,7 +11943,7 @@ gnome-extra/nemo 3.6.4-r1 3.8.6-r1 4.0.6: A file manager for Cinnamon, forked fr
 gnome-extra/nm-applet 1.8.22 1.8.24: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/pch-session 3.30.0.2 3.32.0: Unofficial gnome based session with different default settings and extensions
-gnome-extra/polkit-gnome 0.105-r1 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
+gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.30.0 3.32.1: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
