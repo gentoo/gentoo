@@ -20,6 +20,7 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/unittest2[${PYTHON_USEDEP}] )
 "
+RESTRICT="!test? ( test )"
 
 python_test() {
 	"${PYTHON}" test_contextlib2.py || die "Tests fail for ${EPYTHON}"
