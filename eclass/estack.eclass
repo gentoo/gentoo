@@ -115,7 +115,8 @@ evar_pop() {
 	local cnt=${1:-bad}
 	case $# in
 	0) cnt=1 ;;
-	1) isdigit "${cnt}" || die "${FUNCNAME}: first arg must be a number: $*" ;;
+	1) [[ -z ${cnt//[0-9]} ]] \
+		|| die "${FUNCNAME}: first arg must be a number: $*" ;;
 	*) die "${FUNCNAME}: only accepts one arg: $*" ;;
 	esac
 
@@ -195,18 +196,6 @@ eumask_pop() {
 	local s
 	estack_pop eumask s || die "${FUNCNAME}: unbalanced push"
 	umask ${s} || die "${FUNCNAME}: sanity: could not restore umask: ${s}"
-}
-
-# @FUNCTION: isdigit
-# @USAGE: <number> [more numbers]
-# @DESCRIPTION:
-# Return true if all arguments are numbers.
-isdigit() {
-	local d
-	for d ; do
-		[[ ${d:-bad} == *[!0-9]* ]] && return 1
-	done
-	return 0
 }
 
 _ESTACK_ECLASS=1
