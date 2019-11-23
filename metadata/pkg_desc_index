@@ -8642,7 +8642,7 @@ dev-python/pytest-shutil 1.2.4 1.2.8 1.2.11 1.7.0: A goodie-bag of unix shell an
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testmon
 dev-python/pytest-timeout 1.2.0 1.2.1 1.3.3: py.test plugin to abort hanging tests
-dev-python/pytest-virtualenv 1.2.11: Virtualenv fixture for py.test
+dev-python/pytest-virtualenv 1.2.11 1.7.0: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.23.2 1.28.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.12.1 0.12.1-r1 0.12.1-r2: Manage external processes across test runs
 dev-python/python-afl 0.6.1 0.7.1: Enables American fuzzy lop fork server and instrumentation for pure-Python code
