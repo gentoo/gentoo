@@ -21,7 +21,7 @@ BDEPEND="dev-util/intltool
 	virtual/pkgconfig
 	sys-devel/gettext"
 
-DOCS=( "AUTHORS HACKING NEWS README TODO" )
+DOCS=( AUTHORS HACKING NEWS README TODO )
 
 src_install() {
 	default
