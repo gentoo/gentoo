@@ -9991,7 +9991,7 @@ dev-ruby/origin 2.3.1: Origin is a simple DSL for generating MongoDB selectors a
 dev-ruby/ox 2.9.4 2.10.0 2.10.1 2.11.0: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.1.0 2.1.1: Terminal painter
-dev-ruby/parallel 1.17.0 1.18.0 1.19.0: Run any code in parallel Processes or Threads
+dev-ruby/parallel 1.17.0 1.18.0 1.19.0 1.19.1: Run any code in parallel Processes or Threads
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
 dev-ruby/parser 2.6.4.0 2.6.4.1 2.6.5.0: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.8.2: A small PEG based parser library
