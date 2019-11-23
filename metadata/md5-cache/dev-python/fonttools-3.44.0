@@ -5,11 +5,11 @@ DESCRIPTION=Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 EAPI=7
 HOMEPAGE=https://github.com/fonttools/fonttools/
 IUSE=test python_targets_python2_7 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 test
-KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=BSD
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml(+)] ) python_targets_python3_5? ( dev-lang/python:3.5[xml(+)] ) python_targets_python3_6? ( dev-lang/python:3.6[xml(+)] ) python_targets_python3_7? ( dev-lang/python:3.7[xml(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python2_7(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 )
 SLOT=0
 SRC_URI=https://github.com/fonttools/fonttools/archive/3.44.0.tar.gz -> fonttools-3.44.0.tar.gz
 _eclasses_=distutils-r1	875cdbd904383003dd58e0ad4068470b	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	d21193dfc088687e048e829419568096	python-utils-r1	93ff6f0f8518926f2951ca70ce36e887	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	53625127887b62eabb9ec61d3d943462
-_md5_=70009f3e64c57abbc67448a472a5a181
+_md5_=4a8d66892f0c9d83c46a810de889cf79
