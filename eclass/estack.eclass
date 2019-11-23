@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: estack.eclass
@@ -153,12 +153,13 @@ evar_pop() {
 #		eshopts_pop
 # @CODE
 eshopts_push() {
+	# Save both "shopt" and "set -o" option sets, because otherwise
+	# restoring noglob would disable expand_aliases by side effect. #662586
+	estack_push eshopts "$(shopt -p -o) $(shopt -p)"
 	if [[ $1 == -[su] ]] ; then
-		estack_push eshopts "$(shopt -p)"
-		[[ $# -eq 0 ]] && return 0
+		[[ $# -le 1 ]] && return 0
 		shopt "$@" || die "${FUNCNAME}: bad options to shopt: $*"
 	else
-		estack_push eshopts "$(shopt -p -o)"
 		[[ $# -eq 0 ]] && return 0
 		set "$@" || die "${FUNCNAME}: bad options to set: $*"
 	fi
