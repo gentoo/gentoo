@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
+		<flag name="gles2-only">Use GLES 2.0 or later instead of full OpenGL</flag>
 	</use>
 </pkgmetadata>
