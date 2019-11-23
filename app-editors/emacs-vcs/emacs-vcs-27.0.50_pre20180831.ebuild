@@ -337,9 +337,9 @@ src_install () {
 	Y	"${EPREFIX}${cdir}")
 	X  (let ((path (getenv "INFOPATH"))
 	X	(dir "${EPREFIX}/usr/share/info/${EMACS_SUFFIX}")
-	X	(re "\\\\\`${EPREFIX}/usr/share/info\\\\>"))
+	X	(re "\\\\\`${EPREFIX}/usr/share\\\\>"))
 	X    (and path
-	X	 ;; move Emacs Info dir before anything else in /usr/share/info
+	X	 ;; move Emacs Info dir before anything else in /usr/share
 	X	 (let* ((p (cons nil (split-string path ":" t))) (q p))
 	X	   (while (and (cdr q) (not (string-match re (cadr q))))
 	X	     (setq q (cdr q)))
