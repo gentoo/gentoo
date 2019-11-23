@@ -23,6 +23,7 @@ fi
 LICENSE="BSD"
 SLOT="0"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/click-2[${PYTHON_USEDEP}]
 	>=dev-python/blinker-1[${PYTHON_USEDEP}]
