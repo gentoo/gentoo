@@ -11,12 +11,12 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64 arm64 x86"
 fi
 
-IUSE="gles2 qml"
+IUSE="gles2-only qml"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
-	~dev-qt/qtgui-${PV}[gles2=]
-	qml? ( ~dev-qt/qtdeclarative-${PV}[gles2=] )
+	~dev-qt/qtgui-${PV}[gles2-only=]
+	qml? ( ~dev-qt/qtdeclarative-${PV}[gles2-only=] )
 "
 RDEPEND="${DEPEND}"
 
