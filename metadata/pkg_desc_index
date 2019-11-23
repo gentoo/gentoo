@@ -8015,10 +8015,10 @@ dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encou
 dev-python/jsonmerge 1.4.0 1.6.0: Merge a series of JSON documents
 dev-python/jsonpatch 1.13 1.15 1.21 1.23: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
 dev-python/jsonpickle 0.9.3 1.2: Python library for serializing any arbitrary object graph into JSON
-dev-python/jsonpointer 1.10 2.0: Identify specific nodes in a JSON document (according to draft 08)
+dev-python/jsonpointer 1.10 2.0 2.0-r1: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
 dev-python/jsonrpclib 0.3.1 0.4.0 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
-dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2 2.6.0 3.0.1: An implementation of JSON-Schema validation for Python
+dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2 2.6.0 3.0.1 3.2.0: An implementation of JSON-Schema validation for Python
 dev-python/jsonxs 0.6: Get/set values in JSON and Python datastructures
 dev-python/junit-xml 1.8: Python module for creating JUnit XML test result documents
 dev-python/jupyter 1.0.0-r1 1.0.0-r2: Jupyter metapackage. Install all the Jupyter components in one go
@@ -8846,6 +8846,7 @@ dev-python/restructuredtext-lint 0.12.2 1.1.2: Created out of frustration, it su
 dev-python/resumable-urlretrieve 0.1.5: Small library to fetch files over HTTP and resuming their download
 dev-python/retry-decorator 1.0.0 1.0.0-r1: Decorator for retrying when exceptions occur
 dev-python/retrying 1.3.3: General-purpose retrying library
+dev-python/rfc3339-validator 0.1.2: A pure python RFC3339 validator
 dev-python/rfc3986 0.3.1 0.4.1 1.1.0 1.2.0 1.3.2: Validating URI References per RFC 3986
 dev-python/rfc3986-validator 0.1.1: Pure python RFC3986 validator
 dev-python/rfc3987 1.3.7 1.3.8 1.3.8-r1: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
