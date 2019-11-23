@@ -15,6 +15,7 @@ LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
