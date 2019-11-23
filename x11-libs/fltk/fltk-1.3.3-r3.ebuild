@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 inherit autotools eutils fdo-mime flag-o-matic
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
@@ -112,6 +113,7 @@ src_install() {
 
 	emake -C fluid \
 			DESTDIR="${D}" install-linux
+
 	if use doc; then
 		emake -C documentation \
 			DESTDIR="${D}" install
@@ -134,8 +136,8 @@ src_install() {
 	dodoc CHANGES README CREDITS ANNOUNCEMENT
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins test/*.{h,cxx,fl} test/demo.menu
+		docinto examples
+		dodoc -r test/*.{h,cxx,fl} test/demo.menu
 	fi
 
 	insinto /usr/share/cmake/Modules
