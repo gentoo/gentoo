@@ -2570,7 +2570,7 @@ app-text/pdf2djvu 0.9.8 0.9.11 0.9.12: A tool to create DjVu files from PDF file
 app-text/pdf2html 1.4: Converts pdf files to html files
 app-text/pdf2oo 20090715-r1: Converts pdf files to odf
 app-text/pdfgrep 1.4.1-r1 2.0.1 2.1.2: A tool similar to grep which searches text in PDFs
-app-text/pdfjam 2.08 2.08-r1: pdfnup, pdfjoin and pdf90
+app-text/pdfjam 2.08-r1: pdfnup, pdfjoin and pdf90
 app-text/pdfminer 20140328 20140328-r1 20191020: Python tool for extracting information from PDF documents
 app-text/pdfsandwich 0.1.4-r1: generator of sandwich OCR pdf files
 app-text/pdfshuffler 0.6.0-r1: GUI app that can merge or split pdfs and rotate, crop and rearrange their pages
@@ -3269,7 +3269,7 @@ dev-embedded/tigcc 0.96_beta7 0.96_beta8-r1: Cross compiler for Texas Instrument
 dev-embedded/u-boot-tools 2018.05 2018.11 2019.01: utilities for working with Das U-Boot
 dev-embedded/uisp 20050207-r1: Tool for programming AVR microcontroller through the parallel port
 dev-embedded/upslug2 11: util for flashing NSLU2 machines remotely
-dev-embedded/urjtag 0.10 0.10-r1 9999: Tool for communicating over JTAG with flash chips, CPUs, and many more
+dev-embedded/urjtag 0.10-r1 9999: Tool for communicating over JTAG with flash chips, CPUs, and many more
 dev-embedded/usbprog 0.2.0-r1: flashtool for the multi purpose programming adapter usbprog
 dev-embedded/xa 2.3.10: High-speed, two-pass portable 6502 cross-assembler
 dev-embedded/zmac 1.3-r1: Z80 macro cross-assembler
@@ -10352,7 +10352,7 @@ dev-tcltk/itcl 3.4.1 4.0.3 4.1.1: Object Oriented Enhancements for Tcl/Tk
 dev-tcltk/itk 3.4.1 4.0.0 4.0.1 4.1.0: Object Oriented Enhancements for Tcl/Tk
 dev-tcltk/iwidgets 4.1.1: Widget collection for incrTcl/incrTk
 dev-tcltk/mysqltcl 3.052-r1: TCL MySQL Interface
-dev-tcltk/scwoop 4.1 4.1-r1: Simple Composite Widget Object Oriented Package
+dev-tcltk/scwoop 4.1-r1: Simple Composite Widget Object Oriented Package
 dev-tcltk/snack 2.2.10-r6 2.2.10-r7 2.2.10-r8: The Snack Sound Toolkit (Tcl)
 dev-tcltk/tablelist 5.8 6.3: Multi-Column Listbox Package
 dev-tcltk/tcl-mccp 0.6: mccp extension to TCL
@@ -10367,11 +10367,11 @@ dev-tcltk/tdom 0.8.3-r4 0.9.1: A XML/DOM/XPath/XSLT Implementation for Tcl
 dev-tcltk/thread 2.7.1 2.7.3 2.8.2: Tcl Thread extension
 dev-tcltk/tix 8.4.3-r1: A widget library for Tcl/Tk
 dev-tcltk/tkXwin 1.0-r4: Tcl/Tk library to detect idle periods of an X session
-dev-tcltk/tkcon 2.5 2.5-r1: Tk GUI console
+dev-tcltk/tkcon 2.5-r1: Tk GUI console
 dev-tcltk/tkdnd 2.8: Extension that adds native drag & drop capabilities to the tk toolkit
 dev-tcltk/tkimg 1.4-r9 1.4.7: Adds a lot of image formats to Tcl/Tk
 dev-tcltk/tklib 0.6-r1 0.6-r2: Collection of utility modules for Tk, and a companion to Tcllib
-dev-tcltk/tkpiechart 6.5-r1 6.5-r2: create and update 2D or 3D pie charts in a Tcl/Tk application
+dev-tcltk/tkpiechart 6.5-r2: create and update 2D or 3D pie charts in a Tcl/Tk application
 dev-tcltk/tkpng 0.9: Implements support for loading and using PNG images with Tcl/Tk
 dev-tcltk/tktable 2.10: full-featured 2D table widget
 dev-tcltk/tktray 1.3.9: System Tray Icon Support for Tk on X11
@@ -10379,7 +10379,7 @@ dev-tcltk/tktreectrl 2.4.1: A flexible listbox widget for Tk
 dev-tcltk/tkzinc 3.3.6: A Tk widget library
 dev-tcltk/tls 1.7.16: TLS OpenSSL extension to Tcl
 dev-tcltk/togl 2.0-r2 2.0-r3: A Tk widget for OpenGL rendering
-dev-tcltk/vtcl 1.6.0-r1 1.6.0-r2: Visual Tcl is a high-quality application development environment
+dev-tcltk/vtcl 1.6.0-r2: Visual Tcl is a high-quality application development environment
 dev-tex/aastex 5.2: LaTeX package for American Astronomical Society journals. (AASTeX)
 dev-tex/abntex 0.9_beta2-r1: LaTeX macros for writing documents following the ABNT norms
 dev-tex/bera 20040930: LaTeX package for the Bera Type1 font family
@@ -12500,7 +12500,7 @@ mail-filter/libmilter 1.0.2 1.0.2_p1: The Sendmail Filter API (Milter)
 mail-filter/libsieve 2.2.7: A library for parsing, sorting and filtering your mail
 mail-filter/libspf2 1.2.10: libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocols
 mail-filter/libsrs2 1.0.18: libsrs2 is the next generation Sender Rewriting Scheme library
-mail-filter/libsrs_alt 1.0 1.0-r1: Sender Rewriting Scheme library for use with Exim
+mail-filter/libsrs_alt 1.0-r1: Sender Rewriting Scheme library for use with Exim
 mail-filter/maildrop 3.0.0: Mail delivery agent/filter
 mail-filter/mailfilter 0.8.4: Mailfilter is a utility to get rid of unwanted spam mails
 mail-filter/mapson 3.3: A challenge/response-based white-list spam filter
@@ -13597,7 +13597,7 @@ media-plugins/kodi-visualization-shadertoy 1.1.5 1.1.8 1.1.9 1.1.10 1.2.1 1.2.2 
 media-plugins/kodi-visualization-spectrum 1.1.1 2.0.3 2.0.4 3.0.0 3.0.1 3.0.2 9999: Spectrum visualizer for Kodi
 media-plugins/kodi-visualization-starburst 2.0.0 2.0.1 2.0.2 9999: StarBurst visualizer for Kodi
 media-plugins/kodi-visualization-waveform 2.0.1 3.0.2 3.1.0 3.1.1 9999: Waveform visualizer for Kodi
-media-plugins/ladspa-bs2b 0.9.1 0.9.1-r1: LADSPA plugin for bs2b headphone filter
+media-plugins/ladspa-bs2b 0.9.1-r1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0-r1: A libvisual graphical music visualization plugin similar to milkdrop
 media-plugins/live 2017.10.28 2018.01.29 2018.07.07: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
