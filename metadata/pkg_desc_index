@@ -1846,7 +1846,7 @@ app-metrics/bind_exporter 0.2.0_p20190226: Prometheus exporter for BIND
 app-metrics/blackbox_exporter 0.15.1 0.16.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 app-metrics/buildbot-prometheus 17.7.2-r2: A Prometheus metrics exporter for Buildbot
 app-metrics/burrow_exporter 0.0.6 0.0.6-r1: Prometheus exporter for Burrow
-app-metrics/collectd 5.8.1-r1 5.9.1-r2 5.9.2: Collects system statistics and provides mechanisms to store the values
+app-metrics/collectd 5.8.1-r1 5.9.1-r2 5.9.2 5.10.0: Collects system statistics and provides mechanisms to store the values
 app-metrics/consul_exporter 0.4.0: Prometheus exporter for consul metrics
 app-metrics/dnsmasq_exporter 0.2.0: prometheus exporter for dnsmasq
 app-metrics/elasticsearch_exporter 1.0.2 1.0.4_rc1 1.1.0_rc1 1.1.0: Elasticsearch stats exporter for Prometheus
@@ -3144,7 +3144,7 @@ dev-db/mysqltuner 1.6.18 1.7.13 1.7.15 1.7.17: MySQLTuner is a high-performance 
 dev-db/mytop 1.6-r4 1.9.1: mytop - a top clone for mysql
 dev-db/ocp 0.2 0.3 9999: Oracle copy tool
 dev-db/opendbx 1.4.5-r1 1.4.6-r2 1.4.6-r3 1.5.0-r2: OpenDBX - A database abstraction layer
-dev-db/oracle-instantclient 18.3.0.0-r2 18.5.0.0 19.3.0.0 19.3.0.0-r1: Oracle 18c Instant Client with SDK
+dev-db/oracle-instantclient 18.3.0.0-r2 18.5.0.0 19.3.0.0-r1 19.5.0.0: Oracle 18c Instant Client with SDK
 dev-db/oracle-instantclient-basic 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-jdbc 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
