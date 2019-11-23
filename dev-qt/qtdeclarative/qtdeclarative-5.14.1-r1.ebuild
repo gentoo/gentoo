@@ -11,17 +11,17 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 x86"
 fi
 
-IUSE="gles2 +jit localstorage vulkan +widgets"
+IUSE="gles2-only +jit localstorage vulkan +widgets"
 
 BDEPEND="${PYTHON_DEPS}"
-# qtgui[gles2=] is needed because of bug 504322
+# qtgui[gles2-only=] is needed because of bug 504322
 DEPEND="
 	~dev-qt/qtcore-${PV}
-	~dev-qt/qtgui-${PV}[gles2=,vulkan=]
+	~dev-qt/qtgui-${PV}[gles2-only=,vulkan=]
 	~dev-qt/qtnetwork-${PV}
 	~dev-qt/qttest-${PV}
 	localstorage? ( ~dev-qt/qtsql-${PV} )
-	widgets? ( ~dev-qt/qtwidgets-${PV}[gles2=] )
+	widgets? ( ~dev-qt/qtwidgets-${PV}[gles2-only=] )
 "
 RDEPEND="${DEPEND}
 	!<dev-qt/qtquickcontrols-5.7:5
