@@ -11,7 +11,7 @@ SRC_URI="https://github.com/lightspark/lightspark/archive/${PV}.tar.gz -> ${P}.t
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_sse2 curl ffmpeg gles libav nsplugin ppapi profile rtmp"
+IUSE="cpu_flags_x86_sse2 curl ffmpeg gles2-only libav nsplugin ppapi profile rtmp"
 
 # Note: no LLVM since it's broken upstream
 RDEPEND="app-arch/xz-utils:0=
@@ -34,8 +34,8 @@ RDEPEND="app-arch/xz-utils:0=
 		libav? ( <media-video/libav-13_pre:0= )
 		!libav? ( media-video/ffmpeg:0= )
 	)
-	gles? ( media-libs/mesa:0=[gles2] )
-	!gles? (
+	gles2-only? ( media-libs/mesa:0=[gles2] )
+	!gles2-only? (
 		>=media-libs/glew-1.5.3:0=
 		virtual/opengl:0=
 	)
@@ -50,7 +50,7 @@ S=${WORKDIR}/${P/_rc*/}
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_CURL=$(usex curl)
-		-DENABLE_GLES2=$(usex gles)
+		-DENABLE_GLES2=$(usex gles2-only)
 		-DENABLE_LIBAVCODEC=$(usex ffmpeg)
 		-DENABLE_RTMP=$(usex rtmp)
 
