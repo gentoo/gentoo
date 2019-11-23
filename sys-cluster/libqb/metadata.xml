@@ -6,6 +6,6 @@
 		<name>Gentoo Cluster Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">asalkeld/libqb</remote-id>
+		<remote-id type="github">ClusterLabs/libqb</remote-id>
 	</upstream>
 </pkgmetadata>
