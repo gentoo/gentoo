@@ -3367,7 +3367,7 @@ dev-go/go-tour 0_p20180810 0_p20190829: A Tour of Go
 dev-go/godebug-pretty 0_p20170819: Pretty printing for Go
 dev-go/godep 74 9999: dependency tool for go
 dev-go/gogo-protobuf 0.4_p20170815: Protocol Buffers for Go with Gadgets
-dev-go/golicense 0.1.1: detect licenses used in Go binaries
+dev-go/golicense 0.1.1 0.2.0: detect licenses used in Go binaries
 dev-go/golint 0_pre20180702: a linter for Go
 dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for ruby
 dev-go/goptlib 1.1.0: Go Tor pluggable transports library
@@ -14769,7 +14769,7 @@ net-ftp/uftpd 2.7 2.8 2.10: The no nonsense TFTP/FTP server
 net-ftp/vsftpd 3.0.3-r2: Very Secure FTP Daemon written with speed, size and security in mind
 net-ftp/yafc 1.3.7: Console ftp client with a lot of nifty features
 net-im/bitlbee 3.5.1 3.6 9999: irc to IM gateway that support multiple IM protocols
-net-im/bitlbee-facebook 1.1.2 1.2.0 9999: Facebook protocol plugin for BitlBee
+net-im/bitlbee-facebook 1.2.0 9999: Facebook protocol plugin for BitlBee
 net-im/bitlbee-steam 1.4.2 9999: Steam protocol plugin for BitlBee
 net-im/centerim 5.0.1: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
 net-im/choqok 1.6.0_p20190726: Free/Open Source micro-blogging client by KDE
