@@ -15,6 +15,7 @@ SLOT="0"
 LICENSE="MIT"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/execnet[${PYTHON_USEDEP}]
