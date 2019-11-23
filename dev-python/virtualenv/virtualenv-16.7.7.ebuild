@@ -62,7 +62,15 @@ python_check_deps() {
 }
 
 python_compile_all() {
-	use doc && emake -C docs html
+	if use doc; then
+		sed -i -e 's:^intersphinx_mapping:disabled_&:' \
+			docs/conf.py || die
+
+		sphinx-build -b html -d docs/_build/doctrees docs \
+			docs/_build/html || die
+
+		HTML_DOCS+=( "docs/_build/html/." )
+	fi
 }
 
 python_install_all() {
