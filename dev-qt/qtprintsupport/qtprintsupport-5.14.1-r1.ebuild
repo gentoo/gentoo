@@ -9,15 +9,15 @@ inherit qt5-build
 DESCRIPTION="Printing support library for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="arm"
+	KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86"
 fi
 
-IUSE="cups gles2"
+IUSE="cups gles2-only"
 
 RDEPEND="
 	~dev-qt/qtcore-${PV}
-	~dev-qt/qtgui-${PV}[gles2=]
-	~dev-qt/qtwidgets-${PV}[gles2=]
+	~dev-qt/qtgui-${PV}[gles2-only=]
+	~dev-qt/qtwidgets-${PV}[gles2-only=]
 	cups? ( >=net-print/cups-1.4 )
 "
 DEPEND="${RDEPEND}
@@ -33,12 +33,10 @@ QT5_GENTOO_CONFIG=(
 	cups
 )
 
-PATCHES=( "${FILESDIR}/${P}-no-cups.patch" ) # bug #704936, QTBUG-80945
-
 src_configure() {
 	local myconf=(
 		$(qt_use cups)
-		-opengl $(usex gles2 es2 desktop)
+		-opengl $(usex gles2-only es2 desktop)
 	)
 	qt5-build_src_configure
 }
