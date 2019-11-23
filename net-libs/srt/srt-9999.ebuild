@@ -16,7 +16,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 -sparc ~x86 ~ppc-macos ~x64-macos ~x86-macos"
 fi
 
-LICENSE="LGPL-2.1"
+LICENSE="MPL-2.0"
 SLOT="0"
 IUSE="gnutls libressl test"
 
