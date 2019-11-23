@@ -124,12 +124,18 @@ llvm.org_set_globals() {
 		[[ ${PV} != ${_LLVM_MASTER_MAJOR}.* ]] &&
 			EGIT_BRANCH="release/${PV%%.*}.x"
 	elif [[ ${_LLVM_SOURCE_TYPE} == tar ]]; then
-		local a archives=()
-		_llvm.org_get_archives "${LLVM_COMPONENTS[@]}"
-		for a in "${archives[@]}"; do
-			SRC_URI+="
-				https://releases.llvm.org/${PV}/${a}"
-		done
+		if ver_test -ge 9.0.1_rc1; then
+			# 9.0.1 RCs as GitHub archive
+			SRC_URI="
+				https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz"
+		else
+			local a archives=()
+			_llvm.org_get_archives "${LLVM_COMPONENTS[@]}"
+			for a in "${archives[@]}"; do
+				SRC_URI+="
+					https://releases.llvm.org/${PV}/${a}"
+			done
+		fi
 	else
 		die "Invalid _LLVM_SOURCE_TYPE: ${LLVM_SOURCE_TYPE}"
 	fi
@@ -141,17 +147,23 @@ llvm.org_set_globals() {
 		RESTRICT+=" !test? ( test )"
 
 		if [[ ${_LLVM_SOURCE_TYPE} == tar ]]; then
-			SRC_URI+="
-				test? ("
-
-			_llvm.org_get_archives "${LLVM_TEST_COMPONENTS[@]}"
-			for a in "${archives[@]}"; do
+			if ver_test -ge 9.0.1_rc1; then
+				# everything already fetched
+				:
+			else
+				# split 9.0.0 release and older
 				SRC_URI+="
-					https://releases.llvm.org/${PV}/${a}"
-			done
+					test? ("
 
-			SRC_URI+="
-				)"
+				_llvm.org_get_archives "${LLVM_TEST_COMPONENTS[@]}"
+				for a in "${archives[@]}"; do
+					SRC_URI+="
+						https://releases.llvm.org/${PV}/${a}"
+				done
+
+				SRC_URI+="
+					)"
+			fi
 		fi
 	fi
 
@@ -180,19 +192,28 @@ llvm.org_src_unpack() {
 		git-r3_fetch
 		git-r3_checkout '' . '' "${components[@]}"
 	else
-		local c archives
-		# TODO: optimize this
-		for c in "${components[@]}"; do
-			local top_dir=${c%%/*}
-			_llvm.org_get_archives "${c}"
-			local sub_path=${archives[0]%.tar.xz}
-			[[ ${c} == */* ]] && sub_path+=/${c#*/}
-
-			ebegin "Unpacking ${sub_path} from ${archives[0]}"
-			mkdir -p "${top_dir}" || die
-			tar -C "${top_dir}" -x -J -o --strip-components 1 \
-				-f "${DISTDIR}/${archives[0]}" "${sub_path}" || die
+		if ver_test -ge 9.0.1_rc1; then
+			local archive=llvmorg-${PV/_/-}.tar.gz
+			ebegin "Unpacking from ${archive}"
+			tar -x -z -o --strip-components 1 \
+				-f "${DISTDIR}/${archive}" \
+				"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
 			eend
-		done
+		else
+			local c archives
+			# TODO: optimize this
+			for c in "${components[@]}"; do
+				local top_dir=${c%%/*}
+				_llvm.org_get_archives "${c}"
+				local sub_path=${archives[0]%.tar.xz}
+				[[ ${c} == */* ]] && sub_path+=/${c#*/}
+
+				ebegin "Unpacking ${sub_path} from ${archives[0]}"
+				mkdir -p "${top_dir}" || die
+				tar -C "${top_dir}" -x -J -o --strip-components 1 \
+					-f "${DISTDIR}/${archives[0]}" "${sub_path}" || die
+				eend
+			done
+		fi
 	fi
 }
