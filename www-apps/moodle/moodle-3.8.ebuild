@@ -1,12 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit versionator webapp
+inherit webapp
 
-AVC=( $(get_version_components) )
-MY_BRANCH="stable${AVC[0]}${AVC[1]}"
+MY_BRANCH="stable$(ver_cut 1)$(ver_cut 2)"
 
 DESCRIPTION="The Moodle Course Management System"
 HOMEPAGE="https://moodle.org"
