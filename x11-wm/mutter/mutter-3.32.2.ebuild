@@ -97,6 +97,8 @@ PATCHES=(
 	"${WORKDIR}"/patches/
 	# Allow building USE=wayland without cogl-gles2 from USE=gles2
 	"${FILESDIR}"/${PV}-no-cogl-gles2.patch
+
+	"${FILESDIR}"/3.32-eglmesaext-include.patch
 )
 
 src_configure() {

@@ -1,0 +1,69 @@
+From 813ea4e5743920ecf325aac8efe420bd5fe3baf2 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Sun, 20 Oct 2019 12:04:31 +0200
+Subject: [PATCH] EGL: Include EGL/eglmesaext.h
+
+The eglext.h shipped by libglvnd does not include the Mesa extensions,
+unlike the header shipped in Mesa.
+
+Fixes https://gitlab.gnome.org/GNOME/mutter/issues/876
+---
+ cogl/configure.ac           | 3 ++-
+ src/backends/meta-egl-ext.h | 1 +
+ src/backends/meta-egl.c     | 1 +
+ src/backends/meta-egl.h     | 1 +
+ 4 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/cogl/configure.ac b/cogl/configure.ac
+index 3be282fc2..f333b0512 100644
+--- a/cogl/configure.ac
++++ b/cogl/configure.ac
+@@ -759,7 +759,8 @@ AS_IF([test "x$NEED_EGL" = "xyes" && test "x$EGL_CHECKED" != "xyes"],
+           )
+ 
+         COGL_EGL_INCLUDES="#include <EGL/egl.h>
+-#include <EGL/eglext.h>"
++#include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>"
+         AC_SUBST([COGL_EGL_INCLUDES])
+       ])
+ 
+diff --git a/src/backends/meta-egl-ext.h b/src/backends/meta-egl-ext.h
+index 8705e7d5b..db0b74f76 100644
+--- a/src/backends/meta-egl-ext.h
++++ b/src/backends/meta-egl-ext.h
+@@ -29,6 +29,7 @@
+ 
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ 
+ /*
+  * This is a little different to the tests shipped with EGL implementations,
+diff --git a/src/backends/meta-egl.c b/src/backends/meta-egl.c
+index 755ec4908..bd253c956 100644
+--- a/src/backends/meta-egl.c
++++ b/src/backends/meta-egl.c
+@@ -31,6 +31,7 @@
+ 
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ #include <gio/gio.h>
+ #include <glib.h>
+ #include <glib-object.h>
+diff --git a/src/backends/meta-egl.h b/src/backends/meta-egl.h
+index 060c7cd2d..2fef2642e 100644
+--- a/src/backends/meta-egl.h
++++ b/src/backends/meta-egl.h
+@@ -27,6 +27,7 @@
+ 
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ #include <glib-object.h>
+ 
+ #define META_EGL_ERROR meta_egl_error_quark ()
+-- 
+2.23.0
+
