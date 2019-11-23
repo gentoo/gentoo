@@ -29,7 +29,7 @@ DEPEND="
 	test? (
 		${RDEPEND}
 		>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]
-		dev-python/paramiko[${PYTHON_USEDEP}]
+		>=dev-python/paramiko-2.4.2[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 		>=dev-python/pytest-2.9.1[${PYTHON_USEDEP}]
 	)
