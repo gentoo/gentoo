@@ -146,6 +146,9 @@ REQUIRED_USE="
 	mysql? ( hash || ( mysqli pdo ) )
 	mysqli? ( hash )
 "
+
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	"${FILESDIR}/php-freetype-2.9.1.patch"
 	"${FILESDIR}/php-7.1.25-intl-use-icu-namespace.patch"
