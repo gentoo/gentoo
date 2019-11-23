@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/i-rinat/freshplayerplugin"
 DESCRIPTION="PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers"
 SRC_URI="https://github.com/i-rinat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT=0
-IUSE="gles2 jack libav libressl pulseaudio v4l vaapi vdpau"
+IUSE="gles2-only jack libav libressl pulseaudio v4l vaapi vdpau"
 
 KEYWORDS="amd64"
 
@@ -26,7 +26,8 @@ COMMON_DEPEND="
 	dev-libs/libevent:=[threads]
 	media-libs/alsa-lib:=
 	media-libs/freetype:2=
-	media-libs/mesa:=[egl,gles2?]
+	media-libs/mesa:=[egl]
+	gles2-only? ( media-libs/mesa[gles2] )
 	x11-libs/cairo:=[X]
 	x11-libs/libXcursor:=
 	x11-libs/libXrandr:=
@@ -65,7 +66,7 @@ src_configure() {
 	mycmakeargs=(
 		-DWITH_JACK=$(usex jack)
 		-DWITH_PULSEAUDIO=$(usex pulseaudio)
-		-DWITH_GLES2=$(usex gles2)
+		-DWITH_GLES2=$(usex gles2-only)
 		-DWITH_LIBV4L2=$(usex v4l)
 		-DCMAKE_SKIP_RPATH=1
 	)
