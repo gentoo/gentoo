@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy )
 
 inherit distutils-r1 eutils toolchain-funcs
 
@@ -24,7 +24,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	dev-python/cython[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/cython[${PYTHON_USEDEP}]' python2_7 'python3*')
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/cssselect[${PYTHON_USEDEP}] )
 	"

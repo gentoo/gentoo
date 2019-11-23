@@ -1,19 +1,18 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit versionator webapp
+inherit webapp
 
-AVC=( $(get_version_components) )
-MY_BRANCH="stable${AVC[0]}${AVC[1]}"
+MY_BRANCH="stable$(ver_cut 1)$(ver_cut 2)"
 
 DESCRIPTION="The Moodle Course Management System"
 HOMEPAGE="https://moodle.org"
 SRC_URI="https://download.moodle.org/${MY_BRANCH}/${P}.tgz"
 S="${WORKDIR}/${PN}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 #SLOT empty due to webapp
 
