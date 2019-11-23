@@ -8,7 +8,7 @@ inherit eutils pax-utils multilib-minimal
 DESCRIPTION="Oracle 18c Instant Client with SDK"
 HOMEPAGE="https://www.oracle.com/technetwork/database/database-technologies/instant-client/overview/index.html"
 
-MY_SOVER=18.1 # the library soname found in the zip files
+MY_SOVER=19.1 # the library soname found in the zip files
 
 IUSE="jdbc odbc precomp +sdk +sqlplus tools"
 REQUIRED_USE="precomp? ( sdk )"
@@ -48,16 +48,6 @@ then
 fi
 
 SRC_URI="
-	abi_x86_32? (
-		${MY_A_x86}
-		jdbc?    ( ${MY_A_x86_jdbc}    )
-		odbc?    ( ${MY_A_x86_odbc}    )
-		precomp? ( ${MY_A_x86_precomp} )
-		!abi_x86_64? (
-			sdk?     ( ${MY_A_x86_sdk}     )
-			sqlplus? ( ${MY_A_x86_sqlplus} )
-			tools?   ( ${MY_A_x86_tools}   )
-	) )
 	abi_x86_64? (
 		${MY_A_amd64}
 		jdbc?    ( ${MY_A_amd64_jdbc}    )
@@ -71,7 +61,7 @@ SRC_URI="
 
 LICENSE="OTN"
 SLOT="0/${MY_SOVER}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 RESTRICT="fetch splitdebug"
 
 DEPEND="app-arch/unzip"
@@ -254,7 +244,7 @@ src_install() {
 		# here and we do not want this to be overwritten.
 		insinto /etc/oracle
 		doins precomp/admin/pcscfg.cfg
-		sed -i -e "s%^sys_include=.*%sys_include=(${oracle_home}/include,${EPREFIX}/usr/include)%" \
+		sed -i -e "s%^sys_include=.*%sys_include=(${oracle_home}/sdk/include,${EPREFIX}/usr/include)%" \
 			"${ED}"/etc/oracle/pcscfg.cfg || die
 		dosym ../../${oracle_home_to_root}/etc/oracle/pcscfg.cfg "${oracle_home}/precomp/admin/pcscfg.cfg"
 		dosym ../.."${oracle_home}"/bin/proc /usr/bin/proc
