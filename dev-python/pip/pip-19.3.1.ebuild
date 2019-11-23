@@ -29,7 +29,7 @@ SLOT="0"
 IUSE="test -vanilla"
 
 # disable-system-install patch breaks tests
-RESTRICT="!vanilla? ( test )"
+RESTRICT="!vanilla? ( test ) !test? ( test )"
 
 RDEPEND="
 	>=dev-python/setuptools-39.2.0[${PYTHON_USEDEP}]

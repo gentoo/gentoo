@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
 
 inherit distutils-r1
 
@@ -34,6 +34,11 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+
+PATCHES=(
+	# taken from upstream git, will be in next release
+	"${FILESDIR}/flask-1.1.1-py38.patch"
+)
 
 python_check_deps() {
 	use doc || return 0
