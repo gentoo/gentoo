@@ -12,8 +12,8 @@ inherit ecm kde.org
 DESCRIPTION="Plasma framework"
 
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
-IUSE="gles2 wayland X"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+IUSE="gles2-only wayland X"
 
 # drop qtgui subslot operator when QT_MINIMAL >= 5.14.0
 BDEPEND="
@@ -22,7 +22,7 @@ BDEPEND="
 RDEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5=[gles2=]
+	>=dev-qt/qtgui-${QTMIN}:5=[gles2-only=]
 	>=dev-qt/qtquickcontrols-${QTMIN}:5
 	>=dev-qt/qtsql-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
@@ -45,7 +45,7 @@ RDEPEND="
 	=kde-frameworks/kwidgetsaddons-${PVCUT}*:5
 	=kde-frameworks/kwindowsystem-${PVCUT}*:5
 	=kde-frameworks/kxmlgui-${PVCUT}*:5
-	!gles2? ( virtual/opengl )
+	!gles2-only? ( virtual/opengl )
 	wayland? (
 		=kde-frameworks/kwayland-${PVCUT}*:5
 		media-libs/mesa[egl]
@@ -62,14 +62,9 @@ DEPEND="${RDEPEND}
 
 RESTRICT+=" test"
 
-PATCHES=(
-	"${FILESDIR}/${P}-construct-nullengine-w-KPluginMetadata.patch" # KDE-Bug #417548
-	"${FILESDIR}/${P}-remove-hardcoded-colors.patch" # KDE-Bug #417511
-)
-
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package !gles2 OpenGL)
+		$(cmake_use_find_package !gles2-only OpenGL)
 		$(cmake_use_find_package wayland EGL)
 		$(cmake_use_find_package wayland KF5Wayland)
 		$(cmake_use_find_package X X11)
