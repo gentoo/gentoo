@@ -1,0 +1,16 @@
+This patch cannot be upstreamed in this form. However, the following
+issue has been opened to discuss integrating a better solution upstream.
+
+https://github.com/cloudflare/cfssl/issues/1062
+
+diff --git a/Makefile b/Makefile
+index 10a52fc..7fc019b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,4 @@
+-VERSION := $(shell git describe --tags --abbrev=0 | tr -d '[:alpha:]')
+-LDFLAGS := "-s -w -X github.com/cloudflare/cfssl/cli/version.version=$(VERSION)"
++LDFLAGS := "-X github.com/cloudflare/cfssl/cli/version.version=$(VERSION)"
+ 
+ export GOFLAGS := -mod=vendor
+ export GOPROXY := off
