@@ -28,7 +28,10 @@ RDEPEND="
 	>=net-libs/nghttp2-1.39.2
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-64.2:= )
-	ssl? ( >=dev-libs/openssl-1.1.1:0= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+    		libressl? ( dev-libs/libressl:0= )
+	)
 "
 BDEPEND="
 	${PYTHON_DEPS}
