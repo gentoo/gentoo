@@ -1,8 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
+EAPI=7
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
 
 inherit distutils-r1
 
@@ -15,12 +15,7 @@ SRC_URI="https://github.com/pypa/scripttest/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="test"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
-RDEPEND=""
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests pytest
