@@ -34,6 +34,8 @@ RDEPEND="${CDEPEND}"
 DEPEND="${BDEPEND}
 	${CDEPEND}"
 
+RESTRICT="!test? ( test )"
+
 src_prepare() {
 	# Remove the code that installs facter.rb to the wrong directory.
 	sed -i '/install(.*facter\.rb/d' lib/CMakeLists.txt || die
