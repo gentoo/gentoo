@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy pypy3 )
 
 inherit distutils-r1 bash-completion-r1
 
@@ -22,13 +22,18 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		virtual/ttf-fonts
 	)"
 
 S="${WORKDIR}/${MY_P}"
+
+python_check_deps() {
+	use doc || return 0
+	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
 
 python_compile_all() {
 	use doc && emake -C doc html
