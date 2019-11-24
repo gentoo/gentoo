@@ -12375,7 +12375,6 @@ kde-misc/plasma-redshift-control 1.0.18-r1: Plasma 5 applet for controlling reds
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
 kde-misc/rsibreak 0.12.10-r1 0.12.11: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1-r1: KDE image scanning application
-kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.2.1 3.2.2: Collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
 kde-misc/zanshin 0.5.0-r1: Getting things done application by KDE
