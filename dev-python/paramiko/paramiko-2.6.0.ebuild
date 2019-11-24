@@ -59,7 +59,7 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins demos/*
+		docinto examples
+		dodoc -r demos/*
 	fi
 }
