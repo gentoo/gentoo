@@ -5772,7 +5772,7 @@ dev-perl/Curses-UI 0.960.900-r2: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r2: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-MariaDB 1.210.0: MariaDB and MySQL driver for the Perl5 Database Interface (DBI)
-dev-perl/DBD-Pg 3.5.3 3.6.2 3.7.0: PostgreSQL database driver for the DBI module
+dev-perl/DBD-Pg 3.5.3 3.6.2 3.7.0 3.10.0: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.560.0 1.580.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.44.0-r1 4.44.0-r2 4.50.0: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.637.0: Database independent interface for Perl
