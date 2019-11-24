@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="SSH2 protocol library"
-HOMEPAGE="http://www.paramiko.org/ https://github.com/paramiko/paramiko/ https://pypi.org/project/paramiko/"
+HOMEPAGE="https://www.paramiko.org/ https://github.com/paramiko/paramiko/ https://pypi.org/project/paramiko/"
 # pypi tarballs are missing test data
 #SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
