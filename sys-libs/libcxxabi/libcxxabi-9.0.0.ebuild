@@ -45,6 +45,16 @@ pkg_setup() {
 }
 
 multilib_src_configure() {
+	# link against compiler-rt instead of libgcc if we are using clang with libunwind
+	local want_compiler_rt=OFF
+	if use libunwind && tc-is-clang; then
+		local compiler_rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
+			${LDFLAGS} -print-libgcc-file-name)
+		if [[ ${compiler_rt} == *libclang_rt* ]]; then
+			want_compiler_rt=ON
+		fi
+	fi
+
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		-DLIBCXXABI_LIBDIR_SUFFIX=${libdir#lib}
@@ -52,6 +62,7 @@ multilib_src_configure() {
 		-DLIBCXXABI_ENABLE_STATIC=$(usex static-libs)
 		-DLIBCXXABI_USE_LLVM_UNWINDER=$(usex libunwind)
 		-DLIBCXXABI_INCLUDE_TESTS=$(usex test)
+		-DLIBCXXABI_USE_COMPILER_RT=${want_compiler_rt}
 
 		-DLIBCXXABI_LIBCXX_INCLUDES="${WORKDIR}"/libcxx/include
 		# upstream is omitting standard search path for this
