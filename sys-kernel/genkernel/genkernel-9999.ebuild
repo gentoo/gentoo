@@ -11,9 +11,9 @@ inherit bash-completion-r1 mount-boot
 # Whenever you bump a GKPKG, check if you have to move
 # or add new patches!
 VERSION_BOOST="1.71.0"
-VERSION_BTRFS_PROGS="5.2.2"
-VERSION_BUSYBOX="1.31.0"
-VERSION_CRYPTSETUP="2.2.1"
+VERSION_BTRFS_PROGS="5.3.1"
+VERSION_BUSYBOX="1.31.1"
+VERSION_CRYPTSETUP="2.2.2"
 VERSION_DMRAID="1.0.0.rc16-3"
 VERSION_DROPBEAR="2019.78"
 VERSION_EXPAT="2.2.8"
@@ -34,13 +34,9 @@ VERSION_STRACE="5.3"
 VERSION_THIN_PROVISIONING_TOOLS="0.8.5"
 VERSION_UNIONFS_FUSE="2.0"
 VERSION_UTIL_LINUX="2.34"
-VERSION_XFSPROGS="5.2.1"
+VERSION_XFSPROGS="5.3.0"
 VERSION_ZLIB="1.2.11"
-VERSION_ZSTD="1.4.3"
-
-RH_HOME="ftp://sourceware.org/pub"
-DM_HOME="https://people.redhat.com/~heinzm/sw/dmraid/src"
-BB_HOME="https://busybox.net/downloads"
+VERSION_ZSTD="1.4.4"
 
 COMMON_URI="
 	https://dl.bintray.com/boostorg/release/${VERSION_BOOST}/source/boost_${VERSION_BOOST//./_}.tar.bz2
