@@ -24,6 +24,7 @@ IUSE="test"
 RDEPEND=">=sys-devel/llvm-roc-${PV}:=
 	>=dev-libs/rocr-runtime-${PV}"
 DEPEND="${RDEPEND}"
+RESTRICT="!test? ( test )"
 
 src_prepare() {
 	# remove unittest, because it downloads additional file from github.com
