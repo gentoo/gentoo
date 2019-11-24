@@ -7,15 +7,21 @@ inherit webapp
 
 DESCRIPTION="An open-source PHP-based bulletin board package"
 HOMEPAGE="https://www.phpbb.com/"
-SRC_URI="https://www.phpbb.com/files/release/${P}.tar.bz2"
+SRC_URI="https://download.phpbb.com/pub/release/$(ver_cut 1-2)/${PV}/${P}.tar.bz2"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
 IUSE="ftp gd mssql mysqli postgres sqlite zlib"
 REQUIRED_USE="|| ( mssql mysqli postgres sqlite )"
 
-PHPV="5.4:*"
-RDEPEND=">=virtual/httpd-php-${PHPV}
-	>=dev-lang/php-${PHPV}[ftp?,gd?,json,mssql?,mysqli?,postgres?,sqlite?,xml,zlib?]"
+PHP_RDEPEND="(
+	virtual/httpd-php:@SLOT@
+	dev-lang/php:@SLOT@[ftp?,gd?,json,mssql?,mysqli?,postgres?,sqlite?,xml,zlib?]
+)"
+
+RDEPEND="|| (
+	${PHP_RDEPEND//@SLOT@/7.2}
+	${PHP_RDEPEND//@SLOT@/7.1}
+)"
 
 need_httpd_cgi
 
