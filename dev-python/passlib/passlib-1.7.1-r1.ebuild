@@ -14,6 +14,7 @@ LICENSE="BSD-2"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 SLOT="0"
 IUSE="+bcrypt doc +scrypt test +totp"
+RESTRICT="!test? ( test )"
 
 RDEPEND="bcrypt? ( dev-python/bcrypt[${PYTHON_USEDEP}] )
 	totp? ( dev-python/cryptography[${PYTHON_USEDEP}] )
