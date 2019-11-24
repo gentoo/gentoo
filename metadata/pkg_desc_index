@@ -10081,7 +10081,7 @@ dev-ruby/rex-java 0.1.5: Ruby Exploitation(Rex) library for parsing Java seriali
 dev-ruby/rex-mime 0.1.5: library is for creating and/or parsing MIME messages
 dev-ruby/rex-nop 0.1.1: Rex library for dynamic generation of x86 multi-byte NOPs
 dev-ruby/rex-ole 0.1.6: Ruby Exploitation(Rex) library gem for reading/writing OLE files and streams
-dev-ruby/rex-powershell 0.1.77 0.1.78 0.1.79 0.1.80 0.1.82: Ruby Exploitation(Rex) library for generating/manipulating Powershell scripts
+dev-ruby/rex-powershell 0.1.77 0.1.78 0.1.79 0.1.80 0.1.82 0.1.83: Ruby Exploitation(Rex) library for generating/manipulating Powershell scripts
 dev-ruby/rex-random_identifier 0.1.4: Ruby Exploitation(Rex) library for generating Random identifier strings
 dev-ruby/rex-registry 0.1.3: Rex library for parsing offline registry files from a Windows machine
 dev-ruby/rex-rop_builder 0.1.3: Ruby Exploitation(Rex) Library for building ROP chains
