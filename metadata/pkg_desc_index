@@ -16530,7 +16530,7 @@ sci-libs/scikits_learn 0.17 0.17.1 0.18.1 0.18.2 0.18.2-r1 0.19.0 0.19.0-r1: Pyt
 sci-libs/scikits_optimization 0.3 0.3-r1: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r1 0.91.3-r2: SciPy module for manipulating, reporting, and plotting time series
 sci-libs/scipy 0.16.1 0.18.1 0.19.1 1.0.0 1.1.0 9999: Scientific algorithms library for Python
-sci-libs/scotch 6.0.0 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
+sci-libs/scotch 5.1.12b 6.0.0 6.0.4 6.0.4-r1 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.4.0-r1 1.4.1 1.5.0: Library for manipulating ESRI Shapefiles
 sci-libs/shogun 5.0.0: Large Scale Machine Learning Toolbox
 sci-libs/silo 4.10.2-r1: A mesh and field I/O library and scientific database
