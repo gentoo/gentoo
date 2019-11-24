@@ -18,6 +18,7 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc full-support minimal test X"
+RESTRICT="!test? ( test )"
 
 RECOMMENDED_DEPEND="
 	>=dev-python/bottleneck-1.2.1[${PYTHON_USEDEP}]
