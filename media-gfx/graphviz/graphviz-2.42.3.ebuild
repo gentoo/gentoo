@@ -1,79 +1,87 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 )
+EAPI=7
 
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 inherit autotools flag-o-matic java-pkg-opt-2 python-single-r1 qmake-utils
 
 DESCRIPTION="Open Source Graph Visualization Software"
 HOMEPAGE="https://www.graphviz.org/ https://gitlab.com/graphviz/graphviz/"
-SRC_URI="http://www.graphviz.org/pub/graphviz/stable/SOURCES/${P}.tar.gz"
+SRC_URI="https://www2.graphviz.org/Packages/stable/portable_source/${P}.tar.gz"
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
 IUSE="+cairo devil doc examples gdk-pixbuf gtk gts guile java lasi nls pdf perl postscript python qt5 ruby static-libs svg tcl X elibc_FreeBSD"
 
 REQUIRED_USE="
 	!cairo? ( !X !gtk !postscript !lasi )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
-# Requires ksh
+# Requires ksh, tests against installed package, missing files and directory
 RESTRICT="test"
 
-COMMON_DEPEND="
+BDEPEND="
+	sys-devel/flex
+	sys-devel/libtool
+	virtual/pkgconfig
+	nls? ( >=sys-devel/gettext-0.14.5 )
+	perl? ( dev-lang/swig )
+	python? ( dev-lang/swig )
+	ruby? ( dev-lang/swig )
+	tcl? ( dev-lang/swig )
+"
+RDEPEND="
 	>=dev-libs/expat-2
 	>=dev-libs/glib-2.11.1:2
 	dev-libs/libltdl:0
 	>=media-libs/fontconfig-2.3.95
 	>=media-libs/freetype-2.1.10
 	>=media-libs/gd-2.0.34:=[fontconfig,jpeg,png,truetype,zlib]
-	>=media-libs/libpng-1.2:0
+	>=media-libs/libpng-1.2:0=
 	sys-libs/zlib
 	virtual/jpeg:0
 	virtual/libiconv
-	cairo?	(
+	cairo? (
 		>=x11-libs/cairo-1.1.10[svg]
 		>=x11-libs/pango-1.12
 	)
-	devil?	( media-libs/devil[png,jpeg] )
-	gtk?	( x11-libs/gtk+:2 )
-	gts?	( sci-libs/gts )
-	lasi?	( media-libs/lasi )
-	pdf?	( app-text/poppler )
-	perl?	( dev-lang/perl:= )
+	devil? ( media-libs/devil[png,jpeg] )
+	gtk? ( x11-libs/gtk+:2 )
+	gts? ( sci-libs/gts )
+	lasi? ( media-libs/lasi )
+	pdf? ( app-text/poppler )
+	perl? ( dev-lang/perl:= )
 	postscript? ( app-text/ghostscript-gpl )
-	python?	( ${PYTHON_DEPS} )
-	qt5?	(
+	python? ( ${PYTHON_DEPS} )
+	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
 	)
-	ruby?	( dev-lang/ruby:* )
-	svg?	( gnome-base/librsvg )
-	tcl?	( >=dev-lang/tcl-8.3:0= )
+	ruby? ( dev-lang/ruby:* )
+	svg? ( gnome-base/librsvg )
+	tcl? ( >=dev-lang/tcl-8.3:0= )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXaw
 		x11-libs/libXmu
 		x11-libs/libXpm
 		x11-libs/libXt
-	)"
-DEPEND="${COMMON_DEPEND}
-	sys-devel/flex
-	sys-devel/libtool
-	virtual/pkgconfig
-	guile?	( dev-lang/swig dev-scheme/guile )
-	java?	( dev-lang/swig >=virtual/jdk-1.5 )
-	nls?	( >=sys-devel/gettext-0.14.5 )
-	perl?	( dev-lang/swig )
-	python?	( dev-lang/swig )
-	ruby?	( dev-lang/swig )
-	tcl?	( dev-lang/swig )"
-RDEPEND="${COMMON_DEPEND}
-	!<=sci-chemistry/cluster-1.3.081231"
+	)
+"
+DEPEND="${RDEPEND}
+	guile? (
+		dev-lang/swig
+		dev-scheme/guile
+	)
+	java? (
+		dev-lang/swig
+		>=virtual/jdk-1.5
+	)
+"
 
 # Dependency description / Maintainer-Info:
 
@@ -104,6 +112,7 @@ RDEPEND="${COMMON_DEPEND}
 # There can be swig-generated bindings for the following languages (/tclpkg/gv):
 # - c-sharp (disabled)
 # - scheme (enabled via guile) ... no longer broken on ~x86
+# - go (disabled)
 # - io (disabled)
 # - java (enabled via java) *2
 # - lua (enabled via lua)
@@ -134,10 +143,7 @@ RDEPEND="${COMMON_DEPEND}
 #   sci-libs/gts, x11-libs/gtk.  Also needs 'gtk','glade','glut','gts' and 'png'
 #   with flags enabled at configure time
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.34.0-Xaw-configure.patch
-	"${FILESDIR}"/${P}-qt5.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-2.34.0-Xaw-configure.patch )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -163,11 +169,6 @@ src_prepare() {
 	# delete the dir since we don't need to eautoreconf it
 	rm -r libltdl || die
 
-	# no nls, no gettext, no iconv macro, so disable it
-	if ! use nls ; then
-		sed -i -e '/^AM_ICONV/d' configure.ac || die
-	fi
-
 	# Nuke the dead symlinks for the bindings
 	sed -i -e '/$(pkgluadir)/d' tclpkg/gv/Makefile.am || die
 
@@ -182,30 +183,22 @@ src_prepare() {
 
 	use java && append-cppflags $(java-pkg_get-jni-cflags)
 
-	append-cxxflags -std=c++11  # bug 648764
-
 	eautoreconf
 }
 
 src_configure() {
 	local myconf=(
 		--enable-ltdl
-		--disable-silent-rules
-		$(use_enable static-libs static)
-	)
-
-	# libtool file collision, bug 276609
-	myconf+=( --without-included-ltdl --disable-ltdl-install )
-
-	myconf+=(
 		$(use_with cairo pangocairo)
 		$(use_with devil)
+		$(use_enable gdk-pixbuf)
 		$(use_with gtk)
 		$(use_with gts)
 		$(use_with qt5 qt)
 		$(use_with lasi)
 		$(use_with pdf poppler)
 		$(use_with postscript ghostscript)
+		$(use_enable static-libs static)
 		$(use_with svg rsvg)
 		$(use_with X x)
 		$(use_with X xaw)
@@ -216,36 +209,34 @@ src_configure() {
 		--with-ipsepcola
 		--with-libgd
 		--with-sfdp
-		$(use_enable gdk-pixbuf)
 		--without-ming
-	)
-
-	# new/experimental features, to be tested, disable for now
-	myconf+=(
+		# new/experimental features, to be tested, disable for now
 		--with-cgraph
 		--without-glitz
 		--without-ipsepcola
 		--without-smyrna
 		--without-visio
-	)
-
-	# Bindings:
-	myconf+=(
+		# Bindings:
 		$(use_enable guile)
-		--disable-io
 		$(use_enable java)
+		$(use_enable perl)
+		$(use_enable python python2)
+		$(use_enable python python3)
+		$(use_enable ruby)
+		$(use_enable tcl)
+		--disable-go
+		--disable-io
 		--disable-lua
 		--disable-ocaml
-		$(use_enable perl)
 		--disable-php
-		$(use_enable python)
+		--disable-python
 		--disable-r
-		$(use_enable ruby)
 		--disable-sharp
-		$(use_enable tcl)
+		# libtool file collision, bug #276609
+		--without-included-ltdl
+		--disable-ltdl-install
 	)
-
-	econf ${myconf[@]}
+	econf "${myconf[@]}"
 }
 
 src_install() {
@@ -267,11 +258,12 @@ src_install() {
 		find "${ED}" -name '*.la' -delete || die
 	fi
 
-	dodoc AUTHORS ChangeLog NEWS README
+	einstalldocs
 
 	use python && python_optimize \
 		"${D}$(python_get_sitedir)" \
-		"${D}/usr/$(get_libdir)/graphviz/python"
+		"${D}/usr/$(get_libdir)/graphviz/python2" \
+		"${D}/usr/$(get_libdir)/graphviz/python3"
 }
 
 pkg_postinst() {
@@ -282,5 +274,5 @@ pkg_postinst() {
 
 pkg_postrm() {
 	# Remove cruft, bug #547344
-	rm -rf "${EROOT}"usr/lib/graphviz/config{,6} || die
+	rm -rf "${EROOT}"/usr/$(get_libdir)/graphviz/config{,6} || die
 }

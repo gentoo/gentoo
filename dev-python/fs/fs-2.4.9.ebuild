@@ -18,6 +18,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/appdirs-1.4.3[${PYTHON_USEDEP}]
@@ -32,13 +33,15 @@ DEPEND="${RDEPEND}
 		dev-python/pyftpdlib[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/unittest2[${PYTHON_USEDEP}]
-		python_targets_python2_7? (
-			dev-python/backports-os[python_targets_python2_7]
-		)
-	)"
+	)
+"
 
 python_test() {
-	esetup.py test
+	# python2_7 tests require dev-python/typing which is
+	# now in stdlib so ignore tests. py2.7 is going away.
+	if python_is_python3; then
+		esetup.py test || die "tests failed"
+	fi
 }
 
 pkg_postinst() {
