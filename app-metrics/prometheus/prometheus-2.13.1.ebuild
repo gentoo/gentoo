@@ -36,13 +36,13 @@ src_prepare() {
 
 src_compile() {
 	pushd src/${EGO_PN} || die
-	GO111MODULE=on GOPATH="${S}" GOCACHE="${T}/go-cache" promu build -v || die
+	GO111MODULE=on GOPATH="${S}" GOCACHE="${T}/go-cache" promu build --prefix bin -v || die
 	popd || die
 }
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	dobin promtool prometheus
+	dobin bin/*
 	dodoc -r {documentation,{README,CHANGELOG,CONTRIBUTING}.md}
 	insinto /etc/prometheus
 	doins documentation/examples/prometheus.yml
