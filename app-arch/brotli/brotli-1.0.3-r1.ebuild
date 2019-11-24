@@ -32,6 +32,8 @@ else
 	SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
+RESTRICT="!test? ( test )"
+
 src_prepare() {
 	cmake-utils_src_prepare
 	use python && distutils-r1_src_prepare
