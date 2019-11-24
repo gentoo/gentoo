@@ -26,6 +26,8 @@ REQUIRED_USE="
 	"
 IUSE="crypt doc emacs mutt nmbug python test valgrind"
 
+RESTRICT="!test? ( test )"
+
 CDEPEND="
 	!!<app-shells/bash-completion-1.9
 	>=dev-libs/glib-2.22:2

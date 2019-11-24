@@ -23,6 +23,8 @@ else
 	SRC_URI="https://github.com/puppetlabs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
+RESTRICT="!test? ( test )"
+
 BDEPEND="
 	>=sys-devel/gcc-4.8:*
 	dev-cpp/cpp-hocon"
