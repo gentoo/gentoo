@@ -183,10 +183,9 @@ _python_impl_matches() {
 
 	for pattern; do
 		if [[ ${pattern} == -2 ]]; then
-			! python_is_python3 "${impl}"
-			return
+			python_is_python3 "${impl}" || return 0
 		elif [[ ${pattern} == -3 ]]; then
-			python_is_python3 "${impl}"
+			python_is_python3 "${impl}" && return 0
 			return
 		# unify value style to allow lax matching
 		elif [[ ${impl/./_} == ${pattern/./_} ]]; then
