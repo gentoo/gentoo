@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+EAPI=7
 
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Better INI parser for Python"
@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 arm64 x86"
 IUSE=""
 
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND=">=dev-python/six-1.10.0[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
