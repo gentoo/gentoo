@@ -192,6 +192,40 @@ test_is "_python_impl_supported pypy" 0
 test_is "_python_impl_supported pypy3" 0
 test_is "_python_impl_supported jython2_7" 0
 
+# check _python_impl_matches behavior
+test_is "_python_impl_matches python2_7 -2" 0
+test_is "_python_impl_matches python3_6 -2" 1
+test_is "_python_impl_matches python3_7 -2" 1
+test_is "_python_impl_matches pypy -2" 0
+test_is "_python_impl_matches pypy3 -2" 1
+test_is "_python_impl_matches python2_7 -3" 1
+test_is "_python_impl_matches python3_6 -3" 0
+test_is "_python_impl_matches python3_7 -3" 0
+test_is "_python_impl_matches pypy -3" 1
+test_is "_python_impl_matches pypy3 -3" 0
+test_is "_python_impl_matches python2_7 -2 python3_6" 0
+test_is "_python_impl_matches python3_6 -2 python3_6" 0
+test_is "_python_impl_matches python3_7 -2 python3_6" 1
+test_is "_python_impl_matches pypy -2 python3_6" 0
+test_is "_python_impl_matches pypy3 -2 python3_6" 1
+test_is "_python_impl_matches python2_7 pypy3 -2 python3_6" 0
+test_is "_python_impl_matches python3_6 pypy3 -2 python3_6" 0
+test_is "_python_impl_matches python3_7 pypy3 -2 python3_6" 1
+test_is "_python_impl_matches pypy pypy3 -2 python3_6" 0
+test_is "_python_impl_matches pypy3 pypy3 -2 python3_6" 0
+set -f
+test_is "_python_impl_matches python2_7 pypy*" 1
+test_is "_python_impl_matches python3_6 pypy*" 1
+test_is "_python_impl_matches python3_7 pypy*" 1
+test_is "_python_impl_matches pypy pypy*" 0
+test_is "_python_impl_matches pypy3 pypy*" 0
+test_is "_python_impl_matches python2_7 python*" 0
+test_is "_python_impl_matches python3_6 python*" 0
+test_is "_python_impl_matches python3_7 python*" 0
+test_is "_python_impl_matches pypy python*" 1
+test_is "_python_impl_matches pypy3 python*" 1
+set +f
+
 rm "${tmpfile}"
 
 texit
