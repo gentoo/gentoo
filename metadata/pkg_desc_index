@@ -12889,7 +12889,7 @@ media-gfx/gscan2pdf 1.8.11 2.6.1: Scan documents, perform OCR, produce PDFs and 
 media-gfx/gthumb 3.6.2-r1: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
-media-gfx/hp2xx 3.4.4 3.4.4-r1: Convert Hewlett-Packard's HP-GL plotter language to other graphics formats
+media-gfx/hp2xx 3.4.4-r1: Convert Hewlett-Packard's HP-GL plotter language to other graphics formats
 media-gfx/hugin 2019.0.0 9999: GUI for the creation & processing of panoramic images
 media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut vrml visualisations and GPU gamma tables
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
@@ -13361,7 +13361,7 @@ media-libs/qimageblitz 0.0.6_p20131029: Graphical effect and filter library by K
 media-libs/qt-gstreamer 1.2.0-r4: C++ bindings for GStreamer with a Qt-style API
 media-libs/qtav 1.12.0: Multimedia playback framework based on Qt + FFmpeg
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
-media-libs/quvi 0.2.19 0.4.2 0.9.4 0.9.5: A command line tool for parsing video download links
+media-libs/quvi 0.4.2 0.9.4 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.15-r2: The RDF Parser Toolkit
 media-libs/raspberrypi-userland 0_pre20160424 9999: Raspberry Pi userspace tools and libraries
 media-libs/raspberrypi-userland-bin 1.20170303 1.20190709: Raspberry Pi userspace tools and libraries
@@ -16016,7 +16016,7 @@ sci-biology/libgtextutils 0.6.1: Gordon Text utils Library
 sci-biology/mafft 7.050 7.215 7.305: Multiple sequence alignments using a variety of algorithms
 sci-biology/maq 0.7.1-r2: Mapping and Assembly with Qualities, mapping NGS reads to reference genomes
 sci-biology/maqview 0.2.5-r3: GUI for sci-biology/maq, a short read mapping assembler
-sci-biology/mcl 08.312 12.135 14.137: A Markov Cluster Algorithm implementation
+sci-biology/mcl 14.137: A Markov Cluster Algorithm implementation
 sci-biology/meme 4.11.2_p2: The MEME/MAST system - Motif discovery and search
 sci-biology/mira 4.0.2: Whole Genome Shotgun and EST Sequence Assembler for Sanger, 454 and Illumina
 sci-biology/mosaik 2.2.30: A reference-guided aligner for next-generation sequencing technologies
@@ -16045,7 +16045,7 @@ sci-biology/probcons 1.12-r1: Probabilistic Consistency-based Multiple Alignment
 sci-biology/prodigal 2.6.3: Prokaryotic Dynamic Programming Genefinding Algorithm
 sci-biology/profphd 1.0.39 1.0.40: Secondary structure and solvent accessibility predictor
 sci-biology/prosite 2017.02: A protein families and domains database
-sci-biology/psipred 3.2.1 3.3 3.4 3.5: Protein Secondary Structure Prediction
+sci-biology/psipred 3.4 3.5: Protein Secondary Structure Prediction
 sci-biology/pysam 0.12.0.1: Python interface for the SAM/BAM sequence alignment and mapping format
 sci-biology/qrna 2.0.3c-r3: Prototype ncRNA genefinder
 sci-biology/raxml 7.2.6: Sequential, Parallel & Distributed Inference of Large Phylogenetic Trees
@@ -16125,12 +16125,12 @@ sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
 sci-chemistry/gromacs 2018.7 2018.8 2018.9999 2019.2 2019.3 2019.4 2019.9999 2020_beta1 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
-sci-chemistry/ksdssp 040728 040728-r1: An open source implementation of sci-chemistry/dssp
+sci-chemistry/ksdssp 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
 sci-chemistry/mdtraj 1.9.1: Read, write and analyze MD trajectories with only a few lines of Python code
 sci-chemistry/mm-align 20120321: Protein Complex Structural Alignment
 sci-chemistry/modeller 9.20 9.22: Homology or comparative modeling of protein three-dimensional structures
-sci-chemistry/molden 4.8-r2 5.0 5.5: Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac
+sci-chemistry/molden 5.5: Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac
 sci-chemistry/moldy 2.16e-r2: Molecular dynamics simulations platform
 sci-chemistry/molequeue 0.9.0: Abstract, manage and coordinate execution of tasks
 sci-chemistry/molmol 2k_p2-r5: Publication-quality molecular visualization package
@@ -16155,7 +16155,7 @@ sci-chemistry/pdb2pqr 1.9.0-r1: Automated pipeline for performing Poisson-Boltzm
 sci-chemistry/pdbcat 1.3: Manipulate and process PDB files using tools such as Perl, awk, etc
 sci-chemistry/pdbcns 2.0.010504: Convert atom names for amino acids/nucleic acid bases between PDB and CNS format
 sci-chemistry/pdbmat 3.89: Calculate Tirion's model from pdb structures
-sci-chemistry/povscript+ 2.1.2.2.19 2.1.2.2.20: Modified molscript that uses POV-Ray, does thermal ellipsoids, and more
+sci-chemistry/povscript+ 2.1.2.2.20: Modified molscript that uses POV-Ray, does thermal ellipsoids, and more
 sci-chemistry/prekin 6.51.081122-r1: Prepares molecular kinemages from PDB-format coordinate files
 sci-chemistry/probe 2.13.110909: Evaluates atomic packing within or between molecules
 sci-chemistry/procheck 3.5.4-r3: Checks the stereochemical quality of a protein structure
@@ -16329,7 +16329,7 @@ sci-libs/blas-reference 20070226-r4 20151113-r1 20161223: Basic Linear Algebra S
 sci-libs/blis 0.5.2 0.6.0: BLAS-like Library Instantiation Software Framework
 sci-libs/bliss 0.73-r1: Compute Automorphism Groups and Canonical Labelings of Graphs
 sci-libs/bmrblib 1.0.3: API abstracting the BioMagResBank (BMRB) NMR-STAR format
-sci-libs/btf 1.1.3 1.2.0: Algorithm for matrix permutation into block triangular form
+sci-libs/btf 1.2.0: Algorithm for matrix permutation into block triangular form
 sci-libs/buddy 2.4-r1: Binary Decision Diagram Package
 sci-libs/camd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/cantera 2.4.0-r1 2.4.0-r2: Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
@@ -16379,9 +16379,9 @@ sci-libs/coinor-symphony 5.5.7: COIN-OR solver for mixed-integer linear programs
 sci-libs/coinor-utils 2.9.11: COIN-OR Matrix, Vector and other utility classes
 sci-libs/coinor-vol 1.4.4: COIN-OR Volume algorithm linear programming solver
 sci-libs/colamd 2.8.0: Column approximate minimum degree ordering algorithm
-sci-libs/colpack 1.0.6 1.0.9-r1 1.0.10: C++ algorithms for specialized vertex coloring problems
+sci-libs/colpack 1.0.10: C++ algorithms for specialized vertex coloring problems
 sci-libs/cqrlib 1.1.3: Utility library for quaternion arithmetic / rotation math (ANSI C implemented)
-sci-libs/cxsparse 2.2.6 3.1.1 3.1.2-r1: Extended sparse matrix package
+sci-libs/cxsparse 3.1.2-r1: Extended sparse matrix package
 sci-libs/dcmtk 3.6.3 3.6.4-r1: The DICOM Toolkit
 sci-libs/dealii 9.1.1 9999: Solving partial differential equations with the finite element method
 sci-libs/deap 0.9.1 1.0.0 1.0.1: Novel evolutionary computation framework
@@ -16428,7 +16428,7 @@ sci-libs/kim-api 1.8.2: Application Programming Interface for atomistic simulati
 sci-libs/klu 1.2.1: Sparse LU factorization for circuit simulation
 sci-libs/lapack 3.8.0: BLAS,CBLAS,LAPACK,LAPACKE reference implementations
 sci-libs/lapack-reference 3.2.1-r4 3.6.0 3.7.0: Reference implementation of LAPACK
-sci-libs/ldl 2.0.4 2.1.0: Simple but educational LDL^T matrix factorization algorithm
+sci-libs/ldl 2.1.0: Simple but educational LDL^T matrix factorization algorithm
 sci-libs/lemon 1.3.1: C++ template static library of common data structures and algorithms
 sci-libs/levmar 2.6: Levenberg-Marquardt nonlinear least squares C library
 sci-libs/libaec 0.3.2 1.0.0 1.0.1 1.0.2: Adaptive Entropy Coding library
@@ -16530,7 +16530,7 @@ sci-libs/scikits_learn 0.17 0.17.1 0.18.1 0.18.2 0.18.2-r1 0.19.0 0.19.0-r1: Pyt
 sci-libs/scikits_optimization 0.3 0.3-r1: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r1 0.91.3-r2: SciPy module for manipulating, reporting, and plotting time series
 sci-libs/scipy 0.16.1 0.18.1 0.19.1 1.0.0 1.1.0 9999: Scientific algorithms library for Python
-sci-libs/scotch 5.1.12b 6.0.0 6.0.4 6.0.4-r1 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
+sci-libs/scotch 6.0.0 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.4.0-r1 1.4.1 1.5.0: Library for manipulating ESRI Shapefiles
 sci-libs/shogun 5.0.0: Large Scale Machine Learning Toolbox
 sci-libs/silo 4.10.2-r1: A mesh and field I/O library and scientific database
@@ -16549,7 +16549,7 @@ sci-libs/tamu_anova 0.2-r1: ANOVA Extensions to the GNU Scientific Library
 sci-libs/taucs 2.2: C library of sparse linear solvers
 sci-libs/tensorflow 1.13.1 1.14.0-r1 1.14.0-r2 1.15.0_rc0 2.0.0: Computation framework using data flow graphs for scalable machine learning
 sci-libs/tensorflow-estimator 1.13.0 1.14.0 1.15.0 2.0.0: A high-level TensorFlow API that greatly simplifies machine learning programming
-sci-libs/tnt 1.2.6 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
+sci-libs/tnt 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
 sci-libs/trilinos 12.14.1: Scientific library collection for large scale problems
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse libraries
@@ -16563,7 +16563,7 @@ sci-libs/xdmf2 1.0_p141226-r3: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.1 1.1.4: Library to read gromacs trajectory and topology files
 sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Graphical Kernel System
 sci-libs/xkaapi 2.1 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and Interactive programming
-sci-libs/xylib 1.1 1.2: Experimental x-y data reading library
+sci-libs/xylib 1.2: Experimental x-y data reading library
 sci-mathematics/4ti2 1.6.2 1.6.5 1.6.6 1.6.7: Software package for algebraic, geometric and combinatorial problems
 sci-mathematics/Macaulay2 1.8.2.1-r1: Research tool for commutative algebra and algebraic geometry
 sci-mathematics/agda 2.4.2.5-r2 2.5.2-r1: A dependently typed functional programming language and proof assistant
@@ -17401,7 +17401,7 @@ sys-block/scsiping 0.0.1-r1: SCSIPing pings a host on the SCSI-chain
 sys-block/scsirastools 1.5.7 1.6.4: Serviceability for SCSI Disks and Arrays
 sys-block/sedutil 1.15 1.15.1: The Drive Trust Alliance Self Encrypting Drive Utility
 sys-block/seekwatcher 0.12_p20091015-r1: generates graphs from blktrace to help visualize IO patterns and performance
-sys-block/smp_utils 0.97 0.98 0.99_beta4_p151: Utilities for SAS management protocol (SMP)
+sys-block/smp_utils 0.98 0.99_beta4_p151: Utilities for SAS management protocol (SMP)
 sys-block/spindown 0.4.0-r5: Spindown is a daemon that can spin down idle disks
 sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02 7.0504 7.0606 7.0709-r1 7.1017: MegaRAID StorCLI (successor of the MegaCLI)
 sys-block/tapecat 1.0.0-r1: tapecat is a tape utility used to describe the physical content of a tape
@@ -17462,7 +17462,7 @@ sys-cluster/cinder 13.0.7 14.0.1 15.0.0 2018.2.9999 2019.1.9999 2019.2.9999: Cin
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman-lib 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
-sys-cluster/corosync 1.3.5 1.4.7 2.3.3 2.3.4-r1 2.3.5 2.4.2: OSI Certified implementation of a complete cluster engine
+sys-cluster/corosync 1.4.7 2.3.5 2.4.2: OSI Certified implementation of a complete cluster engine
 sys-cluster/crmsh 2.1.1 3.0.3: Pacemaker command line interface for management and configuration
 sys-cluster/csync2 2.0 2.0-r2: Cluster synchronization tool
 sys-cluster/dlm 2.03.09 2.03.11: General-purpose Distributed Lock Manager
