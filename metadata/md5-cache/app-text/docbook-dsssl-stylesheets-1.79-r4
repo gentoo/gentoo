@@ -7,5 +7,5 @@ LICENSE=MIT
 RDEPEND=app-text/docbook-sgml-dtd:3.0 >=app-text/sgml-common-0.6.3-r7
 SLOT=0
 SRC_URI=https://downloads.sourceforge.net/project/docbook/docbook-dsssl/1.79/docbook-dsssl-1.79.tar.bz2
-_eclasses_=sgml-catalog-r1	d8b0f83f3e731fd3f34507d50d8bc7e2
+_eclasses_=sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8
 _md5_=ff6062128c402c451d69d12c54b2d60b

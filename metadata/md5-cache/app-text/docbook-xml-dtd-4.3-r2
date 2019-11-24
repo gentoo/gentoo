@@ -8,5 +8,5 @@ LICENSE=docbook
 RDEPEND=>=app-text/docbook-xsl-stylesheets-1.65 >=app-text/build-docbook-catalog-1.2 >=app-text/sgml-common-0.6.3-r7
 SLOT=4.3
 SRC_URI=https://docbook.org/xml/4.3/docbook-xml-4.3.zip
-_eclasses_=sgml-catalog-r1	d8b0f83f3e731fd3f34507d50d8bc7e2
+_eclasses_=sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8
 _md5_=eb17950195c3f39a5e7385d33d7b32e8

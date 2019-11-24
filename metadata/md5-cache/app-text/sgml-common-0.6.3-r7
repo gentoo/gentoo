@@ -4,8 +4,7 @@ EAPI=7
 HOMEPAGE=https://www.iso.org/standard/16387.html
 KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=FDL-1.1+ GPL-2
-RDEPEND=>=app-text/sgml-common-0.6.3-r7
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~floppym/dist/sgml-common/sgml-common-0.6.3-gentoo.tar.gz
-_eclasses_=prefix	c2993e4c430c1ee24f278983d6189501	sgml-catalog-r1	d8b0f83f3e731fd3f34507d50d8bc7e2
+_eclasses_=prefix	c2993e4c430c1ee24f278983d6189501	sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8
 _md5_=4cd207259b83c4074a36927cc4594b2a

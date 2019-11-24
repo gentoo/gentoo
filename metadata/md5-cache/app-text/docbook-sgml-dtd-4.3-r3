@@ -8,5 +8,5 @@ LICENSE=docbook
 RDEPEND=>=app-text/sgml-common-0.6.3-r7
 SLOT=4.3
 SRC_URI=https://docbook.org/sgml/4.3/docbook-4.3.zip
-_eclasses_=sgml-catalog-r1	d8b0f83f3e731fd3f34507d50d8bc7e2
+_eclasses_=sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8
 _md5_=bdb09ff7159acb6dd154ed3209e9acd2
