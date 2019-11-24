@@ -1,16 +1,16 @@
 BDEPEND=>=dev-lang/go-1.12
 DEFINED_PHASES=compile install postinst preinst prepare unpack
-DEPEND=app-crypt/gpgme:= >=app-emulation/conmon-2.0.0 >=app-emulation/runc-1.0.0_rc6 dev-libs/libassuan:= dev-libs/libgpg-error:= sys-fs/lvm2 sys-libs/libseccomp:= apparmor? ( sys-libs/libapparmor ) btrfs? ( sys-fs/btrfs-progs ) rootless? ( app-emulation/slirp4netns ) selinux? ( sys-libs/libselinux:= ) dev-go/go-md2man
+DEPEND=app-crypt/gpgme:= >=app-emulation/conmon-2.0.0 || ( >=app-emulation/runc-1.0.0_rc6 app-emulation/crun ) dev-libs/libassuan:= dev-libs/libgpg-error:= sys-fs/lvm2 sys-libs/libseccomp:= apparmor? ( sys-libs/libapparmor ) btrfs? ( sys-fs/btrfs-progs ) rootless? ( app-emulation/slirp4netns ) selinux? ( sys-libs/libselinux:= ) dev-go/go-md2man
 DESCRIPTION=Library and podman tool for running OCI-based containers in Pods
 EAPI=7
 HOMEPAGE=https://github.com/containers/libpod/
 IUSE=apparmor btrfs ostree +rootless selinux
 KEYWORDS=~amd64
 LICENSE=Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0
-RDEPEND=app-crypt/gpgme:= >=app-emulation/conmon-2.0.0 >=app-emulation/runc-1.0.0_rc6 dev-libs/libassuan:= dev-libs/libgpg-error:= sys-fs/lvm2 sys-libs/libseccomp:= apparmor? ( sys-libs/libapparmor ) btrfs? ( sys-fs/btrfs-progs ) rootless? ( app-emulation/slirp4netns ) selinux? ( sys-libs/libselinux:= )
+RDEPEND=app-crypt/gpgme:= >=app-emulation/conmon-2.0.0 || ( >=app-emulation/runc-1.0.0_rc6 app-emulation/crun ) dev-libs/libassuan:= dev-libs/libgpg-error:= sys-fs/lvm2 sys-libs/libseccomp:= apparmor? ( sys-libs/libapparmor ) btrfs? ( sys-fs/btrfs-progs ) rootless? ( app-emulation/slirp4netns ) selinux? ( sys-libs/libselinux:= )
 REQUIRED_USE=!ostree
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/containers/libpod/archive/v1.6.3.tar.gz -> libpod-1.6.3.tar.gz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	go-module	ab2b956f1b3888b8418581b8662fe211	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=b2f2c1ac7449e5100a67f816bd5b6bd8
+_md5_=26d0f462d7a80d70e4a51f8aed09734f
