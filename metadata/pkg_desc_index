@@ -12178,7 +12178,7 @@ kde-apps/konsole 19.04.3 19.08.3: KDE's terminal emulator
 kde-apps/konsolekalendar 19.04.3 19.08.3: Command line interface to KDE calendars
 kde-apps/kontact 19.04.3 19.08.3: Container application to unify several major PIM applications within one
 kde-apps/kontactinterface 19.04.3 19.08.3: Library for embedding KParts in a Kontact component
-kde-apps/kopete 19.04.3 19.08.3: Multi-protocol IM client based on KDE Frameworks
+kde-apps/kopete 19.04.3 19.08.3-r1: Multi-protocol IM client based on KDE Frameworks
 kde-apps/korganizer 19.04.3 19.08.3: Organizational assistant, providing calendars and other similar functionality
 kde-apps/kpat 19.04.3 19.08.3: KDE patience game
 kde-apps/kpimtextedit 19.04.3 19.08.3: A textedit with PIM-specific features
