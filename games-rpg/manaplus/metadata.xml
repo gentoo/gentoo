@@ -10,4 +10,7 @@
 		<flag name="pugixml">Use <pkg>dev-libs/pugixml</pkg> for XML parsing isntead of <pkg>dev-libs/libxml2</pkg></flag>
 		<flag name="mumble">Enable support for voice chat</flag>
 	</use>
+	<upstream>
+		<remote-id type="gitlab">manaplus/manaplus</remote-id>
+	</upstream>
 </pkgmetadata>
