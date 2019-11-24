@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="SSH2 protocol library"
-HOMEPAGE="http://www.paramiko.org/ https://github.com/paramiko/paramiko/ https://pypi.org/project/paramiko/"
+HOMEPAGE="https://www.paramiko.org/ https://github.com/paramiko/paramiko/ https://pypi.org/project/paramiko/"
 # pypi tarballs are missing test data
 #SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -18,6 +18,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris"
 IUSE="doc examples server test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/bcrypt-3.1.3[${PYTHON_USEDEP}]

@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="manual"
 inherit distutils-r1 eutils flag-o-matic git-r3 virtualx
 
 DESCRIPTION="Powerful data structures for data analysis and statistics"
-HOMEPAGE="http://pandas.pydata.org/"
+HOMEPAGE="https://pandas.pydata.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/pydata/pandas.git"
 
@@ -19,6 +19,7 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS=""
 IUSE="doc full-support minimal test X"
+RESTRICT="!test? ( test )"
 
 RECOMMENDED_DEPEND="
 	dev-python/bottleneck[${PYTHON_USEDEP}]

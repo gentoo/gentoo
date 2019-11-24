@@ -13,6 +13,7 @@ LICENSE="BSD"
 KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="samples static test tools"
 SLOT="0"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/boost:=
