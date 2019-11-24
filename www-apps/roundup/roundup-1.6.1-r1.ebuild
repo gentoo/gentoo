@@ -20,7 +20,10 @@ RDEPEND="${DEPEND}
 	tz? ( dev-python/pytz[$PYTHON_USEDEP] )
 	sqlite? ( dev-lang/python:*[sqlite] )
 	mysql? ( dev-python/mysql-python[$PYTHON_USEDEP] )
-	postgres? ( >=dev-python/psycopg-1.1.21[$PYTHON_USEDEP] )
+	postgres? (
+		>=dev-python/psycopg-1.1.21[$PYTHON_USEDEP]
+		<dev-python/psycopg-2.8[$PYTHON_USEDEP]
+	)
 	xapian? ( >=dev-libs/xapian-bindings-1.0.0[python,$PYTHON_USEDEP] )
 	whoosh? ( >=dev-python/whoosh-2.5.7[$PYTHON_USEDEP] )
 	ssl? ( dev-python/pyopenssl[$PYTHON_USEDEP] )"
