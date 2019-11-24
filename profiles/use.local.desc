@@ -4333,7 +4333,16 @@ media-libs/gstreamer:orc - Disable some PaX memory protections to allow plugins 
 media-libs/gstreamer:unwind - Enable sys-libs/libunwind usage for better backtrace support in leaks tracer module
 media-libs/harfbuzz:glib - Compile with GLib Unicode support
 media-libs/harfbuzz:graphite - Use graphite to render complex non-Roman writing systems
-media-libs/imlib2:shm - Use MIT shared memory support for X image transfer.
+media-libs/imlib2:X - Use the X window system
+media-libs/imlib2:bzip2 - Bzip2 loader support
+media-libs/imlib2:gif - Gif image loader support
+media-libs/imlib2:jpeg - Jpeg image loader support
+media-libs/imlib2:mp3 - ID3 loader support
+media-libs/imlib2:png - PNG image loader support
+media-libs/imlib2:shm - Use MIT shared memory support for X image transfer
+media-libs/imlib2:tiff - TIFF image loader support
+media-libs/imlib2:webp - WEBP image loader support
+media-libs/imlib2:zlib - Zlib loader support
 media-libs/leptonica:utils - Install command-line utilities
 media-libs/libafterimage:shaping - Use MIT shaped X windows extention.
 media-libs/libafterimage:shm - Use MIT shared memory extention for X image transfer.
