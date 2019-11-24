@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,6 +16,7 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="mumble nls opengl pugixml +sdl2 test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-games/physfs-1.0.0
