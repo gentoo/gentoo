@@ -31,6 +31,7 @@ src_prepare() {
 }
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME #672926
 	pushd src/${EGO_PN} || die
 	mkdir -p bin || die
 	GO111MODULE=on GOPATH="${S}" promu build -v --prefix bin || die
