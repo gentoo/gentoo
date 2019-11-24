@@ -103,8 +103,7 @@ RDEPEND="${DEPEND}
 	sys-devel/automake
 	sys-devel/libtool
 	virtual/pkgconfig
-	firmware? ( sys-kernel/linux-firmware )
-	!<sys-apps/openrc-0.9.9"
+	firmware? ( sys-kernel/linux-firmware )"
 
 if [[ ${PV} == 9999* ]]; then
 	DEPEND="${DEPEND} app-text/asciidoc"
@@ -245,7 +244,7 @@ pkg_postinst() {
 	mount-boot_pkg_postinst
 
 	# Show special warning for users depending on remote unlock capabilities
-	local gk_config="${EROOT%/}/etc/genkernel.conf"
+	local gk_config="${EROOT}/etc/genkernel.conf"
 	if [[ -f "${gk_config}" ]] ; then
 		if grep -q -E "^SSH=[\"\']?yes" "${gk_config}" 2>/dev/null ; then
 			if ! grep -q dosshd /proc/cmdline 2>/dev/null ; then
