@@ -18,20 +18,20 @@ KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="doc test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	doc? ( || ( $(python_gen_useflags 'python2*' python3_6 python3_7) ) )
 	test? ( || ( $(python_gen_useflags 'python2*' python3_6 python3_7) ) )
 "
 
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( $(python_gen_cond_dep 'dev-python/sphinx[${PYTHON_USEDEP}]' 'python2*' python3_6 python3_7) )
-	test? (
-		$(python_gen_cond_dep 'dev-python/flake8[${PYTHON_USEDEP}]' 'python2*' python3_6 python3_7)
-		$(python_gen_cond_dep 'dev-python/pycodestyle[${PYTHON_USEDEP}]' 'python2*' python3_6 python3_7)
-		$(python_gen_cond_dep 'dev-python/pyflakes[${PYTHON_USEDEP}]' 'python2*' python3_6 python3_7)
-		$(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]' 'python2*' python3_6 python3_7)
-		$(python_gen_cond_dep 'dev-python/pytest-cov[${PYTHON_USEDEP}]' 'python2*' python3_6 python3_7)
-	)
+	doc? ( dev-python/sphinx )
+	test? ( $(python_gen_cond_dep '
+		dev-python/flake8[${PYTHON_USEDEP}]
+		dev-python/pycodestyle[${PYTHON_USEDEP}]
+		dev-python/pyflakes[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
+		' 'python2*' python3_6 python3_7
+	) )
 "
 DEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
