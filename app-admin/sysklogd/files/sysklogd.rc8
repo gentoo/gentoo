@@ -34,7 +34,7 @@ start_daemon() {
 	ebegin "sysklogd -> start: ${daemon}"
 	start-stop-daemon --start --exec /usr/sbin/"${daemon}" \
 		-b -m --pidfile /var/run/"${daemon}".pid \
-		-- ${fg_opt} ${options}
+		-- ${options} ${fg_opt}
 	retval=$?
 	eend ${retval} "Failed to start ${daemon}"
 

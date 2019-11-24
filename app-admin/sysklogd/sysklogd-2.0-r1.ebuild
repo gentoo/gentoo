@@ -41,6 +41,11 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		# Required for correct pid file location. (bug #701048)
+		# syslogd appends "/run/syslogd.pid" to the localstatedir
+		# path, and tries to write to that file even when being
+		# started in foreground. So we need to pin this to /
+		--localstatedir="${EPREFIX}"/
 		$(use_with klogd)
 		$(use_with logger)
 		$(use_with systemd systemd $(systemd_get_systemunitdir))
