@@ -21,7 +21,7 @@ RESTRICT="test"
 COMMON_DEPEND="
 	app-crypt/gpgme:=
 	>=app-emulation/conmon-2.0.0
-	>=app-emulation/runc-1.0.0_rc6
+	|| ( >=app-emulation/runc-1.0.0_rc6 app-emulation/crun )
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error:=
 	sys-fs/lvm2
@@ -92,6 +92,9 @@ src_install() {
 	insinto /etc/containers
 	newins test/registries.conf registries.conf.example
 	newins test/policy.json policy.json.example
+
+	insinto /usr/share/containers
+	doins seccomp.json
 
 	newinitd "${FILESDIR}"/podman.initd podman
 
