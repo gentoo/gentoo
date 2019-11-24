@@ -242,9 +242,9 @@ src_install() {
 	# bug 450406
 	dosym named.cache /var/bind/root.cache
 
-	dosym "${ED}"/var/bind/pri /etc/bind/pri
-	dosym "${ED}"/var/bind/sec /etc/bind/sec
-	dosym "${ED}"/var/bind/dyn /etc/bind/dyn
+	dosym ../../var/bind/pri /etc/bind/pri
+	dosym ../../var/bind/sec /etc/bind/sec
+	dosym ../../var/bind/dyn /etc/bind/dyn
 	keepdir /var/bind/{pri,sec,dyn}
 
 	dodir /var/log/named
