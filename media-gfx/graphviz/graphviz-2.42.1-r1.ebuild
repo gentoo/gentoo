@@ -74,7 +74,7 @@ DEPEND="${COMMON_DEPEND}
 	ruby?	( dev-lang/swig )
 	tcl?	( dev-lang/swig )
 "
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	!<=sci-chemistry/cluster-1.3.081231
 "
 
