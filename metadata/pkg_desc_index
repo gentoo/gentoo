@@ -14134,7 +14134,7 @@ media-sound/yarock 1.4.0: Qt-based music player
 media-sound/yoshimi 1.5.10.2: Software synthesizer based on ZynAddSubFX
 media-sound/zynaddsubfx 3.0.5: Software synthesizer capable of making a countless number of instruments
 media-tv/channeleditor 1.9.2.1-r1 1.9.2.1-r2: Editor for VDR channels.conf
-media-tv/dtv-scan-tables 0_p20171003 9999: Digital TV scan tables in v3 and v5 format
+media-tv/dtv-scan-tables 0_p20171003 0_p20190922 9999: Digital TV scan tables in v3 and v5 format
 media-tv/dvbstream 0.7_pre20080516-r1: RTP multicast stream server and other tools for DVB cards
 media-tv/dvbtune 0.5-r1: simple tuning app for DVB cards
 media-tv/gentoo-vdr-scripts 2.0.0 2.5 2.7 2.7.2 2.7.3 2.7.5 2.7.5.1: Scripts necessary for use of vdr as a set-top-box

@@ -1,0 +1,10 @@
+BDEPEND=>=media-tv/v4l-utils-1.4
+DEFINED_PHASES=compile install
+DESCRIPTION=Digital TV scan tables in v3 and v5 format
+EAPI=7
+HOMEPAGE=https://linuxtv.org/
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+LICENSE=GPL-2 LGPL-2.1
+SLOT=0
+SRC_URI=https://linuxtv.org/downloads/dtv-scan-tables/dtv-scan-tables-2019-09-22-f07bde777d4d.tar.bz2
+_md5_=61f59654a751f32019c0f02695b87f7f
