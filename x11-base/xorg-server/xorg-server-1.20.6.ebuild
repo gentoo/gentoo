@@ -179,12 +179,6 @@ pkg_setup() {
 	)
 }
 
-src_prepare() {
-	sed -i -e 's/"gl >= .*"/"gl"/' configure.ac || die
-	default
-	eautoreconf
-}
-
 src_install() {
 	xorg-3_src_install
 
