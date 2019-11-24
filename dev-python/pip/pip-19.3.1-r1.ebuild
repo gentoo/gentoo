@@ -40,11 +40,7 @@ DEPEND="
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pretend[${PYTHON_USEDEP}]
-		<dev-python/pytest-4[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
-		<dev-python/pytest-rerunfailures-7.0[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
-		<dev-python/pytest-xdist-1.28.0[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/scripttest[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
@@ -92,8 +88,6 @@ python_test () {
 		# version_check tests are excluded since we explicitly disable this feature entirely.
 		# uninstall test just fails, likely because of our test environment setup.
 		python -m pytest -v \
-			-n $(makeopts_jobs) \
-			--timeout 300 \
 			-k "not (svn or git or bazaar or mercurial or version_check or uninstall_non_local_distutils ${EXCLUDE_TESTS[*]})" \
 			-m "not network" \
 			|| die
