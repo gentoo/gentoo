@@ -18,6 +18,7 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc -minimal full-support test X"
+RESTRICT="!test? ( test )"
 
 MINIMAL_DEPEND="
 	>dev-python/numpy-1.7[${PYTHON_USEDEP}]
