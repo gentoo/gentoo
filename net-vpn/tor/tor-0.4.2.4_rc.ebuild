@@ -40,6 +40,8 @@ PATCHES=(
 
 DOCS=()
 
+RESTRICT="!test? ( test )"
+
 pkg_setup() {
 	enewgroup tor
 	enewuser tor -1 -1 /var/lib/tor tor
