@@ -26,5 +26,5 @@ src_compile() {
 
 src_install() {
 	dobin bin/*
-	dodoc -r src/${EGO_PN}/{docs,{README,RELEASE,ROADMAP,CHANGELOG,CONTRIBUTING}.md}
+	dodoc -r src/${EGO_PN}/{docs,{README,RELEASE,CHANGELOG,CONTRIBUTING}.md}
 }
