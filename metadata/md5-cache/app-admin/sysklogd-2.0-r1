@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/troglobit/sysklogd/releases/download/v2.0/sysklogd-2.0.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ca2ea3be4111450b505ecabaa3e09976
+_md5_=1a11bb74fc86a537b0094a76928d06f7
