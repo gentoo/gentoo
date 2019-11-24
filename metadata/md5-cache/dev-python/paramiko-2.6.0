@@ -2,13 +2,14 @@ BDEPEND=dev-python/setuptools[python_targets_python2_7(-)?,python_targets_python
 DEFINED_PHASES=compile configure install prepare test
 DESCRIPTION=SSH2 protocol library
 EAPI=7
-HOMEPAGE=http://www.paramiko.org/ https://github.com/paramiko/paramiko/ https://pypi.org/project/paramiko/
+HOMEPAGE=https://www.paramiko.org/ https://github.com/paramiko/paramiko/ https://pypi.org/project/paramiko/
 IUSE=doc examples server test python_targets_python2_7 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-python/bcrypt-3.1.3[python_targets_python2_7(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python2_7(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)] >=dev-python/cryptography-2.5[python_targets_python2_7(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python2_7(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)] >=dev-python/pynacl-1.0.1[python_targets_python2_7(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python2_7(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)] >=dev-python/pyasn1-0.1.7[python_targets_python2_7(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python2_7(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) python_targets_python3_5? ( dev-lang/python:3.5[threads(+)] ) python_targets_python3_6? ( dev-lang/python:3.6[threads(+)] ) python_targets_python3_7? ( dev-lang/python:3.7[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python2_7(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/paramiko/paramiko/archive/2.6.0.tar.gz -> paramiko-2.6.0.tar.gz
 _eclasses_=distutils-r1	875cdbd904383003dd58e0ad4068470b	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	d21193dfc088687e048e829419568096	python-utils-r1	d7629f6349b5d4cbb4cb5f56d680d71a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=5e96a504615b208369866be944b548ed
+_md5_=a1624682615a30cc2de760ca0871b9e1

@@ -8278,7 +8278,7 @@ dev-python/pSQL 1.2.1: MySQL abstraction layer for python
 dev-python/packaging 16.8 18.0 19.2: Core utilities for Python packages
 dev-python/pafy 0.5.3.1 0.5.4 9999: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.4.0: A client class with support for both MQTT v3.1 and v3.1.1
-dev-python/paisley 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
+dev-python/paisley 0.3.1-r1: A CouchDB client written in Python to be used within a Twisted application
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
 dev-python/pandas 0.19.1 0.23.4 0.24.2 9999: Powerful data structures for data analysis and statistics
 dev-python/pandas-datareader 0.7.0: Pandas DataFrame extraction from a wide range of Internet sources
