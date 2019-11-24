@@ -93,7 +93,7 @@ src_configure() {
 multilib_src_configure() {
 	# we want -lgcc_s for unwinder, and for compiler runtime when using
 	# gcc, clang with gcc runtime (or any unknown compiler)
-	local extra_libs=() want_gcc_s=ON
+	local extra_libs=() want_gcc_s=ON want_compiler_rt=OFF
 	if use libunwind; then
 		# work-around missing -lunwind upstream
 		extra_libs+=( -lunwind )
@@ -104,6 +104,7 @@ multilib_src_configure() {
 			   ${LDFLAGS} -print-libgcc-file-name)
 			if [[ ${compiler_rt} == *libclang_rt* ]]; then
 				want_gcc_s=OFF
+				want_compiler_rt=ON
 				extra_libs+=( "${compiler_rt}" )
 			fi
 		fi
@@ -130,6 +131,7 @@ multilib_src_configure() {
 		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
 		-DLIBCXX_HAS_GCC_S_LIB=${want_gcc_s}
 		-DLIBCXX_INCLUDE_TESTS=$(usex test)
+		-DLIBCXX_USE_COMPILER_RT=${want_compiler_rt}
 		-DCMAKE_SHARED_LINKER_FLAGS="${extra_libs[*]} ${LDFLAGS}"
 	)
 
