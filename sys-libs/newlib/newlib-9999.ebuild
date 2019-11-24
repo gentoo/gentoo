@@ -33,7 +33,7 @@ NEWLIBBUILD="${WORKDIR}/build"
 NEWLIBNANOBUILD="${WORKDIR}/build.nano"
 NEWLIBNANOTMPINSTALL="${WORKDIR}/nano_tmp_install"
 
-# Adding -U_FORTIFY_SOURCE to conter the effect of Gentoo's
+# Adding -U_FORTIFY_SOURCE to counter the effect of Gentoo's
 # auto-addition of _FORTIFY_SOURCE at gcc site: bug #656018#c4
 # Currently newlib can't be built itself when _FORTIFY_SOURCE
 # is set.
