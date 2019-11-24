@@ -15,6 +15,7 @@ LICENSE="|| ( GPL-2 PEL )"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="debug doc +exceptions javascript man openal qthelp test threads"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	man? ( doc )
