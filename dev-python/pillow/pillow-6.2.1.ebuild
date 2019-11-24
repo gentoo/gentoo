@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 toolchain-funcs virtualx
@@ -14,6 +14,7 @@ MY_P=${MY_PN}-${PV}
 DESCRIPTION="Python Imaging Library (fork)"
 HOMEPAGE="https://python-pillow.org/"
 SRC_URI="https://github.com/python-pillow/Pillow/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="HPND"
 SLOT="0"
@@ -35,8 +36,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+		$(python_gen_any_dep '
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+		')
 	)
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
@@ -44,7 +47,11 @@ DEPEND="${RDEPEND}
 	)
 "
 
-S="${WORKDIR}/${MY_P}"
+python_check_deps() {
+	use doc || return 0
+	has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
+		has_version "dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]"
+}
 
 python_configure_all() {
 	# It's important that these flags are also passed during the install phase
@@ -84,7 +91,7 @@ src_test() {
 }
 
 python_test() {
-	"${PYTHON}" selftest.py --installed || die "selftest failed with ${EPYTHON}"
+	"${EPYTHON}" selftest.py --installed || die "selftest failed with ${EPYTHON}"
 	# no:relaxed: pytest-relaxed plugin make our tests fail. deactivate if installed
 	pytest -vv -p no:relaxed || die "Tests fail with ${EPYTHON}"
 }
