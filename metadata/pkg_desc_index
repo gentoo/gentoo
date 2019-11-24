@@ -612,7 +612,7 @@ app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
 app-cdr/disc-cover 1.5.6-r1: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
 app-cdr/dumpet 2.1_p20140601-r1: A tool to dump and debug bootable CD-like images
 app-cdr/dvd+rw-tools 7.1-r3: A set of tools for DVD+RW/-RW drives
-app-cdr/dvdisaster 0.72.4 0.79.5: Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)
+app-cdr/dvdisaster 0.79.5: Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)
 app-cdr/dvdshrink 2.6.1_p10: Scriptable DVD copy software
 app-cdr/extract-xiso 2.7.1: Tool for extracting and creating optimised Xbox ISO images
 app-cdr/gaffitter 0.6.0-r1: Genetic Algorithm File Fitter
@@ -5237,7 +5237,7 @@ dev-lua/luajson 1.3.3: JSON Parser/Constructor for Lua
 dev-lua/lualdap 1.2.0: Simple interface from Lua to OpenLDAP
 dev-lua/luaossl 20150727 20180708 20181207 20190731: Most comprehensive OpenSSL module in the Lua universe.
 dev-lua/luaposix 33.4.0: Bindings for POSIX APIs
-dev-lua/luarocks 2.0.7.1 2.0.8 2.0.12 2.2.0: A deployment and management system for Lua modules
+dev-lua/luarocks 2.2.0: A deployment and management system for Lua modules
 dev-lua/luasec 0.5.1 0.6 0.7 9999: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-lua/luasocket 3.0_rc1-r4: Networking support library for the Lua language
 dev-lua/luassert 1.7.9 1.7.10: Lua Assertions Extension
