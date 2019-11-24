@@ -3224,7 +3224,7 @@ dev-embedded/avrdude 6.3 9999: AVR Downloader/UploaDEr
 dev-embedded/cpik 0.7.4_p4: C compiler for PIC18 devices
 dev-embedded/dc-tool-ip 1.0.4: ethernet program loader for the Dreamcast
 dev-embedded/dfu-programmer 0.7.2-r1: A Device Firmware Update based USB programmer for Atmel chips
-dev-embedded/esptool 2.1 2.6: Utility to communicate with the ROM bootloader in Espressif ESP8266 and ESP32
+dev-embedded/esptool 2.1 2.6 2.8: Utility to communicate with the ROM bootloader in Espressif ESP8266 and ESP32
 dev-embedded/freaklabs-boards 1.0.0: Arduino hardware definitions for freaklabs boards
 dev-embedded/ftdi_eeprom 0.3-r1 1.0: Utility to program external EEPROM for FTDI USB chips
 dev-embedded/gnap-dev 2.0: Gentoo-based Network Appliance building system development tools
