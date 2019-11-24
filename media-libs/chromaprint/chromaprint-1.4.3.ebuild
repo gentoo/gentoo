@@ -1,15 +1,15 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit cmake-multilib
+EAPI=7
 
 GTEST_VERSION="1.8.0"
+inherit cmake-multilib
 
-DESCRIPTION="A client-side library that implements a custom algorithm for extracting fingerprints"
+DESCRIPTION="Library implementing a custom algorithm for extracting audio fingerprints"
 HOMEPAGE="https://acoustid.org/chromaprint"
 SRC_URI="https://github.com/acoustid/${PN}/releases/download/v${PV}/${P}.tar.gz
-	test? (	https://github.com/google/googletest/archive/release-${GTEST_VERSION}.tar.gz -> gtest-${GTEST_VERSION}.tar.gz )
+	test? ( https://github.com/google/googletest/archive/release-${GTEST_VERSION}.tar.gz -> gtest-${GTEST_VERSION}.tar.gz )
 "
 
 LICENSE="LGPL-2.1"
@@ -23,25 +23,25 @@ RDEPEND="
 	!libav? ( >=media-video/ffmpeg-2.6:0=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
-	test? (
-		dev-cpp/gtest[${MULTILIB_USEDEP}]
-		dev-libs/boost[${MULTILIB_USEDEP}]
-	)"
+	test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )"
 
-PATCHES=( "${FILESDIR}"/chromaprint-1.4.3-test-bigendian.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-test-bigendian.patch
+	"${FILESDIR}"/${P}-cmake.patch
+)
 
-DOCS="NEWS.txt README.md"
+DOCS=( NEWS.txt README.md )
 
-S=${WORKDIR}/${PN}-v${PV}
+S="${WORKDIR}/${PN}-v${PV}"
 
 multilib_src_configure() {
 	export GTEST_ROOT="${WORKDIR}/googletest-release-${GTEST_VERSION}/googletest/"
 	local mycmakeargs=(
-		"-DBUILD_TOOLS=$(multilib_native_usex tools ON OFF)"
-		"-DBUILD_TESTS=$(usex test ON OFF)"
+		-DBUILD_TOOLS=$(multilib_native_usex tools ON OFF)
+		-DBUILD_TESTS=$(usex test ON OFF)
 		-DFFT_LIB=avfft
 		-DAUDIO_PROCESSOR_LIB=$(usex libav avresample swresample)
-		)
+	)
 	cmake-utils_src_configure
 }
 
