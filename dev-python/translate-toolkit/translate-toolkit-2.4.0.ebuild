@@ -18,12 +18,11 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc +html +ical +ini +subtitles +yaml"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	doc? ( || ( $(python_gen_useflags python3_6 python3_7) ) )
 	subtitles? ( || ( $(python_gen_useflags python3_6 python3_7) ) )"
 
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( $(python_gen_cond_dep 'dev-python/sphinx[${PYTHON_USEDEP}]' python3_6 python3_7) )
+	doc? ( dev-python/sphinx )
 "
 DEPEND="
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
@@ -75,6 +74,4 @@ python_install_all() {
 	if ! use subtitles; then
 		rm "${ED}"/usr/bin/{sub2po,po2sub} || die
 	fi
-
-	python_optimize
 }
