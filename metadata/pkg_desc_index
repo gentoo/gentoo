@@ -15430,7 +15430,7 @@ net-misc/sobby 0.4.8-r1: Standalone Obby server
 net-misc/socat 1.7.3.2 1.7.3.3 2.0.0_beta9 9999: Multipurpose relay (SOcket CAT)
 net-misc/sock 1.1-r1: A shell interface to network sockets
 net-misc/socket 1.5: A shell-level interface to TCP sockets
-net-misc/socket-burst-dampener 1.1.0 1.2.0: A daemon that spawns one command per connection, and dampens connection bursts
+net-misc/socket-burst-dampener 1.2.0: A daemon that spawns one command per connection, and dampens connection bursts
 net-misc/spice-gtk 0.35 0.37-r2 9999: Set of GObject and Gtk objects for connecting to Spice servers and a client GUI
 net-misc/spiped 1.6.0-r1: secure pipe daemon
 net-misc/spread 4.4.1 5.0.1: Distributed network messaging system
@@ -15603,7 +15603,7 @@ net-print/foomatic-db-ppds 4.0.20170331 4.0.20180126 4.0.20190226: linuxprinting
 net-print/gtklp 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.2.13 5.3.1: Ghostscript and cups printer drivers
 net-print/hplip 3.18.12 3.19.6 3.19.8 3.19.11: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
-net-print/hplip-plugin 3.18.12 3.19.6: Proprietary plugins and firmware for HPLIP
+net-print/hplip-plugin 3.18.12 3.19.6 3.19.11: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-1x2x-mfp-driver 1.1203-r1: Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
 net-print/kyocera-mita-ppds 8.4-r1: PPD description files for (some) Kyocera Mita Printers
@@ -17777,7 +17777,7 @@ sys-kernel/ck-sources 4.9.120 4.9.123 4.9.124 4.9.126 4.9.128 4.9.130 4.9.132 4.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta20 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_rc1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 4.4.189 4.4.192 4.4.197 4.4.198 4.4.199 4.4.200 4.4.201 4.4.202 4.9.189 4.9.192 4.9.197 4.9.198 4.9.199 4.9.200 4.9.201 4.9.202 4.14.138 4.14.143 4.14.151 4.14.152 4.14.153 4.14.154 4.14.155 4.14.156 4.19.66 4.19.72 4.19.81 4.19.82 4.19.83 4.19.84 4.19.85 4.19.86 5.3.8 5.3.9 5.3.10 5.3.11 5.3.12 5.3.13: Full sources including the Gentoo patchset for the 5.3 kernel tree
 sys-kernel/git-sources 5.4_rc1 5.4_rc2 5.4_rc3 5.4_rc4 5.4_rc5 5.4_rc6 5.4_rc7 5.4_rc8: The very latest -git version of the Linux kernel
