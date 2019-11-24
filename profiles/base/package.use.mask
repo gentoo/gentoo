@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-30)
+# Depends on about-to-be-last-rited media-libs/mediastreamer
+kde-apps/kopete jingle
+
 # Michał Górny <mgorny@gentoo.org> (2019-11-29)
 # Requires dev-python/astropy that's being removed.
 sci-visualization/veusz fits
