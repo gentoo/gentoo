@@ -4898,7 +4898,7 @@ dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libezV24 0.1.1-r1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
-dev-libs/libffi 3.2.1 3.2.1-r1 3.2.1-r2 3.2.1-r3 3.3_rc0 3.3_rc1 3.3_rc2: a portable, high level programming interface to various calling conventions
+dev-libs/libffi 3.2.1 3.2.1-r1 3.2.1-r2 3.2.1-r3 3.3_rc0 3.3_rc1 3.3_rc2 3.3: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfilezilla 0.15.1 0.16.0 0.17.1 0.18.2 0.19.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.2.0 0.3.0: Struct of arrays library with object oriented interface for C++
