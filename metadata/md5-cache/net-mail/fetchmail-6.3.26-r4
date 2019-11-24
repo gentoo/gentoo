@@ -10,5 +10,5 @@ RDEPEND=ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6:= ) libressl? ( dev-libs/li
 REQUIRED_USE=tk? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=mirror://sourceforge/fetchmail/fetchmail-6.3.26.tar.xz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	93ff6f0f8518926f2951ca70ce36e887	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	d7629f6349b5d4cbb4cb5f56d680d71a	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
 _md5_=fb1c50fd477c2f4902d1563de8dad055

@@ -11,5 +11,5 @@ PROPERTIES=live
 RDEPEND=>=app-shells/bash-4.3_p30-r1:0 sys-apps/miscfiles !app-eselect/eselect-bashcomp !!net-fs/mc
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	93ff6f0f8518926f2951ca70ce36e887	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	d7629f6349b5d4cbb4cb5f56d680d71a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=a3794abe1047bcf7f8e107ccdb7d10e5
