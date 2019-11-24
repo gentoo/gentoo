@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ocaml-4.0.5:=[ocamlopt?] dev-ml/camlp5:=[ocamlopt?] gtk? ( de
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/coq/coq/archive/V8.9.1.tar.gz -> coq-8.9.1.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=c9306b7a46f7e742c1f00285cab803c8
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=8c0579ddbd9d1b541cb34bce29c57656
