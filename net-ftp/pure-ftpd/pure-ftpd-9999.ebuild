@@ -70,6 +70,11 @@ src_configure() {
 
 	local myeconfargs=(
 		--enable-largefile
+		# Required for correct pid file location.
+		# pure-ftpd appends "/run/pure-ftpd.pid" to the localstatedir
+		# path, and tries to write to that file even when being
+		# started in foreground. So we need to pin this to /
+		--localstatedir="${EPREFIX}"/
 		--with-altlog
 		--with-cookie
 		--with-diraliases
