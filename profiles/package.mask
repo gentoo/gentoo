@@ -305,11 +305,6 @@ dev-ruby/activemodel:5.1
 dev-ruby/activesupport:5.1
 dev-ruby/arel:8.0
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-10-24)
-# Collides with kde-apps/systemsettings, unmaintained upstream.
-# Use app-admin/systemdgenie instead. Removal in 30 days. Bug #698448
-kde-misc/systemd-kcm
-
 # Matt Turner <mattst88@gentoo.org> (2019-10-21)
 # Replaced by introspection bindings. Bug #628938
 # Removal in 30 days
