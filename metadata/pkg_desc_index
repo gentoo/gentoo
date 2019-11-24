@@ -5123,13 +5123,13 @@ dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Fr
 dev-libs/redland-bindings 1.0.14.1-r2 1.0.17.1: Language bindings for Redland
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rlog 1.4: A C++ logging library
-dev-libs/rocm-comgr 2.6.0 2.7.0 2.8.0 2.9.0: Radeon Open Compute Code Object Manager
-dev-libs/rocm-device-libs 2.6.0 2.7.0 2.8.0 2.9.0 9999: Radeon Open Compute Device Libraries
+dev-libs/rocm-comgr 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0: Radeon Open Compute Code Object Manager
+dev-libs/rocm-device-libs 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
-dev-libs/rocm-opencl-driver 2.6.0 2.7.0 2.8.0 2.9.0: Radeon Open Compute OpenCL Compiler Tool Driver
-dev-libs/rocm-opencl-runtime 2.6.0-r1 2.8.0 2.9.0: Radeon Open Compute OpenCL Compatible Runtime
-dev-libs/rocr-runtime 2.0.0 2.6.0-r1 2.7.0 2.8.0 2.8.0-r1 2.9.0 9999: Radeon Open Compute Runtime
-dev-libs/roct-thunk-interface 2.0.0 2.6.0 2.7.0 2.8.0 2.9.0-r1 9999: Radeon Open Compute Thunk Interface
+dev-libs/rocm-opencl-driver 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0: Radeon Open Compute OpenCL Compiler Tool Driver
+dev-libs/rocm-opencl-runtime 2.6.0-r1 2.8.0 2.9.0 2.10.0: Radeon Open Compute OpenCL Compatible Runtime
+dev-libs/rocr-runtime 2.0.0 2.6.0-r1 2.7.0 2.8.0 2.8.0-r1 2.9.0 2.10.0 9999: Radeon Open Compute Runtime
+dev-libs/roct-thunk-interface 2.0.0 2.6.0 2.7.0 2.8.0 2.9.0-r1 2.10.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/satyr 0.26 0.27: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 6.0.0 6.1.0 6.2.0: Simulation Description Format (SDF) parser
@@ -8440,7 +8440,7 @@ dev-python/pycmd 1.2: pycmd: tools for managing/searching Python related files
 dev-python/pycobertura 0.10.0: Cobertura coverage parser that can diff reports and show coverage progress
 dev-python/pycodestyle 2.3.1 2.4.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.6-r1: Python library for reading and writing COLLADA documents
-dev-python/pycountry 16.11.8 17.9.23 18.5.26: Database of countries, subdivisions, languages, currencies and script
+dev-python/pycountry 16.11.8 17.9.23 18.5.26 19.8.18: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.14 2.18-r1 2.19-r1: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1-r2: Python Cryptography Toolkit
 dev-python/pycryptodome 3.4.6 3.4.7 3.6.6 3.7.3 3.8.2: A self-contained cryptographic library for Python
@@ -9079,7 +9079,7 @@ dev-python/tqdm 4.23.3 4.33.0 9999: Add a progress meter to your loops in a seco
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/traitlets 4.3.2: A configuration system for Python applications
 dev-python/transitions 0.7.1: A lightweight, object-oriented state machine implementation in Python
-dev-python/translate-toolkit 2.0.0 2.3.1: Toolkit to convert between many translation formats
+dev-python/translate-toolkit 2.0.0 2.3.1 2.4.0: Toolkit to convert between many translation formats
 dev-python/translationstring 1.3: Utility library for i18n relied on by various Repoze packages
 dev-python/transmissionrpc 0.11 9999: Python module that implements the Transmission bittorrent client RPC protocol
 dev-python/treq 0.2.1 16.12.0 17.3.1 17.8.0: A requests-like API built on top of twisted.web's Agent
@@ -9134,7 +9134,7 @@ dev-python/urllib3 1.24.2 1.25.7: HTTP library with thread-safe connection pooli
 dev-python/urwid 1.3.1 2.0.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.2 1.0.2-r1: Tree widgets for urwid
 dev-python/ushlex 0.99.1: Replacement for shlex for Python 2.X
-dev-python/utidylib 0.3-r2: TidyLib Python wrapper
+dev-python/utidylib 0.3-r2 0.6: TidyLib Python wrapper
 dev-python/utmp 0.4: utmp/wtmp reader
 dev-python/uvloop 0.8.1 0.12.2 0.13.0 0.14.0: Ultra-fast implementation of asyncio event loop on top of libuv
 dev-python/vatnumber 1.1-r1: Module to validate VAT numbers
@@ -9152,7 +9152,7 @@ dev-python/virtualenv 15.1.0 16.0.0 16.7.7: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.2.6: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.7.1 4.8.2 4.8.2-r1 4.8.4: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3: A tiny pythonic visitor implementation
-dev-python/vobject 0.9.3 0.9.5 0.9.6.1: Python package for parsing and generating vCard and vCalendar files
+dev-python/vobject 0.9.3 0.9.5 0.9.6.1-r1: Python package for parsing and generating vCard and vCalendar files
 dev-python/voluptuous 0.10.5 0.11.1: A Python data validation library.
 dev-python/vpython 7.4.2 7.4.6: VPython for Jupyter notebook
 dev-python/vulture 0.10: find unused classes, functions and variables in your code
@@ -10821,7 +10821,7 @@ dev-util/regexxer 0.10: An interactive tool for performing search and replace op
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
 dev-util/reswrap 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
 dev-util/rocm-cmake 0.2 2.7.0 2.8.0 2.9.0 9999: Radeon Open Compute CMake Modules
-dev-util/rocminfo 2.6.0 2.7.0 2.8.0 2.9.0 9999: ROCm Application for Reporting System Info
+dev-util/rocminfo 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0 9999: ROCm Application for Reporting System Info
 dev-util/rosdep 0.13.0 0.14.0 0.15.0 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.13 0.1.14 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
@@ -12882,7 +12882,7 @@ media-gfx/gpicview 0.2.5 0.2.5-r1: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.32 1.3.33 9999: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.10 1.3.13: Library providing rendering capabilities for complex non-Roman writing systems
-media-gfx/graphviz 2.40.1-r1 2.42.1: Open Source Graph Visualization Software
+media-gfx/graphviz 2.42.1-r1 2.42.3: Open Source Graph Visualization Software
 media-gfx/greycstoration 2.9-r2: Image regularization algorithm for denoising, inpainting and resizing
 media-gfx/grub-splashes 20091109: Collection of grub splashes
 media-gfx/gscan2pdf 1.8.11 2.6.1: Scan documents, perform OCR, produce PDFs and DjVus
@@ -13209,7 +13209,7 @@ media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library.
 media-libs/libharu 2.3.0-r2: C/C++ library for PDF generation
 media-libs/libhdhomerun 20150826 20190621: SiliconDust HDHomeRun Utilties
-media-libs/libheif 1.5.1 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
+media-libs/libheif 1.5.1 1.6.0 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 media-libs/libicns 0.8.1-r1: A library for manipulating MacOS X .icns icon format
 media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
 media-libs/libiec61883 1.2.0-r1: Library for capturing video (dv or mpeg2) over the IEEE 1394 bus
@@ -15544,7 +15544,7 @@ net-p2p/bitcoind 0.16.3 0.17.1 0.18.0: Original Bitcoin crypto-currency wallet f
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.3.18-r4 0.4.1_p20160925-r1: John Hoffman's fork of the original bittorrent
 net-p2p/classified-ads 0.11 0.12 0.13: Program for displaying classified advertisement items
-net-p2p/cpuminer-opt 3.9.6.2 3.9.7 3.9.8 3.9.8.1 3.9.9 3.9.9.1 9999: Optimized multi algo CPU miner
+net-p2p/cpuminer-opt 3.9.6.2 3.9.7 3.9.8 3.9.8.1 3.9.9 3.9.9.1 3.9.10 9999: Optimized multi algo CPU miner
 net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
 net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
@@ -17571,7 +17571,7 @@ sys-devel/libtool 2.4.6-r3 2.4.6-r4 2.4.6-r5 9999: A shared library tool for dev
 sys-devel/lld 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1_rc1 9.0.1.9999 10.0.0.9999: The LLVM linker (link editor)
 sys-devel/llvm 6.0.1 6.0.1-r2 7.1.0 8.0.1 9.0.0 9.0.1_rc1 9.0.1.9999 10.0.0.9999: Low Level Virtual Machine
 sys-devel/llvm-common 6.0.1 7.1.0 8.0.1 9.0.0 9.0.1_rc1 9.0.1.9999 10.0.0.9999: Common files shared between multiple slots of LLVM
-sys-devel/llvm-roc 2.6.0-r1 2.7.0 2.8.0 2.9.0: Radeon Open Compute llvm,lld,clang
+sys-devel/llvm-roc 2.6.0-r1 2.7.0 2.8.0 2.9.0 2.10.0: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 6 7 8 9 10: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18-r1: GNU macro processor
 sys-devel/make 4.2.1-r4: Standard tool to compile source trees
