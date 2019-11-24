@@ -8438,7 +8438,7 @@ dev-python/pyclimate 1.2.2-r2: Climate Data Analysis Module for Python
 dev-python/pyclipper 1.1.0: Cython wrapper for the C++ translation of the Angus Johnson's Clipper library
 dev-python/pycmd 1.2: pycmd: tools for managing/searching Python related files
 dev-python/pycobertura 0.10.0: Cobertura coverage parser that can diff reports and show coverage progress
-dev-python/pycodestyle 2.3.1 2.4.0: Python style guide checker (fka pep8)
+dev-python/pycodestyle 2.3.1 2.4.0 2.5.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.6-r1: Python library for reading and writing COLLADA documents
 dev-python/pycountry 16.11.8 17.9.23 18.5.26 19.8.18: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.14 2.18-r1 2.19-r1: C parser and AST generator written in Python
