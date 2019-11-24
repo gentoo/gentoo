@@ -6,9 +6,9 @@ HOMEPAGE=https://www.phpbb.com/
 IUSE=ftp gd mssql mysqli postgres sqlite zlib vhosts
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ppc ~sparc ~x86
 LICENSE=GPL-2
-RDEPEND=>=virtual/httpd-php-5.4:* >=dev-lang/php-5.4:*[ftp?,gd?,json,mssql?,mysqli?,postgres?,sqlite?,xml,zlib?] >=app-admin/webapp-config-1.50.15
+RDEPEND=|| ( ( virtual/httpd-php:7.2 dev-lang/php:7.2[ftp?,gd?,json,mssql?,mysqli?,postgres?,sqlite?,xml,zlib?] ) ( virtual/httpd-php:7.1 dev-lang/php:7.1[ftp?,gd?,json,mssql?,mysqli?,postgres?,sqlite?,xml,zlib?] ) ) >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mssql mysqli postgres sqlite )
-SLOT=3.2.7
-SRC_URI=https://www.phpbb.com/files/release/phpBB-3.2.7.tar.bz2
+SLOT=3.2.8
+SRC_URI=https://download.phpbb.com/pub/release/3.2/3.2.8/phpBB-3.2.8.tar.bz2
 _eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
-_md5_=9cd5e7ae9b46143b2a3ddbef9cc83357
+_md5_=9e10a7c878c250b87d51922b99b43846
