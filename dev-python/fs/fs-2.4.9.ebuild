@@ -26,15 +26,16 @@ RDEPEND="
 	>=dev-python/six-1.10[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
+	dev-python/setuptools[${PYTHON_USEDEP}]"
+BDEPEND="test? (
+	$(python_gen_cond_dep '
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pyftpdlib[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/unittest2[${PYTHON_USEDEP}]
-	)
-"
+		' -3)
+)"
 
 python_test() {
 	# python2_7 tests require dev-python/typing which is
