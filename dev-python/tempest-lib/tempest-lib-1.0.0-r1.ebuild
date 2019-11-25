@@ -36,11 +36,6 @@ DEPEND="
 	test? ( ${RDEPEND}
 		>=dev-python/coverage-3.6[${PYTHON_USEDEP}]
 		>=dev-python/subunit-0.0.18[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.2.0[${PYTHON_USEDEP}]
-		<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
-		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
-		!~dev-python/oslo-sphinx-3.4.0[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]
 		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
