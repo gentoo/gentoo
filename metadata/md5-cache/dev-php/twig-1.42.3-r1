@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst test
+DEPEND=test? ( dev-php/phpunit dev-lang/php:*[ctype] dev-php/fedora-autoloader )
+DESCRIPTION=PHP templating engine with syntax similar to Django
+EAPI=7
+HOMEPAGE=http://twig.sensiolabs.org/
+IUSE=doc test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-lang/php:*[ctype] dev-php/fedora-autoloader
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/twigphp/Twig/archive/v1.42.3.tar.gz -> twig-1.42.3.tar.gz
+_md5_=6bab2a29cea118e561730f29c6f8ff51
