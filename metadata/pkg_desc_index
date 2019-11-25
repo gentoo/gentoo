@@ -1467,7 +1467,7 @@ app-emulation/fs-uae-launcher 3.0.2: PyQt5-based launcher for FS-UAE
 app-emulation/fuse 1.5.6 1.5.7: Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/fuse-utils 1.4.1 1.4.3: Utils for the Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/gallium-nine-standalone 0.5 9999: A standalone version of the WINE parts of Gallium Nine
-app-emulation/ganeti 2.15.2-r5 2.15.2-r6 2.15.2-r7 2.15.2-r8 2.16.0_rc1 2.17.0_beta1: Ganeti is a virtual server management software tool
+app-emulation/ganeti 2.15.2-r8 2.16.0_rc1 2.17.0_beta1: Ganeti is a virtual server management software tool
 app-emulation/ganeti-instance-debootstrap 0.11-r1 0.16: Scripts to build Ganeti VMs with debootstrap
 app-emulation/ganeti-instance-image 0.6 0.6-r2: Scripts to build out CD or image based VMs using Ganeti
 app-emulation/ganeti-os-noop 0.2: Dummy OS provider for Ganeti
@@ -4544,7 +4544,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.21 1.2.23: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53 6.0.53-r1 7.0.96 8.5.46 8.5.47 8.5.49 9.0.7 9.0.26 9.0.27 9.0.29: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.96 8.5.47 8.5.49 9.0.7 9.0.27 9.0.29: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -7471,7 +7471,7 @@ dev-python/backports-ssl-match-hostname 3.5.0.1-r1: Backport of the ssl.match_ho
 dev-python/backports-tempfile 1.0: Backport of new features in Python's tempfile module
 dev-python/backports-unittest-mock 1.3 1.4 1.5 1.5-r1: Backport of unittest.mock
 dev-python/backports-weakref 1.0_p1: Backport of new features in Python's weakref module
-dev-python/bandit 0.13.2-r1 1.0.1 1.1.0 1.2.0 1.3.0 1.4.0 1.5.1: A security linter from OpenStack Security
+dev-python/bandit 0.13.2-r1 1.0.1 1.1.0 1.2.0 1.3.0 1.4.0-r1 1.5.1-r1: A security linter from OpenStack Security
 dev-python/basemap 1.0.7-r1 1.0.7-r2: matplotlib toolkit to plot map projections
 dev-python/bashate 0.3.1 0.6.0: A pep8 equivalent for bash scripts
 dev-python/basho-erlastic 2.1.1: Erlang binary term codec and port interface.
@@ -8420,7 +8420,7 @@ dev-python/pyaudio 0.2.11: Python bindings for PortAudio
 dev-python/pyavm 0.9.4: Python module for Astronomy Visualization Metadata i/o
 dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
 dev-python/pybluez 0.18-r1 0.22: Python bindings for Bluez Bluetooth Stack
-dev-python/pycadf 2.6.0 2.7.0 2.9.0: python implementation of DMTF Cloud Audit (CADF) data model
+dev-python/pycadf 2.6.0 2.7.0 2.9.0-r1: python implementation of DMTF Cloud Audit (CADF) data model
 dev-python/pycairo 1.16.3-r1 1.17.0-r1 1.18.1: Python bindings for the cairo library
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
 dev-python/pycapnp 0.6.2 0.6.3 0.6.4: Python wrapping of the Cap'n Proto library
@@ -8658,7 +8658,7 @@ dev-python/python-bugzilla 1.2.2 2.1.0: A python module for interacting with Bug
 dev-python/python-caja 1.22.0-r1: Python bindings for the Caja file manager
 dev-python/python-catcher 0.1.7: Beautiful stack traces for Python
 dev-python/python-cdb 0.34-r1: A Python extension module for cdb
-dev-python/python-ceilometerclient 2.6.2: This is a client library for Ceilometer built on the Ceilometer API
+dev-python/python-ceilometerclient 2.6.2-r1: This is a client library for Ceilometer built on the Ceilometer API
 dev-python/python-cinderclient 4.1.0 4.2.1: A client for the OpenStack Cinder API
 dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects into related groups (clusters)
 dev-python/python-cstruct 1.7: C-style structs for Python
@@ -8957,7 +8957,7 @@ dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/spectral-cube 0.4.0: Manipulate astronomical data cubes with Python
 dev-python/specutils 0.2 0.2.2: Python package for astronomy spectral operations
 dev-python/speg 0.3: A PEG-based parser interpreter with memoization
-dev-python/sphinx 1.2.2-r1 1.2.3-r1 1.7.5-r1 2.0.1: Python documentation generator
+dev-python/sphinx 1.7.5-r1 2.0.1: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.4 0.1.5 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-better-theme 0.1.5: A nice-looking, customizable theme for Sphinx
 dev-python/sphinx-bootstrap-theme 0.4.9 0.6.0 0.6.5: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
@@ -9038,7 +9038,7 @@ dev-python/tappy 2.4: Test Anything Protocol (TAP) tools
 dev-python/taskflow 3.4.0 3.5.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
 dev-python/tblib 1.3.2 1.3.2-r1: Traceback fiddling library for Python
 dev-python/telarchive 1.8.3: Script for automated searches of astronomical telescope archives
-dev-python/tempest-lib 1.0.0: Functional or integrated test suites for OpenStack projects
+dev-python/tempest-lib 1.0.0-r1: Functional or integrated test suites for OpenStack projects
 dev-python/tempita 0.5.3-r1 0.5.3-r2: A very small text templating language
 dev-python/tempora 1.7 1.12 1.14 1.14.1 1.14.1-r1: Objects and routines pertaining to date and time
 dev-python/tenacity 3.7.1 4.4.0 4.8.0: General-purpose retrying library
@@ -17779,7 +17779,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_rc1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.189 4.4.192 4.4.197 4.4.198 4.4.199 4.4.200 4.4.201 4.4.202 4.9.189 4.9.192 4.9.197 4.9.198 4.9.199 4.9.200 4.9.201 4.9.202 4.14.138 4.14.143 4.14.151 4.14.152 4.14.153 4.14.154 4.14.155 4.14.156 4.19.66 4.19.72 4.19.81 4.19.82 4.19.83 4.19.84 4.19.85 4.19.86 5.3.8 5.3.9 5.3.10 5.3.11 5.3.12 5.3.13: Full sources including the Gentoo patchset for the 5.3 kernel tree
+sys-kernel/gentoo-sources 4.4.189 4.4.192 4.4.197 4.4.198 4.4.199 4.4.200 4.4.201 4.4.202 4.9.189 4.9.192 4.9.197 4.9.198 4.9.199 4.9.200 4.9.201 4.9.202 4.9.203 4.14.138 4.14.143 4.14.151 4.14.152 4.14.153 4.14.154 4.14.155 4.14.156 4.19.66 4.19.72 4.19.81 4.19.82 4.19.83 4.19.84 4.19.85 4.19.86 5.3.8 5.3.9 5.3.10 5.3.11 5.3.12 5.3.13: Full sources including the Gentoo patchset for the 5.3 kernel tree
 sys-kernel/git-sources 5.4_rc1 5.4_rc2 5.4_rc3 5.4_rc4 5.4_rc5 5.4_rc6 5.4_rc7 5.4_rc8: The very latest -git version of the Linux kernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
@@ -18382,7 +18382,7 @@ www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.3-r1 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.96 8.5.46 8.5.47 9.0.7 9.0.27: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+www-servers/tomcat 7.0.96 8.5.47 9.0.7 9.0.27: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1 4.5.1 4.5.3 5.0.2 5.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.17 2.0.17.1 2.0.17.1-r1 2.0.18: uWSGI server for Python web applications
 www-servers/varnish 4.0.5 4.1.8 5.1.3 5.2.1 6.0.1 6.1.0 6.1.1 6.2.0: Varnish is a state-of-the-art, high-performance HTTP accelerator

@@ -11,5 +11,5 @@ REQUIRED_USE=^^ ( python_single_target_python3_5 python_single_target_python3_6 
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/mike-fabian/ibus-typing-booster/releases/download/2.7.0/ibus-typing-booster-2.7.0.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	d7629f6349b5d4cbb4cb5f56d680d71a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	02ef27875ec5afcc2202b9d062d57f07	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=66a5867724daf6eccac3a2f544dcad72
