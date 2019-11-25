@@ -45,7 +45,7 @@ src_compile() {
 src_install() {
 	dobin dnsmasq_exporter
 	keepdir /var/log/dnsmasq_exporter
-	fowners ${PN}:${PN} /var/log/ddnsmasq_exporter
+	fowners ${PN}:${PN} /var/log/dnsmasq_exporter
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 }
