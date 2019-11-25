@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7)
-	dev-python/fido2[${PYTHON_USEDEP}]
+	<dev-python/fido2-0.8.0[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	dev-python/pyscard[${PYTHON_USEDEP}]
 	dev-python/pyusb[${PYTHON_USEDEP}]
