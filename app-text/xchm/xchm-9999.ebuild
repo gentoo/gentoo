@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 WX_GTK_VER="3.0-gtk3"
-inherit autotools git-r3 wxwidgets xdg-utils
+inherit autotools desktop git-r3 wxwidgets xdg-utils
 
 DESCRIPTION="Utility for viewing Compiled HTML Help (CHM) files"
 HOMEPAGE="https://github.com/rzvncj/xCHM/"
@@ -25,7 +25,6 @@ DEPEND="
 "
 
 src_prepare() {
-	setup-wxwidgets
 	default
 	eautoreconf
 }
