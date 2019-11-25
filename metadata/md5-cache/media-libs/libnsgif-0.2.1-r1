@@ -3,9 +3,9 @@ DEPEND=>=dev-util/netsurf-buildsystem-1.7-r1 virtual/pkgconfig
 DESCRIPTION=decoding library for the GIF image file format, written in C
 EAPI=7
 HOMEPAGE=http://www.netsurf-browser.org/projects/libnsgif/
-KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~m68k-mint
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~m68k-mint
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libnsgif-0.2.1-src.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=e2f68b2a988b13fc8a0259e701d2db01
+_md5_=09c902707e861286d84fc34269ee99db

@@ -1912,7 +1912,7 @@ app-misc/cdircmp 0.3-r2: Compare directories and select files to copy
 app-misc/cdspeed 0.4-r2: Change the speed of your CD drive
 app-misc/cfiles 1.5 1.8: A ncurses file manager written in C with vim like keybindings
 app-misc/chkcrontab 1.6 1.7: A tool to detect crontab errors
-app-misc/ckb 0.2.9-r1 0.4.0: Corsair K65/K70/K95 Driver
+app-misc/ckb 0.2.9-r1 0.4.0 0.4.1 0.4.2: Corsair K65/K70/K95 Driver
 app-misc/ckermit 8.0.211-r4 9.0.302: combined serial and network communication software package
 app-misc/clockywock 0.3.1a: ncurses based analog clock
 app-misc/cmatrix 1.2a-r3 1.2a-r4: An ncurses based app to show a scrolling screen from the Matrix
