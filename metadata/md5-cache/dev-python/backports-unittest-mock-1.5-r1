@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/b/backports.unittest_mock/backports.unittest_mock-1.5.tar.gz
 _eclasses_=distutils-r1	875cdbd904383003dd58e0ad4068470b	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	d21193dfc088687e048e829419568096	python-utils-r1	d7629f6349b5d4cbb4cb5f56d680d71a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=a2f3cef092868de1055657f48a664ee1
+_md5_=70ffe1d53ed0e0c068b4dc1164c4b014
