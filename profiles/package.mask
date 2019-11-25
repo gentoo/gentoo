@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-11-25)
+# Mask for removal from main tree into ::nix-guix overlay.
+# Removal in 30 days.
+sys-apps/nix
+sys-apps/guix
+
 # Alfredo Tupone <tupone@gentoo.org> (2019-11-18)
 # No more needed.
 # Removal in 30 days.
