@@ -35,7 +35,10 @@ S="${WORKDIR}/${MY_P}"
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	sed -i "s:use_scm_version=True:version='${PV}',name='path.py':" setup.py || die
+	# avoid a setuptools_scm dependency
+	sed -i "s:use_scm_version=True:version='${PV}',name='${PN//-/.}':" setup.py || die
+	sed -r -i "s:setuptools_scm[[:space:]]*([><=]{1,2}[[:space:]]*[0-9.a-zA-Z]+)[[:space:]]*::" \
+		setup.cfg || die
 
 	# disable flake8 tests
 	sed -i -r 's: --flake8:: ; s: --black:: ; s: --cov::' \
