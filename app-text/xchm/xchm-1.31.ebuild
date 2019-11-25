@@ -3,15 +3,15 @@
 
 EAPI=7
 WX_GTK_VER="3.0-gtk3"
-inherit autotools desktop git-r3 wxwidgets xdg-utils
+inherit desktop wxwidgets xdg-utils
 
 DESCRIPTION="Utility for viewing Compiled HTML Help (CHM) files"
 HOMEPAGE="https://github.com/rzvncj/xCHM/"
-EGIT_REPO_URI="${HOMEPAGE}"
+SRC_URI="https://github.com/rzvncj/xCHM/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="nls"
 
 RDEPEND="
@@ -23,11 +23,6 @@ DEPEND="
 	${RDEPEND}
 	nls? ( sys-devel/gettext )
 "
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	econf $(use_enable nls)
