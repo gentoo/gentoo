@@ -43,11 +43,9 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-clamav )"
 
-#DOCS=( docs/UserManual.md docs/UserManual )
-HTML_DOCS=( docs/html )
+HTML_DOCS=( docs/html/. )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.102.0-libxml2_pkgconfig.patch" #661328
 	"${FILESDIR}/${PN}-0.101.2-tinfo.patch" #670729
 )
 
@@ -71,15 +69,13 @@ src_configure() {
 	# but that does not work
 	# do not add this, since --disable-xml seems to override
 	# --without-xml
-	JSONUSE=""
+	JSONUSE="--without-libjson"
 
-	if [ use clamsubmit ] || [ use metadata-analysis-api ]; then
+	if use clamsubmit || use metadata-analysis-api; then
 		# either of those 2 requires libjson.
 		# clamsubmit will be built as soon as libjson and curl are found
 		# but we only install the binary if requested
-		JSONUSE="--with-libjson=/usr"
-	else
-		JSONUSE="--without-libjson"
+		JSONUSE="--with-libjson=${EPREFIX}/usr"
 	fi
 
 	econf \
@@ -91,7 +87,6 @@ src_configure() {
 		$(use_enable test check) \
 		$(use_with xml) \
 		$(use_with iconv) \
-		$(use_with metadata-analysis-api libjson /usr) \
 		${JSONUSE} \
 		$(use_enable libclamav-only) \
 		--with-system-libmspack \
