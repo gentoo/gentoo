@@ -11,7 +11,12 @@ LICENSE="GPL-2 raspberrypi-videocore-bin"
 SLOT="0"
 RESTRICT="binchecks strip"
 
-RDEPEND="sys-boot/raspberrypi-firmware"
+# Temporary safety measure to prevent ending up with a pair of
+# sys-kernel/raspberrypi-image and sys-boot/raspberrypi-firmware
+# both of which installed device tree files.
+# Restore to simply "sys-boot/raspberrypi-firmware" when the mentioned version
+# and all older ones are deleted.
+RDEPEND=">sys-boot/raspberrypi-firmware-1.20190709"
 
 if [[ "${PV}" == 9999 ]]; then
 	inherit git-r3
@@ -30,4 +35,7 @@ src_install() {
 	doins -r modules/*
 	insinto /boot
 	doins boot/*.img
+
+	doins boot/*.dtb
+	doins -r boot/overlays
 }
