@@ -14,46 +14,30 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="doc test"
+IUSE="test"
 
 RDEPEND="dev-python/more-itertools[${PYTHON_USEDEP}]"
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		$(python_gen_cond_dep 'dev-python/contextlib2[${PYTHON_USEDEP}]' pypy{,3} python{2_7,3_{5,6,7}})
-		$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' pypy{,3} python{2_7,3_{5,6,7}})
-		$(python_gen_cond_dep 'dev-python/unittest2[${PYTHON_USEDEP}]' pypy{,3} python{2_7,3_{5,6,7}})
-	)
-	doc? (
-		$(python_gen_any_dep '
-			>=dev-python/jaraco-packaging-3.2[${PYTHON_USEDEP}]
-			>=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]
-			dev-python/sphinx[${PYTHON_USEDEP}]
-		')
+		$(python_gen_cond_dep '
+			dev-python/contextlib2[${PYTHON_USEDEP}]
+			dev-python/pathlib2[${PYTHON_USEDEP}]
+			dev-python/unittest2[${PYTHON_USEDEP}]
+		' pypy{,3} python{2_7,3_{5,6,7}})
 	)
 "
 
-distutils_enable_tests pytest
+distutils_enable_sphinx docs \
+	">=dev-python/jaraco-packaging-3.2" \
+	">=dev-python/rst-linker-1.9"
 
-python_check_deps() {
-	if use doc; then
-		has_version ">=dev-python/jaraco-packaging-3.2[${PYTHON_USEDEP}]" || return ${?}
-		has_version ">=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]" || return ${?}
-		has_version "dev-python/sphinx[${PYTHON_USEDEP}]" || return ${?}
-	fi
-}
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	sed -i "s:use_scm_version=True:version='${PV}',name='${PN//-/.}':" setup.py || die
 	sed -r -i "s:setuptools_scm[[:space:]]*([><=]{1,2}[[:space:]]*[0-9.a-zA-Z]+|)[[:space:]]*::" \
 		setup.cfg || die
 	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	if use doc; then
-		sphinx-build docs docs/_build/html || die
-		HTML_DOCS=( docs/_build/html/. )
-	fi
 }
