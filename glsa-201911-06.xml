@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201911-06">
+  <title>Chromium, Google Chrome: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium and Google
+    Chrome, the worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">chromium,chrome,google</product>
+  <announced>2019-11-25</announced>
+  <revised count="1">2019-11-25</revised>
+  <bug>692916</bug>
+  <bug>694002</bug>
+  <bug>694954</bug>
+  <bug>697506</bug>
+  <bug>698398</bug>
+  <bug>699068</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">78.0.3904.87</unaffected>
+      <vulnerable range="lt">78.0.3904.87</vulnerable>
+    </package>
+    <package name="www-client/google-chrome" auto="yes" arch="*">
+      <unaffected range="ge">78.0.3904.87</unaffected>
+      <vulnerable range="lt">78.0.3904.87</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+    
+    <p>Google Chrome is one fast, simple, and secure browser for all your
+      devices.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and Google
+      Chrome. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-78.0.3904.87"
+    </code>
+    
+    <p>All Google Chrome users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/google-chrome-78.0.3904.87"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13659">CVE-2019-13659</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13660">CVE-2019-13660</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13661">CVE-2019-13661</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13662">CVE-2019-13662</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13663">CVE-2019-13663</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13664">CVE-2019-13664</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13665">CVE-2019-13665</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13666">CVE-2019-13666</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13667">CVE-2019-13667</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13668">CVE-2019-13668</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13669">CVE-2019-13669</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13670">CVE-2019-13670</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13671">CVE-2019-13671</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13673">CVE-2019-13673</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13674">CVE-2019-13674</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13675">CVE-2019-13675</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13676">CVE-2019-13676</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13677">CVE-2019-13677</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13678">CVE-2019-13678</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13679">CVE-2019-13679</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13680">CVE-2019-13680</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13681">CVE-2019-13681</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13682">CVE-2019-13682</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13683">CVE-2019-13683</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13685">CVE-2019-13685</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13686">CVE-2019-13686</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13687">CVE-2019-13687</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13688">CVE-2019-13688</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13693">CVE-2019-13693</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13694">CVE-2019-13694</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13695">CVE-2019-13695</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13696">CVE-2019-13696</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13697">CVE-2019-13697</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13699">CVE-2019-13699</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13700">CVE-2019-13700</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13701">CVE-2019-13701</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13703">CVE-2019-13703</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13704">CVE-2019-13704</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13705">CVE-2019-13705</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13706">CVE-2019-13706</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13707">CVE-2019-13707</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13708">CVE-2019-13708</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13709">CVE-2019-13709</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13710">CVE-2019-13710</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13711">CVE-2019-13711</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13713">CVE-2019-13713</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13714">CVE-2019-13714</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13715">CVE-2019-13715</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13716">CVE-2019-13716</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13717">CVE-2019-13717</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13718">CVE-2019-13718</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13719">CVE-2019-13719</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13721">CVE-2019-13721</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5869">CVE-2019-5869</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5870">CVE-2019-5870</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5871">CVE-2019-5871</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5872">CVE-2019-5872</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5873">CVE-2019-5873</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5874">CVE-2019-5874</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5875">CVE-2019-5875</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5876">CVE-2019-5876</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5877">CVE-2019-5877</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5878">CVE-2019-5878</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5879">CVE-2019-5879</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5880">CVE-2019-5880</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5881">CVE-2019-5881</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-10-26T19:59:08Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2019-11-25T00:13:45Z">b-man</metadata>
+</glsa>
