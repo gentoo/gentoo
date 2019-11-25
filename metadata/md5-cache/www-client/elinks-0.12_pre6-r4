@@ -4,11 +4,11 @@ DESCRIPTION=Advanced and well-established text-mode web browser
 EAPI=6
 HOMEPAGE=http://elinks.or.cz/
 IUSE=bittorrent bzip2 debug finger ftp gc gopher gpm guile idn ipv6 javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib
-KEYWORDS=alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=bzip2? ( >=app-arch/bzip2-1.0.2 ) gc? ( dev-libs/boehm-gc ) gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] ) idn? ( net-dns/libidn ) javascript? ( >=dev-lang/spidermonkey-1.8.5:0= ) lua? ( >=dev-lang/lua-5:0= ) perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* ) samba? ( net-fs/samba ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) tre? ( dev-libs/tre ) X? ( x11-libs/libX11 x11-libs/libXt ) xml? ( >=dev-libs/expat-1.95.4 ) zlib? ( >=sys-libs/zlib-1.1.4 )
 RESTRICT=test
 SLOT=0
 SRC_URI=http://elinks.or.cz/download/elinks-0.12pre6.tar.bz2 https://dev.gentoo.org/~axs/distfiles/elinks-0.12_pre5-js185-patches.tar.bz2
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=dd1a87226b276ba36de5102545b5dcc7
+_md5_=7f65b46dd16b4c591ce6dd1beb9e564e
