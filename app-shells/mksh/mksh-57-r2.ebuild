@@ -23,7 +23,7 @@ HOMEPAGE="http://mirbsd.de/mksh"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="static test"
+IUSE="lksh static test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -35,10 +35,25 @@ DEPEND="
 
 S="${WORKDIR}/${PN}"
 
+src_prepare() {
+	default
+	if use lksh; then
+		cp -pr "${S}" "${S}"_lksh || die
+	fi
+}
+
 src_compile() {
 	tc-export CC
 	use static && export LDSTATIC="-static"
 	export CPPFLAGS="${CPPFLAGS} -DMKSH_DEFAULT_PROFILEDIR=\\\"${EPREFIX}/etc\\\""
+
+	if use lksh; then
+		pushd "${S}"_lksh >/dev/null || die
+		CPPFLAGS="${CPPFLAGS} -DMKSH_BINSHPOSIX -DMKSH_BINSHREDUCED" \
+			sh Build.sh -r -L || die
+		popd >/dev/null || die
+	fi
+
 	sh Build.sh -r || die
 }
 
@@ -47,8 +62,21 @@ src_install() {
 	dobin mksh
 	doman mksh.1
 	dodoc dot.mkshrc
+
+	if use lksh; then
+		dobin "${S}"_lksh/lksh
+		doman "${S}"_lksh/lksh.1
+	fi
 }
 
 src_test() {
+	einfo "Testing regular mksh."
 	./mksh test.sh -v || die
+
+	if use lksh; then
+		einfo "Testing lksh, POSIX long-bit mksh."
+		pushd "${S}"_lksh >/dev/null || die
+		./lksh test.sh -v || die
+		popd >/dev/null || die
+	fi
 }
