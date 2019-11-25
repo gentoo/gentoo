@@ -17,6 +17,7 @@ LICENSE="ZPL"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # TODO: extras?
 RDEPEND="dev-python/namespace-zope[${PYTHON_USEDEP}]
