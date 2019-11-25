@@ -11,11 +11,13 @@ MY_PN="${PN/-/.}"
 DESCRIPTION="Tools to supplement packaging Python releases"
 HOMEPAGE="https://github.com/jaraco/jaraco.packaging"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="doc test"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/importlib_metadata[${PYTHON_USEDEP}]
@@ -24,28 +26,14 @@ RDEPEND="
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? (
-		$(python_gen_any_dep '
-			>=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]
-			dev-python/sphinx[${PYTHON_USEDEP}]
-		')
-	)
 	test? (
 		${RDEPEND}
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
 	)
 "
 
-RESTRICT="!test? ( test )"
-
-S="${WORKDIR}/${MY_PN}-${PV}"
-
-python_check_deps() {
-	use doc || return 0
-
-	has_version ">=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
+distutils_enable_sphinx docs \
+	">=dev-python/rst-linker-1.9"
 
 python_prepare_all() {
 	# avoid a setuptools_scm dependency
@@ -54,14 +42,6 @@ python_prepare_all() {
 		setup.cfg || die
 
 	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	if use doc; then
-		cd docs || die
-		sphinx-build . _build/html || die
-		HTML_DOCS=( docs/_build/html/. )
-	fi
 }
 
 python_test() {
