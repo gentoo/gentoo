@@ -13,6 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="bzip2 doc clamdtop iconv ipv6 libressl milter metadata-analysis-api selinux static-libs test uclibc xml"
+RESTRICT="!test? ( test )"
 
 CDEPEND="bzip2? ( app-arch/bzip2 )
 	clamdtop? ( sys-libs/ncurses:0 )
