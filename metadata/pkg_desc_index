@@ -9290,7 +9290,7 @@ dev-qt/qtsvg 5.12.3 5.12.5 5.13.2: SVG rendering library for the Qt5 framework
 dev-qt/qttest 5.12.3 5.12.5 5.13.2: Unit testing library for the Qt5 framework
 dev-qt/qttranslations 5.12.3 5.12.5 5.13.2: Translation files for the Qt5 framework
 dev-qt/qtvirtualkeyboard 5.12.3 5.12.5 5.13.2: Customizable input framework and virtual keyboard for Qt
-dev-qt/qtwayland 5.12.3 5.12.5 5.13.2 5.13.2-r1: Wayland platform plugin for Qt
+dev-qt/qtwayland 5.12.3 5.12.5 5.13.2-r1: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.12.3 5.12.5 5.13.2: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
 dev-qt/qtwebengine 5.12.3 5.12.5 5.13.2: Library for rendering dynamic web content in Qt5 C++ and QML applications
 dev-qt/qtwebkit 5.212.0_pre20180120 5.212.0_pre20190629: WebKit rendering library for the Qt5 framework (deprecated)
@@ -17811,7 +17811,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.5.7 1.6.3 1.6.4: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1: Standard GNU database libraries
-sys-libs/glibc 2.19-r2 2.24-r4 2.25-r11 2.26-r7 2.27-r6 2.28-r6 2.29-r2 2.29-r5 2.29-r6 2.30-r2 9999: GNU libc C library
+sys-libs/glibc 2.19-r2 2.24-r4 2.25-r11 2.26-r7 2.27-r6 2.28-r6 2.29-r2 2.29-r5 2.29-r6 2.29-r7 2.30-r2 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.20.0 4.20.2-r1 4.99.25_rc9: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.0.1: Library for managing partitions
