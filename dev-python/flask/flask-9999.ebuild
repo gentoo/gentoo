@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
 
 inherit distutils-r1
 
@@ -22,7 +22,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="doc examples test"
+IUSE="examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]
@@ -32,23 +32,9 @@ RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	>=dev-python/werkzeug-0.15[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
-python_check_deps() {
-	use doc || return 0
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
-
-python_prepare_all() {
-	# Prevent un-needed d'loading
-	sed -e "s/ 'sphinx.ext.intersphinx',//" -i docs/conf.py || die
-	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	use doc && emake -C docs html
-}
+distutils_enable_sphinx docs
 
 python_test() {
 	PYTHONPATH=${S}/examples/flaskr:${S}/examples/minitwit${PYTHONPATH:+:${PYTHONPATH}} \
@@ -57,7 +43,6 @@ python_test() {
 
 python_install_all() {
 	use examples && dodoc -r examples
-	use doc && HTML_DOCS=( docs/_build/html/. )
 
 	distutils-r1_python_install_all
 }
