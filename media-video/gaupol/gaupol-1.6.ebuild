@@ -15,6 +15,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="spell test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-text/iso-codes
