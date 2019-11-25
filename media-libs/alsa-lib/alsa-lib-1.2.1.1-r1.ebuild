@@ -24,6 +24,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.6-missing_files.patch" #652422
+	"${FILESDIR}/${P}-ucm_add_asoundlib_h.patch" #700870
 )
 
 pkg_setup() {
