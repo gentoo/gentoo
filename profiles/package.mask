@@ -315,10 +315,6 @@ dev-python/gnome-keyring-python
 # until upstream releases fixed versions.
 ~xfce-base/xfce4-panel-4.15.0
 
-# Thomas Deutschmann <whissi@gentoo.org> (2019-10-17)
-# clamav-milter completely broken, #697688
-~app-antivirus/clamav-0.102.0
-
 # Mikle Kolyada <zlogene@gentoo.org> (2019-10-16)
 # not needed due to openpam removal. Please
 # update your packages running emerge with the
