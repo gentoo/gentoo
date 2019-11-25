@@ -26,8 +26,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/stestr-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
-		>=dev-python/oslo-sphinx-4.7.0[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.6.2[${PYTHON_USEDEP}]
 	)
 	doc? (
 		>=dev-python/openstackdocstheme-1.18.1[${PYTHON_USEDEP}]

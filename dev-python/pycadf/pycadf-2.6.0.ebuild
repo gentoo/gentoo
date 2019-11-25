@@ -26,8 +26,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		>=dev-python/subunit-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
-		>=dev-python/oslo-sphinx-4.7.0[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.6.2[${PYTHON_USEDEP}]
 	)
 	doc? (
 		>=dev-python/oslo-sphinx-4.7.0[${PYTHON_USEDEP}]
