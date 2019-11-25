@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2004-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
@@ -16,22 +16,19 @@ SRC_URI="mirror://sourceforge/gnu-efi/${P}.tar.bz2"
 # - GPL-2+ : setjmp_ia32.S
 LICENSE="GPL-2+ BSD BSD-2"
 SLOT="0"
-# IA64 build is broken in setjmp code:
-# https://sourceforge.net/p/gnu-efi/bugs/9/
-KEYWORDS="-* ~amd64 ~arm ~arm64 -ia64 ~x86"
-IUSE="abi_x86_32 abi_x86_64 -custom-cflags"
-
-DEPEND="sys-apps/pciutils"
-RDEPEND=""
+KEYWORDS="-* ~amd64 ~arm ~arm64 ~ia64 ~x86"
+IUSE="abi_x86_32 abi_x86_64 custom-cflags"
 
 # These objects get run early boot (i.e. not inside of Linux),
 # so doing these QA checks on them doesn't make sense.
 QA_EXECSTACK="usr/*/lib*efi.a:* usr/*/crt*.o"
 RESTRICT="strip"
 
+PATCHES=( "${FILESDIR}"/${PN}-3.0.9-fix-clang-build.patch )
+
 src_prepare() {
-	sed -i -e "s/-Werror//" Make.defaults || die
 	default
+	sed -i -e "s/-Werror//" Make.defaults || die
 }
 
 efimake() {
