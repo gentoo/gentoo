@@ -30,6 +30,8 @@ BDEPEND="
 	)
 "
 
+RESTRICT="!test? ( test )"
+
 S=${WORKDIR}/${MY_P}
 
 python_prepare_all() {

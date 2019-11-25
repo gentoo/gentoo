@@ -25,6 +25,8 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}] )"
 RDEPEND=""
 
+RESTRICT="!test? ( test )"
+
 S=${WORKDIR}/${MY_P}
 
 python_compile_all() {
