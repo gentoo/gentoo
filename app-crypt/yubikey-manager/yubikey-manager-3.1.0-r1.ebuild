@@ -8,22 +8,21 @@ inherit readme.gentoo-r1 distutils-r1
 
 DESCRIPTION="Python library and command line tool for configuring a YubiKey"
 HOMEPAGE="https://developers.yubico.com/yubikey-manager/"
-SRC_URI="https://github.com/Yubico/${PN}/archive/${P}.tar.gz"
-S="${WORKDIR}/${PN}-${P}" # <- need this only for github-based SRC_URI
-# Here's the alternative SRC_URI, though tarball contents may differ
-# See: https://github.com/Yubico/yubikey-manager/issues/217
-# SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.gz"
+# Per https://github.com/Yubico/yubikey-manager/issues/217, Yubico is
+# the official source for tarballs, not Github
+SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7)
-	dev-python/fido2[${PYTHON_USEDEP}]
+	>=dev-python/fido2-0.7.0[${PYTHON_USEDEP}]
+	<dev-python/fido2-0.8.0[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	dev-python/pyscard[${PYTHON_USEDEP}]
 	dev-python/pyusb[${PYTHON_USEDEP}]
