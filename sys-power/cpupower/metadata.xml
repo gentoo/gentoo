@@ -5,9 +5,6 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<use>
-		<flag name="cpufreq_bench">Build and install the cpufreq_bench binary</flag>
-	</use>
 	<slots>
 		<subslots>Subslots correspond to major version of libcpupower</subslots>
 	</slots>
