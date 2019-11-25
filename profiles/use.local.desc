@@ -5154,7 +5154,6 @@ media-video/libav:vpx - Enable vp8 encoding support using media-libs/libvpx.
 media-video/libav:x265 - Enable HEVC encoding with media-libs/x265.
 media-video/libva-utils:drm - Enables VA/DRM API support.
 media-video/makemkv:gui - Build the Qt5 GUI
-media-video/minitube:download - Enable support for downloading YouTube videos
 media-video/mjpegtools:sdlgfx - Enables y4mhist to display a graphical histogram
 media-video/mjpg-streamer:input-control - Plugin giving ability to control camera movement (only specific cameras)
 media-video/mjpg-streamer:input-file - Plugin that watches given directory and send it's content
@@ -7244,7 +7243,6 @@ net-wireless/wpa_supplicant:p2p - Add support for Wi-Fi Direct mode
 net-wireless/wpa_supplicant:privsep - Enable wpa_priv privledge separation binary
 net-wireless/wpa_supplicant:ps3 - Add support for ps3 hypervisor driven gelic wifi
 net-wireless/wpa_supplicant:smartcard - Add support for smartcards
-net-wireless/wpa_supplicant:suiteb - Enable enable NSA Suite B encryption
 net-wireless/wpa_supplicant:tdls - Add support for Tunneled Direct Link Setup (802.11z)
 net-wireless/wpa_supplicant:uncommon-eap-types - Add support for GPSK, SAKE, GPSK_SHA256, IKEV2 and EKE
 net-wireless/wpa_supplicant:wimax - Add support for Wimax EAP-PEER authentication algorithm

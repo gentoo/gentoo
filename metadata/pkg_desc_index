@@ -394,7 +394,7 @@ app-admin/whowatch 1.8.5 1.8.6: Displays information about users currently logge
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 1.12.0: A dotfile manager for the config files in your home folder
-app-antivirus/clamav 0.101.2-r1 0.101.3 0.101.4 0.102.1: Clam Anti-Virus Scanner
+app-antivirus/clamav 0.101.2-r1 0.101.3 0.101.4 0.102.1-r1: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 5.6.2 6.0.1-r2: Download and install third-party clamav signatures
 app-antivirus/clamtk 6.01-r1 6.02: A graphical front-end for ClamAV
 app-antivirus/skyldav 0.7: Skyld AV: on-access scanning daemon for ClamAV using fanotify
@@ -14230,7 +14230,6 @@ media-video/m2vrequantizer 0.0.2_pre20060306-r1: Tool to requantize mpeg2 videos
 media-video/makemkv 1.14.5: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/mediainfo 19.09: MediaInfo supplies technical and tag information about media files
-media-video/minitube 2.5.2-r1: Qt5 YouTube Client
 media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120621-r2: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.10: mkclean is a command line tool to clean and optimize Matroska files
@@ -15796,7 +15795,7 @@ net-wireless/wepdecrypt 0.8-r2: Enhanced version of WepAttack a tool for breakin
 net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles
 net-wireless/wireless-regdb 20190301 20190603: Binary regulatory database for CRDA
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
-net-wireless/wpa_supplicant 2.6-r10 2.7-r1 2.7-r3 2.8-r1 2.9 2.9-r1 9999: IEEE 802.1X/WPA supplicant for secure wireless transfers
+net-wireless/wpa_supplicant 2.8-r1 2.9-r1 9999: IEEE 802.1X/WPA supplicant for secure wireless transfers
 net-wireless/yatebts 6.0.0-r1 9999: The Yate GSM base station
 perl-core/Archive-Tar 2.300.0: A Perl module for creation and manipulation of tar files
 perl-core/B-Debug 1.260.0: Walk Perl syntax tree, printing debug info about ops
