@@ -11,5 +11,5 @@ REQUIRED_USE=initramfs? ( redistributable )
 RESTRICT=binchecks strip unknown-license? ( bindist )
 SLOT=0
 SRC_URI=https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-07b925b450bfb4cf3e141c612ec5b104658cd020.tar.gz -> linux-firmware-20190815.tar.gz
-_eclasses_=mount-boot	0ed73d6bc7399be07e136b5dc46709d9	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	356fd0a7591e9b51742c209d13b729e1
+_eclasses_=mount-boot	0ed73d6bc7399be07e136b5dc46709d9	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	a3c113056e77e36a1d78ff4eb475dfd1
 _md5_=bf386e16de6967fdb2eb18947e8275c8
