@@ -13,31 +13,22 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Pygments is a syntax highlighting package written in Python"
 HOMEPAGE="http://pygments.org/ https://pypi.org/project/Pygments/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc test"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		virtual/ttf-fonts
 	)"
 
-S="${WORKDIR}/${MY_P}"
-
-python_check_deps() {
-	use doc || return 0
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
-
-python_compile_all() {
-	use doc && emake -C doc html
-}
+distutils_enable_sphinx doc
 
 python_test() {
 	cp -r -l tests "${BUILD_DIR}"/ || die
@@ -46,8 +37,6 @@ python_test() {
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( doc/_build/html/. )
-
 	distutils-r1_python_install_all
 	newbashcomp external/pygments.bashcomp pygmentize
 }
