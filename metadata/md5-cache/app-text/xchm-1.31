@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm
+DEPEND=>=dev-libs/chmlib-0.36 x11-libs/wxGTK:3.0-gtk3[X] nls? ( virtual/libintl ) nls? ( sys-devel/gettext )
+DESCRIPTION=Utility for viewing Compiled HTML Help (CHM) files
+EAPI=7
+HOMEPAGE=https://github.com/rzvncj/xCHM/
+IUSE=nls
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/chmlib-0.36 x11-libs/wxGTK:3.0-gtk3[X] nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=https://github.com/rzvncj/xCHM/releases/download/1.31/xchm-1.31.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=c6f9c5ec6cdd5bdb95dc3741b738d72e
