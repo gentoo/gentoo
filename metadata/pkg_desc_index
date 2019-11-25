@@ -17294,7 +17294,7 @@ sys-auth/docker_auth 1.3.1 1.4.0: Docker Registry 2 authentication server
 sys-auth/elogind 241.3 241.4: The systemd project's logind, extracted to a standalone package
 sys-auth/fingerprint-gui 1.09-r1: Use Fingerprint Devices with Linux
 sys-auth/fprintd 0.8.1 0.8.1-r1: D-Bus service to access fingerprint readers
-sys-auth/google-authenticator 1.05 9999: PAM Module for two step verification via mobile platform
+sys-auth/google-authenticator 1.05 1.06 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-libpam-hardened 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-wrappers 1 2 3: Set of scripts to manage google-auth setup on Gentoo Infra
 sys-auth/keystone 14.1.0-r1 15.0.0 16.0.0 2018.2.9999 2019.1.9999 2019.2.9999: The Openstack authentication, authorization, and service catalog
