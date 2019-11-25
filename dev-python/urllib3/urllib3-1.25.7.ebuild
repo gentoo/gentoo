@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="brotli doc test"
+IUSE="brotli test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -39,15 +39,9 @@ BDEPEND="
 		>=dev-python/trustme-0.5.3[${PYTHON_USEDEP}]
 		>=www-servers/tornado-4.2.1[$(python_gen_usedep python{2_7,3_{5,6,7}})]
 	)
-	doc? (
-		$(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')
-	)
 "
 
-python_check_deps() {
-	use doc || return 0
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
+distutils_enable_sphinx docs
 
 python_prepare_all() {
 	# tests requiring a route to be present
@@ -68,13 +62,6 @@ python_prepare_all() {
 		-i test/with_dummyserver/test_socketlevel.py || die
 
 	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	if use doc; then
-		emake -C docs SPHINXOPTS= html
-		HTML_DOCS=( docs/_build/html/. )
-	fi
 }
 
 python_test() {
