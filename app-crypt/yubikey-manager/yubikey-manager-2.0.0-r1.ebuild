@@ -18,6 +18,7 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
