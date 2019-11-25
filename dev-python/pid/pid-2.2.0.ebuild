@@ -15,6 +15,7 @@ SLOT="0"
 LICENSE="Apache-2.0"
 KEYWORDS="amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="dev-python/nose[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
