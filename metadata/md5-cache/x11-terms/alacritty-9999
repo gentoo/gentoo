@@ -1,4 +1,4 @@
-BDEPEND=dev-util/cmake >=virtual/rust-1.32.0 >=virtual/cargo-1.37.0 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=dev-util/cmake >=virtual/rust-1.37.0 >=virtual/cargo-1.37.0 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install postinst test unpack
 DEPEND=media-libs/fontconfig:= media-libs/freetype:2 x11-libs/libxcb
 DESCRIPTION=GPU-accelerated terminal emulator
@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=media-libs/fontconfig:= media-libs/freetype:2 x11-libs/libxcb sys-libs/zlib sys-libs/ncurses:0 x11-libs/libXcursor x11-libs/libXi x11-libs/libXrandr virtual/opengl
 SLOT=0
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	cargo	bccdcfbbe03fc5843eeb9f7e87005f6f	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=418b1dbfeb687bf60b0c0d32fd9ffa1c
+_md5_=0587676b97fa46bb6f0ed6b384397166

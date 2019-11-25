@@ -784,7 +784,7 @@ app-crypt/veracrypt 1.23 1.24 1.24-r1 1.24-r2 1.24_p1: Disk encryption with stro
 app-crypt/virtualsmartcard 0.7: Smart card emulator, can be used with Remote Smart Card Reader
 app-crypt/xca 2.1.2: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
-app-crypt/yubikey-manager 2.0.0 2.1.1 3.0.0 3.1.0: Python library and command line tool for configuring a YubiKey
+app-crypt/yubikey-manager 2.0.0-r1 3.1.0-r1: Python library and command line tool for configuring a YubiKey
 app-crypt/yubikey-manager-qt 1.1.1-r1 1.1.2 1.1.3: Cross-platform application for configuring any YubiKey over all USB transports
 app-crypt/zulucrypt 5.1.0 5.4.0_pre20180223 5.4.0: Front end to cryptsetup
 app-dicts/aspell-af 0.50.0: Afrikaans language dictionary for aspell
@@ -1759,7 +1759,7 @@ app-laptop/hdapsd 20141203: IBM ThinkPad Hard Drive Active Protection System (HD
 app-laptop/i8kutils 1.33-r1 1.42: Dell Inspiron and Latitude utilities
 app-laptop/ibam 0.5.2-r4: Intelligent Battery Monitor
 app-laptop/laptop-mode-tools 1.72.2-r1: Linux kernel laptop_mode user-space utilities
-app-laptop/mbpfan 2.1.1 2.2.0 9999: A simple daemon to control fan speed on all Macbook/Macbook Pros
+app-laptop/mbpfan 2.1.1 2.2.1 9999: A simple daemon to control fan speed on all Macbook/Macbook Pros
 app-laptop/msi-keyboard 1.0: Control backlight of MSI laptop keyboards
 app-laptop/nvidiabl 0.83 0.87: Linux driver for setting the backlight brightness on laptops using NVIDIA GPU
 app-laptop/pbbuttonsd 0.8.1a: Handles power management and special keys on laptops
@@ -7761,7 +7761,7 @@ dev-python/fdsend 0.1: flexible file descriptor passing
 dev-python/fedmsg 0.18.3: Fedora Messaging Client API
 dev-python/feedgenerator 1.9: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.2.1: Parse RSS and Atom feeds in Python
-dev-python/fido2 0.3.0 0.4.0 0.5.0 0.6.0 0.7.0 0.7.1 0.7.3: Python based FIDO 2.0 library
+dev-python/fido2 0.3.0 0.4.0 0.5.0 0.6.0 0.7.0 0.7.1 0.7.3 0.8.1: Python based FIDO 2.0 library
 dev-python/fields 5.0.0 5.0.0-r1: Container class boilerplate killer
 dev-python/figleaf 0.6.1-r1: Code coverage tool
 dev-python/filelock 3.0.10 3.0.12: A platform independent file lock for Python
@@ -15795,7 +15795,7 @@ net-wireless/wepdecrypt 0.8-r2: Enhanced version of WepAttack a tool for breakin
 net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles
 net-wireless/wireless-regdb 20190301 20190603: Binary regulatory database for CRDA
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
-net-wireless/wpa_supplicant 2.8-r1 2.9-r1 9999: IEEE 802.1X/WPA supplicant for secure wireless transfers
+net-wireless/wpa_supplicant 2.9-r1 9999: IEEE 802.1X/WPA supplicant for secure wireless transfers
 net-wireless/yatebts 6.0.0-r1 9999: The Yate GSM base station
 perl-core/Archive-Tar 2.300.0: A Perl module for creation and manipulation of tar files
 perl-core/B-Debug 1.260.0: Walk Perl syntax tree, printing debug info about ops
