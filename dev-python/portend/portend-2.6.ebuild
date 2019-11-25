@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 
 RDEPEND=">=dev-python/tempora-1.8[${PYTHON_USEDEP}]"
