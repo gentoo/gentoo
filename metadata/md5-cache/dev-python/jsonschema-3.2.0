@@ -12,4 +12,4 @@ RESTRICT=!test? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/j/jsonschema/jsonschema-3.2.0.tar.gz
 _eclasses_=distutils-r1	875cdbd904383003dd58e0ad4068470b	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	d21193dfc088687e048e829419568096	python-utils-r1	d7629f6349b5d4cbb4cb5f56d680d71a	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=b3bc0b1bda5d802af0941f834f8d82fd
+_md5_=df7005f724f2a3d2d8f91803f72d440c
