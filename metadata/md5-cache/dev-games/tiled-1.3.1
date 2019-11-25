@@ -1,0 +1,15 @@
+BDEPEND=dev-qt/linguist-tools:5
+DEFINED_PHASES=configure install postinst postrm setup
+DEPEND=>=dev-qt/qtcore-5.10:5 >=dev-qt/qtdeclarative-5.10:5 >=dev-qt/qtgui-5.10:5 >=dev-qt/qtnetwork-5.10:5 >=dev-qt/qtwidgets-5.10:5 sys-libs/zlib python? ( python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_5(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),python_single_target_python3_6(+)] )
+DESCRIPTION=A general purpose tile map editor
+EAPI=7
+HOMEPAGE=https://www.mapeditor.org/
+IUSE=examples python python_targets_python3_6
+KEYWORDS=~amd64
+LICENSE=BSD BSD-2 GPL-2+
+RDEPEND=>=dev-qt/qtcore-5.10:5 >=dev-qt/qtdeclarative-5.10:5 >=dev-qt/qtgui-5.10:5 >=dev-qt/qtnetwork-5.10:5 >=dev-qt/qtwidgets-5.10:5 sys-libs/zlib python? ( python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_5(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),python_single_target_python3_6(+)] )
+REQUIRED_USE=python? ( python_targets_python3_6 )
+SLOT=0
+SRC_URI=https://github.com/bjorn/tiled/archive/v1.3.1/tiled-1.3.1.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	d7629f6349b5d4cbb4cb5f56d680d71a	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=ab4f70046a2ec0b11f08f2d742ba3ec9
