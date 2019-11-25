@@ -31,6 +31,8 @@ S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
 	sed '/setuptools_scm/d' -i setup.py || die
+	sed -r -i "s:setuptools_scm[[:space:]]*([><=]{1,2}[[:space:]]*[0-9.a-zA-Z]+)[[:space:]]*::" \
+		setup.cfg || die
 
 	# disable flake8 tests
 	sed -i 's/ --flake8//' pytest.ini || die
