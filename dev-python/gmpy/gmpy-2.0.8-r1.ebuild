@@ -18,7 +18,7 @@ S="${WORKDIR}"/${MY_P}
 LICENSE="LGPL-3+"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="doc mpir"
+IUSE="mpir"
 
 RDEPEND="
 	>=dev-libs/mpc-1.0.2:=
@@ -27,18 +27,14 @@ RDEPEND="
 	mpir? ( sci-libs/mpir:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	app-arch/unzip
-	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )"
+	app-arch/unzip"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-mpir-types.patch
 	"${FILESDIR}"/gmpy-2.0.8-test-exit-status.patch
 )
 
-python_check_deps() {
-	use doc || return 0
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
+distutils_enable_sphinx docs
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
@@ -58,13 +54,6 @@ python_configure_all() {
 python_compile() {
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	distutils-r1_python_compile
-}
-
-python_compile_all() {
-	if use doc; then
-		emake -C docs html
-		HTML_DOCS=( docs/_build/html/. )
-	fi
 }
 
 python_test() {
