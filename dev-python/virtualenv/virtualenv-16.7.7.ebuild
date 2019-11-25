@@ -20,15 +20,10 @@ LICENSE="MIT"
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
-IUSE="doc test"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 BDEPEND=">=dev-python/setuptools-19.6.2[${PYTHON_USEDEP}]
-	doc? ( $(python_gen_any_dep '
-			dev-python/sphinx[${PYTHON_USEDEP}]
-			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
-			dev-python/towncrier[${PYTHON_USEDEP}]
-		')
-	)
 	test? (
 		>=dev-python/pip-19.3.1-r1[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
@@ -43,9 +38,6 @@ BDEPEND=">=dev-python/setuptools-19.6.2[${PYTHON_USEDEP}]
 
 DOCS=( docs/index.rst docs/changes.rst )
 
-# uncomment if line above is removed
-RESTRICT="!test? ( test )"
-
 PATCHES=(
 	"${FILESDIR}/virtualenv-16.7.7-tests.patch"
 
@@ -53,30 +45,9 @@ PATCHES=(
 	"${FILESDIR}/virtualenv-16.7.7-tests-internet.patch"
 )
 
-python_check_deps() {
-	use doc || return 0
-
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/towncrier[${PYTHON_USEDEP}]"
-}
-
-python_compile_all() {
-	if use doc; then
-		sed -i -e 's:^intersphinx_mapping:disabled_&:' \
-			docs/conf.py || die
-
-		sphinx-build -b html -d docs/_build/doctrees docs \
-			docs/_build/html || die
-
-		HTML_DOCS+=( "docs/_build/html/." )
-	fi
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
-}
+distutils_enable_sphinx docs \
+	dev-python/sphinx_rtd_theme \
+	dev-python/towncrier
 
 python_test() {
 	cp "${S}"/LICENSE.txt "${BUILD_DIR}"/lib || \
