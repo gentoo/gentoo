@@ -10683,7 +10683,7 @@ dev-util/gnome-devel-docs 3.30.2: Documentation for developing for the GNOME des
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/goland 2019.1.2: Golang IDE by JetBrains
 dev-util/google-perftools 2.6.2 2.7: Fast, multi-threaded malloc() and nifty performance analysis tools
-dev-util/gource 0.49: A software version control visualization tool
+dev-util/gource 0.49 0.51: A software version control visualization tool
 dev-util/gperf 3.1: A perfect hash function generator
 dev-util/gprof2dot 2013.05.17 2016.10.13 2017.09.19: Converts profiling output to dot graphs
 dev-util/gquilt 0.25-r1: A Python/GTK wrapper for quilt
