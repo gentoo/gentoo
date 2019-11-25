@@ -10,6 +10,12 @@ HOMEPAGE="https://github.com/raspberrypi/firmware"
 LICENSE="GPL-2 raspberrypi-videocore-bin"
 SLOT="0"
 
+# Temporary safety measure to prevent ending up with a pair of
+# sys-kernel/raspberrypi-image and sys-boot/raspberrypi-firmware
+# none of which installed device tree files.
+# Remove when the mentioned version and all older ones are deleted.
+RDEPEND="!<=sys-kernel/raspberrypi-image-4.19.57_p20190709"
+
 if [[ "${PV}" == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/raspberrypi/firmware"
@@ -45,8 +51,6 @@ src_install() {
 	insinto /boot
 	cd boot || die
 	doins bootcode.bin fixup*.dat start*elf
-	doins *.dtb
-	doins -r overlays
 	newins "${FILESDIR}"/${PN}-0_p20130711-config.txt config.txt
 	newins "${FILESDIR}"/${PN}-0_p20130711-cmdline.txt cmdline.txt
 	newenvd "${FILESDIR}"/${PN}-0_p20130711-envd 90${PN}
