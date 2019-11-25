@@ -2172,7 +2172,7 @@ app-misc/workrave 1.10.20: Helpful utility to attack Repetitive Strain Injury (R
 app-misc/xmind 3.5.3.201506180105-r2 3.7.6_p201801311814: A brainstorming and mind mapping software tool
 app-misc/yagtd 0.3.4-r1: CLI todo list manager based on the 'Getting Things Done' philosophy
 app-misc/yq 2.7.1-r1 2.7.2 2.8.0 2.9.2: Command-line YAML processor - jq wrapper for YAML documents
-app-misc/ytree 1.99_p2: A curses-based file manager
+app-misc/ytree 1.99_p2 2.00: A curses-based file manager
 app-misc/yworklog 0.0.7: Stack based utility with CLI interface helping to monitor time spent on tasks
 app-misc/zisofs-tools 1.0.8: User utilities for zisofs
 app-misc/zygrib 8.0.1-r1: GRIB File Viewer - Weather data visualization
