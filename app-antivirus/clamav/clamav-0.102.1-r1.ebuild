@@ -48,6 +48,7 @@ HTML_DOCS=( docs/html/. )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.101.2-tinfo.patch" #670729
+	"${FILESDIR}/${PN}-0.102.1-libxml2_pkgconfig.patch" #661328
 )
 
 pkg_setup() {
@@ -79,25 +80,29 @@ src_configure() {
 		JSONUSE="--with-libjson=${EPREFIX}/usr"
 	fi
 
-	econf \
-		$(use_enable bzip2) \
-		$(use_enable clamdtop) \
-		$(use_enable ipv6) \
-		$(use_enable milter) \
-		$(use_enable static-libs static) \
-		$(use_enable test check) \
-		$(use_with xml) \
-		$(use_with iconv) \
-		${JSONUSE} \
-		$(use_enable libclamav-only) \
-		--with-system-libmspack \
-		--cache-file="${S}"/config.cache \
-		--disable-experimental \
-		--disable-zlib-vcheck \
-		--enable-id-check \
-		--with-dbdir="${EPREFIX}"/var/lib/clamav \
-		--with-zlib="${EPREFIX}"/usr \
+	local myeconfargs=(
+		$(use_enable bzip2)
+		$(use_enable clamdtop)
+		$(use_enable ipv6)
+		$(use_enable milter)
+		$(use_enable static-libs static)
+		$(use_enable test check)
+		$(use_with xml)
+		$(use_with iconv)
+		${JSONUSE}
+		$(use_enable libclamav-only)
+		$(use_with !libclamav-only libcurl)
+		--with-system-libmspack
+		--cache-file="${S}"/config.cache
+		--disable-experimental
+		--disable-zlib-vcheck
+		--enable-id-check
+		--with-dbdir="${EPREFIX}"/var/lib/clamav
+		# Don't call --with-zlib=/usr (see bug #699296)
+		--with-zlib
 		--disable-llvm
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
