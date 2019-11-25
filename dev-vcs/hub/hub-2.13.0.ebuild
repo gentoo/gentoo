@@ -19,9 +19,9 @@ src_compile() {
 	emake bin/hub man-pages
 }
 
-#src_test() {
-#	./script/test || die
-#}
+src_test() {
+	emake test
+}
 
 src_install() {
 	dobin bin/${PN}
