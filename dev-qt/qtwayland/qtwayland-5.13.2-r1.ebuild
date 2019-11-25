@@ -29,6 +29,8 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-fix-touch-ignored.patch" # QTBUG-79744
 	"${FILESDIR}/${P}-fix-crash.patch" # QTBUG-79674
+	# Pending upstream:
+	"${FILESDIR}/${P}-fix-linuxdmabuf-build.patch" # bug 699190, QTBUG-79709
 )
 
 src_prepare() {
