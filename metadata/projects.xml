@@ -2835,10 +2835,9 @@
       <name>Patrick McLean</name>
       <role>Member</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>floppym@gentoo.org</email>
       <name>Mike Gilbert</name>
-      <role>Lead</role>
     </member>
     <member>
       <email>gyakovlev@gentoo.org</email>
