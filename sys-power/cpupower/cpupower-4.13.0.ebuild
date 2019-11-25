@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0/0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
-IUSE="cpufreq_bench nls"
+IUSE="nls"
 
 # File collision w/ headers of the deprecated cpufrequtils
 RDEPEND="sys-apps/pciutils
@@ -38,7 +38,6 @@ src_configure() {
 	export confdir="${EPREFIX}/etc"
 	export V=1
 	export NLS=$(usex nls true false)
-	export CPUFREQ_BENCH=$(usex cpufreq_bench true false)
 }
 
 src_compile() {
