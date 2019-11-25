@@ -18,8 +18,6 @@ DEPEND="~dev-java/ant-core-${PV}"
 RDEPEND="${DEPEND}
 	~dev-java/ant-core-${PV}
 	~dev-java/ant-junit-${PV}
-	!dev-java/ant-optional
-	!dev-java/ant-tasks
 	~dev-java/ant-apache-xalan2-${PV}
 	antlr? ( ~dev-java/ant-antlr-${PV} )
 	bcel? ( ~dev-java/ant-apache-bcel-${PV} )
