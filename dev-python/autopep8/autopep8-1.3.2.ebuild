@@ -21,6 +21,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/pep8-1.5.7[${PYTHON_USEDEP}]
