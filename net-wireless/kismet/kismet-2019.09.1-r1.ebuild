@@ -98,12 +98,12 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" commoninstall
+	python_optimize
 	emake DESTDIR="${D}" forceconfigs
 
 	insinto /usr/share/${PN}
 	doins Makefile.inc
 
-	#dodoc CHANGELOG RELEASENOTES.txt README* docs/DEVEL.client docs/README.newcore
 	dodoc CHANGELOG README*
 	newinitd "${FILESDIR}"/${PN}.initd-r3 kismet
 	newconfd "${FILESDIR}"/${PN}.confd-r2 kismet
