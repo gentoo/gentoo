@@ -169,38 +169,6 @@ src_compile() {
 	gcc_do_make "-C gcc gnattools"
 }
 
-src_install() {
-	toolchain_src_install
-	cd "${D}"${BINPATH}
-	if [[ -h gnatmake-${GCC_CONFIG_VER} ]] ; then
-		return
-	fi
-	for x in gnat*; do
-		# For some reason, g77 gets made instead of ${CTARGET}-g77...
-		# this should take care of that
-		if [[ -f ${x} ]] ; then
-			# In case they're hardlinks, clear out the target first
-			# otherwise the mv below will complain.
-			rm -f ${CTARGET}-${x}
-			mv ${x} ${CTARGET}-${x}
-		fi
-
-		if [[ -f ${CTARGET}-${x} ]] ; then
-			ln -sf ${CTARGET}-${x} ${x}
-			dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
-				/usr/bin/${x}-${GCC_CONFIG_VER}
-			# Create versioned symlinks
-			dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
-				/usr/bin/${CTARGET}-${x}-${GCC_CONFIG_VER}
-		fi
-
-		if [[ -f ${CTARGET}-${x}-${GCC_CONFIG_VER} ]] ; then
-			rm -f ${CTARGET}-${x}-${GCC_CONFIG_VER}
-			ln -sf ${CTARGET}-${x} ${CTARGET}-${x}-${GCC_CONFIG_VER}
-		fi
-	done
-}
-
 pkg_postinst () {
 	toolchain_pkg_postinst
 	einfo "This provide the GNAT compiler with gcc for ada/c/c++ and more"
