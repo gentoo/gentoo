@@ -19,7 +19,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="HPND"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples imagequant jpeg jpeg2k lcms test tiff tk truetype webp zlib"
+IUSE="examples imagequant jpeg jpeg2k lcms test tiff tk truetype webp zlib"
 REQUIRED_USE="test? ( jpeg tiff )"
 RESTRICT="!test? ( test )"
 
@@ -35,23 +35,14 @@ RDEPEND="
 	zlib? ( sys-libs/zlib:0= )"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? (
-		$(python_gen_any_dep '
-			dev-python/sphinx[${PYTHON_USEDEP}]
-			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
-		')
-	)
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 		media-gfx/imagemagick[png]
 	)
 "
 
-python_check_deps() {
-	use doc || return 0
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
-		has_version "dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]"
-}
+distutils_enable_sphinx docs \
+	dev-python/sphinx_rtd_theme
 
 python_configure_all() {
 	# It's important that these flags are also passed during the install phase
@@ -82,10 +73,6 @@ python_configure_all() {
 	tc-export PKG_CONFIG
 }
 
-python_compile_all() {
-	use doc && emake -C docs html
-}
-
 src_test() {
 	virtx distutils-r1_src_test
 }
@@ -102,7 +89,6 @@ python_install() {
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/. )
 	if use examples ; then
 		docinto example
 		dodoc docs/example/*
