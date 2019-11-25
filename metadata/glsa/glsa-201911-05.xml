@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201911-05">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
+    worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">adobe,flash</product>
+  <announced>2019-11-25</announced>
+  <revised count="1">2019-11-25</revised>
+  <bug>694352</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">32.0.0.255</unaffected>
+      <vulnerable range="lt">32.0.0.255</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-32.0.0.255"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8069">CVE-2019-8069</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8070">CVE-2019-8070</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-10-26T20:58:44Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2019-11-25T00:10:47Z">b-man</metadata>
+</glsa>

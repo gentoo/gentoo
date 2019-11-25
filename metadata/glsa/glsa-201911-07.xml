@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201911-07">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Firefox, the
+    worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">firefox</product>
+  <announced>2019-11-25</announced>
+  <revised count="1">2019-11-25</revised>
+  <bug>693442</bug>
+  <bug>698512</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="ge">68.2.0</unaffected>
+      <vulnerable range="lt">68.2.0</vulnerable>
+    </package>
+    <package name="www-client/firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">68.2.0</unaffected>
+      <vulnerable range="lt">68.2.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      Project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Firefox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Firefox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-68.2.0"
+    </code>
+    
+    <p>All Firefox binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-bin-68.2.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11740">CVE-2019-11740</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11742">CVE-2019-11742</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11743">CVE-2019-11743</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11744">CVE-2019-11744</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11746">CVE-2019-11746</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11752">CVE-2019-11752</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9812">CVE-2019-9812</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-09-22T23:21:18Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-11-25T00:16:53Z">b-man</metadata>
+</glsa>
