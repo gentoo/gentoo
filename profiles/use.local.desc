@@ -8611,7 +8611,6 @@ sys-libs/timezone-data:leaps-timezone - Install the set of "right" timezones; th
 sys-libs/uclibc-ng:symlink-compat - Explicitly add sym links for libdl.so.0, libm.so.0, and friends for backward compatibility with sys-libs/uclibc-ng-1.0.17 and earlier
 sys-libs/zlib:minizip - include the minizip library for quick and dirty zip extraction
 sys-power/apcupsd:modbus - Enable MODBUS support over USB
-sys-power/cpupower:cpufreq_bench - Build and install the cpufreq_bench binary
 sys-power/intel-undervolt:elogind - Use elogind hook to apply voltage after system sleep
 sys-power/nut:gui - Install NUT-Monitor python gui
 sys-power/nut:ipmi - Support IPMI-based UPSes.
