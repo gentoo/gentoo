@@ -5005,7 +5005,7 @@ dev-libs/libstrl 0.5.1-r1: Compat library for functions like strlcpy(), strlcat(
 dev-libs/libstroke 0.5.1-r1: A Stroke and Gesture recognition Library
 dev-libs/libstrophe 0.9.2 0.9.3: A simple, lightweight C library for writing XMPP clients
 dev-libs/libtar 1.2.20-r4: C library for manipulating tar archives
-dev-libs/libtasn1 4.13 4.14: ASN.1 library
+dev-libs/libtasn1 4.13 4.14 4.15.0: ASN.1 library
 dev-libs/libtecla 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.19 0.20 0.22: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtomfloat 0.02: library for floating point number manipulation
@@ -19279,7 +19279,7 @@ x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2 0.7.2-r1 9999: A manual tiling window manager for X
 x11-wm/i3 4.14 4.15 4.16 4.16.1 4.17.1 9999: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.16.1 4.16.1-r1 4.17.1: i3 fork with gaps and some more features
-x11-wm/icewm 1.5.5 1.6.2-r1: Ice Window Manager with Themes
+x11-wm/icewm 1.5.5 1.6.2-r1 1.6.3: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.7: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 1.3.0_p1 1.4.0_p1-r1 1.5.0-r1 9999: Lumina desktop environment
