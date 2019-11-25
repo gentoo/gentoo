@@ -14,11 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="berkdb nls"
 
+BDEPEND="nls? ( sys-devel/gettext )"
 RDEPEND="dev-libs/gmp:0
 	sys-libs/ncurses:0"
 DEPEND="${RDEPEND}
-	berkdb? ( >=sys-libs/db-4.8:* )
-	nls? ( sys-devel/gettext )"
+	berkdb? ( >=sys-libs/db-4.8:* )"
 
 S="${WORKDIR}/${MY_P}"
 

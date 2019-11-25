@@ -5,6 +5,14 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>anton.kochkov@gmail.com</email>
+		<name>Anton Kochkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">open-cobol</remote-id>
 	</upstream>
