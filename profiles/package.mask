@@ -278,12 +278,6 @@ net-analyzer/openvas-cli
 net-analyzer/openvas-tools
 dev-ruby/openvas-omp
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-10-26)
-# Version in Gentoo is years old, does not work, no one stepped up
-# to maintain it. Package needs Google API key to actually work.
-# Removal in 30 days. Bug #608334
-media-video/minitube
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-26)
 # Incorrect LICENSE entry, and no clear license information to be found.
 # Homepage gone, and source of some of the files unknown.
