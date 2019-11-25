@@ -4089,11 +4089,11 @@ dev-java/ant-jmf 1.10.7: Apache Ant's optional tasks for the Java Media Framewor
 dev-java/ant-jsch 1.10.7: Apache Ant's optional tasks depending on jsch
 dev-java/ant-junit 1.10.7: Apache Ant's optional tasks depending on junit
 dev-java/ant-junit4 1.10.7: Apache Ant's optional tasks depending on junit-4
-dev-java/ant-junitlauncher 1.10.5 1.10.7: Apache Ant's optional tasks depending on
+dev-java/ant-junitlauncher 1.10.7: Apache Ant's optional tasks depending on
 dev-java/ant-owanttask 1.3.2: ObjectWeb's Ant tasks
 dev-java/ant-swing 1.10.7: Apache Ant's optional tasks for Swing
 dev-java/ant-testutil 1.10.7: Apache Ant's optional test utility classes
-dev-java/ant-xz 1.10.5 1.10.7: Apache Ant's optional tasks for XZ compression
+dev-java/ant-xz 1.10.7: Apache Ant's optional tasks for XZ compression
 dev-java/antlr 2.7.7-r7 2.7.7-r8 3.2 3.5.2 4.5.1 4.5.3: A parser generator for many languages
 dev-java/aopalliance 1.0-r2: Aspect-Oriented Programming (AOP) Alliance classes
 dev-java/appframework 1.03-r5: Set of Java classes to build desktop applications easily
