@@ -14,21 +14,6 @@ SRC_URI="https://github.com/decalage2/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="doc"
 
-BDEPEND="
-	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )"
-
+distutils_enable_sphinx doc
 distutils_enable_tests unittest
-
-python_check_deps() {
-	use doc || return 0
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
-
-python_compile_all() {
-	if use doc; then
-		emake -C doc html
-		HTML_DOCS=( doc/_build/html/. )
-	fi
-}

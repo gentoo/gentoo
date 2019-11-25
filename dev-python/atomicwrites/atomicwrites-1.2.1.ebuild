@@ -13,35 +13,9 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc"
 
-# TODO: remove impl limiters when sphinx is py38
-BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? (
-		$(python_gen_any_dep '
-			dev-python/sphinx[${PYTHON_USEDEP}]
-			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
-		')
-	)
-"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
+distutils_enable_sphinx docs \
+	dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
-
-python_check_deps() {
-	use doc || return 0
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
-		has_version "dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]"
-}
-
-python_prepare_all() {
-	sed -i "/'sphinx.ext.intersphinx'/d" docs/conf.py || die
-	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	if use doc; then
-		sphinx-build docs docs/_build/html || die
-		HTML_DOCS=( docs/_build/html/. )
-	fi
-}

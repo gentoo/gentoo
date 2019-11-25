@@ -15,6 +15,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 CDEPEND=">=dev-python/pbr-1.8.0[${PYTHON_USEDEP}]"
 DEPEND="
@@ -31,11 +32,6 @@ DEPEND="
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.2.0[${PYTHON_USEDEP}]
-		<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
-		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
-		!~dev-python/oslo-sphinx-3.4.0[${PYTHON_USEDEP}]
 		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	)"
 RDEPEND="

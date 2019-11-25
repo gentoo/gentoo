@@ -16,7 +16,7 @@ SRC_URI="https://github.com/cython/cython/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
-IUSE="doc emacs test"
+IUSE="emacs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -24,7 +24,6 @@ RDEPEND="
 "
 BDEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )
 	test? (
 		$(python_gen_cond_dep 'dev-python/numpy[${PYTHON_USEDEP}]' \
 			'python3*')
@@ -36,12 +35,7 @@ PATCHES=(
 
 SITEFILE=50cython-gentoo.el
 
-python_check_deps() {
-	if use doc; then
-		has_version "dev-python/sphinx[${PYTHON_USEDEP}]" || return ${?}
-	fi
-	return 0
-}
+distutils_enable_sphinx docs
 
 python_compile() {
 	if ! python_is_python3; then
@@ -57,8 +51,6 @@ python_compile() {
 
 python_compile_all() {
 	use emacs && elisp-compile Tools/cython-mode.el
-
-	use doc && emake -C docs html
 }
 
 python_test() {
@@ -71,7 +63,6 @@ python_test() {
 
 python_install_all() {
 	local DOCS=( CHANGES.rst README.rst ToDo.txt USAGE.txt )
-	use doc && local HTML_DOCS=( docs/build/html/. )
 	distutils-r1_python_install_all
 
 	if use emacs; then
