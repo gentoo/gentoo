@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install postinst setup
+DEPEND=pcre? ( dev-libs/libpcre pcre-jit? ( dev-libs/libpcre[jit] ) ) pcre2? ( dev-libs/libpcre pcre2-jit? ( dev-libs/libpcre2[jit] ) ) ssl? ( !libressl? ( dev-libs/openssl:0=[zlib?] ) libressl? ( dev-libs/libressl:0= ) ) slz? ( dev-libs/libslz:= ) zlib? ( sys-libs/zlib ) lua? ( dev-lang/lua:5.3 ) device-atlas? ( dev-libs/device-atlas-api-c )
+DESCRIPTION=A TCP/HTTP reverse proxy for high availability environments
+EAPI=7
+HOMEPAGE=http://www.haproxy.org
+IUSE=+crypt doc examples libressl slz net_ns +pcre pcre-jit pcre2 pcre2-jit ssl systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl kernel_linux
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=pcre? ( dev-libs/libpcre pcre-jit? ( dev-libs/libpcre[jit] ) ) pcre2? ( dev-libs/libpcre pcre2-jit? ( dev-libs/libpcre2[jit] ) ) ssl? ( !libressl? ( dev-libs/openssl:0=[zlib?] ) libressl? ( dev-libs/libressl:0= ) ) slz? ( dev-libs/libslz:= ) zlib? ( sys-libs/zlib ) lua? ( dev-lang/lua:5.3 ) device-atlas? ( dev-libs/device-atlas-api-c )
+REQUIRED_USE=pcre-jit? ( pcre ) pcre2-jit? ( pcre2 ) pcre? ( !pcre2 ) device-atlas? ( pcre ) ?? ( slz zlib )
+SLOT=0
+SRC_URI=http://haproxy.1wt.eu/download/1.9/src/haproxy-1.9.13.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
+_md5_=74e877176288f4540618cedc4e71b6f0
