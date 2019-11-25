@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201911-08">
+  <title>Expat: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Expat, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">expat</product>
+  <announced>2019-11-25</announced>
+  <revised count="1">2019-11-25</revised>
+  <bug>688734</bug>
+  <bug>694362</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/expat" auto="yes" arch="*">
+      <unaffected range="ge">2.2.8</unaffected>
+      <vulnerable range="lt">2.2.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Expat is a set of XML parsing libraries.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Expat. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Expat users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/expat-2.2.8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20843">CVE-2018-20843</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-15903">CVE-2019-15903</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-09-24T11:38:45Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2019-11-25T00:18:23Z">b-man</metadata>
+</glsa>
