@@ -27,8 +27,10 @@ RESTRICT="test"
 S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
-	# avoid a dep on setuptools_scm
-	sed -i "s:use_scm_version=True:version=\"${PV}\":" setup.py || die
+	# avoid a setuptools_scm dependency
+	sed -i "s:use_scm_version=True:version='${PV}',name='${PN//-/.}':" setup.py || die
+	sed -r -i "s:setuptools(_|-)scm[[:space:]]*([><=]{1,2}[[:space:]]*[0-9.a-zA-Z]+|)[[:space:]]*::" \
+		setup.cfg || die
 
 	distutils-r1_python_prepare_all
 }
