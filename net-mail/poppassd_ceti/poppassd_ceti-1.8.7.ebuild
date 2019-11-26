@@ -19,7 +19,7 @@ SRC_URI="https://github.com/kravietz/${MY_PN}/releases/download/v${PV}/${MY_P}.t
 # added upstream after 1.8.7:
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="sys-libs/pam"
 RDEPEND="${DEPEND}"
