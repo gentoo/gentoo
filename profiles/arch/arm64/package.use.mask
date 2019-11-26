@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Craig Andrews <candrews@gentoo.org> (2019-11-26)
+# net-misc/quiche is available on this arch
+net-misc/curl -quiche
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-10-29)
 # Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are keyworded
 kde-plasma/plasma-meta thunderbolt
