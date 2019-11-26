@@ -1,6 +1,6 @@
-From d7037d2a2fd57504070eba14634b8a7ea159de32 Mon Sep 17 00:00:00 2001
+From 803884217f9b9b5fb235d7c5e78a809d271f6387 Mon Sep 17 00:00:00 2001
 From: Richard Yao <ryao@gentoo.org>
-Date: Thu, 1 Aug 2019 15:54:30 -0400
+Date: Wed, 9 Oct 2019 12:16:12 -0700
 Subject: [PATCH] Implement ZPOOL_IMPORT_UDEV_TIMEOUT_MS
 
 Since 0.7.0, zpool import would unconditionally block on udev for 30
@@ -15,38 +15,45 @@ have their own mechanisms for blocking until device nodes are ready
 zpool import to block on a non-existent udev until a timeout is reached
 inside of them.
 
-Rather than trying to intelligently determine whether udev is avaliable
+Rather than trying to intelligently determine whether udev is available
 on the system to avoid unnecessarily blocking in such environments, it
 seems best to just allow the environment to override the timeout.  I
 propose that we add an environment variable called
 ZPOOL_IMPORT_UDEV_TIMEOUT_MS. Setting it to 0 would restore the 0.6.x
-behavior that was more desireable in mdev based initramfs environments.
-This allows the system userland utilities to be reused when building
+behavior that was more desirable in mdev based initramfs environments.
+This allows the system user land utilities to be reused when building
 mdev-based initramfs archives.
 
+Reviewed-by: Igor Kozhukhov <igor@dilos.org>
+Reviewed-by: Jorgen Lundman <lundman@lundman.net>
+Reviewed-by: Brian Behlendorf <behlendorf1@llnl.gov>
 Reviewed-by: Georgy Yakovlev <gyakovlev@gentoo.org>
 Signed-off-by: Richard Yao <ryao@gentoo.org>
+Closes #9436
 ---
- lib/libzutil/zutil_import.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ lib/libzutil/os/linux/zutil_import_os.c | 11 ++++++++++-
+ man/man8/zpool.8                        |  6 ++++++
+ 2 files changed, 16 insertions(+), 1 deletion(-)
 
-diff --git a/lib/libzutil/zutil_import.c b/lib/libzutil/zutil_import.c
-index e82744383dc..8c4d8c5cb5c 100644
---- a/lib/libzutil/zutil_import.c
-+++ b/lib/libzutil/zutil_import.c
-@@ -58,6 +58,7 @@
- #endif
+diff --git a/lib/libzutil/os/linux/zutil_import_os.c b/lib/libzutil/os/linux/zutil_import_os.c
+index 811eae397c9..e51004edc68 100644
+--- a/lib/libzutil/os/linux/zutil_import_os.c
++++ b/lib/libzutil/os/linux/zutil_import_os.c
+@@ -53,6 +53,7 @@
+ #include <libgen.h>
  #include <stddef.h>
  #include <stdlib.h>
 +#include <stdio.h>
  #include <string.h>
  #include <sys/stat.h>
  #include <unistd.h>
-@@ -1653,15 +1654,22 @@ zpool_open_func(void *arg)
+@@ -181,17 +182,25 @@ zpool_open_func(void *arg)
+ 	if (rn->rn_labelpaths) {
+ 		char *path = NULL;
  		char *devid = NULL;
++		char *env = NULL;
  		rdsk_node_t *slice;
  		avl_index_t where;
-+		char *env;
 +		int timeout;
  		int error;
  
@@ -54,9 +61,10 @@ index e82744383dc..8c4d8c5cb5c 100644
  			return;
  
 +		env = getenv("ZPOOL_IMPORT_UDEV_TIMEOUT_MS");
-+
-+		if ((env == NULL) || sscanf(env, "%d", &timeout) != 1)
++		if ((env == NULL) || sscanf(env, "%d", &timeout) != 1 ||
++		    timeout < 0) {
 +			timeout = DISK_LABEL_WAIT;
++		}
 +
  		/*
  		 * Allow devlinks to stabilize so all paths are available.
@@ -65,4 +73,21 @@ index e82744383dc..8c4d8c5cb5c 100644
 +		zpool_label_disk_wait(rn->rn_name, timeout);
  
  		if (path != NULL) {
- 			slice = zfs_alloc(hdl, sizeof (rdsk_node_t));
+ 			slice = zutil_alloc(hdl, sizeof (rdsk_node_t));
+diff --git a/man/man8/zpool.8 b/man/man8/zpool.8
+index 467d2411d40..df30b7ca05c 100644
+--- a/man/man8/zpool.8
++++ b/man/man8/zpool.8
+@@ -2813,6 +2813,12 @@ Similar to the
+ option in
+ .Nm zpool import .
+ .El
++.Bl -tag -width "ZPOOL_IMPORT_UDEV_TIMEOUT_MS"
++.It Ev ZPOOL_IMPORT_UDEV_TIMEOUT_MS
++The maximum time in milliseconds that
++.Nm zpool import
++will wait for an expected device to be available.
++.El
+ .Bl -tag -width "ZPOOL_VDEV_NAME_GUID"
+ .It Ev ZPOOL_VDEV_NAME_GUID
+ Cause
