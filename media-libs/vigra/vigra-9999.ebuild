@@ -64,7 +64,11 @@ RDEPEND="${PYTHON_DEPS}
 # Severely broken, also disabled in Fedora, bugs #390447, #653442
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}/${PN}-1.11.1-lib_suffix.patch" )
+PATCHES=(
+	# TODO: upstream
+	"${FILESDIR}/${PN}-1.11.1-lib_suffix.patch"
+	"${FILESDIR}/${PN}-1.11.1-sphinx.ext.pngmath.patch" # thanks to Debian; bug 678308
+)
 
 pkg_setup() {
 	if use python || use doc; then
