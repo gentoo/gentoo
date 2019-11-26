@@ -7,7 +7,9 @@ inherit go-module bash-completion-r1
 
 DESCRIPTION="Command line utility foroperations on container images and image repositories"
 HOMEPAGE="https://github.com/containers/skopeo"
-SRC_URI="https://github.com/containers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+CONTAINERS_STORAGE_PATCH="containers-storage-1.14.0-vfs-user-xattrs.patch"
+SRC_URI="https://github.com/containers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/containers/storage/pull/466.patch -> ${CONTAINERS_STORAGE_PATCH}"
 
 LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT"
 SLOT="0"
@@ -24,6 +26,14 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}"
 
 RESTRICT="test"
+
+src_prepare() {
+	default
+	sed -e 's| \([ab]\)/| \1/vendor/github.com/containers/storage/|' < \
+		"${DISTDIR}/${CONTAINERS_STORAGE_PATCH}" > \
+		"${WORKDIR}/${CONTAINERS_STORAGE_PATCH}" || die
+	eapply "${WORKDIR}/${CONTAINERS_STORAGE_PATCH}"
+}
 
 src_compile() {
 	local BUILDTAGS="containers_image_ostree_stub"
