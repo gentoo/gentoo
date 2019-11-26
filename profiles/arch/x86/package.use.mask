@@ -11,11 +11,6 @@ media-video/vlc -libplacebo
 # dev-python/pandas is keyworded for x86
 sys-block/fio -gnuplot
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-10-29)
-# Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are keyworded
-# bugs #697860, #698172
-kde-plasma/plasma-meta thunderbolt
-
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is stable on x86
 sys-firmware/seabios -debug
