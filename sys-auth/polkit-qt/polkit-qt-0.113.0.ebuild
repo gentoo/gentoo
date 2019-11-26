@@ -11,7 +11,7 @@ HOMEPAGE="https://api.kde.org/kdesupport-api/polkit-qt-1-apidocs/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${KDE_ORG_NAME}/${KDE_ORG_NAME}-${PV}.tar.xz"
-	KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
 	S="${WORKDIR}/${KDE_ORG_NAME}-${PV}"
 fi
 
