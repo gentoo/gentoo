@@ -31,7 +31,9 @@ DEPEND="
 	)"
 
 BDEPEND="
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	virtual/yacc
+"
 
 RDEPEND="
 	${DEPEND}
