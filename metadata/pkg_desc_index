@@ -15124,7 +15124,7 @@ net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Po
 net-mail/pop-before-smtp 1.42: a simple daemon to allow email relay control based on successful POP or IMAP logins
 net-mail/pop2imap 1.18 1.21: Synchronize mailboxes between a pop and an imap servers
 net-mail/popa3d 1.0.2-r1: A security oriented POP3 server
-net-mail/poppassd_ceti 1.8.5-r2 1.8.7: Password change daemon with PAM support
+net-mail/poppassd_ceti 1.8.7: Password change daemon with PAM support
 net-mail/postfix-logwatch 1.40.03-r3: A log analyzer for postfix
 net-mail/qlogtools 3.1-r1: Qmail Log processing tools
 net-mail/qmail-autoresponder 0.97-r3 2.0: Rate-limited autoresponder for qmail
