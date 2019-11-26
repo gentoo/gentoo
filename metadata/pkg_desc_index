@@ -7704,7 +7704,7 @@ dev-python/docker-pycreds 0.2.1 0.2.3 0.3.0 0.4.0: Python bindings for the docke
 dev-python/dockerpty 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2-r2 0.6.2-r3: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
-dev-python/docutils 0.12 0.13.1 0.14: Python Documentation Utilities
+dev-python/docutils 0.12 0.13.1 0.14 0.15.2: Python Documentation Utilities
 dev-python/docutils-glep 0.4-r1 1.1 1.2 9999: Gentoo GLEP support for docutils
 dev-python/dogpile-cache 0.6.4 0.7.1: A locking API for expiring values while a single thread generates a new value.
 dev-python/dogpile-core 0.4.1: A lock which allows a thread to generate an expensive resource while other threads use the old value
@@ -8125,7 +8125,7 @@ dev-python/minidb 2.0.2 2.0.2-r1: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
 dev-python/miniupnpc 2.1.20190625 2.1.20190824: Python bindings for UPnP client library
 dev-python/misaka 1.0.2: The Python binding for Sundown, a markdown parsing library
-dev-python/mistune 0.8.3: The fastest markdown parser in pure Python
+dev-python/mistune 0.8.3 0.8.4: The fastest markdown parser in pure Python
 dev-python/mkdocs 0.15.3 1.0.1: Project documentation with Markdown.
 dev-python/mkdocs-bootstrap 0.1.1 0.1.1-r1: Bootstrap theme for MkDocs
 dev-python/mkdocs-bootswatch 0.4.0 0.4.0-r1: Bootswatch themes for MkDocs
@@ -13187,7 +13187,7 @@ media-libs/libdvdread 6.0.0 6.0.1 6.0.2 9999: Library for DVD navigation tools
 media-libs/libebur128 1.2.3 1.2.4: A library implementing the EBU R128 loudness standard
 media-libs/libemf 1.0.4-r1 1.0.7: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01 9999: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
-media-libs/libepoxy 1.5.3-r1 9999: Epoxy is a library for handling OpenGL function pointer management for you
+media-libs/libepoxy 1.5.3-r1 1.5.4 9999: Epoxy is a library for handling OpenGL function pointer management for you
 media-libs/libexif 0.6.21-r3: Library for parsing, editing, and saving EXIF data
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
 media-libs/libextractor 1.8-r1 1.9: Library to extract metadata from files of arbitrary type
