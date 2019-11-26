@@ -1,8 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils
+EAPI=7
+
+inherit desktop xdg
 
 DESCRIPTION="Typing tutorial with lots of eye-candy"
 HOMEPAGE="https://github.com/tux4kids/tuxtype"
@@ -19,23 +20,25 @@ DEPEND="acct-group/gamestat
 	media-libs/sdl-mixer
 	media-libs/sdl-pango
 	media-libs/sdl-ttf
-	svg? ( gnome-base/librsvg )"
-RDEPEND=${DEPEND}
+	svg? ( gnome-base/librsvg:2 )"
 
-S=${WORKDIR}/${PN}-upstream-${PV}
+RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${PN}-upstream-${PV}"
 
 src_configure() {
 	econf \
-		--localedir=/usr/share/locale \
+		--localedir="${EPREFIX}"/usr/share/locale \
 		$(use_with svg rsvg)
 }
 
 src_install() {
 	default
-	rm -f "${D}"/usr/share/doc/${PF}/{COPYING,INSTALL,ABOUT-NLS}*
-	doicon ${PN}.ico
-	make_desktop_entry ${PN} TuxTyping /usr/share/pixmaps/${PN}.ico
+	rm -v "${ED}"/usr/share/doc/${PF}/{ABOUT-NLS,COPYING,INSTALL} || die
 	keepdir /etc/${PN} /var/games/${PN}/words
+
+	newicon -s 64 icon.png ${PN}.png
+	make_desktop_entry ${PN} TuxTyping
 
 	fowners root:gamestat /var/games/${PN} /usr/bin/${PN}
 	fperms 660 /var/games/${PN}
