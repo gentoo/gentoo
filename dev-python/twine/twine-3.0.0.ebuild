@@ -35,7 +35,7 @@ RDEPEND="${CDEPEND}
 	>=dev-python/requests-2.20.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-toolbelt-0.8.0[${PYTHON_USEDEP}]
 	dev-python/importlib_metadata[${PYTHON_USEDEP}]
-	dev-python/keyring[${PYTHON_USEDEP}]
+	>=dev-python/keyring-15.1[${PYTHON_USEDEP}]
 "
 
 RESTRICT="!test? ( test )"
