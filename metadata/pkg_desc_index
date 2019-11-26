@@ -1180,7 +1180,7 @@ app-editors/jove 4.16.0.73-r1: Jonathan's Own Version of Emacs, a light emacs-li
 app-editors/juffed 0.10_p20160323-r1: QScintilla-based tabbed text editor with syntax highlighting
 app-editors/jupp 3.1_p30 3.1_p38: Portable version of Joe's Own Editor
 app-editors/kakoune 0_pre20171120 9999: Selection-oriented code editor inspired by vim
-app-editors/kile 2.9.92_p20190716 2.9.93: Latex Editor and TeX shell based on KDE Frameworks
+app-editors/kile 2.9.93: Latex Editor and TeX shell based on KDE Frameworks
 app-editors/le 1.14.3 1.16.1 1.16.3 1.16.5: Terminal text editor
 app-editors/leafpad 0.8.18.1 0.8.18.1-r1: Simple GTK2 text editor
 app-editors/leo 5.6: Leo: Literate Editor with Outlines
@@ -12373,7 +12373,7 @@ kde-misc/plasma-applet-weather-widget 1.6.10-r1: Plasma 5 applet for weather for
 kde-misc/plasma-pass 1.0.0: Plasma applet to access password from pass
 kde-misc/plasma-redshift-control 1.0.18-r1: Plasma 5 applet for controlling redshift
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
-kde-misc/rsibreak 0.12.10-r1 0.12.11: Small utility which bothers you at certain intervals
+kde-misc/rsibreak 0.12.11: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1-r1: KDE image scanning application
 kde-misc/tellico 3.2.1 3.2.2: Collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
@@ -17259,7 +17259,7 @@ sys-apps/tas 1.5.2.180622: Supermicro Thin-Agent Service for monitoring through 
 sys-apps/tcp-wrappers 7.6.22-r1 7.6.28: TCP Wrappers
 sys-apps/texinfo 6.3 6.6-r1 6.7: The GNU info program and utilities
 sys-apps/the_silver_searcher 2.0.0 2.1.0: A code-searching tool similar to ack, but faster
-sys-apps/thunderbolt-software-user-space 0.9.3 0.9.3-r1: Thunderbolt(TM) user-space components
+sys-apps/thunderbolt-software-user-space 0.9.3-r1: Thunderbolt(TM) user-space components
 sys-apps/timer_entropyd 0.3: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.7.5 0.7.6 0.7.7 0.7.8 0.8.0 0.8.1 9999: Common linux commands in a multicall binary
@@ -17336,7 +17336,7 @@ sys-auth/pambase 20190402: PAM base configuration files
 sys-auth/passwdqc 1.3.0: Password strength checking library (and PAM module)
 sys-auth/polkit 0.115-r3 0.115-r4 0.116-r1: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
-sys-auth/polkit-qt 0.112.0_p20160416-r2 0.113.0: Qt wrapper around polkit-1 client libraries
+sys-auth/polkit-qt 0.113.0: Qt wrapper around polkit-1 client libraries
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.11-r2 0.11-r3: Realtime Policy and Watchdog Daemon
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
