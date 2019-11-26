@@ -15,7 +15,7 @@ index 0370cf84..4e3cf1ca 100644
  
  clean("out_timid")
 diff --git a/tests/test_concurrency.py b/tests/test_concurrency.py
-index 578cc679..ae340099 100644
+index 578cc679..c875be86 100644
 --- a/tests/test_concurrency.py
 +++ b/tests/test_concurrency.py
 @@ -11,6 +11,7 @@ import time
@@ -26,7 +26,27 @@ index 578cc679..ae340099 100644
  import coverage
  from coverage import env
  from coverage.backward import import_local_file
-@@ -271,6 +272,7 @@ class ConcurrencyTest(CoverageTest):
+@@ -255,22 +256,27 @@ class ConcurrencyTest(CoverageTest):
+         code = SIMPLE.format(QLIMIT=self.QLIMIT)
+         self.try_some_code(code, "thread", threading)
+ 
++    @unittest.skipIf(env.PY2, "eventlet tests don't work with python tracer on python2")
+     def test_eventlet(self):
+         code = (EVENTLET + SUM_RANGE_Q + PRINT_SUM_RANGE).format(QLIMIT=self.QLIMIT)
+         self.try_some_code(code, "eventlet", eventlet)
+ 
++    @unittest.skipIf(env.PY2, "eventlet tests don't work with python tracer on python2")
+     def test_eventlet_simple_code(self):
+         code = SIMPLE.format(QLIMIT=self.QLIMIT)
+         self.try_some_code(code, "eventlet", eventlet)
+ 
++    @unittest.skipIf(env.PY2, "gevent tests don't work with python tracer on python2")
+     def test_gevent(self):
+         code = (GEVENT + SUM_RANGE_Q + PRINT_SUM_RANGE).format(QLIMIT=self.QLIMIT)
+         self.try_some_code(code, "gevent", gevent)
+ 
++    @unittest.skipIf(env.PY2, "gevent tests don't work with python tracer on python2")
+     def test_gevent_simple_code(self):
          code = SIMPLE.format(QLIMIT=self.QLIMIT)
          self.try_some_code(code, "gevent", gevent)
  
@@ -34,7 +54,7 @@ index 578cc679..ae340099 100644
      def test_greenlet(self):
          GREENLET = """\
              from greenlet import greenlet
-@@ -289,6 +291,7 @@ class ConcurrencyTest(CoverageTest):
+@@ -289,6 +295,7 @@ class ConcurrencyTest(CoverageTest):
              """
          self.try_some_code(GREENLET, "greenlet", greenlet, "hello world\n42\n")
  
