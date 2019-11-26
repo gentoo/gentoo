@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop xdg
+inherit autotools desktop xdg
 
 DESCRIPTION="Typing tutorial with lots of eye-candy"
 HOMEPAGE="https://github.com/tux4kids/tuxtype"
@@ -26,6 +26,15 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-upstream-${PV}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.8.3-games-group.patch
+)
+
+src_prepare() {
+	xdg_src_prepare
+	eautoreconf
+}
+
 src_configure() {
 	econf \
 		--localedir="${EPREFIX}"/usr/share/locale \
@@ -33,14 +42,14 @@ src_configure() {
 }
 
 src_install() {
-	default
+	emake install DESTDIR="${D}"
 	rm -v "${ED}"/usr/share/doc/${PF}/{ABOUT-NLS,COPYING,INSTALL} || die
-	keepdir /etc/${PN} /var/games/${PN}/words
+	keepdir /etc/${PN} /var/lib/${PN}/words
 
 	newicon -s 64 icon.png ${PN}.png
 	make_desktop_entry ${PN} TuxTyping
 
-	fowners root:gamestat /var/games/${PN} /usr/bin/${PN}
-	fperms 660 /var/games/${PN}
+	fowners root:gamestat /var/lib/${PN} /usr/bin/${PN}
+	fperms 660 /var/lib/${PN}
 	fperms 2755 /usr/bin/${PN}
 }

@@ -17,11 +17,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
+# implementations to use for building docs, separate from PYTHON_COMPAT since
+# dev-python/sphinx might not be available everywhere
+DOCS_PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+
 RDEPEND=">=dev-libs/libmemcached-0.32"
 # Older sphinx versions fail to compile the doc
 # https://github.com/sphinx-doc/sphinx/issues/3266
 BDEPEND="${RDEPEND}
-	doc? ( $(python_gen_any_dep '>=dev-python/sphinx-1.5.1-r1[${PYTHON_USEDEP}]') )
+	doc? ( $(python_gen_cond_dep '
+		>=dev-python/sphinx-1.5.1-r1[${PYTHON_USEDEP}]' "${DOCS_PYTHON_COMPAT[@]}")
+	)
 	test? (
 		net-misc/memcached
 		dev-python/nose[${PYTHON_USEDEP}]
@@ -29,13 +35,14 @@ BDEPEND="${RDEPEND}
 
 RESTRICT="!test? ( test )"
 
+REQUIRED_USE="doc? ( || ( $(python_gen_useflags "${DOCS_PYTHON_COMPAT[@]}") ) )"
+
 PATCHES=(
 	"${FILESDIR}/pylibmc-1.6.1-fix-test-failures.patch"
 )
 
-python_check_deps() {
-	use doc || return 0
-	has_version ">=dev-python/sphinx-1.5.1-r1[${PYTHON_USEDEP}]"
+pkg_setup() {
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( "${DOCS_PYTHON_COMPAT[@]}" )
 }
 
 python_prepare_all() {

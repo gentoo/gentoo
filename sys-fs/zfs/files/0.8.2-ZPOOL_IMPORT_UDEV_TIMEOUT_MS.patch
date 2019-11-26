@@ -35,10 +35,10 @@ Closes #9436
  man/man8/zpool.8                        |  6 ++++++
  2 files changed, 16 insertions(+), 1 deletion(-)
 
-diff --git a/lib/libzutil/os/linux/zutil_import_os.c b/lib/libzutil/os/linux/zutil_import_os.c
+diff --git a/lib/libzutil/zutil_import.c b/lib/libzutil/zutil_import.c
 index 811eae397c9..e51004edc68 100644
---- a/lib/libzutil/os/linux/zutil_import_os.c
-+++ b/lib/libzutil/os/linux/zutil_import_os.c
+--- a/lib/libzutil/zutil_import.c
++++ b/lib/libzutil/zutil_import.c
 @@ -53,6 +53,7 @@
  #include <libgen.h>
  #include <stddef.h>
