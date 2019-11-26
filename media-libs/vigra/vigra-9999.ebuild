@@ -5,8 +5,8 @@ EAPI=7
 
 MY_P="${P}-src"
 MY_V="${PV//\./-}"
-PYTHON_COMPAT=( python2_7 python3_6 )
-PYTHON_REQ_USE="threads,xml"
+PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_REQ_USE="threads(+),xml"
 inherit cmake-utils python-r1
 
 DESCRIPTION="C++ computer vision library emphasizing customizable algorithms and structures"
@@ -39,26 +39,27 @@ BDEPEND="
 		valgrind? ( dev-util/valgrind )
 	)
 "
-# runtime dependency on python:2.7 is required by the vigra-config script
+# runtime dependency on python is required by the vigra-config script
 DEPEND="
-	dev-lang/python:2.7
 	fftw? ( sci-libs/fftw:3.0 )
 	hdf5? ( >=sci-libs/hdf5-1.8.0:=[mpi=] )
 	jpeg? ( virtual/jpeg:0 )
 	openexr? (
-		media-libs/openexr:=
 		media-libs/ilmbase:=
+		media-libs/openexr:=
 	)
 	png? ( media-libs/libpng:0= )
 	python? (
+		${PYTHON_DEPS}
 		dev-libs/boost:=[python?,${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		${PYTHON_DEPS}
 	)
 	tiff? ( media-libs/tiff:0= )
 	zlib? ( sys-libs/zlib )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${PYTHON_DEPS}
+	${DEPEND}
+"
 
 # Severely broken, also disabled in Fedora, bugs #390447, #653442
 RESTRICT="test"
@@ -91,6 +92,9 @@ src_prepare() {
 	vigra_disable png
 	vigra_disable tiff
 	vigra_disable zlib
+
+	# Don't use python_fix_shebang because we can't put this behind USE="python"
+	sed -i -e '/env/s:python:python3:' config/vigra-config.in || die
 }
 
 src_configure() {
