@@ -14,7 +14,7 @@ HOMEPAGE="https://cgit.kde.org/plasma-thunderbolt.git"
 
 LICENSE="|| ( GPL-2 GPL-3+ )"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
