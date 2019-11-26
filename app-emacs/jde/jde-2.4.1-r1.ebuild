@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 JAVA_PKG_IUSE="doc source"
 
-inherit java-pkg-2 java-ant-2 elisp eutils
+inherit java-pkg-2 java-ant-2 elisp
 
 DESCRIPTION="Java Development Environment for Emacs"
 HOMEPAGE="http://jdee.sourceforge.net/"
@@ -16,8 +16,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
-RDEPEND=">=virtual/jdk-1.3
-	app-emacs/elib
+RDEPEND=">=virtual/jdk-1.3:=
 	dev-java/bsh:0
 	dev-java/junit:0
 	dev-util/checkstyle:0"
@@ -33,9 +32,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-2.4.0.1-fix-paths-gentoo.patch"
-	epatch "${FILESDIR}/${PN}-2.4.0.1-classpath-gentoo.patch"
-	epatch "${FILESDIR}/${PN}-2.4.1-doc-directory.patch"
+	eapply "${FILESDIR}/${PN}-2.4.0.1-fix-paths-gentoo.patch"
+	eapply "${FILESDIR}/${PN}-2.4.0.1-classpath-gentoo.patch"
+	eapply "${FILESDIR}/${PN}-2.4.1-doc-directory.patch"
+	eapply_user
 
 	local bshjar csjar
 	bshjar=$(java-pkg_getjar --build-only bsh bsh.jar) || die
@@ -51,8 +51,7 @@ src_prepare() {
 
 src_compile() {
 	ANT_TASKS="ant-contrib" \
-		eant -Delib.dir="${EPREFIX}${SITELISP}/elib" \
-		bindist $(usex doc source-doc "")
+		eant bindist $(usex doc source-doc "")
 }
 
 src_install() {
@@ -70,5 +69,6 @@ src_install() {
 
 	dobin ${dist}/lisp/jtags
 
-	dohtml -r doc/html/*
+	dodoc -r doc/html
+	find "${ED}"/usr/share/doc -iname "*makefile" -delete || die
 }
