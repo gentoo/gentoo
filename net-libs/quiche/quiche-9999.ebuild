@@ -151,7 +151,7 @@ IUSE=""
 DOCS=( CODEOWNERS  COPYING README.md )
 
 BDEPEND="
-	>=virtual/rust-1.35.0
+	>=virtual/rust-1.39.0
 	dev-util/cmake
 	dev-lang/go
 "
