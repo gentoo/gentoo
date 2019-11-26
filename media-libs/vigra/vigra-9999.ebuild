@@ -25,14 +25,14 @@ SLOT="0"
 IUSE="doc +fftw +hdf5 +jpeg mpi openexr +png +python test +tiff valgrind +zlib"
 
 REQUIRED_USE="
-	doc? ( hdf5 fftw )
+	doc? ( hdf5 fftw ${PYTHON_REQUIRED_USE} )
 	python? ( hdf5 ${PYTHON_REQUIRED_USE} )
 	test? ( hdf5 python fftw )"
 
 BDEPEND="
 	doc? (
 		app-doc/doxygen
-		>=dev-python/sphinx-1.1.3-r5[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-1.1.3-r5
 	)
 	test? (
 		>=dev-python/nose-1.1.2-r1[${PYTHON_USEDEP}]
