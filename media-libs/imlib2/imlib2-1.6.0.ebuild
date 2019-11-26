@@ -32,6 +32,7 @@ RDEPEND="
 		x11-libs/libXext[${MULTILIB_USEDEP}]
 	)
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	!<media-plugins/imlib2_loaders-1.6.0
 "
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
