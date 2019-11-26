@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=doc? ( virtual/texi2dvi dev-tex/latex2html app-text/texi2html ) =gnustep-base/gnustep-gui-0.27* opengl? ( virtual/opengl virtual/glu ) x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXmu x11-libs/libXt x11-libs/libXft x11-libs/libXrender >=media-libs/freetype-2.1.9 !gnustep-base/gnustep-back-art !gnustep-base/gnustep-back-cairo
 SLOT=0
 SRC_URI=ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-back-0.27.0.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	gnustep-base	49f1b9591be3a4bf8eeb1f3a07605a2a	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	gnustep-base	49f1b9591be3a4bf8eeb1f3a07605a2a	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=210ba445ad4011c913afbc9a894b34e0

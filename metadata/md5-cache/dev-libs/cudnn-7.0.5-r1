@@ -9,5 +9,5 @@ RDEPEND==dev-util/nvidia-cuda-toolkit-9.1*
 RESTRICT=fetch
 SLOT=0/7
 SRC_URI=cudnn-9.1-linux-x64-v7.tgz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=5b3ebe0505f07769929e12f1b1db013a

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-perl/Config-General dev-libs/libxslt rbd? ( sys-cluster/ceph ) infiniband? ( sys-fabric/libibverbs:= sys-fabric/librdmacm:= ) app-text/docbook-xsl-stylesheets dev-libs/libaio sys-apps/sg3_utils
 SLOT=0
 SRC_URI=https://github.com/fujita/tgt/tarball/v1.0.79 -> tgt-1.0.79.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=ace2197c5dcdce225a7c40367056a8cc

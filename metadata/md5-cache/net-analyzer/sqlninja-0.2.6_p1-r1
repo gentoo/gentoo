@@ -9,5 +9,5 @@ RDEPEND=dev-lang/perl dev-perl/IO-Socket-SSL dev-perl/List-MoreUtils dev-perl/Ne
 RESTRICT=mirror
 SLOT=0
 SRC_URI=mirror://sourceforge/sqlninja/sqlninja-0.2.6-r1.tgz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=84b7ff98adf89115ee42970d521f7df8

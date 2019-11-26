@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=>=app-dicts/migemo-dict-200812[unicode=] dev-lang/perl || ( net-misc/curl net-misc/wget www-client/fetch ) app-i18n/nkf
 SLOT=0
 SRC_URI=http://www.kaoriya.net/dist/var/cmigemo-1.3c-MIT.tar.bz2
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=a13fde4230baa419ae3f49b9381d05c6

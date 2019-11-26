@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=sys-libs/zlib-1.2.5.1-r1 !libressl? ( >=dev-libs/openssl-1.1.0:= ) libressl? ( dev-libs/libressl )
 SLOT=0
 SRC_URI=https://mirror.httrack.com/historical/httrack-3.49.2.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=b44135d4b427f67abbea3751b0c53b53

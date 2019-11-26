@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsndfile virtual/jack mp3? ( media-sound/lame ) ogg? ( media-libs/libogg ) osc? ( media-libs/liblo )
 SLOT=0
 SRC_URI=https://github.com/kmatheussen/jack_capture/archive/0.9.73.tar.gz -> jack_capture-0.9.73.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=204b4999e9c4507e20753cdabdefe200

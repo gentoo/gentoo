@@ -10,5 +10,5 @@ LICENSE=MIT
 RDEPEND=kernel_linux? ( sys-libs/libutempter ) kernel_FreeBSD? ( sys-libs/libutempter ) media-libs/fontconfig:1.0 >=sys-libs/ncurses-5.7-r7:0= x11-apps/xmessage x11-libs/libICE x11-libs/libX11 x11-libs/libXaw x11-libs/libXft x11-libs/libxkbfile x11-libs/libXmu x11-libs/libXrender x11-libs/libXt unicode? ( x11-apps/luit ) Xaw3d? ( x11-libs/libXaw3d ) xinerama? ( x11-libs/libXinerama ) media-fonts/font-misc-misc x11-apps/rgb
 SLOT=0
 SRC_URI=ftp://ftp.invisible-island.net/xterm/xterm-351.tgz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=9223061bbbeb5eb80a045d57c23efdec

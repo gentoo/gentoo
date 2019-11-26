@@ -10,5 +10,5 @@ RDEPEND=app-eselect/eselect-chuck media-libs/libsndfile alsa? ( media-libs/alsa-
 REQUIRED_USE=|| ( alsa jack )
 SLOT=0
 SRC_URI=http://chuck.cs.princeton.edu/release/files/chuck-1.4.0.0.tgz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b2e87c5c3ba57ffc8cfd9072e4904c2f

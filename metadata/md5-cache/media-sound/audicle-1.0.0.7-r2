@@ -10,5 +10,5 @@ LICENSE=GPL-2
 REQUIRED_USE=|| ( alsa jack oss )
 SLOT=0
 SRC_URI=http://audicle.cs.princeton.edu/release/files/audicle-1.0.0.7.tgz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=cfba311df0a0a4fb0ae18e1ada221827

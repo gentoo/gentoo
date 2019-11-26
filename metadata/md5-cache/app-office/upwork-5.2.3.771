@@ -8,5 +8,5 @@ LICENSE=ODESK
 RDEPEND=dev-libs/expat dev-libs/nspr dev-libs/nss gnome-base/gconf media-libs/alsa-lib media-libs/freetype sys-apps/dbus sys-libs/libcap x11-libs/gtk+:2[cups] x11-libs/gtkglext
 SLOT=0
 SRC_URI=amd64? ( https://updates-desktopapp.upwork.com/binaries/v5_2_3_771_okk32anbjc976nah/upwork-5.2.3.771-1fc24.x86_64.rpm -> upwork-5.2.3.771_x86_64.rpm ) x86? ( https://updates-desktopapp.upwork.com/binaries/v5_2_3_771_okk32anbjc976nah/upwork-5.2.3.771-1fc24.i386.rpm -> upwork-5.2.3.771_i386.rpm )
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	rpm	f52cfa3a435468d86d3b49c357b9cb35
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	rpm	f52cfa3a435468d86d3b49c357b9cb35
 _md5_=a181aa88a2553e6aa47c2b5a92a9a3ac

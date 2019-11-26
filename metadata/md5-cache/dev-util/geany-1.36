@@ -10,5 +10,5 @@ LICENSE=GPL-2+ HPND
 RDEPEND=>=dev-libs/glib-2.32:2 !gtk3? ( >=x11-libs/gtk+-2.24:2 vte? ( x11-libs/vte:0 ) ) gtk3? ( >=x11-libs/gtk+-3.0:3 vte? ( x11-libs/vte:2.91 ) )
 SLOT=0
 SRC_URI=https://download.geany.org/geany-1.36.tar.bz2
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=2d5a15b44b9c328fd006e6097c817cf6

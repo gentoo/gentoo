@@ -10,5 +10,5 @@ RDEPEND=sys-libs/ncurses:= dev-libs/glib:2 media-libs/hamlib media-sound/sox dev
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://nongnu/tlf/tlf-1.4.0.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=c6c2f19fbe859cc88b3c0a34a66d6bac

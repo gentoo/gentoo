@@ -6,5 +6,5 @@ KEYWORDS=amd64 ~arm ~arm64 x86
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=https://pub.mate-desktop.org/releases/1.22/mate-common-1.22.0.tar.xz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	mate-desktop.org	e10ab79a4595873541dc4897c7b19724	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	mate-desktop.org	e10ab79a4595873541dc4897c7b19724	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=a9a8baa94543fc647a2f98081bd1b9f6

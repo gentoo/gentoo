@@ -11,5 +11,5 @@ PDEPEND=kernel_FreeBSD? ( sys-fs/fuse4bsd )
 RDEPEND=>=sys-fs/fuse-common-3.3.0-r1
 SLOT=0
 SRC_URI=https://github.com/libfuse/libfuse/releases/download/fuse-2.9.9/fuse-2.9.9.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=b2a243a813f003b5a1057bcddb3a79f9

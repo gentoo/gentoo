@@ -6,5 +6,5 @@ KEYWORDS=-* alpha
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://aboot.sourceforge.net/tarballs/aboot-1.0_pre20040408.tar.bz2 mirror://gentoo/gentoo-headers-base-2.6.22.tar.bz2 mirror://gentoo/aboot_gentoo.diff.bz2 https://dev.gentoo.org/~armin76/dist/aboot_gentoo.diff.bz2
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=0ee2d6f72ee5ce10ca6fbcaaee3eb5aa

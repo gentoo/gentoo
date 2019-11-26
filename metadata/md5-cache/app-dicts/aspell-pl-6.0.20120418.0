@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-text/aspell-0.60
 SLOT=0
 SRC_URI=http://www.sjp.pl/slownik/ort/sjp-aspell6-pl-6.0_20120418-0.tar.bz2
-_eclasses_=aspell-dict-r1	d72b0cd12aab80047c51d57eb5c8f420	estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=aspell-dict-r1	d72b0cd12aab80047c51d57eb5c8f420	estack	686eaab303305a908fd57b2fd7617800	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=6334704ad740c2a2c37f938e19512cc3

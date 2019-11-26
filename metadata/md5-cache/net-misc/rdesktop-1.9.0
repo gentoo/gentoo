@@ -10,5 +10,5 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/nettle:0= >=net-libs/gnutls-3.2.0:0= x11-libs/libX11 x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp alsa? ( media-libs/alsa-lib media-libs/libsamplerate ) ao? ( >=media-libs/libao-0.8.6 media-libs/libsamplerate ) kerberos? ( virtual/krb5 ) pcsc-lite? ( >=sys-apps/pcsc-lite-1.6.6 ) oss? ( media-libs/libsamplerate ) pulseaudio? ( media-libs/libsamplerate media-sound/pulseaudio ) xrandr? ( x11-libs/libXrandr )
 SLOT=0
 SRC_URI=https://github.com/rdesktop/rdesktop/releases/download/v1.9.0/rdesktop-1.9.0.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b5b09d34b4e6c6afc2ef5c7c64dcdbf5

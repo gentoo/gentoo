@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~m68k-mint
 LICENSE=MIT
 SLOT=0/0.2.4
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libparserutils-0.2.4-src.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=61b980734793c5ad379693e4f90156ec

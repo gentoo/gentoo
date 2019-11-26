@@ -9,5 +9,5 @@ RDEPEND=acct-group/gamestat >=media-libs/libsdl-1.2[abi_x86_32,opengl,sound,vide
 RESTRICT=bindist mirror strip
 SLOT=0
 SRC_URI=http://www.chroniclogic.com/demos/triptych.tar.gz -> triptych-1.16.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5
 _md5_=496589781f7e5c4246c8f75180f8b391

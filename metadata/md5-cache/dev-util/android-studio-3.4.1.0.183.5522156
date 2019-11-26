@@ -11,5 +11,5 @@ RDEPEND=dev-java/commons-logging:0 dev-java/log4j:0 >=virtual/jdk-1.7 selinux? (
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://dl.google.com/dl/android/studio/ide-zips/3.4.1.0/android-studio-ide-183.5522156-linux.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	82402a1c36ab4bf38f3313a543f9e827
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	82402a1c36ab4bf38f3313a543f9e827
 _md5_=e27bc55b3821c9e477896496ee0be7c1

@@ -9,5 +9,5 @@ LICENSE=ISC
 RDEPEND=>=dev-lang/execline-2.3.0.4:=[!static?] >=sys-apps/s6-2.6.2.0:=[!static?] !static? ( >=dev-libs/skalibs-2.6.3.0:= )
 SLOT=0/0.4
 SRC_URI=https://www.skarnet.org/software/s6-rc/s6-rc-0.4.0.0.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=7622b6351226e81e80401fd30ec63541

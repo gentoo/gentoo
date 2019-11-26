@@ -9,5 +9,5 @@ RDEPEND=!minimal? ( || ( x11-themes/tango-icon-theme x11-themes/adwaita-icon-the
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=http://www.silvestre.com.ar/icons/Nou-090208.tar.bz2
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	2352c3fc97241f6a02042773c8287748	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	versionator	2352c3fc97241f6a02042773c8287748	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=3b372b9566a312c6e2d331e065d599c2

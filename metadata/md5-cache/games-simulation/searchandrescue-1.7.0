@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl media-libs/sdl-mixer virtual/glu virtual/opengl x11-libs/libICE x11-libs/libSM x11-libs/libXi x11-libs/libXmu x11-libs/libXpm x11-libs/libXxf86vm
 SLOT=0
 SRC_URI=mirror://sourceforge/searchandrescue/SearchAndRescue-1.7.0.tar.gz -> SearchAndRescue-1.7.0.tar mirror://sourceforge/searchandrescue/SearchAndRescue-data-1.7.0.tar.gz -> SearchAndRescue-data-1.7.0.tar mirror://sourceforge/searchandrescue/SearchAndRescue-data-guadarrama-1.7.0.tar.gz -> SearchAndRescue-data-guadarrama-1.7.0.tar
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=40e331af36c90e1a1a0f1d8d6e7233ce

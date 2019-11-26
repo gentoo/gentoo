@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=app-accessibility/at-spi2-atk app-accessibility/at-spi2-core dev-libs/atk dev-libs/expat dev-libs/glib dev-libs/nspr dev-libs/nss media-libs/alsa-lib net-print/cups sys-apps/dbus sys-apps/util-linux x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libxcb x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender x11-libs/libXScrnSaver x11-libs/libXtst x11-libs/pango
 SLOT=0
 SRC_URI=https://pencil.evolus.vn/dl/V3.1.0.ga/pencil-3.1.0.ga-1.x86_64.rpm -> evoluspencil-3.1.0-1.rpm
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	rpm	f52cfa3a435468d86d3b49c357b9cb35	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	rpm	f52cfa3a435468d86d3b49c357b9cb35	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=e76f5192b34a681c159521e87b9d39ac

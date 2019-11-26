@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/libical-0.48:= dev-libs/popt:= >=x11-libs/gtk+-2.10:2= berkdb? ( >=sys-libs/db-4:= ) clock-panel-plugin? ( >=xfce-base/xfce4-panel-4.10:= ) dbus? ( >=dev-libs/dbus-glib-0.100:= ) libnotify? ( >=x11-libs/libnotify-0.7:= )
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/apps/orage/4.12/orage-4.12.1.tar.bz2
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=840855946bd2075d81a1f5a3d3f065b8

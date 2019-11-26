@@ -10,5 +10,5 @@ RDEPEND=virtual/opengl x11-libs/libX11 x11-libs/libXcursor x11-libs/libXrandr gu
 RESTRICT=bindist fetch splitdebug
 SLOT=0
 SRC_URI=SatelliteReignLinux0113_06.zip
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=bcad2ca52a0fffc709ec8d3e342968bb

@@ -9,5 +9,5 @@ LICENSE=Apache-2.0 custom-jdk? ( GPL-2 )
 RDEPEND=!dev-util/idea-community:14 !dev-util/idea-community:15 >=virtual/jdk-1.7:*
 SLOT=0
 SRC_URI=https://download.jetbrains.com/idea/ideaIC-2018.3.4-no-jdk.tar.gz -> ideaIC-183.5429.30.tar.gz custom-jdk? ( x86? ( https://bintray.com/jetbrains/intellij-jdk/download_file?file_path=jbrx-8u202-linux-i586-b1483.24.tar.gz -> jbrx-8u202-linux-i586-b1483.24.tar.gz ) amd64? ( https://bintray.com/jetbrains/intellij-jdk/download_file?file_path=jbrx-8u202-linux-x64-b1483.24.tar.gz -> jbrx-8u202-linux-x64-b1483.24.tar.gz ) )
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5
 _md5_=a0dfea0a7547fdef365ffb95dd4a8bf2

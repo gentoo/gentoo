@@ -8,5 +8,5 @@ LICENSE=ISSL
 RDEPEND=eselect-ldso? ( !app-eselect/eselect-cblas >=app-eselect/eselect-blas-0.2 ) sys-libs/libomp
 SLOT=0
 SRC_URI=https://repo.continuum.io/pkgs/main/linux-64/mkl-2019.4-243.tar.bz2 -> mkl-rt-2019.4.243.tar.bz2
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5
 _md5_=38be5a9db4c8c293b69ee6a18472f746

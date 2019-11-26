@@ -11,5 +11,5 @@ RDEPEND=dbus? ( sys-apps/dbus:= ) idn? ( !libidn2? ( net-dns/libidn:0= ) libidn2
 REQUIRED_USE=dhcp-tools? ( dhcp ) lua? ( script ) libidn2? ( idn )
 SLOT=0
 SRC_URI=http://www.thekelleys.org.uk/dnsmasq/dnsmasq-2.80.tar.xz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
 _md5_=4ff0f46cacac37a8fa56ee910cac5b04
