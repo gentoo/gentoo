@@ -1,5 +1,5 @@
 BDEPEND=>=dev-lang/go-1.12
-DEFINED_PHASES=compile install postinst unpack
+DEFINED_PHASES=compile install postinst prepare unpack
 DEPEND=>=app-crypt/gpgme-1.5.5:= >=dev-libs/libassuan-2.4.3:= dev-libs/libgpg-error:= >=sys-fs/btrfs-progs-4.0.1 >=sys-fs/lvm2-2.02.145:= dev-go/go-md2man
 DESCRIPTION=Command line utility foroperations on container images and image repositories
 EAPI=7
@@ -9,6 +9,6 @@ LICENSE=Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT
 RDEPEND=>=app-crypt/gpgme-1.5.5:= >=dev-libs/libassuan-2.4.3:= dev-libs/libgpg-error:= >=sys-fs/btrfs-progs-4.0.1 >=sys-fs/lvm2-2.02.145:=
 RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/containers/skopeo/archive/v0.1.40.tar.gz -> skopeo-0.1.40.tar.gz
+SRC_URI=https://github.com/containers/skopeo/archive/v0.1.40.tar.gz -> skopeo-0.1.40.tar.gz https://github.com/containers/storage/pull/466.patch -> containers-storage-1.14.0-vfs-user-xattrs.patch
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	go-module	ab2b956f1b3888b8418581b8662fe211	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=efd4b5a82076ed380a2b6782da0a47f9
+_md5_=8dee9324df2b1b03941c89c3ad94134f

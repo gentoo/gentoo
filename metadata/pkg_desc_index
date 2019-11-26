@@ -1484,7 +1484,7 @@ app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.36.1 1.38.0: VM appliance disk image used in libguestfs package
-app-emulation/libpod 1.6.3-r1: Library and podman tool for running OCI-based containers in Pods
+app-emulation/libpod 1.6.3-r2: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.2 1.4.4: Spectrum emulation library
 app-emulation/libvirt 5.2.0-r2 5.5.0-r1 5.6.0 5.8.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0: GLib and GObject mappings for libvirt
@@ -1512,7 +1512,7 @@ app-emulation/sen 0.5.1 0.6.0 0.6.1: Terminal User Interface for docker engine
 app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, PDP-11 etc.)
 app-emulation/simplevirt 0.0_p20181012: Simple virtual machine manager for Linux (QEMU/KVM)
 app-emulation/ski 1.3.2-r2 1.3.2-r3: ia64 instruction set simulator
-app-emulation/skopeo 0.1.39 0.1.40: Command line utility foroperations on container images and image repositories
+app-emulation/skopeo 0.1.39 0.1.40-r1: Command line utility foroperations on container images and image repositories
 app-emulation/slirp4netns 0.3.3 0.4.1: User-mode networking for unprivileged network namespaces
 app-emulation/softgun 0.21 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3-r1: 48k ZX Spectrum Emulator
