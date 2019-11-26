@@ -9898,7 +9898,7 @@ dev-ruby/lockfile 2.1.3: A ruby library for creating NFS safe lockfiles
 dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written in Ruby
 dev-ruby/log_buddy 0.7.0: Log statements along with their name easily
 dev-ruby/logue 1.0.13-r1 1.0.16 1.0.18: A module that adds logging/trace functionality
-dev-ruby/loofah 2.3.1: Library for manipulating and transforming HTML/XML documents and fragments.
+dev-ruby/loofah 2.3.1 2.4.0: Library for manipulating and transforming HTML/XML documents and fragments.
 dev-ruby/loquacious 1.9.1-r2: Descriptive configuration files for Ruby written in Ruby
 dev-ruby/lumberjack 1.0.13: A simple, powerful, and very fast logging utility
 dev-ruby/mab 0.0.3: Markup as Ruby
