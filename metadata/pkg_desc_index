@@ -1430,7 +1430,7 @@ app-emacs/zenburn 20110907-r1: Zenburn color theme for Emacs
 app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs text editor
 app-emulation/aqemu 0.9.2: Graphical interface for QEMU and KVM emulators, using Qt5
 app-emulation/bochs 2.6.9: LGPL-ed pc emulator
-app-emulation/buildah 1.11.2 1.11.3 1.11.5: A tool that facilitates building OCI images
+app-emulation/buildah 1.11.5: A tool that facilitates building OCI images
 app-emulation/cadvisor 0.34.0: Analyzes resource usage and performance characteristics of running containers
 app-emulation/cloud-init 17.2 18.4-r1 18.5 9999: Cloud instance initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
