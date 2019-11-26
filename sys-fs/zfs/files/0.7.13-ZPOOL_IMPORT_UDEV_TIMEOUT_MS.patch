@@ -1,0 +1,70 @@
+From a0767672aac01f41516550e3808ff72da893102f Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Tue, 26 Nov 2019 12:07:36 -0800
+Subject: [PATCH] backport udev timeout patch
+
+https://github.com/zfsonlinux/zfs/commit/803884217f9b9b5fb235d7c5e78a809d271f6387
+---
+ lib/libzfs/libzfs_import.c | 11 ++++++++++-
+ man/man8/zpool.8           |  6 ++++++
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/lib/libzfs/libzfs_import.c b/lib/libzfs/libzfs_import.c
+index 9dbf207..cd08806 100644
+--- a/lib/libzfs/libzfs_import.c
++++ b/lib/libzfs/libzfs_import.c
+@@ -53,6 +53,7 @@
+ #endif
+ #include <stddef.h>
+ #include <stdlib.h>
++#include <stdio.h>
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+@@ -1594,17 +1595,25 @@ zpool_open_func(void *arg)
+ 	if (rn->rn_labelpaths) {
+ 		char *path = NULL;
+ 		char *devid = NULL;
++		char *env = NULL;
+ 		rdsk_node_t *slice;
+ 		avl_index_t where;
++		int timeout;
+ 		int error;
+ 
+ 		if (label_paths(rn->rn_hdl, rn->rn_config, &path, &devid))
+ 			return;
+ 
++		env = getenv("ZPOOL_IMPORT_UDEV_TIMEOUT_MS");
++		if ((env == NULL) || sscanf(env, "%d", &timeout) != 1 ||
++		    timeout < 0) {
++			timeout = DISK_LABEL_WAIT;
++		}
++
+ 		/*
+ 		 * Allow devlinks to stabilize so all paths are available.
+ 		 */
+-		zpool_label_disk_wait(rn->rn_name, DISK_LABEL_WAIT);
++		zpool_label_disk_wait(rn->rn_name, timeout);
+ 
+ 		if (path != NULL) {
+ 			slice = zfs_alloc(hdl, sizeof (rdsk_node_t));
+diff --git a/man/man8/zpool.8 b/man/man8/zpool.8
+index 46e531e..10a19b5 100644
+--- a/man/man8/zpool.8
++++ b/man/man8/zpool.8
+@@ -2291,6 +2291,12 @@ Similar to the
+ option in
+ .Nm zpool import .
+ .El
++.Bl -tag -width "ZPOOL_IMPORT_UDEV_TIMEOUT_MS"
++.It Ev ZPOOL_IMPORT_UDEV_TIMEOUT_MS
++The maximum time in milliseconds that
++.Nm zpool import
++will wait for an expected device to be available.
++.El
+ .Bl -tag -width "ZPOOL_VDEV_NAME_GUID"
+ .It Ev ZPOOL_VDEV_NAME_GUID
+ Cause
+-- 
+2.24.0
+
