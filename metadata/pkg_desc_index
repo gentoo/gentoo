@@ -1543,7 +1543,7 @@ app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Expl
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-staging 4.17 4.18 4.19 4.20 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
 app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.0.3 4.17 4.18 4.19 4.20 9999: Free implementation of Windows(tm) on Unix, without external patchsets
-app-emulation/winetricks 20190310 20190912 99999999: Easy way to install DLLs needed to work around problems in Wine
+app-emulation/winetricks 20190912 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
@@ -19099,7 +19099,7 @@ x11-plugins/wmwifi 0.6-r1: wireless network interface monitor dockapp
 x11-plugins/wmwork 0.2.5-r1: a dockapp that lets you easily track time spent on different projects
 x11-plugins/wmxkb 1.2.2-r1: Dockable keyboard layout switcher for Window Maker
 x11-plugins/wmxres 1.2-r1: Dock application to select your display mode among those possible
-x11-terms/alacritty 0.3.3-r1 9999: GPU-accelerated terminal emulator
+x11-terms/alacritty 0.3.3-r1 0.4.0 9999: GPU-accelerated terminal emulator
 x11-terms/aterm 1.0.1-r3: rxvt compatible terminal emulator with transparency support
 x11-terms/cool-retro-term 1.1.0 1.1.1: terminal emulator which mimics the look and feel of the old cathode tube screens
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
