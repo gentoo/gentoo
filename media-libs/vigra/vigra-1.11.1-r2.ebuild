@@ -64,7 +64,10 @@ RDEPEND="${DEPEND}"
 RESTRICT="test"
 
 PATCHES=(
+	# git master
 	"${FILESDIR}/${P}-fix-incorrect-template-parameter-type.patch"
+	"${FILESDIR}/${P}-boost-python.patch"
+	# TODO: upstream
 	"${FILESDIR}/${P}-lib_suffix.patch"
 )
 
