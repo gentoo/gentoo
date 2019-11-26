@@ -1322,7 +1322,7 @@ app-emacs/inform-mode 1.6.2: A major mode for editing Inform programs
 app-emacs/initsplit 1.8_pre20160919: Split customizations into different files
 app-emacs/jam-mode 0.3: An Emacs major mode for editing Jam files
 app-emacs/jasmin 1.2-r2: An Emacs major mode for editing Jasmin Java bytecode assembler files
-app-emacs/jde 2.4.1: Java Development Environment for Emacs
+app-emacs/jde 2.4.1-r1: Java Development Environment for Emacs
 app-emacs/keywiz 1.4: Emacs key sequence quiz
 app-emacs/ledger-mode 3.1.1: An Emacs major mode for editing ledger files
 app-emacs/lookup 1.99.96_pre20180209: An interface to search CD-ROM books and network dictionaries
