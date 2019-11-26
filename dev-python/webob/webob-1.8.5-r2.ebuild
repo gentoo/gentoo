@@ -30,22 +30,12 @@ BDEPEND="
 	)
 "
 
-RESTRICT="!test? ( test )"
+S="${WORKDIR}/${MY_P}"
 
-S=${WORKDIR}/${MY_P}
+distutils_enable_sphinx docs 'dev-python/alabaster'
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	sed -i "/'sphinx.ext.intersphinx'/d" docs/conf.py || die
 	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	if use doc; then
-		esetup.py build_sphinx
-		HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
-	fi
-}
-
-python_test() {
-	pytest -vv || die "Tests fail with ${EPYTHON}"
 }
