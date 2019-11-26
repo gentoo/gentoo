@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2019-11-26)
+# Upstream says: "Elib has been decommissioned as a separate package
+# since its useful functions have long since been included in Emacs."
+# Last release in 1995. Byte-compilation fails with Emacs 27.
+# Masked for removal in 30 days. Bug #701160.
+app-emacs/elib
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-11-25)
 # Mask for removal from main tree into ::nix-guix overlay.
 # Removal in 30 days.
