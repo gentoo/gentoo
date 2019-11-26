@@ -3,10 +3,10 @@ DEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 
 DESCRIPTION=Scripts to build Ganeti VMs with debootstrap
 EAPI=6
 HOMEPAGE=http://www.ganeti.org/
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/coreutils-6.10-r1 app-arch/dpkg app-arch/dump app-emulation/ganeti dev-util/debootstrap sys-apps/util-linux sys-fs/e2fsprogs sys-fs/multipath-tools
 SLOT=0
 SRC_URI=http://downloads.ganeti.org/instance-debootstrap/ganeti-instance-debootstrap-0.16.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=99a5850ea8f6a512bba655de52f67f08
+_md5_=120a304fbaea1cd76eed3d9163f462b6

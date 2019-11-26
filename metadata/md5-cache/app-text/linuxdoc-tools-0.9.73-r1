@@ -5,10 +5,10 @@ DESCRIPTION=A toolset for processing LinuxDoc DTD SGML files
 EAPI=7
 HOMEPAGE=https://gitlab.com/agmartin/linuxdoc-tools
 IUSE=doc
-KEYWORDS=~amd64 ~ia64 ~ppc ~sparc ~x86
+KEYWORDS=~amd64 ~ia64 ~ppc ~sparc x86
 LICENSE=GPL-3+ MIT SGMLUG
 RDEPEND=|| ( app-text/openjade app-text/opensp ) app-text/sgml-common dev-lang/perl:= sys-apps/groff virtual/latex-base >=app-text/sgml-common-0.6.3-r7
 SLOT=0
 SRC_URI=https://gitlab.com/agmartin/linuxdoc-tools/-/archive/0.9.73/linuxdoc-tools-0.9.73.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	latex-package	17f13abe0de88340745e52e6b627aee7	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=b8e84ecfc02d9f5491fcb06065b5a5bb
+_md5_=aa9962b10d492627ebbdeb95227a8a0e
