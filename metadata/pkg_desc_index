@@ -8524,7 +8524,7 @@ dev-python/pymilter 1.0.4-r1: Python interface to sendmail milter API
 dev-python/pyminuit 1.2.1-r1: Minuit numerical function minimization in Python
 dev-python/pyml 0.7.13.3: Python machine learning package
 dev-python/pymoc 0.5.0: Python Multi-Order Coverage maps for Virtual Observatory
-dev-python/pymongo 3.4.0 3.5.1 3.7.1 3.7.2: Python driver for MongoDB
+dev-python/pymongo 3.4.0 3.5.1 3.7.1 3.7.2 3.9.0: Python driver for MongoDB
 dev-python/pymountboot 0.2.2 9999: Python extension module to (re)mount /boot
 dev-python/pympler 0.5 0.6: Memory profiling for Python applications
 dev-python/pymssql 1.0.2-r1 2.1.3: Simple MSSQL python extension module
@@ -15393,7 +15393,7 @@ net-misc/pytvshows 0.2-r3: downloads torrents for TV shows from RSS feeds provid
 net-misc/qtm 1.3.19: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.045.08 8.047.05: r8168 driver for Realtek 8111/8168 PCI-E NICs
-net-misc/rabbitmq-server 3.6.9 3.6.14 3.7.13 3.7.17 3.8.0: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
+net-misc/rabbitmq-server 3.6.9 3.6.14 3.7.13 3.7.17 3.7.21 3.8.0 3.8.1: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.14 2.17-r1 2.17-r2 2.18: Linux IPv6 Router Advertisement Daemon
 net-misc/rclone 1.45 1.47.0 1.49.1 9999: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
