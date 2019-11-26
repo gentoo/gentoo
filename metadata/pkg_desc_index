@@ -1542,7 +1542,7 @@ app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and ic
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-staging 4.17 4.18 4.19 4.20 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.17 4.18 4.19 4.20 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.0.3 4.17 4.18 4.19 4.20 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20190310 20190912 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -9168,7 +9168,7 @@ dev-python/webcolors 1.5 1.8.1 1.10: Color names and value formats defined by th
 dev-python/webencodings 0.5.1: Character encoding aliases for legacy web content
 dev-python/weberror 0.13.1: Web Error handling and exception catching
 dev-python/webhelpers 1.3-r1: Web Helpers
-dev-python/webob 1.8.2 1.8.2-r1 1.8.5 1.8.5-r1 1.8.5-r2: WSGI request and response object
+dev-python/webob 1.8.2 1.8.2-r1 1.8.5 1.8.5-r1 1.8.5-r3: WSGI request and response object
 dev-python/webpy 0.37-r1 0.38: A small and simple web framework for Python
 dev-python/websocket-client 0.37.0 0.40.0 0.47.0 0.48.0: WebSocket client for python with hybi13 support
 dev-python/websockify 0.8.0: WebSockets support for any application/server
