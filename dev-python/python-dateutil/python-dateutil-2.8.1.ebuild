@@ -43,7 +43,9 @@ distutils_enable_tests pytest
 
 python_prepare_all() {
 	# avoid a setuptools_scm dependency
-	sed -i "s:use_scm_version=True:version='${PV}':" setup.py || die
+	sed -i "s:use_scm_version=True:version='${PV}',name='${PN//-/.}':" setup.py || die
+	sed -r -i "s:setuptools_scm[[:space:]]*([><=]{1,2}[[:space:]]*[0-9.a-zA-Z]+|)[[:space:]]*::" \
+		setup.cfg || die
 
 	# don't install zoneinfo tarball
 	sed -i '/package_data=/d' setup.py || die
