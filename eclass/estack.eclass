@@ -155,7 +155,7 @@ evar_pop() {
 # @CODE
 eshopts_push() {
 	# Save both "shopt" and "set -o" option sets, because otherwise
-	# restoring noglob would disable expand_aliases by side effect. #662586
+	# restoring posix would disable expand_aliases by side effect. #662586
 	estack_push eshopts "$(shopt -p -o) $(shopt -p)"
 	if [[ $1 == -[su] ]] ; then
 		[[ $# -le 1 ]] && return 0
