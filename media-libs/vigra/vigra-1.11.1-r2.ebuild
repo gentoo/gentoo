@@ -69,6 +69,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-boost-python.patch"
 	# TODO: upstream
 	"${FILESDIR}/${P}-lib_suffix.patch"
+	"${FILESDIR}/${P}-sphinx.ext.pngmath.patch" # thanks to Debian; bug 678308
 )
 
 pkg_setup() {

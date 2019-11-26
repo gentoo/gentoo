@@ -1,0 +1,27 @@
+Description: Replace sphinx.ext.pngmath by sphinx.ext.imgmath to build with sphinx 1.8
+Bug-Debian: https://bugs.debian.org/923467
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Fri, 08 Mar 2019 18:38:02 +0100
+
+--- a/vigranumpy/docsrc/conf.py.cmake2.in
++++ b/vigranumpy/docsrc/conf.py.cmake2.in
+@@ -59,7 +59,7 @@ os.environ['PATH'] = os.pathsep.join([vi
+ 
+ # Add any Sphinx extension module names here, as strings. They can be extensions
+ # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
+-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.todo', 'sphinx.ext.coverage', 'sphinx.ext.pngmath']
++extensions = ['sphinx.ext.autodoc', 'sphinx.ext.todo', 'sphinx.ext.coverage', 'sphinx.ext.imgmath']
+ 
+ # Add any paths that contain templates here, relative to this directory.
+ templates_path = ['_templates']
+--- a/vigranumpy/docsrc/conf.py.in
++++ b/vigranumpy/docsrc/conf.py.in
+@@ -58,7 +58,7 @@ os.environ['PATH'] = os.pathsep.join([vi
+ 
+ # Add any Sphinx extension module names here, as strings. They can be extensions
+ # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
+-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.todo', 'sphinx.ext.coverage', 'sphinx.ext.pngmath']
++extensions = ['sphinx.ext.autodoc', 'sphinx.ext.todo', 'sphinx.ext.coverage', 'sphinx.ext.imgmath']
+ 
+ # Add any paths that contain templates here, relative to this directory.
+ templates_path = ['_templates']
