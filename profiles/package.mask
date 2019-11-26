@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2019-11-26)
+# Package is obsolete. Successor is net-wireless/b43-fwcutter
+# Bug #537786.
+# Removal after 2020-01-01
+net-wireless/bcm43xx-fwcutter
+
 # Ulrich Müller <ulm@gentoo.org> (2019-11-26)
 # Upstream says: "Elib has been decommissioned as a separate package
 # since its useful functions have long since been included in Emacs."
