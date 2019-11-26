@@ -11458,7 +11458,7 @@ games-kids/lletters 0.1.95-r3: Game that helps young kids learn their letters an
 games-kids/memonix 1.6-r1: Brain teasers, puzzle and memory games for kid's in one pack
 games-kids/tuxmath 2.0.3-r1: Educational arcade game where you have to solve maths problems
 games-kids/tuxmathscrabble 0.8.1-r1: math-version of the popular board game for children 4-10
-games-kids/tuxtype 1.8.1-r1: Typing tutorial with lots of eye-candy
+games-kids/tuxtype 1.8.1-r1 1.8.3: Typing tutorial with lots of eye-candy
 games-misc/OilWar 1.2.1-r2: Evil army is attacking your country and tries to steal your oil
 games-misc/asr-manpages 1.3_rc6: set of humorous manual pages developed on alt.sysadmin.recovery
 games-misc/ballerburg 1.2.0: Linux port of the classical Atari ST game Ballerburg
