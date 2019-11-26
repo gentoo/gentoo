@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_REPO_URI="https://github.com/anholt/${PN}.git"
 
@@ -27,10 +27,9 @@ SLOT="0"
 IUSE="+egl test +X"
 
 RDEPEND="egl? ( media-libs/mesa[egl,${MULTILIB_USEDEP}] )"
-DEPEND="${PYTHON_DEPS}
-	${RDEPEND}
-	>=dev-util/meson-0.47.0
-	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
+DEPEND="X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
+	${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig"
 
 src_unpack() {
@@ -42,8 +41,8 @@ multilib_src_configure() {
 	local emesonargs=(
 		-Degl=$(usex egl)
 		-Dglx=$(usex X)
-		-Dx11=$(usex X true false)
-		-Dtests=$(usex test true false)
+		$(meson_use X x11)
+		$(meson_use test tests)
 	)
 	meson_src_configure
 }
