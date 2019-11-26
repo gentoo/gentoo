@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit systemd user cmake-utils toolchain-funcs
+
+inherit systemd cmake-utils toolchain-funcs
 
 DESCRIPTION="A C++ daemon for accessing the I2P anonymous network"
 HOMEPAGE="https://github.com/PurpleI2P/i2pd"
@@ -15,6 +16,8 @@ IUSE="cpu_flags_x86_aes cpu_flags_x86_avx i2p-hardening libressl static +upnp we
 
 # if using libressl, require >=boost-1.65, see #597798
 RDEPEND="
+	acct-user/i2pd
+	acct-group/i2pd
 	!static? (
 		dev-libs/boost:=[threads]
 		!libressl? ( dev-libs/openssl:0=[-bindist] )
@@ -37,9 +40,6 @@ DEPEND="${RDEPEND}
 	)
 	websocket? ( dev-cpp/websocketpp )"
 
-I2PD_USER=i2pd
-I2PD_GROUP=i2pd
-
 CMAKE_USE_DIR="${S}/build"
 
 DOCS=( README.md contrib/i2pd.conf contrib/tunnels.conf )
@@ -48,9 +48,6 @@ PATCHES=( "${FILESDIR}/${PN}-2.14.0-fix_installed_components.patch"
 	"${FILESDIR}/i2pd-2.25.0-lib-path.patch" )
 
 pkg_pretend() {
-	if tc-is-gcc && ! ver_test "$(gcc-version)" -ge "4.7"; then
-		die "At least gcc 4.7 is required"
-	fi
 	if use i2p-hardening && ! tc-is-gcc; then
 		die "i2p-hardening requires gcc"
 	fi
@@ -80,7 +77,6 @@ src_install() {
 	doins contrib/tunnels.conf
 
 	# working directory
-	keepdir /var/lib/i2pd
 	insinto /var/lib/i2pd
 	doins -r contrib/certificates
 
@@ -97,23 +93,8 @@ src_install() {
 	newins "${FILESDIR}/i2pd-2.6.0-r3.logrotate" i2pd
 }
 
-pkg_preinst() {
-	enewgroup "${I2PD_GROUP}"
-	enewuser "${I2PD_USER}" -1 -1 /var/lib/run/i2pd "${I2PD_GROUP}"
-
-	fowners "root:${I2PD_GROUP}" \
-		/etc/i2pd/i2pd.conf \
-		/etc/i2pd/tunnels.conf
-	fperms 660 \
-		/etc/i2pd/i2pd.conf \
-		/etc/i2pd/tunnels.conf
-
-	fowners "${I2PD_USER}:${I2PD_GROUP}" /var/lib/i2pd/
-	fperms 700 /var/lib/i2pd/
-}
-
 pkg_postinst() {
-	if [[ -f ${EROOT%/}/etc/i2pd/subscriptions.txt ]]; then
+	if [[ -f ${EROOT}/etc/i2pd/subscriptions.txt ]]; then
 		ewarn
 		ewarn "Configuration of the subscriptions has been moved from"
 		ewarn "subscriptions.txt to i2pd.conf. We recommend updating"
