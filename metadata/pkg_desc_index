@@ -13092,7 +13092,7 @@ media-libs/fontconfig-infinality 20130404: Configuration for freetype-infinality
 media-libs/fontconfig-ultimate 2015.04 2015.08.01: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
 media-libs/freeglut 3.0.0 3.2.1: A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library
-media-libs/freeimage 3.15.4-r1 3.18.0-r1: Image library supporting many formats
+media-libs/freeimage 3.18.0-r1: Image library supporting many formats
 media-libs/freetype 2.9.1-r3 2.9.1-r4 2.10.0 2.10.1 9999: A high-quality and portable font engine
 media-libs/freeverb3 3.1.2-r1 3.2.1-r1: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
@@ -17768,9 +17768,9 @@ sys-fs/xwmfs 0.83: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.4: Zero's out all free space on a filesystem
-sys-fs/zfs 0.7.13-r1 0.8.1 0.8.2-r1 9999: Userland utilities for ZFS Linux kernel module
+sys-fs/zfs 0.7.13-r1 0.7.13-r2 0.8.2-r2 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-auto-snapshot 1.2.4 9999: ZFS Automatic Snapshot Service for Linux
-sys-fs/zfs-kmod 0.7.13 0.8.1 0.8.2 9999: Linux ZFS kernel module for sys-fs/zfs
+sys-fs/zfs-kmod 0.7.13 0.8.2 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
 sys-kernel/ck-sources 4.9.120 4.9.123 4.9.124 4.9.126 4.9.128 4.9.130 4.9.132 4.9.135 4.9.137 4.14.63 4.14.66 4.14.67 4.14.69 4.14.71 4.14.73 4.14.75 4.14.78 4.14.81 4.18.5 4.18.7 4.18.9 4.18.11 4.18.13 4.18.16 4.18.19 4.19.2 5.1.7 5.2.3: Gentoo's genpatches for Linux 5.2, with Con Kolivas' MuQSS process scheduler.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
