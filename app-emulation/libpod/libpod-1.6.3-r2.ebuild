@@ -9,7 +9,9 @@ inherit bash-completion-r1 flag-o-matic go-module
 
 DESCRIPTION="Library and podman tool for running OCI-based containers in Pods"
 HOMEPAGE="https://github.com/containers/libpod/"
-SRC_URI="https://github.com/containers/libpod/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+CONTAINERS_STORAGE_PATCH="containers-storage-1.14.0-vfs-user-xattrs.patch"
+SRC_URI="https://github.com/containers/libpod/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/containers/storage/pull/466.patch -> ${CONTAINERS_STORAGE_PATCH}"
 LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
 SLOT="0"
 
@@ -39,6 +41,10 @@ RDEPEND="${COMMON_DEPEND}"
 
 src_prepare() {
 	default
+	sed -e 's| \([ab]\)/| \1/vendor/github.com/containers/storage/|' < \
+		"${DISTDIR}/${CONTAINERS_STORAGE_PATCH}" > \
+		"${WORKDIR}/${CONTAINERS_STORAGE_PATCH}" || die
+	eapply "${WORKDIR}/${CONTAINERS_STORAGE_PATCH}"
 
 	# Disable installation of python modules here, since those are
 	# installed by separate ebuilds.
