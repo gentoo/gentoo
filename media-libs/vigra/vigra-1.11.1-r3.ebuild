@@ -23,15 +23,10 @@ SLOT="0"
 IUSE="doc +fftw +hdf5 +jpeg mpi openexr +png +python test +tiff valgrind +zlib"
 
 REQUIRED_USE="
-	doc? ( hdf5 fftw ${PYTHON_REQUIRED_USE} )
 	python? ( hdf5 ${PYTHON_REQUIRED_USE} )
 	test? ( hdf5 python fftw )"
 
 BDEPEND="
-	doc? (
-		app-doc/doxygen
-		>=dev-python/sphinx-1.1.3-r5
-	)
 	test? (
 		>=dev-python/nose-1.1.2-r1[${PYTHON_USEDEP}]
 		valgrind? ( dev-util/valgrind )
@@ -63,16 +58,18 @@ RDEPEND="${PYTHON_DEPS}
 RESTRICT="test"
 
 PATCHES=(
+	# git master
+	"${FILESDIR}/${P}-fix-incorrect-template-parameter-type.patch"
+	"${FILESDIR}/${P}-boost-python.patch"
+	"${FILESDIR}/${P}-python3.7.patch" # bug 701208
 	# TODO: upstream
-	"${FILESDIR}/${PN}-1.11.1-lib_suffix.patch"
-	"${FILESDIR}/${PN}-1.11.1-cmake-module-dir.patch"
-	"${FILESDIR}/${PN}-1.11.1-sphinx.ext.pngmath.patch" # thanks to Debian; bug 678308
+	"${FILESDIR}/${P}-lib_suffix.patch"
+	"${FILESDIR}/${P}-cmake-module-dir.patch"
+	"${FILESDIR}/${P}-sphinx.ext.pngmath.patch" # thanks to Debian; bug 678308
 )
 
 pkg_setup() {
-	if use python || use doc; then
-		python_setup
-	fi
+	use python && python_setup
 }
 
 src_prepare() {
@@ -85,10 +82,6 @@ src_prepare() {
 
 	cmake-utils_src_prepare
 
-	if [[ ${PV} != *9999 ]]; then
-		rm -r doc || die "failed to remove shipped docs"
-	fi
-
 	vigra_disable fftw fftw3
 	vigra_disable fftw fftw3f
 	vigra_disable jpeg
@@ -99,6 +92,7 @@ src_prepare() {
 	# Don't use python_fix_shebang because we can't put this behind USE="python"
 	sed -i -e '/env/s:python:python3:' config/vigra-config.in || die
 
+	use doc || cmake_comment_add_subdirectory docsrc
 	use test || cmake_comment_add_subdirectory test
 }
 
@@ -106,8 +100,7 @@ src_configure() {
 	vigra_configure() {
 		local mycmakeargs=(
 			-DAUTOEXEC_TESTS=OFF
-			-DDOCDIR="${BUILD_DIR}/doc"
-			-DDOCINSTALL="share/doc/${PF}"
+			-DDOCINSTALL="share/doc/${PF}/html"
 			-DWITH_HDF5=$(usex hdf5)
 			-DWITH_OPENEXR=$(usex openexr)
 			-DWITH_VALGRIND=$(usex valgrind)
@@ -119,8 +112,6 @@ src_configure() {
 	if use python; then
 		python_foreach_impl vigra_configure
 	else
-		# required for docdir
-		_cmake_check_build_dir init
 		vigra_configure
 	fi
 }
@@ -135,13 +126,6 @@ src_compile() {
 		python_foreach_impl vigra_compile
 	else
 		vigra_compile
-	fi
-
-	if use doc; then
-		einfo "Generating Documentation"
-		doxygen -u ${VIGRA_BUILD_DIR}/docsrc/Doxyfile 2>/dev/null || die
-		# use build dir from last compile command
-		VARTEXFONTS="${T}/fonts" BUILD_DIR="${VIGRA_BUILD_DIR}" cmake-utils_src_make doc
 	fi
 }
 
