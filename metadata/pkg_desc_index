@@ -7413,7 +7413,7 @@ dev-python/aplpy 1.0 1.1.1: Astronomical Plotting Library in Python
 dev-python/appdirs 1.4.3 1.4.3-r1: Module for determining appropriate platform-specific dirs
 dev-python/apsw 3.23.1_p1 3.25.2_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
-dev-python/argcomplete 1.4.1 1.9.4 1.10.0 1.10.2: Bash tab completion for argparse
+dev-python/argcomplete 1.9.4 1.10.0 1.10.2: Bash tab completion for argparse
 dev-python/argh 0.26.2-r1 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2_cffi 19.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/args 0.1.0 0.1.0-r1: Command Arguments for Humans
@@ -7565,7 +7565,7 @@ dev-python/cligj 0.4.0: Click-based argument and option decorators for Python GI
 dev-python/clint 0.5.1 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 0.3.1 1.2.1 1.2.2: Extended pickling support for Python objects
-dev-python/cmd2 0.7.9 0.8.9 0.9.19 0.9.20: Extra features for standard library's cmd module
+dev-python/cmd2 0.7.9 0.8.9 0.9.20 0.9.21: Extra features for standard library's cmd module
 dev-python/colander 1.3.1: A simple schema-based serialization and deserialization library
 dev-python/collectd-rabbitmq 1.19.0-r1: Collectd plugin to gather statistics from RabbitMQ
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
