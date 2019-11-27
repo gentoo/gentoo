@@ -27,6 +27,10 @@ BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
 MODULE_NAMES="vboxdrv(misc:${S}) vboxnetflt(misc:${S}) vboxnetadp(misc:${S}) vboxpci(misc:${S})"
 
+PATCHES=(
+	"${FILESDIR}/${P}-kernel-5.4_rc6.patch"
+)
+
 pkg_setup() {
 	enewgroup vboxusers
 	linux-mod_pkg_setup
