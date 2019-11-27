@@ -7413,7 +7413,7 @@ dev-python/aplpy 1.0 1.1.1: Astronomical Plotting Library in Python
 dev-python/appdirs 1.4.3 1.4.3-r1: Module for determining appropriate platform-specific dirs
 dev-python/apsw 3.23.1_p1 3.25.2_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
-dev-python/argcomplete 1.9.4 1.10.0 1.10.2: Bash tab completion for argparse
+dev-python/argcomplete 1.9.4 1.10.0 1.10.2 1.10.3: Bash tab completion for argparse
 dev-python/argh 0.26.2-r1 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2_cffi 19.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/args 0.1.0 0.1.0-r1: Command Arguments for Humans
@@ -17719,7 +17719,7 @@ sys-fs/loop-aes 3.7n: Linux kernel module to encrypt disk partitions with AES ci
 sys-fs/lsscsi 0.29 0.30: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
-sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.183 2.02.184-r5 2.02.185-r1 2.02.186-r1 2.03.06: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.116 2.02.184-r5 2.02.186-r2 2.03.06: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
@@ -17894,7 +17894,7 @@ sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a 
 sys-power/apcupsd 3.14.13 3.14.14-r2: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
 sys-power/bbswitch 0.8-r2 9999: Toggle discrete NVIDIA Optimus graphics card
-sys-power/cpupower 4.13.0: Shows and sets processor power related values
+sys-power/cpupower 4.13.0 5.4: Shows and sets processor power related values
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
 sys-power/iasl 20180810 20190215 20190703: Intel ACPI Source Language (ASL) compiler
 sys-power/intel-undervolt 1.6 1.7 9999: Intel CPU undervolting and throttling configuration tool
