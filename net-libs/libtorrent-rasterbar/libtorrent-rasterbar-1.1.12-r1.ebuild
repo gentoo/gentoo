@@ -23,6 +23,8 @@ IUSE="debug +dht doc examples libressl python +ssl static-libs test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND="
 	dev-libs/boost:=[threads]
 	virtual/libiconv
