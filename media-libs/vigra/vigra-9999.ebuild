@@ -99,7 +99,10 @@ src_prepare() {
 	# Don't use python_fix_shebang because we can't put this behind USE="python"
 	sed -i -e '/env/s:python:python3:' config/vigra-config.in || die
 
-	use test || cmake_comment_add_subdirectory test
+	if ! use test; then
+		cmake_comment_add_subdirectory test
+		sed -e "/ADD_SUBDIRECTORY.*test/s/^/#DONT /" -i vigranumpy/CMakeLists.txt || die
+	fi
 }
 
 src_configure() {
