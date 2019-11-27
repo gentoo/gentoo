@@ -93,7 +93,11 @@ src_prepare() {
 	sed -i -e '/env/s:python:python3:' config/vigra-config.in || die
 
 	use doc || cmake_comment_add_subdirectory docsrc
-	use test || cmake_comment_add_subdirectory test
+
+	if ! use test; then
+		cmake_comment_add_subdirectory test
+		sed -e "/ADD_SUBDIRECTORY.*test/s/^/#DONT /" -i vigranumpy/CMakeLists.txt || die
+	fi
 }
 
 src_configure() {
