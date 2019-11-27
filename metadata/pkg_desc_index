@@ -444,7 +444,7 @@ app-arch/lzop 1.04: Utility for fast (even real-time) compression/decompression
 app-arch/makeself 2.2.0-r2: shell script that generates a self-extractible tar.gz
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
 app-arch/mt-st 1.3 9999: control magnetic tape drive operation
-app-arch/ncompress 4.2.4.4 4.2.4.5: Classic compress & uncompress programs for .Z (LZW) files
+app-arch/ncompress 4.2.4.5: Classic compress & uncompress programs for .Z (LZW) files
 app-arch/p7zip 16.02-r4: Port of 7-Zip archiver for Unix
 app-arch/par2cmdline 0.7.3 0.7.4 0.8.0: A PAR-2.0 file verification and repair tool
 app-arch/patool 1.12: Portable archive file manager
@@ -2316,7 +2316,7 @@ app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-pac
 app-portage/overlint 0.5.2 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
 app-portage/pfl 3.0-r2 3.0.1-r3: Searchable online file/package database for Gentoo
-app-portage/portage-utils 0.74 0.74-r1 0.80 0.81 9999: Small and fast Portage helper tools written in C
+app-portage/portage-utils 0.74 0.74-r1 0.80 0.81 0.82 9999: Small and fast Portage helper tools written in C
 app-portage/porthole 0.6.1-r5: A GTK+-based frontend to Portage
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.27: A helper program for maintaining the package.keyword and package.unmask files
@@ -8908,7 +8908,7 @@ dev-python/serpent 1.19 1.28: A simple serialization library based on ast.litera
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 14.0.0 16.0.0 17.0.0 17.0.0-r1 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.10 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 40.6.3 41.5.1 42.0.0 9999: Collection of extensions to Distutils
+dev-python/setuptools 40.6.3 41.5.1 42.0.0 42.0.1 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.15.6-r1 1.15.7 3.2.0 3.3.1: package to manage versions by scm tags via setuptools
@@ -14836,7 +14836,7 @@ net-irc/emech 3.0.3-r1 3.0.99_p3: UNIX compatible IRC bot programmed in the C la
 net-irc/epic5 2.0.1: Epic5 IRC Client
 net-irc/hexchat 2.12.4-r2 2.14.1 2.14.2 9999: Graphical IRC client based on XChat
 net-irc/ii 1.8 9999: A minimalist FIFO and filesystem-based IRC client
-net-irc/inspircd 2.0.25 2.0.28 3.2.0 3.4.0: Inspire IRCd - The Stable, High-Performance Modular IRCd
+net-irc/inspircd 2.0.28 3.4.0: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-server 2.11.1_p1-r4: RFC compliant IRC server
 net-irc/ircii 20190117: An IRC and ICB client that runs under most UNIX platforms
 net-irc/ircmap 0.99-r1: Scripts to treate diagrams of IRC networks using the LINKS command
@@ -15168,10 +15168,10 @@ net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with Bit
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.12.2 3.17.11: Sweeps up stray ARP queries from a peering LAN
 net-misc/asterisk 11.25.3 13.23.1: Asterisk: A Modular Open Source PBX System
-net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk
-net-misc/asterisk-extra-sounds 1.4.11-r1: Extra sounds for asterisk
+net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22 1.6.1: Core sounds for asterisk
+net-misc/asterisk-extra-sounds 1.4.11-r1 1.5.2: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.9: G.729 codec and supporting files for asterisk
-net-misc/asterisk-moh-opsound 2.03: asterisk moh music
+net-misc/asterisk-moh-opsound 2.03 2.03-r1: asterisk moh music
 net-misc/astmanproxy 1.28.2: Proxy for the Asterisk manager interface
 net-misc/autossh 1.4g: Automatically restart SSH sessions and tunnels
 net-misc/autoupnp 0.4.7 9999: Automatic open port forwarder using UPnP
@@ -15687,7 +15687,7 @@ net-vpn/tor 0.4.0.5 0.4.1.6 0.4.2.4_rc: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard 0.0.20191012 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard 0.0.20191127 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-wireless/aircrack-ng 1.5.2 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy

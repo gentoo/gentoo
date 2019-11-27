@@ -6400,7 +6400,7 @@ net-misc/asterisk-core-sounds:wav - Install the sounds files for the wav codec.
 net-misc/asterisk-extra-sounds:alaw - Install the sounds files for the alaw codec.
 net-misc/asterisk-extra-sounds:g722 - Install the sounds files for the g722 codec.
 net-misc/asterisk-extra-sounds:g729 - Install the sounds files for the g729 codec.
-net-misc/asterisk-extra-sounds:gsm - Install the sounds files for the +gsm codec.
+net-misc/asterisk-extra-sounds:gsm - Install the sounds files for the gsm codec.
 net-misc/asterisk-extra-sounds:siren14 - Install the sounds files for the siren14 codec.
 net-misc/asterisk-extra-sounds:siren7 - Install the sounds files for the siren7 codec.
 net-misc/asterisk-extra-sounds:sln16 - Install the sounds files for the sln16 codec.
@@ -6409,7 +6409,7 @@ net-misc/asterisk-extra-sounds:wav - Install the sounds files for the wav codec.
 net-misc/asterisk-moh-opsound:alaw - Install the sounds files for the alaw codec.
 net-misc/asterisk-moh-opsound:g722 - Install the sounds files for the g722 codec.
 net-misc/asterisk-moh-opsound:g729 - Install the sounds files for the g729 codec.
-net-misc/asterisk-moh-opsound:gsm - Install the sounds files for the +gsm codec.
+net-misc/asterisk-moh-opsound:gsm - Install the sounds files for the gsm codec.
 net-misc/asterisk-moh-opsound:siren14 - Install the sounds files for the siren14 codec.
 net-misc/asterisk-moh-opsound:siren7 - Install the sounds files for the siren7 codec.
 net-misc/asterisk-moh-opsound:sln16 - Install the sounds files for the sln16 codec.
