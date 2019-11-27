@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
+DEPEND=>=net-firewall/iptables-1.4.7 net-libs/libmnl modules? ( kernel_linux? ( virtual/modutils ) ) modules? ( sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf ) )
+DESCRIPTION=IPset tool for iptables, successor to ippool
+EAPI=7
+HOMEPAGE=http://ipset.netfilter.org/
+IUSE=kernel_linux kernel_linux kernel_linux modules
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-firewall/iptables-1.4.7 net-libs/libmnl modules? ( kernel_linux? ( virtual/modutils ) )
+SLOT=0
+SRC_URI=http://ipset.netfilter.org/ipset-7.4.tar.bz2
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	6c7b3e7b9d39bd049bf23a991c16315e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=3a0d4861298d3166868fa18c78251afc
