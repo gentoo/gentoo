@@ -17517,7 +17517,7 @@ sys-cluster/pmix 2.1.1: The Process Management Interface (PMI) Exascale
 sys-cluster/polysh 0.4-r1: Aggregate several remote shells into one
 sys-cluster/poolmon 0.5 0.6: A director mailserver pool monitoring script for Dovecot
 sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Charm++ Applications
-sys-cluster/rdma-core 24.0 25.0 26.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
+sys-cluster/rdma-core 26.0 26.1 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
 sys-cluster/singularity 2.6.1: Application containers for Linux
