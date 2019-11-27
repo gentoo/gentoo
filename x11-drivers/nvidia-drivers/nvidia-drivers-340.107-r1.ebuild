@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils flag-o-matic linux-info linux-mod multilib-minimal nvidia-driver \
-	portability toolchain-funcs unpacker user udev
+EAPI=7
+inherit desktop flag-o-matic linux-info linux-mod multilib-minimal \
+	nvidia-driver portability toolchain-funcs unpacker user udev
 
 NV_URI="https://us.download.nvidia.com/XFree86/"
 X86_NV_PACKAGE="NVIDIA-Linux-x86-${PV}"
@@ -66,54 +66,20 @@ RDEPEND="
 		)
 	)
 "
-
 REQUIRED_USE="tools? ( X )"
-
 QA_PREBUILT="opt/* usr/lib*"
-
 S=${WORKDIR}/
-
-nvidia_drivers_versions_check() {
-	if use amd64 && has_multilib_profile && \
-		[ "${DEFAULT_ABI}" != "amd64" ]; then
-		eerror "This ebuild doesn't currently support changing your default ABI"
-		die "Unexpected \${DEFAULT_ABI} = ${DEFAULT_ABI}"
-	fi
-
-	if use kernel_linux && kernel_is ge 4 18; then
-		ewarn "Gentoo supports kernels which are supported by NVIDIA"
-		ewarn "which are limited to the following kernels:"
-		ewarn "<sys-kernel/gentoo-sources-4.18"
-		ewarn "<sys-kernel/vanilla-sources-4.18"
-		ewarn ""
-		ewarn "You are free to utilize eapply_user to provide whatever"
-		ewarn "support you feel is appropriate, but will not receive"
-		ewarn "support as a result of those changes."
-		ewarn ""
-		ewarn "Do not file a bug report about this."
-		ewarn ""
-	fi
-
-	# Since Nvidia ships many different series of drivers, we need to give the user
-	# some kind of guidance as to what version they should install. This tries
-	# to point the user in the right direction but can't be perfect. check
-	# nvidia-driver.eclass
-	nvidia-driver-check-warning
-
-	# Kernel features/options to check for
-	CONFIG_CHECK="!DEBUG_MUTEXES ~!LOCKDEP ~MTRR ~SYSVIPC ~ZONE_DMA"
-	use x86 && CONFIG_CHECK+=" ~HIGHMEM"
-
-	# Now do the above checks
-	use kernel_linux && check_extra_config
-}
+NV_KV_MAX_PLUS="4.18"
+CONFIG_CHECK="!DEBUG_MUTEXES ~!LOCKDEP ~MTRR ~SYSVIPC ~ZONE_DMA"
 
 pkg_pretend() {
-	nvidia_drivers_versions_check
+	use x86 && CONFIG_CHECK+=" ~HIGHMEM"
+	nvidia-driver_check
 }
 
 pkg_setup() {
-	nvidia_drivers_versions_check
+	use x86 && CONFIG_CHECK+=" ~HIGHMEM"
+	nvidia-driver_check
 
 	# try to turn off distcc and ccache for people that have a problem with it
 	export DISTCC_DISABLE=1
