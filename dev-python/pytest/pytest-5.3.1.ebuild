@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} pypy3 )
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 
 inherit distutils-r1
 
@@ -23,7 +23,6 @@ PY_VER="1.5.0"
 # pathlib2 has been added to stdlib before py3.6, but pytest needs __fspath__
 # support, which only came in py3.6.
 RDEPEND="
-	>=dev-python/atomicwrites-1.0[${PYTHON_USEDEP}]
 	>=dev-python/attrs-17.4.0[${PYTHON_USEDEP}]
 	dev-python/importlib_metadata[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
@@ -44,12 +43,12 @@ DEPEND="${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		>=dev-python/setuptools-40[${PYTHON_USEDEP}]
+		dev-python/xmlschema[${PYTHON_USEDEP}]
 		!!dev-python/flaky
 	)"
 
 PATCHES=(
 	"${FILESDIR}/${PN}"-4.5.0-strip-setuptools_scm.patch
-	"${FILESDIR}/${PN}"-5.0.1-test_xfail_rmdir.patch
 )
 
 python_prepare_all() {
