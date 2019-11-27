@@ -15,6 +15,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~x86"
 IUSE="doc kerberos test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	kerberos? ( dev-python/pykerberos[${PYTHON_USEDEP}] )
