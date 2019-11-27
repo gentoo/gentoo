@@ -1,0 +1,27 @@
+diff --git a/setup.py b/setup.py
+index d0dec04..7a85a6e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -4,14 +4,6 @@ Setup file for automat
+ 
+ from setuptools import setup, find_packages
+ 
+-try:
+-    from m2r import parse_from_file
+-    long_description = parse_from_file('README.md')
+-except(IOError, ImportError):
+-    print("\n\n!!! m2r not found, long_description is bad, don't upload this to PyPI !!!\n\n")
+-    import io
+-    long_description = io.open('README.md', encoding="utf-8").read()
+-
+ setup(
+     name='Automat',
+     use_scm_version=True,
+@@ -19,7 +11,6 @@ setup(
+     description="""
+     Self-service finite-state machines for the programmer on the go.
+     """.strip(),
+-    long_description=long_description,
+     packages=find_packages(exclude=[]),
+     package_dir={'automat': 'automat'},
+     setup_requires=[
