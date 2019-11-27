@@ -3,10 +3,8 @@
 
 EAPI=7
 
-MY_P="${P}-src"
-MY_V="${PV//\./-}"
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="threads,xml"
+PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_REQ_USE="threads(+),xml"
 inherit cmake-utils python-r1
 
 DESCRIPTION="C++ computer vision library emphasizing customizable algorithms and structures"
@@ -16,8 +14,8 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/ukoethe/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/ukoethe/${PN}/releases/download/Version-${MY_V}/${MY_P}.tar.gz"
-	KEYWORDS="amd64 arm64 ~sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+	SRC_URI="https://github.com/ukoethe/${PN}/releases/download/Version-${PV//\./-}/${P}-src.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="MIT"
@@ -25,40 +23,36 @@ SLOT="0"
 IUSE="doc +fftw +hdf5 +jpeg mpi openexr +png +python test +tiff valgrind +zlib"
 
 REQUIRED_USE="
-	doc? ( hdf5 fftw ${PYTHON_REQUIRED_USE} )
 	python? ( hdf5 ${PYTHON_REQUIRED_USE} )
 	test? ( hdf5 python fftw )"
 
 BDEPEND="
-	doc? (
-		app-doc/doxygen
-		>=dev-python/sphinx-1.1.3-r5
-	)
 	test? (
 		>=dev-python/nose-1.1.2-r1[${PYTHON_USEDEP}]
 		valgrind? ( dev-util/valgrind )
 	)
 "
-# runtime dependency on python:2.7 is required by the vigra-config script
+# runtime dependency on python is required by the vigra-config script
 DEPEND="
-	dev-lang/python:2.7
 	fftw? ( sci-libs/fftw:3.0 )
 	hdf5? ( >=sci-libs/hdf5-1.8.0:=[mpi=] )
 	jpeg? ( virtual/jpeg:0 )
 	openexr? (
-		media-libs/openexr:=
 		media-libs/ilmbase:=
+		media-libs/openexr:=
 	)
 	png? ( media-libs/libpng:0= )
 	python? (
+		${PYTHON_DEPS}
 		dev-libs/boost:=[python?,${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		${PYTHON_DEPS}
 	)
 	tiff? ( media-libs/tiff:0= )
 	zlib? ( sys-libs/zlib )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${PYTHON_DEPS}
+	${DEPEND}
+"
 
 # Severely broken, also disabled in Fedora, bugs #390447, #653442
 RESTRICT="test"
@@ -67,15 +61,15 @@ PATCHES=(
 	# git master
 	"${FILESDIR}/${P}-fix-incorrect-template-parameter-type.patch"
 	"${FILESDIR}/${P}-boost-python.patch"
+	"${FILESDIR}/${P}-python3.7.patch" # bug 701208
 	# TODO: upstream
 	"${FILESDIR}/${P}-lib_suffix.patch"
+	"${FILESDIR}/${P}-cmake-module-dir.patch"
 	"${FILESDIR}/${P}-sphinx.ext.pngmath.patch" # thanks to Debian; bug 678308
 )
 
 pkg_setup() {
-	if use python || use doc; then
-		python_setup
-	fi
+	use python && python_setup
 }
 
 src_prepare() {
@@ -88,10 +82,6 @@ src_prepare() {
 
 	cmake-utils_src_prepare
 
-	if [[ ${PV} != *9999 ]]; then
-		rm -r doc || die "failed to remove shipped docs"
-	fi
-
 	vigra_disable fftw fftw3
 	vigra_disable fftw fftw3f
 	vigra_disable jpeg
@@ -100,8 +90,9 @@ src_prepare() {
 	vigra_disable zlib
 
 	# Don't use python_fix_shebang because we can't put this behind USE="python"
-	sed -i -e '/env/s:python:python2:' config/vigra-config.in || die
+	sed -i -e '/env/s:python:python3:' config/vigra-config.in || die
 
+	use doc || cmake_comment_add_subdirectory docsrc
 	use test || cmake_comment_add_subdirectory test
 }
 
@@ -109,8 +100,7 @@ src_configure() {
 	vigra_configure() {
 		local mycmakeargs=(
 			-DAUTOEXEC_TESTS=OFF
-			-DDOCDIR="${BUILD_DIR}/doc"
-			-DDOCINSTALL="share/doc/${PF}"
+			-DDOCINSTALL="share/doc/${PF}/html"
 			-DWITH_HDF5=$(usex hdf5)
 			-DWITH_OPENEXR=$(usex openexr)
 			-DWITH_VALGRIND=$(usex valgrind)
@@ -122,8 +112,6 @@ src_configure() {
 	if use python; then
 		python_foreach_impl vigra_configure
 	else
-		# required for docdir
-		_cmake_check_build_dir init
 		vigra_configure
 	fi
 }
@@ -138,12 +126,6 @@ src_compile() {
 		python_foreach_impl vigra_compile
 	else
 		vigra_compile
-	fi
-
-	if use doc; then
-		einfo "Generating Documentation"
-		# use build dir from last compile command
-		VARTEXFONTS="${T}/fonts" BUILD_DIR="${VIGRA_BUILD_DIR}" cmake-utils_src_make doc
 	fi
 }
 
