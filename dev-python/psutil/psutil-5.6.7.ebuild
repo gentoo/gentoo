@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy pypy3 )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7,8}} pypy{,3} )
 
 inherit distutils-r1
 
@@ -14,6 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -23,9 +24,18 @@ DEPEND="
 	)
 "
 
-# Many tests fail, even on a regular tox run on a upstream clone
-RESTRICT="test"
+PATCHES=(
+	"${FILESDIR}/psutil-5.6.7-tests.patch"
+)
 
 python_test() {
-	${PYTHON} psutil/tests/__main__.py || die
+	if [[ ${EPYTHON} == pypy* ]]; then
+		ewarn "Not running tests on ${EPYTHON} since they are broken"
+		return 0
+	fi
+
+	# since we are running in an environment a bit similar to CI,
+	# let's skip the tests that are disable for CI
+	TRAVIS=1 APPVEYOR=1 "${EPYTHON}" psutil/tests/__main__.py ||
+		die "tests failed with ${EPYTHON}"
 }
