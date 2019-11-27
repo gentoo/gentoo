@@ -23,6 +23,8 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 
+RESTRICT="!test? ( test )"
+
 BDEPEND="
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
