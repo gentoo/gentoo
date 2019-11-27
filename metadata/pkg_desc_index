@@ -10963,7 +10963,7 @@ dev-vcs/mercurial-server 1.2-r1 9999: Mercurial authentication and authorization
 dev-vcs/mr 1.20170129 1.20171231 1.20180726 1.99999999: Multiple Repository management tool
 dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
 dev-vcs/pwclient 20141110122616: command line utility for interacting with patchwork repos
-dev-vcs/python-gitlab 1.7.0 1.8.0 1.9.0: Python command line interface to gitlab API
+dev-vcs/python-gitlab 1.7.0 1.8.0 1.9.0 1.13.0: Python command line interface to gitlab API
 dev-vcs/qgit 2.8: Qt GUI for git repositories
 dev-vcs/rabbitvcs 0.16-r1: Integrated version control support for your desktop
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
