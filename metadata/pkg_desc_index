@@ -7104,7 +7104,7 @@ dev-php/File_Iterator 1.3.4 1.4.2 1.4.3 2.0.2: FilterIterator implementation tha
 dev-php/PEAR-Archive_Tar 1.4.5 1.4.7 1.4.8: Tar file management class
 dev-php/PEAR-Auth_SASL 1.1.0: Abstraction of various SASL mechanism responses
 dev-php/PEAR-Cache 1.5.6-r2: Framework for caching of arbitrary data
-dev-php/PEAR-Cache_Lite 1.8.2: Fast and safe little cache system
+dev-php/PEAR-Cache_Lite 1.8.2 1.8.3: Fast and safe little cache system
 dev-php/PEAR-Config 2.0.0_pre20140323-r1: Provides multiple methods for configuration manipulation
 dev-php/PEAR-Console_CommandLine 1.2.2: A full-featured command-line options and arguments parser
 dev-php/PEAR-Console_Getargs 1.4.0: A command-line arguments parser
@@ -7218,7 +7218,7 @@ dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla o
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
 dev-php/composer 1.8.6 1.9.0 1.9.1: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
-dev-php/doctrine 1.2.5 2.4.6 2.6.1: An object relational mapper for PHP
+dev-php/doctrine 1.2.5 2.4.6 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0: Utility to instantiate objects in PHP without invoking their constructors
 dev-php/fedora-autoloader 0.2.1 1.0.0: Fedora's Static PSR-4, PSR-0, and classmap autoloader
 dev-php/geos-php 1.0.0: A PHP interface to GEOS - Geometry Engine, Open Source
@@ -7242,7 +7242,7 @@ dev-php/pecl-bbcode 1.0.3_beta1-r2: A quick and efficient BBCode Parsing Library
 dev-php/pecl-cairo 0.3.2-r1: Cairo bindings for PHP
 dev-php/pecl-cassandra 1.3.2: DataStax PHP Driver for Apache Cassandra
 dev-php/pecl-crack 0.4-r6 0.4-r7: PHP interface to the cracklib libraries
-dev-php/pecl-dbase 5.1.1 7.0.0_beta1-r1 7.0.0: dBase database file access functions
+dev-php/pecl-dbase 5.1.1 7.0.1: dBase database file access functions
 dev-php/pecl-dbx 1.1.2-r2: The dbx module is a database abstraction layer
 dev-php/pecl-dio 0.1.0-r1: Direct I/O functions for PHP
 dev-php/pecl-eio 2.0.2-r1 2.0.4: PHP wrapper for libeio library
@@ -7333,7 +7333,7 @@ dev-php/symfony-finder 3.2.8 3.4.28: Symfony Finder Component
 dev-php/symfony-process 3.4.29: Symfony Process Component
 dev-php/symfony-yaml 2.1.0: Symfony YAML Component
 dev-php/tcpdf 6.2.25 6.2.26: TCPDF is a FLOSS PHP class for generating PDF documents
-dev-php/theseer-tokenizer 1.1.0: Convert tokenized PHP source code into XML and other formats
+dev-php/theseer-tokenizer 1.1.0 1.1.3: Convert tokenized PHP source code into XML and other formats
 dev-php/twig 1.40.1-r1 1.42.3 1.42.3-r1: PHP templating engine with syntax similar to Django
 dev-php/webmozart-assert 1.2.0 1.4.0: Assertions to validate method input/output with nice error messages
 dev-php/xcache 3.2.0-r2: A fast and stable PHP opcode cacher
@@ -13959,7 +13959,7 @@ media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps multiple mp3 files into one large playable mp3
 media-sound/mpc 0.30 0.31-r1 0.32: Commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.21.14 0.21.15 0.21.16-r1: The Music Player Daemon (mpd)
+media-sound/mpd 0.21.16-r1: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
