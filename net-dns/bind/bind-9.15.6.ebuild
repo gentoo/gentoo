@@ -235,8 +235,8 @@ src_install() {
 		}
 		python_foreach_impl install_python_tools
 
-		python_replicate_script "${ED%/}/usr/sbin/dnssec-checkds"
-		python_replicate_script "${ED%/}/usr/sbin/dnssec-coverage"
+		python_replicate_script "${ED}/usr/sbin/dnssec-checkds"
+		python_replicate_script "${ED}/usr/sbin/dnssec-coverage"
 	fi
 
 	# bug 450406
