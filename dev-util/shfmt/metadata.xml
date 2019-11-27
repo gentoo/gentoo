@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <upstream>
+    <maintainer status="active">
+      <email>mvdan@mvdan.cc</email>
+      <name>Daniel Martí</name>
+    </maintainer>
+    <doc lang="en">https://github.com/mvdan/sh/blob/master/README.md</doc>
+    <bugs-to>https://github.com/mvdan/sh/issues</bugs-to>
+  </upstream>
+  <longdescription lang="en">
+    A shell parser, formatter, and interpreter. Supports POSIX Shell, Bash, and
+    mksh.
+  </longdescription>
+</pkgmetadata>
