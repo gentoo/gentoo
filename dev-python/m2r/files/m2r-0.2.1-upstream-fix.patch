@@ -1,0 +1,23 @@
+From c78db2aa91787df6973ad6400208707c7ecf4b12 Mon Sep 17 00:00:00 2001
+From: "Ethan \"Soron\" Kaminski" <ethan.kaminski@gmail.com>
+Date: Thu, 25 Apr 2019 12:56:14 +0800
+Subject: [PATCH] Remove a trailing newline after `.rst` directives (fix issue
+ #35)
+
+---
+ m2r.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/m2r.py b/m2r.py
+index 897338d..74c8c98 100644
+--- a/m2r.py
++++ b/m2r.py
+@@ -507,7 +507,7 @@ def eol_literal_marker(self, marker):
+         return marker
+ 
+     def directive(self, text):
+-        return '\n' + text + '\n'
++        return '\n' + text
+ 
+     def rest_code_block(self):
+         return '\n\n'
