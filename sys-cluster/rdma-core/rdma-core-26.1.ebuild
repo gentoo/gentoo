@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/linux-rdma/rdma-core"
 else
-	SRC_URI="https://github.com/linux-rdma/rdma-core/releases/download/v${PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/linux-rdma/rdma-core/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
