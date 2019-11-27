@@ -2137,7 +2137,7 @@ app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written
 app-misc/tmate 2.3.0 2.3.1: Instant terminal sharing
 app-misc/tmux 2.9a 3.0 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 3.4.0 9999: CPU, RAM memory, and load monitor for use with tmux
-app-misc/tmux-xpanes 3.1.1 4.1.0: tmux-based terminal divider
+app-misc/tmux-xpanes 4.1.1: tmux-based terminal divider
 app-misc/tmux2html 0.1.11: Render full tmux windows or individual panes as HTML
 app-misc/tmuxp 1.5.3: tmux session manager. built on libtmux
 app-misc/todo 2.10-r2: A CLI-based TODO list manager
@@ -8032,7 +8032,7 @@ dev-python/kazoo 2.2.1 2.5.0 2.6.1: A high-level Python library that makes it ea
 dev-python/kconfiglib 12.12.1 13.2.0: A flexible Python Kconfig implementation
 dev-python/keepassx 0.1.0-r1: Python API and CLI for KeePassX
 dev-python/keyczar 0.715: Toolkit for safe and simple cryptography
-dev-python/keyring 13.2.1 13.2.1-r1 15.0.0 18.0.1: Provides access to the system keyring service
+dev-python/keyring 13.2.1 13.2.1-r1 15.0.0 18.0.1 19.2.0: Provides access to the system keyring service
 dev-python/keyrings_alt 2.3: Alternate keyring implementations
 dev-python/keystoneauth 3.1.0 3.4.0 3.10.0 3.13.1 3.17.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 4.17.0 4.21.0 6.0.0 7.0.1: A middleware for the OpenStack Keystone API
@@ -14670,7 +14670,7 @@ net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.8.4 2.9.0 2.9.1: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.7.0-r1 1.7.1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33-r2 1.33-r99 1.35: Internationalized Domain Names (IDN) implementation
-net-dns/libidn2 2.1.1a-r1 2.2.0 2.3.0 99999: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
+net-dns/libidn2 2.1.1a-r1 2.3.0 99999: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 net-dns/maradns 2.0.09-r2 2.0.14 2.0.16: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
@@ -15118,7 +15118,7 @@ net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiat
 net-mail/mu 0.9.18-r2 1.0 1.3.5: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 3 4 5: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.28.4 0.29.2 0.29.2-r1: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.28.4 0.29.2 0.29.3: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 7.2.4: Powerful IMAP/Maildir synchronization and reader support
 net-mail/pflogsumm 1.1.5-r1: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
