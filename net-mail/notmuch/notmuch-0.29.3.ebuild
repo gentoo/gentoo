@@ -76,7 +76,6 @@ SITEFILE="50${PN}-gentoo.el"
 MY_LD_LIBRARY_PATH="${WORKDIR}/${P}/lib"
 PATCHES=(
 	"${FILESDIR}"/${PV}-0001-Use-loopback-IP-address-rather-than-name.patch
-	"${FILESDIR}"/${PV}-0001-notmuch-dump.c-Fix-output-file-being-closed-twice.patch
 )
 
 bindings() {
