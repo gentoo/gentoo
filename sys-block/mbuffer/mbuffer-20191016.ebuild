@@ -14,11 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="debug ssl test"
 
+REQUIRED_USE="test? ( ssl )"
+
+RESTRICT="!test? ( test )"
+
 RDEPEND="ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/openssl:0 )"
-
-REQUIRED_USE="test? ( ssl )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-20180410-sysconfdir.patch"
