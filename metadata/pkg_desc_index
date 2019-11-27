@@ -1529,12 +1529,12 @@ app-emulation/virt-manager 2.0.0 2.2.0 2.2.1 9999: A graphical tool for administ
 app-emulation/virt-viewer 7.0 8.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.18 1.19: Detects if the current machine is running in a virtual machine
 app-emulation/virtio-win 0.1.160: VirtIO drivers for Windows virtual machines running on KVM
-app-emulation/virtualbox 5.2.32 5.2.34 6.0.12 6.0.14: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-additions 5.2.32 5.2.34 6.0.12 6.0.14: CD image containing guest additions for VirtualBox
-app-emulation/virtualbox-bin 5.2.32.132073 5.2.34.133893 6.0.12.133076 6.0.14.133895: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-extpack-oracle 5.2.32.132073 5.2.34.133893 6.0.12.133076 6.0.14.133895: PUEL extensions for VirtualBox
-app-emulation/virtualbox-guest-additions 5.2.32 5.2.34 6.0.12 6.0.14: VirtualBox kernel modules and user-space tools for Gentoo guests
-app-emulation/virtualbox-modules 5.2.32 5.2.34 6.0.12 6.0.14: Kernel Modules for Virtualbox
+app-emulation/virtualbox 5.2.32 5.2.34 6.0.12 6.0.14 6.1.0_rc1: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-additions 5.2.32 5.2.34 6.0.12 6.0.14 6.1.0_rc1: CD image containing guest additions for VirtualBox
+app-emulation/virtualbox-bin 5.2.32.132073 5.2.34.133893 6.0.12.133076 6.0.14.133895 6.1.0.134891_rc1: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-extpack-oracle 5.2.32.132073 5.2.34.133893 6.0.12.133076 6.0.14.133895 6.1.0.134891_rc1: PUEL extensions for VirtualBox
+app-emulation/virtualbox-guest-additions 5.2.32 5.2.34 6.0.12 6.0.14 6.1.0_rc1: VirtualBox kernel modules and user-space tools for Gentoo guests
+app-emulation/virtualbox-modules 5.2.32 5.2.34 6.0.12 6.0.14 6.1.0_rc1: Kernel Modules for Virtualbox
 app-emulation/vkd3d 1.0 1.1 9999: D3D12 to Vulkan translation library
 app-emulation/wine-any 3.20 3.21 4.0 4.1 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
 app-emulation/wine-d3d9 3.20 3.21 4.0 4.1 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset

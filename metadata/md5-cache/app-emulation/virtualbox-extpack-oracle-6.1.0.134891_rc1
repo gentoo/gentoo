@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=PUEL extensions for VirtualBox
+EAPI=7
+HOMEPAGE=https://www.virtualbox.org/
+LICENSE=PUEL
+RDEPEND=~app-emulation/virtualbox-6.1.0_rc1
+RESTRICT=bindist mirror strip
+SLOT=0
+SRC_URI=https://download.virtualbox.org/virtualbox/6.1.0_RC1/Oracle_VM_VirtualBox_Extension_Pack-6.1.0_RC1-134891.vbox-extpack -> Oracle_VM_VirtualBox_Extension_Pack-6.1.0_RC1-134891.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=858c67fb86d233da5771b0a83ef46f1e

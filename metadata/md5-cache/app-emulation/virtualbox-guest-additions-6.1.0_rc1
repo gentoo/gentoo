@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
+DEPEND=X? ( x11-apps/xrandr x11-apps/xrefresh x11-libs/libXmu x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp x11-libs/libSM x11-libs/libICE ) sys-apps/dbus >=dev-util/kbuild-0.1.9998.3127 >=dev-lang/yasm-0.6.2 sys-devel/bin86 sys-libs/pam sys-power/iasl x11-base/xorg-proto kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
+DESCRIPTION=VirtualBox kernel modules and user-space tools for Gentoo guests
+EAPI=7
+HOMEPAGE=https://www.virtualbox.org/
+IUSE=X kernel_linux kernel_linux
+LICENSE=GPL-2
+PDEPEND=X? ( x11-drivers/xf86-video-vboxvideo )
+RDEPEND=X? ( x11-apps/xrandr x11-apps/xrefresh x11-libs/libXmu x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp x11-libs/libSM x11-libs/libICE ) sys-apps/dbus kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=https://download.virtualbox.org/virtualbox/6.1.0_RC1/VirtualBox-6.1.0_RC1.tar.bz2 https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-6.0.0_beta2-patches-01.tar.xz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	6c7b3e7b9d39bd049bf23a991c16315e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
+_md5_=f342b805f0120efc63ee3878b44d156c
