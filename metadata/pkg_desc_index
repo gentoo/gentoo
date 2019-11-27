@@ -7481,7 +7481,7 @@ dev-python/bcrypt 3.1.6 3.1.7-r1: Modern password hashing for software and serve
 dev-python/beagle 0.2.1: Command line client for Hound, the code search tool.
 dev-python/beaker 1.6.4-r1 1.8.1: A Session and Caching library with WSGI Middleware
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
-dev-python/beautifulsoup 3.2.1-r1 4.5.1 4.6.3: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
+dev-python/beautifulsoup 3.2.1-r1 4.5.1 4.6.3 4.8.1: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/bert 2.0.0 2.2.0: BERT Serialization Library
 dev-python/betamax 0.8.0 0.8.1: python-requests HTTP exchanges recorder
 dev-python/bibtexparser 0.6.2 1.1.0: A BibTeX parser written in python
@@ -7604,7 +7604,7 @@ dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
 dev-python/cryptography 2.6.1 2.8: Library providing cryptographic recipes and primitives
 dev-python/cryptography-vectors 2.6.1: Test vectors for the cryptography package
 dev-python/css-parser 1.0.4 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
-dev-python/cssselect 0.9.1 1.0.1 1.0.3: parses CSS3 Selectors and translates them to XPath 1.0
+dev-python/cssselect 0.9.1 1.0.1 1.0.3 1.1.0: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.2.0: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 1.0.1 1.0.2-r1: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
@@ -8083,7 +8083,7 @@ dev-python/louie 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming library
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
 dev-python/lxc-python2 0.1: Python bindings for LXC
-dev-python/lxml 4.2.5 4.3.3 4.3.4 4.4.0 4.4.1: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 4.2.5 4.3.3 4.3.4 4.4.0 4.4.1 4.4.2: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2 0.10.1 2.1.6: LZ4 Bindings for Python
 dev-python/m2crypto 0.31.0-r2 0.35.2: A Python crypto and SSL toolkit
 dev-python/m2r 0.1.5 0.1.6 0.1.12 0.1.14: Markdown to reStructuredText converter
@@ -8949,6 +8949,7 @@ dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Pytho
 dev-python/socketpool 0.5.3 0.5.3-r1: A simple Python socket pool
 dev-python/sortedcollections 0.5.3: Python library to sort collections and containers
 dev-python/sortedcontainers 1.5.7: Python library to sort collections and containers
+dev-python/soupsieve 1.9.5: A modern CSS selector implementation for BeautifulSoup
 dev-python/soya 0.15_rc1-r1: A high-level 3D engine for Python, designed with games in mind
 dev-python/spark-parser 1.5.1-r1 1.6.0 1.6.1 1.8.5: An Early-Algorithm Context-free grammar Parser
 dev-python/sparql-wrapper 1.7.6 1.8.0 1.8.4: Wrapper around a SPARQL service
