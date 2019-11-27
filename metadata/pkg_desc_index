@@ -8293,8 +8293,8 @@ dev-python/partd 0.3.2 0.3.8: Appendable key-value storage
 dev-python/parver 0.1.1: Parse and manipulate version numbers
 dev-python/passlib 1.7.1-r1 1.7.1-r2: Password hashing framework supporting over 20 schemes
 dev-python/passwordmeter 0.1.8: A password strength measuring library
-dev-python/paste 2.0.3-r1 3.0.7: Tools for using a Web Server Gateway Interface stack
-dev-python/pastedeploy 1.5.2 1.5.2-r1 1.5.2-r2 2.0.1: Load, configure, and compose WSGI applications and servers
+dev-python/paste 2.0.3-r1 3.0.7 3.2.3: Tools for using a Web Server Gateway Interface stack
+dev-python/pastedeploy 1.5.2 1.5.2-r1 1.5.2-r2 2.0.1 2.0.1-r1: Load, configure, and compose WSGI applications and servers
 dev-python/pastescript 2.0.2-r1: A pluggable command-line frontend, including commands to setup package file layouts
 dev-python/patch 1.16: Library to parse and apply unified diffs
 dev-python/path-and-address 1.1.0: Functions for server CLI applications used by humans
@@ -8573,7 +8573,7 @@ dev-python/pypy3-bin 7.2.0-r1: Pre-built version of PyPy3
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.3.0: distutils extension to work with PyQt applications and UI files
 dev-python/pyqtgraph 0.10.0-r1: A pure-python graphics and GUI library built on PyQt and numpy
-dev-python/pyquery 1.2.13 1.2.13-r1 1.4.0: A jQuery-like library for python
+dev-python/pyquery 1.2.13 1.2.13-r1 1.4.0 1.4.1: A jQuery-like library for python
 dev-python/pyrax 1.9.7: Python language bindings for OpenStack Clouds
 dev-python/pyregion 1.1.4 1.2: Python module to parse ds9 region file
 dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
@@ -9187,7 +9187,7 @@ dev-python/wrapt 1.10.10 1.10.11 1.11.2: Module for decorators, wrappers and mon
 dev-python/ws4py 0.3.4 0.3.4-r1 0.5.1 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
 dev-python/wsaccel 0.6.2_p20170108: Accelerator for ws4py, autobahn and tornado
 dev-python/wsgiintercept 1.3.1: WSGI application in place of a real URI for testing
-dev-python/wsgiproxy2 0.4.2 0.4.4-r1: HTTP proxying tools for WSGI apps
+dev-python/wsgiproxy2 0.4.2 0.4.4-r1 0.4.6: HTTP proxying tools for WSGI apps
 dev-python/wsproto 0.11.0 0.12.0: WebSockets state-machine based protocol implementation
 dev-python/wstools 0.4.3 0.4.5-r1: WSDL parsing services package for Web Services for Python
 dev-python/wtf-peewee 0.2.6 3.0.0: WTForms integration for peewee models
@@ -10356,7 +10356,7 @@ dev-tcltk/itk 3.4.1 4.0.0 4.0.1 4.1.0: Object Oriented Enhancements for Tcl/Tk
 dev-tcltk/iwidgets 4.1.1: Widget collection for incrTcl/incrTk
 dev-tcltk/mysqltcl 3.052-r1: TCL MySQL Interface
 dev-tcltk/scwoop 4.1-r1: Simple Composite Widget Object Oriented Package
-dev-tcltk/snack 2.2.10-r6 2.2.10-r7 2.2.10-r8: The Snack Sound Toolkit (Tcl)
+dev-tcltk/snack 2.2.10-r8: The Snack Sound Toolkit (Tcl)
 dev-tcltk/tablelist 5.8 6.3: Multi-Column Listbox Package
 dev-tcltk/tcl-mccp 0.6: mccp extension to TCL
 dev-tcltk/tcl3d 0.5.0: Tcl bindings to OpenGL and other 3D libraries
