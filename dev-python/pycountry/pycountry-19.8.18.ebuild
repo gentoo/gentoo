@@ -26,6 +26,6 @@ python_test() {
 	if [[ ${EPYTHON} == pypy* ]]; then
 		sed -e 's:test_locales:_&:' -i pycountry/tests/test_general.py || die
 	fi
-	pytest -vv || die
+	pytest -o cache_dir="${T}" -vv || die
 	popd > /dev/null || die
 }
