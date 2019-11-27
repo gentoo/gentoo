@@ -7722,7 +7722,7 @@ dev-python/dynd-python 0.7.2-r1: Python exposure of multidimensionnal array libr
 dev-python/e4u 0.1_rc5-r1: A library for handling unicode emoji and carrier's emoji
 dev-python/easy-thumbnails 2.2 2.3 2.4.1: Easy thumbnails for Django
 dev-python/ebuildtester 0.1.12 0.1.13 0.1.14: A dockerized approach to test a Gentoo package within a clean stage3 container
-dev-python/ecdsa 0.13 0.13.2 0.13.3 0.14.1: ECDSA cryptographic signature library in pure Python
+dev-python/ecdsa 0.13 0.13.2 0.13.3 0.14.1 0.14.1-r1: ECDSA cryptographic signature library in pure Python
 dev-python/ed25519ll 0.6: A low-level ctypes wrapper for Ed25519 digital signatures.
 dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python object
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
@@ -8442,7 +8442,7 @@ dev-python/pycollada 0.6-r1: Python library for reading and writing COLLADA docu
 dev-python/pycountry 16.11.8 17.9.23 18.5.26 19.8.18: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.14 2.18-r1 2.19-r1: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1-r2: Python Cryptography Toolkit
-dev-python/pycryptodome 3.4.6 3.4.7 3.6.6 3.7.3 3.8.2: A self-contained cryptographic library for Python
+dev-python/pycryptodome 3.4.6 3.4.7 3.6.6 3.7.3 3.8.2 3.9.4: A self-contained cryptographic library for Python
 dev-python/pycryptopp 0.6.0 0.7.1-r1: Python wrappers for a few algorithms from the Crypto++ library
 dev-python/pycson 0.7: A python parser for the Coffeescript Object Notation (CSON)
 dev-python/pycuda 2012.1 2013.1.1 2014.1 2016.1.2 2017.1 2018.1.1 9999: Python wrapper for NVIDIA CUDA
