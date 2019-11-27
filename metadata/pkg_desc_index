@@ -4639,7 +4639,7 @@ dev-lang/luajit 2.0.2 2.0.3 2.0.3-r1 2.0.4 2.0.5 2.0.5-r1 2.1.0_beta3: Just-In-T
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
 dev-lang/mercury 14.01.1-r1: Mercury is a modern general-purpose logic/functional programming language
 dev-lang/mercury-extras 14.01.1: Additional libraries and tools that are not part of the Mercury standard library
-dev-lang/micropython 1.9.3 1.9.4: Python implementation for microcontrollers
+dev-lang/micropython 1.9.3 1.9.4 1.11: Python implementation for microcontrollers
 dev-lang/mlton 20130715 20180207: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20160804 20160804-r1: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/moarvm 2018.06-r1 2018.08-r1 2018.09-r1 2018.12-r1 2019.03-r1 2019.07-r1 2019.07.1-r1 9999: A 6model-based VM for NQP and Rakudo Perl 6
@@ -4898,7 +4898,7 @@ dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libezV24 0.1.1-r1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
-dev-libs/libffi 3.2.1 3.2.1-r1 3.2.1-r2 3.2.1-r3 3.3_rc0 3.3_rc1 3.3_rc2 3.3: a portable, high level programming interface to various calling conventions
+dev-libs/libffi 3.2.1 3.2.1-r1 3.2.1-r2 3.2.1-r3 3.3_rc0 3.3_rc1 3.3_rc2 3.3 3.3-r1: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.2.0 0.3.0: Struct of arrays library with object oriented interface for C++
@@ -7450,7 +7450,7 @@ dev-python/audioread 1.0.1-r1: Module for decoding audio files using whichever b
 dev-python/authheaders 0.11.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 0.800 1.1.1: Authentication-Results Headers generation and parsing
 dev-python/autobahn 17.5.1-r2 17.9.1 17.9.2 17.10.1 18.3.1: WebSocket and WAMP for Twisted and Asyncio
-dev-python/automat 0.5.0 0.6.0 0.7.0: Self-service finite-state machines for the programmer on the go
+dev-python/automat 0.5.0 0.6.0 0.7.0 0.8.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 0.8.0 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.3.2 1.3.3 1.3.5 1.4 1.4.3 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/aws-sam-translator 1.11.0: A library that transform SAM templates into AWS CloudFormation templates
@@ -8086,7 +8086,7 @@ dev-python/lxc-python2 0.1: Python bindings for LXC
 dev-python/lxml 4.2.5 4.3.3 4.3.4 4.4.0 4.4.1 4.4.2: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2 0.10.1 2.1.6: LZ4 Bindings for Python
 dev-python/m2crypto 0.31.0-r2 0.35.2: A Python crypto and SSL toolkit
-dev-python/m2r 0.1.5 0.1.6 0.1.12 0.1.14: Markdown to reStructuredText converter
+dev-python/m2r 0.1.5 0.1.6 0.1.12 0.1.14 0.2.1: Markdown to reStructuredText converter
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
 dev-python/mailmanclient 3.1.1: mailmanclient -- python library for Mailman REST API
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
@@ -11459,7 +11459,7 @@ games-kids/lletters 0.1.95-r3: Game that helps young kids learn their letters an
 games-kids/memonix 1.6-r1: Brain teasers, puzzle and memory games for kid's in one pack
 games-kids/tuxmath 2.0.3-r1: Educational arcade game where you have to solve maths problems
 games-kids/tuxmathscrabble 0.8.1-r1: math-version of the popular board game for children 4-10
-games-kids/tuxtype 1.8.1-r1 1.8.3: Typing tutorial with lots of eye-candy
+games-kids/tuxtype 1.8.3-r1: Typing tutorial with lots of eye-candy
 games-misc/OilWar 1.2.1-r2: Evil army is attacking your country and tries to steal your oil
 games-misc/asr-manpages 1.3_rc6: set of humorous manual pages developed on alt.sysadmin.recovery
 games-misc/ballerburg 1.2.0: Linux port of the classical Atari ST game Ballerburg
@@ -17811,7 +17811,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.5.7 1.6.3 1.6.4: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1: Standard GNU database libraries
-sys-libs/glibc 2.19-r2 2.24-r4 2.25-r11 2.26-r7 2.27-r6 2.28-r6 2.29-r2 2.29-r5 2.29-r6 2.29-r7 2.30-r2 2.30-r3 9999: GNU libc C library
+sys-libs/glibc 2.19-r2 2.24-r4 2.25-r11 2.26-r7 2.27-r6 2.28-r6 2.29-r2 2.29-r7 2.30-r2 2.30-r3 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.20.0 4.20.2-r1 4.99.25_rc9: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.0.1: Library for managing partitions

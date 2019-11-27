@@ -3375,6 +3375,7 @@ games-fps/yamagi-quake2:ctf - Build support for the 'Capture The Flag' addon
 games-fps/yamagi-quake2:rogue - Build support for the 'Ground Zero' Mission Pack
 games-fps/yamagi-quake2:softrender - Build software renderer
 games-fps/yamagi-quake2:xatrix - Build support for the 'The Reckoning' Mission Pack
+games-kids/tuxtype:pango - Render fonts using media-libs/sdl-pango instead of media-libs/sdl-ttf
 games-misc/little-inferno:bundled-libs - Use bundled libraries.
 games-misc/ponysay:fish-completion - Enable fish completion support
 games-misc/ponysay:non-free - Install non-free ponies (i.e. from the MLP franchise)
