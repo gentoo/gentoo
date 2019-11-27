@@ -5088,7 +5088,7 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.19.0-r2: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.5.1: A collection of special mathematical functions
-dev-libs/openssl 1.0.2t-r1 1.1.0l 1.1.1d-r2 1.1.1d-r3: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 1.0.2t-r1 1.1.0l 1.1.1d-r3: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/openssl-compat 0.9.8z_p8-r1 1.0.2t-r1: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
