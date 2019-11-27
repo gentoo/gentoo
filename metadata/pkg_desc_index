@@ -2749,7 +2749,7 @@ app-vim/frawor 0.2.3: vim plugin: modular vim framework
 app-vim/fugitive 2.4 2.5 9999: vim plugin: a git wrapper for vim
 app-vim/fuzzyfinder 4.2.2: vim plugin: buffer/file/command/tag/etc explorer with fuzzy matching
 app-vim/genindent 1.1-r1: vim plugin: library for simplifying indent files
-app-vim/gentoo-syntax 20190609 99999999: vim plugin: Gentoo and Portage syntax highlighting
+app-vim/gentoo-syntax 20190609 20191127 99999999: vim plugin: Gentoo and Portage syntax highlighting
 app-vim/genutils 2.5 2.5-r1: vim plugin: library with various useful functions
 app-vim/gist 7.3: vim plugin: interact with gists (gist.github.com)
 app-vim/git-patch-tags 0.2: vim plugin: add git patch tags as used in linux kernel development
