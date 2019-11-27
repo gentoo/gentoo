@@ -189,7 +189,7 @@ app-accessibility/yasr 0.6.9-r1: General-purpose console screen reader
 app-admin/abrt 2.10.10-r2 2.12.0-r1: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
-app-admin/analog 6.0-r4 6.0.13: A webserver log analyzer
+app-admin/analog 6.0.13: A webserver log analyzer
 app-admin/ansible 2.7.14 2.7.15 2.8.6 2.8.7 2.9.0 2.9.1 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 3.4.23 4.0.1: Checks ansible playbooks for practices and behaviour that can be improved
@@ -17728,7 +17728,7 @@ sys-fs/mp3fs 0.91-r1: a read-only FUSE filesystem which transcodes FLAC audio fi
 sys-fs/mtd-utils 1.5.2 2.0.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.18-r2 4.0.22 4.0.23: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.1-r5: A FUSE filesystem providing access to MTP devices
-sys-fs/multipath-tools 0.6.4-r1 0.7.9 0.8.1 0.8.2 0.8.3: Device mapper target autoconfig
+sys-fs/multipath-tools 0.6.4-r1 0.7.9 0.8.1 0.8.2 0.8.3 0.8.3-r1: Device mapper target autoconfig
 sys-fs/ncdu 1.13 1.14 1.14.1: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
 sys-fs/ntfs3g 2016.2.22-r2 2017.3.23-r1 2017.3.23-r2: Open source read-write NTFS driver that runs under FUSE
