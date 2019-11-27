@@ -8949,7 +8949,6 @@ dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Pytho
 dev-python/socketpool 0.5.3 0.5.3-r1: A simple Python socket pool
 dev-python/sortedcollections 0.5.3: Python library to sort collections and containers
 dev-python/sortedcontainers 1.5.7: Python library to sort collections and containers
-dev-python/soupsieve 1.9.5: A modern CSS selector implementation for BeautifulSoup
 dev-python/soya 0.15_rc1-r1: A high-level 3D engine for Python, designed with games in mind
 dev-python/spark-parser 1.5.1-r1 1.6.0 1.6.1 1.8.5: An Early-Algorithm Context-free grammar Parser
 dev-python/sparql-wrapper 1.7.6 1.8.0 1.8.4: Wrapper around a SPARQL service
