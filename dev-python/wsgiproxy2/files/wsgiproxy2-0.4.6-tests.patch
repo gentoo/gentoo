@@ -1,0 +1,19 @@
+diff --git a/wsgiproxy/test_wsgiproxy.py b/wsgiproxy/test_wsgiproxy.py
+index 39355d9..7806d3b 100644
+--- a/wsgiproxy/test_wsgiproxy.py
++++ b/wsgiproxy/test_wsgiproxy.py
+@@ -1,4 +1,6 @@
+ # -*- coding: utf-8 -*-
++import sys
++import platform
+ import unittest
+ from wsgiproxy import proxies
+ from webtest import TestApp
+@@ -86,6 +88,7 @@ class TestHttplib(unittest.TestCase):
+                             headers=[('Transfer-Encoding', 'chunked')])
+         resp.mustcontain(no='chunked')
+ 
++    @unittest.skipIf(sys.hexversion < 0x3000000 and 'pypy' not in platform.python_implementation().lower(), "broken on cpython2")
+     def test_quoted_utf8_url(self):
+         path = '/targets/NR2F1%C3%82-human/'
+         resp = self.app.get(path)

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7,8}} pypy{,3} )
 
 inherit distutils-r1
 
@@ -17,17 +17,18 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-# nose<1.3.0 appears a leftover never updated in requires.txt. tests pass fine with latest
 RDEPEND="
+	dev-python/paste[${PYTHON_USEDEP}]
+	dev-python/pastedeploy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.2[${PYTHON_USEDEP}]
 	>=dev-python/waitress-0.8.5[${PYTHON_USEDEP}]
 	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	app-arch/unzip
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}]
@@ -43,10 +44,11 @@ PATCHES=(
 )
 
 distutils_enable_sphinx docs
+distutils_enable_tests pytest
 
-python_test() {
-	distutils_install_for_testing
-	# Tests raise ImportErrors with our default PYTHONPATH.
-	local -x PYTHONPATH=
-	nosetests -v || die "Tests fail with ${EPYTHON}"
-}
+#python_test() {
+#	distutils_install_for_testing
+#	# Tests raise ImportErrors with our default PYTHONPATH.
+#	local -x PYTHONPATH=
+#	nosetests -v || die "Tests fail with ${EPYTHON}"
+#}

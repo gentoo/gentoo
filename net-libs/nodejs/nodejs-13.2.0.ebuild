@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
-IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap test"
+IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm pax_kernel +snapshot +ssl systemtap test"
 REQUIRED_USE="
 	inspector? ( icu ssl )
 	npm? ( ssl )
@@ -33,6 +33,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
+	pax_kernel? ( sys-apps/elfix )
 "
 DEPEND="
 	${RDEPEND}
@@ -86,6 +87,9 @@ src_prepare() {
 		BUILDTYPE=Debug
 	fi
 
+	# We need to disable mprotect on two files when it builds Bug 694100.
+	use pax_kernel && PATCHES+=( "${FILESDIR}"/${PN}-13.2.0-paxmarking.patch )
+
 	default
 }
 
@@ -124,8 +128,6 @@ src_configure() {
 }
 
 src_compile() {
-	emake -C out mksnapshot
-	pax-mark m "out/${BUILDTYPE}/mksnapshot"
 	emake -C out
 }
 
