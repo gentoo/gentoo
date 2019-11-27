@@ -8946,7 +8946,7 @@ dev-python/snowballstemmer 1.2.0 1.2.1: Stemmer algorithms generated from Snowba
 dev-python/soappy 0.12.22: SOAP Services for Python
 dev-python/socketio-client 0.6.6: A socket.io client library for Python
 dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Python
-dev-python/socketpool 0.5.3 0.5.3-r1: A simple Python socket pool
+dev-python/socketpool 0.5.3 0.5.3-r1 0.5.3-r2: A simple Python socket pool
 dev-python/sortedcollections 0.5.3: Python library to sort collections and containers
 dev-python/sortedcontainers 1.5.7: Python library to sort collections and containers
 dev-python/soupsieve 1.9.5: A modern CSS selector implementation for BeautifulSoup
