@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>candrews@gentoo.org</email>
+		<name>Craig Andrews</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">fireice-uk/xmr-stak</remote-id>
+	</upstream>
+	<use>
+		<flag name="cuda">Enable NVIDIA CUDA toolkit support</flag>
+		<flag name="hwloc">Enable CPU affinity support via hwloc</flag>
+		<flag name="opencl">Enable OpenCL support</flag>
+		<flag name="webserver">Enable internal webserver</flag>
+	</use>
+</pkgmetadata>
