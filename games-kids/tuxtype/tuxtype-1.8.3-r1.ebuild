@@ -12,17 +12,19 @@ SRC_URI="https://github.com/tux4kids/${PN}/archive/upstream/${PV}.tar.gz -> ${P}
 LICENSE="GPL-2 OFL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="svg"
+IUSE="+pango svg"
 
 DEPEND="acct-group/gamestat
+	dev-games/t4k-common
 	media-libs/libsdl[video]
 	media-libs/sdl-image
 	media-libs/sdl-mixer
-	media-libs/sdl-pango
-	media-libs/sdl-ttf
+	!pango? ( media-libs/sdl-ttf )
+	pango? ( media-libs/sdl-pango )
 	svg? ( gnome-base/librsvg:2 )"
 
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${PN}-upstream-${PV}"
 
@@ -32,13 +34,19 @@ PATCHES=(
 
 src_prepare() {
 	xdg_src_prepare
+
+	# Fix broken linkage due to incorrect variable casing.
+	sed -i 's:$SDL_TTF:$SDL_ttf:g' configure.ac || die
+
 	eautoreconf
 }
 
 src_configure() {
 	econf \
 		--localedir="${EPREFIX}"/usr/share/locale \
-		$(use_with svg rsvg)
+		$(use_with pango sdlpango) \
+		$(use_with svg rsvg) \
+		--without-sdlnet # Unused!
 }
 
 src_install() {
