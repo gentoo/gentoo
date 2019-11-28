@@ -13330,7 +13330,7 @@ media-libs/opencollada 1.6.62 1.6.63-r1: Stream based read/write library for COL
 media-libs/opencolorio 1.1.0-r1 1.1.0-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.13-r3 3.4.1-r7: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.13-r3 3.4.1-r7 4.1.2: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 2.3.0: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
@@ -14741,7 +14741,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83 1.85: Amazon S3 mounting via fuse
 net-fs/s3ql 2.24 2.25 2.26 2.28 2.32 2.33: A full-featured file system for online data storage
-net-fs/samba 4.5.16 4.8.6-r2 4.8.6-r3 4.8.12 4.9.13 4.9.15 4.10.2 4.10.8 4.10.10 4.11.1 4.11.2: Samba Suite Version 4
+net-fs/samba 4.5.16 4.8.6-r2 4.8.6-r3 4.8.12 4.9.13 4.9.15 4.9.16 4.10.2 4.10.8 4.10.10 4.11.1 4.11.2: Samba Suite Version 4
 net-fs/smbnetfs 0.6.1-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 2.10-r1 3.6.0: Fuse-filesystem utilizing the sftp service

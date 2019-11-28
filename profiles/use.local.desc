@@ -4462,11 +4462,13 @@ media-libs/opencv:contribsfm - SFM module requires eigen, gflags, and glog
 media-libs/opencv:contribxfeatures2d - Enables xfeatures2d and autodownload of samples in contrib
 media-libs/opencv:cuda - Enable NVIDIA Cuda computations support (Experimental!)
 media-libs/opencv:dnnsamples - Download dnn caffeemodel samples
+media-libs/opencv:download - Enable download during cmake configure
 media-libs/opencv:eigen - Enable usage of dev-cpp/eigen for computations
 media-libs/opencv:gdal - Enable support for sci-libs/gdal library
 media-libs/opencv:gflags - Use Google's C++ argument parsing library
 media-libs/opencv:glog - Use Google's C++ loggin library
 media-libs/opencv:opencl - Add support for OpenCL
+media-libs/opencv:opencvapps - Enable compilation with opencvapps
 media-libs/opencv:tesseract - Use Google's OCR Engine
 media-libs/opencv:testprograms - Build and install programs for testing OpenCV (performance)
 media-libs/opencv:vtk - Build new 3D visualization module viz based on sci-libs/vtk
