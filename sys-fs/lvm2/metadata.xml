@@ -15,6 +15,10 @@
 		<name>Alasdair Kergon</name>
 		<description>Upstream Maintainer (please CC on bugs)</description>
 	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo base-system Team</name>
+	</maintainer>
 	<use>
 		<flag name="lvm1">Allow users to build lvm2 with lvm1 support</flag>
 		<flag name="lvm2create_initrd">Install lvm2create_initrd script and pull in <pkg>sys-apps/makedev</pkg> for the /sbin/MAKEDEV command</flag>
