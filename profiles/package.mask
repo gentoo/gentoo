@@ -32,6 +32,7 @@
 # Michał Górny <mgorny@gentoo.org> (2019-11-28)
 # TODO
 dev-python/aplpy
+dev-python/asdf
 dev-python/astlib
 dev-python/astrodendro
 dev-python/astroml-addons
@@ -63,6 +64,7 @@ dev-python/reproject
 dev-python/spectral-cube
 dev-python/specutils
 dev-python/stsci-distutils
+dev-python/stsci-sphinxext
 dev-python/sunpy
 dev-python/wcsaxes
 sci-astronomy/astrometry
