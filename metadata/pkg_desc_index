@@ -369,7 +369,7 @@ app-admin/supernova 2.2.0: novaclient wrapper for multiple nova environments
 app-admin/supervisor 3.1.4 3.3.5 4.0.3 4.0.4: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
 app-admin/sxid 4.2-r2: suid, sgid file and directory checking
-app-admin/sysklogd 1.5.1-r1 2.0-r1 2.0.1: Standard log daemons
+app-admin/sysklogd 1.5.1-r1 2.0.1 2.0.2: Standard log daemons
 app-admin/syslog-ng 3.22.1 3.24.1: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1 1.14-r2 1.14-r3: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17: Daemon providing access to the kernel sysrq functions via network
@@ -15162,7 +15162,7 @@ net-misc/AQtion 2.2.7 2.3.1: Aquantia AQC multigigabit NIC linux driver (atlanti
 net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
-net-misc/anydesk 4.0.1-r1 5.0.0 5.1.2: Feature rich multi-platform remote desktop application
+net-misc/anydesk 4.0.1-r1 5.0.0 5.1.2 5.5.0: Feature rich multi-platform remote desktop application
 net-misc/apt-cacher-ng 3.2_p2-r2 3.3_p1 3.3_p1-r1: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
@@ -16079,6 +16079,7 @@ sci-biology/vienna-rna 2.1.1 2.1.8: RNA secondary structure prediction and compa
 sci-biology/wgs-assembler 7.0-r2: The Celera de novo whole-genome shotgun DNA sequence assembler, aka CABOG
 sci-biology/wise 2.4.0_alpha: Intelligent algorithms for DNA searches
 sci-biology/yass 1.14-r2: Genomic similarity search with multiple transition constrained spaced seeds
+sci-calculators/bc-gh 2.3.2: Implementation of POSIX bc with GNU extensions
 sci-calculators/calcoo 1.3.18-r1: Scientific calculator designed to provide maximum usability
 sci-calculators/calculator 1.7.54: Scientific calculator based on the FOX Toolkit
 sci-calculators/datamash 1.4 1.5: command-line program for basic numeric, textual and statistical operations
@@ -17653,7 +17654,7 @@ sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.1.1: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
-sys-fs/bees 0.6.1 9999: Best-Effort Extent-Same, a btrfs dedup agent
+sys-fs/bees 0.6.1-r1 9999: Best-Effort Extent-Same, a btrfs dedup agent
 sys-fs/bindfs 1.14.1: FUSE filesystem for bind mounting with altered permissions
 sys-fs/btrfs-progs 4.4.1 4.19 5.3.1 5.4_rc1 9999: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4 0.4.1-r1 0.4.2: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
