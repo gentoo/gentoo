@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/autoconf.git"
@@ -21,21 +21,23 @@ LICENSE="GPL-3"
 SLOT="${PV}"
 IUSE="emacs"
 
-DEPEND=">=sys-devel/m4-1.4.16
+BDEPEND=">=sys-devel/m4-1.4.16
 	>=dev-lang/perl-5.6"
-RDEPEND="${DEPEND}
+RDEPEND="${BDEPEND}
 	!~sys-devel/${P}:2.5
 	>=sys-devel/autoconf-wrapper-13"
-[[ ${PV} == "9999" ]] && DEPEND+=" >=sys-apps/texinfo-4.3"
+[[ ${PV} == "9999" ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
 src_prepare() {
-	# Avoid the "dirty" suffix in the git version by generating it
-	# before we run later stages which might modify source files.
-	local ver=$(./build-aux/git-version-gen .tarball-version)
-	echo "${ver}" > .tarball-version || die
+	if [[ ${PV} == *9999 ]] ; then
+		# Avoid the "dirty" suffix in the git version by generating it
+		# before we run later stages which might modify source files.
+		local ver=$(./build-aux/git-version-gen .tarball-version)
+		echo "${ver}" > .tarball-version || die
 
-	autoreconf -f -i || die
+		autoreconf -f -i || die
+	fi
 
 	toolchain-autoconf_src_prepare
 }
