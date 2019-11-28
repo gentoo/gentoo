@@ -55,7 +55,7 @@ src_prepare() {
 }
 
 src_configure() {
-	python_export_best
+	python_setup
 	gnome2_src_configure \
 		--with-gnome-distributor=Gentoo \
 		--disable-scrollkeeper \
