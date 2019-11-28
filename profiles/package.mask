@@ -32,7 +32,7 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
 # Multiple build failures, automagic, missing deps, no one to fix them
 # Bugs #542756, #554388, #555768, #557974, #574854, #574890 #589182,
-# #590640, #612302, #622574, #698940
+# #590640, #612302, #622574, #698940; Removal in 30 days.
 =sci-libs/vtk-6*
 sci-libs/vtkdata
 
