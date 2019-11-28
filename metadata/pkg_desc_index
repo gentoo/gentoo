@@ -16559,7 +16559,7 @@ sci-libs/umfpack 5.6.2: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/vecmath-objectclub 1.14: Unofficial free implementation of Sun javax.vecmath by Kenji Hiranabe
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4 1.4.1 1.5 1.5.1 9999: Votca tools library
-sci-libs/vtk 6.1.0-r4 8.1.0-r3: The Visualization Toolkit
+sci-libs/vtk 8.1.0-r3: The Visualization Toolkit
 sci-libs/vtkdata 6.1.0: Example data file for VTK
 sci-libs/xdmf2 1.0_p141226-r3: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.1 1.1.4: Library to read gromacs trajectory and topology files

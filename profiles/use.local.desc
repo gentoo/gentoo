@@ -7646,11 +7646,9 @@ sci-libs/umfpack:cholmod - Use sci-libs/cholmod for matrix ordering
 sci-libs/vtk:R - Enable support for dev-lang/R
 sci-libs/vtk:all-modules - Build all modules
 sci-libs/vtk:boost - Add support for boost
-sci-libs/vtk:cg - Use nvidia's cg shaders
 sci-libs/vtk:gdal - Support for gdal formated data
 sci-libs/vtk:imaging - Building Imaging modules
 sci-libs/vtk:json - Support for json formatted data
-sci-libs/vtk:kaapi - Use sci-libs/xkaapi to handle smp support
 sci-libs/vtk:offscreen - Offscreen rendering through OSMesa
 sci-libs/vtk:rendering - Building Redering modules
 sci-libs/vtk:tbb - Use dev-cpp/tbb to handle smp support
