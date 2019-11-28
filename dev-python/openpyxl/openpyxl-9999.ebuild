@@ -3,33 +3,26 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 inherit distutils-r1 mercurial
 
 DESCRIPTION="Pure python reader and writer of Excel OpenXML files"
 HOMEPAGE="https://openpyxl.readthedocs.io/en/stable/"
-SRC_URI=""
 EHG_REPO_URI="https://bitbucket.org/openpyxl/openpyxl"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-python/jdcal[${PYTHON_USEDEP}]
 	dev-python/et_xmlfile[${PYTHON_USEDEP}]
+	dev-python/jdcal[${PYTHON_USEDEP}]
 "
-DEPEND="
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		${RDEPEND}
-		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
-		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP},tiff,jpeg]
 	)"
 
-python_test() {
-	pytest || die "Testing failed with ${EPYTHON}"
-}
+distutils_enable_tests pytest
+distutils_enable_sphinx doc
