@@ -10,7 +10,7 @@ PHP_EXT_ZENDEXT="no"
 PHP_EXT_EXTRA_ECONF=""
 DOCS=( README.md )
 
-USE_PHP="php7-1 php7-2 php7-3"
+USE_PHP="php7-1 php7-2 php7-3 php7-4"
 
 inherit php-ext-pecl-r3 multilib
 
@@ -21,7 +21,7 @@ LICENSE="PHP-3.01"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-php/pecl-apcu:7[php_targets_php7-1?,php_targets_php7-2?,php_targets_php7-3?]"
+DEPEND="dev-php/pecl-apcu:7[php_targets_php7-1?,php_targets_php7-2?,php_targets_php7-3?,php_targets_php7-4?]"
 RDEPEND="${DEPEND}"
 
 src_test() {
