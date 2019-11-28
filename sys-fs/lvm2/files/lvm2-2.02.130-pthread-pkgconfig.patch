@@ -1,0 +1,32 @@
+Make sure that libdm usage always brings in pthread libraries, both in
+pkgconfig and during manual build.
+
+--- LVM2.2.02.130/libdm/libdevmapper.pc.in
++++ LVM2.2.02.130/libdm/libdevmapper.pc.in
+@@ -9,4 +9,4 @@
+ Cflags: -I${includedir} 
+ Libs: -L${libdir} -ldevmapper
+ Requires.private: @SELINUX_PC@ @UDEV_PC@
+-Libs.private: -lm @RT_LIB@
++Libs.private: -lm @RT_LIB@ @PTHREAD_LIBS@
+--- LVM2.2.02.130/tools/Makefile.in
++++ LVM2.2.02.130/tools/Makefile.in
+@@ -90,6 +90,7 @@
+   INSTALL_LVM_TARGETS += install_tools_static
+   INSTALL_DMSETUP_TARGETS += install_dmsetup_static
+   INSTALL_CMDLIB_TARGETS += install_cmdlib_static
++  STATIC_LIBS += @PTHREAD_LIBS@
+ endif
+ 
+ LVMLIBS = $(LVMINTERNAL_LIBS)
+@@ -120,6 +121,10 @@
+ 
+ include $(top_builddir)/make.tmpl
+ 
++ifeq ("@STATIC_LINK@", "yes")
++  STATIC_LIBS += @PTHREAD_LIBS@
++endif
++
+ device-mapper: $(TARGETS_DM)
+ 
+ CFLAGS_dmsetup.o += $(UDEV_CFLAGS) $(EXTRA_EXEC_CFLAGS)
