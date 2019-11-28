@@ -35,6 +35,6 @@ src_install() {
 
 	dodir "${INSTALL_DIR}"
 	cp -pRP * "${ED}/${INSTALL_DIR}" || die
-	dosym "${ED}/${INSTALL_DIR}" /opt/zeppelin
+	dosym "${P}" /opt/zeppelin
 	fowners -R zeppelin:zeppelin "${INSTALL_DIR}"
 }
