@@ -102,7 +102,7 @@ app-laptop/pbbuttonsd macbook
 
 # Amy Liffey <amynka@gentoo.org> (2017-09-19)
 # Requires [cuda] which is masked in most of the profiles.
-media-libs/opencv contrib_xfeatures2d
+media-libs/opencv contribxfeatures2d
 
 # Rick Farina <zerochaos@gentoo.org> (2017-05-11)
 # the needed deps are amd64/x86 only

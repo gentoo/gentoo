@@ -59,7 +59,7 @@ media-gfx/alembic arnold maya
 media-plugins/grilo-plugins chromaprint
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
-# media-libs/opencv[contrib,contrib_dnn], net-libs/libmediawiki,
+# media-libs/opencv[contrib,contribdnn], net-libs/libmediawiki,
 # net-libs/libkvkontakte all not stable anywhere.
 kde-apps/kipi-plugins mediawiki vkontakte
 media-gfx/digikam dnn vkontakte

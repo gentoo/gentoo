@@ -114,7 +114,7 @@ sys-boot/grub -libzfs
 
 # Amy Liffey <amynka@gentoo.org> (2017-09-19)
 # [cuda] is unmasked in this profiles.
-media-libs/opencv -contrib_xfeatures2d
+media-libs/opencv -contribxfeatures2d
 
 # David Seifert <soap@gentoo.org> (2017-05-20)
 # cpyrit-cuda does not support GCC 4.9 or later
