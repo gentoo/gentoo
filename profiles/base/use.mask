@@ -16,10 +16,6 @@ libglvnd
 # app-office/texmacs is package.mask'd. Bug #436400
 texmacs
 
-# Brian Evans <grknight@gentoo.org> (2019-07-25)
-# Mask flag for early testing
-php_targets_php7-4
-
 # Hans de Graaff <graaff@gentoo.org> (2019-04-07)
 # Mask Ruby 2.3 as EOL
 ruby_targets_ruby23

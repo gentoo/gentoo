@@ -494,11 +494,6 @@ dev-lang/vala:0.46
 # It breaks hundreds of py2 ebuilds and not all deps are keyworded
 >=dev-python/pytest-5.0.1
 
-# Brian Evans <grknight@gentoo.org> (2019-07-25)
-# Mask new beta versions until release
-dev-lang/php:7.4
-~virtual/httpd-php-7.4
-
 # Robin H. Johnson <robbat2@gentoo.org> (2019-07-08)
 # Needs LOTS of testing, broke boot on my laptop in early attempts, maybe needs
 # matching genkernel work?
