@@ -186,7 +186,7 @@ sys-cluster/neutron haproxy
 dev-python/ipython notebook
 dev-python/networkx scipy
 dev-ruby/haml test
-media-libs/opencv contrib_dnn
+media-libs/opencv contribdnn
 net-analyzer/icinga2 classicui
 
 # Matthew Thode <prometheanfire@gentoo.org> (2018-02-16)
