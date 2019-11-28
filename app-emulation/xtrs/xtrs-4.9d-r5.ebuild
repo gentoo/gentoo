@@ -15,7 +15,7 @@ SRC_URI="http://www.tim-mann.org/trs80/${P}.tar.gz
 
 LICENSE="xtrs ls-dos? ( freedist )"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="ls-dos"
 RESTRICT="ls-dos? ( bindist )"
 
