@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2019-11-28)
+# No revdeps, blocking move to python 3.7, unnecessary maintenance
+# burden. Removal in 30 days.
+dev-python/pytest-datafiles
+dev-python/pytest-html
+dev-python/pytest-pythonpath
+dev-python/pytest-qt
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
 # Multiple build failures, automagic, missing deps, no one to fix them
 # Bugs #542756, #554388, #555768, #557974, #574854, #574890 #589182,
