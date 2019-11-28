@@ -3,11 +3,11 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic systemd toolchain-funcs
+inherit flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Standard log daemons"
 HOMEPAGE="https://troglobit.com/sysklogd.html https://github.com/troglobit/sysklogd"
-SRC_URI="https://github.com/troglobit/sysklogd/releases/download/v$(ver_cut 1-2)/${P}.tar.gz"
+SRC_URI="https://github.com/troglobit/sysklogd/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -25,27 +25,14 @@ RDEPEND="${DEPEND}"
 
 DOCS=( ChangeLog.md README.md )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.0-optional_logger.patch"
-)
-
 pkg_setup() {
 	append-lfs-flags
 	tc-export CC
 }
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
 	local myeconfargs=(
-		# Required for correct pid file location. (bug #701048)
-		# syslogd appends "/run/syslogd.pid" to the localstatedir
-		# path, and tries to write to that file even when being
-		# started in foreground. So we need to pin this to /
-		--localstatedir="${EPREFIX}"/
+		--runstatedir="${EPREFIX}"/run
 		$(use_with klogd)
 		$(use_with logger)
 		$(use_with systemd systemd $(systemd_get_systemunitdir))

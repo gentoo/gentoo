@@ -29,6 +29,11 @@ RDEPEND="${DEPEND}"
 CONFIG_CHECK="~BTRFS_FS"
 ERROR_BTRFS_FS="CONFIG_BTRFS_FS: bees does currently only work with btrfs"
 
+PATCHES=(
+	"${FILESDIR}/6001-lib-fix-non-local-lambda-expression-cannot-have-a-ca.patch"
+	"${FILESDIR}/6002-context-workaround-to-prevent-LOGICAL_INO-and-btrfs-.patch"
+)
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		if kernel_is -lt 4 4 3; then
@@ -48,7 +53,16 @@ pkg_pretend() {
 			ewarn "# WARNING: CPU: 3 PID: 18172 at fs/btrfs/backref.c:1391 find_parent_nodes+0xc41/0x14e0"
 			ewarn
 		fi
-		elog "Bees recommends to run the latest current kernel for performance and"
+		if kernel_is -lt 5 3 4; then
+			ewarn "With kernel versions below 5.3.4, bees may trigger a btrfs bug when running"
+			ewarn "btrfs-balance in parallel. This may lead to meta-data corruption in the worst"
+			ewarn "case. Especially, kernels 5.1.21 and 5.2.21 should be avoided. Kernels 5.0.x"
+			ewarn "after 5.0.21 should be safe. In the best case, affected kernels may force"
+			ewarn "the device RO without writing corrupted meta-data. More details:"
+			ewarn "https://github.com/Zygo/bees/blob/master/docs/btrfs-kernel.md"
+			ewarn
+		fi
+		elog "Bees recommends running the latest current kernel for performance and"
 		elog "reliability reasons, see README.md."
 	fi
 }
