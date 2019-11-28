@@ -38,6 +38,7 @@ sci-libs/vtkdata
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
 # Depends on broken =sci-libs/vtk-6*, needs to be bumped to 3.0.2, bug #657952
+# Removal in 30 days.
 =sci-visualization/visit-2*
 
 # Mikle Kolyada <zlogene@gentoo.org> (2019-11-27)
