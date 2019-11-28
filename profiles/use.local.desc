@@ -4455,13 +4455,13 @@ media-libs/mlt:ruby - Build SWIG bindings for Ruby
 media-libs/mlt:vidstab - Enabled video stabilization with media-libs/vidstab.
 media-libs/netpbm:rle - Build converters for the RLE format (utah raster toolkit)
 media-libs/opencv:contrib - Install user contributed scripts from opencv_contrib (Experimental!)
-media-libs/opencv:contrib_cvv - CVV module requires Qt5
-media-libs/opencv:contrib_dnn - DNN module contrib requires tiny dnn
-media-libs/opencv:contrib_hdf - HDF module requires sci-libs/hdf5
-media-libs/opencv:contrib_sfm - SFM module requires eigen, gflags, and glog
-media-libs/opencv:contrib_xfeatures2d - Enables xfeatures2d and autodownload of samples in contrib
+media-libs/opencv:contribcvv - CVV module requires Qt5
+media-libs/opencv:contribdnn - DNN module contrib requires tiny dnn
+media-libs/opencv:contribhdf - HDF module requires sci-libs/hdf5
+media-libs/opencv:contribsfm - SFM module requires eigen, gflags, and glog
+media-libs/opencv:contribxfeatures2d - Enables xfeatures2d and autodownload of samples in contrib
 media-libs/opencv:cuda - Enable NVIDIA Cuda computations support (Experimental!)
-media-libs/opencv:dnn_samples - Download dnn caffeemodel samples
+media-libs/opencv:dnnsamples - Download dnn caffeemodel samples
 media-libs/opencv:eigen - Enable usage of dev-cpp/eigen for computations
 media-libs/opencv:gdal - Enable support for sci-libs/gdal library
 media-libs/opencv:gflags - Use Google's C++ argument parsing library
