@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2019-11-28)
+# Requires dev-python/astropy that's being removed.
+sci-visualization/veusz fits
+
 # Michał Górny <mgorny@gentoo.org> (2019-11-25)
 # Requires old version of dev-python/sphinx that's being removed.
 ~dev-python/fabric-2.3.1 doc
