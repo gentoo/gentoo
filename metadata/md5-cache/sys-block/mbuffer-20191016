@@ -5,7 +5,7 @@ DESCRIPTION=M(easuring)buffer is a replacement for buffer with additional functi
 EAPI=7
 HOMEPAGE=https://www.maier-komor.de/mbuffer.html
 IUSE=debug ssl test
-KEYWORDS=~amd64 ~arm ~ppc x86
+KEYWORDS=~amd64 ~arm ppc x86
 LICENSE=GPL-2
 RDEPEND=ssl? ( dev-libs/openssl:0= )
 REQUIRED_USE=test? ( ssl )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.maier-komor.de/software/mbuffer/mbuffer-20191016.tgz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=b9e1b47c99ef36ff3b3ec85805f52a06
+_md5_=c4671c7d26aab024acccaa84ee5424fe
