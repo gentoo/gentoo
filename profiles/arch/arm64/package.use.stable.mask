@@ -40,7 +40,7 @@ virtual/notification-daemon gnome
 
 # Aaron Bauman <bman@gentoo.org> (2019-05-15)
 # packages for these USE flags fail tests
-media-libs/opencv contrib_cvv contrib_hdf contrib_sfm glog gstreamer
+media-libs/opencv contribcvv contribhdf contribsfm glog gstreamer
 
 # Mart Raudsepp <leio@gentoo.org> (2019-01-18)
 # Respective x11-drivers/ not tested and stable yet
