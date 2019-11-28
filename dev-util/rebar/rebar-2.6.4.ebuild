@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
-RDEPEND="dev-lang/erlang"
+RDEPEND="dev-lang/erlang:="
 DEPEND="${RDEPEND}"
 
 src_test() {
