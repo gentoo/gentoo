@@ -29,6 +29,52 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-11-29)
+# Astronomy-related Python packages and their revdeps.  They are
+# unmaintained.  Most of them are outdated.  None of them were tested
+# on Python 3.7, some even on 3.6.  The leaf packages are 2.7-only.
+# All of them depend on astropy which has an unconditional dependency
+# on ipython, which in turn dropped py2 support.
+# Bug #701454.  Removal in 30 days.
+dev-python/aplpy
+dev-python/asdf
+dev-python/astlib
+dev-python/astrodendro
+dev-python/astroml-addons
+dev-python/astroml
+dev-python/astroplan
+dev-python/astropy-helpers
+dev-python/astropy
+dev-python/astroquery
+dev-python/astroscrappy
+dev-python/atpy
+dev-python/ccdproc
+dev-python/gammapy
+dev-python/ginga
+dev-python/glue-vispy-viewers
+dev-python/glueviz
+dev-python/gwcs
+dev-python/healpy
+dev-python/imexam
+dev-python/montage-wrapper
+dev-python/naima
+dev-python/photutils
+dev-python/pyavm
+dev-python/pydl
+dev-python/pyfits
+dev-python/pymoc
+dev-python/pyregion
+dev-python/regions
+dev-python/reproject
+dev-python/spectral-cube
+dev-python/specutils
+dev-python/stsci-distutils
+dev-python/stsci-sphinxext
+dev-python/sunpy
+dev-python/wcsaxes
+sci-astronomy/astrometry
+sci-astronomy/kapteyn
+
 # David Seifert <soap@gentoo.org> (2019-11-28)
 # No revdeps, blocking move to python 3.7, unnecessary maintenance
 # burden, bug #701426. Removal in 30 days.

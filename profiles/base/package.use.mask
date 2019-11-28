@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2019-11-29)
+# Requires dev-python/astropy that's being removed.
+sci-visualization/veusz fits
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
 # sci-visualization/visit is on the way out, bug #657952
 sci-libs/libgeodecomp visit
