@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.4-flags.patch"
 
 	# upstream fixes (can be removed with next version bump)
+	"${FILESDIR}/${P}-musl.patch"
 )
 
 src_prepare() {
