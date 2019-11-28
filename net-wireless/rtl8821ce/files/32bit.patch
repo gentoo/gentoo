@@ -1,0 +1,16 @@
+diff --git a/hal/rtl8821c/pci/rtl8821ce_halmac.c b/hal/rtl8821c/pci/rtl8821ce_halmac.c
+index 1100cdf..f7ae7b0 100755
+--- a/hal/rtl8821c/pci/rtl8821ce_halmac.c
++++ b/hal/rtl8821c/pci/rtl8821ce_halmac.c
+@@ -24,7 +24,11 @@ static u8 pci_write_port_not_xmitframe(void *d,  u32 size, u8 *pBuf, u8 qsel)
+ 	PADAPTER padapter = dvobj_get_primary_adapter(pobj);
+ 	u32 page_size = 0;
+ 	u8 *txbd;
++#ifdef CONFIG_64BIT
+ 	u64 txbd_dma;
++#else
++	dma_addr_t txbd_dma;
++#endif
+ 	u8 ret = _SUCCESS;
+ 	dma_addr_t mapping;
+ 
