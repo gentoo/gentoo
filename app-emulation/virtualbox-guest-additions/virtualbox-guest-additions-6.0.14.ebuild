@@ -168,8 +168,8 @@ src_install() {
 	doins "${FILESDIR}"/vboxclient.desktop
 
 	# sample xorg.conf
-	insinto /usr/share/doc/${PF}
-	doins "${FILESDIR}"/xorg.conf.vbox
+	dodoc "${FILESDIR}"/xorg.conf.vbox
+	docompress -x "${ED}"/usr/share/doc/${PF}/xorg.conf.vbox
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
 }
