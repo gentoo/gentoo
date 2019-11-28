@@ -15,6 +15,7 @@ LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 # see bug 581874 for the qttest dep in RDEPEND
 RDEPEND="
