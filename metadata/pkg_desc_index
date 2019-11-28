@@ -1192,7 +1192,7 @@ app-editors/mousepad 0.4.2: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 4.2 4.4 4.5 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 3.1.1: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1 5.6-r2 5.7: Multi-purpose text editor for the X Window System
-app-editors/neovim 0.3.8 0.4.2 9999: Vim-fork focused on extensibility and agility.
+app-editors/neovim 0.3.8 0.4.2 0.4.3 9999: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/notepadqq 1.2.0 1.4.8 9999: Notepad++-like editor for Linux
 app-editors/nvi 1.81.6-r7: Re-implementation of the classic 4BSD ex/vi
@@ -5030,7 +5030,7 @@ dev-libs/libvarlink 16: C implementation of the Varlink protocol and command lin
 dev-libs/libverto 0.2.5-r1 0.3.0: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvoikko 4.3: Spell checking, hyphenation and morphological analysis tool for Finnish language
-dev-libs/libvterm 0.0_pre20181126 0.1.1: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
+dev-libs/libvterm 0.0_pre20181126 0.1.1 0.1.2: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libwacom 0.33 1.0: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.4.1-r1: string internment library, written in C
@@ -13975,7 +13975,7 @@ media-sound/mup 6.6: Program for printing music scores
 media-sound/murmur 1.3.0 9999: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/muse 0.9.2_p20161002: Multiple Streaming Engine, an icecast source streamer
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
-media-sound/musescore 3.0.1-r1 3.3 9999: WYSIWYG Music Score Typesetter
+media-sound/musescore 3.0.1-r1 3.3 3.3.3 9999: WYSIWYG Music Score Typesetter
 media-sound/music-file-organizer 1.0.2: Organizes audio files into directories based on metadata tags, along with other metadata utilities.
 media-sound/musique 1.5-r1: Qt music player
 media-sound/ncmpc 0.34: Ncurses client for the Music Player Daemon (MPD)
@@ -14561,7 +14561,7 @@ net-analyzer/speedtest-cli 2.1.1 2.1.2: Command line interface for testing inter
 net-analyzer/sqlninja 0.2.6_p1-r1: A SQL Server injection & takeover tool
 net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
-net-analyzer/squidview 0.80: Interactive console program to analyse squid logs
+net-analyzer/squidview 0.86: Interactive console program to analyse squid logs
 net-analyzer/ssldump 0.9_beta3: An SSLv3/TLS network protocol analyzer
 net-analyzer/sslscan 1.11.12 1.11.13 1.11.13-r1: Fast SSL configuration scanner
 net-analyzer/sslsplit 0.5.4 0.5.5 9999: Transparent SSL/TLS interception
