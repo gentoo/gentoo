@@ -1446,7 +1446,7 @@ app-emulation/diskimage-builder 2.28.2 2.29.1 2.30.0 9999: Golden Disk Image bui
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 18.09.9 19.03.4 19.03.5: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
-app-emulation/docker-compose 1.24.0 1.24.1 1.25.0: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.24.0 1.24.1 1.25.0-r1: Multi-container orchestration for Docker
 app-emulation/docker-credential-helpers 0.6.0 0.6.3: A suite of programs to use native stores to keep Docker credentials safe
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.13.0: Machine management for a container-centric world
@@ -9015,7 +9015,7 @@ dev-python/stripe 1.84.2 2.3.0 2.10.1 2.34.0: Stripe python bindings
 dev-python/stripogram 1.5-r1: Strip-o-Gram HTML Conversion Library
 dev-python/stsci-distutils 0.3.7: Utilities used to package some of STScI's Python projects
 dev-python/stsci-sphinxext 1.2.1: Tools and templates to customize Sphinx for STScI projects
-dev-python/subprocess32 3.2.7: A backport of the subprocess module from Python 3.2/3.3 for use on 2.x
+dev-python/subprocess32 3.2.7 3.5.4: A backport of the subprocess module from Python 3.2/3.3 for use on 2.x
 dev-python/subunit 1.2.0-r1: A streaming protocol for test results
 dev-python/subvertpy 0.9.1 0.10.1: Alternative Python bindings for Subversion
 dev-python/suds 0.6-r1: Lightweight SOAP client (Jurko's fork) (py3 support) (active development)
