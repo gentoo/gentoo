@@ -26,7 +26,7 @@ DEPEND="
 	python? ( >=dev-python/cython-0.14[${PYTHON_USEDEP}] )"
 
 src_configure() {
-	use python && python_export_best
+	use python && python_setup
 
 	XMLTO=: \
 	econf \

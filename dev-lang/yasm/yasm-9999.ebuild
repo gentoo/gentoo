@@ -50,9 +50,9 @@ src_prepare() {
 
 src_configure() {
 	if [[ ${PV} == 9999* ]]; then
-		python_export_best
+		python_setup
 	else
-		use python && python_export_best
+		use python && python_setup
 	fi
 
 	econf \
