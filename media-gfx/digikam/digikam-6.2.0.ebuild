@@ -65,7 +65,7 @@ COMMON_DEPEND="
 		$(add_kdeapps_dep kcontacts)
 	)
 	calendar? ( $(add_kdeapps_dep kcalcore) )
-	dnn? ( >=media-libs/opencv-3.1.0:=[contrib,contrib_dnn] )
+	dnn? ( >=media-libs/opencv-3.1.0:=[contrib,contribdnn] )
 	gphoto2? ( media-libs/libgphoto2:= )
 	imagemagick? ( media-gfx/imagemagick:= )
 	lensfun? ( media-libs/lensfun )
