@@ -29,17 +29,15 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-Fix-python-3-compatability.patch
 )
 
-python_prepare_all() {
-	python_export_best
-	echo VERSION="${PVR}" "${PYTHON}" setup.py set_version
-	VERSION="${PVR}" "${PYTHON}" setup.py set_version \
+python_configure_all() {
+	echo VERSION="${PVR}" "${EPYTHON}" setup.py set_version
+	VERSION="${PVR}" "${EPYTHON}" setup.py set_version \
 		|| die "setup.py set_version failed"
-	distutils-r1_python_prepare_all
 }
 
 python_install_all() {
 	distutils-r1_python_install_all
-	dodoc eupdatedb.cron || die "dodoc failed"
+	dodoc eupdatedb.cron
 
 	# Remove unused man pages according to the l10n flags
 	if ! use l10n_fr ; then
