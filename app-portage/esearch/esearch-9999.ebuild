@@ -21,16 +21,15 @@ KEYWORDS=""
 DEPEND="sys-apps/portage"
 RDEPEND="${DEPEND}"
 
-python_prepare_all() {
-	python_export_best
-	echo VERSION="9999-${EGIT_VERSION}" "${PYTHON}" setup.py set_version
-	VERSION="9999-${EGIT_VERSION}" "${PYTHON}" setup.py set_version
-	distutils-r1_python_prepare_all
+python_configure_all() {
+	echo VERSION="${PVR}" "${EPYTHON}" setup.py set_version
+	VERSION="${PVR}" "${EPYTHON}" setup.py set_version \
+		|| die "setup.py set_version failed"
 }
 
 python_install_all() {
 	distutils-r1_python_install_all
-	dodoc eupdatedb.cron || die "dodoc failed"
+	dodoc eupdatedb.cron
 
 	# Remove unused man pages according to the l10n flags
 	if ! use l10n_fr ; then
