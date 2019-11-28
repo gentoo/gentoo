@@ -13554,12 +13554,12 @@ media-plugins/kodi-audioencoder-lame 2.0.1 2.0.2 9999: Lame MP3 encoder addon fo
 media-plugins/kodi-audioencoder-vorbis 2.0.1 2.0.2 2.0.3 9999: Vorbis encoder addon for Kodi
 media-plugins/kodi-audioencoder-wav 2.0.1 2.0.2 9999: WAV encoder addon for Kodi
 media-plugins/kodi-game-libretro 1.1.0 1.1.1 9999: Libretro compatibility layer for the Kodi Game API
-media-plugins/kodi-game-libretro-bnes 0.83.0.3 0.83.0.4 0.83.0.5 9999: bNES GameClient for Kodi
-media-plugins/kodi-game-libretro-dosbox 0.74.0.3 0.74.0.4 9999: DOSBox GameClient for Kodi
+media-plugins/kodi-game-libretro-bnes 0.83.0.3 0.83.0.4 0.83.0.5 0.83.0.6 9999: bNES GameClient for Kodi
+media-plugins/kodi-game-libretro-dosbox 0.74.0.3 0.74.0.4 0.74.0.5 9999: DOSBox GameClient for Kodi
 media-plugins/kodi-game-libretro-fceumm 0.0.1.9 9999: FCEU-Next GameClient for Kodi
-media-plugins/kodi-game-libretro-nestopia 1.50.0.3 1.50.0.4 1.50.0.5 1.50.0.6 9999: Nestopia GameClient for Kodi
-media-plugins/kodi-game-libretro-snes9x 1.58.0.6 1.60.0.7 1.60.0.8 9999: Snes9x GameClient for Kodi
-media-plugins/kodi-game-libretro-twentyfortyeight 1.0.0.106 1.0.0.107 1.0.0.108 9999: 2048 for Kodi
+media-plugins/kodi-game-libretro-nestopia 1.50.0.3 1.50.0.4 1.50.0.5 1.50.0.6 1.50.0.7 9999: Nestopia GameClient for Kodi
+media-plugins/kodi-game-libretro-snes9x 1.58.0.6 1.60.0.7 1.60.0.8 1.60.0.9 9999: Snes9x GameClient for Kodi
+media-plugins/kodi-game-libretro-twentyfortyeight 1.0.0.106 1.0.0.107 1.0.0.108 1.0.0.109 9999: 2048 for Kodi
 media-plugins/kodi-inputstream-adaptive 2.4.2 9999: Kodi's Adaptive inputstream addon
 media-plugins/kodi-inputstream-rtmp 2.0.4 2.0.5 2.0.6 9999: Kodi's RTMP inputstream addon
 media-plugins/kodi-peripheral-joystick 1.4.6 1.4.7 1.4.8 9999: Libretro compatibility layer for the Kodi Game API
@@ -13570,7 +13570,7 @@ media-plugins/kodi-pvr-dvblink 4.7.1 4.7.2 9999: Kodi's DVBLink client addon
 media-plugins/kodi-pvr-dvbviewer 3.7.5 3.7.8 3.7.11 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 2.4.4 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-hts 4.4.12 4.4.13 4.4.14 4.4.16 4.4.17 4.4.18 4.4.20 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
-media-plugins/kodi-pvr-iptvsimple 3.8.0 3.8.1 3.8.3 3.8.4 3.8.5 3.8.6 3.8.7 9999: Kodi's IPTVSimple client addon
+media-plugins/kodi-pvr-iptvsimple 3.8.0 3.8.1 3.8.3 3.8.4 3.8.5 3.8.6 3.8.7 3.8.8 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 3.5.16 3.5.17 9999: Kodi's MediaPortal TVServer client addon
 media-plugins/kodi-pvr-mythtv 5.10.9 5.10.11 5.10.12 5.10.13 5.10.14 9999: MythTV PVR for Kodi
 media-plugins/kodi-pvr-nextpvr 3.3.8 3.3.11 3.3.12 3.3.13 3.3.14 3.3.15 9999: Kodi's NextPVR client addon
@@ -14469,7 +14469,7 @@ net-analyzer/nessus-agent-bin 7.4.2: A remote security scanner for Linux - agent
 net-analyzer/nessus-bin 8.5.2: A remote security scanner for Linux
 net-analyzer/net-snmp 5.8-r1 5.8-r2 5.8-r4 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
-net-analyzer/netdata 1.18.1-r1 9999: Linux real time system monitoring, done right!
+net-analyzer/netdata 1.18.1-r1 1.19.0 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.3_beta6-r3: An active/passive address reconnaissance tool
 net-analyzer/nethogs 0.8.5-r1: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0-r1: NETI@Home research project from GATech
@@ -15492,7 +15492,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270 0.4.1355: utility to download media contents from the web
-net-misc/youtube-dl 2019.11.22 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2019.11.22 2019.11.28 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.5.5 3.5.8-r1 3.5.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -15581,6 +15581,7 @@ net-p2p/tvrss 1.8_beta: TV RSS is a tool for automating torrent downloads
 net-p2p/vuze 4.8.1.2-r1 5.7.6.0: BitTorrent client in Java, formerly called Azureus
 net-p2p/vuze-coreplugins 4.8.1.2 5.7.6.0: Core plugins for Vuze that are included in upstream distribution
 net-p2p/xmr-stak 2.7.0 2.7.1 2.8.0 2.8.2 2.8.3 2.9.0 2.10.0 2.10.1 2.10.2 2.10.3 2.10.4 2.10.5 2.10.6 2.10.7 9999: Unified all-in-one Monero miner
+net-p2p/xmr-stak-rx 1.0.1 9999: Monero RandomX Miner
 net-print/apsfilter 7.2.8-r1: Apsfilter Prints So Fine, It Leads To Extraordinary Results
 net-print/brlaser 4: Brother laser printer driver
 net-print/c2esp 26 27: A CUPS filter for Kodak ESP printers
@@ -18311,8 +18312,8 @@ www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2: a free, open source web browser
 www-client/opera 65.0.3467.48: A fast and secure web browser
-www-client/opera-beta 65.0.3467.32: A fast and secure web browser
-www-client/opera-developer 66.0.3502.0 66.0.3515.2: A fast and secure web browser
+www-client/opera-beta 66.0.3515.3: A fast and secure web browser
+www-client/opera-developer 66.0.3515.2: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 2.1.1 2.1.1-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla

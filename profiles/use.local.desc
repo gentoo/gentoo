@@ -6955,6 +6955,10 @@ net-p2p/xmr-stak:devfee - Enable payment of devfee to the developer
 net-p2p/xmr-stak:hwloc - Enable CPU affinity support via hwloc
 net-p2p/xmr-stak:opencl - Enable OpenCL support
 net-p2p/xmr-stak:webserver - Enable internal webserver
+net-p2p/xmr-stak-rx:cuda - Enable NVIDIA CUDA toolkit support
+net-p2p/xmr-stak-rx:hwloc - Enable CPU affinity support via hwloc
+net-p2p/xmr-stak-rx:opencl - Enable OpenCL support
+net-p2p/xmr-stak-rx:webserver - Enable internal webserver
 net-print/cups:java - Add support for the Java interpeter in the web server CGIs.
 net-print/cups:lprng-compat - Do not install lp... binaries so cups and lprng can coexist.
 net-print/cups:python - Add support for the Python interpeter in the web server CGIs.
