@@ -241,7 +241,7 @@ app-admin/elektra 0.8.20-r1: Framework to store config parameters in hierarchica
 app-admin/emacs-updater 1.15 1.16: Rebuild Emacs packages
 app-admin/entr 4.3: Run arbitrary commands when files change
 app-admin/equo 302: Entropy Package Manager text-based client
-app-admin/eselect 1.4.12 1.4.14 1.4.15 9999: Gentoo's multi-purpose configuration and management tool
+app-admin/eselect 1.4.12 1.4.14 1.4.15 1.4.16 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/exo 1.6.0: Command-line tool for everything at Exoscale: compute, storage, dns.
 app-admin/fam 2.7.0-r7 2.7.0_p17_p2: FAM, the File Alteration Monitor
@@ -1289,7 +1289,7 @@ app-emacs/emacs-wget 0.5.0-r1: Wget interface for Emacs
 app-emacs/emhacks 20070920-r1: Useful Emacs Lisp libraries, including gdiff, jjar, jmaker, swbuff, and tabbar
 app-emacs/emms 4.4 5.2: The Emacs Multimedia System
 app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
-app-emacs/eselect-mode 1.4.14 1.4.15 9999: Emacs major mode for editing eselect files
+app-emacs/eselect-mode 1.4.14 1.4.15 1.4.16 9999: Emacs major mode for editing eselect files
 app-emacs/ess 17.11 18.10.2-r1: Emacs Speaks Statistics
 app-emacs/evil 1.2.13 1.2.14: Extensible vi layer for Emacs
 app-emacs/expand-region 0.11.0-r1: Emacs extension to increase selected region by semantic units
