@@ -14,7 +14,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 sparc x86"
 
-DEPEND=">=dev-lang/erlang-17.1"
+DEPEND=">=dev-lang/erlang-17.1:="
 RDEPEND="${DEPEND}"
 
 DOCS=( CHANGELOG.md  README.md )
