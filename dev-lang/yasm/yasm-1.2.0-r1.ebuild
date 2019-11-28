@@ -37,7 +37,7 @@ src_prepare() {
 }
 
 src_configure() {
-	use python && python_export_best
+	use python && python_setup
 
 	econf \
 		$(use_enable python) \
