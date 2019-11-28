@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
 IUSE="libressl"
 
 DEPEND=">=dev-erlang/p1_utils-1.0.13
-	>=dev-lang/erlang-17.1
+	>=dev-lang/erlang-17.1:=
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
 RDEPEND="${DEPEND}"
