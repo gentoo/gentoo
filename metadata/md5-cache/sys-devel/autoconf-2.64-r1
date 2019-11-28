@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-devel/m4-1.4.6 dev-lang/perl !~sys-devel/autoconf-2.64:2.5 >=sys-devel/autoconf-wrapper-13
 SLOT=2.64
 SRC_URI=mirror://gnu/autoconf/autoconf-2.64.tar.xz
-_eclasses_=toolchain-autoconf	030c94515d35f2a4ae476066dd7bb59a
+_eclasses_=toolchain-autoconf	739c1e0219b6c6464c5ce3c13a2186d8
 _md5_=9d119fb1ed03be67cfbe1e4adf5495e0

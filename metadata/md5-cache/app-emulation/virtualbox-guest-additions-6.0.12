@@ -12,4 +12,4 @@ RDEPEND=X? ( x11-apps/xrandr x11-apps/xrefresh x11-libs/libXmu x11-libs/libX11 x
 SLOT=0
 SRC_URI=https://download.virtualbox.org/virtualbox/6.0.12/VirtualBox-6.0.12.tar.bz2 https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-6.0.0_beta2-patches-01.tar.xz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	6c7b3e7b9d39bd049bf23a991c16315e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=23d400401757ac7f7420f6e40a46b3ca
+_md5_=439a2e46d7ba1829a9a42dffd7582c11
