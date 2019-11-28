@@ -30,9 +30,11 @@ RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.3.0[${PYTHON_USEDEP}]
 	>=dev-python/texttable-0.9.0[${PYTHON_USEDEP}]
 	>=dev-python/websocket-client-0.32.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '>=dev-python/backports-shutil_get_terminal_size-1.0.0[${PYTHON_USEDEP}]' 'python2_7' )
+	$(python_gen_cond_dep '>=dev-python/backports-ssl-match-hostname-3.5[${PYTHON_USEDEP}]' 'python2_7' )
 	$(python_gen_cond_dep '>=dev-python/enum34-1.0.4[${PYTHON_USEDEP}]' 'python2_7' )
 	$(python_gen_cond_dep '>=dev-python/ipaddress-1.0.16[${PYTHON_USEDEP}]' 'python2_7' )
-	$(python_gen_cond_dep '>=dev-python/backports-ssl-match-hostname-3.5[${PYTHON_USEDEP}]' 'python2_7' )"
+	$(python_gen_cond_dep '>=dev-python/subprocess32-3.5.4[${PYTHON_USEDEP}]' 'python2_7' )"
 
 DEPEND="${RDEPEND}
 	test? ( <dev-python/pytest-4[${PYTHON_USEDEP}]
