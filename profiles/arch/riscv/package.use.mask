@@ -35,7 +35,6 @@ dev-libs/icu doc
 dev-libs/iniparser doc
 dev-libs/libgcrypt doc
 dev-libs/libnl python
-dev-libs/libtasn1 valgrind
 dev-libs/libusb doc
 dev-libs/libxslt python
 dev-libs/libyaml doc
@@ -54,7 +53,7 @@ dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
 media-libs/freetype harfbuzz png
 media-libs/tiff jbig jpeg test webp zstd
 net-fs/nfs-utils nfsv41
-net-libs/gnutls doc test-full valgrind
+net-libs/gnutls doc test-full
 net-libs/ldns doc python
 net-misc/curl brotli curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss http2 rtmp ssh
 net-misc/ntp openntpd snmp vim-syntax zeroconf
