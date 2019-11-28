@@ -9952,7 +9952,7 @@ dev-ruby/multi_xml 0.6.0-r1: A generic swappable back-end for XML parsing
 dev-ruby/multipart-post 2.0.0-r1 2.1.0 2.1.1: Adds a streamy multipart form post capability to Net::HTTP
 dev-ruby/mustache 1.0.5 1.1.0: Mustache is a framework-agnostic way to render logic-free views
 dev-ruby/mustermann 1.0.3: A library implementing patterns that behave like regular expressions
-dev-ruby/mysql2 0.4.10-r1 0.4.10-r3 0.5.1-r1 0.5.2-r2 0.5.2-r3: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
+dev-ruby/mysql2 0.4.10-r1 0.4.10-r3 0.5.1-r1 0.5.2-r2 0.5.2-r3 0.5.3: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
 dev-ruby/nagios 0.0.4-r1: Nagios-rb is a compact framework for writing Nagios plugins
 dev-ruby/nagios_analyzer 0.0.5-r1: A simple parser for Nagios status files
 dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
