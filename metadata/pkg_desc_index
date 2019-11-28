@@ -1969,7 +1969,7 @@ app-misc/g15mpd 1.0.0-r1: MPD (music player daemon) plugin to G15daemon
 app-misc/g15stats 1.9.7: CPU, memory, swap, network stats for G15 Keyboard
 app-misc/g810-led 0.3.6: Led controller for Logitech G- Keyboards
 app-misc/gcal 3.6.3 4.1: The GNU Calendar - a replacement for cal
-app-misc/gcalcli 3.2 3.3.2 3.4.0 4.0.0_alpha3 4.0.0_alpha3-r1: Google Calendar Command Line Interface
+app-misc/gcalcli 3.2 3.3.2 3.4.0 4.0.0_alpha3 4.0.0_alpha3-r1 4.2.0: Google Calendar Command Line Interface
 app-misc/gcstar 1.7.0 1.7.1: Manage your collections of movies, games, books, music and more
 app-misc/geekcode 1.7.3-r1: Geek code generator
 app-misc/geneweb 6.08-r1: Genealogy software program with a Web interface
