@@ -14,8 +14,8 @@ inherit autotools multilib-minimal
 DESCRIPTION="HW video decode support for Intel integrated graphics"
 HOMEPAGE="https://github.com/intel/intel-vaapi-driver"
 if [[ ${PV} != *9999* ]] ; then
-	SRC_URI="https://github.com/intel/${MY_PN}/releases/download/${PV}/${MY_PN}-${PV}.tar.bz2"
-	S="${WORKDIR}/${MY_PN}-${PV}"
+	SRC_URI="https://github.com/intel/${MY_PN}/releases/download/${PV/_/.}/${MY_PN}-${PV/_/.}.tar.bz2"
+	S="${WORKDIR}/${MY_PN}-${PV/_/.}"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
