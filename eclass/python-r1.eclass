@@ -763,36 +763,6 @@ python_setup() {
 	python_wrapper_setup
 }
 
-# @FUNCTION: python_export_best
-# @USAGE: [<variable>...]
-# @DESCRIPTION:
-# Find the best (most preferred) Python implementation enabled
-# and export given variables for it. If no variables are provided,
-# EPYTHON & PYTHON will be exported.
-python_export_best() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}"
-
-	eqawarn "python_export_best() is deprecated. Please use python_setup instead,"
-	eqawarn "combined with python_export if necessary."
-
-	[[ ${#} -gt 0 ]] || set -- EPYTHON PYTHON
-
-	local best MULTIBUILD_VARIANTS
-	_python_obtain_impls
-
-	_python_set_best() {
-		best=${MULTIBUILD_VARIANT}
-	}
-	multibuild_for_best_variant _python_set_best
-	unset -f _python_set_best
-
-	debug-print "${FUNCNAME}: Best implementation is: ${best}"
-	python_export "${best}" "${@}"
-	python_wrapper_setup
-}
-
 # @FUNCTION: python_replicate_script
 # @USAGE: <path>...
 # @DESCRIPTION:
