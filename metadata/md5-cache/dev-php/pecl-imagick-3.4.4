@@ -1,15 +1,15 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 )
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=media-gfx/imagemagick-6.2.4:=[-openmp] test? ( >=media-gfx/imagemagick-6.2.4:=[jpeg,png,truetype] ) php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 )
+DEPEND=>=media-gfx/imagemagick-6.2.4:=[-openmp] test? ( >=media-gfx/imagemagick-6.2.4:=[jpeg,png,truetype] ) php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
 DESCRIPTION=PHP wrapper for the ImageMagick library
 EAPI=7
 HOMEPAGE=https://pecl.php.net/imagick https://github.com/mkoppanen/imagick
-IUSE=examples test php_targets_php5-6 php_targets_php7-1 php_targets_php7-2 php_targets_php7-3
+IUSE=examples test php_targets_php5-6 php_targets_php7-1 php_targets_php7-2 php_targets_php7-3 php_targets_php7-4
 KEYWORDS=amd64 ~arm ~arm64 x86
 LICENSE=PHP-3.01
-RDEPEND=>=media-gfx/imagemagick-6.2.4:=[-openmp] php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 )
-REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php7-1 php_targets_php7-2 php_targets_php7-3 )
+RDEPEND=>=media-gfx/imagemagick-6.2.4:=[-openmp] php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
+REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php7-1 php_targets_php7-2 php_targets_php7-3 php_targets_php7-4 )
 SLOT=0
 SRC_URI=https://pecl.php.net/get/imagick-3.4.4.tgz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	php-ext-pecl-r3	a59741d3df8ea9f17afcdcfb7edaee6d	php-ext-source-r3	dd53cd94748f9e498bea0f9480ba8d77	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=2c22cc4d2aa8fa81ce14483c6dbb4b7c
+_md5_=8b68bb433c375aed958fc58c59897b8e
