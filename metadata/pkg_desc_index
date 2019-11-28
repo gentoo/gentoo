@@ -8146,7 +8146,7 @@ dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on Ea
 dev-python/mox3 0.24.0: Mock object framework for Python
 dev-python/mpi4py 3.0.2: Message Passing Interface for Python
 dev-python/mpmath 1.0.0 1.1.0: Python library for arbitrary-precision floating-point arithmetic
-dev-python/msgpack 0.4.8 0.5.1 0.5.6 0.6.1: MessagePack (de)serializer for Python
+dev-python/msgpack 0.4.8 0.5.1 0.5.6 0.6.1 0.6.2: MessagePack (de)serializer for Python
 dev-python/multidict 4.1.0 4.3.1 4.5.2: multidict implementation
 dev-python/multipledispatch 0.4.9: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/munch 2.1.1 2.2.0 2.3.2 2.5.0: A dot-accessible dictionary (a la JavaScript objects)
@@ -8177,7 +8177,7 @@ dev-python/nbformat 4.4.0 4.4.0-r1: Reference implementation of the Jupyter Note
 dev-python/nbsphinx 0.2.14 0.4.1: Jupyter Notebook Tools for Sphinx
 dev-python/nbval 0.7 0.9.1: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.4.0 0.4.2-r1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
-dev-python/neovim-python-client 0.3.1-r1 0.3.2-r1: Python client for Neovim
+dev-python/neovim-python-client 0.3.1-r1 0.3.2-r1 0.4.0: Python client for Neovim
 dev-python/neovim-remote 1.8.6 2.1.0 2.1.7 2.2.1 9999: A tool that helps control neovim processes
 dev-python/netaddr 0.7.12 0.7.13 0.7.14 0.7.15 0.7.17 0.7.18 0.7.19: Network address representation and manipulation library
 dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
@@ -13656,7 +13656,7 @@ media-plugins/vdr-ffnetdev 0.1.2: VDR Plugin: Output device which offers OSD via
 media-plugins/vdr-filebrowser 0.2.1: VDR plugin: file manager plugin for moving or renaming files in VDR
 media-plugins/vdr-freecell 0.0.2-r3: VDR plugin: play 'Freecell' on the On Screen Display
 media-plugins/vdr-fritzbox 1.5.3-r1: VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook
-media-plugins/vdr-graphlcd 0.1.9 1.0.0: VDR Plugin: support output on Graphical LCD
+media-plugins/vdr-graphlcd 1.0.0: VDR Plugin: support output on Graphical LCD
 media-plugins/vdr-imonlcd 1.0.2: VDR Plugin: shows information about the current state of VDR on iMON LCD
 media-plugins/vdr-infosatepg 0.0.12: VDR Plugin: Reads the contents of infosat and writes the data into the EPG
 media-plugins/vdr-iptv 2.2.1-r1: VDR plugin: Add a logical device capable of receiving IPTV
@@ -13975,7 +13975,7 @@ media-sound/mup 6.6: Program for printing music scores
 media-sound/murmur 1.3.0 9999: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/muse 0.9.2_p20161002: Multiple Streaming Engine, an icecast source streamer
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
-media-sound/musescore 3.0.1-r1 3.3 3.3.3 9999: WYSIWYG Music Score Typesetter
+media-sound/musescore 3.3 3.3.3 9999: WYSIWYG Music Score Typesetter
 media-sound/music-file-organizer 1.0.2: Organizes audio files into directories based on metadata tags, along with other metadata utilities.
 media-sound/musique 1.5-r1: Qt music player
 media-sound/ncmpc 0.34: Ncurses client for the Music Player Daemon (MPD)
@@ -18592,7 +18592,7 @@ x11-libs/libtinynotify-cli 1.2.1 9999: Common CLI routines for tinynotify-send &
 x11-libs/libtinynotify-systemwide 0.1 9999: A system-wide notifications module for libtinynotify
 x11-libs/libva 2.5.0-r1 9999: Video Acceleration (VA) API for Linux
 x11-libs/libva-compat 1.8.3: Video Acceleration (VA) API for Linux
-x11-libs/libva-intel-driver 2.3.0 9999: HW video decode support for Intel integrated graphics
+x11-libs/libva-intel-driver 2.3.0 2.4.0_pre1 9999: HW video decode support for Intel integrated graphics
 x11-libs/libva-intel-media-driver 18.3.0 18.4.1 9999: Intel Media Driver for VAAPI (iHD)
 x11-libs/libva-vdpau-driver 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.2 1.3 99999: VDPAU wrapper and trace libraries
