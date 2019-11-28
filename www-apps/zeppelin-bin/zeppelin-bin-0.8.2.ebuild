@@ -13,7 +13,7 @@ HOMEPAGE="https://zeppelin.apache.org"
 SRC_URI="mirror://apache/zeppelin/${MY_PN}-${PV}/${MY_P}.tgz -> ${P}.tgz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND=">=virtual/jdk-1.8"
 RDEPEND=">=virtual/jre-1.8"

@@ -22,6 +22,8 @@ DEPEND="
 
 DOCS=( CONFIGURATION.md README.md )
 
+PATCHES=( ${FILESDIR}/${P}-fix-ncurses-configure.patch )
+
 src_prepare() {
 	default
 	sed \
