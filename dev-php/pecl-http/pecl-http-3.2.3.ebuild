@@ -9,11 +9,11 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 PHP_INI_NAME="50-http"
 
-USE_PHP="php5-6 php7-1 php7-2 php7-3"
+USE_PHP="php5-6 php7-1 php7-2 php7-3 php7-4"
 
 inherit php-ext-pecl-r3
 
-USE_PHP="php7-1 php7-2 php7-3"
+USE_PHP="php7-1 php7-2 php7-3 php7-4"
 
 KEYWORDS="~amd64 ~x86"
 
@@ -24,22 +24,23 @@ IUSE="ssl curl_ssl_gnutls curl_ssl_libressl curl_ssl_nss +curl_ssl_openssl"
 
 DEPEND="app-arch/brotli:=
 	dev-libs/libevent
-	dev-php/pecl-propro:7[php_targets_php7-1?,php_targets_php7-2?,php_targets_php7-3?]
-	dev-php/pecl-raphf:7[php_targets_php7-1?,php_targets_php7-2?,php_targets_php7-3?]
+	dev-php/pecl-propro:7[php_targets_php7-1?,php_targets_php7-2?,php_targets_php7-3?,php_targets_php7-4?]
+	dev-php/pecl-raphf:7[php_targets_php7-1?,php_targets_php7-2?,php_targets_php7-3?,php_targets_php7-4?]
 	net-dns/libidn2
 	sys-libs/zlib
 	ssl? ( net-misc/curl[ssl,curl_ssl_gnutls=,curl_ssl_libressl=,curl_ssl_nss=,curl_ssl_openssl=] )
 	!ssl? ( net-misc/curl[-ssl] )
 	php_targets_php7-1? ( dev-lang/php:7.1[hash,session,iconv] )
 	php_targets_php7-2? ( dev-lang/php:7.2[hash,session,iconv] )
-	php_targets_php7-3? ( dev-lang/php:7.3[hash,session,iconv] )"
+	php_targets_php7-3? ( dev-lang/php:7.3[hash,session,iconv] )
+	php_targets_php7-4? ( dev-lang/php:7.4[session,iconv] )"
 RDEPEND="${DEPEND}
 	php_targets_php5-6? ( dev-php/pecl-http:2[php_targets_php5-6] )"
 
 PHP_EXT_ECONF_ARGS=( --with-http --without-http-shared-deps --without-http-libidn-dir )
 
 src_prepare() {
-	if use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3 ; then
+	if use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3 || use php_targets_php7-4 ; then
 		php-ext-source-r3_src_prepare
 	else
 		default_src_prepare
@@ -47,7 +48,7 @@ src_prepare() {
 }
 
 src_install() {
-	if use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3 ; then
+	if use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3 || use php_targets_php7-4 ; then
 		php-ext-pecl-r3_src_install
 	fi
 }
