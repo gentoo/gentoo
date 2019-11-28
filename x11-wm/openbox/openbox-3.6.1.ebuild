@@ -50,7 +50,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
 src_prepare() {
-	use xdg && python_export_best
+	use xdg && python_setup
 	epatch "${FILESDIR}"/${PN}-3.5.2-gnome-session.patch
 	sed -i \
 		-e "s:-O0 -ggdb ::" \
