@@ -556,6 +556,9 @@ _git-r3_is_local_repo() {
 git-r3_fetch() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	# disable password prompts, https://bugs.gentoo.org/701276
+	local -x GIT_TERMINAL_PROMPT=0
+
 	# process repos first since we create repo_name from it
 	local repos
 	if [[ ${1} ]]; then
