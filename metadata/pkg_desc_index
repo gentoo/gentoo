@@ -1492,7 +1492,7 @@ app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 2.1.1-r1 3.0.3 3.1.0-r1: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.3: Old style template scripts for LXC
 app-emulation/lxd 3.14 3.16-r1: Fast, dense and secure container management
-app-emulation/nemu 2.1.0 2.2.0 9999: ncurses interface for QEMU
+app-emulation/nemu 2.1.0 2.2.0 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 10.3.10: Opensourced tools for VMware guests
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.12 4.3.4: Set of scripts to easily install and use Windows games and software
@@ -18291,7 +18291,7 @@ www-apps/webmcp 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.2.4 5.3: Wordpress PHP and MySQL based content management system (CMS)
-www-apps/zeppelin-bin 0.8.1: Web-based interactive data analytics notebook launcher
+www-apps/zeppelin-bin 0.8.1 0.8.2: Web-based interactive data analytics notebook launcher
 www-client/chromium 78.0.3904.108 79.0.3945.56 80.0.3970.5: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
