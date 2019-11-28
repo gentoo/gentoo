@@ -91,7 +91,7 @@ src_prepare() {
 }
 
 python_prepare_all() {
-	python_export_best
+	python_setup
 	# Extract python info out of SConstruct so we can use saner distribute
 	pyvar() { sed -n "/^ *$1 *=/s:.*= *::p" SConstruct ; }
 	local pybins=$(pyvar python_progs | tail -1)
