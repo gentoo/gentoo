@@ -29,6 +29,8 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 S="${WORKDIR}"
 
+RDEPEND="!<net-misc/asterisk-extra-sounds-1.5.2"
+
 src_unpack() {
 	local ar
 	local c
