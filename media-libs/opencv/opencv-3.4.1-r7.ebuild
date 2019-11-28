@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 inherit java-pkg-opt-2 java-ant-2 python-r1 toolchain-funcs cmake-multilib
@@ -12,32 +12,33 @@ DESCRIPTION="A collection of algorithms and sample code for various computer vis
 HOMEPAGE="https://opencv.org"
 TINY_DNN_PV="1.0.0a3"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	dnn_samples? ( https://dev.gentoo.org/~amynka/snap/${PN}-3.4.0-res10_300x300-caffeemodel.tar.gz )
+	dnnsamples? ( https://dev.gentoo.org/~amynka/snap/${PN}-3.4.0-res10_300x300-caffeemodel.tar.gz )
 	contrib? (
 		https://github.com/${PN}/${PN}_contrib/archive/${PV}.tar.gz -> ${P}_contrib.tar.gz
-		contrib_dnn? ( https://github.com/tiny-dnn/tiny-dnn/archive/v${TINY_DNN_PV}.tar.gz -> tiny-dnn-${TINY_DNN_PV}.tar.gz
-			       https://dev.gentoo.org/~amynka/snap/${PN}-3.4.0-face_landmark_model.tar.gz
+		contribdnn? (
+			https://github.com/tiny-dnn/tiny-dnn/archive/v${TINY_DNN_PV}.tar.gz -> tiny-dnn-${TINY_DNN_PV}.tar.gz
+			https://dev.gentoo.org/~amynka/snap/${PN}-3.4.0-face_landmark_model.tar.gz
 		)
-		contrib_xfeatures2d? ( https://dev.gentoo.org/~amynka/snap/vgg_boostdesc-3.2.0.tar.gz )
+		contribxfeatures2d? ( https://dev.gentoo.org/~amynka/snap/vgg_boostdesc-3.2.0.tar.gz )
 	)"
 
 LICENSE="BSD"
 SLOT="0/3.4.1" # subslot = libopencv* soname version
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86 ~amd64-linux"
-IUSE="contrib contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2d cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_popcnt cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cuda debug dnn_samples +eigen examples ffmpeg gdal gflags glog gphoto2 gstreamer gtk ieee1394 jpeg lapack libav opencl openexr opengl openmp pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
+IUSE="contrib contribcvv contribdnn contribhdf contribsfm contribxfeatures2d cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_popcnt cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cuda debug dnnsamples +eigen examples ffmpeg gdal gflags glog gphoto2 gstreamer gtk ieee1394 jpeg lapack libav opencl openexr opengl openmp pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
 # OpenGL needs gtk or Qt installed to activate, otherwise build system
 # will silently disable it Wwithout the user knowing, which defeats the
 # purpose of the opengl use flag.
 REQUIRED_USE="
 	cuda? ( tesseract? ( opencl ) )
-	dnn_samples? ( examples )
+	dnnsamples? ( examples )
 	gflags? ( contrib )
 	glog? ( contrib )
-	contrib_cvv? ( contrib qt5 )
-	contrib_dnn? ( contrib )
-	contrib_hdf? ( contrib )
-	contrib_sfm? ( contrib eigen gflags glog )
-	contrib_xfeatures2d? ( contrib cuda )
+	contribcvv? ( contrib qt5 )
+	contribdnn? ( contrib )
+	contribhdf? ( contrib )
+	contribsfm? ( contrib eigen gflags glog )
+	contribxfeatures2d? ( contrib cuda )
 	java? ( python )
 	opengl? ( || ( gtk qt5 ) )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -53,7 +54,7 @@ RDEPEND="
 	dev-libs/protobuf:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	cuda? ( dev-util/nvidia-cuda-toolkit:0= )
-	contrib_hdf? ( sci-libs/hdf5 )
+	contribhdf? ( sci-libs/hdf5 )
 	ffmpeg? (
 		libav? ( media-video/libav:0=[${MULTILIB_USEDEP}] )
 		!libav? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )
@@ -102,7 +103,6 @@ RDEPEND="
 	xine? ( media-libs/xine-lib )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
-	contrib_dnn? ( dev-libs/cereal )
 	eigen? ( dev-cpp/eigen:3 )
 	java?  ( >=virtual/jdk-1.6 )
 	vaapi?  ( x11-libs/libva )"
@@ -234,6 +234,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-build-with-va.patch" # bug https://bugs.gentoo.org/656576
 	"${FILESDIR}/${P}-popcnt.patch" # https://bugs.gentoo.org/633900
 	"${FILESDIR}/${P}-fix-on-x86.patch" # https://bugs.gentoo.org/682104
+	"${FILESDIR}/${P}-python37.patch" # https://bugs.gentoo.org/691480
 )
 
 pkg_pretend() {
@@ -253,7 +254,7 @@ src_prepare() {
 	sed -e '/add_subdirectory(.*3rdparty.*)/ d' \
 		-i CMakeLists.txt cmake/*cmake || die
 
-	if use dnn_samples; then
+	if use dnnsamples; then
 		mv  "${WORKDIR}/res10_300x300_ssd_iter_140000.caffemodel" "${WORKDIR}/${P}/samples/dnn/" || die
 	fi
 
@@ -261,7 +262,7 @@ src_prepare() {
 		cd  "${WORKDIR}/${PN}_contrib-${PV}" || die
 		eapply "${FILESDIR}/${PN}-3.3.0-remove-tiny-dnn-autodownload.patch"
 
-		if use contrib_xfeatures2d; then
+		if use contribxfeatures2d; then
 			mv "${WORKDIR}"/*.i "${WORKDIR}/${PN}_contrib-${PV}"/modules/xfeatures2d/src/ || die
 		fi
 	fi
@@ -427,13 +428,13 @@ multilib_src_configure() {
 	# ===================================================
 	if use contrib; then
 		GLOBALCMAKEARGS+=(
-			-DBUILD_opencv_dnn=$(usex contrib_dnn ON OFF)
+			-DBUILD_opencv_dnn=$(usex contribdnn ON OFF)
 			-DTINYDNN_ROOT="${WORKDIR}/tiny-dnn-${TINY_DNN_PV}"
 			-DBUILD_opencv_dnns_easily_fooled=OFF
-			-DBUILD_opencv_xfeatures2d=$(usex contrib_xfeatures2d ON OFF)
-			-DBUILD_opencv_cvv=$(usex contrib_cvv ON OFF)
-			-DBUILD_opencv_hdf=$(multilib_native_usex contrib_hdf ON OFF)
-			-DBUILD_opencv_sfm=$(usex contrib_sfm ON OFF)
+			-DBUILD_opencv_xfeatures2d=$(usex contribxfeatures2d ON OFF)
+			-DBUILD_opencv_cvv=$(usex contribcvv ON OFF)
+			-DBUILD_opencv_hdf=$(multilib_native_usex contribhdf ON OFF)
+			-DBUILD_opencv_sfm=$(usex contribsfm ON OFF)
 		)
 
 		if multilib_is_native_abi; then
@@ -459,7 +460,7 @@ multilib_src_configure() {
 
 	# Copy face_land_model to ${CMAKE_BINARY_DIR}/${OPENCV_TEST_DATA_INSTALL_PATH}
 	# TODO patch ocv_download to copy files into destination dirs
-	if use contrib_dnn; then
+	if use contribdnn; then
 		mkdir -p "${BUILD_DIR}"/share/OpenCV/testdata/cv/face/ || die
 		cp "${WORKDIR}"/face_landmark_model.dat "${BUILD_DIR}"/share/OpenCV/testdata/cv/face/ || die
 	fi
