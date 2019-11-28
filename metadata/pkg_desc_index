@@ -2157,7 +2157,7 @@ app-misc/uptimed 0.4.1-r1 0.4.1-r2 0.4.2: System uptime record daemon that keeps
 app-misc/utimer 0.4-r1: A command line timer and stopwatch
 app-misc/vcontrold 0.98.5 0.98.6 0.98.8: Daemon for communication with Viessmann Vito heatings
 app-misc/vcp 2.2-r2: Copy files/directories in a curses interface
-app-misc/vifm 0.9.1 0.10 0.10.1: Console file manager with vi(m)-like keybindings
+app-misc/vifm 0.10.1: Console file manager with vi(m)-like keybindings
 app-misc/vit 1.3: Perl/Curses front-end for Taskwarrior (app-misc/task)
 app-misc/vittk 1.3: A front end for Taskwarrior (app-misc/task)
 app-misc/vlock 2.2.3-r1: A console screen locker
@@ -4649,7 +4649,7 @@ dev-lang/mozart 1.4.0-r3 1.4.0-r4: Advanced development platform for intelligent
 dev-lang/mozart-stdlib 1.4.0-r2: The Mozart Standard Library
 dev-lang/mujs 1.0.5 1.0.6: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.14.02: groovy little assembler
-dev-lang/nim 1.0.2: compiled, garbage-collected systems programming language
+dev-lang/nim 1.0.2 1.0.4: compiled, garbage-collected systems programming language
 dev-lang/nqp 2018.06-r1 2018.08-r1 2018.09-r1 2018.12-r1 2019.03-r1 2019.07.1 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 4.04.2-r1 4.05.0-r1: Type-inferring functional programming language descended from the ML family
@@ -4771,7 +4771,7 @@ dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.16.0: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.22.6 1.23.2: Enlightenment Foundation Libraries all-in-one package
-dev-libs/elfutils 0.176-r1 0.177: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+dev-libs/elfutils 0.176-r1 0.177 0.178: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.9 0.20 0.21 0.22 0.23 0.24 0.25 0.26 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.8: Stream-oriented XML parser library
