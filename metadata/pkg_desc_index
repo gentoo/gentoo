@@ -10850,7 +10850,7 @@ dev-util/shflags 1.0.3 1.2.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/smem 1.4: A tool that can give numerous reports on memory usage on Linux systems
-dev-util/source-highlight 3.1.8 3.1.8-r1: Generate highlighted source code as an (x)html document
+dev-util/source-highlight 3.1.8 3.1.8-r1 3.1.9: Generate highlighted source code as an (x)html document
 dev-util/spec-cleaner 1.0.6 1.0.7 9999: SUSE spec file cleaner and formatter
 dev-util/spirv-headers 1.3.4_pre20190302 1.5.1 9999: Machine-readable files for the SPIR-V Registry
 dev-util/spirv-llvm-translator 8.0.1.2-r1: Bi-directional translator between SPIR-V and LLVM IR
