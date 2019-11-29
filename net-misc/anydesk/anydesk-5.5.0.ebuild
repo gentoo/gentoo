@@ -28,6 +28,7 @@ RDEPEND="
 	media-libs/freetype:2
 	media-libs/glu
 	media-libs/mesa[X(+)]
+	sys-apps/pciutils
 	sys-auth/polkit
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
