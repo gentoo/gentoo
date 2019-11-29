@@ -35,7 +35,7 @@ src_install () {
 	default
 
 	# That's not how we want it
-	rm -rf "${ED%/}"/usr/share/{aclocal,doc} || die
+	rm -rf "${ED}"/usr/share/{aclocal,doc} || die
 
 	# package provides .pc file
 	find "${D}" -name '*.la' -delete || die
