@@ -17,14 +17,15 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~sh ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
+REQUIRED_USE="doc? ( || ( $(python_gen_useflags -3) ) )"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/six-1.4[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
-		>=dev-python/sphinx-1.2.2[${PYTHON_USEDEP}]
-		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '>=dev-python/sphinx-2[${PYTHON_USEDEP}]' -3)
+		$(python_gen_cond_dep 'dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]' -3)
 	)
 	test? (
 		>=dev-python/pytest-2.6[${PYTHON_USEDEP}]
@@ -32,6 +33,10 @@ DEPEND="${RDEPEND}
 	)"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+
+pkg_setup() {
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( -3 )
+}
 
 python_prepare_all() {
 	# enables coverage testing which we don't want
@@ -52,17 +57,18 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	use doc && esetup.py build_sphinx
+	if use doc; then
+		esetup.py build_sphinx
+		HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
+	fi
 }
 
 python_test() {
 	py.test -vv || die "Tests failed under ${EPYTHON}"
-	"${PYTHON}" tests/object_import.py || die "Tests failed under ${EPYTHON}"
+	"${EPYTHON}" tests/object_import.py || die "Tests failed under ${EPYTHON}"
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( doc/_build/html/. )
 	use examples && dodoc -r examples
-
 	distutils-r1_python_install_all
 }
