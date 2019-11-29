@@ -1,12 +1,12 @@
 DEFINED_PHASES=install prepare
 DEPEND=dev-libs/libtommath
 DESCRIPTION=portable ISO C library for polynomial basis arithmetic
-EAPI=4
-HOMEPAGE=http://www.libtom.org/
+EAPI=7
+HOMEPAGE=https://www.libtom.net/
 KEYWORDS=amd64 ppc x86
 LICENSE=WTFPL-2
 RDEPEND=dev-libs/libtommath
 SLOT=0
 SRC_URI=https://github.com/libtom/libtompoly/releases/download/0.04/ltp-0.04.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=2a6d1c0d0978a1c65a6883810495c9c0
+_md5_=d1ce6c8b707fb9ebe7de86b203ee4b3c

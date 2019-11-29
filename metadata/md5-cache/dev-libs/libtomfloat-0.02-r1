@@ -1,12 +1,12 @@
 DEFINED_PHASES=install prepare
 DEPEND=dev-libs/libtommath
 DESCRIPTION=library for floating point number manipulation
-EAPI=4
-HOMEPAGE=http://libtom.org/
+EAPI=7
+HOMEPAGE=https://www.libtom.net/
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=WTFPL-2
 RDEPEND=dev-libs/libtommath
 SLOT=0
-SRC_URI=http://libtom.org/files/ltf-0.02.tar.bz2
+SRC_URI=https://github.com/libtom/libtomfloat/releases/download/0.02/ltf-0.02.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=a36019105ed3f79e3266c5a2473dbf49
+_md5_=1c0d21e1dc533c7d715ddbed40d649d3

@@ -5008,9 +5008,9 @@ dev-libs/libtar 1.2.20-r4: C library for manipulating tar archives
 dev-libs/libtasn1 4.13 4.14 4.15.0: ASN.1 library
 dev-libs/libtecla 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.19 0.20 0.22: Library for easy processing of keyboard entry from terminal-based programs
-dev-libs/libtomfloat 0.02: library for floating point number manipulation
+dev-libs/libtomfloat 0.02-r1: library for floating point number manipulation
 dev-libs/libtommath 0.42.0-r1 1.0.1 1.1.0: Optimized and portable routines for integer theoretic applications
-dev-libs/libtompoly 0.04: portable ISO C library for polynomial basis arithmetic
+dev-libs/libtompoly 0.04-r1: portable ISO C library for polynomial basis arithmetic
 dev-libs/libtpms 0.7.0: Library providing software emultion of a TPM
 dev-libs/libtreadstone 0.2.0: Hyperdex libtreadstone support library
 dev-libs/libtsm 3 4.0.1: Terminal Emulator State Machine
