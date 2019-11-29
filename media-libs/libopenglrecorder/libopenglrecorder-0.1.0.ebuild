@@ -32,11 +32,11 @@ DOCS=( CHANGELOG.md README.md USAGE.md )
 
 multilib_src_configure() {
 	local mycmakeargs=(
-			-DBUILD_PULSE_WO_DL=ON
-			-DSTATIC_RUNTIME_LIBS=OFF
-			-DBUILD_WITH_H264=$(usex openh264)
-			-DBUILD_RECORDER_WITH_SOUND=$(usex sound)
-			-DBUILD_WITH_VPX=$(usex vpx)
+		-DBUILD_PULSE_WO_DL=ON
+		-DSTATIC_RUNTIME_LIBS=OFF
+		-DBUILD_WITH_H264=$(usex openh264)
+		-DBUILD_RECORDER_WITH_SOUND=$(usex sound)
+		-DBUILD_WITH_VPX=$(usex vpx)
 	)
 	cmake-utils_src_configure
 }
