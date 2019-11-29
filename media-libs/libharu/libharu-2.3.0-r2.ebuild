@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-multilib
 
@@ -18,7 +18,8 @@ IUSE=""
 
 DEPEND="
 	media-libs/libpng:0=[${MULTILIB_USEDEP}]
-	sys-libs/zlib:=[${MULTILIB_USEDEP}]"
+	sys-libs/zlib:=[${MULTILIB_USEDEP}]
+"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-${MYP}"
@@ -33,5 +34,4 @@ PATCHES=(
 mycmakeargs=(
 	-DLIBHPDF_EXAMPLES=NO # Doesn't work
 	-DLIBHPDF_STATIC=NO
-	-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 )
