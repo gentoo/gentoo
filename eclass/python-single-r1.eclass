@@ -265,9 +265,47 @@ unset -f _python_single_set_globals
 
 if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 
+# @FUNCTION: _python_gen_usedep
+# @INTERNAL
+# @USAGE: <pattern> [...]
+# @DESCRIPTION:
+# Output a USE dependency string for Python implementations which
+# are both in PYTHON_COMPAT and match any of the patterns passed
+# as parameters to the function.
+#
+# The patterns can be either fnmatch-style patterns (matched via bash
+# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
+# appropriately all enabled Python 2/3 implementations (alike
+# python_is_python3). Remember to escape or quote the fnmatch patterns
+# to prevent accidental shell filename expansion.
+#
+# This is an internal function used to implement python_gen_cond_dep
+# and deprecated python_gen_usedep.
+_python_gen_usedep() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local impl matches=()
+
+	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
+		if _python_impl_matches "${impl}" "${@}"; then
+			matches+=(
+				"python_targets_${impl}(-)?"
+				"python_single_target_${impl}(+)?"
+			)
+		fi
+	done
+
+	[[ ${matches[@]} ]] || die "No supported implementations match python_gen_usedep patterns: ${@}"
+
+	local out=${matches[@]}
+	echo "${out// /,}"
+}
+
 # @FUNCTION: python_gen_usedep
 # @USAGE: <pattern> [...]
 # @DESCRIPTION:
+# DEPRECATED.  Please use python_gen_cond_dep instead.
+#
 # Output a USE dependency string for Python implementations which
 # are both in PYTHON_COMPAT and match any of the patterns passed
 # as parameters to the function.
@@ -295,21 +333,12 @@ if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 python_gen_usedep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local impl matches=()
-
-	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		if _python_impl_matches "${impl}" "${@}"; then
-			matches+=(
-				"python_targets_${impl}(-)?"
-				"python_single_target_${impl}(+)?"
-			)
-		fi
-	done
-
-	[[ ${matches[@]} ]] || die "No supported implementations match python_gen_usedep patterns: ${@}"
-
-	local out=${matches[@]}
-	echo "${out// /,}"
+	# output only once, during some reasonable phase
+	# (avoid spamming cache regen runs)
+	if [[ ${EBUILD_PHASE} == setup ]]; then
+		eqawarn "python_gen_usedep() is deprecated. Please use python_gen_cond_dep instead."
+	fi
+	_python_gen_usedep "${@}"
 }
 
 # @FUNCTION: python_gen_useflags
@@ -407,7 +436,7 @@ python_gen_cond_dep() {
 			# (since python_gen_usedep() will not return ${PYTHON_USEDEP}
 			#  the code is run at most once)
 			if [[ ${dep} == *'${PYTHON_USEDEP}'* ]]; then
-				local usedep=$(python_gen_usedep "${@}")
+				local usedep=$(_python_gen_usedep "${@}")
 				dep=${dep//\$\{PYTHON_USEDEP\}/${usedep}}
 			fi
 
