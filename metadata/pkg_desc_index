@@ -1461,7 +1461,7 @@ app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulato
 app-emulation/faudio 19.06 19.09 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
 app-emulation/firecracker 0.18.0: Secure and fast microVMs for serverless computing
 app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
-app-emulation/free42 2.0.20 2.5.10 2.5.11: An HP-42S Calculator Simulator
+app-emulation/free42 2.0.20 2.5.10 2.5.11 2.5.12: An HP-42S Calculator Simulator
 app-emulation/fs-uae 3.0.2: Integrates the most accurate Amiga emulation code available from WinUAE
 app-emulation/fs-uae-launcher 3.0.2: PyQt5-based launcher for FS-UAE
 app-emulation/fuse 1.5.6 1.5.7: Free Unix Spectrum Emulator by Philip Kendall
@@ -3362,7 +3362,7 @@ dev-go/go-spew 0_pre20150619 9999: Implements a deep pretty printer for Go data 
 dev-go/go-sqlite3 1.1.0_p20160131 1.1.0_p20160307: Go sqlite3 driver using database/sql
 dev-go/go-sys 0_pre20160204 0_pre20180816 9999: Go packages for low-level interaction with the operating system
 dev-go/go-text 0_pre20160211 0.3.0 9999: Go text processing support
-dev-go/go-tools 0_pre20180817 0_pre20190911 9999: Tools that support the Go programming language (godoc, etc.)
+dev-go/go-tools 0_pre20190911 9999: Tools that support the Go programming language (godoc, etc.)
 dev-go/go-tour 0_p20180810 0_p20190829: A Tour of Go
 dev-go/godebug-pretty 0_p20170819: Pretty printing for Go
 dev-go/godep 74 9999: dependency tool for go
