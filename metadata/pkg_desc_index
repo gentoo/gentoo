@@ -3227,8 +3227,6 @@ dev-embedded/dfu-programmer 0.7.2-r1: A Device Firmware Update based USB program
 dev-embedded/esptool 2.1 2.6 2.8: Utility to communicate with the ROM bootloader in Espressif ESP8266 and ESP32
 dev-embedded/freaklabs-boards 1.0.0: Arduino hardware definitions for freaklabs boards
 dev-embedded/ftdi_eeprom 0.3-r1 1.0: Utility to program external EEPROM for FTDI USB chips
-dev-embedded/gnap-dev 2.0: Gentoo-based Network Appliance building system development tools
-dev-embedded/gnap-ext 2.0: Gentoo-based Network Appliance extensions and remastering tool
 dev-embedded/gnome-avrdude 0.1: GNOME GUI for avrdude
 dev-embedded/gnusim8085 1.3.7: A GTK2 8085 Simulator
 dev-embedded/gpsim 0.29.0 0.30.0: A simulator for the Microchip PIC microcontrollers
@@ -9987,7 +9985,6 @@ dev-ruby/octokit 4.14.0: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.9.0: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.4: Open3::popen3 with exit status
 dev-ruby/openssl-ccm 1.2.1 1.2.2: OpenSSL CBC-MAC (CCM) ruby gem
-dev-ruby/openvas-omp 0.0.4: Communicate with OpenVAS manager through OMP
 dev-ruby/optimist 3.0.0: A commandline option parser for Ruby that just gets out of your way.
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
@@ -12783,7 +12780,6 @@ media-fonts/unfonts-extra 1.0.2_pre080608-r1: Korean Un fonts extras collection
 media-fonts/unifont 9.0.06 10.0.04 10.0.05 10.0.06 11.0.02: GNU Unifont - a Pan-Unicode X11 bitmap iso10646 font
 media-fonts/urw-fonts 2.4.9: free good quality fonts gpl'd by URW++
 media-fonts/urwvn-fonts 3.05: fonts gpl'd by Han The Thanh, based on URW++ fonts with Vietnamese glyphs added
-media-fonts/vc-fonts 20020207-r2: Vico bitmap Fonts
 media-fonts/vdrsymbols-ttf 20100612: Font that contains symbols needed for VDR
 media-fonts/viga 1: A sans-serif font with great personality and good on-screen performance
 media-fonts/vlgothic 20141206: Japanese TrueType font from Vine Linux
@@ -13750,7 +13746,7 @@ media-radio/fsync-mdc1200-decode 1.0 9999: Linux Fleetsync / MDC1200 decoder
 media-radio/gpredict 2.2 2.2.1: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1: A tool for controlling amateur radios
 media-radio/ibp 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
-media-radio/js8call 1.0.0 1.1.0 2.0.0: Weak signal ham radio communication
+media-radio/js8call 1.0.0 1.1.0 2.0.0-r1: Weak signal ham radio communication
 media-radio/qrq 0.3.1-r1 0.3.2 0.3.3: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 9.2.6 9.4.2 9.4.4: Amateur radio SSTV software
 media-radio/svxlink 17.12.1 17.12.2: Multi Purpose Voice Services System, including Qtel for EchoLink
@@ -14501,12 +14497,8 @@ net-analyzer/nuttcp 8.1.4: Network performance measurement tool
 net-analyzer/odhcploc 20111021: Open DHCP Locator
 net-analyzer/oinkmaster 2.0: Rule management for SNORT
 net-analyzer/openbsd-netcat 1.105 1.105-r1 1.190: The OpenBSD network swiss army knife
-net-analyzer/openvas 9.0.0: A remote security scanner
-net-analyzer/openvas-cli 1.4.3: A remote security scanner for Linux (OpenVAS-cli)
-net-analyzer/openvas-libraries 9.0.3-r1: A remote security scanner for Linux (openvas-libraries)
 net-analyzer/openvas-manager 7.0.3: A remote security manager for Linux (openvas-manager)
 net-analyzer/openvas-scanner 5.1.3 6.0.1: Open Vulnerability Assessment Scanner
-net-analyzer/openvas-tools 0_pre20512: A remote security scanner for Linux (extra tools)
 net-analyzer/opsgenie-lamp 2.5.1_p20181102: command line client for the opsgenie service
 net-analyzer/ospd 1.3.2 2.0.0: Base class for scanner wrappers,communication protocol for GVM
 net-analyzer/ossec-hids 3.1.0 3.2.0 3.2.0-r1 3.3.0: Open Source Host-based Intrusion Detection System
@@ -17590,7 +17582,6 @@ sys-devel/remake 4.2.1.1.4-r1: patched version of GNU make with improved error r
 sys-devel/slibtool 0.5.28: A skinny libtool implementation, written in C
 sys-devel/smatch 1.60 9999: static analysis tool for C
 sys-devel/sparse 0.5.1 0.5.2_rc1 0.6.0 9999: C semantic parser
-sys-devel/systemd-m4 9999: autoconf macros for packages using systemd
 sys-devel/ucpp 1.3.4 1.3.5: Library for preprocessing C compliant to ISO-C99
 sys-fabric/dapl 2.0.40: OpenIB - Direct Access Provider Library
 sys-fabric/ibacm 1.0.8: IB CM pre-connection service application

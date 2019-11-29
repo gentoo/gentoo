@@ -5480,15 +5480,6 @@ net-analyzer/nmap:zenmap - Install the GTK+ based nmap GUI, zenmap
 net-analyzer/nrpe:command-args - Build support for specifying the command-line arguments from the Nagios/Icinga master. Make sure you understand the implications of this flag as it can be a security risk.
 net-analyzer/nsca:crypt - Build support for crypted communication with nsca, through dev-libs/libmcrypt. It's recommended not to disable this flag unless all the communication will be handled in an absolutely safe environment.
 net-analyzer/nsca:minimal - Only build and install the send_nsca command and not the daemon. This allows a very minimal install with no overhead when setting up a node.
-net-analyzer/openvas:cli - Command Line Interface for OpenVAS Scanner throught net-analyzer/gvm-tools
-net-analyzer/openvas:extras - Extra fonts, pdf results and html docs support
-net-analyzer/openvas:gsa - Greenbone Security Assistant (WebUI) through net-analyzer/greenbone-security-assistant
-net-analyzer/openvas:ldap - Enable support for ldap through net-nds/openldap
-net-analyzer/openvas:ospd - Enable support for scanner wrappers through net-analyzer/ospd
-net-analyzer/openvas:radius - Enable support for radius through net-dialup/freeradius-client
-net-analyzer/openvas-libraries:extras - Html docs support
-net-analyzer/openvas-libraries:ldap - Enable support for ldap
-net-analyzer/openvas-libraries:radius - Enable support for radius
 net-analyzer/openvas-manager:extras - Html docs support
 net-analyzer/openvas-scanner:cron - Install a cron job to update GVM's feed daily.
 net-analyzer/openvas-scanner:extras - Html docs support
