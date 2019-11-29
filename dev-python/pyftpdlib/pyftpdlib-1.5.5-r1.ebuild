@@ -53,7 +53,10 @@ python_test() {
 		# https://github.com/giampaolo/pyftpdlib/issues/512
 		# https://bugs.gentoo.org/701146
 		pyftpdlib/test/test_functional_ssl.py::TestFtpStoreDataTLSMixin::test_rest_on_stor
-		pyftpdlib/test/test_functional_ssl.py::TestFtpStoreDataTLSMixin::test_stor_as cii
+		pyftpdlib/test/test_functional_ssl.py::TestFtpStoreDataTLSMixin::test_stor_ascii
+		# https://github.com/giampaolo/pyftpdlib/issues/513
+		# https://bugs.gentoo.org/676232
+		pyftpdlib/test/test_servers.py::TestFtpAuthentication::test_anon_auth
 	)
 	# Tests fail with TZ=GMT, see https://bugs.gentoo.org/666623
 	TZ=UTC+1 pytest -vv \
