@@ -7444,7 +7444,7 @@ dev-python/async_generator 1.10: Making it easy to write async iterators in Pyth
 dev-python/async_timeout 1.2.1 2.0.1 3.0.1: Timeout context manager for asyncio programs
 dev-python/asynctest 0.12.2: Enhance the standard unittest with features for testing asyncio libraries
 dev-python/atom 0.4.1: Memory efficient Python objects
-dev-python/atomicwrites 1.1.5-r2 1.1.5-r3 1.2.1: Atomic file writes
+dev-python/atomicwrites 1.1.5-r2 1.1.5-r3 1.2.1 1.3.0: Atomic file writes
 dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
 dev-python/atpy 0.9.7: Astronomical tables support for Python
 dev-python/attrs 18.2.0 19.1.0 19.3.0: Attributes without boilerplate
@@ -7454,10 +7454,10 @@ dev-python/authres 0.800 1.1.1: Authentication-Results Headers generation and pa
 dev-python/autobahn 17.5.1-r2 17.9.1 17.9.2 17.10.1 18.3.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 0.5.0 0.6.0 0.7.0 0.8.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 0.8.0 1.12.1: Friendly state machines for python.
-dev-python/autopep8 1.3.2 1.3.3 1.3.5 1.4 1.4.3 9999: Automatically formats Python code to conform to the PEP 8 style guide
+dev-python/autopep8 1.3.2 1.3.3 1.3.5 1.4 1.4.3 1.4.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/aws-sam-translator 1.11.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.4.2: AWS X-Ray SDK for Python
-dev-python/awscli 1.16.104 1.16.125 1.16.148 1.16.190 1.16.215 1.16.220 1.16.233-r1 1.16.261 1.16.278 1.16.283: Universal Command Line Environment for AWS
+dev-python/awscli 1.16.104 1.16.125 1.16.148 1.16.190 1.16.215 1.16.220 1.16.233-r1 1.16.261 1.16.278 1.16.283 1.16.292: Universal Command Line Environment for AWS
 dev-python/axiom 0.7.2 0.7.5: Object database implemented on top of SQLite
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.1.0: Specifications for callback functions passed in to an API
@@ -7506,7 +7506,7 @@ dev-python/bokeh 0.11.1 0.12.6: Statistical and interactive HTML plots for Pytho
 dev-python/booleanOperations 0.8.0 0.8.2: Boolean operations on paths
 dev-python/boto 2.41.0 2.48.0 2.49.0: Amazon Web Services API
 dev-python/boto3 1.9.4-r1 1.9.122 1.10.2 9999: The AWS SDK for Python
-dev-python/botocore 1.12.4-r1 1.12.81 1.12.122 1.12.205 1.12.210 1.12.223 1.12.251 1.13.2 1.13.14 1.13.19 9999: Low-level, data-driven core of boto 3.
+dev-python/botocore 1.12.4-r1 1.12.81 1.12.122 1.12.205 1.12.210 1.12.223 1.12.251 1.13.2 1.13.14 1.13.19 1.13.28 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12 0.12.13 0.12.16: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.0.0 1.2.1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.17.1 0.18: Syntax highlighting and autocompletion for the Python interpreter
@@ -7627,7 +7627,7 @@ dev-python/dbusmock 0.16.9 0.18.2: Easily create mock objects on D-Bus for softw
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.1.1: A library to multiply test cases
 dev-python/debtcollector 1.21.0: Python deprecation patterns and strategies that collect technical debt
-dev-python/decorator 4.3.2 4.4.0: Simplifies the usage of decorators for the average programmer
+dev-python/decorator 4.3.2 4.4.0 4.4.1: Simplifies the usage of decorators for the average programmer
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/defcon 0.5.3 0.6.0: A set of UFO based objects for use in font editing applications
 dev-python/deform 0.9.9: Another form generation library
@@ -7770,7 +7770,7 @@ dev-python/filelock 3.0.10 3.0.12: A platform independent file lock for Python
 dev-python/filemagic 1.6: A Python API for libmagic, the library behind the Unix file command
 dev-python/fitsio 0.9.11: Python library to read from and write to FITS files
 dev-python/fixtures 1.4.0 3.0.0: Fixtures, reusable state for writing clean tests and more
-dev-python/flake8 2.1.0 2.2.5 2.5.4 3.5.0 3.6.0: A wrapper around PyFlakes, pep8 & mccabe
+dev-python/flake8 2.1.0 2.2.5 2.5.4 3.5.0 3.6.0 3.7.9: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flake8-import-order 0.18: Flake8 plugin that checks import order against various Python Style Guides
 dev-python/flake8-polyfill 1.0.1: Polyfill package for Flake8 plugins
 dev-python/flaky 3.1.1 3.4.0 3.5.3 3.6.1: Plugin for nose or py.test that automatically reruns flaky tests
@@ -8045,7 +8045,7 @@ dev-python/kiwisolver 1.0.1: An efficient C++ implementation of the Cassowary co
 dev-python/kombu 4.1.0-r1 4.2.1 4.4.0 4.6.3: AMQP Messaging Framework for Python
 dev-python/lazr-config 2.2.1: Create configuration schemas, and process and validate configurations.
 dev-python/lazr-delegates 2.0.4: Easily write objects that delegate behavior
-dev-python/lazy-object-proxy 1.2.1 1.3.1: A fast and thorough lazy object proxy
+dev-python/lazy-object-proxy 1.2.1 1.3.1 1.4.3: A fast and thorough lazy object proxy
 dev-python/ldap3 2.2.3 2.4.1 2.5.1: A strictly RFC 4511 conforming LDAP V3 pure Python client
 dev-python/ldappool 2.3.1 2.4.1: A connection pool for python-ldap
 dev-python/lesscpy 0.9j 0.11.1 0.13.0: A compiler written in Python for the LESS language
@@ -8105,7 +8105,7 @@ dev-python/marshmallow 2.20.2 3.0.1: A lightweight library for converting comple
 dev-python/matplotlib 2.2.2-r1 2.2.4 9999: Pure python plotting library with matlab like syntax
 dev-python/matplotlib2tikz 0.6.18: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/matterhook 0.1: Interact with Mattermost incoming webhooks easily
-dev-python/mccabe 0.2.1 0.6.1: flake8 plugin: McCabe complexity checker
+dev-python/mccabe 0.2.1 0.6.1 0.6.1-r1: flake8 plugin: McCabe complexity checker
 dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.2.5-r1 0.3.6: Stateful programmatic web browsing in Python
 dev-python/mediafile 0.2.0: Read and write audio files' tags in Python
@@ -8302,7 +8302,7 @@ dev-python/patch 1.16: Library to parse and apply unified diffs
 dev-python/path-and-address 1.1.0: Functions for server CLI applications used by humans
 dev-python/path-py 8.1.2 10.3.1 11.0.1 11.5.2 12.0.2: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
-dev-python/pathlib2 2.3.0 2.3.2: Fork of pathlib aiming to support the full stdlib Python API
+dev-python/pathlib2 2.3.0 2.3.2 2.3.5: Fork of pathlib aiming to support the full stdlib Python API
 dev-python/pathspec 0.6.0: Utility library for gitignore style pattern matching of file paths.
 dev-python/pathtools 0.1.2-r2: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.4.1 0.5.1: Python module to describe statistical models and design matrices
@@ -8327,7 +8327,7 @@ dev-python/pgspecial 1.11.5: Python implementation of postgres meta commands
 dev-python/phonenumbers 8.10.22: Python port of Google's libphonenumber
 dev-python/photutils 0.3.1 0.3.2: Python package for image astronomical photometry
 dev-python/pickleshare 0.7.3 0.7.4-r1: A small 'shelve' like datastore with concurrency support
-dev-python/pid 2.1.1 2.2.0: Pidfile featuring stale detection and file-locking
+dev-python/pid 2.1.1 2.2.0 2.2.5: Pidfile featuring stale detection and file-locking
 dev-python/piddle 1.0.15-r1: Cross-media, cross-platform 2D graphics package
 dev-python/piexif 1.0.12 1.0.13 1.1.0_beta0 1.1.3: Exif manipulation with pure Python
 dev-python/pika 0.10.0 0.13.0: Pure-Python implementation of the AMQP
@@ -8472,7 +8472,7 @@ dev-python/pyfakefs 3.3 3.4.1 3.4.3 3.5.8: a fake file system that mocks the Pyt
 dev-python/pyfeyn 1.0.0 1.0.0-r1: Python package for drawing Feynman diagrams
 dev-python/pyfiglet 0.7.5: An implementation of figlet written in Python
 dev-python/pyfits 3.3-r1 3.4-r1: Provides an interface to FITS formatted files under python
-dev-python/pyflakes 0.8.1 1.0.0 1.2.3 1.6.0 2.0.0: Passive checker for Python programs
+dev-python/pyflakes 0.8.1 1.0.0 1.2.3 1.6.0 2.0.0 2.1.1: Passive checker for Python programs
 dev-python/pyflann 1.9.1: Python bindings for FLANN artificial neural network library
 dev-python/pyfltk 1.3.3: Python interface to Fltk library
 dev-python/pyformance 0.3.4 0.4: Performance metrics, based on Coda Hale's Yammer metrics
@@ -10860,7 +10860,7 @@ dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS bin
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
 dev-util/statifier 1.7.4: Statifier is a tool for creating portable, self-containing Linux executables
 dev-util/stepman 0.10.0 0.10.2 0.10.4 0.10.5: Step collection manager for Bitrise CLI
-dev-util/strace 4.26 5.2 5.3 9999: A useful diagnostic, instructional, and debugging tool
+dev-util/strace 4.26 5.2 5.3 5.4 9999: A useful diagnostic, instructional, and debugging tool
 dev-util/stressapptest 1.0.9: Stressful Application Test
 dev-util/stripe-mock 0.34.1 0.47.0 0.63.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: a member function stub generator for C++
