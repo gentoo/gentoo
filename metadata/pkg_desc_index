@@ -2692,7 +2692,7 @@ app-text/zathura-pdf-mupdf 0.3.5 9999: PDF plug-in for zathura
 app-text/zathura-pdf-poppler 0.2.9 9999: PDF plug-in for zathura
 app-text/zathura-ps 0.2.6 9999: PostScript plug-in for zathura
 app-vim/ackvim 1.0.9-r1: vim plugin: run ack from vim
-app-vim/airline 0.9 0.10 9999: vim plugin: lean & mean statusline for vim that's light as air
+app-vim/airline 0.9 0.10 0.11 9999: vim plugin: lean & mean statusline for vim that's light as air
 app-vim/airline-themes 0_pre20181021 9999: vim plugin: a collection of themes for vim-airline
 app-vim/align 43: vim plugin: commands and maps to help produce aligned text
 app-vim/alternate 2.18-r1 2.18-r2: vim plugin: quickly switch between .c and .h files
@@ -12477,7 +12477,7 @@ mail-client/mail-notification 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20160123: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.10.1 1.11.4 1.12.1 1.12.2-r1 1.12.2-r2: A small but very powerful text-based mail client
-mail-client/neomutt 20180512 20180622 20180716 20180716-r1 20191102 20191111 99999999: A small but very powerful text-based mail client
+mail-client/neomutt 20180512 20180622 20180716 20180716-r1 20191102 20191111 20191129 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
@@ -13750,7 +13750,7 @@ media-radio/fsync-mdc1200-decode 1.0 9999: Linux Fleetsync / MDC1200 decoder
 media-radio/gpredict 2.2 2.2.1: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1: A tool for controlling amateur radios
 media-radio/ibp 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
-media-radio/js8call 1.0.0 1.1.0: Weak signal ham radio communication
+media-radio/js8call 1.0.0 1.1.0 2.0.0: Weak signal ham radio communication
 media-radio/qrq 0.3.1-r1 0.3.2 0.3.3: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 9.2.6 9.4.2 9.4.4: Amateur radio SSTV software
 media-radio/svxlink 17.12.1 17.12.2: Multi Purpose Voice Services System, including Qtel for EchoLink
@@ -15741,7 +15741,7 @@ net-wireless/hostapd 2.8 2.9 2.9-r1 9999: IEEE 802.11 wireless LAN Host AP daemo
 net-wireless/inspectrum 0.2.2 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 4.9 4.14 5.0.1 5.3: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
-net-wireless/iwd 0.21 0.22 0.23-r1 1.0-r1 1.1 9999: Wireless daemon for linux
+net-wireless/iwd 0.21 0.22 0.23-r1 1.0-r1 1.1 1.2 9999: Wireless daemon for linux
 net-wireless/jackit 0.0_p20170918: Exploit Code for Mousejack
 net-wireless/kismet 2016.07.1-r2 2019.09.1-r1 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
@@ -17783,7 +17783,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_rc3 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.204 4.9.192 4.9.199 4.9.203 4.9.204 4.14.143 4.14.152 4.14.156 4.19.72 4.19.82 4.19.86 5.3.12 5.3.13 5.4.0: Full sources including the Gentoo patchset for the 5.4 kernel tree
+sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.204 4.9.192 4.9.199 4.9.203 4.9.204 4.14.143 4.14.152 4.14.156 4.19.72 4.19.82 4.19.86 5.3.12 5.3.13 5.4.0 5.4.1: Full sources including the Gentoo patchset for the 5.4 kernel tree
 sys-kernel/git-sources 5.4_rc1 5.4_rc2 5.4_rc3 5.4_rc4 5.4_rc5 5.4_rc6 5.4_rc7 5.4_rc8: The very latest -git version of the Linux kernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
