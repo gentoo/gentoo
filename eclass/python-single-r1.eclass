@@ -179,47 +179,32 @@ EXPORT_FUNCTIONS pkg_setup
 _python_single_set_globals() {
 	_python_set_impls
 
-	local i PYTHON_PKG_DEP
-
 	local flags_mt=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/python_targets_}" )
 	local flags=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/python_single_target_}" )
 	local unflags=( "${_PYTHON_UNSUPPORTED_IMPLS[@]/#/-python_single_target_}" )
 
-	local optflags=${flags_mt[@]/%/(-)?},${unflags[@]/%/(-)}
-
-	IUSE="${flags_mt[*]}"
-
-	local deps requse usedep
 	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
-		# There is only one supported implementation; set IUSE and other
-		# variables without PYTHON_SINGLE_TARGET.
-		requse=${flags_mt[*]}
-		python_export "${_PYTHON_SUPPORTED_IMPLS[0]}" PYTHON_PKG_DEP
-		deps="${flags_mt[*]}? ( ${PYTHON_PKG_DEP} ) "
-		# Force on the python_single_target_* flag for this impl, so
-		# that any dependencies that inherit python-single-r1 and
-		# happen to have multiple implementations will still need
-		# to bound by the implementation used by this package.
-		optflags+=,${flags[0]/%/(+)}
+		# if only one implementation is supported, use IUSE defaults
+		# to avoid requesting the user to enable it
+		IUSE="+${flags_mt[0]} +${flags[0]}"
 	else
-		# Multiple supported implementations; honor PYTHON_SINGLE_TARGET.
-		IUSE+=" ${flags[*]}"
-		requse="^^ ( ${flags[*]} )"
-		# Ensure deps honor the same python_single_target_* flag as is set
-		# on this package.
-		optflags+=,${flags[@]/%/(+)?}
-
-		for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-			# The chosen targets need to be in PYTHON_TARGETS as well.
-			# This is in order to enforce correct dependencies on packages
-			# supporting multiple implementations.
-			requse+=" python_single_target_${i}? ( python_targets_${i} )"
-
-			python_export "${i}" PYTHON_PKG_DEP
-			deps+="python_single_target_${i}? ( ${PYTHON_PKG_DEP} ) "
-		done
+		IUSE="${flags_mt[*]} ${flags[*]}"
 	fi
-	usedep=${optflags// /,}
+
+	local requse="^^ ( ${flags[*]} )"
+	local optflags="${flags_mt[@]/%/(-)?},${unflags[@]/%/(-)},${flags[@]/%/(+)?}"
+	local usedep="${optflags// /,}"
+
+	local deps= i PYTHON_PKG_DEP
+	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
+		# The chosen targets need to be in PYTHON_TARGETS as well.
+		# This is in order to enforce correct dependencies on packages
+		# supporting multiple implementations.
+		requse+=" python_single_target_${i}? ( python_targets_${i} )"
+
+		python_export "${i}" PYTHON_PKG_DEP
+		deps+="python_single_target_${i}? ( ${PYTHON_PKG_DEP} ) "
+	done
 
 	# 1) well, python-exec would suffice as an RDEP
 	# but no point in making this overcomplex, BDEP doesn't hurt anyone
@@ -367,17 +352,11 @@ python_gen_usedep() {
 python_gen_useflags() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local flag_prefix impl matches=()
-
-	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
-		flag_prefix=python_targets
-	else
-		flag_prefix=python_single_target
-	fi
+	local impl matches=()
 
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
-			matches+=( "${flag_prefix}_${impl}" )
+			matches+=( "python_single_target_${impl}" )
 		fi
 	done
 
@@ -419,13 +398,7 @@ python_gen_useflags() {
 python_gen_cond_dep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local flag_prefix impl matches=()
-
-	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
-		flag_prefix=python_targets
-	else
-		flag_prefix=python_single_target
-	fi
+	local impl matches=()
 
 	local dep=${1}
 	shift
@@ -440,7 +413,7 @@ python_gen_cond_dep() {
 				dep=${dep//\$\{PYTHON_USEDEP\}/${usedep}}
 			fi
 
-			matches+=( "${flag_prefix}_${impl}? ( ${dep} )" )
+			matches+=( "python_single_target_${impl}? ( ${dep} )" )
 		fi
 	done
 
@@ -484,14 +457,8 @@ python_gen_cond_dep() {
 python_gen_impl_dep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local impl pattern
+	local impl
 	local matches=()
-
-	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
-		flag_prefix=python_targets
-	else
-		flag_prefix=python_single_target
-	fi
 
 	local PYTHON_REQ_USE=${1}
 	shift
@@ -501,7 +468,7 @@ python_gen_impl_dep() {
 		if _python_impl_matches "${impl}" "${patterns[@]}"; then
 			local PYTHON_PKG_DEP
 			python_export "${impl}" PYTHON_PKG_DEP
-			matches+=( "${flag_prefix}_${impl}? ( ${PYTHON_PKG_DEP} )" )
+			matches+=( "python_single_target_${impl}? ( ${PYTHON_PKG_DEP} )" )
 		fi
 	done
 
@@ -534,47 +501,35 @@ python_setup() {
 		return
 	fi
 
-	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
-		if use "python_targets_${_PYTHON_SUPPORTED_IMPLS[0]}"; then
-			# Only one supported implementation, enable it explicitly
-			python_export "${_PYTHON_SUPPORTED_IMPLS[0]}" EPYTHON PYTHON
+	local impl
+	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
+		if use "python_single_target_${impl}"; then
+			if [[ ${EPYTHON} ]]; then
+				eerror "Your PYTHON_SINGLE_TARGET setting lists more than a single Python"
+				eerror "implementation. Please set it to just one value. If you need"
+				eerror "to override the value for a single package, please use package.env"
+				eerror "or an equivalent solution (man 5 portage)."
+				echo
+				die "More than one implementation in PYTHON_SINGLE_TARGET."
+			fi
+
+			if ! use "python_targets_${impl}"; then
+				eerror "The implementation chosen as PYTHON_SINGLE_TARGET must be added"
+				eerror "to PYTHON_TARGETS as well. This is in order to ensure that"
+				eerror "dependencies are satisfied correctly. We're sorry"
+				eerror "for the inconvenience."
+				echo
+				die "Build target (${impl}) not in PYTHON_TARGETS."
+			fi
+
+			python_export "${impl}" EPYTHON PYTHON
 			python_wrapper_setup
 		fi
-	else
-		local impl
-		for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-			if use "python_single_target_${impl}"; then
-				if [[ ${EPYTHON} ]]; then
-					eerror "Your PYTHON_SINGLE_TARGET setting lists more than a single Python"
-					eerror "implementation. Please set it to just one value. If you need"
-					eerror "to override the value for a single package, please use package.env"
-					eerror "or an equivalent solution (man 5 portage)."
-					echo
-					die "More than one implementation in PYTHON_SINGLE_TARGET."
-				fi
-
-				if ! use "python_targets_${impl}"; then
-					eerror "The implementation chosen as PYTHON_SINGLE_TARGET must be added"
-					eerror "to PYTHON_TARGETS as well. This is in order to ensure that"
-					eerror "dependencies are satisfied correctly. We're sorry"
-					eerror "for the inconvenience."
-					echo
-					die "Build target (${impl}) not in PYTHON_TARGETS."
-				fi
-
-				python_export "${impl}" EPYTHON PYTHON
-				python_wrapper_setup
-			fi
-		done
-	fi
+	done
 
 	if [[ ! ${EPYTHON} ]]; then
 		eerror "No Python implementation selected for the build. Please set"
-		if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
-			eerror "the PYTHON_TARGETS variable in your make.conf to include one"
-		else
-			eerror "the PYTHON_SINGLE_TARGET variable in your make.conf to one"
-		fi
+		eerror "the PYTHON_SINGLE_TARGET variable in your make.conf to one"
 		eerror "of the following values:"
 		eerror
 		eerror "${_PYTHON_SUPPORTED_IMPLS[@]}"
