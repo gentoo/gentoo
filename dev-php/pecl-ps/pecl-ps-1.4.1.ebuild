@@ -40,3 +40,10 @@ src_install() {
 		php-ext-pecl-r3_src_install
 	fi
 }
+
+src_test() {
+	if use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3 || use php_targets_php7-4 ; then
+		# tests/004.phpt depends on set numeric format
+		LC_ALL=C php-ext-pecl-r3_src_test
+	fi
+}
