@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=php_targets_php7-0? ( dev-libs/libxdiff ) php_targets_php7-1? ( dev-libs/libxdiff ) php_targets_php7-2? ( dev-libs/libxdiff ) php_targets_php7-3? ( dev-libs/libxdiff ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 )
+DEPEND=php_targets_php7-0? ( dev-libs/libxdiff ) php_targets_php7-1? ( dev-libs/libxdiff ) php_targets_php7-2? ( dev-libs/libxdiff ) php_targets_php7-3? ( dev-libs/libxdiff ) php_targets_php7-4? ( dev-libs/libxdiff ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
 DESCRIPTION=PHP extension for generating diff files
 EAPI=6
 HOMEPAGE=https://pecl.php.net/xdiff
-IUSE=php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 php_targets_php7-2 php_targets_php7-3
+IUSE=php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 php_targets_php7-2 php_targets_php7-3 php_targets_php7-4
 KEYWORDS=~amd64 ~x86
 LICENSE=PHP-3.01
-RDEPEND=php_targets_php7-0? ( dev-libs/libxdiff ) php_targets_php7-1? ( dev-libs/libxdiff ) php_targets_php7-2? ( dev-libs/libxdiff ) php_targets_php7-3? ( dev-libs/libxdiff ) php_targets_php5-6? ( dev-php/pecl-xdiff:0[php_targets_php5-6] ) php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 )
-REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 php_targets_php7-2 php_targets_php7-3 )
+RDEPEND=php_targets_php7-0? ( dev-libs/libxdiff ) php_targets_php7-1? ( dev-libs/libxdiff ) php_targets_php7-2? ( dev-libs/libxdiff ) php_targets_php7-3? ( dev-libs/libxdiff ) php_targets_php7-4? ( dev-libs/libxdiff ) php_targets_php5-6? ( dev-php/pecl-xdiff:0[php_targets_php5-6] ) php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
+REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 php_targets_php7-2 php_targets_php7-3 php_targets_php7-4 )
 SLOT=7
 SRC_URI=https://pecl.php.net/get/xdiff-2.0.1.tgz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	php-ext-pecl-r3	a59741d3df8ea9f17afcdcfb7edaee6d	php-ext-source-r3	dd53cd94748f9e498bea0f9480ba8d77	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=4e2604c12ef419b73276d08f1deadd2d
+_md5_=50425c02847251a60c2c245bf7db2593

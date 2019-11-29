@@ -7286,7 +7286,7 @@ dev-php/pecl-xdiff 1.5.2-r5 2.0.1-r2: PHP extension for generating diff files
 dev-php/pecl-xrange 1.3.2-r2: Implementation of weak references
 dev-php/pecl-yaml 1.3.2 2.0.4: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-php/pecl-yaz 1.2.2-r1 1.2.3: This extension implements a Z39.50 client for PHP using the YAZ toolkit
-dev-php/pecl-zmq 1.1.3-r1 1.1.3-r2 9999: PHP Bindings for ZeroMQ messaging
+dev-php/pecl-zmq 1.1.3-r2 9999: PHP Bindings for ZeroMQ messaging
 dev-php/phar-io-manifest 1.0.3: Reading phar.io manifest information from a PHP Archive (PHAR)
 dev-php/phar-io-version 2.0.1: Library for handling version information and constraints
 dev-php/phar-utils 1.0.0 1.0.1: PHAR file format utilities, for when PHP phars you up
