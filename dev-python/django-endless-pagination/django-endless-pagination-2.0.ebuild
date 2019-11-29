@@ -22,7 +22,6 @@ DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/django-nose[${PYTHON_USEDEP}]
-		dev-python/ipdb[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/selenium[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
