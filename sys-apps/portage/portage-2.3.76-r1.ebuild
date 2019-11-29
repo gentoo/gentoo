@@ -3,6 +3,7 @@
 
 EAPI=5
 
+DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=(
 	pypy
 	python3_5 python3_6 python3_7
