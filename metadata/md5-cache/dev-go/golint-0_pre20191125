@@ -1,0 +1,12 @@
+BDEPEND=>=dev-lang/go-1.12
+DEFINED_PHASES=compile install postinst unpack
+DESCRIPTION=a linter for Go
+EAPI=7
+HOMEPAGE=https://github.com/golang/lint
+KEYWORDS=~amd64
+LICENSE=BSD
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/golang/lint/archive/fdd1cda4f05fd1fd86124f0ef9ce31a0b72c8448.tar.gz -> golint-0_pre20191125.tar.gz https://github.com/golang/tools/archive/a911d9008d1f732040244007778232b02ebb2b84.tar.gz -> github.com-golang-tools-a911d9008d1f732040244007778232b02ebb2b84.tar.gz
+_eclasses_=go-module	ab2b956f1b3888b8418581b8662fe211
+_md5_=6d13461d06e3c33d81ed846fd6fc7876

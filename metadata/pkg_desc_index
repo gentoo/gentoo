@@ -3368,7 +3368,7 @@ dev-go/godebug-pretty 0_p20170819: Pretty printing for Go
 dev-go/godep 74 9999: dependency tool for go
 dev-go/gogo-protobuf 0.4_p20170815: Protocol Buffers for Go with Gadgets
 dev-go/golicense 0.1.1 0.2.0: detect licenses used in Go binaries
-dev-go/golint 0_pre20180702: a linter for Go
+dev-go/golint 0_pre20180702 0_pre20191125: a linter for Go
 dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for ruby
 dev-go/goptlib 1.1.0: Go Tor pluggable transports library
 dev-go/goversion 1.2.0: Print version used to build Go executables
