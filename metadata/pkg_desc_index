@@ -14497,6 +14497,7 @@ net-analyzer/nuttcp 8.1.4: Network performance measurement tool
 net-analyzer/odhcploc 20111021: Open DHCP Locator
 net-analyzer/oinkmaster 2.0: Rule management for SNORT
 net-analyzer/openbsd-netcat 1.105 1.105-r1 1.190: The OpenBSD network swiss army knife
+net-analyzer/openvas-libraries 9.0.3-r1: A remote security scanner for Linux (openvas-libraries)
 net-analyzer/openvas-manager 7.0.3: A remote security manager for Linux (openvas-manager)
 net-analyzer/openvas-scanner 5.1.3 6.0.1: Open Vulnerability Assessment Scanner
 net-analyzer/opsgenie-lamp 2.5.1_p20181102: command line client for the opsgenie service
