@@ -3342,7 +3342,7 @@ dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 1.2.4 1.2.5 1.3.1: A general purpose tile map editor
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/blackfriday 1.2_p20150720 1.4 9999: a markdown processor implemented in Go
-dev-go/coveraggregator 0_pre20170216: Cover profile aggregator for golang
+dev-go/coveraggregator 0_pre20170216-r1: Cover profile aggregator for golang
 dev-go/delve 1.3.0 1.3.2: A source-level debugger for the Go programming language
 dev-go/ed25519 0_pre20170117: ed25519 for Go
 dev-go/fuzzy 0.0.3 0.0.5: Go library that provides fuzzy string matching
@@ -7533,7 +7533,7 @@ dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation 
 dev-python/celery 4.1.0 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2 2.10.0: CLI Application Framework for Python
 dev-python/certifi 2018.4.16 2019.6.16 2019.9.11 2019.11.28: Python package for providing Mozilla's CA Bundle
-dev-python/cffi 1.9.1 1.11.2 1.11.4 1.11.5 1.12.1 1.12.3: Foreign Function Interface for Python calling C code
+dev-python/cffi 1.9.1 1.11.2 1.11.4 1.11.5 1.12.1 1.12.3 1.13.2: Foreign Function Interface for Python calling C code
 dev-python/cfgparse 1.3-r1: Config File parser for Python
 dev-python/cfn-python-lint 0.21.6: CloudFormation Linter
 dev-python/cgroup-utils 0.6: Tools and libraries for control groups of Linux
