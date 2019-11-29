@@ -4,7 +4,7 @@
 EAPI=6
 
 # PyCObject_Check and PyCObject_AsVoidPtr vanished with python 3.3
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit xdg distutils-r1 eutils flag-o-matic user tmpfiles prefix
 
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
@@ -82,6 +82,8 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	>=dev-python/cython-0.16[${PYTHON_USEDEP}]"
+
+RESTRICT="!test? ( test )"
 
 PATCHES=( "${FILESDIR}"/${PN}-3.0.2_ignore-gentoo-no-compile.patch
 	"${FILESDIR}"/${PN}-2.0-suid-warning.patch )
