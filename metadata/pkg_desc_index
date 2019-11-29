@@ -1436,7 +1436,7 @@ app-emulation/cloud-init 17.2 18.4-r1 18.5 9999: Cloud instance initialisation m
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
 app-emulation/conmon 2.0.1 2.0.2: An OCI container runtime monitor
 app-emulation/containerd 1.2.6 1.2.7 1.2.10 1.3.0 1.3.1: A daemon to control runC
-app-emulation/containers-storage 1.14.0 1.15.0: containers/storage library
+app-emulation/containers-storage 1.15.0 1.15.1: containers/storage library
 app-emulation/cri-o 1.10.6 1.13.9 1.15.1 1.15.2: OCI-based implementation of Kubernetes Container Runtime Interface
 app-emulation/cri-tools 1.14.0 1.15.0 1.16.1: CLI and validation tools for Kubelet Container Runtime (CRI)
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0 15.3.0 15.3.1 16.0.0 16.2.5 17.5.0 17.5.0-r1 17.5.1 18.0.0 18.1.0 18.5.0: Commercial version of app-emulation/wine with paid support.
@@ -2404,7 +2404,7 @@ app-text/blogc 0.18.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
-app-text/calibre 3.47.1 3.48.0 4.4.0: Ebook management application
+app-text/calibre 3.47.1 3.48.0 4.4.0 4.5.0: Ebook management application
 app-text/capyt 1.1.1: A python3 CLI utility to interface with cpy.pt paste service
 app-text/catdoc 0.95: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/cb2bib 1.9.8 1.9.9 2.0.0: Tool for extracting unformatted bibliographic references
