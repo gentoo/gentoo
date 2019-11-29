@@ -31,7 +31,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-4-Add-support-for-free-form-triangle-Shading-objects.patch
 )
 
-mycmakeargs=(
-	-DLIBHPDF_EXAMPLES=NO # Doesn't work
-	-DLIBHPDF_STATIC=NO
-)
+multilib_src_configure() {
+	local mycmakeargs=(
+		-DLIBHPDF_EXAMPLES=NO # Doesn't work
+		-DLIBHPDF_STATIC=NO
+	)
+	cmake-utils_src_configure
+}
