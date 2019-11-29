@@ -3360,8 +3360,8 @@ dev-go/go-protobuf 1.3.2: Go support for Google's protocol buffers
 dev-go/go-snappy 0_pre20150729 0_pre20160213 9999: The Snappy compression format in the Go programming language.
 dev-go/go-spew 0_pre20150619 9999: Implements a deep pretty printer for Go data structures to aid in debugging
 dev-go/go-sqlite3 1.1.0_p20160131 1.1.0_p20160307: Go sqlite3 driver using database/sql
-dev-go/go-sys 0_pre20160204 0_pre20180816 9999: Go packages for low-level interaction with the operating system
-dev-go/go-text 0_pre20160211 0.3.0 9999: Go text processing support
+dev-go/go-sys 0_pre20180816 9999: Go packages for low-level interaction with the operating system
+dev-go/go-text 0.3.0 9999: Go text processing support
 dev-go/go-tools 0_pre20190911 9999: Tools that support the Go programming language (godoc, etc.)
 dev-go/go-tour 0_p20190829: A Tour of Go
 dev-go/godebug-pretty 0_p20170819: Pretty printing for Go
