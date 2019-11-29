@@ -354,12 +354,6 @@ app-portage/install-mask
 # Removal in 30 days.
 dev-ada/gps-bin
 
-# Michał Górny <mgorny@gentoo.org> (2019-11-01)
-# Both make no sense with dev-embedded/gnap removed.
-# Removal in 14 days.  Bug #699072.
-dev-embedded/gnap-dev
-dev-embedded/gnap-ext
-
 # Hans de Graaff <graaff@gentoo.org> (2019-10-25)
 # ruby24-only, no longer supported by upstream.
 # Migrate to Rails 5.2 instead. Masked for removal in 30 days.
