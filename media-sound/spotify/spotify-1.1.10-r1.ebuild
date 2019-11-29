@@ -20,7 +20,6 @@ RDEPEND="
 	dev-libs/nss
 	dev-python/dbus-python
 	dev-python/pygobject:3
-	gnome-base/gconf
 	libnotify? ( x11-libs/libnotify )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
