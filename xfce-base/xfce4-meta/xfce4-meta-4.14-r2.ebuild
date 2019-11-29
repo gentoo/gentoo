@@ -22,6 +22,7 @@ RDEPEND="x11-themes/hicolor-icon-theme
 	>=xfce-base/xfce4-panel-4.14.0
 	>=xfce-base/xfce4-session-4.14.0
 	>=xfce-base/xfce4-settings-4.14.0
+	x11-terms/xfce4-terminal
 	>=xfce-base/xfconf-4.14.1
 	>=xfce-base/xfdesktop-4.14.1
 	>=xfce-base/xfwm4-4.14.0
