@@ -541,7 +541,7 @@ app-backup/mkstage4 0.1 9999: Bash Utility for Creating Stage 4 Tarballs
 app-backup/mylvmbackup 0.14: Tool for creating backups of MySQL server's data files using LVM snapshots
 app-backup/pdumpfs 1.3-r2: A daily backup system similar to Plan9's dumpfs
 app-backup/rdedup 1.0.2: data deduplication with compression and public key encryption
-app-backup/rdiff-backup 1.3.3-r3: Local/remote mirroring+incremental backup
+app-backup/rdiff-backup 1.3.3-r3 1.4.0_beta: Local/remote mirroring+incremental backup
 app-backup/rdumpfs 0.1: a rsync-based dump file system backup tool
 app-backup/rdup 1.1.15: Generate a file list suitable for full or incremental backups
 app-backup/rear 1.15-r1 1.17.0 1.17.1 2.4: Relax-and-Recover is a setup-and-forget bare metal disaster recovery solution
