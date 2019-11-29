@@ -365,17 +365,6 @@ dev-ada/gps-bin
 dev-embedded/gnap-dev
 dev-embedded/gnap-ext
 
-# Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-10-28)
-# OpenVAS project name has been renamed in
-# Greenbone Vulnerability Management (GVM).
-# New loader package is net-analyzer/gvm.
-# Masked for removal in 30 days. Bugs #692004 #692076
-net-analyzer/openvas
-<=net-analyzer/openvas-libraries-8.0.0
-net-analyzer/openvas-cli
-net-analyzer/openvas-tools
-dev-ruby/openvas-omp
-
 # Hans de Graaff <graaff@gentoo.org> (2019-10-25)
 # ruby24-only, no longer supported by upstream.
 # Migrate to Rails 5.2 instead. Masked for removal in 30 days.
