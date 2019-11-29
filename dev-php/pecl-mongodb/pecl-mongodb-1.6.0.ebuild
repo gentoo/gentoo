@@ -4,7 +4,7 @@
 EAPI=7
 
 PHP_EXT_NAME="mongodb"
-USE_PHP="php7-1 php7-2 php7-3"
+USE_PHP="php7-1 php7-2 php7-3 php7-4"
 
 inherit php-ext-pecl-r3
 
@@ -18,7 +18,8 @@ IUSE="libressl sasl test"
 PHP_DEPEND="
 	php_targets_php7-1? ( dev-lang/php:7.1[json,ssl,zlib] )
 	php_targets_php7-2? ( dev-lang/php:7.2[json,ssl,zlib] )
-	php_targets_php7-3? ( dev-lang/php:7.3[json,ssl,zlib] )"
+	php_targets_php7-3? ( dev-lang/php:7.3[json,ssl,zlib] )
+	php_targets_php7-4? ( dev-lang/php:7.4[json,ssl,zlib] )"
 COMMON_DEPEND="${PHP_DEPEND}
 	>=dev-libs/libbson-1.15.1
 	>=dev-libs/mongo-c-driver-1.15.1[sasl?,ssl]
@@ -46,7 +47,6 @@ src_configure() {
 	php-ext-source-r3_src_configure
 }
 
-# FEATURES="test" emerge dev-php/pecl-mongodb
 src_test() {
 	local PORT=27017
 	mongod --port ${PORT} --bind_ip 127.0.0.1 --nounixsocket --fork \
