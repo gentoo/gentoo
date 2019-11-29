@@ -6,7 +6,7 @@ EAPI="6"
 inherit multilib toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20190315"
+MY_RELEASEDATE="20191122"
 
 DESCRIPTION="SELinux binary policy representation library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
