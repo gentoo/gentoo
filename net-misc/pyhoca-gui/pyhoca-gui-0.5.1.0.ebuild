@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
@@ -19,7 +19,7 @@ RDEPEND="dev-python/notify-python[${PYTHON_USEDEP}]
 	dev-python/pycups[${PYTHON_USEDEP}]
 	dev-python/setproctitle[${PYTHON_USEDEP}]
 	dev-python/wxpython[${PYTHON_USEDEP}]
-	>=net-misc/python-x2go-0.5.0.0[${PYTHON_USEDEP}]"
+	>=net-misc/python-x2go-0.6.1.0[${PYTHON_USEDEP}]"
 DEPEND="${DEPEND}
 	dev-python/python-distutils-extra[${PYTHON_USEDEP}]"
 

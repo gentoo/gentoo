@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{5,6,7} )
 inherit distutils-r1
 
 DESCRIPTION="X2Go command line client"
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-python/setproctitle[${PYTHON_USEDEP}]
-	>=net-misc/python-x2go-0.5.0.0[${PYTHON_USEDEP}]"
+	>=net-misc/python-x2go-0.6.1.1[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 python_install() {
@@ -27,4 +27,5 @@ python_install() {
 python_install_all() {
 	distutils-r1_python_install_all
 	doman man/man1/*
+	find "${ED}" -name '*.pth' -delete || die
 }
