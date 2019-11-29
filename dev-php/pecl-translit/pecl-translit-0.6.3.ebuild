@@ -7,7 +7,7 @@ PHP_EXT_NAME="translit"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
-USE_PHP="php7-1 php7-2 php7-3"
+USE_PHP="php7-1 php7-2 php7-3 php7-4"
 PHP_EXT_NAME="translit"
 
 inherit php-ext-source-r3
