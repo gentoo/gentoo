@@ -77,9 +77,23 @@ esac
 # to be exported. It must be run in order for the eclass functions
 # to function properly.
 
+# @ECLASS-VARIABLE: DISTUTILS_USE_SETUPTOOLS
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Controls adding dev-python/setuptools dependency.  The allowed values
+# are:
+#
+# - no -- do not add the dependency (pure distutils package)
+# - bdepend -- add it to BDEPEND (the default)
+# - rdepend -- add it to BDEPEND+RDEPEND (when using entry_points)
+#
+# This variable is effective only if DISTUTILS_OPTIONAL is disabled.
+# It needs to be set before the inherit line.
+: ${DISTUTILS_USE_SETUPTOOLS:=bdepend}
+
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
-[[ ${EAPI} == [45] ]] && inherit eutils
+[[ ${EAPI} == [456] ]] && inherit eutils
 [[ ${EAPI} == [56] ]] && inherit xdg-utils
 inherit multiprocessing toolchain-funcs
 
@@ -97,15 +111,35 @@ fi
 
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
-if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
-	RDEPEND=${PYTHON_DEPS}
+_distutils_set_globals() {
+	local rdep=${PYTHON_DEPS}
+	local bdep=${rdep}
+
+	case ${DISTUTILS_USE_SETUPTOOLS} in
+		no)
+			;;
+		bdepend)
+			bdep+=" dev-python/setuptools[${PYTHON_USEDEP}]"
+			;;
+		rdepend)
+			bdep+=" dev-python/setuptools[${PYTHON_USEDEP}]"
+			rdep+=" dev-python/setuptools[${PYTHON_USEDEP}]"
+			;;
+		*)
+			die "Invalid DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}"
+			;;
+	esac
+
+	RDEPEND=${rdep}
 	if [[ ${EAPI} != [56] ]]; then
-		BDEPEND=${PYTHON_DEPS}
+		BDEPEND=${bdep}
 	else
-		DEPEND=${PYTHON_DEPS}
+		DEPEND=${bdep}
 	fi
 	REQUIRED_USE=${PYTHON_REQUIRED_USE}
-fi
+}
+[[ ! ${DISTUTILS_OPTIONAL} ]] && _distutils_set_globals
+unset -f _distutils_set_globals
 
 # @ECLASS-VARIABLE: PATCHES
 # @DEFAULT_UNSET
@@ -395,6 +429,41 @@ distutils_enable_tests() {
 	return 0
 }
 
+# @FUNCTION: _distutils-r1_verify_use_setuptools
+# @INTERNAL
+# @DESCRIPTION:
+# Check setup.py for signs that DISTUTILS_USE_SETUPTOOLS have been set
+# incorrectly.
+_distutils_verify_use_setuptools() {
+	[[ ${DISTUTILS_OPTIONAL} ]] && return
+
+	# ok, those are cheap greps.  we can try toimprove them if we hit
+	# false positives.
+	local expected=no
+	if [[ ${CATEGORY}/${PN} == dev-python/setuptools ]]; then
+		# as a special case, setuptools provides itself ;-)
+		:
+	elif grep -E -q -s '(from|import)\s+setuptools' setup.py; then
+		if grep -E -q -s 'entry_points\s+=' setup.py; then
+			expected=rdepend
+		else
+			expected=bdepend
+		fi
+	fi
+
+	if [[ ${DISTUTILS_USE_SETUPTOOLS} != ${expected} ]]; then
+		if [[ ! ${_DISTUTILS_SETUPTOOLS_WARNED} ]]; then
+			_DISTUTILS_SETUPTOOLS_WARNED=1
+			local def=
+			[[ ${DISTUTILS_USE_SETUPTOOLS} == bdepend ]] && def=' (default?)'
+
+			eqawarn "DISTUTILS_USE_SETUPTOOLS value is probably incorrect"
+			eqawarn "  value:    DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}${def}"
+			eqawarn "  expected: DISTUTILS_USE_SETUPTOOLS=${expected}"
+		fi
+	fi
+}
+
 # @FUNCTION: esetup.py
 # @USAGE: [<args>...]
 # @DESCRIPTION:
@@ -417,6 +486,7 @@ esetup.py() {
 	[[ ${EAPI} != [45] ]] && die_args+=( -n )
 
 	[[ ${BUILD_DIR} ]] && _distutils-r1_create_setup_cfg
+	_distutils_verify_use_setuptools
 
 	set -- "${EPYTHON:-python}" setup.py "${mydistutilsargs[@]}" "${@}"
 
