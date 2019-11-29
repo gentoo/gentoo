@@ -7,6 +7,22 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2019-12-04)
+# Python 2.7 only packages optionally needing dev-python/ipython.
+app-misc/gourmet ipython
+dev-python/restkit cli
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-04)
+# Packages requiring dev-python/ipython to build the docs and still
+# supporting Python 2.7.  This can be resolved long term via either
+# using any-r1 API to build docs or cond-deps.
+dev-python/matplotlib doc
+dev-python/pandas doc
+<dev-python/pandas-0.24.2 full-support test
+dev-python/pandas-datareader doc
+dev-python/patsy doc
+dev-python/statsmodels doc
+
 # Haelwenn (lanodan) Monnier <contact@hacktivis.me> (2019-12-01)
 # broken static-linking in glibc and maybe others
 >app-shells/mksh-57-r1 static
