@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>dev-zero@gentoo.org</email>
-		<name>Tiziano Müller</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>Scrub overwrites hard disks, files, and other devices with repeating patterns intended to make recovering data from these devices more difficult.
 	</longdescription>
 	<upstream>
