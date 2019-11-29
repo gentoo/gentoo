@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (2019-11-29)
+# Beta for new major version with initial Python 3 support
+=app-backup/rdiff-backup-1.4.0_beta*
+
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-29)
 # Breaks at least libreoffice, inkscape and perhaps more revdeps
 ~app-text/poppler-0.83.0
