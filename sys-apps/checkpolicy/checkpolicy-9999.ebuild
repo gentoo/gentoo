@@ -6,7 +6,7 @@ EAPI="6"
 inherit toolchain-funcs
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20190315"
+MY_RELEASEDATE="20191122"
 
 SEPOL_VER="${PV}"
 SEMNG_VER="${PV}"
