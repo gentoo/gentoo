@@ -10,7 +10,7 @@ if [ "${PV}" == "9999" ]; then
 	SRC_URI=""
 else
 	inherit distutils-r1
-	TYPESHED_COMMIT="f343150"
+	TYPESHED_COMMIT="8df632b"
 	SRC_URI="https://github.com/python/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 			https://api.github.com/repos/python/typeshed/tarball/${TYPESHED_COMMIT} -> mypy-typeshed-${PV}-${TYPESHED_COMMIT}.tar.gz"
 fi
@@ -33,10 +33,10 @@ DEPEND="
 "
 CDEPEND="
 	!dev-util/stubgen
-	>=dev-python/psutil-5.4.0[${PYTHON_USEDEP}]
-	<dev-python/psutil-5.5.0[${PYTHON_USEDEP}]
-	>=dev-python/typed-ast-1.2.0[${PYTHON_USEDEP}]
-	<dev-python/typed-ast-1.3.0[${PYTHON_USEDEP}]
+	>=dev-python/psutil-4[${PYTHON_USEDEP}]
+	>=dev-python/typed-ast-1.4.0[${PYTHON_USEDEP}]
+	<dev-python/typed-ast-1.5.0[${PYTHON_USEDEP}]
+	>=dev-python/typing-extensions-3.7.4[${PYTHON_USEDEP}]
 	>=dev-python/mypy_extensions-0.4.0[${PYTHON_USEDEP}]
 	<dev-python/mypy_extensions-0.5.0[${PYTHON_USEDEP}]
 	"
@@ -51,11 +51,6 @@ src_unpack() {
 		rmdir "${S}/mypy/typeshed"
 		mv "${WORKDIR}/python-typeshed-${TYPESHED_COMMIT}" "${S}/mypy/typeshed"
 	fi
-}
-
-src_prepare() {
-	sed -i -e 's/mypy_extensions >= 0.4.0, < 0.5.0/mypy_extensions >= 0.4.0, < 0.6.0/' "${S}/setup.py"
-	default
 }
 
 python_compile_all() {
