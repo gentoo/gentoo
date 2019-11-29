@@ -16,6 +16,8 @@ KEYWORDS="amd64 ia64 x86"
 IUSE="doc graphviz nls python static-libs test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND="dev-libs/libxml2
 	sys-libs/zlib
 	nls? ( virtual/libintl )
@@ -63,7 +65,7 @@ src_install() {
 
 	if use python ; then
 		python_scriptinto /usr/sbin
-		python_doscript "${ED%/}"/usr/sbin/smbios-{{keyboard,thermal,token,wakeup,wireless}-ctl,lcd-brightness,passwd,sys-info}
+		python_doscript "${ED}"/usr/sbin/smbios-{{keyboard,thermal,token,wakeup,wireless}-ctl,lcd-brightness,passwd,sys-info}
 	fi
 
 	insinto /usr/include/
