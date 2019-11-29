@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{3_5,3_6,3_7,3_8} )
 
 inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20190315"
+MY_RELEASEDATE="20191122"
 
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
