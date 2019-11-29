@@ -33,7 +33,6 @@
 # No revdeps, blocking move to python 3.7, unnecessary maintenance
 # burden, bug #701426. Removal in 30 days.
 dev-python/pytest-datafiles
-dev-python/pytest-html
 dev-python/pytest-pythonpath
 dev-python/pytest-qt
 
