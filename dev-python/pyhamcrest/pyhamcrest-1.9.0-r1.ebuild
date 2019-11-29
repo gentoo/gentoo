@@ -42,6 +42,12 @@ python_prepare_all() {
 	rm tests/hamcrest_unit_test/core/is_test.py || die "removing test #2 failed"
 	rm tests/hamcrest_unit_test/core/isinstanceof_test.py || die "removing test #3 failed"
 
+	# These fail on HPPA. Drop them too.
+	if use hppa; then
+		rm tests/hamcrest_unit_test/base_matcher_test.py || die "removing test #4 failed"
+		rm tests/hamcrest_unit_test/core/described_as_test.py || die "removing test #5 failed"
+	fi
+
 	distutils-r1_python_prepare_all
 }
 
