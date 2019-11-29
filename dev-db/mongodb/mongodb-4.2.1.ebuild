@@ -101,6 +101,7 @@ src_configure() {
 		--use-system-zstd
 	)
 
+	use arm64 && scons_opts+=( --use-hardware-crc32=off ) # Bug 701300
 	use debug && scons_opts+=( --dbg=on )
 	use kerberos && scons_opts+=( --use-sasl-client )
 	use lto && scons_opts+=( --lto=on )
