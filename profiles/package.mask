@@ -349,11 +349,6 @@ dev-ada/gnatcoll
 # Removal in 30 days.  Bug #699244.
 app-portage/install-mask
 
-# Michał Górny <mgorny@gentoo.org> (2019-11-03)
-# This was only used by my packages, and the last revdep is gone now.
-# Removal in 14 days.  Bug #699238.
-sys-devel/systemd-m4
-
 # Alfredo Tupone <tupone@gentoo.org> (2019-11-03)
 # The binary for gps are included in dev-ada/gnat-suite-bin
 # Removal in 30 days.
