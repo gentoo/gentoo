@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}/${P}-flask_script-everywhere.patch" )
+
 python_compile_all() {
 	use doc && emake -C docs html
 }
