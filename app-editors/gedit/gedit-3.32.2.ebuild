@@ -37,9 +37,12 @@ COMMON_DEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.3:= )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/pycairo[${PYTHON_USEDEP}]
-		>=dev-python/pygobject-3:3[cairo,${PYTHON_USEDEP}]
-		dev-libs/libpeas[python,${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pygobject-3:3[cairo,${PYTHON_MULTI_USEDEP}]
+			dev-libs/libpeas[python,${PYTHON_SINGLE_USEDEP}]
+		')
+	)
 	spell? ( >=app-text/gspell-0.2.5:0= )
 "
 RDEPEND="${COMMON_DEPEND}
