@@ -458,10 +458,6 @@ net-misc/unison gtk
 app-office/calligra spacenav
 media-gfx/pstoedit emf
 
-# Michał Górny <mgorny@gentoo.org> (2013-02-01)
-# virtual/cblas not keyworded on arm, bug #455050.
-dev-python/numpy lapack
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-22)
 # remove mask if/when media-gfx/argyllcms is keywored here.
 x11-misc/colord extra-print-profiles
