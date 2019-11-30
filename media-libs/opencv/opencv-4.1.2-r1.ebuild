@@ -219,6 +219,7 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opencv2/cudev/warp/shuffle.hpp
 	/usr/include/opencv2/cudev/warp/warp.hpp
 	# [opencv4]
+	/usr/include/opencv4/opencv2/core/cv_cpu_dispatch.h
 	/usr/include/opencv4/opencv2/core/cvdef.h
 	/usr/include/opencv4/opencv2/dnn.hpp
 	/usr/include/opencv4/opencv2/core/cuda/transform.hpp
