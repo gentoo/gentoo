@@ -7,7 +7,6 @@
 </maintainer>
 <stabilize-allarches/>
 <use>
-  <flag name="html">Generate and install PMS as .html as well</flag>
-  <flag name="twoside">Enable two-sided layout suitable for printing</flag>
+  <flag name="html">Install PMS as .html as well</flag>
 </use>
 </pkgmetadata>
