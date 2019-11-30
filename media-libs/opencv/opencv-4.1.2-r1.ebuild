@@ -371,6 +371,7 @@ multilib_src_configure() {
 		-DINSTALL_PYTHON_EXAMPLES=$(multilib_native_usex examples)
 	#	-DINSTALL_ANDROID_EXAMPLES=OFF
 		-DINSTALL_TO_MANGLED_PATHS=OFF
+		-DOPENCV_GENERATE_PKGCONFIG=ON
 		# opencv uses both ${CMAKE_INSTALL_LIBDIR} and ${LIB_SUFFIX}
 		# to set its destination libdir
 		-DLIB_SUFFIX=
