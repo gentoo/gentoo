@@ -11656,7 +11656,7 @@ games-roguelike/FTL-gog 1.6.9.25330: Top-down roguelike space ship simulator
 games-roguelike/adom 1.1.1-r1: Ancient Domains Of Mystery rogue-like game
 games-roguelike/angband 4.1.3 4.2.0: A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
 games-roguelike/crossfire-client 1.71.0-r2: Client for the nethack-style but more in the line of UO
-games-roguelike/dwarf-fortress 0.43.05 0.44.12: A single-player fantasy game
+games-roguelike/dwarf-fortress 0.44.12: A single-player fantasy game
 games-roguelike/hengband 1.6.2-r1: An Angband variant, with a Japanese/fantasy theme
 games-roguelike/mazesofmonad 1.0.9-r3: Console-based roguelike Role Playing Game similar to nethack
 games-roguelike/moria 5.7.10: The Dungeons of Moria, a single player roguelike game, also known as Umoria
