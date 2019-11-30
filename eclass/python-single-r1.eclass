@@ -89,9 +89,9 @@ EXPORT_FUNCTIONS pkg_setup
 #
 # It should be noted that in order to preserve metadata immutability,
 # PYTHON_COMPAT_OVERRIDE does not affect IUSE nor dependencies.
-# The state of PYTHON_TARGETS and PYTHON_SINGLE_TARGET is ignored,
-# and the implementation in PYTHON_COMPAT_OVERRIDE is built instead.
-# Dependencies need to be satisfied manually.
+# The state of PYTHON_SINGLE_TARGET is ignored, and the implementation
+# in PYTHON_COMPAT_OVERRIDE is built instead.  Dependencies need to be
+# satisfied manually.
 #
 # Example:
 # @CODE
@@ -178,10 +178,8 @@ EXPORT_FUNCTIONS pkg_setup
 
 # @ECLASS-VARIABLE: PYTHON_REQUIRED_USE
 # @DESCRIPTION:
-# This is an eclass-generated required-use expression which ensures the following
-# when more than one python implementation is possible:
-# 1. Exactly one PYTHON_SINGLE_TARGET value has been enabled.
-# 2. The selected PYTHON_SINGLE_TARGET value is enabled in PYTHON_TARGETS.
+# This is an eclass-generated required-use expression which ensures
+# that exactly one PYTHON_SINGLE_TARGET value has been enabled.
 #
 # This expression should be utilized in an ebuild by including it in
 # REQUIRED_USE, optionally behind a use flag.
@@ -193,23 +191,20 @@ EXPORT_FUNCTIONS pkg_setup
 #
 # Example value:
 # @CODE
-# python_single_target_python2_7? ( python_targets_python2_7 )
-# python_single_target_python3_3? ( python_targets_python3_3 )
 # ^^ ( python_single_target_python2_7 python_single_target_python3_3 )
 # @CODE
 
 _python_single_set_globals() {
 	_python_set_impls
 
-	local flags_mt=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/python_targets_}" )
 	local flags=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/python_single_target_}" )
 
 	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
 		# if only one implementation is supported, use IUSE defaults
 		# to avoid requesting the user to enable it
-		IUSE="+${flags_mt[0]} +${flags[0]}"
+		IUSE="+${flags[0]}"
 	else
-		IUSE="${flags_mt[*]} ${flags[*]}"
+		IUSE="${flags[*]}"
 	fi
 
 	local requse="^^ ( ${flags[*]} )"
@@ -218,11 +213,6 @@ _python_single_set_globals() {
 
 	local deps= i PYTHON_PKG_DEP
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		# The chosen targets need to be in PYTHON_TARGETS as well.
-		# This is in order to enforce correct dependencies on packages
-		# supporting multiple implementations.
-		requse+=" python_single_target_${i}? ( python_targets_${i} )"
-
 		python_export "${i}" PYTHON_PKG_DEP
 		# 1) well, python-exec would suffice as an RDEP
 		# but no point in making this overcomplex, BDEP doesn't hurt anyone
@@ -490,15 +480,6 @@ python_setup() {
 				die "More than one implementation in PYTHON_SINGLE_TARGET."
 			fi
 
-			if ! use "python_targets_${impl}"; then
-				eerror "The implementation chosen as PYTHON_SINGLE_TARGET must be added"
-				eerror "to PYTHON_TARGETS as well. This is in order to ensure that"
-				eerror "dependencies are satisfied correctly. We're sorry"
-				eerror "for the inconvenience."
-				echo
-				die "Build target (${impl}) not in PYTHON_TARGETS."
-			fi
-
 			python_export "${impl}" EPYTHON PYTHON
 			python_wrapper_setup
 		fi
@@ -511,7 +492,7 @@ python_setup() {
 		eerror
 		eerror "${_PYTHON_SUPPORTED_IMPLS[@]}"
 		echo
-		die "No supported Python implementation in PYTHON_SINGLE_TARGET/PYTHON_TARGETS."
+		die "No supported Python implementation in PYTHON_SINGLE_TARGET."
 	fi
 }
 
