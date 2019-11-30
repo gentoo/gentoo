@@ -10,13 +10,14 @@ VIRTUALX_REQUIRED=manual
 inherit autotools flag-o-matic multilib-minimal vala virtualx xdg-utils
 
 DESCRIPTION="Library to pass menu structure across DBus"
-HOMEPAGE="https://launchpad.net/dbusmenu"
+HOMEPAGE="https://launchpad.net/libdbusmenu"
 SRC_URI="https://launchpad.net/${PN/lib}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 sparc x86"
 IUSE="debug gtk gtk3 +introspection test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/dbus-glib-0.100[${MULTILIB_USEDEP}]
@@ -24,8 +25,7 @@ RDEPEND="
 	dev-libs/libxml2[${MULTILIB_USEDEP}]
 	gtk? ( x11-libs/gtk+:2[introspection?,${MULTILIB_USEDEP}] )
 	gtk3? ( >=x11-libs/gtk+-3.2:3[introspection?,${MULTILIB_USEDEP}] )
-	introspection? ( >=dev-libs/gobject-introspection-1 )
-	!<${CATEGORY}/${PN}-0.5.1-r200"
+	introspection? ( >=dev-libs/gobject-introspection-1 )"
 # tests also have optional dep on valgrind which we do not enforce
 DEPEND="${RDEPEND}
 	app-text/gnome-doc-utils
