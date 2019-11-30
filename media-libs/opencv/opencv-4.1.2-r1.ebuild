@@ -21,7 +21,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD"
 SLOT="0/4.1.2" # subslot = libopencv* soname version
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
-IUSE="contrib contribcvv contribdnn contribhdf contribsfm contribxfeatures2d cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_popcnt cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cuda debug dnnsamples -download +eigen examples ffmpeg gdal gflags glog gphoto2 gstreamer gtk ieee1394 jpeg jpeg2k lapack libav opencl openexr opengl openmp opencvapps pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
+IUSE="contrib contribcvv contribdnn contribhdf contribsfm contribxfeatures2d cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_popcnt cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cuda debug dnnsamples -download +eigen examples +features2d ffmpeg gdal gflags glog gphoto2 gstreamer gtk ieee1394 jpeg jpeg2k lapack libav opencl openexr opengl openmp opencvapps pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
 # OpenGL needs gtk or Qt installed to activate, otherwise build system
 # will silently disable it Wwithout the user knowing, which defeats the
 # purpose of the opengl use flag.
@@ -219,6 +219,7 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opencv2/cudev/warp/shuffle.hpp
 	/usr/include/opencv2/cudev/warp/warp.hpp
 	# [opencv4]
+	/usr/include/opencv4/opencv2/core/cv_cpu_dispatch.h
 	/usr/include/opencv4/opencv2/core/cvdef.h
 	/usr/include/opencv4/opencv2/dnn.hpp
 	/usr/include/opencv4/opencv2/core/cuda/transform.hpp
@@ -370,6 +371,7 @@ multilib_src_configure() {
 		-DINSTALL_PYTHON_EXAMPLES=$(multilib_native_usex examples)
 	#	-DINSTALL_ANDROID_EXAMPLES=OFF
 		-DINSTALL_TO_MANGLED_PATHS=OFF
+		-DOPENCV_GENERATE_PKGCONFIG=ON
 		# opencv uses both ${CMAKE_INSTALL_LIBDIR} and ${LIB_SUFFIX}
 		# to set its destination libdir
 		-DLIB_SUFFIX=
@@ -409,7 +411,7 @@ multilib_src_configure() {
 		-DOPENCV_CPU_OPT_IMPLIES_IGNORE=ON
 		-DCPU_BASELINE=$(printf "%s," "${cpu_flags[@]}")
 		-DCPU_DISPATCH=
-		-DBUILD_opencv_features2d=$(usex contribxfeatures2d)
+		-DBUILD_opencv_features2d=$(usex features2d ON OFF)
 	)
 
 	# ===================================================
