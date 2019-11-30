@@ -9296,7 +9296,7 @@ dev-qt/qtvirtualkeyboard 5.12.3 5.12.5 5.13.2: Customizable input framework and 
 dev-qt/qtwayland 5.12.3 5.12.5 5.13.2-r1: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.12.3 5.12.5 5.13.2: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
 dev-qt/qtwebengine 5.12.3 5.12.5 5.13.2: Library for rendering dynamic web content in Qt5 C++ and QML applications
-dev-qt/qtwebkit 5.212.0_pre20180120 5.212.0_pre20190629: WebKit rendering library for the Qt5 framework (deprecated)
+dev-qt/qtwebkit 5.212.0_pre20190629: WebKit rendering library for the Qt5 framework (deprecated)
 dev-qt/qtwebsockets 5.12.3 5.12.5 5.13.2: Implementation of the WebSocket protocol for the Qt5 framework
 dev-qt/qtwebview 5.12.3 5.12.5 5.13.2: Module for displaying web content in a QML application using the Qt5 framework
 dev-qt/qtwidgets 5.12.3 5.12.5-r1 5.13.2: Set of components for creating classic desktop-style UIs for the Qt5 framework
@@ -11946,7 +11946,7 @@ gnome-extra/nautilus-actions 3.2.4: Configures programs to be launched when file
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to locations
 gnome-extra/nemo 3.6.4-r1 3.8.6-r1 4.0.6: A file manager for Cinnamon, forked from Nautilus
-gnome-extra/nm-applet 1.8.22 1.8.24: GNOME applet for NetworkManager
+gnome-extra/nm-applet 1.8.24: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/pch-session 3.30.0.2 3.32.0: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
@@ -15343,7 +15343,7 @@ net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using U
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b-r1 0.01c: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.18.2 1.18.4-r1: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.18.4-r1: A set of co-operative tools that make networking simple and straightforward
 net-misc/nextcloud-client 2.5.2 2.6.0 2.6.1: Desktop Syncing Client for Nextcloud
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
@@ -15666,8 +15666,8 @@ net-vpn/libreswan 3.27 3.29: IPsec implementation for Linux, fork of Openswan
 net-vpn/logmein-hamachi 2.1.0.174 2.1.0.198: LogMeIn Hamachi VPN tunneling engine
 net-vpn/networkmanager-fortisslvpn 1.2.6 1.2.8: NetworkManager Fortinet SSLVPN compatible plugin
 net-vpn/networkmanager-l2tp 1.2.12: NetworkManager L2TP plugin
-net-vpn/networkmanager-libreswan 1.2.10 1.2.12: NetworkManager libreswan plugin
-net-vpn/networkmanager-openconnect 1.2.4-r1 1.2.6: NetworkManager OpenConnect plugin
+net-vpn/networkmanager-libreswan 1.2.12: NetworkManager libreswan plugin
+net-vpn/networkmanager-openconnect 1.2.6: NetworkManager OpenConnect plugin
 net-vpn/networkmanager-openvpn 1.8.10: NetworkManager OpenVPN plugin
 net-vpn/networkmanager-pptp 1.2.8: NetworkManager PPTP VPN plugin
 net-vpn/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
