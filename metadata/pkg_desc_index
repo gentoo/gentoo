@@ -3176,7 +3176,7 @@ dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/qt5-sqlcipher 1.0.1_p20191025: Qt SQL driver plugin for SQLCipher
 dev-db/redis 4.0.2-r1 4.0.10 4.0.11 4.0.12 4.0.13 4.0.14 5.0.3 5.0.4 5.0.5: A persistent caching system, key-value and data structures database
 dev-db/repmgr 3.0.1 3.3.2: PostgreSQL Replication Manager
-dev-db/rqlite 4.5.0: Replicated SQLite using the Raft consensus protocol
+dev-db/rqlite 4.5.0 4.6.0: Replicated SQLite using the Raft consensus protocol
 dev-db/sadisplay 0.4.8: SqlAlchemy schema display script
 dev-db/slony1 2.2.6 2.2.7: A replication system for the PostgreSQL Database Management System
 dev-db/spatialite 4.3.0-r1 4.3.0a: A complete Spatial DBMS in a nutshell built upon sqlite
@@ -9112,9 +9112,9 @@ dev-python/txaio 2.7.1 2.9.0: Compatibility API between asyncio/Twisted/Trollius
 dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.5-r1: Asynchronous Python HTTP for Humans
 dev-python/txtorcon 0.19.3-r1: Twisted-based Tor controller client, with state-tracking and config abstractions
-dev-python/typed-ast 1.1.0 1.2.0 1.3.1 1.4.0: Python typed-ast backported
+dev-python/typed-ast 1.1.0 1.2.0 1.3.1 1.4.0-r1: Python typed-ast backported
 dev-python/typing 3.6.2-r1 3.6.4-r1 3.7.4.1: Type Hints for Python
-dev-python/typing-extensions 3.7.4: Type Hint extensions from Python 3.7 backported to 3.5/3.6
+dev-python/typing-extensions 3.7.4 3.7.4.1: Type Hint extensions from Python 3.7 backported to 3.5/3.6
 dev-python/tzlocal 1.2: tzinfo object for the local timezone
 dev-python/u-msgpack 2.4.1 2.5.2: A portable, lightweight MessagePack serializer and deserializer
 dev-python/ufoLib 3.0.0: A low-level UFO reader and writer
@@ -17250,7 +17250,7 @@ sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functiona
 sys-apps/sydbox 1.0.7: ptrace-based sandbox
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 242-r6 242-r7 243 243-r2 244_rc1 9999: System and service manager for Linux
+sys-apps/systemd 242-r6 242-r7 243 243-r2 244 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.93 2.95-r1 2.96: /sbin/init - parent of all processes
 sys-apps/tas 1.5.2.180622: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
