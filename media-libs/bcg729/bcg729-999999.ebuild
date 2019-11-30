@@ -2,23 +2,32 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 cmake-multilib
+inherit cmake-utils git-r3
 
 DESCRIPTION="encoder and decoder of the ITU G729 Annex A/B speech codec"
 HOMEPAGE="https://github.com/BelledonneCommunications/bcg729"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/BelledonneCommunications/bcg729"
 
-LICENSE="GPL-3"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="static-libs"
 RDEPEND="
 	!media-plugins/mediastreamer-bcg729
 "
+S=${WORKDIR}/${P/_/-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.3.0_beta-cmake-build.patch
+)
 
-multilib_src_configure() {
-	local mycmakeargs+=(
+src_configure() {
+	mycmakeargs=(
 		-DENABLE_STATIC=$(usex static-libs)
 	)
 	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+	find "${ED}" -name '*.la' -delete || die
 }
