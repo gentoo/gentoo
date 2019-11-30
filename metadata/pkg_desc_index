@@ -1445,7 +1445,7 @@ app-emulation/cri-tools 1.14.0 1.15.0 1.16.1: CLI and validation tools for Kubel
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0 15.3.0 15.3.1 16.0.0 16.2.5 17.5.0 17.5.0-r1 17.5.1 18.0.0 18.1.0 18.5.0: Commercial version of app-emulation/wine with paid support.
 app-emulation/crun 0.10.6: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
-app-emulation/diskimage-builder 2.28.2 2.29.1 2.30.0 9999: Golden Disk Image builder.
+app-emulation/diskimage-builder 2.29.1 2.30.0 9999: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 18.09.9 19.03.4 19.03.5: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
@@ -4844,7 +4844,7 @@ dev-libs/kpathsea 6.3.1_p20190410: Path searching library for TeX-related files
 dev-libs/kproperty 3.2.0: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98-r2: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/kreport 3.2.0: Framework for creation and generation of reports in multiple formats
-dev-libs/leatherman 1.3.0 1.8.0 1.9.0: A C++ toolkit
+dev-libs/leatherman 1.3.0 1.8.0 1.9.0 1.9.1: A C++ toolkit
 dev-libs/leveldb 1.18-r2 1.20: a fast key-value storage library written at Google
 dev-libs/libIDL 0.8.14-r2: CORBA tree builder
 dev-libs/libaio 0.3.110 0.3.111 0.3.112 9999: Asynchronous input/output library that uses the kernels native interface
@@ -14015,7 +14015,7 @@ media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/pulseaudio 12.2-r1 12.2-r2 13.0: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.66: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.3 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth (alongside SBC and native+ofono headset)
-media-sound/pulseeffects 4.6.8 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
+media-sound/pulseeffects 4.6.8 4.6.9 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
