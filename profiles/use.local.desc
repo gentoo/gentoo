@@ -6274,6 +6274,7 @@ net-libs/pjproject:epoll - Use /dev/epoll ioqueue on Linux (experimental)
 net-libs/pjproject:g711 - Include G.711 codecs in the build
 net-libs/pjproject:g722 - Include G.722 codec in the build
 net-libs/pjproject:g7221 - Include G.722.1 codec in the build
+net-libs/pjproject:g729 - Include G.729 codec via net-libs/bcg729
 net-libs/pjproject:ilbc - Include iLBC codec in the build
 net-libs/pjproject:l16 - Include Linear/L16 codec family in the build
 net-libs/pjproject:libyuv - Include libyuv in the build
@@ -6388,6 +6389,7 @@ net-misc/asterisk:pjproject - Enable support for pjproject (pjsip)
 net-misc/asterisk:samples - Install sample sound and configuration files (default: on)
 net-misc/asterisk:span - Enable support for the spandsp codec
 net-misc/asterisk:srtp - Enable support for encrypted voice transmission (secure RTP)
+net-misc/asterisk:statsd - Enable statsd integration
 net-misc/asterisk-core-sounds:alaw - Install the sounds files for the alaw codec.
 net-misc/asterisk-core-sounds:g722 - Install the sounds files for the g722 codec.
 net-misc/asterisk-core-sounds:g729 - Install the sounds files for the g729 codec.

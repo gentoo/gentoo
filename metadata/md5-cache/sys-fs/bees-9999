@@ -1,13 +1,13 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure pretend setup unpack
-DEPEND=>=sys-apps/util-linux-2.30.2 >=sys-fs/btrfs-progs-4.1
+DEPEND=>=sys-apps/util-linux-2.30.2 >=sys-fs/btrfs-progs-4.20.2
 DESCRIPTION=Best-Effort Extent-Same, a btrfs dedup agent
 EAPI=7
 HOMEPAGE=https://github.com/Zygo/bees
 IUSE=tools kernel_linux
 LICENSE=GPL-3
 PROPERTIES=live
-RDEPEND=>=sys-apps/util-linux-2.30.2 >=sys-fs/btrfs-progs-4.1
+RDEPEND=>=sys-apps/util-linux-2.30.2 >=sys-fs/btrfs-progs-4.20.2
 SLOT=0
 _eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=a8e1e31fffc62ca508d5def517a0fa88
+_md5_=7632d5fea6e8dd6f0df4ce27847783dc
