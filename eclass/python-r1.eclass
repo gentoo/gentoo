@@ -195,11 +195,7 @@ _python_set_globals() {
 	# but no point in making this overcomplex, BDEP doesn't hurt anyone
 	# 2) python-exec should be built with all targets forced anyway
 	# but if new targets were added, we may need to force a rebuild
-	if [[ ${_PYTHON_WANT_PYTHON_EXEC2} == 0 ]]; then
-		die "python-exec:0 is no longer supported, please fix your ebuild to work with python-exec:2"
-	else
-		deps+=">=dev-lang/python-exec-2:=[${usedep}]"
-	fi
+	deps+=">=dev-lang/python-exec-2:=[${usedep}]"
 
 	if [[ ${PYTHON_DEPS+1} ]]; then
 		# IUSE is magical, so we can't really check it
