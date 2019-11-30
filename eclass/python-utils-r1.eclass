@@ -164,11 +164,12 @@ _python_set_impls() {
 }
 
 # @FUNCTION: _python_impl_matches
-# @USAGE: <impl> <pattern>...
+# @USAGE: <impl> [<pattern>...]
 # @INTERNAL
 # @DESCRIPTION:
 # Check whether the specified <impl> matches at least one
 # of the patterns following it. Return 0 if it does, 1 otherwise.
+# Matches if no patterns are provided.
 #
 # <impl> can be in PYTHON_COMPAT or EPYTHON form. The patterns can be
 # either:
@@ -176,7 +177,8 @@ _python_set_impls() {
 # b) '-2' to indicate all Python 2 variants (= !python_is_python3)
 # c) '-3' to indicate all Python 3 variants (= python_is_python3)
 _python_impl_matches() {
-	[[ ${#} -ge 2 ]] || die "${FUNCNAME}: takes at least 2 parameters"
+	[[ ${#} -ge 1 ]] || die "${FUNCNAME}: takes at least 1 parameter"
+	[[ ${#} -eq 1 ]] && return 0
 
 	local impl=${1} pattern
 	shift
