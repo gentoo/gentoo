@@ -8,7 +8,7 @@ DESCRIPTION="encoder and decoder of the ITU G729 Annex A/B speech codec"
 HOMEPAGE="https://github.com/BelledonneCommunications/bcg729"
 EGIT_REPO_URI="https://github.com/BelledonneCommunications/bcg729"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE="static-libs"
