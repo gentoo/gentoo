@@ -1,0 +1,42 @@
+From 94bbbfa04a4c55bba5102a0693ba2c0669d85f20 Mon Sep 17 00:00:00 2001
+From: Stefan Sauer <ensonic@users.sf.net>
+Date: Fri, 16 Aug 2019 10:49:33 +0200
+Subject: [PATCH] tests: skip pdf check if no pdf tools are installed
+
+Fixes #87
+---
+ tests/sanity.sh | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/tests/sanity.sh b/tests/sanity.sh
+index f35c7bb..1008da2 100755
+--- a/tests/sanity.sh
++++ b/tests/sanity.sh
+@@ -80,13 +80,15 @@ done
+ if test $nok -gt 0 ; then failed=`expr $failed + 1`; fi
+ tested=`expr $tested + 1`
+ 
+-# check that log files have only one line (the command)
+-# discard references to launchapd bugs
+ nok=0
+-DISCARD_PATTERN='Please fix https://bugs.launchpad.net/ubuntu/+source/gtk-doc/+bug/[0-9]* . For now run:
++# check that log files have only one line (the command)
++# - discard references to launchapd bugs
++# - discard errors for missing optional tools.
++DISCARD_PATTERN='\(Please fix https://bugs.launchpad.net/ubuntu/+source/gtk-doc/+bug/[0-9]* . For now run:
+ gunzip .*.gz
+ 
+-'
++|dblatex or fop must be installed.
++\)'
+ for file in $dir/$suite/docs/gtkdoc-*.log; do
+   # skip this in verbose mode as we'll have more text
+   if test "x${V}" = "x1"; then
+@@ -110,6 +112,7 @@ for file in $dir/$suite/docs/gtkdoc-*.log; do
+     ;;
+   esac
+ 
++  #
+   lines=`grep -v -x -G -e "$DISCARD_PATTERN" $file | wc -l | cut -d' ' -f1`
+   if test $lines -gt $expected_lines; then
+     echo 1>&2 "expected no more than $expected_lines log line in $file, but got $lines"
