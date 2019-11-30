@@ -250,14 +250,15 @@ _python_single_set_globals() {
 		requse+=" python_single_target_${i}? ( python_targets_${i} )"
 
 		python_export "${i}" PYTHON_PKG_DEP
-		deps+="python_single_target_${i}? ( ${PYTHON_PKG_DEP} ) "
+		# 1) well, python-exec would suffice as an RDEP
+		# but no point in making this overcomplex, BDEP doesn't hurt anyone
+		# 2) python-exec should be built with all targets forced anyway
+		# but if new targets were added, we may need to force a rebuild
+		deps+="python_single_target_${i}? (
+			${PYTHON_PKG_DEP}
+			>=dev-lang/python-exec-2:=[python_targets_${i}]
+		) "
 	done
-
-	# 1) well, python-exec would suffice as an RDEP
-	# but no point in making this overcomplex, BDEP doesn't hurt anyone
-	# 2) python-exec should be built with all targets forced anyway
-	# but if new targets were added, we may need to force a rebuild
-	deps+=">=dev-lang/python-exec-2:=[${usedep}]"
 
 	if [[ ${PYTHON_DEPS+1} ]]; then
 		if [[ ${PYTHON_DEPS} != "${deps}" ]]; then
