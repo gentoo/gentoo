@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
 
 inherit gnome.org meson python-r1 virtualx xdg
 
