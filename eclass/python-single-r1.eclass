@@ -139,29 +139,6 @@ EXPORT_FUNCTIONS pkg_setup
 # python_single_target_pypy? ( dev-python/pypy[gdbm] )
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_USEDEP
-# @DESCRIPTION:
-# DEPRECATED.  Use PYTHON_SINGLE_USEDEP or python_gen_cond_dep with
-# PYTHON_MULTI_USEDEP placeholder instead.
-#
-# This is an eclass-generated USE-dependency string which can be used to
-# depend on another Python package being built for the same Python
-# implementations.
-#
-# The generate USE-flag list is compatible with packages using python-r1,
-# python-single-r1 and python-distutils-ng eclasses. It must not be used
-# on packages using python.eclass.
-#
-# Example use:
-# @CODE
-# RDEPEND="dev-python/foo[${PYTHON_USEDEP}]"
-# @CODE
-#
-# Example value:
-# @CODE
-# python_targets_python2_7(-)?,python_single_target_python3_4(+)?
-# @CODE
-
 # @ECLASS-VARIABLE: PYTHON_SINGLE_USEDEP
 # @DESCRIPTION:
 # This is an eclass-generated USE-dependency string which can be used to
@@ -226,7 +203,6 @@ _python_single_set_globals() {
 
 	local flags_mt=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/python_targets_}" )
 	local flags=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/python_single_target_}" )
-	local unflags=( "${_PYTHON_UNSUPPORTED_IMPLS[@]/#/-python_single_target_}" )
 
 	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
 		# if only one implementation is supported, use IUSE defaults
@@ -237,8 +213,6 @@ _python_single_set_globals() {
 	fi
 
 	local requse="^^ ( ${flags[*]} )"
-	local optflags="${flags_mt[@]/%/(-)?},${unflags[@]/%/(-)},${flags[@]/%/(+)?}"
-	local usedep="${optflags// /,}"
 	local single_flags="${flags[@]/%/(-)?}"
 	local single_usedep=${single_flags// /,}
 
@@ -276,13 +250,6 @@ _python_single_set_globals() {
 			die "PYTHON_REQUIRED_USE integrity check failed"
 		fi
 
-		if [[ ${PYTHON_USEDEP} != "${usedep}" ]]; then
-			eerror "PYTHON_USEDEP have changed between inherits!"
-			eerror "Before: ${PYTHON_USEDEP}"
-			eerror "Now   : ${usedep}"
-			die "PYTHON_USEDEP integrity check failed"
-		fi
-
 		if [[ ${PYTHON_SINGLE_USEDEP} != "${single_usedep}" ]]; then
 			eerror "PYTHON_SINGLE_USEDEP have changed between inherits!"
 			eerror "Before: ${PYTHON_SINGLE_USEDEP}"
@@ -292,10 +259,8 @@ _python_single_set_globals() {
 	else
 		PYTHON_DEPS=${deps}
 		PYTHON_REQUIRED_USE=${requse}
-		PYTHON_USEDEP=${usedep}
 		PYTHON_SINGLE_USEDEP=${single_usedep}
-		readonly PYTHON_DEPS PYTHON_REQUIRED_USE PYTHON_USEDEP \
-			PYTHON_SINGLE_USEDEP
+		readonly PYTHON_DEPS PYTHON_REQUIRED_USE PYTHON_SINGLE_USEDEP
 	fi
 }
 _python_single_set_globals
@@ -305,14 +270,11 @@ if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 
 # @FUNCTION: _python_gen_usedep
 # @INTERNAL
-# @USAGE: <-s|-u> [<pattern>...]
+# @USAGE: [<pattern>...]
 # @DESCRIPTION:
 # Output a USE dependency string for Python implementations which
 # are both in PYTHON_COMPAT and match any of the patterns passed
 # as parameters to the function.
-#
-# The first argument specifies USE-dependency type: '-s' for new-style
-# PYTHON_SINGLE_USEDEP, '-u' for backwards-compatible PYTHON_USEDEP.
 #
 # The patterns can be either fnmatch-style patterns (matched via bash
 # == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
@@ -320,30 +282,17 @@ if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 # python_is_python3). Remember to escape or quote the fnmatch patterns
 # to prevent accidental shell filename expansion.
 #
-# This is an internal function used to implement python_gen_cond_dep
-# and deprecated python_gen_usedep.
+# This is an internal function used to implement python_gen_cond_dep.
 _python_gen_usedep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local mode=${1}
-	shift
 	local impl matches=()
 
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
-			case ${mode} in
-				-s)
-					matches+=(
-						"python_single_target_${impl}(-)?"
-					)
-					;;
-				-u)
-					matches+=(
-						"python_targets_${impl}(-)?"
-						"python_single_target_${impl}(+)?"
-					)
-				;;
-			esac
+			matches+=(
+				"python_single_target_${impl}(-)?"
+			)
 		fi
 	done
 
@@ -351,46 +300,6 @@ _python_gen_usedep() {
 
 	local out=${matches[@]}
 	echo "${out// /,}"
-}
-
-# @FUNCTION: python_gen_usedep
-# @USAGE: <pattern> [...]
-# @DESCRIPTION:
-# DEPRECATED.  Please use python_gen_cond_dep instead.
-#
-# Output a USE dependency string for Python implementations which
-# are both in PYTHON_COMPAT and match any of the patterns passed
-# as parameters to the function.
-#
-# The patterns can be either fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
-# appropriately all enabled Python 2/3 implementations (alike
-# python_is_python3). Remember to escape or quote the fnmatch patterns
-# to prevent accidental shell filename expansion.
-#
-# When all implementations are requested, please use ${PYTHON_USEDEP}
-# instead. Please also remember to set an appropriate REQUIRED_USE
-# to avoid ineffective USE flags.
-#
-# Example:
-# @CODE
-# PYTHON_COMPAT=( python{2_7,3_4} )
-# DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
-# @CODE
-#
-# It will cause the dependency to look like:
-# @CODE
-# DEPEND="doc? ( dev-python/epydoc[python_targets_python2_7(-)?,...] )"
-# @CODE
-python_gen_usedep() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	# output only once, during some reasonable phase
-	# (avoid spamming cache regen runs)
-	if [[ ${EBUILD_PHASE} == setup ]]; then
-		eqawarn "python_gen_usedep() is deprecated. Please use python_gen_cond_dep instead."
-	fi
-	_python_gen_usedep -u "${@}"
 }
 
 # @FUNCTION: python_gen_useflags
@@ -444,10 +353,9 @@ python_gen_useflags() {
 # to prevent accidental shell filename expansion.
 #
 # In order to enforce USE constraints on the packages, verbatim
-# '${PYTHON_USEDEP}', '${PYTHON_SINGLE_USEDEP}'
-# and '${PYTHON_MULTI_USEDEP}' (quoted!) may be placed in the dependency
-# specification. It will get expanded within the function into a proper
-# USE dependency string.
+# '${PYTHON_SINGLE_USEDEP}' and '${PYTHON_MULTI_USEDEP}' (quoted!) may
+# be placed in the dependency specification. It will get expanded within
+# the function into a proper USE dependency string.
 #
 # Example:
 # @CODE
@@ -473,15 +381,11 @@ python_gen_cond_dep() {
 
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
-			# substitute ${PYTHON_USEDEP} if used
-			# (since python_gen_usedep() will not return ${PYTHON_USEDEP}
-			#  the code is run at most once)
-			if [[ ${dep} == *'${PYTHON_USEDEP}'* ]]; then
-				local usedep=$(_python_gen_usedep -u "${@}")
-				dep=${dep//\$\{PYTHON_USEDEP\}/${usedep}}
-			fi
+			# substitute ${PYTHON_SINGLE_USEDEP} if used
+			# (since python_gen_usedep() will not return
+			#  ${PYTHON_SINGLE_USEDEP}, the code is run at most once)
 			if [[ ${dep} == *'${PYTHON_SINGLE_USEDEP}'* ]]; then
-				local usedep=$(_python_gen_usedep -s "${@}")
+				local usedep=$(_python_gen_usedep "${@}")
 				dep=${dep//\$\{PYTHON_SINGLE_USEDEP\}/${usedep}}
 			fi
 			local multi_usedep="python_targets_${impl}(-)"
