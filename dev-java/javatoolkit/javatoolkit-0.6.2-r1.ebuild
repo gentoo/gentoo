@@ -3,10 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1 multilib prefix
+inherit distutils-r1 prefix
 
 DESCRIPTION="Collection of Gentoo-specific tools for Java"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Java"
