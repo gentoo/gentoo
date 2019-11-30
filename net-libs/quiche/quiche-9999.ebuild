@@ -154,6 +154,7 @@ BDEPEND="
 	>=dev-lang/rust-1.38.0[${MULTILIB_USEDEP}]
 	dev-util/cmake
 	dev-lang/go
+	dev-lang/perl
 "
 DEPEND=""
 RDEPEND=""
