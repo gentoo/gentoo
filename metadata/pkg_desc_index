@@ -1530,7 +1530,7 @@ app-emulation/vagrant 2.1.5 2.2.2-r2 2.2.4 2.2.5 2.2.6: A tool for building and 
 app-emulation/vice 3.1: Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 2.0.0 2.2.0 2.2.1 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 7.0 8.0: Graphical console client for connecting to virtual machines
-app-emulation/virt-what 1.18 1.19: Detects if the current machine is running in a virtual machine
+app-emulation/virt-what 1.18 1.19 1.20: Detects if the current machine is running in a virtual machine
 app-emulation/virtio-win 0.1.160: VirtIO drivers for Windows virtual machines running on KVM
 app-emulation/virtualbox 5.2.32 5.2.34 6.0.12 6.0.14 6.1.0_rc1: Family of powerful x86 virtualization products for enterprise and home use
 app-emulation/virtualbox-additions 5.2.32 5.2.34 6.0.12 6.0.14 6.1.0_rc1: CD image containing guest additions for VirtualBox
