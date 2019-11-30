@@ -5153,7 +5153,7 @@ dev-libs/stp 2.3.3: Simple Theorem Prover, an efficient SMT solver for bitvector
 dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
 dev-libs/template-glib 3.32.0: Templating library for GLib
 dev-libs/tinyxml 2.6.2-r2 2.6.2-r3: Simple and small C++ XML parser
-dev-libs/tinyxml2 6.2.0 7.0.1-r1 7.1.0: A simple, small, efficient, C++ XML parser
+dev-libs/tinyxml2 7.1.0: A simple, small, efficient, C++ XML parser
 dev-libs/tntnet 2.2.1 2.2.1-r1: Modular, multithreaded web application server extensible with C++
 dev-libs/totem-pl-parser 3.26.3: Playlist parsing library
 dev-libs/tre 0.8.0-r1: Lightweight, robust, and efficient POSIX compliant regexp matching library
