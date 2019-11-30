@@ -354,21 +354,6 @@ app-portage/install-mask
 # Removal in 30 days.
 dev-ada/gps-bin
 
-# Hans de Graaff <graaff@gentoo.org> (2019-10-25)
-# ruby24-only, no longer supported by upstream.
-# Migrate to Rails 5.2 instead. Masked for removal in 30 days.
-dev-ruby/rails:5.1
-dev-ruby/railties:5.1
-dev-ruby/activerecord:5.1
-dev-ruby/actionmailer:5.1
-dev-ruby/actionpack:5.1
-dev-ruby/actionview:5.1
-dev-ruby/activejob:5.1
-dev-ruby/actioncable:5.1
-dev-ruby/activemodel:5.1
-dev-ruby/activesupport:5.1
-dev-ruby/arel:8.0
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.

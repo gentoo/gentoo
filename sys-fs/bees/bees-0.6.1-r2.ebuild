@@ -22,7 +22,7 @@ IUSE="tools"
 
 DEPEND="
 	>=sys-apps/util-linux-2.30.2
-	>=sys-fs/btrfs-progs-4.1
+	>=sys-fs/btrfs-progs-4.20.2
 "
 RDEPEND="${DEPEND}"
 
@@ -32,6 +32,7 @@ ERROR_BTRFS_FS="CONFIG_BTRFS_FS: bees does currently only work with btrfs"
 PATCHES=(
 	"${FILESDIR}/6001-lib-fix-non-local-lambda-expression-cannot-have-a-ca.patch"
 	"${FILESDIR}/6002-context-workaround-to-prevent-LOGICAL_INO-and-btrfs-.patch"
+	"${FILESDIR}/6003-process-Fix-gettid-ambiguity-with-glibc-2.30.patch"
 )
 
 pkg_pretend() {
@@ -53,6 +54,7 @@ pkg_pretend() {
 			ewarn "# WARNING: CPU: 3 PID: 18172 at fs/btrfs/backref.c:1391 find_parent_nodes+0xc41/0x14e0"
 			ewarn
 		fi
+
 		if kernel_is -lt 5 3 4; then
 			ewarn "With kernel versions below 5.3.4, bees may trigger a btrfs bug when running"
 			ewarn "btrfs-balance in parallel. This may lead to meta-data corruption in the worst"
@@ -62,6 +64,16 @@ pkg_pretend() {
 			ewarn "https://github.com/Zygo/bees/blob/master/docs/btrfs-kernel.md"
 			ewarn
 		fi
+
+		if kernel_is -lt 5 0 4; then
+			ewarn "IMPORTANT: With kernel versions below 5.0.4, you may experience data corruption"
+			ewarn "due to bees using compression in btrfs. You are adviced to use a chronologically"
+			ewarn "later kernel, that includes older LTS versions released after 5.0.4:"
+			ewarn "Fixed in: 5.1+, 5.0.4+, 4.19.31+, 4.14.108+, 4.9.165+, 4.4.177+, 3.18.137+"
+			ewarn "# commit 8e92821 btrfs: fix corruption reading shared and compressed extents after hole punching"
+			ewarn
+		fi
+
 		elog "Bees recommends running the latest current kernel for performance and"
 		elog "reliability reasons, see README.md."
 	fi
