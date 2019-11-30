@@ -373,9 +373,9 @@ app-doc/doxygen:doxysearch - build doxyindexer and doxysearch.cgi
 app-doc/kicad-doc:html - Generate documentation in HTML format
 app-doc/kicad-doc:pdf - Generate documentation in PDF format
 app-doc/linuxfromscratch:htmlsingle - Install all-on-one-page HTML version.
-app-doc/pms:binary - Download pre-built files instead of building from sources
-app-doc/pms:html - Generate PMS as .html as well
+app-doc/pms:html - Generate and install PMS as .html as well
 app-doc/pms:twoside - Enable two-sided layout suitable for printing
+app-doc/pms-bin:html - Install PMS as .html as well
 app-doc/tldp-howto:html - Install multi-chapter HTML docs
 app-doc/tldp-howto:htmlsingle - Install all-on-one-page HTML docs
 app-doc/tldp-howto:pdf - Install pdf docs

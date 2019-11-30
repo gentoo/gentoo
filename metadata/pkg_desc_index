@@ -1131,6 +1131,7 @@ app-doc/php-docs 20101029-r1 20190203: HTML documentation for PHP
 app-doc/phrack 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69: A Hacker magazine by the community, for the community
 app-doc/phrack-all 69: Hacker magazine by the community, for the community (all issues)
 app-doc/pms 5_p20120920 7_p20180430-r1 9999: Gentoo Package Manager Specification (draft)
+app-doc/pms-bin 5_p20120920 7_p20180430: Gentoo Package Manager Specification
 app-doc/psmark 2.1: Prints watermark-like text on any PostScript document
 app-doc/selfhtml 8.1.2: "The" German HTML/XHTML/CSS/XML/DHTML/CGI/Perl/JavaScript Documentation
 app-doc/selflinux 0.13.0: german-language hypertext tutorial about Linux
