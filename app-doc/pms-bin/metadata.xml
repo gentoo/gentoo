@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>pms@gentoo.org</email>
+  <name>Package Manager Specification</name>
+</maintainer>
+<stabilize-allarches/>
+<use>
+  <flag name="html">Install PMS as .html as well</flag>
+</use>
+</pkgmetadata>
