@@ -4761,7 +4761,7 @@ dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA
 dev-libs/darts 0.32 0.32h_pre20181117064816 9999: Darts-clone (Double-ARray Trie System) C++ library
 dev-libs/dbus-c++ 0.9.0-r3: Provides a C++ API for D-BUS
 dev-libs/dbus-glib 0.110: D-Bus bindings for glib
-dev-libs/device-atlas-api-c 2.1.3 2.1.4: API to detect devices based on the User-Agent HTTP header
+dev-libs/device-atlas-api-c 2.1.4: API to detect devices based on the User-Agent HTTP header
 dev-libs/dietlibc 0.34_pre20140729-r1 0.34: A libc optimized for small size
 dev-libs/ding-libs 0.4.0 0.5.0 0.6.0 0.6.1: set of utility libraries (mostly used by sssd)
 dev-libs/distorm64 3.3.8 3.4.1: The ultimate disassembler library (X86-32, X86-64)
