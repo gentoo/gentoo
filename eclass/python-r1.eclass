@@ -278,7 +278,7 @@ _python_validate_useflags() {
 
 # @FUNCTION: _python_gen_usedep
 # @INTERNAL
-# @USAGE: <pattern> [...]
+# @USAGE: [<pattern>...]
 # @DESCRIPTION:
 # Output a USE dependency string for Python implementations which
 # are both in PYTHON_COMPAT and match any of the patterns passed
@@ -353,7 +353,7 @@ python_gen_usedep() {
 }
 
 # @FUNCTION: python_gen_useflags
-# @USAGE: <pattern> [...]
+# @USAGE: [<pattern>...]
 # @DESCRIPTION:
 # Output a list of USE flags for Python implementations which
 # are both in PYTHON_COMPAT and match any of the patterns passed
@@ -390,7 +390,7 @@ python_gen_useflags() {
 }
 
 # @FUNCTION: python_gen_cond_dep
-# @USAGE: <dependency> <pattern> [...]
+# @USAGE: <dependency> [<pattern>...]
 # @DESCRIPTION:
 # Output a list of <dependency>-ies made conditional to USE flags
 # of Python implementations which are both in PYTHON_COMPAT and match
@@ -486,9 +486,8 @@ python_gen_impl_dep() {
 	local PYTHON_REQ_USE=${1}
 	shift
 
-	local patterns=( "${@-*}" )
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		if _python_impl_matches "${impl}" "${patterns[@]}"; then
+		if _python_impl_matches "${impl}" "${@}"; then
 			local PYTHON_PKG_DEP
 			python_export "${impl}" PYTHON_PKG_DEP
 			matches+=( "python_targets_${impl}? ( ${PYTHON_PKG_DEP} )" )
@@ -566,7 +565,7 @@ python_gen_any_dep() {
 
 	local i PYTHON_PKG_DEP out=
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		if _python_impl_matches "${i}" "${@-*}"; then
+		if _python_impl_matches "${i}" "${@}"; then
 			local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
 			python_export "${i}" PYTHON_PKG_DEP
 
@@ -763,7 +762,7 @@ python_setup() {
 		fi
 
 		# check patterns
-		_python_impl_matches "${impl}" "${@-*}" || continue
+		_python_impl_matches "${impl}" "${@}" || continue
 
 		python_export "${impl}" EPYTHON PYTHON
 
