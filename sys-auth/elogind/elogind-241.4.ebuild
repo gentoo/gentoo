@@ -48,7 +48,10 @@ PDEPEND="
 
 DOCS=( NEWS README.md src/libelogind/sd-bus/GVARIANT-SERIALIZATION )
 
-PATCHES=( "${FILESDIR}/${P}-nodocs.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-nodocs.patch"
+	"${FILESDIR}/${P}-broken-test.patch" # bug 699116
+)
 
 pkg_setup() {
 	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SIGNALFD ~TIMERFD"
