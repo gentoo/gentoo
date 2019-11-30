@@ -36,8 +36,7 @@ DEPEND="acct-user/asterisk
 	dev-libs/libxml2:2
 	dev-libs/libxslt
 	sys-libs/ncurses:0=
-	sys-libs/zlib:=
-
+	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	bluetooth? ( net-wireless/bluez:= )
 	calendar? (
@@ -88,7 +87,6 @@ RDEPEND="${DEPEND}
 	net-misc/asterisk-core-sounds
 	net-misc/asterisk-extra-sounds
 	net-misc/asterisk-moh-opsound
-
 	selinux? ( sec-policy/selinux-asterisk )
 	syslog? ( virtual/logger )"
 
