@@ -1544,8 +1544,8 @@ app-emulation/wine-d3d9 3.20 3.21 4.0 4.1 9999: Free implementation of Windows(t
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 4.17 4.18 4.19 4.20 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.0.3 4.17 4.18 4.19 4.20 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 4.18 4.19 4.20 4.21 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.0.3 4.18 4.19 4.20 4.21 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20190912 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -13331,7 +13331,7 @@ media-libs/opencollada 1.6.62 1.6.63-r1: Stream based read/write library for COL
 media-libs/opencolorio 1.1.0-r1 1.1.0-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.13-r3 3.4.1-r7 4.1.2: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.13-r3 3.4.1-r7 4.1.2-r1: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 2.3.0: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper

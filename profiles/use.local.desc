@@ -4464,6 +4464,7 @@ media-libs/opencv:cuda - Enable NVIDIA Cuda computations support (Experimental!)
 media-libs/opencv:dnnsamples - Download dnn caffeemodel samples
 media-libs/opencv:download - Enable download during cmake configure
 media-libs/opencv:eigen - Enable usage of dev-cpp/eigen for computations
+media-libs/opencv:features2d - Enable features2d module
 media-libs/opencv:gdal - Enable support for sci-libs/gdal library
 media-libs/opencv:gflags - Use Google's C++ argument parsing library
 media-libs/opencv:glog - Use Google's C++ loggin library
