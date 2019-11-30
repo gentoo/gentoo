@@ -13,18 +13,18 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
-	adns androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc
-	dpauxmon +dumpcap +editcap http2 kerberos libxml2 lua lz4 maxminddb
-	+mergecap +minizip +netlink +plugins plugin-ifdemo +pcap +qt5 +randpkt
-	+randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl
-	sdjournal +text2pcap tfshark +tshark +udpdump zlib
+	androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon
+	+dumpcap +editcap http2 kerberos libxml2 lua lz4 maxminddb +mergecap
+	+minizip +netlink +plugins plugin-ifdemo +pcap +qt5 +randpkt +randpktdump
+	+reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl sdjournal
+	+text2pcap tfshark +tshark +udpdump zlib
 "
 S=${WORKDIR}/${P/_/}
 
 CDEPEND="
 	>=dev-libs/glib-2.32:2
+	>=net-dns/c-ares-1.5
 	dev-libs/libgcrypt:0
-	adns? ( >=net-dns/c-ares-1.5 )
 	bcg729? ( media-libs/bcg729 )
 	brotli? ( app-arch/brotli )
 	ciscodump? ( >=net-libs/libssh-0.6 )
@@ -152,7 +152,6 @@ src_configure() {
 		-DENABLE_BCG729=$(usex bcg729)
 		-DENABLE_BROTLI=$(usex brotli)
 		-DENABLE_CAP=$(usex filecaps caps)
-		-DENABLE_CARES=$(usex adns)
 		-DENABLE_GNUTLS=$(usex ssl)
 		-DENABLE_KERBEROS=$(usex kerberos)
 		-DENABLE_LIBXML2=$(usex libxml2)
