@@ -150,7 +150,7 @@ test_var_assert() {
 	var_name=${1}
 	exp=${2}
 
-	tbegin "asserv variable value: ${var_name} => ${exp}"
+	tbegin "assert variable value: ${var_name} => ${exp}"
 
 	if [[ ${!var_name} != ${exp} ]]; then
 		msg="Failure - Expected: \"${exp}\" Got: \"${!var_name}\""
