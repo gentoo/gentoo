@@ -20,6 +20,7 @@ HOMEPAGE="https://github.com/pkgcore/snakeoil"
 LICENSE="BSD"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
