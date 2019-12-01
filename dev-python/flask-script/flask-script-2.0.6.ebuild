@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{5,6} pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
 
 inherit distutils-r1
 
@@ -27,6 +28,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=( "${FILESDIR}/${P}-flask_script-everywhere.patch" )
 
 python_compile_all() {
 	use doc && emake -C docs html
