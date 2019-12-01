@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2019-12-01)
+# browserpass ebuild ported to go-modules, so these modules now have no reverse
+# dependencies.
+# Removal in 30 days. Bugs #683286, #683310, #687462, #700792
+=www-plugins/browserpass-3.0.6
+dev-go/zglob
+dev-go/logrus
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-11-30)
 # Version in Gentoo is multiple years old, broken by several dependencies
 # Bugs aren't being fixed: #497412, #509334, #511794, #651010, #654484, #701022
