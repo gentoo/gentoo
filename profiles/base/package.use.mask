@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Haelwenn (lanodan) Monnier <contact@hacktivis.me> (2019-12-01)
+# broken static-linking in glibc and maybe others
+>app-shells/mksh-57-r1 static
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-11-30)
 # Depends on about-to-be-last-rited media-libs/mediastreamer
 kde-apps/kopete jingle

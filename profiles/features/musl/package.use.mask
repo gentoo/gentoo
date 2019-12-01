@@ -20,3 +20,6 @@ app-shells/bash mem-scramble
 # lto builds are known to cause an OOM issue during build.
 mail-client/thunderbird lto
 www-client/firefox lto
+
+# static linking works with musl
+app-shells/mksh -static
