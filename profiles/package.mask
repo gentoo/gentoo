@@ -30,6 +30,45 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-01)
+# Added in 2013 and not updated since.  Unmaintained upstream since
+# inception.  Never had any keywords.
+# Removal in 30 days.  Bug #701462.
+net-dns/pdns-ldap-backend
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-01)
+# Unmaintained.  Incorrect license and potential copyright infringement.
+# Removal in 30 days.  Bug #634332.
+games-misc/fortune-mod-powerpuff
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-01)
+# Unmaintained.  No license and potential copyright infringement.
+# Removal in 30 days.  Bug #634318.
+games-misc/fortune-mod-smac
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-01)
+# Not updated since 2009 and 2004 respectively.  Suspicious license.
+# Removal in 30 days.  Bug #691084.
+games-misc/fortune-mod-gentoo-dev
+games-misc/fortune-mod-gentoo-forums
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-01)
+# The plugin is broken with multiple dependencies.  It is also dead
+# upstream.  Removing per maintainer's request.
+# Removal in 30 days.  Bug #314309.
+media-plugins/vdr-music
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-01)
+# Unresolved vulnerability.  Also apparently fails to build (#574048).
+# Removal in 30 days.  Bug #463338.
+sys-fabric/ibutils
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-01)
+# Unmaintained.  Not bumped since 2015.
+# Removal in 30 days.  Bug #585126.
+www-servers/hiawatha
+www-apps/hiawatha-monitor
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-01)
 # Multiple unresolved vulnerabilities.  The current Gentoo version
 # has reached EOL upstream.  The package hasn't been bumped since
 # mid-2018.
