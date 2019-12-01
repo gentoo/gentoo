@@ -3,10 +3,10 @@
 
 EAPI=7
 
-DESCRIPTION="CryptoAPI utils"
-HOMEPAGE="http://www.kerneli.org/"
-SRC_URI="http://www.paranoiacs.org/~sluskyb/hacks/hashalot/${P}.tar.gz"
+DESCRIPTION="Reads a passphrase and prints a hash"
+HOMEPAGE="https://www.paranoiacs.org/~sluskyb/"
+SRC_URI="https://www.paranoiacs.org/~sluskyb/hacks/hashalot/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
