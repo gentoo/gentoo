@@ -711,7 +711,6 @@ app-emulation/wine-staging:capi - Enable ISDN support via CAPI
 app-emulation/wine-staging:custom-cflags - Bypass strip-flags; use at your own peril
 app-emulation/wine-staging:dos - Pull in games-emulation/dosbox to run DOS applications
 app-emulation/wine-staging:faudio - Pull in app-emulation/faudio to provide XAudio2 functionality
-app-emulation/wine-staging:ffmpeg - Use media-video/ffmpeg to decode WMA formats
 app-emulation/wine-staging:gecko - Add support for the Gecko engine when using iexplore
 app-emulation/wine-staging:gssapi - Use GSSAPI (Kerberos SSP support)
 app-emulation/wine-staging:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality;
