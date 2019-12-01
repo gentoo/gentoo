@@ -29,7 +29,7 @@ BDEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=( "${FILESDIR}/0.1.36-test-no-apt-pkg.patch" )
+PATCHES=( "${FILESDIR}/0.1.36-disable-apt-pkg.patch" )
 
 python_compile_all() {
 	${EPYTHON} lib/debian/doc-debtags > README.debtags || die

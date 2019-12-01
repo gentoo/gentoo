@@ -1,12 +1,35 @@
-From 0b4e4e02e62ab6069e855fc44fec1cbfba3e2f2a Mon Sep 17 00:00:00 2001
+From 76b7c4e7d16e8f792323f8d14ebdb1678d9d12b0 Mon Sep 17 00:00:00 2001
 From: Mike Gilbert <floppym@gentoo.org>
 Date: Sat, 30 Nov 2019 23:18:05 -0500
-Subject: [PATCH] Remove tests that rely on apt_pkg
+Subject: [PATCH] Disable apt_pkg support
 
 ---
+ lib/debian/deb822.py            |  4 +--
  lib/debian/tests/test_deb822.py | 53 ---------------------------------
- 1 file changed, 53 deletions(-)
+ 2 files changed, 2 insertions(+), 55 deletions(-)
 
+diff --git a/lib/debian/deb822.py b/lib/debian/deb822.py
+index c679f4b..2e85956 100644
+--- a/lib/debian/deb822.py
++++ b/lib/debian/deb822.py
+@@ -1913,7 +1913,7 @@ class Sources(Dsc, _PkgRelationMixin):
+     def iter_paragraphs(cls,
+                         sequence,                # type: IterableInputDataType
+                         fields=None,             # type: Optional[List[str]]
+-                        use_apt_pkg=True,        # type: bool
++                        use_apt_pkg=False,       # type: bool
+                         shared_storage=False,    # type: bool
+                         encoding="utf-8",        # type: str
+                         strict=None,             # type: Optional[Dict]
+@@ -1955,7 +1955,7 @@ class Packages(Deb822, _PkgRelationMixin, _VersionAccessorMixin):
+     def iter_paragraphs(cls,
+                         sequence,              # type: IterableInputDataType
+                         fields=None,           # type: Optional[List[str]]
+-                        use_apt_pkg=True,      # type: bool
++                        use_apt_pkg=False,     # type: bool
+                         shared_storage=False,  # type: bool
+                         encoding="utf-8",      # type: str
+                         strict=None,           # type: Optional[Dict]
 diff --git a/lib/debian/tests/test_deb822.py b/lib/debian/tests/test_deb822.py
 index 7101727..64a724c 100755
 --- a/lib/debian/tests/test_deb822.py
