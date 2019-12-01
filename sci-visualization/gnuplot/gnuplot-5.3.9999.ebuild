@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
-LICENSE="gnuplot bitmap? ( free-noncomm )"
+LICENSE="gnuplot"
 SLOT="0"
 IUSE="aqua bitmap cairo doc examples +gd ggi latex libcaca libcerf lua qt5 readline wxwidgets X"
 
