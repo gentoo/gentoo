@@ -343,11 +343,6 @@ media-gfx/exiftags
 app-admin/certmgr
 app-admin/ksonnet
 
-# Mikle Kolyada <zlogene@gentoo.org> (2019-11-04)
-# xcolor has been a part of dev-texlive/texlive-latexrecommended
-# for a long time, removal in 10 days.
-dev-tex/xcolor
-
 # Alfredo Tupone <tupone@gentoo.org> (2019-11-03)
 # No more needed. Substituted by dev-ada/gnatcoll-core and others
 # Removal in 30 days.
