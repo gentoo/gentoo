@@ -8669,7 +8669,7 @@ dev-python/python-daap 0.7.1-r1: PyDaap is a DAAP client implemented in Python, 
 dev-python/python-daemon 1.6-r1 2.1.1 2.1.2: Library to implement a well-behaved Unix daemon process
 dev-python/python-dateutil 2.6.1 2.7.1 2.7.2 2.7.2-r1 2.7.3 2.7.4 2.7.5 2.8.0 2.8.1: Extensions to the standard Python datetime module
 dev-python/python-ddp 0.1.5: An event driven ddp client
-dev-python/python-debian 0.1.28 0.1.31 0.1.32: Python modules to work with Debian-related data formats
+dev-python/python-debian 0.1.28 0.1.31 0.1.32 0.1.36: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 2.7.0 2.9.0 2.11.0: Python bindings to the Designate API.
 dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Digest Authentication
 dev-python/python-discid 1.1.1: Python bindings for libdiscid
@@ -18298,7 +18298,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0 68.2.0 70.0.1: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.2.0 70.0.1: Firefox Web Browser
 www-client/google-chrome 78.0.3904.108: The web browser from Google
-www-client/google-chrome-beta 79.0.3945.45: The web browser from Google
+www-client/google-chrome-beta 79.0.3945.56: The web browser from Google
 www-client/google-chrome-unstable 80.0.3970.5: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -18348,7 +18348,7 @@ www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.4-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 32.0.0.293: Adobe Flash Player
 www-plugins/browserpass 3.0.6: WebExtension host binary for pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 78.0.3904.108 79.0.3945.45_beta 80.0.3970.5_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 78.0.3904.108 79.0.3945.56_beta 80.0.3970.5_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.1 9999: High performance flash player
