@@ -7946,7 +7946,7 @@ dev-python/imapclient 0.13 2.1.0: easy-to-use, pythonic, and complete IMAP clien
 dev-python/imexam 0.7.1: Simple interactive astronomical image examination and plotting
 dev-python/iminuit 1.2 1.3.3: Minuit numerical function minimization in Python
 dev-python/importing 1.10: Import objects dynamically, lazily, weakly, and more
-dev-python/importlib_metadata 0.22 0.23 0.23-r1: Read metadata from Python packages
+dev-python/importlib_metadata 0.22 0.23 0.23-r1 1.0.0: Read metadata from Python packages
 dev-python/importlib_resources 1.0.2-r1: Read resources from Python packages
 dev-python/incremental 16.10.1 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.7: Fast random access of gzip files in Python
@@ -8943,7 +8943,7 @@ dev-python/slowaes 0.1-r2: AES implementation in pure Python
 dev-python/smmap 0.9.0: A pure git implementation of a sliding window memory map manager
 dev-python/smmap2 2.0.3: A pure python implementation of a sliding window memory map manager
 dev-python/snakefood 1.3.1-r1: Generate dependency graphs from Python code
-dev-python/snakeoil 0.7.5 0.8.3 9999: misc common functionality and useful optimizations
+dev-python/snakeoil 0.7.5 0.8.3 0.8.4 9999: misc common functionality and useful optimizations
 dev-python/snappy 0.5-r2 0.5.1: Python library for the snappy compression library from Google
 dev-python/snowballstemmer 1.2.0 1.2.1: Stemmer algorithms generated from Snowball algorithms
 dev-python/soappy 0.12.22: SOAP Services for Python
@@ -10795,7 +10795,7 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 4.14.33-r1 4.20.3 5.3.7: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.6.9 0.7.0 9999: pkgcore-based QA utility
+dev-util/pkgcheck 0.7.1 9999: pkgcore-based QA utility
 dev-util/pkgconf 1.6.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
@@ -17197,7 +17197,7 @@ sys-apps/pcsc-lite 1.8.24 1.8.25 1.8.25-r1: PC/SC Architecture smartcard middlew
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.3: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
-sys-apps/pkgcore 0.9.7 0.10.6 0.10.7 9999: a framework for package management
+sys-apps/pkgcore 0.10.7 0.10.8 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/policycoreutils 2.8-r1 2.9 9999: SELinux core utilities
