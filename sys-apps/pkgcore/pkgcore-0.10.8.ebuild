@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
 
@@ -26,13 +26,18 @@ RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND+=" ~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	RDEPEND+=" >=dev-python/snakeoil-0.8.3[${PYTHON_USEDEP}]"
+	RDEPEND+=" >=dev-python/snakeoil-0.8.4[${PYTHON_USEDEP}]"
 fi
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
+
+python_check_deps() {
+	use doc || return 0
+	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
 
 python_compile_all() {
 	local esetup_args=( $(usex doc "--enable-html-docs" "") )
