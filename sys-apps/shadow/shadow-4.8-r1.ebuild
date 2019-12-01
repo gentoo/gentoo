@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit libtool pam
+inherit autotools libtool pam
 
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="https://github.com/shadow-maint/shadow"
@@ -41,12 +41,13 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.1.3-dots-in-usernames.patch"
+	"${FILESDIR}/shadow-4.8-revert-bin-merge.patch"
 )
 
 src_prepare() {
 	default
-	#eautoreconf
-	elibtoolize
+	eautoreconf
+	#elibtoolize
 }
 
 src_configure() {
@@ -119,6 +120,12 @@ src_install() {
 	doins "${FILESDIR}"/default/useradd
 
 	if use split-usr ; then
+		# move passwd to / to help recover broke systems #64441
+		# We cannot simply remove this or else net-misc/scponly
+		# and other tools will break because of hardcoded passwd
+		# location
+		dodir /bin
+		mv "${ED}"/usr/bin/passwd "${ED}"/bin/ || die
 		dosym ../../bin/passwd /usr/bin/passwd
 	fi
 
