@@ -34,6 +34,8 @@ IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda doc drm dvb
 	selinux test tools +uchardet v4l vaapi vdpau vulkan wayland +X +xv zlib
 	zsh-completion"
 
+RESTRICT="!test? ( test )"
+
 REQUIRED_USE="
 	|| ( cli libmpv )
 	aqua? ( opengl )

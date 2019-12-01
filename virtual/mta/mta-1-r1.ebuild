@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="Virtual for Message Transfer Agents"
 SLOT="0"
@@ -14,10 +14,7 @@ RDEPEND="|| (	mail-mta/nullmailer
 				mail-mta/courier
 				mail-mta/esmtp
 				mail-mta/exim
-				mail-mta/mini-qmail
 				mail-mta/netqmail
 				mail-mta/postfix
-				mail-mta/qmail-ldap
 				mail-mta/sendmail
-				mail-mta/opensmtpd
-				mail-mta/citadel[-postfix] )"
+				mail-mta/opensmtpd )"
