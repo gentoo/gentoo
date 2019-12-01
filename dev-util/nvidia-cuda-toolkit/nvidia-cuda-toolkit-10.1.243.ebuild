@@ -21,7 +21,7 @@ RESTRICT="bindist mirror"
 BDEPEND=""
 RDEPEND="
 	<sys-devel/gcc-9[cxx]
-	>=x11-drivers/nvidia-drivers-${DRIVER_PV}[X,uvm]
+	!prefix? ( >=x11-drivers/nvidia-drivers-${DRIVER_PV}[X,uvm] )
 	debugger? (
 		dev-libs/openssl-compat:1.0.0
 		sys-libs/libtermcap-compat
@@ -146,5 +146,11 @@ pkg_postinst_check() {
 pkg_postinst() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		pkg_postinst_check
+	fi
+
+	if use prefix; then
+		ewarn "Gentoo Prefix does not manage kernel modules.  You need to make certain"
+		ewarn "the function counterpart to >=x11-drivers/nvidia-drivers-${DRIVER_PV}[X,uvm]"
+		ewarn "is available from the host"
 	fi
 }
