@@ -33,6 +33,7 @@ qt5
 ruby
 slang
 sqlite
+sound
 systemtap
 X
 
