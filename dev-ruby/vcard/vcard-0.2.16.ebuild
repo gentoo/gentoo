@@ -1,10 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-# ruby25: not compatible
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 # Avoid the complexity of the "rake" recipe and run testrb-2 manually.
 RUBY_FAKEGEM_RECIPE_TEST=none
