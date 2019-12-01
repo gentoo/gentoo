@@ -6519,7 +6519,6 @@ net-misc/crossbar:tor - include tor services connections support
 net-misc/csync:sftp - Enable sftp transfer support via net-libs/libssh
 net-misc/curl:alt-svc - Enable alt-svc support
 net-misc/curl:brotli - Enable brotli compression support
-net-misc/curl:esni - Enable Encrypted Server Name Indication support
 net-misc/curl:http2 - Enable HTTP/2.0 support
 net-misc/curl:metalink - Enable metalink support
 net-misc/curl:nghttp3 - Enable HTTP/3.0 support using net-libs/nghttp3 and net-libs/ngtcp2
