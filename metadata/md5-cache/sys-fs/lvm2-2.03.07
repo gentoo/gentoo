@@ -10,6 +10,6 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/libaio[static-libs?] static? ( dev-libs/libaio[static-libs] ) !static? ( dev-libs/libaio[static-libs?] ) readline? ( sys-libs/readline:0= ) sanlock? ( sys-cluster/sanlock ) systemd? ( >=sys-apps/systemd-205:0= ) udev? ( >=virtual/libudev-208:=[static-libs(-)?] ) >=sys-apps/baselayout-2.2 !<sys-apps/openrc-0.11 !<sys-fs/cryptsetup-1.1.2 !!sys-fs/lvm-user >=sys-apps/util-linux-2.16 lvm2create_initrd? ( sys-apps/makedev ) thin? ( >=sys-block/thin-provisioning-tools-0.3.0 )
 REQUIRED_USE=device-mapper-only? ( !lvm2create_initrd !sanlock !thin ) systemd? ( udev )
 SLOT=0
-SRC_URI=ftp://sourceware.org/pub/lvm2/LVM2.2.03.06.tgz ftp://sourceware.org/pub/lvm2/old/LVM2.2.03.06.tgz
+SRC_URI=ftp://sourceware.org/pub/lvm2/LVM2.2.03.07.tgz ftp://sourceware.org/pub/lvm2/old/LVM2.2.03.07.tgz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=99e5f1501a9e7189144e99ad240baaf1

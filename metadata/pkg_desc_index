@@ -8423,7 +8423,7 @@ dev-python/pyavm 0.9.4: Python module for Astronomy Visualization Metadata i/o
 dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
 dev-python/pybluez 0.18-r1 0.22: Python bindings for Bluez Bluetooth Stack
 dev-python/pycadf 2.6.0 2.7.0 2.9.0-r1: python implementation of DMTF Cloud Audit (CADF) data model
-dev-python/pycairo 1.16.3-r1 1.17.0-r1 1.18.1: Python bindings for the cairo library
+dev-python/pycairo 1.16.3-r1 1.17.0-r1 1.18.1 1.18.2: Python bindings for the cairo library
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
 dev-python/pycapnp 0.6.2 0.6.3 0.6.4: Python wrapping of the Cap'n Proto library
 dev-python/pycares 2.1.1 2.3.0 2.4.0 3.0.0 3.0.0_p20190709: Python interface for c-ares
@@ -12920,7 +12920,7 @@ media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion too
 media-gfx/kcoloredit 2.0.0_p20171121-r1: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.5: Tool for indexing, searching, and viewing images
-media-gfx/krita 4.2.7.1: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 4.2.7.1 4.2.8.2: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.11.7 2.12.2 2.12.3: Palette quantization library that powers pngquant and other PNG optimizers
@@ -17717,7 +17717,7 @@ sys-fs/loop-aes 3.7n: Linux kernel module to encrypt disk partitions with AES ci
 sys-fs/lsscsi 0.29 0.30: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
-sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.184-r5 2.02.186-r2 2.03.06: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.184-r5 2.02.186-r2 2.03.07: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
