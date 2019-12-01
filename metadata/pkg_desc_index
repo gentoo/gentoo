@@ -18029,7 +18029,7 @@ virtual/man 0-r2: Virtual for man
 virtual/mda 0: Virtual for Message Delivery Agents
 virtual/modutils 0: Virtual for utilities to manage Linux kernel modules
 virtual/mpi 2.0-r3 2.0-r4 2.0-r5: Virtual for Message Passing Interface (MPI) v2.0 implementation
-virtual/mta 0 1: Virtual for Message Transfer Agents
+virtual/mta 1-r1: Virtual for Message Transfer Agents
 virtual/mysql 5.5-r2 5.6-r13: Virtual for MySQL database server
 virtual/notification-daemon 0: Virtual for notification daemon dbus service
 virtual/ooo 0: Virtual for OpenOffice.org/LibreOffice
