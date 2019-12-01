@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
 
 inherit distutils-r1 flag-o-matic
 
@@ -23,7 +23,7 @@ RDEPEND=">=dev-db/postgresql-8.1:*"
 DEPEND="${RDEPEND}
 	doc? (
 		>=dev-python/pygments-2.2[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.6[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-1.6
 	)"
 
 RESTRICT="test"
