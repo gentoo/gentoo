@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 # vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
 
-inherit meson gnome2-utils python-any-r1 vala
+inherit meson gnome2-utils python-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -24,21 +24,27 @@ HOMEPAGE="http://www.gegl.org/"
 LICENSE="|| ( GPL-3+ LGPL-3 )"
 SLOT="0.4"
 
-IUSE="cairo debug ffmpeg introspection lcms lensfun libav openexr pdf raw sdl svg test tiff umfpack vala v4l webp"
+IUSE="cairo debug ffmpeg +introspection lcms lensfun libav openexr pdf raw sdl svg test tiff umfpack vala v4l webp"
 REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	svg? ( cairo )
+	test? ( introspection )
 	vala? ( introspection )
 "
+
+RESTRICT="!test? ( test )"
 
 # NOTE: Even current libav 11.4 does not have AV_CODEC_CAP_VARIABLE_FRAME_SIZE
 #       so there is no chance to support libav right now (Gentoo bug #567638)
 #       If it returns, please check prior GEGL ebuilds for how libav was integrated.  Thanks!
 RDEPEND="
+	${PYTHON_DEPS}
 	>=dev-libs/glib-2.44:2
 	>=dev-libs/json-glib-1.2.6
 	>=media-libs/babl-0.1.72[introspection?]
 	media-libs/libnsgif
 	>=media-libs/libpng-1.6.0:0=
+	>=sys-libs/zlib-1.2.0
 	virtual/jpeg:0=
 	>=x11-libs/gdk-pixbuf-2.32:2
 	>=x11-libs/pango-1.38.0
@@ -59,19 +65,16 @@ RDEPEND="
 	umfpack? ( sci-libs/umfpack )
 	v4l? ( >=media-libs/libv4l-1.0.1 )
 	webp? ( >=media-libs/libwebp-0.5.0:= )
-	>=sys-libs/zlib-1.2.0
 "
-DEPEND="${RDEPEND}
+
+DEPEND="
+	${RDEPEND}
 	dev-lang/perl
 	>=dev-util/gtk-doc-am-1
 	>=sys-devel/gettext-0.19.8
-	virtual/pkgconfig
 	>=sys-devel/libtool-2.2
-	test? ( ffmpeg? ( media-libs/gexiv2 )
-		introspection? (
-			$(python_gen_any_dep '>=dev-python/pygobject-3.2[${PYTHON_USEDEP}]')
-		)
-	)
+	virtual/pkgconfig
+	test? ( >=dev-python/pygobject-3.2[${PYTHON_USEDEP}] )
 	vala? ( $(vala_depend) )
 "
 
@@ -82,10 +85,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.18-program-suffix.patch
 	"${FILESDIR}"/${P}-meson_cpu_detection.patch
 )
-
-pkg_setup() {
-	use test && use introspection && python-any-r1_pkg_setup
-}
 
 src_prepare() {
 	default
@@ -107,13 +106,9 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		# disable documentation as the generating is bit automagic
+		#  - Disable documentation as the generating is bit automagic
 		#    if anyone wants to work on it just create bug with patch
 		-Ddocs=false
-		#  - Parameter -Dworkshop=false disables any use of Lua, effectivly
-		-Dworkshop=false
-		$(meson_use introspection)
-
 		-Dexiv2=disabled
 		-Dgdk-pixbuf=enabled
 		-Dgexiv2=disabled
@@ -121,32 +116,35 @@ src_configure() {
 		#    which toggles HAVE_GRAPHVIZ that is not used anywhere.  Yes.
 		-Dgraphviz=disabled
 		-Djasper=disabled
-		$(meson_feature lcms)
-		$(meson_feature lensfun)
-		$(meson_feature ffmpeg libav)
 		-Dlibjpeg=enabled
 		-Dlibpng=enabled
-		$(meson_feature raw libraw)
-		$(meson_feature svg librsvg)
-		# libspiro: not in portage main tree
+		#  - libspiro: not in portage main tree
 		-Dlibspiro=disabled
+		-Dlua=disabled
+		-Dmrg=disabled
+		-Dpango=enabled
+		-Dsdl2=disabled
+		#  - Parameter -Dworkshop=false disables any use of Lua, effectivly
+		-Dworkshop=false
+		$(meson_feature cairo)
+		$(meson_feature cairo pangocairo)
+		$(meson_feature ffmpeg libav)
+		$(meson_feature lcms)
+		$(meson_feature lensfun)
+		$(meson_feature openexr)
+		$(meson_feature raw libraw)
+		$(meson_feature sdl sdl1)
+		$(meson_feature svg librsvg)
+		$(meson_feature test pygobject)
 		$(meson_feature tiff libtiff)
+		$(meson_feature umfpack)
 		#  - v4l support does not work with our media-libs/libv4l-0.8.9,
 		#    upstream bug at https://bugzilla.gnome.org/show_bug.cgi?id=654675
 		$(meson_feature v4l libv4l)
 		$(meson_feature v4l libv4l2)
-		-Dlua=disabled
-		-Dmrg=disabled
-		$(meson_feature openexr)
-		$(meson_feature cairo)
-		-Dpango=enabled
-		$(meson_feature cairo pangocairo)
-		$(meson_feature introspection pygobject)
-		$(meson_feature sdl sdl1)
-		-Dsdl2=disabled
-		$(meson_feature umfpack)
 		$(meson_feature vala vapigen)
 		$(meson_feature webp)
+		$(meson_use introspection)
 	)
 	meson_src_configure
 }
