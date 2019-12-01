@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit golang-base go-module
+inherit golang-base go-module bash-completion-r1
 
 DESCRIPTION="A tool for building, changing, and combining infrastructure safely"
 HOMEPAGE="https://www.terraform.io/"
@@ -36,6 +36,7 @@ src_compile() {
 src_install() {
 	dobin bin/terraform
 
+	newbashcomp "${FILESDIR}/${PN}.bash-completion" ${PN}
 	einstalldocs
 }
 
