@@ -8,7 +8,6 @@
 	<use>
 		<flag name="alt-svc">Enable alt-svc support</flag>
 		<flag name="brotli">Enable brotli compression support</flag>
-		<flag name="esni">Enable Encrypted Server Name Indication support</flag>
 		<flag name="http2">Enable HTTP/2.0 support</flag>
 		<flag name="nghttp3">Enable HTTP/3.0 support using <pkg>net-libs/nghttp3</pkg> and <pkg>net-libs/ngtcp2</pkg></flag>
 		<flag name="quiche">Enable HTTP/3.0 support using <pkg>net-libs/quiche</pkg></flag>
