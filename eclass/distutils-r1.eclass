@@ -821,7 +821,11 @@ distutils-r1_run_phase() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if [[ ${DISTUTILS_IN_SOURCE_BUILD} ]]; then
-		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
+		# only force BUILD_DIR if implementation is explicitly enabled
+		# for building; any-r1 API may select one that is not
+		# https://bugs.gentoo.org/701506
+		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]] &&
+				has "${EPYTHON/./_}" ${PYTHON_TARGETS}; then
 			cd "${BUILD_DIR}" || die
 		fi
 		local BUILD_DIR=${BUILD_DIR}/build
