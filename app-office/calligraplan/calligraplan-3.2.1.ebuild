@@ -57,7 +57,6 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	dev-lang/perl
 	dev-libs/kdiagram:5
-	sys-libs/zlib
 	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
 	holidays? ( >=kde-frameworks/kholidays-${KFMIN}:5 )
 	kwallet? (
