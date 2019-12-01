@@ -764,7 +764,7 @@ app-crypt/seahorse-sharing 3.8.0_p20151117 3.8.0_p20181216: Daemon for PGP publi
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signify 20 23 24: Cryptographically sign and verify files
-app-crypt/signing-party 2.9 2.10: A collection of several tools related to OpenPGP
+app-crypt/signing-party 2.9 2.10-r1: A collection of several tools related to OpenPGP
 app-crypt/simple-tpm-pk11 0.06: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.14.1: Computes context triggered piecewise hashes (fuzzy hashes)
 app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
