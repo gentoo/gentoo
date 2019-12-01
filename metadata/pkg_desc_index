@@ -11855,7 +11855,7 @@ games-util/xgame 1.7.1-r1: Run games in a separate X session
 games-util/xgame-gtk2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
-gnome-base/dconf 0.26.1 0.30.1 0.32.0-r1: Simple low-level configuration system
+gnome-base/dconf 0.26.1 0.30.1 0.32.0-r1 0.32.0-r2: Simple low-level configuration system
 gnome-base/dconf-editor 3.30.2 3.34.2: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.30.3-r3 3.32.0: GNOME Display Manager for managing graphical display servers and user logins
