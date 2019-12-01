@@ -22,7 +22,7 @@ else
 	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 ~s390 ~sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
-LICENSE="gnuplot bitmap? ( free-noncomm )"
+LICENSE="gnuplot"
 SLOT="0"
 IUSE="aqua bitmap cairo compat doc examples +gd ggi latex libcaca libcerf lua qt5 readline svga wxwidgets X"
 
