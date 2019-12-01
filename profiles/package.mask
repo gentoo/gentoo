@@ -100,6 +100,7 @@ games-misc/fortune-mod-gentoo-forums
 # The plugin is broken with multiple dependencies.  It is also dead
 # upstream.  Removing per maintainer's request.
 # Removal in 30 days.  Bug #314309.
+media-plugins/vdr-coverviewer
 media-plugins/vdr-music
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-01)
