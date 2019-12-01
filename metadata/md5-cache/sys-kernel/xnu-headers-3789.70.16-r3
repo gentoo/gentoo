@@ -7,4 +7,4 @@ KEYWORDS=~x64-macos
 LICENSE=APSL-2
 SLOT=10.12
 SRC_URI=https://opensource.apple.com/tarballs/xnu/xnu-3789.70.16.tar.gz https://opensource.apple.com/tarballs/AvailabilityVersions/AvailabilityVersions-26.50.4.tar.gz
-_md5_=b112b3c345409b08e798dd026aca21bd
+_md5_=dabaafe9d1146907ca73731e91e68e60

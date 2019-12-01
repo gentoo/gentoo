@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig doc? ( dev-python/sphinx ) iconv? ( virtual/libiconv ) test? ( dev-libs/check ) >=dev-util/meson-0.48.2 >=dev-util/ninja-1.7.2
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=media-libs/libmpdclient
+DESCRIPTION=Commandline client for Music Player Daemon (media-sound/mpd)
+EAPI=7
+HOMEPAGE=https://www.musicpd.org https://github.com/MusicPlayerDaemon/mpc
+IUSE=doc iconv test
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libmpdclient
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://www.musicpd.org/download/mpc/0/mpc-0.33.tar.xz
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	meson	b5ee7a05833ab91225acf30ffdeed006	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	02ef27875ec5afcc2202b9d062d57f07	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=c2e6ef1567c686cf70afd6a2f48d8522
