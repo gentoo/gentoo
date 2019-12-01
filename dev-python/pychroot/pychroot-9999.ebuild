@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
@@ -24,14 +24,19 @@ RESTRICT="!test? ( test )"
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND="~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	RDEPEND=">=dev-python/snakeoil-0.8.1[${PYTHON_USEDEP}]"
+	RDEPEND=">=dev-python/snakeoil-0.8.4[${PYTHON_USEDEP}]"
 fi
 
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
-[[ ${PV} == *9999 ]] && DEPEND+=" dev-python/sphinx[${PYTHON_USEDEP}]"
+[[ ${PV} == *9999 ]] && BDEPEND+=" $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')"
+
+python_check_deps() {
+	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
 
 python_compile_all() {
 	esetup.py build_man
