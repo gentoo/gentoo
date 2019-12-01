@@ -12868,7 +12868,7 @@ media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
 media-gfx/gif2png 2.5.9 2.5.12 2.5.14: Converts images from gif format to png format
 media-gfx/gifsicle 1.91 1.92: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
-media-gfx/gimp 2.8.22-r1 2.9.8-r1 2.10.8-r1 2.10.10-r1 2.10.12 9999: GNU Image Manipulation Program
+media-gfx/gimp 2.8.22-r1 2.9.8-r1 2.10.8-r1 2.10.10-r1 2.10.12 2.10.14 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.7.0 2.7.1 2.7.2: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
@@ -13045,7 +13045,7 @@ media-libs/aalib 1.4_rc5-r8 1.4_rc5-r9: A ASCII-Graphics Library
 media-libs/adplug 2.3.1 9999: A free, cross-platform, hardware independent AdLib sound player library
 media-libs/aften 0.0.8-r2: An A/52 (AC-3) audio encoder
 media-libs/aldumb 0.9.3: Allegro support for DUMB (an IT, XM, S3M, and MOD player library)
-media-libs/allegro 4.4.2-r2 5.2.4.0 5.2.5.0: Cross-platform library aimed at video game and multimedia programming
+media-libs/allegro 4.4.2-r2 5.2.5.0: Cross-platform library aimed at video game and multimedia programming
 media-libs/alsa-lib 1.1.2 1.1.8 1.1.9 1.2.1.1-r1 1.2.1.2: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.0.28 1.1.6 1.1.8: Advanced Linux Sound Architecture OSS compatibility layer
 media-libs/alsa-topology-conf 1.2.1: ALSA topology configuration files
