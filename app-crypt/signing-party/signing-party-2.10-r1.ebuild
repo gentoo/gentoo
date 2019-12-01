@@ -104,6 +104,8 @@ src_install() {
 	# sig2dot
 	dobin sig2dot/sig2dot
 	dodoc sig2dot/README.sig2dot
+	# gog-key2latex
+	dobin gpg-key2latex/gpg-key2latex
 	# See media-gfx/springgraph instead
 	#dobin springgraph/springgraph
 	#dodoc springgraph/README.springgraph
