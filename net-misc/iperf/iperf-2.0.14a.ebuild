@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Tool to measure IP bandwidth using UDP or TCP"
-HOMEPAGE="http://iperf2.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/iperf2/"
 SRC_URI="mirror://sourceforge/${PN}2/${PN}-2.0.13.tar.gz"
 
 LICENSE="HPND"
