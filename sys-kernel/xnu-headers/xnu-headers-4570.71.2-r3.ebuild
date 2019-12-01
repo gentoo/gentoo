@@ -39,6 +39,7 @@ src_install() {
 	insinto /usr/include
 	doins EXTERNAL_HEADERS/AssertMacros.h EXTERNAL_HEADERS/Availability*.h
 	doins libsyscall/wrappers/gethostuuid.h
+	doins libsyscall/wrappers/libproc/libproc.h
 	doins -r libsyscall/mach/mach
 
 	# generated during src_compile
