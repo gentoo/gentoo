@@ -28,18 +28,14 @@ RDEPEND="games-misc/fortune-mod
 	games-misc/fortune-mod-familyguy
 	games-misc/fortune-mod-firefly
 	games-misc/fortune-mod-futurama
-	games-misc/fortune-mod-gentoo-dev
-	games-misc/fortune-mod-gentoo-forums
 	games-misc/fortune-mod-hitchhiker
 	games-misc/fortune-mod-homer
 	games-misc/fortune-mod-humorixfortunes
 	games-misc/fortune-mod-kernelcookies
 	games-misc/fortune-mod-osfortune
-	games-misc/fortune-mod-powerpuff
 	games-misc/fortune-mod-pqf
 	games-misc/fortune-mod-simpsons-chalkboard
 	offensive? ( games-misc/fortune-mod-slackware[offensive] )
-	games-misc/fortune-mod-smac
 	games-misc/fortune-mod-sp-fortunes
 	games-misc/fortune-mod-starwars
 	games-misc/fortune-mod-strangelove
