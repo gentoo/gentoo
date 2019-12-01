@@ -690,7 +690,7 @@ app-crypt/gpa 0.10.0: The GNU Privacy Assistant (GPA) is a graphical user interf
 app-crypt/gpg-ringmgr 1.12-r1: GPG Keyring Manager to handle large GPG keyrings more easily
 app-crypt/gpgme 1.13.0 1.13.0-r1 1.13.1: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
-app-crypt/hashalot 0.3-r2: CryptoAPI utils
+app-crypt/hashalot 0.3-r2: Reads a passphrase and prints a hash
 app-crypt/hashcat 4.1.0 4.2.0 4.2.1 5.0.0 5.1.0 9999: World's fastest and most advanced password recovery utility
 app-crypt/hashcat-utils 1.9: a set of small utilities that are useful in advanced password cracking
 app-crypt/heimdal 7.5.0 7.6.0 7.7.0-r1: Kerberos 5 implementation from KTH
