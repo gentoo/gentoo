@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-01)
+# Unmaintained Rust packages with incorrect license information.
+# Removal in 30 days.  Bug #694414.
+app-misc/rq
+net-news/newsboat
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-01)
 # Multiple unmaintained Go packages with incorrect license information.
 # No reverse dependencies.
 #
