@@ -164,11 +164,16 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 4.2 && IUSE+=" +openmp"
 	tc_version_is_at_least 4.3 && IUSE+=" fixed-point"
 	tc_version_is_at_least 4.7 && IUSE+=" go"
-	# Note: while <=gcc-4.7 also supported graphite, it required forked ppl
-	# versions which we dropped.  Since graphite was also experimental in
-	# the older versions, we don't want to bother supporting it.  #448024
 	tc_version_is_at_least 4.8 &&
-		IUSE+=" graphite +sanitize" TC_FEATURES+=(graphite)
+		IUSE+=" +sanitize"
+	# Note:
+	#   <gcc-4.8 supported graphite, it required forked ppl
+	#     versions which we dropped.  Since graphite was also experimental in
+	#     the older versions, we don't want to bother supporting it.  #448024
+	#   <gcc-5 supported graphite, it required cloog
+	#   <gcc-6.5 supported graphite, it required old incompatible isl
+	tc_version_is_at_least 6.5 &&
+		IUSE+=" graphite" TC_FEATURES+=(graphite)
 	tc_version_is_between 4.9 8 && IUSE+=" cilk"
 	tc_version_is_at_least 4.9 && IUSE+=" +vtv"
 	tc_version_is_at_least 5.0 && IUSE+=" jit"
@@ -214,15 +219,7 @@ if tc_has_feature objc-gc ; then
 fi
 
 if tc_has_feature graphite ; then
-	if tc_version_is_at_least 5.0 ; then
-		RDEPEND+=" graphite? ( >=dev-libs/isl-0.14:0= )"
-	elif tc_version_is_at_least 4.8 ; then
-		RDEPEND+="
-			graphite? (
-				>=dev-libs/cloog-0.18.0:0=
-				>=dev-libs/isl-0.11.1:0=
-			)"
-	fi
+	RDEPEND+=" graphite? ( >=dev-libs/isl-0.14:0= )"
 fi
 
 DEPEND="${RDEPEND}
@@ -1322,14 +1319,15 @@ toolchain_src_configure() {
 		confgcc+=( --disable-lto )
 	fi
 
-	# graphite was added in 4.4 but we only support it in 4.8+ due to external
-	# library issues.  #448024
-	if tc_version_is_at_least 5.0 && in_iuse graphite ; then
+	# graphite was added in 4.4 but we only support it in 6.5+ due to external
+	# library issues.  #448024, #701270
+	if tc_version_is_at_least 6.5 && in_iuse graphite ; then
 		confgcc+=( $(use_with graphite isl) )
 		use graphite && confgcc+=( --disable-isl-version-check )
-	elif tc_version_is_at_least 4.8 && in_iuse graphite ; then
-		confgcc+=( $(use_with graphite cloog) )
-		use graphite && confgcc+=( --disable-isl-version-check )
+	elif tc_version_is_at_least 5.0 ; then
+		confgcc+=( --without-isl )
+	elif tc_version_is_at_least 4.8 ; then
+		confgcc+=( --without-cloog )
 	elif tc_version_is_at_least 4.4 ; then
 		confgcc+=( --without-{cloog,ppl} )
 	fi
