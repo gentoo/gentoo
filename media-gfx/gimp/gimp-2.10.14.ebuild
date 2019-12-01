@@ -25,15 +25,15 @@ COMMON_DEPEND="
 	>=app-text/poppler-0.50[cairo]
 	>=app-text/poppler-data-0.4.7
 	>=dev-libs/atk-2.2.0
-	>=dev-libs/glib-2.54.2:2
+	>=dev-libs/glib-2.56.0:2
 	dev-libs/libxml2
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.6:2
 	>=media-gfx/mypaint-brushes-1.3.0
-	>=media-libs/babl-0.1.66
+	>=media-libs/babl-0.1.72
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.1.7
-	>=media-libs/gegl-0.4.16:0.4[cairo]
+	>=media-libs/gegl-0.4.18:0.4[cairo]
 	>=media-libs/gexiv2-0.10.6
 	>=media-libs/harfbuzz-0.9.19
 	>=media-libs/lcms-2.8:2
@@ -44,14 +44,14 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	virtual/jpeg:0
 	>=x11-libs/cairo-1.12.2
-	>=x11-libs/gdk-pixbuf-2.30.8:2
+	>=x11-libs/gdk-pixbuf-2.31:2
 	>=x11-libs/gtk+-2.24.32:2
 	x11-libs/libXcursor
 	>=x11-libs/pango-1.29.4
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	aqua? ( >=x11-libs/gtk-mac-integration-2.0.0 )
-	heif? ( >=media-libs/libheif-1.1.0:= )
+	heif? ( >=media-libs/libheif-1.3.2:= )
 	jpeg2k? ( >=media-libs/openjpeg-2.1.0:2= )
 	mng? ( media-libs/libmng:= )
 	openexr? ( >=media-libs/openexr-1.6.1:= )
