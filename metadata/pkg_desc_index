@@ -11471,7 +11471,7 @@ games-misc/cowsay 3.04: Configurable talking ASCII cow (and other characters)
 games-misc/doge 3.5.0: wow very terminal doge
 games-misc/exult-sound 0-r2: Sound data for games-engines/exult
 games-misc/fortune-mod 1.99.1-r2: The notorious fortune program
-games-misc/fortune-mod-all 1: Meta package for all fortune-mod packages
+games-misc/fortune-mod-all 2: Meta package for all fortune-mod packages
 games-misc/fortune-mod-at-linux 20030120: Quotes from at.linux
 games-misc/fortune-mod-bofh-excuses 1.2: Excuses from Bastard Operator from Hell
 games-misc/fortune-mod-calvin 0.1.1: Quotes from Calvin and Hobbes Comic Books
@@ -17239,7 +17239,7 @@ sys-apps/sensei-raw-ctl 0.0_pre20180729: SteelSeries Sensei Raw configuration to
 sys-apps/servicelog 1.1.14: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
 sys-apps/sg3_utils 1.42 1.44: Apps for querying the sg SCSI interface
-sys-apps/shadow 4.6 4.7-r2 4.8: Utilities to deal with user accounts
+sys-apps/shadow 4.6 4.7-r2 4.8-r1: Utilities to deal with user accounts
 sys-apps/smartmontools 7.0-r1 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/smc-sum 2.3.0.20190808: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
 sys-apps/smc-sum-driver 1.6.0.20151201-r3: Supermicro Update Manager (SUM) kernel module
