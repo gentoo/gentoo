@@ -25,7 +25,7 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'sci-libs/Shapely[${PYTHON_USEDEP}]' python3_6)
+		sci-libs/Shapely[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
