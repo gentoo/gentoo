@@ -15,7 +15,7 @@ DESCRIPTION="Assistant to backup and archive PIM data and configuration"
 HOMEPAGE+=" https://userbase.kde.org/Kmail/Backup_Options"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE=""
 
 DEPEND="
