@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 inherit multilib-minimal
 
@@ -22,9 +22,14 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="^^ ( expat xml )"
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} \
-	econf \
-		$(use_with expat libexpat) \
-		$(use_with xml libxml2) \
+	local myeconfargs=(
+		$(use_with expat libexpat)
+		$(use_with xml libxml2)
 		$(use_enable static-libs static)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+multilib_src_install_all() {
+	find "${ED}" -type f -name "*.la" -delete || die
 }
