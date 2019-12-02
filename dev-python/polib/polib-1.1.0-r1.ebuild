@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+
+PYTHON_COMPAT=( python{2_7,3_{5,6,7,8}} )
 
 inherit distutils-r1
 
@@ -15,7 +16,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 ia64 ~mips ppc ppc64 sparc x86"
 IUSE="doc"
 
-DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+DEPEND="doc? ( dev-python/sphinx )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.7-BE-test.patch
