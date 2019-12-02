@@ -13,7 +13,7 @@ DESCRIPTION="Single player arcade bombing game"
 HOMEPAGE="https://kde.org/applications/games/bomber/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="
