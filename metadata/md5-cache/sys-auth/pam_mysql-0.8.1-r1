@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-libs/pam-0.72:0= dev-db/mysql-connector-c:0= openssl? ( dev-libs/openssl:0= )
 SLOT=0
 SRC_URI=https://github.com/NigelCunningham/pam-MySQL/archive/v0.8.1.tar.gz -> pam_mysql-0.8.1.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	756a09f72c4cdbb55f2694c95f1e0860	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	a1771fc1e5831c201eaf18451747d94b	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
 _md5_=e8b04b3cd2c050e46a5afb594a057e0b

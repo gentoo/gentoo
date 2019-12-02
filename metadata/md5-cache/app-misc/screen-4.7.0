@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-libs/ncurses-5.2:0= pam? ( sys-libs/pam ) selinux? ( sec-policy/selinux-screen ) virtual/tmpfiles
 SLOT=0
 SRC_URI=mirror://gnu/screen/screen-4.7.0.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	756a09f72c4cdbb55f2694c95f1e0860	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	a1771fc1e5831c201eaf18451747d94b	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
 _md5_=51faf2b62ddd67d80bf833ba44a72bd9

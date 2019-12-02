@@ -5258,26 +5258,17 @@ media-video/transcode:pic - disable optimized assembly code that is not PIC frie
 media-video/transcode:postproc - Build with ffmpeg libpostproc support
 media-video/vdr:alternatechannel - Use alternate channel on record
 media-video/vdr:bidi - fribidi support, for languages, written from right to left
-media-video/vdr:ddepgentry - remove duplicate EPG entries
-media-video/vdr:dvlvidprefer - controls video-dir choice on recording
 media-video/vdr:graphtft - support for vdr-graphtft plugin up from version 0.1.7
 media-video/vdr:html - Install HTML documentation
-media-video/vdr:jumpingseconds - skip seconds in played records
-media-video/vdr:jumpplay - Enables automatic jumping over cut marks while watching a recording
 media-video/vdr:kbd - enable keyboard support as remote device
 media-video/vdr:mainmenuhooks - Allows to replace main menu entries by some special plugins (like epgsearch, extrecmenu, ...)
 media-video/vdr:menuorg - Enables support for the media-plugins/vdr-menuorg
 media-video/vdr:menuselection - adds support for menu hotkeys of double digits
 media-video/vdr:naludump - Removes NALU fill data from h.264-Streams of TS files
 media-video/vdr:permashift - permanent timeshift by recording live TV into RAM, need plugin media-plugins/vdr-permashift
-media-video/vdr:permashift_v1 - permanent timeshift by recording live TV into RAM, need plugin media-plugins/vdr-permashift
 media-video/vdr:pinplugin - Support for media-plugins/vdr-pin
 media-video/vdr:resumereset - rreset resume of EOF
-media-video/vdr:rotor - Enable support for plugin vdr-rotor for dish-positioner.
 media-video/vdr:ttxtsubs - support for media-plugins/vdr-ttxtsubs
-media-video/vdr:vasarajanauloja - replacement for the liemikuutio patch, adds some nice must haves features
-media-video/vdr:wareagleicon - Replace original icon set in menu
-media-video/vdr:yaepg - Enables support for the vdr-yaepg plugin
 media-video/vlc:X - Enable support for e.g. fullscreen mode via X and the X C-language binding. It does not build a graphical interface
 media-video/vlc:aom - Enable experimental support for AV1 codec
 media-video/vlc:archive - Enable support for libarchive stream extractor

@@ -2081,7 +2081,7 @@ app-misc/physlock 11-r1: lightweight Linux console locking tool
 app-misc/pip 1.2-r3: Wrapper around programs that don't support stdin/stdout
 app-misc/pipeworks 0.4-r1: A small utility that measures throughput between stdin and stdout
 app-misc/plod 1.9-r2: A tool to help administrators keep track of daily activities
-app-misc/prog-express 3.7.8-r1 3.8.3: A modern and intuitive control software for the Batronix USB programming devices
+app-misc/prog-express 3.7.8-r1 3.8.5: A modern and intuitive control software for the Batronix USB programming devices
 app-misc/ps3pf_utils 2.3: Utilities to set the ps3 specific features
 app-misc/pwsafe 0.2.0-r4: A Password Safe compatible command-line password manager
 app-misc/pysmssend 1.48-r2: Python Application for sending sms over multiple ISPs
@@ -13683,7 +13683,7 @@ media-plugins/vdr-osdpip 0.1.2-r1: VDR plugin: Show another channel in the OSD
 media-plugins/vdr-osdserver 0.1.2 0.1.3: VDR plugin: VDR OSD access for ext. programs through a TCP/IP socket connection
 media-plugins/vdr-osdteletext 0.9.4-r1 0.9.5 0.9.7: VDR Plugin: Osd-Teletext displays the teletext on the OSD
 media-plugins/vdr-peer 0.0.1: VDR Plugin: peer-to-peer between multiple VDRs
-media-plugins/vdr-permashift 1.0.1 1.0.1-r1: VDR Plugin: permanent timeshift by recording live TV on RAM
+media-plugins/vdr-permashift 1.0.1-r1: VDR Plugin: permanent timeshift by recording live TV on RAM
 media-plugins/vdr-pilot 0.0.9-r1: VDR plugin: Another way for viewing EPG and zap to channels
 media-plugins/vdr-pilotskin 0.0.2-r1: VDR plugin: fork of vdr-pilot - navigate through channels with skinnable design
 media-plugins/vdr-pin 0.1.14: VDR plugin: enable/disable parentalrating in records
@@ -14306,7 +14306,7 @@ media-video/v4l2loopback 0.12.0 0.12.1.1_pre 9999: v4l2 loopback device which ou
 media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 0.7.24 2.0.1: GNU VCDimager
 media-video/vcsi 7: Create thumbnail sheets from video files
-media-video/vdr 2.0.6-r1 2.2.0-r3 2.2.0-r4: Video Disk Recorder - turns a pc into a powerful set top box for DVB
+media-video/vdr 2.2.0-r4: Video Disk Recorder - turns a pc into a powerful set top box for DVB
 media-video/vdr2jpeg 0.1.9-r1 0.2.0: Addon needed for XXV - WWW Admin for the Video Disk Recorder
 media-video/vdrsync 0.1.3_pre050322-r1: converting vdr-recordings to mpeg2, dvd or other similar formats
 media-video/vdrtools-genindex 0.1.3-r1: VDR: genindex Script
@@ -14697,7 +14697,7 @@ net-firewall/arptables 0.0.4: set up, maintain, and inspect the tables of ARP ru
 net-firewall/conntrack-tools 1.4.4-r1 1.4.5: Connection tracking userspace tools
 net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.org
 net-firewall/ebtables 2.0.10.4 2.0.10.4-r1 2.0.10.4-r2: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
-net-firewall/ferm 2.4 2.4.1: Command line util for managing firewall rules
+net-firewall/ferm 2.4.1 2.5: Command line util for managing firewall rules
 net-firewall/firehol 3.1.6: iptables firewall generator
 net-firewall/firewalld 0.6.3 0.7.1: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwbuilder 5.3.7: A firewall GUI
@@ -15734,7 +15734,7 @@ net-wireless/hackrf-tools 2018.01.1-r1 9999: tools for communicating with HackRF
 net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 5.1 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
-net-wireless/hostapd 2.8 2.9 2.9-r1 9999: IEEE 802.11 wireless LAN Host AP daemon
+net-wireless/hostapd 2.9-r1 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.2 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 4.9 4.14 5.0.1 5.3: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
@@ -16302,7 +16302,7 @@ sci-geosciences/opencpn-plugin-weatherfax 1.3.20180316 9999: Weatherfax Plugin f
 sci-geosciences/opencpn-plugins-meta 4.2.0-r3: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0 0.96.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/qgis 3.4.12 9999: User friendly Geographic Information System
+sci-geosciences/qgis 3.4.12 3.10.0 9999: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.12.0 1.13.2 1.14.0: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
