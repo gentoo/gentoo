@@ -11,4 +11,4 @@ RDEPEND=acl? ( sys-apps/acl:0= ) audit? ( >=sys-process/audit-2.6:0= ) cracklib?
 SLOT=0
 SRC_URI=https://github.com/shadow-maint/shadow/releases/download/4.8/shadow-4.8.tar.xz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	756a09f72c4cdbb55f2694c95f1e0860	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=02543edb47b8adcb96177ad86823d40b
+_md5_=34e3262ddff1014cdd77ba950bf8e4f2

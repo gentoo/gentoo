@@ -14438,7 +14438,7 @@ net-analyzer/mrtg 2.17.7: A tool to monitor the traffic load on network-links
 net-analyzer/mrtg-ping-probe 2.2.0: Addon mrtg contrib for stats ping/loss packets
 net-analyzer/mtr 0.87 0.92-r1 0.93-r1 9999: My TraceRoute, an Excellent network diagnostic tool
 net-analyzer/multimon-ng 1.1.4 9999: a fork of multimon, decodes multiple digital transmission modes
-net-analyzer/munin 2.0.49: Munin Server Monitoring Tool
+net-analyzer/munin 2.0.49 2.0.52: Munin Server Monitoring Tool
 net-analyzer/munin-plugins-zfs 0.20170127: A Munin plugin for monitoring ZFS on Linux
 net-analyzer/nagios 4.3.4 4.4.5: The Nagios metapackage
 net-analyzer/nagios-check_dnssec 0.1_p28: check_dnssec is a set of Nagios plugins to monitor DNSSEC services
@@ -14677,7 +14677,7 @@ net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 4.2.2 4.2.3: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
-net-dns/openresolv 3.9.0: A framework for managing DNS information
+net-dns/openresolv 3.9.0 3.9.2: A framework for managing DNS information
 net-dns/pdns 4.1.13 4.2.0: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
 net-dns/pdns-recursor 4.1.14 4.2.0: The PowerDNS Recursor
