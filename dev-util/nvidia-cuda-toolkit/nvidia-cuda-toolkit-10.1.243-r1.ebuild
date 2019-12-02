@@ -27,8 +27,14 @@ RDEPEND="
 		sys-libs/libtermcap-compat
 		sys-libs/ncurses-compat:5[tinfo]
 	)
-	eclipse? ( >=virtual/jre-1.6 )
-	profiler? ( >=virtual/jre-1.6 )"
+	eclipse? (
+		dev-libs/openssl-compat:1.0.0
+		>=virtual/jre-1.6
+	)
+	profiler? (
+		dev-libs/openssl-compat:1.0.0
+		>=virtual/jre-1.6
+	)"
 
 S="${WORKDIR}"
 
