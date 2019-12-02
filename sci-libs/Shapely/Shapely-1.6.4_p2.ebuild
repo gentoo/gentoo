@@ -31,6 +31,9 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+
+PATCHES=( "${FILESDIR}/${P}-test_operations.patch" ) # bug 701624
+
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 python_prepare_all() {
