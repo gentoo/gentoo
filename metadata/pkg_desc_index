@@ -12674,7 +12674,7 @@ media-fonts/hack 3.003: A typeface designed for source code
 media-fonts/hermit 1.1 1.21: A monospace font designed to be clear, pragmatic and very readable
 media-fonts/heuristica 1.0.2: A font based on Adobe Utopia
 media-fonts/hunkyfonts 0.3.1: Free TrueType fonts based on Bitstream's Vera fonts with additional letters
-media-fonts/ibm-plex 2.0.0 3.0.0: The package of IBM's typeface
+media-fonts/ibm-plex 2.0.0 3.0.0 4.0.1: The package of IBM's typeface
 media-fonts/inconsolata 20140821: A sans-serif monotype font for code listings
 media-fonts/inconsolata-hellenic 1.19-r1: Hellenisation of the wonderful, monospace, open/free font Inconsolata
 media-fonts/inconsolata-lgc 1.3.0: Modified version of Inconsolata Hellenic adding the Cyrillic alphabet
