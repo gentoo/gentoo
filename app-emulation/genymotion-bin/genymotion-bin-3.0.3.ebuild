@@ -87,7 +87,7 @@ src_install() {
 	doins "${MY_PN}"/qt.conf
 	doins "${MY_PN}"/libicu*
 
-	doexe "${MY_PN}"/{libcom,librendering}.so*
+	doexe "${MY_PN}"/{libcom,librendering,libswscale,libavutil}.so*
 	# android library
 	doexe "${MY_PN}"/{libEGL_translator,libGLES_CM_translator,libGLES_V2_translator,libOpenglRender}.so*
 
