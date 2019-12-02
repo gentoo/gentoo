@@ -6818,6 +6818,7 @@ net-misc/vinagre:ssh - Enable ssh plugin using x11-libs/vte
 net-misc/vinagre:telepathy - Enable access to remote desktop via a net-libs/telepathy-glib client
 net-misc/vino:telepathy - Enable desktop sharing through a telepathy client
 net-misc/wget:cookie_check - Enable cookie checks via net-libs/libpsl
+net-misc/wget:metalink - Enable support for media-libs/libmetalink
 net-misc/wget:ntlm - Enable support for NTLM (Windows-based) authorization
 net-misc/wget:uuid - Generate UUIDs for the WARC (Web ARChive file format) using libuuid; otherwise use a simple RNG (random number generator)
 net-misc/wicd:ambiance - Install icons from Ubuntu's ambiance theme
