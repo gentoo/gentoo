@@ -22,7 +22,7 @@ DESCRIPTION="Unstructured log data exporter for Prometheus"
 HOMEPAGE="https://github.com/fstab/Grok_exporter"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
