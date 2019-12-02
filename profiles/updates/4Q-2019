@@ -1,2 +1,3 @@
 move dev-libs/rlottie media-libs/rlottie
 move dev-util/repo dev-vcs/repo
+move media-video/gnome-mpv media-video/celluloid
