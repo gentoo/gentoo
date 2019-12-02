@@ -10,7 +10,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Framework for managing bookmarks stored in XBEL format"
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="nls"
 
 BDEPEND="
