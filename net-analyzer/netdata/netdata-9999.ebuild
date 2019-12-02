@@ -123,6 +123,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	fcaps_pkg_postinst
+
 	if use xen ; then
 		fcaps 'cap_dac_override' 'usr/libexec/netdata/plugins.d/xenstat.plugin'
 	fi
