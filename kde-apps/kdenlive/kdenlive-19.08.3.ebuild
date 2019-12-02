@@ -15,7 +15,7 @@ HOMEPAGE="https://www.kdenlive.org/"
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="freesound gles2 semantic-desktop share v4l"
 
 BDEPEND="
@@ -65,6 +65,8 @@ RDEPEND="${DEPEND}
 	>=dev-qt/qtquickcontrols-${QTMIN}:5
 	virtual/ffmpeg[encode,sdl,X]
 "
+
+RESTRICT+=" test" # segfaults, bug 684132
 
 PATCHES=( "${FILESDIR}"/${P}-qt-5.14-{1,2}.patch )
 

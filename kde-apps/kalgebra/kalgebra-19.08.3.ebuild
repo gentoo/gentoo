@@ -13,7 +13,7 @@ DESCRIPTION="MathML-based 2D and 3D graph calculator by KDE"
 HOMEPAGE="https://kde.org/applications/education/kalgebra https://edu.kde.org/kalgebra/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="readline"
 
 DEPEND="

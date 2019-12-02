@@ -12,7 +12,7 @@ inherit ecm kde.org
 DESCRIPTION="Application to enable/disable qCDebug"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="

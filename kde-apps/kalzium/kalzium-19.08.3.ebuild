@@ -12,7 +12,7 @@ DESCRIPTION="Periodic table of the elements"
 HOMEPAGE="https://kde.org/applications/education/kalzium https://edu.kde.org/kalzium/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="editor solver"
 
 DEPEND="

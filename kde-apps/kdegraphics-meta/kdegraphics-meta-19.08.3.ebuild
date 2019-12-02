@@ -8,7 +8,7 @@ HOMEPAGE="https://kde.org/applications/graphics/"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="scanner"
 
 RDEPEND="

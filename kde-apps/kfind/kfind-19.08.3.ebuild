@@ -12,7 +12,7 @@ DESCRIPTION="File finder utility based on KDE Frameworks"
 HOMEPAGE="https://kde.org/applications/utilities/kfind/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 
 RDEPEND="
