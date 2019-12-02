@@ -15,6 +15,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-cpp/catch:1 )"
 RDEPEND="x11-misc/dmenu"
