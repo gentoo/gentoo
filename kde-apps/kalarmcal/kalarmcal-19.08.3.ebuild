@@ -12,7 +12,7 @@ inherit ecm kde.org
 DESCRIPTION="Client library to access and handling of KAlarm calendar data"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 
 COMMON_DEPEND="
