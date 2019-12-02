@@ -9,7 +9,7 @@ inherit ecm kde.org
 DESCRIPTION="KWallet extension for signond"
 HOMEPAGE="https://01.org/gsso/"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 LICENSE="GPL-2+"
 
 DEPEND="
