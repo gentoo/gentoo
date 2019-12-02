@@ -15,7 +15,7 @@ HOMEPAGE="https://kde.org/applications/games/knights/"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="speech"
 
 DEPEND="
