@@ -115,7 +115,7 @@ HOMEPAGE="https://firecracker-microvm.github.io https://github.com/firecracker-m
 SRC_URI="https://github.com/firecracker-microvm/firecracker/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
-LICENSE="|| ( Apache-2.0 MIT ) MPL-2.0"
+LICENSE="|| ( Apache-2.0 MIT Apache-2.0-with-LLVM-exceptions ) MPL-2.0"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 
