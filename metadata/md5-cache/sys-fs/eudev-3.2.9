@@ -4,11 +4,11 @@ DESCRIPTION=Linux dynamic and persistent device naming support (aka userspace de
 EAPI=6
 HOMEPAGE=https://github.com/gentoo/eudev
 IUSE=+hwdb +kmod introspection rule-generator selinux static-libs test kernel_linux abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_riscv_lp64d abi_riscv_lp64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~riscv sparc x86
+KEYWORDS=~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86
 LICENSE=LGPL-2.1 MIT GPL-2
 PDEPEND=>=sys-fs/udev-init-scripts-26 hwdb? ( >=sys-apps/hwids-20140304[udev] )
 RDEPEND=>=sys-apps/util-linux-2.20 introspection? ( >=dev-libs/gobject-introspection-1.38 ) kmod? ( >=sys-apps/kmod-16 ) selinux? ( >=sys-libs/libselinux-2.1.9 ) !<sys-libs/glibc-2.11 !sys-apps/gentoo-systemd-integration !sys-apps/systemd acct-group/input acct-group/kvm acct-group/render !<sys-fs/lvm2-2.02.103 !<sec-policy/selinux-base-2.20120725-r10 !sys-fs/udev !sys-apps/systemd
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~blueness/eudev/eudev-3.2.9.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=b50ec8181a0f22d1c503321d1bb86ac8
+_md5_=11529103cd7cc4de87b525a90277f506

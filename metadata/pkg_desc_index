@@ -13906,7 +13906,7 @@ media-sound/jack-audio-connection-kit 0.125.0: A low-latency audio server
 media-sound/jack-keyboard 2.5: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.8_rc1: JACK Rack is an effects rack for the JACK low latency audio API
 media-sound/jack-smf-utils 1.0-r1: Utilities for MIDI streams and files using Jack MIDI
-media-sound/jack2 1.9.12-r1 1.9.13 1.9.13-r1 9999: Jackdmp jack implemention for multi-processor machine
+media-sound/jack2 1.9.13-r1 9999: Jackdmp jack implemention for multi-processor machine
 media-sound/jack_capture 0.9.73 9999: JACK Recording utility
 media-sound/jackbeat 0.7.6: An audio sequencer for Linux
 media-sound/jalv 1.6.0-r2: Simple but fully featured LV2 host for Jack
