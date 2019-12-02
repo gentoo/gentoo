@@ -11,7 +11,7 @@ inherit ecm kde.org
 DESCRIPTION="KDE library to compare files and strings"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

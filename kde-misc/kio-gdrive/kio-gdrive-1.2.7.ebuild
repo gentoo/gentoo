@@ -13,7 +13,7 @@ HOMEPAGE="https://phabricator.kde.org/project/profile/72/"
 
 if [[ ${KDE_BUILD_TYPE} != live ]] ; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 IUSE="+kaccounts"

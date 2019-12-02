@@ -12,7 +12,7 @@ DESCRIPTION="Language learning application that helps improving pronunciation sk
 HOMEPAGE="https://edu.kde.org/applications/language/artikulate"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+gstreamer qtmedia"
 
 REQUIRED_USE="|| ( gstreamer qtmedia )"

@@ -15,7 +15,7 @@ DESCRIPTION="Organizational assistant, providing calendars and other similar fun
 HOMEPAGE="https://kde.org/applications/office/korganizer/"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="X"
 
 BDEPEND="

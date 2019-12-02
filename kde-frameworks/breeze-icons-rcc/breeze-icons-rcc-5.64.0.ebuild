@@ -9,7 +9,7 @@ inherit cmake-utils kde.org
 
 DESCRIPTION="Breeze SVG icon theme binary resource"
 LICENSE="LGPL-3"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
 
 BDEPEND="

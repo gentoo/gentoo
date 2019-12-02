@@ -14,7 +14,7 @@ HOMEPAGE="https://userbase.kde.org/KIPI https://cgit.kde.org/kipi-plugins.git/"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="flashexport mediawiki +remotestorage vkontakte"
 
 BDEPEND="sys-devel/gettext"

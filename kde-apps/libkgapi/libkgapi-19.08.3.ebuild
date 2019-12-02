@@ -14,7 +14,7 @@ HOMEPAGE="https://cgit.kde.org/libkgapi.git"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="nls"
 
 BDEPEND="
