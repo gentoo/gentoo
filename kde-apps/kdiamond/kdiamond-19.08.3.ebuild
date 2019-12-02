@@ -14,7 +14,7 @@ HOMEPAGE="https://kde.org/applications/games/kdiamond/
 https://games.kde.org/game.php?game=kdiamond"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="
