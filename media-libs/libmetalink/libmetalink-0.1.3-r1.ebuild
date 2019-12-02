@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-util/cunit-2.1_p2[${MULTILIB_USEDEP}] )"
 
 REQUIRED_USE="^^ ( expat xml )"
+RESTRICT="!test? ( test )"
 
 multilib_src_configure() {
 	local myeconfargs=(
