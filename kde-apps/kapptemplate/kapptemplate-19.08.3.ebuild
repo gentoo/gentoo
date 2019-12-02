@@ -13,7 +13,7 @@ DESCRIPTION="Shell script to create the necessary framework to develop KDE appli
 HOMEPAGE="https://kde.org/applications/development/kapptemplate"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="
