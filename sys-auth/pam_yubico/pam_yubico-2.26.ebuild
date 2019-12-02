@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit pam
+
 DESCRIPTION="Library for authenticating against PAM with a Yubikey"
 HOMEPAGE="https://github.com/Yubico/yubico-pam"
 SRC_URI="http://opensource.yubico.com/yubico-pam/releases/${P}.tar.gz"
@@ -26,7 +28,7 @@ src_configure() {
 	#challenge response could be optional but that seems horribly dangerous to me
 	local myeconfargs=(
 		--with-cr
-		--with-pam-dir=/$(get_libdir)/security
+		--with-pam-dir="$(getpam_mod_dir)"
 		$(use_with ldap)
 	)
 	econf "${myeconfargs[@]}"
