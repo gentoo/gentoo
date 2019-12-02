@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python2_7 python{3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_5,3_6,3_7} )
 MY_PV=${PV/_rc/-rc}
 MY_P=${PN}-${MY_PV}
 
@@ -93,8 +93,6 @@ RDEPEND="
 		>=sci-libs/keras-applications-1.0.8[${PYTHON_USEDEP}]
 		>=sci-libs/keras-preprocessing-1.0.5[${PYTHON_USEDEP}]
 		>=sci-visualization/tensorboard-1.15.0[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'python2*')
-		$(python_gen_cond_dep 'dev-python/functools32[${PYTHON_USEDEP}]' 'python2*')
 	)"
 DEPEND="${RDEPEND}
 	dev-python/mock"
