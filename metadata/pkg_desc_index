@@ -5184,7 +5184,7 @@ dev-libs/wayland 1.17.0 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.18 9999: Wayland protocol files
 dev-libs/weston 3.0.0 7.0.0 9999: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
-dev-libs/xapian 1.2.24 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12 1.4.13: Xapian Probabilistic Information Retrieval library
+dev-libs/xapian 1.2.24 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12 1.4.13 1.4.14: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12 1.4.13: SWIG and JNI bindings for Xapian
 dev-libs/xbyak 5.73: JIT assembler for x86(IA-32)/x64(AMD64, x86-64)
 dev-libs/xerces-c 3.2.2-r1 9999: A validating XML parser written in a portable subset of C++
@@ -14847,7 +14847,7 @@ net-irc/irssi-xmpp 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75-r1: Generates HTML IRC stats based on irssi logs
 net-irc/konversation 1.7.5-r1: User friendly IRC Client
 net-irc/kvirc 5.2_pre20190628041642 9999: Advanced IRC Client
-net-irc/limnoria 20150523 20150829 20171025 99999999: Python based extensible IRC infobot and channel bot
+net-irc/limnoria 20191123 99999999: Python based extensible IRC infobot and channel bot
 net-irc/muh 2.2a-r1: Persistent IRC bouncer
 net-irc/nebula 0.5: An IRC client for X11 and Motif
 net-irc/ngircd 23-r1 24: An IRC server written from scratch
