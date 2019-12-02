@@ -12381,7 +12381,7 @@ kde-misc/rsibreak 0.12.11: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1-r1: KDE image scanning application
 kde-misc/tellico 3.2.1 3.2.2: Collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
-kde-misc/zanshin 0.5.0-r1: Getting things done application by KDE
+kde-misc/zanshin 0.5.0-r1 0.5.71: Getting things done application by KDE
 kde-plasma/bluedevil 5.16.5 5.17.3: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.16.5 5.17.3: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.16.5 5.17.3: Breeze theme for GRUB
