@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit autotools python-r1
@@ -14,7 +14,7 @@ SRC_URI="https://dbus.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm arm64 hppa ~ia64 ~ppc ~ppc64 ~s390 sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 IUSE="doc examples test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
