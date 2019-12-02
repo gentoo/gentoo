@@ -10,7 +10,7 @@ inherit ecm kde.org
 DESCRIPTION="Thumbnail generator for PO files"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
