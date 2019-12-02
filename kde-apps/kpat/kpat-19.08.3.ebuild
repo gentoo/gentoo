@@ -14,7 +14,7 @@ DESCRIPTION="KDE patience game"
 HOMEPAGE="https://games.kde.org/game.php?game=kpat"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
