@@ -4753,7 +4753,7 @@ dev-libs/cppcodec 0.2 9999: C++11 library to encode/decode base64, base64url, ba
 dev-libs/crc32c 1.0.6: CRC32C implementation with support for CPU-specific acceleration instructions
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
 dev-libs/crypto++ 5.6.5-r1 7.0.0-r3 8.2.0 8.2.0-r2: C++ class library of cryptographic schemes
-dev-libs/cudnn 6.0 7.0.5-r1 7.1.4 7.4.1.5 7.4.2.24 7.5.0.56 7.6.0.64 7.6.1.34 7.6.2.24: NVIDIA Accelerated Deep Learning on GPU library
+dev-libs/cudnn 6.0 7.0.5-r1 7.1.4 7.4.1.5 7.4.2.24 7.5.0.56 7.6.0.64 7.6.1.34 7.6.2.24 7.6.5.32: NVIDIA Accelerated Deep Learning on GPU library
 dev-libs/cvector 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p13: REINER SCT cyberJack USB chipcard reader user space driver
@@ -7384,7 +7384,7 @@ dev-python/WSME 0.8.0 0.9.1 0.9.2 0.9.3: Simplify the writing of REST APIs, and 
 dev-python/XenAPI 1.2: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/YURL 0.13: Yurl is the replacement of built in python urlparse module
 dev-python/aadict 0.2.3: An auto-attribute dict (and a couple of other useful dict functions)
-dev-python/absl-py 0.7.1: Abseil Python Common Libraries
+dev-python/absl-py 0.7.1 0.8.1: Abseil Python Common Libraries
 dev-python/abstract_rendering 0.5.1: Rendering as a binning process
 dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/aiodns 1.1.1 1.2.0 2.0.0-r1: Simple DNS resolver for asyncio
@@ -7969,7 +7969,7 @@ dev-python/ipaddress 1.0.14 1.0.18 1.0.19 1.0.22 1.0.23: IPv4/IPv6 manipulation 
 dev-python/ipcalc 1.1.3 1.99.0: IP subnet calculator
 dev-python/ipdb 0.10.3: IPython-enabled pdb
 dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when tests fail
-dev-python/ipy 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
+dev-python/ipy 0.83 1.00: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 4.6.1-r2 4.8.2 5.1.0: IPython Kernel for Jupyter
 dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter Notebook files
 dev-python/ipyparallel 6.0.2-r1 6.2.3: Interactive Parallel Computing with IPython
@@ -8188,7 +8188,7 @@ dev-python/netaddr 0.7.12 0.7.13 0.7.14 0.7.15 0.7.17 0.7.18 0.7.19: Network add
 dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.6 0.10.7 0.10.9: Portable network interface information
 dev-python/netmiko 1.4.2 2.1.1: Multi-vendor library to simplify Paramiko SSH connections to network devices
-dev-python/networkx 1.11 1.11-r1 2.1 2.2: Python tools to manipulate graphs and complex networks
+dev-python/networkx 1.11 1.11-r1 2.1 2.2 2.4: Python tools to manipulate graphs and complex networks
 dev-python/neutron-lib 1.18.0 1.25.0 1.29.1: Neutron shared routines and utilities.
 dev-python/nevow 0.11.1 0.14.3: A web templating framework that provides LivePage, an automatic AJAX toolkit
 dev-python/newt_syrup 0.1.2-r2: Python framework for creating text-based applications
@@ -10765,7 +10765,7 @@ dev-util/ninja 1.8.2 1.8.2-r1 1.8.2-r2 1.9.0 9999: A small build system similar 
 dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
 dev-util/nvidia-cuda-sdk 6.5.19 7.5.18 8.0.44-r1 8.0.61 9.0.176 9.1.85 9.2.88 10.1.243: NVIDIA CUDA Software Development Kit
-dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61 9.0.176 9.1.85 9.2.88 10.0.130 10.1.105-r1 10.1.168 10.1.243: NVIDIA CUDA Toolkit (compiler and friends)
+dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61 9.0.176 9.1.85 9.2.88 10.0.130 10.1.105-r1 10.1.168 10.1.243-r1 10.2.89: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.51: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/obs-service-cpanspec 20130318: Open Build Service client module - cpanspec service
 dev-util/obs-service-download_files 20130716: Open Build Service client module - download_files service
@@ -16548,8 +16548,8 @@ sci-libs/szip 2.1-r2: Extended-Rice lossless compression algorithm implementatio
 sci-libs/ta-lib 0.4.0: Technical Analysis Library for analyzing financial markets trends
 sci-libs/tamu_anova 0.2-r1: ANOVA Extensions to the GNU Scientific Library
 sci-libs/taucs 2.2: C library of sparse linear solvers
-sci-libs/tensorflow 1.13.1 1.14.0-r1 1.14.0-r2 1.15.0_rc0 2.0.0: Computation framework using data flow graphs for scalable machine learning
-sci-libs/tensorflow-estimator 1.13.0 1.14.0 1.15.0 2.0.0: A high-level TensorFlow API that greatly simplifies machine learning programming
+sci-libs/tensorflow 1.14.0-r2 1.15.0_rc0 2.0.0 2.1.0_rc0: Computation framework using data flow graphs for scalable machine learning
+sci-libs/tensorflow-estimator 1.14.0 1.15.0 2.0.0: A high-level TensorFlow API that greatly simplifies machine learning programming
 sci-libs/tnt 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
 sci-libs/trilinos 12.14.1: Scientific library collection for large scale problems
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
@@ -16725,7 +16725,7 @@ sci-visualization/pyxplot 0.9.2-r1: Gnuplot like graphing program publication-qu
 sci-visualization/quickplot 0.10.6 0.10.8 1.0.1_rc: A fast interactive 2D plotter
 sci-visualization/spectromatic 1.0-r3: Generates time-frequency analysis images from wav files
 sci-visualization/spyview 2018.12.24 9999: 2D and 3D data visualization and analysis program
-sci-visualization/tensorboard 1.13.1 1.14.0 1.15.0 2.0.0: TensorFlow's Visualization Toolkit
+sci-visualization/tensorboard 1.14.0 1.15.0 2.0.0: TensorFlow's Visualization Toolkit
 sci-visualization/veusz 3.0 3.0.1 3.1: Qt scientific plotting package with good Postscript output
 sci-visualization/visit 2.12.3-r1: A software that delivers parallel interactive visualizations
 sci-visualization/xd3d 8.3.1-r1: Scientific visualization tool
@@ -17018,7 +17018,7 @@ sys-apps/busybox 1.30.1 1.31.1 9999: Utilities for rescue and embedded systems
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/ccs-tools 1.8.3_p20130214: TOMOYO Linux tools
-sys-apps/checkpolicy 2.8 2.9 9999: SELinux policy compiler
+sys-apps/checkpolicy 2.8 2.9 3.0_rc2 9999: SELinux policy compiler
 sys-apps/chname 1.1: Run a command with a new system hostname
 sys-apps/cinit 0.2.1: a fast, small and simple init with support for profiles
 sys-apps/ckbcomp 1.164: Compile an XKB keymap for loadkeys
@@ -17158,7 +17158,7 @@ sys-apps/man-pages 5.03 5.04: A somewhat comprehensive collection of Linux man p
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
 sys-apps/mawk 1.3.4_p20161120 1.3.4_p20171017-r1 1.3.4_p20190203: an (often faster than gawk) awk-interpreter
-sys-apps/mcstrans 2.8 2.9 9999: SELinux context translation to human readable names
+sys-apps/mcstrans 2.8 2.9 3.0_rc2 9999: SELinux context translation to human readable names
 sys-apps/memtest86 4.3.7-r2: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 5.01-r4: Memory tester based on memtest86
 sys-apps/memtester 4.3.0: userspace utility for testing the memory subsystem for faults
@@ -17201,7 +17201,7 @@ sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
 sys-apps/pkgcore 0.10.7 0.10.8 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
-sys-apps/policycoreutils 2.8-r1 2.9 9999: SELinux core utilities
+sys-apps/policycoreutils 2.8-r1 2.9 3.0_rc2 9999: SELinux core utilities
 sys-apps/portage 2.3.69 2.3.76-r1 2.3.79 2.3.80-r1 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.6: Tool to query and modify process behavior
@@ -17218,7 +17218,7 @@ sys-apps/rename 1.3-r2: Easily rename files
 sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.57-r1: Script to rescan the SCSI bus without rebooting
 sys-apps/restartd 0.2.2-r1: A daemon for checking your running and not running processes
-sys-apps/restorecond 2.8 2.9 9999: Daemon to watch for creation and set default SELinux fcontexts
+sys-apps/restorecond 2.8 2.9 3.0_rc2 9999: Daemon to watch for creation and set default SELinux fcontexts
 sys-apps/ripgrep 11.0.1 11.0.2: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rkflashtool 6.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 5-r2 6.6-r1 6.7-r1 6.7-r2 6.8: Daemon to use hardware random number generators
@@ -17233,10 +17233,10 @@ sys-apps/s6-rc 0.3.0.0 0.4.0.0 0.4.0.1 0.4.1.0 0.5.0.0 0.5.1.1: Service manager 
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
 sys-apps/sandbox 2.12 2.13 2.14 2.15 2.17 2.18: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
-sys-apps/secilc 2.8 2.9 9999: SELinux Common Intermediate Language (CIL) Compiler
+sys-apps/secilc 2.8 2.9 3.0_rc2 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.5 4.7: Super-useful stream editor
-sys-apps/selinux-python 2.8-r1 2.9 9999: SELinux core utilities
-sys-apps/semodule-utils 2.8 2.9 9999: SELinux policy module utilities
+sys-apps/selinux-python 2.8-r1 2.9 3.0_rc2 9999: SELinux core utilities
+sys-apps/semodule-utils 2.8 2.9 3.0_rc2 9999: SELinux policy module utilities
 sys-apps/sensei-raw-ctl 0.0_pre20180729: SteelSeries Sensei Raw configuration tool
 sys-apps/servicelog 1.1.14: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
@@ -17840,9 +17840,9 @@ sys-libs/libosinfo 1.2.0 1.3.0 1.4.0: GObject library for managing information a
 sys-libs/libraw1394 2.1.0-r1 2.1.1 2.1.2: library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 2.0.2: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
 sys-libs/libseccomp 2.4.0 2.4.1 2.4.2-r1: high level interface to Linux seccomp filter
-sys-libs/libselinux 2.8-r1 2.9 2.9-r1 9999: SELinux userland library
-sys-libs/libsemanage 2.8 2.9 9999: SELinux kernel and policy management library
-sys-libs/libsepol 2.8 2.9 9999: SELinux binary policy representation library
+sys-libs/libselinux 2.8-r1 2.9 2.9-r1 3.0_rc2 9999: SELinux userland library
+sys-libs/libsemanage 2.8 2.9 3.0_rc2 9999: SELinux kernel and policy management library
+sys-libs/libsepol 2.8 2.9 3.0_rc2 9999: SELinux binary policy representation library
 sys-libs/libservicelog 1.1.18: Provides a library for logging service-related events
 sys-libs/libsmbios 2.4.2 2.4.2-r1: Provide access to (SM)BIOS information
 sys-libs/libspe2 2.2.80_p95-r1 2.3.0_p135: A wrapper library to adapt the JSRE SPU usage model to SPUFS

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=>=sys-libs/libsepol-3.0_rc2 >=sys-libs/libsemanage-3.0_rc2 sys-devel/flex sys-devel/bison
+DESCRIPTION=SELinux policy compiler
+EAPI=6
+HOMEPAGE=http://userspace.selinuxproject.org
+IUSE=debug
+KEYWORDS=~amd64 ~arm ~arm64 ~mips ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/libsemanage-3.0_rc2
+SLOT=0
+SRC_URI=https://github.com/SELinuxProject/selinux/releases/download/20191122/checkpolicy-3.0-rc2.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=93793e238794adf4ab78de87f2a5a0a2

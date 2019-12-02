@@ -5,9 +5,9 @@ HOMEPAGE=https://developer.nvidia.com/cuda-zone
 IUSE=debugger doc eclipse profiler
 KEYWORDS=-* ~amd64 ~amd64-linux
 LICENSE=NVIDIA-CUDA
-RDEPEND=<sys-devel/gcc-9[cxx] !prefix? ( >=x11-drivers/nvidia-drivers-418.87.00[X,uvm] ) debugger? ( dev-libs/openssl-compat:1.0.0 sys-libs/libtermcap-compat sys-libs/ncurses-compat:5[tinfo] ) eclipse? ( >=virtual/jre-1.6 ) profiler? ( >=virtual/jre-1.6 )
+RDEPEND=<sys-devel/gcc-9[cxx] !prefix? ( >=x11-drivers/nvidia-drivers-418.87.00[X,uvm] ) debugger? ( dev-libs/openssl-compat:1.0.0 sys-libs/libtermcap-compat sys-libs/ncurses-compat:5[tinfo] ) eclipse? ( dev-libs/openssl-compat:1.0.0 >=virtual/jre-1.6 ) profiler? ( dev-libs/openssl-compat:1.0.0 >=virtual/jre-1.6 )
 RESTRICT=bindist mirror
 SLOT=0/10.1.243
 SRC_URI=https://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
 _eclasses_=check-reqs	5e40a693d9c828e8f3655184116e8b73	cuda	bb861e5221b7272ac90c2f12791c1e66	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
-_md5_=5249d60c87486e0213c5cea8a2575567
+_md5_=a4ddec72a5e4468e914f1d6d3271be56
