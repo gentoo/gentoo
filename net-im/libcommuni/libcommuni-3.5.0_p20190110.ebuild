@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples qml test +uchardet"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-qt/qtcore:5
