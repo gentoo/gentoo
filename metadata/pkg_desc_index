@@ -12547,7 +12547,7 @@ mail-mta/msmtp 1.8.3 1.8.5-r1 1.8.6: An SMTP client and SMTP plugin for mail use
 mail-mta/netqmail 1.06-r4 1.06-r10 1.06-r11: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.3_p1-r1 6.4.0_p1: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 2.10.9 3.4.5-r1 3.4.6 3.4.7 3.5_pre20191019: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 2.10.9 3.4.5-r1 3.4.6 3.4.7 3.4.8 3.5_pre20191109: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge-bin 1.1.6 1.2.2 1.2.3: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.14.9 8.15.2-r2: Widely-used Mail Transport Agent (MTA)
@@ -13919,7 +13919,7 @@ media-sound/kmetronome 1.0.0 1.0.1: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.100-r1 3.100-r2: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3: LASH Audio Session Handler
 media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
-media-sound/lilypond 2.18.2-r3 2.19.80-r1 2.19.83 9999: GNU Music Typesetter
+media-sound/lilypond 2.18.2-r3 2.19.83 9999: GNU Music Typesetter
 media-sound/lingot 1.0.1: Accurate, easy to use, and highly configurable musical instrument tuner
 media-sound/linuxsampler 2.1.1: Software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
@@ -18151,7 +18151,7 @@ virtual/python-unittest-mock 1: A virtual for unittest.mock with mock fallback
 virtual/qmail 1.03: Virtual for qmail
 virtual/resolvconf 1: Virtual to select between different resolvconf providers
 virtual/ruby-ssl 11: Virtual ebuild for the Ruby OpenSSL bindings
-virtual/rubygems 14 15: Virtual ebuild for rubygems
+virtual/rubygems 15: Virtual ebuild for rubygems
 virtual/rust 1.34.2 1.35.0 1.36.0 1.37.0 1.38.0 1.39.0: Virtual for Rust language compiler
 virtual/service-manager 0 1: Virtual for various service managers
 virtual/shadow 0: Virtual for user account management utilities
