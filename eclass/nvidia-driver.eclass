@@ -175,12 +175,12 @@ nvidia-driver_get_mask() {
 
 # @FUNCTION: nvidia-driver_check_gpu
 # @DESCRIPTION:
-# Prints out a warning if the driver does not work w/ the installed video nvidia_gpu
+# Prints out a warning if the driver does not work with the installed GPU
 nvidia-driver_check_gpu() {
-	local NVIDIA_MASK="$(nvidia-driver_get_mask)"
+	local nvidia_mask="$(nvidia-driver_get_mask)"
 
-	if [ -n "${NVIDIA_MASK}" ]; then
-		if ! ver_test "${NVIDIA_MASK##*-}" -eq "${PV}" ; then
+	if [ -n "${nvidia_mask}" ]; then
+		if ver_test "${nvidia_mask##*-}" -lt "${PV}" ; then
 			ewarn "***** WARNING *****"
 			ewarn
 			ewarn "You are currently installing a version of nvidia-drivers that is"
@@ -190,9 +190,9 @@ nvidia-driver_check_gpu() {
 			ewarn
 			ewarn "Add the following mask entry to the local package.mask file:"
 			if [ -d "${ROOT}/etc/portage/package.mask" ]; then
-				ewarn "echo \"${NVIDIA_MASK}\" > /etc/portage/package.mask/nvidia-drivers"
+				ewarn "echo \"${nvidia_mask}\" > /etc/portage/package.mask/nvidia-drivers"
 			else
-				ewarn "echo \"${NVIDIA_MASK}\" >> /etc/portage/package.mask"
+				ewarn "echo \"${nvidia_mask}\" >> /etc/portage/package.mask"
 			fi
 			ewarn
 			ewarn "Failure to perform the steps above could result in a non-working"
