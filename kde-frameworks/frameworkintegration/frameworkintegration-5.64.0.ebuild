@@ -11,7 +11,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Framework for integrating Qt applications with KDE Plasma workspaces"
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="appstream X"
 
 # drop qtwidgets subslot operator when QT_MINIMAL >= 5.14.0
