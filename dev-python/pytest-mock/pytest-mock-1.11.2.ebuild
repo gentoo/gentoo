@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy pypy3 )
 
 inherit distutils-r1
@@ -29,6 +30,8 @@ src_prepare() {
 	sed -e 's|^\(    def \)\(test_failure_message_with_no_name(\)|\1_\2|' \
 		-e 's|^\(    def \)\(test_failure_message_with_name(\)|\1_\2|' \
 		-e 's|^\(def \)\(test_detailed_introspection(\)|\1_\2|' \
+		-e 's|^\(def \)\(test_assert_called_args_with_introspection(\)|\1_\2|' \
+		-e 's|^\(def \)\(test_assert_called_kwargs_with_introspection(\)|\1_\2|' \
 		-i tests/test_pytest_mock.py || die
 	distutils-r1_src_prepare
 }
