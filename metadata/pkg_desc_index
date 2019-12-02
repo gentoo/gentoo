@@ -18492,7 +18492,7 @@ x11-drivers/xf86-input-mtrack 0.5.0: Xorg Driver for Multitouch Trackpads
 x11-drivers/xf86-input-synaptics 1.9.0 1.9.1: Driver for Synaptics touchpads
 x11-drivers/xf86-input-vmmouse 13.1.0-r1 9999: VMWare mouse input driver
 x11-drivers/xf86-input-void 1.4.1: null input driver
-x11-drivers/xf86-input-wacom 0.36.0-r2: Driver for Wacom tablets and drawing devices
+x11-drivers/xf86-input-wacom 0.36.0-r2 0.38.0: Driver for Wacom tablets and drawing devices
 x11-drivers/xf86-video-amdgpu 19.1.0 9999: Accelerated Open Source driver for AMDGPU cards
 x11-drivers/xf86-video-ast 1.1.5: X.Org driver for ASpeedTech cards
 x11-drivers/xf86-video-ati 19.1.0 9999: ATI video driver
