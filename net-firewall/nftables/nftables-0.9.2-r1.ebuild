@@ -125,7 +125,7 @@ pkg_postinst() {
 	# In order for the nftables-restore systemd service to start
 	# the save_file must exist.
 	if [[ ! -f "${save_file}" ]]; then
-		touch "${save_file}"
+		( umask 177; touch "${save_file}" )
 	elif [[ $(( "$( stat --printf '%05a' "${save_file}" )" & 07177 )) -ne 0 ]]; then
 		ewarn "Your system has dangerous permissions for ${save_file}"
 		ewarn "It is probably affected by bug #691326."
