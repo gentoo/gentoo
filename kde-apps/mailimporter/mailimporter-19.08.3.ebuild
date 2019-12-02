@@ -13,7 +13,7 @@ inherit ecm kde.org
 DESCRIPTION="Library to import mail from various sources"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
