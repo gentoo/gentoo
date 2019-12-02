@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 inherit python-single-r1
 
 DESCRIPTION="General purpose formula parser & interpreter"
@@ -49,5 +49,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -type f -delete || die
 }
