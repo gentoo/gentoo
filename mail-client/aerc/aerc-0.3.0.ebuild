@@ -3,8 +3,12 @@
 
 EAPI=7
 
+inherit go-module
+
+DESCRIPTION="Email client for your terminal"
+HOMEPAGE="https://aerc-mail.org"
+
 # go list -m all | magic
-EGO_PN="git.sr.ht/~sircmpwn/aerc"
 EGO_VENDOR=(
 	"git.sr.ht/~sircmpwn/getopt 292febf82fd0 git.sr.ht/~sircmpwn/getopt"
 	"git.sr.ht/~sircmpwn/pty 3a43678975a9 git.sr.ht/~sircmpwn/pty"
@@ -44,38 +48,22 @@ EGO_VENDOR=(
 	"google.golang.org/appengine v1.6.1 github.com/golang/appengine"
 )
 
-inherit golang-vcs-snapshot
-
-DESCRIPTION="Email client for your terminal"
-HOMEPAGE="https://aerc-mail.org"
 SRC_URI="https://git.sr.ht/~sircmpwn/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	${EGO_VENDOR_URI}"
+	$(go-module_vendor_uris)"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE=""
 
 RDEPEND="
 	net-proxy/dante
 	www-client/w3m
 "
 
-BDEPEND="
-	>=app-text/scdoc-1.9.7
-	>=dev-lang/go-1.12
-"
-
-src_prepare() {
-	# needed to workaround go's assumptions about modules, GOPATH and dir sctructure
-	mv -v "src/${EGO_PN}"/* ./ || die
-	rm -rv src || die
-
-	eapply_user
-}
+BDEPEND=">=app-text/scdoc-1.9.7"
 
 src_compile() {
-	GOFLAGS="-mod=vendor -v -work -x" emake PREFIX="${EPREFIX}/usr"
+	emake PREFIX="${EPREFIX}/usr"
 }
 
 src_install() {
