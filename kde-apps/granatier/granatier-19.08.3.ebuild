@@ -13,7 +13,7 @@ DESCRIPTION="KDE Bomberman game"
 HOMEPAGE="https://kde.org/applications/games/granatier/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
