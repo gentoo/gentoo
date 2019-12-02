@@ -12,7 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Framework providing transparent file and data management"
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="acl +handbook kerberos +kwallet X"
 
 RDEPEND="
