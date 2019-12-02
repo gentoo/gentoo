@@ -16,6 +16,7 @@ IUSE="+cxx dane doc examples guile +idn nls +openssl pkcs11 seccomp sslv2 sslv3 
 
 REQUIRED_USE="
 	test-full? ( cxx dane doc examples guile idn nls openssl pkcs11 seccomp tls-heartbeat tools )"
+RESTRICT="!test? ( test )"
 
 # NOTICE: sys-devel/autogen is required at runtime as we
 # use system libopts
