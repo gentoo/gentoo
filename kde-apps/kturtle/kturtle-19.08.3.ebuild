@@ -12,7 +12,7 @@ DESCRIPTION="Educational programming environment using the Logo programming lang
 HOMEPAGE="https://kde.org/applications/education/kturtle https://edu.kde.org/kturtle/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="
