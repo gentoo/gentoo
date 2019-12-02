@@ -1,7 +1,7 @@
 # Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit font
 
@@ -35,8 +35,7 @@ if use otf; then
 		"${S}"/IBM-Plex-Sans-Hebrew/fonts/complete/otf
 		"${S}"/IBM-Plex-Sans/fonts/complete/otf
 		"${S}"/IBM-Plex-Serif/fonts/complete/otf
-		"${S}"/IBM-Plex-Sans-Thai-Looped/fonts/complete/otf
-		"${S}"/IBM-Plex-Sans-Variable/fonts/complete/otf"
+		"${S}"/IBM-Plex-Sans-Thai-Looped/fonts/complete/otf"
 fi
 
 if use ttf; then
