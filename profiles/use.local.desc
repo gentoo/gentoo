@@ -3426,8 +3426,8 @@ games-simulation/flightgear:gdal - Enable alternative terrain engine based on pa
 games-simulation/flightgear:qt5 - Build Qt5 launcher application
 games-simulation/flightgear:udev - Enable event-based Input devices through virtual/udev
 games-simulation/flightgear:utils - Build various utilities (fgpanel, fgviewer among others)
-games-simulation/openrct2:multiplayer - Enable multiplayer functionality
-games-simulation/openrct2:twitch - Enable Twitch support
+games-simulation/openrct2:lightfx - Enables LightFX for better lightning effects.
+games-simulation/openrct2:twitch - Enables streaming of ingame content to Twitch.
 games-simulation/openttd:aplaymidi - Enables midi music in game, using aplaymidi as an external player
 games-simulation/openttd:dedicated - Build only the openttd server, and not the client.
 games-simulation/openttd:lzo - Enables LZO compression for savegames. This is only needed to load extremely old savegames. (versions before 0.2)
