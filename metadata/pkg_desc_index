@@ -10725,11 +10725,11 @@ dev-util/jfrog-cli 1.30.4: Command line utility foroperations on container image
 dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.0-r1: Graphical debugger interface
-dev-util/kdevelop 5.4.2 5.4.4: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.4.2 5.4.4 5.4.5: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-clang-tidy 0.3.3-r1: KDevelop plugin for clang-tidy static analysis support
 dev-util/kdevelop-pg-qt 2.2.0: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.4.2 5.4.4: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.4.2 5.4.4: Python plugin for KDevelop
+dev-util/kdevelop-php 5.4.2 5.4.4 5.4.5: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.4.2 5.4.4 5.4.5: Python plugin for KDevelop
 dev-util/kdstatemachineeditor 1.2.4 9999: Framework for creating Qt State Machine metacode using graphical user interfaces
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/kernelshark 1.0 9999: Graphical reader for trace-cmd output

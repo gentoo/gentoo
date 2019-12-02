@@ -5,11 +5,11 @@ DESCRIPTION=Framework for managing menu and toolbar actions in an abstract way
 EAPI=7
 HOMEPAGE=https://kde.org/products/frameworks/
 IUSE=attica test debug designer doc test
-KEYWORDS=amd64 ~arm ~arm64 x86
+KEYWORDS=amd64 ~arm arm64 x86
 LICENSE=LGPL-2+
 RDEPEND=>=kde-frameworks/kconfig-5.64:5 >=kde-frameworks/kconfigwidgets-5.64:5 >=kde-frameworks/kcoreaddons-5.64:5 >=kde-frameworks/kglobalaccel-5.64:5 >=kde-frameworks/ki18n-5.64:5 >=kde-frameworks/kiconthemes-5.64:5 >=kde-frameworks/kitemviews-5.64:5 >=kde-frameworks/ktextwidgets-5.64:5 >=kde-frameworks/kwidgetsaddons-5.64:5 >=kde-frameworks/kwindowsystem-5.64:5 >=dev-qt/qtcore-5.12.3:5= >=dev-qt/qtdbus-5.12.3:5 >=dev-qt/qtgui-5.12.3:5 >=dev-qt/qtnetwork-5.12.3:5[ssl] >=dev-qt/qtprintsupport-5.12.3:5 >=dev-qt/qtwidgets-5.12.3:5 >=dev-qt/qtxml-5.12.3:5 attica? ( >=kde-frameworks/attica-5.64:5 ) >=kde-frameworks/kf-env-4 doc? ( dev-qt/qt-docs:5 ) dev-qt/qtcore:5
 RESTRICT=!test? ( test )
 SLOT=5/5.64
 SRC_URI=mirror://kde/stable/frameworks/5.64/kxmlgui-5.64.0.tar.xz
-_eclasses_=cmake-utils	a5d9146ee60641275d46a91aab93d02f	ecm	4ea733fe80a2aafb8b3db16eee688d8f	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	kde.org	10fb11177d867e8e282bd1bde484504e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	53625127887b62eabb9ec61d3d943462	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=25e3df00be702386f3ca3485c76b654e
+_eclasses_=cmake-utils	a5d9146ee60641275d46a91aab93d02f	ecm	af8e8a571d8b16ba226329b9abedeb1b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	kde.org	a01838c52d2168944938835b4ddca1b4	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	53625127887b62eabb9ec61d3d943462	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=593f1b6cc082c9f289f5e90b6b2acdc6
