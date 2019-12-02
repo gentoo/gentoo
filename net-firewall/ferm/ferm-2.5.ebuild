@@ -13,6 +13,9 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
+# Uses Internet connection while testing.
+RESTRICT="test"
+
 # does not install any perl libs
 RDEPEND="dev-lang/perl:*
 	net-firewall/iptables
