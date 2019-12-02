@@ -13,7 +13,7 @@ HOMEAGE="https://kde.org/applications/system/kwalletmanager
 https://utils.kde.org/projects/kwalletmanager"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="
