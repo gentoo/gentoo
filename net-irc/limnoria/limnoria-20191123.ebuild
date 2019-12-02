@@ -1,8 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+EAPI=7
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
 inherit distutils-r1
 
@@ -52,7 +52,6 @@ src_unpack() {
 }
 
 python_prepare(){
-	distutils-r1_python_prepare
 	if python_is_python3; then
 		einfo "Removing the RSS plugin because of clashes between libxml2's Python3"
 		einfo "bindings and feedparser."
@@ -68,13 +67,12 @@ python_install_all() {
 python_test() {
 	pushd "${T}" > /dev/null
 	PLUGINS_DIR="${BUILD_DIR}/lib/supybot/plugins"
-	# recommended by upstream, unknown random failure
-	EXCLUDE_PLUGINS=( --exclude="${PLUGINS_DIR}/Scheduler" )
-	# recommended by upstream, unknown random failure
-	EXCLUDE_PLUGINS+=( --exclude="${PLUGINS_DIR}/Filter" )
+	EXCLUDE_PLUGINS=()
 	# intermittent failure due to issues loading libsandbox.so from LD_PRELOAD
 	# runs successfully when running the tests on the installed system
 	EXCLUDE_PLUGINS+=( --exclude="${PLUGINS_DIR}/Unix" )
+	# Runs despite --no-network (GH #1392)
+	EXCLUDE_PLUGINS+=( --exclude="${PLUGINS_DIR}/Aka" )
 	"${PYTHON}" "${BUILD_DIR}"/scripts/supybot-test "${BUILD_DIR}/../test" \
 		--plugins-dir="${PLUGINS_DIR}" --no-network \
 		--disable-multiprocessing "${EXCLUDE_PLUGINS[@]}" \
