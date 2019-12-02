@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
 
 inherit distutils-r1
 
@@ -20,6 +20,6 @@ IUSE=""
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 src_prepare() {
-	sed '/prune/d' -i MANIFEST.in
+	sed '/prune/d' -i MANIFEST.in || die
 	default
 }
