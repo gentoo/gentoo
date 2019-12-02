@@ -1478,7 +1478,7 @@ app-emulation/ganeti 2.15.2-r8 2.16.0_rc1 2.17.0_beta1: Ganeti is a virtual serv
 app-emulation/ganeti-instance-debootstrap 0.11-r1 0.16: Scripts to build Ganeti VMs with debootstrap
 app-emulation/ganeti-instance-image 0.6 0.6-r2: Scripts to build out CD or image based VMs using Ganeti
 app-emulation/ganeti-os-noop 0.2: Dummy OS provider for Ganeti
-app-emulation/genymotion-bin 3.0.2: Complete set of tools that provide a virtual environment for Android
+app-emulation/genymotion-bin 3.0.3: Complete set of tools that provide a virtual environment for Android
 app-emulation/glean 1.10.3: Simple program to write static config from config-drive
 app-emulation/go-secbench 0.1.0 0.1.0-r1: run and evaluate the docker security benchmark
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
