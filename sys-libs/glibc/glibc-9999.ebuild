@@ -93,6 +93,7 @@ BDEPEND="
 	doc? ( sys-apps/texinfo )
 "
 COMMON_DEPEND="
+	gd? ( media-libs/gd:2= )
 	nscd? ( selinux? (
 		audit? ( sys-process/audit )
 		caps? ( sys-libs/libcap )
