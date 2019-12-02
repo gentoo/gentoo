@@ -10,7 +10,7 @@ inherit ecm kde.org
 DESCRIPTION="Library for embedding KParts in a Kontact component"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE=""
 
 DEPEND="
