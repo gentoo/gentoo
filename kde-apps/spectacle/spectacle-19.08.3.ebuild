@@ -13,7 +13,7 @@ inherit ecm kde.org
 DESCRIPTION="Screenshot capture utility"
 LICENSE="LGPL-2+ handbook? ( FDL-1.3 ) kipi? ( GPL-2+ )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="kipi share"
 
 DEPEND="
