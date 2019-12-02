@@ -13,7 +13,7 @@ DESCRIPTION="KDE simple text editor"
 HOMEPAGE="https://kde.org/applications/utilities/kwrite"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 
 DEPEND="
 	>=kde-frameworks/kactivities-${KFMIN}:5
