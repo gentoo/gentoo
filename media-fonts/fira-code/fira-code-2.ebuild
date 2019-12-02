@@ -21,6 +21,8 @@ FONT_SUFFIX="otf"
 
 DOCS="README.md"
 
+DEPEND="app-arch/unzip"
+
 src_prepare() {
 	default
 	mv "${WORKDIR}"/*.otf "${FONT_S}" || die
