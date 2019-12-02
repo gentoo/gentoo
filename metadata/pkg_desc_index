@@ -15041,7 +15041,7 @@ net-libs/pjproject 2.7.1 2.7.2 2.9: Open source SIP, Media, and NAT Traversal Li
 net-libs/quasselc 0_p20170111: API for accessing Quassel using C
 net-libs/quiche 0.1.0_alpha4_p20190912 0.1.0-r1 9999: Implementation of the QUIC transport protocol and HTTP/3
 net-libs/qxmpp 0.9.3-r2 1.0.1 9999: A cross-platform C++ XMPP client library based on the Qt framework
-net-libs/rabbitmq-c 0.9.0: RabbitMQ C client
+net-libs/rabbitmq-c 0.9.0 0.10.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.11: A parsing library for RIPE Atlas result strings
 net-libs/rpc2 2.14: Remote procedure call package for IP/UDP (used by Coda)
