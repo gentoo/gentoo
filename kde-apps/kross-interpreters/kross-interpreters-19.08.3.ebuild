@@ -12,7 +12,7 @@ inherit ecm kde.org python-single-r1 ruby-single
 DESCRIPTION="Kross interpreter plugins for programming languages"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+python ruby"
 
 REQUIRED_USE="|| ( python ruby ) python? ( ${PYTHON_REQUIRED_USE} )"
