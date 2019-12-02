@@ -12,7 +12,7 @@ DESCRIPTION="KDE program that clicks the mouse for you"
 HOMEPAGE="https://kde.org/applications/utilities/kmousetool/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 RDEPEND="
