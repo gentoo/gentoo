@@ -7,6 +7,5 @@
 	</maintainer>
 	<use>
 		<flag name="activities">Track which folders are frequently accessed on a Plasma desktop</flag>
-		<flag name="thumbnail">Enables thumbnail generation</flag>
 	</use>
 </pkgmetadata>
