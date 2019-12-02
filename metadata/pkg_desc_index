@@ -472,7 +472,7 @@ app-arch/snappy 1.1.7: A high-speed compression/decompression library by Google
 app-arch/stenc 1.0.7: SCSI Tape Encryption Manager enables AES support for LTO drives.
 app-arch/stuffit 5.2.0.611: Aladdin Software's StuffIt and StuffIt Expander
 app-arch/tapeutils 0.4: Utilities for manipulation of tapes and tape image files
-app-arch/tar 1.32: Use this to make tarballs :)
+app-arch/tar 1.32 1.32.90: Use this to make tarballs :)
 app-arch/tardelta 1.0.1: Generate a tarball of differences between two tarballs
 app-arch/tarsync 0.2.1-r1: Delta compression suite for using/generating binary patches
 app-arch/torrentzip 0.9: Create identical zip archives over multiple systems
@@ -15451,7 +15451,7 @@ net-misc/switzerland 0.1.0: Network Testing Tool
 net-misc/taptap 1.0: A program to link two /dev/net/tun to form virtual ethernet
 net-misc/taylor-uucp 1.07-r3: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
-net-misc/teamviewer 14.6.2452 14.7.1965: All-In-One Solution for Remote Access and Support over the Internet
+net-misc/teamviewer 14.6.2452 14.7.1965 15.0.8397: All-In-One Solution for Remote Access and Support over the Internet
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/throttle 1.2-r1: Bandwidth limiting pipe
