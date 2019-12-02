@@ -3,10 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils git-r3 readme.gentoo-r1 xdg-utils
-
-EGIT_REPO_URI="https://github.com/OpenRCT2/OpenRCT2.git"
-EGIT_BRANCH="develop"
+inherit cmake-utils readme.gentoo-r1 xdg-utils
 
 MY_PN="OpenRCT2"
 MY_PN_OBJ="objects"
@@ -19,6 +16,7 @@ MY_PV_TS="0.1.2c"
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
 HOMEPAGE="https://openrct2.org/"
 SRC_URI="
+	https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/${MY_PN}/${MY_PN_OBJ}/releases/download/v${MY_PV_OBJ}/${MY_PN_OBJ}.zip -> ${PN}-${MY_PN_OBJ}-${MY_PV_OBJ}.zip
 	https://github.com/${MY_PN}/${MY_PN_TS}/releases/download/v${MY_PV_TS}/${MY_PN_TS}.zip -> ${PN}-${MY_PN_TS}-${MY_PV_TS}.zip
 	test? ( https://github.com/${MY_PN}/${MY_PN_RPL}/releases/download/v${MY_PV_RPL}/${MY_PN_RPL}.zip -> ${PN}-${MY_PN_RPL}-${MY_PV_RPL}.zip )
@@ -26,7 +24,7 @@ SRC_URI="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated libressl +lightfx +opengl test +truetype twitch"
 
 COMMON_DEPEND="
@@ -71,12 +69,16 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
+S="${WORKDIR}/${MY_PN}-${PV}"
+
 PATCHES=(
+	"${FILESDIR}/${PN}-0.2.4-disable-desktop-and-icon-files-without-gui.patch"
+	"${FILESDIR}/${PN}-0.2.4-disable-optional-features.patch"
 	"${FILESDIR}/${PN}-0.2.4-include-additional-paths.patch"
 )
 
 src_unpack() {
-	git-r3_src_unpack
+	unpack "${P}".tar.gz
 
 	mkdir -p "${S}"/data/title || die
 	cd "${S}"/data/title || die

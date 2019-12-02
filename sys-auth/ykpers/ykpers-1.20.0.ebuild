@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools udev
 
@@ -12,16 +12,18 @@ HOMEPAGE="https://github.com/Yubico/yubikey-personalization"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="BSD-2"
-IUSE="static-libs consolekit"
+IUSE="consolekit static-libs"
 
-RDEPEND="
+DEPEND="
+	dev-libs/json-c:=
 	>=sys-auth/libyubikey-1.6
 	virtual/libusb:1"
-DEPEND="${RDEPEND}
+BDEPEND="
 	app-text/asciidoc
 	virtual/pkgconfig"
-RDEPEND="${RDEPEND}
-	consolekit? ( sys-auth/consolekit[acl] )"
+RDEPEND="${DEPEND}
+	consolekit? ( sys-auth/consolekit[acl] )
+"
 
 S="${WORKDIR}/yubikey-personalization-${PV}"
 
@@ -33,15 +35,21 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--libdir=/usr/$(get_libdir) \
-		--localstatedir=/var \
+	local myeconfargs=(
+		--libdir=/usr/$(get_libdir)
+		--localstatedir=/var
 		$(use_enable static-libs static)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
-	use consolekit && udev_dorules *.rules
+
+	udev_dorules 69-yubikey.rules
+	if use consolekit ; then
+		udev_dorules 70-yubikey.rules
+	fi
 
 	find "${D}" -name '*.la' -delete || die
 }

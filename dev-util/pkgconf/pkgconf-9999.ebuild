@@ -6,16 +6,15 @@ EAPI=7
 inherit multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
-	#EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
-	EGIT_REPO_URI="https://git.dereferenced.org/${PN}/${PN}.git"
 	inherit autotools git-r3
+	EGIT_REPO_URI="https://git.sr.ht/~kaniini/pkgconf"
 else
 	SRC_URI="http://distfiles.dereferenced.org/${PN}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
 fi
 
 DESCRIPTION="pkg-config compatible replacement with no dependencies other than ANSI C89"
-HOMEPAGE="https://git.dereferenced.org/pkgconf/pkgconf/"
+HOMEPAGE="https://git.sr.ht/~kaniini/pkgconf"
 
 LICENSE="ISC"
 SLOT="0/3"
