@@ -15788,7 +15788,7 @@ net-wireless/srslte 19.09: Open source SDR LTE software suite from Software Radi
 net-wireless/tempestsdr 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.08.1 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.10.3.0 3.11.0.0 3.12.0.0 3.13.0.1 3.13.1.0 3.14.0.0 3.14.1.1: Universal Software Radio Peripheral (USRP) Hardware Driver
-net-wireless/unifi 5.6.42-r1 5.12.22 5.12.37 5.12.42: A Management Controller for Ubiquiti Networks UniFi APs
+net-wireless/unifi 5.6.42-r1 5.12.35 5.12.42: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/urh 1.6.4.1 2.7.5 9999: Universal Radio Hacker: investigate wireless protocols like a boss
 net-wireless/wavemon 0.7.6 0.8.0: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 net-wireless/wepattack 0.1.3-r5: WLAN tool for breaking 802.11 WEP keys
