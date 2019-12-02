@@ -14,7 +14,7 @@ inherit ecm kde.org
 DESCRIPTION="Common mail library"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE=""
 
 # drop qtwidgets subslot operator when QT_MINIMAL >= 5.14.0
