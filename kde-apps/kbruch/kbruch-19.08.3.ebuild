@@ -12,7 +12,7 @@ DESCRIPTION="Educational application to learn calculating with fractions"
 HOMEPAGE="https://kde.org/applications/education/kbruch https://edu.kde.org/kbruch/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE=""
 
 DEPEND="
