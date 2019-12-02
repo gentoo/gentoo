@@ -12,7 +12,7 @@ inherit ecm kde.org
 DESCRIPTION="Container application to unify several major PIM applications within one"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
