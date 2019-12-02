@@ -12,7 +12,7 @@ DESCRIPTION="Prometheus exporter for MongoDB"
 HOMEPAGE="https://github.com/percona/mongodb_exporter"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 AGPL-3 BSD MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
