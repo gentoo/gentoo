@@ -29,7 +29,6 @@ if use otf; then
 	FONT_SUFFIX+="otf"
 
 	FONT_S="
-		"${S}"/IBM-Plex-Devanagari/fonts/complete/otf
 		"${S}"/IBM-Plex-Mono/fonts/complete/otf
 		"${S}"/IBM-Plex-Sans-Condensed/fonts/complete/otf
 		"${S}"/IBM-Plex-Sans-Devanagari/fonts/complete/otf
