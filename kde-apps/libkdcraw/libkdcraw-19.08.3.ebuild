@@ -9,7 +9,7 @@ inherit ecm kde.org
 DESCRIPTION="Digital camera raw image library wrapper"
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="
