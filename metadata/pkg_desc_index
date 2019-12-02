@@ -373,7 +373,7 @@ app-admin/supernova 2.2.0: novaclient wrapper for multiple nova environments
 app-admin/supervisor 3.1.4 3.3.5 4.0.3 4.0.4: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
 app-admin/sxid 4.2-r2: suid, sgid file and directory checking
-app-admin/sysklogd 1.5.1-r1 2.0.1 2.0.2: Standard log daemons
+app-admin/sysklogd 1.5.1-r1 2.0.2 2.0.3: Standard log daemons
 app-admin/syslog-ng 3.22.1 3.24.1: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1 1.14-r2 1.14-r3: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17: Daemon providing access to the kernel sysrq functions via network
@@ -16733,7 +16733,7 @@ sci-visualization/xgraph 12.1-r4: X11 Plotting Utility
 sci-visualization/xyscan 4.3.0: Tool for extracting data points from graphs
 sci-visualization/yt 3.3.5 3.4.0: Astrophysical Simulation Analysis and Vizualization package
 sci-visualization/zhu3d 4.2.6-r1: Interactive 3D mathematical function viewer
-sec-policy/apparmor-profiles 2.13.1 2.13.3 9999: A collection of profiles for the AppArmor application security system
+sec-policy/apparmor-profiles 2.13.3 9999: A collection of profiles for the AppArmor application security system
 sec-policy/selinux-abrt 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 9999: SELinux policy for abrt
 sec-policy/selinux-accountsd 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 9999: SELinux policy for accountsd
 sec-policy/selinux-acct 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 9999: SELinux policy for acct
@@ -16997,8 +16997,8 @@ sys-apps/acl 2.2.52-r1 2.2.53: access control list utilities, libraries and head
 sys-apps/agedu 20180329 20180522 20190630: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
-sys-apps/apparmor 2.13.1-r1 2.13.3: Userspace utils and init scripts for the AppArmor application security system
-sys-apps/apparmor-utils 2.13.1 2.13.3: Additional userspace utils to assist with AppArmor profile management
+sys-apps/apparmor 2.13.3: Userspace utils and init scripts for the AppArmor application security system
+sys-apps/apparmor-utils 2.13.3: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.4.2: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.47-r2 2.4.48-r3 9999: Extended attributes tools
@@ -17819,7 +17819,7 @@ sys-libs/ldb 1.1.29-r1 1.1.31 1.2.4 1.3.6 1.3.8 1.4.7 1.4.8 1.5.4 1.5.5 1.5.6 1.
 sys-libs/lib-compat 1.5: Compatibility C++ library for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
-sys-libs/libapparmor 2.13.1 2.13.3: Library to support AppArmor userspace utilities
+sys-libs/libapparmor 2.13.3: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.20-r2 2.22 2.23 9999: A library for manipulating block devices
 sys-libs/libcap 2.26-r2 2.27: POSIX 1003.1e capabilities
