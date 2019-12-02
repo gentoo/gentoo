@@ -47,7 +47,7 @@ src_install() {
 	doins syslog.conf
 	keepdir /etc/syslog.d
 
-	newinitd "${FILESDIR}"/sysklogd.rc8 sysklogd
+	newinitd "${FILESDIR}"/sysklogd.rc9 sysklogd
 	newconfd "${FILESDIR}"/sysklogd.confd2 sysklogd
 
 	if use logrotate ; then
