@@ -7993,7 +7993,7 @@ dev-python/jaraco-itertools 2.3-r1 3.0.0-r1 4.4.2: Tools for working with iterab
 dev-python/jaraco-logging 1.5 1.5.2-r1 2.0: Additional facilities to supplement Python's stdlib logging module
 dev-python/jaraco-packaging 4.1 5.1-r1 6.1 6.2 6.2-r1: Tools to supplement packaging Python releases
 dev-python/jaraco-stream 1.1.1 1.2-r1 2.0-r1: Routines for handling streaming data
-dev-python/jaraco-text 1.10.1-r1 3.0.1 3.1: Text utilities used by other projects by developer jaraco
+dev-python/jaraco-text 1.10.1-r1 3.1 3.2.0: Text utilities used by other projects by developer jaraco
 dev-python/jaxml 3.02-r1: XML generator written in Python
 dev-python/jdcal 1.0 1.2 1.4: Julian dates from proleptic Gregorian and Julian calendars
 dev-python/jedi 0.10.2 0.11.1 0.12.0 0.12.1: Autocompletion library for Python
