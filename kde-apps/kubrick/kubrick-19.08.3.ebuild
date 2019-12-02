@@ -13,7 +13,7 @@ DESCRIPTION="Game based on the \"Rubik's Cube\" puzzle by KDE"
 HOMEPAGE="https://kde.org/applications/games/kubrick/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
