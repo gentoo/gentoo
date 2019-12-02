@@ -12623,7 +12623,7 @@ media-fonts/fantasque-sans-mono 2014.07: Functional programming font designed wi
 media-fonts/farsi-fonts 0.4: Farsi (Persian) Unicode fonts
 media-fonts/fgdc-emergency 2.20: FGDC Emergency Response Symbology Prototype
 media-fonts/fifth-leg 0.6-r1: Simplistic, technical sans serif - openSUSE font
-media-fonts/fira-code 1.205 1.206 1.207 2: Monospaced font with programming ligatures
+media-fonts/fira-code 1.207 2: Monospaced font with programming ligatures
 media-fonts/fira-mono 3.205: Default monospaced typeface for FirefoxOS, designed for legibility
 media-fonts/fira-sans 4.002 4.105: Default typeface for FirefoxOS, designed for legibility
 media-fonts/font-adobe-100dpi 1.0.3-r1: X.Org Adobe bitmap fonts
