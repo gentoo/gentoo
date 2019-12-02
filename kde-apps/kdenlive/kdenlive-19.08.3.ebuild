@@ -66,6 +66,8 @@ RDEPEND="${DEPEND}
 	virtual/ffmpeg[encode,sdl,X]
 "
 
+RESTRICT+=" test" # segfaults, bug 684132
+
 PATCHES=( "${FILESDIR}"/${P}-qt-5.14-{1,2}.patch )
 
 src_configure() {
