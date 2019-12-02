@@ -42,7 +42,6 @@ net-news/newsboat
 # app-admin/docker-bench: #694704
 # app-admin/linux-bench: #699274
 # app-emulation/{cadvisor,cri-tools,reg}: #694892
-# app-metrics/{alertmanager,prometheus,*_exporter}: #695212
 # dev-go/glide: #694384
 # dev-util/drone{,-cli}: #695240  // TODO: promu?
 # net-misc/istioctl: #695288
@@ -54,20 +53,6 @@ app-admin/linux-bench
 app-emulation/cadvisor
 app-emulation/cri-tools
 app-emulation/reg
-app-metrics/alertmanager
-app-metrics/bind_exporter
-app-metrics/blackbox_exporter
-app-metrics/burrow_exporter
-app-metrics/elasticsearch_exporter
-app-metrics/mongodb_exporter
-app-metrics/nginx-vts-exporter
-app-metrics/node_exporter
-app-metrics/openvpn_exporter
-app-metrics/postfix_exporter
-app-metrics/postgres_exporter
-app-metrics/prometheus
-app-metrics/snmp_exporter
-app-metrics/vault_exporter
 dev-go/glide
 dev-util/drone
 dev-util/drone-cli
