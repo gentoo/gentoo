@@ -12,7 +12,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="Analyzes resource usage and performance characteristics of running containers"
 HOMEPAGE="https://github.com/google/cadvisor"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 ISC MIT"
 SLOT="0"
 IUSE=""
 
