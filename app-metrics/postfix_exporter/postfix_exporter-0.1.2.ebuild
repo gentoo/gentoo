@@ -23,7 +23,7 @@ DESCRIPTION="Prometheus Exporter for Postfix"
 HOMEPAGE="https://github.com/kumina/postfix_exporter"
 SRC_URI="${ARCHIVE_URI}
 	${EGO_VENDOR_URI}"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD MIT"
 SLOT="0"
 IUSE="systemd"
 
