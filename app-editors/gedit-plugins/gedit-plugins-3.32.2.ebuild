@@ -34,11 +34,13 @@ RDEPEND="
 	>=x11-libs/gtksourceview-4.0.2:4
 	python? (
 		${PYTHON_DEPS}
-		>=app-editors/gedit-3.16[introspection,python,${PYTHON_USEDEP}]
-		dev-libs/libpeas[python,${PYTHON_USEDEP}]
-		>=dev-python/dbus-python-0.82[${PYTHON_USEDEP}]
-		dev-python/pycairo[${PYTHON_USEDEP}]
-		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
+		>=app-editors/gedit-3.16[introspection,python,${PYTHON_SINGLE_USEDEP}]
+		dev-libs/libpeas[python,${PYTHON_SINGLE_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/dbus-python-0.82[${PYTHON_MULTI_USEDEP}]
+			dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygobject:3[cairo,${PYTHON_MULTI_USEDEP}]
+		')
 		>=x11-libs/gtk+-3.9:3[introspection]
 		>=x11-libs/gtksourceview-3.14:3.0[introspection]
 		x11-libs/pango[introspection]
