@@ -113,7 +113,7 @@ src_install() {
 
 pkg_postinst() {
 	elog "If you have a license,"
-	elog "place it in /opt/teamspeak3-server as licensekey.dat."
+	elog "put it in /opt/teamspeak3-server named as licensekey.dat."
 	elog "Please note, that the license must be writeable by the teamspeak user,"
 	elog "as it will be automatically updated every six months."
 }
