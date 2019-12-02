@@ -13,7 +13,7 @@ DESCRIPTION="Application to manage alarms and other timer based alerts for the d
 HOMEPAGE+=" https://userbase.kde.org/KAlarm"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="X"
 
 BDEPEND="
