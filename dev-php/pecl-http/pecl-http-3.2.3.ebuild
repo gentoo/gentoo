@@ -64,7 +64,7 @@ src_test() {
 		sed -i \
 			's/PHP_TEST_SHARED_EXTENSIONS)/PHP_TEST_SHARED_EXTENSIONS) -d extension=propro.so -d extension=raphf.so/' \
 			Makefile || die
-		NO_INTERACTION="yes" emake test
+		SKIP_ONLINE_TESTS=yes NO_INTERACTION="yes" emake test
 		# Clean up testing links
 		rm modules/propro.so modules/raphf.so || die
 	done
