@@ -20,8 +20,9 @@ RDEPEND="${DEPEND}"
 
 src_test() {
 	# bug 623938 - needs internet connection
+	# bug 694804 - some LANG issue
 	local myctestargs=(
-		-E "(convertertest)"
+		-E "(convertertest|valuetest)"
 	)
 
 	ecm_src_test
