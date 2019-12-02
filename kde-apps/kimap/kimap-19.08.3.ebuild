@@ -12,7 +12,7 @@ inherit ecm kde.org
 DESCRIPTION="Library for interacting with IMAP servers"
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE=""
 
 COMMON_DEPEND="
