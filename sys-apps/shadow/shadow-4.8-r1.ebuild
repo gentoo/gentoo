@@ -41,7 +41,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.1.3-dots-in-usernames.patch"
-	"${FILESDIR}/shadow-4.8-revert-bin-merge.patch"
+	"${FILESDIR}/${P}-revert-bin-merge.patch"
 )
 
 src_prepare() {
