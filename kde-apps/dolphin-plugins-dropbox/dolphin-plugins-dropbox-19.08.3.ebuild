@@ -14,7 +14,7 @@ inherit ecm kde.org
 DESCRIPTION="Dolphin plugin for Dropbox service integration"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 DEPEND="
