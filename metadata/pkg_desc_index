@@ -7625,7 +7625,7 @@ dev-python/daemonize 2.5.0: Library for writing system daemons in Python
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
 dev-python/dask 0.15.1 1.2.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/datashape 0.5.4: Language defining a data description protocol
-dev-python/dbus-python 1.2.4 1.2.12: Python bindings for the D-Bus messagebus
+dev-python/dbus-python 1.2.4 1.2.12 1.2.14: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.18.2: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.1.1: A library to multiply test cases
