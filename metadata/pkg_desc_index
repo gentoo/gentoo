@@ -12346,7 +12346,7 @@ kde-frameworks/plasma 5.60.0 5.64.0: Plasma framework
 kde-frameworks/prison 5.60.0 5.64.0: QRCode and data matrix barcode library
 kde-frameworks/purpose 5.60.0 5.64.0: Library for providing abstractions to get the developer's purposes fulfilled
 kde-frameworks/qqc2-desktop-style 5.60.0 5.64.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
-kde-frameworks/solid 5.60.0 5.64.0 5.64.0-r1: Provider for platform independent hardware discovery, abstraction and management
+kde-frameworks/solid 5.60.0 5.64.0-r1: Provider for platform independent hardware discovery, abstraction and management
 kde-frameworks/sonnet 5.60.0 5.64.0: Framework for providing spell-checking through abstraction of popular backends
 kde-frameworks/syndication 5.60.0 5.64.0: Library for parsing RSS and Atom feeds
 kde-frameworks/syntax-highlighting 5.60.0 5.64.0: Framework for syntax highlighting

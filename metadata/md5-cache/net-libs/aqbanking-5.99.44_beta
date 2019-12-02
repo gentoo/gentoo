@@ -5,9 +5,9 @@ DESCRIPTION=Generic Online Banking Interface
 EAPI=7
 HOMEPAGE=https://www.aquamaniac.de/sites/aqbanking/index.php
 IUSE=debug doc ebics examples ofx
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=app-misc/ktoblzcheck dev-libs/gmp:0= >=sys-libs/gwenhywfar-4.99.22_rc6:= virtual/libintl ebics? ( dev-libs/xmlsec[gcrypt,gnutls] ) ofx? ( >=dev-libs/libofx-0.9.5 )
 SLOT=0
 SRC_URI=https://www.aquamaniac.de/rdm/attachments/download/224/aqbanking-5.99.44beta.tar.gz
-_md5_=63102dcb3c6753bf5357e958fb32a390
+_md5_=71671292f197d992f96e888bd991429b

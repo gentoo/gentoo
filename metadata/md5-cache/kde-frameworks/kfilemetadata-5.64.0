@@ -5,11 +5,11 @@ DESCRIPTION=Library for extracting file metadata
 EAPI=7
 HOMEPAGE=https://kde.org/products/frameworks/
 IUSE=epub exif ffmpeg kernel_linux libav office pdf taglib debug doc test
-KEYWORDS=~amd64 ~arm ~arm64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~x86
 LICENSE=LGPL-2+
 RDEPEND=>=kde-frameworks/kcoreaddons-5.64:5 >=kde-frameworks/ki18n-5.64:5 >=dev-qt/qtxml-5.12.3:5 epub? ( app-text/ebook-tools ) exif? ( media-gfx/exiv2:= ) ffmpeg? ( libav? ( >=media-video/libav-12.2:= ) !libav? ( media-video/ffmpeg:0= ) ) office? ( >=kde-frameworks/karchive-5.64:5 ) pdf? ( app-text/poppler[qt5] ) taglib? ( media-libs/taglib ) >=kde-frameworks/kf-env-4 doc? ( dev-qt/qt-docs:5 ) dev-qt/qtcore:5
 RESTRICT=!test? ( test ) test
 SLOT=5/5.64
 SRC_URI=mirror://kde/stable/frameworks/5.64/kfilemetadata-5.64.0.tar.xz
 _eclasses_=cmake-utils	a5d9146ee60641275d46a91aab93d02f	ecm	4ea733fe80a2aafb8b3db16eee688d8f	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	kde.org	10fb11177d867e8e282bd1bde484504e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	02ef27875ec5afcc2202b9d062d57f07	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	53625127887b62eabb9ec61d3d943462	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=b74d99d48e5fb1175e072a2719f98103
+_md5_=9ee0a0d2b725c6ae4108de1cfaac89f0
