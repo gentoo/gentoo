@@ -16,7 +16,7 @@ LICENSE="CC-BY-SA-3.0 CC0-1.0 GPL-2+ LGPL-2+
 	opus? ( BSD-2 )
 "
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="alsa flac mp3 opus oss pulseaudio +qtmedia vorbis"
 
 BDEPEND="
