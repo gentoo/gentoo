@@ -13,7 +13,7 @@ inherit ecm kde.org
 DESCRIPTION="An adaptation of the Clickomania game"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE=""
 
 DEPEND="

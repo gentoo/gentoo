@@ -15,7 +15,7 @@ DESCRIPTION="Email client, supporting POP3 and IMAP mailboxes."
 HOMEPAGE="https://kde.org/applications/internet/kmail/"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE=""
 
 BDEPEND="

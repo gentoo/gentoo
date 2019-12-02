@@ -14,7 +14,7 @@ DESCRIPTION="Multi-document editor with network transparency, Plasma integration
 HOMEPAGE="https://kde.org/applications/utilities/kate https://kate-editor.org/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="activities +addons"
 
 DEPEND="

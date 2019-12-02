@@ -14,7 +14,7 @@ DESCRIPTION="Plasma mixer gui"
 HOMEPAGE="https://kde.org/applications/multimedia/kmix/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="alsa pulseaudio"
 
 DEPEND="
