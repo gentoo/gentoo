@@ -14,13 +14,14 @@ SRC_URI="mirror://gnu/wget/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="cookie_check debug gnutls idn ipv6 libressl nls ntlm pcre +ssl static test uuid zlib"
+IUSE="cookie_check debug gnutls idn ipv6 libressl metalink nls ntlm pcre +ssl static test uuid zlib"
 REQUIRED_USE=" ntlm? ( !gnutls ssl ) gnutls? ( ssl )"
 
 # Force a newer libidn2 to avoid libunistring deps. #612498
 LIB_DEPEND="
 	cookie_check? ( net-libs/libpsl )
 	idn? ( >=net-dns/libidn2-0.14:=[static-libs(+)] )
+	metalink? ( media-libs/libmetalink )
 	pcre? ( dev-libs/libpcre2[static-libs(+)] )
 	ssl? (
 		gnutls? ( net-libs/gnutls:0=[static-libs(+)] )
@@ -102,6 +103,7 @@ src_configure() {
 		$(use_enable ssl opie)
 		$(use_with cookie_check libpsl)
 		$(use_with idn libidn)
+		$(use_with metalink)
 		$(use_with ssl ssl $(usex gnutls gnutls openssl))
 		$(use_with uuid libuuid)
 		$(use_with zlib)
