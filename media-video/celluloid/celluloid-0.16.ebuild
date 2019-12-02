@@ -6,8 +6,9 @@ EAPI=6
 inherit gnome2-utils xdg-utils meson
 
 DESCRIPTION="A simple GTK+ frontend for mpv"
-HOMEPAGE="https://gnome-mpv.github.io/"
-SRC_URI="https://github.com/gnome-mpv/gnome-mpv/releases/download/v${PV}/${P}.tar.xz"
+HOMEPAGE="https://celluloid-player.github.io/"
+SRC_URI="https://github.com/gnome-mpv/gnome-mpv/releases/download/v${PV}/gnome-mpv-${PV}.tar.xz"
+S="${WORKDIR}/gnome-mpv-${PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
