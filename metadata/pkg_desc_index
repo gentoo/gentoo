@@ -15514,7 +15514,7 @@ net-news/amphetadesk 0.93.1-r1: AmphetaDesk is a free syndicated news aggregator
 net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12.3 1.12.5a 1.12.6b 1.12.7: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
-net-news/newsboat 2.13 2.16.1: An RSS/Atom feed reader for text terminals
+net-news/newsboat 2.13 2.16.1 2.17.1: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.18.12 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.5.5 9999: A tiny RSS and Atom feed reader
