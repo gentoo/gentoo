@@ -10,7 +10,7 @@ inherit ecm kde.org
 DESCRIPTION="KDE Development Utilities"
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
