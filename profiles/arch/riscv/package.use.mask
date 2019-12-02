@@ -1,6 +1,14 @@
 # Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# dev-util/systemtap is not keyworded on riscv
+sys-libs/glibc systemtap
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# media-libs/gd is not keyworded on riscv
+sys-libs/glibc gd
+
 # Dependency resolution is broken because
 # sys-fs/lvm2 has no riscv keyword
 sys-fs/e2fsprogs cron

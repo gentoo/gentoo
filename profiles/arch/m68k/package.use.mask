@@ -1,6 +1,14 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# dev-util/systemtap is not keyworded on m68k
+sys-libs/glibc systemtap
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# media-libs/gd is not keyworded on m68k
+sys-libs/glibc gd
+
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
