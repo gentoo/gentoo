@@ -10,7 +10,7 @@ inherit ecm kde.org
 DESCRIPTION="Library to support mobipocket ebooks"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+thumbnail"
 
 DEPEND="
