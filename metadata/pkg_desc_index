@@ -16315,7 +16315,7 @@ sci-geosciences/viking 1.6.2-r2 1.7: GPS data editor and analyzer
 sci-geosciences/xtide 2.15.1: XTide provides tide and current predictions in a wide variety of formats
 sci-libs/Fiona 1.5.1 1.7.6 9999: OGR's neat, nimble, no-nonsense API
 sci-libs/Rtree 0.8.2 0.8.3_p20180802: R-Tree spatial index for Python GIS
-sci-libs/Shapely 1.3.0 1.3.2 1.5.17 1.5.17-r1 1.6.4_p2 9999: Geometric objects, predicates, and operations
+sci-libs/Shapely 1.3.0 1.3.2 1.5.17 1.5.17-r1 1.6.4_p2 1.6.4_p2-r1 9999: Geometric objects, predicates, and operations
 sci-libs/ViSP 3.0.1-r1 3.1.0-r1 3.2.0-r2: Visual Servoing Platform: visual tracking and visual servoing library
 sci-libs/adolc 2.4.1 2.6.3-r1 9999: Automatic differentiation system for C/C++
 sci-libs/alglib 3.10.0-r1: Numerical analysis and data processing library
@@ -16399,7 +16399,7 @@ sci-libs/fplll 4.0.4: Different implementations of the floating-point LLL reduct
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r2: Genetic Algorithm Utility Library
-sci-libs/gdal 2.4.1 2.4.1-r1: Translator library for raster geospatial data formats (includes OGR support)
+sci-libs/gdal 2.4.1 2.4.1-r1 2.4.1-r2: Translator library for raster geospatial data formats (includes OGR support)
 sci-libs/geos 3.7.0 3.7.2 3.8.0: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20131206-r1: Gerris Flow Solver
 sci-libs/getdata 0.9.0-r1: Reference implementation of the Dirfile, format for time-ordered binary data
