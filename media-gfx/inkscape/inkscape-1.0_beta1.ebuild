@@ -16,8 +16,8 @@ SRC_URI="https://inkscape.org/gallery/item/14917/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
-IUSE="cdr dbus dia exif gnome graphicsmagick imagemagick inkjar jemalloc jpeg
-lcms nls openmp postscript spell static-libs svg2 visio wpg"
+IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg lcms nls
+openmp postscript spell static-libs svg2 visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -59,7 +59,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	dbus? ( dev-libs/dbus-glib )
 	exif? ( media-libs/libexif )
-	gnome? ( >=gnome-base/gnome-vfs-2.0 )
 	imagemagick? (
 		!graphicsmagick? ( <media-gfx/imagemagick-7:=[cxx] )
 		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
