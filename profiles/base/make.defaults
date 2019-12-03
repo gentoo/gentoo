@@ -137,7 +137,7 @@ BOOTSTRAP_USE="unicode internal-glib pkg-config split-usr python_targets_python3
 # Default target(s) for python-r1.eclass
 # Mikle Kolyada <zlogene@gentoo.org> (2018-07-24)
 # Updated to python3_6
-PYTHON_TARGETS="python2_7 python3_6"
+PYTHON_TARGETS="python3_6"
 PYTHON_SINGLE_TARGET="python3_6"
 
 # Michał Górny <mgorny@gentoo.org> (2013-08-10)
