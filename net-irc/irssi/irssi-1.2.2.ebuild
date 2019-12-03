@@ -35,8 +35,7 @@ DEPEND="
 
 RDEPEND="
 	${COMMON_DEPEND}
-	selinux? ( sec-policy/selinux-irc )
-	perl? ( !net-im/silc-client )"
+	selinux? ( sec-policy/selinux-irc )"
 
 RESTRICT="test"
 

@@ -38,8 +38,7 @@ DEPEND="
 
 RDEPEND="
 	${CDEPEND}
-	selinux? ( sec-policy/selinux-irc )
-	perl? ( !net-im/silc-client )"
+	selinux? ( sec-policy/selinux-irc )"
 
 src_prepare() {
 	sed -i -e /^autoreconf/d autogen.sh || die
