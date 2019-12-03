@@ -27,7 +27,7 @@ SRC_URI="
 "
 
 EMULTILIB_PKG="true"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
 
