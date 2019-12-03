@@ -128,11 +128,6 @@ app-text/pdfshuffler
 # Removal in 30 days.  Bug #695392.
 dev-python/quixote
 
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unresolved license issues.  No reply from the maintainer.
-# Removal in 30 days.  Bug #694268.
-dev-util/goland
-
 # Matt Turner <mattst88@gentoo.org> (2019-12-01)
 # browserpass ebuild ported to go-modules, so these modules now have no reverse
 # dependencies.
