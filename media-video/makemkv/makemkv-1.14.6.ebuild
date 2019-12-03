@@ -35,9 +35,15 @@ DEPEND="
 	!libressl? ( dev-libs/openssl:0=[-bindist(-)] )
 	libressl? ( dev-libs/libressl:0= )
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	media-video/ccextractor
-	net-misc/wget"
+	net-misc/wget
+"
+BDEPEND="
+	virtual/pkgconfig
+	gui? ( dev-qt/qtcore:5 )
+"
 
 CONFIG_CHECK="~CHR_DEV_SG"
 S="${WORKDIR}/${MY_P}"
