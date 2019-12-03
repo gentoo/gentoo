@@ -1233,6 +1233,11 @@
       <role>Lead ( Team Lead )</role>
     </member>
     <member>
+      <email>conikost@gentoo.org</email>
+      <name>Conrad Kostecki</name>
+      <role>Member ( general )</role>
+    </member>
+    <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
       <role>Member ( general )</role>
@@ -2731,6 +2736,11 @@
     <member>
       <email>candrews@gentoo.org</email>
       <name>Craig Andrews</name>
+      <role>Member</role>
+    </member>
+    <member>
+      <email>conikost@gentoo.org</email>
+      <name>Conrad Kostecki</name>
       <role>Member</role>
     </member>
     <member>
