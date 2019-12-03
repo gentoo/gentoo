@@ -35,6 +35,10 @@ python_prepare_all() {
 		-e '/tests_require/d' \
 		-i setup.py || die
 
+	# fix casing of call to Windows-1252. Remove when upstream fixes casing.
+	sed -i -e 's/encutils.tryEncodings(test)/encutils.tryEncodings(test).lower()/' \
+	src/cssutils/tests/test_encutils/__init__.py || die "fixing test_encutils failed"
+
 	distutils-r1_python_prepare_all
 }
 
