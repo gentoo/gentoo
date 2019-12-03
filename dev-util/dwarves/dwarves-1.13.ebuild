@@ -17,6 +17,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/elfutils-0.131
+	<=dev-libs/elfutils-0.177
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
 
