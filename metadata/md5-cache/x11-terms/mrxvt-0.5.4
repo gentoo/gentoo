@@ -1,7 +1,8 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=png? ( media-libs/libpng ) utempter? ( sys-libs/libutempter ) jpeg? ( virtual/jpeg ) truetype? ( x11-libs/libXft media-libs/fontconfig media-libs/freetype elibc_uclibc? ( dev-libs/libiconv ) ) x11-libs/libX11 x11-libs/libXt xpm? ( x11-libs/libXpm ) x11-libs/libXrender x11-base/xorg-proto >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=png? ( media-libs/libpng ) utempter? ( sys-libs/libutempter ) jpeg? ( virtual/jpeg ) truetype? ( x11-libs/libXft media-libs/fontconfig media-libs/freetype elibc_uclibc? ( dev-libs/libiconv ) ) x11-libs/libX11 x11-libs/libXt xpm? ( x11-libs/libXpm ) x11-libs/libXrender x11-base/xorg-proto
 DESCRIPTION=Multi-tabbed rxvt clone with XFT, transparent background and CJK support
-EAPI=4
+EAPI=7
 HOMEPAGE=http://materm.sourceforge.net/
 IUSE=debug png jpeg session truetype menubar utempter xpm l10n_el l10n_ja l10n_ko l10n_th l10n_zh-CN l10n_zh-TW
 KEYWORDS=alpha amd64 ~mips ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
@@ -9,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=png? ( media-libs/libpng ) utempter? ( sys-libs/libutempter ) jpeg? ( virtual/jpeg ) truetype? ( x11-libs/libXft media-libs/fontconfig media-libs/freetype elibc_uclibc? ( dev-libs/libiconv ) ) x11-libs/libX11 x11-libs/libXt xpm? ( x11-libs/libXpm ) x11-libs/libXrender
 SLOT=0
 SRC_URI=mirror://sourceforge/materm/mrxvt-0.5.4.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=00aa61387ef9d96f13b323e938205234
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=8dafe6c26e5fbe02e8eb6c9c163a24e9
