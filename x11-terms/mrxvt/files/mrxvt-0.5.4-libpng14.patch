@@ -1,7 +1,7 @@
 http://repos.archlinux.org/wsvn/packages/mrxvt/trunk/libpng14.patch
 
---- configure.ac
-+++ configure.ac
+--- ./configure.ac
++++ ./configure.ac
 @@ -952,7 +952,7 @@
  if test "x$support_png" = "xyes"; then
      AC_CHECK_LIB(
@@ -11,8 +11,8 @@ http://repos.archlinux.org/wsvn/packages/mrxvt/trunk/libpng14.patch
          [],
          [support_png=no],
          [-lz -lm]
---- src/mpng.c
-+++ src/mpng.c
+--- ./src/mpng.c
++++ ./src/mpng.c
 @@ -83,7 +83,7 @@
      display_depth = XDefaultDepth(display,XDefaultScreen(display));
  
