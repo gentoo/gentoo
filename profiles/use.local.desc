@@ -1111,7 +1111,6 @@ app-office/calligra:spacenav - Enable support for the 3Dconnexion spacenav input
 app-office/calligraplan:activities - Enable kactivities support
 app-office/calligraplan:holidays - Enable kde-frameworks/kholidays integration
 app-office/calligraplan:kwallet - Enable access to encrypted OpenDocument files with kde-frameworks/kwallet storage
-app-office/calligraplan:pim - Enable support for KDE PIM resources integration
 app-office/glabels:barcode - Enable barcode support through external libraries.
 app-office/gnucash:aqbanking - Connect to some internet banks via AqBanking
 app-office/gnucash:chipcard - Enable support for chipcard reading and processing.
@@ -3607,7 +3606,6 @@ kde-apps/cantor:julia - Enable dev-lang/julia backend support
 kde-apps/cantor:markdown - Enable Markdown support via app-text/discount
 kde-apps/cantor:qalculate - Enable sci-libs/libqalculate backend support
 kde-apps/dolphin:activities - Track which folders are frequently accessed on a Plasma desktop
-kde-apps/dolphin:thumbnail - Enables thumbnail generation
 kde-apps/gwenview:activities - Enable kactivities support
 kde-apps/gwenview:fits - Enable support for NASA's sci-libs/cfitsio library
 kde-apps/gwenview:kipi - Enable support for the KDE Image Plugin Interface
@@ -3676,7 +3674,6 @@ kde-apps/kopete:gadu - Enable the Gadu protocol handler.
 kde-apps/kopete:groupwise - Enable the Groupwise protocol handler.
 kde-apps/kopete:highlight - Allows you to specify highlights on specific events.
 kde-apps/kopete:history - Enables saving chat history.
-kde-apps/kopete:jingle - Enable voice calls for jabber
 kde-apps/kopete:latex - Embed latex formatted text into messages.
 kde-apps/kopete:meanwhile - Enable the Sametime protocol handler.
 kde-apps/kopete:nowlistening - Shows song you currently listen to in your status/etc. Bindings for many players.
@@ -3718,7 +3715,6 @@ kde-apps/okular:plucker - Enable Plucker E-Book for Palm OS devices support
 kde-apps/okular:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/okular:speech - Enable text-to-speech support
 kde-apps/pimcommon:designer - Build plugins for dev-qt/designer
-kde-apps/pimcommon:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/spectacle:kipi - Enable support for the KDE Image Plugin Interface
 kde-apps/spectacle:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
@@ -3728,8 +3724,6 @@ kde-frameworks/kcompletion:designer - Build plugins for dev-qt/designer
 kde-frameworks/kconfigwidgets:designer - Build plugins for dev-qt/designer
 kde-frameworks/kconfigwidgets:man - Build and install man pages
 kde-frameworks/kded:man - Build and install man pages
-kde-frameworks/kdesignerplugin:designer - Build KF5 widgets plugin for QtDesigner
-kde-frameworks/kdesignerplugin:webkit - Build kdewebkit plugin for QtDesigner
 kde-frameworks/kdewebkit:designer - Build plugins for dev-qt/designer
 kde-frameworks/kfilemetadata:epub - Enable support for reading EPUB ebook metadata
 kde-frameworks/kfilemetadata:office - Enable support for reading ODF and OOXML metadata
