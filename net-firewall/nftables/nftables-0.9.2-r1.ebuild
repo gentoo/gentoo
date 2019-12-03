@@ -15,7 +15,7 @@ SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~sparc ~x86"
-IUSE="debug +doc +gmp json +modern_kernel python +readline static-libs xtables"
+IUSE="debug +doc +gmp json +modern-kernel python +readline static-libs xtables"
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.3:0=
@@ -52,8 +52,8 @@ python_make() {
 
 pkg_setup() {
 	if kernel_is ge 3 13; then
-		if use modern_kernel && kernel_is lt 3 18; then
-			eerror "The modern_kernel USE flag requires kernel version 3.18 or newer to work properly."
+		if use modern-kernel && kernel_is lt 3 18; then
+			eerror "The modern-kernel USE flag requires kernel version 3.18 or newer to work properly."
 		fi
 		CONFIG_CHECK="~NF_TABLES"
 		linux-info_pkg_setup
@@ -101,7 +101,7 @@ src_compile() {
 src_install() {
 	default
 
-	local mksuffix="$(usex modern_kernel '-mk' '')"
+	local mksuffix="$(usex modern-kernel '-mk' '')"
 
 	exeinto /usr/libexec/${PN}
 	newexe "${FILESDIR}"/libexec/${PN}${mksuffix}.sh ${PN}.sh

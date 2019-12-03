@@ -12,7 +12,7 @@ SRC_URI="https://git.netfilter.org/nftables/snapshot/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ia64 x86"
-IUSE="debug doc +gmp json +modern_kernel +readline"
+IUSE="debug doc +gmp json +modern-kernel +readline"
 
 RDEPEND=">=net-libs/libmnl-1.0.3:0=
 	gmp? ( dev-libs/gmp:0= )
@@ -31,8 +31,8 @@ S="${WORKDIR}/v${PV}"
 
 pkg_setup() {
 	if kernel_is ge 3 13; then
-		if use modern_kernel && kernel_is lt 3 18; then
-			eerror "The modern_kernel USE flag requires kernel version 3.18 or newer to work properly."
+		if use modern-kernel && kernel_is lt 3 18; then
+			eerror "The modern-kernel USE flag requires kernel version 3.18 or newer to work properly."
 		fi
 		CONFIG_CHECK="~NF_TABLES"
 		linux-info_pkg_setup
@@ -62,7 +62,7 @@ src_install() {
 	default
 
 	local mksuffix=""
-	use modern_kernel && mksuffix="-mk"
+	use modern-kernel && mksuffix="-mk"
 
 	exeinto /usr/libexec/${PN}
 	newexe "${FILESDIR}"/libexec/${PN}${mksuffix}.sh ${PN}.sh
