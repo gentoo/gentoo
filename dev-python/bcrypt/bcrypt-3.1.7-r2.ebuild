@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
 
 inherit distutils-r1
 
@@ -14,7 +14,6 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 SLOT="0"
 LICENSE="Apache-2.0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris"
-IUSE="test"
 
 COMMON_DEPEND="
 	$(python_gen_cond_dep '>=dev-python/cffi-1.1:=[${PYTHON_USEDEP}]' 'python*')
@@ -23,12 +22,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( >=dev-python/pytest-3.2.1[${PYTHON_USEDEP}] )
 "
 RDEPEND="${COMMON_DEPEND}"
 
-RESTRICT="!test? ( test )"
-
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests pytest
