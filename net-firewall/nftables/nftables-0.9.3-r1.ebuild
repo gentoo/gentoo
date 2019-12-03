@@ -66,9 +66,9 @@ src_prepare() {
 	default
 
 	# fix installation path for doc stuff
-	sed '/^pkgsysconfdir/s@${sysconfdir}.*$@${docdir}@' \
+	sed '/^pkgsysconfdir/s@${sysconfdir}.*$@${docdir}/skels@' \
 		-i files/nftables/Makefile.am || die
-	sed '/^pkgsysconfdir/s@${sysconfdir}.*$@${docdir}/osf@' \
+	sed '/^pkgsysconfdir/s@${sysconfdir}.*$@${docdir}/skels/osf@' \
 		-i files/osf/Makefile.am || die
 
 	eautoreconf
@@ -83,7 +83,7 @@ src_configure() {
 		$(use_enable doc man-doc)
 		$(use_with !gmp mini_gmp)
 		$(use_with json)
-		$(use_with readline cli readline)
+		$(use_with readline cli)
 		$(use_enable static-libs static)
 		$(use_with xtables)
 	)
