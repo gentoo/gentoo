@@ -2178,7 +2178,7 @@ app-misc/worker 3.8.3: Worker Filemanager: Amiga Directory Opus 4 clone
 app-misc/workrave 1.10.20: Helpful utility to attack Repetitive Strain Injury (RSI)
 app-misc/xmind 3.5.3.201506180105-r2 3.7.6_p201801311814: A brainstorming and mind mapping software tool
 app-misc/yagtd 0.3.4-r1: CLI todo list manager based on the 'Getting Things Done' philosophy
-app-misc/yq 2.7.1-r1 2.7.2 2.8.0 2.9.2: Command-line YAML processor - jq wrapper for YAML documents
+app-misc/yq 2.7.1-r1 2.7.2 2.8.0 2.9.2 2.9.2-r1: Command-line YAML processor - jq wrapper for YAML documents
 app-misc/ytree 1.99_p2 2.00: A curses-based file manager
 app-misc/yworklog 0.0.7: Stack based utility with CLI interface helping to monitor time spent on tasks
 app-misc/zisofs-tools 1.0.8: User utilities for zisofs
@@ -8793,7 +8793,7 @@ dev-python/pyzmq 16.0.2 17.1.0: Lightweight and super-fast messaging library bui
 dev-python/pyzor 1.0.0-r1: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1 6.1: QR Code generator on top of PIL
-dev-python/qscintilla-python 2.10.8 2.11.1-r1: Python bindings for QScintilla
+dev-python/qscintilla-python 2.10.8 2.11.1-r1 2.11.3: Python bindings for QScintilla
 dev-python/qserve 0.2.8-r1: A job queue server
 dev-python/qtawesome 0.4.4 0.5.2: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.3.1 4.3.1-r1: Qt-based console for Jupyter with support for rich media output
@@ -9208,7 +9208,7 @@ dev-python/xlsxwriter 0.7.8 0.9.8: Python module for creating Excel XLSX files
 dev-python/xlutils 1.7.1 2.0.0-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 1.2.0 1.3.0: Python library to create spreadsheet files compatible with Excel
 dev-python/xmlschema 1.0.16: An XML Schema validator and decoder
-dev-python/xmltodict 0.11.0 0.12.0: Makes working with XML feel like you are working with JSON
+dev-python/xmltodict 0.11.0 0.12.0 0.12.0-r1: Makes working with XML feel like you are working with JSON
 dev-python/xstatic 1.0.1: XStatic base package with minimal support code
 dev-python/xstatic-bootstrap-scss 3.3.7.1: XStatic Bootstrap-SCSS package
 dev-python/xstatic-datatables 1.10.15.1: XStatic DataTables package
@@ -18610,7 +18610,7 @@ x11-libs/neXtaw 0.15.1-r3: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.42.4-r2: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.38.4 9999: Low-level pixel manipulation routines
-x11-libs/qscintilla 2.10.8 2.11.1: Qt port of Neil Hodgson's Scintilla C++ editor control
+x11-libs/qscintilla 2.10.8 2.11.1 2.11.3: Qt port of Neil Hodgson's Scintilla C++ editor control
 x11-libs/qtermwidget 0.9.0 0.14.1 9999: Qt terminal emulator widget
 x11-libs/qwt 6.1.3-r2: 2D plotting library for Qt5
 x11-libs/qwtpolar 1.1.1-r2: Library for displaying values on a polar coordinate system
