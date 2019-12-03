@@ -23,7 +23,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug +module +tools module-src"
 
-DEPEND="tools? ( net-libs/libmnl )"
+DEPEND="tools? ( net-libs/libmnl net-firewall/iptables )"
 RDEPEND="${DEPEND}"
 
 MODULE_NAMES="wireguard(kernel/drivers/net:src)"
@@ -41,6 +41,9 @@ pkg_setup() {
 			wg_quick_optional_config_nob IP_ADVANCED_ROUTER
 			wg_quick_optional_config_nob IP_MULTIPLE_TABLES
 			wg_quick_optional_config_nob NETFILTER_XT_MARK
+			wg_quick_optional_config_nob NETFILTER_XT_CONNMARK
+			wg_quick_optional_config_nob IP6_NF_RAW
+			wg_quick_optional_config_nob IP_NF_RAW
 		fi
 
 		linux-mod_pkg_setup
@@ -60,6 +63,7 @@ src_install() {
 	if use tools; then
 		dodoc README.md
 		dodoc -r contrib/examples
+		sed -i 's/iptables-restore -nw/iptables-restore -n/g' src/tools/wg-quick/linux.bash || die "Unable to patch wg-quick"
 		emake \
 			WITH_BASHCOMPLETION=yes \
 			WITH_SYSTEMDUNITS=yes \
