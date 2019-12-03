@@ -82,7 +82,7 @@ multilib_src_install_all() {
 		# seems to work fine without any path
 		sed -i \
 			-e "s:/usr/lib/alsa-lib/::" \
-			"${ED%/}"/usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf || die #410261
+			"${ED}"/usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf || die #410261
 	fi
 
 	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die

@@ -85,8 +85,8 @@ multilib_src_install_all() {
 		# seems to work fine without any path
 		sed -i \
 			-e "s:/usr/lib/alsa-lib/::" \
-			"${ED%/}"/usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf || die #410261
-		dosym "${ED%/}"/usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf \
+			"${ED}"/usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf || die #410261
+		dosym ../../../usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf \
 			/etc/alsa/conf.d/51-pulseaudio-probe.conf #670960
 	fi
 
