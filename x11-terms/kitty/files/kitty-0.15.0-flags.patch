@@ -14,7 +14,7 @@ Respect user CFLAGS.
 @@ -217,7 +217,7 @@
      cflags = os.environ.get(
          'OVERRIDE_CFLAGS', (
-             '-Wextra {} -Wno-missing-field-initializers -Wall -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -std=c11'
+             '-Wextra {} -Wno-missing-field-initializers -Wall -Wstrict-prototypes -std={}11'
 -            ' -pedantic-errors -Werror {} {} -fwrapv {} {} -pipe {} -fvisibility=hidden'
 +            ' -pedantic-errors {} {} -fwrapv {} {} {} -fvisibility=hidden'
          ).format(
