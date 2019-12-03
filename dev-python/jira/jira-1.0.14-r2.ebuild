@@ -13,6 +13,8 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="magic jirashell kerberos oauth"
+REQUIRED_USE="kerberos? ( !python_targets_python2_7 )
+	jirashell? ( || ( $(python_gen_useflags -3) ) )"
 
 DEPEND="
 	>=dev-python/pbr-3.0[${PYTHON_USEDEP}]
@@ -26,8 +28,10 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	magic? ( dev-python/filemagic[${PYTHON_USEDEP}] )
 	jirashell? (
-		dev-python/ipython[${PYTHON_USEDEP}]
-		dev-python/requests-oauthlib[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/ipython[${PYTHON_USEDEP}]
+			dev-python/requests-oauthlib[${PYTHON_USEDEP}]
+		' -3)
 	)
 	kerberos? ( $(python_gen_cond_dep 'dev-python/requests-kerberos[${PYTHON_USEDEP}]' -3) )
 	oauth? (
@@ -35,5 +39,3 @@ RDEPEND="
 		dev-python/requests-oauthlib[${PYTHON_USEDEP}]
 	)
 	"
-
-REQUIRED_USE="kerberos? ( !python_targets_python2_7 )"
