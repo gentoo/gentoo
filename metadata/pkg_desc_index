@@ -2312,7 +2312,6 @@ app-portage/grs 0.6-r1 0.7 9999: Suite to build Gentoo Reference Systems
 app-portage/gs-elpa 0.1.3 0.1.3-r1 9999: g-sorcery backend for elisp packages
 app-portage/gverify 1 2: gentoo.git signature verification tool
 app-portage/hackport 0.5.1 0.5.2 0.5.3 0.5.4 0.5.5-r1 0.5.6 9999: Hackage and Portage integration tool
-app-portage/install-mask 0.1.1 9999: Handle INSTALL_MASK setting in make.conf
 app-portage/java-ebuilder 0.4.1 9999: Java team tool for semi-automatic creation of ebuilds from pom.xml
 app-portage/kuroo 0.90.5_p20180410 9999: Graphical Portage frontend based on KDE Frameworks
 app-portage/layman 2.0.0-r1 2.0.0-r3 2.2.0-r7 2.4.1-r1 2.4.2-r1 2.4.2-r2 9999: Tool to manage Gentoo overlays
@@ -3030,7 +3029,6 @@ dev-ada/aunit 2019-r1: Ada unit testing framework
 dev-ada/aws 2018-r2 2019-r1: A complete Web development framework
 dev-ada/gnat-suite-bin 2014 2016 2017 2018: GNAT Ada suite
 dev-ada/gnat_util 2017-r1 2017-r2 2018 2018-r1 2018-r2 2019 2019-r1: Provides access to GNAT compiler internals for AdaCore utilities
-dev-ada/gnatcoll 2017 2017-r1: GNAT Component Collection
 dev-ada/gnatcoll-bindings 2019-r1: GNAT Component Collection
 dev-ada/gnatcoll-core 2019-r1: GNAT Component Collection Core packages
 dev-ada/gnatcoll-db 2019: GNAT Component Collection
@@ -3038,7 +3036,6 @@ dev-ada/gnatmem 2019-r1: Monitors dynamic allocation and deallocation activity i
 dev-ada/gnatsymbolize 2019-r1: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2017-r2 2019 2019-r1: Multi-Language Management
 dev-ada/gps 2018-r2 2019: The GNAT Programming Studio
-dev-ada/gps-bin 2016 2016-r1: The GNAT Programming Studio
 dev-ada/gtkada 2017 2017-r1 2018-r1 2018-r2 2019 2019-r1: A complete Ada graphical toolkit
 dev-ada/langkit 2018 2019: A Python framework to generate language parsers
 dev-ada/libadalang 2018-r2 2019-r1: high performance semantic engine for the Ada programming language
@@ -7399,6 +7396,7 @@ dev-python/aiorpcX 0.10.2 0.17.0 0.18.3: Generic async RPC implementation, inclu
 dev-python/aiosmtpd 1.0 1.1: asyncio based SMTP server
 dev-python/aiotest 0.3: Test suite for an implementation of asyncio (PEP 3156)
 dev-python/alabaster 0.7.9 0.7.10 0.7.11: A configurable sidebar-enabled Sphinx theme
+dev-python/alagitpull 0.0.23: alabaster sub-theme used on git-pull docs
 dev-python/aldryn-boilerplates 0.7.5: Allows re-usable apps to provide sets of templates and staticfiles
 dev-python/aldryn-common 1.0.4: django CMS plugins with common utilities
 dev-python/alembic 0.9.3 0.9.5 0.9.7 1.0.8: database migrations tool, written by the author of SQLAlchemy
@@ -8034,7 +8032,7 @@ dev-python/jupyter_core 4.4.0 4.4.0-r1: Core common functionality of Jupyter pro
 dev-python/jwcrypto 0.4.2: Implements JWK,JWS,JWE specifications using python-cryptography
 dev-python/kafka-python 1.3.3: Kafka protocol support in Python
 dev-python/kaitaistruct 0.8: Kaitai Struct runtime for Python
-dev-python/kaptan 0.5.12: Configuration manager in your pocket
+dev-python/kaptan 0.5.12 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.2.1 2.5.0 2.6.1: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 12.12.1 13.2.0: A flexible Python Kconfig implementation
 dev-python/keepassx 0.1.0-r1: Python API and CLI for KeePassX
@@ -8067,7 +8065,7 @@ dev-python/libnatpmp 20130911 20140401-r1 20150609: Python module for libnatpmp,
 dev-python/libpillowfight 0.2.4 0.3.0: Small library containing various image processing algorithms
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
-dev-python/libtmux 0.8.2: python api for tmux
+dev-python/libtmux 0.8.2 0.8.2-r1: python api for tmux
 dev-python/libvirt-python 5.2.0 5.5.0 5.6.0 5.8.0 9999: libvirt Python bindings
 dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/libzilla 1.4 1.5: Library for managing Bugzilla bug reports from the CLI
@@ -8640,7 +8638,7 @@ dev-python/pytest-pep8 1.0.6 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.7.1 0.14.1: pytest plugin to check source code with pylint
 dev-python/pytest-pythonpath 0.7.1: pytest plugin for adding to the PYTHONPATH from command line or configs
 dev-python/pytest-qt 2.3.0-r2: pytest plugin for PyQt4 or PyQt5 applications
-dev-python/pytest-rerunfailures 2.1.0 7.0: py.test plugin to re-run tests to eliminate flaky failures
+dev-python/pytest-rerunfailures 2.1.0 7.0 8.0: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-runner 2.6.2 2.11.1 4.0 4.2: Adds support for tests during installation of setup.py files
 dev-python/pytest-salt 2019.2.1_p1: PyTest Salt Plugin
 dev-python/pytest-services 2.0.1: Collection of fixtures and utility functions to run service processes for pytest

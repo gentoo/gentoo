@@ -1373,10 +1373,6 @@ app-vim/youcompleteme:clang - Enable semantic support for C-family languages usi
 app-xemacs/xemacs-packages-all:mule - Add multi-language support to XEmacs
 dev-ada/gnat_util:shared - Build gnat_util shared library
 dev-ada/gnat_util:static-pic - Build gnat_util static library with pic code
-dev-ada/gnatcoll:projects - Adds support for projects
-dev-ada/gnatcoll:pygobject - Adds support for pygobject
-dev-ada/gnatcoll:shared - Build shared library
-dev-ada/gnatcoll:tools - Build associated tools
 dev-ada/gnatcoll-bindings:shared - Build shared library
 dev-ada/gnatcoll-bindings:static-pic - Build shared library
 dev-ada/gnatcoll-core:shared - Build shared library
