@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 		>=dev-python/pytest-3.2.1[${PYTHON_USEDEP}] )
 "
 
+PATCHES=( "${FILESDIR}/${P}-hypothesis-4.patch" )
+
 src_prepare() {
 	# For not using the bundled libsodium
 	export SODIUM_INSTALL=system
