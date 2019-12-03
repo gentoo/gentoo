@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="debug farstream test"
 
+REQUIRED_USE="test? ( farstream )"
+
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -48,7 +50,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 src_configure() {
