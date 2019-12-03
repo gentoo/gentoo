@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="perl python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="!<sys-apps/lm-sensors-3
+RDEPEND="
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
 RDEPEND+="
