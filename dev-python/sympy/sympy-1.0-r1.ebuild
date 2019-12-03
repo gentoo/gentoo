@@ -17,12 +17,13 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc examples gtk imaging ipython latex mathml opengl pdf png pyglet test texmacs theano"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	doc? ( || ( $(python_gen_useflags 'python2*') ) )"
+	doc? ( || ( $(python_gen_useflags 'python2*') ) )
+	ipython? ( || ( $(python_gen_useflags -3) ) )"
 
 RDEPEND="dev-python/mpmath[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=dev-python/pexpect-2.0[${PYTHON_USEDEP}]' python2_7)
 	imaging? ( dev-python/pillow[${PYTHON_USEDEP}] )
-	ipython? ( dev-python/ipython[${PYTHON_USEDEP}] )
+	ipython? ( $(python_gen_cond_dep 'dev-python/ipython[${PYTHON_USEDEP}]' -3) )
 	latex? (
 		virtual/latex-base
 		dev-texlive/texlive-fontsextra

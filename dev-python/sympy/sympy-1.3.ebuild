@@ -17,7 +17,8 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc examples gtk imaging ipython latex mathml opengl pdf png pyglet symengine test texmacs theano"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	doc? ( || ( $(python_gen_useflags 'python2*') ) )"
+	doc? ( || ( $(python_gen_useflags 'python2*') ) )
+	ipython? ( || ( $(python_gen_useflags -3) ) )"
 
 RESTRICT="test"
 # All tests actually pass, except a bunch of tests related to the deprecated pygletplot
@@ -26,7 +27,7 @@ RESTRICT="test"
 RDEPEND="dev-python/mpmath[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	imaging? ( dev-python/pillow[${PYTHON_USEDEP}] )
-	ipython? ( dev-python/ipython[${PYTHON_USEDEP}] )
+	ipython? ( $(python_gen_cond_dep 'dev-python/ipython[${PYTHON_USEDEP}]' -3) )
 	latex? (
 		virtual/latex-base
 		dev-texlive/texlive-fontsextra
