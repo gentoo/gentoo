@@ -14,8 +14,7 @@ IUSE="libressl"
 
 DEPEND="!libressl? ( >=dev-libs/openssl-0.9.6:0= )
 	libressl? ( dev-libs/libressl:0= )"
-RDEPEND="${DEPEND}
-	!<net-vpn/openvpn-2.3"
+RDEPEND="${DEPEND}"
 
 src_install() {
 	exeinto /usr/share/easy-rsa
