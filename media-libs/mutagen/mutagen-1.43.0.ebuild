@@ -1,10 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
-
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7,3_8} )
 inherit distutils-r1
 
 DESCRIPTION="Audio metadata tag reader and writer implemented in pure Python"
@@ -18,18 +17,24 @@ IUSE="doc test"
 
 # TODO: Missing support for >=dev-python/eyeD3-0.7 API
 # test? ( >=dev-python/eyeD3-0.7 )
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
+BDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	doc? ( dev-python/sphinx )
+	test? (
+		dev-python/hypothesis[${PYTHON_USEDEP}]
+		dev-python/pyflakes[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+	)
 "
+
+RESTRICT="!test? ( test )"
 
 python_compile_all() {
 	use doc && emake -C docs
 }
 
 python_test() {
-	esetup.py test
+	esetup.py test --no-quality
 }
 
 python_install_all() {
