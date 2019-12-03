@@ -4249,7 +4249,7 @@ dev-java/htmlparser-org 1.6: Java library used to parse HTML (from htmlparser.or
 dev-java/httpcomponents-client 4.5: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
-dev-java/icedtea 3.13.0: A harness to build OpenJDK using Free Software build tools and dependencies
+dev-java/icedtea 3.13.0 3.14.0: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-java/icedtea-bin 3.13.0: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
@@ -9256,7 +9256,7 @@ dev-qt/pixeltool 5.12.3 5.12.5 5.13.2: Qt screen magnifier
 dev-qt/qdbus 5.12.3 5.12.5 5.13.2: Interface to Qt applications communicating over D-Bus
 dev-qt/qdbusviewer 5.12.3 5.12.5 5.13.2: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.12.3 5.12.5 5.13.2: Qt documentation generator
-dev-qt/qt-creator 4.8.2 4.10.0_rc1 4.10.1 9999: Lightweight IDE for C++/QML development centering around Qt
+dev-qt/qt-creator 4.8.2 4.10.1 9999: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.12.3_p201904161302 5.12.5_p201908230013 5.13.2_p201910220817: Qt5 documentation, for use with Qt Creator and other tools
 dev-qt/qt3d 5.12.3 5.12.5 5.13.2: 3D rendering module for the Qt5 framework
 dev-qt/qtbluetooth 5.12.3 5.12.5 5.13.2: Bluetooth support library for the Qt5 framework
