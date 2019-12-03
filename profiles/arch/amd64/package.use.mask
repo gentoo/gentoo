@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2019-12-10)
+# The JIT feature only works on amd64 and x86.
+app-emulation/aranym -jit
+
 # Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
 # dev-python/pandas is keyworded for amd64
 sys-block/fio -gnuplot
