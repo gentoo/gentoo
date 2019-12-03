@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,15 +23,29 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug +module +tools module-src"
 
-DEPEND="tools? ( net-libs/libmnl )"
+DEPEND="tools? ( net-libs/libmnl net-firewall/iptables )"
 RDEPEND="${DEPEND}"
 
 MODULE_NAMES="wireguard(kernel/drivers/net:src)"
 BUILD_TARGETS="module"
 CONFIG_CHECK="NET INET NET_UDP_TUNNEL CRYPTO_BLKCIPHER"
 
+wg_quick_optional_config_nob() {
+	CONFIG_CHECK="$CONFIG_CHECK ~$1"
+	declare -g ERROR_$1="CONFIG_$1: This option is required for automatic routing of default routes inside of wg-quick(8), though it is not required for general WireGuard usage."
+}
+
 pkg_setup() {
 	if use module; then
+		if use tools; then
+			wg_quick_optional_config_nob IP_ADVANCED_ROUTER
+			wg_quick_optional_config_nob IP_MULTIPLE_TABLES
+			wg_quick_optional_config_nob NETFILTER_XT_MARK
+			wg_quick_optional_config_nob NETFILTER_XT_CONNMARK
+			wg_quick_optional_config_nob IP6_NF_RAW
+			wg_quick_optional_config_nob IP_NF_RAW
+		fi
+
 		linux-mod_pkg_setup
 		kernel_is -lt 3 10 0 && die "This version of ${PN} requires Linux >= 3.10"
 	fi
