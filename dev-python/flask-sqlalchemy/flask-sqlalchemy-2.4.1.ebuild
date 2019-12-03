@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} pypy )
 
 inherit distutils-r1
@@ -20,6 +21,8 @@ IUSE="doc test"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/flask-0.10[${PYTHON_USEDEP}]
+	dev-python/pallets-sphinx-themes[${PYTHON_USEDEP}]
+	dev-python/sphinx-issues[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.8.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
