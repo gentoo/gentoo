@@ -17,12 +17,14 @@ SLOT="$(ver_cut 1)"
 DESCRIPTION="Prebuilt Java JDK binaries provided by AdoptOpenJDK"
 HOMEPAGE="https://adoptopenjdk.net"
 SRC_URI="
+	$(abi_uri arm)
+	$(abi_uri aarch64 arm64)
 	$(abi_uri ppc64le ppc64)
 	$(abi_uri x64 amd64)
 "
 
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 
 IUSE="alsa cups examples +gentoo-vm headless-awt nsplugin selinux source +webstart"
 
