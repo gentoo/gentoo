@@ -23,6 +23,7 @@ fi
 
 DEPEND=""
 RDEPEND=""
+RESTRICT="!test? ( test )"
 
 multilib_src_configure() {
 	local mycmakeargs=(
