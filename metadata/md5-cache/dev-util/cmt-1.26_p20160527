@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm
+DEPEND=emacs? ( virtual/emacs )
+DESCRIPTION=Cross platform configuration management environment
+EAPI=7
+HOMEPAGE=http://www.cmtsite.net/
+IUSE=emacs java doc
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=CeCILL-2
+RDEPEND=emacs? ( virtual/emacs ) java? ( virtual/jdk )
+SLOT=0
+SRC_URI=http://www.cmtsite.net/v1r26p20160527/CMTv1r26p20160527.tar.gz
+_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=193d644c6e590991179a4ff751de2f2b

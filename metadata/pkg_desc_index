@@ -10587,7 +10587,7 @@ dev-util/cmake 3.13.5 3.14.6 3.14.7 3.15.4 3.15.5 3.16.0: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
-dev-util/cmt 1.26: Cross platform configuration management environment
+dev-util/cmt 1.26 1.26_p20160527: Cross platform configuration management environment
 dev-util/coccigrep 1.13: A semantic grep for the C language
 dev-util/coccinelle 1.0.5 1.0.6 1.0.8: Program matching and transformation engine
 dev-util/codeblocks 17.12 17.12-r1 17.12-r300 17.12-r301 9999: The open source, cross platform, free C, C++ and Fortran IDE
@@ -15163,7 +15163,7 @@ net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
 net-misc/anydesk 4.0.1-r1 5.0.0 5.1.2 5.5.0: Feature rich multi-platform remote desktop application
-net-misc/apt-cacher-ng 3.2_p2-r2 3.3_p1 3.3_p1-r1: Yet another caching HTTP proxy for Debian/Ubuntu software packages
+net-misc/apt-cacher-ng 3.2_p2-r2 3.3_p1 3.3_p1-r1 3.3_p2: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.12.2 3.17.11: Sweeps up stray ARP queries from a peering LAN
@@ -15664,7 +15664,7 @@ net-vpn/i2pd 2.27.0 2.28.0 2.29.0: A C++ daemon for accessing the I2P anonymous 
 net-vpn/iodine 0.7.0-r2: IP over DNS tunnel
 net-vpn/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-vpn/isatapd 0.9.7-r2: Creates and maintains an ISATAP tunnel (rfc5214)
-net-vpn/libreswan 3.27 3.29: IPsec implementation for Linux, fork of Openswan
+net-vpn/libreswan 3.29: IPsec implementation for Linux, fork of Openswan
 net-vpn/logmein-hamachi 2.1.0.174 2.1.0.198: LogMeIn Hamachi VPN tunneling engine
 net-vpn/networkmanager-fortisslvpn 1.2.6 1.2.8: NetworkManager Fortinet SSLVPN compatible plugin
 net-vpn/networkmanager-l2tp 1.2.12: NetworkManager L2TP plugin
