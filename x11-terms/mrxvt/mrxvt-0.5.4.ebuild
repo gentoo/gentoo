@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 inherit autotools eutils
 
 DESCRIPTION="Multi-tabbed rxvt clone with XFT, transparent background and CJK support"
@@ -31,8 +31,9 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-001-fix-segfault-when-wd-empty.patch \
-		"${FILESDIR}"/${P}-libpng14.patch
+	eapply "${FILESDIR}"/${P}-001-fix-segfault-when-wd-empty.patch
+	eapply "${FILESDIR}"/${P}-libpng14.patch
+	eapply_user
 
 	eautoreconf
 
