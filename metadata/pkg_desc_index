@@ -13304,7 +13304,7 @@ media-libs/libuvc 0.0.6-r1: A cross-platform library for USB video devices, buil
 media-libs/libv4l 1.6.2 1.10.1 1.16.3 1.16.6: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.1.7 9999: Library parsing the file format of MS Visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
-media-libs/libvorbis 1.3.6: The Ogg Vorbis sound file format library
+media-libs/libvorbis 1.3.6 1.3.6-r1: The Ogg Vorbis sound file format library
 media-libs/libvpx 1.5.0 1.6.0-r1 1.6.1 1.7.0 1.8.0 1.8.0-r1: WebM VP8 and VP9 Codec SDK
 media-libs/libwebp 1.0.2 1.0.3: A lossy image compression format
 media-libs/libwmf 0.2.8.4-r7: A library for reading vector images in Microsoft's Windows Metafile Format (WMF)
