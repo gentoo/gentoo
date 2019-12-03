@@ -25,8 +25,6 @@ DEPEND="${RDEPEND}
 		dev-python/wheel[${PYTHON_USEDEP}]
 	)"
 
-distutils_enable_tests unittest
-
 python_prepare_all() {
 	sed -e 's:unittest.main():unittest.main(verbosity=2):' \
 		-i test/test.py || die
