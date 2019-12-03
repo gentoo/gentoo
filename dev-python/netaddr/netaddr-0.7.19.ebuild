@@ -15,8 +15,14 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="cli test"
+REQUIRED_USE="cli? ( || ( $(python_gen_useflags -3) ) )"
 
-RDEPEND="cli? ( >=dev-python/ipython-0.13.1-r1[${PYTHON_USEDEP}] )"
+RDEPEND="
+	cli? (
+		$(python_gen_cond_dep '
+			>=dev-python/ipython-0.13.1-r1[${PYTHON_USEDEP}]
+		' -3)
+	)"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
