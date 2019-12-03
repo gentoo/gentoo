@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.10-CVE-2019-6128-pal2rgb-leak.patch
 	"${FILESDIR}"/${PN}-4.0.10-CVE-2019-7663-tiffcpIntegerOverflow.patch
 	"${FILESDIR}"/${P}-CVE-2019-14973-fix-integer-overflow.patch
+	"${FILESDIR}"/${PN}-4.0.10-CVE-2019-17546-tif_getimage-overflow.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
