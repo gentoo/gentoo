@@ -21,10 +21,15 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug +module +tools module-src"
+IUSE="debug +module module-src +tools +wg-quick"
 
-DEPEND="tools? ( net-libs/libmnl net-firewall/iptables )"
+DEPEND="
+	tools? ( net-libs/libmnl )
+	wg-quick? ( net-firewall/iptables )
+"
 RDEPEND="${DEPEND}"
+
+REQUIRED_USE="wg-quick? ( tools )"
 
 MODULE_NAMES="wireguard(kernel/drivers/net:src)"
 BUILD_TARGETS="module"
@@ -67,7 +72,7 @@ src_install() {
 		emake \
 			WITH_BASHCOMPLETION=yes \
 			WITH_SYSTEMDUNITS=yes \
-			WITH_WGQUICK=yes \
+			WITH_WGQUICK=$(usex wg-quick yes no) \
 			DESTDIR="${D}" \
 			BASHCOMPDIR="$(get_bashcompdir)" \
 			PREFIX="${EPREFIX}/usr" \
