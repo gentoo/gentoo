@@ -43,7 +43,7 @@ BDEPEND="
 		dev-python/pathlib2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-4.0.0[${PYTHON_USEDEP}]
 		<dev-python/pytest-mock-2.0[${PYTHON_USEDEP}]
-		=dev-python/tox-${PV}[${PYTHON_USEDEP}]
+		=dev-python/tox-${PV}-${PR}[${PYTHON_USEDEP}]
 	)"
 
 PATCHES=(
