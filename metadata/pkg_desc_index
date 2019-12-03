@@ -1860,7 +1860,7 @@ app-metrics/elasticsearch_exporter 1.0.2 1.0.4_rc1 1.1.0_rc1 1.1.0: Elasticsearc
 app-metrics/github-exporter 04 04-r1: Github statistics exporter for prometheus
 app-metrics/grok_exporter 0.2.6: Unstructured log data exporter for Prometheus
 app-metrics/memcached_exporter 0.5.0: Prometheus exporter for memcached
-app-metrics/mongodb_exporter 0.6.2: Prometheus exporter for MongoDB
+app-metrics/mongodb_exporter 0.6.2-r1: Prometheus exporter for MongoDB
 app-metrics/mysqld_exporter 0.10.0-r1 0.11.0: Prometheus exporter for MySQL server metrics
 app-metrics/nginx-lua-prometheus 0.1_pre20170610: Library that exports Nginx metrics to Prometheus
 app-metrics/nginx-vts-exporter 0.10.3: Nginx virtual host traffic stats exporter for Prometheus
@@ -5347,7 +5347,7 @@ dev-ml/lwt_ssl 1.0.1 1.1.1: GLib integration for Lwt
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.5: Error-recovering streaming HTML5 and XML parsers
 dev-ml/mccs 1.1.2c: Multi Criteria CUDF Solver
-dev-ml/menhir 20170712 20171013 20181006: LR(1) parser generator for the OCaml language
+dev-ml/menhir 20170712 20171013 20181006 20190924: LR(1) parser generator for the OCaml language
 dev-ml/merlin 2.5.3 2.5.4 2.5.5 3.0.0 3.0.1 3.0.2 3.0.3: Context sensitive completion for OCaml in Vim and Emacs
 dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
@@ -9078,7 +9078,7 @@ dev-python/toolz 0.8.0 0.8.2 0.9.0: List processing tools and functional utiliti
 dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
 dev-python/toro 1.0.1: Synchronization primitives for Tornado coroutines
 dev-python/towncrier 19.2.0: Building newsfiles for your project
-dev-python/tox 2.9.1 3.2.1 3.12.1 3.13.2: virtualenv-based automation of test activities
+dev-python/tox 2.9.1 3.2.1 3.12.1 3.13.2 3.14.2: virtualenv-based automation of test activities
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
 dev-python/tqdm 4.23.3 4.33.0 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
@@ -10589,7 +10589,7 @@ dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
 dev-util/cmt 1.26: Cross platform configuration management environment
 dev-util/coccigrep 1.13: A semantic grep for the C language
-dev-util/coccinelle 1.0.5 1.0.6: Program matching and transformation engine
+dev-util/coccinelle 1.0.5 1.0.6 1.0.8: Program matching and transformation engine
 dev-util/codeblocks 17.12 17.12-r1 17.12-r300 17.12-r301 9999: The open source, cross platform, free C, C++ and Fortran IDE
 dev-util/colm 0.13.0.4 0.13.0.5 0.13.0.6 0.13.0.6-r1: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
@@ -15001,7 +15001,7 @@ net-libs/libsoup 2.58.2 2.62.3 2.64.2 2.66.2 2.66.3 2.66.4: HTTP client/server l
 net-libs/libsrsirc 0.0.14-r1: A lightweight, cross-platform IRC library
 net-libs/libsrtp 1.6.0 1.6.0-r1 2.2.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.9.0 0.9.2 9999: Access a working SSH implementation by means of a library
-net-libs/libssh2 1.9.0 1.9.0-r1 1.9.0_p20190913 9999: Library implementing the SSH2 protocol
+net-libs/libssh2 1.9.0_p20190913 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 1.1.4: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix

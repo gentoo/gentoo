@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=>=dev-lang/ocaml-4.02:=[ocamlopt?] dev-ml/ocamlbuild >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=LR(1) parser generator for the OCaml language
+EAPI=7
+HOMEPAGE=http://gallium.inria.fr/~fpottier/menhir/
+IUSE=examples +ocamlopt
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+LICENSE=GPL-2 LGPL-2-with-linking-exception
+RDEPEND=>=dev-lang/ocaml-4.02:=[ocamlopt?]
+SLOT=0/20190924
+SRC_URI=https://gitlab.inria.fr/fpottier/menhir/-/archive/20190924/menhir-20190924.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	findlib	45d6030075064a68da8d7143726a1150
+_md5_=a2c8f8e83bf085a5da7ea17054528fae
