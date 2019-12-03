@@ -14,6 +14,8 @@ SLOT="0/11" # libnftnl.so version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="examples static-libs test"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND=">=net-libs/libmnl-1.0.3"
 BDEPEND="virtual/pkgconfig"
 DEPEND="${RDEPEND}"
