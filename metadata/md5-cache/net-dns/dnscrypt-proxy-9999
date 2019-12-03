@@ -1,6 +1,6 @@
-BDEPEND=>=dev-lang/go-1.10 virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install postinst prepare test unpack
-DEPEND=>=dev-lang/go-1.12 filecaps? ( sys-libs/libcap )
+BDEPEND=>=dev-lang/go-1.13 >=dev-lang/go-1.12 virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=filecaps? ( sys-libs/libcap )
 DESCRIPTION=A flexible DNS proxy, with support for encrypted DNS protocols
 EAPI=7
 HOMEPAGE=https://github.com/jedisct1/dnscrypt-proxy
@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=acct-group/dnscrypt-proxy acct-user/dnscrypt-proxy
 RESTRICT=strip
 SLOT=0
-_eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	git-r3	562b380fc59ae6a8622171d0acb777d1	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=92b40f68aeb53e315788eaf8f39d4934
+_eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	git-r3	562b380fc59ae6a8622171d0acb777d1	go-module	ab2b956f1b3888b8418581b8662fe211	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=2f2f9c27d769d946e63679d615bafa91

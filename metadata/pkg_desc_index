@@ -14649,7 +14649,7 @@ net-dns/ddclient 3.9.0-r2 3.9.0-r3: Perl client used to update dynamic DNS entri
 net-dns/djbdns 1.05-r33: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r2: A caching DNS proxy server
 net-dns/dnscap 1.10.2 1.10.3: Network capture utility designed specifically for DNS traffic
-net-dns/dnscrypt-proxy 2.0.19 2.0.25 2.0.25-r2 2.0.27 2.0.28 2.0.29 2.0.31 2.0.33 9999: A flexible DNS proxy, with support for encrypted DNS protocols
+net-dns/dnscrypt-proxy 2.0.19 2.0.25 2.0.25-r2 2.0.27 2.0.28 2.0.29 2.0.31 2.0.33 2.0.34 9999: A flexible DNS proxy, with support for encrypted DNS protocols
 net-dns/dnsdist 1.3.3-r1 9999: A highly DNS-, DoS- and abuse-aware loadbalancer
 net-dns/dnshijacker 1.3-r2: a libnet/libpcap based packet sniffer and spoofer
 net-dns/dnsimple-dyndns 0.1: Dynamic DNS implementation, that relies on DNSimple.com
