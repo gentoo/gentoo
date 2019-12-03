@@ -5,10 +5,10 @@ DESCRIPTION=LAME Ain't an MP3 Encoder
 EAPI=7
 HOMEPAGE=http://lame.sourceforge.net/
 IUSE=debug cpu_flags_x86_mmx +frontend mp3rtp sndfile static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_riscv_lp64d abi_riscv_lp64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm arm64 ~hppa ia64 ~mips ~ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=LGPL-2.1
 RDEPEND=frontend? ( >=sys-libs/ncurses-5.7-r7:0= sndfile? ( >=media-libs/libsndfile-1.0.2 ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/lame/lame-3.100.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=4ab7a7af924d10bda1ebe3c373e830a0
+_md5_=fbff9d41efd6f0ea695597c02235c982
