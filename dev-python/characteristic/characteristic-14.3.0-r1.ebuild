@@ -22,6 +22,8 @@ DEPEND="
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
+RESTRICT="!test? ( test )"
+
 python_prepare_all() {
 	# Prevent un-needed download during build
 	sed -e "/^    'sphinx.ext.intersphinx',/d" -i docs/conf.py || die
