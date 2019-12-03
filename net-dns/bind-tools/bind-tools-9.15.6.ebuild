@@ -34,8 +34,7 @@ COMMON_DEPEND="
 
 DEPEND="${COMMON_DEPEND}"
 
-RDEPEND="${COMMON_DEPEND}
-	!<net-dns/bind-9.10.2"
+RDEPEND="${COMMON_DEPEND}"
 
 BDEPEND="virtual/pkgconfig"
 
