@@ -14,6 +14,7 @@ HOMEPAGE="https://libreswan.org/"
 LICENSE="GPL-2 BSD-4 RSA DES"
 SLOT="0"
 IUSE="caps curl dnssec ldap pam seccomp selinux systemd test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/gmp:0=
