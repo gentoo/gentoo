@@ -5,7 +5,7 @@ DESCRIPTION=GNU debugger
 EAPI=7
 HOMEPAGE=https://sourceware.org/gdb/
 IUSE=+client lzma multitarget nls +python +server source-highlight test vanilla xml python_targets_python2_7 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 python_single_target_python2_7 python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7
-KEYWORDS=~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv s390 ~sh ~sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2 LGPL-2
 RDEPEND=client? ( dev-libs/mpfr:0= >=sys-libs/ncurses-5.2-r2:0= sys-libs/readline:0= lzma? ( app-arch/xz-utils ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python3_6? ( dev-lang/python:3.6 ) python_single_target_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_8(-),python_single_target_python2_7(+)?,python_single_target_python3_5(+)?,python_single_target_python3_6(+)?,python_single_target_python3_7(+)?] ) xml? ( dev-libs/expat ) sys-libs/zlib ) source-highlight? ( dev-util/source-highlight )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python2_7 python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 ) ) || ( client server )
@@ -13,4 +13,4 @@ RESTRICT=hppa? ( test ) ia64? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=mirror://gnu/gdb/gdb-8.3.1.tar.xz ftp://sourceware.org/pub/gdb/releases/gdb-8.3.1.tar.xz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	02ef27875ec5afcc2202b9d062d57f07	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=801aa561f877b226515874f3d2f0b7b8
+_md5_=0d2ebe4616e81ac61b5d58f655a8e833

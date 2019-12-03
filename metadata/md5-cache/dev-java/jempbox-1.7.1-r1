@@ -4,10 +4,10 @@ DESCRIPTION=An open source Java library for parsing font files
 EAPI=7
 HOMEPAGE=https://pdfbox.apache.org/
 IUSE=elibc_FreeBSD doc source test elibc_FreeBSD
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=BSD
 RDEPEND=>=virtual/jre-1.8 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=1.7
 SRC_URI=mirror://apache/pdfbox/1.7.1/pdfbox-1.7.1-src.zip
 _eclasses_=java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	82402a1c36ab4bf38f3313a543f9e827	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=3a8d15bdbddbf888f8ebd1f4719e383b
+_md5_=21159a2c08ba683736340c4837d890b4
