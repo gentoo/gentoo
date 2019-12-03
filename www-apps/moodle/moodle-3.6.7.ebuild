@@ -29,7 +29,6 @@ PHP_OPTIONAL_FLAGS="gd,intl,soap,ssl,tokenizer,xmlrpc"
 PHP_FLAGS="${PHP_REQUIRED_FLAGS},${PHP_OPTIONAL_FLAGS}"
 
 IUSE="${DB_TYPES} ${AUTHENTICATION_MODES} vhosts"
-REQUIRED_USE="|| ( ${DB_TYPES} )"
 
 # No forced dependency on
 #  mssql? - lives on a windows server
@@ -57,14 +56,13 @@ pkg_setup() {
 		fi
 	done
 
-	# REQUIRED_USE above guarantees that ${DB_COUNT} cannot be zero
-	#if [[ ${DB_COUNT} -eq 0 ]]; then
-	#	eerror
-	#	eerror "No database selected in your USE flags,"
-	#	eerror "You must select at least one."
-	#	eerror
-	#	die
-	#fi
+	if [[ ${DB_COUNT} -eq 0 ]]; then
+		eerror
+		eerror "No database selected in your USE flags,"
+		eerror "You must select at least one."
+		eerror
+		die
+	fi
 
 	if [[ ${DB_COUNT} -gt 1 ]]; then
 		MYDB=""
