@@ -9124,7 +9124,7 @@ dev-python/tzlocal 1.2: tzinfo object for the local timezone
 dev-python/u-msgpack 2.4.1 2.5.2: A portable, lightweight MessagePack serializer and deserializer
 dev-python/ufoLib 3.0.0: A low-level UFO reader and writer
 dev-python/uhashring 1.0: Full featured consistent hashing python library compatible with ketama
-dev-python/ujson 1.33 1.35: Ultra fast JSON encoder and decoder for Python
+dev-python/ujson 1.33 1.35 1.35-r1: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.0.1: Python module for calculations with uncertainties
 dev-python/uncompyle6 2.10.1: Python cross-version byte-code deparser
 dev-python/unicodecsv 0.14.1: Drop-in replacement for python stdlib csv module supporting unicode
