@@ -35,6 +35,7 @@ BDEPEND="
 [[ ${PV} == *9999 ]] && BDEPEND+=" $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')"
 
 python_check_deps() {
+	[[ ${PV} == *9999 ]] || return 0
 	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
 
