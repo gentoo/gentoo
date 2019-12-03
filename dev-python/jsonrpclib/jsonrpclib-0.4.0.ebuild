@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/tcalmant/jsonrpclib/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~mips ~x86"
+	KEYWORDS="amd64 ~arm ~mips ~x86"
 fi
 
 DESCRIPTION="python implementation of the JSON-RPC spec (1.0 and 2.0)"
