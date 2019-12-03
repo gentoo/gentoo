@@ -19,6 +19,8 @@ DEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/characteristic[${PYTHON_USEDEP}] )"
 
+RESTRICT="!test? ( test )"
+
 python_prepare_all() {
 	sed -i -e "/--benchmark-disable/d" setup.cfg || die
 	rm -rf tests/test_perf.py || die
