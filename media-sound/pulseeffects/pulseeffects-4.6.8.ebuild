@@ -11,9 +11,9 @@ HOMEPAGE="https://github.com/wwmm/pulseeffects"
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="${HOMEPAGE}"
+	EGIT_REPO_URI="https://github.com/wwmm/pulseeffects"
 else
-	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/wwmm/pulseeffects/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 x86"
 fi
 
