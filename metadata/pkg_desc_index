@@ -9675,7 +9675,7 @@ dev-ruby/ast 2.4.0: A library for working with abstract syntax trees
 dev-ruby/astrolabe 1.3.1: An object-oriented AST extension for Parser
 dev-ruby/async_sinatra 1.3.0: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.101: An atomic reference implementation for JRuby, Rubinius, and MRI
-dev-ruby/autoprefixer-rails 7.2.6 8.6.5 9.6.4 9.6.5 9.7.1 9.7.2: Add vendor prefixes to CSS rules using values from the Can I Use website
+dev-ruby/autoprefixer-rails 7.2.6 8.6.5 9.6.4 9.6.5 9.7.1 9.7.2 9.7.3: Add vendor prefixes to CSS rules using values from the Can I Use website
 dev-ruby/aws-eventstream 1.0.3: Amazon Web Services event stream library
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
 dev-ruby/aws-sdk 2.11.79: Official SDK for Amazon Web Services
@@ -9796,7 +9796,7 @@ dev-ruby/expression_parser 0.9.0_p20130518: A math parser
 dev-ruby/facter 3.9.2-r1 3.14.3 3.14.5 3.14.6 9999: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.19.2 0.20.0 0.20.1: A fake filesystem. Use it in your tests
-dev-ruby/faker 1.9.6-r1 2.6.0 2.7.0: A library for generating fake data such as names, addresses, and phone numbers
+dev-ruby/faker 1.9.6-r1 2.6.0 2.7.0 2.8.0: A library for generating fake data such as names, addresses, and phone numbers
 dev-ruby/fakeweb 1.3.0.20170806: Helper for faking web requests in Ruby
 dev-ruby/faraday 0.15.4: HTTP/REST API client library with pluggable components
 dev-ruby/faraday_middleware 0.13.1: Various middleware for Faraday
@@ -9947,7 +9947,7 @@ dev-ruby/minitest-hooks 1.5.0: Adds around and before_all/after_all/around_all h
 dev-ruby/minitest-power_assert 0.3.0: Power Assert for Minitest
 dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing them in MiniTest
 dev-ruby/mixlib-shellout 2.4.4 3.0.4: Run external commands on Unix or Windows
-dev-ruby/mocha 0.14.0 1.4.0 1.7.0 1.8.0 1.9.0: Mocking and stubbing using a syntax like that of JMock and SchMock
+dev-ruby/mocha 0.14.0 1.8.0 1.9.0 1.10.0: Mocking and stubbing using a syntax like that of JMock and SchMock
 dev-ruby/moneta 1.1.0 1.1.1: A unified interface to key/value stores
 dev-ruby/mqtt 0.5.0: Pure Ruby gem that implements the MQTT protocol
 dev-ruby/msgpack 1.2.10 1.3.0 1.3.1: Binary-based efficient data interchange format for ruby binding
