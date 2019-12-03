@@ -220,6 +220,10 @@ pkg_setup() {
 		if ! has usersandbox $FEATURES ; then
 			die "You must enable usersandbox as X server can not run as root!"
 		fi
+
+		if ! use clang ; then
+			die "Using GCC and PGO is currently broken!"
+		fi
 	fi
 
 	# Avoid PGO profiling problems due to enviroment leakage
