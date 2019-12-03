@@ -1,0 +1,15 @@
+always include ticlib even when progs are disabled
+
+https://bugs.gentoo.org/557360
+
+--- a/configure
++++ b/configure
+@@ -21312,7 +21312,7 @@ echo "$as_me:21311: checking for library subsets" >&5
+ echo $ECHO_N "checking for library subsets... $ECHO_C" >&6
+ LIB_SUBSETS=
+ 
+-if test "x$cf_with_progs" = xyes || test "$with_ticlib" != no || test "$with_termcap" != no; then
++if true; then
+ 	LIB_SUBSETS="${LIB_SUBSETS}ticlib"
+ 	if test "$with_ticlib" != no ; then
+ 		LIB_SUBSETS="${LIB_SUBSETS} "
