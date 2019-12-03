@@ -447,11 +447,6 @@ media-gfx/exiftags
 app-admin/certmgr
 app-admin/ksonnet
 
-# Alfredo Tupone <tupone@gentoo.org> (2019-11-03)
-# The binary for gps are included in dev-ada/gnat-suite-bin
-# Removal in 30 days.
-dev-ada/gps-bin
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
