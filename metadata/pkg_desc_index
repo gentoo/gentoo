@@ -7544,7 +7544,7 @@ dev-python/cfn-python-lint 0.21.6: CloudFormation Linter
 dev-python/cgroup-utils 0.6: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.1: Easy to use mocking, stubbing and spying framework
 dev-python/chameleon 2.25: Fast HTML/XML template compiler for Python
-dev-python/characteristic 14.3.0-r1 14.3.0-r2: Python attributes without the boilerplate
+dev-python/characteristic 14.3.0-r1 14.3.0-r2 14.3.0-r3: Python attributes without the boilerplate
 dev-python/chardet 3.0.4: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
@@ -7767,7 +7767,7 @@ dev-python/fedmsg 0.18.3: Fedora Messaging Client API
 dev-python/feedgenerator 1.9: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.2.1: Parse RSS and Atom feeds in Python
 dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
-dev-python/fields 5.0.0 5.0.0-r1: Container class boilerplate killer
+dev-python/fields 5.0.0 5.0.0-r1 5.0.0-r2: Container class boilerplate killer
 dev-python/figleaf 0.6.1-r1: Code coverage tool
 dev-python/filelock 3.0.10 3.0.12: A platform independent file lock for Python
 dev-python/filemagic 1.6: A Python API for libmagic, the library behind the Unix file command
