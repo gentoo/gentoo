@@ -7998,7 +7998,7 @@ dev-python/jaraco-stream 1.1.1 1.2-r1 2.0-r1: Routines for handling streaming da
 dev-python/jaraco-text 1.10.1-r1 3.1 3.2.0: Text utilities used by other projects by developer jaraco
 dev-python/jaxml 3.02-r1: XML generator written in Python
 dev-python/jdcal 1.0 1.2 1.4: Julian dates from proleptic Gregorian and Julian calendars
-dev-python/jedi 0.10.2 0.11.1 0.12.0 0.12.1: Autocompletion library for Python
+dev-python/jedi 0.10.2 0.11.1 0.12.0 0.12.1 0.15.1: Autocompletion library for Python
 dev-python/jeepney 0.3.1: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.7.2: Python module for doing approximate and phonetic matching of strings
 dev-python/jikanpy 3.4.1: Python wrapper for jikan.moe API.
@@ -8295,7 +8295,7 @@ dev-python/paramiko 2.4.2 2.6.0: SSH2 protocol library
 dev-python/paramunittest 0.2: Simple extension to have parametrized unit tests.
 dev-python/parsedatetime 2.4-r1: Parse human-readable date/time strings
 dev-python/parsley 1.3: A Pattern-Matching Language Based on OMeta and Python
-dev-python/parso 0.3.1 0.5.0 0.5.1: a python parser that supports error recovery and round-trip parsing
+dev-python/parso 0.3.1 0.5.0 0.5.1 0.5.1-r1: a python parser that supports error recovery and round-trip parsing
 dev-python/partd 0.3.2 0.3.8: Appendable key-value storage
 dev-python/parver 0.1.1: Parse and manipulate version numbers
 dev-python/passlib 1.7.1-r1 1.7.1-r2: Password hashing framework supporting over 20 schemes
