@@ -57,9 +57,14 @@ CDEPEND="
 	sys-libs/libcap
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
-	>=sys-libs/talloc-2.2.0[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.4.2[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.10.0[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.2.0[python?,${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.4.2[python?,${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.10.0[python?,${MULTILIB_USEDEP}]
+	python? (
+		>=sys-libs/talloc-2.2.0[${PYTHON_USEDEP}]
+		>=sys-libs/tdb-1.4.2[${PYTHON_USEDEP}]
+		>=sys-libs/tevent-0.10.0[${PYTHON_USEDEP}]
+	)
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libiconv
 	pam? ( sys-libs/pam )
