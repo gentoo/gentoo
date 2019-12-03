@@ -12468,7 +12468,7 @@ mail-client/alpine 2.00-r7 2.21.1 2.21.1-r1 2.21.1-r2: An easy to use text-based
 mail-client/balsa 2.5.6-r1: Email client for GNOME
 mail-client/bower 0.10 0.11: Curses terminal client for the Notmuch email system
 mail-client/claws-mail 3.17.3-r1 3.17.4 9999: An email client (and news reader) based on GTK+
-mail-client/clawsker 1.1.0: Applet to edit Claws Mail's hidden preferences
+mail-client/clawsker 1.1.0 1.3.1: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 1.0: CONE: COnsole News reader and Emailer
 mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on libEtPan
 mail-client/evolution 3.30.5 3.32.4: Integrated mail, addressbook and calendaring functionality
@@ -19107,7 +19107,7 @@ x11-terms/cool-retro-term 1.1.0 1.1.1: terminal emulator which mimics the look a
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.30.3 3.32.2: The Gnome Terminal
 x11-terms/guake 3.3.2 3.4.0-r1 3.6.1-r1 3.6.3 9999: Drop-down terminal for GNOME
-x11-terms/kitty 0.14.6-r1 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
+x11-terms/kitty 0.14.6-r1 0.15.0 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.22.0 1.22.1: The MATE Terminal
