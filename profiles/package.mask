@@ -447,22 +447,6 @@ media-gfx/exiftags
 app-admin/certmgr
 app-admin/ksonnet
 
-# Alfredo Tupone <tupone@gentoo.org> (2019-11-03)
-# No more needed. Substituted by dev-ada/gnatcoll-core and others
-# Removal in 30 days.
-dev-ada/gnatcoll
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-03)
-# Discontinued upstream.  Relies on app-portage/flaggie make.conf
-# editing support that was fragile and therefore was removed.
-# Removal in 30 days.  Bug #699244.
-app-portage/install-mask
-
-# Alfredo Tupone <tupone@gentoo.org> (2019-11-03)
-# The binary for gps are included in dev-ada/gnat-suite-bin
-# Removal in 30 days.
-dev-ada/gps-bin
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
