@@ -40,7 +40,7 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package networkmanager KF5NetworkManagerQt)
+		$(cmake_use_find_package networkmanager KF5NetworkManagerQt)
 	)
 
 	ecm_src_configure

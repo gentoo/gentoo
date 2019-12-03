@@ -40,9 +40,9 @@ RDEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package screencast PipeWire)
-		$(cmake-utils_use_find_package screencast GBM)
-		$(cmake-utils_use_find_package screencast Epoxy)
+		$(cmake_use_find_package screencast PipeWire)
+		$(cmake_use_find_package screencast GBM)
+		$(cmake_use_find_package screencast Epoxy)
 	)
 	ecm_src_configure
 }

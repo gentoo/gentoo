@@ -53,8 +53,8 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package share KF5Purpose)
-		$(cmake-utils_use_find_package webengine Qt5WebEngine)
+		$(cmake_use_find_package share KF5Purpose)
+		$(cmake_use_find_package webengine Qt5WebEngine)
 	)
 
 	ecm_src_configure

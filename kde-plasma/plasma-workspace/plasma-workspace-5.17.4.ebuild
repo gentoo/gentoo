@@ -129,6 +129,12 @@ PATCHES=(
 
 RESTRICT+=" test"
 
+# used for agent scripts migration
+OLDST=/etc/plasma/startup/10-agent-startup.sh
+NEWST=/etc/xdg/plasma-workspace/env/10-agent-startup.sh
+OLDSH=/etc/plasma/shutdown/10-agent-shutdown.sh
+NEWSH=/etc/xdg/plasma-workspace/shutdown/10-agent-shutdown.sh
+
 src_prepare() {
 	ecm_src_prepare
 
@@ -142,15 +148,15 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_xembed-sni-proxy=OFF
-		$(cmake-utils_use_find_package appstream AppStreamQt)
-		$(cmake-utils_use_find_package calendar KF5Holidays)
-		$(cmake-utils_use_find_package geolocation KF5NetworkManagerQt)
-		$(cmake-utils_use_find_package qalculate Qalculate)
-		$(cmake-utils_use_find_package qrcode KF5Prison)
-		$(cmake-utils_use_find_package semantic-desktop KF5Baloo)
+		$(cmake_use_find_package appstream AppStreamQt)
+		$(cmake_use_find_package calendar KF5Holidays)
+		$(cmake_use_find_package geolocation KF5NetworkManagerQt)
+		$(cmake_use_find_package qalculate Qalculate)
+		$(cmake_use_find_package qrcode KF5Prison)
+		$(cmake_use_find_package semantic-desktop KF5Baloo)
 	)
 
-	use gps && mycmakeargs+=( $(cmake-utils_use_find_package gps libgps) )
+	use gps && mycmakeargs+=( $(cmake_use_find_package gps libgps) )
 
 	ecm_src_configure
 }
@@ -158,22 +164,42 @@ src_configure() {
 src_install() {
 	ecm_src_install
 
-	# startup and shutdown scripts
-	insinto /etc/plasma/startup
-	doins "${FILESDIR}/10-agent-startup.sh"
+	# default startup and shutdown scripts
+	insinto "$(dirname ${NEWST})"
+	doins "${FILESDIR}/$(basename ${NEWST})"
 
-	insinto /etc/plasma/shutdown
-	doins "${FILESDIR}/10-agent-shutdown.sh"
+	insinto "$(dirname ${NEWSH})"
+	doins "${FILESDIR}/$(basename ${NEWSH})"
+	fperms +x "${NEWSH}"
+}
+
+pkg_preinst() {
+	ecm_pkg_preinst
+
+	# migrate existing agent scripts to new layout if no files there yet
+	if [[ -r "${EROOT}${OLDST}" && ! -f "${EROOT}${NEWST}" ]]; then
+		mkdir -p "${EROOT}$(dirname ${NEWST})" && cp "${EROOT}${OLDST}" "${EROOT}${NEWST}" && \
+		elog "${EROOT}${OLDST} has been migrated to ${EROOT}${NEWST}, please delete old file."
+	fi
+	if [[ -r "${EROOT}${OLDSH}" && ! -f "${EROOT}${NEWSH}" ]]; then
+		mkdir -p "${EROOT}$(dirname ${NEWSH})" && cp "${EROOT}${OLDSH}" "${EROOT}${NEWSH}" && \
+		chmod +x "${EROOT}${NEWSH}" && \
+		elog "${EROOT}${OLDSH} has been migrated to ${EROOT}${NEWSH}, please delete old file."
+	fi
 }
 
 pkg_postinst () {
 	ecm_pkg_postinst
 
-	elog "To enable gpg-agent and/or ssh-agent in Plasma sessions, do the following:"
-	elog " * Copy the necessary files to your home directory:"
-	elog "   - cp /etc/plasma/startup/10-agent-startup.sh ~/.config/plasma-workspace/env/"
-	elog "   - cp /etc/plasma/shutdown/10-agent-shutdown.sh ~/.config/plasma-workspace/shutdown/"
-	elog " * Edit 10-agent-startup.sh and uncomment the lines enabling ssh-agent."
-	elog " * In 10-agent-shutdown.sh uncomment the respective lines to properly kill"
-	elog "   the agent when the session ends."
+	# warn about any leftover user scripts
+	if [[ -d "${EROOT}"/etc/plasma/startup && -n "$(ls "${EROOT}"/etc/plasma/startup)" ]] || \
+	[[ -d "${EROOT}"/etc/plasma/shutdown && -n "$(ls "${EROOT}"/etc/plasma/shutdown)" ]]; then
+		elog "You appear to have scripts in ${EROOT}/etc/plasma/{startup,shutdown}."
+		elog "They will no longer work since plasma-workspace-5.17"
+	fi
+
+	elog " * Edit ${EROOT}${NEWST} and uncomment"
+	elog "   the lines enabling ssh-agent."
+	elog " * Edit ${EROOT}${NEWSH} uncomment"
+	elog "   the respective lines to properly kill the agent when the session ends."
 }

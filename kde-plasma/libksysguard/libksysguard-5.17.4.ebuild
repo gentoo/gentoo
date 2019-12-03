@@ -17,6 +17,11 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="minimal webengine X"
 
 RDEPEND="
+	>=dev-qt/qtdbus-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtnetwork-${QTMIN}:5
+	>=dev-qt/qtwebchannel-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=kde-frameworks/kauth-${KFMIN}:5
 	>=kde-frameworks/kcompletion-${KFMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
@@ -25,10 +30,6 @@ RDEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
-	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtnetwork-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
 	sys-libs/zlib
 	webengine? ( >=dev-qt/qtwebengine-${QTMIN}:5 )
 	X? (
@@ -47,9 +48,9 @@ PATCHES=( "${FILESDIR}/${PN}-5.16.0-no-detailed-mem-message.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package !minimal KF5Plasma)
-		$(cmake-utils_use_find_package webengine Qt5WebEngineWidgets)
-		$(cmake-utils_use_find_package X X11)
+		$(cmake_use_find_package !minimal KF5Plasma)
+		$(cmake_use_find_package webengine Qt5WebEngineWidgets)
+		$(cmake_use_find_package X X11)
 	)
 
 	ecm_src_configure

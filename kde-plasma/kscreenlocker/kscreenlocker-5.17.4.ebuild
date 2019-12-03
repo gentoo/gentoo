@@ -78,10 +78,10 @@ src_test() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package consolekit loginctl)
+		$(cmake_use_find_package consolekit loginctl)
 		-DPAM_REQUIRED=$(usex pam)
-		$(cmake-utils_use_find_package pam PAM)
-		$(cmake-utils_use_find_package seccomp Seccomp)
+		$(cmake_use_find_package pam PAM)
+		$(cmake_use_find_package seccomp Seccomp)
 	)
 	ecm_src_configure
 }

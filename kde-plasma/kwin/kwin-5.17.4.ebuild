@@ -102,7 +102,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package caps Libcap)
+		$(cmake_use_find_package caps Libcap)
 	)
 
 	ecm_src_configure

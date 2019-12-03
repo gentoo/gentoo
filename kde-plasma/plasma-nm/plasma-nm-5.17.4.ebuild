@@ -16,6 +16,12 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="modemmanager openconnect teamd"
 
 DEPEND="
+	>=app-crypt/qca-2.1.1:2[qt5(+)]
+	>=dev-qt/qtdbus-${QTMIN}:5
+	>=dev-qt/qtdeclarative-${QTMIN}:5[widgets]
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtnetwork-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=kde-frameworks/kcompletion-${KFMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
@@ -35,12 +41,6 @@ DEPEND="
 	>=kde-frameworks/networkmanager-qt-${KFMIN}:5[teamd=]
 	>=kde-frameworks/plasma-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
-	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtdeclarative-${QTMIN}:5[widgets]
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtnetwork-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=app-crypt/qca-2.1.1:2[qt5(+)]
 	net-misc/networkmanager[teamd=]
 	modemmanager? (
 		>=kde-frameworks/modemmanager-qt-${KFMIN}:5
@@ -54,14 +54,16 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
+	>=dev-qt/qtquickcontrols-${QTMIN}:5
+	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
 "
 
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_MODEMMANAGER_SUPPORT=$(usex !modemmanager)
-		$(cmake-utils_use_find_package modemmanager KF5ModemManagerQt)
-		$(cmake-utils_use_find_package openconnect OpenConnect)
+		$(cmake_use_find_package modemmanager KF5ModemManagerQt)
+		$(cmake_use_find_package openconnect OpenConnect)
 	)
 
 	ecm_src_configure

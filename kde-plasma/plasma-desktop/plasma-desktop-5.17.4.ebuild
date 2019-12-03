@@ -117,13 +117,13 @@ RDEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package fontconfig Fontconfig)
-		$(cmake-utils_use_find_package ibus IBus)
-		$(cmake-utils_use_find_package mouse Evdev)
-		$(cmake-utils_use_find_package mouse XorgLibinput)
-		$(cmake-utils_use_find_package scim SCIM)
-		$(cmake-utils_use_find_package semantic-desktop KF5Baloo)
-		$(cmake-utils_use_find_package touchpad Synaptics)
+		$(cmake_use_find_package fontconfig Fontconfig)
+		$(cmake_use_find_package ibus IBus)
+		$(cmake_use_find_package mouse Evdev)
+		$(cmake_use_find_package mouse XorgLibinput)
+		$(cmake_use_find_package scim SCIM)
+		$(cmake_use_find_package semantic-desktop KF5Baloo)
+		$(cmake_use_find_package touchpad Synaptics)
 	)
 
 	ecm_src_configure

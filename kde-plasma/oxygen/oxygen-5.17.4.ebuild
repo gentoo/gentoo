@@ -47,7 +47,7 @@ PDEPEND="
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package wayland KF5Wayland)
+		$(cmake_use_find_package wayland KF5Wayland)
 	)
 	ecm_src_configure
 }

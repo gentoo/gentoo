@@ -47,8 +47,8 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package caps libpcap)
-		$(cmake-utils_use_find_package lm-sensors Sensors)
+		$(cmake_use_find_package caps libpcap)
+		$(cmake_use_find_package lm-sensors Sensors)
 	)
 
 	ecm_src_configure

@@ -56,8 +56,8 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package kdesu KF5Su)
-		$(cmake-utils_use_find_package X Qt5X11Extras)
+		$(cmake_use_find_package kdesu KF5Su)
+		$(cmake_use_find_package X Qt5X11Extras)
 	)
 
 	ecm_src_configure
