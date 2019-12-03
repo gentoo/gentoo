@@ -29,6 +29,43 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2019-12-03)
+# TODO
+app-admin/docker-bench
+app-admin/go-updater
+app-admin/helm
+app-admin/kube-bench
+app-admin/linux-bench
+app-emulation/cadvisor
+app-emulation/cri-tools
+app-emulation/docker-proxy
+app-emulation/flannel
+app-emulation/img
+app-emulation/reg
+app-metrics/alertmanager
+app-metrics/blackbox_exporter
+app-metrics/burrow_exporter
+app-metrics/elasticsearch_exporter
+app-metrics/node_exporter
+app-metrics/prom2json
+app-metrics/prometheus
+app-metrics/pushgateway
+app-metrics/snmp_exporter
+app-shells/zsh-completions
+dev-go/goversion
+dev-python/docker-py
+dev-python/prometheus_client
+dev-util/drone
+dev-util/drone-cli
+dev-util/promu
+net-misc/istioctl
+sys-auth/docker_auth
+sys-cluster/kubeadm
+sys-cluster/kube-proxy
+sys-cluster/minikube
+sys-process/tini
+www-apps/grafana-bin
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-12-03)
 # Project does not exist anymore.
 # Removal in 30 days.  Bug #680452.
