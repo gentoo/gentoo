@@ -5,7 +5,7 @@ EAPI=7
 
 EGO_PN="github.com/jedisct1/${PN}"
 
-inherit fcaps golang-build systemd
+inherit fcaps go-module systemd
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -22,7 +22,7 @@ LICENSE="Apache-2.0 BSD ISC MIT MPL-2.0"
 SLOT="0"
 IUSE="pie"
 
-DEPEND=">=dev-lang/go-1.12"
+BDEPEND=">=dev-lang/go-1.13"
 
 RDEPEND="
 	acct-group/dnscrypt-proxy
@@ -32,33 +32,30 @@ RDEPEND="
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
 PATCHES=( "${FILESDIR}"/config-full-paths-r10.patch )
 
-src_prepare() {
-	default
-	# Create directory structure suitable for building
-	mkdir -p "src/${EGO_PN%/*}" || die
-	# fixes $GOPATH/go.mod exists but should not
-	rm go.mod || die
-	mv "${PN}" "src/${EGO_PN}" || die
-	mv "vendor" "src/${EGO_PN}" || die
-}
-
-src_configure() {
-	EGO_BUILD_FLAGS="-buildmode=$(usex pie pie default)"
+src_compile() {
+	pushd "${PN}" >/dev/null || die
+	go build -buildmode="$(usex pie pie default)" || die
+	popd >/dev/null || die
 }
 
 src_install() {
+	pushd "${PN}" >/dev/null || die
+
 	dobin dnscrypt-proxy
 
 	insinto /etc/dnscrypt-proxy
-	newins "src/${EGO_PN}"/example-dnscrypt-proxy.toml dnscrypt-proxy.toml
-	doins "src/${EGO_PN}"/example-{blacklist.txt,whitelist.txt}
-	doins "src/${EGO_PN}"/example-{cloaking-rules.txt,forwarding-rules.txt}
+	newins example-dnscrypt-proxy.toml dnscrypt-proxy.toml
+	doins example-{blacklist.txt,whitelist.txt}
+	doins example-{cloaking-rules.txt,forwarding-rules.txt}
+
+	popd >/dev/null || die
 
 	insinto /usr/share/dnscrypt-proxy
 	doins -r "utils/generate-domains-blacklists/."
 
 	newinitd "${FILESDIR}"/dnscrypt-proxy.initd-r1 dnscrypt-proxy
 	newconfd "${FILESDIR}"/dnscrypt-proxy.confd dnscrypt-proxy
+
 	systemd_newunit "${FILESDIR}"/dnscrypt-proxy.service dnscrypt-proxy.service
 	systemd_newunit "${FILESDIR}"/dnscrypt-proxy.socket dnscrypt-proxy.socket
 
@@ -70,6 +67,7 @@ src_install() {
 
 pkg_postinst() {
 	fcaps_pkg_postinst
+	go-module_pkg_postinst
 
 	if ! use filecaps; then
 		ewarn "'filecaps' USE flag is disabled"
