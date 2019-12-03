@@ -4628,7 +4628,7 @@ dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for 
 dev-lang/ispc 1.9.2 9999: Intel SPMD Program Compiler
 dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance programming language
 dev-lang/jimtcl 0.76 0.78-r2: Small footprint implementation of Tcl programming language
-dev-lang/jsonnet 0.12.1 0.13.0 0.14.0: A data templating language for app and tool developers
+dev-lang/jsonnet 0.14.0 0.14.0-r1: A data templating language for app and tool developers
 dev-lang/julia 1.1.0 1.1.1 1.2.0 9999: High-performance programming language for technical computing
 dev-lang/julia-bin 1.1.0 1.2.0: High-performance programming language for technical computing
 dev-lang/jwasm 2.11a-r1: MASM-compatible TASM-similar assembler (fork of Wasm)
