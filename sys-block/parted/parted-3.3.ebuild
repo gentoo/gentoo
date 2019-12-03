@@ -33,6 +33,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.2-po4a-mandir.patch
 )
 
+src_prepare() {
+	default
+	touch doc/pt_BR/Makefile.in || die
+}
+
 src_configure() {
 	use elibc_uclibc && append-libs -liconv
 	econf \
