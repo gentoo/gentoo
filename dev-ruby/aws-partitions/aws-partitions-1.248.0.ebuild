@@ -8,9 +8,11 @@ USE_RUBY="ruby24 ruby25 ruby26"
 # Not packaged and upstream not tagged.
 RUBY_FAKEGEM_RECIPE_TEST="none"
 
+RUBY_FAKEGEM_EXTRAINSTALL="partitions.json"
+
 inherit ruby-fakegem
 
-DESCRIPTION="Amazon Web Services event stream library"
+DESCRIPTION="Provides interfaces to enumerate AWS partitions, regions, and services"
 HOMEPAGE="https://aws.amazon.com/sdk-for-ruby/"
 
 LICENSE="Apache-2.0"
