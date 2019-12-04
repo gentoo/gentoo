@@ -1,0 +1,65 @@
+diff -ur a/passlib/utils/__init__.py b/passlib/utils/__init__.py
+--- a/passlib/utils/__init__.py	2019-11-19 11:41:26.000000000 -0800
++++ b/passlib/utils/__init__.py	2019-12-03 14:16:15.153791186 -0800
+@@ -57,7 +57,7 @@
+ )
+ from passlib.exc import ExpectedStringError
+ from passlib.utils.compat import (add_doc, join_bytes, join_byte_values,
+-                                  join_byte_elems, irange, imap, PY3, u,
++                                  join_byte_elems, irange, imap, PY3, PYPY, u,
+                                   join_unicode, unicode, byte_elem_value, nextgetter,
+                                   unicode_or_bytes_types,
+                                   get_method_function, suppress_cause)
+@@ -776,23 +776,41 @@
+
+     if PY3:
+         def safe_crypt(secret, hash):
+-            if isinstance(secret, bytes):
+-                # Python 3's crypt() only accepts unicode, which is then
+-                # encoding using utf-8 before passing to the C-level crypt().
+-                # so we have to decode the secret.
+-                orig = secret
++            if not PYPY:
++                if isinstance(secret, bytes):
++                    # Python 3's crypt() only accepts unicode, which is then
++                    # encoding using utf-8 before passing to the C-level crypt().
++                    # so we have to decode the secret.
++                    orig = secret
++                    try:
++                        secret = secret.decode("utf-8")
++                    except UnicodeDecodeError:
++                        return None
++                    assert secret.encode("utf-8") == orig, \
++                                "utf-8 spec says this can't happen!"
++                if _NULL in secret:
++                    raise ValueError("null character in secret")
++            else:
++                if isinstance(secret, str):
++                    orig = secret
++                    try:
++                        secret = secret.encode("utf-8")
++                    except UnicodeEncodeError:
++                        return None
++                    assert secret.decode("utf-8") == orig, \
++                                "utf-8 spec says this can't happen!"
+                 try:
+-                    secret = secret.decode("utf-8")
++                    if _NULL in secret.decode("utf-8"):
++                        raise ValueError("null character in secret")
+                 except UnicodeDecodeError:
+                     return None
+-                assert secret.encode("utf-8") == orig, \
+-                            "utf-8 spec says this can't happen!"
+-            if _NULL in secret:
+-                raise ValueError("null character in secret")
++
+             if isinstance(hash, bytes):
+                 hash = hash.decode("ascii")
+             result = _crypt(secret, hash)
+-            if not result or result[0] in _invalid_prefixes:
++            if PYPY and isinstance(result, bytes):
++                result = result.decode("utf-8")
++            if not result or result[0:1] in _invalid_prefixes:
+                 return None
+             return result
+     else:
