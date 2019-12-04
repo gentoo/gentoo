@@ -12,7 +12,7 @@ SRC_URI="https://github.com/magit/magit-popup/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 
 SITEFILE="50${PN}-gentoo.el"
 ELISP_TEXINFO="*.texi"
