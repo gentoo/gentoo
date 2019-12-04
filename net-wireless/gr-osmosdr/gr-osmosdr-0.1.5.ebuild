@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils python-single-r1
@@ -11,25 +11,20 @@ HOMEPAGE="http://sdr.osmocom.org/trac/wiki/GrOsmoSDR"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
-	SRC_URI=""
-	EGIT_REPO_URI="git://git.osmocom.org/${PN}.git"
-	KEYWORDS=""
+	EGIT_REPO_URI="https://github.com/osmocom/gr-osmosdr.git"
 else
-	#SRC_URI="http://cgit.osmocom.org/gr-osmosdr/snapshot/gr-osmosdr-${PV}.tar.xz"
-	#git clone git://git.osmocom.org/gr-osmosdr.git
-	#cd gr-osmosdr
-	#git archive --format=tar --prefix=gr-osmosdr-${PV}/ v${PV} | xz > ../gr-osmosdr-${PV}.tar.xz
-	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/gr-osmosdr-${PV}.tar.xz"
+	SRC_URI="https://github.com/osmocom/gr-osmosdr/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-IUSE="bladerf fcd hackrf iqbalance mirisdr python rtlsdr sdrplay soapy uhd"
+IUSE="airspy bladerf fcd hackrf iqbalance mirisdr python rtlsdr sdrplay soapy uhd"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
 	>=net-wireless/gnuradio-3.7_rc:0=[fcd?,${PYTHON_USEDEP}]
+	airspy? ( net-wireless/airspy )
 	bladerf? ( >=net-wireless/bladerf-2018.08_rc1:= )
 	hackrf? ( net-libs/libhackrf:= )
 	iqbalance? ( net-wireless/gr-iqbal:=[${PYTHON_USEDEP}] )
@@ -48,6 +43,7 @@ src_configure() {
 		-DENABLE_DEFAULT=OFF
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DENABLE_FILE=ON
+		-DENABLE_AIRSPY="$(usex airspy)"
 		-DENABLE_BLADERF="$(usex bladerf)"
 		-DENABLE_FCD="$(usex fcd)"
 		-DENABLE_HACKRF="$(usex hackrf)"
