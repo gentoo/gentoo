@@ -7498,7 +7498,7 @@ dev-python/bitarray 0.8.1 0.8.3: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.5: A pure Python module for creation and analysis of binary data
 dev-python/bjoern 1.3.2 1.4.3: A screamingly fast Python WSGI server written in C
 dev-python/blaze 0.10.2 0.11.3: Next generation Python numpy
-dev-python/bleach 2.1.3 3.0.2 3.1.0: an easy whitelist-based HTML-sanitizing tool
+dev-python/bleach 2.1.3 3.0.2 3.1.0-r1: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.6-r1 1.6.1 1.7: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4 1.4-r1: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 1.5.3-r1 1.5.4: Generate block-diagram image from text
@@ -8341,7 +8341,7 @@ dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
 dev-python/pip 9.0.1-r1 9.0.1-r2 19.1 19.3.1 19.3.1-r1: Installs python packages -- replacement for easy_install
 dev-python/pipenv 9.0.0 9.0.0-r1 9.0.0-r2: Python Development Workflow for Humans
 dev-python/pkgconfig 1.2.2 1.4.0: Interface Python with pkg-config
-dev-python/pkginfo 1.2.1 1.4.2: Provides an API for querying the distutils metadata written in a PKG-INFO file
+dev-python/pkginfo 1.2.1 1.4.2 1.5.0.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
 dev-python/pkipplib 0.07-r1: Pkipplib is a Python module which parses IPP requests
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
 dev-python/plotly 1.9.6: Browser-based graphing library for Python
@@ -8814,7 +8814,7 @@ dev-python/rax-default-network-flags-python-novaclient-ext 0.4.0: Disk Config ex
 dev-python/rax-scheduled-images-python-novaclient-ext 0.2.1 0.3.1: Adds backup-schedule extension support to python-novaclient
 dev-python/rdflib 4.2.1 4.2.2 4.2.2-r1: RDF library containing a triple store and parser/serializer
 dev-python/readlike 0.1.2 0.1.3: a python library similar to readline
-dev-python/readme_renderer 17.2 24.0: a library for rendering "readme" descriptions for Warehouse
+dev-python/readme_renderer 17.2 24.0-r1: a library for rendering "readme" descriptions for Warehouse
 dev-python/rebulk 0.9.0 9999: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.4.0 0.5.0_pre20180907 0.5.0_pre20181012 0.5.0_pre20181012-r1: Python docutils-compatibility bridge to CommonMark
 dev-python/reconfigure 0.1.79: An ORM for config files
@@ -9080,7 +9080,7 @@ dev-python/toro 1.0.1: Synchronization primitives for Tornado coroutines
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 2.9.1 3.2.1 3.12.1 3.13.2 3.14.2: virtualenv-based automation of test activities
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
-dev-python/tqdm 4.23.3 4.33.0 9999: Add a progress meter to your loops in a second
+dev-python/tqdm 4.23.3 4.33.0 4.40.0 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/traitlets 4.3.2: A configuration system for Python applications
 dev-python/transitions 0.7.1: A lightweight, object-oriented state machine implementation in Python
