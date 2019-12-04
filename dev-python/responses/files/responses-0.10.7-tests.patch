@@ -1,0 +1,12 @@
+diff --git a/test_responses.py b/test_responses.py
+index c2a4f01..2b85172 100644
+--- a/test_responses.py
++++ b/test_responses.py
+@@ -928,6 +928,7 @@ def _quote(s):
+     return responses.quote(responses._ensure_str(s))
+ 
+ 
++@pytest.mark.skipif(six.PY2, reason="Broken on python2")
+ def test_cookies_from_headers():
+     text = "こんにちは/世界"
+     quoted_text = _quote(text)
