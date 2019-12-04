@@ -1,0 +1,150 @@
+diff --git a/responses.py b/responses.py
+index 9c57301..83fef83 100644
+--- a/responses.py
++++ b/responses.py
+@@ -23,6 +23,10 @@
+     from requests.packages.urllib3.response import HTTPResponse
+ except ImportError:
+     from urllib3.response import HTTPResponse
++try:
++    from requests.packages.urllib3.connection import HTTPHeaderDict
++except ImportError:
++    from urllib3.connection import HTTPHeaderDict
+ 
+ if six.PY2:
+     from urlparse import urlparse, parse_qsl, urlsplit, urlunsplit
+@@ -309,11 +313,11 @@ def _url_matches(self, url, other, match_querystring=False):
+             return False
+ 
+     def get_headers(self):
+-        headers = {}
++        headers = HTTPHeaderDict()  # Duplicate headers are legal
+         if self.content_type is not None:
+             headers["Content-Type"] = self.content_type
+         if self.headers:
+-            headers.update(self.headers)
++            headers.extend(self.headers)
+         return headers
+ 
+     def get_response(self, request):
+@@ -372,11 +376,20 @@ def get_response(self, request):
+         status = self.status
+         body = _handle_body(self.body)
+ 
++        # The requests library's cookie handling depends on the response object
++        # having an original response object with the headers as the `msg`, so
++        # we give it what it needs.
++        orig_response = HTTPResponse(
++            body=body,  # required to avoid "ValueError: Unable to determine whether fp is closed."
++            msg=headers,
++            preload_content=False,
++        )
+         return HTTPResponse(
+             status=status,
+             reason=six.moves.http_client.responses.get(status),
+             body=body,
+             headers=headers,
++            original_response=orig_response,
+             preload_content=False,
+         )
+ 
+@@ -402,13 +415,22 @@ def get_response(self, request):
+             raise body
+ 
+         body = _handle_body(body)
+-        headers.update(r_headers)
+-
++        headers.extend(r_headers)
++
++        # The requests library's cookie handling depends on the response object
++        # having an original response object with the headers as the `msg`, so
++        # we give it what it needs.
++        orig_response = HTTPResponse(
++            body=body,  # required to avoid "ValueError: Unable to determine whether fp is closed."
++            msg=headers,
++            preload_content=False,
++        )
+         return HTTPResponse(
+             status=status,
+             reason=six.moves.http_client.responses.get(status),
+             body=body,
+             headers=headers,
++            original_response=orig_response,
+             preload_content=False,
+         )
+ 
+@@ -619,11 +641,6 @@ def _on_request(self, adapter, request, **kwargs):
+         if not match.stream:
+             response.content  # NOQA
+ 
+-        try:
+-            response.cookies = _cookies_from_headers(response.headers)
+-        except (KeyError, TypeError):
+-            pass
+-
+         response = resp_callback(response) if resp_callback else response
+         match.call_count += 1
+         self._calls.add(request, response)
+diff --git a/test_responses.py b/test_responses.py
+index c2a4f01..65904de 100644
+--- a/test_responses.py
++++ b/test_responses.py
+@@ -657,8 +657,56 @@ def run():
+         assert resp.status_code == status
+         assert "session_id" in resp.cookies
+         assert resp.cookies["session_id"] == "12345"
+-        assert resp.cookies["a"] == "b"
+-        assert resp.cookies["c"] == "d"
++        assert set(resp.cookies.keys()) == set(["session_id"])
++
++    run()
++    assert_reset()
++
++
++def test_response_secure_cookies():
++    body = b"test callback"
++    status = 200
++    headers = {"set-cookie": "session_id=12345; a=b; c=d; secure"}
++    url = "http://example.com/"
++
++    def request_callback(request):
++        return (status, headers, body)
++
++    @responses.activate
++    def run():
++        responses.add_callback(responses.GET, url, request_callback)
++        resp = requests.get(url)
++        assert resp.text == "test callback"
++        assert resp.status_code == status
++        assert "session_id" in resp.cookies
++        assert resp.cookies["session_id"] == "12345"
++        assert set(resp.cookies.keys()) == set(["session_id"])
++
++    run()
++    assert_reset()
++
++
++def test_response_cookies_multiple():
++    body = b"test callback"
++    status = 200
++    headers = [
++        ("set-cookie", "1P_JAR=2019-12-31-23; path=/; domain=.example.com; HttpOnly"),
++        ("set-cookie", "NID=some=value; path=/; domain=.example.com; secure"),
++    ]
++    url = "http://example.com/"
++
++    def request_callback(request):
++        return (status, headers, body)
++
++    @responses.activate
++    def run():
++        responses.add_callback(responses.GET, url, request_callback)
++        resp = requests.get(url)
++        assert resp.text == "test callback"
++        assert resp.status_code == status
++        assert set(resp.cookies.keys()) == set(["1P_JAR", "NID"])
++        assert resp.cookies["1P_JAR"] == "2019-12-31-23"
++        assert resp.cookies["NID"] == "some=value"
+ 
+     run()
+     assert_reset()
