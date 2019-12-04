@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Set, get or disable the value of the idle3 timer found on WD HDDs"
 HOMEPAGE="http://idle3-tools.sourceforge.net/"
-SRC_URI="https://www.bl4ckb0x.de/files/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~conikost/files/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
