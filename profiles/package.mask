@@ -60,16 +60,10 @@ app-misc/rq
 # sys-auth/docker_auth: #695298
 #
 # Removal in 30 days.
-app-admin/docker-bench
 app-admin/linux-bench
-app-emulation/cadvisor
 app-emulation/cri-tools
-app-emulation/reg
 dev-go/glide
-dev-util/drone
-dev-util/drone-cli
 net-misc/istioctl
-sys-auth/docker_auth
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-01)
 # Added in 2013 and not updated since.  Unmaintained upstream since
