@@ -5027,7 +5027,7 @@ dev-libs/libusb 1.0.19-r1 1.0.21-r1 1.0.22 1.0.23-r1: Userspace access to USB de
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
 dev-libs/libutf8proc 2.2.0_p1-r1 2.4.0: mapping tool for UTF-8 strings
-dev-libs/libuv 1.28.0 1.31.0 1.32.0 1.33.1 9999: Cross-platform asychronous I/O
+dev-libs/libuv 1.28.0 1.33.1 1.34.0 9999: Cross-platform asychronous I/O
 dev-libs/libvarlink 16: C implementation of the Varlink protocol and command line tool
 dev-libs/libverto 0.2.5-r1 0.3.0: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
