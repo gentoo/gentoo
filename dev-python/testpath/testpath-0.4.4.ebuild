@@ -8,7 +8,7 @@ PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6,7,8}} )
 inherit distutils-r1
 
 DESCRIPTION="Test utilities for code working with files and commands"
-HOMEPAGE="http://jupyter.org"
+HOMEPAGE="https://github.com/jupyter/testpath https://testpath.readthedocs.io/en/latest/"
 SRC_URI="https://github.com/jupyter/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
