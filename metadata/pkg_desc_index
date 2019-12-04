@@ -12472,7 +12472,7 @@ mail-client/clawsker 1.1.0 1.3.1: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 1.0: CONE: COnsole News reader and Emailer
 mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on libEtPan
 mail-client/evolution 3.30.5 3.32.4: Integrated mail, addressbook and calendaring functionality
-mail-client/geary 0.12.4 3.32.0-r1: A lightweight, easy-to-use, feature-rich email client
+mail-client/geary 0.12.4 3.32.0-r1 3.34.2: A lightweight, easy-to-use, feature-rich email client
 mail-client/hap 3.7-r1: A terminal mail notification program (replacement for biff)
 mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail

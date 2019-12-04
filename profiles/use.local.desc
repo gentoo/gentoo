@@ -3877,6 +3877,7 @@ mail-client/evolution:ldap - Enable support for fetching contacts from an LDAP o
 mail-client/evolution:spamassassin - Build mail-filter/spamassassin plugin
 mail-client/evolution:weather - Enable optional weather calendar support
 mail-client/evolution:ytnef - Enable optional TNEF attachments parser support using net-mail/ytnef
+mail-client/geary:ytnef - Enable optional TNEF attachments parser support using net-mail/ytnef
 mail-client/mail-notification:sylpheed - Enable support for MH mailboxes used by mail-client/sylpheed
 mail-client/mutt:berkdb - Enable sys-libs/db database backend for header caching
 mail-client/mutt:gdbm - Enable sys-libs/gdbm database backend for header caching
