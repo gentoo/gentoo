@@ -21,6 +21,8 @@ SLOT="2"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 IUSE=""
 
+ruby_add_bdepend "test? ( dev-ruby/bundler )"
+
 all_ruby_prepare() {
 	rm -f Gemfile.lock || die
 	sed -i -e '/\(focus\|reporters\|Reporters\)/ s:^:#:' Gemfile test/test_helper.rb || die
