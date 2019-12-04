@@ -338,6 +338,18 @@ cmake-utils_use_find_package() {
 	_cmake_use_me_now_inverted CMAKE_DISABLE_FIND_PACKAGE_ "$@" ;
 }
 
+# @FUNCTION: cmake_use_find_package
+# @USAGE: <USE flag> <package name>
+# @DESCRIPTION:
+# Alias for cmake-utils_use_find_package.
+cmake_use_find_package() {
+	if [[ "$#" != 2 ]] ; then
+		die "Usage: cmake_use_find_package <USE flag> <package name>"
+	fi
+
+	cmake-utils_use_find_package "$@" ;
+}
+
 # @FUNCTION: cmake-utils_use_disable
 # @USAGE: <USE flag> [flag name]
 # @DESCRIPTION:
