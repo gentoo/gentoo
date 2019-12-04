@@ -8003,7 +8003,7 @@ dev-python/jikanpy 3.4.1: Python wrapper for jikan.moe API.
 dev-python/jinja 2.10.1 2.10.3 2.10.3-r1: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
-dev-python/jira 1.0.5 1.0.10 1.0.10-r1 1.0.14 1.0.14-r1 1.0.14-r2: Python library for interacting with the JIRA REST API
+dev-python/jira 1.0.14-r2: Python library for interacting with the JIRA REST API
 dev-python/jmespath 0.9.3-r1: JSON Matching Expressions
 dev-python/joblib 0.10.0 0.11 0.12.2: Tools to provide lightweight pipelining in Python
 dev-python/jog 0.1.1: JSON Structured Logging for Python
@@ -8105,7 +8105,7 @@ dev-python/markdown2 2.3.0: Python Markdown language reimplementation
 dev-python/markups 2.0.0 3.0.0: A wrapper around various text markups
 dev-python/markupsafe 0.23 1.0 1.1.1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 2.20.2 3.0.1: A lightweight library for converting complex datatypes to and from native Python datatypes.
-dev-python/matplotlib 2.2.2-r1 2.2.4 9999: Pure python plotting library with matlab like syntax
+dev-python/matplotlib 2.2.2-r1 2.2.4: Pure python plotting library with matlab like syntax
 dev-python/matplotlib2tikz 0.6.18: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/matterhook 0.1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.2.1 0.6.1 0.6.1-r1: flake8 plugin: McCabe complexity checker
@@ -8184,7 +8184,7 @@ dev-python/nbval 0.7 0.9.1: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.4.0 0.4.2-r1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-python-client 0.3.1-r1 0.3.2-r1 0.4.0: Python client for Neovim
 dev-python/neovim-remote 1.8.6 2.1.0 2.1.7 2.2.1 9999: A tool that helps control neovim processes
-dev-python/netaddr 0.7.12 0.7.13 0.7.14 0.7.15 0.7.17 0.7.18 0.7.19: Network address representation and manipulation library
+dev-python/netaddr 0.7.19: Network address representation and manipulation library
 dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.6 0.10.7 0.10.9: Portable network interface information
 dev-python/netmiko 1.4.2 2.1.1: Multi-vendor library to simplify Paramiko SSH connections to network devices
@@ -8796,7 +8796,7 @@ dev-python/qrcode 5.1-r1 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.10.8 2.11.1-r1 2.11.3: Python bindings for QScintilla
 dev-python/qserve 0.2.8-r1: A job queue server
 dev-python/qtawesome 0.4.4 0.5.2: Enables iconic fonts such as Font Awesome in PyQt
-dev-python/qtconsole 4.3.1 4.3.1-r1: Qt-based console for Jupyter with support for rich media output
+dev-python/qtconsole 4.3.1: Qt-based console for Jupyter with support for rich media output
 dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
 dev-python/quixote 2.8: Python HTML templating framework for developing web applications
 dev-python/rackspace-auth-openstack 1.3 9999: Rackspace Auth Plugin for OpenStack Clients
@@ -8996,7 +8996,7 @@ dev-python/sphinxcontrib-serializinghtml 1.1.3: Sphinx extension which outputs o
 dev-python/sphinxcontrib-spelling 2.1.2 2.3.0 4.3.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.1.0: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
-dev-python/spyder 3.2.4 3.2.8 3.3.0 3.3.1 4.0.0_beta1 4.0.0_beta1-r1: The Scientific PYthon Development EnviRonment
+dev-python/spyder 3.2.4 3.2.8 3.3.0 3.3.1 4.0.0_beta1: The Scientific PYthon Development EnviRonment
 dev-python/spyder-kernels 0.2.4 1.0.1: Kernels used by spyder on its ipython console
 dev-python/sqlalchemy 0.7.10 1.2.18 1.3.3 1.3.4: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.7.2-r1 0.9.2 0.11.0 0.11.0-r1 0.12.0: SQLAlchemy Schema Migration Tools
@@ -9035,7 +9035,7 @@ dev-python/swagger-spec-validator 2.4.3: validate Swagger specs against Swagger 
 dev-python/sybil 1.2.0: Automated testing for the examples in your documentation
 dev-python/symboltype 1.0: Gives access to the peak.util.symbols module
 dev-python/symengine 0.3.0: Python wrappers to the symengine C++ library
-dev-python/sympy 1.0-r1 1.1.1 1.3: Computer Algebra System in pure Python
+dev-python/sympy 1.0-r1 1.3: Computer Algebra System in pure Python
 dev-python/tablib 0.12.1-r1: A format-agnostic tabular dataset library written in Python
 dev-python/tabulate 0.8.1 0.8.3: Pretty-print tabular data
 dev-python/tagpy 2018.1: Python Bindings for TagLib
@@ -18258,7 +18258,7 @@ www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible stat
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5 2.6.6 2.6.7: IP address and data center infrastructure management tool
 www-apps/nextcloud 14.0.14 15.0.12 15.0.13 16.0.5 16.0.6 17.0.0 17.0.1: Personal cloud that runs on your own server
-www-apps/nikola 7.8.8 7.8.11 7.8.12 7.8.13 7.8.14 7.8.14-r1 7.8.15 7.8.15-r1: A static website and blog generator
+www-apps/nikola 7.8.15 7.8.15-r1: A static website and blog generator
 www-apps/novnc 0.6.2 0.6.2-r1 1.0.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/otrs 5.0.25 6.0.3 6.0.4 6.0.5 6.0.7: An Open source Ticket Request System
 www-apps/owncloud 10.2.1 10.3.0-r1 10.3.1: Web-based storage application where all your data is under your own control
