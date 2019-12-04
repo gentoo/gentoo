@@ -8709,7 +8709,7 @@ dev-python/python-lzo 1.08-r1 1.11 1.12 1.12-r1: Python interface to lzo
 dev-python/python-magic 0.4.10 0.4.15 0.4.15-r1: Access the libmagic file type identification library
 dev-python/python-magnumclient 2.3.1 2.9.0 2.12.0: A client for the OpenStack Magnum API
 dev-python/python-manilaclient 1.14.0 1.21.0 1.27.0: A client for the OpenStack Manila API
-dev-python/python-markdown-math 0.6: Math extension for Python-Markdown
+dev-python/python-markdown-math 0.6-r1: Math extension for Python-Markdown
 dev-python/python-memcached 1.53-r1 1.58 1.59: Pure python memcached client
 dev-python/python-meteor 0.1.6: An event driven meteor client
 dev-python/python-mhash 1.4-r1: Python interface to libmhash
@@ -15917,7 +15917,7 @@ sci-astronomy/gnuastro 0.3: GNU Astronomy Utilities
 sci-astronomy/healpix 3.30 3.31: Hierarchical Equal Area isoLatitude Pixelization of a sphere
 sci-astronomy/idlastro 20161220 99999999: Astronomical user routines for IDL
 sci-astronomy/kapteyn 2.3: Collection of python tools for astronomy
-sci-astronomy/kstars 3.2.3 3.3.8: Desktop Planetarium
+sci-astronomy/kstars 3.2.3 3.3.8-r1: Desktop Planetarium
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
 sci-astronomy/montage 4.1 5.0: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
@@ -16418,7 +16418,7 @@ sci-libs/idlmarkwardt 20130418 20160319: Craig Markwardt IDL procedures (MPFIT, 
 sci-libs/ignition-math 4.0.0-r1: A small, fast, and high performance math library for robot applications
 sci-libs/iml 1.0.5: Integer Matrix Library
 sci-libs/inchi 1.04: Program and library for generating standard and non-standard InChI and InChIKeys
-sci-libs/indilib 1.7.5 1.8.2: INDI Astronomical Control Protocol library
+sci-libs/indilib 1.7.5 1.8.2-r1: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.14.7: General purpose trace and experiment file reading/writing interface
 sci-libs/ipopt 3.11.7 3.11.8 3.12.12: Interior-Point Optimizer for large-scale nonlinear optimization
 sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and communication
@@ -17012,7 +17012,7 @@ sys-apps/baselayout-prefix 2.2-r5 2.6-r1 2.6-r2: Filesystem baselayout and init 
 sys-apps/bat 0.12.0: cat(1) clone with syntax highlighting and Git integration
 sys-apps/biosdevname 0.7.2 0.7.3: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/biosdisk 0_p20171116: A script that creates floppy boot images to flash Dell BIOSes
-sys-apps/bleachbit 2.2 3.0: Clean junk to free disk space and to maintain privacy
+sys-apps/bleachbit 3.0: Clean junk to free disk space and to maintain privacy
 sys-apps/bolt 0.7 0.8: Userspace system daemon to enable security levels for Thunderbolt 3.
 sys-apps/bubblewrap 0.3.1-r1: Unprivileged sandboxing tool, namespaces-powered chroot-like solution
 sys-apps/busybox 1.30.1 1.31.1 9999: Utilities for rescue and embedded systems

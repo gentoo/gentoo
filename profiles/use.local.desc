@@ -7484,6 +7484,7 @@ sci-libs/gsl:deprecated - Enable deprecated functions
 sci-libs/hdf5:hl - Enable high level API (https://support.hdfgroup.org/HDF5/doc/HL/index.html)
 sci-libs/hypre:fei - Build the internal Finite Element Interface routines
 sci-libs/hypre:int64 - Build the 64 bits integer library
+sci-libs/indilib:websocket - Enable support for WebSocket protocol
 sci-libs/ipopt:hsl - hsl
 sci-libs/ipopt:mumps - Enable sci-libs/mumps support
 sci-libs/lapack:eselect-ldso - Enable runtime library switching by eselect and ld.so.
