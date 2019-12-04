@@ -3028,20 +3028,20 @@ dev-ada/asis 2016-r1 2019-r1: To develop tools for Ada software
 dev-ada/aunit 2019-r1: Ada unit testing framework
 dev-ada/aws 2018-r2 2019-r1: A complete Web development framework
 dev-ada/gnat-suite-bin 2014 2016 2017 2018: GNAT Ada suite
-dev-ada/gnat_util 2017-r1 2017-r2 2018 2018-r1 2018-r2 2019 2019-r1: Provides access to GNAT compiler internals for AdaCore utilities
+dev-ada/gnat_util 2017-r2 2018-r2 2019-r1: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll-bindings 2019-r1: GNAT Component Collection
 dev-ada/gnatcoll-core 2019-r1: GNAT Component Collection Core packages
 dev-ada/gnatcoll-db 2019: GNAT Component Collection
 dev-ada/gnatmem 2019-r1: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2019-r1: Translates addresses into filename, line number, and function names
-dev-ada/gprbuild 2017-r1 2017-r2 2019 2019-r1: Multi-Language Management
+dev-ada/gprbuild 2017-r2 2019-r1: Multi-Language Management
 dev-ada/gps 2018-r2 2019: The GNAT Programming Studio
-dev-ada/gtkada 2017 2017-r1 2018-r1 2018-r2 2019 2019-r1: A complete Ada graphical toolkit
+dev-ada/gtkada 2017-r1 2018-r2 2019-r1: A complete Ada graphical toolkit
 dev-ada/langkit 2018 2019: A Python framework to generate language parsers
 dev-ada/libadalang 2018-r2 2019-r1: high performance semantic engine for the Ada programming language
 dev-ada/libadalang-tools 2019-r1: Libadalang-based tools: gnatpp, gnatmetric and gnatstub
 dev-ada/libgpr 2019-r1: Ada library to handle GPRbuild project files
-dev-ada/xmlada 2018 2019 2019-r1: Set of modules that provide a simple manipulation of XML streams
+dev-ada/xmlada 2019-r1: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15-r1: Multi-platform class and template library
 dev-cpp/aixlog 1.2.1 9999: Header-only C++ logging library
 dev-cpp/antlr-cpp 2.7.7-r1 4.7.2: The ANTLR 4 C++ Runtime
@@ -15515,7 +15515,7 @@ net-news/amphetadesk 0.93.1-r1: AmphetaDesk is a free syndicated news aggregator
 net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12.3 1.12.5a 1.12.6b 1.12.7: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
-net-news/newsboat 2.13 2.16.1 2.17.1: An RSS/Atom feed reader for text terminals
+net-news/newsboat 2.13 2.17.1-r1: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.18.12 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.5.5 9999: A tiny RSS and Atom feed reader
@@ -16254,7 +16254,7 @@ sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping appl
 sci-geosciences/gdal-grass 2.1.3: GDAL plugin to access GRASS data
 sci-geosciences/geocode-glib 3.26.1: GLib helper library for geocoding services
 sci-geosciences/gmt 4.5.6 4.5.8 4.5.9 4.5.18: Powerful map generator
-sci-geosciences/gnome-maps 3.30.3.1: A map application for GNOME
+sci-geosciences/gnome-maps 3.30.3.1 3.34.2: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.17-r3 3.17-r4 3.18.1 3.19 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
