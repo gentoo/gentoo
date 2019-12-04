@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7})
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8})
 
 inherit distutils-r1
 
@@ -26,6 +26,8 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-python/hypothesis-3.27.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-3.2.1[${PYTHON_USEDEP}] )
 "
+
+PATCHES=( "${FILESDIR}/${P}-hypothesis-4.patch" )
 
 src_prepare() {
 	# For not using the bundled libsodium

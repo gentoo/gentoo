@@ -12,11 +12,12 @@ SRC_URI="https://github.com/${PN}/${PN/lib/}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="BSD GPL-2+ LGPL-2+ LGPL-2.1+"
 SLOT="0/1"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="ogg test"
+IUSE="ogg test websocket"
 
 RDEPEND="
 	net-misc/curl
 	sci-libs/cfitsio:=
+	sci-libs/fftw:3.0=
 	sci-libs/gsl:=
 	sci-libs/libnova:=
 	sys-libs/zlib
@@ -26,10 +27,12 @@ RDEPEND="
 		media-libs/libogg
 		media-libs/libtheora
 	)
+	websocket? ( dev-libs/boost:= )
 "
 DEPEND="${RDEPEND}
 	kernel_linux? ( sys-kernel/linux-headers )
 	test? ( >=dev-cpp/gtest-1.8.0 )
+	websocket? ( dev-cpp/websocketpp )
 "
 
 RESTRICT="!test? ( test )"
@@ -42,6 +45,7 @@ src_configure() {
 		-DINDI_BUILD_UNITTESTS=$(usex test)
 		-DUDEVRULES_INSTALL_DIR="$(get_udevdir)"
 		$(cmake-utils_use_find_package ogg OggTheora)
+		-DINDI_BUILD_WEBSOCKET=$(usex websocket)
 	)
 
 	cmake-utils_src_configure
