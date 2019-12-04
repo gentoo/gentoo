@@ -15725,7 +15725,7 @@ net-wireless/gr-foo 9999: Some GNU Radio blocks that bastianbl uses
 net-wireless/gr-ieee802154 0.0_p20180402 9999: IEEE 802.15.4 ZigBee Transceiver
 net-wireless/gr-iio 0.3-r2 9999: GNU Radio IIO Blocks
 net-wireless/gr-iqbal 0.37.2 9999: gnuradio I/Q balancing
-net-wireless/gr-osmosdr 0.1.4_p20180626-r4 0.1.4_p20180626-r5 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
+net-wireless/gr-osmosdr 0.1.4_p20180626-r5 0.1.5 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
 net-wireless/gr-paint 9999: Paints monochrome images into the waterfall of a receiver
 net-wireless/gr-rds 9999: GNU Radio FM RDS Receiver
 net-wireless/gr-rftap 9999: RFtap Module for GNU Radio
