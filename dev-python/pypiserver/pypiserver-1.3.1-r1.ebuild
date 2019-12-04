@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7,8}} pypy{,3} )
 inherit distutils-r1
 
 DESCRIPTION="Minimal PyPI server"
@@ -22,13 +22,9 @@ BDEPEND="${RDEPEND}
 	test? (
 		dev-python/passlib[${PYTHON_USEDEP}]
 		>=dev-python/pytest-2.3[${PYTHON_USEDEP}]
-		dev-python/tox[${PYTHON_USEDEP}]
 		dev-python/twine[${PYTHON_USEDEP}]
 		dev-python/webtest[${PYTHON_USEDEP}]
 	)"
-
-# tests need access to pypi.org
-#RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/pypiserver-1.3.1-no-internet.patch"
@@ -37,3 +33,11 @@ PATCHES=(
 DOCS=( README.rst )
 
 distutils_enable_tests pytest
+
+python_prepare_all() {
+	sed -r \
+		-e "s:[\"']tox[\"'](,|$)::" \
+		-i setup.py || die
+
+	distutils-r1_python_prepare_all
+}
