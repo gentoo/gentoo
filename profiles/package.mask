@@ -354,11 +354,6 @@ sys-cluster/dlm-lib
 media-video/emovix
 
 # Aaron Bauman <bman@gentoo.org> (2019-11-09)
-# homepage dead, maintainer-needed
-# EAPI=4. Removal in 30 days
-app-forensics/magicrescue
-
-# Aaron Bauman <bman@gentoo.org> (2019-11-09)
 # maintainer-needed, no known upstream homepage
 # what does it even do? EAPI=4  Removal in 30 days
 app-backup/furball
