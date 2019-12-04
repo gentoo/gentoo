@@ -54,7 +54,6 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.51.0-r2
 	sys-devel/gettext
 	virtual/pkgconfig
-	app-text/yelp-tools
 "
 
 src_configure() {
