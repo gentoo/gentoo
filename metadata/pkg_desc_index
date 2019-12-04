@@ -8639,7 +8639,7 @@ dev-python/pytest-pylint 0.7.1 0.14.1: pytest plugin to check source code with p
 dev-python/pytest-pythonpath 0.7.1: pytest plugin for adding to the PYTHONPATH from command line or configs
 dev-python/pytest-qt 2.3.0-r2: pytest plugin for PyQt4 or PyQt5 applications
 dev-python/pytest-rerunfailures 2.1.0 7.0 8.0: pytest plugin to re-run tests to eliminate flaky failures
-dev-python/pytest-runner 2.6.2 2.11.1 4.0 4.2: Adds support for tests during installation of setup.py files
+dev-python/pytest-runner 2.6.2 2.11.1 4.0 4.2 5.2: Adds support for tests during installation of setup.py files
 dev-python/pytest-salt 2019.2.1_p1: PyTest Salt Plugin
 dev-python/pytest-services 2.0.1: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.2.4 1.2.8 1.2.11 1.7.0: A goodie-bag of unix shell and environment tools for py.test
