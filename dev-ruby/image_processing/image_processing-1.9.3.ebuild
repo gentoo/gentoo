@@ -38,5 +38,5 @@ all_ruby_prepare() {
 	# phash is not packaged
 	sed -i -e '/\(assert\|refute\)_similar/ s:^:#:' test/*_test.rb || die
 
-	sed -i -e '/\(bundler\|phashion\|vips\)/ s:^:#:' test/test_helper.rb || die
+	sed -i -e '/\(bundler\|phashion\|vips\)/ s:^:#:' Rakefile test/test_helper.rb || die
 }
