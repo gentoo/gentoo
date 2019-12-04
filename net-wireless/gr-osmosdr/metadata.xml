@@ -6,6 +6,7 @@
 	<name>Radio</name>
 	</maintainer>
 <use>
+	<flag name="airspy">Build with Airspy support</flag>
 	<flag name="bladerf">Build with Nuand BladeRF support</flag>
 	<flag name="fcd">Build with Funcube Dongle support</flag>
 	<flag name="hackrf">Build with Great Scott Gadgets HackRF support</flag>

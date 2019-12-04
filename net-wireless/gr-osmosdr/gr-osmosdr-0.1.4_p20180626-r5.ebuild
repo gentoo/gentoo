@@ -13,14 +13,12 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="git://git.osmocom.org/${PN}.git"
-	KEYWORDS=""
 else
 	#SRC_URI="http://cgit.osmocom.org/gr-osmosdr/snapshot/gr-osmosdr-${PV}.tar.xz"
 	#git clone git://git.osmocom.org/gr-osmosdr.git
 	#cd gr-osmosdr
 	#git archive --format=tar --prefix=gr-osmosdr-${PV}/ v${PV} | xz > ../gr-osmosdr-${PV}.tar.xz
 	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/gr-osmosdr-${PV}.tar.xz"
-	KEYWORDS=""
 fi
 
 LICENSE="GPL-3"
