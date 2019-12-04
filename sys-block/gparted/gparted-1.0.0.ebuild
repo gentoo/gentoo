@@ -52,9 +52,9 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	>=dev-util/intltool-0.51.0-r2
+	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
-	app-text/yelp-tools
 "
 
 src_configure() {
