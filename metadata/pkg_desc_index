@@ -2476,7 +2476,7 @@ app-text/flpsed 0.7.0 0.7.2 0.7.3: Pseudo PostScript editor
 app-text/getxbook 1.0-r1 1.2: Download books from google, amazon, barnes and noble
 app-text/ghostscript-gpl 9.26 9.50: Interpreter for the PostScript language and PDF
 app-text/glosung 3.6.2-r1 3.6.4: Watch word program for the GNOME2 desktop (watch word (german): losung)
-app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for the Gnome project
+app-text/gnome-doc-utils 0.20.10-r1 0.20.10-r2: A collection of documentation utilities for the Gnome project
 app-text/gocr 0.50: An OCR (Optical Character Recognition) reader
 app-text/goldendict 1.5.0_rc2-r2: Feature-rich dictionary lookup program
 app-text/grip 4.2.0: Preview GitHub Markdown files like Readme locally before committing them
@@ -12484,8 +12484,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
-mail-client/thunderbird 52.9.1 68.2.2: Thunderbird Mail Client
-mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.2.2: Thunderbird Mail Client
+mail-client/thunderbird 52.9.1 68.2.2 68.3.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.2.2 68.3.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.2.0 1.3.0: Initial tagging script for Notmuch
@@ -17365,7 +17365,7 @@ sys-block/fio 2.15 2.16 3.2 3.7 3.16: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.3: Partition table rescue/guessing tool
-sys-block/gparted 0.33.0: Gnome Partition Editor
+sys-block/gparted 0.33.0 1.0.0: Gnome Partition Editor
 sys-block/hdrecover 0.5: Attempts to recover a hard disk that has bad blocks on it
 sys-block/hpacucli 9.30.15.0 9.40.12.0: HP Array Config Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
 sys-block/hpssacli 2.40.13.0-r1 3.10.3.0: HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)
