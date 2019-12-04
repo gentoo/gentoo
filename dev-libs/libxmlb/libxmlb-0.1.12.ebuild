@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="doc introspection stemmer test"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND="
 	dev-libs/glib:2
 	sys-apps/util-linux
