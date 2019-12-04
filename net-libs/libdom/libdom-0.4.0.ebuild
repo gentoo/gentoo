@@ -14,6 +14,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~m68k-mint"
 IUSE="expat test xml"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND="
 	dev-libs/libparserutils
 	dev-libs/libwapcaplet
