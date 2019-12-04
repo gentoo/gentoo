@@ -8,8 +8,8 @@ MY_PN="LUIse"
 inherit multilib
 
 DESCRIPTION="Programming interface for the Wallbraun LCD-USB-Interface"
-HOMEPAGE="https://web.archive.org/web/20130718114020/http://wallbraun-electronics.de/"
-SRC_URI="https://www.bl4ckb0x.de/files/${MY_PN}_${PV}.tar.gz"
+HOMEPAGE="https://web.archive.org/web/20140102061822/http://wallbraun-electronics.de/"
+SRC_URI="https://dev.gentoo.org/~conikost/files/${MY_PN}_${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
