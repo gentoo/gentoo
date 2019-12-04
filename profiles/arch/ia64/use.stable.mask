@@ -8,10 +8,6 @@
 # Temporary mask for stable bug 688976
 ruby_targets_ruby25
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-04-29)
-# sys-auth/elogind is not yet stable here. bug #682158
-elogind
-
 # Mike Gilbert <floppym@gentoo.org> (2017-06-08)
 # dev-lang/python:3.7 is not stable.
 python_targets_python3_7
