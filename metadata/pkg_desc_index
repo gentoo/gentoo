@@ -3040,7 +3040,7 @@ dev-ada/gtkada 2017 2017-r1 2018-r1 2018-r2 2019 2019-r1: A complete Ada graphic
 dev-ada/langkit 2018 2019: A Python framework to generate language parsers
 dev-ada/libadalang 2018-r2 2019-r1: high performance semantic engine for the Ada programming language
 dev-ada/libadalang-tools 2019-r1: Libadalang-based tools: gnatpp, gnatmetric and gnatstub
-dev-ada/libgpr 2018-r1 2019 2019-r1: Ada library to handle GPRbuild project files
+dev-ada/libgpr 2019-r1: Ada library to handle GPRbuild project files
 dev-ada/xmlada 2018 2019 2019-r1: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15-r1: Multi-platform class and template library
 dev-cpp/aixlog 1.2.1 9999: Header-only C++ logging library
@@ -14867,7 +14867,7 @@ net-irc/redirbot 0.0.5-r1: IRCBot, telling people they should contact you on dif
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
-net-irc/telepathy-idle 0.2.0-r1: Full-featured IRC connection manager for Telepathy
+net-irc/telepathy-idle 0.2.0-r1 0.2.0-r2: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.2.4.1: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.5-r1 2.6 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
