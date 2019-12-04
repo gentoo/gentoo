@@ -10,5 +10,5 @@ LICENSE=BSD
 RDEPEND=eselect-ldso? ( >=app-eselect/eselect-blas-0.2 >=app-eselect/eselect-lapack-0.2 ) !app-eselect/eselect-cblas !sci-libs/blas-reference !sci-libs/cblas-reference !sci-libs/lapack-reference !sci-libs/lapacke-reference virtual/fortran doc? ( app-doc/blas-docs )
 SLOT=0
 SRC_URI=http://www.netlib.org/lapack/lapack-3.8.0.tar.gz
-_eclasses_=cmake-utils	a5d9146ee60641275d46a91aab93d02f	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=67cb5d22d93df4a1ef23ae546f40d6e5
