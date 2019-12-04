@@ -1,6 +1,5 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=7
 
@@ -15,7 +14,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://github.com/airspy/host/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/airspyone_host-${PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 LICENSE="GPL-2+"
