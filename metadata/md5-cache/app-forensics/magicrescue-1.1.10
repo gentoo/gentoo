@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure prepare
+DEPEND=|| ( sys-libs/gdbm sys-libs/db:* )
+DESCRIPTION=Find deleted files in block devices
+EAPI=7
+HOMEPAGE=https://github.com/jbj/magicrescue
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2+
+RDEPEND=|| ( sys-libs/gdbm sys-libs/db:* )
+SLOT=0
+SRC_URI=https://github.com/jbj/magicrescue/archive/v1.1.10.tar.gz -> magicrescue-1.1.10.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=6966dca90a38a58a0fad299149f52088
