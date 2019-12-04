@@ -1,0 +1,16 @@
+BDEPEND=dev-util/netsurf-buildsystem virtual/pkgconfig
+DEFINED_PHASES=compile install test
+DEPEND=dev-libs/libparserutils dev-libs/libwapcaplet net-libs/libhubbub xml? ( expat? ( >=dev-libs/expat-2.1.0-r3 ) !expat? ( >=dev-libs/libxml2-2.9.1-r4 ) ) test? ( dev-perl/XML-XPath dev-perl/libxml-perl dev-perl/Switch )
+DESCRIPTION=implementation of the W3C DOM, written in C
+EAPI=7
+HOMEPAGE=http://www.netsurf-browser.org/projects/libdom/
+IUSE=expat test xml
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~m68k-mint
+LICENSE=MIT
+RDEPEND=dev-libs/libparserutils dev-libs/libwapcaplet net-libs/libhubbub xml? ( expat? ( >=dev-libs/expat-2.1.0-r3 ) !expat? ( >=dev-libs/libxml2-2.9.1-r4 ) )
+REQUIRED_USE=test? ( xml )
+RESTRICT=!test? ( test )
+SLOT=0/0.4.0
+SRC_URI=https://download.netsurf-browser.org/libs/releases/libdom-0.4.0-src.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=c9113b09b15eca5701462e11d3521712

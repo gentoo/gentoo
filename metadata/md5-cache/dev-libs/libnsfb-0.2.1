@@ -1,0 +1,14 @@
+BDEPEND=dev-util/netsurf-buildsystem
+DEFINED_PHASES=compile install
+DESCRIPTION=framebuffer abstraction library, written in C
+EAPI=7
+HOMEPAGE=http://www.netsurf-browser.org/projects/libnsfb/
+IUSE=sdl test vnc wayland xcb
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64
+LICENSE=MIT
+RDEPEND=sdl? ( >=media-libs/libsdl-1.2.15-r4 ) vnc? ( >=net-libs/libvncserver-0.9.9-r2 ) wayland? ( >=dev-libs/wayland-1.0.6 ) xcb? ( >=x11-libs/libxcb-1.9.1 >=x11-libs/xcb-util-0.3.9-r1 >=x11-libs/xcb-util-image-0.3.9-r1 >=x11-libs/xcb-util-keysyms-0.3.9-r1 )
+RESTRICT=!test? ( test )
+SLOT=0/0.2.1
+SRC_URI=https://download.netsurf-browser.org/libs/releases/libnsfb-0.2.1-src.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=0e3624163fe45df074d4f3faa29774e0

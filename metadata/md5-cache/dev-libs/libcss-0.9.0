@@ -1,0 +1,15 @@
+BDEPEND=>=dev-util/netsurf-buildsystem-1.7-r1 virtual/pkgconfig
+DEFINED_PHASES=compile install prepare test
+DEPEND=dev-libs/libparserutils dev-libs/libwapcaplet test? ( dev-lang/perl )
+DESCRIPTION=CSS parser and selection engine, written in C
+EAPI=7
+HOMEPAGE=http://www.netsurf-browser.org/projects/libcss/
+IUSE=test
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~m68k-mint
+LICENSE=MIT
+RDEPEND=dev-libs/libparserutils dev-libs/libwapcaplet
+RESTRICT=!test? ( test )
+SLOT=0/0.9.0
+SRC_URI=https://download.netsurf-browser.org/libs/releases/libcss-0.9.0-src.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=a7bac16f3216bf6c21494bb7527dbeed

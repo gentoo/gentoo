@@ -4874,7 +4874,7 @@ dev-libs/libclsync 0.4.2: Control and monitoring library for clsync
 dev-libs/libconfig 1.5 1.7.1 1.7.2: Libconfig is a simple library for manipulating structured configuration files
 dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
 dev-libs/libcroco 0.6.12-r1 0.6.13: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
-dev-libs/libcss 0.8.0-r1: CSS parser and selection engine, written in C
+dev-libs/libcss 0.8.0-r1 0.9.0: CSS parser and selection engine, written in C
 dev-libs/libdaemon 0.14-r1 0.14-r2 0.14-r3: Simple library for creating daemon processes in C
 dev-libs/libdazzle 3.30.2 3.32.3: Experimental new features for GTK+ and GLib
 dev-libs/libdbh 5.0.19 5.0.22: A small library to create and manage 64-bit disk based hash tables
@@ -4962,7 +4962,7 @@ dev-libs/libmspack 0.9.1_alpha-r1 9999: A library for Microsoft compression form
 dev-libs/libnatspec 0.2.6-r1 0.3.0: library to smooth charset/localization issues
 dev-libs/libnfc 1.7.1: Near Field Communications (NFC) library
 dev-libs/libnl 1.1.4 1.1.4-r1 3.4.0 3.5.0 99999999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
-dev-libs/libnsfb 0.2.0-r1: framebuffer abstraction library, written in C
+dev-libs/libnsfb 0.2.0-r1 0.2.1: framebuffer abstraction library, written in C
 dev-libs/libnsutils 0.0.5-r1: base64 and time library, written in C
 dev-libs/libofx 0.9.15: Library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17-r2: Library of simple functions that are optimized for various CPUs
@@ -5035,7 +5035,7 @@ dev-libs/libvoikko 4.3: Spell checking, hyphenation and morphological analysis t
 dev-libs/libvterm 0.0_pre20181126 0.1.1 0.1.2: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libwacom 0.33 1.0: Library for identifying Wacom tablets and their model-specific features
-dev-libs/libwapcaplet 0.4.1-r1: string internment library, written in C
+dev-libs/libwapcaplet 0.4.1-r1 0.4.2: string internment library, written in C
 dev-libs/libwbxml 0.11.2 0.11.6: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x86 code
 dev-libs/libx86emu 1.1: A library for emulating x86
@@ -5076,7 +5076,7 @@ dev-libs/nettle 3.4.1 3.5.1: Low-level cryptographic library
 dev-libs/newt 0.52.20 0.52.21: Redhat's Newt windowing toolkit development files
 dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.3 1.4 1.5 1.6 1.6-r1: New GNU Portable Threads Library
-dev-libs/nsgenbind 0.6-r1: generate javascript to dom bindings from w3c webidl files
+dev-libs/nsgenbind 0.6-r1 0.7: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.20 4.22 4.23: Netscape Portable Runtime
 dev-libs/nss 3.40.1-r1 3.46 3.46.1 3.47 3.47.1: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
@@ -10761,7 +10761,7 @@ dev-util/molecule-plugins 1.0.3: A set of base plugins for Molecule
 dev-util/mpatch 0.8-r1: Patch-like tool which can resolve common causes of patch rejects when applying
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
-dev-util/netsurf-buildsystem 1.7 1.7-r1: Build system used for netsurf and its libs
+dev-util/netsurf-buildsystem 1.7 1.7-r1 1.8: Build system used for netsurf and its libs
 dev-util/ninja 1.8.2 1.8.2-r1 1.8.2-r2 1.9.0 9999: A small build system similar to make
 dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
@@ -13255,7 +13255,7 @@ media-libs/libmypaint 1.3.0_beta1 1.3.0 1.3.0-r1 1.3.0-r2 1.3.0-r3 1.4.0: Librar
 media-libs/libnjb 2.2.7: Library for communicating with the Creative Nomad JukeBox digital audio player
 media-libs/libnsbmp 0.1.5-r1: decoding library for BMP and ICO image file formats, written in C
 media-libs/libnsgif 0.2.1-r1: decoding library for the GIF image file format, written in C
-media-libs/libnspsl 0.1.3-r1: decoding library for BMP and ICO image file formats, written in C
+media-libs/libnspsl 0.1.3-r1 0.1.5: decoding library for BMP and ICO image file formats, written in C
 media-libs/libofa 0.9.3-r2: Open Fingerprint Architecture
 media-libs/libogg 1.3.3 1.3.4: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
@@ -14155,7 +14155,7 @@ media-tv/shoutcast2vdr 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser-bin 4.0.1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 4.2.8 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvnamer 2.4 2.5: Automatic TV episode file renamer, data from thetvdb.com
-media-tv/v4l-dvb-saa716x 0.0.1_p20170225 0.0.1_p20170225-r1 0.0.1_p20170225-r2: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
+media-tv/v4l-dvb-saa716x 0.0.1_p20170225 0.0.1_p20170225-r2: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
 media-tv/v4l-utils 1.10.1 1.16.3 1.16.3-r1 1.16.6: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20141122 20170107: Scan DVB-C/DVB-T/DVB-S channels
 media-tv/xmltv 0.5.70: Set of utilities to manage TV listings stored in the XMLTV format
@@ -14931,7 +14931,7 @@ net-libs/libcork 0.15.0: A simple, easily embeddable cross-platform C library
 net-libs/libcorkipset 1.1.1.20150311_p8: A small C helper library for storing sets of IPv4 and IPv6 addresses
 net-libs/libcrafter 0.3 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
 net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of protocols
-net-libs/libdom 0.3.3-r1: implementation of the W3C DOM, written in C
+net-libs/libdom 0.3.3-r1 0.4.0: implementation of the W3C DOM, written in C
 net-libs/libecap 1.0.0: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6-r3: lib that implements the client side of the SMTP protocol
 net-libs/libetpan 1.9.3 1.9.4: A portable, efficient middleware for different kinds of mail access
@@ -18308,7 +18308,7 @@ www-client/luakit 2017.08.10 9999: A fast, light, simple to use micro-browser us
 www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web browser with ssl support
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
-www-client/netsurf 3.8-r2: a free, open source web browser
+www-client/netsurf 3.8-r2 3.9: a free, open source web browser
 www-client/opera 65.0.3467.48 65.0.3467.62: A fast and secure web browser
 www-client/opera-beta 66.0.3515.3: A fast and secure web browser
 www-client/opera-developer 67.0.3523.0: A fast and secure web browser
