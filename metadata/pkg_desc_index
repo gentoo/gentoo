@@ -14781,7 +14781,7 @@ net-im/coturn 4.5.0.7 4.5.0.8 9999: coturn TURN server project
 net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpop protocol
 net-im/dianara 1.4.2: Qt-based client for the pump.io distributed social network
 net-im/dino 9999: Modern Jabber/XMPP Client using GTK+/Vala
-net-im/discord-bin 0.0.9: All-in-one voice and text chat for gamers
+net-im/discord-bin 0.0.9 0.0.9-r1: All-in-one voice and text chat for gamers
 net-im/ejabberd 17.04-r2: Robust, scalable and extensible XMPP server
 net-im/ekg2 0.4_pre20190315 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
