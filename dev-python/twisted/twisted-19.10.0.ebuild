@@ -18,7 +18,7 @@ SRC_URI="https://twistedmatrix.com/Releases/${TWISTED_PN}"
 SRC_URI="${SRC_URI}/${TWISTED_RELEASE}/${TWISTED_P}.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/twisted-regen-cache.gz"
 
-KEYWORDS="amd64 ~arm ~arm64 ~mips ~s390 ~sh ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~mips ~s390 ~sh ~amd64-linux ~x86-linux"
 
 LICENSE="MIT"
 SLOT="0"
