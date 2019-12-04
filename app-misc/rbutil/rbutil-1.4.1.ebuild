@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop gnome2-utils qmake-utils
+inherit desktop qmake-utils xdg
 
 DESCRIPTION="Rockbox open source firmware manager for music players"
 HOMEPAGE="https://www.rockbox.org/wiki/RockboxUtility"
@@ -13,26 +13,29 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="debug"
 
-RDEPEND="dev-libs/quazip
+RDEPEND="
+	dev-libs/crypto++:=
+	dev-libs/quazip
 	dev-qt/qtcore:5=
 	dev-qt/qtgui:5=
 	dev-qt/qtnetwork:5=
 	dev-qt/qtwidgets:5=
 	media-libs/speex
 	media-libs/speexdsp
-	virtual/libusb:1"
+	virtual/libusb:1
+"
 
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 S="${WORKDIR}/RockboxUtility-v${PV}/${PN}/${PN}qt"
 
 PATCHES=(
-	"${FILESDIR}"/quazip.patch
+	"${FILESDIR}"/${PN}-1.4.1-quazip.patch
 )
 
 src_prepare() {
-	default
+	xdg_src_prepare
 	rm -rv quazip/ zlib/ || die
 }
 
@@ -56,7 +59,3 @@ src_install() {
 	make_desktop_entry RockboxUtility "Rockbox Utility" rockbox
 	dodoc changelog.txt
 }
-
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }

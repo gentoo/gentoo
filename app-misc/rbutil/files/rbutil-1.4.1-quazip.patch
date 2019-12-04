@@ -4,8 +4,8 @@ http://gerrit.rockbox.org/1825
 -- Chewi
 
 diff -Naur a/base/ziputil.cpp b/base/ziputil.cpp
---- a/base/ziputil.cpp	2014-01-05 22:44:53.000000000 +0000
-+++ b/base/ziputil.cpp	2018-02-25 10:55:36.994002648 +0000
+--- a/base/ziputil.cpp	2019-11-10 06:45:49.000000000 +0000
++++ b/base/ziputil.cpp	2019-12-04 22:38:34.443112450 +0000
 @@ -22,9 +22,9 @@
  #include "progressloggerinterface.h"
  #include "Logger.h"
@@ -20,8 +20,8 @@ diff -Naur a/base/ziputil.cpp b/base/ziputil.cpp
  
  ZipUtil::ZipUtil(QObject* parent) : ArchiveUtil(parent)
 diff -Naur a/base/ziputil.h b/base/ziputil.h
---- a/base/ziputil.h	2014-01-05 22:44:54.000000000 +0000
-+++ b/base/ziputil.h	2018-02-25 10:55:28.513838004 +0000
+--- a/base/ziputil.h	2019-11-10 06:45:49.000000000 +0000
++++ b/base/ziputil.h	2019-12-04 22:38:34.443112450 +0000
 @@ -21,9 +21,9 @@
  
  #include <QtCore>
@@ -35,41 +35,10 @@ diff -Naur a/base/ziputil.h b/base/ziputil.h
  
  class ZipUtil : public ArchiveUtil
  {
-diff -Naur a/rbutilqt.pri b/rbutilqt.pri
---- a/rbutilqt.pri	2014-01-05 22:44:57.000000000 +0000
-+++ b/rbutilqt.pri	2018-02-25 10:54:39.793852035 +0000
-@@ -69,12 +69,6 @@
-  base/rockboxinfo.cpp \
-  ../../tools/mkboot.c \
-  ../../tools/iriver.c \
-- quazip/quazip.cpp \
-- quazip/quazipfile.cpp \
-- quazip/quazipnewinfo.cpp \
-- quazip/unzip.c \
-- quazip/zip.c \
-- quazip/ioapi.c \
-  base/ziputil.cpp \
-  gui/comboboxviewdelegate.cpp \
-  gui/selectiveinstallwidget.cpp \
-@@ -156,14 +150,6 @@
-  base/rockboxinfo.h \
-  ../../tools/mkboot.h \
-  ../../tools/iriver.h \
-- quazip/crypt.h \
-- quazip/ioapi.h \
-- quazip/quazipfile.h \
-- quazip/quazipfileinfo.h \
-- quazip/quazip.h \
-- quazip/quazipnewinfo.h \
-- quazip/unzip.h \
-- quazip/zip.h \
-  base/ziputil.h \
-  lame/lame.h \
-  gui/comboboxviewdelegate.h \
 diff -Naur a/rbutilqt.pro b/rbutilqt.pro
---- a/rbutilqt.pro	2014-01-05 22:45:00.000000000 +0000
-+++ b/rbutilqt.pro	2018-02-25 10:55:04.577357613 +0000
-@@ -114,7 +114,7 @@
+--- a/rbutilqt.pro	2019-11-10 06:45:50.000000000 +0000
++++ b/rbutilqt.pro	2019-12-04 22:43:30.144259710 +0000
+@@ -131,7 +131,7 @@
  
  DEPENDPATH = $$INCLUDEPATH
  
@@ -78,7 +47,7 @@ diff -Naur a/rbutilqt.pro b/rbutilqt.pro
  # append all RBLIBS to LIBS
  for(rblib, RBLIBS) {
      LIBS += -l$$rblib
-@@ -122,7 +122,6 @@
+@@ -142,7 +142,6 @@
  
  # on win32 libz is linked implicitly.
  !win32 {
@@ -86,3 +55,9 @@ diff -Naur a/rbutilqt.pro b/rbutilqt.pro
  }
  
  # Add a (possibly found) libspeex now, don't do this before -lrbspeex!
+@@ -271,5 +270,4 @@
+ 
+ # source files are separate.
+ include(rbutilqt.pri)
+-include(quazip/quazip.pri)
+ include(logger/logger.pri)
