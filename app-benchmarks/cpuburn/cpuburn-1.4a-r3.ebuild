@@ -6,8 +6,8 @@ EAPI="7"
 MY_PV="${PV/./_}"
 
 DESCRIPTION="CPU testing utilities in optimized assembler for maximum loading"
-HOMEPAGE="https://downloads.bl4ckb0x.de/pages.sbcglobal.net/redelm/"
-SRC_URI="https://downloads.bl4ckb0x.de/pages.sbcglobal.net/redelm/${PN}_${MY_PV}_tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://web.archive.org/web/20110623074500/pages.sbcglobal.net/redelm/"
+SRC_URI="https://dev.gentoo.org/~conikost/files/${PN}_${MY_PV}_tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="-* amd64 arm x86"
 LICENSE="GPL-2"
