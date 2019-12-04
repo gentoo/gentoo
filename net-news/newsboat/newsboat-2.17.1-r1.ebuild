@@ -20,7 +20,7 @@ chrono-0.4.6
 clap-2.33.0
 cloudabi-0.0.3
 constant_time_eq-0.1.3
-curl-sys-0.4.5
+curl-sys-0.4.12
 dirs-1.0.4
 failure-0.1.5
 failure_derive-0.1.5
@@ -33,7 +33,7 @@ kernel32-sys-0.2.2
 lazy_static-0.2.11
 lazy_static-1.2.0
 libc-0.2.48
-libz-sys-1.0.17
+libz-sys-1.0.18
 locale_config-0.2.2
 lock_api-0.1.5
 matches-0.1.8
@@ -44,7 +44,7 @@ nom-4.2.3
 num-integer-0.1.39
 num-traits-0.2.6
 once_cell-0.1.8
-openssl-sys-0.9.46
+openssl-sys-0.9.53
 parking_lot-0.7.1
 parking_lot_core-0.4.0
 percent-encoding-1.0.1
@@ -122,7 +122,7 @@ SRC_URI="
 LICENSE="Apache-2.0 BSD-2 CC0-1.0 ISC MIT Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="libressl"
 
 RDEPEND="
 	>=dev-db/sqlite-3.5:3
@@ -136,10 +136,14 @@ DEPEND="${RDEPEND}
 	app-text/asciidoc
 	virtual/pkgconfig
 	sys-devel/gettext
+	sys-libs/zlib
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.11-flags.patch
+	"${FILESDIR}"/${PN}-2.17.1-libressl.patch
 )
 
 src_configure() {
