@@ -2093,7 +2093,7 @@ app-misc/qlcplus 4.11.1: A software to control DMX or analog lighting systems
 app-misc/radeontop 1.2 9999: Utility to view Radeon GPU utilization
 app-misc/ranger 1.9.2 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
-app-misc/rbutil 1.4.0: Rockbox open source firmware manager for music players
+app-misc/rbutil 1.4.1: Rockbox open source firmware manager for music players
 app-misc/realpath 1.17 1.18: Return the canonicalized absolute pathname
 app-misc/recoll 1.25.19: A personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
