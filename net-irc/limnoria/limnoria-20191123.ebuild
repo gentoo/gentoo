@@ -43,6 +43,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( $(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7) )"
 
+RESTRICT="!test? ( test )"
+
 src_unpack() {
 	if [[ ${PV} == "99999999" ]]; then
 		git-r3_src_unpack
