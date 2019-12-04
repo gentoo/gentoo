@@ -4984,7 +4984,7 @@ dev-libs/libpqxx 6.4.5: Standard front-end for writing C++ programs that use Pos
 dev-libs/libprelude 3.0.0 3.1.0-r1 4.0.0 4.1.0: Prelude-SIEM Framework Library
 dev-libs/libpreludedb 3.0.0-r1 3.1.0-r1 4.0.0-r1 4.1.0-r1: Framework to easy access to the Prelude database
 dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing them
-dev-libs/libpwquality 1.4.0 1.4.1: Library for password quality checking and generating random passwords
+dev-libs/libpwquality 1.4.0 1.4.1 1.4.2: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 3.3.1 3.4.0: A Qt implementation of XDG standards
 dev-libs/libratbag 0.9: Library to configure gaming mice
 dev-libs/librdkafka 1.1.0 1.2.1 1.2.2: Apache Kafka C/C++ client library
