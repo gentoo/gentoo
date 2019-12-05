@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils multilib
 
 DESCRIPTION="Utility to change the OpenGL interface being used"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 # Source:
 # http://www.opengl.org/registry/api/glext.h
