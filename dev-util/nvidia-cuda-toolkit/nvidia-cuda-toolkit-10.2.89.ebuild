@@ -88,7 +88,7 @@ src_install() {
 			chmod a+x bin/${i} || die
 		done
 	else
-		use eclipse || remove+=( libnvvp libnsight nsightee_plugins nsight-compute-2019.4.0 nsight-systems-2019.3.7.5 bin/nsight bin/nsight_ee_plugins_manage.sh bin/nvvp bin/computeprof )
+		use eclipse || remove+=( libnvvp libnsight nsightee_plugins nsight-compute-2019.5.0 nsight-systems-2019.5.2 bin/nsight bin/nsight_ee_plugins_manage.sh bin/nvvp bin/computeprof )
 		remove+=( extras/CUPTI bin/nvprof )
 	fi
 
