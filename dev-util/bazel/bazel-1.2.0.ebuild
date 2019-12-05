@@ -24,6 +24,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"
 
+PATCHES=(
+	"${FILESDIR}/${PV}-grpc-gettid.patch"
+)
+
 bazel-get-flags() {
 	local i fs=()
 	for i in ${CFLAGS}; do
