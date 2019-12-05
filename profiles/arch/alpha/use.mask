@@ -1,6 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Unmask the flag which corresponds to ARCH.
+-alpha
+
+# Matt Turner <mattst88@gentoo.org> (2019-12-05)
+# media-libs/libglvnd is not keyworded
+libglvnd
+
 # Matt Turner <mattst88@gentoo.org> (2018-12-22)
 # net-libs/zeromq is not keyworded
 zeromq
@@ -40,9 +47,6 @@ gadu
 # no LibreSSL support yet
 curl_ssl_libressl
 libressl
-
-# Unmask the flag which corresponds to ARCH.
--alpha
 
 # This file masks out USE flags that are simply NOT allowed in the default
 # profile for any architecture.  This works, for example, if a non-default
