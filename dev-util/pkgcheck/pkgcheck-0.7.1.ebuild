@@ -50,8 +50,8 @@ DEPEND="${RDEPEND}
 
 python_check_deps() {
 	if use doc; then
-		has_version "dev-python/setuptools[${PYTHON_USEDEP}]"
-		has_version "dev-python/docutils[${PYTHON_USEDEP}]"
+		has_version "dev-python/setuptools[${PYTHON_USEDEP}]" &&
+		has_version "dev-python/docutils[${PYTHON_USEDEP}]" &&
 		has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
 	fi
 }
