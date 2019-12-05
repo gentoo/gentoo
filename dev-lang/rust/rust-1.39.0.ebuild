@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
 
-inherit check-reqs estack flag-o-matic llvm multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
+inherit bash-completion-r1 check-reqs estack flag-o-matic llvm multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
 
 if [[ ${PV} = *beta* ]]; then
 	betaver=${PV//*beta}
@@ -233,6 +233,11 @@ src_install() {
 
 	env DESTDIR="${D}" "${EPYTHON}" ./x.py install -vv --config="${S}"/config.toml \
 	--exclude src/tools/miri || die
+
+	# bug #689562, #689160
+	rm "${D}/etc/bash_completion.d/cargo" || die
+	rmdir -p "${D}/etc" || die
+	dobashcomp build/tmp/dist/cargo-image/etc/bash_completion.d/cargo
 
 	mv "${ED}/usr/bin/rustc" "${ED}/usr/bin/rustc-${PV}" || die
 	mv "${ED}/usr/bin/rustdoc" "${ED}/usr/bin/rustdoc-${PV}" || die
