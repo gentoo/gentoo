@@ -589,7 +589,7 @@ app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 4.0.4: A HTTP regression testing and benchmarking utility
 app-benchmarks/spew 1.0.8-r1: Measures I/O performance and/or generates I/O load
 app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
-app-benchmarks/stress-ng 0.10.07 0.10.12: Stress test for a computer system with various selectable ways
+app-benchmarks/stress-ng 0.10.12: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.15-r1 1.0.16-r1 1.0.17-r1 9999: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/wrk 4.1.0-r1: A HTTP benchmarking tool
@@ -2101,7 +2101,7 @@ app-misc/regionset 0.2: Sets the region on DVD drives
 app-misc/remind 03.01.15 03.01.16 03.01.17: Ridiculously functional reminder program
 app-misc/reptyr 0.6.2 0.7.0: A utility to attach a running program to a new terminal
 app-misc/resolve-march-native 0.9 0.9.2 0.9.3 0.9.4: Resolve GCC flag -march=native
-app-misc/rioutil 1.5.0-r2: Tool for transfering mp3s to and from a Rio 600, 800, Riot, and Nike PSA/Play
+app-misc/rioutil 1.5.0-r2 1.5.4: A utility for accessing various Rio media players
 app-misc/rl 0.2.7-r1: Randomize lines from text files or stdin
 app-misc/rlwrap 0.42 0.42-r1 0.43: GNU readline wrapper
 app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
@@ -5136,7 +5136,7 @@ dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directo
 dev-libs/satyr 0.26 0.27: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 6.0.0 6.1.0 6.2.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.28.0-r1: Library for RDF syntax which supports reading and writing Turtle and NTriples
-dev-libs/serdisplib 1.97.9 2.01 2.01-r1: Library to drive several displays with built-in controllers or display modules
+dev-libs/serdisplib 1.97.9 2.01 2.01-r1 2.02: Library to drive several displays with built-in controllers or display modules
 dev-libs/shhopt 1.1.7-r3: library for parsing command line options
 dev-libs/sink 0.8.0-r1: Data access layer handling synchronization, caching and indexing
 dev-libs/skalibs 2.3.2.0 2.6.1.0 2.6.3.0 2.6.4.0 2.7.0.0 2.8.1.0 2.9.1.0: General-purpose libraries from skarnet.org
@@ -11366,7 +11366,7 @@ games-fps/doom3-roe 1: Doom III: Resurrection of Evil expansion pack
 games-fps/doomsday 2.1.1: A modern gaming engine for Doom, Heretic, and Hexen
 games-fps/duke3d-data 1.0-r4: Duke Nukem 3D data files
 games-fps/duke3d-demodata 1.3: Duke Nukem 3D 1.3d shareware data
-games-fps/eduke32 20190919.8133-r1: An open source engine port of the classic PC first person shooter Duke Nukem 3D
+games-fps/eduke32 20191204.8360: An open source engine port of the classic PC first person shooter Duke Nukem 3D
 games-fps/enemy-territory 2.60b-r1: standalone multi-player game based on Return to Castle Wolfenstein
 games-fps/enemy-territory-omnibot 0.85: Enemy Territory Omnibot - Bots for Ennemy Territory
 games-fps/enemy-territory-truecombat 0.49b: Enemy Territory True Combat - a team-based realism modification
@@ -11963,7 +11963,7 @@ gnustep-apps/addresses 0.4.8: Addresses is a Apple Addressbook work alike (stand
 gnustep-apps/affiche 0.6.0-r4: Affiche allows people to 'stick' notes
 gnustep-apps/batmon 0.8: displays the status of your laptop battery
 gnustep-apps/cdplayer 0.6.0: Small CD Audio Player for GNUstep
-gnustep-apps/cenon 4.0.2-r1: Cenon is a vector graphics tool for GNUstep, OpenStep and MacOSX
+gnustep-apps/cenon 4.0.2-r1 4.0.6: Cenon is a vector graphics tool for GNUstep, OpenStep and MacOSX
 gnustep-apps/cynthiune 1.0.0: Free software and romantic music player for GNUstep
 gnustep-apps/fisicalab 0.3.5: educational application to solve physics problems
 gnustep-apps/ftp 0.5 0.6: FTP client for GNUstep
@@ -15485,7 +15485,7 @@ net-misc/wget 1.20.3-r1 1.20.3-r3: Network utility to retrieve files from the WW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whois 5.4.3 5.5.2 5.5.3 9999: improved Whois Client
 net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux
-net-misc/wol 0.7.1-r1 0.7.1-r2: Implements Wake On LAN (Magic Paket) functionality in a small program
+net-misc/wol 0.7.1-r2: Implements Wake On LAN (Magic Paket) functionality in a small program
 net-misc/wput 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r2: X11-based passphrase dialog for use with OpenSSH
 net-misc/x2goclient 4.1.2.1 4.1.2.1-r1: The X2Go Qt client
@@ -17663,7 +17663,7 @@ sys-fs/compsize 1.1 9999: Utility to find btrfs compression ratio
 sys-fs/copyfs 1.0.1-r1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryfs 0.9.9-r1 0.10.2 9999: Encrypted FUSE filesystem that conceals metadata
-sys-fs/cryptmount 5.3.1: A utility for management and user-mode mounting of encrypted filesystems
+sys-fs/cryptmount 5.3.1 5.3.2: A utility for management and user-mode mounting of encrypted filesystems
 sys-fs/cryptsetup 1.7.5-r1 2.2.1-r1 2.2.2: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
