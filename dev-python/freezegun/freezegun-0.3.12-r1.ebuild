@@ -38,6 +38,15 @@ PATCHES=(
 
 distutils_enable_tests pytest
 
+python_prepare_all() {
+	sed -r \
+		-e 's:(python-dateutil)>=2.0:\1:' \
+		-e "s:'(python-dateutil)>=[0-9.]+,.+':'\1':" \
+		-i setup.py
+
+	distutils-r1_python_prepare_all
+}
+
 python_prepare() {
 	# optional and only works with python3
 	if ! python_is_python3; then
