@@ -23,7 +23,7 @@ RDEPEND="
 	json? ( dev-libs/jansson )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
-	>=net-libs/libnftnl-1.1.4:0=
+	>=net-libs/libnftnl-1.1.5:0=
 	xtables? ( >=net-firewall/iptables-1.6.1 )
 "
 
