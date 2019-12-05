@@ -7757,7 +7757,7 @@ dev-python/expects 0.8.0: Expressive and extensible TDD/BDD assertion library fo
 dev-python/extras 0.0.3 1.0.0: Useful extra bits for Python that should be in the standard library
 dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
 dev-python/eyeD3 0.7.5: Module for manipulating ID3 (v1 + v2) tags in Python
-dev-python/fabric 1.14.0 1.14.0-r1 2.3.1: A simple pythonic tool for remote execution and deployment
+dev-python/fabric 2.3.1: A simple pythonic tool for remote execution and deployment
 dev-python/falcon 0.1.6 0.1.7 0.1.8 0.1.9 1.3.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.13.0 0.14.1 0.14.1-r1: Python package that provides useful locks
 dev-python/fastparquet 0.1.1 0.1.5: Python implementation of the parquet columnar file format
