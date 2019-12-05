@@ -1,12 +1,12 @@
 DEFINED_PHASES=install
 DESCRIPTION=Programming interface for the Wallbraun LCD-USB-Interface
 EAPI=7
-HOMEPAGE=https://web.archive.org/web/20130718114020/http://wallbraun-electronics.de/
+HOMEPAGE=https://web.archive.org/web/20140102061822/http://wallbraun-electronics.de/
 IUSE=examples
 KEYWORDS=-* amd64 x86
 LICENSE=LGPL-2.1
 RDEPEND=virtual/libusb:0
 SLOT=0
-SRC_URI=https://www.bl4ckb0x.de/files/LUIse_0.1.1.tar.gz
+SRC_URI=https://dev.gentoo.org/~conikost/files/LUIse_0.1.1.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=764e11d1d610147934b4fcef52596ba8
+_md5_=57b5e4cbaf6cb23abf031d3c8691e744
