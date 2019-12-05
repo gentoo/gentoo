@@ -15505,7 +15505,7 @@ net-nds/ldapvi 1.7_p20101214: Manage LDAP entries with a text editor
 net-nds/led 1.111: A general purpose LDAP editor
 net-nds/nsscache 0.30 0.30-r2 0.31 0.32: commandline tool to sync directory services to local cache
 net-nds/openldap 2.4.45 2.4.48: LDAP suite of application and development tools
-net-nds/phpldapadmin 1.2.3 1.2.3-r1 1.2.5: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
+net-nds/phpldapadmin 1.2.5: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
 net-nds/rpcbind 1.2.5 9999: portmap replacement which supports RPC over various protocols
 net-nds/shelldap 1.4.0 1.5.0: A handy shell-like interface for browsing LDAP servers and editing their content
 net-nds/smbldap-tools 0.9.8 0.9.10-r1: Samba LDAP management tools
