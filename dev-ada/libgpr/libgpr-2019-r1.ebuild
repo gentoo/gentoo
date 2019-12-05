@@ -25,6 +25,8 @@ REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 S="${WORKDIR}"/${MYP}-src
 
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+
 src_configure() {
 	emake prefix="${D}"/usr setup
 }
