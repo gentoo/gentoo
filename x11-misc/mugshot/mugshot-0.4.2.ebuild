@@ -56,7 +56,7 @@ python_install() {
 	distutils-r1_python_install
 
 	# Since DOCS are installed twice, remove the wrong path
-	rm -r "${ED%/}"/usr/share/doc/mugshot || die
+	rm -r "${ED}"/usr/share/doc/mugshot || die
 }
 
 pkg_postinst() {
