@@ -2273,7 +2273,7 @@ app-pda/iripdb 0.1.3b: Allows generating the DB files necessary for the iRiver i
 app-pda/jpilot 1.8.2: Desktop Organizer Software for the Palm Pilot
 app-pda/libimobiledevice 1.2.0-r1: Support library to communicate with Apple iPhone/iPod Touch devices
 app-pda/libplist 2.0.0: Support library to deal with Apple Property Lists (Binary & XML)
-app-pda/libusbmuxd 1.0.9 1.0.10-r1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
+app-pda/libusbmuxd 1.0.10-r1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-pda/pilot-link 0.12.5-r2: Suite of tools for moving data between a Palm device and a desktop
 app-pda/usbmuxd 1.0.8_p20140530 1.1.0: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
@@ -4674,7 +4674,7 @@ dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.4.9 2.5.7 2.6.5: An object-oriented scripting language
 dev-lang/rust 1.34.2 1.35.0 1.36.0 1.37.0 1.38.0 1.39.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.34.2 1.35.0 1.36.0 1.37.0 1.38.0 1.39.0: Systems programming language from Mozilla
-dev-lang/sassc 3.5.0 3.6.0: A libsass command line driver
+dev-lang/sassc 3.6.0: A libsass command line driver
 dev-lang/scala 2.12.4: The Scala Programming Language
 dev-lang/scala-bin 2.12.4: The Scala Programming Language
 dev-lang/smlnj 110.75 110.82: Standard ML of New Jersey compiler and libraries
@@ -12968,7 +12968,7 @@ media-gfx/png2ico 2002.12.08: PNG to icon converter
 media-gfx/pngcheck 2.3.0: Verifies the integrity of PNG, JNG and MNG files with internal checksums
 media-gfx/pngcrush 1.8.13: Portable Network Graphics (PNG) optimizing utility
 media-gfx/pngnq 1.1: Pngnq is a tool for quantizing PNG images in RGBA format
-media-gfx/pngquant 2.12.2 2.12.3: command-line utility and library for lossy compression of PNG images
+media-gfx/pngquant 2.12.3: command-line utility and library for lossy compression of PNG images
 media-gfx/pngrewrite 1.4.0: Utility which reduces large palettes in PNG images
 media-gfx/pngtoico 1.0.1-r1: Convert png images to MS ico format
 media-gfx/pngtools 0.4-r2: A series of tools for the PNG image format
@@ -13998,7 +13998,7 @@ media-sound/pavucontrol-qt 0.14.1: A Pulseaudio mixer in Qt (port of pavucontrol
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
 media-sound/pianobar 2019.01.25 2019.02.14 9999: A console-based replacement for Pandora's flash player
-media-sound/picard 2.0.4 2.1.3 9999: A cross-platform music tagger
+media-sound/picard 2.1.3 9999: A cross-platform music tagger
 media-sound/picoxine 0.0.7: Very small xine frontend for playing audio events
 media-sound/pitchtune 0.0.4: Precise Instrument Tweaking for Crispy Harmony - tuner
 media-sound/pithos 1.3.1 9999: Pandora.com client for the GNOME desktop
@@ -17433,7 +17433,7 @@ sys-boot/milo 2.4.18: The Alpha MIniLOader, for Alpha Machines without SRM
 sys-boot/mokutil 0.3.0_p20170404: The utility to manipulate machines owner keys which managed in shim
 sys-boot/netboot 0.10.2-r1: Allows to remote boot a computer over an IP network
 sys-boot/nettrom 2.3.3: NetWinder ARM bootloader and utilities
-sys-boot/os-prober 1.76-r1 1.77: Utility to detect other OSs on a set of drives
+sys-boot/os-prober 1.77: Utility to detect other OSs on a set of drives
 sys-boot/palo 2.12 9999: PALO : PArisc Linux Loader
 sys-boot/plymouth 0.9.3-r1 0.9.3-r2 0.9.4-r1 9999: Graphical boot animation (splash) and logger
 sys-boot/plymouth-openrc-plugin 0.1.2-r1: Plymouth plugin for OpenRC
@@ -19130,7 +19130,7 @@ x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into 
 x11-themes/QGnomePlatform 0.5: A Qt Platform Theme aimed to accommodate GNOME settings
 x11-themes/adapta-gtk-theme 3.95.0.11: An adaptive Gtk+ theme based on Material Design Guidelines
 x11-themes/adwaita-icon-theme 3.24.0 3.26.1 3.30.1 3.32.0: GNOME default icon theme
-x11-themes/adwaita-qt 1.0-r1 1.1.0: A style to bend Qt applications to look like they belong into GNOME Shell
+x11-themes/adwaita-qt 1.1.0: A style to bend Qt applications to look like they belong into GNOME Shell
 x11-themes/arc-icon-theme 20161122: Vertex icon theme
 x11-themes/arc-theme 20190330 20190917: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
 x11-themes/audacious-themes 0.0.4-r1: Collection of XMMS themes for Audacious
@@ -19243,7 +19243,7 @@ x11-themes/tangerine-icon-theme 0.27: a derivative of the standard Tango theme, 
 x11-themes/tango-icon-theme 0.8.90-r1: SVG and PNG icon theme from the Tango project
 x11-themes/tango-icon-theme-extras 0.1.0-r2: Tango icons for iPod Digital Audio Player devices and the Dell Pocket DJ DAP
 x11-themes/terminology-themes 0_p20180106 9999: Color schemes for the Terminology terminal emulator
-x11-themes/ubuntu-wallpapers 19.04.2 19.10.2: Ubuntu wallpapers
+x11-themes/ubuntu-wallpapers 19.10.2: Ubuntu wallpapers
 x11-themes/vanilla-dmz-aa-xcursors 0.4.5: Style neutral scalable cursor theme (black version)
 x11-themes/vanilla-dmz-xcursors 0.4.5: Style neutral scalable cursor theme (white version)
 x11-themes/vdr-channel-logos 0.2 0.2-r1: Logos for vdr-skin*
