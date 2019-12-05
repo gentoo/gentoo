@@ -8563,7 +8563,7 @@ dev-python/pypeg2 2.15.2: An intrinsic PEG Parser-Interpreter for Python
 dev-python/pyperclip 1.5.27 1.6.0 1.6.4 1.7.0: A cross-platform clipboard module for Python.
 dev-python/pypgsql 2.5.1-r1: Python Interface to PostgreSQL
 dev-python/pyphen 0.9.4: Python module for hyphenation using hunspell dictionaries
-dev-python/pypiserver 1.3.1: Minimal PyPI server
+dev-python/pypiserver 1.3.1-r1: Minimal PyPI server
 dev-python/pypng 0.0.18: Pure Python PNG image encoder/decoder
 dev-python/pypodman 0.12.1.2: CLI for podman written in python
 dev-python/pypowervm 1.1.6 1.1.10 1.1.16 1.1.20: Python binding for the PowerVM REST API
@@ -9098,7 +9098,7 @@ dev-python/turbokid 1.0.5-r1: Python template plugin that supports Kid templates
 dev-python/turbolift 2.1.3: Openstack Swift sync/backup utility
 dev-python/tvdb_api 1.9 1.10_pre20150406-r1 2.0: Python interface to thetvdb.com API
 dev-python/tweepy 2.3 3.5.0: A Python library for accessing the Twitter API
-dev-python/twine 1.11.0 1.15.0 3.0.0: Collection of utilities for publishing packages on PyPI
+dev-python/twine 1.11.0 1.15.0 3.0.0 3.1.1: Collection of utilities for publishing packages on PyPI
 dev-python/twisted 16.6.0-r3 17.1.0-r2 17.9.0 18.4.0 18.7.0 19.10.0: An asynchronous networking framework written in Python
 dev-python/twisted-conch 13.2.0 15.2.1: Twisted SSHv2 implementation
 dev-python/twisted-core 13.2.0 15.2.1: An asynchronous networking framework written in Python
