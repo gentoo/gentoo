@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip tsr? ( dev-lang/nasm ) virtual/pkgconfig
+DEFINED_PHASES=compile install
+DESCRIPTION=A network-backed floppy emulator for DOS
+EAPI=7
+HOMEPAGE=http://ethflop.sourceforge.net/
+IUSE=tsr
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+SLOT=0
+SRC_URI=mirror://sourceforge/ethflop/ethflop-20191003.zip
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=f5975478569c06ad6c9c366f82b6f75a

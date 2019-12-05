@@ -1501,6 +1501,7 @@ app-emulation/lxc-templates 3.0.3: Old style template scripts for LXC
 app-emulation/lxd 3.14 3.16-r1: Fast, dense and secure container management
 app-emulation/nemu 2.1.0 2.2.0 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 10.3.10: Opensourced tools for VMware guests
+app-emulation/pcem 15: A PC emulator that specializes in running old operating systems and software
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.12 4.3.4: Set of scripts to easily install and use Windows games and software
 app-emulation/punes 0.104 0.105: Nintendo Entertainment System (NES) emulator
@@ -15239,6 +15240,7 @@ net-misc/ena-driver 2.0.2 2.0.3: Amazon EC2 Elastic Network Adapter (ENA) kernel
 net-misc/endlessh 1.0 9999: SSH tarpit that slowly sends and endless banner
 net-misc/ethercard-diag 20050321.1g 20050321.1g-r1: low level mii diagnostic tools including mii-diag and etherwake (merge of netdiag/isa-diag)
 net-misc/ethertypes 0: Maps ethernet frame ids to symbolic names
+net-misc/ethflop 20191003: A network-backed floppy emulator for DOS
 net-misc/eventd 0.27.0: A small daemon to act on remote or local events
 net-misc/exabgp 3.2.17 3.4.26-r1 4.0.10: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
@@ -18630,7 +18632,7 @@ x11-libs/xcb-util-image 0.4.0-r1: X C-language Bindings sample implementations
 x11-libs/xcb-util-keysyms 0.4.0-r1: X C-language Bindings sample implementations
 x11-libs/xcb-util-renderutil 0.3.9-r2: X C-language Bindings sample implementations
 x11-libs/xcb-util-wm 0.4.1-r2: X C-language Bindings sample implementations
-x11-libs/xcb-util-xrm 1.0 1.2 1.3: X C-language Bindings sample implementations
+x11-libs/xcb-util-xrm 1.3: X C-language Bindings sample implementations
 x11-libs/xforms 1.2.4: A graphical user interface toolkit for X
 x11-libs/xosd 2.2.14_p2_p1: Library for overlaying text in X-Windows X-On-Screen-Display
 x11-libs/xpa 2.1.15 2.1.17 2.1.18: Messaging system providing communication between programs
@@ -18771,6 +18773,7 @@ x11-misc/peksystray 0.4.0: A system tray dockapp for window managers supporting 
 x11-misc/piedock 1.6.6-r1 1.6.9: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/polybar 3.2.1 3.3.1 9999: A fast and easy-to-use tool for creating status bars
 x11-misc/primus 0.2: Faster OpenGL offloading for Bumblebee
+x11-misc/projecteur 0.6: Linux Desktop Application for the Logitech Spotlight device
 x11-misc/py3status 3.21: py3status is an extensible i3status wrapper written in python
 x11-misc/pypanel 2.4-r2: A lightweight panel/taskbar for X11 window managers
 x11-misc/qarma 1: Zenity Clone for Qt5

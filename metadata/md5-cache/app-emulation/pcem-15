@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install postinst prepare
+DESCRIPTION=A PC emulator that specializes in running old operating systems and software
+EAPI=7
+HOMEPAGE=https://pcem-emulator.co.uk/ https://bitbucket.org/pcem_emulator/pcem/
+IUSE=alsa networking
+KEYWORDS=~amd64
+LICENSE=GPL-2+
+RDEPEND=alsa? ( media-libs/alsa-lib ) media-libs/libsdl2 media-libs/openal x11-libs/wxGTK:3.0[X]
+SLOT=0
+SRC_URI=https://pcem-emulator.co.uk/files/PCemV15Linux.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312
+_md5_=92f4ecbde2fc95c2d193e40267cf606c
