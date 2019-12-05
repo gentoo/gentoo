@@ -7,4 +7,4 @@ LICENSE=BSD
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=https://x42.com/software/valtz/valtz.tgz -> valtz-0.7.tgz
-_md5_=e108886ba2a8ff9e26c66fff5652c391
+_md5_=9b35e74a0a72200e105b126bae37b8eb

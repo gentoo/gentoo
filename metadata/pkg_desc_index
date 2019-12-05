@@ -14692,7 +14692,7 @@ net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
 net-dns/unbound 1.9.4 1.9.5: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/validns 0.8: A high performance DNS/DNSSEC zone validator
-net-dns/valtz 0.7-r2: Validation tool for tinydns-data zone files
+net-dns/valtz 0.7-r3: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.1e 2.0.2a 2.0.3: Arno's iptables firewall script
 net-firewall/arptables 0.0.4: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
 net-firewall/conntrack-tools 1.4.4-r1 1.4.5: Connection tracking userspace tools
