@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-12-05)
+# Unmaintained since 2016.  Last touched in 2018.  Pending bump since
+# Feb 2019.  Does not build anymore.
+# Removal in 30 days.  Bug #695580.
+net-wireless/ndiswrapper
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-12-03)
 # Project does not exist anymore.
 # Removal in 30 days.  Bug #680452.
