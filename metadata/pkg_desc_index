@@ -510,7 +510,7 @@ app-backup/backupninja 1.0.1-r1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 5.2.13-r7 9.0.8-r1 9.2.2-r2 9.4.1-r2 9.4.2-r1 9.4.3-r1 9.4.4-r1 9.4.4-r2: Featureful client/server network backup suite
 app-backup/bareos 16.2.7-r1 17.2.6 17.2.7-r1 18.2.6: Featureful client/server network backup suite
-app-backup/borgbackup 1.1.8 1.1.9 1.1.10 1.1.10-r1 9999: Deduplicating backup program with compression and authenticated encryption
+app-backup/borgbackup 1.1.10-r1 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.24.0-r1 0.25.1-r1 0.26.0 0.26.1 0.27.0 0.27.1 0.27.1-r1 0.27.2 0.28.0 0.28.1 0.28.2 0.28.3 0.29.0 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/bup 0.29.2: A highly efficient backup system based on the git packfile format
@@ -8734,7 +8734,7 @@ dev-python/python-pluginloader 1.0.0: Library to manage python plugins/extension
 dev-python/python-podman 0.12.1.2: A library for communicating with a Podman server
 dev-python/python-poppler 0.12.1-r4: Python bindings to the Poppler PDF library
 dev-python/python-poppler-qt5 0.24.2_p20170214: A python binding for libpoppler-qt5
-dev-python/python-prctl 1.6.1: Control process attributes through prctl
+dev-python/python-prctl 1.6.1 1.7: Control process attributes through prctl
 dev-python/python-recaptcha 2.0.0 2.0.1 2.0.1-r1: A plugin for reCAPTCHA and reCAPTCHA Mailhide
 dev-python/python-redmine 2.0.2: Python interface to the Redmine REST API
 dev-python/python-saharaclient 2.2.1: This is a client for the OpenStack Sahara API, aka HADOOP
@@ -17779,7 +17779,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_rc3 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.9.192 4.9.199 4.9.203 4.9.205 4.14.143 4.14.152 4.14.156 4.14.157 4.19.72 4.19.82 4.19.86 4.19.87 4.19.88 5.3.12 5.3.13 5.3.14-r1 5.3.15 5.4.0 5.4.1 5.4.2: Full sources including the Gentoo patchset for the 5.4 kernel tree
+sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.9.192 4.9.199 4.9.203 4.9.205 4.14.143 4.14.152 4.14.156 4.14.157 4.14.158 4.19.72 4.19.82 4.19.86 4.19.87 4.19.88 5.3.12 5.3.13 5.3.14-r1 5.3.15 5.4.0 5.4.1 5.4.2: Full sources including the Gentoo patchset for the 5.4 kernel tree
 sys-kernel/git-sources 5.4_rc1 5.4_rc2 5.4_rc3 5.4_rc4 5.4_rc5 5.4_rc6 5.4_rc7 5.4_rc8: The very latest -git version of the Linux kernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
