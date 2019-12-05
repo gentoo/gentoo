@@ -1,3 +1,4 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare test
 DEPEND=static? ( unwind? ( sys-libs/libunwind[static-libs(+)] ) elfutils? ( dev-libs/elfutils[static-libs(+)] ) ) aio? ( >=dev-libs/libaio-0.3.106 ) sys-kernel/linux-headers
 DESCRIPTION=A useful diagnostic, instructional, and debugging tool
@@ -10,5 +11,5 @@ RDEPEND=!static? ( unwind? ( sys-libs/libunwind ) elfutils? ( dev-libs/elfutils 
 REQUIRED_USE=?? ( unwind elfutils )
 SLOT=0
 SRC_URI=https://github.com/strace/strace/releases/download/v5.4/strace-5.4.tar.xz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=14ef7503d004a615127a0e0e6731b05e
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=de3468002dd3840ec72b63b5539e92c7
