@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Module for manipulating ID3 (v1 + v2) tags in Python"
 HOMEPAGE="http://eyed3.nicfit.net/"
-SRC_URI="https://github.com/nicfit/eyeD3/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/nicfit/eyeD3/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0.7"

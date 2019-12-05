@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit readme.gentoo-r1 user
+inherit readme.gentoo-r1
 
 DESCRIPTION="This is the command-line version of the Steam client for dedicated servers"
 HOMEPAGE="https://developer.valvesoftware.com/wiki/SteamCMD"

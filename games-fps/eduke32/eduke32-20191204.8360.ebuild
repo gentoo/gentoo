@@ -7,7 +7,6 @@ inherit desktop toolchain-funcs xdg-utils
 
 MY_BUILD="$(ver_cut 2)"
 MY_DATE="$(ver_cut 1)"
-
 MY_PV_HRP="5.4"
 MY_PV_OFFENSIVE_XXX="1.33"
 MY_PV_OPL="2.01"
@@ -18,11 +17,11 @@ MY_PV_VOXELS="1.21"
 DESCRIPTION="An open source engine port of the classic PC first person shooter Duke Nukem 3D"
 HOMEPAGE="http://www.eduke32.com/"
 SRC_URI="
-	http://dukeworld.com/eduke32/synthesis/${MY_DATE}-${MY_BUILD}/${PN}_src_${MY_DATE}-${MY_BUILD}.tar.xz
-	http://www.eduke32.com/images/eduke32_classic.png
+	https://dukeworld.com/eduke32/synthesis/${MY_DATE}-${MY_BUILD}/${PN}_src_${MY_DATE}-${MY_BUILD}.tar.xz
+	https://www.eduke32.com/images/eduke32_classic.png
 	hrp? ( http://www.duke4.org/files/nightfright/hrp/duke3d_hrp.zip -> duke3d_hrp-${MY_PV_HRP}.zip )
 	offensive? ( http://www.duke4.org/files/nightfright/related/duke3d_xxx.zip -> duke3d_xxx-${MY_PV_OFFENSIVE_XXX}.zip )
-	opl? ( http://www.moddb.com/downloads/mirror/95750/102/ce9e8f422c6cccdb297852426e96740a -> duke3d_musopl-${MY_PV_OPL}.zip )
+	opl? ( https://www.moddb.com/downloads/mirror/95750/102/ce9e8f422c6cccdb297852426e96740a -> duke3d_musopl-${MY_PV_OPL}.zip )
 	psx? ( http://www.duke4.org/files/nightfright/related/duke3d_psx.zip -> duke3d_psx-${MY_PV_PSX}.zip )
 	sc-55? ( http://www.duke4.org/files/nightfright/music/duke3d_music-sc55.zip -> duke3d_music-sc55-${MY_PV_SC55}.zip )
 	voxels? ( https://www.dropbox.com/s/yaxfahyvskyvt4r/duke3d_voxels.zip -> duke3d_voxels-${MY_PV_VOXELS}.zip )
@@ -54,7 +53,7 @@ S="${WORKDIR}/${PN}_${MY_DATE}-${MY_BUILD}"
 RDEPEND="
 	media-libs/libsdl2[joystick,opengl?,sound,video]
 	media-libs/sdl2-mixer[flac?,fluidsynth?,midi,timidity?,vorbis?]
-	sys-libs/zlib:=
+	sys-libs/zlib
 	flac? ( media-libs/flac )
 	gtk? ( x11-libs/gtk+:2 )
 	opengl? (
@@ -67,7 +66,7 @@ RDEPEND="
 		media-libs/libogg
 		media-libs/libvorbis
 	)
-	xmp? ( media-libs/exempi:= )
+	xmp? ( media-libs/exempi:2= )
 "
 
 DEPEND="
@@ -198,27 +197,13 @@ src_install() {
 	keepdir /usr/share/games/eduke32
 	insinto /usr/share/games/eduke32
 
-	if use hrp; then
-		doins "${DISTDIR}"/duke3d_hrp-${MY_PV_HRP}.zip
-	fi
-	if use offensive; then
-		doins "${DISTDIR}"/duke3d_xxx-${MY_PV_OFFENSIVE_XXX}.zip
-	fi
-	if use opl; then
-		doins "${DISTDIR}"/duke3d_musopl-${MY_PV_OPL}.zip
-	fi
-	if use psx; then
-		doins "${DISTDIR}"/duke3d_psx-${MY_PV_PSX}.zip
-	fi
-	if use sc-55; then
-		doins "${DISTDIR}"/duke3d_music-sc55-${MY_PV_SC55}.zip
-	fi
-	if use sdk; then
-		doins -r package/sdk
-	fi
-	if use voxels; then
-		doins "${DISTDIR}"/duke3d_voxels-${MY_PV_VOXELS}.zip
-	fi
+	use hrp && doins "${DISTDIR}"/duke3d_hrp-${MY_PV_HRP}.zip
+	use offensive && doins "${DISTDIR}"/duke3d_xxx-${MY_PV_OFFENSIVE_XXX}.zip
+	use opl && doins "${DISTDIR}"/duke3d_musopl-${MY_PV_OPL}.zip
+	use psx && doins "${DISTDIR}"/duke3d_psx-${MY_PV_PSX}.zip
+	use sc-55 && doins "${DISTDIR}"/duke3d_music-sc55-${MY_PV_SC55}.zip
+	use sdk && doins -r package/sdk
+	use voxels && doins "${DISTDIR}"/duke3d_voxels-${MY_PV_VOXELS}.zip
 
 	newicon "${DISTDIR}"/eduke32_classic.png eduke32.png
 
@@ -226,22 +211,11 @@ src_install() {
 	make_desktop_entry mapster32 Mapster32 eduke32 Game
 
 	local DOCS=( package/sdk/samples/*.txt source/build/doc/*.txt source/duke3d/src/lunatic/doc/*.txt )
-
-	if use hrp; then
-		DOCS+=( "${WORKDIR}"/hrp_readme.txt "${WORKDIR}"/hrp_todo.txt )
-	fi
-	if use offensive; then
-		DOCS+=( "${WORKDIR}"/xxx_readme.txt )
-	fi
-	if use opl; then
-		DOCS+=( "${WORKDIR}"/opl_readme.txt )
-	fi
-	if use sc-55; then
-		DOCS+=( "${WORKDIR}"/readme/music_readme.txt )
-	fi
-	if use voxels; then
-		DOCS+=( "${WORKDIR}"/voxelpack_readme.txt )
-	fi
+	use hrp && DOCS+=( "${WORKDIR}"/hrp_readme.txt "${WORKDIR}"/hrp_todo.txt )
+	use offensive && DOCS+=( "${WORKDIR}"/xxx_readme.txt )
+	use opl && DOCS+=( "${WORKDIR}"/opl_readme.txt )
+	use sc-55 && DOCS+=( "${WORKDIR}"/readme/music_readme.txt )
+	use voxels && DOCS+=( "${WORKDIR}"/voxelpack_readme.txt )
 
 	einstalldocs
 }
