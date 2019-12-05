@@ -14,6 +14,8 @@ IUSE=""
 
 RDEPEND="dev-lang/perl"
 
+PATCHES=( "${FILESDIR}/fix-generic-records-support.patch" )
+
 src_install() {
 	dobin valtz
 	dodoc README CHANGES
