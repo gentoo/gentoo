@@ -7948,7 +7948,7 @@ dev-python/imapclient 0.13 2.1.0: easy-to-use, pythonic, and complete IMAP clien
 dev-python/imexam 0.7.1: Simple interactive astronomical image examination and plotting
 dev-python/iminuit 1.2 1.3.3: Minuit numerical function minimization in Python
 dev-python/importing 1.10: Import objects dynamically, lazily, weakly, and more
-dev-python/importlib_metadata 0.22 0.23 0.23-r1 1.0.0 1.1.0: Read metadata from Python packages
+dev-python/importlib_metadata 0.23-r1 1.1.0 1.2.0: Read metadata from Python packages
 dev-python/importlib_resources 1.0.2-r1: Read resources from Python packages
 dev-python/incremental 16.10.1 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.7: Fast random access of gzip files in Python
@@ -15082,7 +15082,7 @@ net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's 
 net-mail/cyrus-imapd 3.0.10-r1 3.0.11: The Cyrus IMAP Server
 net-mail/dbmail 3.2.3-r1 3.2.3-r2: Fast and scalable sql based email services
 net-mail/dot-forward 0.71-r4: reads sendmail's .forward files under qmail
-net-mail/dovecot 2.2.36.4 2.3.7.2 2.3.8: An IMAP and POP3 server written with security primarily in mind
+net-mail/dovecot 2.2.36.4 2.3.7.2 2.3.8 2.3.9: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3: Simple yet powerful mailing list manager for qmail
