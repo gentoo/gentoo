@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows"
-HOMEPAGE="https://www.geekbench.com"
+HOMEPAGE="https://www.geekbench.com/"
 SRC_URI="https://cdn.geekbench.com/Geekbench-${PV}-Linux.tar.gz"
 
 KEYWORDS="-* ~amd64"
