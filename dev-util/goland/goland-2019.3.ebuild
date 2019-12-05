@@ -12,7 +12,23 @@ DESCRIPTION="Golang IDE by JetBrains"
 HOMEPAGE="http://www.jetbrains.com/go"
 
 KEYWORDS="~amd64"
-LICENSE="|| ( JetBrains-business JetBrains-classroom JetBrains-educational JetBrains-individual )"
+LICENSE="|| ( JetBrains-business JetBrains-classroom JetBrains-educational JetBrains-individual )
+	Apache-2.0
+	BSD
+	CC0-1.0
+	CDDL
+	CDDL-1.1
+	EPL-1.0
+	GPL-2
+	GPL-2-with-classpath-exception
+	ISC
+	LGPL-2.1
+	LGPL-3
+	MIT
+	MPL-1.1
+	OFL
+"
+
 RESTRICT="bindist mirror"
 
 QA_PREBUILT="opt/${P}/*"
