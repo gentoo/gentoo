@@ -931,11 +931,6 @@ dev-java/eclipse-ecj:4.10
 ~app-portage/gemato-14.1m
 ~app-portage/gemato-9999m
 
-# Matt Turner <mattst88@gentoo.org> (2018-05-25)
-# New package. Needs to interact with media-libs/mesa and
-# x11-drivers/nvidia-drivers. Work in progress.
-media-libs/libglvnd
-
 # James Le Cuirot <chewi@gentoo.org> (2017-12-17)
 # Java 9+ is not yet fully supported on Gentoo. Packages cannot depend
 # on it so these virtuals are not yet required. If you wish to use
