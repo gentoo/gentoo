@@ -3,30 +3,30 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{5,6,7} )
-inherit fcaps flag-o-matic multilib python-r1 qmake-utils user xdg-utils cmake-utils
+inherit fcaps flag-o-matic multilib python-any-r1 qmake-utils user xdg-utils cmake-utils
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
 SRC_URI="https://www.wireshark.org/download/src/all-versions/${P/_/}.tar.xz"
-
 LICENSE="GPL-2"
-SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~ppc64 x86"
-IUSE="
-	adns androiddump bcg729 +capinfos +captype ciscodump +dftest doc dpauxmon
-	+dumpcap +editcap http2 kerberos libxml2 lua lz4 maxminddb +mergecap
-	+netlink +pcap +qt5 +randpkt +randpktdump +reordercap sbc selinux +sharkd
-	smi snappy spandsp sshdump ssl sdjournal +text2pcap tfshark +tshark
-	+udpdump zlib
-"
 
+SLOT="0/${PV}"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~x86"
+IUSE="
+	androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon
+	+dumpcap +editcap http2 kerberos libxml2 lua lz4 maxminddb +mergecap
+	+minizip +netlink +plugins plugin-ifdemo +pcap +qt5 +randpkt +randpktdump
+	+reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl sdjournal
+	+text2pcap tfshark +tshark +udpdump zlib
+"
 S=${WORKDIR}/${P/_/}
 
 CDEPEND="
 	>=dev-libs/glib-2.32:2
+	>=net-dns/c-ares-1.5
 	dev-libs/libgcrypt:0
-	adns? ( >=net-dns/c-ares-1.5 )
 	bcg729? ( media-libs/bcg729 )
+	brotli? ( app-arch/brotli )
 	ciscodump? ( >=net-libs/libssh-0.6 )
 	filecaps? ( sys-libs/libcap )
 	http2? ( net-libs/nghttp2 )
@@ -35,6 +35,7 @@ CDEPEND="
 	lua? ( >=dev-lang/lua-5.1:* )
 	lz4? ( app-arch/lz4 )
 	maxminddb? ( dev-libs/libmaxminddb )
+	minizip? ( sys-libs/zlib[minizip] )
 	netlink? ( dev-libs/libnl:3 )
 	pcap? ( net-libs/libpcap )
 	qt5? (
@@ -53,12 +54,12 @@ CDEPEND="
 	sshdump? ( >=net-libs/libssh-0.6 )
 	ssl? ( net-libs/gnutls:= )
 	zlib? ( sys-libs/zlib )
-	${PYTHON_DEPS}
 "
 # We need perl for `pod2html`. The rest of the perl stuff is to block older
 # and broken installs. #455122
 DEPEND="
 	${CDEPEND}
+	${PYTHON_DEPS}
 "
 BDEPEND="
 	!<perl-core/Pod-Simple-3.170
@@ -81,7 +82,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-wireshark )
 "
 REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
+	plugin-ifdemo? ( plugins )
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4-androiddump.patch
@@ -117,7 +118,7 @@ src_configure() {
 		append-cxxflags -fPIC -DPIC
 	fi
 
-	python_setup 'python3*'
+	python_setup
 
 	mycmakeargs+=(
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
@@ -149,16 +150,19 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR="${EROOT}/usr/share/doc/${PF}"
 		-DDISABLE_WERROR=yes
 		-DENABLE_BCG729=$(usex bcg729)
+		-DENABLE_BROTLI=$(usex brotli)
 		-DENABLE_CAP=$(usex filecaps caps)
-		-DENABLE_CARES=$(usex adns)
 		-DENABLE_GNUTLS=$(usex ssl)
 		-DENABLE_KERBEROS=$(usex kerberos)
 		-DENABLE_LIBXML2=$(usex libxml2)
 		-DENABLE_LUA=$(usex lua)
 		-DENABLE_LZ4=$(usex lz4)
+		-DENABLE_MINIZIP=$(usex minizip)
 		-DENABLE_NETLINK=$(usex netlink)
 		-DENABLE_NGHTTP2=$(usex http2)
 		-DENABLE_PCAP=$(usex pcap)
+		-DENABLE_PLUGINS=$(usex plugins)
+		-DENABLE_PLUGIN_IFDEMO=$(usex plugin-ifdemo)
 		-DENABLE_SBC=$(usex sbc)
 		-DENABLE_SMI=$(usex smi)
 		-DENABLE_SNAPPY=$(usex snappy)
