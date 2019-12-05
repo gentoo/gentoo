@@ -17,6 +17,7 @@ DESCRIPTION="keymap handling library for toolkits and window systems"
 HOMEPAGE="https://xkbcommon.org/ https://github.com/xkbcommon/libxkbcommon/"
 LICENSE="MIT"
 IUSE="X doc test"
+RESTRICT="!test? ( test )"
 SLOT="0"
 
 BDEPEND="
