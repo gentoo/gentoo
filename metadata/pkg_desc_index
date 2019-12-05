@@ -15687,7 +15687,7 @@ net-vpn/tor 0.4.0.5 0.4.1.6 0.4.2.4_rc: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard 0.0.20191127-r1 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard 0.0.20191205 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-wireless/aircrack-ng 1.5.2 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
