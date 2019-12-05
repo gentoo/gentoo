@@ -27,6 +27,7 @@ LICENSE="|| ( JetBrains-business JetBrains-classroom JetBrains-educational JetBr
 	MIT
 	MPL-1.1
 	OFL
+	ZLIB
 "
 
 RESTRICT="bindist mirror"
