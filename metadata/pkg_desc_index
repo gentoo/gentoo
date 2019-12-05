@@ -1485,7 +1485,7 @@ app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Pr
 app-emulation/gxemul 0.6.0-r1: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
 app-emulation/hercules 3.10 3.12: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
 app-emulation/hyperd 0.7.0-r1: Hypervisor-based Runtime for OCI
-app-emulation/img 0.5.7: Standalone daemon-less unprivileged Dockerfile and OCI container image builder
+app-emulation/img 0.5.7-r1: Standalone daemon-less unprivileged Dockerfile and OCI container image builder
 app-emulation/kompose 1.16.0 1.19.0: Tool to move from docker-compose to Kubernetes
 app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files

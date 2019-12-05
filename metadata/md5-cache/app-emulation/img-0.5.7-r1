@@ -1,0 +1,15 @@
+BDEPEND=>=dev-lang/go-1.10
+DEFINED_PHASES=compile install unpack
+DEPEND=seccomp? ( sys-libs/libseccomp )
+DESCRIPTION=Standalone daemon-less unprivileged Dockerfile and OCI container image builder
+EAPI=7
+HOMEPAGE=https://github.com/genuinetools/img
+IUSE=seccomp
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=seccomp? ( sys-libs/libseccomp ) app-emulation/runc
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/genuinetools/img/archive/v0.5.7.tar.gz -> img-0.5.7.tar.gz
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
+_md5_=4d3e61b94901dedea16364cdd70ab522
