@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -s390
 
+# Matt Turner <mattst88@gentoo.org> (2019-12-05)
+# media-libs/libglvnd is not keyworded
+libglvnd
+
 # Unmask ABI flags for this arch.
 -abi_s390_32
 

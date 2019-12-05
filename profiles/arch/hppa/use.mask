@@ -1,8 +1,15 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Unmask the flag which corresponds to ARCH.
+-hppa
+
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
+
+# Matt Turner <mattst88@gentoo.org> (2019-12-05)
+# media-libs/libglvnd is not keyworded
+libglvnd
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependency not keyworded (dev-libs/libappindicator).
@@ -180,9 +187,6 @@ flite
 # Jeroen Roovers <jer@gentoo.org> (2009-08-04)
 # net-misc/wicd and sys-power/pm-utils are currently not supported (bug #280312)
 pm-utils
-
-# Unmask the flag which corresponds to ARCH.
--hppa
 
 # Jeroen Roovers <jer@gentoo.org> (2008-06-07)
 # dev-util/valgrind has not been ported to HPPA.
