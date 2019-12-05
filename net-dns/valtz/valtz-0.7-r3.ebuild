@@ -14,7 +14,9 @@ IUSE=""
 
 RDEPEND="dev-lang/perl"
 
-PATCHES=( "${FILESDIR}/fix-generic-records-support.patch" )
+PATCHES=( "${FILESDIR}/fix-generic-records-support.patch"
+		  "${FILESDIR}/allow-underscores-in-records.patch"
+		  "${FILESDIR}/add-support-for-srv-records.patch" )
 
 src_install() {
 	dobin valtz
