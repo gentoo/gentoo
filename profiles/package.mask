@@ -41,8 +41,6 @@ dev-python/sphinxcontrib-ditaa
 dev-python/pyrax
 dev-python/tgmochikit
 dev-python/pyndex
-dev-python/nototools
-media-fonts/noto-emoji
 dev-python/python-mhash
 dev-python/guppy
 dev-python/dib-utils
