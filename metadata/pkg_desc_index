@@ -1443,7 +1443,7 @@ app-emulation/cloud-init 17.2 18.4-r1 18.5 9999: Cloud instance initialisation m
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
 app-emulation/conmon 2.0.1 2.0.2: An OCI container runtime monitor
 app-emulation/containerd 1.2.6 1.2.7 1.2.10 1.3.0 1.3.1: A daemon to control runC
-app-emulation/containers-storage 1.15.0 1.15.1: containers/storage library
+app-emulation/containers-storage 1.15.1 1.15.2: containers/storage library
 app-emulation/cri-o 1.10.6 1.13.9 1.15.1 1.15.2: OCI-based implementation of Kubernetes Container Runtime Interface
 app-emulation/cri-tools 1.14.0 1.15.0 1.16.1: CLI and validation tools for Kubelet Container Runtime (CRI)
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0 15.3.0 15.3.1 16.0.0 16.2.5 17.5.0 17.5.0-r1 17.5.1 18.0.0 18.1.0 18.5.0: Commercial version of app-emulation/wine with paid support.
@@ -11220,7 +11220,7 @@ games-board/gnome-hearts 0.3.1-r2: A clone of classic hearts card game
 games-board/gnome-mahjongg 3.22.0 3.34.0: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mines 3.20.1 3.30.1.1 3.34.0: Clear hidden mines from a minefield
 games-board/gnono 1.9.1-r1: A rewrite for GNOME of the Windows card game WUNO
-games-board/gnubg 1.05.000-r1: GNU BackGammon
+games-board/gnubg 1.05.000-r1 1.06.002: GNU BackGammon
 games-board/gnuchess 6.2.4 6.2.5: Console based chess interface
 games-board/gnuchess-book 1.02-r1: Opening book for gnuchess
 games-board/gnugo 3.9.1-r1 3.9.1-r2: A Go-playing program
@@ -12829,7 +12829,7 @@ media-gfx/darktable 2.6.2 9999: A virtual lighttable and darkroom for photograph
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0-r1: Command-line decoder for raw digital photos
 media-gfx/digikam 6.3.0-r1: Digital photo management application
-media-gfx/displaycal 3.8.7.0 3.8.7.1 3.8.8.1: Display calibration and characterization powered by Argyll CMS
+media-gfx/displaycal 3.8.8.1: Display calibration and characterization powered by Argyll CMS
 media-gfx/ditaa 0.10 0.11.0: A utility that converts ascii-art diagrams to bitmap diagrams
 media-gfx/dmtx-utils 0.7.5 0.7.6: Tools for reading and writing Data Matrix barcodes
 media-gfx/dpic 20130310 20160824: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
