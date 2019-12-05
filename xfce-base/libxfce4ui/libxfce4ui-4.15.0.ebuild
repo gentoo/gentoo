@@ -12,8 +12,8 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="debug glade introspection libgtop startup-notification vala"
-REQUIRED_USE="vala? ( introspection )"
+IUSE="debug glade -gtk2 introspection libgtop startup-notification vala"
+REQUIRED_USE="!gtk2 vala? ( introspection )"
 
 RDEPEND=">=dev-libs/glib-2.42:2
 	>=x11-libs/gtk+-3.22:3[introspection?]
