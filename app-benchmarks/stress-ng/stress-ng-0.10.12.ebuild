@@ -22,7 +22,7 @@ DEPEND="
 	sys-apps/keyutils:=
 	sys-libs/libapparmor
 	sys-libs/libcap
-	sys-libs/zlib:=
+	sys-libs/zlib
 "
 
 RDEPEND="${DEPEND}"
