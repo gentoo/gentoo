@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
 DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
 DESCRIPTION=Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 EAPI=6
-HOMEPAGE=https://www.kernel.org/ https://www.gentoo.org/ https://gitlab.com/post-factum/pf-kernel/wikis/README https://dev.gentoo.org/~mpagano/genpatches/
+HOMEPAGE=https://www.kernel.org/ https://wiki.gentoo.org/wiki/Kernel https://gitlab.com/post-factum/pf-kernel/wikis/README https://dev.gentoo.org/~mpagano/genpatches/
 IUSE=symlink build
 KEYWORDS=-* ~amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
@@ -10,5 +10,5 @@ RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-
 RESTRICT=binchecks strip
 SLOT=5.1_p7
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz https://github.com/pfactum/pf-kernel/compare/v5.1...v5.1-pf7.diff -> pf-sources-5.1_p7.patch https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-5.1-1.base.tar.xz https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-5.1-1.extras.tar.xz
-_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	686eaab303305a908fd57b2fd7617800	kernel-2	de1915782aefb3a9dfa6194c9e03a69c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	686eaab303305a908fd57b2fd7617800	kernel-2	161e65a1e185c10599fd2c5b258be436	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=8ea8123b5ce14eb973a9cbded5e447e3

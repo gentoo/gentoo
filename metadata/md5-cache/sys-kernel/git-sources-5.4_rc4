@@ -10,5 +10,5 @@ RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-
 RESTRICT=binchecks strip
 SLOT=5.4_rc4
 SRC_URI=https://git.kernel.org/torvalds/p/v5.4-rc4/v5.3 -> patch-5.4-rc4.patch https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.tar.xz
-_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	686eaab303305a908fd57b2fd7617800	kernel-2	de1915782aefb3a9dfa6194c9e03a69c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	686eaab303305a908fd57b2fd7617800	kernel-2	161e65a1e185c10599fd2c5b258be436	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=4e38a795911163fe2d6a65f24408c207

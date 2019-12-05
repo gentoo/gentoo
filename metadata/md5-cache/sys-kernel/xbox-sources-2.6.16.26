@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
 DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
 DESCRIPTION=Full sources for the Xbox Linux kernel
 EAPI=5
-HOMEPAGE=https://www.kernel.org/ https://www.gentoo.org/
+HOMEPAGE=https://www.kernel.org/ https://wiki.gentoo.org/wiki/Kernel
 IUSE=symlink build
 KEYWORDS=-* ~x86
 LICENSE=GPL-2 linux-firmware
@@ -10,5 +10,5 @@ RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-
 RESTRICT=binchecks strip
 SLOT=2.6.16.26
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v2.6/patch-2.6.16.26.xz https://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.16.tar.xz mirror://sourceforge/xbox-linux/linux-2.6.16-xbox.patch.gz
-_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	kernel-2	de1915782aefb3a9dfa6194c9e03a69c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	kernel-2	161e65a1e185c10599fd2c5b258be436	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=5668a47c58461eb3e14a3d6890f51dda

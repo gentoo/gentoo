@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
 DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
 DESCRIPTION=Full Linux 4.19 kernel sources with the CONFIG_PREEMPT_RT patch
 EAPI=6
-HOMEPAGE=https://www.kernel.org/ https://www.gentoo.org/ https://www.kernel.org/pub/linux/kernel/projects/rt/ https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/
+HOMEPAGE=https://www.kernel.org/ https://wiki.gentoo.org/wiki/Kernel https://www.kernel.org/pub/linux/kernel/projects/rt/ https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/
 IUSE=symlink build deblob
 KEYWORDS=~amd64
 LICENSE=GPL-2
@@ -10,5 +10,5 @@ RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-
 RESTRICT=binchecks strip
 SLOT=4.19.10_p8
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.10.xz https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.19-gnu/deblob-4.19 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.19-gnu/deblob-check -> deblob-check-4.19 ) https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/patch-4.19.10-rt8.patch.xz https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-4.19.10-rt8.patch.xz
-_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	686eaab303305a908fd57b2fd7617800	kernel-2	de1915782aefb3a9dfa6194c9e03a69c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	02ef27875ec5afcc2202b9d062d57f07	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	686eaab303305a908fd57b2fd7617800	kernel-2	161e65a1e185c10599fd2c5b258be436	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	02ef27875ec5afcc2202b9d062d57f07	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=a8d1019203a7792b6e8327c04db3b92a
