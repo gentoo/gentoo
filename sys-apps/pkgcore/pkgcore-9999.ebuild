@@ -30,20 +30,24 @@ else
 fi
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )
+	doc? ( $(python_gen_any_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+		dev-python/docutils[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
+	') )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
 python_check_deps() {
-	use doc || return 0
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+	if use doc; then
+		has_version "dev-python/setuptools[${PYTHON_USEDEP}]"
+		has_version "dev-python/docutils[${PYTHON_USEDEP}]"
+		has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+	fi
 }
 
 python_compile_all() {
-	local esetup_args=( $(usex doc "--enable-html-docs" "") )
-	# only build man pages for live ebuilds if doc USE flag is enabled
-	[[ ${PV} == *9999 ]] && esetup_args+=( $(usex doc "--enable-man-pages" "") )
-	esetup.py build "${esetup_args[@]}"
+	use doc && esetup.py build_docs
 }
 
 python_test() {
@@ -51,6 +55,7 @@ python_test() {
 }
 
 python_install_all() {
+	local DOCS=( AUTHORS NEWS.rst )
 	esetup.py install_docs \
 		--docdir="${ED%/}/usr/share/doc/${PF}" \
 		--mandir="${ED%/}/usr/share/man"
