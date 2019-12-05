@@ -48,7 +48,6 @@ net-wireless/ndiswrapper
 # MAJORITY VOTE. YOU CAN REMOVE SINGLE PACKAGES
 # IF YOU PERSONALLY STEP IN TO MAINTAIN THEM (AND
 # ADD YOURSELF TO THEIR METADATA).
-net-misc/trackma
 dev-python/inotifyx
 dev-python/disqus-python
 dev-python/figleaf
