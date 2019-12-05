@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/f/freezegun/freezegun-0.3.12.tar.gz
 _eclasses_=distutils-r1	1a001b95d3bfb24277ebc93f461847da	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8d0cb030ff2d61ae714a022beac0b155	python-utils-r1	02ef27875ec5afcc2202b9d062d57f07	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=d000a5e9232c16f479d560fa9d68fecd
+_md5_=67361c7f497e0a4795ff8f6a746ae717
