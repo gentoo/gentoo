@@ -13,6 +13,7 @@ fi
 
 DESCRIPTION="X authority file utility"
 IUSE="ipv6 test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXau
