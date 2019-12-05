@@ -98,9 +98,7 @@ media-sound/beets
 dev-python/numdisplay
 dev-python/python-fastcgi
 dev-python/workerpool
-dev-python/eyeD3
 media-sound/abcde
-media-sound/gpodder
 dev-python/py-smbpasswd
 dev-python/cherrytemplate
 dev-python/python-catcher
@@ -116,7 +114,6 @@ www-apps/blohg-tumblelog
 dev-python/webhelpers
 dev-python/optcomplete
 dev-python/hcs-utils
-dev-python/python-prctl
 net-p2p/pybitmessage
 dev-python/asciitree
 net-misc/irrtree
