@@ -70,7 +70,6 @@ dev-python/snakefood
 dev-python/sqlitecachec
 dev-python/supervisor-quick
 dev-python/python-cdb
-dev-python/fabric
 dev-python/foolscap
 net-fs/tahoe-lafs
 dev-python/pyvtk
