@@ -27,7 +27,7 @@ DEPEND="ncurses? ( dev-python/urwid[${PYTHON_USEDEP}] )
 		dev-python/pillow[${PYTHON_USEDEP}]
 	)"
 RDEPEND="sys-process/lsof
-	inotify? ( || ( dev-python/inotifyx dev-python/pyinotify ) )
+	inotify? ( dev-python/pyinotify )
 	${DEPEND}"
 
 python_configure_all() {
