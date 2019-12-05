@@ -7253,7 +7253,7 @@ dev-php/pecl-geoip 1.1.1-r4: PHP extension to map IP address to geographic place
 dev-php/pecl-gnupg 1.4.0-r2: PHP wrapper around the gpgme library
 dev-php/pecl-haru 1.0.4-r3: An interface to libharu, a PDF generator
 dev-php/pecl-htscanner 1.0.1-r3: Enables .htaccess options for php-scripts running as cgi
-dev-php/pecl-http 2.6.0 2.6.0-r1 2.6.0-r2 3.1.0 3.1.0-r1 3.1.0-r2 3.2.0 3.2.1 3.2.3: Extended HTTP Support for PHP
+dev-php/pecl-http 2.6.0 2.6.0-r1 2.6.0-r2 3.2.1 3.2.3: Extended HTTP Support for PHP
 dev-php/pecl-imagick 3.4.4: PHP wrapper for the ImageMagick library
 dev-php/pecl-libevent 0.1.0-r2: PHP wrapper for libevent
 dev-php/pecl-lzf 1.6.6 1.6.7: This package handles LZF de/compression
@@ -17779,7 +17779,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_rc3 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.9.192 4.9.199 4.9.203 4.9.205 4.14.143 4.14.152 4.14.156 4.14.157 4.14.158 4.19.72 4.19.82 4.19.86 4.19.87 4.19.88 5.3.12 5.3.13 5.3.14-r1 5.3.15 5.4.0 5.4.1 5.4.2: Full sources including the Gentoo patchset for the 5.4 kernel tree
+sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.4.206 4.9.192 4.9.199 4.9.203 4.9.205 4.9.206 4.14.143 4.14.152 4.14.156 4.14.157 4.14.158 4.19.72 4.19.82 4.19.86 4.19.87 4.19.88 5.3.12 5.3.13 5.3.14-r1 5.3.15 5.4.0 5.4.1 5.4.2: Full sources including the Gentoo patchset for the 5.4 kernel tree
 sys-kernel/git-sources 5.4_rc1 5.4_rc2 5.4_rc3 5.4_rc4 5.4_rc5 5.4_rc6 5.4_rc7 5.4_rc8: The very latest -git version of the Linux kernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
