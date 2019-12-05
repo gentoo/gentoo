@@ -43,7 +43,7 @@ src_compile() {
 }
 
 src_install() {
-	emake INSTALL_ROOT="${ED%/}" install
+	emake INSTALL_ROOT="${ED}" install
 
 	insinto /etc
 	doins mcproxy.conf
