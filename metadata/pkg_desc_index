@@ -12843,7 +12843,7 @@ media-gfx/eog-plugins 3.26.3 3.26.4: Eye of GNOME plugins
 media-gfx/eom 1.22.0 1.22.1: The MATE image viewer
 media-gfx/ephoto 1.5: Enlightenment image viewer written with EFL
 media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend
-media-gfx/evoluspencil 3.0.4 3.1.0: A simple GUI prototyping tool to create mockups
+media-gfx/evoluspencil 3.0.4 3.1.0-r1: A simple GUI prototyping tool to create mockups
 media-gfx/exact-image 0.8.1-r3: A fast, modern and generic image processing library
 media-gfx/exif 0.6.21: Small CLI util to show EXIF infos hidden in JPEG files
 media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
@@ -14942,7 +14942,7 @@ net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS
 net-libs/libgsasl 1.8.0-r1: The GNU SASL library
 net-libs/libgssglue 0.4-r1: Exports a gssapi interface which calls other random gssapi libraries
 net-libs/libhackrf 2018.01.1 9999: library for communicating with HackRF SDR platform
-net-libs/libhtp 0.5.22: security-aware parser for the HTTP protocol and the related bits and pieces
+net-libs/libhtp 0.5.22 0.5.31: security-aware parser for the HTTP protocol and the related bits and pieces
 net-libs/libhubbub 0.3.3 0.3.5-r1 0.3.6: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
 net-libs/libiio 0.15-r1 9999: Library for interfacing with IIO devices
@@ -19320,7 +19320,7 @@ x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 2.2.2-r1 2.2.6-r2 2.4.3 3.0.2: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.12.4 0.12.8 0.12.9 0.12.10: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.4-r1: Xfce's freedesktop.org specification compatible menu implementation library
-xfce-base/libxfce4ui 4.13.4 4.14.1: Unified widget and session management libs for Xfce
+xfce-base/libxfce4ui 4.13.4 4.14.1 4.15.0: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.13.2 4.14.0: A basic utility library for the Xfce desktop environment
 xfce-base/thunar 1.8.9 1.8.10 1.8.11: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0: A tool to find and launch installed applications for the Xfce desktop
