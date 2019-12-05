@@ -27,6 +27,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE="test X"
+RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	test? ( X? ( ${VIRTUALX_DEPEND} ) )"

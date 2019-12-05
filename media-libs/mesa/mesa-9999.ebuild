@@ -36,8 +36,8 @@ done
 
 IUSE="${IUSE_VIDEO_CARDS}
 	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 +gles2 libglvnd +llvm
-	lm-sensors opencl osmesa pax_kernel selinux test unwind vaapi valgrind
-	vdpau vulkan vulkan-overlay wayland +X xa xvmc"
+	lm-sensors opencl osmesa selinux test unwind vaapi valgrind vdpau vulkan
+	vulkan-overlay wayland +X xa xvmc"
 
 REQUIRED_USE="
 	d3d9?   ( dri3 || ( video_cards_iris video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
@@ -104,7 +104,6 @@ RDEPEND="
 				)
 		vaapi? (
 			>=x11-libs/libva-1.7.3:=[${MULTILIB_USEDEP}]
-			video_cards_nouveau? ( !<=x11-libs/libva-vdpau-driver-0.7.4-r3 )
 		)
 		vdpau? ( >=x11-libs/libvdpau-1.1:=[${MULTILIB_USEDEP}] )
 		xvmc? ( >=x11-libs/libXvMC-1.0.8:=[${MULTILIB_USEDEP}] )
@@ -457,11 +456,6 @@ multilib_src_configure() {
 		vulkan_enable video_cards_i965 intel
 		vulkan_enable video_cards_iris intel
 		vulkan_enable video_cards_radeonsi amd
-	fi
-
-	# x86 hardened pax_kernel needs glx-rts, bug 240956
-	if [[ ${ABI} == x86 ]]; then
-		emesonargs+=( $(meson_use pax_kernel glx-read-only-text) )
 	fi
 
 	if use gallium; then
