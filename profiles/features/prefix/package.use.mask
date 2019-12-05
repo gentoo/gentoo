@@ -9,6 +9,7 @@ gnome-base/gnome-extra-apps share
 # avoid sys-apps/systemd
 net-analyzer/wireshark sdjournal
 sys-apps/dbus-broker launcher
+sys-apps/debianutils systemd-boot
 www-servers/uwsgi uwsgi_plugins_systemd_logger
 
 # Benda Xu <heroxbd@gentoo.org> (2016-07-28)

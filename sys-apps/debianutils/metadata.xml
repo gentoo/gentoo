@@ -7,5 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name='installkernel'>Install /sbin/installkernel script (for Linux)</flag>
+		<flag name='systemd-boot'>Symlink /sbin/installkernel to kernel-install,
+			to make kernel's "make install" facilitate systemd-boot layout</flag>
 	</use>
 </pkgmetadata>
