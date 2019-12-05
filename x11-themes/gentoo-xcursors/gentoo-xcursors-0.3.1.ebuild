@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="A high quality set of animated mouse cursors"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${PN/xcursors/cursors}-tad-${PV}.tar.bz2"
 
 LICENSE="MIT"
