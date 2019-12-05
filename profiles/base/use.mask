@@ -8,10 +8,6 @@
 # Mask PHP 5.6 target for EOL
 php_targets_php5-6
 
-# Matt Turner <mattst88@gentoo.org> (2019-03-03)
-# Mask for testing. Bug 606924
-libglvnd
-
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # app-office/texmacs is package.mask'd. Bug #436400
 texmacs

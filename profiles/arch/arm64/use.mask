@@ -1,5 +1,12 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # Unmask the flag which corresponds to ARCH.
 -arm64
+
+# Matt Turner <mattst88@gentoo.org> (2019-12-05)
+# media-libs/libglvnd is not keyworded
+libglvnd
 
 # Unmask arm specific USE flags
 -cpu_flags_arm_v4
