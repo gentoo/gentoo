@@ -30,6 +30,8 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( dev-lang/perl )"
 
+RESTRICT="!test? ( test )"
+
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
