@@ -12,8 +12,7 @@ DESCRIPTION="Golang IDE by JetBrains"
 HOMEPAGE="http://www.jetbrains.com/go"
 
 KEYWORDS="~amd64"
-LICENSE="IDEA
-	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
+LICENSE="|| ( JetBrains-business JetBrains-classroom JetBrains-educational JetBrains-individual )"
 RESTRICT="bindist mirror"
 
 QA_PREBUILT="opt/${P}/*"
