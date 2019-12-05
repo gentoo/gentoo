@@ -36,7 +36,7 @@ RDEPEND="
 		x11-libs/gtk+:3 )
 	gtk2? ( dev-libs/glib:2
 		x11-libs/gtk+:2 )
-	javascript? ( >=dev-libs/nsgenbind-0.6
+	javascript? ( >=dev-libs/nsgenbind-0.7
 		!duktape? ( dev-lang/spidermonkey:0= ) )
 	jpeg? ( >=virtual/jpeg-0-r2:0 )
 	mng? ( >=media-libs/libmng-1.0.10-r2 )
