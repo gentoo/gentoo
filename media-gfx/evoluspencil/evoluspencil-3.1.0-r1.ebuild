@@ -64,7 +64,7 @@ src_install() {
 	doins -r opt/${MY_PN}-${MY_PV}/*
 
 	fperms 755 /opt/${MY_PN}/${MY_PN}
-	dosym ../../opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
+	dosym ../../opt/${MY_PN}/${MY_PN} /usr/bin/evoluspencil
 
 	insinto /usr/share/applications
 	doins "${FILESDIR}"/${MY_PN}.desktop
