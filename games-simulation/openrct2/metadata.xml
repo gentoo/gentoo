@@ -9,10 +9,6 @@
 		<email>jan@segre.in</email>
 		<name>Jan Segre</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>hendrik@consetetur.de</email>
-		<name>Hendrik v. Raven (lorem_ipsum)</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
