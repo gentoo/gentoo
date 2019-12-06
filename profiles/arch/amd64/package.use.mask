@@ -285,8 +285,8 @@ dev-qt/qtdeclarative -jit
 dev-qt/qtscript -jit
 dev-qt/qtwebkit -jit
 
-# Robin H. Johnson <robbat2@gentoo.org> (2011-07-10)
-# PPS should work on all arches, but only keyworded on amd64/x86
+# Robin H. Johnson <robbat2@gentoo.org> (2011-07-10), updated 2019-12-06
+# PPS should work on all arches, but only keyworded on some arches
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
 # Tim Harder <radhermit@gentoo.org> (2011-02-13)
