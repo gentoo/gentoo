@@ -557,16 +557,6 @@ net-misc/hsc
 # Removal in 30 days.  Bug #697286.
 media-gfx/opcion
 
-# Michał Górny <mgorny@gentoo.org> (2019-11-06)
-# Old EAPI 0 graphics-related packages.
-#
-# media-gfx/aoi was last bumped in Nov 2009.  It is still actively
-# developed upstream, and it's waiting for a bump since Dec 2009.
-# It suffers from bundled dependencies (#177026).
-#
-# Removal in 30 days.  Bug #697288.
-media-gfx/aoi
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
