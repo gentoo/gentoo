@@ -5,4 +5,7 @@
 	<email>games@gentoo.org</email>
 	<name>Gentoo Games Project</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">kouya/tornado</remote-id>
+</upstream>
 </pkgmetadata>
