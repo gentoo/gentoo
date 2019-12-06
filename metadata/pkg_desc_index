@@ -4661,7 +4661,7 @@ dev-lang/opendylan-bin 2011.1 2012.1 2013.1 2013.2 2014.1 2019.1: OpenDylan lang
 dev-lang/orc 0.4.28-r1 0.4.29 0.4.31: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
-dev-lang/perl 5.24.3-r1 5.24.4 5.26.2 5.28.2-r1 5.30.0 5.30.1: Larry Wall's Practical Extraction and Report Language
+dev-lang/perl 5.24.3-r1 5.24.4 5.26.2 5.28.2-r1 5.30.1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 5.6.40-r7 7.1.33 7.2.24 7.2.25 7.3.11 7.3.12 7.4.0: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.15 2.7.16 2.7.17 3.5.5 3.5.7 3.5.9 3.6.5 3.6.8 3.6.9 3.7.2 3.7.3 3.7.4-r1 3.7.5 3.7.5-r1 3.8.0: An interpreted, interactive, object-oriented programming language
@@ -18087,7 +18087,7 @@ virtual/perl-Math-BigInt-FastCalc 0.400.0-r1 0.500.500 0.500.600 0.500.800: Virt
 virtual/perl-Math-BigRat 0.260.802-r1 0.261.100 0.261.300 0.261.400: Virtual for Math-BigRat
 virtual/perl-Math-Complex 1.590.0-r9 1.590.100-r2: Virtual for Math-Complex
 virtual/perl-Memoize 1.30.100_rc-r8: Virtual for Memoize
-virtual/perl-Module-CoreList 5.201.709.220-r2 5.201.709.230 5.201.804.140 5.201.806.260 5.201.904.190 5.201.905.220 5.201.911.100: Virtual for Module-CoreList
+virtual/perl-Module-CoreList 5.201.709.220-r2 5.201.709.230 5.201.804.140 5.201.806.260 5.201.904.190 5.201.911.100: Virtual for Module-CoreList
 virtual/perl-Module-Load 0.320.0-r6 0.340.0: Virtual for Module-Load
 virtual/perl-Module-Load-Conditional 0.640.0-r3 0.680.0-r2: Virtual for Module-Load-Conditional
 virtual/perl-Module-Loaded 0.80.0-r11: Virtual for Module-Loaded
