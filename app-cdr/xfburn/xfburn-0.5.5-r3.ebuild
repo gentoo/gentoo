@@ -1,28 +1,25 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
-inherit xdg-utils
+inherit gnome2-utils xdg-utils
 
 DESCRIPTION="GTK+ based CD and DVD burning application"
 HOMEPAGE="https://goodies.xfce.org/projects/applications/xfburn"
 SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 arm ~ppc x86"
 IUSE="gstreamer +udev"
-# only .po check, that fails
-# https://bugzilla.xfce.org/show_bug.cgi?id=16115
-RESTRICT="test"
 
 RDEPEND=">=dev-libs/glib-2.32:=
 	>=dev-libs/libburn-0.4.2:=
 	>=dev-libs/libisofs-0.6.2:=
-	>=x11-libs/gtk+-3.20:3=
-	>=xfce-base/exo-0.11:=
-	>=xfce-base/libxfce4ui-4.12:=
+	>=x11-libs/gtk+-2.24:2=
+	xfce-base/exo[gtk2(+)]
+	<xfce-base/libxfce4ui-4.15:=[gtk2(+)]
 	gstreamer? (
 		media-libs/gstreamer:1.0=
 		media-libs/gst-plugins-base:1.0= )
@@ -42,11 +39,11 @@ src_configure() {
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	xdg_icon_cache_update
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }
