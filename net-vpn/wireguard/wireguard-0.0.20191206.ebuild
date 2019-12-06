@@ -28,7 +28,7 @@ RDEPEND="${DEPEND}"
 
 MODULE_NAMES="wireguard(kernel/drivers/net:src)"
 BUILD_TARGETS="module"
-CONFIG_CHECK="NET INET NET_UDP_TUNNEL CRYPTO_BLKCIPHER"
+CONFIG_CHECK="NET INET NET_UDP_TUNNEL CRYPTO_ALGAPI"
 
 wg_quick_optional_config_nob() {
 	CONFIG_CHECK="$CONFIG_CHECK ~$1"
@@ -63,7 +63,6 @@ src_install() {
 	if use tools; then
 		dodoc README.md
 		dodoc -r contrib/examples
-		sed -i 's/iptables-restore -nw/iptables-restore -n/g' src/tools/wg-quick/linux.bash || die "Unable to patch wg-quick"
 		emake \
 			WITH_BASHCOMPLETION=yes \
 			WITH_SYSTEMDUNITS=yes \
