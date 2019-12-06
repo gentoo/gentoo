@@ -19,7 +19,7 @@ RDEPEND=">=dev-libs/glib-2.32:=
 	>=dev-libs/libisofs-0.6.2:=
 	>=x11-libs/gtk+-2.24:2=
 	xfce-base/exo[gtk2(+)]
-	>=xfce-base/libxfce4ui-4.10:=[gtk2(+)]
+	<xfce-base/libxfce4ui-4.15:=[gtk2(+)]
 	gstreamer? (
 		media-libs/gstreamer:1.0=
 		media-libs/gst-plugins-base:1.0= )
