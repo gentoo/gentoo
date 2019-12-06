@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-inherit gnome2-utils wxwidgets xdg-utils cmake-utils
+inherit wxwidgets xdg cmake-utils
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/visualboyadvance-m/visualboyadvance-m.git"
@@ -73,20 +73,18 @@ src_install() {
 
 pkg_preinst() {
 	if use wxwidgets ; then
-		gnome2_icon_savelist
+		xdg_pkg_preinst
 	fi
 }
 
 pkg_postinst() {
 	if use wxwidgets ; then
-		gnome2_icon_cache_update
-		xdg_desktop_database_update
+		xdg_pkg_postinst
 	fi
 }
 
 pkg_postrm() {
 	if use wxwidgets ; then
-		gnome2_icon_cache_update
-		xdg_desktop_database_update
+		xdg_pkg_postrm
 	fi
 }
