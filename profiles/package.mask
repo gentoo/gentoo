@@ -572,16 +572,6 @@ media-gfx/opcion
 media-gfx/aoi
 media-gfx/exiftags
 
-# Michał Górny <mgorny@gentoo.org> (2019-11-05)
-# The following packages are unmaintained and have incorrect LICENSE
-# entries.  All of them have additional bugs reported.
-#
-# app-admin/certmgr: #694690
-# app-admin/ksonnet: #694710
-# Removal in 30 days.
-app-admin/certmgr
-app-admin/ksonnet
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
