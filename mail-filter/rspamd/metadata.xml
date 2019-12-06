@@ -17,8 +17,6 @@
     <remote-id type="github">vstakhov/rspamd</remote-id>
   </upstream>
   <use>
-    <flag name="fann">Enable neural network plugin (requires <pkg>sci-mathematics/fann</pkg>).</flag>
     <flag name="pcre2">Use dev-libs/libpcre2</flag>
-    <flag name="torch">Enable torch support. This is required for the neural module</flag>
   </use>
 </pkgmetadata>
