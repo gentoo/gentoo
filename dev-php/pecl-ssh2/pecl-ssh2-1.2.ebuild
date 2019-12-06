@@ -6,9 +6,11 @@ EAPI="7"
 PHP_EXT_NAME="ssh2"
 
 USE_PHP="php5-6 php7-1 php7-2 php7-3 php7-4"
-EGIT_REPO_URI="https://git.php.net/repository/pecl/networking/ssh2.git"
 
-inherit php-ext-source-r3 git-r3
+inherit php-ext-pecl-r3
+
+# https://pecl.php.net/get/ssh2-1.2.tgz isn't work for some weeks
+SRC_URI="https://dev.gentoo.org/~whissi/dist/${PN}/${P}.tar.gz"
 
 USE_PHP="php7-1 php7-2 php7-3 php7-4"
 
@@ -16,11 +18,11 @@ DESCRIPTION="PHP bindings for the libssh2 library"
 LICENSE="PHP-3.01"
 SLOT="7"
 IUSE=""
-KEYWORDS=""
-DEPEND=">=net-libs/libssh2-1.2"
+KEYWORDS="~amd64 ~x86"
+# Upstream notes say there are errors with gcrypt backend
+DEPEND=">=net-libs/libssh2-1.2[-gcrypt]"
 RDEPEND="${DEPEND}
 	php_targets_php5-6? ( dev-php/pecl-ssh2:0[php_targets_php5-6] )"
-HOMEPAGE="https://pecl.php.net/package/ssh2"
 
 src_prepare() {
 	if use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3 || use php_targets_php7-4 ; then
