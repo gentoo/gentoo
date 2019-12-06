@@ -552,11 +552,6 @@ www-apps/drraw
 # Removal in 30 days.  Bug #697238.
 net-misc/hsc
 
-# Michał Górny <mgorny@gentoo.org> (2019-11-06)
-# EAPI 0.  Last bumped in 2004, and no new releases since.
-# Removal in 30 days.  Bug #697286.
-media-gfx/opcion
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
