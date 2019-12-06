@@ -526,52 +526,6 @@ dev-haskell/hsql-postgresql
 # Removal in 30 days.  Bug #697218.
 net-misc/openssh-blacklist
 
-# Michał Górny <mgorny@gentoo.org> (2019-11-06)
-# EAPI 0.  Last upstream release in 2006.
-# Removal in 30 days.  Bug #697372.
-app-text/info2html
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-06)
-# EAPI 0.  Last bumped in 2004.  Upstream is active, so this really
-# needs a major version bump.  Multiple bugs reported.
-# Removal in 30 days.  Bug #697392.
-app-misc/matew
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-06)
-# EAPI 0.  Last bumped in 2008.  Homepage gone.
-# Removal in 30 days.  Bug #697156.
-www-apps/mod_survey
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-06)
-# EAPI 0.  Last bumped in 2005.  Homepage gone.
-# Removal in 30 days.  Bug #697154.
-www-apps/drraw
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-06)
-# EAPI 0.  Last bumped in 2008.  Homepage gone.  No revdeps.
-# Removal in 30 days.  Bug #697238.
-net-misc/hsc
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-06)
-# EAPI 0.  Last bumped in 2004, and no new releases since.
-# Removal in 30 days.  Bug #697286.
-media-gfx/opcion
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-06)
-# Old EAPI 0 graphics-related packages.
-#
-# media-gfx/aoi was last bumped in Nov 2009.  It is still actively
-# developed upstream, and it's waiting for a bump since Dec 2009.
-# It suffers from bundled dependencies (#177026).
-#
-# media-gfx/exiftags was last bumped in 2007.  It did not have any new
-# releases since, and does not seem to have any unique features.
-# media-gfx/exiv2 seems to be a more commonly installed replacement.
-#
-# Removal in 30 days.  Bug #697288.
-media-gfx/aoi
-media-gfx/exiftags
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
