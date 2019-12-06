@@ -526,11 +526,6 @@ dev-haskell/hsql-postgresql
 # Removal in 30 days.  Bug #697218.
 net-misc/openssh-blacklist
 
-# Michał Górny <mgorny@gentoo.org> (2019-11-06)
-# EAPI 0.  Last upstream release in 2006.
-# Removal in 30 days.  Bug #697372.
-app-text/info2html
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
