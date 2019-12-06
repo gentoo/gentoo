@@ -3,7 +3,7 @@
 
 EAPI="7"
 CMAKE_MAKEFILE_GENERATOR="emake"
-PYTHON_COMPAT=(python{2_7,3_6,3_7})
+PYTHON_COMPAT=(python{3_6,3_7,3_8})
 
 inherit cmake-utils flag-o-matic python-single-r1 xdg-utils
 
@@ -20,7 +20,7 @@ else
 fi
 
 DESCRIPTION="Advanced IRC Client"
-HOMEPAGE="http://www.kvirc.net/ https://github.com/kvirc/KVIrc"
+HOMEPAGE="https://www.kvirc.net/ https://github.com/kvirc/KVIrc"
 if [[ "${PV}" == "9999" ]]; then
 	SRC_URI=""
 else
