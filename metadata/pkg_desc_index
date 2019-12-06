@@ -5080,7 +5080,7 @@ dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.3 1.4 1.5 1.6 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r1 0.7: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.20 4.22 4.24: Netscape Portable Runtime
-dev-libs/nss 3.40.1-r1 3.46 3.46.1 3.47 3.47.1: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.40.1-r1 3.46 3.46.1 3.47 3.47.1 3.48: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.2.11 2.2.12 2.2.12-r1: Alternative to vendor specific OpenCL ICD loaders
@@ -5543,6 +5543,7 @@ dev-perl/App-pwhich 1.140.0 1.150.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.500: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.800.0: Generic archive extracting mechanism
+dev-perl/Archive-Tar-Stream 0.030.0: pure perl IO-friendly tar file management
 dev-perl/Archive-Tar-Wrapper 0.230.0 0.330.0: API wrapper around the 'tar' utility
 dev-perl/Archive-Zip 1.640.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 3.0.1: Perl extension for comparing arrays
