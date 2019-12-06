@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND=">=xfce-base/libxfce4ui-4.8[gtk2(+)]
+RDEPEND="<xfce-base/libxfce4ui-4.15:=[gtk2(+)]
 	>=xfce-base/libxfce4util-4.8
 	<xfce-base/xfce4-panel-4.15:=[gtk2(+)]
 	>=x11-libs/gtk+-2.20:2"
