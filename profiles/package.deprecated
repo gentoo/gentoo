@@ -16,3 +16,10 @@
 ## dev-foo/foo
 
 #--- END OF EXAMPLES ---
+
+# Zac Medico <zmedico@gentoo.org> (2019-12-06)
+# These golang libraries should be vendored either by upstream or via
+# the EGO_VENDOR variable.
+dev-go/go-crypto
+dev-go/go-net
+dev-go/go-sys
