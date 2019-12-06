@@ -2654,7 +2654,7 @@ app-text/ttf2pk2 2.0_p20190410: Freetype 2 based TrueType font to TeX's PK forma
 app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
 app-text/txt2man 1.6.0: Scripts to convert regular ASCII text to man pages
 app-text/txt2pdbdoc 1.4.4: Text/HTML to Doc file converter for the Palm Pilot
-app-text/txt2tags 2.6-r1: Generate marked up documents (HTML, etc.)from a plain text file with markup
+app-text/txt2tags 2.6-r1 3.3: Generate marked up documents (HTML, etc.)from a plain text file with markup
 app-text/u2ps 0.8.4: A text to PostScript converter like a2ps, but supports UTF-8
 app-text/unac 1.8.0: Library and command-line tool for removing accents from characters
 app-text/unpaper 6.1-r1 9999: Post-processor for scanned and photocopied book pages
