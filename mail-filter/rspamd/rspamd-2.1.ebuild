@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils pax-utils systemd tmpfiles user
+inherit cmake-utils pax-utils systemd tmpfiles
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/vstakhov/rspamd.git"
@@ -19,7 +19,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="blas cpu_flags_x86_ssse3 jemalloc +jit libressl pcre2"
 
-RDEPEND="dev-db/sqlite:3
+RDEPEND="
+	acct-group/rspamd
+	acct-user/rspamd
+	dev-db/sqlite:3
 	dev-libs/glib:2
 	dev-libs/icu:=
 	dev-libs/libev
@@ -36,11 +39,6 @@ RDEPEND="dev-db/sqlite:3
 	pcre2? ( dev-libs/libpcre2[jit=] )
 	!pcre2? ( dev-libs/libpcre[jit=] )"
 DEPEND="${RDEPEND}"
-
-pkg_setup() {
-	enewgroup rspamd
-	enewuser rspamd -1 -1 /var/lib/rspamd rspamd
-}
 
 src_prepare() {
 	cmake-utils_src_prepare
