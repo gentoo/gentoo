@@ -83,7 +83,7 @@ src_compile() {
 		echo -e "#!/bin/sh\ntrue" > hack/selinux_tag.sh || die
 	fi
 
-	export -n GOCACHE XDG_CACHE_HOME
+	export -n GOCACHE GOPATH XDG_CACHE_HOME
 	GOBIN="${S}/bin" \
 		emake all \
 			GIT_BRANCH=master \
