@@ -5,27 +5,37 @@ EAPI="7"
 
 inherit autotools elisp-common flag-o-matic multilib-minimal toolchain-funcs
 
+if [[ "${PV}" == "9999" ]]; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/protocolbuffers/protobuf"
+	EGIT_SUBMODULES=()
+fi
+
 DESCRIPTION="Google's Protocol Buffers - Extensible mechanism for serializing structured data"
 HOMEPAGE="https://developers.google.com/protocol-buffers/ https://github.com/protocolbuffers/protobuf"
-SRC_URI="https://github.com/protocolbuffers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+if [[ "${PV}" == "9999" ]]; then
+	SRC_URI=""
+else
+	SRC_URI="https://github.com/protocolbuffers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+fi
 
 LICENSE="BSD"
-SLOT="0/17"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+SLOT="0/21"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
 
 BDEPEND="emacs? ( virtual/emacs )"
-DEPEND="test? ( >=dev-cpp/gtest-1.8.0[${MULTILIB_USEDEP}] )
+DEPEND="test? ( >=dev-cpp/gtest-1.9[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
 RDEPEND="emacs? ( virtual/emacs )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.6.0-disable_no-warning-test.patch"
-	"${FILESDIR}/${PN}-3.6.0-system_libraries.patch"
-	"${FILESDIR}/${PN}-3.6.0-protoc_input_output_files.patch"
-	"${FILESDIR}/${PN}-3.6.1-libatomic_linking.patch"
+	"${FILESDIR}/${PN}-3.8.0-disable_no-warning-test.patch"
+	"${FILESDIR}/${PN}-3.8.0-system_libraries.patch"
+	"${FILESDIR}/${PN}-3.8.0-protoc_input_output_files.patch"
 )
 
 DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)
@@ -37,6 +47,12 @@ src_prepare() {
 
 src_configure() {
 	append-cppflags -DGOOGLE_PROTOBUF_NO_RTTI
+
+	if tc-ld-is-gold; then
+		# https://sourceware.org/bugzilla/show_bug.cgi?id=24527
+		tc-ld-disable-gold
+	fi
+
 	multilib-minimal_src_configure
 }
 
@@ -79,7 +95,7 @@ multilib_src_test() {
 }
 
 multilib_src_install_all() {
-	find "${D}" -name "*.la" -delete || die
+	find "${D}" -name "*.la" -type f -delete || die
 
 	insinto /usr/share/vim/vimfiles/syntax
 	doins editors/proto.vim
