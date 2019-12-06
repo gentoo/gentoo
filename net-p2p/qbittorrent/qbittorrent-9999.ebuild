@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit gnome2-utils xdg-utils
 
@@ -39,13 +39,14 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 	)"
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig"
+	dev-qt/linguist-tools:5"
+
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
 
 src_configure() {
-	econf --with-qtsingleapplication=system \
+	econf \
 	$(use_enable dbus qt-dbus) \
 	$(use_enable debug) \
 	$(use_enable webui) \
