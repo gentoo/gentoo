@@ -14684,7 +14684,7 @@ net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source
 net-dns/openresolv 3.9.0 3.9.2: A framework for managing DNS information
 net-dns/pdns 4.1.13 4.2.0 4.2.1: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
-net-dns/pdns-recursor 4.1.14 4.2.0: The PowerDNS Recursor
+net-dns/pdns-recursor 4.1.14 4.1.15 4.2.0: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998b: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.4 1.1.5: A wrapper for DNS name resolving or DNS faking
