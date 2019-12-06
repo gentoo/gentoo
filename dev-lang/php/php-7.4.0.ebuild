@@ -150,6 +150,8 @@ BDEPEND="virtual/pkgconfig"
 
 PHP_MV="$(ver_cut 1)"
 
+PATCHES=( "${FILESDIR}/php-iodbc-header-location.patch" )
+
 php_install_ini() {
 	local phpsapi="${1}"
 
@@ -358,10 +360,25 @@ src_configure() {
 	fi
 
 	# ODBC support
-	our_conf+=(
-		$(use_with odbc unixODBC "${EPREFIX}/usr")
-		$(use_with iodbc)
-	)
+	if use odbc && use iodbc ; then
+		our_conf+=(
+			--without-unixODBC
+			--with-iodbc
+			$(use_with pdo pdo-odbc "iODBC,${EPREFIX}/usr")
+		)
+	elif use odbc ; then
+		our_conf+=(
+			--with-unixODBC="${EPREFIX}/usr"
+			--without-iodbc
+			$(use_with pdo pdo-odbc "unixODBC,${EPREFIX}/usr")
+		)
+	else
+		our_conf+=(
+			--without-unixODBC
+			--without-iodbc
+			--without-pdo-odbc
+		)
+	fi
 
 	# Oracle support
 	our_conf+=( $(use_with oci8-instant-client oci8) )
@@ -374,7 +391,6 @@ src_configure() {
 			$(use_with postgres pdo-pgsql)
 			$(use_with sqlite pdo-sqlite)
 			$(use_with firebird pdo-firebird "${EPREFIX}/usr")
-			$(use_with odbc pdo-odbc "unixODBC,${EPREFIX}/usr")
 			$(use_with oci8-instant-client pdo-oci)
 		)
 	fi
