@@ -15741,7 +15741,7 @@ net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IE
 net-wireless/hostapd 2.9-r1 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.2 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
-net-wireless/iw 4.9 4.14 5.0.1 5.3: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
+net-wireless/iw 4.9 4.14 5.0.1 5.3 5.4: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/iwd 0.21 0.22 0.23-r1 1.0-r1 1.1 1.2 9999: Wireless daemon for linux
 net-wireless/jackit 0.0_p20170918: Exploit Code for Mousejack
 net-wireless/kismet 2016.07.1-r2 2019.09.1-r1 9999: IEEE 802.11 wireless LAN sniffer
