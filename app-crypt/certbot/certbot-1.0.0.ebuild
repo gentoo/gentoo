@@ -11,7 +11,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-	S=${WORKDIR}/certbot-${PV}/acme
+	S=${WORKDIR}/certbot-${PV}/certbot
 fi
 
 inherit distutils-r1
