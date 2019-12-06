@@ -8,7 +8,7 @@ inherit cmake-utils
 MY_PV="2019-03-04-Release-2.7.0"
 DESCRIPTION="An open-source multiplatform software for playing card games over a network"
 HOMEPAGE="https://github.com/Cockatrice/Cockatrice"
-SRC_URI="${HOMEPAGE}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Cockatrice/Cockatrice/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
