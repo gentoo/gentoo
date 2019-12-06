@@ -7331,7 +7331,7 @@ dev-php/smarty 3.1.33: A template engine for PHP
 dev-php/spdx-licenses 1.2.0 1.4.0-r1 1.5.0: Tools for working with and validating SPDX licenses
 dev-php/stringparser_bbcode 0.3.3-r1: A PHP class to parse BB codes
 dev-php/suhosin 0.9.38-r1: Suhosin is an advanced protection system for PHP installations
-dev-php/swoole 4.0.1 4.0.4 4.1.1 4.2.3 4.2.9 4.2.13 4.4.12: Event-driven asynchronous & concurrent & coroutine networking engine
+dev-php/swoole 4.2.13 4.4.12: Event-driven asynchronous & concurrent & coroutine networking engine
 dev-php/swoole-async 4.4.12: An extension of Swoole, including the async callback style API
 dev-php/symfony-config 2.8.20: Symfony Config Component
 dev-php/symfony-console 2.7.9-r1 2.8.43 2.8.48 2.8.50: Subtree split of the Symfony Console Component
