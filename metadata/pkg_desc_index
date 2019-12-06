@@ -1697,7 +1697,7 @@ app-i18n/kinput2 3.1-r2: A Japanese input server which supports the XIM protocol
 app-i18n/libcangjie 1.3: Library implementing the Cangjie input method
 app-i18n/libchewing 0.5.1 9999: Intelligent phonetic (Zhuyin/Bopomofo) input method library
 app-i18n/libhangul 0.1.0: Library for hangul input method logic, hanja dictionary
-app-i18n/libkkc 0.3.5 0.3.6_pre20190809104047 9999: Japanese Kana Kanji conversion input method library
+app-i18n/libkkc 0.3.6_pre20190809104047 9999: Japanese Kana Kanji conversion input method library
 app-i18n/libpinyin 2.3.0 9999: Libraries for handling of Hanyu Pinyin and Zhuyin Fuhao
 app-i18n/librime 1.2.9 1.3.1 1.4.0 1.5.3: RIME (Rime Input Method Engine) core library
 app-i18n/libskk 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
@@ -3188,7 +3188,7 @@ dev-db/spatialite-tools 4.3.0-r1: A collection of CLI tools supporting SpatiaLit
 dev-db/sqlcipher 3.4.2 4.0.1: Full Database Encryption for SQLite
 dev-db/sqlcl-bin 19.2.1.206.1649: Oracle SQLcl is the new SQL*Plus
 dev-db/sqldeveloper 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.28.0 3.29.0: SQL database engine
+dev-db/sqlite 3.29.0 3.30.1: SQL database engine
 dev-db/sqlitebrowser 3.11.1-r1: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.99: ODBC driver to access local SQLite database files
@@ -4479,7 +4479,7 @@ dev-java/picocontainer 1.1-r1: Small footprint Dependency Injection container
 dev-java/plexus-classworlds 2.2.3: The class loader framework of the Plexus project
 dev-java/portletapi 1.0-r1 2.0-r1: Portlet API 2.0 developed by the Java Community Process JSR-286
 dev-java/prefuse 20071021_beta: UI toolkit for building highly interactive visualizations of un-/structured data
-dev-java/protobuf-java 3.6.1.3 3.7.1 3.8.0 3.9.1 3.9.2 9999: Google's Protocol Buffers - Java bindings
+dev-java/protobuf-java 3.7.1 3.8.0 3.9.1 3.9.2 3.10.1 9999: Google's Protocol Buffers - Java bindings
 dev-java/qdox 1.6.3-r1 1.12.1-r1: Parser for extracting class/interface/method definitions
 dev-java/radeox 1.0_beta2-r1: Radeox Wiki render engine
 dev-java/rat 0.11: Apache Rat is a release audit tool, focused on licenses.
@@ -5083,7 +5083,7 @@ dev-libs/nsync 1.20.1: A C library that exports various synchronization primitiv
 dev-libs/ntl 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.2.11 2.2.12 2.2.12-r1: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/onigmo 6.1.3: Onigmo is a regular expressions library forked from Oniguruma
-dev-libs/oniguruma 6.9.3-r2 6.9.4: Regular expression library for different character encodings
+dev-libs/oniguruma 6.9.3-r2 6.9.4 9999: Regular expression library for different character encodings
 dev-libs/opencl-clang 8.0.1_p20191001-r1: OpenCL-oriented thin wrapper library around clang
 dev-libs/opencryptoki 3.4.1 3.6.1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
@@ -5104,7 +5104,7 @@ dev-libs/poco 1.9.0-r2: C++ libraries for building network-based applications
 dev-libs/popt 1.16-r2: Parse Options - Command line parser
 dev-libs/ppl 1.1 1.2 1.2-r1: The Parma Polyhedra Library for numerical analysis of complex systems
 dev-libs/processor-trace 1.6.1 1.6.2 2.0: Intel(R) Processor Trace decoder library
-dev-libs/protobuf 3.6.1.3 3.7.1 3.8.0 3.9.1 3.9.2 9999: Google's Protocol Buffers - Extensible mechanism for serializing structured data
+dev-libs/protobuf 3.7.1 3.8.0 3.9.1 3.9.2 3.10.1 9999: Google's Protocol Buffers - Extensible mechanism for serializing structured data
 dev-libs/protobuf-c 1.3.1 1.3.2: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.5: pslib is a C-library to create PostScript files on the fly
 dev-libs/ptexenc 1.3.7_p20190410: Library for Japanese pTeX providing a better way of handling character encodings
@@ -8380,7 +8380,7 @@ dev-python/prometheus_client 0.6.0 0.7.1: Python client for the Prometheus monit
 dev-python/prometheus_flask_exporter 0.4.1 0.5.1 0.7.2: Provides HTTP request metrics to export into Prometheus
 dev-python/promises 2.0.1-r1 2.1-r1: An implementation of Promises in Python
 dev-python/prompt_toolkit 1.0.15 2.0.6 2.0.7: Building powerful interactive command lines in Python
-dev-python/protobuf-python 3.6.1.3 3.7.1 3.8.0 3.9.1 3.9.2 9999: Google's Protocol Buffers - Python bindings
+dev-python/protobuf-python 3.7.1 3.8.0 3.9.1 3.9.2 3.10.1 9999: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.0 1.5.1 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1: Python library for communicating with Pocket Science Lab
 dev-python/psutil 5.4.8 5.5.0 5.6.0 5.6.5 5.6.7: Retrieve information on running processes and system utilization
@@ -13332,7 +13332,7 @@ media-libs/opencollada 1.6.62 1.6.63-r1: Stream based read/write library for COL
 media-libs/opencolorio 1.1.0-r1 1.1.0-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.13-r3 3.4.1-r7 4.1.2-r1: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.13-r3 3.4.1-r7 4.1.2-r1 4.1.2-r2: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 2.3.0: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
@@ -14846,7 +14846,7 @@ net-irc/irssi 1.2.2 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-xmpp 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75-r1: Generates HTML IRC stats based on irssi logs
 net-irc/konversation 1.7.5-r1: User friendly IRC Client
-net-irc/kvirc 5.2_pre20190628041642 9999: Advanced IRC Client
+net-irc/kvirc 5.2_pre20190628041642 5.2_pre20191202122540 9999: Advanced IRC Client
 net-irc/limnoria 20191123 99999999: Python based extensible IRC infobot and channel bot
 net-irc/muh 2.2a-r1: Persistent IRC bouncer
 net-irc/nebula 0.5: An IRC client for X11 and Motif

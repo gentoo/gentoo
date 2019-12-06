@@ -1,3 +1,4 @@
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=install nofetch postinst postrm
 DESCRIPTION=Japanese visual novel and dating simulator where birds rule the Earth
 EAPI=7
@@ -10,4 +11,4 @@ RESTRICT=bindist fetch splitdebug
 SLOT=0
 SRC_URI=Hatoful_Boyfriend_Linux.zip
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=ea3a8d38d1b8ad8e89aa27325fdf38f8
+_md5_=6cf13b07d0b5b9e65cbc38f86291f40c

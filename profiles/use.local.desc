@@ -3207,7 +3207,6 @@ games-arcade/performous:tools - Enable building of song extraction utilities for
 games-arcade/performous:webcam - Enable Webcam support
 games-arcade/savagewheels:fmod - Enable the fmod music and sound effects library
 games-arcade/tuxanci:physfs - Use dev-games/physfs instead of dev-libs/libzip to load compressed data
-games-arcade/tuxanci:sound - Enable sound
 games-board/cockatrice:client - Build with client
 games-board/cockatrice:oracle - Build with oracle
 games-board/cockatrice:server - Compile server support

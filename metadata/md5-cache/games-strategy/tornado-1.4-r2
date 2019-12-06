@@ -10,4 +10,4 @@ RDEPEND=nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=https://github.com/kouya/tornado/archive/v1.4.tar.gz -> tornado-1.4.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=950a11d505cd7fc07f04673516e39505
+_md5_=cc8617958c760538824c67ea411449a8

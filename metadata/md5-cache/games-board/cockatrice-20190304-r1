@@ -11,4 +11,4 @@ RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtprintsupport:5 dev-qt/qtcore:5 dev-qt/qtg
 SLOT=0
 SRC_URI=https://github.com/Cockatrice/Cockatrice/archive/2019-03-04-Release-2.7.0.tar.gz -> cockatrice-20190304.tar.gz
 _eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=80eb2d743daab97bd8c5ba4ee68d7096
+_md5_=57e38ed7422b9cacf0b99bd54b69a90b
