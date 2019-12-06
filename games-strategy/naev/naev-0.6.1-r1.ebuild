@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit flag-o-matic gnome2-utils
 
 DESCRIPTION="A 2D space trading and combat game, in a similar vein to Escape Velocity"
-HOMEPAGE="http://blog.naev.org/"
+HOMEPAGE="https://github.com/naev/naev"
 SRC_URI="mirror://sourceforge/naev/${P}.tar.bz2
 	mirror://sourceforge/naev/ndata-${PV}.zip"
 
@@ -28,6 +28,7 @@ RDEPEND="
 	openal? ( media-libs/openal )
 "
 DEPEND="${RDEPEND}
+	app-arch/unzip
 	virtual/pkgconfig
 "
 
