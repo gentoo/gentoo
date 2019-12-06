@@ -542,11 +542,6 @@ app-misc/matew
 # Removal in 30 days.  Bug #697156.
 www-apps/mod_survey
 
-# Michał Górny <mgorny@gentoo.org> (2019-11-06)
-# EAPI 0.  Last bumped in 2005.  Homepage gone.
-# Removal in 30 days.  Bug #697154.
-www-apps/drraw
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
