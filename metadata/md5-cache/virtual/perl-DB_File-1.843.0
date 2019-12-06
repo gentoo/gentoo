@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for DB_File
 EAPI=6
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x86-macos
 RDEPEND=|| ( =dev-lang/perl-5.30*[berkdb] ~perl-core/DB_File-1.843.0 ) dev-lang/perl:= !<perl-core/DB_File-1.843.0 !>perl-core/DB_File-1.843.0-r999
 SLOT=0
-_md5_=3fe281df25e4474a5637cbc690a8920f
+_md5_=a46499ffa129bb408ba7d20c659a56a3
