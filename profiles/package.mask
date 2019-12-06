@@ -141,8 +141,6 @@ dev-python/louie
 dev-python/graphy
 net-analyzer/namebench
 dev-python/gdmodule
-dev-python/pythonutils
-net-nntp/sabnzbd
 dev-python/qserve
 dev-python/pyifp
 dev-python/telarchive
@@ -156,7 +154,6 @@ dev-python/RecSQL
 dev-python/pyclamav
 dev-python/pycdf
 dev-python/libnatpmp
-dev-python/sabyenc
 dev-python/weberror
 dev-python/sancho
 dev-python/jonpy
