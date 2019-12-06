@@ -46,6 +46,7 @@ src_configure() {
 	LUA_VERSION="$(${PKG_CONFIG} --variable=$(usex luajit abiver V) $(usex luajit luajit lua))"
 	LUA_CFLAGS="$(${PKG_CONFIG} $(usex luajit luajit lua) --cflags) ${CFLAGS}"
 	LUA_LIBS="$(${PKG_CONFIG} $(usex luajit luajit lua) --libs) ${LDFLAGS}"
+	INSTALL_CMOD="$(${PKG_CONFIG} $(usex luajit luajit lua) --variable=INSTALL_CMOD)"
 	INSTALL_LMOD="$(${PKG_CONFIG} $(usex luajit luajit lua) --variable=INSTALL_LMOD)"
 
 	export LUA_VERSION LUA_CFLAGS LUA_LIBS
@@ -60,7 +61,7 @@ src_test() {
 }
 
 src_install() {
-	emake PREFIX="${ED}/usr" install
+	emake PREFIX="${ED}/usr" LUA_LIBDIR="${ED}/${INSTALL_CMOD}" install
 
 	# install lua code as well
 	insinto "${INSTALL_LMOD}"
