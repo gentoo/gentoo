@@ -146,7 +146,7 @@ cargo_src_compile() {
 
 	export CARGO_HOME="${ECARGO_HOME}"
 
-	cargo build -j $(makeopts_jobs) $(usex debug "" --release) "$@" \
+	cargo build -vv -j $(makeopts_jobs) $(usex debug "" --release) "$@" \
 		|| die "cargo build failed"
 }
 
@@ -156,7 +156,7 @@ cargo_src_compile() {
 cargo_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cargo install -j $(makeopts_jobs) --root="${ED}/usr" $(usex debug --debug "") "$@" \
+	cargo install -vv -j $(makeopts_jobs) --root="${ED}/usr" $(usex debug --debug "") "$@" \
 		|| die "cargo install failed"
 	rm -f "${ED}/usr/.crates.toml"
 
@@ -169,7 +169,7 @@ cargo_src_install() {
 cargo_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cargo test -j $(makeopts_jobs) $(usex debug "" --release) "$@" \
+	cargo test -vv -j $(makeopts_jobs) $(usex debug "" --release) "$@" \
 		|| die "cargo test failed"
 }
 
