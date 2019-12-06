@@ -9029,6 +9029,9 @@ x11-misc/mugshot:libreoffice - Add support for app-office/libreoffice and app-of
 x11-misc/mugshot:webcam - Add support for setting a profile photo in media-video/cheese
 x11-misc/openbox-menu:icons - Enable support for icons in menus
 x11-misc/openbox-menu:svg - Support SVG icons
+x11-misc/picom:config_file - Enable config file support
+x11-misc/picom:drm - Enable support for using drm for vsync
+x11-misc/picom:opengl - Enable features that require opengl (opengl backend, and opengl vsync methods)
 x11-misc/polybar:i3wm - Add support for i3 window manager
 x11-misc/polybar:ipc - Add support for Inter-Process Messaging
 x11-misc/polybar:mpd - Add support for Music Player Daemon

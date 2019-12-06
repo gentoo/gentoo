@@ -18772,6 +18772,7 @@ x11-misc/pathfinder 1.7.49: File manager based on the FOX Toolkit
 x11-misc/pcmanfm 1.2.3 1.2.5 1.3.1 9999: Fast lightweight tabbed filemanager
 x11-misc/pcmanfm-qt 0.14.1-r1: Fast lightweight tabbed filemanager (Qt port)
 x11-misc/peksystray 0.4.0: A system tray dockapp for window managers supporting docking
+x11-misc/picom 7.5: A lightweight compositor for X11 (previously a compton fork)
 x11-misc/piedock 1.6.6-r1 1.6.9: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/polybar 3.2.1 3.3.1 9999: A fast and easy-to-use tool for creating status bars
 x11-misc/primus 0.2: Faster OpenGL offloading for Bumblebee
