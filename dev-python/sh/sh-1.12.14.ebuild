@@ -27,4 +27,3 @@ PATCHES=(
 python_test() {
 	"${EPYTHON}" test.py || die "Tests fail with ${EPYTHON}"
 }
-
