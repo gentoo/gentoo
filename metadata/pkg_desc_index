@@ -214,7 +214,6 @@ app-admin/calamares 3.2.12: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
 app-admin/cdist 5.1.3 6.0.0: A usable configuration management system
-app-admin/certmgr 2.0.1: Automated certificate management using a CFSSL CA
 app-admin/cgmanager 0.41 0.42: Control Group manager daemon
 app-admin/checksec 1.7.5 1.8.0 1.9.0 1.11.1 2.0.1 2.1.0: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
 app-admin/chroot_safe 1.4-r1: Chroot any dynamically linked application in a safe and sane manner
@@ -287,7 +286,6 @@ app-admin/keepass 2.42.1 2.43: A free, open source, light-weight and easy-to-use
 app-admin/keepassxc 2.4.3-r1 2.5.0 2.5.1 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.3: A command line interface to KeePass database files
-app-admin/ksonnet 0.13.1: CLI-supported framework for extensible Kubernetes configurations
 app-admin/kube-bench 0.1.0 0.2.0: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
 app-admin/kubectx 0.6.3 0.7.1: Fast way to switch between clusters and namespaces in kubectl
 app-admin/lastpass-binary-component 4.19.0: Binary component required by the LastPass Password Manager browser extension
@@ -17087,7 +17085,7 @@ sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.0 5.0.1: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
 sys-apps/gentoo-functions 0.12 9999: base functions required by all Gentoo systems
-sys-apps/gentoo-systemd-integration 7 9999: systemd integration files for Gentoo
+sys-apps/gentoo-systemd-integration 7 8 9999: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.30.2-r1 3.32.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 1.0.3 1.0.4: GPT partition table manipulator for Linux
