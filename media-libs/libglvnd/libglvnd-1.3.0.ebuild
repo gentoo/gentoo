@@ -41,6 +41,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-meson-Fix-the-armv7-build.patch
+	"${FILESDIR}"/${P}-meson-Fix-the-PPC64-build.patch
+)
+
 multilib_src_configure() {
 	local emesonargs=(
 		$(meson_feature X x11)
