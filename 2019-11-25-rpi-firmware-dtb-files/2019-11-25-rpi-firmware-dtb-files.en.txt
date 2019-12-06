@@ -2,7 +2,7 @@ Title: sys-boot/raspberrypi-firmware will not install device tree files
 Author: Andrey Utkin <andrey_utkin@gentoo.org>
 Content-Type: text/plain
 Posted: 2019-11-25
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
 Display-If-Installed: sys-boot/raspberrypi-firmware
 
@@ -14,9 +14,11 @@ These files will be installed by sys-kernel/raspberrypi-image package.
 
 If you do not use sys-kernel/raspberrypi-image, you need to install
 these files according to the method you use to install the kernel. For
-installation from source, this can be done with such a command:
+installation from source, this can be done with such commands:
 
-    make dtbs_install
+    make dtbs
+    cp -v arch/arm64/boot/dts/broadcom/*.dtb /boot/
+    cp -rv arch/arm64/boot/dts/overlays/ /boot/
 
 This change is being made to enable arm64 users and custom kernels users
 to use sys-boot/raspberrypi-firmware package.
