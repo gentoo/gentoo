@@ -15,9 +15,9 @@ SRC_URI+=" https://www.gentoo.org/assets/img/logo/gentoo-3d-small.png -> glogo-s
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
-IUSE="gles2 ieee1394 +opengl +pci wayland"
+IUSE="gles2-only ieee1394 +opengl +pci wayland"
 
-REQUIRED_USE="wayland? ( || ( gles2 opengl ) )"
+REQUIRED_USE="wayland? ( || ( gles2-only opengl ) )"
 
 BDEPEND=">=dev-util/cmake-3.14.3"
 COMMON_DEPEND="
@@ -44,9 +44,9 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	ieee1394? ( sys-libs/libraw1394 )
 	opengl? (
-		>=dev-qt/qtgui-${QTMIN}:5[gles2=]
-		media-libs/mesa[gles2?,X(+)]
-		!gles2? ( media-libs/glu )
+		>=dev-qt/qtgui-${QTMIN}:5[gles2-only=]
+		gles2-only? ( media-libs/mesa[gles2,X(+)] )
+		!gles2-only? ( media-libs/glu )
 	)
 	pci? ( sys-apps/pciutils )
 	wayland? (
