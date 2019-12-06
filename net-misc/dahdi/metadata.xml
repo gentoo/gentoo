@@ -11,5 +11,6 @@
   </maintainer>
   <use>
     <flag name="flash">Support (short) flash on FXS</flag>
+    <flag name="oslec">Enable OSLEC (software) echo canceller (require ECHO in kernel)</flag>
   </use>
 </pkgmetadata>
