@@ -6,7 +6,7 @@
 		<name>Bernard Cafarelli</name>
 	</maintainer>
 	<use>
-		<flag name="config_file">Enable config file support</flag>
+		<flag name="config-file">Enable config file support</flag>
 		<flag name="drm">Enable support for using drm for vsync</flag>
 		<flag name="opengl">Enable features that require opengl (opengl backend, and opengl vsync methods)</flag>
 	</use>
