@@ -21,17 +21,23 @@ LICENSE="BSD-2"
 SLOT="0"
 IUSE="examples xinerama zsh-completion"
 
-DEPEND=">=dev-libs/glib-2.24:2
+DEPEND="
+	>=dev-libs/glib-2.24:2
 	x11-libs/libX11
 	x11-libs/libXext
-	xinerama? ( x11-libs/libXinerama )"
-RDEPEND="${DEPEND}
+	xinerama? ( x11-libs/libXinerama )
+"
+RDEPEND="
+	${DEPEND}
 	app-shells/bash
-	zsh-completion? ( app-shells/zsh )"
-BDEPEND+=" virtual/pkgconfig"
+	zsh-completion? ( app-shells/zsh )
+"
+BDEPEND+="
+	virtual/pkgconfig
+"
 
 src_compile() {
-	tc-export CC LD CXX
+	tc-export CC CXX LD PKG_CONFIG
 
 	emake LDXX="$(tc-getCXX)" COLOR=0 VERBOSE= \
 		$(use xinerama || echo XINERAMAFLAGS= XINERAMALIBS= )
