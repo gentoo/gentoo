@@ -8340,7 +8340,7 @@ dev-python/pika-pool 0.1.3: A connection pool for pika.
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 3.4.2-r1 5.4.1 6.0.0 6.1.0 6.2.0 6.2.1: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
-dev-python/pip 9.0.1-r1 9.0.1-r2 19.1 19.3.1 19.3.1-r1: Installs python packages -- replacement for easy_install
+dev-python/pip 9.0.1-r1 9.0.1-r2 19.1 19.3.1 19.3.1-r1 19.3.1-r2: Installs python packages -- replacement for easy_install
 dev-python/pipenv 9.0.0 9.0.0-r1 9.0.0-r2: Python Development Workflow for Humans
 dev-python/pkgconfig 1.2.2 1.4.0: Interface Python with pkg-config
 dev-python/pkginfo 1.2.1 1.4.2 1.5.0.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
