@@ -11321,7 +11321,7 @@ games-emulation/pcsxr 1.9.94-r2: PCSX-Reloaded: a fork of PCSX, the discontinued
 games-emulation/ppsspp 1.5.4-r2 9999: A PSP emulator written in C++
 games-emulation/snes9x 1.58 1.59.2: Super Nintendo Entertainment System (SNES) emulator
 games-emulation/stella 5.1.3: Multi-platform Atari 2600 VCS Emulator
-games-emulation/vbam 2.0.2 2.1.0 9999: Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance
+games-emulation/vbam 2.1.0 2.1.4 9999: Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance
 games-emulation/vgba 4.8-r1: Gameboy Advance (GBA) emulator for Linux
 games-emulation/yabause 0.9.15: A Sega Saturn emulator
 games-emulation/zinc 1.1-r1: An x86 binary-only emulator for Sony ZN-1, ZN-2, and Namco System 11 arcades
