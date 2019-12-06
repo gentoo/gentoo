@@ -80,7 +80,7 @@ else
 fi
 
 DESCRIPTION="Gentoo automatic kernel building scripts"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Genkernel https://gitweb.gentoo.org/proj/genkernel.git/"
 
 LICENSE="GPL-2"
 SLOT="0"
