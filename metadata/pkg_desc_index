@@ -15233,7 +15233,7 @@ net-misc/dleyna-server 0.5.0: library for implementing services that allow clien
 net-misc/dmr_utils 9999: Python utilities for working with DMR
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2017.75 2018.76 2019.78: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 83.4.152 84.4.170 85.3.138 85.4.155: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 83.4.152 84.4.170 85.3.138 85.4.155 86.4.146: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0 1.6.0-r1 19: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
