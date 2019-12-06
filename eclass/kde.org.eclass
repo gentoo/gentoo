@@ -101,7 +101,8 @@ _kde.org_calculate_src_uri() {
 					_src_uri+="unstable/applications/${PV}/src/"
 					RESTRICT+=" mirror"
 					;;
-				*) _src_uri+="stable/applications/${PV}/src/" ;;
+				19.08.3? ) _src_uri+="stable/applications/${PV}/src/" ;;
+				*) _src_uri+="stable/release-service/${PV}/src/" ;;
 			esac
 			;;
 		kde-frameworks)
