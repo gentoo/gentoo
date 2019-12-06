@@ -97,7 +97,6 @@ media-sound/beets
 dev-python/numdisplay
 dev-python/python-fastcgi
 dev-python/workerpool
-media-sound/abcde
 dev-python/py-smbpasswd
 dev-python/cherrytemplate
 dev-python/python-catcher
