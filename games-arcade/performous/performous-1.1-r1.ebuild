@@ -55,6 +55,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-apps/help2man
 	sys-devel/gettext
+	songs? ( app-arch/unzip )
 "
 
 DOCS=( docs/{Authors,instruments}.txt )
