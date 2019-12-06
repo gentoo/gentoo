@@ -1,5 +1,5 @@
 BDEPEND=virtual/pkgconfig
-DEFINED_PHASES=configure install setup
+DEFINED_PHASES=configure install
 DEPEND=dev-libs/libevent:=[ssl] sys-libs/zlib caps? ( sys-libs/libcap ) man? ( app-text/asciidoc ) !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) lzma? ( app-arch/xz-utils ) scrypt? ( app-crypt/libscrypt ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd ) zstd? ( app-arch/zstd )
 DESCRIPTION=Anonymizing overlay network for TCP
 EAPI=7
@@ -7,9 +7,9 @@ HOMEPAGE=http://www.torproject.org/
 IUSE=caps doc libressl lzma +man scrypt seccomp selinux systemd tor-hardening test zstd
 KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~ppc-macos
 LICENSE=BSD GPL-2
-RDEPEND=dev-libs/libevent:=[ssl] sys-libs/zlib caps? ( sys-libs/libcap ) man? ( app-text/asciidoc ) !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) lzma? ( app-arch/xz-utils ) scrypt? ( app-crypt/libscrypt ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd ) zstd? ( app-arch/zstd ) selinux? ( sec-policy/selinux-tor )
+RDEPEND=acct-user/tor acct-group/tor dev-libs/libevent:=[ssl] sys-libs/zlib caps? ( sys-libs/libcap ) man? ( app-text/asciidoc ) !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) lzma? ( app-arch/xz-utils ) scrypt? ( app-crypt/libscrypt ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd ) zstd? ( app-arch/zstd ) selinux? ( sec-policy/selinux-tor )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.torproject.org/dist/tor-0.4.2.4-rc.tar.gz https://archive.torproject.org/tor-package-archive/tor-0.4.2.4-rc.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=563557de5b4b8a4f7b9fc6aa66745e76
+_md5_=54065930d17407fcc609505301ecc14d
