@@ -7,13 +7,15 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="Module providing raw yEnc encoding/decoding for SABnzbd"
-HOMEPAGE="https://github.com/sabnzbd/sabyenc/"
-SRC_URI="https://github.com/sabnzbd/${PN}/tarball/v${PV} -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/sabnzbd/sabyenc"
+SRC_URI="https://github.com/sabnzbd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	test? (	dev-python/pytest[${PYTHON_USEDEP}] )"
