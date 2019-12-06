@@ -577,10 +577,8 @@ media-gfx/exiftags
 # entries.  All of them have additional bugs reported.
 #
 # app-admin/certmgr: #694690
-# app-admin/ksonnet: #694710
 # Removal in 30 days.
 app-admin/certmgr
-app-admin/ksonnet
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
