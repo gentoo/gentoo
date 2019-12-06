@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+)"
 DISTUTILS_OPTIONAL=true
 DISTUTILS_IN_SOURCE_BUILD=true
 
-inherit autotools distutils-r1 flag-o-matic
+inherit autotools distutils-r1
 
 MY_PV=$(ver_rs 1-2 '_')
 MY_P=${PN/-rasterbar}-${MY_PV}
@@ -63,7 +63,6 @@ src_prepare() {
 }
 
 src_configure() {
-	append-cxxflags -std=c++11 # bug 634506
 
 	local myeconfargs=(
 		$(use_enable debug)
