@@ -4,7 +4,8 @@
 EAPI=7
 
 DESCRIPTION="Wrapper scripts that will execute EDITOR or PAGER"
-HOMEPAGE="https://www.gentoo.org/"
+# There is no upstream, everything is in FILESDIR.
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="MIT"
 SLOT="0"
