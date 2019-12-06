@@ -108,6 +108,7 @@ _kde.org_calculate_src_uri() {
 			_src_uri+="stable/frameworks/$(ver_cut 1-2)/"
 			case ${PN} in
 				kdelibs4support | \
+				kdesignerplugin | \
 				kdewebkit | \
 				khtml | \
 				kjs | \
@@ -115,9 +116,6 @@ _kde.org_calculate_src_uri() {
 				kmediaplayer | \
 				kross)
 					_src_uri+="portingAids/"
-					;;
-				kdesignerplugin)
-					[[ ${PV} = 5.60.* ]] || _src_uri+="portingAids/"
 					;;
 			esac
 			;;
