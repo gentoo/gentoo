@@ -15,7 +15,7 @@ IUSE=""
 
 COMMON_DEPEND=">=x11-libs/gtk+-2.20:2
 	x11-libs/libX11
-	>=xfce-base/libxfce4ui-4.8[gtk2(+)]
+	<xfce-base/libxfce4ui-4.15:=[gtk2(+)]
 	>=xfce-base/libxfce4util-4.8
 	<xfce-base/xfce4-panel-4.15:=[gtk2(+)]"
 RDEPEND="${COMMON_DEPEND}
