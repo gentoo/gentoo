@@ -3,7 +3,7 @@
 
 EAPI="4"
 
-inherit eutils mount-boot toolchain-funcs flag-o-matic
+inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="Xbox boot loader"
 HOMEPAGE="http://www.xbox-linux.org/wiki/Cromwell"

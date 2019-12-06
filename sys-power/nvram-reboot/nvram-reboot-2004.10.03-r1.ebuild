@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit mount-boot
-
 MY_P="${P/nvram-/}"
 DESCRIPTION="PowerOff Boot-Images for nvram-wakeup (not needed for GRUB)"
 HOMEPAGE="https://sourceforge.net/projects/nvram-wakeup/"

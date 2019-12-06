@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit mount-boot readme.gentoo-r1
+inherit readme.gentoo-r1
 
 DESCRIPTION="Raspberry Pi (all versions) bootloader and GPU firmware"
 HOMEPAGE="https://github.com/raspberrypi/firmware"

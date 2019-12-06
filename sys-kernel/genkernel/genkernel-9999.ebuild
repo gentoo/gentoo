@@ -6,7 +6,7 @@
 
 EAPI="7"
 
-inherit bash-completion-r1 mount-boot
+inherit bash-completion-r1
 
 # Whenever you bump a GKPKG, check if you have to move
 # or add new patches!

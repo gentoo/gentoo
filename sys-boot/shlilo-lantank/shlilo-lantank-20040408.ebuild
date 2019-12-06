@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit mount-boot
-
 MY_P="sh-lilo-sel-${PV}"
 DESCRIPTION="bootloader for the SuperH Lantank"
 HOMEPAGE="http://oss.renesas.com/"

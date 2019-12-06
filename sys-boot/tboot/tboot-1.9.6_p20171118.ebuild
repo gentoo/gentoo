@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic mount-boot
+inherit flag-o-matic
 
 DESCRIPTION="Performs a measured and verified boot using Intel Trusted Execution Technology"
 HOMEPAGE="https://sourceforge.net/projects/tboot/"

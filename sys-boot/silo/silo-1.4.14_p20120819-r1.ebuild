@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit mount-boot flag-o-matic toolchain-funcs eutils
+inherit flag-o-matic toolchain-funcs eutils
 
 DEB_PL="1"
 MY_PV="${PV##*_p}"

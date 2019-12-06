@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit mount-boot eutils toolchain-funcs
+inherit eutils toolchain-funcs
 
 DESCRIPTION="A stand alone memory test for x86 computers"
 HOMEPAGE="https://www.memtest86.com/"

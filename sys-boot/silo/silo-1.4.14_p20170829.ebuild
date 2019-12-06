@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit mount-boot flag-o-matic toolchain-funcs vcs-snapshot
+inherit flag-o-matic toolchain-funcs vcs-snapshot
 
 MY_SNAPSHOT="${PN}-2506051d55dd5cb9fe10b4e978e22fa00363044b"
 

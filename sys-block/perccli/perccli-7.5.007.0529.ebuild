@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit mount-boot rpm
+inherit rpm
 
 DESCRIPTION="LINUX PERCCLI Utility For All Dell HBA/PERC Controllers"
 HOMEPAGE="https://www.dell.com/support/home/us/en/19/drivers/driversdetails?driverId=NF8G9"

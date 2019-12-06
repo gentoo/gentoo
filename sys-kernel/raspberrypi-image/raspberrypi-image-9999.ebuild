@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit mount-boot
-
 DESCRIPTION="Raspberry Pi (all versions) kernel and modules"
 HOMEPAGE="https://github.com/raspberrypi/firmware"
 LICENSE="GPL-2 raspberrypi-videocore-bin"

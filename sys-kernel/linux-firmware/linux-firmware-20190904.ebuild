@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit mount-boot savedconfig
+inherit savedconfig
 
 if [[ ${PV} == 99999999* ]]; then
 	inherit git-r3

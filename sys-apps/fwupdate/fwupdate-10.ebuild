@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit mount-boot toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Tools for using the ESRT and UpdateCapsule() to apply firmware updates"
 HOMEPAGE="https://github.com/rhinstaller/fwupdate"

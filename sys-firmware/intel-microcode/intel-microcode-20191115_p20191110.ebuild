@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit linux-info toolchain-funcs mount-boot
+inherit linux-info toolchain-funcs
 
 # Find updates by searching and clicking the first link (hopefully it's the one):
 # https://www.intel.com/content/www/us/en/search.html?keyword=Processor+Microcode+Data+File

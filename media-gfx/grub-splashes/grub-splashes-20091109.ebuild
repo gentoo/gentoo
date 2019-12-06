@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit mount-boot
-
 DESCRIPTION="Collection of grub splashes"
 HOMEPAGE="https://dev.gentoo.org/~welp/grub-splashes.xml"
 SRC_URI="mirror://gentoo/${PN}-0.1.tar.gz
