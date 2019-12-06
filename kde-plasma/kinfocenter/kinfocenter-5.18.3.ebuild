@@ -45,9 +45,13 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	ieee1394? ( sys-libs/libraw1394 )
 	opengl? (
-		>=dev-qt/qtgui-${QTMIN}:5[gles2=]
+		>=dev-qt/qtgui-${QTMIN}:5
 		media-libs/mesa[gles2?,X(+)]
-		!gles2? ( media-libs/glu )
+		gles2? ( dev-qt/qtgui[gles2-only] )
+		!gles2? (
+			media-libs/glu
+			dev-qt/qtgui[-gles2-only]
+		)
 	)
 	pci? ( sys-apps/pciutils )
 	wayland? (
@@ -72,7 +76,7 @@ src_configure() {
 		$(cmake_use_find_package wayland KF5Wayland)
 	)
 
-	if has_version "dev-qt/qtgui[gles2]"; then
+	if has_version "dev-qt/qtgui[gles2-only]"; then
 		mycmakeargs+=( $(cmake_use_find_package gles2 OpenGLES) )
 	else
 		mycmakeargs+=( $(cmake_use_find_package opengl OpenGL) )
