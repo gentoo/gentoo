@@ -32,6 +32,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2019-12-06)
+# EOL. Already overshadowed by dev-libs/openssl-1.1.1x.
+=dev-libs/openssl-1.0.2t-r1
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-05)
+# Last maintainer activity in 2016.  Does not build for quite some time
+# already.  Needs a version bump, at the very least.
+# Removal in 30 days.  Bug #602024.
+app-laptop/nvidiabl
+
 # Michał Górny <mgorny@gentoo.org> (2019-12-05)
 # Last maintainer activity in 2016.  Does not build for quite some time
 # already.  Needs a version bump, at the very least.
