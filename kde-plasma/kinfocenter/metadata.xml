@@ -6,7 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="gles2">Show OpenGL ES information in kinfocenter</flag>
 		<flag name="pci">Show advanced PCI information</flag>
 	</use>
 </pkgmetadata>
