@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Next generation unittest with plugins"
@@ -17,7 +17,7 @@ IUSE="doc"
 
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( >=dev-python/sphinx-1.0.5[${PYTHON_USEDEP}] )
+	doc? ( >=dev-python/sphinx-1.0.5 )
 "
 DEPEND="
 	>=dev-python/coverage-4.4.1[${PYTHON_USEDEP}]
