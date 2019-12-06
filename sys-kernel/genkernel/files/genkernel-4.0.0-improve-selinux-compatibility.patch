@@ -1,0 +1,54 @@
+From a611a39cabab9836b51d1fc4326c3747cbdcd29a Mon Sep 17 00:00:00 2001
+From: Mark Wright <gienah@gentoo.org>
+Date: Fri, 6 Dec 2019 16:23:51 +0100
+Subject: Improve SELinux compatibility
+
+Closes: https://bugs.gentoo.org/697074
+Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
+---
+ gen_funcs.sh | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/gen_funcs.sh b/gen_funcs.sh
+index 107f02b..f5dd0cd 100755
+--- a/gen_funcs.sh
++++ b/gen_funcs.sh
+@@ -728,7 +728,7 @@ dropbear_create_key() {
+ 
+ 	if isTrue "${SANDBOX}"
+ 	then
+-		envvars+=( "SANDBOX_WRITE='${LOGFILE}:${TEMP}'" )
++		envvars+=( "SANDBOX_WRITE='${LOGFILE}:${TEMP}:/proc/thread-self/attr/fscreate'" )
+ 	fi
+ 
+ 	# set up worker signal handler
+@@ -805,7 +805,7 @@ dropbear_generate_key_info_file() {
+ 
+ 	if isTrue "${SANDBOX}"
+ 	then
+-		envvars+=( SANDBOX_WRITE="${LOGFILE}:${TEMP}" )
++		envvars+=( "SANDBOX_WRITE='${LOGFILE}:${TEMP}:/proc/thread-self/attr/fscreate'" )
+ 	fi
+ 
+ 	# set up worker signal handler
+@@ -1397,7 +1397,7 @@ gkbuild() {
+ 
+ 	if isTrue "${SANDBOX}"
+ 	then
+-		envvars+=( "SANDBOX_WRITE='${LOGFILE}:${TEMP}'" )
++		envvars+=( "SANDBOX_WRITE='${LOGFILE}:${TEMP}:/proc/thread-self/attr/fscreate'" )
+ 	fi
+ 
+ 	# set up gkbuild signal handler
+@@ -1452,7 +1452,7 @@ unpack() {
+ 
+ 	if isTrue "${SANDBOX}"
+ 	then
+-		envvars+=( "SANDBOX_WRITE='${LOGFILE}:${TEMP}'" )
++		envvars+=( "SANDBOX_WRITE='${LOGFILE}:${TEMP}:/proc/thread-self/attr/fscreate'" )
+ 	fi
+ 
+ 	# set up unpack signal handler
+-- 
+cgit v1.2.1
+
