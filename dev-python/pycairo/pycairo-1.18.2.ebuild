@@ -18,7 +18,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="doc examples test"
 
 BDEPEND="
-	doc? ( dev-python/sphinx )
+	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )
 	test? (
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
@@ -30,6 +30,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 RESTRICT="!test? ( test )"
+
+python_check_deps() {
+	use doc && has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
 
 python_compile_all() {
 	if use doc; then
