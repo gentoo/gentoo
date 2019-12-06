@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.24:2
 	>=x11-libs/gtk+-2.20:2
-	>=xfce-base/libxfce4ui-4.10:=[gtk2(+)]
+	<xfce-base/libxfce4ui-4.15:=[gtk2(+)]
 	>=xfce-base/libxfce4util-4.10:=
 	<xfce-base/xfce4-panel-4.15:=[gtk2(+)]
 	>=xfce-base/xfconf-4.10:=
