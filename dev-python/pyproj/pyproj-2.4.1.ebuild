@@ -21,7 +21,7 @@ RDEPEND=">=sci-libs/proj-6.2.0"
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx )
+	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
@@ -29,6 +29,10 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
+
+python_check_deps() {
+	use doc && has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
