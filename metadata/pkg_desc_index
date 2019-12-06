@@ -1966,6 +1966,7 @@ app-misc/fdutils 5.5.20060227 5.5.20060227-r1: utilities for configuring and deb
 app-misc/fhem 5.9 5.9-r1: A GPL'd perl server for house automation
 app-misc/figlet 2.2.5 2.2.5-r1: program for making large letters out of ordinary text
 app-misc/flirc 3.22.4 3.24.0: Allows you to pair any remote control with your computer or media center
+app-misc/fr24feed 1.0.24_p5: Flightradar24 data sharing software
 app-misc/fslint 2.46: A utility to find various forms of lint on a filesystem
 app-misc/fslurp 2.1.4: Read and display data from Fronius IG and IG Plus inverters
 app-misc/fsniper 1.3.1-r2: Monitors a given set of directories for new files
@@ -10410,7 +10411,7 @@ dev-tex/culmus-latex 0.7-r1: Culmus fonts support for latex
 dev-tex/currvita 0.9i-r1: A LaTeX package for typesetting a curriculum vitae
 dev-tex/curve 1.16-r1: LaTeX style for a CV (curriculum vitae) with flavour option
 dev-tex/detex 2.8-r1: A filter program that removes the LaTeX (or TeX) control sequences
-dev-tex/dot2tex 2.9.0: A Graphviz to LaTeX converter
+dev-tex/dot2tex 2.9.0 2.11.3: A Graphviz to LaTeX converter
 dev-tex/dot2texi 3.0: Create graphs within LaTeX using the dot2tex tool
 dev-tex/dvi2gr 0.4-r1: DVI to Grace translator
 dev-tex/dvi2tty 5.3.4: Preview dvi-files on text-only devices
@@ -15461,7 +15462,7 @@ net-misc/throttle 1.2-r1: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
 net-misc/tigervnc 1.9.0-r1: Remote desktop viewer display system
 net-misc/tipcutils 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
-net-misc/trackma 0.7.4 9999: Open multi-site list manager for media tracking sites
+net-misc/trackma 0.7.4 0.8.2 9999: Open multi-site list manager for media tracking sites
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ubridge 0.9.14 0.9.16: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces
 net-misc/ucarp 1.5.2-r3 1.5.2-r4 1.5.2-r5: Portable userland implementation of Common Address Redundancy Protocol (CARP)
