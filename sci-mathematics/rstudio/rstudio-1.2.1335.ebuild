@@ -223,7 +223,7 @@ src_install() {
 	dodir /etc/rstudio
 	insinto /etc/rstudio
 	doins "${FILESDIR}"/rsession.conf
-	dosym "${ED}/etc/conf.d/rstudio-server.conf" "/etc/rstudio/rserver.conf"
+	dosym ../conf.d/rstudio-server.conf /etc/rstudio/rserver.conf
 	if use dedicated || use server; then
 		dopamd src/cpp/server/extras/pam/rstudio
 		newinitd "${FILESDIR}"/rstudio-server.initd rstudio-server
