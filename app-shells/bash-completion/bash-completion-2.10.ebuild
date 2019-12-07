@@ -22,7 +22,6 @@ RESTRICT="test"
 # completion collision with net-fs/mc
 RDEPEND=">=app-shells/bash-4.3_p30-r1:0
 	sys-apps/miscfiles
-	!app-eselect/eselect-bashcomp
 	!!net-fs/mc"
 DEPEND="
 	test? (
