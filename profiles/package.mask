@@ -366,12 +366,6 @@ sci-libs/vtkdata
 # Removal in 30 days.
 =sci-visualization/visit-2*
 
-# Mikle Kolyada <zlogene@gentoo.org> (2019-11-27)
-# luatex has been a part of texlive since at least 2014
-# no real consumers in the tree. Masked for removal
-# in 7 days.
-dev-tex/luatex
-
 # Jonas Stein <jstein@gentoo.org> (2019-11-26)
 # Package is obsolete. Successor is net-wireless/b43-fwcutter
 # Bug #537786.
