@@ -3,15 +3,15 @@
 
 EAPI=7
 
-inherit git-r3 meson ninja-utils
+inherit meson ninja-utils
 
 DESCRIPTION="An MPD client that submits information to Audioscrobbler"
 HOMEPAGE="https://www.musicpd.org/clients/mpdscribble/"
-EGIT_REPO_URI="https://github.com/MusicPlayerDaemon/mpdscribble.git"
+SRC_URI="https://www.musicpd.org/download/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="dev-libs/boost
 	dev-libs/libgcrypt

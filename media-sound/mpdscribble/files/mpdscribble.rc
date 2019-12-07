@@ -5,8 +5,11 @@ depend() {
 	use mpd
 }
 
+start_pre() {
+        checkpath -f --mode 0775 /var/cache/mpdscribble/lastfm.journal
+}
+
 start () {
-	
 	ebegin "Starting Music Player Daemon Audioscrobbler client"
 	start-stop-daemon --start --exec /usr/bin/mpdscribble -- --pidfile /var/run/mpdscribble.pid
 	eend $?
