@@ -103,7 +103,7 @@ media-sound/whipper
 dev-python/hachoir-regex
 app-misc/hachoir-subfile
 dev-python/pymad
-media-sound/beets
+<media-sound/beets-1.4.9-r1
 dev-python/numdisplay
 dev-python/python-fastcgi
 dev-python/workerpool
