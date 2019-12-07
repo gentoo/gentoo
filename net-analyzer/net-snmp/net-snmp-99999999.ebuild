@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=yesplz
 DISTUTILS_OPTIONAL=yesplz
@@ -9,7 +9,7 @@ WANT_AUTOMAKE=none
 PATCHSET=3
 GENTOO_DEPEND_ON_PERL=no
 
-inherit autotools distutils-r1 eutils git-r3 perl-module systemd
+inherit autotools distutils-r1 git-r3 perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://www.net-snmp.org/"
@@ -72,8 +72,10 @@ S=${WORKDIR}/${P/_p*/}
 RESTRICT=test
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.3-include-limits.patch
+	"${FILESDIR}"/${PN}-5.8-do-not-conflate-LDFLAGS-and-LIBS.patch
 	"${FILESDIR}"/${PN}-5.8-pcap.patch
 	"${FILESDIR}"/${PN}-5.8-tinfo.patch
+	"${FILESDIR}"/${PN}-5.8.1-pkg-config.patch
 )
 
 pkg_setup() {
@@ -149,6 +151,8 @@ src_install () {
 	# bug #317965
 	emake -j1 DESTDIR="${D}" install
 
+	use python && python_optimize
+
 	if use perl ; then
 		perl_delete_localpod
 		if ! use X; then
@@ -203,5 +207,5 @@ src_install () {
 			|| die
 	fi
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
