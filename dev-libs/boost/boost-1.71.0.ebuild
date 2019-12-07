@@ -49,9 +49,9 @@ BDEPEND="=dev-util/boost-build-${MAJOR_V}*"
 S="${WORKDIR}/${PN}_${MY_PV}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.48.0-disable_icu_rpath.patch
-	"${FILESDIR}"/${PN}-1.69.0-context-x32.patch
-	"${FILESDIR}"/${PN}-1.56.0-build-auto_index-tool.patch
+	"${FILESDIR}"/${PN}-1.71.0-disable_icu_rpath.patch
+	"${FILESDIR}"/${PN}-1.71.0-context-x32.patch
+	"${FILESDIR}"/${PN}-1.71.0-build-auto_index-tool.patch
 )
 
 python_bindings_needed() {
@@ -130,11 +130,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	# Do not try to build missing 'wave' tool, bug #522682
-	# Upstream bugreport - https://svn.boost.org/trac/boost/ticket/10507
-	sed -i -e 's:wave/build//wave::' tools/Jamfile.v2 || die
-
 	multilib_copy_sources
 }
 
