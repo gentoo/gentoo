@@ -8883,7 +8883,7 @@ dev-python/rst2pdf 0.93-r3: Tool for transforming reStructuredText to PDF using 
 dev-python/rtgraph 0.70-r1: Widgets for graphing data in real-time using PyGTK, and UI components for controlling the graphs
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
 dev-python/rtslib-fb 2.1.62 2.1.66 2.1.66-r1 2.1.69: A Python object API for managing the Linux LIO kernel target
-dev-python/ruamel-std-pathlib 0.6.3 0.6.4: Ruamel enhancements to pathlib and pathlib2
+dev-python/ruamel-std-pathlib 0.6.3 0.6.4 0.6.4-r1: Ruamel enhancements to pathlib and pathlib2
 dev-python/ruamel-yaml 0.15.35 0.15.96 0.15.97: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruledispatch 0.5_pre2306-r2: Rule-based Dispatching and Generic Functions
 dev-python/runsnakerun 2.0.4: GUI Viewer for Python profiling runs
