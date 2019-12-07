@@ -2666,7 +2666,6 @@ app-text/wdiff 1.2.2 1.2.2-r1: Create a diff disregarding formatting
 app-text/webgen 1.5.2 1.7.0: A template-based static website generator
 app-text/wgetpaste 2.28-r2 2.29-r1: Command-line interface to various pastebins
 app-text/wiki2beamer 0.9.5-r1 0.10.0: Tool to produce LaTeX Beamer code from wiki-like input
-app-text/wklej 0.2.1-r1: A wklej.org submitter
 app-text/writerperfect 0.9.6: Various formats to Open document format converter
 app-text/wscr 1.2-r1: A Lightweight and Fast Anagram Solver
 app-text/wv 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to something readable
@@ -7452,7 +7451,7 @@ dev-python/atomicwrites 1.1.5-r2 1.1.5-r3 1.2.1 1.3.0: Atomic file writes
 dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
 dev-python/atpy 0.9.7: Astronomical tables support for Python
 dev-python/attrs 18.2.0 19.1.0 19.3.0: Attributes without boilerplate
-dev-python/audioread 1.0.1-r1: Module for decoding audio files using whichever backend is available
+dev-python/audioread 2.1.8: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.11.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 0.800 1.1.1: Authentication-Results Headers generation and parsing
 dev-python/autobahn 17.5.1-r2 17.9.1 17.9.2 17.10.1 18.3.1: WebSocket and WAMP for Twisted and Asyncio
@@ -8414,7 +8413,7 @@ dev-python/pyFFTW 0.10.4 9999: A pythonic python wrapper around FFTW
 dev-python/pyGPG 0.2 9999: A python interface wrapper for gnupg's gpg command
 dev-python/pyPdf 1.13-r1: Python library to work with pdf files
 dev-python/pyTenable 0.3.7 0.3.18 0.3.19 0.3.20: Tenable API Library for Tenable.io and SecurityCenter
-dev-python/pyacoustid 1.0.0-r1 1.1.5: Python bindings for Chromaprint and the AcoustID web service
+dev-python/pyacoustid 1.1.7: Python bindings for Chromaprint and the AcoustID web service
 dev-python/pyaes 1.6.0 1.6.1-r1: Pure-Python Implementation of the AES block-cipher and common modes of operation
 dev-python/pyalsa 1.0.29 1.1.6: Python bindings for ALSA library
 dev-python/pyalsaaudio 0.7-r2 0.8.2: A Python wrapper for the ALSA API
@@ -8721,7 +8720,7 @@ dev-python/python-meteor 0.1.6: An event driven meteor client
 dev-python/python-mhash 1.4-r1: Python interface to libmhash
 dev-python/python-mistralclient 3.0.2 3.1.4 3.8.0 3.8.1: A client for the OpenStack Mistral API
 dev-python/python-monascaclient 1.5.1 1.7.0 1.12.1 1.14.0 1.15.0: A client for the OpenStack Monasca API
-dev-python/python-mpd 0.5.5: Python MPD client library
+dev-python/python-mpd 0.5.5 1.0.0: Python MPD client library
 dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML Web Service
 dev-python/python-musicbrainz-ngs 0.6: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.5.6 0.6.1 0.6.6 0.6.10: Python library to use Jabber/XMPP networks in a non-blocking way
@@ -13800,7 +13799,7 @@ media-sound/aumix 2.9.1: Aumix volume/mixer control program
 media-sound/awesfx 0.5.1e: AWE32 Sound Driver Utility Programs
 media-sound/aylet 0.5: Aylet plays music files in the .ay format
 media-sound/baudline 1.08-r1: A time-frequency browser designed for visualization of spectral domains
-media-sound/beets 1.4.8-r1 1.4.9: Media library management system for obsessive-compulsive music geeks
+media-sound/beets 1.4.9-r1: Media library management system for obsessive-compulsive music geeks
 media-sound/bempc 0.11_p20160207: Qt5 MPD client with experimental UI
 media-sound/bitmeter 1.2-r2: Diagnosis tool for JACK audio software
 media-sound/bladeenc 0.94.2-r1: An mp3 encoder
@@ -15925,7 +15924,7 @@ sci-astronomy/montage 4.1 5.0: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
 sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/psfex 3.17.1: Extracts models of the Point Spread Function from FITS images
-sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
+sci-astronomy/pyephem 3.7.6.0-r1: Astronomical routines for the python programming language
 sci-astronomy/scamp 2.0.4: Astrometric and photometric solutions for astronomical images
 sci-astronomy/sextractor 2.19.5 2.19.5-r1: Extract catalogs of sources from astronomical FITS images
 sci-astronomy/skycat 3.1.2-r2 3.1.3: ESO astronomical image visualizer with catalog access

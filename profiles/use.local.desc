@@ -1341,7 +1341,6 @@ app-text/wdiff:experimental - Build experimental utilities (mdiff, unify, wdiff2
 app-text/webgen:builder - Enable programmatic HTML/XML generation
 app-text/webgen:highlight - Enable syntax highlighting for certain plugins
 app-text/webgen:markdown - Markdown support
-app-text/wklej:vim - Install the vim plugin allowing to paste through ':Wklej'.
 app-text/writerperfect:abiword - Add support for abiword format using app-text/libabw
 app-text/writerperfect:ebook - Add support for various ebook formats using app-text/libebook
 app-text/writerperfect:epub - Add support for conversion to ePub format using app-text/libepubgen
@@ -2656,6 +2655,7 @@ dev-python/pypy:low-memory - Build using PyPy with the engine configured towards
 dev-python/pypy:sandbox - Enable sandboxing functionality
 dev-python/pypy3:low-memory - Build using PyPy with the engine configured towards low memory footprint. This makes it possible to build PyPy using ~3.5G of RAM on amd64 and ~half of that on x86, at the cost of lengthened build time.
 dev-python/pypy3:sandbox - Enable sandboxing functionality
+dev-python/python-mpd:twisted - Enable twisted support
 dev-python/python-stdnum:vies - Enable VIES
 dev-python/pyudev:pygobject - Install PyGobject bindings
 dev-python/pyudev:qt5 - Install PyQt5 bindings
