@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	>=sys-libs/binutils-libs-2.29:=
-	sys-libs/libunwind
+	sys-libs/libunwind:=
 "
 
 DEPEND="${RDEPEND}"
@@ -29,7 +29,7 @@ DOCS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.7-no-werror.patch
+	"${FILESDIR}"/${PN}-2.0-no-werror.patch
 	"${FILESDIR}"/${PN}-1.1-binutils-2.29.patch
 )
 
