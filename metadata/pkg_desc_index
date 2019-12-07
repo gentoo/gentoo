@@ -7368,7 +7368,7 @@ dev-python/PyQt5-sip 4.19.17 4.19.19: Private sip module for PyQt5
 dev-python/PyQtWebEngine 5.12.1 5.13.2: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
 dev-python/PySDL2 0.9.6: Python (ctypes) bindings for SDL2 libraries
-dev-python/PySensors 0.0.3: Python bindings to libsensors (via ctypes)
+dev-python/PySensors 0.0.3 0.0.4: Python bindings to libsensors (via ctypes)
 dev-python/PySocks 1.6.7 1.6.8: SOCKS client module
 dev-python/PyUtilib 5.6.5: A collection of Python utilities
 dev-python/PyZilla 0.1.0-r1: Python wrapper for the BugZilla XML-RPC API
