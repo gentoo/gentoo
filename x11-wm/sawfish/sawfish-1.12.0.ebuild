@@ -15,7 +15,7 @@ KEYWORDS="alpha amd64 ia64 ppc ~ppc64 ~sh sparc x86"
 IUSE="emacs kde nls xinerama"
 
 RDEPEND="
-	emacs? ( virtual/emacs !app-emacs/sawfish )
+	emacs? ( virtual/emacs )
 	>=dev-libs/librep-0.92.1
 	>=x11-libs/rep-gtk-0.90.7
 	x11-libs/pangox-compat
