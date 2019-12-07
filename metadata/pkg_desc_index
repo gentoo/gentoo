@@ -4690,7 +4690,7 @@ dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9: Tool Command Language
 dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolog
 dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1: Tk Widget Set
 dev-lang/tuprolog 2.9.2 3.0.1 3.1.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
-dev-lang/vala 0.36.18 0.36.19 0.36.20 0.40.14 0.40.15 0.40.16 0.42.7 0.44.7 0.44.8 0.44.9 0.46.3: Compiler for the GObject type system
+dev-lang/vala 0.36.18 0.36.20 0.40.14 0.40.16 0.42.7 0.44.9 0.46.3: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.6.0 3.6.0-r1 3.7.0-r1: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3-r1: YAP is a high-performance Prolog compiler
@@ -5175,7 +5175,7 @@ dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library fo
 dev-libs/utfcpp 2.3.4 3.1 9999: UTF-8 C++ library
 dev-libs/uthash 2.0.2: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
-dev-libs/vala-common 0.40.14 0.42.7 0.44.7 0.44.8 0.44.9 0.46.3: Build infrastructure for packages that use Vala
+dev-libs/vala-common 0.40.14 0.42.7 0.44.9 0.46.3: Build infrastructure for packages that use Vala
 dev-libs/vc 1.3.0 1.3.3 1.4.1: SIMD Vector Class Library for C++
 dev-libs/voikko-fi 2.3: Finnish dictionary for libvoikko based spell checkers (vvfst format)
 dev-libs/volume_key 0.3.11 0.3.12: Library for manipulating and storing storage volume encryption keys
@@ -16596,7 +16596,7 @@ sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large i
 sci-mathematics/gimps 29.8.6: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.6.6 1.7.2 1.7.4: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.63: GNU Linear Programming Kit
-sci-mathematics/gmm 5.1: Generic C++ template library for sparse, dense and skyline matrices
+sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices
 sci-mathematics/gmp-ecm 6.4.4-r1 7.0.4-r1 9999: Elliptic Curve Method for Integer Factorization
 sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series library
 sci-mathematics/gsl-shell 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
@@ -18524,7 +18524,7 @@ x11-libs/gl2ps 1.3.9 1.4.0: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.10.41 0.10.43: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.4: Canvas widget for GTK+ using the cairo 2D library for drawing
-x11-libs/gtk+ 2.24.32-r1 3.24.1 3.24.4-r1 3.24.8 3.24.10 3.24.11: Gimp ToolKit +
+x11-libs/gtk+ 2.24.32-r1 3.24.4-r1 3.24.10 3.24.11: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.3: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.2.0 0.9.3.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
