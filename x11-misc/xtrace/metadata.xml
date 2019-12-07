@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>nightnord@gmail.com</email>
-	<name>Andrian Nord</name>
-</maintainer>
-<maintainer type="person">
-	<email>maksbotan@gentoo.org</email>
-	<name>Maxim Koltsov</name>
-</maintainer>
-<maintainer type="project">
-	<email>proxy-maint@gentoo.org</email>
-	<name>Proxy Maintainers</name>
-</maintainer>
+  <maintainer type="person">
+    <email>maksbotan@gentoo.org</email>
+    <name>Maxim Koltsov</name>
+  </maintainer>
 </pkgmetadata>
