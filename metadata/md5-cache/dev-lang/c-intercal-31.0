@@ -10,4 +10,4 @@ RDEPEND=emacs? ( virtual/emacs )
 SLOT=0
 SRC_URI=http://www.catb.org/~esr/intercal/intercal-0.31.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	elisp-common	23f47b2e1de7abf387105eddd1318738	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=a86dd1ccdb2c5ef25730c332ebd1624a
+_md5_=2469e9f2cc738c026d617f06de22ac23
