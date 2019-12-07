@@ -12372,11 +12372,11 @@ kde-misc/krusader 2.7.2: Advanced twin-panel (commander-style) file-manager with
 kde-misc/kshutdown 5.0 5.1_beta: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
 kde-misc/kwebkitpart 1.4.0_pre20190110: WebKit KPart for Konqueror
-kde-misc/latte-dock 0.9.2 0.9.3 0.9.4: Elegant dock, based on KDE Frameworks
+kde-misc/latte-dock 0.9.2 0.9.4 0.9.5: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: Thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-network-monitor 1.7.3-r1: Plasma 5 applet for monitoring active network connections
 kde-misc/plasma-applet-weather-widget 1.6.10-r1: Plasma 5 applet for weather forecasts
-kde-misc/plasma-pass 1.0.0: Plasma applet to access password from pass
+kde-misc/plasma-pass 1.0.0 1.1.0: Plasma applet to access password from pass
 kde-misc/plasma-redshift-control 1.0.18-r1: Plasma 5 applet for controlling redshift
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
 kde-misc/rsibreak 0.12.11: Small utility which bothers you at certain intervals
