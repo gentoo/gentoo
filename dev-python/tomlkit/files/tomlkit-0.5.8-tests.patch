@@ -1,0 +1,12 @@
+diff --git a/tests/test_api.py b/tests/test_api.py
+index 86b589b..4c3c82d 100644
+--- a/tests/test_api.py
++++ b/tests/test_api.py
+@@ -60,6 +60,7 @@ def test_parse_can_parse_valid_toml_files(example, example_name):
+     assert isinstance(loads(example(example_name)), TOMLDocument)
+ 
+ 
++@pytest.mark.skipif("platform.python_implementation() == 'PyPy'", reason="Fails on PyPy")
+ @pytest.mark.parametrize("example_name", ["0.5.0", "pyproject"])
+ def test_parsed_document_are_properly_json_representable(
+     example, json_example, example_name
