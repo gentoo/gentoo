@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 ETYPE="sources"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
