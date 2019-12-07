@@ -1,0 +1,11 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=Decode EDID data in a human-readable format
+EAPI=7
+HOMEPAGE=https://git.linuxtv.org/edid-decode.git/
+IUSE=examples
+LICENSE=MIT
+PROPERTIES=live
+SLOT=0
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=51598ed4f1e451bf07fd7a5368ac07b9
