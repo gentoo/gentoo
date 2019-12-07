@@ -63,10 +63,7 @@ src_install() {
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	fi
 
-	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r pit
-	fi
+	use examples && dodoc -r pit
 }
 
 pkg_postinst() {
