@@ -24,6 +24,8 @@ RDEPEND="${PYTHON_DEPS}
 	x11-libs/libxcb
 	x11-libs/libXext
 	x11-libs/pixman
+	x11-libs/xcb-util-image
+	x11-libs/xcb-util-renderutil
 	config-file? (
 		dev-libs/libconfig
 		dev-libs/libxdg-basedir
