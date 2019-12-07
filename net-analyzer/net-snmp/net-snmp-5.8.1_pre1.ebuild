@@ -28,6 +28,10 @@ IUSE="
 	X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql
 	netlink pcap pci perl python rpm selinux smux ssl tcpd ucd-compat zlib
 "
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+	rpm? ( bzip2 zlib )
+"
 
 COMMON_DEPEND="
 	bzip2? ( app-arch/bzip2 )
@@ -65,14 +69,15 @@ RDEPEND="
 	)
 	selinux? ( sec-policy/selinux-snmp )
 "
-
-REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
-	rpm? ( bzip2 zlib )
-"
 S=${WORKDIR}/${P/_pre/.pre}
-
 RESTRICT=test
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.7.3-include-limits.patch
+	"${FILESDIR}"/${PN}-5.8-do-not-conflate-LDFLAGS-and-LIBS.patch
+	"${FILESDIR}"/${PN}-5.8-pcap.patch
+	"${FILESDIR}"/${PN}-5.8-tinfo.patch
+	"${FILESDIR}"/${PN}-5.8.1-pkg-config.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -82,17 +87,11 @@ src_prepare() {
 	# snmpconf generates config files with proper selinux context
 	use selinux && eapply "${FILESDIR}"/${PN}-5.1.2-snmpconf-selinux.patch
 
-	eapply "${FILESDIR}"/${PN}-5.7.3-include-limits.patch
-	eapply "${FILESDIR}"/${PN}-5.8-do-not-conflate-LDFLAGS-and-LIBS.patch
-	eapply "${FILESDIR}"/${PN}-5.8-pcap.patch
-	eapply "${FILESDIR}"/${PN}-5.8-tinfo.patch
-	eapply "${FILESDIR}"/${PN}-5.8.1-pkg-config.patch
-
 	mv "${WORKDIR}"/patches/0002-Respect-DESTDIR-for-pythoninstall.patch{,.disabled} || die
 	mv "${WORKDIR}"/patches/0004-Don-t-report-CFLAGS-and-LDFLAGS-in-net-snmp-config.patch{,.disabled} || die
 	eapply "${WORKDIR}"/patches/*.patch
 
-	eapply_user
+	default
 
 	eautoconf
 }
