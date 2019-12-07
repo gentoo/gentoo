@@ -7576,7 +7576,7 @@ dev-python/colander 1.3.1: A simple schema-based serialization and deserializati
 dev-python/collectd-rabbitmq 1.19.0-r1: Collectd plugin to gather statistics from RabbitMQ
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.3.3 0.3.9 0.3.9-r1 0.4.0 0.4.1: ANSI escape character sequences for colored terminal text & cursor positioning
-dev-python/colorclass 2.2.0: Colorful worry-free console applications for multiple platforms
+dev-python/colorclass 2.2.0 2.2.0-r1: Colorful worry-free console applications for multiple platforms
 dev-python/coloredlogs 6.1: Colored stream handler for the logging module
 dev-python/colorful 0.4.1: Terminal string styling done right in Python
 dev-python/colorlog 2.7.0 3.1.4: Log formatting with colors
@@ -9039,7 +9039,7 @@ dev-python/symboltype 1.0: Gives access to the peak.util.symbols module
 dev-python/symengine 0.3.0: Python wrappers to the symengine C++ library
 dev-python/sympy 1.0-r1 1.3: Computer Algebra System in pure Python
 dev-python/tablib 0.12.1-r1: A format-agnostic tabular dataset library written in Python
-dev-python/tabulate 0.8.1 0.8.3: Pretty-print tabular data
+dev-python/tabulate 0.8.1 0.8.3 0.8.6: Pretty-print tabular data
 dev-python/tagpy 2018.1: Python Bindings for TagLib
 dev-python/tappy 2.4: Test Anything Protocol (TAP) tools
 dev-python/taskflow 3.4.0 3.5.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
