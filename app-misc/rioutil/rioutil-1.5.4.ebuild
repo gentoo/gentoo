@@ -20,6 +20,9 @@ BDEPEND="virtual/pkgconfig"
 src_prepare() {
 	default
 
+	# Don't use hardcoded '/lib' libpath
+	sed -e '/libdir/d' -i Makefile.am -i librioutil/Makefile.am || die
+
 	eautoreconf
 }
 
@@ -28,8 +31,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" libdir="/usr/$(get_libdir)" install
-	einstalldocs
+	default
 
 	udev_dorules "${FILESDIR}"/75-rio.rules
 
