@@ -18353,7 +18353,7 @@ www-plugins/lightspark 0.8.1 9999: High performance flash player
 www-plugins/passff 1.9: zx2c4 pass manager extension for Firefox
 www-plugins/passff-host 1.2.0-r1 1.2.1: Host app for the PassFF WebExtension
 www-plugins/pdfjs 1.9.426 2.1.266: A PDF reader in JavaScript
-www-servers/adsf 1.4.1 1.4.2: A Dead Simple Fileserver is a static file server that can launch in a directory
+www-servers/adsf 1.4.1 1.4.2 1.4.3: A Dead Simple Fileserver is a static file server that can launch in a directory
 www-servers/apache 2.2.34 2.4.41: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20170201: bozohttpd is a small and secure http server
