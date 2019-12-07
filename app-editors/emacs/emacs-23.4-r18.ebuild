@@ -82,9 +82,6 @@ BDEPEND="alsa? ( virtual/pkgconfig )
 	X? ( virtual/pkgconfig )
 	gzip-el? ( app-arch/gzip )"
 
-RDEPEND="${RDEPEND}
-	!<app-editors/emacs-vcs-${PV}"
-
 EMACS_SUFFIX="${PN/emacs/emacs-${SLOT}}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
 # FULL_VERSION keeps the full version number, which is needed in
