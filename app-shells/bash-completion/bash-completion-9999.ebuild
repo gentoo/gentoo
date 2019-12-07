@@ -92,6 +92,11 @@ src_prepare() {
 		eapply "${WORKDIR}"/bashcomp2/bash-completion-blacklist-support.patch
 	fi
 
+	# our setup is close enough to container to cause the same tests
+	# to fail
+	sed -i -e '/def in_container/a \
+    return True' test/t/conftest.py || die
+
 	eautoreconf
 }
 
