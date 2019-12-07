@@ -134,7 +134,10 @@ multilib_src_configure() {
 
 	libxml2_py_configure() {
 		mkdir -p "${BUILD_DIR}" || die # ensure python build dirs exist
-		run_in_build_dir libxml2_configure "--with-python=${ROOT%/}${PYTHON}" # odd build system, also see bug #582130
+		run_in_build_dir libxml2_configure \
+			"--with-python=${EPYTHON}" \
+			"--with-python-install-dir=$(python_get_sitedir)"
+			# odd build system, also see bug #582130
 	}
 
 	libxml2_configure --without-python # build python bindings separately
