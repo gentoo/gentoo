@@ -235,6 +235,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-disable-download.patch"
 	"${FILESDIR}/${PN}-3.4.1-cuda-add-relaxed-constexpr.patch"
 	"${FILESDIR}/${P}-pkg-config-file.patch"
+	"${FILESDIR}/${P}-opencl-license.patch"
 )
 
 pkg_pretend() {
