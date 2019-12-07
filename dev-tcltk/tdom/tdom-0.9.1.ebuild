@@ -21,6 +21,8 @@ DEPEND="
 	dev-libs/expat"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-useCC.patch )
+
 src_prepare() {
 	append-libs -lm
 	sed \
