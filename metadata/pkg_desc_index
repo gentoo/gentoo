@@ -10442,7 +10442,6 @@ dev-tex/latexmk 435 441 443a 444 445 448 452c 453a 456 465: Perl script for auto
 dev-tex/lazylist 1.0a-r1: Lists in TeX's mouth - lambda-calculus and list-handling macros
 dev-tex/leaflet 20041222: LaTeX package used to create leaflet-type brochures
 dev-tex/lgrind 3.67-r3: A pretty printer for various programming languages with tex output.
-dev-tex/luatex 0.70.1-r3 0.76.0-r1: An extended version of pdfTeX using Lua as an embedded scripting language
 dev-tex/metapost 1.803 1.902: System for producing graphics
 dev-tex/minted 2.0 2.1 2.4.1: LaTeX package for source code syntax highlighting
 dev-tex/newlfm 8.3-r1: Extensive LaTeX class for writing letters
@@ -12809,7 +12808,7 @@ media-gfx/apngdis 2.9: extract PNG frames from an APNG
 media-gfx/apngopt 1.4: optimize APNG images
 media-gfx/argyllcms 2.1.1 2.1.1-r1: Open source, ICC compatible color management system
 media-gfx/arss 0.2.3-r1: Analysis & Resynthesis Sound Spectrograph
-media-gfx/asymptote 2.41-r1 2.47 2.48-r1 2.49 2.60: A vector graphics language that provides a framework for technical drawing
+media-gfx/asymptote 2.41-r1 2.60 2.61: A vector graphics language that provides a framework for technical drawing
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C
 media-gfx/aview 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/birdfont 2.18.3: Font editor for the creation of vector graphics and export TTF, EOT & SVG fonts
@@ -18287,7 +18286,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.2.4 5.3: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.1 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 78.0.3904.108 79.0.3945.56 80.0.3970.5: Open-source version of Google Chrome web browser
+www-client/chromium 78.0.3904.108 79.0.3945.74 80.0.3970.5: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.4 3.30.5 3.32.5: GNOME webbrowser based on Webkit
@@ -18296,7 +18295,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0 68.2.0 68.3.0 70.0.1 71.0: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.2.0 68.3.0 70.0.1 71.0: Firefox Web Browser
 www-client/google-chrome 78.0.3904.108: The web browser from Google
-www-client/google-chrome-beta 79.0.3945.56: The web browser from Google
+www-client/google-chrome-beta 79.0.3945.74: The web browser from Google
 www-client/google-chrome-unstable 80.0.3983.2: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -18346,7 +18345,7 @@ www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.4-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 32.0.0.293: Adobe Flash Player
 www-plugins/browserpass 3.0.6 3.0.6-r1: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 78.0.3904.108 79.0.3945.56_beta 80.0.3983.2_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 78.0.3904.108 79.0.3945.74_beta 80.0.3983.2_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.1 9999: High performance flash player

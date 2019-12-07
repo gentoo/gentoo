@@ -10,6 +10,6 @@ RDEPEND=>=sys-libs/ncurses-5.4-r5:0= >=sys-libs/readline-4.3-r5:0= imagemagick? 
 REQUIRED_USE=|| ( python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 ) offscreen? ( opengl ) doc? ( boehm-gc )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=mirror://sourceforge/asymptote/asymptote-2.48.src.tgz
+SRC_URI=mirror://sourceforge/asymptote/asymptote-2.61.src.tgz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	elisp-common	23f47b2e1de7abf387105eddd1318738	latex-package	17f13abe0de88340745e52e6b627aee7	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-r1	8d0cb030ff2d61ae714a022beac0b155	python-utils-r1	02ef27875ec5afcc2202b9d062d57f07	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=d1131763294307de016112f72135bf74
+_md5_=c6d328cdf39fe74e5b3f4f8d9fdf4013
