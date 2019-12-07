@@ -1,18 +1,17 @@
-Index: asymptote-2.47/settings.cc
+Index: asymptote-2.61/settings.cc
 ===================================================================
---- asymptote-2.47.orig/settings.cc
-+++ asymptote-2.47/settings.cc
-@@ -91,15 +91,15 @@ bool msdos=false;
- string HOME="HOME";
- string docdir=ASYMPTOTE_DOCDIR;
- const char pathSeparator=':';
--string defaultPSViewer="gv";
-+string defaultPSViewer="xdg-open";
- #ifdef __APPLE__
+--- asymptote-2.61.orig/settings.cc
++++ asymptote-2.61/settings.cc
+@@ -98,13 +98,13 @@ string defaultPSViewer="open";
  string defaultPDFViewer="open";
+ string defaultHTMLViewer="open";
  #else  
+-string defaultPSViewer="gv";
 -string defaultPDFViewer="acroread";
+-string defaultHTMLViewer="google-chrome";
++string defaultPSViewer="xdg-open";
 +string defaultPDFViewer="xdg-open";
++string defaultHTMLViewer="xdg-open";
  #endif  
  string defaultGhostscript="gs";
  string defaultGhostscriptLibrary="";

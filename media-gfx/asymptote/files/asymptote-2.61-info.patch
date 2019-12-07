@@ -1,7 +1,7 @@
-Index: asymptote-2.48/doc/asymptote.texi
+Index: asymptote-2.61/doc/asymptote.texi
 ===================================================================
---- asymptote-2.48.orig/doc/asymptote.texi
-+++ asymptote-2.48/doc/asymptote.texi
+--- asymptote-2.61.orig/doc/asymptote.texi
++++ asymptote-2.61/doc/asymptote.texi
 @@ -23,7 +23,7 @@ file LICENSE in the top-level source dir
       
  @dircategory Languages
