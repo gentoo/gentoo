@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/701080
+
+From c84c5a28adaacaeee65a20e1bd8a90762cbe843c Mon Sep 17 00:00:00 2001
+From: Ruslan Kabatsayev <b7.10110111@gmail.com>
+Date: Thu, 5 Jul 2018 23:45:03 +0300
+Subject: [PATCH] Fix installation path of the man page
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -123,6 +123,6 @@ endif()
+ add_subdirectory(src)
+ add_subdirectory(plugins)
+ 
+-install (FILES ${CMAKE_SOURCE_DIR}/edb.1 DESTINATION ${CMAKE_INSTALL_MANDIR})
++install (FILES ${CMAKE_SOURCE_DIR}/edb.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+ install (FILES ${CMAKE_SOURCE_DIR}/edb.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications/)
+ install (FILES ${CMAKE_SOURCE_DIR}/src/images/edb.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pixmaps/)
