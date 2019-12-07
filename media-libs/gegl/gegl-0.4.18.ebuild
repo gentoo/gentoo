@@ -99,6 +99,12 @@ src_prepare() {
 		-e '/composite-transform.xml/d' \
 		-i tests/compositions/meson.build || die
 
+	# fix skipping mipmap tests due to executable not found
+	for item in "invert-crop.sh" "invert.sh" "rotate-crop.sh" "rotate.sh" "unsharp-crop.sh" "unsharp.sh"; do
+		sed -i "s:/bin/gegl:/bin/gegl-0.4:g" "${S}/tests/mipmap/${item}" || die
+		sed -i "s:/tools/gegl-imgcmp:/tools/gegl-imgcmp-0.4:g" "${S}/tests/mipmap/${item}" || die
+	done
+
 	gnome2_environment_reset
 
 	use vala && vala_src_prepare
