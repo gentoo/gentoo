@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=yesplz
 DISTUTILS_OPTIONAL=yesplz
@@ -9,26 +9,24 @@ WANT_AUTOMAKE=none
 PATCHSET=3
 GENTOO_DEPEND_ON_PERL=no
 
-inherit autotools distutils-r1 git-r3 perl-module systemd
+inherit autotools distutils-r1 eutils perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://www.net-snmp.org/"
-EGIT_REPO_URI="https://github.com/net-snmp/net-snmp"
 SRC_URI="
+	mirror://sourceforge/project/${PN}/${PN}/${PV/_p*/}/${P/_p*/}.tar.gz
 	https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-3.tar.xz
 "
+
+S=${WORKDIR}/${P/_/.}
 
 # GPL-2 for the init scripts
 LICENSE="HPND BSD GPL-2"
 SLOT="0/35"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="
 	X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql
 	netlink pcap pci perl python rpm selinux smux ssl tcpd ucd-compat zlib
-"
-REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
-	rpm? ( bzip2 zlib )
 "
 
 COMMON_DEPEND="
@@ -67,35 +65,34 @@ RDEPEND="
 	)
 	selinux? ( sec-policy/selinux-snmp )
 "
-S=${WORKDIR}/${P/_/.}
+
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+	rpm? ( bzip2 zlib )
+"
 S=${WORKDIR}/${P/_p*/}
+
 RESTRICT=test
-PATCHES=(
-	"${FILESDIR}"/${PN}-5.7.3-include-limits.patch
-	"${FILESDIR}"/${PN}-5.8-do-not-conflate-LDFLAGS-and-LIBS.patch
-	"${FILESDIR}"/${PN}-5.8-pcap.patch
-	"${FILESDIR}"/${PN}-5.8-tinfo.patch
-	"${FILESDIR}"/${PN}-5.8.1-pkg-config.patch
-)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-}
-
-src_unpack() {
-	default
-	git-r3_src_unpack
 }
 
 src_prepare() {
 	# snmpconf generates config files with proper selinux context
 	use selinux && eapply "${FILESDIR}"/${PN}-5.1.2-snmpconf-selinux.patch
 
+	eapply "${FILESDIR}"/${PN}-5.7.3-include-limits.patch
+	eapply "${FILESDIR}"/${PN}-5.8-do-not-conflate-LDFLAGS-and-LIBS.patch
+	eapply "${FILESDIR}"/${PN}-5.8-my_bool.patch
+	eapply "${FILESDIR}"/${PN}-5.8-pcap.patch
+	eapply "${FILESDIR}"/${PN}-5.8-tinfo.patch
+
 	mv "${WORKDIR}"/patches/0002-Respect-DESTDIR-for-pythoninstall.patch{,.disabled} || die
 	mv "${WORKDIR}"/patches/0004-Don-t-report-CFLAGS-and-LDFLAGS-in-net-snmp-config.patch{,.disabled} || die
 	eapply "${WORKDIR}"/patches/*.patch
 
-	default
+	eapply_user
 
 	eautoconf
 }
@@ -207,5 +204,5 @@ src_install () {
 			|| die
 	fi
 
-	find "${ED}" -name '*.la' -delete || die
+	prune_libtool_files
 }
