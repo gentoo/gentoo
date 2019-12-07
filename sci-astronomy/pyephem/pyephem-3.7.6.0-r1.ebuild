@@ -1,10 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
-
+PYTHON_COMPAT=( python3_{5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Astronomical routines for the python programming language"
@@ -16,12 +15,13 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
-DEPEND="
-	doc? ( dev-python/sphinx )"
+DEPEND="doc? ( dev-python/sphinx )"
 RDEPEND=""
 
+RESTRICT="!test? ( test )"
+
 src_prepare() {
-	# don't install rst files
+	# don't install rst files by dfefault
 	sed -i -e "s:'doc/\*\.rst',::" setup.py || die
 	distutils-r1_src_prepare
 }
@@ -34,18 +34,12 @@ src_compile() {
 }
 
 python_test() {
-	if [[ ${PYTHON_ABI} == "2.7" ]]; then
-		PYTHONPATH="$(ls -d ${BUILD_DIR}/lib*)" \
-			${EPYTHON} -m unittest discover -s src/ephem
-	else
-		PYTHONPATH="$(ls -d ${BUILD_DIR}/lib*)" \
-			unit2 discover -s src/ephem
-	fi
+	PYTHONPATH="$(ls -d ${BUILD_DIR}/lib*)" unit2 discover -s ephem
 }
 
 src_install() {
+	use doc && HTML_DOCS=( ephem/doc/_build/html/. )
 	distutils-r1_src_install
-	use doc && dohtml -r ephem/doc/_build/html/*
 
 	delete_tests() {
 		rm -r "${D}$(python_get_sitedir)/ephem/tests" || die
