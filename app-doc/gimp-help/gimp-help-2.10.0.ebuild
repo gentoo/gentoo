@@ -26,8 +26,3 @@ DEPEND="$(python_gen_any_dep 'dev-libs/libxml2[python,${PYTHON_USEDEP}]')
 src_configure() {
 	econf --without-gimp
 }
-
-src_compile() {
-	# see https://bugs.gentoo.org/677198
-	emake -j1
-}
