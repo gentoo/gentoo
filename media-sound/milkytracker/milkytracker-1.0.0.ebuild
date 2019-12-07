@@ -22,7 +22,10 @@ RDEPEND="
 	jack? ( media-sound/jack-audio-connection-kit )"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.0.0-docdir.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-docdir.patch
+	"${FILESDIR}"/${P}-cmake.patch
+)
 
 S="${WORKDIR}/MilkyTracker-${PV}"
 
