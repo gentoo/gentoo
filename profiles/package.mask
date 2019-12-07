@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only, bump required and very involved buildsystem,
+# has QA issues, bug #598840. Removal in 30 days.
+sci-mathematics/xmds
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-12-07)
 # Runtime errors/segfaults, ancient, unmaintained, depends on py27.
 # Bug 590986, removal in 30 days.
