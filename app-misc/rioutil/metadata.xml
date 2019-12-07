@@ -27,6 +27,6 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/hjelmn/rioutil/issues</bugs-to>
-		<remote-id type="sourceforge">hjelmn/rioutil</remote-id>
+		<remote-id type="github">hjelmn/rioutil</remote-id>
 	</upstream>
 </pkgmetadata>
