@@ -3,12 +3,12 @@ DEPEND=dev-python/pyyaml dev-ada/gnatcoll-bindings[ada_target_gnat_2017(-)?,ada_
 DESCRIPTION=high performance semantic engine for the Ada programming language
 EAPI=7
 HOMEPAGE=https://libre.adacore.com/
-IUSE=+shared static-libs ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 -ada_target_gnat_2016 +python_single_target_python2_7
+IUSE=+shared static-libs ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 -ada_target_gnat_2016 +python_targets_python2_7 +python_single_target_python2_7
 KEYWORDS=amd64 x86
 LICENSE=GPL-3 gcc-runtime-library-exception-3.1
 RDEPEND=dev-python/pyyaml dev-ada/gnatcoll-bindings[ada_target_gnat_2017(-)?,ada_target_gnat_2018(-)?,ada_target_gnat_2019(-)?,-ada_target_gnat_2016(-),iconv,shared=,static-libs=] ada_target_gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) ada_target_gnat_2018? ( dev-lang/gnat-gpl:7.3.1 ) ada_target_gnat_2019? ( dev-lang/gnat-gpl:8.3.1 ) python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] )
-REQUIRED_USE=^^ ( python_single_target_python2_7 ) ^^ ( ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 )
+REQUIRED_USE=^^ ( python_single_target_python2_7 ) python_single_target_python2_7? ( python_targets_python2_7 ) ^^ ( ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 )
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/5b0cf9adc7a4475263382c18 -> libadalang-gpl-2018-src.tar.gz
-_eclasses_=ada	9205d12ceb057a9282bea2a773e7c681	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	4de31a18344a72217ca7cc04ec6d1f8e	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=ada	9205d12ceb057a9282bea2a773e7c681	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	721d0faeb54c0c332aa593d384993b4c	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=f05e08fd180902a227e67236e7f2befa

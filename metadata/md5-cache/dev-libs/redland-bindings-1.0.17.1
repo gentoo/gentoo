@@ -3,11 +3,11 @@ DEPEND=>=dev-libs/redland-1.0.14 lua? ( >=dev-lang/lua-5.1 ) perl? ( dev-lang/pe
 DESCRIPTION=Language bindings for Redland
 EAPI=6
 HOMEPAGE=http://librdf.org/bindings/
-IUSE=lua perl python php ruby php_targets_php7-2 +python_single_target_python2_7
+IUSE=lua perl python php ruby php_targets_php7-2 +python_targets_python2_7 +python_single_target_python2_7
 LICENSE=Apache-2.0 GPL-2 LGPL-2.1
 RDEPEND=>=dev-libs/redland-1.0.14 lua? ( >=dev-lang/lua-5.1 ) perl? ( dev-lang/perl:= ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) ) ruby? ( dev-lang/ruby dev-ruby/log4r ) php? ( php_targets_php7-2? ( dev-lang/php:7.2 ) )
-REQUIRED_USE=python? ( ^^ ( python_single_target_python2_7 ) ) php? ( || ( php_targets_php7-2 ) )
+REQUIRED_USE=python? ( ^^ ( python_single_target_python2_7 ) python_single_target_python2_7? ( python_targets_python2_7 ) ) php? ( || ( php_targets_php7-2 ) )
 SLOT=0
 SRC_URI=http://download.librdf.org/source/redland-bindings-1.0.17.1.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	php-ext-source-r3	dd53cd94748f9e498bea0f9480ba8d77	python-single-r1	4de31a18344a72217ca7cc04ec6d1f8e	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	php-ext-source-r3	dd53cd94748f9e498bea0f9480ba8d77	python-single-r1	721d0faeb54c0c332aa593d384993b4c	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=935f01547113858dbacf3d0b7aa8f4dc

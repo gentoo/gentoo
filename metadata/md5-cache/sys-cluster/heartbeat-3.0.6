@@ -3,13 +3,13 @@ DEPEND=sys-cluster/cluster-glue dev-libs/glib:2 virtual/ssh net-libs/gnutls snmp
 DESCRIPTION=Heartbeat high availability cluster manager
 EAPI=6
 HOMEPAGE=http://www.linux-ha.org/wiki/Heartbeat
-IUSE=doc snmp static-libs +python_single_target_python2_7
+IUSE=doc snmp static-libs +python_targets_python2_7 +python_single_target_python2_7
 KEYWORDS=~amd64 ~hppa ~x86
 LICENSE=GPL-2
 PDEPEND=sys-cluster/resource-agents
 RDEPEND=sys-cluster/cluster-glue dev-libs/glib:2 virtual/ssh net-libs/gnutls snmp? ( net-analyzer/net-snmp ) python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] )
-REQUIRED_USE=^^ ( python_single_target_python2_7 )
+REQUIRED_USE=^^ ( python_single_target_python2_7 ) python_single_target_python2_7? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://hg.linux-ha.org/heartbeat-STABLE_3_0/archive/STABLE-3.0.6.tar.bz2
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	4de31a18344a72217ca7cc04ec6d1f8e	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	721d0faeb54c0c332aa593d384993b4c	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=06b5a67c9bd45266200b34cf678a3ba9

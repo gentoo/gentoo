@@ -2666,6 +2666,7 @@ app-text/wdiff 1.2.2 1.2.2-r1: Create a diff disregarding formatting
 app-text/webgen 1.5.2 1.7.0: A template-based static website generator
 app-text/wgetpaste 2.28-r2 2.29-r1: Command-line interface to various pastebins
 app-text/wiki2beamer 0.9.5-r1 0.10.0: Tool to produce LaTeX Beamer code from wiki-like input
+app-text/wklej 0.2.1-r1: A wklej.org submitter
 app-text/writerperfect 0.9.6: Various formats to Open document format converter
 app-text/wscr 1.2-r1: A Lightweight and Fast Anagram Solver
 app-text/wv 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to something readable
@@ -10929,6 +10930,7 @@ dev-vcs/fossil 2.8 2.9: Simple, high-reliability, source control management, and
 dev-vcs/git 2.21.0 2.23.0-r1 2.24.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20170818 6.20170818-r1: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08 9999: Bugzilla subcommand for git
+dev-vcs/git-cola 2.11 3.2: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024-r1: make deployments so easy that you'll let new hires do them on their first day
 dev-vcs/git-deps 9999: git commit dependency analysis tool

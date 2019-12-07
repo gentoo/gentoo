@@ -4,13 +4,13 @@ DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-la
 DESCRIPTION=A tool for monitoring, capturing and storing TCP connections flows
 EAPI=7
 HOMEPAGE=https://github.com/simsong/tcpflow
-IUSE=cairo test +python_single_target_python2_7
+IUSE=cairo test +python_targets_python2_7 +python_single_target_python2_7
 KEYWORDS=amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
 LICENSE=GPL-3
 RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) dev-db/sqlite dev-libs/boost:= dev-libs/openssl:= net-libs/http-parser:= net-libs/libpcap sys-libs/libcap-ng sys-libs/zlib:= cairo? ( x11-libs/cairo )
-REQUIRED_USE=^^ ( python_single_target_python2_7 )
+REQUIRED_USE=^^ ( python_single_target_python2_7 ) python_single_target_python2_7? ( python_targets_python2_7 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://api.github.com/repos/simsong/be13_api/tarball/c81521d768bb78499c069fcd7c47adc8eee0350c -> be13_api-20170924.tar.gz https://api.github.com/repos/simsong/dfxml/tarball/7d11eaa7da8d31f588ce8aecb4b4f5e7e8169ba6 -> dfxml-20170921.tar.gz https://dev.gentoo.org/~jer/be13_api-20170924.tar.gz https://dev.gentoo.org/~jer/dfxml-20170921.tar.gz https://github.com/simsong/tcpflow/archive/tcpflow-1.5.2.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	4de31a18344a72217ca7cc04ec6d1f8e	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	721d0faeb54c0c332aa593d384993b4c	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=8f85a043d75e66a82ca7c493586592f2

@@ -4,13 +4,13 @@ DEPEND=!elibc_glibc? ( sys-libs/argp-standalone ) emacs? ( virtual/emacs ) fuse?
 DESCRIPTION=GlusterFS is a powerful network/cluster filesystem
 EAPI=7
 HOMEPAGE=https://www.gluster.org/
-IUSE=debug emacs +fuse +georeplication infiniband ipv6 libressl +libtirpc rsyslog static-libs +syslog test vim-syntax +xml python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7
+IUSE=debug emacs +fuse +georeplication infiniband ipv6 libressl +libtirpc rsyslog static-libs +syslog test vim-syntax +xml python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=|| ( GPL-2 LGPL-3+ )
 RDEPEND=!elibc_glibc? ( sys-libs/argp-standalone ) emacs? ( virtual/emacs ) fuse? ( >=sys-fs/fuse-2.7.0:0 ) georeplication? ( python_single_target_python3_5? ( dev-lang/python:3.5 >=dev-lang/python-exec-2:=[python_targets_python3_5] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) ) infiniband? ( sys-fabric/libibverbs:* sys-fabric/librdmacm:* ) libtirpc? ( net-libs/libtirpc:= ) !libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) ) xml? ( dev-libs/libxml2 ) sys-libs/readline:= dev-libs/libaio !libressl? ( dev-libs/openssl:=[-bindist] ) libressl? ( dev-libs/libressl:= ) dev-libs/userspace-rcu:= net-libs/rpcsvc-proto sys-apps/util-linux
-REQUIRED_USE=georeplication? ( ^^ ( python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7 ) ) ipv6? ( libtirpc )
+REQUIRED_USE=georeplication? ( ^^ ( python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 ) ) ipv6? ( libtirpc )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://download.gluster.org/pub/gluster/glusterfs/6/6.5/glusterfs-6.5.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	elisp-common	23f47b2e1de7abf387105eddd1318738	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	4de31a18344a72217ca7cc04ec6d1f8e	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	elisp-common	23f47b2e1de7abf387105eddd1318738	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	721d0faeb54c0c332aa593d384993b4c	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
 _md5_=5715b67716bf9ddba38214cde0774752

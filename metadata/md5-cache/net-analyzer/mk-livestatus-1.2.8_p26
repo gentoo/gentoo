@@ -3,12 +3,12 @@ DEPEND=!sys-apps/ucspi-unix:0 perl? ( dev-lang/perl:0 virtual/perl-Digest-MD5:0 
 DESCRIPTION=Nagios/Icinga event broker that allows quick/direct access to your status data
 EAPI=6
 HOMEPAGE=http://mathias-kettner.de/checkmk_livestatus.html
-IUSE=examples nagios4 perl python test +python_single_target_python2_7
+IUSE=examples nagios4 perl python test +python_targets_python2_7 +python_single_target_python2_7
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=!sys-apps/ucspi-unix:0 perl? ( dev-lang/perl:0 virtual/perl-Digest-MD5:0 virtual/perl-Scalar-List-Utils:0 >=virtual/perl-Thread-Queue-2.11:0 virtual/perl-Encode:0 dev-perl/JSON-XS:0 ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) )
-REQUIRED_USE=python? ( ^^ ( python_single_target_python2_7 ) )
+REQUIRED_USE=python? ( ^^ ( python_single_target_python2_7 ) python_single_target_python2_7? ( python_targets_python2_7 ) )
 SLOT=0
 SRC_URI=http://mathias-kettner.de/download/mk-livestatus-1.2.8p26.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	python-single-r1	4de31a18344a72217ca7cc04ec6d1f8e	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	python-single-r1	721d0faeb54c0c332aa593d384993b4c	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=9ad265bd8250fddb587d9da6b9e4ff89

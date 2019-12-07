@@ -4,13 +4,13 @@ DEPEND=>=app-text/ghostscript-gpl-8.15 >=dev-scheme/guile-1.8.2:12=[deprecated,r
 DESCRIPTION=GNU Music Typesetter
 EAPI=7
 HOMEPAGE=http://lilypond.org/
-IUSE=debug emacs guile2 profile vim-syntax +python_single_target_python2_7
+IUSE=debug emacs guile2 profile vim-syntax +python_targets_python2_7 +python_single_target_python2_7
 KEYWORDS=amd64 ~arm arm64 ~hppa x86
 LICENSE=GPL-3 FDL-1.3
 RDEPEND=>=app-text/ghostscript-gpl-8.15 >=dev-scheme/guile-1.8.2:12=[deprecated,regex] media-fonts/tex-gyre media-libs/fontconfig media-libs/freetype:2 >=x11-libs/pango-1.12.3 emacs? ( virtual/emacs ) guile2? ( >=dev-scheme/guile-2:12 ) !guile2? ( >=dev-scheme/guile-1.8.2:12=[deprecated,regex] <dev-scheme/guile-2.0:12 ) python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] )
-REQUIRED_USE=^^ ( python_single_target_python2_7 )
+REQUIRED_USE=^^ ( python_single_target_python2_7 ) python_single_target_python2_7? ( python_targets_python2_7 )
 RESTRICT=test
 SLOT=0
 SRC_URI=http://lilypond.org/download/sources/v2.19/lilypond-2.19.83.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	elisp-common	23f47b2e1de7abf387105eddd1318738	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	4de31a18344a72217ca7cc04ec6d1f8e	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	elisp-common	23f47b2e1de7abf387105eddd1318738	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	721d0faeb54c0c332aa593d384993b4c	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=3737dc52aaef181308f1c4d2baafc904
