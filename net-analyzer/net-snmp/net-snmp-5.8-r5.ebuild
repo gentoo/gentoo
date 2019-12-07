@@ -148,6 +148,8 @@ src_install () {
 	# bug #317965
 	emake -j1 DESTDIR="${D}" install
 
+	use python && python_optimize
+
 	if use perl ; then
 		perl_delete_localpod
 		if ! use X; then
