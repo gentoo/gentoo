@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=sys-fs/zfs virtual/cron
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=e73b5d364a7547dd2f10a812ce1c8f7e

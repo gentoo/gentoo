@@ -7,5 +7,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=app-shells/bash dev-lang/perl || ( ( sys-apps/portage app-portage/portage-utils ) sys-apps/pkgcore )
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	prefix	c2993e4c430c1ee24f278983d6189501
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd	prefix	c2993e4c430c1ee24f278983d6189501
 _md5_=1eaff13c94670cbe09adf4e906ec8db1

@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=apparmor? ( sys-libs/libapparmor )
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
 _md5_=2abb7459c3a6f7a90ccbb88a6f359c93

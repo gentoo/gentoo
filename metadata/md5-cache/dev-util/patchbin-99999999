@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1
 PROPERTIES=live
 RDEPEND=app-shells/bash sys-apps/coreutils sys-apps/gawk sys-apps/grep userland_BSD? ( sys-freebsd/freebsd-bin sys-freebsd/freebsd-ubin ) userland_GNU? ( sys-apps/util-linux sys-devel/patch )
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
 _md5_=70185229e35bce00d55dc2d9a6791b22

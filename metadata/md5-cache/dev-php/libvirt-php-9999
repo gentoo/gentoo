@@ -11,5 +11,5 @@ RDEPEND=app-emulation/libvirt dev-libs/libxml2 php_targets_php5-6? ( dev-lang/ph
 REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 php_targets_php7-2 php_targets_php7-3 )
 RESTRICT=test
 SLOT=0
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	php-ext-source-r3	dd53cd94748f9e498bea0f9480ba8d77	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	6d22636df236df4cc8475f7b7668bdcd	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	php-ext-source-r3	dd53cd94748f9e498bea0f9480ba8d77	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=c6967d29bd5d943f6c05b5a1086debd6

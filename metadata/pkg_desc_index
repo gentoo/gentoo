@@ -234,7 +234,7 @@ app-admin/cronlocker 0.4.0_p20180710: synchronize a cron job across multiple hos
 app-admin/cronolog 1.6.2-r5: Log rotation software
 app-admin/cygwin-rebase 4.4.4 9999: Core of the automatic rebase facility during postinstall on Cygwin
 app-admin/denyhosts 2.9 3.0 3.0-r1: DenyHosts is a utility to help sys admins thwart ssh hackers
-app-admin/diamond 4.0-r1 4.0.515 9999: Python daemon that collects and publishes system metrics
+app-admin/diamond 4.0-r1 4.0.515 4.0.515.20180315 9999: Python daemon that collects and publishes system metrics
 app-admin/dio 1.5.2-r1: A device I/O monitoring tool
 app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
 app-admin/doas 6.0: Run commands as super user or another user, alternative to sudo from OpenBSD
@@ -2666,7 +2666,6 @@ app-text/wdiff 1.2.2 1.2.2-r1: Create a diff disregarding formatting
 app-text/webgen 1.5.2 1.7.0: A template-based static website generator
 app-text/wgetpaste 2.28-r2 2.29-r1: Command-line interface to various pastebins
 app-text/wiki2beamer 0.9.5-r1 0.10.0: Tool to produce LaTeX Beamer code from wiki-like input
-app-text/wklej 0.2.1-r1: A wklej.org submitter
 app-text/writerperfect 0.9.6: Various formats to Open document format converter
 app-text/wscr 1.2-r1: A Lightweight and Fast Anagram Solver
 app-text/wv 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to something readable
@@ -4941,7 +4940,7 @@ dev-libs/liblist 2.4: Generic linked-list manipulation routines, plus queues and
 dev-libs/liblogging 1.0.5 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
 dev-libs/liblognorm 2.0.5 2.0.6: Fast samples-based log normalization library
 dev-libs/liblouis 3.10.0: An open-source braille translator and back-translator
-dev-libs/libltdl 1.3.5 1.5.26 2.4.6: A shared library tool for developers
+dev-libs/libltdl 2.4.6: A shared library tool for developers
 dev-libs/liblzw 0.2-r1: small C library for reading LZW compressed files (.Z)
 dev-libs/libmaa 1.3.2: Library with low-level data structures which are helpful for writing compilers
 dev-libs/libmacaroons 0.2.0-r1 0.3.0: Hyperdex macaroons support library
@@ -10930,7 +10929,6 @@ dev-vcs/fossil 2.8 2.9: Simple, high-reliability, source control management, and
 dev-vcs/git 2.21.0 2.23.0-r1 2.24.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20170818 6.20170818-r1: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08 9999: Bugzilla subcommand for git
-dev-vcs/git-cola 2.11 3.2: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024-r1: make deployments so easy that you'll let new hires do them on their first day
 dev-vcs/git-deps 9999: git commit dependency analysis tool
@@ -14667,7 +14665,7 @@ net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.8.4 2.9.0 2.9.1: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.7.0-r1 1.7.1: Set of utilities to simplify various dns(sec) tasks
-net-dns/libidn 1.33-r2 1.33-r99 1.35: Internationalized Domain Names (IDN) implementation
+net-dns/libidn 1.35: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.1.1a-r1 2.3.0 99999: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 net-dns/maradns 2.0.09-r2 2.0.14 2.0.16: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater

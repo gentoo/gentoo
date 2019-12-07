@@ -6,5 +6,5 @@ HOMEPAGE=https://github.com/RangeNetworks/liba53
 LICENSE=GPL-2
 PROPERTIES=live
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
 _md5_=c69cd0bd7332aa3336e0d3bf958cc513

@@ -7,5 +7,5 @@ LICENSE=BSD GPL-2
 PROPERTIES=live
 RDEPEND=dev-lang/gdl
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
 _md5_=99b27f681db45fbdc3c706419591c898

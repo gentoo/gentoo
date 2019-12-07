@@ -8,5 +8,5 @@ LICENSE=BSD GPL-2
 PROPERTIES=live
 RDEPEND=espeak? ( app-accessibility/espeak ) >=dev-tcltk/tclx-8.4 >=virtual/emacs-24
 SLOT=0
-_eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738	git-r3	562b380fc59ae6a8622171d0acb777d1	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738	git-r3	6d22636df236df4cc8475f7b7668bdcd	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=bb5e081141fefe72f22d1d7405b36da5

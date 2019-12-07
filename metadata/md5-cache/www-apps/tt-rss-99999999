@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=daemon? ( acl? ( sys-apps/acl ) ) daemon? ( dev-lang/php:*[mysqli?,postgres?,curl,cli,intl,pcntl,pdo] ) !daemon? ( dev-lang/php:*[mysqli?,postgres?,curl,intl,pdo] ) virtual/httpd-php:* >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysqli postgres )
 SLOT=99999999
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	prefix	c2993e4c430c1ee24f278983d6189501	user	00484e1be1aac73e24fca1c99557a7d6	webapp	16783e418aca3ffa461d68310bf7ab12
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd	prefix	c2993e4c430c1ee24f278983d6189501	user	00484e1be1aac73e24fca1c99557a7d6	webapp	16783e418aca3ffa461d68310bf7ab12
 _md5_=15732b2927bbee0903215752c2191054

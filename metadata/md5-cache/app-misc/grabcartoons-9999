@@ -8,5 +8,5 @@ PROPERTIES=live
 RDEPEND=dev-lang/perl virtual/perl-Getopt-Long
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
 _md5_=6a4955d2488327be4a7516962e96d53b

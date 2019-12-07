@@ -1,15 +1,15 @@
 BDEPEND=dev-util/gdbus-codegen dev-util/intltool
 DEFINED_PHASES=configure install prepare setup
-DEPEND=python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),python_single_target_python3_5(+)?,python_single_target_python3_6(+)?] dev-libs/dbus-glib dev-libs/glib:2 test? ( dev-python/dbusmock[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),python_single_target_python3_5(+)?,python_single_target_python3_6(+)?] )
+DEPEND=python_single_target_python3_5? ( dev-lang/python:3.5 >=dev-lang/python-exec-2:=[python_targets_python3_5] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) dev-libs/dbus-glib dev-libs/glib:2 test? ( dev-python/dbusmock[] )
 DESCRIPTION=Run executables under a new DBus session for testing
 EAPI=7
 HOMEPAGE=https://launchpad.net/dbus-test-runner
-IUSE=test python_targets_python3_5 python_targets_python3_6 python_single_target_python3_5 python_single_target_python3_6
+IUSE=test python_single_target_python3_5 python_single_target_python3_6
 KEYWORDS=~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 sparc x86
 LICENSE=GPL-3
-RDEPEND=python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),python_single_target_python3_5(+)?,python_single_target_python3_6(+)?] dev-libs/dbus-glib dev-libs/glib:2 dev-python/dbusmock[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),python_single_target_python3_5(+)?,python_single_target_python3_6(+)?]
-REQUIRED_USE=^^ ( python_single_target_python3_5 python_single_target_python3_6 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 )
+RDEPEND=python_single_target_python3_5? ( dev-lang/python:3.5 >=dev-lang/python-exec-2:=[python_targets_python3_5] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) dev-libs/dbus-glib dev-libs/glib:2 dev-python/dbusmock[]
+REQUIRED_USE=^^ ( python_single_target_python3_5 python_single_target_python3_6 )
 SLOT=0
 SRC_URI=https://launchpad.net/dbus-test-runner/19.04/19.04.0/+download/dbus-test-runner-19.04.0.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	02ef27875ec5afcc2202b9d062d57f07	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	4de31a18344a72217ca7cc04ec6d1f8e	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=af6935b305ad3e497d3d9b79dbd47c5a

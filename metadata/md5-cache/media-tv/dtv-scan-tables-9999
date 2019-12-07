@@ -6,5 +6,5 @@ HOMEPAGE=https://linuxtv.org/
 LICENSE=GPL-2 LGPL-2.1
 PROPERTIES=live
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
 _md5_=61f59654a751f32019c0f02695b87f7f

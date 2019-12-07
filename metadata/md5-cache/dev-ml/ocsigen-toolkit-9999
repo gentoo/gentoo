@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1-with-linking-exception
 PROPERTIES=live
 RDEPEND=dev-lang/ocaml:=[ocamlopt?] >dev-ml/js_of_ocaml-2.7:= >=dev-ml/eliom-5.1:=[ppx] dev-ml/ppx_deriving:= dev-ml/calendar:= dev-ml/lwt:= >=dev-lang/ocaml-4:=
 SLOT=0/9999
-_eclasses_=findlib	45d6030075064a68da8d7143726a1150	git-r3	562b380fc59ae6a8622171d0acb777d1	opam	3f1ccc0b5a5708088c2c156d4ca79a20
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150	git-r3	6d22636df236df4cc8475f7b7668bdcd	opam	3f1ccc0b5a5708088c2c156d4ca79a20
 _md5_=3c71932883f9e7b977c7d9ea22525c89

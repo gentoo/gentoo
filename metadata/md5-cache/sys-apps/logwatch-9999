@@ -7,5 +7,5 @@ LICENSE=MIT
 PROPERTIES=live
 RDEPEND=virtual/cron virtual/mta virtual/mailx dev-lang/perl dev-perl/Date-Calc dev-perl/Date-Manip dev-perl/Tie-IxHash dev-perl/Sys-CPU dev-perl/Sys-MemInfo virtual/tmpfiles
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	tmpfiles	6170dc7770585fb3f16efdee789a3218
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd	tmpfiles	6170dc7770585fb3f16efdee789a3218
 _md5_=4b08443e640f5c35d39a81ec2f16043b

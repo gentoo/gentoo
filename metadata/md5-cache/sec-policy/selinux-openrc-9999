@@ -7,5 +7,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-9999
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	selinux-policy-2	fc82a837585d258b211de18f9a74d72a
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd	selinux-policy-2	fc82a837585d258b211de18f9a74d72a
 _md5_=6071f5d601fd8acac400bba39e19c31e

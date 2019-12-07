@@ -9,5 +9,5 @@ PROPERTIES=live
 RDEPEND=>=dev-libs/libmirage-2.0.0:0= dev-libs/glib:2= pinentry? ( dev-libs/libassuan:0= ) pinentry? ( app-crypt/pinentry )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	6d22636df236df4cc8475f7b7668bdcd	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=7bfb098ed27dfa0637e042008d0d70ea

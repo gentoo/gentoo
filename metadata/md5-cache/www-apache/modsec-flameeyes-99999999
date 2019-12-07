@@ -7,5 +7,5 @@ LICENSE=CC-BY-SA-3.0
 PROPERTIES=live
 RDEPEND=>=www-apache/mod_security-2.5.1
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=36128a6f73fe78bca98f196139a59f98

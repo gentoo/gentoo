@@ -10,5 +10,5 @@ LICENSE=BSD
 RDEPEND=dev-libs/libtpms dev-libs/openssl:0 fuse? ( dev-libs/glib:2 sys-fs/fuse:0 ) gnutls? ( dev-libs/libtasn1:= >=net-libs/gnutls-3.1.0[tools] ) seccomp? ( sys-libs/libseccomp ) app-crypt/tpm-tools app-crypt/trousers dev-tcltk/expect
 SLOT=0
 SRC_URI=https://github.com/stefanberger/swtpm/archive/v0.2.0.tar.gz -> swtpm-0.2.0.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	02ef27875ec5afcc2202b9d062d57f07	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=712295e0fe45382ae7960d8fe7db3b62

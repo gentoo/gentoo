@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=dev-lang/perl dev-perl/JSON dev-perl/PerlIO-gzip png? ( dev-perl/GD[png] )
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	prefix	c2993e4c430c1ee24f278983d6189501
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd	prefix	c2993e4c430c1ee24f278983d6189501
 _md5_=bf110c01277fea76f8b08c1ad3cfdeaa

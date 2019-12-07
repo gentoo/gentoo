@@ -8,5 +8,5 @@ LICENSE=CC-BY-SA-3.0
 PROPERTIES=live
 RDEPEND=!app-doc/pms-bin
 SLOT=live
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
 _md5_=d683c0977ab5ab695c203aea0febd713

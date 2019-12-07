@@ -7,5 +7,5 @@ LICENSE=LGPL-3
 PROPERTIES=live
 RDEPEND=dev-lang/ocaml:= dev-ml/pgocaml:= dev-ml/macaque:= dev-ml/ocaml-safepass:= >=dev-ml/eliom-6.2:= dev-ml/ocsigen-toolkit:= dev-ml/ppx_deriving:= dev-ml/yojson:= dev-ml/OCaml-ImageMagick:=
 SLOT=0/9999
-_eclasses_=findlib	45d6030075064a68da8d7143726a1150	git-r3	562b380fc59ae6a8622171d0acb777d1
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150	git-r3	6d22636df236df4cc8475f7b7668bdcd
 _md5_=e1dd4ef3b85d3c53be1810f6687852a3

@@ -7,5 +7,5 @@ LICENSE=LGPL-2.1
 PROPERTIES=live
 RDEPEND=dev-lang/perl dev-util/abi-dumper dev-util/ctags
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
 _md5_=1d57c8502ec31829d441911ad0fb687f

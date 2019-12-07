@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=>=dev-libs/boost-1.62.0-r1:= dev-qt/qtcore:5 dev-qt/qtnetwork:5[ssl] >=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt5(+),X?] dev-qt/qtxml:5 >=net-libs/libtorrent-rasterbar-1.2.0:0= sys-libs/zlib dbus? ( dev-qt/qtdbus:5 ) X? ( dev-libs/geoip dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 )
 REQUIRED_USE=dbus? ( X )
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=5b04eb53d15b440da86d321322dd9b11

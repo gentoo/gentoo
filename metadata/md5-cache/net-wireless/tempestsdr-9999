@@ -9,5 +9,5 @@ LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=>=virtual/jdk-1.7:* net-wireless/airspy net-wireless/uhd:= net-wireless/rtl-sdr net-wireless/bladerf:= net-wireless/hackrf-tools >=dev-java/java-config-2.2.0-r3
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	82402a1c36ab4bf38f3313a543f9e827
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	82402a1c36ab4bf38f3313a543f9e827
 _md5_=80cef9ee567440a397556c6958a5ba72

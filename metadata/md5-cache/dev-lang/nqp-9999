@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=java? ( dev-java/asm:4 dev-java/jline:0 dev-java/jna:4 ) moar? ( ~dev-lang/moarvm-9999[clang=] ) java? ( >=virtual/jre-1.8 ) java? ( >=dev-java/java-config-2.2.0-r3 )
 REQUIRED_USE=|| ( java moar )
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	82402a1c36ab4bf38f3313a543f9e827	multibuild	40fe59465edacd730c644ec2bc197809
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	82402a1c36ab4bf38f3313a543f9e827	multibuild	40fe59465edacd730c644ec2bc197809
 _md5_=e34c17c92d7b2b0bd96afd29bbdb22f9

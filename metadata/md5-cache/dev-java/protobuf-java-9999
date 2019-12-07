@@ -9,5 +9,5 @@ LICENSE=BSD
 PROPERTIES=live
 RDEPEND=>=virtual/jre-1.7 !<dev-libs/protobuf-3[java(-)] >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=0/22
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	3e71074eb6884746b37b70b2c9c881f4	java-utils-2	82402a1c36ab4bf38f3313a543f9e827
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	3e71074eb6884746b37b70b2c9c881f4	java-utils-2	82402a1c36ab4bf38f3313a543f9e827
 _md5_=2cd8fb51ba1fba6c0ba99a567c11aafa

@@ -10,5 +10,5 @@ RDEPEND=!savedconfig? ( redistributable? ( !sys-firmware/alsa-firmware[alsa_card
 REQUIRED_USE=initramfs? ( redistributable )
 RESTRICT=binchecks strip unknown-license? ( bindist )
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	mount-boot	0ed73d6bc7399be07e136b5dc46709d9	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	a3c113056e77e36a1d78ff4eb475dfd1
+_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd	mount-boot	0ed73d6bc7399be07e136b5dc46709d9	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	a3c113056e77e36a1d78ff4eb475dfd1
 _md5_=b5666605502c5dd46e670befef7ce23f
