@@ -9796,7 +9796,7 @@ dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing lib
 dev-ruby/execjs 2.7.0: ExecJS lets you run JavaScript code from Ruby
 dev-ruby/exifr 1.3.6: A library to read EXIF info from JPEG and TIFF images
 dev-ruby/expression_parser 0.9.0_p20130518: A math parser
-dev-ruby/facter 3.9.2-r1 3.14.3 3.14.5 3.14.6 9999: A cross-platform ruby library for retrieving facts from operating systems
+dev-ruby/facter 3.14.5 3.14.6 9999: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.19.2 0.20.0 0.20.1: A fake filesystem. Use it in your tests
 dev-ruby/faker 1.9.6-r1 2.6.0 2.7.0 2.8.0: A library for generating fake data such as names, addresses, and phone numbers
