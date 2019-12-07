@@ -6,6 +6,6 @@ KEYWORDS=-* ~amd64
 LICENSE=GPL-3 MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 ISC openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1
 RDEPEND=dev-libs/nss media-libs/mesa[X(+)] net-print/cups x11-libs/gtk+:3[X] x11-libs/libXScrnSaver x11-libs/libXtst
 SLOT=0
-SRC_URI=https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_1.28.0_amd64.deb
+SRC_URI=https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_1.29.0_amd64.deb
 _eclasses_=pax-utils	a41d1fd1c111289ffa04490de6ee79d7	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=6212736be9fdf1417382270d59dc28f6

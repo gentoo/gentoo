@@ -1120,7 +1120,7 @@ app-doc/e16-docs 0.16.8.0.2: The E16 online help
 app-doc/eclass-manpages 20190908 99999999: Collection of Gentoo eclass manpages
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.10.03 4.10.05: User documentation for Geant4 physics simulation toolkit
-app-doc/gimp-help 2.8.2: GNU Image Manipulation Program help files
+app-doc/gimp-help 2.8.2 2.10.0: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 3.2-r2 3.3-r1 3.4-r1 3.5-r1 3.6-r1 3.7: Documentation package for GnuCash
 app-doc/halibut 1.1 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
@@ -12888,7 +12888,7 @@ media-gfx/graphite2 1.3.10 1.3.13: Library providing rendering capabilities for 
 media-gfx/graphviz 2.42.1-r1 2.42.3: Open Source Graph Visualization Software
 media-gfx/greycstoration 2.9-r2: Image regularization algorithm for denoising, inpainting and resizing
 media-gfx/grub-splashes 20091109: Collection of grub splashes
-media-gfx/gscan2pdf 1.8.11 2.6.1: Scan documents, perform OCR, produce PDFs and DjVus
+media-gfx/gscan2pdf 1.8.11 2.6.1 2.6.2: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.6.2-r1: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
@@ -14806,7 +14806,7 @@ net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
 net-im/qtox 1.16.3 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.28.0: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.29.0: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.52.0.138 8.52.0.138-r1 8.53.0.85 8.54.0.85 8.54.0.91: Instant messaging client, with support for audio and video
@@ -15160,7 +15160,7 @@ net-misc/AQtion 2.2.7 2.3.1: Aquantia AQC multigigabit NIC linux driver (atlanti
 net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
-net-misc/anydesk 4.0.1-r1 5.0.0 5.1.2 5.5.0 5.5.0-r1: Feature rich multi-platform remote desktop application
+net-misc/anydesk 4.0.1-r1 5.0.0 5.1.2 5.5.0 5.5.0-r1 5.5.1: Feature rich multi-platform remote desktop application
 net-misc/apt-cacher-ng 3.2_p2-r2 3.3_p1 3.3_p1-r1 3.3_p2: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
