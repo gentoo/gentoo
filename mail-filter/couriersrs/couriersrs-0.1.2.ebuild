@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="SRS (Sender Rewriting Scheme) wrapper for the courier MTA"
-HOMEPAGE="http://couriersrs.com/"
-SRC_URI="http://couriersrs.com/download/${P}.tar.gz"
+HOMEPAGE="https://couriersrs.com/"
+SRC_URI="https://github.com/mawis/courier-srs/releases/download/${PV}/${P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
