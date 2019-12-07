@@ -10,8 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-	<flag name="legacy-mem-write">Probe if writes to /proc/PID/mem are broken.</flag>
-	<flag name="jumbo-build">Experimental jumbo (also known as unity) build capability</flag>
-	<flag name="pax_kernel">Enable building under a PaX enabled kernel</flag>
+		<flag name="jumbo-build">Experimental jumbo (also known as unity) build capability</flag>
 	</use>
 </pkgmetadata>
