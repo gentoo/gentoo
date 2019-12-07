@@ -16,10 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 BDEPEND="
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
-	)
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 RDEPEND="
 	|| (
