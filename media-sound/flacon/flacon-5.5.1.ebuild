@@ -39,6 +39,8 @@ DEPEND="${RDEPEND}
 	)
 "
 
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	"${FILESDIR}/${P}-no-man-compress.patch"
 	"${FILESDIR}/${P}-ninja-warning.patch" # git master
