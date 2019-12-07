@@ -83,7 +83,6 @@ MODULAR_X_DEPEND="X? (
 	)"
 
 COMMON_DEPEND="${MODULAR_X_DEPEND}
-	!dev-tex/luatex
 	sys-libs/zlib
 	>=media-libs/libpng-1.2.43-r2:0=
 	media-libs/gd[png]
