@@ -46,7 +46,9 @@ REQUIRED_USE="
 	vpx? ( opengl )
 "
 
-RESTRICT="bindist"
+# There are no tests,
+# instead it tries to build a test game, which does not compile
+RESTRICT="bindist test"
 
 S="${WORKDIR}/${PN}_${MY_DATE}-${MY_BUILD}"
 
@@ -159,12 +161,6 @@ src_compile() {
 	if use tools; then
 		emake utils "${myemakeopts[@]}"
 	fi
-}
-
-src_test() {
-	# There are no tests
-	# Instead it tries to build a test game, which does not compile
-	:;
 }
 
 src_install() {
