@@ -8,9 +8,10 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/python-diamond/Diamond.git"
 	S=${WORKDIR}/diamond-${PV}
 else
-	SRC_URI="https://github.com/python-diamond/Diamond/archive/v${PV}.tar.gz -> python-diamond-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-	S=${WORKDIR}/Diamond-${PV}
+	GHASH=0f3eb04327d6d3ed5e53a9967d6c9d2c09714a47
+	SRC_URI="https://github.com/python-diamond/Diamond/archive/${GHASH}.tar.gz -> python-diamond-${PV}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	S=${WORKDIR}/Diamond-${GHASH}
 fi
 
 PYTHON_COMPAT=( python3_6 )
@@ -40,6 +41,19 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	# adjust for Prefix
 	hprefixify bin/diamond*
+
+	# fix the version (not set in GitHub archive)
+	sed -i -e "s/__VERSIONTOKENHERE__/${PV}/" src/diamond/version.py.tmpl || die
+	# fix psutil usage
+	sed -i -e 's/psutil\.network_io_counters/psutil.net_io_counters/' \
+		src/collectors/network/network.py || die
+	# fix symlink out of place
+	rm README.md || die
+	cp docs/index.md README.md || die
+
+	# this module isn't Python3 yet (lambda), if you use this and have a
+	# fix, let me know
+	rm src/diamond/handler/rrdtool.py || die
 
 	distutils-r1_src_prepare
 }
