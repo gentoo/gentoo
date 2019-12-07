@@ -21,7 +21,6 @@ DEPEND="gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
 DOCS=(README.txt)
 PATCHES=("${FILESDIR}/makefile.patch")
 UDK_WORKSPACE="${T}/udk"
-LIBDIR="/usr/lib"
 
 pkg_pretend() {
 	if use custom-cflags; then
@@ -50,11 +49,10 @@ src_prepare() {
 
 	# bug 598647 - PIE not supported
 	sed -e '/^CFLAGS/s:$: -fno-PIE:' -i Make.common || die
-	LIB_DIR="$(get_libdir)" || die
 	# Prepare UDK workspace
 	if ! use gnuefi; then
 		mkdir "${UDK_WORKSPACE}" || die
-		ln -s "${EPREFIX}${LIB_DIR}/udk/"{Mde,IntelFramework}{,Module}Pkg \
+		ln -s "${EPREFIX}$(get_libdir)/udk/"{Mde,IntelFramework}{,Module}Pkg \
 			"${UDK_WORKSPACE}" || die "Could not link UDK files"
 	fi
 }
@@ -86,7 +84,7 @@ src_compile() {
 		fi
 	done
 	use gnuefi && fs_names=("${fs_names[@]/%/_gnuefi}")
-
+	LIB_DIR="$(get_libdir)"
 	# Prepare flags
 	local make_flags=(
 		ARCH="${BUILDARCH}"
@@ -96,9 +94,9 @@ src_compile() {
 		AR="$(tc-getAR)"
 		RANLIB="$(tc-getRANLIB)"
 		OBJCOPY="$(tc-getOBJCOPY)"
-		GNUEFILIB="/usr/$(get_libdir)"
-		EFILIB="/usr/$(get_libdir)"
-		EFICRT0="/usr/$(get_libdir)"
+		GNUEFILIB="/usr/${LIB_DIR}"
+		EFILIB="/usr/${LIB_DIR}"
+		EFICRT0="/usr/${LIB_DIR}"
 		EDK2BASE="${UDK_WORKSPACE}"
 		EDK2_DRIVER_BASENAMES="${fs_names[@]}"
 		FILESYSTEMS="${fs_names[@]}"
@@ -112,6 +110,7 @@ src_compile() {
 }
 
 src_install() {
+	LIB_DIR="$(get_libdir)"
 	exeinto "${LIB_DIR}/${PN}"
 	doexe refind-install
 	dosym "${LIB_DIR}/${PN}/refind-install" "/usr/sbin/refind-install"
@@ -143,6 +142,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	LIB_DIR="$(get_libdir)"
 	elog "rEFInd has been built and installed into ${EROOT}${LIB_DIR}/${PN}"
 	elog "You will need to use the command 'refind-install' to install"
 	elog "the binaries into your EFI System Partition"
