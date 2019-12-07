@@ -1617,7 +1617,7 @@ app-forensics/dfxml 20170921-r1 99999999: Digital Forensics XML
 app-forensics/examiner 0.5-r2 0.5-r3: Utilizes the objdump command to disassemble and comment foreign binaries
 app-forensics/foremost 1.5.7-r3: A console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
-app-forensics/honggfuzz 1.8 1.9: A general purpose fuzzer with feedback support
+app-forensics/honggfuzz 1.9 2.0: A general purpose fuzzer with feedback support
 app-forensics/libewf 20171104: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/lynis 2.7.5: Security and system auditing tool
 app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident response tool that collects data
