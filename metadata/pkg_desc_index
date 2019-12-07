@@ -13849,7 +13849,7 @@ media-sound/fapg 0.42: Fast Audio Playlist Generator
 media-sound/flac-image 1.00: Utility for adding image files (e.g. album cover art) to metadata of FLAC files
 media-sound/flac123 0.0.12: console app for playing FLAC audio files
 media-sound/flack 2.0.6: flack - edit FLAC tags from command line
-media-sound/flacon 4.1.0: Extracts audio tracks from an audio CD image to separate tracks
+media-sound/flacon 4.1.0 5.5.1: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
 media-sound/fluidsynth 1.1.11 2.0.4 2.0.6 2.0.7: Software real-time synthesizer based on the Soundfont 2 specifications
