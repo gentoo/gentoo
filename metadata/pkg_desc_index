@@ -18917,7 +18917,7 @@ x11-misc/xteddy 2.2: A cuddly teddy bear (or other image) for your X desktop
 x11-misc/xtermcontrol 3.7: xtermcontrol enables dynamic control of XFree86 xterm properties
 x11-misc/xtitle 1.0.4: Set window title and icon name for an X11 terminal window
 x11-misc/xtoolwait 1.3-r2: Xtoolwait notably decreases the startup time of an X session
-x11-misc/xtrace 1.3.0: X11 protocol trace utility
+x11-misc/xtrace 1.4.0: X11 protocol trace utility
 x11-misc/xtrlock 2.8: A simplistic screen locking program for X
 x11-misc/xvfb-run 1.18.4_p2 1.19.3_p2: Run a command in a virtual X server environment
 x11-misc/xvkbd 3.7 3.9 4.0: virtual keyboard for X window system
