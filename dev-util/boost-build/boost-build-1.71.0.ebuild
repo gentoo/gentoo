@@ -34,11 +34,11 @@ REQUIRED_USE="
 S="${WORKDIR}/boost_${MY_PV}/tools/build/src"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.48.0-disable_python_rpath.patch
-	"${FILESDIR}"/${PN}-1.49.0-darwin-gentoo-toolchain.patch
-	"${FILESDIR}"/${PN}-1.62.0-sparc-no-default-flags.patch
-	"${FILESDIR}"/${PN}-1.66.0-add-none-feature-options.patch
+	"${FILESDIR}"/${PN}-1.71.0-disable_python_rpath.patch
+	"${FILESDIR}"/${PN}-1.71.0-darwin-gentoo-toolchain.patch
+	"${FILESDIR}"/${PN}-1.71.0-add-none-feature-options.patch
 	"${FILESDIR}"/${PN}-1.71.0-respect-c_ld-flags.patch
+	"${FILESDIR}"/${PN}-1.71.0-no-implicit-march-flags.patch
 )
 
 pkg_setup() {
@@ -55,18 +55,8 @@ src_prepare() {
 	default
 
 	pushd .. >/dev/null || die
-	eapply "${FILESDIR}/${PN}-1.54.0-fix-test.patch"
+	eapply "${FILESDIR}"/${PN}-1.71.0-fix-test.patch
 	popd >/dev/null || die
-
-	# remove default -march/-mcpu definitions
-	# bjam is trying to be clever and injects -march= in order to
-	# optimize code for you. This breaks on 32-bit builds, because
-	# -march=i686 will not work on an i486 CHOST.
-	# https://bugs.gentoo.org/624616
-	sed -e '/^cpu-flags\s*gcc\s*OPTIONS/d' \
-		-e '/toolset\.flags\s*gcc\s*OPTIONS/d' \
-		-e "/cpu_flags('gcc',\s*'OPTIONS'/d" \
-		-i tools/gcc.{jam,py} || die "Failed removing -march/-mcpu"
 }
 
 src_configure() {

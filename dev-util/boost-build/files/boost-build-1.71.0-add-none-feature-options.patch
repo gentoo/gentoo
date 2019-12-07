@@ -1,5 +1,3 @@
-diff --git a/tools/features/debug-feature.jam b/tools/features/debug-feature.jam
-index 04958f9a..38b6acf1 100644
 --- a/tools/features/debug-feature.jam
 +++ b/tools/features/debug-feature.jam
 @@ -8,7 +8,7 @@
@@ -11,8 +9,6 @@ index 04958f9a..38b6acf1 100644
      : propagated ;
  
  feature.feature profiling
-diff --git a/tools/features/optimization-feature.jam b/tools/features/optimization-feature.jam
-index 761f76f1..fb2a5dec 100644
 --- a/tools/features/optimization-feature.jam
 +++ b/tools/features/optimization-feature.jam
 @@ -8,7 +8,7 @@

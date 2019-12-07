@@ -4,7 +4,7 @@ arch, etc.
 
 --- a/tools/darwin.jam
 +++ b/tools/darwin.jam
-@@ -227,6 +227,9 @@
+@@ -239,6 +239,9 @@
          }
      }
      
@@ -14,7 +14,7 @@ arch, etc.
      if $(version-feature)
      {
          if $(.debug-configuration)
-@@ -387,7 +390,8 @@
+@@ -447,7 +450,8 @@
              support-ppc64 = ;
          }
      }
