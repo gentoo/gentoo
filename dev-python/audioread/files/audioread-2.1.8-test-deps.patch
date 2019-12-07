@@ -1,0 +1,27 @@
+From 5dd6c87a53f3a6c5bfa6ea384598213c49402056 Mon Sep 17 00:00:00 2001
+From: Glen Baker <iepathos@gmail.com>
+Date: Mon, 5 Aug 2019 23:40:27 -0700
+Subject: [PATCH] Correct pytest-runner location in setup.py
+
+Moved pytest-runner from setup_requires to tests_require.  It is the tests that require pytest-runner.
+---
+ setup.py | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index bd90605..6041f6e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -36,11 +36,8 @@ def _read(fn):
+ 
+       packages=['audioread'],
+ 
+-      setup_requires=[
+-          'pytest-runner'
+-      ],
+-
+       tests_require=[
++          'pytest-runner',
+           'pytest'
+       ],
+ 
