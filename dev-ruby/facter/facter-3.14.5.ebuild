@@ -27,7 +27,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	>=sys-devel/gcc-4.8:*
-	dev-cpp/cpp-hocon"
+	>=dev-cpp/cpp-hocon-0.1.4-r1"
 COMMON_DEPEND="
 	>=dev-libs/leatherman-1.0.0:=
 	dev-libs/openssl:0=
