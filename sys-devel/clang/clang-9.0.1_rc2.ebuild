@@ -42,11 +42,9 @@ RDEPEND="
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
-# configparser-3.2 breaks the build (3.3 or none at all are fine)
 BDEPEND="
 	doc? ( dev-python/sphinx )
 	xml? ( virtual/pkgconfig )
-	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
 RDEPEND="${RDEPEND}
 	!<sys-devel/llvm-4.0.0_rc:0
