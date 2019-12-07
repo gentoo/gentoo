@@ -2981,8 +2981,6 @@ dev-util/diffoscope:tcpdump - Use net-analyzer/tcpdump
 dev-util/diffoscope:xz - Use app-arch/xz-utils
 dev-util/diffoscope:zip - Use app-arch/unzip
 dev-util/edb-debugger:jumbo-build - Experimental jumbo (also known as unity) build capability
-dev-util/edb-debugger:legacy-mem-write - Probe if writes to /proc/PID/mem are broken.
-dev-util/edb-debugger:pax_kernel - Enable building under a PaX enabled kernel
 dev-util/edi:clang - Provide integration with sys-devel/clang for autocompletion and inline errors
 dev-util/electron:gconf - Use gnome-base/gconf
 dev-util/electron:lto - Build with link time optimization enabled
