@@ -30,12 +30,10 @@ RDEPEND="
 	~sys-devel/llvm-${PV}:=[${LLVM_TARGET_USEDEPS// /,},debug?]
 	!sys-devel/llvm[ocaml(-)]"
 DEPEND="${RDEPEND}"
-# configparser-3.2 breaks the build (3.3 or none at all are fine)
 BDEPEND="
 	dev-lang/perl
 	dev-ml/findlib
 	test? ( dev-ml/ounit )
-	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
 
 # least intrusive of all
