@@ -7815,6 +7815,8 @@ dev-python/flask-xml-rpc 0.1.2-r1: XML-RPC support for Flask applications
 dev-python/flexmock 0.10.2 0.10.3 0.10.4: Testing library to create mocks, stubs and fakes
 dev-python/flexx 0.3.1 0.4.1: Pure Python toolkit for creating GUI's using web technology
 dev-python/flipflop 1.0: A FastCGI/WSGI gateway
+dev-python/flit 2.1.0: Simplified packaging of Python modules
+dev-python/flit_core 2.1.0: Simplified packaging of Python modules (core module)
 dev-python/flower 0.9.1-r1: Real-time monitor and web admin for Celery distributed task queue
 dev-python/flufl-bounce 3.0: Email bounce detectors.
 dev-python/flufl-i18n 2.0.1: A high level API for Python internationalization.
@@ -7961,6 +7963,7 @@ dev-python/inotifyx 0.2.2: Python bindings to the Linux inotify file system even
 dev-python/intelhex 2.0 2.2.1: Python library for Intel HEX files manipulations
 dev-python/intervaltree 2.1.0: Editable interval tree data structure for Python 2 and 3
 dev-python/into 0.2.2: Data migration utilities
+dev-python/intreehooks 1.0: Load a PEP 517 backend from inside the source tree
 dev-python/invoke 1.1.1: Pythonic task execution
 dev-python/iocapture 0.1.2-r1 0.1.2-r2: Capture stdout, stderr easily
 dev-python/ioflo 1.5.0 1.7.4 1.7.5: Automated Reasoning Engine and Flow Based Programming Framework
@@ -8492,6 +8495,7 @@ dev-python/pyghmi 1.0.22: A pure python implementation of IPMI protocol
 dev-python/pygit2 0.28.2 1.0.0: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.2.0 2.2.0-r1 2.3.1 2.4.2: Pygments is a syntax highlighting package written in Python
+dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 2.28.6-r55 3.28.3 3.32.1: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r1: A Python wrapper for the GPGME library
 dev-python/pygpu 0.6.0 0.6.7: Python bindings to libgpuarray
@@ -8844,6 +8848,7 @@ dev-python/requests-mock 1.2.0 1.5.0 1.5.2: Mock out responses from the requests
 dev-python/requests-ntlm 1.0.0 1.1.0: HTTP NTLM authentication using the requests library
 dev-python/requests-oauthlib 0.7.0: This project provides first-class OAuth library support for Requests
 dev-python/requests-toolbelt 0.8.0 0.9.1: A utility belt for advanced users of python-requests
+dev-python/requests_download 0.1.2: A convenient function to download to a file using requests
 dev-python/requests_pkcs12 1.4: Adds PKCS#12 support to the Python requests library in a clean way
 dev-python/requestsexceptions 1.1.3 1.4.0: Finds the correct path to exceptions in the requests library.
 dev-python/responses 0.6.0 0.9.0 0.10.7: Utility for mocking out the Python Requests library
