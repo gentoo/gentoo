@@ -11,7 +11,7 @@ HOMEPAGE="https://kde.org/applications/internet/konversation/ https://konversati
 SRC_URI="mirror://kde/stable/${PN}/${PV/_/-}/src/${P/_/-}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+crypt"
 
 BDEPEND="sys-devel/gettext"
