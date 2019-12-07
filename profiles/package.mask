@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only, upstream dead, last release in 2011.
+# file collisions with sci-chemistry/tinker, bug #597702.
+# Removal in 30 days.
+sci-mathematics/snns
+
+# David Seifert <soap@gentoo.org> (2019-12-08)
 # No revdeps, py2 only, upstream HOMEPAGE gone.
 # Removal in 30 days.
 sci-mathematics/factmsieve
