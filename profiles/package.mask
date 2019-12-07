@@ -103,7 +103,6 @@ media-sound/whipper
 dev-python/hachoir-regex
 app-misc/hachoir-subfile
 dev-python/pymad
-dev-python/pyacoustid
 media-sound/beets
 dev-python/numdisplay
 dev-python/python-fastcgi
