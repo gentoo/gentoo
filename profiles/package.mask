@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only, upstream HOMEPAGE gone, last release in 2007.
+# Removal in 30 days.
+sci-mathematics/lybniz
+
+# David Seifert <soap@gentoo.org> (2019-12-08)
 # Yet another NIH machine learning package in python. Last release in
 # 2012, no revdeps, py2 only. Removal in 30 days.
 sci-mathematics/mlpy
