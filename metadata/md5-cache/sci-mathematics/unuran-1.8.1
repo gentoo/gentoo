@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile configure install prepare test
-DEPEND=gsl? ( sci-libs/gsl ) prng? ( sci-mathematics/prng ) rngstreams? ( sci-mathematics/rngstreams ) >=app-portage/elt-patches-20170815
+DEFINED_PHASES=compile configure install test
+DEPEND=gsl? ( sci-libs/gsl:= ) prng? ( sci-mathematics/prng ) rngstreams? ( sci-mathematics/rngstreams:= )
 DESCRIPTION=Universal Non-Uniform Random number generator
-EAPI=4
+EAPI=7
 HOMEPAGE=http://statmath.wu.ac.at/unuran/
-IUSE=doc examples gsl prng +rngstreams static-libs
+IUSE=doc examples gsl prng +rngstreams
 KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=gsl? ( sci-libs/gsl ) prng? ( sci-mathematics/prng ) rngstreams? ( sci-mathematics/rngstreams )
+RDEPEND=gsl? ( sci-libs/gsl:= ) prng? ( sci-mathematics/prng ) rngstreams? ( sci-mathematics/rngstreams:= )
 SLOT=0
 SRC_URI=http://statmath.wu.ac.at/unuran/unuran-1.8.1.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	autotools-utils	95db0904ad0f62535e18e5ccb67cce5e	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=8a5d604f11a675e3d168b7d9ff8ce53b
+_eclasses_=out-of-source	15edba2977da53bbf4d1e5a60abc0e34
+_md5_=3805ed5c841285617c978a956ae8bbcb
