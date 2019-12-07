@@ -2246,7 +2246,7 @@ app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microsoft Project
 app-office/pybliographer 1.4.0-r2: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r2: Spreadsheet Calculator
-app-office/scribus 1.5.5_pre20190429 1.5.5 9999: Desktop publishing (DTP) and layout program
+app-office/scribus 1.5.5 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.20.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1 1.4.6: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2 1.99.9 1.99.10 1.99.11: Wysiwyg text processor with high-quality maths
