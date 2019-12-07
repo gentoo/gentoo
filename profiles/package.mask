@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-07)
+# Fails to build against dev-libs/boost-1.71.0, depends on py27.
+# Bug 624222, removal in 30 days.
+sci-astronomy/casacore
+
 # Fabian Groffen <grobian@gentoo.org> (2019-12-07)
 # doesn't quite work well, needs fixing
 >=app-admin/diamond-4.0.515.20180315
