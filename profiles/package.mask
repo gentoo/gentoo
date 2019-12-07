@@ -33,6 +33,10 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only, last release in 2008. Removal in 30 days.
+sci-mathematics/p9m4
+
+# David Seifert <soap@gentoo.org> (2019-12-08)
 # No revdeps, py2 only, bump required and very involved and messy
 # buildsystem, tons of QA issues.
 # Bug #345233, #459640, #474782, #474784, #474788, #474790, #474792,
