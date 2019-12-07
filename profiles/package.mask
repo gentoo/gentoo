@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only (the py3 targets don't work properly), last
+# release in 2015. Use sci-mathematics/pymc3 as modern replacement.
+# Removal in 30 days.
+sci-mathematics/pymc
+
+# David Seifert <soap@gentoo.org> (2019-12-08)
 # No revdeps, py2 only, upstream HOMEPAGE gone, last release in 2007.
 # Removal in 30 days.
 sci-mathematics/lybniz
