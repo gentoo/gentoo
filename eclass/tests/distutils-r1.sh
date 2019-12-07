@@ -47,6 +47,7 @@ test-distutils_enable_tests() {
 	tend ${ret}
 }
 
+DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1
 
 tbegin "sane function names"
