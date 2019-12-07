@@ -40,6 +40,12 @@ EXPORT_FUNCTIONS pkg_nofetch src_unpack
 # Name of the package as hosted on kde.org mirrors.
 : ${KDE_ORG_NAME:=$PN}
 
+# @ECLASS-VARIABLE: KDE_RELEASE_SERVICE
+# @DESCRIPTION:
+# If set to "false", do nothing.
+# If set to "true", set SRC_URI accordingly and apply KDE_UNRELEASED.
+: ${KDE_RELEASE_SERVICE:=false}
+
 # @ECLASS-VARIABLE: KDE_SELINUX_MODULE
 # @DESCRIPTION:
 # If set to "none", do nothing.
@@ -66,6 +72,9 @@ KDE_UNRELEASED=( )
 HOMEPAGE="https://kde.org/"
 
 case ${CATEGORY} in
+	kde-apps)
+		KDE_RELEASE_SERVICE=true
+		;;
 	kde-plasma)
 		HOMEPAGE="https://kde.org/plasma-desktop"
 		;;
@@ -82,6 +91,10 @@ _kde.org_is_unreleased() {
 	for pair in "${KDE_UNRELEASED[@]}" ; do
 		if [[ "${pair}" = "${CATEGORY}-${PV}" ]]; then
 			return 0
+		elif [[ ${KDE_RELEASE_SERVICE} = true ]]; then
+			if [[ "${pair/kde-apps/${CATEGORY}}" = "${CATEGORY}-${PV}" ]]; then
+				return 0
+			fi
 		fi
 	done
 
@@ -94,17 +107,18 @@ _kde.org_calculate_src_uri() {
 
 	local _src_uri="mirror://kde/"
 
+	if [[ ${KDE_RELEASE_SERVICE} = true ]]; then
+		case ${PV} in
+			??.??.[6-9]? )
+				_src_uri+="unstable/applications/${PV}/src/"
+				RESTRICT+=" mirror"
+				;;
+			19.08.3? ) _src_uri+="stable/applications/${PV}/src/" ;;
+			*) _src_uri+="stable/release-service/${PV}/src/" ;;
+		esac
+	fi
+
 	case ${CATEGORY} in
-		kde-apps)
-			case ${PV} in
-				??.??.[6-9]? )
-					_src_uri+="unstable/applications/${PV}/src/"
-					RESTRICT+=" mirror"
-					;;
-				19.08.3? ) _src_uri+="stable/applications/${PV}/src/" ;;
-				*) _src_uri+="stable/release-service/${PV}/src/" ;;
-			esac
-			;;
 		kde-frameworks)
 			_src_uri+="stable/frameworks/$(ver_cut 1-2)/"
 			case ${PN} in
