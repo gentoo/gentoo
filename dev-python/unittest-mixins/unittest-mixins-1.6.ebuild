@@ -12,7 +12,7 @@ SRC_URI="https://github.com/nedbat/unittest-mixins/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~sparc"
 
 RDEPEND=">=dev-python/six-1.10.0[${PYTHON_USEDEP}]"
 
