@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2019-12-08)
+# Yet another NIH machine learning package in python. Last release in
+# 2012, no revdeps, py2 only. Removal in 30 days.
+sci-mathematics/mlpy
+
+# David Seifert <soap@gentoo.org> (2019-12-08)
 # No revdeps, py2 only, last release in 2015, lots of QA issues.
 # Bug #343743, #347928, #451394, #547714, #623756, #697562.
 # Removal in 30 days.
