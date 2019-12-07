@@ -2090,7 +2090,7 @@ app-misc/pwsafe 0.2.0-r4: A Password Safe compatible command-line password manag
 app-misc/pysmssend 1.48-r2: Python Application for sending sms over multiple ISPs
 app-misc/pystopwatch 2012.12.24.1-r1: clock and two countdown functions that can minimize to the tray
 app-misc/qcma 0.4.1 0.4.2_pre20181227 9999: Cross-platform content manager assistant for the PS Vita
-app-misc/qlcplus 4.11.1: A software to control DMX or analog lighting systems
+app-misc/qlcplus 4.11.1 4.12.2 5.0.0_alpha3: A software to control DMX or analog lighting systems
 app-misc/radeontop 1.2 9999: Utility to view Radeon GPU utilization
 app-misc/ranger 1.9.2 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
@@ -10335,7 +10335,7 @@ dev-scheme/gauche-mecab 1.0.2: MeCab binding for Gauche
 dev-scheme/gauche-qdbm 0.2-r1: QDBM binding for Gauche
 dev-scheme/goosh 1.3-r1: Small process-control library for Guile
 dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
-dev-scheme/guile 1.8.8-r3 2.0.13-r2 2.0.14-r3 2.2.3 2.2.4: GNU Ubiquitous Intelligent Language for Extensions
+dev-scheme/guile 1.8.8-r3 2.0.13-r2 2.0.14-r3 2.2.3 2.2.4 2.2.6: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-gcrypt 0.1.0: Guile bindings of libgcrypt
 dev-scheme/guile-git 0.0.20171110 0.2.0: Guile bindings of git
 dev-scheme/guile-json 0.6.0: JSON module for Guile
