@@ -1,6 +1,6 @@
 --- a/tools/python.jam
 +++ b/tools/python.jam
-@@ -961,7 +961,7 @@
+@@ -1000,7 +1000,7 @@
              # linux).
            : $(usage-requirements)
              <testing.launcher>$(set-PYTHONPATH)
