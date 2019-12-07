@@ -3,18 +3,21 @@
 
 EAPI=7
 
+BASHCOMP_P=bashcomp-2.0.3
 PYTHON_COMPAT=( python3_{5,6,7} )
-inherit autotools git-r3 python-any-r1
+inherit bash-completion-r1 python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
-EGIT_REPO_URI="https://github.com/scop/bash-completion"
+SRC_URI="
+	https://github.com/scop/bash-completion/releases/download/${PV}/${P}.tar.xz
+	eselect? ( https://github.com/mgorny/bashcomp2/releases/download/v${BASHCOMP_P#*-}/${BASHCOMP_P}.tar.gz )"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris"
 IUSE="+eselect test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
 
 # completion collision with net-fs/mc
 RDEPEND=">=app-shells/bash-4.3_p30-r1:0
@@ -75,24 +78,12 @@ pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
-src_unpack() {
-	use eselect && git-r3_fetch https://github.com/mgorny/bashcomp2
-	git-r3_fetch
-
-	use eselect && git-r3_checkout https://github.com/mgorny/bashcomp2 \
-		"${WORKDIR}"/bashcomp2
-	git-r3_checkout
-}
-
 src_prepare() {
+	use eselect &&
+		eapply "${WORKDIR}/${BASHCOMP_P}/bash-completion-blacklist-support.patch"
+	# Bug 543100, update bug 601194
+	eapply "${FILESDIR}/${PN}-2.1-escape-characters-r1.patch"
 	eapply_user
-	if use eselect; then
-		# generate and apply patch
-		emake -C "${WORKDIR}"/bashcomp2 bash-completion-blacklist-support.patch
-		eapply "${WORKDIR}"/bashcomp2/bash-completion-blacklist-support.patch
-	fi
-
-	eautoreconf
 }
 
 src_test() {
@@ -129,9 +120,11 @@ src_install() {
 	dodoc AUTHORS CHANGES CONTRIBUTING.md README.md
 
 	# install the eselect module
-	use eselect &&
-		emake -C "${WORKDIR}"/bashcomp2 DESTDIR="${D}" \
-			PREFIX="${EPREFIX}/usr" install
+	if use eselect; then
+		insinto /usr/share/eselect/modules
+		doins "${WORKDIR}/${BASHCOMP_P}/bashcomp.eselect"
+		doman "${WORKDIR}/${BASHCOMP_P}/bashcomp.eselect.5"
+	fi
 }
 
 pkg_postinst() {
