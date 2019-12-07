@@ -1,0 +1,80 @@
+diff --git a/test/test_input.py b/test/test_input.py
+index 5443ab9..8a1d2e5 100644
+--- a/test/test_input.py
++++ b/test/test_input.py
+@@ -4,6 +4,7 @@
+ 
+ from __future__ import print_function
+ from __future__ import unicode_literals
++import unittest
+ from tabulate import tabulate
+ from common import assert_equal, assert_in, assert_raises, SkipTest
+ 
+@@ -246,6 +247,7 @@ def test_numpy_record_array_headers():
+         raise SkipTest()  # this test is optional
+ 
+ 
++@unittest.skip("avoid extra unnecessary deps")
+ def test_pandas():
+     "Input: a Pandas DataFrame."
+     try:
+@@ -267,6 +269,7 @@ def test_pandas():
+         raise SkipTest()  # this test is optional
+ 
+ 
++@unittest.skip("avoid extra unnecessary deps")
+ def test_pandas_firstrow():
+     "Input: a Pandas DataFrame with the first row as headers."
+     try:
+@@ -285,6 +288,7 @@ def test_pandas_firstrow():
+         raise SkipTest()  # this test is optional
+ 
+ 
++@unittest.skip("avoid extra unnecessary deps")
+ def test_pandas_keys():
+     "Input: a Pandas DataFrame with keys as headers."
+     try:
+diff --git a/test/test_output.py b/test/test_output.py
+index 1eb67c1..2106c88 100644
+--- a/test/test_output.py
++++ b/test/test_output.py
+@@ -4,6 +4,7 @@
+ 
+ from __future__ import print_function
+ from __future__ import unicode_literals
++import unittest
+ import tabulate as tabulate_module
+ from tabulate import tabulate, simple_separated_format
+ from common import assert_equal, assert_raises, SkipTest
+@@ -1176,6 +1177,7 @@ def test_unaligned_separated():
+     assert_equal(expected, result)
+ 
+ 
++@unittest.skip("avoid extra unnecessary deps")
+ def test_pandas_with_index():
+     "Output: a pandas Dataframe with an index"
+     try:
+@@ -1199,6 +1201,7 @@ def test_pandas_with_index():
+         raise SkipTest()  # this test is optional
+ 
+ 
++@unittest.skip("avoid extra unnecessary deps")
+ def test_pandas_without_index():
+     "Output: a pandas Dataframe without an index"
+     try:
+@@ -1222,6 +1225,7 @@ def test_pandas_without_index():
+         raise SkipTest()  # this test is optional
+ 
+ 
++@unittest.skip("avoid extra unnecessary deps")
+ def test_pandas_rst_with_index():
+     "Output: a pandas Dataframe with an index in ReStructuredText format"
+     try:
+@@ -1247,6 +1251,7 @@ def test_pandas_rst_with_index():
+         raise SkipTest()  # this test is optional
+ 
+ 
++@unittest.skip("avoid extra unnecessary deps")
+ def test_pandas_rst_with_named_index():
+     "Output: a pandas Dataframe with a named index in ReStructuredText format"
+     try:
