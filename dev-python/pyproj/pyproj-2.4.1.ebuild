@@ -31,7 +31,8 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 distutils_enable_tests pytest
 
 python_check_deps() {
-	use doc && has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+	use doc || return 0
+	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
 
 python_prepare_all() {
