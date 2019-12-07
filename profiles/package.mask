@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only, last release in 2015, lots of QA issues.
+# Bug #343743, #347928, #451394, #547714, #623756, #697562.
+# Removal in 30 days.
+sci-mathematics/nusmv
+
+# David Seifert <soap@gentoo.org> (2019-12-08)
 # No revdeps, py2 only, last release in 2008. Removal in 30 days.
 sci-mathematics/p9m4
 
