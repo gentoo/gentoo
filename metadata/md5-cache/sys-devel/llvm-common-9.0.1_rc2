@@ -5,6 +5,6 @@ HOMEPAGE=https://llvm.org/
 LICENSE=Apache-2.0-with-LLVM-exceptions UoI-NCSA
 RDEPEND=!sys-devel/llvm:0
 SLOT=0
-SRC_URI=https://github.com/llvm/llvm-project/archive/llvmorg-9.0.1-rc1.tar.gz
+SRC_URI=https://github.com/llvm/llvm-project/archive/llvmorg-9.0.1-rc2.tar.gz
 _eclasses_=llvm.org	c036a57f84a13faca636ccb19e3f35d3
 _md5_=1fde7d764b5367d5d305df04145053d0

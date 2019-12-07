@@ -10,5 +10,5 @@ LICENSE=BSD
 RDEPEND=>=dev-lang/ghc-6.10.4:= dev-libs/libedit
 SLOT=0/0.2.1.1
 SRC_URI=https://hackage.haskell.org/package/editline-0.2.1.1/editline-0.2.1.1.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	fac7ea2deca456f8e70b85a6ebef9e8a	haskell-cabal	b5e68c01ecdfbaa48ee638388bdc1c7c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	fac7ea2deca456f8e70b85a6ebef9e8a	haskell-cabal	948a587ac6d4225d6ac96ddbd7c1c4e3	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=c3b1e995e1a73caed865176b83d1a147

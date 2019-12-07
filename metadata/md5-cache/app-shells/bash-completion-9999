@@ -1,6 +1,6 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=install postinst prepare setup test unpack
-DEPEND=test? ( >=app-shells/bash-4.3_p30-r1:0 sys-apps/miscfiles !app-eselect/eselect-bashcomp !!net-fs/mc app-misc/dtach dev-util/dejagnu dev-tcltk/tcllib || ( ( dev-lang/python:3.7 dev-python/pexpect[python_targets_python3_7(-),python_single_target_python3_7(+)] dev-python/pytest[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-python/pexpect[python_targets_python3_6(-),python_single_target_python3_6(+)] dev-python/pytest[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ( dev-lang/python:3.5 dev-python/pexpect[python_targets_python3_5(-),python_single_target_python3_5(+)] dev-python/pytest[python_targets_python3_5(-),python_single_target_python3_5(+)] ) ) )
+DEPEND=test? ( >=app-shells/bash-4.3_p30-r1:0 sys-apps/miscfiles !!net-fs/mc app-misc/dtach dev-util/dejagnu dev-tcltk/tcllib || ( ( dev-lang/python:3.7 dev-python/pexpect[python_targets_python3_7(-),python_single_target_python3_7(+)] dev-python/pytest[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-python/pexpect[python_targets_python3_6(-),python_single_target_python3_6(+)] dev-python/pytest[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ( dev-lang/python:3.5 dev-python/pexpect[python_targets_python3_5(-),python_single_target_python3_5(+)] dev-python/pytest[python_targets_python3_5(-),python_single_target_python3_5(+)] ) ) )
 DESCRIPTION=Programmable Completion for bash
 EAPI=7
 HOMEPAGE=https://github.com/scop/bash-completion
@@ -8,8 +8,8 @@ IUSE=+eselect test
 LICENSE=GPL-2+
 PDEPEND=>=app-shells/gentoo-bashcomp-20140911
 PROPERTIES=live
-RDEPEND=>=app-shells/bash-4.3_p30-r1:0 sys-apps/miscfiles !app-eselect/eselect-bashcomp !!net-fs/mc
+RDEPEND=>=app-shells/bash-4.3_p30-r1:0 sys-apps/miscfiles !!net-fs/mc
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	02ef27875ec5afcc2202b9d062d57f07	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=a3794abe1047bcf7f8e107ccdb7d10e5
+_md5_=8bc7e4a688e4e2325ca25c27623ac23f

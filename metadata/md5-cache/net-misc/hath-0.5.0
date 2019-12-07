@@ -9,5 +9,5 @@ LICENSE=AGPL-3
 RDEPEND=>=dev-haskell/cmdargs-0.10:= >=dev-haskell/split-0.2:= >=dev-haskell/tasty-0.8:= >=dev-haskell/tasty-hunit-0.8:= >=dev-haskell/tasty-quickcheck-0.8.1:= >=dev-lang/ghc-8.0.1:=
 SLOT=0
 SRC_URI=https://hackage.haskell.org/package/hath-0.5.0/hath-0.5.0.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	fac7ea2deca456f8e70b85a6ebef9e8a	haskell-cabal	b5e68c01ecdfbaa48ee638388bdc1c7c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	fac7ea2deca456f8e70b85a6ebef9e8a	haskell-cabal	948a587ac6d4225d6ac96ddbd7c1c4e3	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=6861ac8f65af00bfa5a5abe53414d1a6

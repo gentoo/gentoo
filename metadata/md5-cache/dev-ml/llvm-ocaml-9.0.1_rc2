@@ -1,15 +1,15 @@
-BDEPEND=dev-lang/perl dev-ml/findlib test? ( dev-ml/ounit ) !!<dev-python/configparser-3.3.0.2 || ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/ninja >=dev-util/cmake-3.9.6
+BDEPEND=dev-lang/perl dev-ml/findlib test? ( dev-ml/ounit ) || ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/ninja >=dev-util/cmake-3.9.6
 DEFINED_PHASES=compile configure install prepare setup test unpack
-DEPEND=>=dev-lang/ocaml-4.00.0:0= dev-ml/ocaml-ctypes:= ~sys-devel/llvm-9.0.1_rc1:=[llvm_targets_AArch64?,llvm_targets_AMDGPU?,llvm_targets_ARM?,llvm_targets_BPF?,llvm_targets_Hexagon?,llvm_targets_Lanai?,llvm_targets_Mips?,llvm_targets_MSP430?,llvm_targets_NVPTX?,llvm_targets_PowerPC?,llvm_targets_RISCV?,llvm_targets_Sparc?,llvm_targets_SystemZ?,llvm_targets_WebAssembly?,llvm_targets_X86?,llvm_targets_XCore?,debug?] !sys-devel/llvm[ocaml(-)]
+DEPEND=>=dev-lang/ocaml-4.00.0:0= dev-ml/ocaml-ctypes:= ~sys-devel/llvm-9.0.1_rc2:=[llvm_targets_AArch64?,llvm_targets_AMDGPU?,llvm_targets_ARM?,llvm_targets_BPF?,llvm_targets_Hexagon?,llvm_targets_Lanai?,llvm_targets_Mips?,llvm_targets_MSP430?,llvm_targets_NVPTX?,llvm_targets_PowerPC?,llvm_targets_RISCV?,llvm_targets_Sparc?,llvm_targets_SystemZ?,llvm_targets_WebAssembly?,llvm_targets_X86?,llvm_targets_XCore?,debug?] !sys-devel/llvm[ocaml(-)]
 DESCRIPTION=OCaml bindings for LLVM
 EAPI=7
 HOMEPAGE=https://llvm.org/
 IUSE=debug test llvm_targets_AArch64 llvm_targets_AMDGPU llvm_targets_ARM llvm_targets_BPF llvm_targets_Hexagon llvm_targets_Lanai llvm_targets_Mips llvm_targets_MSP430 llvm_targets_NVPTX llvm_targets_PowerPC llvm_targets_RISCV llvm_targets_Sparc llvm_targets_SystemZ llvm_targets_WebAssembly llvm_targets_X86 llvm_targets_XCore
 LICENSE=Apache-2.0-with-LLVM-exceptions UoI-NCSA
-RDEPEND=>=dev-lang/ocaml-4.00.0:0= dev-ml/ocaml-ctypes:= ~sys-devel/llvm-9.0.1_rc1:=[llvm_targets_AArch64?,llvm_targets_AMDGPU?,llvm_targets_ARM?,llvm_targets_BPF?,llvm_targets_Hexagon?,llvm_targets_Lanai?,llvm_targets_Mips?,llvm_targets_MSP430?,llvm_targets_NVPTX?,llvm_targets_PowerPC?,llvm_targets_RISCV?,llvm_targets_Sparc?,llvm_targets_SystemZ?,llvm_targets_WebAssembly?,llvm_targets_X86?,llvm_targets_XCore?,debug?] !sys-devel/llvm[ocaml(-)]
+RDEPEND=>=dev-lang/ocaml-4.00.0:0= dev-ml/ocaml-ctypes:= ~sys-devel/llvm-9.0.1_rc2:=[llvm_targets_AArch64?,llvm_targets_AMDGPU?,llvm_targets_ARM?,llvm_targets_BPF?,llvm_targets_Hexagon?,llvm_targets_Lanai?,llvm_targets_Mips?,llvm_targets_MSP430?,llvm_targets_NVPTX?,llvm_targets_PowerPC?,llvm_targets_RISCV?,llvm_targets_Sparc?,llvm_targets_SystemZ?,llvm_targets_WebAssembly?,llvm_targets_X86?,llvm_targets_XCore?,debug?] !sys-devel/llvm[ocaml(-)]
 REQUIRED_USE=|| ( llvm_targets_AArch64 llvm_targets_AMDGPU llvm_targets_ARM llvm_targets_BPF llvm_targets_Hexagon llvm_targets_Lanai llvm_targets_Mips llvm_targets_MSP430 llvm_targets_NVPTX llvm_targets_PowerPC llvm_targets_RISCV llvm_targets_Sparc llvm_targets_SystemZ llvm_targets_WebAssembly llvm_targets_X86 llvm_targets_XCore )
 RESTRICT=!test? ( test )
-SLOT=0/9.0.1_rc1
-SRC_URI=https://github.com/llvm/llvm-project/archive/llvmorg-9.0.1-rc1.tar.gz
+SLOT=0/9.0.1_rc2
+SRC_URI=https://github.com/llvm/llvm-project/archive/llvmorg-9.0.1-rc2.tar.gz
 _eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	llvm	5dbc14df2333105b7c006124ead9bf3f	llvm.org	c036a57f84a13faca636ccb19e3f35d3	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	02ef27875ec5afcc2202b9d062d57f07	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=76a5ee2c8378300914f3d434e5c1b754
+_md5_=13c964fa6b762492d7685f6cad3bcf30
