@@ -151,7 +151,7 @@ dev-python/sudsds
 dev-python/webpy
 dev-python/slowaes
 dev-python/beanstalkc
-dev-python/PySensors
+=dev-python/PySensors-0.0.3
 dev-python/RecSQL
 dev-python/pyclamav
 dev-python/pycdf
