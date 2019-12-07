@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit flag-o-matic
 
 DESCRIPTION="Generic C++ template library for sparse, dense and skyline matrices"
-SRC_URI="https://download.gna.org/getfem/stable/${P}.tar.gz"
-HOMEPAGE="https://www-gmm.insa-toulouse.fr/getfem/"
+SRC_URI="mirror://nongnu/getfem/stable/${P}.tar.gz"
+HOMEPAGE="http://getfem.org/gmm.html"
 
 LICENSE="|| ( LGPL-3 LGPL-3-with-linking-exception )"
 SLOT="0"
