@@ -7629,7 +7629,7 @@ dev-python/datashape 0.5.4: Language defining a data description protocol
 dev-python/dbus-python 1.2.4 1.2.12 1.2.14: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.18.2: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
-dev-python/ddt 1.1.1: A library to multiply test cases
+dev-python/ddt 1.1.1 1.2.2: A library to multiply test cases
 dev-python/debtcollector 1.21.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.3.2 4.4.0 4.4.1: Simplifies the usage of decorators for the average programmer
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
