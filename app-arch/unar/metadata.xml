@@ -5,6 +5,6 @@
 		<email>hanno@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">theunarchiver</remote-id>
+		<remote-id type="github">MacPaw/XADMaster</remote-id>
 	</upstream>
 </pkgmetadata>
