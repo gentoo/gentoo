@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-07)
+# dev-python/flask-cors is PMASKED.
+media-sound/beets webserver
+
 # Michał Górny <mgorny@gentoo.org> (2019-12-04)
 # Python 2.7 only packages optionally needing dev-python/ipython.
 app-misc/gourmet ipython
