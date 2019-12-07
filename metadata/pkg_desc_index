@@ -1699,7 +1699,7 @@ app-i18n/libchewing 0.5.1 9999: Intelligent phonetic (Zhuyin/Bopomofo) input met
 app-i18n/libhangul 0.1.0: Library for hangul input method logic, hanja dictionary
 app-i18n/libkkc 0.3.6_pre20190809104047 9999: Japanese Kana Kanji conversion input method library
 app-i18n/libpinyin 2.3.0 9999: Libraries for handling of Hanyu Pinyin and Zhuyin Fuhao
-app-i18n/librime 1.2.9 1.3.1 1.4.0 1.5.3: RIME (Rime Input Method Engine) core library
+app-i18n/librime 1.4.0 1.5.3: RIME (Rime Input Method Engine) core library
 app-i18n/libskk 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
 app-i18n/libtabe 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
 app-i18n/man-pages-da 0.1.2: A somewhat comprehensive collection of Danish Linux man pages
@@ -14468,7 +14468,7 @@ net-analyzer/ndoutils 2.1.3-r2: Nagios addon to store Nagios data in a MySQL dat
 net-analyzer/ndsad 1.33-r1 1.33-r2: Cisco netflow probe from libpcap, ULOG, tee/divert sources
 net-analyzer/nessus-agent-bin 7.4.2: A remote security scanner for Linux - agent component
 net-analyzer/nessus-bin 8.5.2: A remote security scanner for Linux
-net-analyzer/net-snmp 5.8-r1 5.8-r2 5.8-r4 99999999: Software for generating and retrieving SNMP data
+net-analyzer/net-snmp 5.8-r1 5.8-r2 5.8-r5 5.8.1_pre1 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
 net-analyzer/netdata 1.18.1-r1 1.19.0-r1 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.3_beta6-r3: An active/passive address reconnaissance tool
