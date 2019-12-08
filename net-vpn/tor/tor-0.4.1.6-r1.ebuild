@@ -75,7 +75,7 @@ src_install() {
 	readme.gentoo_create_doc
 
 	newconfd "${FILESDIR}"/tor.confd tor
-	newinitd "${FILESDIR}"/tor.initd-r8 tor
+	newinitd "${FILESDIR}"/tor.initd-r9 tor
 	systemd_dounit contrib/dist/tor.service
 
 	keepdir /var/lib/tor
@@ -84,5 +84,5 @@ src_install() {
 	fowners tor:tor /var/lib/tor
 
 	insinto /etc/tor/
-	newins "${FILESDIR}"/torrc-r1 torrc
+	newins "${FILESDIR}"/torrc-r2 torrc
 }
