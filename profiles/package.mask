@@ -543,14 +543,6 @@ dev-tex/bera
 dev-tex/ppower4
 dev-tex/prosper
 
-# Michał Górny <mgorny@gentoo.org> (2019-11-09)
-# Remnants of 'Cluster Suite', with no external revdeps.  dlm-lib
-# does not build with modern kernels anymore.  EAPI 0.
-# Removal in 30 days.  Bug #533122.
-sys-cluster/cman-lib
-sys-cluster/dlm
-sys-cluster/dlm-lib
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
