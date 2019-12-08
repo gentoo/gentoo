@@ -58,12 +58,6 @@ PDEPEND="
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
-PATCHES=(
-	# fix build with gcc-9.0.0
-	# https://bugs.llvm.org/show_bug.cgi?id=40547
-	"${FILESDIR}"/9.0.0/0002-Initialize-all-fields-in-ABIArgInfo.patch
-)
-
 # Multilib notes:
 # 1. ABI_* flags control ABIs libclang* is built for only.
 # 2. clang is always capable of compiling code for all ABIs for enabled
