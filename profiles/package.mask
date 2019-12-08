@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-12-08)
+# Not touched by maintainer since mid-2018.  Fails to build with gcc-9.
+# Requires llvm:6 (which is being removed).  Pending version bump.
+# Removal in 30 days.  Bug #686162.
+sys-devel/byfl
+
 # David Seifert <soap@gentoo.org> (2019-12-08)
 # No revdeps, py2 only (the py3 targets don't work properly), last
 # release in 2015. Use sci-mathematics/pymc3 as modern replacement.
@@ -90,10 +96,6 @@ x11-misc/calise
 # Fails to build against dev-libs/boost-1.71.0, depends on py27.
 # Bug 624222, removal in 30 days.
 sci-astronomy/casacore
-
-# Fabian Groffen <grobian@gentoo.org> (2019-12-07)
-# doesn't quite work well, needs fixing
->=app-admin/diamond-4.0.515.20180315
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-05)
 # Last maintainer activity in 2016.  Does not build for quite some time
