@@ -604,13 +604,6 @@ dev-libs/mpfr:1
 # Masked for removal in a year.
 dev-libs/gmp:3
 
-# Nick Sarnie <sarnex@gentoo.org> (2019-10-14)
-# No longer updated or supported by the Wine project
-# wine-any has no value without wine-d3d9
-# Please use app-emulation/gallium-nine-standalone instead
-# Removal in 30 days
-app-emulation/wine-any
-
 # Mike Gilbert <floppym@gentoo.org> (2019-10-11)
 # Inactive upstream for many years.
 # Several open bugs.
