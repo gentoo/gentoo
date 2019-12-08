@@ -22,7 +22,7 @@ SRC_URI="
 	https://api.github.com/repos/JuliaLang/utf8proc/tarball/${MY_UTF8PROC_V} -> ${PN}-utf8proc-${MY_UTF8PROC_V}.tar.gz
 	https://api.github.com/repos/vtjnash/libwhich/tarball/${MY_LIBWHICH_V} -> ${PN}-libwhich-${MY_LIBWHICH_V}.tar.gz
 	http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/dSFMT-src-${MY_DSFMT_V}.tar.gz -> ${PN}-dsfmt-${MY_DSFMT_V}.tar.gz
-	http://releases.llvm.org/${MY_LLVM}/llvm-${MY_LLVM}.src.tar.xz -> ${PN}-llvm-${MY_LLVM}.src.tar.xz
+	http://releases.llvm.org/${MY_LLVM}/llvm-${MY_LLVM}.src.tar.xz
 "
 
 LICENSE="MIT"
