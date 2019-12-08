@@ -18,7 +18,7 @@ REQUIRED_USE="
 	test? ( wayland )"
 RESTRICT="!test? ( test )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 # libXi-1.7.4 or newer needed per:
 # https://bugzilla.gnome.org/show_bug.cgi?id=738944 - https://gitlab.gnome.org/GNOME/mutter/merge_requests/766

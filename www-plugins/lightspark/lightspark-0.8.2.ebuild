@@ -1,19 +1,19 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit cmake-utils git-r3 gnome2-utils nsplugins toolchain-funcs xdg-utils
+EAPI=7
+inherit cmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="High performance flash player"
 HOMEPAGE="http://lightspark.github.io/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/lightspark/lightspark"
+SRC_URI="https://github.com/lightspark/lightspark/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse2 curl ffmpeg gles libav nsplugin ppapi profile rtmp"
 
+# Note: no LLVM since it's broken upstream
 RDEPEND="app-arch/xz-utils:0=
 	dev-cpp/glibmm:2=
 	>=dev-libs/boost-1.42:0=
@@ -24,7 +24,6 @@ RDEPEND="app-arch/xz-utils:0=
 	media-libs/libpng:0=
 	media-libs/libsdl2:0=
 	media-libs/sdl2-mixer:0=
-	>=sys-devel/llvm-3.4:=
 	sys-libs/zlib:0=
 	x11-libs/cairo:0=
 	x11-libs/libX11:0=
@@ -32,7 +31,7 @@ RDEPEND="app-arch/xz-utils:0=
 	virtual/jpeg:0=
 	curl? ( net-misc/curl:0= )
 	ffmpeg? (
-		libav? ( media-video/libav:0= )
+		libav? ( <media-video/libav-13_pre:0= )
 		!libav? ( media-video/ffmpeg:0= )
 	)
 	gles? ( media-libs/mesa:0=[gles2] )
@@ -72,17 +71,18 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	use nsplugin && inst_plugin /usr/$(get_libdir)/${PN}/plugins/liblightsparkplugin.so
+	if use nsplugin; then
+		# copied from nsplugins.eclass, that's broken in EAPI 7
+		dodir /usr/$(get_libdir)/nsbrowser/plugins
+		dosym ../../lightspark/plugins/liblightsparkplugin.so \
+			/usr/$(get_libdir)/nsbrowser/plugins/liblightsparkplugin.so
+	fi
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 
-	if use nsplugin && ! has_version www-plugins/gnash; then
-		elog "Lightspark now supports gnash fallback for its browser plugin."
-		elog "Install www-plugins/gnash to take advantage of it."
-	fi
 	if use nsplugin && has_version "www-plugins/gnash[nsplugin]"; then
 		elog "Having two plugins installed for the same MIME type may confuse"
 		elog "Mozilla based browsers. It is recommended to disable the nsplugin"
@@ -92,6 +92,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }

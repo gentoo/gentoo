@@ -24,10 +24,6 @@ php_targets_php7-0
 # d3d9 only works on amd64/x86.
 d3d9
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-11-04)
-# Unkeyworded on most arches, unmasked in supported arch profiles.
-audacious
-
 # CURL_SSL=winssl is for prefix/windows/winnt only
 curl_ssl_winssl
 

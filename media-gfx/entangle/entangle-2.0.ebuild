@@ -21,7 +21,7 @@ DEPEND="
 	>=dev-libs/glib-2.36:2
 	>=dev-libs/gobject-introspection-1.54.0
 	dev-libs/libgudev:=
-	>=dev-libs/libpeas-1.2.0[gtk,${PYTHON_USEDEP}]
+	>=dev-libs/libpeas-1.2.0[gtk,${PYTHON_SINGLE_USEDEP}]
 	>=media-libs/gexiv2-0.10[introspection]
 	>=media-libs/libgphoto2-2.5.0:=
 	media-libs/gstreamer:1.0

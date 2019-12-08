@@ -80,10 +80,6 @@ sys-devel/clang-runtime crt
 # Needs dev-ruby/asciidoctor which has a lot of unstable deps
 net-analyzer/wireshark doc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-29)
-# Depends on unstable media-libs/libaom
-media-video/vlc aom
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-21)
 # Depends on lots of unstable dependencies
 dev-python/s3fs test
@@ -119,6 +115,10 @@ app-backup/backup-manager s3
 # Brian Evans <grknight@gentoo.org (2017-11-06)
 # Requires stable phpunit
 dev-php/PEAR-Text_Password test
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-11-04)
+# Requires audacious, which is masked. Bug 632513
+media-libs/freeverb3 audacious jack
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-10-22)
 # Requires unmaintained unstable dependency net-libs/gloox.

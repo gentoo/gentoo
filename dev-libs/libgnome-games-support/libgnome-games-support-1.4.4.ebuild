@@ -10,7 +10,7 @@ HOMEPAGE="https://git.gnome.org/browse/libgnome-games-support/"
 
 LICENSE="LGPL-3+"
 SLOT="1/3"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 RDEPEND="

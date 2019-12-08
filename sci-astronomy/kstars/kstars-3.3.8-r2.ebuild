@@ -4,10 +4,9 @@
 EAPI=7
 
 ECM_HANDBOOK="forceoptional"
-PYTHON_COMPAT=( python2_7 )
 KFMIN=5.60.0
 QTMIN=5.12.3
-inherit ecm kde.org python-single-r1
+inherit ecm kde.org
 
 DESCRIPTION="Desktop Planetarium"
 HOMEPAGE="https://kde.org/applications/education/org.kde.kstars
@@ -18,7 +17,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="GPL-2" # TODO CHECK
+LICENSE="GPL-2+ GPL-3+"
 SLOT="5"
 IUSE="fits indi +password raw wcs"
 
@@ -68,7 +67,6 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 "
 RDEPEND="${COMMON_DEPEND}
-	${PYTHON_DEPS}
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
 	>=dev-qt/qtpositioning-${QTMIN}:5
 	>=dev-qt/qtquickcontrols-${QTMIN}:5

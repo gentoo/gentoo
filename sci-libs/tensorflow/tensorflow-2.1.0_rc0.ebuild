@@ -30,6 +30,7 @@ bazel_external_uris="
 	https://github.com/bazelbuild/bazel-skylib/releases/download/0.8.0/bazel-skylib.0.8.0.tar.gz
 	https://github.com/bazelbuild/bazel-skylib/releases/download/0.9.0/bazel_skylib-0.9.0.tar.gz
 	https://github.com/bazelbuild/bazel-toolchains/archive/92dd8a7a518a2fb7ba992d47c8b38299fe0be825.tar.gz -> bazel-toolchains-92dd8a7a518a2fb7ba992d47c8b38299fe0be825.tar.gz
+	https://github.com/bazelbuild/rules_cc/archive/0d5f3f2768c6ca2faca0079a997a97ce22997a0c.zip -> bazelbuild-rules_cc-0d5f3f2768c6ca2faca0079a997a97ce22997a0c.zip
 	https://github.com/bazelbuild/rules_closure/archive/308b05b2419edb5c8ee0471b67a40403df940149.tar.gz -> bazelbuild-rules_closure-308b05b2419edb5c8ee0471b67a40403df940149.tar.gz
 	https://github.com/bazelbuild/rules_docker/releases/download/v0.10.0/rules_docker-v0.10.0.tar.gz -> bazelbuild-rules_docker-v0.10.0.tar.gz
 	https://github.com/bazelbuild/rules_swift/releases/download/0.12.1/rules_swift.0.12.1.tar.gz -> bazelbuild-rules_swift.0.12.1.tar.gz
@@ -57,8 +58,9 @@ RDEPEND="
 	app-arch/snappy
 	dev-db/lmdb
 	dev-db/sqlite
+	dev-libs/double-conversion
 	dev-libs/icu
-	>=dev-libs/jsoncpp-1.9
+	~dev-libs/jsoncpp-1.9.1
 	dev-libs/libpcre
 	dev-libs/nsync
 	dev-libs/openssl:0=
@@ -109,9 +111,8 @@ BDEPEND="
 	dev-java/java-config
 	dev-lang/swig
 	|| (
-		=dev-util/bazel-0.24*
-		=dev-util/bazel-0.26*
 		=dev-util/bazel-0.27*
+		=dev-util/bazel-0.29*
 	)
 	cuda? (
 		>=dev-util/nvidia-cuda-toolkit-9.1[profiler]
@@ -216,6 +217,18 @@ src_configure() {
 			export TF_CUDNN_VERSION="$(cuda_cudnn_version)"
 			einfo "Setting CUDA version: $TF_CUDA_VERSION"
 			einfo "Setting CUDNN version: $TF_CUDNN_VERSION"
+
+			if [[ -z "$TF_CUDA_COMPUTE_CAPABILITIES" ]]; then
+				ewarn "WARNING: Tensorflow is being built with its default CUDA compute capabilities: 3.5 and 7.0."
+				ewarn "These may not be optimal for your GPU."
+				ewarn ""
+				ewarn "To configure Tensorflow with the CUDA compute capability that is optimal for your GPU,"
+				ewarn "set TF_CUDA_COMPUTE_CAPABILITIES in your make.conf, and re-emerge tensorflow."
+				ewarn "For example, to use CUDA capability 7.5 & 3.5, add: TF_CUDA_COMPUTE_CAPABILITIES=7.5,3.5"
+				ewarn ""
+				ewarn "You can look up your GPU's CUDA compute capability at https://developer.nvidia.com/cuda-gpus"
+				ewarn "or by running /opt/cuda/extras/demo_suite/deviceQuery | grep 'CUDA Capability'"
+			fi
 		fi
 
 		# com_googlesource_code_re2 weird branch using absl, doesnt work with released re2

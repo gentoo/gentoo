@@ -4,7 +4,7 @@
 EAPI=7
 
 ESVN_REPO_URI="https://svn.code.sf.net/p/kuroo/code/kuroo4/trunk"
-inherit cmake-utils subversion xdg-utils
+inherit ecm subversion
 
 DESCRIPTION="Graphical Portage frontend based on KDE Frameworks"
 HOMEPAGE="https://sourceforge.net/projects/kuroo/"
@@ -14,12 +14,8 @@ KEYWORDS=""
 SLOT="0"
 IUSE=""
 
-BDEPEND="
-	kde-frameworks/extra-cmake-modules:5
-"
 DEPEND="
 	dev-db/sqlite:3
-	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	kde-frameworks/kauth:5
@@ -48,11 +44,5 @@ pkg_postinst() {
 		elog "portage's summary.log size reasonable to view in the history page."
 	fi
 
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	ecm_pkg_postinst
 }

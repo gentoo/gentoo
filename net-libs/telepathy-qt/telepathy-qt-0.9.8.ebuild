@@ -46,6 +46,7 @@ BDEPEND="${PYTHON_DEPS}
 RESTRICT="!test? ( test )"
 
 python_check_deps() {
+	use test || return 0
 	has_version "dev-python/dbus-python[${PYTHON_USEDEP}]"
 }
 

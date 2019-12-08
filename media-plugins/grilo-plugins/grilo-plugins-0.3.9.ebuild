@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Grilo"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="daap chromaprint flickr freebox gnome-online-accounts lua test thetvdb tracker upnp-av +youtube"
 
 # GOA is only optionally used by flickr and lua-factory plugins (checked at v0.3.8)

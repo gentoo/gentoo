@@ -27,10 +27,13 @@ DEPEND="
 	libressl? ( dev-libs/libressl:0= )
 	lzma? ( app-arch/xz-utils )
 	scrypt? ( app-crypt/libscrypt )
-	seccomp? ( sys-libs/libseccomp )
+	seccomp? ( >=sys-libs/libseccomp-2.4.1 )
 	systemd? ( sys-apps/systemd )
 	zstd? ( app-arch/zstd )"
-RDEPEND="${DEPEND}
+RDEPEND="
+	acct-user/tor
+	acct-group/tor
+	${DEPEND}
 	selinux? ( sec-policy/selinux-tor )"
 
 PATCHES=(
@@ -41,11 +44,6 @@ PATCHES=(
 DOCS=()
 
 RESTRICT="!test? ( test )"
-
-pkg_setup() {
-	enewgroup tor
-	enewuser tor -1 -1 /var/lib/tor tor
-}
 
 src_configure() {
 	use doc && DOCS+=( README ChangeLog ReleaseNotes doc/HACKING )
@@ -77,7 +75,7 @@ src_install() {
 	readme.gentoo_create_doc
 
 	newconfd "${FILESDIR}"/tor.confd tor
-	newinitd "${FILESDIR}"/tor.initd-r8 tor
+	newinitd "${FILESDIR}"/tor.initd-r9 tor
 	systemd_dounit contrib/dist/tor.service
 
 	keepdir /var/lib/tor
@@ -86,6 +84,5 @@ src_install() {
 	fowners tor:tor /var/lib/tor
 
 	insinto /etc/tor/
-	newins "${FILESDIR}"/torrc-r1 torrc
-
+	newins "${FILESDIR}"/torrc-r2 torrc
 }
