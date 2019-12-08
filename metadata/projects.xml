@@ -3698,6 +3698,10 @@
       <name>Pacho Ramos</name>
       <role>Member</role>
     </member>
+    <member>
+      <email>soap@gentoo.org</email>
+      <name>David Seifert</name>
+    </member>
   </project>
   <project>
     <email>udev-bugs@gentoo.org</email>
