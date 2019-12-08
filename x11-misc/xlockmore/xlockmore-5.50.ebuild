@@ -5,8 +5,8 @@ EAPI=6
 inherit autotools eutils flag-o-matic pam
 
 DESCRIPTION="Just another screensaver application for X"
-HOMEPAGE="http://www.sillycycle.com/xlockmore.html"
-SRC_URI="http://www.sillycycle.com/xlock/${P}.tar.xz"
+HOMEPAGE="https://www.sillycycle.com/xlockmore.html"
+SRC_URI="https://www.sillycycle.com/xlock/${P}.tar.xz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
