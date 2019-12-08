@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit toolchain-funcs
 
-MY_RELEASEDATE="20191122"
+MY_RELEASEDATE="20191204"
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
 
