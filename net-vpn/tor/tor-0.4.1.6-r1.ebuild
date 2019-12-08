@@ -30,7 +30,10 @@ DEPEND="
 	seccomp? ( sys-libs/libseccomp )
 	systemd? ( sys-apps/systemd )
 	zstd? ( app-arch/zstd )"
-RDEPEND="${DEPEND}
+RDEPEND="
+	acct-user/tor
+	acct-group/tor
+	${DEPEND}
 	selinux? ( sec-policy/selinux-tor )"
 
 PATCHES=(
@@ -41,11 +44,6 @@ PATCHES=(
 DOCS=()
 
 RESTRICT="!test? ( test )"
-
-pkg_setup() {
-	enewgroup tor
-	enewuser tor -1 -1 /var/lib/tor tor
-}
 
 src_configure() {
 	use doc && DOCS+=( README ChangeLog ReleaseNotes doc/HACKING )
@@ -87,5 +85,4 @@ src_install() {
 
 	insinto /etc/tor/
 	newins "${FILESDIR}"/torrc-r1 torrc
-
 }
