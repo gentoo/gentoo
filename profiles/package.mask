@@ -32,6 +32,55 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only (the py3 targets don't work properly), last
+# release in 2015. Use sci-mathematics/pymc3 as modern replacement.
+# Removal in 30 days.
+sci-mathematics/pymc
+
+# David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only, upstream HOMEPAGE gone, last release in 2007.
+# Removal in 30 days.
+sci-mathematics/lybniz
+
+# David Seifert <soap@gentoo.org> (2019-12-08)
+# Yet another NIH machine learning package in python. Last release in
+# 2012, no revdeps, py2 only. Removal in 30 days.
+sci-mathematics/mlpy
+
+# David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only, last release in 2015, lots of QA issues.
+# Bug #343743, #347928, #451394, #547714, #623756, #697562.
+# Removal in 30 days.
+sci-mathematics/nusmv
+
+# David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only, last release in 2008. Removal in 30 days.
+sci-mathematics/p9m4
+
+# David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only, bump required and very involved and messy
+# buildsystem, tons of QA issues.
+# Bug #345233, #459640, #474782, #474784, #474788, #474790, #474792,
+# #620942, #631876, #671130. Removal in 30 days.
+sci-mathematics/Macaulay2
+
+# David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only, upstream dead, last release in 2011.
+# file collisions with sci-chemistry/tinker, bug #597702.
+# Removal in 30 days.
+sci-mathematics/snns
+
+# David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only, upstream HOMEPAGE gone.
+# Removal in 30 days.
+sci-mathematics/factmsieve
+
+# David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only, bump required and very involved buildsystem,
+# has QA issues, bug #598840. Removal in 30 days.
+sci-mathematics/xmds
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-12-07)
 # Runtime errors/segfaults, ancient, unmaintained, depends on py27.
 # Bug 590986, removal in 30 days.
