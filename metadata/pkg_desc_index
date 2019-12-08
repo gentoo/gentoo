@@ -5103,7 +5103,7 @@ dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
 dev-libs/pcc-libs 1.1.0 9999: pcc compiler support libs
 dev-libs/pcl 1.12-r1: Portable Coroutine Library
 dev-libs/pegtl 1.3.1-r1 2.0_pre1 2.0.0 2.1.4: header-only library for creating parsers according to Parsing Expression Grammar
-dev-libs/pigpio 67 68 70 71: A library for the Raspberry which allows control of the GPIOs
+dev-libs/pigpio 67 68 70 71 72: A library for the Raspberry which allows control of the GPIOs
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
 dev-libs/poco 1.9.0-r2: C++ libraries for building network-based applications
 dev-libs/popt 1.16-r2: Parse Options - Command line parser
@@ -8212,7 +8212,7 @@ dev-python/nose-exclude 0.4.1 0.5.0: Exclude specific directories from nosetests
 dev-python/nose-parameterized 0.5.0: Parameterized testing with any Python test framework
 dev-python/nose-show-skipped 0.1: A nose plugin to show skipped tests and their messages
 dev-python/nose-testconfig 0.9 0.10: Test Configuration plugin for nosetests
-dev-python/nose2 0.6.5 0.9.1-r1: Next generation unittest with plugins
+dev-python/nose2 0.9.1-r1: Next generation unittest with plugins
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r2: A python module to inject warning filters during nosetest
 dev-python/nosehtmloutput 0.0.5: Nose plugin to produce test results in html
@@ -8532,7 +8532,7 @@ dev-python/pylibmc 1.5.1-r1 1.6.1: Libmemcached wrapper written as a Python exte
 dev-python/pylibpcap 0.6.4-r1: Python interface to libpcap
 dev-python/pylint 1.6.5-r1 1.8.4 2.3.1: Python code static checker
 dev-python/pylzma 0.4.9: Python bindings for the LZMA compression library
-dev-python/pymad 0.6-r1: Python wrapper for libmad MP3 decoding in python
+dev-python/pymad 0.10: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdstat 0.4.2: Python library to parse Linux /proc/mdstat
 dev-python/pymediainfo 4.0 4.1: A wrapper around the mediainfo library
 dev-python/pymetar 0.21 1.1: Downloads and decodes to the weather report for a given station ID
@@ -11468,7 +11468,7 @@ games-fps/worldofpadman 1.6-r1: A cartoon style multiplayer first-person shooter
 games-fps/xonotic 0.8.2: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
 games-fps/yamagi-quake2 7.40 7.41: Quake 2 engine focused on single player
 games-kids/childsplay 0.90.2-r1: A suite of educational games for young children
-games-kids/gcompris 0.96: full featured educational application for children from 2 to 10
+games-kids/gcompris 0.96 0.97: Full featured educational application for children from 2 to 10
 games-kids/gmult 8.0-r1: Multiplication Puzzle emulates the multiplication game found in Emacs
 games-kids/lletters 0.1.95-r3: Game that helps young kids learn their letters and numbers
 games-kids/memonix 1.6-r1: Brain teasers, puzzle and memory games for kid's in one pack
@@ -12356,7 +12356,7 @@ kde-frameworks/networkmanager-qt 5.64.0: NetworkManager bindings for Qt
 kde-frameworks/oxygen-icons 5.64.0: Oxygen SVG icon theme
 kde-frameworks/plasma 5.64.0: Plasma framework
 kde-frameworks/prison 5.64.0: QRCode and data matrix barcode library
-kde-frameworks/purpose 5.64.0: Library for providing abstractions to get the developer's purposes fulfilled
+kde-frameworks/purpose 5.64.0 5.64.0-r2: Library for providing abstractions to get the developer's purposes fulfilled
 kde-frameworks/qqc2-desktop-style 5.64.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
 kde-frameworks/solid 5.64.0-r1: Provider for platform independent hardware discovery, abstraction and management
 kde-frameworks/sonnet 5.64.0: Framework for providing spell-checking through abstraction of popular backends
@@ -12391,9 +12391,9 @@ kde-misc/plasma-redshift-control 1.0.18-r1: Plasma 5 applet for controlling reds
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
 kde-misc/rsibreak 0.12.11: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1-r1: KDE image scanning application
-kde-misc/tellico 3.2.1 3.2.2: Collection manager based on KDE Frameworks
+kde-misc/tellico 3.2.1 3.2.3: Collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
-kde-misc/zanshin 0.5.0-r1 0.5.71: Getting things done application by KDE
+kde-misc/zanshin 0.5.71: Getting things done application by KDE
 kde-plasma/bluedevil 5.16.5 5.17.4: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.16.5 5.17.4: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.16.5 5.17.4: Breeze theme for GRUB
@@ -13106,7 +13106,7 @@ media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
 media-libs/freeglut 3.2.1: A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library
 media-libs/freeimage 3.18.0-r1: Image library supporting many formats
 media-libs/freetype 2.9.1-r3 2.9.1-r4 2.10.0 2.10.1 9999: A high-quality and portable font engine
-media-libs/freeverb3 3.1.2-r1 3.2.1-r1: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
+media-libs/freeverb3 3.2.1-r1: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/ganv 1.4.2: A GTK+ widget for interactive graph-like environments
@@ -13268,6 +13268,7 @@ media-libs/libofa 0.9.3-r2: Open Fingerprint Architecture
 media-libs/libogg 1.3.3 1.3.4: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
 media-libs/libopenglrecorder 0.1.0: Library for asynchronous OpenGL recording with audio
+media-libs/libopenmpt 0.4.10: Library to decode tracked music files (modules)
 media-libs/libopenraw 0.0.9 0.1.2 0.1.3: A decoding library for RAW image formats
 media-libs/libopenshot 0.2.2 0.2.4_pre20190609: Video editing library used by OpenShot
 media-libs/libopenshot-audio 0.1.4 0.1.9_pre20190502: Library for audio editing and playback used by OpenShot
@@ -13995,6 +13996,7 @@ media-sound/normalize 0.7.7-r1: Audio file volume normalizer
 media-sound/ogg2mp3 0.6.1: A perl script to convert Ogg Vorbis files to MP3 files
 media-sound/oggtst 0.0: A tool for calculating ogg-vorbis playing time
 media-sound/ogmtools 1.5-r2: Information, extraction or creation for OGG media streams
+media-sound/openmpt123 0.4.10: libopenmpt-based command line player for tracked music files (modules)
 media-sound/opus-tools 0.2: Royalty-free, highly versatile audio codec
 media-sound/orpheus 1.6-r3: Command line MP3 player
 media-sound/pamix 1.5 1.6 9999: A PulseAudio NCurses mixer
@@ -14328,7 +14330,7 @@ media-video/x264-encoder 0.0.20190214 0.0.20190903 9999: A free commandline enco
 media-video/xine-ui 0.99.10: Xine movie player
 media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
-media-video/yle-dl 20191022 20191022-r1: Download media files from Yle Areena
+media-video/yle-dl 20191022-r1: Download media files from Yle Areena
 net-analyzer/2ping 4.2 4.3: A bi-directional ping utility
 net-analyzer/alive 2.0.2: a periodic ping program
 net-analyzer/amap 5.4 5.4-r1: A network scanning tool for pentesters
@@ -14881,6 +14883,7 @@ net-irc/weechat 2.5-r1 2.6 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.4 1.7.5 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for freenet
+net-libs/accounts-qml 0.7: QML bindings for accounts-qt and signond
 net-libs/accounts-qt 1.15 1.16: Qt5 bindings for libaccounts-glib
 net-libs/aqbanking 5.7.8 5.8.2 5.99.44_beta: Generic Online Banking Interface
 net-libs/axtls 1.5.3 2.1.3 2.1.4 2.1.5: Embedded client/server TLSv1 SSL library and small HTTP(S) server
@@ -15062,7 +15065,7 @@ net-libs/socket_wrapper 1.1.6 1.1.7 1.1.9 1.2.1 1.2.3: A library passing all soc
 net-libs/sofia-sip 1.12.11: RFC3261 compliant SIP User-Agent library
 net-libs/srt 1.3.2 1.4.0 9999: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/stem 1.5.4 1.6.0 1.7.0 1.7.1: Stem is a Python controller library for Tor
-net-libs/telepathy-accounts-signon 2.0: Mission control plugin for Telepathy to provide IM accounts and authentication
+net-libs/telepathy-accounts-signon 2.0 2.1: Mission control plugin for Telepathy to provide IM accounts and authentication
 net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream to handle Call channels
 net-libs/telepathy-glib 0.24.1 0.24.1-r1: GLib bindings for the Telepathy D-Bus protocol
 net-libs/telepathy-logger-qt 17.08.0: Qt bindings for the Telepathy logger
@@ -15453,7 +15456,7 @@ net-misc/ssvnc 1.0.29-r2: VNC viewer that adds encryption security to VNC connec
 net-misc/stargazer 2.408-r1: Billing system for small home and office networks
 net-misc/streamlink 0.14.2-r1 1.0.0 1.1.1 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
-net-misc/stunnel 5.43 5.50-r1 5.51-r1 5.54 5.55 5.56: TLS/SSL - Port Wrapper
+net-misc/stunnel 5.50-r1 5.55 5.56: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.7 1.2.9 1.2.15: Open source implementation of the STUN protocol
 net-misc/suite3270 3.5_p10 3.5_p12 3.6_p4 3.6_p8: Complete 3270 access package
 net-misc/switzerland 0.1.0: Network Testing Tool
@@ -15691,7 +15694,7 @@ net-vpn/peervpn 0.044-r4: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.7.2 5.8.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.0.5 0.4.1.6 0.4.2.4_rc-r1: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.0.5 0.4.1.6-r1 0.4.2.4_rc-r1: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
@@ -15924,7 +15927,7 @@ sci-astronomy/gnuastro 0.3: GNU Astronomy Utilities
 sci-astronomy/healpix 3.30 3.31: Hierarchical Equal Area isoLatitude Pixelization of a sphere
 sci-astronomy/idlastro 20161220 99999999: Astronomical user routines for IDL
 sci-astronomy/kapteyn 2.3: Collection of python tools for astronomy
-sci-astronomy/kstars 3.2.3 3.3.8-r1: Desktop Planetarium
+sci-astronomy/kstars 3.2.3 3.3.8-r2: Desktop Planetarium
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
 sci-astronomy/montage 4.1 5.0: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
@@ -16557,7 +16560,7 @@ sci-libs/ta-lib 0.4.0: Technical Analysis Library for analyzing financial market
 sci-libs/tamu_anova 0.2-r1: ANOVA Extensions to the GNU Scientific Library
 sci-libs/taucs 2.2: C library of sparse linear solvers
 sci-libs/tensorflow 1.14.0-r2 1.15.0_rc0 2.0.0 2.1.0_rc0: Computation framework using data flow graphs for scalable machine learning
-sci-libs/tensorflow-estimator 1.14.0 1.15.0 2.0.0: A high-level TensorFlow API that greatly simplifies machine learning programming
+sci-libs/tensorflow-estimator 1.14.0 1.15.1 2.0.0: A high-level TensorFlow API that greatly simplifies machine learning programming
 sci-libs/tnt 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
 sci-libs/trilinos 12.14.1: Scientific library collection for large scale problems
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
@@ -17026,7 +17029,7 @@ sys-apps/busybox 1.30.1 1.31.1 9999: Utilities for rescue and embedded systems
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/ccs-tools 1.8.3_p20130214: TOMOYO Linux tools
-sys-apps/checkpolicy 2.8 2.9 3.0_rc2 9999: SELinux policy compiler
+sys-apps/checkpolicy 2.8 2.9 3.0_rc2 3.0 9999: SELinux policy compiler
 sys-apps/chname 1.1: Run a command with a new system hostname
 sys-apps/cinit 0.2.1: a fast, small and simple init with support for profiles
 sys-apps/ckbcomp 1.164: Compile an XKB keymap for loadkeys
@@ -17167,7 +17170,7 @@ sys-apps/man-pages 5.03 5.04: A somewhat comprehensive collection of Linux man p
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
 sys-apps/mawk 1.3.4_p20161120 1.3.4_p20171017-r1 1.3.4_p20190203: an (often faster than gawk) awk-interpreter
-sys-apps/mcstrans 2.8 2.9 3.0_rc2 9999: SELinux context translation to human readable names
+sys-apps/mcstrans 2.8 2.9 3.0_rc2 3.0 9999: SELinux context translation to human readable names
 sys-apps/memtest86 4.3.7-r2: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 5.01-r4: Memory tester based on memtest86
 sys-apps/memtester 4.3.0: userspace utility for testing the memory subsystem for faults
@@ -17211,7 +17214,7 @@ sys-apps/pkgcore 0.10.7 0.10.8 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
-sys-apps/policycoreutils 2.8-r1 2.9 3.0_rc2 9999: SELinux core utilities
+sys-apps/policycoreutils 2.8-r1 2.9 3.0_rc2 3.0 9999: SELinux core utilities
 sys-apps/portage 2.3.69 2.3.76-r1 2.3.79 2.3.81 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.6: Tool to query and modify process behavior
@@ -17228,7 +17231,7 @@ sys-apps/rename 1.3-r2: Easily rename files
 sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.57-r1: Script to rescan the SCSI bus without rebooting
 sys-apps/restartd 0.2.2-r1: A daemon for checking your running and not running processes
-sys-apps/restorecond 2.8 2.9 3.0_rc2 9999: Daemon to watch for creation and set default SELinux fcontexts
+sys-apps/restorecond 2.8 2.9 3.0_rc2 3.0 9999: Daemon to watch for creation and set default SELinux fcontexts
 sys-apps/ripgrep 11.0.1 11.0.2: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rkflashtool 6.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 5-r2 6.6-r1 6.7-r1 6.7-r2 6.8: Daemon to use hardware random number generators
@@ -17243,10 +17246,10 @@ sys-apps/s6-rc 0.3.0.0 0.4.0.0 0.4.0.1 0.4.1.0 0.5.0.0 0.5.1.1: Service manager 
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
 sys-apps/sandbox 2.12 2.13 2.14 2.15 2.17 2.18: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
-sys-apps/secilc 2.8 2.9 3.0_rc2 9999: SELinux Common Intermediate Language (CIL) Compiler
+sys-apps/secilc 2.8 2.9 3.0_rc2 3.0 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.5 4.7: Super-useful stream editor
-sys-apps/selinux-python 2.8-r1 2.9 3.0_rc2 9999: SELinux core utilities
-sys-apps/semodule-utils 2.8 2.9 3.0_rc2 9999: SELinux policy module utilities
+sys-apps/selinux-python 2.8-r1 2.9 3.0_rc2 3.0 9999: SELinux core utilities
+sys-apps/semodule-utils 2.8 2.9 3.0_rc2 3.0 9999: SELinux policy module utilities
 sys-apps/sensei-raw-ctl 0.0_pre20180729: SteelSeries Sensei Raw configuration tool
 sys-apps/servicelog 1.1.14: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
@@ -17302,7 +17305,7 @@ sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later ker
 sys-auth/authenticator 0.2.4 9999: Two-factor authentication code generator for GNOME
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0 1.2.1 9999: Framework for defining and tracking users, login sessions and seats
 sys-auth/docker_auth 1.3.1 1.4.0: Docker Registry 2 authentication server
-sys-auth/elogind 241.3 241.4: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 241.4: The systemd project's logind, extracted to a standalone package
 sys-auth/fingerprint-gui 1.09-r1: Use Fingerprint Devices with Linux
 sys-auth/fprintd 0.8.1 0.8.1-r1: D-Bus service to access fingerprint readers
 sys-auth/google-authenticator 1.05 1.06 1.07 9999: PAM Module for two step verification via mobile platform
@@ -17795,7 +17798,7 @@ sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.19: Developer documentation generated from the Linux kernel
 sys-kernel/linux-firmware 20190603 20190815 20190904 20190923 20191008 20191022 20191108 99999999: Linux firmware files
-sys-kernel/linux-headers 3.18 4.4 4.9 4.13 4.14-r1 4.15-r1 4.16 4.16-r2 4.17 4.18 4.19 4.20 5.0 5.0-r1 5.1 5.2 5.3 5.3-r1: Linux system headers
+sys-kernel/linux-headers 3.18 4.4 4.9 4.13 4.14-r1 4.15-r1 4.16 4.16-r2 4.17 4.18 4.19 4.20 5.0 5.0-r1 5.1 5.2 5.3 5.3-r1 5.4: Linux system headers
 sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel.org sources for MIPS-based machines
 sys-kernel/pf-sources 5.1_p7 5.2_p8 5.3_p8 5.4_p1 5.4_p2: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
@@ -17850,9 +17853,9 @@ sys-libs/libosinfo 1.2.0 1.3.0 1.4.0: GObject library for managing information a
 sys-libs/libraw1394 2.1.0-r1 2.1.1 2.1.2: library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 2.0.2: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
 sys-libs/libseccomp 2.4.0 2.4.1 2.4.2-r1: high level interface to Linux seccomp filter
-sys-libs/libselinux 2.8-r1 2.9 2.9-r1 3.0_rc2 9999: SELinux userland library
-sys-libs/libsemanage 2.8 2.9 3.0_rc2 9999: SELinux kernel and policy management library
-sys-libs/libsepol 2.8 2.9 3.0_rc2 9999: SELinux binary policy representation library
+sys-libs/libselinux 2.8-r1 2.9 2.9-r1 3.0_rc2 3.0 9999: SELinux userland library
+sys-libs/libsemanage 2.8 2.9 3.0_rc2 3.0 9999: SELinux kernel and policy management library
+sys-libs/libsepol 2.8 2.9 3.0_rc2 3.0 9999: SELinux binary policy representation library
 sys-libs/libservicelog 1.1.18: Provides a library for logging service-related events
 sys-libs/libsmbios 2.4.2 2.4.2-r1: Provide access to (SM)BIOS information
 sys-libs/libspe2 2.2.80_p95-r1 2.3.0_p135: A wrapper library to adapt the JSRE SPU usage model to SPUFS
@@ -18360,7 +18363,7 @@ www-plugins/browserpass 3.0.6 3.0.6-r1: WebExtension host binary for app-admin/p
 www-plugins/chrome-binary-plugins 78.0.3904.108 79.0.3945.74_beta 80.0.3983.2_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
-www-plugins/lightspark 0.8.1 9999: High performance flash player
+www-plugins/lightspark 0.8.1 0.8.2: High performance flash player
 www-plugins/passff 1.9: zx2c4 pass manager extension for Firefox
 www-plugins/passff-host 1.2.0-r1 1.2.1: Host app for the PassFF WebExtension
 www-plugins/pdfjs 1.9.426 2.1.266: A PDF reader in JavaScript
@@ -18898,7 +18901,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.28 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50 5.58 5.59 5.60_alpha0: Just another screensaver application for X
+x11-misc/xlockmore 5.50 5.58 5.59 5.61_alpha1: Just another screensaver application for X
 x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water

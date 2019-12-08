@@ -3,9 +3,9 @@ DESCRIPTION=Meta package for GNOME 3, merge this package to install
 EAPI=7
 HOMEPAGE=https://www.gnome.org/
 IUSE=accessibility +bluetooth +classic cups +extras
-KEYWORDS=~amd64
+KEYWORDS=amd64 ~arm64 ~ppc ~ppc64 x86
 LICENSE=metapackage
 PDEPEND=>=gnome-base/gvfs-1.40.1[udisks]
 RDEPEND=>=gnome-base/gnome-core-libs-3.32.2[cups?] >=gnome-base/gnome-core-apps-3.32.2[cups?,bluetooth?] >=gnome-base/gdm-3.32.0 >=x11-wm/mutter-3.32.2 >=gnome-base/gnome-shell-3.32.2[bluetooth?] >=media-fonts/cantarell-0.111 >=x11-themes/gnome-backgrounds-3.32.0 x11-themes/sound-theme-freedesktop accessibility? ( >=app-accessibility/at-spi2-atk-2.32.0 >=app-accessibility/at-spi2-core-2.32.1 >=app-accessibility/orca-3.32.0 >=gnome-extra/mousetweaks-3.32.0 ) classic? ( >=gnome-extra/gnome-shell-extensions-3.32.1 ) extras? ( >=gnome-base/gnome-extra-apps-3.32.2 )
 SLOT=2.0
-_md5_=ff2890101f133f8485e2a2e956c7f250
+_md5_=059dd1c9d5a43b899863d7b19752bd18
