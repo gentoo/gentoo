@@ -17953,7 +17953,7 @@ sys-process/parallel 20190822 20191022: A shell tool for executing jobs in paral
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment
-sys-process/procps 3.3.15-r1: standard informational utilities and process-handling tools
+sys-process/procps 3.3.15-r1 3.3.16: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
 sys-process/psmisc 23.1-r1 23.2-r2 23.3-r1: A set of tools that use the proc filesystem
 sys-process/rtirq 20180209: Modify realtime scheduling policy and priority of IRQ handlers
