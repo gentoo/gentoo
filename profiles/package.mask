@@ -97,10 +97,6 @@ x11-misc/calise
 # Bug 624222, removal in 30 days.
 sci-astronomy/casacore
 
-# Fabian Groffen <grobian@gentoo.org> (2019-12-07)
-# doesn't quite work well, needs fixing
->=app-admin/diamond-4.0.515.20180315
-
 # Michał Górny <mgorny@gentoo.org> (2019-12-05)
 # Last maintainer activity in 2016.  Does not build for quite some time
 # already.  Needs a version bump, at the very least.
