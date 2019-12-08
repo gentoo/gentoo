@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
