@@ -536,13 +536,6 @@ dev-dotnet/gsf-sharp
 # Removal in 30 days.  Bug #618464.
 sys-cluster/osc-mpiexec
 
-# Aaron Bauman <bman@gentoo.org> (2019-11-09)
-# EAPI=0, source archives are crazy
-# Removal in 30 days
-dev-tex/bera
-dev-tex/ppower4
-dev-tex/prosper
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
