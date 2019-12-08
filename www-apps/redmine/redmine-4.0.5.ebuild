@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24"
-inherit eutils depend.apache ruby-ng user
+
+USE_RUBY="ruby24"
+inherit eutils depend.apache ruby-ng
 
 DESCRIPTION="Flexible project management web application using the Ruby on Rails framework"
 HOMEPAGE="https://www.redmine.org/"
@@ -15,41 +16,33 @@ SLOT="0"
 IUSE="imagemagick fastcgi ldap markdown mysql passenger postgres sqlite"
 
 ruby_add_rdepend "
-	dev-ruby/actionpack-action_caching
-	dev-ruby/actionpack-xml_parser:0
-	>=dev-ruby/builder-3.2.2:3.2
-	>=dev-ruby/coderay-1.1.0
+	imagemagick? ( dev-ruby/rmagick:0 )
+	ldap? ( dev-ruby/ruby-net-ldap )
+	markdown? ( >=dev-ruby/redcarpet-3.4.0 )
+	mysql? ( >=dev-ruby/mysql2-0.5.0:0.5 )
+	postgres? ( >=dev-ruby/pg-1.1.4:1 )
+	sqlite? ( >=dev-ruby/sqlite3-1.3.12 )
+	dev-ruby/actionpack-xml_parser:*
 	dev-ruby/i18n:0.7
-	>=dev-ruby/jquery-rails-3.1.4:3
-	dev-ruby/loofah
-	dev-ruby/mime-types:3
+	>=dev-ruby/mail-2.7.1
 	dev-ruby/mimemagic
-	>=dev-ruby/nokogiri-1.6.8
-	dev-ruby/protected_attributes
-	>=dev-ruby/rack-openid-0.2.1
-	>=dev-ruby/rails-4.2.5.2:4.2
-	>=dev-ruby/rails-html-sanitizer-1.0.3
+	>=dev-ruby/mini_mime-1.0.1
+	>=dev-ruby/nokogiri-1.10.0
+	dev-ruby/rails:5.2
+	>=dev-ruby/rbpdf-1.19.6
 	dev-ruby/request_store:1.0.5
-	>=dev-ruby/roadie-rails-1.1.0
-	>=dev-ruby/rbpdf-1.19.2
-	>=dev-ruby/ruby-openid-2.3.0
-	dev-ruby/rubygems
-	fastcgi? ( dev-ruby/fcgi )
-	imagemagick? ( >=dev-ruby/rmagick-2.14.0 )
-	ldap? ( >=dev-ruby/ruby-net-ldap-0.12.0 )
-	markdown? ( >=dev-ruby/redcarpet-3.3.2 )
-	mysql? ( dev-ruby/mysql2:0.4 )
-	passenger? ( www-apache/passenger )
-	postgres? ( dev-ruby/pg:0 )
-	sqlite? ( dev-ruby/sqlite3 )
-	"
+	>=dev-ruby/roadie-rails-1.3.0
+	>=dev-ruby/rouge-3.6.0
+	>=dev-ruby/ruby-openid-2.9.2
+	dev-ruby/rack-openid
+"
+
+RDEPEND="
+	acct-group/redmine
+	acct-user/redmine
+"
 
 REDMINE_DIR="/var/lib/${PN}"
-
-pkg_setup() {
-	enewgroup redmine
-	enewuser redmine -1 -1 "${REDMINE_DIR}" redmine
-}
 
 all_ruby_prepare() {
 	rm -r log files/delete.me .github || die
@@ -57,13 +50,11 @@ all_ruby_prepare() {
 	# bug #406605
 	rm .{git,hg}ignore || die
 
+	# newenvd not working here
 	cat > "${T}/50${PN}" <<-EOF || die
 		CONFIG_PROTECT="${EROOT%/}${REDMINE_DIR}/config"
 		CONFIG_PROTECT_MASK="${EROOT%/}${REDMINE_DIR}/config/locales ${EROOT%/}${REDMINE_DIR}/config/settings.yml"
 	EOF
-
-	# remove ldap staff module if disabled to avoid #413779
-	use ldap || rm app/models/auth_source_ldap.rb || die
 
 	# Fixing versions in Gemfile
 	eapply "${FILESDIR}/${P}_gemfile_versions.patch"
@@ -75,6 +66,8 @@ all_ruby_prepare() {
 		sed -i -e "/group :rmagick do/,/end$/d" Gemfile || die
 	fi
 	if ! use ldap ; then
+		# remove ldap stuff module if disabled to avoid #413779
+		use ldap || rm app/models/auth_source_ldap.rb || die
 		sed -i -e "/group :ldap do/,/end$/d" Gemfile || die
 	fi
 	if ! use markdown ; then
@@ -87,6 +80,11 @@ all_ruby_install() {
 	rm -r doc appveyor.yml CONTRIBUTING.md README.rdoc || die
 
 	keepdir /var/log/${PN}
+
+	# Additional dependency for Gemfile (#657156)
+	if use fastcgi; then
+		echo "gem \"fcgi\"" > Gemfile.local
+	fi
 
 	insinto "${REDMINE_DIR}"
 	doins -r .
@@ -151,6 +149,9 @@ pkg_postinst() {
 }
 
 pkg_config() {
+	# Remove old lock file
+	rm -f "${EROOT%/}${REDMINE_DIR}/Gemfile.lock"
+
 	if [[ ! -e "${EROOT%/}${REDMINE_DIR}/config/database.yml" ]]; then
 		eerror "Copy ${EROOT%/}${REDMINE_DIR}/config/database.yml.example to"
 		eerror "${EROOT%/}${REDMINE_DIR}/config/database.yml then edit this"
@@ -198,9 +199,8 @@ pkg_config() {
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake db:migrate || die
 		einfo "Upgrading the plugin migrations."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake redmine:plugins:migrate || die
-		einfo "Clear the cache and the existing sessions."
+		einfo "Clear the cache."
 		${RUBY} -S rake tmp:cache:clear || die
-		${RUBY} -S rake tmp:sessions:clear || die
 	else
 		einfo
 		einfo "Initializing database."
@@ -212,7 +212,7 @@ pkg_config() {
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake db:migrate || die
 		einfo "Populating database with default configuration data."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake redmine:load_default_data || die
-		chown redmine:redmine -R "${EROOT%/}var/log/redmine/" || die
+		chown redmine:redmine -R "${EROOT%/}/var/log/redmine/" || die
 		einfo
 		einfo "If you use sqlite3, please do not forget to change the ownership"
 		einfo "of the sqlite files."
