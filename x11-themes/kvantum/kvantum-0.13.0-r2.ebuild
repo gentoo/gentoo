@@ -17,13 +17,16 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5=
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	kde-frameworks/kwindowsystem:5
+	x11-libs/libX11
 	x11-libs/libXext
 "
 RDEPEND="${DEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 S="${WORKDIR}/${MY_PN}-${PV}/${MY_PN}"
