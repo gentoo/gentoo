@@ -567,11 +567,6 @@ app-backup/furball
 # EAPI=4. Removal in 30 days
 app-admin/durep
 
-# Michał Górny <mgorny@gentoo.org> (2019-11-08)
-# Obsolete binary version.  Please use www-apps/trickster instead.
-# Removal in 30 days.  Bug #694884.
-www-apps/trickster-bin
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-11-07)
 # Development stalled. Fails to build against modern
 # postgresql: bug #697452. Masked for removal in 30 days.
