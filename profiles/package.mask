@@ -610,12 +610,6 @@ dev-libs/gmp:3
 # Please migrate to sys-apps/man-db.
 sys-apps/man
 
-# Mike Pagano <mpagano@gentoo.org> (2019-10-11)
-# kenel incorrectly specifics a version
-# not included in enpatches tarball 
-# This can be removed in 2019-11-11
-=sys-kernel/gentoo-sources-5.3.6
-
 # Brian Evans <grknight@gentoo.org> (2019-10-01)
 # End of life.  Please upgrade.
 # Removal in 90 days. Bug 651784
