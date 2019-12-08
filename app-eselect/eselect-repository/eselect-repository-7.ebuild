@@ -18,7 +18,9 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	app-admin/eselect
-	dev-python/lxml[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+	')
 	net-misc/wget"
 
 src_compile() {
