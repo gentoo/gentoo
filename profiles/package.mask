@@ -562,11 +562,6 @@ media-video/emovix
 # what does it even do? EAPI=4  Removal in 30 days
 app-backup/furball
 
-# Aaron Bauman <bman@gentoo.org> (2019-11-09)
-# maintainer-need, upstream website is dead
-# EAPI=4. Removal in 30 days
-app-admin/durep
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
