@@ -6,7 +6,7 @@ EAPI=7
 # Python < 3.6 requires https://pypi.org/project/aenum/
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r1
 
 DESCRIPTION="Python interface to the PROJ library"
 HOMEPAGE="https://github.com/jswhit/pyproj"
@@ -20,35 +20,18 @@ IUSE="doc"
 RDEPEND=">=sci-libs/proj-6.2.0"
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )
+BDEPEND="
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		sci-libs/Shapely[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=( "${FILESDIR}"/${P}-conftest.patch )
+
+distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
-
-python_check_deps() {
-	use doc || return 0
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
-
-python_prepare_all() {
-	distutils-r1_python_prepare_all
-	append-cflags -fno-strict-aliasing
-}
 
 python_test() {
 	PROJ_LIB="${EPREFIX}/usr/share/proj" pytest -ra || die
-}
-
-python_compile_all() {
-	use doc && emake -C docs html
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
 }

@@ -536,62 +536,6 @@ dev-dotnet/gsf-sharp
 # Removal in 30 days.  Bug #618464.
 sys-cluster/osc-mpiexec
 
-# Aaron Bauman <bman@gentoo.org> (2019-11-09)
-# EAPI=0, source archives are crazy
-# Removal in 30 days
-dev-tex/bera
-dev-tex/ppower4
-dev-tex/prosper
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-09)
-# Remnants of 'Cluster Suite', with no external revdeps.  dlm-lib
-# does not build with modern kernels anymore.  EAPI 0.
-# Removal in 30 days.  Bug #533122.
-sys-cluster/cman-lib
-sys-cluster/dlm
-sys-cluster/dlm-lib
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-09)
-# Multimedia distribution with last release in 2005.  Its usefulness
-# with modern media is doubtful.
-# Removal in 30 days.  Bug #699694.
-media-video/emovix
-
-# Aaron Bauman <bman@gentoo.org> (2019-11-09)
-# maintainer-needed, no known upstream homepage
-# what does it even do? EAPI=4  Removal in 30 days
-app-backup/furball
-
-# Aaron Bauman <bman@gentoo.org> (2019-11-09)
-# maintainer-need, upstream website is dead
-# EAPI=4. Removal in 30 days
-app-admin/durep
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-08)
-# Ancient vulnerable version of NumPy, plus all its revdeps.
-# Removal in 30 days.  Bug #627962.
-<dev-python/numpy-1.14.5
-dev-python/pyclimate
-dev-python/scientificpython
-sci-chemistry/parassign
-sci-chemistry/pymol-plugins-psico
-sci-libs/mmtk
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-08)
-# Obsolete binary version.  Please use www-apps/trickster instead.
-# Removal in 30 days.  Bug #694884.
-www-apps/trickster-bin
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-11-07)
-# Development stalled. Fails to build against modern
-# postgresql: bug #697452. Masked for removal in 30 days.
-dev-haskell/hsql-postgresql
-
-# Thomas Deutschmann <whissi@gentoo.org> (2019-11-07)
-# EAPI 0. It's been almost a decade since that openssl bug.
-# Removal in 30 days.  Bug #697218.
-net-misc/openssh-blacklist
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
@@ -634,29 +578,11 @@ dev-libs/mpfr:1
 # Masked for removal in a year.
 dev-libs/gmp:3
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-10-15)
-# Fails self-tests badly, no revdeps, upstream doesnt care
-# since 1999. Removal in 30 days. Bug 641530.
-dev-perl/NetxAP
-
-# Nick Sarnie <sarnex@gentoo.org> (2019-10-14)
-# No longer updated or supported by the Wine project
-# wine-any has no value without wine-d3d9
-# Please use app-emulation/gallium-nine-standalone instead
-# Removal in 30 days
-app-emulation/wine-any
-
 # Mike Gilbert <floppym@gentoo.org> (2019-10-11)
 # Inactive upstream for many years.
 # Several open bugs.
 # Please migrate to sys-apps/man-db.
 sys-apps/man
-
-# Mike Pagano <mpagano@gentoo.org> (2019-10-11)
-# kenel incorrectly specifics a version
-# not included in enpatches tarball 
-# This can be removed in 2019-11-11
-=sys-kernel/gentoo-sources-5.3.6
 
 # Brian Evans <grknight@gentoo.org> (2019-10-01)
 # End of life.  Please upgrade.
@@ -968,14 +894,6 @@ sys-devel/automake:1.10
 # If you still would like to use this version, please report any issues to
 # upstream.
 >=app-text/jabref-bin-4.0
-
-# Hans de Graaff <graaff@gentoo.org> (2017-06-05)
-# Bundles obsolete and vulnerable webkit version.
-# Upstream has stopped development and recommends using
-# headless mode in >=www-client/chromium-59.
-# Masked for removal in 90 days. Bug #589994.
-www-client/phantomjs
-dev-ruby/poltergeist
 
 # Michał Górny <mgorny@gentoo.org> (2017-05-22)
 # for Maciej S. Szmigiero <mail@maciej.szmigiero.name>
