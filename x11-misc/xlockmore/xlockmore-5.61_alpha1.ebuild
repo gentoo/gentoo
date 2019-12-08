@@ -5,9 +5,9 @@ EAPI=7
 inherit autotools flag-o-matic pam
 
 DESCRIPTION="Just another screensaver application for X"
-HOMEPAGE="http://www.sillycycle.com/xlockmore.html"
+HOMEPAGE="https://www.sillycycle.com/xlockmore.html"
 SRC_URI="
-	http://www.sillycycle.com/xlock/${P/_alpha/ALPHA}.tar.xz
+	https://www.sillycycle.com/xlock/${P/_alpha/ALPHA}.tar.xz
 	https://dev.gentoo.org/~jer/ax_pthread.m4.xz
 "
 
