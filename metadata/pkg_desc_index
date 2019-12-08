@@ -1,6 +1,8 @@
 acct-group/adm 0: System group: adm
 acct-group/asterisk 0: Group for asterisk
 acct-group/audio 0: System group: audio
+acct-group/avahi 0: group for avahi
+acct-group/avahi-autoipd 0: group for avahi-autoipd
 acct-group/bacula 0: A group for the bacula backup system
 acct-group/bitcoin 0: A group for users with access to system-wide Bitcoin services
 acct-group/burp 0: Group for the app-backup/burp server
@@ -48,6 +50,7 @@ acct-group/murmur 0: System group: murmur
 acct-group/mysql 0: MySQL program group
 acct-group/mythtv 0: Mythtv mythbackend server/deamon group
 acct-group/netdata 0: System group: netdata
+acct-group/netdev 0: group for netdev (avahi)
 acct-group/nofiles 0: System group: nofiles
 acct-group/nsd 0: System group: nsd
 acct-group/ntp 0: System group: ntp
@@ -93,6 +96,8 @@ acct-group/vpopmail 0: System group: vpopmail
 acct-group/wheel 0: System group: wheel
 acct-user/alias 0: alias user for qmail mail delivery
 acct-user/asterisk 0: User for asterisk
+acct-user/avahi 0: user for avahi
+acct-user/avahi-autoipd 0: user for avahi-autoipd
 acct-user/bacula 0: A group for the bacula backup system
 acct-user/bitcoin 0: System-wide Bitcoin services user
 acct-user/burp 0: User for the app-backup/burp server
@@ -368,7 +373,7 @@ app-admin/sagan 0.2.3 0.2.3-r1 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2016.11.10 2017.7.8 2018.3.4 2019.2.0-r1 2019.2.2: Salt is a remote execution and configuration manager
 app-admin/serf 0.8.1-r1: Service orchestration and management tool
-app-admin/setools 4.1.1-r1 4.2.1 4.2.2 9999: Policy Analysis Tools for SELinux
+app-admin/setools 4.2.1 4.2.2 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
 app-admin/spectre-meltdown-checker 0.39 0.40 0.41 0.42 9999: Spectre & Meltdown vulnerability/mitigation checker for Linux
 app-admin/sshguard 2.4.0 99999: protects hosts from brute force attacks against ssh
@@ -7457,7 +7462,7 @@ dev-python/atomicwrites 1.1.5-r2 1.1.5-r3 1.2.1 1.3.0: Atomic file writes
 dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
 dev-python/atpy 0.9.7: Astronomical tables support for Python
 dev-python/attrs 18.2.0 19.1.0 19.3.0: Attributes without boilerplate
-dev-python/audioread 2.1.8: Wrapper for audio file decoding using FFmpeg or GStreamer
+dev-python/audioread 2.1.8-r1: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.11.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 0.800 1.1.1: Authentication-Results Headers generation and parsing
 dev-python/autobahn 17.5.1-r2 17.9.1 17.9.2 17.10.1 18.3.1: WebSocket and WAMP for Twisted and Asyncio
@@ -8440,7 +8445,7 @@ dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
 dev-python/pycapnp 0.6.2 0.6.3 0.6.4: Python wrapping of the Cap'n Proto library
 dev-python/pycares 2.1.1 2.3.0 2.4.0 3.0.0 3.0.0_p20190709: Python interface for c-ares
 dev-python/pycdf 0.6.3-r1: Python interface to scientific netCDF library
-dev-python/pycdio 0.20-r1 2.0.0: Python OO interface to libcdio (CD Input and Control library)
+dev-python/pycdio 0.20-r1 2.0.0 2.1.0: Python OO interface to libcdio (CD Input and Control library)
 dev-python/pychart 1.39-r1: Python library for creating charts
 dev-python/pychecker 0.8.19-r1: Python source code checking tool
 dev-python/pychef 0.2.3: A Python API for interacting with a Chef server
@@ -17029,7 +17034,7 @@ sys-apps/busybox 1.30.1 1.31.1 9999: Utilities for rescue and embedded systems
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/ccs-tools 1.8.3_p20130214: TOMOYO Linux tools
-sys-apps/checkpolicy 2.8 2.9 3.0_rc2 3.0 9999: SELinux policy compiler
+sys-apps/checkpolicy 2.9 3.0 9999: SELinux policy compiler
 sys-apps/chname 1.1: Run a command with a new system hostname
 sys-apps/cinit 0.2.1: a fast, small and simple init with support for profiles
 sys-apps/ckbcomp 1.164: Compile an XKB keymap for loadkeys
@@ -17170,7 +17175,7 @@ sys-apps/man-pages 5.03 5.04: A somewhat comprehensive collection of Linux man p
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
 sys-apps/mawk 1.3.4_p20161120 1.3.4_p20171017-r1 1.3.4_p20190203: an (often faster than gawk) awk-interpreter
-sys-apps/mcstrans 2.8 2.9 3.0_rc2 3.0 9999: SELinux context translation to human readable names
+sys-apps/mcstrans 2.9 3.0 9999: SELinux context translation to human readable names
 sys-apps/memtest86 4.3.7-r2: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 5.01-r4: Memory tester based on memtest86
 sys-apps/memtester 4.3.0: userspace utility for testing the memory subsystem for faults
@@ -17214,7 +17219,7 @@ sys-apps/pkgcore 0.10.7 0.10.8 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
-sys-apps/policycoreutils 2.8-r1 2.9 3.0_rc2 3.0 9999: SELinux core utilities
+sys-apps/policycoreutils 2.9 3.0 9999: SELinux core utilities
 sys-apps/portage 2.3.69 2.3.76-r1 2.3.79 2.3.81 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.6: Tool to query and modify process behavior
@@ -17231,7 +17236,7 @@ sys-apps/rename 1.3-r2: Easily rename files
 sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.57-r1: Script to rescan the SCSI bus without rebooting
 sys-apps/restartd 0.2.2-r1: A daemon for checking your running and not running processes
-sys-apps/restorecond 2.8 2.9 3.0_rc2 3.0 9999: Daemon to watch for creation and set default SELinux fcontexts
+sys-apps/restorecond 2.9 3.0 9999: Daemon to watch for creation and set default SELinux fcontexts
 sys-apps/ripgrep 11.0.1 11.0.2: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rkflashtool 6.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 5-r2 6.6-r1 6.7-r1 6.7-r2 6.8: Daemon to use hardware random number generators
@@ -17246,10 +17251,10 @@ sys-apps/s6-rc 0.3.0.0 0.4.0.0 0.4.0.1 0.4.1.0 0.5.0.0 0.5.1.1: Service manager 
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
 sys-apps/sandbox 2.12 2.13 2.14 2.15 2.17 2.18: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
-sys-apps/secilc 2.8 2.9 3.0_rc2 3.0 9999: SELinux Common Intermediate Language (CIL) Compiler
+sys-apps/secilc 2.9 3.0 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.5 4.7: Super-useful stream editor
-sys-apps/selinux-python 2.8-r1 2.9 3.0_rc2 3.0 9999: SELinux core utilities
-sys-apps/semodule-utils 2.8 2.9 3.0_rc2 3.0 9999: SELinux policy module utilities
+sys-apps/selinux-python 2.9 3.0 9999: SELinux core utilities
+sys-apps/semodule-utils 2.9 3.0 9999: SELinux policy module utilities
 sys-apps/sensei-raw-ctl 0.0_pre20180729: SteelSeries Sensei Raw configuration tool
 sys-apps/servicelog 1.1.14: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
@@ -17356,7 +17361,7 @@ sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.11-r2 0.11-r3: Realtime Policy and Watchdog Daemon
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
 sys-auth/ssh-ldap-pubkey 1.3.0-r2 1.3.1 1.3.2: Utility to manage SSH public keys stored in LDAP
-sys-auth/sssd 1.16.3-r3 2.1.0-r1 2.2.0-r1 2.2.2: System Security Services Daemon provides access to identity and authentication
+sys-auth/sssd 1.16.3-r3 2.1.0-r1 2.2.0-r1 2.2.2 2.2.3: System Security Services Daemon provides access to identity and authentication
 sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson fingerprint reader, common in Thinkpads
 sys-auth/ykclient 2.15: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
@@ -17853,9 +17858,9 @@ sys-libs/libosinfo 1.2.0 1.3.0 1.4.0: GObject library for managing information a
 sys-libs/libraw1394 2.1.0-r1 2.1.1 2.1.2: library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 2.0.2: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
 sys-libs/libseccomp 2.4.0 2.4.1 2.4.2-r1: high level interface to Linux seccomp filter
-sys-libs/libselinux 2.8-r1 2.9 2.9-r1 3.0_rc2 3.0 9999: SELinux userland library
-sys-libs/libsemanage 2.8 2.9 3.0_rc2 3.0 9999: SELinux kernel and policy management library
-sys-libs/libsepol 2.8 2.9 3.0_rc2 3.0 9999: SELinux binary policy representation library
+sys-libs/libselinux 2.9-r1 3.0 9999: SELinux userland library
+sys-libs/libsemanage 2.9 3.0 9999: SELinux kernel and policy management library
+sys-libs/libsepol 2.9 3.0 9999: SELinux binary policy representation library
 sys-libs/libservicelog 1.1.18: Provides a library for logging service-related events
 sys-libs/libsmbios 2.4.2 2.4.2-r1: Provide access to (SM)BIOS information
 sys-libs/libspe2 2.2.80_p95-r1 2.3.0_p135: A wrapper library to adapt the JSRE SPU usage model to SPUFS
