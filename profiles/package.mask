@@ -557,11 +557,6 @@ sys-cluster/dlm-lib
 # Removal in 30 days.  Bug #699694.
 media-video/emovix
 
-# Aaron Bauman <bman@gentoo.org> (2019-11-09)
-# maintainer-needed, no known upstream homepage
-# what does it even do? EAPI=4  Removal in 30 days
-app-backup/furball
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
