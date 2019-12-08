@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -76,6 +76,9 @@ src_prepare() {
 
 	# fix CVE-2001-1593, bug 507024
 	eapply "${FILESDIR}"/${P}-CVE-2001-1593.patch
+
+	# specify encoding explicitly, bug #695918
+	eapply "${FILESDIR}"/${P}-texinfo-6.7-encoding.patch
 
 	# fix building with sys-devel/automake >= 1.12, bug 420503
 	rm -f {.,ogonkify}/aclocal.m4 || die
