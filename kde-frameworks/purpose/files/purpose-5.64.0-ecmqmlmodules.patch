@@ -1,0 +1,32 @@
+From 7ba45fdc2b9d0c599497495387a70d3d5ddad5c4 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 8 Dec 2019 15:26:18 +0100
+Subject: [PATCH] Use standard ECMQMLModules
+
+---
+ src/plugins/CMakeLists.txt | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/src/plugins/CMakeLists.txt b/src/plugins/CMakeLists.txt
+index fa4637b..9790e76 100644
+--- a/src/plugins/CMakeLists.txt
++++ b/src/plugins/CMakeLists.txt
+@@ -19,11 +19,10 @@ function(kpackage_install_package dir component root)
+            PATTERN Messages.sh EXCLUDE)
+ endfunction()
+ 
+-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+-include(QMLModules)
+-find_qmlmodule(Ubuntu.OnlineAccounts 0.1)
+-find_qmlmodule(org.kde.kdeconnect 1.0)
+-find_qmlmodule(org.kde.kquickcontrolsaddons 2.0)
++include(ECMQMLModules)
++ecm_find_qmlmodule(Ubuntu.OnlineAccounts 0.1)
++ecm_find_qmlmodule(org.kde.kdeconnect 1.0)
++ecm_find_qmlmodule(org.kde.kquickcontrolsaddons 2.0)
+ 
+ find_package(KAccounts)
+ find_package(KF5KIO ${KF5_DEP_VERSION} REQUIRED)
+-- 
+2.24.0
+
