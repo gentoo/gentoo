@@ -10618,7 +10618,7 @@ dev-util/cproto 4.7o: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7: Functional testing framework for command line applications
 dev-util/crash 7.2.5 7.2.7: Red Hat crash utility; used for analyzing kernel core dumps
-dev-util/creduce 2.8.0_pre20180411 2.8.0_pre20180411-r1 2.8.0 2.9.0_pre20190414-r1 9999: C-Reduce - a plugin-based C program reducer
+dev-util/creduce 2.8.0_pre20180411 2.8.0_pre20180411-r1 2.8.0 2.9.0_pre20190414-r1 2.11.0_pre20191110 9999: C-Reduce - a plugin-based C program reducer
 dev-util/cscope 15.8a-r1 15.8a-r2 15.9: Interactively examine a C program
 dev-util/csup 20060318-r1: A rewrite of CVSup
 dev-util/ctags 20190331: Exuberant Ctags creates tags files for code browsing in editors
