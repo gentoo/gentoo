@@ -5,4 +5,7 @@
 	<email>python@gentoo.org</email>
 	<name>Python</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">jaqx0r/pymad</remote-id>
+</upstream>
 </pkgmetadata>
