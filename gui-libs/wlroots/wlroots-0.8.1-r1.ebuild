@@ -68,6 +68,9 @@ src_configure() {
 		emesonargs+=("-Dlogind=disabled")
 	fi
 
+	# Patch is currently in upstream master
+	eapply "${FILESDIR}/wlroots-0.8.1-eglmesaextfix.patch"
+
 	meson_src_configure
 }
 
