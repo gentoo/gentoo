@@ -9,7 +9,7 @@ HOMEPAGE="https://git.gnome.org/browse/gnome-user-docs"
 
 LICENSE="CC-BY-3.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="test"
 
 RDEPEND=""
