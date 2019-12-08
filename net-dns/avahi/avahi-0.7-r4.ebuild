@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="gdbm"
 
-inherit autotools eutils flag-o-matic multilib multilib-minimal mono-env python-r1 systemd user
+inherit autotools eutils flag-o-matic multilib multilib-minimal mono-env python-r1 systemd
 
 DESCRIPTION="System which facilitates service discovery on a local network"
 HOMEPAGE="http://avahi.org/"
@@ -51,7 +51,15 @@ DEPEND="
 		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 	)
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	acct-user/avahi
+	acct-group/avahi
+	acct-group/netdev
+	autoipd? (
+		acct-user/avahi-autoipd
+		acct-group/avahi-autoipd
+	)
+	${DEPEND}
 	howl-compat? ( !net-misc/howl )
 	mdnsresponder-compat? ( !net-misc/mDNSResponder )
 	selinux? ( sec-policy/selinux-avahi )
@@ -70,17 +78,6 @@ PATCHES=(
 	"${FILESDIR}/${P}-qt5.patch"
 	"${FILESDIR}/${P}-CVE-2017-6519.patch"
 )
-
-pkg_preinst() {
-	enewgroup netdev
-	enewgroup avahi
-	enewuser avahi -1 -1 -1 avahi
-
-	if use autoipd; then
-		enewgroup avahi-autoipd
-		enewuser avahi-autoipd -1 -1 -1 avahi-autoipd
-	fi
-}
 
 pkg_setup() {
 	use mono && mono-env_pkg_setup
