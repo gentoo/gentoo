@@ -13,7 +13,9 @@ S="${WORKDIR}/qlcplus-QLC-_${PV}"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="test"
+
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
