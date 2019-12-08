@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="doc test"
 
+BDEPEND="doc? ( app-doc/doxygen )"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -25,7 +26,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
-BDEPEND="doc? ( app-doc/doxygen )"
+
+RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-buildsystem.patch"
