@@ -251,7 +251,6 @@ app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX 
 app-admin/doas 6.0: Run commands as super user or another user, alternative to sudo from OpenBSD
 app-admin/docker-bench 0_p20190822: Docker Bench for Security runs the CIS Docker Benchmark
 app-admin/drush 6.7.0-r1: Command line shell and scripting interface for Drupal
-app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
 app-admin/dxf 7.5.1 7.5.2: Docker registry v2 client in Python
 app-admin/ec2-ami-tools 1.5.7: Command-line tools that serve as client interface to the Amazon EC2 web service
 app-admin/eclean-kernel 0.4.3 1.99.4 9999: Clean up old and stale kernel files
@@ -540,7 +539,6 @@ app-backup/duplicity 0.7.10 0.7.12 0.7.19: Secure backup system using gnupg to e
 app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1 2.0.2 2.0.3: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r13: Flexible backup script using perl
 app-backup/fsarchiver 0.8.5: Flexible filesystem archiver for backup and deployment tool
-app-backup/furball 0.5: A small perl script utilizing tar
 app-backup/genbackupdata 1.9: Generate test data for backup software testing.
 app-backup/hdup 2.0.14: Hdup is backup program using tar, find, gzip/bzip2, mcrypt and ssh
 app-backup/holland 1.0.10: Holland Core Plugins
@@ -1555,7 +1553,6 @@ app-emulation/virtualbox-extpack-oracle 5.2.32.132073 5.2.34.133893 6.0.12.13307
 app-emulation/virtualbox-guest-additions 5.2.32 5.2.34 6.0.12 6.0.14 6.1.0_rc1: VirtualBox kernel modules and user-space tools for Gentoo guests
 app-emulation/virtualbox-modules 5.2.32 5.2.34 6.0.12 6.0.14 6.1.0_rc1: Kernel Modules for Virtualbox
 app-emulation/vkd3d 1.0 1.1 9999: D3D12 to Vulkan translation library
-app-emulation/wine-any 3.20 3.21 4.0 4.1 9999: Free implementation of Windows(tm) on Unix, with optional external patchsets
 app-emulation/wine-d3d9 3.20 3.21 4.0 4.1 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
@@ -3684,7 +3681,6 @@ dev-haskell/hspec-smallcheck 0.4.1: SmallCheck support for the Hspec testing fra
 dev-haskell/hsql 1.8.2-r1: Database access from Haskell
 dev-haskell/hsql-mysql 1.8.2-r1 1.8.3: MySQL driver for HSQL
 dev-haskell/hsql-odbc 1.8.2: A Haskell Interface to ODBC
-dev-haskell/hsql-postgresql 1.8.2: A Haskell Interface to PostgreSQL via the PQ library
 dev-haskell/hsql-sqlite3 1.8.2-r1: SQLite3 driver for HSQL
 dev-haskell/hstringtemplate 0.7.3 0.8.3 0.8.5: StringTemplate implementation in Haskell
 dev-haskell/htf 0.13.1.0: The Haskell Test Framework
@@ -6498,7 +6494,6 @@ dev-perl/Net-XMPP 1.50.0: XMPP Perl Library
 dev-perl/Net-Z3950-ZOOM 1.280.0-r2: Perl extension for invoking the ZOOM-C API
 dev-perl/NetAddr-IP 4.78.0 4.79.0: Manipulation and operations on IP addresses
 dev-perl/NetPacket 1.6.0: Assemble / disassemble network packets at the protocol level
-dev-perl/NetxAP 0.20.0-r1 0.20.0-r2: A base class for protocols such as IMAP, ACAP, IMSP, and ICAP
 dev-perl/News-Newsrc 1.110.0: Manage newsrc files
 dev-perl/Nmap-Parser 1.360.0: Parse nmap scan data with perl
 dev-perl/Number-Bytes-Human 0.110.0: Convert byte count to human readable format
@@ -8232,7 +8227,7 @@ dev-python/nuitka 0.6.0.6 0.6.2 0.6.4 0.6.5: Python to native compiler
 dev-python/numba 0.27.0 0.35.0 0.37.0 0.39.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.6.8 2.6.9: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.8.2 1.14.5 1.15.4 1.16.1 1.16.5 1.17.4: Fast array and numerical python library
+dev-python/numpy 1.14.5 1.15.4 1.16.1 1.16.5 1.17.4: Fast array and numerical python library
 dev-python/numpydoc 0.6.0 0.8.0 0.9.1: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
 dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
@@ -8453,7 +8448,6 @@ dev-python/pychm 0.8.4-r1 0.8.5: Python bindings for the chmlib library
 dev-python/pychroot 0.10.1 9999: a python library and cli tool that simplify chroot handling
 dev-python/pycipher 0.2-r1: A Python module that implements several well-known classical cipher algorithms
 dev-python/pyclamav 0.4.1-r2: Python binding for libclamav
-dev-python/pyclimate 1.2.2-r2: Climate Data Analysis Module for Python
 dev-python/pyclipper 1.1.0: Cython wrapper for the C++ translation of the Angus Johnson's Clipper library
 dev-python/pycmd 1.2: pycmd: tools for managing/searching Python related files
 dev-python/pycobertura 0.10.0: Cobertura coverage parser that can diff reports and show coverage progress
@@ -8584,7 +8578,7 @@ dev-python/pypng 0.0.18: Pure Python PNG image encoder/decoder
 dev-python/pypodman 0.12.1.2: CLI for podman written in python
 dev-python/pypowervm 1.1.6 1.1.10 1.1.16 1.1.20: Python binding for the PowerVM REST API
 dev-python/pyprof2calltree 1.4.0: convert python profile data to kcachegrind calltree form
-dev-python/pyproj 1.9.5.1-r1 2.4.1: Python interface to the PROJ library
+dev-python/pyproj 1.9.5.1-r1 2.4.2: Python interface to the PROJ library
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
 dev-python/pyptlib 0.0.6: Python library for tor's pluggable transport managed-proxy protocol
 dev-python/pypy 7.2.0 9999: A fast, compliant alternative implementation of the Python language
@@ -8912,7 +8906,6 @@ dev-python/scandir 1.10.0 1.10.0-r1: A better directory iterator and faster os.w
 dev-python/scapy-python3 0.18-r1 0.21 0.23: Packet crafting/sending/... PCAP processing tool with python3 compatibility
 dev-python/schedule 0.4.2 0.5.0: Python job scheduling for humans
 dev-python/schema 0.6.6: Library for validating Python data structures
-dev-python/scientificpython 2.9.4: Scientific Module for Python
 dev-python/sclapp 0.5.3-r1: Framework for writing simple command-line applications
 dev-python/scoop 0.7.0-r1: Distributed Evolutionary Algorithms in Python
 dev-python/scp 0.10.2: scp module for paramiko
@@ -10035,7 +10028,6 @@ dev-ruby/pkg-config 1.2.8 1.3.9 1.4.0: A pkg-config implementation by Ruby
 dev-ruby/plist 3.4.0 3.5.0: A library to manipulate Property List files, also known as plists
 dev-ruby/pluggaloid 1.1.2 1.2.0: Pluggaloid is extensible plugin system for mikutter
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
-dev-ruby/poltergeist 1.14.0: A PhantomJS driver for Capybara
 dev-ruby/polyglot 0.3.5: Polyglot provides support for fully-custom DSLs
 dev-ruby/posix-spawn 0.3.13-r1: Library that implements a subset of the Ruby 1.9 Process::spawn
 dev-ruby/postgres_ext 3.0.1: Native PostgreSQL data types and querying extensions for ActiveRecord and Arel
@@ -10407,7 +10399,6 @@ dev-tcltk/togl 2.0-r2 2.0-r3: A Tk widget for OpenGL rendering
 dev-tcltk/vtcl 1.6.0-r2: Visual Tcl is a high-quality application development environment
 dev-tex/aastex 5.2: LaTeX package for American Astronomical Society journals. (AASTeX)
 dev-tex/abntex 0.9_beta2-r1: LaTeX macros for writing documents following the ABNT norms
-dev-tex/bera 20040930: LaTeX package for the Bera Type1 font family
 dev-tex/biber 2.7 2.12: A BibTeX replacement for users of biblatex
 dev-tex/biblatex 3.7-r1 3.12: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/biblatex-apa 7.4 7.5: APA style for BibLaTeX
@@ -10463,8 +10454,6 @@ dev-tex/newlfm 8.3-r1: Extensive LaTeX class for writing letters
 dev-tex/pdfannotextractor 0.1l-r1: Extract annotations from pdf files
 dev-tex/pgf 3.1.4b-r2: The TeX Portable Graphic Format
 dev-tex/polytable 0.8.2-r1: tabular-like environments with named columns
-dev-tex/ppower4 0.9.6: The Java tool PPower4 adds effects to slides using LaTeX
-dev-tex/prosper 1.5-r1: Prosper is a LaTeX class for writing transparencies
 dev-tex/pscyr 0.4d_beta9: Type1 cyrillic fonts collection
 dev-tex/pythontex 0.16: Fast Access to Python from within LaTeX
 dev-tex/rail 1.2_p1-r1: Offers syntax/railroad diagrams
@@ -14214,7 +14203,6 @@ media-video/dvdimagecmp 0.3-r1: Tool to compare a burned DVD with an image to ch
 media-video/dvdrip 0.98.11-r3 0.98.11-r4: dvd::rip is a graphical frontend for transcode
 media-video/dvdstyler 3.0.4: A cross-platform free DVD authoring application
 media-video/dvgrab 3.5-r1: Digital Video (DV) grabber for GNU/Linux
-media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play videos
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.2_pre20140701-r2: Movie creator from photos and video clips
 media-video/ffmpeg 3.4.6-r1 4.1.3 4.1.4 4.2.1 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
@@ -14655,7 +14643,7 @@ net-dialup/tkvoice 1.5: Voice mail and Fax frontend program
 net-dialup/wvdial 1.61: Excellent program to automatically configure PPP sessions
 net-dialup/xc 4.3.2-r3 4.3.2-r4: Modem dialout & serial terminal program
 net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
-net-dns/avahi 0.7-r2 0.7-r3: System which facilitates service discovery on a local network
+net-dns/avahi 0.7-r2 0.7-r4: System which facilitates service discovery on a local network
 net-dns/bind 9.14.8 9.15.6: Berkeley Internet Name Domain - Name Server
 net-dns/bind-tools 9.14.8 9.15.6: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.13.0 1.14.0 1.15.0: C library that resolves names asynchronously
@@ -15379,7 +15367,6 @@ net-misc/omnisync 1.0 1.0-r1 1.0_p20180614: A driver for NTPd for people who are
 net-misc/openntpd 6.0_p1 6.2_p3 6.2_p3-r1: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openssh 7.5_p1-r4 7.7_p1-r9 7.9_p1-r4 8.0_p1-r4 8.1_p1-r1: Port of OpenBSD's free SSH release
-net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvswitch 2.10.2 2.11.1-r1: Production quality, multilayer virtual switch
 net-misc/owncloud-client 2.5.3.11470-r1 2.5.4.11654 2.6.0.13018: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.3 1.8.1 1.9: Packet generator tool for ethernet
@@ -16166,7 +16153,6 @@ sci-chemistry/openbabel-perl 2.4.1: Perl bindings for OpenBabel
 sci-chemistry/openbabel-python 2.4.1-r1: Python bindings for OpenBabel (including Pybel)
 sci-chemistry/ortep3 1.0.3-r1: Thermal ellipsoid plot program for crystal structure illustrations
 sci-chemistry/p3d 0.4.3-r1 9999: Python module for structural bioinformatics
-sci-chemistry/parassign 20130522: Assign protein nuclei solely on the basis of pseudocontact shifts (PCS)
 sci-chemistry/pdb-tools 0.2.1-r1 0.2.1-r2: Tools for manipulating and calculations on wwPDB macromolecule structure files
 sci-chemistry/pdb2pqr 1.9.0-r1: Automated pipeline for performing Poisson-Boltzmann electrostatics calculations
 sci-chemistry/pdbcat 1.3: Manipulate and process PDB files using tools such as Perl, awk, etc
@@ -16186,7 +16172,6 @@ sci-chemistry/pymol-plugins-dssp 110430-r1: DSSP Plugin for PyMOL
 sci-chemistry/pymol-plugins-emovie 1.0.4: PyMOL plugin for convinient movie creation
 sci-chemistry/pymol-plugins-msms 100415-r1: GUI for MSMS and displaying its results in PyMOL
 sci-chemistry/pymol-plugins-promol 3.0.2-r1: Fast and accurate regognition of active sites
-sci-chemistry/pymol-plugins-psico 3.1-r1: Pymol ScrIpt COllection
 sci-chemistry/rasmol 2.7.5.2-r2: Molecular Graphics Visualisation Tool
 sci-chemistry/raster3d 3.0.2 3.0.3: Generation high quality raster images of proteins or other molecules
 sci-chemistry/relax 4.0.0-r1: Molecular dynamics by NMR data analysis
@@ -16495,7 +16480,6 @@ sci-libs/minfx 1.0.3-r1 1.0.4_pre98 1.0.4 1.0.5 1.0.6 1.0.10 1.0.11: Numerical o
 sci-libs/minuit 5.34.14: A C++ physics analysis tool for function minimization
 sci-libs/mkl 10.0.5.025 10.0.5.025-r1: Intel(R) Math Kernel Library: linear algebra, fft, math functions
 sci-libs/mkl-rt 2019.4.243: Intel Math Kernel Library (Runtime)
-sci-libs/mmtk 2.7.9: Molecular Modeling ToolKit for Python
 sci-libs/mpfi 1.5.1 1.5.3: Multiple precision interval arithmetic library based on MPFR
 sci-libs/mpir 2.6.0-r2 2.7.2 3.0.0: Library for arbitrary precision integer arithmetic (fork of gmp)
 sci-libs/mumps 5.1.2: MUltifrontal Massively Parallel sparse direct matrix Solver
@@ -17480,12 +17464,9 @@ sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
 sys-cluster/cinder 13.0.7 14.0.1 15.0.0 2018.2.9999 2019.1.9999 2019.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / Pacemaker
-sys-cluster/cman-lib 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
 sys-cluster/corosync 1.4.7 2.3.5 2.4.2: OSI Certified implementation of a complete cluster engine
 sys-cluster/crmsh 2.1.1 3.0.3: Pacemaker command line interface for management and configuration
 sys-cluster/csync2 2.0 2.0-r2: Cluster synchronization tool
-sys-cluster/dlm 2.03.09 2.03.11: General-purpose Distributed Lock Manager
-sys-cluster/dlm-lib 2.03.09 2.03.11: General-purpose Distributed Lock Manager
 sys-cluster/drbd-utils 8.9.3 8.9.6 8.9.6-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/fake 1.1.10: Switch in backup servers on a LAN
 sys-cluster/galera 25.3.25 25.3.26 25.3.28 25.3.28-r1 26.4.2 26.4.3: Synchronous multi-master replication engine that provides the wsrep API
@@ -18296,7 +18277,6 @@ www-apps/trac-accountmanager 0.4.2-r1 0.4.4: A Trac plugin for manage user accou
 www-apps/trac-mercurial 0.12.0.29_pre10899-r1 1.0.0.3_pre20130206-r1: A Mercurial plugin for Trac
 www-apps/trac-tags 0.6-r1: Tags plugin for Trac
 www-apps/trickster 0.1.9: Dashboard Accelerator for Prometheus
-www-apps/trickster-bin 0.1.7: Dashboard Accelerator for Prometheus
 www-apps/tt-rss 20180105 20190523 99999999: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-apps/venus 20100911-r1 20100911-r2: A feed aggregator application
 www-apps/viewvc 1.1.26: ViewVC, a web interface to CVS and Subversion
@@ -18329,7 +18309,6 @@ www-client/opera 65.0.3467.48 65.0.3467.62: A fast and secure web browser
 www-client/opera-beta 66.0.3515.3 66.0.3515.7: A fast and secure web browser
 www-client/opera-developer 67.0.3523.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
-www-client/phantomjs 2.1.1 2.1.1-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.6.3 1.7.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.2: A Python wrapper around the RIPE Atlas API
@@ -19216,7 +19195,7 @@ x11-themes/human-icon-theme 0.36: A nice and well polished icon theme
 x11-themes/iceicons 0.10.0-r1: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM
 x11-themes/icewm-extra-themes 1.1 1.2: Extra themes for IceWM
 x11-themes/kfaenza 0.8.9-r2: Faenza-Cupertino icon theme for KDE Plasma
-x11-themes/kvantum 0.12.1: SVG-based theme engine for Qt5, KDE and LXQt
+x11-themes/kvantum 0.13.0: SVG-based theme engine for Qt5, KDE and LXQt
 x11-themes/larry-backgrounds 20110822-r1: Wallpapers featuring Gentoo mascot Larry the cow
 x11-themes/laughlin-backgrounds 14.1.0.3-r1: Fedora 14 official background artwork
 x11-themes/leonidas-backgrounds 11.0.0.2-r1: Fedora 11 official background artwork
