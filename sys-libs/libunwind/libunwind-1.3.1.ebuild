@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
@@ -12,16 +12,16 @@ HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
 SRC_URI="mirror://nongnu/libunwind/${MY_P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="7"
+SLOT="7/8" # it should be a "0/8" where '8' is libunwind.so.8
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 -sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug debug-frame doc libatomic lzma +static-libs"
 
 RESTRICT="test" # half of tests are broken (toolchain version dependent)
 
 # We just use the header from libatomic.
-RDEPEND="lzma? ( app-arch/xz-utils )"
+RDEPEND="lzma? ( app-arch/xz-utils[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	libatomic? ( dev-libs/libatomic_ops )"
+	libatomic? ( dev-libs/libatomic_ops[${MULTILIB_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -44,13 +44,9 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2-coredump-regs.patch #586092
-	"${FILESDIR}"/${PN}-1.2-ia64-undwarf.patch
 	"${FILESDIR}"/${PN}-1.2-ia64-ptrace-coredump.patch
 	"${FILESDIR}"/${PN}-1.2-ia64-missing.patch
-	"${FILESDIR}"/${PN}-1.2.1-fix_version_macros.patch
 	"${FILESDIR}"/${PN}-1.2.1-only-include-execinfo_h-if-avaliable.patch
-	"${FILESDIR}"/${PN}-1.2.1-no-PROTECTED.patch #659732
-	"${FILESDIR}"/${PN}-1.2.1-arm-__asm__.patch #635674
 )
 
 src_prepare() {

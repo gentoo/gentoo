@@ -3,10 +3,10 @@
 
 EAPI=7
 
-inherit qmake-utils vcs-snapshot
+inherit qmake-utils
 
 DESCRIPTION="Signon daemon for libaccounts-glib"
-HOMEPAGE="https://01.org/gsso/"
+HOMEPAGE="https://gitlab.com/accounts-sso"
 SRC_URI="https://gitlab.com/accounts-sso/${PN}/-/archive/VERSION_${PV}/${PN}-VERSION_${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
@@ -27,11 +27,15 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="doc? ( app-doc/doxygen )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-buildsystem.patch"
+	"${FILESDIR}/${P}-consistent-paths.patch" # bug 701142
+)
+
+S="${WORKDIR}/${PN}-VERSION_${PV}"
+
 src_prepare() {
 	default
-
-	# remove unused dependency
-	sed -e "/xml \\\/d" -i src/signond/signond.pro || die
 
 	# install docs to correct location
 	sed -e "s|share/doc/\$\${PROJECT_NAME}|share/doc/${PF}|" -i doc/doc.pri || die
@@ -39,12 +43,6 @@ src_prepare() {
 		-i lib/plugins/doc/doc.pri || die
 	sed -e "/^documentation.path = /c\documentation.path = \$\${INSTALL_PREFIX}/share/doc/${PF}/libsignon-qt/" \
 		-i lib/SignOn/doc/doc.pri || die
-
-	# don't install example plugin
-	sed -e "/example/d" -i src/plugins/plugins.pro || die
-
-	# don't install static libs
-	sed -e "/libsignon-qt-static.pro/s/^/#/" -i lib/SignOn/SignOn.pro || die
 
 	# make tests optional
 	use test || sed -i -e '/^SUBDIRS/s/tests//' signon.pro || die "couldn't disable tests"
@@ -55,7 +53,7 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake5 LIBDIR=/usr/$(get_libdir)
+	eqmake5 PREFIX="${EPREFIX}"/usr LIBDIR=$(get_libdir)
 }
 
 src_install() {
