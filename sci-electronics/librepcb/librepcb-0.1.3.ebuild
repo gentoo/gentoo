@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmake-utils
+inherit qmake-utils xdg-utils
 
 DESCRIPTION="Free EDA software to develop printed circuit boards"
 HOMEPAGE="https://librepcb.org/"
@@ -38,4 +38,16 @@ src_configure() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
 }
