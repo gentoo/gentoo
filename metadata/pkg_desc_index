@@ -608,7 +608,7 @@ app-cdr/ccd2iso 0.3: Convert CD images from ccd (CloneCD) to iso
 app-cdr/cdck 0.7.0-r2: Measure the read time per sector on CD or DVD to check the quality
 app-cdr/cdcover 0.7.4-r1: cdcover allows the creation of inlay-sheets for jewel cd-cases
 app-cdr/cddetect 2.1: Tool for detecting the type of a CD/DVD without mounting it
-app-cdr/cdemu 3.2.1 3.2.2 3.2.3: Command-line tool for controlling cdemu-daemon
+app-cdr/cdemu 3.2.3: Command-line tool for controlling cdemu-daemon
 app-cdr/cdemu-daemon 3.2.2 3.2.3: Daemon of the CDEmu optical media image mounting suite
 app-cdr/cdlabelgen 4.3.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.4: Burn CDs in disk-at-once mode -- with optional GUI frontend
@@ -626,7 +626,7 @@ app-cdr/dvdisaster 0.79.5: Tool for creating error correction data (ecc) for opt
 app-cdr/dvdshrink 2.6.1_p10: Scriptable DVD copy software
 app-cdr/extract-xiso 2.7.1: Tool for extracting and creating optimised Xbox ISO images
 app-cdr/gaffitter 0.6.0-r1: Genetic Algorithm File Fitter
-app-cdr/gcdemu 3.2.1 3.2.2 3.2.3: Gtk+ GUI for controlling cdemu-daemon
+app-cdr/gcdemu 3.2.3: Gtk+ GUI for controlling cdemu-daemon
 app-cdr/geteltorito 0.6: El Torito boot image extractor
 app-cdr/graveman 0.3.12_p5-r2: Graphical frontend for cdrecord, mkisofs, readcd and sox using GTK+2
 app-cdr/gtkcdlabel 1.15: A GUI for cdlabelgen that generates CD labels
@@ -4955,7 +4955,7 @@ dev-libs/libmba 0.9.1-r3: A library of generic C modules
 dev-libs/libmcrypt 2.5.8-r4: libmcrypt provides uniform interface to access several encryption algorithms
 dev-libs/libmelf 0.4.0-r1: libmelf is a library interface for manipulating ELF object files
 dev-libs/libmemcached 1.0.18-r3: a C client library to the memcached server
-dev-libs/libmirage 3.2.2 3.2.3: CD and DVD image access library
+dev-libs/libmirage 3.2.3: CD and DVD image access library
 dev-libs/libmissing 1.1.0: Library with missing functions based on GNUlib
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.1.4: Modbus library which supports RTU communication over a serial line or a TCP link
@@ -17769,7 +17769,7 @@ sys-fs/udiskie 1.1.1 1.7.5 1.7.7: An automatic disk mounting service using udisk
 sys-fs/udisks 1.0.5-r3 2.8.2 2.8.3 2.8.4: Daemon providing interfaces to work with storage devices
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 2.0 9999: Self-syncing tree-merging file system based on FUSE
-sys-fs/vhba 20190410 20190827 20190831: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
+sys-fs/vhba 20190831: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.6 3.1.8: xfs dump/restore utilities
 sys-fs/xfsprogs 4.19.0 5.3.0: xfs filesystem utilities
