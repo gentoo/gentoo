@@ -23,8 +23,7 @@ RDEPEND="app-text/ghostscript-gpl
 	emacs? ( virtual/emacs )
 	latex? ( virtual/latex-base )
 	nls? ( virtual/libintl )
-	userland_GNU? ( >=sys-apps/coreutils-6.10-r1 )
-	userland_BSD? ( sys-freebsd/freebsd-ubin )"
+	userland_GNU? ( >=sys-apps/coreutils-6.10-r1 )"
 DEPEND="${RDEPEND}
 	>=dev-util/gperf-2.7.2
 	virtual/yacc
