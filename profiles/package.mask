@@ -165,7 +165,7 @@ dev-python/python-cdb
 dev-python/foolscap
 net-fs/tahoe-lafs
 dev-python/pyvtk
-dev-python/pycdio
+<dev-python/pycdio-2.1.0
 media-sound/whipper
 dev-python/hachoir-regex
 app-misc/hachoir-subfile
