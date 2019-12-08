@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5=
 	dev-qt/qtsvg:5
 	dev-qt/qtx11extras:5
 	kde-frameworks/kwindowsystem:5
