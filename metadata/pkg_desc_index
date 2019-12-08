@@ -8852,7 +8852,7 @@ dev-python/requests_pkcs12 1.4: Adds PKCS#12 support to the Python requests libr
 dev-python/requestsexceptions 1.1.3 1.4.0: Finds the correct path to exceptions in the requests library.
 dev-python/responses 0.6.0 0.9.0 0.10.7: Utility for mocking out the Python Requests library
 dev-python/restkit 4.2.2: A HTTP ressource kit for Python
-dev-python/restructuredtext-lint 0.12.2 1.1.2: Created out of frustration, it sucks to find out your reST is invalid after uploading it.
+dev-python/restructuredtext-lint 0.12.2 1.1.2: Checks PyPI validity of reStructuredText
 dev-python/resumable-urlretrieve 0.1.5: Small library to fetch files over HTTP and resuming their download
 dev-python/retry-decorator 1.0.0 1.0.0-r1: Decorator for retrying when exceptions occur
 dev-python/retrying 1.3.3: General-purpose retrying library
