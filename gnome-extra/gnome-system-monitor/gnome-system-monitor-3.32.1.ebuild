@@ -10,7 +10,7 @@ HOMEPAGE="https://help.gnome.org/users/gnome-system-monitor/stable/"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="systemd X"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	>=dev-cpp/glibmm-2.46:2
