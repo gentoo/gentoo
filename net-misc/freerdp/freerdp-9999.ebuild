@@ -1,7 +1,7 @@
 # Copyright 2011-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit cmake-utils
 
@@ -12,7 +12,6 @@ if [[ ${PV} != 9999 ]]; then
 	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
 else
 	inherit git-r3
-	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/FreeRDP/FreeRDP.git"
 fi
 
@@ -79,7 +78,8 @@ RDEPEND="
 		x11-libs/libxkbfile
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	client? ( X? ( doc? (
 		app-text/docbook-xml-dtd:4.1.2
@@ -87,30 +87,34 @@ DEPEND="${RDEPEND}
 	) ) )
 "
 
+usex-on-off() {
+	usex "$1" ON OFF
+}
+
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_TESTING=$(usex test)
-		-DCHANNEL_URBDRC=$(usex usb)
-		-DWITH_ALSA=$(usex alsa)
+		-DBUILD_TESTING=$(usex-on-off test)
+		-DCHANNEL_URBDRC=$(usex-on-off usb)
+		-DWITH_ALSA=$(usex-on-off alsa)
 		-DWITH_CCACHE=OFF
-		-DWITH_CLIENT=$(usex client)
-		-DWITH_CUPS=$(usex cups)
-		-DWITH_DEBUG_ALL=$(usex debug)
-		-DWITH_MANPAGES=$(usex doc)
-		-DWITH_FFMPEG=$(usex ffmpeg)
-		-DWITH_DSP_FFMPEG=$(usex ffmpeg)
-		-DWITH_GSTREAMER_1_0=$(usex gstreamer)
-		-DWITH_JPEG=$(usex jpeg)
-		-DWITH_NEON=$(usex cpu_flags_arm_neon)
-		-DWITH_OPENH264=$(usex openh264)
-		-DWITH_PULSE=$(usex pulseaudio)
-		-DWITH_SERVER=$(usex server)
-		-DWITH_PCSC=$(usex smartcard)
-		-DWITH_LIBSYSTEMD=$(usex systemd)
-		-DWITH_X11=$(usex X)
-		-DWITH_XINERAMA=$(usex xinerama)
-		-DWITH_XV=$(usex xv)
-		-DWITH_WAYLAND=$(usex wayland)
+		-DWITH_CLIENT=$(usex-on-off client)
+		-DWITH_CUPS=$(usex-on-off cups)
+		-DWITH_DEBUG_ALL=$(usex-on-off debug)
+		-DWITH_MANPAGES=$(usex-on-off doc)
+		-DWITH_FFMPEG=$(usex-on-off ffmpeg)
+		-DWITH_DSP_FFMPEG=$(usex-on-off ffmpeg)
+		-DWITH_GSTREAMER_1_0=$(usex-on-off gstreamer)
+		-DWITH_JPEG=$(usex-on-off jpeg)
+		-DWITH_NEON=$(usex-on-off cpu_flags_arm_neon)
+		-DWITH_OPENH264=$(usex-on-off openh264)
+		-DWITH_PULSE=$(usex-on-off pulseaudio)
+		-DWITH_SERVER=$(usex-on-off server)
+		-DWITH_PCSC=$(usex-on-off smartcard)
+		-DWITH_LIBSYSTEMD=$(usex-on-off systemd)
+		-DWITH_X11=$(usex-on-off X)
+		-DWITH_XINERAMA=$(usex-on-off xinerama)
+		-DWITH_XV=$(usex-on-off xv)
+		-DWITH_WAYLAND=$(usex-on-off wayland)
 	)
 	cmake-utils_src_configure
 }
