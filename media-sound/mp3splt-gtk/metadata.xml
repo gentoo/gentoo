@@ -5,9 +5,6 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
-	<use>
-		<flag name="audacious">Include <pkg>media-sound/audacious</pkg> support</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">mp3splt</remote-id>
 	</upstream>
