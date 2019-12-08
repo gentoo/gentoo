@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
 inherit distutils-r1
 
-DESCRIPTION="Created out of frustration, it sucks to find out your reST is invalid after uploading it."
+DESCRIPTION="Checks PyPI validity of reStructuredText"
 HOMEPAGE="https://pypi.org/project/restructuredtext_lint/"
 
 MY_P="restructuredtext_lint"
