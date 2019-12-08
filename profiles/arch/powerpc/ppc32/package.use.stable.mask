@@ -21,10 +21,6 @@
 # media-libs/libsidplay:2 appears to be broken, bug #660288
 media-video/vlc sid
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-12)
-# Requires not yet stable dev-qt/qtpositioning:5
-sci-astronomy/stellarium gps
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-06-03)
 # Requires not yet stable dependencies
 sys-libs/gwenhywfar sensors serialport webkit

@@ -31,10 +31,6 @@ dev-python/statsmodels doc
 # broken static-linking in glibc and maybe others
 >app-shells/mksh-57-r1 static
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-30)
-# Depends on about-to-be-last-rited media-libs/mediastreamer
-kde-apps/kopete jingle
-
 # Michał Górny <mgorny@gentoo.org> (2019-11-29)
 # Requires dev-python/astropy that's being removed.
 sci-visualization/veusz fits
@@ -190,15 +186,6 @@ sys-apps/memtest86+ floppy
 # Depend on the EOL PHP 7.0
 dev-libs/Ice php
 
-# Michał Górny <mgorny@gentoo.org> (2018-12-01)
-# Moved from use.mask to specific packages.
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-10)
-# media-sound/mumble is masked/not keyworded at this point, bug #656826.
-games-fps/quake3 mumble
-games-fps/turtlearena mumble
-games-fps/urbanterror mumble
-games-rpg/manaplus mumble
-
 # Michał Górny <mgorny@gentoo.org> (2018-11-28)
 # Requires last-rited games-server/ut2003-ded.
 games-fps/ut2003 dedicated
@@ -299,10 +286,6 @@ dev-java/openjdk-jre-bin:11 gentoo-vm
 dev-java/oracle-jdk-bin:11 gentoo-vm
 dev-java/openjdk-bin:11 gentoo-vm
 dev-java/openjdk:11 gentoo-vm
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-11-04)
-# Requires audacious, which is masked. Bug 632513
-media-libs/freeverb3 jack
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2017-09-09)
 # Potentially destructive. Use it only if you know what you're doing.
