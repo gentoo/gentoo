@@ -11358,9 +11358,6 @@ games-fps/doomsday 2.1.1: A modern gaming engine for Doom, Heretic, and Hexen
 games-fps/duke3d-data 1.0-r4: Duke Nukem 3D data files
 games-fps/duke3d-demodata 1.3: Duke Nukem 3D 1.3d shareware data
 games-fps/eduke32 20191204.8360: An open source engine port of the classic PC first person shooter Duke Nukem 3D
-games-fps/enemy-territory 2.60b-r1: standalone multi-player game based on Return to Castle Wolfenstein
-games-fps/enemy-territory-omnibot 0.85: Enemy Territory Omnibot - Bots for Ennemy Territory
-games-fps/enemy-territory-truecombat 0.49b: Enemy Territory True Combat - a team-based realism modification
 games-fps/etqw-bin 1.5-r2: Enemy Territory: Quake Wars
 games-fps/etqw-data 1.0-r1: Enemy Territory: Quake Wars data files
 games-fps/etqw-demo 2.0_p1-r2: Enemy Territory: Quake Wars demo
@@ -11374,7 +11371,6 @@ games-fps/gzdoom 4.2.4: A modder-friendly OpenGL source port based on the DOOM e
 games-fps/industri 1.01: Quake/Tenebrae based, single player game
 games-fps/legends 0.4.1.43-r2: Fast-paced first-person-shooter online multiplayer game, similar to Tribes
 games-fps/nexuiz 2.5.2-r1: Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
-games-fps/openarena 0.8.8-r1: Open-source replacement for Quake 3 Arena
 games-fps/prboom-plus 2.5.1.4: A Doom source port developed from the original PrBoom project
 games-fps/quake1-data 2.40: iD Software's Quake 1 ... the data files
 games-fps/quake1-demodata 1.06: Demo data for Quake 1
@@ -11386,32 +11382,11 @@ games-fps/quake2-data 3.20: iD Software's Quake 2 ... the data files
 games-fps/quake2-demodata 3.14: Demo data for Quake 2
 games-fps/quake2-icculus 0.16.1-r1: The icculus.org Linux port of iD's Quake 2 engine
 games-fps/quake2-textures 0_beta8: High-resolution textures for Quake 2
-games-fps/quake3 1.36-r1 9999: Quake III Arena - 3rd installment of the classic id 3D first-person shooter
-games-fps/quake3-alliance 3.3-r1: Quake III Alliance - fast paced, off-handed grapple mod
-games-fps/quake3-alternatefire 2.0-r1: Quake III Alternate Fire - adds unique new secondary attacks to weapons
-games-fps/quake3-bfp 1.2-r1: Quake III Bid For Power - Control Ki-powered superheros and battle in the air
-games-fps/quake3-bin 1.32c-r2: 3rd installment of the classic id 3D first-person shooter
-games-fps/quake3-cpma 1.48: Quake III Challenge Pro Mode Arena - advanced FPS competition mod
-games-fps/quake3-data 1.32b: Quake III Arena - data portion
-games-fps/quake3-defrag 1.91.21: Quake III Defrag - Trickjumping challenges for Quake III
-games-fps/quake3-demo 1.11-r1: the playable demo of Quake III Arena by Id Software
-games-fps/quake3-excessiveplus 2.3: Quake III Excessive Plus - Makes the weapons much faster and stronger
-games-fps/quake3-lrctf 1.1: Quake III Loki's Revenge CTF - offhand grapple all-weapons capture the flag mod
-games-fps/quake3-matrix 2.4_beta-r1: Quake III Matrix - Matrix conversion mod
-games-fps/quake3-nsco 1.93-r1: Quake III Navy Seals: Covert Operations - a US Navy Seals conversion mod
-games-fps/quake3-osp 1.03a-r1: Quake III OSP - a tournament mod
-games-fps/quake3-ra3 1.76-r1: Quake III Rocket Arena 3 - a rocket dueling mod
-games-fps/quake3-reaction 3.2: Quake III Reaction - port of Action Quake 2 to Quake 3: Arena
-games-fps/quake3-ruinhunters 1.0a-r1: Quake III Ruin Hunters - Anime mod with cartoon actors and arcade-like gameplay
-games-fps/quake3-teamarena 1.32b: Quake III Team Arena - data portion
-games-fps/quake3-threewave 1.7-r1: Quake III Threewave CTF - Threewave CTF
 games-fps/quakeforge 0.7.2-r1: New 3d engine based off of id Softwares's Quake and QuakeWorld game engine
 games-fps/qudos 0.40.1: Enhanced Quake 2 engine
 games-fps/red-blue-quake2 0.1: red-blue Quake II ! play quake2 w/3d glasses !
 games-fps/redeclipse 1.6.0-r2: First-person ego-shooter, built as a total conversion of Cube Engine 2
 games-fps/rott 1.1.2-r1: Rise of the Triad for Linux!
-games-fps/rtcwmp-demo 1.1-r2: Return to Castle Wolfenstein - Multi-player demo
-games-fps/rtcwsp-demo 1.1b-r2: Return to Castle Wolfenstein - Single-player demo
 games-fps/sauerbraten 2013.02.03: Sauerbraten is a FOSS game engine (Cube 2) with freeware game data (Sauerbraten)
 games-fps/serious-sam-tse 1_beta1-r1: Serious Sam: The Second Encounter
 games-fps/soldieroffortune 1.06a-r1: First-person shooter based on the mercenary trade
@@ -11419,7 +11394,6 @@ games-fps/tenebrae 1.04-r1: adds stencil shadows and per pixel lights to quake
 games-fps/transfusion-bin 1.01-r1: Blood remake
 games-fps/tribes2 25034: Tribes 2 - Team Combat on an Epic Scale
 games-fps/turtlearena 0.6.1-r1: A turtle featuring free and open source third-person action game (ioq3 engine)
-games-fps/unreal-tournament 451: Futuristic FPS
 games-fps/urbanterror 4.3.4_p20180708: Hollywood tactical shooter based on the ioquake3 engine
 games-fps/urbanterror-data 4.3.4: Data files for UrbanTerror
 games-fps/ut2003 2225-r4: Sequel to the 1999 Game of the Year multi-player first-person shooter
@@ -11711,7 +11685,6 @@ games-server/monopd 0.10.2-r1: server for atlantik games
 games-server/mtavc 0.5-r1: dedicated server for GTA3 multiplayer
 games-server/pvpgn 1.8.5-r2: A gaming server for Battle.Net compatible clients
 games-server/steamcmd 1.0-r1 1.0-r2: This is the command-line version of the Steam client for dedicated servers
-games-server/ut2004-ded 3369.3-r2: Unreal Tournament 2004 Linux Dedicated Server
 games-simulation/bcs-demo 1.3-r1: design and build bridges and then stress test them with trains
 games-simulation/cannonsmash 0.6.6-r1: 3D tabletennis game
 games-simulation/corsix-th 0.62: Open source clone of Theme Hospital
