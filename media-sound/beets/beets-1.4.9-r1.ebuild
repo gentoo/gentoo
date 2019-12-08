@@ -78,11 +78,11 @@ RDEPEND="${DEPEND}"
 
 RESTRICT="test" # tests broken in 1.4.3 already
 
-PATCHES=( "${FILESDIR}/${P}-py37.patch" )
-
 S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
+	distutils-r1_python_prepare_all
+
 	rm_use_plugins() {
 		[[ -n "${1}" ]] || die "rm_use_plugins: No use option given"
 		local use=${1}
@@ -102,8 +102,6 @@ python_prepare_all() {
 				die "Unable to disable ${arg} plugin "
 		done
 	}
-
-	distutils-r1_python_prepare_all
 
 	rm_use_plugins chromaprint chroma
 	rm_use_plugins ffmpeg convert
