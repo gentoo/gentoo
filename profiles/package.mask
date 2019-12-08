@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2019-12-08)
+# No revdeps, py2 only, needs version bump, practically unmaintained
+# in Gentoo. Removal in 30 days.
+sci-chemistry/pymol-plugins-psico
+
 # Michał Górny <mgorny@gentoo.org> (2019-12-08)
 # Not touched by maintainer since mid-2018.  Fails to build with gcc-9.
 # Requires llvm:6 (which is being removed).  Pending version bump.
