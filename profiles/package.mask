@@ -1038,14 +1038,3 @@ games-fps/doom3-roe
 games-fps/quake4-bin
 games-fps/quake4-data
 games-fps/quake4-demo
-
-# <klieber@gentoo.org> (2004-04-01)
-# The following packages contain a remotely-exploitable
-# security vulnerability and have been hard masked accordingly.
-#
-# Please see https://bugs.gentoo.org/show_bug.cgi?id=44351 for more info
-#
-games-fps/unreal-tournament-goty
-games-fps/unreal-tournament-strikeforce
-games-fps/unreal-tournament-bonuspacks
-games-fps/aaut
