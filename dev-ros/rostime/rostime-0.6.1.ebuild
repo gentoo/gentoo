@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/cpp_common
 "
 DEPEND="${RDEPEND}

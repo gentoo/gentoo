@@ -18,7 +18,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/rosconsole
 	dev-ros/roscpp
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/genpy[${PYTHON_USEDEP}]
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-python/rospkg[${PYTHON_USEDEP}]"

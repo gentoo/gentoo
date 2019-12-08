@@ -28,7 +28,7 @@ DEPEND="
 	dev-ros/tf2_msgs
 	sci-libs/orocos_kdl
 	dev-python/python_orocos_kdl[${PYTHON_USEDEP}]
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-cpp/gtest"
 
 mycatkincmakeargs=( "-DCATKIN_ENABLE_TESTING=ON" )

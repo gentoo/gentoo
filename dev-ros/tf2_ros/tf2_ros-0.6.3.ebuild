@@ -19,7 +19,7 @@ RDEPEND="
 	dev-ros/message_filters
 	dev-ros/roscpp
 	dev-ros/rosgraph
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-ros/tf2
 	dev-ros/tf2_py[${PYTHON_USEDEP}]

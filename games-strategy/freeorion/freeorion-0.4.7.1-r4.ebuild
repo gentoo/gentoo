@@ -26,7 +26,7 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	>=dev-libs/boost-1.56:=[python,threads,${PYTHON_USEDEP}]
+	>=dev-libs/boost-1.56:=[python,threads(+),${PYTHON_USEDEP}]
 	media-libs/freealut
 	media-libs/freetype
 	media-libs/glew:=

@@ -60,7 +60,7 @@ COMMON_DEPEND="
 		net-misc/curl:=[curl_ssl_openssl,static-libs?]
 	)
 	system-boost? (
-		=dev-libs/boost-1.66*:=[threads,context,python,static-libs?,${PYTHON_USEDEP}]
+		=dev-libs/boost-1.66*:=[threads(+),context,python,static-libs?,${PYTHON_USEDEP}]
 	)
 	jemalloc? ( dev-libs/jemalloc:=[static-libs?] )
 	!jemalloc? ( >=dev-util/google-perftools-2.4:=[static-libs?] )

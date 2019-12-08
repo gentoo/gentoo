@@ -18,7 +18,7 @@ fi
 IUSE="dbus dedicated doc fribidi libressl nls openmp server"
 
 RDEPEND="
-	>=dev-libs/boost-1.50:=[nls,threads,icu]
+	>=dev-libs/boost-1.50:=[nls,threads(+),icu]
 	>=media-libs/libsdl2-2.0.4:0[joystick,video,X]
 	!dedicated? (
 		dev-libs/glib:2

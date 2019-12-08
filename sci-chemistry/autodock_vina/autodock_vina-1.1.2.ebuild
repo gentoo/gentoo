@@ -16,7 +16,7 @@ KEYWORDS="amd64 x86"
 LICENSE="Apache-2.0"
 IUSE="debug"
 
-RDEPEND="dev-libs/boost[threads]"
+RDEPEND="dev-libs/boost[threads(+)]"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/${MY_P}/build/linux/release

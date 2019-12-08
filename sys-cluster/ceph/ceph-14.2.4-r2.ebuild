@@ -82,10 +82,10 @@ COMMON_DEPEND="
 	)
 	system-boost? (
 		|| (
-			~dev-libs/boost-1.70.0[threads,context,python,static-libs?,${PYTHON_USEDEP}]
-			~dev-libs/boost-1.67.0[threads,context,python,static-libs?,${PYTHON_USEDEP}]
+			~dev-libs/boost-1.70.0[threads(+),context,python,static-libs?,${PYTHON_USEDEP}]
+			~dev-libs/boost-1.67.0[threads(+),context,python,static-libs?,${PYTHON_USEDEP}]
 		)
-		dev-libs/boost:=[threads,context,python,static-libs?,${PYTHON_USEDEP}]
+		dev-libs/boost:=[threads(+),context,python,static-libs?,${PYTHON_USEDEP}]
 	)
 	jemalloc? ( dev-libs/jemalloc:=[static-libs?] )
 	!jemalloc? ( >=dev-util/google-perftools-2.4:=[static-libs?] )

@@ -16,7 +16,7 @@ RDEPEND="
 	!dev-libs/boost:0/1.57.0
 	>=media-libs/libmpdclient-2.1
 	dev-libs/boost:=[icu]
-	dev-libs/boost:=[nls,threads]
+	dev-libs/boost:=[nls,threads(+)]
 	dev-libs/icu:=
 	sys-libs/ncurses:=[unicode]
 	sys-libs/readline:*

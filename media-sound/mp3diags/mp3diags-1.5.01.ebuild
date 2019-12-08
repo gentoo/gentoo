@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5

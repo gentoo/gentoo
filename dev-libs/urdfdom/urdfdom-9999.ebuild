@@ -28,7 +28,7 @@ IUSE=""
 RDEPEND=">=dev-libs/urdfdom_headers-1.0.0
 	>=dev-libs/console_bridge-0.3:=
 	dev-libs/tinyxml
-	dev-libs/boost:=[threads]"
+	dev-libs/boost:=[threads(+)]"
 DEPEND="${RDEPEND}"
 
 src_prepare() {

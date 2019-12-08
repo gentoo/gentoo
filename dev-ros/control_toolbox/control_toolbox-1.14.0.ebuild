@@ -19,7 +19,7 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/dynamic_reconfigure
 	dev-ros/realtime_tools
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/tinyxml
 	dev-ros/control_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "

@@ -18,7 +18,7 @@ IUSE="debug"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-python/intervaltree[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 	sci-biology/samtools:0.1-legacy

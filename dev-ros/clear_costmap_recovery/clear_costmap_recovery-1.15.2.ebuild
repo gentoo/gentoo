@@ -21,7 +21,7 @@ RDEPEND="
 	dev-ros/tf
 	dev-cpp/eigen:3
 	sci-libs/pcl
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}

@@ -16,7 +16,7 @@ IUSE=""
 
 DEPEND="
 	dev-libs/libgcrypt:0
-	dev-libs/boost[threads]
+	dev-libs/boost[threads(+)]
 	>=media-video/vdr-1.7.34
 "
 RDEPEND="${DEPEND}"

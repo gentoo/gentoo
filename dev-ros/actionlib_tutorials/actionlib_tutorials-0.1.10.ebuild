@@ -19,6 +19,6 @@ IUSE=""
 RDEPEND="
 	dev-ros/roscpp
 	dev-ros/actionlib
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 "
 DEPEND="${RDEPEND}"

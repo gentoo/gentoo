@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 RDEPEND="
-	dev-libs/boost[threads]
+	dev-libs/boost[threads(+)]
 	sci-libs/adolc:0=
 	sci-libs/ipopt:0="
 DEPEND="${RDEPEND}

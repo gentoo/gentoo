@@ -15,7 +15,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	media-libs/opencv:=
 	x11-libs/gtk+:2
 	dev-ros/camera_calibration_parsers

@@ -24,6 +24,6 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/OpenNI2
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 "
 DEPEND="${RDEPEND}"

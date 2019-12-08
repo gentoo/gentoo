@@ -26,7 +26,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	virtual/libiconv
 	examples? ( !net-p2p/mldonkey )
 	python? (

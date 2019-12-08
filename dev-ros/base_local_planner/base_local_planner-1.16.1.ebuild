@@ -31,7 +31,7 @@ RDEPEND="
 	dev-ros/tf2_ros
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/voxel_grid
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}

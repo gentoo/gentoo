@@ -14,7 +14,7 @@ SLOT="0/melodic2"
 IUSE=""
 
 RDEPEND="dev-libs/poco
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/cmake_modules
 	dev-libs/console_bridge:="
 DEPEND="${RDEPEND}"

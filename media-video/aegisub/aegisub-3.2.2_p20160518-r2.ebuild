@@ -24,7 +24,7 @@ IUSE="+alsa debug +fftw openal oss portaudio pulseaudio spell test +uchardet"
 RDEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,debug?]
 	dev-lang/luajit:2[lua52compat]
-	dev-libs/boost:=[icu,nls,threads]
+	dev-libs/boost:=[icu,nls,threads(+)]
 	dev-libs/icu:=
 	media-libs/ffmpegsource:=
 	media-libs/fontconfig

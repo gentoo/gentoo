@@ -17,7 +17,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/rostime
 	dev-ros/roscpp
 	dev-ros/rosconsole

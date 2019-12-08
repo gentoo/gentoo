@@ -29,7 +29,7 @@ RDEPEND="
 	dev-cpp/eigen:3
 	x11-libs/fltk
 	media-libs/netpbm
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}

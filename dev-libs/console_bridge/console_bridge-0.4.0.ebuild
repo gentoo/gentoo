@@ -25,5 +25,5 @@ LICENSE="BSD"
 SLOT="0/4"
 IUSE=""
 
-RDEPEND="dev-libs/boost:=[threads]"
+RDEPEND="dev-libs/boost:=[threads(+)]"
 DEPEND="${RDEPEND}"

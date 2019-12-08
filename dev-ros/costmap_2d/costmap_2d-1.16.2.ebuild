@@ -34,7 +34,7 @@ RDEPEND="
 	dev-ros/tf2_sensor_msgs
 
 	dev-cpp/eigen:3
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/tinyxml2:=
 "
 DEPEND="${RDEPEND}

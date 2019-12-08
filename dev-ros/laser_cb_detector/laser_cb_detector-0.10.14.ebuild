@@ -17,7 +17,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/actionlib[${PYTHON_USEDEP}]
 	dev-ros/cv_bridge
 	media-libs/opencv:=

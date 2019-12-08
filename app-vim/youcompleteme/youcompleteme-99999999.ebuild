@@ -25,7 +25,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	clang? ( >=sys-devel/clang-3.3 )
-	dev-libs/boost[python,threads,${PYTHON_USEDEP}]
+	dev-libs/boost[python,threads(+),${PYTHON_USEDEP}]
 	|| (
 		app-editors/vim[python,${PYTHON_USEDEP}]
 		app-editors/gvim[python,${PYTHON_USEDEP}]

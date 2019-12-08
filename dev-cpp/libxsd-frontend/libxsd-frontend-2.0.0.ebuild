@@ -15,7 +15,7 @@ IUSE=""
 
 RDEPEND="
 	>=dev-libs/xerces-c-3.0.0
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-cpp/libcutl"
 DEPEND="${RDEPEND}
 	>=dev-util/build-0.3.10"

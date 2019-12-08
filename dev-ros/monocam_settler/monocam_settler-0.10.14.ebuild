@@ -21,7 +21,7 @@ RDEPEND="
 	dev-ros/rosconsole
 	dev-ros/roscpp_serialization
 	dev-ros/settlerlib
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 "
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )"

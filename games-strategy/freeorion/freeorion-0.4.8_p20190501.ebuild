@@ -34,7 +34,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 RDEPEND="
-	>=dev-libs/boost-1.58:=[python,threads,${PYTHON_USEDEP}]
+	>=dev-libs/boost-1.58:=[python,threads(+),${PYTHON_USEDEP}]
 	!dedicated? (
 		media-libs/freealut
 		>=media-libs/freetype-2.5.5

@@ -15,7 +15,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	media-libs/assimp
 	<dev-games/ogre-1.10:=
 	virtual/opengl

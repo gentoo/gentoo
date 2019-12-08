@@ -17,7 +17,7 @@ IUSE=""
 
 RDEPEND="
 	>=dev-python/rospkg-1.0.37[${PYTHON_USEDEP}]
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/rospack
 "
 DEPEND="${RDEPEND}

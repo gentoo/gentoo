@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="cairo debug doc gdal postgres sqlite"
 
 RDEPEND="
-	>=dev-libs/boost-1.48:=[threads]
+	>=dev-libs/boost-1.48:=[threads(+)]
 	dev-libs/icu:=
 	sys-libs/zlib
 	media-libs/freetype

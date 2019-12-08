@@ -16,7 +16,7 @@ IUSE="+gui test"
 
 # check Build.PL for dependencies
 RDEPEND="!=dev-lang/perl-5.16*
-	>=dev-libs/boost-1.55[threads]
+	>=dev-libs/boost-1.55[threads(+)]
 	dev-perl/Class-XSAccessor
 	dev-perl/Devel-CheckLib
 	dev-perl/Devel-Size

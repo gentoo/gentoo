@@ -26,7 +26,7 @@ RDEPEND="
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/calibration_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 "
 DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}/gcc6.patch" "${FILESDIR}/c11.patch" )

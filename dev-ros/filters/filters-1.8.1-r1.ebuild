@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="dev-ros/roscpp
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/console_bridge:=
 	dev-ros/pluginlib"
 DEPEND="${RDEPEND}

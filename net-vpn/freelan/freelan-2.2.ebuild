@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE="debug"
 
 DEPEND="
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/openssl:0=
 	net-misc/curl:=
 	virtual/libiconv

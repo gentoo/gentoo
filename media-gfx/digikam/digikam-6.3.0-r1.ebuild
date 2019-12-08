@@ -102,7 +102,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-cpp/eigen:3
-	dev-libs/boost[threads]
+	dev-libs/boost[threads(+)]
 "
 RDEPEND="${COMMON_DEPEND}
 	mysql? ( virtual/mysql[server] )

@@ -17,7 +17,7 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/rosunit[${PYTHON_USEDEP}]
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 "
 DEPEND="${RDEPEND}"
 RDEPEND="${RDEPEND}

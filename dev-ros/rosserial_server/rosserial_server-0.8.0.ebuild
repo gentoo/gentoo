@@ -17,7 +17,7 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/rosserial_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/topic_tools
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 "
 DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}/boost170.patch" )

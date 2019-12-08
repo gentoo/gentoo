@@ -29,7 +29,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
-		dev-libs/boost[threads]
+		dev-libs/boost[threads(+)]
 		app-arch/bzip2
 		dev-ros/rosout
 		dev-python/nose[${PYTHON_USEDEP}]

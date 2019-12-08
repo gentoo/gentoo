@@ -26,7 +26,7 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	lapack? ( virtual/lapack )
 	motif? ( media-libs/SoXt )
-	ogre? ( dev-games/ogre[ois(+)] dev-libs/boost:=[threads] )
+	ogre? ( dev-games/ogre[ois(+)] dev-libs/boost:=[threads(+)] )
 	opencv? ( media-libs/opencv:= )
 	png? ( media-libs/libpng:0= )
 	usb? ( virtual/libusb:1 )

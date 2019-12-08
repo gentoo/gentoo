@@ -19,7 +19,7 @@ RDEPEND="
 	acct-user/i2pd
 	acct-group/i2pd
 	!static? (
-		dev-libs/boost:=[threads]
+		dev-libs/boost:=[threads(+)]
 		!libressl? ( dev-libs/openssl:0=[-bindist] )
 		libressl? (
 			dev-libs/libressl:0=
@@ -29,7 +29,7 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}
 	static? (
-		dev-libs/boost:=[static-libs,threads]
+		dev-libs/boost:=[static-libs,threads(+)]
 		!libressl? ( dev-libs/openssl:0=[static-libs] )
 		libressl? (
 			dev-libs/libressl:0=[static-libs]

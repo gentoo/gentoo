@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	app-text/hunspell:=
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/libpcre:3=[pcre16]
 	dev-libs/xerces-c[icu]
 	dev-python/css-parser[${PYTHON_USEDEP}]

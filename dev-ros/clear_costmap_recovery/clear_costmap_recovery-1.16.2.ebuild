@@ -21,7 +21,7 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/tf2_ros
 
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}

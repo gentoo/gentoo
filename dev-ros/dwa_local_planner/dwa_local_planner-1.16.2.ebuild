@@ -30,7 +30,7 @@ RDEPEND="
 	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2_ros
 
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"

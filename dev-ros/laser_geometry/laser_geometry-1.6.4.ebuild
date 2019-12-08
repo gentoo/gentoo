@@ -18,7 +18,7 @@ RDEPEND="
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/tf
 	dev-ros/tf2_ros[${PYTHON_USEDEP}]
 	dev-cpp/eigen:3

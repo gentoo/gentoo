@@ -26,7 +26,7 @@ RDEPEND="
 	dev-ros/pluginlib
 	dev-ros/message_filters
 	dev-ros/dynamic_reconfigure
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rosunit )

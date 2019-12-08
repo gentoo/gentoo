@@ -13,7 +13,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc 
 SLOT="0"
 IUSE="doc static-libs"
 
-RDEPEND=">=dev-libs/boost-1.62.0:=[threads]
+RDEPEND=">=dev-libs/boost-1.62.0:=[threads(+)]
 	dev-util/ctags"
 DEPEND="${RDEPEND}"
 

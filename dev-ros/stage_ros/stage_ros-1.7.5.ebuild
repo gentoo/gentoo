@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/geometry_msgs
 	dev-ros/nav_msgs
 	dev-ros/roscpp

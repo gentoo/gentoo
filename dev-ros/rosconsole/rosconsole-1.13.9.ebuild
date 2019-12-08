@@ -17,7 +17,7 @@ RDEPEND="
 	dev-ros/cpp_common
 	dev-ros/rostime
 	dev-ros/rosunit
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	log4cxx? ( dev-libs/log4cxx )
 	!log4cxx? ( glog? ( dev-cpp/glog ) )
 "

@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="net-libs/libpcap:=[usb]
-		dev-libs/boost:=[threads]"
+		dev-libs/boost:=[threads(+)]"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-release-${PV}"

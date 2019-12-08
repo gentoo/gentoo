@@ -17,7 +17,7 @@ KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 IUSE="examples"
 
 RDEPEND="
-	dev-libs/boost:=[python,threads,${PYTHON_USEDEP}]
+	dev-libs/boost:=[python,threads(+),${PYTHON_USEDEP}]
 	>=media-libs/taglib-1.8
 "
 DEPEND="${RDEPEND}

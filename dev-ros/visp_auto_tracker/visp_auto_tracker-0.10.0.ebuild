@@ -24,7 +24,7 @@ RDEPEND="
 	dev-ros/visp_bridge
 	dev-ros/visp_tracker
 	sci-libs/ViSP:=[dmtx,zbar]
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 "
 DEPEND="${RDEPEND}"
 if [ "${PV#9999}" = "${PV}" ] ; then

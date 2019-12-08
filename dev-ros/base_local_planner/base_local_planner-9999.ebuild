@@ -34,7 +34,7 @@ RDEPEND="
 	dev-ros/tf2_ros
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/voxel_grid
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 "
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules

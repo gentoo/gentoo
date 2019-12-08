@@ -16,7 +16,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/angles
 	dev-ros/message_filters
 	dev-ros/rosconsole

@@ -16,7 +16,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/audio_common_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/roscpp
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	media-libs/gstreamer:1.0
 "
 DEPEND="${RDEPEND}

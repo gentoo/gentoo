@@ -23,7 +23,7 @@ IUSE="armadillo doc rtlsdr uhd"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-libs/boost:=[threads,${PYTHON_USEDEP}]
+	dev-libs/boost:=[threads(+),${PYTHON_USEDEP}]
 	>=net-wireless/gnuradio-3.7.0:=[${PYTHON_USEDEP}]
 	armadillo? ( sci-libs/armadillo )
 	rtlsdr? ( virtual/libusb:1 )

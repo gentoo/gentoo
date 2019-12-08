@@ -15,7 +15,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-ros/message_filters
 	dev-ros/nodelet

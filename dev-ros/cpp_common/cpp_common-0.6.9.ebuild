@@ -15,5 +15,5 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/console_bridge:=
-	dev-libs/boost:=[threads]"
+	dev-libs/boost:=[threads(+)]"
 DEPEND="${RDEPEND}"

@@ -20,7 +20,7 @@ RDEPEND="
 	dev-ros/pluginlib
 	dev-ros/roscpp
 
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-cpp/eigen:3
 	dev-libs/console_bridge:=
 "

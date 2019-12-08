@@ -20,7 +20,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/rosconsole
 	dev-ros/roscpp
 	dev-ros/roscpp_serialization

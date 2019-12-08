@@ -22,7 +22,7 @@ RDEPEND="
 	dev-ros/message_filters
 	dev-ros/laser_geometry
 	dev-ros/tf_conversions
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3"

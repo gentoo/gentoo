@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-ros/urdf-1.12.3-r1
 	dev-libs/urdfdom:=
 	sci-electronics/gazebo:=
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"

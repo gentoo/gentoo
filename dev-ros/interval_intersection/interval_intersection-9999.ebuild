@@ -17,7 +17,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/actionlib
 	dev-ros/calibration_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/rosconsole

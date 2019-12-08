@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	>=dev-libs/boost-1.34[threads]
+	>=dev-libs/boost-1.34[threads(+)]
 	dev-libs/fribidi
 	media-libs/libsdl[opengl]
 	media-libs/libvorbis

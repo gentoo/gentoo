@@ -28,7 +28,7 @@ IUSE="cuda doc opengl openni openni2 pcap png +qhull qt5 usb vtk cpu_flags_x86_s
 
 RDEPEND="
 	>=sci-libs/flann-1.7.1
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-cpp/eigen:3
 	opengl? ( virtual/opengl media-libs/freeglut )
 	openni? ( dev-libs/OpenNI )
