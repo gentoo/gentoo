@@ -11044,7 +11044,6 @@ games-action/noiz2sa 0.51a-r1: Abstract Shooting Game
 games-action/openastromenace 1.3.2-r1: Modern 3D space shooter with spaceship upgrade possibilities
 games-action/openclonk 7.0: A free multiplayer action game where you control clonks
 games-action/orbital-eunuchs-sniper 1.30-r1: Snipe terrorists from your orbital base
-games-action/phobiaii 1.1-r1: Just a moment ago, you were safe inside your ship, behind five inch armour
 games-action/postalplus 1-r1: Ultraviolent and controversial game featuring the Postal Dude
 games-action/powermanga 0.93.1-r1: An arcade 2D shoot-em-up game
 games-action/rrootage 0.23a-r1: Abstract shooter - defeat auto-created huge battleships
@@ -11350,24 +11349,11 @@ games-engines/solarus 1.3.1-r1: An open-source Zelda-like 2D game engine
 games-engines/stratagus 2.4.1: A realtime strategy game engine
 games-engines/xzip 1.8.2-r3: X interface to Z-code based text games
 games-engines/zoom 1.1.5-r1: A fast, clean, modern Z-code interpreter for X
-games-fps/aaut 1: ascii mode unreal tournament
 games-fps/alienarena 20130827-r1: Fast-paced multiplayer deathmatch game
 games-fps/avp 20150214-r1: Linux port of Aliens vs Predator
 games-fps/blackshades 20070723-r1: You control a psychic bodyguard, and try to protect the VIP
 games-fps/darkplaces 20140513-r1: Enhanced engine for iD Software's Quake 1
 games-fps/doom-data 1.9: The IWAD used by the shareware version of Doom
-games-fps/doom3 1.3.1304-r1: 3rd installment of the classic iD 3D first-person shooter
-games-fps/doom3-cdoom 1.3.1: Doom 3 Classic Doom - Doom 1 conversion for Doom 3
-games-fps/doom3-chextrek 0.52: Doom 3 Chex Trek: Beyond the Quest - Green slimeballs mod for kids
-games-fps/doom3-data 1.1.1282-r1: Doom 3 - data portion
-games-fps/doom3-demo 1.1.1286-r1: Doom III - 3rd installment of the classic id 3D first-person shooter
-games-fps/doom3-ducttape 0007: Doom 3 Duct Tape - sticks flashlights to your machinegun and shotgun
-games-fps/doom3-eventhorizon 1.3: Doom 3 Event Horizon - single-player mission based on the Event Horizon film
-games-fps/doom3-hellcampaign 1-r1: Doom 3 Hell Campaign - map pack for Doom 3
-games-fps/doom3-inhell 1.1-r1: Doom 3 In Hell - Ultimate Doom-inspired levels for Doom 3
-games-fps/doom3-lms 4: Doom 3 Last Man Standing - add co-op support or play against swarms of monsters
-games-fps/doom3-mitm 20070129: Doom 3 Make it to Morning - Single player maps
-games-fps/doom3-roe 1: Doom III: Resurrection of Evil expansion pack
 games-fps/doomsday 2.1.1: A modern gaming engine for Doom, Heretic, and Hexen
 games-fps/duke3d-data 1.0-r4: Duke Nukem 3D data files
 games-fps/duke3d-demodata 1.3: Duke Nukem 3D 1.3d shareware data
@@ -11419,15 +11405,11 @@ games-fps/quake3-reaction 3.2: Quake III Reaction - port of Action Quake 2 to Qu
 games-fps/quake3-ruinhunters 1.0a-r1: Quake III Ruin Hunters - Anime mod with cartoon actors and arcade-like gameplay
 games-fps/quake3-teamarena 1.32b: Quake III Team Arena - data portion
 games-fps/quake3-threewave 1.7-r1: Quake III Threewave CTF - Threewave CTF
-games-fps/quake4-bin 1.4.2-r2: Sequel to Quake 2, an id Software 3D first-person shooter
-games-fps/quake4-data 1.0.2147.12: sequel to Quake 2, an id 3D first-person shooter
-games-fps/quake4-demo 1.0-r2: Sequel to Quake 2, an Id 3D first-person shooter
 games-fps/quakeforge 0.7.2-r1: New 3d engine based off of id Softwares's Quake and QuakeWorld game engine
 games-fps/qudos 0.40.1: Enhanced Quake 2 engine
 games-fps/red-blue-quake2 0.1: red-blue Quake II ! play quake2 w/3d glasses !
 games-fps/redeclipse 1.6.0-r2: First-person ego-shooter, built as a total conversion of Cube Engine 2
 games-fps/rott 1.1.2-r1: Rise of the Triad for Linux!
-games-fps/rtcw 1.41b: Return to Castle Wolfenstein - Long awaited sequel to Wolfenstein 3D
 games-fps/rtcwmp-demo 1.1-r2: Return to Castle Wolfenstein - Multi-player demo
 games-fps/rtcwsp-demo 1.1b-r2: Return to Castle Wolfenstein - Single-player demo
 games-fps/sauerbraten 2013.02.03: Sauerbraten is a FOSS game engine (Cube 2) with freeware game data (Sauerbraten)
@@ -11437,11 +11419,7 @@ games-fps/tenebrae 1.04-r1: adds stencil shadows and per pixel lights to quake
 games-fps/transfusion-bin 1.01-r1: Blood remake
 games-fps/tribes2 25034: Tribes 2 - Team Combat on an Epic Scale
 games-fps/turtlearena 0.6.1-r1: A turtle featuring free and open source third-person action game (ioq3 engine)
-games-fps/unreal 226: Futuristic FPS (a hack that runs on top of Unreal Tournament)
 games-fps/unreal-tournament 451: Futuristic FPS
-games-fps/unreal-tournament-bonuspacks 436: Futuristic FPS (bonus packs)
-games-fps/unreal-tournament-goty 451: Futuristic FPS (Game Of The Year edition)
-games-fps/unreal-tournament-strikeforce 1.81: A UT addon where you fight terrorists as part of an elite strikeforce
 games-fps/urbanterror 4.3.4_p20180708: Hollywood tactical shooter based on the ioquake3 engine
 games-fps/urbanterror-data 4.3.4: Data files for UrbanTerror
 games-fps/ut2003 2225-r4: Sequel to the 1999 Game of the Year multi-player first-person shooter
@@ -11789,7 +11767,6 @@ games-strategy/galaxyhack 1.74-r1: Multiplayer AI script based strategy game
 games-strategy/glob2 0.9.4.4-r2: Real Time Strategy (RTS) game involving a brave army of globs
 games-strategy/gwp 0.4.0-r3: GNOME client for the classic PBEM strategy game VGA Planets 3
 games-strategy/hedgewars 1.0.0-r1: A turn-based strategy, artillery, action and comedy game
-games-strategy/heroes3 1.3.1a-r2: Heroes of Might and Magic III: The Restoration of Erathia
 games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SDL
 games-strategy/ja2-stracciatella-data 1: A port of Jagged Alliance 2 to SDL (data files)
 games-strategy/knights-demo 1.32-r2: Anglo-Saxon medieval army battles and resource management
@@ -11808,7 +11785,6 @@ games-strategy/s25rttr 0.8.1-r3: Open Source remake of The Settlers II game (nee
 games-strategy/satellite-reign 1.13.06: Real-time, class-based strategy game set in a cyberpunk city
 games-strategy/scorched3d 44-r2: Multi-player tank battle in 3D (OpenGL)
 games-strategy/seven-kingdoms 2.14.7 2.15.2: Seven Kingdoms: Ancient Adversaries
-games-strategy/smac 6.0a: Linux port of the popular strategy game from Firaxis
 games-strategy/spaz 1.605-r1: Space Pirates and Zombies
 games-strategy/tornado 1.4-r2: Clone of a C64 game - destroy the opponent's house
 games-strategy/triplea 1.8.0.9-r1: An open source clone of the popular Axis and Allies boardgame
@@ -17815,8 +17791,6 @@ sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.20.0 4.20.2-r1 4.99.25_rc9: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.0.1: Library for managing partitions
 sys-libs/ldb 1.1.29-r1 1.1.31 1.2.4 1.3.6 1.3.8 1.4.7 1.4.8 1.5.4 1.5.5 1.5.6 1.6.3 2.0.5 2.0.7: An LDAP-like embedded database
-sys-libs/lib-compat 1.5: Compatibility C++ library for very old programs
-sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
 sys-libs/libapparmor 2.13.3: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
