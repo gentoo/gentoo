@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig dev-util/gdbus-codegen >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-apps/dbus:= dev-libs/glib:= app-crypt/tpm2-tss:= acct-group/tss acct-user/tss test? ( dev-util/cmocka )
+DESCRIPTION=TPM2 Access Broker & Resource Manager
+EAPI=7
+HOMEPAGE=https://github.com/tpm2-software/tpm2-abrmd
+IUSE=static-libs test
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=sys-apps/dbus:= dev-libs/glib:= app-crypt/tpm2-tss:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/tpm2-software/tpm2-abrmd/releases/download/2.1.1/tpm2-abrmd-2.1.1.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=62061a0fed7762cb32b14525b30389be

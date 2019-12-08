@@ -60,6 +60,7 @@ acct-group/postdrop 0: System group: postdrop
 acct-group/postfix 0: System group: postfix
 acct-group/qemu 0: System group: qemu
 acct-group/qmail 0: System group: qmail
+acct-group/redmine 0: System group: redmine
 acct-group/render 0: System group: render
 acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
 acct-group/slurm 0: A group for the slurm - Highly Scalable Resource Manager
@@ -80,6 +81,7 @@ acct-group/teamspeak 0: A group for the TeamSpeak server
 acct-group/tor 0: group for tor daemon
 acct-group/tox 0: Group management for package net-libs/tox
 acct-group/transmission 0: System group: transmission
+acct-group/tss 0: Trusted Software Stack for TPMs group
 acct-group/tty 0: System group: tty
 acct-group/unifi 0: A group for the UniFi controller
 acct-group/unrealircd 0: System group: unrealircd
@@ -144,6 +146,7 @@ acct-user/qmailp 0: user for qmail-getpw
 acct-user/qmailq 0: user for qmail queue
 acct-user/qmailr 0: user for qmail-rspawn and qmail-remote
 acct-user/qmails 0: user for qmail-smtpd
+acct-user/redmine 0: Redmine application user
 acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
 acct-user/slurm 0: User for the slurm - Highly Scalable Resource Manager
 acct-user/spectrum 0: A user for the Spectrum messaging transport
@@ -161,6 +164,7 @@ acct-user/teamspeak 0: A user for the TeamSpeak server
 acct-user/tor 0: user for tor daemon
 acct-user/tox 0: User for package net-libs/tox
 acct-user/transmission 1: System user: transmission
+acct-user/tss 0: Trusted Software Stack for TPMs user
 acct-user/unifi 0: A user for the UniFi Controller
 acct-user/unrealircd 0: System user: unrealircd
 acct-user/uptimed 0: user for uptime daemon
@@ -779,12 +783,12 @@ app-crypt/swtpm 0.2.0: Libtpms-based TPM emulator
 app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCrypt implementation
 app-crypt/tpm-emulator 0.7.5-r1: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform Modules
-app-crypt/tpm2-abrmd 2.1.1: TPM2 Access Broker & Resource Manager
+app-crypt/tpm2-abrmd 2.1.1 2.1.1-r1: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-tools 3.1.4: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.1.1: Attest the trustworthiness of a device against a human using time-based OTP
-app-crypt/tpm2-tss 2.2.3: TCG Trusted Platform Module 2.0 Software Stack
+app-crypt/tpm2-tss 2.2.3 2.2.3-r1: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.0.0: OpenSSL Engine for TPM2 devices
-app-crypt/trousers 0.3.14-r1: An open-source TCG Software Stack (TSS) v1.1 implementation
+app-crypt/trousers 0.3.14-r1 0.3.14-r2: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1: GnuPG archive keys of the Ubuntu archive
 app-crypt/veracrypt 1.23 1.24 1.24-r1 1.24-r2 1.24_p1: Disk encryption with strong security based on TrueCrypt
 app-crypt/virtualsmartcard 0.7: Smart card emulator, can be used with Remote Smart Card Reader
@@ -15164,7 +15168,7 @@ net-misc/AQtion 2.2.7 2.3.1: Aquantia AQC multigigabit NIC linux driver (atlanti
 net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
-net-misc/anydesk 4.0.1-r1 5.0.0 5.1.2 5.5.0 5.5.0-r1 5.5.1: Feature rich multi-platform remote desktop application
+net-misc/anydesk 5.0.0 5.1.2 5.5.0-r1 5.5.1: Feature rich multi-platform remote desktop application
 net-misc/apt-cacher-ng 3.2_p2-r2 3.3_p1 3.3_p1-r1 3.3_p2: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
@@ -18271,7 +18275,7 @@ www-apps/piwigo 2.9.5 2.10.0 2.10.1: a photo gallery software for the web
 www-apps/postfixadmin 3.1 3.2: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 3.1.0 4.0.0 4.1.5: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 1.1.6 2.1.11-r1: A simple CalDAV calendar server
-www-apps/redmine 3.3.7 3.4.5: Flexible project management web application using the Ruby on Rails framework
+www-apps/redmine 4.0.5: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 1.5.1 1.6.1-r1: Issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/rt 4.4.3 4.4.4: RT is an enterprise-grade ticketing system

@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) virtual/pkgconfig
+DEFINED_PHASES=configure install setup
+DEPEND=gcrypt? ( dev-libs/libgcrypt:0= ) openssl? ( dev-libs/openssl:0= ) acct-group/tss acct-user/tss test? ( dev-util/cmocka )
+DESCRIPTION=TCG Trusted Platform Module 2.0 Software Stack
+EAPI=7
+HOMEPAGE=https://github.com/tpm2-software/tpm2-tss
+IUSE=doc +gcrypt openssl static-libs test kernel_linux
+KEYWORDS=~amd64
+LICENSE=BSD-2
+RDEPEND=gcrypt? ( dev-libs/libgcrypt:0= ) openssl? ( dev-libs/openssl:0= )
+REQUIRED_USE=gcrypt? ( !openssl ) openssl? ( !gcrypt ) || ( gcrypt openssl )
+RESTRICT=!test? ( test )
+SLOT=0/0
+SRC_URI=https://github.com/tpm2-software/tpm2-tss/releases/download/2.2.3/tpm2-tss-2.2.3.tar.gz
+_eclasses_=linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
+_md5_=3e3546250a74696cd703ed18ae7ba491
