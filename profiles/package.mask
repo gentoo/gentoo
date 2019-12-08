@@ -1019,22 +1019,3 @@ dev-libs/cygwin
 dev-util/mingw64-runtime
 sys-libs/newlib
 dev-embedded/avr-libc
-
-# Chris Gianelloni <wolf31o2@gentoo.org> (2008-03-03)
-# Masking due to security bug #194607 and security bug #204067
-# Removal in 10 days
-games-fps/doom3
-games-fps/doom3-cdoom
-games-fps/doom3-chextrek
-games-fps/doom3-data
-games-fps/doom3-demo
-games-fps/doom3-ducttape
-games-fps/doom3-eventhorizon
-games-fps/doom3-hellcampaign
-games-fps/doom3-inhell
-games-fps/doom3-lms
-games-fps/doom3-mitm
-games-fps/doom3-roe
-games-fps/quake4-bin
-games-fps/quake4-data
-games-fps/quake4-demo
