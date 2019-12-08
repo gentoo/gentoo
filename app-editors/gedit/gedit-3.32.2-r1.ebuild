@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{5,6,7,8} )
 VALA_MIN_API_VERSION="0.26"
 VALA_USE_DEPEND="vapigen"
 
-inherit gnome.org gnome2-utils meson python-single-r1 vala virtualx xdg
+inherit gnome.org gnome2-utils meson python-single-r1 vala xdg
 
 DESCRIPTION="A text editor for the GNOME desktop"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gedit"
