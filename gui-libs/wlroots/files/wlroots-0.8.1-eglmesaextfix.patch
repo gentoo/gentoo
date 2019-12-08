@@ -1,0 +1,25 @@
+From d113e48a2a32542fe6e12f1759f07888364609bf Mon Sep 17 00:00:00 2001
+From: Ferdinand Bachmann <theferdi265@gmail.com>
+Date: Sat, 19 Oct 2019 13:33:22 +0200
+Subject: [PATCH] Add missing include required by mesa and libglvnd change
+
+eglext.h no longer inludes eglmesaext.h, include it within wlroots
+explicitly.
+
+Fixes #1862
+---
+ glgen.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/glgen.sh b/glgen.sh
+index 7324fdf6b..31af28120 100755
+--- a/glgen.sh
++++ b/glgen.sh
+@@ -75,6 +75,7 @@ cat > "$OUTDIR/$BASE.h" << EOF
+ 
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ #include <GLES2/gl2.h>
+ #include <GLES2/gl2ext.h>
+ 

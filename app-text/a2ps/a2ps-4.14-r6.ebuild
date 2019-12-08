@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,8 +23,7 @@ RDEPEND="app-text/ghostscript-gpl
 	emacs? ( virtual/emacs )
 	latex? ( virtual/latex-base )
 	nls? ( virtual/libintl )
-	userland_GNU? ( >=sys-apps/coreutils-6.10-r1 )
-	userland_BSD? ( sys-freebsd/freebsd-ubin )"
+	userland_GNU? ( >=sys-apps/coreutils-6.10-r1 )"
 DEPEND="${RDEPEND}
 	>=dev-util/gperf-2.7.2
 	virtual/yacc
@@ -76,6 +75,9 @@ src_prepare() {
 
 	# fix CVE-2001-1593, bug 507024
 	eapply "${FILESDIR}"/${P}-CVE-2001-1593.patch
+
+	# specify encoding explicitly, bug #695918
+	eapply "${FILESDIR}"/${P}-texinfo-6.7-encoding.patch
 
 	# fix building with sys-devel/automake >= 1.12, bug 420503
 	rm -f {.,ogonkify}/aclocal.m4 || die
