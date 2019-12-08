@@ -6,7 +6,7 @@ EAPI=7
 # Python < 3.6 requires https://pypi.org/project/aenum/
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r1
 
 DESCRIPTION="Python interface to the PROJ library"
 HOMEPAGE="https://github.com/jswhit/pyproj"
@@ -31,11 +31,6 @@ PATCHES=( "${FILESDIR}"/${P}-conftest.patch )
 
 distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
-
-python_prepare_all() {
-	distutils-r1_python_prepare_all
-	append-cflags -fno-strict-aliasing
-}
 
 python_test() {
 	PROJ_LIB="${EPREFIX}/usr/share/proj" pytest -ra || die
