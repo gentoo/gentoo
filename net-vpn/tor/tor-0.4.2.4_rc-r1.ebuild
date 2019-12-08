@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit flag-o-matic readme.gentoo-r1 systemd user
+inherit flag-o-matic readme.gentoo-r1 systemd
 
 MY_PV="$(ver_rs 4 -)"
 MY_PF="${PN}-${MY_PV}"
