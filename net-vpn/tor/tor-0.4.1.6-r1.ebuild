@@ -27,7 +27,7 @@ DEPEND="
 	libressl? ( dev-libs/libressl:0= )
 	lzma? ( app-arch/xz-utils )
 	scrypt? ( app-crypt/libscrypt )
-	seccomp? ( sys-libs/libseccomp )
+	seccomp? ( >=sys-libs/libseccomp-2.4.1 )
 	systemd? ( sys-apps/systemd )
 	zstd? ( app-arch/zstd )"
 RDEPEND="
