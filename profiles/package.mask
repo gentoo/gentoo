@@ -962,20 +962,6 @@ app-admin/amazon-ec2-init
 =sys-libs/db-6.2*
 =sys-libs/db-18.1*
 
-# Ulrich Müller <ulm@gentoo.org> (2014-07-15)
-# Permanently mask sys-libs/lib-compat and its reverse dependencies,
-# pending multiple security vulnerabilities and QA issues.
-# See bugs #515926 and #510960.
-# Aaron Bauman <bman@gentoo.org> (updated 2019-11-09)
-# Removal in 10 days.
-sys-libs/lib-compat
-sys-libs/lib-compat-loki
-games-action/phobiaii
-games-fps/rtcw
-games-fps/unreal
-games-strategy/heroes3
-games-strategy/smac
-
 # Mikle Kolyada <zlogene@gentoo.org> (2014-06-27)
 # Masked for proper testing. (Major updates in the code).
 ~dev-perl/PortageXS-0.2.12
