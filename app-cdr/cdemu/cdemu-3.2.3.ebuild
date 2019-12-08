@@ -19,7 +19,9 @@ IUSE="+cdemu-daemon"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+	')
 	cdemu-daemon? ( app-cdr/cdemu-daemon:0/7 )"
 DEPEND="
 	dev-util/desktop-file-utils
