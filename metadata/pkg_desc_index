@@ -52,6 +52,7 @@ acct-group/nofiles 0: System group: nofiles
 acct-group/nsd 0: System group: nsd
 acct-group/ntp 0: System group: ntp
 acct-group/opendkim 0: Group for OpenDKIM
+acct-group/openntpd 0: System group: openntpd
 acct-group/openrct2 0: A group for the OpenRCT2 dedicated server
 acct-group/pdnsd 0: System group: pdnsd
 acct-group/plugdev 0: Group controlling access to removable media
@@ -134,6 +135,7 @@ acct-user/netdata 0: user for netdata
 acct-user/nsd 0: user for nsd daemon
 acct-user/ntp 0: user for ntp daemon
 acct-user/opendkim 0: User for OpenDKIM
+acct-user/openntpd 0: user for openntpd daemon
 acct-user/openrct2 0: A user for the OpenRCT2 dedicated server
 acct-user/pdnsd 0: user for pdns daemon
 acct-user/polkitd 0: System user: polkitd
@@ -238,7 +240,7 @@ app-admin/cronlocker 0.4.0_p20180710: synchronize a cron job across multiple hos
 app-admin/cronolog 1.6.2-r5: Log rotation software
 app-admin/cygwin-rebase 4.4.4 9999: Core of the automatic rebase facility during postinstall on Cygwin
 app-admin/denyhosts 2.9 3.0 3.0-r1: DenyHosts is a utility to help sys admins thwart ssh hackers
-app-admin/diamond 4.0-r1 4.0.515 4.0.515.20180315 9999: Python daemon that collects and publishes system metrics
+app-admin/diamond 4.0-r1 4.0.515 4.0.515.20170311: Python daemon that collects and publishes system metrics
 app-admin/dio 1.5.2-r1: A device I/O monitoring tool
 app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
 app-admin/doas 6.0: Run commands as super user or another user, alternative to sudo from OpenBSD
@@ -1597,7 +1599,7 @@ app-eselect/eselect-postgresql 2.4: Utility to select the default PostgreSQL slo
 app-eselect/eselect-python 20160516 20171204 20190417 99999999: Eselect module for management of multiple Python versions
 app-eselect/eselect-rails 0.23 0.24: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.7: Manages renpy symlink
-app-eselect/eselect-repository 7 9999: Manage repos.conf via eselect
+app-eselect/eselect-repository 7: Manage repos.conf via eselect
 app-eselect/eselect-ruby 20170723 20190121: Manages multiple Ruby versions
 app-eselect/eselect-rust 20190311: Eselect module for management of multiple Rust versions
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
@@ -2315,7 +2317,7 @@ app-portage/gpytage 0.3.0_rc1-r1: GTK Utility to help manage Portage's user conf
 app-portage/gpyutils 0.2.2 0.3 9999: Utitilies for maintaining Python packages
 app-portage/grs 0.6-r1 0.7 9999: Suite to build Gentoo Reference Systems
 app-portage/gs-elpa 0.1.3 0.1.3-r1 9999: g-sorcery backend for elisp packages
-app-portage/gverify 1 2: gentoo.git signature verification tool
+app-portage/gverify 2: gentoo.git signature verification tool
 app-portage/hackport 0.5.1 0.5.2 0.5.3 0.5.4 0.5.5-r1 0.5.6 9999: Hackage and Portage integration tool
 app-portage/java-ebuilder 0.4.1 9999: Java team tool for semi-automatic creation of ebuilds from pom.xml
 app-portage/kuroo 0.90.5_p20180410 9999: Graphical Portage frontend based on KDE Frameworks
@@ -15126,7 +15128,7 @@ net-mail/muchsync 3 4 5: Synchronizes mail messages and notmuch tags across mach
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.28.4 0.29.2 0.29.3: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 7.2.4: Powerful IMAP/Maildir synchronization and reader support
-net-mail/pflogsumm 1.1.5-r1: Pflogsumm is a log analyzer for Postfix logs
+net-mail/pflogsumm 1.1.5-r1 1.1.5-r2: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
 net-mail/pop-before-smtp 1.42: a simple daemon to allow email relay control based on successful POP or IMAP logins
 net-mail/pop2imap 1.18 1.21: Synchronize mailboxes between a pop and an imap servers
@@ -15366,7 +15368,7 @@ net-misc/oidentd 2.0.8-r6 2.3.2: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.6.1 0.9.6.1-r1 0.9.7 0.9.8: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0 1.0-r1 1.0_p20180614: A driver for NTPd for people who are firewall-challenged
-net-misc/openntpd 6.0_p1 6.2_p3: Lightweight NTP server ported from OpenBSD
+net-misc/openntpd 6.0_p1 6.2_p3 6.2_p3-r1: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openssh 7.5_p1-r4 7.7_p1-r9 7.9_p1-r4 8.0_p1-r4 8.1_p1-r1: Port of OpenBSD's free SSH release
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
@@ -16232,7 +16234,7 @@ sci-electronics/kicad-symbols 5.0.1 5.1.0 5.1.2 5.1.4: Electronic Schematic and 
 sci-electronics/kicad-templates 5.0.1 5.1.0 5.1.2 5.1.4: Electronic Schematic and PCB design tools project templates
 sci-electronics/klayout 0.25.6 9999: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/labone 16.12.42529: Platform independent instrument control for Zurich Instruments devices
-sci-electronics/librepcb 0.1.0-r1 9999: Free EDA software to develop printed circuit boards
+sci-electronics/librepcb 0.1.0-r1 0.1.3 9999: Free EDA software to develop printed circuit boards
 sci-electronics/linsmith 0.99.30-r1 0.99.31: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
 sci-electronics/netgen 1.4.52: LVS tool (layout versus schematic comparison)
