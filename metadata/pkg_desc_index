@@ -10536,7 +10536,7 @@ dev-util/babeltrace 1.2.3 1.2.4: A command-line tool and library to read and con
 dev-util/bakefile 0.2.9-r1: Native makefiles generator
 dev-util/bam 0.4.0-r1 0.5.1: Fast and flexible Lua-based build system
 dev-util/bats 0.4.0 0.4.0_p20170219: An automated testing system for bash
-dev-util/bazel 0.22.0 0.24.1 0.27.2 0.29.1 1.0.1 1.2.0: Fast and correct automated build system
+dev-util/bazel 0.22.0 0.24.1 0.27.2 0.29.1 1.0.1 1.2.0 1.2.0-r1: Fast and correct automated build system
 dev-util/bbe 0.2.2 0.2.2-r1: Sed-like editor for binary files
 dev-util/bcc 0.6.0 0.7.0 0.9.0-r1 0.10.0 0.11.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20150811-r1: Indents C/C++ source code
@@ -18318,7 +18318,7 @@ www-servers/nginx-unit 1.8.0 1.12.0-r3 1.13.0: Dynamic web and application serve
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3.3 9999: Pretty small HTTP server -- a command-line tool to share files
-www-servers/puma 3.12.1 3.12.1-r1 4.2.0 4.2.1: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
+www-servers/puma 3.12.1 3.12.1-r1 3.12.2 4.2.0 4.2.1 4.3.1: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/resin 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections based on the hostname
