@@ -3,9 +3,11 @@
 
 EAPI=7
 
-KDE_DOC_DIR="docbook"
-KDE_HANDBOOK="forceoptional"
-inherit kde5
+ECM_HANDBOOK_DIR="docbook"
+ECM_HANDBOOK="forceoptional"
+KFMIN=5.60.0
+QTMIN=5.12.3
+inherit ecm
 
 DESCRIPTION="GUI front end for Linux LVM2 and GNU parted based on KDE Frameworks"
 HOMEPAGE="https://sourceforge.net/projects/kvpm/"
@@ -17,15 +19,15 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
-	$(add_frameworks_dep kconfig)
-	$(add_frameworks_dep kconfigwidgets)
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kdelibs4support)
-	$(add_frameworks_dep kwidgetsaddons)
-	$(add_frameworks_dep kxmlgui)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtwidgets)
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=kde-frameworks/kconfig-${KFMIN}:5
+	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
+	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
+	>=kde-frameworks/kdelibs4support-${KFMIN}:5
+	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
+	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	sys-apps/util-linux
 	>=sys-block/parted-2.3
 	>=sys-fs/lvm2-2.02.120

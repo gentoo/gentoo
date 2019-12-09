@@ -3,35 +3,39 @@
 
 EAPI=7
 
-KDE_HANDBOOK="forceoptional"
-inherit kde5
+ECM_HANDBOOK="forceoptional"
+KFMIN=5.60.0
+QTMIN=5.12.3
+inherit ecm
 
 DESCRIPTION="Software to manage quotes and invoices in small enterprises"
 HOMEPAGE="http://www.volle-kraft-voraus.de/"
 SRC_URI="https://github.com/dragotin/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
+LICENSE="GPL-2+ LGPL-2+"
+SLOT="5"
 KEYWORDS="~amd64 ~x86"
 IUSE="pim"
 
 DEPEND="
-	$(add_frameworks_dep kconfig)
-	$(add_frameworks_dep kconfigwidgets)
-	|| (
-		$(add_frameworks_dep kcontacts)
-		$(add_kdeapps_dep kcontacts)
-	)
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kwidgetsaddons)
-	$(add_frameworks_dep kxmlgui)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtsql)
-	$(add_qt_dep qtwidgets)
-	$(add_qt_dep qtxml)
 	dev-cpp/ctemplate
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtsql-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtxml-${QTMIN}:5
+	>=kde-frameworks/kconfig-${KFMIN}:5
+	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
+	|| (
+		>=kde-frameworks/kcontacts-${KFMIN}:5
+		>=kde-apps/kcontacts-19.04.3:5
+	)
+	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
+	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
+	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	pim? (
-		$(add_kdeapps_dep akonadi)
-		$(add_kdeapps_dep akonadi-contacts)
+		>=kde-apps/akonadi-19.04.3:5
+		>=kde-apps/akonadi-contacts-19.04.3:5
 	)
 "
 RDEPEND="${DEPEND}
@@ -42,9 +46,9 @@ DOCS=( AUTHORS Changes.txt README.md Releasenotes.txt TODO )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package pim KF5Akonadi)
-		$(cmake-utils_use_find_package pim KF5AkonadiContact)
+		$(cmake_use_find_package pim KF5Akonadi)
+		$(cmake_use_find_package pim KF5AkonadiContact)
 	)
 
-	kde5_src_configure
+	ecm_src_configure
 }
