@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic systemd toolchain-funcs
+inherit autotools flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Standard log daemons"
 HOMEPAGE="https://troglobit.com/sysklogd.html https://github.com/troglobit/sysklogd"
@@ -25,9 +25,18 @@ RDEPEND="${DEPEND}"
 
 DOCS=( ChangeLog.md README.md )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-no_parallel_build.patch #701894
+)
+
 pkg_setup() {
 	append-lfs-flags
 	tc-export CC
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {
