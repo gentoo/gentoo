@@ -174,7 +174,7 @@ _kde.org_calculate_live_repo() {
 	# (anongit) with anything else you might want to use.
 	EGIT_MIRROR=${EGIT_MIRROR:=https://anongit.kde.org}
 
-	if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
+	if [[ ${PV} == ??.??.49.9999 && ${KDE_RELEASE_SERVICE} = true ]]; then
 		EGIT_BRANCH="release/$(ver_cut 1-2)"
 	fi
 
