@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils python-single-r1
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	#EGIT_REPO_URI="git://git.osmocom.org/${PN}.git"
 	EGIT_REPO_URI="https://github.com/osmocom/${PN}.git"
-	EGIT_BRANCH="gr37-qt5"
+	EGIT_BRANCH="gr3.7-qt5"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
