@@ -34,7 +34,7 @@ HOMEPAGE="https://www.percona.com/software/mysql-database/percona-server"
 DESCRIPTION="Fully compatible, enhanced and open source drop-in replacement for MySQL"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="cjk cracklib debug jemalloc latin1 libressl numa +perl profiling
+IUSE="cjk cracklib debug jemalloc latin1 libressl numa pam +perl profiling
 	rocksdb router selinux +server tcmalloc test tokudb tokudb-backup-plugin"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
@@ -87,6 +87,9 @@ COMMON_DEPEND="
 	libressl? ( dev-libs/libressl:0= )
 	!libressl? ( >=dev-libs/openssl-1.0.0:0= )
 	numa? ( sys-process/numactl )
+	server? (
+		pam? ( sys-libs/pam:0= )
+	)
 	tcmalloc? ( dev-util/google-perftools:0= )
 "
 DEPEND="${COMMON_DEPEND}
@@ -308,6 +311,7 @@ src_configure(){
 		mycmakeargs+=(
 			-DWITH_EXTRA_CHARSETS=all
 			-DWITH_DEBUG=$(usex debug)
+			-DWITH_PAM=$(usex pam)
 		)
 
 		if use profiling ; then
