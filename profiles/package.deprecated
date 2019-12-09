@@ -17,6 +17,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-12-09)
+# The pycrypto project is long dead, and has been forked into
+# dev-python/pycryptodome that's not entirely API compatible.  Many
+# upstreams prefer switching to dev-python/cryptography instead.
+dev-python/pycrypto
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-09)
+# Test coverage reporting is not useful for Gentoo ebuilds.  The deps
+# against coverage plugins are either entirely spurious, or the build
+# systems need to be fixed to work without them.
+dev-python/nose-cover3
+dev-python/nosexcover
+dev-python/pytest-cov
+
 # Zac Medico <zmedico@gentoo.org> (2019-12-06)
 # These golang libraries should be vendored either by upstream or via
 # the EGO_VENDOR variable.
