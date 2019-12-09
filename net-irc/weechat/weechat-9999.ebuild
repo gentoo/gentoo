@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7,3_8} )
 
 inherit cmake-utils python-single-r1 xdg-utils
 
@@ -139,9 +139,13 @@ src_configure() {
 }
 
 pkg_postinst() {
+	xdg_desktop_database_update
 	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
+	xdg_desktop_database_update
 	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
 }
