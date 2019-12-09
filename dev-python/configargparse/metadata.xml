@@ -7,6 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">ConfigArgParse</remote-id>
-    <remote-id type="github">zorro3/ConfigArgParse</remote-id>
+    <remote-id type="github">bw2/ConfigArgParse</remote-id>
   </upstream>
 </pkgmetadata>
