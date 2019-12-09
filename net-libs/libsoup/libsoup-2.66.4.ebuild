@@ -15,7 +15,7 @@ SLOT="2.4"
 IUSE="gssapi gtk-doc +introspection samba ssl test +vala"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 s390 sparc x86"
+KEYWORDS="alpha amd64 ~arm arm64 ~hppa ~ia64 ppc ppc64 s390 sparc x86"
 
 DEPEND="
 	>=dev-libs/glib-2.38:2[${MULTILIB_USEDEP}]
