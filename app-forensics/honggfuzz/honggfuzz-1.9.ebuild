@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="A general purpose fuzzer with feedback support"
-HOMEPAGE="http://google.github.io/honggfuzz/"
+HOMEPAGE="https://google.github.io/honggfuzz/"
 SRC_URI="https://github.com/google/honggfuzz/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
