@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <upstream>
+    <maintainer status="active">
+      <email>larson.eric.d@gmail.com</email>
+      <name>Eric Larson</name>
+    </maintainer>
+    <doc lang="en">https://github.com/codespell-project/codespell/blob/master/README.rst</doc>
+    <bugs-to>https://github.com/codespell-project/codespell/issues</bugs-to>
+  </upstream>
+  <longdescription lang="en">
+    Fix common misspellings in text files. It's designed primarily for checking
+    misspelled words in source code, but it can be used with other files as
+    well.
+  </longdescription>
+</pkgmetadata>
