@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">libxls</remote-id>
+    <remote-id type="github">libxls/libxls</remote-id>
   </upstream>
 </pkgmetadata>
