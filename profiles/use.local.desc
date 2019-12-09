@@ -2565,6 +2565,7 @@ dev-python/celery:redis - Enables redis support
 dev-python/celery:sqs - Enables Amazon SQS transport module for celery
 dev-python/celery:yaml - Enable support of yaml as a configuration file format
 dev-python/cryptography:idna - enable support for the old, deprecated IDNA specification (RFC 3490)
+dev-python/ctypescrypto:gost - Build with support for GOST Message Authentication Code
 dev-python/cvxopt:dsdp - Use interior point library sci-libs/dsdp
 dev-python/cvxopt:glpk - Use GNU Linear Programming Kit sci-mathematics/glpk
 dev-python/dap:server - Enable OpenDAP server support
