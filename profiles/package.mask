@@ -512,12 +512,6 @@ sys-block/nwutil
 sys-libs/libspe2
 sys-libs/mars
 
-# Michał Górny <mgorny@gentoo.org> (2019-11-10)
-# Known to segfault.  EAPI 0.  Nobody should get near that ebuild
-# without a ten foot pole.  Stuck at a beta from 2006.
-# Removal in 30 days.  Bug #612384.
-dev-embedded/tigcc
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
