@@ -67,8 +67,7 @@ pkg_pretend() {
 	fi
 
 	if use amd64;then
-		CONFIG_CHECK="${CONFIG_CHECK} ~CRYPTO_AES_X86_64 ~CRYPTO_DES3_EDE_X86_64"
-		WARNING_CRYPTO_AES_X86_64="CRYPTO_AES_X86_64: enable for increased performance"
+		CONFIG_CHECK="${CONFIG_CHECK} ~CRYPTO_DES3_EDE_X86_64"
 		WARNING_CRYPTO_DES3_EDE_X86_64="CRYPTO_DES3_EDE_X86_64: enable for increased performance"
 	fi
 
