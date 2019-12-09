@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 # vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
 
-inherit meson gnome2-utils python-r1 vala
+inherit meson gnome2-utils python-any-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -26,7 +26,6 @@ SLOT="0.4"
 
 IUSE="cairo debug ffmpeg +introspection lcms lensfun libav openexr pdf raw sdl svg test tiff umfpack vala v4l webp"
 REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
 	svg? ( cairo )
 	test? ( introspection )
 	vala? ( introspection )
@@ -38,7 +37,6 @@ RESTRICT="!test? ( test )"
 #       so there is no chance to support libav right now (Gentoo bug #567638)
 #       If it returns, please check prior GEGL ebuilds for how libav was integrated.  Thanks!
 RDEPEND="
-	${PYTHON_DEPS}
 	>=dev-libs/glib-2.44:2
 	>=dev-libs/json-glib-1.2.6
 	>=media-libs/babl-0.1.72[introspection?]
@@ -69,12 +67,15 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
+"
+
+BDEPEND="
 	dev-lang/perl
 	>=dev-util/gtk-doc-am-1
 	>=sys-devel/gettext-0.19.8
 	>=sys-devel/libtool-2.2
 	virtual/pkgconfig
-	test? ( >=dev-python/pygobject-3.2[${PYTHON_USEDEP}] )
+	test? ( $(python_gen_any_dep '>=dev-python/pygobject-3.2:3[${PYTHON_USEDEP}]') )
 	vala? ( $(vala_depend) )
 "
 
@@ -84,6 +85,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.18-drop-failing-tests.patch
 	"${FILESDIR}"/${PN}-0.4.18-program-suffix.patch
 )
+
+python_check_deps() {
+	has_version -b ">=dev-python/pygobject-3.2:3[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	default
