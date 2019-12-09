@@ -4,6 +4,7 @@ acct-group/audio 0: System group: audio
 acct-group/avahi 0: group for avahi
 acct-group/avahi-autoipd 0: group for avahi-autoipd
 acct-group/bacula 0: A group for the bacula backup system
+acct-group/bedrock 0: A group for the Minecraft Bedrock server
 acct-group/bitcoin 0: A group for users with access to system-wide Bitcoin services
 acct-group/burp 0: Group for the app-backup/burp server
 acct-group/cdrom 0: System group: cdrom
@@ -99,6 +100,7 @@ acct-user/asterisk 0: User for asterisk
 acct-user/avahi 0: user for avahi
 acct-user/avahi-autoipd 0: user for avahi-autoipd
 acct-user/bacula 0: A group for the bacula backup system
+acct-user/bedrock 0: A user for the Minecraft Bedrock server
 acct-user/bitcoin 0: System-wide Bitcoin services user
 acct-user/burp 0: User for the app-backup/burp server
 acct-user/ceph 0: User for ceph
@@ -8563,7 +8565,7 @@ dev-python/pyotp 2.2.6 2.2.6-r1: PyOTP is a Python library for generating and ve
 dev-python/pypam 0.5.0-r3: Python Bindings for PAM (Pluggable Authentication Modules)
 dev-python/pyparsing 2.2.0 2.3.0 2.3.1 2.4.0: Easy-to-use Python module for text parsing
 dev-python/pyparted 3.10.7 3.11.2 3.11.3 999999: Python bindings for sys-block/parted
-dev-python/pypax 0.9.2 0.9.3 0.9.4 0.9.5 9999: Python module to get or set either PT_PAX and/or XATTR_PAX flags
+dev-python/pypax 0.9.5 9999: Python module to get or set either PT_PAX and/or XATTR_PAX flags
 dev-python/pypcap 1.2.1 1.2.2 1.2.3: Simplified object-oriented Python extension module for libpcap
 dev-python/pypeg2 2.15.2: An intrinsic PEG Parser-Interpreter for Python
 dev-python/pyperclip 1.5.27 1.6.0 1.6.4 1.7.0: A cross-platform clipboard module for Python.
@@ -11673,6 +11675,7 @@ games-rpg/wastesedge 0.3.5-r1: role playing game to showcase the adonthell engin
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0-r1: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0-r1: A free 2D Zelda fangame parody
+games-server/bedrock-server 1.13.3.0: The official bedrock (non-java) based server for the sandbox video game
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
@@ -16997,7 +17000,7 @@ sys-apps/ed 1.14.2 1.15-r1: Your basic line editor
 sys-apps/edac-utils 0.18: Userspace helper for Linux kernel EDAC drivers
 sys-apps/edid-decode 0_pre20191207 9999: Decode EDID data in a human-readable format
 sys-apps/edid-fixdim 1: Tool to fix screen dimensions in EDID data dumps
-sys-apps/elfix 0.9.2 0.9.3 0.9.4 0.9.5 9999: A suite of tools to work with ELF objects on Hardened Gentoo
+sys-apps/elfix 0.9.5 9999: A suite of tools to work with ELF objects on Hardened Gentoo
 sys-apps/elivepatch-client 0.1 9999: Live patch installer client working with elivepatch-server
 sys-apps/elivepatch-server 0.1 0.2 9999: Live patch building server with RESTFul Api for elivepatch-client
 sys-apps/entropy 302-r1: Entropy Package Manager foundation library
