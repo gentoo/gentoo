@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 MY_P="${P/_beta/b}"
 DESCRIPTION="Generates patchset information from a CVS repository"
-HOMEPAGE="http://www.cobite.com/cvsps/"
+HOMEPAGE="http://www.catb.org/~esr/cvsps/"
 SRC_URI="http://www.cobite.com/cvsps/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
