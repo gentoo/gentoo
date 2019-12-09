@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,7 +10,7 @@ inherit eutils gnome2-utils python-r1
 DESCRIPTION="Python Fitting Assistant - a ship fitting application for EVE Online"
 HOMEPAGE="https://github.com/pyfa-org/Pyfa"
 
-LICENSE="GPL-3+ LGPL-2.1+ CC-BY-2.5 free-noncomm"
+LICENSE="GPL-3+ LGPL-2.1+ CC-BY-2.5 all-rights-reserved"
 SLOT="0"
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/pyfa-org/Pyfa.git"
@@ -22,6 +22,7 @@ else
 fi
 IUSE="+graph"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="mirror bindist"
 
 RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-1.0.5[${PYTHON_USEDEP}]
