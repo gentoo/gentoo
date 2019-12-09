@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic pam toolchain-funcs usr-ldscript
+inherit flag-o-matic pam toolchain-funcs
 
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="https://github.com/openrc/openrc/"
@@ -18,8 +18,8 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux static-libs
-	sysv-utils unicode"
+IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux sysv-utils
+	unicode"
 
 COMMON_DEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
@@ -76,7 +76,6 @@ src_compile() {
 		MKSYSVINIT=$(usex sysv-utils)
 		MKAUDIT=$(usex audit)
 		MKPAM=$(usev pam)
-		MKSTATICLIBS=$(usex static-libs)
 		MKZSHCOMP=yes
 		SH=$(usex bash /bin/bash /bin/sh)"
 
@@ -107,14 +106,6 @@ set_config_yes_no() {
 
 src_install() {
 	emake ${MAKE_ARGS} DESTDIR="${D}" install
-
-	# move the shared libs back to /usr so ldscript can install
-	# more of a minimal set of files
-	# disabled for now due to #270646
-	#mv "${ED}"/$(get_libdir)/lib{einfo,rc}* "${ED}"/usr/$(get_libdir)/ || die
-	#gen_usr_ldscript -a einfo rc
-	gen_usr_ldscript libeinfo.so
-	gen_usr_ldscript librc.so
 
 	keepdir /lib/rc/tmp
 
