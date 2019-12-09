@@ -70,9 +70,9 @@ src_install() {
 		python_foreach_impl _impl_specific_src_install
 		python_replicate_script "${D}"/usr/bin/redshift-gtk
 		dosym redshift-gtk /usr/bin/gtk-redshift
-	fi
 
-	python_foreach_impl python_optimize
+		python_foreach_impl python_optimize
+	fi
 }
 
 pkg_preinst() {
