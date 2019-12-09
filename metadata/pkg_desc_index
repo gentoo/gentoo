@@ -3213,7 +3213,6 @@ dev-dotnet/dbus-sharp-glib 0.5.0-r1 0.6.0: D-Bus for .NET: GLib integration modu
 dev-dotnet/gio-sharp 0.3-r1: GIO API C# binding
 dev-dotnet/gkeyfile-sharp 0.1-r1: C# binding for gkeyfile
 dev-dotnet/gnome-keyring-sharp 1.0.2-r2: C# implementation of gnome-keyring
-dev-dotnet/gsf-sharp 0.8.1: C# bindings for libgsf
 dev-dotnet/gtk-sharp 2.12.21: gtk bindings for mono
 dev-dotnet/ikvm-bin 7.1.4532.2: Java VM for .NET
 dev-dotnet/libgdiplus 2.10.9-r1 2.10.9-r2 2.10.9-r3 4.2-r2 4.2-r3 5.6.1-r1 6.0.2: Library for using System.Drawing with Mono
@@ -3266,15 +3265,11 @@ dev-embedded/platformio 4.0.3: An open source ecosystem for IoT development
 dev-embedded/ponyprog 2.07c-r2 3.0.0: EEPROM and microcontroller programmer/flasher
 dev-embedded/powersoftplus-libftdi 0.1.8-r1: Library which includes a table of VIDs and PIDs of Ever UPS devices
 dev-embedded/sdcc 3.8.0-r1 9999: Small device C compiler (for various microprocessors)
-dev-embedded/sgpp-lite-arm-eabi-bin 2014.05.28: Regular, validated releases of the GNU Toolchain for arm processors
-dev-embedded/sgpp-lite-arm-linux-bin 2010.09.50: Regular, validated releases of the GNU Toolchain for arm processors
-dev-embedded/sgpp-lite-arm-uclinux-bin 2010.09.58: Regular, validated releases of the GNU Toolchain for arm processors
 dev-embedded/smdk-dltool 0.20-r3 0.20-r4: Tool to communicate with Samsung SMDK boards
 dev-embedded/srecord 1.64: A collection of powerful tools for manipulating EPROM load files
 dev-embedded/stlink 1.5.1 9999: stm32 discovery line linux programmer
 dev-embedded/stm32flash 0.5: Open source flash program for STM32 using the ST serial bootloader
 dev-embedded/sunxi-tools 1.2 1.3: Tools for Allwinner A10 devices.
-dev-embedded/tigcc 0.96_beta7 0.96_beta8-r1: Cross compiler for Texas Instruments TI-89, TI-92(+) and V200 calculators
 dev-embedded/u-boot-tools 2018.05 2018.11 2019.01: utilities for working with Das U-Boot
 dev-embedded/uisp 20050207-r1: Tool for programming AVR microcontroller through the parallel port
 dev-embedded/upslug2 11: util for flashing NSLU2 machines remotely
@@ -4762,7 +4757,6 @@ dev-libs/cudnn 6.0 7.0.5-r1 7.1.4 7.4.1.5 7.4.2.24 7.5.0.56 7.6.0.64 7.6.1.34 7.
 dev-libs/cvector 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p13: REINER SCT cyberJack USB chipcard reader user space driver
-dev-libs/cygwin 1.5.25.15: Linux-like environment for Windows
 dev-libs/cyrus-sasl 2.1.27-r2: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32 0.32h_pre20181117064816 9999: Darts-clone (Double-ARray Trie System) C++ library
@@ -14823,7 +14817,7 @@ net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0-r1 0.2.0-r2: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.2.4.1: An advanced Internet Relay Chat daemon
-net-irc/weechat 2.5-r1 2.6 9999: Portable and multi-interface IRC client
+net-irc/weechat 2.5-r1 2.6 2.7 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.4 1.7.5 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for freenet
@@ -17063,7 +17057,6 @@ sys-apps/hwloc 1.11.2-r1 1.11.10 1.11.13 2.0.4: displays the hardware topology i
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
 sys-apps/i2c-tools 4.0 4.1-r1: I2C tools for bus probing, chip dumping, EEPROM decoding, and more
 sys-apps/ibm-powerpc-utils 1.3.6 99999: Utilities for the maintainance of the IBM and Apple PowerPC platforms
-sys-apps/ibm-powerpc-utils-papr 1.1.0 1.1.6: Utilities for the maintenance of IBM PowerPC platforms
 sys-apps/idle3-tools 0.9.3_pre20120123-r1: Set, get or disable the value of the idle3 timer found on WD HDDs
 sys-apps/ifd-gempc 1.0.7: GemCore based PC/SC reader drivers for pcsc-lite
 sys-apps/ifplugd 0.28-r10: Brings up/down ethernet ports automatically with cable detection
@@ -17093,7 +17086,6 @@ sys-apps/lcdutils 0.2-r1: (Sun) Cobalt Qube/RaQ button reading and LCD writing u
 sys-apps/less 530 531 550 551: Excellent text file viewer
 sys-apps/likwid 4.3.3 4.3.4: A performance-oriented tool suite for x86 multicore environments
 sys-apps/linux-misc-apps 3.6-r2 3.18 4.4 4.4-r1 4.19: Misc tools bundled with kernel sources
-sys-apps/lkcdutils 4.1.1 6.2.0: Linux Kernel Crash Dumps (LKCD) Utilities
 sys-apps/lm-sensors 3.5.0 3.5.0_p20190505 3.6.0: Hardware Monitoring user-space utilities
 sys-apps/lmctfy 0.2.0 0.3.0 0.3.1 0.5.0 0.5.0-r1: Linux application container management from Google
 sys-apps/lnxhc 1.2-r1: Linux Health Checker
@@ -17336,7 +17328,6 @@ sys-block/ms-sys 2.5.3 2.6.0: A command-line program for writing Microsoft compa
 sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
 sys-block/nbd 3.18 3.19 3.20 9999: Userland client/server for kernel network block device
 sys-block/noflushd 2.8: A daemon to spin down your disks and force accesses to be cached
-sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
 sys-block/open-iscsi 2.0.873-r1 2.0.875 2.0.877 2.0.878 2.1.0: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.97 0.98 0.99: iSNS server and client for Linux
 sys-block/parted 3.2-r1 3.2_p23 3.2_p25 3.3 99999: Create, destroy, resize, check, copy partitions and file systems
@@ -17458,7 +17449,6 @@ sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
 sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.7 2.0.2 2.0.4 2.1.6 3.0.4 3.1.4 4.0.1-r1 4.0.2: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2019.1.9999 2019.2.1 2019.2.9999: A openstack meta-package for installing the various openstack pieces
-sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
 sys-cluster/pacemaker 1.1.16 1.1.19 1.1.19-r1: Pacemaker CRM
 sys-cluster/pbs-python 4.3.3-r1: Python bindings to the Torque C API
 sys-cluster/pconsole 1.0-r4: Tool for managing multiple xterms simultaneously
@@ -17794,7 +17784,6 @@ sys-libs/libsemanage 2.9 3.0 9999: SELinux kernel and policy management library
 sys-libs/libsepol 2.9 3.0 9999: SELinux binary policy representation library
 sys-libs/libservicelog 1.1.18: Provides a library for logging service-related events
 sys-libs/libsmbios 2.4.2 2.4.2-r1: Provide access to (SM)BIOS information
-sys-libs/libspe2 2.2.80_p95-r1 2.3.0_p135: A wrapper library to adapt the JSRE SPU usage model to SPUFS
 sys-libs/libstatgrab 0.91: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6-r2: Compatibility package for binaries linked against a pre gcc 3.4 libstdc++
 sys-libs/libtermcap-compat 2.0.8-r3 2.0.8-r4: Compatibility package for old termcap-based programs
@@ -17806,7 +17795,6 @@ sys-libs/libvpd 2.1.3 2.2.4 2.2.5 2.2.6: Library implementation for listing vpds
 sys-libs/libxcrypt 2.4 4.4.10-r1: Extended crypt library for descrypt, md5crypt, bcrypt, and others
 sys-libs/llvm-libunwind 7.1.0 8.0.1 9.0.0 9.0.1_rc2 9.0.1.9999 10.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
-sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.5: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.22 1.1.23 1.1.24 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/musl-nscd 1.0.2 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
