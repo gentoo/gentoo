@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="XMMS2 AudioScrobbler client"
-HOMEPAGE="http://code-monkey.de/pages/xmms2-scrobbler"
+HOMEPAGE="https://code-monkey.de/pages/xmms2-scrobbler"
 SRC_URI="ftp://ftp.code-monkey.de/pub/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
