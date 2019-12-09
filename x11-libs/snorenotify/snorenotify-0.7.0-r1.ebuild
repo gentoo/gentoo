@@ -44,8 +44,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package sound Qt5Multimedia)
-		$(cmake-utils_use_find_package test Qt5Test)
+		$(cmake_use_find_package sound Qt5Multimedia)
+		$(cmake_use_find_package test Qt5Test)
 	)
 
 	ecm_src_configure
