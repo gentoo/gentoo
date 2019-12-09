@@ -7006,7 +7006,6 @@ net-vpn/libreswan:dnssec - Use DNSSEC resolver (requires net-dns/unbound)
 net-vpn/networkmanager-strongswan:glib - Enable libnm-glib compatibility.
 net-vpn/networkmanager-wireguard:glib - Enable libnm-glib compatibility.
 net-vpn/openconnect:gssapi - Build GSSAPI support
-net-vpn/openconnect:java - Build JNI bindings using jni.h
 net-vpn/openconnect:libproxy - Enable proxy support
 net-vpn/openconnect:stoken - Enable stoken support
 net-vpn/openvpn:down-root - Enable the down-root plugin
