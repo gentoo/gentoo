@@ -10,7 +10,6 @@ inherit desktop eutils python-single-r1 xdg-utils
 DESCRIPTION="Python Fitting Assistant - a ship fitting application for EVE Online"
 HOMEPAGE="https://github.com/pyfa-org/Pyfa"
 
-RESTRICT="mirror bindist"
 LICENSE="GPL-3+ all-rights-reserved"
 SLOT="0"
 if [[ ${PV} = 9999 ]]; then
@@ -23,6 +22,7 @@ else
 fi
 IUSE="+graph"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="mirror bindist"
 
 DEPEND="
 	>=dev-python/cryptography-2.3[${PYTHON_USEDEP}]
