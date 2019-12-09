@@ -38,7 +38,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="doc? ( || ( $(python_gen_useflags "${DOCS_PYTHON_COMPAT[@]}") ) )"
 
 PATCHES=(
-	"${FILESDIR}/pylibmc-1.6.1-fix-test-failures.patch"
+	"${FILESDIR}/pylibmc-1.6.1-fix-test-failures-r1.patch"
 )
 
 pkg_setup() {
