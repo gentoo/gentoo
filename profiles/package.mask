@@ -489,53 +489,6 @@ dev-util/ccglue
 # and accept a more unstable release.
 >=www-client/chromium-80
 
-# Michał Górny <mgorny@gentoo.org> (2019-11-10)
-# Added in 2008 and not updated since.  Multiple releases behind
-# upstream.  Still at EAPI 0.
-# Removal in 30 days.  Bug #697344.
-dev-libs/cygwin
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-10)
-# Those packages are at EAPI 0.  Their respective maintainers
-# are unresponsive and they require specific hardware to build.
-# If someone has the hardware, please bump them to a newer EAPI.
-#
-# sys-apps/ibm-powerpc-utils-papr (ppc*): bug #697210
-# sys-apps/lkcdutils (s390): bug #697212
-# sys-block/nwutil (arm): bug #697198
-# sys-libs/libspe2 & sys-libs/mars (ppc64): bug #697158
-#
-# Removal in 30 days.
-sys-apps/ibm-powerpc-utils-papr
-sys-apps/lkcdutils
-sys-block/nwutil
-sys-libs/libspe2
-sys-libs/mars
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-10)
-# Known to segfault.  EAPI 0.  Nobody should get near that ebuild
-# without a ten foot pole.  Stuck at a beta from 2006.
-# Removal in 30 days.  Bug #612384.
-dev-embedded/tigcc
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-10)
-# Incorrect LICENSE (claims to be @FREE while it is @EULA).  EAPI 0.
-# Two of them are in 2010 versions, one in 2014.  No revdeps.
-# Removal in 30 days.  Bug #699736.
-dev-embedded/sgpp-lite-arm-eabi-bin
-dev-embedded/sgpp-lite-arm-linux-bin
-dev-embedded/sgpp-lite-arm-uclinux-bin
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-10)
-# Does not build on new profiles.  EAPI 0.  No revdeps.
-# Removal in 30 days.  Bug #681186.
-dev-dotnet/gsf-sharp
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-10)
-# Fails to build since 2017.  EAPI 0.  No revdeps.
-# Removal in 30 days.  Bug #618464.
-sys-cluster/osc-mpiexec
-
 # Michał Górny <mgorny@gentoo.org> (2019-10-20)
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.

@@ -8,7 +8,7 @@ inherit multilib-minimal libtool
 MY_P="gc-${PV}"
 
 DESCRIPTION="The Boehm-Demers-Weiser conservative garbage collector"
-HOMEPAGE="http://www.hboehm.info/gc/ https://github.com/ivmai/bdwgc/"
+HOMEPAGE="https://www.hboehm.info/gc/ https://github.com/ivmai/bdwgc/"
 SRC_URI="https://github.com/ivmai/bdwgc/releases/download/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="boehm-gc"
