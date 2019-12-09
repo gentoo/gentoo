@@ -48,6 +48,7 @@ RDEPEND="
 		!svgtiny? ( gnome-base/librsvg:2 ) )
 	webp? ( >=media-libs/libwebp-0.3.0 )"
 BDEPEND="
+	duktape? ( app-editors/vim-core )
 	dev-libs/check
 	dev-perl/HTML-Parser
 	>=dev-util/netsurf-buildsystem-1.7-r1"
