@@ -21,6 +21,7 @@ RDEPEND="
 	dev-libs/nettle:0=
 	>=net-libs/gnutls-3.2.0:0=
 	x11-libs/libX11
+	x11-libs/libXcursor
 	x11-libs/libXext
 	x11-libs/libXau
 	x11-libs/libXdmcp
