@@ -7817,6 +7817,7 @@ dev-python/flask-themes 0.1.3-r1 0.1.3_p20180112: Infrastructure for theming sup
 dev-python/flask-uploads 0.2.0-r1: Flexible and efficient upload handling for Flask
 dev-python/flask-wtf 0.14.2-r1: Simple integration of Flask and WTForms
 dev-python/flask-xml-rpc 0.1.2-r1: XML-RPC support for Flask applications
+dev-python/fleep 1.0.1 9999: File format determination library for Python
 dev-python/flexmock 0.10.2 0.10.3 0.10.4: Testing library to create mocks, stubs and fakes
 dev-python/flexx 0.3.1 0.4.1: Pure Python toolkit for creating GUI's using web technology
 dev-python/flipflop 1.0: A FastCGI/WSGI gateway
