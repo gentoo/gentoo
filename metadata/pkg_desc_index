@@ -10442,7 +10442,7 @@ dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexibl
 dev-tex/latex2html 2015 2017.2-r2: Convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.3.11 2.3.15: LaTeX to RTF converter
 dev-tex/latexdiff 1.1.0 1.2.1 1.3.0 9999: Compare two latex files and mark up significant differences
-dev-tex/latexmk 435 441 443a 444 445 448 452c 453a 456 465: Perl script for automatically building LaTeX documents
+dev-tex/latexmk 456 465: Perl script for automatically building LaTeX documents
 dev-tex/lazylist 1.0a-r1: Lists in TeX's mouth - lambda-calculus and list-handling macros
 dev-tex/leaflet 20041222: LaTeX package used to create leaflet-type brochures
 dev-tex/lgrind 3.67-r3: A pretty printer for various programming languages with tex output.
