@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="Docker registry v2 command line client"
 HOMEPAGE="https://github.com/genuinetools/reg"
 SRC_URI="${ARCHIVE_URI}"
-LICENSE="MIT"
+LICENSE="MIT Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC"
 SLOT="0"
 IUSE=""
 
