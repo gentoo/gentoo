@@ -35,8 +35,9 @@ src_prepare() {
 }
 
 src_compile() {
+	export -n GOCACHE GOPATH XDG_CACHE_HOME
 	pushd src/${EGO_PN} || die
-	GOPATH="${S}" GO111MODULE=on go build -mod=vendor -v -ldflags "-X ${EGO_PN}/version.GITCOMMIT=${GIT_COMMIT} -X ${EGO_PN}/version.VERSION=${PV}" -o "${S}"/bin/reg . || die
+	GO111MODULE=on go build -mod=vendor -v -ldflags "-X ${EGO_PN}/version.GITCOMMIT=${GIT_COMMIT} -X ${EGO_PN}/version.VERSION=${PV}" -o "${S}"/bin/reg . || die
 	popd || die
 }
 
