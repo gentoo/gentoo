@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Golang IDE by JetBrains
+EAPI=7
+HOMEPAGE=https://www.jetbrains.com/go
+KEYWORDS=~amd64
+LICENSE=|| ( JetBrains-business JetBrains-classroom JetBrains-educational JetBrains-individual ) Apache-2.0 BSD CC0-1.0 CDDL CDDL-1.1 EPL-1.0 GPL-2 GPL-2-with-classpath-exception ISC LGPL-2.1 LGPL-3 MIT MPL-1.1 OFL ZLIB
+RDEPEND=virtual/jdk dev-lang/go
+RESTRICT=bindist mirror
+SLOT=0
+SRC_URI=https://download.jetbrains.com/go/goland-2019.3.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_md5_=2d4c3ed2c6e8a48827b33f6de5fdc969

@@ -5586,7 +5586,7 @@ dev-perl/BZ-Client 4.400.200: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.710.700 0.711.200: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.550.0: This module provides Berkeley DB interface for Perl
 dev-perl/Bio-ASN1-EntrezGene 1.720.0: Regular expression-based Perl Parser for NCBI Entrez Gene
-dev-perl/Bio-DB-HTS 2.11 3.01: Perl bindings for sci-libs/htslib
+dev-perl/Bio-DB-HTS 2.110.0 3.10.0: Perl bindings for sci-libs/htslib
 dev-perl/Bio-Das 1.170.0-r2: Interface to Distributed Annotation System
 dev-perl/Bio-Graphics 2.390.0 2.400.0: Generate images from Bio::Seq objects for visualization purposes
 dev-perl/Bio-SamTools 1.430.0: Read SAM/BAM database files
@@ -6389,7 +6389,7 @@ dev-perl/Moose 2.160.500 2.180.600 2.180.700 2.200.400 2.200.500 2.200.700: A po
 dev-perl/Moose-Autobox 0.160.0: Autoboxed wrappers for Native Perl datatypes
 dev-perl/MooseX-Aliases 0.110.0-r1: Easy aliasing of methods and attributes in Moose
 dev-perl/MooseX-ClassAttribute 0.290.0: Declare class attributes Moose-style
-dev-perl/MooseX-ConfigFromFile 0.140.0: An abstract Moose role for setting attributes from a configfile
+dev-perl/MooseX-ConfigFromFile 0.140.0-r1: An abstract Moose role for setting attributes from a configfile
 dev-perl/MooseX-FollowPBP 0.50.0 0.50.0-r1: Name your accessors get_foo() and set_foo(), whatever that may mean
 dev-perl/MooseX-Getopt 0.740.0: A Moose role for processing command line options
 dev-perl/MooseX-GlobRef 0.70.100: Store a Moose object in glob reference
@@ -6770,7 +6770,7 @@ dev-perl/Term-ReadLine-TTYtter 1.400.0-r1: Quick implementation of readline util
 dev-perl/Term-ReadPassword 0.110.0-r1 0.110.0-r2: Asking the user for a password
 dev-perl/Term-Screen 1.50.0 1.60.0: A simple Term::Cap based screen positioning module
 dev-perl/Term-ScreenColor 1.200.0-r1: A Term::Screen based screen positioning and coloring module
-dev-perl/Term-Shell 0.90 0.110: A simple command-line shell framework
+dev-perl/Term-Shell 0.90.0 0.110.0: A simple command-line shell framework
 dev-perl/Term-ShellUI 0.920.0-r1: A fully-featured shell-like command line environment
 dev-perl/Term-Table 0.8.0: Format a header and rows into a table
 dev-perl/Term-UI 0.460.0: User interfaces via Term::ReadLine made easy
@@ -6879,7 +6879,7 @@ dev-perl/Text-Table 1.133.0: Organize Data in Tables
 dev-perl/Text-Template 1.510.0 1.530.0: Expand template text with embedded Perl
 dev-perl/Text-Unaccent 1.80.0-r1: Removes accents from a string
 dev-perl/Text-Unidecode 1.300.0: Plain ASCII transliterations of Unicode text
-dev-perl/Text-VimColor 0.280.0 0.290.0: Syntax highlighting using vim
+dev-perl/Text-VimColor 0.280.0 0.290.0-r1: Syntax highlighting using vim
 dev-perl/Text-WikiFormat 0.810.0: Translate Wiki formatted text into other formats
 dev-perl/Text-WrapI18N 0.60.0-r1: Internationalized substitute of Text::Wrap
 dev-perl/Text-Wrapper 1.50.0: Word wrap text by breaking long lines
@@ -7056,7 +7056,7 @@ dev-perl/YAML-Syck 1.300.0 1.310.0: Fast, lightweight YAML loader and dumper
 dev-perl/YAML-Tiny 1.690.0 1.730.0: Read/Write YAML files with as little code as possible
 dev-perl/ZMQ-Constants 1.40.0: Constants for libzmq
 dev-perl/ZMQ-LibZMQ2 1.90.0: A libzmq 2.x wrapper for Perl
-dev-perl/ZMQ-LibZMQ3 1.19.0: A libzmq 3.x wrapper for Perl
+dev-perl/ZMQ-LibZMQ3 1.190.0: A libzmq 3.x wrapper for Perl
 dev-perl/aliased 0.340.0-r1: Use shorter versions of class names
 dev-perl/asa 1.30.0-r1: Lets your class/object say it works like something else
 dev-perl/autobox 2.860.0 3.0.1: Call methods on native types
@@ -10688,7 +10688,7 @@ dev-util/gn 0.1463 0.1544 0.1616: GN is a meta-build system that generates build
 dev-util/gnome-builder 3.30.3: An IDE for writing GNOME-based software
 dev-util/gnome-devel-docs 3.30.2: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
-dev-util/goland 2019.3: Golang IDE by JetBrains
+dev-util/goland 2019.3-r1: Golang IDE by JetBrains
 dev-util/google-perftools 2.6.2 2.7: Fast, multi-threaded malloc() and nifty performance analysis tools
 dev-util/gource 0.49 0.51: A software version control visualization tool
 dev-util/gperf 3.1: A perfect hash function generator
