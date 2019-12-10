@@ -32,6 +32,27 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2019-12-10)
+# Never keyworded, only worked with specific versions of boost that are
+# gone, integrated into boost as dev-libs/boost[python,numpy] nowadays.
+# Removal in 7 days.
+dev-libs/boost-numpy
+
+# David Seifert <soap@gentoo.org> (2019-12-10)
+# Build broken for over 3 years, GTK 2, quasi-abandoned upstream.
+# Bug #490574, #699914. Removal in 30 days.
+media-sound/mhwaveedit
+
+# David Seifert <soap@gentoo.org> (2019-12-10)
+# Abandoned upstream, broken ncurses linking, last release 8 years ago.
+# Bug #677742, #696228. Removal in 30 days.
+media-sound/vitunes
+
+# Aaron Bauman <bman@gentoo.org> (2019-12-09)
+# EAPI=4, unmaintained upstream and Gentoo is versions behind
+# Removal in 30 days
+dev-tex/dvi2tty
+
 # Aaron Bauman <bman@gentoo.org> (2019-12-09)
 # EAPI=4, unmaintained upstream, rdep as well
 # Removal in 30 days. Open bugs #552934

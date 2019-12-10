@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
+# All consumers are gone.
+# Bug #156882, #574642, #637740.  Removal in 14 days.
+
 # Variables to specify in an ebuild which uses this eclass:
 # GAME - (doom3, quake4 or ut2004, etc), unless ${PN} starts with e.g. "doom3-"
 # MOD_DESC - Description for the mod
