@@ -14,13 +14,14 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ppc ppc64 sh sparc x86"
 IUSE=""
 
-RDEPEND="dev-libs/popt
-	media-libs/flac
-	media-libs/libao
+RDEPEND="
+	dev-libs/popt:=
+	media-libs/flac:=
+	media-libs/libao:=
 	media-libs/libogg"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	eautoreconf
 	default
+	eautoreconf
 }
