@@ -14649,7 +14649,7 @@ net-firewall/arno-iptables-firewall 2.0.1e 2.0.2a 2.0.3: Arno's iptables firewal
 net-firewall/arptables 0.0.4 0.0.5: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
 net-firewall/conntrack-tools 1.4.4-r1 1.4.5: Connection tracking userspace tools
 net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.org
-net-firewall/ebtables 2.0.10.4 2.0.10.4-r1 2.0.10.4-r2: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
+net-firewall/ebtables 2.0.10.4 2.0.10.4-r1 2.0.10.4-r2 2.0.11: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.4.1 2.5: Command line util for managing firewall rules
 net-firewall/firehol 3.1.6: iptables firewall generator
 net-firewall/firewalld 0.6.3 0.7.1: A firewall daemon with D-BUS interface providing a dynamic firewall
