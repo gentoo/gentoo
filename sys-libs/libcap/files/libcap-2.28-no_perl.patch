@@ -1,0 +1,64 @@
+From 71ed151782c55b69ad4ce87658c0ce2ccc9c4a86 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Wed, 21 Nov 2018 11:00:54 +0100
+Subject: [PATCH] use awk/sed instead of perl for creating header files
+
+More systems should have awk/sed than perl.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+
+Forward ported from libcap-2.22 to libcap-2.26
+and incorporated the gperf-3.1 fix provided by Mike Gilbert
+<floppym@gentoo.org>
+Forward ported from libcap-2.26 to libcap-2.28
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ libcap/Makefile | 24 ++++++++++++++++++------
+ 1 file changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/libcap/Makefile b/libcap/Makefile
+index 93f43bf..e2e371d 100644
+--- a/libcap/Makefile
++++ b/libcap/Makefile
+@@ -22,6 +22,8 @@ MAJLIBNAME=$(LIBNAME).$(VERSION)
+ MINLIBNAME=$(MAJLIBNAME).$(MINOR)
+ GPERF_OUTPUT = _caps_output.gperf
+ CFLAGS += -fPIC
++AWK = awk
++SED = sed
+ 
+ all: $(MINLIBNAME) $(STALIBNAME) libcap.pc $(STAPSXLIBNAME)
+ 
+@@ -46,12 +48,22 @@ cap_names.h: _makenames
+ 	./_makenames > cap_names.h
+ 
+ $(GPERF_OUTPUT): cap_names.list.h
+-	perl -e 'print "struct __cap_token_s { const char *name; int index; };\n%{\nconst struct __cap_token_s *__cap_lookup_name(const char *, size_t);\n%}\n%%\n"; while ($$l = <>) { $$l =~ s/[\{\"]//g; $$l =~ s/\}.*// ; print $$l; }' < $< | gperf --ignore-case --language=ANSI-C --readonly --null-strings --global-table --hash-function-name=__cap_hash_name --lookup-function-name="__cap_lookup_name" -c -t -m20 $(INDENT) > $@
+-	sed -e 's/unsigned int len/size_t len/' -i $@
+-
+-cap_names.list.h: Makefile $(KERNEL_HEADERS)/linux/capability.h
+-	@echo "=> making $@ from $(KERNEL_HEADERS)/linux/capability.h"
+-	perl -e 'while ($$l=<>) { if ($$l =~ /^\#define[ \t](CAP[_A-Z]+)[ \t]+([0-9]+)\s+$$/) { $$tok=$$1; $$val=$$2; $$tok =~ tr/A-Z/a-z/; print "{\"$$tok\",$$val},\n"; } }' $(KERNEL_HEADERS)/linux/capability.h | fgrep -v 0x > $@
++	(printf "%b" "struct __cap_token_s { const char *name; int index; };\n%%\n"; \
++	$(SED) -e 's:["{}]::g' -e 's:,$$::' $<) | \
++	gperf \
++		--ignore-case \
++		--language=ANSI-C \
++		--includes \
++		--readonly \
++		--null-strings \
++		--global-table \
++		--hash-function-name=__cap_hash_name \
++		--lookup-function-name="__cap_lookup_name" \
++		-c -t -m20 $(INDENT) > $@
++
++cap_names.list.h: $(KERNEL_HEADERS)/linux/capability.h Makefile
++	@echo "=> making $@ from $<"
++	$(AWK) '($$0 ~ /^#define[[:space:]]+CAP[_A-Z]+[[:space:]]+[0-9]+[[:space:]]*$$/) { printf "{\"%s\",%s},\n", tolower($$2), $$3 }' $< > $@
+ 
+ $(STALIBNAME): $(CAPOBJS)
+ 	$(AR) rcs $@ $^
+-- 
+2.24.0
+
