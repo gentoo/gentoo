@@ -32,16 +32,6 @@ BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
-[[ ${PV} == *9999 ]] && BDEPEND+=" $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')"
-
-python_check_deps() {
-	[[ ${PV} == *9999 ]] || return 0
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
-
-python_compile_all() {
-	esetup.py build_man
-}
 
 python_test() {
 	esetup.py test
@@ -49,6 +39,6 @@ python_test() {
 
 python_install_all() {
 	local DOCS=( NEWS.rst README.rst )
-	esetup.py install_man --mandir="${ED}/usr/share/man"
+	[[ ${PV} == *9999 ]] || doman man/*
 	distutils-r1_python_install_all
 }
