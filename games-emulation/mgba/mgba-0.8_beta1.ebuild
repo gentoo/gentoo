@@ -7,11 +7,18 @@ inherit cmake-utils desktop xdg
 
 DESCRIPTION="Game Boy Advance emulator written in C"
 HOMEPAGE="https://mgba.io"
-SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-
+if [[ "${PV}" == 9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/mgba-emu/mgba.git"
+else
+	MY_PV="${PV/_beta/-b}"
+	SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	[[ "${PV}" == *_beta* ]] || \
+	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${PN}-${MY_PV}"
+fi
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="debug elf ffmpeg imagemagick libav opengl qt5 +sdl sqlite"
 REQUIRED_USE="|| ( qt5 sdl )
 		qt5? ( opengl )"
