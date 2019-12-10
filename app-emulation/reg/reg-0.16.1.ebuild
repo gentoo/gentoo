@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="Docker registry v2 command line client"
 HOMEPAGE="https://github.com/genuinetools/reg"
 SRC_URI="${ARCHIVE_URI}"
-LICENSE="MIT"
+LICENSE="MIT Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC"
 SLOT="0"
 IUSE=""
 
@@ -35,8 +35,9 @@ src_prepare() {
 }
 
 src_compile() {
+	export -n GOCACHE GOPATH XDG_CACHE_HOME
 	pushd src/${EGO_PN} || die
-	GOPATH="${S}" GO111MODULE=on go build -mod=vendor -v -ldflags "-X ${EGO_PN}/version.GITCOMMIT=${GIT_COMMIT} -X ${EGO_PN}/version.VERSION=${PV}" -o "${S}"/bin/reg . || die
+	GO111MODULE=on go build -mod=vendor -v -ldflags "-X ${EGO_PN}/version.GITCOMMIT=${GIT_COMMIT} -X ${EGO_PN}/version.VERSION=${PV}" -o "${S}"/bin/reg . || die
 	popd || die
 }
 
