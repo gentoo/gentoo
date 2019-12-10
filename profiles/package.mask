@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2019-12-10)
+# Dead upstream, no homepage, requires grub-0 which is gone
+# Also no UEFI support!
+# Masked for removal in 30 days (bug #702416)
+app-admin/grubconfig
+
 # Aaron Bauman <bman@gentoo.org> (2019-12-10)
 # EAPI=4, dead upstream, can't locate new home
 # Removal in 30 days
