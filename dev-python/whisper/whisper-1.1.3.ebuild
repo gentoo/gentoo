@@ -17,6 +17,7 @@ LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~x86 ~x64-solaris"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="

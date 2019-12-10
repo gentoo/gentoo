@@ -26,6 +26,7 @@ else
 fi
 
 IUSE="crypt doc docker examples irc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]

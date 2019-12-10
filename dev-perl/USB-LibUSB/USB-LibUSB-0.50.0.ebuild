@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ DESCRIPTION="Perl interface to the libusb-1.0 API"
 
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/libusb:1

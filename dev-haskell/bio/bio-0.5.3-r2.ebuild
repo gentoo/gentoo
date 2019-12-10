@@ -16,6 +16,7 @@ LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/binary-0.4:=[profile?]
 		dev-haskell/mtl:=[profile?]

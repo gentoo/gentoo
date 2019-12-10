@@ -17,6 +17,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE="benchmark-uniplate dump-splices +inlining j old-inline-pragmas safe +test-doctests +test-templates +trustworthy"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/base-orphans-0.3:=[profile?] <dev-haskell/base-orphans-1:=[profile?]
 	>=dev-haskell/bifunctors-5:=[profile?] <dev-haskell/bifunctors-6:=[profile?]

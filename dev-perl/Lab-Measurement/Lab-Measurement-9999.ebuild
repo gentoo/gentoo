@@ -22,6 +22,7 @@ HOMEPAGE="https://www.labmeasurement.de"
 
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DZIL_PLUGINS=( Git SurgicalPodWeaver RPM AuthorsFromGit )
 

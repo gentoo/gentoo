@@ -17,6 +17,7 @@ LICENSE="iASL"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="sys-devel/bison
 	sys-devel/flex"

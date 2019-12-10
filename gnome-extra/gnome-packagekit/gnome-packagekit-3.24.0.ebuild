@@ -11,6 +11,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="systemd udev" # test
+RESTRICT="!test? ( test )"
 
 # XXX: test, upstream managed to break gpk-self-test beyond repair
 # gdk-pixbuf used in gpk-animated-icon

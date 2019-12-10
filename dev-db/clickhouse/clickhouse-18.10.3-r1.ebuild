@@ -21,6 +21,7 @@ SRC_URI="https://github.com/yandex/${MY_PN}/archive/v${PV}-${TYPE}.tar.gz -> ${P
 
 SLOT="0/${TYPE}"
 IUSE="+client cpu_flags_x86_sse4_2 +server debug doc kafka mongodb mysql static test tools zookeeper"
+RESTRICT="!test? ( test )"
 KEYWORDS="~amd64"
 
 REQUIRED_USE="

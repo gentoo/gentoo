@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,6 +25,7 @@ SLOT="0"
 # hdfs needs big java hdfs not yet in portage
 # azure not yet in portage
 IUSE="doc openmp s3 test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="net-misc/curl[ssl]"
 DEPEND="${RDEPEND}

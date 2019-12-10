@@ -12,6 +12,7 @@ DESCRIPTION="HTML5 parser based on gumbo C library"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 >=dev-perl/Alien-LibGumbo-0.30.0

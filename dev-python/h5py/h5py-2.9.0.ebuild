@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test examples mpi"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	sci-libs/hdf5:=[mpi=,hl(+)]

@@ -15,6 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/dnspython-1.15.0[${PYTHON_USEDEP}]

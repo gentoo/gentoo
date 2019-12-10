@@ -18,6 +18,7 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 # Currently doc build fails, reason now, attempt to import mystery modules in datashape
 # Leaving doc build content in case this is fixed
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 # pyspark appears an optional dep not in portage. pyskit appears to be dropped
 # some packages including pyparsing appear required despite their absence from requirements.txt

@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="svg test X"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	X? ( ${PYTHON_REQUIRED_USE} )

@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -13,6 +13,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test static-libs"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/glib:2
 	dev-libs/libxml2"

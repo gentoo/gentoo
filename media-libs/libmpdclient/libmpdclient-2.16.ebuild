@@ -13,6 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ppc ppc64 ~sparc x86"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
 DEPEND="

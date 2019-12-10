@@ -18,6 +18,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-vcs/mercurial-2.4.2"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]

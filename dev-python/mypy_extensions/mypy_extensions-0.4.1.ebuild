@@ -22,6 +22,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	doc? (

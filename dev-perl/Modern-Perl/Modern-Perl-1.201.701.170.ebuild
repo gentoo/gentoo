@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,6 +10,7 @@ DESCRIPTION="enable all of the features of Modern Perl with one import"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 RDEPEND="virtual/perl-IO
 	>=virtual/perl-autodie-2.220.0"
 DEPEND="${RDEPEND}

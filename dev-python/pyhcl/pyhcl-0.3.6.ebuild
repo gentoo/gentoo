@@ -15,6 +15,7 @@ LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/ply-3.4[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}

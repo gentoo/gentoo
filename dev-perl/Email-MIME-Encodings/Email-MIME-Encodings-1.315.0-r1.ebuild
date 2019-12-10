@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,6 +12,7 @@ DESCRIPTION="A unified interface to MIME encoding and decoding"
 SLOT="0"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~sparc-solaris ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=virtual/perl-MIME-Base64-3.07"
 DEPEND="${RDEPEND}

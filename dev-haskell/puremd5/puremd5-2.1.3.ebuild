@@ -19,6 +19,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/binary-0.4.0:=[profile?]
 	>=dev-haskell/cereal-0.2:=[profile?]

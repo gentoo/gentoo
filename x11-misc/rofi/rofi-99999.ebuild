@@ -12,6 +12,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="test windowmode"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/glib:2

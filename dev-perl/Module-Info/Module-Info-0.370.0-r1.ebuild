@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ DESCRIPTION="Information about Perl modules"
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ~mips ppc ppc64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/B-Utils-0.270.0

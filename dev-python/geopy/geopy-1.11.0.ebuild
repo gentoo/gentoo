@@ -12,6 +12,7 @@ HOMEPAGE="http://www.geopy.org/ https://github.com/geopy/geopy"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 IUSE="test doc timezone yahoo"
+RESTRICT="!test? ( test )"
 
 LICENSE="MIT"
 SLOT="0"

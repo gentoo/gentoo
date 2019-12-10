@@ -16,6 +16,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+test-doctests"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/contravariant-0.2.0.1:=[profile?] <dev-haskell/contravariant-1:=[profile?]
 	>=dev-haskell/distributive-0.2.2:=[profile?] <dev-haskell/distributive-1:=[profile?]

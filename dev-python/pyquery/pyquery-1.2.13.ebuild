@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc64 s390 ~sh sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/lxml-2.1[${PYTHON_USEDEP}]

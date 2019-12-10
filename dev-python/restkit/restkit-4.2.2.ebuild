@@ -15,6 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc64 s390 ~sh x86"
 IUSE="+cli doc examples test"
+RESTRICT="!test? ( test )"
 
 PY27_USEDEP="$(python_gen_usedep python2_7)"
 RDEPEND="cli? ( dev-python/ipython[${PY27_USEDEP}] )

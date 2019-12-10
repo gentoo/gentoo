@@ -14,6 +14,7 @@ LICENSE="BSD GPL-2 Sendmail-Open-Source"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE="berkdb ldap libressl lmdb lua memcached opendbx poll sasl selinux +ssl static-libs stats query_cache test unbound"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
 	dev-libs/libbsd

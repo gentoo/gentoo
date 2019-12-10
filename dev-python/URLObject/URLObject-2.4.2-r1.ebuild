@@ -18,6 +18,7 @@ LICENSE="BSD"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
 DEPEND="

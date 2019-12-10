@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,7 @@ LICENSE="|| ( AFL-3.0 AGPL-3 APL-1.0 Apache-2.0 BSD-2 Boost-1.0 CDDL CPAL-1.0
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test minimal"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/DBI-1.210.0

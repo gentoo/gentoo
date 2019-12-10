@@ -11,6 +11,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # PHP dependency can be inferred from .travis.yml in the repository.
 # The necessary USE flags on the other hand were found the hard way.

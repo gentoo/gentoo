@@ -27,6 +27,7 @@ else
 fi
 
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	~dev-util/buildbot-${PV}[${PYTHON_USEDEP}]

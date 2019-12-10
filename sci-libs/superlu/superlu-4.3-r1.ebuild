@@ -18,6 +18,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/blas"

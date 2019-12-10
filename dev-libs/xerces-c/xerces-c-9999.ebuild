@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,6 +21,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 IUSE="cpu_flags_x86_sse2 curl doc elibc_Darwin elibc_FreeBSD examples iconv icu static-libs test threads"
+RESTRICT="!test? ( test )"
 
 RDEPEND="icu? ( dev-libs/icu:0= )
 	curl? ( net-misc/curl )

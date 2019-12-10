@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,6 +11,7 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS=""
 IUSE="+ncurses selinux test tre"
+RESTRICT="!test? ( test )"
 
 #Note: vis is reported to also work with NetBSD curses
 #TODO: >=dev-lang/lua-5.2 (needed for syntax highlighting and settings)

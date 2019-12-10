@@ -21,6 +21,7 @@ LICENSE="LGPL-2.1+ GPL-2+"
 # check as_api_level
 SLOT="0/4"
 IUSE="apt doc +introspection qt5 test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-libs/appstream-glib

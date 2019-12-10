@@ -23,6 +23,7 @@ HOMEPAGE="https://github.com/gentoo/eudev"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"
 IUSE="+blkid efi +hwdb +kmod selinux smack test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.20
 	kmod? ( >=sys-apps/kmod-16 )

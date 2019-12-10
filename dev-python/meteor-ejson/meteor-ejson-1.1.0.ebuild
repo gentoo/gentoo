@@ -14,6 +14,7 @@ SLOT="0"
 LICENSE="MIT"
 KEYWORDS="~amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}

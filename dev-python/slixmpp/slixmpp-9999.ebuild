@@ -11,6 +11,7 @@ HOMEPAGE="https://dev.louiz.org/projects/slixmpp"
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://lab.louiz.org/poezio/${PN}.git"

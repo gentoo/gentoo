@@ -25,6 +25,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="dnscrypt gnutls fstrm luajit regex remote-logging snmp +ssl systemd test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="dnscrypt? ( ssl )
 		gnutls? ( ssl )"
 

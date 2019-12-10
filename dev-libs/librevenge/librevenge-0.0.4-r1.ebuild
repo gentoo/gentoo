@@ -18,6 +18,7 @@ fi
 LICENSE="|| ( MPL-2.0 LGPL-2.1 )"
 SLOT="0"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	sys-libs/zlib[${MULTILIB_USEDEP}]

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,6 +11,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 # Crypt_CHAP_MSv1 needs mcrypt which is gone in 7.2+
 RDEPEND="dev-lang/php:*[crypt,hash]"
 DEPEND="test? ( ${RDEPEND} dev-php/PEAR-PEAR )"

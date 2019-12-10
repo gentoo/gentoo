@@ -14,6 +14,7 @@ LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE="blas -openmp test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/gmp:0=

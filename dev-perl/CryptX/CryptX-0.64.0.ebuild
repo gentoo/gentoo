@@ -11,6 +11,7 @@ DESCRIPTION="Self-contained crypto toolkit"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test minimal"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!minimal? (

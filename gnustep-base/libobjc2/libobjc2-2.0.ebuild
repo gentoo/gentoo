@@ -12,6 +12,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="boehm-gc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="boehm-gc? ( dev-libs/boehm-gc )
 	sys-libs/libcxx"

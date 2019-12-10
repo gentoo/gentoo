@@ -15,6 +15,7 @@ LICENSE="BSD GPL-2"
 SLOT="0/8" # ABI version of libunbound.so
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 x86"
 IUSE="debug dnscrypt dnstap +ecdsa ecs gost libressl python redis selinux static-libs systemd test threads"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Note: expat is needed by executable only but the Makefile is custom

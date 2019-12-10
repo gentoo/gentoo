@@ -17,6 +17,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/html5lib[${PYTHON_USEDEP}]

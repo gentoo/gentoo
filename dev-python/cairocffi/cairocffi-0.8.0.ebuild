@@ -18,6 +18,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(python_gen_cond_dep '>=dev-python/cffi-1.1.0:=[${PYTHON_USEDEP}]' 'python*')

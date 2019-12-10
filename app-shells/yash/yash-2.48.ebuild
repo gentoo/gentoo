@@ -14,6 +14,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="nls test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/ncurses:=
 	nls? ( virtual/libintl )"

@@ -1,4 +1,4 @@
-# Copyright 2010-2018 Gentoo Authors
+# Copyright 2010-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,6 +22,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc x86 ~amd64-linux ~x86-linux"
 
 IUSE="+asm +bip70 +bitcoin_policy_rbf dbus kde +libevent knots libressl +qrcode test upnp +wallet zeromq"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/boost-1.52.0:=[threads(+)]

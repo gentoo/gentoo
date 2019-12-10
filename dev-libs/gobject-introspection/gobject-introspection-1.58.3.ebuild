@@ -13,6 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GObjectIntrospection"
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
 IUSE="cairo doctool test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	test? ( cairo )

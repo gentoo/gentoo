@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,6 +17,7 @@ KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 sparc x86"
 # We keep uuid USE flag default dsiabled for this version. Don't forget
 # to default enable it for later versions as this is the upstream default.
 IUSE="bzip2 debug ermt libressl lzo readline selinux sqlite ssl static test uuid zlib"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	ermt? ( ssl )
 	ssl? ( zlib )

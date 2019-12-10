@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/chardet-3.0.2[${PYTHON_USEDEP}]"
 DEPEND="test? ( ${RDEPEND}

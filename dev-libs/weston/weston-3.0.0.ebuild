@@ -26,6 +26,7 @@ LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
 IUSE="colord dbus +drm editor examples fbdev +gles2 headless ivi jpeg +launch lcms rdp +resize-optimization screen-sharing static-libs +suid systemd test unwind wayland-compositor webp +X xwayland"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	drm? ( gles2 )

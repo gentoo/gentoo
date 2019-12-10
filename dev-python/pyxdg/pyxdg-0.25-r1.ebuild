@@ -14,6 +14,7 @@ LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}]
 	x11-themes/hicolor-icon-theme )"

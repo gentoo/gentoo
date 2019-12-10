@@ -18,6 +18,7 @@ LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test tor"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/attrs-17.2.0[${PYTHON_USEDEP}]

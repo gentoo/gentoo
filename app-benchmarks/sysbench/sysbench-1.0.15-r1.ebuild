@@ -13,6 +13,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="aio mysql postgres test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="aio? ( dev-libs/libaio )
 	mysql? ( dev-db/mysql-connector-c:= )

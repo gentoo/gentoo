@@ -13,6 +13,7 @@ LICENSE="|| ( LGPL-2.1 GPL-3 )"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? (
 		dev-qt/qtcore:5

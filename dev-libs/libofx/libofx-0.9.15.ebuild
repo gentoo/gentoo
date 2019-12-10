@@ -13,6 +13,7 @@ LICENSE="GPL-2"
 SLOT="0/7"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-util/gengetopt

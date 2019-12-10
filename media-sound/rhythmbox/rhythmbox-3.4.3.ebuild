@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="cdr daap dbus gnome-keyring ipod libnotify lirc mtp nsplugin +python test +udev upnp-av"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	ipod? ( udev )
 	mtp? ( udev )

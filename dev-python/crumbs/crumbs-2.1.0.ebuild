@@ -14,6 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="dev-python/pyinotify[${PYTHON_USEDEP}]"
 DEPEND="

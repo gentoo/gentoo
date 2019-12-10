@@ -16,6 +16,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sp
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="examples graphviz highlight test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="

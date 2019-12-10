@@ -18,6 +18,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+cti fortran pch +python test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	python? ( cti )

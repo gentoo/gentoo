@@ -16,6 +16,7 @@ LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( sys-apps/portage[${PYTHON_USEDEP}] )"
 

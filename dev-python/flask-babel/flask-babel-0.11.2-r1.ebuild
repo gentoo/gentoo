@@ -17,6 +17,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/Babel[${PYTHON_USEDEP}]

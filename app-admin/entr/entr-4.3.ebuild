@@ -13,6 +13,7 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 src_configure() {
 	sh configure || die

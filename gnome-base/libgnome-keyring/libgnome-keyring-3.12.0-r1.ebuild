@@ -16,6 +16,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeKeyring"
 LICENSE="LGPL-2+ GPL-2+" # tests are GPL-2
 SLOT="0"
 IUSE="debug +introspection test vala"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection )"
 KEYWORDS="alpha amd64 arm arm64 ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris"
 

@@ -16,6 +16,7 @@ LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="dev-vcs/git
 	virtual/perl-File-Spec

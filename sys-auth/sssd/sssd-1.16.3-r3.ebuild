@@ -13,6 +13,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="acl autofs +locator +netlink nfsv4 nls +manpages samba selinux sudo ssh test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEP="
 	>=sys-libs/pam-0-r1[${MULTILIB_USEDEP}]

@@ -14,6 +14,7 @@ SLOT="0"
 LICENSE="MIT"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/c-blosc:="
 DEPEND="${RDEPEND}
