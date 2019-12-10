@@ -14,6 +14,7 @@ HOMEPAGE="https://github.com/prometheus/promu"
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 IUSE=""
+RESTRICT="test"
 
 DEPEND=">=dev-lang/go-1.12"
 
