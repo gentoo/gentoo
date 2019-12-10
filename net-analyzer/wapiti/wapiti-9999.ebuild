@@ -17,6 +17,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE="kerberos ntlm test"
 
+RESTRICT="!test? ( test )"
+
 DEPEND="test? (
 	dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/pytest-runner[${PYTHON_USEDEP}]
