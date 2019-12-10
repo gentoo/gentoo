@@ -39,6 +39,10 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig
 	doc? ( app-text/asciidoc )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-no_opengl.patch
+	)
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use config-file config_file)
