@@ -539,11 +539,6 @@ virtual/pam
 # Depends on apache-2.2
 dev-libs/OpenSRF
 
-# Lars Wendler <polynomial-c@gentoo.org> (2019-10-16)
-# Masked for removal (bug #692088)
-=app-admin/apache-tools-2.2*
-=www-servers/apache-2.2*
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-10-16)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.27
