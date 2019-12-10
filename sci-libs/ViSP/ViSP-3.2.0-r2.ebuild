@@ -19,7 +19,7 @@ IUSE="
 "
 
 RDEPEND="
-	coin? ( media-libs/coin virtual/opengl )
+	coin? ( >=media-libs/coin-4 virtual/opengl )
 	dmtx? ( media-libs/libdmtx )
 	gsl? ( sci-libs/gsl )
 	ieee1394? ( media-libs/libdc1394 )
@@ -27,7 +27,7 @@ RDEPEND="
 	lapack? ( virtual/lapack )
 	motif? ( media-libs/SoXt )
 	ogre? ( dev-games/ogre[ois(+)] dev-libs/boost:=[threads] )
-	opencv? ( media-libs/opencv:= )
+	opencv? ( media-libs/opencv:=[contribdnn(+)] )
 	png? ( media-libs/libpng:0= )
 	usb? ( virtual/libusb:1 )
 	v4l? ( media-libs/libv4l )
@@ -72,8 +72,7 @@ src_configure() {
 		"-DUSE_XML2=$(usex xml ON OFF)"
 		"-DUSE_ZBAR=$(usex zbar ON OFF)"
 		"-DUSE_ZLIB=$(usex zlib ON OFF)"
-		"-DCOIN3D_INCLUDE_DIR=${EPREFIX:-${SYSROOT}}/usr/include/coin"
-		"-DSOQT_INCLUDE_DIR=${EPREFIX:-${SYSROOT}}/usr/include/coin"
+		"-DCOIN3D_INCLUDE_DIR=${EPREFIX:-${SYSROOT}}/usr/include/Coin4"
 		"-DENABLE_SSE2=$(usex cpu_flags_x86_sse2 ON OFF)"
 		"-DENABLE_SSE3=$(usex cpu_flags_x86_sse3 ON OFF)"
 		"-DENABLE_SSSE3=$(usex cpu_flags_x86_ssse3 ON OFF)"

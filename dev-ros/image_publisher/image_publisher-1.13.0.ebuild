@@ -2,25 +2,29 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-ROS_REPO_URI="https://github.com/ros-perception/image_transport_plugins"
+ROS_REPO_URI="https://github.com/ros-perception/image_pipeline"
 KEYWORDS="~amd64 ~arm"
-ROS_SUBDIR=${PN}
 PYTHON_COMPAT=( python2_7 )
+ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Plugin to image_transport for transparently sending images encoded as JPEG or PNG"
+DESCRIPTION="Publish an image stream from single image file or avi file."
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
 	dev-ros/cv_bridge
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
-	dev-ros/image_transport
 	>=media-libs/opencv-4:=
-	dev-libs/boost:=
+	dev-ros/dynamic_reconfigure
+	dev-ros/camera_info_manager
+	dev-ros/image_transport
+	dev-ros/nodelet
 	dev-libs/console_bridge:=
+	dev-ros/roscpp
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}/ocv4.patch" )

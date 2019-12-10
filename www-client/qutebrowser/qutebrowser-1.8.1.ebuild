@@ -1,31 +1,26 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{3_5,3_6} )
+EAPI=7
 
-inherit distutils-r1 eutils gnome2-utils xdg-utils
+PYTHON_COMPAT=( python{3_5,3_6,3_7} )
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
+inherit desktop distutils-r1 eutils xdg-utils
 
 DESCRIPTION="A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine"
 HOMEPAGE="https://www.qutebrowser.org/ https://github.com/qutebrowser/qutebrowser"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="scripts test"
 
-COMMON_DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="${COMMON_DEPEND}
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="
 	app-text/asciidoc
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.8[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.1.3[${PYTHON_USEDEP}]
@@ -43,10 +38,6 @@ RDEPEND="${COMMON_DEPEND}
 RESTRICT="test"
 
 python_compile_all() {
-	if [[ ${PV} == "9999" ]]; then
-		"${PYTHON}" scripts/asciidoc2html.py || die "Failed generating docs"
-	fi
-
 	a2x -f manpage doc/${PN}.1.asciidoc || die "Failed generating man page"
 }
 
@@ -56,7 +47,7 @@ python_test() {
 
 python_install_all() {
 	doman doc/${PN}.1
-	domenu misc/${PN}.desktop
+	domenu misc/org.${PN}.${PN}.desktop
 	doicon -s scalable icons/${PN}.svg
 
 	if use scripts; then
@@ -76,12 +67,12 @@ python_install_all() {
 pkg_postinst() {
 	optfeature "PDF display support" www-plugins/pdfjs
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }

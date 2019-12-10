@@ -50,7 +50,7 @@ src_install() {
 	doins -r usr/share/applications
 	doins -r usr/share/icons
 	fperms +x /opt/Signal/signal-desktop /opt/Signal/chrome-sandbox
-	pax-mark m opt/Signal/signal-desktop /opt/Signal/chrome-sandbox
+	pax-mark m opt/Signal/signal-desktop opt/Signal/chrome-sandbox
 
 	dosym ../../opt/Signal/${MY_PN} /usr/bin/${MY_PN}
 	dosym ../../usr/lib64/libEGL.so opt/Signal/libEGL.so

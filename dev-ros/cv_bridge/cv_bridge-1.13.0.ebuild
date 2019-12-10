@@ -21,4 +21,4 @@ RDEPEND="
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/boostpython.patch" )
+PATCHES=( "${FILESDIR}/boostpython.patch" "${FILESDIR}/ocv4.patch" )
