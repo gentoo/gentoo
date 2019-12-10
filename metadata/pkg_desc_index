@@ -4610,7 +4610,7 @@ dev-lang/crystal 0.30.1 0.31.1: The Crystal Programming Language
 dev-lang/duktape 2.2.1 2.4.0: Embeddable Javascript engine
 dev-lang/elixir 1.4.5 1.6.6 1.8.1 1.8.2 1.9.2 1.9.4: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
-dev-lang/erlang 21.1.1 22.1.1 22.1.4 22.1.7 22.1.8 22.1.8-r1: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 21.1.1 22.1.1 22.1.4 22.1.7 22.1.8 22.1.8-r1 22.2: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -10929,7 +10929,7 @@ dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization u
 dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4 2.12.5: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.8 2.9: Simple, high-reliability, source control management, and more
-dev-vcs/git 2.21.0 2.23.0-r1 2.24.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.21.0 2.21.1 2.23.0-r1 2.23.1-r1 2.24.0 2.24.1 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20170818 6.20170818-r1: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08 9999: Bugzilla subcommand for git
 dev-vcs/git-cola 2.11 3.2: The highly caffeinated git GUI
