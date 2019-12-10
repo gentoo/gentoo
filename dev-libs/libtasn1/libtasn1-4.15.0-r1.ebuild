@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib-minimal libtool
+inherit autotools multilib-minimal libtool
 
 DESCRIPTION="ASN.1 library"
 HOMEPAGE="https://www.gnu.org/software/libtasn1/"
@@ -28,6 +28,10 @@ DOCS=(
 	THANKS
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-noinst_fuzzer_tool.patch #701928
+)
+
 pkg_setup() {
 	if use doc; then
 		DOCS+=( doc/libtasn1.pdf )
@@ -37,7 +41,8 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	elibtoolize  # for Solaris shared library
+	#elibtoolize  # for Solaris shared library
+	eautoreconf #701928
 }
 
 multilib_src_configure() {
