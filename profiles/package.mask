@@ -55,11 +55,6 @@ dev-util/idutils
 dev-libs/boost-numpy
 
 # David Seifert <soap@gentoo.org> (2019-12-10)
-# Build broken for over 3 years, GTK 2, quasi-abandoned upstream.
-# Bug #490574, #699914. Removal in 30 days.
-media-sound/mhwaveedit
-
-# David Seifert <soap@gentoo.org> (2019-12-10)
 # Abandoned upstream, broken ncurses linking, last release 8 years ago.
 # Bug #677742, #696228. Removal in 30 days.
 media-sound/vitunes
