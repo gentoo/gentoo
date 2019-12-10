@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP"
 #HOMEPAGE="http://research.iat.sfu.ca/custom-software/diradm/"
-#SRC_URI="${HOMEPAGE}/${P}.tar.bz2"
+#SRC_URI="http://research.iat.sfu.ca/custom-software/diradm/${P}.tar.bz2"
 HOMEPAGE="http://orbis-terrarum.net/~robbat2/"
 SRC_URI="http://orbis-terrarum.net/~robbat2/${P}.tar.bz2"
 

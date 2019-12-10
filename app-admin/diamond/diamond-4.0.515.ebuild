@@ -23,6 +23,7 @@ HOMEPAGE="https://github.com/python-diamond/Diamond"
 LICENSE="MIT"
 SLOT="0"
 IUSE="test mongo mysql snmp redis"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/configobj
 	dev-python/setproctitle
