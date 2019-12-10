@@ -39,7 +39,7 @@ DESCRIPTION="Docker Bench for Security runs the CIS Docker Benchmark"
 HOMEPAGE="https://github.com/aquasecurity/docker-bench"
 SRC_URI="${ARCHIVE_URI}"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0"
 SLOT="0"
 IUSE=""
 
