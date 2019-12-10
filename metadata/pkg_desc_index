@@ -9078,7 +9078,7 @@ dev-python/timelib 0.2.4-r1: parse english textual date descriptions
 dev-python/tinycss 0.3 0.4: A complete yet simple CSS parser for Python
 dev-python/tinycss2 0.5 0.6.1 1.0.2: A complete yet simple CSS parser for Python
 dev-python/tinyrpc 0.9.4 1.0.1: A protocol neutral RPC library that supports JSON-RPC and zmq.
-dev-python/tld 0.9.2 0.9.3 0.9.6 0.9.7: Extract the top level domain (TLD) from the URL given
+dev-python/tld 0.9.7 0.10: Extract the top level domain (TLD) from the URL given
 dev-python/tldextract 2.2.1: Accurately separate the TLD from the registered domain and subdomains of a URL.
 dev-python/tlslite 0.4.9-r2: TLS Lite is a free python library that implements SSL 3.0 and TLS 1.0/1.1
 dev-python/toml 0.10.0 0.10.0-r1: Python library for handling TOML files
@@ -11937,7 +11937,7 @@ gnustep-apps/preview 0.9: Simple image viewer
 gnustep-apps/price 1.2.0 1.3.0: Precision Raster Image Convolution Engine
 gnustep-apps/projectcenter 0.6.2: An IDE for GNUstep
 gnustep-apps/simpleagenda 0.43: a simple calendar and agenda application
-gnustep-apps/sogo 4.0.7 4.0.8: Groupware server built around OpenGroupware.org and the SOPE application server
+gnustep-apps/sogo 4.0.7 4.0.8 4.1.1: Groupware server built around OpenGroupware.org and the SOPE application server
 gnustep-apps/systempreferences 1.2.0: System Preferences is a clone of Apple OS X' System Preferences
 gnustep-apps/talksoup 1.1: IRC client for GNUstep
 gnustep-apps/terminal 0.9.8 0.9.9: A terminal emulator for GNUstep
@@ -11960,7 +11960,7 @@ gnustep-libs/netclasses 1.1.0: An asynchronous networking library for GNUstep
 gnustep-libs/pantomime 1.2.2 1.2.3 1.3.0: A set of Objective-C classes that model a mail system
 gnustep-libs/performance 0.5.0: Help improve the performance of GNUstep applications
 gnustep-libs/renaissance 0.9.0-r1: GNUstep Renaissance allows to describe user interfaces XML files
-gnustep-libs/sope 4.0.7-r1 4.0.8: A set of frameworks forming a complete Web application server environment
+gnustep-libs/sope 4.0.7-r1 4.0.8 4.1.1: A set of frameworks forming a complete Web application server environment
 gnustep-libs/sqlclient 1.8.1-r1: GNUstep lightweight database abstraction layer
 gui-apps/grim 1.2.0 9999: Grab images from a Wayland compositor.
 gui-apps/mako 1.3 1.4 9999: A lightweight notification daemon for Wayland. Works on Sway.
@@ -14547,7 +14547,7 @@ net-analyzer/tsung 1.7.0: Erlang's multi-protocol distributed load testing tool
 net-analyzer/ttcp 1.12-r2: Tool to test TCP and UDP throughput
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 2.3 2.4 9999: Console-based network traffic monitor that keeps statistics of network usage
-net-analyzer/wapiti 3.0.0 3.0.1 3.0.2 9999: Web-application vulnerability scanner
+net-analyzer/wapiti 3.0.2 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
 net-analyzer/wireshark 3.0.3 3.0.7 3.2.0_rc1 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
@@ -18199,7 +18199,7 @@ www-apps/nextcloud 14.0.14 15.0.12 15.0.13 16.0.5 16.0.6 17.0.0 17.0.1: Personal
 www-apps/nikola 7.8.15 7.8.15-r1: A static website and blog generator
 www-apps/novnc 0.6.2 0.6.2-r1 1.0.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/otrs 5.0.25 6.0.3 6.0.4 6.0.5 6.0.7: An Open source Ticket Request System
-www-apps/owncloud 10.2.1 10.3.0-r1 10.3.1: Web-based storage application where all your data is under your own control
+www-apps/owncloud 10.3.1 10.3.2: Web-based storage application where all your data is under your own control
 www-apps/ownpaste 0.2.2-r1 9999: Private pastebin (server-side implementation)
 www-apps/phpBB 3.2.8: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.1: A customizable PHP script that displays information about your system nicely
@@ -18704,7 +18704,7 @@ x11-misc/pathfinder 1.7.49: File manager based on the FOX Toolkit
 x11-misc/pcmanfm 1.2.3 1.2.5 1.3.1 9999: Fast lightweight tabbed filemanager
 x11-misc/pcmanfm-qt 0.14.1-r1: Fast lightweight tabbed filemanager (Qt port)
 x11-misc/peksystray 0.4.0: A system tray dockapp for window managers supporting docking
-x11-misc/picom 7.5: A lightweight compositor for X11 (previously a compton fork)
+x11-misc/picom 7.5 9999: A lightweight compositor for X11 (previously a compton fork)
 x11-misc/piedock 1.6.6-r1 1.6.9: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/polybar 3.2.1 3.3.1 9999: A fast and easy-to-use tool for creating status bars
 x11-misc/primus 0.2: Faster OpenGL offloading for Bumblebee
