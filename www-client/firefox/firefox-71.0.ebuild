@@ -220,10 +220,6 @@ pkg_setup() {
 		if ! has usersandbox $FEATURES ; then
 			die "You must enable usersandbox as X server can not run as root!"
 		fi
-
-		if ! use clang ; then
-			die "Using GCC and PGO is currently broken!"
-		fi
 	fi
 
 	# Avoid PGO profiling problems due to enviroment leakage
@@ -270,6 +266,7 @@ src_prepare() {
 	use !wayland && rm -f "${WORKDIR}/firefox/2019_mozilla-bug1539471.patch"
 	eapply "${WORKDIR}/firefox"
 	eapply "${FILESDIR}/${PN}-69.0-lto-gcc-fix.patch"
+	eapply "${FILESDIR}/mozilla-bug1601707-gcc-fixup.patch"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
