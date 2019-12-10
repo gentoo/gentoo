@@ -112,7 +112,7 @@ src_install() {
 	done
 
 	# Avoid QA message about pre-compressed file in docs
-	local tarfile=""${ED}"/usr/share/doc/${PF}/amhello-1.0.tar.gz"
+	local tarfile="${ED}/usr/share/doc/${PF}/amhello-1.0.tar.gz"
 	if [[ -f "${tarfile}" ]] ; then
 		gunzip "${tarfile}" || die
 	fi
