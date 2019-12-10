@@ -20,6 +20,7 @@ SRC_URI="${SRC_URI}
 LICENSE="LGPL-2.1+"
 SLOT="2"
 IUSE="dbus debug fam gtk-doc kernel_linux +mime selinux static-libs systemtap test utils xattr"
+RESTRICT="!test? ( test )"
 
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
 

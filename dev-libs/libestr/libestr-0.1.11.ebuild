@@ -13,6 +13,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 hppa x86"
 IUSE="debug static-libs test"
+RESTRICT="!test? ( test )"
 
 DEPEND=""
 RDEPEND="${DEPEND}"

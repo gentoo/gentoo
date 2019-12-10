@@ -10,6 +10,7 @@ HOMEPAGE="https://projects.gnome.org/gnome-power-manager/"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 COMMON_DEPEND="

@@ -20,6 +20,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE="gtk llvm test xml"
+RESTRICT="!test? ( test )"
 
 RDEPEND="gtk? ( x11-libs/gtk+:2 )
 	llvm? ( >=sys-devel/llvm-3.0 )

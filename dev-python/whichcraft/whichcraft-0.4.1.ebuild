@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DOCS=( README.rst HISTORY.rst CONTRIBUTING.rst )
 

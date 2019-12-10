@@ -15,6 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="dev-python/pyhamcrest[${PYTHON_USEDEP}]"
 DEPEND="

@@ -20,6 +20,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
 
 IUSE="debug devhelp glade +introspection packagekit subversion terminal test vala"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # FIXME: automagically uses libgda:6 if available

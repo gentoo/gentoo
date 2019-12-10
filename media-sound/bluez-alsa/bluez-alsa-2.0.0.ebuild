@@ -18,6 +18,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE="aac debug hcitop ldac ofono static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/glib-2.26[dbus,${MULTILIB_USEDEP}]
 	>=media-libs/alsa-lib-1.1.2[${MULTILIB_USEDEP}]

@@ -11,6 +11,7 @@ HOMEPAGE="https://www.roe.ch/SSLsplit"
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="elibc_musl test"
+RESTRICT="!test? ( test )"
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3

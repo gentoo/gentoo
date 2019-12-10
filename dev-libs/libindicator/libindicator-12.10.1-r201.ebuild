@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,6 +12,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/glib-2.22[${MULTILIB_USEDEP}]
 	>=x11-libs/gtk+-2.18:2[${MULTILIB_USEDEP}]"

@@ -18,6 +18,7 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libfreehand"
 LICENSE="MPL-2.0"
 SLOT="0"
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	virtual/pkgconfig

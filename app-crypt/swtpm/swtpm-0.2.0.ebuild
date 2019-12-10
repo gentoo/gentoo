@@ -14,6 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="fuse gnutls seccomp test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="dev-libs/libtpms
 	dev-libs/openssl:0

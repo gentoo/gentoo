@@ -19,6 +19,7 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libvisio"
 LICENSE="|| ( GPL-2+ LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 IUSE="doc static-libs test tools"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-lang/perl

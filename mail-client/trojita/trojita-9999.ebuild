@@ -18,6 +18,7 @@ HOMEPAGE="http://trojita.flaska.net/"
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
 IUSE="+crypt +dbus debug +password pim +spell test +zlib"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="password? ( dbus )"
 

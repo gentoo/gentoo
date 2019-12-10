@@ -11,6 +11,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 # Crypt_CHAP_MSv1 needs mcrypt which is gone in 7.2+
 RDEPEND="|| (  ( dev-php/pecl-mcrypt >=dev-lang/php-7.2:*[hash(+)] )
 		<dev-lang/php-7.2:*[crypt,hash]

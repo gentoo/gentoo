@@ -12,6 +12,7 @@ DESCRIPTION="Perl module interface to interacting with GnuPG"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ~ppc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=app-crypt/gnupg-1.2.1-r1

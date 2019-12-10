@@ -17,6 +17,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ia64 ~ppc ~sparc x86"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/geoip-1.4.8"
 DEPEND="

@@ -12,6 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 DH_LANGS=( de es fr )
 IUSE+=" ${DH_LANGS[@]/#/l10n_}"
 

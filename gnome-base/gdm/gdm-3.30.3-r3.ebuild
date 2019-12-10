@@ -22,6 +22,7 @@ LICENSE="
 SLOT="0"
 
 IUSE="accessibility audit bluetooth-sound branding elogind fprint +introspection ipv6 plymouth selinux smartcard systemd tcpd test wayland xinerama"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="^^ ( elogind systemd )"
 
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh x86"

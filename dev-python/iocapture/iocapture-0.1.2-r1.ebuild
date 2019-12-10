@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 LICENSE="MIT"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]

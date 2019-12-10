@@ -23,6 +23,7 @@ SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 LICENSE="APSL-2"
 KEYWORDS="~x64-macos ~x86-macos"
 IUSE="lto tapi classic test"
+RESTRICT="!test? ( test )"
 
 # ld64 can now only be compiled using llvm and libc++ since it massively uses
 # C++11 language features. *But additionally* the as driver now defaults to

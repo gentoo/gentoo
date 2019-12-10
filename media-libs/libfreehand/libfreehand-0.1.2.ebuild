@@ -17,6 +17,7 @@ SLOT="0"
 [[ ${PV} == 9999 ]] || \
 KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/librevenge

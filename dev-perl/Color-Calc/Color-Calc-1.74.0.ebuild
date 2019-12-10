@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,7 @@ DESCRIPTION="Simple calculations with RGB colors"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test minimal"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-perl/Graphics-ColorNames-2.100.0
 	>=dev-perl/Graphics-ColorNames-WWW-0.10.0

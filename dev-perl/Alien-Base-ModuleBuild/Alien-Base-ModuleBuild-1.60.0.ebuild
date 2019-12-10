@@ -11,6 +11,7 @@ DESCRIPTION="A Module::Build subclass for building Alien:: modules and their lib
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # HTML-Parser for HTML::LinkExtor
 # Alien-Build for Alien::Base::PkgConfig

@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 # numexpr is optional but set hard rdepend
 RDEPEND="

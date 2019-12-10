@@ -19,6 +19,7 @@ fi
 LICENSE="LGPL-2.1+ Nokia-Qt-LGPL-Exception-1.1"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	>=dev-util/lxqt-build-tools-0.6.0

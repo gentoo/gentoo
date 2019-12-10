@@ -24,6 +24,7 @@ HOMEPAGE="http://uncrustify.sourceforge.net/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
 

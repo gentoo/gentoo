@@ -13,6 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-apps/dbus:=
 	dev-libs/glib:=

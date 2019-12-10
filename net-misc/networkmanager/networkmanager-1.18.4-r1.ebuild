@@ -16,6 +16,7 @@ LICENSE="GPL-2+"
 SLOT="0" # add subslot if libnm-util.so.2 or libnm-glib.so.4 bumps soname version
 
 IUSE="audit bluetooth connection-sharing consolekit +dhclient dhcpcd elogind gnutls +introspection iwd json kernel_linux +nss +modemmanager ncurses ofono ovs policykit +ppp resolvconf selinux systemd teamd test vala +wext +wifi"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	bluetooth? ( modemmanager )

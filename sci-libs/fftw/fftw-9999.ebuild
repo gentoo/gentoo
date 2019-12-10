@@ -23,6 +23,7 @@ fi
 LICENSE="GPL-2+"
 SLOT="3.0/3"
 IUSE="altivec cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 doc fortran mpi neon openmp quad static-libs test threads zbus"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	mpi? ( >=virtual/mpi-2.0-r4[${MULTILIB_USEDEP}] )"

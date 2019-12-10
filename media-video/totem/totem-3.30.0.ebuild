@@ -13,6 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Videos"
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 IUSE="cdr gtk-doc +introspection lirc nautilus +python test vala"
+RESTRICT="!test? ( test )"
 # see bug #359379
 REQUIRED_USE="
 	python? ( introspection ${PYTHON_REQUIRED_USE} )

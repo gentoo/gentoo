@@ -14,6 +14,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="~dev-python/pep8-1.5.6[${PYTHON_USEDEP}]
 		~dev-python/pyflakes-0.8.1[${PYTHON_USEDEP}]

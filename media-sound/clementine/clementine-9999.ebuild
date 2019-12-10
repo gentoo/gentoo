@@ -22,6 +22,7 @@ HOMEPAGE="https://www.clementine-player.org https://github.com/clementine-player
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio seafile skydrive test +udisks wiimote"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	udisks? ( dbus )

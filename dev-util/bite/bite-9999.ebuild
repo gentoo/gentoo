@@ -21,6 +21,7 @@ HOMEPAGE="https://github.com/bite/bite"
 LICENSE="BSD"
 SLOT="0"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/requests-2[${PYTHON_USEDEP}]

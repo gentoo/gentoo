@@ -21,6 +21,7 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 

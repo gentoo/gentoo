@@ -18,6 +18,7 @@ LICENSE="PYTHON BSD-4"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test cli"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}

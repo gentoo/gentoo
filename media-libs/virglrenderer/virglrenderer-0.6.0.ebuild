@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -19,6 +19,7 @@ HOMEPAGE="https://virgil3d.github.io/"
 LICENSE="MIT"
 SLOT="0"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=x11-libs/libdrm-2.4.50
 	media-libs/libepoxy"

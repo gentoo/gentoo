@@ -19,6 +19,7 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="static test"
+RESTRICT="!test? ( test )"
 
 LIB_DEPEND="dev-libs/expat[static-libs(+)]
 	dev-libs/libaio[static-libs(+)]"

@@ -14,6 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="s3 test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="dev-python/blinker[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]

@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 IUSE="test +X"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="

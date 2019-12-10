@@ -12,6 +12,7 @@ DESCRIPTION="XSS filter using HTML::Parser"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/HTML-Parser-3.560.0

@@ -19,6 +19,7 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libcdr"
 LICENSE="MPL-2.0"
 SLOT="0"
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/icu:=

@@ -14,6 +14,7 @@ LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm pax_kernel +snapshot +ssl systemtap test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	inspector? ( icu ssl )
 	npm? ( ssl )

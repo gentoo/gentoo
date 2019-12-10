@@ -10,6 +10,7 @@ HOMEPAGE="https://rapidjson.org/"
 
 LICENSE="MIT"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 SLOT="0"
 
 if [[ ${PV} == *9999 ]] ; then

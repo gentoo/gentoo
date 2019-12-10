@@ -14,6 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/six-1.11.0[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-2.6[${PYTHON_USEDEP}]"

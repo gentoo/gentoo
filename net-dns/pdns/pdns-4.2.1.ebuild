@@ -19,6 +19,7 @@ KEYWORDS="~amd64 ~x86"
 # xdb: (almost) dead, surely not supported
 
 IUSE="debug doc geoip ldap libressl lua luajit lua-records mydns mysql opendbx postgres protobuf remote sodium sqlite systemd tools tinydns test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="lua-records? ( lua ) mydns? ( mysql )"
 

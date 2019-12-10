@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,7 @@ LICENSE="BSD-2"
 SLOT="0/0.1"
 KEYWORDS="amd64 x86"
 IUSE="libressl static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )

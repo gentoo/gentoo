@@ -25,6 +25,7 @@ MODULES=(
 )
 
 IUSE="+http libressl +rtti +ssl static-libs test unity-build ${MODULES[*]}"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="

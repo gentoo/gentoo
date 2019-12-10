@@ -16,6 +16,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE="+containers +contravariant +distributive +test-doctests"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/semigroups-0.8.3.1:=[profile?] <dev-haskell/semigroups-1:=[profile?]
 	>=dev-haskell/tagged-0.1:=[profile?] <dev-haskell/tagged-1:=[profile?]

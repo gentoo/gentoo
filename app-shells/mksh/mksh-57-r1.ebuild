@@ -22,6 +22,7 @@ HOMEPAGE="http://mirbsd.de/mksh"
 LICENSE="BSD"
 SLOT="0"
 IUSE="static test"
+RESTRICT="!test? ( test )"
 RDEPEND="static? ( dev-libs/klibc )"
 DEPEND="
 	${RDEPEND}

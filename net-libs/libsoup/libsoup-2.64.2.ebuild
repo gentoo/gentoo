@@ -14,6 +14,7 @@ LICENSE="LGPL-2+"
 SLOT="2.4"
 
 IUSE="debug gssapi +introspection samba ssl test +vala"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection )"
 
 KEYWORDS="alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 s390 sparc x86"

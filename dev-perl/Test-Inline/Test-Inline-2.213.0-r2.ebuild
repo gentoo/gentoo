@@ -12,6 +12,7 @@ DESCRIPTION="Inline test suite support for Perl"
 SLOT="0"
 KEYWORDS="amd64 hppa ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Algorithm-Dependency-1.02

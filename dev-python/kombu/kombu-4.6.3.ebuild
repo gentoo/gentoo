@@ -14,6 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc examples mongodb msgpack redis sqs test yaml"
+RESTRICT="!test? ( test )"
 
 # zookeeper backend support possible via dev-python/kazoo
 RDEPEND="

@@ -18,6 +18,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/appdirs-1.3[${PYTHON_USEDEP}]

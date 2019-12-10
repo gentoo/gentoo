@@ -15,6 +15,7 @@ LICENSE="BSD MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="ssh test"
+RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-python/cli_helpers-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/click-7.0[${PYTHON_USEDEP}]

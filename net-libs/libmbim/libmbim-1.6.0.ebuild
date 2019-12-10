@@ -18,6 +18,7 @@ HOMEPAGE="https://cgit.freedesktop.org/libmbim/"
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/glib-2.32
 	dev-libs/libgudev:="

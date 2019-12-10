@@ -14,6 +14,7 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="examples extras test"
+RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.6.1_disable_socket_tests.patch"

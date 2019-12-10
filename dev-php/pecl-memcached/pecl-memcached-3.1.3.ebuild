@@ -14,6 +14,7 @@ LICENSE="PHP-3"
 SLOT="7"
 KEYWORDS="~amd64 x86"
 IUSE="examples igbinary json sasl +session test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=dev-libs/libmemcached-1.0.14[sasl?]
 	sys-libs/zlib

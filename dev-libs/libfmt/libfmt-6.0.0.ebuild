@@ -10,6 +10,7 @@ HOMEPAGE="https://github.com/fmtlib/fmt"
 
 LICENSE="MIT"
 IUSE="test"
+RESTRICT="!test? ( test )"
 SLOT="0/$(ver_cut 1)"
 
 if [[ ${PV} == *9999 ]] ; then

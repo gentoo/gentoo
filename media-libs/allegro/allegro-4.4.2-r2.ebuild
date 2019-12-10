@@ -14,6 +14,7 @@ LICENSE="Allegro MIT GPL-2+ ZLIB"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~mips ppc ppc64 x86"
 IUSE="alsa fbcon jack jpeg opengl oss png svga test vga vorbis X"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	alsa? ( media-libs/alsa-lib )

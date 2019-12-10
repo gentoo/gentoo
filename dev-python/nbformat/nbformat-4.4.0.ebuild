@@ -16,6 +16,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/jsonschema-2.4.0[${PYTHON_USEDEP}]

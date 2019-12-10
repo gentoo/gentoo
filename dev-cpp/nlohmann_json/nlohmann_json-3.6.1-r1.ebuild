@@ -13,6 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 DEPEND="doc? ( app-doc/doxygen )"
 

@@ -21,6 +21,7 @@ HOMEPAGE="https://sigrok.org/wiki/Libsigrok"
 LICENSE="GPL-3"
 SLOT="0/4"
 IUSE="cxx ftdi java parport python serial static-libs test +udev usb"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="java? ( cxx ) python? ( cxx ${PYTHON_REQUIRED_USE} )"
 
 # We also support librevisa, but that isn't in the tree ...

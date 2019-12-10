@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 KEYWORDS=""
 SLOT="0"
 IUSE="cpu_flags_x86_sse2 +dns debug gdal openmp subversion test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	dev-libs/expat

@@ -19,6 +19,7 @@ SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 LICENSE="BSD"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-arch/bzip2:0=

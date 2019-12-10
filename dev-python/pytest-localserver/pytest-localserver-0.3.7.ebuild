@@ -14,6 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/werkzeug-0.10[${PYTHON_USEDEP}]"
 DEPEND="test? ( ${RDEPEND}

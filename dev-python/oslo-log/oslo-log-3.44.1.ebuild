@@ -15,6 +15,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 CDEPEND=">=dev-python/pbr-3.1.1[${PYTHON_USEDEP}]"
 RDEPEND="

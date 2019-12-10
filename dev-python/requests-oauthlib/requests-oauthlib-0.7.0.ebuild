@@ -15,6 +15,7 @@ SLOT="0"
 LICENSE="ISC"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? (
 			dev-python/mock[${PYTHON_USEDEP}]

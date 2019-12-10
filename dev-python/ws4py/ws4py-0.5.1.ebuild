@@ -26,6 +26,7 @@ HOMEPAGE="https://github.com/Lawouach/WebSocket-for-Python"
 LICENSE="BSD"
 SLOT="0"
 IUSE="+client +server test +threads"
+RESTRICT="!test? ( test )"
 # doc build requires sphinxcontrib ext packages absent from portage
 
 RDEPEND=">=dev-python/greenlet-0.4.1[${PYTHON_USEDEP}]

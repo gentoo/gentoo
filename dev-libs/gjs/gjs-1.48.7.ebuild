@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,6 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Gjs"
 LICENSE="MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )"
 SLOT="0"
 IUSE="+cairo examples gtk test"
+RESTRICT="!test? ( test )"
 KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
 
 RDEPEND="

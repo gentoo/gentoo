@@ -13,6 +13,7 @@ LICENSE="LGPL-3"
 SLOT="0/5"
 KEYWORDS="amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="doc drafts pgm +sodium static-libs test unwind elibc_Darwin"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!elibc_Darwin? ( unwind? ( sys-libs/libunwind ) )

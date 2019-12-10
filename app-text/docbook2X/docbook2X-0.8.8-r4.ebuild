@@ -13,6 +13,7 @@ HOMEPAGE="http://docbook2x.sourceforge.net/"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~riscv s390 sh sparc x86 ~x86-linux ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 LICENSE="MIT"
 
 # dev-perl/XML-LibXML - although not mentioned upstream is required

@@ -14,6 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(python_gen_cond_dep '>=dev-python/trollius-2.0[${PYTHON_USEDEP}]' python2_7)

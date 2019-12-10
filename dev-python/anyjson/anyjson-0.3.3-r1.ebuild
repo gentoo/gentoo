@@ -15,6 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # please keep all supported implementations in 'test?'
 # to make sure the package is used in the widest way

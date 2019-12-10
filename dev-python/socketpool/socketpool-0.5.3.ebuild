@@ -12,6 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 KEYWORDS="amd64 arm ~arm64 ppc ppc64 s390 ~sh ~sparc x86"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 LICENSE="|| ( MIT public-domain )"
 SLOT="0"
 

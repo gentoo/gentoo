@@ -19,6 +19,7 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="doc luajit test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-db/sqlite:3

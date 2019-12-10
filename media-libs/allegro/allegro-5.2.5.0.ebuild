@@ -13,6 +13,7 @@ LICENSE="BSD ZLIB"
 SLOT="5"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="alsa dumb flac gtk jpeg openal opengl opus oss physfs png pulseaudio test truetype vorbis webp X xinerama"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="X? ( opengl )
 	xinerama? ( X )

@@ -13,6 +13,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="cdr colord debug exif gnome-keyring gstreamer http jpeg json lcms raw slideshow svg tiff test webkit webp"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.36.0:2[dbus]

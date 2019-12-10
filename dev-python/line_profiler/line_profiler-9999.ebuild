@@ -15,6 +15,7 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]

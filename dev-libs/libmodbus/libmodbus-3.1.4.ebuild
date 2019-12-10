@@ -11,6 +11,7 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="static-libs test doc"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
 DEPEND="doc? ( app-text/asciidoc

@@ -12,6 +12,7 @@ DESCRIPTION="S/MIME message signing, verification, encryption and decryption"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="libressl test minimal"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!libressl? ( >=dev-libs/openssl-0.9.9:0 )

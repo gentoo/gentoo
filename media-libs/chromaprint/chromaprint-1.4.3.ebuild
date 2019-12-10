@@ -16,6 +16,7 @@ LICENSE="LGPL-2.1"
 SLOT="0/1"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="libav test tools"
+RESTRICT="!test? ( test )"
 
 # note: use ffmpeg or libav instead of fftw because it's recommended and required for tools
 RDEPEND="

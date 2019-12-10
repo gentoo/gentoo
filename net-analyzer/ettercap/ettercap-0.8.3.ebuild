@@ -20,6 +20,7 @@ else
 fi
 
 IUSE="doc geoip gtk ipv6 libressl ncurses +plugins test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/libbsd
 	dev-libs/libpcre
