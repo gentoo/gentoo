@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop qmake-utils xdg-utils
+inherit desktop qmake-utils xdg
 
 DESCRIPTION="Cross-platform Twitch client"
 HOMEPAGE="https://alamminsalo.github.io/orion/"
@@ -49,12 +49,4 @@ src_install() {
 
 	insinto /usr/share/icons/hicolor/scalable/apps
 	doins distfiles/${PN}.svg
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
