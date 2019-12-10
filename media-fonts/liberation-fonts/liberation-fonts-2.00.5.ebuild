@@ -9,8 +9,8 @@ inherit font python-any-r1
 
 DESCRIPTION="A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat"
 HOMEPAGE="https://github.com/liberationfonts/liberation-fonts"
-SRC_URI="!fontforge? ( ${HOMEPAGE}/files/2926169/${PN}-ttf-${PV}.tar.gz )
-fontforge? ( ${HOMEPAGE}/files/2926167/${P}.tar.gz )"
+SRC_URI="!fontforge? ( https://github.com/liberationfonts/liberation-fonts/files/2926169/${PN}-ttf-${PV}.tar.gz )
+fontforge? ( https://github.com/liberationfonts/liberation-fonts/files/2926167/${P}.tar.gz )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-solaris"
 SLOT="0"
@@ -21,12 +21,23 @@ FONT_SUFFIX="ttf"
 
 FONT_CONF=( "${FILESDIR}/60-liberation.conf" )
 
-DEPEND="
+BDEPEND="
 	fontforge? (
 		${PYTHON_DEPS}
 		media-gfx/fontforge
-		dev-python/fonttools
+		$(python_gen_any_dep 'dev-python/fonttools[${PYTHON_USEDEP}]')
 	)"
+
+python_check_deps() {
+	has_version -b "dev-python/fonttools[${PYTHON_USEDEP}]"
+}
+
+src_prepare() {
+	default
+	if use fontforge ; then
+		sed -i "s/= python3/= ${EPYTHON}/" Makefile || die
+	fi
+}
 
 pkg_setup() {
 	if use fontforge; then

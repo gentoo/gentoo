@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,9 +25,20 @@ DEPEND="
 	fontforge? (
 		${PYTHON_DEPS}
 		media-gfx/fontforge
-		dev-python/fonttools
+		$(python_gen_any_dep '<dev-python/fonttools-4.0[${PYTHON_USEDEP}]')
 	)"
 RDEPEND=""
+
+python_check_deps() {
+	has_version "dev-python/fonttools[${PYTHON_USEDEP}]"
+}
+
+src_prepare() {
+	default
+	if use fontforge ; then
+		sed -i "s/= python/= ${EPYTHON}/" Makefile || die
+	fi
+}
 
 pkg_setup() {
 	if use fontforge; then
