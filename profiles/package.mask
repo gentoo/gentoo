@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (2019-12-10)
+# EAPI=4, dead upstream, can't locate new home
+# Removal in 30 days
+dev-util/kelbt
+
+# Aaron Bauman <bman@gentoo.org> (2019-12-10)
 # EAPI=4, fails to build
 # Removal in 30 days
 dev-util/idutils
