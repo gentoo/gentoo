@@ -13,6 +13,7 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 IUSE="sdl test vnc wayland xcb"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sdl? ( >=media-libs/libsdl-1.2.15-r4 )
 	vnc? ( >=net-libs/libvncserver-0.9.9-r2 )

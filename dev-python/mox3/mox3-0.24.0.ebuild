@@ -14,6 +14,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 CDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 CRDEPEND=">=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]"

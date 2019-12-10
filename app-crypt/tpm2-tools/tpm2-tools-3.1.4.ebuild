@@ -11,6 +11,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="libressl test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=app-crypt/tpm2-tss-2.0:=
 	net-misc/curl:=

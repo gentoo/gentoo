@@ -14,6 +14,7 @@ LICENSE="EPL-1.0"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
 IUSE="bridge examples libressl +persistence +srv ssl tcpd test websockets"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="test? ( bridge )"
 

@@ -17,6 +17,7 @@ HOMEPAGE="http://www.mega-nerd.com/libsndfile"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="alsa minimal sqlite static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!minimal? (

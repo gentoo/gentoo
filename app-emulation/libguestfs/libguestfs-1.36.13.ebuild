@@ -20,6 +20,7 @@ SLOT="0/"${MY_PV_1}""
 
 KEYWORDS="~amd64"
 IUSE="bash-completion debug doc erlang +fuse gtk inspect-icons introspection lua ocaml +perl python ruby selinux static-libs systemtap test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

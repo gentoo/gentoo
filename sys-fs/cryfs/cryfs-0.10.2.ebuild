@@ -21,6 +21,7 @@ HOMEPAGE="https://www.cryfs.org/"
 LICENSE="LGPL-3 MIT"
 SLOT="0"
 IUSE="custom-optimization debug libressl test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/boost-1.65.1:=

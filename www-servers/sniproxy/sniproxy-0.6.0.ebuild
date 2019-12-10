@@ -21,6 +21,7 @@ HOMEPAGE="https://github.com/dlundquist/sniproxy"
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="+dns +largefile rfc3339 test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libev

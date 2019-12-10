@@ -15,6 +15,7 @@ KEYWORDS="~amd64"
 LICENSE="BSD"
 SLOT="0"
 IUSE="test webtools"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/nbformat[${PYTHON_USEDEP}]

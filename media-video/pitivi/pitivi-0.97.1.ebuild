@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 IUSE="v4l test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # XXX: recommends gst-plugins-libav and frei0r-plugins

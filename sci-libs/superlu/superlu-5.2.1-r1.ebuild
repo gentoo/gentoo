@@ -28,6 +28,7 @@ HOMEPAGE="https://crd-legacy.lbl.gov/~xiaoye/SuperLU/"
 LICENSE="BSD"
 
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/blas"
 DEPEND="${RDEPEND}

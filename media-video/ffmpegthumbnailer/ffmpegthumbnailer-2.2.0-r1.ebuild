@@ -13,6 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="gnome gtk jpeg libav png test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="gnome? ( gtk )
 	test? ( png jpeg )"

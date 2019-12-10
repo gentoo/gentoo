@@ -14,6 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc x86 ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 # Note: only C API of graphviz is used, PYTHON_USEDEP unnecessary.
 RDEPEND="media-gfx/graphviz"

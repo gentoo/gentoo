@@ -15,6 +15,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${COMMON_DEPEND}"

@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 LICENSE="BSD"
 SLOT="0"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/astropy[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}

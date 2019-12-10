@@ -24,6 +24,7 @@ else
 	KEYWORDS="~amd64"
 fi
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
 	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP}]

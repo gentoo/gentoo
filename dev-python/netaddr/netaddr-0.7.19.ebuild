@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="cli test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="cli? ( || ( $(python_gen_useflags -3) ) )"
 
 RDEPEND="

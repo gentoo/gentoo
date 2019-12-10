@@ -15,6 +15,7 @@ SLOT="0"
 LICENSE="PSF-2"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/secretstorage[${PYTHON_USEDEP}]

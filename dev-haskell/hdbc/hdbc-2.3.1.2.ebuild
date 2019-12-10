@@ -19,6 +19,7 @@ LICENSE="BSD"
 SLOT="2/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="mysql odbc postgres sqlite test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/convertible-1.0.10.0:=[profile?] <dev-haskell/convertible-1.1.0.0:=[profile?]
 		dev-haskell/mtl:=[profile?]

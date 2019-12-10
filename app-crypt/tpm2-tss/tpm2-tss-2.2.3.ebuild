@@ -13,6 +13,7 @@ LICENSE="BSD-2"
 SLOT="0/0"	# sublot is libtss2-sys number
 KEYWORDS="~amd64"
 IUSE="doc +gcrypt openssl static-libs test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	gcrypt? ( !openssl )

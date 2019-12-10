@@ -21,6 +21,7 @@ HOMEPAGE="https://github.com/tqdm/tqdm"
 LICENSE="MIT"
 SLOT="0"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 # Uses pkg_resources
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"

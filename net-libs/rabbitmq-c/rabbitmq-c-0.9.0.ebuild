@@ -19,6 +19,7 @@ fi
 LICENSE="MIT"
 SLOT="0/4"
 IUSE="doc libressl test +ssl static-libs tools"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="test? ( static-libs )"
 

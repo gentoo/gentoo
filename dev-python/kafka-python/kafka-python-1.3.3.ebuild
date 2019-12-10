@@ -14,6 +14,7 @@ LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="snappy test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="snappy? ( dev-python/snappy[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}

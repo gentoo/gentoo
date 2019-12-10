@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE="doc gdbm gevent mysql pyzord redis test"
+RESTRICT="!test? ( test )"
 
 # The mysql-python library is always required for the MySQL engine. We
 # depend on it conditionally here because otherwise repoman will balk at

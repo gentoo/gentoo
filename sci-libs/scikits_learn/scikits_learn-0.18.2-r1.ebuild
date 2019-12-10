@@ -18,6 +18,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 # tried to unbundle virtual/python-funcsigs, funcsigs, odict
 # but it is a large mess to maintain

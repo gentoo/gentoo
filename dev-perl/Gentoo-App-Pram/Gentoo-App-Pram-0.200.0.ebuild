@@ -13,6 +13,7 @@ HOMEPAGE="https://github.com/monsieurp/Gentoo-App-Pram"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-vcs/git

@@ -25,6 +25,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 IUSE="doc emacs test vim-syntax"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	${PYTHON_DEPS}

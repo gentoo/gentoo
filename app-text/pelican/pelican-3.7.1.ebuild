@@ -14,6 +14,7 @@ LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc examples markdown test"
+RESTRICT="!test? ( test )"
 
 DEPEND=">=dev-python/feedgenerator-1.9[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.7[${PYTHON_USEDEP}]

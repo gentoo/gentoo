@@ -21,6 +21,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+asm +bitcoin_policy_rbf examples knots libressl +system-leveldb test upnp +wallet zeromq"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-libs/boost-1.52.0:=[threads(+)]

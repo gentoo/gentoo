@@ -14,6 +14,7 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]

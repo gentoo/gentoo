@@ -16,6 +16,7 @@ LICENSE="ZLIB"
 SLOT="0/3"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples fortran hdf5 legacy mpi static-libs szip test tools"
+RESTRICT="!test? ( test )"
 
 RDEPEND="hdf5? ( sci-libs/hdf5:=[mpi=,szip=] )
 	tools? (

@@ -12,6 +12,7 @@ DESCRIPTION="An abstract Moose role for setting attributes from a configfile"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # MooseX::Types::Moose -> MooseX-Types
 RDEPEND="

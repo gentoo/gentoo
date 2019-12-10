@@ -12,6 +12,7 @@ DESCRIPTION="Check that a library is available for FFI"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~riscv ~s390 ~sh ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Module-Load

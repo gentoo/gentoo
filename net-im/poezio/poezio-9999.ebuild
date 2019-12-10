@@ -11,6 +11,7 @@ HOMEPAGE="https://poez.io/"
 LICENSE="ZLIB"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://lab.louiz.org/${PN}/${PN}.git"

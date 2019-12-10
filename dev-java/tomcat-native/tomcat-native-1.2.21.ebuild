@@ -13,6 +13,7 @@ KEYWORDS="amd64 ~x86"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/apr:1=
 	dev-libs/openssl:0=

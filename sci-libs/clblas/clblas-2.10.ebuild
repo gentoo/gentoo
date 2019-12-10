@@ -18,6 +18,7 @@ LICENSE="Apache-2.0"
 SLOT="0/2" # soname version
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+client doc examples ktest performance test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="performance? ( ${PYTHON_REQUIRED_USE} )"
 

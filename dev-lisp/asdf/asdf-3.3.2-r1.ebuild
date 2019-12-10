@@ -13,6 +13,7 @@ LICENSE="MIT"
 SLOT="0/${PVR}"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 DEPEND="!dev-lisp/cl-${PN}
 		!<dev-lisp/asdf-2.33-r3

@@ -15,6 +15,7 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples fuse http kerberos python readline rbd ssl test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	sys-libs/zlib

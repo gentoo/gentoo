@@ -13,6 +13,7 @@ DESCRIPTION="A XPath Perl Module"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-perl/XML-Parser-2.230.0"
 DEPEND="${RDEPEND}

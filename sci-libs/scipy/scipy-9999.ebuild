@@ -18,6 +18,7 @@ LICENSE="BSD LGPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="sparse test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	>=dev-python/numpy-1.10[lapack,${PYTHON_USEDEP}]

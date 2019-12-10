@@ -13,6 +13,7 @@ LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-lang/perl-5.26
 	dev-perl/autovivification

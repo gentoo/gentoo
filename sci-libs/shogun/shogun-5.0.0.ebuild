@@ -21,6 +21,7 @@ LICENSE="GPL-3 free-noncomm"
 SLOT="0/16"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cpu_flags_x86_sse doc examples lua octave opencl python R ruby static-libs test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )

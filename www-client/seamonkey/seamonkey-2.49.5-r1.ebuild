@@ -53,6 +53,7 @@ KEYWORDS="amd64 ~ppc64 x86"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="+calendar +chatzilla +crypt +gmp-autoupdate +ipc jack minimal pulseaudio +roaming selinux test"
+RESTRICT="!test? ( test )"
 
 SRC_URI+="
 	https://dev.gentoo.org/~axs/mozilla/patchsets/${PATCH}.tar.xz

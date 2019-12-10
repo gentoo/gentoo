@@ -13,6 +13,7 @@ LICENSE="LGPL-2+"
 SLOT="2"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="X debug +introspection jpeg tiff test"
+RESTRICT="!test? ( test )"
 
 # Remove SRC_URI when gnome bug #795069 is fixed
 SRC_URI="${SRC_URI} test? ( https://git.gnome.org/browse/gdk-pixbuf/plain/tests/bug753605-atsize.jpg?h=2.36.12 -> ${PN}-2.36.12-bug753605-atsize.jpg )"

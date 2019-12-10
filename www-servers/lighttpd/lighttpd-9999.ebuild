@@ -13,6 +13,7 @@ LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="bzip2 doc fam gdbm ipv6 kerberos ldap libev libressl lua minimal mmap memcached mysql pcre php rrdtool selinux ssl test webdav xattr zlib"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="kerberos? ( ssl !libressl )"
 

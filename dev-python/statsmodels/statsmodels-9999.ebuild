@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]

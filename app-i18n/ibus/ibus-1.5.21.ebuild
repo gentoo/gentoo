@@ -16,6 +16,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+X +emoji gconf +gtk +gtk2 +introspection kde nls +python test +unicode vala wayland"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="emoji? ( gtk )
 	gtk2? ( gtk )
 	kde? ( gtk )

@@ -14,6 +14,7 @@ LICENSE="LGPL-3"
 KEYWORDS="amd64 ~ppc ~ppc64 x86"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )
 	dev-python/setuptools[${PYTHON_USEDEP}]"

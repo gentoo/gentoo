@@ -15,6 +15,7 @@ DESCRIPTION="Easy implementation of Python extensions"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Data-Dumper

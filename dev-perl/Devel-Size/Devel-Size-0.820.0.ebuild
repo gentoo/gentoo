@@ -12,6 +12,7 @@ DESCRIPTION="Perl extension for finding the memory usage of Perl variables"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-XSLoader

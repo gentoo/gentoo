@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,6 +16,7 @@ LICENSE="BSD CPL-1.0 GPL-2+ IBM java? ( Apache-2.0 )"
 SLOT="0/13" # subslot = major soname version
 KEYWORDS="amd64 hppa ppc x86"
 IUSE="aff doc ewf java static-libs test +threads zlib"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-db/sqlite:3

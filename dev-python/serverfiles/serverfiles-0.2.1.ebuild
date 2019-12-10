@@ -14,6 +14,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/requests-2.11.1[${PYTHON_USEDEP}]"
 DEPEND="${DEPEND}

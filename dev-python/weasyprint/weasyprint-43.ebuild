@@ -17,6 +17,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="jpeg test tiff"
+RESTRICT="!test? ( test )"
 
 # Note: specific subslot of pango since it inlines some of pango headers.
 RDEPEND="

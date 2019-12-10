@@ -15,6 +15,7 @@ LICENSE="BSD-2"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 SLOT="0"
 IUSE="test doc"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/openssl:0="
 DEPEND="${RDEPEND}

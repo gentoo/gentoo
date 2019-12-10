@@ -21,6 +21,7 @@ HOMEPAGE="https://stellar.cct.lsu.edu/tag/hpx/"
 SLOT="0"
 LICENSE="Boost-1.0"
 IUSE="doc examples jemalloc papi +perftools tbb test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="?? ( jemalloc perftools tbb )"
 

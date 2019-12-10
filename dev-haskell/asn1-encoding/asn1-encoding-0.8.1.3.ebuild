@@ -16,6 +16,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/asn1-types-0.2.1:=[profile?] <dev-haskell/asn1-types-0.3:=[profile?]
 	dev-haskell/mtl:=[profile?]

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,7 @@ KEYWORDS="alpha amd64 ~arm ia64 ppc ~sparc x86"
 
 IUSE="test debug +filter-proxy reverse-proxy transparent-proxy
 +upstream-proxy +xtinyproxy-header"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="test? ( xtinyproxy-header )"
 

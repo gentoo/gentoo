@@ -30,6 +30,7 @@ HOMEPAGE="https://github.com/google/googletest"
 LICENSE="BSD"
 SLOT="0"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="!dev-cpp/gmock"

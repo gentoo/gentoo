@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="BSD-2 Apache-2.0"
 SLOT="0"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/python-futures[${PYTHON_USEDEP}]

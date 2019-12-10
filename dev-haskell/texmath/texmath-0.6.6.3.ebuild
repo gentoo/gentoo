@@ -16,6 +16,7 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="cgi test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-haskell/pandoc-types:=[profile?]
 	>=dev-haskell/parsec-3:=[profile?]

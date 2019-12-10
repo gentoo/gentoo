@@ -15,6 +15,7 @@ LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="berkdb cron ipv6 ldap libressl mysql postgres qmail sqlite ssl test"
+RESTRICT="!test? ( test )"
 
 # The Makefile.PL script checks for dependencies, but only fails if a
 # required (i.e. not optional) dependency is missing. We therefore

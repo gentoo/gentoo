@@ -14,6 +14,7 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/numpy-1.9.1[${PYTHON_USEDEP}]

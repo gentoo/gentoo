@@ -11,6 +11,7 @@ DESCRIPTION="Perl binding for GooCanvas2 widget using Glib::Object::Introspectio
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	x11-libs/goocanvas:2.0

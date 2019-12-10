@@ -26,6 +26,7 @@ LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
 IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg +launch lcms pipewire rdp remoting +resize-optimization screen-sharing +suid systemd test wayland-compositor webp +X xwayland"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	colord? ( lcms )

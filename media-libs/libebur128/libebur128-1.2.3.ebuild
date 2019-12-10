@@ -14,6 +14,7 @@ LICENSE="MIT"
 SLOT="0/1"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( app-arch/unzip
 		media-libs/libsndfile[${MULTILIB_USEDEP}] )"

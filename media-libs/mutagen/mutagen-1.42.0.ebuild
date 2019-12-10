@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 # TODO: Missing support for >=dev-python/eyeD3-0.7 API
 # test? ( >=dev-python/eyeD3-0.7 )

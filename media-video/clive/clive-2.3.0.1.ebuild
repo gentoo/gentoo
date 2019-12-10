@@ -13,6 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="clipboard pager password test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-perl/BerkeleyDB-0.34
 	>=dev-perl/Config-Tiny-2.12

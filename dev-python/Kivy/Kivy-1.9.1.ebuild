@@ -17,6 +17,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="cairo camera doc examples garden gstreamer +sdl spell test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]

@@ -14,6 +14,7 @@ LICENSE="LGPL-2.1+ Apache-2.0" # Apache-2.0 license is used for tests only
 SLOT="0"
 
 IUSE="+crypt +introspection test +vala"
+RESTRICT="!test? ( test )"
 # Tests fail with USE=-introspection, https://bugs.gentoo.org/655482
 REQUIRED_USE="test? ( introspection )
 	vala? ( introspection )"

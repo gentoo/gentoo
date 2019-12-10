@@ -12,6 +12,7 @@ LICENSE="GPL-2+ MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="python static test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	sci-mathematics/minisat

@@ -16,6 +16,7 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="test-coffee test-export test-roy"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/aeson-0.5:=[profile?]
 	>=dev-haskell/shakespeare-1.2:=[profile?] <dev-haskell/shakespeare-1.3:=[profile?]

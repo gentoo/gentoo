@@ -17,6 +17,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-macos"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 # https://bugs.gentoo.org/624916
 RDEPEND="

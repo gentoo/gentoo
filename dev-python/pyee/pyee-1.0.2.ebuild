@@ -15,6 +15,7 @@ SLOT="0"
 LICENSE="MIT"
 KEYWORDS="~amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
 DEPEND="${RDEPEND}

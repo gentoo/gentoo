@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="mongodb mysql postgres +sqlite test"
+RESTRICT="!test? ( test )"
 
 COMMON="
 	>=dev-python/cryptography-2.3[${PYTHON_USEDEP}]

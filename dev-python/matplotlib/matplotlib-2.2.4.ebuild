@@ -20,6 +20,7 @@ SLOT="0"
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="cairo doc excel examples gtk2 gtk3 latex qt5 test tk wxwidgets"
+RESTRICT="!test? ( test )"
 
 PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
 REQUIRED_USE="

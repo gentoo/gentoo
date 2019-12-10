@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,6 +22,7 @@ HOMEPAGE="https://www.labmeasurement.de"
 
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DZIL_PLUGINS=( Git SurgicalPodWeaver RPM AuthorsFromGit )
 

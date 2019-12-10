@@ -17,6 +17,7 @@ DESCRIPTION="PHP extension to communicate with Stomp message brokers"
 LICENSE="PHP-3.01"
 SLOT="7"
 IUSE="examples ssl test"
+RESTRICT="!test? ( test )"
 
 DEPEND="${DEPEND}
 	php_targets_php7-1? ( dev-lang/php:7.1[ssl?] )

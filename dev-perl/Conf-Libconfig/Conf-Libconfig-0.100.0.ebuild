@@ -14,6 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 PERL_RM_FILES=(
 	"t/boilerplate.t"

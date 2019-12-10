@@ -16,6 +16,7 @@ LICENSE="GPL-3"
 SLOT="0/5"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc double-precision examples ffmpeg fftw jack libav libsamplerate sndfile python test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	ffmpeg? (

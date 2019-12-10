@@ -16,6 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="X applet debug ipv6 test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/atk

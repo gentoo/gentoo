@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,6 +22,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE="gtk llvm test xml"
+RESTRICT="!test? ( test )"
 
 RDEPEND="gtk? ( x11-libs/gtk+:2 )
 	llvm? ( >=sys-devel/llvm-3.0 )

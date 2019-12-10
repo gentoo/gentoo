@@ -20,6 +20,7 @@ HOMEPAGE="https://github.com/RadeonOpenCompute/ROCm-OpenCL-Driver"
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-devel/llvm-roc:=
 	dev-libs/rocr-runtime"

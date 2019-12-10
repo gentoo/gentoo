@@ -16,6 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]

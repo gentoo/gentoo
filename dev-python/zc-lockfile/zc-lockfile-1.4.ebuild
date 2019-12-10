@@ -17,6 +17,7 @@ LICENSE="ZPL"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/setuptools-3.3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}

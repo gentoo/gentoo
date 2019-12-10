@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ DESCRIPTION="Lightweight regexp-based XML parser"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="test minimal"
+RESTRICT="!test? ( test )"
 
 # Note: Don't try to depend on XMLRPC-Lite or SOAP-Lite with tests,
 # as it it introduces a temporal cycle when enabled.

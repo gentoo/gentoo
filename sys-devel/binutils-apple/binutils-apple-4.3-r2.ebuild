@@ -24,6 +24,7 @@ SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 LICENSE="APSL-2"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
 IUSE="lto test multitarget"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-devel/binutils-config
 	lto? ( sys-devel/llvm:* )"

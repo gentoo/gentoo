@@ -13,6 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/peewee-2.7.4[${PYTHON_USEDEP}]
 	dev-python/wtforms[${PYTHON_USEDEP}]"

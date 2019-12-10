@@ -74,6 +74,7 @@ SLOT="0/${PV}"
 #will need big tree sync
 #KEYWORDS="~amd64 ~x86"
 IUSE="doc ghcbootstrap ghcmakebinary +gmp profile test"
+RESTRICT="!test? ( test )"
 IUSE+=" binary"
 
 RDEPEND="

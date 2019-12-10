@@ -19,6 +19,7 @@ fi
 LICENSE="MIT"
 SLOT="0/1"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/libfmt:0/5

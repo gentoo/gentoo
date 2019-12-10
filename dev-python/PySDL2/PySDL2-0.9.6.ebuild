@@ -14,6 +14,7 @@ LICENSE="|| ( public-domain CC0-1.0 ZLIB )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # Optional deps:
 # - dev-python/numpy,

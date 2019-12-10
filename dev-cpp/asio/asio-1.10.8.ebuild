@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,6 +11,7 @@ LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86"
 IUSE="doc examples ssl test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/boost
 	ssl? ( dev-libs/openssl:0= )"

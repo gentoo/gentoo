@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_5 )
 inherit distutils-r1
 
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DESCRIPTION="A collection of helpful Python tools"
 HOMEPAGE="https://pypi.org/project/pockets/"

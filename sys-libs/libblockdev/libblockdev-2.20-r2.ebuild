@@ -16,6 +16,7 @@ LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 ia64 ~mips ppc ppc64 sparc x86"
 IUSE="bcache +cryptsetup device-mapper dmraid doc escrow lvm kbd test vdo"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.42.2

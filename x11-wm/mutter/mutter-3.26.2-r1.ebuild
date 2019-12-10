@@ -13,6 +13,7 @@ LICENSE="GPL-2+"
 SLOT="0/1" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 
 IUSE="debug gles2 input_devices_wacom +introspection test udev wayland"
+RESTRICT="!test? ( test )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 

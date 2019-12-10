@@ -16,6 +16,7 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libetonyek"
 LICENSE="|| ( GPL-2+ LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-text/liblangtag

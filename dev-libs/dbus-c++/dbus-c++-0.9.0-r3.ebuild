@@ -15,6 +15,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="doc ecore glib static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-apps/dbus[${MULTILIB_USEDEP}]
 	ecore? ( dev-libs/efl )

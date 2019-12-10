@@ -13,6 +13,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/six-1.6.1[${PYTHON_USEDEP}]
 	>=dev-python/libnacl-1.4.3[${PYTHON_USEDEP}]

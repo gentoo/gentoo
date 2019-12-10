@@ -13,6 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="!>=app-shells/bash-${PV:0:1}.$((${PV:2:1}+1))"
 

@@ -20,6 +20,7 @@ fi
 LICENSE="PSF-2"
 SLOT="0"
 IUSE="doc examples sasl ssl test"
+RESTRICT="!test? ( test )"
 
 # We do not need OpenSSL, it is never directly used:
 # https://github.com/python-ldap/python-ldap/issues/224

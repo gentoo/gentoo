@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,6 +25,7 @@ DESCRIPTION="2D/3D image and point cloud processing"
 LICENSE="BSD"
 SLOT="0/1.9"
 IUSE="cuda doc opengl openni openni2 pcap png +qhull qt5 usb vtk cpu_flags_x86_sse test tutorials"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=sci-libs/flann-1.7.1

@@ -16,6 +16,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/future-0.15.2[${PYTHON_USEDEP}]
 	>=dev-python/binaryornot-0.2.0[${PYTHON_USEDEP}]

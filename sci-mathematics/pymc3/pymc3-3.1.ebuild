@@ -19,6 +19,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 LICENSE="AFL-3.0"
 
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	<=dev-python/commonmark-0.5.4[${PYTHON_USEDEP}]

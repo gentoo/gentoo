@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,6 +11,7 @@ DESCRIPTION="Deal with RFC 2047 encoded words (improved)"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 PERL_RM_FILES=("t/pod.t")
 RDEPEND="
 	>=virtual/perl-MIME-Base64-2.130.0

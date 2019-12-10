@@ -11,6 +11,7 @@ LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+bidi +curl test tts"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-misc/rlwrap

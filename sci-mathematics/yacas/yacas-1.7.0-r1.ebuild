@@ -14,6 +14,7 @@ LICENSE="GPL-2 gui? ( MIT Apache-2.0 OFL-1.1 )"
 SLOT="0/1"
 KEYWORDS="~amd64 ~x86"
 IUSE="gui +jupyter static-libs test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	gui? (

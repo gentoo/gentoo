@@ -13,6 +13,7 @@ DESCRIPTION="A postmodern object system for Perl 5"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 CONFLICTS="
 	!<=dev-perl/Catalyst-5.900.499.990

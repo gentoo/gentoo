@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 IUSE="libedit readline libressl static-libs tcl test"
+RESTRICT="!test? ( test )"
 
 # Tcl is always needed by buildsystem
 RDEPEND="

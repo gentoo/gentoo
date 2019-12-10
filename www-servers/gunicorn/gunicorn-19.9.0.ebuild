@@ -14,6 +14,7 @@ LICENSE="MIT PSF-2 doc? ( BSD )"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/setproctitle[${PYTHON_USEDEP}]"
 DEPEND="

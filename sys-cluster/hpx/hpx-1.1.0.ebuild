@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,6 +23,7 @@ HOMEPAGE="http://stellar.cct.lsu.edu/tag/hpx/"
 SLOT="0"
 LICENSE="Boost-1.0"
 IUSE="doc examples jemalloc papi +perftools tbb test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	tbb? ( dev-cpp/tbb )

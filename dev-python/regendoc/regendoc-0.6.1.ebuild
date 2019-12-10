@@ -19,6 +19,7 @@ SLOT="0"
 LICENSE="MIT"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}

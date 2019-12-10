@@ -24,6 +24,7 @@ fi
 LICENSE="BSD"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=sci-libs/geos-3.3
 	dev-python/numpy[${PYTHON_USEDEP}]"

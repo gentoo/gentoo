@@ -13,6 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="mariadb +mysql test +ssl"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="^^ ( mysql mariadb )"
 
 RDEPEND=">=dev-perl/DBI-1.609.0

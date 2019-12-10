@@ -14,6 +14,7 @@ LICENSE="BSD"
 SLOT="0/1"
 KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+snappy static-libs kernel_FreeBSD +tcmalloc test"
+RESTRICT="!test? ( test )"
 
 DEPEND="tcmalloc? ( dev-util/google-perftools )
 	snappy? (

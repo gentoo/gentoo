@@ -19,6 +19,7 @@ fi
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	virtual/pkgconfig

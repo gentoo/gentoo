@@ -56,6 +56,7 @@ HOMEPAGE="http://www.ganeti.org/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="drbd experimental haskell-daemons htools ipv6 kvm lxc monitoring multiple-users rbd syslog test xen restricted-commands"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="|| ( kvm xen lxc )
 	test? ( ipv6 )

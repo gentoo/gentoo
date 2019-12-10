@@ -13,6 +13,7 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 DEPEND="sys-devel/flex"
 

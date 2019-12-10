@@ -13,6 +13,7 @@ DESCRIPTION="Signs/verifies Internet mail using DKIM message signatures"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 ~sh sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-perl/Crypt-OpenSSL-RSA-0.24
 	virtual/perl-Digest-SHA

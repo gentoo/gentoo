@@ -15,6 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/python-enum34
 	>=dev-python/greenlet-0.3[${PYTHON_USEDEP}]"

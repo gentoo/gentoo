@@ -12,6 +12,7 @@ LICENSE="GPL-3"
 SLOT="3"
 KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/glib-2.22[${MULTILIB_USEDEP}]
 	>=x11-libs/gtk+-3.2:3[${MULTILIB_USEDEP}]"

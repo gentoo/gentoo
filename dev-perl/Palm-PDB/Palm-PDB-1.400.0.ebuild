@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,7 @@ DESCRIPTION="Parse Palm database files"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="test examples"
+RESTRICT="!test? ( test )"
 
 # This package is split upstream from "Palm"
 # so collides before 1.14.0

@@ -30,6 +30,7 @@ HOMEPAGE="https://znc.in"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+ipv6 +icu libressl nls perl python +ssl sasl tcl test +zlib"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} icu )"
 

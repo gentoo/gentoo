@@ -15,6 +15,7 @@ LICENSE="LGPL-2.1"
 KEYWORDS="amd64 ~arm arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 SLOT="0"
 IUSE="doc gnutls ssl static-libs test threads"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	gnutls? ( ssl )

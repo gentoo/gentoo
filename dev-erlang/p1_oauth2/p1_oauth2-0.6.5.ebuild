@@ -14,6 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 CDEPEND=">=dev-lang/erlang-17.1"
 DEPEND="${CDEPEND}

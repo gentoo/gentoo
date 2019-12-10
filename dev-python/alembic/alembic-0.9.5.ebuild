@@ -14,6 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test doc"
+RESTRICT="!test? ( test )"
 
 # requires.txt cites 'SQLAlchemy>=0.7.3' which is really both old and silly
 # because it shatters the testsuite.  If 'someone' cares to adhere to correct form

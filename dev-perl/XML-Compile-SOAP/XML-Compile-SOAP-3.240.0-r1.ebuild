@@ -12,6 +12,7 @@ DESCRIPTION="Soap 1.1 XML Compiler"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-perl/File-Slurp-Tiny

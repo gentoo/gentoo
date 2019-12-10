@@ -17,6 +17,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cuda opencl test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/mako[${PYTHON_USEDEP}]

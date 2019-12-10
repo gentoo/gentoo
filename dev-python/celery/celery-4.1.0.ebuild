@@ -17,6 +17,7 @@ KEYWORDS="amd64 x86"
 # There are a number of other optional 'extras' which overlap with those of kombu, however
 # there has been no apparent expression of interest or demand by users for them. See requires.txt
 IUSE="doc examples redis sqs test yaml"
+RESTRICT="!test? ( test )"
 
 # kombu < 4.2: #666228 (can be loosened in next bump)
 RDEPEND="

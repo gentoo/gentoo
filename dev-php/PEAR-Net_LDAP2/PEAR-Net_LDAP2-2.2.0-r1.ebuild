@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,6 +11,7 @@ SRC_URI="http://download.pear.php.net/package/${MY_PN}-${PV}.tgz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lang/php:*[ldap]
 	dev-php/PEAR-PEAR"

@@ -19,6 +19,7 @@ LICENSE="repoze ZPL BSD HPND GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/meld3-1.0.0[${PYTHON_USEDEP}]

@@ -15,6 +15,7 @@ SLOT="0"
 LICENSE="MIT"
 KEYWORDS="amd64 ~arm64 ppc64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/urllib3[${PYTHON_USEDEP}]"
 DEPEND="

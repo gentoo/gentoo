@@ -14,6 +14,7 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}]
 	net-vpn/tor )

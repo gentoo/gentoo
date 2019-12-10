@@ -16,6 +16,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="arnold +boost doc examples hdf5 maya prman python test zlib"
+RESTRICT="!test? ( test )"
 
 # pyalembic python bindings need boost
 REQUIRED_USE="

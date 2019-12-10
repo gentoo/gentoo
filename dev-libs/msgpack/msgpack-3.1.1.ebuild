@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,7 @@ HOMEPAGE="https://msgpack.org/ https://github.com/msgpack/msgpack-c/"
 LICENSE="Boost-1.0"
 SLOT="0/2"
 IUSE="boost +cxx doc examples static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="boost? ( dev-libs/boost[context,${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}

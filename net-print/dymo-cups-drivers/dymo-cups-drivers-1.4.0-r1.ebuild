@@ -13,6 +13,7 @@ S="${WORKDIR}/${P}.5"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="test usb_modeswitch"
+RESTRICT="!test? ( test )"
 
 KEYWORDS="~amd64 ~x86"
 

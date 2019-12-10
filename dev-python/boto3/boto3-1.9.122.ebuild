@@ -11,6 +11,7 @@ HOMEPAGE="https://github.com/boto/boto3"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/boto/boto3"

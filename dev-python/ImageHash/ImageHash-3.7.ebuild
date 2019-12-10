@@ -15,6 +15,7 @@ KEYWORDS="~amd64"
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]

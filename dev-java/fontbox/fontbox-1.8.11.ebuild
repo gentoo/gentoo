@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,6 +17,7 @@ LICENSE="Apache-2.0"
 SLOT="1.8"
 KEYWORDS="amd64 ~arm64 ppc64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 CDEPEND=">=dev-java/commons-logging-1.1.1:0"
 

@@ -14,6 +14,7 @@ LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-vcs/subversion-1.4"
 DEPEND="${RDEPEND}

@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc examples scipy test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="doc? ( || ( $(python_gen_useflags -2) ) )"
 

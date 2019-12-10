@@ -23,6 +23,7 @@ CONF_FLAG=( .    .     .               ecl  ccl       .     )
 PATCH_V=(   2    1     .               3    3         1     )
 
 IUSE="emacs tk nls unicode X test ${LISPS[*]}"
+RESTRICT="!test? ( test )"
 
 # Languages
 LANGS="de es pt pt_BR"

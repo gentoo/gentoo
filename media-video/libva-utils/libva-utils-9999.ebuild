@@ -19,6 +19,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE="+drm test wayland X"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="|| ( drm wayland X )"
 

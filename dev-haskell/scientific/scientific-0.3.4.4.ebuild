@@ -16,6 +16,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+bytestring-builder"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/binary-0.4.1:=[profile?] <dev-haskell/binary-0.8:=[profile?]
 	>=dev-haskell/hashable-1.1.2:=[profile?] <dev-haskell/hashable-1.3:=[profile?]

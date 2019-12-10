@@ -23,6 +23,7 @@ LICENSE+=" MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc sqlite test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/pytz[${PYTHON_USEDEP}]"
 BDEPEND="

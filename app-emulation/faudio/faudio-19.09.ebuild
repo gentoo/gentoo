@@ -27,6 +27,7 @@ LICENSE="ZLIB"
 SLOT="0"
 
 IUSE="+abi_x86_32 +abi_x86_64 debug ffmpeg xnasong test utils"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )"
 
 COMMON_DEPEND="

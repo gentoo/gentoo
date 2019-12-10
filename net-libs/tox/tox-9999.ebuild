@@ -14,6 +14,7 @@ LICENSE="GPL-3+"
 SLOT="0/0.2"
 KEYWORDS=""
 IUSE="+av daemon dht-node ipv6 log-debug +log-error log-info log-trace log-warn static-libs test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="^^ ( log-debug log-error log-info log-trace log-warn )
 		daemon? ( dht-node )"

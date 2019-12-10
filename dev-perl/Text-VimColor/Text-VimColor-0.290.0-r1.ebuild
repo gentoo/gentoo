@@ -14,6 +14,7 @@ HOMEPAGE="https://github.com/rwstauner/Text-VimColor"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="app-editors/vim[-minimal]
 	virtual/perl-Carp

@@ -18,6 +18,7 @@ HOMEPAGE="https://sf.net/p/libwpd/librevenge"
 LICENSE="|| ( MPL-2.0 LGPL-2.1 )"
 SLOT="0"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	doc? ( app-doc/doxygen )

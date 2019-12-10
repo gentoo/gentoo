@@ -74,6 +74,7 @@ SLOT="0/${PV}"
 # to be rekeyworded when most of revdeps are updated
 #KEYWORDS="~amd64 ~x86"
 IUSE="doc ghcbootstrap ghcmakebinary +gmp profile test"
+RESTRICT="!test? ( test )"
 IUSE+=" binary"
 
 RDEPEND="

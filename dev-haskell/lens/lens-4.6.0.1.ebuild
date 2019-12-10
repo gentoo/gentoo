@@ -17,6 +17,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE="benchmark-uniplate dump-splices +inlining j old-inline-pragmas safe +test-doctests +test-hlint +test-hunit +test-properties +trustworthy"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/bifunctors-4:=[profile?] <dev-haskell/bifunctors-5:=[profile?]
 	>=dev-haskell/comonad-4:=[profile?] <dev-haskell/comonad-5:=[profile?]

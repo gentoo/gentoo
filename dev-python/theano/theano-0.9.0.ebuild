@@ -17,6 +17,7 @@ SRC_URI="mirror://pypi/${MYPN:0:1}/${MYPN}/${MYP}.tar.gz"
 SLOT="0"
 LICENSE="BSD"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="

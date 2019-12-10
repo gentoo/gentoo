@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,6 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 ppc x86"
 IUSE="alsa ncurses pulseaudio suid test qt5"
+RESTRICT="!test? ( test )"
 
 RDEPEND="ncurses? ( sys-libs/ncurses:= )
 	qt5? ( dev-qt/qtcore:5

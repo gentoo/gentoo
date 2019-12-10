@@ -19,6 +19,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc berkdb examples mysql redland sqlite test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/isodate[${PYTHON_USEDEP}]

@@ -14,6 +14,7 @@ LICENSE="PSF-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/lockfile-0.9[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}

@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	>=dev-python/numpy-1.5.1[${PYTHON_USEDEP}]

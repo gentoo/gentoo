@@ -17,6 +17,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86 ~x64-macos"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/httplib2[${PYTHON_USEDEP}]"
 DEPEND="

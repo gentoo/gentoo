@@ -21,6 +21,7 @@ HOMEPAGE="https://github.com/gentoo/eudev"
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
 IUSE="+hwdb +kmod introspection rule-generator selinux static-libs test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.20
 	introspection? ( >=dev-libs/gobject-introspection-1.38 )

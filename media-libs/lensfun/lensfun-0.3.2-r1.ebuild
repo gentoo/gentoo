@@ -15,6 +15,7 @@ LICENSE="LGPL-3 CC-BY-SA-3.0" # See README for reasoning.
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc cpu_flags_x86_sse cpu_flags_x86_sse2 test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.40

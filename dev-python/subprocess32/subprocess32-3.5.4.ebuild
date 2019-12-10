@@ -15,6 +15,7 @@ LICENSE="PSF-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 python_test() {
 	"${PYTHON}" test_subprocess32.py || die "Tests fail with ${EPYTHON}"

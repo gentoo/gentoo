@@ -15,6 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="app-admin/ansible[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]

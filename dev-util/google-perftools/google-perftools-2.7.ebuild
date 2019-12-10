@@ -20,6 +20,7 @@ SLOT="0/4"
 KEYWORDS="-* ~amd64 ~arm arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="largepages +debug minimal optimisememory test static-libs"
+RESTRICT="!test? ( test )"
 
 DEPEND="sys-libs/libunwind"
 RDEPEND="${DEPEND}"

@@ -12,6 +12,7 @@ DESCRIPTION="Build external dependencies for use in CPAN"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~riscv ~s390 ~sh ~sparc ~x86"
 IUSE="test zip"
+RESTRICT="!test? ( test )"
 
 # No, pkgconfig is not suspect, it actually uses it at runtime, and this module
 # is somewhat a wrapper for pkgconfig :/

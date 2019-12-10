@@ -14,6 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="chm exif gsf pdf taglib samba test +unique"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-text/yelp-tools

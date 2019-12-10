@@ -13,6 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ldap test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	sys-libs/pam

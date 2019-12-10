@@ -25,6 +25,7 @@ fi
 LICENSE="LGPL-2+"
 SLOT="0"
 IUSE="bcache +cryptsetup device-mapper dmraid escrow gtk-doc lvm kbd test +tools vdo"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.42.2

@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 
 IUSE="graphicsmagick gtk imagemagick java jpeg python qt5 static-libs test +threads v4l X xv"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( X ${PYTHON_REQUIRED_USE} )

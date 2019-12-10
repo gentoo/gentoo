@@ -15,6 +15,7 @@ SLOT="0"
 # Until the deps reach other arches
 KEYWORDS="~amd64 ~x86"
 IUSE='nls test'
+RESTRICT="!test? ( test )"
 
 # dev-java/ant-core is automatically added due to java-ant-2.eclass
 CP_DEPEND='dev-java/bcprov:1.50

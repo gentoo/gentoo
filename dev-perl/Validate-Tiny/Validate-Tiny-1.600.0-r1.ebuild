@@ -12,6 +12,7 @@ DESCRIPTION="Minimalistic data validation"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-perl/List-MoreUtils-0.330.0"
 DEPEND="${RDEPEND}

@@ -18,6 +18,7 @@ HOMEPAGE="https://mkvtoolnix.download/ https://gitlab.com/mbunkus/mkvtoolnix"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug nls pch test qt5"
+RESTRICT="!test? ( test )"
 
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
 # version requirement updates and other packaging info

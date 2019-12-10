@@ -15,6 +15,7 @@ LICENSE="MIT"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="media-gfx/graphviz"
 DEPEND="dev-python/setuptools

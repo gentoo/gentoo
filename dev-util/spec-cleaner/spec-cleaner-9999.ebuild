@@ -17,6 +17,7 @@ SLOT="0"
 [[ ${PV} != 9999 ]] &&
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	test? (

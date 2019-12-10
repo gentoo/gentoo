@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,7 @@ SLOT="$(get_version_component_range 1-2)"
 LICENSE="BSD GPL-3"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="cpu_flags_x86_sse4_1 test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="cpu_flags_x86_sse4_1"
 
 RDEPEND="

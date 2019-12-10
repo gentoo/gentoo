@@ -16,6 +16,7 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="=dev-haskell/extensible-exceptions-0.1*:=[profile?]
 		>=dev-haskell/hashed-storage-0.5.6:=[profile?]

@@ -27,6 +27,7 @@ fi
 LICENSE="BSD"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/catkin_pkg[${PYTHON_USEDEP}]

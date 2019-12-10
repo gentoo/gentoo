@@ -16,6 +16,7 @@ KEYWORDS=""
 LICENSE="BSD-2 Apache-2.0"
 SLOT="0"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]

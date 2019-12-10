@@ -13,6 +13,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc ipv6 kernel_linux test tools"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 		dev-libs/libxml2:2=

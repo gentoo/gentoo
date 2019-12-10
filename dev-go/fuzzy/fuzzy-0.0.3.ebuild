@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,7 @@ HOMEPAGE="https://github.com/sahilm/fuzzy"
 LICENSE="MIT"
 SLOT="0/${PVR}"
 IUSE="test"
+RESTRICT+=" !test? ( test )"
 
 DEPEND="test? ( dev-go/godebug-pretty )"
 RDEPEND=""

@@ -19,6 +19,7 @@ LICENSE="MIT"
 SLOT="4"
 KEYWORDS="amd64 ~arm64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!dev-python/pyro:0

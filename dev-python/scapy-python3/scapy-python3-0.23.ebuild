@@ -6,6 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python3_{5,6} )
 
 IUSE="test"
+RESTRICT="!test? ( test )"
 inherit distutils-r1
 
 DESCRIPTION="Packet crafting/sending/... PCAP processing tool with python3 compatibility"

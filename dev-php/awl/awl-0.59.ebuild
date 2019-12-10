@@ -11,6 +11,7 @@ LICENSE="GPL-2 GPL-2+ GPL-3+ LGPL-2+ LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-php/phpunit )"
 RDEPEND="dev-lang/php:*[pdo,postgres,xml]"

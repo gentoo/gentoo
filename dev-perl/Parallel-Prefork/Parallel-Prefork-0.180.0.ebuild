@@ -12,6 +12,7 @@ DESCRIPTION="A simple prefork server framework"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Class-Accessor-Lite-0.40.0

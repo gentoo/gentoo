@@ -22,6 +22,7 @@ LICENSE="Old-MIT ISC icu"
 SLOT="0/0.9.18" # 0.9.18 introduced the harfbuzz-icu split; bug #472416
 
 IUSE="+cairo debug +glib +graphite icu +introspection static-libs test +truetype"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="introspection? ( glib )"
 
 RDEPEND="

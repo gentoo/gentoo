@@ -20,6 +20,7 @@ LICENSE="GPL-2"
 SLOT="0/18"
 KEYWORDS="~alpha amd64 ~arm ~mips ~ppc ~ppc64 x86"
 IUSE="command-not-found consolekit cron elogind entropy +introspection systemd test vala"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	^^ ( consolekit elogind systemd )

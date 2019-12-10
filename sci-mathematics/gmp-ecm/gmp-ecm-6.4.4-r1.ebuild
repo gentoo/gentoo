@@ -13,6 +13,7 @@ LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+blas +custom-tune -openmp static-libs test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/gmp:0=

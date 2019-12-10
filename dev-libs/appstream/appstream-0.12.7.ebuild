@@ -22,6 +22,7 @@ LICENSE="LGPL-2.1+ GPL-2+"
 # check as_api_level
 SLOT="0/4"
 IUSE="apt +introspection qt5 test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	app-text/docbook-xml-dtd:4.5

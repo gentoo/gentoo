@@ -14,6 +14,7 @@ LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE="sound test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-qt/linguist-tools:5

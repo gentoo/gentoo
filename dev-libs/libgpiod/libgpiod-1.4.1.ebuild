@@ -14,6 +14,7 @@ LICENSE="LGPL-2.1"
 SLOT="0/1"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="static-libs +tools cxx python test"
+RESTRICT="!test? ( test )"
 
 #  --enable-tests          enable libgpiod tests [default=no]
 #  --enable-bindings-cxx   enable C++ bindings [default=no]

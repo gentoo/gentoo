@@ -14,6 +14,7 @@ HOMEPAGE="
 LICENSE="BSD"
 SLOT="0"
 IUSE="+drop-root libressl smi ssl samba suid test"
+RESTRICT="!test? ( test )"
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	KEYWORDS=""

@@ -13,6 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/incremental[${PYTHON_USEDEP}]

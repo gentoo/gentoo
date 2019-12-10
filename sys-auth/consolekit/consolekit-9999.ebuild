@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="acl cgroups debug doc evdev kernel_linux pam pm-utils policykit selinux test udev"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
 	>=sys-devel/gettext-0.19

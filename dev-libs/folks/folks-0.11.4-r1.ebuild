@@ -18,6 +18,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
 # TODO: --enable-profiling
 # Vala isn't really optional, https://bugzilla.gnome.org/show_bug.cgi?id=701099
 IUSE="bluetooth debug eds +telepathy test tracker utils"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="bluetooth? ( eds )"
 
 COMMON_DEPEND="

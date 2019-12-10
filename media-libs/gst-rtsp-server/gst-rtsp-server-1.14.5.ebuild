@@ -11,6 +11,7 @@ HOMEPAGE="https://gstreamer.freedesktop.org/modules/gst-rtsp-server.html"
 LICENSE="LGPL-2+"
 KEYWORDS="amd64 x86"
 IUSE="examples +introspection static-libs test"
+RESTRICT="!test? ( test )"
 
 # gst-plugins-base for many used elements and API
 # gst-plugins-good for rtprtxsend and rtpbin elements, maybe more

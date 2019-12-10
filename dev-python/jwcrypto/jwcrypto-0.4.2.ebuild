@@ -15,6 +15,7 @@ LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/cryptography-1.5[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}

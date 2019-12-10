@@ -33,6 +33,7 @@ QTC_PLUGINS=(android +autotest baremetal bazaar beautifier
 	+qmldesigner qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal silversearcher subversion
 	valgrind winrt)
 IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	clang? ( test? ( qbs ) )
 	qnx? ( remotelinux )

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -19,6 +19,7 @@ LICENSE="repoze ZPL BSD HPND GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 # ALL versions of meld3 match to >=meld3-0.6.5
 RDEPEND="dev-python/meld3[${PYTHON_USEDEP}]

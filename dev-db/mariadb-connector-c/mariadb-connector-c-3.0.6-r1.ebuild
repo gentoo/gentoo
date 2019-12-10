@@ -29,6 +29,7 @@ LICENSE="LGPL-2.1"
 
 SLOT="0/3"
 IUSE="+curl gnutls kerberos libressl mysqlcompat +ssl static-libs test"
+RESTRICT="!test? ( test )"
 
 DEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/libiconv:=[${MULTILIB_USEDEP}]

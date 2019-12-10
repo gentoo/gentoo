@@ -16,6 +16,7 @@ LICENSE="LGPL-2"
 SLOT="0"
 
 IUSE="X +introspection test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/glib-2.50:2
 	x11-libs/cairo

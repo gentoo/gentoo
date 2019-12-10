@@ -14,6 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 hppa sparc x86"
 IUSE="ipv6 test zlib"
+RESTRICT="!test? ( test )"
 
 RDEPEND="zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}"

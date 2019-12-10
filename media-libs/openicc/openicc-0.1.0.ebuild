@@ -13,6 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	sys-devel/gettext

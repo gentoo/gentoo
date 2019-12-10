@@ -19,6 +19,7 @@ HOMEPAGE="https://msgpack.org/ https://github.com/msgpack/msgpack-c/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+cxx static-libs test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	test? (

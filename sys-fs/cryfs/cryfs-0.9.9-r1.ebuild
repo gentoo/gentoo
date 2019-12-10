@@ -12,6 +12,7 @@ HOMEPAGE="https://www.cryfs.org/"
 
 SLOT=0
 IUSE="custom-optimization libressl test update-check"
+RESTRICT="!test? ( test )"
 
 LICENSE="LGPL-3 BSD-2 MIT"
 # cryfs - LGPL-3

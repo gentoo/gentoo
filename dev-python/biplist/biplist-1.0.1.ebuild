@@ -11,6 +11,7 @@ HOMEPAGE="https://pypi.org/project/biplist/ https://github.com/wooster/biplist"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 LICENSE="BSD"
 SLOT="0"

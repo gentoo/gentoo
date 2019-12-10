@@ -13,6 +13,7 @@ LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="+crypt gmp kernel_linux +mhash pcre static-libs test xml"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=media-libs/raptor-2.0.15

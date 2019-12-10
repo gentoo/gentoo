@@ -16,6 +16,7 @@ LICENSE="MPL-1.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
 IUSE="+geos iconv +proj test +xls +xml"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-db/sqlite-3.7.5:3[extensions(+)]

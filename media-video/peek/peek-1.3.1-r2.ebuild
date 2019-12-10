@@ -14,6 +14,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="keybinder test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/glib-2.38:2
 	media-video/ffmpeg[X,encode,vpx,xcb]
