@@ -19,8 +19,8 @@ IUSE="vaapi"
 
 BDEPEND="virtual/pkgconfig"
 COMMON="dev-libs/ocl-icd
-	dev-util/intel-graphics-compiler
-	>=media-libs/gmmlib-19.2.3
+	>=dev-util/intel-graphics-compiler-1.0.2990
+	>=media-libs/gmmlib-19.3.4
 	vaapi? (
 		x11-libs/libdrm[video_cards_intel]
 		>=x11-libs/libva-2.0.0
@@ -35,16 +35,12 @@ DOCS=(
 	documentation/LIMITATIONS.md
 )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-19.16.12873_cmake_no_libva_automagic.patch
-)
-
 S="${WORKDIR}"/${MY_P}
 
 src_configure() {
 	local mycmakeargs=(
 		-DKHRONOS_GL_HEADERS_DIR="${EPREFIX}/usr/include"
-		-DENABLE_VAAPI_MEDIA_SHARING=$(usex vaapi "ON" "OFF")
+		-DDISABLE_LIBVA=$(usex vaapi "OFF" "ON")
 		# If enabled, tests are automatically run during the compile phase
 		# - and we cannot run them because they require permissions to access
 		# the hardware.

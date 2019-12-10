@@ -28,11 +28,11 @@ K_BRANCH_ID="${KV_MAJOR}.${KV_MINOR}"
 DESCRIPTION="Gentoo's genpatches for Linux ${K_BRANCH_ID}, with Con Kolivas' MuQSS process scheduler."
 
 CK_EXTRAVERSION="ck1"
-CK_URI="http://ck.kolivas.org/patches/5.0/${K_BRANCH_ID}/${K_BRANCH_ID}-${CK_SV}/patch-${K_BRANCH_ID}-${CK_EXTRAVERSION}.xz"
+CK_URI="http://ck.kolivas.org/patches/5.0/${K_BRANCH_ID}/${K_BRANCH_ID}-${CK_EXTRAVERSION}/patch-${K_BRANCH_ID}-${CK_EXTRAVERSION}.xz"
 
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_URI}"
 
-UNIPATCH_LIST="${DISTDIR}/patch-${K_BRANCH_ID}-${CK_SV}.xz"
+UNIPATCH_LIST="${DISTDIR}/patch-${K_BRANCH_ID}-${CK_EXTRAVERSION}.xz"
 UNIPATCH_STRICTORDER="yes"
 
 pkg_setup() {
