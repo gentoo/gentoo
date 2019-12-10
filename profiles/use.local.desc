@@ -475,6 +475,12 @@ app-emacs/slime:xref - Install xref.lisp cross-referencing tool
 app-emacs/vm:bbdb - Include support for app-emacs/bbdb
 app-emacs/wanderlust:bbdb - Include support for app-emacs/bbdb
 app-emacs/wikipedia-mode:outline-magic - Enable support for outline-mode extensions (app-emacs/outline-magic)
+app-emulation/aranym:clipboard - Enable bidirectional clipboard transfer between the host and FreeMiNT
+app-emulation/aranym:jit - Build Just-In-Time compiler variant with increased performance
+app-emulation/aranym:lilo - Enable support for directly booting kernels such as Linux
+app-emulation/aranym:osmesa - Allow images to be rendered in memory using the host CPU
+app-emulation/aranym:pmmu - Build full PMMU variant, required for running mainline Linux
+app-emulation/aranym:standard - Build standard (no JIT or PMMU) variant
 app-emulation/bochs:3dnow - Enable support for emulating 3DNow! instructions (incomplete)
 app-emulation/bochs:avx - Enable support for emulating Advanced Vector Extensions (AVX)
 app-emulation/bochs:debugger - Enable debugger (slows down emulation)
