@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/cv_bridge
-	media-libs/opencv:=
+	>=media-libs/opencv-4:=
 	dev-ros/dynamic_reconfigure
 	dev-ros/camera_info_manager
 	dev-ros/image_transport
@@ -27,3 +27,4 @@ RDEPEND="
 	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/ocv4.patch" )
