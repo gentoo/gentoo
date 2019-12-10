@@ -1,6 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #
+# @DEAD
+# All consumers are gone.  Removal in 14 days
+#
 # @ECLASS: mozconfig-v6.60.eclass
 # @MAINTAINER:
 # mozilla team <mozilla@gentoo.org>
