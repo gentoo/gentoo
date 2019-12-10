@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2019-12-10)
+# SMTP AUTH (USE=pam) crashes the server  #702420
+# eximon.bin (USE=X) doesn't exist        #702428
+# DMARC support (USE=dmarc) missing       #702462
+=mail-mta/exim-4.93
+
 # Lars Wendler <polynomial-c@gentoo.org> (2019-12-10)
 # Dead upstream, no homepage, requires grub-0 which is gone
 # Also no UEFI support!
