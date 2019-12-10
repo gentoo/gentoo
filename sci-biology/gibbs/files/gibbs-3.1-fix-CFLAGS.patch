@@ -1,0 +1,11 @@
+--- a/configure.in
++++ b/configure.in
+@@ -51,7 +51,7 @@
+ 	fi
+ 	])
+ 
+-CFLAGS="$OPTFLAGS $MPIFLAGS  -Wall -Werror $MACFLAG"
++CFLAGS="$CFLAGS $OPTFLAGS $MPIFLAGS -Wall $MACFLAG"
+ 
+ AC_PROG_CC([$COMP_LIST])
+ 
