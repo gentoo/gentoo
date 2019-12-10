@@ -1,11 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=yes
-
-inherit autotools-utils multilib
+inherit autotools
 
 DESCRIPTION="Identify motifs, conserved regions, in DNA or protein sequences"
 HOMEPAGE="http://bayesweb.wadsworth.org/gibbs/gibbs.html"
@@ -13,37 +11,37 @@ SRC_URI="mirror://gentoo/gibbs-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="mpi"
 KEYWORDS="amd64 x86"
+IUSE="mpi"
 
 DEPEND="
 	mpi? (
 		virtual/mpi
-		sys-cluster/mpe2 )"
+		sys-cluster/mpe2
+	)"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${PN}-3.1-fix-CFLAGS.patch )
+
 src_prepare() {
-	sed \
-		-e 's/CFLAGS="$OPTFLAGS/CFLAGS="$CFLAGS $OPTFLAGS/' \
-		-e 's/-Werror//' \
-		-i configure.in || die
-	autotools-utils_src_prepare
+	default
+	mv configure.{in,ac} || die
+	eautoreconf
 }
 
 src_configure() {
-	if use mpi; then export CC=mpicc; fi
-	local myeconfargs=( $(use_enable mpi) )
-	autotools-utils_src_configure
+	use mpi && export CC=mpicc
+	econf $(use_enable mpi)
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
+
 	exeinto /usr/$(get_libdir)/${PN}
 	doexe *.pl
-	dodoc README ChangeLog
 }
 
 pkg_postinst() {
-	einfo "Supplementary Perl scripts for Gibbs have been installed into /usr/$(get_libdir)/${PN}."
+	einfo "Supplementary Perl scripts for Gibbs have been installed into ${EROOT}/usr/$(get_libdir)/${PN}."
 	einfo "These scripts require installation of sci-biology/bioperl."
 }
