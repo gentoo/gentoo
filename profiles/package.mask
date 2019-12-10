@@ -314,7 +314,6 @@ app-misc/rq
 # dev-go/glide: #694384
 # dev-util/drone{,-cli}: #695240  // TODO: promu?
 # net-misc/istioctl: #695288
-# sys-auth/docker_auth: #695298
 #
 # Removal in 30 days.
 app-admin/linux-bench
