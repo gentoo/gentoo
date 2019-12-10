@@ -44,6 +44,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+PATCHES=( "${FILESDIR}/ocv4.patch" )
 
 src_configure() {
 	local mycmakeargs=(
