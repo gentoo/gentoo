@@ -1,11 +1,13 @@
+BDEPEND=sys-devel/gettext
 DEFINED_PHASES=install prepare
-DEPEND=sys-apps/attr sys-apps/util-linux sys-devel/gettext
+DEPEND=xattr? ( sys-apps/attr )
 DESCRIPTION=A featureful union filesystem
 EAPI=7
 HOMEPAGE=https://github.com/trapexit/mergerfs
+IUSE=+xattr
 KEYWORDS=~amd64 ~x86
 LICENSE=ISC LGPL-2.1
-RDEPEND=sys-apps/attr sys-apps/util-linux sys-devel/gettext
+RDEPEND=xattr? ( sys-apps/attr )
 SLOT=0
 SRC_URI=https://github.com/trapexit/mergerfs/archive/2.28.3.tar.gz -> mergerfs-2.28.3.tar.gz
-_md5_=b3d18ce28eaa641ac3a29cf46cff8dbd
+_md5_=a37262a6f4c7db5d314c4df303062d5d
