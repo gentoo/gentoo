@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2019-12-10)
+# EAPI=4, fails to build
+# Removal in 30 days
+dev-util/idutils
+
 # David Seifert <soap@gentoo.org> (2019-12-10)
 # Never keyworded, only worked with specific versions of boost that are
 # gone, integrated into boost as dev-libs/boost[python,numpy] nowadays.
