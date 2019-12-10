@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,7 @@ DESCRIPTION="Generate SQL from Perl data structures"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86 ~ppc-aix ~ppc-macos ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=virtual/perl-Exporter-5.570.0

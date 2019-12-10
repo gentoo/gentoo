@@ -15,6 +15,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=app-text/enchant-${PV%.*}"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]

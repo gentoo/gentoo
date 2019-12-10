@@ -15,6 +15,7 @@ SLOT="0"
 LICENSE="MIT"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=dev-python/py-1.1.1[${PYTHON_USEDEP}]"
 DEPEND="

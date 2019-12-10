@@ -14,6 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]
 dev-python/coverage[${PYTHON_USEDEP}]"

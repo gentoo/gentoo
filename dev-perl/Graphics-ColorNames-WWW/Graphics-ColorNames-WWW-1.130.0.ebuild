@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,6 +12,7 @@ DESCRIPTION="WWW color names and equivalent RGB values"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-perl/Graphics-ColorNames-0.320.0"
 DEPEND="${RDEPEND}

@@ -13,6 +13,7 @@ SLOT="0"
 LICENSE="MIT LGPL-2"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
 DEPEND="${RDEPEND}

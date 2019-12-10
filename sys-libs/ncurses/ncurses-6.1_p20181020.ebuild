@@ -21,6 +21,7 @@ LICENSE="MIT"
 SLOT="0/6"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86"
 IUSE="ada +cxx debug doc gpm minimal profile static-libs test threads tinfo trace unicode"
+RESTRICT="!test? ( test )"
 
 DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
 #	berkdb? ( sys-libs/db )"

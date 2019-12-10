@@ -13,6 +13,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+firmware gnome gtk-doc packagekit spell test udev"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/appstream-glib-0.7.14:0

@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # optional extras hard set as RDEPs. See setup.py
 RDEPEND="

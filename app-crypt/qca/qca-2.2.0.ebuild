@@ -14,6 +14,7 @@ SLOT="2"
 KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 
 IUSE="botan debug doc examples gcrypt gpg libressl logger nss pkcs11 sasl softstore +ssl test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	doc? ( app-doc/doxygen )

@@ -12,6 +12,7 @@ DESCRIPTION="A libzmq 3.x wrapper for Perl"
 SLOT="0"
 KEYWORDS="amd64 hppa ppc ppc64 sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	=net-libs/zeromq-3*

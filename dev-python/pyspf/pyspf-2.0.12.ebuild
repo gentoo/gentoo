@@ -15,6 +15,7 @@ LICENSE="PSF-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="ipv6 test"
+RESTRICT="!test? ( test )"
 
 # >=python-3.3 comes with the built-in ipaddress module
 RDEPEND="dev-python/authres[${PYTHON_USEDEP}]

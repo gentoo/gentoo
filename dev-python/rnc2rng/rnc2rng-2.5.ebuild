@@ -14,6 +14,7 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="dev-python/rply[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"

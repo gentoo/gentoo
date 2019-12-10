@@ -16,6 +16,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 DOCS=( CHANGES.rst README.rst )
 
 S="${WORKDIR}/${MY_PN}-${PVR}"

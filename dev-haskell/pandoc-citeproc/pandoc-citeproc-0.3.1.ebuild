@@ -17,6 +17,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE="+bibutils embed-data-files +hexpat +network test-citeproc unicode_collation"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=app-text/pandoc-1.12.1:=[profile?]
 	dev-haskell/aeson:=[profile?]

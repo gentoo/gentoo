@@ -18,6 +18,7 @@ LICENSE="GPL-3"
 SLOT="0"
 
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-lang/perl-5.8

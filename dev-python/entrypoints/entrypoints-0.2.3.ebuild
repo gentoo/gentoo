@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]

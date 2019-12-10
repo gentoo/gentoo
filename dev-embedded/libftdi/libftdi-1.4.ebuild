@@ -21,6 +21,7 @@ HOMEPAGE="http://www.intra2net.com/en/developer/libftdi/"
 LICENSE="LGPL-2"
 SLOT="1"
 IUSE="cxx doc examples python static-libs test tools"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="virtual/libusb:1

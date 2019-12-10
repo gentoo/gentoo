@@ -17,6 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ~ppc ~ppc64 s390 x86 ~amd64-linux ~x86-linux"
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # git is needed for tests, see https://bugs.launchpad.net/pbr/+bug/1326682 and https://bugs.gentoo.org/show_bug.cgi?id=561038
 # docutils is needed for sphinx exceptions... https://bugs.gentoo.org/show_bug.cgi?id=603848

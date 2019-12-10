@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,6 +23,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="doc nls test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libpcre2-10.32[pcre32]

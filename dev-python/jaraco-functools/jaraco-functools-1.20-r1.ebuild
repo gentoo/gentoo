@@ -16,6 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	<dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]

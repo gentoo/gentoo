@@ -11,6 +11,7 @@ SLOT="0"
 KEYWORDS="amd64"
 
 IUSE="+daemon +ipv6 +dnsmasq nls test tools"
+RESTRICT="!test? ( test )"
 
 inherit autotools bash-completion-r1 linux-info systemd user
 

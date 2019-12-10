@@ -12,6 +12,7 @@ DESCRIPTION="Parameterizable packages"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86 ~ppc-aix ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp

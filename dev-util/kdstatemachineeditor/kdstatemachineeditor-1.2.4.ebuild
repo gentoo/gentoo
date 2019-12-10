@@ -18,6 +18,7 @@ fi
 
 LICENSE="GPL-2+"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 SLOT="0"
 
 RDEPEND="

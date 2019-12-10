@@ -14,6 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/pytest[${PYTHON_USEDEP}]"

@@ -27,6 +27,7 @@ if [[ ${PV} == "3.7.9999" ]]; then
 fi
 
 IUSE="+audio +alsa atsc +analog +digital channels doc dtv examples fcd fec +filter grc jack log noaa oss pager performance-counters portaudio +qt5 sdl test trellis uhd vocoder +utils wavelet wxwidgets zeromq"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		audio? ( || ( alsa oss jack portaudio ) )

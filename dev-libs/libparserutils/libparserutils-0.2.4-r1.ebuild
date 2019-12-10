@@ -13,6 +13,7 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~m68k-mint"
 IUSE="iconv test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-util/netsurf-buildsystem-1.7-r1

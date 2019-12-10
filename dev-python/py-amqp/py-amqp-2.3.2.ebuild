@@ -20,6 +20,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc extras test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
 DEPEND="

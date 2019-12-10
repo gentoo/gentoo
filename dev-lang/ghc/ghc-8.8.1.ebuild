@@ -73,6 +73,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="doc elfutils ghcbootstrap ghcmakebinary +gmp numa profile test"
+RESTRICT="!test? ( test )"
 IUSE+=" binary"
 
 RDEPEND="

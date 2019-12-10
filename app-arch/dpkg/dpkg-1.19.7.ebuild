@@ -12,6 +12,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris ~x86-solaris"
 IUSE="+bzip2 libmd +lzma nls selinux static-libs test unicode +update-alternatives +zlib"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-lang/perl-5.14.2:=

@@ -15,6 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE="BSD"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-db/postgresql-9.1[server]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"

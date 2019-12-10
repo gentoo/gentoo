@@ -12,6 +12,7 @@ DESCRIPTION="What BigInts are before they become big"
 SLOT="0"
 KEYWORDS="~amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=virtual/perl-Math-BigInt-1.999.812

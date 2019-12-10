@@ -9,6 +9,7 @@ HOMEPAGE="https://github.com/scheibler/khard"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="test zsh-completion"
+RESTRICT="!test? ( test )"
 
 if [ "${PV}" == "9999" ]; then
 	inherit git-r3

@@ -15,6 +15,7 @@ HOMEPAGE="https://pecl.php.net/imagick https://github.com/mkoppanen/imagick"
 LICENSE="PHP-3.01"
 SLOT="0"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 # imagemagick[-openmp] is needed wrt bug 547922 and upstream
 # https://github.com/mkoppanen/imagick#openmp

@@ -21,6 +21,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug gps media nls stars test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	nls? ( dev-qt/linguist-tools:5 )

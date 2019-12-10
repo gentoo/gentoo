@@ -12,6 +12,7 @@ LICENSE="LGPL-2+"
 SLOT="0"
 
 IUSE="afp archive bluray cdda elogind fuse google gnome-keyring gnome-online-accounts gphoto2 +http ios mtp nfs policykit samba systemd test +udev udisks zeroconf"
+RESTRICT="!test? ( test )"
 # elogind/systemd only relevant to udisks (in v1.38.1)
 REQUIRED_USE="
 	?? ( elogind systemd )

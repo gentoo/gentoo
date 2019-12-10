@@ -21,6 +21,7 @@ LICENSE="Artistic-2"
 SLOT="0"
 # TODO: add USE="javascript" once that's usable in nqp
 IUSE="clang java +moar test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( java moar )"
 
 CDEPEND="~dev-lang/nqp-${PV}:${SLOT}=[java?,moar?,clang=]"

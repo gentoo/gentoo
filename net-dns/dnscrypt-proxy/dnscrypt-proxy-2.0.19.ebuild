@@ -21,6 +21,7 @@ HOMEPAGE="https://github.com/jedisct1/dnscrypt-proxy"
 LICENSE="ISC"
 SLOT="0"
 IUSE="pie test"
+RESTRICT+=" !test? ( test )"
 
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
 PATCHES=( "${FILESDIR}"/config-full-paths-r10.patch )

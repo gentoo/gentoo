@@ -13,6 +13,7 @@ LICENSE="GPL-2+"
 SLOT="0/3" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 
 IUSE="debug elogind gles2 input_devices_wacom +introspection screencast systemd test udev wayland"
+RESTRICT="!test? ( test )"
 # native backend requires gles3 for hybrid graphics blitting support and a logind provider
 REQUIRED_USE="
 	wayland? ( ^^ ( elogind systemd ) )"

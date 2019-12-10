@@ -16,6 +16,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples matplotlib notebook nbconvert qt5 +smp test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	dev-python/decorator[${PYTHON_USEDEP}]

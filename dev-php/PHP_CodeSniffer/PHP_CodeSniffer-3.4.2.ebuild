@@ -14,6 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lang/php:*[cli,tokenizer,xmlwriter]"
 DEPEND="test? ( >=dev-php/phpunit-4 ${RDEPEND} )"

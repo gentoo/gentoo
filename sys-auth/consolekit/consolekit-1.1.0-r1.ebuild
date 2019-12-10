@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="acl cgroups debug doc kernel_linux pam pm-utils policykit selinux test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
 	>=sys-devel/gettext-0.19

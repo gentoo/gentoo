@@ -19,6 +19,7 @@ LICENSE="repoze MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 # Depend on an ebuild of translationstring with Python 3 support.
 RDEPEND=">=dev-python/translationstring-1.1[${PYTHON_USEDEP}]"

@@ -14,6 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="

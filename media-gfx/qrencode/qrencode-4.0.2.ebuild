@@ -11,6 +11,7 @@ LICENSE="LGPL-2"
 SLOT="0/4"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="media-libs/libpng:0="
 DEPEND="${RDEPEND}

@@ -16,6 +16,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/cheroot-5.9.1[${PYTHON_USEDEP}]
 	>=dev-python/portend-2.1.1[${PYTHON_USEDEP}]

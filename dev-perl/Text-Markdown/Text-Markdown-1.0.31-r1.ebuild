@@ -13,6 +13,7 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Digest-MD5

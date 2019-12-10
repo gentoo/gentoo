@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,6 +12,7 @@ DESCRIPTION='Check for presence of dependencies'
 SLOT="0"
 KEYWORDS="amd64 ~arm hppa ppc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # rdep Test::Builder -> perl-Test-Simple
 RDEPEND="

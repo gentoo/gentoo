@@ -16,6 +16,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~ppc-macos ~x86-macos"
 IUSE="diff hpc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-haskell/binary:=[profile?]
 	dev-haskell/dataenc:=[profile?]

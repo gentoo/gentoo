@@ -16,6 +16,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 # About tests and tornado
 # Upstreams claims to work fine with tornado 5, and it's indeed possible to

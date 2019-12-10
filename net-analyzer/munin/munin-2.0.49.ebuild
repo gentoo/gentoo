@@ -19,6 +19,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc x86"
 IUSE="asterisk irc java ldap memcached minimal mysql postgres selinux ssl test cgi ipv6 syslog ipmi http dhcpd doc apache2"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="cgi? ( !minimal ) apache2? ( cgi )"
 
 # Upstream's listing of required modules is NOT correct!

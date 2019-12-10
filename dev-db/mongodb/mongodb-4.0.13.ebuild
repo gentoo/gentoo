@@ -22,6 +22,7 @@ LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="debug kerberos libressl lto mms-agent ssl test +tools"
+RESTRICT="!test? ( test )"
 
 RDEPEND="acct-group/mongodb
 	acct-user/mongodb

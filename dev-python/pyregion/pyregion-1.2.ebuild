@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 LICENSE="MIT"
 
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-python/astropy[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]

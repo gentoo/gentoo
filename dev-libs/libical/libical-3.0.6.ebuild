@@ -15,6 +15,7 @@ LICENSE="|| ( MPL-2.0 LGPL-2.1 )"
 SLOT="0/3"
 KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="berkdb doc examples introspection static-libs test vala"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection )"
 
 BDEPEND="

@@ -11,6 +11,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # testsuite makes use of gendiff(1) that comes from rpm, thus if the user wants
 # to run tests, it should install that package as well.

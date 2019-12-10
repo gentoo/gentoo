@@ -16,6 +16,7 @@ SLOT="0"
 LICENSE="MIT"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/docopt-0.6.2[${PYTHON_USEDEP}]

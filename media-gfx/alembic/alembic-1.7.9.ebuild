@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,6 +16,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="arnold +boost doc examples hdf5 maya prman python test zlib"
+RESTRICT="!test? ( test )"
 
 # pyalembic python bindings need boost
 REQUIRED_USE="

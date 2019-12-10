@@ -13,6 +13,7 @@ LICENSE="MIT"
 SLOT="0/0.4"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="arb benchmarks boost debug doc flint llvm mpc mpfr openmp test tcmalloc threads"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/gmp:=

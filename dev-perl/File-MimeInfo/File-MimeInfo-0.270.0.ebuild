@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,6 +12,7 @@ DESCRIPTION="Determine file type"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-perl/File-BaseDir-0.03
 		>=dev-perl/File-DesktopEntry-0.0

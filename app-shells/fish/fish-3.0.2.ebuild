@@ -23,6 +23,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="doc nls test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libpcre2-10.21[pcre32]

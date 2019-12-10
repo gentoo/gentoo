@@ -15,6 +15,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]

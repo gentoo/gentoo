@@ -20,6 +20,7 @@ fi
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 IUSE="X test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="${PYTHON_DEPS}
 	>=dev-python/networkx-2.0[${PYTHON_USEDEP}]

@@ -21,6 +21,7 @@ HOMEPAGE="http://kbd-project.org/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="nls pam test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="pam? ( sys-libs/pam )
 	app-arch/gzip"

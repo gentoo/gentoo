@@ -17,6 +17,7 @@ LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/attrs-17.2.0[${PYTHON_USEDEP}]

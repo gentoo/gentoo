@@ -13,6 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 hppa ppc sparc x86"
 IUSE="kernel_FreeBSD selinux test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="dev-libs/libdaemon"
 DEPEND="${CDEPEND}

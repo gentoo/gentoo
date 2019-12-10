@@ -15,6 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]

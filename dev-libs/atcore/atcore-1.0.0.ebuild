@@ -14,6 +14,7 @@ LICENSE="|| ( LGPL-2.1+ LGPL-3 ) gui? ( GPL-3+ )"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc gui test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	$(add_qt_dep linguist-tools)

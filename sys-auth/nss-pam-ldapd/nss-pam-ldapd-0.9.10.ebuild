@@ -14,6 +14,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="debug kerberos +pam pynslcd sasl test +utils"
+RESTRICT="!test? ( test )"
 
 COMMON_DEP="
 	net-nds/openldap[${MULTILIB_USEDEP}]

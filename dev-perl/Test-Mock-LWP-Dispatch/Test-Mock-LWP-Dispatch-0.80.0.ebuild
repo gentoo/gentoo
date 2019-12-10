@@ -12,6 +12,7 @@ DESCRIPTION="Mocks LWP::UserAgent and dispatches your requests/responses"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp

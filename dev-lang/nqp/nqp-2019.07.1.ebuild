@@ -20,6 +20,7 @@ HOMEPAGE="https://rakudo.org"
 LICENSE="Artistic-2"
 SLOT="0"
 IUSE="doc clang java +moar test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( java moar )"
 
 CDEPEND="java? (

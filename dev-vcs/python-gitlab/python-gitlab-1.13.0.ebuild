@@ -20,6 +20,7 @@ HOMEPAGE="https://github.com/python-gitlab/python-gitlab/"
 LICENSE="LGPL-3"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
