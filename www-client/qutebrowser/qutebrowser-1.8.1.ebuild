@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_5,3_6,3_7} )
 
-inherit distutils-r1 eutils xdg-utils
+inherit desktop distutils-r1 eutils xdg-utils
 
 DESCRIPTION="A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine"
 HOMEPAGE="https://www.qutebrowser.org/ https://github.com/qutebrowser/qutebrowser"
@@ -67,12 +67,12 @@ python_install_all() {
 pkg_postinst() {
 	optfeature "PDF display support" www-plugins/pdfjs
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }
