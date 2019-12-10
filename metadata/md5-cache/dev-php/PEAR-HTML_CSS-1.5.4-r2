@@ -7,7 +7,8 @@ IUSE=minimal test
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=>=dev-php/PEAR-HTML_Common-1.2.4 !minimal? ( >=dev-php/PEAR-Services_W3C_CSSValidator-0.1.0 ) >=dev-php/pear-1.8.1
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTML_CSS-1.5.4.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=32d44e23a7b41290d6a8071d1cbaf602
+_md5_=d555b2165a5987763ea2ec3b37f64f3a

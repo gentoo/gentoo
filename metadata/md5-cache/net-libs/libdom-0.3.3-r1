@@ -8,7 +8,8 @@ KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~m68k-mint
 LICENSE=MIT
 RDEPEND=>=dev-libs/libparserutils-0.2.1-r1 >=dev-libs/libwapcaplet-0.3.0 >=net-libs/libhubbub-0.3.1-r1 xml? ( expat? ( >=dev-libs/expat-2.1.0-r3 ) !expat? ( >=dev-libs/libxml2-2.9.1-r4 ) )
 REQUIRED_USE=test? ( xml )
+RESTRICT=!test? ( test )
 SLOT=0/0.3.3
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libdom-0.3.3-src.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=d2a356396f91108e35c4b271ec88ca7b
+_md5_=bc69519ea22ad35d68b4658ff47faa09

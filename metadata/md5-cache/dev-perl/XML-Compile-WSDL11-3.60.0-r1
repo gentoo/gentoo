@@ -7,7 +7,8 @@ IUSE=test examples
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Log-Report-1.50.0 >=dev-perl/XML-Compile-1.480.0 >=dev-perl/XML-Compile-Cache-1.30.0 >=dev-perl/XML-Compile-SOAP-3.160.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MA/MARKOV/XML-Compile-WSDL11-3.06.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=36a8db6be45283d9152286fdabdd4e6d
+_md5_=6feb32d842cc3119fce10a2dc11e09af

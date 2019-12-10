@@ -7,7 +7,8 @@ IUSE=test minimal
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-IO dev-perl/PerlIO-utf8_strict dev-perl/Sub-Exporter dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Mixin-Linewise-0.108.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=45c1c27adbe95ff741f74776b3bad399
+_md5_=a4a9bd4ff00b2201f260415e026b3a42

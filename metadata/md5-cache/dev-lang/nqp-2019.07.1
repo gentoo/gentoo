@@ -9,7 +9,8 @@ KEYWORDS=~amd64 ~x86
 LICENSE=Artistic-2
 RDEPEND=java? ( dev-java/asm:4 dev-java/jline:0 dev-java/jna:4 ) moar? ( ~dev-lang/moarvm-2019.07.1[clang=] ) java? ( >=virtual/jre-1.8 ) java? ( >=dev-java/java-config-2.2.0-r3 )
 REQUIRED_USE=|| ( java moar )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/perl6/nqp/releases/download/2019.07.1/nqp-2019.07.1.tar.gz
 _eclasses_=java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	82402a1c36ab4bf38f3313a543f9e827	multibuild	40fe59465edacd730c644ec2bc197809
-_md5_=e34c17c92d7b2b0bd96afd29bbdb22f9
+_md5_=2a3fb5562ce14e761741e9bec21a7efd

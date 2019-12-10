@@ -7,7 +7,8 @@ IUSE=examples test
 KEYWORDS=~alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86
 LICENSE=BSD
 RDEPEND=dev-lang/php:*[xml] >=dev-php/PEAR-XML_Parser-1.2.7 >=dev-php/PEAR-XML_Util-1.1.1-r1 >=dev-php/pear-1.8.1
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/XML_Serializer-0.21.0.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=32245f5432715c4d23bb5446ca3d5e87
+_md5_=7f07dc703015e2b050f3c729cd961ac6

@@ -7,7 +7,8 @@ IUSE=+ocamlopt test
 KEYWORDS=~amd64
 LICENSE=MIT
 RDEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/ppx_tools:= dev-ml/cppo:= >=dev-lang/ocaml-4:=
+RESTRICT=!test? ( test )
 SLOT=0/1.2
 SRC_URI=https://github.com/whitequark/ppx_import/archive/v1.2.tar.gz -> ppx_import-1.2.tar.gz
 _eclasses_=opam	3f1ccc0b5a5708088c2c156d4ca79a20
-_md5_=5296f8d53290ced6c54db8d1ac3f04cd
+_md5_=9db06268349c902b25b45e10de99f9f7

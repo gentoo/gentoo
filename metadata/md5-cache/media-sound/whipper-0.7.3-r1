@@ -9,7 +9,8 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+
 RDEPEND=app-cdr/cdrdao >=dev-libs/libcdio-paranoia-0.94_p2 dev-python/pycdio[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygobject:3=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/python-musicbrainz-ngs[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/requests[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] media-libs/flac media-libs/libsndfile media-libs/mutagen[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] media-sound/sox[flac] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/whipper-team/whipper/archive/v0.7.3.tar.gz -> whipper-0.7.3.tar.gz
 _eclasses_=distutils-r1	cf4de3b8bc5cae734e3faa4b36e64cf7	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	c037bf23d7eff50e222b067cd54e5f27	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=54bbbd4904b7a388120037cc221e0a52
+_md5_=bd3d22794249c05361dd7fc13a680be1

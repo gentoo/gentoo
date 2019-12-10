@@ -4,5 +4,6 @@ EAPI=6
 IUSE=+boost idn debug test +tools
 KEYWORDS=amd64 ~arm hppa ppc ppc64 ~sparc x86
 RDEPEND=app-text/podofo:0/0.9.6[boost=,idn=,debug=,test=,tools=] boost? ( dev-libs/boost )
+RESTRICT=!test? ( test )
 SLOT=0/0.9.6
-_md5_=642cde2bb4c10491cdaff4642675dfb7
+_md5_=393d612b7a6648bb9d5fd8833e135695

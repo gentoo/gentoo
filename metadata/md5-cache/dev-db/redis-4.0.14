@@ -9,7 +9,8 @@ KEYWORDS=amd64 arm arm64 hppa ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos 
 LICENSE=BSD
 RDEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( || ( dev-lang/lua:5.1 =dev-lang/lua-5.1*:0 ) ) tcmalloc? ( dev-util/google-perftools ) jemalloc? ( >=dev-libs/jemalloc-3.2 )
 REQUIRED_USE=?? ( tcmalloc jemalloc )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://download.redis.io/releases/redis-4.0.14.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=c46afccb8c6043dee5a9dbc525eec6c5
+_md5_=f9c0f25b17946c6f853bcc6f5d02e2b5

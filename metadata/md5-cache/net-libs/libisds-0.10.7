@@ -7,6 +7,7 @@ IUSE=+curl debug nls openssl static-libs test
 KEYWORDS=~amd64 ~mips ~x86
 LICENSE=LGPL-3
 RDEPEND=dev-libs/expat dev-libs/libxml2 curl? ( net-misc/curl[ssl] ) openssl? ( dev-libs/openssl:= ) !openssl? ( app-crypt/gpgme dev-libs/libgcrypt:= ) !openssl? ( >=app-crypt/gnupg-2 )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://xpisar.wz.cz/libisds/dist/libisds-0.10.7.tar.xz
-_md5_=ef7bcf0f7fa983f06690a71208207a6b
+_md5_=f4aa0ea60c4fc4bef4b0e22f78794425

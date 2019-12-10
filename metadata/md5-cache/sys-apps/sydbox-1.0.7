@@ -7,6 +7,7 @@ IUSE=debug seccomp test
 KEYWORDS=~amd64
 LICENSE=BSD
 RDEPEND=sys-libs/pinktrace:= debug? ( sys-libs/libunwind:= )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://distfiles.exherbo.org/distfiles/sydbox-1.0.7.tar.bz2
-_md5_=fe5029dfaefa1636b311a8c44539d276
+_md5_=3417e1da82a0ff0377cd9f86d85462a3

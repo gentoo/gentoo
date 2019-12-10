@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-Data-Dumper >=dev-perl/List-MoreUtils-0.70.0 >=dev-perl/Moose-0.420.0 virtual/perl-Scalar-List-Utils dev-perl/Syntax-Keyword-Junction >=dev-perl/autobox-2.230.0 dev-perl/namespace-autoclean virtual/perl-parent dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/Moose-Autobox-0.16.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=a25ce57c7ecd4a9b7c4a74f3b41be03e
+_md5_=e76b00217c441aa69e10097d383228af

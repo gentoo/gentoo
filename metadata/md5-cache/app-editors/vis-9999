@@ -7,6 +7,7 @@ IUSE=+ncurses selinux test tre
 LICENSE=ISC
 PROPERTIES=live
 RDEPEND=dev-libs/libtermkey ncurses? ( sys-libs/ncurses:0= ) tre? ( dev-libs/tre:= ) app-eselect/eselect-vi
+RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
-_md5_=a5fcfab6ca6a58046f5d21339d376a8d
+_md5_=25fbb13cbbc96efbe1f1f9b052997d1a

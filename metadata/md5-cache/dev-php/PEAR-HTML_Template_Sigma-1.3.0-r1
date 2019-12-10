@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~alpha amd64 hppa ia64 ppc ppc64 sparc x86
 LICENSE=PHP-3.01
 RDEPEND=dev-lang/php:*[ctype] >=dev-php/pear-1.8.1
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTML_Template_Sigma-1.3.0.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=f6bdab957fdafde20e80bfde26e002c0
+_md5_=000662f0de2812a5f862657cab77e322

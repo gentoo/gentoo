@@ -7,7 +7,8 @@ IUSE=X elibc_glibc +gmp portable test +threads
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1
 RDEPEND=X? ( x11-libs/motif:0 ) gmp? ( >=dev-libs/gmp-5 ) elibc_glibc? ( threads? ( >=sys-libs/glibc-2.13 ) ) virtual/libffi
+RESTRICT=!test? ( test )
 SLOT=0/5.8
 SRC_URI=https://codeload.github.com/polyml/polyml/tar.gz/v5.8 -> polyml-5.8.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=0e03dbfdb8b2fcb3942dc55639968d0c
+_md5_=1db5638c49a76307451f5518fee7a641

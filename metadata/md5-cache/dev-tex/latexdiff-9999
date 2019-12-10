@@ -8,6 +8,7 @@ IUSE=test
 LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=>=dev-lang/perl-5.8 virtual/latex-base dev-texlive/texlive-plaingeneric dev-perl/Algorithm-Diff
+RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
-_md5_=a74596b6e61726c8c2210e100d6284eb
+_md5_=00d6bf10b6432887e71db58bd4489dc4

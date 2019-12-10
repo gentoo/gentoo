@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=amd64 ~arm x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-vcs/git virtual/perl-Encode dev-perl/File-Which dev-perl/Net-SSLeay dev-perl/IO-Socket-SSL virtual/perl-File-Temp virtual/perl-HTTP-Tiny virtual/perl-Getopt-Long virtual/perl-Term-ANSIColor !app-portage/pram dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MO/MONSIEURP/Gentoo-App-Pram-0.200000.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=d604768955b4fe86bf327af6d7143674
+_md5_=f26a207245d666e1d19e5eae09f56d81

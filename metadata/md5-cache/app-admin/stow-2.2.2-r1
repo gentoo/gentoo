@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=amd64 ~arm ~hppa ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 LICENSE=GPL-2
 RDEPEND=dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnu/stow/stow-2.2.2.tar.gz
 _eclasses_=perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b
-_md5_=769be0ad376d08f837f8057db2ff0927
+_md5_=f5825506716fca00644ba64353f91a1b

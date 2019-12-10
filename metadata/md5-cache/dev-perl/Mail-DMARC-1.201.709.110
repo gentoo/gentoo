@@ -7,7 +7,8 @@ IUSE=test minimal
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!minimal? ( dev-perl/Net-IMAP-Simple ) dev-perl/CGI virtual/perl-CPAN virtual/perl-Carp dev-perl/Config-Tiny >=dev-perl/DBD-SQLite-1.310.0 >=dev-perl/DBIx-Simple-1.350.0 virtual/perl-Data-Dumper dev-perl/Email-MIME dev-perl/Email-Simple virtual/perl-Encode dev-perl/File-ShareDir virtual/perl-Getopt-Long dev-perl/HTTP-Message virtual/perl-HTTP-Tiny virtual/perl-IO virtual/perl-IO-Compress dev-perl/IO-Socket-SSL dev-perl/JSON dev-perl/libwww-perl dev-perl/Mail-DKIM dev-perl/Net-DNS dev-perl/Net-HTTP dev-perl/Net-IDN-Encode dev-perl/Net-IP dev-perl/Net-SMTPS dev-perl/Net-SSLeay >=dev-perl/Net-Server-2 virtual/perl-Socket >=dev-perl/Socket6-0.230.0 virtual/perl-Sys-Syslog dev-perl/Test-File-ShareDir dev-perl/URI dev-perl/XML-LibXML virtual/perl-parent >=dev-perl/Regexp-Common-2013031301 dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MB/MBRADSHAW/Mail-DMARC-1.20170911.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=57f35ad1b6e7821951a90bc3767f4c8b
+_md5_=62af543f7f5cf65b2c09763b0eddff45

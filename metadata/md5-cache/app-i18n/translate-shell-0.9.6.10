@@ -7,6 +7,7 @@ IUSE=+bidi +curl test tts
 KEYWORDS=~amd64
 LICENSE=Unlicense
 RDEPEND=app-misc/rlwrap =sys-apps/gawk-4* curl? ( net-misc/curl[ssl] ) bidi? ( dev-libs/fribidi ) tts? ( || ( media-sound/mpg123 app-accessibility/espeak media-video/mpv media-video/mplayer ) )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/soimort/translate-shell/archive/v0.9.6.10.tar.gz -> translate-shell-0.9.6.10.tar.gz
-_md5_=da457f08335058a2311de9c7a52a58a0
+_md5_=a1db283635328cfa631774103ad78564

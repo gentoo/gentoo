@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Exporter-Lite dev-perl/JSON dev-perl/Test-Deep dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MO/MOTEMEN/Test-Deep-JSON-0.04.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=24932ddd12ea866333e124da2ce15650
+_md5_=7560e9213d161751179be3832ba9cf5d

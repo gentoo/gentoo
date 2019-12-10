@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=PHP-3
 RDEPEND=>=dev-php/pear-1.8.1
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/Crypt_HMAC-1.0.1.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=2514f19059ee9698bd2f1c8ae480c7d4
+_md5_=7d753e2a71de0dfc920a3b025f85da66

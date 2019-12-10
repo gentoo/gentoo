@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1 GPL-2 GPL-3 )
 RDEPEND=dev-lang/perl:= dev-vcs/git virtual/perl-File-Spec virtual/perl-Getopt-Long virtual/perl-Term-ANSIColor virtual/perl-Time-HiRes virtual/perl-Memoize virtual/perl-Data-Dumper
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/git-deploy/git-deploy/archive/e9ef93debd12d85e70676dd79b4bd78ac2b05271.tar.gz -> git-deploy-6.0.1_p20131024.tar.gz
 _eclasses_=perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b
-_md5_=9753c6cd43055474bb1dc9e0466776d7
+_md5_=9ff3454a8cf3fbefd76f31560b9c4c34

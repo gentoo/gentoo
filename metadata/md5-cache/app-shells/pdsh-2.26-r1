@@ -7,6 +7,7 @@ IUSE=crypt readline rsh static-libs test
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=crypt? ( net-misc/openssh ) rsh? ( net-misc/netkit-rsh ) readline? ( sys-libs/readline:0= )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/pdsh/pdsh-2.26.tar.bz2
-_md5_=ad9b9b70066916df1b7f36d6ca88714a
+_md5_=24706c74fc4ea37ee1297295fb4de74c

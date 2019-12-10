@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Authen-SASL-SASLprep virtual/perl-Carp dev-perl/Crypt-URandom virtual/perl-Encode virtual/perl-MIME-Base64 >=dev-perl/Moo-1.1.0 >=dev-perl/PBKDF2-Tiny-0.3.0 dev-perl/Try-Tiny dev-perl/Type-Tiny dev-perl/namespace-clean dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DA/DAGOLDEN/Authen-SCRAM-0.009.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=a0bd9252e8dac1f215943e1d21036a43
+_md5_=a2e8a0678df26f717407baa341d66afc

@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp dev-perl/Clone dev-perl/Date-Calc dev-perl/DateTime dev-perl/DateTime-TimeZone virtual/perl-Exporter virtual/perl-File-Spec virtual/perl-Getopt-Long dev-perl/List-MoreUtils dev-perl/Params-Validate virtual/perl-Scalar-List-Utils virtual/perl-Storable virtual/perl-Term-ReadLine dev-perl/boolean dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SC/SCHUBIGER/DateTime-Format-Natural-1.05.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=30e1a64dd96cce4a4f1d6b5a2449217c
+_md5_=cd69b2183169920b9b9f9168dfb03f14

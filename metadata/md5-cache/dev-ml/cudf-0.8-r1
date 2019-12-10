@@ -7,7 +7,8 @@ IUSE=+ocamlopt test
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
 LICENSE=LGPL-3
 RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/extlib:= dev-libs/glib:2 dev-ml/camlp4:= dev-ml/cppo:=
+RESTRICT=!test? ( test )
 SLOT=0/0.8
 SRC_URI=https://gforge.inria.fr/frs/download.php/file/34659/cudf-0.8.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=be87acb995abe5a2dc59d3ea36c4be3e
+_md5_=18219ae01e558a6a4550ddec583ed33a

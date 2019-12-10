@@ -8,7 +8,8 @@ IUSE=static-libs test
 KEYWORDS=~amd64
 LICENSE=BSD
 RDEPEND=sys-apps/dbus:= dev-libs/glib:= app-crypt/tpm2-tss:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/tpm2-software/tpm2-abrmd/releases/download/2.1.1/tpm2-abrmd-2.1.1.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=5cbad9162c3dbec4259e06658a5f0bac
+_md5_=9a4cf07ce5c8d91d3a12ce155175879c

@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=app-editors/vim[-minimal] virtual/perl-Carp dev-perl/File-ShareDir virtual/perl-File-Temp virtual/perl-Getopt-Long virtual/perl-IO >=dev-perl/Path-Class-0.40.0 >=virtual/perl-Term-ANSIColor-1.30.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RW/RWSTAUNER/Text-VimColor-0.28.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=77823566ae53301f1129dc32e6838be7
+_md5_=0f8cfc11afe357710a3bd7fcd02b7c2e

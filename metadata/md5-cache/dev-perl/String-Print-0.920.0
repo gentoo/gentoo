@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/TimeDate-2.300.0 virtual/perl-Encode dev-perl/HTML-Parser dev-perl/Unicode-LineBreak dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MA/MARKOV/String-Print-0.92.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=6f43b0ae6e47c3f0f039f69e84f78944
+_md5_=cba1dd00b1e39cb87dbd41504ab07f85

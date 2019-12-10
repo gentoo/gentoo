@@ -7,7 +7,8 @@ IUSE=test examples examples
 KEYWORDS=~amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/File-HomeDir virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-Scalar-List-Utils >=dev-perl/Math-Factor-XS-0.400.0 dev-perl/Math-Libm >=dev-perl/Math-Prime-XS-0.260.0 virtual/perl-Module-Load >=dev-perl/Module-Pluggable-4.700.0 dev-perl/Module-Util >=dev-perl/constant-defer-1.0.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/K/KR/KRYDE/Math-NumSeq-72.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=80ea71736a17bec099e89d3a110b2eac
+_md5_=62c4743f687fae1955f8c261c2e711ab

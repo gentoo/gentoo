@@ -7,7 +7,8 @@ IUSE=luajit test
 KEYWORDS=amd64 ~arm x86
 LICENSE=MIT
 RDEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2= )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/tarruda/mpack/archive/1.0.4.tar.gz -> mpack-1.0.4.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=70b3952e77253a06572414190f12eb80
+_md5_=40bd7f765e70dfaea2b02419b5991c5d

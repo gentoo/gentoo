@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=amd64
 LICENSE=Artistic-2
 RDEPEND=dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AL/ALEXMV/Symbol-Global-Name-0.05.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=0ccffd3cdae6a5b88c3e9c89cfe423d1
+_md5_=1d08cbecfa7dd14f7da90a026478328d

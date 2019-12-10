@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/J/JG/JGAMBLE/Math-Derivative-1.01.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=e31da6c54d393631eabd237d86960b80
+_md5_=db8c9f88bf01a939e0f124fa3b846e1a

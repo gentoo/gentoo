@@ -8,7 +8,8 @@ IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=sys-fs/fuse:= dev-perl/Filesys-Statvfs dev-perl/Lchown dev-perl/Unix-Mknod dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DP/DPATES/Fuse-0.16.1.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=c76065a4dc2bda88e2d12f30190c6cff
+_md5_=e0407454a54f1d48d7bf0327ae41ccbd

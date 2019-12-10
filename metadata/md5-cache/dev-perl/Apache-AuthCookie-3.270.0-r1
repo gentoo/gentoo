@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=www-apache/mod_perl-2 virtual/perl-Carp >=dev-perl/Class-Load-0.30.0 virtual/perl-Encode dev-perl/HTTP-Body dev-perl/Hash-MultiValue dev-perl/WWW-Form-UrlEncoded dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MS/MSCHOUT/Apache-AuthCookie-3.27.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=fff301ad863e26c5cb54ee1871586620
+_md5_=7eb3325baf90c7579b1d7e699aac3618

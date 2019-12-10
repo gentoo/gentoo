@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86
 LICENSE=BSD
 RDEPEND=dev-lang/php:*[crypt,hash] >=dev-php/pear-1.8.1
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/Crypt_CHAP-1.5.0.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=55d70859ec83a22b90de5ed0464f6106
+_md5_=51d4a7fff9d13432436da9a21efc3239

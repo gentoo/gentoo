@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=PHP-3
 RDEPEND=>=dev-php/pear-1.8.1
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/Console_Getargs-1.4.0.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=0c38c6296df43fe68bcfe814726ab4b9
+_md5_=e5f1a4fda4c3225cdbd369c25e53a19d

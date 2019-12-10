@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~amd64
 LICENSE=BSD
 RDEPEND=dev-ml/result:= dev-lang/ocaml:=
+RESTRICT=!test? ( test )
 SLOT=0/0.4.0
 SRC_URI=https://github.com/inhabitedtype/ocaml-dispatch/archive/0.4.0.tar.gz -> ocaml-dispatch-0.4.0.tar.gz
 _eclasses_=findlib	45d6030075064a68da8d7143726a1150
-_md5_=5ba3990520dbb30f7b5915532ee0a3cc
+_md5_=bd2ddc078e2275a1885b5e49a121f906

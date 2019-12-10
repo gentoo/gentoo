@@ -7,6 +7,7 @@ IUSE=geoip libressl test
 KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=!libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) geoip? ( >=dev-libs/geoip-1.4.7 )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/pbiering/ipv6calc/archive/2.1.0.tar.gz -> ipv6calc-2.1.0.tar.gz
-_md5_=94eac9085bdce870e0b2cb29dc8a99f6
+_md5_=14fc840d849f52b22c5e02d3dfde8063

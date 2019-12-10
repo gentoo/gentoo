@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=amd64 x86
 LICENSE=GPL-3+
 RDEPEND=>=dev-perl/HTML-Parser-3.260.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DJ/DJERIUS/HTML-TableParser-0.42.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=83745b2e393b25eb5b5f4a6ef5938ee5
+_md5_=d017e5c1b069dc05e62bab22d9ca0ca8

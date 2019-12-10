@@ -7,7 +7,8 @@ IUSE=test examples
 KEYWORDS=amd64 s390 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/J/JS/JSTOWE/Term-Screen-1.05.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=b2c2a9971b81b32642d45b46a4d3daa1
+_md5_=686f112796b598b90e75bc10a8ecf7f1

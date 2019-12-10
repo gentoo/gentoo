@@ -7,7 +7,8 @@ IUSE=minimal test examples
 KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Crypt-Curve25519-0.50.0 dev-perl/Crypt-IDEA >=dev-perl/CryptX-0.32.0 virtual/perl-Digest-MD5 dev-perl/File-HomeDir virtual/perl-File-Spec virtual/perl-IO >=dev-perl/Math-GMP-1.40.0 virtual/perl-Scalar-List-Utils >=dev-perl/String-CRC32-1.200.0 !minimal? ( dev-perl/Digest-BubbleBabble dev-perl/Crypt-RSA dev-perl/TermReadKey ) dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SC/SCHWIGON/Net-SSH-Perl-2.14.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=0cb2b2e05a879019a4d1c7db5995d9ca
+_md5_=5fdd726bcb8a57017cc42fb726a62707

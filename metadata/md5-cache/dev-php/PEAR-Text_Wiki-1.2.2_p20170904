@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~alpha amd64 hppa ia64 ppc ppc64 sparc x86
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-php/pear-1.8.1
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/pear/Text_Wiki/archive/32fd5f483f34645f4efd96d385d8950ea26d4a2a.tar.gz -> Text_Wiki-1.2.2_p20170904.tar.gz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
-_md5_=9de8e22db06e0693d15084f627f35e05
+_md5_=e062b002188ea5b2e24328c63b1c95bc

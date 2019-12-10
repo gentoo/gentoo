@@ -7,7 +7,8 @@ IUSE=javascript +fmt cli +lwt test
 KEYWORDS=~amd64
 LICENSE=ISC
 RDEPEND=dev-ml/result:=[ocamlopt] dev-lang/ocaml:=[ocamlopt] javascript? ( dev-ml/js_of_ocaml:= ) fmt? ( dev-ml/fmt:= ) cli? ( dev-ml/cmdliner:=[ocamlopt] ) lwt? ( dev-ml/lwt:= )
+RESTRICT=!test? ( test )
 SLOT=0/0.6.2
 SRC_URI=http://erratique.ch/software/logs/releases/logs-0.6.2.tbz
 _eclasses_=findlib	45d6030075064a68da8d7143726a1150
-_md5_=fe8d609bbec62c8c124aa8ecc0cac5bd
+_md5_=ebd5b5dbf0d5590b0d6ac40172e819c2

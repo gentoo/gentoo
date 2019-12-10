@@ -7,7 +7,8 @@ IUSE=debug libressl ssl test
 KEYWORDS=amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris
 LICENSE=GPL-2
 RDEPEND=sys-libs/zlib >=dev-libs/libsigc++-2.2.2:2 ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://rtorrent.net/downloads/libtorrent-0.13.7.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=f96f5d6de273770b34b3b8d8b9a73800
+_md5_=e745c9f8e9e1f65dab1d55c557841e0f

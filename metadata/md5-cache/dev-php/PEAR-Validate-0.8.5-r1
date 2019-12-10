@@ -7,7 +7,8 @@ IUSE=minimal test
 KEYWORDS=~alpha amd64 ~arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86
 LICENSE=BSD
 RDEPEND=!minimal? ( dev-php/PEAR-Date ) >=dev-php/pear-1.8.1
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/Validate-0.8.5.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=3a9e2e4197f73f29ff1036a4ac390b14
+_md5_=e6c0540049fccbb6f2a6f938f5b1193a

@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=>=dev-php/pear-1.8.1
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/Text_CAPTCHA_Numeral-1.3.2.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=d8a49c1ffd401301758cfe243d826a36
+_md5_=3378cfad8593bf67f24869ec4fdb3f8c

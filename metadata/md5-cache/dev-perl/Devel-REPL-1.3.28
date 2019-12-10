@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~amd64 ~arm ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/File-HomeDir virtual/perl-File-Spec >=virtual/perl-JSON-PP-2.273.0 dev-perl/Module-Runtime >=dev-perl/Moose-0.930.0 >=dev-perl/MooseX-Getopt-0.180.0 >=dev-perl/MooseX-Object-Pluggable-0.0.9 virtual/perl-Scalar-List-Utils dev-perl/Task-Weaken virtual/perl-Term-ANSIColor virtual/perl-Time-HiRes dev-perl/namespace-autoclean dev-perl/App-Nopaste dev-perl/B-Keywords >=dev-perl/Data-Dump-Streamer-2.390.0 dev-perl/Data-Dumper-Concise dev-perl/File-Next dev-perl/Lexical-Persistence dev-perl/Module-Refresh dev-perl/PPI dev-perl/Sys-SigAction dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/Devel-REPL-1.003028.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=c0ddd39cf094929927925944958edbda
+_md5_=fab7e91c5a181f617e78f12271660618

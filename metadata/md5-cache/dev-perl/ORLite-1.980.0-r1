@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-File-Path-2.08 >=virtual/perl-File-Temp-0.20 >=dev-perl/Params-Util-1 >=dev-perl/DBI-1.607 >=dev-perl/DBD-SQLite-1.27 >=dev-perl/File-Remove-1.40 dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/ORLite-1.98.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=1048e8b758934de2414c86b5cef33416
+_md5_=a4dedbc0a07dbe6dc47d3b973639f23c

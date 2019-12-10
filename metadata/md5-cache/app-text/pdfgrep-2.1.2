@@ -8,6 +8,7 @@ IUSE=+pcre test unac
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=app-text/poppler:=[cxx] dev-libs/libgcrypt:0= pcre? ( dev-libs/libpcre[cxx] ) unac? ( app-text/unac )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.pdfgrep.org/download/pdfgrep-2.1.2.tar.gz
-_md5_=32207d16e2cd06bcfdd2e65ae75460e9
+_md5_=bbc94bdc3ee162a2d0f8eebc5245ad2a

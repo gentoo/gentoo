@@ -7,7 +7,8 @@ IUSE=test minimal
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Capture-Tiny-0.130.0 virtual/perl-Carp >=dev-perl/Class-Load-0.60.0 dev-perl/Data-OptList >=virtual/perl-Getopt-Long-2.390.0 >=dev-perl/Getopt-Long-Descriptive-0.84.0 dev-perl/IO-TieCombine dev-perl/Module-Pluggable dev-perl/String-RewritePrefix dev-perl/Sub-Exporter dev-perl/Sub-Install virtual/perl-parent dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/App-Cmd-0.331.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=20bc44c3f84945c29a0992ed39dac869
+_md5_=485d2c601e1da12220815884d0ff2078

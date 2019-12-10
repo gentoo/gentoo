@@ -7,7 +7,8 @@ IUSE=test minimal
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!minimal? ( dev-perl/Mozilla-PublicSuffix ) virtual/perl-Carp dev-perl/HTTP-Date >=virtual/perl-Time-Local-1.190.100 virtual/perl-parent dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DA/DAGOLDEN/HTTP-CookieJar-0.008.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=628334493ce2c4a5a0ab61cac70ee108
+_md5_=37466327fe27a14d4ea0c2d1305870e1

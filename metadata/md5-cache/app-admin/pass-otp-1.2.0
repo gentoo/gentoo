@@ -7,7 +7,8 @@ IUSE=qrcode test
 KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=>=app-admin/pass-1.7 sys-auth/oath-toolkit qrcode? ( media-gfx/qrencode )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/tadfisher/pass-otp/releases/download/v1.2.0/pass-otp-1.2.0.tar.gz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=380cafb5223cc50f50a7bb61063adebf
+_md5_=a18f64075a8d5c6abeca3d6ab88c4f1e

@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Class-Accessor-Lite-0.50.0 >=virtual/perl-Exporter-5.630.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TO/TOKUHIROM/Proc-Guard-0.07.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=5f4abe89af25ba6c36413275217c1c8f
+_md5_=9ec623e417140ab890ea0a669057fb17

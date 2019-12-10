@@ -7,7 +7,8 @@ IUSE=test
 KEYWORDS=amd64 hppa ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND==net-libs/zeromq-3* dev-perl/ZMQ-Constants virtual/perl-XSLoader dev-lang/perl:=
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DM/DMAKI/ZMQ-LibZMQ3-1.19.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=cf576df5e7ce78d06bbf5fbc4211331f
+_md5_=29e6c1ca370fcf6e2e20461f6d1cf6ea
