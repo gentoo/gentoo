@@ -7,10 +7,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Aaron Bauman <bman@gentoo.org> (2019-12-09)
-# dev-tex/dvi2tty is masked for removal
-app-text/texlive dvi2tty
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-12-07)
 # dev-python/flask-cors is PMASKED.
 media-sound/beets webserver
