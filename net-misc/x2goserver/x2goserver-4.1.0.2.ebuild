@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit multilib systemd toolchain-funcs user xdg-utils
+inherit multilib systemd toolchain-funcs user xdg
 
 DESCRIPTION="The X2Go server"
 HOMEPAGE="http://www.x2go.org"
@@ -81,6 +81,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	if use sqlite ; then
 		if [[ -f "${EROOT}"/var/lib/x2go/x2go_sessions ]] ; then
 			elog "To use sqlite and update your existing database, run:"
@@ -99,12 +100,4 @@ pkg_postinst() {
 	elog "For password authentication, you need to enable PasswordAuthentication"
 	elog "in /etc/ssh/sshd_config (disabled by default in Gentoo)"
 	elog "An init script was installed for x2gocleansessions"
-
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }
