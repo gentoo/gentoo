@@ -14182,7 +14182,7 @@ media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6-r1: USB Video Class grabber
 media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping and burning DVDs
 media-video/m2vrequantizer 0.0.2_pre20060306-r1: Tool to requantize mpeg2 videos
-media-video/makemkv 1.14.6: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
+media-video/makemkv 1.14.7: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/mediainfo 19.09: MediaInfo supplies technical and tag information about media files
 media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
@@ -15634,7 +15634,7 @@ net-vpn/peervpn 0.044-r4: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.7.2 5.8.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.0.5 0.4.1.6-r1 0.4.2.4_rc-r1: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.0.5 0.4.0.6 0.4.1.7 0.4.2.5: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
@@ -18227,7 +18227,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.2.4 5.3: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.1 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 78.0.3904.108 79.0.3945.74 80.0.3970.5: Open-source version of Google Chrome web browser
+www-client/chromium 78.0.3904.108 79.0.3945.79 80.0.3970.5: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.4 3.30.5 3.32.5: GNOME webbrowser based on Webkit
