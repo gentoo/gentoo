@@ -1,0 +1,39 @@
+From 685fcf590a4737ddd85f085d7bccc6a9687c0023 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 10 Dec 2019 11:14:57 +0100
+Subject: [PATCH] build: Fix psx_syscall.h location
+
+---
+ tests/libcap_psx_test.c | 2 +-
+ tests/psx_test.c        | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/libcap_psx_test.c b/tests/libcap_psx_test.c
+index 4b09bb0..6eebdfa 100644
+--- a/tests/libcap_psx_test.c
++++ b/tests/libcap_psx_test.c
+@@ -1,7 +1,7 @@
+ #include <pthread.h>
+ #include <stdio.h>
+ #include <sys/capability.h>
+-#include <sys/psx_syscall.h>
++#include "../libcap/include/sys/psx_syscall.h"
+ 
+ int main(int argc, char **argv) {
+     printf("hello libcap and libpsx\n");
+diff --git a/tests/psx_test.c b/tests/psx_test.c
+index 92b99a0..a3191f1 100644
+--- a/tests/psx_test.c
++++ b/tests/psx_test.c
+@@ -2,7 +2,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <sys/prctl.h>
+-#include <sys/psx_syscall.h>
++#include "../libcap/include/sys/psx_syscall.h"
+ #include <sys/syscall.h>
+ 
+ static void say_hello_expecting(const char *title, int n, int kept) {
+-- 
+2.24.0
+
