@@ -1,12 +1,13 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=configure
-DEPEND=x11-libs/gtk+:2 x11-libs/pango sndfile? ( >=media-libs/libsndfile-1.0.10 ) sdl? ( >=media-libs/libsdl-1.2.3 ) alsa? ( media-libs/alsa-lib ) jack? ( >=media-sound/jack-audio-connection-kit-0.98 ) libsamplerate? ( media-libs/libsamplerate ) ladspa? ( media-libs/ladspa-sdk ) pulseaudio? ( >=media-sound/pulseaudio-0.9.10 ) sox? ( media-sound/sox ) virtual/pkgconfig
+DEPEND=x11-libs/gtk+:2 x11-libs/pango sndfile? ( media-libs/libsndfile:= ) sdl? ( media-libs/libsdl:= ) alsa? ( media-libs/alsa-lib:= ) jack? ( virtual/jack ) libsamplerate? ( media-libs/libsamplerate:= ) ladspa? ( media-libs/ladspa-sdk ) pulseaudio? ( media-sound/pulseaudio ) sox? ( media-sound/sox:= )
 DESCRIPTION=GTK+ Sound file editor (wav, and a few others.)
-EAPI=5
-HOMEPAGE=https://gna.org/projects/mhwaveedit
+EAPI=7
+HOMEPAGE=https://github.com/magnush/mhwaveedit/
 IUSE=alsa jack ladspa libsamplerate nls oss pulseaudio sdl sndfile sox
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=x11-libs/gtk+:2 x11-libs/pango sndfile? ( >=media-libs/libsndfile-1.0.10 ) sdl? ( >=media-libs/libsdl-1.2.3 ) alsa? ( media-libs/alsa-lib ) jack? ( >=media-sound/jack-audio-connection-kit-0.98 ) libsamplerate? ( media-libs/libsamplerate ) ladspa? ( media-libs/ladspa-sdk ) pulseaudio? ( >=media-sound/pulseaudio-0.9.10 ) sox? ( media-sound/sox )
+RDEPEND=x11-libs/gtk+:2 x11-libs/pango sndfile? ( media-libs/libsndfile:= ) sdl? ( media-libs/libsdl:= ) alsa? ( media-libs/alsa-lib:= ) jack? ( virtual/jack ) libsamplerate? ( media-libs/libsamplerate:= ) ladspa? ( media-libs/ladspa-sdk ) pulseaudio? ( media-sound/pulseaudio ) sox? ( media-sound/sox:= )
 SLOT=0
-SRC_URI=http://download.gna.org/mhwaveedit/mhwaveedit-1.4.23.tar.bz2
-_md5_=9cf29b2663ec5703c7eca02d624d0192
+SRC_URI=https://github.com/magnush/mhwaveedit/mhwaveedit/mhwaveedit-1.4.23.tar.bz2
+_md5_=fcb6a324d0d54cdbfea5a74cd5b1b5a1
