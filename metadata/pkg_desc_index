@@ -4826,7 +4826,7 @@ dev-libs/ilbc-rfc3951 0-r1: iLBC is a speech codec suitable for robust voice com
 dev-libs/iniparser 3.1-r1 4.1: A free stand-alone ini file parsing library
 dev-libs/injeqt 1.2.0: Dependency injection framework for Qt5
 dev-libs/input-pad 1.0.99_pre20140916: On-screen input pad to send characters with mouse
-dev-libs/intel-neo 19.22.13062 19.30.13641 19.38.14237 19.46.14807: Intel Graphics Compute Runtime for OpenCL, for Gen8 (Broadwell) and beyond
+dev-libs/intel-neo 19.38.14237 19.46.14807 19.48.14977: Intel Graphics Compute Runtime for OpenCL, for Gen8 (Broadwell) and beyond
 dev-libs/isl 0.12.2 0.21 0.22: A library for manipulating integer points bounded by linear constraints
 dev-libs/ivykis 0.42.2 0.42.3-r1 0.42.4: Library for asynchronous I/O readiness notification
 dev-libs/jansson 2.10 2.11 2.12: C library for encoding, decoding and manipulating JSON data
@@ -10418,7 +10418,7 @@ dev-tex/detex 2.8-r1: A filter program that removes the LaTeX (or TeX) control s
 dev-tex/dot2tex 2.9.0 2.11.3: A Graphviz to LaTeX converter
 dev-tex/dot2texi 3.0: Create graphs within LaTeX using the dot2tex tool
 dev-tex/dvi2gr 0.4-r1: DVI to Grace translator
-dev-tex/dvi2tty 5.3.4: Preview dvi-files on text-only devices
+dev-tex/dvi2tty 5.3.4-r1: Preview dvi-files on text-only devices
 dev-tex/dvipost 1.1-r3: post processor for dvi files
 dev-tex/ellipsis 1.6: Simple package that fixes the way LaTeX centers ellipses
 dev-tex/envlab 1.2-r1: A LaTeX module to format envelopes
@@ -10714,7 +10714,7 @@ dev-util/ignition-cmake 0.2.0 0.4.0: CMake modules to be used by the Ignition pr
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 7.0 8.0 9.0: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1 2.2.11_p5 2.2.12: Indent program source files
-dev-util/intel-graphics-compiler 1.0.11-r1 1.0.2878: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
+dev-util/intel-graphics-compiler 1.0.2878 1.0.2990: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
 dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1: Intel's implementation of the OpenCL standard
 dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
 dev-util/its4 1.1.1-r1: ITS4: Software Security Tool
