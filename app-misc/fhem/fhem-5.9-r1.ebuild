@@ -9,7 +9,7 @@ DESCRIPTION="A GPL'd perl server for house automation"
 HOMEPAGE="https://www.fhem.de/"
 SRC_URI="https://www.fhem.de/${P}.tar.gz"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="doc"
