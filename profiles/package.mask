@@ -62,7 +62,6 @@ media-sound/vitunes
 # Aaron Bauman <bman@gentoo.org> (2019-12-09)
 # EAPI=4, unmaintained upstream and Gentoo is versions behind
 # Removal in 30 days
-dev-tex/dvi2tty
 app-office/auto-multiple-choice
 
 # Aaron Bauman <bman@gentoo.org> (2019-12-09)
