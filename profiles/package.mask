@@ -311,7 +311,6 @@ app-misc/rq
 #
 # app-admin/docker-bench: #694704
 # app-admin/linux-bench: #699274
-# app-emulation/{cadvisor,cri-tools,reg}: #694892
 # dev-go/glide: #694384
 # dev-util/drone{,-cli}: #695240  // TODO: promu?
 # net-misc/istioctl: #695288
@@ -319,7 +318,6 @@ app-misc/rq
 #
 # Removal in 30 days.
 app-admin/linux-bench
-app-emulation/cri-tools
 dev-go/glide
 net-misc/istioctl
 
