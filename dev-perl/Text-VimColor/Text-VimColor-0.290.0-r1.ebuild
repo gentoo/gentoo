@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-DIST_VERSION=0.28
+DIST_VERSION=0.29
 DIST_AUTHOR=RWSTAUNER
 
 inherit perl-module
