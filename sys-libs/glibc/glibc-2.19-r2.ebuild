@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit prefix eutils toolchain-funcs flag-o-matic gnuconfig usr-ldscript \
+inherit prefix eutils toolchain-funcs flag-o-matic gnuconfig \
 	multilib systemd multiprocessing
 
 DESCRIPTION="GNU libc C library"
