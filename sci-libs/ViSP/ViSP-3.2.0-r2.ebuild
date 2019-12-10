@@ -27,7 +27,7 @@ RDEPEND="
 	lapack? ( virtual/lapack )
 	motif? ( media-libs/SoXt )
 	ogre? ( dev-games/ogre[ois(+)] dev-libs/boost:=[threads] )
-	opencv? ( media-libs/opencv:= )
+	opencv? ( media-libs/opencv:=[contribdnn(+)] )
 	png? ( media-libs/libpng:0= )
 	usb? ( virtual/libusb:1 )
 	v4l? ( media-libs/libv4l )
