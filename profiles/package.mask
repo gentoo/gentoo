@@ -309,7 +309,6 @@ app-misc/rq
 # Multiple unmaintained Go packages with incorrect license information.
 # No reverse dependencies.
 #
-# app-admin/docker-bench: #694704
 # app-admin/linux-bench: #699274
 # dev-go/glide: #694384
 # dev-util/drone{,-cli}: #695240  // TODO: promu?
