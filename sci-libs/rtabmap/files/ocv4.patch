@@ -1,0 +1,23 @@
+From d5b4b252870e4225ed00bd544a102015e5172c85 Mon Sep 17 00:00:00 2001
+From: matlabbe <matlabbe@gmail.com>
+Date: Fri, 9 Aug 2019 15:31:47 -0400
+Subject: [PATCH] updated ORBExtractor opencv include (compatibility issue
+ https://github.com/introlab/rtabmap_ros/issues/333)
+
+---
+ corelib/src/opencv/ORBextractor.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/corelib/src/opencv/ORBextractor.h b/corelib/src/opencv/ORBextractor.h
+index 0f06c395..58619a15 100644
+--- a/corelib/src/opencv/ORBextractor.h
++++ b/corelib/src/opencv/ORBextractor.h
+@@ -31,7 +31,7 @@
+ 
+ #include <vector>
+ #include <list>
+-#include <opencv/cv.h>
++#include <opencv2/core/core_c.h>
+ 
+ 
+ namespace rtabmap
