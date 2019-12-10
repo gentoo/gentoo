@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DIST_AUTHOR=ETHER
-DIST_VERSION=0.13
+DIST_VERSION=0.14
 inherit perl-module
 
 DESCRIPTION="An abstract Moose role for setting attributes from a configfile"
