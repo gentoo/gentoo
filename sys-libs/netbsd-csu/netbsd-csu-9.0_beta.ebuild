@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit bsdmk multilib-minimal toolchain-funcs
+inherit flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="crtbegin.o/crtend.o from NetBSD CSU for GCC-free toolchain"
 HOMEPAGE="http://cvsweb.netbsd.org/bsdweb.cgi/src/lib/csu/"
@@ -17,6 +17,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="app-arch/xz-utils
+	virtual/pmake
 	test? ( sys-devel/clang )"
 
 S=${WORKDIR}/${P}/lib/csu
@@ -59,7 +60,7 @@ multilib_src_compile() {
 	# we only need those files; crt1 and friends are provided by libc
 	opts+=( crtbegin.o crtbeginS.o crtend.o )
 
-	bsdmk_src_compile "${opts[@]}"
+	bmake ${MAKEOPTS} "${opts[@]}" ${EXTRA_EMAKE} || die
 
 	ln -s crtbegin.o crtbeginT.o || die
 	ln -s crtend.o crtendS.o || die
