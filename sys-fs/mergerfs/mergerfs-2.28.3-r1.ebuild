@@ -26,15 +26,15 @@ src_prepare() {
 	default
 
 	# drop -O2 from those handmade Makefiles.
-	sed -r '/^OPTS[ \t]*=/d' -i Makefile
+	sed -r '/^OPTS[ \t]*=/d' -i Makefile || die
 
 	# Hand made build system at it's finest.
-	echo -e "#!/bin/sh\ntrue" >tools/update-version
-	echo "#pragma once" >src/version.hpp
-	echo "static const char MERGERFS_VERSION[] = \"${PV}\";" >>src/version.hpp
+	echo -e "#!/bin/sh\ntrue" >tools/update-version || die
+	echo "#pragma once" >src/version.hpp || die
+	echo "static const char MERGERFS_VERSION[] = \"${PV}\";" >>src/version.hpp || die
 
 	if ! use xattr; then
-		sed 's%USE_XATTR = 1%USE_XATTR = 0%g' -i Makefile
+		sed 's%USE_XATTR = 1%USE_XATTR = 0%g' -i Makefile || die
 	fi
 }
 
