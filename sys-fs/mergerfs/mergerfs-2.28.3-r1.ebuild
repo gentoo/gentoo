@@ -12,15 +12,15 @@ KEYWORDS="~amd64 ~x86"
 # Vendorized libfuse that's bundled is under LGPL-2.1.
 LICENSE="ISC LGPL-2.1"
 SLOT="0"
-IUSE=""
+IUSE="+xattr"
 
-RDEPEND="
-	sys-apps/attr
-	sys-apps/util-linux
-	sys-devel/gettext
+DEPEND="
+	xattr? ( sys-apps/attr )
 "
 
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
+
+BDEPEND="sys-devel/gettext"
 
 src_prepare() {
 	default
@@ -32,6 +32,10 @@ src_prepare() {
 	echo -e "#!/bin/sh\ntrue" >tools/update-version
 	echo "#pragma once" >src/version.hpp
 	echo "static const char MERGERFS_VERSION[] = \"${PV}\";" >>src/version.hpp
+
+	if ! use xattr; then
+		sed 's%USE_XATTR = 1%USE_XATTR = 0%g' -i Makefile
+	fi
 }
 
 src_install() {
