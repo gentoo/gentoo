@@ -30,6 +30,7 @@ src_prepare() {
 }
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME
 	pushd "src/${EGO_PN}"
 	GO_FLAGS="-v -work -x" VERBOSE="true" GOPATH="${S}:$(get_golibdir_gopath)" emake build
 	popd || die
