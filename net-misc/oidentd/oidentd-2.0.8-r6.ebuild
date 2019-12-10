@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit linux-info systemd
 
 DESCRIPTION="Another (RFC1413 compliant) ident daemon"
-HOMEPAGE="http://ojnk.sourceforge.net/"
+HOMEPAGE="https://oidentd.janikrabe.com/"
 SRC_URI="mirror://sourceforge/ojnk/${P}.tar.gz"
 
 LICENSE="GPL-2"
