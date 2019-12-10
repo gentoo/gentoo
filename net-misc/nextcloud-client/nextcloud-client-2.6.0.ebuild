@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake-utils xdg
 
 DESCRIPTION="Desktop Syncing Client for Nextcloud"
 HOMEPAGE="https://github.com/nextcloud/desktop"
@@ -79,13 +79,9 @@ src_configure() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	if ! use doc ; then
 		elog "Documentation and man pages not installed"
 		elog "Enable doc USE-flag to generate them"
 	fi
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
