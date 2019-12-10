@@ -49,6 +49,11 @@ media-sound/mhwaveedit
 media-sound/vitunes
 
 # Aaron Bauman <bman@gentoo.org> (2019-12-09)
+# EAPI=4, unmaintained upstream and Gentoo is versions behind
+# Removal in 30 days
+dev-tex/dvi2tty
+
+# Aaron Bauman <bman@gentoo.org> (2019-12-09)
 # EAPI=4, unmaintained upstream, rdep as well
 # Removal in 30 days. Open bugs #552934
 dev-libs/cityhash
