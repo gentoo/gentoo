@@ -76,6 +76,7 @@ src_compile() {
 		MKSYSVINIT=$(usex sysv-utils)
 		MKAUDIT=$(usex audit)
 		MKPAM=$(usev pam)
+		MKSTATICLIBS=no
 		MKZSHCOMP=yes
 		SH=$(usex bash /bin/bash /bin/sh)"
 
