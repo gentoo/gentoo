@@ -22,4 +22,3 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}/boostpython.patch" "${FILESDIR}/ocv4.patch" )
-
