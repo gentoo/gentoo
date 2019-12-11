@@ -20,7 +20,10 @@ REQUIRED_USE="|| ( jit pmmu standard ) lilo? ( pmmu )"
 RDEPEND="
 	dev-libs/gmp:0=
 	media-libs/libsdl2[video]
-	clipboard? ( !kernel_Winnt? ( x11-libs/libX11 ) )
+	clipboard? ( !kernel_Winnt? (
+		media-libs/libsdl2[X]
+		x11-libs/libX11
+	) )
 	jpeg? ( virtual/jpeg )
 	kernel_linux? ( virtual/libudev )
 	lilo? ( sys-libs/zlib )
