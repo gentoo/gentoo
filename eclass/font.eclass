@@ -4,14 +4,16 @@
 # @ECLASS: font.eclass
 # @MAINTAINER:
 # fonts@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Eclass to make font installation uniform
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) inherit eutils ;;
+	[56]) inherit eutils ;;
 	7) ;;
 	*) die "EAPI ${EAPI} is not supported by font.eclass." ;;
 esac
+
+if [[ ! ${_FONT_ECLASS} ]]; then
 
 EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_postrm
 
@@ -76,9 +78,7 @@ font_xfont_config() {
 			-e ${EPREFIX}/usr/share/fonts/encodings \
 			-e ${EPREFIX}/usr/share/fonts/encodings/large \
 			"${ED%/}/${FONTDIR}/${1//${S}/}" || eerror "failed to create fonts.dir"
-		if [[ -e fonts.alias ]]; then
-			doins fonts.alias || die "failed to install fonts.alias" # TODO old EAPI cleanup
-		fi
+		[[ -e fonts.alias ]] && doins fonts.alias
 	fi
 }
 
@@ -90,9 +90,7 @@ font_fontconfig() {
 	if [[ -n ${FONT_CONF[@]} ]]; then
 		insinto /etc/fonts/conf.avail/
 		for conffile in "${FONT_CONF[@]}"; do
-			if [[ -e  ${conffile} ]]; then
-				doins ${conffile} || die "failed to install conf file" # TODO old EAPI cleanup
-			fi
+			[[ -e ${conffile} ]] && doins "${conffile}"
 		done
 	fi
 }
@@ -146,20 +144,8 @@ font_cleanup_dirs() {
 # @FUNCTION: font_pkg_setup
 # @DESCRIPTION:
 # The font pkg_setup function.
-# Collision protection and Prefix compat for eapi < 3.
+# Collision protection
 font_pkg_setup() {
-	# Prefix compat
-	case ${EAPI:-0} in
-		0|1|2)
-			if ! use prefix; then
-				EPREFIX=
-				ED=${D}
-				EROOT=${ROOT}
-				[[ ${EROOT} = */ ]] || EROOT+="/"
-			fi
-			;;
-	esac
-
 	# make sure we get no collisions
 	# setup is not the nicest place, but preinst doesn't cut it
 	if [[ -e "${EROOT%/}/${FONTDIR}/fonts.cache-1" ]] ; then
@@ -181,7 +167,7 @@ font_src_install() {
 			pushd "${dir}" > /dev/null
 			insinto "${FONTDIR}/${dir//${S}/}"
 			for suffix in ${FONT_SUFFIX}; do
-				doins *.${suffix} || die "font installation failed" # TODO old EAPI cleanup
+				doins *.${suffix}
 			done
 			font_xfont_config "${dir}"
 			popd > /dev/null
@@ -190,7 +176,7 @@ font_src_install() {
 		pushd "${FONT_S}" > /dev/null
 		insinto "${FONTDIR}"
 		for suffix in ${FONT_SUFFIX}; do
-			doins *.${suffix} || die "font installation failed" # TODO old EAPI cleanup
+			doins *.${suffix}
 		done
 		font_xfont_config
 		popd > /dev/null
@@ -198,10 +184,10 @@ font_src_install() {
 
 	font_fontconfig
 
-	[[ -n ${DOCS} ]] && { dodoc ${DOCS} || die "docs installation failed" ; } # TODO old EAPI cleanup
+	einstalldocs
 
 	# install common docs
-	for commondoc in COPYRIGHT README{,.md,.txt} NEWS AUTHORS BUGS ChangeLog FONTLOG.txt; do
+	for commondoc in COPYRIGHT FONTLOG.txt; do
 		[[ -s ${commondoc} ]] && dodoc ${commondoc}
 	done
 }
@@ -238,9 +224,8 @@ font_pkg_postinst() {
 		elog "The following fontconfig configuration files have been installed:"
 		elog
 		for conffile in "${FONT_CONF[@]}"; do
-			if [[ -e "${EROOT%/}"/etc/fonts/conf.avail/${conffile##*/} ]]; then
+			[[ -e "${EROOT%/}"/etc/fonts/conf.avail/${conffile##*/} ]] &&
 				elog "  ${conffile##*/}"
-			fi
 		done
 		elog
 		elog "Use \`eselect fontconfig\` to enable/disable them."
@@ -256,3 +241,6 @@ font_pkg_postrm() {
 	font_cleanup_dirs
 	_update_fontcache
 }
+
+_FONT_ECLASS=1
+fi
