@@ -8189,6 +8189,11 @@ sys-cluster/keepalived:json - compile with signal to dump configuration and stat
 sys-cluster/keepalived:regex - compile with support for regex in health checks
 sys-cluster/legion:gasnet - Enable GASNet lib support
 sys-cluster/legion:hwloc - Enable HWLoc lib support
+sys-cluster/lustre:client - Enable kernel client modules
+sys-cluster/lustre:dlc - Enable Dynamic LNET Configuration
+sys-cluster/lustre:server - Enable kernels server modules
+sys-cluster/lustre:tests - Enable installation of tests
+sys-cluster/lustre:utils - Enable lustre utils
 sys-cluster/maui:pbs - Enable pbs integration
 sys-cluster/maui:slurm - Enable slurm integration
 sys-cluster/minikube:libvirt - Build plugin for kvm
