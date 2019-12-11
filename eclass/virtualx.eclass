@@ -89,6 +89,8 @@ case ${VIRTUALX_REQUIRED} in
 		fi
 		RDEPEND=""
 		IUSE="${VIRTUALX_REQUIRED}"
+		[[ ${VIRTUALX_REQUIRED} == test ]] &&
+			RESTRICT+=" !test? ( test )"
 		;;
 esac
 
