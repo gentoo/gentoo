@@ -88,6 +88,10 @@ multibuild_src_configure() {
 	echo "#define HAVE_X11_XLIB_H 1" >> config.h || die
 }
 
+src_compile() {
+	multibuild_foreach_variant run_in_build_dir default
+}
+
 src_install() {
 	multibuild_foreach_variant run_in_build_dir default
 	rm "${ED}"/usr/share/doc/${PF}/COPYING || die
