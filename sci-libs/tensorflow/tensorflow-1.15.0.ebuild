@@ -101,7 +101,6 @@ PDEPEND="python? (
 		=sci-libs/tensorflow-estimator-1*[${PYTHON_USEDEP}]
 	)"
 BDEPEND="
-	app-arch/unzip
 	>=dev-libs/protobuf-3.6.0
 	dev-java/java-config
 	dev-python/mock

@@ -106,7 +106,6 @@ PDEPEND="python? (
 		>=sci-libs/tensorflow-estimator-2.0.0[${PYTHON_USEDEP}]
 	)"
 BDEPEND="
-	app-arch/unzip
 	>=dev-libs/protobuf-3.8.0
 	dev-java/java-config
 	dev-lang/swig
