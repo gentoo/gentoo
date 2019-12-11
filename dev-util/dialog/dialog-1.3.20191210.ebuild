@@ -1,10 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils multilib versionator
+EAPI=7
 
-DIA_P="${PN}-$(replace_version_separator 2 '-')"
+DIA_P=${PN}-$(ver_cut 1-2)-$(ver_cut 3)
 DESCRIPTION="tool to display dialog boxes from a shell"
 HOMEPAGE="https://invisible-island.net/dialog/"
 SRC_URI="https://dev.gentoo.org/~jer/${DIA_P}.tar.gz"
@@ -47,5 +46,5 @@ src_install() {
 
 	dodoc CHANGES README
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
