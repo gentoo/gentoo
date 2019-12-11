@@ -2,11 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit cmake-utils
 
 DESCRIPTION="encoder and decoder of the ITU G729 Annex A/B speech codec"
 HOMEPAGE="https://github.com/BelledonneCommunications/bcg729"
-SRC_URI="${HOMEPAGE}/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/BelledonneCommunications/bcg729/archive/${PV/_/-}.tar.gz \
+		-> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

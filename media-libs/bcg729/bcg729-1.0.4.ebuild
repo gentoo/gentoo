@@ -6,7 +6,8 @@ inherit autotools ltprune
 
 DESCRIPTION="encoder and decoder of the ITU G729 Annex A/B speech codec"
 HOMEPAGE="https://github.com/BelledonneCommunications/bcg729"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/BelledonneCommunications/bcg729/archive/${PV}.tar.gz \
+		-> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
