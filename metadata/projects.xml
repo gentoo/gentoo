@@ -2309,6 +2309,11 @@
     <description>The Overlays project is responsible for the administration of the overlays and the overlays.gentoo.org / repos.gentoo.org websites.</description>
     <subproject ref="repo-qa-checks@gentoo.org"/>
     <member>
+      <email>gokturk@gentoo.org</email>
+      <name>Göktürk Yüksek</name>
+      <role>Git</role>
+    </member>
+    <member>
       <email>kensington@gentoo.org</email>
       <name>Michael Palimaka</name>
       <role>Git</role>
