@@ -28,6 +28,7 @@ IUSE_CONTRIB="smbkrb5passwd kerberos kinit pbkdf2 sha2"
 IUSE_CONTRIB="${IUSE_CONTRIB} -cxx"
 IUSE="${IUSE_DAEMON} ${IUSE_BACKEND} ${IUSE_OVERLAY} ${IUSE_OPTIONAL} ${IUSE_CONTRIB}"
 
+RESTRICT="!test? ( test )"
 REQUIRED_USE="cxx? ( sasl )
 	pbkdf2? ( ssl )
 	test? ( berkdb )
