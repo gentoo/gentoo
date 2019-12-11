@@ -4917,7 +4917,7 @@ dev-libs/libgcrypt 1.8.3 1.8.3-r1 1.8.4 1.8.5: General purpose crypto library ba
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
 dev-libs/libgdata 0.17.8 0.17.9-r1 0.17.11: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.1 0.20.2: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.28.3 9999: A linkable library for Git
+dev-libs/libgit2 0.28.3 0.28.4 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.28.0.1: Git library for GLib
 dev-libs/libgnome-games-support 1.4.3 1.4.4: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1 1.29 1.32 1.32-r1 1.36: Contains error handling functions used by GnuPG software
@@ -7955,7 +7955,7 @@ dev-python/imapclient 0.13 2.1.0: easy-to-use, pythonic, and complete IMAP clien
 dev-python/imexam 0.7.1: Simple interactive astronomical image examination and plotting
 dev-python/iminuit 1.2 1.3.3: Minuit numerical function minimization in Python
 dev-python/importing 1.10: Import objects dynamically, lazily, weakly, and more
-dev-python/importlib_metadata 0.23-r1 1.1.0 1.2.0: Read metadata from Python packages
+dev-python/importlib_metadata 0.23-r1 1.1.0 1.2.0 1.3.0: Read metadata from Python packages
 dev-python/importlib_resources 1.0.2-r1: Read resources from Python packages
 dev-python/incremental 16.10.1 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.7: Fast random access of gzip files in Python
@@ -10587,7 +10587,7 @@ dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2019.3: A complete toolset for C and C++ development
 dev-util/cloc 1.72 1.76-r1 1.80 1.82: Count Lines of Code
-dev-util/cmake 3.13.5 3.14.6 3.14.7 3.15.4 3.15.5 3.16.0: Cross platform Make
+dev-util/cmake 3.13.5 3.14.6 3.14.7 3.15.4 3.15.5 3.16.0 3.16.1: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
@@ -12855,7 +12855,7 @@ media-gfx/imagemagick 6.9.10.74 6.9.10.77 7.0.9.5 7.0.9.7 9999: A collection of 
 media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.1 0.3.3: Losslessly convert raster images to PDF
 media-gfx/imv 2.1.3 9999: Minimal image viewer designed for tiling window manager users
-media-gfx/inkscape 0.92.4 1.0_beta1 9999: SVG based generic vector-drawing program
+media-gfx/inkscape 0.92.4 1.0_beta2 9999: SVG based generic vector-drawing program
 media-gfx/iscan 2.30.3.1 2.30.4.2: EPSON Image Scan! for Linux (including sane-epkowa backend)
 media-gfx/iscan-data 1.39.0.1: Image Scan! for Linux data files
 media-gfx/iscan-plugin-esdip 1.0.0.5-r1: Plugin for 'epkowa' backend for image manipulation
@@ -14627,7 +14627,7 @@ net-dns/maradns 2.0.09-r2 2.0.14 2.0.16: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 4.2.2 4.2.3 4.2.4_rc1: An authoritative only, high performance, open source name server
+net-dns/nsd 4.2.2 4.2.3 4.2.4: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0 3.9.2: A framework for managing DNS information
