@@ -24,12 +24,14 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+luajit test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=sys-kernel/linux-headers-4.18
+RDEPEND="
+	>=sys-kernel/linux-headers-4.14
 	>=dev-libs/elfutils-0.166:=
 	sys-devel/clang:=
 	>=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)]
 	luajit? ( dev-lang/luajit )
-	${PYTHON_DEPS}"
+	${PYTHON_DEPS}
+"
 DEPEND="${RDEPEND}
 	test? (
 		|| (
@@ -38,9 +40,12 @@ DEPEND="${RDEPEND}
 		)
 		net-analyzer/netperf
 		net-misc/iperf:*
-	)"
-BDEPEND="dev-util/cmake
-	virtual/pkgconfig"
+	)
+"
+BDEPEND="
+	dev-util/cmake
+	virtual/pkgconfig
+"
 
 S=${WORKDIR}/${PN}-${EGIT_COMMIT#v}
 
