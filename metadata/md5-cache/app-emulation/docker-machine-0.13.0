@@ -10,4 +10,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/docker/machine/archive/v0.13.0.tar.gz -> docker-machine-0.13.0.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
-_md5_=cd19927174afac550b9c449450676114
+_md5_=01006bd4de9f0f4aeaeb869df1497e52

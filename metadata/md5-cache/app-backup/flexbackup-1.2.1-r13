@@ -9,4 +9,4 @@ RDEPEND=app-arch/mt-st
 SLOT=0
 SRC_URI=mirror://sourceforge/flexbackup/flexbackup-1.2.1.tar.gz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=f6b3a4cffd71437375e7f2b0af4f2904
+_md5_=925708c5ea9d0e0d22ea5df20b5e9c66

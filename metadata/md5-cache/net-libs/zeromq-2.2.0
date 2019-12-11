@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://download.zeromq.org/zeromq-2.2.0.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=cc46699fd758b7711e8c0cae64e44cb2
+_md5_=e011e4b2083781c87d77b5855cd2868f

@@ -7,4 +7,4 @@ LICENSE=GPL-2 GPL-3
 RDEPEND=sys-devel/binutils sys-devel/gdb
 SLOT=2018
 SRC_URI=https://dev.gentoo.org/~tupone/distfiles/gnat-suite-bin-2018.txz
-_md5_=c093b9ecb529c1c53fdfa1d268f710c4
+_md5_=7a8c8152160e4c2070748a056cb7011a

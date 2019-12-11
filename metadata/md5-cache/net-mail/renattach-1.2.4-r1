@@ -6,4 +6,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.pc-tools.net/files/unix/renattach-1.2.4.tar.gz
-_md5_=1107fc9364fbad1807d23606d9451d68
+_md5_=75f4204843dc39bff01f2bfb53c90a3c

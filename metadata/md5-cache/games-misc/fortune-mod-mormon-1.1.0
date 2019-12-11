@@ -7,4 +7,4 @@ LICENSE=public-domain
 RDEPEND=games-misc/fortune-mod games-misc/fortune-mod-scriptures
 SLOT=0
 SRC_URI=mirror://sourceforge/mormon/fortune-mod-mormon-1.1.0.tar.bz2
-_md5_=7677f654674d9dd5bf72d62f1d48bc57
+_md5_=b6e1d378d95dae14f34375987ec1d84f

@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=>=sys-apps/policycoreutils-2.8 virtual/udev
 SLOT=0
 _eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
-_md5_=f50a35ee2788477f473a4b978c5c7504
+_md5_=31aaf134fe49a4276c093b54c1187153

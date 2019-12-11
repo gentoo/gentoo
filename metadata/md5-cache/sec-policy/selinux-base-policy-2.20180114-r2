@@ -10,4 +10,4 @@ PDEPEND=unconfined? ( sec-policy/selinux-unconfined )
 RDEPEND==sec-policy/selinux-base-2.20180114-r2[systemd?]
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20180114.tar.bz2 https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20180114-r2.tar.bz2
-_md5_=45832c9eaf809021d28316f18b820fc7
+_md5_=68752ea610445cba42b941f327df56b6

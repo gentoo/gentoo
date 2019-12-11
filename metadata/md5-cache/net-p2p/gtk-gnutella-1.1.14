@@ -11,4 +11,4 @@ RDEPEND=sys-libs/binutils-libs:= dev-libs/glib:2 sys-libs/zlib gtk? ( >=x11-libs
 SLOT=0
 SRC_URI=mirror://sourceforge/gtk-gnutella/gtk-gnutella-1.1.14.tar.xz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ea12edfb1eb91800e8c15332451a4e10
+_md5_=c4a31dbab4ad0c2598fb29e56cfe22c5

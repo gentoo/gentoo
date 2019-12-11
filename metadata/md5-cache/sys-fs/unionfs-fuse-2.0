@@ -8,4 +8,4 @@ LICENSE=BSD
 RDEPEND=sys-fs/fuse:0
 SLOT=0
 SRC_URI=https://github.com/rpodgorny/unionfs-fuse/archive/v2.0.tar.gz -> unionfs-fuse-2.0.tar.gz
-_md5_=13daa1689dd1f09ec970130d94e5bb0c
+_md5_=01d6dff67edd2016acdfd9ede09656a4

@@ -8,4 +8,4 @@ PROPERTIES=live
 RDEPEND=sys-fs/fuse:0
 SLOT=0
 _eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
-_md5_=d482bf01b56fd9e9f99d1155aecf5194
+_md5_=586564d282887d0470d28eb4f55b1702

@@ -10,4 +10,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/dhiltgen/docker-machine-kvm/archive/v0.10.0.tar.gz -> docker-machine-kvm-0.10.0.tar.gz https://github.com/docker/machine/archive/v0.10.0.tar.gz -> github.com-docker-machine-v0.10.0.tar.gz https://github.com/libvirt/libvirt-go/archive/c3209e4ba8b8dda65c85ca0ac04302e55895caf7.tar.gz -> github.com-libvirt-libvirt-go-c3209e4ba8b8dda65c85ca0ac04302e55895caf7.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
-_md5_=27756e911108065d88a4929a1b8d3f50
+_md5_=824d434c472198a061c0bd8aacf9d5b3

@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl >=dev-perl/PortageXS-0.02.10-r3 virtual/perl-Term-ANSIColor dev-perl/TermReadKey dev-perl/Shell-EnvImporter sys-apps/portage
 SLOT=0
 SRC_URI=http://download.mpsna.de/opensource/demerge/demerge-0.047.tar.gz
-_md5_=33cadc2a488eea83f69cde1c4518f27e
+_md5_=820a481f01ddb3221b3972017c1ad411

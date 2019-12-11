@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.0
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~graaff/ruby-team/eselect-rails-0.24.tar.xz
-_md5_=dd770c67cd03715cdd0426cfc1cf10b5
+_md5_=5d7e491e0c73b6fc481035eac6a4a362

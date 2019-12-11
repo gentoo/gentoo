@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=app-arch/dump >=app-emulation/ganeti-2.15.2-r7 app-emulation/qemu sys-apps/util-linux sys-fs/multipath-tools sys-fs/e2fsprogs
 SLOT=0
 SRC_URI=http://ftp.osuosl.org/pub/osl/ganeti-instance-image/ganeti-instance-image-0.6.tar.gz
-_md5_=41fe2b296a1e0709e74fb35c1c3bf25e
+_md5_=9489deac8dff2de567a0573d7d22596a
