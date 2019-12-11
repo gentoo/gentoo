@@ -55,9 +55,9 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "Failed to install"
-	newinitd "${FILESDIR}/hyperdex.initd" hyperdex || die "Failed to install init script"
-	newconfd "${FILESDIR}/hyperdex.confd" hyperdex || die "Failed to install config file"
+	emake DESTDIR="${D}" install
+	newinitd "${FILESDIR}/hyperdex.initd" hyperdex
+	newconfd "${FILESDIR}/hyperdex.confd" hyperdex
 	find "${D}" -name '*.la' -exec rm {} \; # bad buildsystem! bad!
 }
 

@@ -38,7 +38,7 @@ src_prepare() {
 }
 
 src_install() {
-	emake -s install DESTDIR="${D}" || die "make install failed"
+	emake -s install DESTDIR="${D}"
 	dodoc README TODO ChangeLog README.grub2
 
 	# create necessary directories

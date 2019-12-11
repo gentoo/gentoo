@@ -20,7 +20,7 @@ src_configure() {
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die "emake install failed"
+	emake install DESTDIR="${D}"
 	rm -f "${D}"/usr/share/doc/${PF}/{COPYING,INSTALL}
 }
 

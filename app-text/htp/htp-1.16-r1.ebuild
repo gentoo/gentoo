@@ -32,12 +32,11 @@ src_compile() {
 	emake \
 		CCOPT="-c ${CFLAGS} ${CPPFLAGS} -DHAVE_SNPRINTF -DHAVE_VASPRINTF -DHAVE_ASPRINTF" \
 		CC="$(tc-getCC)" \
-		LINK='$(CC) $(LDFLAGS)' \
-		|| die
+		LINK='$(CC) $(LDFLAGS)'
 }
 
 src_test() {
-	emake -C tests || die
+	emake -C tests
 }
 
 src_install() {
@@ -45,5 +44,5 @@ src_install() {
 		DESTDIR="${D}" \
 		prefix='$(DESTDIR)/usr' \
 		pkgdocdir='$(DESTDIR)/usr/share/doc/${PF}/html' \
-		install || die
+		install
 }

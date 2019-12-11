@@ -42,5 +42,5 @@ src_compile() {
 src_install() {
 	java-pkg_dojar build/jars/*.jar
 
-	dodoc README.txt || die
+	dodoc README.txt
 }

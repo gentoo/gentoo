@@ -136,8 +136,7 @@ export_emake_opts() {
 src_compile() {
 	export_emake_opts
 	emake \
-		"${src_compile_opts[@]}" \
-		|| die 'emake failed'
+		"${src_compile_opts[@]}"
 }
 
 src_install () {
@@ -146,7 +145,7 @@ src_install () {
 		"${src_compile_opts[@]}" \
 		"${src_install_opts[@]}" \
 		DESTDIR="${D}" \
-		install || die 'emake install failed'
+		install
 
 	use fortran && doheader likwid.mod
 

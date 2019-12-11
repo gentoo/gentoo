@@ -70,7 +70,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake etcdir="${EPREFIX}"/etc || die
+	emake etcdir="${EPREFIX}"/etc
 }
 
 src_install() {

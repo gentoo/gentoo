@@ -93,7 +93,7 @@ src_install() {
 
 	# copy libraries
 	exeinto "${dir}"/System
-	doexe "${S}"/System/libSDL-1.2.so.0 || die
+	doexe "${S}"/System/libSDL-1.2.so.0
 
 	# uncompressing files
 	einfo "Uncompressing files... this may take a while..."
@@ -102,12 +102,12 @@ src_install() {
 	done
 
 	# installing documentation/icon
-	dodoc "${S}"/README.linux || die "dodoc README.linux"
+	dodoc "${S}"/README.linux
 	newicon "${S}"/Unreal.xpm ut2003.xpm || die "copying icon"
-	doins "${S}"/README.linux "${S}"/Unreal.xpm || die "copying readme/icon"
+	doins "${S}"/README.linux "${S}"/Unreal.xpm
 	# copy ut2003/ucc
 	exeinto "${dir}"
-	doexe "${S}"/bin/ut2003 "${S}"/ucc || die "copying ut2003/ucc"
+	doexe "${S}"/bin/ut2003 "${S}"/ucc
 
 	# Here we apply DrSiN's crash patch
 	cp "${S}"/CrashFix/System/crashfix.u "${Ddir}"/System

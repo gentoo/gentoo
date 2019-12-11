@@ -73,7 +73,7 @@ src_compile() {
 	emake
 
 	if use tk; then
-		emake -C "${S}/gui" || die "gui make failed"
+		emake -C "${S}/gui"
 	fi
 }
 

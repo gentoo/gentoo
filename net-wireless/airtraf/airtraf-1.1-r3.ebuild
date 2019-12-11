@@ -43,8 +43,7 @@ src_compile() {
 		CXX=$(tc-getCXX) \
 		CFLAGS="${CFLAGS}" \
 		CXXFLAGS="${CXXFLAGS}" \
-		LDFLAGS="${LDFLAGS}" \
-		|| die
+		LDFLAGS="${LDFLAGS}"
 }
 
 src_install () {

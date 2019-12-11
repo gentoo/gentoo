@@ -79,8 +79,8 @@ src_install() {
 
 src_test() {
 	MAKEOPTS+=" -j1"
-	cd "${S}"/TESTING/MATGEN && emake || die
-	cd "${S}"/TESTING && emake || die
+	cd "${S}"/TESTING/MATGEN && emake
+	cd "${S}"/TESTING && emake
 }
 
 pkg_postinst() {

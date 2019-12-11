@@ -242,7 +242,7 @@ src_install() {
 
 src_test() {
 	if [ `whoami` != 'root' ]; then
-		emake -j1 check || die "Make check failed."
+		emake -j1 check
 	else
 		einfo "make check skipped, can't run as root."
 		einfo "You can enable it with FEATURES=\"userpriv\""

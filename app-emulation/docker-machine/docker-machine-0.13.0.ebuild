@@ -30,7 +30,7 @@ src_prepare() {
 }
 
 src_compile() {
-	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" GOPATH="${WORKDIR}/${P}" emake build || die
+	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" GOPATH="${WORKDIR}/${P}" emake build
 }
 
 src_install() {

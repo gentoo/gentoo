@@ -47,7 +47,7 @@ src_configure() {
 src_install() {
 	einstalldocs
 	insinto /usr/share/${PN}/samples
-	doins samples/*.rules || die 'doins failed'
-	dobin svn-all-fast-export || die 'dobin failed'
-	dosym svn-all-fast-export /usr/bin/svn2git || die 'dosym failed'
+	doins samples/*.rules
+	dobin svn-all-fast-export
+	dosym svn-all-fast-export /usr/bin/svn2git
 }

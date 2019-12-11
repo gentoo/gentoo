@@ -265,7 +265,7 @@ multilib_src_install_all() {
 		grep -w 'disable' "${ED}"/etc/xinetd.d/cups-lpd || \
 			{ sed -i -e "s:}:\tdisable = yes\n}:" "${ED}"/etc/xinetd.d/cups-lpd || die ; }
 		# write permission for file owner (root), bug #296221
-		fperms u+w /etc/xinetd.d/cups-lpd || die "fperms failed"
+		fperms u+w /etc/xinetd.d/cups-lpd
 	else
 		# always configure with --with-xinetd= and clean up later,
 		# bug #525604

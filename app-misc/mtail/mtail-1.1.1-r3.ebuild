@@ -26,5 +26,5 @@ src_prepare() {
 
 src_install() {
 	dobin "${PN}"
-	dodoc CHANGES "${PN}rc.sample" README "${DISTDIR}"/mtailrc-syslog.sample || die
+	dodoc CHANGES "${PN}rc.sample" README "${DISTDIR}"/mtailrc-syslog.sample
 }

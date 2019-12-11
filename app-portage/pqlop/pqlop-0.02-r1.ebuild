@@ -29,6 +29,6 @@ src_unpack() {
 }
 
 src_install() {
-	newbin "${DISTDIR}"/${P}.py ${PN} || die "newbin failed"
+	newbin "${DISTDIR}"/${P}.py ${PN}
 	python_replicate_script "${ED}"/usr/bin/${PN} || die "python_replicate_script failed"
 }

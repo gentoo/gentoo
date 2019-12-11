@@ -36,11 +36,11 @@ pkg_setup() {
 }
 
 src_compile() {
-	emake || die "Compile failed."
+	emake
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "Install failed."
+	emake DESTDIR="${D}" install
 	dodoc ChangeLog README ToDo
 	newconfd "${FILESDIR}"/espeakup.confd espeakup
 	newinitd "${FILESDIR}"/espeakup.rc espeakup

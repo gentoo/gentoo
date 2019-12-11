@@ -21,5 +21,5 @@ S=${WORKDIR}/${MY_P}
 DOCS=( README.rst )
 
 python_test() {
-	emake test || die "tests failed under ${EPYTHON}"
+	emake test
 }

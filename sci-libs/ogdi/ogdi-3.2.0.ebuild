@@ -69,6 +69,6 @@ src_install() {
 	doins ogdi/include/ecs.h ogdi/include/ecs_util.h
 	dolib.so lib/${TARGET}/lib*
 	use static-libs && dolib.a lib/${TARGET}/static/*.a
-#	dosym libogdi31.so /usr/$(get_libdir)/libogdi.so || die "symlink failed"
+#	dosym libogdi31.so /usr/$(get_libdir)/libogdi.so
 	dodoc ChangeLog NEWS README
 }

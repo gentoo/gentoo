@@ -95,17 +95,17 @@ each_ruby_install() {
 
 	local sld=$(ruby_rbconfig_value 'sitelibdir')
 	insinto "${sld#${EPREFIX}}"  # bug #320813
-	newins "${FILESDIR}/auto_gem.rb.ruby19" auto_gem.rb || die
+	newins "${FILESDIR}/auto_gem.rb.ruby19" auto_gem.rb
 
-	newbin bin/gem $(basename ${RUBY} | sed -e 's:ruby:gem:') || die
+	newbin bin/gem $(basename ${RUBY} | sed -e 's:ruby:gem:')
 }
 
 all_ruby_install() {
 	dodoc History.txt README.md
 
 	if use server; then
-		newinitd "${FILESDIR}/init.d-gem_server2" gem_server || die "newinitd failed"
-		newconfd "${FILESDIR}/conf.d-gem_server" gem_server || die "newconfd failed"
+		newinitd "${FILESDIR}/init.d-gem_server2" gem_server
+		newconfd "${FILESDIR}/conf.d-gem_server" gem_server
 	fi
 }
 

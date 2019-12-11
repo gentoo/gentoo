@@ -67,7 +67,7 @@ src_install() {
 
 	pushd bin > /dev/null || die
 	for bin in *36; do
-		dosym ${bin} /usr/bin/${bin%36} || die
+		dosym ${bin} /usr/bin/${bin%36}
 	done
 	popd
 

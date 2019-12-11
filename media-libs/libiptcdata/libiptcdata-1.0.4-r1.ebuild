@@ -37,13 +37,13 @@ src_configure () {
 }
 
 src_install () {
-	emake DESTDIR="${D}" install || die "emake install failed."
-	dodoc AUTHORS ChangeLog NEWS README TODO || die "dodoc failed."
+	emake DESTDIR="${D}" install
+	dodoc AUTHORS ChangeLog NEWS README TODO
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}/python
-		doins python/README || die "doins failed"
-		doins -r python/examples || die "doins 2 failed"
+		doins python/README
+		doins -r python/examples
 	fi
 
 	find "${D}" -name '*.la' -delete || die "failed to remove *.la files"

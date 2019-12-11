@@ -54,7 +54,7 @@ src_install() {
 	for w in "${wraps[@]}" ; do
 		set -- ${w}
 		printf '#!/bin/sh\nexec %s %s/%s\n' "${EPYTHON}" "${dest}" "$1" > "${T}"/$2
-		dobin "${T}"/$2 || die
+		dobin "${T}"/$2
 	done
 
 	dodoc ../doc/*.txt

@@ -42,7 +42,7 @@ src_install() {
 	mv exe/font* fonts || die "Font move failed."
 	mv exe/factor exe/factor-${PN} || die "Renaming factor failed."
 
-	dolib.so exe/*so && rm exe/*so || die
+	dolib.so exe/*so && rm exe/*so
 	dobin exe/*
 
 	dodoc "${FILESDIR}"/README.Gentoo

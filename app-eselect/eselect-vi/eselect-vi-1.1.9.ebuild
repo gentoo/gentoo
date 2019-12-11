@@ -16,5 +16,5 @@ RDEPEND=">=app-admin/eselect-1.0.6"
 
 src_install() {
 	insinto /usr/share/eselect/modules
-	doins vi.eselect || die
+	doins vi.eselect
 }

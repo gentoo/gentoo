@@ -191,7 +191,7 @@ src_install() {
 		emake DESTDIR="${D}" install
 
 		cd "${GOPATH}/deps/libco" || die "Can't cd to libco dir"
-		dolib.so libco.so || die "Can't install libco.so"
+		dolib.so libco.so
 
 		cd "${GOPATH}/deps/dqlite" || die "Can't cd to dqlite dir"
 		emake DESTDIR="${D}" install

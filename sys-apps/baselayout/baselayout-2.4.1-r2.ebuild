@@ -130,7 +130,7 @@ pkg_preinst() {
 	# Also, we cannot reference $S as binpkg will break so we do this.
 	multilib_layout
 	if use build ; then
-		emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout || die
+		emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout
 	fi
 	rm -f "${ED}"/usr/share/${PN}/Makefile
 }

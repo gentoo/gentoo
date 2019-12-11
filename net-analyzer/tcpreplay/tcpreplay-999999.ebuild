@@ -64,7 +64,7 @@ src_test() {
 		ewarn "Some tests will be disabled due to FEATURES=userpriv"
 		ewarn "To run all tests issue the following command as root:"
 		ewarn " # make -C ${S}/test"
-		emake -j1 -C test tcpprep || die "self test failed - see ${S}/test/test.log"
+		emake -j1 -C test tcpprep
 	else
 		emake -j1 test || {
 			ewarn "Note that some tests require eth0 iface to be up." ;

@@ -44,7 +44,7 @@ multilib_src_install() {
 		libdir="${ED}usr/$(get_libdir)" \
 		install \
 		install-compat \
-		-j1 || die
+		-j1
 
 	# Stop libelf from stamping on the system nlist.h
 	use elibc_FreeBSD && rm "${ED}"/usr/include/nlist.h

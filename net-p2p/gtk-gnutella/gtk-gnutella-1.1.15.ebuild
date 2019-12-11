@@ -80,7 +80,7 @@ src_compile() {
 
 src_install() {
 	dodir /usr/bin
-	emake INSTALL_PREFIX="${D}" install || die "Install failed"
+	emake INSTALL_PREFIX="${D}" install
 	dodoc AUTHORS ChangeLog README TODO
 
 	# Touch the symbols file into the future to avoid warnings from

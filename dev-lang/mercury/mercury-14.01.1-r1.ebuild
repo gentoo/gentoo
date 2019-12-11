@@ -88,8 +88,7 @@ src_compile() {
 	# Build Mercury using bootstrap grade
 	emake \
 		PARALLEL="'${MAKEOPTS}'" \
-		TEXI2DVI="" PDFTEX="" \
-		|| die "emake failed"
+		TEXI2DVI="" PDFTEX=""
 
 	# We can now patch .m Mercury compiler files since we
 	# have just built mercury_compiler.
@@ -109,7 +108,7 @@ src_compile() {
 		PARALLEL="'${MAKEOPTS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
 		TEXI2DVI="" PDFTEX="" \
-		compiler || die "emake compiler failed"
+		compiler
 
 	# The default Mercury grade may not be the same as the bootstrap
 	# grade. Since src_test() is run before src_install() we compile
@@ -118,7 +117,7 @@ src_compile() {
 		PARALLEL="'${MAKEOPTS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
 		TEXI2DVI="" PDFTEX="" \
-		default_grade || die "emake default_grade failed"
+		default_grade
 }
 
 src_test() {
@@ -169,7 +168,7 @@ src_install() {
 		INSTALL_INFO_DIR="${D}"/usr/share/info \
 		INSTALL_HTML_DIR="${D}"/usr/share/doc/${PF}/html \
 		INSTALL_ELISP_DIR="${D}/${SITELISP}"/${PN} \
-		install || die "emake install failed"
+		install
 
 	if use java; then
 		keepdir /usr/$(get_libdir)/mercury/modules/java
@@ -190,25 +189,25 @@ src_install() {
 		RELEASE_NOTES TODO VERSION WORK_IN_PROGRESS || die
 
 	if use erlang; then
-		dodoc README.Erlang || die
+		dodoc README.Erlang
 	fi
 
 	if use java; then
-		dodoc README.Java || die
+		dodoc README.Java
 	fi
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}/samples
-		doins samples/{*.m,README,Mmakefile} || die
+		doins samples/{*.m,README,Mmakefile}
 		doins -r samples/c_interface \
 			samples/diff \
 			samples/muz \
 			samples/rot13 \
 			samples/solutions \
-			samples/solver_types || die
+			samples/solver_types
 
 		if use java; then
-			doins -r samples/java_interface || die
+			doins -r samples/java_interface
 		fi
 
 		ecvs_clean "${D}"/usr/share/doc/${PF}/samples

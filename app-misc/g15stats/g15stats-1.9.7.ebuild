@@ -35,7 +35,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "make install failed"
+	emake DESTDIR="${D}" install
 	rm "$D"/usr/share/doc/${P}/{COPYING,NEWS}
 
 	newconfd "${FILESDIR}/${PN}-1.9.7.confd" ${PN}

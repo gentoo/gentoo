@@ -33,5 +33,5 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 	insinto /usr/share/doc/${PF}/tools
-	doins tools/* || die "doins failed"
+	doins tools/*
 }

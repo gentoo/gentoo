@@ -24,7 +24,7 @@ pkg_setup() {
 
 src_compile() {
 	pushd src/${EGO_PN} || die
-	GOPATH="${S}" emake build || die
+	GOPATH="${S}" emake build
 	popd || die
 }
 

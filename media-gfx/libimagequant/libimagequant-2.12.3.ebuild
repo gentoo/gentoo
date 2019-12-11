@@ -40,8 +40,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake shared imagequant.pc || die "make failed"
-	use static-libs && (emake static || die "make failed")
+	emake shared imagequant.pc
+	use static-libs && emake static
 }
 
 src_install() {

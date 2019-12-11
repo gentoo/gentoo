@@ -32,21 +32,20 @@ src_configure() {
 }
 
 src_install() {
-	dobin cdbdump cdbget cdbmake cdbmake-12 cdbmake-sv cdbstats cdbtest \
-		|| die "dobin failed"
+	dobin cdbdump cdbget cdbmake cdbmake-12 cdbmake-sv cdbstats cdbtest
 
 	# ok so ... first off, some automakes fail at finding
 	# cdb.a, so install that now
-	dolib *.a || die "dolib failed"
+	dolib *.a
 
 	# then do this pretty little symlinking to solve the somewhat
 	# cosmetic library issue at hand
-	dosym cdb.a /usr/$(get_libdir)/libcdb.a || die "dosym failed"
+	dosym cdb.a /usr/$(get_libdir)/libcdb.a
 
 	# uint32.h needs installation too, otherwise compiles depending
 	# on it will fail
 	insinto /usr/include/cdb
-	doins cdb*.h buffer.h alloc.h uint32.h || die "doins failed"
+	doins cdb*.h buffer.h alloc.h uint32.h
 
 	dodoc CHANGES FILES README SYSDEPS TODO VERSION
 }

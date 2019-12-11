@@ -26,6 +26,5 @@ src_prepare() {
 
 src_install() {
 	java-pkg_newjar "output/dist/applet/${PN}-ovt-stripped-${PV}.jar"
-	dodoc ChangeLog HACKING NEWS README RELEASE TODO \
-		|| die "dodoc failed"
+	dodoc ChangeLog HACKING NEWS README RELEASE TODO
 }

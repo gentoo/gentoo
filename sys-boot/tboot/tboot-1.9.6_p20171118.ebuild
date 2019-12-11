@@ -51,7 +51,7 @@ src_install() {
 	emake DISTDIR="${D}" install
 
 	dodoc "${DOCS[@]}"
-	dodoc docs/*.txt lcptools/*.{txt,pdf} || die "docs failed"
+	dodoc docs/*.txt lcptools/*.{txt,pdf}
 
 	cd "${D}"
 	mkdir -p usr/lib/tboot/ || die

@@ -32,7 +32,7 @@ pkg_setup() {
 }
 
 src_compile() {
-	CC="$(tc-getCC)" emake || die "emake failed"
+	CC="$(tc-getCC)" emake
 }
 
 src_install() {

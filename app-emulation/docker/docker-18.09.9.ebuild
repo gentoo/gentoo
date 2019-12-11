@@ -235,7 +235,7 @@ src_compile() {
 		VERSION="$(cat ../../VERSION)" \
 		GITCOMMIT="${DOCKER_GITCOMMIT}" \
 		DISABLE_WARN_OUTSIDE_CONTAINER=1 \
-		dynbinary || die
+		dynbinary
 
 	# build man pages
 	go build -o gen-manpages github.com/docker/cli/man || die

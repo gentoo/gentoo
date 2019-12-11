@@ -114,7 +114,7 @@ python_install_all() {
 		dodoc -r doc/{s3api,saio,source}
 	fi
 
-	fowners root:swift "/etc/swift" || die "fowners failed"
+	fowners root:swift "/etc/swift"
 	fperms 0750 /etc/swift
 }
 

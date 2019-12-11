@@ -703,7 +703,7 @@ multilib_src_compile() {
 multilib_src_test() {
 	if multilib_is_native_abi; then
 		cd tests || die
-		emake tests || die "make tests failed"
+		emake tests
 	fi
 }
 

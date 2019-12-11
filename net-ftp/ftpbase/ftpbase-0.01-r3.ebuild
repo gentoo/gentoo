@@ -28,7 +28,7 @@ src_install() {
 	# The ftpusers file is a list of people who are NOT allowed
 	# to use the ftp service.
 	insinto /etc
-	doins "${FILESDIR}/ftpusers" || die
+	doins "${FILESDIR}/ftpusers"
 
 	cp "${FILESDIR}/ftp-pamd-include" "${T}" || die
 	if use elibc_FreeBSD; then

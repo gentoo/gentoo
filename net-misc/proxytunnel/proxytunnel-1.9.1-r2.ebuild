@@ -39,10 +39,10 @@ src_prepare() {
 
 src_compile() {
 	use static && append-ldflags -static
-	emake CC="$(tc-getCC)" || die
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
-	emake install prefix="${EPREFIX}"/usr DESTDIR="${D}" || die
+	emake install prefix="${EPREFIX}"/usr DESTDIR="${D}"
 	einstalldocs
 }

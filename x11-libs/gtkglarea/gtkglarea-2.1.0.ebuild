@@ -41,6 +41,6 @@ src_install() {
 	if use examples; then
 		cd "${S}"/examples
 		insinto /usr/share/doc/${PF}/examples
-		doins *.c *.h *.lwo README || die "doins failed"
+		doins *.c *.h *.lwo README
 	fi
 }

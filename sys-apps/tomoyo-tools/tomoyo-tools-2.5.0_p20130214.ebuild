@@ -49,7 +49,7 @@ src_install() {
 
 	# Fix out-of-place readme and license
 	rm "${D}"/usr/$(get_libdir)/tomoyo/{COPYING.tomoyo,README.tomoyo} || die
-	dodoc README.tomoyo || die
+	dodoc README.tomoyo
 }
 
 pkg_postinst() {

@@ -57,6 +57,6 @@ src_install () {
 
 	rm -f "${ED}"/usr/share/man/man1/wvConvert.1
 	if use tools; then
-		dosym  /usr/share/man/man1/wvWare.1 /usr/share/man/man1/wvConvert.1 || die
+		dosym  /usr/share/man/man1/wvWare.1 /usr/share/man/man1/wvConvert.1
 	fi
 }

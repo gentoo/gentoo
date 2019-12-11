@@ -180,8 +180,7 @@ src_configure() {
 		--with-newgc \
 		--with-system-malloc \
 		--enable-option-checking=no \
-		--with-last-packages=/usr/lib/xemacs \
-		|| die "configuration failed"
+		--with-last-packages=/usr/lib/xemacs
 }
 
 src_compile() {
@@ -194,7 +193,7 @@ src_install() {
 		infodir="${D}"/usr/share/info \
 		libdir="${D}"/usr/$(get_libdir) \
 		datadir="${D}"/usr/share \
-		install || die
+		install
 
 	# Rename some applications installed in bin so that it is clear
 	# which application installed them and so that conflicting

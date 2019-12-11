@@ -16,7 +16,7 @@ KEYWORDS="alpha amd64 hppa ppc ppc64 ~sparc x86"
 IUSE=""
 
 each_ruby_configure() {
-	econf --with-rubydir="$(ruby_rbconfig_value 'sitelibdir')" || die
+	econf --with-rubydir="$(ruby_rbconfig_value 'sitelibdir')"
 }
 
 each_ruby_compile() {

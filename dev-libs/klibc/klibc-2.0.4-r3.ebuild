@@ -155,7 +155,7 @@ src_compile() {
 	unset KBUILD_OUTPUT # we are using a private copy
 
 	cd "${KS}"
-	emake ${defconfig} CC="${CC}" HOSTCC="${HOSTCC}" ARCH="${KLIBCASMARCH}" || die "No defconfig"
+	emake ${defconfig} CC="${CC}" HOSTCC="${HOSTCC}" ARCH="${KLIBCASMARCH}"
 	if [[ "${KLIBCARCH/arm}" != "${KLIBCARCH}" ]] && \
 	   [[ "${CHOST/eabi}" != "${CHOST}" ]]; then
 		# The delete and insert are seperate statements
@@ -169,7 +169,7 @@ src_compile() {
 		"${KS}"/.config \
 		"${S}"/defconfig
 	fi
-	emake prepare CC="${CC}" HOSTCC="${HOSTCC}" ARCH="${KLIBCASMARCH}" || die "Failed to prepare kernel sources for header usage"
+	emake prepare CC="${CC}" HOSTCC="${HOSTCC}" ARCH="${KLIBCASMARCH}"
 
 	cd "${S}"
 
@@ -196,7 +196,7 @@ src_compile() {
 		$(use custom-cflags || echo SKIP_)HOSTCFLAGS="${CFLAGS}" \
 		$(use custom-cflags || echo SKIP_)HOSTLDFLAGS="${LDFLAGS}" \
 		$(use custom-cflags || echo SKIP_)KLIBCOPTFLAGS="${CFLAGS}" \
-		${myargs} || die "Compile failed!"
+		${myargs}
 
 		#SHLIBDIR="/${libdir}" \
 
@@ -248,7 +248,7 @@ src_install() {
 		$(use custom-cflags || echo SKIP_)HOSTLDFLAGS="${LDFLAGS}" \
 		$(use custom-cflags || echo SKIP_)KLIBCOPTFLAGS="${CFLAGS}" \
 		${myargs} \
-		install || die "Install failed!"
+		install
 
 		#SHLIBDIR="/${libdir}" \
 

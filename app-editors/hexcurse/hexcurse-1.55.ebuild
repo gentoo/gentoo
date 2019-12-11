@@ -26,6 +26,6 @@ src_prepare() {
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die "Install failed"
+	emake install DESTDIR="${D}"
 	dodoc AUTHORS ChangeLog NEWS README
 }

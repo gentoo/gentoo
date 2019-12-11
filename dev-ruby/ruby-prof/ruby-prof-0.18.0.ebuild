@@ -47,7 +47,7 @@ each_ruby_configure() {
 }
 
 each_ruby_compile() {
-	emake V=1 -Cext/ruby_prof || die "build failed"
+	emake V=1 -Cext/ruby_prof
 
 	cp ext/ruby_prof/*$(get_modname) lib/ || die "copy of extension failed"
 }

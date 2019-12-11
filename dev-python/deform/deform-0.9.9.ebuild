@@ -36,5 +36,5 @@ src_install() {
 	# the docs would not actually work offline). Install the
 	# source, which is somewhat readable.
 	docinto docs
-	dodoc docs/*.rst || die
+	dodoc docs/*.rst
 }

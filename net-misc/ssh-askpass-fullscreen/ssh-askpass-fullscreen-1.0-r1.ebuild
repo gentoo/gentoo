@@ -34,5 +34,5 @@ src_install() {
 	# Automatically display the passphrase dialog - see bug #437764
 	echo "SSH_ASKPASS='${EPREFIX}/usr/bin/ssh-askpass-fullscreen'" >> "${T}/99ssh_askpass" \
 		|| die "envd file creation failed"
-	doenvd "${T}"/99ssh_askpass || die "doenvd failed"
+	doenvd "${T}"/99ssh_askpass
 }

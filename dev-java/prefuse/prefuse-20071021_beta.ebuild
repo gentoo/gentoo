@@ -41,7 +41,7 @@ src_compile() {
 src_install() {
 	java-pkg_dojar build/${PN}.jar
 
-	dodoc readme.txt || die
+	dodoc readme.txt
 	use doc && java-pkg_dojavadoc doc/api
 	use source && java-pkg_dosrc src/*
 	use examples && java-pkg_doexamples demos/*

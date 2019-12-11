@@ -52,7 +52,7 @@ src_compile() {
 	# so this isn't used, should they have gcc-apple installed, then
 	# this wouldn't hurt either.
 	type -P gcc-4.2.1 > /dev/null && export CC=gcc-4.2.1
-	emake USRLIBDIR="${EPREFIX}"/lib || die
+	emake USRLIBDIR="${EPREFIX}"/lib
 }
 
 src_install() {
@@ -60,5 +60,5 @@ src_install() {
 		USRLIBDIR="${EPREFIX}"/lib \
 		LOCLIBDIR="${EPREFIX}"/lib \
 		DSTROOT="${D}" \
-		install || die
+		install
 }

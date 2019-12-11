@@ -36,7 +36,7 @@ src_prepare() {
 src_compile() { :; }
 
 src_install() {
-	emake -j1 doc-install install install-links DESTDIR="${D}" || die
+	emake -j1 doc-install install install-links DESTDIR="${D}"
 
-	dodoc ChangeLog CHANGELOG.md README.adoc || die
+	dodoc ChangeLog CHANGELOG.md README.adoc
 }

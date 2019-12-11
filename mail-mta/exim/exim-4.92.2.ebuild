@@ -487,8 +487,7 @@ src_configure() {
 
 src_compile() {
 	emake CC="$(tc-getCC)" HOSTCC="$(tc-getBUILD_CC)" \
-		AR="$(tc-getAR) cq" RANLIB="$(tc-getRANLIB)" FULLECHO='' \
-		|| die "make failed"
+		AR="$(tc-getAR) cq" RANLIB="$(tc-getRANLIB)" FULLECHO=''
 }
 
 src_install () {

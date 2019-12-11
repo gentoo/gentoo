@@ -47,13 +47,13 @@ src_install() {
 	# xml2doc's make install is unfortunately broken
 
 	# binary
-	dobin src/xml2doc || die
+	dobin src/xml2doc
 
 	# documentation
-	dodoc BUGS README TODO || die
+	dodoc BUGS README TODO
 	docinto examples
-	dodoc examples/*.{xml,png} || die
+	dodoc examples/*.{xml,png}
 
 	# manpage
-	doman doc/xml2doc.1 || die
+	doman doc/xml2doc.1
 }

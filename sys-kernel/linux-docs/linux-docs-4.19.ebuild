@@ -22,7 +22,7 @@ RDEPEND=""
 src_compile() {
 	local ARCH=$(tc-arch-kernel)
 	unset KBUILD_OUTPUT
-	emake htmldocs || die "make htmldocs failed"
+	emake htmldocs
 }
 
 src_install() {

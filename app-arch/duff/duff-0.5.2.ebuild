@@ -14,6 +14,6 @@ DEPEND=""
 RDEPEND=""
 
 src_install() {
-	emake DESTDIR="${D}" install || die "Failed emake install"
+	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog HACKING NEWS README* TODO
 }

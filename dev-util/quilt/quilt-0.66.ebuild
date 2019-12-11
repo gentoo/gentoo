@@ -44,7 +44,7 @@ src_configure() {
 }
 
 src_install() {
-	emake BUILD_ROOT="${D}" install || die "make install failed"
+	emake BUILD_ROOT="${D}" install
 
 	rm -rf "${ED}"usr/share/doc/${P}
 	dodoc AUTHORS TODO "doc/README" "doc/README.MAIL" "doc/quilt.pdf"

@@ -74,8 +74,7 @@ src_configure() {
 		#--without-qt \
 		econf \
 			${commonconf} \
-			${commonconf2} \
-			|| die "econf failed"
+			${commonconf2}
 	done
 }
 

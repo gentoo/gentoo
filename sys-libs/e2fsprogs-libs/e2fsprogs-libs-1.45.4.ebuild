@@ -58,23 +58,23 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	emake -C lib/et V=1 || die "Failed to build libcom"
+	emake -C lib/et V=1
 
-	emake -C lib/ss V=1 || die "Failed to build libss"
+	emake -C lib/ss V=1
 }
 
 multilib_src_test() {
 	if multilib_is_native_abi; then
-		emake -C lib/et V=1 check || die "Failed to test libcom"
+		emake -C lib/et V=1 check
 
-		emake -C lib/ss V=1 check || die "Failed to test libss"
+		emake -C lib/ss V=1 check
 	fi
 }
 
 multilib_src_install() {
-	emake -C lib/et V=1 DESTDIR="${D}" install || die "Failed to install libcom"
+	emake -C lib/et V=1 DESTDIR="${D}" install
 
-	emake -C lib/ss V=1 DESTDIR="${D}" install || die "Failed to install libss"
+	emake -C lib/ss V=1 DESTDIR="${D}" install
 
 	# We call "gen_usr_ldscript -a" to ensure libs are present in /lib to support
 	# split /usr (e.g. "e2fsck" from sys-fs/e2fsprogs is installed in /sbin and

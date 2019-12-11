@@ -25,7 +25,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -C ${PN} CC="$(tc-getCC)" || die
+	emake -C ${PN} CC="$(tc-getCC)"
 }
 
 src_install() {

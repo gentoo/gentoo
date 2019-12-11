@@ -30,10 +30,10 @@ src_prepare() {
 }
 
 src_compile() {
-	CC=$(tc-getCC) emake libstemmer.so stemwords || die "Make failed!"
+	CC=$(tc-getCC) emake libstemmer.so stemwords
 
 	if use static-libs; then
-		CC=$(tc-getCC) AR=$(tc-getAR) emake libstemmer.a || die "Make failed!"
+		CC=$(tc-getCC) AR=$(tc-getAR) emake libstemmer.a
 	fi
 }
 

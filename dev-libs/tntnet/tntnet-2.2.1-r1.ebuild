@@ -66,11 +66,11 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	dodoc AUTHORS ChangeLog README TODO
 	if use doc; then
-		dodoc doc/*.pdf || die
+		dodoc doc/*.pdf
 	fi
 
 	if use examples; then
@@ -80,7 +80,7 @@ src_install() {
 		cd "${S}"
 
 		insinto /usr/share/doc/${PF}/examples
-		doins -r sdk/demos/* || die
+		doins -r sdk/demos/*
 	fi
 
 	if use server; then

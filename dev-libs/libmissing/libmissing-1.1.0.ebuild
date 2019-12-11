@@ -135,7 +135,7 @@ src_configure() {
 
 	# gnulib cannot be used a shared library, doing so results in stack
 	# protector checks failing for reasons yet unknown to me
-	econf --disable-shared --enable-static || die
+	econf --disable-shared --enable-static
 }
 
 src_compile() {

@@ -88,15 +88,15 @@ src_install() {
 	prune_libtool_files --all
 
 	insinto /etc/cgroup
-	doins samples/*.conf || die
+	doins samples/*.conf
 
 	if use tools; then
-		newconfd "${FILESDIR}"/cgconfig.confd-r1 cgconfig || die
-		newinitd "${FILESDIR}"/cgconfig.initd-r1 cgconfig || die
+		newconfd "${FILESDIR}"/cgconfig.confd-r1 cgconfig
+		newinitd "${FILESDIR}"/cgconfig.initd-r1 cgconfig
 	fi
 
 	if use daemon; then
-		newconfd "${FILESDIR}"/cgred.confd-r2 cgred || die
-		newinitd "${FILESDIR}"/cgred.initd-r1 cgred || die
+		newconfd "${FILESDIR}"/cgred.confd-r2 cgred
+		newinitd "${FILESDIR}"/cgred.initd-r1 cgred
 	fi
 }

@@ -48,7 +48,7 @@ src_prepare() {
 }
 
 src_install() {
-	# not working: emake install INSTALL_ROOT="${D}" || die
+	# not working: emake install INSTALL_ROOT="${D}"
 	dobin zhu3d
 
 	dodoc readme.txt src/changelog.txt

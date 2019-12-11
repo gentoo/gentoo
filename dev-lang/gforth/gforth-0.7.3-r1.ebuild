@@ -31,7 +31,7 @@ src_configure() {
 
 src_compile() {
 	# Parallel make breaks here
-	emake -j1 || die "emake failed"
+	emake -j1
 }
 
 src_install() {

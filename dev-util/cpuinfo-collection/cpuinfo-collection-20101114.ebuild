@@ -17,5 +17,5 @@ S=${WORKDIR}/${MY_P}
 
 src_install() {
 	insinto /usr/share/cpuinfo
-	doins -r * || die
+	doins -r *
 }

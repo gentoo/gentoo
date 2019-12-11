@@ -34,5 +34,5 @@ all_ruby_install() {
 	all_fakegem_install
 
 	docinto examples
-	dodoc examples/* || die
+	dodoc examples/*
 }

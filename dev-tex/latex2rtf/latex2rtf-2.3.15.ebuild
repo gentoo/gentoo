@@ -33,7 +33,7 @@ src_compile() {
 	export VARTEXFONTS="${T}/fonts"
 	tc-export CC
 	# Set DESTDIR here too so that compiled-in paths are correct.
-	emake DESTDIR="${EPREFIX}/usr" || die "emake failed"
+	emake DESTDIR="${EPREFIX}/usr"
 
 	# Needed for tests
 	chmod +x test/bracecheck || die

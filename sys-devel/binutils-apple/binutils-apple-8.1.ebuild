@@ -182,8 +182,8 @@ compile_ld64() {
 	cd "${S}"/${LD64}/src
 	emake \
 		LTO=${ENABLE_LTO} \
-		TAPI=$(use tapi && echo 1 || echo 0) \
-		|| die "emake failed for ld64"
+		TAPI=$(use tapi && echo 1 || echo 0)
+
 	use test && emake build_test
 }
 
@@ -205,16 +205,15 @@ compile_cctools() {
 		RC_ProjectSourceVersion=${CCTOOLS_VERSION} \
 		RC_CFLAGS="${CFLAGS}" \
 		OFLAG="${CCTOOLS_OFLAG}" \
-		DSYMUTIL=": disabled: dsymutil" \
-		|| die "emake failed for the cctools"
+		DSYMUTIL=": disabled: dsymutil"
+
 	cd "${S}"/${CCTOOLS}/as
 	emake \
 		BUILD_OBSOLETE_ARCH= \
 		RC_ProjectSourceVersion=${CCTOOLS_VERSION} \
 		RC_CFLAGS="-DASLIBEXECDIR=\"\\\"${EPREFIX}${LIBPATH}/\\\"\" -DCLANGDIR=\"\\\"${EPREFIX}/usr/bin/\\\"\" ${CFLAGS}" \
 		OFLAG="${CCTOOLS_OFLAG}" \
-		DSYMUTIL=": disabled: dsymutil" \
-		|| die "emake failed for as"
+		DSYMUTIL=": disabled: dsymutil"
 }
 
 src_compile() {

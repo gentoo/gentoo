@@ -39,13 +39,13 @@ python_prepare_all() {
 
 python_compile_all() {
 	if use doc; then
-		emake -C docs html || die 'failed to compile the documentation.'
+		emake -C docs html
 	fi
 }
 
 python_install_all() {
 	local HTML_DOCS=( ${PN}.html )
-	doman ${PN}.1 || die 'doman failed.'
+	doman ${PN}.1
 	if use doc; then
 		mv docs/_build/{html,sphinx} || die 'mv failed.'
 		HTML_DOCS+=( docs/_build/sphinx )

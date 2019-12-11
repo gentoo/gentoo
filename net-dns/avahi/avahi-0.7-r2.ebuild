@@ -190,7 +190,7 @@ multilib_src_install() {
 		docinto html
 		dodoc -r doxygen/html/.
 		insinto /usr/share/devhelp/books/avahi
-		doins avahi.devhelp || die
+		doins avahi.devhelp
 	fi
 
 	# The build system creates an empty "/run" directory, so we clean it up here

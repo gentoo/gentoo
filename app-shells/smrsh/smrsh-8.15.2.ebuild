@@ -38,11 +38,11 @@ src_compile() {
 }
 
 src_install() {
-	dosbin "${S}/obj.$(uname -s).$(uname -r).$(arch)/${PN}/${PN}" || die
+	dosbin "${S}/obj.$(uname -s).$(uname -r).$(arch)/${PN}/${PN}"
 
 	cd "${S}/${PN}" || die
-	doman "${PN}.8" || die
-	dodoc README || die
+	doman "${PN}.8"
+	dodoc README
 
 	keepdir "/var/lib/${PN}"
 }

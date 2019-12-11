@@ -32,7 +32,7 @@ src_prepare() {
 
 src_install() {
 	default
-	fperms g+w "${GAMES_STATEDIR}"/${PN}.hi || die
+	fperms g+w "${GAMES_STATEDIR}"/${PN}.hi
 	make_desktop_entry ${PN} Tecnoballz
 	prepgamesdirs
 }

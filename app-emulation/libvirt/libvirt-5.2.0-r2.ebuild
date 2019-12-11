@@ -327,7 +327,7 @@ src_test() {
 		tests/Makefile
 
 	export VIR_TEST_DEBUG=1
-	HOME="${T}" emake check || die "tests failed"
+	HOME="${T}" emake check
 }
 
 src_install() {
@@ -352,13 +352,13 @@ src_install() {
 
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
-	newinitd "${S}/libvirtd.init" libvirtd || die
-	newinitd "${FILESDIR}/libvirt-guests.init-r3" libvirt-guests || die
-	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
-	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd || die
+	newinitd "${S}/libvirtd.init" libvirtd
+	newinitd "${FILESDIR}/libvirt-guests.init-r3" libvirt-guests
+	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd
+	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd
 
-	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
-	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die
+	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd
+	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests
 
 	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true

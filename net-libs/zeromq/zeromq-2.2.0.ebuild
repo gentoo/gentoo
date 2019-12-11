@@ -40,9 +40,9 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc NEWS README AUTHORS ChangeLog || die "dodoc failed"
-	doman doc/*.[1-9] || die "doman failed"
+	emake DESTDIR="${D}" install
+	dodoc NEWS README AUTHORS ChangeLog
+	doman doc/*.[1-9]
 
 	# remove useless .la files
 	find "${D}" -name '*.la' -delete

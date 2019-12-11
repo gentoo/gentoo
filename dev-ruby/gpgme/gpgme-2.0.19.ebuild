@@ -44,7 +44,7 @@ each_ruby_configure() {
 }
 
 each_ruby_compile() {
-	emake V=1 -C ext archflag="${LDFLAGS}" || die "emake failed"
+	emake V=1 -C ext archflag="${LDFLAGS}"
 	cp -f "${S}/ext/gpgme_n.so" "${S}/lib" || die
 }
 

@@ -27,7 +27,7 @@ src_install() {
 	local dir="/opt/${PN}"
 
 	insinto "${dir}"
-	doins * || die "doins failed"
+	doins *
 	fperms a+x "${dir}/meka.exe"
 	make_wrapper mekanix ./meka.exe "${dir}"
 }

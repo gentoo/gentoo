@@ -76,8 +76,7 @@ src_configure() {
 		${myconf} \
 		$(use_enable geoip) \
 		$(use_enable bzip2 bz2) \
-		--with-geodb=${GEODB_DIR} \
-		|| die "econf failed"
+		--with-geodb=${GEODB_DIR}
 }
 
 src_install() {

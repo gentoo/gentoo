@@ -22,6 +22,6 @@ src_install() {
 
 	if use examples; then
 		insinto /usr/share/${PN}
-		doins -r pdbs exampleScripts || die
+		doins -r pdbs exampleScripts
 	fi
 }

@@ -25,6 +25,6 @@ RDEPEND="
 src_install() {
 	distutils-r1_src_install
 
-	dodoc ChangeLog || die
-	doman ${PN}.1 || die
+	dodoc ChangeLog
+	doman ${PN}.1
 }

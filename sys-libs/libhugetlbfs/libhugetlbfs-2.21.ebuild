@@ -73,7 +73,7 @@ src_test_alloc_one() {
 src_test() {
 	[[ $UID -eq 0 ]] || die "Need FEATURES=-userpriv to run this testsuite"
 	einfo "Building testsuite"
-	emake -j1 tests || die "Failed to build tests"
+	emake -j1 tests
 
 	hugeadm='obj/hugeadm'
 	allocated=''

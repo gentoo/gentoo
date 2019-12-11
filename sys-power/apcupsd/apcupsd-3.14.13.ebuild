@@ -74,7 +74,7 @@ src_compile() {
 	# the text files in the distribution, but I wouldn't count on them
 	# doing that anytime soon.
 	MANPAGER=$(type -p cat) \
-		emake || die "emake failed"
+		emake
 }
 
 src_install() {

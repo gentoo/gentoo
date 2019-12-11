@@ -57,17 +57,17 @@ src_compile() {
 		# USBLIB_TYPE=HIDAPI
 		# USBLIB_TYPE=HIDAPI_HIDRAW
 		# USBLIB_TYPE=HIDDATA
-		emake OS=linux USBLIB_TYPE=HIDAPI blink1-tool || die "emake blink1-tool failed"
+		emake OS=linux USBLIB_TYPE=HIDAPI blink1-tool
 		popd &>/dev/null
 	fi
 	if use mini-tool; then
 		pushd commandline/blink1-mini-tool &>/dev/null
-		emake OS=linux blink1-mini-tool || die "emake blink1-mini-tool failed"
+		emake OS=linux blink1-mini-tool
 		popd &>/dev/null
 	fi
 	if use server; then
 		pushd commandline &>/dev/null
-		emake OS=linux blink1-tiny-server || die "emake blink1-tiny-server failed"
+		emake OS=linux blink1-tiny-server
 		popd &>/dev/null
 	fi
 }

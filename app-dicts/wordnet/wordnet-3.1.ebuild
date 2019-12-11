@@ -76,7 +76,7 @@ src_configure() {
 }
 
 src_compile(){
-	emake -e || die "emake failed"
+	emake -e
 }
 
 src_install(){

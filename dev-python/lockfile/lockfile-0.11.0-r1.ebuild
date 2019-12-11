@@ -34,7 +34,7 @@ python_prepare_all() {
 python_compile_all() {
 	if use doc; then
 		einfo "Generation of documentation"
-		emake -C doc/source html || die "Generation of documentation failed"
+		emake -C doc/source html
 	fi
 }
 

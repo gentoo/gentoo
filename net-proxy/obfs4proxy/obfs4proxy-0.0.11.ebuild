@@ -43,8 +43,8 @@ src_compile() {
 
 src_install() {
 	default
-	dobin obfs4proxy || die "install failed"
+	dobin obfs4proxy
 	cd src/${EGO_SRC}
-	doman doc/obfs4proxy.1 || die "install failed"
-	dodoc README.md ChangeLog doc/obfs4-spec.txt || die "install failed"
+	doman doc/obfs4proxy.1
+	dodoc README.md ChangeLog doc/obfs4-spec.txt
 }

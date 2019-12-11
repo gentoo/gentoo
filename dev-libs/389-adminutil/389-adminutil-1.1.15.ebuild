@@ -37,10 +37,10 @@ src_configure() {
 		--with-fhs \
 		--with-openldap \
 		--disable-rpath \
-		--disable-tests ||die "econf failed"
+		--disable-tests
 }
 
 src_install () {
-	emake DESTDIR="${D}" install || die "emake failed"
+	emake DESTDIR="${D}" install
 	dodoc README  NEWS
 }

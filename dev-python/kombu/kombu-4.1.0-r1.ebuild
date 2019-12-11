@@ -61,7 +61,7 @@ python_prepare_all() {
 python_compile_all() {
 	# Doc build misses and skips only content re librabbitmq which is not in portage
 	if use doc; then
-		emake -C docs html || die "kombu docs failed installation"
+		emake -C docs html
 	fi
 }
 

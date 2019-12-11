@@ -46,9 +46,8 @@ src_install() {
 	local dir=/opt/${PN}
 
 	insinto "${dir}"
-	doins -r * || die "doins failed"
-	fperms +x "${dir}"/{vendetta,install/{media.rlb,update.rlb,vendetta}} \
-		|| die "fperms failed"
+	doins -r *
+	fperms +x "${dir}"/{vendetta,install/{media.rlb,update.rlb,vendetta}}
 
 	sed \
 		-e "s:DATADIR:${dir}:" \

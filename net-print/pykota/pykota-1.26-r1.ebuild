@@ -57,7 +57,7 @@ python_install_all() {
 	doins -r initscripts/*
 
 	# Fixes permissions for bug 155865
-	fperms 0700 /usr/share/pykota/cupspykota || die
+	fperms 0700 /usr/share/pykota/cupspykota
 
 	rm "${ED%/}"/usr/share/doc/${PN}/{LICENSE,COPYING} || die
 	mv "${ED%/}"/usr/share/doc/{${PN},${PF}} || die

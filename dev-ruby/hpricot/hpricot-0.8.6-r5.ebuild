@@ -56,6 +56,6 @@ each_ruby_compile() {
 	local modname=$(get_modname)
 
 	${RUBY} -S rake ragel || die
-	emake V=1 -Cext/hpricot_scan CFLAGS="${CFLAGS} -fPIC" archflag="${LDFLAGS}" || die "make hpricot_scan failed"
+	emake V=1 -Cext/hpricot_scan CFLAGS="${CFLAGS} -fPIC" archflag="${LDFLAGS}"
 	cp ext/hpricot_scan/hpricot_scan${modname} lib/ || die
 }

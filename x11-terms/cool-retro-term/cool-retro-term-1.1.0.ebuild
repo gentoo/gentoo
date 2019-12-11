@@ -42,7 +42,7 @@ src_configure() {
 
 src_install() {
 	# default attempts to install directly to /usr
-	emake INSTALL_ROOT="${D}" install || die
+	emake INSTALL_ROOT="${D}" install
 	doman packaging/debian/cool-retro-term.1
 }
 

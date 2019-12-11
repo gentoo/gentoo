@@ -46,7 +46,7 @@ src_compile() {
 src_install() {
 	dodir /usr/share/icons
 	insinto /usr/share/icons
-	doins -r "${WORKDIR}/${PN}" || die "Installing icons failed"
+	doins -r "${WORKDIR}/${PN}"
 	einstalldocs
 }
 

@@ -74,11 +74,11 @@ src_install() {
 
 	if use doc; then
 		pushd doc >/dev/null || die
-		doins -r . || die "install documentation failed"
+		doins -r .
 		popd >/dev/null || die
 	fi
 	if use examples; then
-		doins -r samples || die "install examples failed"
+		doins -r samples
 	fi
 }
 

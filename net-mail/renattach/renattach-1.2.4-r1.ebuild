@@ -13,9 +13,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 src_install () {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	mv "${D}"/etc/renattach.conf.ex "${D}"/etc/renattach.conf || die
 
-	dodoc AUTHORS ChangeLog README NEWS || die
+	dodoc AUTHORS ChangeLog README NEWS
 }

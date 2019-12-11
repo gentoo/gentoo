@@ -31,7 +31,7 @@ src_prepare() {
 }
 
 src_install() {
-	dobin cvsps || die
+	dobin cvsps
 	doman cvsps.1
 	dodoc README CHANGELOG
 }

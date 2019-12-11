@@ -30,7 +30,7 @@ python_configure() {
 
 python_compile_all() {
 	if use doc; then
-		emake -C doc PYTHON="${PYTHON}" PYLIZE="../pylize" || die
+		emake -C doc PYTHON="${PYTHON}" PYLIZE="../pylize"
 	fi
 }
 

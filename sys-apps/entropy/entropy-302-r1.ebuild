@@ -50,7 +50,7 @@ pkg_setup() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" LIBDIR="usr/lib" install || die "make install failed"
+	emake DESTDIR="${D}" LIBDIR="usr/lib" install
 
 	python_optimize "${D}/usr/lib/entropy/lib/entropy"
 }

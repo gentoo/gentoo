@@ -33,18 +33,18 @@ src_configure() { :; }
 
 src_compile() {
 	emake PREFIX="${EPREFIX}" OPT="${CFLAGS}" CC="$(tc-getCC)" LD="$(tc-getCC)" \
-		LDFLAGS="${LDFLAGS}" || die "emake failed"
+		LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
-	emake -j1 PREFIX="${EPREFIX}" DESTDIR="${D}" global_install || die
+	emake -j1 PREFIX="${EPREFIX}" DESTDIR="${D}" global_install
 
 	use kde || rm -f "${ED}"/usr/bin/kantiword
 
 	insinto /usr/share/${PN}/examples
-	doins Docs/testdoc.doc Docs/antiword.php || die
+	doins Docs/testdoc.doc Docs/antiword.php
 
 	cd Docs
-	doman antiword.1 || die
-	dodoc ChangeLog Exmh Emacs FAQ History Netscape QandA ReadMe Mozilla Mutt || die
+	doman antiword.1
+	dodoc ChangeLog Exmh Emacs FAQ History Netscape QandA ReadMe Mozilla Mutt
 }

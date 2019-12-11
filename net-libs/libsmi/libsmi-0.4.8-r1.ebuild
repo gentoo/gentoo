@@ -26,7 +26,7 @@ src_test() {
 	# sming test is known to fail and some other fail if LC_ALL!=C:
 	# https://mail.ibr.cs.tu-bs.de/pipermail/libsmi/2008-March/001014.html
 	sed -i '/^[[:space:]]*smidump-sming.test \\$/d' test/Makefile
-	LC_ALL=C emake -j1 check || die
+	LC_ALL=C emake -j1 check
 }
 
 src_install () {

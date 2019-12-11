@@ -25,7 +25,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf  --with-pic || die "cannot configure"
+	econf --with-pic
 }
 
 src_install () {

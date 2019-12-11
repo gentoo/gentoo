@@ -28,12 +28,11 @@ src_configure() {
 	econf \
 		--sysconfdir=/etc/vmpsd \
 		--enable-snmp \
-		LIBS="-lssl" \
-		|| die "econf failed"
+		LIBS="-lssl"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 	dodoc README INSTALL AUTHORS doc/*txt
 	newdoc external/README README.external
 	newdoc tools/README README.tools

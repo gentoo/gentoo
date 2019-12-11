@@ -95,7 +95,7 @@ catkin_src_install_internal() {
 	if [ ! -f "${T}/.catkin_python_symlinks_generated" ]; then
 		dodir /usr/bin
 		for i in "${D}/${PYTHON_SCRIPTDIR}"/* ; do
-			dosym ../lib/python-exec/python-exec2 "/usr/bin/${i##*/}" || die
+			dosym ../lib/python-exec/python-exec2 "/usr/bin/${i##*/}"
 		done
 		touch "${T}/.catkin_python_symlinks_generated"
 	fi

@@ -36,7 +36,7 @@ each_ruby_configure() {
 }
 
 each_ruby_compile() {
-	emake V=1 -Cext || die
+	emake V=1 -Cext
 	cp ext/*$(get_modname) lib/ || die
 }
 

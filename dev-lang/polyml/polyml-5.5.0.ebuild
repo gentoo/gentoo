@@ -47,5 +47,5 @@ src_configure() {
 }
 
 src_test() {
-	emake tests || die "tests failed"
+	emake tests
 }

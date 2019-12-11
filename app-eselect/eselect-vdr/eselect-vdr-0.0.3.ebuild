@@ -16,7 +16,7 @@ RDEPEND=">=app-admin/eselect-1.2.3"
 
 src_install() {
 	insinto /usr/share/eselect/modules
-	doins vdr-plugin.eselect || die "Could not install eselect module"
+	doins vdr-plugin.eselect
 
 	dosym eselect /usr/bin/vdr-plugin-config
 }

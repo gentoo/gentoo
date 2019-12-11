@@ -33,11 +33,10 @@ src_compile() {
 		&& emake \
 			CC="$(tc-getCC)" \
 			OPT_CFLAGS="${CFLAGS} \$(INCLUDE)" \
-			CFLAGS="${CFLAGS} \$(INCLUDE)" \
-			|| die
+			CFLAGS="${CFLAGS} \$(INCLUDE)"
 }
 
 src_install() {
-	dobin ${PN} || die
-	dodoc README || die
+	dobin ${PN}
+	dodoc README
 }

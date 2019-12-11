@@ -91,11 +91,11 @@ src_configure() {
 }
 
 src_install () {
-	emake DESTDIR="${D}" install || die "make install failed"
-	dodoc README AUTHORS NEWS VERSION || die
+	emake DESTDIR="${D}" install
+	dodoc README AUTHORS NEWS VERSION
 }
 
 src_test() {
 	# Doesn't work with the default src_test as the dry run (-n) fails.
-	emake -j1 check || die "emake check failed"
+	emake -j1 check
 }

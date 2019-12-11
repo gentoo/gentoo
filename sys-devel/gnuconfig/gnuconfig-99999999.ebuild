@@ -57,7 +57,7 @@ src_test() {
 
 src_install() {
 	insinto /usr/share/${PN}
-	doins config.{sub,guess} || die
+	doins config.{sub,guess}
 	fperms +x /usr/share/${PN}/config.{sub,guess}
 	dodoc ChangeLog
 }

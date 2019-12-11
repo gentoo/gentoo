@@ -158,7 +158,7 @@ multilib_src_compile() {
 
 multilib_src_test() {
 	ln -s "${S}"/xmlconf || die
-	emake check || die "tests failed"
+	emake check
 	multilib_is_native_abi && use python && python_foreach_impl libxml2_py_emake test
 }
 

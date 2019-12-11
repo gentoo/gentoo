@@ -57,8 +57,8 @@ src_install() {
 	java-pkg_newjar target/${PN}-api-${PV}.jar ${PN}-api.jar
 	java-pkg_newjar target/${PN}-adapters-${PV}.jar ${PN}-adapters.jar
 
-	dodoc RELEASE-NOTES.txt || die
-	dohtml PROPOSAL.html || die
+	dodoc RELEASE-NOTES.txt
+	dohtml PROPOSAL.html
 	use doc && java-pkg_dojavadoc target/docs/
 	use source && java-pkg_dosrc src/main/java/org
 }

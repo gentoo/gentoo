@@ -144,7 +144,7 @@ src_install() {
 
 	dodir /etc/X11/Sessions
 	echo "/usr/bin/fvwm" > "${D}"/etc/X11/Sessions/${PN} || die
-	fperms a+x /etc/X11/Sessions/${PN} || die
+	fperms a+x /etc/X11/Sessions/${PN}
 
 	dodoc docs/{COMMANDS,DEVELOPERS.md}
 

@@ -31,5 +31,5 @@ src_install() {
 	# silly upstream!
 	mkdir -p "${D}/usr/bin"
 	cp "${S}/bin/lmctfy/cli/lmctfy" "${D}/usr/bin/" || die "Failed to copy cli binary"
-	dolib.a "${S}/bin/liblmctfy.a" || die "Failed to copy library"
+	dolib.a "${S}/bin/liblmctfy.a"
 }

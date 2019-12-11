@@ -92,18 +92,18 @@ src_compile() { :; }
 
 src_install() {
 	exeinto /opt/rar
-	doexe rar unrar || die
+	doexe rar unrar
 
 	dodir /opt/bin
-	dosym ../rar/rar /opt/bin/rar || die
-	dosym ../rar/unrar /opt/bin/unrar || die
+	dosym ../rar/rar /opt/bin/rar
+	dosym ../rar/unrar /opt/bin/unrar
 
 	insinto /opt/rar
 	if use all_sfx ; then
-		doins "${WORKDIR}"/sfx/*.{sfx,SFX} || die
+		doins "${WORKDIR}"/sfx/*.{sfx,SFX}
 	else
-		doins default.sfx || die
+		doins default.sfx
 	fi
-	doins rarfiles.lst || die
+	doins rarfiles.lst
 	dodoc *.txt
 }

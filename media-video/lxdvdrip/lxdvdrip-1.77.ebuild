@@ -27,14 +27,14 @@ src_prepare() {
 }
 
 src_compile() {
-	CC="$(tc-getCC)" emake || die "emake failed"
+	CC="$(tc-getCC)" emake
 	cd "${S}/vamps"
-	emake CC="$(tc-getCC)" || die "emake lxdvdip vamps failed"
+	emake CC="$(tc-getCC)"
 }
 
 src_install () {
-	dobin lxdvdrip || die
-	dobin lxac3scan || die
+	dobin lxdvdrip
+	dobin lxac3scan
 	dodoc doc-pak/Changelog* doc-pak/Credits doc-pak/Debugging.*
 	dodoc doc-pak/lxdvdrip.conf* doc-pak/README*
 	doman lxdvdrip.1
@@ -46,5 +46,5 @@ src_install () {
 	newins doc-pak/lxdvdrip.conf.EN lxdvdrip.conf
 
 	cd "${S}/vamps"
-	emake PREFIX="${D}/usr" install || die "make install failed for vamps!"
+	emake PREFIX="${D}/usr" install
 }

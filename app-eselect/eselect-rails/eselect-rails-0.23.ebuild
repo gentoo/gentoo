@@ -25,5 +25,5 @@ src_prepare() {
 
 src_install() {
 	insinto /usr/share/eselect/modules
-	doins *.eselect || die "doins failed"
+	doins *.eselect
 }

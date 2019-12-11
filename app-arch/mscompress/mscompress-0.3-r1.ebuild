@@ -27,7 +27,7 @@ src_configure() {
 }
 
 src_install() {
-	dobin mscompress msexpand || die
+	dobin mscompress msexpand
 	doman mscompress.1 msexpand.1
 	dodoc README ChangeLog
 }

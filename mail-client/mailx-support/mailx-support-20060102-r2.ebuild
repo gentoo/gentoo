@@ -30,7 +30,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" BINDNOW_FLAGS="" || die "emake failed"
+	emake CC="$(tc-getCC)" BINDNOW_FLAGS=""
 }
 
 src_install() {
