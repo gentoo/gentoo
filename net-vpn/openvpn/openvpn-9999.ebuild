@@ -17,6 +17,7 @@ KEYWORDS=""
 IUSE="down-root examples inotify iproute2 libressl lz4 +lzo mbedtls pam"
 IUSE+=" pkcs11 +plugins selinux +ssl static systemd test userland_BSD"
 
+RESTRICT="!test? ( test )"
 REQUIRED_USE="static? ( !inotify !plugins !pkcs11 )
 	lzo? ( !lz4 )
 	!plugins? ( !pam !down-root )
