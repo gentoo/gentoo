@@ -56,6 +56,7 @@ inherit ${SCM} python-r1 cmake-utils flag-o-matic
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 IUSE="test"
+RESTRICT="!test? ( test )"
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	dev-util/catkin[${PYTHON_USEDEP}]
