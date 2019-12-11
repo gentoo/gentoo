@@ -1,11 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-AT_M4DIR="auxdir"
-AUTOTOOLS_AUTORECONF=1
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="general-purpose stream-handling tool like UNIX dd"
 HOMEPAGE="http://www.cons.org/cracauer/cstream.html"
@@ -16,8 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 src_prepare() {
-	# this file does not regenerated automatically by autotools-utils eclass
+	default
 	rm auxdir/missing || die 'failed to remove auxdir/missing'
-
-	autotools-utils_src_prepare
+	eautoreconf
 }

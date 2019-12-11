@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jchelmertt3@gmail.com</email>
+		<name>John Helmert III</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">GeorgeFilipkin/pulsemixer</remote-id>
+		<changelog>https://github.com/GeorgeFilipkin/pulsemixer/releases</changelog>
+	</upstream>
+</pkgmetadata>

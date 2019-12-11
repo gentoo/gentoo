@@ -1,0 +1,36 @@
+From 81346196bb262156fd436c78323d161af61dd6c1 Mon Sep 17 00:00:00 2001
+From: Dmitry Torokhov <dtor@chromium.org>
+Date: Tue, 6 Aug 2019 09:22:25 -0700
+Subject: [PATCH] Make sure makeguids helper is compiled for the host's arch
+
+Currently makeguids is compiled with the same flags/settings as the rest
+of the package, which does not work in case of cross-compiles when arch
+of the build host and the target host are different. Let's force
+compiling for the native host arch to avoid this issue.
+
+Note that this is not a full cross-compile solution as this does not
+account for potential differences in host/target compilers (versions,
+clang vs gcc, etc), but it removes one of the issue with package build
+aborting due to invalid instruction on the host.
+
+Signed-off-by: Dmitry Torokhov <dtor@chromium.org>
+---
+ src/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index addfaa0..3729d2b 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -52,7 +52,7 @@ include/efivar/efivar-guids.h : makeguids guids.txt
+ 	./makeguids guids.txt guids.bin names.bin \
+ 		guid-symbols.c include/efivar/efivar-guids.h
+ 
+-makeguids : CPPFLAGS+=-DEFIVAR_BUILD_ENVIRONMENT
++makeguids : CPPFLAGS+=-DEFIVAR_BUILD_ENVIRONMENT -march=native
+ makeguids : LIBS=dl
+ makeguids : $(MAKEGUIDS_SOURCES)
+ makeguids : CCLD=$(CCLD_FOR_BUILD)
+-- 
+2.23.0.866.gb869b98d4c-goog
+

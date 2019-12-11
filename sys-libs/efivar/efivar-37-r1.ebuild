@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,13 +19,18 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-makeguids_fix_host_compile.patch"
+)
+
 src_prepare() {
 	default
-	sed -i -e s/-Werror// gcc.specs || die
+	sed -i -e 's/-Werror //' gcc.specs || die
 }
 
 src_configure() {
 	tc-export CC
+	export CC_FOR_BUILD=$(tc-getBUILD_CC)
 	tc-ld-disable-gold
 	export libdir="/usr/$(get_libdir)"
 	unset LIBS # Bug 562004
