@@ -76,7 +76,7 @@ each_ruby_compile() {
 	emake -Cext/${PN} \
 		V=1 \
 		CFLAGS="${CFLAGS} -fPIC" \
-		archflag="${LDFLAGS}" || die "make extension failed"
+		archflag="${LDFLAGS}"
 	cp -l ext/${PN}/${PN}$(get_modname) lib/${PN}/ || die
 }
 

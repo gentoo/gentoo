@@ -193,11 +193,11 @@ src_configure() {
 		myconf+=( "--with-homespool=Maildir" )
 	fi
 
-	econf "${myconf[@]}" || die "configure failed"
+	econf "${myconf[@]}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
+	emake DESTDIR="${D}" install
 	if use mbox; then
 		insinto /etc/mutt
 		newins "${FILESDIR}"/Muttrc.mbox Muttrc

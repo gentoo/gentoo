@@ -55,7 +55,7 @@ python_install_all() {
 		pushd docs/_build/html > /dev/null
 		docinto html
 		insinto /usr/share/doc/${PF}/html
-		doins -r [a-z]* _static || die "Installation of documentation failed"
+		doins -r [a-z]* _static
 		popd > /dev/null
 	fi
 	distutils-r1_python_install_all

@@ -63,8 +63,7 @@ src_compile() {
 			BLOCKS=/usr/share/unicode-data/Blocks.txt \
 			UNICODEDATA=/usr/share/unicode-data/UnicodeData.txt \
 			FC-LANG=/usr/share/fc-lang \
-			full sans \
-			|| die "emake failed"
+			full sans
 	fi
 }
 

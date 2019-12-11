@@ -52,14 +52,14 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1 || die "emake failed."
+	emake -j1
 }
 
 src_install() {
 	emake \
 		prefix="${ED}/usr" \
 		program_prefix="${D}" \
-		install || die
+		install
 
 	find "${ED}" -name "*.la" -type f -delete || die
 

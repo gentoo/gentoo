@@ -60,11 +60,11 @@ src_compile() {
 	cd utils
 	for d in *conv; do
 		cd $d
-		emake || die
+		emake
 		cd -
 	done
 	cd hbf2gf
-	emake || die
+	emake
 	cd -
 
 	if use emacs ; then
@@ -108,14 +108,14 @@ src_install() {
 	for d in fonts/pk/modeless/*/* ; do
 		insinto ${TEXMF}/${d}
 		for f in "${T}"/${d##*/}*.pk ; do
-			newins $f `basename ${f/.pk/.500pk}` || die "newins failed"
+			newins $f `basename ${f/.pk/.500pk}`
 		done
 	done
 	popd &>/dev/null
 
 	insinto "${TEXMF}/tex/latex/${PN}"
-	doins -r texinput/* || die "installing texinput files failed"
-	doins -r contrib/wadalab || die "installing wadalab failed"
+	doins -r texinput/*
+	doins -r contrib/wadalab
 
 	if use emacs ; then
 		cd utils/lisp
@@ -140,7 +140,7 @@ src_install() {
 
 	use doc || rm -rf texmf/doc
 	insinto ${TEXMF}
-	doins -r texmf/* || die "installing texmf failed"
+	doins -r texmf/*
 
 	# Move fonts because hbf2gf expects them in MISCFONTS
 	mv "${ED}/${TEXMF}/fonts/hbf" "${ED}/${TEXMF}/fonts/misc" || die "mv font failed"

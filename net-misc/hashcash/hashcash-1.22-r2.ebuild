@@ -19,7 +19,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" generic || die
+	emake CC="$(tc-getCC)" generic
 }
 
 src_install() {

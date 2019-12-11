@@ -31,7 +31,7 @@ src_configure() {
 
 src_install() {
 	einstalldocs
-	dobin qvv || die "dobin failed"
+	dobin qvv
 	doicon images/qvv_icon_128x128.png || die "doicon failed"
 	make_desktop_entry qvv QVV qvv_icon_128x128
 }

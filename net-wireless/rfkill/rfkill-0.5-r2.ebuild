@@ -18,9 +18,9 @@ RDEPEND="!>=sys-apps/util-linux-2.31_rc1"
 DEPEND=""
 
 src_compile() {
-	emake CC=$(tc-getCC) LD=$(tc-getLD) V=1 || die "Failed to compile"
+	emake CC=$(tc-getCC) LD=$(tc-getLD) V=1
 }
 
 src_install() {
-	emake install V=1 DESTDIR="${D}" || die "Failed to install"
+	emake install V=1 DESTDIR="${D}"
 }

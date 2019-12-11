@@ -77,8 +77,8 @@ src_install() {
 	#ln -s "${D}"/usr/lib64/libncp.so.2.3 "${D}"/libncp.so.2.3.0
 
 	# Install the main programs, then the headers.
-	emake DESTDIR="${D}" install || die
-	emake DESTDIR="${D}" install-dev || die
+	emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" install-dev
 
 	# Install a startup script in /etc/init.d and a conf file in /etc/conf.d
 	newconfd "${FILESDIR}"/ipx.confd ipx

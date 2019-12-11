@@ -81,11 +81,11 @@ src_compile() {
 	fi
 
 	#parallel make fails
-	emake -j1 || die "Compilation failed"
+	emake -j1
 }
 
 src_install () {
-	emake DESTDIR="${D}" install || die "Installation failed"
+	emake DESTDIR="${D}" install
 
 	dodoc README.md CHANGELOG
 	dodoc "${FILESDIR}"/README.Gentoo

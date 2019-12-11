@@ -44,7 +44,7 @@ each_ruby_configure() {
 
 each_ruby_compile() {
 	for dir in ext ext/utf8; do
-		emake V=1 -C${dir} || die "emake (${dir}) failed"
+		emake V=1 -C${dir}
 	done
 }
 
@@ -57,5 +57,5 @@ each_ruby_install() {
 
 all_ruby_install() {
 	all_fakegem_install
-	dohtml doc/*.html || die
+	dohtml doc/*.html
 }

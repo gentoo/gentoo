@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}"
 PATCHES=( "${FILESDIR}"/${P}-display.patch )
 
 src_install() {
-	dobin genlop || die "failed to install genlop (via dobin)"
+	dobin genlop
 	dodoc README Changelog
 	doman genlop.1
 	newbashcomp genlop.bash-completion genlop

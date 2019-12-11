@@ -24,7 +24,7 @@ src_prepare() {
 }
 
 src_test () {
-	emake test || die "Tests failed."
+	emake test
 }
 
 src_install() {

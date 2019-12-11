@@ -25,10 +25,10 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
-	econf || die
+	econf
 }
 
 src_install() {
 	make DESTDIR="${D}" install || die
-	dodoc README NEWS ChangeLog AUTHORS || die
+	dodoc README NEWS ChangeLog AUTHORS
 }

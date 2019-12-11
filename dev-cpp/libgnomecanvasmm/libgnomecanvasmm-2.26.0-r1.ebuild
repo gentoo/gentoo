@@ -39,7 +39,7 @@ src_compile() {
 
 	if use doc; then
 		cd "${S}/docs/reference"
-		emake all || die "failed to build API docs"
+		emake all
 	fi
 }
 

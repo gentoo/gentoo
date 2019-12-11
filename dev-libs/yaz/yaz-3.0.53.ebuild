@@ -40,12 +40,12 @@ src_configure() {
 }
 
 src_compile() {
-	emake || die "emake failed"
+	emake
 }
 
 src_install() {
 	local docdir="/usr/share/doc/${PF}"
-	emake DESTDIR="${D}" docdir="${docdir}" install || die "install failed"
+	emake DESTDIR="${D}" docdir="${docdir}" install
 
 	dodir ${docdir}/html
 	mv -f "${D}"/${docdir}/*.{html,png} "${D}"/${docdir}/html/ || die "Failed to move HTML docs"

@@ -88,7 +88,7 @@ src_test() {
 
 	testing() {
 		local -x XDG_CACHE_HOME="${T}/${EPYTHON}"
-		emake -C "${BUILD_DIR}" check || die "emake check failed"
+		emake -C "${BUILD_DIR}" check
 	}
 	virtx python_foreach_impl testing
 }

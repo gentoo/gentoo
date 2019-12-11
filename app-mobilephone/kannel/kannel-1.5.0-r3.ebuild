@@ -81,14 +81,14 @@ src_configure() {
 
 # phase disabled by RESTRICT
 # src_test() {
-# 	emake check || die "emake check failed"
+# 	emake check
 # }
 
 src_install() {
 	default
 
 	if use doc; then
-		emake -j1 DESTDIR="${D}" install-docs || die "emake install-docs failed"
+		emake -j1 DESTDIR="${D}" install-docs
 	fi
 
 	diropts -g kannel -m0750

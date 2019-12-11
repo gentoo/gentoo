@@ -40,7 +40,7 @@ src_install() {
 	java-pkg_dolauncher BrowserLauncherTestApp-${SLOT} \
 		--main "edu.stanford.ejalbert.testing.BrowserLauncherTestApp"
 
-	dodoc README* || die
+	dodoc README*
 	use doc && java-pkg_dojavadoc api
 	use source && java-pkg_dosrc source
 }

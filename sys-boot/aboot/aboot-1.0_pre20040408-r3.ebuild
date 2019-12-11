@@ -48,7 +48,7 @@ src_prepare() {
 
 src_compile() {
 	# too many problems with parallel building
-	emake -j1 AR=$(tc-getAR) CC=$(tc-getCC) LD=$(tc-getLD) || die "emake failed"
+	emake -j1 AR=$(tc-getAR) CC=$(tc-getCC) LD=$(tc-getLD)
 }
 
 src_install() {

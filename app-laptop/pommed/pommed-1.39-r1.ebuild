@@ -47,7 +47,7 @@ src_prepare() {
 
 src_compile() {
 	cd "${S}"/pommed
-	emake CC="$(tc-getCC)" OFLIB=1 || die "emake pommed failed"
+	emake CC="$(tc-getCC)" OFLIB=1
 
 	if use gtk; then
 		cd "${S}"/gpomme
@@ -57,11 +57,11 @@ src_compile() {
 				POFILES="${POFILES} po/${LANG}.po"
 			fi
 		done
-		emake CC="$(tc-getCC)" POFILES="${POFILES}" || die "emake gpomme failed"
+		emake CC="$(tc-getCC)" POFILES="${POFILES}"
 	fi
 	if use X; then
 		cd "${S}"/wmpomme
-		emake CC="$(tc-getCC)" || die "emake wmpomme failed"
+		emake CC="$(tc-getCC)"
 	fi
 }
 

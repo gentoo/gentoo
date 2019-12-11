@@ -25,11 +25,11 @@ S=${WORKDIR}/${PN}
 src_install() {
 	webapp_src_preinst
 
-	dodoc *.md  || die "dodoc failed"
+	dodoc *.md
 
 	einfo "Installing web files"
 	insinto "${MY_HTDOCSDIR}"
-	doins -r html/* html/.htaccess Core vendor || die "doins failed"
+	doins -r html/* html/.htaccess Core vendor
 
 	einfo "Setting up container for configuration"
 	insinto /etc/${PN}

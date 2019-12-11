@@ -81,7 +81,7 @@ src_configure() {
 #src_compile() {
 #	base_src_compile
 #	# TODO: resolve docbook incompatibility for building docs
-#	if use doc; then emake -C doc clean docs || die; fi
+#	use doc && emake -C doc clean docs
 #}
 
 src_install() {

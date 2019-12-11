@@ -48,6 +48,6 @@ src_compile() {
 src_install() {
 	dodoc ../doc/*
 	doman ../man/*.*
-	dobin sslserver sslclient sslcat sslconnect https\@ || die
+	dobin sslserver sslclient sslcat sslconnect https\@
 	use perl && dobin sslperl
 }

@@ -30,6 +30,6 @@ python_install_all() {
 	distutils-r1_python_install_all
 	# Docs are .txt files
 	if use doc; then
-		dodoc docs/*.txt || die "Installation of documentation failed"
+		dodoc docs/*.txt
 	fi
 }

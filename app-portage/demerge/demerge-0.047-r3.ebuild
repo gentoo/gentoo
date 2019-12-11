@@ -26,7 +26,7 @@ src_prepare() {
 }
 
 src_install() {
-	dobin demerge || die
+	dobin demerge
 	dodoc Changelog
 	doman demerge.3
 }

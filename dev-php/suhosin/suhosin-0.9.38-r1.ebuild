@@ -51,6 +51,6 @@ src_test() {
 	# away from there in src_compile
 	for slot in `php_get_slots`; do
 		php_init_slot_env ${slot}
-		NO_INTERACTION="yes" emake test || die "emake test failed for slot ${slot}"
+		NO_INTERACTION="yes" emake test
 	done
 }

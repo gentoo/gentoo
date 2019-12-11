@@ -29,12 +29,11 @@ src_compile() {
 		CC="$(tc-getCC)" \
 		LD="$(tc-getCC)" \
 		CFLAGS="${CFLAGS} -fPIC" \
-		LDFLAGS="${LDFLAGS}" \
-		|| die "emake failed"
+		LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
-	dolib.so libsoapbox.so || die "soapsox.so"
-	newbin soapbox.sh soapbox || die "soapbox"
+	dolib.so libsoapbox.so
+	newbin soapbox.sh soapbox
 	dodoc AUTHORS BUGS ChangeLog README THANKS TODO
 }

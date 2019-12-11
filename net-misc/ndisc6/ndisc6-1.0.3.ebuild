@@ -21,10 +21,10 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	newinitd "${FILESDIR}"/rdnssd.rc-1 rdnssd || die
-	newconfd "${FILESDIR}"/rdnssd.conf rdnssd || die
+	emake DESTDIR="${D}" install
+	newinitd "${FILESDIR}"/rdnssd.rc-1 rdnssd
+	newconfd "${FILESDIR}"/rdnssd.conf rdnssd
 	exeinto /etc/rdnssd
 	newexe "${FILESDIR}"/resolvconf-1 resolvconf || die
-	dodoc AUTHORS ChangeLog NEWS README || die
+	dodoc AUTHORS ChangeLog NEWS README
 }

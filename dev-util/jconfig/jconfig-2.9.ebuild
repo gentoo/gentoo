@@ -39,7 +39,7 @@ JAVA_ANT_ENCODING="ISO-8859-1"
 src_install() {
 	java-pkg_dojar dist/jconfig.jar
 
-	dodoc README || die
+	dodoc README
 
 	use doc && java-pkg_dojavadoc javadoc
 	use source && java-pkg_dosrc src/*

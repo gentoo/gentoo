@@ -30,7 +30,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 	dodoc AUTHORS README NEWS
 	find "${ED}" -name '*.la' -delete || die
 }

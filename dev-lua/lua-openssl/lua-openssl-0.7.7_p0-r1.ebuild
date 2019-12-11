@@ -57,7 +57,7 @@ src_compile() {
 }
 
 src_test() {
-	emake CC="$(tc-getCC)" test || die "tests failed"
+	emake CC="$(tc-getCC)" test
 }
 
 src_install() {

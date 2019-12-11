@@ -90,7 +90,7 @@ src_configure() {
 src_install() {
 	unset NLSPATH #175258
 
-	emake PREFIX="${D}" install || die "make install failed"
+	emake PREFIX="${D}" install
 	dosym man /usr/bin/manpath
 
 	dodoc LSM README* TODO

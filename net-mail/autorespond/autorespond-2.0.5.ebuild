@@ -18,12 +18,12 @@ PATCHES=(
 DOCS=( README help_message qmail-auto )
 
 src_compile() {
-	emake CFLAGS="${CFLAGS}" || die
+	emake CFLAGS="${CFLAGS}"
 }
 
 src_install () {
 	into /var/qmail
-	dobin autorespond || die "dobin failed"
+	dobin autorespond
 	doman *.1
 	einstalldocs
 }

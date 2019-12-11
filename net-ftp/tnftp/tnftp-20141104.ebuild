@@ -21,11 +21,10 @@ src_configure() {
 	econf \
 		--enable-editcomplete \
 		$(use_enable ipv6) \
-		$(use_with socks5 socks) \
-		|| die "econf failed"
+		$(use_with socks5 socks)
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die "emake install failed"
-	dodoc ChangeLog README THANKS || die "dodoc failed"
+	emake install DESTDIR="${D}"
+	dodoc ChangeLog README THANKS
 }

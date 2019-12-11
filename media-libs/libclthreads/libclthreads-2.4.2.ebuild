@@ -32,5 +32,5 @@ src_install() {
 	default
 
 	cd "${S}"/source || die "Failed to cd to sources"
-	emake PREFIX="${EPREFIX}/usr" INCDIR="include" LIBDIR="$(get_libdir)" DESTDIR="${ED}" install || die "make install failed"
+	emake PREFIX="${EPREFIX}/usr" INCDIR="include" LIBDIR="$(get_libdir)" DESTDIR="${ED}" install
 }

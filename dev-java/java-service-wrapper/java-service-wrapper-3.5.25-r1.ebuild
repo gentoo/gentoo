@@ -61,8 +61,8 @@ src_install() {
 	java-pkg_doso lib/libwrapper.so
 
 	dobin bin/wrapper
-	dodoc README*.txt || die
-	dodoc doc/revisions.txt || die
+	dodoc README*.txt
+	dodoc doc/revisions.txt
 
 	use doc && java-pkg_dojavadoc api
 	use source && java-pkg_dosrc src/java/*

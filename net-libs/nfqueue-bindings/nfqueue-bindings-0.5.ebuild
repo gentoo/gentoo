@@ -63,7 +63,7 @@ src_prepare() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install PREFIX=/usr || die
+	emake DESTDIR="${D}" install PREFIX=/usr
 	docinto examples
 	use examples && dodoc examples/*
 }

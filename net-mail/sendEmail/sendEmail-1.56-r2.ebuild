@@ -24,6 +24,6 @@ PATCHES=( "${FILESDIR}/${PV}-overzealous-version-check.patch"
 S="${WORKDIR}/${MY_P}"
 
 src_install() {
-	dobin sendEmail || die "failed to install sendEmail script"
+	dobin sendEmail
 	dodoc CHANGELOG  README  TODO
 }

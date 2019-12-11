@@ -104,7 +104,7 @@ src_install() {
 			if has ${lang} ${LINGUAS-${lang}}; then
 				[[ -f dcraw.${lang}.1 ]] && doman dcraw.${lang}.1
 				insinto /usr/share/locale/${lang}/LC_MESSAGES
-				newins dcraw_${lang}.mo dcraw.mo || die "failed to install dcraw_${lang}.mo"
+				newins dcraw_${lang}.mo dcraw.mo
 			fi
 		done
 	fi

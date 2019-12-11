@@ -42,19 +42,19 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "Install failed"
+	emake DESTDIR="${D}" install
 
 	if use examples; then
 		insinto /usr/share/${PF}/example
-		doins example/* || die "Install failed"
+		doins example/*
 	fi
 
 	if use doc; then
 		insinto /usr/share/doc/${PF}
-		doins -r doc/* || die "Install failed"
+		doins -r doc/*
 	fi
 }
 
 src_test() {
-	emake -j1 check || die "Tests failed"
+	emake -j1 check
 }
