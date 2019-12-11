@@ -1,5 +1,5 @@
---- src/alsamixer.cxx
-+++ src/alsamixer.cxx
+--- a/src/alsamixer.cxx
++++ b/src/alsamixer.cxx
 @@ -1869,7 +1869,7 @@
  			if (procWindow) delete procWindow;
  			if (mainWindow) delete mainWindow;
