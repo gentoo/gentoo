@@ -22,6 +22,7 @@ RDEPEND="
 	dev-ros/rosbag
 		dev-libs/boost:=
 	dev-ros/roscpp
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2
 	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]

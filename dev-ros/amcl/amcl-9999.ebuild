@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,6 +22,7 @@ RDEPEND="
 	dev-ros/rosbag
 		dev-libs/boost:=
 	dev-ros/roscpp
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2
 	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
@@ -31,3 +32,4 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest[${PYTHON_USEDEP}] dev-python/python_orocos_kdl[${PYTHON_USEDEP}] dev-ros/map_server[${PYTHON_USEDEP}] )
 "
+PATCHES=( "${FILESDIR}/cmake.patch" )
