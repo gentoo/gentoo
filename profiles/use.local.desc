@@ -7233,8 +7233,6 @@ sci-biology/clustalw-mpi:static_pairalign - Use static (as opposed to dynamic) s
 sci-biology/exonerate:utils - Install all utilities
 sci-biology/fasttree:double-precision - use double precision instead of single-precision floating point (2x memroy required)
 sci-biology/mcl:blast - Add support for NCBI BLAST data
-sci-biology/plink:R - add support R language
-sci-biology/plink:webcheck - add support for online update checking every time the program starts
 sci-biology/seqan:tools - Build and install SeqAn commandline tools, such as the Yara aligner
 sci-biology/ucsc-genome-browser:server - Install genome browser Web application. If this flag is off, only libraries and utilities from the suite are installed.
 sci-biology/yass:dmalloc - Enable debugging with the dmalloc library

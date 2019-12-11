@@ -14067,7 +14067,7 @@ media-sound/vlevel 0.5-r1: Dynamic compressor to amplify quiet parts of music
 media-sound/vlorb 1.2: A high quality Audio CD to audio file encoder
 media-sound/vmpk 0.6.2a: Virtual MIDI Piano Keyboard
 media-sound/volti 0.2.3-r1: GTK+ application for controlling audio volume from system tray/notification area
-media-sound/volumeicon 0.4.6 0.5.1-r1: A lightweight volume control that sits in your systray
+media-sound/volumeicon 0.5.1-r1: A lightweight volume control that sits in your systray
 media-sound/volwheel 0.2.8-r1: A volume control trayicon with mouse wheel support
 media-sound/vorbis-tools 1.4.0-r5: Tools for using the Ogg Vorbis sound file format
 media-sound/vorbisgain 0.37-r2: Calculator of perceived sound level for Ogg Vorbis files
@@ -15963,7 +15963,7 @@ sci-biology/iqpnni 3.3.2-r1: Important Quartet Puzzling and NNI Operation
 sci-biology/kalign 2.03-r2: Global and progressive multiple sequence alignment
 sci-biology/kallisto 0.43.1 9999: Near-optimal RNA-Seq quantification
 sci-biology/lagan 2.0-r3: The LAGAN suite of tools for whole-genome multiple alignment of genomic DNA
-sci-biology/last 230 299-r1: Genome-scale comparison of biological sequences
+sci-biology/last 299-r1: Genome-scale comparison of biological sequences
 sci-biology/libgtextutils 0.6.1: Gordon Text utils Library
 sci-biology/mafft 7.050 7.215 7.305: Multiple sequence alignments using a variety of algorithms
 sci-biology/maq 0.7.1-r2: Mapping and Assembly with Qualities, mapping NGS reads to reference genomes
@@ -15973,7 +15973,7 @@ sci-biology/meme 4.11.2_p2: The MEME/MAST system - Motif discovery and search
 sci-biology/mira 4.0.2: Whole Genome Shotgun and EST Sequence Assembler for Sanger, 454 and Illumina
 sci-biology/mosaik 2.2.30: A reference-guided aligner for next-generation sequencing technologies
 sci-biology/mothur 1.27.0-r1: A suite of algorithms for ecological bioinformatics
-sci-biology/mrbayes 3.1.2-r1 3.1.2-r2: Bayesian Inference of Phylogeny
+sci-biology/mrbayes 3.1.2-r2: Bayesian Inference of Phylogeny
 sci-biology/mummer 3.23: A rapid whole genome aligner
 sci-biology/muscle 3.8.31: Multiple sequence comparison by log-expectation
 sci-biology/ncbi-tools 2.2.26-r2: Development toolkit and applications for computational biology, including BLAST
@@ -15988,7 +15988,7 @@ sci-biology/phyml 2.4.5-r3: Estimation of large phylogenies by maximum likelihoo
 sci-biology/picard 1.103: Java-based command-line utilities that manipulate SAM files
 sci-biology/piler 1.0-r1: Analysis of repetitive DNA found in genome sequences
 sci-biology/pilercr 1.0-r1: Analysis of Clustered Regularly Interspaced Short Palindromic Repeats (CRISPRs)
-sci-biology/plink 1.07-r1 1.90_pre140514: Whole genome association analysis toolset
+sci-biology/plink 1.90_pre140514: Whole genome association analysis toolset
 sci-biology/poa 2-r1: Fast multiple sequence alignments using partial-order graphs
 sci-biology/prank 140603: Probabilistic Alignment Kit
 sci-biology/primer3 2.3.7: Primer Design for PCR reactions
@@ -16010,7 +16010,7 @@ sci-biology/rnaview 20040713-r4: Generates 2D displays of RNA/DNA secondary stru
 sci-biology/samtools 0.1.20-r3 1.5 1.9: Utilities for analysing and manipulating the SAM/BAM alignment formats
 sci-biology/seaview 4.3.5 4.5.4 4.6: A graphical multiple sequence alignment editor
 sci-biology/seqan 1.4.2-r1 2.2.0-r1 2.4.0 9999: C++ Sequence Analysis Library
-sci-biology/shrimp 2.0.1 2.2.3: SHort Read Mapping Package
+sci-biology/shrimp 2.2.3: SHort Read Mapping Package
 sci-biology/sibsim4 0.20: A rewrite and improvement upon sim4, a DNA-mRNA aligner
 sci-biology/sim4 20030921-r2: A program to align cDNA and genomic DNA
 sci-biology/stride 20011129-r1: Protein secondary structure assignment from atomic coordinates
@@ -16026,7 +16026,7 @@ sci-biology/ucsc-genome-browser 260-r1: The UCSC genome browser suite, also know
 sci-biology/unafold 3.8-r1: Unified Nucleic Acid Folding and hybridization package
 sci-biology/update-blastdb 12.0.0: update_blastdb.pl for local blast db maintainance
 sci-biology/vcftools 0.1.14: Tools for working with VCF (Variant Call Format) files
-sci-biology/velvet 1.0.18-r1 1.2.10: A sequence assembler for very short reads
+sci-biology/velvet 1.2.10: A sequence assembler for very short reads
 sci-biology/vienna-rna 2.1.1 2.1.8: RNA secondary structure prediction and comparison
 sci-biology/wgs-assembler 7.0-r2: The Celera de novo whole-genome shotgun DNA sequence assembler, aka CABOG
 sci-biology/wise 2.4.0_alpha: Intelligent algorithms for DNA searches
