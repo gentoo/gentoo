@@ -10637,7 +10637,7 @@ dev-util/debugedit 4.14.2-r2 4.15.0: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6: Framework for testing other programs
 dev-util/desktop-file-utils 0.23 0.24: Command line utilities to work with desktop menu entries
 dev-util/devhelp 3.30.1: An API documentation browser for GNOME
-dev-util/dialog 1.3.20170131 1.3.20190808 1.3.20191110: tool to display dialog boxes from a shell
+dev-util/dialog 1.3.20170131 1.3.20191110 1.3.20191210: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1 1.0.1-r1: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffoscope 87 88 129: Will try to get to the bottom of what makes files or directories different
