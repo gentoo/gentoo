@@ -16,4 +16,4 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/catkin_prefix2.patch" )
+PATCHES=( "${FILESDIR}/catkin_prefix.patch" )
