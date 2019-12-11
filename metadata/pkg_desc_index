@@ -7436,7 +7436,7 @@ dev-python/asn1crypto 0.22.0 0.24.0: Python ASN.1 library with a focus on perfor
 dev-python/asset 0.6.11: A package resource and symbol loading helper library
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
 dev-python/astlib 0.8.0: Python astronomy modules for image and coordinate manipulation
-dev-python/astor 0.5 0.6 0.7.1: Read/rewrite/write Python ASTs
+dev-python/astor 0.5 0.6 0.7.1 0.8.1: Read/rewrite/write Python ASTs
 dev-python/astrodendro 0.2.0: Python package for computation of astronomical dendrograms
 dev-python/astroid 1.4.8 1.6.5 2.2.5: Abstract Syntax Tree for logilab packages
 dev-python/astroml 0.3: Python Machine Learning library for astronomy
