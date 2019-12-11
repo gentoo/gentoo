@@ -41,6 +41,7 @@ DEPEND="${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
 "
+PATCHES=( "${FILESDIR}/yaml.patch" )
 
 python_test() {
 	nosetests --with-xunit test || die
