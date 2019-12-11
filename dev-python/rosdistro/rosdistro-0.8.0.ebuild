@@ -43,6 +43,12 @@ DEPEND="${RDEPEND}
 "
 PATCHES=( "${FILESDIR}/yaml.patch" )
 
+src_prepare() {
+	# Requires network access
+	rm -f test/test_manifest_providers.py
+	default
+}
+
 python_test() {
 	nosetests --with-xunit test || die
 }
