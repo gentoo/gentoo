@@ -20,7 +20,10 @@ REQUIRED_USE="|| ( jit pmmu standard ) lilo? ( pmmu )"
 RDEPEND="
 	dev-libs/gmp:0=
 	media-libs/libsdl2[video]
-	clipboard? ( !kernel_Winnt? ( x11-libs/libX11 ) )
+	clipboard? ( !kernel_Winnt? (
+		media-libs/libsdl2[X]
+		x11-libs/libX11
+	) )
 	jpeg? ( virtual/jpeg )
 	kernel_linux? ( virtual/libudev )
 	lilo? ( sys-libs/zlib )
@@ -86,6 +89,10 @@ multibuild_src_configure() {
 
 	# https://github.com/aranym/aranym/issues/54
 	echo "#define HAVE_X11_XLIB_H 1" >> config.h || die
+}
+
+src_compile() {
+	multibuild_foreach_variant run_in_build_dir default
 }
 
 src_install() {
