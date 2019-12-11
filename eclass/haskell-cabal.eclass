@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: haskell-cabal.eclass
@@ -137,6 +137,7 @@ fi
 
 if [[ -n "${CABAL_TEST_SUITE}" ]]; then
 	IUSE="${IUSE} test"
+	RESTRICT+=" !test? ( test )"
 fi
 
 # returns the version of cabal currently in use.
