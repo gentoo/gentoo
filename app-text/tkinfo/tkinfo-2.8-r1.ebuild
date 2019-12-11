@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,10 +7,9 @@ DESCRIPTION="Info Browser in TK"
 HOMEPAGE="http://math-www.uni-paderborn.de/~axel/tkinfo/"
 SRC_URI="http://math-www.uni-paderborn.de/~axel/${PN}/${P}.tar.gz"
 
-KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
-IUSE=""
-LICENSE="freedist"
+LICENSE="Old-MIT GPL-1+"
 SLOT="0"
+KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
 
 RDEPEND="dev-lang/tk"
 DEPEND="sys-apps/sed"
