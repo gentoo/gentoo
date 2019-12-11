@@ -1,69 +1,73 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGO_PN="github.com/jedisct1/${PN}"
 
-inherit fcaps golang-build systemd user
+inherit fcaps go-module systemd
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://${EGO_PN}.git"
 else
 	SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 fi
 
 DESCRIPTION="A flexible DNS proxy, with support for encrypted DNS protocols"
 HOMEPAGE="https://github.com/jedisct1/dnscrypt-proxy"
 
-LICENSE="ISC"
+LICENSE="Apache-2.0 BSD ISC MIT MPL-2.0"
 SLOT="0"
-IUSE="pie test"
-RESTRICT+=" !test? ( test )"
+IUSE="pie"
+
+BDEPEND=">=dev-lang/go-1.13"
+
+RDEPEND="
+	acct-group/dnscrypt-proxy
+	acct-user/dnscrypt-proxy
+"
 
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
 PATCHES=( "${FILESDIR}"/config-full-paths-r10.patch )
 
-pkg_setup() {
-	enewgroup dnscrypt-proxy
-	enewuser dnscrypt-proxy -1 -1 /var/empty dnscrypt-proxy
-}
-
-src_prepare() {
-	default
-	# Create directory structure suitable for building
-	mkdir -p "src/${EGO_PN%/*}" || die
-	mv "${PN}" "src/${EGO_PN}" || die
-	mv "vendor" "src/${EGO_PN}" || die
-}
-
-src_configure() {
-	EGO_BUILD_FLAGS="-buildmode=$(usex pie pie default)"
+src_compile() {
+	pushd "${PN}" >/dev/null || die
+	go build -buildmode="$(usex pie pie default)" || die
+	popd >/dev/null || die
 }
 
 src_install() {
+	pushd "${PN}" >/dev/null || die
+
 	dobin dnscrypt-proxy
 
 	insinto /etc/dnscrypt-proxy
-	newins "src/${EGO_PN}"/example-dnscrypt-proxy.toml dnscrypt-proxy.toml
-	doins "src/${EGO_PN}"/example-{blacklist.txt,whitelist.txt}
-	doins "src/${EGO_PN}"/example-{cloaking-rules.txt,forwarding-rules.txt}
+	newins example-dnscrypt-proxy.toml dnscrypt-proxy.toml
+	doins example-{blacklist.txt,whitelist.txt}
+	doins example-{cloaking-rules.txt,forwarding-rules.txt}
+
+	popd >/dev/null || die
 
 	insinto /usr/share/dnscrypt-proxy
 	doins -r "utils/generate-domains-blacklists/."
 
-	newinitd "${FILESDIR}"/dnscrypt-proxy.initd dnscrypt-proxy
+	newinitd "${FILESDIR}"/dnscrypt-proxy.initd-r1 dnscrypt-proxy
 	newconfd "${FILESDIR}"/dnscrypt-proxy.confd dnscrypt-proxy
+
 	systemd_newunit "${FILESDIR}"/dnscrypt-proxy.service dnscrypt-proxy.service
 	systemd_newunit "${FILESDIR}"/dnscrypt-proxy.socket dnscrypt-proxy.socket
+
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}"/dnscrypt-proxy.logrotate dnscrypt-proxy
 
 	einstalldocs
 }
 
 pkg_postinst() {
 	fcaps_pkg_postinst
+	go-module_pkg_postinst
 
 	if ! use filecaps; then
 		ewarn "'filecaps' USE flag is disabled"
@@ -74,20 +78,6 @@ pkg_postinst() {
 		ewarn "3) configure to run ${PN} as root (not recommended)"
 		ewarn
 	fi
-
-	local v
-	for v in ${REPLACING_VERSIONS}; do
-		if [[ ${v} == 1.* ]] ; then
-			elog "Version 2 is a complete rewrite of ${PN}"
-			elog "please clean up old config/log files"
-			elog
-		fi
-		if [[ ${v} == 2.* ]] ; then
-			elog "As of version 2.0.12 of ${PN} runs as an 'dnscrypt-proxy' user/group"
-			elog "you can remove obsolete 'dnscrypt' accounts from the system"
-			elog
-		fi
-	done
 
 	if systemd_is_booted || has_version sys-apps/systemd; then
 		elog "Using systemd socket activation may cause issues with speed"
