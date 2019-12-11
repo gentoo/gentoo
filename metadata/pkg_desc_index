@@ -9715,7 +9715,7 @@ dev-ruby/brass 1.2.1: BRASS is a very basic assertions framework for Ruby
 dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
 dev-ruby/bson 4.4.2 4.5.0 4.6.0: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
-dev-ruby/builder 3.2.3: A builder to facilitate programatic generation of XML markup
+dev-ruby/builder 3.2.3 3.2.4: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.17.3: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.6.1: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.13.0 2.14.2 2.14.3: Another synchronous Ruby AMQP client
@@ -9830,7 +9830,7 @@ dev-ruby/forgery 0.7.0: Easy and customizable generation of forged data
 dev-ruby/forwardable-extended 2.6.0-r1: Forwardable with hash, and instance variable extensions
 dev-ruby/fuubar 2.3.2 2.4.0 2.4.1 2.5.0: Instafailing RSpec progress bar formatter
 dev-ruby/gettext-setup 0.30 0.31: A gem to ease i18n
-dev-ruby/gettext_i18n_rails 1.8.0: FastGettext / Rails integration
+dev-ruby/gettext_i18n_rails 1.8.0 1.8.1: FastGettext / Rails integration
 dev-ruby/gh 0.15.1-r2: multi-layer client for the github api v3
 dev-ruby/gherkin 5.1.0: Fast Gherkin lexer and parser
 dev-ruby/gist 5.0.0: Potentially the best command line gister.
