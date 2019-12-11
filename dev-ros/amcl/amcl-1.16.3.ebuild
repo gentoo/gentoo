@@ -31,3 +31,4 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest[${PYTHON_USEDEP}] dev-python/python_orocos_kdl[${PYTHON_USEDEP}] dev-ros/map_server[${PYTHON_USEDEP}] )
 "
+PATCHES=( "${FILESDIR}/cmake.patch" )
