@@ -36,4 +36,9 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 	dev-ros/cmake_modules"
 
-PATCHES=( "${FILESDIR}/pgm_h_location.patch" )
+PATCHES=( "${FILESDIR}/pgm_h_location.patch" "${FILESDIR}/tests.patch" )
+
+src_prepare() {
+	ros-catkin_src_prepare
+	sed -e "s#@PGM_PATH@#\"${S}/test/willow_costmap.pgm\"#" -i test/path_calc_test.cpp || die
+}

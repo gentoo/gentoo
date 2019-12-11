@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -36,4 +36,9 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 	dev-ros/cmake_modules"
 
-PATCHES=( "${FILESDIR}/pgm_h_location.patch" )
+PATCHES=( "${FILESDIR}/pgm_h_location.patch" "${FILESDIR}/tests.patch" )
+
+src_prepare() {
+	ros-catkin_src_prepare
+	sed -e "s#@PGM_PATH@#\"${S}/test/willow_costmap.pgm\"#" -i test/path_calc_test.cpp || die
+}
