@@ -8139,6 +8139,7 @@ sys-cluster/ceph:nss - Use dev-libs/nss for cryptography
 sys-cluster/ceph:numa - Use sys-process/numactl for numa support in rocksdb
 sys-cluster/ceph:rabbitmq - Use rabbitmq-c to build rgw amqp push endpoint
 sys-cluster/ceph:radosgw - Add radosgw support
+sys-cluster/ceph:spdk - Enable SPDK user-mode storage driver toolkit
 sys-cluster/ceph:system-boost - Use system dev-libs/boost instead of the bundled one
 sys-cluster/ceph:xfs - Add xfs support
 sys-cluster/ceph:zfs - Add zfs support

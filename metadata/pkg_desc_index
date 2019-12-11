@@ -13626,7 +13626,7 @@ media-plugins/vdr-mailbox 0.7.0-r1: VDR plugin: MailBox provides access to multi
 media-plugins/vdr-menuorg 0.5.1: VDR plugin: make osd menu configurable via config-file
 media-plugins/vdr-mlist 1.0.2: VDR plugin: Show a history of the last OSD message
 media-plugins/vdr-mount 0.0.2: VDR plugin: (Un)Mount removable media via osd
-media-plugins/vdr-mp3ng 0.0.1_pre5-r1: VDR Plugin: play mp3 and ogg on VDR
+media-plugins/vdr-mp3ng 0.0.1_pre5-r2: VDR Plugin: play mp3 and ogg on VDR
 media-plugins/vdr-mplayer 0.10.2: VDR Plugin: Play video files not supported by VDR with mplayer (divx and more)
 media-plugins/vdr-music 0.9.9: VDR plugin: music
 media-plugins/vdr-newsticker 0.0.4: VDR plugin: Show rdf Newsticker on TV
@@ -17404,7 +17404,7 @@ sys-boot/yaboot 1.3.14-r2 1.3.16 1.3.17-r2 1.3.17-r3: PPC Bootloader
 sys-boot/yaboot-static 1.3.14-r1 1.3.16-r1 1.3.17-r1: Static yaboot ppc boot loader for machines with open firmware
 sys-cluster/ampi 0_pre20140616: MPI library for algorithmic differentiation
 sys-cluster/c3 4.0.1: The Cluster Command and Control (C3) tool suite
-sys-cluster/ceph 12.2.8-r1 12.2.11 12.2.12-r2 13.2.5-r4 13.2.6 14.2.4-r1 14.2.4-r2: Ceph distributed filesystem
+sys-cluster/ceph 12.2.8-r1 12.2.11 12.2.12-r2 13.2.5-r4 13.2.6 14.2.4-r1 14.2.4-r2 14.2.5: Ceph distributed filesystem
 sys-cluster/charliecloud 0.9.6 0.9.10 0.10 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1 6.8.2: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
