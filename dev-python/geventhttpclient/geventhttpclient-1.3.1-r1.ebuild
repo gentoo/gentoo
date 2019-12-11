@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( pypy python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
 inherit distutils-r1
 
@@ -39,7 +39,10 @@ python_test() {
 	# Ignore tests which require network access
 	# Append to sys.path to avoid ImportError
 	# https://bugs.gentoo.org/667758
+	# Skip a test that fails with Python > 3.7
+	# https://github.com/gwik/geventhttpclient/issues/119
 	pytest --import-mode=append -vv src/geventhttpclient/tests --ignore \
-		src/geventhttpclient/tests/test_client.py || \
-		die "Tests failed with ${EPYTHON}"
+		src/geventhttpclient/tests/test_client.py --deselect \
+		src/geventhttpclient/tests/test_headers.py::test_cookielib_compatibility \
+		|| die "Tests failed with ${EPYTHON}"
 }
