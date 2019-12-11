@@ -59,12 +59,12 @@ src_install() {
 
 	if use doc ; then
 		insinto /usr/share/doc/${PF}/html
-		doins cccc/*.html || die "html docs failed"
+		doins cccc/*.html
 		if use apidoc ; then
 			insinto /usr/share/doc/${PF}/html/api
-			doins -r doxygen/html/* || die "dox failed"
+			doins -r doxygen/html/*
 			insinto /usr/share/doc/${PF}/html/metrics
-			doins ccccout/* || die "metrics failed"
+			doins ccccout/*
 		fi
 	fi
 }

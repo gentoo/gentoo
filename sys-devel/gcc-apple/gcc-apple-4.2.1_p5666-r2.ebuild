@@ -268,13 +268,13 @@ src_compile() {
 	else
 		GCC_MAKE_TARGET=${GCC_MAKE_TARGET-bootstrap}
 	fi
-	emake ${GCC_MAKE_TARGET} || die "emake failed"
+	emake ${GCC_MAKE_TARGET}
 }
 
 src_install() {
 	cd "${WORKDIR}"/build
 	# -jX doesn't work
-	emake -j1 DESTDIR="${D}" install || die
+	emake -j1 DESTDIR="${D}" install
 
 	# Punt some tools which are really only useful while building gcc
 	find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \;

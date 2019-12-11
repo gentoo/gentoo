@@ -28,7 +28,7 @@ DEPEND="app-text/asciidoc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_install() {
-	emake DESTDIR="${D}" install || die "make install failed"
+	emake DESTDIR="${D}" install
 	newbashcomp "${S}/eit-completion.bash" eit
 
 	python_optimize "${D}/usr/lib/entropy/server"

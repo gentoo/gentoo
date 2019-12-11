@@ -70,7 +70,7 @@ src_install() {
 	python_domodule lib/.
 
 	insinto "${MY_APPDIR}"
-	doins -r templates/ || die "doins failed"
+	doins -r templates/
 	doins -r templates-contrib/
 
 	if use mysql; then

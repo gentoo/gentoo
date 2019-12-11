@@ -33,10 +33,10 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC CXX
-	emake || die
+	emake
 }
 
 src_install() {
-	emake INSTDIR="${D}/usr/$(get_libdir)/lv2/ir.lv2" install || die
-	dodoc README ChangeLog || die
+	emake INSTDIR="${D}/usr/$(get_libdir)/lv2/ir.lv2" install
+	dodoc README ChangeLog
 }

@@ -16,7 +16,7 @@ DEPEND=""
 
 src_compile() {
 	# parallel build is broken
-	emake -j1 || die "Make failed!"
+	emake -j1
 }
 
 # tests are run automatically during make and fail with default src_test
@@ -26,5 +26,5 @@ src_test() {
 
 src_install() {
 	# parallel install is broken
-	emake -j1 DESTDIR="${D}" install || die "Install failed"
+	emake -j1 DESTDIR="${D}" install
 }

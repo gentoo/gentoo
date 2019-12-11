@@ -19,5 +19,5 @@ DEPEND="sys-fs/fuse:0"
 RDEPEND="${DEPEND}"
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install || die "emake install failed"
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
 }

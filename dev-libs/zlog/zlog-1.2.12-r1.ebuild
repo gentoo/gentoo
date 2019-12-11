@@ -25,7 +25,7 @@ src_compile() {
 }
 
 src_test () {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" test || die "Tests failed."
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" test
 }
 
 src_install() {

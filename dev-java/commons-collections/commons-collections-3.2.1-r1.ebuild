@@ -63,7 +63,7 @@ src_install() {
 		java-pkg_newjar build/${PN}-testframework-${PV}.jar \
 			${PN}-testframework.jar
 
-	dodoc README.txt || die
+	dodoc README.txt
 	java-pkg_dohtml *.html || die
 	if use doc; then
 		java-pkg_dojavadoc build/docs/apidocs

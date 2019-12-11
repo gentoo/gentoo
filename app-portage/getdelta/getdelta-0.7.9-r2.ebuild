@@ -30,7 +30,7 @@ src_install () {
 	sed -i -e "s:source /etc/make.conf:source /etc/make.conf || source /etc/portage/make.conf:" "${WORKDIR}"/getdelta.sh || die "Couldn't fix make.conf path"
 
 	sed -i -e "s:/bin/sh:/bin/bash:" "${WORKDIR}"/getdelta.sh || die
-	dobin "${WORKDIR}"/getdelta.sh || die
+	dobin "${WORKDIR}"/getdelta.sh
 }
 
 pkg_postinst() {

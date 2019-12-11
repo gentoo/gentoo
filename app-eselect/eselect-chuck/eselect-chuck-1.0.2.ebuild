@@ -19,5 +19,5 @@ S=${WORKDIR}
 
 src_install() {
 	insinto /usr/share/eselect/modules
-	newins "${WORKDIR}/chuck.eselect-${PVR}" chuck.eselect || die
+	newins "${WORKDIR}/chuck.eselect-${PVR}" chuck.eselect
 }

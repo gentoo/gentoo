@@ -30,7 +30,7 @@ src_install() {
 	BINPATH=/usr/${CHOST}/binutils-bin/native-${PV}
 
 	keepdir ${LIBPATH} || die
-	dodir ${BINPATH} || die
+	dodir ${BINPATH}
 
 	# allow for future hosts with different paths
 	nativepath=""

@@ -213,8 +213,8 @@ compile_ld64() {
 	einfo "building ${LD64}"
 	cd "${S}"/${LD64}/src
 	emake \
-		LTO=${ENABLE_LTO} \
-		|| die "emake failed for ld64"
+		LTO=${ENABLE_LTO}
+
 	use test && emake build_test
 }
 
@@ -232,15 +232,14 @@ compile_cctools() {
 		RC_ProjectSourceVersion=${CCTOOLS_VERSION} \
 		RC_CFLAGS="${CFLAGS}" \
 		OFLAG="${CCTOOLS_OFLAG}" \
-		-j1 \
-		|| die "emake failed for the cctools"
+		-j1
+
 	cd "${S}"/${CCTOOLS}/as
 	emake \
 		BUILD_OBSOLETE_ARCH= \
 		RC_ProjectSourceVersion=${CCTOOLS_VERSION} \
 		RC_CFLAGS="-DASLIBEXECDIR=\"\\\"${EPREFIX}${LIBPATH}/\\\"\" ${CFLAGS}" \
-		OFLAG="${CCTOOLS_OFLAG}" \
-		|| die "emake failed for as"
+		OFLAG="${CCTOOLS_OFLAG}"
 }
 
 src_compile() {

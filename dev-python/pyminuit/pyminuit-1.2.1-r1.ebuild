@@ -22,11 +22,14 @@ IUSE=""
 S="${WORKDIR}"/${PN}
 
 src_configure() {
-	cd "${WORKDIR}"/Minuit-1_7_9 && econf --disable-static || die
+	cd "${WORKDIR}"/Minuit-1_7_9 || die
+	econf --disable-static
 }
+
 src_compile() {
-	cd "${WORKDIR}"/Minuit-1_7_9 && emake
-	cd "${S}"
+	cd "${WORKDIR}"/Minuit-1_7_9 || die
+	emake
+	cd "${S}" || die
 	distutils-r1_src_compile
 }
 

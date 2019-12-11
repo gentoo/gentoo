@@ -33,7 +33,7 @@ python_compile_all() {
 	if use doc; then
 		einfo ""; einfo "The build seeks to import modules from an installed state of the package"
 		einfo "simply ignore all warnings / errors of failure to import module migrate.<module>"; einfo ""
-		emake -C doc/source html || die "Generation of documentation failed"
+		emake -C doc/source html
 	fi
 }
 

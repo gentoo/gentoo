@@ -40,18 +40,18 @@ src_compile() {
 	# Python plugin support is of limited use (GIL gets in the way). If it's ever requested or needed, it should be a
 	# separate python-single-r1 media-plugins/gst-plugins-python package that only builds the plugin directory.
 	compile_gst() {
-		emake -C common || die "emake common failed"
-		emake -C gi || die "emake gi failed"
-		emake -C testsuite || die "emake testsuite failed"
+		emake -C common
+		emake -C gi
+		emake -C testsuite
 	}
 	python_foreach_impl run_in_build_dir compile_gst
 }
 
 src_install() {
 	install_gst() {
-		emake DESTDIR="${D}" install -C common || die "emake install common failed"
-		emake DESTDIR="${D}" install -C gi || die "emake install gi failed"
-		emake DESTDIR="${D}" install -C testsuite || die "emake install testsuite failed"
+		emake DESTDIR="${D}" install -C common
+		emake DESTDIR="${D}" install -C gi
+		emake DESTDIR="${D}" install -C testsuite
 	}
 	python_foreach_impl run_in_build_dir install_gst
 	prune_libtool_files --modules
@@ -60,7 +60,7 @@ src_install() {
 
 src_test() {
 	test_gst() {
-		emake check -C testsuite || die "emake check failed"
+		emake check -C testsuite
 	}
 	python_foreach_impl run_in_build_dir default
 }

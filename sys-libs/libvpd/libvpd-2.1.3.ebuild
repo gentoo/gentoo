@@ -23,10 +23,9 @@ src_unpack() {
 
 src_configure() {
 	./bootstrap.sh
-	econf || die "Unable to configure"
+	econf
 }
 
 src_install(){
-	emake DESTDIR="${D}" install || die "Something went wrong"
-
+	emake DESTDIR="${D}" install
 }

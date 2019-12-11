@@ -27,6 +27,6 @@ src_configure() { :; }
 src_compile() { :; }
 
 src_install() {
-	emake install DESTDIR="${ED}" || die
+	emake install DESTDIR="${ED}"
 	dodoc man-pages-*.Announce README
 }

@@ -20,6 +20,6 @@ RDEPEND="
 src_install() {
 	dodoc ChangeLog README
 	insinto /usr/share/fortune
-	doins mods/dc mods/dc.dat mods/mormon mods/mormon.dat mods/pgp || die
-	doins mods/scriptures.dat mods/scriptures mods/aof.dat mods/aof || die
+	doins mods/dc mods/dc.dat mods/mormon mods/mormon.dat mods/pgp
+	doins mods/scriptures.dat mods/scriptures mods/aof.dat mods/aof
 }

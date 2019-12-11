@@ -26,7 +26,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CXX="$(tc-getCXX)" CFLAGS="${CFLAGS} -I./" || die
+	emake CXX="$(tc-getCXX)" CFLAGS="${CFLAGS} -I./"
 }
 
 src_install() {

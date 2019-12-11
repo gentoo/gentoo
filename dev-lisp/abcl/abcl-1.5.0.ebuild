@@ -30,5 +30,5 @@ src_compile() {
 src_install() {
 	java-pkg_dojar dist/abcl.jar
 	java-pkg_dolauncher ${PN} --java_args "-server -Xrs" --main org.armedbear.lisp.Main
-	dodoc README || die "Can't install README"
+	dodoc README
 }

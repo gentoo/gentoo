@@ -375,5 +375,5 @@ src_test () {
 	PATH="${S}/scripts:${S}/src:${PATH}" \
 		TMPDIR="/tmp" \
 		GANETI_MASTER="$(hostname -f)" \
-		emake check || die "emake check failed"
+		emake check
 }

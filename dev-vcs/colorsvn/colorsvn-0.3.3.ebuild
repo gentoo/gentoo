@@ -29,7 +29,7 @@ src_prepare() {
 
 src_compile() {
 	# bug 335134
-	emake -j1 || die
+	emake -j1
 }
 
 pkg_postinst() {

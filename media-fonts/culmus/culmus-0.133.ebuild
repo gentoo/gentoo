@@ -156,7 +156,7 @@ src_install() {
 		done
 
 	pushd ${PN}$(use fontforge && echo -src)-${PV}
-	dodoc CHANGES || die
+	dodoc CHANGES
 	popd >/dev/null
 
 	if use ancient; then

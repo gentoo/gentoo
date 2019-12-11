@@ -26,10 +26,10 @@ RDEPEND="entropy? ( ~sys-apps/entropy-${PV}[${PYTHON_USEDEP}] )
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_install() {
-	emake DESTDIR="${D}" install || die "make install failed"
-	emake DESTDIR="${D}" base-install || die "make base-install failed"
+	emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" base-install
 	if use entropy; then
-		emake DESTDIR="${D}" entropysrv-install || die "make base-install failed"
+		emake DESTDIR="${D}" entropysrv-install
 	fi
 
 	python_optimize "${D}/usr/lib/matter"

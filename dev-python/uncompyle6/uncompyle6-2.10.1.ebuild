@@ -39,5 +39,5 @@ python_test() {
 	distutils_install_for_testing
 
 	PYTHONPATH="${S}/test:${BUILD_DIR}/lib" \
-		emake check || die "Tests failed under ${EPYTHON}"
+		emake check
 }

@@ -20,11 +20,11 @@ src_prepare() {
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die "emake install failed"
+	emake install DESTDIR="${D}"
 	#dobin src/thrulay || die "dobin failed"
 	#dosbin src/thrulayd || die "dosbin failed"
-	dodoc LICENSE README TODO doc/thrulay-protocol.txt || die "dodoc failed"
-	doman doc/thrulay*.[1-8] || die "doman failed"
-	newinitd "${FILESDIR}"/thrulayd-init.d thrulayd || die "newinitd failed"
-	newconfd "${FILESDIR}"/thrulayd-conf.d thrulayd || die "newconfd failed"
+	dodoc LICENSE README TODO doc/thrulay-protocol.txt
+	doman doc/thrulay*.[1-8]
+	newinitd "${FILESDIR}"/thrulayd-init.d thrulayd
+	newconfd "${FILESDIR}"/thrulayd-conf.d thrulayd
 }

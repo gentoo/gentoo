@@ -97,7 +97,7 @@ src_install() {
 	newbin maillogconvert.pl awstats_maillogconvert.pl
 	newbin urlaliasbuilder.pl awstats_urlaliasbuilder.pl
 
-	dosym ../share/awstats/wwwroot/cgi-bin/awstats.pl /usr/bin/awstats.pl || die
+	dosym ../share/awstats/wwwroot/cgi-bin/awstats.pl /usr/bin/awstats.pl
 }
 
 pkg_postinst() {

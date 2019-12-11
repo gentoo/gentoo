@@ -43,7 +43,7 @@ python_compile() {
 
 python_compile_all() {
 	if use doc; then
-		emake -C docs html || die "Generating documentation failed"
+		emake -C docs html
 	fi
 }
 

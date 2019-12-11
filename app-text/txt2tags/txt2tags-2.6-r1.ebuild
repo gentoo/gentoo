@@ -61,11 +61,11 @@ src_install() {
 
 	if use vim-syntax; then
 		insinto /usr/share/vim/vimfiles/syntax/
-		doins extras/txt2tags.vim || die
+		doins extras/txt2tags.vim
 
 		echo 'au BufNewFile,BufRead *.t2t set ft=txt2tags' > "${T}/${PN}.vim"
 		insinto /usr/share/vim/vimfiles/ftdetect
-		doins "${T}/${PN}.vim" || die
+		doins "${T}/${PN}.vim"
 	fi
 
 	python_fix_shebang "${D}"

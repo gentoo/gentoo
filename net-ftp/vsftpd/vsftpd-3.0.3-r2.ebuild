@@ -81,7 +81,7 @@ src_compile() {
 src_install() {
 	into /usr
 	doman ${PN}.conf.5 ${PN}.8
-	dosbin ${PN} || die "disbin failed"
+	dosbin ${PN}
 
 	dodoc AUDIT BENCHMARKS BUGS Changelog FAQ \
 		README README.security REWARD SIZE \
@@ -89,10 +89,10 @@ src_install() {
 	newdoc ${PN}.conf ${PN}.conf.example
 
 	docinto security
-	dodoc SECURITY/* || die "dodoc failed"
+	dodoc SECURITY/*
 
 	insinto "/usr/share/doc/${PF}/examples"
-	doins -r EXAMPLE/* || die "doins faileD"
+	doins -r EXAMPLE/*
 
 	insinto /etc/${PN}
 	newins ${PN}.conf{,.example}

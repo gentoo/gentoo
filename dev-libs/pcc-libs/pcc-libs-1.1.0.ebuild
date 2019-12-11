@@ -20,9 +20,9 @@ S=${WORKDIR}/${PN}-${PVR/*_pre/}/
 
 src_compile() {
 	# not parallel-safe yet
-	emake -j1 || die "emake failed"
+	emake -j1
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install
 }

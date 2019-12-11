@@ -17,6 +17,6 @@ RDEPEND="app-misc/screen"
 PATCHES=( "${FILESDIR}/${PN}-CVE-2008-5371.patch" )
 
 src_install() {
-	dobin screenie || die "dobin failed"
+	dobin screenie
 	default
 }

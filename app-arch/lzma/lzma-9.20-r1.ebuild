@@ -25,7 +25,7 @@ src_compile() {
 }
 
 src_install() {
-	newbin CPP/7zip/Bundles/LzmaCon/lzma lzmacon || die
+	newbin CPP/7zip/Bundles/LzmaCon/lzma lzmacon
 	dodoc lzma.txt history.txt
 	use doc && dodoc 7zC.txt 7zFormat.txt Methods.txt
 }

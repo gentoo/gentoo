@@ -60,7 +60,7 @@ src_compile() {
 
 src_test() {
 	# workaround https://github.com/haskell/cabal/issues/2398
-	emake -k -C tests all || die
+	emake -k -C tests all
 }
 
 src_install() {

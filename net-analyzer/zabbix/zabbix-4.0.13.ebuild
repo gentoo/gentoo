@@ -142,13 +142,12 @@ src_configure() {
 		$(use_with ssh ssh2) \
 		$(use_with libxml2) \
 		$(use_with odbc unixodbc) \
-		$(use_with ssl openssl) \
-		|| die "econf failed"
+		$(use_with ssl openssl)
 }
 
 src_compile() {
 	if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ]; then
-		emake AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" || die "emake failed"
+		emake AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
 	fi
 }
 

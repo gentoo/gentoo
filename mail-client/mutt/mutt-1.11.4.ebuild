@@ -210,11 +210,11 @@ src_configure() {
 		myconf+=( "--with-homespool=Maildir" )
 	fi
 
-	econf "${myconf[@]}" || die "configure failed"
+	econf "${myconf[@]}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
+	emake DESTDIR="${D}" install
 	if use mbox; then
 		insinto /etc/mutt
 		newins "${FILESDIR}"/Muttrc.mbox Muttrc
@@ -229,7 +229,7 @@ src_install() {
 
 	# A man-page is always handy, so fake one
 	if use !doc; then
-		emake -C doc DESTDIR="${D}" muttrc.man || die
+		emake -C doc DESTDIR="${D}" muttrc.man
 		# make the fake slightly better, bug #413405
 		sed -e 's#@docdir@/manual.txt#http://www.mutt.org/doc/devel/manual.html#' \
 			-e 's#in @docdir@,#at http://www.mutt.org/,#' \

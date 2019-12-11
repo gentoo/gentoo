@@ -152,7 +152,7 @@ src_install () {
 	rm "${ED}"/usr/share/libtool &> /dev/null
 	# Avoid collisions with libevent
 	rm -rf "${ED}"/usr/include/event2 &> /dev/null
-	dodoc README AUTHORS NEWS VERSION || die
+	dodoc README AUTHORS NEWS VERSION
 }
 
 src_test() {

@@ -98,11 +98,11 @@ src_install() {
 	mv bin lib "${D}"/${DIR} || die
 
 #	for file in "${D}"/${DIR}/bin/*; do
-#		dosym /${DIR}/bin/$(basename "${file}") /usr/bin/$(basename "${file}") || die
+#		dosym /${DIR}/bin/$(basename "${file}") /usr/bin/$(basename "${file}")
 #	done
 
 #	for file in $(find "${D}"/usr/lib/${PN}/bin/ -maxdepth 1 -type f ! -name ".*"); do
-#		dosym /${DIR}/bin/$(basename "${file}") /usr/bin/$(basename "${file}") || die
+#		dosym /${DIR}/bin/$(basename "${file}") /usr/bin/$(basename "${file}")
 #	done
 
 	for file in "${D}"/usr/bin/{*,.*}; do

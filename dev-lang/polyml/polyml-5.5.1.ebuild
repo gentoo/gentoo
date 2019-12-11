@@ -68,5 +68,5 @@ src_compile() {
 }
 
 src_test() {
-	emake tests || die "tests failed"
+	emake tests
 }

@@ -34,7 +34,7 @@ java_prepare() {
 src_install() {
 	java-pkg_dojar "${S}"/dist/avalon-framework.jar
 
-	dodoc NOTICE.TXT || die
+	dodoc NOTICE.TXT
 	use doc && java-pkg_dojavadoc target/docs
 	use source && java-pkg_dosrc impl/src/java/*
 }

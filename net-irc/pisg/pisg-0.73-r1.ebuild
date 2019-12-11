@@ -32,7 +32,7 @@ src_compile() {
 src_install() {
 	perl_set_version
 
-	dobin pisg || die "dobin failed"
+	dobin pisg
 
 	insinto "${VENDOR_LIB}"
 	doins -r modules/.

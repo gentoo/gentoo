@@ -45,7 +45,7 @@ src_compile() {
 
 _apply_linguas() {
 	mv "${D}"/usr/share/locale{,_ALL} || die
-	dodir /usr/share/locale || die
+	dodir /usr/share/locale
 	for lingua in ${LINGUAS}; do
 		[[ -d "${D}"/usr/share/locale_ALL/${lingua} ]] || break
 		mv "${D}"/usr/share/{locale_ALL/${lingua},locale/} || die

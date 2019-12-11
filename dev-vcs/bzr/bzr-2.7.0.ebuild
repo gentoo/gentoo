@@ -82,10 +82,10 @@ python_install_all() {
 
 	if use doc; then
 		docinto developers
-		dodoc -r doc/developers/* || die
+		dodoc -r doc/developers/*
 		for doc in mini-tutorial tutorials user-{guide,reference}; do
 			docinto ${doc}
-			dodoc -r doc/en/${doc}/* || die
+			dodoc -r doc/en/${doc}/*
 		done
 	fi
 

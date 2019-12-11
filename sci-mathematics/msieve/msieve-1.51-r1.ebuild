@@ -49,6 +49,6 @@ src_install() {
 	mkdir -p "${D}/usr/share/doc/${P}/"
 	cp include/* "${D}/usr/include/msieve" || die "Failed to install"
 	cp libmsieve.a "${D}/usr/lib/" || die "Failed to install"
-	dobin msieve || die "Failed to install"
+	dobin msieve
 	cp Readme* "${D}/usr/share/doc/${P}/" || die "Failed to install"
 }

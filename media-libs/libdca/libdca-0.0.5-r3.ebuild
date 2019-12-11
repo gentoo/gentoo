@@ -43,11 +43,11 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	emake OPT_CFLAGS="" || die
+	emake OPT_CFLAGS=""
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	find "${ED}" -name '*.la' -exec rm -f '{}' +
 	rm -f "${ED}"/usr/$(get_libdir)/libdts.a

@@ -56,24 +56,24 @@ src_compile() {
 		local target=all
 	fi
 
-	emake CC="$(tc-getCC) ${LDFLAGS}" ${target} || die
+	emake CC="$(tc-getCC) ${LDFLAGS}" ${target}
 }
 
 src_install() {
 	keepdir /boot
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	if use !minimal; then
 		into /
-		dosbin "${WORKDIR}"/dolilo/dolilo || die
+		dosbin "${WORKDIR}"/dolilo/dolilo
 
 		into /usr
-		dosbin keytab-lilo.pl || die
+		dosbin keytab-lilo.pl
 
 		insinto /etc
-		newins "${FILESDIR}"/lilo.conf lilo.conf.example || die
+		newins "${FILESDIR}"/lilo.conf lilo.conf.example
 
-		newconfd "${WORKDIR}"/dolilo/dolilo.conf.d dolilo.example || die
+		newconfd "${WORKDIR}"/dolilo/dolilo.conf.d dolilo.example
 
 		dodoc CHANGELOG* readme/README.* readme/INCOMPAT README
 		docinto samples ; dodoc sample/*
