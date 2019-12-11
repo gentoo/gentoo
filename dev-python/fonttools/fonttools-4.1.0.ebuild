@@ -29,6 +29,22 @@ DEPEND="${RDEPEND}
 		app-arch/zopfli
 	)"
 
+python_prepare_all() {
+	# When dev-python/pytest-shutil is installed, we get weird import errors.
+	# This is due to incomplete nesting in the Tests/ tree:
+	#
+	#   Tests/feaLib/__init__.py
+	#   Tests/ufoLib/__init__.py
+	#   Tests/svgLib/path/__init__.py
+	#   Tests/otlLib/__init__.py
+	#   Tests/varLib/__init__.py
+	#
+	# This tree requires an __init__.py in Tests/svgLib/ too, bug #701148.
+	touch Tests/svgLib/__init__.py || die
+
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
 	# virtualx used when matplotlib is installed causing plot module tests to run
 	virtx pytest -vv Tests fontTools || die "pytest failed"
