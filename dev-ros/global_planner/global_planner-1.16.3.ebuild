@@ -9,22 +9,26 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="A ROS node that simply forwards odometry information"
+DESCRIPTION="Path planner library and node"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=
-	dev-ros/angles
+	>=dev-ros/costmap_2d-1.16
+	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/nav_core
+	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/navfn
+	dev-ros/pluginlib
 	dev-ros/roscpp
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/rosconsole
-	dev-ros/nav_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP},${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP},${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2_ros
-	dev-ros/message_filters
+
+	dev-libs/boost:=
+	dev-libs/console_bridge:=
+
+	dev-ros/angles
 	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/boost170.patch" )

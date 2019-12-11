@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,23 +8,22 @@ KEYWORDS="~amd64 ~arm"
 
 inherit ros-catkin
 
-DESCRIPTION="Recovery behavior that attempts to clear space by reverting the costmaps to the static map"
+DESCRIPTION="Attempts to find a legal place to put a carrot for the robot to follow"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/costmap_2d-1.16
+	dev-ros/base_local_planner
+	dev-ros/costmap_2d
 	dev-cpp/eigen:3
 	dev-ros/nav_core
 	dev-ros/pluginlib
 	dev-ros/roscpp
+	dev-ros/tf2
 	dev-ros/tf2_ros
 
-	dev-libs/boost:=[threads]
-	dev-libs/console_bridge:=
+	dev-libs/boost:=
+	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	dev-ros/cmake_modules
-	test? ( dev-ros/rostest dev-cpp/gtest )
-"
+DEPEND="${RDEPEND}"

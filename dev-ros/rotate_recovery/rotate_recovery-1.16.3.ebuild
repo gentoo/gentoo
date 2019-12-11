@@ -8,23 +8,26 @@ KEYWORDS="~amd64 ~arm"
 
 inherit ros-catkin
 
-DESCRIPTION="Recovery behavior that attempts to clear space by reverting the costmaps to the static map"
+DESCRIPTION="Recovery behavior that attempts to clear space by performing a 360 degree rotation of the robot"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/costmap_2d-1.16.3
+	dev-ros/angles
+	dev-ros/base_local_planner
+	dev-ros/costmap_2d
 	dev-cpp/eigen:3
-	dev-ros/nav_core
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	>=dev-ros/nav_core-1.16
 	dev-ros/pluginlib
 	dev-ros/roscpp
+	dev-ros/tf2
+	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2_ros
 
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
-	dev-ros/cmake_modules
-	test? ( dev-ros/rostest dev-cpp/gtest )
-"
+	dev-ros/cmake_modules"
