@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/Baka-MPlayer-${PV}"
 
-PATCHES=( "${FILESDIR}/${P}-gcc5.patch" )
+PATCHES=( "${FILESDIR}/${P}-gcc5.patch" "${FILESDIR}/${P}-mpv23.patch" )
 
 src_prepare() {
 	default

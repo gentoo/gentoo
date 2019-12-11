@@ -1,0 +1,13 @@
+diff --git a/src/mpvhandler.cpp b/src/mpvhandler.cpp
+index 7ba06e4..b9ccbeb 100644
+--- a/src/mpvhandler.cpp
++++ b/src/mpvhandler.cpp
+@@ -675,7 +675,7 @@ void MpvHandler::LoadFileInfo()
+     fileInfo.media_title = mpv_get_property_string(mpv, "media-title");
+     // get length
+     double len;
+-    mpv_get_property(mpv, "length", MPV_FORMAT_DOUBLE, &len);
++    mpv_get_property(mpv, "duration", MPV_FORMAT_DOUBLE, &len);
+     fileInfo.length                  = (int)len;
+ 
+     LoadTracks();
