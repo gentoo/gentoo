@@ -33,7 +33,7 @@ bazel_external_uris="
 	https://github.com/bazelbuild/rules_docker/releases/download/v0.10.0/rules_docker-v0.10.0.tar.gz -> bazelbuild-rules_docker-v0.10.0.tar.gz
 	https://github.com/bazelbuild/rules_swift/releases/download/0.11.1/rules_swift.0.11.1.tar.gz -> bazelbuild-rules_swift.0.11.1.tar.gz
 	https://github.com/google/farmhash/archive/816a4ae622e964763ca0862d9dbd19324a1eaf45.tar.gz -> farmhash-816a4ae622e964763ca0862d9dbd19324a1eaf45.tar.gz
-	https://github.com/google/gemmlowp/archive/12fed0cd7cfcd9e169bf1925bc3a7a58725fdcc3.zip -> gemmlowp-12fed0cd7cfcd9e169bf1925bc3a7a58725fdcc3.zip
+	https://github.com/google/gemmlowp/archive/12fed0cd7cfcd9e169bf1925bc3a7a58725fdcc3.tar.gz -> gemmlowp-12fed0cd7cfcd9e169bf1925bc3a7a58725fdcc3.tar.gz
 	https://github.com/google/highwayhash/archive/fd3d9af80465e4383162e4a7c5e2f406e82dd968.tar.gz -> highwayhash-fd3d9af80465e4383162e4a7c5e2f406e82dd968.tar.gz
 	https://github.com/mborgerding/kissfft/archive/36dbc057604f00aacfc0288ddad57e3b21cfc1b8.tar.gz -> kissfft-36dbc057604f00aacfc0288ddad57e3b21cfc1b8.tar.gz
 	https://github.com/nlopezgi/bazel-toolchains/archive/94d31935a2c94fe7e7c7379a0f3393e181928ff7.tar.gz -> bazel-toolchains-94d31935a2c94fe7e7c7379a0f3393e181928ff7.tar.gz
@@ -41,7 +41,7 @@ bazel_external_uris="
 	https://github.com/llvm-mirror/llvm/archive/7a7e03f906aada0cf4b749b51213fe5784eeff84.tar.gz -> llvm-7a7e03f906aada0cf4b749b51213fe5784eeff84.tar.gz
 	cuda? (
 		https://github.com/nvidia/nccl/archive/0ceaec9cee96ae7658aa45686853286651f36384.tar.gz -> nvidia-nccl-0ceaec9cee96ae7658aa45686853286651f36384.tar.gz
-		https://github.com/NVlabs/cub/archive/1.8.0.zip -> cub-1.8.0.zip
+		https://github.com/NVlabs/cub/archive/1.8.0.tar.gz -> cub-1.8.0.tar.gz
 	)
 	python? (
 		https://github.com/intel/ARM_NEON_2_x86_SSE/archive/1200fe90bb174a6224a525ee60148671a786a71f.tar.gz -> ARM_NEON_2_x86_SSE-1200fe90bb174a6224a525ee60148671a786a71f.tar.gz
