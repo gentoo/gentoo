@@ -57,6 +57,9 @@ python_test() {
 		# https://github.com/giampaolo/pyftpdlib/issues/513
 		# https://bugs.gentoo.org/676232
 		pyftpdlib/test/test_servers.py::TestFtpAuthentication::test_anon_auth
+		# https://github.com/giampaolo/pyftpdlib/issues/513
+		# https://bugs.gentoo.org/702578
+		pyftpdlib/test/test_servers.py::TestFtpAuthentication::test_auth_failed
 	)
 	# Tests fail with TZ=GMT, see https://bugs.gentoo.org/666623
 	TZ=UTC+1 pytest -vv \
