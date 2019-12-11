@@ -591,7 +591,7 @@ app-benchmarks/hey 0.1.1_p20181017 0.1.2: HTTP load generator, ApacheBench (ab) 
 app-benchmarks/httperf 0.9.1_p20181111 0.9.1_p20181111-r1: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
 app-benchmarks/interbench 0.31: A Linux interactivity benchmark
-app-benchmarks/ioping 0.9 1.0: Simple disk I/0 latency measuring tool
+app-benchmarks/ioping 0.9 1.0 1.1: Simple disk I/0 latency measuring tool
 app-benchmarks/iozone 3.471 3.484 3.487: Filesystem benchmarking program
 app-benchmarks/libc-bench 20110206: Time and memory-efficiency tests of various C/POSIX standard library functions
 app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
@@ -1941,7 +1941,7 @@ app-misc/conmux 0.15.1-r3: A console multiplexor
 app-misc/countrycodes 1.0.5-r3: An ISO 3166 country code finder
 app-misc/cpipe 3.0.3: Counting pipe, measures data transfered over pipe
 app-misc/crunch 3.6: A wordlist generator
-app-misc/cstream 3.1.1: general-purpose stream-handling tool like UNIX dd
+app-misc/cstream 3.1.1-r1: general-purpose stream-handling tool like UNIX dd
 app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common unix-based commands
 app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.17 1.22: A program (and preload library) to fake system date
@@ -1974,7 +1974,7 @@ app-misc/evtest 1.33 1.34: test program for capturing input device events
 app-misc/faq 0.0.2: Format agnostic jQ
 app-misc/fdupes 1.5.1 1.6.1 1.6.1-r1 9999: Identify/delete duplicate files residing within specified directories
 app-misc/fdutils 5.5.20060227 5.5.20060227-r1: utilities for configuring and debugging the Linux floppy driver
-app-misc/fhem 5.9 5.9-r1: A GPL'd perl server for house automation
+app-misc/fhem 5.9-r1: A GPL'd perl server for house automation
 app-misc/figlet 2.2.5 2.2.5-r1: program for making large letters out of ordinary text
 app-misc/flirc 3.22.4 3.24.0: Allows you to pair any remote control with your computer or media center
 app-misc/fr24feed 1.0.24_p5: Flightradar24 data sharing software
@@ -2043,7 +2043,7 @@ app-misc/khard 0.11.4 0.12.2 0.13.0: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/kryoflux-dtc 2.6: KryoFlux Host Software
 app-misc/ktoblzcheck 1.49: Library to check account numbers and bank codes of German banks
-app-misc/lcd4linux 0.11.0_pre20170527 0.11.0_pre20170527-r4: A small program that grabs information and displays it on an external LCD
+app-misc/lcd4linux 0.11.0_pre20170527-r4: A small program that grabs information and displays it on an external LCD
 app-misc/lcdproc 0.5.9: Displays real-time system information from your Linux/*BSD box on a LCD
 app-misc/leave 20100918-r1: FreeBSD command-line tool that reminds you when its time to leave
 app-misc/ledit 2.03: A line editor to be used with interactive commands
@@ -4607,7 +4607,7 @@ dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.8.0 1.9.0-r1 1.10.0: General-purpose programming language with an emphasis on functional programming
 dev-lang/closure-compiler-bin 20170218: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.12.5 2.3.2: A little language that compiles into javascript
-dev-lang/crystal 0.30.1 0.31.1: The Crystal Programming Language
+dev-lang/crystal 0.30.1 0.31.1 0.32.0: The Crystal Programming Language
 dev-lang/duktape 2.2.1 2.4.0: Embeddable Javascript engine
 dev-lang/elixir 1.4.5 1.6.6 1.8.1 1.8.2 1.9.2 1.9.4: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
@@ -13971,6 +13971,7 @@ media-sound/pulseaudio 12.2-r1 12.2-r2 13.0: A networked sound server with an ad
 media-sound/pulseaudio-ctl 1.66: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.3 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth (alongside SBC and native+ofono headset)
 media-sound/pulseeffects 4.6.8 4.6.9 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
+media-sound/pulsemixer 1.5.0 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
@@ -17754,7 +17755,7 @@ sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
 sys-libs/darwin-libc-headers 1158.50.2-r1 1244.50.9-r1 1272.250.1-r1: Darwin system headers from Libc 1272.250.1, macOS 10.14.3
 sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r2 4.3.29_p1-r2 4.4.20_p4-r2 4.5.20_p2-r2 4.6.21_p4-r1 4.7.25_p4-r1 4.8.30-r3 5.1.29-r2 5.3.28-r2 5.3.28-r4 6.0.35-r2 6.1.38 6.2.38 18.1.32: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.44.5 1.45.2 1.45.3 1.45.4: e2fsprogs libraries (common error and subsystem)
-sys-libs/efivar 30 31 32 32-r1 35 37: Tools and library to manipulate EFI variables
+sys-libs/efivar 37-r1: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
 sys-libs/freeipmi 1.5.7 1.6.3 1.6.4: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
