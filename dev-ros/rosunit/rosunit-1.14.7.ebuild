@@ -5,17 +5,20 @@ EAPI=5
 
 ROS_REPO_URI="https://github.com/ros/ros"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python{2_7,3_5} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} pypy{,3} )
 ROS_SUBDIR=tools/${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="ROS dependency aware build tool"
+DESCRIPTION="Unit-testing package for ROS"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-python/rospkg[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/rospkg[${PYTHON_USEDEP}]
+	dev-ros/roslib[${PYTHON_USEDEP}]
+"
 DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "

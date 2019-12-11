@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,6 +14,6 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND=""
+RDEPEND="dev-ros/rospack"
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/catkin_prefix2.patch" )
+PATCHES=( "${FILESDIR}/catkin_prefix.patch" )

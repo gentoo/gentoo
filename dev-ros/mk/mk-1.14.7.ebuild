@@ -5,15 +5,17 @@ EAPI=5
 
 ROS_REPO_URI="https://github.com/ros/ros"
 KEYWORDS="~amd64 ~arm"
-ROS_SUBDIR=tools/${PN}
+ROS_SUBDIR=core/${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Assorted shell commands for using ros with bash"
+DESCRIPTION="A collection of .mk include files for building ROS architectural elements"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/catkin_prefix2.patch" )
+RDEPEND="${DEPEND}
+	dev-ros/rospack
+	dev-ros/rosbuild"
