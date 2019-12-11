@@ -7463,7 +7463,7 @@ dev-python/automaton 0.8.0 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.3.2 1.3.3 1.3.5 1.4 1.4.3 1.4.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/aws-sam-translator 1.11.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.4.2: AWS X-Ray SDK for Python
-dev-python/awscli 1.16.104 1.16.125 1.16.148 1.16.190 1.16.215 1.16.220 1.16.233-r1 1.16.261 1.16.278 1.16.283 1.16.292: Universal Command Line Environment for AWS
+dev-python/awscli 1.16.104 1.16.125 1.16.148 1.16.190 1.16.215 1.16.220 1.16.233-r1 1.16.261 1.16.278 1.16.283 1.16.292 1.16.300: Universal Command Line Environment for AWS
 dev-python/axiom 0.7.2 0.7.5: Object database implemented on top of SQLite
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.1.0: Specifications for callback functions passed in to an API
@@ -7512,7 +7512,7 @@ dev-python/bokeh 0.11.1 0.12.6: Statistical and interactive HTML plots for Pytho
 dev-python/booleanOperations 0.8.0 0.8.2: Boolean operations on paths
 dev-python/boto 2.41.0 2.48.0 2.49.0: Amazon Web Services API
 dev-python/boto3 1.9.4-r1 1.9.122 1.10.2 9999: The AWS SDK for Python
-dev-python/botocore 1.12.4-r1 1.12.81 1.12.122 1.12.205 1.12.210 1.12.223 1.12.251 1.13.2 1.13.14 1.13.19 1.13.28 9999: Low-level, data-driven core of boto 3.
+dev-python/botocore 1.12.4-r1 1.12.81 1.12.122 1.12.205 1.12.210 1.12.223 1.12.251 1.13.2 1.13.14 1.13.19 1.13.28 1.13.36 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12 0.12.13 0.12.16: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.0.0 1.2.1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.17.1 0.18: Syntax highlighting and autocompletion for the Python interpreter
@@ -16988,7 +16988,7 @@ sys-apps/dbus 1.12.16: A message bus system, a simple way for applications to ta
 sys-apps/dbus-broker 18 21 9999: Linux D-Bus Message Broker
 sys-apps/dcfldd 1.3.4.1-r1: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
-sys-apps/debianutils 4.8.3 4.8.6.3 4.9: A selection of tools from Debian
+sys-apps/debianutils 4.8.3 4.8.6.3 4.9 4.9.1: A selection of tools from Debian
 sys-apps/diffutils 3.6-r1 3.7: Tools to make diffs and compare files
 sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 3.1 3.2: DMI (Desktop Management Interface) table related utilities
@@ -17726,6 +17726,8 @@ sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.4.206 4.9.192 4.9.199 4.9.203 4.9.205 4.9.206 4.14.143 4.14.152 4.14.156 4.14.157 4.14.158 4.19.72 4.19.82 4.19.86 4.19.87 4.19.88 5.3.12 5.3.13 5.3.14-r1 5.3.15 5.4.0 5.4.1 5.4.2: Full sources including the Gentoo patchset for the 5.4 kernel tree
 sys-kernel/git-sources 5.5_rc1: The very latest -git version of the Linux kernel
+sys-kernel/installkernel-gentoo 1: Gentoo fork of installkernel script from debianutils
+sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.19: Developer documentation generated from the Linux kernel
