@@ -66,7 +66,7 @@ src_install() {
 	newinitd "${FILESDIR}/${SIAB_DAEMON}.init" "${SIAB_DAEMON}"
 	newconfd "${FILESDIR}/${SIAB_DAEMON}.conf" "${SIAB_DAEMON}"
 
-	# Install systemd unit files
+	# Install systemd unit file.
 	systemd_dounit "${FILESDIR}"/shellinaboxd.service
 
 	# Install CSS files.

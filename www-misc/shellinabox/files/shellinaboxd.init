@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 my_daemon="shellinaboxd"
@@ -33,7 +33,7 @@ start_pre() {
             SIAB_CSS_FILES+=("\"${_NAME}\":-${_CSS}")
         done
 
-        # The 1st one, which the default one, must be turned on using a + sign.
+        # The 1st one, which is the default one, must be turned on using the + sign.
         SIAB_CSS_FILES[0]=$(sed 's#:-#:+#' <<< ${SIAB_CSS_FILES[0]})
 
         command_args="${command_args} --user-css=$(my_join , "${SIAB_CSS_FILES[@]}")"
@@ -50,6 +50,7 @@ start() {
         --pidfile ${pidfile} \
         --make-pidfile \
         --exec ${command} \
+        -1 ${SIAB_LOGFILE} -2 ${SIAB_LOGFILE} \
         -- ${command_args}
     eend $?
 }
