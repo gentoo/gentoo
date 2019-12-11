@@ -17,6 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="down-root examples inotify iproute2 libressl lz4 +lzo mbedtls pam"
 IUSE+=" pkcs11 +plugins selinux +ssl static systemd test userland_BSD"
 
+RESTRICT="!test? ( test )"
 REQUIRED_USE="static? ( !plugins !pkcs11 )
 	pkcs11? ( ssl )
 	!plugins? ( !pam !down-root )
