@@ -1,0 +1,47 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Load lustre modules"
+
+extra_commands="checkmodule"
+
+depend() {
+        need lnet
+        before netmount
+}
+
+checkmodule() {
+        local LOADED="$(lctl modules | awk -F"/" /lustre/'{print $2F}')"
+        for mod in ${LOADED[@]}; do
+                ewarn "Module is still loaded: ${mod}"
+                eend $*
+        done
+}
+
+start() {
+        if [ "${RC_CMD}" = "restart" ];
+        then
+                einfo "Restarting Lustre..."
+                checkmodule
+        fi
+
+        ebegin "Loading Lustre modules..."
+        modprobe lustre
+        eend $*
+}
+
+stop() {
+        local LMODULES=( "lustre" "osc" "mgc" "lmv" "fld" "mdc" "fid" "lov" "ptlrpc" )
+        ebegin "Trying to unmount all Lustre fs"
+        umount -a -t lustre
+        eend $*
+        einfo "Unloading lustre modules:"
+        for mod in ${LMODULES[@]}; do
+                ebegin "... ${mod}"
+                modprobe -r ${mod}
+                eend $*
+        done
+
+        checkmodule
+}
