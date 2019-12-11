@@ -1,0 +1,49 @@
+From 77797b83e8d9ed0f691fb8cb1900de071ad68329 Mon Sep 17 00:00:00 2001
+From: Daniel Verkamp <dverkamp@chromium.org>
+Date: Fri, 4 Oct 2019 12:31:32 -0700
+Subject: [PATCH] Fix sparse file offset overflow on 32-bit systems
+
+On architectures where size_t is 32 bits but file offsets are 64 bits
+(such as 32-bit Linux with _FILE_OFFSET_BITS=64), the POSIX disk reader
+would incorrectly skip large sparse regions due to a 32-bit integer
+overflow in _archive_read_data_block().
+
+The bytes variable was used to store the difference between two 64-bit
+integers, but bytes is a size_t.  Since this value of bytes was not used
+after the block handling sparse offsets (it is always overwritten in the
+block below), replace it with an int64_t sparse_bytes variable that can
+always represent the difference without truncation.
+
+Signed-off-by: Daniel Verkamp <dverkamp@chromium.org>
+---
+ libarchive/archive_read_disk_posix.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/libarchive/archive_read_disk_posix.c b/libarchive/archive_read_disk_posix.c
+index 87963c3c..f62d182e 100644
+--- a/libarchive/archive_read_disk_posix.c
++++ b/libarchive/archive_read_disk_posix.c
+@@ -694,6 +694,7 @@ _archive_read_data_block(struct archive *_a, const void **buff,
+ 	struct tree *t = a->tree;
+ 	int r;
+ 	ssize_t bytes;
++	int64_t sparse_bytes;
+ 	size_t buffbytes;
+ 	int empty_sparse_region = 0;
+ 
+@@ -792,9 +793,9 @@ _archive_read_data_block(struct archive *_a, const void **buff,
+ 			a->archive.state = ARCHIVE_STATE_FATAL;
+ 			goto abort_read_data;
+ 		}
+-		bytes = t->current_sparse->offset - t->entry_total;
+-		t->entry_remaining_bytes -= bytes;
+-		t->entry_total += bytes;
++		sparse_bytes = t->current_sparse->offset - t->entry_total;
++		t->entry_remaining_bytes -= sparse_bytes;
++		t->entry_total += sparse_bytes;
+ 	}
+ 
+ 	/*
+-- 
+2.23.0.581.g78d2f28ef7-goog
+

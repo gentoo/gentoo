@@ -1,0 +1,43 @@
+From edaacc6e6452164785a89e9384d722dc214cae51 Mon Sep 17 00:00:00 2001
+From: Dmitry Torokhov <dtor@chromium.org>
+Date: Tue, 25 Jun 2019 15:17:52 -0700
+Subject: [PATCH] archive_read_next_header2: clean old entry entry data
+
+We need to clean old entry data in archive_read_next_header2 in Windows
+and Posix disk readers to ensure consistent results. One possible
+failure mode: sparse data from the previous entry is carries over to
+next non-sparse file entry, causing it to be mishandled.
+---
+ libarchive/archive_read_disk_posix.c   | 2 ++
+ libarchive/archive_read_disk_windows.c | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/libarchive/archive_read_disk_posix.c b/libarchive/archive_read_disk_posix.c
+index c4df6c94..87963c3c 100644
+--- a/libarchive/archive_read_disk_posix.c
++++ b/libarchive/archive_read_disk_posix.c
+@@ -1143,6 +1143,8 @@ _archive_read_next_header2(struct archive *_a, struct archive_entry *entry)
+ 		t->entry_fd = -1;
+ 	}
+ 
++	archive_entry_clear(entry);
++
+ 	for (;;) {
+ 		r = next_entry(a, t, entry);
+ 		if (t->entry_fd >= 0) {
+diff --git a/libarchive/archive_read_disk_windows.c b/libarchive/archive_read_disk_windows.c
+index 964de749..3a58193f 100644
+--- a/libarchive/archive_read_disk_windows.c
++++ b/libarchive/archive_read_disk_windows.c
+@@ -1110,6 +1110,8 @@ _archive_read_next_header2(struct archive *_a, struct archive_entry *entry)
+ 		t->entry_fh = INVALID_HANDLE_VALUE;
+ 	}
+ 
++	archive_entry_clear(entry);
++
+ 	while ((r = next_entry(a, t, entry)) == ARCHIVE_RETRY)
+ 		archive_entry_clear(entry);
+ 
+-- 
+2.22.0.410.gd8fdbe21b5-goog
+
