@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,7 +41,7 @@ src_install() {
 		ICONDIR="${ED}${SITEETC}/${PN}" \
 		install-en $(use l10n_ja && echo install-ja) install-icons
 
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	dodoc ChangeLog* NEWS README
 	use l10n_ja && dodoc BUGS.ja NEWS.ja README.ja
 
