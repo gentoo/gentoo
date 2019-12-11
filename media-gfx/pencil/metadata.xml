@@ -5,4 +5,12 @@
 	<upstream>
 		<remote-id type="sourceforge">pencil-planner</remote-id>
 	</upstream>
+	<maintainer type="person">
+		<email>iba68@mail.ch</email>
+		<name>Raimund Mathis</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 </pkgmetadata>
