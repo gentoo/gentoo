@@ -42,7 +42,7 @@ DEPEND="${RDEPEND} ${BDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
 "
-PATCHES=( "${FILESDIR}/gentoo.patch" )
+PATCHES=( "${FILESDIR}/gentoo.patch" "${FILESDIR}/yaml_load.patch" )
 
 python_test() {
 	nosetests --with-coverage --cover-package=rospkg --with-xunit test || die
