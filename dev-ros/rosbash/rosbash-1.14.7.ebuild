@@ -14,6 +14,6 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND=""
+RDEPEND="dev-ros/rospack"
 DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}/catkin_prefix.patch" )
