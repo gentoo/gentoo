@@ -1,0 +1,7 @@
+--- a/Makefile
++++ b/Makefile
+@@ -27,3 +27,3 @@ srcdir=$(dir $(abspath $(firstword $(MAKEFILE_LIST))))$(parsedir)
+ VPATH=$(srcdir)
+-mandir?=$(prefix)/share/man
++mandir?=$(DESTDIR)$(prefix)/share/man
+ 

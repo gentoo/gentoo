@@ -1,12 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF="yes"
-AUTOTOOLS_IN_SOURCE_BUILD="yes"
-
-inherit user autotools-utils systemd
+inherit user autotools systemd
 
 DESCRIPTION="Export command line tools to a web based terminal emulator"
 HOMEPAGE="https://github.com/shellinabox/shellinabox"
@@ -14,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="+pam"
 
 DEPEND="
@@ -40,6 +37,11 @@ EOF
 pkg_setup() {
 	enewgroup "${SIAB_DAEMON}"
 	enewuser "${SIAB_DAEMON}" -1 -1 -1 "${SIAB_DAEMON}"
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {
