@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vdr-plugin-2
 
@@ -14,7 +14,7 @@ SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
 
-DEPEND=">=media-video/vdr-2"
+DEPEND="media-video/vdr"
 
 src_prepare() {
 	# remove untranslated po files
@@ -23,6 +23,8 @@ src_prepare() {
 	vdr-plugin-2_src_prepare
 
 	fix_vdr_libsi_include loadepg.h
+
+	eapply "${FILESDIR}/${P}_asprintf.patch"
 }
 
 src_install() {

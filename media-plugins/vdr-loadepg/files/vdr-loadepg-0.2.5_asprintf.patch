@@ -1,0 +1,60 @@
+https://bugs.gentoo.org/663348
+
+compile fix for  invalid conversion from char to const char*
+thx to Michael Brakemeier for point this out
+
+Signed-of-by: Joerg Bornkessel <hd_brummy@astrali.de> (17 Nov 2019)
+diff -Naur loadepg-0.2.5.orig/loadepg.c loadepg-0.2.5/loadepg.c
+--- loadepg-0.2.5.orig/loadepg.c	2019-11-17 14:49:27.637235533 +0100
++++ loadepg-0.2.5/loadepg.c	2019-11-17 14:50:23.690235533 +0100
+@@ -159,7 +159,7 @@
+             (lProviders + nProviders)->SourceId = cSource::FromString(string2);
+             asprintf(&(lProviders + nProviders)->Parm1, "%i:%c:%s:%i", int1, char1, string2, int2);
+             asprintf(&(lProviders + nProviders)->Parm2, "%s", string3);
+-            asprintf(&(lProviders + nProviders)->Parm3, '\0');
++            asprintf(&(lProviders + nProviders)->Parm3, "");
+             nProviders ++;
+             IsSkyThemesNull = true;
+           }
+@@ -169,8 +169,8 @@
+             (lProviders + nProviders)->DataFormat = DATA_FORMAT_MHW_1;
+             (lProviders + nProviders)->SourceId = cSource::FromString(string2);
+             asprintf(&(lProviders + nProviders)->Parm1, "%i:%c:%s:%i", int1, char1, string2, int2);
+-            asprintf(&(lProviders + nProviders)->Parm2, '\0');
+-            asprintf(&(lProviders + nProviders)->Parm3, '\0');
++            asprintf(&(lProviders + nProviders)->Parm2, "");
++            asprintf(&(lProviders + nProviders)->Parm3, "");
+             nProviders ++;
+           }
+           else if(sscanf(Line, "MHW_2=%[^:] :%i :%c :%[^:] :%i ", string1, &int1, &char1, string2, &int2) == 5)
+@@ -179,8 +179,8 @@
+             (lProviders + nProviders)->DataFormat = DATA_FORMAT_MHW_2;
+             (lProviders + nProviders)->SourceId = cSource::FromString(string2);
+             asprintf(&(lProviders + nProviders)->Parm1, "%i:%c:%s:%i", int1, char1, string2, int2);
+-            asprintf(&(lProviders + nProviders)->Parm2, '\0');
+-            asprintf(&(lProviders + nProviders)->Parm3, '\0');
++            asprintf(&(lProviders + nProviders)->Parm2, "");
++            asprintf(&(lProviders + nProviders)->Parm3, "");
+             nProviders ++;
+           }
+           else if(sscanf(Line, "FILE=%[^:] :%s ", string1, string2) == 2)
+@@ -189,8 +189,8 @@
+             (lProviders + nProviders)->DataFormat = DATA_FORMAT_FILE;
+             (lProviders + nProviders)->SourceId = 0;
+             asprintf(&(lProviders + nProviders)->Parm1, "%s", string2);
+-            asprintf(&(lProviders + nProviders)->Parm2, '\0');
+-            asprintf(&(lProviders + nProviders)->Parm3, '\0');
++            asprintf(&(lProviders + nProviders)->Parm2, "");
++            asprintf(&(lProviders + nProviders)->Parm3, "");
+             nProviders ++;
+           }
+           else if(sscanf(Line, "SCRIPT=%[^:] :%[^:] :%s ", string1, string2, string3) == 3)
+@@ -200,7 +200,7 @@
+             (lProviders + nProviders)->SourceId = 0;
+             asprintf(&(lProviders + nProviders)->Parm1, "%s", string2);
+             asprintf(&(lProviders + nProviders)->Parm2, "%s", string3);
+-            asprintf(&(lProviders + nProviders)->Parm3, '\0');
++            asprintf(&(lProviders + nProviders)->Parm3, "");
+             nProviders ++;
+           }
+         }
