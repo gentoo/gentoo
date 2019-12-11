@@ -1,11 +1,14 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# This file requires >=portage-2.1.1
 # New entries go on top.
 
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
+
+# Ulrich Müller <ulm@gentoo.org> (2019-12-11)
+# Depends on last-rited app-i18n/man-pages-da.
+sys-apps/man-pages l10n_da
 
 # James Le Cuirot <chewi@gentoo.org> (2019-12-10)
 # The JIT feature only works on amd64 and x86.
