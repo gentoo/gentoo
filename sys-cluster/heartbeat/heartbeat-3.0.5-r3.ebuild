@@ -81,6 +81,6 @@ src_install() {
 	fi
 
 	if use doc ; then
-		dodoc README doc/*.txt doc/AUTHORS || die
+		dodoc README doc/*.txt doc/AUTHORS
 	fi
 }

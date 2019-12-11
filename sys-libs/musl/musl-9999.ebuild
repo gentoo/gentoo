@@ -109,7 +109,7 @@ src_install() {
 		dobin "${T}"/getent
 		dobin "${T}"/iconv
 		echo 'LDPATH="include ld.so.conf.d/*.conf"' > "${T}"/00musl || die
-		doenvd "${T}"/00musl || die
+		doenvd "${T}"/00musl
 	fi
 }
 

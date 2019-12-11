@@ -32,7 +32,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake pammoddir="$(getpam_mod_dir)" || die "emake failed"
+	emake pammoddir="$(getpam_mod_dir)"
 }
 
 src_install() {

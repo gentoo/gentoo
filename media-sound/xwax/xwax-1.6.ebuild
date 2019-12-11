@@ -67,12 +67,12 @@ src_install() {
 	# This is easier than setting all the environment variables
 	# needed, running the sed script required to get the man directory
 	# correct, and removing the GPL-2 after a 'make install' run
-	dobin xwax || die "failed to install xwax"
-	newbin scan xwax-scan || die "failed to install xwax-scan"
-	newbin import xwax-import || die "failed to install xwax-import"
-	doman xwax.1 || die "failed to install man page"
+	dobin xwax
+	newbin scan xwax-scan
+	newbin import xwax-import
+	doman xwax.1
 
-	dodoc ${DOCS} || die "failed to install docs"
+	dodoc ${DOCS}
 
 	insinto "/etc/security/limits.d"
 	newins "${FILESDIR}/xwax-etc-security-limits.conf" xwax.conf

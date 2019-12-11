@@ -81,8 +81,8 @@ src_install() {
 	autotools-utils_src_install
 
 	insinto /usr/$(get_libdir)/pkgconfig
-	doins "${AUTOTOOLS_BUILD_DIR}"/hamlib.pc || die "doins failed"
+	doins "${AUTOTOOLS_BUILD_DIR}"/hamlib.pc
 
 	echo "LDPATH=/usr/$(get_libdir)/hamlib" > "${T}"/73hamlib
-	doenvd "${T}"/73hamlib || die "doenvd failed"
+	doenvd "${T}"/73hamlib
 }

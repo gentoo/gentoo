@@ -89,5 +89,5 @@ src_install() {
 		PATH=${INSTALL_DIR}/bin
 		CONFIG_PROTECT=${INSTALL_DIR}/conf
 	EOF
-	doenvd 99"${PN}" || die "doenvd failed"
+	doenvd 99"${PN}"
 }

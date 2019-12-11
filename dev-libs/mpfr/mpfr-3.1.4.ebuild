@@ -50,6 +50,7 @@ multilib_src_install_all() {
 
 	# clean up html/license install
 	pushd "${ED}"/usr/share/doc/${PF} >/dev/null
-	dohtml *.html && rm COPYING* *.html || die
+	dohtml *.html
+	rm COPYING* *.html || die
 	popd >/dev/null
 }

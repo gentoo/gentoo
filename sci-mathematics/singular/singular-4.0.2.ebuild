@@ -80,7 +80,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake || die "emake failed"
+	emake
 
 	if use emacs; then
 		cd "${MY_SHARE_DIR}"singular/emacs/
@@ -92,26 +92,24 @@ src_compile() {
 # 	dodoc README
 # 	# execs and libraries
 # 	cd "${S}"/build/bin
-# 	dobin ${MY_PN}* gen_test change_cost solve_IP toric_ideal LLL \
-# 		|| die "failed to install binaries"
+# 	dobin ${MY_PN}* gen_test change_cost solve_IP toric_ideal LLL
 # 	insinto /usr/$(get_libdir)/${PN}
-# 	doins *.so || die "failed to install libraries"
+# 	doins *.so
 #
-# 	dosym ${MY_PN}-${MY_DIR} /usr/bin/${MY_PN} \
-# 		|| die "failed to create symbolic link"
+# 	dosym ${MY_PN}-${MY_DIR} /usr/bin/${MY_PN}
 #
 # 	# stuff from the share tar ball
 # 	cd "${WORKDIR}"/${MY_PN}/${MY_SHARE_DIR}
 # 	insinto /usr/share/${PN}
-# 	doins -r LIB  || die "failed to install lib files"
+# 	doins -r LIB
 # 	if use examples; then
 # 		insinto /usr/share/doc/${PF}
-# 		doins -r examples || die "failed to install examples"
+# 		doins -r examples
 # 	fi
 # 	if use doc; then
-# 		dohtml -r html/* || die "failed to install html docs"
+# 		dohtml -r html/*
 # 		insinto /usr/share/${PN}
-# 		doins doc/singular.idx || die "failed to install idx file"
+# 		doins doc/singular.idx
 # 		cp info/${PN}.hlp info/${PN}.info &&
 # 		doinfo info/${PN}.info \
 # 			|| die "failed to install info files"

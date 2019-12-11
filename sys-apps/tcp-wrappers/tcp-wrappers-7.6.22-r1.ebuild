@@ -50,7 +50,7 @@ temake() {
 		RANLIB="$(tc-getRANLIB)" \
 		COPTS="${CFLAGS} ${CPPFLAGS} ${mycppflags}" \
 		LDFLAGS="${LDFLAGS}" \
-		"$@" || die
+		"$@"
 }
 
 multilib_src_configure() {

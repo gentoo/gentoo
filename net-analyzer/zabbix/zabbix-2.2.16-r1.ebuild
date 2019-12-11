@@ -135,13 +135,12 @@ src_configure() {
 		$(use_with openipmi openipmi) \
 		$(use_with ssh ssh2) \
 		$(use_with libxml2) \
-		$(use_with odbc unixodbc) \
-		|| die "econf failed"
+		$(use_with odbc unixodbc)
 }
 
 src_compile() {
 	if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ]; then
-		emake AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" || die "emake failed"
+		emake AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
 	fi
 }
 

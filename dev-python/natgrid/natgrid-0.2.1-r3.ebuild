@@ -21,7 +21,7 @@ RDEPEND="${DEPEND}"
 
 python_install_all() {
 	insinto /usr/share/doc/${PF}
-	doins test.py || die "doins failed"
+	doins test.py
 	distutils-r1_python_install_all
 }
 

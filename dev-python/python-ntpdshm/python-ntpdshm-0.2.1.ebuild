@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}
 	dev-lang/swig:0"
 
 src_prepare() {
-	emake swig || die
+	emake swig
 	distutils-r1_src_prepare
 }
 

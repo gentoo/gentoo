@@ -126,7 +126,7 @@ EOF
 
 	# revdep-rebuild entry
 	insinto /etc/revdep-rebuild
-	doins "${FILESDIR}"/10${PN} || die
+	doins "${FILESDIR}"/10${PN}
 
 	# Handle plugins dir through nsplugins.eclass
 	share_plugins_dir

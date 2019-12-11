@@ -54,13 +54,13 @@ src_configure() {
 
 src_compile() {
 	tc-export CXX
-	emake ${progs} || die
+	emake ${progs}
 }
 
 src_install() {
 	exeinto /usr/lib/zpaq
-	doexe ${progs} || die
+	doexe ${progs}
 
 	insinto /usr/share/zpaq
-	doins *.cfg || die
+	doins *.cfg
 }

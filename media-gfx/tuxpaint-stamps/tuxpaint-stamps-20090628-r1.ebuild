@@ -24,7 +24,7 @@ src_prepare() {
 }
 
 src_install() {
-	emake PREFIX="${D}/usr" install-all || die
+	emake PREFIX="${D}/usr" install-all
 
 	rm -f docs/COPYING.txt || die
 	dodoc docs/*.txt

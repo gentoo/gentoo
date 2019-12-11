@@ -37,7 +37,7 @@ pkg_setup() {
 src_install() {
 	webapp_src_preinst
 
-	dodoc README RELEASE-DATE-${MY_PV} ChangeLog || die
+	dodoc README RELEASE-DATE-${MY_PV} ChangeLog
 	rm -f LICENSE README* RELEASE-DATE-${MY_PV}
 
 	if ! use setup; then

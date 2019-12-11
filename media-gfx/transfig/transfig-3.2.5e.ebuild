@@ -81,7 +81,7 @@ src_install() {
 	newins "${WORKDIR}/${P}-gentoo-patchset/transfig-ru_RU.KOI8-R.ps" ru_RU.KOI8-R.ps
 	newins "${WORKDIR}/${P}-gentoo-patchset/transfig-uk_UA.KOI8-U.ps" uk_UA.KOI8-U.ps
 
-	dohtml "${WORKDIR}/fig2mpdf/doc/"* || die
+	dohtml "${WORKDIR}/fig2mpdf/doc/"*
 
 	mv "${ED}"/usr/bin/fig2ps2tex{.sh,} || die #338295
 

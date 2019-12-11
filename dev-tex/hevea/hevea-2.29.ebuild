@@ -22,19 +22,19 @@ DEPEND="${DEPEND} dev-ml/ocamlbuild"
 
 src_compile() {
 	rm -f config.sh
-	emake PREFIX=/usr DESTDIR="${D}" LIBDIR="/usr/$(get_libdir)/hevea" LATEXLIBDIR="/usr/share/texmf-site/tex/latex/hevea" config.sh || die "Failed to create config.sh"
+	emake PREFIX=/usr DESTDIR="${D}" LIBDIR="/usr/$(get_libdir)/hevea" LATEXLIBDIR="/usr/share/texmf-site/tex/latex/hevea" config.sh
 	if use ocamlopt; then
-		emake PREFIX=/usr || die "Failed to build native code binaries"
+		emake PREFIX=/usr
 	else
-		emake PREFIX=/usr TARGET=byte || die "Failed to build bytecode binaries"
+		emake PREFIX=/usr TARGET=byte
 	fi
 }
 
 src_install() {
 	if use ocamlopt; then
-		emake DESTDIR="${D}" PREFIX=/usr install || die "Install failed"
+		emake DESTDIR="${D}" PREFIX=/usr install
 	else
-		emake DESTDIR="${D}" PREFIX=/usr TARGET=byte install || die "Install failed"
+		emake DESTDIR="${D}" PREFIX=/usr TARGET=byte install
 	fi
 
 	dodoc README CHANGES

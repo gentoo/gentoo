@@ -142,19 +142,18 @@ src_configure() {
 		$(use_with static-libs static-linked-ext) \
 		$(use_enable debug) \
 		${myconf} \
-		--enable-option-checking=no \
-		|| die "econf failed"
+		--enable-option-checking=no
 
 	# Makefile is broken because it lacks -ldl
 	rm -rf ext/-test-/popen_deadlock || die
 }
 
 src_compile() {
-	emake V=1 EXTLDFLAGS="${LDFLAGS}" MJIT_CFLAGS="${CFLAGS}" MJIT_OPTFLAGS="" MJIT_DEBUGFLAGS="" || die "emake failed"
+	emake V=1 EXTLDFLAGS="${LDFLAGS}" MJIT_CFLAGS="${CFLAGS}" MJIT_OPTFLAGS="" MJIT_DEBUGFLAGS=""
 }
 
 src_test() {
-	emake -j1 V=1 test || die "make test failed"
+	emake -j1 V=1 test
 
 	elog "Ruby's make test has been run. Ruby also ships with a make check"
 	elog "that cannot be run until after ruby has been installed."
@@ -194,7 +193,7 @@ src_install() {
 	local gem_home="${EPREFIX}/usr/$(get_libdir)/ruby/gems/${RUBYVERSION}"
 	mkdir -p "${D}/${gem_home}" || die "mkdir gem home failed"
 
-	emake V=1 DESTDIR="${D}" GEM_DESTDIR=${gem_home} install || die "make install failed"
+	emake V=1 DESTDIR="${D}" GEM_DESTDIR=${gem_home} install
 
 	# Remove installed rubygems and rdoc copy
 	rm -rf "${ED}/usr/$(get_libdir)/ruby/${RUBYVERSION}/rubygems" || die "rm rubygems failed"
@@ -203,7 +202,7 @@ src_install() {
 	rm -rf "${ED}/usr/bin/"{bundle,bundler,ri,rdoc}"${MY_SUFFIX}" || die "rm rdoc bins failed"
 
 	if use doc; then
-		emake DESTDIR="${D}" GEM_DESTDIR=${gem_home} install-doc || die "make install-doc failed"
+		emake DESTDIR="${D}" GEM_DESTDIR=${gem_home} install-doc
 	fi
 
 	if use examples; then
@@ -211,7 +210,7 @@ src_install() {
 		doins -r sample
 	fi
 
-	dodoc ChangeLog NEWS doc/NEWS* README* || die
+	dodoc ChangeLog NEWS doc/NEWS* README*
 
 	if use rubytests; then
 		pushd test

@@ -202,7 +202,7 @@ src_install() {
 		/etc/ipsec.d/private \
 		/etc/ipsec.d/reqs
 
-	dodoc NEWS README TODO || die
+	dodoc NEWS README TODO
 
 	# shared libs are used only internally and there are no static libs,
 	# so it's safe to get rid of the .la files

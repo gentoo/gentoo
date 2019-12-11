@@ -194,7 +194,7 @@ src_install() {
 		rm -rf VBoxSDL VirtualBox{,VM} VBoxKeyboard.so
 	fi
 
-	doins -r * || die
+	doins -r *
 
 	# create symlinks for working around unsupported $ORIGIN/.. in VBoxC.so (setuid)
 	dosym ../VBoxVMM.so /opt/VirtualBox/components/VBoxVMM.so

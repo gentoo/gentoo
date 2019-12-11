@@ -74,7 +74,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake || die "emake failed"
+	emake
 
 	if use emacs; then
 		cd "${S}"/emacs/

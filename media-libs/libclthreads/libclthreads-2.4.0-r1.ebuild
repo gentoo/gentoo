@@ -28,6 +28,6 @@ src_compile() {
 }
 
 src_install() {
-	emake CLTHREADS_LIBDIR="/usr/$(get_libdir)" DESTDIR="${ED}" install || die "make install failed"
+	emake CLTHREADS_LIBDIR="/usr/$(get_libdir)" DESTDIR="${ED}" install
 	dodoc AUTHORS
 }

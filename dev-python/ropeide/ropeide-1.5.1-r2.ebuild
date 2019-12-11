@@ -21,7 +21,7 @@ RDEPEND="${DEPEND}"
 
 python_install_all() {
 	if use doc; then
-		dodoc docs/*.txt || die "dodoc failed"
+		dodoc docs/*.txt
 	fi
 	distutils-r1_python_install_all
 }

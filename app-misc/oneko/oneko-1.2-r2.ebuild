@@ -43,8 +43,7 @@ src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
 		CCOPTIONS="${CFLAGS}" \
-		EXTRA_LDOPTIONS="${LDFLAGS}" \
-		|| die
+		EXTRA_LDOPTIONS="${LDFLAGS}"
 }
 
 src_install() {

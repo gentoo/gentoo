@@ -33,11 +33,11 @@ each_ruby_configure() {
 }
 
 each_ruby_compile() {
-	emake V=1 || die "emake failed"
+	emake V=1
 }
 
 each_ruby_install() {
-	emake V=1 DESTDIR="${D}" install || die "einstall failed"
+	emake V=1 DESTDIR="${D}" install
 }
 
 all_ruby_install() {

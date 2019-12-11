@@ -24,6 +24,6 @@ src_prepare() {
 }
 
 src_install() {
-	dobin src/peksystray || die
+	dobin src/peksystray
 	default
 }

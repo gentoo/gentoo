@@ -280,7 +280,7 @@ multilib_src_install() {
 		newpamd "${CONFDIR}/system-auth-winbind.pam" system-auth-winbind
 		# bugs #376853 and #590374
 		insinto /etc/security
-		doins examples/pam_winbind/pam_winbind.conf || die
+		doins examples/pam_winbind/pam_winbind.conf
 	fi
 
 	keepdir /var/cache/samba

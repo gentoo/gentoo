@@ -82,8 +82,8 @@ src_install() {
 	einstalldocs
 
 	insinto /usr/$(get_libdir)/pkgconfig
-	doins hamlib.pc || die "doins failed"
+	doins hamlib.pc
 
 	echo "LDPATH=/usr/$(get_libdir)/hamlib" > "${T}"/73hamlib
-	doenvd "${T}"/73hamlib || die "doenvd failed"
+	doenvd "${T}"/73hamlib
 }

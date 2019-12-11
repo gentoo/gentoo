@@ -57,7 +57,7 @@ src_install() {
 
 	use source && java-pkg_dosrc src/main/java/weka/
 
-	dodoc README || die
+	dodoc README
 
 	dodir /usr/share/${PN}/data/
 	insinto /usr/share/${PN}/data/

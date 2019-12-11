@@ -45,7 +45,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake -C linux CC=$(tc-getCC) LIBS="${LDFLAGS}" || die "emake failed"
+	emake -C linux CC=$(tc-getCC) LIBS="${LDFLAGS}"
 }
 
 src_install() {

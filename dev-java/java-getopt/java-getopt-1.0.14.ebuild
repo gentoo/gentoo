@@ -27,7 +27,7 @@ java_prepare() {
 
 src_install() {
 	java-pkg_dojar build/lib/gnu.getopt.jar
-	dodoc gnu/getopt/COPYING.LIB gnu/getopt/ChangeLog gnu/getopt/README || die
+	dodoc gnu/getopt/COPYING.LIB gnu/getopt/ChangeLog gnu/getopt/README
 	use doc && java-pkg_dojavadoc build/api
 	use source && java-pkg_dosrc gnu
 }

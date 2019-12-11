@@ -74,7 +74,7 @@ src_prepare() {
 
 src_compile() {
 	for i in ${POLICY_TYPES}; do
-		emake NAME=$i -C "${S}"/${i} || die "${i} compile failed"
+		emake NAME=$i -C "${S}"/${i}
 	done
 }
 
@@ -85,7 +85,7 @@ src_install() {
 		for j in ${MODS}; do
 			einfo "Installing ${i} ${j} policy package"
 			insinto ${BASEDIR}/${i}
-			doins "${S}"/${i}/${j}.pp || die "Failed to add ${j}.pp to ${i}"
+			doins "${S}"/${i}/${j}.pp
 		done
 	done
 }

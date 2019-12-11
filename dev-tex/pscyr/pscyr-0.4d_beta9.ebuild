@@ -29,11 +29,11 @@ src_install() {
 	done
 	cd "${S}"
 	insinto "${TEXMF}/fonts/map/dvips/pscyr"
-	doins dvips/pscyr/pscyr.map || die "doins $i failed"
+	doins dvips/pscyr/pscyr.map
 
 	for each in dvips/pscyr/*.enc; do
 		insinto "${TEXMF}/fonts/enc/dvips/pscyr"
-		doins "$each" || die "doins $i failed"
+		doins "$each"
 	done
 
 	insinto /etc/texmf/updmap.d

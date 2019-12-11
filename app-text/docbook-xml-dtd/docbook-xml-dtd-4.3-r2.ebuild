@@ -30,7 +30,7 @@ src_install() {
 	keepdir /etc/xml
 
 	insinto "/usr/share/sgml/docbook/xml-dtd-${PV}"
-	doins *.cat *.dtd *.mod || die
+	doins *.cat *.dtd *.mod
 	insinto "/usr/share/sgml/docbook/xml-dtd-${PV}/ent"
 	doins ent/*.ent
 

@@ -47,7 +47,7 @@ src_test() {
 
 src_install() {
 	java-pkg_newjar "target/${P}.jar" "${PN}.jar"
-	dodoc {NOTICE,README,RELEASE-NOTES}.txt || die
+	dodoc {NOTICE,README,RELEASE-NOTES}.txt
 	use doc && java-pkg_dojavadoc target/site/apidocs
 	use source && java-pkg_dosrc src/main/java
 }

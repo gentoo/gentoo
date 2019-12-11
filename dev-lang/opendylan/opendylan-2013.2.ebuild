@@ -76,9 +76,9 @@ src_configure() {
 	fi
 
 	if use amd64; then
-		econf --prefix=/opt/opendylan || die
+		econf --prefix=/opt/opendylan
 	else
-		econf --prefix=/opt/opendylan --with-mps=/usr/include/mps/ || die
+		econf --prefix=/opt/opendylan --with-mps=/usr/include/mps/
 	fi
 	if use x86; then
 	# Includedir, pointing at something wrong
@@ -92,7 +92,7 @@ src_configure() {
 
 src_compile() {
 	ulimit -s 32000 # this is naughty build system
-	emake -j1 3-stage-bootstrap || die
+	emake -j1 3-stage-bootstrap
 }
 
 src_install() {

@@ -37,11 +37,11 @@ src_prepare() {
 
 src_install() {
 	insinto /usr/share/${PN}
-	doins -r code data ${PN}.py || die
+	doins -r code data ${PN}.py
 	python_optimize ${ED%/}/usr/share/${PN}
 
 	if use music ; then
-		doins -r ../${MUSIC}/music || die
+		doins -r ../${MUSIC}/music
 	fi
 
 	make_wrapper ${PN} "${EPYTHON} ${PN}.py" /usr/share/${PN}

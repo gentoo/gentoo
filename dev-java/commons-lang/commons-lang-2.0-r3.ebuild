@@ -26,7 +26,7 @@ java_prepare() {
 src_install() {
 	java-pkg_newjar dist/${P}.jar ${PN}.jar
 
-	dodoc RELEASE-NOTES.txt || die
+	dodoc RELEASE-NOTES.txt
 	java-pkg_dohtml DEVELOPERS-GUIDE.html PROPOSAL.html STATUS.html
 	use doc && java-pkg_dojavadoc dist/docs/api
 	use source && java-pkg_dosrc src/java/*
