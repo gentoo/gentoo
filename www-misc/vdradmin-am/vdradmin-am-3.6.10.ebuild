@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils ssl-cert systemd user
+inherit ssl-cert systemd user
 
 DESCRIPTION="WWW Admin for the Video Disk Recorder"
 HOMEPAGE="http://andreas.vdr-developer.org/vdradmin-am/index.html"
@@ -18,6 +18,7 @@ DEPEND="dev-lang/perl
 	dev-perl/Template-Toolkit
 	dev-perl/libwww-perl
 	dev-perl/URI
+	dev-perl/CGI
 	dev-perl/Locale-gettext
 	virtual/perl-IO-Compress
 	ipv6? ( dev-perl/IO-Socket-INET6 )
@@ -35,7 +36,7 @@ VDRADMIN_USER=vdradmin
 VDRADMIN_GROUP=vdradmin
 
 create_ssl_cert() {
-	# The ssl-cert eclass is not flexible enough so do some steps manually
+	# The ssl-cert eclass is not flexible enough, so do some steps manually
 	SSL_ORGANIZATION="${SSL_ORGANIZATION:-vdradmin-am}"
 	SSL_COMMONNAME="${SSL_COMMONNAME:-`hostname -f`}"
 
@@ -57,8 +58,10 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
+
 	sed -i vdradmind.pl \
-		-e "s-FILES_IN_SYSTEM    = 0;-FILES_IN_SYSTEM    = 1;-g" || die
+		-e "s-FILES_IN_SYSTEM    = 0;-FILES_IN_SYSTEM    = 1;-g"
 
 	if use ipv6; then
 		sed -e "s:/usr/bin/vdradmind:/usr/bin/vdradmind --ipv6:" \
@@ -105,27 +108,27 @@ src_install() {
 
 pkg_preinst() {
 	install -m 0644 -o ${VDRADMIN_USER} -g ${VDRADMIN_GROUP} /dev/null \
-		"${D}"${ETC_DIR}/vdradmind.conf || die
+		"${ED}"${ETC_DIR}/vdradmind.conf || die
 
-	if [[ -f "${ROOT}"${ETC_DIR}/vdradmind.conf ]]; then
-		cp "${ROOT}"${ETC_DIR}/vdradmind.conf \
-			"${D}"${ETC_DIR}/vdradmind.conf || die
+	if [[ -f "${EROOT}"${ETC_DIR}/vdradmind.conf ]]; then
+		cp "${EROOT}"${ETC_DIR}/vdradmind.conf \
+			"${ED}"${ETC_DIR}/vdradmind.conf || die
 	else
 		elog
 		elog "Creating a new config-file."
 		echo
 
-		cat <<-EOF > "${D}"${ETC_DIR}/vdradmind.conf
-			VDRCONFDIR = "${ROOT%/}"/etc/vdr
-			VIDEODIR = "${ROOT%/}"/var/vdr/video
-			EPG_FILENAME = "${ROOT%/}"/var/vdr/video/epg.data
-			EPGIMAGES = "${ROOT%/}"/var/vdr/video/epgimages
+		cat <<-EOF > "${ED}"${ETC_DIR}/vdradmind.conf
+			VDRCONFDIR = "${EROOT}"/etc/vdr
+			VIDEODIR = "${EROOT}"/var/vdr/video
+			EPG_FILENAME = "${EROOT}"/var/vdr/video/epg.data
+			EPGIMAGES = "${EROOT}"/var/vdr/video/epgimages
 			PASSWORD = gentoo-vdr
 			USERNAME = gentoo-vdr
 		EOF
 		# Feed it with newlines
 		yes "" \
-			| "${D}"/usr/bin/vdradmind --cfgdir "${D}"${ETC_DIR} --config \
+			| "${ED}"/usr/bin/vdradmind --cfgdir "${ED}"${ETC_DIR} --config \
 			|sed -e 's/: /: \n/g'
 
 		[[ ${PIPESTATUS[1]} == "0" ]] \
@@ -144,22 +147,22 @@ pkg_postinst() {
 	if use ipv6; then
 		elog
 		elog "To make use of the ipv6 protocol"
-		elog "you need to enable it in ${ROOT%/}/etc/conf.d/vdradmin"
+		elog "you need to enable it in ${EROOT}/etc/conf.d/vdradmin"
 	fi
 
 	if use ssl; then
 		elog
 		elog "To use ssl connection to your vdr"
-		elog "you need to enable it in ${ROOT%/}/etc/conf.d/vdradmin"
+		elog "you need to enable it in ${EROOT}/etc/conf.d/vdradmin"
 
-		if [[ ! -f "${ROOT}"${CERTS_DIR}/server-cert.pem || \
-			! -f "${ROOT}"${CERTS_DIR}/server-key.pem ]]; then
+		if [[ ! -f "${EROOT}"${CERTS_DIR}/server-cert.pem || \
+			! -f "${EROOT}"${CERTS_DIR}/server-key.pem ]]; then
 			create_ssl_cert
 			local base=$(get_base 1)
 			install -D -m 0400 -o ${VDRADMIN_USER} -g ${VDRADMIN_GROUP} \
-				"${base}".key "${ROOT}"${CERTS_DIR}/server-key.pem || die
+				"${base}".key "${EROOT}"${CERTS_DIR}/server-key.pem || die
 			install -D -m 0444 -o ${VDRADMIN_USER} -g ${VDRADMIN_GROUP} \
-				"${base}".crt "${ROOT}"${CERTS_DIR}/server-cert.pem || die
+				"${base}".crt "${EROOT}"${CERTS_DIR}/server-cert.pem || die
 		fi
 	fi
 
@@ -173,5 +176,5 @@ pkg_postinst() {
 }
 
 pkg_config() {
-	"${ROOT}"/usr/bin/vdradmind -c
+	"${EROOT}"/usr/bin/vdradmind -c
 }
