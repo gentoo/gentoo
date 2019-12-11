@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2019-12-11)
+# No license. HOMEPAGE and SRC_URI are dead.
+# Last visible upstream activity in 2000.
+# The package contains only 7 man pages in total.
+# Masked for removal in 30 days. Bug #702468
+app-i18n/man-pages-da
+
 # Aaron Bauman <bman@gentoo.org> (2019-12-10)
 # EAPI=4, dead upstream/srcurl/homepage. cannot find new home
 # Compression has come along way. Removal in 30 days
