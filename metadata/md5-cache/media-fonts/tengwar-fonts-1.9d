@@ -9,5 +9,5 @@ KEYWORDS=alpha amd64 arm ia64 ppc ppc64 s390 sh sparc x86
 LICENSE=free-noncomm
 SLOT=0
 SRC_URI=http://www.tengwar.art.pl/zip/tengq19d.zip http://www.tengwar.art.pl/zip/tengs19d.zip http://www.tengwar.art.pl/zip/tengn19d.zip http://www.tengwar.art.pl/zip/parmaite12b.zip http://www.tengwar.art.pl/zip/tcurs100.zip
-_eclasses_=font	7b670476b6d316929f7ac88e1022ab88
+_eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
 _md5_=c4aba7c6122fdfed6539f6a6ef869ab6

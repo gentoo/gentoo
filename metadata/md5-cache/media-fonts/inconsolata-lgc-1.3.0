@@ -9,5 +9,5 @@ KEYWORDS=~amd64
 LICENSE=OFL-1.1
 SLOT=0
 SRC_URI=https://github.com/MihailJP/Inconsolata-LGC/archive/LGC-1.3.0.tar.gz -> inconsolata-lgc-1.3.0.tar.gz
-_eclasses_=font	7b670476b6d316929f7ac88e1022ab88
+_eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
 _md5_=09973217fded21e0d5472960c2d0ee6b

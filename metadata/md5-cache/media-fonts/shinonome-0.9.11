@@ -10,5 +10,5 @@ LICENSE=public-domain
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=http://openlab.jp/efont/dist/shinonome/shinonome-0.9.11.tar.bz2
-_eclasses_=font	7b670476b6d316929f7ac88e1022ab88
+_eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
 _md5_=570cc06198e472da7a7fe70b50f481ba

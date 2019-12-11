@@ -9,5 +9,5 @@ LICENSE=mplus-fonts public-domain
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/efont/10087/sazanami-20040629.tar.bz2
-_eclasses_=font	7b670476b6d316929f7ac88e1022ab88
+_eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
 _md5_=fad2a3d736a591e9d5c73d6832b1bced
