@@ -6,12 +6,12 @@ EAPI=7
 PYTHON_COMPAT=( python3_{5,6,7} )
 PYTHON_REQ_USE="xml"
 MY_P="${P/_/}"
+RELEASE_SUFFIX="_2019-12-03_2b71d25d45"
 inherit cmake-utils flag-o-matic xdg toolchain-funcs python-single-r1
 
 DESCRIPTION="SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
-SRC_URI="https://inkscape.org/gallery/item/14917/${MY_P}.tar.bz2"
-#SRC_URI="https://inkscape.global.ssl.fastly.net/media/resources/file/${P}.tar.bz2"
+SRC_URI="https://inkscape.org/gallery/item/16197/${MY_P}${RELEASE_SUFFIX}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -93,15 +93,13 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.65
 "
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${MY_P}${RELEASE_SUFFIX}"
 
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-detect-imagemagick.patch
-	"${FILESDIR}"/${P}-do-not-compress-man.patch
-	"${FILESDIR}"/${P}-poppler-0.82.patch
-	"${FILESDIR}"/${P}-avoid-reordering-cmake-cxx-flags.patch
+	"${FILESDIR}"/${PN}-1.0_beta1-detect-imagemagick.patch
+	"${FILESDIR}"/${PN}-1.0_beta1-do-not-compress-man.patch
 )
 
 pkg_pretend() {
