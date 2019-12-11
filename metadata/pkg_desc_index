@@ -14826,7 +14826,7 @@ net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.4 1.7.5 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for freenet
 net-libs/accounts-qml 0.7: QML bindings for accounts-qt and signond
-net-libs/accounts-qt 1.15 1.16: Qt5 bindings for libaccounts-glib
+net-libs/accounts-qt 1.16: Qt5 bindings for libaccounts-glib
 net-libs/aqbanking 5.7.8 5.8.2 5.99.44_beta: Generic Online Banking Interface
 net-libs/axtls 1.5.3 2.1.3 2.1.4 2.1.5: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
@@ -15002,7 +15002,7 @@ net-libs/serf 1.3.8 1.3.8-r1 1.3.9: HTTP client library
 net-libs/shairplay 0_pre20170118 0_pre20180824 0_pre20180824-r1 9999: Apple airplay and raop protocol server
 net-libs/signon-oauth2 0.24: OAuth2 plugin for Signon daemon
 net-libs/signon-ui 0.15_p20171022: Online accounts signon UI
-net-libs/signond 8.59-r1 8.60-r1: Signon daemon for libaccounts-glib
+net-libs/signond 8.60-r1: Signon daemon for libaccounts-glib
 net-libs/socket_wrapper 1.1.6 1.1.7 1.1.9 1.2.1 1.2.3: A library passing all socket communications through unix sockets
 net-libs/sofia-sip 1.12.11: RFC3261 compliant SIP User-Agent library
 net-libs/srt 1.3.2 1.4.0 9999: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
@@ -15884,7 +15884,7 @@ sci-astronomy/stellarium 0.19.0 0.19.1 0.19.2: 3D photo-realistic skies in real 
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
 sci-astronomy/swarp 2.38.0: Resample and coadd astronomical FITS images
-sci-astronomy/wcslib 5.15 5.16: Astronomical World Coordinate System transformations library
+sci-astronomy/wcslib 5.16: Astronomical World Coordinate System transformations library
 sci-astronomy/wcstools 3.9.5: World Coordinate System library for astronomical FITS images
 sci-astronomy/weightwatcher 1.12: Combine weight maps and polygon for astronomical images weighting
 sci-astronomy/xephem 3.7.7: Interactive tool for astronomical ephemeris and sky simulation
@@ -17437,7 +17437,7 @@ sys-cluster/kubectl 1.14.8 1.14.9 1.15.5 1.15.6 1.16.2 1.16.3: CLI to run comman
 sys-cluster/kubelet 1.14.8 1.14.9 1.15.5 1.15.6 1.16.2 1.16.3: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1: API for distributing embarrassingly parallel workloads using self-stabilization
-sys-cluster/libqb 0.17.1 0.17.2 1.0.1: Library providing high performance logging, tracing, ipc, and poll
+sys-cluster/libqb 0.17.2 1.0.1 1.0.5: Library providing high performance logging, tracing, ipc, and poll
 sys-cluster/libquo 1.2 1.2.2 1.2.3 1.2.4-r1 1.2.9 9999: run-time tuning of process binding policies made easy
 sys-cluster/maui 3.3.1-r2 3.3.1-r3: Maui Cluster Scheduler
 sys-cluster/minikube 1.0.0 1.0.1: Single Node Kubernetes Cluster
