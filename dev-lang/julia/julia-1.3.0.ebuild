@@ -8,8 +8,8 @@ RESTRICT="test"
 inherit pax-utils toolchain-funcs
 
 MY_PV="${PV//_rc/-rc}"
-MY_LIBUV_V="2348256acf5759a544e5ca7935f638d2bc091d60"
-MY_UTF8PROC_V="97ef668b312b96382714dbb8eaac4affce0816e6"
+MY_LIBUV_V="35b1504507a7a4168caae3d78db54d1121b121e1"
+MY_UTF8PROC_V="5c632c57426f2e4246e3b64dd2fd088d3920f9e5"
 MY_LIBWHICH_V="81e9723c0273d78493dc8c8ed570f68d9ce7e89e"
 MY_DSFMT_V="2.2.3"
 MY_LLVM="6.0.1"
@@ -22,7 +22,7 @@ SRC_URI="
 	https://api.github.com/repos/JuliaLang/utf8proc/tarball/${MY_UTF8PROC_V} -> ${PN}-utf8proc-${MY_UTF8PROC_V}.tar.gz
 	https://api.github.com/repos/vtjnash/libwhich/tarball/${MY_LIBWHICH_V} -> ${PN}-libwhich-${MY_LIBWHICH_V}.tar.gz
 	http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/dSFMT-src-${MY_DSFMT_V}.tar.gz -> ${PN}-dsfmt-${MY_DSFMT_V}.tar.gz
-	http://releases.llvm.org/${MY_LLVM}/llvm-${MY_LLVM}.src.tar.xz -> ${PN}-llvm-${MY_LLVM}.src.tar.xz
+	http://releases.llvm.org/${MY_LLVM}/llvm-${MY_LLVM}.src.tar.xz
 "
 
 LICENSE="MIT"
@@ -37,6 +37,7 @@ RDEPEND+="
 	>=dev-libs/libpcre2-10.23:0=[jit]
 	dev-libs/mpfr:0=
 	dev-libs/openspecfun
+	>=net-libs/mbedtls-2.2
 	sci-libs/amd:0=
 	sci-libs/arpack:0=
 	sci-libs/camd:0=
@@ -118,7 +119,7 @@ src_prepare() {
 		-e "s|ar -rcs|$(tc-getAR) -rcs|g" \
 		src/Makefile || die
 
-	# disable doc install starting  git fetching
+	# disable doc install starting	git fetching
 	sed -i -e 's~install: $(build_depsbindir)/stringreplace $(BUILDROOT)/doc/_build/html/en/index.html~install: $(build_depsbindir)/stringreplace~' Makefile || die
 }
 
@@ -128,27 +129,26 @@ src_configure() {
 
 	# USE_SYSTEM_LIBM=0 implies using external openlibm
 	cat <<-EOF > Make.user
-		USE_SYSTEM_ARPACK:=1
-		USE_SYSTEM_BLAS:=1
-		USE_SYSTEM_DSFMT:=0
-		USE_SYSTEM_GMP:=1
-		USE_SYSTEM_GRISU:=1
-		USE_SYSTEM_LAPACK:=1
-		USE_SYSTEM_LIBGIT2:=1
-		USE_SYSTEM_LIBM:=0
-		USE_SYSTEM_LIBUNWIND:=1
-		USE_SYSTEM_LIBUV:=0
 		USE_SYSTEM_LLVM:=0
-		USE_SYSTEM_MPFR:=1
-		USE_SYSTEM_OPENLIBM:=1
-		USE_SYSTEM_OPENSPECFUN:=1
-		USE_SYSTEM_PATCHELF:=1
+		USE_SYSTEM_LIBUNWIND:=1
 		USE_SYSTEM_PCRE:=1
-		USE_SYSTEM_READLINE:=1
-		USE_SYSTEM_RMATH:=0
+		USE_SYSTEM_LIBM:=0
+		USE_SYSTEM_OPENLIBM:=1
+		USE_SYSTEM_DSFMT:=0
+		USE_SYSTEM_BLAS:=1
+		USE_SYSTEM_LAPACK:=1
+		USE_SYSTEM_GMP:=1
+		USE_SYSTEM_MPFR:=1
 		USE_SYSTEM_SUITESPARSE:=1
+		USE_SYSTEM_LIBUV:=0
 		USE_SYSTEM_UTF8PROC:=0
-		USE_SYSTEM_ZLIB=1
+		USE_SYSTEM_MBEDTLS:=1
+		USE_SYSTEM_LIBSSH2:=1
+		USE_SYSTEM_CURL:=1
+		USE_SYSTEM_LIBGIT2:=1
+		USE_SYSTEM_PATCHELF:=1
+		USE_SYSTEM_ZLIB:=1
+		USE_SYSTEM_P7ZIP:=1
 		VERBOSE=1
 		libdir="${EROOT}/usr/$(get_libdir)"
 	EOF
@@ -163,9 +163,10 @@ src_compile() {
 	emake cleanall
 	emake julia-release \
 		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
-		CC="$(tc-getCC)" CXX="$(tc-getCXX)"
+		CC="$(tc-getCC)" CXX="$(tc-getCXX)" \
+		USE_BINARYBUILDER=0
 	pax-mark m $(file usr/bin/julia-* | awk -F : '/ELF/ {print $1}')
-	emake
+	emake USE_BINARYBUILDER=0
 }
 
 src_test() {
@@ -183,7 +184,8 @@ src_install() {
 
 	emake install \
 		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
-		CC="$(tc-getCC)" CXX="$(tc-getCXX)"
+		CC="$(tc-getCC)" CXX="$(tc-getCXX)" \
+		USE_BINARYBUILDER=0
 	cat > 99julia <<-EOF
 		LDPATH=${EROOT}/usr/$(get_libdir)/julia
 	EOF
