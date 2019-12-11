@@ -1,20 +1,18 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=1
-
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="Library providing high performance logging, tracing, ipc, and poll"
-HOMEPAGE="https://github.com/asalkeld/libqb"
-SRC_URI="http://fedorahosted.org/releases/q/u/quarterback/${P}.tar.xz"
+HOMEPAGE="https://github.com/ClusterLabs/libqb"
+SRC_URI="https://github.com/ClusterLabs/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 hppa x86"
-IUSE="debug doc examples static-libs test"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+IUSE="debug doc examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/glib:2"
@@ -26,27 +24,29 @@ DEPEND="${RDEPEND}
 DOCS=(README.markdown ChangeLog)
 
 src_prepare() {
+	default
 	sed -e '/dist_doc_DATA/d' -i Makefile.am || die
-	autotools-utils_src_prepare
+	eautoreconf
 }
 
 src_configure() {
-	local myeconfargs=(
+	econf \
 		$(use_enable debug)
-	)
-	autotools-utils_src_configure
 }
 
 src_compile() {
-	autotools-utils_src_compile
-	use doc && autotools-utils_src_compile doxygen
+	default
+	use doc && emake doxygen
 }
 
 src_install() {
-	use doc && HTML_DOCS=("${AUTOTOOLS_BUILD_DIR}/docs/html/")
-	autotools-utils_src_install
+	emake install DESTDIR="${D}"
+
 	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples
-		doins examples/*.c
+		docinto examples
+		dodoc examples/*.c
 	fi
+
+	use doc && HTML_DOCS=("docs/html/.")
+	einstalldocs
 }
