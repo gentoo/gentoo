@@ -8,9 +8,9 @@ SLOT="0"
 PV_STRING="$(ver_cut 3-6)"
 MY_PV="$(ver_cut 1-2)"
 MY_PN="idea"
-#Using the most recent Jetbrains Runtime binaries available at the time of writing
-#As the exact bundled versions ( jre 11 build 159.30 and jre 8 build 1483.39 ) arn't
-#Available seperately
+# Using the most recent Jetbrains Runtime binaries available at the time of writing
+# As the exact bundled versions ( jre 11 build 159.30 and jre 8 build 1483.39 ) aren't
+# available separately
 JRE11_BASE="11_0_2"
 JRE11_VER="164"
 JRE_BASE="8u202"
@@ -26,18 +26,20 @@ else
 	# upstream stable
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IC-${MY_PV}-no-jbr.tar.gz -> ${MY_PN}IC-${PV_STRING}.tar.gz
-	   jbr8? ( x86? ( https://bintray.com/jetbrains/intellij-jdk/download_file?file_path=jbrx-${JRE_BASE}-linux-i586-b${JRE_VER}.tar.gz -> jbrx-${JRE_BASE}-linux-i586-b${JRE_VER}.tar.gz )
+		jbr8? ( x86? ( https://bintray.com/jetbrains/intellij-jdk/download_file?file_path=jbrx-${JRE_BASE}-linux-i586-b${JRE_VER}.tar.gz -> jbrx-${JRE_BASE}-linux-i586-b${JRE_VER}.tar.gz )
 		amd64? ( https://bintray.com/jetbrains/intellij-jdk/download_file?file_path=jbrx-${JRE_BASE}-linux-x64-b${JRE_VER}.tar.gz -> jbrx-${JRE_BASE}-linux-x64-b${JRE_VER}.tar.gz ) )
-	 jbr11? ( amd64? ( https://bintray.com/jetbrains/intellij-jdk/download_file?file_path=jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz -> jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz ) )"
+		jbr11? ( amd64? ( https://bintray.com/jetbrains/intellij-jdk/download_file?file_path=jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz -> jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz ) )"
 fi
 
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="https://www.jetbrains.com/idea"
 
-LICENSE="Apache-2.0
-	jbr8? ( GPL-2 )
-	jbr11? ( GPL-2 )
-	"
+LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 CC-BY-2.5 CDDL-1.1
+	codehaus-classworlds CPL-1.0 EPL-1.0 EPL-2.0 jbr8? ( GPL-2 )
+	jbr11? ( GPL-2 ) GPL-2 GPL-2-with-classpath-exception ISC
+	JDOM LGPL-2.1 LGPL-2.1+ LGPL-3-with-linking-exception MIT
+	MPL-1.0 MPL-1.1 OFL ZLIB"
+
 #Splitting custom-jdk into jbr8 and jbr11 as upstream now offers downloads with
 #either (or neither) bundled
 #Defaulting to jbr8 to match upstream
@@ -71,9 +73,6 @@ src_prepare() {
 	fi
 	if use jbr8; then
 			mv "${WORKDIR}/jre" ./"${JRE_DIR}"
-	fi
-	if ! use arm; then
-		rm bin/fsnotifier-arm || die
 	fi
 	eapply_user
 }
