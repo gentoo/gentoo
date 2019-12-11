@@ -1,7 +1,6 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# This file requires >=portage-2.1.1
 # New entries go on top.
 
 # This file is only for generic masks. For arch-specific masks (i.e.
