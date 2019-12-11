@@ -53,9 +53,7 @@ src_install() {
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	dodoc ChangeLog README README.orig
 
-	if use X; then
-		domenu "${FILESDIR}"/gnuclient.desktop || die
-	fi
+	use X && domenu "${FILESDIR}"/gnuclient.desktop
 }
 
 pkg_postinst() {

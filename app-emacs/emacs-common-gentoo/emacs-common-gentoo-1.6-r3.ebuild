@@ -35,7 +35,7 @@ src_install() {
 
 	if use X; then
 		local i
-		domenu emacs.desktop emacsclient.desktop || die
+		domenu emacs.desktop emacsclient.desktop
 
 		pushd icons || die
 		newicon sink.png emacs-sink.png

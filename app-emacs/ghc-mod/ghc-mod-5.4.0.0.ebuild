@@ -60,7 +60,7 @@ src_compile() {
 	haskell-cabal_src_compile
 	if use emacs ; then
 		pushd elisp
-		elisp-compile *.el || die
+		elisp-compile *.el
 		popd
 	fi
 }
