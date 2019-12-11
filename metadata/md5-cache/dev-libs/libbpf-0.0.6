@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=virtual/libelf !<=dev-util/bcc-0.7.0 sys-kernel/linux-headers
+DESCRIPTION=Stand-alone build of libbpf from the Linux kernel
+EAPI=7
+HOMEPAGE=https://github.com/libbpf/libbpf
+IUSE=+static-libs
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=GPL-2 LGPL-2.1 BSD-2
+RDEPEND=virtual/libelf !<=dev-util/bcc-0.7.0
+SLOT=0/0.0.6
+SRC_URI=https://github.com/libbpf/libbpf/archive/v0.0.6.tar.gz -> libbpf-0.0.6.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=bddfabd63eacb56b7ae415c13462207a
