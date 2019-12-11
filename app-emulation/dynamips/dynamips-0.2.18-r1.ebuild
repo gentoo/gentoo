@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils
 
@@ -9,20 +9,19 @@ DESCRIPTION="Cisco 7200/3600 Simulator"
 HOMEPAGE="https://github.com/GNS3/dynamips"
 SRC_URI="https://github.com/GNS3/dynamips/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
+KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-
 IUSE="ipv6"
 
+BDEPEND="app-arch/unzip"
 RDEPEND="dev-libs/elfutils
 	net-libs/libpcap"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog README.md RELEASE-NOTES )
 
-PATCHES=( "${FILESDIR}/${P}-docs.patch" )
+PATCHES=( "${FILESDIR}/disable_installing_docs.patch" )
 
 src_prepare() {
 	# comment out DYNAMIPS_FLAGS to respect CFLAGS
