@@ -30,7 +30,8 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/pyyaml[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/catkin_pkg[${PYTHON_USEDEP}]"
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
