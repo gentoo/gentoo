@@ -116,5 +116,5 @@ pkg_postinst() {
 	elog "are able to monitor. Depending on what you want to monitor, some"
 	elog "or all of these USE flags need to be set."
 	elog
-	elog "The plugins are installed in ${ROOT}usr/$(get_libdir)/nagios/plugins"
+	elog "The plugins are installed in ${ROOT}/usr/$(get_libdir)/nagios/plugins"
 }
