@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -57,6 +57,7 @@ pkg_setup() {
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.0.21_alpha-gentoo.patch
+	"${FILESDIR}"/${PN}-0.0.23b-header_includes_fix.patch
 )
 
 src_configure() {
