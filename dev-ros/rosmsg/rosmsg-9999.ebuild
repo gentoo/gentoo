@@ -21,4 +21,6 @@ RDEPEND="
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-ros/rosbag[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-ros/test_rosmaster[${PYTHON_USEDEP}] )
+"
