@@ -91,36 +91,32 @@ BDEPEND="
 	) ) )
 "
 
-usex-on-off() {
-	usex "$1" ON OFF
-}
-
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_TESTING=$(usex-on-off test)
-		-DCHANNEL_URBDRC=$(usex-on-off usb)
-		-DWITH_ALSA=$(usex-on-off alsa)
+		-DBUILD_TESTING=$(usex test ON OFF)
+		-DCHANNEL_URBDRC=$(usex usb ON OFF)
+		-DWITH_ALSA=$(usex alsa ON OFF)
 		-DWITH_CCACHE=OFF
-		-DWITH_CLIENT=$(usex-on-off client)
-		-DWITH_CUPS=$(usex-on-off cups)
-		-DWITH_DEBUG_ALL=$(usex-on-off debug)
-		-DWITH_MANPAGES=$(usex-on-off doc)
-		-DWITH_FFMPEG=$(usex-on-off ffmpeg)
-		-DWITH_SWSCALE=$(usex-on-off ffmpeg)
+		-DWITH_CLIENT=$(usex client ON OFF)
+		-DWITH_CUPS=$(usex cups ON OFF)
+		-DWITH_DEBUG_ALL=$(usex debug ON OFF)
+		-DWITH_MANPAGES=$(usex doc ON OFF)
+		-DWITH_FFMPEG=$(usex ffmpeg ON OFF)
+		-DWITH_SWSCALE=$(usex ffmpeg ON OFF)
 		-DWITH_CAIRO=$(usex ffmpeg OFF ON)
-		-DWITH_DSP_FFMPEG=$(usex-on-off ffmpeg)
-		-DWITH_GSTREAMER_1_0=$(usex-on-off gstreamer)
-		-DWITH_JPEG=$(usex-on-off jpeg)
-		-DWITH_NEON=$(usex-on-off cpu_flags_arm_neon)
-		-DWITH_OPENH264=$(usex-on-off openh264)
-		-DWITH_PULSE=$(usex-on-off pulseaudio)
-		-DWITH_SERVER=$(usex-on-off server)
-		-DWITH_PCSC=$(usex-on-off smartcard)
-		-DWITH_LIBSYSTEMD=$(usex-on-off systemd)
-		-DWITH_X11=$(usex-on-off X)
-		-DWITH_XINERAMA=$(usex-on-off xinerama)
-		-DWITH_XV=$(usex-on-off xv)
-		-DWITH_WAYLAND=$(usex-on-off wayland)
+		-DWITH_DSP_FFMPEG=$(usex ffmpeg ON OFF)
+		-DWITH_GSTREAMER_1_0=$(usex gstreamer ON OFF)
+		-DWITH_JPEG=$(usex jpeg ON OFF)
+		-DWITH_NEON=$(usex cpu_flags_arm_neon ON OFF)
+		-DWITH_OPENH264=$(usex openh264 ON OFF)
+		-DWITH_PULSE=$(usex pulseaudio ON OFF)
+		-DWITH_SERVER=$(usex server ON OFF)
+		-DWITH_PCSC=$(usex smartcard ON OFF)
+		-DWITH_LIBSYSTEMD=$(usex systemd ON OFF)
+		-DWITH_X11=$(usex X ON OFF)
+		-DWITH_XINERAMA=$(usex xinerama ON OFF)
+		-DWITH_XV=$(usex xv ON OFF)
+		-DWITH_WAYLAND=$(usex wayland ON OFF)
 	)
 	cmake-utils_src_configure
 }
