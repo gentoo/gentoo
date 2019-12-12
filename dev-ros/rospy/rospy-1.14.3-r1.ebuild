@@ -24,6 +24,7 @@ RDEPEND="
 	dev-ros/rosgraph_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/yaml.patch" )
 
 src_install() {
 	ros-catkin_src_install
