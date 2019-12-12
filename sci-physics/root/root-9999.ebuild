@@ -19,6 +19,7 @@ IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix debug emacs
 	mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
 	qt5 R +roofit root7 shadow sqlite +ssl +tbb test +tmva +unuran vc
 	vmc +xml xrootd"
+RESTRICT="!test? ( test )"
 
 if [[ ${PV} =~ "9999" ]] ; then
 	inherit git-r3
