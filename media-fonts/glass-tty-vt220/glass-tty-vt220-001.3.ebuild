@@ -10,7 +10,7 @@ HOMEPAGE="http://sensi.org/~svo/glasstty/"
 SRC_URI="http://sensi.org/~svo/glasstty/Glass_TTY_VT220.ttf -> Glass_TTY_VT220-${PV}.ttf"
 
 KEYWORDS="amd64 arm arm64 x86"
-LICENSE="freedist"
+LICENSE="Unlicense"
 SLOT="0"
 
 RESTRICT="mirror"
