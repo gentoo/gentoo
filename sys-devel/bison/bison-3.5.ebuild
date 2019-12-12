@@ -5,11 +5,12 @@ EAPI=7
 
 inherit flag-o-matic
 
-PATCHES="${PN}-3.4.1-patches-01.tar.xz"
+PATCHES="${PN}-3.5-patches-01.tar.xz"
 
 DESCRIPTION="A general-purpose (yacc-compatible) parser generator"
 HOMEPAGE="https://www.gnu.org/software/bison/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
+	mirror://gentoo/${PATCHES}
 	https://dev.gentoo.org/~whissi/dist/bison/${PATCHES}
 	https://dev.gentoo.org/~polynomial-c/dist/bison/${PATCHES}"
 
@@ -20,17 +21,19 @@ IUSE="examples nls static test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=sys-devel/m4-1.4.16"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/flex
 	examples? ( dev-lang/perl )
 	nls? ( sys-devel/gettext )
-	test? ( dev-lang/perl )"
+	test? ( dev-lang/perl )
+"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO ) # ChangeLog-2012 ChangeLog-1998 PACKAGING README-alpha README-release
 
 PATCHES=(
-	"${WORKDIR}"/patches/${PN}-3.1-optional-perl.patch #538300
-	"${WORKDIR}"/patches/${PN}-3.4.1-avoid_autoreconf.patch
+	"${WORKDIR}"/patches/${PN}-3.5-optional-perl.patch #538300
+	"${WORKDIR}"/patches/${PN}-3.5-avoid_autoreconf.patch
 )
 
 src_prepare() {
