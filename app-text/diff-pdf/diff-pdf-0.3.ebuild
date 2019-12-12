@@ -7,7 +7,7 @@ EAPI=6
 inherit wxwidgets
 
 DESCRIPTION="A simple tool for visually comparing two PDF files"
-HOMEPAGE="http://vslavik.github.io/${PN}/ https://github.com/vslavik/${PN}/"
+HOMEPAGE="http://vslavik.github.io/diff-pdf/ https://github.com/vslavik/diff-pdf/"
 SRC_URI="https://github.com/vslavik/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 # The COPYING.icons file states that two icons were taken from
