@@ -39,7 +39,7 @@ DEPEND+=" test? ( media-gfx/imagemagick[png] )"
 
 # prawn breaks tests for some reasons, needs to be investigated; code
 # still works though.
-RESTRICT="prawn? ( test )"
+RESTRICT="!test? ( test ) prawn? ( test )"
 
 all_ruby_prepare() {
 	sed -i -e 's/README/README.md/' Rakefile || die
