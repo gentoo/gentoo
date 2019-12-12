@@ -524,7 +524,7 @@ ecm_src_configure() {
 
 	# TODO: drop after KDE Applications 19.08.3 removal
 	if in_iuse designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
-		cmakeargs+=( $(cmake-utils_use_find_package designer KF5DesignerPlugin) )
+		cmakeargs+=( $(cmake_use_find_package designer KF5DesignerPlugin) )
 	fi
 
 	if [[ ${ECM_QTHELP} = true ]]; then

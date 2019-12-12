@@ -217,7 +217,6 @@ dev-python/foolscap
 net-fs/tahoe-lafs
 dev-python/pyvtk
 <dev-python/pycdio-2.1.0
-media-sound/whipper
 dev-python/hachoir-regex
 app-misc/hachoir-subfile
 dev-python/numdisplay
