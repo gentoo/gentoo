@@ -181,7 +181,6 @@ net-wireless/ndiswrapper
 dev-python/inotifyx
 dev-python/disqus-python
 dev-python/figleaf
-dev-python/pysvg
 dev-python/sphinxcontrib-ditaa
 dev-python/pyrax
 dev-python/tgmochikit
