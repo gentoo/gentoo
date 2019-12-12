@@ -51,6 +51,10 @@ if [[ ${PV} == 9999* ]] ; then
 		)"
 fi
 
+PATCHES=(
+	"${FILESDIR}/${PN}-5.7.1-ncurses_colors.patch"
+)
+
 src_prepare() {
 	if [[ ${PV} != 9999* ]]; then
 		# fix zshall problem with soelim
