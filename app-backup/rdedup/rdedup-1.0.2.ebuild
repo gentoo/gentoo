@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CRATES="
 aho-corasick-0.5.3
@@ -44,21 +44,20 @@ inherit cargo
 DESCRIPTION="data deduplication with compression and public key encryption"
 HOMEPAGE="https://github.com/dpc/rdedup"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
-RESTRICT=""
+
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
-DEPEND="${DEPEND} >=dev-libs/libsodium-1.0.11"
-RDEPEND="${DEPEND}"
-DOCS=( README.md CHANGELOG.md )
+
+RDEPEND=">=dev-libs/libsodium-1.0.11:="
+DEPEND="${RDEPEND}"
 
 src_prepare() {
-	default_src_prepare
-	ln -sf "${WORKDIR}/cargo_home/gentoo/rdedup-lib-${PV}" "${S}/lib"
+	default
+	ln -sf "${WORKDIR}/cargo_home/gentoo/rdedup-lib-${PV}" lib || die
 }
 
 src_install() {
 	cargo_src_install
-	einstalldocs
+	dodoc {CHANGELOG,README}.md
 }
