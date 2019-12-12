@@ -20,3 +20,4 @@ RDEPEND="
 	dev-python/rospkg[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( dev-python/mock[${PYTHON_USEDEP}] dev-python/nose[${PYTHON_USEDEP}] )"
+PATCHES=( "${FILESDIR}/yaml.patch" "${FILESDIR}/py3.patch" "${FILESDIR}/py3-2.patch" )

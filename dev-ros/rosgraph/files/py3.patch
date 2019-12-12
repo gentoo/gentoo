@@ -1,0 +1,47 @@
+From 8f22c20e418abe4abe23e789eef517a16a50604d Mon Sep 17 00:00:00 2001
+From: Dirk Thomas <dirk-thomas@users.noreply.github.com>
+Date: Tue, 6 Aug 2019 12:50:24 -0700
+Subject: [PATCH] more Python 3 compatibility (#1782)
+
+---
+ test/test_rosmaster/test/nodes/testAllCommonFlows  | 2 +-
+ test/test_rosmaster/test/nodes/testMaster          | 2 +-
+ test/test_rosmaster/test/nodes/testSlave           | 2 +-
+ test/test_rospy/test/unit/test_genmsg_py.py        | 8 +++++++-
+ tools/rosgraph/test/test_roslogging.py             | 5 ++++-
+ tools/rosgraph/test/test_roslogging_user_logger.py | 5 ++++-
+ tools/roslaunch/src/roslaunch/depends.py           | 8 ++++----
+ 7 files changed, 22 insertions(+), 10 deletions(-)
+
+diff --git a/tools/rosgraph/test/test_roslogging.py b/tools/rosgraph/test/test_roslogging.py
+index f9e618f87..ca38c80e8 100644
+--- a/tools/rosgraph/test/test_roslogging.py
++++ b/tools/rosgraph/test/test_roslogging.py
+@@ -32,7 +32,10 @@
+ 
+ import logging
+ import os
+-from StringIO import StringIO
++try:
++    from cStringIO import StringIO
++except ImportError:
++    from io import StringIO
+ import sys
+ 
+ import re
+diff --git a/tools/rosgraph/test/test_roslogging_user_logger.py b/tools/rosgraph/test/test_roslogging_user_logger.py
+index 62051638a..4ac4f8291 100644
+--- a/tools/rosgraph/test/test_roslogging_user_logger.py
++++ b/tools/rosgraph/test/test_roslogging_user_logger.py
+@@ -38,7 +38,10 @@
+ 
+ import logging
+ import os
+-from StringIO import StringIO
++try:
++    from cStringIO import StringIO
++except ImportError:
++    from io import StringIO
+ import sys
+ 
+ from nose.tools import assert_regexp_matches
