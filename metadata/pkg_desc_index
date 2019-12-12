@@ -13243,7 +13243,7 @@ media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
 media-libs/libprojectm 2.1.0-r2 3.1.0-r1 3.1.1_rc4 3.1.1_rc5 3.1.1_rc5-r1 3.1.1_rc6 3.1.1_rc7 9999: A graphical music visualization plugin similar to milkdrop
 media-libs/libqaccessibilityclient 0.4.1: Library for writing accessibility clients such as screen readers
 media-libs/libquicktime 1.2.4-r3: An enhanced version of the quicktime4linux library
-media-libs/libquvi 0.4.1 0.4.1-r2 0.9.3 0.9.4 0.9.4-r1: Library for parsing video download links
+media-libs/libquvi 0.9.4-r1: Library for parsing video download links
 media-libs/libquvi-scripts 0.4.14 0.4.19 0.4.20 0.4.21 0.4.21-r1 0.4.21-r2 0.9.20130903 0.9.20131104 0.9.20131130 0.9.20131130-r1: Embedded lua scripts for libquvi
 media-libs/libraw 0.19.3 0.19.4 0.19.5: LibRaw is a library for reading RAW files obtained from digital photo cameras
 media-libs/libreplaygain 477-r1: Replay Gain library from Musepack
@@ -13333,7 +13333,7 @@ media-libs/qimageblitz 0.0.6_p20131029: Graphical effect and filter library by K
 media-libs/qt-gstreamer 1.2.0-r4: C++ bindings for GStreamer with a Qt-style API
 media-libs/qtav 1.12.0: Multimedia playback framework based on Qt + FFmpeg
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
-media-libs/quvi 0.4.2 0.9.4 0.9.5: A command line tool for parsing video download links
+media-libs/quvi 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.15-r2: The RDF Parser Toolkit
 media-libs/raspberrypi-userland 0_pre20160424 9999: Raspberry Pi userspace tools and libraries
 media-libs/raspberrypi-userland-bin 1.20170303 1.20190709: Raspberry Pi userspace tools and libraries
@@ -13812,7 +13812,7 @@ media-sound/dvda-author 10.06-r1: Author a DVD-Audio DVD
 media-sound/easytag 2.4.3-r1: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
 media-sound/ecasound 2.6.0-r1 2.9.1-r1: a package for multitrack audio processing
 media-sound/edna 0.6: Greg Stein's python streaming audio server for desktop or LAN use
-media-sound/elisa 0.4.2-r1 19.12.0: Simple music player by KDE
+media-sound/elisa 19.12.0: Simple music player by KDE
 media-sound/entagged-tageditor 0.35: Open-source audiofile tagger
 media-sound/erec 2.2.0.1-r1: Shared audio recording server
 media-sound/exaile 4.0.0: GTK+ based media player aiming to be similar to Amarok
