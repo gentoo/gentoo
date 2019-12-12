@@ -10,5 +10,5 @@ RDEPEND=>=virtual/jre-1.3 >=dev-java/java-config-2.2.0-r3
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=!amd64? ( http://download.java.net/media/jai/builds/release/1_1_3/jai-1_1_3-lib-linux-i586.tar.gz ) amd64? ( http://download.java.net/media/jai/builds/release/1_1_3/jai-1_1_3-lib-linux-amd64.tar.gz )
-_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	82402a1c36ab4bf38f3313a543f9e827
+_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5
 _md5_=1a289e74768672eaea75e593fd2783c6
