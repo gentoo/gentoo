@@ -216,7 +216,6 @@ dev-python/python-cdb
 dev-python/foolscap
 net-fs/tahoe-lafs
 dev-python/pyvtk
-<dev-python/pycdio-2.1.0
 dev-python/hachoir-regex
 app-misc/hachoir-subfile
 dev-python/numdisplay
