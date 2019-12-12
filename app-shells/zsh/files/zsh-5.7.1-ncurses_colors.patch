@@ -1,0 +1,37 @@
+From 7ce49801cc8ebc6f3a343ee5b829007f8cfb2bce Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 11 Dec 2019 14:56:25 +0100
+Subject: [PATCH] configure.ac: check for has_colors symbol in curses lib
+
+Otherwise zsh/curses module won't get built if ncurses was built with
+separate tinfo lib.
+One could still force-build the module but loading it later yields the
+following error message:
+
+  failed to load module `zsh/curses': /usr/lib64/zsh/5.7.1/zsh/curses.so:
+  undefined symbol: COLORS
+
+That is because the final linker call requires -lncurses(w) but it only
+contains -ltinfo(w).
+
+Reported-by: Tetja Rediske <tetja@tetja.de>
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index 5513e25f1..792ad4db0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -814,6 +814,7 @@ AC_SEARCH_LIBS(tgetent, [$termcap_curses_order],
+ This is probably a library called 'curses' or 'ncurses'.  You may
+ need to install a package called 'curses-devel' or 'ncurses-devel' on your
+ system."], 255))
++AC_SEARCH_LIBS(has_colors, [$termcap_curses_order])
+ AC_CHECK_HEADERS(curses.h, [],
+ [AC_CACHE_CHECK(for Solaris 8 curses.h mistake, ac_cv_header_curses_solaris,
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <curses.h>]], [[]])],[ac_cv_header_curses_h=yes
+-- 
+2.24.1
+
