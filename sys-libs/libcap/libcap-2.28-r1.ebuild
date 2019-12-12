@@ -30,7 +30,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.28-no_perl.patch
 	"${FILESDIR}"/${PN}-2.25-ignore-RAISE_SETFCAP-install-failures.patch
 	"${FILESDIR}"/${PN}-2.21-include.patch
-	"${FILESDIR}"/${PN}-2.28-header_location.patch
 )
 
 src_prepare() {
