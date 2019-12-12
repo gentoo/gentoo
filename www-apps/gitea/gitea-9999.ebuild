@@ -43,17 +43,24 @@ DOCS=( custom/conf/app.ini.sample CONTRIBUTING.md README.md )
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
 gitea_make() {
-	local my_tags=(
+	local gitea_tags=(
 		bindata
 		$(usev pam)
 		$(usex sqlite 'sqlite sqlite_unlock_notify' '')
 	)
-	local my_makeopt=(
-		TAGS="${my_tags[@]}"
-		LDFLAGS="-extldflags \"${LDFLAGS}\""
+	local gitea_settings=(
+		"-X code.gitea.io/gitea/modules/setting.CustomConf=${EPREFIX}/etc/gitea/app.ini"
+		"-X code.gitea.io/gitea/modules/setting.CustomPath=${EPREFIX}/var/lib/gitea/custom"
+		"-X code.gitea.io/gitea/modules/setting.AppWorkPath=${EPREFIX}/var/lib/gitea"
 	)
-	[[ ${PV} != 9999* ]] && my_makeopt+=("DRONE_TAG=${PV}")
-	GOPATH=${WORKDIR}/${P}:$(get_golibdir_gopath) emake "${my_makeopt[@]}" "$@"
+	local makeenv=(
+		TAGS="${gitea_tags[@]}"
+		LDFLAGS="-extldflags \"${LDFLAGS}\" ${gitea_settings[@]}"
+		GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)"
+	)
+	[[ ${PV} != 9999* ]] && makeenv+=("DRONE_TAG=${PV}")
+
+	env "${makeenv[@]}" emake "$@"
 }
 
 src_prepare() {
@@ -88,13 +95,13 @@ src_compile() {
 src_test() {
 	if has network-sandbox ${FEATURES}; then
 		einfo "Remove tests which are known to fail with network-sandbox enabled."
-		rm -rf ./modules/migrations/github_test.go
+		rm ./modules/migrations/github_test.go || die
 	fi
 
 	if [[ ${PV} != 9999* ]] ; then
 		einfo "Remove tests which depend on gitea git-repo."
-		rm -rf ./modules/git/blob_test.go
-		rm -rf ./modules/git/repo_test.go
+		rm ./modules/git/blob_test.go || die
+		rm ./modules/git/repo_test.go || die
 	fi
 
 	default
