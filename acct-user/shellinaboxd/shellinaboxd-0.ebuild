@@ -6,4 +6,4 @@ EAPI=7
 inherit acct-user
 
 DESCRIPTION="shellinabox user"
-ACCT_USER_ID=14000
+ACCT_USER_ID=306
