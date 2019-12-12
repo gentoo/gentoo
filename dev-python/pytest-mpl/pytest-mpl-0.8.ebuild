@@ -27,5 +27,5 @@ DEPEND="${RDEPEND}
 
 python_test() {
 	echo "backend : Agg" > "${T}"/matplotlibrc || die
-	MPLCONFIGDIR="${T}" virtx py.test -v || die
+	MPLCONFIGDIR="${T}" virtx py.test -v
 }

@@ -55,7 +55,7 @@ python_install_all() {
 }
 
 python_test() {
-	virtx nosetests -v || die
+	virtx nosetests -v
 }
 
 pkg_preinst() {

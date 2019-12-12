@@ -118,7 +118,7 @@ python_compile_all() {
 	if use doc; then
 		cd "${BUILD_DIR}"/lib || die
 		cp -ar "${S}"/doc . && cd doc || die
-		LANG=C PYTHONPATH=. virtx ${EPYTHON} make.py html || die
+		LANG=C PYTHONPATH=. virtx ${EPYTHON} make.py html
 	fi
 }
 

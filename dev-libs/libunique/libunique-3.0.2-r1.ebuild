@@ -42,5 +42,5 @@ src_configure() {
 src_test() {
 	cd "${S}/tests"
 	cp "${FILESDIR}/run-tests" . || die "Unable to cp \${FILESDIR}/run-tests"
-	virtx emake -f run-tests || die "Tests failed"
+	virtx emake -f run-tests
 }

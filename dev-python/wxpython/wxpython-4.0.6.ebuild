@@ -86,5 +86,5 @@ python_install() {
 }
 
 python_test() {
-	virtx pytest -vv unittests || die "Test failed with ${EPYTHON}"
+	virtx pytest -vv unittests
 }

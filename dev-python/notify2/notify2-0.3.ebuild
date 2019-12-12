@@ -18,7 +18,7 @@ IUSE="examples"
 RDEPEND="dev-python/dbus-python[${PYTHON_USEDEP}]"
 
 python_test() {
-	virtx ${EPYTHON} test_notify2.py || die
+	virtx ${EPYTHON} test_notify2.py
 }
 
 python_install_all() {

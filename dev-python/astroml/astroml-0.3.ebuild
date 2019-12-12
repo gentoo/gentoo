@@ -33,7 +33,7 @@ S="${WORKDIR}/${MYP}"
 DOCS=( CHANGES.rst README.rst )
 
 python_test() {
-	virtx nosetests --verbose || die
+	virtx nosetests --verbose
 }
 
 python_install_all() {

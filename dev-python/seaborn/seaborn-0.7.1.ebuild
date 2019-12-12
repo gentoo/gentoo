@@ -35,5 +35,5 @@ python_test() {
 	cat > matplotlibrc <<- EOF || die
 	backend : Agg
 	EOF
-	virtx nosetests --verbosity=3 || die
+	virtx nosetests --verbosity=3
 }

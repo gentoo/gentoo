@@ -34,5 +34,5 @@ RESTRICT="test"
 
 python_test() {
 	local -x MPLBACKEND=Agg
-	virtx py.test -v || die "Tests failed with ${EPYTHON}"
+	virtx py.test -v
 }

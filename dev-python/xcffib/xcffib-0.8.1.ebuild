@@ -35,5 +35,5 @@ DEPEND="
 PATCHES=( "${FILESDIR}"/${PN}-0.4.2-test-imports.patch )
 
 python_test() {
-	virtx nosetests -d -v || die
+	virtx nosetests -d -v
 }
