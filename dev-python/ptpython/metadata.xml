@@ -7,6 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">ptpython</remote-id>
-    <remote-id type="github">jonathanslenders/ptpython</remote-id>
+    <remote-id type="github">prompt-toolkit/ptpython</remote-id>
   </upstream>
 </pkgmetadata>
