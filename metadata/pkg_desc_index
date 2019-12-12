@@ -2117,7 +2117,7 @@ app-misc/rioutil 1.5.0-r2 1.5.4: A utility for accessing various Rio media playe
 app-misc/rl 0.2.7-r1: Randomize lines from text files or stdin
 app-misc/rlwrap 0.42 0.42-r1 0.43: GNU readline wrapper
 app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
-app-misc/rpick 0.4.0: Helps you pick items from a list by various algorithms
+app-misc/rpick 0.4.0 0.5.0: Helps you pick items from a list by various algorithms
 app-misc/rq 0.10.4: record query - a tool for doing record analysis and transformation
 app-misc/rtlamr 0.9.1: software defined radio receiver for utility smart meters
 app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
@@ -18185,12 +18185,12 @@ www-apps/cgp 1_p20181209: A graphical web-based front-end for visualizing RRD co
 www-apps/chromedriver-bin 2.24-r1 2.30-r1 2.35-r1 2.40 2.41 74.0.3729.6 76.0.3809.68 77.0.3865.40 78.0.3904.70 78.0.3904.105 79.0.3945.36: WebDriver for Chrome
 www-apps/curator 3.0_p20110120-r2: Gallery generator
 www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
-www-apps/davical 1.1.7-r2 1.1.8: A CalDAV and CardDAV Server
+www-apps/davical 1.1.9.2: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20160626e 20170219e 20180422a 20180422b: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
 www-apps/drupal 7.67 7.67-r1 7.68 8.6.16 8.7.8 8.7.9 8.7.10 8.8.0: PHP-based open-source platform and content management system
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
-www-apps/gitea 1.8.3 1.9.5 1.10.0 9999: A painless self-hosted Git service
+www-apps/gitea 1.9.5 1.10.1 9999: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.3.5 6.3.6 6.4.3 6.4.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hiawatha-monitor 1.6: Monitoring application for www-servers/hiawatha
