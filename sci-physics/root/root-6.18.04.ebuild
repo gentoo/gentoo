@@ -20,6 +20,7 @@ IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix debug emacs
 	libcxx memstat +minuit mysql nosplash odbc +opengl oracle postgres
 	prefix pythia6 pythia8 +python qt5 R +roofit root7 shadow sqlite
 	+ssl +tbb test +threads +tiff +tmva +unuran vc +vmc +xml xrootd"
+RESTRICT="!test? ( test )"
 
 SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
