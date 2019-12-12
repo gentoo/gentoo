@@ -8,6 +8,6 @@ inherit acct-user
 DESCRIPTION="User for mail-filter/milter-regex"
 
 ACCT_USER_ID=438
-ACCT_USER_GROUPS=( milter )
+ACCT_USER_GROUPS=( milter-regex )
 
 acct-user_add_deps
