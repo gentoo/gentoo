@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-ros/test_rosmaster
 	)"
-PATCHES=( "${FILESDIR}/timeout.patch" "${FILESDIR}/yaml.patch" )
+PATCHES=( "${FILESDIR}/timeout.patch" "${FILESDIR}/yaml.patch" "${FILESDIR}/py3.patch" "${FILESDIR}/py3-2.patch" )
 
 src_test() {
 	rosdep update

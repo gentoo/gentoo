@@ -1,0 +1,45 @@
+From 8f22c20e418abe4abe23e789eef517a16a50604d Mon Sep 17 00:00:00 2001
+From: Dirk Thomas <dirk-thomas@users.noreply.github.com>
+Date: Tue, 6 Aug 2019 12:50:24 -0700
+Subject: [PATCH] more Python 3 compatibility (#1782)
+
+---
+ test/test_rosmaster/test/nodes/testAllCommonFlows  | 2 +-
+ test/test_rosmaster/test/nodes/testMaster          | 2 +-
+ test/test_rosmaster/test/nodes/testSlave           | 2 +-
+ test/test_rospy/test/unit/test_genmsg_py.py        | 8 +++++++-
+ tools/rosgraph/test/test_roslogging.py             | 5 ++++-
+ tools/rosgraph/test/test_roslogging_user_logger.py | 5 ++++-
+ tools/roslaunch/src/roslaunch/depends.py           | 8 ++++----
+ 7 files changed, 22 insertions(+), 10 deletions(-)
+
+diff --git a/tools/roslaunch/src/roslaunch/depends.py b/tools/roslaunch/src/roslaunch/depends.py
+index a3fbf7a41..91ae26998 100644
+--- a/tools/roslaunch/src/roslaunch/depends.py
++++ b/tools/roslaunch/src/roslaunch/depends.py
+@@ -86,21 +86,21 @@ def __str__(self):
+ 
+ def _get_arg_value(tag, context):
+     name = tag.attributes['name'].value
+-    if tag.attributes.has_key('value'):
++    if 'value' in tag.attributes.keys():
+         return resolve_args(tag.attributes['value'].value, context)
+     elif name in context['arg']:
+         return context['arg'][name]
+-    elif tag.attributes.has_key('default'):
++    elif 'default' in tag.attributes.keys():
+         return resolve_args(tag.attributes['default'].value, context)
+     else:
+         raise RoslaunchDepsException("No value for arg [%s]"%(name))
+ 
+ def _check_ifunless(tag, context):
+-    if tag.attributes.has_key('if'):
++    if 'if' in tag.attributes.keys():
+         val = resolve_args(tag.attributes['if'].value, context)
+         if not convert_value(val, 'bool'):
+             return False
+-    elif tag.attributes.has_key('unless'):
++    elif 'unless' in tag.attributes.keys():
+         val = resolve_args(tag.attributes['unless'].value, context)
+         if convert_value(val, 'bool'):
+             return False
