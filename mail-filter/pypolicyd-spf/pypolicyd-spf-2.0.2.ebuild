@@ -14,7 +14,7 @@ PYTHON_REQ_USE="ipv6"
 inherit distutils-r1
 
 DESCRIPTION="Python-based policy daemon for Postfix SPF verification"
-HOMEPAGE="https://launchpad.net/${PN}"
+HOMEPAGE="https://launchpad.net/pypolicyd-spf"
 SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
