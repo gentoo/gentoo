@@ -66,6 +66,7 @@ IUSE="accessibility bluetooth +branding coinmp +cups dbus debug eds firebird
 googledrive gstreamer +gtk gtk2 kde ldap +mariadb odk pdfimport postgres test
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
 	libreoffice_extensions_nlpsolver? ( java )
