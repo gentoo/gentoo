@@ -7,4 +7,4 @@ LICENSE=MIT
 RDEPEND=dev-php/fedora-autoloader <dev-php/doctrine-instantiator-2 <dev-php/phpdocumentor-reflection-docblock-4 <dev-php/sebastian-comparator-3 <dev-php/sebastian-recursion-context-4 >=dev-lang/php-5.6:*
 SLOT=0
 SRC_URI=https://github.com/phpspec/prophecy/archive/v1.7.0.tar.gz -> phpspec-prophecy-1.7.0.tar.gz
-_md5_=e20e456b562318f5bd9fa4bed1fa85bb
+_md5_=8617384ef5766d103b0268a99ea38cf2
