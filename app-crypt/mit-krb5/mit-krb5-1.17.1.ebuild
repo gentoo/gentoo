@@ -16,6 +16,7 @@ LICENSE="openafs-krb5-a BSD MIT OPENLDAP BSD-2 HPND BSD-4 ISC RSA CC-BY-SA-3.0 |
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="cpu_flags_x86_aes doc +keyutils libressl lmdb nls openldap +pkinit selinux +threads test xinetd"
+RESTRICT="!test? ( test )"
 
 # Test suite requires network access
 #RESTRICT="test"
