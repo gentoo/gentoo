@@ -25,7 +25,7 @@ S="${WORKDIR}"
 
 BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
-MODULE_NAMES="vboxdrv(misc:${S}) vboxnetflt(misc:${S}) vboxnetadp(misc:${S}) vboxpci(misc:${S})"
+MODULE_NAMES="vboxdrv(misc:${S}) vboxnetflt(misc:${S}) vboxnetadp(misc:${S})"
 
 pkg_setup() {
 	enewgroup vboxusers
@@ -44,7 +44,7 @@ src_prepare() {
 src_install() {
 	linux-mod_src_install
 	insinto /usr/lib/modules-load.d/
-	doins "${FILESDIR}"/virtualbox.conf
+	newins "${FILESDIR}"/virtualbox.conf-r1 virtualbox.conf
 }
 
 pkg_postinst() {
