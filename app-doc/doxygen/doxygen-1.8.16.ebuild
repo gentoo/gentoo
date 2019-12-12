@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.8.16-link_with_pthread.patch"
 	"${FILESDIR}/${PN}-1.8.15-llvm7.patch" #666692
 	"${FILESDIR}/${PN}-1.8.16-ghostscript-compatilibility.patch" #695710
+	"${FILESDIR}/${PN}-1.8.16-fix-external-tag-files-with-TOC.patch" #701930
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )
