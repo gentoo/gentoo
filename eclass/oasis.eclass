@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: oasis.eclass
@@ -60,7 +60,10 @@ esac
 IUSE="+ocamlopt"
 [ -n "${OASIS_NO_DEBUG}" ]   || IUSE="${IUSE} debug"
 [ -n "${OASIS_BUILD_DOCS}" ] && IUSE="${IUSE} doc"
-[ -n "${OASIS_BUILD_TESTS}" ] && IUSE="${IUSE} test"
+if [[ -n ${OASIS_BUILD_TESTS} ]]; then
+	IUSE+=" test"
+	RESTRICT+=" !test? ( test )"
+fi
 
 DEPEND="${RDEPEND}
 	dev-ml/ocamlbuild"
