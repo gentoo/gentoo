@@ -5,7 +5,7 @@ EAPI=5
 inherit linux-info readme.gentoo systemd
 
 DESCRIPTION="IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon"
-HOMEPAGE="https://github.com/evgeni/${PN}/"
+HOMEPAGE="https://github.com/evgeni/hdapsd/"
 SRC_URI="https://github.com/evgeni/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
