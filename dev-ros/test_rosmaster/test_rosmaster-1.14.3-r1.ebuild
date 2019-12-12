@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,6 +23,7 @@ RDEPEND="dev-ros/rosgraph[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}
 	test? (	dev-ros/roslib[${PYTHON_USEDEP}] )
 "
+PATCHES=( "${FILESDIR}/yaml.patch" )
 
 mycatkincmakeargs=( "-DCATKIN_ENABLE_TESTING=ON" )
 
