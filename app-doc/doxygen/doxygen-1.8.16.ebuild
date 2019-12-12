@@ -11,6 +11,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/doxygen/doxygen.git"
 	SRC_URI=""
+	KEYWORDS=""
 else
 	SRC_URI="http://doxygen.nl/files/${P}.src.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
@@ -62,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.8.9.1-empty-line-sigsegv.patch" #454348
 	"${FILESDIR}/${PN}-1.8.16-link_with_pthread.patch"
 	"${FILESDIR}/${PN}-1.8.15-llvm7.patch" #666692
+	"${FILESDIR}/${PN}-1.8.16-ghostscript-compatilibility.patch" #695710
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )
@@ -107,6 +109,7 @@ src_configure() {
 		-Dbuild_search=$(usex doxysearch)
 		-Dbuild_wizard=$(usex qt5)
 		-Duse_sqlite3=$(usex sqlite)
+		-DGIT_EXECUTABLE="false"
 		)
 	use doc && mycmakeargs+=(
 		-DDOC_INSTALL_DIR="share/doc/${P}"
