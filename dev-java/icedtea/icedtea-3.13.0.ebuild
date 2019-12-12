@@ -73,6 +73,7 @@ IUSE="+alsa cacao +cups doc examples +gtk headless-awt
 	jamvm +jbootstrap kerberos libressl nsplugin pax_kernel +pch
 	pulseaudio sctp selinux shenandoah smartcard +source +system-lcms test +webstart zero"
 
+RESTRICT="!test? ( test )"
 REQUIRED_USE="gtk? ( !headless-awt )"
 
 # Ideally the following were optional at build time.
