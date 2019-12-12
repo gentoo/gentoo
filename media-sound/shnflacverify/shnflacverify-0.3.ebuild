@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit eutils
 
@@ -12,12 +12,10 @@ SRC_URI="http://downloads.sourceforge.net/project/${PN}/${PN}/${P}/${P}.zip"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}
-	dev-lang/perl
+RDEPEND="
 	app-arch/unzip
+	dev-lang/perl
 	media-libs/flac
 	media-sound/shntool
 	sys-apps/coreutils"
@@ -25,11 +23,14 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}"
 
 src_prepare() {
-	local X
+	default
+
 	edos2unix *.txt
+
+	local X
 	for X in flac md5sum shntool metaflac; do
 		einfo "setting \$${X}_cmd to $(type -p ${X})"
-		sed -i -e "s|^\(\$${X}_cmd\s*=\s*'\)[^']*\('.*\)|\1$(type -p ${X})\2|g" shnflac*
+		sed -i -e "s|^\(\$${X}_cmd\s*=\s*'\)[^']*\('.*\)|\1$(type -p ${X})\2|g" shnflac* || die
 	done
 }
 
