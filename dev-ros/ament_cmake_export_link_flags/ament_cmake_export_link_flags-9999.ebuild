@@ -8,22 +8,35 @@ PYTHON_COMPAT=( python{3_6,3_7} )
 inherit cmake-utils python-r1
 
 ROS_PN="ament_cmake"
-DESCRIPTION="The core of the ament buildsystem in CMake"
+if [ "${PV#9999}" != "${PV}" ] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/ament/ament_cmake"
+	SRC_URI=""
+	S=${WORKDIR}/${P}/${PN}
+else
+	SRC_URI="https://github.com/ament/ament_cmake/archive/${PV}.tar.gz -> ${ROS_PN}-${PV}.tar.gz"
+	S="${WORKDIR}/${ROS_PN}-${PV}/${PN}"
+fi
+
+DESCRIPTION="Export link flags to downstream packages in the ament buildsystem"
 HOMEPAGE="https://github.com/ament/ament_cmake"
-SRC_URI="https://github.com/ament/ament_cmake/archive/${PV}.tar.gz -> ${ROS_PN}-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+if [ "${PV#9999}" != "${PV}" ] ; then
+	KEYWORDS=""
+else
+	KEYWORDS="~amd64"
+fi
 IUSE=""
 
 DEPEND="
 	dev-ros/ament_cmake_core[${PYTHON_USEDEP}]
+	${PYTHON_DEPS}
 "
 RDEPEND="${DEPEND}"
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="${DEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-S="${WORKDIR}/${ROS_PN}-${PV}/${PN}"
 
 src_configure() {
 	# This is a build tool that does not install python-related files

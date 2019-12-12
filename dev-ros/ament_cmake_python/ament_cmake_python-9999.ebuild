@@ -18,7 +18,7 @@ else
 	S="${WORKDIR}/${ROS_PN}-${PV}/${PN}"
 fi
 
-DESCRIPTION="Export link flags to downstream packages in the ament buildsystem"
+DESCRIPTION="The ability to use Python in the ament buildsystem"
 HOMEPAGE="https://github.com/ament/ament_cmake"
 
 LICENSE="Apache-2.0"
@@ -37,6 +37,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+PATCHES=( "${FILESDIR}/destdir.patch" )
 
 src_configure() {
 	# This is a build tool that does not install python-related files
