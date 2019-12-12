@@ -23,6 +23,7 @@ IUSE="+alsa +alsa-plugin +asyncns bluetooth +caps dbus doc equalizer elogind gco
 ofono-headset +orc oss qt5 realtime selinux sox ssl systemd system-wide tcpd test
 +udev +webrtc-aec +X zeroconf"
 
+RESTRICT="!test? ( test )"
 # See "*** BLUEZ support not found (requires D-Bus)" in configure.ac
 REQUIRED_USE="
 	?? ( elogind systemd )
