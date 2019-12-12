@@ -1,0 +1,22 @@
+From 481ad19689561052afde658ab0c54c91b0e5e04a Mon Sep 17 00:00:00 2001
+From: Maxime St-Pierre <me@maximest-pierre.me>
+Date: Sun, 10 Nov 2019 06:27:40 -0500
+Subject: [PATCH] Fix #1833 change unsafe yaml.load to yaml.safe_load
+
+---
+ tools/rosparam/src/rosparam/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/rosparam/src/rosparam/__init__.py b/tools/rosparam/src/rosparam/__init__.py
+index 3279ab97d..fd8b0569f 100644
+--- a/tools/rosparam/src/rosparam/__init__.py
++++ b/tools/rosparam/src/rosparam/__init__.py
+@@ -368,7 +368,7 @@ def set_param(param, value, verbose=False):
+     :param param: parameter name, ``str``
+     :param value: yaml-encoded value, ``str``
+     """
+-    set_param_raw(param, yaml.load(value), verbose=verbose)
++    set_param_raw(param, yaml.safe_load(value), verbose=verbose)
+ 
+ def upload_params(ns, values, verbose=False):
+     """
