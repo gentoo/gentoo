@@ -613,7 +613,7 @@ dev-php/magickwand
 dev-php/pecl-bbcode
 dev-php/pecl-cairo
 dev-php/pecl-dbx
-dev-php/haru
+dev-php/pecl-haru
 dev-php/pecl-htscanner
 dev-php/pecl-libevent
 dev-php/pecl-memcache
