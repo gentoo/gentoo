@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="aqbanking chipcard debug doc examples gnome-keyring +gui mysql nls ofx
 	  postgres python quotes -register2 sqlite test"
 
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	chipcard? ( aqbanking )
 	python? ( ${PYTHON_REQUIRED_USE} )"
