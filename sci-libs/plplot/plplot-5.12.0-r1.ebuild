@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cairo cxx doc +dynamic examples fortran gd java jpeg latex lua ocaml octave pdf
 	pdl png python qhull qt5 shapefile svg tcl test	threads tk truetype wxwidgets X"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) qt5? ( dynamic ) test? ( latex ) tk? ( tcl )"
-RESTRICT="octave? ( test )"
+RESTRICT="!test? ( test ) octave? ( test )"
 
 RDEPEND="
 	cairo? ( x11-libs/cairo:0=[svg?,X] )
