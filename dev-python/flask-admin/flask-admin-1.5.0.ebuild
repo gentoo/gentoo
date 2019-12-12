@@ -19,6 +19,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/flask-0.7[${PYTHON_USEDEP}]
