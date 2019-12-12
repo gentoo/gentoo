@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/376899
 
---- src/Makefile.am
-+++ src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -53,13 +53,7 @@
  	$(XML_CFLAGS) \
  	-DPKGDATADIR=\"$(pkgdatadir)\" \
@@ -15,5 +15,5 @@ http://bugs.gentoo.org/376899
 -
 +	-DDTDDIR=\"$(dtddir)\"
  
- jack_rack_LDFLAGS = \
- 	$(JACK_LIBS) \
+ LIBS = \
+ 	-ldl \
