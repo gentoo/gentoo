@@ -68,6 +68,7 @@ acct-group/qmail 0: System group: qmail
 acct-group/redmine 0: System group: redmine
 acct-group/render 0: System group: render
 acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
+acct-group/shellinaboxd 0: shellinabox group
 acct-group/slurm 0: A group for the slurm - Highly Scalable Resource Manager
 acct-group/spectrum 0: A group for the Spectrum messaging transport
 acct-group/spire 0: System group: spire
@@ -157,6 +158,7 @@ acct-user/qmailr 0: user for qmail-rspawn and qmail-remote
 acct-user/qmails 0: user for qmail-smtpd
 acct-user/redmine 0: Redmine application user
 acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
+acct-user/shellinaboxd 0: shellinabox user
 acct-user/slurm 0: User for the slurm - Highly Scalable Resource Manager
 acct-user/spectrum 0: A user for the Spectrum messaging transport
 acct-user/spire 0: user for spiffe runtime environment
@@ -18232,7 +18234,7 @@ www-apps/webmcp 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.2.4 5.3: Wordpress PHP and MySQL based content management system (CMS)
-www-apps/zeppelin-bin 0.8.1 0.8.2: Web-based interactive data analytics notebook launcher
+www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
 www-client/chromium 78.0.3904.108 79.0.3945.79 80.0.3970.5: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
@@ -18281,7 +18283,7 @@ www-misc/monitorix 3.11.0: A lightweight system monitoring tool
 www-misc/multisort 1.1-r2: Merges httpd logfiles in the Common Log Format
 www-misc/nx_util 0.52.1 0.53.1: Whitelist & Reports generation for Naxsi (Web App Firewall module for Nginx)
 www-misc/profile-sync-daemon 5.75 6.31 6.35 9999: Symlinks and syncs browser profile dirs to RAM.
-www-misc/shellinabox 2.20-r1 2.20-r2: Export command line tools to a web based terminal emulator
+www-misc/shellinabox 2.20-r1 2.20-r2 2.20-r3: Export command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1-r1: URL shortening command line application that supports various sites
 www-misc/urlwatch 2.13 2.16 2.17: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10: WWW Admin for the Video Disk Recorder
