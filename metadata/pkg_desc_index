@@ -2153,7 +2153,7 @@ app-misc/terminal-colors 2.2 2.3: A tool to display color charts for 8, 16, 88, 
 app-misc/timestamp 1.1-r1: A text filtering pipe that marks each line with a timestamp
 app-misc/timew 1.0.0 1.1.1: Tracks your time from the command line, and generates reports
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
-app-misc/tmate 2.3.0 2.3.1: Instant terminal sharing
+app-misc/tmate 2.3.1 2.4.0: Instant terminal sharing
 app-misc/tmux 2.9a 3.0a 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 3.4.0 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/tmux-xpanes 4.1.1: tmux-based terminal divider
