@@ -38,7 +38,7 @@ IUSE="cjk cracklib debug jemalloc latin1 libressl numa pam +perl profiling
 	rocksdb router selinux +server tcmalloc test tokudb tokudb-backup-plugin"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="libressl? ( test )"
+RESTRICT="!test? ( test ) libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )"
 
