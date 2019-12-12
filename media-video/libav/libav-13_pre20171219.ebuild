@@ -126,7 +126,9 @@ REQUIRED_USE="
 	test? ( encode zlib )
 	fontconfig? ( truetype )
 "
-RESTRICT="faac? ( bindist ) fdk? ( bindist ) openssl? ( bindist )"
+RESTRICT="
+	!test? ( test )
+	faac? ( bindist ) fdk? ( bindist ) openssl? ( bindist )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libavutil/avconfig.h

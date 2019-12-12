@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -126,7 +126,9 @@ REQUIRED_USE="
 	test? ( encode zlib )
 	fontconfig? ( truetype )
 "
-RESTRICT="faac? ( bindist ) fdk? ( bindist ) openssl? ( bindist )"
+RESTRICT="
+	!test? ( test )
+	faac? ( bindist ) fdk? ( bindist ) openssl? ( bindist )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libavutil/avconfig.h
