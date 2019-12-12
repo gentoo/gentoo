@@ -29,7 +29,7 @@ IUSE="client-libs debug extraengine jemalloc latin1 libressl numa
 	test yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="libressl? ( test )"
+RESTRICT="!test? ( test ) libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )
 	static? ( yassl )"
