@@ -18,6 +18,7 @@ IUSE="
 	blas cuda doc examples fftw fortran gcc-plugin mpi opencl opengl
 	spinlock-check static-libs test valgrind
 "
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	sci-mathematics/glpk:0=
