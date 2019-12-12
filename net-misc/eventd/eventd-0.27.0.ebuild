@@ -16,6 +16,7 @@ IUSE="debug fbcon +introspection ipv6 libcanberra libnotify +notification
 	pulseaudio purple speech systemd test upnp wayland webhook websocket
 	+X zeroconf"
 
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	X? ( notification )
 	fbcon? ( notification )
