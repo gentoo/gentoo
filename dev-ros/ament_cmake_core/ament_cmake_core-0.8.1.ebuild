@@ -20,9 +20,10 @@ IUSE=""
 DEPEND="
 	dev-python/ament_package[${PYTHON_USEDEP}]
 	dev-python/catkin_pkg[${PYTHON_USEDEP}]
+	${PYTHON_DEPS}
 "
 RDEPEND="${DEPEND}"
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="${DEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 S="${WORKDIR}/${ROS_PN}-${PV}/${PN}"
 
