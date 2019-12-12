@@ -8,7 +8,8 @@ PYTHON_COMPAT=( python2_7 python3_{5,6} )
 inherit distutils-r1
 
 DESCRIPTION="py.test plugin for isort"
-HOMEPAGE="https://github.com/moccu/${PN} https://pypi.python.org/pypi/${PN}"
+HOMEPAGE="https://github.com/moccu/pytest-isort
+	https://pypi.python.org/pypi/pytest-isort"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
