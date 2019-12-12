@@ -23,7 +23,7 @@ RDEPEND="dev-ros/rosgraph[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}
 	test? (	dev-ros/roslib[${PYTHON_USEDEP}] )
 "
-PATCHES=( "${FILESDIR}/yaml.patch" )
+PATCHES=( "${FILESDIR}/yaml.patch" "${FILESDIR}/empty.patch" )
 
 mycatkincmakeargs=( "-DCATKIN_ENABLE_TESTING=ON" )
 
