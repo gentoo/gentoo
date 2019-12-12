@@ -37,6 +37,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+PATCHES=( "${FILESDIR}/destdir.patch" )
 
 src_configure() {
 	# This is a build tool that does not install python-related files
