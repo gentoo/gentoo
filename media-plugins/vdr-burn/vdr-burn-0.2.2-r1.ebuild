@@ -43,8 +43,8 @@ src_prepare() {
 	eapply \
 		"${FILESDIR}"/${P}-r1_gentoo-path.diff \
 		"${FILESDIR}"/${P}_setdefaults.diff \
-		"${FILESDIR}"/${P}_makefile.diff \
-		"${FILESDIR}"/${P}-missing-include-for-function-setpriority.patch
+		"${FILESDIR}"/${P}_makefile.diff
+	eapply -p0 "${FILESDIR}"/${P}-missing-include-for-function-setpriority.patch
 
 	use dvdarchive && sed -i Makefile \
 		-e "s:#ENABLE_DMH_ARCHIVE:ENABLE_DMH_ARCHIVE:"
