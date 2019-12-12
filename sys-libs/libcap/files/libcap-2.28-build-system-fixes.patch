@@ -1,4 +1,4 @@
-From f65164072879ebb6b1fd6cc79a6b77804150bcc4 Mon Sep 17 00:00:00 2001
+From 9ce6d2ab1060c362178aba57b68bedca2d39cfe9 Mon Sep 17 00:00:00 2001
 From: Mike Frysinger <vapier@gentoo.org>
 Date: Wed, 10 Feb 2016 09:47:27 +0100
 Subject: [PATCH] build system fixes
@@ -19,21 +19,20 @@ Forward ported from libcap-2.25 to libcap-2.28
 
 Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 ---
- Make.Rules       | 28 +++++++++++++++-------------
+ Make.Rules       | 30 ++++++++++++++++++------------
  libcap/Makefile  |  7 ++++---
  pam_cap/Makefile |  8 +++++---
  progs/Makefile   |  2 +-
- 4 files changed, 25 insertions(+), 20 deletions(-)
+ 4 files changed, 28 insertions(+), 19 deletions(-)
 
 diff --git a/Make.Rules b/Make.Rules
-index ab4f17c..f97021d 100644
+index ab4f17c..1b659ea 100644
 --- a/Make.Rules
 +++ b/Make.Rules
-@@ -45,36 +45,38 @@ MINOR=28
- 
+@@ -46,35 +46,41 @@ MINOR=28
  # Compilation specifics
  
--KERNEL_HEADERS := $(topdir)/libcap/include/uapi
+ KERNEL_HEADERS := $(topdir)/libcap/include/uapi
 -IPATH += -fPIC -I$(KERNEL_HEADERS) -I$(topdir)/libcap/include
 -
 -CC := gcc
@@ -42,10 +41,13 @@ index ab4f17c..f97021d 100644
 -BUILD_CFLAGS := $(CFLAGS) $(IPATH)
 -AR := ar
 -RANLIB := ranlib
++IPATH += -I$(KERNEL_HEADERS) -I$(topdir)/libcap/include
++
 +CC ?= gcc
 +CFLAGS ?= -O2
 +BUILD_CC ?= $(CC)
 +BUILD_CFLAGS ?= $(CFLAGS)
++BUILD_CFLAGS += $(IPATH)
 +AR ?= ar
 +RANLIB ?= ranlib
  DEBUG = -g #-DDEBUG
@@ -159,5 +161,5 @@ index 0786ad3..3abbbd9 100644
  install: all
  	mkdir -p -m 0755 $(FAKEROOT)$(SBINDIR)
 -- 
-2.24.0
+2.24.1
 
