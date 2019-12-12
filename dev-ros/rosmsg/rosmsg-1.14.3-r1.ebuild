@@ -22,3 +22,4 @@ RDEPEND="
 	dev-ros/rosbag[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/py3.patch" )
