@@ -20,3 +20,4 @@ RDEPEND="
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/yaml.patch" "${FILESDIR}/yaml2.patch" )
