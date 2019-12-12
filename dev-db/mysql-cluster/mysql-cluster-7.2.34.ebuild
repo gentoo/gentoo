@@ -29,7 +29,7 @@ IUSE="bindist client-libs debug extraengine java jemalloc latin1 libressl
 	test yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="!bindist? ( bindist ) libressl? ( test )"
+RESTRICT="!bindist? ( bindist ) !test? ( test ) libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )
 	static? ( yassl )"

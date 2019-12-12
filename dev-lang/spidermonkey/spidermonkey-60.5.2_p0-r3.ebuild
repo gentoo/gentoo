@@ -20,7 +20,7 @@ SLOT="60"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="debug +jit minimal +system-icu test"
 
-RESTRICT="ia64? ( test )"
+RESTRICT="!test? ( test ) ia64? ( test )"
 
 S="${WORKDIR}/${MY_P%.rc*}"
 

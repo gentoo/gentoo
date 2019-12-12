@@ -15,6 +15,7 @@ SLOT=0
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 LICENSE=AFL-3.0
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/numpy-1.6[${PYTHON_USEDEP},lapack]
 	>=dev-python/matplotlib-1.0[${PYTHON_USEDEP}]"

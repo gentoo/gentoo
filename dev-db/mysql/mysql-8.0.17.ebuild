@@ -33,7 +33,7 @@ IUSE="cjk cracklib debug jemalloc latin1 libressl numa +perl profiling
 	router selinux tcmalloc test"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="libressl? ( test )"
+RESTRICT="!test? ( test ) libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )"
 

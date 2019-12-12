@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 
 # We need write acccess /dev/nvidia0 and /dev/nvidiactl and the portage
 # user is (usually) not in the video group
-RESTRICT="userpriv"
+RESTRICT="userpriv !test? ( test )"
 
 python_prepare_all() {
 	cuda_sanitize
