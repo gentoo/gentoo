@@ -8,4 +8,4 @@ LICENSE=BSD
 RDEPEND=dev-php/fedora-autoloader
 SLOT=0
 SRC_URI=https://github.com/evert/SabreAMF/archive/1.5.0.tar.gz -> SabreAMF-1.5.0.tar.gz
-_md5_=f138b030d91409ab1df5fbf459da4c2c
+_md5_=0ef5f2ba5419ec7c9fb2f2777f735211
