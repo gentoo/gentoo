@@ -41,5 +41,5 @@ DEPEND="
 python_test() {
 	cd "${BUILD_DIR}"/lib || die
 	echo "backend: Agg" > matplotlibrc
-	virtx py.test || die
+	virtx py.test
 }

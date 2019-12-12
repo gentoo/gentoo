@@ -47,5 +47,5 @@ python_prepare_all() {
 
 python_test() {
 	# virtualx used when matplotlib is installed causing plot module tests to run
-	virtx pytest -vv Tests fontTools || die "pytest failed"
+	virtx pytest -vv Tests fontTools
 }
