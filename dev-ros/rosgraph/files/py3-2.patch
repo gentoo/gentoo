@@ -1,0 +1,52 @@
+From 1933acfa8107a164ec825d3223d14589fefd1b5b Mon Sep 17 00:00:00 2001
+From: Dirk Thomas <dirk-thomas@users.noreply.github.com>
+Date: Tue, 6 Aug 2019 16:06:51 -0700
+Subject: [PATCH] more Python 3 compatibility (#1783)
+
+---
+ test/test_rospy/test/unit/test_genmsg_py.py   |  6 +--
+ tools/rosgraph/src/rosgraph/roslogging.py     |  2 +-
+ .../test/test_roslogging_user_logger.py       |  8 +++-
+ tools/roslaunch/test/unit/test_xmlloader.py   |  2 +-
+ tools/rosmsg/src/rosmsg/__init__.py           |  2 +-
+ tools/rosmsg/test/test_rosmsg_command_line.py | 46 +++++++++----------
+ .../test/test_rosmsgproto_command_line.py     | 20 ++++----
+ .../test_rostopic_command_line_offline.py     | 44 +++++++++---------
+ 8 files changed, 67 insertions(+), 63 deletions(-)
+
+diff --git a/tools/rosgraph/src/rosgraph/roslogging.py b/tools/rosgraph/src/rosgraph/roslogging.py
+index bbf1d9f49..51c39becd 100644
+--- a/tools/rosgraph/src/rosgraph/roslogging.py
++++ b/tools/rosgraph/src/rosgraph/roslogging.py
+@@ -49,7 +49,7 @@
+ class LoggingException(Exception): pass
+ 
+ class RospyLogger(logging.getLoggerClass()):
+-    def findCaller(self, dummy=False): # Dummy second arg to match Python3 function declaration
++    def findCaller(self, stack_info=False):
+         """
+         Find the stack frame of the caller so that we can note the source
+         file name, line number, and function name with class name if possible.
+diff --git a/tools/rosgraph/test/test_roslogging_user_logger.py b/tools/rosgraph/test/test_roslogging_user_logger.py
+index 4ac4f8291..1c3cb5df5 100644
+--- a/tools/rosgraph/test/test_roslogging_user_logger.py
++++ b/tools/rosgraph/test/test_roslogging_user_logger.py
+@@ -51,12 +51,16 @@
+ 
+ # set user defined custom logger
+ class UserCustomLogger(logging.Logger):
+-    def findCaller(self):
++    def findCaller(self, stack_info=False):
+         """Returns static caller.
+ 
+         This method is being overwritten in rosgraph.roslogging.
+         """
+-        return '<filename>', '<lineno>', '<func_name>'
++        if sys.version_info > (3, 2):
++            # Dummy last argument to match Python3 return type
++            return '<filename>', '<lineno>', '<func_name>', None
++        else:
++            return '<filename>', '<lineno>', '<func_name>'
+ 
+     def _log(self, level, msg, args, exc_info=None, extra=None):
+         """Write log with ROS_IP.

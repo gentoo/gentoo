@@ -17,6 +17,7 @@ IUSE="
 	opencv png test tutorials usb v4l X xml +zbar zlib
 	cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3
 "
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	coin? ( >=media-libs/coin-4 virtual/opengl )

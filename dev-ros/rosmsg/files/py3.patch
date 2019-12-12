@@ -1,0 +1,212 @@
+From 1933acfa8107a164ec825d3223d14589fefd1b5b Mon Sep 17 00:00:00 2001
+From: Dirk Thomas <dirk-thomas@users.noreply.github.com>
+Date: Tue, 6 Aug 2019 16:06:51 -0700
+Subject: [PATCH] more Python 3 compatibility (#1783)
+
+---
+ test/test_rospy/test/unit/test_genmsg_py.py   |  6 +--
+ tools/rosgraph/src/rosgraph/roslogging.py     |  2 +-
+ .../test/test_roslogging_user_logger.py       |  8 +++-
+ tools/roslaunch/test/unit/test_xmlloader.py   |  2 +-
+ tools/rosmsg/src/rosmsg/__init__.py           |  2 +-
+ tools/rosmsg/test/test_rosmsg_command_line.py | 46 +++++++++----------
+ .../test/test_rosmsgproto_command_line.py     | 20 ++++----
+ .../test_rostopic_command_line_offline.py     | 44 +++++++++---------
+ 8 files changed, 67 insertions(+), 63 deletions(-)
+
+diff --git a/tools/rosmsg/src/rosmsg/__init__.py b/tools/rosmsg/src/rosmsg/__init__.py
+index 4ed7aa542..75f5afcbd 100644
+--- a/tools/rosmsg/src/rosmsg/__init__.py
++++ b/tools/rosmsg/src/rosmsg/__init__.py
+@@ -240,7 +240,7 @@ def create_names_filter(names):
+     """
+     returns a function to use as filter that returns all objects slots except those with names in list.
+     """
+-    return lambda obj : filter(lambda slotname : not slotname in names, obj.__slots__)
++    return lambda obj : list(filter(lambda slotname : not slotname in names, obj.__slots__))
+ 
+ 
+ def init_rosmsg_proto():
+diff --git a/tools/rosmsg/test/test_rosmsg_command_line.py b/tools/rosmsg/test/test_rosmsg_command_line.py
+index 02e31022e..d5515a3ac 100644
+--- a/tools/rosmsg/test/test_rosmsg_command_line.py
++++ b/tools/rosmsg/test/test_rosmsg_command_line.py
+@@ -54,24 +54,24 @@ def test_cmd_help(self):
+         
+         for cmd in ['rosmsg', 'rossrv']:
+             glob_cmd=[os.path.join(_SCRIPT_FOLDER, cmd)]
+-            output = Popen(glob_cmd, stdout=PIPE, env=self.new_environ).communicate()[0]
++            output = Popen(glob_cmd, stdout=PIPE, env=self.new_environ).communicate()[0].decode()
+             self.assert_('Commands' in output)
+-            output = Popen(glob_cmd+['-h'], stdout=PIPE, env=self.new_environ).communicate()[0]
++            output = Popen(glob_cmd+['-h'], stdout=PIPE, env=self.new_environ).communicate()[0].decode()
+             self.assert_('Commands' in output)
+             self.assert_('Traceback' not in output)
+             for c in sub:
+                 self.assert_("%s %s"%(cmd, c) in output, "%s %s"%(cmd, c) + " not in "+ output + " of " + str(glob_cmd))
+                 
+             for c in sub:
+-                output = Popen(glob_cmd + [c, '-h'], stdout=PIPE, env=self.new_environ).communicate()[0]
++                output = Popen(glob_cmd + [c, '-h'], stdout=PIPE, env=self.new_environ).communicate()[0].decode()
+                 self.assert_('Usage' in output)
+                 self.assert_("%s %s"%(cmd, c) in output, output)
+             
+     def test_cmd_packages(self):
+         # - single line
+-        output1 = Popen(['rosmsg', 'packages', '-s'], stdout=PIPE).communicate()[0]
++        output1 = Popen(['rosmsg', 'packages', '-s'], stdout=PIPE).communicate()[0].decode()
+         # - multi-line
+-        output2 = Popen(['rosmsg', 'packages'], stdout=PIPE).communicate()[0]
++        output2 = Popen(['rosmsg', 'packages'], stdout=PIPE).communicate()[0].decode()
+         l1 = [x for x in output1.split() if x]
+         l2 = [x.strip() for x in output2.split('\n') if x.strip()]
+         self.assertEquals(l1, l2)
+@@ -80,8 +80,8 @@ def test_cmd_packages(self):
+         for p in ['std_srvs', 'rosmsg']:
+             self.assert_(p not in l1)
+ 
+-        output1 = Popen(['rossrv', 'packages', '-s'], stdout=PIPE).communicate()[0]
+-        output2 = Popen(['rossrv', 'packages'], stdout=PIPE).communicate()[0]
++        output1 = Popen(['rossrv', 'packages', '-s'], stdout=PIPE).communicate()[0].decode()
++        output2 = Popen(['rossrv', 'packages'], stdout=PIPE).communicate()[0].decode()
+         l1 = [x for x in output1.split() if x]
+         l2 = [x.strip() for x in output2.split('\n') if x.strip()]
+         self.assertEquals(l1, l2)
+@@ -92,14 +92,14 @@ def test_cmd_packages(self):
+ 
+     def test_cmd_list(self):
+         # - multi-line
+-        output1 = Popen([os.path.join(_SCRIPT_FOLDER,'rosmsg'), 'list'], stdout=PIPE).communicate()[0]
++        output1 = Popen([os.path.join(_SCRIPT_FOLDER,'rosmsg'), 'list'], stdout=PIPE).communicate()[0].decode()
+         l1 = [x.strip() for x in output1.split('\n') if x.strip()]
+         for p in ['std_msgs/String', 'test_rosmaster/Floats']:
+             self.assert_(p in l1)
+         for p in ['std_srvs/Empty', 'roscpp/Empty']:
+             self.assert_(p not in l1)
+ 
+-        output1 = Popen([os.path.join(_SCRIPT_FOLDER,'rossrv'), 'list'], stdout=PIPE).communicate()[0]
++        output1 = Popen([os.path.join(_SCRIPT_FOLDER,'rossrv'), 'list'], stdout=PIPE).communicate()[0].decode()
+         l1 = [x.strip() for x in output1.split('\n') if x.strip()]
+         for p in ['std_srvs/Empty', 'roscpp/Empty']:
+             self.assert_(p in l1)
+@@ -109,9 +109,9 @@ def test_cmd_list(self):
+     def test_cmd_package(self):
+         # this test is obviously very brittle, but should stabilize as the tests stabilize
+         # - single line output
+-        output1 = Popen(['rosmsg', 'package', '-s', 'test_rosmaster'], stdout=PIPE).communicate()[0]
++        output1 = Popen(['rosmsg', 'package', '-s', 'test_rosmaster'], stdout=PIPE).communicate()[0].decode()
+         # - multi-line output
+-        output2 = Popen(['rosmsg', 'package', 'test_rosmaster'], stdout=PIPE).communicate()[0]
++        output2 = Popen(['rosmsg', 'package', 'test_rosmaster'], stdout=PIPE).communicate()[0].decode()
+         l = set([x for x in output1.split() if x])        
+         l2 = set([x.strip() for x in output2.split('\n') if x.strip()])
+         self.assertEquals(l, l2)
+@@ -121,8 +121,8 @@ def test_cmd_package(self):
+                   'test_rosmaster/RosmsgC']:
+             self.assertTrue(m in l, l)
+         
+-        output = Popen(['rossrv', 'package', '-s', 'test_rosmaster'], stdout=PIPE).communicate()[0]
+-        output2 = Popen(['rossrv', 'package','test_rosmaster'], stdout=PIPE).communicate()[0]        
++        output = Popen(['rossrv', 'package', '-s', 'test_rosmaster'], stdout=PIPE).communicate()[0].decode()
++        output2 = Popen(['rossrv', 'package','test_rosmaster'], stdout=PIPE).communicate()[0].decode()
+         l = set([x for x in output.split() if x])
+         l2 = set([x.strip() for x in output2.split('\n') if x.strip()])
+         self.assertEquals(l, l2)
+@@ -132,14 +132,14 @@ def test_cmd_package(self):
+         
+     ## test that the rosmsg/rossrv show command works
+     def test_cmd_show(self):
+-        output = Popen(['rosmsg', 'show', 'std_msgs/String'], stdout=PIPE).communicate()[0]
++        output = Popen(['rosmsg', 'show', 'std_msgs/String'], stdout=PIPE).communicate()[0].decode()
+         self.assertEquals('string data', output.strip())
+ 
+-        output = Popen(['rossrv', 'show', 'std_srvs/Empty'], stdout=PIPE).communicate()[0]
++        output = Popen(['rossrv', 'show', 'std_srvs/Empty'], stdout=PIPE).communicate()[0].decode()
+         self.assertEquals('---', output.strip())
+-        output = Popen(['rossrv', 'show', 'std_srvs/Empty'], stdout=PIPE).communicate()[0]
++        output = Popen(['rossrv', 'show', 'std_srvs/Empty'], stdout=PIPE).communicate()[0].decode()
+         self.assertEquals('---', output.strip())
+-        output = Popen(['rossrv', 'show', 'test_rosmaster/AddTwoInts'], stdout=PIPE).communicate()[0]
++        output = Popen(['rossrv', 'show', 'test_rosmaster/AddTwoInts'], stdout=PIPE).communicate()[0].decode()
+         self.assertEquals('int64 a\nint64 b\n---\nint64 sum', output.strip())
+ 
+         # test against test_rosmsg package
+@@ -159,20 +159,20 @@ def test_cmd_show(self):
+             text = text+'\n' # running command adds one new line
+             text_raw = text_raw+'\n'
+             type_ =test_message_package+'/'+t
+-            output = Popen(['rosmsg', 'show', type_], stdout=PIPE).communicate()[0]
++            output = Popen(['rosmsg', 'show', type_], stdout=PIPE).communicate()[0].decode()
+             self.assertEquals(text, output)
+-            output = Popen(['rosmsg', 'show', '-r',type_], stdout=PIPE).communicate()[0]
++            output = Popen(['rosmsg', 'show', '-r',type_], stdout=PIPE).communicate()[0].decode()
+             self.assertEquals(text_raw, output)
+-            output = Popen(['rosmsg', 'show', '--raw', type_], stdout=PIPE).communicate()[0]
++            output = Popen(['rosmsg', 'show', '--raw', type_], stdout=PIPE).communicate()[0].decode()
+             self.assertEquals(text_raw, output)
+ 
+             # test as search
+             type_ = t
+             text = "[test_rosmaster/%s]:\n%s"%(t, text)
+             text_raw = "[test_rosmaster/%s]:\n%s"%(t, text_raw)
+-            output = Popen(['rosmsg', 'show', type_], stdout=PIPE).communicate()[0]
++            output = Popen(['rosmsg', 'show', type_], stdout=PIPE).communicate()[0].decode()
+             self.assertEquals(text, output)
+             output = Popen(['rosmsg', 'show', '-r',type_], stdout=PIPE, stderr=PIPE).communicate()
+-            self.assertEquals(text_raw, output[0], "Failed: %s"%(str(output)))
+-            output = Popen(['rosmsg', 'show', '--raw', type_], stdout=PIPE).communicate()[0]
++            self.assertEquals(text_raw, output[0].decode(), "Failed: %s"%(str(output)))
++            output = Popen(['rosmsg', 'show', '--raw', type_], stdout=PIPE).communicate()[0].decode()
+             self.assertEquals(text_raw, output)
+diff --git a/tools/rosmsg/test/test_rosmsgproto_command_line.py b/tools/rosmsg/test/test_rosmsgproto_command_line.py
+index b5b555e78..b4aa0c5b3 100644
+--- a/tools/rosmsg/test/test_rosmsgproto_command_line.py
++++ b/tools/rosmsg/test/test_rosmsgproto_command_line.py
+@@ -67,37 +67,37 @@ def testFail(self):
+         cmd.extend(["msg", "foo123barxyz"])
+         call = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE, env = self.new_environ)
+         (output, erroutput) = call.communicate()
+-        self.assertEqual('', output)
+-        self.assertTrue('Unknown message name foo123barxyz' in erroutput)
++        self.assertEqual(b'', output)
++        self.assertTrue('Unknown message name foo123barxyz' in erroutput.decode())
+ 
+     def testSilentFail(self):
+         cmd = copy.copy(ROSMSGPROTO_FN)
+         cmd.extend(["msg", "-s", "foo123barxyz"])
+         call = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE, env = self.new_environ)
+         (output, erroutput) = call.communicate()
+-        self.assertEqual('', output)
+-        self.assertEqual('', erroutput)
++        self.assertEqual(b'', output)
++        self.assertEqual(b'', erroutput)
+ 
+     def testSilentFailCpp(self):
+         cmd = copy.copy(ROSMSGPROTO_FN)
+         cmd.extend(["msg", "-s", "foo123barxyz::bar"])
+         call = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE, env = self.new_environ)
+         (output, erroutput) = call.communicate()
+-        self.assertEqual('', output)
+-        self.assertEqual('', erroutput)
++        self.assertEqual(b'', output)
++        self.assertEqual(b'', erroutput)
+ 
+     def testSilentFailDot(self):
+         cmd = copy.copy(ROSMSGPROTO_FN)
+         cmd.extend(["msg", "-s", "foo123barxyz.bar"])
+         call = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE, env = self.new_environ)
+         (output, erroutput) = call.communicate()
+-        self.assertEqual('', output)
+-        self.assertEqual('', erroutput)
++        self.assertEqual(b'', output)
++        self.assertEqual(b'', erroutput)
+ 
+     def testSilentFailMode(self):
+         cmd = copy.copy(ROSMSGPROTO_FN)
+         cmd.extend(["msgfoobar", "-s", "foo123barxyz.bar"])
+         call = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE, env = self.new_environ)
+         (output, erroutput) = call.communicate()
+-        self.assertEqual('', output)
+-        self.assertEqual('', erroutput)
++        self.assertEqual(b'', output)
++        self.assertEqual(b'', erroutput)

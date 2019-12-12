@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,6 +15,7 @@ KEYWORDS="amd64 ppc x86 ~x86-macos"
 IUSE="dbus debug doc gcode gif gtk jpeg m4lib-png motif nelma opengl png
 test tk toporouter xrender"
 # toporouter-output USE flag removed, there seems to be no result
+RESTRICT="!test? ( test )"
 
 CDEPEND="dev-libs/glib:2
 	gif? ( >=media-libs/gd-2.0.23 )

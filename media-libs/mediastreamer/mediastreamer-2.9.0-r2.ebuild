@@ -19,6 +19,7 @@ IUSE="+alsa amr bindist coreaudio debug doc examples +filters g726 g729 gsm ilbc
 	ipv6 libav ntp-timestamp opengl opus +ortp oss pcap portaudio pulseaudio sdl
 	+speex static-libs test theora upnp v4l video x264 X"
 
+RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( oss alsa portaudio coreaudio pulseaudio )
 	opengl? ( video )
 	theora? ( video )
