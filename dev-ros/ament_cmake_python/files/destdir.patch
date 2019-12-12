@@ -1,0 +1,26 @@
+Index: ament_cmake_python/cmake/ament_python_install_module.cmake
+===================================================================
+--- ament_cmake_python.orig/cmake/ament_python_install_module.cmake
++++ ament_cmake_python/cmake/ament_python_install_module.cmake
+@@ -64,7 +64,7 @@ function(_ament_cmake_python_install_mod
+       "execute_process(
+         COMMAND
+         \"${PYTHON_EXECUTABLE}\" \"-m\" \"compileall\"
+-        \"${CMAKE_INSTALL_PREFIX}/${destination}/${module_file}\"
++	\"\$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${destination}/${module_file}\"
+       )"
+     )
+   endif()
+Index: ament_cmake_python/cmake/ament_python_install_package.cmake
+===================================================================
+--- ament_cmake_python.orig/cmake/ament_python_install_package.cmake
++++ ament_cmake_python/cmake/ament_python_install_package.cmake
+@@ -65,7 +65,7 @@ function(_ament_cmake_python_install_pac
+       "execute_process(
+         COMMAND
+         \"${PYTHON_EXECUTABLE}\" \"-m\" \"compileall\"
+-        \"${CMAKE_INSTALL_PREFIX}/${PYTHON_INSTALL_DIR}/${package_name}\"
++	\"\$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/${PYTHON_INSTALL_DIR}/${package_name}\"
+       )"
+     )
+   endif()
