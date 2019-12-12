@@ -14,7 +14,7 @@ inherit php-ext-source-r3
 MY_PV="${PV/_/}"
 
 DESCRIPTION="PHP extension to re-enable realpath cache when using open_basedir restriction"
-HOMEPAGE="https://github.com/Whissi/${PN}/"
+HOMEPAGE="https://github.com/Whissi/realpath_turbo/"
 SRC_URI="https://github.com/Whissi/${PN}/releases/download/v${MY_PV}/${P}.tar.bz2"
 
 LICENSE="BSD-2"
