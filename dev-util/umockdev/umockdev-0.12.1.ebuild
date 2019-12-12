@@ -14,6 +14,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+introspection static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/libudev:=[${MULTILIB_USEDEP}]
