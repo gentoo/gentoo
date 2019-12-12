@@ -89,7 +89,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 DOCS=( README.rst AUTHORS )
 
 REQUIRED_USE="|| ( raet zeromq )"
-RESTRICT="x86? ( test )"
+RESTRICT="!test? ( test ) x86? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/salt-2017.7.0-dont-realpath-tmpdir.patch"
