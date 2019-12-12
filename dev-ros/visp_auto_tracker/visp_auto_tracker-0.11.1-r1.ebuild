@@ -25,10 +25,11 @@ RDEPEND="
 	dev-ros/visp_tracker
 	sci-libs/ViSP:=[dmtx,zbar]
 	dev-libs/boost:=[threads]
+	media-libs/opencv:=
 "
 DEPEND="${RDEPEND}"
 if [ "${PV#9999}" = "${PV}" ] ; then
 	S="${WORKDIR}/vision_visp-kinetic-${PV}/${ROS_SUBDIR}"
 fi
 
-PATCHES=( "${FILESDIR}/boost170.patch" )
+PATCHES=( "${FILESDIR}/boost170.patch" "${FILESDIR}/ocv4.patch" )
