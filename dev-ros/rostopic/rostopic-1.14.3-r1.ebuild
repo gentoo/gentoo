@@ -25,3 +25,4 @@ DEPEND="${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 	)
 "
+PATCHES=( "${FILESDIR}/yaml.patch" "${FILESDIR}/py3.patch" )
