@@ -68,7 +68,6 @@ acct-group/qmail 0: System group: qmail
 acct-group/redmine 0: System group: redmine
 acct-group/render 0: System group: render
 acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
-acct-group/shellinaboxd 0: shellinabox group
 acct-group/slurm 0: A group for the slurm - Highly Scalable Resource Manager
 acct-group/spectrum 0: A group for the Spectrum messaging transport
 acct-group/spire 0: System group: spire
@@ -158,7 +157,6 @@ acct-user/qmailr 0: user for qmail-rspawn and qmail-remote
 acct-user/qmails 0: user for qmail-smtpd
 acct-user/redmine 0: Redmine application user
 acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
-acct-user/shellinaboxd 0: shellinabox user
 acct-user/slurm 0: User for the slurm - Highly Scalable Resource Manager
 acct-user/spectrum 0: A user for the Spectrum messaging transport
 acct-user/spire 0: user for spiffe runtime environment
