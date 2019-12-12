@@ -9322,7 +9322,7 @@ dev-ros/amcl 1.16.3 9999: Probabilistic localization system for a robot moving i
 dev-ros/ament_cmake_core 0.8.1 9999: The core of the ament buildsystem in CMake
 dev-ros/ament_cmake_export_definitions 0.8.1 9999: Export definitions to downstream packages in the ament buildsystem
 dev-ros/ament_cmake_export_dependencies 0.8.1 9999: Export dependencies to downstream packages in the ament buildsystem in CMake
-dev-ros/ament_cmake_export_include_directories 0.8.1: The core of the ament buildsystem in CMake
+dev-ros/ament_cmake_export_include_directories 0.8.1 9999: Export include directories to downstream packages in the ament buildsystem
 dev-ros/ament_cmake_export_interfaces 0.8.1 9999: Export interfaces to downstream packages in the ament buildsystem
 dev-ros/ament_cmake_export_libraries 0.8.1 9999: Export libraries to downstream packages in the ament buildsystem
 dev-ros/ament_cmake_export_link_flags 0.8.1 9999: Export link flags to downstream packages in the ament buildsystem
@@ -9357,6 +9357,7 @@ dev-ros/combined_robot_hw 0.14.2 0.15.0 0.15.1 9999: Combined Robot HW class
 dev-ros/combined_robot_hw_tests 0.14.2 0.15.0 0.15.1 9999: Combined Robot HW class tests
 dev-ros/compressed_depth_image_transport 1.9.5-r1 9999: Plugin to image_transport for transparently sending depth images using PNG compression
 dev-ros/compressed_image_transport 1.9.5-r1 9999: Plugin to image_transport for transparently sending images encoded as JPEG or PNG
+dev-ros/console_bridge_vendor 1.2.0 9999: Wrapper around console_bridge
 dev-ros/control_msgs 1.4.0 9999: Base messages and actions useful for controlling robots
 dev-ros/control_toolbox 1.14.0 1.15.0 1.16.0 9999: Modules that are useful across all controllers
 dev-ros/controller_interface 0.14.2 0.15.0 0.15.1 9999: Interface base class for controllers
@@ -9478,6 +9479,7 @@ dev-ros/pcl_msgs 0.2.0 9999: PCL (Point Cloud Library)-related ROS messages
 dev-ros/pcl_ros 1.5.4 1.6.1 1.6.2 1.7.0 9999: PCL (Point Cloud Library) ROS interface stack
 dev-ros/pluginlib 1.12.0-r1 1.12.1 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
 dev-ros/pluginlib_tutorials 0.1.10-r1 0.1.11 9999: Pluginlib tutorials
+dev-ros/poco_vendor 1.2.0 9999: CMake shim over the poco library
 dev-ros/pointcloud_to_laserscan 1.4.0-r1 9999: Converts a 3D Point Cloud into a 2D laser scan
 dev-ros/polled_camera 1.11.12 1.11.13 9999: C++ helper classes for implementing a polled camera driver node and requesting images from it
 dev-ros/pr2_dashboard_aggregator 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: Aggregates all of the topics that a 'pr2_dashboard' app might be interested in
@@ -14565,7 +14567,7 @@ net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 2.3 2.4 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.2 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 3.0.3 3.0.7 3.2.0_rc1 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 3.0.3 3.0.7 3.2.0_rc1 3.2.0_rc2 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2: A framework for layer 2 attacks
