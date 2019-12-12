@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 SCM=""
@@ -33,8 +33,8 @@ RDEPEND="
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	test? (
+DEPEND="${RDEPEND}"
+BDEPEND="test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-vcs/git
 		dev-vcs/bzr
@@ -42,6 +42,7 @@ DEPEND="${RDEPEND}
 		dev-vcs/subversion
 	)
 "
+PATCHES=( "${FILESDIR}/yaml.patch" )
 
 python_test() {
 	# From travis.yml
