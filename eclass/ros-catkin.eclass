@@ -49,7 +49,7 @@ fi
 # we'd have ros_distro_gentoo_python_2_7 & co plus the OSRF ones (lunar, etc.).
 # Note that this uncondtionally pulls python but in the ROS world there will
 # most certainly be something pulling python anyway.
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit ${SCM} python-r1 cmake-utils flag-o-matic
 
