@@ -35,6 +35,6 @@ DEPEND="${RDEPEND}
 		dev-ml/extlib
 	)"
 
-RESTRICT="strip"
+RESTRICT+=" strip"
 S="${WORKDIR}/${MY_P}"
 DOCS=( "README.md" "TODO.txt" "AUTHORS.md" "CHANGES.txt" )
