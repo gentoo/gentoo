@@ -25,7 +25,7 @@ RDEPEND="gtk? ( dev-ml/lablgtk
 
 #PDEPEND="gtk? ( media-fonts/font-schumacher-misc )"
 
-RESTRICT="!ocamlopt? ( strip )"
+RESTRICT="!ocamlopt? ( strip ) !test? ( test )"
 SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}.tar.gz
 	doc? ( https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
 		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html )"
