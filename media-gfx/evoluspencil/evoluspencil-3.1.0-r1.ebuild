@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit rpm xdg-utils
+inherit rpm xdg-utils desktop
 
 MY_PN="${PN/evolus/}"
 MY_PV="${PV}.ga"
@@ -66,8 +66,7 @@ src_install() {
 	fperms 755 /opt/${MY_PN}/${MY_PN}
 	dosym ../../opt/${MY_PN}/${MY_PN} /usr/bin/evoluspencil
 
-	insinto /usr/share/applications
-	doins "${FILESDIR}"/${MY_PN}.desktop
+	domenu "${FILESDIR}"/${MY_PN}.desktop
 
 	mkdir -p "${D}"/usr/share/icons/hicolor/256x256/apps/ || die
 	mv "${D}"/opt/${MY_PN}/${MY_PN}.png "${D}"/usr/share/icons/hicolor/256x256/apps/ || die
