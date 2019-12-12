@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 
 # We need write acccess /dev/nvidia0 and /dev/nvidiactl and the portage
 # user is (usually) not in the video group
-RESTRICT="userpriv"
+RESTRICT="userpriv !test? ( test )"
 
 python_prepare_all() {
 	cuda_sanitize
