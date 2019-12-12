@@ -39,7 +39,7 @@ IUSE="cjk client-libs cracklib debug experimental jemalloc latin1 libressl numa 
 	selinux +server static static-libs systemtap tcmalloc test tokudb tokudb-backup-plugin yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="libressl? ( test )"
+RESTRICT="!test? ( test ) libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc ) static? ( yassl )"
 
