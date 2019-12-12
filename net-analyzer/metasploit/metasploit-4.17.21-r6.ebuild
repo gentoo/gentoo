@@ -128,7 +128,7 @@ COMMON_DEPEND="dev-db/postgresql[server]
 RDEPEND+=" ${COMMON_DEPEND}
 	>=app-eselect/eselect-metasploit-0.16"
 
-RESTRICT="strip"
+RESTRICT+=" strip"
 
 QA_PREBUILT="
 	usr/lib*/${PN}${SLOT}/data/templates/template_x86_linux.bin
