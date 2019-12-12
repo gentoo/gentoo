@@ -6,4 +6,4 @@ EAPI=7
 inherit acct-group
 
 DESCRIPTION="shellinabox group"
-ACCT_GROUP_ID=14000
+ACCT_GROUP_ID=306
