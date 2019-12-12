@@ -1,8 +1,8 @@
---- libdv-0.99/libdv/enc_input.c	2002-12-31 23:04:02.000000000 +0000
-+++ libdv-0.99/libdv/enc_input.c.plasmaroo	2003-12-30 16:42:19.000000000 +0000
-@@ -48,13 +48,13 @@
- 
- #if HAVE_DEV_VIDEO
+--- a/libdv/enc_input.c
++++ b/libdv/enc_input.c
+@@ -50,13 +50,13 @@
+ #define _DEVICE_H_
+ #define _LINUX_TIME_H
  #include <sys/types.h>
 -#include <linux/videodev.h>
  #include <sys/time.h>
