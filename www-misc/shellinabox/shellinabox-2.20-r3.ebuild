@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools systemd
+inherit user autotools systemd
 
 DESCRIPTION="Export command line tools to a web based terminal emulator"
 HOMEPAGE="https://github.com/shellinabox/shellinabox"
@@ -14,12 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="+pam"
 
-RDEPEND="
-	acct-user/shellinaboxd
-	acct-group/shellinaboxd"
-
 DEPEND="
-	${RDEPEND}
 	dev-libs/openssl:0=
 	pam? ( sys-libs/pam )"
 
@@ -37,6 +32,11 @@ openssl rsa -in server.key.org -out server.key
 openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 cat server.crt server.key > certificate.pem
 EOF
+}
+
+pkg_setup() {
+	enewgroup "${SIAB_DAEMON}"
+	enewuser "${SIAB_DAEMON}" -1 -1 -1 "${SIAB_DAEMON}"
 }
 
 src_prepare() {
@@ -77,6 +77,7 @@ src_install() {
 
 	# Create directory where SSL certificates will be generated.
 	dodir "${SIAB_CERT_DIR}"
+	fowners "${SIAB_DAEMON}:${SIAB_DAEMON}" "${SIAB_CERT_DIR}"
 
 	# Generate set up variable.
 	shellinbox_gen_ssl_setup
