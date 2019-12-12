@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ DESCRIPTION="Fast Library for Number Theory"
 HOMEPAGE="http://www.flintlib.org/"
 SRC_URI="http://www.flintlib.org/${P}.tar.gz"
 
-RESTRICT="mirror"
+RESTRICT="mirror !test? ( test )"
 LICENSE="GPL-2"
 SLOT="0/13"
 KEYWORDS="~amd64 ~arm ~x86"
