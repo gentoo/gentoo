@@ -4,7 +4,7 @@
 EAPI=6
 inherit eutils user systemd tmpfiles
 DESCRIPTION="coturn TURN server project"
-HOMEPAGE="https://github.com/${PN}/${PN}"
+HOMEPAGE="https://github.com/coturn/coturn"
 
 if [ ${PV} = 9999 ]; then
 	KEYWORDS=""
