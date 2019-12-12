@@ -24,4 +24,4 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-ros/test_rosmaster[${PYTHON_USEDEP}] )
 "
-PATCHES=( "${FILESDIR}/py3.patch" )
+PATCHES=( "${FILESDIR}/py3.patch" "${FILESDIR}/norm.patch" "${FILESDIR}/tests.patch" )
