@@ -1126,7 +1126,7 @@ app-doc/cppman 0.4.8: C++ man pages for Linux, with source from cplusplus.com an
 app-doc/csound-manual 6.06 6.07 6.08: The Csound reference manual
 app-doc/devmanual 0_pre20141116 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
-app-doc/doxygen 1.8.14-r1 1.8.14-r2 1.8.15 1.8.16 9999: Documentation system for most programming languages
+app-doc/doxygen 1.8.15 1.8.16-r1 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
 app-doc/eclass-manpages 20190908 99999999: Collection of Gentoo eclass manpages
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3: The GNU Emacs Lisp Reference Manual
@@ -8387,13 +8387,13 @@ dev-python/progressbar2 3.39.2 3.39.3: Text progressbar library for python
 dev-python/prometheus_client 0.6.0 0.7.1: Python client for the Prometheus monitoring system
 dev-python/prometheus_flask_exporter 0.4.1 0.5.1 0.7.2: Provides HTTP request metrics to export into Prometheus
 dev-python/promises 2.0.1-r1 2.1-r1: An implementation of Promises in Python
-dev-python/prompt_toolkit 1.0.15 2.0.6 2.0.7: Building powerful interactive command lines in Python
+dev-python/prompt_toolkit 1.0.15 2.0.6 2.0.7 2.0.10: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.7.1 3.8.0 3.9.1 3.9.2 3.10.1 9999: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.0 1.5.1 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1: Python library for communicating with Pocket Science Lab
 dev-python/psutil 5.4.8 5.5.0 5.6.0 5.6.5 5.6.7: Retrieve information on running processes and system utilization
 dev-python/psycopg 2.7.4 2.7.5 2.7.7 2.8.3: PostgreSQL database adapter for Python
-dev-python/ptpython 0.33 0.33-r1: Python REPL build on top of prompt_toolkit
+dev-python/ptpython 0.33 0.33-r1 2.0.6: Python REPL build on top of prompt_toolkit
 dev-python/ptvsd 3.2.1: Visual Studio remote debugging server for Python
 dev-python/ptyprocess 0.5.1 0.5.2: Run a subprocess in a pseudo terminal
 dev-python/publicsuffix 2.20190205: Get a public suffix for a domain name using the Public Suffix List.
@@ -15215,7 +15215,7 @@ net-misc/exabgp 3.2.17 3.4.26-r1 4.0.10: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
-net-misc/freerdp 2.0.0_rc2-r1 2.0.0_rc4 9999: Free implementation of the Remote Desktop Protocol
+net-misc/freerdp 2.0.0_rc4 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.32.2 0.34: A daemon to serve the gopher protocol
