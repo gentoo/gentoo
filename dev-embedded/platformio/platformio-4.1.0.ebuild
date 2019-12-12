@@ -33,4 +33,6 @@ RDEPEND="${DEPEND}
 	>=dev-python/tabulate-0.8.3[${PYTHON_USEDEP}]
 	<dev-python/tabulate-1[${PYTHON_USEDEP}]
 	>=dev-python/pyelftools-0.25[${PYTHON_USEDEP}]
-	<dev-python/pyelftools-1[${PYTHON_USEDEP}]"
+	<dev-python/pyelftools-1[${PYTHON_USEDEP}]
+	>=dev-python/marshmallow-2.20.5[${PYTHON_USEDEP}]
+	<dev-python/marshmallow-3[${PYTHON_USEDEP}]"
