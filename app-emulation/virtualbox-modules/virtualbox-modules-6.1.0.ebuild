@@ -48,5 +48,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	# Remove vboxpci.ko from current running kernel
+	find /lib/modules/${KV_FULL}/misc -type f -name "vboxpci.ko" -delete || die
 	linux-mod_pkg_postinst
 }
