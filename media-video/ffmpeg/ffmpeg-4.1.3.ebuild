@@ -300,6 +300,7 @@ REQUIRED_USE="
 	${GPL_REQUIRED_USE}
 	${CPU_REQUIRED_USE}"
 RESTRICT="
+	!test? ( test )
 	gpl? ( openssl? ( bindist ) fdk? ( bindist ) libressl? ( bindist ) )
 "
 
