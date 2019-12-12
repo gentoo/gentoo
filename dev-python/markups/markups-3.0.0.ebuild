@@ -3,40 +3,36 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 inherit distutils-r1
 
-MY_PN="Markups"
-MY_P=${MY_PN}-${PV}
+MY_P=${P^}
 
 DESCRIPTION="A wrapper around various text markups"
 HOMEPAGE="
 	https://pymarkups.readthedocs.io/en/latest/
 	https://github.com/retext-project/pymarkups
 	https://pypi.org/project/Markups/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="mirror://pypi/${MY_P:0:1}/${PN^}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
-
-S="${WORKDIR}/${MY_P}"
 
 RDEPEND="
 	dev-python/markdown[${PYTHON_USEDEP}]
 	dev-python/python-markdown-math[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	test? (
 		app-text/pytextile[${PYTHON_USEDEP}]
 		dev-python/docutils[${PYTHON_USEDEP}]
 	)
 "
 
-python_test() {
-	${EPYTHON} -m unittest discover -s tests -v || die
-}
+distutils_enable_tests unittest
+
+S="${WORKDIR}/${MY_P}"
