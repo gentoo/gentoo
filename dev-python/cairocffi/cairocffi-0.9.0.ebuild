@@ -43,7 +43,7 @@ python_compile_all() {
 }
 
 python_test() {
-	virtx py.test -v --pyargs cairocffi -o addopts= || die "testsuite failed under ${EPYTHON}"
+	virtx py.test -v --pyargs cairocffi -o addopts=
 }
 
 python_install_all() {

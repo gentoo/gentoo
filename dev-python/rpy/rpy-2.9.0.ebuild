@@ -48,5 +48,5 @@ python_compile() {
 
 python_test() {
 	cd "${BUILD_DIR}"/lib || die
-	virtx "${EPYTHON}" -m 'rpy2.tests' || die
+	virtx "${EPYTHON}" -m 'rpy2.tests'
 }

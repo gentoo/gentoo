@@ -45,7 +45,7 @@ python_test() {
 	echo "backend : Agg" > matplotlibrc || die
 	#echo "backend.qt4 : PyQt4" >> matplotlibrc || die
 	#echo "backend.qt4 : PySide" >> matplotlibrc || die
-	MPLCONFIGDIR=. virtx nosetests --exe -v skimage || die
+	MPLCONFIGDIR=. virtx nosetests --exe -v skimage
 }
 
 pkg_postinst() {

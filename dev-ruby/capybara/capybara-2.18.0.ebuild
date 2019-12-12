@@ -46,5 +46,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	virtx ${RUBY} -Ilib -S rspec-3 spec || die "Tests failed."
+	virtx ${RUBY} -Ilib -S rspec-3 spec
 }

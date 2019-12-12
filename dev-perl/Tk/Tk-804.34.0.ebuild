@@ -60,5 +60,5 @@ src_prepare() {
 	mv "${T}/stash/testimg.jpg" "${S}/JPEG/jpeg/testimg.jpg" || die "can't restore testimg.jpg"
 }
 src_test() {
-	virtx perl-module_src_test || die "src_test failed"
+	virtx perl-module_src_test
 }
