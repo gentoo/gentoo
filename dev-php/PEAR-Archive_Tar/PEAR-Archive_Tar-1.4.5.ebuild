@@ -7,7 +7,7 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tar file management class"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/Archive_Tar"
 SRC_URI="https://pear.php.net/get/${MY_P}.tgz"
 LICENSE="BSD"
 SLOT="0"
