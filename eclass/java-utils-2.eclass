@@ -28,6 +28,8 @@ export WANT_JAVA_CONFIG="2"
 # Prefix variables are only available for EAPI>=3
 has "${EAPI:-0}" 0 1 2 && ED="${D}" EPREFIX= EROOT="${ROOT}"
 
+has test ${JAVA_PKG_IUSE} && RESTRICT+=" !test? ( test )"
+
 # @VARIABLE: JAVA_PKG_E_DEPEND
 # @INTERNAL
 # @DESCRIPTION:
