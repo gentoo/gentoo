@@ -81,7 +81,8 @@ KEYWORDS="~amd64"
 IUSE="cups custom-cflags gconf gnome-keyring kerberos lto neon pic
 	+proprietary-codecs pulseaudio selinux +system-ffmpeg +system-libvpx
 	+system-ssl +tcmalloc"
-RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
+RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )
+	!test? ( test )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
 QA_FLAGS_IGNORED=".*\.nexe"
