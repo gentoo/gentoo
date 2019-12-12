@@ -21,6 +21,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
 	net-libs/accounts-qt
+	net-libs/signond
 "
 DEPEND="${RDEPEND}
 	test? (
