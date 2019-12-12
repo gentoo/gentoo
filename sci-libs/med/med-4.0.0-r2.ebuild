@@ -26,7 +26,7 @@ IUSE="doc fortran mpi python test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RESTRICT="python? ( test )"
+RESTRICT="!test? ( test ) python? ( test )"
 
 # dev-lang/tk is needed for wish-based xmdump utility
 RDEPEND="
