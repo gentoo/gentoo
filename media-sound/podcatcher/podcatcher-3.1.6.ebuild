@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-RDEPEND=">=dev-lang/ruby-1.8.2"
+RDEPEND="dev-lang/ruby"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}"
