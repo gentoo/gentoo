@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python requests like API built on top of Twisted's HTTP client."
-HOMEPAGE="https://github.com/dreid/${PN}"
+HOMEPAGE="https://github.com/dreid/treq"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
