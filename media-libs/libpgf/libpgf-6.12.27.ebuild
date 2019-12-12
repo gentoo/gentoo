@@ -1,7 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
+
 inherit autotools
 
 DESCRIPTION="Library to load, handle and manipulate images in the PGF format"
@@ -11,13 +12,15 @@ SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE="doc static-libs"
+IUSE="doc"
 
-RDEPEND=""
-DEPEND="doc? ( app-doc/doxygen )
-	app-arch/unzip"
+BDEPEND="
+	app-arch/unzip
+	doc? ( app-doc/doxygen )"
 
 src_prepare() {
+	default
+
 	if ! use doc; then
 		sed -i -e "/HAS_DOXYGEN/{N;N;d}" Makefile.am || die
 	fi
@@ -26,11 +29,12 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable static-libs static)
+	econf --disable-static
 }
 
 src_install() {
 	default
 
-	find "${ED}" -name '*.la' -delete || die
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }
