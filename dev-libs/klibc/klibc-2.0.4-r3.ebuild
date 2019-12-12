@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Robin H. Johnson <robbat2@gentoo.org>, 12 Nov 2007:
@@ -63,7 +63,8 @@ KS="${WORKDIR}/linux-${OKV}"
 # Klibc has no PT_GNU_STACK support, so scanning for execstacks is moot
 QA_EXECSTACK="*"
 # Do not strip
-RESTRICT="strip"
+RESTRICT="strip
+	!test? ( test )"
 
 kernel_asm_arch() {
 	a="${1:${ARCH}}"
