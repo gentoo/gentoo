@@ -5,13 +5,13 @@ EAPI=7
 
 ECM_HANDBOOK="false"
 KDE_ORG_NAME="dolphin-plugins"
-MY_PLUGIN_NAME="hg"
+MY_PLUGIN_NAME="bazaar"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.63.0
 QTMIN=5.12.3
 inherit ecm kde.org
 
-DESCRIPTION="Dolphin plugin for Mercurial integration"
+DESCRIPTION="Dolphin plugin for Bazaar integration"
 HOMEPAGE="https://kde.org/applications/system/org.kde.dolphin_plugins"
 
 LICENSE="GPL-2" # TODO: CHECK
@@ -20,22 +20,17 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
-	>=kde-frameworks/kcompletion-${KFMIN}:5
-	>=kde-frameworks/kconfig-${KFMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
-	>=kde-frameworks/kservice-${KFMIN}:5
-	>=kde-frameworks/ktexteditor-${KFMIN}:5
 	>=kde-frameworks/ktextwidgets-${KFMIN}:5
-	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-apps/dolphin-${PVCUT}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 "
 RDEPEND="${DEPEND}
 	!kde-apps/dolphin-plugins:5
-	dev-vcs/mercurial
+	dev-vcs/bzr
 "
 
 src_prepare() {
@@ -52,10 +47,15 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_${MY_PLUGIN_NAME}=ON
-		-DBUILD_bazaar=OFF
 		-DBUILD_dropbox=OFF
 		-DBUILD_git=OFF
+		-DBUILD_hg=OFF
 		-DBUILD_svn=OFF
 	)
 	ecm_src_configure
+}
+
+src_install() {
+	ecm_src_install
+	rm "${D}"/usr/share/metainfo/org.kde.dolphin-plugins.metainfo.xml || die
 }
