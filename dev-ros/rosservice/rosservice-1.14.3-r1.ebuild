@@ -22,3 +22,4 @@ RDEPEND="
 	dev-ros/rosmsg[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/yaml.patch" )

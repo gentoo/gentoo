@@ -1,0 +1,62 @@
+From 29053c4832229efa7160fb944c05e3bc82e11540 Mon Sep 17 00:00:00 2001
+From: Martijn Buijs <Martijn.buijs@gmail.com>
+Date: Tue, 23 Apr 2019 18:20:12 +0200
+Subject: [PATCH] Switch to yaml.safe_load(_all) to prevent YAMLLoadWarning
+ (#1688)
+
+* Switch to yaml.safe_load(_all) to prevent YAMLLoadWarning
+
+* Change all usages of yaml.load to yaml.safe_load
+
+* Extend PyYAML's SafeLoader and use it with `yaml.load`
+
+Also added convenience functions for using this loader for reuse in
+`roslaunch`
+
+* fix typo in rosparam.yaml_load_all
+
+* Modify Loader and SafeLoader in yaml module directly
+
+* Revert whitespace change
+
+* Revert unrelated change to import through global variable construction
+---
+ clients/rospy/src/rospy/client.py             |  2 +-
+ .../test/test_roslib_message.py               |  2 +-
+ .../client_verification/test_slave_api.py     |  2 +-
+ test/test_rosparam/test/check_rosparam.py     |  8 ++---
+ .../check_rosparam_command_line_online.py     |  2 +-
+ .../check_rosservice_command_line_online.py   |  4 +--
+ test/test_rostopic/test/test_rostopic_unit.py | 30 +++++++++----------
+ tools/rosbag/src/rosbag/bag.py                |  2 +-
+ tools/rosgraph/src/rosgraph/roslogging.py     |  2 +-
+ tools/roslaunch/src/roslaunch/loader.py       |  4 +--
+ .../test/unit/test_roslaunch_dump_params.py   |  4 +--
+ tools/rosparam/src/rosparam/__init__.py       |  7 ++++-
+ tools/rosservice/src/rosservice/__init__.py   |  4 +--
+ tools/rostopic/src/rostopic/__init__.py       |  6 ++--
+ tools/topic_tools/scripts/relay_field         |  2 +-
+ 15 files changed, 43 insertions(+), 38 deletions(-)
+
+diff --git a/tools/rosservice/src/rosservice/__init__.py b/tools/rosservice/src/rosservice/__init__.py
+index 6d58807a4..e6c41a73d 100644
+--- a/tools/rosservice/src/rosservice/__init__.py
++++ b/tools/rosservice/src/rosservice/__init__.py
+@@ -607,7 +607,7 @@ def _rosservice_cmd_call(argv):
+         # convert empty args to YAML-empty strings
+         if arg == '':
+             arg = "''" 
+-        service_args.append(yaml.load(arg))
++        service_args.append(yaml.safe_load(arg))
+     if not service_args and has_service_args(service_name, service_class=service_class):
+         if sys.stdin.isatty():
+             parser.error("Please specify service arguments")
+@@ -650,7 +650,7 @@ def _stdin_yaml_arg():
+                 elif arg.strip() != '---':
+                     buff = buff + arg
+             try:
+-                loaded = yaml.load(buff.rstrip())
++                loaded = yaml.safe_load(buff.rstrip())
+             except Exception as e:
+                 print("Invalid YAML: %s"%str(e), file=sys.stderr)
+             if loaded is not None:
