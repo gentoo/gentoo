@@ -29,6 +29,7 @@ IUSE="
 	test examples cxx -libev -libevent
 	redis
 "
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	gnutls? ( net-libs/gnutls dev-libs/libgcrypt:0= )
