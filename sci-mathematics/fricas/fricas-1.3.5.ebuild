@@ -5,7 +5,7 @@ EAPI=6
 inherit multilib elisp-common
 
 DESCRIPTION="FriCAS is a fork of Axiom computer algebra system"
-HOMEPAGE="http://${PN}.sourceforge.net/"
+HOMEPAGE="http://fricas.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-full.tar.bz2"
 LICENSE="BSD-2"
 SLOT="0"
