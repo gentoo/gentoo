@@ -4,8 +4,8 @@ Subject: build system
 
 respect LDFLAGs, CXXFLAGs and CXX
 
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -3,12 +3,12 @@
  all: $(BIN)
  
@@ -23,8 +23,8 @@ respect LDFLAGs, CXXFLAGs and CXX
 -.PHONY: clean all
 \ No newline at end of file
 +.PHONY: clean all
---- config.mk
-+++ config.mk
+--- a/config.mk
++++ b/config.mk
 @@ -2,7 +2,7 @@
  
  NAME := tudor-volumed
