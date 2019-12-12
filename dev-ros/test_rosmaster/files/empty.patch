@@ -1,0 +1,12 @@
+Index: test_rosmaster/CMakeLists.txt
+===================================================================
+--- test_rosmaster.orig/CMakeLists.txt
++++ test_rosmaster/CMakeLists.txt
+@@ -10,6 +10,7 @@ if(CATKIN_ENABLE_TESTING)
+     String.msg
+     Arrays.msg
+     CompositeA.msg CompositeB.msg Composite.msg
++    Empty.msg
+     Embed.msg Floats.msg Simple.msg
+     RosmsgA.msg
+     RosmsgB.msg
