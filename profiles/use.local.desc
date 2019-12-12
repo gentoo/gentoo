@@ -8011,6 +8011,7 @@ sys-apps/usb_modeswitch:jimtcl - Use dev-lang/jimtcl instead of dev-lang/tcl for
 sys-apps/usermode-utilities:fuse - Build tools (currently umlmount) needing fuse
 sys-apps/util-linux:caps - build setpriv helper (run programs with diff capabilities)
 sys-apps/util-linux:cramfs - build mkfs/fsck helpers for cramfs filesystems
+sys-apps/util-linux:cryptsetup - Use sys-fs/cryptsetup to have built-in dm-verity in libmount
 sys-apps/util-linux:fdformat - build fdformat (floppy disk format)
 sys-apps/util-linux:hardlink - build hardlink program
 sys-apps/util-linux:kill - build the kill program
