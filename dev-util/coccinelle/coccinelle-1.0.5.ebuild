@@ -42,7 +42,7 @@ DEPEND="${CDEPEND}
 
 DOCS=( authors.txt bugs.txt changes.txt credits.txt readme.txt )
 
-RESTRICT=strip
+RESTRICT="strip !test? ( test )"
 S=${WORKDIR}/${MY_P}
 
 SITEFILE=50coccinelle-gentoo.el
