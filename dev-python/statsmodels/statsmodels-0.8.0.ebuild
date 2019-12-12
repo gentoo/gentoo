@@ -57,7 +57,7 @@ python_compile_all() {
 
 python_test() {
 	cd "${BUILD_DIR}" || die
-	virtx nosetests -v || die
+	virtx nosetests -v
 }
 
 python_install_all() {

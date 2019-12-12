@@ -48,7 +48,7 @@ PATCHES=(
 )
 
 python_test() {
-	virtx nosetests -vv || die
+	virtx nosetests -vv
 }
 
 python_install_all() {
