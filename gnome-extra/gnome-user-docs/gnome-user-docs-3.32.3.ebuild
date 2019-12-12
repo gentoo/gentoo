@@ -23,7 +23,8 @@ DEPEND="
 #	dev-util/gettext
 
 # This ebuild does not install any binaries
-RESTRICT="binchecks strip"
+RESTRICT="binchecks strip
+	!test? ( test )"
 
 src_configure() {
 	# itstool is only needed for rebuilding translations
