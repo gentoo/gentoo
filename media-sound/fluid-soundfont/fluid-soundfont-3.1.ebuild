@@ -1,12 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 DESCRIPTION="The Fluid R3 soundfont"
 HOMEPAGE="http://musescore.org/en/handbook/soundfont"
-SRC_URI="http://prereleases.musescore.org/soundfont/${PN}_${PV}.tar.gz
-	 timidity? ( https://dev.gentoo.org/~hwoarang/distfiles/timidity.cfg.bz2 )"
+SRC_URI="
+	http://prereleases.musescore.org/soundfont/${PN}_${PV}.tar.gz
+	timidity? ( https://dev.gentoo.org/~hwoarang/distfiles/timidity.cfg.bz2 )"
 
 LICENSE="MIT"
 SLOT="0"
