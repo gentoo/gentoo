@@ -23,7 +23,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug +module +tools module-src"
 
-DEPEND="tools? ( net-libs/libmnl net-firewall/iptables )"
+DEPEND="tools? ( net-libs/libmnl || ( net-firewall/nftables net-firewall/iptables ) )"
 RDEPEND="${DEPEND}"
 
 MODULE_NAMES="wireguard(kernel/drivers/net:src)"
