@@ -8,7 +8,8 @@ PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 inherit distutils-r1 flag-o-matic fortran-2 toolchain-funcs
 
 DESCRIPTION="Markov Chain Monte Carlo sampling toolkit"
-HOMEPAGE="https://github.com/${PN}-devs/${PN} https://pypi.org/project/${PN}"
+HOMEPAGE="https://github.com/pymc-devs/pymc
+	https://pypi.org/project/pymc"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 SLOT=0
