@@ -24,6 +24,7 @@ src_prepare() {
 	eapply -p2 "${FILESDIR}/gcc-3.4.patch"
 	eapply "${FILESDIR}/${P}-gentoo.diff"
 	eapply "${FILESDIR}/${P}_vdr-1.5.4-compile.diff"
+	eapply "${FILESDIR}/${P}_compilefix.patch"
 }
 
 src_install() {
