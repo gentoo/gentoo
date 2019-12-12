@@ -1,0 +1,29 @@
+From 1933acfa8107a164ec825d3223d14589fefd1b5b Mon Sep 17 00:00:00 2001
+From: Dirk Thomas <dirk-thomas@users.noreply.github.com>
+Date: Tue, 6 Aug 2019 16:06:51 -0700
+Subject: [PATCH] more Python 3 compatibility (#1783)
+
+---
+ test/test_rospy/test/unit/test_genmsg_py.py   |  6 +--
+ tools/rosgraph/src/rosgraph/roslogging.py     |  2 +-
+ .../test/test_roslogging_user_logger.py       |  8 +++-
+ tools/roslaunch/test/unit/test_xmlloader.py   |  2 +-
+ tools/rosmsg/src/rosmsg/__init__.py           |  2 +-
+ tools/rosmsg/test/test_rosmsg_command_line.py | 46 +++++++++----------
+ .../test/test_rosmsgproto_command_line.py     | 20 ++++----
+ .../test_rostopic_command_line_offline.py     | 44 +++++++++---------
+ 8 files changed, 67 insertions(+), 63 deletions(-)
+
+diff --git a/tools/roslaunch/test/unit/test_xmlloader.py b/tools/roslaunch/test/unit/test_xmlloader.py
+index ac30189d0..f582ec230 100644
+--- a/tools/roslaunch/test/unit/test_xmlloader.py
++++ b/tools/roslaunch/test/unit/test_xmlloader.py
+@@ -218,7 +218,7 @@ def test_params(self):
+         p = [p for p in mock.params if p.key == '/configfile'][0]
+         self.assertEquals(contents, p.value, 1)
+         p = [p for p in mock.params if p.key == '/binaryfile'][0]
+-        self.assertEquals(Binary(contents), p.value, 1)
++        self.assertEquals(Binary(contents.encode()), p.value, 1)
+ 
+         f = open(os.path.join(get_example_path(), 'example.launch'))
+         try:
