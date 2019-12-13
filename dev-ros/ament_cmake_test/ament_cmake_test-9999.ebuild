@@ -31,8 +31,10 @@ fi
 IUSE=""
 
 DEPEND="
-	dev-ros/ament_cmake_core[${PYTHON_USEDEP}]
-	dev-ros/ament_cmake_python[${PYTHON_USEDEP}]
+	dev-ros/ament_cmake_core
+		dev-python/ament_package[${PYTHON_USEDEP}]
+		dev-python/catkin_pkg[${PYTHON_USEDEP}]
+	dev-ros/ament_cmake_python
 	${PYTHON_DEPS}
 "
 RDEPEND="${DEPEND}"
