@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit cmake-utils python-r1
+inherit cmake-utils python-any-r1
 
 ROS_PN="ament_cmake"
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -30,21 +30,14 @@ else
 fi
 IUSE=""
 
-DEPEND="
-	dev-ros/ament_cmake_core[${PYTHON_USEDEP}]
-	dev-ros/ament_cmake_include_directories[${PYTHON_USEDEP}]
-	dev-ros/ament_cmake_libraries[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-ros/ament_cmake_core
+	dev-ros/ament_cmake_include_directories
+	dev-ros/ament_cmake_libraries
+"
+DEPEND="${RDEPEND}"
+# Deps here are transitive from ament_cmake_core to have matching python support
+BDEPEND="
+	$(python_gen_any_dep 'dev-python/ament_package[${PYTHON_USEDEP}] dev-python/catkin_pkg[${PYTHON_USEDEP}]')
 	${PYTHON_DEPS}
 "
-RDEPEND="${DEPEND}"
-BDEPEND="${DEPEND}"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
-src_configure() {
-	# This is a build tool that does not install python-related files
-	# ... but we need to propagate the deps and use python3 to build it.
-	local pyimpl="${PYTHON_COMPAT[0]}"
-	python_export "${pyimpl}" EPYTHON PYTHON
-	python_wrapper_setup
-	cmake-utils_src_configure
-}
