@@ -51,6 +51,7 @@ DEPEND="${RDEPEND}
 "
 
 BDEPEND="
+	virtual/pkgconfig
 	doc? ( >=dev-ruby/asciidoctor-1.5.4 )
 	man? ( >=dev-ruby/asciidoctor-1.5.4 )
 	nls? ( >=sys-devel/gettext-0.15 )
@@ -134,6 +135,10 @@ src_configure() {
 		-DENABLE_TRIGGER=$(usex trigger)
 		-DENABLE_XFER=$(usex xfer)
 	)
+
+	if use python; then
+		python_is_python3 || mycmakeargs+=( -DENABLE_PYTHON2=ON )
+	fi
 
 	cmake-utils_src_configure
 }
