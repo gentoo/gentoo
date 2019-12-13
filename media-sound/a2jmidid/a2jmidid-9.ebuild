@@ -18,7 +18,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 CDEPEND="
-	${PYTHON_DEPS}
 	media-libs/alsa-lib
 	virtual/jack
 	dbus? ( sys-apps/dbus )
