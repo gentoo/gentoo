@@ -29,9 +29,9 @@ RDEPEND="
 	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
 	>=dev-python/setproctitle-1.1.9[${PYTHON_USEDEP}]
 "
+DEPEND="${RDEPEND}"
 
 BDEPEND="
-	${RDEPEND}
 	test? (
 		dev-db/postgresql
 		dev-python/mock[${PYTHON_USEDEP}]
