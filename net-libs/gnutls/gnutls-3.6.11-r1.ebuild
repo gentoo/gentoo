@@ -11,7 +11,7 @@ SRC_URI="mirror://gnupg/gnutls/v$(ver_cut 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-3 LGPL-2.1+"
 SLOT="0/30" # libgnutls.so number
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+cxx dane doc examples guile +idn nls +openssl pkcs11 seccomp sslv2 sslv3 static-libs test test-full +tls-heartbeat tools valgrind"
 
 REQUIRED_USE="
@@ -79,6 +79,8 @@ src_prepare() {
 multilib_src_configure() {
 	LINGUAS="${LINGUAS//en/en@boldquot en@quot}"
 
+	local libconf=()
+
 	# TPM needs to be tested before being enabled
 	libconf+=( --without-tpm )
 
@@ -90,36 +92,38 @@ multilib_src_configure() {
 	# Cygwin as does not understand these asm files at all
 	[[ ${CHOST} == *-cygwin* ]] && libconf+=( --disable-hardware-acceleration )
 
-	ECONF_SOURCE=${S} econf \
-		$(multilib_native_enable manpages) \
-		$(multilib_native_use_enable doc gtk-doc) \
-		$(multilib_native_use_enable doc) \
-		$(multilib_native_use_enable guile) \
-		$(multilib_native_use_enable seccomp seccomp-tests) \
-		$(multilib_native_use_enable test tests) \
-		$(multilib_native_use_enable test-full full-test-suite) \
-		$(multilib_native_use_enable tools) \
-		$(multilib_native_use_enable valgrind valgrind-tests) \
-		$(use_enable cxx) \
-		$(use_enable dane libdane) \
-		$(use_enable nls) \
-		$(use_enable openssl openssl-compatibility) \
-		$(use_enable sslv2 ssl2-support) \
-		$(use_enable sslv3 ssl3-support) \
-		$(use_enable static-libs static) \
-		$(use_enable tls-heartbeat heartbeat-support) \
-		$(use_with idn) \
-		$(use_with pkcs11 p11-kit) \
-		--disable-rpath \
-		--with-unbound-root-key-file="${EPREFIX}/etc/dnssec/root-anchors.txt" \
-		--without-included-libtasn1 \
-		"${libconf[@]}" \
-		$("${S}/configure" --help | grep -- '--without-.*-prefix' | sed -e 's/^ *\([^ ]*\) .*/\1/g')
+	local myeconfargs=(
+		$(multilib_native_enable manpages)
+		$(multilib_native_use_enable doc gtk-doc)
+		$(multilib_native_use_enable doc)
+		$(multilib_native_use_enable guile)
+		$(multilib_native_use_enable seccomp seccomp-tests)
+		$(multilib_native_use_enable test tests)
+		$(multilib_native_use_enable test-full full-test-suite)
+		$(multilib_native_use_enable tools)
+		$(multilib_native_use_enable valgrind valgrind-tests)
+		$(use_enable cxx)
+		$(use_enable dane libdane)
+		$(use_enable nls)
+		$(use_enable openssl openssl-compatibility)
+		$(use_enable sslv2 ssl2-support)
+		$(use_enable sslv3 ssl3-support)
+		$(use_enable static-libs static)
+		$(use_enable tls-heartbeat heartbeat-support)
+		$(use_with idn)
+		$(use_with pkcs11 p11-kit)
+		--disable-rpath
+		--with-default-trust-store-file="${EPREFIX}/etc/ssl/certs/ca-certificates.crt"
+		--with-unbound-root-key-file="${EPREFIX}/etc/dnssec/root-anchors.txt"
+		--without-included-libtasn1
+		$("${S}/configure" --help | grep -o -- '--without-.*-prefix')
+	)
+	ECONF_SOURCE="${S}" econf "${libconf[@]}" "${myeconfargs[@]}"
 }
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 
 	if use examples; then
 		docinto examples
