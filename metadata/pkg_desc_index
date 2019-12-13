@@ -4649,7 +4649,7 @@ dev-lang/micropython 1.9.3 1.9.4 1.11: Python implementation for microcontroller
 dev-lang/mlton 20130715 20180207: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20160804 20160804-r1: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/moarvm 2018.06-r1 2018.08-r1 2018.09-r1 2018.12-r1 2019.03-r1 2019.07-r1 2019.07.1-r1 9999: A 6model-based VM for NQP and Rakudo Perl 6
-dev-lang/mono 4.4.1.0 4.8.0.524 5.14.0.177 5.16.0.220 5.18.1.0 5.20.1.19-r1 6.0.0.334 6.4.0.198: Mono runtime and class libraries, a C# compiler/interpreter
+dev-lang/mono 4.4.1.0 4.8.0.524 5.14.0.177 5.16.0.220 5.18.1.0 5.20.1.19-r1 6.0.0.334 6.4.0.198 6.6.0.161: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 1.4.0-r3 1.4.0-r4: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r2: The Mozart Standard Library
@@ -10446,7 +10446,7 @@ dev-tex/floatflt 1.31a-r1: LaTeX package used to warp text around figures
 dev-tex/foiltex 2.1.4b: LaTeX package used to create foils and slides
 dev-tex/frakturx 20070103-r1: Collection of blackletter fonts for LaTeX
 dev-tex/g-brief 4.0.2-r1: LaTeX styles for formless letters in German or English
-dev-tex/glossaries 3.04 4.12-r1 4.41: Create glossaries and lists of acronyms
+dev-tex/glossaries 4.41: Create glossaries and lists of acronyms
 dev-tex/harvard 2.0.5: The harvard family of bibliographic styles
 dev-tex/herm-pic 1.0.2: LaTeX class for creating ERM and HER diagramms
 dev-tex/hevea 2.29 2.30 2.31: HeVeA is a quite complete and fast LaTeX to HTML translator
@@ -10464,7 +10464,6 @@ dev-tex/lazylist 1.0a-r1: Lists in TeX's mouth - lambda-calculus and list-handli
 dev-tex/leaflet 20041222: LaTeX package used to create leaflet-type brochures
 dev-tex/lgrind 3.67-r3: A pretty printer for various programming languages with tex output.
 dev-tex/metapost 1.803 1.902: System for producing graphics
-dev-tex/minted 2.0 2.1 2.4.1: LaTeX package for source code syntax highlighting
 dev-tex/newlfm 8.3-r1: Extensive LaTeX class for writing letters
 dev-tex/pdfannotextractor 0.1l-r1: Extract annotations from pdf files
 dev-tex/pgf 3.1.4b-r2: The TeX Portable Graphic Format
@@ -18248,7 +18247,7 @@ www-apps/webdavcgi 0.8.3 0.8.4 1.1.1: A Perl CGI for accessing and sharing files
 www-apps/webmcp 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
-www-apps/wordpress 5.2.4 5.3: Wordpress PHP and MySQL based content management system (CMS)
+www-apps/wordpress 5.3 5.3.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
 www-client/chromium 78.0.3904.108 79.0.3945.79 80.0.3970.5: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
