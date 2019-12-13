@@ -2295,7 +2295,7 @@ app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-arc
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2-r1: Distfile Patching Support for Gentoo Linux (tools)
-app-portage/eix 0.33.8: Search and query ebuilds
+app-portage/eix 0.33.8 0.33.9: Search and query ebuilds
 app-portage/elicense 1.0.1 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r1 0.7.8-r2: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 2.7-r2 2.9: Elog viewer for Gentoo
@@ -3273,7 +3273,7 @@ dev-embedded/srecord 1.64: A collection of powerful tools for manipulating EPROM
 dev-embedded/stlink 1.5.1 9999: stm32 discovery line linux programmer
 dev-embedded/stm32flash 0.5: Open source flash program for STM32 using the ST serial bootloader
 dev-embedded/sunxi-tools 1.2 1.3: Tools for Allwinner A10 devices.
-dev-embedded/u-boot-tools 2018.05 2018.11 2019.01: utilities for working with Das U-Boot
+dev-embedded/u-boot-tools 2018.05 2018.11 2019.01 2019.10: utilities for working with Das U-Boot
 dev-embedded/uisp 20050207-r1: Tool for programming AVR microcontroller through the parallel port
 dev-embedded/upslug2 11: util for flashing NSLU2 machines remotely
 dev-embedded/urjtag 0.10-r1 9999: Tool for communicating over JTAG with flash chips, CPUs, and many more
@@ -8444,7 +8444,7 @@ dev-python/pycdio 2.1.0: Python OO interface to libcdio (CD Input and Control li
 dev-python/pychart 1.39-r1: Python library for creating charts
 dev-python/pychecker 0.8.19-r1: Python source code checking tool
 dev-python/pychef 0.2.3: A Python API for interacting with a Chef server
-dev-python/pychm 0.8.4-r1 0.8.5: Python bindings for the chmlib library
+dev-python/pychm 0.8.4-r1 0.8.5 0.8.6: Python bindings for the chmlib library
 dev-python/pychroot 0.10.1 9999: a python library and cli tool that simplify chroot handling
 dev-python/pycipher 0.2-r1: A Python module that implements several well-known classical cipher algorithms
 dev-python/pyclamav 0.4.1-r2: Python binding for libclamav
