@@ -62,8 +62,6 @@ DEPEND="
 	${PYTHON_DEPS}
 "
 BDEPEND="
-	!<perl-core/Pod-Simple-3.170
-	!<virtual/perl-Pod-Simple-3.170
 	dev-lang/perl
 	sys-devel/bison
 	sys-devel/flex
