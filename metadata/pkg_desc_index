@@ -12024,11 +12024,11 @@ kde-apps/calendarsupport 19.08.3 19.12.0: Calendar support library
 kde-apps/cantor 19.08.3 19.12.0: Interface for doing mathematics and scientific computing
 kde-apps/cervisia 19.08.3 19.12.0: CVS frontend by KDE
 kde-apps/dolphin 19.08.3 19.12.0: Plasma filemanager focusing on usability
-kde-apps/dolphin-plugins-bazaar 19.08.3 19.12.0: Dolphin plugin for Bazaar integration
-kde-apps/dolphin-plugins-dropbox 19.08.3 19.12.0: Dolphin plugin for Dropbox service integration
-kde-apps/dolphin-plugins-git 19.08.3 19.12.0: Dolphin plugin for Git integration
-kde-apps/dolphin-plugins-mercurial 19.08.3 19.12.0: Dolphin plugin for Mercurial integration
-kde-apps/dolphin-plugins-subversion 19.08.3 19.12.0: Dolphin plugin for Subversion integration
+kde-apps/dolphin-plugins-bazaar 19.08.3 19.12.0-r1: Dolphin plugin for Bazaar integration
+kde-apps/dolphin-plugins-dropbox 19.08.3 19.12.0-r1: Dolphin plugin for Dropbox service integration
+kde-apps/dolphin-plugins-git 19.08.3 19.12.0-r1: Dolphin plugin for Git integration
+kde-apps/dolphin-plugins-mercurial 19.08.3 19.12.0-r1: Dolphin plugin for Mercurial integration
+kde-apps/dolphin-plugins-subversion 19.08.3 19.12.0-r1: Dolphin plugin for Subversion integration
 kde-apps/dragon 19.08.3 19.12.0: Simple video player
 kde-apps/eventviews 19.08.3 19.12.0: Calendar viewer for KDE PIM
 kde-apps/ffmpegthumbs 19.08.3 19.12.0: FFmpeg based thumbnail generator for video files
