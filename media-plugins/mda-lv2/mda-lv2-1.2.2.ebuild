@@ -17,7 +17,6 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="media-libs/lv2"
-DEPEND="${RDEPEND}"
-BDEPEND="
+DEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig"
