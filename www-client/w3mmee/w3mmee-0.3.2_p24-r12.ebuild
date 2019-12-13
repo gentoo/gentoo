@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-gcc-4.4.patch
 	"${FILESDIR}"/${PN}-gcc-4.5.patch
 	"${FILESDIR}"/${PN}-glibc-2.14.patch
+	"${FILESDIR}"/${PN}-openssl-1.1.patch
 	"${FILESDIR}"/${PN}-rc_name.patch
 	"${FILESDIR}"/${PN}-time.patch
 	"${FILESDIR}"/${PN}-tinfo.patch
@@ -77,7 +78,7 @@ src_configure() {
 	else
 		myuse+=( use_ssl=n )
 	fi
-	# Obsolete imlib-1 disabled, bug #678910
+	# bug #678910
 	myuse+=( use_image=n )
 
 	cat <<-EOF >> config.param
