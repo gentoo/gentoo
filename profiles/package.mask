@@ -272,7 +272,6 @@ dev-python/gdmodule
 dev-python/qserve
 dev-python/pyifp
 dev-python/telarchive
-dev-python/XenAPI
 dev-python/sudsds
 dev-python/webpy
 dev-python/slowaes
