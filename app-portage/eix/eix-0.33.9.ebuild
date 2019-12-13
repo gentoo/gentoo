@@ -25,7 +25,7 @@ DEPEND="${BOTHDEPEND}
 
 pkg_setup() {
 	# remove stale cache file to prevent collisions
-	local old_cache=${EROOT%/}/var/cache/${PN}
+	local old_cache=${EROOT}/var/cache/${PN}
 	if [[ -f ${old_cache} ]]; then
 		rm "${old_cache}" || die
 	fi
@@ -35,10 +35,10 @@ src_prepare() {
 	default
 	sed -i -e "s:/:${EPREFIX}/:" tmpfiles.d/eix.conf || die
 
-	sed -e "/eixf_source=/s:push.sh:cat \"${EROOT}usr/share/push/push.sh\":" \
-		-e "/eixf_source=/s:quoter_pipe.sh:cat \"${EROOT}usr/share/quoter/quoter_pipe.sh\":" \
+	sed -e "/eixf_source=/s:push.sh:cat \"${EROOT}/usr/share/push/push.sh\":" \
+		-e "/eixf_source=/s:quoter_pipe.sh:cat \"${EROOT}/usr/share/quoter/quoter_pipe.sh\":" \
 		-i src/eix-functions.sh.in || die
-	sed -e "s:'\$(bindir)/eix-functions.sh':cat \\\\\"${EROOT}usr/share/eix/eix-functions\\\\\":" \
+	sed -e "s:'\$(bindir)/eix-functions.sh':cat \\\\\"${EROOT}/usr/share/eix/eix-functions\\\\\":" \
 		-i src/Makefile.am || die
 	eautoreconf
 }
@@ -87,14 +87,14 @@ src_install() {
 	dobashcomp bash/eix
 	dotmpfiles tmpfiles.d/eix.conf
 
-	rm -r "${ED%/}"/usr/bin/eix-functions.sh || die
+	rm -r "${ED}"/usr/bin/eix-functions.sh || die
 
 }
 
 pkg_postinst() {
 		tmpfiles_process eix.conf
 
-	local obs=${EROOT%/}/var/cache/eix.previous
+	local obs=${EROOT}/var/cache/eix.previous
 	if [[ -f ${obs} ]]; then
 		ewarn "Found obsolete ${obs}, please remove it"
 	fi
@@ -102,6 +102,6 @@ pkg_postinst() {
 
 pkg_postrm() {
 	if [[ ! -n ${REPLACED_BY_VERSION} ]]; then
-		rm -rf "${EROOT%/}/var/cache/${PN}" || die
+		rm -rf "${EROOT}/var/cache/${PN}" || die
 	fi
 }
