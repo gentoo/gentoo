@@ -1,34 +1,37 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit autotools eutils
+EAPI=7
 
-MY_PV=${PV/./_}
+inherit autotools
 
 DESCRIPTION="A series of tools for the PNG image format"
 HOMEPAGE="http://www.stillhq.com/pngtools/"
-SRC_URI="http://www.stillhq.com/pngtools/source/pngtools_${MY_PV}.tgz"
+SRC_URI="http://www.stillhq.com/pngtools/source/pngtools_${PV/./_}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
-RDEPEND=">=media-libs/libpng-1.4:0"
+RDEPEND="media-libs/libpng:="
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.3-implicit-declarations.patch
-	epatch "${FILESDIR}"/${P}-libpng14.patch
-	epatch "${FILESDIR}"/${P}-libpng15-fixes.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.3-implicit-declarations.patch
+	"${FILESDIR}"/${P}-libpng14.patch
+	"${FILESDIR}"/${P}-libpng15-fixes.patch
+)
 
+src_prepare() {
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc ABOUT AUTHORS ChangeLog NEWS README chunks.txt
-	insinto /usr/share/doc/${PF}/examples
-	doins *.png
+	default
+	dodoc ABOUT chunks.txt
+
+	docinto examples
+	dodoc *.png
 }
