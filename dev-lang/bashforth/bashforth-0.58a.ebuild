@@ -1,11 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 DESCRIPTION="String-threaded Forth interpreter in Bash"
-HOMEPAGE="http://www.forthfreak.net/index.cgi?BashForth"
+HOMEPAGE="https://github.com/ForthHub/ForthFreak"
 SRC_URI="http://forthfreak.net/${PN}.versions/${P}"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
