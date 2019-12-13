@@ -1,0 +1,36 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need localmount
+}
+
+supervisor=supervise-daemon
+commaind="${GRAFANA_EXECUTABLE}"
+command_user="${GRAFANA_USER}:${GRAFANA_GROUP}"
+command_args_foreground="
+	--config="${GRAFANA_CONFIG}"
+	--homepath="${GRAFNA_HOME_PATH}"
+	cfg:default.paths.logs="${GRAFANA_LOG_PATH}"
+	cfg:default.paths.data="${GRAFANA_DATA_PATH}"
+	cfg:default.paths.plugins="${GRAFANA_PLUGIN_PATH}"
+	cfg:default.paths.datasources="${GRAFANA_DATASOURCE_CFG_PATH}"
+	cfg:default.paths.dashboards="${GRAFANA_DASHBOARDS_CFG_PATH}"
+"
+
+start_pre() {
+	checkpath -d -o "${GRAFANA_USER}:${GRAFANA_GROUP}" -m750 "${GRAFANA_DATA_PATH}/dashboards"
+	checkpath -d -o "${GRAFANA_USER}:${GRAFANA_GROUP}" -m750 "${GRAFANA_DATA_PATH}/plugins"
+	checkpath -d -o "${GRAFANA_USER}:${GRAFANA_GROUP}" -m750 "${GRAFANA_DATA_PATH}/sessions"
+}
+
+if [[ -n "${GRAFANA_HEALTHCHECK_URI}" ]]; then
+	healthcheck_delay=120
+	healthcheck_timer=60
+
+	healthcheck() {
+		command -v wget || return 0
+		wget -Oq- "${GRAFANA_HEALTHCHECK_URI}"
+	}
+fi

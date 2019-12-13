@@ -1,0 +1,34 @@
+# Config file for /etc/init.d/grafana
+
+# The user to run server as
+GRAFANA_USER=grafana
+
+# The group to run server as
+GRAFANA_GROUP=grafana
+
+# Binary to run
+GRAFANA_EXECUTABLE=/usr/bin/grafana-server
+
+# User config
+GRAFANA_CONFIG=/etc/grafana/grafana.ini
+
+# Directory with default config
+GRAFANA_HOME_PATH=/usr/share/grafana
+
+# Logging
+GRAFANA_LOG_PATH=/var/log/grafana
+
+# Database
+GRAFANA_DATA_PATH=/var/lib/grafana
+
+# Plugins folder
+GRAFANA_PLUGIN_PATH=/var/lib/grafana/plugins
+
+# Load provisioned datasource configs from
+GRAFANA_DATASOURCE_CFG_PATH=/etc/grafana/datasources
+
+# Load provisioned dasboards from
+GRAFANA_DASHBOARDS_CFG_PATH=/etc/grafana/dashboards
+
+# Uncomment / edit to enable healthchecks
+#GRAFANA_HEALTHCHECK_URI=localhost:3000/api/health
