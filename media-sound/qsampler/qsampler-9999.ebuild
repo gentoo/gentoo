@@ -67,4 +67,3 @@ pkg_postrm() {
 	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
-
