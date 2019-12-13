@@ -32,6 +32,100 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-12-13)
+# The first part of cleanup post the dead ML project.  Those packages
+# have no reverse dependencies (except one another, in some cases).
+# Due to lack of interest, we are limiting the Gentoo ML packages
+# to those that are needed by programs packages for Gentoo.
+# Many of those packages are outdated and/or buggy.
+# Removal in 30 days.  Bug #695782.
+dev-ml/ANSITerminal
+dev-ml/OCaml-ImageMagick
+dev-ml/angstrom
+dev-ml/angstrom-async
+dev-ml/angstrom-lwt-unix
+dev-ml/angstrom-unix
+dev-ml/async_js
+dev-ml/atd
+dev-ml/atdgen
+dev-ml/bignum
+dev-ml/bolt
+dev-ml/bson
+dev-ml/camlimages
+dev-ml/capnp-ocaml
+dev-ml/core_bench
+dev-ml/core_profiler
+dev-ml/dns-async
+dev-ml/dns-lwt
+dev-ml/dns-lwt-unix
+dev-ml/enumerate
+dev-ml/flow_parser
+dev-ml/fort
+dev-ml/gd4o
+dev-ml/gen_js_api
+dev-ml/herelib
+dev-ml/incremental
+dev-ml/incremental_kernel
+dev-ml/io-page
+dev-ml/js-build-tools
+dev-ml/kaputt
+dev-ml/lambda-term
+dev-ml/lwt_glib
+dev-ml/mccs
+dev-ml/merlin
+dev-ml/mirage-profile
+dev-ml/mongo
+dev-ml/ocaml-bigstring
+dev-ml/ocaml-cairo
+dev-ml/ocaml-containers
+dev-ml/ocamldap
+dev-ml/ocamldsort
+dev-ml/ocaml-extunix
+dev-ml/ocaml-make
+dev-ml/ocaml-mysql
+dev-ml/ocamlpam
+dev-ml/ocaml-pcap
+dev-ml/ocaml-redis
+dev-ml/ocaml-redis-lwt
+dev-ml/ocaml-redis-sync
+dev-ml/ocaml-safepass
+dev-ml/ocaml-sha
+dev-ml/ocaml-snappy
+dev-ml/ocaml-stdint
+dev-ml/ocaml-text
+dev-ml/ocaml-uint
+dev-ml/ocaml-webmachine
+dev-ml/ocaml-websocket
+dev-ml/ocsigen-i18n
+dev-ml/ocsigen-start
+dev-ml/ocsigen-toolkit
+dev-ml/odns
+dev-ml/ojquery
+dev-ml/onanomsg
+dev-ml/opam-file-format
+dev-ml/pa_bench
+dev-ml/pa_ounit
+dev-ml/pa_sexp_conv
+dev-ml/pa_structural_sexp
+dev-ml/pipebang
+dev-ml/pomap
+dev-ml/postgresql-ocaml
+dev-ml/ppx_deriving_yojson
+dev-ml/ppx_import
+dev-ml/pxp
+dev-ml/reason
+dev-ml/reason-parser
+dev-ml/res
+dev-ml/sedlex
+dev-ml/sequence
+dev-ml/typerep_extended
+dev-ml/ulex
+dev-ml/utop
+dev-ml/uuidm
+dev-ml/xmlm
+dev-ml/xstr
+dev-ml/zed
+
 # Aaron Bauman <bman@gentoo.org> (2019-12-12)
 # EAPI 4, new versions upstream, not bumped
 # Removal in 30 days
