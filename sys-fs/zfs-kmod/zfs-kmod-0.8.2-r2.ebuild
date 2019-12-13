@@ -38,6 +38,8 @@ RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
 
+PATCHES=( "${FILESDIR}/${PV}-umask_O_TMPFILE.patch" )
+
 pkg_setup() {
 	linux-info_pkg_setup
 
