@@ -14,8 +14,8 @@
 		Since it is much smaller, it is also more relevant for embedded systems in need of only a client.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://github.com/troglobit/ntpclient/issues</bugs-to>
-		<remote-id type="github">troglobit/ntpclient</remote-id>
+		<bugs-to>https://github.com/troglobit/sntpd/issues</bugs-to>
+		<remote-id type="github">troglobit/sntpd</remote-id>
 	</upstream>
 	<use>
 		<flag name="debug">Enable analysis code path and debugging of NTP protocol.</flag>

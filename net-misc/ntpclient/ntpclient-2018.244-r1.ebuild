@@ -7,8 +7,8 @@ MY_PV="${PV/./_}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="A NTP (RFC-1305 and RFC-4330) client for unix-alike systems"
-HOMEPAGE="https://github.com/troglobit/ntpclient"
-SRC_URI="https://github.com/troglobit/${PN}/releases/download/${MY_PV}/${MY_P}.tar.xz"
+HOMEPAGE="https://github.com/troglobit/sntpd"
+SRC_URI="https://github.com/troglobit/sntpd/releases/download/${MY_PV}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
