@@ -7242,7 +7242,7 @@ dev-php/onphp 1.0.11_pre20141124: onPHP is the LGPL'ed multi-purpose object-orie
 dev-php/pear 1.10.1-r1 1.10.3: PEAR - PHP Extension and Application Repository
 dev-php/pecl-amqp 1.9.4 1.9.4-r1: PHP Bindings for AMQP 0-9-1 compatible brokers
 dev-php/pecl-apcu 4.0.11 5.1.12 5.1.17-r1 5.1.18: Stripped down version of APC supporting only user cache
-dev-php/pecl-apcu_bc 1.0.4 1.0.4-r1 1.0.5: Provides APC backwards compatibility functions via APCu
+dev-php/pecl-apcu_bc 1.0.4-r1 1.0.5: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-bbcode 1.0.3_beta1-r2: A quick and efficient BBCode Parsing Library
 dev-php/pecl-cairo 0.3.2-r1: Cairo bindings for PHP
 dev-php/pecl-cassandra 1.3.2: DataStax PHP Driver for Apache Cassandra
@@ -11692,11 +11692,11 @@ games-rpg/wastesedge 0.3.5-r1: role playing game to showcase the adonthell engin
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0-r1: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0-r1: A free 2D Zelda fangame parody
-games-server/bedrock-server 1.13.3.0: The official bedrock (non-java) based server for the sandbox video game
+games-server/bedrock-server 1.14.0.9: The official bedrock (non-java) based server for the sandbox video game
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
-games-server/minecraft-server 1.14.4: The official server for the sandbox video game
+games-server/minecraft-server 1.14.4 1.15.0: The official server for the sandbox video game
 games-server/monopd 0.10.2-r1: server for atlantik games
 games-server/mtavc 0.5-r1: dedicated server for GTA3 multiplayer
 games-server/pvpgn 1.8.5-r2: A gaming server for Battle.Net compatible clients
