@@ -55,6 +55,7 @@ acct-group/netdev 0: group for netdev (avahi)
 acct-group/nofiles 0: System group: nofiles
 acct-group/nsd 0: System group: nsd
 acct-group/ntp 0: System group: ntp
+acct-group/oidentd 0: System group: oidentd
 acct-group/opendkim 0: Group for OpenDKIM
 acct-group/openntpd 0: System group: openntpd
 acct-group/openrct2 0: A group for the OpenRCT2 dedicated server
@@ -141,6 +142,7 @@ acct-user/mythtv 0: Mythtv mythbackend server/deamon user
 acct-user/netdata 0: user for netdata
 acct-user/nsd 0: user for nsd daemon
 acct-user/ntp 0: user for ntp daemon
+acct-user/oidentd 0: System user: oidentd
 acct-user/opendkim 0: User for OpenDKIM
 acct-user/openntpd 0: user for openntpd daemon
 acct-user/openrct2 0: A user for the OpenRCT2 dedicated server
@@ -3173,7 +3175,7 @@ dev-db/pgadmin4 4.13: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3 4.0.0: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 10.3 11.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.9.0 1.10.0 1.11.0 1.12.0: Lightweight connection pooler for PostgreSQL
-dev-db/pgcli 2.0.2: CLI for Postgres with auto-completion and syntax highlighting
+dev-db/pgcli 2.0.2 2.2.0: CLI for Postgres with auto-completion and syntax highlighting
 dev-db/pgmemcache 2.1.2 2.2.0 2.3.0: A PostgreSQL API based on libmemcached to interface with memcached
 dev-db/pgmodeler 0.9.1: PostgreSQL Database Modeler
 dev-db/pgpool2 3.7.10 4.0.5 9999: Connection pool server for PostgreSQL
@@ -5202,7 +5204,7 @@ dev-libs/zziplib 0.13.69: Lightweight library for extracting data from files arc
 dev-lisp/abcl 1.5.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM.
 dev-lisp/alexandria 20171029: A collection of portable utilities for Common Lisp
 dev-lisp/asdf 3.1.5 3.3.1 3.3.2 3.3.2-r1: ASDF is Another System Definition Facility for Common Lisp
-dev-lisp/c2ffi 8.0.0.9999: Clang-based FFI wrapper generator for Common Lisp
+dev-lisp/c2ffi 9.0.0.9999 9.0.0.20191017: Clang-based FFI wrapper generator for Common Lisp
 dev-lisp/cl-ppcre 2.0.11 2.1.0: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11 2.1.0: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-unicode 0.1.5: Provides Common Lisp implementations with knowledge about Unicode characters.
@@ -8335,7 +8337,7 @@ dev-python/peppercorn 0.5 0.6: Convert a token stream into a web form data struc
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.2.1 4.6.0: Python module for spawning child apps and responding to expected patterns
 dev-python/pgpdump 1.5: PGP packet parser library
-dev-python/pgspecial 1.11.5 1.11.7: Python implementation of postgres meta commands
+dev-python/pgspecial 1.11.5 1.11.7 1.11.9: Python implementation of postgres meta commands
 dev-python/phonenumbers 8.10.22: Python port of Google's libphonenumber
 dev-python/photutils 0.3.1 0.3.2: Python package for image astronomical photometry
 dev-python/pickleshare 0.7.3 0.7.4-r1: A small 'shelve' like datastore with concurrency support
@@ -9326,6 +9328,7 @@ dev-ros/ament_cmake_export_include_directories 0.8.1 9999: Export include direct
 dev-ros/ament_cmake_export_interfaces 0.8.1 9999: Export interfaces to downstream packages in the ament buildsystem
 dev-ros/ament_cmake_export_libraries 0.8.1 9999: Export libraries to downstream packages in the ament buildsystem
 dev-ros/ament_cmake_export_link_flags 0.8.1 9999: Export link flags to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_gtest 0.8.1 9999: The ability to add gtest-based tests in the ament buildsystem
 dev-ros/ament_cmake_include_directories 0.8.1 9999: Export include directories to downstream packages in the ament buildsystem
 dev-ros/ament_cmake_libraries 0.8.1 9999: The functionality to deduplicate libraries in the ament buildsystem
 dev-ros/ament_cmake_python 0.8.1-r1 9999: The ability to use Python in the ament buildsystem
@@ -14867,7 +14870,7 @@ net-libs/glib-networking 2.58.0 2.60.3: Network-related giomodules for glib
 net-libs/gloox 1.0.22: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.30.2 3.32.1: GNOME framework for accessing online accounts
-net-libs/gnutls 3.6.7 3.6.10 3.6.11: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.6.7 3.6.10 3.6.11 3.6.11.1: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/google-cloud-cpp 0.2.0-r1 0.5.0 0.9.0 0.10.0: Google Cloud Client Library for C++
 net-libs/grpc 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1-r1 1.21.1-r1 1.22.1 1.23.0 1.24.3 1.25.0: Modern open source high performance RPC framework
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
@@ -15325,7 +15328,7 @@ net-misc/nx 3.5.0.33 3.5.99.16 3.5.99.17 3.5.99.20: NX compression technology co
 net-misc/nxplayer 5.1.24.1: Client for NoMachine remote servers
 net-misc/nyx 2.0.4 2.1.0: Utility to monitor real time Tor status information
 net-misc/ofono 1.16 1.30 1.31: Open Source mobile telephony (GSM/UMTS) daemon
-net-misc/oidentd 2.0.8-r6 2.3.2: Another (RFC1413 compliant) ident daemon
+net-misc/oidentd 2.0.8-r6 2.4.0: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.6.1 0.9.6.1-r1 0.9.7 0.9.8: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0 1.0-r1 1.0_p20180614: A driver for NTPd for people who are firewall-challenged
@@ -17742,7 +17745,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0-r1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.4.206 4.9.192 4.9.199 4.9.203 4.9.205 4.9.206 4.14.143 4.14.152 4.14.156 4.14.157 4.14.158 4.19.72 4.19.82 4.19.86 4.19.87 4.19.88 5.3.12 5.3.13 5.3.14-r1 5.3.15 5.4.0 5.4.1 5.4.2: Full sources including the Gentoo patchset for the 5.4 kernel tree
+sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.4.206 4.9.192 4.9.199 4.9.203 4.9.205 4.9.206 4.14.143 4.14.152 4.14.156 4.14.157 4.14.158 4.19.72 4.19.82 4.19.86 4.19.87 4.19.88 4.19.89 5.3.12 5.3.13 5.3.14-r1 5.3.15 5.3.16 5.4.0 5.4.1 5.4.2 5.4.3: Full sources including the Gentoo patchset for the 5.4 kernel tree
 sys-kernel/git-sources 5.5_rc1: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
