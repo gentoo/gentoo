@@ -31,7 +31,7 @@ IUSE="development +java nexpose oracle +pcap test"
 
 #multiple known bugs with tests reported upstream and ignored
 #http://dev.metasploit.com/redmine/issues/8418 - worked around (fix user creation when possible)
-RESTRICT="test"
+RESTRICT="strip test"
 
 #grep spec.add_runtime_dependency metasploit-framework.gemspec | sort
 RUBY_COMMON_DEPEND="virtual/ruby-ssl
@@ -126,8 +126,6 @@ COMMON_DEPEND="dev-db/postgresql[server]
 	net-analyzer/nmap"
 RDEPEND+=" ${COMMON_DEPEND}
 	>=app-eselect/eselect-metasploit-0.16"
-
-RESTRICT+=" strip"
 
 QA_PREBUILT="
 	usr/lib*/${PN}${SLOT}/data/templates/template_x86_linux.bin
