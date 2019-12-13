@@ -1220,7 +1220,7 @@ app-editors/pluma 1.22.0 1.22.1: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qhexedit2 0.8.4 0.8.4_p20170719: Hex editor library, Qt application written in C++ with Python bindings
 app-editors/qxmledit 0.9.12: Simple Qt-based XML editor
-app-editors/retext 7.0.3 7.0.4-r1 9999: Simple editor for Markdown and reStructuredText
+app-editors/retext 7.0.4-r1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 4.1.3 4.2.0 4.2.1: A very powerful, highly configurable, small editor with syntax coloring
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
