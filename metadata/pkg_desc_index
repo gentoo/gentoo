@@ -10753,7 +10753,7 @@ dev-util/kdstatemachineeditor 1.2.4 9999: Framework for creating Qt State Machin
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/kernelshark 1.0 9999: Graphical reader for trace-cmd output
 dev-util/kubebuilder 2.0.1 2.1.0: SDK for building Kubernetes APIs using CRDs
-dev-util/kup 0.3.4-r1: kernel.org uploader tool
+dev-util/kup 0.3.4-r1 0.3.6: kernel.org uploader tool
 dev-util/kyua 0.13-r2: Testing framework for infrastructure software
 dev-util/lcov 1.13-r2 1.14 1.14_p2 9999: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
@@ -12513,7 +12513,7 @@ mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
 mail-filter/zdkimfilter 1.8: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
-mail-mta/exim 4.92.2 4.92.3 4.93: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.92.2 4.92.3 4.93.0.2: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.3 1.8.5-r1 1.8.6: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r4 1.06-r10 1.06-r11 1.06-r12: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
