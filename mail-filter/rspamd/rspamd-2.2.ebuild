@@ -44,6 +44,8 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	cmake-utils_src_prepare
 
+	sed -i -e '/PROJECT/s/LANGUAGES C ASM/LANGUAGES C CXX ASM/' CMakeLists.txt \
+		|| die "sed CMakeLists.txt failed"
 	sed -i -e 's/User=_rspamd/User=rspamd/g' \
 		rspamd.service \
 		|| die
