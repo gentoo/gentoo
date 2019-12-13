@@ -267,6 +267,7 @@ src_prepare() {
 	eapply "${WORKDIR}/firefox"
 	eapply "${FILESDIR}/${PN}-69.0-lto-gcc-fix.patch"
 	eapply "${FILESDIR}/mozilla-bug1601707-gcc-fixup.patch"
+	eapply "${FILESDIR}/${PN}-71.0-bug1602358-fix-older-builds-with-newer-cbindgen.patch"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
