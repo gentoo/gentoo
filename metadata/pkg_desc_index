@@ -13233,7 +13233,7 @@ media-libs/libopenshot 0.2.2 0.2.4_pre20190609: Video editing library used by Op
 media-libs/libopenshot-audio 0.1.4 0.1.9_pre20190502: Library for audio editing and playback used by OpenShot
 media-libs/libopusenc 0.2.1: High-level API for encoding .opus files
 media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents
-media-libs/libpano13 2.9.18 2.9.19: Helmut Dersch's panorama toolbox library
+media-libs/libpano13 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.12.27: Library to load, handle and manipulate images in the PGF format
 media-libs/libplacebo 1.21.0-r1 9999: Reusable library for GPU-accelerated image processing primitives
 media-libs/libpng 1.6.37: Portable Network Graphics library
@@ -15549,7 +15549,7 @@ net-p2p/tvrss 1.8_beta: TV RSS is a tool for automating torrent downloads
 net-p2p/vuze 4.8.1.2-r1 5.7.6.0: BitTorrent client in Java, formerly called Azureus
 net-p2p/vuze-coreplugins 4.8.1.2 5.7.6.0: Core plugins for Vuze that are included in upstream distribution
 net-p2p/xmr-stak 2.7.0 2.7.1 2.8.0 2.8.2 2.8.3 2.9.0 2.10.0 2.10.1 2.10.2 2.10.3 2.10.4 2.10.5 2.10.6 2.10.7 2.10.8 9999: Unified all-in-one Monero miner
-net-p2p/xmr-stak-rx 1.0.1 1.0.2 9999: Monero RandomX Miner
+net-p2p/xmr-stak-rx 1.0.1 1.0.2 1.0.3 9999: Monero RandomX Miner
 net-print/apsfilter 7.2.8-r1: Apsfilter Prints So Fine, It Leads To Extraordinary Results
 net-print/brlaser 4: Brother laser printer driver
 net-print/c2esp 26 27: A CUPS filter for Kodak ESP printers
