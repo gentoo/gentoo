@@ -50,7 +50,6 @@ src_test() { :; }
 src_install() {
 	cd tools || die
 	dobin bmp_logo dumpimage fdtgrep gen_eth_addr img2srec mkenvimage mkimage
-	dobin easylogo/easylogo
 	dobin env/fw_printenv
 	dosym fw_printenv /usr/bin/fw_setenv
 	insinto /etc
