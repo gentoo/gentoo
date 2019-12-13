@@ -4779,7 +4779,7 @@ dev-libs/editline 1.16.0 1.16.1: line editing library for UNIX call compatible w
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.22.6 1.23.2 1.23.3: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.176-r1 0.177 0.178: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
-dev-libs/ell 0.9 0.20 0.21 0.22 0.23 0.24 0.25 0.26 9999: Embedded Linux Library provides core, low-level functionality for system daemons
+dev-libs/ell 0.9 0.20 0.21 0.22 0.23 0.24 0.25 0.26 0.27 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.8: Stream-oriented XML parser library
 dev-libs/faxpp 0.4-r1: Small, fast and conformant XML pull parser written in C
@@ -7946,7 +7946,7 @@ dev-python/hvac 0.2.17: Python 2/3 client for HashiCorp Vault
 dev-python/hyper-h2 2.5.1 3.0.1 3.1.1: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.1.0 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 17.1.1 17.3.1 18.0.0 19.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 3.59.1 3.74.3 4.15.0 4.44.2 4.47.5 4.50.8 4.51.0 4.53.1: A library for property based testing
+dev-python/hypothesis 3.59.1 3.74.3 4.15.0 4.44.2 4.47.5 4.50.8 4.53.1 4.53.2: A library for property based testing
 dev-python/icalendar 3.9.2 3.11.7 3.11.7-r1 4.0.3: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.5 2.6 2.7 2.8: Internationalized Domain Names in Applications (IDNA)
@@ -15371,7 +15371,7 @@ net-misc/rclone 1.45 1.47.0 1.49.1 9999: A program to sync files to and from var
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
-net-misc/remmina 1.3.4 1.3.6-r1: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.3.4 1.3.6-r1 1.3.7: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.3: File transfer program to keep remote files into sync
@@ -15709,7 +15709,7 @@ net-wireless/hostapd 2.9-r1 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.2 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 4.9 4.14 5.0.1 5.3 5.4: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
-net-wireless/iwd 0.21 0.22 0.23-r1 1.0-r1 1.1 1.2 9999: Wireless daemon for linux
+net-wireless/iwd 0.21 0.22 0.23-r1 1.0-r1 1.1 1.2 1.3 9999: Wireless daemon for linux
 net-wireless/jackit 0.0_p20170918: Exploit Code for Mousejack
 net-wireless/kismet 2016.07.1-r2 2019.09.1-r1 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
@@ -17760,7 +17760,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p201909
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4.164_p176 4.9.115_p93 4.9.146_p125 4.14.71_p44 4.14.78_p47 4.14.87_p49 4.16.18_p12 4.18.16_p9 4.19.5_p4 4.19.10_p8: Full Linux 4.19 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
-sys-kernel/vanilla-kernel 5.4.2: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.2 5.4.3: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 3.16.79 4.4.206 4.9.206 4.14.158 4.19.89 5.3.16 5.4.3: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r3 4570.71.2-r3 4903.241.1-r3: System headers provided by XNU-4903.241.1, macOS 10.14.3

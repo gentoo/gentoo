@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=>=dev-db/sqlite-3.3.3 >=dev-lang/ocaml-4:=
 SLOT=0/4.2.0
 SRC_URI=https://github.com/mmottl/sqlite3-ocaml/releases/download/4.2.0/sqlite3-4.2.0.tbz
-_eclasses_=opam	3f1ccc0b5a5708088c2c156d4ca79a20
+_eclasses_=opam	c053036d04fbcede5c53fe5752699eb5
 _md5_=44715ecd1904679f92c6006b7c107848

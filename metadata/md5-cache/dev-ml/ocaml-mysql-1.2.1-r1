@@ -9,5 +9,5 @@ LICENSE=LGPL-2
 RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] sys-libs/zlib dev-db/mysql-connector-c:0=
 SLOT=0/1.2.1
 SRC_URI=http://ygrek.org.ua/p/release/ocaml-mysql/ocaml-mysql-1.2.1.tar.gz
-_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_eclasses_=findlib	17c71a5d96323df925f9f6db1215668a
 _md5_=c10499a9d3181d5d120a90f020692c8f

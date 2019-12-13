@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=>=dev-lang/ocaml-4:=
 SLOT=0/1.0
 SRC_URI=https://github.com/diml/ppx_derivers/archive/1.0.tar.gz -> ppx_derivers-1.0.tar.gz
-_eclasses_=opam	3f1ccc0b5a5708088c2c156d4ca79a20
+_eclasses_=opam	c053036d04fbcede5c53fe5752699eb5
 _md5_=db65d659fb2c39bbe68597337ed82d5d

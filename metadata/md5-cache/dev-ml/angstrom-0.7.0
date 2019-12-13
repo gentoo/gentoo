@@ -10,5 +10,5 @@ RDEPEND=dev-ml/result:= >=dev-lang/ocaml-4:=
 RESTRICT=!test? ( test )
 SLOT=0/0.7.0
 SRC_URI=https://github.com/inhabitedtype/angstrom/archive/0.7.0.tar.gz -> angstrom-0.7.0.tar.gz
-_eclasses_=opam	3f1ccc0b5a5708088c2c156d4ca79a20
+_eclasses_=opam	c053036d04fbcede5c53fe5752699eb5
 _md5_=115d273fb0d6332702629bb80755a2cc

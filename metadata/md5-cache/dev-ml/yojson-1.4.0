@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=dev-lang/ocaml-3.11:=[ocamlopt] dev-ml/easy-format:=[ocamlopt] >=dev-ml/biniou-1.2:=[ocamlopt] >=dev-lang/ocaml-4:=
 SLOT=0/1.4.0
 SRC_URI=https://github.com/mjambon/yojson/archive/v1.4.0.tar.gz -> yojson-1.4.0.tar.gz
-_eclasses_=findlib	45d6030075064a68da8d7143726a1150	opam	3f1ccc0b5a5708088c2c156d4ca79a20
+_eclasses_=findlib	17c71a5d96323df925f9f6db1215668a	opam	c053036d04fbcede5c53fe5752699eb5
 _md5_=fb6b0c3afce29897340daa4af070bbf4

@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ocaml-4:=
 RESTRICT=!test? ( test )
 SLOT=0/1.3.0
 SRC_URI=http://erratique.ch/software/xmlm/releases/xmlm-1.3.0.tbz
-_eclasses_=opam	3f1ccc0b5a5708088c2c156d4ca79a20
+_eclasses_=opam	c053036d04fbcede5c53fe5752699eb5
 _md5_=697fbeb6c76a659a3e09c7fad5bce05a

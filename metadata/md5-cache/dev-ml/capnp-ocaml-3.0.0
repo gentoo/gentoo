@@ -10,5 +10,5 @@ RDEPEND=dev-ml/core_kernel:= dev-ml/ocaml-extunix:= dev-ml/ocplib-endian:= dev-m
 RESTRICT=!test? ( test )
 SLOT=0/3.0.0
 SRC_URI=https://github.com/pelzlpj/capnp-ocaml/archive/v3.0.0.tar.gz -> capnp-ocaml-3.0.0.tar.gz
-_eclasses_=opam	3f1ccc0b5a5708088c2c156d4ca79a20
+_eclasses_=opam	c053036d04fbcede5c53fe5752699eb5
 _md5_=c5f0cbf17b89df7dce39cb4865d7f1b9
