@@ -1,4 +1,4 @@
-From 9ce6d2ab1060c362178aba57b68bedca2d39cfe9 Mon Sep 17 00:00:00 2001
+From 95e48927b0c3a5e817a41c03d977fbf2e7083940 Mon Sep 17 00:00:00 2001
 From: Mike Frysinger <vapier@gentoo.org>
 Date: Wed, 10 Feb 2016 09:47:27 +0100
 Subject: [PATCH] build system fixes
@@ -19,17 +19,18 @@ Forward ported from libcap-2.25 to libcap-2.28
 
 Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 ---
- Make.Rules       | 30 ++++++++++++++++++------------
+ Make.Rules       | 27 +++++++++++++++------------
  libcap/Makefile  |  7 ++++---
  pam_cap/Makefile |  8 +++++---
  progs/Makefile   |  2 +-
- 4 files changed, 28 insertions(+), 19 deletions(-)
+ tests/Makefile   |  8 +++++---
+ 5 files changed, 30 insertions(+), 22 deletions(-)
 
 diff --git a/Make.Rules b/Make.Rules
-index ab4f17c..1b659ea 100644
+index ab4f17c..bd8f73c 100644
 --- a/Make.Rules
 +++ b/Make.Rules
-@@ -46,35 +46,41 @@ MINOR=28
+@@ -46,35 +46,38 @@ MINOR=28
  # Compilation specifics
  
  KERNEL_HEADERS := $(topdir)/libcap/include/uapi
@@ -41,13 +42,11 @@ index ab4f17c..1b659ea 100644
 -BUILD_CFLAGS := $(CFLAGS) $(IPATH)
 -AR := ar
 -RANLIB := ranlib
-+IPATH += -I$(KERNEL_HEADERS) -I$(topdir)/libcap/include
 +
 +CC ?= gcc
 +CFLAGS ?= -O2
 +BUILD_CC ?= $(CC)
 +BUILD_CFLAGS ?= $(CFLAGS)
-+BUILD_CFLAGS += $(IPATH)
 +AR ?= ar
 +RANLIB ?= ranlib
  DEBUG = -g #-DDEBUG
@@ -64,7 +63,6 @@ index ab4f17c..1b659ea 100644
  BUILD_GPERF := $(shell which gperf >/dev/null 2>/dev/null && echo yes)
  
 -SYSTEM_HEADERS = /usr/include
-+KERNEL_HEADERS = $(topdir)/libcap/include/uapi
 +LIBCAP_CPPFLAGS = -I$(KERNEL_HEADERS) -I$(topdir)/libcap/include
 +LIBCAP_CPPFLAGS += -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
 +CPPFLAGS += $(LIBCAP_CPPFLAGS)
@@ -160,6 +158,39 @@ index 0786ad3..3abbbd9 100644
  
  install: all
  	mkdir -p -m 0755 $(FAKEROOT)$(SBINDIR)
+diff --git a/tests/Makefile b/tests/Makefile
+index b16bdcd..dfed90e 100644
+--- a/tests/Makefile
++++ b/tests/Makefile
+@@ -5,6 +5,8 @@ topdir=$(shell pwd)/..
+ include ../Make.Rules
+ #
+ 
++CFLAGS += -fPIC
++
+ all: run_psx_test run_libcap_psx_test
+ 
+ install: all
+@@ -14,16 +16,16 @@ run_psx_test: psx_test psx_test_wrap
+ 	./psx_test_wrap
+ 
+ psx_test: psx_test.c
+-	$(CC) $(CFLAGS) $(IPATH) -DNOWRAP $< -o $@ $(LIBPSXLIB)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DNOWRAP $< -o $@ $(LIBPSXLIB)
+ 
+ psx_test_wrap: psx_test.c
+-	$(CC) $(CFLAGS) $(IPATH) $< -o $@ $(LIBPSXLIB) -Wl,-wrap,pthread_create
++	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $@ $(LIBPSXLIB) -Wl,-wrap,pthread_create
+ 
+ run_libcap_psx_test: libcap_psx_test
+ 	./libcap_psx_test
+ 
+ libcap_psx_test: libcap_psx_test.c
+-	$(CC) $(CFLAGS) $(IPATH) $< -o $@ $(LIBCAPLIB) $(LIBPSXLIB) -Wl,-wrap,pthread_create --static
++	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $@ $(LIBCAPLIB) $(LIBPSXLIB) -Wl,-wrap,pthread_create --static
+ 
+ clean:
+ 	rm -f psx_test psx_test_wrap libcap_psx_test
 -- 
 2.24.1
 
