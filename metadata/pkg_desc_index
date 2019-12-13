@@ -1250,7 +1250,7 @@ app-emacs/apache-mode 2.2.0: Major mode for editing Apache configuration files
 app-emacs/apel 10.8-r1 10.8_p20190407: A Portable Emacs Library is a library for making portable Emacs Lisp programs
 app-emacs/async 1.9.3: Simple library for asynchronous processing in Emacs
 app-emacs/atomic-chrome 2.0.0: Edit text area on Chrome with Emacs using Atomic Chrome
-app-emacs/auctex 11.92 12.1-r1: Extensible package for writing and formatting TeX files in Emacs
+app-emacs/auctex 11.92 12.1-r1 12.2: Extensible package for writing and formatting TeX files in Emacs
 app-emacs/auto-complete 1.5.1-r1: Auto-complete package
 app-emacs/autoconf-mode 2.69-r1: Emacs major modes for editing autoconf and autotest input
 app-emacs/basic-toolkit 0.7: Basic edit toolkit
