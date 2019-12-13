@@ -1,6 +1,13 @@
---- src/png.c
-+++ src/png.c
-@@ -102,8 +102,8 @@
+--- a/src/png.c
++++ b/src/png.c
+@@ -1,5 +1,6 @@
+ /* $Id: png.c,v 1.1.1.1 2003/01/30 12:22:26 hito Exp $ */
+ #include <stdio.h>
++#include <string.h>
+ #include <png.h>
+ #include "stimg.h"
+ 
+@@ -102,8 +103,8 @@
  		0x00,
  		NULL);
  
@@ -11,7 +18,7 @@
  
     if (image == NULL) {
        png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
-@@ -112,18 +112,18 @@
+@@ -112,18 +113,18 @@
     }     
  
     row_pointers = png_get_rows(png_ptr, info_ptr);
