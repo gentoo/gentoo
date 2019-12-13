@@ -236,7 +236,9 @@ src_install() {
 
 	# bug #689562, #689160
 	rm "${D}/etc/bash_completion.d/cargo" || die
-	rmdir -p "${D}/etc" || die
+	pushd "${D}" > /dev/null || die
+	rmdir -p etc/bash_completion.d || die
+	popd > /dev/null || die
 	dobashcomp build/tmp/dist/cargo-image/etc/bash_completion.d/cargo
 
 	mv "${ED}/usr/bin/rustc" "${ED}/usr/bin/rustc-${PV}" || die
