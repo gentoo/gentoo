@@ -416,7 +416,7 @@ app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 1.12.0: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.101.2-r1 0.101.3 0.101.4 0.101.5 0.102.1-r1: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 5.6.2 6.0.1-r2: Download and install third-party clamav signatures
-app-antivirus/clamtk 6.01-r1 6.02: A graphical front-end for ClamAV
+app-antivirus/clamtk 6.02: A graphical front-end for ClamAV
 app-antivirus/skyldav 0.7: Skyld AV: on-access scanning daemon for ClamAV using fanotify
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
@@ -1505,7 +1505,7 @@ app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.36.1 1.38.0: VM appliance disk image used in libguestfs package
-app-emulation/libpod 1.6.3-r2: Library and podman tool for running OCI-based containers in Pods
+app-emulation/libpod 1.6.3-r2 1.6.4: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.2 1.4.4: Spectrum emulation library
 app-emulation/libvirt 5.2.0-r2 5.5.0-r1 5.6.0 5.8.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0: GLib and GObject mappings for libvirt
