@@ -3,7 +3,7 @@
 
 # @ECLASS: oasis.eclass
 # @MAINTAINER:
-# ml@gentoo.org
+# maintainer-needed@gentoo.org
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
 # @SUPPORTED_EAPIS: 3 4 5 6 7
