@@ -232,7 +232,6 @@ pkg_postinst() {
 		fi
 	done
 
-	mount-boot_mount_boot_partition
 	if [[ $(find /boot -name 'kernel-genkernel-*' 2>/dev/null | wc -l) -gt 0 ]] ; then
 		ewarn ''
 		ewarn 'Default kernel filename was changed from "kernel-genkernel-<ARCH>-<KV>"'
@@ -241,7 +240,6 @@ pkg_postinst() {
 		ewarn 'built with genkernel before that name change, resulting in booting old'
 		ewarn 'kernel when not paying attention on boot.'
 	fi
-	mount-boot_pkg_postinst
 
 	# Show special warning for users depending on remote unlock capabilities
 	local gk_config="${EROOT}/etc/genkernel.conf"
