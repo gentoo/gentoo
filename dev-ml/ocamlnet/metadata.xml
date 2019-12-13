@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-	<email>ml@gentoo.org</email>
-	<name>Gentoo ML Project</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 <use>
 	<flag name="httpd">Enables net-httpd web server component</flag>
 	<flag name="zip">Enables netzip support to read/write gzip data using object channels</flag>
