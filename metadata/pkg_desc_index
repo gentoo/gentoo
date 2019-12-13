@@ -12851,7 +12851,7 @@ media-gfx/gnome-screenshot 3.30.0 3.32.0: Screenshot utility for GNOME
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.20: Free, redistributable digital camera software application
-media-gfx/gphotofs 0.5 0.5-r1: FUSE file system for interfacing with digital cameras using gphoto2
+media-gfx/gphotofs 0.5-r1: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.5 0.2.5-r1: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.32 1.3.33 9999: Collection of tools and libraries for many image formats
