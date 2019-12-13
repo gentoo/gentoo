@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit cmake-utils
 
@@ -26,7 +26,7 @@ DEPEND="pulseaudio? ( media-sound/pulseaudio )
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	use pulseaudio && sed -i '/find_package( PulseAudio )/d' CMakeLists.txt
-	use X && sed -i '/find_package( X11 )/d' CMakeLists.txt
+	use pulseaudio || sed -i '/find_package( PulseAudio )/d' CMakeLists.txt
+	use X || sed -i '/find_package( X11 )/d' CMakeLists.txt
 	cmake-utils_src_prepare
 }
