@@ -24,7 +24,9 @@ REQUIRED_USE="
 # #661164) or b) mask the usage of USE=dane with USE=gnutls.  Both are
 # incorrect, but b) is the only "correct" view from repoman.
 
-COMM_URI="https://downloads.exim.org/exim4$([[ ${PV} == *_rc* ]] && echo /test)"
+SDIR=$([[ ${PV} == *_rc* ]]   && echo /test
+       [[ ${PV} == *.*.*.* ]] && echo /fixes)
+COMM_URI="https://downloads.exim.org/exim4${SDIR}"
 
 DESCRIPTION="A highly configurable, drop-in replacement for sendmail"
 SRC_URI="${COMM_URI}/${P//rc/RC}.tar.xz
@@ -279,8 +281,9 @@ src_configure() {
 	# disable if not requested, bug #46778
 	if use X; then
 		cp ../exim_monitor/EDITME eximon.conf || die
-	else
-		sed -i -e '/^EXIM_MONITOR=/s/^/# /' Makefile || die
+		cat >> Makefile <<- EOC
+			EXIM_MONITOR=eximon.bin
+		EOC
 	fi
 
 	#
@@ -393,6 +396,14 @@ src_configure() {
 		EOC
 	fi
 
+	# DMARC
+	if use dmarc; then
+		cat >> Makefile <<- EOC
+			SUPPORT_DMARC=yes
+			EXTRALIBS_EXIM += -lopendmarc
+		EOC
+	fi
+
 	# Sender Policy Framework
 	if use spf; then
 		cat >> Makefile <<- EOC
@@ -420,14 +431,6 @@ src_configure() {
 		cat >> Makefile <<- EOC
 			EXPERIMENTAL_SRS=yes
 			EXTRALIBS_EXIM += -lsrs_alt
-		EOC
-	fi
-
-	# DMARC
-	if use dmarc; then
-		cat >> Makefile <<- EOC
-			EXPERIMENTAL_DMARC=yes
-			EXTRALIBS_EXIM += -lopendmarc
 		EOC
 	fi
 
@@ -568,11 +571,6 @@ pkg_postinst() {
 		einfo "http://article.gmane.org/gmane.mail.exim.devel/3579"
 	fi
 	use srs && einfo "SRS support is experimental"
-	if use dmarc ; then
-		einfo "DMARC support is experimental.  See global settings to"
-		einfo "configure DMARC, for usage see the documentation at "
-		einfo "experimental-spec.txt."
-	fi
 	use dsn && einfo "extra information in fail DSN message is experimental"
 	elog "The obsolete acl condition 'demime' is removed, the replacements"
 	elog "are the ACLs acl_smtp_mime and acl_not_smtp_mime"
