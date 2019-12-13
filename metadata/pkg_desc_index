@@ -14851,7 +14851,7 @@ net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
 net-libs/biblesync 1.1.2-r2 2.0.1: A multicast protocol to support Bible software shared co-navigation
 net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
-net-libs/courier-authlib 0.65.0-r3 0.66.4 0.67.0 0.68.0-r1 0.69.0-r1: Courier authentication library
+net-libs/courier-authlib 0.66.4 0.67.0 0.68.0-r1 0.69.0-r1: Courier authentication library
 net-libs/courier-unicode 1.3 1.4 2.1: Unicode library used by the courier mail server
 net-libs/cppzmq 0_pre130717-r1 0_pre150606: High-level CPP Binding for ZeroMQ
 net-libs/cvm 0.96-r1 0.97: Credential Validation Modules by Bruce Guenter
@@ -16083,7 +16083,7 @@ sci-chemistry/chemex 0.6.1: Program to fit chemical exchange induced shift and r
 sci-chemistry/chemical-mime-data 0.1.94-r2 0.1.94-r3: A collection of data files to add support for chemical MIME types
 sci-chemistry/chemtool 1.6.13 1.6.14: A GTK program for drawing organic molecules
 sci-chemistry/clashlist 3.17-r1: Build lists of van der Waals clashes from an input PDB file
-sci-chemistry/cluster 1.3.081231 1.3.081231-r1: Build lists of collections of interacting items
+sci-chemistry/cluster 1.3.081231-r1: Build lists of collections of interacting items
 sci-chemistry/dssp 2.2.1-r1: The protein secondary structure standard
 sci-chemistry/easychem 0.6-r1: Chemical structure drawing program - focused on presentation
 sci-chemistry/eden 5.3-r2: A crystallographic real-space electron-density refinement & optimization program
@@ -18339,7 +18339,7 @@ www-servers/puma 3.12.1 3.12.1-r1 3.12.2 4.2.0 4.2.1 4.3.1: a simple, fast, thre
 www-servers/resin 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections based on the hostname
-www-servers/spawn-fcgi 1.6.3-r1 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
+www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.96 8.5.47 9.0.7 9.0.27: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1 4.5.1 4.5.3 5.0.2 5.1: Python web framework and asynchronous networking library
