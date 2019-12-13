@@ -27,13 +27,13 @@ src_install() {
 	dodoc readme.html
 	rm readme.html license.txt || die
 
-	if ! use akismet ; then
+	if use !akismet ; then
 		rm -R wp-content/plugins/akismet/ || die
 	fi
-	if ! use examples ; then
+	if use !examples ; then
 		rm wp-content/plugins/hello.php || die
 	fi
-	if ! use themes ; then
+	if use !themes ; then
 		rm -R wp-content/themes/*/ || die
 	fi
 
@@ -45,6 +45,8 @@ src_install() {
 	webapp_serverowned "${MY_HTDOCSDIR}"/index.php
 	webapp_serverowned "${MY_HTDOCSDIR}"/wp-admin/menu.php
 	webapp_serverowned "${MY_HTDOCSDIR}"
+	# allows plugins update if allowed within WP
+	webapp_serverowned "${MY_HTDOCSDIR}"/wp-admin/includes/file.php
 
 	webapp_configfile  "${MY_HTDOCSDIR}"/wp-config.php
 
