@@ -1,18 +1,19 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit autotools-utils
+EAPI=7
 
 DESCRIPTION="Motif-based widget to display a grid of cells as a spreadsheet"
 HOMEPAGE="http://xbae.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 SLOT="0"
-IUSE="doc examples static-libs"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+IUSE="doc examples"
+# tests need X display
+# and are interactive so virtualx will not help
+RESTRICT="test"
 
 RDEPEND="
 	x11-libs/motif:0
@@ -22,43 +23,40 @@ RDEPEND="
 	x11-libs/libXmu
 	x11-libs/libXpm
 	x11-libs/libXt"
-
 DEPEND="${RDEPEND}"
-
-# tests need X display
-# and are interactive so virtualx will not help
-RESTRICT=test
 
 PATCHES=(
 	"${FILESDIR}"/${P}-tmpl.patch
 	"${FILESDIR}"/${P}-lxmp.patch
 	"${FILESDIR}"/${P}-Makefile.in.patch
-	)
+)
 
 src_configure() {
-	local myeconfargs=( --enable-production )
-	autotools-utils_src_configure
+	econf --enable-production
 }
 
 src_test() {
-	cd ${AUTOTOOLS_BUILD_DIR}/examples
-	emake
-	"${S}"/examples/testall
-	emake clean
+	emake -C examples
+	emake -C examples/testall clean
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
 	insinto /usr/share/aclocal
 	doins ac_find_xbae.m4
 
-	 use doc && dohtml -r doc/*
-
 	if use examples; then
 		find examples -name '*akefile*' -delete || die
 		rm examples/{testall,extest} || die
-		insinto /usr/share/doc/${PF}
-		doins -r examples
+		dodoc -r examples
 	fi
+	if use doc; then
+		rm doc/{,images/}Makefile* || die
+		docinto html
+		dodoc -r doc/.
+	fi
+
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }
