@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmake-utils autotools xdg subversion
+inherit qmake-utils xdg autotools subversion
 
 DESCRIPTION="Graphical frontend to the LinuxSampler engine"
 HOMEPAGE="https://qsampler.sourceforge.io/ https://www.linuxsampler.org/"
@@ -53,3 +53,18 @@ src_configure() {
 	cd src || die
 	eqmake5 src.pro -o Makefile
 }
+
+pkg_postinst() {
+	# these are not run automagically in live ebuild for some reason so running them manually
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	# these are not run automagically in live ebuild for some reason so running them manually
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
+}
+
