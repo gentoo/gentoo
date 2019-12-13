@@ -2027,21 +2027,6 @@
     </member>
   </project>
   <project>
-    <email>ml@gentoo.org</email>
-    <name>ML Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:ML</url>
-    <description>The ML Project maintains packages related to the ML programming language family.</description>
-    <member is-lead="1">
-      <email>aballier@gentoo.org</email>
-      <name>Alexis Ballier</name>
-      <role>Ocaml</role>
-    </member>
-    <member>
-      <email>heroxbd@gentoo.org</email>
-      <name>Benda Xu</name>
-    </member>
-  </project>
-  <project>
     <email>sci-mathematics@gentoo.org</email>
     <name>Mathematics Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Mathematics</url>
