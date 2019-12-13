@@ -19,7 +19,7 @@ IUSE="cpu_flags_x86_aes doc +keyutils libressl lmdb nls openldap +pkinit selinux
 RESTRICT="!test? ( test )"
 
 # Test suite requires network access
-#RESTRICT="test"
+RESTRICT="test"
 
 DEPEND="
 	!!app-crypt/heimdal
