@@ -1,0 +1,377 @@
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -103,25 +103,10 @@
+  "bitflags",
+ ]
+ 
+-[[package]]
+-name = "audio_thread_priority"
+-version = "0.20.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "197b2d259505d11c92d266e1784f01cc935eb764d2f54e16aedf4e5085197871"
+-dependencies = [
+- "cfg-if",
+- "dbus",
+- "libc",
+- "log",
+- "mach",
+- "winapi 0.3.7",
+-]
+-
+ [[package]]
+ name = "audioipc"
+ version = "0.2.4"
+ dependencies = [
+- "audio_thread_priority",
+  "bincode",
+  "bytes 0.4.9",
+  "cc",
+@@ -148,7 +133,6 @@
+ name = "audioipc-client"
+ version = "0.4.0"
+ dependencies = [
+- "audio_thread_priority",
+  "audioipc",
+  "cubeb-backend",
+  "futures",
+@@ -161,7 +145,6 @@
+ name = "audioipc-server"
+ version = "0.2.3"
+ dependencies = [
+- "audio_thread_priority",
+  "audioipc",
+  "cubeb-core",
+  "error-chain",
+@@ -989,16 +972,6 @@
+  "syn",
+ ]
+ 
+-[[package]]
+-name = "dbus"
+-version = "0.6.4"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b9e1b39f3f6aa3d4a1522c4f0f9f1e9e9167bd93740a8690874caa7cf8ce47d7"
+-dependencies = [
+- "libc",
+- "libdbus-sys",
+-]
+-
+ [[package]]
+ name = "deflate"
+ version = "0.7.19"
+@@ -1589,7 +1562,6 @@
+ name = "gkrust-shared"
+ version = "0.1.0"
+ dependencies = [
+- "audio_thread_priority",
+  "audioipc-client",
+  "audioipc-server",
+  "authenticator",
+@@ -2024,15 +1996,6 @@
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "3262021842bf00fe07dbd6cf34ff25c99d7a7ebef8deea84db72be3ea3bb0aff"
+ 
+-[[package]]
+-name = "libdbus-sys"
+-version = "0.1.5"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "18cb88963258d00f4962205dbb5933d82780d9962c8c8a064b651d2ad7189210"
+-dependencies = [
+- "pkg-config",
+-]
+-
+ [[package]]
+ name = "libloading"
+ version = "0.5.0"
+--- a/dom/ipc/ContentChild.cpp
++++ b/dom/ipc/ContentChild.cpp
+@@ -112,9 +112,7 @@
+ #include "GMPServiceChild.h"
+ #include "nsIStringBundle.h"
+ #include "Geolocation.h"
+-#include "audio_thread_priority.h"
+ #include "nsIConsoleService.h"
+-#include "audio_thread_priority.h"
+ #include "nsIURIMutator.h"
+ #include "nsIInputStreamChannel.h"
+ 
+@@ -1820,9 +1818,6 @@
+   } else {
+     // Pre-start audio before sandboxing; see bug 1443612.
+     if (StaticPrefs::media_cubeb_sandbox()) {
+-      if (atp_set_real_time_limit(0, 48000)) {
+-        NS_WARNING("could not set real-time limit at process startup");
+-      }
+       InstallSoftRealTimeLimitHandler();
+     } else {
+       Unused << CubebUtils::GetCubebContext();
+--- a/dom/media/GraphRunner.cpp
++++ b/dom/media/GraphRunner.cpp
+@@ -13,7 +13,6 @@
+ #include "nsISupportsImpl.h"
+ #include "prthread.h"
+ #include "Tracing.h"
+-#include "audio_thread_priority.h"
+ 
+ namespace mozilla {
+ 
+@@ -95,8 +94,6 @@
+ }
+ 
+ NS_IMETHODIMP GraphRunner::Run() {
+-  atp_handle* handle =
+-      atp_promote_current_thread_to_real_time(0, mGraph->GraphRate());
+ 
+   MonitorAutoLock lock(mMonitor);
+   while (true) {
+@@ -116,9 +113,6 @@
+     mMonitor.Notify();
+   }
+ 
+-  if (handle) {
+-    atp_demote_current_thread_from_real_time(handle);
+-  }
+ 
+   dom::WorkletThread::DeleteCycleCollectedJSContext();
+ 
+--- a/dom/media/UnderrunHandlerLinux.cpp
++++ b/dom/media/UnderrunHandlerLinux.cpp
+@@ -9,7 +9,6 @@
+ 
+ #include <mozilla/Sprintf.h>
+ #include <mozilla/Atomics.h>
+-#include "audio_thread_priority.h"
+ 
+ namespace mozilla {
+ 
+@@ -57,20 +56,6 @@
+ }
+ 
+ void DemoteThreadFromRealTime() {
+-  atp_thread_info* info = atp_get_current_thread_info();
+-  if (!info) {
+-    NS_WARNING("Could not get current thread info when demoting thread.");
+-    return;
+-  }
+-  int rv = atp_demote_thread_from_real_time(info);
+-  if (rv) {
+-    NS_WARNING("Could not demote thread from real-time.");
+-    return;
+-  }
+-  rv = atp_free_thread_info(info);
+-  if (rv) {
+-    NS_WARNING("Could not free atp_thread_info struct");
+-  }
+   gRealtimeLimitReached = false;
+ }
+ 
+--- a/dom/media/moz.build
++++ b/dom/media/moz.build
+@@ -101,7 +101,6 @@
+ XPIDL_MODULE = 'dom_media'
+ 
+ EXPORTS += [
+-    '../../third_party/rust/audio_thread_priority/audio_thread_priority.h',
+     'ADTSDecoder.h',
+     'ADTSDemuxer.h',
+     'AsyncLogger.h',
+--- a/media/audioipc/audioipc/Cargo.toml
++++ b/media/audioipc/audioipc/Cargo.toml
+@@ -19,7 +19,6 @@
+ serde_derive = "1.*.*"
+ tokio = "0.1"
+ tokio-io = "0.1"
+-audio_thread_priority = "0.20.2"
+ 
+ [target.'cfg(unix)'.dependencies]
+ iovec = "0.1"
+--- a/media/audioipc/audioipc/src/messages.rs
++++ b/media/audioipc/audioipc/src/messages.rs
+@@ -5,8 +5,6 @@
+ 
+ use crate::PlatformHandle;
+ use crate::PlatformHandleType;
+-#[cfg(target_os = "linux")]
+-use audio_thread_priority::RtPriorityThreadInfo;
+ use cubeb::{self, ffi};
+ use std::ffi::{CStr, CString};
+ use std::os::raw::{c_char, c_int, c_uint};
+@@ -210,8 +208,6 @@
+     StreamGetCurrentDevice(usize),
+     StreamRegisterDeviceChangeCallback(usize, bool),
+ 
+-    #[cfg(target_os = "linux")]
+-    PromoteThreadToRealTime([u8; std::mem::size_of::<RtPriorityThreadInfo>()]),
+ }
+ 
+ // Server -> Client messages.
+@@ -241,8 +237,6 @@
+     StreamCurrentDevice(Device),
+     StreamRegisterDeviceChangeCallback,
+ 
+-    #[cfg(target_os = "linux")]
+-    ThreadPromoted,
+ 
+     Error(c_int),
+ }
+--- a/media/audioipc/client/Cargo.toml
++++ b/media/audioipc/client/Cargo.toml
+@@ -9,7 +9,6 @@
+ edition = "2018"
+ 
+ [dependencies]
+-audio_thread_priority = "0.20.2"
+ audioipc = { path="../audioipc" }
+ cubeb-backend = "0.6.0"
+ futures = { version="0.1.18", default-features=false, features=["use_std"] }
+--- a/media/audioipc/client/src/context.rs
++++ b/media/audioipc/client/src/context.rs
+@@ -6,10 +6,6 @@
+ use crate::stream;
+ use crate::{assert_not_in_callback, run_in_callback};
+ use crate::{ClientStream, AUDIOIPC_INIT_PARAMS};
+-#[cfg(target_os = "linux")]
+-use audio_thread_priority::get_current_thread_info;
+-#[cfg(not(target_os = "linux"))]
+-use audio_thread_priority::promote_current_thread_to_real_time;
+ use audioipc::codec::LengthDelimitedCodec;
+ use audioipc::frame::{framed, Framed};
+ use audioipc::platformhandle_passing::{framed_with_platformhandles, FramedWithPlatformHandles};
+@@ -77,31 +73,6 @@
+     }
+ }
+ 
+-#[cfg(target_os = "linux")]
+-fn promote_thread(rpc: &rpc::ClientProxy<ServerMessage, ClientMessage>) {
+-    match get_current_thread_info() {
+-        Ok(info) => {
+-            let bytes = info.serialize();
+-            // Don't wait for the response, this is on the callback thread, which must not block.
+-            rpc.call(ServerMessage::PromoteThreadToRealTime(bytes));
+-        }
+-        Err(_) => {
+-            warn!("Could not remotely promote thread to RT.");
+-        }
+-    }
+-}
+-
+-#[cfg(not(target_os = "linux"))]
+-fn promote_thread(_rpc: &rpc::ClientProxy<ServerMessage, ClientMessage>) {
+-    match promote_current_thread_to_real_time(0, 48000) {
+-        Ok(_) => {
+-            info!("Audio thread promoted to real-time.");
+-        }
+-        Err(_) => {
+-            warn!("Could not promote thread to real-time.");
+-        }
+-    }
+-}
+ 
+ fn register_thread(callback: Option<extern "C" fn(*const ::std::os::raw::c_char)>) {
+     if let Some(func) = callback {
+@@ -111,13 +82,6 @@
+     }
+ }
+ 
+-fn promote_and_register_thread(
+-    rpc: &rpc::ClientProxy<ServerMessage, ClientMessage>,
+-    callback: Option<extern "C" fn(*const ::std::os::raw::c_char)>,
+-) {
+-    promote_thread(rpc);
+-    register_thread(callback);
+-}
+ 
+ #[derive(Default)]
+ struct DeviceCollectionCallback {
+@@ -226,7 +190,6 @@
+         let thread_create_callback = params.thread_create_callback;
+         let cpu_pool = futures_cpupool::Builder::new()
+             .name_prefix("AudioIPC")
+-            .after_start(move || promote_and_register_thread(&rpc2, thread_create_callback))
+             .pool_size(params.pool_size)
+             .stack_size(params.stack_size)
+             .create();
+--- a/media/audioipc/server/Cargo.toml
++++ b/media/audioipc/server/Cargo.toml
+@@ -9,7 +9,6 @@
+ edition = "2018"
+ 
+ [dependencies]
+-audio_thread_priority = "0.20.2"
+ audioipc = { path = "../audioipc" }
+ cubeb-core = "0.6.0"
+ futures = "0.1.18"
+--- a/media/audioipc/server/src/lib.rs
++++ b/media/audioipc/server/src/lib.rs
+@@ -9,7 +9,6 @@
+ #[macro_use]
+ extern crate log;
+ 
+-use audio_thread_priority::promote_current_thread_to_real_time;
+ use audioipc::core;
+ use audioipc::platformhandle_passing::framed_with_platformhandles;
+ use audioipc::rpc;
+@@ -63,12 +62,6 @@
+     trace!("Starting up cubeb audio server event loop thread...");
+ 
+     let callback_thread = core::spawn_thread("AudioIPC Callback RPC", || {
+-        match promote_current_thread_to_real_time(0, 48000) {
+-            Ok(_) => {}
+-            Err(_) => {
+-                debug!("Failed to promote audio callback thread to real-time.");
+-            }
+-        }
+         trace!("Starting up cubeb audio callback event loop thread...");
+         Ok(())
+     })
+--- a/media/audioipc/server/src/server.rs
++++ b/media/audioipc/server/src/server.rs
+@@ -3,8 +3,6 @@
+ // This program is made available under an ISC-style license.  See the
+ // accompanying file LICENSE for details
+ 
+-#[cfg(target_os = "linux")]
+-use audio_thread_priority::{promote_thread_to_real_time, RtPriorityThreadInfo};
+ use audioipc;
+ use audioipc::codec::LengthDelimitedCodec;
+ use audioipc::frame::{framed, Framed};
+@@ -541,19 +539,6 @@
+                 )
+                 .unwrap_or_else(error),
+ 
+-            #[cfg(target_os = "linux")]
+-            ServerMessage::PromoteThreadToRealTime(thread_info) => {
+-                let info = RtPriorityThreadInfo::deserialize(thread_info);
+-                match promote_thread_to_real_time(info, 0, 48000) {
+-                    Ok(_) => {
+-                        info!("Promotion of content process thread to real-time OK");
+-                    }
+-                    Err(_) => {
+-                        warn!("Promotion of content process thread to real-time error");
+-                    }
+-                }
+-                ClientMessage::ThreadPromoted
+-            }
+         };
+ 
+         trace!("process_msg: req={:?}, resp={:?}", msg, resp);
+--- a/toolkit/library/rust/shared/Cargo.toml
++++ b/toolkit/library/rust/shared/Cargo.toml
+@@ -40,7 +40,6 @@
+ bookmark_sync = { path = "../../../components/places/bookmark_sync", optional = true }
+ shift_or_euc_c = "0.1.0"
+ chardetng_c = "0.1.1"
+-audio_thread_priority = "0.20.2"
+ mdns_service = { path="../../../../media/mtransport/mdns_service", optional = true }
+ neqo_glue = { path = "../../../../netwerk/socket/neqo_glue" }
+ rlbox_lucet_sandbox = { version = "0.1.0", optional = true }
+--- a/toolkit/library/rust/shared/lib.rs
++++ b/toolkit/library/rust/shared/lib.rs
+@@ -50,7 +50,6 @@
+ #[cfg(feature = "fogotype")]
+ extern crate fog;
+ 
+-extern crate audio_thread_priority;
+ 
+ #[cfg(feature = "webrtc")]
+ extern crate mdns_service;
