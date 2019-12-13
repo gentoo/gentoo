@@ -34,6 +34,7 @@ RDEPEND="
 	cpu_flags_x86_ssse3? ( dev-libs/hyperscan )
 	jemalloc? ( dev-libs/jemalloc )
 	jit? ( dev-lang/luajit:2 )
+	!jit? ( dev-lang/lua:* )
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:0= )
 	pcre2? ( dev-libs/libpcre2[jit=] )
