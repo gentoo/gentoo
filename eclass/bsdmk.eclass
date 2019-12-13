@@ -1,6 +1,9 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
+# All consumers are gone.  Removal in 14 days
+
 # @ECLASS: bsdmk.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
