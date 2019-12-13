@@ -8038,7 +8038,7 @@ dev-python/jsonxs 0.6: Get/set values in JSON and Python datastructures
 dev-python/junit-xml 1.8: Python module for creating JUnit XML test result documents
 dev-python/jupyter 1.0.0-r1 1.0.0-r2: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 5.1.0-r1 5.2.3 5.2.3-r1 5.2.4: Jupyter protocol implementation and client libraries
-dev-python/jupyter_console 4.0.3 4.1.1 5.0.0 5.1.0 6.0.0: A terminal-based console frontend for Jupyter kernels
+dev-python/jupyter_console 5.1.0 6.0.0: A terminal-based console frontend for Jupyter kernels
 dev-python/jupyter_core 4.4.0 4.4.0-r1: Core common functionality of Jupyter projects
 dev-python/jwcrypto 0.4.2: Implements JWK,JWS,JWE specifications using python-cryptography
 dev-python/kafka-python 1.3.3: Kafka protocol support in Python
