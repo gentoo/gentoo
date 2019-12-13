@@ -1,13 +1,13 @@
---- bits.h
-+++ bits.h	2003-10-20 22:04:30.000000000 +0000
+--- a/bits.h
++++ b/bits.h
 @@ -15,4 +15,4 @@
  int seek_sync(unsigned int sync, int N);
  unsigned int look_ahead(int N);
  
 -
 +#define strlwr(x)
---- bbainfo.cpp
-+++ bbainfo.cpp	2003-10-20 22:19:15.000000000 +0000
+--- a/bbainfo.cpp
++++ b/bbainfo.cpp
 @@ -97,8 +97,8 @@
  {
    int i, framesize, skip;
@@ -19,8 +19,8 @@
  
    if (padding_bit)
      framesize++;
---- bbinfo.cpp
-+++ bbinfo.cpp	2003-10-20 22:16:43.000000000 +0000
+--- a/bbinfo.cpp
++++ b/bbinfo.cpp
 @@ -984,7 +984,7 @@
                            bit_rate = (k & 0xF0) >> 4;
                            freq = (k & 0x0C) >> 2;
@@ -48,8 +48,8 @@
                                        frequency[freq]) * slots[3 - layer]) - 4;
                      if (padding_bit)
                        streams[PID]->audio_sync += 1;
---- Makefile
-+++ Makefile	2003-10-20 22:26:07.000000000 +0000
+--- a/Makefile
++++ b/Makefile
 @@ -0,0 +1,25 @@
 +all: bbainfo bbdmux bbinfo bbvinfo
 +
