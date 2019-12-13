@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: acct-user.eclass
@@ -312,7 +312,7 @@ acct-user_pkg_pretend() {
 # @FUNCTION: acct-user_src_install
 # @DESCRIPTION:
 # Installs a keep-file into the user's home directory to ensure it is
-# owned by the package.
+# owned by the package, and sysusers.d file.
 acct-user_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -321,6 +321,20 @@ acct-user_src_install() {
 		# created yet
 		keepdir "${ACCT_USER_HOME}"
 	fi
+
+	insinto /usr/lib/sysusers.d
+	newins - ${CATEGORY}-${ACCT_USER_NAME}.conf < <(
+		printf "u\t%q\t%q\t%q\t%q\t%q\n" \
+			"${ACCT_USER_NAME}" \
+			"${ACCT_USER_ID/#-*/-}:${ACCT_USER_GROUPS[0]}" \
+			"${DESCRIPTION//[:,=]/;}" \
+			"${ACCT_USER_HOME}" \
+			"${ACCT_USER_SHELL/#-*/-}"
+		if [[ ${#ACCT_USER_GROUPS[@]} -gt 1 ]]; then
+			printf "m\t${ACCT_USER_NAME}\t%q\n" \
+				"${ACCT_USER_GROUPS[@]:1}"
+		fi
+	)
 }
 
 # @FUNCTION: acct-user_pkg_preinst
