@@ -3,18 +3,20 @@
 
 EAPI=7
 
-inherit cmake-utils git-r3
+inherit cmake-utils git-r3 llvm
 
 DESCRIPTION="Clang-based FFI wrapper generator for Common Lisp"
 HOMEPAGE="https://github.com/rpav/c2ffi"
 EGIT_REPO_URI="https://github.com/rpav/c2ffi.git"
-EGIT_BRANCH="llvm-8.0.0"
+EGIT_BRANCH="llvm-9.0.0"
 
 LICENSE="LGPL-2.1"
-SLOT="8"
+SLOT="0"
 IUSE=""
 
-DEPEND="sys-devel/clang:8
-	sys-devel/llvm:8
+DEPEND="sys-devel/clang:9=
+	sys-devel/llvm:9=
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-9.0.0.20191017-fix-lib-location.patch )

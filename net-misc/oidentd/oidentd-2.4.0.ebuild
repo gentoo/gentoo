@@ -3,28 +3,24 @@
 
 EAPI=7
 
-inherit systemd user
+inherit systemd
 
 DESCRIPTION="Another (RFC1413 compliant) ident daemon"
 HOMEPAGE="https://oidentd.janikrabe.com/"
 SRC_URI="https://files.janikrabe.com/pub/${PN}/releases/${PV}/${P}.tar.xz"
 
-LICENSE="GPL-2"
+LICENSE="BSD-2 GPL-2 LGPL-2+ MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="debug ipv6 masquerade selinux"
 
-DEPEND="masquerade? (
-		net-libs/libnetfilter_conntrack
-		sys-libs/libcap-ng )"
+DEPEND="masquerade? ( net-libs/libnetfilter_conntrack )"
 
-RDEPEND="${DEPEND}
-	selinux? ( sec-policy/selinux-oident )"
-
-pkg_setup() {
-	enewgroup oidentd
-	enewuser oidentd -1 -1 -1 oidentd
-}
+RDEPEND="
+	acct-user/oidentd
+	acct-group/oidentd
+	selinux? ( sec-policy/selinux-oident )
+	${DEPEND}"
 
 src_prepare() {
 	sed -i '/ExecStart/ s|$| -u oidentd -g oidentd|' contrib/systemd/*.service || die
@@ -37,8 +33,8 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable ipv6)
 		$(use_enable masquerade libnfct)
-		$(use_enable masquerade masq)
 		$(use_enable masquerade nat)
+		--enable-xdgbdir
 	)
 	econf "${myconf[@]}"
 }

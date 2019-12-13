@@ -18,7 +18,7 @@ else
 	S="${WORKDIR}/${ROS_PN}-${PV}/${PN}"
 fi
 
-DESCRIPTION="Override the exported package version in the ament buildsystem"
+DESCRIPTION="The ability to add gtest-based tests in the ament buildsystem"
 HOMEPAGE="https://github.com/ament/ament_cmake"
 
 LICENSE="Apache-2.0"
