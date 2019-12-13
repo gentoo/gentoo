@@ -7,6 +7,10 @@ IUSE="gtk doc static debug threads +ocamlopt test"
 
 DESCRIPTION="Two-way cross-platform file synchronizer"
 HOMEPAGE="https://www.seas.upenn.edu/~bcpierce/unison/"
+SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}.tar.gz
+	doc? ( https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
+		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html )"
+
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
@@ -15,7 +19,7 @@ KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~spar
 # "Skipping some tests -- remove me!". Given the potentially destructive nature
 # of those tests, let's not try to run them (they're re-enabled in subsequent
 # releases).
-RESTRICT="test"
+RESTRICT="test !ocamlopt? ( strip )"
 
 # ocaml version so we are sure it has ocamlopt use flag
 DEPEND="dev-lang/ocaml[ocamlopt?]
@@ -25,10 +29,6 @@ RDEPEND="gtk? ( dev-ml/lablgtk
 	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
 	>=app-eselect/eselect-unison-0.4"
 
-RESTRICT+=" !ocamlopt? ( strip )"
-SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}.tar.gz
-	doc? ( https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
-		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html )"
 S="${WORKDIR}"/src
 PATCHES=( "${FILESDIR}"/${PN}-2.48.4-Makefile-dep.patch )
 
