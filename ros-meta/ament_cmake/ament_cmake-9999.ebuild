@@ -44,7 +44,11 @@ DEPEND="
 	dev-ros/ament_cmake_test[${PYTHON_USEDEP}]
 	dev-ros/ament_cmake_version[${PYTHON_USEDEP}]
 	${PYTHON_DEPS}
+
+	dev-python/ament_package[${PYTHON_USEDEP}]
+	dev-python/catkin_pkg[${PYTHON_USEDEP}]
 "
+# Last batch of deps above are transitive (from ament_cmake_core) but we need this to propagate proper deps
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
