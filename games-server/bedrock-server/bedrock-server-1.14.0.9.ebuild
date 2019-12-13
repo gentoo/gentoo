@@ -9,12 +9,12 @@ SRC_URI="https://minecraft.azureedge.net/bin-linux/${P}.zip"
 
 LICENSE="Mojang"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 
 RDEPEND="
 	acct-group/bedrock
 	acct-user/bedrock
-	app-misc/screen
+	app-misc/dtach
 	dev-libs/openssl:0/1.1
 	net-misc/curl[ssl]
 "
@@ -46,7 +46,7 @@ src_install() {
 	dodir /opt/bin
 	dosym ../bedrock-server/bedrock_server /opt/bin/bedrock-server
 
-	newinitd "${FILESDIR}"/bedrock-server.initd bedrock-server
+	newinitd "${FILESDIR}"/bedrock-server.initd-r1 bedrock-server
 
 	einstalldocs
 }

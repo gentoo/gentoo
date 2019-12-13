@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~arm"
 IUSE="igbinary +json +session"
 
 DEPEND="
-	igbinary? ( dev-php/igbinary[php_targets_php7-1?,php_targets_php7-2?,php_targets_php7-3?,php_targets_php7-4?] )
+	igbinary? ( >=dev-php/igbinary-3.0.1-r1[php_targets_php7-1?,php_targets_php7-2?,php_targets_php7-3?,php_targets_php7-4?] )
 "
 RDEPEND="${DEPEND} !dev-php/pecl-redis:7"
 

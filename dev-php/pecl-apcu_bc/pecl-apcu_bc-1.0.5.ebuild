@@ -21,7 +21,7 @@ LICENSE="PHP-3.01"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-php/pecl-apcu:7[php_targets_php7-1?,php_targets_php7-2?,php_targets_php7-3?,php_targets_php7-4?]"
+DEPEND=">=dev-php/pecl-apcu-5.1.18:7[php_targets_php7-1?,php_targets_php7-2?,php_targets_php7-3?,php_targets_php7-4?]"
 RDEPEND="${DEPEND}"
 
 src_test() {
