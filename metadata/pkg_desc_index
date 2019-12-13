@@ -14858,7 +14858,7 @@ net-libs/courier-unicode 1.3 1.4 2.1: Unicode library used by the courier mail s
 net-libs/cppzmq 0_pre130717-r1 0_pre150606: High-level CPP Binding for ZeroMQ
 net-libs/cvm 0.96-r1 0.97: Credential Validation Modules by Bruce Guenter
 net-libs/czmq 2.2.0-r2 3.0.2: High-level C Binding for ZeroMQ
-net-libs/daq 0.6.2 0.6.2-r1 2.0.0 2.0.2 2.0.6-r1: Data Acquisition library, for packet I/O
+net-libs/daq 2.0.6-r1: Data Acquisition library, for packet I/O
 net-libs/davix 0.6.7 0.7.3 0.7.4 0.7.5: High-performance file management over WebDAV/HTTP
 net-libs/dleyna-connector-dbus 0.2.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-core 0.5.0: utility library for higher level dLeyna libraries
