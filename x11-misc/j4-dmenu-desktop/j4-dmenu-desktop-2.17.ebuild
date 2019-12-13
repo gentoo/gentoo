@@ -8,7 +8,7 @@ inherit cmake-utils
 MY_PV="r${PV}"
 
 DESCRIPTION="A fast desktop replacement for i3-dmenu-desktop"
-HOMEPAGE="https://github.com/enkore/${PN}"
+HOMEPAGE="https://github.com/enkore/j4-dmenu-desktop"
 SRC_URI="https://github.com/enkore/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
