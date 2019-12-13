@@ -13831,7 +13831,7 @@ media-sound/freebirth 0.3.2-r1: Free software bass synthesizer step sequencer
 media-sound/frescobaldi 3.0.0: A LilyPond sheet music text editor
 media-sound/galan 0.3.0_beta7: gAlan - Graphical Audio Language
 media-sound/gbsplay 0.0.91-r2: Nintendo Gameboy sound player for GBS format
-media-sound/gigedit 1.1.1-r1: An instrument editor for gig files
+media-sound/gigedit 1.1.1-r1 9999: An instrument editor for gig files
 media-sound/gimmix 0.5.7.2-r1: a graphical music player daemon (MPD) client using GTK+2
 media-sound/glmix 0.3: 3D widget for mixing up to eight JACK audio streams down to stereo
 media-sound/glurp 0.12.3: Glurp is a GTK2 based graphical client for the Music Player Daemon
@@ -13889,7 +13889,7 @@ media-sound/lash 0.5.4-r3: LASH Audio Session Handler
 media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
 media-sound/lilypond 2.18.2-r3 2.19.83 9999: GNU Music Typesetter
 media-sound/lingot 1.0.1: Accurate, easy to use, and highly configurable musical instrument tuner
-media-sound/linuxsampler 2.1.1: Software audio sampler engine with professional grade features
+media-sound/linuxsampler 2.1.1 9999: Software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
 media-sound/lltag 0.14.4-r1 0.14.5: Automatic command-line mp3/ogg/flac file tagger and renamer
 media-sound/lmms 1.2.0 1.2.1 9999: Cross-platform music production software
@@ -14996,7 +14996,7 @@ net-libs/nghttp2 1.39.2 1.40.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
 net-libs/nodejs 8.12.0 8.16.2 10.17.0 12.13.0 12.13.1 13.0.1 13.1.0 13.2.0 13.3.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
-net-libs/ntirpc 1.7.1 1.7.4: Transport Independent RPC library for nfs-ganesha
+net-libs/ntirpc 1.7.1 1.7.4 3.0: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
 net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Service (JMS)
