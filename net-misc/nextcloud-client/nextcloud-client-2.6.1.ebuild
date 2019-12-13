@@ -51,6 +51,8 @@ DEPEND="${COMMON_DEPEND}
 
 RESTRICT="!test? ( test )"
 
+PATCHES=( "${FILESDIR}"/${P}-include_tests.patch )
+
 S=${WORKDIR}/desktop-${PV/_/-}
 
 src_prepare() {
