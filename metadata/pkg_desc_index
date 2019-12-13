@@ -1223,7 +1223,7 @@ app-editors/qxmledit 0.9.12: Simple Qt-based XML editor
 app-editors/retext 7.0.4-r1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 4.1.3 4.2.0 4.2.1: A very powerful, highly configurable, small editor with syntax coloring
-app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
+app-editors/shed 1.12 1.15: Simple Hex EDitor
 app-editors/sublime-text 3_p3211-r1: Sophisticated text editor for code, markup and prose
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
 app-editors/teco 36_p19940820: Classic TECO editor, Predecessor to EMACS
@@ -8001,7 +8001,7 @@ dev-python/jaraco-functools 1.19-r1 1.20-r1 2.0 2.0-r1: Additional functions use
 dev-python/jaraco-itertools 2.3-r1 3.0.0-r1 4.4.2: Tools for working with iterables. Complements itertools and more_itertools
 dev-python/jaraco-logging 1.5 1.5.2-r1 2.0: Additional facilities to supplement Python's stdlib logging module
 dev-python/jaraco-packaging 4.1 5.1-r1 6.1 6.2 6.2-r1: Tools to supplement packaging Python releases
-dev-python/jaraco-stream 1.1.1 1.2-r1 2.0-r1: Routines for handling streaming data
+dev-python/jaraco-stream 1.2-r1 2.0-r1 3.0.0: Routines for handling streaming data
 dev-python/jaraco-text 1.10.1-r1 3.1 3.2.0: Text utilities used by other projects by developer jaraco
 dev-python/jaxml 3.02-r1: XML generator written in Python
 dev-python/jdcal 1.0 1.2 1.4: Julian dates from proleptic Gregorian and Julian calendars
