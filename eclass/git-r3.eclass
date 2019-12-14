@@ -227,19 +227,19 @@ _git-r3_env_setup() {
 			;;
 		single)
 			if [[ ${EGIT_CLONE_TYPE} == shallow ]]; then
-				einfo "git-r3: ebuild needs to be cloned in '\e[1msingle\e[22m' mode, adjusting"
+				einfo "git-r3: ebuild needs to be cloned in 'single' mode, adjusting"
 				EGIT_CLONE_TYPE=single
 			fi
 			;;
 		single+tags)
 			if [[ ${EGIT_CLONE_TYPE} == shallow || ${EGIT_CLONE_TYPE} == single ]]; then
-				einfo "git-r3: ebuild needs to be cloned in '\e[1msingle+tags\e[22m' mode, adjusting"
+				einfo "git-r3: ebuild needs to be cloned in 'single+tags' mode, adjusting"
 				EGIT_CLONE_TYPE=single+tags
 			fi
 			;;
 		mirror)
 			if [[ ${EGIT_CLONE_TYPE} != mirror ]]; then
-				einfo "git-r3: ebuild needs to be cloned in '\e[1mmirror\e[22m' mode, adjusting"
+				einfo "git-r3: ebuild needs to be cloned in 'mirror' mode, adjusting"
 				EGIT_CLONE_TYPE=mirror
 			fi
 			;;
@@ -439,7 +439,7 @@ _git-r3_set_submodules() {
 			done
 
 			if [[ ! ${res} ]]; then
-				einfo "Skipping submodule \e[1m${subname}\e[22m"
+				einfo "Skipping submodule ${subname}"
 				continue
 			fi
 		fi
@@ -658,7 +658,7 @@ git-r3_fetch() {
 	fi
 	for r in "${repos[@]}"; do
 		if [[ ! ${EVCS_OFFLINE} ]]; then
-			einfo "Fetching \e[1m${r}\e[22m ..."
+			einfo "Fetching ${r} ..."
 
 			local fetch_command=( git fetch "${r}" )
 			local clone_type=${EGIT_CLONE_TYPE}
@@ -892,7 +892,7 @@ git-r3_checkout() {
 	local -x GIT_DIR
 	_git-r3_set_gitdir "${repos[0]}"
 
-	einfo "Checking out \e[1m${repos[0]}\e[22m to \e[1m${out_dir}\e[22m ..."
+	einfo "Checking out ${repos[0]} to ${out_dir} ..."
 
 	if ! git cat-file -e refs/git-r3/"${local_id}"/__main__; then
 		die "Logic error: no local clone of ${repos[0]}. git-r3_fetch not used?"
@@ -1042,7 +1042,7 @@ git-r3_peek_remote_ref() {
 
 	local r success
 	for r in "${repos[@]}"; do
-		einfo "Peeking \e[1m${remote_ref}\e[22m on \e[1m${r}\e[22m ..." >&2
+		einfo "Peeking ${remote_ref} on ${r} ..." >&2
 
 		local lookup_ref
 		if [[ ${remote_ref} == refs/* || ${remote_ref} == HEAD ]]
@@ -1098,9 +1098,9 @@ git-r3_pkg_needrebuild() {
 	[[ ${new_commit_id} && ${EGIT_VERSION} ]] || die "Lookup failed"
 
 	if [[ ${EGIT_VERSION} != ${new_commit_id} ]]; then
-		einfo "Update from \e[1m${EGIT_VERSION}\e[22m to \e[1m${new_commit_id}\e[22m"
+		einfo "Update from ${EGIT_VERSION} to ${new_commit_id}"
 	else
-		einfo "Local and remote at \e[1m${EGIT_VERSION}\e[22m"
+		einfo "Local and remote at ${EGIT_VERSION}"
 	fi
 
 	[[ ${EGIT_VERSION} != ${new_commit_id} ]]
