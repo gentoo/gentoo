@@ -13865,7 +13865,7 @@ media-sound/gtklick 0.6.4-r1: A simple metronome with an easy-to-use GTK interfa
 media-sound/guayadeque 0.4.5_p20170110 9999: Music management program designed for all music enthusiasts
 media-sound/guimup 0.3.2: A client for MPD with a clean, GTK interface
 media-sound/guitarix 0.38.1-r1: Virtual guitar amplifier for Linux
-media-sound/helm 0.9.0: Open source polyphonic software synthesizer with lots of modulation
+media-sound/helm 0.9.0-r1: Open source polyphonic software synthesizer with lots of modulation
 media-sound/herrie 2.2-r1: Herrie is a command line music player
 media-sound/horgand 1.14-r1: Opensource software organ
 media-sound/hydrogen 1.0.0_pre20180301-r1 9999: Advanced drum machine

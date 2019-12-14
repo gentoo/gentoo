@@ -838,6 +838,16 @@
     </member>
   </project>
   <project>
+    <email>ejabberd@gentoo.org</email>
+    <name>ejabberd Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Ejabberd</url>
+    <description>The ejabberd project maintains the ejabberd xmpp server software and its dependencies.</description>
+    <member>
+      <email>hanno@gentoo.org</email>
+      <name>Hanno Böck</name>
+    </member>
+  </project>
+  <project>
     <email>elections@gentoo.org</email>
     <name>Elections</name>
     <url>https://wiki.gentoo.org/wiki/Project:Elections</url>
