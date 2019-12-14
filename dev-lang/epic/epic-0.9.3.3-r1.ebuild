@@ -28,7 +28,10 @@ DEPEND="${RDEPEND}
 	dev-haskell/happy
 "
 # Bug #438422, upstream at https://github.com/edwinb/EpiVM/issues/5.
-PATCHES=("${FILESDIR}"/${PN}-0.9.3.3-respect-user-cflags.patch)
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.3.3-respect-user-cflags.patch
+	"${FILESDIR}"/${PN}-0.9.3.3-ghc84.patch
+)
 
 src_prepare() {
 	default
