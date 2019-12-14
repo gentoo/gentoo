@@ -1,0 +1,24 @@
+--- a/src/OptionalConfiguration.hs
++++ b/src/OptionalConfiguration.hs
+@@ -27,3 +27,3 @@ import System.FilePath ( (</>) )
+ import System.IO.Error ( catchIOError )
+-
++import qualified Data.Semigroup as S
+ 
+@@ -65,2 +65,16 @@ merge_maybes (Just _) (Just y) = Just y
+ --
++
++instance S.Semigroup OptionalConfiguration where
++  -- | Combine @cfg1@ and @cfg2@, giving precedence to @cfg2@.
++  cfg1 <> cfg2 =
++    OptionalConfiguration
++      (merge_maybes (database cfg1) (database cfg2))
++      (merge_maybes (detail cfg1) (detail cfg2))
++      (merge_maybes (detail_query cfg1) (detail_query cfg2))
++      (merge_maybes (host cfg1) (host cfg2))
++      (merge_maybes (password cfg1) (password cfg2))
++      (merge_maybes (port cfg1) (port cfg2))
++      (merge_maybes (summary_query cfg1) (summary_query cfg2))
++      (merge_maybes (username cfg1) (username cfg2))
++
+ instance Monoid OptionalConfiguration where
