@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/simplejson[$(python_gen_usedep 'python2*' python3_3 'pypy*')]
+		dev-python/simplejson[$(python_gen_usedep 'python2*' 'pypy*')]
 	)"
 
 python_test() {
