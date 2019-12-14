@@ -13060,7 +13060,7 @@ media-libs/faac 1.29.9.2: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.8.8 2.9.0: AAC audio decoding library
 media-libs/fdk-aac 2.0.0 2.0.1: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
-media-libs/fidlib 0.9.10 0.9.10-r1: Run-time filter design and execution library
+media-libs/fidlib 0.9.10-r1: Run-time filter design and execution library
 media-libs/flac 1.3.2-r1 1.3.3: free lossless audio encoder and decoder
 media-libs/flickcurl 1.26: C library for the Flickr API
 media-libs/fluidsynth-dssi 1.0.0 1.0.0-r1: DSSI Soft Synth Interface
@@ -13572,7 +13572,7 @@ media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 9999: SFTP VFS addon for Kodi
 media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 9999: Fische visualizer for Kodi
 media-plugins/kodi-visualization-goom 9999: Goom visualizer for Kodi
 media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
-media-plugins/kodi-visualization-projectm 2.1.0 2.2.0 2.3.0 2.3.1 2.3.2 2.3.3 9999: ProjectM visualizer for Kodi
+media-plugins/kodi-visualization-projectm 2.3.4 9999: ProjectM visualizer for Kodi
 media-plugins/kodi-visualization-shadertoy 1.1.5 1.1.8 1.1.9 1.1.10 1.2.1 1.2.2 1.2.3 9999: Shadertoy visualizer for Kodi
 media-plugins/kodi-visualization-spectrum 1.1.1 2.0.3 2.0.4 3.0.0 3.0.1 3.0.2 9999: Spectrum visualizer for Kodi
 media-plugins/kodi-visualization-starburst 2.0.0 2.0.1 2.0.2 9999: StarBurst visualizer for Kodi
@@ -14664,7 +14664,7 @@ net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writa
 net-dns/s6-dns 2.2.0.1 2.3.0.0 2.3.0.1 2.3.0.2 2.3.1.1: Suite of DNS client programs and libraries for Unix systems
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
-net-dns/unbound 1.9.4 1.9.5: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.9.4 1.9.5 1.9.6: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/validns 0.8: A high performance DNS/DNSSEC zone validator
 net-dns/valtz 0.7-r3: Validation tool for tinydns-data zone files
@@ -15519,7 +15519,7 @@ net-p2p/bitcoind 0.16.3 0.17.1 0.18.0: Original Bitcoin crypto-currency wallet f
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.3.18-r4 0.4.1_p20160925-r1: John Hoffman's fork of the original bittorrent
 net-p2p/classified-ads 0.11 0.12 0.13: Program for displaying classified advertisement items
-net-p2p/cpuminer-opt 3.9.6.2 3.9.7 3.9.8 3.9.8.1 3.9.9 3.9.9.1 3.9.10 3.9.11 3.10.0 3.10.2 9999: Optimized multi algo CPU miner
+net-p2p/cpuminer-opt 3.10.3 9999: Optimized multi algo CPU miner
 net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
 net-p2p/deluge 1.3.15-r2 1.3.15-r3 1.3.15-r4 1.3.9999 2.0.3-r1 9999: BitTorrent client with a client/server model
