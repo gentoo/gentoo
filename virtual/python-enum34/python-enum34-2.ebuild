@@ -14,4 +14,4 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' \
-	'python2*' python3_3 pypy)"
+	'python2*' pypy)"
