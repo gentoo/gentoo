@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/network-2.1:=[profile?] <dev-haskell/network-3.2:=[profile?] >=dev-haskell/old-locale-1.0.0.2:=[profile?] <dev-haskell/old-locale-1.1:=[profile?] >=dev-lang/ghc-7.4.1:= dev-libs/openssl >=dev-haskell/cabal-1.12 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Partial OpenSSL binding for Haskell
+EAPI=7
+HOMEPAGE=https://github.com/vshabanov/HsOpenSSL
+IUSE=fast-bignum doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=>=dev-haskell/network-2.1:=[profile?] <dev-haskell/network-3.2:=[profile?] >=dev-haskell/old-locale-1.0.0.2:=[profile?] <dev-haskell/old-locale-1.1:=[profile?] >=dev-lang/ghc-7.4.1:= dev-libs/openssl
+RESTRICT=!test? ( test )
+SLOT=0/0.11.4.17
+SRC_URI=https://hackage.haskell.org/package/HsOpenSSL-0.11.4.17/HsOpenSSL-0.11.4.17.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	fac7ea2deca456f8e70b85a6ebef9e8a	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=8e0fd40325e69c3687fb752d23f42f30

@@ -3634,48 +3634,48 @@ dev-haskell/haddock-api 2.16.1 2.17.3: A documentation-generation tool for Haske
 dev-haskell/haddock-library 1.1.1 1.2.1 1.4.2: Library exposing some functionality of Haddock
 dev-haskell/half 0.2.2.3: Half-precision floating-point
 dev-haskell/hamlet 1.1.9.2 1.2.0: Haml-like template files that are compile-time checked (deprecated)
-dev-haskell/happstack-server 7.1.7.1 7.3.9 7.4.5 7.4.6.1 7.4.6.2: Web related tools and services
-dev-haskell/happy 1.19.4 1.19.5: Happy is a parser generator for Haskell
-dev-haskell/harp 0.4.1 0.4.2: HaRP allows pattern-matching with regular expressions
-dev-haskell/hashable 1.2.1.0 1.2.4.0: A class for types that can be converted to a hash value
-dev-haskell/hashable-time 0.2: Hashable instances for Data.Time
+dev-haskell/happstack-server 7.1.7.1 7.3.9 7.4.5 7.4.6.1 7.4.6.2 7.5.3: Web related tools and services
+dev-haskell/happy 1.19.4 1.19.5 1.19.12: Happy is a parser generator for Haskell
+dev-haskell/harp 0.4.1 0.4.2 0.4.3.2: HaRP allows pattern-matching with regular expressions
+dev-haskell/hashable 1.2.1.0 1.2.4.0 1.2.7.0: A class for types that can be converted to a hash value
+dev-haskell/hashable-time 0.2 0.2.0.2: Hashable instances for Data.Time
 dev-haskell/hashed-storage 0.5.11: Hashed file storage support code
 dev-haskell/hashtables 1.1.2.1 1.2.1.0: Mutable hash tables in the ST monad
 dev-haskell/haskeline 0.7.1.2 0.7.1.3 0.7.2.1 0.7.2.3: A command-line interface for user input, written in Haskell
-dev-haskell/haskell-lexer 1.0-r1 1.0.1: A fully compliant Haskell 98 lexer
+dev-haskell/haskell-lexer 1.0-r1 1.0.1 1.0.2: A fully compliant Haskell 98 lexer
 dev-haskell/haskell-platform 2012.4.0.0 2013.2.0.0-r2 2014.2.0.0-r1: The Haskell Platform
-dev-haskell/haskell-src 1.0.1.6 1.0.2.0: Support for manipulating Haskell source code
+dev-haskell/haskell-src 1.0.1.6 1.0.2.0 1.0.3.0: Support for manipulating Haskell source code
 dev-haskell/haskell-src-exts 1.13.5 1.14.0 1.15.0.1 1.16.0.1 1.17.1: Manipulating Haskell source: abstract syntax, lexer, parser, and pretty-printer
 dev-haskell/haskell-src-meta 0.6.0.8-r1 0.6.0.10 0.6.0.14-r1: Parse source to template-haskell abstract syntax
 dev-haskell/hastache 0.5.1 0.6.1: Haskell implementation of Mustache templates
 dev-haskell/haxml 1.24 1.24.1 1.25.3: Utilities for manipulating XML documents
 dev-haskell/hcg-minus 0.15: haskell cg (minus)
-dev-haskell/hcodecs 0.5: A library to read, write and manipulate MIDI, WAVE, and SoundFont2 files
-dev-haskell/hdbc 2.3.1.2 2.4.0.1: Haskell Database Connectivity
+dev-haskell/hcodecs 0.5 0.5.1: A library to read, write and manipulate MIDI, WAVE, and SoundFont2 files
+dev-haskell/hdbc 2.3.1.2 2.4.0.1 2.4.0.3: Haskell Database Connectivity
 dev-haskell/hdbc-mysql 0.6.6.1-r4 0.7.1.0-r1: MySQL driver for HDBC
 dev-haskell/hdbc-odbc 2.3.1.1 2.4.0.1: ODBC driver for HDBC
-dev-haskell/hdbc-postgresql 2.3.2.3 2.3.2.4-r1: PostgreSQL driver for HDBC
+dev-haskell/hdbc-postgresql 2.3.2.3 2.3.2.4-r1 2.3.2.7: PostgreSQL driver for HDBC
 dev-haskell/hdbc-sqlite3 2.3.3.1-r1: Sqlite v3 driver for HDBC
 dev-haskell/hex 0.1.2: Convert strings into hexadecimal and back
 dev-haskell/hexpat 0.20.9 0.20.10 0.20.11 0.20.13: XML parser/formatter based on expat
 dev-haskell/hgettext 0.1.30: Bindings to libintl.h (gettext, bindtextdomain)
-dev-haskell/highlighting-kate 0.5.5 0.5.14 0.6 0.6.1 0.6.2 0.6.3: Syntax highlighting
+dev-haskell/highlighting-kate 0.5.5 0.5.14 0.6 0.6.1 0.6.2 0.6.3 0.6.4: Syntax highlighting
 dev-haskell/hinotify 0.3.8.1: Haskell binding to inotify
 dev-haskell/hit 0.6.3: Git operations in haskell
-dev-haskell/hjsmin 0.1.5.1 0.2.0.2: Haskell implementation of a javascript minifier
+dev-haskell/hjsmin 0.1.5.1 0.2.0.2 0.2.0.4: Haskell implementation of a javascript minifier
 dev-haskell/hlint 1.8.57 1.9.21 1.9.35: Source code suggestions
 dev-haskell/hoauth2 0.4.8 0.5.7: Haskell OAuth2 authentication client
 dev-haskell/hostname 1.0: A a cross-platform means of determining the hostname
-dev-haskell/hourglass 0.2.9: simple performant time related library
+dev-haskell/hourglass 0.2.9 0.2.12: simple performant time related library
 dev-haskell/hpack 0.14.1: An alternative format for Haskell packages
 dev-haskell/hps 0.15: Haskell Postscript
 dev-haskell/hs-bibutils 5.5: Haskell bindings to bibutils, the bibliography conversion utilities
 dev-haskell/hs3 0.5.9: Interface to Amazon's Simple Storage Service (S3)
 dev-haskell/hsb2hs 0.2 0.3.1: Preprocesses a file, adding blobs from files as string literals
-dev-haskell/hscolour 1.20.3-r1 1.22 1.23-r1 1.24: Colourise Haskell code
+dev-haskell/hscolour 1.20.3-r1 1.22 1.23-r1 1.24 1.24.4: Colourise Haskell code
 dev-haskell/hslogger 1.2.9 1.2.10: Versatile logging framework
 dev-haskell/hslua 0.3.6.1 0.3.13: A Lua language interpreter embedding in Haskell
-dev-haskell/hsopenssl 0.10.4 0.11.1.1-r1 0.11.4: Partial OpenSSL binding for Haskell
+dev-haskell/hsopenssl 0.10.4 0.11.1.1-r1 0.11.4 0.11.4.17: Partial OpenSSL binding for Haskell
 dev-haskell/hspec 1.5.4 1.7.2.1 1.8.1.1 1.8.3 1.10.0 2.1.2 2.1.4 2.2.1 2.2.4: A Testing Framework for Haskell
 dev-haskell/hspec-core 2.1.2 2.1.4 2.2.1 2.2.4: A Testing Framework for Haskell
 dev-haskell/hspec-discover 2.1.2 2.1.4 2.2.1 2.2.4: Automatically discover and run Hspec tests
@@ -3686,11 +3686,11 @@ dev-haskell/hsql 1.8.2-r1: Database access from Haskell
 dev-haskell/hsql-mysql 1.8.2-r1 1.8.3: MySQL driver for HSQL
 dev-haskell/hsql-odbc 1.8.2: A Haskell Interface to ODBC
 dev-haskell/hsql-sqlite3 1.8.2-r1: SQLite3 driver for HSQL
-dev-haskell/hstringtemplate 0.7.3 0.8.3 0.8.5: StringTemplate implementation in Haskell
-dev-haskell/htf 0.13.1.0: The Haskell Test Framework
+dev-haskell/hstringtemplate 0.7.3 0.8.3 0.8.5 0.8.7: StringTemplate implementation in Haskell
+dev-haskell/htf 0.13.1.0 0.13.2.5: The Haskell Test Framework
 dev-haskell/html 1.0.1.2-r1: HTML combinator library
 dev-haskell/html-conduit 1.1.1.1 1.2.1 1.2.1.1: Parse HTML documents using xml-conduit datatypes
-dev-haskell/http 4000.2.8 4000.2.17 4000.2.20 4000.2.22 4000.3.5: A library for client-side HTTP
+dev-haskell/http 4000.2.8 4000.2.17 4000.2.20 4000.2.22 4000.3.5 4000.3.14: A library for client-side HTTP
 dev-haskell/http-api-data 0.3.3: Converting to/from HTTP API data like URL pieces, headers and query parameters
 dev-haskell/http-attoparsec 0.1.1-r2 0.1.1-r3: Attoparsec parsers for http-types
 dev-haskell/http-client 0.4.18.1 0.4.30 0.5.5 0.5.7.0: An HTTP client engine
@@ -3699,30 +3699,30 @@ dev-haskell/http-client-multipart 0.2.0.0 0.3.0.0: Generate multipart uploads fo
 dev-haskell/http-client-tls 0.2.2 0.2.4 0.3.3: http-client backend using the connection package and tls library
 dev-haskell/http-common 0.8.2.0: Common types for HTTP clients and servers
 dev-haskell/http-conduit 2.1.7.2 2.1.8 2.1.10.1 2.2.3: HTTP client package with conduit interface and HTTPS support
-dev-haskell/http-date 0.0.6.1: HTTP Date parser/formatter
+dev-haskell/http-date 0.0.6.1 0.0.8: HTTP Date parser/formatter
 dev-haskell/http-reverse-proxy 0.1.1.6 0.2.0 0.4.3 0.4.3.2: Reverse proxy HTTP requests, either over raw sockets or with WAI
 dev-haskell/http-streams 0.8.4.0: An HTTP client using io-streams
 dev-haskell/http-types 0.8.6 0.9.1: Generic HTTP types for Haskell (for both client and server code)
 dev-haskell/http2 1.3.1 1.6.2: HTTP/2.0 library including frames and HPACK
 dev-haskell/httpd-shed 0.4-r1 0.4.0.3: A simple web-server with an interact style API
 dev-haskell/hunit 1.2.5.2 1.2.5.2-r1: A unit testing framework for Haskell
-dev-haskell/hxt 9.3.1.15 9.3.1.16: A collection of tools for processing XML with Haskell
+dev-haskell/hxt 9.3.1.15 9.3.1.16 9.3.1.18: A collection of tools for processing XML with Haskell
 dev-haskell/hxt-charproperties 9.1.1.1 9.2.0.1: Character properties and classes for XML and Unicode
 dev-haskell/hxt-regex-xmlschema 9.1.0 9.2.0.2 9.2.0.3: A regular expression library for W3C XML Schema regular expressions
 dev-haskell/hxt-unicode 9.0.2.1 9.0.2.4: Unicode en-/decoding functions for utf8, iso-latin-* and other encodings
-dev-haskell/icalendar 0.4.0.3: iCalendar data types, parser, and printer
+dev-haskell/icalendar 0.4.0.3 0.4.0.5: iCalendar data types, parser, and printer
 dev-haskell/iconv 0.4.1.3: String encoding conversion
 dev-haskell/idiii 0.1.3.3: ID3v2 (tagging standard for MP3 files) library
 dev-haskell/idna 0.2 0.3.0: Implements IDNA (RFC 3490)
 dev-haskell/ieee754 0.7.8: Utilities for dealing with IEEE floating point numbers
-dev-haskell/ifelse 0.85: Anaphoric and miscellaneous useful control-flow
+dev-haskell/ifelse 0.85 0.85-r1: Anaphoric and miscellaneous useful control-flow
 dev-haskell/interpolate 0.1.0: String interpolation done right
 dev-haskell/io-streams 1.3.6.0: Simple, composable, and easy-to-use stream I/O
 dev-haskell/io-streams-haproxy 1.0.0.1: HAProxy protocol 1.5 support for io-streams
 dev-haskell/iproute 1.2.12 1.3.1 1.4.0 1.5.0: IP Routing Table
 dev-haskell/js-flot 0.8.3: Obtain minified flot code
-dev-haskell/js-jquery 3.1.1 3.2.1: Obtain minified jQuery code
-dev-haskell/json 0.9.1: Support for serialising Haskell to and from JSON
+dev-haskell/js-jquery 3.1.1 3.2.1 3.3.1: Obtain minified jQuery code
+dev-haskell/json 0.9.1 0.9.3: Support for serialising Haskell to and from JSON
 dev-haskell/juicypixels 3.2.5.3 3.2.7 3.2.8: Picture loading/serialization (in png, jpeg, bitmap, gif, tga, tiff and others)
 dev-haskell/kan-extensions 4.2.3 5.0.1: Kan extensions, lifts, forms of the Yoneda lemma, and (co)density (co)monads
 dev-haskell/keys 3.10.2 3.11: Keyed functors and containers
@@ -3730,10 +3730,10 @@ dev-haskell/language-bash 0.6.1: Parsing and pretty-printing Bash shell scripts
 dev-haskell/language-c 0.4.2 0.4.7 0.7.1: Analysis and generation of C code
 dev-haskell/language-css 0.0.3: CSS 2.1 syntax
 dev-haskell/language-dot 0.1.0: A library for the analysis and creation of Graphviz DOT files
-dev-haskell/language-ecmascript 0.17.1.0-r1: JavaScript parser and pretty-printer library
+dev-haskell/language-ecmascript 0.17.1.0-r1 0.17.1.0-r2: JavaScript parser and pretty-printer library
 dev-haskell/language-glsl 0.2.0: GLSL abstract syntax tree, parser, and pretty-printer
 dev-haskell/language-haskell-extract 0.2.4: Module to automatically extract functions from the local code
-dev-haskell/language-javascript 0.5.14.2 0.6.0.9: Parser for JavaScript
+dev-haskell/language-javascript 0.5.14.2 0.6.0.9 0.6.0.14: Parser for JavaScript
 dev-haskell/language-lua 0.10.0: Lua parser and pretty-printer
 dev-haskell/language-python 0.5.4: Parsing and pretty printing of Python code
 dev-haskell/lazysmallcheck 0.6: A library for demand-driven testing of Haskell programs
@@ -3748,13 +3748,13 @@ dev-haskell/libmpd 0.8.0.4-r1 0.9.0.2 0.9.0.4 0.9.0.6: An MPD client library
 dev-haskell/libxml 0.1.1: Binding to libxml2
 dev-haskell/libxml-sax 0.7.5: Bindings for the libXML2 SAX interface
 dev-haskell/lifted-async 0.2.0.2-r1 0.6.0.1 0.7.0.2 0.8.0.1-r1 0.9.1.1-r1: Run lifted IO operations asynchronously and wait for their results
-dev-haskell/lifted-base 0.2.3.6-r2 0.2.3.10: lifted IO operations from the base library
+dev-haskell/lifted-base 0.2.3.6-r2 0.2.3.10 0.2.3.12: lifted IO operations from the base library
 dev-haskell/linear 1.20.5 1.20.6: Linear Algebra
 dev-haskell/list 0.5.2: List monad transformer and class
 dev-haskell/listlike 4.2.1 4.5.1: Generic support for list-like structures
 dev-haskell/logging-facade 0.0.0: Simple logging abstraction that allows multiple backends
-dev-haskell/logict 0.6.0.2: A backtracking logic-programming monad
-dev-haskell/logict-state 0.1.0.2: Library for logic programming based on haskell package logict
+dev-haskell/logict 0.6.0.2 0.7.0.2: A backtracking logic-programming monad
+dev-haskell/logict-state 0.1.0.2 0.1.0.5: Library for logic programming based on haskell package logict
 dev-haskell/lvmlib 1.1: The Lazy Virtual Machine (LVM)
 dev-haskell/maccatcher 2.1.5-r1: Obtain the host MAC address on *NIX and Windows
 dev-haskell/magic 1.1: Interface to C file/magic library
@@ -10408,7 +10408,7 @@ dev-tcltk/tix 8.4.3-r1: A widget library for Tcl/Tk
 dev-tcltk/tkXwin 1.0-r4: Tcl/Tk library to detect idle periods of an X session
 dev-tcltk/tkcon 2.5-r1: Tk GUI console
 dev-tcltk/tkdnd 2.8: Extension that adds native drag & drop capabilities to the tk toolkit
-dev-tcltk/tkimg 1.4-r9 1.4.7: Adds a lot of image formats to Tcl/Tk
+dev-tcltk/tkimg 1.4-r9 1.4.7 1.4.9: Adds a lot of image formats to Tcl/Tk
 dev-tcltk/tklib 0.6-r1 0.6-r2: Collection of utility modules for Tk, and a companion to Tcllib
 dev-tcltk/tkpiechart 6.5-r2: create and update 2D or 3D pie charts in a Tcl/Tk application
 dev-tcltk/tkpng 0.9: Implements support for loading and using PNG images with Tcl/Tk
