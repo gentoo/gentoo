@@ -5,7 +5,7 @@ EAPI=7
 
 inherit meson
 
-MY_COMMIT="ddf0f149aaee7625f8cde1ae15f0605e57274445"
+MY_COMMIT="87f485e2247925ceaead99c4bca997e4c44e3a20"
 
 DESCRIPTION="A platform independent standalone library that plays Lottie Animations"
 HOMEPAGE="https://www.tizen.org/ https://github.com/Samsung/rlottie"
