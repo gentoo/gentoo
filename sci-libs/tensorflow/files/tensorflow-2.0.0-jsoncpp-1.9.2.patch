@@ -1,0 +1,26 @@
+diff --git a/third_party/systemlibs/jsoncpp.BUILD b/third_party/systemlibs/jsoncpp.BUILD
+index 7d54f92..ce14265 100644
+--- a/third_party/systemlibs/jsoncpp.BUILD
++++ b/third_party/systemlibs/jsoncpp.BUILD
+@@ -10,7 +10,7 @@ HEADERS = [
+     "include/json/assertions.h",
+     "include/json/autolink.h",
+     "include/json/config.h",
+-    "include/json/features.h",
++    "include/json/json_features.h",
+     "include/json/forwards.h",
+     "include/json/json.h",
+     "include/json/reader.h",
+diff --git a/third_party/jsoncpp.BUILD b/third_party/jsoncpp.BUILD
+index cf3cba0..99f7b3a 100644
+--- a/third_party/jsoncpp.BUILD
++++ b/third_party/jsoncpp.BUILD
+@@ -14,7 +14,7 @@ cc_library(
+     hdrs = [
+         "include/json/autolink.h",
+         "include/json/config.h",
+-        "include/json/features.h",
++        "include/json/json_features.h",
+         "include/json/forwards.h",
+         "include/json/json.h",
+         "include/json/reader.h",
