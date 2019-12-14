@@ -13367,7 +13367,7 @@ media-libs/sge 030809: Graphics extensions library for SDL
 media-libs/shaderc 2018.0 2019.0-r1: Collection of tools, libraries and tests for shader compilation
 media-libs/simage 1.7.0-r1 1.7.1-r1: Image and video texturing library
 media-libs/skstream 0.3.9: FreeSockets - Portable C++ classes for IP (sockets) applications
-media-libs/slv2 0.6.6-r2: A library to make the use of LV2 plugins as simple as possible for applications
+media-libs/slv2 0.6.6-r2 0.6.6-r3: A library to make the use of LV2 plugins as simple as possible for applications
 media-libs/smpeg 0.4.4-r10: SDL MPEG Player Library
 media-libs/smpeg2 2.0.0-r3: SDL MPEG Player Library
 media-libs/soxr 0.1.3-r1: SoX Resampler library
