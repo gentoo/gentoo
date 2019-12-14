@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop xdg-utils
+inherit desktop xdg
 
 DESCRIPTION="Open source polyphonic software synthesizer with lots of modulation"
 HOMEPAGE="https://tytel.org/helm/"
@@ -31,11 +31,15 @@ RDEPEND="${DEPEND}
 
 DOCS=( changelog README.md )
 
-PATCHES=( "${FILESDIR}/${P}-nomancompress.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-nomancompress.patch"
+	"${FILESDIR}/${P}-fix-gcc91.patch"
+)
 
 src_prepare() {
 	default
-	sed -e "s|/usr/lib/|/usr/$(get_libdir)/|" -i Makefile || die
+	sed -e "s|/usr/lib/|/usr/$(get_libdir)/|" -i Makefile || die "Failed to fix libdir"
+	sed -e "s|^\(CHANGES.*\)/|\1-${PVR}|" -i Makefile || die "Failed to fix doc path"
 }
 
 src_compile() {
@@ -45,12 +49,4 @@ src_compile() {
 src_install() {
 	default
 	make_desktop_entry /usr/bin/helm Helm /usr/share/helm/icons/helm_icon_32_1x.png
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }
