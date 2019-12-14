@@ -35,6 +35,10 @@ RDEPEND="
 "
 DOCS=( "README.md" "NEWS" )
 
+PATCHES=(
+	"${FILESDIR}/${P}-python3.patch"
+)
+
 src_prepare() {
 	default
 	multilib_copy_sources
