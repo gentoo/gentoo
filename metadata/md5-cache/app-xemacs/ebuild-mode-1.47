@@ -1,5 +1,5 @@
-DEFINED_PHASES=compile install unpack
-DEPEND=>=app-editors/xemacs-21.4.20-r5 app-xemacs/sh-script app-editors/xemacs
+BDEPEND=>=app-editors/xemacs-21.4.20-r5 app-xemacs/sh-script
+DEFINED_PHASES=compile install
 DESCRIPTION=Emacs modes for editing ebuilds and other Gentoo specific files
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Emacs
@@ -8,5 +8,4 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/xemacs-21.4.20-r5 app-xemacs/sh-script
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/emacs/ebuild-mode-1.47.tar.xz
-_eclasses_=xemacs-elisp	ec6a89e5b3d4b998d328d445d1c7ec06	xemacs-elisp-common	5ad47e1940fe7ffbdeeb002a3912bf79
-_md5_=5e9529cca01e5d6e45db61ed9d758d3d
+_md5_=3a42381ddd76013b3bf50eca6aaaee8d

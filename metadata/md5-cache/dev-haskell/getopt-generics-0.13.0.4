@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/base-compat-0.8:=[profile?] dev-haskell/base-orphans:=[profile?] >=dev-haskell/generics-sop-0.2.3:=[profile?] <dev-haskell/generics-sop-0.6:=[profile?] dev-haskell/tagged:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.12 test? ( >=dev-haskell/hspec-2.1.8 dev-haskell/quickcheck dev-haskell/safe dev-haskell/silently ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Create command line interfaces with ease
+EAPI=7
+HOMEPAGE=https://github.com/soenkehahn/getopt-generics#readme
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/base-compat-0.8:=[profile?] dev-haskell/base-orphans:=[profile?] >=dev-haskell/generics-sop-0.2.3:=[profile?] <dev-haskell/generics-sop-0.6:=[profile?] dev-haskell/tagged:=[profile?] >=dev-lang/ghc-7.4.1:=
+RESTRICT=!test? ( test )
+SLOT=0/0.13.0.4
+SRC_URI=https://hackage.haskell.org/package/getopt-generics-0.13.0.4/getopt-generics-0.13.0.4.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	fac7ea2deca456f8e70b85a6ebef9e8a	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=58da864d98ba4cf89d2ed3675e8d1880
