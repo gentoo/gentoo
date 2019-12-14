@@ -43,6 +43,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/poppler-0.26.5[qt5]
 	>=dev-libs/chmlib-0.40:=
 	dev-libs/glib:2=
+	dev-libs/hyphen:=
 	>=dev-libs/icu-57.1:=
 	dev-libs/libinput:=
 	>=dev-python/apsw-3.25.2_p1[${PYTHON_USEDEP}]
