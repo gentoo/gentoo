@@ -3998,7 +3998,7 @@ dev-haskell/transformers-base 0.4.4: Lift computations from the bottom of a tran
 dev-haskell/transformers-compat 0.1.1.1 0.3.3.4 0.4.0.4 0.5.1.4: A small compatibility shim for dev-haskell/transformers
 dev-haskell/uhc-light 1.1.9.5: Part of UHC packaged as cabal/hackage installable library
 dev-haskell/uhc-util 0.1.6.7: UHC utilities
-dev-haskell/unbounded-delays 0.1.0.9: Unbounded thread delays and timeouts
+dev-haskell/unbounded-delays 0.1.0.9 0.1.1.0: Unbounded thread delays and timeouts
 dev-haskell/unexceptionalio 0.3.0: IO without any non-error, synchronous exceptions
 dev-haskell/unicode-transforms 0.2.1: Unicode normalization
 dev-haskell/uniplate 1.6.12: Help writing simple, concise and fast generic operations
@@ -4006,7 +4006,7 @@ dev-haskell/uniqueid 0.1.1: Splittable Unique Identifier Supply
 dev-haskell/unix-compat 0.4.1.3 0.4.1.4 0.4.2.0 0.4.3.1: Portable POSIX-compatibility layer
 dev-haskell/unix-time 0.3.5 0.3.6 0.3.7: Unix time parser/formatter and utilities
 dev-haskell/unixutils 1.54.1: A crude interface between Haskell and Unix-like operating systems
-dev-haskell/unordered-containers 0.2.3.3 0.2.6.0 0.2.7.0 0.2.7.1 0.2.7.2: Efficient hashing-based container types
+dev-haskell/unordered-containers 0.2.3.3 0.2.6.0 0.2.7.0 0.2.7.1 0.2.7.2 0.2.10.0: Efficient hashing-based container types
 dev-haskell/uri 0.1.6.4: Library for working with URIs
 dev-haskell/uri-bytestring 0.2.2.1: Haskell URI parsing as ByteStrings
 dev-haskell/url 2.1.3-r1: A library for working with URLs
@@ -4016,15 +4016,15 @@ dev-haskell/uuagc 0.9.52.1: Attribute Grammar System of Universiteit Utrecht
 dev-haskell/uuagc-cabal 1.0.6.0: Cabal plugin for the Universiteit Utrecht Attribute Grammar System
 dev-haskell/uuid 1.3.11-r2 1.3.12: For creating, comparing, parsing and printing Universally Unique Identifiers
 dev-haskell/uuid-types 1.0.3: Type definitions for Universally Unique Identifiers
-dev-haskell/uulib 0.9.16 0.9.22: Haskell Utrecht Tools Library
-dev-haskell/vault 0.3.0.3 0.3.0.5 0.3.0.6: a persistent store for values of arbitrary types
+dev-haskell/uulib 0.9.16 0.9.22 0.9.24: Haskell Utrecht Tools Library
+dev-haskell/vault 0.3.0.3 0.3.0.5 0.3.0.6 0.3.1.3: a persistent store for values of arbitrary types
 dev-haskell/vector 0.10.12.3 0.11.0.0: Efficient Arrays
 dev-haskell/vector-algorithms 0.6.0.4 0.7.0.1: Efficient algorithms for vector arrays
 dev-haskell/vector-binary-instances 0.2.1.0 0.2.3.2: Instances of Data.Binary and Data.Serialize for vector
 dev-haskell/vector-instances 3.3.1: Orphan Instances for 'Data.Vector'
 dev-haskell/vector-space 0.10.4: Vector & affine spaces, linear maps, and derivatives
-dev-haskell/vector-th-unbox 0.2.1.3 0.2.1.6: Deriver for Data.Vector.Unboxed using Template Haskell
-dev-haskell/void 0.6.1 0.7.1: A Haskell 98 logically uninhabited data type
+dev-haskell/vector-th-unbox 0.2.1.3 0.2.1.6 0.2.1.7: Deriver for Data.Vector.Unboxed using Template Haskell
+dev-haskell/void 0.6.1 0.7.1 0.7.3: A Haskell 98 logically uninhabited data type
 dev-haskell/wai 1.4.0.2 2.0.0 2.1.0 3.0.3.0 3.0.5.0 3.2.1.1: Web Application Interface
 dev-haskell/wai-app-static 1.3.2.1 2.0.0.3 3.0.1 3.1.4.1 3.1.6.1: WAI application for static serving
 dev-haskell/wai-conduit 3.0.0.2 3.0.0.3: conduit wrappers for WAI
@@ -4036,9 +4036,9 @@ dev-haskell/warp-tls 3.0.4.2 3.1.5 3.2.3: HTTP over TLS support for Warp via the
 dev-haskell/wavy 0.1.0.0: Process WAVE files in Haskell
 dev-haskell/weigh 0.0.3: Measure allocations of a Haskell functions/values
 dev-haskell/with-location 0.0.0 0.1.0: Use ImplicitParams-based source locations in a backward compatible way
-dev-haskell/wl-pprint 1.2: The Wadler/Leijen Pretty Printer
+dev-haskell/wl-pprint 1.2 1.2.1: The Wadler/Leijen Pretty Printer
 dev-haskell/wl-pprint-text 1.1.0.4 1.1.1.0: A Wadler/Leijen Pretty Printer for Text values
-dev-haskell/word8 0.1.2: Word8 library
+dev-haskell/word8 0.1.2 0.1.3: Word8 library
 dev-haskell/wx 0.92.2.0: Portable and native GUI library built on wxWidgets
 dev-haskell/wxc 0.92.2.0: wxHaskell C++ wrapper
 dev-haskell/wxcore 0.92.2.0: wxHaskell core
@@ -4054,7 +4054,7 @@ dev-haskell/xml 1.3.13 1.3.14: A simple XML library
 dev-haskell/xml-conduit 1.1.0.9 1.2.3.3 1.3.1 1.3.3 1.3.4.2: Pure-Haskell utilities for dealing with XML with the conduit package
 dev-haskell/xml-hamlet 0.4.0.11 0.4.0.12: Hamlet-style quasiquoter for XML content
 dev-haskell/xml-types 0.3.4 0.3.6: Basic types for representing XML
-dev-haskell/xmlgen 0.6.2.1: Fast XML generation library
+dev-haskell/xmlgen 0.6.2.1 0.6.2.2: Fast XML generation library
 dev-haskell/xss-sanitize 0.3.5.6 0.3.5.7 0.3.6: sanitize untrusted HTML to prevent XSS attacks
 dev-haskell/yaml 0.8.10.1 0.8.15.2 0.8.17.1 0.8.20 0.8.21.2: Support for parsing and rendering YAML documents
 dev-haskell/yesod 1.4.3 1.4.4: Creation of type-safe, RESTful web applications
