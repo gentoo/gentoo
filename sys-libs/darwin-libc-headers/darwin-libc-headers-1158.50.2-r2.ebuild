@@ -3,16 +3,16 @@
 
 EAPI=7
 
-IPV=517.200.9
-CPV=60118.220.1
-MPV=166.220.1
-PPV=330.230.1
-LPV=177.200.16
-UPV=35.4
-OPV=73
-DPV=655.1
-OSX=10.14
-DESCRIPTION="Darwin system headers from Libc ${PV}, macOS ${OSX}.3"
+IPV=503.50.4
+CPV=60092.50.5
+MPV=116.50.8
+PPV=218.60.3
+LPV=126.50.8
+UPV=35.3
+OPV=67
+DPV=433.5
+OSX=10.12
+DESCRIPTION="Darwin system headers from Libc ${PV}, macOS ${OSX}.6"
 HOMEPAGE="https://opensource.apple.com/source/Libc"
 SRC_URI="https://opensource.apple.com/tarballs/Libc/Libc-${PV}.tar.gz
 	https://opensource.apple.com/tarballs/Libinfo/Libinfo-${IPV}.tar.gz
@@ -41,6 +41,7 @@ src_prepare() {
 	sed -i \
 		-e 's/find -E ${SRCROOT}/find ${SRCROOT} -regextype posix-extended/' \
 		xcodescripts/manpages.sh || die
+	chmod 755 xcodescripts/manpages.sh || die
 
 	# drop ownership stuff and use soft-links
 	sed -i \
@@ -127,5 +128,5 @@ src_install() {
 	use man || rm -Rf "${ED}/usr/share/man"
 
 	# drop empty or conflicting headers (db is antiquated)
-	rm "${ED}"/usr/include/{db,util,utmpx}.h || die
+	rm "${ED}"/usr/include/{db,util}.h || die
 }
