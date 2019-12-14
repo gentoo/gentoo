@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 2002-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp-common.eclass
@@ -10,6 +10,7 @@
 # Mamoru Komachi <usata@gentoo.org>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: Emacs-related installation utilities
 # @DESCRIPTION:
 #
@@ -156,6 +157,11 @@
 # environment, so it is no problem when you unset USE=emacs between
 # merge and unmerge of a package.
 
+case ${EAPI:-0} in
+	4|5|6|7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 # @ECLASS-VARIABLE: SITELISP
 # @DESCRIPTION:
 # Directory where packages install Emacs Lisp files.
@@ -298,12 +304,11 @@ elisp-make-autoload-file() {
 elisp-install() {
 	local subdir="$1"
 	shift
-	ebegin "Installing Elisp files for GNU Emacs support"
+	einfo "Installing Elisp files for GNU Emacs support"
 	( # subshell to avoid pollution of calling environment
 		insinto "${SITELISP}/${subdir}"
 		doins "$@"
 	)
-	eend $? "elisp-install: doins failed" || die
 }
 
 # @FUNCTION: elisp-site-file-install
@@ -316,14 +321,14 @@ elisp-install() {
 # respectively.
 
 elisp-site-file-install() {
-	local sf="${1##*/}" my_pn="${2:-${PN}}" ret
+	local sf="${1##*/}" my_pn="${2:-${PN}}"
 	local header=";;; ${PN} site-lisp configuration"
 
 	[[ ${sf} == [0-9][0-9]*-gentoo*.el ]] \
 		|| ewarn "elisp-site-file-install: bad name of site-init file"
 	[[ ${sf%-gentoo*.el} != "${sf}" ]] && sf="${sf%-gentoo*.el}-gentoo.el"
+	einfo "Installing site-init file ${sf} for GNU Emacs"
 	sf="${T}/${sf}"
-	ebegin "Installing site initialisation file for GNU Emacs"
 	[[ $1 = "${sf}" ]] || cp "$1" "${sf}"
 	sed -i -e "1{:x;/^\$/{n;bx;};/^;.*${PN}/I!s:^:${header}\n\n:;1s:^:\n:;}" \
 		-e "s:@SITELISP@:${EPREFIX}${SITELISP}/${my_pn}:g" \
@@ -332,9 +337,7 @@ elisp-site-file-install() {
 		insinto "${SITELISP}/site-gentoo.d"
 		doins "${sf}"
 	)
-	ret=$?
 	rm -f "${sf}"
-	eend ${ret} "elisp-site-file-install: doins failed" || die
 }
 
 # @FUNCTION: elisp-site-regen
