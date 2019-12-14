@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,7 +37,10 @@ DEPEND="${COMMON_DEPEND}
 
 DOCS=( README.md AUTHORS CHANGELOG )
 
-PATCHES=( "${FILESDIR}"/${P}-cmake-3.5.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake-3.5.patch
+	"${FILESDIR}"/${P}-build.patch
+)
 
 src_configure() {
 	# editor does not build

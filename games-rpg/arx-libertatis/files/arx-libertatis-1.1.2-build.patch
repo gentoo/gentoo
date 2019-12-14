@@ -1,0 +1,47 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -179,6 +179,7 @@ mark_as_advanced(
+ # Helper scrips
+ 
+ include(CheckCXXSourceCompiles)
++include(CheckIncludeFiles)
+ include(CheckSymbolExists)
+ include(CheckTypeSize)
+ 
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -401,15 +401,24 @@ if(NOT MSVC)
+ 	add_cxxflag("-fvisibility-inlines-hidden")
+ 	
+ 	# Define _POSIX_C_SOURCE and _XOPEN_SOURCE for GNU systems
+-	if(${CMAKE_SYSTEM_NAME} MATCHES "Linux" OR ${CMAKE_SYSTEM_NAME} MATCHES "GNU"
+-	   OR ${CMAKE_SYSTEM_NAME} MATCHES "kFreeBSD")
+-		set(CMAKE_REQUIRED_DEFINITIONS "-D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600")
+-		add_definitions(-D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600)
+-		if(${CMAKE_SYSTEM_NAME} MATCHES "kFreeBSD")
+-			set(CMAKE_REQUIRED_DEFINITIONS "${CMAKE_REQUIRED_DEFINITIONS} -D_BSD_SOURCE")
+-			add_definitions(-D_BSD_SOURCE)
+-		endif()
++	check_symbol_exists(__GLIBC__ "features.h" HAVE_GLIBC)
++	set(libc_features)
++	if(HAVE_GLIBC)
++		list(APPEND libc_features
++			-D_ISOC11_SOURCE
++			-D_POSIX_C_SOURCE=200809L
++			-D_XOPEN_SOURCE=600
++			-D_BSD_SOURCE # Required for dirfd with glibc <= 2.19
++			-D_DEFAULT_SOURCE # Required not to warn on _BSD_SOURCE with glibc >= 2.20
++			-D_ATFILE_SOURCE # Required for fstatat with glibc <= 2.9
++			-D_GNU_SOURCE # Not set by default because we use -std=c++?? instead of -std=gnu++??
++		)
++	endif()
++	if(USE_NATIVE_FS AND NOT WIN32)
++		list(APPEND libc_features -D_FILE_OFFSET_BITS=64)
+ 	endif()
++	string(REPLACE ";" " " CMAKE_REQUIRED_DEFINITIONS "${libc_features}")
++	add_definitions(${libc_features})
+ 	
+ 	# Not a symbol, so we can't use check_symbol_exists
+ 	check_compile(ARX_HAVE_BUILTIN_TRAP
