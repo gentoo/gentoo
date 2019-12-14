@@ -5,16 +5,16 @@ EAPI="7"
 
 inherit db-use toolchain-funcs multilib pam systemd
 
-IUSE="arc dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn elibc_glibc exiscan-acl gnutls idn ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs ssl syslog tcpd +tpda X"
+IUSE="arc dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn elibc_glibc exiscan-acl gnutls idn ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs +ssl syslog tcpd +tpda X"
 REQUIRED_USE="
 	arc? ( dkim spf )
 	dane? ( ssl !gnutls )
 	dmarc? ( dkim spf )
+	dkim? ( ssl !gnutls )
 	gnutls? ( ssl )
 	pkcs11? ( ssl )
 	spf? ( exiscan-acl )
 	srs? ( exiscan-acl )
-	!ssl? ( !dkim )
 "
 # NOTE on USE="gnutls dane", gnutls[dane] is masked in base, unmasked
 # for x86 and amd64 only, due to this, repoman won't allow depending on
@@ -46,12 +46,14 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	pam? ( sys-libs/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
-	gnutls? (
-		net-libs/gnutls:0=[pkcs11?]
-		dev-libs/libtasn1
+		gnutls? (
+			net-libs/gnutls:0=[pkcs11?]
+			dev-libs/libtasn1
+		)
+		!gnutls? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:= )
+		)
 	)
 	ldap? ( >=net-nds/openldap-2.0.7 )
 	nis? (
@@ -565,10 +567,15 @@ pkg_postinst() {
 		einfo "Please create ${EROOT}/etc/exim/exim.conf from"
 		einfo "  ${EROOT}/etc/exim/exim.conf.dist."
 	fi
+	if use dmarc ; then
+		einfo "DMARC support requires ${EROOT}/etc/exim/opendmarc.tlds"
+		einfo "you can populate this file with the contents downloaded from"
+		einfo "  https://publicsuffix.org/list/public_suffix_list.dat"
+	fi
 	if use dcc ; then
 		einfo "DCC support is experimental, you can find some limited"
 		einfo "documentation at the bottom of this prerelease message:"
-		einfo "http://article.gmane.org/gmane.mail.exim.devel/3579"
+		einfo "  http://article.gmane.org/gmane.mail.exim.devel/3579"
 	fi
 	use srs && einfo "SRS support is experimental"
 	use dsn && einfo "extra information in fail DSN message is experimental"
