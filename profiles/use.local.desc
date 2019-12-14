@@ -3957,9 +3957,7 @@ mail-filter/postfwd:tools - Install additional tools for testing postfwd
 mail-filter/postgrey:targrey - Enables the targrey patch
 mail-filter/rmilter:dkim - Enable support for DomainKeys Identified Mail
 mail-filter/rmilter:memcached - Enable support for memcached
-mail-filter/rspamd:fann - Enable neural network plugin (requires sci-mathematics/fann).
 mail-filter/rspamd:pcre2 - Use dev-libs/libpcre2
-mail-filter/rspamd:torch - Enable torch support. This is required for the neural module
 mail-filter/spamassassin:cron - Install a cron job to update SpamAssassin's rules daily.
 mail-filter/spamassassin:qmail - Build qmail functionality and docs
 mail-filter/spamdyke:ssl - Enables TLS protocol for spamdyke

@@ -69,6 +69,7 @@ acct-group/qemu 0: System group: qemu
 acct-group/qmail 0: System group: qmail
 acct-group/redmine 0: System group: redmine
 acct-group/render 0: System group: render
+acct-group/rspamd 0: Group for rspamd - Rapid spam filtering system
 acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
 acct-group/slurm 0: A group for the slurm - Highly Scalable Resource Manager
 acct-group/spectrum 0: A group for the Spectrum messaging transport
@@ -160,6 +161,7 @@ acct-user/qmailq 0: user for qmail queue
 acct-user/qmailr 0: user for qmail-rspawn and qmail-remote
 acct-user/qmails 0: user for qmail-smtpd
 acct-user/redmine 0: Redmine application user
+acct-user/rspamd 0: User for rspamd - Rapid spam filtering system
 acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
 acct-user/slurm 0: User for the slurm - Highly Scalable Resource Manager
 acct-user/spectrum 0: A user for the Spectrum messaging transport
@@ -8442,7 +8444,7 @@ dev-python/pycadf 2.6.0 2.7.0 2.9.0-r1: python implementation of DMTF Cloud Audi
 dev-python/pycairo 1.16.3-r1 1.17.0-r1 1.18.1 1.18.2: Python bindings for the cairo library
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
 dev-python/pycapnp 0.6.2 0.6.3 0.6.4: Python wrapping of the Cap'n Proto library
-dev-python/pycares 2.1.1 2.3.0 2.4.0 3.0.0 3.0.0_p20190709: Python interface for c-ares
+dev-python/pycares 2.1.1 2.3.0 2.4.0 3.0.0 3.0.0_p20190709 3.1.0_p3: Python interface for c-ares
 dev-python/pycdf 0.6.3-r1: Python interface to scientific netCDF library
 dev-python/pycdio 2.1.0: Python OO interface to libcdio (CD Input and Control library)
 dev-python/pychart 1.39-r1: Python library for creating charts
@@ -12502,7 +12504,7 @@ mail-filter/pypolicyd-spf 2.0.2: Python-based policy daemon for Postfix SPF veri
 mail-filter/razor 2.85-r3: Distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/rmilter 1.9.2 1.10.0 1.10.0-r1 1.10.0-r2 9999: Another sendmail milter for different mail checks
-mail-filter/rspamd 1.8.3 1.9.0 1.9.4 2.1 9999: Rapid spam filtering system
+mail-filter/rspamd 2.1 2.2 9999: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sieve-connect 0.87-r1: Sieve Command Line Interface
 mail-filter/sigh 1607.1.2 1607.1.6: S/MIME signing milter
