@@ -42,6 +42,7 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( $(python_gen_any_dep '
 		dev-python/setuptools[${PYTHON_USEDEP}]
+		dev-python/snakeoil[${PYTHON_USEDEP}]
 		dev-python/docutils[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	') )
@@ -53,6 +54,7 @@ DEPEND="${RDEPEND}
 
 python_check_deps() {
 	has_version "dev-python/setuptools[${PYTHON_USEDEP}]" || return 1
+	has_version "dev-python/snakeoil[${PYTHON_USEDEP}]" || return 1
 	if use doc; then
 		has_version "dev-python/docutils[${PYTHON_USEDEP}]" &&
 		has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
