@@ -16,8 +16,9 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="sys-kernel/pf-sources:*
-	sys-process/procps"
+DEPEND="sys-process/procps:=
+	sys-kernel/pf-sources:*"
+RDEPEND="${DEPEND}"
 
 CONFIG_CHECK="KSM"
 
