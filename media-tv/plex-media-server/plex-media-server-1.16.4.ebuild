@@ -32,7 +32,6 @@ RDEPEND="
 	acct-group/plex
 	${PYTHON_DEPS}"
 
-QA_DESKTOP_FILE="usr/share/applications/plexmediamanager.desktop"
 QA_PREBUILT="*"
 QA_MULTILIB_PATHS=(
 	"usr/lib/${_APPNAME}/.*"
@@ -59,6 +58,10 @@ src_install() {
 
 	# Remove Debian specific files
 	rm -r "usr/share/doc" || die
+
+	# Fix QA warning about .desktop file.
+	sed -i 's|Audio;Music;Video;Player;Media;|AudioVideo;Music;Player;|g' \
+		usr/share/applications/plexmediaserver.desktop || die
 
 	# Copy main files over to image and preserve permissions so it is portable
 	cp -rp usr/ "${ED}"/ || die
