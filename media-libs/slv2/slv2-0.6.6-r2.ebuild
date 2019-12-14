@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epatch "${FILESDIR}"/ldconfig.patch
 	epatch "${FILESDIR}"/${P}-raptor2-link.patch
+
+	 has_version ">=media-libs/lv2-1.16.0" && (sed -i "s/lv2core/lv2/" wscript || die "Failed to fix lv2")
 }
 
 src_configure() {
