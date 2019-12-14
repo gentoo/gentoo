@@ -14,7 +14,7 @@ DESCRIPTION="Single Node Kubernetes Cluster"
 HOMEPAGE="https://github.com/kubernetes/minikube https://kubernetes.io"
 SRC_URI="${ARCHIVE_URI}"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 CC-BY-4.0 CC-BY-SA-4.0 CC0-1.0 GPL-2 ISC LGPL-3 MIT MPL-2.0 WTFPL-2 ZLIB || ( LGPL-3+ GPL-2 ) || ( Apache-2.0 LGPL-3+ ) || ( Apache-2.0 CC-BY-4.0 )"
 SLOT="0"
 IUSE="hardened libvirt"
 
