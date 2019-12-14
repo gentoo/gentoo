@@ -17776,7 +17776,7 @@ sys-libs/compiler-rt-sanitizers 7.1.0 8.0.1 9.0.0 9.0.1_rc2 9.0.1_rc3 9.0.1.9999
 sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
-sys-libs/darwin-libc-headers 1158.50.2-r1 1244.50.9-r1 1272.250.1-r1: Darwin system headers from Libc 1272.250.1, macOS 10.14.3
+sys-libs/darwin-libc-headers 1158.50.2-r2 1244.50.9-r2 1272.250.1-r2: Darwin system headers from Libc 1272.250.1, macOS 10.14.3
 sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r2 4.3.29_p1-r2 4.4.20_p4-r2 4.5.20_p2-r2 4.6.21_p4-r1 4.7.25_p4-r1 4.8.30-r3 5.1.29-r2 5.3.28-r2 5.3.28-r4 6.0.35-r2 6.1.38 6.2.38 18.1.32: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.44.5 1.45.2 1.45.3 1.45.4: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 37-r1: Tools and library to manipulate EFI variables
