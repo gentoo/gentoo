@@ -565,10 +565,15 @@ pkg_postinst() {
 		einfo "Please create ${EROOT}/etc/exim/exim.conf from"
 		einfo "  ${EROOT}/etc/exim/exim.conf.dist."
 	fi
+	if use dmarc ; then
+		einfo "DMARC support requires ${EROOT}/etc/exim/opendmarc.tlds"
+		einfo "you can populate this file with the contents downloaded from"
+		einfo "  https://publicsuffix.org/list/public_suffix_list.dat"
+	fi
 	if use dcc ; then
 		einfo "DCC support is experimental, you can find some limited"
 		einfo "documentation at the bottom of this prerelease message:"
-		einfo "http://article.gmane.org/gmane.mail.exim.devel/3579"
+		einfo "  http://article.gmane.org/gmane.mail.exim.devel/3579"
 	fi
 	use srs && einfo "SRS support is experimental"
 	use dsn && einfo "extra information in fail DSN message is experimental"
