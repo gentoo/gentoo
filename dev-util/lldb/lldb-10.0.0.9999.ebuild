@@ -49,7 +49,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DLLDB_ENABLE_CURSES=$(usex ncurses)
 		-DLLDB_ENABLE_LIBEDIT=$(usex libedit)
-		-DLLDB_DISABLE_PYTHON=$(usex !python)
+		-DLLDB_ENABLE_PYTHON=$(usex python)
 		-DLLDB_ENABLE_LZMA=$(usex lzma)
 		-DLLDB_USE_SYSTEM_SIX=1
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
