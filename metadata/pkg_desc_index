@@ -10871,9 +10871,9 @@ dev-util/sgb 20030623-r1: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
 dev-util/shards 0.7.2 0.8.1 0.9.0: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
-dev-util/shellcheck 0.4.6 0.4.7 0.5.0-r1 0.6.0 0.7.0: Shell script analysis tool
+dev-util/shellcheck 0.7.0: Shell script analysis tool
 dev-util/shellcheck-bin 0.6.0 0.7.0: Shell script analysis tool (binary package)
-dev-util/shelltestrunner 1.3.4 1.3.5 1.3.5-r1: A tool for testing command-line programs
+dev-util/shelltestrunner 1.3.5 1.9: A tool for testing command-line programs
 dev-util/shflags 1.0.3 1.2.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
@@ -12519,7 +12519,7 @@ mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
 mail-filter/zdkimfilter 1.8: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
-mail-mta/exim 4.92.2 4.92.3 4.93.0.2: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.92.2 4.92.3 4.93.0.3: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.3 1.8.5-r1 1.8.6: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r4 1.06-r10 1.06-r11 1.06-r12: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
@@ -14005,7 +14005,7 @@ media-sound/qsampler 0.5.6 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.6.0 9999: A Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: A simple frontend to mp3gain, vorbisgain and metaflac
-media-sound/qtractor 0.9.9: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
+media-sound/qtractor 0.9.9 0.9.11: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
 media-sound/quodlibet 3.8.1-r1 3.9.1 4.1.0 4.2.0 4.2.1: audio library tagger, manager, and player for GTK+
