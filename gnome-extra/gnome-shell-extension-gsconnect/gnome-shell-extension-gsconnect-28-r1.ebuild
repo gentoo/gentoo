@@ -35,6 +35,11 @@ DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="For knowing more about how to do the setup, please visit:
 https://github.com/andyholmes/gnome-shell-extension-gsconnect/wiki/Installation"
 
+PATCHES=(
+	# Fix WhastApp notifications, https://github.com/andyholmes/gnome-shell-extension-gsconnect/issues/720
+	"${FILESDIR}/${P}-silent-flag.patch"
+)
+
 src_configure() {
 	# nemo support relies on nemo-python from https://github.com/linuxmint/nemo-extensions
 	# https://bugs.gentoo.org/694388
