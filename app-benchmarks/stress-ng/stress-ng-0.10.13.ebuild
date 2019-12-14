@@ -9,7 +9,7 @@ DESCRIPTION="Stress test for a computer system with various selectable ways"
 HOMEPAGE="https://kernel.ubuntu.com/~cking/stress-ng/"
 SRC_URI="https://kernel.ubuntu.com/~cking/tarballs/${PN}/${P}.tar.xz"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}"
 
 DOCS=( "README" "README.Android" "TODO" "syscalls.txt" )
 
-PATCHES=( "${FILESDIR}/${PN}-0.09.53-makefile.patch" )
+PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
 
 src_compile() {
 	tc-export CC

@@ -5,7 +5,7 @@ EAPI=7
 
 inherit autotools
 
-EGIT_COMMIT="61646ade26750c52626a44b025cb1b165681c662"
+EGIT_COMMIT="0e1124df9e97129c5e0d9996a2c3876ae18f01c4"
 MY_PN="${PN/network/network-}"
 
 DESCRIPTION="NetworkManager WireGuard plugin"
