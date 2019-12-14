@@ -17,7 +17,7 @@ KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/pathlib[${PYTHON_USEDEP}]' python2_7 python3_3)
+	$(python_gen_cond_dep 'dev-python/pathlib[${PYTHON_USEDEP}]' python2_7)
 	>=dev-python/path-py-6.2[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}
