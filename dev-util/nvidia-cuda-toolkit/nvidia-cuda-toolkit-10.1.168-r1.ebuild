@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,41 +6,33 @@ EAPI=7
 inherit check-reqs cuda toolchain-funcs unpacker
 
 MYD=$(ver_cut 1-2 ${PV})
-DRIVER_PV="418.87.00"
+DRIVER_PV="418.67"
 
 DESCRIPTION="NVIDIA CUDA Toolkit (compiler and friends)"
 HOMEPAGE="https://developer.nvidia.com/cuda-zone"
-SRC_URI="https://developer.download.nvidia.com/compute/cuda/${MYD}/Prod/local_installers/cuda_${PV}_${DRIVER_PV}_linux.run"
+SRC_URI="https://developer.nvidia.com/compute/cuda/${MYD}/Prod/local_installers/cuda_${PV}_${DRIVER_PV}_linux.run -> cuda_${PV}_${DRIVER_PV}_linux.run"
 
 LICENSE="NVIDIA-CUDA"
 SLOT="0/${PV}"
 KEYWORDS="-* ~amd64 ~amd64-linux"
 IUSE="debugger doc eclipse profiler"
-RESTRICT="bindist mirror"
 
-BDEPEND=""
-RDEPEND="
+DEPEND=""
+RDEPEND="${DEPEND}
 	<sys-devel/gcc-9[cxx]
-	!prefix? ( >=x11-drivers/nvidia-drivers-${DRIVER_PV}[X,uvm] )
+	>=x11-drivers/nvidia-drivers-396.24[X,uvm]
 	debugger? (
-		dev-libs/openssl-compat:1.0.0
 		sys-libs/libtermcap-compat
 		sys-libs/ncurses-compat:5[tinfo]
-	)
-	eclipse? (
-		dev-libs/openssl-compat:1.0.0
-		>=virtual/jre-1.6
-	)
-	profiler? (
-		dev-libs/openssl-compat:1.0.0
-		>=virtual/jre-1.6
-	)"
+		)
+	eclipse? ( >=virtual/jre-1.6 )
+	profiler? ( >=virtual/jre-1.6 )"
 
 S="${WORKDIR}"
 
 QA_PREBUILT="opt/cuda/*"
 
-CHECKREQS_DISK_BUILD="6800M"
+CHECKREQS_DISK_BUILD="6100M"
 
 pkg_setup() {
 	# We don't like to run cuda_pkg_setup as it depends on us
@@ -60,7 +52,7 @@ src_prepare() {
 }
 
 src_install() {
-	local i remove=( doc )
+	local i remove=( doc jre run_files install-linux.pl cuda-installer.pl )
 	local cudadir=/opt/cuda
 	local ecudadir="${EPREFIX}${cudadir}"
 
@@ -88,13 +80,13 @@ src_install() {
 			chmod a+x bin/${i} || die
 		done
 	else
-		use eclipse || remove+=( libnvvp libnsight nsightee_plugins nsight-compute-2019.4.0 nsight-systems-2019.3.7.5 bin/nsight bin/nsight_ee_plugins_manage.sh bin/nvvp bin/computeprof )
+		use eclipse || remove+=( libnvvp libnsight nsightee_plugins NsightCompute-2019.1 NsightSystems-2018.3 bin/nsight bin/nsight_ee_plugins_manage.sh bin/nvvp bin/computeprof )
 		remove+=( extras/CUPTI bin/nvprof )
 	fi
 
 	for i in "${remove[@]}"; do
 		ebegin "Cleaning ${i}..."
-		rm -r "${i}" || die
+		rm -rf "${i}" || die
 		eend
 	done
 
@@ -102,12 +94,14 @@ src_install() {
 	into ${cudadir}
 
 	# Install binaries separately to make sure the X permission is set
-	local bindirs=( bin nvvm/bin extras/demo_suite )
+	local bindirs=( bin nvvm/bin extras/demo_suite $(usex profiler "libnsight/nsight") )
 	for i in $(find "${bindirs[@]}" -maxdepth 1 -type f); do
 		exeinto ${cudadir}/${i%/*}
 		doexe ${i}
 		rm ${i} || die
 	done
+	exeinto ${cudadir}/bin
+	doexe "${T}"/cuda-config
 
 	# Install the rest
 	insinto ${cudadir}
@@ -120,10 +114,10 @@ src_install() {
 	EOF
 	doenvd "${T}"/99cuda
 
-	use profiler && \
-		make_wrapper nvprof "${ecudadir}/bin/nvprof" "." "${ecudadir}/lib64:${ecudadir}/lib"
-
-	dobin "${T}"/cuda-config
+	#Cuda prepackages libraries, don't revdep-build on them
+	echo "SEARCH_DIRS_MASK=\"${ecudadir}\"" > "${T}/80${PN}" || die
+	insinto "/etc/revdep-rebuild"
+	doins "${T}/80${PN}"
 }
 
 pkg_postinst_check() {
@@ -140,7 +134,7 @@ pkg_postinst_check() {
 	if tc-is-gcc && \
 		ver_test $(gcc-version) -gt ${b}; then
 			ewarn ""
-			ewarn "gcc > ${b} will not work with CUDA"
+			ewarn "gcc >= ${b} will not work with CUDA"
 			ewarn "Make sure you set an earlier version of gcc with gcc-config"
 			ewarn "or append --compiler-bindir= pointing to a gcc bindir like"
 			ewarn "--compiler-bindir=${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/gcc${b}"
@@ -152,11 +146,5 @@ pkg_postinst_check() {
 pkg_postinst() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		pkg_postinst_check
-	fi
-
-	if use prefix; then
-		ewarn "Gentoo Prefix does not manage kernel modules.  You need to make certain"
-		ewarn "the function counterpart to >=x11-drivers/nvidia-drivers-${DRIVER_PV}[X,uvm]"
-		ewarn "is available from the host"
 	fi
 }
