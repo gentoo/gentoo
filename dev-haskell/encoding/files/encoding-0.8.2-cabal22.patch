@@ -1,0 +1,22 @@
+diff --git a/Setup.hs b/Setup.hs
+index de719e6..e58a316 100644
+--- a/Setup.hs
++++ b/Setup.hs
+@@ -1 +1,2 @@
++{-# LANGUAGE CPP #-}
+ module Main where
+@@ -6,2 +7,11 @@ import Data.Encoding.Preprocessor.XMLMappingBuilder
+ 
++#if MIN_VERSION_Cabal(2,2,0)
++main = defaultMainWithHooks (simpleUserHooks
++                             {hookedPreProcessors = (("mapping",\_ _ _ -> mappingPreprocessor)
++                                                     :("mapping2",\_ _ _ -> mappingPreprocessor)
++                                                     :("xml",\_ _ _ -> xmlPreprocessor)
++                                                     :(hookedPreProcessors simpleUserHooks)
++                                                    )
++                             })
++#else
+ main = defaultMainWithHooks (simpleUserHooks
+@@ -13 +23,2 @@ main = defaultMainWithHooks (simpleUserHooks
+                              })
++#endif
