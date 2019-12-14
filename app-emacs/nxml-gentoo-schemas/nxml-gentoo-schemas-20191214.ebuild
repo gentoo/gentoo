@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit elisp
 
@@ -21,5 +21,4 @@ src_install() {
 	insinto "${SITEETC}/${PN}"
 	doins schemas.xml *.rnc
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
-	dodoc DONATING
 }
