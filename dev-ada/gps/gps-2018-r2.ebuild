@@ -29,10 +29,7 @@ RDEPEND="${PYTHON_DEPS}
 	~dev-ada/libadalang-2018[${ADA_USEDEP}]
 	dev-libs/gobject-introspection
 	dev-libs/libffi
-	|| (
-		sys-devel/llvm:6
-		sys-devel/llvm:7
-	)
+	sys-devel/llvm:7
 	sys-devel/clang:=
 	x11-themes/adwaita-icon-theme
 	x11-themes/hicolor-icon-theme
