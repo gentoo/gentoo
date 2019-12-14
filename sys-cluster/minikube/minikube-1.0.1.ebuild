@@ -32,6 +32,7 @@ src_prepare() {
 }
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME
 	export CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')"
 	LDFLAGS="" GOFLAGS="-v" GOPATH="${WORKDIR}/${P}" emake -C src/${EGO_PN}  $(usex libvirt "out/docker-machine-driver-kvm2" "") out/minikube-linux-amd64
 }
