@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
@@ -13,21 +13,32 @@ SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc jack"
 
-RDEPEND=">=dev-libs/redland-1.0.6
-	jack? ( virtual/jack )
-	media-libs/lv2"
-DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
+BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+"
+CDEPEND="
+	>=dev-libs/redland-1.0.6
+	jack? ( virtual/jack )
+	media-libs/lv2
+"
+RDEPEND="${CDEPEND}"
+DEPEND="
+	${CDEPEND}
+	${PYTHON_DEPS}
+"
+
+PATCHES=(
+	"${FILESDIR}"/ldconfig.patch
+	"${FILESDIR}"/${P}-raptor2-link.patch
+	"${FILESDIR}"/${P}-python3.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/ldconfig.patch
-	epatch "${FILESDIR}"/${P}-raptor2-link.patch
-
+	default
 	 has_version ">=media-libs/lv2-1.16.0" && (sed -i "s/lv2core/lv2/" wscript || die "Failed to fix lv2")
 }
 
