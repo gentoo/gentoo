@@ -8589,7 +8589,7 @@ dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a
 dev-python/pyptlib 0.0.6: Python library for tor's pluggable transport managed-proxy protocol
 dev-python/pypy 7.2.0 7.3.0_rc1 9999: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-bin 7.2.0: Pre-built version of PyPy
-dev-python/pypy3 7.2.0-r1 9999: A fast, compliant alternative implementation of the Python (3.6) language
+dev-python/pypy3 7.2.0-r1 7.3.0_rc1 9999: A fast, compliant alternative implementation of the Python (3.6) language
 dev-python/pypy3-bin 7.2.0-r1: Pre-built version of PyPy3
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.3.0: distutils extension to work with PyQt applications and UI files
@@ -18105,7 +18105,7 @@ virtual/pkgconfig 0-r1 1: Virtual for the pkg-config implementation
 virtual/pmake 1: Virtual for BSD-like make (to be used with get_bmake)
 virtual/podofo-build 0.9.6_pre20170508-r1 0.9.6_pre20171027 0.9.6: Virtual package for building against PoDoFo
 virtual/pypy 7.2.0 7.3.0_rc1: A virtual for PyPy Python implementation
-virtual/pypy3 7.2.0: A virtual for PyPy3 Python implementation
+virtual/pypy3 7.2.0 7.3.0_rc1: A virtual for PyPy3 Python implementation
 virtual/python-backports_abc 0: A virtual for the Python 3.3+ collections.abc module
 virtual/python-cffi 0: A virtual for the Python cffi package
 virtual/python-enum34 2: A virtual for Python enum34 module
