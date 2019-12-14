@@ -1,0 +1,39 @@
+commit bd0a8199252f4cd7f5d93ee862a919646f85a06f
+Author: Ollie Charles <ollie@ocharles.org.uk>
+Date:   Wed Sep 18 12:36:15 2019 +0100
+
+    Build with GHC 8.8
+
+diff --git a/Language/Haskell/ParseMonad.hs b/Language/Haskell/ParseMonad.hs
+index 1ed9b7a..f9bea5e 100644
+--- a/Language/Haskell/ParseMonad.hs
++++ b/Language/Haskell/ParseMonad.hs
+@@ -12,6 +12,8 @@
+ --
+ -----------------------------------------------------------------------------
+ 
++{-# LANGUAGE CPP #-}
++
+ module Language.Haskell.ParseMonad(
+                 -- * Parsing
+                 P, ParseResult(..), atSrcLoc, LexContext(..),
+@@ -134,7 +136,9 @@ instance Monad P where
+                 case m i x y l s mode of
+                     Failed loc msg -> Failed loc msg
+                     Ok s' a        -> runP (k a) i x y l s' mode
++#if !(MIN_VERSION_base(4,13,0))
+         fail = Fail.fail
++#endif
+ 
+ -- | @since 1.0.3.0
+ instance Fail.MonadFail P where
+@@ -191,7 +195,9 @@ instance Monad (Lex r) where
+         return = pure
+         Lex v >>= f = Lex $ \k -> v (\a -> runL (f a) k)
+         (>>) = (*>)
++#if !(MIN_VERSION_base(4,13,0))
+         fail = Fail.fail
++#endif
+ 
+ -- | @since 1.0.3.0
+ instance Fail.MonadFail (Lex r) where
