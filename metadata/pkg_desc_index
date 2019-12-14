@@ -3813,15 +3813,15 @@ dev-haskell/old-locale 1.0.0.7: locale library
 dev-haskell/old-time 1.1.0.3-r1: Time library
 dev-haskell/open-browser 0.2.1.0-r1: Open a web browser from Haskell
 dev-haskell/openal 1.4.0.2 1.6.0.0 1.7.0.0 1.7.0.4: A binding to the OpenAL cross-platform 3D audio API
-dev-haskell/opengl 2.9.2.0 2.12.0.1 3.0.1.0: A binding for the OpenGL graphics system
+dev-haskell/opengl 2.9.2.0 2.12.0.1 3.0.1.0 3.0.3.0: A binding for the OpenGL graphics system
 dev-haskell/openglraw 1.3.0.0 1.5.0.0 2.5.1.0 3.2.4.0: A raw binding for the OpenGL graphics system
-dev-haskell/openssl-streams 1.2.1.0: OpenSSL network support for io-streams
+dev-haskell/openssl-streams 1.2.1.0 1.2.2.0: OpenSSL network support for io-streams
 dev-haskell/options 1.2.1.1: A powerful and easy-to-use command-line option parser
 dev-haskell/optparse-applicative 0.5.2.1 0.7.0.2 0.8.1-r1 0.9.1.1 0.11.0.2 0.13.0.0 0.14.2.0: Utilities and combinators for parsing command line options
 dev-haskell/optparse-simple 0.0.3: Simple interface to optparse-applicative
 dev-haskell/pandoc-citeproc 0.1.2.1 0.2 0.3.1 0.6 0.7.2 0.8.1.3 0.10.4 0.10.4.1: Supports using pandoc with citeproc
 dev-haskell/pandoc-types 1.12.3 1.12.4.5 1.12.4.7 1.17.0.4: Types for representing a structured document
-dev-haskell/pango 0.12.5.3 0.13.1.1 0.13.3.1: Binding to the Pango text rendering engine
+dev-haskell/pango 0.12.5.3 0.13.1.1 0.13.3.1 0.13.6.1: Binding to the Pango text rendering engine
 dev-haskell/parallel 3.2.0.3 3.2.1.0: Parallel programming library
 dev-haskell/parallel-io 0.3.3-r3: Combinators for executing IO actions in parallel on a thread pool
 dev-haskell/parsec 3.1.5 3.1.9-r1 3.1.11: Monadic parser combinators
@@ -3831,15 +3831,15 @@ dev-haskell/path-io 1.2.2: Interface to 'directory' package for users of 'path'
 dev-haskell/path-pieces 0.1.5 0.2.1: Components of paths
 dev-haskell/patience 0.1.1: Patience diff and longest increasing subsequence
 dev-haskell/pcap 0.4.5.2-r1: A system-independent interface for user-level packet capture
-dev-haskell/pcre-light 0.4-r1 0.4.0.4: Portable regex library for Perl 5 compatible regular expressions
+dev-haskell/pcre-light 0.4-r1 0.4.0.4 0.4.1.0: Portable regex library for Perl 5 compatible regular expressions
 dev-haskell/pem 0.1.2 0.2.2: Privacy Enhanced Mail (PEM) format reader and writer
 dev-haskell/persistent 2.1.6 2.6-r1: Type-safe, multi-backend data serialization
 dev-haskell/persistent-sqlite 2.1.4.2 2.6: Backend for the persistent library using sqlite3
 dev-haskell/persistent-template 2.1.3.4 2.5.1.6-r2: Type-safe, non-relational, multi-backend persistence
-dev-haskell/pgp-wordlist 0.1.0.2: Translate between binary data and a human-readable collection of words
-dev-haskell/pid1 0.1.0.1: Do signal handling and orphan reaping for Unix PID1 init processes
+dev-haskell/pgp-wordlist 0.1.0.2 0.1.0.3: Translate between binary data and a human-readable collection of words
+dev-haskell/pid1 0.1.0.1 0.1.2.0: Do signal handling and orphan reaping for Unix PID1 init processes
 dev-haskell/pipes 4.1.7 4.1.9: Compositional pipelines
-dev-haskell/pointed 4.0 4.1.1 4.2.0.2 5-r1: Pointed and copointed data
+dev-haskell/pointed 4.0 4.1.1 4.2.0.2 5-r1 5.0.1-r1: Pointed and copointed data
 dev-haskell/polyparse 1.9 1.11: A variety of alternative parser combinator libraries
 dev-haskell/pqueue 1.3.2: Reliable, persistent, fast priority queues
 dev-haskell/prelude-extras 0.4.0.3: Higher order versions of Prelude classes
@@ -3863,17 +3863,17 @@ dev-haskell/pwstore-fast 2.4.4: Secure password storage
 dev-haskell/quickcheck 2.6 2.7.6 2.8.1 2.8.2 2.9.2: Automatic testing of Haskell programs
 dev-haskell/quickcheck-instances 0.3.11 0.3.12 0.3.12-r1: Common quickcheck instances
 dev-haskell/quickcheck-io 0.1.1-r1 0.1.2 0.1.4: Use HUnit assertions as QuickCheck properties
-dev-haskell/quickcheck-unicode 1.0.0.1: Generator and shrink functions for testing Unicode-related software
+dev-haskell/quickcheck-unicode 1.0.0.1 1.0.1.0: Generator and shrink functions for testing Unicode-related software
 dev-haskell/random 1.0.1.1-r1 1.1: random number library
 dev-haskell/ranges 0.2.4-r1: Ranges and various functions on them
 dev-haskell/raw-strings-qq 1.1: Raw string literals for Haskell
 dev-haskell/readable 0.3.1: Reading from Text and ByteString
 dev-haskell/readargs 1.2.2 1.2.3: Simple command line argument parsing
 dev-haskell/readline 1.0.3.0 1.0.3.0-r1: An interface to the GNU readline library
-dev-haskell/recaptcha 0.1.0.3: Functions for using the reCAPTCHA service in web applications
-dev-haskell/reducers 3.10.3.2 3.12.1-r1: Semigroups, specialized containers and a general map/reduce framework
+dev-haskell/recaptcha 0.1.0.3 0.1.0.4: Functions for using the reCAPTCHA service in web applications
+dev-haskell/reducers 3.10.3.2 3.12.1-r1 3.12.3: Semigroups, specialized containers and a general map/reduce framework
 dev-haskell/refact 0.3.0.2: Specify refactorings to perform with apply-refact
-dev-haskell/reflection 1.3.2 1.4 1.5.2.1 2.1.2: Reifies arbitrary terms into types that can be reflected back into terms
+dev-haskell/reflection 1.3.2 1.4 1.5.2.1 2.1.2 2.1.4: Reifies arbitrary terms into types that can be reflected back into terms
 dev-haskell/regex-applicative 0.3.3: Regex-based parsing with applicative interface
 dev-haskell/regex-applicative-text 0.1.0.1: regex-applicative on text
 dev-haskell/regex-base 0.93.2-r1: Replaces/Enhances Text.Regex
@@ -10873,7 +10873,7 @@ dev-util/shards 0.7.2 0.8.1 0.9.0: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
 dev-util/shellcheck 0.7.0: Shell script analysis tool
 dev-util/shellcheck-bin 0.6.0 0.7.0: Shell script analysis tool (binary package)
-dev-util/shelltestrunner 1.3.5 1.9: A tool for testing command-line programs
+dev-util/shelltestrunner 1.3.5-r1 1.9: A tool for testing command-line programs
 dev-util/shflags 1.0.3 1.2.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
@@ -13294,7 +13294,7 @@ media-libs/lv2 1.14.0-r1 1.16.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mediastreamer 2.9.0-r2: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 19.1.8 19.2.7 19.3.0_rc6 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 19.1.8 19.2.7 19.3.0 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.16.0-r1 6.16.0-r2 6.18.0: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -18522,7 +18522,7 @@ x11-libs/libXft 2.3.3: X.Org Xft library
 x11-libs/libXi 1.7.10: X.Org Xi library
 x11-libs/libXinerama 1.1.4: X.Org Xinerama library
 x11-libs/libXmu 1.1.3: X.Org Xmu library
-x11-libs/libXpm 3.5.12-r1: X.Org Xpm library
+x11-libs/libXpm 3.5.12-r1 3.5.13: X.Org Xpm library
 x11-libs/libXpresent 1.0.0-r1: X Present Extension C Library
 x11-libs/libXrandr 1.5.2: X.Org Xrandr library
 x11-libs/libXrender 0.9.10-r1: X.Org Xrender library
