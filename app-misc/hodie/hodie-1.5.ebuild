@@ -5,19 +5,23 @@ EAPI=7
 
 inherit autotools
 
+MY_COMMIT="5946cab2fab41c40b237a69e3aca08b1180cbc10"
 DESCRIPTION="a Latin date(1)"
-HOMEPAGE="http://hodie.sourceforge.net"
-SRC_URI="https://github.com/michiexile/${PN}/archive/${P}.tar.gz
-		https://github.com/nephros/hodie/commit/6f08fdd05b4624200ce39519716bca569976362b.patch -> ${P}-classic.patch"
+HOMEPAGE="http://hodie.sourceforge.net
+		https://github.com/michiexile/hodie"
+SRC_URI="https://github.com/michiexile/${PN}/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-S="$WORKDIR"/${PN}-${P}
+S=${WORKDIR}/${PN}-${P}
 
-PATCHES="${DISTDIR}"/${P}-classic.patch
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_install() {
 	default
