@@ -13,10 +13,4 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <upstream>
-    <remote-id type="github">vstakhov/rspamd</remote-id>
-  </upstream>
-  <use>
-    <flag name="pcre2">Use dev-libs/libpcre2</flag>
-  </use>
 </pkgmetadata>
