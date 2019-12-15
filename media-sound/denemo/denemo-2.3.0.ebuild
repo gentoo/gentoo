@@ -57,7 +57,10 @@ BDEPEND="
 	>=sys-devel/flex-2.6.1
 	virtual/pkgconfig
 	virtual/yacc
-	gtk-doc? ( >=dev-util/gtk-doc-1.25-r1 )
+	gtk-doc? (
+		>=dev-util/gtk-doc-1.25-r1
+		>=dev-util/gtk-doc-am-1.25-r1
+	)
 	nls? ( >=sys-devel/gettext-0.19.8.1 )
 "
 
