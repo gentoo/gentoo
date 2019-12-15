@@ -159,7 +159,7 @@ fi
 # changed unless we also bump EAPI, which usually implies (rev-)bumping.
 # Version will later be used to differentiate between KF5/Qt5 and KF6/Qt6.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
-	: ${KFMIN:=${PV}}
+	: ${KFMIN:=$(ver_cut 1-2)}
 fi
 : ${KFMIN:=5.64.0}
 
