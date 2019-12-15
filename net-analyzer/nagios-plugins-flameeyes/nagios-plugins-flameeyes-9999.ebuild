@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit git-2 multilib
+inherit git-r3 multilib
 
 EGIT_REPO_URI="https://github.com/Flameeyes/${PN}.git"
 SRC_URI=""
