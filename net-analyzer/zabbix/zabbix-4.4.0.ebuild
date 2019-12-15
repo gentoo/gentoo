@@ -41,14 +41,14 @@ COMMON_DEPEND="snmp? ( net-analyzer/net-snmp )
 	odbc? ( dev-db/unixODBC )
 	server? ( sys-libs/zlib )
 	proxy?  ( sys-libs/zlib )
+	server? ( dev-libs/libevent )
 	ssl? ( dev-libs/openssl:=[-bindist] )"
 
 RDEPEND="${COMMON_DEPEND}
 	proxy? ( net-analyzer/fping[suid] )
 	server? ( net-analyzer/fping[suid]
 		app-admin/webapp-config
-		dev-libs/libpcre
-		dev-libs/libevent )
+		dev-libs/libpcre )
 	java?	(
 		>=virtual/jre-1.4
 		dev-java/slf4j-api
