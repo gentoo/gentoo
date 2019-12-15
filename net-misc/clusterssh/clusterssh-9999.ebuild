@@ -3,10 +3,9 @@
 
 EAPI=5
 
-inherit git-2 perl-module
+inherit git-r3 perl-module
 
 EGIT_REPO_URI="git://git.code.sf.net/p/clusterssh/code"
-EGIT_PROJECT="${PN}"
 
 DESCRIPTION="Concurrent Multi-Server Terminal Access"
 HOMEPAGE="https://github.com/duncs/clusterssh"
@@ -41,6 +40,6 @@ DEPEND="
 SRC_TEST="do parallel"
 
 src_unpack() {
-	git-2_src_unpack
+	git-r3_src_unpack
 	perl-module_src_unpack
 }
