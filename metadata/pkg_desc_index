@@ -11709,7 +11709,7 @@ games-server/minecraft-server 1.14.4 1.15.0: The official server for the sandbox
 games-server/monopd 0.10.2-r1: server for atlantik games
 games-server/mtavc 0.5-r1: dedicated server for GTA3 multiplayer
 games-server/pvpgn 1.8.5-r2: A gaming server for Battle.Net compatible clients
-games-server/steamcmd 1.0-r1 1.0-r2: This is the command-line version of the Steam client for dedicated servers
+games-server/steamcmd 1.0-r2: This is the command-line version of the Steam client for dedicated servers
 games-simulation/bcs-demo 1.3-r1: design and build bridges and then stress test them with trains
 games-simulation/cannonsmash 0.6.6-r1: 3D tabletennis game
 games-simulation/corsix-th 0.62: Open source clone of Theme Hospital
@@ -15581,8 +15581,8 @@ net-print/foomatic-db-engine 4.0.12: Generates ppds out of xml foomatic printer 
 net-print/foomatic-db-ppds 4.0.20170331 4.0.20180126 4.0.20190226: linuxprinting.org PPD files for postscript printers
 net-print/gtklp 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.2.13 5.3.1 5.3.3: Ghostscript and cups printer drivers
-net-print/hplip 3.18.12 3.19.6 3.19.8 3.19.11 3.19.12: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
-net-print/hplip-plugin 3.18.12 3.19.6 3.19.11: Proprietary plugins and firmware for HPLIP
+net-print/hplip 3.18.12 3.19.11 3.19.12: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip-plugin 3.18.12 3.19.11: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-1x2x-mfp-driver 1.1203-r1: Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
 net-print/kyocera-mita-ppds 8.4-r1: PPD description files for (some) Kyocera Mita Printers
@@ -17760,7 +17760,7 @@ sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot a
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.19: Developer documentation generated from the Linux kernel
-sys-kernel/linux-firmware 20190603 20190815 20190904 20190923 20191008 20191022 20191108 99999999: Linux firmware files
+sys-kernel/linux-firmware 20190603 20190815 20190904 20190923 20191008 20191022 20191108 20191215 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.13 4.14-r1 4.15-r1 4.16 4.16-r2 4.17 4.18 4.19 4.20 5.0 5.0-r1 5.1 5.2 5.3 5.3-r1 5.4: Linux system headers
 sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel.org sources for MIPS-based machines
 sys-kernel/pf-sources 5.1_p7 5.2_p8 5.3_p8 5.4_p1 5.4_p2: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
