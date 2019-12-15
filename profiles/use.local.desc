@@ -614,6 +614,7 @@ app-emulation/qemu:ncurses - Enable the ncurses-based console
 app-emulation/qemu:nfs - Enable NFS support
 app-emulation/qemu:numa - Enable NUMA support
 app-emulation/qemu:pin-upstream-blobs - Pin the versions of BIOS firmware to the version included in the upstream release. This is needed to sanely support migration/suspend/resume/snapshotting/etc... of instances. When the blobs are different, random corruption/bugs/crashes/etc... may be observed.
+app-emulation/qemu:plugins - Enable qemu plugin API via shared library loading.
 app-emulation/qemu:png - Enable png image support for the VNC console server
 app-emulation/qemu:pulseaudio - Enable pulseaudio output for sound emulation
 app-emulation/qemu:rbd - Enable rados block device backend support, see http://ceph.newdream.net/wiki/QEMU-RBD
@@ -628,6 +629,7 @@ app-emulation/qemu:usb - Enable USB passthrough via dev-libs/libusb
 app-emulation/qemu:usbredir - Use sys-apps/usbredir to redirect USB devices to another machine over TCP
 app-emulation/qemu:vde - Enable VDE-based networking
 app-emulation/qemu:vhost-net - Enable accelerated networking using vhost-net, see http://www.linux-kvm.org/page/VhostNet
+app-emulation/qemu:vhost-user-fs - Enable shared file system access using the FUSE protocol carried over virtio.
 app-emulation/qemu:virgl - Enable experimental Virgil 3d (virtual software GPU)
 app-emulation/qemu:virtfs - Enable VirtFS via virtio-9p-pci / fsdev. See http://wiki.qemu.org/Documentation/9psetup
 app-emulation/qemu:vte - Enable terminal support (x11-libs/vte) in the GTK+ interface
@@ -3704,6 +3706,7 @@ kde-frameworks/kinit:caps - Capabilities support for improved security and bette
 kde-frameworks/kinit:man - Build and install man pages
 kde-frameworks/kio:designer - Build plugins for dev-qt/designer
 kde-frameworks/kio:kwallet - Enable permanent storage of passwords for kpasswdserver with kde-frameworks/kwallet
+kde-frameworks/kitemmodels:qml - Enable QML support via dev-qt/qtdeclarative
 kde-frameworks/kitemviews:designer - Build plugins for dev-qt/designer
 kde-frameworks/knotifications:phonon - Play notification sounds via media-libs/phonon instead of media-libs/libcanberra
 kde-frameworks/knotifications:speech - Enable text-to-speech notification support
@@ -5220,6 +5223,7 @@ media-video/vdr:bidi - fribidi support, for languages, written from right to lef
 media-video/vdr:graphtft - support for vdr-graphtft plugin up from version 0.1.7
 media-video/vdr:html - Install HTML documentation
 media-video/vdr:kbd - enable keyboard support as remote device
+media-video/vdr:keyboard - enable keyboard support as remote device
 media-video/vdr:mainmenuhooks - Allows to replace main menu entries by some special plugins (like epgsearch, extrecmenu, ...)
 media-video/vdr:menuorg - Enables support for the media-plugins/vdr-menuorg
 media-video/vdr:menuselection - adds support for menu hotkeys of double digits
