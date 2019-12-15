@@ -1,0 +1,27 @@
+From e0dae6b9938963c8f3c30ac7b8182452645e2dbf Mon Sep 17 00:00:00 2001
+From: Yuri Chornoivan <yurchor@ukr.net>
+Date: Tue, 22 Oct 2019 20:42:51 +0300
+Subject: Try to fix Python 3 build
+
+---
+ scripting/python_scripter.cc | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/scripting/python_scripter.cc b/scripting/python_scripter.cc
+index e60a90c..62a7409 100644
+--- a/scripting/python_scripter.cc
++++ b/scripting/python_scripter.cc
+@@ -390,7 +390,11 @@ PythonScripter::PythonScripter()
+   // the newstring stuff is to prevent warnings about conversion from
+   // const char* to char*..
+   char* s = newstring( "kig" );
++#if PY_VERSION_HEX >= 0x03000000
++  PyImport_AppendInittab( s, PyInit_kig );
++#else
+   PyImport_AppendInittab( s, initkig );
++#endif
+   //  we can't delete this yet, since python keeps a pointer to it..
+   // This means we have a small but harmless memory leak here, but it
+   // doesn't hurt at all, since it could only be freed at the end of
+-- 
+cgit v1.1
