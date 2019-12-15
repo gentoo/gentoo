@@ -54,8 +54,7 @@ RDEPEND="${DEPEND}
 	!mail-mta/qmail-ldap
 	!mail-mta/sendmail
 	!mail-mta/opensmtpd
-	!<mail-mta/ssmtp-2.64-r2
-	!>=mail-mta/ssmtp-2.64-r2[mta]
+	!mail-mta/ssmtp[mta]
 	!net-mail/fastforward
 	selinux? ( sec-policy/selinux-postfix )"
 
