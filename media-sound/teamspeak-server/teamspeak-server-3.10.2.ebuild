@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 Boost-1.0 BSD LGPL-2.1 LGPL-3 MIT teamspeak3"
 SLOT="0"
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="doc mysql tsdns"
 
 RESTRICT="bindist mirror"
