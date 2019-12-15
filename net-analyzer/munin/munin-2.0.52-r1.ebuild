@@ -106,8 +106,7 @@ RDEPEND="${DEPEND_COM}
 			virtual/cron
 			media-fonts/dejavu
 		)
-		selinux? ( sec-policy/selinux-munin )
-		!<sys-apps/openrc-0.11.8"
+		selinux? ( sec-policy/selinux-munin )"
 
 S="${WORKDIR}/${MY_P}"
 
