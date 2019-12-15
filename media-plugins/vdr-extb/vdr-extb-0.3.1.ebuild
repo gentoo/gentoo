@@ -19,6 +19,7 @@ IUSE=""
 DEPEND="app-misc/lirc
 		media-video/vdr"
 RDEPEND="${DEPEND}"
+BDEPEND="app-arch/unzip"
 
 src_prepare() {
 	vdr-plugin-2_src_prepare
@@ -40,7 +41,6 @@ src_install() {
 	vdr-plugin-2_src_install
 
 	dodoc README.de "${WORKDIR}/lircd.conf.extb_FW1.08"
-	docinto wakeup
 	dodoc "${S}/wakeup/README.de"
 
 	dobin "${WORKDIR}/extb/src/LinPIC/picdl"
