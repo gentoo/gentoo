@@ -9,5 +9,5 @@ RDEPEND=>=virtual/emacs-23
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/alexott/muse/archive/v3.20.tar.gz -> muse-3.20.tar.gz
-_eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	d498a10aaed837c4ec5b31039e20b121
 _md5_=a5bc15f35110be375d19b1f58ba9679f

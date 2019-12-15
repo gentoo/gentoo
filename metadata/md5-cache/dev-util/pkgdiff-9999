@@ -8,5 +8,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=dev-lang/perl-5 sys-apps/diffutils app-text/wdiff sys-apps/gawk sys-devel/binutils
 SLOT=0
-_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
+_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b
 _md5_=83b338fdcb27eeef4e4e41b24961bbd7

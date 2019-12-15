@@ -7,5 +7,5 @@ LICENSE=Apache-2.0
 PROPERTIES=live
 RDEPEND=app-emulation/docker
 SLOT=0
-_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
+_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b
 _md5_=3aaa7631028dd313dc9583e1532d751f

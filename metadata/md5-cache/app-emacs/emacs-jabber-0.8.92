@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=app-emacs/hexrgb >=virtual/emacs-23
 SLOT=0
 SRC_URI=mirror://sourceforge/emacs-jabber/emacs-jabber-0.8.92.tar.xz
-_eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54
+_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	d498a10aaed837c4ec5b31039e20b121	epatch	a1bf4756dba418a7238f3be0cb010c54
 _md5_=245c6dc4f9563e577abbe8fa01a8d4e9

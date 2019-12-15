@@ -10,5 +10,5 @@ PDEPEND=virtual/emacs
 RDEPEND=games? ( acct-group/gamestat )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/emacs/emacs-common-gentoo-1.6.tar.xz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	elisp-common	d498a10aaed837c4ec5b31039e20b121	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=9b24f0c1eb25db9e69da57832d301c0a

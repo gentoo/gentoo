@@ -8,5 +8,5 @@ LICENSE=MIT
 PROPERTIES=live
 RDEPEND=net-misc/curl X? ( || ( x11-misc/xclip x11-misc/xsel ) )
 SLOT=0
-_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd
+_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b
 _md5_=3d57fa645fd46b18be5c0b5a03a3bfb3

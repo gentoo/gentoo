@@ -12,5 +12,5 @@ REQUIRED_USE=|| ( python_targets_pypy python_targets_pypy3 python_targets_python
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/cython/cython/archive/0.29.13.tar.gz -> cython-0.29.13.gh.tar.gz
-_eclasses_=distutils-r1	cf4de3b8bc5cae734e3faa4b36e64cf7	elisp-common	23f47b2e1de7abf387105eddd1318738	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	c037bf23d7eff50e222b067cd54e5f27	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=distutils-r1	cf4de3b8bc5cae734e3faa4b36e64cf7	elisp-common	d498a10aaed837c4ec5b31039e20b121	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	c037bf23d7eff50e222b067cd54e5f27	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=6d743ff966e442f5b396140944bc4bd0

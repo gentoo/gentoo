@@ -9,5 +9,5 @@ RDEPEND=app-emacs/dash app-emacs/f >=virtual/emacs-23
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/ffevotte/desktop-plus/archive/v0.2.tar.gz -> desktop+-0.2.tar.gz
-_eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	d498a10aaed837c4ec5b31039e20b121
 _md5_=098794d4cd6c17343c24ddd702f19e63
