@@ -17,6 +17,8 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE=""
 
+PATCHES=("${FILESDIR}"/${P}-unbounded-delays.patch)
+
 RDEPEND=">=dev-haskell/ansi-terminal-0.6.2:=[profile?]
 	>=dev-haskell/async-2.0:=[profile?]
 	>=dev-haskell/clock-0.4.4.0:=[profile?]
