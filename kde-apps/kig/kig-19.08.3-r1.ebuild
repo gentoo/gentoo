@@ -5,8 +5,8 @@ EAPI=7
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="true"
-PYTHON_COMPAT=( python2_7 )
-KFMIN=5.63.0
+PYTHON_COMPAT=( python3_{6,7,8} )
+KFMIN=5.60.0
 QTMIN=5.12.3
 inherit python-single-r1 ecm kde.org
 
@@ -22,6 +22,11 @@ IUSE="geogebra scripting"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtprintsupport-${QTMIN}:5
+	>=dev-qt/qtsvg-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-frameworks/karchive-${KFMIN}:5
 	>=kde-frameworks/kcompletion-${KFMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
@@ -34,11 +39,6 @@ RDEPEND="${PYTHON_DEPS}
 	>=kde-frameworks/kservice-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtprintsupport-${QTMIN}:5
-	>=dev-qt/qtsvg-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=dev-qt/qtxml-${QTMIN}:5
 	geogebra? ( >=dev-qt/qtxmlpatterns-${QTMIN}:5 )
 	scripting? ( >=dev-libs/boost-1.48:=[python,${PYTHON_USEDEP}] )
 "
@@ -46,7 +46,11 @@ DEPEND="${RDEPEND}
 	>=kde-frameworks/ktexteditor-${KFMIN}:5
 "
 
-PATCHES=( "${FILESDIR}/${PN}-4.12.0-boostpython.patch" )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.12.0-boostpython.patch
+	"${FILESDIR}"/${P}-scripter-python3.patch
+	"${FILESDIR}"/${P}-pykig-python3.patch
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
