@@ -15,7 +15,9 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="mysql test"
-RESTRICT="!test? ( test )"
+
+# Some hiccups setting up local network server.
+RESTRICT="test"
 
 RDEPEND="
 	>=dev-libs/boost-1.66.0:=
