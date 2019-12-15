@@ -16,6 +16,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
 IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript cpu_flags_x86_mmx mng pdf python smp cpu_flags_x86_sse udev vector-icons webp wmf xpm"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND=">=dev-libs/glib-2.40.0:2
 	>=dev-libs/atk-2.2.0
 	>=x11-libs/gtk+-2.24.10:2
@@ -94,6 +96,10 @@ PATCHES=(
 )
 
 src_prepare() {
+	# Disable system CFLAGS suppressing on SSE{2,4.1} support tests by addition of {SSE2,SSE4_1}_EXTRA_CFLAGS: bug #702554
+	sed -i -e 's:\$intrinsics_save_CFLAGS \$SSE2_EXTRA_CFLAGS:\$SSE2_EXTRA_CFLAGS \$intrinsics_save_CFLAGS:' \
+		-e 's:\$intrinsics_save_CFLAGS \$SSE4_1_EXTRA_CFLAGS:\$SSE4_1_EXTRA_CFLAGS \$intrinsics_save_CFLAGS:' configure.ac || die
+
 	gnome2_src_prepare
 
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864

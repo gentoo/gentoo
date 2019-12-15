@@ -101,6 +101,10 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# Disable system CFLAGS suppressing on SSE{2,4.1} support tests by addition of {SSE2,SSE4_1}_EXTRA_CFLAGS: bug #702554
+	sed -i -e 's:\$intrinsics_save_CFLAGS \$SSE2_EXTRA_CFLAGS:\$SSE2_EXTRA_CFLAGS \$intrinsics_save_CFLAGS:' \
+		-e 's:\$intrinsics_save_CFLAGS \$SSE4_1_EXTRA_CFLAGS:\$SSE4_1_EXTRA_CFLAGS \$intrinsics_save_CFLAGS:' configure.ac || die
+
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
 	sed 's:-DGIMP_DISABLE_DEPRECATED:-DGIMP_protect_DISABLE_DEPRECATED:g' -i configure.ac || die #615144
 
