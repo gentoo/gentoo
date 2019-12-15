@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit autotools git-2
+inherit autotools git-r3
 
 DESCRIPTION="Host software for controlling the RepRap open source 3D printer"
 HOMEPAGE="https://github.com/timschmidt/repsnapper"
