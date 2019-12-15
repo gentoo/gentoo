@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-utils java-pkg-opt-2 python-single-r1 toolchain-funcs
+inherit cmake-utils python-single-r1 toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/csound/csound.git"
@@ -31,8 +31,6 @@ fltk +fluidsynth +image jack keyboard linear lua luajit nls osc portaudio
 portaudio portmidi pulseaudio python samples static-libs stk test +threads +utils
 vim-syntax websocket"
 
-IUSE_LANGS=" de en_US es es_CO fr it ro ru"
-
 REQUIRED_USE="
 	linear? ( double-precision )
 	lua? ( cxx )
@@ -41,7 +39,6 @@ REQUIRED_USE="
 #	java? ( cxx )
 
 BDEPEND="
-	dev-libs/boost:=
 	sys-devel/flex
 	virtual/yacc
 	chua? ( dev-libs/boost )
@@ -85,10 +82,13 @@ CDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	stk? ( media-libs/stk )
 	utils? ( !media-sound/snd )
-	websocket? ( net-libs/libwebsockets )
+	websocket? ( net-libs/libwebsockets:= )
 "
 RDEPEND="${CDEPEND}"
-DEPEND="${CDEPEND}"
+DEPEND="
+	${CDEPEND}
+	dev-libs/boost
+"
 
 if [[ ${PV} != "9999" ]]; then
 	DEPEND+="doc? ( app-arch/unzip )"
@@ -109,14 +109,6 @@ src_prepare() {
 	sed -e '/set(PLUGIN_INSTALL_DIR/s/-${APIVERSION}//' \
 		-e '/-O3/d' \
 		-i CMakeLists.txt || die
-
-	local lang
-
-	for lang in ${IUSE_LANGS} ; do
-		if ! has ${lang} ${LINGUAS-${lang}} ; then
-			sed -i "/compile_po(${lang}/d" po/CMakeLists.txt || die
-		fi
-	done
 }
 
 src_configure() {
@@ -216,6 +208,7 @@ src_configure() {
 		-DPYTHON_MODULE_INSTALL_DIR="$(python_get_sitedir)"
 	)
 
+	# this is needed, otherwise it sets LIBRARY INSTALL DIR: lib
 	[[ $(get_libdir) == "lib64" ]] && mycmakeargs+=(
 		-DUSE_LIB64=ON
 	)
