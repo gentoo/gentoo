@@ -5,7 +5,7 @@ EAPI="7"
 
 DESCRIPTION="Collection of Gentoo eclass manpages"
 HOMEPAGE="https://github.com/mgorny/eclass-to-manpage"
-SRC_URI="https://dev.gentoo.org/~mgorny/dist/eclass-manpages/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
