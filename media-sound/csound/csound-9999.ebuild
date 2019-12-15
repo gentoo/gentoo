@@ -142,7 +142,7 @@ src_configure() {
 		-DBUILD_PYTHON_INTERFACE=$(usex python)
 		-DBUILD_PYTHON_OPCODES=$(usex python)
 		-DBUILD_RELEASE=ON
-		#-DBUILD_SCANSYN_OPCODES=ON
+		-DBUILD_SCANSYN_OPCODES=OFF # this is not allowed to be redistributed: https://github.com/csound/csound/issues/1148
 		#-DBUILD_SELECT_OPCODE=ON
 		#-DBUILD_SERIAL_OPCODES=ON
 		-DBUILD_SHARED_LIBS=ON
