@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: Use a PVR* card as input device"
 HOMEPAGE="https://projects.vdr-developer.org/projects/plg-pvrinput"
-SRC_URI="mirror://gentoo/vdr-pvrinput-2011.09.17.tgz"
+SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,11 +27,11 @@ src_prepare() {
 
 	fix_vdr_libsi_include reader.c
 
-	epatch "${FILESDIR}/missing-include.diff"
+	eapply "${FILESDIR}/missing-include.diff"
 }
 
 src_install() {
 	vdr-plugin-2_src_install
 
-	dodoc TODO FAQ example/channels.conf_*
+	local DOCS=( TODO FAQ example/channels.conf_* )
 }
