@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# As upstream (and we aswell) are not allowed to redistribute scansyn,
+# we have to repackage the tarball. For that purpose use `bash files/repackage.sh version`
+# Reference: https://github.com/csound/csound/issues/1148
+
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
@@ -97,6 +101,10 @@ fi
 # requires specific alsa settings
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/csound-6.13.0-xdg-open.patch"
+)
+
 pkg_setup() {
 	if use python || use test ; then
 		python-single-r1_pkg_setup
@@ -142,7 +150,7 @@ src_configure() {
 		-DBUILD_PYTHON_INTERFACE=$(usex python)
 		-DBUILD_PYTHON_OPCODES=$(usex python)
 		-DBUILD_RELEASE=ON
-		#-DBUILD_SCANSYN_OPCODES=ON
+		-DBUILD_SCANSYN_OPCODES=OFF # this is not allowed to be redistributed: https://github.com/csound/csound/issues/1148
 		#-DBUILD_SELECT_OPCODE=ON
 		#-DBUILD_SERIAL_OPCODES=ON
 		-DBUILD_SHARED_LIBS=ON
