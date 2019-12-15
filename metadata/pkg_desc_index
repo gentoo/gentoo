@@ -3530,7 +3530,7 @@ dev-haskell/cryptohash-sha256 0.11.100.1: Fast, pure and practical SHA-256 imple
 dev-haskell/cryptonite 0.21: Cryptography Primitives sink
 dev-haskell/css-text 0.1.2.1: CSS parser and renderer
 dev-haskell/curl 1.3.8: Haskell binding to libcurl
-dev-haskell/data-accessor 0.2.2.7: Utilities for accessing and manipulating fields of records
+dev-haskell/data-accessor 0.2.2.7 0.2.3: Utilities for accessing and manipulating fields of records
 dev-haskell/data-binary-ieee754 0.4.4: Parser/Serialiser for IEEE-754 floating-point values
 dev-haskell/data-default 0.5.3: A class for types with a default value
 dev-haskell/data-default-class 0.0.1: A class for types with a default value
@@ -3543,7 +3543,7 @@ dev-haskell/data-hash 0.2.0.1: Combinators for building fast hashing functions
 dev-haskell/data-ordlist 0.4.7.0: Set and bag operations on ordered lists
 dev-haskell/dataenc 0.14.0.5 0.14.0.7: Data encoding library
 dev-haskell/date-cache 0.3.0-r1: Date cacher
-dev-haskell/dav 0.4.1 0.5.1 0.6.2 1.0.7 1.3.1: RFC 4918 WebDAV support
+dev-haskell/dav 0.4.1 0.5.1 0.6.2 1.0.7 1.3.1 1.3.3: RFC 4918 WebDAV support
 dev-haskell/dbus 0.10.10 0.10.11-r1 0.10.12 0.10.13: A client library for the D-Bus IPC system
 dev-haskell/dbus-core 0.9.3-r3: Low-level D-Bus protocol implementation
 dev-haskell/deepseq-generics 0.1.1.2 0.2.0.0: GHC.Generics-based Control.DeepSeq.rnf implementation
@@ -3554,26 +3554,26 @@ dev-haskell/digest 0.0.1.2: Various cryptographic hashes for bytestrings; CRC32 
 dev-haskell/disk-free-space 0.1.0.1: Retrieve information about disk space usage
 dev-haskell/distributive 0.3.2 0.4.4 0.5.2: Distributive functors -- Dual to Traversable
 dev-haskell/djinn-ghc 0.0.2.3: Generate Haskell code from a type. Bridge from Djinn to GHC API
-dev-haskell/djinn-lib 0.0.1.2: Generate Haskell code from a type. Library extracted from djinn package
+dev-haskell/djinn-lib 0.0.1.2 0.0.1.3: Generate Haskell code from a type. Library extracted from djinn package
 dev-haskell/dlist 0.5-r1 0.6.0.1 0.7.1 0.7.1.2 0.8.0.2: Difference lists
 dev-haskell/dlist-instances 0.1 0.1.1.1: Difference lists instances
 dev-haskell/dns 0.3.8 1.4.5 2.0.0 2.0.2 2.0.6: DNS library in Haskell
-dev-haskell/doctemplates 0.1.0.2: Pandoc-style document templates
+dev-haskell/doctemplates 0.1.0.2 0.2.2.1: Pandoc-style document templates
 dev-haskell/doctest 0.9.12 0.10.1 0.11.1: Test interactive Haskell examples
 dev-haskell/drift 2.4.2: Program to derive type class instances
 dev-haskell/easy-file 0.2.1: Cross-platform File handling
 dev-haskell/ed25519 0.0.5.0: Ed25519 cryptographic signatures
-dev-haskell/edisonapi 1.3.1: A library of efficient, purely-functional data structures (API)
-dev-haskell/edisoncore 1.3.1.1: A library of efficent, purely-functional data structures (Core Implementations)
+dev-haskell/edisonapi 1.3.1 1.3.1-r1: A library of efficient, purely-functional data structures (API)
+dev-haskell/edisoncore 1.3.1.1 1.3.2.1-r1: A library of efficent, purely-functional data structures (Core Implementations)
 dev-haskell/edit-distance 0.2.2.1 0.2.2.1-r1: Levenshtein and restricted Damerau-Levenshtein edit distances
 dev-haskell/editline 0.2.1.1 0.2.1.1-r1: Bindings to the editline library (libedit)
 dev-haskell/either 4.3.3.2 4.4.1 4.4.1.1: An either monad transformer
 dev-haskell/ekg 0.3.1.4 0.4.0.8 0.4.0.9 0.4.0.11: Remote monitoring of processes
-dev-haskell/ekg-core 0.1.1.0 0.1.1.1: Tracking of system metrics
-dev-haskell/ekg-json 0.1.0.0 0.1.0.1 0.1.0.3: JSON encoding of ekg metrics
+dev-haskell/ekg-core 0.1.1.0 0.1.1.1 0.1.1.6: Tracking of system metrics
+dev-haskell/ekg-json 0.1.0.0 0.1.0.1 0.1.0.3 0.1.0.6-r1: JSON encoding of ekg metrics
 dev-haskell/email-validate 1.0.0 2.0.1: Validating an email address string against RFC 5322
-dev-haskell/enclosed-exceptions 1.0.1.1 1.0.2: Catching all exceptions from within an enclosed computation
-dev-haskell/encoding 0.6.7.2-r2 0.7.0.2-r1 0.8 0.8.1: A library for various character encodings
+dev-haskell/enclosed-exceptions 1.0.1.1 1.0.2 1.0.3: Catching all exceptions from within an enclosed computation
+dev-haskell/encoding 0.6.7.2-r2 0.7.0.2-r1 0.8 0.8.1 0.8.2: A library for various character encodings
 dev-haskell/entropy 0.2.2.4 0.3.7: A platform independent entropy source
 dev-haskell/enumerator 0.4.20: Reliable, high-performance processing with left-fold enumerators
 dev-haskell/equivalence 0.2.5 0.3.1: Maintaining an equivalence relation implemented as union-find using STT
@@ -3582,7 +3582,7 @@ dev-haskell/errorcall-eq-instance 0.1.0: An orphan Eq instance for ErrorCall
 dev-haskell/errors 1.4.7 2.1.3: Simplified error-handling
 dev-haskell/esqueleto 2.1.3 2.4.3-r1: Type-safe EDSL for SQL queries on persistent backends
 dev-haskell/exceptions 0.3.3 0.6.1 0.8.0.2 0.8.2.1 0.8.3: Extensible optionally-pure exceptions
-dev-haskell/executable-path 0.0.3-r1: Finding out the full path of the executable
+dev-haskell/executable-path 0.0.3-r1 0.0.3.1: Finding out the full path of the executable
 dev-haskell/extensible-exceptions 0.1.1.4: Extensible exceptions
 dev-haskell/extra 1.3.1 1.4.2 1.4.10 1.5.1: Extra functions I use
 dev-haskell/fail 4.9.0.0: Forward-compatible MonadFail class
@@ -13250,7 +13250,7 @@ media-libs/libprojectm 2.1.0-r2 3.1.0-r1 3.1.1_rc4 3.1.1_rc5 3.1.1_rc5-r1 3.1.1_
 media-libs/libqaccessibilityclient 0.4.1: Library for writing accessibility clients such as screen readers
 media-libs/libquicktime 1.2.4-r3: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.9.4-r1: Library for parsing video download links
-media-libs/libquvi-scripts 0.4.14 0.4.19 0.4.20 0.4.21 0.4.21-r1 0.4.21-r2 0.9.20130903 0.9.20131104 0.9.20131130 0.9.20131130-r1: Embedded lua scripts for libquvi
+media-libs/libquvi-scripts 0.9.20131130-r1: Embedded lua scripts for libquvi
 media-libs/libraw 0.19.3 0.19.4 0.19.5: LibRaw is a library for reading RAW files obtained from digital photo cameras
 media-libs/libreplaygain 477-r1: Replay Gain library from Musepack
 media-libs/librosprite 0.1.3-r1: framebuffer abstraction library, written in C
