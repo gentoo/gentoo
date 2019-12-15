@@ -37,7 +37,7 @@ src_configure() {
 	mycmakeargs=(
 		-DENABLE_DBUS="$(usex dbus)"
 		-DENABLE_FFMPEG="$(usex ffmpeg)"
-		-DENABLE_MAGICK7="$(usex imagemagick)"
+		-DENABLE_MAGICK="$(usex imagemagick)"
 	)
 	cmake-utils_src_configure
 }
