@@ -12120,7 +12120,7 @@ kde-apps/kgpg 19.08.3 19.12.0: Frontend for GnuPG, a powerful encryption utility
 kde-apps/khangman 19.08.3 19.12.0: Classical hangman game by KDE
 kde-apps/khelpcenter 19.08.3 19.12.0: Application to read documentation for KDE Plasma, Applications, Utilities
 kde-apps/kidentitymanagement 19.08.3 19.12.0: Library for managing identitites
-kde-apps/kig 19.08.3 19.12.0: KDE Interactive Geometry tool
+kde-apps/kig 19.08.3 19.08.3-r1 19.12.0-r1: KDE Interactive Geometry tool
 kde-apps/kigo 19.08.3 19.12.0: Go game by KDE
 kde-apps/killbots 19.08.3 19.12.0: Kill the bots or they kill you!
 kde-apps/kimagemapeditor 19.08.3 19.12.0: Generator of HTML image maps
