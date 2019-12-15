@@ -13,5 +13,4 @@ ACCT_USER_HOME_OWNER="munin-async:munin"
 ACCT_USER_ID=178
 ACCT_USER_SHELL=/bin/sh
 
-
 acct-user_add_deps
