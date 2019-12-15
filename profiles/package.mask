@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2019-12-15)
+#media-plugins/vdr-console failed after glibc update.
+#see wrt bug 692334
+#The project is given up by upstream years ago.
+#There is no HOMAPAGE and SRC_URI available.
+#Package will be removed on ~15 Jan 2020.
+media-plugins/vdr-console
+
 # Ben Kohler <bkohler@gentoo.org> (2010-12-14)
 # Needs snapshot of freerdp later than 2019-05-08 for commit
 # 93bf37568636a1543f43b3f509e80a788236e2af
