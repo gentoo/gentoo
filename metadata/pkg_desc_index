@@ -17006,7 +17006,7 @@ sys-apps/consolation 0.0.7: libinput based console mouse daemon
 sys-apps/conspy 1.10 1.14: Remote control for Linux virtual consoles
 sys-apps/coreutils 8.30 8.31 8.31-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/cpint 2.5.3: Linux/390 Interface to z/VM's Control Program
-sys-apps/cpuid 20180419 20180519: Linux tool to dump x86 CPUID information about the CPUs
+sys-apps/cpuid 20180519: Linux tool to dump x86 CPUID information about the CPUs
 sys-apps/cracklib-words 2.9.6: large set of crack/cracklib dictionaries
 sys-apps/crazydiskinfo 1.0.2: Interactive TUI S.M.A.R.T viewer
 sys-apps/daemonize 1.7.4 1.7.8: Runs a command as a Unix daemon
@@ -18965,7 +18965,7 @@ x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from ann
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
 x11-plugins/pidgin-sipe 1.23.3 1.24.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
 x11-plugins/pidgin-skypeweb 1.1 1.2 1.2.2 1.4 1.5 9999: SkypeWeb Plugin for Pidgin
-x11-plugins/pidgin-telegram 1.4.1 1.4.2: A libpurple protocol plugin that adds support for the Telegram messenger
+x11-plugins/pidgin-telegram 1.4.2: A libpurple protocol plugin that adds support for the Telegram messenger
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
 x11-plugins/pidgin-xmpp-receipts 0.8: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
