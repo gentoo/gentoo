@@ -2,15 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PLOCALES="am ar ast az be bg br bs ca ca@valencia cs csb da de dz el en_CA en_GB eo
-	es et eu fa fi fr ga gd gl gu he hi hr hu id is it ja ka kk km kn ko ky
-	lt lv mk ml mr ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl
-	sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
 
 PYTHON_COMPAT=( python3_{6,7} )
 GNOME2_EAUTORECONF=yes
 
-inherit autotools git-r3 gnome2 l10n python-single-r1 virtualx
+inherit autotools git-r3 gnome2 python-single-r1 virtualx
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -123,10 +119,6 @@ src_prepare() {
 	if ! use doc ; then
 		echo "EXTRA_DIST = missing-gtk-doc" > gtk-doc.make
 	fi
-
-	# Remove disabled locales
-	_rm_locale() { sed -i -e "/${1}/d" po/LINGUAS || die "Failed to remove disabled locales"; }
-	l10n_for_each_disabled_locale_do _rm_locale
 
 	gnome2_src_prepare  # calls eautoreconf
 
