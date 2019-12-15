@@ -11,7 +11,7 @@ SRC_URI="https://people.debian.org/~pm/mips-cobalt/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~mips ~x86"
+KEYWORDS="~mips x86"
 
 PATCHES=(
 	"${FILESDIR}/${P}-include-stdlib.h-for-exit.patch"

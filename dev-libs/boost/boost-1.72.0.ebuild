@@ -39,7 +39,9 @@ RDEPEND="
 	mpi? ( >=virtual/mpi-2.0-r4[${MULTILIB_USEDEP},cxx,threads] )
 	python? (
 		${PYTHON_DEPS}
-		numpy? ( >=dev-python/numpy-1.14.5[$(python_gen_usedep -3)] )
+		numpy? (
+			$(python_gen_cond_dep '>=dev-python/numpy-1.17[${PYTHON_USEDEP}]' -3)
+		)
 	)
 	zlib? ( sys-libs/zlib:=[${MULTILIB_USEDEP}] )
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )"
