@@ -1,10 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-AUTOTOOLS_AUTORECONF=true
+EAPI=7
 
-inherit autotools-utils
+inherit autotools latex-package
 
 DESCRIPTION="Checks latex source for common mistakes"
 HOMEPAGE="http://www.nongnu.org/chktex/"
@@ -18,17 +17,19 @@ RESTRICT="!test? ( test )"
 # Tests fail without pcre. Enable pcre by default and make tests depend on it.
 REQUIRED_USE="test? ( pcre )"
 
-RDEPEND="virtual/latex-base
-	dev-lang/perl
-	pcre? ( dev-libs/libpcre )"
+RDEPEND="pcre? ( dev-libs/libpcre )"
+
 DEPEND="${RDEPEND}
 	sys-apps/groff
 	dev-texlive/texlive-fontsrecommended
 	doc? ( dev-tex/latex2html )"
 
+BDEPEND="virtual/latex-base
+	dev-lang/perl:="
+
 PATCHES=( "${FILESDIR}/${PN}-1.7.1-asneeded.patch"
 	  "${FILESDIR}/tex-inputenc.patch" )
-DOCS=( NEWS )
+
 AT_M4DIR="${S}/m4"
 
 src_configure() {
@@ -38,21 +39,20 @@ src_configure() {
 		$(use_enable debug debug-info)
 		$(use_enable pcre)
 	)
-	autotools-utils_src_configure
+	econf ${myconfargs[@]}
 }
 
 src_compile() {
-	autotools-utils_src_compile
-	autotools-utils_src_compile ChkTeX.dvi
-	use doc && autotools-utils_src_compile html
+	default
+	emake ChkTeX.dvi
+	use doc && emake html
 }
 
 src_install() {
+	default
 	if use doc ; then
-		HTML_DOCS=("${AUTOTOOLS_BUILD_DIR}/HTML/ChkTeX/")
-		DOCS+=("${AUTOTOOLS_BUILD_DIR}/HTML/ChkTeX.tex")
+	      dodoc HTML/ChkTeX.tex
 	fi
-	DOCS+=("${AUTOTOOLS_BUILD_DIR}/ChkTeX.dvi")
-	autotools-utils_src_install
+	dodoc ChkTeX.dvi NEWS
 	doman *.1
 }
