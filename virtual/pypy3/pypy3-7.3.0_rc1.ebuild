@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="A virtual for PyPy3 Python implementation"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
-SLOT="0/72-py36"
+SLOT="0/pypy36-pp73"
 KEYWORDS=""
 IUSE="bzip2 gdbm ncurses sqlite tk"
 
