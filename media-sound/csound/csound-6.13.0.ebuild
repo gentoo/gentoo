@@ -102,7 +102,7 @@ fi
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-6.13.0-xdg-open.patch"
+	"${FILESDIR}/${P}-xdg-open.patch"
 )
 
 pkg_setup() {
