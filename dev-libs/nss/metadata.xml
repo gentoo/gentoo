@@ -10,6 +10,7 @@
     Include root/class3 certs from CAcert (http://www.cacert.org/)
   </flag>
   <flag name="nss-pem">Add support for libnsspem</flag>
+  <flag name="sslkeylog">Enable SSLKEYLOGFILE environment variable handling</flag>
   <flag name="utils">Install utilities included with the library</flag>
 </use>
 <upstream>
