@@ -1,6 +1,9 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
+# All consumers were last rited.  Removal in 30 days.
+
 # @ECLASS: obs-service.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org

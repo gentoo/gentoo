@@ -21,7 +21,7 @@ echo -e "Removing undistibutable files\n"
 rm -f csound-${VERSION}/Opcodes/scansyn*
 
 echo -e "Creating distributable tarball\n"
-tar -acf csound-${VERSION}-distibutable.tar.xz csound-${VERSION}
+tar -acf csound-${VERSION}-distributable.tar.xz csound-${VERSION}
 
 echo -e "Cleaning up\n"
 rm -rf csound-${VERSION} ${VERSION}.tar.gz
