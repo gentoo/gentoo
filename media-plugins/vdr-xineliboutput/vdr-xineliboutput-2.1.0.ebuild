@@ -1,24 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vdr-plugin-2
 
 GENTOO_VDR_CONDITIONAL=yes
 
-DESCRIPTION="Video Disk Recorder Xinelib PlugIn"
+DESCRIPTION="VDR Plugin: Xinelib PlugIn"
 HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
 SRC_URI="mirror://sourceforge/${PN#vdr-}/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="bluray caps dbus fbcon jpeg libextractor nls opengl +vdr vdpau +X +xine xinerama"
+IUSE="bluray caps cec dbus fbcon jpeg libextractor nls opengl +vdr vaapi vdpau +X +xine xinerama"
 
 COMMON_DEPEND="
 	vdr? (
-		>=media-video/vdr-1.6.0
+		media-video/vdr
 		libextractor? ( >=media-libs/libextractor-0.5.20 )
 		caps? ( sys-libs/libcap )
 	)
@@ -31,12 +31,13 @@ COMMON_DEPEND="
 			x11-libs/libX11
 			x11-libs/libXext
 			x11-libs/libXrender
-			xinerama? ( x11-libs/libXinerama )
-			dbus? ( dev-libs/dbus-glib dev-libs/glib:2 )
-			vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2 )
-			jpeg? ( virtual/jpeg:* )
 			bluray? ( media-libs/libbluray )
+			dbus? ( dev-libs/dbus-glib dev-libs/glib:2 )
+			jpeg? ( virtual/jpeg:* )
 			opengl? ( virtual/opengl )
+			vaapi? ( x11-libs/libva >=media-libs/xine-lib-1.2[vaapi] )
+			vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2[vdpau] )
+			xinerama? ( x11-libs/libXinerama )
 		)
 	)"
 
@@ -54,7 +55,7 @@ RDEPEND="${COMMON_DEPEND}"
 
 REQUIRED_USE=" || ( vdr xine )"
 
-VDR_CONFD_FILE="${FILESDIR}/confd-1.0.0_pre6"
+VDR_CONFD_FILE="${FILESDIR}/confd-2.0.0"
 
 pkg_setup() {
 	vdr-plugin-2_pkg_setup
@@ -62,15 +63,6 @@ pkg_setup() {
 	if use xine; then
 		XINE_PLUGIN_DIR=$(pkg-config --variable=plugindir libxine)
 		[ -z "${XINE_PLUGIN_DIR}" ] && die "Could not find xine plugin dir"
-	fi
-}
-
-src_prepare() {
-	vdr-plugin-2_src_prepare
-
-	if has_version ">=media-video/vdr-2.1.2"; then
-		sed -e "s#VideoDirectory#cVideoDirectory::Name\(\)#" \
-		-i config.c menu.c tools/udp_pes_scheduler.c
 	fi
 }
 
@@ -91,12 +83,14 @@ src_configure() {
 		$(use_enable X xshm) \
 		$(use_enable X xdpms) \
 		$(use_enable X xshape) \
+		$(use_enable X xrandr) \
 		$(use_enable X xrender) \
 		$(use_enable fbcon fb) \
 		$(use_enable vdr) \
 		$(use_enable xine libxine) \
 		$(use_enable libextractor) \
 		$(use_enable caps libcap) \
+		$(use_enable cec libcec) \
 		$(use_enable jpeg libjpeg) \
 		$(use_enable xinerama) \
 		$(use_enable vdpau) \
@@ -125,6 +119,8 @@ src_install() {
 		fi
 
 		if use xine; then
+			doinitd "${FILESDIR}"/vdr-frontend
+
 			insinto $XINE_PLUGIN_DIR
 			doins xineplug_inp_xvdr.so
 
