@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=MASM-compatible TASM-similar assembler (fork of Wasm)
+EAPI=7
+HOMEPAGE=https://github.com/JWasm/JWasm
+KEYWORDS=~amd64 ~x86
+LICENSE=Watcom-1.0
+SLOT=0
+SRC_URI=https://github.com/JWasm/JWasm/archive/2.13.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=44dd9f8415c9f44cbdeac84c678b7b14
