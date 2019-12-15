@@ -32,6 +32,30 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-12-15)
+# Unmaintained.  Most of those packages haven't been bumped since 2013,
+# few have been updated in 2015.
+# Removal in 30 days.  Bug #703032.
+dev-util/obs-service-cpanspec
+dev-util/obs-service-download_files
+dev-util/obs-service-download_src_package
+dev-util/obs-service-download_url
+dev-util/obs-service-extract_file
+dev-util/obs-service-format_spec_file
+dev-util/obs-service-generator_driver_update_disk
+dev-util/obs-service-github_tarballs
+dev-util/obs-service-git_tarballs
+dev-util/obs-service-meta
+dev-util/obs-service-rearchive
+dev-util/obs-service-recompress
+dev-util/obs-service-set_version
+dev-util/obs-service-source_validator
+dev-util/obs-service-tar_scm
+dev-util/obs-service-update_source
+dev-util/obs-service-verify_file
+dev-util/osc
+dev-util/suse-build
+
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2019-12-15)
 #media-plugins/vdr-console failed after glibc update.
 #see wrt bug 692334
