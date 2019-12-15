@@ -2267,7 +2267,7 @@ app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microso
 app-office/pybliographer 1.4.0-r2: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.5.5 9999: Desktop publishing (DTP) and layout program
-app-office/skrooge 2.20.0: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 2.20.0 2.21.1: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1 1.4.6: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2 1.99.9 1.99.10 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0-r1 5.0.3: A nice LaTeX-IDE
@@ -3070,7 +3070,7 @@ dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
 dev-cpp/catch 1.12.2 1.9999 2.5.0 2.7.0 2.9.1 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-related services
-dev-cpp/cpp-hocon 0.1.4-r1: Provides C++ support for the HOCON configuration file format
+dev-cpp/cpp-hocon 0.1.4-r1 0.2.1: Provides C++ support for the HOCON configuration file format
 dev-cpp/ctemplate 2.3-r1: A simple but powerful template language for C++
 dev-cpp/eigen 3.3.7: C++ template library for linear algebra
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
@@ -10977,8 +10977,8 @@ dev-vcs/git-tools 2015_p20151225-r2 2015_p20160201 2015_p20160201-r1 2017.10: As
 dev-vcs/gitg 3.32.1: git repository viewer for GNOME
 dev-vcs/github-pages-publish 0.1.2: A script that commits files from a directory to Github Pages
 dev-vcs/gitinspector 0.4.4: Statistical analysis tool for git repositories
-dev-vcs/gitolite 2.3.1-r1 3.6.11 9999: Highly flexible server for git directory version tracker
-dev-vcs/gitolite-gentoo 2.3.1-r1 2.3.3-r1 3.5.3.1 3.6.1 3.6.1-r1 3.6.2.1 3.6.2.2 3.6.2.3 3.6.2.4 3.6.3 3.6.3.2 3.6.4 3.6.4.1 3.6.4.1-r1 3.6.5 3.6.6 3.6.6.1 3.6.6.1-r1 9999: Highly flexible server for git directory version tracker, Gentoo fork
+dev-vcs/gitolite 2.3.1-r1 3.6.11: Highly flexible server for git directory version tracker
+dev-vcs/gitolite-gentoo 2.3.1-r1 2.3.3-r1 3.5.3.1 3.6.1 3.6.1-r1 3.6.2.1 3.6.2.2 3.6.2.3 3.6.2.4 3.6.3 3.6.3.2 3.6.4 3.6.4.1 3.6.4.1-r1 3.6.5 3.6.6 3.6.6.1 3.6.6.1-r1: Highly flexible server for git directory version tracker, Gentoo fork
 dev-vcs/gitsh 0.11.2: An interactive shell for git
 dev-vcs/gitstats 0_pre131024 0_pre20151223 9999: Statistics generator for git
 dev-vcs/gti 9999: A silly git launcher, basically. Inspired by sl
@@ -13574,7 +13574,7 @@ media-plugins/kodi-vfs-rar 2.0.5 2.0.6 2.0.7 9999: RAR VFS addon for Kodi
 media-plugins/kodi-vfs-sacd 9999: SACD VFS addon for Kodi
 media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 9999: SFTP VFS addon for Kodi
 media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 9999: Fische visualizer for Kodi
-media-plugins/kodi-visualization-goom 9999: Goom visualizer for Kodi
+media-plugins/kodi-visualization-goom 2.1.0 9999: Goom visualizer for Kodi
 media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
 media-plugins/kodi-visualization-projectm 2.3.4 9999: ProjectM visualizer for Kodi
 media-plugins/kodi-visualization-shadertoy 1.1.5 1.1.8 1.1.9 1.1.10 1.2.1 1.2.2 1.2.3 9999: Shadertoy visualizer for Kodi
@@ -13683,14 +13683,14 @@ media-plugins/vdr-rpihddevice 0.0.10 0.0.11 1.0.0 1.0.3: VDR Plugin: Output Devi
 media-plugins/vdr-rssreader 2.0.0 2.0.1 2.2.0 2.2.1 2.2.1-r1: VDR Plugin: RSS reader
 media-plugins/vdr-satip 2.2.3-r2 2.2.5: VDR Plugin: integrates SAT>IP network devices seamlessly into VDR
 media-plugins/vdr-scheduler 0.1.3: VDR plugin: allows to control externel jobs from within VDR
-media-plugins/vdr-screenshot 0.0.15: VDR Plugin: takes screenshots of the current video or tv screen by one keypress on your remote
+media-plugins/vdr-screenshot 0.0.15: VDR Plugin: takes screenshots of the current video or tv screen
 media-plugins/vdr-serial 0.0.6a-r1: VDR Plugin: attach some buttons with diodes to the serial port
 media-plugins/vdr-skincurses 2.2.0: VDR plugin: show content of menu in a shell window
 media-plugins/vdr-skinelchi 0.3.0: VDR Skin Plugin: skinelchi
 media-plugins/vdr-skinenigmang 0.1.2_p20130302: VDR - Skin Plugin: enigma-ng
 media-plugins/vdr-skinsoppalusikka 2.0.0 2.0.3 2.2.0 2.2.1: VDR Skin Plugin: soppalusikka
 media-plugins/vdr-sleeptimer 0.6: VDR Plugin: Sleeptimer
-media-plugins/vdr-sndctl 0.1.5.1: VDR plugin: Control the vol level of diff controls of your sound- card according to the settings of VDR
+media-plugins/vdr-sndctl 0.1.5.1: VDR plugin: Control the vol level of diff controls of your soundcard
 media-plugins/vdr-solitaire 0.0.3: VDR Plugin: Solitaire game
 media-plugins/vdr-span 0.0.7: VDR plugin: Spectrum Analyzer (SpAn)
 media-plugins/vdr-spider 0.2.2: VDR plugin: Spider patience game
@@ -13705,7 +13705,7 @@ media-plugins/vdr-undelete 0.0.7 0.0.7-r1: VDR Plugin: Recover deleted recording
 media-plugins/vdr-vcd 0.9-r3 0.9-r4: VDR plugin: play video cds
 media-plugins/vdr-vdrmanager 0.14: VDR Plugin: remote programming VDR using VDR-Manager running on Android devices
 media-plugins/vdr-vompserver 0.4.1 0.4.1-r1: VDR Plugin: server part for MediaMVP device
-media-plugins/vdr-wapd 0.9 0.9_p1 0.9_p1-r1: VDR plugin: lets VDR listen to WAP requests to allow remote control by WML enabled browsers
+media-plugins/vdr-wapd 0.9_p1-r1: VDR plugin: lets VDR listen to WAP requests on WML enabled browsers
 media-plugins/vdr-weatherng 0.0.8_pre3-r1: VDR plugin: show weather for specified place
 media-plugins/vdr-wirbelscan 0.0.7-r1: VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards
 media-plugins/vdr-xineliboutput 2.0.0 2.1.0 9999: VDR Plugin: Xinelib PlugIn
@@ -13802,7 +13802,7 @@ media-sound/codecgraph 20120114-r2: Generates a graph based on the ALSA descript
 media-sound/combine_wave 0.3.1-r1: sync up 2 audio ch. and/or combine 2 mono audio ch. into one stereo wave ch
 media-sound/coquillo 2.0.0: GUI audio tagger based on Qt and taglib
 media-sound/cplay 1.50: A Curses front-end for various audio players
-media-sound/csound 6.10.0 9999: Sound design and signal processing system for composition and performance
+media-sound/csound 6.10.0 6.13.0 9999: Sound design and signal processing system for composition and performance
 media-sound/cvoicecontrol 0.9_alpha-r1: Console based speech recognition system
 media-sound/dagrab 0.513-r1: fixed point cd ripper
 media-sound/darkice 1.2 1.3: A live audio streamer
@@ -15932,10 +15932,10 @@ sci-biology/bedtools 2.26.0: Tools for manipulation and analysis of BED, GFF/GTF
 sci-biology/bfast 0.7.0a: Blat-like Fast Accurate Search Tool
 sci-biology/biogrep 1.0-r2: Multithreaded tool for matching large sets of patterns against biosequence DBs
 sci-biology/biopandas 0.2.1: Molecular Structures in Pandas DataFrames
-sci-biology/bioperl 1.6.9 9999-r1: Perl tools for bioinformatics - Core modules
-sci-biology/bioperl-db 1.6.9 1.6.9-r1 9999-r1: Perl tools for bioinformatics - Perl API that accesses the BioSQL schema
-sci-biology/bioperl-network 1.6.9 9999-r1: Perl tools for bioinformatics - Analysis of protein-protein interaction networks
-sci-biology/bioperl-run 1.6.9 9999-r1: Perl wrapper modules for key bioinformatics applications
+sci-biology/bioperl 1.6.9: Perl tools for bioinformatics - Core modules
+sci-biology/bioperl-db 1.6.9 1.6.9-r1: Perl tools for bioinformatics - Perl API that accesses the BioSQL schema
+sci-biology/bioperl-network 1.6.9: Perl tools for bioinformatics - Analysis of protein-protein interaction networks
+sci-biology/bioperl-run 1.6.9: Perl wrapper modules for key bioinformatics applications
 sci-biology/biopython 1.68 1.71 1.73: Python modules for computational molecular biology
 sci-biology/bioruby 1.5.1 1.5.2: An integrated environment for bioinformatics using the Ruby language
 sci-biology/biosql 1.0.1-r1: A generic bioinformatics relational database model
@@ -15979,7 +15979,7 @@ sci-biology/fasttree 2.1.8: Fast inference of approximately-maximum-likelihood p
 sci-biology/fastx_toolkit 0.0.14: Tools for Short Read FASTA/FASTQ file processing
 sci-biology/finchtv 1.3.1-r2 1.3.1-r3: Graphical viewer for chromatogram files
 sci-biology/foldingathome 7.5.1: Folding@Home is a distributed computing project for protein folding
-sci-biology/gatk 2.4 9999: The Genome Analysis Toolkit
+sci-biology/gatk 2.4: The Genome Analysis Toolkit
 sci-biology/gibbs 3.1: Identify motifs, conserved regions, in DNA or protein sequences
 sci-biology/glimmer 3.02-r3 3.02b: An HMM-based microbial gene finding system from TIGR
 sci-biology/glimmerhmm 3.0.1-r1: A eukaryotic gene finding system from TIGR
@@ -17699,7 +17699,7 @@ sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mergerfs 2.28.3-r1: A featureful union filesystem
 sys-fs/mhddfs 0.1.39-r2: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.91-r1: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
-sys-fs/mtd-utils 1.5.2 2.0.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
+sys-fs/mtd-utils 1.5.2 2.0.2: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.18-r2 4.0.22 4.0.23: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.1-r5: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.6.4-r1 0.7.9 0.8.1 0.8.2 0.8.3 0.8.3-r1: Device mapper target autoconfig
