@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools eutils multilib prefix toolchain-funcs virtualx
 
@@ -94,9 +94,9 @@ src_install() {
 	dodoc ChangeLog README Reorganization.Notes.txt changes ANNOUNCE
 
 	if use doc; then
-		insinto /usr/share/doc/${PF}
-		doins demo.tcl
-		insinto /usr/share/doc/${PF}/html
-		doins -r doc/*
+		docompress -x usr/share/doc/${PF}/demo.tcl
+		dodoc demo.tcl
+		docinto html
+		dodoc -r doc/*
 	fi
 }
