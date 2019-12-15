@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils perl-module user git-2
+inherit eutils perl-module user git-r3
 
 DESCRIPTION="qpsmtpd is a flexible smtpd daemon written in Perl"
 HOMEPAGE="https://smtpd.github.io/qpsmtpd/"
