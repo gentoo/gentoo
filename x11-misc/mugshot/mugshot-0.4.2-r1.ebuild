@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+DISTUTILS_USE_SETUPTOOLS="no"
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 
 inherit distutils-r1 gnome2-utils xdg-utils
 
@@ -16,14 +17,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gnome libreoffice webcam"
 
-RDEPEND="
+COMMON_DEPEND="
 	dev-libs/gobject-introspection
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
-	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
+
+"
+
+RDEPEND="
+	${COMMON_DEPEND}
+	dev-python/pycairo[${PYTHON_USEDEP}]
 	sys-apps/accountsservice
-	x11-libs/gtk+:3
+	sys-apps/shadow
 	gnome? ( gnome-base/gnome-control-center )
 	libreoffice? (
 		|| (
@@ -42,11 +48,12 @@ RDEPEND="
 "
 
 DEPEND="
-	${RDEPEND}
-	dev-python/python-distutils-extra[${PYTHON_USEDEP}]
+	${COMMON_DEPEND}
+	x11-libs/gtk+:3[introspection]
 "
 
 BDEPEND="
+	dev-python/python-distutils-extra[${PYTHON_USEDEP}]
 	dev-util/intltool
 "
 
@@ -54,6 +61,8 @@ S="${WORKDIR}/${PN}-${P}"
 
 python_install() {
 	distutils-r1_python_install
+
+	python_optimize
 
 	# Since DOCS are installed twice, remove the wrong path
 	rm -r "${ED}"/usr/share/doc/mugshot || die
