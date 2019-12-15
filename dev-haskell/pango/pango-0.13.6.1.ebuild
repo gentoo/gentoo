@@ -30,3 +30,5 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/gtk2hs-buildtools-0.13.2.0 <dev-haskell/gtk2hs-buildtools-0.14
 	virtual/pkgconfig
 "
+
+PATCHES=("${FILESDIR}"/${P}-cabal-1.24.patch)
