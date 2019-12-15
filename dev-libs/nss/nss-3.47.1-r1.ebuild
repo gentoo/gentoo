@@ -175,6 +175,7 @@ multilib_src_compile() {
 		)
 	fi
 
+	export NSS_ALLOW_SSLKEYLOGFILE=1
 	export NSS_ENABLE_WERROR=0 #567158
 	export BUILD_OPT=1
 	export NSS_USE_SYSTEM_SQLITE=1
