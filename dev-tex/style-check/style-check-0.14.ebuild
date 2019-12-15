@@ -14,8 +14,8 @@ IUSE="test"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lang/ruby"
-DEPEND="test? ( dev-lang/ruby )"
+RDEPEND="dev-lang/ruby:*"
+DEPEND="test? ( dev-lang/ruby:* )"
 
 src_install() {
 	dodir /etc/style-check.d
