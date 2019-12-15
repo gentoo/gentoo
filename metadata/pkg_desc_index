@@ -5090,7 +5090,7 @@ dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.3 1.4 1.5 1.6 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r1 0.7: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.20 4.22 4.24: Netscape Portable Runtime
-dev-libs/nss 3.40.1-r1 3.46 3.46.1 3.47 3.47.1 3.48: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.47.1-r1 3.48-r1: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.2.11 2.2.12 2.2.12-r1: Alternative to vendor specific OpenCL ICD loaders
@@ -13708,7 +13708,7 @@ media-plugins/vdr-vompserver 0.4.1 0.4.1-r1: VDR Plugin: server part for MediaMV
 media-plugins/vdr-wapd 0.9 0.9_p1 0.9_p1-r1: VDR plugin: lets VDR listen to WAP requests to allow remote control by WML enabled browsers
 media-plugins/vdr-weatherng 0.0.8_pre3-r1: VDR plugin: show weather for specified place
 media-plugins/vdr-wirbelscan 0.0.7-r1: VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards
-media-plugins/vdr-xineliboutput 1.1.0 2.0.0_pre20130821 2.0.0_pre20150220 2.0.0 9999: Video Disk Recorder Xinelib PlugIn
+media-plugins/vdr-xineliboutput 2.0.0 2.1.0 9999: VDR Plugin: Xinelib PlugIn
 media-plugins/vdr-zaphistory 0.9.6: VDR Plugin: Shows the least recently used channels
 media-plugins/vdr-zappilot 0.0.5 0.0.5-r1: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
 media-plugins/xbmc-addon-xvdr 9999: XBMC addon: add VDR (http://www.tvdr.de/) as a TV/PVR Backend
