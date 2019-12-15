@@ -58,15 +58,6 @@ PDEPEND="
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
-PATCHES=(
-	# fix linking in non-native build (without tools-extra)
-	# https://bugs.llvm.org/show_bug.cgi?id=43281
-	"${FILESDIR}"/9.0.0/0001-clang-unittest-Import-LLVMTestingSupport-if-necessar.patch
-	# fix build with gcc-9.0.0
-	# https://bugs.llvm.org/show_bug.cgi?id=40547
-	"${FILESDIR}"/9.0.0/0002-Initialize-all-fields-in-ABIArgInfo.patch
-)
-
 # Multilib notes:
 # 1. ABI_* flags control ABIs libclang* is built for only.
 # 2. clang is always capable of compiling code for all ABIs for enabled
@@ -180,7 +171,8 @@ multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 	cmake-utils_src_make check-clang
-	multilib_is_native_abi && cmake-utils_src_make check-clang-tools
+	multilib_is_native_abi &&
+		cmake-utils_src_make check-clang-tools check-clangd
 }
 
 src_install() {
