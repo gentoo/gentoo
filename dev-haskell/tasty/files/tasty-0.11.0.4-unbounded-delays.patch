@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/702906
+
+From 74e87fff6a4a830dc64d59f4baa1a5f6759c007c Mon Sep 17 00:00:00 2001
+From: Roman Cheplyaka <roma@ro-che.info>
+Date: Fri, 5 May 2017 08:54:28 +0300
+Subject: [PATCH] Fix compatibility with the latest unbounded-delays
+
+Fixes #166
+---
+ core/Test/Tasty/Run.hs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/Test/Tasty/Run.hs
++++ b/Test/Tasty/Run.hs
+@@ -15,7 +15,7 @@ import Control.Monad.State
+ import Control.Monad.Writer
+ import Control.Monad.Reader
+ import Control.Concurrent.STM
+-import Control.Concurrent.Timeout
++import Control.Concurrent.Timeout (timeout)
+ import Control.Concurrent.Async
+ import Control.Exception as E
+ import Control.Applicative
+-- 
+2.24.1
+

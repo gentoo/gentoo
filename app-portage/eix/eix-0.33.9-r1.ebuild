@@ -35,10 +35,10 @@ src_prepare() {
 	default
 	sed -i -e "s:/:${EPREFIX}/:" tmpfiles.d/eix.conf || die
 
-	sed -e "/eixf_source=/s:push.sh:cat \"${EROOT}/usr/share/push/push.sh\":" \
-		-e "/eixf_source=/s:quoter_pipe.sh:cat \"${EROOT}/usr/share/quoter/quoter_pipe.sh\":" \
+	sed -e "/eixf_source=/s:push.sh:cat \"${EPREFIX}/usr/share/push/push.sh\":" \
+		-e "/eixf_source=/s:quoter_pipe.sh:cat \"${EPREFIX}/usr/share/quoter/quoter_pipe.sh\":" \
 		-i src/eix-functions.sh.in || die
-	sed -e "s:'\$(bindir)/eix-functions.sh':cat \\\\\"${EROOT}/usr/share/eix/eix-functions\\\\\":" \
+	sed -e "s:'\$(bindir)/eix-functions.sh':cat \\\\\"${EPREFIX}/usr/share/eix/eix-functions\\\\\":" \
 		-i src/Makefile.am || die
 	eautoreconf
 }
