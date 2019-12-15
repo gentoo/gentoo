@@ -11,7 +11,7 @@ SRC_URI="https://github.com/kmatheussen/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="mp3 ogg osc"
 
 CDEPEND="
