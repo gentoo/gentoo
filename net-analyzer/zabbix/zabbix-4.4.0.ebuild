@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 WEBAPP_MANUAL_SLOT="yes"
 KEYWORDS="~amd64 ~x86"
-IUSE="+agent java curl frontend ipv6 xmpp ldap libxml2 mysql openipmi oracle +postgres proxy server ssh ssl snmp sqlite odbc static"
+IUSE="+agent java curl frontend ipv6 ldap libxml2 mysql openipmi oracle +postgres proxy server ssh ssl snmp sqlite odbc static"
 REQUIRED_USE="|| ( agent frontend proxy server )
 	proxy? ( ^^ ( mysql oracle postgres sqlite odbc ) )
 	server? ( ^^ ( mysql oracle postgres odbc ) )
@@ -32,7 +32,6 @@ COMMON_DEPEND="snmp? ( net-analyzer/net-snmp )
 	sqlite? ( >=dev-db/sqlite-3.3.5 )
 	postgres? ( >=dev-db/postgresql-8.1:* )
 	oracle? ( >=dev-db/oracle-instantclient-basic-10.0.0.0 )
-	xmpp? ( dev-libs/iksemel )
 	libxml2? ( dev-libs/libxml2 )
 	curl? ( net-misc/curl )
 	openipmi? ( sys-libs/openipmi )
@@ -41,14 +40,14 @@ COMMON_DEPEND="snmp? ( net-analyzer/net-snmp )
 	odbc? ( dev-db/unixODBC )
 	server? ( sys-libs/zlib )
 	proxy?  ( sys-libs/zlib )
+	server? ( dev-libs/libevent )
 	ssl? ( dev-libs/openssl:=[-bindist] )"
 
 RDEPEND="${COMMON_DEPEND}
 	proxy? ( net-analyzer/fping[suid] )
 	server? ( net-analyzer/fping[suid]
 		app-admin/webapp-config
-		dev-libs/libpcre
-		dev-libs/libevent )
+		dev-libs/libpcre )
 	java?	(
 		>=virtual/jre-1.4
 		dev-java/slf4j-api
@@ -136,7 +135,6 @@ src_configure() {
 		$(use_with postgres postgresql) \
 		$(use_with oracle) \
 		$(use_with sqlite sqlite3) \
-		$(use_with xmpp jabber) \
 		$(use_with curl libcurl) \
 		$(use_with openipmi openipmi) \
 		$(use_with ssh ssh2) \
