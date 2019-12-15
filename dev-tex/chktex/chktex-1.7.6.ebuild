@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools latex-package
+inherit autotools
 
 DESCRIPTION="Checks latex source for common mistakes"
 HOMEPAGE="http://www.nongnu.org/chktex/"
