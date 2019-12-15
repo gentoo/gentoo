@@ -12,7 +12,7 @@ SLOT="0"
 # Keep the keywords stable. No need to change to ~arch.
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 
-DEPEND="app-arch/xz-utils
+BDEPEND="app-arch/xz-utils
 	sys-apps/gawk"
 
 src_install() {
