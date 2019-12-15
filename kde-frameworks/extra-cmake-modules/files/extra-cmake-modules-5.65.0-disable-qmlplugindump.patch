@@ -1,0 +1,65 @@
+From 8d30a7dd4517130bf1f6904b0969aaa78e44e16b Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 8 Dec 2019 15:01:33 +0100
+Subject: [PATCH] ECMFindQMLModule.cmake.in: Add ECM_DISABLE_QMLPLUGINDUMP to
+ avoid sandbox violations
+
+Back story: https://bugzilla.gnome.org/show_bug.cgi?id=744135
+BUG: 387753
+---
+ modules/ECMFindQMLModule.cmake.in | 35 +++++++++++++++++++------------
+ 1 file changed, 22 insertions(+), 13 deletions(-)
+
+diff --git a/modules/ECMFindQMLModule.cmake.in b/modules/ECMFindQMLModule.cmake.in
+index 8109ab8..1edc01d 100644
+--- a/modules/ECMFindQMLModule.cmake.in
++++ b/modules/ECMFindQMLModule.cmake.in
+@@ -26,23 +26,32 @@
+ #=============================================================================
+ 
+ include(FindPackageHandleStandardArgs)
+-include("${ECM_MODULE_DIR}/ECMQueryQmake.cmake")
+ 
+-query_qmake(qt_binaries_dir QT_INSTALL_BINS)
++option (ECM_DISABLE_QMLPLUGINDUMP "Do not use qmlplugindump which may segfault in some sandboxed environments" OFF)
+ 
+-find_program(QMLPLUGINDUMP_PROGRAM NAMES qmlplugindump HINTS ${qt_binaries_dir})
+-if(NOT QMLPLUGINDUMP_PROGRAM)
+-    message(WARNING "Could not find qmlplugindump. It is necessary to look up qml module dependencies.")
+-endif()
+-
+-execute_process(COMMAND "${QMLPLUGINDUMP_PROGRAM}" "@MODULE_NAME@" "@VERSION@" ERROR_VARIABLE ERRORS_OUTPUT OUTPUT_VARIABLE DISREGARD_VARIABLE RESULT_VARIABLE ExitCode)
+-
+-if(ExitCode EQUAL 0)
++if(ECM_DISABLE_QMLPLUGINDUMP)
++    message(NOTICE "@GENMODULE@: qmlplugindump disabled - assuming dependency is available as >= @VERSION@.")
+     set(@GENMODULE@_FOUND TRUE)
+-    set(@GENMODULE@_VERSION "${PACKAGE_FIND_VERSION}")
++    set(@GENMODULE@_VERSION @VERSION@)
+ else()
+-    message(STATUS "qmlplugindump failed for @MODULE_NAME@.")
+-    set(@GENMODULE@_FOUND FALSE)
++    include("${ECM_MODULE_DIR}/ECMQueryQmake.cmake")
++
++    query_qmake(qt_binaries_dir QT_INSTALL_BINS)
++
++    find_program(QMLPLUGINDUMP_PROGRAM NAMES qmlplugindump HINTS ${qt_binaries_dir})
++    if(NOT QMLPLUGINDUMP_PROGRAM)
++        message(WARNING "Could not find qmlplugindump. It is necessary to look up qml module dependencies.")
++    endif()
++
++    execute_process(COMMAND "${QMLPLUGINDUMP_PROGRAM}" "@MODULE_NAME@" "@VERSION@" ERROR_VARIABLE ERRORS_OUTPUT OUTPUT_VARIABLE DISREGARD_VARIABLE RESULT_VARIABLE ExitCode)
++
++    if(ExitCode EQUAL 0)
++        set(@GENMODULE@_FOUND TRUE)
++        set(@GENMODULE@_VERSION "${PACKAGE_FIND_VERSION}")
++    else()
++        message(STATUS "qmlplugindump failed for @MODULE_NAME@.")
++        set(@GENMODULE@_FOUND FALSE)
++    endif()
+ endif()
+ 
+ find_package_handle_standard_args(@GENMODULE@
+-- 
+2.24.0
+
