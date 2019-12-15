@@ -2275,7 +2275,7 @@ app-office/texstudio 2.11.2-r2 2.12.2-r1 2.12.4-r1 2.12.6-r1 2.12.8-r1 2.12.10 2
 app-office/unoconv 0.8.2 0.9: Convert between document formats supported by Libreoffice
 app-office/upwork 5.2.3.771: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
-app-office/wps-office 11.1.0.8372-r1 11.1.0.8865-r1: WPS Office is an office productivity suite
+app-office/wps-office 11.1.0.8865-r1: WPS Office is an office productivity suite
 app-officeext/barcode 1.3.5.0-r1: Extension for reading barcodes
 app-officeext/ct2n 1.5.0: Extension for converting text to numbers
 app-officeext/dmaths 3.4.9.0-r1: Mathematics Formula Editor Extension
@@ -4690,7 +4690,7 @@ dev-lang/rust-bin 1.34.2 1.35.0 1.36.0 1.37.0 1.38.0 1.39.0: Systems programming
 dev-lang/sassc 3.6.0: A libsass command line driver
 dev-lang/scala 2.12.4: The Scala Programming Language
 dev-lang/scala-bin 2.12.4: The Scala Programming Language
-dev-lang/smlnj 110.75 110.82: Standard ML of New Jersey compiler and libraries
+dev-lang/smlnj 110.82: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/spark 2018-r1 2019: Software development for high-reliability applications.
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 1.8.5-r7 1.8.5-r9 17.0.0-r5 38.3.0 45.0.2 52.9.1_pre1 52.9.1_pre1-r1 60.5.2_p0-r2 60.5.2_p0-r3: Stand-alone JavaScript C++ library
@@ -4887,7 +4887,7 @@ dev-libs/libconfig 1.5 1.7.1 1.7.2: Libconfig is a simple library for manipulati
 dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
 dev-libs/libcroco 0.6.12-r1 0.6.13: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
 dev-libs/libcss 0.8.0-r1 0.9.0: CSS parser and selection engine, written in C
-dev-libs/libdaemon 0.14-r1 0.14-r2 0.14-r3: Simple library for creating daemon processes in C
+dev-libs/libdaemon 0.14-r3: Simple library for creating daemon processes in C
 dev-libs/libdazzle 3.30.2 3.32.3: Experimental new features for GTK+ and GLib
 dev-libs/libdbh 5.0.19 5.0.22: A small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 16.04.0-r1: Library to pass menu structure across DBus
@@ -8694,7 +8694,7 @@ dev-python/python-debian 0.1.28 0.1.31 0.1.32 0.1.36: Python modules to work wit
 dev-python/python-designateclient 2.7.0 2.9.0 2.11.0: Python bindings to the Designate API.
 dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Digest Authentication
 dev-python/python-discid 1.1.1: Python bindings for libdiscid
-dev-python/python-distutils-extra 2.38 2.39 2.42: Gettext support, themed icons and scrollkeeper-based documentation in distutils
+dev-python/python-distutils-extra 2.38 2.39 2.42 2.42-r1: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-djvulibre 0.8: Set of Python bindings for the DjVuLibre library
 dev-python/python-docs 2.7.14 3.4.5 3.4.6 3.5.4 3.6.3 3.6.4 3.7.0: HTML documentation for Python
 dev-python/python-ebtables 0.2.0: Python bindings for ebtables
@@ -11904,10 +11904,10 @@ gnome-extra/gnome-logs 3.30.0: Log messages and event viewer
 gnome-extra/gnome-packagekit 3.24.0 3.30.0: PackageKit client for the GNOME desktop
 gnome-extra/gnome-power-manager 3.30.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
-gnome-extra/gnome-shell-extension-applications-overview-tooltip 5 6: Show tooltip with full name and description
-gnome-extra/gnome-shell-extension-dash-to-panel 23 26: An icon taskbar for the Gnome Shell
+gnome-extra/gnome-shell-extension-applications-overview-tooltip 6: Show tooltip with full name and description
+gnome-extra/gnome-shell-extension-dash-to-panel 26: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 19.01.4: A GNOME Shell extension for providing desktop icons
-gnome-extra/gnome-shell-extension-gsconnect 26 28-r1: KDE Connect implementation for Gnome Shell
+gnome-extra/gnome-shell-extension-gsconnect 28-r1: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.30.1 3.32.1: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 22-r1: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.30.2 3.32.1: Unofficial extension pack providing GNOME 2-like features for GNOME 3
@@ -14581,7 +14581,7 @@ net-analyzer/wireshark 3.0.3 3.0.7 3.2.0_rc1 3.2.0_rc2 99999999: A network proto
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2: A framework for layer 2 attacks
-net-analyzer/zabbix 2.2.16-r1 3.0.28 3.4.15 4.0.13 4.2.7 4.4.0: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 2.2.16-r1 3.0.28 3.4.15 4.0.13 4.2.7 4.4.0-r1: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.11.1_p20180320 1.12.0 9999: High performance PPTP, PPPoE and L2TP server
@@ -17901,7 +17901,7 @@ sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
 sys-process/ctop 0.5.1: Top-like interface for container-metrics
 sys-process/daemontools 0.76-r8: Collection of tools for managing UNIX services
 sys-process/daemontools-encore 1.10 1.11: Collection of tools for managing UNIX services
-sys-process/dcron 4.5-r1 4.5-r2: A cute little cron from Matt Dillon
+sys-process/dcron 4.5-r2: A cute little cron from Matt Dillon
 sys-process/dumb-init 1.2.0 1.2.1: A minimal init system for Linux containers
 sys-process/evisum 0.2.6: System and process monitor written with EFL
 sys-process/fcron 3.2.1-r1 3.2.1-r3 3.3.0_beta-r1: A command scheduler with extended capabilities over cron and anacron
@@ -18717,7 +18717,7 @@ x11-misc/menumaker 0.99.10 0.99.11: Utility that scans through the system and ge
 x11-misc/mgm 1.2-r1: Moaning Goat Meter: load and status meter written in Perl
 x11-misc/mixer_app 1.8.0-r1: mixer_app has volume controllers that can be configured to handle sound sources
 x11-misc/mozo 1.22.0 1.22.1: Mozo menu editor for MATE
-x11-misc/mugshot 0.4.1 0.4.2: A lightweight user-configuration application
+x11-misc/mugshot 0.4.1 0.4.2-r1: A lightweight user-configuration application
 x11-misc/netwmpager 2.05: Pager that works with Openbox and other EWMH compliant window managers
 x11-misc/nitrogen 1.6.1 1.6.1-r1 99999: A background browser and setter for X
 x11-misc/notification-daemon 0.5.0 3.14.1 3.18.2 3.20.0: Notification daemon
