@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="MASM-compatible TASM-similar assembler (fork of Wasm)"
 HOMEPAGE="https://github.com/JWasm/JWasm"
-SRC_URI="https://github.com/JWasm/JWasm/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/JWasm/JWasm/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Watcom-1.0"
 
 SLOT="0"
