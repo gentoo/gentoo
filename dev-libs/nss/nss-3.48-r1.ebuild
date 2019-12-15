@@ -5,7 +5,7 @@ EAPI=7
 
 inherit eutils flag-o-matic multilib toolchain-funcs multilib-minimal
 
-NSPR_VER="4.22"
+NSPR_VER="4.24"
 RTM_NAME="NSS_${PV//./_}_RTM"
 # Rev of https://git.fedorahosted.org/cgit/nss-pem.git
 PEM_GIT_REV="429b0222759d8ad8e6dcd29e62875ae3efd69116"
@@ -19,7 +19,7 @@ SRC_URI="https://archive.mozilla.org/pub/security/nss/releases/${RTM_NAME}/src/$
 
 LICENSE="|| ( MPL-2.0 GPL-2 LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="cacert +nss-pem utils"
 BDEPEND="
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
@@ -175,6 +175,7 @@ multilib_src_compile() {
 		)
 	fi
 
+	export NSS_ALLOW_SSLKEYLOGFILE=1
 	export NSS_ENABLE_WERROR=0 #567158
 	export BUILD_OPT=1
 	export NSS_USE_SYSTEM_SQLITE=1
