@@ -7,7 +7,7 @@ inherit vdr-plugin-2
 
 DESCRIPTION="VDR plugin: Show a history of the last OSD message"
 HOMEPAGE="https://github.com/jowi24/vdr-mlist"
-SRC_URI="https://github.com/jowi24/vdr-mlist/archive/1.0.2.tar.gz"
+SRC_URI="https://github.com/jowi24/vdr-mlist/archive/${PV}.tar.gz"
 
 KEYWORDS="amd64 x86"
 SLOT="0"
