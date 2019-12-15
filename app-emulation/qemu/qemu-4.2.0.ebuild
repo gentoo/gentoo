@@ -64,9 +64,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	qemu_softmmu_targets_ppc? ( fdt )
 	qemu_softmmu_targets_riscv32? ( fdt )
 	qemu_softmmu_targets_riscv64? ( fdt )
-	static? ( static-user !alsa !gtk !opengl !pulseaudio !snappy )
+	static? ( static-user !alsa !gtk !opengl !pulseaudio !snappy !plugins )
+	static-user? ( !plugins )
 	virtfs? ( xattr )
-	vte? ( gtk )"
+	vte? ( gtk )
+	plugins? ( !static !static-user )
+"
 
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # and user/softmmu targets (qemu-*, qemu-system-*).
