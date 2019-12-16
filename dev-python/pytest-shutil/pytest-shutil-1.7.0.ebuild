@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_{5,6,7,8}} pypy{,3} )
 inherit distutils-r1
 
 DESCRIPTION="A goodie-bag of unix shell and environment tools for py.test"
-HOMEPAGE="https://github.com/manahl/pytest-plugins https://pypi.org/project/pytest-shutil/"
+HOMEPAGE="https://github.com/man-group/pytest-plugins https://pypi.org/project/pytest-shutil/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
