@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 NEED_EMACS=24
 
 inherit elisp
@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/emacs-${P}"
+SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
 	elisp-compile websocket.el
@@ -27,5 +28,6 @@ src_test() {
 
 src_install() {
 	elisp-install ${PN} websocket.{el,elc}
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	dodoc README.org websocket-functional-test.el testserver.py
 }
