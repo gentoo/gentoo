@@ -4,6 +4,10 @@
   <maintainer type="person">
     <email>slis@gentoo.org</email>
   </maintainer>
+  <maintainer type="person">
+    <email>marecki@gentoo.org</email>
+    <name>Marek Szuba</name>
+  </maintainer>
   <use>
     <flag name="af-packet">Enable AF_PACKET support</flag>
     <flag name="bpf">Enable support for eBPF (as well as XDP if supported by the kernel and the NIC driver)
