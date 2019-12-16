@@ -1,6 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
+# All consumers were last rited.  Removal in 14 days.
+
 # @ECLASS: git-2.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
