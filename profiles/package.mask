@@ -34,7 +34,8 @@
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-15)
 # Live ebuild only.  Not touched since 2012.  Unsurprisingly,
-# the included patch no longer applies.
+# the included patch no longer applies.  Actually, there's
+# sys-fs/yaffs2utils duplicate which is a release.
 # Removal in 14 days.  Bug #703040.
 sys-fs/yaffs2-utils
 
