@@ -18,9 +18,12 @@ KEYWORDS="amd64 ~arm arm64 ~ia64 ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+RDEPEND="
 	$(python_gen_cond_dep '>=dev-python/configparser-3.5.0[${PYTHON_USEDEP}]' 'python2*')
+"
+BDEPEND="
 	test? (
+		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		virtual/python-pathlib[${PYTHON_USEDEP}]
 	)
