@@ -643,6 +643,9 @@ qt5_base_configure() {
 		# enable in respective modules to avoid poisoning QT.global_private.enabled_features
 		-no-gui -no-widgets
 
+		# QTBUG-76521, default will change to zstd in Qt6
+		$([[ ${QT5_MINOR_VERSION} -ge 13 ]] && echo -no-zstd)
+
 		# module-specific options
 		"${myconf[@]}"
 	)
