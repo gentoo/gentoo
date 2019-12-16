@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils
 
@@ -31,6 +31,8 @@ RDEPEND="x11-libs/fox:=
 		pulseaudio? ( media-sound/pulseaudio )
 		opengl? ( media-libs/libepoxy virtual/glu )"
 DEPEND="dev-util/cmake ${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/"${P}"-use-fox-1.7.67.patch )
 
 src_configure() {
 	local mycmakeargs=(
