@@ -1286,7 +1286,7 @@ app-emacs/crypt++ 2.92 2.94_pre20080430: Handle all sorts of compressed and encr
 app-emacs/csharp-mode 0.9.2: A derived Emacs mode implementing most of the C# rules
 app-emacs/css-mode 0.11-r1: A major mode for editing Cascading Style Sheets (CSS)
 app-emacs/css-sort-buffer 0.2: Sort CSS buffer
-app-emacs/csv-mode 1.9: A major mode for editing comma-separated value files
+app-emacs/csv-mode 1.9 1.10: A major mode for editing comma-separated value files
 app-emacs/cycle-buffer 2.16: Select buffer by cycling through
 app-emacs/d-mode 2.0.10: Emacs major mode for editing D code
 app-emacs/dash 2.14.1 2.16.0: A modern list library for Emacs
@@ -1316,7 +1316,7 @@ app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
 app-emacs/emacs-w3m 1.4.625_pre20180518 1.4.632_pre20181112: emacs-w3m is an interface program of w3m on Emacs
 app-emacs/emacs-wget 0.5.0-r1: Wget interface for Emacs
 app-emacs/emhacks 20070920-r1: Useful Emacs Lisp libraries, including gdiff, jjar, jmaker, swbuff, and tabbar
-app-emacs/emms 4.4 5.2: The Emacs Multimedia System
+app-emacs/emms 4.4 5.2 5.3: The Emacs Multimedia System
 app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
 app-emacs/eselect-mode 1.4.14 1.4.15 1.4.16 9999: Emacs major mode for editing eselect files
 app-emacs/ess 17.11 18.10.2-r1: Emacs Speaks Statistics
@@ -1338,12 +1338,12 @@ app-emacs/graphql 0.1.1: GraphQL utilities
 app-emacs/graphviz-dot-mode 0.4 0.4.20181118: Emacs mode for editing and previewing Graphviz dot graphs
 app-emacs/h4x0r 0.13-r1: Aid in writing like a script kiddie does
 app-emacs/haskell-mode 16.1: Mode for editing (and running) Haskell programs in Emacs
-app-emacs/helm 3.2: Emacs incremental completion and selection narrowing framework
+app-emacs/helm 3.2 3.6.0: Emacs incremental completion and selection narrowing framework
 app-emacs/helm-system-packages 1.10.1: A Helm interface to the package manager of your operating system
 app-emacs/hexrgb 0_p1019: Functions to manipulate colors, including RGB hex strings
 app-emacs/highline 7.2.2: Minor mode to highlight current line in buffer
 app-emacs/howm 1.4.5: Note-taking tool on Emacs
-app-emacs/htmlize 1.54: HTML-ize font-lock buffers in Emacs
+app-emacs/htmlize 1.54 1.55: HTML-ize font-lock buffers in Emacs
 app-emacs/httpd 1.1: A HTTP server embedded in the Emacs
 app-emacs/icicles 2018.02.13.23733: Minibuffer input completion and cycling
 app-emacs/igrep 2.113: An improved interface to "grep" and "find"
@@ -1380,11 +1380,11 @@ app-emacs/nxml-gentoo-schemas 20180611 20191214: Extension for nxml-mode with Ge
 app-emacs/nxml-libvirt-schemas 5.8.0: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 4.05.0: Emacs mode for OCaml
-app-emacs/org-mode 8.3.2-r1 9.2.6: An Emacs mode for notes and project planning
+app-emacs/org-mode 8.3.2-r1 9.2.6 9.3: An Emacs mode for notes and project planning
 app-emacs/outline-magic 0.9: Outline mode extensions for Emacs
 app-emacs/paredit 23-r1: Minor mode for performing structured editing of S-expressions
 app-emacs/pariemacs 3.14: sci-mathematics/pari emacs mode
-app-emacs/php-mode 1.19.1: GNU Emacs major mode for editing PHP code
+app-emacs/php-mode 1.19.1 1.22.1: GNU Emacs major mode for editing PHP code
 app-emacs/planner 3.42-r1: Maintain a local Wiki using Emacs-friendly markup
 app-emacs/po-mode 0.20.1: Major mode for GNU gettext PO files
 app-emacs/popup 0.5.3: Visual popup interface library for Emacs
@@ -1409,7 +1409,7 @@ app-emacs/rnc-mode 1.0.6: An Emacs mode for editing Relax NG compact schema file
 app-emacs/rpm-spec-mode 0.15: Emacs mode to ease editing of RPM spec files
 app-emacs/ruby-mode 2.4.1 2.5.5 2.6.3: Emacs major mode for editing Ruby code
 app-emacs/rudel 0.3_pre20110721-r1 0.3.1: Collaborative editing environment for GNU Emacs
-app-emacs/rust-mode 0.3.0_p20180221 0.3.0_p20190125: A major emacs mode for editing Rust source code
+app-emacs/rust-mode 0.3.0_p20190125 0.4.0: A major emacs mode for editing Rust source code
 app-emacs/s 1.12.0: The long lost Emacs string manipulation library
 app-emacs/scala-mode 2.10.3: Scala mode for Emacs
 app-emacs/scheme-complete 0.9.8: Scheme tab-completion and word-completion for Emacs
@@ -1441,7 +1441,7 @@ app-emacs/vm 8.2.0_beta-r1 9999: The VM mail reader for Emacs
 app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
 app-emacs/w3mnav 0.5-r3: Add Info-like navigation keys to the emacs-w3m web browser
 app-emacs/wanderlust 2.15.9_p20180814 2.15.9_p20190623: Yet Another Message Interface on Emacsen
-app-emacs/websocket 1.9 1.10: A websocket implementation in elisp
+app-emacs/websocket 1.10 1.12: A websocket implementation in elisp
 app-emacs/wgrep 2.3.0: Writable grep buffer and apply the changes to files
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r2: Mode for editing Wikipedia articles off-line
@@ -10684,7 +10684,7 @@ dev-util/drone 0.8.9: A Continuous Delivery platform built on Docker, written in
 dev-util/drone-cli 0.8.6 1.1.4: Command-line interface for Drone
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
-dev-util/dwarves 1.12 1.13 1.15 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
+dev-util/dwarves 1.12 1.13 1.15 1.16 1.16-r1 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.1 2.1.2: diff-like program operating at word level instead of line level
 dev-util/edb-debugger 1.0.0-r2 1.0.0-r3 1.1.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/edi 0.7.1: An EFL-based IDE
