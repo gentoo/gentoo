@@ -9,7 +9,7 @@ PYTHON_REQ_USE="ssl(+)"
 inherit distutils-r1
 
 DESCRIPTION="HTTP library with thread-safe connection pooling, file post, and more"
-HOMEPAGE="https://github.com/shazow/urllib3"
+HOMEPAGE="https://github.com/urllib3/urllib3"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
