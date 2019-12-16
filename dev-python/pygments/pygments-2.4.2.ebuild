@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy pypy3 )
 
 inherit distutils-r1 bash-completion-r1
@@ -21,8 +22,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
+DEPEND="
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		virtual/ttf-fonts
