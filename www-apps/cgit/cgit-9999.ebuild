@@ -25,7 +25,7 @@ RDEPEND="
 	dev-libs/openssl:0
 	virtual/httpd-cgi
 	highlight? ( || ( dev-python/pygments app-text/highlight ) )
-	lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua ) )
+	lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua:0 ) )
 "
 # ebuilds without WEBAPP_MANUAL_SLOT="yes" are broken
 DEPEND="${RDEPEND}
