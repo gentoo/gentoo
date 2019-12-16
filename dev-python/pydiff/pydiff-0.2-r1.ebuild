@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy pypy3 )
 
 inherit distutils-r1
@@ -16,5 +17,5 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 python_test() {
-	"${PYTHON}" test_pydiff.py || die "Tests failed under ${EPYTHON}"
+	"${EPYTHON}" test_pydiff.py || die "Tests failed under ${EPYTHON}"
 }
