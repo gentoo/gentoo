@@ -6,6 +6,13 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2019-12-16)
+# Requires old x11-libs/fox:1.6 slot.
+dev-games/openscenegraph fox
+dev-libs/hidapi fox
+sci-mathematics/gsl-shell fox
+sys-libs/gwenhywfar fox
+
 # Ulrich Müller <ulm@gentoo.org> (2019-12-11)
 # Depends on last-rited app-i18n/man-pages-da.
 sys-apps/man-pages l10n_da
