@@ -32,24 +32,15 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (2019-12-16)
-# All of FOX Toolkit packages are unmaintained.  The library was last
-# bumped in Jan 2016, and is pending bump since.  Other packages are
-# even more behind.  Including media-sound/gogglesmm as the only revdep.
-# Removal in 30 days.  Bug #703088.
+# Jason A. Donenfeld <zx2c4@gentoo.org> (2019-12-16)
+# Simplify FOX packages. Nobody uses the demo apps or the "stable" branch.
+# Removal in 30 days.  Bug #703088. Bug #703084.
 app-editors/adie
 dev-util/reswrap
-media-sound/gogglesmm
 sci-calculators/calculator
-x11-libs/fox
+x11-libs/fox:1.6
 x11-misc/pathfinder
 x11-misc/shutterbug
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-16)
-# Old slot of unmaintained x11-libs/fox.  Last touched in 2015, pending
-# bump since.  x11-misc/xfe is the only revdep.
-# Removal in 30 days.  Bug #703084.
-x11-libs/fox:1.6
 x11-misc/xfe
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-15)
