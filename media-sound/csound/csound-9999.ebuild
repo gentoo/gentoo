@@ -31,7 +31,7 @@ SLOT="0"
 # java doesn't work atm as it needs to have some variables specified to work, see src_configure
 # mp3 doesnt work as media-sound/lame does not install cmake file
 IUSE="+alsa beats chua curl +cxx debug doc double-precision dssi examples
-fltk +fluidsynth +image jack keyboard linear lua luajit nls osc portaudio
+fltk +fluidsynth hdf5 +image jack keyboard linear lua luajit nls osc portaudio
 portaudio portmidi pulseaudio python samples static-libs stk test +threads +utils
 vim-syntax websocket"
 
@@ -71,6 +71,7 @@ CDEPEND="
 	)
 	fluidsynth? ( media-sound/fluidsynth:= )
 	fltk? ( x11-libs/fltk:1[threads?] )
+	hdf5? ( sci-libs/hdf5 )
 	image? ( media-libs/libpng:0= )
 	jack? ( virtual/jack )
 	keyboard? ( x11-libs/fltk:1[threads?] )
@@ -121,19 +122,19 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		#-DBUILD_BELA=OFF
-		#-DBUILD_BUCHLA_OPCODES=ON
+		-DBUILD_BELA=OFF
+		-DBUILD_BUCHLA_OPCODES=ON
 		-DBUILD_CHUA_OPCODES=$(usex chua)
 		-DBUILD_CSBEATS=$(usex beats)
-		#-DBUILD_CUDA_OPCODES=OFF
+		-DBUILD_CUDA_OPCODES=OFF
 		-DBUILD_CXX_INTERFACE=$(usex cxx)
 		-DBUILD_DSSI_OPCODES=$(usex dssi)
-		#-DBUILD_EMUGENS_OPCODES=ON
-		#-DBUILD_EXCITER_OPCODES=ON
+		-DBUILD_EMUGENS_OPCODES=ON
+		-DBUILD_EXCITER_OPCODES=ON
 		-DBUILD_FAUST_OPCODES=OFF
 		-DBUILD_FLUID_OPCODES=$(usex fluidsynth)
-		#-DBUILD_FRAMEBUFFER_OPCODES=ON
-		#-DBUILD_HDF5_OPCODES=ON
+		-DBUILD_FRAMEBUFFER_OPCODES=ON
+		-DBUILD_HDF5_OPCODES=$(usex hdf5)
 		-DBUILD_IMAGE_OPCODES=$(usex image)
 		-DBUILD_JACK_OPCODES=$(usex jack)
 		-DBUILD_JAVA_INTERFACE=OFF
@@ -141,27 +142,27 @@ src_configure() {
 		-DBUILD_LUA_INTERFACE=$(usex lua)
 		-DBUILD_MP3OUT_OPCODE=OFF
 		-DBUILD_MULTI_CORE=$(usex threads)
-		#-DBUULD_OPENCL_OPCODES=OFF
+		-DBUILD_OPENCL_OPCODES=OFF
 		-DBUILD_OSC_OPCODES=$(usex osc)
 		-DBUILD_P5GLOVE_OPCODES=OFF
-		#-DBUILD_PADSYNTH_OPCODES=ON
-		#-DBUILD_PLATEREV_OPCODES=ON
-		#-DBUILD_PVSGENDY_OPCODE=OFF
+		-DBUILD_PADSYNTH_OPCODES=ON
+		-DBUILD_PLATEREV_OPCODES=ON
+		-DBUILD_PVSGENDY_OPCODE=OFF
 		-DBUILD_PYTHON_INTERFACE=$(usex python)
 		-DBUILD_PYTHON_OPCODES=$(usex python)
 		-DBUILD_RELEASE=ON
 		-DBUILD_SCANSYN_OPCODES=OFF # this is not allowed to be redistributed: https://github.com/csound/csound/issues/1148
-		#-DBUILD_SELECT_OPCODE=ON
-		#-DBUILD_SERIAL_OPCODES=ON
+		-DBUILD_SELECT_OPCODE=ON
+		-DBUILD_SERIAL_OPCODES=ON
 		-DBUILD_SHARED_LIBS=ON
-		#-DBUILD_STACK_OPCODES=ON
+		-DBUILD_STACK_OPCODES=ON
 		-DBUILD_STATIC_LIBRARY=$(usex static-libs)
 		-DBUILD_STATIC_LIBRARY=$(usex test)
 		-DBUILD_STK_OPCODES=$(usex stk)
 		-DBUILD_TESTS=$(usex test)
 		-DBUILD_UTILITIES=$(usex utils)
 		-DBUILD_VIRTUAL_KEYBOARD=$(usex keyboard)
-		#-DBUILD_VST4CS_OPCODES=OFF
+		-DBUILD_VST4CS_OPCODES=OFF
 		-DBUILD_WEBSOCKET_OPCODE=$(usex websocket)
 		-DBUILD_WIIMOTE_OPCODES=OFF
 		-DBUILD_WINSOUND=OFF
@@ -180,8 +181,8 @@ src_configure() {
 		-DUSE_FLTK=$(usex fltk)
 		-DUSE_GETTEXT=$(usex nls)
 		-DUSE_GIT_COMMIT=ON
-		#_DUSE_IPMIDI=ON
-		#-DUSE_LRINT=ON
+		_DUSE_IPMIDI=ON
+		-DUSE_LRINT=ON
 		-DUSE_JACK=$(usex jack)
 		-DUSE_PORTAUDIO=$(usex portaudio)
 		-DUSE_PORTMIDI=$(usex portmidi)
@@ -199,16 +200,20 @@ src_configure() {
 
 	# set the library that we want to use
 	if use lua ; then
-		local package
+		local libdir
+		local libname
 
 		if use luajit ; then
-			package="luajit"
+			libdir=$(pkg-config --variable=libdir luajit)
+			libname=$(pkg-config --variable=libname luajit)
 		else
-			package="lua"
+			libdir=$(pkg-config --variable=libdir lua)
+			libname=$(pkg-config --variable=libname lua)
+			[[ -z "${libname}" ]] && libname="lua"
 		fi
 
 		mycmakeargs+=(
-			-DLUA_LIBRARY="$(pkg-config --variable=libdir ${package})/lib$(pkg-config --variable=libname ${package}).so"
+			-DLUA_LIBRARY="${libdir}/lib${libname}.so"
 		)
 	fi
 
