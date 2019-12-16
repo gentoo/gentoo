@@ -70,6 +70,7 @@ src_configure() {
 		-DICINGA2_USER=icinga
 		-DICINGA2_GROUP=icingacmd
 		-DICINGA2_COMMAND_GROUP=icingacmd
+		-DICINGA2_RUNDIR=/run
 		-DINSTALL_SYSTEMD_SERVICE_AND_INITSCRIPT=yes
 		-DUSE_SYSTEMD=$(usex systemd ON OFF)
 		-DLOGROTATE_HAS_SU=ON
@@ -135,7 +136,7 @@ src_install() {
 	keepdir /var/lib/icinga2/api/log
 	keepdir /var/spool/icinga2/perfdata
 
-	rm -r "${D}/var/run" || die "failed to remove /var/run"
+	rm -r "${D}/run" || die "failed to remove /run"
 	rm -r "${D}/var/cache" || die "failed to remove /var/cache"
 
 	fowners root:icinga /etc/icinga2
