@@ -8,6 +8,11 @@
 # Copyright 2002-2003 Matthew Kennedy <mkennedy@gentoo.org>
 # Copyright 2003 Jeremy Maitin-Shepard <jbms@attbi.com>
 #
+# @DEAD
+# Ulrich Müller <ulm@gentoo.org> (2019-12-16)
+# No longer used by any ebuild in the Gentoo repository.
+# Removal in 30 days.
+#
 # @ECLASS: xemacs-elisp.eclass
 # @MAINTAINER:
 # xemacs@gentoo.org
