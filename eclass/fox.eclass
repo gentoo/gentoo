@@ -30,7 +30,7 @@
 #
 # EAPI phase trickery borrowed from enlightenment.eclass
 
-inherit autotools versionator
+inherit autotools versionator desktop
 
 
 FOX_EXPF="src_unpack src_compile src_install pkg_postinst"
