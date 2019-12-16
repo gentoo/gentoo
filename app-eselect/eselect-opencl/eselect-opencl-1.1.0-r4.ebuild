@@ -65,6 +65,6 @@ src_install() {
 	done
 	# Create symlinks to newest. Maybe this should be switchable?
 	for f in ${headers[@]}; do
-		dosym "${ED}/usr/$(get_libdir)/OpenCL/global/include/CL-1.2/${f}" "/usr/include/CL/${f}"
+		dosym "../../$(get_libdir)/OpenCL/global/include/CL-1.2/${f}" "/usr/include/CL/${f}"
 	done
 }
