@@ -8837,7 +8837,7 @@ dev-python/rdflib 4.2.1 4.2.2 4.2.2-r1: RDF library containing a triple store an
 dev-python/readlike 0.1.2 0.1.3: a python library similar to readline
 dev-python/readme_renderer 17.2 24.0-r1: a library for rendering "readme" descriptions for Warehouse
 dev-python/rebulk 0.9.0 9999: Python library that performs advanced searches in strings
-dev-python/recommonmark 0.4.0 0.5.0_pre20180907 0.5.0_pre20181012 0.5.0_pre20181012-r1: Python docutils-compatibility bridge to CommonMark
+dev-python/recommonmark 0.4.0 0.5.0_pre20180907 0.5.0_pre20181012 0.5.0_pre20181012-r1 0.5.0: Python docutils-compatibility bridge to CommonMark
 dev-python/reconfigure 0.1.79: An ORM for config files
 dev-python/redis-py 2.9.1 2.10.5 2.10.6 3.2.1: Python client for Redis key-value store
 dev-python/redis-py-cluster 1.3.4: Python cluster client for the official redis cluster
