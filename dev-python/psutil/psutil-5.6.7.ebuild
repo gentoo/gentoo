@@ -39,3 +39,9 @@ python_test() {
 	TRAVIS=1 APPVEYOR=1 "${EPYTHON}" psutil/tests/__main__.py ||
 		die "tests failed with ${EPYTHON}"
 }
+
+python_compile() {
+	# force -j1 to avoid .o linking race conditions
+	local MAKEOPTS=-j1
+	distutils-r1_python_compile
+}
