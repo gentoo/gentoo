@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A minimalistic X11 window manager"
 HOMEPAGE="https://www.red-bean.com/decklin/aewm/"
-SRC_URI="${HOMEPAGE}${P}.tar.bz2"
+SRC_URI="https://www.red-bean.com/decklin/aewm/${P}.tar.bz2"
 
 LICENSE="MIT 9wm"
 SLOT="0"
