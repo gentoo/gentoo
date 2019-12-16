@@ -105,7 +105,7 @@ src_prepare() {
 
 	if use efi; then
 		export EFI_VENDOR="gentoo"
-		export EFI_MOUNTPOINT="boot"
+		export EFI_MOUNTPOINT="/boot"
 	fi
 
 	default
@@ -148,7 +148,7 @@ pkg_postinst() {
 	elog "Official Xen Guide:"
 	elog " https://wiki.gentoo.org/wiki/Xen"
 
-	use efi && einfo "The efi executable is installed in boot/efi/gentoo"
+	use efi && einfo "The efi executable is installed in /boot/efi/gentoo"
 
 	elog "You can optionally block the installation of /boot/xen-syms by an entry"
 	elog "in folder /etc/portage/env using the portage's feature INSTALL_MASK"
