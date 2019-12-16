@@ -20,7 +20,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 	S=${WORKDIR}/Pyfa-${PV}
 fi
-IUSE="+graph"
+IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="mirror bindist"
 
@@ -29,7 +29,8 @@ DEPEND="
 	>=dev-python/logbook-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-1.3.0[${PYTHON_USEDEP}]
-	>=dev-python/wxpython-4.0.4[webkit,${PYTHON_USEDEP}]"
+	>=dev-python/wxpython-4.0.4[webkit,${PYTHON_USEDEP}]
+	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	>=dev-python/beautifulsoup-4.6.0[${PYTHON_USEDEP}]
 	>=dev-python/markdown2-2.3.0[${PYTHON_USEDEP}]
@@ -37,10 +38,8 @@ RDEPEND="${DEPEND}
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/roman-2.0.0[${PYTHON_USEDEP}]
-	graph? (
-		>=dev-python/matplotlib-2.0.0[wxwidgets,${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}] )
-	${PYTHON_DEPS}"
+	>=dev-python/matplotlib-2.0.0[wxwidgets,${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]"
 BDEPEND="app-arch/zip"
 
 PATCHES=(
