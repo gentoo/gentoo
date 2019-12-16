@@ -7,7 +7,7 @@ inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: takes screenshots of the current video or tv screen"
 HOMEPAGE="https://github.com/jowi24/vdr-screenshot"
-SRC_URI="https://github.com/jowi24/${PN}/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/jowi24/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
