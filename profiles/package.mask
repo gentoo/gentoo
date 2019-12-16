@@ -572,13 +572,6 @@ www-servers/hiawatha
 www-apps/hiawatha-monitor
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Multiple unresolved vulnerabilities.  The current Gentoo version
-# has reached EOL upstream.  The package hasn't been bumped since
-# mid-2018.
-# Removal in 30 days.  Bug #686428.
-net-analyzer/suricata
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
 # Unmaintained.  Last release in 2012.  Buggy ebuild.
 # Removal in 30 days.  Bug #658302.
 app-text/pdfshuffler
