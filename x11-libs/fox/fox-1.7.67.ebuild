@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit fox
 
 LICENSE="LGPL-2.1"
 SLOT="1.7"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+bzip2 +jpeg +opengl +png tiff +truetype +zlib"
 
 # newish autoconf needed for working mmap check
@@ -26,6 +26,11 @@ RDEPEND="x11-libs/libXrandr
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	x11-libs/libXt"
+
+src_prepare() {
+	fox_src_prepare
+	sed -i '/#define REXDEBUG 1/d' lib/FXRex.cpp || die "Unable to remove spurious debug line."
+}
 
 src_configure() {
 	FOXCONF="$(use_enable bzip2 bz2lib) \
