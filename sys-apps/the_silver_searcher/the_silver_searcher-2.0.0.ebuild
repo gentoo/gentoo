@@ -19,7 +19,10 @@ RDEPEND="dev-libs/libpcre
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	test? ( dev-util/cram )"
+	test? (
+		dev-util/cram
+		dev-vcs/git
+	)"
 
 DOCS="README.md"
 
