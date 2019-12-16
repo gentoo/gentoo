@@ -15,13 +15,8 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 SLOT="0"
 LICENSE="MIT"
 KEYWORDS="~alpha amd64 ~arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="app-text/htmltidy"
-DEPEND="${RDEPEND}
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+DEPEND=${RDEPEND}
 
-python_test() {
-	pytest -vv || die
-}
+distutils_enable_tests pytest
