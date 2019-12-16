@@ -134,8 +134,8 @@ src_install() {
 	fowners -R ${PN}: "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"
 	fperms 750 "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"
 
-	newinitd "${FILESDIR}/${PN}-4.0.4-init" ${PN}
-	newconfd "${FILESDIR}/${PN}-4.0.4-conf" ${PN}
+	newinitd "${FILESDIR}/${PN}-5.0.0-init" ${PN}
+	newconfd "${FILESDIR}/${PN}-5.0.0-conf" ${PN}
 	systemd_dounit "${FILESDIR}"/${PN}.service
 	systemd_newtmpfilesd "${FILESDIR}"/${PN}.tmpfiles ${PN}.conf
 
