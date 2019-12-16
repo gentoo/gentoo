@@ -17239,7 +17239,7 @@ sys-apps/sysvinit 2.93 2.95-r1 2.96: /sbin/init - parent of all processes
 sys-apps/tas 1.5.2.180622: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
 sys-apps/tcp-wrappers 7.6.22-r1 7.6.28: TCP Wrappers
 sys-apps/texinfo 6.3 6.6-r1 6.7: The GNU info program and utilities
-sys-apps/the_silver_searcher 2.0.0 2.1.0: A code-searching tool similar to ack, but faster
+sys-apps/the_silver_searcher 2.0.0 2.1.0 2.2.0: A code-searching tool similar to ack, but faster
 sys-apps/thunderbolt-software-user-space 0.9.3-r1: Thunderbolt(TM) user-space components
 sys-apps/timer_entropyd 0.3: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
