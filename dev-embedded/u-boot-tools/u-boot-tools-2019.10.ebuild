@@ -22,6 +22,8 @@ DEPEND="
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=("${FILESDIR}"/${P}-musl-ulong.patch)
+
 src_compile() {
 	# Unset a few KBUILD variables. Bug #540476
 	unset KBUILD_OUTPUT KBUILD_SRC
