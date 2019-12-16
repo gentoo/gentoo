@@ -5508,14 +5508,17 @@ net-analyzer/snort:shared-rep - Enables the use of shared memory for the Reputat
 net-analyzer/snort:side-channel - Enables Snort's the side channel.
 net-analyzer/snort:sourcefire - Enables Sourcefire specific build options, which include --enable-perfprofiling and --enable-ppm.
 net-analyzer/suricata:af-packet - Enable AF_PACKET support
+net-analyzer/suricata:bpf - Enable support for eBPF (as well as XDP if supported by the kernel and the NIC driver) for low-level, high-speed packet processing
 net-analyzer/suricata:control-socket - Enable unix socket
 net-analyzer/suricata:cuda - Enable NVIDIA Cuda computations support
 net-analyzer/suricata:detection - Enable detection modules
 net-analyzer/suricata:logrotate - Install logrotate rule
+net-analyzer/suricata:lz4 - Enable support for compressed pcap logging using the LZ4 algorithm
 net-analyzer/suricata:nflog - Enable libnetfilter_log support
 net-analyzer/suricata:nfqueue - Enable NFQUEUE support for inline IDP
 net-analyzer/suricata:redis - Enable Redis support
 net-analyzer/suricata:rules - Install default ruleset
+net-analyzer/suricata:tools - Install suricatactl, suricatasc and suricata-update
 net-analyzer/symon:perl - Enables a generic perl symux client
 net-analyzer/symon:symon - Enables the system monitor. Offers no functionality but monitoring and forwarding of measured data
 net-analyzer/symon:symux - Enables the multiplexer which stores incoming symon streams on disk in RRD (net-analyzer/rrdtool) files
