@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools versionator
+inherit autotools
 
 LICENSE="LGPL-2.1"
 SLOT="1.7"
@@ -31,7 +31,11 @@ DESCRIPTION="C++ Toolkit for developing Graphical User Interfaces easily and eff
 HOMEPAGE="http://www.fox-toolkit.org/"
 SRC_URI="ftp://ftp.fox-toolkit.org/pub/${P}.tar.gz"
 
+PATCHES=( "${FILESDIR}"/"${PN}"-1.7.67-no-truetype.patch )
+
 src_prepare() {
+	default
+
 	sed -i '/#define REXDEBUG 1/d' lib/FXRex.cpp || die "Unable to remove spurious debug line."
 	local d
 	for d in windows adie calculator pathfinder shutterbug; do
@@ -92,7 +96,7 @@ src_install() {
 
 	# slot fox-config
 	if [[ -f ${D}/usr/bin/fox-config ]] ; then
-		mv "${D}/usr/bin/fox-config" "${D}/usr/bin/fox-$(get_version_component_range 1-2 ${PV})-config" \
+		mv "${D}/usr/bin/fox-config" "${D}/usr/bin/fox-${SLOT}-config" \
 		|| die "failed to install fox-config"
 	fi
 }
