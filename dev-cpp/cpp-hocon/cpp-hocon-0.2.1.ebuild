@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils
 
@@ -11,37 +11,14 @@ SRC_URI="https://github.com/puppetlabs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/puppetlabs/cpp-hocon/commit/caab275509826dc5fe5ab2632582abb8f83ea2b3.patch -> ${PN}-0.2.1-boost-filesystem.patch"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug test"
-RESTRICT="!test? ( test )"
+IUSE="debug"
 
 DEPEND="
-	>=sys-devel/gcc-4.9.3:*
 	>=dev-libs/boost-1.54:=[nls]
 	>=dev-libs/leatherman-0.9.3:=
 	"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	cmake-utils_src_prepare
-	epatch "${DISTDIR}/${PN}-0.2.1-boost-filesystem.patch"
-
-	# make it support multilib
-	sed -i "s/\ lib)/\ $(get_libdir))/g" lib/CMakeLists.txt || die
-	sed -i "s/lib\")/$(get_libdir)\")/g" CMakeLists.txt || die
-}
-
-src_configure() {
-	local mycmakeargs=(
-		-DCMAKE_VERBOSE_MAKEFILE=ON
-		-DCMAKE_BUILD_TYPE=None
-		-DCMAKE_INSTALL_PREFIX=/usr
-	)
-	if use debug; then
-		mycmakeargs+=(
-			-DCMAKE_BUILD_TYPE=Debug
-		)
-	fi
-	cmake-utils_src_configure
-}
+PATCHES=( "${FILESDIR}"/${PN}-0.2.1-cmake.patch )

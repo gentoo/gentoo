@@ -7,12 +7,12 @@ inherit cmake-multilib systemd
 
 DESCRIPTION="Software real-time synthesizer based on the Soundfont 2 specifications"
 HOMEPAGE="http://www.fluidsynth.org/"
-SRC_URI="https://github.com/FluidSynth/fluidsynth/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/FluidSynth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="alsa dbus debug examples ipv6 jack ladspa lash oss portaudio pulseaudio +readline +sndfile systemd"
+IUSE="alsa dbus debug examples ipv6 jack ladspa lash network oss portaudio pulseaudio +readline sdl +sndfile systemd threads"
 
 BDEPEND="
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
@@ -32,26 +32,44 @@ DEPEND="
 	portaudio? ( media-libs/portaudio[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
 	readline? ( sys-libs/readline:0=[${MULTILIB_USEDEP}] )
+	sdl? ( media-libs/libsdl2[${MULTILIB_USEDEP}] )
 	sndfile? ( media-libs/libsndfile[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"
 
-DOCS=( AUTHORS NEWS README.md THANKS TODO doc/{fluidsynth-v20-devdoc,xtrafluid}.txt )
+DOCS=( AUTHORS ChangeLog README.md THANKS TODO doc/fluidsynth-v20-devdoc.txt )
 
 src_configure() {
 	local mycmakeargs=(
 		-Denable-alsa=$(usex alsa)
+		-Denable-aufile=ON
 		-Denable-dbus=$(usex dbus)
 		-Denable-debug=$(usex debug)
+		-Denable-dsound=OFF # Windows
+		-Denable-floats=OFF # loat instead of double for DSP samples
+		-Denable-fpe-check=$(usex debug)
 		-Denable-ipv6=$(usex ipv6)
 		-Denable-jack=$(usex jack)
 		-Denable-ladspa=$(usex ladspa)
+		-Denable-libinstpatch=ON # https://github.com/swami/libinstpatch
+		-Denable-midishare=OFF # http://midishare.sourceforge.net/
+		-Denable-network=$(usex network)
+		-Denable-opensles=OFF
+		-Denable-oboe=OFF # requires OpenSLES and/or AAudio
 		-Denable-oss=$(usex oss)
 		-Denable-libsndfile=$(usex sndfile)
+		-Denable-pkgconfig=ON
 		-Denable-portaudio=$(usex portaudio)
+		-Denable-profiling=$(usex debug)
 		-Denable-pulseaudio=$(usex pulseaudio)
 		-Denable-readline=$(usex readline)
+		-Denable-sdl2=$(usex sdl)
 		-Denable-systemd=$(usex systemd)
+		-Denable-threads=$(usex threads)
+		-Denable-trap-on-fpe=$(usex debug)
+		-Denable-ubsan=OFF # compile and link against UBSan (for debugging fluidsynth internals)
+		-Denable-waveout=OFF # Windows
+		-Denable-winmidi=OFF # Windows
 	)
 
 	if use alsa; then

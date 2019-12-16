@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils flag-o-matic toolchain-funcs git-2 prefix
+inherit eutils flag-o-matic toolchain-funcs git-r3 prefix
 
 IUSE="nls xinerama bidi +truetype +imlib +slit +systray +toolbar vim-syntax"
 

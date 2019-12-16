@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
 
 inherit distutils-r1
 
@@ -17,20 +17,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx )
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
-python_test() {
-	py.test -vv test || die "tests failed with ${EPYTHON}"
-}
-
-python_compile_all() {
-	use doc && emake -C docs html
-}
-
-python_install_all() {
-	use doc && HTML_DOCS=( "${S}"/docs/_build/html/. )
-	distutils-r1_python_install_all
-}
+distutils_enable_sphinx docs
+distutils_enable_tests pytest
