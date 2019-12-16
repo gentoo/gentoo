@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=x11-libs/libXrandr x11-libs/libXcursor x11-libs/fox-wrapper bzip2? ( app-arch/bzip2 ) jpeg? ( virtual/jpeg:= ) opengl? ( virtual/glu virtual/opengl ) png? ( media-libs/libpng:0= ) tiff? ( media-libs/tiff:0= ) truetype? ( media-libs/freetype:2 x11-libs/libXft ) zlib? ( sys-libs/zlib ) doc? ( app-doc/doxygen ) x11-base/xorg-proto x11-libs/libXt >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=C++ Toolkit for developing Graphical User Interfaces easily and effectively
+EAPI=5
+HOMEPAGE=http://www.fox-toolkit.org/
+IUSE=+bzip2 +jpeg +opengl +png tiff +truetype +zlib debug doc profile
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=x11-libs/libXrandr x11-libs/libXcursor x11-libs/fox-wrapper bzip2? ( app-arch/bzip2 ) jpeg? ( virtual/jpeg:= ) opengl? ( virtual/glu virtual/opengl ) png? ( media-libs/libpng:0= ) tiff? ( media-libs/tiff:0= ) truetype? ( media-libs/freetype:2 x11-libs/libXft ) zlib? ( sys-libs/zlib ) doc? ( app-doc/doxygen )
+SLOT=1.7
+SRC_URI=ftp://ftp.fox-toolkit.org/pub/fox-1.7.67.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	estack	686eaab303305a908fd57b2fd7617800	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	versionator	2352c3fc97241f6a02042773c8287748
+_md5_=c3a8cb6b5104cf476ed65609bdfcd784
