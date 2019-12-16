@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+<use>
+<flag name='freeimage'>Use <pkg>media-libs/freeimage</pkg> as image library</flag>
+</use>
 	<upstream>
 		<remote-id type="github">eXeC64/imv</remote-id>
 	</upstream>
