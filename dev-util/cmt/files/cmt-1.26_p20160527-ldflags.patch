@@ -1,0 +1,29 @@
+--- a/mgr/requirements	2014-01-06 22:40:25.000000000 +0800
++++ b/mgr/requirements	2019-12-09 22:33:53.375723322 +0800
+@@ -157,7 +157,7 @@
+ macro cdebugflags     "" \
+       debug           "$(debug_option)"
+ 
+-macro cflags          "" \
++macro cflags          "${CFLAGS}" \
+       LynxOS-VGPW2    "-X" \
+       insure          "-std1" \
+       HP-UX           "+Z" \
+@@ -252,7 +252,7 @@
+       hp700_ux101     "-fpic" \
+       HP-UX           "+Z -Wc,-ansi_for_scope,on" \
+       hp_ux102        "-z +p -Wc,-ansi_for_scope,on +O2 +Onoinitcheck" \
+-      Linux           "-pipe -ansi -pedantic -W -Wall -Wwrite-strings -Wpointer-arith -Woverloaded-virtual " \
++      Linux           "${CXXFLAGS}" \
+       SunOS           "-KPIC" \
+       VisualC         '/nologo /DWIN32 /MD /W3 $(includes) /c /EHsc'
+ 
+@@ -403,7 +403,7 @@
+ macro shlibflags    "" \
+       HP-UX         "-Wl,-a,shared -b +Z -q -Wl,+s -Wl,+vallcompatwarnings" \
+       OSF1          "-shared -expect_unresolved '*'" \
+-      Linux         "-shared" \
++      Linux         "-shared ${LDFLAGS}" \
+       CYGWIN        "-shared" \
+       SunOS         "$(debug_option)" \
+       VisualC       "" \
