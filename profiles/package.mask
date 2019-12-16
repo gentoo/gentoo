@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-12-16)
+# Old slot of unmaintained x11-libs/fox.  Last touched in 2015, pending
+# bump since.  x11-misc/xfe is the only revdep.
+# Removal in 30 days.  Bug #703084.
+x11-libs/fox:1.6
+x11-misc/xfe
+
 # Michał Górny <mgorny@gentoo.org> (2019-12-15)
 # Live ebuild only.  Not touched since 2012.  Unsurprisingly,
 # the included patch no longer applies.  Actually, there's
