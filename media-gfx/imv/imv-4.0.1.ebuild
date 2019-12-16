@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 toolchain-funcs xdg-utils
+inherit toolchain-funcs xdg-utils
 
 DESCRIPTION="Minimal image viewer designed for tiling window manager users"
 HOMEPAGE="https://github.com/eXeC64/imv"
-EGIT_REPO_URI="https://github.com/eXeC64/imv"
+SRC_URI="https://github.com/eXeC64/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="X +freeimage jpeg png svg test tiff wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
