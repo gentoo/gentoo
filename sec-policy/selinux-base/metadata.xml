@@ -14,5 +14,6 @@
 		<flag name="open_perms">Enable the open permissions for file object classes (SELinux policy capability).</flag>
 		<flag name="ubac">Enable User Based Access Control (UBAC) in the SELinux policy</flag>
 		<flag name="unconfined">Enable support for the unconfined SELinux module</flag>
+		<flag name="unknown-perms">Default allow unknown classes in kernels newer than the policy (SELinux policy capability).</flag>
 	</use>
 </pkgmetadata>
