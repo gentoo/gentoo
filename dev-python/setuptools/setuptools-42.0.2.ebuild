@@ -27,17 +27,18 @@ RESTRICT="!test? ( test )"
 # Temporary hack to avoid py38 keywording hell.  Please remove when
 # the test deps all have py38.  Also setuptools' test pass with py38,
 # so you need to hack them all in locally before bumping and test.
-TEST_USEDEP=$(python_gen_usedep python2_7 python3_{5,6,7} pypy{,3})
 BDEPEND="
 	app-arch/unzip
 	test? (
-		dev-python/mock[${TEST_USEDEP}]
-		dev-python/pip[${TEST_USEDEP}]
-		>=dev-python/pytest-3.7.0[${TEST_USEDEP}]
-		dev-python/pytest-fixture-config[${TEST_USEDEP}]
-		dev-python/pytest-virtualenv[${TEST_USEDEP}]
-		dev-python/wheel[${TEST_USEDEP}]
-		virtual/python-futures[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/mock[${PYTHON_USEDEP}]
+			dev-python/pip[${PYTHON_USEDEP}]
+			>=dev-python/pytest-3.7.0[${PYTHON_USEDEP}]
+			dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
+			dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
+			dev-python/wheel[${PYTHON_USEDEP}]
+			virtual/python-futures[${PYTHON_USEDEP}]
+		' python2_7 python3_{5,6,7} pypy{,3})
 	)
 "
 PDEPEND="
