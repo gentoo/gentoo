@@ -16,7 +16,7 @@ LICENSE="BSD"
 KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
-	dev-python/cython[$(python_gen_usedep 'python*')]
+	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
