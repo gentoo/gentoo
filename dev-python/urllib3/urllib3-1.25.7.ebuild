@@ -9,7 +9,7 @@ PYTHON_REQ_USE="ssl(+)"
 inherit distutils-r1
 
 DESCRIPTION="HTTP library with thread-safe connection pooling, file post, and more"
-HOMEPAGE="https://github.com/shazow/urllib3"
+HOMEPAGE="https://github.com/urllib3/urllib3"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -37,7 +37,9 @@ BDEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		>=dev-python/trustme-0.5.3[${PYTHON_USEDEP}]
-		>=www-servers/tornado-4.2.1[$(python_gen_usedep python{2_7,3_{5,6,7}})]
+		$(python_gen_cond_dep '
+			>=www-servers/tornado-4.2.1[${PYTHON_USEDEP}]
+		' python{2_7,3_{5,6,7}})
 	)
 "
 

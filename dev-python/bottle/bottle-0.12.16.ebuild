@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy pypy3 )
 inherit distutils-r1 eutils
 
 DESCRIPTION="A fast and simple micro-framework for small web-applications"
-HOMEPAGE="https://pypi.org/project/bottle/ http://bottlepy.org/"
+HOMEPAGE="https://pypi.org/project/bottle/ https://bottlepy.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -18,7 +18,11 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/mako[$(python_gen_usedep 'python*')] )"
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/mako[${PYTHON_USEDEP}]
+		' 'python*')
+	)"
 RDEPEND=""
 
 PATCHES=(
@@ -36,7 +40,7 @@ python_prepare_all() {
 python_test() {
 	# A few odd fails in the suite under pypy
 	# https://github.com/bottlepy/bottle/issues/714
-	"${PYTHON}" test/testall.py || die "tests failed under ${EPYTHON}"
+	"${EPYTHON}" test/testall.py || die "tests failed under ${EPYTHON}"
 }
 
 pkg_postinst() {

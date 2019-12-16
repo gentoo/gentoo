@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6,7,8}} )
 
 inherit distutils-r1
@@ -15,17 +16,18 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ia64 ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
+RDEPEND="
 	$(python_gen_cond_dep '>=dev-python/configparser-3.5.0[${PYTHON_USEDEP}]' 'python2*')
+"
+BDEPEND="
 	test? (
+		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		virtual/python-pathlib[${PYTHON_USEDEP}]
 	)
 "
-
-RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}"-0.2.1-init.py.patch
