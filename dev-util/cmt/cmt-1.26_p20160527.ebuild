@@ -22,6 +22,8 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/CMT/${CMT_PV}"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.26_p20160527-ldflags.patch )
+
 src_configure() {
 	cd "${S}"/mgr || die
 	./INSTALL || die
