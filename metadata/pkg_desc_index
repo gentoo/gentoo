@@ -8716,7 +8716,7 @@ dev-python/python-fchksum 1.7.1-r1: Python module to find the checksum of files
 dev-python/python-gammu 2.11: Python bindings for Gammu
 dev-python/python-gflags 3.1.1 3.1.2-r1: Google's Python argument parsing library
 dev-python/python-glanceclient 2.13.1 2.16.0: A client for the OpenStack Glance API
-dev-python/python-gnupg 0.4.0 0.4.1 0.4.3: A Python wrapper for GnuPG
+dev-python/python-gnupg 0.4.0 0.4.1 0.4.3 0.4.5: A Python wrapper for GnuPG
 dev-python/python-heatclient 1.16.2 1.17.0: OpenStack Orchestration API Client Library
 dev-python/python-hpilo 4.0 4.1: iLO automation from python or shell
 dev-python/python-iptables 0.12.0 0.13.0: Python bindings for iptables
