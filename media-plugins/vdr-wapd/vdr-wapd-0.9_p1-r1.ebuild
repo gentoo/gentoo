@@ -5,10 +5,12 @@ EAPI=7
 
 inherit vdr-plugin-2
 
+MY_P="${PN}-${PV%_p*}"
+
 DESCRIPTION="VDR plugin: lets VDR listen to WAP requests on WML enabled browsers"
 HOMEPAGE="http://www.heiligenmann.de/"
-SRC_URI="http://www.vdr.heiligenmann.de/download/${PN}-0.9.tgz
-		http://www.vdr.heiligenmann.de/download/wapd-0.9-patch1.diff.gz"
+SRC_URI="http://www.heiligenmann.de/vdr/download/${MY_P}.tgz
+		http://www.heiligenmann.de/vdr/download/${MY_P#vdr-}-patch1.diff.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -16,3 +16,5 @@ IUSE=""
 
 DEPEND=">=media-video/vdr-2.0"
 RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${P}"
