@@ -59,9 +59,6 @@
     <flag name="lmdb">
       Add support for using <pkg>dev-db/lmdb</pkg>
     </flag>
-    <flag name="query_cache">
-      Obsolete, use "querycache" instead. Flag will be removed after next stabilization.
-    </flag>
     <flag name="querycache">
       Add support for query caching (requires 'berkdb' flag)
     </flag>
