@@ -1,0 +1,23 @@
+From e4b812b50b0a7dfd430b00d0851be19e83845ac8 Mon Sep 17 00:00:00 2001
+From: Arvid Norberg <arvid@cs.umu.se>
+Date: Wed, 13 Nov 2019 15:36:05 +0000
+Subject: [PATCH] add executor_type to socket_type
+
+---
+ include/libtorrent/aux_/socket_type.hpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/include/libtorrent/aux_/socket_type.hpp b/include/libtorrent/aux_/socket_type.hpp
+index 1342d39adf..7cbe90fd68 100644
+--- a/include/libtorrent/aux_/socket_type.hpp
++++ b/include/libtorrent/aux_/socket_type.hpp
+@@ -184,6 +184,10 @@ namespace aux {
+ 		using receive_buffer_size = tcp::socket::receive_buffer_size;
+ 		using send_buffer_size = tcp::socket::send_buffer_size;
+ 
++#if BOOST_VERSION >= 106600
++		using executor_type = tcp::socket::executor_type;
++#endif
++
+ 		explicit socket_type(io_service& ios): m_io_service(ios), m_type(0) {}
+ 		~socket_type();
