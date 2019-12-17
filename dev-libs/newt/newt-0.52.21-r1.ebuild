@@ -15,6 +15,8 @@ LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gpm nls tcl"
+RESTRICT="test"
+
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
