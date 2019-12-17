@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="Script to encode H.264/AVC/MPEG-4 Part 10 formats"
 HOMEPAGE="http://h264enc.sourceforge.net/"
@@ -20,7 +20,8 @@ RDEPEND="
 	sys-process/time
 	aac? (
 		media-libs/faac
-		media-sound/aacplusenc )
+		media-libs/libaacplus
+		)
 	dvd? ( media-video/lsdvd )
 	flac? ( media-libs/flac )
 	lame? ( media-sound/lame )
