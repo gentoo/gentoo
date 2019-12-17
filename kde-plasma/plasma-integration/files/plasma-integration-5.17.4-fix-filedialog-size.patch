@@ -1,0 +1,52 @@
+From 2e9f96847432c707a9dfbfe0748f0524a128abb7 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Sat, 14 Dec 2019 14:03:30 +0100
+Subject: Resize file dialog window before size restore
+
+Summary:
+KDEPlatformDialogHelper explicitly resizes the window contents to the
+window as part of a bug fix. This means we lose the common path where
+the window resizes to the content's size hints that happens later.
+
+If we resize the window to the size hint in advance we keep our size
+hint.
+
+(alternatively it seems to be me we can remove that old hack...but it
+needs testing by people with Qt5.12)
+
+Test Plan:
+KWrite -> open
+
+Size is 900x600, the size hint
+not 640x480 the QPA default
+
+Reviewers: #plasma, ngraham
+
+Reviewed By: ngraham
+
+Subscribers: ngraham, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D25986
+---
+ src/platformtheme/kdeplatformfiledialoghelper.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/platformtheme/kdeplatformfiledialoghelper.cpp b/src/platformtheme/kdeplatformfiledialoghelper.cpp
+index efb7b60..4c67547 100644
+--- a/src/platformtheme/kdeplatformfiledialoghelper.cpp
++++ b/src/platformtheme/kdeplatformfiledialoghelper.cpp
+@@ -370,6 +370,10 @@ void KDEPlatformFileDialogHelper::restoreSize()
+ {
+     m_dialog->winId(); // ensure there's a window created
+     KSharedConfig::Ptr conf = KSharedConfig::openConfig();
++
++    // see the note below
++    m_dialog->windowHandle()->resize(m_dialog->sizeHint());
++
+     KWindowConfig::restoreWindowSize(m_dialog->windowHandle(), conf->group("FileDialogSize"));
+     // NOTICE: QWindow::setGeometry() does NOT impact the backing QWidget geometry even if the platform
+     // window was created -> QTBUG-40584. We therefore copy the size here.
+-- 
+cgit v1.1
