@@ -44,11 +44,11 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	doc? ( app-doc/doxygen )
 	python? ( >=dev-lang/swig-3.0:0 )"
 RDEPEND="${COMMON_DEPEND}
 	sci-electronics/electronics-menu
 "
+BDEPEND="doc? ( app-doc/doxygen )"
 CHECKREQS_DISK_BUILD="800M"
 
 PATCHES=(
