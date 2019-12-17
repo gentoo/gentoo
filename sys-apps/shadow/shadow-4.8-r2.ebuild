@@ -144,16 +144,11 @@ src_install() {
 		set_login_opt ENCRYPT_METHOD SHA512
 		set_login_opt CONSOLE
 	else
-		dopamd "${FILESDIR}"/pam.d-include/shadow
-
-		for x in chpasswd chgpasswd newusers; do
+		for x in chsh chfn ; do
 			newpamd "${FILESDIR}"/pam.d-include/passwd ${x}
 		done
 
-		for x in chage chsh chfn \
-				 user{add,del,mod} group{add,del,mod} ; do
-			newpamd "${FILESDIR}"/pam.d-include/shadow ${x}
-		done
+		newpamd "${FILESDIR}"/pam.d-include/shadow groupmems
 
 		# comment out login.defs options that pam hates
 		local opt sed_args=()
