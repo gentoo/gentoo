@@ -1,0 +1,25 @@
+From 2b5e86323f180f0c51ef9af898a69a522bc379ad Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Sat, 14 Dec 2019 00:29:32 +0100
+Subject: Fix regression in "Port the pager applet away from QtWidgets"
+
+BUG: 414849
+---
+ applets/pager/plugin/windowmodel.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/applets/pager/plugin/windowmodel.cpp b/applets/pager/plugin/windowmodel.cpp
+index 93273bb..bcda333 100644
+--- a/applets/pager/plugin/windowmodel.cpp
++++ b/applets/pager/plugin/windowmodel.cpp
+@@ -77,7 +77,7 @@ QVariant WindowModel::data(const QModelIndex &index, int role) const
+     if (role == AbstractTasksModel::Geometry) {
+         QRect windowGeo = TaskFilterProxyModel::data(index, role).toRect();
+         QList<QScreen *> screens = QGuiApplication::screens();
+-        const QRect desktopGeo = screens.at(0)->geometry();
++        const QRect desktopGeo = screens.at(0)->virtualGeometry();
+ 
+         if (KWindowSystem::mapViewport()) {
+             int x = windowGeo.center().x() % desktopGeo.width();
+-- 
+cgit v1.1

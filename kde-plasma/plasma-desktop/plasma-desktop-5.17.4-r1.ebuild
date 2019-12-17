@@ -117,6 +117,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-activities-kcm-hidpi.patch
+	"${FILESDIR}"/${P}-pager-regression.patch
 )
 
 src_configure() {
