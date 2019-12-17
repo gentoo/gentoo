@@ -8,5 +8,7 @@ inherit acct-user
 DESCRIPTION="user for chrooted scponly"
 ACCT_USER_ID=239
 ACCT_USER_GROUPS=( scponly )
+ACCT_USER_HOME=/home/scponly//
+ACCT_USER_HOME_OWNER=root:root
 
 acct-user_add_deps
