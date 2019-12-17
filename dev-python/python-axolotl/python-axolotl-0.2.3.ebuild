@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
 
 inherit distutils-r1
 
@@ -19,7 +19,7 @@ RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
 	dev-python/python-axolotl-curve25519[${PYTHON_USEDEP}]
-	"
+"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
