@@ -78,6 +78,7 @@ acct-group/spire 0: System group: spire
 acct-group/stdiscosrv 0: Group for the Syncthing discovery server
 acct-group/steamcmd 0: A group for the SteamCMD server
 acct-group/strelaysrv 0: Group for the Syncthing relay server
+acct-group/stunnel 0: group for stunnel
 acct-group/suricata 0: Group for Suricata IDS
 acct-group/syncthing 0: Group for the system-wide net-p2p/syncthing server
 acct-group/systemd-coredump 0: System group: systemd-coredump
@@ -173,6 +174,7 @@ acct-user/spire 0: user for spiffe runtime environment
 acct-user/stdiscosrv 0: User for the Syncthing discovery server
 acct-user/steamcmd 0: A user for the SteamCMD server
 acct-user/strelaysrv 0: User for the Syncthing relay server
+acct-user/stunnel 0: user for stunnel
 acct-user/suricata 0: User for Suricata IDS
 acct-user/syncthing 0: User for the system-wide net-p2p/syncthing server
 acct-user/systemd-coredump 0: System user: systemd-coredump
@@ -15427,7 +15429,7 @@ net-misc/ssvnc 1.0.29-r2: VNC viewer that adds encryption security to VNC connec
 net-misc/stargazer 2.408-r1: Billing system for small home and office networks
 net-misc/streamlink 0.14.2-r1 1.0.0 1.1.1 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
-net-misc/stunnel 5.50-r1 5.55 5.56: TLS/SSL - Port Wrapper
+net-misc/stunnel 5.50-r1 5.55 5.56-r1: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.7 1.2.9 1.2.15: Open source implementation of the STUN protocol
 net-misc/suite3270 3.5_p10 3.5_p12 3.6_p4 3.6_p8: Complete 3270 access package
 net-misc/switzerland 0.1.0: Network Testing Tool
@@ -17460,12 +17462,12 @@ sys-cluster/keepalived 2.0.17 2.0.18 2.0.19: A strong & robust keepalive facilit
 sys-cluster/knem 1.1.3 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/kube-apiserver 1.14.8 1.14.9 1.15.5 1.15.6 1.16.2 1.16.3: Kubernetes API server
 sys-cluster/kube-controller-manager 1.14.8 1.14.9 1.15.5 1.15.6 1.16.2 1.16.3: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.14.8 1.14.9 1.15.5 1.15.6 1.16.2 1.16.3: Kubernetes Proxy service
+sys-cluster/kube-proxy 1.14.10 1.15.7 1.16.4: Kubernetes Proxy service
 sys-cluster/kube-router 0.3.1: A turnkey solution for Kubernetes networking
 sys-cluster/kube-scheduler 1.14.8 1.14.9 1.15.5 1.15.6 1.16.2 1.16.3: Kubernetes Scheduler
 sys-cluster/kubeadm 1.14.8 1.14.9 1.15.5 1.15.6 1.16.2 1.16.3: CLI to Easily bootstrap a secure Kubernetes cluster
-sys-cluster/kubectl 1.14.8 1.14.9 1.15.5 1.15.6 1.16.2 1.16.3: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.14.8 1.14.9 1.15.5 1.15.6 1.16.2 1.16.3: Kubernetes Node Agent
+sys-cluster/kubectl 1.14.9 1.14.10 1.15.7 1.16.4: CLI to run commands against Kubernetes clusters
+sys-cluster/kubelet 1.14.9 1.14.10 1.15.7 1.16.4: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1: API for distributing embarrassingly parallel workloads using self-stabilization
 sys-cluster/libqb 0.17.2 1.0.1 1.0.5: Library providing high performance logging, tracing, ipc, and poll
