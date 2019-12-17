@@ -1,0 +1,37 @@
+From 865ae05e8fe280a177fcd6dcf5f847327de36a00 Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Sun, 15 Dec 2019 14:04:29 +0100
+Subject: [applets/weather] Fix regression in temperature size with short
+ panels
+
+BUG: 415187
+FIXED-IN: 5.17.5
+---
+ applets/weather/package/contents/ui/IconAndTextItem.qml | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/applets/weather/package/contents/ui/IconAndTextItem.qml b/applets/weather/package/contents/ui/IconAndTextItem.qml
+index 7042bf8..dc270e4 100644
+--- a/applets/weather/package/contents/ui/IconAndTextItem.qml
++++ b/applets/weather/package/contents/ui/IconAndTextItem.qml
+@@ -86,9 +86,15 @@ GridLayout {
+                 leftMargin: units.smallSpacing
+                 rightMargin: units.smallSpacing
+             }
+-            // This magic value of 0.7 is taken from the digital clock, so that the
+-            // text sizes are identical
+-            height: Math.min (parent.height * 0.7, 3 * theme.defaultFont.pixelSize)
++            // These magic values are taken from the digital clock, so that the
++            // text sizes here are identical with various clock text sizes
++            height: {
++                var textHeightScaleFactor = 0.7;
++                if (parent.height <= 26) {
++                    textHeightScaleFactor = 0.9;
++                }
++                return Math.min (parent.height * textHeightScaleFactor, 3 * theme.defaultFont.pixelSize);
++            }
+             visible: false
+ 
+             // pattern to reserve some constant space TODO: improve and take formatting/i18n into account
+-- 
+cgit v1.1
