@@ -12943,7 +12943,7 @@ media-gfx/photoqt 1.7.1-r1: Simple but powerful Qt-based image viewer
 media-gfx/phototonic 2.1: Image viewer and organizer
 media-gfx/pinta 1.6-r2 9999: Simple Painting for Gtk
 media-gfx/pixels2pgf 0.1 9999: Convert pixel images (e.g. QRCode) to PGF/Tikz rectangles
-media-gfx/plantuml 8046: Draw UML diagrams using a simple and human readable text description
+media-gfx/plantuml 0.8046 1.2019.13: Draw UML diagrams using a simple and human readable text description
 media-gfx/png2ico 2002.12.08: PNG to icon converter
 media-gfx/pngcheck 2.3.0: Verifies the integrity of PNG, JNG and MNG files with internal checksums
 media-gfx/pngcrush 1.8.13: Portable Network Graphics (PNG) optimizing utility
@@ -14925,7 +14925,7 @@ net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS
 net-libs/libgsasl 1.8.0-r1: The GNU SASL library
 net-libs/libgssglue 0.4-r1: Exports a gssapi interface which calls other random gssapi libraries
 net-libs/libhackrf 2018.01.1 9999: library for communicating with HackRF SDR platform
-net-libs/libhtp 0.5.22 0.5.31: security-aware parser for the HTTP protocol and the related bits and pieces
+net-libs/libhtp 0.5.31 0.5.32: security-aware parser for the HTTP protocol and the related bits and pieces
 net-libs/libhubbub 0.3.3 0.3.5-r1 0.3.6: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
 net-libs/libiio 0.15-r1 9999: Library for interfacing with IIO devices
