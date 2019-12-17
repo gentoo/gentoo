@@ -24,21 +24,16 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-# Temporary hack to avoid py38 keywording hell.  Please remove when
-# the test deps all have py38.  Also setuptools' test pass with py38,
-# so you need to hack them all in locally before bumping and test.
 BDEPEND="
 	app-arch/unzip
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/mock[${PYTHON_USEDEP}]
-			dev-python/pip[${PYTHON_USEDEP}]
-			>=dev-python/pytest-3.7.0[${PYTHON_USEDEP}]
-			dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
-			dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
-			dev-python/wheel[${PYTHON_USEDEP}]
-			virtual/python-futures[${PYTHON_USEDEP}]
-		' python2_7 python3_{5,6,7} pypy{,3})
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pip[${PYTHON_USEDEP}]
+		>=dev-python/pytest-3.7.0[${PYTHON_USEDEP}]
+		dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
+		dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
+		virtual/python-futures[${PYTHON_USEDEP}]
 	)
 "
 PDEPEND="
@@ -71,15 +66,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	if [[ ${EPYTHON} == python3.8 ]]; then
-		if [[ ${PV} != 42.0.2 ]]; then
-			eerror "Please disable py38 hacks and test locally, then update this."
-			die "Python 3.8 support untested for ${PV}"
-		fi
-		einfo "Skipping testing on ${EPYTHON} due to unkeyworded deps"
-		return
-	fi
-
 	# test_easy_install raises a SandboxViolation due to ${HOME}/.pydistutils.cfg
 	# It tries to sandbox the test in a tempdir
 	HOME="${PWD}" pytest -vv ${PN} || die "Tests failed under ${EPYTHON}"
