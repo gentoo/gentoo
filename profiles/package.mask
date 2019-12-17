@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Anthony G. Basile <blueness@gentoo.org> (2019-12-17)
+# Project has been dead upstream for years.
+# Removal in 30 days.
+app-benchmarks/spew
+
 # Jason A. Donenfeld <zx2c4@gentoo.org> (2019-12-16)
 # Simplify FOX packages. Nobody uses the demo apps or the "stable" branch.
 # Removal in 30 days.  Bug #703088. Bug #703084.
