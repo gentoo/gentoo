@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,8 +19,7 @@ DEPEND="
 	>=dev-libs/libxml2-2.6.9
 	dev-libs/libxslt
 	>=dev-tcltk/tcllib-1.2
-	dev-libs/expat
-	!dev-tcltk/tcldom"
+	dev-libs/expat"
 #	test? ( dev-tcltk/tclparser )
 RDEPEND="${DEPEND}"
 
