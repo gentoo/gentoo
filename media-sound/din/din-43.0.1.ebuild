@@ -41,7 +41,7 @@ src_prepare() {
 
 	dos2unix pixmaps/${PN}.desktop || die "Failed to fix desktop file"
 
-	use jack && sed -i "s/-lasound/-ljack/g" src/Makefile.am || die "Failed to fix jack linking"
+	use jack && (sed -i "s/-lasound/-ljack/g" src/Makefile.am || die "Failed to fix jack linking")
 
 	eautoreconf
 }
