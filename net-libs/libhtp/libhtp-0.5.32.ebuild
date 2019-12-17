@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 inherit autotools multilib-minimal
 
@@ -18,6 +18,7 @@ RDEPEND="sys-libs/zlib[static-libs?]"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
@@ -30,5 +31,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	use static-libs || find "${ED}" -name '*.la' -delete
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die "Failed to remove .la files"
+	fi
 }
