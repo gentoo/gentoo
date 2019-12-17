@@ -1,0 +1,27 @@
+From 567f71714faac305947573e307f486a9960cf1d1 Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Fri, 13 Dec 2019 16:12:34 +0100
+Subject: [KCMs/Activities] Fix jagginess for activities list icons on high DPI
+ systems
+
+BUG: 414945
+FIXED-IN: 5.17.5
+---
+ kcms/activities/qml/activitiesTab/ActivitiesView.qml | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/kcms/activities/qml/activitiesTab/ActivitiesView.qml b/kcms/activities/qml/activitiesTab/ActivitiesView.qml
+index aac13a2..531ef9f 100644
+--- a/kcms/activities/qml/activitiesTab/ActivitiesView.qml
++++ b/kcms/activities/qml/activitiesTab/ActivitiesView.qml
+@@ -52,6 +52,8 @@ ColumnLayout {
+                         height: Kirigami.Units.iconSizes.medium
+                         width: height
+                         source: model.icon
++                        sourceSize.width: model.icon.width
++                        sourceSize.height: model.icon.height
+                     }
+ 
+                     QQC2.Label {
+-- 
+cgit v1.1
