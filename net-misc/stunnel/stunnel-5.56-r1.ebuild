@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit ssl-cert multilib systemd user
+inherit ssl-cert multilib systemd
 
 DESCRIPTION="TLS/SSL - Port Wrapper"
 HOMEPAGE="http://www.stunnel.org/index.html"
@@ -22,16 +22,14 @@ IUSE="ipv6 selinux stunnel3 tcpd"
 
 DEPEND="dev-libs/openssl:0=
 	tcpd? ( sys-apps/tcp-wrappers )"
-RDEPEND="${DEPEND}
+RDEPEND="
+	acct-user/stunnel
+	acct-group/stunnel
+	${DEPEND}
 	stunnel3? ( dev-lang/perl )
 	selinux? ( sec-policy/selinux-stunnel )"
 
 RESTRICT="test"
-
-pkg_setup() {
-	enewgroup stunnel
-	enewuser stunnel -1 -1 -1 stunnel
-}
 
 src_prepare() {
 	# Hack away generation of certificate
