@@ -45,7 +45,8 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN/-rasterbar}-${MY_P}"
 
-PATCHES=( "${FILESDIR}"/fix-boost-1.70.patch )
+PATCHES=( "${FILESDIR}"/fix-boost-1.70.patch
+	"${FILESDIR}"/fix-boost-1.72.patch )
 
 src_prepare() {
 	mkdir "${S}"/build-aux/ || die
