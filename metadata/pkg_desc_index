@@ -1579,9 +1579,9 @@ app-emulation/winetricks 20190912 99999999: Easy way to install DLLs needed to w
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.11.3-r1 4.12.1-r4 4.13.0_rc4: The Xen virtual machine monitor
-app-emulation/xen-pvgrub 4.11.3 4.12.1 4.13.0_rc4: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.11.3 4.12.1-r1 4.13.0_rc4: Xen tools including QEMU and xl
+app-emulation/xen 4.11.3-r1 4.12.1-r4 4.13.0_rc5: The Xen virtual machine monitor
+app-emulation/xen-pvgrub 4.11.3 4.12.1 4.13.0_rc5: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
+app-emulation/xen-tools 4.11.3 4.12.1-r1 4.13.0_rc5: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.2: Manages the {,/usr}/bin/awk symlink
@@ -7396,7 +7396,7 @@ dev-python/SaltTesting 2017.6.1 2018.1.16: Required testing tools needed in the 
 dev-python/SchemaObject 0.5.3-r1 0.5.7 0.5.8: A simple Python object interface to a MySQL database schema
 dev-python/URLObject 2.4.0 2.4.2-r1 2.4.3: A utility class for manipulating URLs
 dev-python/WSME 0.8.0 0.9.1 0.9.2 0.9.3: Simplify the writing of REST APIs, and extend them with additional protocols.
-dev-python/XenAPI 1.2: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
+dev-python/XenAPI 2.14: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/YURL 0.13: Yurl is the replacement of built in python urlparse module
 dev-python/aadict 0.2.3: An auto-attribute dict (and a couple of other useful dict functions)
 dev-python/absl-py 0.7.1 0.8.1: Abseil Python Common Libraries
