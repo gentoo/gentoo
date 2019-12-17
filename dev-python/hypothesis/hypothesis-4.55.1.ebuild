@@ -14,13 +14,14 @@ SRC_URI="https://github.com/HypothesisWorks/${PN}/archive/${PN}-python-${PV}.tar
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/attrs-19.2.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'python2*' pypy)
+	>=dev-python/sortedcontainers-2.1.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
