@@ -4,18 +4,18 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7,8}} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
 
 DESCRIPTION="Extensible Python-based build utility"
-HOMEPAGE="http://www.scons.org/"
+HOMEPAGE="https://www.scons.org/"
 SRC_URI="
 	https://downloads.sourceforge.net/project/scons/scons/${PV}/${P}.tar.gz
 	doc? (
-		http://www.scons.org/doc/${PV}/PDF/${PN}-user.pdf -> ${P}-user.pdf
-		http://www.scons.org/doc/${PV}/HTML/${PN}-user.html -> ${P}-user.html
+		https://www.scons.org/doc/${PV}/PDF/${PN}-user.pdf -> ${P}-user.pdf
+		https://www.scons.org/doc/${PV}/HTML/${PN}-user.html -> ${P}-user.html
 	)
 	test? ( https://github.com/scons/scons/archive/${PV}.tar.gz -> ${P}.gh.tar.gz )"
 
