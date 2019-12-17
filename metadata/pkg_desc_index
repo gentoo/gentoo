@@ -14940,7 +14940,7 @@ net-libs/liblockfile 1.09 1.16: Implements functions designed to lock the standa
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0 1.14.4 1.16.0 1.16.2 1.18.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 5.37.0-r1: C++ interface for MediaWiki based web service as wikipedia.org
 net-libs/libmicrodns 0.0.9 9999: Minimal mDNS resolver (and announcer) library
-net-libs/libmicrohttpd 0.9.63 0.9.64 0.9.65 0.9.66 0.9.67 0.9.68: Small C library to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.65 0.9.68 0.9.69: Small C library to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
@@ -15272,7 +15272,7 @@ net-misc/iprange 1.0.4: iprange utility
 net-misc/ipsorcery 2.0.9-r2: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
 net-misc/ipsvd 1.0.0-r2: ipsvd is a set of internet protocol service daemons for Unix
 net-misc/iputils 20180629 20190515 20190709 99999999: Network monitoring tools including ping and ping6
-net-misc/ipv6calc 1.0.0 2.1.0: IPv6 address calculator
+net-misc/ipv6calc 1.0.0 2.1.0 2.1.1: IPv6 address calculator
 net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/irrtree 1.2.1: The BGP swiss army knife of networking
 net-misc/istioctl 1.1.17: Istio configuration command line utility
@@ -18359,7 +18359,7 @@ www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webs
 www-servers/tomcat 7.0.96 8.5.47 9.0.7 9.0.27: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1 4.5.1 4.5.3 5.0.2 5.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.17 2.0.17.1 2.0.17.1-r1 2.0.18: uWSGI server for Python web applications
-www-servers/varnish 4.0.5 4.1.8 5.1.3 5.2.1 6.0.1 6.1.0 6.1.1 6.2.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
+www-servers/varnish 4.0.5 4.1.8 5.1.3 5.2.1 6.0.1 6.1.0 6.1.1 6.2.0 6.2.1: Varnish is a state-of-the-art, high-performance HTTP accelerator
 www-servers/xsp 2014.12-r2014120900: XSP is a small web server that can host ASP.NET pages
 x11-apps/amlc 0.5.1: Another Modeline Calculator, generates quality X11 display configs easily
 x11-apps/appres 1.0.4 1.0.5: list X application resource database
