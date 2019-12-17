@@ -16,7 +16,7 @@ SRC_URI="
 HOMEPAGE="http://www.freeradius.org/"
 
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 
 IUSE="
