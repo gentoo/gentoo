@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 
 inherit distutils-r1 gnome2-utils xdg-utils
 
@@ -29,7 +29,8 @@ RDEPEND="
 S="${WORKDIR}/fluxgui-${PV}"
 
 python_install() {
-	# Don't let the package compiling the schemas, as this could cause a file collision
+	# Don't let the package compiling the schemas,
+	# as this could cause a file collision
 	export DISABLE_GSCHEMAS_COMPILED="true"
 
 	distutils-r1_python_install
