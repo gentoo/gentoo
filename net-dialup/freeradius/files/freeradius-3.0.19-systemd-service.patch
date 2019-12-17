@@ -1,0 +1,53 @@
+--- a/debian/freeradius.service	2019-12-01 10:02:31.453150556 +0100
++++ b/debian/freeradius.service	2019-12-01 10:08:16.781370632 +0100
+@@ -4,11 +4,10 @@
+ Documentation=man:radiusd(8) man:radiusd.conf(5) http://wiki.freeradius.org/ http://networkradius.com/doc/
+ 
+ [Service]
+-Type=notify
+-WatchdogSec=60
+-NotifyAccess=all
+-PIDFile=/run/freeradius/freeradius.pid
+-EnvironmentFile=-/etc/default/freeradius
++# In 3.0.19 SystemD integration is broken.
++# Type=notify
++# WatchdogSec=60
++# NotifyAccess=all
+ 
+ # FreeRADIUS can do static evaluation of policy language rules based
+ # on environmental variables which is very useful for doing per-host
+@@ -26,17 +25,27 @@
+ # Ensure the daemon can still write its pidfile after it drops
+ # privileges. Combination of options that work on a variety of
+ # systems. Test very carefully if you alter these lines.
+-RuntimeDirectory=freeradius
++RuntimeDirectory=radiusd
+ RuntimeDirectoryMode=0775
+ # This does not work on Debian Jessie:
+-Group=freerad
+-# This does not work on Ubuntu Bionic:
+-ExecStartPre=/bin/chown freerad:freerad /var/run/freeradius
+-
+-ExecStartPre=/usr/sbin/freeradius $FREERADIUS_OPTIONS -Cx -lstdout
+-ExecStart=/usr/sbin/freeradius $FREERADIUS_OPTIONS
++Group=radius
++User=radius
++ExecStartPre=/usr/sbin/radiusd $RADIUSD_OPTS -Cx -lstdout
++ExecStart=/usr/sbin/radiusd -f $RADIUSD_OPTS
++ExecReload=/usr/sbin/radiusd -C $RADIUSD_OPTS
++ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+ RestartSec=5
++ReadOnlyDirectories=/etc/raddb/
++ReadWriteDirectories=/var/log/radius/
++# Security options (https://github.com/FreeRADIUS/freeradius-server/issues/2637)
++NoNewPrivileges=true
++CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_BROADCAST CAP_NET_RAW
++PrivateTmp=true
++ProtectControlGroups=true
++ProtectKernelModules=true
++ProtectKernelTunables=true
++SystemCallArchitectures=native
+ 
+ [Install]
+ WantedBy=multi-user.target
