@@ -322,6 +322,9 @@ src_install() {
 
 		insinto /etc/vulkan/icd.d
 		doins nvidia_icd.json
+
+		insinto /etc/vulkan/implicit_layer.d
+		doins nvidia_layers.json
 	fi
 
 	if use kernel_linux; then
