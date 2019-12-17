@@ -52,11 +52,12 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-account-tools-setuid
+		--enable-shared=no
+		--enable-static=yes
 		--with-btrfs
 		--without-group-name-max-length
 		--without-tcb
-		--enable-shared=no
-		--enable-static=yes
 		$(use_enable nls)
 		$(use_with acl)
 		$(use_with audit)
