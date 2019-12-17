@@ -16,6 +16,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="emacs"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2019.05_fix-boost-1.72.0-build.patch"
+)
+
 # FIXME: add optional lib3mf
 RDEPEND="
 	dev-cpp/eigen:3
