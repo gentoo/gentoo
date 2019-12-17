@@ -14776,7 +14776,7 @@ net-im/gitter-bin 3.1.0 4.1.0: Chat and network platform
 net-im/jabber-base 0.01-r1: Jabber servers and transports layout package
 net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
-net-im/libcommuni 3.5.0_p20180116 3.5.0_p20190110: A cross-platform IRC framework written with Qt
+net-im/libcommuni 3.5.0_p20190110: A cross-platform IRC framework written with Qt
 net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/mattermost-desktop-bin 4.2.3 4.3.1: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 9999: A small Jabber console client with various features, like MUC, SSL, PGP
@@ -15335,7 +15335,7 @@ net-misc/nextcloud-client 2.5.2 2.6.0 2.6.1: Desktop Syncing Client for Nextclou
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
 net-misc/ntp 4.2.8_p13 4.2.8_p13-r1 4.2.8_p13-r2: Network Time Protocol suite/programs
-net-misc/ntpclient 2018.244 2018.244-r1: A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
+net-misc/ntpclient 2018.244-r1: A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
 net-misc/ntpsec 1.1.4 1.1.6 1.1.7-r1 9999: The NTP reference implementation, refactored
 net-misc/nx 3.5.0.33 3.5.99.16 3.5.99.17 3.5.99.20: NX compression technology core libraries
 net-misc/nxplayer 5.1.24.1: Client for NoMachine remote servers
@@ -17466,7 +17466,7 @@ sys-cluster/kube-proxy 1.14.10 1.15.7 1.16.4: Kubernetes Proxy service
 sys-cluster/kube-router 0.3.1: A turnkey solution for Kubernetes networking
 sys-cluster/kube-scheduler 1.14.10 1.15.7 1.16.4: Kubernetes Scheduler
 sys-cluster/kubeadm 1.14.8 1.14.9 1.15.5 1.15.6 1.16.2 1.16.3: CLI to Easily bootstrap a secure Kubernetes cluster
-sys-cluster/kubectl 1.14.9 1.14.10 1.15.7 1.16.4: CLI to run commands against Kubernetes clusters
+sys-cluster/kubectl 1.14.9 1.14.10 1.15.7 1.16.4 1.17.0: CLI to run commands against Kubernetes clusters
 sys-cluster/kubelet 1.14.9 1.14.10 1.15.7 1.16.4: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1: API for distributing embarrassingly parallel workloads using self-stabilization
