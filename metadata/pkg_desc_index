@@ -12078,11 +12078,9 @@ kde-apps/kbreakout 19.08.3 19.12.0: Breakout-like game by KDE
 kde-apps/kbruch 19.08.3 19.12.0: Educational application to learn calculating with fractions
 kde-apps/kcachegrind 19.08.3 19.12.0: Frontend for Cachegrind by KDE
 kde-apps/kcalc 19.08.3 19.12.0: KDE calculator
-kde-apps/kcalcore 19.04.3: Library for handling calendar data
 kde-apps/kcalutils 19.08.3 19.12.0: Library providing utility functions for the handling of calendar data
 kde-apps/kcharselect 19.08.3 19.12.0: KDE character selection utility
 kde-apps/kcolorchooser 19.08.3 19.12.0: KDE color selector/editor
-kde-apps/kcontacts 19.04.3: Address book API based on KDE Frameworks
 kde-apps/kcron 19.08.3 19.12.0: KDE Task Scheduler
 kde-apps/kdav 19.08.3 19.12.0: DAV protocol implemention with KJobs
 kde-apps/kde-apps-meta 19.08.3 19.12.0: Meta package for the KDE Applications collection
