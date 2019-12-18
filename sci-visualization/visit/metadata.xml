@@ -6,9 +6,7 @@
     parallel, visualization tool for visualizing data defined on two-
     and three-dimensional structured and unstructured meshes.
   </longdescription>
-  <maintainer type="person">
-    <email>slis@gentoo.org</email>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="cgns">
       Builds the reader for the CFD General Notation System file format.
