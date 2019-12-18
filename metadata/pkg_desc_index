@@ -13157,7 +13157,6 @@ media-libs/libcdr 0.1.5 9999: Library parsing the Corel cdr documents
 media-libs/libchamplain 0.12.19-r1 0.12.20: Clutter based world map renderer
 media-libs/libclalsadrv 2.0.0-r1: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
-media-libs/libclxclient 3.9.0 3.9.2: C++ wrapper library around the X Window System API
 media-libs/libcue 1.4.0 2.2.1: CUE Sheet Parser Library
 media-libs/libcuefile 477-r1: Cue File library from Musepack
 media-libs/libdc1394 2.2.5-r1: Library to interface with IEEE 1394 cameras following the IIDC specification
@@ -18545,6 +18544,7 @@ x11-libs/libXxf86dga 1.1.5: X.Org Xxf86dga library
 x11-libs/libXxf86misc 1.0.4: X.Org Xxf86misc library
 x11-libs/libXxf86vm 1.1.4-r1: X.Org Xxf86vm library
 x11-libs/libast 0.7-r2: LIBrary of Assorted Spiffy Things
+x11-libs/libclxclient 3.9.0 3.9.2: C++ wrapper library around the X Window System API
 x11-libs/libcryptui 3.12.2-r1: User interface components for OpenPGP
 x11-libs/libdlo 0.1.2-r1: A fully open source driver which supports all DisplayLink devices
 x11-libs/libdmx 1.1.4: X.Org dmx library
