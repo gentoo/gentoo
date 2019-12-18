@@ -16,9 +16,6 @@
 			cgnscheck, cgnscompress, cgnsdiff, cgnslist, cgnsnames, cgnsupdate, cgnsconvert, adf2hdf, hdf2adf.
 		</flag>
 	</use>
-	<maintainer type="person">
-		<email>slis@gentoo.org</email>
-	</maintainer>
 	<maintainer type="project">
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
