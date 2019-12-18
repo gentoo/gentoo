@@ -1,10 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
-inherit autotools pam python-single-r1 systemd user
+PYTHON_COMPAT=( python2_7 )
+inherit autotools pam python-single-r1 systemd
 
 MY_P="${PN}-server-${PV}"
 
@@ -15,8 +15,8 @@ SRC_URI="
 "
 HOMEPAGE="http://www.freeradius.org/"
 
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~sparc ~x86"
-LICENSE="GPL-2+"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="
@@ -27,9 +27,13 @@ RESTRICT="test firebird? ( bindist )"
 
 # NOTE: Temporary freeradius doesn't support linking with mariadb client
 #       libs also if code is compliant, will be available in the next release.
-#       (http://lists.freeradius.org/pipermail/freeradius-devel/2018-October/013228.html)
-RDEPEND="!net-dialup/cistronradius
-	!net-dialup/gnuradius
+#       (http://lists.freeradius.org/pipermail/freeradius-devel/2018-October/013228.html)a
+
+# TODO: rlm_mschap works with both samba library or without. I need to avoid
+#       linking of samba library if -samba is used.
+RDEPEND="acct-group/radius
+	acct-user/radius
+	!net-dialup/cistronradius
 	dev-lang/perl:=
 	sys-libs/gdbm:=
 	sys-libs/talloc
@@ -60,10 +64,12 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
-pkg_setup() {
-	enewgroup radius
-	enewuser radius -1 -1 /var/log/radius radius
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.0.18-libressl.patch
+	"${FILESDIR}"/${P}-systemd-service.patch
+)
 
+pkg_setup() {
 	if use python ; then
 		python-single-r1_pkg_setup
 		export PYTHONBIN="${EPYTHON}"
@@ -86,8 +92,6 @@ src_prepare() {
 	use python || { rm -r src/modules/rlm_python || die ; }
 	use rest || { rm -r src/modules/rlm_rest || die ; }
 	use redis || { rm -r src/modules/rlm_redis{,who} || die ; }
-	# can't just nuke rlm_mschap because many modules rely on smbdes.h
-	use samba || { rm -r src/modules/rlm_mschap/{configure,*.mk} || die ; }
 	# Do not install ruby rlm module, bug #483108
 	rm -r src/modules/rlm_ruby || die
 
@@ -205,30 +209,28 @@ src_install() {
 		R="${D}" \
 		install
 
-	fowners -R root:radius /etc/raddb
-	fowners -R radius:radius /var/log/radius
-
 	pamd_mimic_system radiusd auth account password session
 
 	dodoc CREDITS
 
-	rm "${D}/usr/sbin/rc.radiusd" || die
+	rm "${ED}/usr/sbin/rc.radiusd" || die
 
 	newinitd "${FILESDIR}/radius.init-r3" radiusd
 	newconfd "${FILESDIR}/radius.conf-r4" radiusd
 
 	systemd_newtmpfilesd "${FILESDIR}"/freeradius.tmpfiles freeradius.conf
-	systemd_dounit "${FILESDIR}"/freeradius.service
+	systemd_dounit "${S}"/debian/freeradius.service
 
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 }
 
 pkg_config() {
 	if use ssl; then
-		cd "${ROOT}"/etc/raddb/certs
-		./bootstrap
-
-		chown -R root:radius "${ROOT}"/etc/raddb/certs
+		cd "${ROOT}"/etc/raddb/certs || die
+		./bootstrap || die "Error while running ./bootstrap script."
+		fowners root:radius "${ROOT}"/etc/raddb/certs
+		fowners root:radius "${ROOT}"/etc/raddb/certs/ca.pem
+		fowners root:radius "${ROOT}"/etc/raddb/certs/server.{key,crt,pem}
 	fi
 }
 
