@@ -17,8 +17,8 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
+	>=dev-libs/libclthreads-2.4.0
 	media-libs/zita-alsa-pcmi
-	>=media-libs/libclthreads-2.4.0
 	>=media-libs/libclxclient-3.9.0
 	x11-libs/libXft
 	x11-libs/libX11

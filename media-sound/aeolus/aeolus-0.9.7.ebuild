@@ -18,8 +18,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 CDEPEND="
+	dev-libs/libclthreads
 	media-libs/alsa-lib
-	media-libs/libclthreads
 	media-libs/libclxclient
 	>=media-libs/zita-alsa-pcmi-0.3
 	sys-libs/readline:0

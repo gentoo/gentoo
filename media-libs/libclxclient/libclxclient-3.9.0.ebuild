@@ -18,10 +18,12 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE=""
 
-RDEPEND="x11-libs/libX11
-	x11-libs/libXft
+RDEPEND="
+	>=dev-libs/libclthreads-2.4.0
 	media-libs/freetype:2
-	>=media-libs/libclthreads-2.4.0"
+	x11-libs/libX11
+	x11-libs/libXft
+"
 DEPEND="${RDEPEND}"
 
 src_prepare() {

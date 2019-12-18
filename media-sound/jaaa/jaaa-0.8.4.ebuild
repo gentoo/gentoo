@@ -14,10 +14,11 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
-RDEPEND="media-libs/zita-alsa-pcmi
+RDEPEND="
+	>=dev-libs/libclthreads-2.2.1
+	media-libs/zita-alsa-pcmi
 	media-sound/jack-audio-connection-kit
 	>=media-libs/libclalsadrv-2.0.0
-	>=media-libs/libclthreads-2.2.1
 	>=media-libs/libclxclient-3.3.2
 	sci-libs/fftw:3.0=
 	x11-libs/gtk+:2"

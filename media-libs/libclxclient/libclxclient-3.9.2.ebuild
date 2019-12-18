@@ -15,8 +15,8 @@ KEYWORDS="amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
 CDEPEND="
+	dev-libs/libclthreads
 	media-libs/freetype:2
-	media-libs/libclthreads
 	x11-libs/libX11
 	x11-libs/libXft
 "
