@@ -29,7 +29,6 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
-	!~net-analyzer/greenbone-security-assistant-7.0.3
 	~net-analyzer/openvas-scanner-6.0.1
 	>=net-analyzer/gvmd-8.0.1"
 
