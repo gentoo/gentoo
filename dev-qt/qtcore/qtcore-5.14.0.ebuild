@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-IUSE="icu systemd zstd"
+IUSE="icu systemd"
 
 DEPEND="
 	dev-libs/double-conversion:=
@@ -21,7 +21,6 @@ DEPEND="
 	icu? ( dev-libs/icu:= )
 	!icu? ( virtual/libiconv )
 	systemd? ( sys-apps/systemd:= )
-	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="${DEPEND}
 	!<dev-qt/qtcore-4.8.7-r4:4
@@ -49,8 +48,6 @@ src_prepare() {
 
 	# fix missing qt_version_tag symbol w/ LTO, bug 674382
 	sed -i -e 's/^gcc:ltcg/gcc/' src/corelib/global/global.pri || die
-
-	qt_use_disable_config zstd zstd src/corelib/io/io.pri src/tools/rcc/rcc.pro
 
 	qt5-build_src_prepare
 }
