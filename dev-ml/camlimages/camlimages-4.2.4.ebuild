@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="exif gif gtk jpeg png postscript tiff truetype X xpm"
 
-RDEPEND=">=dev-lang/ocaml-3.10.2:=[X?,ocamlopt]
+RDEPEND=">=dev-lang/ocaml-3.10.2:=[X(+)?,ocamlopt]
 	exif? ( media-libs/libexif )
 	gif? ( media-libs/giflib )
 	gtk? ( dev-ml/lablgtk )
