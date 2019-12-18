@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ MY_P="${P/lib/}"
 
 S="${WORKDIR}/${MY_P}"
 
-DESCRIPTION="An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>"
+DESCRIPTION="POSIX threads C++ access library"
 HOMEPAGE="http://kokkinizita.linuxaudio.org/linuxaudio/index.html"
 SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${MY_P}.tar.bz2"
 
