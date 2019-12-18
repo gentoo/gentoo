@@ -5,6 +5,8 @@ EAPI=7
 
 PYTHON_COMPAT=(python{2_7,3_5,3_6})
 
+WANT_AUTOMAKE=1.16
+
 inherit autotools python-single-r1
 
 DESCRIPTION="A simple C language RPC framework"
@@ -19,8 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.26.0
-	>=dev-libs/jansson-2.2.1
-	>=sys-devel/automake-1.16.1-r2:1.16"
+	>=dev-libs/jansson-2.2.1"
 RDEPEND="${DEPEND}
 	dev-python/simplejson[${PYTHON_USEDEP}]"
 
