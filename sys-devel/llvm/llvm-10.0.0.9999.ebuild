@@ -262,6 +262,7 @@ get_distribution_components() {
 			llvm-exegesis
 			llvm-extract
 			llvm-ifs
+			llvm-install-name-tool
 			llvm-jitlink
 			llvm-lib
 			llvm-link

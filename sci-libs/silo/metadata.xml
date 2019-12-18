@@ -11,10 +11,7 @@
   <use>
     <flag name="silex">Build silex data browser</flag>
   </use>
-  <maintainer type="person">
-    <email>slis@gentoo.org</email>
-  </maintainer>
-<maintainer type="project">
+  <maintainer type="project">
     <email>cluster@gentoo.org</email>
     <name>Gentoo Cluster Project</name>
   </maintainer>
