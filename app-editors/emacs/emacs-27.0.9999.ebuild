@@ -5,15 +5,31 @@ EAPI=7
 
 inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
 
+if [[ ${PV##*.} = 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs.git"
+	EGIT_BRANCH="master"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
+	S="${EGIT_CHECKOUT_DIR}"
+else
+	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
+		mirror://gnu-alpha/emacs/pretest/${P}.tar.xz"
+	# FULL_VERSION keeps the full version number, which is needed in
+	# order to determine some path information correctly for copy/move
+	# operations later on
+	FULL_VERSION="${PV%%_*}"
+	S="${WORKDIR}/emacs-${FULL_VERSION}"
+	[[ ${FULL_VERSION} != ${PV} ]] && S="${WORKDIR}/emacs"
+fi
+
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
-SRC_URI="mirror://gnu/emacs/${P}.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-SLOT="26"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~riscv ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk gtk2 gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
+SLOT="27-vcs"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gtk2 gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
+RESTRICT="test"
 
 RDEPEND="sys-libs/ncurses:0=
 	>=app-eselect/eselect-emacs-1.16
@@ -22,8 +38,10 @@ RDEPEND="sys-libs/ncurses:0=
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
 	games? ( acct-group/gamestat )
+	gmp? ( dev-libs/gmp:0= )
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
+	json? ( dev-libs/jansson )
 	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
@@ -58,6 +76,7 @@ RDEPEND="sys-libs/ncurses:0=
 			x11-libs/libXft
 			x11-libs/libXrender
 			cairo? ( >=x11-libs/cairo-1.12.18 )
+			harfbuzz? ( media-libs/harfbuzz:0= )
 			m17n-lib? (
 				>=dev-libs/libotf-0.9.4
 				>=dev-libs/m17n-lib-1.5.1
@@ -101,25 +120,35 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 
+if [[ ${PV##*.} = 9999 ]]; then
+	BDEPEND="${BDEPEND}
+	sys-apps/texinfo"
+fi
+
 RDEPEND="${RDEPEND}
-	!<app-editors/emacs-vcs-${PV}"
+	!app-editors/emacs-vcs:27"
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
-# FULL_VERSION keeps the full version number, which is needed in
-# order to determine some path information correctly for copy/move
-# operations later on
-FULL_VERSION="${PV%%_*}"
-S="${WORKDIR}/emacs-${FULL_VERSION}"
 
 src_prepare() {
-	#eapply ../patch
+	if [[ ${PV##*.} = 9999 ]]; then
+		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[ \t]*\([^ \t,)]*\).*/\1/p' \
+			configure.ac)
+		[[ ${FULL_VERSION} ]] || die "Cannot determine current Emacs version"
+		einfo "Emacs branch: ${EGIT_BRANCH}"
+		einfo "Commit: ${EGIT_VERSION}"
+		einfo "Emacs version number: ${FULL_VERSION}"
+		[[ ${FULL_VERSION} =~ ^${PV%.*}(\..*)?$ ]] \
+			|| die "Upstream version number changed to ${FULL_VERSION}"
+	fi
+
 	eapply_user
 
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
 
-	#AT_M4DIR=m4 eautoreconf
+	AT_M4DIR=m4 eautoreconf
 }
 
 src_configure() {
@@ -160,6 +189,7 @@ src_configure() {
 		if use xft; then
 			myconf+=" --with-xft"
 			myconf+=" $(use_with cairo)"
+			myconf+=" $(use_with harfbuzz)"
 			myconf+=" $(use_with m17n-lib libotf)"
 			myconf+=" $(use_with m17n-lib m17n-flt)"
 		else
@@ -232,12 +262,15 @@ src_configure() {
 		--without-compress-install \
 		--without-hesiod \
 		--without-pop \
+		--with-dumping=pdumper \
 		--with-file-notification=$(usev inotify || usev gfile || echo no) \
 		$(use_enable acl) \
 		$(use_with dbus) \
 		$(use_with dynamic-loading modules) \
 		$(use_with games gameuser ":gamestat") \
+		$(use_with gmp libgmp) \
 		$(use_with gpm) \
+		$(use_with json) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with lcms lcms2) \
 		$(use_with libxml2 xml2) \
@@ -251,10 +284,10 @@ src_configure() {
 		${myconf}
 }
 
-src_compile() {
-	# Disable sandbox when dumping. For the unbelievers, see bug #131505
-	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
-}
+#src_compile() {
+#	# Disable sandbox when dumping. For the unbelievers, see bug #131505
+#	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
+#}
 
 src_install () {
 	emake DESTDIR="${D}" NO_BIN_LINK=t install
@@ -279,6 +312,15 @@ src_install () {
 
 	# remove COPYING file (except for etc/COPYING used by describe-copying)
 	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING
+
+	if use systemd; then
+		insinto /usr/lib/systemd/user
+		sed -e "/^##/d" \
+			-e "/^ExecStart/s,emacs,${EPREFIX}/usr/bin/${EMACS_SUFFIX}," \
+			-e "/^ExecStop/s,emacsclient,${EPREFIX}/usr/bin/&-${EMACS_SUFFIX}," \
+			etc/emacs.service | newins - ${EMACS_SUFFIX}.service
+		assert
+	fi
 
 	if use gzip-el; then
 		# compress .el files when a corresponding .elc exists
