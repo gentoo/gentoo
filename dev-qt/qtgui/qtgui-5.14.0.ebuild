@@ -124,7 +124,7 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 	:gui
 )
 
-PATCHES=( "${FILESDIR}/${PN}-5.14.0_beta3-no-xcb-no-xkbcommon.patch" )
+PATCHES=( "${FILESDIR}/${PN}-5.13.2-no-xcb-no-xkbcommon.patch" ) # bug 699110
 
 src_prepare() {
 	# don't add -O3 to CXXFLAGS, bug 549140
