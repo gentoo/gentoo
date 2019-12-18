@@ -19,9 +19,10 @@ RDEPEND="
 	media-libs/zita-alsa-pcmi
 	media-sound/jack-audio-connection-kit
 	>=media-libs/libclalsadrv-2.0.0
-	>=media-libs/libclxclient-3.3.2
 	sci-libs/fftw:3.0=
-	x11-libs/gtk+:2"
+	x11-libs/gtk+:2
+	>=x11-libs/libclxclient-3.3.2
+"
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.8.4-makefile.patch )
