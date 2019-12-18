@@ -3,7 +3,7 @@ Description=Suricata IDS/IDP daemon
 After=network.target
 Requires=network.target
 Documentation=man:suricata(8) man:suricatasc(8)
-Documentation=https://redmine.openinfosecfoundation.org/projects/suricata/wiki
+Documentation=https://suricata.readthedocs.io/
 
 [Service]
 Environment=OPTIONS='-c /etc/suricata/suricata.yaml --af-packet'
