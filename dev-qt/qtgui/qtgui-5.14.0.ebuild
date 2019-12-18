@@ -72,6 +72,8 @@ PDEPEND="
 	wayland? ( ~dev-qt/qtwayland-${PV} )
 "
 
+PATCHES=( "${FILESDIR}/qt-5.12-gcc-avx2.patch" ) # bug 672946
+
 QT5_TARGET_SUBDIRS=(
 	src/tools/qvkgen
 	src/gui
