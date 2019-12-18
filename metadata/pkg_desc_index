@@ -14048,7 +14048,7 @@ media-sound/sndfile-tools 1.03-r1 1.04 9999: A small collection of programs that
 media-sound/sndpeek 1.4: real-time audio visualization
 media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practice ear training
 media-sound/sonata 1.6.2.1-r2: Elegant GTK+ music client for the Music Player Daemon (MPD)
-media-sound/sonic-visualiser 3.1.1: Music audio files viewer and analiser
+media-sound/sonic-visualiser 4.0.1: Music audio files viewer and analiser
 media-sound/sooperlooper 1.7.3-r2: Live looping sampler with immediate loop recording
 media-sound/sound-juicer 3.24.0: CD ripper for GNOME
 media-sound/soundconverter 3.0.2: A simple audiofile converter application for the GNOME environment
@@ -17291,7 +17291,7 @@ sys-auth/libyubikey 1.13: Yubico C low-level library
 sys-auth/munge 0.5.10-r2 0.5.13 0.5.13-r1: An authentication service for creating and validating credentials
 sys-auth/nss-mdns 0.13 0.14.1 9999: Name Service Switch module for Multicast DNS
 sys-auth/nss-myhostname 0.3: Name Service Switch module for resolving the local hostname
-sys-auth/nss-pam-ldapd 0.9.10 0.9.11: NSS module for name lookups using LDAP
+sys-auth/nss-pam-ldapd 0.9.10 0.9.11 0.9.11-r1: NSS module for name lookups using LDAP
 sys-auth/nss_ldap 265-r5: NSS LDAP Module
 sys-auth/oath-toolkit 2.6.1 2.6.2: Toolkit for using one-time password authentication with HOTP/TOTP algorithms
 sys-auth/otpcalc 0.97-r8: A One Time Password and S/Key calculator for X
