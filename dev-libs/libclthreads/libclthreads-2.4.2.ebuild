@@ -5,7 +5,7 @@ EAPI=7
 
 inherit multilib toolchain-funcs
 
-DESCRIPTION="An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>"
+DESCRIPTION="POSIX threads C++ access library"
 HOMEPAGE="http://kokkinizita.linuxaudio.org/linuxaudio/index.html"
 SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/clthreads-${PV}.tar.bz2"
 
