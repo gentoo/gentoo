@@ -17,10 +17,10 @@ IUSE=""
 CDEPEND="
 	dev-libs/libclthreads
 	>=media-libs/zita-alsa-pcmi-0.3
-	media-libs/libclxclient
 	sci-libs/fftw:3.0=
 	virtual/jack
 	x11-libs/gtk+:2
+	x11-libs/libclxclient
 "
 RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}"
