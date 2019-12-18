@@ -2,6 +2,6 @@ DEFINED_PHASES=-
 DESCRIPTION=Virtual for GNU Emacs
 EAPI=6
 KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
-RDEPEND=|| ( app-editors/emacs:26 >=app-editors/emacs-vcs-26.1 )
+RDEPEND=|| ( >=app-editors/emacs-26.1:* >=app-editors/emacs-vcs-26.1:* )
 SLOT=0
-_md5_=8219ac36dd8efcb9221d80bb9112252f
+_md5_=8cdcca7c2ff05b3f33b2af225b8a363c
