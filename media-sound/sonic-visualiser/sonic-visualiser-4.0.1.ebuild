@@ -1,19 +1,24 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools desktop qmake-utils xdg-utils
+inherit autotools desktop qmake-utils xdg
 
 DESCRIPTION="Music audio files viewer and analiser"
 HOMEPAGE="https://www.sonicvisualiser.org/"
-SRC_URI="https://code.soundsoftware.ac.uk/attachments/download/2391/${P}.tar.gz"
+SRC_URI="https://code.soundsoftware.ac.uk/attachments/download/2607/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="id3tag jack mad ogg osc +portaudio pulseaudio"
+IUSE="id3tag jack mad ogg opus osc +portaudio pulseaudio"
 
+BDEPEND="
+	dev-qt/qttest:5
+	sys-devel/autoconf-archive
+	virtual/pkgconfig
+"
 RDEPEND="
 	app-arch/bzip2
 	>=dev-libs/capnproto-0.6:=
@@ -36,27 +41,24 @@ RDEPEND="
 	media-libs/vamp-plugin-sdk
 	sci-libs/fftw:3.0=
 	id3tag? ( media-libs/libid3tag )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	mad? ( media-libs/libmad )
 	ogg? (
 		media-libs/libfishsound
-		>=media-libs/liboggz-1.1.0
+		media-libs/liboggz
 	)
+	opus? ( media-libs/opus )
 	osc? ( media-libs/liblo )
-	portaudio? ( >=media-libs/portaudio-19_pre20071207 )
+	portaudio? ( >=media-libs/portaudio-19 )
 	pulseaudio? ( media-sound/pulseaudio )
 "
-DEPEND="${RDEPEND}
-	dev-qt/qttest:5
-	virtual/pkgconfig
-	sys-devel/autoconf-archive
-"
+DEPEND="${RDEPEND}"
 
 REQUIRED_USE="|| ( jack pulseaudio portaudio )"
 
 PATCHES=(
-	"${FILESDIR}/notest.patch"
-	"${FILESDIR}/${P}-qt-5.11.patch"
+	"${FILESDIR}/${P}-notest.patch"
+	"${FILESDIR}/${P}-qt-deprecated.patch"
 )
 
 sv_disable_opt() {
@@ -74,6 +76,7 @@ src_prepare() {
 	use mad || sv_disable_opt mad
 	use ogg || sv_disable_opt fishsound
 	use ogg || sv_disable_opt oggz
+	use opus || sv_disable_opt opus
 	use osc || sv_disable_opt liblo
 	use portaudio || sv_disable_opt portaudio
 	use pulseaudio || sv_disable_opt libpulse
@@ -85,14 +88,6 @@ src_prepare() {
 		|| die
 
 	eautoreconf
-
-	# Those need to be regenerated as they must match current capnproto version
-	einfo "Regenerating piper capnproto files"
-	rm -f piper-cpp/vamp-capnp/piper.capnp.* || die
-	mkdir -p piper/capnp || die
-	cp "${FILESDIR}/piper.capnp" piper/capnp/ || die
-	cd piper-cpp || die
-	emake vamp-capnp/piper.capnp.h
 }
 
 src_configure() {
@@ -106,27 +101,25 @@ src_configure() {
 }
 
 src_test() {
-	for i in test-svcore-base test-svcore-data-fileio test-svcore-data-model ; do
+	for i in test-svcore-base test-svcore-data-fileio test-svcore-data-model test-svcore-system ; do
 		einfo "Running ${i}"
-		./${i} || die
+		HOME="${T}" ./${i} || die
 	done
 }
 
 src_install() {
 	dobin ${PN} piper-vamp-simple-server piper-convert vamp-plugin-load-checker
 	dodoc README*
+
 	#install samples
 	insinto /usr/share/${PN}/samples
 	doins samples/*
+
 	# desktop entry
 	doicon icons/sv-icon.svg
-	domenu *.desktop
-}
+	domenu sonic-visualiser.desktop
 
-pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
+	# mime types
+	insinto /usr/share/mime/packages
+	doins "${FILESDIR}/${PN}.xml"
 }
