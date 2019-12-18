@@ -20,7 +20,5 @@
     <flag name="nflog">Enable libnetfilter_log support</flag>
     <flag name="nfqueue">Enable NFQUEUE support for inline IDP</flag>
     <flag name="redis">Enable Redis support</flag>
-    <flag name="rules">Install default ruleset</flag>
-    <flag name="tools">Install suricatactl, suricatasc and suricata-update</flag>
   </use>
 </pkgmetadata>

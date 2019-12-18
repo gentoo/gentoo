@@ -9,7 +9,7 @@ SURICATAID=$(shell_var "${SURICATA}")
 if [ -n "${SURICATA}" ] && [ ${SVCNAME} != "suricata" ]; then
     eval SURICATACONF=\$SURICATA_CONF_${SURICATAID}
     [ ${#SURICATACONF} -eq 0 ] && SURICATACONF="${SURICATA_DIR}/suricata-${SURICATA}.yaml" || SURICATACONF="${SURICATA_DIR}/${SURICATACONF}"
-    SURICATAPID="/var/run/suricata/suricata.${SURICATA}.pid"
+    SURICATAPID="/run/suricata/suricata.${SURICATA}.pid"
     eval SURICATAOPTS=\$SURICATA_OPTS_${SURICATAID}
     eval SURICATALOGPATH=\$SURICATA_LOG_FILE_${SURICATAID}
     eval SURICATAUSER=\$SURICATA_USER_${SURICATAID}
@@ -17,7 +17,7 @@ if [ -n "${SURICATA}" ] && [ ${SVCNAME} != "suricata" ]; then
 else
     SURICATACONF=${SURICATA_CONF}
     [ ${#SURICATACONF} -eq 0 ] && SURICATACONF="${SURICATA_DIR}/suricata.yaml" || SURICATACONF="${SURICATA_DIR}/${SURICATACONF}"
-    SURICATAPID="/var/run/suricata/suricata.pid"
+    SURICATAPID="/run/suricata/suricata.pid"
     SURICATAOPTS=${SURICATA_OPTS}
     SURICATALOGPATH=${SURICATA_LOG_FILE}
     SURICATAUSER=${SURICATA_USER}
@@ -43,8 +43,8 @@ depend() {
 }
 
 checkconfig() {
-	if [ ! -d "/var/run/suricata" ] ; then
-		checkpath -d /var/run/suricata
+	if [ ! -d "/run/suricata" ] ; then
+		checkpath -d /run/suricata
 	fi
 	if [ ${#SURICATALOGPATH} -gt 0 ]; then
 		SURICATALOGFILE=$( basename ${SURICATALOGPATH} )

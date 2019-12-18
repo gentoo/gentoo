@@ -37,7 +37,7 @@
 # If you want to use ${SURICATA_DIR}/suricata.yaml and start the service with /etc/init.d/suricata
 # then you can set:
 
-SURICATA_OPTS="-i eth0"
+SURICATA_OPTS="--af-packet"
 
 # Log paths listed here will be created by the init script and will override the log path
 # set in the yaml file, if present.

@@ -25,3 +25,5 @@ RDEPEND="${DEPEND}
 "
 
 RESTRICT+=" test" # multiple tests fail or hang indefinitely
+
+PATCHES+=( "${FILESDIR}/${PN}-5.64.0-fix-RRULE-generation-for-timezones.patch" ) # bug 699448
