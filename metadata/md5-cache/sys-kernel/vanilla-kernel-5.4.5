@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prerm pretend test
+DESCRIPTION=Linux kernel built from vanilla upstream sources
+EAPI=7
+HOMEPAGE=https://www.kernel.org/
+IUSE=+initramfs savedconfig
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=|| ( sys-kernel/installkernel-gentoo sys-kernel/installkernel-systemd-boot ) initramfs? ( sys-kernel/dracut )
+SLOT=5.4.5
+SRC_URI=https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.5.tar.xz https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=f101331956bb37080dce191ca789a5c44fac9e69 -> linux-5.4.4.arch1-1.config
+_eclasses_=mount-boot	e30bb691fbb26137f3d46438542bffe4	multilib	1d91b03d42ab6308b5f4f6b598ed110e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	a3c113056e77e36a1d78ff4eb475dfd1	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=5018fdee2894bdfb4e59d8878adad54e
