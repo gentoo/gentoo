@@ -10932,6 +10932,7 @@ dev-util/vtable-dumper 1.2: A tool to list content of virtual tables in a shared
 dev-util/vulkan-headers 1.1.114 1.1.125 9999: Vulkan Header files and API registry
 dev-util/vulkan-tools 1.1.106-r1 1.1.106-r2 1.1.124 9999: Official Vulkan Tools and Utilities for Windows, Linux, Android, and MacOS
 dev-util/waf 1.9.14: piece of software used to help building software projects
+dev-util/wasmer 0.11.0: universal web assembly runtime
 dev-util/weka 3.7.13 3.8.0: A Java data mining package
 dev-util/wiggle 0.9-r1 1.0: tool for applying patches that patch cannot apply because of conflicting changes
 dev-util/wstool 0.1.13 0.1.17 0.1.18 9999: Commands to manage several local SCM repositories for ROS
