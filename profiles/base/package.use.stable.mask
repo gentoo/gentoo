@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-18)
+# Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are stable
+kde-plasma/plasma-meta thunderbolt
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-12-09)
 # Declared experimental, and dev-cpp/websocketpp not stable yet
 sci-libs/indilib websocket
