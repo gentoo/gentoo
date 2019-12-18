@@ -1,0 +1,31 @@
+From c2105d8b7e16cc934b886537968228f6300bf4bc Mon Sep 17 00:00:00 2001
+From: Johan Klokkhammer Helsing <johan.helsing@qt.io>
+Date: Fri, 8 Nov 2019 13:58:04 +0100
+Subject: [PATCH] Fix compilation of linuxdmabuf compositor plugin
+
+Mesa's eglext.h no longer includes eglmesaext.h, so copy over the typedefs we need.
+
+Fixes: QTBUG-79709
+Change-Id: I3190ef56e0e162636efea440dff7e760cf11fcd0
+Reviewed-by: Laszlo Agocs <laszlo.agocs@qt.io>
+---
+ .../compositor/linux-dmabuf-unstable-v1/linuxdmabuf.h                 | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/hardwareintegration/compositor/linux-dmabuf-unstable-v1/linuxdmabuf.h b/src/hardwareintegration/compositor/linux-dmabuf-unstable-v1/linuxdmabuf.h
+index 8554721e1..02b5b6f88 100644
+--- a/src/hardwareintegration/compositor/linux-dmabuf-unstable-v1/linuxdmabuf.h
++++ b/src/hardwareintegration/compositor/linux-dmabuf-unstable-v1/linuxdmabuf.h
+@@ -58,6 +58,10 @@
+ #define DRM_FORMAT_MOD_INVALID  fourcc_mod_code(NONE, DRM_FORMAT_RESERVED)
+ #endif
+ 
++// Copied from eglmesaext.h
++typedef EGLBoolean (EGLAPIENTRYP PFNEGLBINDWAYLANDDISPLAYWL) (EGLDisplay dpy, struct wl_display *display);
++typedef EGLBoolean (EGLAPIENTRYP PFNEGLUNBINDWAYLANDDISPLAYWL) (EGLDisplay dpy, struct wl_display *display);
++
+ QT_BEGIN_NAMESPACE
+ 
+ class QWaylandCompositor;
+-- 
+2.16.3
