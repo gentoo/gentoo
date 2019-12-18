@@ -27,7 +27,7 @@ RDEPEND=">=dev-haskell/blaze-builder-0.2:=[profile?]
 DEPEND="${RDEPEND}
 	dev-haskell/alex
 	>=dev-haskell/cabal-1.9.2
-	dev-haskell/happy
+	>=dev-haskell/happy-1.19.12
 	test? ( dev-haskell/hspec
 		>=dev-haskell/quickcheck-2
 		>=dev-haskell/utf8-light-0.4 )
