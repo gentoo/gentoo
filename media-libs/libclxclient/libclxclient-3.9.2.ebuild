@@ -5,7 +5,7 @@ EAPI=7
 
 inherit multilib toolchain-funcs
 
-DESCRIPTION="An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>"
+DESCRIPTION="C++ wrapper library around the X Window System API"
 HOMEPAGE="http://kokkinizita.linuxaudio.org/linuxaudio/index.html"
 SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/clxclient-${PV}.tar.bz2"
 
