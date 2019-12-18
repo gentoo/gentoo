@@ -8467,7 +8467,7 @@ dev-python/pycmd 1.2: pycmd: tools for managing/searching Python related files
 dev-python/pycobertura 0.10.0: Cobertura coverage parser that can diff reports and show coverage progress
 dev-python/pycodestyle 2.3.1 2.4.0 2.5.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.6-r1: Python library for reading and writing COLLADA documents
-dev-python/pycountry 16.11.8 17.9.23 18.5.26 19.8.18: Database of countries, subdivisions, languages, currencies and script
+dev-python/pycountry 16.11.8 19.8.18: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.14 2.18-r1 2.19-r1: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1-r2: Python Cryptography Toolkit
 dev-python/pycryptodome 3.4.6 3.4.7 3.6.6 3.7.3 3.8.2 3.9.4: A self-contained cryptographic library for Python
@@ -9108,7 +9108,7 @@ dev-python/tqdm 4.23.3 4.33.0 4.40.0 9999: Add a progress meter to your loops in
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/traitlets 4.3.2: A configuration system for Python applications
 dev-python/transitions 0.7.1: A lightweight, object-oriented state machine implementation in Python
-dev-python/translate-toolkit 2.0.0 2.3.1 2.4.0: Toolkit to convert between many translation formats
+dev-python/translate-toolkit 2.3.1 2.4.0: Toolkit to convert between many translation formats
 dev-python/translationstring 1.3: Utility library for i18n relied on by various Repoze packages
 dev-python/transmissionrpc 0.11 9999: Python module that implements the Transmission bittorrent client RPC protocol
 dev-python/treq 0.2.1 16.12.0 17.3.1 17.8.0: A requests-like API built on top of twisted.web's Agent
@@ -12469,7 +12469,7 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
-mail-client/thunderbird 52.9.1 68.2.2 68.3.0: Thunderbird Mail Client
+mail-client/thunderbird 52.9.1 68.2.2 68.3.0 68.3.1: Thunderbird Mail Client
 mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.2.2 68.3.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
