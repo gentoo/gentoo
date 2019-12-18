@@ -12,14 +12,12 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
-SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
-	https://dev.gentoo.org/~floppym/dist/chromium-78-revert-noexcept-r1.patch.gz
-"
+SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
-IUSE="+closure-compile component-build cups cpu_flags_arm_neon gnome-keyring +hangouts jumbo-build kerberos pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc widevine"
+KEYWORDS="~amd64 ~arm64 ~x86"
+IUSE="+closure-compile component-build cups cpu_flags_arm_neon gnome-keyring +hangouts kerberos pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 REQUIRED_USE="component-build? ( !suid )"
 
@@ -30,7 +28,7 @@ COMMON_DEPEND="
 	>=dev-libs/atk-2.26
 	dev-libs/expat:=
 	dev-libs/glib:2
-	system-icu? ( >=dev-libs/icu-64:= )
+	system-icu? ( >=dev-libs/icu-65:= )
 	>=dev-libs/libxml2-2.9.4-r3:=[icu]
 	dev-libs/libxslt:=
 	dev-libs/nspr:=
@@ -143,22 +141,17 @@ For native file dialogs in KDE, install kde-apps/kdialog.
 
 PATCHES=(
 	"${FILESDIR}/chromium-compiler-r10.patch"
-	"${FILESDIR}/chromium-widevine-r4.patch"
 	"${FILESDIR}/chromium-fix-char_traits.patch"
 	"${FILESDIR}/chromium-unbundle-zlib-r1.patch"
 	"${FILESDIR}/chromium-77-system-icu.patch"
-	"${FILESDIR}/chromium-77-clang.patch"
-	"${FILESDIR}/chromium-77-pulseaudio-13.patch"
-	"${FILESDIR}/chromium-78-include.patch"
-	"${FILESDIR}/chromium-78-icon.patch"
 	"${FILESDIR}/chromium-78-protobuf-export.patch"
-	"${FILESDIR}/chromium-78-pm-crash.patch"
-	"${WORKDIR}/chromium-78-revert-noexcept-r1.patch"
-	"${FILESDIR}/chromium-78-gcc-enum-range.patch"
-	"${FILESDIR}/chromium-78-gcc-std-vector.patch"
-	"${FILESDIR}/chromium-78-gcc-noexcept.patch"
-	"${FILESDIR}/chromium-78-gcc-alignas.patch"
+	"${FILESDIR}/chromium-79-system-hb.patch"
+	"${FILESDIR}/chromium-79-include.patch"
 	"${FILESDIR}/chromium-79-icu-65.patch"
+	"${FILESDIR}/chromium-79-gcc-ambiguous-nodestructor.patch"
+	"${FILESDIR}/chromium-79-gcc-name-clash.patch"
+	"${FILESDIR}/chromium-79-gcc-permissive.patch"
+	"${FILESDIR}/chromium-79-gcc-alignas.patch"
 )
 
 pre_build_checks() {
@@ -358,6 +351,7 @@ src_prepare() {
 		third_party/swiftshader
 		third_party/swiftshader/third_party/llvm-7.0
 		third_party/swiftshader/third_party/llvm-subzero
+		third_party/swiftshader/third_party/marl
 		third_party/swiftshader/third_party/subzero
 		third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1
 		third_party/unrar
@@ -430,7 +424,6 @@ src_configure() {
 		myconf_gn+=" is_clang=true clang_use_chrome_plugins=false"
 	else
 		myconf_gn+=" is_clang=false"
-		append-cxxflags -fpermissive
 	fi
 
 	# Define a custom toolchain for GN
@@ -450,9 +443,6 @@ src_configure() {
 	# Component build isn't generally intended for use by end users. It's mostly useful
 	# for development and debugging.
 	myconf_gn+=" is_component_build=$(usex component-build true false)"
-
-	# https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md
-	myconf_gn+=" use_jumbo_build=$(usex jumbo-build true false)"
 
 	myconf_gn+=" use_allocator=$(usex tcmalloc \"tcmalloc\" \"none\")"
 
@@ -535,7 +525,6 @@ src_configure() {
 	myconf_gn+=" google_api_key=\"${google_api_key}\""
 	myconf_gn+=" google_default_client_id=\"${google_default_client_id}\""
 	myconf_gn+=" google_default_client_secret=\"${google_default_client_secret}\""
-
 	local myarch="$(tc-arch)"
 
 	# Avoid CFLAGS problems, bug #352457, bug #390147.
@@ -604,6 +593,11 @@ src_configure() {
 		chromium/scripts/copy_config.sh || die
 		chromium/scripts/generate_gn.py || die
 		popd > /dev/null || die
+	fi
+
+	# Explicitly disable ICU data file support for system-icu builds.
+	if use system-icu; then
+		myconf_gn+=" icu_use_data_file=false"
 	fi
 
 	einfo "Configuring Chromium..."

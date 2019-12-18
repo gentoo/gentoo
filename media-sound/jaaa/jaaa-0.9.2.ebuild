@@ -15,8 +15,8 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 CDEPEND="
+	dev-libs/libclthreads
 	>=media-libs/zita-alsa-pcmi-0.3
-	media-libs/libclthreads
 	media-libs/libclxclient
 	sci-libs/fftw:3.0=
 	virtual/jack
