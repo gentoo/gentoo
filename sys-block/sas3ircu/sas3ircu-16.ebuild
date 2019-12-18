@@ -6,10 +6,12 @@ inherit mount-boot
 
 DESCRIPTION="LSI MPT-SAS3 controller management tool"
 HOMEPAGE="https://www.broadcom.com/products/storage/host-bus-adapters/sas-9300-8e#downloads"
+
 LICENSE="LSI"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86 ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc efi"
+
 RESTRICT="strip fetch mirror"
 BDEPEND="app-arch/unzip"
 QA_PREBUILT="opt/lsi/sas3ircu boot/efi/sas3ircu.efi"
