@@ -26,7 +26,9 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-5.13.2-fix-linuxdmabuf-build.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-fix-linuxdmabuf-build.patch" # bug 699190, QTBUG-79709
+)
 
 src_prepare() {
 	qt_use_disable_config libinput xkbcommon-evdev \
