@@ -512,9 +512,7 @@ dev-java/balloontip
 # Obsolete by moving to KDE Frameworks.
 # kde-apps/zanshin is demoted to ~arch as a consequence.
 # Removal in 15 days.
-kde-apps/kcalcore
 kde-apps/kcontacts
-=kde-misc/zanshin-0.5.0-r1
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-01)
 # Unmaintained Rust packages with incorrect license information.
