@@ -1,0 +1,38 @@
+From 895e31d6946b63ddba923e58eb08d1ece7de85df Mon Sep 17 00:00:00 2001
+From: Tranter Madi <trmdi@yandex.com>
+Date: Wed, 4 Dec 2019 20:34:49 -0700
+Subject: Use the right value of EnableMagicMimeActions
+
+Summary: BUG: 409801
+
+Test Plan: The bug is fixed.
+
+Reviewers: #plasma, ngraham, apol
+
+Reviewed By: ngraham
+
+Subscribers: davidedmundson, ngraham, plasma-devel, #plasma
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D25310
+---
+ klipper/urlgrabber.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/klipper/urlgrabber.cpp b/klipper/urlgrabber.cpp
+index 28d8ce0..eef9784 100644
+--- a/klipper/urlgrabber.cpp
++++ b/klipper/urlgrabber.cpp
+@@ -102,8 +102,7 @@ void URLGrabber::setActionList( const ActionList& list )
+ void URLGrabber::matchingMimeActions(const QString& clipData)
+ {
+     QUrl url(clipData);
+-    KConfigGroup cg(KSharedConfig::openConfig(), "Actions");
+-    if(!cg.readEntry("EnableMagicMimeActions",true)) {
++    if(!KlipperSettings::enableMagicMimeActions()) {
+         //qCDebug(KLIPPER_LOG) << "skipping mime magic due to configuration";
+         return;
+     }
+-- 
+cgit v1.1

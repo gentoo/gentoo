@@ -1,0 +1,58 @@
+From 1a13015d2d1de3ffb9450143480e729057992c45 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Sat, 14 Dec 2019 16:08:16 +0100
+Subject: Possible fix for KDecoration crash in systemsettings
+
+Summary:
+I could never reproduce the crash, but we know from gdb that it's from
+the decorationSettings object
+
+We are setting the same QObject instance as a context property in
+multiple contexts at once. This is already slightly odd especially from the POV of
+Qt's internal property cache.
+
+Given we want one object to be exposed to all contexts, we can expose it
+to the parent context only once and achieve the same result in a simpler
+way.
+
+BUG: 411166
+
+Test Plan:
+Verified opening and closing system settings still worked for me.
+I could never reproduce the original crash.
+
+Reviewers: #kwin, ngraham
+
+Reviewed By: ngraham
+
+Subscribers: ngraham, apol, kwin
+
+Tags: #kwin
+
+Differential Revision: https://phabricator.kde.org/D25913
+---
+ plugins/kdecorations/aurorae/src/aurorae.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/kdecorations/aurorae/src/aurorae.cpp b/plugins/kdecorations/aurorae/src/aurorae.cpp
+index f3ad059..c37f00e 100644
+--- a/plugins/kdecorations/aurorae/src/aurorae.cpp
++++ b/plugins/kdecorations/aurorae/src/aurorae.cpp
+@@ -262,6 +262,7 @@ Decoration::Decoration(QObject *parent, const QVariantList &args)
+ {
+     m_themeName = findTheme(args);
+     Helper::instance().ref();
++    Helper::instance().rootContext()->setContextProperty(QStringLiteral("decorationSettings"), settings().data());
+ }
+ 
+ Decoration::~Decoration()
+@@ -289,7 +290,6 @@ void Decoration::init()
+ 
+     m_qmlContext = new QQmlContext(Helper::instance().rootContext(), this);
+     m_qmlContext->setContextProperty(QStringLiteral("decoration"), this);
+-    m_qmlContext->setContextProperty(QStringLiteral("decorationSettings"), s.data());
+     auto component = Helper::instance().component(m_themeName);
+     if (!component) {
+         return;
+-- 
+cgit v1.1
