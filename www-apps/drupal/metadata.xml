@@ -6,7 +6,6 @@
 	<name>Gentoo Webapps</name>
 </maintainer>
 <use>
-	<flag name="accelerator">Add dependency on a php accelerator</flag>
 	<flag name="uploadprogress">Install <pkg>dev-php/pecl-uploadprogress</pkg> package</flag>
 </use>
 </pkgmetadata>
