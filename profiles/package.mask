@@ -46,6 +46,12 @@ dev-php/pecl-cassandra
 <dev-php/pecl-event-2.5
 virtual/httpd-php:7.1
 
+# Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
+# Needs more testing.
+=app-emulation/xen-4.13.0
+=app-emulation/xen-pvgrub-4.13.0
+=app-emulation/xen-tools-4.13.0
+
 # Ulrich Müller <ulm@gentoo.org> (2019-12-18)
 # Live ebuilds for Emacs from Git have been consolidated
 # into separate slots of the app-editors/emacs package.
