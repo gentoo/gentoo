@@ -2649,7 +2649,7 @@ app-text/sdcv 0.5.2: Console version of Stardict program
 app-text/sgml-common 0.6.3-r7: Base ISO character entities and utilities for SGML
 app-text/sgmltools-lite 3.0.3-r15: Python interface to SGML software in a DocBook/OpenJade env
 app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter
-app-text/sigil 0.9.13 0.9.16 0.9.18: Multi-platform WYSIWYG ebook editor for ePub format
+app-text/sigil 0.9.13 0.9.16 0.9.18 1.0.0: Multi-platform WYSIWYG ebook editor for ePub format
 app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
 app-text/simple-fb2-reader 1.1.2: A simple gtk3 reader for fb2 ebooks
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
@@ -7131,7 +7131,7 @@ dev-php/PEAR-Console_CommandLine 1.2.2: A full-featured command-line options and
 dev-php/PEAR-Console_Getargs 1.4.0: A command-line arguments parser
 dev-php/PEAR-Console_Getopt 1.4.1-r1: Command-line option parser
 dev-php/PEAR-Console_Table 1.3.0-r1 1.3.1: Class that makes it easy to build console style tables
-dev-php/PEAR-Crypt_CHAP 1.5.0-r2 1.5.0-r3: Generating CHAP packets
+dev-php/PEAR-Crypt_CHAP 1.5.0-r3: Generating CHAP packets
 dev-php/PEAR-Crypt_GPG 1.6.2 1.6.3: PHP interface to the GNU Privacy Guard (GnuPG)
 dev-php/PEAR-Crypt_HMAC 1.0.1-r2: Calculates RFC 2104 compliant hashes
 dev-php/PEAR-Crypt_HMAC2 1.0.0-r1: Implementation of Hashed Message Authentication Code for PHP5
@@ -7225,10 +7225,10 @@ dev-php/PEAR-XML_RSS 1.1.0_alpha1 1.1.0: PHP parser for RDF and RSS documents
 dev-php/PEAR-XML_Serializer 0.21.0-r1: Swiss-army knife for reading and writing XML files
 dev-php/PEAR-XML_Util 1.4.2 1.4.3: XML utility class
 dev-php/PHPMailer 5.2.27 6.0.7 6.1.2 6.1.3: Full-featured email creation and transfer class for PHP
-dev-php/PHP_CodeCoverage 1.2.13 4.0.7 4.0.7-r1: Collection, processing, and rendering for PHP code coverage
+dev-php/PHP_CodeCoverage 4.0.7-r2: Collection, processing, and rendering for PHP code coverage
 dev-php/PHP_CodeSniffer 3.2.1 3.4.2: Detect violations of PHP code standards
 dev-php/PHP_Timer 1.0.5 1.0.9: Utility class for timing
-dev-php/PHP_TokenStream 1.1.3 1.4.11: Wrapper around PHP's tokenizer extension
+dev-php/PHP_TokenStream 1.4.11-r1: Wrapper around PHP's tokenizer extension
 dev-php/SabreAMF 1.5.0: SabreAMF is a Flash Remoting server and client for PHP
 dev-php/Text_Template 1.1.1 1.2.1: A simple template engine
 dev-php/YAML 1.0.6-r3: The Symfony YAML Component
@@ -7323,7 +7323,7 @@ dev-php/phpdocumentor-type-resolver 0.2.1: PSR-5 based resolver of Class names, 
 dev-php/phpmd 2.6.0: PHP mess detector
 dev-php/phpspec-prophecy 1.7.0 1.8.0 1.9.0: Highly opinionated mocking framework
 dev-php/phptal 1.3.1: A templating engine for PHP5 that implements Zope Page Templates syntax
-dev-php/phpunit 5.7.15-r1 5.7.15-r2: A PHP Unit Testing framework
+dev-php/phpunit 5.7.15-r3: A PHP Unit Testing framework
 dev-php/phpunit-mock-objects 3.4.3 3.4.3-r1: Mock Object library for PHPUnit
 dev-php/psr-log 1.0.2 1.1.0 1.1.2: Common interface for logging libraries
 dev-php/realpath_turbo 2.0.0: PHP extension to re-enable realpath cache when using open_basedir restriction
@@ -18226,7 +18226,7 @@ www-apps/kibana-bin 5.6.16 6.7.1 6.8.4 7.2.0 7.3.2 7.4.1: Analytics and search d
 www-apps/klaus 1.4.0 1.5.1: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for proposition development and decision making
-www-apps/mediawiki 1.33.1: The MediaWiki wiki web application (as used on wikipedia.org)
+www-apps/mediawiki 1.33.1 1.33.2: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/mirmon 2.10: Simple webapp to monitor the status of mirrors
 www-apps/moodle 3.5.9 3.6.7 3.7.3 3.8: The Moodle Course Management System
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
