@@ -1,0 +1,43 @@
+From c0ae03d14b0e58f2d3a23680b7b63c9fe46bdce6 Mon Sep 17 00:00:00 2001
+From: Alexander Trufanov <trufanovan@gmail.com>
+Date: Thu, 21 Nov 2019 14:25:02 +0300
+Subject: Fix HTTP proxy settings
+
+Summary:
+After SlaveBase::config() was replaced with SlaveBase::mapConfig()
+the reading of "ProxyUrls" value had beed broken as QVariant with
+type QByteArray can't be directly converted to QStringList.
+It should be converted to QString and splitted.
+
+Reviewers: #frameworks, meven
+
+Reviewed By: meven
+
+Subscribers: meven, kde-frameworks-devel
+
+Tags: #frameworks
+
+BUG: 414346
+FIXED-IN: 5.65
+
+Differential Revision: https://phabricator.kde.org/D25432
+---
+ src/ioslaves/http/http.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ioslaves/http/http.cpp b/src/ioslaves/http/http.cpp
+index 2b9ca9a..aca847b 100644
+--- a/src/ioslaves/http/http.cpp
++++ b/src/ioslaves/http/http.cpp
+@@ -2161,7 +2161,7 @@ bool HTTPProtocol::httpOpenConnection()
+ 
+     // Get proxy information...
+     if (m_request.proxyUrls.isEmpty()) {
+-        m_request.proxyUrls = mapConfig().value(QStringLiteral("ProxyUrls"), QStringList()).toStringList();
++        m_request.proxyUrls = mapConfig().value(QStringLiteral("ProxyUrls"), QString()).toString().split(QLatin1Char(','));
+         qCDebug(KIO_HTTP) << "Proxy URLs:" << m_request.proxyUrls;
+     }
+ 
+-- 
+cgit v1.1
+
