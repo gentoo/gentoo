@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="php-token-stream"
 
@@ -18,9 +18,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 RDEPEND="dev-php/fedora-autoloader
 	|| (
-		dev-lang/php:5.6[tokenizer]
-		dev-lang/php:7.0[tokenizer]
-		dev-lang/php:7.1[tokenizer]
+		dev-lang/php:7.2[tokenizer(-)]
 	)"
 
 src_install() {
