@@ -2945,11 +2945,6 @@
       <name>Michał Górny</name>
       <role>Deputy Lead</role>
     </member>
-    <member>
-      <email>pinkbyte@gentoo.org</email>
-      <name>Sergey Popov</name>
-      <role>Developer</role>
-    </member>
     <member is-lead="1">
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
@@ -3218,11 +3213,6 @@
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
     </member>
-    <member>
-      <email>pinkbyte@gentoo.org</email>
-      <name>Sergey Popov</name>
-      <role>Member ( Gentoo/s390 )</role>
-    </member>
     <member is-lead="1">
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
@@ -3422,11 +3412,6 @@
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
       <role>Co-Lead</role>
-    </member>
-    <member>
-      <email>pinkbyte@gentoo.org</email>
-      <name>Sergey Popov</name>
-      <role>GLSA Coordinator</role>
     </member>
     <member is-lead="1">
       <email>whissi@gentoo.org</email>
