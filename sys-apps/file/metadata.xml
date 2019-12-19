@@ -5,6 +5,9 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<use>
+	<flag name="xz">Enable support for XZ ("LZMA2") decompression using <pkg>app-arch/xz-utils</pkg></flag>
+</use>
 <upstream>
 	<bugs-to>http://bugs.gw.com/</bugs-to>
 </upstream>
