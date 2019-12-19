@@ -33,8 +33,8 @@ HOMEPAGE="https://www.kismetwireless.net"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="lm-sensors mousejack networkmanager +pcre selinux +suid"
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
+IUSE="libusb lm-sensors networkmanager +pcre rtlsdr selinux +suid ubertooth"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CDEPEND="
 	${PYTHON_DEPS}
@@ -48,7 +48,7 @@ CDEPEND="
 			dev-libs/libnl:3
 			net-libs/libpcap
 			)
-	mousejack? ( virtual/libusb:1 )
+	libusb? ( virtual/libusb:1 )
 	dev-libs/protobuf-c:=
 	dev-libs/protobuf:=
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
@@ -56,6 +56,7 @@ CDEPEND="
 	lm-sensors? ( sys-apps/lm-sensors )
 	pcre? ( dev-libs/libpcre )
 	suid? ( sys-libs/libcap )
+	ubertooth? ( net-wireless/ubertooth:= )
 	"
 
 DEPEND="${CDEPEND}
@@ -66,6 +67,8 @@ RDEPEND="${CDEPEND}
 	dev-python/pyserial[${PYTHON_USEDEP}]
 	selinux? ( sec-policy/selinux-kismet )
 "
+PDEPEND="rtlsdr? ( dev-python/numpy[${PYTHON_USEDEP}]
+				net-wireless/rtl-sdr )"
 
 src_prepare() {
 	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
@@ -88,10 +91,11 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		$(use_enable libusb libusb) \
 		$(use_enable pcre) \
 		$(use_enable lm-sensors lmsensors) \
-		$(use_enable mousejack libusb) \
 		$(use_enable networkmanager libnm) \
+		$(use_enable ubertooth) \
 		--sysconfdir=/etc/kismet \
 		--disable-optimization
 }
@@ -133,9 +137,9 @@ pkg_preinst() {
 
 migrate_config() {
 	einfo "Kismet Configuration files are now read from /etc/kismet/"
-	if [ -n "$(ls ${EROOT}/etc/kismet_*.conf)" ]; then
+	ewarn "Please keep user specific settings in /etc/kismet/kismet_site.conf"
+	if [ -n "$(ls ${EROOT}/etc/kismet_*.conf 2> /dev/null)" ]; then
 		ewarn "Files at /etc/kismet_*.conf will not be read and should be removed"
-		ewarn "Please keep user specific settings in /etc/kismet/kismet_site.conf"
 	fi
 	if [ -f "${EROOT}/etc/kismet_site.conf" ] && [ ! -f "${EROOT}/etc/kismet/kismet_site.conf" ]; then
 		mv /etc/kismet_site.conf /etc/kismet/kismet_site.conf || die "Failed to migrate kismet_site.conf to new location"
