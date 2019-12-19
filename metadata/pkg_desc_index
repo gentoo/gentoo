@@ -812,7 +812,7 @@ app-crypt/tpm2-tss 2.2.3 2.2.3-r1: TCG Trusted Platform Module 2.0 Software Stac
 app-crypt/tpm2-tss-engine 1.0.0: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r1 0.3.14-r2: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1: GnuPG archive keys of the Ubuntu archive
-app-crypt/veracrypt 1.23 1.24 1.24-r1 1.24-r2 1.24_p1: Disk encryption with strong security based on TrueCrypt
+app-crypt/veracrypt 1.23 1.24 1.24-r1 1.24-r2 1.24_p1 1.24_p2: Disk encryption with strong security based on TrueCrypt
 app-crypt/virtualsmartcard 0.7: Smart card emulator, can be used with Remote Smart Card Reader
 app-crypt/xca 2.1.2: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
@@ -11717,7 +11717,7 @@ games-server/bedrock-server 1.14.0.9: The official bedrock (non-java) based serv
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
-games-server/minecraft-server 1.14.4 1.15.0: The official server for the sandbox video game
+games-server/minecraft-server 1.14.4 1.15.1: The official server for the sandbox video game
 games-server/monopd 0.10.2-r1: server for atlantik games
 games-server/mtavc 0.5-r1: dedicated server for GTA3 multiplayer
 games-server/pvpgn 1.8.5-r2: A gaming server for Battle.Net compatible clients
@@ -13654,7 +13654,7 @@ media-plugins/vdr-kvdrmon 0.6: VDR Plugin: monitors on KDE Kickerapplet kvdrmon
 media-plugins/vdr-launcher 0.0.4: VDR Plugin: launch other plugins - even when their menu-entry is hidden
 media-plugins/vdr-lcdproc 0.0.10.9: VDR plugin: use LCD device for additional output
 media-plugins/vdr-lcr 0.0.9 0.0.9-r1: VDR Plugin: informe about Least Cost Routing (LCR)
-media-plugins/vdr-live 0.3.0_p20130504-r1 0.3.0_p20130504-r2 2.3.1: VDR Plugin: Web Access To Settings
+media-plugins/vdr-live 0.3.0_p20130504-r1 2.3.1: VDR Plugin: Web Access To Settings
 media-plugins/vdr-loadepg 0.2.5: VDR : Loadepg Plugin; Canal+ group (Mediahighway)
 media-plugins/vdr-mailbox 0.7.0-r1: VDR plugin: MailBox provides access to multiple e-mail accounts
 media-plugins/vdr-menuorg 0.5.1: VDR plugin: make osd menu configurable via config-file
@@ -17206,7 +17206,7 @@ sys-apps/restartd 0.2.2-r1: A daemon for checking your running and not running p
 sys-apps/restorecond 2.9 3.0 9999: Daemon to watch for creation and set default SELinux fcontexts
 sys-apps/ripgrep 11.0.1 11.0.2: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rkflashtool 6.1: Tool for flashing Rockchip devices
-sys-apps/rng-tools 5-r2 6.6-r1 6.7-r1 6.7-r2 6.8: Daemon to use hardware random number generators
+sys-apps/rng-tools 5-r2 6.6-r1 6.7-r1 6.7-r2 6.8 6.9: Daemon to use hardware random number generators
 sys-apps/roccat-tools 5.7.0 5.9.0: Utility for advanced configuration of Roccat devices
 sys-apps/rtl-entropy 0.1.2_p20180118-r1: An entropy generator using SDR peripherals, including rtl-sdr and BladeRF
 sys-apps/s390-tools 2.4.0-r1 2.9.0: User space utilities for the zSeries (s390) Linux kernel and device drivers
