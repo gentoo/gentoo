@@ -918,11 +918,6 @@
       <role>member</role>
     </member>
     <member>
-      <email>slis@gentoo.org</email>
-      <name>Sławek Lis</name>
-      <role>member</role>
-    </member>
-    <member>
       <email>tomjbe@gentoo.org</email>
       <name>Thomas Beierlein</name>
       <role>member</role>
@@ -2529,11 +2524,6 @@
       <email>idl0r@gentoo.org</email>
       <name>Christian Ruppert</name>
       <role>Gentoolkit-dev</role>
-    </member>
-    <member>
-      <email>slis@gentoo.org</email>
-      <name>Sławek Lis</name>
-      <role>Gentoolkit's python revdep-rebuild</role>
     </member>
     <member>
       <email>zmedico@gentoo.org</email>
