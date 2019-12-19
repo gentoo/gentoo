@@ -13,7 +13,8 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="dev-ml/findlib
-	dev-ml/ocamlbuild"
+	dev-ml/ocamlbuild
+	dev-lang/ocaml[ocamlopt]"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
