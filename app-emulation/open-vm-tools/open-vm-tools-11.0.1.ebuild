@@ -3,21 +3,20 @@
 
 EAPI=7
 
-inherit autotools linux-info pam systemd toolchain-funcs user
+inherit autotools linux-info pam systemd toolchain-funcs
 
 DESCRIPTION="Opensourced tools for VMware guests"
 HOMEPAGE="https://github.com/vmware/open-vm-tools"
-MY_P="${P}-12406962"
+MY_P="${P}-14773994"
 SRC_URI="https://github.com/vmware/open-vm-tools/releases/download/stable-${PV}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="X +deploypkg +dnet doc +fuse +grabbitmqproxy gtkmm +icu multimon pam +resolutionkms +ssl static-libs +vgauth"
+IUSE="X +deploypkg +dnet doc +fuse gtkmm +icu multimon pam +resolutionkms +ssl static-libs +vgauth"
 REQUIRED_USE="
 	multimon? ( X )
 	vgauth? ( ssl )
-	grabbitmqproxy? ( ssl )
 "
 
 RDEPEND="
@@ -98,10 +97,8 @@ src_configure() {
 		$(use_enable resolutionkms)
 		$(use_enable static-libs static)
 		$(use_enable deploypkg)
-		$(use_enable grabbitmqproxy)
 		$(use_with pam)
 		$(use_enable vgauth)
-		--disable-caf
 		$(use_with dnet)
 		$(use_with icu)
 	)
@@ -140,12 +137,5 @@ src_install() {
 	if use X; then
 		fperms 4711 /usr/bin/vmware-user-suid-wrapper
 		dobin scripts/common/vmware-xdg-detect-de
-
-		elog "To be able to use the drag'n'drop feature of VMware for file"
-		elog "exchange, please add the users to the 'vmware' group."
 	fi
-}
-
-pkg_postinst() {
-	enewgroup vmware
 }
