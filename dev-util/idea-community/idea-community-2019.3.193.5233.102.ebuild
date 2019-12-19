@@ -50,6 +50,7 @@ DEPEND="!dev-util/${PN}:14
 	!dev-util/${PN}:15"
 RDEPEND="${DEPEND}
 	>=virtual/jdk-1.7:*"
+RESTRICT="splitdebug"
 S="${WORKDIR}/${MY_PN}-IC-${PV_STRING}"
 
 QA_PREBUILT="opt/${PN}-${MY_PV}/*"
