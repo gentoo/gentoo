@@ -151,8 +151,21 @@ pkg_postinst() {
 		eend || fail=1
 
 		[[ ${fail} ]] && die "Installing the kernel failed"
+	fi
 
-		# TODO: update /usr/src/linux symlink?
+	local symlink_target=$(readlink "${EROOT}"/usr/src/linux)
+	if [[ ${symlink_target} == linux-[0-9]* ]]; then
+		local symlink_ver=${symlink_target#linux-}
+		local symlink_pkg=${CATEGORY}/${PN}-${symlink_ver}
+		# if the current target is either being replaced, or still
+		# installed (probably depclean candidate), update the symlink
+		if has "${symlink_ver}" ${REPLACING_VERSIONS} ||
+				has_version -r "~${symlink_pkg}"
+		then
+			ebegin "Updating /usr/src/linux symlink"
+			ln -f -n -s linux-${PV} "${EROOT}"/usr/src/linux
+			eend
+		fi
 	fi
 
 	savedconfig_pkg_postinst
