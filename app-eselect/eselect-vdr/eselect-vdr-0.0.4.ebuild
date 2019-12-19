@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Manages the VDR plugins"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://gitweb.gentoo.org/proj/gentoo-vdr-scripts.git/?h=eselect-module"
 SRC_URI="http://vdr.websitec.de/download/eselect-vdr/${P}.tar.bz2"
 
 LICENSE="GPL-2"
