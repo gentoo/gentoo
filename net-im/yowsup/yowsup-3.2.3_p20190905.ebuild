@@ -39,7 +39,7 @@ src_prepare() {
 
 	# After talking to upstream, version restriction can be lifted
 	# and also 'argparse' needs to be removed.
-	sed -e 's/==0.1.3-1//' -e 's/==0.2.2//' -e 's/==1.10//' -e 's/argparse/' -i setup.py || die
+	sed -e 's/==0.1.3-1//' -e 's/==0.2.2//' -e 's/==1.10//' -e 's/argparse//' -i setup.py || die
 }
 
 pkg_postinst() {

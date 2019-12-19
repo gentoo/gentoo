@@ -3,7 +3,7 @@
 
 EAPI=7
 
-EGIT_COMMIT="e9f105b3c5c7e85c7b445249a93362a22f62442d"
+EGIT_COMMIT="4d1826eebac84847c71a77f9349cc22afd0cf0a1"
 
 inherit readme.gentoo-r1 java-pkg-2
 
