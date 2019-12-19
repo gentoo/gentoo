@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit flag-o-matic mount-boot multilib python-any-r1 toolchain-funcs
 
@@ -15,8 +15,7 @@ if [[ $PV == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/xen.git"
 	SRC_URI=""
 else
-	#KEYWORDS="~amd64 ~arm -x86"
-	KEYWORDS=""
+	KEYWORDS="~amd64 ~arm -x86"
 	UPSTREAM_VER=
 	SECURITY_VER=
 	GENTOO_VER=
