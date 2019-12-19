@@ -132,7 +132,7 @@ src_install() {
 	newconfd "${FILESDIR}"/ntpd.confd ntp
 
 	# Install the systemd unit file
-	systemd_newunit "${FILESDIR}"/ntpd.service ntpd.service
+	systemd_newunit "${FILESDIR}"/ntpd-r1.service ntpd.service
 
 	# Prepare a directory for the ntp.drift file
 	mkdir -pv "${ED}"/var/lib/ntp
