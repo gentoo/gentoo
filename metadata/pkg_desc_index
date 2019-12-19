@@ -7225,10 +7225,10 @@ dev-php/PEAR-XML_RSS 1.1.0_alpha1 1.1.0: PHP parser for RDF and RSS documents
 dev-php/PEAR-XML_Serializer 0.21.0-r1: Swiss-army knife for reading and writing XML files
 dev-php/PEAR-XML_Util 1.4.2 1.4.3: XML utility class
 dev-php/PHPMailer 5.2.27 6.0.7 6.1.2 6.1.3: Full-featured email creation and transfer class for PHP
-dev-php/PHP_CodeCoverage 4.0.7-r2: Collection, processing, and rendering for PHP code coverage
+dev-php/PHP_CodeCoverage 4.0.7-r2 7.0.10: Collection, processing, and rendering for PHP code coverage
 dev-php/PHP_CodeSniffer 3.2.1 3.4.2: Detect violations of PHP code standards
 dev-php/PHP_Timer 1.0.5 1.0.9: Utility class for timing
-dev-php/PHP_TokenStream 1.4.11-r1: Wrapper around PHP's tokenizer extension
+dev-php/PHP_TokenStream 1.4.11-r1 3.1.1: Wrapper around PHP's tokenizer extension
 dev-php/SabreAMF 1.5.0: SabreAMF is a Flash Remoting server and client for PHP
 dev-php/Text_Template 1.1.1 1.2.1: A simple template engine
 dev-php/YAML 1.0.6-r3: The Symfony YAML Component
@@ -7331,7 +7331,7 @@ dev-php/recaptcha 1.2.1: PHP client library for Google's reCAPTCHA service
 dev-php/sebastian-code-unit-reverse-lookup 1.0.1: Looks up which function or method a line of code belongs to
 dev-php/sebastian-comparator 1.2.4: Compare PHP values for equality
 dev-php/sebastian-diff 1.4.1-r1: PHP Diff implementation
-dev-php/sebastian-environment 2.0.0: Helps writing PHP code that has runtime-specific execution paths
+dev-php/sebastian-environment 2.0.0 4.2.3: Helps writing PHP code that has runtime-specific execution paths
 dev-php/sebastian-exporter 2.0.0: Export PHP variables for visualization
 dev-php/sebastian-global-state 1.1.1: Snapshotting of global state
 dev-php/sebastian-object-enumerator 2.0.1: Traverses array structures and object graphs to enumerate all referenced objects
@@ -14583,7 +14583,7 @@ net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 2.3 2.4 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.2 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 3.0.3 3.0.7 3.2.0_rc1 3.2.0_rc2 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 3.0.3 3.0.7 3.2.0 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2: A framework for layer 2 attacks
@@ -15012,7 +15012,7 @@ net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter
 net-libs/nghttp2 1.39.2 1.40.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 8.12.0 8.16.2 8.17.0 10.17.0 10.18.0 12.13.0 12.14.0 13.4.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 8.12.0 8.16.2 8.17.0 10.17.0 10.18.0 12.13.0 12.14.0 13.4.0 13.5.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4 3.0: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -18243,7 +18243,7 @@ www-apps/ownpaste 0.2.2-r1 9999: Private pastebin (server-side implementation)
 www-apps/phpBB 3.2.8: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.1: A customizable PHP script that displays information about your system nicely
 www-apps/piwigo 2.9.5 2.10.0 2.10.1: a photo gallery software for the web
-www-apps/postfixadmin 3.1 3.2: Web Based Management tool for Postfix style virtual domains and users
+www-apps/postfixadmin 3.1 3.2 3.2.3: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 3.1.0 4.0.0 4.1.5: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 1.1.6 2.1.11-r1: A simple CalDAV calendar server
 www-apps/redmine 4.0.5 4.0.5-r1: Flexible project management web application using the Ruby on Rails framework
@@ -18297,8 +18297,8 @@ www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browse
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 2.9.1705.41_p1: A browser for our friends
-www-client/vivaldi-snapshot 2.10.1745.3_p1 2.10.1745.7_p1: A browser for our friends
+www-client/vivaldi 2.9.1705.41_p1 2.10.1745.21_p1: A browser for our friends
+www-client/vivaldi-snapshot 2.10.1745.7_p1 2.10.1745.18_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-client/weboob 1.3 9998 9999: Consume lots of websites without a browser (Web Outside Of Browsers)
