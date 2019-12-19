@@ -4828,7 +4828,7 @@ dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib t
 dev-libs/gumbo 0.10.1: The HTML5 parsing algorithm implemented as a pure C99 library
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/hiredis 0.13.3 0.14.0: Minimalistic C client library for the Redis database
-dev-libs/hsa-ext-rocr 1.1.9.112 1.1.9.122: Proprietary image-support library for Radeon Open Compute
+dev-libs/hsa-ext-rocr 1.1.9.122 1.1.9.139: Proprietary image-support library for Radeon Open Compute
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
 dev-libs/hyperscan 5.1.0 5.1.1 5.2.0: High-performance regular expression matching library
@@ -8530,7 +8530,7 @@ dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pyh2o 9999: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 1.9.0 1.9.0-r1: Hamcrest framework for matcher objects
 dev-python/pyhcl 0.2.3 0.3.6: HCL configuration parser for python
-dev-python/pyicu 2.3 2.3.1: Python bindings for dev-libs/icu
+dev-python/pyicu 2.3 2.3.1 2.4.2: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyifp 0.2.2-r1: Python bindings for libifp library for accessing iRiver iFP devices
 dev-python/pyilmbase 2.3.0: IlmBase Python bindings
