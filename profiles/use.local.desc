@@ -591,7 +591,6 @@ app-emulation/open-vm-tools:deploypkg - Build deploypkg plugin
 app-emulation/open-vm-tools:dnet - Enable support for nicinfo
 app-emulation/open-vm-tools:doc - Generate API documentation
 app-emulation/open-vm-tools:fuse - Enable vmblock-fuse/vmhgfs-fuse
-app-emulation/open-vm-tools:grabbitmqproxy - Build grabbitmqproxy plugin
 app-emulation/open-vm-tools:gtkmm - Compile with Gtkmm and sigc++ (Recommended)
 app-emulation/open-vm-tools:multimon - Enable multimon (Requires X)
 app-emulation/open-vm-tools:resolutionkms - Build the linux/unix resolutionkms module
