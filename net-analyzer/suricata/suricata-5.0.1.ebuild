@@ -147,7 +147,7 @@ pkg_postinst() {
 	if use systemd; then
 		elog "Suricata requires either the mode of operation (e.g. --af-packet) or the interface to listen on (e.g. -i eth0)"
 		elog "to be specified on the command line. The provided systemd unit launches Suricata in af-packet mode and relies"
-		elog "on file configuration to specify interfaces, should you prefer to run it different you will have to customise"
+		elog "on file configuration to specify interfaces, should you prefer to run it differently you will have to customise"
 		elog "said unit. The simplest way of doing it is to override the Environment=OPTIONS='...' line using a .conf file"
 		elog "placed in the directory ${EPREFIX}/etc/systemd/system/suricata.service.d/ ."
 		elog "For details, see the section on drop-in directories in systemd.unit(5)."
