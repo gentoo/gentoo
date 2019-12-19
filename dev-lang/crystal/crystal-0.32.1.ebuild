@@ -22,7 +22,7 @@ IUSE="doc debug examples blocking-stdio-hack +xml +yaml"
 
 RESTRICT=test # not stable for day-to-day runs
 
-LLVM_MAX_SLOT=8
+LLVM_MAX_SLOT=9
 
 # dev-libs/boehm-gc[static-libs] dependency problem,  check the issue: https://github.com/manastech/crystal/issues/1382
 DEPEND="
@@ -41,14 +41,12 @@ RDEPEND="${DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.27.1-verbose.patch
+	"${FILESDIR}"/${PN}-0.31.0-verbose.patch
 	"${FILESDIR}"/${PN}-0.26.1-gentoo-tests-sandbox.patch
-	"${FILESDIR}"/${PN}-0.26.1-gentoo-tests-network-sandbox-3.patch
 	"${FILESDIR}"/${PN}-0.27.0-extra-spec-flags.patch
 	#"${FILESDIR}"/${PN}-0.27.0-max-age-0-test.patch
 	"${FILESDIR}"/${PN}-0.27.0-gentoo-tests-long-unix.patch
 	"${FILESDIR}"/${PN}-0.27.0-gentoo-tests-long-unix-2.patch
-	"${FILESDIR}"/${PN}-0.27.0-tcp-server-test.patch
 	"${FILESDIR}"/${PN}-0.29.0-no-usr-lib.patch
 )
 
