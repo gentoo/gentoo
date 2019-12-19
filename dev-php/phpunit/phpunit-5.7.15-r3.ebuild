@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="A PHP Unit Testing framework"
 HOMEPAGE="http://phpunit.de"
@@ -9,7 +9,7 @@ SRC_URI="https://github.com/sebastianbergmann/${PN}/archive/${PV}.tar.gz -> ${P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
 IUSE=""
 
 RDEPEND="dev-php/fedora-autoloader
@@ -34,9 +34,7 @@ RDEPEND="dev-php/fedora-autoloader
 	<dev-php/sebastian-version-3.0
 	<dev-php/symfony-yaml-4.0
 	|| (
-		dev-lang/php:5.6[cli,json,unicode,xml]
-		dev-lang/php:7.0[cli,json,unicode,xml]
-		dev-lang/php:7.1[cli,json,unicode,xml]
+		dev-lang/php:7.2[cli(-),json(-),unicode(-),xml(-)]
 	)"
 
 src_install() {
