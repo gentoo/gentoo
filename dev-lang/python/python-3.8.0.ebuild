@@ -47,8 +47,7 @@ RDEPEND="app-arch/bzip2:=
 		dev-tcltk/blt:=
 		dev-tcltk/tix
 	)
-	xml? ( >=dev-libs/expat-2.1:= )
-	!!<sys-apps/sandbox-2.6-r1"
+	xml? ( >=dev-libs/expat-2.1:= )"
 # bluetooth requires headers from bluez
 DEPEND="${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
@@ -280,7 +279,8 @@ src_install() {
 	local pymajor=${PYVER%.*}
 	mkdir -p "${D}${PYTHON_SCRIPTDIR}" || die
 	# python and pythonX
-	ln -s "../../../bin/${abiver}" "${D}${PYTHON_SCRIPTDIR}/python${pymajor}" || die
+	ln -s "../../../bin/${abiver}" \
+		"${D}${PYTHON_SCRIPTDIR}/python${pymajor}" || die
 	ln -s "python${pymajor}" "${D}${PYTHON_SCRIPTDIR}/python" || die
 	# python-config and pythonX-config
 	# note: we need to create a wrapper rather than symlinking it due
@@ -290,13 +290,17 @@ src_install() {
 		exec "${abiver}-config" "\${@}"
 	EOF
 	chmod +x "${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
-	ln -s "python${pymajor}-config" "${D}${PYTHON_SCRIPTDIR}/python-config" || die
+	ln -s "python${pymajor}-config" \
+		"${D}${PYTHON_SCRIPTDIR}/python-config" || die
 	# 2to3, pydoc
-	ln -s "../../../bin/2to3-${PYVER}" "${D}${PYTHON_SCRIPTDIR}/2to3" || die
-	ln -s "../../../bin/pydoc${PYVER}" "${D}${PYTHON_SCRIPTDIR}/pydoc" || die
+	ln -s "../../../bin/2to3-${PYVER}" \
+		"${D}${PYTHON_SCRIPTDIR}/2to3" || die
+	ln -s "../../../bin/pydoc${PYVER}" \
+		"${D}${PYTHON_SCRIPTDIR}/pydoc" || die
 	# idle
 	if use tk; then
-		ln -s "../../../bin/idle${PYVER}" "${D}${PYTHON_SCRIPTDIR}/idle" || die
+		ln -s "../../../bin/idle${PYVER}" \
+			"${D}${PYTHON_SCRIPTDIR}/idle" || die
 	fi
 }
 
@@ -307,11 +311,14 @@ pkg_preinst() {
 }
 
 eselect_python_update() {
-	if [[ -z "$(eselect python show)" || ! -f "${EROOT}/usr/bin/$(eselect python show)" ]]; then
+	if [[ -z "$(eselect python show)" || \
+			! -f "${EROOT}/usr/bin/$(eselect python show)" ]]; then
 		eselect python update
 	fi
 
-	if [[ -z "$(eselect python show --python${PV%%.*})" || ! -f "${EROOT}/usr/bin/$(eselect python show --python${PV%%.*})" ]]; then
+	if [[ -z "$(eselect python show --python${PV%%.*})" || \
+			! -f "${EROOT}/usr/bin/$(eselect python show --python${PV%%.*})" ]]
+	then
 		eselect python update --python${PV%%.*}
 	fi
 }

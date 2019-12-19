@@ -7,16 +7,18 @@ WANT_LIBTOOL="none"
 inherit autotools flag-o-matic pax-utils python-utils-r1 toolchain-funcs
 
 MY_P="Python-${PV}"
+PYVER=$(ver_cut 1-2)
 PATCHSET_VERSION="3.7.4-1"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
 SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
 	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
-SLOT="3.7/3.7m"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86"
+SLOT="${PYVER}/${PYVER}m"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
 IUSE="bluetooth build examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl test tk wininst +xml"
 RESTRICT="!test? ( test )"
 
@@ -25,27 +27,27 @@ RESTRICT="!test? ( test )"
 # run the bootstrap code on your dev box and include the results in the
 # patchset. See bug 447752.
 
-RDEPEND="app-arch/bzip2:0=
-	app-arch/xz-utils:0=
-	sys-apps/util-linux:0=
-	>=sys-libs/zlib-1.1.3:0=
+RDEPEND="app-arch/bzip2:=
+	app-arch/xz-utils:=
+	sys-apps/util-linux:=
+	>=sys-libs/zlib-1.1.3:=
 	virtual/libffi:=
 	virtual/libintl
-	gdbm? ( sys-libs/gdbm:0=[berkdb] )
-	ncurses? ( >=sys-libs/ncurses-5.2:0= )
-	readline? ( >=sys-libs/readline-4.1:0= )
+	gdbm? ( sys-libs/gdbm:=[berkdb] )
+	ncurses? ( >=sys-libs/ncurses-5.2:= )
+	readline? ( >=sys-libs/readline-4.1:= )
 	sqlite? ( >=dev-db/sqlite-3.3.8:3= )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		!libressl? ( dev-libs/openssl:= )
+		libressl? ( dev-libs/libressl:= )
 	)
 	tk? (
-		>=dev-lang/tcl-8.0:0=
-		>=dev-lang/tk-8.0:0=
-		dev-tcltk/blt:0=
+		>=dev-lang/tcl-8.0:=
+		>=dev-lang/tk-8.0:=
+		dev-tcltk/blt:=
 		dev-tcltk/tix
 	)
-	xml? ( >=dev-libs/expat-2.1:0= )"
+	xml? ( >=dev-libs/expat-2.1:= )"
 # bluetooth requires headers from bluez
 DEPEND="${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
@@ -55,14 +57,11 @@ DEPEND="${RDEPEND}
 RDEPEND+=" !build? ( app-misc/mime-types )"
 PDEPEND=">=app-eselect/eselect-python-20140125-r1"
 
-S="${WORKDIR}/${MY_P}"
-PYVER=${SLOT%/*}
-
 src_prepare() {
 	# Ensure that internal copies of expat, libffi and zlib are not used.
-	rm -fr Modules/expat
-	rm -fr Modules/_ctypes/libffi*
-	rm -fr Modules/zlib
+	rm -fr Modules/expat || die
+	rm -fr Modules/_ctypes/libffi* || die
+	rm -fr Modules/zlib || die
 
 	local PATCHES=(
 		"${FILESDIR}/python-3.7.5-hashlib.patch"
@@ -81,13 +80,13 @@ src_configure() {
 	local disable
 	# disable automagic bluetooth headers detection
 	use bluetooth || export ac_cv_header_bluetooth_bluetooth_h=no
-	use gdbm     || disable+=" gdbm"
-	use ncurses  || disable+=" _curses _curses_panel"
-	use readline || disable+=" readline"
-	use sqlite   || disable+=" _sqlite3"
-	use ssl      || export PYTHON_DISABLE_SSL="1"
-	use tk       || disable+=" _tkinter"
-	use xml      || disable+=" _elementtree pyexpat" # _elementtree uses pyexpat.
+	use gdbm      || disable+=" gdbm"
+	use ncurses   || disable+=" _curses _curses_panel"
+	use readline  || disable+=" readline"
+	use sqlite    || disable+=" _sqlite3"
+	use ssl       || export PYTHON_DISABLE_SSL="1"
+	use tk        || disable+=" _tkinter"
+	use xml       || disable+=" _elementtree pyexpat" # _elementtree uses pyexpat.
 	export PYTHON_DISABLE_MODULES="${disable}"
 
 	if ! use xml; then
@@ -201,7 +200,7 @@ src_test() {
 }
 
 src_install() {
-	local libdir=${ED%/}/usr/lib/python${PYVER}
+	local libdir=${ED}/usr/lib/python${PYVER}
 
 	emake DESTDIR="${D}" altinstall
 
@@ -211,13 +210,13 @@ src_install() {
 		-i "${libdir}/config-${PYVER}"*/Makefile || die "sed failed"
 
 	# Fix collisions between different slots of Python.
-	rm -f "${ED%/}/usr/$(get_libdir)/libpython3.so"
+	rm "${ED}/usr/$(get_libdir)/libpython3.so" || die
 
 	# Cheap hack to get version with ABIFLAGS
-	local abiver=$(cd "${ED%/}/usr/include"; echo python*)
+	local abiver=$(cd "${ED}/usr/include"; echo python*)
 	if [[ ${abiver} != python${PYVER} ]]; then
 		# Replace python3.X with a symlink to python3.Xm
-		rm "${ED%/}/usr/bin/python${PYVER}" || die
+		rm "${ED}/usr/bin/python${PYVER}" || die
 		dosym "${abiver}" "/usr/bin/python${PYVER}"
 		# Create python3.X-config symlink
 		dosym "${abiver}-config" "/usr/bin/python${PYVER}-config"
@@ -228,22 +227,22 @@ src_install() {
 	# python seems to get rebuilt in src_install (bug 569908)
 	# Work around it for now.
 	if has_version dev-libs/libffi[pax_kernel]; then
-		pax-mark E "${ED%/}/usr/bin/${abiver}"
+		pax-mark E "${ED}/usr/bin/${abiver}"
 	else
-		pax-mark m "${ED%/}/usr/bin/${abiver}"
+		pax-mark m "${ED}/usr/bin/${abiver}"
 	fi
 
 	use sqlite || rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
-	use tk || rm -r "${ED%/}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
+	use tk || rm -r "${ED}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
 
 	use wininst || rm "${libdir}/distutils/command/"wininst-*.exe || die
 
-	dodoc "${S}"/Misc/{ACKS,HISTORY,NEWS}
+	dodoc Misc/{ACKS,HISTORY,NEWS}
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		find "${S}"/Tools -name __pycache__ -print0 | xargs -0 rm -fr
-		doins -r "${S}"/Tools
+		docinto examples
+		find Tools -name __pycache__ -exec rm -fr {} + || die
+		dodoc -r Tools
 	fi
 	insinto /usr/share/gdb/auto-load/usr/$(get_libdir) #443510
 	local libname=$(printf 'e:\n\t@echo $(INSTSONAME)\ninclude Makefile\n' | \
@@ -255,7 +254,8 @@ src_install() {
 	sed \
 		-e "s:@PYDOC_PORT_VARIABLE@:PYDOC${PYVER/./_}_PORT:" \
 		-e "s:@PYDOC@:pydoc${PYVER}:" \
-		-i "${ED%/}/etc/conf.d/pydoc-${PYVER}" "${ED%/}/etc/init.d/pydoc-${PYVER}" || die "sed failed"
+		-i "${ED}/etc/conf.d/pydoc-${PYVER}" \
+		"${ED}/etc/init.d/pydoc-${PYVER}" || die "sed failed"
 
 	# for python-exec
 	local vars=( EPYTHON PYTHON_SITEDIR PYTHON_SCRIPTDIR )
@@ -274,26 +274,32 @@ src_install() {
 
 	# python-exec wrapping support
 	local pymajor=${PYVER%.*}
-	mkdir -p "${D%/}${PYTHON_SCRIPTDIR}" || die
+	mkdir -p "${D}${PYTHON_SCRIPTDIR}" || die
 	# python and pythonX
-	ln -s "../../../bin/${abiver}" "${D%/}${PYTHON_SCRIPTDIR}/python${pymajor}" || die
-	ln -s "python${pymajor}" "${D%/}${PYTHON_SCRIPTDIR}/python" || die
+	ln -s "../../../bin/${abiver}" \
+		"${D}${PYTHON_SCRIPTDIR}/python${pymajor}" || die
+	ln -s "python${pymajor}" "${D}${PYTHON_SCRIPTDIR}/python" || die
 	# python-config and pythonX-config
 	# note: we need to create a wrapper rather than symlinking it due
 	# to some random dirname(argv[0]) magic performed by python-config
-	cat > "${D%/}${PYTHON_SCRIPTDIR}/python${pymajor}-config" <<-EOF || die
+	cat > "${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" <<-EOF || die
 		#!/bin/sh
 		exec "${abiver}-config" "\${@}"
 	EOF
-	chmod +x "${D%/}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
-	ln -s "python${pymajor}-config" "${D%/}${PYTHON_SCRIPTDIR}/python-config" || die
+	chmod +x "${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
+	ln -s "python${pymajor}-config" \
+		"${D}${PYTHON_SCRIPTDIR}/python-config" || die
 	# 2to3, pydoc, pyvenv
-	ln -s "../../../bin/2to3-${PYVER}" "${D%/}${PYTHON_SCRIPTDIR}/2to3" || die
-	ln -s "../../../bin/pydoc${PYVER}" "${D%/}${PYTHON_SCRIPTDIR}/pydoc" || die
-	ln -s "../../../bin/pyvenv-${PYVER}" "${D%/}${PYTHON_SCRIPTDIR}/pyvenv" || die
+	ln -s "../../../bin/2to3-${PYVER}" \
+		"${D}${PYTHON_SCRIPTDIR}/2to3" || die
+	ln -s "../../../bin/pydoc${PYVER}" \
+		"${D}${PYTHON_SCRIPTDIR}/pydoc" || die
+	ln -s "../../../bin/pyvenv-${PYVER}" \
+		"${D}${PYTHON_SCRIPTDIR}/pyvenv" || die
 	# idle
 	if use tk; then
-		ln -s "../../../bin/idle${PYVER}" "${D%/}${PYTHON_SCRIPTDIR}/idle" || die
+		ln -s "../../../bin/idle${PYVER}" \
+			"${D}${PYTHON_SCRIPTDIR}/idle" || die
 	fi
 }
 
@@ -304,11 +310,14 @@ pkg_preinst() {
 }
 
 eselect_python_update() {
-	if [[ -z "$(eselect python show)" || ! -f "${EROOT%/}/usr/bin/$(eselect python show)" ]]; then
+	if [[ -z "$(eselect python show)" || \
+			! -f "${EROOT}/usr/bin/$(eselect python show)" ]]; then
 		eselect python update
 	fi
 
-	if [[ -z "$(eselect python show --python${PV%%.*})" || ! -f "${EROOT%/}/usr/bin/$(eselect python show --python${PV%%.*})" ]]; then
+	if [[ -z "$(eselect python show --python${PV%%.*})" || \
+			! -f "${EROOT}/usr/bin/$(eselect python show --python${PV%%.*})" ]]
+	then
 		eselect python update --python${PV%%.*}
 	fi
 }
