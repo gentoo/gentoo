@@ -47,7 +47,7 @@ RDEPEND="
 		media-libs/libfishsound
 		media-libs/liboggz
 	)
-	opus? ( media-libs/opus )
+	opus? ( media-libs/opusfile )
 	osc? ( media-libs/liblo )
 	portaudio? ( >=media-libs/portaudio-19 )
 	pulseaudio? ( media-sound/pulseaudio )
