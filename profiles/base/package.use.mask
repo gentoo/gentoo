@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Brian Evans <grknight@gentoo.org> (2019-12-19)
+# PHP 7.1 is end of life and has security issues Bug 703326
+# Associated packages are not ready for new versions tracked in bug 702110
+dev-libs/ossp-uuid php
+www-servers/nginx-unit php7-1
+
 # Michał Górny <mgorny@gentoo.org> (2019-12-16)
 # Requires old x11-libs/fox:1.6 slot.
 dev-games/openscenegraph fox

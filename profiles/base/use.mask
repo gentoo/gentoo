@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Brian Evans <grknight@gentoo.org> (2019-12-19)
+# PHP 7.1 is end of life and has security issues Bug 703326
+php_targets_php7-1
+
 # Brian Evans <grknight@gentoo.org> (2019-10-01)
 # Mask PHP 5.6 target for EOL
 php_targets_php5-6
