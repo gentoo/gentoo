@@ -8698,7 +8698,6 @@ www-apps/bugzilla:modperl - Enable www-apache/mod_perl support
 www-apps/cgit:highlight - Enable source code highlighting
 www-apps/cgit:jit - If the lua flag is enabled, jit uses LuaJIT instead of vanilla Lua
 www-apps/cgit:lua - Enable support for Lua scripting
-www-apps/drupal:accelerator - Add dependency on a php accelerator
 www-apps/drupal:uploadprogress - Install dev-php/pecl-uploadprogress package
 www-apps/gitea:acct - User and group management via acct-*/git packages
 www-apps/gitit:network-uri - Get Network.URI from the network-uri package.
