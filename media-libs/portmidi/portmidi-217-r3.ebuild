@@ -5,6 +5,8 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
+# ninja: error: build.ninja:521: multiple rules generate pm_java/pmdefaults.jar [-w dupbuild=err]
+CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake-utils desktop xdg distutils-r1 java-pkg-opt-2
 
 DESCRIPTION="Library for real time MIDI input and output"
@@ -26,7 +28,6 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
 	)
-	java? ( >=virtual/jdk-1.8 )
 	python? ( >=dev-python/cython-0.12.1[${PYTHON_USEDEP}] )
 "
 CDEPEND="
@@ -36,7 +37,10 @@ CDEPEND="
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.8 )
 "
-DEPEND="${CDEPEND}"
+DEPEND="
+	${CDEPEND}
+	java? ( >=virtual/jdk-1.8 )
+"
 
 S="${WORKDIR}/${PN}"
 
