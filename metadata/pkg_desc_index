@@ -7227,7 +7227,7 @@ dev-php/PEAR-XML_Util 1.4.2 1.4.3: XML utility class
 dev-php/PHPMailer 5.2.27 6.0.7 6.1.2 6.1.3: Full-featured email creation and transfer class for PHP
 dev-php/PHP_CodeCoverage 4.0.7-r2 7.0.10: Collection, processing, and rendering for PHP code coverage
 dev-php/PHP_CodeSniffer 3.2.1 3.4.2: Detect violations of PHP code standards
-dev-php/PHP_Timer 1.0.5 1.0.9: Utility class for timing
+dev-php/PHP_Timer 1.0.5 1.0.9 2.1.2: Utility class for timing
 dev-php/PHP_TokenStream 1.4.11-r1 3.1.1: Wrapper around PHP's tokenizer extension
 dev-php/SabreAMF 1.5.0: SabreAMF is a Flash Remoting server and client for PHP
 dev-php/Text_Template 1.1.1 1.2.1: A simple template engine
@@ -7240,7 +7240,7 @@ dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the comma
 dev-php/composer 1.8.6 1.9.0 1.9.1: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6 2.6.1 2.6.4: An object relational mapper for PHP
-dev-php/doctrine-instantiator 1.0.5 1.1.0: Utility to instantiate objects in PHP without invoking their constructors
+dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0: Utility to instantiate objects in PHP without invoking their constructors
 dev-php/fedora-autoloader 0.2.1 1.0.0: Fedora's Static PSR-4, PSR-0, and classmap autoloader
 dev-php/geos-php 1.0.0: A PHP interface to GEOS - Geometry Engine, Open Source
 dev-php/igbinary 2.0.8 3.0.1 3.0.1-r1: A fast drop-in replacement for the standard PHP serialize
@@ -7253,7 +7253,7 @@ dev-php/magickwand 1.0.9-r3: A native PHP-extension to the ImageMagick MagickWan
 dev-php/maxmind-db-reader 1.4.1: PHP reader for the MaxMind database format
 dev-php/mmslib 0.97: library for encoding, decoding, and sending MMSes
 dev-php/mockery 0.9.0-r1: Simple yet flexible PHP mock object framework for use in unit testing
-dev-php/myclabs-deepcopy 1.6.0 1.6.1: Create deep copies (clones) of your objects
+dev-php/myclabs-deepcopy 1.6.0 1.6.1 1.9.4: Create deep copies (clones) of your objects
 dev-php/onphp 1.0.11_pre20141124: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.10.1-r1 1.10.3: PEAR - PHP Extension and Application Repository
 dev-php/pecl-amqp 1.9.4 1.9.4-r1: PHP Bindings for AMQP 0-9-1 compatible brokers
@@ -7329,14 +7329,16 @@ dev-php/psr-log 1.0.2 1.1.0 1.1.2: Common interface for logging libraries
 dev-php/realpath_turbo 2.0.0: PHP extension to re-enable realpath cache when using open_basedir restriction
 dev-php/recaptcha 1.2.1: PHP client library for Google's reCAPTCHA service
 dev-php/sebastian-code-unit-reverse-lookup 1.0.1: Looks up which function or method a line of code belongs to
-dev-php/sebastian-comparator 1.2.4: Compare PHP values for equality
-dev-php/sebastian-diff 1.4.1-r1: PHP Diff implementation
+dev-php/sebastian-comparator 1.2.4 3.0.2: Compare PHP values for equality
+dev-php/sebastian-diff 1.4.1-r1 3.0.2: PHP Diff implementation
 dev-php/sebastian-environment 2.0.0 4.2.3: Helps writing PHP code that has runtime-specific execution paths
-dev-php/sebastian-exporter 2.0.0: Export PHP variables for visualization
+dev-php/sebastian-exporter 2.0.0 3.1.2: Export PHP variables for visualization
 dev-php/sebastian-global-state 1.1.1: Snapshotting of global state
 dev-php/sebastian-object-enumerator 2.0.1: Traverses array structures and object graphs to enumerate all referenced objects
-dev-php/sebastian-recursion-context 2.0.0: Recursively process PHP variables
+dev-php/sebastian-object-reflector 1.1.1: Allows reflection of object attributes, including inherited and non-public ones
+dev-php/sebastian-recursion-context 2.0.0 3.0.0: Recursively process PHP variables
 dev-php/sebastian-resource-operations 1.0.0: Provides a list of PHP built-in functions that operate on resources
+dev-php/sebastian-type 1.1.3: Collection of value objects that represent the types of the PHP type system
 dev-php/sebastian-version 2.0.1: Helps with managing the version number of Git-hosted PHP projects
 dev-php/securimage 3.6.5: PHP captcha creator and validator library
 dev-php/semver 1.4.2: Semantic versioning utilities, constraint parsing, and checking
@@ -18163,7 +18165,7 @@ www-apache/mod_extract_forwarded 2.0.3_pre2015052015: Rewrites X-Forwarded-For t
 www-apache/mod_fastcgi_handler 0.6-r1: A simple FastCGI handler module
 www-apache/mod_fcgid 2.3.9-r1: Binary-compatible alternative to mod_fastcgi with better process management
 www-apache/mod_gnutls 0.8.2-r1 0.8.4 0.9.0: mod_gnutls uses GnuTLS for SSL/TLS encryption in Apache2 (compare to mod_ssl)
-www-apache/mod_h2 1.12.1 1.12.2 1.12.3 1.12.5 1.13.0 1.13.1 1.14.0 1.14.1 1.15.0 1.15.1 1.15.2 1.15.3 1.15.4 9999: HTTP/2 module for Apache
+www-apache/mod_h2 1.15.5 9999: HTTP/2 module for Apache
 www-apache/mod_jk 1.2.42: JK module for connecting Tomcat and Apache using the ajp13 protocol
 www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP directory
 www-apache/mod_limitipconn 0.24-r3: Limit the number of simultaneous apache connections
