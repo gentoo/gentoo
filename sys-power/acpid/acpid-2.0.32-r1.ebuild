@@ -6,7 +6,7 @@ inherit linux-info systemd
 
 DESCRIPTION="Daemon for Advanced Configuration and Power Interface"
 HOMEPAGE="https://sourceforge.net/projects/acpid2"
-EXTRAS_VER="2.0.29-r1"
+EXTRAS_VER="2.0.32-r1"
 EXTRAS_NAME="${CATEGORY}_${PN}_${EXTRAS_VER}_extras"
 SRC_URI="mirror://sourceforge/${PN}2/${P}.tar.xz
 	https://dev.gentoo.org/~andrey_utkin/distfiles/${EXTRAS_NAME}.tar.xz
@@ -29,6 +29,7 @@ pkg_pretend() {
 pkg_setup() { :; }
 
 PATCHES=(
+	"${WORKDIR}/${EXTRAS_NAME}/${PN}-2.0.32-powerbtn-gsd-power.patch" #702700
 )
 
 src_install() {
