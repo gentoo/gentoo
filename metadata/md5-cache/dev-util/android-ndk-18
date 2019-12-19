@@ -5,9 +5,9 @@ EAPI=6
 HOMEPAGE=https://developer.android.com/ndk/
 KEYWORDS=~amd64
 LICENSE=android
-RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81 sys-libs/ncurses-compat:5[tinfo]
+RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81 sys-libs/ncurses-compat:5[abi_x86_32(-),tinfo]
 RESTRICT=mirror strip installsources test
 SLOT=0
 SRC_URI=https://dl.google.com/android/repository/android-ndk-r18-linux-x86_64.zip
 _eclasses_=check-reqs	5e40a693d9c828e8f3655184116e8b73
-_md5_=469b4661018296e04f59604adf3ba9ce
+_md5_=64c2b0dd8785b8d7551e8dd402a0a2a1
