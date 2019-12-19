@@ -11209,7 +11209,7 @@ games-arcade/spacerider 0.13-r1: Space-shooter written in C++, using the SDL
 games-arcade/spout 1.3-r1: Abstract Japanese caveflier / shooter
 games-arcade/stardork 0.7-r1: An ncurses-based space shooter
 games-arcade/supertransball2 1.5-r1: Thrust clone
-games-arcade/supertux 0.5.1 0.6.0: A game similar to Super Mario Bros.
+games-arcade/supertux 0.5.1 0.6.0 0.6.1: A game similar to Super Mario Bros.
 games-arcade/syobon 1.0.1-r1: Syobon Action (also known as Cat Mario or Neko Mario)
 games-arcade/tecnoballz 0.92: An exciting Brick Breaker
 games-arcade/thinktanks-demo 1.1-r3: Tank combat game with lighthearted, fast paced pandemonium
@@ -13946,7 +13946,7 @@ media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps multiple mp3 files into one large playable mp3
 media-sound/mpc 0.30 0.31-r1 0.32 0.33: Commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.21.16-r1: The Music Player Daemon (mpd)
+media-sound/mpd 0.21.16-r1 0.21.17: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
@@ -15282,7 +15282,7 @@ net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) for viewing and/or c
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/kafka-bin 1.1.1 2.0.1 2.1.0 2.1.1 2.2.0 2.2.1 2.3.0: A high-throughput distributed messaging system
 net-misc/kafkacat 1.3.1 1.5.0: Generic command line non-JVM Apache Kafka producer and consumer
-net-misc/kea 1.7.1 1.7.2 9999: High-performance production grade DHCPv4 & DHCPv6 server
+net-misc/kea 1.7.2 1.7.3 9999: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.1 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
 net-misc/knock 0.7: A simple port-knocking daemon
 net-misc/l7-filter-userspace 0.12_beta1-r1: Userspace utilities for layer 7 iptables QoS
@@ -15550,7 +15550,7 @@ net-p2p/ncdc 1.20 1.21 9999: ncurses directconnect client
 net-p2p/nicotine+ 1.4.1-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
 net-p2p/pybitmessage 0.6.3.2_p20180521: Reference client for Bitmessage: a P2P communications protocol
-net-p2p/qbittorrent 4.1.7 4.1.8 4.1.9.1 4.2.0 9999: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 4.1.7 4.1.8 4.1.9.1 4.2.1 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.3-r1 0.6.4 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
@@ -17050,7 +17050,7 @@ sys-apps/fakeroot 1.22 1.23 1.24: A fake root environment by means of LD_PRELOAD
 sys-apps/fakeroot-ng 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/fd 7.3.0-r1: Alternative to find that provides sensible defaults for 80% of the use cases
-sys-apps/file 5.36 5.37-r1 9999: identify a file's format by scanning binary data for patterns
+sys-apps/file 5.36 5.37-r1 5.38 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.6.0-r1 4.7.0: GNU utilities for finding files
 sys-apps/firejail 0.9.60-r1 9999: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.38.10 0.9.38.12 0.9.56.2 0.9.56.2-r1: Security sandbox for any type of processes; LTS version
@@ -17775,7 +17775,7 @@ sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4.164_p176 4.9.115_p93 4.9.146_p125 4.14.71_p44 4.14.78_p47 4.14.87_p49 4.16.18_p12 4.18.16_p9 4.19.5_p4 4.19.10_p8: Full Linux 4.19 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 5.4.2 5.4.3 5.4.5: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 3.16.79 4.4.206 4.9.206 4.14.159 4.19.90 5.3.17 5.4.3: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.79 4.4.206 4.9.206 4.14.159 4.19.90 5.3.17 5.4.5: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r3 4570.71.2-r3 4903.241.1-r3: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 4.14.9999 4.15.9999 4.16.9999: The Zen Kernel Live Sources
@@ -18234,7 +18234,7 @@ www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash 
 www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5 2.6.6 2.6.7 2.6.8: IP address and data center infrastructure management tool
-www-apps/nextcloud 14.0.14 15.0.12 15.0.13 16.0.5 16.0.6 17.0.0 17.0.1: Personal cloud that runs on your own server
+www-apps/nextcloud 15.0.12 15.0.13 15.0.14 16.0.5 16.0.6 16.0.7 17.0.0 17.0.1 17.0.2: Personal cloud that runs on your own server
 www-apps/nikola 7.8.15 7.8.15-r1: A static website and blog generator
 www-apps/novnc 0.6.2 0.6.2-r1 1.0.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/otrs 5.0.25 6.0.3 6.0.4 6.0.5 6.0.7: An Open source Ticket Request System
