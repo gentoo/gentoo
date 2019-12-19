@@ -20,8 +20,7 @@ RDEPEND="dev-php/fedora-autoloader
 	>=dev-lang/php-7.2:*"
 
 src_install() {
-	insinto /usr/share/php/SebastianBergmann
-	doins -r src/*
 	insinto /usr/share/php/SebastianBergmann/Type
+	doins -r src/*
 	doins "${FILESDIR}/autoload.php"
 }
