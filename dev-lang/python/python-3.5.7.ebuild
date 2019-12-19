@@ -44,8 +44,7 @@ RDEPEND="app-arch/bzip2:0=
 		dev-tcltk/blt:0=
 		dev-tcltk/tix
 	)
-	xml? ( >=dev-libs/expat-2.1:0= )
-	!!<sys-apps/sandbox-2.6-r1"
+	xml? ( >=dev-libs/expat-2.1:0= )"
 # bluetooth requires headers from bluez
 DEPEND="${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
