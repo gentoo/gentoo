@@ -16,7 +16,7 @@ IUSE="games X"
 
 RDEPEND="games? ( acct-group/gamestat )"
 DEPEND="${RDEPEND}"
-PDEPEND="virtual/emacs"
+PDEPEND=">=app-editors/emacs-23.1:*"
 
 src_install() {
 	insinto "${SITELISP}"
