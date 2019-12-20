@@ -9913,7 +9913,7 @@ dev-ruby/httpclient 2.8.3: 'httpclient' gives something like the functionality o
 dev-ruby/i18n 0.7.0-r3 0.9.5-r1 1.0.1-r1 1.6.0 1.7.0: Add Internationalization support to your Ruby application
 dev-ruby/ice_nine 0.11.2: Deep Freeze Ruby Objects
 dev-ruby/idn-ruby 0.1.0: LibIDN Ruby Bindings
-dev-ruby/image_processing 1.9.3: High-level image processing helper methods with libvips and ImageMagick
+dev-ruby/image_processing 1.9.3 1.10.0: High-level image processing helper methods with libvips and ImageMagick
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/inflecto 0.0.2: Inflector for ruby
 dev-ruby/inifile 3.0.0: Native Ruby package for reading and writing INI files
@@ -10042,7 +10042,7 @@ dev-ruby/optimist 3.0.0: A commandline option parser for Ruby that just gets out
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.3.1: Origin is a simple DSL for generating MongoDB selectors and options
-dev-ruby/ox 2.9.4 2.10.0 2.10.1 2.11.0: A fast XML parser and Object marshaller
+dev-ruby/ox 2.10.1 2.11.0 2.12.0: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.1.0 2.1.1: Terminal painter
 dev-ruby/parallel 1.17.0 1.18.0 1.19.0 1.19.1: Run any code in parallel Processes or Threads
@@ -10081,9 +10081,9 @@ dev-ruby/puppetdb-termini 6.6.0 6.7.1 6.7.2: Library needed to connect puppet to
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
 dev-ruby/pygments_rb 1.2.1: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
-dev-ruby/racc 1.4.14: A LALR(1) parser generator for Ruby
+dev-ruby/racc 1.4.14 1.4.16: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.6.11 1.6.12 2.0.6 2.0.7 2.0.8: A modular Ruby webserver interface
-dev-ruby/rack-attack 5.4.2 6.2.0 6.2.1: A DSL for blocking & throttling abusive clients
+dev-ruby/rack-attack 5.4.2 6.2.0 6.2.1 6.2.2: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.9.0 1.10.0: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-mount 0.8.3-r2: A stackable dynamic tree based Rack router
 dev-ruby/rack-openid 1.4.2: Provides a more HTTPish API around the ruby-openid library
@@ -10276,7 +10276,7 @@ dev-ruby/spring 2.0.2 2.1.0: Rails application preloader
 dev-ruby/sprockets 3.7.2: Ruby library for compiling and serving web assets
 dev-ruby/sprockets-rails 3.2.1: Sprockets implementation for Rails 4.x (and beyond) Asset Pipeline
 dev-ruby/spy 1.0.0: A simple opinionated mocking framework
-dev-ruby/sqlite3 1.3.13 1.4.1: An extension library to access a SQLite database from Ruby
+dev-ruby/sqlite3 1.3.13 1.4.1 1.4.2: An extension library to access a SQLite database from Ruby
 dev-ruby/sshkey 1.9.0 2.0.0: SSH private and public key generator in pure Ruby
 dev-ruby/sshkit 1.18.2 1.19.1 1.20.0: SSHKit makes it easy to write structured, testable SSH commands in Ruby
 dev-ruby/stamp 0.6.0: Date and time formatting for humans
@@ -13379,7 +13379,6 @@ media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
 media-libs/shaderc 2018.0 2019.0-r1: Collection of tools, libraries and tests for shader compilation
 media-libs/simage 1.7.0-r1 1.7.1-r1: Image and video texturing library
-media-libs/skstream 0.3.9: FreeSockets - Portable C++ classes for IP (sockets) applications
 media-libs/slv2 0.6.6-r2 0.6.6-r3: A library to make the use of LV2 plugins as simple as possible for applications
 media-libs/smpeg 0.4.4-r10: SDL MPEG Player Library
 media-libs/smpeg2 2.0.0-r3: SDL MPEG Player Library
