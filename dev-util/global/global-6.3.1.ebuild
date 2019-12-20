@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -16,7 +16,7 @@ IUSE="doc emacs vim"
 
 RDEPEND="|| ( dev-libs/libltdl:0 sys-devel/libtool:2 )
 	sys-libs/ncurses
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	vim? ( || ( app-editors/vim app-editors/gvim ) )"
 DEPEND="${DEPEND}
 	doc? ( app-text/texi2html sys-apps/texinfo )"
