@@ -8,16 +8,16 @@ inherit autotools flag-o-matic pax-utils python-utils-r1 toolchain-funcs
 
 MY_P="Python-${PV}"
 PYVER=$(ver_cut 1-2)
-PATCHSET_VERSION="3.7.4-1"
+PATCHSET_VERSION="3.8.0"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
 SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
+	https://dev.gentoo.org/~mgorny/dist/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
-SLOT="${PYVER}/${PYVER}m"
+SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
 IUSE="bluetooth build examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl test tk wininst +xml"
 RESTRICT="!test? ( test )"
@@ -292,13 +292,11 @@ src_install() {
 	chmod +x "${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
 	ln -s "python${pymajor}-config" \
 		"${D}${PYTHON_SCRIPTDIR}/python-config" || die
-	# 2to3, pydoc, pyvenv
+	# 2to3, pydoc
 	ln -s "../../../bin/2to3-${PYVER}" \
 		"${D}${PYTHON_SCRIPTDIR}/2to3" || die
 	ln -s "../../../bin/pydoc${PYVER}" \
 		"${D}${PYTHON_SCRIPTDIR}/pydoc" || die
-	ln -s "../../../bin/pyvenv-${PYVER}" \
-		"${D}${PYTHON_SCRIPTDIR}/pyvenv" || die
 	# idle
 	if use tk; then
 		ln -s "../../../bin/idle${PYVER}" \
