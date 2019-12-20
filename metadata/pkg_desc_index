@@ -11212,7 +11212,7 @@ games-arcade/spacerider 0.13-r1: Space-shooter written in C++, using the SDL
 games-arcade/spout 1.3-r1: Abstract Japanese caveflier / shooter
 games-arcade/stardork 0.7-r1: An ncurses-based space shooter
 games-arcade/supertransball2 1.5-r1: Thrust clone
-games-arcade/supertux 0.5.1 0.6.0 0.6.1: A game similar to Super Mario Bros.
+games-arcade/supertux 0.6.0 0.6.1.1: A game similar to Super Mario Bros.
 games-arcade/syobon 1.0.1-r1: Syobon Action (also known as Cat Mario or Neko Mario)
 games-arcade/tecnoballz 0.92: An exciting Brick Breaker
 games-arcade/thinktanks-demo 1.1-r3: Tank combat game with lighthearted, fast paced pandemonium
