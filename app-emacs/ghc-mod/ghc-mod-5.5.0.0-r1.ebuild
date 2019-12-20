@@ -43,6 +43,7 @@ RDEPEND=">=dev-haskell/binary-0.5.1.0:=[profile?] <dev-haskell/binary-0.8:=[prof
 	<dev-haskell/transformers-0.5:=[profile?]
 	<dev-haskell/transformers-base-0.5:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
+	emacs? ( >=app-editors/emacs-23.1:* )
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.14

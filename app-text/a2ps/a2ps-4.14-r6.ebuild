@@ -20,7 +20,7 @@ RDEPEND="app-text/ghostscript-gpl
 	app-text/libpaper
 	>=app-text/psutils-1.17
 	app-text/wdiff
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	latex? ( virtual/latex-base )
 	nls? ( virtual/libintl )
 	userland_GNU? ( >=sys-apps/coreutils-6.10-r1 )"

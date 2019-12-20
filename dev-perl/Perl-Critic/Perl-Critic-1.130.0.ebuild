@@ -44,7 +44,7 @@ RDEPEND="
 	>=virtual/perl-Text-ParseWords-3
 	dev-perl/Perl-Tidy
 	>=virtual/perl-version-0.770.0
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 "
 DEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.402.400

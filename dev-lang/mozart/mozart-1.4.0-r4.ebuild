@@ -24,7 +24,7 @@ RDEPEND="
 	dev-lang/perl
 	dev-libs/gmp:0=
 	sys-libs/zlib
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	gdbm? ( sys-libs/gdbm  )
 	tcl? (
 		tk? (

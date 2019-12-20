@@ -32,7 +32,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="emacs examples"
 
-RDEPEND="emacs? ( virtual/emacs )"
+RDEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
 BDEPEND="${RDEPEND}
 	sys-devel/flex
 	virtual/yacc"

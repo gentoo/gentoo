@@ -52,7 +52,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/icu
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	gedit? ( app-editors/gedit )
 	qt5? (
 		dev-qt/qtconcurrent:5

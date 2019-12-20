@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	sci-libs/gsl:0=
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	fastjet? ( sci-physics/fastjet:0= )
 	hepmc? ( sci-physics/hepmc:0= )
 	java? ( >=virtual/jre-1.5:* )

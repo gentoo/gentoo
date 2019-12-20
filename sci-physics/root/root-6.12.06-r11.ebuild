@@ -66,7 +66,7 @@ CDEPEND="
 	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff?] )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 	davix? ( net-libs/davix )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	fftw? ( sci-libs/fftw:3.0= )
 	fits? ( sci-libs/cfitsio:0= )
 	graphviz? ( media-gfx/graphviz:0= )

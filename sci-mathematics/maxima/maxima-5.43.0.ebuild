@@ -38,7 +38,7 @@ RDEPEND="!app-emacs/imaxima
 	X? ( x11-misc/xdg-utils
 		 sci-visualization/gnuplot[gd]
 		 tk? ( dev-lang/tk:0 ) )
-	emacs? ( virtual/emacs
+	emacs? ( >=app-editors/emacs-23.1:*
 		virtual/latex-base
 		app-emacs/auctex
 		app-text/ghostscript-gpl

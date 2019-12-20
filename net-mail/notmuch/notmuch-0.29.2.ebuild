@@ -38,7 +38,7 @@ CDEPEND="
 	>=sys-libs/zlib-1.2.5.2
 	sys-libs/talloc
 	crypt? ( dev-libs/gmime:3.0[crypt] )
-	emacs? ( >=virtual/emacs-23 )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	python? ( ${PYTHON_DEPS} )
 	"
 DEPEND="${CDEPEND}

@@ -14,7 +14,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x
 IUSE="emacs"
 
 RDEPEND=">=dev-libs/glib-2.12:2
-	emacs? ( virtual/emacs )"
+	emacs? ( >=app-editors/emacs-23.1:* )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/xz-utils

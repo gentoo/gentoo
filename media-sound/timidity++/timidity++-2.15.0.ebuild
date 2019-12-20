@@ -23,7 +23,7 @@ REQUIRED_USE="tk? ( X )"
 DEPEND="
 	alsa? ( media-libs/alsa-lib )
 	ao? ( >=media-libs/libao-0.8.5 )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	flac? ( media-libs/flac )
 	gtk? ( x11-libs/gtk+:2 )
 	jack? ( virtual/jack )

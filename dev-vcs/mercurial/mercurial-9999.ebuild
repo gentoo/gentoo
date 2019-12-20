@@ -23,7 +23,7 @@ RDEPEND="bugzilla? ( dev-python/mysql-python[${PYTHON_USEDEP}] )
 	tk? ( dev-lang/tk )
 	zsh-completion? ( app-shells/zsh )
 	app-misc/ca-certificates"
-DEPEND="emacs? ( virtual/emacs )
+DEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	test? ( app-arch/unzip
 		dev-python/pygments[${PYTHON_USEDEP}] )
 	dev-python/docutils[${PYTHON_USEDEP}]"

@@ -45,7 +45,7 @@ RDEPEND="
 		virtual/latex-base
 		>=dev-texlive/texlive-latexextra-2013
 		)
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )"
 DEPEND="${RDEPEND}
 	doc? (
