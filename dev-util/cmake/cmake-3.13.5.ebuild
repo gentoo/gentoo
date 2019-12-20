@@ -27,7 +27,7 @@ RDEPEND="
 	>=net-misc/curl-7.21.5[ssl]
 	sys-libs/zlib
 	virtual/pkgconfig
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	ncurses? ( sys-libs/ncurses:0= )
 	qt5? (
 		dev-qt/qtcore:5
