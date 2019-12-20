@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,10 +16,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc emacs vim"
 
 RDEPEND="dev-util/coccinelle[python]
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	vim? ( || ( app-editors/vim app-editors/gvim ) )"
 DEPEND="doc? ( dev-python/sphinx )
-	emacs? ( virtual/emacs )"
+	emacs? ( >=app-editors/emacs-23.1:* )"
 
 SITEFILE="50${PN}-gentoo.el"
 
