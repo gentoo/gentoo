@@ -132,7 +132,7 @@ src_install() {
 		exeinto /usr/$(get_libdir)/${PN}
 		local app
 		for app in latency midiclock midithread midithru mm qtest sysex test ; do
-			doexe "${CMAKE_BUILD_DIR}"/${app}
+			doexe "${BUILD_DIR}"/${app}
 		done
 	fi
 }
