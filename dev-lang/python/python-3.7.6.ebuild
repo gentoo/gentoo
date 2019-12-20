@@ -204,6 +204,9 @@ src_install() {
 
 	emake DESTDIR="${D}" altinstall
 
+	# Remove static library
+	rm "${ED}"/usr/$(get_libdir)/libpython*.a || die
+
 	sed \
 		-e "s/\(CONFIGURE_LDFLAGS=\).*/\1/" \
 		-e "s/\(PY_LDFLAGS=\).*/\1/" \
