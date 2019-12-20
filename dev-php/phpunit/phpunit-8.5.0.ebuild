@@ -48,6 +48,7 @@ RDEPEND="dev-php/fedora-autoloader
 	<dev-php/sebastian-type-2.0
 	<dev-php/sebastian-version-3.0
 	>=dev-lang/php-7.2:*[cli(-),json(-),unicode(-),xml(-),xmlwriter(-)]
+	!dev-php/phpunit-mock-objects
 "
 
 src_install() {
