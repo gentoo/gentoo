@@ -30,7 +30,7 @@ RDEPEND="
 	acct-user/epmd
 	sys-libs/ncurses:0
 	sys-libs/zlib
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	java? ( >=virtual/jdk-1.8:* )
 	odbc? ( dev-db/unixODBC )
 	sctp? ( net-misc/lksctp-tools )
