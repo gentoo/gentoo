@@ -16,8 +16,8 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-REPEND="dev-libs/nanomsg:="
-DDEPEND="${DEPEND}
+RDEPEND="dev-libs/nanomsg:="
+DEPEND="${RDEPEND}
 	test? ( dev-util/cram )"
 BDEPEND="virtual/pkgconfig"
 
