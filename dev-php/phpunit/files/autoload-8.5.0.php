@@ -1,3 +1,4 @@
+<?php
 /* Autoloader for dev-php/phpunit and its dependencies */
 
 $include_dir = '/usr/share/php';
@@ -183,11 +184,11 @@ if (!class_exists('Fedora\\Autoloader\\Autoload', false)) {
 'phpunit\\runner\\testsuiteloader' => '/Runner/TestSuiteLoader.php',
 'phpunit\\runner\\testsuitesorter' => '/Runner/TestSuiteSorter.php',
 'phpunit\\runner\\version' => '/Runner/Version.php',
-'phpunit\\textUI\\command' => '/TextUI/Command.php',
-'phpunit\\textUI\\exception' => '/TextUI/Exception.php',
-'phpunit\\textUI\\help' => '/TextUI/Help.php',
-'phpunit\\textUI\\resultprinter' => '/TextUI/ResultPrinter.php',
-'phpunit\\textUI\\testrunner' => '/TextUI/TestRunner.php',
+'phpunit\\textui\\command' => '/TextUI/Command.php',
+'phpunit\\textui\\exception' => '/TextUI/Exception.php',
+'phpunit\\textui\\help' => '/TextUI/Help.php',
+'phpunit\\textui\\resultprinter' => '/TextUI/ResultPrinter.php',
+'phpunit\\textui\\testrunner' => '/TextUI/TestRunner.php',
 'phpunit\\util\\annotation\\docblock' => '/Util/Annotation/DocBlock.php',
 'phpunit\\util\\annotation\\registry' => '/Util/Annotation/Registry.php',
 'phpunit\\util\\blacklist' => '/Util/Blacklist.php',
@@ -210,7 +211,7 @@ if (!class_exists('Fedora\\Autoloader\\Autoload', false)) {
 'phpunit\\util\\php\\windowsphpprocess' => '/Util/PHP/WindowsPhpProcess.php',
 'phpunit\\util\\printer' => '/Util/Printer.php',
 'phpunit\\util\\regularexpression' => '/Util/RegularExpression.php',
-'phpunit\\util\\teest' => '/Util/Test.php',
+'phpunit\\util\\test' => '/Util/Test.php',
 'phpunit\\util\\testdox\\clitestdoxprinter' => '/Util/TestDox/CliTestDoxPrinter.php',
 'phpunit\\util\\testdox\\htmlresultprinter' => '/Util/TestDox/HtmlResultPrinter.php',
 'phpunit\\util\\testdox\\nameprettifier' => '/Util/TestDox/NamePrettifier.php',
@@ -245,7 +246,6 @@ if (!class_exists('Fedora\\Autoloader\\Autoload', false)) {
   "${include_dir}/Symfony/Component/Yaml/autoload.php",
   "${include_dir}/Text/Template/autoload.php",
   "${include_dir}/myclabs/DeepCopy/autoload.php",
-  "${include_dir}/PHPUnit/Framework/MockObject/autoload.php",
   "${include_dir}/phpspec/Prophecy/autoload.php",
   "${include_dir}/Doctrine/Instantiator/autoload.php",
   "${include_dir}/PharIo/Manifest/autoload.php",
