@@ -11,7 +11,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
-BEPEND="emacs? ( virtual/emacs )"
+BEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
 
 src_configure() {
 	econf \
