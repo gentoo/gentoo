@@ -26,6 +26,11 @@ RDEPEND="dev-php/fedora-autoloader
 BDEPEND="test? ( ${RDEPEND} dev-php/phpunit )"
 RESTRICT="!test? ( test )"
 
+src_prepare() {
+	sed -i -e 's/setUp()/setUp():void/' tests/Token/*.php || die
+	default
+}
+
 src_install() {
 	insinto /usr/share/php/PHP/Token
 	doins -r src/*
