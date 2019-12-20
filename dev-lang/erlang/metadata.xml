@@ -5,6 +5,14 @@
 		<email>slyfox@gentoo.org</email>
 		<name>Sergei Trofimovich</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>arkamar@atlas.cz</email>
+		<name>Petr Vaněk</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="hipe">HIgh Performance Erlang extension</flag>
 		<flag name="kpoll">Enable kernel polling support</flag>
