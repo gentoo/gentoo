@@ -44,10 +44,10 @@ BDEPEND="${PYTHON_DEPS}
 	dev-util/gyp
 	dev-util/ninja
 	virtual/pkgconfig
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	fcitx4? ( sys-devel/gettext )"
 RDEPEND=">=dev-libs/protobuf-3.0.0:=
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	fcitx4? (
 		app-i18n/fcitx:4
 		virtual/libintl
