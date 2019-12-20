@@ -12,7 +12,7 @@ SRC_URI="amd64? ( https://dl.tvcdn.de/download/linux/version_${PV/\.*}x/${PN}_${
 		x86? ( https://dl.tvcdn.de/download/linux/version_${PV/\.*}x/${PN}_${PV}_i386.tar.xz )"
 
 LICENSE="TeamViewer MIT"
-SLOT="${PV/\.*}"
+SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
