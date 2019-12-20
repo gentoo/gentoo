@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ RDEPEND="dev-lisp/alexandria
 		dev-lisp/cl-ppcre
 		dev-lisp/clx
 		>=dev-lisp/sbcl-1.3.0
-		emacs? ( virtual/emacs app-emacs/slime )"
+		emacs? ( >=app-editors/emacs-23.1:* app-emacs/slime )"
 DEPEND="${RDEPEND}
 		sys-apps/texinfo
 		doc? ( virtual/texi2dvi )"
