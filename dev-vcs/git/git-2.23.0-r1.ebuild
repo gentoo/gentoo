@@ -69,7 +69,7 @@ CDEPEND="
 		net-misc/curl
 		webdav? ( dev-libs/expat )
 	)
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	iconv? ( virtual/libiconv )
 "
 
