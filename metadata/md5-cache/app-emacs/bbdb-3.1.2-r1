@@ -10,5 +10,5 @@ RDEPEND=vm? ( app-emacs/vm ) tex? ( virtual/tex-base ) >=virtual/emacs-23
 RESTRICT=test
 SLOT=0
 SRC_URI=http://download.savannah.gnu.org/releases/bbdb/bbdb-3.1.2.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	d498a10aaed837c4ec5b31039e20b121	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	23f47b2e1de7abf387105eddd1318738	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=276d5c6bffc79a85eaf1cbcac26aca90

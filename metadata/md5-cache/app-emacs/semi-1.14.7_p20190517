@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-emacs/apel-10.8 >=app-emacs/flim-1.14.9 >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/wanderlust/semi/archive/4cf114c95fb49ad75eb6916f678b45b04bad8122.tar.gz -> semi-1.14.7_p20190517.tar.gz
-_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	d498a10aaed837c4ec5b31039e20b121
+_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	23f47b2e1de7abf387105eddd1318738
 _md5_=29f8e825233cdfc97095835287df032e

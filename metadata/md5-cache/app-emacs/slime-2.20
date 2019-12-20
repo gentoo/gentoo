@@ -10,5 +10,5 @@ RDEPEND=virtual/commonlisp dev-lisp/asdf >=virtual/emacs-23
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/slime/slime/archive/v2.20.tar.gz -> slime-2.20.tar.gz
-_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	d498a10aaed837c4ec5b31039e20b121
+_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	23f47b2e1de7abf387105eddd1318738
 _md5_=de596a97204c603dd6bbda9b460da4ea

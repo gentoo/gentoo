@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=outline-magic? ( app-emacs/outline-magic ) >=virtual/emacs-23
 SLOT=0
 SRC_URI=mirror://gentoo/wikipedia-mode-0.5.el.bz2
-_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	d498a10aaed837c4ec5b31039e20b121
+_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	23f47b2e1de7abf387105eddd1318738
 _md5_=8654a24ce284787db1207a4bed6c0d4c

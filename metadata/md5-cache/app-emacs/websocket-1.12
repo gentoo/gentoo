@@ -8,5 +8,5 @@ LICENSE=GPL-3+
 RDEPEND=>=virtual/emacs-24
 SLOT=0
 SRC_URI=https://github.com/ahyatt/emacs-websocket/archive/1.12.tar.gz -> websocket-1.12.tar.gz
-_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	d498a10aaed837c4ec5b31039e20b121
+_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	23f47b2e1de7abf387105eddd1318738
 _md5_=8f2f06d3008a2404bcd497b928f9e8c8

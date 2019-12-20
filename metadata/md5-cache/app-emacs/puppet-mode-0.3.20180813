@@ -9,5 +9,5 @@ RDEPEND=>=virtual/emacs-23
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/voxpupuli/puppet-mode/archive/7dee1b5a5debac6e56f9107492a413b6c0edb94d.tar.gz -> puppet-mode-0.3.20180813.tar.gz
-_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	d498a10aaed837c4ec5b31039e20b121
+_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	23f47b2e1de7abf387105eddd1318738
 _md5_=5cefddeebf772aee1bf6202bdf3dd42b
