@@ -22,7 +22,7 @@ RDEPEND="
 	sys-libs/zlib:0=
 	virtual/libiconv
 	cairo? ( x11-libs/cairo:0=[svg] )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	gtk? (
 			x11-libs/gtk+:3=
 			x11-libs/gtksourceview:3.0=
