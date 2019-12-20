@@ -23,7 +23,7 @@ RDEPEND="app-misc/ca-certificates
 	gpg? ( app-crypt/gnupg )
 	tk? ( dev-lang/tk )"
 
-DEPEND="emacs? ( virtual/emacs )
+DEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	test? ( app-arch/unzip
 		dev-python/pygments[${PYTHON_USEDEP}] )"
 
