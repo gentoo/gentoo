@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ REQUIRED_USE="tk? ( X )"
 DEPEND="
 	alsa? ( media-libs/alsa-lib )
 	ao? ( >=media-libs/libao-0.8.5 )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	flac? ( media-libs/flac )
 	gtk? ( x11-libs/gtk+:2 )
 	jack? ( virtual/jack )
