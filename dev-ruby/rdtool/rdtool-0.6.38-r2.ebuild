@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 ~sparc x86"
 IUSE="emacs"
 
-RDEPEND="${RDEPEND} emacs? ( virtual/emacs )"
+RDEPEND="${RDEPEND} emacs? ( >=app-editors/emacs-23.1:* )"
 
 SITEFILE=50${PN}-gentoo.el
 
