@@ -8641,7 +8641,7 @@ dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
 dev-python/pyswisseph 2.05.01_pre20160529: Python extension to the AstroDienst Swiss Ephemeris
 dev-python/pytables 3.4.4: Hierarchical datasets for Python
 dev-python/pyte 0.5.2-r2 0.8.0-r1: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 3.10.1 4.5.0 4.6.6 4.6.7 5.3.0 5.3.1 5.3.2: Simple powerful testing with Python
+dev-python/pytest 3.10.1 4.5.0 4.6.6 4.6.7 4.6.8 5.3.0 5.3.1 5.3.2: Simple powerful testing with Python
 dev-python/pytest-aiohttp 0.1.3 0.3.0: pytest plugin for aiohttp support
 dev-python/pytest-arraydiff 0.1: pytest plugin to facilitate comparison of arrays
 dev-python/pytest-asyncio 0.10.0: Library for testing asyncio code with pytest
@@ -8678,7 +8678,7 @@ dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypoth
 dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testmon
 dev-python/pytest-timeout 1.2.0 1.2.1 1.3.3: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.2.11 1.7.0: Virtualenv fixture for py.test
-dev-python/pytest-xdist 1.23.2 1.28.0 1.30.0: Distributed testing and loop-on-failing modes
+dev-python/pytest-xdist 1.23.2 1.28.0 1.30.0 1.31.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.12.1 0.12.1-r1 0.12.1-r2: Manage external processes across test runs
 dev-python/python-afl 0.6.1 0.7.1: Enables American fuzzy lop fork server and instrumentation for pure-Python code
 dev-python/python-augeas 0.5.0 1.0.3: Python bindings for Augeas
@@ -9120,7 +9120,7 @@ dev-python/translationstring 1.3: Utility library for i18n relied on by various 
 dev-python/transmissionrpc 0.11 9999: Python module that implements the Transmission bittorrent client RPC protocol
 dev-python/treq 0.2.1 16.12.0 17.3.1 17.8.0: A requests-like API built on top of twisted.web's Agent
 dev-python/trollius 2.1 2.2: Port of the asyncio project to Python 2.7 (deprecated)
-dev-python/trustme 0.5.0-r1 0.5.2 0.5.3: #1 quality TLS certs while you wait, for the discerning tester
+dev-python/trustme 0.5.0-r1 0.5.2 0.5.3 0.6.0: #1 quality TLS certs while you wait, for the discerning tester
 dev-python/ttfquery 1.0.5-r1: Font metadata and glyph outline extraction utility library
 dev-python/ttystatus 0.36: Terminal progress bar and status output for command line
 dev-python/turbocheetah 1.0-r1: TurboGears plugin to support use of Cheetah templates
@@ -17477,7 +17477,7 @@ sys-cluster/libqb 0.17.2 1.0.1 1.0.5: Library providing high performance logging
 sys-cluster/libquo 1.2 1.2.2 1.2.3 1.2.4-r1 1.2.9 9999: run-time tuning of process binding policies made easy
 sys-cluster/lustre 2.13.0: Lustre is a parallel distributed file system
 sys-cluster/maui 3.3.1-r3: Maui Cluster Scheduler
-sys-cluster/minikube 1.0.1 1.6.1: Single Node Kubernetes Cluster
+sys-cluster/minikube 1.0.1 1.6.1 1.6.2: Single Node Kubernetes Cluster
 sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
 sys-cluster/mpich 3.0.4 3.3: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
