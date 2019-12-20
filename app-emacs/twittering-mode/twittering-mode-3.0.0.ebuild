@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit elisp elisp-common eutils
+inherit elisp eutils
 
 if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/hayamiz/twittering-mode.git"
