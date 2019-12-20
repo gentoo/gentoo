@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp-common.eclass
@@ -156,6 +156,12 @@
 # environment, so it is no problem when you unset USE=emacs between
 # merge and unmerge of a package.
 
+case ${EAPI:-0} in
+	4|5|6) inherit eapi7-ver ;;
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 # @ECLASS-VARIABLE: SITELISP
 # @DESCRIPTION:
 # Directory where packages install Emacs Lisp files.
@@ -181,6 +187,17 @@ EMACSFLAGS="-batch -q --no-site-file"
 # @DESCRIPTION:
 # Emacs flags used for byte-compilation in elisp-compile().
 BYTECOMPFLAGS="-L ."
+
+# @ECLASS-VARIABLE: NEED_EMACS
+# @DESCRIPTION:
+# The minimum Emacs version required for the package.
+: ${NEED_EMACS:=23.1}
+
+# @ECLASS-VARIABLE: _ELISP_EMACS_VERSION
+# @INTERNAL
+# @DESCRIPTION:
+# Cached value of Emacs version detected in elisp-check-emacs-version().
+_ELISP_EMACS_VERSION=""
 
 # @FUNCTION: elisp-emacs-version
 # @RETURN: exit status of Emacs
@@ -210,6 +227,35 @@ elisp-emacs-version() {
 		return 1
 	fi
 	echo "${version}"
+}
+
+# @FUNCTION: elisp-check-emacs-version
+# @USAGE: [version]
+# @DESCRIPTION:
+# Test if the eselected Emacs version is at least the version of
+# GNU Emacs specified in the NEED_EMACS variable, or die otherwise.
+
+elisp-check-emacs-version() {
+	if [[ -z ${_ELISP_EMACS_VERSION} ]]; then
+		local have_emacs
+		have_emacs=$(elisp-emacs-version) \
+			|| die "Could not determine Emacs version"
+		elog "Emacs version: ${have_emacs}"
+		if [[ ${have_emacs} =~ XEmacs|Lucid ]]; then
+			die "XEmacs detected. This package needs GNU Emacs."
+		fi
+		# GNU Emacs versions have only numeric components.
+		if ! [[ ${have_emacs} =~ ^[0-9]+(\.[0-9]+)*$ ]]; then
+			die "Malformed version string: ${have_emacs}"
+		fi
+		_ELISP_EMACS_VERSION=${have_emacs}
+	fi
+
+	if ! ver_test "${_ELISP_EMACS_VERSION}" -ge "${NEED_EMACS}"; then
+		eerror "This package needs at least Emacs ${NEED_EMACS}."
+		eerror "Use \"eselect emacs\" to select the active version."
+		die "Emacs version too low"
+	fi
 }
 
 # @FUNCTION: elisp-need-emacs
@@ -249,6 +295,8 @@ elisp-need-emacs() {
 # in case they require or load one another.
 
 elisp-compile() {
+	elisp-check-emacs-version
+
 	ebegin "Compiling GNU Emacs Elisp files"
 	${EMACS} ${EMACSFLAGS} ${BYTECOMPFLAGS} -f batch-byte-compile "$@"
 	eend $? "elisp-compile: batch-byte-compile failed" || die
@@ -262,6 +310,8 @@ elisp-compile() {
 elisp-make-autoload-file() {
 	local f="${1:-${PN}-autoloads.el}" null="" page=$'\f'
 	shift
+	elisp-check-emacs-version
+
 	ebegin "Generating autoload file for GNU Emacs"
 
 	cat >"${f}" <<-EOF
