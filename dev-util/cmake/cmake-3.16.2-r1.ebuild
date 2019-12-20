@@ -5,7 +5,8 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CMAKE_REMOVE_MODULES="no"
-inherit bash-completion-r1 elisp-common flag-o-matic toolchain-funcs virtualx xdg cmake-utils
+inherit bash-completion-r1 elisp-common flag-o-matic multiprocessing \
+	toolchain-funcs virtualx xdg cmake-utils
 
 MY_P="${P/_/-}"
 
@@ -69,16 +70,6 @@ PATCHES=(
 )
 
 cmake_src_bootstrap() {
-	# Cleanup args to extract only JOBS.
-	# Because bootstrap does not know anything else.
-	grep -Eo '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+' <<< "${MAKEOPTS}" > /dev/null
-	if [[ $? -eq 0 ]] ; then
-		par_arg=$(grep -Eo '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+' <<< "${MAKEOPTS}" | tail -n1 | grep -o '[[:digit:]]+')
-		par_arg="--parallel=${par_arg}"
-	else
-		par_arg="--parallel=1"
-	fi
-
 	# disable running of cmake in boostrap command
 	sed -i \
 		-e '/"${cmake_bootstrap_dir}\/cmake"/s/^/#DONOTRUN /' \
@@ -95,7 +86,7 @@ cmake_src_bootstrap() {
 	# bootstrap script isn't exactly /bin/sh compatible
 	${CONFIG_SHELL:-sh} ./bootstrap \
 		--prefix="${T}/cmakestrap/" \
-		${par_arg} \
+		--parallel=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)") \
 		|| die "Bootstrap failed"
 }
 
