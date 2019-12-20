@@ -20,7 +20,7 @@ DEPEND="
 	dev-texlive/texlive-pictures
 	dev-texlive/texlive-latexextra
 	dev-texlive/texlive-latexrecommended
-	emacs? ( virtual/emacs )"
+	emacs? ( >=app-editors/emacs-23.1:* )"
 RDEPEND="${DEPEND}"
 SITEFILE=50${PN}-gentoo.el
 
