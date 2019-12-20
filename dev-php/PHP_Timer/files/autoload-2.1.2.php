@@ -7,9 +7,9 @@ if (!class_exists('Fedora\\Autoloader\\Autoload', false)) {
 
 \Fedora\Autoloader\Autoload::addClassMap(
     [
-		'sebastianBergmann\timer\exception' => '/Exception.php',
-		'sebastianBergmann\timer\runtimeexception' => '/RuntimeException.php',
-		'sebastianBergmann\timer\timer' => '/Timer.php',
+		'sebastianbergmann\timer\exception' => '/Exception.php',
+		'sebastianbergmann\timer\runtimeexception' => '/RuntimeException.php',
+		'sebastianbergmann\timer\timer' => '/Timer.php',
     ],
     __DIR__
 );
