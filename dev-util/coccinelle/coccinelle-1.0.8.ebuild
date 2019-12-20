@@ -22,7 +22,7 @@ CDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
 	dev-ml/menhir:=[ocamlopt?]
 	dev-ml/camlp4:=[ocamlopt?]
 	dev-ml/parmap:=[ocamlopt?]
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	ocaml? ( dev-ml/findlib:= )
 	pcre? ( dev-ml/pcre-ocaml:=[ocamlopt(+)?] )
 	python? ( ${PYTHON_DEPS} )"
