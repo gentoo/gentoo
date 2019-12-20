@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="emacs java doc"
 
-DEPEND="emacs? ( virtual/emacs )"
+DEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
 RDEPEND="${DEPEND}
 	java? ( virtual/jdk )"
 
