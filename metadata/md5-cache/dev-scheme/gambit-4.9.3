@@ -1,4 +1,4 @@
-BDEPEND=emacs? ( virtual/emacs )
+BDEPEND=emacs? ( >=app-editors/emacs-23.1:* )
 DEFINED_PHASES=compile configure install postinst postrm
 DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 DESCRIPTION=Gambit-C is a native Scheme to C compiler and interpreter
@@ -11,4 +11,4 @@ RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:
 SLOT=0
 SRC_URI=http://www-labs.iro.umontreal.ca/~gambit/download/gambit/v4.9/source/gambit-v4_9_3.tgz
 _eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	eutils	fcb2aa98e1948b835b5ae66ca52868c5
-_md5_=53ee347fe3b005d0ea450f20e96e8dc0
+_md5_=2a9d3c442eb0cce69de9466cf83da1e7

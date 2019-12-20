@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst postrm
-DEPEND=dev-libs/ffcall emacs? ( virtual/emacs )
+DEPEND=dev-libs/ffcall emacs? ( >=app-editors/emacs-23.1:* )
 DESCRIPTION=GNU Forth is a fast and portable implementation of the ANSI Forth language
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/gforth
 IUSE=emacs
 KEYWORDS=~amd64 ~ppc ~x86 ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris
 LICENSE=GPL-3
-RDEPEND=dev-libs/ffcall emacs? ( virtual/emacs )
+RDEPEND=dev-libs/ffcall emacs? ( >=app-editors/emacs-23.1:* )
 SLOT=0
 SRC_URI=mirror://gnu/gforth/gforth-0.7.3.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=1ddcfb72b5026b95be56230c668453a0
+_md5_=df7ce5b0e4b456cf1d168be95ef833ca

@@ -1,14 +1,14 @@
 BDEPEND=app-arch/unzip virtual/pkgconfig virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DEFINED_PHASES=compile configure install postinst postrm prepare
-DEPEND=virtual/latex-base dev-libs/kpathsea emacs? ( virtual/emacs )
+DEPEND=virtual/latex-base dev-libs/kpathsea emacs? ( >=app-editors/emacs-23.1:* )
 DESCRIPTION=LaTeX package to use CJK (Chinese/Japanese/Korean) scripts in various encodings
 EAPI=7
 HOMEPAGE=https://cjk.ffii.org/
 IUSE=doc emacs
 KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~x64-macos
 LICENSE=GPL-2
-RDEPEND=virtual/latex-base dev-libs/kpathsea emacs? ( virtual/emacs ) virtual/latex-base
+RDEPEND=virtual/latex-base dev-libs/kpathsea emacs? ( >=app-editors/emacs-23.1:* ) virtual/latex-base
 SLOT=0
 SRC_URI=ftp://ftp.ffii.org/pub/cjk/cjk-4.8.4.tar.gz mirror://gentoo/cjk-4.8.4-fonts.zip doc? ( ftp://ftp.ffii.org/pub/cjk/cjk-4.8.4-doc.tar.gz )
 _eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	8a43b9830f1e64a7a5fc0a276afa0275	latex-package	17f13abe0de88340745e52e6b627aee7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=29c2637c556d4a5c6cf2a12d09fb87a1
+_md5_=bb822dc7df914a69253aeb5ccd2b61c6
