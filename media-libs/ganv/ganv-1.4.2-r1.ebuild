@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+# oes not work with python3
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 inherit eutils flag-o-matic waf-utils python-any-r1
@@ -26,12 +27,13 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
+	dev-util/glib-utils
 	nls? ( virtual/libintl )
 "
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-no-fdgl.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-no-fdgl.patch
+)
 
 src_configure() {
 	append-cxxflags -std=c++11
