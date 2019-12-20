@@ -4,3 +4,4 @@ move media-video/gnome-mpv media-video/celluloid
 move app-admin/graylog2 app-admin/graylog
 move media-libs/libclthreads dev-libs/libclthreads
 move media-libs/libclxclient x11-libs/libclxclient
+slotmove net-misc/teamviewer 15 0
