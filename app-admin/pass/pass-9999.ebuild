@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,7 @@ RDEPEND="
 	zsh-completion? ( app-shells/gentoo-zsh-completions )
 	fish-completion? ( app-shells/fish )
 	dmenu? ( x11-misc/dmenu x11-misc/xdotool )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 "
 
 src_prepare() {
