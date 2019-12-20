@@ -20,7 +20,7 @@ DEPEND="
 	dev-libs/gmime:3.0
 	>=dev-libs/xapian-1.4
 	dev-libs/glib:2
-	emacs? ( >=virtual/emacs-24.4 )
+	emacs? ( >=app-editors/emacs-24.4:* )
 	guile? ( >=dev-scheme/guile-2.0 )
 	!net-mail/mailutils"
 RDEPEND="${DEPEND}"
