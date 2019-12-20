@@ -19,7 +19,7 @@ if (!class_exists('Fedora\\Autoloader\\Autoload', false)) {
 
 // Required dependencies.
 \Fedora\Autoloader\Dependencies::required([
-  __DIR__."../ObjectReflector/autoload.php",
-  __DIR__."../RecursionContext/autoload.php",
+  __DIR__."/../ObjectReflector/autoload.php",
+  __DIR__."/../RecursionContext/autoload.php",
 ]);
 
