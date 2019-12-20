@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: distutils-r1.eclass
@@ -86,6 +86,8 @@ esac
 # - no -- do not add the dependency (pure distutils package)
 # - bdepend -- add it to BDEPEND (the default)
 # - rdepend -- add it to BDEPEND+RDEPEND (when using entry_points)
+# - manual -- do not add the depedency and suppress the checks
+#             (assumes you will take care of doing it correctly)
 #
 # This variable is effective only if DISTUTILS_OPTIONAL is disabled.
 # It needs to be set before the inherit line.
@@ -116,7 +118,7 @@ _distutils_set_globals() {
 	local bdep=${rdep}
 
 	case ${DISTUTILS_USE_SETUPTOOLS} in
-		no)
+		no|manual)
 			;;
 		bdepend)
 			bdep+=" dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -436,6 +438,7 @@ distutils_enable_tests() {
 # incorrectly.
 _distutils_verify_use_setuptools() {
 	[[ ${DISTUTILS_OPTIONAL} ]] && return
+	[[ ${DISTUTILS_USE_SETUPTOOLS} == manual ]] && return
 
 	# ok, those are cheap greps.  we can try toimprove them if we hit
 	# false positives.
