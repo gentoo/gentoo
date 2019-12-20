@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="vim-syntax emacs examples"
 
 DEPEND="vim-syntax? ( app-editors/vim )
-		emacs? ( virtual/emacs )"
+		emacs? ( >=app-editors/emacs-23.1 )"
 
 RDEPEND="${DEPEND}"
 
