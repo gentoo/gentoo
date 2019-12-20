@@ -8435,7 +8435,7 @@ dev-python/py-xmlrpc 0.9: Fast XML-RPC implementation for Python
 dev-python/py2neo 3.1.2: A simple and pragmatic library which accesses the Neo4j graph database
 dev-python/py2play 0.1.10-r1: A Peer To Peer network game engine
 dev-python/pyClamd 0.4.0 0.4.0-r1: python interface to Clamd (Clamav daemon)
-dev-python/pyFFTW 0.10.4 9999: A pythonic python wrapper around FFTW
+dev-python/pyFFTW 0.10.4 0.11.1 9999: A pythonic python wrapper around FFTW
 dev-python/pyGPG 0.2 9999: A python interface wrapper for gnupg's gpg command
 dev-python/pyPdf 1.13-r1: Python library to work with pdf files
 dev-python/pyTenable 0.3.7 0.3.18 0.3.19 0.3.20: Tenable API Library for Tenable.io and SecurityCenter
@@ -8723,7 +8723,7 @@ dev-python/python-fchksum 1.7.1-r1: Python module to find the checksum of files
 dev-python/python-gammu 2.11: Python bindings for Gammu
 dev-python/python-gflags 3.1.1 3.1.2-r1: Google's Python argument parsing library
 dev-python/python-glanceclient 2.13.1 2.16.0: A client for the OpenStack Glance API
-dev-python/python-gnupg 0.4.0 0.4.1 0.4.3 0.4.5: A Python wrapper for GnuPG
+dev-python/python-gnupg 0.4.5: A Python wrapper for GnuPG
 dev-python/python-heatclient 1.16.2 1.17.0: OpenStack Orchestration API Client Library
 dev-python/python-hpilo 4.0 4.1: iLO automation from python or shell
 dev-python/python-iptables 0.12.0 0.13.0: Python bindings for iptables
