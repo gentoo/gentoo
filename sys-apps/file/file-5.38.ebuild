@@ -21,16 +21,16 @@ HOMEPAGE="https://www.darwinsys.com/file/"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="bzip2 python static-libs xz zlib"
+IUSE="bzip2 lzma python static-libs zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
 	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP}] )
+	lzma? ( app-arch/xz-utils[${MULTILIB_USEDEP}] )
 	python? (
 		${PYTHON_DEPS}
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	)
-	xz? ( app-arch/xz-utils[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}
 	python? ( !dev-python/python-magic )"
@@ -51,8 +51,8 @@ multilib_src_configure() {
 		--disable-libseccomp
 		--enable-fsect-man5
 		$(use_enable bzip2 bzlib)
+		$(use_enable lzma xzlib)
 		$(use_enable static-libs static)
-		$(use_enable xz xzlib)
 		$(use_enable zlib)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
