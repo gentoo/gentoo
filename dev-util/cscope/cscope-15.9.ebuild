@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="emacs"
 
 RDEPEND=">=sys-libs/ncurses-5.2:0=
-	emacs? ( virtual/emacs )"
+	emacs? ( >=app-editors/emacs-23.1:* )"
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/flex
 	virtual/pkgconfig
