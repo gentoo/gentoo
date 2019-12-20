@@ -15,7 +15,7 @@ KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x8
 IUSE="canna-2ch emacs static-libs"
 
 BDEPEND="canna-2ch? ( app-dicts/canna-2ch )
-	emacs? ( virtual/emacs )"
+	emacs? ( >=app-editors/emacs-23.1:* )"
 DEPEND=""
 RDEPEND="${BDEPEND}"
 
