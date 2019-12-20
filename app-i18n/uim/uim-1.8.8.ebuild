@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -33,7 +33,7 @@ CDEPEND="!dev-scheme/sigscheme
 	canna? ( app-i18n/canna )
 	curl? ( net-misc/curl )
 	eb? ( dev-libs/eb )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	expat? ( dev-libs/expat )
 	libffi? ( virtual/libffi )
 	gtk? ( x11-libs/gtk+:3 )
