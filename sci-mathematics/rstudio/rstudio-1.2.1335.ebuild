@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils user cmake-utils gnome2-utils pam xdg-utils java-pkg-2 pax-utils qmake-utils
+inherit eutils user cmake-utils gnome2-utils pam xdg-utils java-pkg-2 pax-utils qmake-utils vcs-clean
 
 # TODO
 # * package gin and gwt
@@ -92,16 +92,17 @@ DEPEND="${RDEPEND}
 #	test? ( dev-java/junit:4 )
 
 PATCHES=(
-		"${FILESDIR}/${PN}-1.2.1335-prefs.patch"
-		"${FILESDIR}/${PN}-1.2.1335-paths.patch"
-		"${FILESDIR}/${PN}-1.2.1335-pandoc.patch"
-		"${FILESDIR}/${PN}-1.2.1335-linker_flags.patch"
-		"${FILESDIR}/${PN}-1.2.1335-qtsingleapplication.patch"
-		"${FILESDIR}/${PN}-1.0.44-systemd.patch"
-		"${FILESDIR}/${PN}-1.2.1335-core.patch"
-		"${FILESDIR}/${PN}-1.2.1335-fix-ptr-int-compare.patch"
-		"${FILESDIR}/${PN}-1.2.1335-boost-1.70.0_p1.patch"
-		"${FILESDIR}/${PN}-1.2.1335-boost-1.70.0_p2.patch"
+	"${FILESDIR}"/${PN}-1.2.1335-prefs.patch
+	"${FILESDIR}"/${PN}-1.2.1335-paths.patch
+	"${FILESDIR}"/${PN}-1.2.1335-pandoc.patch
+	"${FILESDIR}"/${PN}-1.2.1335-linker_flags.patch
+	"${FILESDIR}"/${PN}-1.2.1335-qtsingleapplication.patch
+	"${FILESDIR}"/${PN}-1.0.44-systemd.patch
+	"${FILESDIR}"/${PN}-1.2.1335-core.patch
+	"${FILESDIR}"/${PN}-1.2.1335-fix-ptr-int-compare.patch
+	"${FILESDIR}"/${PN}-1.2.1335-boost-1.70.0_p1.patch
+	"${FILESDIR}"/${PN}-1.2.1335-boost-1.70.0_p2.patch
+	"${FILESDIR}"/${PN}-1.2.1335-boost-1.72-filesystem.patch
 )
 
 src_unpack() {
