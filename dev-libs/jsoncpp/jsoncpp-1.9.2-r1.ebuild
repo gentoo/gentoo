@@ -17,7 +17,11 @@ KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+BDEPEND="
+	|| (
+		dev-util/cmake-bootstrap
+		dev-util/cmake
+	)
 	doc? (
 		app-doc/doxygen
 		${PYTHON_DEPS}
@@ -25,7 +29,6 @@ DEPEND="
 	test? (
 		${PYTHON_DEPS}
 	)"
-RDEPEND=""
 
 pkg_setup() {
 	if use doc || use test; then
@@ -48,6 +51,9 @@ src_configure() {
 		# Disable implicit ccache use
 		-DCCACHE_FOUND=OFF
 	)
+	if ! has_version -b dev-util/cmake; then
+		local CMAKE_BINARY="${BROOT}"/usr/lib/cmake-bootstrap/bin/cmake
+	fi
 	cmake-utils_src_configure
 }
 
