@@ -33,9 +33,7 @@ DEPEND="${RDEPEND}
 	nis? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )"
 PDEPEND="sys-auth/pambase"
 
-RDEPEND="${RDEPEND}
-	!<sys-apps/openrc-0.11.8
-	!sys-auth/pam_userdb"
+RDEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
