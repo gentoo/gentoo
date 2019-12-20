@@ -59,6 +59,8 @@ src_install() {
 	exeinto /usr/share/php/PHPUnit
 	doexe phpunit
 	dosym ../share/php/PHPUnit/phpunit /usr/bin/phpunit
+	insinto /usr/share/php
+	doins phpunit.xsd
 }
 
 pkg_postinst() {
