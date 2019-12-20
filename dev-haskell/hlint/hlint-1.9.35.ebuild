@@ -26,6 +26,7 @@ RDEPEND=">=dev-haskell/ansi-terminal-0.6.2:=[profile?]
 	dev-haskell/transformers:=[profile?]
 	>=dev-haskell/uniplate-1.5:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
+	emacs? ( >=app-editors/emacs-23.1:* )
 	gpl? ( >=dev-haskell/hscolour-1.21:=[profile?] )
 "
 DEPEND="${RDEPEND}
