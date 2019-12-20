@@ -30,7 +30,7 @@ RESTRICT="test"
 
 # sys-apps/util-linux is required for libuuid
 RDEPEND="!elibc_glibc? ( sys-libs/argp-standalone )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	fuse? ( >=sys-fs/fuse-2.7.0:0 )
 	georeplication? ( ${PYTHON_DEPS} )
 	infiniband? ( sys-fabric/libibverbs:* sys-fabric/librdmacm:* )
