@@ -26,7 +26,7 @@ RDEPEND="
 		)
 	)"
 DEPEND="${RDEPEND}
-	test? ( virtual/emacs )
+	test? ( >=app-editors/emacs-23.1:* )
 	"
 
 src_test() {
