@@ -419,7 +419,6 @@ dev-python/pylibpcap
 dev-python/libextractor-python
 dev-python/happydoc
 dev-python/irman-python
-dev-python/python-recaptcha
 dev-python/dirq
 dev-python/ropemacs
 dev-python/lp_solve
