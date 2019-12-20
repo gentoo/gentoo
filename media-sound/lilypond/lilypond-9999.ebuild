@@ -33,7 +33,7 @@ RDEPEND=">=app-text/ghostscript-gpl-8.15
 	media-libs/fontconfig
 	media-libs/freetype:2
 	>=x11-libs/pango-1.12.3
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	guile2? ( >=dev-scheme/guile-2:12 )
 	!guile2? (
 		>=dev-scheme/guile-1.8.2:12[deprecated,regex]
