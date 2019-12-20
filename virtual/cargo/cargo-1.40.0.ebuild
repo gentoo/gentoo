@@ -4,12 +4,10 @@
 EAPI=7
 
 DESCRIPTION="Package manager for Rust"
-HOMEPAGE=""
-SRC_URI=""
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 RDEPEND="|| (
 			=dev-lang/rust-${PV}*
