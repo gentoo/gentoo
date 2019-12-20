@@ -1,7 +1,0 @@
-DEFINED_PHASES=-
-DESCRIPTION=Package manager for Rust
-EAPI=7
-KEYWORDS=~amd64 arm64 ~ppc64 ~x86
-RDEPEND=|| ( =dev-lang/rust-1.35.0* =dev-lang/rust-bin-1.35.0* )
-SLOT=0
-_md5_=787f40869b7cdf543ef36b2db5ed1db6
