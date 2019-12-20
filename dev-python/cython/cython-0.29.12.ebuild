@@ -22,7 +22,7 @@ IUSE="doc emacs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
