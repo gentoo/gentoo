@@ -23,26 +23,25 @@
 # When relying on the emacs USE flag, you need to add
 #
 # @CODE
-# 	emacs? ( virtual/emacs )
+# 	emacs? ( >=app-editors/emacs-23.1:* )
 # @CODE
 #
 # to your DEPEND/RDEPEND line and use the functions provided here to
 # bring the files to the correct locations.
 #
-# If your package requires a minimum Emacs version, e.g. Emacs 24, then
-# the dependency should be on >=virtual/emacs-24 instead.  Because the
-# user can select the Emacs executable with eselect, you should also
-# make sure that the active Emacs version is sufficient.  This can be
-# tested with function elisp-need-emacs(), which would typically be
-# called from pkg_setup(), as in the following example:
+# If your package requires a minimum Emacs version, e.g. Emacs 26.1,
+# then the dependency should be on >=app-editors/emacs-26.1:* instead.
+# Because the user can select the Emacs executable with eselect, you
+# should also make sure that the active Emacs version is sufficient.
+# The eclass will automatically ensure this if you assign variable
+# NEED_EMACS with the Emacs version, as in the following example:
 #
 # @CODE
-# 	elisp-need-emacs 24 || die "Emacs version too low"
+# 	NEED_EMACS=26.1
 # @CODE
 #
-# Please note that such tests should be limited to packages that are
-# known to fail with lower Emacs versions; the standard case is to
-# depend on virtual/emacs without version.
+# Please note that this should be done only for packages that are known
+# to fail with lower Emacs versions.
 #
 # @ROFF .SS
 # src_compile() usage:
@@ -134,6 +133,20 @@
 # the differing name as second argument.
 #
 # @ROFF .SS
+# pkg_setup() usage:
+#
+# If your ebuild uses the elisp-compile eclass function to compile
+# its elisp files (see above), then you don't need a pkg_setup phase,
+# because elisp-compile and elisp-make-autoload-file do their own sanity
+# checks.  On the other hand, if the elisp files are compiled by the
+# package's build system, then there is often no check for the Emacs
+# version.  In this case, you can add an explicit check in pkg_setup:
+#
+# @CODE
+# 	elisp-check-emacs-version
+# @CODE
+#
+# @ROFF .SS
 # pkg_postinst() / pkg_postrm() usage:
 #
 # After that you need to recreate the start-up file of Emacs after
@@ -151,10 +164,6 @@
 #
 # When having optional Emacs support, you should prepend "use emacs &&"
 # to above calls of elisp-site-regen().
-# Don't use "has_version virtual/emacs"!  When unmerging the state of
-# the emacs USE flag is taken from the package database and not from the
-# environment, so it is no problem when you unset USE=emacs between
-# merge and unmerge of a package.
 
 case ${EAPI:-0} in
 	4|5|6) inherit eapi7-ver ;;
@@ -258,12 +267,10 @@ elisp-check-emacs-version() {
 	fi
 }
 
-# @FUNCTION: elisp-need-emacs
-# @USAGE: <version>
-# @RETURN: 0 if true, 1 if false, 2 if trouble
-# @DESCRIPTION:
 # Test if the eselected Emacs version is at least the major version
 # of GNU Emacs specified as argument.
+# Return 0 if true, 1 if false, 2 if trouble.
+# Deprecated, use elisp-check-emacs-version instead.
 
 elisp-need-emacs() {
 	local need_emacs=$1 have_emacs
