@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
+# dev-libs/criterion is not keyworded yet
+app-admin/syslog-ng test
+
 # Craig Andrews <candrews@gentoo.org> (2019-11-26)
 # net-misc/quiche is available on this arch
 net-misc/curl -quiche
