@@ -69,6 +69,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}/10.1.0-mount.vmhgfs.patch"
 	"${FILESDIR}/10.1.0-Werror.patch"
+	"${FILESDIR}/11.0.1-udev-complaints.patch"
 )
 
 pkg_setup() {
