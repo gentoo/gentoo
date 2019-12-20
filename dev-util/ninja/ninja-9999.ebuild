@@ -38,7 +38,7 @@ BDEPEND="
 	test? ( dev-cpp/gtest )
 "
 RDEPEND="
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	vim-syntax? (
 		|| (
 			app-editors/vim
