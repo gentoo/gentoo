@@ -28,10 +28,10 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~am
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
 
-BDEPEND="emacs? ( virtual/emacs )"
+BDEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
 DEPEND="test? ( >=dev-cpp/gtest-1.8.0[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
-RDEPEND="emacs? ( virtual/emacs )
+RDEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
