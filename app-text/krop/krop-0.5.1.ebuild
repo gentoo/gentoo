@@ -12,7 +12,7 @@ SRC_URI="http://arminstraub.com/downloads/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-python/python-poppler-qt5[${PYTHON_USEDEP}]
