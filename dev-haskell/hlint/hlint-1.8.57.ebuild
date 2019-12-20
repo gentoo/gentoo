@@ -23,6 +23,7 @@ RDEPEND=">=dev-haskell/cpphs-1.11:=[profile?]
 	>=dev-haskell/transformers-0.0:=[profile?]
 	>=dev-haskell/uniplate-1.5:=[profile?]
 	>=dev-lang/ghc-6.10.4:=
+	emacs? ( >=app-editors/emacs-23.1:* )
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6.0.3
