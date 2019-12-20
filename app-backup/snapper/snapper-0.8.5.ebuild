@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit systemd bash-completion-r1
 
 DESCRIPTION="Command-line program for btrfs and lvm snapshot management"
 HOMEPAGE="http://snapper.io/"
@@ -66,6 +66,7 @@ src_install() {
 	# Existing configuration file required to function
 	newconfd data/sysconfig.snapper snapper
 	find "${D}" -name '*.la' -delete || die
+	newbashcomp "${FILESDIR}"/${PN}.bash ${PN}
 }
 
 pkg_postinst() {
