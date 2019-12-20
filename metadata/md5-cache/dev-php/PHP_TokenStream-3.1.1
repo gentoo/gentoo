@@ -1,5 +1,5 @@
 BDEPEND=test? ( dev-php/fedora-autoloader || ( dev-lang/php:7.2[tokenizer(-)] dev-lang/php:7.3[tokenizer(-)] dev-lang/php:7.4[tokenizer(-)] ) dev-php/phpunit )
-DEFINED_PHASES=install postinst test
+DEFINED_PHASES=install postinst prepare test
 DESCRIPTION=Wrapper around PHP's tokenizer extension
 EAPI=7
 HOMEPAGE=http://phpunit.de
@@ -10,4 +10,4 @@ RDEPEND=dev-php/fedora-autoloader || ( dev-lang/php:7.2[tokenizer(-)] dev-lang/p
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/sebastianbergmann/php-token-stream/archive/3.1.1.tar.gz -> PHP_TokenStream-3.1.1.tar.gz
-_md5_=1d098d6c0d87884a390de09d65cbc09c
+_md5_=5a80b306da7d8df894e6b5289eb0acff
