@@ -13,8 +13,8 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-l
 
 DEPEND="|| ( sys-apps/util-linux app-misc/getopt )"
 RDEPEND="${DEPEND}
-	>=app-portage/portage-utils-0.3
-	virtual/emacs"
+	>=app-editors/emacs-23.1:*
+	>=app-portage/portage-utils-0.3"
 
 src_prepare() {
 	default
