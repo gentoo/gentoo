@@ -147,7 +147,8 @@ case ${CMAKE_MAKEFILE_GENERATOR} in
 		;;
 esac
 
-if [[ ${PN} != cmake ]]; then
+# TODO: this sucks
+if ! has "${PN}" cmake cmake-bootstrap jsoncpp; then
 	BDEPEND+=" >=dev-util/cmake-${CMAKE_MIN_VERSION}"
 fi
 
