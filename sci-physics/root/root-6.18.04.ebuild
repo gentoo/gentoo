@@ -69,7 +69,7 @@ CDEPEND="
 	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff?] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
 	davix? ( net-libs/davix )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	fftw? ( sci-libs/fftw:3.0= )
 	fits? ( sci-libs/cfitsio:0= )
 	graphviz? ( media-gfx/graphviz )
