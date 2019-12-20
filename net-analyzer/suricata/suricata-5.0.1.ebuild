@@ -48,7 +48,7 @@ CDEPEND="acct-group/suricata
 	redis?      ( dev-libs/hiredis )"
 DEPEND="${CDEPEND}
 	>=sys-devel/autoconf-2.69-r5
-	dev-lang/rust"
+	virtual/rust"
 RDEPEND="${CDEPEND}
 	${PYTHON_DEPS}"
 

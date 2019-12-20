@@ -19,8 +19,6 @@ SLOT="$(ver_cut 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-RUBY_PATCHES=( ${PN}-1.2.1-gentoo.patch ${PN}-1.6-rewindable-ruby23.patch )
-
 ruby_add_rdepend "virtual/ruby-ssl"
 
 # The gem has automagic dependencies over mongrel, ruby-openid,
