@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ COMS=(  .    lisp  .   ecl  .     ccl )
 
 IUSE="${LISPS[*]} X emacs gmp"
 RDEPEND="X? ( x11-libs/libXpm x11-libs/libICE )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	gmp? ( dev-libs/gmp:= )"
 
 # Generating lisp deps
