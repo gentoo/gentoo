@@ -21,7 +21,7 @@ IUSE="doc emacs"
 
 RDEPEND="virtual/latex-base
 	dev-libs/kpathsea
-	emacs? ( virtual/emacs )"
+	emacs? ( >=app-editors/emacs-23.1:* )"
 
 DEPEND="${RDEPEND}"
 
