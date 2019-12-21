@@ -28,7 +28,7 @@ HOMEPAGE="https://www.schedmd.com https://github.com/SchedMD/slurm"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug hdf5 html ipmi json lua multiple-slurmd +munge mysql netloc numa ofed pam perl slurmdbd ssl static-libs ucx torque X"
+IUSE="debug hdf5 html ipmi json lua multiple-slurmd +munge mysql netloc numa ofed pam perl slurmdbd static-libs ucx torque X"
 
 COMMON_DEPEND="
 	!sys-cluster/torque
@@ -41,7 +41,6 @@ COMMON_DEPEND="
 		)
 	munge? ( sys-auth/munge )
 	pam? ( sys-libs/pam )
-	ssl? ( dev-libs/openssl:0= )
 	lua? ( dev-lang/lua:0= )
 	!lua? ( !dev-lang/lua )
 	ipmi? ( sys-libs/freeipmi )
@@ -123,7 +122,6 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable pam) \
 		$(use_enable X x11) \
-		$(use_with ssl) \
 		$(use_with munge) \
 		$(use_with json) \
 		$(use_with hdf5) \
