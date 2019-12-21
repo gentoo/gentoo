@@ -42,6 +42,7 @@ acct-group/lp 0: System group: lp
 acct-group/mail 0: Mail program group
 acct-group/man 0: System group: man
 acct-group/messagebus 0: System group: messagebus
+acct-group/milter-regex 0: Group for mail-filter/milter-regex
 acct-group/minecraft 0: A group for the Minecraft server
 acct-group/minetest 0: A group for the Minetest server
 acct-group/mongodb 0: MongoDB program group
@@ -136,6 +137,7 @@ acct-user/logstash 0: Logstash program user
 acct-user/mail 0: Mail program user
 acct-user/man 1: System user: man
 acct-user/messagebus 0: System user: messagebus
+acct-user/milter-regex 0: User for mail-filter/milter-regex
 acct-user/minecraft 0: A user for the Minecraft server
 acct-user/minetest 0: A user for the Minetest server
 acct-user/mongodb 0: MongoDB program user
@@ -805,10 +807,10 @@ app-crypt/swtpm 0.2.0: Libtpms-based TPM emulator
 app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCrypt implementation
 app-crypt/tpm-emulator 0.7.5-r1: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform Modules
-app-crypt/tpm2-abrmd 2.1.1 2.1.1-r1: TPM2 Access Broker & Resource Manager
+app-crypt/tpm2-abrmd 2.1.1-r1: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-tools 3.1.4: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.1.1: Attest the trustworthiness of a device against a human using time-based OTP
-app-crypt/tpm2-tss 2.2.3 2.2.3-r1: TCG Trusted Platform Module 2.0 Software Stack
+app-crypt/tpm2-tss 2.2.3-r1: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.0.0: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r1 0.3.14-r2: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1: GnuPG archive keys of the Ubuntu archive
@@ -1647,7 +1649,7 @@ app-forensics/honggfuzz 1.9 2.0: A general purpose fuzzer with feedback support
 app-forensics/libewf 20171104: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/lynis 2.7.5: Security and system auditing tool
 app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident response tool that collects data
-app-forensics/magicrescue 1.1.9 1.1.10: Find deleted files in block devices
+app-forensics/magicrescue 1.1.10: Find deleted files in block devices
 app-forensics/memdump 1.01-r1: Simple memory dumper for UNIX-Like systems
 app-forensics/openscap 1.2.14 9999: Framework which enables integration with Security Content Automation Protocol
 app-forensics/ovaldi 5.10.1.7: Free implementation of OVAL
@@ -12503,7 +12505,7 @@ mail-filter/libsrs_alt 1.0-r1: Sender Rewriting Scheme library for use with Exim
 mail-filter/maildrop 3.0.0: Mail delivery agent/filter
 mail-filter/mailfilter 0.8.4: Mailfilter is a utility to get rid of unwanted spam mails
 mail-filter/mapson 3.3: A challenge/response-based white-list spam filter
-mail-filter/milter-regex 2.6: A milter-based regular expression filter
+mail-filter/milter-regex 2.6 2.7: A milter-based regular expression filter
 mail-filter/mimedefang 2.84: Antispam, antivirus and other customizable filters for MTAs with Milter support
 mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded messages
 mail-filter/opendkim 2.10.3-r17: A milter providing DKIM signing and verification
@@ -14373,12 +14375,12 @@ net-analyzer/gnome-nettool 3.8.1: Graphical front-ends to various networking com
 net-analyzer/goaccess 1.2 1.3 9999: A real-time web log analyzer and interactive viewer that runs in a terminal
 net-analyzer/gr-fosphor 9999: gnuradio fosphor block (GPU spectrum display)
 net-analyzer/graphite-web 1.1.3-r1 1.1.5: Enterprise scalable realtime graphing
-net-analyzer/greenbone-security-assistant 7.0.3-r1 8.0.1: Greenbone Security Assistant
+net-analyzer/greenbone-security-assistant 8.0.1: Greenbone Security Assistant
 net-analyzer/gsm-receiver 9999: GSM receiver block from the airprobe suite
 net-analyzer/gspoof 3.2-r3: A simple GTK/command line TCP/IP packet generator
 net-analyzer/gvm 10.0.1: Greenbone Vulnerability Management,previously named OpenVAS
 net-analyzer/gvm-libs 10.0.1: Greenbone vulnerability management libraries, previously named openvas-libraries
-net-analyzer/gvm-tools 1.4.1 2.0.0: Remote control for Greenbone Vulnerability Manager, previously named openvas-cli
+net-analyzer/gvm-tools 2.0.0: Remote control for Greenbone Vulnerability Manager, previously named openvas-cli
 net-analyzer/gvmd 8.0.1: Greenbone vulnerability manager, previously named openvas-manager
 net-analyzer/hexinject 1.5 1.6 1.6-r1: Network packet sniffer and injector
 net-analyzer/hping 3_pre20051105-r6 3_pre20141226: A ping-like TCP/IP packet assembler/analyzer
@@ -14491,11 +14493,9 @@ net-analyzer/nuttcp 8.1.4: Network performance measurement tool
 net-analyzer/odhcploc 20111021: Open DHCP Locator
 net-analyzer/oinkmaster 2.0: Rule management for SNORT
 net-analyzer/openbsd-netcat 1.105 1.105-r1 1.190: The OpenBSD network swiss army knife
-net-analyzer/openvas-libraries 9.0.3-r1: A remote security scanner for Linux (openvas-libraries)
-net-analyzer/openvas-manager 7.0.3: A remote security manager for Linux (openvas-manager)
-net-analyzer/openvas-scanner 5.1.3 6.0.1: Open Vulnerability Assessment Scanner
+net-analyzer/openvas-scanner 6.0.1: Open Vulnerability Assessment Scanner
 net-analyzer/opsgenie-lamp 2.5.1_p20181102: command line client for the opsgenie service
-net-analyzer/ospd 1.3.2 2.0.0: Base class for scanner wrappers,communication protocol for GVM
+net-analyzer/ospd 2.0.0: Base class for scanner wrappers,communication protocol for GVM
 net-analyzer/ossec-hids 3.1.0 3.2.0 3.2.0-r1 3.3.0: Open Source Host-based Intrusion Detection System
 net-analyzer/ostinato 0.9_p20180522: A packet generator and analyzer
 net-analyzer/p0f 3.09_beta: A tool to perform passive OS detection based on SYN packets
