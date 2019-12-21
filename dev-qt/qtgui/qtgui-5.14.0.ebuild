@@ -79,8 +79,6 @@ PDEPEND="
 	wayland? ( ~dev-qt/qtwayland-${PV} )
 "
 
-PATCHES=( "${FILESDIR}/qt-5.12-gcc-avx2.patch" ) # bug 672946
-
 QT5_TARGET_SUBDIRS=(
 	src/tools/qvkgen
 	src/gui
@@ -133,7 +131,10 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 	:gui
 )
 
-PATCHES=( "${FILESDIR}/${PN}-5.13.2-no-xcb-no-xkbcommon.patch" ) # bug 699110
+PATCHES=(
+	"${FILESDIR}/qt-5.12-gcc-avx2.patch" # bug 672946
+	"${FILESDIR}/${PN}-5.13.2-no-xcb-no-xkbcommon.patch" # bug 699110
+)
 
 src_prepare() {
 	# don't add -O3 to CXXFLAGS, bug 549140
