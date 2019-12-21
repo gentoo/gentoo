@@ -15210,7 +15210,7 @@ net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
 net-misc/dhcpcd 7.2.3 7.2.5 8.0.6 8.1.2 8.1.4 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
-net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
+net-misc/dhcpcd-ui 0.7.5-r1 0.7.7: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1: Portable DHCPv6 implementation (server, client and relay)
