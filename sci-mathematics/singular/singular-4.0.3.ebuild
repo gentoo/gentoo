@@ -42,11 +42,6 @@ pkg_setup() {
 	append-flags "-fPIC"
 	append-ldflags "-fPIC"
 	tc-export AR CC CPP CXX
-
-	# Ensure that >=emacs-22 is selected
-	if use emacs; then
-		elisp-need-emacs 22 || die "Emacs version too low"
-	fi
 }
 
 src_prepare () {
