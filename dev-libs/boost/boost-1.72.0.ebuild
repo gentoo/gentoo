@@ -54,6 +54,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.71.0-disable_icu_rpath.patch
 	"${FILESDIR}"/${PN}-1.71.0-context-x32.patch
 	"${FILESDIR}"/${PN}-1.71.0-build-auto_index-tool.patch
+	# Bug 703294, incomplete Boost.Serialization refactoring
+	"${FILESDIR}"/${PN}-1.72.0-missing-serialization-split_member-include.patch
 )
 
 python_bindings_needed() {
@@ -329,7 +331,7 @@ pkg_postinst() {
 	elog "  undefined reference to \`boost::re_detail_$(ver_cut 1)0$(ver_cut 2)00::cpp_regex_traits_implementation"
 	elog "    <char>::transform_primary[abi:cxx11](char const*, char const*) const'"
 	elog
-	elog "Then you need you need to recompile Boost and all its reverse dependencies"
+	elog "Then you need to recompile Boost and all its reverse dependencies"
 	elog "using the same toolchain. In general, *every* change of the C++ toolchain"
 	elog "requires a complete rebuild of the boost-dependent ecosystem."
 	elog
