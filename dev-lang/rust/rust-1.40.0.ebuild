@@ -36,7 +36,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
-IUSE="clippy cpu_flags_x86_sse2 debug doc libressl rls rustfmt system-llvm wasm ${ALL_LLVM_TARGETS[*]}"
+IUSE="clippy cpu_flags_x86_sse2 debug doc libressl nightly rls rustfmt system-llvm wasm ${ALL_LLVM_TARGETS[*]}"
 
 # Please keep the LLVM dependency block separate. Since LLVM is slotted,
 # we need to *really* make sure we're not pulling more than one slot
@@ -187,7 +187,7 @@ src_configure() {
 		debug = $(toml_usex debug)
 		debug-assertions = $(toml_usex debug)
 		default-linker = "$(tc-getCC)"
-		channel = "stable"
+		channel = "$(usex nightly nightly stable)"
 		rpath = false
 		lld = $(usex system-llvm false $(toml_usex wasm))
 	EOF
