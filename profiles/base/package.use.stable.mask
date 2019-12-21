@@ -46,7 +46,6 @@ dev-perl/Business-ISBN barcode
 dev-perl/Template-Toolkit gd
 media-fonts/unifont utils fontforge
 media-video/vdrsync dvdr
-net-analyzer/openvas-manager extras
 www-apps/bugzilla extras
 www-apps/otrs gd
 
