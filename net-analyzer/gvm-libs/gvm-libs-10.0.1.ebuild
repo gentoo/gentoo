@@ -27,8 +27,7 @@ DEPEND="
 	radius? ( net-dialup/freeradius-client )"
 
 RDEPEND="
-	${DEPEND}
-	!net-analyzer/openvas-libraries"
+	${DEPEND}"
 
 BDEPEND="
 	sys-devel/bison

@@ -31,9 +31,7 @@ DEPEND="
 "
 
 RDEPEND="
-	${DEPEND}
-	!~net-analyzer/openvas-scanner-5.1.3
-	!net-analyzer/openvas-tools"
+	${DEPEND}"
 
 BDEPEND="
 	sys-devel/bison
