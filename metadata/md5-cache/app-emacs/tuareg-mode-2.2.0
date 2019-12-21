@@ -1,12 +1,12 @@
-BDEPEND=>=virtual/emacs-23
+BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=An Objective Caml/Camllight mode for Emacs
 EAPI=7
 HOMEPAGE=http://forge.ocamlcore.org/projects/tuareg/
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2+ GPL-3+ ISC
-RDEPEND=>=virtual/emacs-23
+RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/ocaml/tuareg/archive/2.2.0.tar.gz -> tuareg-mode-2.2.0.tar.gz
-_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	4367f5e0a8c043fd95f5511c7d885a41
 _md5_=e76c62edb1664ab0ac7eb25f2ca4ad82

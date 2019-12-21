@@ -1,4 +1,4 @@
-BDEPEND=>=virtual/emacs-23
+BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=app-emacs/apel-10.8
 DESCRIPTION=A library to provide basic features about message representation or encoding
@@ -6,8 +6,8 @@ EAPI=7
 HOMEPAGE=https://github.com/wanderlust/flim
 KEYWORDS=alpha amd64 ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=GPL-2+
-RDEPEND=>=app-emacs/apel-10.8 !app-emacs/limit >=virtual/emacs-23
+RDEPEND=>=app-emacs/apel-10.8 !app-emacs/limit >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/wanderlust/flim/archive/e4bd54fd7d335215b54f7ef27ed974c8cd68d472.tar.gz -> flim-1.14.9_p20190526.tar.gz
-_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	4367f5e0a8c043fd95f5511c7d885a41
 _md5_=3582c81c226826df91658fc91d59624d

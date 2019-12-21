@@ -1187,8 +1187,8 @@ app-editors/e3 2.8.2: Very tiny editor in ASM with emacs, pico, wordstar, and vi
 app-editors/editra 0.7.20-r2: Multi-platform text editor supporting over 50 programming languages
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/elvis 2.2.0-r6 2.2.0-r7 2.2.0-r8: A vi/ex clone
-app-editors/emacs 18.59-r12 23.4-r18 24.5-r7 25.3-r6 26.2 26.3-r1 26.3.9999 27.0.9999: The extensible, customizable, self-documenting real-time display editor
-app-editors/emacs-vcs 26.3.9999 27.0.50_pre20180831 27.0.9999: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r12 23.4-r18 24.5-r7 25.3-r6 26.2 26.3-r1 26.3.9999 27.0.50_pre20191220 27.0.9999: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs-vcs 26.3.9999 27.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515-r1: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 2.0: A small and easy to use folding editor
@@ -17505,7 +17505,7 @@ sys-cluster/rdma-core 26.0 26.1 9999: Userspace components for the Linux Kernel'
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
 sys-cluster/singularity 2.6.1: Application containers for Linux
-sys-cluster/slurm 19.05.4.1: A Highly Scalable Resource Manager
+sys-cluster/slurm 19.05.4.1 19.05.5.1: A Highly Scalable Resource Manager
 sys-cluster/spark-bin 2.3.1-r1 2.4.4-r1: Lightning-fast unified analytics engine
 sys-cluster/swift 2.21.0-r1 2.22.0 2.23.1 2019.1.9999 2019.2.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 4.0.9 4.0.10 4.1.1 4.1.4 9999: Modern SSH server for teams managing distributed infrastructure

@@ -1,12 +1,12 @@
-BDEPEND=>=virtual/emacs-24
+BDEPEND=>=app-editors/emacs-24:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=A great IRC client for Emacs
 EAPI=7
 HOMEPAGE=https://github.com/jorgenschaefer/circe https://www.emacswiki.org/emacs/Circe
 KEYWORDS=amd64 ~ppc sparc x86
 LICENSE=GPL-3+
-RDEPEND=>=virtual/emacs-24
+RDEPEND=>=app-editors/emacs-24:*
 SLOT=0
 SRC_URI=https://github.com/jorgenschaefer/circe/archive/v2.11.tar.gz -> circe-2.11.tar.gz
-_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	4367f5e0a8c043fd95f5511c7d885a41
 _md5_=1a20f4d913fa501c763de9d584c396e5

@@ -1,12 +1,12 @@
-BDEPEND=>=virtual/emacs-23
+BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Monitor lists of files or command output
 EAPI=7
 HOMEPAGE=https://web.archive.org/web/20150919120435/http://mph-emacs-pkgs.alioth.debian.org/AnalogEl.html
 KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2+
-RDEPEND=>=virtual/emacs-23
+RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=mirror://gentoo/analog-1.9.99.el.bz2
-_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	4367f5e0a8c043fd95f5511c7d885a41
 _md5_=922905ad92a1fb4d4a4bef6c2b782c52

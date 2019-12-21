@@ -9,5 +9,5 @@ LICENSE=CeCILL-2
 RDEPEND=emacs? ( >=app-editors/emacs-23.1:* ) java? ( virtual/jdk )
 SLOT=0
 SRC_URI=http://www.cmtsite.net/v1r26p20160527/CMTv1r26p20160527.tar.gz
-_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=elisp-common	4367f5e0a8c043fd95f5511c7d885a41	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=3e9c03ab9a4440f5a3d9757d9fd67af2

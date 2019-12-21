@@ -1,13 +1,13 @@
-BDEPEND=>=virtual/emacs-23
+BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=In-buffer completion front-end
 EAPI=7
 HOMEPAGE=https://company-mode.github.com/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+
-RDEPEND=>=virtual/emacs-23
+RDEPEND=>=app-editors/emacs-23.1:*
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/company-mode/company-mode/archive/0.9.10.tar.gz -> company-mode-0.9.10.tar.gz
-_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	4367f5e0a8c043fd95f5511c7d885a41
 _md5_=5af3e35baf51c8199b30645ffe504d80

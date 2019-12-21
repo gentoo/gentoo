@@ -1,4 +1,4 @@
-BDEPEND=>=virtual/emacs-24
+BDEPEND=>=app-editors/emacs-24:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=app-emacs/dash-2.13.0 sys-apps/texinfo
 DESCRIPTION=Define prefix-infix-suffix command combos
@@ -6,8 +6,8 @@ EAPI=7
 HOMEPAGE=https://magit.vc/manual/magit-popup
 KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3+
-RDEPEND=!!<app-emacs/magit-2.12.1 >=app-emacs/dash-2.13.0 >=virtual/emacs-24
+RDEPEND=!!<app-emacs/magit-2.12.1 >=app-emacs/dash-2.13.0 >=app-editors/emacs-24:*
 SLOT=0
 SRC_URI=https://github.com/magit/magit-popup/archive/v2.13.0.tar.gz -> magit-popup-2.13.0.tar.gz
-_eclasses_=elisp	c774c0b6e71acd42b75cc46721bc2d0e	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	4367f5e0a8c043fd95f5511c7d885a41
 _md5_=e3460323affd0fa1e6ab63f2505e6667
