@@ -21,7 +21,7 @@ SLOT="0/4" # subslot = soname major version
 IUSE="debug doc examples gcrypt gssapi libressl mbedtls pcap server +sftp static-libs test zlib"
 # Maintainer: check IUSE-defaults at DefineOptions.cmake
 
-REQUIRED_USE="?? ( gcrypt mbedtls ) test? ( static-libs )"
+REQUIRED_USE="?? ( gcrypt mbedtls )"
 
 BDEPEND="
 	doc? ( app-doc/doxygen[dot] )
@@ -81,7 +81,7 @@ multilib_src_configure() {
 		-DWITH_PCAP="$(usex pcap)"
 		-DWITH_SERVER="$(usex server)"
 		-DWITH_SFTP="$(usex sftp)"
-		-DBUILD_SHARED_LIBS="$(usex !static-libs)"
+		-DBUILD_STATIC_LIB="$(usex static-libs)"
 		-DUNIT_TESTING="$(usex test)"
 		-DWITH_ZLIB="$(usex zlib)"
 	)
@@ -99,6 +99,8 @@ multilib_src_compile() {
 multilib_src_install() {
 	cmake-utils_src_install
 	multilib_is_native_abi && use doc && HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
+
+	use static-libs && dolib.a src/libssh.a
 
 	# compatibility symlink until all consumers have been updated
 	# to no longer use libssh_threads.so
