@@ -81,6 +81,8 @@ src_unpack() {
 
 src_prepare() {
 	tc-ld-disable-gold
+	eapply "${FILESDIR}"/disable-sview.patch
+	eautoreconf
 	default
 
 	# pids should go to /var/run/slurm
