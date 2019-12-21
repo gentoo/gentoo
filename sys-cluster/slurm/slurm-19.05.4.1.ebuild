@@ -66,8 +66,8 @@ REQUIRED_USE="torque? ( perl )"
 
 S="${WORKDIR}/${PN}-${MY_P}"
 
-LIBSLURM_PERL_S="${WORKDIR}/${MY_P}/contribs/perlapi/libslurm/perl"
-LIBSLURMDB_PERL_S="${WORKDIR}/${MY_P}/contribs/perlapi/libslurmdb/perl"
+LIBSLURM_PERL_S="${S}/contribs/perlapi/libslurm/perl"
+LIBSLURMDB_PERL_S="${S}/contribs/perlapi/libslurmdb/perl"
 
 RESTRICT="test"
 
