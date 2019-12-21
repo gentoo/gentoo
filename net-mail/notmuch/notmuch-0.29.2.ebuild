@@ -38,7 +38,7 @@ CDEPEND="
 	>=sys-libs/zlib-1.2.5.2
 	sys-libs/talloc
 	crypt? ( dev-libs/gmime:3.0[crypt] )
-	emacs? ( >=app-editors/emacs-23.1:* )
+	emacs? ( >=app-editors/emacs-24.1:* )
 	python? ( ${PYTHON_DEPS} )
 	"
 DEPEND="${CDEPEND}
@@ -49,7 +49,7 @@ DEPEND="${CDEPEND}
 	)
 	test? (
 		app-misc/dtach
-		|| ( >=app-editors/emacs-23[libxml2] >=app-editors/emacs-vcs-23[libxml2] )
+		>=app-editors/emacs-24.1:*[libxml2]
 		sys-devel/gdb
 		crypt? ( app-crypt/gnupg dev-libs/openssl )
 	)
@@ -72,6 +72,7 @@ RDEPEND="${CDEPEND}
 	"
 
 DOCS=( AUTHORS NEWS README )
+NEED_EMACS="24.1"
 SITEFILE="50${PN}-gentoo.el"
 MY_LD_LIBRARY_PATH="${WORKDIR}/${P}/lib"
 PATCHES=(
@@ -103,9 +104,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	if use emacs; then
-		elisp-need-emacs 23 || die "Emacs version too low"
-	fi
+	use emacs && elisp-check-emacs-version
 }
 
 src_unpack() {
