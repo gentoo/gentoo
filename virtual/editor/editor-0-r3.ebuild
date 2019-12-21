@@ -18,8 +18,7 @@ RDEPEND="|| (
 	app-editors/e3
 	app-editors/ee
 	app-editors/elvis
-	app-editors/emacs
-	app-editors/emacs-vcs
+	app-editors/emacs:*
 	app-editors/emact
 	app-editors/ersatz-emacs
 	app-editors/fe
