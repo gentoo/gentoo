@@ -11718,7 +11718,7 @@ games-rpg/wastesedge 0.3.5-r1: role playing game to showcase the adonthell engin
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0-r1: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0-r1: A free 2D Zelda fangame parody
-games-server/bedrock-server 1.14.0.9: The official bedrock (non-java) based server for the sandbox video game
+games-server/bedrock-server 1.14.1.4: The official bedrock (non-java) based server for the sandbox video game
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
