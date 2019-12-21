@@ -9,5 +9,5 @@ LICENSE=GPL-2 LGPL-2.1
 RDEPEND=canna-2ch? ( app-dicts/canna-2ch ) emacs? ( >=app-editors/emacs-23.1:* )
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/anthy/37536/anthy-9100h.tar.gz
-_eclasses_=elisp-common	8393a1ed85e62f0a719ef2f2e3d03eb1
+_eclasses_=elisp-common	f651b1af2a931eb45710eb2ce171246e
 _md5_=ccacb00cb34678ba95d6c77476b363cb
