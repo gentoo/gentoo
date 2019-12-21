@@ -15,7 +15,9 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 DEPEND="|| ( sys-libs/gdbm sys-libs/db:* )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!net-mail/safecat"
+# File collision with net-mail/safecat, #702004
 
 PATCHES=( "${FILESDIR}/${P}-ldflags.patch"
 		  "${FILESDIR}/${P}-remove_toolsdir.patch" )
