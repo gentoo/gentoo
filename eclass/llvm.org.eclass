@@ -126,7 +126,7 @@ llvm.org_set_globals() {
 	elif [[ ${_LLVM_SOURCE_TYPE} == tar ]]; then
 		if ver_test -ge 9.0.1_rc1; then
 			# 9.0.1 RCs as GitHub archive
-			SRC_URI="
+			SRC_URI+="
 				https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz"
 		else
 			local a archives=()
