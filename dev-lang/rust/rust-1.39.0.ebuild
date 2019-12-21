@@ -317,7 +317,7 @@ pkg_postinst() {
 	ewarn "This might have resulted in a dangling symlink for /usr/bin/cargo on some"
 	ewarn "systems. This can be resolved by calling 'sudo eselect rust set ${P}'."
 
-	if has_version app-editors/emacs || has_version app-editors/emacs-vcs; then
+	if has_version app-editors/emacs; then
 		elog "install app-emacs/rust-mode to get emacs support for rust."
 	fi
 
