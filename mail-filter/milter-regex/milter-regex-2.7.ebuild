@@ -22,7 +22,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-2.6-gentoo.patch"
 	eapply_user
 	# Change default user
-	sed -i -e 's/_\(milter-regex\)/\1/g' ${PN}.[8c]
+	sed -i -e 's/_\(milter-regex\)/\1/g' ${PN}.[8c] || die
 }
 
 src_compile() {
