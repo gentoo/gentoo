@@ -31,8 +31,8 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package doc Doxygen)
-		$(cmake-utils_use_find_package !gmp MPIR)
+		$(cmake_use_find_package doc Doxygen)
+		$(cmake_use_find_package !gmp MPIR)
 	)
 	kde5_src_configure
 }

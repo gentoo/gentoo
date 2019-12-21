@@ -4,7 +4,7 @@
 EAPI=7
 
 KDE_ORG_NAME="polkit-qt-1"
-inherit cmake-utils kde.org
+inherit cmake kde.org
 
 DESCRIPTION="Qt wrapper around polkit-1 client libraries"
 HOMEPAGE="https://api.kde.org/kdesupport-api/polkit-qt-1-apidocs/"
@@ -36,5 +36,5 @@ src_configure() {
 		-DBUILD_EXAMPLES=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

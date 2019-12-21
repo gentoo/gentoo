@@ -5,7 +5,7 @@ EAPI=7
 
 KDE_ORG_NAME="breeze-icons"
 PVCUT=$(ver_cut 1-2)
-inherit cmake-utils kde.org
+inherit cmake kde.org
 
 DESCRIPTION="Breeze SVG icon theme binary resource"
 LICENSE="LGPL-3"
@@ -22,7 +22,7 @@ DEPEND="test? ( dev-qt/qttest:5 )"
 RESTRICT+=" !test? ( test )"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	use test || cmake_comment_add_subdirectory autotests
 }
 
@@ -31,5 +31,5 @@ src_configure() {
 		-DBINARY_ICONS_RESOURCE=ON
 		-DSKIP_INSTALL_ICONS=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

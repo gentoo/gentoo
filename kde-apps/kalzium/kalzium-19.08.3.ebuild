@@ -52,11 +52,11 @@ src_configure(){
 	[[ ${CHOST} == *-solaris* ]] && append-cppflags -DHAVE_IEEEFP_H
 
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package editor Eigen3)
-		$(cmake-utils_use_find_package editor AvogadroLibs)
-		$(cmake-utils_use_find_package editor OpenBabel2)
-		$(cmake-utils_use_find_package solver OCaml)
-		$(cmake-utils_use_find_package solver Libfacile)
+		$(cmake_use_find_package editor Eigen3)
+		$(cmake_use_find_package editor AvogadroLibs)
+		$(cmake_use_find_package editor OpenBabel2)
+		$(cmake_use_find_package solver OCaml)
+		$(cmake_use_find_package solver Libfacile)
 	)
 
 	ecm_src_configure

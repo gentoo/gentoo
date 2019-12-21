@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}"
 src_configure() {
 	local mycmakeargs=(
 		-D_KDE4_DEFAULT_HOME_POSTFIX=4
-		$(cmake-utils_use_find_package fam FAM)
+		$(cmake_use_find_package fam FAM)
 	)
 
 	ecm_src_configure

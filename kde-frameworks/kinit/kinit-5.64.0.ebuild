@@ -39,10 +39,10 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package caps Libcap)
-		$(cmake-utils_use_find_package man KF5DocTools)
-		$(cmake-utils_use_find_package X X11)
-		$(cmake-utils_use_find_package X XCB)
+		$(cmake_use_find_package caps Libcap)
+		$(cmake_use_find_package man KF5DocTools)
+		$(cmake_use_find_package X X11)
+		$(cmake_use_find_package X XCB)
 	)
 
 	ecm_src_configure

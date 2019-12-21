@@ -52,7 +52,7 @@ RDEPEND="${DEPEND}"
 src_configure() {
 	local mycmakeargs=(
 		-DOMIT_EXAMPLES=ON
-		$(cmake-utils_use_find_package crypt Qca-qt5)
+		$(cmake_use_find_package crypt Qca-qt5)
 		-DBUILD_DESIGNERPLUGIN=$(usex designer)
 	)
 

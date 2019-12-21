@@ -68,7 +68,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5WebKitWidgets=ON
 		$(cmake_use_find_package webengine Qt5WebEngineWidgets)
-		$(cmake-utils_use_find_package zotero Qca-qt5)
+		$(cmake_use_find_package zotero Qca-qt5)
 	)
 
 	ecm_src_configure

@@ -32,7 +32,7 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package man KF5DocTools)
+		$(cmake_use_find_package man KF5DocTools)
 	)
 
 	ecm_src_configure

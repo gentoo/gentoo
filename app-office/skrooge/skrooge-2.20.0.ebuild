@@ -84,9 +84,9 @@ src_configure() {
 	local mycmakeargs=(
 		-DSKG_BUILD_TEST=$(usex test)
 		-DSKG_DESIGNER=$(usex designer)
-		$(cmake-utils_use_find_package activities KF5Activities)
-		$(cmake-utils_use_find_package kde KF5Runner)
-		$(cmake-utils_use_find_package ofx LibOfx)
+		$(cmake_use_find_package activities KF5Activities)
+		$(cmake_use_find_package kde KF5Runner)
+		$(cmake_use_find_package ofx LibOfx)
 		-DSKG_WEBENGINE=$(usex !webkit)
 	)
 

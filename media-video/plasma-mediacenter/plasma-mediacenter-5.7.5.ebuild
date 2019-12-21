@@ -40,7 +40,7 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package semantic-desktop KF5Baloo)
+		$(cmake_use_find_package semantic-desktop KF5Baloo)
 	)
 
 	kde5_src_configure

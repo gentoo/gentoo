@@ -40,7 +40,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package eigen Eigen3)
+		$(cmake_use_find_package eigen Eigen3)
 	)
 
 	ecm_src_configure

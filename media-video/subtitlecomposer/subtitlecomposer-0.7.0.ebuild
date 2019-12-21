@@ -59,11 +59,11 @@ S="${WORKDIR}/SubtitleComposer-${PV}"
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_PocketSphinx=ON # bug 616706
-		$(cmake-utils_use_find_package gstreamer GStreamer)
-		$(cmake-utils_use_find_package mpv MPV)
-		$(cmake-utils_use_find_package unicode ICU)
-		$(cmake-utils_use_find_package xine Xine)
-		$(cmake-utils_use_find_package xine X11)
+		$(cmake_use_find_package gstreamer GStreamer)
+		$(cmake_use_find_package mpv MPV)
+		$(cmake_use_find_package unicode ICU)
+		$(cmake_use_find_package xine Xine)
+		$(cmake_use_find_package xine X11)
 	)
 
 	kde5_src_configure

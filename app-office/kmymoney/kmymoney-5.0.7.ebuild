@@ -102,17 +102,17 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_QT_DESIGNER=OFF
-		$(cmake-utils_use_find_package activities KF5Activities)
-		$(cmake-utils_use_find_package addressbook KF5Akonadi)
-		$(cmake-utils_use_find_package addressbook KF5Contacts)
-		$(cmake-utils_use_find_package addressbook KF5IdentityManagement)
+		$(cmake_use_find_package activities KF5Activities)
+		$(cmake_use_find_package addressbook KF5Akonadi)
+		$(cmake_use_find_package addressbook KF5Contacts)
+		$(cmake_use_find_package addressbook KF5IdentityManagement)
 		-DENABLE_LIBICAL=$(usex calendar)
 		-DENABLE_KBANKING=$(usex hbci)
-		$(cmake-utils_use_find_package holidays KF5Holidays)
+		$(cmake_use_find_package holidays KF5Holidays)
 		-DENABLE_OFXIMPORTER=$(usex ofx)
 		-DENABLE_WEBENGINE=$(usex !webkit)
 		-DENABLE_WEBOOB=$(usex weboob)
-		$(cmake-utils_use_find_package weboob PythonLibs)
+		$(cmake_use_find_package weboob PythonLibs)
 	)
 	ecm_src_configure
 }

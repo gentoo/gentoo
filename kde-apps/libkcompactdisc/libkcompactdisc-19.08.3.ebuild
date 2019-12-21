@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package alsa ALSA)
+		$(cmake_use_find_package alsa ALSA)
 	)
 	ecm_src_configure
 }

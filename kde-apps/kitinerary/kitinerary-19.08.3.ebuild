@@ -37,8 +37,8 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package barcode ZXing)
-		$(cmake-utils_use_find_package pdf Poppler)
+		$(cmake_use_find_package barcode ZXing)
+		$(cmake_use_find_package pdf Poppler)
 	)
 	ecm_src_configure
 }

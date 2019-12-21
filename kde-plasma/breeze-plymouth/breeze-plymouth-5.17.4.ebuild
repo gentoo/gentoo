@@ -5,7 +5,7 @@ EAPI=7
 
 KFMIN=5.64.0
 PVCUT=$(ver_cut 1-3)
-inherit cmake-utils kde.org
+inherit cmake kde.org
 
 DESCRIPTION="Breeze theme for Plymouth"
 
@@ -24,5 +24,5 @@ src_configure() {
 		-DDISTRO_VERSION=
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

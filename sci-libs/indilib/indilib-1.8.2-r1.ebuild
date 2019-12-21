@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils udev
+inherit cmake udev
 
 DESCRIPTION="INDI Astronomical Control Protocol library"
 HOMEPAGE="https://www.indilib.org/"
@@ -44,13 +44,13 @@ src_configure() {
 		-DINDI_BUILD_QT5_CLIENT=OFF
 		-DINDI_BUILD_UNITTESTS=$(usex test)
 		-DUDEVRULES_INSTALL_DIR="$(get_udevdir)"
-		$(cmake-utils_use_find_package ogg OggTheora)
+		$(cmake_use_find_package ogg OggTheora)
 		-DINDI_BUILD_WEBSOCKET=$(usex websocket)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
-	BUILD_DIR="${BUILD_DIR}"/test cmake-utils_src_test
+	BUILD_DIR="${BUILD_DIR}"/test cmake_src_test
 }

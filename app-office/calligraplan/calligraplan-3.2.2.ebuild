@@ -77,10 +77,10 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package activities KF5Activities)
-		$(cmake-utils_use_find_package holidays KF5Holidays)
-		$(cmake-utils_use_find_package kwallet Qca-qt5)
-		$(cmake-utils_use_find_package kwallet KF5Wallet)
+		$(cmake_use_find_package activities KF5Activities)
+		$(cmake_use_find_package holidays KF5Holidays)
+		$(cmake_use_find_package kwallet Qca-qt5)
+		$(cmake_use_find_package kwallet KF5Wallet)
 	)
 	# Qt5DBus can't be disabled because of KF5DBusAddons dependency
 

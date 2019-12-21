@@ -95,7 +95,7 @@ src_configure() {
 		-DENABLE_LOGVIEWER_PLUGIN=$(usex logviewer)
 		-DENABLE_MAGNETGENERATOR_PLUGIN=$(usex magnetgenerator)
 		-DENABLE_MEDIAPLAYER_PLUGIN=$(usex mediaplayer)
-		$(cmake-utils_use_find_package rss KF5Syndication)
+		$(cmake_use_find_package rss KF5Syndication)
 		-DENABLE_SCANFOLDER_PLUGIN=$(usex scanfolder)
 		-DENABLE_SEARCH_PLUGIN=$(usex search)
 		-DENABLE_SHUTDOWN_PLUGIN=$(usex shutdown)

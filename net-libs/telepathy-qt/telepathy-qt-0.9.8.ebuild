@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
-inherit python-any-r1 cmake-utils virtualx
+inherit python-any-r1 cmake virtualx
 
 DESCRIPTION="Qt bindings for the Telepathy D-Bus protocol"
 HOMEPAGE="https://telepathy.freedesktop.org/"
@@ -61,7 +61,7 @@ src_configure() {
 		-DENABLE_TESTS=$(usex test)
 		-DENABLE_EXAMPLES=OFF
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
@@ -70,6 +70,6 @@ src_test() {
 		-E "(BaseConnectionManager|BaseProtocol)"
 	)
 	pushd "${BUILD_DIR}" > /dev/null || die
-	virtx cmake-utils_src_test
+	virtx cmake_src_test
 	popd > /dev/null || die
 }

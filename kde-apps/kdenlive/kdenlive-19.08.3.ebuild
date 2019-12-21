@@ -72,10 +72,10 @@ PATCHES=( "${FILESDIR}"/${P}-qt-5.14-{1,2}.patch )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package freesound Qt5WebKitWidgets)
-		$(cmake-utils_use_find_package semantic-desktop KF5FileMetaData)
-		$(cmake-utils_use_find_package share KF5Purpose)
-		$(cmake-utils_use_find_package v4l LibV4L2)
+		$(cmake_use_find_package freesound Qt5WebKitWidgets)
+		$(cmake_use_find_package semantic-desktop KF5FileMetaData)
+		$(cmake_use_find_package share KF5Purpose)
+		$(cmake_use_find_package v4l LibV4L2)
 	)
 
 	ecm_src_configure

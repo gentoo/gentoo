@@ -4,7 +4,7 @@
 EAPI=7
 
 COMMIT=44331654256df83bc1d3cbb271a8ce3d4c464686
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Collection of libraries to integrate Last.fm services"
 HOMEPAGE="https://github.com/lastfm/liblastfm"
@@ -47,5 +47,5 @@ src_configure() {
 		-DBUILD_TESTS=$(usex test)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

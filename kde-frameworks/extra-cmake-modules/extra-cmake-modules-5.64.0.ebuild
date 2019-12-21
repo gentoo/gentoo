@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 QTMIN=5.12.3
-inherit cmake-utils kde.org python-any-r1
+inherit cmake kde.org python-any-r1
 
 DESCRIPTION="Extra modules and scripts for CMake"
 HOMEPAGE="https://cgit.kde.org/extra-cmake-modules.git"
@@ -45,7 +45,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	# Requires PyQt5, bug #680256
 	sed -i -e "/^if(NOT SIP_Qt5Core_Mod_FILE)/s/NOT SIP_Qt5Core_Mod_FILE/TRUE/" \
 		tests/CMakeLists.txt || die "failed to disable GenerateSipBindings tests"
@@ -60,7 +60,7 @@ src_configure() {
 		-DBUILD_TESTING=$(usex test)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
@@ -70,5 +70,5 @@ src_test() {
 		-E "(ECMToolchainAndroidTest|ECMPoQmToolsTest)"
 	)
 
-	cmake-utils_src_test
+	cmake_src_test
 }

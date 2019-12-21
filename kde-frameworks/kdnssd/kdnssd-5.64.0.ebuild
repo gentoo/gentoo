@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}"
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_DNSSD=ON
-		$(cmake-utils_use_find_package zeroconf Avahi)
+		$(cmake_use_find_package zeroconf Avahi)
 	)
 
 	ecm_src_configure

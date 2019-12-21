@@ -36,7 +36,7 @@ RESTRICT+=" test"
 src_configure() {
 	local mycmakeargs=(
 		-DAPPLICATIONS_MENU_NAME=kf5-applications.menu
-		$(cmake-utils_use_find_package man KF5DocTools)
+		$(cmake_use_find_package man KF5DocTools)
 	)
 
 	ecm_src_configure

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Data access layer handling synchronization, caching and indexing"
 HOMEPAGE="https://kube-project.com"
@@ -50,5 +50,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libgit2=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

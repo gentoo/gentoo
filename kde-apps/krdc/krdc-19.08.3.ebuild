@@ -44,7 +44,7 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package vnc LibVNCServer)
+		$(cmake_use_find_package vnc LibVNCServer)
 	)
 
 	ecm_src_configure

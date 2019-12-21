@@ -26,8 +26,8 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package aspell ASPELL)
-		$(cmake-utils_use_find_package hunspell HUNSPELL)
+		$(cmake_use_find_package aspell ASPELL)
+		$(cmake_use_find_package hunspell HUNSPELL)
 	)
 
 	ecm_src_configure

@@ -4,7 +4,7 @@
 EAPI=7
 
 VIRTUALX_REQUIRED="test"
-inherit cmake-utils virtualx
+inherit cmake virtualx
 
 DESCRIPTION="C++ string template engine based on the Django template system"
 HOMEPAGE="https://github.com/steveire/grantlee"
@@ -40,21 +40,21 @@ src_configure() {
 		-DBUILD_TESTS=$(usex test)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
-	use doc && cmake-utils_src_compile docs
+	use doc && cmake_src_compile docs
 }
 
 src_test() {
-	virtx cmake-utils_src_test
+	virtx cmake_src_test
 }
 
 src_install() {
 	use doc && local HTML_DOCS=("${BUILD_DIR}/apidox/")
 
-	cmake-utils_src_install
+	cmake_src_install
 }

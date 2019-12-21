@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils multibuild
+inherit cmake multibuild
 
 DESCRIPTION="Library for manipulating zip archives"
 HOMEPAGE="https://nih.at/libzip/"
@@ -90,20 +90,20 @@ src_configure() {
 				-DENABLE_OPENSSL=OFF
 			)
 		fi
-		cmake-utils_src_configure
+		cmake_src_configure
 	}
 
 	multibuild_foreach_variant myconfigure
 }
 
 src_compile() {
-	multibuild_foreach_variant cmake-utils_src_compile
+	multibuild_foreach_variant cmake_src_compile
 }
 
 src_test() {
-	[[ ${MULTIBUILD_VARIANT} = shared ]] && cmake-utils_src_test
+	[[ ${MULTIBUILD_VARIANT} = shared ]] && cmake_src_test
 }
 
 src_install() {
-	multibuild_foreach_variant cmake-utils_src_install
+	multibuild_foreach_variant cmake_src_install
 }

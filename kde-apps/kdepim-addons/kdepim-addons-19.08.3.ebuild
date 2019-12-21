@@ -76,8 +76,8 @@ RESTRICT+=" test"
 src_configure() {
 	local mycmakeargs=(
 		-DKDEPIMADDONS_BUILD_EXAMPLES=$(usex examples)
-		$(cmake-utils_use_find_package importwizard KPimImportWizard)
-		$(cmake-utils_use_find_package markdown Discount)
+		$(cmake_use_find_package importwizard KPimImportWizard)
+		$(cmake_use_find_package markdown Discount)
 	)
 
 	ecm_src_configure

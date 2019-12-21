@@ -46,7 +46,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package musicbrainz MusicBrainz5)
+		$(cmake_use_find_package musicbrainz MusicBrainz5)
 	)
 
 	ecm_src_configure

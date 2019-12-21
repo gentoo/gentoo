@@ -42,7 +42,7 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package speech Qt5TextToSpeech)
+		$(cmake_use_find_package speech Qt5TextToSpeech)
 	)
 
 	ecm_src_configure

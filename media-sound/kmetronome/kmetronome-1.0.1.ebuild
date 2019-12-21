@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg
+inherit cmake xdg
 
 DESCRIPTION="MIDI based metronome using ALSA sequencer"
 HOMEPAGE="http://kmetronome.sourceforge.net/"
@@ -30,5 +30,5 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }

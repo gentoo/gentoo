@@ -59,7 +59,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package systemd Journald)
+		$(cmake_use_find_package systemd Journald)
 	)
 	ecm_src_configure
 }
