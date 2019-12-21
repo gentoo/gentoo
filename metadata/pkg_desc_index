@@ -17038,7 +17038,7 @@ sys-apps/dtc 1.4.1 1.4.1-r1 1.4.2 1.4.3 1.4.4 1.4.4-r1 1.4.6 1.5.0 9999: Open Fi
 sys-apps/duc 1.4.1-r1 1.4.3-r1 9999: A library and suite of tools for inspecting disk usage
 sys-apps/ed 1.14.2 1.15-r1: Your basic line editor
 sys-apps/edac-utils 0.18: Userspace helper for Linux kernel EDAC drivers
-sys-apps/edid-decode 0_pre20191207 9999: Decode EDID data in a human-readable format
+sys-apps/edid-decode 0_pre20191209 9999: Decode EDID data in a human-readable format
 sys-apps/edid-fixdim 1: Tool to fix screen dimensions in EDID data dumps
 sys-apps/elfix 0.9.5 9999: A suite of tools to work with ELF objects on Hardened Gentoo
 sys-apps/elivepatch-client 0.1 9999: Live patch installer client working with elivepatch-server
@@ -19254,7 +19254,7 @@ x11-wm/bspwm 0.9.9: Tiling window manager based on binary space partitioning
 x11-wm/ctwm 4.0.2 4.0.3: A clean, light window manager
 x11-wm/cwm 5.6 9999: OpenBSD fork of calmwm, a clean and lightweight window manager
 x11-wm/dwm 6.1-r1 6.2 9999: a dynamic window manager for X11
-x11-wm/e16 1.0.19 1.0.20: Enlightenment Window Manager (E16)
+x11-wm/e16 1.0.20 1.0.21: Enlightenment Window Manager (E16)
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/enlightenment 0.22.4-r1 0.23.1: Enlightenment window manager
 x11-wm/evilwm 1.0.1-r1 1.1.1: A minimalist, no frills window manager for X
