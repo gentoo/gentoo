@@ -144,7 +144,7 @@ pkg_postinst() {
 	elog "Rust installs a helper script for calling GDB now,"
 	elog "for your convenience it is installed under /usr/bin/rust-gdb-bin-${PV},"
 
-	if has_version app-editors/emacs || has_version app-editors/emacs-vcs; then
+	if has_version app-editors/emacs; then
 		elog "install app-emacs/rust-mode to get emacs support for rust."
 	fi
 
