@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake-multilib.eclass
@@ -19,6 +19,12 @@
 # in multilib-minimal, yet they ought to call appropriate cmake-utils
 # phase rather than 'default'.
 
+# @ECLASS-VARIABLE: CMAKE_ECLASS
+# @DESCRIPTION:
+# Default is "cmake-utils" for compatibility. Specify "cmake" for ebuilds
+# that ported from cmake-utils.eclass to cmake.eclass already.
+: ${CMAKE_ECLASS:=cmake-utils}
+
 case ${EAPI:-0} in
 	[67]) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
@@ -28,7 +34,15 @@ if [[ ${CMAKE_IN_SOURCE_BUILD} ]]; then
 	die "${ECLASS}: multilib support requires out-of-source builds."
 fi
 
-inherit cmake-utils multilib-minimal
+case ${CMAKE_ECLASS} in
+	cmake-utils|cmake) ;;
+	*)
+		eerror "Unknown value for \${CMAKE_ECLASS}"
+		die "Value ${CMAKE_ECLASS} is not supported"
+		;;
+esac
+
+inherit ${CMAKE_ECLASS} multilib-minimal
 
 EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 
@@ -39,7 +53,7 @@ cmake-multilib_src_configure() {
 }
 
 multilib_src_configure() {
-	cmake-utils_src_configure "${_cmake_args[@]}"
+	${CMAKE_ECLASS}_src_configure "${_cmake_args[@]}"
 }
 
 cmake-multilib_src_compile() {
@@ -49,7 +63,7 @@ cmake-multilib_src_compile() {
 }
 
 multilib_src_compile() {
-	cmake-utils_src_compile "${_cmake_args[@]}"
+	${CMAKE_ECLASS}_src_compile "${_cmake_args[@]}"
 }
 
 cmake-multilib_src_test() {
@@ -59,7 +73,7 @@ cmake-multilib_src_test() {
 }
 
 multilib_src_test() {
-	cmake-utils_src_test "${_cmake_args[@]}"
+	${CMAKE_ECLASS}_src_test "${_cmake_args[@]}"
 }
 
 cmake-multilib_src_install() {
@@ -69,5 +83,5 @@ cmake-multilib_src_install() {
 }
 
 multilib_src_install() {
-	cmake-utils_src_install "${_cmake_args[@]}"
+	${CMAKE_ECLASS}_src_install "${_cmake_args[@]}"
 }
