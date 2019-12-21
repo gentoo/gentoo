@@ -4925,7 +4925,7 @@ dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.2.1 3.2.1-r1 3.2.1-r2 3.2.1-r3 3.3_rc0 3.3_rc1 3.3_rc2 3.3 3.3-r1: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
-dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.2.0 0.3.0: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 5.3.0 6.0.0 6.1.0 6.1.1 6.1.2 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
@@ -5113,8 +5113,8 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.19.0-r2: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.5.1: A collection of special mathematical functions
-dev-libs/openssl 1.0.2t-r1 1.1.0l 1.1.1d-r3: full-strength general purpose cryptography library (including SSL and TLS)
-dev-libs/openssl-compat 0.9.8z_p8-r1 1.0.2t-r1: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 1.0.2t-r1 1.0.2u 1.1.0l 1.1.1d-r3: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl-compat 0.9.8z_p8-r1 1.0.2t-r1 1.0.2u: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
