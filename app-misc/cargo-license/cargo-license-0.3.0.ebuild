@@ -62,7 +62,7 @@ DESCRIPTION="Cargo subcommand to see license of dependencies"
 HOMEPAGE="https://github.com/onur/cargo-license"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
 
-LICENSE="MIT" # Update to proper Gentoo format
+LICENSE="Apache-2.0 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
