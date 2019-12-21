@@ -28,7 +28,7 @@ RDEPEND="
 	>=app-crypt/acme-0.40.0[${PYTHON_USEDEP}]
 	>=dev-python/configargparse-0.9.3[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
-	>=dev-python/cryptography-1.2.3[${PYTHON_USEDEP}]
+	>=dev-python/cryptography-2.8[${PYTHON_USEDEP}]
 	>=dev-python/distro-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/josepy-1.1.0[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
