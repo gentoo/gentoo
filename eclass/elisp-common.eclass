@@ -252,7 +252,7 @@ elisp-check-emacs-version() {
 		local have_emacs
 		have_emacs=$(elisp-emacs-version) \
 			|| die "Could not determine Emacs version"
-		elog "Emacs version: ${have_emacs}"
+		einfo "Emacs version: ${have_emacs}"
 		if [[ ${have_emacs} =~ XEmacs|Lucid ]]; then
 			die "XEmacs detected. This package needs GNU Emacs."
 		fi
