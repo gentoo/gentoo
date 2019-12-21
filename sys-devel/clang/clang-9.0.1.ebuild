@@ -7,8 +7,11 @@ PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 inherit cmake-utils llvm llvm.org multilib-minimal multiprocessing \
 	pax-utils python-single-r1 toolchain-funcs
 
+MANPAGE_P=llvm-9.0.0-manpages
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
+SRC_URI="
+	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/${MANPAGE_P}.tar.bz2 )"
 LLVM_COMPONENTS=( clang clang-tools-extra )
 LLVM_TEST_COMPONENTS=(
 	llvm/lib/Testing/Support
@@ -29,7 +32,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
 IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
 	test xml kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -80,6 +83,12 @@ src_unpack() {
 	cd x/y || die
 	llvm.org_src_unpack
 	mv clang-tools-extra clang/tools/extra || die
+
+	if ! use doc; then
+		ebegin "Unpacking ${MANPAGE_P}.tar.bz2"
+		tar -xf "${DISTDIR}/${MANPAGE_P}.tar.bz2" || die
+		eend
+	fi
 }
 
 multilib_src_configure() {
@@ -241,6 +250,12 @@ multilib_src_install_all() {
 	python_fix_shebang "${ED}"
 	if use static-analyzer; then
 		python_optimize "${ED}"/usr/lib/llvm/${SLOT}/share/scan-view
+	fi
+
+	# install pre-generated manpages
+	if ! use doc; then
+		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
+		doins "${WORKDIR}/x/y/${MANPAGE_P}/clang"/*.1
 	fi
 
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
