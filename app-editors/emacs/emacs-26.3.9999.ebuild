@@ -113,13 +113,9 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 
-BDEPEND="virtual/pkgconfig
+BDEPEND="sys-apps/texinfo
+	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
-
-if [[ ${PV##*.} = 9999 ]]; then
-	BDEPEND="${BDEPEND}
-	sys-apps/texinfo"
-fi
 
 RDEPEND="${RDEPEND}
 	!app-editors/emacs-vcs:26"
