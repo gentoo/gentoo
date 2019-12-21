@@ -6,28 +6,48 @@ EAPI=7
 DESCRIPTION="Enlightenment Window Manager (E16)"
 HOMEPAGE="https://www.enlightenment.org https://sourceforge.net/projects/enlightenment/"
 SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.xz"
-KEYWORDS="~amd64 ~x86"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="audiofile container dbus debug +dialogs doc examples gnome
 libhack modules nls opengl +pango sndfile sound +themes xcomposite
 +xft xi2 xinerama xpresent +xrandr +xrender +xsm +xsync zoom"
+
+REQUIRED_USE="
+	audiofile? ( sound )
+	opengl? ( xcomposite )
+	sndfile? ( sound )
+	sound? ( ^^ ( sndfile audiofile ) )
+"
 
 BDEPEND="
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
 "
-CDEPEND="
+COMMON_DEPEND="
+	media-libs/freetype:2
+	media-libs/imlib2[X]
+	virtual/libiconv
+	x11-libs/libX11
+	x11-libs/libXext
+	x11-misc/xbitmaps
 	dbus? ( sys-apps/dbus )
-	doc? ( app-doc/e16-docs )
-	nls? ( virtual/libintl )
-	opengl? ( media-libs/glu media-libs/mesa[X(+)] )
-	pango? ( x11-libs/pango[X] )
+	opengl? (
+		media-libs/glu
+		media-libs/mesa
+	)
+	pango? (
+		dev-libs/glib:2
+		x11-libs/pango[X]
+	)
 	sound? (
-		|| ( media-sound/pulseaudio media-sound/apulse[sdk] )
+		|| (
+			media-sound/apulse[sdk]
+			media-sound/pulseaudio
+		)
 		sndfile? ( media-libs/libsndfile )
-		audiofile? ( media-libs/audiofile )
+		audiofile? ( media-libs/audiofile:= )
 	)
 	xcomposite? (
 		x11-libs/libXcomposite
@@ -39,27 +59,20 @@ CDEPEND="
 	xpresent? ( x11-libs/libXpresent )
 	xrandr? ( x11-libs/libXrandr )
 	xrender? ( x11-libs/libXrender )
-	xsm? ( x11-libs/libICE x11-libs/libSM )
+	xsm? (
+		x11-libs/libICE
+		x11-libs/libSM
+	)
 	zoom? ( x11-libs/libXxf86vm )
-	=media-libs/freetype-2*
-	>=media-libs/imlib2-1.3.0[X]
-	virtual/libiconv
-	x11-libs/libX11
-	x11-libs/libXext
-	x11-misc/xbitmaps
 "
-RDEPEND="${CDEPEND}
+RDEPEND="${COMMON_DEPEND}
+	doc? ( app-doc/e16-docs )
+	nls? ( virtual/libintl )
 	themes? ( x11-themes/e16-themes )
 	!x11-wm/enlightenment:0
 "
-DEPEND="${CDEPEND}
+DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
-"
-REQUIRED_USE="
-	audiofile? ( sound )
-	opengl? ( xcomposite )
-	sndfile? ( sound )
-	sound? ( ^^ ( sndfile audiofile ) )
 "
 
 PATCHES=( "${FILESDIR}/${PN}-user-fonts.patch" )

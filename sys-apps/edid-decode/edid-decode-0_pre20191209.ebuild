@@ -5,7 +5,7 @@ EAPI=7
 
 inherit toolchain-funcs
 
-EGIT_COMMIT="46a0691551e44d49a2c3951a7d944786131c97c3"
+EGIT_COMMIT="e719d04077d098eb51d9494f41060eba2419d4bc"
 MY_P="${PN}-${EGIT_COMMIT}"
 
 DESCRIPTION="Decode EDID data in a human-readable format"
