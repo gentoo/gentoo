@@ -49,8 +49,8 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package kipi KF5Kipi)
-		$(cmake-utils_use_find_package share KF5Purpose)
+		$(cmake_use_find_package kipi KF5Kipi)
+		$(cmake_use_find_package share KF5Purpose)
 	)
 	ecm_src_configure
 }

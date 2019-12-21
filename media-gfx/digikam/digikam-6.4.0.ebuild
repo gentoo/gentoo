@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_MIN_VERSION=3.14.3
 KFMIN=5.60.0
 QTMIN=5.12.3
 inherit ecm kde.org toolchain-funcs
@@ -26,6 +25,7 @@ SLOT="5"
 IUSE="addressbook calendar dnn heif +imagemagick gphoto2 +lensfun libav marble mediaplayer mysql opengl openmp +panorama scanner semantic-desktop vkontakte webkit X"
 
 BDEPEND="
+	>=dev-util/cmake-3.14.3
 	sys-devel/gettext
 	panorama? (
 		sys-devel/bison

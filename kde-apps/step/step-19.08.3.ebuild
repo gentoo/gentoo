@@ -57,8 +57,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package gsl GSL)
-		$(cmake-utils_use_find_package qalculate Qalculate)
+		$(cmake_use_find_package gsl GSL)
+		$(cmake_use_find_package qalculate Qalculate)
 	)
 	ecm_src_configure
 }

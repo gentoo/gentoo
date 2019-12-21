@@ -29,8 +29,8 @@ DOCS=( src/imageformats/AUTHORS )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package eps Qt5PrintSupport)
-		$(cmake-utils_use_find_package openexr OpenEXR)
+		$(cmake_use_find_package eps Qt5PrintSupport)
+		$(cmake_use_find_package openexr OpenEXR)
 	)
 
 	ecm_src_configure

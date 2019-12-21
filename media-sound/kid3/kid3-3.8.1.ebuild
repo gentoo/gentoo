@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg
+inherit cmake xdg
 
 DESCRIPTION="Simple tag editor based on Qt"
 HOMEPAGE="https://kid3.sourceforge.io/"
@@ -59,7 +59,7 @@ RDEPEND="${DEPEND}
 
 src_prepare() {
 	# overengineered upstream build system
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	# applies broken python hacks, bug #614950
 	cmake_comment_add_subdirectory doc
 }
@@ -81,5 +81,5 @@ src_configure() {
 		mycmakeargs+=( "-DWITH_APPS=Qt;CLI" )
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

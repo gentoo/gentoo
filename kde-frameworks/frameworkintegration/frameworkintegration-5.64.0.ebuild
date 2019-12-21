@@ -47,9 +47,9 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package appstream AppStreamQt)
-		$(cmake-utils_use_find_package appstream packagekitqt5)
-		$(cmake-utils_use_find_package X XCB)
+		$(cmake_use_find_package appstream AppStreamQt)
+		$(cmake_use_find_package appstream packagekitqt5)
+		$(cmake_use_find_package X XCB)
 	)
 
 	ecm_src_configure

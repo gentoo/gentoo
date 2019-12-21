@@ -98,18 +98,18 @@ src_configure() {
 	addpredict /dev/dri
 
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package color-management OCIO)
-		$(cmake-utils_use_find_package fftw FFTW3)
-		$(cmake-utils_use_find_package gif GIF)
-		$(cmake-utils_use_find_package gsl GSL)
-		$(cmake-utils_use_find_package heif HEIF)
-		$(cmake-utils_use_find_package jpeg JPEG)
-		$(cmake-utils_use_find_package openexr OpenEXR)
-		$(cmake-utils_use_find_package pdf Poppler)
-		$(cmake-utils_use_find_package qtmedia Qt5Multimedia)
-		$(cmake-utils_use_find_package raw LibRaw)
-		$(cmake-utils_use_find_package tiff TIFF)
-		$(cmake-utils_use_find_package vc Vc)
+		$(cmake_use_find_package color-management OCIO)
+		$(cmake_use_find_package fftw FFTW3)
+		$(cmake_use_find_package gif GIF)
+		$(cmake_use_find_package gsl GSL)
+		$(cmake_use_find_package heif HEIF)
+		$(cmake_use_find_package jpeg JPEG)
+		$(cmake_use_find_package openexr OpenEXR)
+		$(cmake_use_find_package pdf Poppler)
+		$(cmake_use_find_package qtmedia Qt5Multimedia)
+		$(cmake_use_find_package raw LibRaw)
+		$(cmake_use_find_package tiff TIFF)
+		$(cmake_use_find_package vc Vc)
 	)
 
 	kde5_src_configure

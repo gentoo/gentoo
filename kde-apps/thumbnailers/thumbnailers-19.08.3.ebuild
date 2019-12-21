@@ -28,8 +28,8 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package raw KF5KExiv2)
-		$(cmake-utils_use_find_package raw KF5KDcraw)
+		$(cmake_use_find_package raw KF5KExiv2)
+		$(cmake_use_find_package raw KF5KDcraw)
 	)
 
 	ecm_src_configure

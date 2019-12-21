@@ -4,8 +4,8 @@
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-CMAKE_REMOVE_MODULES="no"
-inherit bash-completion-r1 elisp-common flag-o-matic toolchain-funcs virtualx xdg cmake-utils
+CMAKE_REMOVE_MODULES_LIST=( none )
+inherit bash-completion-r1 elisp-common flag-o-matic toolchain-funcs virtualx xdg cmake
 
 MY_P="${P/_/-}"
 
@@ -134,7 +134,7 @@ cmake_src_test() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# disable Xcode hooks, bug #652134
 	if [[ ${CHOST} == *-darwin* ]] ; then
@@ -174,15 +174,15 @@ src_configure() {
 	if use qt5 ; then
 		mycmakeargs+=(
 			-DBUILD_QtDialog=ON
-			$(cmake-utils_use_find_package qt5 Qt5Widgets)
+			$(cmake_use_find_package qt5 Qt5Widgets)
 		)
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	use emacs && elisp-compile Auxiliary/cmake-mode.el
 }
 
@@ -191,7 +191,7 @@ src_test() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use emacs; then
 		elisp-install ${PN} Auxiliary/cmake-mode.el Auxiliary/cmake-mode.elc

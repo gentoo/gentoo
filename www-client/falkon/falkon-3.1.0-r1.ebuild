@@ -73,8 +73,8 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Shiboken2=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_PythonLibs=ON
 		-DDISABLE_DBUS=$(usex !dbus)
-		$(cmake-utils_use_find_package kde KF5Wallet)
-		$(cmake-utils_use_find_package kde KF5KIO)
+		$(cmake_use_find_package kde KF5Wallet)
+		$(cmake_use_find_package kde KF5KIO)
 		-DNO_X11=$(usex !X)
 	)
 	kde5_src_configure

@@ -58,11 +58,11 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package bittorrent KF5Torrent)
-		$(cmake-utils_use_find_package gpg Gpgmepp)
-		$(cmake-utils_use_find_package kde LibKWorkspace)
-		$(cmake-utils_use_find_package mms LibMms)
-		$(cmake-utils_use_find_package sqlite Sqlite)
+		$(cmake_use_find_package bittorrent KF5Torrent)
+		$(cmake_use_find_package gpg Gpgmepp)
+		$(cmake_use_find_package kde LibKWorkspace)
+		$(cmake_use_find_package mms LibMms)
+		$(cmake_use_find_package sqlite Sqlite)
 	)
 
 	ecm_src_configure

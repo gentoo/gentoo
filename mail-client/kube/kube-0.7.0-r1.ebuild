@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Mail client based on KDE Frameworks"
 HOMEPAGE="https://kube-project.com"
@@ -47,7 +47,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -e "/find_package.*Qt5/s/ Concurrent//" \
 		-i {extensions/api,framework}/src/CMakeLists.txt || die

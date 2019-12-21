@@ -50,8 +50,8 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package editorconfig EditorConfig)
-		$(cmake-utils_use_find_package git LibGit2)
+		$(cmake_use_find_package editorconfig EditorConfig)
+		$(cmake_use_find_package git LibGit2)
 	)
 
 	ecm_src_configure
