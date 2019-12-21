@@ -8,5 +8,5 @@ LICENSE=HPND
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=1.1
 SRC_URI=http://www.flameeyes.eu/gentoo-distfiles/w3c-svg-rng-1.1.20081123.zip
-_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	4367f5e0a8c043fd95f5511c7d885a41
+_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	8393a1ed85e62f0a719ef2f2e3d03eb1
 _md5_=2e3df112cfd4dc76d9f68f3497d6898d

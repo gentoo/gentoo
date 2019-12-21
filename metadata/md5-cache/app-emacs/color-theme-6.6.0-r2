@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=http://download.savannah.gnu.org/releases-noredirect/color-theme/color-theme-6.6.0.tar.gz
-_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	4367f5e0a8c043fd95f5511c7d885a41	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	8393a1ed85e62f0a719ef2f2e3d03eb1	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=6576c2c44d9f9b9ab9cadc66d2addd8e

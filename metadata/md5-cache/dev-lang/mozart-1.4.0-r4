@@ -9,5 +9,5 @@ LICENSE=Mozart
 RDEPEND=dev-lang/perl dev-libs/gmp:0= sys-libs/zlib emacs? ( >=app-editors/emacs-23.1:* ) gdbm? ( sys-libs/gdbm ) tcl? ( tk? ( dev-lang/tk:0= dev-lang/tcl:0= ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/mozart-1.4.0.20080704-src.tar.gz mirror://gentoo/mozart-1.4.0-gentoo-patchset-5.tar.gz doc? ( mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/mozart-1.4.0.20080704-doc.tar.gz )
-_eclasses_=elisp-common	4367f5e0a8c043fd95f5511c7d885a41
+_eclasses_=elisp-common	8393a1ed85e62f0a719ef2f2e3d03eb1
 _md5_=92a95dca6977b03529c1d5aa5b2b75e6

@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.12:2 emacs? ( >=app-editors/emacs-23.1:* )
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.24.tar.xz
-_eclasses_=elisp-common	4367f5e0a8c043fd95f5511c7d885a41
+_eclasses_=elisp-common	8393a1ed85e62f0a719ef2f2e3d03eb1
 _md5_=af30c117b883e3dd7ac2c06bd7448540
