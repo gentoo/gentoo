@@ -310,6 +310,24 @@ DEPEND+=" ${COMMONDEPEND}"
 RDEPEND+=" ${COMMONDEPEND}"
 unset COMMONDEPEND
 
+# @FUNCTION: _ecm_banned_var
+# @INTERNAL
+# @DESCRIPTION:
+# Banned kde5*.eclass variables are banned.
+_ecm_banned_var() {
+	die "$1 is banned. use $2 instead."
+}
+
+if [[ -z ${_KDE5_ECLASS} ]] ; then
+	[[ -n ${KDE_DEBUG} ]] && _ecm_banned_var KDE_DEBUG ECM_DEBUG
+	[[ -n ${KDE_EXAMPLES} ]] && _ecm_banned_var KDE_EXAMPLES ECM_EXAMPLES
+	[[ -n ${KDE_HANDBOOK} ]] && _ecm_banned_var KDE_HANDBOOK ECM_HANDBOOK
+	[[ -n ${KDE_DOC_DIR} ]] && _ecm_banned_var KDE_DOC_DIR ECM_HANDBOOK_DIR
+	[[ -n ${KDE_PO_DIRS} ]] && _ecm_banned_var KDE_PO_DIRS ECM_PO_DIRS
+	[[ -n ${KDE_QTHELP} ]] && _ecm_banned_var KDE_QTHELP ECM_QTHELP
+	[[ -n ${KDE_TEST} ]] && _ecm_banned_var KDE_TEST ECM_TEST
+fi
+
 # @ECLASS-VARIABLE: KDE_GCC_MINIMAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
