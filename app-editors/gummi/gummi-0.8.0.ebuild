@@ -5,12 +5,9 @@ EAPI=7
 
 inherit xdg-utils
 
-MY_PV="${PV/_rc/-rc}"
-MY_P="${PN}-${MY_PV}"
-
 DESCRIPTION="Simple LaTeX editor for GTK+ users"
 HOMEPAGE="https://github.com/alexandervdm/gummi"
-SRC_URI="https://github.com/alexandervdm/${PN}/releases/download/${MY_PV}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/alexandervdm/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -35,8 +32,6 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_postinst() {
 	xdg_desktop_database_update

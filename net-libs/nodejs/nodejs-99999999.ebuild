@@ -21,7 +21,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.33.1:=
+	>=dev-libs/libuv-1.34.0:=
 	>=net-dns/c-ares-1.15.0
 	>=net-libs/nghttp2-1.39.2
 	sys-libs/zlib
