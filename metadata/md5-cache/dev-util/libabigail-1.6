@@ -1,0 +1,15 @@
+BDEPEND=doc? ( app-doc/doxygen dev-python/sphinx sys-apps/texinfo ) test? ( || ( dev-lang/python:3.8 dev-lang/python:3.7 ) ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=dev-libs/elfutils:= dev-libs/libxml2:2=
+DESCRIPTION=Suite of tools for checking ABI differences between ELF objects
+EAPI=7
+HOMEPAGE=https://sourceware.org/libabigail/
+IUSE=doc test
+KEYWORDS=~amd64
+LICENSE=LGPL-3+
+RDEPEND=dev-libs/elfutils:= dev-libs/libxml2:2=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://mirrors.kernel.org/sourceware/libabigail/libabigail-1.6.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	out-of-source	15edba2977da53bbf4d1e5a60abc0e34	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=967e5b06f96db3db4845f199e7596119

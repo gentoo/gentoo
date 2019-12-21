@@ -10781,6 +10781,7 @@ dev-util/kup 0.3.4-r1 0.3.6: kernel.org uploader tool
 dev-util/kyua 0.13-r2: Testing framework for infrastructure software
 dev-util/lcov 1.13-r2 1.14 1.14_p2 9999: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
+dev-util/libabigail 1.6: Suite of tools for checking ABI differences between ELF objects
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
 dev-util/lldb 7.1.0 8.0.1 9.0.0 9.0.1 10.0.0.9999: The LLVM debugger
 dev-util/lockrun 20120508-r1: Lockrun - runs cronjobs with overrun protection
