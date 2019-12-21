@@ -327,7 +327,7 @@ pkg_postinst() {
 	elog "  undefined reference to \`boost::re_detail_$(ver_cut 1)0$(ver_cut 2)00::cpp_regex_traits_implementation"
 	elog "    <char>::transform_primary[abi:cxx11](char const*, char const*) const'"
 	elog
-	elog "Then you need you need to recompile Boost and all its reverse dependencies"
+	elog "Then you need to recompile Boost and all its reverse dependencies"
 	elog "using the same toolchain. In general, *every* change of the C++ toolchain"
 	elog "requires a complete rebuild of the boost-dependent ecosystem."
 	elog
