@@ -7,8 +7,12 @@ PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 inherit cmake-utils llvm.org multilib-minimal multiprocessing \
 	pax-utils python-any-r1 toolchain-funcs
 
+# no changes in 9.0.1
+MANPAGE_P=llvm-9.0.0-manpages
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
+SRC_URI="
+	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/${MANPAGE_P}.tar.bz2 )"
 LLVM_COMPONENTS=( llvm )
 llvm.org_set_globals
 
@@ -78,6 +82,16 @@ python_check_deps() {
 
 	has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
 	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
+
+src_unpack() {
+	llvm.org_src_unpack
+
+	if ! use doc; then
+		ebegin "Unpacking ${MANPAGE_P}.tar.bz2"
+		tar -xf "${DISTDIR}/${MANPAGE_P}.tar.bz2" || die
+		eend
+	fi
 }
 
 src_prepare() {
@@ -265,6 +279,13 @@ multilib_src_install_all() {
 		MANPATH="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
 		LDPATH="$( IFS=:; echo "${LLVM_LDPATHS[*]}" )"
 	_EOF_
+
+	# install pre-generated manpages
+	if ! use doc; then
+		# (doman does not support custom paths)
+		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
+		doins "${WORKDIR}/${MANPAGE_P}/llvm"/*.1
+	fi
 
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
 }
