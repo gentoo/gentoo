@@ -146,6 +146,9 @@
 # 	elisp-check-emacs-version
 # @CODE
 #
+# When having optional Emacs support, you should prepend "use emacs &&"
+# to above call of elisp-check-emacs-version().
+#
 # @ROFF .SS
 # pkg_postinst() / pkg_postrm() usage:
 #
@@ -162,7 +165,7 @@
 # 	}
 # @CODE
 #
-# When having optional Emacs support, you should prepend "use emacs &&"
+# Again, with optional Emacs support, you should prepend "use emacs &&"
 # to above calls of elisp-site-regen().
 
 case ${EAPI:-0} in
