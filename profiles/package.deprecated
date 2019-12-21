@@ -17,6 +17,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2019-12-21)
+# Live ebuilds for Emacs from Git have been consolidated into the
+# app-editors/emacs package, which makes the virtual unnecessary.
+# Packages should depend on >=app-editors/emacs-23.1:* instead.
+# See the documentation of elisp-common.eclass for details.
+virtual/emacs
+
 # Michał Górny <mgorny@gentoo.org> (2019-12-09)
 # The pycrypto project is long dead, and has been forked into
 # dev-python/pycryptodome that's not entirely API compatible.  Many
