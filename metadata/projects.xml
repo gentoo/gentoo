@@ -299,27 +299,6 @@
     </member>
   </project>
   <project>
-    <email>bsd@gentoo.org</email>
-    <name>BSD Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:BSD</url>
-    <description>Maintains BSD userspace and some BSD-origin packages</description>
-    <member is-lead="1">
-      <email>aballier@gentoo.org</email>
-      <name>Alexis Ballier</name>
-      <role>Bearded one. Helping out reviewing mostly.</role>
-    </member>
-    <member>
-      <email>mgorny@gentoo.org</email>
-      <name>Michał Górny</name>
-      <role>Ebuild janitor, amd64-fbsd arch tester</role>
-    </member>
-    <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
-      <role>amd64-fbsd arch tester</role>
-    </member>
-  </project>
-  <project>
     <email>base-system@gentoo.org</email>
     <name>Base System</name>
     <url>https://wiki.gentoo.org/wiki/Project:Base</url>
@@ -2848,24 +2827,9 @@
       <name>Georgy Yakovlev</name>
       <role>Member</role>
     </member>
-    <member>
-      <email>maksbotan@gentoo.org</email>
-      <name>Maxim Koltsov</name>
-      <role>Member</role>
-    </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>mrueg@gentoo.org</email>
-      <name>Manuel Rüger</name>
       <role>Member</role>
     </member>
     <member>
