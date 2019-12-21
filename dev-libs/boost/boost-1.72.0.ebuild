@@ -54,6 +54,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.71.0-disable_icu_rpath.patch
 	"${FILESDIR}"/${PN}-1.71.0-context-x32.patch
 	"${FILESDIR}"/${PN}-1.71.0-build-auto_index-tool.patch
+	# Bug 703294, incomplete Boost.Serialization refactoring
+	"${FILESDIR}"/${PN}-1.72.0-missing-serialization-split_member-include.patch
 )
 
 python_bindings_needed() {
