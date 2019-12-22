@@ -759,7 +759,7 @@ multilib_src_install() {
 		use prefix || fowners root:ldap /etc/openldap/slapd.conf
 		fperms 0640 /etc/openldap/slapd.conf
 		cp "${configfile}" "${configfile}".default || die
-		eend
+		eend $?
 
 		# install our own init scripts and systemd unit files
 		einfo "Install init scripts"
