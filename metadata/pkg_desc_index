@@ -1581,7 +1581,6 @@ app-emulation/virtualbox-extpack-oracle 5.2.32.132073 5.2.34.133893 6.0.12.13307
 app-emulation/virtualbox-guest-additions 5.2.32 5.2.34 6.0.12 6.0.14 6.1.0: VirtualBox kernel modules and user-space tools for Gentoo guests
 app-emulation/virtualbox-modules 5.2.32 5.2.34 6.0.12 6.0.14 6.1.0: Kernel Modules for Virtualbox
 app-emulation/vkd3d 1.0 1.1 9999: D3D12 to Vulkan translation library
-app-emulation/wine-d3d9 3.20 3.21 4.0 4.1 9999: Free implementation of Windows(tm) on Unix, with Gallium Nine patchset
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
@@ -18157,7 +18156,7 @@ virtual/tmpfiles 0: Virtual to select between different tmpfiles.d handlers
 virtual/ttf-fonts 1-r1: Virtual for Serif/Sans/Monospace font packages
 virtual/udev 215 217: Virtual to select between different udev daemon providers
 virtual/w3m 0: Virtual for the w3m web browser
-virtual/wine 0-r5 0-r6 0-r7: Virtual for Wine that supports multiple variants and slotting
+virtual/wine 0-r7: Virtual for Wine that supports multiple variants and slotting
 virtual/yacc 0: virtual for yacc (yet another compiler compiler)
 www-apache/anyterm 1.1.29-r1: A terminal anywhere
 www-apache/libapreq2 2.13-r1: A library for manipulating client request data via the Apache API
