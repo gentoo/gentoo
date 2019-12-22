@@ -26,5 +26,5 @@ start() {
 stop() {
 	ebegin "Stopping cbqinit"
 	/usr/sbin/cbqinit stop
-	eend
+	eend $?
 }
