@@ -6,6 +6,7 @@ EAPI=7
 ECM_EXAMPLES="true"
 ECM_QTHELP="false"
 ECM_TEST="true"
+PVCUT=$(ver_cut 1-2)
 QTMIN=5.12.3
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
@@ -21,6 +22,11 @@ DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
+	examples? (
+		>=dev-qt/qtwidgets-${QTMIN}:5
+		>=kde-frameworks/kdeclarative-${PVCUT}:5
+		>=kde-frameworks/kirigami-${PVCUT}:5
+	)
 "
 RDEPEND="${DEPEND}"
 
