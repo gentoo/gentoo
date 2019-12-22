@@ -30,7 +30,7 @@ src_compile() {
 	pdflatex elguide.tex || die "compiling #2 failed"
 	pdflatex envlab.drv || die "compiling #3 failed"
 	pdflatex envlab.drv || die "compiling #3 failed"
-	eend
+	eend $?
 }
 
 src_install() {
