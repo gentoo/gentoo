@@ -31,7 +31,7 @@ src_compile() {
 	ebegin "Compiling ${PN}"
 	rm ${PN}.sty || die
 	VARTEXFONTS="${T}/fonts" latex ${PN}.ins extra || die
-	eend
+	eend $?
 }
 
 src_install() {
