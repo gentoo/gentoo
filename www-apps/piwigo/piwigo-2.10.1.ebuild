@@ -18,6 +18,7 @@ RDEPEND="
 	dev-lang/php[ctype,exif?,gd?,filter,iconv,json,mysqli]
 	>=virtual/mysql-5.0
 	virtual/httpd-php"
+BDEPEND="app-arch/unzip"
 
 REQUIRED_USE="|| ( gd imagemagick )"
 
