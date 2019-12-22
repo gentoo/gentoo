@@ -3,16 +3,16 @@
 
 EAPI=7
 
-IPV=517.30.1
-CPV=60118.50.1
-MPV=140.50.6
-PPV=301.50.1
-LPV=161.50.1
-UPV=35.3
-OPV=67
-DPV=551.4
-OSX=10.13
-DESCRIPTION="Darwin system headers from Libc ${PV}, macOS ${OSX}.6"
+IPV=517.200.9
+CPV=60118.220.1
+MPV=166.220.1
+PPV=330.230.1
+LPV=177.200.16
+UPV=35.4
+OPV=73
+DPV=655.1
+OSX=10.14
+DESCRIPTION="Darwin system headers from Libc ${PV}, macOS ${OSX}.3"
 HOMEPAGE="https://opensource.apple.com/source/Libc"
 SRC_URI="https://opensource.apple.com/tarballs/Libc/Libc-${PV}.tar.gz
 	https://opensource.apple.com/tarballs/Libinfo/Libinfo-${IPV}.tar.gz
@@ -23,7 +23,7 @@ SRC_URI="https://opensource.apple.com/tarballs/Libc/Libc-${PV}.tar.gz
 	https://opensource.apple.com/tarballs/libunwind/libunwind-${UPV}.tar.gz
 	https://opensource.apple.com/tarballs/libclosure/libclosure-${OPV}.tar.gz
 	https://opensource.apple.com/tarballs/dyld/dyld-${DPV}.tar.gz
-	https://dev.gentoo.org/~grobian/distfiles/${PN}-${OSX}.tar.gz"
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-${OSX}-r1.tar.gz"
 
 LICENSE="APSL-2"
 SLOT="${OSX}"
@@ -41,7 +41,6 @@ src_prepare() {
 	sed -i \
 		-e 's/find -E ${SRCROOT}/find ${SRCROOT} -regextype posix-extended/' \
 		xcodescripts/manpages.sh || die
-	chmod 755 xcodescripts/manpages.sh || die
 
 	# drop ownership stuff and use soft-links
 	sed -i \
