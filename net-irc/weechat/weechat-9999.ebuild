@@ -39,7 +39,7 @@ RDEPEND="
 	lua? ( dev-lang/lua:0[deprecated] )
 	nls? ( virtual/libintl )
 	perl? ( dev-lang/perl:= )
-	php? ( >=dev-lang/php-7.0:* )
+	php? ( >=dev-lang/php-7.0:*[embed] )
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( || ( dev-lang/ruby:2.6 dev-lang/ruby:2.5 dev-lang/ruby:2.4 ) )
 	ssl? ( net-libs/gnutls )
