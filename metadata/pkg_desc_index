@@ -7286,9 +7286,9 @@ dev-php/pecl-http 2.6.0 2.6.0-r1 2.6.0-r2 3.2.1 3.2.3: Extended HTTP Support for
 dev-php/pecl-imagick 3.4.4: PHP wrapper for the ImageMagick library
 dev-php/pecl-libevent 0.1.0-r2: PHP wrapper for libevent
 dev-php/pecl-lzf 1.6.6 1.6.7: This package handles LZF de/compression
-dev-php/pecl-mailparse 2.1.6-r4 3.0.2-r1 3.0.3-r1: PHP extension for parsing and working with RFC822 and MIME compliant messages
+dev-php/pecl-mailparse 2.1.6-r4 3.0.2-r1 3.0.3-r1 3.0.4: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-mcrypt 1.0.1 1.0.2 1.0.3: Bindings for the libmcrypt library
-dev-php/pecl-memcache 3.0.8-r2 3.0.8-r3 4.0.5.1: PHP extension for using memcached
+dev-php/pecl-memcache 3.0.8-r2 3.0.8-r3 4.0.5.2: PHP extension for using memcached
 dev-php/pecl-memcached 2.2.0-r2 3.0.4 3.1.3 3.1.3-r1 3.1.4 3.1.5: Interface PHP with memcached via libmemcached library
 dev-php/pecl-mongo 1.6.14-r1 1.6.16: Legacy MongoDB database driver for PHP
 dev-php/pecl-mongodb 1.5.3 1.5.3-r1 1.5.5 1.6.0: MongoDB database driver for PHP
@@ -17545,7 +17545,7 @@ sys-devel/clang 7.1.0 8.0.1 9.0.0 9.0.1 10.0.0.9999: C language family frontend 
 sys-devel/clang-common 7.1.0 8.0.1 9.0.0 9.0.1 10.0.0.9999: Common files shared between multiple slots of clang
 sys-devel/clang-runtime 7.1.0 8.0.1 9.0.0 9.0.1 10.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.3.0: Extensible perl-based build utility
-sys-devel/crossdev 20191014 99999999: Gentoo Cross-toolchain generator
+sys-devel/crossdev 20191014 20191222 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.3.2-r5 3.3.3: Distribute compilation of C code across several machines on a network
@@ -17684,8 +17684,8 @@ sys-fs/fatcat 1.0.6 1.1.0: FAT filesystems explore, extract, repair, and forensi
 sys-fs/fatresize 1.0.4: Resize FAT partitions using libparted
 sys-fs/fatsort 1.5.0: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
-sys-fs/fuse 2.9.8 2.9.9-r1 3.8.0: An interface for filesystems implemented in userspace
-sys-fs/fuse-common 3.2.6 3.8.0: Common files for multiple slots of sys-fs/fuse
+sys-fs/fuse 2.9.8 2.9.9-r1 3.8.0 3.9.0: An interface for filesystems implemented in userspace
+sys-fs/fuse-common 3.2.6 3.8.0 3.9.0: Common files for multiple slots of sys-fs/fuse
 sys-fs/fuse-convmvfs 0.2.6-r1: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.3.0: exFAT filesystem FUSE module
 sys-fs/fuse-overlayfs 0.7: FUSE implementation for overlayfs
