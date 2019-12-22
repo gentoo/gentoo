@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 DESCRIPTION="This plugin allows you to edit tags in your library"
 HOMEPAGE="http://gmpc.wikia.com/wiki/GMPC_PLUGIN_TAGEDIT"
@@ -12,20 +12,22 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="nls"
 
-RDEPEND=">=media-sound/gmpc-${PV}
-	media-libs/taglib
+RDEPEND="
+	>=media-sound/gmpc-${PV}
+	media-libs/taglib:=
 	dev-libs/libxml2:2"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/gob
-	nls? ( dev-util/intltool
-		sys-devel/gettext )"
-
-src_configure() {
-	econf --disable-dependency-tracking
-}
+	virtual/pkgconfig
+	nls? (
+		dev-util/intltool
+		sys-devel/gettext
+	)"
 
 src_install() {
 	default
-	find "${ED}" -name "*.la" -exec rm {} + || die
+
+	# plugins only
+	find "${D}" -name '*.la' -delete || die
 }
