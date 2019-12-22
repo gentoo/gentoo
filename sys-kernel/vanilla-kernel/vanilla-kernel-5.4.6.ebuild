@@ -132,14 +132,12 @@ pkg_postinst() {
 	if [[ -z ${ROOT} ]]; then
 		mount-boot_pkg_preinst
 
-		local fail=
-
 		if use initramfs; then
 			ebegin "Building initramfs via dracut"
 			# putting it alongside kernel image as 'initrd' makes
 			# kernel-install happier
 			dracut --force "${EROOT}/usr/src/linux-${PV}/initrd" "${PV}"
-			eend || die "Building initramfs failed"
+			eend ${?} || die "Building initramfs failed"
 		fi
 
 		ebegin "Installing the kernel via installkernel"
@@ -148,9 +146,7 @@ pkg_postinst() {
 		installkernel "${PV}" \
 			"${EROOT}/usr/src/linux-${PV}/bzImage" \
 			"${EROOT}/usr/src/linux-${PV}/System.map"
-		eend || fail=1
-
-		[[ ${fail} ]] && die "Installing the kernel failed"
+		eend ${?} || die "Installing the kernel failed"
 	fi
 
 	local symlink_target=$(readlink "${EROOT}"/usr/src/linux)
@@ -164,7 +160,7 @@ pkg_postinst() {
 		then
 			ebegin "Updating /usr/src/linux symlink"
 			ln -f -n -s linux-${PV} "${EROOT}"/usr/src/linux
-			eend
+			eend ${?}
 		fi
 	fi
 
