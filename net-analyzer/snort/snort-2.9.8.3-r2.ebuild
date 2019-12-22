@@ -60,7 +60,7 @@ src_prepare() {
 			"${WORKDIR}/${P}/src/dynamic-preprocessors/$i/Makefile.am" \
 			|| die "sed for $i failed."
 	done
-	eend
+	eend $?
 
 	AT_M4DIR=m4 eautoreconf
 }

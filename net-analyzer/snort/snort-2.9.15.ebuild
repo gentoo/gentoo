@@ -61,7 +61,7 @@ src_prepare() {
 			"${WORKDIR}/${P}/src/dynamic-preprocessors/$i/Makefile.am" \
 			|| die "sed for $i failed."
 	done
-	eend
+	eend $?
 
 	mv configure.{in,ac} || die
 
