@@ -14,8 +14,6 @@ app-emulation/xen-tools ovmf
 # abi_x86_32 at this time.
 app-emulation/wine-vanilla test
 app-emulation/wine-staging test
-app-emulation/wine-d3d9 test
-app-emulation/wine-any test
 
 # Mike Frysinger <vapier@gentoo.org> (2016-08-12)
 # Requires sys-boot/grub:0 which is masked here.

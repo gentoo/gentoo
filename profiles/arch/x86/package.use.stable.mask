@@ -17,11 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Nick Sarnie <sarnex@gentoo.org> (2019-10-14)
-# Allow on stable for now
-app-emulation/wine-d3d9 -d3d9
-virtual/wine -d3d9
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-09-13)
 # media-video/pipewire is not stable yet
 dev-libs/weston pipewire
@@ -72,7 +67,7 @@ sci-libs/gdal oracle
 
 # NP-Hardass <NP-Hardass@gentoo.org> (2017-09-27)
 # patchset variants are not stable
-virtual/wine d3d9 staging
+virtual/wine staging
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-03-01)
 # Requires not yet stabilised dev-db/oracle-instantclient.

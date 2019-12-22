@@ -58,10 +58,8 @@ sci-astronomy/esomidas libtirpc
 sys-cluster/glusterfs libtirpc
 
 # NP-Hardass <NP-Hardass@gentoo.org> (2017-04-10)
-# Always force patch on appropriate variant to ensure
-# similar experience when using app-emulation/wine-any
+# Always force patch on appropriate variant
 app-emulation/wine-staging staging
-app-emulation/wine-d3d9 d3d9
 
 # David Seifert <soap@gentoo.org> (2017-03-07)
 # Only ever use system ffmpeg, allow kodi bundled ffmpeg
