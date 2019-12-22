@@ -1,7 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="A program to give information about RCS files"
@@ -11,20 +12,22 @@ SRC_URI="http://www.colinbrough.pwp.blueyonder.co.uk/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
-DEPEND="sys-apps/sed"
 RDEPEND=">=dev-vcs/rcs-5.7-r2"
 
 S=${WORKDIR}/${PN}
 
-src_compile() {
-	$(tc-getCC) $CFLAGS $LDFLAGS rcsi.c -o rcsi || die "Compile failed"
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
+
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
 	dobin rcsi
-	doman rcsi.1
+
 	dodoc README
-	dohtml README.html example{1,2}.png
+	docinto html
+	dodoc README.html example{1,2}.png
+	doman rcsi.1
 }
