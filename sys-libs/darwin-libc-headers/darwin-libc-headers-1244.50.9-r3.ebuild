@@ -3,15 +3,15 @@
 
 EAPI=7
 
-IPV=503.50.4
-CPV=60092.50.5
-MPV=116.50.8
-PPV=218.60.3
-LPV=126.50.8
+IPV=517.30.1
+CPV=60118.50.1
+MPV=140.50.6
+PPV=301.50.1
+LPV=161.50.1
 UPV=35.3
 OPV=67
-DPV=433.5
-OSX=10.12
+DPV=551.4
+OSX=10.13
 DESCRIPTION="Darwin system headers from Libc ${PV}, macOS ${OSX}.6"
 HOMEPAGE="https://opensource.apple.com/source/Libc"
 SRC_URI="https://opensource.apple.com/tarballs/Libc/Libc-${PV}.tar.gz
@@ -23,7 +23,7 @@ SRC_URI="https://opensource.apple.com/tarballs/Libc/Libc-${PV}.tar.gz
 	https://opensource.apple.com/tarballs/libunwind/libunwind-${UPV}.tar.gz
 	https://opensource.apple.com/tarballs/libclosure/libclosure-${OPV}.tar.gz
 	https://opensource.apple.com/tarballs/dyld/dyld-${DPV}.tar.gz
-	https://dev.gentoo.org/~grobian/distfiles/${PN}-${OSX}.tar.gz"
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-${OSX}-r1.tar.gz"
 
 LICENSE="APSL-2"
 SLOT="${OSX}"
