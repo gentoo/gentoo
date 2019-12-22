@@ -16310,7 +16310,7 @@ sci-libs/ViSP 3.2.0-r2: Visual Servoing Platform: visual tracking and visual ser
 sci-libs/adolc 2.4.1 2.6.3-r1 9999: Automatic differentiation system for C/C++
 sci-libs/alglib 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
-sci-libs/armadillo 8.300.2 9.200.5 9.200.6 9.800.3: Streamlined C++ linear algebra library
+sci-libs/armadillo 8.300.2 9.800.3: Streamlined C++ linear algebra library
 sci-libs/arpack 3.1.5 3.4.0 3.5.0 9999: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.18 2.2.19: Arbitrary precision float arithmetics and functions
 sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
