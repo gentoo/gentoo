@@ -7,4 +7,4 @@ LICENSE=FDL-1.1+ GPL-2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~floppym/dist/sgml-common/sgml-common-0.6.3-gentoo.tar.gz
 _eclasses_=prefix	c2993e4c430c1ee24f278983d6189501	sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8
-_md5_=4cd207259b83c4074a36927cc4594b2a
+_md5_=d67909e5262776ba1f09894373ed9dc4

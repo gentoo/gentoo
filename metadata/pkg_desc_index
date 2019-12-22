@@ -8521,7 +8521,7 @@ dev-python/pygcrypt 1.0.0: CFFI interface to dev-libs/libgcrypt
 dev-python/pygene 0.2.1-r1: Simple python genetic algorithms programming library
 dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
 dev-python/pyghmi 1.0.22: A pure python implementation of IPMI protocol
-dev-python/pygit2 0.28.2 1.0.0: Python bindings for libgit2
+dev-python/pygit2 0.28.2 1.0.0 1.0.1: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.2.0 2.2.0-r1 2.3.1 2.4.2: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
@@ -17781,7 +17781,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p201909
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4.164_p176 4.9.115_p93 4.9.146_p125 4.14.71_p44 4.14.78_p47 4.14.87_p49 4.16.18_p12 4.18.16_p9 4.19.5_p4 4.19.10_p8: Full Linux 4.19 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
-sys-kernel/vanilla-kernel 5.4.2 5.4.3 5.4.5: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.2 5.4.3 5.4.5 5.4.6: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 3.16.80 4.4.206 4.9.206 4.14.159 4.19.90 5.4.5: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r3 4570.71.2-r3 4903.241.1-r3: System headers provided by XNU-4903.241.1, macOS 10.14.3
