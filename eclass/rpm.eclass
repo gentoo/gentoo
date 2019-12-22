@@ -120,7 +120,7 @@ rpm_spec_epatch() {
 		epatch "${dir:+${dir}/}$*"
 	done
 
-	eend
+	eend $?
 }
 
 EXPORT_FUNCTIONS src_unpack
