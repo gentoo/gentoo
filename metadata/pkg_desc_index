@@ -10086,7 +10086,7 @@ dev-ruby/puppetdb-termini 6.6.0 6.7.1 6.7.2: Library needed to connect puppet to
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
 dev-ruby/pygments_rb 1.2.1: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
-dev-ruby/racc 1.4.14 1.4.16: A LALR(1) parser generator for Ruby
+dev-ruby/racc 1.4.14 1.4.16-r1: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.6.11 1.6.12 2.0.6 2.0.7 2.0.8: A modular Ruby webserver interface
 dev-ruby/rack-attack 5.4.2 6.2.0 6.2.1 6.2.2: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.9.0 1.10.0: Enable HTTP caching for Rack-based applications that produce freshness info
