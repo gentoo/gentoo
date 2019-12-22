@@ -5243,7 +5243,6 @@ media-video/vdr:alternatechannel - Use alternate channel on record
 media-video/vdr:bidi - fribidi support, for languages, written from right to left
 media-video/vdr:graphtft - support for vdr-graphtft plugin up from version 0.1.7
 media-video/vdr:html - Install HTML documentation
-media-video/vdr:kbd - enable keyboard support as remote device
 media-video/vdr:keyboard - enable keyboard support as remote device
 media-video/vdr:mainmenuhooks - Allows to replace main menu entries by some special plugins (like epgsearch, extrecmenu, ...)
 media-video/vdr:menuorg - Enables support for the media-plugins/vdr-menuorg
