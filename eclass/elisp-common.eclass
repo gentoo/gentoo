@@ -457,7 +457,7 @@ elisp-site-regen() {
 		# was actually no change.
 		# A case is a remerge where we have doubled output.
 		rm -f "${T}"/site-gentoo.el
-		eend
+		eend 0
 		einfo "... no changes."
 	else
 		mv "${T}"/site-gentoo.el "${sitelisp}"/site-gentoo.el
