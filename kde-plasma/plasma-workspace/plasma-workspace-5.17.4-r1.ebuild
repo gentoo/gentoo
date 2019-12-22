@@ -130,14 +130,41 @@ PATCHES=(
 
 RESTRICT+=" test"
 
-# used for agent scripts migration
-OLDST=/etc/plasma/startup/10-agent-startup.sh
-NEWST=/etc/xdg/plasma-workspace/env/10-agent-startup.sh
-OLDSH=/etc/plasma/shutdown/10-agent-shutdown.sh
-NEWSH=/etc/xdg/plasma-workspace/shutdown/10-agent-shutdown.sh
+pkg_setup() {
+	ecm_pkg_setup
+
+	local md5
+	local srcfile=/etc/plasma/XX/10-agent-XX.sh
+	local newdir="${EPREFIX}"/etc/xdg/plasma-workspace
+
+	if [[ -f "${EROOT}"${srcfile//XX/startup} ]]; then
+		md5=$(md5sum "${EROOT}"${srcfile//XX/startup})
+		if [[ ${md5%% *} != 90caaabb40b56bfbe65388841a6dd6ca ]]; then
+			elog "Existing modified ${EPREFIX}${srcfile//XX/startup} detected."
+			elog "Copying to ${newdir}/env/10-agent-startup.sh..."
+			cp -v "${EROOT}"${srcfile//XX/startup} "${T}"/ || die
+		fi
+	fi
+
+	if [[ -f "${EROOT}"${srcfile//XX/shutdown} ]]; then
+		md5=$(md5sum "${EROOT}"${srcfile//XX/shutdown})
+		if [[ ${md5%% *} != d7bffa0273f92abd999c7c3c43dbc23d ]]; then
+			elog "Existing modified ${EPREFIX}${srcfile//XX/shutdown} detected."
+			elog "Copying to ${newdir}/shutdown/10-agent-shutdown.sh..."
+			cp -v "${EROOT}"${srcfile//XX/shutdown} "${T}"/ || die
+		fi
+	fi
+}
 
 src_prepare() {
 	ecm_src_prepare
+
+	if [[ ! -f "${T}"/10-agent-startup.sh ]]; then
+		cp "${FILESDIR}"/10-agent-startup.sh "${T}"/ || die
+	fi
+	if [[ ! -f "${T}"/10-agent-shutdown.sh ]]; then
+		cp "${FILESDIR}"/10-agent-shutdown.sh "${T}"/ || die
+	fi
 
 	cmake_comment_add_subdirectory libkworkspace
 	# delete colliding libkworkspace translations
@@ -166,41 +193,28 @@ src_install() {
 	ecm_src_install
 
 	# default startup and shutdown scripts
-	insinto "$(dirname ${NEWST})"
-	doins "${FILESDIR}/$(basename ${NEWST})"
+	insinto /etc/xdg/plasma-workspace/env
+	doins "${T}"/10-agent-startup.sh
 
-	insinto "$(dirname ${NEWSH})"
-	doins "${FILESDIR}/$(basename ${NEWSH})"
-	fperms +x "${NEWSH}"
-}
-
-pkg_preinst() {
-	ecm_pkg_preinst
-
-	# migrate existing agent scripts to new layout if no files there yet
-	if [[ -r "${EROOT}${OLDST}" && ! -f "${EROOT}${NEWST}" ]]; then
-		mkdir -p "${EROOT}$(dirname ${NEWST})" && cp "${EROOT}${OLDST}" "${EROOT}${NEWST}" && \
-		elog "${EROOT}${OLDST} has been migrated to ${EROOT}${NEWST}, please delete old file."
-	fi
-	if [[ -r "${EROOT}${OLDSH}" && ! -f "${EROOT}${NEWSH}" ]]; then
-		mkdir -p "${EROOT}$(dirname ${NEWSH})" && cp "${EROOT}${OLDSH}" "${EROOT}${NEWSH}" && \
-		chmod +x "${EROOT}${NEWSH}" && \
-		elog "${EROOT}${OLDSH} has been migrated to ${EROOT}${NEWSH}, please delete old file."
-	fi
+	insinto /etc/xdg/plasma-workspace/shutdown
+	doins "${T}"/10-agent-shutdown.sh
+	fperms +x /etc/xdg/plasma-workspace/shutdown/10-agent-shutdown.sh
 }
 
 pkg_postinst () {
 	ecm_pkg_postinst
 
-	# warn about any leftover user scripts
-	if [[ -d "${EROOT}"/etc/plasma/startup && -n "$(ls "${EROOT}"/etc/plasma/startup)" ]] || \
-	[[ -d "${EROOT}"/etc/plasma/shutdown && -n "$(ls "${EROOT}"/etc/plasma/shutdown)" ]]; then
-		elog "You appear to have scripts in ${EROOT}/etc/plasma/{startup,shutdown}."
-		elog "They will no longer work since plasma-workspace-5.17"
+	# Clean up pre-5.17.4 scripts
+	if [[ -e "${EROOT}"/etc/plasma/startup/10-agent-startup.sh ]]; then
+		rm "${EROOT}"/etc/plasma/startup/10-agent-startup.sh || die
+		elog "Removed obsolete ${EPREFIX}/etc/plasma/startup/10-agent-startup.sh"
+	fi
+	if [[ -e "${EROOT}"/etc/plasma/shutdown/10-agent-shutdown.sh ]]; then
+		rm "${EROOT}"/etc/plasma/shutdown/10-agent-shutdown.sh || die
+		elog "Removed obsolete ${EPREFIX}/etc/plasma/shutdown/10-agent-shutdown.sh"
 	fi
 
-	elog " * Edit ${EROOT}${NEWST} and uncomment"
-	elog "   the lines enabling ssh-agent."
-	elog " * Edit ${EROOT}${NEWSH} uncomment"
-	elog "   the respective lines to properly kill the agent when the session ends."
+	elog "To enable gpg-agent and/or ssh-agent in Plasma sessions,"
+	elog "edit ${EPREFIX}/etc/xdg/plasma-workspace/env/10-agent-startup.sh"
+	elog "and ${EPREFIX}/etc/xdg/plasma-workspace/shutdown/10-agent-shutdown.sh"
 }
