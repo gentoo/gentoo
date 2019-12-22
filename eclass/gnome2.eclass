@@ -299,7 +299,7 @@ gnome2_src_install() {
 			if ! use_if_iuse static-libs ; then
 				find "${D}" -name '*.la' -exec rm -f {} + || die "la file removal failed"
 			fi
-			eend
+			eend $?
 		fi
 	else
 		case "${GNOME2_LA_PUNT}" in
