@@ -137,7 +137,7 @@ go-module_src_unpack() {
 		mkdir -p "${S}/vendor/${import}" || die
 		tar -C "${S}/vendor/${import}" -x --strip-components 1 \
 			-f "${DISTDIR}/${tarball}" || die
-		eend
+		eend $?
 	done
 }
 
