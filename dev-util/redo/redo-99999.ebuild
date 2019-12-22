@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 PYTHON_REQ_USE="sqlite"
 inherit git-r3 multilib multiprocessing python-single-r1
 
@@ -40,7 +40,7 @@ src_install() {
 	./do -j$(makeopts_jobs) \
 		install || die
 
-	python_fix_shebang "${D}"
+	python_fix_shebang --force "${ED}"
 
 	sed -i \
 		-e 's|/lib/|/'"$(get_libdir)"'/|g' \
