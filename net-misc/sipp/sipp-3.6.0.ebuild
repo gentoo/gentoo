@@ -17,12 +17,12 @@ IUSE="gsl +pcap sctp +ssl"
 PATCHES=( "${FILESDIR}/sipp-3.6.0-parallel-build.patch" )
 
 DEPEND="sys-libs/ncurses:=
-	ssl? ( dev-libs/openssl:= )
+	gsl? ( sci-libs/gsl:= )
 	pcap? (
 		net-libs/libpcap
 		net-libs/libnet:1.1
 	)
-	gsl? ( sci-libs/gsl:= )
+	ssl? ( dev-libs/openssl:= )
 "
 RDEPEND="${DEPEND}"
 
