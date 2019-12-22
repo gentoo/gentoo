@@ -35,7 +35,7 @@ src_prepare() {
 	    -e s:DEBUG=3:DEBUG=0:g \
 	    -e s:DATABASE_KEEPALIVE=0:DATABASE_KEEPALIVE=1:g \
 	    policyd.conf || die "sed failed"
-	eend
+	eend $?
 }
 
 src_compile() {
