@@ -45,12 +45,7 @@ start() {
 		&& ${screen_cmd} logfile flush ${SCREEN_LOG_INTERVAL:-1} \
 		&& ${screen_cmd} log on \
 		&& ${screen_cmd} deflog on ) >/dev/null
-		if [ $? -ne 0 ] ; then
-			eend 1
-			return 1
-		else
-			eend
-		fi
+		eend $? || return 1
 	fi
 	# Create all domains with config files in AUTODIR.
 	for dom in $(ls "${AUTODIR:=/etc/xen/auto}/"* 2>/dev/null | sort); do
