@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ DESCRIPTION="a dockapp cpu monitor with spinning 3d objects"
 HOMEPAGE="http://linux-bsd-unix.strefa.pl/index.en.html"
 # Upstream: http://linux-bsd-unix.strefa.pl/${P}.tar.gz
 # Mirrored for bug #641686 (invalid gzip server config)
-SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/wmcube-1.0.2.tar.gz"
+SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
