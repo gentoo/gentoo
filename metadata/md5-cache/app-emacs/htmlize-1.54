@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/hniksic/emacs-htmlize/archive/release/1.54.tar.gz -> htmlize-1.54.tar.gz
-_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	f651b1af2a931eb45710eb2ce171246e
+_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
 _md5_=0b42b8ecd2069cfbcfd43fe66040af45

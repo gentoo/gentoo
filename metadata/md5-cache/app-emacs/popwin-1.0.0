@@ -9,5 +9,5 @@ RDEPEND=>=app-editors/emacs-23.1:*
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/m2ym/popwin-el/archive/v1.0.0.tar.gz -> popwin-1.0.0.tar.gz
-_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	f651b1af2a931eb45710eb2ce171246e
+_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
 _md5_=5c43cabeca2c46d5ddc270e090a292aa
