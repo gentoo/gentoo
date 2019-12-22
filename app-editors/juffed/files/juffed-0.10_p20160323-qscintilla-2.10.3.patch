@@ -1,0 +1,71 @@
+From 49b6982336ad127b2b780d2ae7c1be1104d9dae5 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 10 Apr 2018 20:31:38 +0200
+Subject: [PATCH] Fix build with QScintilla-2.10.3
+
+---
+ src/app/qsci/lexers/qscilexerada.h     | 3 ---
+ src/app/qsci/lexers/qscilexerhaskell.h | 3 ---
+ src/app/qsci/lexers/qscilexerlisp.h    | 3 ---
+ src/app/qsci/lexers/qscilexernsis.h    | 3 ---
+ 4 files changed, 12 deletions(-)
+
+diff --git a/src/app/qsci/lexers/qscilexerada.h b/src/app/qsci/lexers/qscilexerada.h
+index 984f97e..30c6646 100644
+--- a/src/app/qsci/lexers/qscilexerada.h
++++ b/src/app/qsci/lexers/qscilexerada.h
+@@ -3,9 +3,6 @@
+ 
+ #include <Qsci/qscilexer.h>
+ 
+-// located in SciLexer.h
+-#define SCLEX_ADA 20
+-
+ #define SCE_ADA_DEFAULT 0
+ #define SCE_ADA_WORD 1
+ #define SCE_ADA_IDENTIFIER 2
+diff --git a/src/app/qsci/lexers/qscilexerhaskell.h b/src/app/qsci/lexers/qscilexerhaskell.h
+index 78c8978..56a3614 100644
+--- a/src/app/qsci/lexers/qscilexerhaskell.h
++++ b/src/app/qsci/lexers/qscilexerhaskell.h
+@@ -3,9 +3,6 @@
+ 
+ #include <Qsci/qscilexer.h>
+ 
+-// located in SciLexer.h
+-#define SCLEX_HASKELL 68
+-
+ #define SCE_HA_DEFAULT 0
+ #define SCE_HA_IDENTIFIER 1
+ #define SCE_HA_KEYWORD 2
+diff --git a/src/app/qsci/lexers/qscilexerlisp.h b/src/app/qsci/lexers/qscilexerlisp.h
+index 5b43d74..6e5dc32 100644
+--- a/src/app/qsci/lexers/qscilexerlisp.h
++++ b/src/app/qsci/lexers/qscilexerlisp.h
+@@ -3,9 +3,6 @@
+ 
+ #include <Qsci/qscilexer.h>
+ 
+-// located in SciLexer.h
+-#define SCLEX_LISP 21
+-
+ #define SCE_LISP_DEFAULT 0
+ #define SCE_LISP_COMMENT 1
+ #define SCE_LISP_NUMBER 2
+diff --git a/src/app/qsci/lexers/qscilexernsis.h b/src/app/qsci/lexers/qscilexernsis.h
+index 8b009ec..06efc40 100644
+--- a/src/app/qsci/lexers/qscilexernsis.h
++++ b/src/app/qsci/lexers/qscilexernsis.h
+@@ -3,9 +3,6 @@
+ 
+ #include <Qsci/qscilexer.h>
+ 
+-// located in SciLexer.h
+-#define SCLEX_NSIS 43
+-
+ #define SCE_NSIS_DEFAULT 0
+ #define SCE_NSIS_COMMENT 1
+ #define SCE_NSIS_STRINGDQ 2
+-- 
+2.17.0
+
