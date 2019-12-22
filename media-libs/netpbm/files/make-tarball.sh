@@ -12,13 +12,13 @@ if [[ $# -eq 0 ]] ; then
 	PV=$(svn ls | sort -V | tail -1) || die
 	[[ -z ${PV} ]] && die
 	PV=${PV%/}
-	eend
+	eend $?
 	einfo "Using PV=${PV}"
 
 	if [[ ! -d ${PV} ]] ; then
 		ebegin "Checking out ${PV}"
 		svn up -q ${PV}
-		eend || die
+		eend $? || die
 	fi
 fi
 
