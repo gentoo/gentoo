@@ -46,7 +46,7 @@ start() {
         --pidfile ${PIDFILE} \
         --exec /usr/bin/pgpool
 
-    eend
+    eend $?
 }
 
 stop() {
@@ -71,7 +71,7 @@ stop() {
         --pidfile ${PIDFILE} \
         --retry ${retries}
 
-    eend
+    eend $?
 }
 
 reload() {
