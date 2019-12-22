@@ -5207,6 +5207,22 @@ media-video/orion:mpv - Use the media-video/mpv player (upstream default)
 media-video/orion:qtav - Use the media-libs/qtav player
 media-video/orion:qtmedia - Use the dev-qt/qtmultimedia
 media-video/peek:keybinder - Enable support for global hotkeys using dev-libs/keybinder
+media-video/qmplay2:audiofilters - Build with AudioFilters module
+media-video/qmplay2:avdevice - Build FFmpeg module with libavdevice suport
+media-video/qmplay2:avresample - Use libavresample instead of libswresample
+media-video/qmplay2:cdio - Build with AudioCD module
+media-video/qmplay2:cuvid - Build with CUVID module
+media-video/qmplay2:extensions - Build with Extensions module
+media-video/qmplay2:gme - Build Chiptune with GME support
+media-video/qmplay2:inputs - Build with Inputs module
+media-video/qmplay2:lastfm - Build with LastFM support
+media-video/qmplay2:lyrics - Build with lyrics support
+media-video/qmplay2:mediabrowser - Build with MediaBrowser support
+media-video/qmplay2:mpris2 - Build Extensions with MPRIS2 support
+media-video/qmplay2:notifications - Build additional notifications module
+media-video/qmplay2:sid - Build Chiptune with SIDPLAY support
+media-video/qmplay2:videofilters - Build with VideoFilters module
+media-video/qmplay2:visualizations - Build with Visualizations module
 media-video/simplescreenrecorder:asm - Enable x86 assembly optimisation.
 media-video/simplescreenrecorder:vpx - Enable VP8 codec support via media-libs/libvpx.
 media-video/smplayer:autoshutdown - Enable the option to shutdown your computer after finishing the playlist. This requires dev-qt/qtdbus as dependency.
@@ -6722,6 +6738,7 @@ net-misc/scponly:unison - Enables Unison compatibility with potential security r
 net-misc/scponly:wildcards - Enables wildcard processing with potential security risks
 net-misc/scponly:winscp - Enables WinSCP 2.0 compatibility with potential security risks
 net-misc/seafile-client:shibboleth - Build support for Shibboleth single sign-on
+net-misc/sipp:pcap - Enable functionality to replay RTP data from a pcap file
 net-misc/sitecopy:rsh - This allows the use of rsh (remote shell) and rcp (remote copy) for authoring websites. sftp is a much more secure protocol and is preferred.
 net-misc/sitecopy:webdav - Enable WebDav (Web-based Distributed Authoring and Versioning) support. This system allows users to collaborate on websites using a web based interface. See the ebuild for an FAQ page. Enables neon as well to handle webdav support.
 net-misc/sks:optimize - Enables bytecode optimization

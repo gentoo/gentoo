@@ -13263,7 +13263,7 @@ media-libs/libopusenc 0.2.1: High-level API for encoding .opus files
 media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents
 media-libs/libpano13 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.12.27: Library to load, handle and manipulate images in the PGF format
-media-libs/libplacebo 1.21.0-r1 9999: Reusable library for GPU-accelerated image processing primitives
+media-libs/libplacebo 1.21.0-r1 1.29.0 9999: Reusable library for GPU-accelerated image processing primitives
 media-libs/libpng 1.6.37: Portable Network Graphics library
 media-libs/libpng-compat 1.2.59 1.5.30: Portable Network Graphics library
 media-libs/libpostproc 10.20140517-r1 9999: Video post processing library
@@ -14263,6 +14263,7 @@ media-video/pitivi 0.999: A non-linear video editor using the GStreamer multimed
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
 media-video/projectx 0.91.0.10-r1 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/pymp 1.1-r1: a lean, flexible frontend to mplayer written in python
+media-video/qmplay2 19.12.19 9999: A Qt-based video player, which can play most formats and codecs
 media-video/raspberrypi-omxplayer 0_p20160217 0_p20160528 0_p20160528-r1 9999: Command line media player for the Raspberry Pi
 media-video/rav1e 9999: The fastest and safest AV1 encoder
 media-video/recmpeg 1.0.5: Simple libfame-based video encoder, compresses raw video sequences to MPEG video
@@ -14381,7 +14382,7 @@ net-analyzer/gnome-nettool 3.8.1: Graphical front-ends to various networking com
 net-analyzer/goaccess 1.2 1.3 9999: A real-time web log analyzer and interactive viewer that runs in a terminal
 net-analyzer/gr-fosphor 9999: gnuradio fosphor block (GPU spectrum display)
 net-analyzer/graphite-web 1.1.3-r1 1.1.5: Enterprise scalable realtime graphing
-net-analyzer/greenbone-security-assistant 8.0.1: Greenbone Security Assistant
+net-analyzer/greenbone-security-assistant 8.0.1-r1: Greenbone Security Assistant
 net-analyzer/gsm-receiver 9999: GSM receiver block from the airprobe suite
 net-analyzer/gspoof 3.2-r3: A simple GTK/command line TCP/IP packet generator
 net-analyzer/gvm 10.0.1: Greenbone Vulnerability Management,previously named OpenVAS
@@ -15415,6 +15416,7 @@ net-misc/sgopherd 17.09 18.08: Small Gopher Server written in GNU Bash
 net-misc/shigofumi 0.3-r1 9999: Command line client for ISDS
 net-misc/shmux 1.0.2 1.0.2-r1: run the same command across many hosts in parallel
 net-misc/sipcalc 1.1.6: Sipcalc is an advanced console-based IP subnet calculator
+net-misc/sipp 3.6.0: A free Open Source test tool / traffic generator for the SIP protocol
 net-misc/sipsak 0.9.6_p1-r1 0.9.6_p1-r2: small command line tool for testing SIP applications and devices
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
 net-misc/sks 1.1.6-r2 1.1.6-r4 1.1.6-r5: An OpenPGP keyserver which is decentralized with highly reliable synchronization

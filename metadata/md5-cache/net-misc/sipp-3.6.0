@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-libs/ncurses:= gsl? ( sci-libs/gsl:= ) pcap? ( net-libs/libpcap net-libs/libnet:1.1 ) ssl? ( dev-libs/openssl:= )
+DESCRIPTION=A free Open Source test tool / traffic generator for the SIP protocol
+EAPI=7
+HOMEPAGE=http://sipp.sourceforge.net/ https://github.com/SIPp/sipp/releases
+IUSE=gsl +pcap sctp +ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 ISC
+RDEPEND=sys-libs/ncurses:= gsl? ( sci-libs/gsl:= ) pcap? ( net-libs/libpcap net-libs/libnet:1.1 ) ssl? ( dev-libs/openssl:= )
+SLOT=0
+SRC_URI=https://github.com/SIPp/sipp/releases/download/v3.6.0/sipp-3.6.0.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=0aaa5a786880b72c9b558f35a08816b0
