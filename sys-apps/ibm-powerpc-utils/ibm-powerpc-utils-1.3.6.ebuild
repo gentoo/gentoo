@@ -12,7 +12,7 @@ IUSE="+rtas"
 S="${WORKDIR}/${P//ibm-}"
 
 SLOT="0"
-LICENSE="IBM"
+LICENSE="GPL-2+"
 KEYWORDS="ppc ppc64"
 
 DEPEND="
