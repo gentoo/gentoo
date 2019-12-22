@@ -1,7 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
+
 inherit vala
 
 DESCRIPTION="Bind multimedia keys via gnome settings daemon"
@@ -11,13 +12,19 @@ SRC_URI="http://download.sarine.nl/Programs/gmpc/11.8/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
-RDEPEND="dev-libs/dbus-glib
+RDEPEND="
+	dev-libs/dbus-glib
 	>=media-sound/gmpc-${PV}"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	$(vala_depend)
 	virtual/pkgconfig"
+
+src_prepare() {
+	default
+	vala_src_prepare
+}
 
 src_configure() {
 	econf --disable-static
@@ -25,5 +32,7 @@ src_configure() {
 
 src_install() {
 	default
-	find "${ED}" -name "*.la" -exec rm {} + || die
+
+	# plugins only
+	find "${D}" -name '*.la' -delete || die
 }

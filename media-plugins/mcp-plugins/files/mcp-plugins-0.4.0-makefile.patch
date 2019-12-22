@@ -1,0 +1,44 @@
+--- a/Makefile
++++ b/Makefile
+@@ -15,35 +15,36 @@
+ #  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ 
+ 
+-CPPFLAGS += -I. -fPIC -D_REENTRANT -Wall -O3
++CXXFLAGS += -fPIC -Wall
++CPPFLAGS += -I. -D_REENTRANT
+ 
+ 
+ all:	mvclpf24.so mvchpf24.so cs_phaser.so cs_chorus.so
+ 
+ 
+ mvclpf24.so:	mvclpf24.o mvclpf24_if.o exp2ap.o
+-	g++ -shared  mvclpf24.o mvclpf24_if.o exp2ap.o -o mvclpf24.so
++	$(CXX) $(LDFLAGS) -shared mvclpf24.o mvclpf24_if.o exp2ap.o -o mvclpf24.so
+ 
+ mvclpf24.o:	ladspaplugin.h mvclpf24.h
+ mvclpf24_if.o:	ladspaplugin.h mvclpf24.h
+ 
+ 
+ mvchpf24.so:	mvchpf24.o mvchpf24_if.o exp2ap.o
+-	g++ -shared  mvchpf24.o mvchpf24_if.o exp2ap.o -o mvchpf24.so
++	$(CXX) $(LDFLAGS) -shared mvchpf24.o mvchpf24_if.o exp2ap.o -o mvchpf24.so
+ 
+ mvchpf24.o:	ladspaplugin.h mvchpf24.h
+ mvchpf24_if.o:	ladspaplugin.h mvchpf24.h
+ 
+ 
+ cs_phaser.so:	cs_phaser.o cs_phaser_if.o exp2ap.o
+-	g++ -shared cs_phaser.o cs_phaser_if.o exp2ap.o -o cs_phaser.so
++	$(CXX) $(LDFLAGS) -shared cs_phaser.o cs_phaser_if.o exp2ap.o -o cs_phaser.so
+ 
+ cs_phaser.o:	ladspaplugin.h cs_phaser.h
+ cs_phaser_if.o:	ladspaplugin.h cs_phaser.h
+ 
+ 
+ cs_chorus.so:	cs_chorus.o cs_chorus_if.o exp2ap.o
+-	g++ -shared  cs_chorus.o cs_chorus_if.o exp2ap.o -o cs_chorus.so
++	$(CXX) $(LDFLAGS) -shared cs_chorus.o cs_chorus_if.o exp2ap.o -o cs_chorus.so
+ 
+ cs_chorus.o:	ladspaplugin.h cs_chorus.h
+ cs_chorus_if.o:	ladspaplugin.h cs_chorus.h
