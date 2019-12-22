@@ -122,7 +122,7 @@ src_install() {
 		ebegin "Installing docs ..."
 			treecopy $(find -type f \( -name readme.txt -o -name "*.pdf" \)) "${ED}"/usr/share/doc/${PF}/
 			docompress -x $(find "${ED}"/usr/share/doc/${PF}/ -type f -name readme.txt | sed -e "s:${ED}::")
-		eend
+		eend $?
 	fi
 
 	crap+=" *.txt Samples.htm*"
@@ -134,7 +134,7 @@ src_install() {
 			fi
 		done
 		find -type f \( -name "*.o" -o -name "*.pdf" -o -name "readme.txt" \) -delete || die
-	eend
+	eend $?
 
 	ebegin "Moving files..."
 		for f in $(find .); do
@@ -152,5 +152,5 @@ src_install() {
 				fi
 			fi
 	done
-	eend
+	eend $?
 }

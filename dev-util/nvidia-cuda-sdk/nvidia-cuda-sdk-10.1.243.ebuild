@@ -105,7 +105,7 @@ src_install() {
 			while IFS="" read -d $'\0' -r f; do
 				docompress -x "${f#${ED}}"
 			done < <(find "${ED}"/usr/share/doc/${PF}/ -type f -name 'readme.txt' -print0)
-		eend
+		eend $?
 	fi
 
 	ebegin "Cleaning before installation..."
@@ -113,7 +113,7 @@ src_install() {
 			rm -f "${f}" || die
 		done
 		find -type f \( -name '*.o' -o -name '*.pdf' -o -name 'readme.txt' \) -delete || die
-	eend
+	eend $?
 
 	ebegin "Moving files..."
 		while IFS="" read -d $'\0' -r f; do
@@ -129,7 +129,7 @@ src_install() {
 				doins "${f}"
 			fi
 		done < <(find . -type f -print0)
-	eend
+	eend $?
 }
 
 pkg_postinst() {
