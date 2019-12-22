@@ -68,7 +68,7 @@ src_prepare() {
 	pushd src/VBox/Additions &>/dev/null || die
 	ebegin "Extracting guest kernel module sources"
 	kmk GuestDrivers-src vboxguest-src vboxsf-src vboxvideo-src &>/dev/null || die
-	eend
+	eend $?
 	popd &>/dev/null || die
 
 	pushd src/VBox &>/dev/null || die
