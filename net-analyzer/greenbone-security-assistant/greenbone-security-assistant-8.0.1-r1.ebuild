@@ -25,7 +25,7 @@ DEPEND="
 	dev-libs/libxslt
 	>=net-analyzer/gvm-libs-10.0.1
 	net-libs/gnutls:=
-	net-libs/libmicrohttpd[messages]"
+	net-libs/libmicrohttpd"
 
 RDEPEND="
 	${DEPEND}
