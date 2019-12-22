@@ -140,8 +140,8 @@ src_install() {
 	dodoc README.md
 	use doc && dodoc *pdf *html
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins -r examples/*
+		docinto /usr/share/doc/${PF}/examples
+		dodoc -r examples/*
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }
