@@ -37,7 +37,6 @@ src_compile() {
 
 src_install() {
 	insinto /usr/include
-	doins EXTERNAL_HEADERS/AssertMacros.h EXTERNAL_HEADERS/Availability*.h
 	doins libsyscall/wrappers/gethostuuid.h
 	doins libsyscall/wrappers/libproc/libproc.h
 	doins -r libsyscall/mach/mach
@@ -82,7 +81,7 @@ src_install() {
 
 	pushd osfmk > /dev/null || die
 
-	for d in mach{,/i386,/machine} ; do
+	for d in mach{,/i386,/machine} mach_debug ; do
 		insinto /usr/include/${d}
 		files=( $(get_datafiles ${d}) )
 		einfo "${d}:" ${files[*]}
