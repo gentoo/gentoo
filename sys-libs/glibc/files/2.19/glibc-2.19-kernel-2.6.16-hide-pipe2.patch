@@ -1,0 +1,16 @@
+Remove the pipe2 symbol from libc.so, otherwise meson will pick it up.
+
+This is a balance.  We decide not to strip all the O_CLOEXEC, otherwise
+gtk+ will need to be patched.
+Index: glibc-2.19/sysdeps/unix/make-syscalls.sh
+===================================================================
+--- glibc-2.19.orig/sysdeps/unix/make-syscalls.sh
++++ glibc-2.19/sysdeps/unix/make-syscalls.sh
+@@ -131,6 +131,7 @@ emit_weak_aliases()
+ 	echo "	 echo 'libc_hidden_def ($name)'; \\"
+ 	;;
+       *)
++	[ $name = pipe2 ] && continue
+ 	echo "	 echo 'weak_alias ($strong, $name)'; \\"
+ 	echo "	 echo 'libc_hidden_weak ($name)'; \\"
+ 	;;
