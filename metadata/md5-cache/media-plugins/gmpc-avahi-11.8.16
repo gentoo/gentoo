@@ -1,12 +1,13 @@
+BDEPEND=virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext )
 DEFINED_PHASES=configure install
-DEPEND=>=media-sound/gmpc-11.8.16 dev-libs/libxml2 net-dns/avahi[dbus] virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext )
+DEPEND=>=media-sound/gmpc-11.8.16 dev-libs/libxml2:2 net-dns/avahi:=[dbus]
 DESCRIPTION=This plugin discovers avahi enabled mpd servers
-EAPI=4
+EAPI=7
 HOMEPAGE=http://gmpc.wikia.com/wiki/GMPC_PLUGIN_AVAHI
 IUSE=nls
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
-RDEPEND=>=media-sound/gmpc-11.8.16 dev-libs/libxml2 net-dns/avahi[dbus]
+RDEPEND=>=media-sound/gmpc-11.8.16 dev-libs/libxml2:2 net-dns/avahi:=[dbus]
 SLOT=0
 SRC_URI=http://download.sarine.nl/Programs/gmpc/11.8/gmpc-avahi-11.8.16.tar.gz
-_md5_=644afb7a5b9bef4e147f50e3b788d316
+_md5_=27b3a2867a710e2ddf7678da2e1e4aba

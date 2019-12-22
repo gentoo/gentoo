@@ -9,4 +9,4 @@ RESTRICT=test
 SLOT=0/1
 SRC_URI=https://github.com/libxls/libxls/releases/download/v1.5.2/libxls-1.5.2.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5
-_md5_=040ec962408584ceb37e8b2bc807c603
+_md5_=3d86f28d5774f7885cf54d45d6da739d

@@ -1,12 +1,12 @@
-DEFINED_PHASES=install prepare
+DEFINED_PHASES=configure install
 DEPEND=media-libs/ladspa-sdk
 DESCRIPTION=MCP ladspa plugins package. Includes moogvcf, phaser & chorus
-EAPI=5
+EAPI=7
 HOMEPAGE=http://kokkinizita.linuxaudio.org/linuxaudio/
-KEYWORDS=amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=media-libs/ladspa-sdk
 SLOT=0
 SRC_URI=http://kokkinizita.linuxaudio.org/linuxaudio/downloads/MCP-plugins-0.4.0.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=6e41052ce4f98e92bdc64e0103748a8a
+_md5_=6efc8cd186c8b3dcf54291967489f39a
