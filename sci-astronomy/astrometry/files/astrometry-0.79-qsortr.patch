@@ -1,0 +1,12 @@
+diff --git a/util/test_qsort_r.c b/util/test_qsort_r.c
+index e33cdcd9..fbc87686 100644
+--- a/util/test_qsort_r.c
++++ b/util/test_qsort_r.c
+@@ -6,6 +6,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #include "cutest.h"
+ 

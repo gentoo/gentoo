@@ -1,0 +1,25 @@
+diff --git a/blind/Makefile b/blind/Makefile
+index b5007166..4004a58c 100644
+--- a/blind/Makefile
++++ b/blind/Makefile
+@@ -152,7 +152,8 @@ $(ENGINE_LIB): $(ENGINE_OBJS)
+ 	$(RANLIB) $@
+ 
+ $(ENGINE_SO): $(ENGINE_OBJS) $(SLIB)
+-	$(CC) $(LDFLAGS) $(SHAREDLIBFLAGS) -o $@ $^ $(LDLIBS)
++	$(CC) $(LDFLAGS) $(SHAREDLIBFLAGS) -Wl,-soname,$@.0 -o $@.0 $^ $(LDLIBS)
++	ln -s  $@.0 $@
+ 
+ # old and miscellaneous executables that aren't part of the pipeline.
+ OLDEXECS := plotquads rawstartree checkquads
+@@ -236,8 +237,8 @@ install: $(INSTALL_EXECS) $(INSTALL_LIB)
+ 	done
+ 	$(MKDIR) '$(LIB_INSTALL_DIR)'
+ 	@for x in $(INSTALL_LIB); do \
+-		echo $(CP) $$x '$(LIB_INSTALL_DIR)'; \
+-		$(CP) $$x '$(LIB_INSTALL_DIR)'; \
++		echo $(CP) -d $$x* '$(LIB_INSTALL_DIR)'; \
++		$(CP) -d $$x* '$(LIB_INSTALL_DIR)'; \
+ 	done
+ 	$(MKDIR) '$(PY_INSTALL_DIR)'
+ 	@for x in $(PYTHON_INSTALL); do \
