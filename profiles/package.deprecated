@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-21)
+# Unmaintained, vulnerable oracle java ebuilds, even fetching distfiles
+# requires agreement to restrictive license
+# Most things that still depend on oracle variants require javafx
+# https://bugs.gentoo.org/681828
+dev-java/oracle-jdk-bin
+dev-java/oracle-jre-bin
+
 # Ulrich Müller <ulm@gentoo.org> (2019-12-21)
 # Live ebuilds for Emacs from Git have been consolidated into the
 # app-editors/emacs package, which makes the virtual unnecessary.
