@@ -32,12 +32,11 @@ all_ruby_prepare() {
 	# the extension.
 	sed -i -e '/rake-compiler/ s:^:#:' -e '/extensiontask/ s:^:#:' Rakefile
 	sed -i -e '/ExtensionTask/,/^  end/ s:^:#:' Rakefile
+	# Which means we need to generate the parser file here
+	rake lib/racc/parser-text.rb || die
 
 	# Avoid isolation since dependencies are not properly declared.
 	sed -i -e 's/, :isolate//' Rakefile || die
-
-	# Fix version number in regress files
-	sed -i -e 's/1.4.14/1.4.15/' test/regress/* || die
 }
 
 each_ruby_prepare() {
