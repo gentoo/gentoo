@@ -76,6 +76,7 @@ acct-group/rspamd 0: Group for rspamd - Rapid spam filtering system
 acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
 acct-group/shellinaboxd 0: shellinabox group
 acct-group/slurm 0: A group for the slurm - Highly Scalable Resource Manager
+acct-group/sogo 0: Group for gnustep-apps/sogo
 acct-group/spectrum 0: A group for the Spectrum messaging transport
 acct-group/spire 0: System group: spire
 acct-group/stdiscosrv 0: Group for the Syncthing discovery server
@@ -177,6 +178,7 @@ acct-user/rspamd 0: User for rspamd - Rapid spam filtering system
 acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
 acct-user/shellinaboxd 0: shellinabox user
 acct-user/slurm 0: User for the slurm - Highly Scalable Resource Manager
+acct-user/sogo 0: User for gnustep-apps/sogo
 acct-user/spectrum 0: A user for the Spectrum messaging transport
 acct-user/spire 0: user for spiffe runtime environment
 acct-user/stdiscosrv 0: User for the Syncthing discovery server
@@ -11985,7 +11987,7 @@ gnustep-apps/preview 0.9: Simple image viewer
 gnustep-apps/price 1.2.0 1.3.0: Precision Raster Image Convolution Engine
 gnustep-apps/projectcenter 0.6.2: An IDE for GNUstep
 gnustep-apps/simpleagenda 0.43: a simple calendar and agenda application
-gnustep-apps/sogo 4.0.7 4.0.8 4.1.1: Groupware server built around OpenGroupware.org and the SOPE application server
+gnustep-apps/sogo 4.1.1 4.1.1-r1: Groupware server built around OpenGroupware.org and the SOPE application server
 gnustep-apps/systempreferences 1.2.0: System Preferences is a clone of Apple OS X' System Preferences
 gnustep-apps/talksoup 1.1: IRC client for GNUstep
 gnustep-apps/terminal 0.9.8 0.9.9: A terminal emulator for GNUstep
@@ -11997,7 +11999,7 @@ gnustep-base/gnustep-back-xlib 0.25.0 0.25.1 0.26.2 0.27.0: Default X11 back-end
 gnustep-base/gnustep-base 1.24.9-r1 1.25.0 1.25.1 1.26.0 1.26.0-r1: A library of general-purpose, non-graphical Objective C objects
 gnustep-base/gnustep-gui 0.25.0 0.25.1 0.26.2 0.27.0: Library of GUI classes written in Obj-C
 gnustep-base/gnustep-make 2.6.8 2.7.0: GNUstep Makefile Package
-gnustep-base/gnustep-updater 0.2 0.3: Helper tool to upgrade Gentoo GNUstep installations
+gnustep-base/gnustep-updater 0.3 0.3-r1: Helper tool to upgrade Gentoo GNUstep installations
 gnustep-base/libobjc2 1.8 1.8.1 2.0: GNUstep Objective-C runtime
 gnustep-base/mknfonts 0.5-r2 0.5-r3: A tool to create .nfont packages for use with gnustep-back-art
 gnustep-libs/cenonlibrary 4.0.0: Default library required to run Cenon
@@ -12008,7 +12010,7 @@ gnustep-libs/netclasses 1.1.0: An asynchronous networking library for GNUstep
 gnustep-libs/pantomime 1.2.2 1.2.3 1.3.0: A set of Objective-C classes that model a mail system
 gnustep-libs/performance 0.5.0: Help improve the performance of GNUstep applications
 gnustep-libs/renaissance 0.9.0-r1: GNUstep Renaissance allows to describe user interfaces XML files
-gnustep-libs/sope 4.0.7-r1 4.0.8 4.1.1: A set of frameworks forming a complete Web application server environment
+gnustep-libs/sope 4.1.1: A set of frameworks forming a complete Web application server environment
 gnustep-libs/sqlclient 1.8.1-r1: GNUstep lightweight database abstraction layer
 gui-apps/grim 1.2.0 9999: Grab images from a Wayland compositor.
 gui-apps/mako 1.3 1.4 9999: A lightweight notification daemon for Wayland. Works on Sway.
@@ -13703,7 +13705,7 @@ media-plugins/vdr-scheduler 0.1.3: VDR plugin: allows to control externel jobs f
 media-plugins/vdr-screenshot 0.0.15: VDR Plugin: takes screenshots of the current video or tv screen
 media-plugins/vdr-serial 0.0.6a-r1: VDR Plugin: attach some buttons with diodes to the serial port
 media-plugins/vdr-skincurses 2.2.0: VDR plugin: show content of menu in a shell window
-media-plugins/vdr-skinelchi 0.3.0: VDR Skin Plugin: skinelchi
+media-plugins/vdr-skinelchi 0.3.0-r1: VDR Skin Plugin: skinelchi
 media-plugins/vdr-skinenigmang 0.1.2_p20130302: VDR - Skin Plugin: enigma-ng
 media-plugins/vdr-skinsoppalusikka 2.0.0 2.0.3 2.2.0 2.2.1: VDR Skin Plugin: soppalusikka
 media-plugins/vdr-sleeptimer 0.6: VDR Plugin: Sleeptimer
