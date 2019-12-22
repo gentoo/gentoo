@@ -20,7 +20,7 @@ python_test() {
 	for t in tests/test_*.py; do
 		ebegin "\t${t}"
 		"${EPYTHON}" "${t}"
-		eend || fail=1
+		eend ${?} || fail=1
 	done
 
 	[[ ${fail} ]] && die "Tests fail with ${EPYTHON}"
