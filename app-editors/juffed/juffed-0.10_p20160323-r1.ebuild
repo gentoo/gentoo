@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,6 +32,7 @@ DOCS=( ChangeLog README )
 PATCHES=(
 	"${FILESDIR}/${P}-qscintilla-2.10.patch"
 	"${FILESDIR}/${P}-qt-5.11.patch"
+	"${FILESDIR}/${P}-qscintilla-2.10.3.patch"
 )
 
 src_prepare() {
