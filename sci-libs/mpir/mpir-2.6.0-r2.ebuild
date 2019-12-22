@@ -47,7 +47,7 @@ src_prepare() {
 			%endif
 		EOF
 	done
-	eend
+	eend $?
 	eautoreconf
 }
 
