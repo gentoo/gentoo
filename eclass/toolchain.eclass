@@ -1763,8 +1763,10 @@ gcc_do_make() {
 
 toolchain_src_test() {
 	cd "${WORKDIR}"/build
-	# enable verbose test run and result logging
-	emake -k check
+	# 'asan' wants to be preloaded first, so does 'sandbox'.
+	# To make asan tests work disable sandbox for all of test suite.
+	# 'backtrace' tests also does not like 'libsandbox.so' presence.
+	SANDBOX_ON=0 LD_PRELOAD= emake -k check
 }
 
 #---->> src_install <<----
