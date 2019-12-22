@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/project/${PN}.berlios/${PN}-full-${PV}.tar.gz"
 
 LICENSE="GPL-3 GPL-3-with-font-exception free-noncomm"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 DEPEND="

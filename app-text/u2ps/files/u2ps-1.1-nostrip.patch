@@ -1,0 +1,14 @@
+diff -ruN u2ps-1.1.orig/Makefile u2ps-1.1/Makefile
+--- u2ps-1.1.orig/Makefile	2019-02-17 20:01:48.000000000 +0100
++++ u2ps-1.1/Makefile	2019-12-22 20:43:17.667058496 +0100
+@@ -18,8 +18,8 @@
+ 
+ install:
+ 	install -dm 0755 $(DESTDIR)$(bindir)
+-	install -sm 0755 u2ps $(DESTDIR)$(bindir)/u2ps
+-	install -sm 0755 psfrem $(DESTDIR)$(bindir)/psfrem
++	install -m 0755 u2ps $(DESTDIR)$(bindir)/u2ps
++	install -m 0755 psfrem $(DESTDIR)$(bindir)/psfrem
+ 	install -dm 0755 $(DESTDIR)$(basedir)
+ 	install -dm 0755 $(DESTDIR)$(basedir)/ProcSet
+ 	install -m 0644 res/*.ps $(DESTDIR)$(basedir)
