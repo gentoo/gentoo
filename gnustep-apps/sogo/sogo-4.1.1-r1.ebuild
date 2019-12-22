@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit gnustep-2 user vcs-snapshot
+inherit gnustep-2 vcs-snapshot
 
 DESCRIPTION="Groupware server built around OpenGroupware.org and the SOPE application server"
 HOMEPAGE="http://www.sogo.nu"
@@ -15,10 +15,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="activesync gnutls libressl +ssl"
 
 RDEPEND="
+	acct-user/sogo
 	dev-libs/libmemcached
 	net-misc/curl
 	net-misc/memcached
 	>=gnustep-libs/sope-${PV}[ldap]
+	activesync? ( dev-libs/libwbxml )
 	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
 		!libressl? ( dev-libs/openssl:0= )
@@ -35,16 +37,12 @@ pkg_pretend() {
 	fi
 }
 
-pkg_setup() {
-	enewuser sogo -1 /bin/bash /var/lib/sogo
-}
-
 src_prepare() {
 	gnustep-base_src_prepare
 	sed -e "s/validateArgs$//" -i configure \
 		|| die
 	if use activesync; then
-		sed -e '/^SUBPROJECTS =/a\\tActiveSync \\' \
+		sed -e 's/Tests\/Unit/ActiveSync &/g' \
 			-i GNUmakefile || die
 	fi
 
