@@ -73,7 +73,7 @@ pkg_postinst() {
 		cat >> "${EROOT}/etc/sgml/sgml-docbook.cat" <<-EOF
 			CATALOG "${EPREFIX}/etc/sgml/sgml-ent.cat"
 		EOF
-		eend
+		eend ${?}
 	fi
 
 	sgml-catalog-r1_pkg_postinst
@@ -84,7 +84,7 @@ pkg_postrm() {
 		ebegin "Removing sgml-ent.cat from /etc/sgml/sgml-docbook.cat"
 		sed -i -e '/sgml-ent\.cat/d' \
 			"${EROOT}"/etc/sgml/sgml-docbook.cat
-		eend
+		eend ${?}
 		if [[ ! -s ${EROOT}/etc/sgml/sgml-docbook.cat ]]; then
 			rm -f "${EROOT}"/etc/sgml/sgml-docbook.cat
 		fi
