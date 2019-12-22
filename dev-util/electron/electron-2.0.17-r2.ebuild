@@ -515,7 +515,7 @@ src_prepare() {
 	ebegin "Unbundling libraries"
 	build/linux/unbundle/remove_bundled_libraries.py \
 		"${keeplibs[@]}" --do-remove || die
-	eend
+	eend $?
 
 	cd "${S}" || die
 
