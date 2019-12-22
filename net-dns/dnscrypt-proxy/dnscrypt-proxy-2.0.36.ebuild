@@ -53,7 +53,7 @@ src_install() {
 	insinto /usr/share/dnscrypt-proxy
 	doins -r "utils/generate-domains-blacklists/."
 
-	newinitd "${FILESDIR}"/dnscrypt-proxy.initd-r1 dnscrypt-proxy
+	newinitd "${FILESDIR}"/dnscrypt-proxy.initd dnscrypt-proxy
 	newconfd "${FILESDIR}"/dnscrypt-proxy.confd dnscrypt-proxy
 
 	systemd_newunit "${FILESDIR}"/dnscrypt-proxy.service dnscrypt-proxy.service
