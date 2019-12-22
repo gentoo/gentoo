@@ -502,7 +502,7 @@ app-arch/plzip 1.6 1.8: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029 9999: parallel LZMA compressor (no parallel decompression!)
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
-app-arch/rar 5.7.1_p20190427 5.8.0_p20191205: RAR compressor/uncompressor
+app-arch/rar 5.8.0_p20191205: RAR compressor/uncompressor
 app-arch/rpm 4.14.1 4.14.1-r1 4.14.2.1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
@@ -7493,7 +7493,7 @@ dev-python/automaton 0.8.0 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.3.2 1.3.3 1.3.5 1.4 1.4.3 1.4.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/aws-sam-translator 1.11.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.4.2: AWS X-Ray SDK for Python
-dev-python/awscli 1.16.104 1.16.125 1.16.148 1.16.190 1.16.215 1.16.220 1.16.233-r1 1.16.261 1.16.278 1.16.283 1.16.292 1.16.300: Universal Command Line Environment for AWS
+dev-python/awscli 1.16.104 1.16.125 1.16.148 1.16.190 1.16.215 1.16.220 1.16.233-r1 1.16.261 1.16.278 1.16.283 1.16.292 1.16.300 1.16.308: Universal Command Line Environment for AWS
 dev-python/axiom 0.7.2 0.7.5: Object database implemented on top of SQLite
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.1.0: Specifications for callback functions passed in to an API
@@ -7542,7 +7542,7 @@ dev-python/bokeh 0.12.6: Statistical and interactive HTML plots for Python
 dev-python/booleanOperations 0.8.2: Boolean operations on paths
 dev-python/boto 2.41.0 2.48.0 2.49.0: Amazon Web Services API
 dev-python/boto3 1.9.4-r1 1.9.122 1.10.2 9999: The AWS SDK for Python
-dev-python/botocore 1.12.4-r1 1.12.81 1.12.122 1.12.205 1.12.210 1.12.223 1.12.251 1.13.2 1.13.14 1.13.19 1.13.28 1.13.36 9999: Low-level, data-driven core of boto 3.
+dev-python/botocore 1.12.4-r1 1.12.81 1.12.122 1.12.205 1.12.210 1.12.223 1.12.251 1.13.2 1.13.14 1.13.19 1.13.28 1.13.36 1.13.44 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12 0.12.13 0.12.16: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.0.0 1.2.1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.17.1 0.18: Syntax highlighting and autocompletion for the Python interpreter
@@ -12485,8 +12485,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
-mail-client/thunderbird 52.9.1 68.2.2 68.3.0 68.3.1: Thunderbird Mail Client
-mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.2.2 68.3.0: Thunderbird Mail Client
+mail-client/thunderbird 52.9.1 68.3.1: Thunderbird Mail Client
+mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.3.1: Thunderbird Mail Client
 mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.2.0 1.3.0: Initial tagging script for Notmuch
