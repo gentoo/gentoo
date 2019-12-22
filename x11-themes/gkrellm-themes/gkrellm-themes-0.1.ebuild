@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -202,11 +202,14 @@ SRC_URI="${THEME_URI}/3051.tar.gz
 	${THEME_URI}/x17.tar.gz
 	${THEME_URI}/yummiyogurt.tar.gz"
 
-LICENSE="freedist"
+# "keramik" says GPL, without version,
+# "prime_23" contains a GPL-2 COPYING,
+# all other themes have no license
+LICENSE="all-rights-reserved GPL-1+ GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~mips ppc ppc64 sparc x86"
 IUSE=""
-RESTRICT="strip"
+RESTRICT="mirror bindist strip"
 
 DEPEND=""
 RDEPEND=">=app-admin/gkrellm-2.1"
