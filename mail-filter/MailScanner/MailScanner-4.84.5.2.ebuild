@@ -319,7 +319,7 @@ pkg_postinst() {
 			/etc/MailScanner/MailScanner.conf.pre_upgrade.${MY_PV} \
 			/etc/MailScanner/MailScanner.conf.${MY_PV} \
 			> /etc/MailScanner/MailScanner.conf 2> /dev/null
-		eend
+		eend $?
 	else
 		cp /etc/MailScanner/MailScanner.conf.sample \
 			/etc/MailScanner/MailScanner.conf
