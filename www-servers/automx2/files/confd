@@ -1,0 +1,8 @@
+# Additional parameters passed to Flask
+#AUTOMX2_ARGS="--host 127.0.0.1 --port 4243"
+
+# Configuration file
+#AUTOMX2_CONF="/etc/automx2.conf"
+
+# Process owner (choose a non-privileged user)
+#AUTOMX2_USER="automx2"
