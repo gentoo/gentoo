@@ -25,7 +25,7 @@ src_compile() {
 		ebegin "Indexing CUTG for usage with EMBOSS."
 		EMBOSS_DATA="." cutgextract -auto -directory "${S}" || die \
 			"Indexing CUTG failed."
-		eend
+		eend $?
 	fi
 }
 
