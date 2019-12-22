@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-astronomy@gentoo.org</email>
+		<name>Gentoo Astronomy Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>gentoo@lotz.li</email>
+		<name>Linus Lotz</name>
+	</maintainer>
+	<longdescription lang="en">
+		The astropy-helpers package includes many build, installation, and documentation-related tools
+		used by the Astropy project, but packaged separately for use by other projects that wish to leverage this work.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">astropy-helpers</remote-id>
+		<remote-id type="github">astropy/astropy-helpers</remote-id>
+	</upstream>
+</pkgmetadata>
