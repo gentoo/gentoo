@@ -93,7 +93,7 @@ src_install() {
 	ebegin "Cleaning ${i}..."
 		if [[ -e ${i} ]]; then
 			find ${i} -delete || die
-			eend
+			eend $?
 		else
 			eend $1
 		fi
