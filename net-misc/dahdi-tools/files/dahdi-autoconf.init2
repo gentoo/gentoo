@@ -29,7 +29,7 @@ dahdi_load_modules() {
 		if [ "${status}" = "-" -a "${!mod_vname-notloaded}" = "notloaded" ]; then
 			ebegin "Loading module $mod"
 			/sbin/modprobe $mod
-			eend
+			eend $?
 
 			[ $? -eq 0 ] && eval "$mod_vname=loaded"
 		fi
