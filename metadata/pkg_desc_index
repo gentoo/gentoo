@@ -104,6 +104,8 @@ acct-group/utmp 0: System group: utmp
 acct-group/video 0: System group: video
 acct-group/vpopmail 0: System group: vpopmail
 acct-group/wheel 0: System group: wheel
+acct-group/x2goprint 0: Group for net-misc/x2goserver
+acct-group/x2gouser 0: Group for net-misc/x2goserver
 acct-user/alias 0: alias user for qmail mail delivery
 acct-user/asterisk 0: User for asterisk
 acct-user/avahi 0: user for avahi
@@ -197,6 +199,8 @@ acct-user/unifi 0: A user for the UniFi Controller
 acct-user/unrealircd 0: System user: unrealircd
 acct-user/uptimed 0: user for uptime daemon
 acct-user/vpopmail 0: user for vpopmail
+acct-user/x2goprint 0: User for net-misc/x2goserver
+acct-user/x2gouser 0: User for net-misc/x2goserver
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.26.2 2.30.1 2.32.0 2.34.0: Gtk module for bridging AT-SPI to Atk
@@ -15480,7 +15484,7 @@ net-misc/wol 0.7.1-r2: Implements Wake On LAN (Magic Paket) functionality in a s
 net-misc/wput 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r2: X11-based passphrase dialog for use with OpenSSH
 net-misc/x2goclient 4.1.2.1 4.1.2.1-r1: The X2Go Qt client
-net-misc/x2goserver 4.1.0.2 4.1.0.3: The X2Go server
+net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270 0.4.1355: utility to download media contents from the web
 net-misc/youtube-dl 2019.11.28 99999999: Download videos from YouTube.com (and more sites...)
