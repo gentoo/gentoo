@@ -24,5 +24,5 @@ src_test() {
 		-E "(convertertest)"
 	)
 
-	ecm_src_test
+	LC_NUMERIC="C" ecm_src_test # bug 694804
 }
