@@ -4750,7 +4750,6 @@ dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures an
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.71.0 1.72.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
-dev-libs/boost-numpy 9999: Boost.Python interface for NumPy
 dev-libs/botan 1.10.17-r2 2.9.0 2.11.0: A C++ crypto library
 dev-libs/btparser 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
@@ -11019,7 +11018,7 @@ dev-vcs/python-gitlab 1.7.0 1.8.0 1.9.0 1.13.0: Python command line interface to
 dev-vcs/qgit 2.8: Qt GUI for git repositories
 dev-vcs/rabbitvcs 0.16-r1: Integrated version control support for your desktop
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
-dev-vcs/rcs 5.8.2 5.9.3 5.9.4: Revision Control System
+dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/repo 1.26: Google tool for managing git, particularly multiple repos
 dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
