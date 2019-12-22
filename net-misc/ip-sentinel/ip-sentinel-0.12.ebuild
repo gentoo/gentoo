@@ -53,7 +53,7 @@ pkg_config() {
 		ebegin "Setting up the chroot directory"
 			mkdir -m 0755 -p "${CHROOT}/etc"
 			cp -R /etc/ip-sentinel.cfg "${CHROOT}/etc"
-		eend
+		eend $?
 
 		if [ "`grep '^#[[:blank:]]\?CHROOT' /etc/conf.d/ip-sentinel`" ] ; then
 			sed -e '/^#[[:blank:]]\?CHROOT/s/^#[[:blank:]]\?//' \
