@@ -1,0 +1,27 @@
+diff -ru a/astropy/utils/iers/tests/test_leap_second.py b/astropy/utils/iers/tests/test_leap_second.py
+--- a/astropy/utils/iers/tests/test_leap_second.py	2020-02-01 20:15:23.495182447 +0100
++++ b/astropy/utils/iers/tests/test_leap_second.py	2020-02-01 20:19:37.396872384 +0100
+@@ -223,23 +223,6 @@
+             assert ls2.meta['data_url'] == fake_file
+             assert ls2.expires == Time('2010-06-28', scale='tai')
+ 
+-    @pytest.mark.skipif(not os.path.isfile(SYSTEM_FILE),
+-                        reason=f'system does not have {SYSTEM_FILE}')
+-    def test_system_file_never_expired(self, tmpdir):
+-        self.remove_auto_open_files('erfa')
+-        with iers.conf.set_temp('system_leap_second_file', SYSTEM_FILE):
+-            ls = iers.LeapSeconds.open()
+-            assert ls.expires > self.good_enough
+-            assert ls.meta['data_url'] in (iers.IERS_LEAP_SECOND_FILE,
+-                                           SYSTEM_FILE)
+-
+-            # Also check with a "built-in" file that is expired
+-            fake_file = make_fake_file('28 June 2017', tmpdir)
+-            iers.LeapSeconds._auto_open_files[0] = fake_file
+-            ls2 = iers.LeapSeconds.open()
+-            assert ls2.expires > Time.now()
+-            assert ls2.meta['data_url'] == SYSTEM_FILE
+-
+     @pytest.mark.remote_data
+     def test_auto_open_urls_always_good_enough(self):
+         # Avoid using the erfa, built-in and system files, as they might
