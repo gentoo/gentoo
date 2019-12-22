@@ -9,11 +9,11 @@ depend() {
 start() {
 	ebegin "Starting snmptt"
 	start-stop-daemon --start --pidfile /run/snmptt.pid --exec /usr/sbin/snmptt
-	eend
+	eend $?
 }
 
 stop() {
 	ebegin "Stopping snmptt"
 	start-stop-daemon --stop --pidfile /run/snmptt.pid
-	eend
+	eend $?
 }
