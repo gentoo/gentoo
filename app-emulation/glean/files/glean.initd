@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 
 description="Simple program to write static config from config-drive"
 
@@ -11,5 +11,5 @@ depend() {
 start() {
 	ebegin "Starting Glean"
 	/usr/bin/glean.sh
-	eend
+	eend $?
 }
