@@ -86,6 +86,8 @@ esac
 # - no -- do not add the dependency (pure distutils package)
 # - bdepend -- add it to BDEPEND (the default)
 # - rdepend -- add it to BDEPEND+RDEPEND (when using entry_points)
+# - pyproject.toml -- use pyproject2setuptools to install a project
+#                     using pyproject.toml (flit, poetry...)
 # - manual -- do not add the depedency and suppress the checks
 #             (assumes you will take care of doing it correctly)
 #
@@ -134,6 +136,9 @@ _distutils_set_globals() {
 		rdepend)
 			bdep+=" ${sdep}"
 			rdep+=" ${sdep}"
+			;;
+		pyproject.toml)
+			bdep+=" dev-python/pyproject2setuppy[${PYTHON_USEDEP}]"
 			;;
 		*)
 			die "Invalid DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}"
@@ -457,6 +462,7 @@ distutils_enable_tests() {
 _distutils_verify_use_setuptools() {
 	[[ ${DISTUTILS_OPTIONAL} ]] && return
 	[[ ${DISTUTILS_USE_SETUPTOOLS} == manual ]] && return
+	[[ ${DISTUTILS_USE_SETUPTOOLS} == pyproject.toml ]] && return
 
 	# ok, those are cheap greps.  we can try toimprove them if we hit
 	# false positives.
@@ -580,6 +586,28 @@ _distutils-r1_disable_ez_setup() {
 	fi
 }
 
+# @FUNCTION: _distutils-r1_handle_pyproject_toml
+# @INTERNAL
+# @DESCRIPTION:
+# Generate setup.py for pyproject.toml if requested.
+_distutils-r1_handle_pyproject_toml() {
+	if [[ ! -f setup.py && -f pyproject.toml ]]; then
+		if [[ ${DISTUTILS_USE_SETUPTOOLS} == pyproject.toml ]]; then
+			cat > setup.py <<-EOF || die
+				#!/usr/bin/env python
+				from pyproject2setuppy.main import main
+				main()
+			EOF
+			chmod +x setup.py || die
+		else
+			eerror "No setup.py found but pyproject.toml is present.  In order to enable"
+			eerror "pyproject.toml support in distutils-r1, set:"
+			eerror "  DISTUTILS_USE_SETUPTOOLS=pyproject.toml"
+			die "No setup.py found and DISTUTILS_USE_SETUPTOOLS!=pyproject.toml"
+		fi
+	fi
+}
+
 # @FUNCTION: distutils-r1_python_prepare_all
 # @DESCRIPTION:
 # The default python_prepare_all(). It applies the patches from PATCHES
@@ -608,6 +636,7 @@ distutils-r1_python_prepare_all() {
 	fi
 
 	_distutils-r1_disable_ez_setup
+	_distutils-r1_handle_pyproject_toml
 
 	if [[ ${DISTUTILS_IN_SOURCE_BUILD} && ! ${DISTUTILS_SINGLE_IMPL} ]]
 	then
