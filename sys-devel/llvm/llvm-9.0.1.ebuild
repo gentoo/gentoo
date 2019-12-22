@@ -90,7 +90,7 @@ src_unpack() {
 	if ! use doc; then
 		ebegin "Unpacking ${MANPAGE_P}.tar.bz2"
 		tar -xf "${DISTDIR}/${MANPAGE_P}.tar.bz2" || die
-		eend
+		eend ${?}
 	fi
 }
 

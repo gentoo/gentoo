@@ -87,7 +87,7 @@ src_unpack() {
 	if ! use doc; then
 		ebegin "Unpacking ${MANPAGE_P}.tar.bz2"
 		tar -xf "${DISTDIR}/${MANPAGE_P}.tar.bz2" || die
-		eend
+		eend ${?}
 	fi
 }
 
@@ -96,6 +96,7 @@ multilib_src_configure() {
 	local clang_version=$(ver_cut 1-3 "${llvm_version}")
 
 	local mycmakeargs=(
+		-DLLVM_CMAKE_PATH="${EPREFIX}/usr/lib/llvm/${SLOT}/$(get_libdir)/cmake/llvm"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
 		# relative to bindir

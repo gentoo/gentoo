@@ -98,7 +98,7 @@ src_unpack() {
 	if ! use doc; then
 		ebegin "Unpacking llvm-${PV}-manpages.tar.bz2"
 		tar -xf "${DISTDIR}/llvm-${PV}-manpages.tar.bz2" || die
-		eend
+		eend ${?}
 	fi
 }
 

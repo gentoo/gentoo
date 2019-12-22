@@ -6,8 +6,8 @@ EAPI=7
 inherit mount-boot savedconfig toolchain-funcs
 
 MY_P=linux-${PV}
-CONFIG_VER=5.4.1.arch1-1
-CONFIG_HASH=d6bbb261bd2c8f83b9c93041dae9aa4175e20e6e
+CONFIG_VER=5.4.4.arch1-1
+CONFIG_HASH=f101331956bb37080dce191ca789a5c44fac9e69
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="https://www.kernel.org/"
@@ -132,8 +132,6 @@ pkg_postinst() {
 	if [[ -z ${ROOT} ]]; then
 		mount-boot_pkg_preinst
 
-		local fail=
-
 		if use initramfs; then
 			ebegin "Building initramfs via dracut"
 			# putting it alongside kernel image as 'initrd' makes
@@ -148,11 +146,22 @@ pkg_postinst() {
 		installkernel "${PV}" \
 			"${EROOT}/usr/src/linux-${PV}/bzImage" \
 			"${EROOT}/usr/src/linux-${PV}/System.map"
-		eend ${?} || fail=1
+		eend ${?} || die "Installing the kernel failed"
+	fi
 
-		[[ ${fail} ]] && die "Installing the kernel failed"
-
-		# TODO: update /usr/src/linux symlink?
+	local symlink_target=$(readlink "${EROOT}"/usr/src/linux)
+	if [[ ${symlink_target} == linux-[0-9]* ]]; then
+		local symlink_ver=${symlink_target#linux-}
+		local symlink_pkg=${CATEGORY}/${PN}-${symlink_ver}
+		# if the current target is either being replaced, or still
+		# installed (probably depclean candidate), update the symlink
+		if has "${symlink_ver}" ${REPLACING_VERSIONS} ||
+				has_version -r "~${symlink_pkg}"
+		then
+			ebegin "Updating /usr/src/linux symlink"
+			ln -f -n -s linux-${PV} "${EROOT}"/usr/src/linux
+			eend ${?}
+		fi
 	fi
 
 	savedconfig_pkg_postinst

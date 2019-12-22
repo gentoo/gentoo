@@ -76,7 +76,7 @@ pkg_postinst() {
 		cat >> "${EROOT}"/etc/sgml/sgml-docbook.cat <<-EOF
 			CATALOG "${EPREFIX}/etc/sgml/dsssl-docbook-stylesheets.cat"
 		EOF
-		eend
+		eend ${?}
 	fi
 	sgml-catalog-r1_pkg_postinst
 }
@@ -86,7 +86,7 @@ pkg_postrm() {
 		ebegin "Removing dsssl-docbook-stylesheets.cat from /etc/sgml/sgml-docbook.cat"
 		sed -i -e '/dsssl-docbook-stylesheets/d' \
 			"${EROOT}"/etc/sgml/sgml-docbook.cat
-		eend
+		eend ${?}
 		if [[ ! -s ${EROOT}/etc/sgml/sgml-docbook.cat ]]; then
 			rm -f "${EROOT}"/etc/sgml/sgml-docbook.cat
 		fi
