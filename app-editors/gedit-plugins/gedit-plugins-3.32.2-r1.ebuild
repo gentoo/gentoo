@@ -3,7 +3,7 @@
 
 EAPI="6"
 GNOME2_LA_PUNT="yes" # plugins are dlopened
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 PYTHON_REQ_USE="xml"
 VALA_MIN_API_VERSION="0.28"
 
@@ -13,7 +13,7 @@ DESCRIPTION="Official plugins for gedit"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gedit/ShippedPlugins"
 
 LICENSE="GPL-2+"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
 IUSE_plugins="charmap git terminal vala"
@@ -31,16 +31,18 @@ RDEPEND="
 	>=dev-libs/glib-2.32:2
 	>=dev-libs/libpeas-1.7.0[gtk]
 	>=x11-libs/gtk+-3.9:3
-	>=x11-libs/gtksourceview-3.21.3:3.0
+	>=x11-libs/gtksourceview-4.0.2:4
 	python? (
 		${PYTHON_DEPS}
-		>=app-editors/gedit-3.16[introspection,python,${PYTHON_USEDEP}]
-		dev-libs/libpeas[python,${PYTHON_USEDEP}]
-		>=dev-python/dbus-python-0.82[${PYTHON_USEDEP}]
-		dev-python/pycairo[${PYTHON_USEDEP}]
-		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=app-editors/gedit-3.16[introspection,python,${PYTHON_SINGLE_USEDEP}]
+			dev-libs/libpeas[python,${PYTHON_SINGLE_USEDEP}]
+			>=dev-python/dbus-python-0.82[${PYTHON_MULTI_USEDEP}]
+			dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygobject:3[cairo,${PYTHON_MULTI_USEDEP}]
+		')
 		>=x11-libs/gtk+-3.9:3[introspection]
-		>=x11-libs/gtksourceview-3.14:3.0[introspection]
+		>=x11-libs/gtksourceview-4.0.2:4[introspection]
 		x11-libs/pango[introspection]
 		x11-libs/gdk-pixbuf:2[introspection]
 	)
@@ -50,9 +52,8 @@ RDEPEND="
 	vala? ( $(vala_depend) )
 " # vte-0.52+ for feed_child API compatibility
 DEPEND="${RDEPEND}
-	>=dev-util/intltool-0.50.2
 	dev-util/itstool
-	>=sys-devel/gettext-0.17
+	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
 
