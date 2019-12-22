@@ -1,10 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 COMMIT=5ba17f90ec173e773470bc80ea26bca9a3f093fd
-inherit cmake-utils vcs-snapshot xdg-utils
+inherit cmake-utils xdg
 
 DESCRIPTION="QScintilla-based tabbed text editor with syntax highlighting"
 HOMEPAGE="http://juffed.com/en/"
@@ -28,6 +28,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog README )
+
+S="${WORKDIR}/Mezomish-${PN}-5ba17f9"
 
 PATCHES=(
 	"${FILESDIR}/${P}-qscintilla-2.10.patch"
@@ -53,14 +55,4 @@ src_configure() {
 		-DLIB_SUFFIX=${libdir/lib/}
 	)
 	cmake-utils_src_configure
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }
