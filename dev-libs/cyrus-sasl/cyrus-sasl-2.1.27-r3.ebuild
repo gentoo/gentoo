@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit flag-o-matic multilib multilib-minimal autotools pam java-pkg-opt-2 db-use systemd eapi7-ver
+inherit flag-o-matic multilib multilib-minimal autotools pam java-pkg-opt-2 db-use systemd
 
 SASLAUTHD_CONF_VER="2.1.26"
 
@@ -210,7 +210,7 @@ multilib_src_install_all() {
 	newdoc pwcheck/README README.pwcheck
 
 	newdoc docsrc/sasl/release-notes/$(ver_cut 1-2)/index.rst release-notes
-	edos2unix ${ED%/}/usr/share/doc/${PF}/release-notes
+	edos2unix "${ED}/usr/share/doc/${PF}/release-notes"
 
 	docinto html
 	dodoc doc/html/*.html
