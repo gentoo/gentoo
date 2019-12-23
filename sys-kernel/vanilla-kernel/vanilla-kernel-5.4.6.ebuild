@@ -29,6 +29,9 @@ RDEPEND="
 		sys-kernel/installkernel-systemd-boot
 	)
 	initramfs? ( sys-kernel/dracut )"
+BDEPEND="
+	sys-devel/bc
+	virtual/libelf"
 
 pkg_pretend() {
 	mount-boot_pkg_pretend
