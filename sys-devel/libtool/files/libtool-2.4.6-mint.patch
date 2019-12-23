@@ -2,10 +2,9 @@ Patch by Alan Hourihane
 
 http://bugs.gentoo.org/show_bug.cgi?id=266984
 
-diff -ur libtool-2.2.6/configure libtool-2.2.6-mint/configure
---- libtool-2.2.6/configure	2008-09-07 17:52:50.000000000 +0000
-+++ libtool-2.2.6/configure	2009-04-21 08:49:27.000000000 +0000
-@@ -4986,6 +4986,11 @@
+--- a/configure
++++ b/configure
+@@ -5897,6 +5897,11 @@
      lt_cv_sys_max_cmd_len=8192;
      ;;
  
@@ -17,10 +16,9 @@ diff -ur libtool-2.2.6/configure libtool-2.2.6-mint/configure
    amigaos*)
      # On AmigaOS with pdksh, this test takes hours, literally.
      # So we just punt and use a minimum line length of 8192.
-diff -ur libtool-2.2.6/libltdl/configure libtool-2.2.6-mint/libltdl/configure
---- libtool-2.2.6/libltdl/configure	2008-09-07 17:53:05.000000000 +0000
-+++ libtool-2.2.6/libltdl/configure	2009-04-21 08:50:08.000000000 +0000
-@@ -4422,6 +4422,11 @@
+--- a/libltdl/configure
++++ b/libltdl/configure
+@@ -4782,6 +4782,11 @@
      lt_cv_sys_max_cmd_len=8192;
      ;;
  
@@ -32,10 +30,9 @@ diff -ur libtool-2.2.6/libltdl/configure libtool-2.2.6-mint/libltdl/configure
    amigaos*)
      # On AmigaOS with pdksh, this test takes hours, literally.
      # So we just punt and use a minimum line length of 8192.
-diff -ur libtool-2.2.6/libltdl/m4/libtool.m4 libtool-2.2.6-mint/libltdl/m4/libtool.m4
---- libtool-2.2.6/m4/libtool.m4	2008-09-05 11:54:41.000000000 +0000
-+++ libtool-2.2.6/m4/libtool.m4	2009-04-21 08:50:26.000000000 +0000
-@@ -1527,6 +1527,11 @@
+--- a/m4/libtool.m4
++++ b/m4/libtool.m4
+@@ -1708,6 +1708,11 @@
      lt_cv_sys_max_cmd_len=8192;
      ;;
  
