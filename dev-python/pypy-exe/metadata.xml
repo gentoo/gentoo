@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<use>
+		<flag name="low-memory">Build using PyPy with the engine configured towards low memory footprint.
+			This makes it possible to build PyPy using ~3.5G of RAM on amd64 and ~half of that on x86,
+			at the cost of lengthened build time.</flag>
+		<flag name="sandbox">Enable sandboxing functionality</flag>
+	</use>
+	<upstream>
+		<remote-id type="bitbucket">pypy/pypy</remote-id>
+	</upstream>
+</pkgmetadata>
