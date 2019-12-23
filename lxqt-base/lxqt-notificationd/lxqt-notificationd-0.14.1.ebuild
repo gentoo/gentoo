@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="LXQt notification daemon and library"
 HOMEPAGE="https://lxqt.org/"

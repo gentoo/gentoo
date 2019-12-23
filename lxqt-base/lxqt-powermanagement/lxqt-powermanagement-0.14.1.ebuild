@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="LXQt daemon for power management and auto-suspend"
 HOMEPAGE="https://lxqt.org/"

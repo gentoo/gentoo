@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A Pulseaudio mixer in Qt (port of pavucontrol)"
 HOMEPAGE="https://lxqt.org/"
