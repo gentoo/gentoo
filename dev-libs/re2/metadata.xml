@@ -5,6 +5,10 @@
 		<email>chromium@gentoo.org</email>
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>arfrever.fta@gmail.com</email>
+		<name>Arfrever Frehtes Taifersar Arahesis</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">google/re2</remote-id>
 	</upstream>
