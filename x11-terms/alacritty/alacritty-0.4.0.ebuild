@@ -335,6 +335,8 @@ QA_FLAGS_IGNORED="usr/bin/alacritty"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
+CARGO_INSTALL_PATH="alacritty"
+
 src_unpack() {
 	if [[ "${PV}" == *9999* ]]; then
 		git-r3_src_unpack
@@ -350,7 +352,7 @@ src_prepare() {
 }
 
 src_install() {
-	cargo_src_install --path=alacritty --offline
+	cargo_src_install --offline
 
 	newbashcomp extra/completions/alacritty.bash alacritty
 

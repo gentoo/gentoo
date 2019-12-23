@@ -99,7 +99,7 @@ src_compile() {
 }
 
 src_install() {
-	cargo_src_install --path=. $(usex pcre "--features pcre2" "")
+	cargo_src_install $(usex pcre "--features pcre2" "")
 
 	# hack to find/install generated files
 	# stamp file can be present in multiple dirs if we build additional features
