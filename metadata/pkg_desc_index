@@ -14946,7 +14946,7 @@ net-libs/libident 0.32-r1: A small library to interface to the Ident protocol se
 net-libs/libiio 0.15-r1 9999: Library for interfacing with IIO devices
 net-libs/libircclient 1.8 1.10: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.18.0 9999: iscsi client library and utilities
-net-libs/libisds 0.10.6 0.10.7 0.10.8 9999: Client library for accessing ISDS Soap services
+net-libs/libisds 0.10.6 0.10.7 0.10.8 0.11 9999: Client library for accessing ISDS Soap services
 net-libs/libktorrent 2.1-r2 2.1.1: BitTorrent library based on KDE Frameworks
 net-libs/libkvkontakte 5.0.0-r1: Library for accessing the features of social networking site vkontakte.ru
 net-libs/liblockfile 1.09 1.16: Implements functions designed to lock the standard mailboxes
