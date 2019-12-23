@@ -8,7 +8,7 @@ inherit flag-o-matic
 
 CFLAGS="-a -b -c=1 --param l1-cache-size=32"
 CXXFLAGS="-x -y -z=2"
-LDFLAGS="-l -m -n=3"
+LDFLAGS="-l -m -n=3 -Wl,--remove-me"
 ftend() {
 	local ret=$?
 	local msg="Failed; flags are:"
