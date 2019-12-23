@@ -7403,7 +7403,7 @@ dev-python/PySocks 1.6.7 1.6.8: SOCKS client module
 dev-python/PyUtilib 5.6.5 5.7.2: A collection of Python utilities
 dev-python/PyZilla 0.1.0-r1: Python wrapper for the BugZilla XML-RPC API
 dev-python/PythonQt 3.2 9999: A dynamic Python binding for the Qt framework
-dev-python/QtPy 1.4.2: Abstraction layer for PyQt5/PySide
+dev-python/QtPy 1.4.2 1.9.0: Abstraction layer for PyQt5/PySide
 dev-python/ReParser 1.4.3: Simple regex-based lexer/parser for inline markup
 dev-python/RecSQL 0.7.11: Simple SQL analysis of python records
 dev-python/Rx 1.6.1: Reactive Extensions for Python
@@ -18469,7 +18469,7 @@ x11-base/xorg-drivers 1.20-r1 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2019.2 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.5 1.20.6 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 340.107-r1 390.132-r1 430.64-r1 435.21-r1 440.36-r1 440.44-r1: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.107-r1 390.132-r1 430.64-r1 435.21-r1 440.44-r1: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
