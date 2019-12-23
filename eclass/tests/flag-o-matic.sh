@@ -53,7 +53,7 @@ done <<<"
 	1	-n
 "
 
-tbegin "strip-unsupported-flags"
+tbegin "strip-unsupported-flags for -z=2"
 strip-unsupported-flags
 [[ ${CFLAGS} == "--param l1-cache-size=32" ]] && [[ ${CXXFLAGS} == "-z=2" ]] && [[ ${LDFLAGS} == "" ]]
 ftend
