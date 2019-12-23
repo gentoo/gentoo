@@ -93,7 +93,7 @@ src_unpack() {
 		if use test; then
 			EGIT_REPO_URI="git://git.gromacs.org/regressiontests.git" \
 			EGIT_BRANCH="${EGIT_BRANCH}" \
-			EGIT_CHECKOUT_DIR="${WORKDIR}/regressiontests"\
+			EGIT_CHECKOUT_DIR="${WORKDIR}/regressiontests" \
 				git-r3_src_unpack
 		fi
 	fi
