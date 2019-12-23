@@ -7,6 +7,8 @@ CMAKE_MAKEFILE_GENERATOR="ninja"
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 
+DISTUTILS_SINGLE_IMPL=1
+
 inherit bash-completion-r1 cmake-utils cuda distutils-r1 eutils multilib readme.gentoo-r1 toolchain-funcs xdg-utils
 
 if [[ $PV = *9999* ]]; then
@@ -50,6 +52,7 @@ CDEPEND="
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
 	${PYTHON_DEPS}
+	!sci-chemistry/gmxapi
 	"
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
@@ -79,12 +82,16 @@ if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
 
-PATCHES=( "${FILESDIR}/${P}-pytest.patch" )
+PATCHES=( "${FILESDIR}/${PN}-2020_beta1-pytest.patch" )
 
 pkg_pretend() {
 	[[ $(gcc-version) == "4.1" ]] && die "gcc 4.1 is not supported by gromacs"
 	use openmp && ! tc-has-openmp && \
 		die "Please switch to an openmp compatible compiler"
+}
+
+pkg_setup() {
+	python-single-r1_pkg_setup
 }
 
 src_unpack() {
@@ -229,6 +236,7 @@ src_configure() {
 			"$(use test && echo -DREGRESSIONTEST_PATH="${WORKDIR}/${P}_${x}/tests")"
 			-DGMX_BINARY_SUFFIX="${suffix}"
 			-DGMX_LIBS_SUFFIX="${suffix}"
+			-DGMX_PYTHON_PACKAGE=$(usex python)
 			)
 		BUILD_DIR="${WORKDIR}/${P}_${x}" cmake-utils_src_configure
 		[[ ${CHOST} != *-darwin* ]] || \
@@ -253,11 +261,6 @@ src_configure() {
 		[[ ${CHOST} != *-darwin* ]] || \
 		  sed -i '/SET(CMAKE_INSTALL_NAME_DIR/s/^/#/' "${WORKDIR}/${P}_${x}_mpi/gentoo_rules.cmake" || die
 	done
-	if use python; then
-		cd python_packaging
-		distutils-r1_src_configure
-		cd ..
-	fi
 }
 
 src_compile() {
@@ -265,6 +268,12 @@ src_compile() {
 		einfo "Compiling for ${x} precision"
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
 			cmake-utils_src_compile
+		if use python; then
+			BUILD_DIR="${WORKDIR}/${P}_${x}"\
+				cmake-utils_src_compile	python_packaging/all
+			BUILD_DIR="${WORKDIR}/${P}" \
+				distutils-r1_src_compile
+		fi
 		# not 100% necessary for rel ebuilds as available from website
 		if use doc; then
 			BUILD_DIR="${WORKDIR}/${P}_${x}"\
@@ -275,11 +284,6 @@ src_compile() {
 		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi"\
 			cmake-utils_src_compile
 	done
-	if use python; then
-		cd python_packaging
-		distutils-r1_src_compile
-		cd ..
-	fi
 }
 
 src_test() {
@@ -287,17 +291,16 @@ src_test() {
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
 			cmake-utils_src_make check
 	done
-	if use python; then
-		cd python_packaging
-		distutils-r1_src_test
-		cd ..
-	fi
 }
 
 src_install() {
 	for x in ${GMX_DIRS}; do
 		BUILD_DIR="${WORKDIR}/${P}_${x}" \
-			cmake-utils_src_install ${GMX_PYTHON_INSTALL}
+			cmake-utils_src_install
+		if use python; then
+			BUILD_DIR="${WORKDIR}/${P}_${x}" \
+				cmake-utils_src_install	python_packaging/install
+		fi
 		if use doc; then
 			newdoc "${WORKDIR}/${P}_${x}"/docs/manual/gromacs.pdf "${PN}-manual-${PV}.pdf"
 		fi
@@ -309,11 +312,6 @@ src_install() {
 	if use tng; then
 		insinto /usr/include/tng
 		doins src/external/tng_io/include/tng/*h
-	fi
-	if use python; then
-		cd python_packaging
-		distutils-r1_src_install
-		cd ..
 	fi
 	# drop unneeded stuff
 	rm "${ED}"/usr/bin/GMXRC* || die
