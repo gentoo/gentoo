@@ -20,6 +20,8 @@ LICENSE="GPL-2 GPL-2+ GPL-3 LGPL-2 LGPL-2+ LGPL-2.1+ WTFPL-2"
 SLOT="0"
 IUSE="+monitor +touchpad"
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.14-build.patch" )
+
 BDEPEND="
 	dev-qt/linguist-tools:5
 	>=dev-util/lxqt-build-tools-0.6.0
