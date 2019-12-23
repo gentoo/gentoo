@@ -1970,7 +1970,7 @@ app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common u
 app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.17 1.22: A program (and preload library) to fake system date
 app-misc/dateutils 0.4.6: command line date and time utilities
-app-misc/datovka 4.11.1 4.13.1: GUI to access the Czech data box e-government system
+app-misc/datovka 4.11.1 4.13.1 4.14.1: GUI to access the Czech data box e-government system
 app-misc/ddate 0.2.2: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.2_p20140105-r2: DDCControl allows control of monitor parameters via DDC
 app-misc/ddccontrol-db 20061014_p20121105: DDCControl monitor database
