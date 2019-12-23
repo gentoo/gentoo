@@ -11,10 +11,10 @@ in this context refers to the binary itself, not to a structured
 hierarchy. Bundles have the .bundle extension; for example,
 MyBundle.bundle.)
 
---- libltdl/m4/libtool.m4
-+++ libltdl/m4/libtool.m4
-@@ -2271,7 +2271,7 @@
-   soname_spec='${libname}${release}${major}$shared_ext'
+--- a/m4/libtool.m4
++++ b/m4/libtool.m4
+@@ -2645,7 +2645,7 @@
+   soname_spec='$libname$release$major$shared_ext'
    shlibpath_overrides_runpath=yes
    shlibpath_var=DYLD_LIBRARY_PATH
 -  shrext_cmds='`test .$module = .yes && echo .so || echo .dylib`'
