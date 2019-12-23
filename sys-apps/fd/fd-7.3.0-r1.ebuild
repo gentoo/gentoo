@@ -86,7 +86,7 @@ src_compile() {
 }
 
 src_install() {
-	cargo_src_install --path=.
+	cargo_src_install
 
 	newbashcomp "${T}"/shell_completions/fd.bash fd
 	insinto /usr/share/zsh/site-functions

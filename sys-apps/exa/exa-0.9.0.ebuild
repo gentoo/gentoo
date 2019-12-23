@@ -99,7 +99,7 @@ src_compile() {
 }
 
 src_install() {
-	cargo_src_install --path=./ $(usex git "" --no-default-features)
+	cargo_src_install $(usex git "" --no-default-features)
 
 	newbashcomp contrib/completions.bash exa
 

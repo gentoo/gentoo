@@ -69,6 +69,6 @@ KEYWORDS="~amd64 ~x86"
 QA_FLAGS_IGNORED="/usr/bin/cargo-license"
 
 src_install() {
-	cargo_src_install --path=.
+	cargo_src_install
 	einstalldocs
 }
