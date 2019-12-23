@@ -19,10 +19,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-makeguids_fix_host_compile.patch"
-)
-
 src_prepare() {
 	default
 	sed -i -e 's/-Werror //' gcc.specs || die
