@@ -18,7 +18,11 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-SRC_URI="https://github.com/tensorflow/${MY_PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+bazel_external_uris="
+	https://github.com/bazelbuild/rules_cc/archive/0d5f3f2768c6ca2faca0079a997a97ce22997a0c.zip -> bazelbuild-rules_cc-0d5f3f2768c6ca2faca0079a997a97ce22997a0c.zip"
+
+SRC_URI="https://github.com/tensorflow/${MY_PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
+	${bazel_external_uris}"
 
 RDEPEND="sci-libs/tensorflow[python,${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
@@ -28,6 +32,11 @@ BDEPEND="
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( CONTRIBUTING.md README.md )
+
+src_unpack() {
+	unpack "${P}.tar.gz"
+	bazel_load_distfiles "${bazel_external_uris}"
+}
 
 src_prepare() {
 	bazel_setup_bazelrc
