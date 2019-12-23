@@ -17,7 +17,7 @@
 	</longdescription>
 	<upstream>
 		<doc>https://gitlab.com/automx/automx2/blob/master/doc/automx2.adoc</doc>
-		<maintainer type="person">
+		<maintainer>
 			<email>automx2@seichter.de</email>
 			<name>Ralph Seichter</name>
 		</maintainer>
