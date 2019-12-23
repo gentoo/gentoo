@@ -8,13 +8,12 @@ inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs.git"
-	EGIT_BRANCH="emacs-26"
+	EGIT_BRANCH="emacs-27"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
 	S="${EGIT_CHECKOUT_DIR}"
 else
-	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/emacs-${PV}.tar.xz
-		mirror://gnu-alpha/emacs/pretest/emacs-${PV}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
+		mirror://gnu-alpha/emacs/pretest/${P}.tar.xz"
 	# FULL_VERSION keeps the full version number, which is needed in
 	# order to determine some path information correctly for copy/move
 	# operations later on
@@ -27,9 +26,10 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-SLOT="26"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk gtk2 gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
+SLOT="27-vcs"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gtk2 gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
+RESTRICT="test"
 
 RDEPEND="sys-libs/ncurses:0=
 	>=app-eselect/eselect-emacs-1.16
@@ -38,8 +38,10 @@ RDEPEND="sys-libs/ncurses:0=
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
 	games? ( acct-group/gamestat )
+	gmp? ( dev-libs/gmp:0= )
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
+	json? ( dev-libs/jansson )
 	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
@@ -74,6 +76,7 @@ RDEPEND="sys-libs/ncurses:0=
 			x11-libs/libXft
 			x11-libs/libXrender
 			cairo? ( >=x11-libs/cairo-1.12.18 )
+			harfbuzz? ( media-libs/harfbuzz:0= )
 			m17n-lib? (
 				>=dev-libs/libotf-0.9.4
 				>=dev-libs/m17n-lib-1.5.1
@@ -114,16 +117,15 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 
-BDEPEND="virtual/pkgconfig
+BDEPEND="sys-apps/texinfo
+	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 
-if [[ ${PV##*.} = 9999 ]]; then
-	BDEPEND="${BDEPEND}
-	sys-apps/texinfo"
-fi
+RDEPEND="${RDEPEND}
+	!app-editors/emacs-vcs:27"
 
-EMACS_SUFFIX="${PN/emacs/emacs-${SLOT}}"
-SITEFILE="20${PN}-${SLOT}-gentoo.el"
+EMACS_SUFFIX="emacs-${SLOT}"
+SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 
 src_prepare() {
 	if [[ ${PV##*.} = 9999 ]]; then
@@ -183,6 +185,7 @@ src_configure() {
 		if use xft; then
 			myconf+=" --with-xft"
 			myconf+=" $(use_with cairo)"
+			myconf+=" $(use_with harfbuzz)"
 			myconf+=" $(use_with m17n-lib libotf)"
 			myconf+=" $(use_with m17n-lib m17n-flt)"
 		else
@@ -255,12 +258,15 @@ src_configure() {
 		--without-compress-install \
 		--without-hesiod \
 		--without-pop \
+		--with-dumping=pdumper \
 		--with-file-notification=$(usev inotify || usev gfile || echo no) \
 		$(use_enable acl) \
 		$(use_with dbus) \
 		$(use_with dynamic-loading modules) \
 		$(use_with games gameuser ":gamestat") \
+		$(use_with gmp libgmp) \
 		$(use_with gpm) \
+		$(use_with json) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with lcms lcms2) \
 		$(use_with libxml2 xml2) \
@@ -274,10 +280,10 @@ src_configure() {
 		${myconf}
 }
 
-src_compile() {
-	# Disable sandbox when dumping. For the unbelievers, see bug #131505
-	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
-}
+#src_compile() {
+#	# Disable sandbox when dumping. For the unbelievers, see bug #131505
+#	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
+#}
 
 src_install () {
 	emake DESTDIR="${D}" NO_BIN_LINK=t install
@@ -332,7 +338,7 @@ src_install () {
 
 	sed -e "${cdir:+#}/^Y/d" -e "s/^[XY]//" >"${T}/${SITEFILE}" <<-EOF || die
 	X
-	;;; ${PN}-${SLOT} site-lisp configuration
+	;;; ${EMACS_SUFFIX} site-lisp configuration
 	X
 	(when (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
 	Y  (setq find-function-C-source-directory
@@ -354,9 +360,9 @@ src_install () {
 
 	if use aqua; then
 		dodir /Applications/Gentoo
-		rm -rf "${ED}"/Applications/Gentoo/Emacs${EMACS_SUFFIX#emacs}.app
+		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app
 		mv nextstep/Emacs.app \
-			"${ED}"/Applications/Gentoo/Emacs${EMACS_SUFFIX#emacs}.app || die
+			"${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 	fi
 
 	DOC_CONTENTS="You can set the version to be started by /usr/bin/emacs
@@ -371,7 +377,7 @@ src_install () {
 		machine would satisfy basic Emacs requirements under X11.
 		See also https://wiki.gentoo.org/wiki/Xft_support_for_GNU_Emacs
 		for how to enable anti-aliased fonts."
-	use aqua && DOC_CONTENTS+="\\n\\nEmacs${EMACS_SUFFIX#emacs}.app is in
+	use aqua && DOC_CONTENTS+="\\n\\n${EMACS_SUFFIX^}.app is in
 		\"${EPREFIX}/Applications/Gentoo\". You may want to copy or symlink
 		it into /Applications by yourself."
 	readme.gentoo_create_doc
