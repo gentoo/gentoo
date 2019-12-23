@@ -10107,7 +10107,7 @@ dev-ruby/rails-html-sanitizer 1.2.0 1.3.0: Sanitize HTML fragments in Rails appl
 dev-ruby/railties 4.2.11.1 5.2.3 5.2.4 5.2.4.1 6.0.0 6.0.1 6.0.2 6.0.2.1: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4-r1 2.2.2 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 12.3.3 13.0.0 13.0.1: Make-like scripting in Ruby
-dev-ruby/rake-compiler 1.0.7 1.0.8: Provide a standard and simplified way to build and package Ruby extensions
+dev-ruby/rake-compiler 1.0.7 1.0.8 1.0.9: Provide a standard and simplified way to build and package Ruby extensions
 dev-ruby/rake-remote_task 2.4.3: Extends Rake with remote task goodness
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
 dev-ruby/rash_alt 0.4.7 0.4.8: Rash alt version for Hashie's own Rash
