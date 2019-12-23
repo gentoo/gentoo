@@ -16123,7 +16123,7 @@ sci-chemistry/gelemental 1.2.0-r1 2.0.0: Periodic table viewer with detailed inf
 sci-chemistry/ghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
-sci-chemistry/gromacs 2018.7 2018.8 2018.9999 2019.2 2019.3 2019.4 2019.9999 2020_beta1 9999: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 2018.7 2018.8 2018.9999 2019.2 2019.3 2019.4 2019.5 2019.9999 2020_beta1 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
 sci-chemistry/ksdssp 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
@@ -17787,7 +17787,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p201909
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4.164_p176 4.9.115_p93 4.9.146_p125 4.14.71_p44 4.14.78_p47 4.14.87_p49 4.16.18_p12 4.18.16_p9 4.19.5_p4 4.19.10_p8: Full Linux 4.19 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
-sys-kernel/vanilla-kernel 5.4.2 5.4.3 5.4.5 5.4.6: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.6-r1: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 3.16.80 4.4.207 4.9.207 4.14.160 4.19.91 5.4.6: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r4 4570.71.2-r4 4903.241.1-r4: System headers provided by XNU-4903.241.1, macOS 10.14.3
