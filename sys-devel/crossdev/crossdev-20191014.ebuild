@@ -13,7 +13,7 @@ else
 fi
 
 DESCRIPTION="Gentoo Cross-toolchain generator"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Crossdev"
 
 LICENSE="GPL-2"
 SLOT="0"
