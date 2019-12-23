@@ -32,7 +32,3 @@ src_unpack() {
 		cargo_live_src_unpack
 	fi
 }
-
-src_install() {
-	cargo_src_install --path .
-}

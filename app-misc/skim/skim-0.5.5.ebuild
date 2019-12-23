@@ -57,7 +57,7 @@ RDEPEND="
 QA_FLAGS_IGNORED="usr/bin/sk"
 
 src_install() {
-	cargo_src_install --path=.
+	cargo_src_install
 	dodoc CHANGELOG.md README.md
 
 	use tmux && dobin bin/sk-tmux

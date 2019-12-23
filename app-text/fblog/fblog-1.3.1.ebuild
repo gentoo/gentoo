@@ -59,6 +59,6 @@ DOCS=( README.org sample.json.log )
 QA_FLAGS_IGNORED="/usr/bin/fblog"
 
 src_install() {
-	cargo_src_install --path=.
+	cargo_src_install
 	einstalldocs
 }

@@ -67,7 +67,7 @@ RESTRICT="test"
 QA_FLAGS_IGNORED="/usr/bin/nitrocli"
 
 src_install() {
-	cargo_src_install --path=.
+	cargo_src_install
 
 	einstalldocs
 	doman "doc/nitrocli.1"

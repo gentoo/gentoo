@@ -169,7 +169,7 @@ DOCS=( README.md doc/alternatives.md )
 QA_FLAGS_IGNORED="/usr/bin/bat"
 
 src_install() {
-	cargo_src_install --path=.
+	cargo_src_install
 	doman doc/bat.1
 	einstalldocs
 	insinto /usr/share/fish/vendor_completions.d/
