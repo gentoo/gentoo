@@ -22,7 +22,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~sparc x86"
 IUSE="debug test"
 RESTRICT="!test? ( test )"
 
