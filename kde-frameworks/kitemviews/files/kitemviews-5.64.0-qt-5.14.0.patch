@@ -1,0 +1,23 @@
+From 69b9ac0575d905ded79ed013c6e2374d9ebeb841 Mon Sep 17 00:00:00 2001
+From: Roman Gilg <subdiff@gmail.com>
+Date: Fri, 22 Nov 2019 17:48:20 +0100
+Subject: Add missing include for Qt 5.14 build
+
+---
+ src/kwidgetitemdelegatepool_p.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/kwidgetitemdelegatepool_p.h b/src/kwidgetitemdelegatepool_p.h
+index 206ee0e..9d0147b 100644
+--- a/src/kwidgetitemdelegatepool_p.h
++++ b/src/kwidgetitemdelegatepool_p.h
+@@ -24,6 +24,7 @@
+ 
+ #include <QHash>
+ #include <QList>
++#include <QPersistentModelIndex>
+ 
+ class QWidget;
+ class QStyleOptionViewItem;
+-- 
+cgit v1.1

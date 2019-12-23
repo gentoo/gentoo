@@ -22,3 +22,5 @@ DEPEND="
 	>=dev-qt/qtwidgets-${QTMIN}:5
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.14.0.patch" )
