@@ -7,7 +7,7 @@ http://bugs.gentoo.org/109105
 
 --- a/m4/libtool.m4
 +++ b/m4/libtool.m4
-@@ -1375,7 +1375,14 @@
+@@ -2666,7 +2666,14 @@
      *) objformat=elf ;;
      esac
    fi
@@ -22,9 +22,9 @@ http://bugs.gentoo.org/109105
 +
    case $version_type in
      freebsd-elf*)
-       library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext} $libname${shared_ext}'
-@@ -1386,6 +1392,12 @@
-       library_names_spec='${libname}${release}${shared_ext}$versuffix $libname${shared_ext}$versuffix'
+       library_names_spec='$libname$release$shared_ext$versuffix $libname$release$shared_ext$major $libname$shared_ext'
+@@ -2678,6 +2685,12 @@
+       library_names_spec='$libname$release$shared_ext$versuffix $libname$shared_ext$versuffix'
        need_version=yes
        ;;
 +    linux)
