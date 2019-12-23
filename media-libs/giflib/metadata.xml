@@ -5,9 +5,6 @@
     <email>graphics@gentoo.org</email>
     <name>Gentoo Graphics Project</name>
   </maintainer>
-  <use>
-    <flag name="rle">Build converters for RLE format (utah raster toolkit)</flag>
-  </use>
   <upstream>
     <remote-id type="sourceforge">giflib</remote-id>
   </upstream>
