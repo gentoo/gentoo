@@ -1442,7 +1442,7 @@ app-emacs/teco 7-r2: TECO interpreter for GNU Emacs
 app-emacs/template 3.3b: Use templates, decorate comments, auto-update buffers
 app-emacs/tempo-snippets 0.1.5: Visual insertion of tempo templates
 app-emacs/thinks 1.12: Insert text in a think bubble
-app-emacs/treepy 0.1.1: Generic tree traversing tools for Emacs Lisp
+app-emacs/treepy 0.1.1 0.1.1-r1: Generic tree traversing tools for Emacs Lisp
 app-emacs/tuareg-mode 2.2.0: An Objective Caml/Camllight mode for Emacs
 app-emacs/twittering-mode 2.0.0 3.0.0 9999: Emacs major mode for Twitter
 app-emacs/typing 1.1.4: The Typing of Emacs -- an Elisp parody of The Typing of the Dead for Dreamcast
