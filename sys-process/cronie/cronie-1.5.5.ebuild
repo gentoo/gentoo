@@ -17,6 +17,7 @@ DEPEND="
 	pam? ( sys-libs/pam )
 	anacron? ( !sys-process/anacron
 		elibc_musl? ( sys-libs/obstack-standalone )
+		elibc_uclibc? ( sys-libs/obstack-standalone )
 	)
 "
 RDEPEND="${DEPEND}
@@ -54,6 +55,7 @@ src_configure() {
 
 	if use anacron; then
 		use elibc_musl && append-cflags "-lobstack"
+		use elibc_uclibc && append-cflags "-lobstack"
 	fi
 	SPOOL_DIR="/var/spool/cron/crontabs" \
 	ANACRON_SPOOL_DIR="/var/spool/anacron" \
