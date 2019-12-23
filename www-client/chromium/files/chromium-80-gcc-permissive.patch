@@ -1,0 +1,33 @@
+In file included from ../../media/base/media_log_properties.h:13,
+                 from ../../media/base/media_log.h:23,
+                 from ../../media/filters/frame_processor.h:15,
+                 from ../../media/filters/frame_processor.cc:5:
+../../media/base/media_log_properties_helper.h:86:8: error: extra qualification not allowed [-fpermissive]
+   86 | struct internal::MediaLogPropertyTypeConverter<media::AudioDecoderConfig> {
+      |        ^~~~~~~~
+../../media/base/media_log_properties_helper.h:86:75: error: explicit specialization of non-template 'media::internal::<unnamed struct>'
+   86 | struct internal::MediaLogPropertyTypeConverter<media::AudioDecoderConfig> {
+      |                                                                           ^
+
+diff --git a/media/base/media_log_properties_helper.h b/media/base/media_log_properties_helper.h
+index 95ff70a..549b003 100644
+--- a/media/base/media_log_properties_helper.h
++++ b/media/base/media_log_properties_helper.h
+@@ -83,7 +83,7 @@ struct MediaLogPropertyTypeConverter<std::vector<T>> {
+ 
+ // Specializer for sending AudioDecoderConfigs to the media tab in devtools.
+ template <>
+-struct internal::MediaLogPropertyTypeConverter<media::AudioDecoderConfig> {
++struct MediaLogPropertyTypeConverter<media::AudioDecoderConfig> {
+   static base::Value Convert(const AudioDecoderConfig& value) {
+     base::Value result(base::Value::Type::DICTIONARY);
+     result.SetStringKey("codec", GetCodecName(value.codec()));
+@@ -114,7 +114,7 @@ struct internal::MediaLogPropertyTypeConverter<media::AudioDecoderConfig> {
+ 
+ // Specializer for sending VideoDecoderConfigs to the media tab in devtools.
+ template <>
+-struct internal::MediaLogPropertyTypeConverter<VideoDecoderConfig> {
++struct MediaLogPropertyTypeConverter<VideoDecoderConfig> {
+   static base::Value Convert(const VideoDecoderConfig& value) {
+     base::Value result(base::Value::Type::DICTIONARY);
+     result.SetStringKey("codec", GetCodecName(value.codec()));

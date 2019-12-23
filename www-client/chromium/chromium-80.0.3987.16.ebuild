@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	dev-libs/libxslt:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.26:=
-	>=dev-libs/re2-0.2016.11.01:=
+	>=dev-libs/re2-0.2019.08.01:=
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3.12:= )
 	>=media-libs/alsa-lib-1.0.19:=
 	media-libs/fontconfig:=
@@ -51,7 +51,7 @@ COMMON_DEPEND="
 			>=net-fs/samba-4.5.10-r1[-debug(-)]
 		)
 		!=net-fs/samba-4.5.12-r0
-		media-libs/opus:=
+		>=media-libs/opus-1.3.1:=
 	)
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
@@ -148,9 +148,11 @@ PATCHES=(
 	"${FILESDIR}/chromium-79-gcc-alignas.patch"
 	"${FILESDIR}/chromium-80-unbundle-libxml.patch"
 	"${FILESDIR}/chromium-80-include.patch"
-	"${FILESDIR}/chromium-80-gcc-noexcept.patch"
 	"${FILESDIR}/chromium-80-gcc-quiche.patch"
+	"${FILESDIR}/chromium-80-gcc-permissive.patch"
 	"${FILESDIR}/chromium-80-gcc-blink.patch"
+	"${FILESDIR}/chromium-80-gcc-abstract.patch"
+	"${FILESDIR}/chromium-80-gcc-incomplete-type.patch"
 )
 
 pre_build_checks() {
@@ -275,8 +277,8 @@ src_prepare() {
 		third_party/dom_distiller_js
 		third_party/emoji-segmenter
 		third_party/flatbuffers
-		third_party/flot
 		third_party/freetype
+		third_party/libgifcodec
 		third_party/glslang
 		third_party/google_input_tools
 		third_party/google_input_tools/third_party/closure_library
@@ -344,7 +346,6 @@ src_prepare() {
 		third_party/skia
 		third_party/skia/include/third_party/skcms
 		third_party/skia/include/third_party/vulkan
-		third_party/skia/third_party/gif
 		third_party/skia/third_party/skcms
 		third_party/skia/third_party/vulkan
 		third_party/smhasher
