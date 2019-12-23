@@ -77,6 +77,8 @@ src_configure() {
 	sed -i -e '/MODULE_COMPRESS/d' .config || die
 	# shove our theft under the carpet!
 	sed -i -e '/HOSTNAME/s:archlinux:gentoo:' .config || die
+	# hey, we do support x32
+	sed -i -e '/CONFIG_X86_X32/s:.*:CONFIG_X86_X32=y:' .config || die
 	restore_config .config
 
 	mkdir -p "${WORKDIR}"/modprep || die
