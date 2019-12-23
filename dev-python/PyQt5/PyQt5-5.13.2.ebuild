@@ -154,7 +154,13 @@ src_configure() {
 		"${myconf[@]}" || die
 
 		# Fix parallel install failure
-		sed -i -e '/INSTALLS += distinfo/i distinfo.depends = install_subtargets' ${PN}.pro || die
+		if python_is_python3; then
+			sed -i -e '/INSTALLS += distinfo/i distinfo.depends = install_subtargets install_pep484_stubs install_qscintilla_api' \
+				${PN}.pro || die
+		else
+			sed -i -e '/INSTALLS += distinfo/i distinfo.depends = install_subtargets install_qscintilla_api' \
+				${PN}.pro || die
+		fi
 
 		# Run eqmake to respect toolchain and build flags
 		eqmake5 -recursive ${PN}.pro
