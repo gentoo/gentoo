@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND=""
 RDEPEND="app-i18n/opencc:0=
-	dev-cpp/glog:0=
+	>=dev-cpp/glog-0.3.5:0=
 	dev-cpp/yaml-cpp:0=
 	dev-libs/boost:0=[nls,threads]
 	dev-libs/leveldb:0=
@@ -38,6 +38,10 @@ DEPEND="${RDEPEND}
 	dev-libs/utfcpp
 	x11-base/xorg-proto
 	test? ( dev-cpp/gtest )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-log_files_mode.patch"
+)
 
 DOCS=(CHANGELOG.md README.md)
 
