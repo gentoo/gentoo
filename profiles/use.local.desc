@@ -2532,7 +2532,6 @@ dev-python/PyQt5:sql - Build bindings for the QtSql module
 dev-python/PyQt5:svg - Build bindings for the QtSvg module
 dev-python/PyQt5:testlib - Build bindings for the QtTest module
 dev-python/PyQt5:webchannel - Build bindings for the QtWebChannel module
-dev-python/PyQt5:webengine - Build bindings for the QtWebEngine module
 dev-python/PyQt5:webkit - Build bindings for the QtWebKit module
 dev-python/PyQt5:websockets - Build bindings for the QtWebSockets module
 dev-python/PyQt5:widgets - Build bindings for the QtWidgets module
