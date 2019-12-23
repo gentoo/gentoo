@@ -4646,7 +4646,6 @@ media-sound/cmus:systemd - Enable MPRIS support via sys-apps/systemd
 media-sound/cmus:tremor - Use libivorbis from media-libs/tremor instead of media-libs/libvorbis
 media-sound/csound:beats - Build the beats score frontend
 media-sound/csound:chua - Build the chua opcodes
-media-sound/csound:csoundac - Build the CsoundAC extension module
 media-sound/csound:double-precision - Use double-precision floating point for audio samples
 media-sound/csound:dssi - Build the DSSI opcodes
 media-sound/csound:fluidsynth - Build the fluidsynth opcodes
@@ -4655,9 +4654,7 @@ media-sound/csound:keyboard - Build Virtual MIDI keyboard
 media-sound/csound:linear - Build the linear algebra Opcodes
 media-sound/csound:portmidi - Build the PortMIDI I/O module
 media-sound/csound:samples - Install the HRTF datafiles for use with hrtfmove, hrtfmove2, hrtfstat, hrtfearly, and hrtfreverb
-media-sound/csound:score - Build the alternative score parser
 media-sound/csound:stk - Build the stk opcodes
-media-sound/csound:tcl - Build the tcl interface and clients
 media-sound/csound:utils - Build stand-alone executables for utilities that can also be used via `csound -U`
 media-sound/csound:websocket - Build the websocket opcode
 media-sound/darkice:aacplus - AAC+ encoding via media-libs/libaacplus

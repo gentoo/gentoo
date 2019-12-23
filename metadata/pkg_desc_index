@@ -83,6 +83,7 @@ acct-group/spire 0: System group: spire
 acct-group/stdiscosrv 0: Group for the Syncthing discovery server
 acct-group/steamcmd 0: A group for the SteamCMD server
 acct-group/strelaysrv 0: Group for the Syncthing relay server
+acct-group/stubby 0: Stubby program group (from net-dns/getdns)
 acct-group/stunnel 0: group for stunnel
 acct-group/suricata 0: Group for Suricata IDS
 acct-group/syncthing 0: Group for the system-wide net-p2p/syncthing server
@@ -186,6 +187,7 @@ acct-user/spire 0: user for spiffe runtime environment
 acct-user/stdiscosrv 0: User for the Syncthing discovery server
 acct-user/steamcmd 0: A user for the SteamCMD server
 acct-user/strelaysrv 0: User for the Syncthing relay server
+acct-user/stubby 0: Stubby program user (from net-dns/getdns)
 acct-user/stunnel 0: user for stunnel
 acct-user/suricata 0: User for Suricata IDS
 acct-user/syncthing 0: User for the system-wide net-p2p/syncthing server
@@ -4787,7 +4789,7 @@ dev-libs/cudnn 6.0 7.0.5-r1 7.1.4 7.4.1.5 7.4.2.24 7.5.0.56 7.6.0.64 7.6.1.34 7.
 dev-libs/cvector 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p13: REINER SCT cyberJack USB chipcard reader user space driver
-dev-libs/cyrus-sasl 2.1.27-r2: The Cyrus SASL (Simple Authentication and Security Layer)
+dev-libs/cyrus-sasl 2.1.27-r2 2.1.27-r3: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32 0.32h_pre20181117064816 9999: Darts-clone (Double-ARray Trie System) C++ library
 dev-libs/dbus-c++ 0.9.0-r3: Provides a C++ API for D-BUS
@@ -11913,17 +11915,17 @@ gnome-extra/evolution-data-server 3.32.4 3.32.5: Evolution groupware backend
 gnome-extra/evolution-ews 3.32.2: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-boxes 3.30.3: Simple GNOME 3 application to access remote or virtual systems
-gnome-extra/gnome-calculator 3.30.1 3.32.2: A calculator application for GNOME
-gnome-extra/gnome-calendar 3.30.1 3.32.2: Manage your online calendars with simple and modern interface
-gnome-extra/gnome-characters 3.30.0 3.32.1: Unicode character map viewer and library
-gnome-extra/gnome-clocks 3.30.1 3.32.0: Clocks application for GNOME
-gnome-extra/gnome-color-manager 3.30.0-r1 3.32.0: GNOME color profile tools
+gnome-extra/gnome-calculator 3.32.2: A calculator application for GNOME
+gnome-extra/gnome-calendar 3.32.2: Manage your online calendars with simple and modern interface
+gnome-extra/gnome-characters 3.32.1: Unicode character map viewer and library
+gnome-extra/gnome-clocks 3.32.0: Clocks application for GNOME
+gnome-extra/gnome-color-manager 3.32.0: GNOME color profile tools
 gnome-extra/gnome-commander 1.10.0 1.10.1: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.30.2 3.32.1: GNOME contact management application
-gnome-extra/gnome-directory-thumbnailer 0.1.10 0.1.11: Thumbnail generator for directories
+gnome-extra/gnome-directory-thumbnailer 0.1.11: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.30.1: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
-gnome-extra/gnome-getting-started-docs 3.30.0 3.32.2: Help a new user get started in GNOME
+gnome-extra/gnome-getting-started-docs 3.32.2: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.30.0: Log messages and event viewer
 gnome-extra/gnome-packagekit 3.24.0 3.30.0: PackageKit client for the GNOME desktop
@@ -11933,21 +11935,21 @@ gnome-extra/gnome-shell-extension-applications-overview-tooltip 6: Show tooltip 
 gnome-extra/gnome-shell-extension-dash-to-panel 26: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 19.01.4: A GNOME Shell extension for providing desktop icons
 gnome-extra/gnome-shell-extension-gsconnect 28-r1: KDE Connect implementation for Gnome Shell
-gnome-extra/gnome-shell-extensions 3.30.1 3.32.1: JavaScript extensions for GNOME Shell
+gnome-extra/gnome-shell-extensions 3.32.1: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 22-r1: Moves legacy tray icons to top panel
-gnome-extra/gnome-shell-frippery 3.30.2 3.32.1: Unofficial extension pack providing GNOME 2-like features for GNOME 3
+gnome-extra/gnome-shell-frippery 3.32.1: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.30.6: Gnome install & update software
-gnome-extra/gnome-system-monitor 3.30.0 3.32.1: The Gnome System Monitor
-gnome-extra/gnome-tweaks 3.30.2 3.32.0: Customize advanced GNOME 3 options
-gnome-extra/gnome-user-docs 3.30.2 3.32.3: GNOME end user documentation
-gnome-extra/gnome-user-share 3.28.0 3.32.0.1: Personal file sharing for the GNOME desktop
+gnome-extra/gnome-system-monitor 3.32.1: The Gnome System Monitor
+gnome-extra/gnome-tweaks 3.32.0: Customize advanced GNOME 3 options
+gnome-extra/gnome-user-docs 3.32.3: GNOME end user documentation
+gnome-extra/gnome-user-share 3.32.0.1: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
-gnome-extra/gnome-weather 3.26.0 3.32.2: A weather application for GNOME
+gnome-extra/gnome-weather 3.32.2: A weather application for GNOME
 gnome-extra/gtkhtml 4.10.0 4.10.0-r1: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 12.0.1: Unicode character map viewer and library
 gnome-extra/libgda 5.2.8-r1: GNOME database access library
 gnome-extra/libgsf 1.14.43 1.14.45 1.14.46: The GNOME Structured File Library
-gnome-extra/mousetweaks 3.12.0 3.32.0: Mouse accessibility enhancements for the GNOME desktop
+gnome-extra/mousetweaks 3.32.0: Mouse accessibility enhancements for the GNOME desktop
 gnome-extra/nautilus-actions 3.2.4: Configures programs to be launched when files are selected in Nautilus
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to locations
@@ -11957,9 +11959,9 @@ gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME'
 gnome-extra/pch-session 3.30.0.2 3.32.0: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
-gnome-extra/sushi 3.30.0 3.32.1: A quick previewer for Nautilus, the GNOME file manager
+gnome-extra/sushi 3.32.1: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
-gnome-extra/yelp 3.30.0 3.32.2: Help browser for GNOME
+gnome-extra/yelp 3.32.2: Help browser for GNOME
 gnome-extra/yelp-xsl 3.20.1 3.30.1 3.32.1: XSL stylesheets for yelp
 gnome-extra/zenity 3.30.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
@@ -12021,7 +12023,7 @@ gui-apps/swayidle 1.2 1.3 1.5 9999: Idle management daemon for Wayland
 gui-apps/swaylock 1.3 1.4 9999: Screen locker for Wayland
 gui-apps/waybar 0.8.0 9999: Highly customizable Wayland bar for Sway and Wlroots based compositors.
 gui-apps/wl-clipboard 1.0.0 2.0.0 9999: Wayland clipboard utilities
-gui-libs/amtk 5.0.0 5.0.1: Actions, Menus and Toolbars Kit for GTK+ applications
+gui-libs/amtk 5.0.1: Actions, Menus and Toolbars Kit for GTK+ applications
 gui-libs/libhandy 0.0.9: Library with GTK widgets for mobile phones
 gui-libs/tepl 4.2.0 4.2.1: GtkSourceView-based text editors and IDE helper library
 gui-libs/wlroots 0.6.0 0.8.1-r1 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
@@ -12840,8 +12842,8 @@ media-gfx/ebdftopcf 2: Optimally generate PCF files from BDF files
 media-gfx/enblend 4.2.0_p20161007-r1: Image Blending with Multiresolution Splines
 media-gfx/engauge 10.6: Convert an image file showing a graph or map into numbers
 media-gfx/entangle 0.6.0 2.0: Tethered Camera Control & Capture
-media-gfx/eog 3.28.4 3.32.2: The Eye of GNOME image viewer
-media-gfx/eog-plugins 3.26.3 3.26.4: Eye of GNOME plugins
+media-gfx/eog 3.32.2: The Eye of GNOME image viewer
+media-gfx/eog-plugins 3.26.4: Eye of GNOME plugins
 media-gfx/eom 1.22.0 1.22.1: The MATE image viewer
 media-gfx/ephoto 1.5: Enlightenment image viewer written with EFL
 media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend
@@ -12875,10 +12877,10 @@ media-gfx/gimp 2.8.22-r1 2.9.8-r1 2.10.8-r1 2.10.10-r1 2.10.12 2.10.14 9999: GNU
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.7.0 2.7.1 2.7.2: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
-media-gfx/gnome-font-viewer 3.30.0 3.32.0: Font viewer utility for GNOME
-media-gfx/gnome-photos 3.30.1-r1 3.32.1: Access, organize and share your photos on GNOME
+media-gfx/gnome-font-viewer 3.32.0: Font viewer utility for GNOME
+media-gfx/gnome-photos 3.32.1: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
-media-gfx/gnome-screenshot 3.30.0 3.32.0: Screenshot utility for GNOME
+media-gfx/gnome-screenshot 3.32.0: Screenshot utility for GNOME
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.20: Free, redistributable digital camera software application
@@ -13000,9 +13002,9 @@ media-gfx/scantailor-advanced 1.0.14 1.0.16: Interactive post-processing tool fo
 media-gfx/scour 0.37: Take an SVG file and produce a cleaner and more concise file
 media-gfx/scrot 0.8_p13-r1 1.2: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
-media-gfx/shotwell 0.30.2 0.30.7: Open source photo manager for GNOME
+media-gfx/shotwell 0.30.7: Open source photo manager for GNOME
 media-gfx/sigal 1.3.0: Simple static web gallery generator
-media-gfx/simple-scan 3.30.2 3.32.2: Simple document scanning utility
+media-gfx/simple-scan 3.32.2: Simple document scanning utility
 media-gfx/slic3r 1.1.7 1.3.0-r1 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/solvespace 2.3: Parametric 2d/3d CAD
 media-gfx/springgraph 88: Generate spring graphs from graphviz input files
@@ -13822,7 +13824,7 @@ media-sound/codecgraph 20120114-r2: Generates a graph based on the ALSA descript
 media-sound/combine_wave 0.3.1-r1: sync up 2 audio ch. and/or combine 2 mono audio ch. into one stereo wave ch
 media-sound/coquillo 2.0.0: GUI audio tagger based on Qt and taglib
 media-sound/cplay 1.50: A Curses front-end for various audio players
-media-sound/csound 6.10.0 6.13.0 9999: Sound design and signal processing system for composition and performance
+media-sound/csound 6.13.0 9999: Sound design and signal processing system for composition and performance
 media-sound/cvoicecontrol 0.9_alpha-r1: Console based speech recognition system
 media-sound/dagrab 0.513-r1: fixed point cd ripper
 media-sound/darkice 1.2 1.3: A live audio streamer
@@ -13854,7 +13856,7 @@ media-sound/flack 2.0.6: edit FLAC tags from command line
 media-sound/flacon 4.1.0 5.5.1: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
-media-sound/fluidsynth 1.1.11 2.0.4 2.0.7 2.1.0: Software real-time synthesizer based on the Soundfont 2 specifications
+media-sound/fluidsynth 2.0.4 2.0.7 2.1.0: Software real-time synthesizer based on the Soundfont 2 specifications
 media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 driver
 media-sound/fmit 1.0.15-r2: Free Music Instrument Tuner
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
@@ -14662,7 +14664,7 @@ net-dns/dnsviz 0.8.2: Tool suite for analysis and visualization of DNS and DNSSE
 net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/ez-ipupdate 3.0.11.13.3_beta8-r3: Dynamic DNS client for lots of dynamic dns services
 net-dns/fpdns 0.10.0_pre20130404-r1: Fingerprinting DNS servers
-net-dns/getdns 1.5.1 1.5.2-r2: Modern asynchronous DNS API
+net-dns/getdns 1.5.1 1.5.2-r2 1.6.0_beta1: Modern asynchronous DNS API
 net-dns/hash-slinger 2.6-r1 2.7-r1: Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
@@ -14748,7 +14750,7 @@ net-fs/tahoe-lafs 1.10.2: Secure, decentralized, data store
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r5 0.7-r6 0.7.2: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.39.0 3.44.2 3.45.1 3.46.0: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.39.0 3.44.2 3.45.1 3.46.0 3.46.3: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r3: FTP layout package
