@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Daemon and library for global keyboard shortcuts registration"
 HOMEPAGE="https://lxqt.org/"

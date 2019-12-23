@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Themes, graphics and icons for LXQt"
 HOMEPAGE="https://lxqt.org/"
