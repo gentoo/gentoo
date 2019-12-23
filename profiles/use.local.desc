@@ -5207,9 +5207,7 @@ media-video/syncplay:client - Install Syncplay client
 media-video/syncplay:server - Install Syncplay server
 media-video/syncplay:vlc - Enable VLC2.x support
 media-video/totem:lirc - Enable support for controlling Totem with a remote control using app-misc/lirc
-media-video/totem:nautilus - Enable the nautilus extension
 media-video/totem:python - Build dev-lang/python using plugins (dbusservice for notifications and MPRIS control, interactive python console and opensubtitles lookup)
-media-video/totem:vala - Build the rotation plugin, which allows videos to be rotated if they are in the wrong orientation
 media-video/transcode:mjpeg - Enables mjpegtools support
 media-video/transcode:nuv - NuppelVideo container format demuxing
 media-video/transcode:pic - disable optimized assembly code that is not PIC friendly
