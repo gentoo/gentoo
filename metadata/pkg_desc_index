@@ -17802,7 +17802,7 @@ sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
 sys-libs/darwin-libc-headers 1158.50.2-r3 1244.50.9-r3 1272.250.1-r3: Darwin system headers from Libc 1272.250.1, macOS 10.14.3
 sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r2 4.3.29_p1-r2 4.4.20_p4-r2 4.5.20_p2-r2 4.6.21_p4-r1 4.7.25_p4-r1 4.8.30-r3 5.1.29-r2 5.3.28-r2 5.3.28-r4 6.0.35-r2 6.1.38 6.2.38 18.1.32: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.44.5 1.45.2 1.45.3 1.45.4: e2fsprogs libraries (common error and subsystem)
-sys-libs/efivar 37-r1: Tools and library to manipulate EFI variables
+sys-libs/efivar 37: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
 sys-libs/freeipmi 1.5.7 1.6.3 1.6.4: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
@@ -18279,7 +18279,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.3.1 5.3.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 79.0.3945.88 80.0.3970.5: Open-source version of Google Chrome web browser
+www-client/chromium 79.0.3945.88 80.0.3987.16: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.4 3.30.5 3.32.5: GNOME webbrowser based on Webkit
