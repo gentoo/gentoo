@@ -23,7 +23,7 @@ fi
 LICENSE="BSD"
 SLOT="0/1"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="test"
+IUSE="debug test"
 RESTRICT="!test? ( test )"
 
 BDEPEND=""
@@ -51,6 +51,12 @@ src_prepare() {
 
 src_configure() {
 	local -x CXXFLAGS="${CXXFLAGS} -I${ESYSROOT}/usr/include/utf8cpp"
+
+	if use debug; then
+		CXXFLAGS+=" -DDCHECK_ALWAYS_ON"
+	else
+		CXXFLAGS+=" -DNDEBUG"
+	fi
 
 	local mycmakeargs=(
 		-DBOOST_USE_CXX11=ON
