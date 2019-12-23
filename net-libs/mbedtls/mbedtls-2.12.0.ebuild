@@ -80,9 +80,9 @@ multilib_src_install_all() {
 	if use programs ; then
 		# avoid file collisions with sys-apps/coreutils
 		local p e
-		for p in "${ED%/}"/usr/bin/* ; do
+		for p in "${ED}"/usr/bin/* ; do
 			if [[ -x "${p}" && ! -d "${p}" ]] ; then
-				mv "${p}" "${ED%/}"/usr/bin/mbedtls_${p##*/} || die
+				mv "${p}" "${ED}"/usr/bin/mbedtls_${p##*/} || die
 			fi
 		done
 		for e in aes hash pkey ssl test ; do
