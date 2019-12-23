@@ -19,6 +19,8 @@ fi
 LICENSE="LGPL-2.1+"
 SLOT="0"
 
+PATCHES=( "${FILESDIR}/${PN}-0.14.1-qt-5.14-build.patch" )
+
 BDEPEND="
 	dev-qt/linguist-tools:5
 	>=dev-util/lxqt-build-tools-0.6.0
