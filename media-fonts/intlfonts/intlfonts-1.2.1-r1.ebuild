@@ -9,7 +9,7 @@ DESCRIPTION="International X11 fixed fonts"
 HOMEPAGE="https://www.gnu.org/directory/intlfonts.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
-LICENSE="freedist"
+LICENSE="public-domain HPND free-noncomm"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86"
 IUSE="bdf"
