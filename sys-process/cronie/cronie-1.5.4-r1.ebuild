@@ -54,8 +54,9 @@ src_configure() {
 	)
 
 	if use anacron; then
-		use elibc_musl && append-cflags "-lobstack"
-		use elibc_uclibc && append-cflags "-lobstack"
+		if use elibc_musl || use elibc_uclibc ; then
+			append-cflags "-lobstack"
+		fi
 	fi
 	SPOOL_DIR="/var/spool/cron/crontabs" \
 	ANACRON_SPOOL_DIR="/var/spool/anacron" \
