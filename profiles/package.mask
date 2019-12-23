@@ -519,7 +519,6 @@ dev-vcs/hg-fast-export
 dev-vcs/rabbitvcs
 net-analyzer/namebench
 net-fs/tahoe-lafs
-net-fs/tahoe-lafs
 net-misc/irrtree
 net-misc/pycnb
 net-p2p/pybitmessage
