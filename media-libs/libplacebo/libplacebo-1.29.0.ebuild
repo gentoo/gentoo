@@ -18,7 +18,7 @@ DESCRIPTION="Reusable library for GPU-accelerated image processing primitives"
 HOMEPAGE="https://github.com/haasn/libplacebo"
 
 LICENSE="LGPL-2.1+"
-SLOT="0"
+SLOT="0/29" # libplacebo .so version
 IUSE="glslang lcms +shaderc test +vulkan"
 REQUIRED_USE="vulkan? ( || ( glslang shaderc ) )"
 
