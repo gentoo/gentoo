@@ -19,6 +19,8 @@ fi
 LICENSE="LGPL-2.1+ BSD"
 SLOT="0/$(ver_cut 1-2)"
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.14-build.patch" ) # Bug 703596
+
 BDEPEND="
 	dev-qt/linguist-tools:5
 	>=dev-util/lxqt-build-tools-0.6.0
