@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit xdg cmake-utils
+inherit xdg cmake
 
 # Upstream names the package PV-rX. We change that to
 # PV_pX so we can use portage revisions.
@@ -54,5 +54,5 @@ src_configure() {
 		-DUSE_GZIP=OFF
 		-DWITH_DBUS=$(usex dbus ON OFF)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
