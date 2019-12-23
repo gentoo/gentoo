@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/volrath/treepy.el"
 SRC_URI="https://github.com/volrath/treepy.el/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}.el-${PV}"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
