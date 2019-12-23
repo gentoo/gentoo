@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop xdg
+inherit cmake desktop xdg
 
 DESCRIPTION="Game Boy Advance emulator written in C"
 HOMEPAGE="https://mgba.io"
@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	xdg_environment_reset
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Get rid of any bundled stuff we don't want
 	for pkg in libpng lzma sqlite3 zlib ; do
@@ -79,11 +79,11 @@ src_configure() {
 		-DUSE_SQLITE3="$(usex sqlite)"
 		-DUSE_ZLIB=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_install() {

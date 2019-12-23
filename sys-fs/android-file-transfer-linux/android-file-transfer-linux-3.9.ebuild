@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg
+inherit cmake xdg
 
 DESCRIPTION="Android File Transfer for Linux"
 HOMEPAGE="https://github.com/whoozle/android-file-transfer-linux"
@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}"
 
 # required to override src_prepare from xdg eclass
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -48,7 +48,7 @@ src_configure() {
 		-DUSB_BACKEND_LIBUSB="OFF"
 		$(usex qt5 '-DDESIRED_QT_VERSION=5' '')
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_preinst() {

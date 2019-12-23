@@ -9,7 +9,7 @@ EAPI=7
 #   https://github.com/diasurgical/devilutionX/issues/490
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake-utils desktop
+inherit cmake desktop
 
 DESCRIPTION="Diablo engine for modern operating systems"
 HOMEPAGE="https://github.com/diasurgical/devilutionX"
@@ -42,7 +42,7 @@ src_configure() {
 		-DBINARY_RELEASE=ON
 		-DDEBUG="$(usex debug)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
