@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="Lightweight and cross-platform clipboard history applet"
 HOMEPAGE="https://github.com/pvanek/qlipper"

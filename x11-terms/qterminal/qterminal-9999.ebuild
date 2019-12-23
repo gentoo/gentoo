@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="Qt-based multitab terminal emulator"
 HOMEPAGE="https://lxqt.org/"

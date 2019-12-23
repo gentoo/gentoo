@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 xdg-utils cmake-utils
+inherit git-r3 xdg-utils cmake
 
 DESCRIPTION="A small, lightweight file manager for desktops based on pure Qt"
 HOMEPAGE="https://qtfm.eu/"
@@ -39,7 +39,7 @@ src_configure() {
 		-DENABLE_FFMPEG="$(usex ffmpeg)"
 		-DENABLE_MAGICK="$(usex imagemagick)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {
