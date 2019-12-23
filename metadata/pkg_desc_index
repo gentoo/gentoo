@@ -2503,7 +2503,7 @@ app-text/enchant 1.6.1 1.6.1-r1 2.1.0 2.1.1 2.1.2 2.2.3 2.2.4: Spellchecker wrap
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.6.0-r1 0.6.3-r1: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes bounding boxes
-app-text/evince 3.30.2 3.32.0 3.32.1: Simple document viewer for GNOME
+app-text/evince 3.32.1: Simple document viewer for GNOME
 app-text/expander 2.0.5-r2: Expander is a utility that acts as a filter for text editors
 app-text/extract_url 1.6.2: extracts URLs from correctly-encoded MIME email messages or plain text
 app-text/fbless 0.2.3: Python-based console fb2 reader with less-like interface
@@ -4863,7 +4863,7 @@ dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Stora
 dev-libs/json-c 0.12 0.13.1-r1: A JSON implementation in C
 dev-libs/json-glib 1.4.4: Library providing GLib serialization and deserialization for the JSON format
 dev-libs/jsoncpp 1.9.1 1.9.2-r1 1.9.2-r2: C++ JSON reader and writer
-dev-libs/jsonrpc-glib 3.30.1 3.32.0: JSON-RPC library for GLib
+dev-libs/jsonrpc-glib 3.32.0: JSON-RPC library for GLib
 dev-libs/jthread 1.3.3: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.5-r2: A C library that implements a dynamic array
 dev-libs/kasync 0.2.0 0.3.0: C++ library for controlling asynchronous tasks
@@ -4907,7 +4907,7 @@ dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
 dev-libs/libcroco 0.6.12-r1 0.6.13: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
 dev-libs/libcss 0.8.0-r1 0.9.0: CSS parser and selection engine, written in C
 dev-libs/libdaemon 0.14-r3: Simple library for creating daemon processes in C
-dev-libs/libdazzle 3.30.2 3.32.3: Experimental new features for GTK+ and GLib
+dev-libs/libdazzle 3.32.3: Experimental new features for GTK+ and GLib
 dev-libs/libdbh 5.0.19 5.0.22: A small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 16.04.0-r1: Library to pass menu structure across DBus
 dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r3: Library providing Qt implementation of DBusMenu specification
@@ -4947,13 +4947,13 @@ dev-libs/libgdata 0.17.8 0.17.9-r1 0.17.11: GLib-based library for accessing onl
 dev-libs/libgee 0.6.8 0.20.1 0.20.2: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.28.3 0.28.4 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.28.0.1: Git library for GLib
-dev-libs/libgnome-games-support 1.4.3 1.4.4: Library for code common to Gnome games
+dev-libs/libgnome-games-support 1.4.4: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1 1.29 1.32 1.32-r1 1.36: Contains error handling functions used by GnuPG software
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 232 233-r1: GObject bindings for libudev
 dev-libs/libgusb 0.2.11 0.3.1: GObject wrapper for libusb
-dev-libs/libgweather 3.24.1 3.26.2 3.28.3 3.32.1 3.32.2-r1: Location and timezone database and weather-lookup library
+dev-libs/libgweather 3.32.2-r1: Location and timezone database and weather-lookup library
 dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libical 3.0.5 3.0.6 3.0.7: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.14-r1 1.15: GNU charset conversion library for libc which doesn't implement it
@@ -8460,7 +8460,7 @@ dev-python/pyamg 2.1.0 2.2.1 3.0.2 3.2.1 3.2.1-r1: Algebraic multigrid solvers i
 dev-python/pyao 0.82-r3: Python bindings for the libao library
 dev-python/pyasn1 0.2.3 0.3.7 0.4.2 0.4.3: ASN.1 library for Python
 dev-python/pyasn1-modules 0.0.5-r1 0.0.8 0.0.10 0.1.4 0.1.5 0.2.1: pyasn1 modules
-dev-python/pyatspi 2.30.0 2.32.1 2.34.0: Python client bindings for D-Bus AT-SPI
+dev-python/pyatspi 2.32.1 2.34.0: Python client bindings for D-Bus AT-SPI
 dev-python/pyaudio 0.2.11: Python bindings for PortAudio
 dev-python/pyavm 0.9.4: Python module for Astronomy Visualization Metadata i/o
 dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
@@ -10921,7 +10921,7 @@ dev-util/stripe-mock 0.34.1 0.47.0 0.63.0 0.78.0: Mock HTTP server that responds
 dev-util/stubgen 2.08: A member function stub generator for C++
 dev-util/suse-build 2015.11.05: Script to build SUSE Linux RPMs
 dev-util/sysdig 0.26.4: A system exploration and troubleshooting tool
-dev-util/sysprof 3.30.2-r1 3.32.0: System-wide Linux Profiler
+dev-util/sysprof 3.32.0: System-wide Linux Profiler
 dev-util/systemtap 2.4-r1 3.1-r1 4.0-r1: A linux trace/probe tool
 dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control systems
 dev-util/tinlink 1.0.0-r1: Tool to create very small elf binary from pure binary files
@@ -11863,26 +11863,26 @@ games-util/xgame-gtk2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.26.1 0.30.1 0.32.0-r1 0.32.0-r2: Simple low-level configuration system
-gnome-base/dconf-editor 3.30.2 3.34.2: Graphical tool for editing the dconf configuration database
+gnome-base/dconf-editor 3.34.2: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
-gnome-base/gdm 3.30.3-r3 3.32.0: GNOME Display Manager for managing graphical display servers and user logins
-gnome-base/gnome 3.30.2 3.32.2: Meta package for GNOME 3, merge this package to install
+gnome-base/gdm 3.32.0: GNOME Display Manager for managing graphical display servers and user logins
+gnome-base/gnome 3.32.2: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-applets 3.32.0: Applets for the GNOME Flashback Panel
 gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome packages
 gnome-base/gnome-control-center 3.30.3-r1 3.32.2: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.30.2 3.32.2: Sub-meta package for the core applications integrated with GNOME 3
-gnome-base/gnome-core-libs 3.30.2 3.32.2: Sub-meta package for the core libraries of GNOME 3
-gnome-base/gnome-desktop 2.32.1-r2 3.30.2.3 3.32.2: Library with common API for various GNOME modules
-gnome-base/gnome-extra-apps 3.30.2 3.32.2: Sub-meta package for the applications of GNOME 3
+gnome-base/gnome-core-libs 3.32.2: Sub-meta package for the core libraries of GNOME 3
+gnome-base/gnome-desktop 2.32.1-r2 3.32.2: Library with common API for various GNOME modules
+gnome-base/gnome-extra-apps 3.32.2: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.32.0: GNOME Flashback session
 gnome-base/gnome-keyring 3.28.2 3.31.91-r1: Password and keyring managing daemon
 gnome-base/gnome-light 3.22.0 3.26.2 3.30.2 3.32.2: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.13.3-r1: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.32.0: The GNOME Flashback Panel
-gnome-base/gnome-session 3.30.1-r1 3.32.0: Gnome session manager
-gnome-base/gnome-settings-daemon 3.30.2-r1 3.32.1: Gnome Settings Daemon
-gnome-base/gnome-shell 3.26.2-r4 3.30.2-r2 3.32.2: Provides core UI functions for the GNOME 3 desktop
+gnome-base/gnome-session 3.32.0: Gnome session manager
+gnome-base/gnome-settings-daemon 3.32.1: Gnome Settings Daemon
+gnome-base/gnome-shell 3.26.2-r4 3.32.2: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.24.1 3.28.1 3.32.0: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.32.2 1.38.3 1.40.2: Virtual filesystem implementation for GIO
@@ -11896,7 +11896,7 @@ gnome-base/libgnomekbd 3.26.1: Gnome keyboard configuration library
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.36.0 2.38.0: A library that provides top functionality to applications
 gnome-base/librsvg 2.40.18 2.40.20: Scalable Vector Graphics (SVG) rendering library
-gnome-base/nautilus 3.30.5-r1 3.32.3: Default file manager for the GNOME desktop
+gnome-base/nautilus 3.32.3: Default file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
 gnome-extra/chrome-gnome-shell 10 10-r1: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
 gnome-extra/cinnamon 3.6.6-r2 3.8.8 4.0.3 4.0.3-r1 4.0.3-r2: A fork of GNOME Shell with layout similar to GNOME 2
@@ -11909,8 +11909,8 @@ gnome-extra/cinnamon-settings-daemon 3.6.1-r1 3.8.4 4.0.2: Cinnamon's settings d
 gnome-extra/cinnamon-translations 3.6.3 3.6.3-r1 3.8.2 4.0.0: Translation data for Cinnamon
 gnome-extra/cjs 3.6.1 3.8.0 4.0.0 4.0.0-r1: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/eiciel 0.9.11-r1 0.9.12.1 0.9.12.1-r1: ACL editor for GNOME, with Nautilus extension
-gnome-extra/evolution-data-server 3.30.5-r1 3.32.4 3.32.5: Evolution groupware backend
-gnome-extra/evolution-ews 3.30.5-r1 3.32.2: Evolution module for connecting to Microsoft Exchange Web Services
+gnome-extra/evolution-data-server 3.32.4 3.32.5: Evolution groupware backend
+gnome-extra/evolution-ews 3.32.2: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-boxes 3.30.3: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-calculator 3.30.1 3.32.2: A calculator application for GNOME
@@ -12474,7 +12474,7 @@ mail-client/claws-mail 3.17.3-r1 3.17.4 9999: An email client (and news reader) 
 mail-client/clawsker 1.1.0 1.3.1: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 1.0: CONE: COnsole News reader and Emailer
 mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on libEtPan
-mail-client/evolution 3.30.5 3.32.4 3.32.5: Integrated mail, addressbook and calendaring functionality
+mail-client/evolution 3.32.4 3.32.5: Integrated mail, addressbook and calendaring functionality
 mail-client/geary 0.12.4 3.32.0-r1 3.34.2: A lightweight, easy-to-use, feature-rich email client
 mail-client/hap 3.7-r1: A terminal mail notification program (replacement for biff)
 mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
@@ -16125,7 +16125,7 @@ sci-chemistry/gelemental 1.2.0-r1 2.0.0: Periodic table viewer with detailed inf
 sci-chemistry/ghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
-sci-chemistry/gromacs 2018.7 2018.8 2018.9999 2019.2 2019.3 2019.4 2019.5 2019.9999 2020_beta1 9999: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 2018.7 2018.8 2018.9999 2019.2 2019.3 2019.4 2019.5 2019.9999 2020_rc1 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
 sci-chemistry/ksdssp 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
@@ -19252,7 +19252,7 @@ x11-themes/xfce-gant-icon-theme 3.9_p6-r1: Xfce Gant Icon Theme
 x11-themes/xfwm4-themes 4.10.0-r1: Additional themes for the Xfce window manager
 x11-themes/xxv-skins 1.6.1-r1: Additional skins for XXV
 x11-themes/yasis-icon-theme 0.4.2: A scalable icon theme called Yasis
-x11-themes/zuki-themes 3.30.1 3.32.2: Zuki themes for GTK, gnome-shell and more
+x11-themes/zuki-themes 3.32.2: Zuki themes for GTK, gnome-shell and more
 x11-themes/zukini 20120817: Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, metacity and more
 x11-themes/zukitwo 2016.08.08: Transition package to zuki-themes
 x11-themes/zukitwo-shell 2016.08.08: Transition package to zuki-themes
@@ -19285,7 +19285,7 @@ x11-wm/matwm2 0.1.2_pre3-r1: Simple EWMH compatible window manager with titlebar
 x11-wm/metacity 3.32.0: GNOME Flashback window manager
 x11-wm/muffin 3.6.0 3.8.2 4.0.3: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.26.2-r1 3.30.2-r4 3.32.2: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.26.2-r1 3.32.2: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.6.1 3.6.1-r1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
