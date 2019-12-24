@@ -66,7 +66,7 @@ RDEPEND+="
 		emacs? ( >=app-editors/emacs-23.1:*
 			app-emacs/haskell-mode )
 "
-PDEPEND="stdlib? ( =sci-mathematics/agda-stdlib-${MY_GENTOO_AGDA_STDLIB_V} )"
+PDEPEND="stdlib? ( ~sci-mathematics/agda-stdlib-${MY_GENTOO_AGDA_STDLIB_V} )"
 DEPEND="${RDEPEND}
 	dev-haskell/alex
 	>=dev-haskell/cabal-1.22.2.0
