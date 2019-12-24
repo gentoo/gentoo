@@ -1,34 +1,38 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit gnome2-utils
+EAPI=7
+
+inherit xdg
 
 DESCRIPTION="A nice and well polished icon theme"
 HOMEPAGE="http://packages.ubuntu.com/lucid/human-icon-theme"
-SRC_URI="mirror://ubuntu/pool/universe/h/${PN}/${PN}_${PV}.tar.gz
+SRC_URI="
+	mirror://ubuntu/pool/universe/h/${PN}/${PN}_${PV}.tar.gz
 	https://www.gentoo.org/images/gentoo-logo.svg"
 
 LICENSE="CC-BY-SA-2.5"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-
 RESTRICT="binchecks strip"
 
-RDEPEND="|| ( x11-themes/tangerine-icon-theme x11-themes/adwaita-icon-theme )"
-DEPEND=">=gnome-base/librsvg-2.34
-	>=x11-misc/icon-naming-utils-0.8.90
+RDEPEND="
+	|| (
+		x11-themes/adwaita-icon-theme
+		x11-themes/tangerine-icon-theme
+	)"
+BDEPEND="
 	dev-util/intltool
-	sys-devel/gettext"
+	gnome-base/librsvg
+	sys-devel/gettext
+	x11-misc/icon-naming-utils"
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
 
-DOCS="AUTHORS"
+PATCHES=( "${FILESDIR}"/${PN}-0.36-fix-buildsystem.patch )
 
 src_prepare() {
-	sed -i -e 's:lib/icon-naming-utils/icon:libexec/icon:' Makefile || die
-	sed -i -e '/SVGCONVERT/s:rsvg:&-convert:' svg2png.sh.in || die #414971
+	xdg_src_prepare
 
 	cp "${DISTDIR}"/gentoo-logo.svg scalable/places/start-here.svg || die
 
@@ -42,7 +46,3 @@ src_prepare() {
 src_compile() {
 	emake index.theme
 }
-
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }
