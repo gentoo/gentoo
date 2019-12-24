@@ -2,8 +2,8 @@ Fixing build with as-needed
 
 https://bugs.gentoo.org/show_bug.cgi?id=248552
 
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -86,14 +86,9 @@
  AC_PATH_X
  AC_PATH_XTRA
@@ -21,8 +21,8 @@ https://bugs.gentoo.org/show_bug.cgi?id=248552
  
  dnl Checks for header files.
  AC_HEADER_STDC
---- Makefile.am
-+++ Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -1,4 +1,4 @@
 -CPPFLAGS =	@CPPFLAGS@ @INTERLACE@ @ISDN@\
 +AM_CPPFLAGS =	 @INTERLACE@ @ISDN@\
