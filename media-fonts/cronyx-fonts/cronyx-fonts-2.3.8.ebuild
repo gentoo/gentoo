@@ -13,7 +13,7 @@ SRC_URI="
 	mirror://debian/pool/main/x/xfonts-cronyx/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/x/xfonts-cronyx/${MY_P}-6.diff.gz"
 
-LICENSE="freedist"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ia64 ppc s390 sh sparc x86"
 
