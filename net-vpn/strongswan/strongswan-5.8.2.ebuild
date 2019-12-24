@@ -10,7 +10,7 @@ SRC_URI="https://download.strongswan.org/${P}.tar.bz2"
 
 LICENSE="GPL-2 RSA DES"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11"
 
 STRONGSWAN_PLUGINS_STD="led lookip systime-fix unity vici"
@@ -177,6 +177,10 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
+
+	if ! use systemd; then
+		rm -rf "${ED}"/lib/systemd || die
+	fi
 
 	doinitd "${FILESDIR}"/ipsec
 
