@@ -13742,7 +13742,7 @@ media-radio/ax25-tools 0.0.10_rc4: Basic AX.25 (Amateur Radio) administrative to
 media-radio/cqrlog 2.1.0-r2 2.3.0 2.3.0-r1: CQRLOG is an advanced ham radio logger based on MySQL database.
 media-radio/cwdaemon 0.10.2: A morse daemon for the parallel or serial port
 media-radio/direwolf 1.4: Decoded Information from Radio Emissions for Windows Or Linux Fans
-media-radio/dxcc 20080225-r1 20190309: A ham radio callsign DXCC lookup utility
+media-radio/dxcc 20080225-r1 20190309 20191204: A ham radio callsign DXCC lookup utility
 media-radio/flamp 2.2.03: Fldigi helper for transferring files
 media-radio/fldigi 4.1.06 4.1.08: Sound card based multimode software modem for Amateur Radio use
 media-radio/flmsg 4.0.3: Fldigi helper for creating radiograms
@@ -16548,7 +16548,7 @@ sci-libs/szip 2.1-r2: Extended-Rice lossless compression algorithm implementatio
 sci-libs/ta-lib 0.4.0: Technical Analysis Library for analyzing financial markets trends
 sci-libs/tamu_anova 0.2-r1: ANOVA Extensions to the GNU Scientific Library
 sci-libs/taucs 2.2: C library of sparse linear solvers
-sci-libs/tensorflow 1.15.0 2.0.0 2.1.0_rc0 2.1.0_rc1: Computation framework using data flow graphs for scalable machine learning
+sci-libs/tensorflow 1.15.0 2.0.0 2.1.0_rc2: Computation framework using data flow graphs for scalable machine learning
 sci-libs/tensorflow-estimator 1.15.1 2.0.1 2.1: A high-level TensorFlow API that greatly simplifies machine learning programming
 sci-libs/tnt 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
 sci-libs/trilinos 12.14.1: Scientific library collection for large scale problems
