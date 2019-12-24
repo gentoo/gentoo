@@ -15,7 +15,7 @@ SRC_URI="
 	ftp://wm28.csie.ncu.edu.tw/pub/distfiles/${MY_P}.tar.gz
 	https://dev.gentoo.org/~soap/distfiles/${P}-freebsd-aa_ad.patch.gz"
 
-LICENSE="freedist"
+LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ia64 ppc s390 sh sparc x86"
 IUSE=""
