@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit autotools eutils
+EAPI=7
+
+inherit autotools
 
 MY_P="candido-engine-${PV}"
 
@@ -13,18 +14,17 @@ SRC_URI="mirror://sourceforge/candido.berlios/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
-RDEPEND=">=x11-libs/gtk+-2.8:2"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="x11-libs/gtk+:2"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
-DOCS="AUTHORS ChangeLog CREDITS NEWS README"
+PATCHES=( "${FILESDIR}"/${P}-glib-2.31.patch )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-glib-2.31.patch
+	default
 	eautoreconf # required for interix
 }
 
@@ -34,5 +34,7 @@ src_configure() {
 
 src_install() {
 	default
-	find "${ED}" -name '*.la' -exec rm -f {} +
+
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }
