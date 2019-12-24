@@ -47,7 +47,7 @@ RDEPEND+="
 		emacs? ( >=app-editors/emacs-23.1:*
 			app-emacs/haskell-mode )
 "
-PDEPEND="stdlib? ( =sci-mathematics/agda-stdlib-${PV} )"
+PDEPEND="stdlib? ( ~sci-mathematics/agda-stdlib-${PV} )"
 DEPEND="${RDEPEND}
 	dev-haskell/alex
 	>=dev-haskell/cabal-1.16.0
