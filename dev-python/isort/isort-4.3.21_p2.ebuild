@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~sparc ~x86"
 
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
