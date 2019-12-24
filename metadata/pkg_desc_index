@@ -1590,7 +1590,7 @@ app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Expl
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-staging 4.18 4.19 4.20 4.21 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
 app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.0.3 4.18 4.19 4.20 4.21 9999: Free implementation of Windows(tm) on Unix, without external patchsets
-app-emulation/winetricks 20190912 99999999: Easy way to install DLLs needed to work around problems in Wine
+app-emulation/winetricks 20190912 20191224 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
@@ -17050,7 +17050,7 @@ sys-apps/dog 1.7-r6: Dog is better than cat
 sys-apps/dstat 0.7.3 0.7.4: Versatile replacement for vmstat, iostat and ifstat
 sys-apps/dtc 1.4.1 1.4.1-r1 1.4.2 1.4.3 1.4.4 1.4.4-r1 1.4.6 1.5.0 9999: Open Firmware device tree compiler
 sys-apps/duc 1.4.1-r1 1.4.3-r1 9999: A library and suite of tools for inspecting disk usage
-sys-apps/ed 1.14.2 1.15-r1: Your basic line editor
+sys-apps/ed 1.15-r1 1.16_rc1: Your basic line editor
 sys-apps/edac-utils 0.18: Userspace helper for Linux kernel EDAC drivers
 sys-apps/edid-decode 0_pre20191209 9999: Decode EDID data in a human-readable format
 sys-apps/edid-fixdim 1: Tool to fix screen dimensions in EDID data dumps
@@ -17359,7 +17359,7 @@ sys-block/blocks 0.1.4_pre131210-r1 9999: Conversion tools for block devices
 sys-block/buffer 1.19-r2: a tapedrive tool for speeding up reading from and writing to tape
 sys-block/cec 14: Coraid Ethernet Console client
 sys-block/devio 1.2: correctly read (or write) a region of a block device
-sys-block/di 4.47 4.47.1 4.47.2: Disk Information Utility
+sys-block/di 4.47 4.47.2 4.47.3: Disk Information Utility
 sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/endpoint 0.1.0-r1: Endpoint turns a Linux machine with a firewire card into an SBP-2 device
 sys-block/f3 7.0 7.1 7.2: Utilities to detect broken or counterfeit flash storage
