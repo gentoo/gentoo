@@ -9,7 +9,7 @@
 # @DESCRIPTION:
 # This eclass is *deprecated*. Please read the PORTING notes for switching to
 # ecm.eclass in case the package is using extra-cmake-modules, otherwise just
-# use cmake-utils.eclass instead. For projects hosted on kde.org infrastructure,
+# use cmake.eclass instead. For projects hosted on kde.org infrastructure,
 # inherit kde.org.eclass to fetch and unpack sources independent of the build
 # system being used.
 #
@@ -17,7 +17,7 @@
 # functions and variables may be considered as part of this eclass's API.
 #
 # This eclass unconditionally inherits kde.org.eclass and either ecm.eclass if
-# KDE_AUTODEPS=true (default) or cmake-utils.eclass if KDE_AUTODEPS=false.
+# KDE_AUTODEPS=true (default) or cmake.eclass if KDE_AUTODEPS=false.
 # All their public variables and helper functions (not phase functions) may
 # be considered as part of this eclass's API.
 #
@@ -46,7 +46,7 @@ inherit flag-o-matic kde.org kde5-functions xdg
 
 # @ECLASS-VARIABLE: KDE_DEBUG
 # @DESCRIPTION:
-# If set to "false", add -DNDEBUG (via cmake-utils_src_configure) and -DQT_NO_DEBUG
+# If set to "false", add -DNDEBUG (via cmake_src_configure) and -DQT_NO_DEBUG
 # to CPPFLAGS.
 # Otherwise, add debug to IUSE.
 # PORTING: ECM_DEBUG in ecm.eclass
@@ -155,7 +155,7 @@ esac
 
 case ${KDE_AUTODEPS} in
 	false)
-		inherit cmake-utils
+		inherit cmake
 		# @ECLASS-VARIABLE: ECM_KDEINSTALLDIRS
 		# @DESCRIPTION:
 		# If set to "false", do nothing.
@@ -236,6 +236,14 @@ _kde5_strip_handbook_translations() {
 	done
 }
 
+# @FUNCTION: cmake_use_find_package
+# @USAGE: <USE flag> <package name>
+# @DESCRIPTION:
+# Compatibility alias for cmake.eclass -> cmake.eclass
+cmake-utils_use_find_package() {
+	cmake_use_find_package "$@" ;
+}
+
 # @FUNCTION: kde5_pkg_pretend
 # @DESCRIPTION:
 # Checks if the active compiler meets the minimum version requirements.
@@ -269,13 +277,13 @@ kde5_src_unpack() {
 
 # @FUNCTION: kde5_src_prepare
 # @DESCRIPTION:
-# Wrapper for cmake-utils_src_prepare with lots of extra logic for magic
+# Wrapper for cmake_src_prepare with lots of extra logic for magic
 # handling of linguas, tests, handbook etc.
 kde5_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 	case ${KDE_AUTODEPS} in
 		false)
-			cmake-utils_src_prepare
+			cmake_src_prepare
 
 			_kde5_strip_handbook_translations
 
@@ -314,13 +322,13 @@ kde5_src_prepare() {
 
 # @FUNCTION: kde5_src_configure
 # @DESCRIPTION:
-# Wrapper for cmake-utils_src_configure with extra logic for magic handling of
+# Wrapper for cmake_src_configure with extra logic for magic handling of
 # handbook, tests etc.
 kde5_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 	case ${KDE_AUTODEPS} in
 		false)
-			# we rely on cmake-utils.eclass to append -DNDEBUG too
+			# we rely on cmake.eclass to append -DNDEBUG too
 			if in_iuse debug && ! use debug; then
 				append-cppflags -DQT_NO_DEBUG
 			fi
@@ -346,7 +354,7 @@ kde5_src_configure() {
 			# allow the ebuild to override what we set here
 			mycmakeargs=("${cmakeargs[@]}" "${mycmakeargs[@]}")
 
-			cmake-utils_src_configure
+			cmake_src_configure
 			;;
 		*) ecm_src_configure ;;
 	esac
@@ -354,35 +362,35 @@ kde5_src_configure() {
 
 # @FUNCTION: kde5_src_compile
 # @DESCRIPTION:
-# Wrapper for cmake-utils_src_compile. Currently doesn't do anything extra, but
+# Wrapper for cmake_src_compile. Currently doesn't do anything extra, but
 # is included as part of the API just in case it's needed in the future.
 kde5_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 	case ${KDE_AUTODEPS} in
-		false) cmake-utils_src_compile ;;
+		false) cmake_src_compile ;;
 		*) ecm_src_compile ;;
 	esac
 }
 
 # @FUNCTION: kde5_src_test
 # @DESCRIPTION:
-# Wrapper for cmake-utils_src_test with extra logic for magic handling of dbus
+# Wrapper for cmake_src_test with extra logic for magic handling of dbus
 # and virtualx.
 kde5_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 	case ${KDE_AUTODEPS} in
-		false) cmake-utils_src_test ;;
+		false) cmake_src_test ;;
 		*) ecm_src_test ;;
 	esac
 }
 
 # @FUNCTION: kde5_src_install
 # @DESCRIPTION:
-# Wrapper for cmake-utils_src_install. Currently doesn't do anything extra.
+# Wrapper for cmake_src_install. Currently doesn't do anything extra.
 kde5_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 	case ${KDE_AUTODEPS} in
-		false) cmake-utils_src_install ;;
+		false) cmake_src_install ;;
 		*) ecm_src_install ;;
 	esac
 }
