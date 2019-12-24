@@ -7,10 +7,10 @@ DESCRIPTION="UT2004 Community Bonus Pack 2 Volume 1 and 2"
 HOMEPAGE="https://liandri.beyondunreal.com/Unreal_Tournament_2004"
 SRC_URI="https://ut2004.ut-files.com/BonusPacks/cbp2-volume1_zip.zip
 	https://ut2004.ut-files.com/BonusPacks/cbp2-volume2_zip.zip"
-LICENSE="freedist"
+LICENSE="free-noncomm all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="strip"
+RESTRICT="mirror bindist strip"
 
 BDEPEND="app-arch/unzip"
 RDEPEND="|| ( games-fps/ut2004 >=games-server/ut2004-ded-3369.3-r2 )
