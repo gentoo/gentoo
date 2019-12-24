@@ -1,0 +1,10 @@
+diff -r -U1 wxmaxima-Version-19.12.2.orig/src/Dirstructure.cpp wxmaxima-Version-19.12.2/src/Dirstructure.cpp
+--- wxmaxima-Version-19.12.2.orig/src/Dirstructure.cpp	2019-12-22 17:54:12.000000000 +0700
++++ wxmaxima-Version-19.12.2/src/Dirstructure.cpp	2019-12-24 22:47:33.433140055 +0700
+@@ -43,4 +43,4 @@
+   // The path Gentoo hides the manual at
+-  if(wxDirExists(m_helpDir + wxString::Format("doc/wxmaxima-%s",GITVERSION)))
+-    m_helpDir += wxString::Format("doc/wxmaxima-%s",GITVERSION);
++  if(wxDirExists(m_helpDir + wxString::Format("/doc/wxmaxima-%s",GITVERSION)))
++    m_helpDir += wxString::Format("/doc/wxmaxima-%s",GITVERSION);
+ 
