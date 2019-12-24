@@ -1,9 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=7
 
 MY_P=${PN#vdr-channel-}-${PV}
 
@@ -18,9 +16,21 @@ IUSE=""
 
 S=${WORKDIR}/logos
 
-RDEPEND="app-text/convmv"
+BDEPEND="app-text/convmv"
+
+_test_charmap() {
+	local charmap=$(locale charmap)
+
+	if [ "${charmap}" != "UTF-8" ]; then
+		eerror "You need locale UTF-8 to use the logos"
+		die "missing locale UTF-8 on your system"
+	fi
+}
 
 src_prepare() {
+	default
+
+	_test_charmap
 
 	convmv --notest --replace -f iso-8859-1 -t utf-8 -r "${S}"/
 }
