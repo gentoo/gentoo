@@ -2,8 +2,8 @@ Respect {C,LD}FLAGS, fix underlinking
 
 http://bugs.gentoo.org/367853
 
---- bbrun/Makefile
-+++ bbrun/Makefile
+--- a/bbrun/Makefile
++++ b/bbrun/Makefile
 @@ -1,7 +1,7 @@
  CC     = gcc
  LIBDIR = -L/usr/lib -L/usr/X11R6/lib
