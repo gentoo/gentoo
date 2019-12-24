@@ -16,8 +16,9 @@
 # This eclass unconditionally inherits kde5-functions.eclass and all its public
 # functions and variables may be considered as part of this eclass's API.
 #
-# This eclass unconditionally inherits kde.org.eclass and cmake-utils.eclass
-# and all their public variables and helper functions (not phase functions) may
+# This eclass unconditionally inherits kde.org.eclass and either ecm.eclass if
+# KDE_AUTODEPS=true (default) or cmake-utils.eclass if KDE_AUTODEPS=false.
+# All their public variables and helper functions (not phase functions) may
 # be considered as part of this eclass's API.
 #
 # This eclass's phase functions are not intended to be mixed and matched, so if
@@ -32,27 +33,7 @@ if [[ -z ${KDE_ORG_NAME} ]]; then
 	KDE_ORG_NAME=${KMNAME:=$PN}
 fi
 
-# @ECLASS-VARIABLE: VIRTUALX_REQUIRED
-# @DESCRIPTION:
-# For proper description see virtualx.eclass manpage.
-# Here we redefine default value to be manual, if your package needs virtualx
-# for tests you should proceed with setting VIRTUALX_REQUIRED=test.
-: ${VIRTUALX_REQUIRED:=manual}
-
-inherit cmake-utils flag-o-matic kde.org kde5-functions virtualx xdg
-
-if [[ -v KDE_GCC_MINIMAL ]]; then
-	EXPORT_FUNCTIONS pkg_pretend
-fi
-
-EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
-
-# @ECLASS-VARIABLE: ECM_KDEINSTALLDIRS
-# @DESCRIPTION:
-# If set to "false", do nothing.
-# For any other value, assume the package is using KDEInstallDirs macro and switch
-# KDE_INSTALL_USE_QT_SYS_PATHS to ON.
-: ${ECM_KDEINSTALLDIRS:=true}
+inherit flag-o-matic kde.org kde5-functions xdg
 
 # @ECLASS-VARIABLE: KDE_AUTODEPS
 # @DESCRIPTION:
@@ -173,142 +154,65 @@ case ${KDE_SUBSLOT} in
 esac
 
 case ${KDE_AUTODEPS} in
-	false)	;;
-	*)
-		BDEPEND+=" $(add_frameworks_dep extra-cmake-modules)"
-		RDEPEND+=" >=kde-frameworks/kf-env-4"
-		COMMONDEPEND+=" $(add_qt_dep qtcore)"
+	false)
+		inherit cmake-utils
+		# @ECLASS-VARIABLE: ECM_KDEINSTALLDIRS
+		# @DESCRIPTION:
+		# If set to "false", do nothing.
+		# For any other value, assume the package is using KDEInstallDirs macro and switch
+		# KDE_INSTALL_USE_QT_SYS_PATHS to ON.
+		: ${ECM_KDEINSTALLDIRS:=true}
 
+		case ${KDE_DEBUG} in
+			false)	;;
+			*)
+				IUSE+=" debug"
+				;;
+		esac
+
+		case ${KDE_TEST} in
+			false)	;;
+			*)
+				IUSE+=" test"
+				DEPEND+=" test? ( dev-qt/qttest:5 )"
+				;;
+		esac
+		;;
+	*)
 		# all packages need breeze/oxygen icons for basic iconset, bug #564838
 		if [[ ${PN} != breeze-icons && ${PN} != oxygen-icons ]]; then
-			RDEPEND+=" || ( $(add_frameworks_dep breeze-icons) kde-frameworks/oxygen-icons:* )"
+			ECM_NONGUI=false
 		fi
-		;;
-esac
-
-case ${KDE_DEBUG} in
-	false)	;;
-	*)
-		IUSE+=" debug"
-		;;
-esac
-
-case ${KDE_DESIGNERPLUGIN} in
-	false)  ;;
-	*)
-		IUSE+=" designer"
-		if [[ ${CATEGORY} = kde-apps && ${PV} = 19.0[48]* ]]; then
-			BDEPEND+=" designer? ( $(add_frameworks_dep kdesignerplugin) )"
-		else
-			BDEPEND+=" designer? ( $(add_qt_dep designer) )"
+		# propagate deprecated variables to ecm.eclass
+		if [[ -z ${ECM_DESIGNERPLUGIN} && ${CATEGORY} != kde-apps ]]; then
+			ECM_DESIGNERPLUGIN=${KDE_DESIGNERPLUGIN}
+			KDE_DESIGNERPLUGIN=false # use fallback var only for kde-apps
 		fi
-esac
-
-case ${KDE_EXAMPLES} in
-	false)  ;;
-	*)
-		IUSE+=" examples"
+		[[ -z ${ECM_DEBUG} ]] && ECM_DEBUG=${KDE_DEBUG}
+		[[ -z ${ECM_EXAMPLES} ]] && ECM_EXAMPLES=${KDE_EXAMPLES}
+		[[ -z ${ECM_HANDBOOK} ]] && ECM_HANDBOOK=${KDE_HANDBOOK}
+		[[ -z ${ECM_HANDBOOK_DIR} ]] && ECM_HANDBOOK_DIR=${KDE_DOC_DIR}
+		[[ -z ${ECM_PO_DIRS} ]] && ECM_PO_DIRS=${KDE_PO_DIRS}
+		[[ -z ${ECM_QTHELP} ]] && ECM_QTHELP=${KDE_QTHELP}
+		[[ -z ${ECM_TEST} ]] && ECM_TEST=${KDE_TEST}
+		[[ -z ${KFMIN} ]] && KFMIN=${FRAMEWORKS_MINIMAL}
+		inherit ecm
 		;;
 esac
 
-case ${KDE_HANDBOOK} in
-	false)	;;
-	*)
-		IUSE+=" +handbook"
-		BDEPEND+=" handbook? ( $(add_frameworks_dep kdoctools) )"
-		;;
-esac
+EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
 
-case ${KDE_QTHELP} in
-	false)	;;
-	*)
-		IUSE+=" doc"
-		COMMONDEPEND+=" doc? ( $(add_qt_dep qt-docs) )"
-		BDEPEND+=" doc? (
-			$(add_qt_dep qthelp)
-			>=app-doc/doxygen-1.8.13-r1
-		)"
-		;;
-esac
-
-case ${KDE_TEST} in
-	false)	;;
-	*)
-		IUSE+=" test"
-		DEPEND+=" test? ( $(add_qt_dep qttest) )"
-		;;
-esac
-
-DEPEND+=" ${COMMONDEPEND}"
-RDEPEND+=" ${COMMONDEPEND}"
-unset COMMONDEPEND
-
-# @FUNCTION: kde5_pkg_pretend
+# @FUNCTION: _kde5_strip_handbook_translations
+# @INTERNAL
 # @DESCRIPTION:
-# Checks if the active compiler meets the minimum version requirements.
-# phase function is only exported if KDE_GCC_MINIMAL is defined.
-kde5_pkg_pretend() {
-	debug-print-function ${FUNCNAME} "$@"
-	_check_gcc_version
-}
-
-# @FUNCTION: kde5_pkg_setup
-# @DESCRIPTION:
-# Checks if the active compiler meets the minimum version requirements.
-kde5_pkg_setup() {
-	debug-print-function ${FUNCNAME} "$@"
-	_check_gcc_version
-}
-
-# @FUNCTION: kde5_src_unpack
-# @DESCRIPTION:
-# Unpack the sources, automatically handling both release and live ebuilds.
-kde5_src_unpack() {
-	debug-print-function ${FUNCNAME} "$@"
-	kde.org_src_unpack
-}
-
-# @FUNCTION: kde5_src_prepare
-# @DESCRIPTION:
-# Wrapper for cmake-utils_src_prepare with lots of extra logic for magic
-# handling of linguas, tests, handbook etc.
-kde5_src_prepare() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	cmake-utils_src_prepare
-
-	# only build examples when required
-	if ! { in_iuse examples && use examples; } ; then
-		cmake_comment_add_subdirectory examples
+# If LINGUAS is defined, enable only the requested translations when required.
+_kde5_strip_handbook_translations() {
+	if ! [[ -v LINGUAS ]]; then
+		return
 	fi
 
-	# only enable handbook when required
-	if in_iuse handbook && ! use handbook ; then
-		cmake_comment_add_subdirectory ${KDE_DOC_DIR}
-
-		if [[ ${KDE_HANDBOOK} = forceoptional ]] ; then
-			punt_bogus_dep KF5 DocTools
-			sed -i -e "/kdoctools_install/ s/^/#DONT/" CMakeLists.txt || die
-		fi
-	fi
-
-	# drop translations when nls is not wanted
-	if in_iuse nls && ! use nls ; then
-		local po
-		for po in ${KDE_PO_DIRS}; do
-			if [[ -d ${po} ]] ; then
-				rm -r ${po} || die
-			fi
-		done
-	fi
-
-	# enable only the requested translations when required
-	# always install unconditionally for kconfigwidgets - if you use language
-	# X as system language, and there is a combobox with language names, the
-	# translated language name for language Y is taken from /usr/share/locale/Y/kf5_entry.desktop
-	if [[ -v LINGUAS && ${PN} != kconfigwidgets ]] ; then
-		local po
-		for po in ${KDE_PO_DIRS}; do
+	local lang po
+	for po in ${ECM_PO_DIRS}; do
 		if [[ -d ${po} ]] ; then
 			pushd ${po} > /dev/null || die
 			local lang
@@ -329,8 +233,69 @@ kde5_src_prepare() {
 			done
 			popd > /dev/null || die
 		fi
-		done
-	fi
+	done
+}
+
+# @FUNCTION: kde5_pkg_pretend
+# @DESCRIPTION:
+# Checks if the active compiler meets the minimum version requirements.
+# phase function is only exported if KDE_GCC_MINIMAL is defined.
+kde5_pkg_pretend() {
+	debug-print-function ${FUNCNAME} "$@"
+	case ${KDE_AUTODEPS} in
+		false) ;;
+		*) ecm_pkg_pretend ;;
+	esac
+}
+
+# @FUNCTION: kde5_pkg_setup
+# @DESCRIPTION:
+# Checks if the active compiler meets the minimum version requirements.
+kde5_pkg_setup() {
+	debug-print-function ${FUNCNAME} "$@"
+	case ${KDE_AUTODEPS} in
+		false) ;;
+		*) ecm_pkg_setup ;;
+	esac
+}
+
+# @FUNCTION: kde5_src_unpack
+# @DESCRIPTION:
+# Unpack the sources, automatically handling both release and live ebuilds.
+kde5_src_unpack() {
+	debug-print-function ${FUNCNAME} "$@"
+	kde.org_src_unpack
+}
+
+# @FUNCTION: kde5_src_prepare
+# @DESCRIPTION:
+# Wrapper for cmake-utils_src_prepare with lots of extra logic for magic
+# handling of linguas, tests, handbook etc.
+kde5_src_prepare() {
+	debug-print-function ${FUNCNAME} "$@"
+	case ${KDE_AUTODEPS} in
+		false)
+			cmake-utils_src_prepare
+
+			_kde5_strip_handbook_translations
+
+			# only build unit tests when required
+			if ! { in_iuse test && use test; } ; then
+				if [[ ${KDE_TEST} = forceoptional ]] ; then
+					punt_bogus_dep Qt5 Test
+					# if forceoptional, also cover non-kde categories
+					cmake_comment_add_subdirectory autotests test tests
+				elif [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
+					cmake_comment_add_subdirectory autotests test tests
+				fi
+			fi
+			# in frameworks, tests = manual tests so never build them
+			if [[ ${CATEGORY} = kde-frameworks ]] && [[ ${PN} != extra-cmake-modules ]]; then
+				cmake_comment_add_subdirectory tests
+			fi
+			;;
+		*) ecm_src_prepare ;;
+	esac
 
 	# PORTING: bogus, overzealous 'en' docbook disabling is not carried over
 	if [[ ${KDE_BUILD_TYPE} = release && ${CATEGORY} != kde-apps ]] ; then
@@ -345,42 +310,6 @@ kde5_src_prepare() {
 			popd > /dev/null || die
 		fi
 	fi
-
-	# only build unit tests when required
-	if ! { in_iuse test && use test; } ; then
-		if [[ ${KDE_TEST} = forceoptional ]] ; then
-			punt_bogus_dep Qt5 Test
-			# if forceoptional, also cover non-kde categories
-			cmake_comment_add_subdirectory autotests test tests
-		elif [[ ${KDE_TEST} = forceoptional-recursive ]] ; then
-			punt_bogus_dep Qt5 Test
-			local f pf="${T}/${P}"-tests-optional.patch
-			touch ${pf} || die "Failed to touch patch file"
-			for f in $(find . -type f -name "CMakeLists.txt" -exec \
-				grep -l "^\s*add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)" {} \;); do
-				cp ${f} ${f}.old || die "Failed to prepare patch origfile"
-				pushd ${f%/*} > /dev/null || die
-					punt_bogus_dep Qt5 Test
-					sed -i CMakeLists.txt -e \
-						"/^#/! s/add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/" \
-						|| die
-				popd > /dev/null || die
-				diff -Naur ${f}.old ${f} 1>>${pf}
-				rm ${f}.old || die "Failed to clean up"
-			done
-			einfo "Build system was modified by KDE_TEST=forceoptional-recursive."
-			einfo "Unified diff file ready for pickup in:"
-			einfo "  ${pf}"
-			einfo "Push it upstream to make this message go away."
-		elif [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
-			cmake_comment_add_subdirectory autotests test tests
-		fi
-	fi
-
-	# in frameworks, tests = manual tests so never build them
-	if [[ ${CATEGORY} = kde-frameworks ]] && [[ ${PN} != extra-cmake-modules ]]; then
-		cmake_comment_add_subdirectory tests
-	fi
 }
 
 # @FUNCTION: kde5_src_configure
@@ -389,51 +318,38 @@ kde5_src_prepare() {
 # handbook, tests etc.
 kde5_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
+	case ${KDE_AUTODEPS} in
+		false)
+			# we rely on cmake-utils.eclass to append -DNDEBUG too
+			if in_iuse debug && ! use debug; then
+				append-cppflags -DQT_NO_DEBUG
+			fi
 
-	# we rely on cmake-utils.eclass to append -DNDEBUG too
-	if in_iuse debug && ! use debug; then
-		append-cppflags -DQT_NO_DEBUG
-	fi
+			local cmakeargs
 
-	local cmakeargs
+			if in_iuse test && ! use test ; then
+				cmakeargs+=( -DBUILD_TESTING=OFF )
 
-	if in_iuse test && ! use test ; then
-		cmakeargs+=( -DBUILD_TESTING=OFF )
+				if [[ ${KDE_TEST} = optional ]] ; then
+					cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON )
+				fi
+			fi
+			if [[ ${ECM_KDEINSTALLDIRS} != false ]] ; then
+				cmakeargs+=(
+					# install mkspecs in the same directory as qt stuff
+					-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+					# move handbook outside of doc dir, bug 667138
+					-DKDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help"
+				)
+			fi
 
-		if [[ ${KDE_TEST} = optional ]] ; then
-			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON )
-		fi
-	fi
+			# allow the ebuild to override what we set here
+			mycmakeargs=("${cmakeargs[@]}" "${mycmakeargs[@]}")
 
-	if in_iuse handbook && ! use handbook && [[ ${KDE_HANDBOOK} = optional ]] ; then
-		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=ON )
-	fi
-
-	if in_iuse designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
-		if [[ ${CATEGORY} = kde-frameworks ]]; then
-			cmakeargs+=( -DBUILD_DESIGNERPLUGIN=$(usex designer) )
-		else
-			cmakeargs+=( $(cmake-utils_use_find_package designer KF5DesignerPlugin) )
-		fi
-	fi
-
-	if [[ ${KDE_QTHELP} != false ]]; then
-		cmakeargs+=( -DBUILD_QCH=$(usex doc) )
-	fi
-
-	if [[ ${ECM_KDEINSTALLDIRS} != false ]] ; then
-		cmakeargs+=(
-			# install mkspecs in the same directory as qt stuff
-			-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-			# move handbook outside of doc dir, bug 667138
-			-DKDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help"
-		)
-	fi
-
-	# allow the ebuild to override what we set here
-	mycmakeargs=("${cmakeargs[@]}" "${mycmakeargs[@]}")
-
-	cmake-utils_src_configure
+			cmake-utils_src_configure
+			;;
+		*) ecm_src_configure ;;
+	esac
 }
 
 # @FUNCTION: kde5_src_compile
@@ -442,8 +358,10 @@ kde5_src_configure() {
 # is included as part of the API just in case it's needed in the future.
 kde5_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	cmake-utils_src_compile "$@"
+	case ${KDE_AUTODEPS} in
+		false) cmake-utils_src_compile ;;
+		*) ecm_src_compile ;;
+	esac
 }
 
 # @FUNCTION: kde5_src_test
@@ -452,30 +370,10 @@ kde5_src_compile() {
 # and virtualx.
 kde5_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	_test_runner() {
-		if [[ -n "${VIRTUALDBUS_TEST}" ]]; then
-			export $(dbus-launch)
-		fi
-
-		cmake-utils_src_test
-	}
-
-	# When run as normal user during ebuild development with the ebuild command, the
-	# kde tests tend to access the session DBUS. This however is not possible in a real
-	# emerge or on the tinderbox.
-	# > make sure it does not happen, so bad tests can be recognized and disabled
-	unset DBUS_SESSION_BUS_ADDRESS DBUS_SESSION_BUS_PID
-
-	if [[ ${VIRTUALX_REQUIRED} = always || ${VIRTUALX_REQUIRED} = test ]]; then
-		virtx _test_runner
-	else
-		_test_runner
-	fi
-
-	if [[ -n "${DBUS_SESSION_BUS_PID}" ]] ; then
-		kill ${DBUS_SESSION_BUS_PID}
-	fi
+	case ${KDE_AUTODEPS} in
+		false) cmake-utils_src_test ;;
+		*) ecm_src_test ;;
+	esac
 }
 
 # @FUNCTION: kde5_src_install
@@ -483,8 +381,10 @@ kde5_src_test() {
 # Wrapper for cmake-utils_src_install. Currently doesn't do anything extra.
 kde5_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	cmake-utils_src_install
+	case ${KDE_AUTODEPS} in
+		false) cmake-utils_src_install ;;
+		*) ecm_src_install ;;
+	esac
 }
 
 # @FUNCTION: kde5_pkg_preinst
@@ -492,8 +392,10 @@ kde5_src_install() {
 # Sets up environment variables required in kde5_pkg_postinst.
 kde5_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	xdg_pkg_preinst
+	case ${KDE_AUTODEPS} in
+		false) xdg_pkg_preinst ;;
+		*) ecm_pkg_preinst ;;
+	esac
 }
 
 # @FUNCTION: kde5_pkg_postinst
@@ -501,17 +403,10 @@ kde5_pkg_preinst() {
 # Updates the various XDG caches (icon, desktop, mime) if necessary.
 kde5_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	xdg_pkg_postinst
-
-	if [[ -z ${I_KNOW_WHAT_I_AM_DOING} ]]; then
-		if [[ ${KDE_BUILD_TYPE} = live ]]; then
-			echo
-			einfo "WARNING! This is an experimental live ebuild of ${CATEGORY}/${PN}"
-			einfo "Use it at your own risk."
-			einfo "Do _NOT_ file bugs at bugs.gentoo.org because of this ebuild!"
-		fi
-	fi
+	case ${KDE_AUTODEPS} in
+		false) xdg_pkg_postinst ;;
+		*) ecm_pkg_postinst ;;
+	esac
 }
 
 # @FUNCTION: kde5_pkg_postrm
@@ -519,8 +414,10 @@ kde5_pkg_postinst() {
 # Updates the various XDG caches (icon, desktop, mime) if necessary.
 kde5_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	xdg_pkg_postrm
+	case ${KDE_AUTODEPS} in
+		false) xdg_pkg_postrm ;;
+		*) ecm_pkg_postrm ;;
+	esac
 }
 
 fi
