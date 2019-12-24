@@ -16514,7 +16514,7 @@ sci-libs/plplot 5.12.0-r1: Multi-language scientific plotting library
 sci-libs/primegen 0.97-r1 0.97-r2: Small, fast library to generate primes in order
 sci-libs/profnet 1.0.22: Neural network architecture for profacc
 sci-libs/profphd-utils 1.0.10 1.0.10-r1: Additional utils for profphd
-sci-libs/proj 4.8.0 4.9.2 5.2.0 6.0.0 6.2.0: PROJ coordinate transformation software
+sci-libs/proj 4.8.0 4.9.2 5.2.0 6.0.0 6.2.0 6.2.1: PROJ coordinate transformation software
 sci-libs/punc 1.5: Portable Understructure for Numerical Computing
 sci-libs/pycifrw 3.6.2 4.1.1: Reading and writing CIF (Crystallographic Information Format) files
 sci-libs/pymmlib 1.2.1: Toolkit and library for the analysis and manipulation of macromolecular models
@@ -16644,7 +16644,7 @@ sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations 
 sci-mathematics/twelf 1.7.1 1.7.1-r1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
 sci-mathematics/why3-for-spark 2018 2019: Platform for deductive program verification
-sci-mathematics/wxmaxima 18.11.4 19.05.7 19.08.1 19.09.0 19.10.0 19.11.0 19.12.1: Graphical frontend to Maxima, using the wxWidgets toolkit
+sci-mathematics/wxmaxima 18.11.4 19.05.7 19.08.1 19.09.0 19.10.0 19.11.0 19.12.1 19.12.2: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/xmds 2.2.2: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-mathematics/yacas 1.7.0-r1: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
