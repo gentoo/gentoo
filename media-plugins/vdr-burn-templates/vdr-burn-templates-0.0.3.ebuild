@@ -1,13 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="DVD-themes (background and menu) for vdr-burn"
 HOMEPAGE="http://www.vdr-wiki.de/wiki/index.php/Vorlagen_(burn-plugin)"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+SRC_URI="http://vdr.websitec.de/download/${PN}/${P}.tar.gz"
 
 LICENSE="FDL-1.2" # only
 SLOT="0"
@@ -22,5 +20,5 @@ src_install() {
 
 	insinto /usr/share/vdr/burn
 	insopts -m0644 -ovdr -gvdr
-	doins "${S}"/*
+	doins "${S}"/*.png
 }
