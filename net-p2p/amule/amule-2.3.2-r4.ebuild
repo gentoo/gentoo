@@ -26,7 +26,7 @@ RDEPEND="
 	>=x11-libs/wxGTK-3.0.4:${WX_GTK_VER}[X?]
 	stats? ( media-libs/gd:=[jpeg,png] )
 	geoip? ( dev-libs/geoip )
-	upnp? ( net-libs/libupnp:* )
+	upnp? ( net-libs/libupnp:0 )
 	remote? ( media-libs/libpng:0= )
 "
 DEPEND="${RDEPEND}"
@@ -39,6 +39,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.2-cryptopp-6.patch"
 	"${FILESDIR}/${PN}-2.3.2-disable-version-check.patch"
 	"${FILESDIR}/${PN}-2.3.2-fix-crash-when-shared-files-changed.patch"
+	"${FILESDIR}/${PN}-2.3.2-libupnp-1.8.patch"
+	"${FILESDIR}/${PN}-2.3.2-libupnp-1.6.patch"
 )
 
 pkg_setup() {
