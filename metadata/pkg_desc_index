@@ -13630,7 +13630,7 @@ media-plugins/vdr-beep 0.1.2: VDR plugin: Use the PC speaker to signalize some e
 media-plugins/vdr-bgprocess 0.1.0: VDR plugin: Collect information about background process status
 media-plugins/vdr-browse 0.2.0: VDR plugin: browse now/next epg info while keep watching the current channel
 media-plugins/vdr-burn 0.2.2-r1: VDR Plugin: burn records on DVD
-media-plugins/vdr-burn-templates 0.0.2: DVD-themes (background and menu) for vdr-burn
+media-plugins/vdr-burn-templates 0.0.3: DVD-themes (background and menu) for vdr-burn
 media-plugins/vdr-calc 0.0.1_rc5: VDR Plugin: OSD Calculator
 media-plugins/vdr-cdplayer 1.2.2: VDR Plugin: CD-PLAYER
 media-plugins/vdr-chanman 0.0.9: VDR plugin: change channel with a multi level choice
