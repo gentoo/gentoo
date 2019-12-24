@@ -8170,7 +8170,7 @@ dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle,
 dev-python/mini-amf 0.9.1: Minimal AMF encoder and decoder for Python
 dev-python/minidb 2.0.2 2.0.2-r1: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
-dev-python/miniupnpc 2.1.20190625 2.1.20190824: Python bindings for UPnP client library
+dev-python/miniupnpc 2.1.20190625 2.1.20190824 2.1.20191224: Python bindings for UPnP client library
 dev-python/misaka 1.0.2: The Python binding for Sundown, a markdown parsing library
 dev-python/mistune 0.8.3 0.8.4: The fastest markdown parser in pure Python
 dev-python/mkdocs 0.15.3 1.0.1: Project documentation with Markdown.
@@ -15018,7 +15018,7 @@ net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for soft
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
 net-libs/mbedtls 2.10.0 2.12.0 2.16.3 2.17.0 2.18.1 2.19.1: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
-net-libs/miniupnpc 2.1.20190625 2.1.20190824: UPnP client library and a simple UPnP client
+net-libs/miniupnpc 2.1.20190625 2.1.20190824 2.1.20191224: UPnP client library and a simple UPnP client
 net-libs/nDPI 2.0 2.2 2.8: Open Source Deep Packet Inspection Software Toolkit
 net-libs/nativebiginteger 0.9.36-r1 0.9.42: jbigi library used by net-vpn/i2p
 net-libs/neon 0.30.2: HTTP and WebDAV client library
