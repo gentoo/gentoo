@@ -4021,7 +4021,8 @@ media-fonts/infinality-ultimate-meta:free - Install fonts for the "free" preset
 media-fonts/infinality-ultimate-meta:latin - Install additional latin fonts
 media-fonts/infinality-ultimate-meta:minimal - Install a minimal set of fonts
 media-fonts/infinality-ultimate-meta:ms - Install (free) fonts for the "ms" preset
-media-fonts/intlfonts:bdf - Installs BDF fonts in addition to PCF
+media-fonts/intlfonts:bdf - Install BDF fonts in addition to PCF
+media-fonts/intlfonts:non-free - Install non-free Tibetan fonts
 media-fonts/liberation-fonts:fontforge - Use media-gfx/fontforge to build fonts from source
 media-fonts/montecarlo:bdf - Install BDF fonts in addition to PCF
 media-fonts/mplus-outline-fonts:ipafont - Generates new fonts merged with media-fonts/ja-ipafonts
@@ -4260,7 +4261,6 @@ media-libs/ganv:fdgl - Use experimental force-directed graph layout
 media-libs/gd:webp - Enable support for the webp format
 media-libs/gegl:lensfun - Enable support for media-libs/lensfun.
 media-libs/gegl:umfpack - Enable sparse solving via sci-libs/umfpack.
-media-libs/giflib:rle - Build converters for RLE format (utah raster toolkit)
 media-libs/gmtk:dconf - Enable support for gnome-base/dconf
 media-libs/grilo:network - Enable network access for media discovery using net-libs/libsoup
 media-libs/grilo:playlist - Enable support for playlists through dev-libs/totem-pl-parser
