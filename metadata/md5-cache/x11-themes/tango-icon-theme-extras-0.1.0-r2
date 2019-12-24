@@ -1,14 +1,15 @@
+BDEPEND=gnome-base/librsvg virtual/imagemagick-tools[png?] virtual/pkgconfig x11-misc/icon-naming-utils >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure postinst postrm preinst prepare
-DEPEND=>=x11-themes/tango-icon-theme-0.8.90 virtual/pkgconfig >=gnome-base/librsvg-2.34 virtual/imagemagick-tools[png?] >=x11-misc/icon-naming-utils-0.8.90 >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=x11-themes/tango-icon-theme dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Tango icons for iPod Digital Audio Player devices and the Dell Pocket DJ DAP
-EAPI=4
+EAPI=7
 HOMEPAGE=http://tango.freedesktop.org
 IUSE=png
 KEYWORDS=amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=CC-BY-SA-2.5
-RDEPEND=>=x11-themes/tango-icon-theme-0.8.90
+RDEPEND=x11-themes/tango-icon-theme
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=http://tango.freedesktop.org/releases/tango-icon-theme-extras-0.1.0.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=5334ebe2f7fa4f7d95a8a785d726cedd
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=a2e47feb06908739edbd963e68a81889

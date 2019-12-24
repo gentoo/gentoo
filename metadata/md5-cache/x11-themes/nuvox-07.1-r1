@@ -1,11 +1,11 @@
-DEFINED_PHASES=compile install prepare
-DEPEND=virtual/imagemagick-tools[png]
+BDEPEND=virtual/imagemagick-tools[png]
+DEFINED_PHASES=compile install
 DESCRIPTION=NuvoX SVG icon theme
-EAPI=4
+EAPI=7
 HOMEPAGE=http://www.kde-look.org/content/show.php?content=38467
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://gentoo/nuvoX_07.1.tar.gz
-_md5_=ae9c30156daef1cb183903481bc9f326
+_md5_=0bc37bd15a7bfe4117ed1a3b0cf76d2f
