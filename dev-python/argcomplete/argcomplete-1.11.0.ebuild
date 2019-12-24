@@ -17,6 +17,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+RDEPEND="
+	$(python_gen_cond_dep '
+		<dev-python/importlib_metadata-2[${PYTHON_USEDEP}]
+	' -2 python3_{5,6,7} pypy3)"
 # pip is called as an external tool
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -26,10 +30,6 @@ BDEPEND="
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		dev-python/pip
 	)"
-
-PATCHES=(
-	"${FILESDIR}"/argcomplete-1.10.2-test-pythonpath.patch
-)
 
 python_test() {
 	"${EPYTHON}" test/test.py -v || die
