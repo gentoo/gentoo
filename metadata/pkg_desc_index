@@ -7454,7 +7454,7 @@ dev-python/aplpy 1.0 1.1.1: Astronomical Plotting Library in Python
 dev-python/appdirs 1.4.3 1.4.3-r1: Module for determining appropriate platform-specific dirs
 dev-python/apsw 3.23.1_p1 3.25.2_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
-dev-python/argcomplete 1.9.4 1.10.0 1.10.2 1.10.3: Bash tab completion for argparse
+dev-python/argcomplete 1.9.4 1.10.3 1.11.0: Bash tab completion for argparse
 dev-python/argh 0.26.2-r1 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2_cffi 19.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/args 0.1.0 0.1.0-r1: Command Arguments for Humans
@@ -8612,6 +8612,7 @@ dev-python/pypodman 0.12.1.2: CLI for podman written in python
 dev-python/pypowervm 1.1.6 1.1.10 1.1.16 1.1.20: Python binding for the PowerVM REST API
 dev-python/pyprof2calltree 1.4.0: convert python profile data to kcachegrind calltree form
 dev-python/pyproj 1.9.5.1-r1 2.4.2: Python interface to the PROJ library
+dev-python/pyproject2setuppy 2: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
 dev-python/pyptlib 0.0.6: Python library for tor's pluggable transport managed-proxy protocol
 dev-python/pypy 7.2.0 7.3.0_rc1 9999: A fast, compliant alternative implementation of the Python language
@@ -17555,7 +17556,7 @@ sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8
 sys-devel/distcc 3.3.2-r5 3.3.3: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.12-r1: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
-sys-devel/gcc 3.3.6-r5 3.4.6-r5 4.0.4-r3 4.1.2-r2 4.2.4-r4 4.3.6-r4 4.4.7-r3 4.5.4-r3 4.6.4-r3 4.7.4-r3 4.8.5-r3 4.9.4-r1 5.5.0 6.5.0-r1 7.3.0-r6 7.4.0-r2 7.5.0 8.3.0-r1 8.3.0-r3 9.2.0-r2 9.2.0-r3: The GNU Compiler Collection
+sys-devel/gcc 3.3.6-r5 3.4.6-r5 4.0.4-r3 4.1.2-r2 4.2.4-r4 4.3.6-r4 4.4.7-r3 4.5.4-r3 4.6.4-r3 4.7.4-r3 4.8.5-r3 4.9.4-r1 5.5.0 6.5.0-r1 7.4.0-r2 7.5.0 8.3.0-r1 8.3.0-r3 9.2.0-r2 9.2.0-r3: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 2.1 9999: Utility to manage compilers
 sys-devel/gdb 8.3 8.3.1 9999: GNU debugger
