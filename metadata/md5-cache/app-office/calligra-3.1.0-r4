@@ -12,4 +12,4 @@ RESTRICT=!test? ( test ) test
 SLOT=5
 SRC_URI=mirror://kde/stable/calligra/3.1.0/calligra-3.1.0.tar.xz
 _eclasses_=check-reqs	5e40a693d9c828e8f3655184116e8b73	cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	ecm	eb495f8c569d2517e4be3028614090c1	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	kde.org	12c2d7da2a75330ff5de0154686dbf4b	kde5	45dc80b875d67443a0cecd5430295e32	kde5-functions	7f1ffe0e976f19abc8fc9ffe0fbccafa	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=027d9eafa9e9113867752378b2f9c07d
+_md5_=39f9403672c7e37f048a98baa56ee778
