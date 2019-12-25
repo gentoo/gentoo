@@ -1,6 +1,6 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install prepare unpack
-DEPEND=|| ( dev-lang/ruby:2.4 dev-lang/ruby:2.5 dev-lang/ruby:2.6 ) virtual/rubygems app-i18n/skktools virtual/awk cdb? ( || ( dev-db/tinycdb dev-db/cdb ) )
+DEPEND=|| ( dev-lang/ruby:2.5 dev-lang/ruby:2.4 dev-lang/ruby:2.6 ) virtual/rubygems app-i18n/skktools virtual/awk cdb? ( || ( dev-db/tinycdb dev-db/cdb ) )
 DESCRIPTION=Jisyo (dictionary) files for the SKK Japanese-input software
 EAPI=7
 HOMEPAGE=https://skk-dev.github.io/dict
@@ -8,5 +8,5 @@ IUSE=cdb ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26
 LICENSE=GPL-2 freedist public-domain
 PROPERTIES=live
 SLOT=0
-_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	5b782a86f95c84466cdb53f8c8a8be37
+_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	f627053d640d7e6707b566d26472f1a5
 _md5_=b5240220e189b909ea9aeac4535d9e7b
