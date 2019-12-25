@@ -1,0 +1,42 @@
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> ( 25 Dec 2019 )
+diff -Naur vdr-plugin-epgsearch-2.4.0.orig/Makefile vdr-plugin-epgsearch-2.4.0/Makefile
+--- vdr-plugin-epgsearch-2.4.0.orig/Makefile	2019-12-25 18:48:32.748492713 +0100
++++ vdr-plugin-epgsearch-2.4.0/Makefile	2019-12-25 18:49:35.110492713 +0100
+@@ -281,9 +281,9 @@
+ $(DEPFILE_stmp):
+ 	./docsrc2man.sh
+ 	./docsrc2html.sh
+-	ln -sf ./doc/en/epgsearch.4.txt MANUAL
+-	ln -sf ./doc/en/epgsearch.1.txt README
+-	ln -sf ./doc/de/epgsearch.1.txt README.DE
++#	ln -sf ./doc/en/epgsearch.4.txt MANUAL
++#	ln -sf ./doc/en/epgsearch.1.txt README
++#	ln -sf ./doc/de/epgsearch.1.txt README.DE
+ 	@rm -f $(DEPFILE_stmp)
+ 	@date > $(DEPFILE_stmp)
+ 
+@@ -306,7 +306,7 @@
+ 	$(Q)install -D libvdr-$(PLUGIN4).so $(DESTDIR)$(LIBDIR)/libvdr-$(PLUGIN4).so.$(APIVERSION)
+ 
+ install-conf:
+-	mkdir -p $(DESTDIR)$(CONFDIR)/plugins/$(PLUGIN)/conf.d
++	mkdir -p $(DESTDIR)$(CONFDIR)/plugins/$(PLUGIN)
+ 	cp -n conf/* $(DESTDIR)$(CONFDIR)/plugins/$(PLUGIN)
+ 
+ install-doc:
+@@ -325,7 +325,7 @@
+ 	mkdir -p $(DESTDIR)$(BINDIR)
+ 	cp createcats $(DESTDIR)$(BINDIR)
+ 
+-install: install-lib install-i18n install-conf install-doc install-bin
++install: install-lib install-i18n install-conf install-bin
+ 
+ install-lib: install-$(PLUGIN) install-$(PLUGIN2) install-$(PLUGIN3) install-$(PLUGIN4)
+ 
+@@ -358,3 +358,6 @@
+ 	@-rm -rf doc html man
+ 	@-rm -f MANUAL README README.DE
+ 	@-rm -f $(DEPFILE_stmp) $(DEPFILE_DOC)
++
++# make detection in vdr-plugin-2.eclass for new Makefile handling happy
++# SOFILE
