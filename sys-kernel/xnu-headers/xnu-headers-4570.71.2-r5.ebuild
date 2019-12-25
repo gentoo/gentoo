@@ -45,8 +45,6 @@ src_install() {
 	insinto /usr/include/sys
 	doins syscall.h _posix_availability.h _symbol_aliasing.h
 
-	pushd bsd > /dev/null || die
-
 	get_files_list() {
 		local s="$1"
 		local f="$2"/Makefile
@@ -66,8 +64,11 @@ src_install() {
 
 	local d
 	local files
-	for d in arm bsm i386 machine miscfs/{devfs,specfs,union} net \
-		netinet{,6} netkey nfs sys{,/_types} uuid vfs ;
+
+	pushd bsd > /dev/null || die
+
+	for d in arm bsm i386 machine miscfs/{devfs,specfs,union} \
+		net netinet{,6} netkey nfs sys{,/_types} uuid vfs ;
 	do
 		insinto /usr/include/${d}
 		files=( $(get_datafiles ${d}) )
@@ -81,7 +82,7 @@ src_install() {
 
 	pushd osfmk > /dev/null || die
 
-	for d in mach{,/arm,/i386,/machine} mach_debug ; do
+	for d in device mach{,/arm,/i386,/machine} mach_debug ; do
 		insinto /usr/include/${d}
 		files=( $(get_datafiles ${d}) )
 		einfo "${d}:" ${files[*]}
