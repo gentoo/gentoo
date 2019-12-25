@@ -34,12 +34,12 @@ src_prepare() {
 	default
 
 	# Debian fixes
-        for p in $(<"${WORKDIR}"/debian/patches/series) ; do
+	for p in $(<"${WORKDIR}"/debian/patches/series) ; do
 		eapply -p1 "${WORKDIR}/debian/patches/${p}"
-        done
+	done
 
-        eapply "${FILESDIR}"/${PN}-0.7.1-gentoo-r1.patch
-        sed -i \
+	eapply "${FILESDIR}"/${PN}-0.7.1-gentoo-r1.patch
+	sed -i \
         	-e "s:GENTOO_DATADIR:/usr/share/${PN}:" \
 		monsterz.py || die "sed failed"
 
