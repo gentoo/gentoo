@@ -2615,8 +2615,12 @@ dev-python/pypax:ptpax - Enable PT_PAX_FLAGS support.
 dev-python/pypax:xtpax - Enable XATTR_PAX_FLAGS support.
 dev-python/pypy:low-memory - Build using PyPy with the engine configured towards low memory footprint. This makes it possible to build PyPy using ~3.5G of RAM on amd64 and ~half of that on x86, at the cost of lengthened build time.
 dev-python/pypy:sandbox - Enable sandboxing functionality
+dev-python/pypy-exe:low-memory - Build using PyPy with the engine configured towards low memory footprint. This makes it possible to build PyPy using ~3.5G of RAM on amd64 and ~half of that on x86, at the cost of lengthened build time.
+dev-python/pypy-exe:sandbox - Enable sandboxing functionality
 dev-python/pypy3:low-memory - Build using PyPy with the engine configured towards low memory footprint. This makes it possible to build PyPy using ~3.5G of RAM on amd64 and ~half of that on x86, at the cost of lengthened build time.
 dev-python/pypy3:sandbox - Enable sandboxing functionality
+dev-python/pypy3-exe:low-memory - Build using PyPy with the engine configured towards low memory footprint. This makes it possible to build PyPy using ~3.5G of RAM on amd64 and ~half of that on x86, at the cost of lengthened build time.
+dev-python/pypy3-exe:sandbox - Enable sandboxing functionality
 dev-python/python-mpd:twisted - Enable twisted support
 dev-python/python-stdnum:vies - Enable VIES
 dev-python/pyudev:pygobject - Install PyGobject bindings
@@ -5214,6 +5218,7 @@ media-video/transcode:pic - disable optimized assembly code that is not PIC frie
 media-video/transcode:postproc - Build with ffmpeg libpostproc support
 media-video/vdr:alternatechannel - Use alternate channel on record
 media-video/vdr:bidi - fribidi support, for languages, written from right to left
+media-video/vdr:demoplugins - Install demo and example plugins coming with vanilla vdr
 media-video/vdr:graphtft - support for vdr-graphtft plugin up from version 0.1.7
 media-video/vdr:html - Install HTML documentation
 media-video/vdr:keyboard - enable keyboard support as remote device
@@ -5225,6 +5230,7 @@ media-video/vdr:permashift - permanent timeshift by recording live TV into RAM, 
 media-video/vdr:pinplugin - Support for media-plugins/vdr-pin
 media-video/vdr:resumereset - rreset resume of EOF
 media-video/vdr:ttxtsubs - support for media-plugins/vdr-ttxtsubs
+media-video/vdr:verbose - enable full output on compile
 media-video/vlc:X - Enable support for e.g. fullscreen mode via X and the X C-language binding. It does not build a graphical interface
 media-video/vlc:aom - Enable experimental support for AV1 codec
 media-video/vlc:archive - Enable support for libarchive stream extractor
