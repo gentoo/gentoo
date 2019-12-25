@@ -2664,7 +2664,7 @@ app-text/sgmltools-lite 3.0.3-r15: Python interface to SGML software in a DocBoo
 app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter
 app-text/sigil 0.9.13 0.9.16 0.9.18 1.0.0: Multi-platform WYSIWYG ebook editor for ePub format
 app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
-app-text/simple-fb2-reader 1.1.2: A simple gtk3 reader for fb2 ebooks
+app-text/simple-fb2-reader 1.1.2 1.1.3: A simple gtk3 reader for fb2 ebooks
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
 app-text/stardict 3.0.6-r3 4.0.0_pre20170304: A international dictionary supporting fuzzy and glob style matching
@@ -11223,7 +11223,7 @@ games-arcade/sdlroids 1.3.4-r4: Asteroids Clone for X using SDL
 games-arcade/sdlsasteroids 3.0.1-r1: Rework of Sasteroids using SDL
 games-arcade/shovel-knight 3.3: Sweeping classic action adventure with an 8-bit retro aesthetic
 games-arcade/slimevolley 2.4.2-r1: A simple volleyball game
-games-arcade/solarwolf 1.5-r1: Action/arcade recreation of SolarFox
+games-arcade/solarwolf 1.5-r2: Action/arcade recreation of SolarFox
 games-arcade/spacerider 0.13-r1: Space-shooter written in C++, using the SDL
 games-arcade/spout 1.3-r1: Abstract Japanese caveflier / shooter
 games-arcade/stardork 0.7-r1: An ncurses-based space shooter
@@ -11240,7 +11240,7 @@ games-arcade/tuxdash 0.8-r1: A simple BoulderDash clone
 games-arcade/tuxpuck 0.8.2-r2: Hover hockey
 games-arcade/vor 0.5.7-r1: Variations on Rockdodger: Dodge the rocks until you die
 games-arcade/watermelons 1.1.1-r1: A thrilling watermelon bouncing game
-games-arcade/whichwayisup 0.7.9-r2: A traditional and challenging 2D platformer game with a slight rotational twist
+games-arcade/whichwayisup 0.7.9-r3: A traditional and challenging 2D platformer game with a slight rotational twist
 games-arcade/wop 0.4.3-r2: Worms of Prey - A multi-player, real-time clone of Worms
 games-arcade/xbill 2.1-r3: A game about an evil hacker called Bill!
 games-arcade/xboing 2.4-r3: Blockout type game where you bounce a ball trying to destroy blocks
@@ -16645,7 +16645,7 @@ sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations 
 sci-mathematics/twelf 1.7.1 1.7.1-r1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
 sci-mathematics/why3-for-spark 2018 2019: Platform for deductive program verification
-sci-mathematics/wxmaxima 18.11.4 19.05.7 19.08.1 19.09.0 19.10.0 19.11.0 19.12.1 19.12.2: Graphical frontend to Maxima, using the wxWidgets toolkit
+sci-mathematics/wxmaxima 18.11.4 19.12.2: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/xmds 2.2.2: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-mathematics/yacas 1.7.0-r1: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
