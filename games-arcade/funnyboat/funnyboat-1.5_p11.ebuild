@@ -38,7 +38,7 @@ src_prepare() {
 src_install() {
 	insinto /usr/share/${PN}
 	doins -r data *.py
-	python_optimize "${ED%/}"/usr/share/${PN}
+	python_optimize "${ED}"/usr/share/${PN}
 
 	dodoc *.txt
 
