@@ -11,6 +11,8 @@ LPV=126.50.8
 UPV=35.3
 OPV=67
 DPV=433.5
+APV=703.50.37
+FPV=138
 OSX=10.12
 DESCRIPTION="Darwin system headers from Libc ${PV}, macOS ${OSX}.6"
 HOMEPAGE="https://opensource.apple.com/source/Libc"
@@ -22,8 +24,10 @@ SRC_URI="https://opensource.apple.com/tarballs/Libc/Libc-${PV}.tar.gz
 	https://opensource.apple.com/tarballs/libplatform/libplatform-${LPV}.tar.gz
 	https://opensource.apple.com/tarballs/libunwind/libunwind-${UPV}.tar.gz
 	https://opensource.apple.com/tarballs/libclosure/libclosure-${OPV}.tar.gz
+	https://opensource.apple.com/tarballs/libdispatch/libdispatch-${APV}.tar.gz
+	https://opensource.apple.com/tarballs/copyfile/copyfile-${FPV}.tar.gz
 	https://opensource.apple.com/tarballs/dyld/dyld-${DPV}.tar.gz
-	https://dev.gentoo.org/~grobian/distfiles/${PN}-${OSX}-r1.tar.gz"
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-${OSX}-r2.tar.gz"
 
 LICENSE="APSL-2"
 SLOT="${OSX}"
@@ -47,7 +51,8 @@ src_prepare() {
 	sed -i \
 		-e 's/-o "$INSTALL_OWNER" -g "$INSTALL_GROUP"//' \
 		-e 's/ln -hf/ln -sf/' \
-		"${WORKDIR}"/Libinfo-${IPV}/xcodescripts/install_files.sh
+		"${WORKDIR}"/Libinfo-${IPV}/xcodescripts/install_files.sh \
+		"${WORKDIR}"/copyfile-${FPV}/xcodescripts/install_files.sh || die
 
 	# add libmalloc manpage stuff to Libc to automate the installation
 	cp "${WORKDIR}"/libmalloc-${MPV}/man/*.3 man/ || die
@@ -83,11 +88,20 @@ src_install() {
 	run_xcode_ish ./xcodescripts/headers.sh || die
 	if use man ; then
 		run_xcode_ish ./xcodescripts/manpages.sh || die
+		for f in "${ED}"/usr/share/man/man*/* ; do
+			[[ -e ${f} ]] || rm "${f}"
+		done
 	fi
 
 	pushd "${WORKDIR}"/Libinfo-${IPV} > /dev/null || die
 	run_xcode_ish ./xcodescripts/install_files.sh || die
 	popd > /dev/null || die
+
+	if use man ; then
+		pushd "${WORKDIR}"/copyfile-${FPV} > /dev/null || die
+		run_xcode_ish ./xcodescripts/install_files.sh || die
+		popd > /dev/null || die
+	fi
 
 	insinto /usr/include
 	doins -r "${WORKDIR}"/libmalloc-${MPV}/include/malloc
@@ -97,6 +111,8 @@ src_install() {
 	doins -r "${WORKDIR}"/${PN}-${OSX}/include/*
 	doins "${WORKDIR}"/libclosure-${OPV}/Block.h
 	doins "${WORKDIR}"/dyld-${DPV}/include/dlfcn.h
+	doins "${WORKDIR}"/copyfile-${FPV}/copyfile.h \
+		"${WORKDIR}"/copyfile-${FPV}/xattr_flags.h
 
 	insinto /usr/include/sys
 	doins "${WORKDIR}"/libpthread-${PPV}/sys/qos.h
@@ -115,6 +131,12 @@ src_install() {
 		"${WORKDIR}"/CommonCrypto-${CPV}/include/CommonRandom.h \
 		"${WORKDIR}"/CommonCrypto-${CPV}/include/CommonSymmetricKeywrap.h
 
+	insinto /usr/include/dispatch
+	doins "${WORKDIR}"/libdispatch-${APV}/dispatch/*.h \
+		"${WORKDIR}"/libdispatch-${APV}/dispatch/darwin/module.modulemap
+	insinto /usr/include/os
+	doins "${WORKDIR}"/libdispatch-${APV}/os/object.h
+
 	insinto /Frameworks
 	doins -r "${WORKDIR}"/${PN}-${OSX}/Frameworks/*.framework
 
@@ -124,9 +146,11 @@ src_install() {
 	S="${WORKDIR}"/libpthread-${PPV} run_xcode_ish \
 		"${WORKDIR}"/libpthread-${PPV}/xcodescripts/install-manpages.sh || die
 
+	ln -s ../nameser.h "${ED}"/usr/include/arpa/nameser.h || die
+
 	rm -Rf "${ED}"/remove-me "${ED}"/System "${ED}"/usr/local || die
 	use man || rm -Rf "${ED}/usr/share/man"
 
-	# drop empty or conflicting headers (db is antiquated)
-	rm "${ED}"/usr/include/{db,util}.h || die
+	# drop conflicting header (db is antiquated)
+	rm "${ED}"/usr/include/db.h || die
 }
