@@ -2259,7 +2259,7 @@ app-office/gtg 0.3.1: Personal organizer for the GNOME desktop environment
 app-office/homebank 5.1.3 5.2.2 5.2.3 5.2.8: Free, easy, personal accounting for everyone
 app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
 app-office/ical 3.0-r2: Tk-based Calendar program
-app-office/impressive 0.11.2 0.12.0: Stylish way of giving presentations with Python
+app-office/impressive 0.12.0 0.13.0_beta1: Stylish way of giving presentations with Python
 app-office/kexi 3.2.0-r1: Visual database applications creator
 app-office/kmymoney 5.0.7: Personal finance manager based on KDE Frameworks
 app-office/kraft 0.82-r1: Software to manage quotes and invoices in small enterprises
@@ -7982,7 +7982,7 @@ dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.5 2.6 2.7 2.8: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.0.0 1.0.1 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
 dev-python/ijson 2.3 2.4 2.5.1: Iterative JSON parser with a Pythonic interface
-dev-python/imageio 1.5 1.6 2.0.1 2.1.1: Python library for reading and writing image data
+dev-python/imageio 1.5 1.6 2.0.1 2.1.1 2.6.1: Python library for reading and writing image data
 dev-python/imagesize 0.7.1 1.0.0 1.1.0: Pure Python module for getting image size from png/jpeg/jpeg2000/gif files
 dev-python/imapclient 0.13 2.1.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/imexam 0.7.1: Simple interactive astronomical image examination and plotting
@@ -8261,6 +8261,7 @@ dev-python/numba 0.27.0 0.35.0 0.37.0 0.39.0: NumPy aware dynamic Python compile
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.6.8 2.6.9: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.14.5 1.15.4 1.16.1 1.16.5 1.17.4: Fast array and numerical python library
+dev-python/numpy-python2 1.16.5: Fast array and numerical python library
 dev-python/numpydoc 0.6.0 0.8.0 0.9.1: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
 dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
@@ -8523,7 +8524,7 @@ dev-python/pyfltk 1.3.3: Python interface to Fltk library
 dev-python/pyformance 0.3.4 0.4: Performance metrics, based on Coda Hale's Yammer metrics
 dev-python/pyftpdlib 1.5.1 1.5.3 1.5.4 1.5.5-r1: Python FTP server library
 dev-python/pygal 2.1.1 2.1.1-r1 2.4.0: A python SVG charts generator
-dev-python/pygame 1.9.2_pre20120101-r2 1.9.3 1.9.6: Python bindings for SDL multimedia library
+dev-python/pygame 1.9.2_pre20120101-r2 1.9.3 1.9.6 1.9.6-r1: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.6-r2 6.99.12.4-r1 6.99.12.4-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pygcrypt 1.0.0: CFFI interface to dev-libs/libgcrypt
 dev-python/pygene 0.2.1-r1: Simple python genetic algorithms programming library
@@ -11165,7 +11166,7 @@ games-arcade/epiar 0.5-r1: A space adventure/combat game
 games-arcade/excido 0.1.5c-r3: A fast paced action game
 games-arcade/fishsupper 0.1.6-r1: A simple arcade/puzzle game, loosely based on the retro classic Frogger
 games-arcade/frozen-bubble 2.2.1_beta1-r1: A Puzzle Bubble clone written in perl (now with network support)
-games-arcade/funnyboat 1.5-r2: A side scrolling shooter game starring a steamboat on the sea
+games-arcade/funnyboat 1.5_p11: A side scrolling shooter game starring a steamboat on the sea
 games-arcade/gav 0.9.0-r1: GPL Arcade Volleyball
 games-arcade/gish-demo 1.6-r1: Play as an amorphous ball of tar that rolls and squishes around
 games-arcade/gnake 0.94b-r1: An ncurses-based Nibbles clone
@@ -13335,7 +13336,7 @@ media-libs/opencollada 1.6.62 1.6.63-r1: Stream based read/write library for COL
 media-libs/opencolorio 1.1.0-r1 1.1.0-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.13-r3 3.4.1-r7 4.1.2-r1 4.1.2-r2: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.13-r3 3.4.1-r7 4.1.2-r1 4.1.2-r2 4.1.2-r3: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 2.3.0: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
