@@ -1,0 +1,72 @@
+From 9065cd8d9a19864f6b618f2dc10daf577badd9ee Mon Sep 17 00:00:00 2001
+From: Martin Milata <martin@martinmilata.cz>
+Date: Wed, 4 Dec 2019 02:37:40 +0100
+Subject: Fix build with poppler-0.83
+
+Change-Id: I7a3684932b8f9c403a3368b42fa4d8039c67f1a9
+Reviewed-on: https://gerrit.libreoffice.org/84384
+Tested-by: Jenkins
+Reviewed-by: Michael Stahl <michael.stahl@cib.de>
+---
+ sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx | 7 +++++++
+ sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx | 4 ++++
+ sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx    | 4 ++++
+ 3 files changed, 15 insertions(+)
+
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+index 26048177e87d..e9c2a407c279 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+@@ -491,11 +491,18 @@ void PDFOutDev::writeFontFile( GfxFont* gfxFont ) const
+     gfree(pBuf);
+ }
+ 
++#if POPPLER_CHECK_VERSION(0, 83, 0)
++void PDFOutDev::printPath( const GfxPath* pPath )
++#else
+ void PDFOutDev::printPath( GfxPath* pPath )
++#endif
+ {
+     int nSubPaths = pPath ? pPath->getNumSubpaths() : 0;
+     for( int i=0; i<nSubPaths; i++ )
+     {
++#if POPPLER_CHECK_VERSION(0, 83, 0)
++        const
++#endif
+         GfxSubpath* pSub  = pPath->getSubpath( i );
+         const int nPoints = pSub->getNumPoints();
+ 
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
+index 02f6b59f6f15..2e7d2186f9a1 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
+@@ -149,7 +149,11 @@ namespace pdfi
+ 
+         int  parseFont( long long nNewId, GfxFont* pFont, GfxState* state ) const;
+         void writeFontFile( GfxFont* gfxFont ) const;
++#if POPPLER_CHECK_VERSION(0, 83, 0)
++        static void printPath( const GfxPath* pPath );
++#else
+         static void printPath( GfxPath* pPath );
++#endif
+ 
+     public:
+         explicit PDFOutDev( PDFDoc* pDoc );
+diff --git a/sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx b/sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx
+index 42178b650cdd..b1a54bd09c5f 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/wrapper_gpl.cxx
+@@ -68,7 +68,11 @@ int main(int argc, char **argv)
+     }
+ 
+     // read config file
++#if POPPLER_CHECK_VERSION(0, 83, 0)
++    globalParams = std::make_unique<GlobalParams>();
++#else
+     globalParams = new GlobalParams();
++#endif
+     globalParams->setErrQuiet(true);
+ #if defined(_MSC_VER)
+     globalParams->setupBaseFonts(nullptr);
+-- 
+cgit v1.2.1
