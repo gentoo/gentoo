@@ -83,6 +83,7 @@ RDEPEND="
 	)
 	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
 	python? (
+		${PYTHON_DEPS}
 		$(python_gen_cond_dep 'dev-python/numpy-python2:0[${PYTHON_USEDEP}]' 'python2*')
 		$(python_gen_cond_dep 'dev-python/numpy:0[${PYTHON_USEDEP}]' 'python3*')
 	)
