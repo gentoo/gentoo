@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit desktop python-single-r1
+inherit desktop python-r1
 
 MY_PV="${PV//./}"
 MY_P="${PN}_b${MY_PV}"
@@ -23,11 +23,17 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	dev-python/pygame[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	app-arch/unzip
-"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${PN}"
+
+PATCHES=(
+	# Fixes from Fedora
+	"${FILESDIR}"/${P}-check_for_joystick_axes_not_null.patch
+	"${FILESDIR}"/${P}-initialize_only_required_pygame_modules.patch
+	"${FILESDIR}"/${P}-python3.patch
+)
 
 src_prepare() {
 	default
@@ -37,8 +43,7 @@ src_prepare() {
 	sed -i \
 		-e "s:data_dir\ =\ .*:data_dir\ =\ \"/usr/share/${PN}\":" \
 		lib/data.py || die
-	rm data/pictures/Thumbs.db
-	python_fix_shebang .
+	rm data/pictures/Thumbs.db || die
 }
 
 src_install() {
@@ -46,8 +51,6 @@ src_install() {
 
 	insinto "/usr/$(get_libdir)/${PN}"
 	doins lib/*.py
-
-	python_optimize "${ED}/usr/$(get_libdir)/${PN}"
 
 	einstalldocs
 
