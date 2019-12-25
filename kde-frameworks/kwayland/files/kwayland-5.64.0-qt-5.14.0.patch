@@ -1,0 +1,24 @@
+From c4a49fbf2d5dd63659ed0c679ce180eda89a6d0d Mon Sep 17 00:00:00 2001
+From: Roman Gilg <subdiff@gmail.com>
+Date: Fri, 22 Nov 2019 15:26:23 +0100
+Subject: Add missing include for Qt 5.14 build
+
+---
+ src/server/xdgoutput_interface.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/server/xdgoutput_interface.cpp b/src/server/xdgoutput_interface.cpp
+index e32ccf9..b2b2cba 100644
+--- a/src/server/xdgoutput_interface.cpp
++++ b/src/server/xdgoutput_interface.cpp
+@@ -25,6 +25,8 @@ License along with this library.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ #include <wayland-xdg-output-server-protocol.h>
+ 
++#include <QHash>
++
+ namespace KWayland
+ {
+ namespace Server
+-- 
+cgit v1.1

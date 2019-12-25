@@ -30,3 +30,5 @@ RDEPEND="${COMMON_DEPEND}
 
 # All failing, I guess we need a virtual wayland server
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.14.0.patch" )
