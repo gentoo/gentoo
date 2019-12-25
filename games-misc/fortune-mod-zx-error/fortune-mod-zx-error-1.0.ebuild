@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 MY_P="fortunes-zx-error-${PV}"
 DESCRIPTION="Sinclair ZX Spectrum BASIC error Fortunes"
-HOMEPAGE="http://korpus.juls.savba.sk/~garabik/software/fortunes-zx-error.html"
-SRC_URI="http://korpus.juls.savba.sk/~garabik/software/fortunes-zx-error/${MY_P}.tar.gz"
+HOMEPAGE="http://kassiopeia.juls.savba.sk/~garabik/software/fortunes-zx-error.html"
+SRC_URI="http://kassiopeia.juls.savba.sk/~garabik/software/fortunes-zx-error/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
