@@ -12830,7 +12830,7 @@ media-gfx/cropgui 0.2-r1 0.3 9999: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/cura 3.4.1 3.6.0 4.2.1 4.3.0: A 3D model slicing application for 3D printing
 media-gfx/curaengine 3.4.1 3.6.0 4.2.0 4.3.0: A 3D model slicing engine for 3D printing
-media-gfx/darktable 2.6.2 3.0.0 9999: A virtual lighttable and darkroom for photographers
+media-gfx/darktable 2.6.2 2.6.3 3.0.0 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0-r1: Command-line decoder for raw digital photos
 media-gfx/digikam 6.3.0-r1 6.4.0: Digital photo management application
@@ -12898,7 +12898,7 @@ media-gfx/gthumb 3.6.2-r1: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
 media-gfx/hp2xx 3.4.4-r1: Convert Hewlett-Packard's HP-GL plotter language to other graphics formats
-media-gfx/hugin 2019.0.0 9999: GUI for the creation & processing of panoramic images
+media-gfx/hugin 2019.0.0 2019.2.0_rc3 9999: GUI for the creation & processing of panoramic images
 media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut vrml visualisations and GPU gamma tables
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.0 0.32.2 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
