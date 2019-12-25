@@ -4,6 +4,7 @@
 EAPI=6
 VALA_USE_DEPEND="vapigen"
 PYTHON_COMPAT=( python3_{6,7,8} )
+GNOME2_EAUTORECONF="yes"
 
 inherit gnome2 python-any-r1 vala virtualx
 
@@ -38,14 +39,17 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.9
-	>=dev-util/intltool-0.35
-	sys-devel/gettext
+	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
 "
 # eautoreconf needs:
 #	dev-libs/gobject-introspection-common
 #	dev-libs/vala-common
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-fix-desktop-files.patch
+)
 
 pkg_setup() {
 	python-any-r1_pkg_setup

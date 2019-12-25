@@ -1,0 +1,476 @@
+Please read out COPYING.EPSON and Privacy Statement 
+(http://download.ebz.epson.net/ps/linux/).
+
+EPSON END USER SOFTWARE LICENSE AGREEMENT
+
+NOTICE TO USER: PLEASE READ THIS AGREEMENT CAREFULLY BEFORE INSTALLING OR USING 
+THIS PRODUCT. IF YOU ARE LOCATED IN THE UNITED STATES, SECTIONS 19-23 OF THIS 
+DOCUMENT APPLY TO YOU. SECTION 22 CONTAINS A BINDING ARBITRATION PROVISION THAT 
+LIMITS YOUR ABILITY TO SEEK RELIEF IN A COURT BEFORE A JUDGE OR JURY, AND WAIVES 
+YOUR RIGHT TO PARTICIPATE IN CLASS ACTIONS OR CLASS ARBITRATIONS FOR CERTAIN 
+DISPUTES. AN “OPT-OUT” IS AVAILABLE UNDER SECTION 22.7 FOR THOSE WHO WISH TO BE 
+EXCLUDED FROM THE ARBITRATION AND CLASS WAIVER.
+
+This is a legal agreement (“Agreement”) between you (an individual or entity, 
+referred to hereinafter as “you”) and Seiko Epson Corporation (including its 
+affiliates, “Epson”) for the enclosed software programs, including any related 
+documentation, firmware, or updates (collectively referred to hereinafter as the 
+“Software”). The Software is provided by Epson and its suppliers for use only 
+with the corresponding Epson brand computer peripheral product (the “Epson 
+Hardware”). BEFORE INSTALLING, COPYING OR OTHERWISE USING THE SOFTWARE, YOU NEED 
+TO REVIEW AND AGREE TO THE TERMS AND CONDITIONS OF THIS AGREEMENT INCLUDING THE 
+EPSON PRIVACY POLICY stated in Section 17.  If you agree, click on the Agree 
+(“ACCEPT”, “OK” or any similar representation of agreement) button below.  If 
+you do not agree with the terms and conditions of this Agreement, click on the 
+Disagree (“EXIT”, “Cancel” or any similar representation of disagreement) button 
+and return the Software, along with the packaging and related materials, to 
+Epson or the place of purchase for a full refund.
+
+1.	Grant of License.  Epson grants you a limited, nonexclusive license to (i) 
+download, install and use the Software for your personal and internal business 
+use on hard disks or other computer storage devices, or in the case of a 
+software application (also referred to as “Software”), on the smartphone, 
+tablet, or other mobile device (collectively, “Device”), provided that the 
+Software is used (i) only in a single location (e.g., a home or office or place 
+of business), or in the case of a mobile device, on a Device owned or otherwise 
+controlled by you, and (ii) only in connection with Epson Hardware owned by you. 
+ You may allow other users of the Epson Hardware connected to your network to 
+use the Software, provided that you shall ensure that such users use the 
+Software only in accordance with this Agreement.  You agree to be responsible 
+for and indemnify Epson for liabilities incurred as a consequence of use by such 
+users. You may make backup copies of the Software, as necessary, provided the 
+backup is only used to support your use of the Epson Hardware. 
+
+2.	Upgrades and Updates.  If you acquire an upgrade, updated version, modified 
+version, or additions to or for the Software from Epson, the upgrade, updated 
+version, modified version, or addition, shall be included in the defined term 
+Software and governed by this Agreement.  You acknowledge that Epson has no 
+obligation to provide you with any Updates (as defined below in this Section 2) 
+to the Software. Epson may, however, from time to time, issue updated versions 
+of the Software and the Software may automatically connect to Epson or 
+third-party servers via the Internet to check for available updates to the 
+Software, such as bug fixes, patches, upgrades, additional or enhanced 
+functions, plug-ins and new versions (collectively, “Updates”) and may either 
+(a) automatically electronically update the version of the Software that you are 
+using on your personal device or (b) give you the option of manually downloading 
+applicable Updates.  If you installed the EPSON Software Updater and do not wish 
+to allow Epson to check for available updates to the Software, you may disable 
+this feature by uninstalling EPSON Software Updater.  By installing the Software 
+and not disabling any automated check for Updates, if applicable, you hereby 
+agree and consent to automatically request and receive Updates from Epson or 
+third-party servers, and that the terms and conditions of this Agreement shall 
+apply to all of these Updates. 
+
+3.	Other Rights and Limitations.  You agree not to modify, adapt or translate 
+the Software and further agree not to attempt to reverse engineer, decompile, 
+disassemble or otherwise attempt to discover the source code of the Software.  
+You may not rent, lease, distribute, lend the Software to third parties or 
+incorporate the Software into a revenue generating product or service.  You may, 
+however, transfer all of your rights to use the Software to another person or 
+legal entity, provided that the recipient also agrees to the terms of this 
+Agreement and you transfer the Software, including all copies, updates and prior 
+versions, and the Epson Hardware, to such person or entity.  The Software is 
+licensed as a single unit, and its component programs may not be separated for 
+some other use.  Further, you agree not to place the Software onto or into a 
+shared environment accessible via a public network such as the Internet or 
+otherwise accessible by others outside the single location referred to in 
+Section 1 above.
+
+4.	Ownership.  Title, ownership rights, and intellectual property rights in and 
+to the Software shall remain with Epson or its licensors and suppliers.  The 
+Software is protected by United States Copyright Law, copyright laws of Japan 
+and international copyright treaties, as well as other intellectual property 
+laws and treaties.  There is no transfer to you of any title to or ownership of 
+the Software and this License shall not be construed as a sale of any rights in 
+the Software.  You agree not to remove or alter any copyright, trademark, 
+registered mark and other proprietary notices on any copies of the Software.  
+Epson and/or its licensors and suppliers reserve all rights not granted.  The 
+Software may also contain images, illustrations, designs and photos 
+(“Materials”), and the copyright of such material belongs to Epson and/or its 
+licensors and suppliers, protected by national and/or international intellectual 
+property laws, conventions and treaties.  For clarity, (1) the Materials shall 
+be used for non-commercial purposes only, (2) the Materials shall be edited, 
+adjusted and copied only in the manner designated by the Software, and (3) you 
+may use the Materials only for lawful personal use, home use or as otherwise 
+legally permitted. 
+
+5.	Open Source and Other Third-Party Components. Notwithstanding the foregoing 
+license grant, you acknowledge that certain components of the Software may be 
+covered by third-party licenses, including so-called “open source” software 
+licenses, which means any software licenses approved as open source licenses by 
+the Open Source Initiative or any substantially similar licenses, including 
+without limitation any license that, as a condition of distribution of the 
+software licensed under such license, requires that the distributor make the 
+software available in source code format (such third-party components, 
+“Third-Party Components”).  A list of Third-Party Components, and associated 
+license terms (as required), for particular versions of the Software is 
+indicated at the end of this Agreement, relevant user manual/CD, or the license 
+information displayed on your Device/in Software.  To the extent required by the 
+licenses covering Third-Party Components, the terms of such licenses will apply 
+in lieu of the terms of this Agreement.  To the extent the terms of the licenses 
+applicable to Third-Party Components prohibit any of the restrictions in this 
+Agreement with respect to such Third-Party Components, such restrictions will 
+not apply to such Third-Party Component.
+
+6.	Multiple Versions of Software.  You may receive or obtain the Software in 
+more than one version (e.g. for different operating environments; two or more 
+language translation versions; downloaded from an Epson server or on a CD-ROM), 
+however, regardless of the type or number of copies you receive, you still may 
+use only the media or version appropriate for the license granted in Section 1 
+above.
+
+7.	Disclaimer of Warranty and Remedy.  If you obtained the Software by media 
+from Epson or a dealer, Epson warrants that the media on which the Software is 
+recorded will be free from defects in workmanship and materials under normal use 
+for a period of 90 days from the date of delivery to you.  If the media is 
+returned to Epson or the dealer from which the media was obtained within 90 days 
+of the date of delivery to you, and if Epson determines the media to be 
+defective and provided the media was not subject to misuse, abuse, 
+misapplication or use in defective equipment, Epson will replace the media, upon 
+your return to Epson of the Software, including all copies of any portions 
+thereof.  You acknowledge and agree that the use of the Software is at your sole 
+risk.  THE SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY WARRANTY OF ANY KIND.  
+EPSON AND ITS SUPPLIERS DO NOT AND CANNOT WARRANT THE PERFORMANCE OR RESULTS YOU 
+MAY OBTAIN BY USING THE SOFTWARE.  Epson does not warrant that the operation of 
+the Software will be uninterrupted, error free, free from viruses or other 
+harmful components or vulnerabilities, or that the functions of the Software 
+will meet your needs or requirements. Epson’s sole and exclusive liability and 
+your exclusive remedy for breach of warranty shall be limited to either, at 
+Epson’s option, the replacement of the media for the Software or to refund your 
+money upon returning the Software and Epson Hardware.  Any replacement Software 
+will be warranted for the remainder of the original warranty period or thirty 
+(30) days, whichever is longer.  If the above remedy fails for any reason, 
+Epson’s entire liability for a breach of warranty shall be limited to a refund 
+of the price paid for the Epson Hardware.  Epson is not liable for performance 
+delays or for nonperformance due to causes beyond its reasonable control.  This 
+Limited Warranty is void if failure of the Software resulted from accident, 
+abuse, or misapplication.  THE STATED LIMITED WARRANTIES AND REMEDY ARE 
+EXCLUSIVE AND IN LIEU OF ALL OTHERS. EPSON DISCLAIMS ALL OTHER WARRANTIES, 
+EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ALL WARRANTIES OF 
+NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR PURPOSE.  SOME 
+STATES OR JURISDICTIONS, HOWEVER, DO NOT ALLOW EXCLUSIONS OR LIMITATIONS OF 
+IMPLIED WARRANTIES, AND IN SUCH STATES, THE ABOVE LIMITATION MAY NOT APPLY TO 
+YOU.
+
+8.	Limitation of Liability.  TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, 
+IN NO EVENT WILL EPSON OR ITS SUPPLIERS BE LIABLE FOR ANY DAMAGES, WHATSOEVER, 
+WHETHER DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER 
+ARISING UNDER CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY, BREACH OF 
+WARRANTY, MISREPRESENTATION, OR OTHERWISE, INCLUDING WITHOUT LIMITATION, DAMAGES 
+FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS 
+INFORMATION, OR OTHER PECUNIARY LOSS, ARISING OUT OF THE USE OF OR INABILITY TO 
+USE THE SOFTWARE, OR ARISING OUT OF THIS AGREEMENT, EVEN IF EPSON OR ITS 
+REPRESENTATIVE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.  SOME STATES 
+DO NOT ALLOW THE EXCLUSION OR LIMITATION OF DAMAGES IN CERTAIN TRANSACTIONS, AND 
+IN SUCH STATES, THE ABOVE LIMITATIONS AND EXCLUSIONS MAY NOT APPLY.  
+
+9.	U.S. Government Acquisition of the Software.  This Section applies to all 
+acquisitions of the Software by or for the U.S. Government (“Government”), or by 
+any prime contractor or subcontractor (at any tier) under any contract, grant, 
+cooperative agreement, “other transaction” (“OT”), or other activity with the 
+Government.  By accepting delivery of the Software, the Government, any prime 
+contractor, and any subcontractor agree that the Software qualifies as 
+“commercial” computer software within the meaning of FAR Part 12, paragraph (b) 
+of FAR Subpart 27.405, or DFARS Subpart 227.7202, as applicable, and that no 
+other regulation, or FAR or DFARS data rights clause, applies to the delivery of 
+this Software to the Government.  Accordingly, the terms and conditions of this 
+Agreement govern the Government’s (and the prime contractor and subcontractor’s) 
+use and disclosure of the Software, and supersede any conflicting terms and 
+conditions of the contract, grant, cooperative agreement, OT, or other activity 
+pursuant to which the Software is delivered to the Government.  If this Software 
+fails to meet the Government’s needs, if this Agreement is inconsistent in any 
+respect with Federal law, or if the above cited FAR and DFARS provisions do not 
+govern, the Government agrees to return the Software, unused, to Epson.
+
+10.	Export Restriction.  You agree that the Software will not be shipped, 
+transferred or exported into any country or used in any manner prohibited by the 
+United States Export Administration Act or any other export laws, restrictions 
+or regulations. 
+
+11.	Entire Agreement.  This Agreement is the entire agreement between the 
+parties related to the Software and supersedes any purchase order, 
+communication, advertisement, or representation concerning the Software.  
+
+12.	Binding Agreement; Assignees.  This Agreement shall be binding upon, and 
+inure to the benefit of, the parties hereto and their respective successors, 
+assigns and legal representatives.  
+
+13.	Severability; Modifications.  If any provision herein is found void or 
+unenforceable by a court of competent jurisdiction (subject to Section 22.8 and 
+22.9 if you are a located in the U.S.), it will not affect the validity of the 
+balance of the Agreement, which shall remain valid and enforceable according to 
+its terms.  This Agreement may only be modified in writing signed by an 
+authorized representative of Epson.  
+
+14.	Indemnification.  You agree that you will indemnify and hold harmless, and 
+upon Epson’s request, defend Epson and its directors, officers, shareholders, 
+employees and agents from and against any and all losses, liabilities, damages, 
+costs, expenses (including reasonable attorneys’ fees), actions, suits, and 
+claims arising from (i) any breach of any of your obligations in this Agreement 
+or (ii) any use of the Software or the Epson Hardware.  If Epson asks you to 
+defend any such action, suit or claim, Epson will have the right, at its own 
+expense, to participate in the defense thereof with counsel of its choice.  You 
+will not settle any third-party claims for which Epson is entitled to 
+indemnification without the prior written approval of Epson.
+
+15.	Termination.  Without prejudice to any other rights Epson has, your license 
+rights under Section 1 above and your warranty rights under Section 7 above, 
+shall automatically terminate upon failure by you to comply with this Agreement. 
+ Upon termination of such rights, you agree that the Software, and all copies 
+thereof, will be immediately destroyed.
+
+16.	Capacity and Authority to Contract.  You represent that you are of the legal 
+age of majority in your state or jurisdiction of residence and have all 
+necessary authority to enter into this Agreement, including, if applicable, due 
+authorization by your employer to enter into this Agreement.
+
+17.	Privacy, Information Processing.  The Software may have the ability to 
+connect over the Internet to transmit data to and from your Device.  For 
+example, if you install the Software, the Software may cause your Device to send 
+information about your Epson Hardware such as model and serial number, country 
+identifier, language code, operating system information, and Epson Hardware 
+usage information to an Epson Internet site which may return promotional or 
+service information to your Device for display.  Any processing of information 
+provided through the Software, shall be according to applicable data protection 
+laws and the Epson Privacy Policy located at 
+https://global.epson.com/privacy/area_select_confirm_eula.html.  To the extent 
+permitted by applicable laws, by agreeing to the terms of this Agreement and by 
+installing the Software, you consent to the processing and storage of your 
+information in and/or outside your country of residence.  If there is a specific 
+privacy policy incorporated into the Software and/or displayed when you use the 
+Software (for example, in the case of certain software application software), 
+such specific privacy policy shall prevail over the Epson Privacy Policy stated 
+above.
+
+18.	Third Party Websites.  You may, through hypertext or other computer links 
+from the Software, gain access to websites and use certain services that are not 
+under the control of or operated by Epson, but rather are controlled by third 
+parties.  You acknowledge and agree that Epson is not responsible for such third 
+party sites or services, including their accuracy, completeness, timeliness, 
+validity, copyright compliance, legality, decency, quality, or any other aspect 
+thereof.  These third party websites/services are subject to different terms and 
+conditions and when you access and use third party websites/services, you will 
+be legally bound by the terms and conditions of those websites/services.  If 
+there is a conflict between this Agreement and terms and conditions of third 
+party websites/services, the third party websites’/services’ terms and 
+conditions will govern with respect to your access and use of those 
+websites/services.  Although Epson may provide a link to a third party 
+website/service from the Software, such a link is not an authorization, 
+endorsement, sponsorship or affiliation by Epson with respect to such 
+website/services, its content, its owners or its providers.  Epson provides such 
+links for your reference and convenience only.  Accordingly, Epson makes no 
+representations whatsoever concerning such websites/services and does not 
+provide any support related to such third party sites or services.  Epson has 
+not tested any information, products or software found on such websites/services 
+and therefore cannot make any representations whatsoever with respect thereto.  
+You agree that Epson is not responsible for the content or operation of such 
+websites/services, and it is up to you to take precautions to ensure that 
+whatever you select is free of items such as viruses, worms, Trojan horses and 
+other items of a destructive nature.  You are solely responsible for determining 
+the extent to which you may use any content at any other websites/services to 
+which you link from this Software.
+
+(IF YOU ARE LOCATED IN THE UNITED STATES, THE FOLLOWING SECTIONS 19 - 23 APPLY 
+TO YOU)
+
+19.	Ink Purchases.  For certain Epson printer products sold in North America, 
+the Software may also display an option to buy ink from Epson.  If you click on 
+the buy button, the Software will cause your Device to display Epson Hardware 
+cartridge types and ink levels and provide other information about your 
+cartridges, such as the colors, available cartridge sizes, and prices for 
+replacement ink cartridges, which you may purchase online from Epson. 
+
+20.	Downloadable Updates.  You may also be able to download from an Epson 
+Internet site updates or upgrades to the Software if such updates or upgrades 
+are made available.  If you agree to install the Software, any transmissions to 
+or from the Internet, and data collection and use, will be in accordance with 
+Epson’s then-current Privacy Policy, and by installing the Software you agree 
+that such then-current Privacy Policy shall govern such activities.  
+
+21.	Epson Accounts and Promotional Messages.  In addition, if you install the 
+Software and register your Epson Hardware with Epson, and/or you create an 
+account at the Epson Store, and provided your consent to such use, you agree 
+that Epson may merge the data collected in connection with installation of the 
+Software, registration of your Epson Hardware and/or creation of your Epson 
+Store account, consisting of personal information and non-personally 
+identifiable information, and use such merged data to send you Epson promotional 
+or service information.  If you do not wish to send information about your Epson 
+Hardware or receive promotional or service information, you will be able to 
+disable these features on a Windows system through the Monitoring Preferences 
+section in the driver.  On a Mac operating system, you can disable these 
+features by uninstalling the Epson Customer Research Participation and Low Ink 
+Reminder software.
+
+22.	DISPUTES, BINDING INDIVIDUAL ARBITRATION, AND WAIVER OF CLASS ACTIONS AND 
+CLASS ARBITRATIONS 
+
+22.1	Disputes.  The terms of this Section 22 shall apply to all Disputes 
+between you and Epson. The term “Dispute” is meant to have the broadest meaning 
+permissible under law and includes any dispute, claim, controversy or action 
+between you and Epson arising out of or relating to this Agreement, the 
+Software, Epson Hardware, or other transaction involving you and Epson, whether 
+in contract, warranty, misrepresentation, fraud, tort, intentional tort, 
+statute, regulation, ordinance, or any other legal or equitable basis.  
+“DISPUTE” DOES NOT INCLUDE IP CLAIMS, or more specifically, a claim or cause of 
+action for (a) trademark infringement or dilution, (b) patent infringement, (c) 
+copyright infringement or misuse, or (d) trade secret misappropriation (an “IP 
+Claim”).  You and Epson also agree, notwithstanding Section 22.6, that a court, 
+not an arbitrator, may decide if a claim or cause of action is for an IP Claim. 
+
+22.2	Binding Arbitration.  You and Epson agree that all Disputes shall be 
+resolved by binding arbitration according to this Agreement.  ARBITRATION MEANS 
+THAT YOU WAIVE YOUR RIGHT TO A JUDGE OR JURY IN A COURT PROCEEDING AND YOUR 
+GROUNDS FOR APPEAL ARE LIMITED.  Pursuant to this Agreement, binding arbitration 
+shall be administered by JAMS, a nationally recognized arbitration authority, 
+pursuant to its code of procedures then in effect for consumer related disputes, 
+but excluding any rules that permit joinder or class actions in arbitration (for 
+more detail on procedure, see Section 22.6 below).  You and Epson understand and 
+agree that (a) the Federal Arbitration Act (9 U.S.C. §1, et seq.) governs the 
+interpretation and enforcement of this Section 22, (b) this Agreement 
+memorializes a transaction in interstate commerce, and (c) this Section 22 shall 
+survive termination of this Agreement. 
+
+22.3	Pre-Arbitration Steps and Notice.  Before submitting a claim for 
+arbitration, you and Epson agree to try, for sixty (60) days, to resolve any 
+Dispute informally.  If Epson and you do not reach an agreement to resolve the 
+Dispute within the sixty (60) days, you or Epson may commence an arbitration. 
+Notice to Epson must be addressed to: Epson America, Inc., ATTN: Legal 
+Department, 3840 Kilroy Airport Way, Long Beach, CA 90806 (the “Epson Address”). 
+ The Dispute Notice to you will be sent to the most recent address Epson has in 
+its records for you.  For this reason, it is important to notify us if your 
+address changes by emailing us at EAILegal@ea.epson.com or writing us at the 
+Epson Address above.  Notice of the Dispute shall include the sender’s name, 
+address and contact information, the facts giving rise to the Dispute, and the 
+relief requested (the “Dispute Notice”).  Following receipt of the Dispute 
+Notice, Epson and you agree to act in good faith to resolve the Dispute before 
+commencing arbitration. 
+
+22.4	Small Claims Court.  Notwithstanding the foregoing, you may bring an 
+individual action in the small claims court of your state or municipality if the 
+action is within that court’s jurisdiction and is pending only in that court. 
+
+22.5	WAIVER OF CLASS ACTIONS AND CLASS ARBITRATIONS.  YOU AND EPSON AGREE 
+THAT EACH PARTY MAY BRING DISPUTES AGAINST THE OTHER PARTY ONLY IN AN INDIVIDUAL 
+CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY CLASS OR REPRESENTATIVE 
+PROCEEDING, INCLUDING WITHOUT LIMITATION FEDERAL OR STATE CLASS ACTIONS, OR 
+CLASS ARBITRATIONS. CLASS ACTION LAWSUITS, CLASS-WIDE ARBITRATIONS, PRIVATE 
+ATTORNEY-GENERAL ACTIONS, AND ANY OTHER PROCEEDING WHERE SOMEONE ACTS IN A 
+REPRESENTATIVE CAPACITY ARE NOT ALLOWED.  ACCORDINGLY, UNDER THE ARBITRATION 
+PROCEDURES OUTLINED IN THIS SECTION, AN ARBITRATOR SHALL NOT COMBINE OR 
+CONSOLIDATE MORE THAN ONE PARTY’S CLAIMS WITHOUT THE WRITTEN CONSENT OF ALL 
+AFFECTED PARTIES TO AN ARBITRATION PROCEEDING. 
+
+22.6	Arbitration Procedure.   If you or Epson commences arbitration, the 
+arbitration shall be governed by the rules of JAMS that are in effect when the 
+arbitration is filed, excluding any rules that permit arbitration on a class or 
+representative basis (the “JAMS Rules”), available at http://www.jamsadr.com or 
+by calling 1-800-352-5267, and under the rules set forth in this Agreement.  All 
+Disputes shall be resolved by a single neutral arbitrator, and both parties 
+shall have a reasonable opportunity to participate in the selection of the 
+arbitrator.  The arbitrator is bound by the terms of this Agreement.  The 
+arbitrator, and not any federal, state or local court or agency, shall have 
+exclusive authority to resolve all disputes arising out of or relating to the 
+interpretation, applicability, enforceability or formation of this Agreement, 
+including any claim that all or any part of this Agreement is void or voidable.  
+Notwithstanding this broad delegation of authority to the arbitrator, a court 
+may determine the limited question of whether a claim or cause of action is for 
+an IP Claim, which is excluded from the definition of “Disputes” in Section 22.1 
+above.  The arbitrator shall be empowered to grant whatever relief would be 
+available in a court under law or in equity.  The arbitrator may award you the 
+same damages as a court could, and may award declaratory or injunctive relief 
+only in favor of the individual party seeking relief and only to the extent 
+necessary to provide relief warranted by that party’s individual claim.  In some 
+instances, the costs of arbitration can exceed the costs of litigation and the 
+right to discovery may be more limited in arbitration than in court.  The 
+arbitrator’s award is binding and may be entered as a judgment in any court of 
+competent jurisdiction. 
+
+You may choose to engage in arbitration hearings by telephone.  Arbitration 
+hearings not conducted by telephone shall take place in a location reasonably 
+accessible from your primary residence, or in Orange County, California, at your 
+option.
+
+a)	Initiation of Arbitration Proceeding.  If either you or Epson decides to 
+arbitrate a Dispute, both parties agree to the following procedure: 
+
+(i)	Write a Demand for Arbitration.  The demand must include a description of 
+the Dispute and the amount of damages sought to be recovered.  You can find a 
+copy of a Demand for Arbitration at http://www.jamsadr.com (“Demand for 
+Arbitration”). 
+
+(ii)	Send three copies of the Demand for Arbitration, plus the appropriate 
+filing fee, to: JAMS, 500 North State College Blvd., Suite 600 Orange, CA 92868, 
+U.S.A.
+
+(iii)	Send one copy of the Demand for Arbitration to the other party (same 
+address as the Dispute Notice), or as otherwise agreed by the parties. 
+
+b)	Hearing Format.  During the arbitration, the amount of any settlement offer 
+made shall not be disclosed to the arbitrator until after the arbitrator 
+determines the amount, if any, to which you or Epson is entitled.  The discovery 
+or exchange of non-privileged information relevant to the Dispute may be allowed 
+during the arbitration.
+
+c)	Arbitration Fees.  Epson shall pay, or (if applicable) reimburse you for, 
+all JAMS filings and arbitrator fees for any arbitration commenced (by you or 
+Epson) pursuant to provisions of this Agreement. 
+
+d)	Award in Your Favor.  For Disputes in which you or Epson seeks $75,000 or 
+less in damages exclusive of attorney’s fees and costs, if the arbitrator’s 
+decision results in an award to you in an amount greater than Epson’s last 
+written offer, if any, to settle the Dispute, Epson will: (i) pay you $1,000 or 
+the amount of the award, whichever is greater; (ii) pay you twice the amount of 
+your reasonable attorney’s fees, if any; and (iii) reimburse you for any 
+expenses (including expert witness fees and costs) that your attorney reasonably 
+accrues for investigating, preparing, and pursuing the Dispute in arbitration.  
+Except as agreed upon by you and Epson in writing, the arbitrator shall 
+determine the amount of fees, costs, and expenses to be paid by Epson pursuant 
+to this Section 22.6d).
+
+e)	Attorney’s Fees.  Epson will not seek its attorney’s fees and expenses for 
+any arbitration commenced involving a Dispute under this Agreement.  Your right 
+to attorney’s fees and expenses under Section 22.6(d) above does not limit your 
+rights to attorney’s fees and expenses under applicable law; notwithstanding the 
+foregoing, the arbitrator may not award duplicative awards of attorney’s fees 
+and expenses. 
+
+22.7	Opt-out.  You may elect to opt-out (exclude yourself) from the final, 
+binding, individual arbitration procedure and waiver of class and representative 
+proceedings specified in this Agreement by sending a written letter to the Epson 
+Address within thirty (30) days of your assent to this Agreement (including 
+without limitation the purchase, download, installation of the Software or other 
+applicable use of Epson Hardware, products and services) that specifies (i) your 
+name, (ii) your mailing address, and (iii) your request to be excluded from the 
+final, binding individual arbitration procedure and waiver of class and 
+representative proceedings specified in this Section 22.  In the event that you 
+opt-out consistent with the procedure set forth above, all other terms shall 
+continue to apply, including the requirement to provide notice prior to 
+litigation. 
+
+22.8	Amendments to Section 22.  Notwithstanding any provision in this 
+Agreement to the contrary, you and Epson agree that if Epson makes any future 
+amendments to the dispute resolution procedure and class action waiver 
+provisions (other than a change to Epson’s address) in this Agreement, Epson 
+will obtain your affirmative assent to the applicable amendment.  If you do not 
+affirmatively assent to the applicable amendment, you are agreeing that you will 
+arbitrate any Dispute between the parties in accordance with the language of 
+this Section 22 (or resolve disputes as provided for in Section 22.7, if you 
+timely elected to opt-out when you first assented to this Agreement).
+
+22.9	Severability.  If any provision in this Section 22 is found to be 
+unenforceable, that provision shall be severed with the remainder of this 
+Agreement remaining in full force and effect.  The foregoing shall not apply to 
+the prohibition against class or representative actions as provided in Section 
+22.5.  This means that if Section 22.5 is found to be unenforceable, the entire 
+Section 22 (but only Section 22) shall be null and void. 
+
+23.	For New Jersey Residents.  NOTWITHSTANDING ANY TERMS SET FORTH IN THIS 
+AGREEMENT, IF ANY OF THE PROVISIONS SET FORTH IN SECTIONS 7 OR 8 ARE HELD 
+UNENFORCEABLE, VOID OR INAPPLICABLE UNDER NEW JERSEY LAW, THEN ANY SUCH 
+PROVISION SHALL NOT APPLY TO YOU BUT THE REST OF THE AGREEMENT SHALL REMAIN 
+BINDING ON YOU AND EPSON.  NOTWITHSTANDING ANY PROVISION IN THIS AGREEMENT, 
+NOTHING IN THIS AGREEMENT IS INTENDED TO, NOR SHALL IT BE DEEMED OR CONSTRUED 
+TO, LIMIT ANY RIGHTS AVAILABLE TO YOU UNDER THE TRUTH-IN-CONSUMER CONTRACT, 
+WARRANTY AND NOTICE ACT.  
+
+Rev. December 2018
