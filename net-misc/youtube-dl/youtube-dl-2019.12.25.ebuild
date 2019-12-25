@@ -3,14 +3,14 @@
 
 EAPI=7
 PYTHON_COMPAT=(python{2_7,3_{5,6,7,8}})
-inherit bash-completion-r1 distutils-r1 git-r3 readme.gentoo-r1
+inherit bash-completion-r1 distutils-r1 readme.gentoo-r1
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://github.com/ytdl-org/youtube-dl/"
-EGIT_REPO_URI="${HOMEPAGE}"
+SRC_URI="https://youtube-dl.org/downloads/${PV}/${P}.tar.gz"
 LICENSE="public-domain"
 
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 SLOT="0"
 IUSE="test"
 RDEPEND="
@@ -27,11 +27,10 @@ DEPEND="
 		dev-python/flake8[${PYTHON_USEDEP}]
 	)
 "
+S=${WORKDIR}/${PN}
 
 src_compile() {
 	distutils-r1_src_compile
-
-	emake ${PN}.{bash-completion,fish,zsh}
 }
 
 python_test() {
@@ -39,7 +38,8 @@ python_test() {
 }
 
 python_install_all() {
-	dodoc README.md
+	dodoc README.txt
+	doman ${PN}.1
 
 	newbashcomp ${PN}.bash-completion ${PN}
 
