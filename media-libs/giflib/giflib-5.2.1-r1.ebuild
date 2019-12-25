@@ -18,6 +18,7 @@ DEPEND="doc? ( app-text/xmlto )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.9-gentoo.patch
+	"${FILESDIR}"/${PN}-5.2.1-fix-missing-quantize-API-symbols.patch
 )
 
 src_prepare() {
