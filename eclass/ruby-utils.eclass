@@ -28,10 +28,10 @@ if [[ ! ${_RUBY_UTILS} ]]; then
 # provide for a better first installation experience.
 
 # All stable RUBY_TARGETS
-RUBY_TARGETS_PREFERENCE="ruby24 "
+RUBY_TARGETS_PREFERENCE="ruby25 ruby24 "
 
 # All other active ruby targets
-RUBY_TARGETS_PREFERENCE+="ruby25 ruby26"
+RUBY_TARGETS_PREFERENCE+="ruby26"
 
 
 _ruby_implementation_depend() {
