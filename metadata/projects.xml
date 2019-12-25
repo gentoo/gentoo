@@ -2833,6 +2833,11 @@
       <role>Member</role>
     </member>
     <member>
+      <email>pacho@gentoo.org</email>
+      <name>Pacho Ramos</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>prometheanfire@gentoo.org</email>
       <name>Matthew Thode</name>
       <role>Member</role>
@@ -3333,6 +3338,11 @@
       <email>nicolasbock@gentoo.org</email>
       <name>Nicolas Bock</name>
       <role>Chemistry, Physics, *</role>
+    </member>
+    <member>
+      <email>pacho@gentoo.org</email>
+      <name>Pacho Ramos</name>
+      <role>Biology, Chemistry</role>
     </member>
     <member>
       <email>soap@gentoo.org</email>
