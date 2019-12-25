@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	dev-db/sqlite:3
 	dev-libs/json-glib
 	dev-libs/libxml2:2
-	dev-libs/pugixml:0=
+	>=dev-libs/pugixml-1.8:0=
 	gnome-base/librsvg:2
 	>=media-gfx/exiv2-0.25-r2:0=[xmp]
 	media-libs/lcms:2
@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	sys-libs/zlib:=
 	virtual/jpeg:0
 	x11-libs/cairo
-	>=x11-libs/gtk+-3.14:3
+	>=x11-libs/gtk+-3.22:3
 	x11-libs/pango
 	colord? ( x11-libs/colord-gtk:0= )
 	cups? ( net-print/cups )
