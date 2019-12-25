@@ -16,11 +16,10 @@ SRC_URI="mirror://vdr-developerorg/${VERSION}/${MY_P}.tgz -> ${P}.tgz"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2"
-IUSE=""
 
-DEPEND=">=media-video/vdr-1.6
-		>=app-misc/lcdproc-0.4.3"
+DEPEND=">=app-misc/lcdproc-0.4.3
+		>=media-video/vdr-2.4"
 
-RDEPEND="${DEPEND}"
+PATCHES=( "${FILESDIR}/vdr-2.4_lcdproc-0.0.10.9.patch" )
 
 S=${WORKDIR}/${MY_P#vdr-}
