@@ -3,14 +3,14 @@
 
 EAPI=7
 
-AVM="AvailabilityVersions-26.50.4"
-DESCRIPTION="System headers provided by XNU-${PV}, macOS 10.12.6"
+AVM="AvailabilityVersions-33.200.4"
+DESCRIPTION="System headers provided by XNU-${PV}, macOS 10.14.3"
 HOMEPAGE="https://opensource.apple.com/source/xnu"
 SRC_URI="https://opensource.apple.com/tarballs/xnu/xnu-${PV}.tar.gz
 	https://opensource.apple.com/tarballs/${AVM%-*}/${AVM}.tar.gz"
 
 LICENSE="APSL-2"
-SLOT="10.12"
+SLOT="10.14"
 KEYWORDS="~x64-macos"
 IUSE="+man"
 
@@ -45,8 +45,6 @@ src_install() {
 	insinto /usr/include/sys
 	doins syscall.h _posix_availability.h _symbol_aliasing.h
 
-	pushd bsd > /dev/null || die
-
 	get_files_list() {
 		local s="$1"
 		local f="$2"/Makefile
@@ -66,8 +64,11 @@ src_install() {
 
 	local d
 	local files
-	for d in bsm i386 machine miscfs/{devfs,specfs,union} net \
-		netinet{,6} netkey nfs sys{,/_types} uuid vfs ;
+
+	pushd bsd > /dev/null || die
+
+	for d in arm bsm i386 machine miscfs/{devfs,specfs,union} \
+		net netinet{,6} netkey nfs sys{,/_types} uuid vfs ;
 	do
 		insinto /usr/include/${d}
 		files=( $(get_datafiles ${d}) )
@@ -81,7 +82,7 @@ src_install() {
 
 	pushd osfmk > /dev/null || die
 
-	for d in mach{,/i386,/machine} mach_debug ; do
+	for d in device mach{,/arm,/i386,/machine} mach_debug ; do
 		insinto /usr/include/${d}
 		files=( $(get_datafiles ${d}) )
 		einfo "${d}:" ${files[*]}
@@ -99,7 +100,7 @@ src_install() {
 
 	pushd libkern > /dev/null || die
 
-	for d in libkern{,/i386,/machine,/c++,/crypto} ; do
+	for d in libkern{,/arm,/i386,/machine,/c++,/crypto} ; do
 		insinto /usr/include/${d}
 		files=( $(get_datafiles ${d}) )
 		einfo "${d}:" ${files[*]}
