@@ -9776,7 +9776,7 @@ dev-ruby/c21e 1.1.8 1.1.9 1.2.1: Run cross-platform executables
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/capistrano 2.15.5-r2 3.11.0 3.11.1 3.11.2: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
-dev-ruby/capybara 2.18.0 3.26.0 3.27.0 3.28.0 3.29.0: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 2.18.0 3.26.0 3.27.0 3.28.0 3.29.0 3.30.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.6 0.7.7: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
@@ -9832,7 +9832,7 @@ dev-ruby/delayer-deferred 2.0.0 2.1.0 2.1.1: Ruby implementation of JSDeferred
 dev-ruby/dependor 1.0.1: Reduces duplication when doing manual dependency injection
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/descendants_tracker 0.0.4: Module that adds descendant tracking to a class
-dev-ruby/did_you_mean 1.1.2 1.2.1 1.3.0 1.3.1: 'did you mean?'experience in Ruby
+dev-ruby/did_you_mean 1.1.2 1.2.1 1.3.0 1.3.1 1.4.0: 'did you mean?'experience in Ruby
 dev-ruby/diff-lcs 1.3: Use the McIlroy-Hunt LCS algorithm to compute differences
 dev-ruby/diva 0.3.2 1.0.0 1.0.1: Implementation of expression for handling things.
 dev-ruby/dnsruby 1.61.2 1.61.3: A pure Ruby DNS client library
@@ -10118,7 +10118,7 @@ dev-ruby/rake-remote_task 2.4.3: Extends Rake with remote task goodness
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
 dev-ruby/rash_alt 0.4.7 0.4.8: Rash alt version for Hashie's own Rash
 dev-ruby/rb-gsl 2.1.0.2: Ruby interface to GNU Scientific Library
-dev-ruby/rb-inotify 0.10.0: A thorough inotify wrapper for Ruby using FFI
+dev-ruby/rb-inotify 0.10.0 0.10.1: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rb-readline 0.5.5: Ruby implementation of the GNU readline C library
 dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C library forked by r7
 dev-ruby/rbnacl 4.0.2-r1 5.0.0-r1 6.0.1 7.0.0 7.1.0: Provides a high-level toolkit for building cryptographic systems and protocols
@@ -10345,7 +10345,7 @@ dev-ruby/twitter 6.2.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.14.7 2.1.0 3.0.0: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9-r1 1.3.1: Runs HTTP requests in parallel while cleanly encapsulating handling logic
-dev-ruby/tzinfo 1.2.5 2.0.0: Daylight-savings aware timezone library
+dev-ruby/tzinfo 1.2.5 2.0.0 2.0.1: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
 dev-ruby/uglifier 4.1.20 4.2.0: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
