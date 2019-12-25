@@ -3,21 +3,24 @@
 
 EAPI=7
 
-KDE_HANDBOOK="forceoptional"
-inherit kde5
+ECM_HANDBOOK="forceoptional"
+KFMIN=5.60.0
+QTMIN=5.12.3
+inherit ecm kde.org
 
 DESCRIPTION="Gopher Kioslave for Konqueror"
 HOMEPAGE="https://userbase.kde.org/Kio_gopher"
 SRC_URI="mirror://kde/unstable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
+SLOT="5"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	$(add_frameworks_dep kcodecs)
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kiconthemes)
-	$(add_frameworks_dep kio)
+	>=kde-frameworks/kcodecs-${KFMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
+	>=kde-frameworks/kiconthemes-${KFMIN}:5
+	>=kde-frameworks/kio-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"
