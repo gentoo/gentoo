@@ -85,6 +85,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-poppler-0.76.patch"
 	"${FILESDIR}/${P}-swig-4.patch" # bug 689110
 	"${FILESDIR}/${P}-poppler-0.82.patch"
+	"${FILESDIR}"/${P}-poppler-0.83-{1,2}.patch # bug 703790
 )
 
 src_prepare() {
