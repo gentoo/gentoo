@@ -1,0 +1,21 @@
+--- a/CMakeLists.txt	2019-10-22 10:27:05.000000000 +0200
++++ b/CMakeLists.txt	2019-12-25 16:18:52.814921538 +0100
+@@ -17,6 +17,7 @@
+ option(BUILD_SHARED_LIBS "ON:  tslib is build as shared; 
+ 			  OFF: tslib is build as static" ON)
+ option(ENABLE_TOOLS "build additional tools" ON)
++option(ENABLE_UTILS "build calibration/test binaries" ON)
+ 
+ set(LIBTS_VERSION_CURRENT 10)
+ set(LIBTS_VERSION_REVISION 3)
+@@ -28,7 +29,9 @@
+ 
+ add_subdirectory(src)
+ add_subdirectory(plugins)
+-add_subdirectory(tests)
++if (ENABLE_UTILS)
++	add_subdirectory(tests)
++endif ()
+ if (ENABLE_TOOLS)
+ 	add_subdirectory(tools)
+ endif ()

@@ -47,7 +47,7 @@ COMMON_DEPEND="
 		>=x11-libs/libxkbcommon-0.5.0
 	)
 	png? ( media-libs/libpng:0= )
-	tslib? ( x11-libs/tslib )
+	tslib? ( >=x11-libs/tslib-1.21 )
 	tuio? ( ~dev-qt/qtnetwork-${PV} )
 	udev? ( virtual/libudev:= )
 	vnc? ( ~dev-qt/qtnetwork-${PV} )
