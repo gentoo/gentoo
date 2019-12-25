@@ -1,0 +1,27 @@
+From 1f8fa16f58cfe0364099ddad0e1d86522d8de41a Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Wed, 13 Nov 2019 14:07:22 +0100
+Subject: [PATCH] PDF: fix build against Poppler 0.83.0dev
+
+---
+ gdal/frmts/pdf/pdfdataset.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/frmts/pdf/pdfdataset.cpp b/frmts/pdf/pdfdataset.cpp
+index 8f944c40d30..88017953de5 100644
+--- a/frmts/pdf/pdfdataset.cpp
++++ b/frmts/pdf/pdfdataset.cpp
+@@ -4267,7 +4267,13 @@ PDFDataset *PDFDataset::Open( GDALOpenInfo * poOpenInfo )
+         CPLMutexHolderD(&hGlobalParamsMutex);
+         /* poppler global variable */
+         if (globalParams == nullptr)
++        {
++#if POPPLER_MAJOR_VERSION >= 1 || POPPLER_MINOR_VERSION >= 83
++            globalParams.reset(new GlobalParams());
++#else
+             globalParams = new GlobalParams();
++#endif
++        }
+ 
+         globalParams->setPrintCommands(CPLTestBool(
+             CPLGetConfigOption("GDAL_PDF_PRINT_COMMANDS", "FALSE")));
