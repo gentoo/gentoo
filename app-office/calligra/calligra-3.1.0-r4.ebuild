@@ -139,6 +139,10 @@ src_prepare() {
 		eapply "${FILESDIR}/${P}-poppler-0.82.patch" # TODO: make upstreamable patch
 	fi
 
+	if has_version ">=app-text/poppler-0.83"; then
+		eapply "${FILESDIR}/${P}-poppler-0.83.patch" # TODO: make upstreamable patch
+	fi
+
 	if ! use test; then
 		sed -e "/add_subdirectory( *benchmarks *)/s/^/#DONT/" \
 			-i libs/pigment/CMakeLists.txt || die
