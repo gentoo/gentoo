@@ -38,8 +38,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.9
-	>=dev-util/intltool-0.35
-	sys-devel/gettext
+	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
 "
