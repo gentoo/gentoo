@@ -1,8 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit base toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Generates a beautified ps document from a source file (c/c++)"
 HOMEPAGE="http://www.cs.technion.ac.il/users/c2ps"
