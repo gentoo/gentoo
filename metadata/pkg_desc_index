@@ -17795,7 +17795,7 @@ sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris ke
 sys-kernel/vanilla-kernel 5.4.6-r1: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 3.16.80 4.4.207 4.9.207 4.14.160 4.19.91 5.4.6: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
-sys-kernel/xnu-headers 3789.70.16-r4 4570.71.2-r4 4903.241.1-r4: System headers provided by XNU-4903.241.1, macOS 10.14.3
+sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 4.14.9999 4.15.9999 4.16.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.32-r1 2.33.1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
@@ -17804,7 +17804,7 @@ sys-libs/compiler-rt-sanitizers 7.1.0 8.0.1 9.0.0 9.0.1 10.0.0.9999: Compiler ru
 sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
-sys-libs/darwin-libc-headers 1158.50.2-r3 1244.50.9-r3 1272.250.1-r3: Darwin system headers from Libc 1272.250.1, macOS 10.14.3
+sys-libs/darwin-libc-headers 1158.50.2-r4 1244.50.9-r4 1272.250.1-r4: Darwin system headers from Libc 1272.250.1, macOS 10.14.3
 sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r2 4.3.29_p1-r2 4.4.20_p4-r2 4.5.20_p2-r2 4.6.21_p4-r1 4.7.25_p4-r1 4.8.30-r3 5.1.29-r2 5.3.28-r2 5.3.28-r4 6.0.35-r2 6.1.38 6.2.38 18.1.32: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.44.5 1.45.2 1.45.3 1.45.4: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 37: Tools and library to manipulate EFI variables
