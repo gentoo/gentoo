@@ -4,11 +4,11 @@ DESCRIPTION=A library for sending email
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Email-Sender
 IUSE=test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp >=dev-perl/Email-Abstract-3.6.0 dev-perl/Email-Address >=dev-perl/Email-Simple-1.998.0 >=virtual/perl-File-Path-2.60.0 virtual/perl-File-Spec >=virtual/perl-IO-1.110.0 dev-perl/Module-Runtime >=dev-perl/Moo-2.0.0 >=dev-perl/MooX-Types-MooseLike-0.150.0 >=virtual/perl-Scalar-List-Utils-1.450.0 dev-perl/Sub-Exporter >=dev-perl/Throwable-0.200.3 dev-perl/Try-Tiny >=virtual/perl-libnet-3.70.0 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Email-Sender-1.300031.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=e0997d46e730779e8ac1406c8047f567
+_md5_=b8fad33516841d889a8f26a8c7477544
