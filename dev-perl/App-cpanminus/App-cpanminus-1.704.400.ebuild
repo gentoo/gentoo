@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Get, unpack, build and install modules from CPAN"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
