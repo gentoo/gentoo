@@ -6,19 +6,27 @@ EAPI=7
 inherit mount-boot savedconfig toolchain-funcs
 
 MY_P=linux-${PV}
-CONFIG_VER=5.4.4.arch1-1
-CONFIG_HASH=f101331956bb37080dce191ca789a5c44fac9e69
+AMD64_CONFIG_VER=5.4.4.arch1-1
+AMD64_CONFIG_HASH=f101331956bb37080dce191ca789a5c44fac9e69
+I686_CONFIG_VER=5.4.3-arch1
+I686_CONFIG_HASH=076a52d43a08c4b3a3eacd1f2f9a855fb3b62f42
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI="https://cdn.kernel.org/pub/linux/kernel/v5.x/${MY_P}.tar.xz
-	https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${CONFIG_HASH}
-		-> linux-${CONFIG_VER}.config"
+	amd64? (
+		https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${AMD64_CONFIG_HASH}
+			-> linux-${AMD64_CONFIG_VER}.amd64.config
+	)
+	x86? (
+		https://git.archlinux32.org/packages/plain/core/linux/config.i686?id=${I686_CONFIG_HASH}
+			-> linux-${I686_CONFIG_VER}.i686.config
+	)"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+initramfs"
 
 # install-DEPEND actually
@@ -69,7 +77,18 @@ src_configure() {
 		ARCH=x86
 	)
 
-	cp "${DISTDIR}"/linux-${CONFIG_VER}.config .config || die
+	case ${ARCH} in
+		amd64)
+			cp "${DISTDIR}"/linux-${AMD64_CONFIG_VER}.amd64.config .config || die
+			;;
+		x86)
+			cp "${DISTDIR}"/linux-${I686_CONFIG_VER}.i686.config .config || die
+			;;
+		*)
+			die "Unsupported arch ${ARCH}"
+			;;
+	esac
+
 	# while Arch config is cool, we don't want gcc plugins as they
 	# break distcc
 	sed -i -e '/GCC_PLUGIN/d' .config || die
