@@ -19,6 +19,8 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/bleach[${PYTHON_USEDEP}]
+	>=dev-python/google-auth-1.6.3[${PYTHON_USEDEP}]
+	>=dev-python/google-auth-oauthlib-0.4.1[${PYTHON_USEDEP}]
 	dev-python/grpcio[${PYTHON_USEDEP}]
 	dev-python/html5lib[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
@@ -28,6 +30,7 @@ RDEPEND="
 	>=dev-python/setuptools-41[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
+	>=sci-libs/scipy-1.4.1[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]"
 BDEPEND="app-arch/unzip
 	${PYTHON_DEPS}"
