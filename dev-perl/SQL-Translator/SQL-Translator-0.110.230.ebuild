@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Manipulate structured data definitions (SQL and more)"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~ppc-aix ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~ppc-aix ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
