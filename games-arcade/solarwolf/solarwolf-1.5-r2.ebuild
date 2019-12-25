@@ -21,7 +21,7 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-python/pygame-1.5.6
+	>=dev-python/pygame-1.5.6[${PYTHON_USEDEP}]
 	media-libs/sdl-mixer[mod,vorbis]
 "
 DEPEND="${RDEPEND}"
