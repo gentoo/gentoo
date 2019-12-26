@@ -31,7 +31,7 @@ if [[ ! ${_RUBY_UTILS} ]]; then
 RUBY_TARGETS_PREFERENCE="ruby25 ruby24 "
 
 # All other active ruby targets
-RUBY_TARGETS_PREFERENCE+="ruby26"
+RUBY_TARGETS_PREFERENCE+="ruby26 ruby27"
 
 
 _ruby_implementation_depend() {
@@ -74,6 +74,10 @@ _ruby_implementation_depend() {
 		ruby26)
 			rubypn="dev-lang/ruby"
 			rubyslot=":2.6"
+			;;
+		ruby27)
+			rubypn="dev-lang/ruby"
+			rubyslot=":2.7"
 			;;
 		ree18)
 			rubypn="dev-lang/ruby-enterprise"
