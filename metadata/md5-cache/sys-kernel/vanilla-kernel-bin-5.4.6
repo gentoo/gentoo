@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm preinst prerm pretend unpack
+DESCRIPTION=Pre-built vanilla Linux kernel
+EAPI=7
+HOMEPAGE=https://www.kernel.org/
+IUSE=+initramfs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=|| ( sys-kernel/installkernel-gentoo sys-kernel/installkernel-systemd-boot ) initramfs? ( sys-kernel/dracut ) !sys-kernel/vanilla-kernel:5.4.6
+SLOT=5.4.6
+SRC_URI=amd64? ( https://dev.gentoo.org/~mgorny/binpkg/amd64/kernel/sys-kernel/vanilla-kernel/vanilla-kernel-5.4.6-r1-1.xpak -> vanilla-kernel-5.4.6-r1-1.amd64.xpak ) x86? ( https://dev.gentoo.org/~mgorny/binpkg/x86/kernel/sys-kernel/vanilla-kernel/vanilla-kernel-5.4.6-r1-1.xpak -> vanilla-kernel-5.4.6-r1-1.x86.xpak )
+_eclasses_=mount-boot	e30bb691fbb26137f3d46438542bffe4
+_md5_=1d487bb06f149ab3266e3f46b76897e1
