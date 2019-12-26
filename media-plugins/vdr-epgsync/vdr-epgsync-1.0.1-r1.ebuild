@@ -5,9 +5,9 @@ EAPI=7
 
 inherit vdr-plugin-2
 
-DESCRIPTION="VDR Plugin: server/client remoteosd"
+DESCRIPTION="VDR Plugin: Import the EPG of another VDR via vdr-svdrpservice"
 HOMEPAGE="http://vdr.schmirler.de/"
-SRC_URI="http://vdr.schmirler.de/remoteosd/${P}.tgz"
+SRC_URI="http://vdr.schmirler.de/epgsync/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -15,4 +15,4 @@ KEYWORDS="~amd64 ~arm ~x86"
 
 DEPEND=">=media-video/vdr-2.4"
 
-PATCHES=( "${FILESDIR}/vdr-2.4_remoteosd-${PV}.patch" )
+PATCHES=( "${FILESDIR}/${P}_vdr-2.4.patch" )

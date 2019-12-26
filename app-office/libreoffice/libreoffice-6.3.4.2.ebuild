@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+),xml"
 
 MY_PV="${PV/_alpha/.alpha}"
@@ -66,7 +66,6 @@ IUSE="accessibility bluetooth +branding coinmp +cups dbus debug eds firebird
 googledrive gstreamer +gtk gtk2 kde ldap +mariadb odk pdfimport postgres test
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
-RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
 	libreoffice_extensions_nlpsolver? ( java )
@@ -245,15 +244,16 @@ else
 fi
 
 PATCHES=(
-	# master branch
-	"${FILESDIR}/${P}-mysql-connector-c-8.patch" # bug #692422
-	"${FILESDIR}/${PN}-6.2.8.2-poppler-0.82.patch"
 	# "${WORKDIR}"/${PATCHSET/.tar.xz/}
 
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
+
+	# master branch
+	"${FILESDIR}/${PN}-6.3.3.2-mysql-connector-c-8.patch" # bug #692422
+	"${FILESDIR}/${P}-poppler-0.83.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"

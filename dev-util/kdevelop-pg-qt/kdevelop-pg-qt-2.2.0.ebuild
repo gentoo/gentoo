@@ -3,8 +3,8 @@
 
 EAPI=7
 
-KDE_TEST="true"
-inherit kde5
+ECM_TEST="true"
+inherit ecm kde.org
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
@@ -13,7 +13,9 @@ fi
 
 DESCRIPTION="LL(1) parser generator used mainly by KDevelop language plugins"
 HOMEPAGE="https://www.kdevelop.org/"
+
 LICENSE="LGPL-2+ LGPL-2.1+"
+SLOT="5"
 IUSE=""
 
 PATCHES=( "${FILESDIR}/${P}-qt-5.14.patch" )

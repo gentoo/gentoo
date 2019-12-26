@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="Darwin Csu (crt1.o) - Mac OS X 10.10 version"
 HOMEPAGE="http://www.opensource.apple.com/"
@@ -29,10 +29,11 @@ src_prepare() {
 		-e 's:$(SYMROOT)/crt0.o::' \
 		-e '/LOCLIBDIR)\/crt0.o/d' \
 		-e '/^CC = /d' \
+		-e "/ARCH_CFLAGS =/s|=|= ${CFLAGS}|" \
 		Makefile || die
 
 	# only require Availability.h for arm, bugs #538602, #539964
-	epatch "${FILESDIR}"/${P}-arm-availability.patch
+	eapply "${FILESDIR}"/${P}-arm-availability.patch
 
 	if [[ ${CHOST} == powerpc* ]] ; then
 		# *must not* be compiled with -Os on PPC because that
@@ -43,6 +44,8 @@ src_prepare() {
 		# be more than 16MB away
 		sed -i -e "s, -Os , -O ,g" Makefile || die
 	fi
+
+	eapply_user
 }
 
 src_compile() {
