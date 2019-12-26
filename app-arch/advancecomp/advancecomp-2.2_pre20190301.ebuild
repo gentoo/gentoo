@@ -7,7 +7,7 @@ inherit autotools
 
 EGIT_COMMIT="fcf71a89265c78fc26243574dda3a872574a5c02"
 DESCRIPTION="Recompress ZIP, PNG and MNG, considerably improving compression"
-HOMEPAGE="http://www.advancemame.it/comp-readme.html"
+HOMEPAGE="https://www.advancemame.it/comp-readme.html"
 SRC_URI="https://github.com/amadvance/advancecomp/archive/${EGIT_COMMIT}.tar.gz
 	-> ${PN}-${EGIT_COMMIT}.tar.gz"
 
