@@ -19,7 +19,7 @@ else
 fi
 
 DESCRIPTION="Suite to build Gentoo Reference Systems"
-HOMEPAGE="https://dev.gentoo.org/~blueness/${PN}"
+HOMEPAGE="https://dev.gentoo.org/~blueness/grs"
 
 LICENSE="GPL-2"
 SLOT="0"
