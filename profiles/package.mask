@@ -1101,13 +1101,6 @@ dev-java/eclipse-ecj:4.10
 ~net-libs/libnsl-0
 ~net-libs/rpcsvc-proto-0
 
-# Michał Górny <mgorny@gentoo.org> (2018-08-01)
-# Multiprocessing versions of gemato.  They are known to hang on some
-# users, so let's keep them masked until somebody figures out what's
-# wrong.  Bug #647964.
-~app-portage/gemato-14.1m
-~app-portage/gemato-9999m
-
 # James Le Cuirot <chewi@gentoo.org> (2017-12-17)
 # Java 9+ is not yet fully supported on Gentoo. Packages cannot depend
 # on it so these virtuals are not yet required. If you wish to use
