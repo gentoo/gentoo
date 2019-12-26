@@ -14,7 +14,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-		A gdk-pixbuf plugin that allows GTK applications to view webp images.
+		webp-pixbuf-loader integrates libwebp library into GDK image
+		processing framework, so GDK based application can use WEBP
+		format natively.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">aruiz/webp-pixbuf-loader</remote-id>

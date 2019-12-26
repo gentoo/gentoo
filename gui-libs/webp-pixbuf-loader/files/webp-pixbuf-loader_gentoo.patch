@@ -1,0 +1,20 @@
+diff --git a/meson.build b/meson.build
+index 2ae10ca..53761cd 100644
+--- a/meson.build
++++ b/meson.build
+@@ -7,7 +7,6 @@ webp = dependency('libwebp', version: '>0.4.3')
+ # -34/-64 is to overcome a Fedora bug in the .pc file
+ # debian has a similar problem with its .pc file but it requires knowing the platform triad
+ 
+-gdk_pb_query_loaders = find_program(get_option('gdk_pixbuf_query_loaders_path'), gdk_pb_query_loaders, gdk_pb_query_loaders+'-32', gdk_pb_query_loaders+'-64')
+ 
+ 
+ pbl_webp = shared_library('pixbufloader-webp', 'io-webp.c',
+@@ -15,7 +14,6 @@ pbl_webp = shared_library('pixbufloader-webp', 'io-webp.c',
+                           install: true,
+                           install_dir: gdk_pb_moddir)
+ 
+-meson.add_install_script(gdk_pb_query_loaders.path(), '--update-cache')
+ 
+ subdir('tests')
+ 
