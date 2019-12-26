@@ -4,7 +4,7 @@
 EAPI=7
 WX_GTK_VER="3.0-gtk3"
 
-inherit wxwidgets user
+inherit wxwidgets
 
 MY_P="${PN/m/M}-${PV}"
 
@@ -24,10 +24,14 @@ RDEPEND="
 	sys-libs/binutils-libs:0=
 	sys-libs/zlib
 	>=x11-libs/wxGTK-3.0.4:${WX_GTK_VER}[X?]
-	stats? ( media-libs/gd:=[jpeg,png] )
+	daemon? ( acct-user/amule )
 	geoip? ( dev-libs/geoip )
+	remote? (
+		acct-user/amule
+		media-libs/libpng:0=
+	)
+	stats? ( media-libs/gd:=[jpeg,png] )
 	upnp? ( net-libs/libupnp:0 )
-	remote? ( media-libs/libpng:0= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -45,13 +49,6 @@ PATCHES=(
 
 pkg_setup() {
 	setup-wxwidgets
-}
-
-pkg_preinst() {
-	if use daemon || use remote; then
-		enewgroup p2p
-		enewuser p2p -1 -1 /home/p2p p2p
-	fi
 }
 
 src_configure() {
@@ -92,11 +89,38 @@ src_install() {
 	default
 
 	if use daemon; then
-		newconfd "${FILESDIR}"/amuled.confd amuled
+		newconfd "${FILESDIR}"/amuled.confd-r1 amuled
 		newinitd "${FILESDIR}"/amuled.initd amuled
 	fi
 	if use remote; then
-		newconfd "${FILESDIR}"/amuleweb.confd amuleweb
+		newconfd "${FILESDIR}"/amuleweb.confd-r1 amuleweb
 		newinitd "${FILESDIR}"/amuleweb.initd amuleweb
+	fi
+
+	if use daemon || use remote; then
+		keepdir /var/lib/${PN}
+		fowners amule:amule /var/lib/${PN}
+		fperms 0750 /var/lib/${PN}
+	fi
+}
+
+pkg_postinst() {
+	local ver
+
+	if use daemon || use remote; then
+		for ver in ${REPLACING_VERSIONS}; do
+			if ver_test ${ver} -lt "2.3.2-r4"; then
+				elog "Default user under which amuled and amuleweb daemons are started"
+				elog "have been changed from p2p to amule. Default home directory have been"
+				elog "changed as well."
+				echo
+				elog "If you want to preserve old download/share location, you can create"
+				elog "symlink /var/lib/amule/.aMule pointing to the old location and adjust"
+				elog "files ownership *or* restore AMULEUSER and AMULEHOME variables in"
+				elog "/etc/conf.d/{amuled,amuleweb} to the old values."
+
+				break
+			fi
+		done
 	fi
 }
