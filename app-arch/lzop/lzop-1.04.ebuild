@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 DESCRIPTION="Utility for fast (even real-time) compression/decompression"
-HOMEPAGE="http://www.lzop.org/"
-SRC_URI="http://www.lzop.org/download/${P}.tar.gz"
+HOMEPAGE="https://www.lzop.org/"
+SRC_URI="https://www.lzop.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
