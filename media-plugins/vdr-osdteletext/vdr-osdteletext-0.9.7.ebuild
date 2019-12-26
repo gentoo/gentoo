@@ -11,7 +11,7 @@ DESCRIPTION="VDR Plugin: Osd-Teletext displays the teletext on the OSD"
 HOMEPAGE="https://projects.vdr-developer.org/projects/plg-osdteletext"
 SRC_URI="https://projects.vdr-developer.org/attachments/download/${VERSION}/${P}.tgz"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2+ public-domain" #teletext2.ttf, not copyrightable
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
