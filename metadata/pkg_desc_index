@@ -7388,7 +7388,7 @@ dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/ImageHash 3.4 3.7 4.0: Image Hashing library
 dev-python/Kivy 1.9.1 1.9.1-r1 1.10.0 1.10.1: Library for rapid development of hardware-accelerated multitouch applications
 dev-python/MechanicalSoup 0.6.0 0.10.0: A python library for automating interaction with websites
-dev-python/Numdifftools 0.9.12 0.9.13 0.9.14 0.9.17: Solves automatic numerical differentiation problems in one or more variables
+dev-python/Numdifftools 0.9.17: Solves automatic numerical differentiation problems in one or more variables
 dev-python/PyContracts 1.7.9 1.8.0 1.8.12: Declare constraints on function parameters and return values
 dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
 dev-python/PyECLib 1.5.0 1.6.0: Messaging API for RPC and notifications over different messaging transports
@@ -8667,7 +8667,6 @@ dev-python/pytest-cache 1.0-r1 1.0-r2: mechanisms for caching across test runs
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 2.3.1 2.6.1 2.8.1: py.test plugin for coverage reporting
 dev-python/pytest-cython 0.1.0: Plugin for testing Cython extension modules
-dev-python/pytest-datafiles 2.0: pytest plugin to create a tmpdir containing a preconfigured set of files/dirs
 dev-python/pytest-describe 0.11.1: Describe-style plugin for py.test
 dev-python/pytest-django 3.4.4: A Django plugin for py.test
 dev-python/pytest-expect 1.1.0 1.1.0-r1: py.test plugin that stores test expectations by saving the set of failing tests
@@ -8685,8 +8684,6 @@ dev-python/pytest-mock 1.6.0 1.6.3 1.10.0 1.11.2: Thin-wrapper around the mock p
 dev-python/pytest-mpl 0.8: pytest plugin to faciliate image comparison for matplotlib figures
 dev-python/pytest-pep8 1.0.6 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.7.1 0.14.1: pytest plugin to check source code with pylint
-dev-python/pytest-pythonpath 0.7.1: pytest plugin for adding to the PYTHONPATH from command line or configs
-dev-python/pytest-qt 2.3.0-r2: pytest plugin for PyQt4 or PyQt5 applications
 dev-python/pytest-rerunfailures 2.1.0 7.0 8.0: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-runner 2.6.2 2.11.1 4.0 4.2 5.2: Adds support for tests during installation of setup.py files
 dev-python/pytest-salt 2019.2.1_p1: PyTest Salt Plugin
