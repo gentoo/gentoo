@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+EAPI=6
+HOMEPAGE=https://www.wireguard.com/
+IUSE=debug +module +tools module-src
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=MIT
+RDEPEND=tools? ( net-vpn/wireguard-tools ) module? ( net-vpn/wireguard-modules[module,debug?] ) module-src? ( net-vpn/wireguard-modules[module-src] )
+SLOT=0
+_md5_=97685b4f3da80fb534c367f413ab4bf6
