@@ -13,7 +13,6 @@ IUSE="debug +module +tools module-src"
 
 RDEPEND="
 	tools? ( net-vpn/wireguard-tools )
-	module? ( net-vpn/wireguard-modules[module] )
+	module? ( net-vpn/wireguard-modules[module,debug?] )
 	module-src? ( net-vpn/wireguard-modules[module-src] )
-	debug? ( net-vpn/wireguard-modules[debug] )
 "
