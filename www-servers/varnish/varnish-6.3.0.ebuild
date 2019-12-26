@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} pypy )
+PYTHON_COMPAT=( python{3_5,3_6,3_7} pypy )
 
 inherit user autotools systemd python-r1
 
@@ -26,6 +26,8 @@ CDEPEND="
 RDEPEND="
 	${PYTHON_DEPS}
 	${CDEPEND}
+	acct-user/varnish
+	acct-group/varnish
 	sys-devel/gcc"
 
 DEPEND="
@@ -37,13 +39,6 @@ DEPEND="
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="test" #315725
-
-pkg_setup() {
-	ebegin "Creating varnish user and group"
-	enewgroup varnish
-	enewuser varnish -1 -1 /var/lib/varnish varnish
-	eend $?
-}
 
 src_prepare() {
 	# Remove -Werror bug #528354
