@@ -15,7 +15,6 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 DEPEND="dev-util/desktop-file-utils"
-RDEPEND="!<sys-apps/openrc-0.9.4"
 
 src_configure() {
 	local myconf=(
