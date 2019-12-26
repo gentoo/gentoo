@@ -64,5 +64,5 @@ src_install() {
 
 	dosym "${MY_STORCLI_BASEDIR}"/storcli /usr/sbin/storcli
 
-	pax-mark m "${D%/}${MY_STORCLI_BASEDIR}"/storcli
+	pax-mark m "${D}${MY_STORCLI_BASEDIR}"/storcli
 }
