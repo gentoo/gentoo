@@ -11,7 +11,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 CMAKE_REMOVE_MODULES_LIST="${CMAKE_REMOVE_MODULES_LIST} FindXcm FindCUPS"
-inherit cmake-utils flag-o-matic
+inherit cmake-utils flag-o-matic xdg
 
 DESCRIPTION="Colour management system allowing to share settings across apps and services"
 HOMEPAGE="https://www.oyranos.org/"
@@ -74,7 +74,7 @@ src_prepare() {
 	cmake-utils_src_prepare
 }
 
-multilib_src_configure() {
+src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
 		-DUSE_SYSTEM_ELEKTRA=ON
