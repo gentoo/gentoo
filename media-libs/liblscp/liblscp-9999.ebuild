@@ -21,7 +21,7 @@ DOCS=( AUTHORS ChangeLog TODO NEWS README )
 src_prepare() {
 	default
 
-	emake -f Makefile.svn
+	emake -f Makefile.git
 	eautoreconf
 }
 
