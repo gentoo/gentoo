@@ -1,0 +1,12 @@
+BDEPEND=>=app-editors/emacs-23.1:*
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=Emacs major mode for editing Ruby code
+EAPI=7
+HOMEPAGE=https://www.ruby-lang.org/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-3+
+RDEPEND=>=app-editors/emacs-23.1:*
+SLOT=0
+SRC_URI=https://github.com/ruby/elisp/archive/defe0b586b2a888706507a7bbcdf1201d924cc2d.tar.gz -> ruby-mode-2.7.0.tar.gz
+_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
+_md5_=6bd520eeff60908e25f499e793e463e7

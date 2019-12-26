@@ -3390,8 +3390,6 @@ games-strategy/0ad:nvtt - Support for some uncompressed data formats via media-g
 games-strategy/colobot:devbuild - TODO
 games-strategy/colobot:tools - Build tools
 games-strategy/colobot-data:music - Enable music support
-games-strategy/colobot-data:music-flac-convert - Fetch flac music and convert it to ogg
-games-strategy/colobot-data:music-ogg - Fetch ogg music
 games-strategy/defcon-demo:system-libs - Use system libraries instead of the ones included in the upstream distribution.
 games-strategy/freeciv:aimodules - Support for dynamically loadable AI modules (server-side)
 games-strategy/freeciv:auth - Add authentication capability via mysql, postgres or sqlite3

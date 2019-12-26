@@ -8,5 +8,5 @@ IUSE=cdb ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26
 LICENSE=GPL-2 freedist public-domain
 PROPERTIES=live
 SLOT=0
-_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	f627053d640d7e6707b566d26472f1a5
+_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	cdb4c1e4283adb7707b7dd48ccaa7ad2
 _md5_=b5240220e189b909ea9aeac4535d9e7b
