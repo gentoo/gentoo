@@ -6,8 +6,8 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Library for lzip compression"
-HOMEPAGE="http://www.nongnu.org/lzip/lzlib.html"
-SRC_URI="http://download.savannah.gnu.org/releases/lzip/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.nongnu.org/lzip/lzlib.html"
+SRC_URI="https://download.savannah.gnu.org/releases/lzip/${PN}/${P}.tar.gz"
 
 LICENSE="libstdc++" # fancy form of GPL-2+ with library exception
 SLOT="0"

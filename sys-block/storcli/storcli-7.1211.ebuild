@@ -6,15 +6,15 @@ EAPI="7"
 inherit pax-utils
 
 # Upstream is still using strange version numbers
-MY_PV="007.1017.0000.0000"
+MY_PV="007.1211.0000.0000"
 
 DESCRIPTION="MegaRAID StorCLI (successor of the MegaCLI)"
 HOMEPAGE="https://www.broadcom.com/support/download-search?dk=storcli"
-SRC_URI="https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MR_SAS_Unified_StorCLI_${MY_PV}.zip -> ${P}.zip"
+SRC_URI="https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${MY_PV}_Unified_StorCLI.zip -> ${P}.zip"
 
 LICENSE="Avago LSI BSD"
-SLOT="0/7.10"
-KEYWORDS="-* amd64 x86"
+SLOT="0/7.12"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""
@@ -30,7 +30,7 @@ src_unpack() {
 	mkdir srcfiles || die
 	pushd srcfiles &>/dev/null || die
 	default
-	mv Ubuntu/storcli_*.deb "${WORKDIR}" || die "Failed to move storcli_*.deb"
+	mv Unified_storcli_all_os/Ubuntu/storcli_*.deb "${WORKDIR}" || die "Failed to move storcli_*.deb"
 	popd &>/dev/null || die
 
 	rm -rf srcfiles || die
@@ -38,7 +38,7 @@ src_unpack() {
 	# Unpack Ubuntu package which will be our $S content
 	unpack "${WORKDIR}"/storcli_*.deb
 	rm -f storcli_*.deb || die "Failed to cleanup storcli_*.deb package"
-	unpack "${WORKDIR}"/data.tar.gz
+	unpack "${WORKDIR}"/data.tar.xz
 
 	mkdir "${S}" || die "Failed to create '${S}'"
 }
