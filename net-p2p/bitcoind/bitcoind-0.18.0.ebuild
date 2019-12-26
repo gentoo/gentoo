@@ -75,6 +75,7 @@ src_prepare() {
 
 	local knots_patchdir="${WORKDIR}/${KNOTS_P}.patches/"
 
+	eapply "${FILESDIR}"/${PN}-0.16.3-missing-include.patch
 	eapply "${knots_patchdir}/${KNOTS_P}.syslibs.patch"
 
 	if use knots; then
