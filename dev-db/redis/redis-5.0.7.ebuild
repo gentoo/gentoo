@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic systemd toolchain-funcs user
+inherit autotools flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="A persistent caching system, key-value and data structures database"
 HOMEPAGE="https://redis.io"
@@ -18,34 +18,37 @@ SLOT="0"
 # Redis does NOT build with Lua 5.2 or newer at this time.
 # This should link correctly with both unslotted & slotted Lua, without
 # changes.
-RDEPEND="
+COMMON_DEPEND="
 	luajit? ( dev-lang/luajit:2 )
 	!luajit? ( || ( dev-lang/lua:5.1 =dev-lang/lua-5.1*:0 ) )
 	tcmalloc? ( dev-util/google-perftools )
 	jemalloc? ( >=dev-libs/jemalloc-5.1:= )"
 
+RDEPEND="
+	${COMMON_DEPEND}
+	acct-group/redis
+	acct-user/redis"
+
 BDEPEND="
-	${RDEPEND}
+	${COMMON_DEPEND}
 	virtual/pkgconfig"
 
 # Tcl is only needed in the CHOST test env
-DEPEND="${RDEPEND}
+DEPEND="
+	${COMMON_DEPEND}
 	test? ( dev-lang/tcl:0= )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )"
 
-pkg_setup() {
-	enewgroup redis 75
-	enewuser redis 75 -1 /var/lib/redis redis
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.2.3-config.patch
+	"${FILESDIR}"/${PN}-5.0-shared.patch
+	"${FILESDIR}"/${PN}-5.0-sharedlua.patch
+	"${FILESDIR}"/${PN}-sentinel-5.0-config.patch
+)
 
 src_prepare() {
-	eapply \
-		"${FILESDIR}"/${PN}-3.2.3-config.patch \
-		"${FILESDIR}"/${PN}-5.0-shared.patch \
-		"${FILESDIR}"/${PN}-5.0-sharedlua.patch \
-		"${FILESDIR}"/${PN}-sentinel-5.0-config.patch
-	eapply_user
+	default
 
 	# Copy lua modules into build dir
 	cp "${S}"/deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c "${S}"/src || die
