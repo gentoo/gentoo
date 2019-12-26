@@ -74,6 +74,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	libreoffice_extensions_wiki-publisher? ( java )
 "
 
+RESTRICT="!test? ( test )"
+
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${MY_PV} == *9999* ]] || \
