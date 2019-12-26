@@ -66,7 +66,6 @@ IUSE="accessibility bluetooth +branding coinmp +cups dbus debug eds firebird
 googledrive gstreamer +gtk kde ldap +mariadb odk pdfimport postgres test
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
-RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
 	libreoffice_extensions_nlpsolver? ( java )
@@ -74,6 +73,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	libreoffice_extensions_scripting-javascript? ( java )
 	libreoffice_extensions_wiki-publisher? ( java )
 "
+
+RESTRICT="!test? ( test )"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
