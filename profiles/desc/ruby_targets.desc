@@ -10,3 +10,4 @@ ruby23 - Build with MRI Ruby 2.3.x
 ruby24 - Build with MRI Ruby 2.4.x
 ruby25 - Build with MRI Ruby 2.5.x
 ruby26 - Build with MRI Ruby 2.6.x
+ruby27 - Build with MRI Ruby 2.7.x
