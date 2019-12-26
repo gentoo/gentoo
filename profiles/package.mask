@@ -754,7 +754,6 @@ sci-astronomy/kapteyn
 # burden, bug #701426. Removal in 30 days.
 dev-python/pytest-datafiles
 dev-python/pytest-pythonpath
-dev-python/pytest-qt
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
 # Multiple build failures, automagic, missing deps, no one to fix them
