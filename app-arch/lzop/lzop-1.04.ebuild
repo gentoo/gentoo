@@ -7,7 +7,7 @@ DESCRIPTION="Utility for fast (even real-time) compression/decompression"
 HOMEPAGE="https://www.lzop.org/"
 SRC_URI="https://www.lzop.org/download/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
