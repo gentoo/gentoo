@@ -271,16 +271,4 @@ pkg_postinst() {
 		elog "the following to your environment:"
 		elog " DBUS_SESSION_BUS_ADDRESS=\"launchd:env=DBUS_LAUNCHD_SESSION_BUS_SOCKET\""
 	fi
-
-	if use user-session; then
-		ewarn "You have enabled user-session. Please note this can cause"
-		ewarn "bogus behaviors in several dbus consumers that are not prepared"
-		ewarn "for this dbus activation method yet."
-		ewarn
-		ewarn "See the following link for background on this change:"
-		ewarn "https://lists.freedesktop.org/archives/systemd-devel/2015-January/027711.html"
-		ewarn
-		ewarn "Known issues are tracked here:"
-		ewarn "https://bugs.gentoo.org/show_bug.cgi?id=576028"
-	fi
 }
