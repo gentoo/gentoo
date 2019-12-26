@@ -1,0 +1,32 @@
+From f39aa529c59c533ce5e75e31be1b0cce4513b3d7 Mon Sep 17 00:00:00 2001
+From: Jonas Witschel <diabonas@gmx.de>
+Date: Sat, 31 Aug 2019 17:45:11 +0200
+Subject: [PATCH] crypt: create locking directory /run/cryptsetup
+To: <initramfs@vger.kernel.org>
+
+For LUKS2 partitions cryptsetup needs a locking directory. If it does
+not exist, cryptsetup will create it, but produce a warning
+
+WARNING: Locking directory /run/cryptsetup is missing!
+
+in the process that we do not want to see in the dracut output.
+---
+ modules.d/90crypt/cryptroot-ask.sh | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/modules.d/90crypt/cryptroot-ask.sh b/modules.d/90crypt/cryptroot-ask.sh
+index 33a823c7..e1f17975 100755
+--- a/modules.d/90crypt/cryptroot-ask.sh
++++ b/modules.d/90crypt/cryptroot-ask.sh
+@@ -8,6 +8,8 @@ NEWROOT=${NEWROOT:-"/sysroot"}
+ 
+ . /lib/dracut-lib.sh
+ 
++mkdir -m 0700 /run/cryptsetup
++
+ # if device name is /dev/dm-X, convert to /dev/mapper/name
+ if [ "${1##/dev/dm-}" != "$1" ]; then
+     device="/dev/mapper/$(dmsetup info -c --noheadings -o name "$1")"
+-- 
+2.24.1
+
