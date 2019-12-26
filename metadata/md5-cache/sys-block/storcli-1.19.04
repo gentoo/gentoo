@@ -1,4 +1,5 @@
 DEFINED_PHASES=install prepare unpack
+DEPEND=app-arch/unzip
 DESCRIPTION=MegaRAID StorCLI (successor of the MegaCLI)
 EAPI=6
 HOMEPAGE=http://www.avagotech.com/support/download-search?dnd-keyword=storcli
@@ -7,4 +8,4 @@ LICENSE=Avago LSI BSD
 SLOT=0/6.11
 SRC_URI=http://docs.avagotech.com/docs-and-downloads/docs-and-downloads/raid-controllers/raid-controllers-common-files/1.19.04_StorCLI.zip -> storcli-1.19.04.zip
 _eclasses_=pax-utils	a41d1fd1c111289ffa04490de6ee79d7
-_md5_=731e4ef95d026508d9f574a6f773f8b0
+_md5_=a8b83605150da4ff30a04b0f1ed1958c
