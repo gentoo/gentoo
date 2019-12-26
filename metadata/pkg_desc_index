@@ -451,7 +451,7 @@ app-arch/alien 8.95 8.95-r1: Converts between the rpm, dpkg, stampede slp, and s
 app-arch/arc 5.21p: Create & extract files from DOS .ARC files
 app-arch/arj 3.10.22-r7: Utility for opening arj archives
 app-arch/atool 0.39.0-r1: Script for managing file archives of various types
-app-arch/bloscpack 0.5.0 0.6.0 0.11.0: Command line interface for Blosc compression
+app-arch/bloscpack 0.11.0: Command line interface for Blosc compression
 app-arch/brotli 1.0.6-r1 1.0.7 9999: Generic-purpose lossless compression algorithm
 app-arch/bsdsfv 1.18-r2: all-in-one SFV checksum utility
 app-arch/bzip2 1.0.6-r11 1.0.7 1.0.8 9999: A high-quality data compressor used extensively by Gentoo Linux
@@ -7385,7 +7385,7 @@ dev-python/CacheControl 0.11.5 0.11.7: The httplib2 caching algorithms packaged 
 dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support for flask
 dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
-dev-python/ImageHash 3.4 3.7 4.0: Image Hashing library
+dev-python/ImageHash 4.0: Image Hashing library
 dev-python/Kivy 1.9.1 1.9.1-r1 1.10.0 1.10.1: Library for rapid development of hardware-accelerated multitouch applications
 dev-python/MechanicalSoup 0.6.0 0.10.0: A python library for automating interaction with websites
 dev-python/Numdifftools 0.9.17: Solves automatic numerical differentiation problems in one or more variables
@@ -7515,7 +7515,7 @@ dev-python/basemap 1.0.7-r1 1.0.7-r2: matplotlib toolkit to plot map projections
 dev-python/bashate 0.3.1 0.6.0: A pep8 equivalent for bash scripts
 dev-python/basho-erlastic 2.1.1: Erlang binary term codec and port interface.
 dev-python/batinfo 0.3 0.4.2: A simple Python lib to retreive battery information
-dev-python/bcolz 1.1.0 1.1.2: Provides columnar and compressed data containers
+dev-python/bcolz 1.1.2: Provides columnar and compressed data containers
 dev-python/bcrypt 3.1.6 3.1.7-r2: Modern password hashing for software and servers
 dev-python/beagle 0.2.1: Command line client for Hound, the code search tool.
 dev-python/beaker 1.6.4-r1 1.8.1: A Session and Caching library with WSGI Middleware
@@ -7531,7 +7531,7 @@ dev-python/biplist 1.0.1 1.0.2: A binary plist parser/generator for Python
 dev-python/bitarray 0.8.1 0.8.3: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.5: A pure Python module for creation and analysis of binary data
 dev-python/bjoern 1.3.2 1.4.3: A screamingly fast Python WSGI server written in C
-dev-python/blaze 0.10.2 0.11.3: Next generation Python numpy
+dev-python/blaze 0.11.3: Next generation Python numpy
 dev-python/bleach 2.1.3 3.0.2 3.1.0-r1: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.6-r1 1.6.1 1.7: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4 1.4-r1: Fast, simple object-to-object and broadcast signaling
@@ -7545,7 +7545,7 @@ dev-python/boto 2.41.0 2.48.0 2.49.0: Amazon Web Services API
 dev-python/boto3 1.9.4-r1 1.9.122 1.10.2 9999: The AWS SDK for Python
 dev-python/botocore 1.12.4-r1 1.12.81 1.12.122 1.12.205 1.12.210 1.12.223 1.12.251 1.13.2 1.13.14 1.13.19 1.13.28 1.13.36 1.13.44 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12 0.12.13 0.12.16: A fast and simple micro-framework for small web-applications
-dev-python/bottleneck 1.0.0 1.2.1: Fast NumPy array functions written in Cython
+dev-python/bottleneck 1.2.1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.17.1 0.18: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/breathe 4.6.0: Sphinx Doxygen renderer
 dev-python/brotlipy 0.7.0: Python binding to the Brotli library
@@ -7658,7 +7658,7 @@ dev-python/cytoolz 0.8.0 0.8.2 0.10.0: Cython implementation of Toolz: High perf
 dev-python/d2to1 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
-dev-python/dask 0.15.1 1.2.0: Task scheduling and blocked algorithms for parallel processing
+dev-python/dask 1.2.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/datashape 0.5.4: Language defining a data description protocol
 dev-python/dbus-python 1.2.4 1.2.12 1.2.14: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.18.2: Easily create mock objects on D-Bus for software testing
@@ -7774,7 +7774,7 @@ dev-python/elementpath 1.3.1: XPath 1.0/2.0 parsers and selectors for ElementTre
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/embedly 0.5.0-r1: Python Library for Embedly
-dev-python/emcee 2.1.0 2.2.1: Python ensemble sampling toolkit for affine-invariant MCMC
+dev-python/emcee 2.2.1: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/empy 3.3-r1 3.3.2 3.3.3: A powerful and robust templating system for Python
 dev-python/entrypoints 0.2.3 0.3 0.3-r1: Discover and load entry points from installed packages
 dev-python/enum34 1.1.6-r1: Python 3.4 Enum backported
@@ -7980,7 +7980,7 @@ dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.5 2.6 2.7 2.8: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.0.0 1.0.1 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
 dev-python/ijson 2.3 2.4 2.5.1: Iterative JSON parser with a Pythonic interface
-dev-python/imageio 1.5 1.6 2.0.1 2.1.1 2.6.1: Python library for reading and writing image data
+dev-python/imageio 2.6.1: Python library for reading and writing image data
 dev-python/imagesize 0.7.1 1.0.0 1.1.0: Pure Python module for getting image size from png/jpeg/jpeg2000/gif files
 dev-python/imapclient 0.13 2.1.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/imexam 0.7.1: Simple interactive astronomical image examination and plotting
@@ -8161,7 +8161,7 @@ dev-python/metakernel 0.20.4: Metakernel for Jupyter
 dev-python/meteor-ejson 1.1.0: Encoder and Decoder for Extended JSON (EJSON) as used in Meteor and DDP
 dev-python/micawber 0.3.3: A small library for extracting rich content from urls
 dev-python/microversion-parse 0.1.4 0.2.1: A simple parser for OpenStack microversion headers
-dev-python/milk 0.5.1 0.5.3 0.6.1: Machine learning toolkit in Python
+dev-python/milk 0.6.1: Machine learning toolkit in Python
 dev-python/milksets 0.1.3-r1: Datasets in a common Pythonic interface to use with milk
 dev-python/mimeparse 0.1.4-r1 1.6.0: Basic functions for handling mime-types in python
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
@@ -8255,7 +8255,7 @@ dev-python/nototools 20190320: Noto fonts support tools and scripts plus web sit
 dev-python/ntlm-auth 1.1.0 1.2.0 1.3.0 1.4.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.0.6 0.6.2 0.6.4 0.6.5: Python to native compiler
-dev-python/numba 0.27.0 0.35.0 0.37.0 0.39.0: NumPy aware dynamic Python compiler using LLVM
+dev-python/numba 0.37.0 0.39.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.6.8 2.6.9: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.14.5 1.15.4 1.16.1 1.16.5 1.17.4: Fast array and numerical python library
