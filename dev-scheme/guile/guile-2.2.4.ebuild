@@ -38,6 +38,9 @@ src_configure() {
 	# see bug #178499
 	filter-flags -ftree-vectorize
 
+	# see bug #676468
+	mv prebuilt/32-bit-big-endian{,.broken} || die
+
 	econf \
 		--disable-error-on-warning \
 		--disable-rpath \
