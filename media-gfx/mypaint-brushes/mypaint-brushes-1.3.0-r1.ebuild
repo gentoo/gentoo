@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Jehan/mypaint-brushes/archive/v1.3.0.tar.gz -> ${P}.
 
 LICENSE="CC0-1.0"
 SLOT="1.0"  # due to pkgconfig name "mypaint-brushes-1.0"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE=""
 
 DOCS=( AUTHORS NEWS README.md )  # to exclude README symlink
