@@ -66,6 +66,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.25-libpcre.patch
 	"${FILESDIR}"/${PN}-7.31-libnl.patch
 	"${FILESDIR}"/${PN}-7.80-ac-config-subdirs.patch
+	"${FILESDIR}"/${PN}-9999-constify-continued.patch
+	"${FILESDIR}"/${PN}-9999-netutil-else.patch
 )
 S="${WORKDIR}/${MY_P}"
 
