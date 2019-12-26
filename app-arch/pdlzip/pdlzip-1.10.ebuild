@@ -6,8 +6,8 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Public-domain version of lzip compressor"
-HOMEPAGE="http://www.nongnu.org/lzip/pdlzip.html"
-SRC_URI="http://download.savannah.gnu.org/releases/lzip/pdlzip/${P}.tar.gz"
+HOMEPAGE="https://www.nongnu.org/lzip/pdlzip.html"
+SRC_URI="https://download.savannah.gnu.org/releases/lzip/pdlzip/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
