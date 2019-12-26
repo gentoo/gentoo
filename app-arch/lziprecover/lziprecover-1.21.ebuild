@@ -7,8 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Lziprecover is a data recovery tool and decompressor for lzip compressed files"
 HOMEPAGE="https://www.nongnu.org/lzip/lziprecover.html"
-SRC_URI="https://download.savannah.gnu.org/releases/lzip/${PN}/${P/_/-}.tar.gz
-	https://download.savannah.gnu.org/releases-noredirect/lzip/${PN}/${P/_/-}.tar.gz"
+SRC_URI="https://download.savannah.gnu.org/releases/lzip/${PN}/${P/_/-}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
