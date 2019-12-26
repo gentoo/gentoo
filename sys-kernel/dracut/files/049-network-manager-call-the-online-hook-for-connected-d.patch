@@ -1,0 +1,32 @@
+From 79a17b0112995eb60c85c64d15070c52f213b28d Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Tue, 27 Nov 2018 15:30:48 +0100
+Subject: [PATCH] network-manager: call the online hook for connected devices
+To: <initramfs@vger.kernel.org>
+
+Look for "connection-uuid" instead of "managed" to determine the devices
+that are actually activated with a connection and call the online hook.
+
+This fixes the anaconda-net root mount, which utilizes the online hook.
+---
+ modules.d/35network-manager/nm-run.sh | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/modules.d/35network-manager/nm-run.sh b/modules.d/35network-manager/nm-run.sh
+index f6defa99..0f943631 100755
+--- a/modules.d/35network-manager/nm-run.sh
++++ b/modules.d/35network-manager/nm-run.sh
+@@ -9,8 +9,9 @@ fi
+ for _i in /sys/class/net/*/
+ do
+     state=/run/NetworkManager/devices/$(cat $_i/ifindex)
+-    grep -q managed=true $state 2>/dev/null || continue
++    grep -q connection-uuid= $state 2>/dev/null || continue
+     ifname=$(basename $_i)
+     sed -n 's/root-path/new_root_path/p' <$state >/tmp/dhclient.$ifname.dhcpopts
++    source_hook initqueue/online $ifname
+     /sbin/netroot $ifname
+ done
+-- 
+2.24.1
+
