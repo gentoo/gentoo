@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>netmon@gentoo.org</email>
-    <name>Gentoo network monitoring and analysis project</name>
-  </maintainer>
-  <longdescription>Sarg - Squid Analysis Report Generator is a tool that allow
- you to view "where" your users are going to on the Internet. Sarg provides many
- informations about Squid users activities: times, bytes, sites, etc...
- </longdescription>
-  <use>
-    <flag name="pcre">Enable support for regular expressions in the hostalias file through <pkg>dev-libs/libpcre</pkg></flag>
-    <flag name="gd">Enable support for graphs in reports through <pkg>media-libs/gd</pkg></flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">sarg</remote-id>
-  </upstream>
+<maintainer type="project">
+<email>netmon@gentoo.org</email>
+<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
+<longdescription>Squid Analysis Report Generator is a tool that allow you to view where your users are going to on the Internet. Sarg provides many informations about Squid users activities: times, bytes, sites, etc...</longdescription>
+<use>
+<flag name="doublecheck">Make sarg double check the data it manipulates and output a warning if an error is found</flag>
+<flag name="gd">Enable support for graphs in reports through <pkg>media-libs/gd</pkg></flag>
+<flag name="glob">Disable to ignore wildcards in file names</flag>
+<flag name="pcre">Enable support for regular expressions in the hostalias file through <pkg>dev-libs/libpcre</pkg></flag>
+</use>
+<upstream>
+<remote-id type="sourceforge">sarg</remote-id>
+</upstream>
 </pkgmetadata>
