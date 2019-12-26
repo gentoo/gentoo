@@ -49,7 +49,7 @@ PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package exif Exiv2)
+		$(cmake_use_find_package exif LibExiv2)
 		$(cmake_use_find_package pdf PoDoFo)
 		$(cmake_use_find_package taglib Taglib)
 		$(cmake_use_find_package truetype Freetype)
