@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -29,6 +29,7 @@ src_prepare() {
 		-e 's:$(SYMROOT)/crt0.o::' \
 		-e '/LOCLIBDIR)\/crt0.o/d' \
 		-e '/^CC = /d' \
+		-e "/ARCH_CFLAGS =/s|=|= ${CFLAGS}|" \
 		Makefile || die
 
 	# only require Availability.h for arm, bugs #538602, #539964
