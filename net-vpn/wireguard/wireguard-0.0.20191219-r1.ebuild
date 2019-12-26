@@ -23,8 +23,10 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug +module +tools module-src"
 
-DEPEND="tools? ( net-libs/libmnl || ( net-firewall/nftables net-firewall/iptables ) )"
-RDEPEND="${DEPEND}"
+DEPEND=""
+RDEPEND="${DEPEND}
+	tools? ( net-vpn/wireguard-tools )
+"
 
 MODULE_NAMES="wireguard(kernel/drivers/net:src)"
 BUILD_TARGETS="module"
@@ -55,23 +57,10 @@ src_compile() {
 	BUILD_PARAMS="KERNELDIR=${KERNEL_DIR}"
 	use debug && BUILD_PARAMS="CONFIG_WIREGUARD_DEBUG=y ${BUILD_PARAMS}"
 	use module && linux-mod_src_compile
-	use tools && emake RUNSTATEDIR="${EPREFIX}/run" -C src/tools CC="$(tc-getCC)" LD="$(tc-getLD)"
 }
 
 src_install() {
 	use module && linux-mod_src_install
-	if use tools; then
-		dodoc README.md
-		dodoc -r contrib/examples
-		emake \
-			WITH_BASHCOMPLETION=yes \
-			WITH_SYSTEMDUNITS=yes \
-			WITH_WGQUICK=yes \
-			DESTDIR="${D}" \
-			BASHCOMPDIR="$(get_bashcompdir)" \
-			PREFIX="${EPREFIX}/usr" \
-			-C src/tools install
-	fi
 	use module-src && emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C src dkms-install
 }
 
