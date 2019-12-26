@@ -1,0 +1,97 @@
+From 62f27ee6f145b5f8ca571887602cd9b0715b9e9d Mon Sep 17 00:00:00 2001
+From: Doan Tran Cong Danh <congdanhqx@gmail.com>
+Date: Wed, 6 Nov 2019 18:35:12 +0700
+Subject: [PATCH] configure: find cflags and libs for fts on musl
+To: <initramfs@vger.kernel.org>
+
+Signed-off-by: Doan Tran Cong Danh <congdanhqx@gmail.com>
+---
+ Makefile  |  2 +-
+ configure | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 45 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 31545899..f9b42b96 100644
+--- a/Makefile
++++ b/Makefile
+@@ -62,7 +62,7 @@ install/util.o: install/util.c install/util.h install/macro.h install/log.h
+ install/strv.o: install/strv.c install/strv.h install/util.h install/macro.h install/log.h
+ 
+ install/dracut-install: $(DRACUT_INSTALL_OBJECTS)
+-	$(CC) $(LDFLAGS) -o $@ $(DRACUT_INSTALL_OBJECTS) $(LDLIBS) $(KMOD_LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(DRACUT_INSTALL_OBJECTS) $(LDLIBS) $(FTS_LIBS) $(KMOD_LIBS)
+ 
+ logtee: logtee.c
+ 	$(CC) $(LDFLAGS) -o $@ $<
+diff --git a/configure b/configure
+index b55fb609..3f724ef2 100755
+--- a/configure
++++ b/configure
+@@ -7,6 +7,7 @@ prefix=/usr
+ 
+ enable_documentation=yes
+ 
++CC="${CC:-cc}"
+ PKG_CONFIG="${PKG_CONFIG:-pkg-config}"
+ 
+ # Little helper function for reading args from the commandline.
+@@ -57,6 +58,48 @@ if ! ${PKG_CONFIG} --exists --print-errors " libkmod >= 23 "; then
+     exit 1
+ fi
+ 
++cat <<EOF >conftest.c
++#include <fts.h>
++int main() {
++	return 0;
++}
++EOF
++
++${CC} $CFLAGS $LDFLAGS conftest.c >/dev/null 2>&1
++ret=$?
++rm -f conftest.c a.out
++
++# musl doesn't have fts.h included
++if test $ret -ne 0; then
++	echo "dracut needs fts development files." >&2
++	exit 1
++fi
++
++cat <<EOF >conftest.c
++#include <fts.h>
++int main(void) {
++	fts_open(0, 0, 0);
++	return 0;
++}
++EOF
++
++found=no
++for lib in "-lc" "-lfts"; do
++	${CC} $CFLAGS -Wl,$lib $LDFLAGS conftest.c >/dev/null 2>&1
++	ret=$?
++	if test $ret -eq 0; then
++		FTS_LIBS="$lib"
++		found=yes
++		break;
++	fi
++done
++rm -f conftest.c a.out
++
++if test $found = no; then
++	echo "dracut couldn't find usable fts library" >&2
++	exit 1
++fi
++
+ cat > Makefile.inc.$$ <<EOF
+ prefix ?= ${prefix}
+ libdir ?= ${libdir:-${prefix}/lib}
+@@ -68,6 +111,7 @@ enable_documentation ?= ${enable_documentation:-yes}
+ bindir ?= ${bindir:-${prefix}/bin}
+ KMOD_CFLAGS ?= $(${PKG_CONFIG} --cflags " libkmod >= 23 ")
+ KMOD_LIBS ?= $(${PKG_CONFIG} --libs " libkmod >= 23 ")
++FTS_LIBS ?= ${FTS_LIBS}
+ EOF
+ 
+ {
+-- 
+2.24.1
+

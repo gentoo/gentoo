@@ -1,0 +1,38 @@
+From dddcb809459b7a75906d4b90cf7a5ac291dc74c1 Mon Sep 17 00:00:00 2001
+From: Hongxu Jia <hongxu.jia@windriver.com>
+Date: Wed, 3 Apr 2019 15:24:47 +0800
+Subject: [PATCH] dracut.sh: Fix udevdir detection
+To: <initramfs@vger.kernel.org>
+
+In commit [9d1b81c dracut.sh: improve udevdir and systemdutildir
+fallback logic] , it checked a common binary `collect' to location
+udevdir.
+
+But upstream systemd drop binary `collect' since systemd v240
+[https://github.com/systemd/systemd/commit/a168792c2d95695fd30c0371d4b3890a9df1eafb]
+
+So check binary `ata_id' to instead.
+
+Signed-off-by: Hongxu Jia <hongxu.jia@windriver.com>
+---
+ dracut.sh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dracut.sh b/dracut.sh
+index 9098571d..fd9903b6 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -1311,8 +1311,8 @@ done
+ [[ -d $udevdir ]] \
+     || udevdir="$(pkg-config udev --variable=udevdir 2>/dev/null)"
+ if ! [[ -d "$udevdir" ]]; then
+-    [[ -e /lib/udev/collect ]] && udevdir=/lib/udev
+-    [[ -e /usr/lib/udev/collect ]] && udevdir=/usr/lib/udev
++    [[ -e /lib/udev/ata_id ]] && udevdir=/lib/udev
++    [[ -e /usr/lib/udev/ata_id ]] && udevdir=/usr/lib/udev
+ fi
+ 
+ [[ -d $systemdutildir ]] \
+-- 
+2.24.1
+

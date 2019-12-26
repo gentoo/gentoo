@@ -1,0 +1,88 @@
+From adee5b97bc5418b6e357342bb3be20568668aa55 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Renaud=20M=C3=A9trich?= <rmetrich@redhat.com>
+Date: Thu, 11 Jul 2019 10:50:40 +0200
+Subject: [PATCH] rngd: new module running early during boot to help generating
+ entropy when system's default entropy sources are poor (e.g. use of SSD disks
+ or UEFI RNG not available)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+To: <initramfs@vger.kernel.org>
+
+On systems with low entropy at boot, the boot can take up to several
+hours, specially when NBDE is used (e.g. clevis) which makes use of
+the random number generator.
+
+Enabling rngd service at boot early, because dracut-initqueue runs,
+enables to initialize the random number generator in a couple of seconds
+instead of minutes or hours.
+
+Signed-off-by: Renaud Métrich <rmetrich@redhat.com>
+---
+ modules.d/06rngd/module-setup.sh | 39 ++++++++++++++++++++++++++++++++
+ modules.d/06rngd/rngd.service    |  7 ++++++
+ 2 files changed, 46 insertions(+)
+ create mode 100644 modules.d/06rngd/module-setup.sh
+ create mode 100644 modules.d/06rngd/rngd.service
+
+diff --git a/modules.d/06rngd/module-setup.sh b/modules.d/06rngd/module-setup.sh
+new file mode 100644
+index 00000000..43d5c2d3
+--- /dev/null
++++ b/modules.d/06rngd/module-setup.sh
+@@ -0,0 +1,39 @@
++#!/bin/bash
++# vim: set tabstop=8 shiftwidth=4 softtabstop=4 expandtab smarttab colorcolumn=80:
++#
++# Copyright (c) 2019 Red Hat, Inc.
++# Author: Renaud Métrich <rmetrich@redhat.com>
++#
++# This program is free software: you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++depends() {
++    echo systemd
++    return 0
++}
++
++check() {
++    # if there's no rngd binary, no go.
++    require_binaries rngd || return 1
++
++    return 0
++}
++
++install() {
++    inst rngd
++    inst_simple "${moddir}/rngd.service" "${systemdsystemunitdir}/rngd.service"
++    mkdir -p "${initdir}${systemdsystemunitdir}/sysinit.target.wants"
++    ln -rfs "${initdir}${systemdsystemunitdir}/rngd.service" \
++        "${initdir}${systemdsystemunitdir}/sysinit.target.wants/rngd.service"
++}
+diff --git a/modules.d/06rngd/rngd.service b/modules.d/06rngd/rngd.service
+new file mode 100644
+index 00000000..570fbedb
+--- /dev/null
++++ b/modules.d/06rngd/rngd.service
+@@ -0,0 +1,7 @@
++[Unit]
++Description=Hardware RNG Entropy Gatherer Daemon
++DefaultDependencies=no
++Before=systemd-udevd.service
++
++[Service]
++ExecStart=/usr/sbin/rngd -f
+-- 
+2.24.1
+
