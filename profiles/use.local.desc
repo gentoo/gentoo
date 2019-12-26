@@ -5466,7 +5466,9 @@ net-analyzer/rrdtool:graph - Enable support for graphing functions
 net-analyzer/rrdtool:rados - Enable support for librados from sys-cluster/ceph
 net-analyzer/rrdtool:rrdcgi - Build rrdcgi support
 net-analyzer/sancp:sguil - Enable sguil (The Analyst Console for Network Security Monitoring) support
+net-analyzer/sarg:doublecheck - Make sarg double check the data it manipulates and output a warning if an error is found
 net-analyzer/sarg:gd - Enable support for graphs in reports through media-libs/gd
+net-analyzer/sarg:glob - Disable to ignore wildcards in file names
 net-analyzer/sarg:pcre - Enable support for regular expressions in the hostalias file through dev-libs/libpcre
 net-analyzer/scanlogd:nids - Use net-libs/libnids for packet capturing
 net-analyzer/scanlogd:pcap - Use net-libs/libpcap for packet capturing
