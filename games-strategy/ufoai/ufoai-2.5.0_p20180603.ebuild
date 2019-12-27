@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,6 +30,7 @@ IUSE="+client cpu_flags_x86_sse debug editor server"
 REQUIRED_USE="|| ( client editor server )"
 
 RDEPEND="
+	dev-libs/mxml
 	net-misc/curl
 	sys-libs/zlib
 
@@ -75,7 +76,11 @@ DEPEND="
 "
 
 S="${WORKDIR}/${PN}-code-${COMMIT}"
-PATCHES=( "${FILESDIR}"/${P}-install.patch )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-install.patch
+	"${FILESDIR}"/${P}-mxml3.patch
+)
 
 src_unpack() {
 	use editor && unpack ${PN}-${DIST_VERSION}-mappack.tar.bz2
@@ -89,6 +94,9 @@ src_prepare() {
 
 	# Make the build system a bit happier, will be fixed upstream
 	mkdir -p base/{maps,models} contrib/installer/mojosetup/scripts || die
+
+	# Remove bundled mxml
+	rm -r src/libs/mxml/ || die
 }
 
 src_configure() {
