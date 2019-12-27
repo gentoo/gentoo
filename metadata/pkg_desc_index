@@ -2402,7 +2402,7 @@ app-shells/ksh 2020.0.0 9999: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/kshdb 1.0.0: Korn Shell Debugger
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/loksh 6.4 6.5 6.6: Linux port of OpenBSD's ksh
-app-shells/mcfly 0.3.4: Context-aware bash history search replacement (crtl-r)
+app-shells/mcfly 0.3.6: Context-aware bash history search replacement (crtl-r)
 app-shells/mksh 56c 57 57-r1 57-r2 9999: MirBSD Korn Shell
 app-shells/mpibash 1.2 1.3 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
 app-shells/mpv-bash-completion 3.3.16 3.3.17: Bash completion for the mpv video player
@@ -7551,7 +7551,7 @@ dev-python/booleanOperations 0.8.2: Boolean operations on paths
 dev-python/boto 2.41.0 2.48.0 2.49.0: Amazon Web Services API
 dev-python/boto3 1.9.4-r1 1.9.122 1.10.2 9999: The AWS SDK for Python
 dev-python/botocore 1.12.4-r1 1.12.81 1.12.122 1.12.205 1.12.210 1.12.223 1.12.251 1.13.2 1.13.14 1.13.19 1.13.28 1.13.36 1.13.44 9999: Low-level, data-driven core of boto 3.
-dev-python/bottle 0.12.12 0.12.13 0.12.16: A fast and simple micro-framework for small web-applications
+dev-python/bottle 0.12.12 0.12.13 0.12.16 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.2.1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.17.1 0.18: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/breathe 4.6.0: Sphinx Doxygen renderer
@@ -8142,7 +8142,7 @@ dev-python/m2r 0.1.5 0.1.6 0.1.12 0.1.14 0.2.1: Markdown to reStructuredText con
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
 dev-python/mailmanclient 3.1.1: mailmanclient -- python library for Mailman REST API
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
-dev-python/mako 1.0.3 1.0.6 1.0.7 1.0.7-r1: A Python templating language
+dev-python/mako 1.0.3 1.0.6 1.0.7 1.1.0: A Python templating language
 dev-python/mamba 0.8.6: ... testing tool ... Born under the banner of Behavior Driven Development
 dev-python/mando 0.3.2: Create Python CLI apps with little to no effort at all!
 dev-python/mantissa 0.7.0-r1 0.8.4: An extensible, multi-protocol, multi-user, interactive application server
