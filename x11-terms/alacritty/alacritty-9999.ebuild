@@ -60,7 +60,7 @@ src_unpack() {
 }
 
 src_install() {
-	CARGO_INSTALL_PATH="alacritty" cargo_src_install --offline
+	CARGO_INSTALL_PATH="alacritty" cargo_src_install
 
 	newbashcomp extra/completions/alacritty.bash alacritty
 
