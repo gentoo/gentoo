@@ -426,7 +426,7 @@ app-admin/sysklogd 1.5.1-r1 2.0.2 2.0.3: Standard log daemons
 app-admin/syslog-ng 3.22.1 3.24.1 3.25.1: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1 1.14-r2 1.14-r3: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17: Daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 12.0.5 12.0.6-r1 12.2.0-r1 999999: System performance tools for Linux
+app-admin/sysstat 12.0.5 12.2.0-r1 12.2.1 12.3.1 999999: System performance tools for Linux
 app-admin/system-config-printer 1.5.11-r2 1.5.12: Graphical user interface for CUPS administration
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: systemd managment utility
@@ -18317,7 +18317,7 @@ www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2 3.9: a free, open source web browser
 www-client/opera 65.0.3467.69: A fast and secure web browser
-www-client/opera-beta 66.0.3515.7 66.0.3515.14: A fast and secure web browser
+www-client/opera-beta 66.0.3515.14 66.0.3515.21: A fast and secure web browser
 www-client/opera-developer 67.0.3536.0 67.0.3541.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
