@@ -27,7 +27,7 @@ DEPEND="
 	test? (
 		${RDEPEND}
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' pypy python2_7)
-		dev-python/pytest[${PYTHON_USEDEP}]
+		<dev-python/pytest-4[${PYTHON_USEDEP}]
 	)
 "
 
