@@ -559,7 +559,6 @@ dev-python/py-notify
 dev-python/pyoembed
 dev-python/pyPdf
 dev-python/pyrax
-=dev-python/PySensors-0.0.3
 dev-python/py-smbpasswd
 dev-python/pystatgrab
 dev-python/python-caja
