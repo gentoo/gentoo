@@ -111,6 +111,7 @@ acct-group/vpopmail 0: System group: vpopmail
 acct-group/wheel 0: System group: wheel
 acct-group/x2goprint 0: Group for net-misc/x2goserver
 acct-group/x2gouser 0: Group for net-misc/x2goserver
+acct-group/xrootd 0: Group for the XRootD server
 acct-user/alias 0: alias user for qmail mail delivery
 acct-user/asterisk 0: User for asterisk
 acct-user/automx2 0: User for www-servers/automx2
@@ -211,6 +212,7 @@ acct-user/varnish 0: user for varnish
 acct-user/vpopmail 0: user for vpopmail
 acct-user/x2goprint 0: User for net-misc/x2goserver
 acct-user/x2gouser 0: User for net-misc/x2goserver
+acct-user/xrootd 0: User for the XRootD server
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.26.2 2.30.1 2.32.0 2.34.0: Gtk module for bridging AT-SPI to Atk
@@ -15075,7 +15077,7 @@ net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.24.4: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3 4.6.1-r4 4.6.1-r5 4.6.1_p14-r1 99999: A network programming library in C++
-net-libs/xrootd 4.8.3 4.9.0 4.10.1: Extended ROOT remote file server
+net-libs/xrootd 4.8.3 4.9.0 4.10.1 4.11.1: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.5 4.3.2: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
