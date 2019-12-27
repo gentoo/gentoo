@@ -16519,7 +16519,7 @@ sci-libs/pastix 5.2.2.22-r1 5.2.3: Parallel solver for very large sparse linear 
 sci-libs/pcl 1.9.1 9999: 2D/3D image and point cloud processing
 sci-libs/pgplot 5.2.2-r6 5.2.2-r7: FORTRAN/C device-independent scientific graphic library
 sci-libs/plotmm 0.1.2: Plot widget for GTKmm
-sci-libs/plplot 5.12.0-r1: Multi-language scientific plotting library
+sci-libs/plplot 5.12.0-r1 5.15.0: Multi-language scientific plotting library
 sci-libs/primegen 0.97-r1 0.97-r2: Small, fast library to generate primes in order
 sci-libs/profnet 1.0.22: Neural network architecture for profacc
 sci-libs/profphd-utils 1.0.10 1.0.10-r1: Additional utils for profphd
