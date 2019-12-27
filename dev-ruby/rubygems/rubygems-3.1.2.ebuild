@@ -41,7 +41,9 @@ all_ruby_prepare() {
 	sed -i -e '/test_realworld_default_gem/askip "gentoo"' test/rubygems/test_require.rb || die
 
 	# Update manifest after changing files to avoid a test failure
-	rake update_manifest || die
+	if use test; then
+		rake update_manifest || die
+	fi
 }
 
 each_ruby_compile() {

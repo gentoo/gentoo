@@ -83,7 +83,7 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 # See https://github.com/onur/cargo-license/
 LICENSE="GPL-3 Apache-2.0 BSD-2 CC0-1.0 ISC MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 
 DOCS=( CHANGELOG.md README.md )
 
@@ -91,7 +91,7 @@ DOCS=( CHANGELOG.md README.md )
 QA_FLAGS_IGNORED="usr/bin/rpick"
 
 src_install() {
-	cargo_src_install --path=.
+	cargo_src_install
 
 	einstalldocs
 }

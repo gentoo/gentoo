@@ -321,7 +321,7 @@ QA_FLAGS_IGNORED="usr/bin/alacritty"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_install() {
-	cargo_src_install --path=alacritty
+	CARGO_INSTALL_PATH="alacritty" cargo_src_install
 
 	newbashcomp extra/completions/alacritty.bash alacritty
 

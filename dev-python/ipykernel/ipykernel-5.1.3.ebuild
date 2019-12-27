@@ -30,11 +30,3 @@ DEPEND="${RDEPEND}
 		dev-python/flaky[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
-
-python_install() {
-	distutils-r1_python_install
-
-	# bug 628222, specify python 2 or 3.
-	sed -e "/language/!s:python:${EPYTHON%.*}:" \
-		-i "${ED}"/usr/share/jupyter/kernels/${EPYTHON%.*}/kernel.json || die
-}

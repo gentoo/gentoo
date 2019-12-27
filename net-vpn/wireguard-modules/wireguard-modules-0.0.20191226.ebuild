@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MODULES_OPTIONAL_USE="module"
 inherit linux-mod bash-completion-r1
@@ -33,14 +33,21 @@ CONFIG_CHECK="NET INET NET_UDP_TUNNEL CRYPTO_ALGAPI"
 pkg_setup() {
 	if use module; then
 		linux-mod_pkg_setup
-		if kernel_is -lt 3 10 0 || kernel_is -ge 5 6 0; then
-			die "This version of ${PN} requires 3.10 <= Linux <= 5.5.y"
+		if kernel_is -ge 5 6 0; then
+			eerror
+			eerror "WireGuard has been merged upstream in Linux 5.6. Therefore,"
+			eerror "you no longer need this compatibility ebuild. Instead, simply"
+			eerror "enable CONFIG_WIREGUARD=y in your kernel configuration."
+			eerror
+			die "Use CONFIG_WIREGUARD=y for kernels >= 5.6, and do not use this package."
+		elif kernel_is -lt 3 10 0; then
+			die "This version of ${PN} requires Linux >= 3.10."
 		fi
 	fi
 }
 
 src_compile() {
-	BUILD_PARAMS="KERNELDIR=${KERNEL_DIR}"
+	BUILD_PARAMS="KERNELDIR=${KV_OUT_DIR}"
 	use debug && BUILD_PARAMS="CONFIG_WIREGUARD_DEBUG=y ${BUILD_PARAMS}"
 	use module && linux-mod_src_compile
 }

@@ -34,6 +34,11 @@ IUSE="${IUSE} debug"
 ECARGO_HOME="${WORKDIR}/cargo_home"
 ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 
+# @ECLASS-VARIABLE: CARGO_INSTALL_PATH
+# @DESCRIPTION:
+# Allows overriding the default cwd to run cargo install from
+: ${CARGO_INSTALL_PATH:=.}
+
 # @FUNCTION: cargo_crate_uris
 # @DESCRIPTION:
 # Generates the URIs to put in SRC_URI to help fetch dependencies.
@@ -156,7 +161,8 @@ cargo_src_compile() {
 cargo_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cargo install -vv -j $(makeopts_jobs) --root="${ED}/usr" $(usex debug --debug "") "$@" \
+	cargo install -vv -j $(makeopts_jobs) --path ${CARGO_INSTALL_PATH} \
+		--root="${ED}/usr" $(usex debug --debug "") "$@" \
 		|| die "cargo install failed"
 	rm -f "${ED}/usr/.crates.toml"
 

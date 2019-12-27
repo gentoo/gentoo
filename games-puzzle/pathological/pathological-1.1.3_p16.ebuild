@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit desktop python-single-r1
 
@@ -83,9 +83,10 @@ src_install() {
 	doins ${PN}_scores
 	fperms 660 /var/games/${PN}_scores
 
-	dodoc changelog README TODO
 	doman ${PN}.6
-	use doc && dohtml -r html/*
+	use doc && local HTML_DOCS=( html/. )
+	einstalldocs
+	dodoc changelog
 
 	doicon ${PN}.xpm
 	make_desktop_entry ${PN} Pathological ${PN}

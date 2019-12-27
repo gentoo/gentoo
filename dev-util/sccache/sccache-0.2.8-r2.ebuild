@@ -328,7 +328,7 @@ src_compile(){
 }
 
 src_install() {
-	cargo_src_install --path=. ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+	cargo_src_install ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
 
 	keepdir /etc/sccache
 
