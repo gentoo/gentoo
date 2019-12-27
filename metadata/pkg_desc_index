@@ -2733,7 +2733,7 @@ app-text/xmlto 0.0.28-r1: script for converting XML and DocBook documents to a v
 app-text/xournal 0.4.8 0.4.8-r1 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/xpdf 4.02: The PDF viewer and tools
 app-text/yelp-tools 3.18.0 3.28.0 3.32.2: Collection of tools for building and converting documentation
-app-text/yodl 4.02.01: Your Own Document Language: a pre-document language and tools to process it
+app-text/yodl 4.02.01 4.02.02: Your Own Document Language: a pre-document language and tools to process it
 app-text/zathura 0.4.3 0.4.4 9999: A highly customizable and functional document viewer
 app-text/zathura-cb 0.1.8 9999: Comic book plug-in for zathura with 7zip, rar, tar and zip support
 app-text/zathura-djvu 0.2.8 9999: DjVu plug-in for zathura
@@ -10767,7 +10767,7 @@ dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20180301 20190428: A collection of tools and scripts
 dev-util/icemon 3.1.0: Monitor program for use with Icecream compile clusters based on KDE Frameworks
-dev-util/icmake 9.02.08: Hybrid between a make utility and a shell scripting language
+dev-util/icmake 9.02.08 9.02.09: Hybrid between a make utility and a shell scripting language
 dev-util/idea-community 2019.3.193.5233.102: A complete toolset for web, mobile and enterprise development
 dev-util/idutils 4.6: Fast, high-capacity, identifier database tool
 dev-util/ignition-cmake 0.2.0 0.4.0: CMake modules to be used by the Ignition projects.
