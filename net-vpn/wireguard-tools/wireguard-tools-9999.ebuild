@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit linux-info bash-completion-r1
 
@@ -20,6 +20,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
+BDEPEND="virtual/pkgconfig"
 DEPEND="net-libs/libmnl"
 RDEPEND="${DEPEND}
 	|| ( net-firewall/nftables net-firewall/iptables )
@@ -34,10 +35,24 @@ wg_quick_optional_config_nob() {
 pkg_setup() {
 	wg_quick_optional_config_nob IP_ADVANCED_ROUTER
 	wg_quick_optional_config_nob IP_MULTIPLE_TABLES
-	wg_quick_optional_config_nob NETFILTER_XT_MARK
-	wg_quick_optional_config_nob NETFILTER_XT_CONNMARK
-	wg_quick_optional_config_nob IP6_NF_RAW
-	wg_quick_optional_config_nob IP_NF_RAW
+	if has_version net-firewall/nftables; then
+		wg_quick_optional_config_nob NF_TABLES
+		wg_quick_optional_config_nob NF_TABLES_IPV4
+		wg_quick_optional_config_nob NF_TABLES_IPV6
+		wg_quick_optional_config_nob NFT_CT
+		wg_quick_optional_config_nob NFT_FIB
+		wg_quick_optional_config_nob NFT_FIB_IPV4
+		wg_quick_optional_config_nob NFT_FIB_IPV6
+	elif has_version net-firewall/iptables; then
+		wg_quick_optional_config_nob NETFILTER_XTABLES
+		wg_quick_optional_config_nob NETFILTER_XT_MARK
+		wg_quick_optional_config_nob NETFILTER_XT_CONNMARK
+		wg_quick_optional_config_nob NETFILTER_XT_MATCH_COMMENT
+		wg_quick_optional_config_nob IP6_NF_RAW
+		wg_quick_optional_config_nob IP_NF_RAW
+		wg_quick_optional_config_nob IP6_NF_FILTER
+		wg_quick_optional_config_nob IP_NF_FILTER
+	fi
 	linux-info_pkg_setup
 }
 
