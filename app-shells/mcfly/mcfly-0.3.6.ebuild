@@ -1,7 +1,7 @@
 # Copyright 2017-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CRATES="
 ansi_term-0.11.0
@@ -68,12 +68,14 @@ HOMEPAGE="https://github.com/cantino/mcfly"
 SRC_URI="https://github.com/cantino/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 MIT Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64"
 
-DEPEND=""
-RDEPEND=""
+DEPEND="dev-db/sqlite:3"
+RDEPEND="${DEPEND}"
+
+QA_FLAGS_IGNORED="/usr/bin/mcfly"
 
 src_install() {
 	cargo_src_install
