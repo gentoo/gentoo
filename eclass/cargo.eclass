@@ -12,12 +12,8 @@
 if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
-if [[ ${PV} == *9999* ]]; then
-	# we need at least this for cargo vendor subommand
-	CARGO_DEPEND=">=virtual/cargo-1.37.0"
-else
-	CARGO_DEPEND="virtual/cargo"
-fi
+# we need this for 'cargo vendor' subcommand and net.offline config knob
+CARGO_DEPEND=">=virtual/cargo-1.37.0"
 
 case ${EAPI} in
 	6) DEPEND="${CARGO_DEPEND}";;
