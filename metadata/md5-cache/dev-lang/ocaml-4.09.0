@@ -1,0 +1,13 @@
+BDEPEND=sys-libs/binutils-libs:= spacetime? ( sys-libs/libunwind:= ) virtual/pkgconfig
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=Programming language supporting functional, imperative & object-oriented styles
+EAPI=7
+HOMEPAGE=https://ocaml.org/
+IUSE=emacs flambda latex +ocamlopt spacetime xemacs
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1
+PDEPEND=emacs? ( app-emacs/ocaml-mode ) xemacs? ( app-xemacs/ocaml )
+RDEPEND=sys-libs/binutils-libs:= spacetime? ( sys-libs/libunwind:= )
+SLOT=0/4.09.0
+SRC_URI=https://github.com/ocaml/ocaml/archive/4.09.0.tar.gz -> ocaml-4.09.0.tar.gz
+_md5_=e9d178b70f1e931bf4e22326a5c5fc8a

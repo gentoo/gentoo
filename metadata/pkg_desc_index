@@ -4690,7 +4690,7 @@ dev-lang/nasm 2.14.02: groovy little assembler
 dev-lang/nim 1.0.2 1.0.4: compiled, garbage-collected systems programming language
 dev-lang/nqp 2019.03-r1 2019.07.1 2019.11 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
-dev-lang/ocaml 4.04.2-r1 4.05.0-r1: Type-inferring functional programming language descended from the ML family
+dev-lang/ocaml 4.04.2-r1 4.05.0-r1 4.09.0: Programming language supporting functional, imperative & object-oriented styles
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
 dev-lang/opendylan 2013.1-r1 2013.2 2014.1 9999: OpenDylan language runtime environment
 dev-lang/opendylan-bin 2011.1 2012.1 2013.1 2013.2 2014.1 2019.1: OpenDylan language runtime environment (prebuilt)
@@ -13737,7 +13737,7 @@ media-plugins/vdr-vdrmanager 0.14: VDR Plugin: remote programming VDR using VDR-
 media-plugins/vdr-vompserver 0.4.1 0.4.1-r1: VDR Plugin: server part for MediaMVP device
 media-plugins/vdr-wapd 0.9_p1-r1: VDR plugin: lets VDR listen to WAP requests on WML enabled browsers
 media-plugins/vdr-weatherng 0.0.8_pre3-r1: VDR plugin: show weather for specified place
-media-plugins/vdr-wirbelscan 0.0.7-r1: VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards
+media-plugins/vdr-wirbelscan 0.0.7-r1 2018.11.04: VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards
 media-plugins/vdr-xineliboutput 2.0.0 2.1.0 9999: VDR Plugin: Xinelib PlugIn
 media-plugins/vdr-zaphistory 0.9.6: VDR Plugin: Shows the least recently used channels
 media-plugins/vdr-zappilot 0.0.5 0.0.5-r1: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
@@ -17309,7 +17309,7 @@ sys-auth/google-authenticator 1.05 1.06 1.07 9999: PAM Module for two step verif
 sys-auth/google-authenticator-libpam-hardened 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-wrappers 1 2 3: Set of scripts to manage google-auth setup on Gentoo Infra
 sys-auth/keystone 14.1.0-r1 15.0.0 16.0.0 2018.2.9999 2019.1.9999 2019.2.9999: The Openstack authentication, authorization, and service catalog
-sys-auth/libfprint 0.99.0 1.0: library to add support for consumer fingerprint readers
+sys-auth/libfprint 0.99.0 1.0 1.90.0: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-compat 1.2: NSS module to provide compat entry support
 sys-auth/libnss-mysql 1.5_p20060915-r4: NSS MySQL Library
