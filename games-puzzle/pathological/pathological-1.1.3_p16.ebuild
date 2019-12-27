@@ -83,9 +83,10 @@ src_install() {
 	doins ${PN}_scores
 	fperms 660 /var/games/${PN}_scores
 
-	dodoc changelog README TODO
 	doman ${PN}.6
-	use doc && dohtml -r html/*
+	use doc && local HTML_DOCS=( html/. )
+	einstalldocs
+	dodoc changelog
 
 	doicon ${PN}.xpm
 	make_desktop_entry ${PN} Pathological ${PN}
