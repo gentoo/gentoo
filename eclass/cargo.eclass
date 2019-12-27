@@ -125,7 +125,14 @@ cargo_live_src_unpack() {
 
 # @FUNCTION: cargo_gen_config
 # @DESCRIPTION:
-# Generate the $CARGO_HOME/config necessary to use our local registry
+# Generate the $CARGO_HOME/config necessary to use our local registry and settings.
+# Cargo can also be configured through environment variables in addition to the TOML syntax below.
+# For each configuration key below of the form foo.bar the environment variable CARGO_FOO_BAR
+# can also be used to define the value.
+# Environment variables will take precedent over TOML configuration,
+# and currently only integer, boolean, and string keys are supported.
+# For example the build.jobs key can also be defined by CARGO_BUILD_JOBS.
+# Or setting CARGO_TERM_VERBOSE=false in make.conf will make build quieter.
 cargo_gen_config() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -142,6 +149,9 @@ cargo_gen_config() {
 
 	[build]
 	jobs = $(makeopts_jobs)
+
+	[term]
+	verbose = true
 	EOF
 }
 
@@ -153,7 +163,7 @@ cargo_src_compile() {
 
 	export CARGO_HOME="${ECARGO_HOME}"
 
-	cargo build -vv $(usex debug "" --release) "$@" \
+	cargo build $(usex debug "" --release) "$@" \
 		|| die "cargo build failed"
 }
 
@@ -163,7 +173,7 @@ cargo_src_compile() {
 cargo_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cargo install -vv --path ${CARGO_INSTALL_PATH} \
+	cargo install --path ${CARGO_INSTALL_PATH} \
 		--root="${ED}/usr" $(usex debug --debug "") "$@" \
 		|| die "cargo install failed"
 	rm -f "${ED}/usr/.crates.toml"
@@ -177,7 +187,7 @@ cargo_src_install() {
 cargo_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cargo test -vv $(usex debug "" --release) "$@" \
+	cargo test $(usex debug "" --release) "$@" \
 		|| die "cargo test failed"
 }
 
