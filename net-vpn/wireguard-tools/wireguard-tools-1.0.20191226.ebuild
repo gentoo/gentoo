@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit linux-mod bash-completion-r1
+inherit linux-info bash-completion-r1
 
 DESCRIPTION="Required tools for WireGuard, such as wg(8) and wg-quick(8)"
 HOMEPAGE="https://www.wireguard.com/"
@@ -38,7 +38,7 @@ pkg_setup() {
 	wg_quick_optional_config_nob NETFILTER_XT_CONNMARK
 	wg_quick_optional_config_nob IP6_NF_RAW
 	wg_quick_optional_config_nob IP_NF_RAW
-	linux-mod_pkg_setup
+	linux-info_pkg_setup
 }
 
 src_compile() {
