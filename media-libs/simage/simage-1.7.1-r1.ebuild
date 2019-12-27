@@ -12,8 +12,12 @@ SRC_URI="https://bitbucket.org/Coin3D/simage/downloads/${P}-src.zip"
 LICENSE="public-domain mpeg2enc"
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 SLOT="0"
-IUSE="debug gif jpeg png qt5 sndfile tiff vorbis"
+IUSE="debug gif jpeg png qt5 sndfile test tiff vorbis"
+RESTRICT="!test? ( test )"
 
+BDEPEND="
+	app-arch/unzip
+"
 RDEPEND="
 	gif? ( media-libs/giflib )
 	jpeg? ( virtual/jpeg:0= )
@@ -31,7 +35,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	app-arch/unzip
+	test? ( media-libs/libsndfile )
 "
 
 S="${WORKDIR}/${PN}"
@@ -42,6 +46,7 @@ PATCHES=(
 	# make the dep unconditional or not build the examples. i chose the latter way.
 	# btw, examples are not installed anyway, they are just compiled.
 	"${FILESDIR}/${P}-disable-examples.patch"
+	"${FILESDIR}/${P}-tests-conditional.patch"
 	"${FILESDIR}/${P}-disable-gif-quantize-buffer.patch"
 )
 
@@ -71,6 +76,7 @@ src_configure() {
 		-DSIMAGE_RGB_SUPPORT=ON
 		-DSIMAGE_TGA_SUPPORT=ON
 		-DSIMAGE_XWD_SUPPORT=ON
+		-DTESTS=$(usex test)
 	)
 
 	cmake-utils_src_configure
