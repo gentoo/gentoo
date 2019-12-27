@@ -45,7 +45,7 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0 GPL-3+ LGPL-3 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 BDEPEND="
@@ -67,7 +67,7 @@ RESTRICT="test"
 QA_FLAGS_IGNORED="/usr/bin/nitrocli"
 
 src_install() {
-	cargo_src_install --path=.
+	cargo_src_install
 
 	einstalldocs
 	doman "doc/nitrocli.1"

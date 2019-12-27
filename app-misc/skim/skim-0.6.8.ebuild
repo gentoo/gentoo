@@ -97,7 +97,7 @@ src_install() {
 	# prevent cargo_src_install() blowing up on man installation
 	mv man manpages || die
 
-	cargo_src_install --path=.
+	cargo_src_install
 	dodoc CHANGELOG.md README.md
 	doman manpages/man1/*
 
