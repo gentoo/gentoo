@@ -11,7 +11,7 @@ HOMEPAGE="https://www.dettus.net/dMagnetic/"
 SRC_URI="https://www.dettus.net/${PN}/${MY_P}.tar.bz2"
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~m68k ~x86"
 
 S="${WORKDIR}/${MY_P}"
 
