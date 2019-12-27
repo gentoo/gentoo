@@ -2161,7 +2161,7 @@ app-misc/screenfetch 3.8.0-r1 3.9.0 9999: Bash Screenshot Information Tool
 app-misc/screenie 1.30.0-r1: screen(1) frontend that is designed to be a session handler
 app-misc/scrub 2.5.2 2.6.1: Overwrite files with iterative patterns.
 app-misc/selecta 0.0.7 9999: A fuzzy text selector for files and anything else you need to select
-app-misc/skim 0.5.2 0.5.4 0.5.5 0.6.4 0.6.6 0.6.7 0.6.8: Command-line fuzzy finder
+app-misc/skim 0.5.2 0.6.9: Command-line fuzzy finder
 app-misc/sl 5.02: sophisticated graphical program which corrects your miss typing
 app-misc/sleepyhead 1.0.0_beta2: Software used to analyze data from CPAP machines
 app-misc/slmon 0.5.13: Colored text-based system performance monitor
