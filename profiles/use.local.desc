@@ -4163,6 +4163,7 @@ media-gfx/inkscape:latex - pull in dependencies for LaTeX formulas
 media-gfx/inkscape:svg2 - Enable support for new SVG2 features
 media-gfx/inkscape:visio - Enable support for Microsoft Visio Diagrams via media-libs/libvisio
 media-gfx/inkscape:wpg - Enable support for WordPerfect Graphics via app-text/libwpg
+media-gfx/iscan:gui - Builds gtk-based minimal scan GUI
 media-gfx/iscan-plugin-gt-f500:minimal - Install the firmware only, and not the plugin.
 media-gfx/jpeg2ps:metric - Default to A4 paper size
 media-gfx/kphotoalbum:kipi - Support for the KDE Image Plugin Interface
@@ -7059,10 +7060,6 @@ net-vpn/tor:man - Build and install man pages
 net-vpn/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
 net-vpn/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
 net-vpn/vpnc:resolvconf - Enable support for DNS managing framework net-dns/openresolv
-net-vpn/wireguard:debug - Enable verbose debug reporting in dmesg of various WireGuard peer and device information.
-net-vpn/wireguard:module - Compile the actual WireGuard kernel module. Most certainly you want this enabled, unless you're doing something strange.
-net-vpn/wireguard:module-src - Install the module source code to /usr/src, in case you like building kernel modules yourself.
-net-vpn/wireguard:tools - Compile the wg(8) tool and related helpers. You probably want this enabled.
 net-vpn/wireguard-modules:debug - Enable verbose debug reporting in dmesg of various WireGuard peer and device information.
 net-vpn/wireguard-modules:module - Compile the actual WireGuard kernel module. Most certainly you want this enabled, unless you're doing something strange.
 net-vpn/wireguard-modules:module-src - Install the module source code to /usr/src, in case you like building kernel modules yourself.
@@ -8674,6 +8671,10 @@ virtual/podofo-build:boost - Add support for boost
 virtual/podofo-build:tools - Build and install commandline tools.
 virtual/ssh:minimal - Prefer net-misc/dropbear over net-misc/openssh
 virtual/wine:staging - Enable Wine-Staging's Patchset
+virtual/wireguard:debug - Enable verbose debug reporting in dmesg of various WireGuard peer and device information.
+virtual/wireguard:module - Compile the actual WireGuard kernel module. Most certainly you want this enabled, unless you're doing something strange.
+virtual/wireguard:module-src - Install the module source code to /usr/src, in case you like building kernel modules yourself.
+virtual/wireguard:tools - Compile the wg(8) tool and related helpers. You probably want this enabled.
 www-apache/mod_backtrace:unwind - Use sys-libs/libunwind to provide better resolution of function names.
 www-apache/mod_extract_forwarded:mod-proxy - Enable support for Apache's internal proxy
 www-apache/mod_musicindex:archive - Add archive support

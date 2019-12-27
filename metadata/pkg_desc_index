@@ -12917,7 +12917,7 @@ media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.1 0.3.3: Losslessly convert raster images to PDF
 media-gfx/imv 2.1.3 4.0.1 9999: Minimal image viewer designed for tiling window manager users
 media-gfx/inkscape 0.92.4 1.0_beta2 9999: SVG based generic vector-drawing program
-media-gfx/iscan 2.30.3.1 2.30.4.2: EPSON Image Scan! for Linux (including sane-epkowa backend)
+media-gfx/iscan 2.30.3.1 2.30.4.2 3.61.0: EPSON Image Scan v3 for Linux
 media-gfx/iscan-data 1.39.0.1: Image Scan! for Linux data files
 media-gfx/iscan-plugin-esdip 1.0.0.5-r1: Plugin for 'epkowa' backend for image manipulation
 media-gfx/iscan-plugin-gt-f500 1.0.0.1-r1: Epson Perfection 2480/2580 PHOTO scanner plugin for SANE 'epkowa' backend
@@ -15529,7 +15529,7 @@ net-news/amphetadesk 0.93.1-r1: AmphetaDesk is a free syndicated news aggregator
 net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12.3 1.12.5a 1.12.6b 1.12.7: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
-net-news/newsboat 2.13 2.17.1-r1: An RSS/Atom feed reader for text terminals
+net-news/newsboat 2.13 2.18: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.18.12 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.5.5 9999: A tiny RSS and Atom feed reader
@@ -15701,7 +15701,6 @@ net-vpn/tor 0.4.0.5 0.4.1.7 0.4.2.5: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard 0.0.20191219-r2: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-modules 0.0.20191226 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20191226 9999: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.5.2 9999: WLAN tools for breaking 802.11 WEP/WPA keys
@@ -18176,6 +18175,7 @@ virtual/ttf-fonts 1-r1: Virtual for Serif/Sans/Monospace font packages
 virtual/udev 215 217: Virtual to select between different udev daemon providers
 virtual/w3m 0: Virtual for the w3m web browser
 virtual/wine 0-r7: Virtual for Wine that supports multiple variants and slotting
+virtual/wireguard 1: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 virtual/yacc 0: virtual for yacc (yet another compiler compiler)
 www-apache/anyterm 1.1.29-r1: A terminal anywhere
 www-apache/libapreq2 2.13-r1: A library for manipulating client request data via the Apache API
