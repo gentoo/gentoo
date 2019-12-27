@@ -32,7 +32,7 @@ ruby_add_rdepend "
 	~dev-ruby/activerecord-${PV}
 	~dev-ruby/activesupport-${PV}
 	~dev-ruby/railties-${PV}
-	>=dev-ruby/bundler-1.3 =dev-ruby/bundler-1*
+	>=dev-ruby/bundler-1.3:0
 	dev-ruby/sprockets-rails:*
 	asset-pipeline? (
 		dev-ruby/jquery-rails:*
