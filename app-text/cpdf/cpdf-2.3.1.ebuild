@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt]
-	dev-ml/camlpdf:="
+	~dev-ml/camlpdf-${PV}:="
 DEPEND="${RDEPEND}"
 
 RESTRICT="mirror bindist"
