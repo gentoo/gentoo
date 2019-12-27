@@ -13657,7 +13657,7 @@ media-plugins/vdr-dvbapi 2.1.1 2.2.2 2.2.4 2.2.5: VDR Plugin: allows connect VDR
 media-plugins/vdr-dvbhddevice 2.1.3_p20140115 2.2.0_p20180420: VDR Plugin: output device for the 'Full Featured' TechnoTrend S2-6400 DVB Card
 media-plugins/vdr-dvbsddevice 2.0.0 2.2.0: VDR Plugin: output device for the 'Full Featured' SD DVB Card
 media-plugins/vdr-dvd 0.3.7_pre20090106-r1: VDR Plugin: DVD-Player
-media-plugins/vdr-dvdswitch 0.2.2: VDR Plugin: to play dvds and dvd file structures
+media-plugins/vdr-dvdswitch 0.2.2 0.2.3: VDR Plugin: to play dvds and dvd file structures
 media-plugins/vdr-epgsearch 1.0.1_p20141227-r1 2.2.0 2.4.0: VDR plugin: create timers from epg content based on saved search expressions
 media-plugins/vdr-epgsync 1.0.1 1.0.1-r1: VDR Plugin: Import the EPG of another VDR via vdr-svdrpservice
 media-plugins/vdr-exec 0.0.3: VDR plugin: Exec commands like timers at defined times
