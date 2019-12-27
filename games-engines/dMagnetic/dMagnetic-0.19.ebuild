@@ -8,7 +8,7 @@ inherit prefix toolchain-funcs
 MY_P="${PN}_${PV}"
 DESCRIPTION="A Magnetic Scrolls Interpreter for playing a collection of old text adventures"
 HOMEPAGE="https://www.dettus.net/dMagnetic/"
-SRC_URI="https://www.dettus.net/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://www.dettus.net/${PN}/${MY_P}.tar.bz2"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
