@@ -1,0 +1,117 @@
+From: Ole Streicher <olebole@debian.org>
+Date: Wed, 20 Nov 2019 08:56:53 +0100
+Subject: Change install-tree location of wxPLViewer
+
+The wxPLViewer application is only used internally by the wxwidgets
+
+This is based on commit 4e9679b22 in upstream git,
+author Alan W. Irwin <airwin@users.sourceforge.net>
+
+https://sourceforge.net/p/plplot/plplot/ci/4e9679b2266e190f66969f21392cdcf9766a58c9
+
+Closes: #944579
+---
+ drivers/wxwidgets_dev.cpp | 32 ++++++--------------------------
+ include/plplotP.h         |  2 --
+ src/plcore.c              |  5 +----
+ utils/CMakeLists.txt      |  6 +++++-
+ 4 files changed, 12 insertions(+), 33 deletions(-)
+
+diff --git a/drivers/wxwidgets_dev.cpp b/drivers/wxwidgets_dev.cpp
+index 6351c68..43e70be 100644
+--- a/drivers/wxwidgets_dev.cpp
++++ b/drivers/wxwidgets_dev.cpp
+@@ -1753,32 +1753,12 @@ void wxPLDevice::SetupMemoryMap()
+         header->completeFlag   = 0;
+ #endif  // #ifdef PL_WXWIDGETS_IPC3
+ 
+-        //try to find the wxPLViewer executable, in the first instance just assume it
+-        //is in the path.
+-        //wxString exeName = wxT( "/nfs/see-fs-02_users/earpros/usr/src/plplot-plplot/build/utils/" NAME_wxPLViewer );
+-        wxString exeName = wxT( NAME_wxPLViewer );
+-        if ( plInBuildTree() )
+-        {
+-            //if we are in the build tree check for the needed exe in there
+-            wxArrayString files;
+-            wxString      utilsDir = wxString( wxT( BUILD_DIR ) ) + wxString( wxT( "/utils" ) );
+-            wxDir::GetAllFiles( utilsDir, &files, exeName, wxDIR_FILES | wxDIR_DIRS );
+-            if ( files.size() == 0 )
+-                wxDir::GetAllFiles( utilsDir, &files, exeName + wxT( ".exe" ), wxDIR_FILES | wxDIR_DIRS );
+-            if ( files.size() > 0 )
+-                exeName = files[0];
+-        }
+-        else
+-        {
+-            //check the plplot bin install directory
+-            wxArrayString files;
+-            wxDir::GetAllFiles( wxT( BIN_DIR ), &files, exeName, wxDIR_FILES | wxDIR_DIRS );
+-            if ( files.size() == 0 )
+-                wxDir::GetAllFiles( wxT( BIN_DIR ), &files, exeName + wxT( ".exe" ), wxDIR_FILES | wxDIR_DIRS );
+-            if ( files.size() > 0 )
+-                exeName = files[0];
+-        }
+-        //Run the wxPlViewer with command line parameters telling it the location and size of the buffer
++        // The wxPLViewer executable has been built (build-tree case)
++        // or installed (install-tree case) in the drivers directory.
++        // So use the appropriate build-tree or install-tree location
++        // when referring to it.
++        wxString exeName = wxString( _( plGetDrvDir() ) ) + _( "/" ) + _( NAME_wxPLViewer );
++        //Run wxPlViewer with command line parameters telling it the location and size of the buffer
+         wxString command;
+         command << wxT( "\"" ) << exeName << wxT( "\" " ) << wxString( mapName, wxConvUTF8 ) << wxT( " " ) <<
+             mapSize << wxT( " " ) << m_width << wxT( " " ) << m_height;
+diff --git a/include/plplotP.h b/include/plplotP.h
+index 8d44e49..22a2036 100644
+--- a/include/plplotP.h
++++ b/include/plplotP.h
+@@ -1275,10 +1275,8 @@ plwytik( PLFLT x, PLFLT y, PLBOOL minor, PLBOOL invert );
+ 
+ // get drivers directory
+ 
+-#ifdef ENABLE_DYNDRIVERS
+ PLDLLIMPEXP const char*
+ plGetDrvDir( void );
+-#endif
+ 
+ #ifdef PL_HAVE_FREETYPE
+ PLDLLIMPEXP void
+diff --git a/src/plcore.c b/src/plcore.c
+index 84b8063..f57e756 100644
+--- a/src/plcore.c
++++ b/src/plcore.c
+@@ -2966,7 +2966,7 @@ int plInBuildTree()
+     return inBuildTree;
+ }
+ 
+-#ifdef ENABLE_DYNDRIVERS
++// Need this for both the ENABLE_DYNDRIVERS case and the wxPLViewer case.
+ 
+ PLCHAR_VECTOR
+ plGetDrvDir()
+@@ -2998,9 +2998,6 @@ plGetDrvDir()
+     return drvdir;
+ }
+ 
+-#endif
+-
+-
+ //--------------------------------------------------------------------------
+ // void plInitDispatchTable()
+ //
+diff --git a/utils/CMakeLists.txt b/utils/CMakeLists.txt
+index 5772910..f2a8411 100644
+--- a/utils/CMakeLists.txt
++++ b/utils/CMakeLists.txt
+@@ -52,7 +52,11 @@ if(ENABLE_wxwidgets AND NOT OLD_WXWIDGETS)
+     )
+ 
+   set(wxPLViewer_link_libraries PLPLOT::plplotwxwidgets PLPLOT::plplotcxx ${wxwidgets_LINK_FLAGS} ${MATH_LIB} ${RT_LIB})
+-  configure_executable_build(wxPLViewer "${wxPLViewer_SRCS}" "${wxPLViewer_link_libraries}" "${LIB_INSTALL_RPATH}" ${BIN_DIR})
++
++  # wxPLViewer depends on the plplotwxwidgets and plplotcxx libraries and is installed
++  # in the drivers directory.
++  set(LIB_INSTALL_RPATH ${LIB_DIR})
++  configure_executable_build(wxPLViewer "${wxPLViewer_SRCS}" "${wxPLViewer_link_libraries}" "${LIB_INSTALL_RPATH}" ${DRV_DIR})
+ 
+   # Set this property rather than using the WIN32 signature of add_executable
+   # inside the configure_executable_build function.
