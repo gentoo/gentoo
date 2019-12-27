@@ -34,6 +34,6 @@ ruby_add_rdepend "
 	~dev-ruby/activestorage-${PV}
 	~dev-ruby/activesupport-${PV}
 	~dev-ruby/railties-${PV}
-	>=dev-ruby/bundler-1.3
+	>=dev-ruby/bundler-1.3:*
 	>=dev-ruby/sprockets-rails-2.0.0:*
 "
