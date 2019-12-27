@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 dvbcsa"
 
-DEPEND=">=media-video/vdr-2.1.4
+DEPEND=">=media-video/vdr-2.4.1
 	dvbcsa? ( media-libs/libdvbcsa )"
 RDEPEND="${DEPEND}"
 
