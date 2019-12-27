@@ -139,6 +139,9 @@ cargo_gen_config() {
 
 	[net]
 	offline = true
+
+	[build]
+	jobs = $(makeopts_jobs)
 	EOF
 }
 
@@ -150,7 +153,7 @@ cargo_src_compile() {
 
 	export CARGO_HOME="${ECARGO_HOME}"
 
-	cargo build -vv -j $(makeopts_jobs) $(usex debug "" --release) "$@" \
+	cargo build -vv $(usex debug "" --release) "$@" \
 		|| die "cargo build failed"
 }
 
@@ -160,7 +163,7 @@ cargo_src_compile() {
 cargo_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cargo install -vv -j $(makeopts_jobs) --path ${CARGO_INSTALL_PATH} \
+	cargo install -vv --path ${CARGO_INSTALL_PATH} \
 		--root="${ED}/usr" $(usex debug --debug "") "$@" \
 		|| die "cargo install failed"
 	rm -f "${ED}/usr/.crates.toml"
@@ -174,7 +177,7 @@ cargo_src_install() {
 cargo_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cargo test -vv -j $(makeopts_jobs) $(usex debug "" --release) "$@" \
+	cargo test -vv $(usex debug "" --release) "$@" \
 		|| die "cargo test failed"
 }
 
