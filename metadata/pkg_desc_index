@@ -13633,7 +13633,7 @@ media-plugins/tap-plugins 0.7.3: A bunch of LADSPA plugins for audio processing
 media-plugins/vamp-aubio-plugins 0.5.0 0.5.1: Onset detection, pitch tracking, note tracking and tempo tracking plugins
 media-plugins/vamp-libxtract-plugins 0.6.6.20121204: Vamp plugin encapsulating many of the functions of the LibXtract library
 media-plugins/vco-plugins 0.3.0-r1: SAW-VCO ladspa plugin package. Anti-aliased oscillators
-media-plugins/vdr-actuator 1.2.1: VDR plugin: control an linear or horizon actuator attached trough the parallel port
+media-plugins/vdr-actuator 1.2.1 2.4.1_pre20181025: VDR plugin: control an hor. or ver. actuator attached trough the parallel port
 media-plugins/vdr-atscepg 0.3.0-r1: VDR plugin: receive schedule and event information from ATSC broadcasts
 media-plugins/vdr-avards 0.2.4: VDR Plugin: Automatic Video Aspect Ratio Detection and Signaling
 media-plugins/vdr-beep 0.1.2: VDR plugin: Use the PC speaker to signalize some events (shutdown, cut done ...)
