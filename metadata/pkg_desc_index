@@ -11743,6 +11743,7 @@ games-server/monopd 0.10.2-r1: server for atlantik games
 games-server/mtavc 0.5-r1: dedicated server for GTA3 multiplayer
 games-server/pvpgn 1.8.5-r2: A gaming server for Battle.Net compatible clients
 games-server/steamcmd 1.0-r2: This is the command-line version of the Steam client for dedicated servers
+games-server/ut2004-ded 3369.3-r2: Unreal Tournament 2004 Linux Dedicated Server
 games-simulation/bcs-demo 1.3-r1: design and build bridges and then stress test them with trains
 games-simulation/cannonsmash 0.6.6-r1: 3D tabletennis game
 games-simulation/corsix-th 0.62: Open source clone of Theme Hospital
