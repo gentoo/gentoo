@@ -3,7 +3,7 @@ DEFINED_PHASES=compile configure install prepare test
 DESCRIPTION=Email client autoconfiguration service
 EAPI=7
 HOMEPAGE=https://automx.org/
-IUSE=python_targets_python3_7
+IUSE=doc python_targets_python3_7
 KEYWORDS=~amd64
 LICENSE=GPL-3+
 RDEPEND=acct-user/automx2 python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,-python_single_target_python3_7(-)]
@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( python_targets_python3_7 )
 SLOT=0
 SRC_URI=https://gitlab.com/automx/automx2/-/archive/2019.0/automx2-2019.0.tar.bz2
 _eclasses_=distutils-r1	48c123e514b2cd2128d36eb3bbb9a6fa	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	c037bf23d7eff50e222b067cd54e5f27	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=7555732753507b4dba0f35226beb10c0
+_md5_=85217a21818cb95789299480cc921591
