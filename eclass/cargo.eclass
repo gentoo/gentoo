@@ -153,6 +153,8 @@ cargo_gen_config() {
 	[term]
 	verbose = true
 	EOF
+	# honor NOCOLOR setting
+	[[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo "color = 'never'" >> "${ECARGO_HOME}/config"
 }
 
 # @FUNCTION: cargo_src_compile
