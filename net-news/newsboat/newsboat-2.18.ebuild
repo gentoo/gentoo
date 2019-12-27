@@ -82,7 +82,7 @@ scopeguard-0.3.3
 section_testing-0.0.4
 semver-0.9.0
 semver-parser-0.7.0
-smallvec-0.6.8
+smallvec-0.6.10
 syn-0.15.26
 synstructure-0.10.1
 tempfile-3.0.6
@@ -95,12 +95,10 @@ unicode-normalization-0.1.8
 unicode-segmentation-1.2.1
 unicode-width-0.1.5
 unicode-xid-0.1.0
-unreachable-1.0.0
 url-1.7.2
 utf8-ranges-1.0.2
 vcpkg-0.2.6
 version_check-0.1.5
-void-1.0.2
 wait-timeout-0.1.5
 winapi-0.2.8
 winapi-0.3.6
@@ -121,7 +119,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 BSD-2 CC0-1.0 ISC MIT Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="libressl"
 
 RDEPEND="
