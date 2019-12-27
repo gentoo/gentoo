@@ -57,8 +57,10 @@ src_compile() {
 }
 
 src_test() {
-	# workaround https://github.com/haskell/cabal/issues/2398
-	emake -k -C tests all
+	# 1. workaround Setup.hs deadlock: https://github.com/haskell/cabal/issues/2398
+	# 2. use freshly built ALEX= binary and datadir path
+	alex_datadir="${S}"/data \
+	emake -k -C tests all ALEX="${S}"/dist/build/alex/alex
 }
 
 src_install() {
