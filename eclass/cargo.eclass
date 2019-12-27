@@ -136,6 +136,9 @@ cargo_gen_config() {
 	[source.crates-io]
 	replace-with = "gentoo"
 	local-registry = "/nonexistant"
+
+	[net]
+	offline = true
 	EOF
 }
 
