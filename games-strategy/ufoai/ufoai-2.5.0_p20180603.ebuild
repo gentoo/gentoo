@@ -1,15 +1,15 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop flag-o-matic gnome2-utils toolchain-funcs versionator
+inherit desktop flag-o-matic toolchain-funcs xdg
 
 # 2.5.0 requires several patches
 COMMIT="8b4533e85fdc0665889ff285e1521432084ee784"
 
 # UFO:AI v2.5.0 was uploaded to SourceForge as 2.5
-DIST_VERSION=$(get_version_component_range 1-2)
+DIST_VERSION=$(ver_cut 1-2)
 
 # Install game data here
 DATADIR="/usr/share/${PN}"
@@ -168,7 +168,3 @@ src_install() {
 		doins -r "${WORKDIR}"/${PN}-${DIST_VERSION}-mappack/*
 	fi
 }
-
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }
