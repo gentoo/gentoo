@@ -51,7 +51,8 @@ src_configure() {
 		"${myconf[@]}" || die
 
 		# Fix parallel install failure
-		sed -i -e '/INSTALLS += distinfo/i distinfo.depends = install_subtargets' ${PN}.pro || die
+		sed -i -e '/INSTALLS += distinfo/i distinfo.depends = install_subtargets install_pep484_stubs install_api' \
+			${PN}.pro || die
 
 		# Run eqmake to respect toolchain and build flags
 		eqmake5 -recursive ${PN}.pro
