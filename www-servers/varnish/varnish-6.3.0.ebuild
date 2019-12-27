@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python{3_5,3_6,3_7} pypy )
 
-inherit user autotools systemd python-r1
+inherit autotools systemd python-r1
 
 DESCRIPTION="Varnish is a state-of-the-art, high-performance HTTP accelerator"
 HOMEPAGE="https://varnish-cache.org/"
