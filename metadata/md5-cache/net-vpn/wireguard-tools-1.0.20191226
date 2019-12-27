@@ -1,7 +1,8 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install postinst setup
 DEPEND=net-libs/libmnl
 DESCRIPTION=Required tools for WireGuard, such as wg(8) and wg-quick(8)
-EAPI=6
+EAPI=7
 HOMEPAGE=https://www.wireguard.com/
 IUSE=kernel_linux
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
@@ -9,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=net-libs/libmnl || ( net-firewall/nftables net-firewall/iptables ) !<=net-vpn/wireguard-0.0.20191219
 SLOT=0
 SRC_URI=https://git.zx2c4.com/wireguard-tools/snapshot/wireguard-tools-1.0.20191226.tar.xz
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=be086e18bc28e17a8e096c24a6ec57b1
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=675a9c02fc2d7d60f0ae97480c56531f
