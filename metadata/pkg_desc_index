@@ -13713,7 +13713,7 @@ media-plugins/vdr-remoteosd 1.0.0 1.0.0-r1: VDR Plugin: server/client remoteosd
 media-plugins/vdr-remotetimers 1.0.2: VDR plugin: edit timers on remote vdr instances
 media-plugins/vdr-rpihddevice 1.0.3 1.0.5: VDR Plugin: Output Device for Raspberry Pi
 media-plugins/vdr-rssreader 2.0.0 2.0.1 2.2.0 2.2.1 2.2.1-r1: VDR Plugin: RSS reader
-media-plugins/vdr-satip 2.2.3-r2 2.2.5 2.4.1_p20191027: VDR Plugin: integrates SAT>IP network devices seamlessly into VDR
+media-plugins/vdr-satip 2.2.3-r2 2.2.5 2.4.0_p20191027: VDR Plugin: integrates SAT>IP network devices seamlessly into VDR
 media-plugins/vdr-scheduler 0.1.3: VDR plugin: allows to control externel jobs from within VDR
 media-plugins/vdr-screenshot 0.0.15: VDR Plugin: takes screenshots of the current video or tv screen
 media-plugins/vdr-serial 0.0.6a-r1: VDR Plugin: attach some buttons with diodes to the serial port
