@@ -5,7 +5,7 @@ EAPI=7
 
 inherit vdr-plugin-2
 
-VERSION="2045" #every bump, new version
+VERSION="2193" #every bump, new version
 
 DESCRIPTION="VDR Plugin: Output Device for Raspberry Pi"
 HOMEPAGE="https://projects.vdr-developer.org/projects/plg-rpihddevice"
@@ -19,8 +19,13 @@ DEPEND="media-libs/raspberrypi-userland
 		media-video/vdr
 		virtual/ffmpeg"
 
-src_prepare()
-{
+src_prepare() {
 	sed -i "${S}"/Makefile -e '/LDFLAGS.*VCLIBDIR/s/$/ -Wl,--no-as-needed/' || die "sed failed"
+
+	# media-libs/raspberrypi-userland to old on gentoo...
+	sed -e "s:-lbrcmGLESv2:-lGLESv2:" \
+		-e "s:-lbrcmEGL:-lEGL:" \
+		-i "${S}"/Makefile || die "sed failed"
+
 	vdr-plugin-2_src_prepare
 }
