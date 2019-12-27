@@ -1,0 +1,434 @@
+Description: Replace gdc extensions in D binding and examples source code with equivalent standard D source code
+ This patch is needed to avoid FTBFS with recent gdc versions.
+Origin: upstream, https://sourceforge.net/p/plplot/plplot/ci/74799e02c5435e491b46dfc1fd053753105c3441/
+Reviewed-by: Sébastien Villemot <sebastien@debian.org>
+Last-Update: 2019-10-08
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/bindings/d/plplot.d
++++ b/bindings/d/plplot.d
+@@ -298,7 +298,7 @@ void plfill3( PLFLT[] x, PLFLT[] y, PLFL
+ // Get the current device (keyword) name
+ void plgdev( out string p_dev )
+ {
+-    char cdev[1024];
++    char[1024] cdev;
+     c_plgdev( cdev.ptr );
+     p_dev = to!string( cdev.ptr );
+ }
+@@ -306,7 +306,7 @@ void plgdev( out string p_dev )
+ // Get the (current) output file name.  Must be preallocated to >80 bytes
+ void plgfnam( out string fnam )
+ {
+-    char cfnam[1024];
++    char[1024] cfnam;
+     c_plgfnam( cfnam.ptr );
+     fnam = to!string( cfnam.ptr );
+ }
+@@ -337,7 +337,7 @@ void  plgriddata( PLFLT[] x, PLFLT[] y,
+ // Get the current library version number
+ void plgver( out string p_ver )
+ {
+-    char cver[1024];
++    char[1024] cver;
+     c_plgver( cver.ptr );
+     p_ver = to!string( cver.ptr );
+ }
+--- a/examples/d/x01d.d
++++ b/examples/d/x01d.d
+@@ -224,7 +224,7 @@ class plot {
+ 
+         if ( do_test && test_xor )
+         {
+-            writefln( "The -xor command line option can only be exercised if your "
++            writefln( "The -xor command line option can only be exercised if your " ~
+                 "system\nhas usleep(), which does not seem to happen." );
+         }
+     }
+@@ -294,4 +294,4 @@ class plot {
+         plcol0( 4 );
+         plline( x, y );
+     }
+-}
+\ No newline at end of file
++}
+--- a/examples/d/x08d.d
++++ b/examples/d/x08d.d
+@@ -24,7 +24,7 @@
+ import plplot;
+ import std.string;
+ import std.math;
+-import std.c.stdlib;
++import core.stdc.stdlib;
+ 
+ //--------------------------------------------------------------------------
+ // cmap1_init1
+@@ -92,8 +92,8 @@ int main( char[][] args )
+     PLFLT[]     alt = [ 60.0, 40.0 ];
+     PLFLT[]     az  = [ 30.0, -30.0 ];
+ 
+-    string title[] = [ "#frPLplot Example 8 - Alt=60, Az=30",
+-                       "#frPLplot Example 8 - Alt=40, Az=-30" ];
++    string[]    title = [ "#frPLplot Example 8 - Alt=60, Az=30",
++                          "#frPLplot Example 8 - Alt=40, Az=-30" ];
+ 
+     // Parse and process command line arguments
+     plparseopts( args, PL_PARSE_FULL );
+--- a/examples/d/x11d.d
++++ b/examples/d/x11d.d
+@@ -48,16 +48,16 @@ void cmap1_init()
+ //--------------------------------------------------------------------------
+ int main( char[][] args )
+ {
+-    const   nlevel = 10;
+-    const   XPTS   = 35;        // Data points in x
+-    const   YPTS   = 46;        // Data points in y
++    const    nlevel = 10;
++    const    XPTS   = 35;       // Data points in x
++    const    YPTS   = 46;       // Data points in y
+ 
+-    int[]   opt = [ DRAW_LINEXY, DRAW_LINEXY ];
++    int[]    opt = [ DRAW_LINEXY, DRAW_LINEXY ];
+ 
+-    PLFLT[] alt = [ 33.0, 17.0 ];
+-    PLFLT[] az  = [ 24.0, 115.0 ];
++    PLFLT[]  alt = [ 33.0, 17.0 ];
++    PLFLT[]  az  = [ 24.0, 115.0 ];
+ 
+-    string title[] = [ "#frPLplot Example 11 - Alt=33, Az=24, Opt=3",
++    string[] title = [ "#frPLplot Example 11 - Alt=33, Az=24, Opt=3",
+                        "#frPLplot Example 11 - Alt=17, Az=115, Opt=3" ];
+ 
+     PLFLT xx, yy;
+--- a/examples/d/x15d.d
++++ b/examples/d/x15d.d
+@@ -145,10 +145,10 @@ class plot {
+ //--------------------------------------------------------------------------
+     public void plot2( PLFLT[][] z )
+     {
+-        static PLINT nlin[10]   = [ 1, 1, 1, 1, 1, 2, 2, 2, 2, 2 ];
+-        static PLINT inc[10][2] = [ [450, 0], [-450, 0], [0, 0], [900, 0], [300, 0],
++        static PLINT[10] nlin   = [ 1, 1, 1, 1, 1, 2, 2, 2, 2, 2 ];
++        static PLINT[2][10] inc = [ [450, 0], [-450, 0], [0, 0], [900, 0], [300, 0],
+                                     [450, -450], [0, 900], [0, 450], [450, -450], [0, 900] ];
+-        static PLINT del[10][2] = [ [2000, 2000], [2000, 2000], [2000, 2000],
++        static PLINT[2][10] del = [ [2000, 2000], [2000, 2000], [2000, 2000],
+                                     [2000, 2000], [2000, 2000], [2000, 2000],
+                                     [2000, 2000], [2000, 2000], [4000, 4000],
+                                     [4000, 2000] ];
+@@ -191,11 +191,11 @@ class plot {
+ //--------------------------------------------------------------------------
+     public void plot3()
+     {
+-        static PLFLT xx[2][5] = [ [-1.0, 1.0, 1.0, -1.0, -1.0],
++        static PLFLT[5][2] xx = [ [-1.0, 1.0, 1.0, -1.0, -1.0],
+                                   [-1.0, 1.0, 1.0, -1.0, -1.0] ];
+-        static PLFLT yy[2][5] = [ [1.0, 1.0, 0.0, 0.0, 1.0],
++        static PLFLT[5][2] yy = [ [1.0, 1.0, 0.0, 0.0, 1.0],
+                                   [-1.0, -1.0, 0.0, 0.0, -1.0] ];
+-        static PLFLT zz[2][5] = [ [0.0, 0.0, 1.0, 1.0, 0.0],
++        static PLFLT[5][2] zz = [ [0.0, 0.0, 1.0, 1.0, 0.0],
+                                   [0.0, 0.0, 1.0, 1.0, 0.0] ];
+ 
+         pladv( 0 );
+--- a/examples/d/x16d.d
++++ b/examples/d/x16d.d
+@@ -195,7 +195,7 @@ int main( char[][] args )
+     string[]  axis_opts = [
+         "bcvtm",
+     ];
+-    PLFLT[] values[NUM_AXES];
++    PLFLT[][NUM_AXES] values;
+     for ( size_t i = 0; i < NUM_AXES; i++ )
+     {
+         values[i] = new PLFLT[ns];
+@@ -207,7 +207,7 @@ int main( char[][] args )
+         0,
+     ];
+     const int NUM_LABELS = 1;
+-    PLINT label_opts[] = [
++    PLINT[]   label_opts = [
+         PL_COLORBAR_LABEL_BOTTOM,
+     ];
+     string[] labels = [
+--- a/examples/d/x17d.d
++++ b/examples/d/x17d.d
+@@ -4,7 +4,7 @@
+ import std.string;
+ import std.math;
+ import std.stdio;
+-import std.c.stdlib;
++import core.stdc.stdlib;
+ import plplot;
+ 
+ 
+--- a/examples/d/x18d.d
++++ b/examples/d/x18d.d
+@@ -6,9 +6,9 @@ import std.string;
+ 
+ import plplot;
+ 
+-int opt[]   = [ 1, 0, 1, 0 ];
+-PLFLT alt[] = [ 20.0, 35.0, 50.0, 65.0 ];
+-PLFLT az[]  = [ 30.0, 40.0, 50.0, 60.0 ];
++int[]   opt = [ 1, 0, 1, 0 ];
++PLFLT[] alt = [ 20.0, 35.0, 50.0, 65.0 ];
++PLFLT[] az  = [ 30.0, 40.0, 50.0, 60.0 ];
+ 
+ //--------------------------------------------------------------------------
+ // main
+@@ -81,7 +81,7 @@ int main( char[][] args )
+ 
+ void test_poly( int k )
+ {
+-    PLINT draw[][] = [ [ 1, 1, 1, 1 ],
++    PLINT[][] draw = [ [ 1, 1, 1, 1 ],
+                        [ 1, 0, 1, 0 ],
+                        [ 0, 1, 0, 1 ],
+                        [ 1, 1, 0, 0 ] ];
+--- a/examples/d/x19d.d
++++ b/examples/d/x19d.d
+@@ -4,7 +4,7 @@
+ 
+ import std.math;
+ import std.string;
+-import std.c.string;
++import core.stdc.string;
+ 
+ import plplot;
+ 
+@@ -109,15 +109,15 @@ int main( char[][] args )
+     PLFLT maxy = 80;
+ 
+     //variables for the shapelib example
+-    const PLINT nbeachareas = 2;
+-    const PLINT beachareas[] = [ 23, 24 ];
+-    const       nwoodlandareas = 94;
+-    PLINT       woodlandareas[94];
+-    const PLINT nshingleareas = 22;
+-    const PLINT shingleareas[] = [ 0, 1, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 217, 2424, 2425, 2426, 2427, 2428, 2491, 2577 ];
+-    const PLINT ncragareas = 2024;
+-    PLINT       cragareas[2024];
+-    const PLINT majorroads[] = [ 33, 48, 71, 83, 89, 90, 101, 102, 111 ];
++    const PLINT   nbeachareas    = 2;
++    const PLINT[] beachareas     = [ 23, 24 ];
++    const         nwoodlandareas = 94;
++    PLINT[94] woodlandareas;
++    const PLINT   nshingleareas = 22;
++    const PLINT[] shingleareas  = [ 0, 1, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 217, 2424, 2425, 2426, 2427, 2428, 2491, 2577 ];
++    const PLINT   ncragareas    = 2024;
++    PLINT[2024]       cragareas;
++    const PLINT[] majorroads = [ 33, 48, 71, 83, 89, 90, 101, 102, 111 ];
+ 
+     plinit();
+ 
+@@ -173,8 +173,8 @@ int main( char[][] args )
+     // Show Baltimore, MD on the map
+     plcol0( 2 );
+     plssym( 0.0, 2.0 );
+-    PLFLT x[1] = -76.6125;
+-    PLFLT y[1] = 39.2902778;
++    PLFLT[1] x = -76.6125;
++    PLFLT[1] y = 39.2902778;
+     plpoin( x, y, 18 );
+     plssym( 0.0, 1.0 );
+     plptex( -76.6125, 43.0, 0.0, 0.0, 0.0, "Baltimore, MD" );
+--- a/examples/d/x23d.d
++++ b/examples/d/x23d.d
+@@ -336,14 +336,14 @@ int main( char[][] args )
+             }
+             else if ( page == 14 )
+             {
+-                text = format( "Page 15, %s, %s, %s:  #<0x%1x0>#<0x%1x1>#<0x%1x2>"
++                text = format( "Page 15, %s, %s, %s:  #<0x%1x0>#<0x%1x1>#<0x%1x2>" ~
+                     "The quick brown fox jumps over the lazy dog",
+                     family[family_index], style[style_index], weight[weight_index],
+                     family_index, style_index, weight_index );
+             }
+             else if ( page == 15 )
+             {
+-                text = format( "Page 16, %s, %s, %s:  #<%s/>#<%s/>#<%s/>"
++                text = format( "Page 16, %s, %s, %s:  #<%s/>#<%s/>#<%s/>" ~
+                     "The quick brown fox jumps over the lazy dog",
+                     family[family_index], style[style_index], weight[weight_index],
+                     family[family_index], style[style_index], weight[weight_index] );
+--- a/examples/d/x33d.d
++++ b/examples/d/x33d.d
+@@ -30,7 +30,7 @@ import plplot;
+ import std.math;
+ import std.string;
+ 
+-static PLINT position_options[16] = [
++static PLINT[16] position_options = [
+     PL_POSITION_LEFT | PL_POSITION_TOP | PL_POSITION_OUTSIDE,
+     PL_POSITION_TOP | PL_POSITION_OUTSIDE,
+     PL_POSITION_RIGHT | PL_POSITION_TOP | PL_POSITION_OUTSIDE,
+@@ -50,7 +50,7 @@ static PLINT position_options[16] = [
+ ];
+ 
+ // Pick 5 arbitrary UTF-8 symbols useful for plotting points (✠✚✱✪✽✺✰✴✦).
+-static string special_symbols[5] = [
++static string[5] special_symbols = [
+     "✰",
+     "✴",
+     "✱",
+@@ -61,14 +61,14 @@ static string special_symbols[5] = [
+ // plcolorbar options
+ 
+ // Colorbar type options
+-const int    COLORBAR_KINDS = 4;
+-static PLINT colorbar_option_kinds[COLORBAR_KINDS] = [
++const int COLORBAR_KINDS = 4;
++static    PLINT[COLORBAR_KINDS] colorbar_option_kinds = [
+     PL_COLORBAR_SHADE,
+     PL_COLORBAR_SHADE | PL_COLORBAR_SHADE_LABEL,
+     PL_COLORBAR_IMAGE,
+     PL_COLORBAR_GRADIENT
+ ];
+-static string colorbar_option_kind_labels[COLORBAR_KINDS] = [
++static string[COLORBAR_KINDS] colorbar_option_kind_labels = [
+     "Shade colorbars",
+     "Shade colorbars with custom labels",
+     "Image colorbars",
+@@ -76,14 +76,14 @@ static string colorbar_option_kind_label
+ ];
+ 
+ // Which side of the page are we positioned relative to?
+-const int    COLORBAR_POSITIONS = 4;
+-static PLINT colorbar_position_options[COLORBAR_POSITIONS] = [
++const int COLORBAR_POSITIONS = 4;
++static    PLINT[COLORBAR_POSITIONS] colorbar_position_options = [
+     PL_POSITION_LEFT,
+     PL_POSITION_RIGHT,
+     PL_POSITION_TOP,
+     PL_POSITION_BOTTOM
+ ];
+-static string colorbar_position_option_labels[COLORBAR_POSITIONS] = [
++static string[COLORBAR_POSITIONS] colorbar_position_option_labels = [
+     "Left",
+     "Right",
+     "Top",
+@@ -91,14 +91,14 @@ static string colorbar_position_option_l
+ ];
+ 
+ // Colorbar label positioning options
+-const int    COLORBAR_LABELS = 4;
+-static PLINT colorbar_label_options[COLORBAR_LABELS] = [
++const int COLORBAR_LABELS = 4;
++static    PLINT[COLORBAR_LABELS] colorbar_label_options = [
+     PL_COLORBAR_LABEL_LEFT,
+     PL_COLORBAR_LABEL_RIGHT,
+     PL_COLORBAR_LABEL_TOP,
+     PL_COLORBAR_LABEL_BOTTOM
+ ];
+-static string colorbar_label_option_labels[COLORBAR_LABELS] = [
++static string[COLORBAR_LABELS] colorbar_label_option_labels = [
+     "Label left",
+     "Label right",
+     "Label top",
+@@ -106,14 +106,14 @@ static string colorbar_label_option_labe
+ ];
+ 
+ // Colorbar cap options
+-const int    COLORBAR_CAPS = 4;
+-static PLINT colorbar_cap_options[COLORBAR_CAPS] = [
++const int COLORBAR_CAPS = 4;
++static    PLINT[COLORBAR_CAPS] colorbar_cap_options = [
+     PL_COLORBAR_CAP_NONE,
+     PL_COLORBAR_CAP_LOW,
+     PL_COLORBAR_CAP_HIGH,
+     PL_COLORBAR_CAP_LOW | PL_COLORBAR_CAP_HIGH
+ ];
+-static string colorbar_cap_option_labels[COLORBAR_CAPS] = [
++static string[COLORBAR_CAPS] colorbar_cap_option_labels = [
+     "No caps",
+     "Low cap",
+     "High cap",
+@@ -126,20 +126,20 @@ void
+ plcolorbar_example_page( int kind_i, int label_i, int cap_i, PLINT cont_color, PLFLT cont_width, PLINT n_values, PLFLT [] values )
+ {
+     // Parameters for the colorbars on this page
+-    PLINT     position_i, position, opt;
+-    PLFLT     x, y, x_length, y_length;
+-    PLFLT     ticks[1]     = [ 0.0 ];
+-    PLINT     sub_ticks[1] = [ 0 ];
++    PLINT position_i, position, opt;
++    PLFLT x, y, x_length, y_length;
++    PLFLT[1]     ticks     = [ 0.0 ];
++    PLINT[1]     sub_ticks = [ 0 ];
+     PLFLT     low_cap_color, high_cap_color;
+     PLINT     vertical, ifn;
+     PLINT     n_axes = 1;
+     string[]  axis_opts;
+-    PLINT     n_labels      = 1;
+-    PLINT     label_opts[1] = [ 0 ];
++    PLINT     n_labels = 1;
++    PLINT[1]     label_opts = [ 0 ];
+     string[]  label;
+     string    title;
+     PLFLT     colorbar_width, colorbar_height;
+-    PLINT     n_values_array[1];
++    PLINT[1]     n_values_array;
+     PLFLT[][] values_array;
+ 
+     axis_opts.length  = 1;
+@@ -279,26 +279,26 @@ const int MAX_NLEGEND = 7;
+ 
+ int main( char[][] args )
+ {
+-    int    i, k;
+-    PLINT  opt;
+-    PLINT  nlegend, nturn;
+-    PLINT  opt_array[MAX_NLEGEND];
+-    PLINT  text_colors[MAX_NLEGEND];
+-    PLINT  box_colors[MAX_NLEGEND];
+-    PLINT  box_patterns[MAX_NLEGEND];
+-    PLFLT  box_scales[MAX_NLEGEND];
+-    PLFLT  box_line_widths[MAX_NLEGEND];
+-    PLINT  line_colors[MAX_NLEGEND];
+-    PLINT  line_styles[MAX_NLEGEND];
+-    PLFLT  line_widths[MAX_NLEGEND];
+-    PLINT  symbol_numbers[MAX_NLEGEND];
+-    PLINT  symbol_colors[MAX_NLEGEND];
+-    PLFLT  symbol_scales[MAX_NLEGEND];
+-    string text[MAX_NLEGEND];
+-    string symbols[MAX_NLEGEND];
+-    PLFLT  legend_width, legend_height, x, y, xstart, ystart;
+-    PLFLT  max_height, text_scale;
+-    PLINT  position, opt_base, nrow, ncolumn;
++    int   i, k;
++    PLINT opt;
++    PLINT nlegend, nturn;
++    PLINT[MAX_NLEGEND]  opt_array;
++    PLINT[MAX_NLEGEND]  text_colors;
++    PLINT[MAX_NLEGEND]  box_colors;
++    PLINT[MAX_NLEGEND]  box_patterns;
++    PLFLT[MAX_NLEGEND]  box_scales;
++    PLFLT[MAX_NLEGEND]  box_line_widths;
++    PLINT[MAX_NLEGEND]  line_colors;
++    PLINT[MAX_NLEGEND]  line_styles;
++    PLFLT[MAX_NLEGEND]  line_widths;
++    PLINT[MAX_NLEGEND]  symbol_numbers;
++    PLINT[MAX_NLEGEND]  symbol_colors;
++    PLFLT[MAX_NLEGEND]  symbol_scales;
++    string[MAX_NLEGEND] text;
++    string[MAX_NLEGEND] symbols;
++    PLFLT legend_width, legend_height, x, y, xstart, ystart;
++    PLFLT max_height, text_scale;
++    PLINT position, opt_base, nrow, ncolumn;
+ 
+     // Parse and process command line arguments
+     plparseopts( args, PL_PARSE_FULL );
+@@ -822,9 +822,9 @@ int main( char[][] args )
+     if ( colorbar )
+     {
+         // Color bar examples
+-        PLFLT values_small[2]  = [ -1.0e-20, 1.0e-20 ];
+-        PLFLT values_uneven[9] = [ -1.0e-20, 2.0e-20, 2.6e-20, 3.4e-20, 6.0e-20, 7.0e-20, 8.0e-20, 9.0e-20, 10.0e-20 ];
+-        PLFLT values_even[9]   = [ -2.0e-20, -1.0e-20, 0.0e-20, 1.0e-20, 2.0e-20, 3.0e-20, 4.0e-20, 5.0e-20, 6.0e-20 ];
++        PLFLT[2] values_small  = [ -1.0e-20, 1.0e-20 ];
++        PLFLT[9] values_uneven = [ -1.0e-20, 2.0e-20, 2.6e-20, 3.4e-20, 6.0e-20, 7.0e-20, 8.0e-20, 9.0e-20, 10.0e-20 ];
++        PLFLT[9] values_even   = [ -2.0e-20, -1.0e-20, 0.0e-20, 1.0e-20, 2.0e-20, 3.0e-20, 4.0e-20, 5.0e-20, 6.0e-20 ];
+ 
+         // Use unsaturated green background colour to contrast with black caps.
+         plscolbg( 70, 185, 70 );
