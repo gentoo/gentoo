@@ -49,7 +49,7 @@ regex-1.1.6
 regex-syntax-0.6.6
 scopeguard-0.3.3
 shlex-0.1.1
-skim-0.6.8
+skim-0.6.9
 strsim-0.7.0
 syn-0.15.29
 term-0.5.1
@@ -59,7 +59,7 @@ textwrap-0.10.0
 thread_local-0.3.6
 time-0.1.42
 timer-0.2.0
-tuikit-0.2.8
+tuikit-0.2.9
 ucd-util-0.1.3
 unicode-width-0.1.5
 unicode-xid-0.1.0
@@ -81,9 +81,9 @@ DESCRIPTION="Command-line fuzzy finder"
 HOMEPAGE="https://github.com/lotabout/skim"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0 MIT MPL-2.0 Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="tmux vim"
 
 RDEPEND="
