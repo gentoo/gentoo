@@ -13,7 +13,7 @@ MY_P=${PN}-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
 	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
 else
-	SRC_URI="https://www.riverbankcomputing.com/static/Downloads/${PN}/${PV}/${MY_P}.tar.gz"
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 fi
 
 LICENSE="GPL-3"
@@ -28,12 +28,12 @@ REQUIRED_USE="
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-python/PyQt5-5.13.1[gui,network,printsupport,ssl,webchannel,widgets,${PYTHON_USEDEP}]
-	>=dev-python/PyQt5-sip-4.19.14:=[${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-sip-4.19.20:=[${PYTHON_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtwebengine:5[widgets]
 "
 DEPEND="${RDEPEND}
-	>=dev-python/sip-4.19.14[${PYTHON_USEDEP}]
+	>=dev-python/sip-4.19.20[${PYTHON_USEDEP}]
 "
 
 S=${WORKDIR}/${MY_P}
