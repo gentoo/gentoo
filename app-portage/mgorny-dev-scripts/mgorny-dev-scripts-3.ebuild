@@ -17,7 +17,8 @@ RDEPEND="
 	dev-vcs/git
 	net-misc/wget
 	sys-apps/portage
-	x11-misc/xdg-utils"
+	x11-misc/xdg-utils
+	!dev-util/pkgdiff"
 
 src_install() {
 	dodoc README.rst
