@@ -70,7 +70,7 @@ SRC_URI="https://github.com/cantino/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 MIT Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64"
 
 DEPEND="dev-db/sqlite:3"
 RDEPEND="${DEPEND}"
