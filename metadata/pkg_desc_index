@@ -8538,7 +8538,7 @@ dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
 dev-python/pyghmi 1.0.22: A pure python implementation of IPMI protocol
 dev-python/pygit2 0.28.2 1.0.1: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
-dev-python/pygments 2.2.0 2.2.0-r1 2.3.1 2.4.2: Pygments is a syntax highlighting package written in Python
+dev-python/pygments 2.2.0 2.2.0-r1 2.3.1 2.4.2 2.5.2: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 2.28.6-r55 3.28.3 3.32.1: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r1: A Python wrapper for the GPGME library
@@ -18322,7 +18322,7 @@ www-client/opera-beta 66.0.3515.14 66.0.3515.21: A fast and secure web browser
 www-client/opera-developer 67.0.3536.0 67.0.3541.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
-www-client/qutebrowser 1.8.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
+www-client/qutebrowser 1.8.1 1.8.3 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.49.5-r1 2.49.9.1_p0: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browser, email, HTML editor, IRC
