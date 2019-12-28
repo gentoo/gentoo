@@ -259,10 +259,6 @@ media-sound/mumble g15
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
 media-libs/mesa vulkan vulkan-overlay
 
-# Alexis Ballier <aballier@gentoo.org> (2017-07-31)
-# Passes -mfpu=neon with neon enabled
-mail-client/thunderbird neon
-
 # Alexis Ballier <aballier@gentoo.org> (2017-07-20)
 # media-libs/libemf fails with #error unknown CPU.
 media-gfx/pstoedit emf
