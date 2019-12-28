@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_5,3_6} pypy )
+PYTHON_COMPAT=( python3_{5,6} )
 
 MY_PN="iso-639"
 MY_P="${MY_PN}-${PV}"

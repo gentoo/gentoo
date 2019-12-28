@@ -707,10 +707,6 @@ media-plugins/mediastreamer-x264
 # Beta for new major version with initial Python 3 support
 =app-backup/rdiff-backup-1.4.0_beta*
 
-# Lars Wendler <polynomial-c@gentoo.org> (2019-11-29)
-# Breaks at least libreoffice, inkscape and perhaps more revdeps
-~app-text/poppler-0.83.0
-
 # Michał Górny <mgorny@gentoo.org> (2019-11-29)
 # Astronomy-related Python packages and their revdeps.  They are
 # unmaintained.  Most of them are outdated.  None of them were tested
@@ -756,18 +752,6 @@ dev-python/sunpy
 dev-python/wcsaxes
 sci-astronomy/astrometry
 sci-astronomy/kapteyn
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
-# Multiple build failures, automagic, missing deps, no one to fix them
-# Bugs #542756, #554388, #555768, #557974, #574854, #574890 #589182,
-# #590640, #612302, #622574, #698940; Removal in 30 days.
-=sci-libs/vtk-6*
-sci-libs/vtkdata
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
-# Depends on broken =sci-libs/vtk-6*, needs to be bumped to 3.0.2, bug #657952
-# Removal in 30 days.
-=sci-visualization/visit-2*
 
 # Jonas Stein <jstein@gentoo.org> (2019-11-26)
 # Package is obsolete. Successor is net-wireless/b43-fwcutter

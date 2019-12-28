@@ -16,7 +16,7 @@ SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
 
 LICENSE="PSF-2"
 SLOT="3.7/3.7m"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86"
 IUSE="bluetooth build examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl test tk wininst +xml"
 RESTRICT="!test? ( test )"
 
