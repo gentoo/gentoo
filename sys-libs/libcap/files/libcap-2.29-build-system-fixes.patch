@@ -1,4 +1,4 @@
-From 449b6cb6226086c136dd108d11471d99692812b7 Mon Sep 17 00:00:00 2001
+From 907626b63794199163778761fb56a5c89aa33e35 Mon Sep 17 00:00:00 2001
 From: Mike Frysinger <vapier@gentoo.org>
 Date: Wed, 10 Feb 2016 09:47:27 +0100
 Subject: [PATCH] build system fixes
@@ -21,11 +21,12 @@ Forward ported from libcap-2.28 to libcap-2.29
 Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 ---
  Make.Rules       | 27 +++++++++++++++------------
+ Makefile         |  1 -
  libcap/Makefile  |  7 ++++---
  pam_cap/Makefile |  8 +++++---
  progs/Makefile   |  2 +-
  tests/Makefile   |  8 +++++---
- 5 files changed, 30 insertions(+), 22 deletions(-)
+ 6 files changed, 30 insertions(+), 23 deletions(-)
 
 diff --git a/Make.Rules b/Make.Rules
 index e7641e7..32c57df 100644
@@ -82,6 +83,18 @@ index e7641e7..32c57df 100644
  ifeq ($(GOLANG),yes)
  GOROOT := $(shell go env GOROOT)
  GOCGO := $(shell if [ "$(shell go env CGO_ENABLED)" = 1 ]; then echo yes ; else echo no ; fi)
+diff --git a/Makefile b/Makefile
+index 14e29ef..f0104e0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -16,7 +16,6 @@ endif
+ ifeq ($(GOLANG),yes)
+ 	$(MAKE) -C go $@
+ endif
+-	$(MAKE) -C tests $@
+ 	$(MAKE) -C progs $@
+ 	$(MAKE) -C doc $@
+ 	$(MAKE) -C kdebug $@
 diff --git a/libcap/Makefile b/libcap/Makefile
 index 949cfad..a7f80ce 100644
 --- a/libcap/Makefile
