@@ -18,7 +18,7 @@ else
 fi
 
 DESCRIPTION="Documentation system for most programming languages"
-HOMEPAGE="https://www.stack.nl/~dimitri/doxygen/"
+HOMEPAGE="http://www.doxygen.org"
 
 LICENSE="GPL-2"
 SLOT="0"
