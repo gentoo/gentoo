@@ -24,7 +24,7 @@ DEPEND="dev-db/sqlite:3
 	dev-libs/libmaxminddb
 	net-analyzer/rrdtool
 	net-libs/libpcap
-	>=net-libs/nDPI-2.4
+	>=net-libs/nDPI-2.4:=
 	net-misc/curl
 	sys-libs/binutils-libs
 	dev-db/mysql-connector-c:="
