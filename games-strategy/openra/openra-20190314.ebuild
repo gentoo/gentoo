@@ -38,7 +38,7 @@ LICENSE="GPL-3 Apache-2.0 BSD GPL-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+debug geoip"
-RESTRICT="mirror"
+RESTRICT="mirror test"
 
 BDEPEND=">=dev-lang/mono-4.2"
 
