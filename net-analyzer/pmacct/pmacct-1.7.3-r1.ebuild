@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="A network tool to gather IP traffic information"
 HOMEPAGE="http://www.pmacct.net/"
@@ -32,7 +32,7 @@ RDEPEND="
 		<dev-libs/mongo-c-driver-0.98
 	)
 	mysql? ( dev-db/mysql-connector-c:0= )
-	ndpi? ( net-libs/nDPI )
+	ndpi? ( net-libs/nDPI:= )
 	nflog? ( net-libs/libnetfilter_log )
 	postgres? ( dev-db/postgresql:* )
 	rabbitmq? ( net-libs/rabbitmq-c )
@@ -43,11 +43,19 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7.3-nDPI-3.0.patch
+)
 
 DOCS=(
 	CONFIG-KEYS ChangeLog FAQS QUICKSTART UPGRADE
 	docs/INTERNALS docs/PLUGINS docs/SIGNALS
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	tc-export CC AR RANLIB

@@ -20,7 +20,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
-	sci-libs/symengine"
+	>=sci-libs/symengine-0.4"
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
