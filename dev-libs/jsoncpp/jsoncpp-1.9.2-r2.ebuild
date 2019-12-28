@@ -35,7 +35,7 @@ src_compile() {
 	meson_src_compile
 
 	if use doc; then
-		cp "${BUILD_DIR}"/version . || die
+		echo "${PV}" > version || die
 		"${EPYTHON}" doxybuild.py --doxygen="${EPREFIX}"/usr/bin/doxygen || die
 		HTML_DOCS=( dist/doxygen/jsoncpp*/. )
 	fi
