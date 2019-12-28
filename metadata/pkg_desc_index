@@ -7478,11 +7478,6 @@ dev-python/astrodendro 0.2.0: Python package for computation of astronomical den
 dev-python/astroid 1.4.8 1.6.5 2.2.5: Abstract Syntax Tree for logilab packages
 dev-python/astroml 0.3: Python Machine Learning library for astronomy
 dev-python/astroml-addons 0.2.2: Performance add-ons for the astroML package
-dev-python/astroplan 0.2 0.2.1: Observation planning package for astronomers
-dev-python/astropy 1.2.1 1.3.3 2.0.1: Core functionality for performing astrophysics with Python
-dev-python/astropy-helpers 1.2 1.3.1 2.0.1: Helpers for Astropy and Affiliated packages
-dev-python/astroquery 0.3.6: Collection of packages to access online astronomical resources
-dev-python/astroscrappy 1.0.3 1.0.5: Optimized cosmic ray annihilation astropy python module
 dev-python/astunparse 1.6.2: Astun parser for python
 dev-python/async_generator 1.10: Making it easy to write async iterators in Python 3.5
 dev-python/async_timeout 1.2.1 2.0.1 3.0.1: Timeout context manager for asyncio programs
@@ -7490,7 +7485,6 @@ dev-python/asynctest 0.12.2: Enhance the standard unittest with features for tes
 dev-python/atom 0.4.1: Memory efficient Python objects
 dev-python/atomicwrites 1.1.5-r2 1.1.5-r3 1.2.1 1.3.0: Atomic file writes
 dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
-dev-python/atpy 0.9.7: Astronomical tables support for Python
 dev-python/attrs 18.2.0 19.1.0 19.3.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r1: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.11.0: A library wrapping email authentication header verification and generation.
@@ -7573,7 +7567,6 @@ dev-python/case 1.5.2-r1 1.5.3: Python unittest Utilities
 dev-python/castellan 0.12.2 0.17.0 1.2.2: Generic Key Manager interface for OpenStack
 dev-python/catkin_pkg 0.4.12 0.4.13 0.4.15 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
-dev-python/ccdproc 1.1.0 1.2.0: Astropy affiliated package for reducing optical/IR CCD data
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
 dev-python/celery 4.1.0 4.3.0: Asynchronous task queue/job queue based on distributed message passing
