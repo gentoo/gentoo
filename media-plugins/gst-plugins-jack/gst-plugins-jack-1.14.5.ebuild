@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-good
 inherit gstreamer
 
 DESCRIPION="JACK audio server source/sink plugin for GStreamer"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm arm64 ~hppa ia64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="virtual/jack[${MULTILIB_USEDEP}]"
