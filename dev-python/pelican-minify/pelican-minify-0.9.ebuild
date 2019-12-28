@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 inherit distutils-r1
 
 DESCRIPTION="An HTML minification plugin for Pelican, the static site generator."
