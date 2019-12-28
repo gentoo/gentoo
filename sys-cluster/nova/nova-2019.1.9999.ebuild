@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
+PYTHON_COMPAT=( python3_{5,6,7} )
 inherit distutils-r1 eutils linux-info multilib user
 
 DESCRIPTION="Cloud computing fabric controller (main part of an IaaS system) in Python"
@@ -151,7 +151,6 @@ RDEPEND="
 	>=dev-python/taskflow-2.16.0[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
 	>=dev-python/zVMCloudConnector-1.1.1[${PYTHON_USEDEP}]
-	>=dev-python/futurist-1.8.0[$(python_gen_usedep 'python2_7')]
 	dev-python/libvirt-python[${PYTHON_USEDEP}]
 	app-emulation/libvirt[iscsi?]
 	app-emulation/spice-html5
