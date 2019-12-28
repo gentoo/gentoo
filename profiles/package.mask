@@ -160,7 +160,9 @@ app-editors/emacs-vcs
 app-benchmarks/spew
 
 # Jason A. Donenfeld <zx2c4@gentoo.org> (2019-12-16)
-# Simplify FOX packages. Nobody uses the demo apps or the "stable" branch.
+# Simplify FOX packages. Adie, calculator, pathfinder, and shutterbug
+# can now be found behind x11-libs/fox[tools], and reswrap is always
+# installed by it.
 # Removal in 30 days.  Bug #703088. Bug #703084.
 app-editors/adie
 dev-util/reswrap

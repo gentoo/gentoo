@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.fox-toolkit.org/pub/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="1.7"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="+bzip2 +jpeg +opengl +png tiff +truetype +zlib debug doc profile"
+IUSE="+bzip2 +jpeg +opengl +png tiff +truetype +zlib debug doc profile tools"
 
 RDEPEND="x11-libs/libXrandr
 	x11-libs/libXcursor
@@ -37,10 +37,13 @@ src_prepare() {
 	default
 
 	sed -i '/#define REXDEBUG 1/d' lib/FXRex.cpp || die "Unable to remove spurious debug line."
-	local d
-	for d in windows adie calculator pathfinder shutterbug; do
-		sed -i -e "s:${d}::" Makefile.am || die "Unable to remove $d."
-	done
+	sed -i -e "s:windows::" Makefile.am
+	if ! use tools; then
+		local d
+		for d in adie calculator pathfinder shutterbug; do
+			sed -i -e "s:${d}::" Makefile.am
+		done
+	fi
 
 	# Respect system CXXFLAGS
 	sed -i -e 's:CXXFLAGS=""::' configure.ac || die "Unable to force cxxflags."
