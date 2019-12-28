@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-good
 inherit gstreamer
 
 DESCRIPTION="DV demuxer and decoder plugin for GStreamer"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND=">=media-libs/libdv-1.0.0-r3[${MULTILIB_USEDEP}]"
