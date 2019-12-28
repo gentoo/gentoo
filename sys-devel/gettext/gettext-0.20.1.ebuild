@@ -5,7 +5,7 @@
 
 EAPI=7
 
-inherit mono-env libtool java-pkg-opt-2 multilib-minimal
+inherit epunt-cxx mono-env libtool java-pkg-opt-2 multilib-minimal
 
 DESCRIPTION="GNU locale utilities"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
@@ -70,6 +70,7 @@ src_prepare() {
 
 	default
 
+	epunt_cxx
 	elibtoolize
 }
 
