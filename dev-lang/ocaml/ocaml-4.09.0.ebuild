@@ -9,7 +9,7 @@ DESCRIPTION="Programming language supporting functional, imperative & object-ori
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="emacs flambda latex +ocamlopt spacetime xemacs"
 
 RDEPEND="sys-libs/binutils-libs:=
