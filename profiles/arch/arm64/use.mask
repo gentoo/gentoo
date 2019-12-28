@@ -34,7 +34,6 @@ libglvnd
 -cpu_flags_arm_vfp-d32
 
 # Unmask [old] arm specific USE flags
--neon
 -armvfp
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
