@@ -19,11 +19,15 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="+wg-quick"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="net-libs/libmnl"
 RDEPEND="${DEPEND}
-	|| ( net-firewall/nftables net-firewall/iptables )
+	wg-quick? (
+		|| ( net-firewall/nftables net-firewall/iptables )
+		virtual/resolvconf
+	)
 	!<=net-vpn/wireguard-0.0.20191219
 "
 
@@ -33,6 +37,7 @@ wg_quick_optional_config_nob() {
 }
 
 pkg_setup() {
+	use wg-quick || return 0
 	wg_quick_optional_config_nob IP_ADVANCED_ROUTER
 	wg_quick_optional_config_nob IP_MULTIPLE_TABLES
 	wg_quick_optional_config_nob IPV6_MULTIPLE_TABLES
@@ -67,7 +72,7 @@ src_install() {
 	emake \
 		WITH_BASHCOMPLETION=yes \
 		WITH_SYSTEMDUNITS=yes \
-		WITH_WGQUICK=yes \
+		WITH_WGQUICK=$(usex wg-quick) \
 		DESTDIR="${D}" \
 		BASHCOMPDIR="$(get_bashcompdir)" \
 		SYSTEMDUNITDIR="$(systemd_get_systemunitdir)" \
