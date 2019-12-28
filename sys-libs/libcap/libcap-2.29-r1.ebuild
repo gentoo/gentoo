@@ -64,7 +64,9 @@ multilib_src_install() {
 
 	gen_usr_ldscript -a cap
 	if ! use static-libs ; then
-		rm "${ED}"/usr/$(get_libdir)/lib{cap,psx}.a || die
+		# Don't remove libpsx.a!
+		# See https://bugs.gentoo.org/703912
+		rm "${ED}"/usr/$(get_libdir)/libcap.a || die
 	fi
 
 	if [[ -d "${ED}"/usr/$(get_libdir)/security ]] ; then
