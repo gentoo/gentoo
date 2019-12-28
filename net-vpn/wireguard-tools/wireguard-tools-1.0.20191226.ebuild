@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info bash-completion-r1
+inherit linux-info bash-completion-r1 systemd
 
 DESCRIPTION="Required tools for WireGuard, such as wg(8) and wg-quick(8)"
 HOMEPAGE="https://www.wireguard.com/"
@@ -69,6 +69,7 @@ src_install() {
 		WITH_WGQUICK=yes \
 		DESTDIR="${D}" \
 		BASHCOMPDIR="$(get_bashcompdir)" \
+		SYSTEMDUNITDIR="$(systemd_get_systemunitdir)" \
 		PREFIX="${EPREFIX}/usr" \
 		-C src install
 }
