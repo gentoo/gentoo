@@ -12,7 +12,7 @@ DESCRIPTION="GUI gettext translations editor"
 HOMEPAGE="https://poedit.net"
 SRC_URI="https://github.com/vslavik/${PN}/releases/download/v${PV}-oss/${P}.tar.gz"
 
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 sparc ~x86"
 LICENSE="MIT"
 SLOT="0"
 
