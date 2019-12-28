@@ -1,5 +1,5 @@
---- src/lib/Makefile.in.orig	2019-08-20 07:34:29.667187396 +0200
-+++ src/lib/Makefile.in	2019-08-20 07:34:40.202187657 +0200
+--- a/src/lib/Makefile.in
++++ b/src/lib/Makefile.in
 @@ -61,7 +61,7 @@
  install: $(NDPI_LIBS)
  	mkdir -p $(DESTDIR)$(libdir)
