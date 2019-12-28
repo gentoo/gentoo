@@ -5,6 +5,10 @@ EAPI=7
 
 inherit autotools
 
+DESCRIPTION="C++ Toolkit for developing Graphical User Interfaces easily and effectively"
+HOMEPAGE="http://www.fox-toolkit.org/"
+SRC_URI="ftp://ftp.fox-toolkit.org/pub/${P}.tar.gz"
+
 LICENSE="LGPL-2.1"
 SLOT="1.7"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
@@ -14,22 +18,18 @@ RDEPEND="x11-libs/libXrandr
 	x11-libs/libXcursor
 	x11-libs/fox-wrapper
 	bzip2? ( app-arch/bzip2 )
-	jpeg? ( virtual/jpeg:= )
+	jpeg? ( virtual/jpeg )
 	opengl? ( virtual/glu virtual/opengl )
 	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:0= )
 	truetype? ( media-libs/freetype:2
 		x11-libs/libXft )
 	zlib? ( sys-libs/zlib )
-	doc? ( app-doc/doxygen )
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	x11-libs/libXt"
-
-DESCRIPTION="C++ Toolkit for developing Graphical User Interfaces easily and effectively"
-HOMEPAGE="http://www.fox-toolkit.org/"
-SRC_URI="ftp://ftp.fox-toolkit.org/pub/${P}.tar.gz"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 PATCHES=( "${FILESDIR}"/"${PN}"-1.7.67-no-truetype.patch )
 
@@ -53,7 +53,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use debug && echo --enable-debug || echo --enable-release) \
+		--enable-$(usex debug debug release) \
 		$(use_enable bzip2 bz2lib) \
 		$(use_enable jpeg) \
 		$(use_with opengl) \
@@ -65,16 +65,16 @@ src_configure() {
 }
 
 src_compile() {
-	emake || die "compile error"
+	emake
 	use doc && emake -C "${S}"/doc docs
 }
 
 src_install() {
 	emake install \
 		DESTDIR="${D}" \
-		htmldir=/usr/share/doc/${PF}/html \
-		artdir=/usr/share/doc/${PF}/html/art \
-		screenshotsdir=/usr/share/doc/${PF}/html/screenshots
+		htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
+		artdir="${EPREFIX}"/usr/share/doc/${PF}/html/art \
+		screenshotsdir="${EPREFIX}"/usr/share/doc/${PF}/html/screenshots
 
 	CP="${ED}/usr/bin/ControlPanel"
 	if [[ -f ${CP} ]] ; then
@@ -83,7 +83,7 @@ src_install() {
 	fi
 
 	for doc in ADDITIONS AUTHORS LICENSE_ADDENDUM README TRACING ; do
-		[ -f $doc ] && dodoc $doc
+		[[ -f $doc ]] && dodoc $doc
 	done
 
 	# remove documentation if USE=-doc
@@ -91,7 +91,8 @@ src_install() {
 
 	# install class reference docs if USE=doc
 	if use doc && [[ -z ${FOX_COMPONENT} ]] ; then
-		dohtml -r "${S}/doc/ref"
+		docinto html
+		dodoc -r "${S}/doc/ref"
 	fi
 
 	# slot fox-config
