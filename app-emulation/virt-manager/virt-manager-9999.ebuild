@@ -18,7 +18,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/virt-manager/virt-manager.git"
 else
 	SRC_URI="http://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2"
