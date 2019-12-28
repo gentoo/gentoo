@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <remote-id type="pypi">pytest-openfiles</remote-id>
+    <remote-id type="github">astropy/pytest-openfiles</remote-id>
+  </upstream>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>gentoo@lotz.li</email>
+    <name>Linus Lotz</name>
+  </maintainer>
+  <longdescription lang="en">
+    A plugin for the pytest framework that allows developers to detect whether any file handles or other file-like objects were inadvertently left open at the end of a unit test
+  </longdescription>
+</pkgmetadata>
