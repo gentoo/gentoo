@@ -9,7 +9,7 @@ HOMEPAGE="https://www.ntop.org/"
 SRC_URI="https://github.com/ntop/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/$(ver_cut 1)"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
