@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer
 
 DESCRIPTION="SRTP encoder/decoder plugin for GStreamer"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 x86"
+KEYWORDS="alpha amd64 ~arm arm64 ~ia64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND="
