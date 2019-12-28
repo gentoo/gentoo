@@ -5319,7 +5319,7 @@ dev-ml/camlbz2 0.6.0: OCaml bindings for libbz (AKA, bzip2)
 dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
 dev-ml/camlimages 4.2.2 4.2.3 4.2.4: An image manipulation library for ocaml
-dev-ml/camlp4 4.04_p1 4.05_p1: System for writing extensible parsers for programming languages
+dev-ml/camlp4 4.04_p1 4.05_p1 4.08_p1: System for writing extensible parsers for programming languages
 dev-ml/camlp5 6.17 7.00 7.01 7.03: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.3 2.3.1: OCaml library for reading, writing, and modifying PDF files
 dev-ml/camlzip 1.06 1.07: Compressed file access ML library (ZIP, GZIP and JAR)
@@ -16612,6 +16612,7 @@ sci-mathematics/ginac 1.6.6 1.7.2 1.7.4: C++ library and tools for symbolic calc
 sci-mathematics/glpk 4.63: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices
 sci-mathematics/gmp-ecm 6.4.4-r1 7.0.4-r1 9999: Elliptic Curve Method for Integer Factorization
+sci-mathematics/gp2c 0.0.11.2: A GP to C translator
 sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series library
 sci-mathematics/gsl-shell 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
 sci-mathematics/jags 3.4.0 4.0.0 4.1.0 4.2.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
@@ -16632,7 +16633,7 @@ sci-mathematics/octave 4.2.2 4.4.0 4.4.1 5.1.0: High-level interactive language 
 sci-mathematics/octave-epstk 2.4: Graphical output functions for Matlab and Octave
 sci-mathematics/otter 3.3-r3: An Automated Deduction System
 sci-mathematics/p9m4 05-r1: This is a Graphical User Interface for Prover9 and Mace4
-sci-mathematics/pari 2.9.4-r1: Computer-aided number theory C library and tools
+sci-mathematics/pari 2.9.4-r1 2.11.2: Computer-aided number theory C library and tools
 sci-mathematics/pari-data 20191216: Additional dataset packages for PARI
 sci-mathematics/petsc 3.11.3 3.12.1: Portable, Extensible Toolkit for Scientific Computation
 sci-mathematics/polymake 3.0_p2: research tool for polyhedral geometry and combinatorics
