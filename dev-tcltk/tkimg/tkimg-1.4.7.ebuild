@@ -75,7 +75,7 @@ src_install() {
 	# Make library links
 	for l in "${ED}"/usr/lib*/Img*/*tcl*.so; do
 		bl=$(basename $l)
-		dosym Img1.4/${bl} /usr/$(get_libdir)/${bl}
+		dosym Img${PV}/${bl} /usr/$(get_libdir)/${bl}
 	done
 
 	dodoc ChangeLog README Reorganization.Notes.txt changes ANNOUNCE
