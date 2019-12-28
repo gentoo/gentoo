@@ -4,6 +4,11 @@
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
+# Aaron Bauman <bman@gentoo.org> (2019-12-27)
+# Mask cpu_flags_arm_neon for all of arm64
+# A neon64 USE is being discussed
+cpu_flags_arm_neon
+
 # Matt Turner <mattst88@gentoo.org> (2019-12-05)
 # media-libs/libglvnd is not keyworded
 libglvnd
@@ -19,7 +24,6 @@ libglvnd
 -cpu_flags_arm_aes
 -cpu_flags_arm_crc32
 -cpu_flags_arm_edsp
--cpu_flags_arm_neon
 -cpu_flags_arm_sha1
 -cpu_flags_arm_sha2
 -cpu_flags_arm_thumb
