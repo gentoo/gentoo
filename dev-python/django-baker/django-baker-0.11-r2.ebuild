@@ -3,11 +3,11 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} pypy )
+PYTHON_COMPAT=( python3_{5,6} )
 
 inherit distutils-r1
 
-DESCRIPTION="Management command that generates views, forms, urls, admin, and templates for models"
+DESCRIPTION="Management command that generates views, forms, urls, and templates for models"
 HOMEPAGE="https://pypi.org/project/django-baker/ https://github.com/krisfields/django-baker"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
