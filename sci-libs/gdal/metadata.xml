@@ -15,7 +15,7 @@
 	</slots>
 	<use>
 		<flag name="armadillo">Use <pkg>sci-libs/armadillo</pkg> for faster TPS transform computation</flag>
-		<flag name="aux_xml">Enable Portable Auxilliary Metadata generation</flag>
+		<flag name="aux-xml">Enable Portable Auxilliary Metadata generation</flag>
 		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
 		<flag name="geos">Add support for geometry engine (<pkg>sci-libs/geos</pkg>)</flag>
 		<flag name="gml">Enable support for <pkg>dev-libs/xerces-c</pkg> C++ API</flag>
