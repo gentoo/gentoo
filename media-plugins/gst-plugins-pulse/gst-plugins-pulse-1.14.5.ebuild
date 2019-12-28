@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-good
 inherit gstreamer
 
 DESCRIPTION="PulseAudio sound server plugin for GStreamer"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86"
+KEYWORDS="alpha amd64 ~arm arm64 ~hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86"
 IUSE=""
 
 RDEPEND="
