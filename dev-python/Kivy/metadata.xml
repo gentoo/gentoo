@@ -3,9 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <use>
-    <flag name="camera">
-      Install libraries needed to support camera
-    </flag>
     <flag name="garden">
       Install garden tool to manage user maintained widgets
     </flag>
