@@ -21,7 +21,7 @@ RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 
 # games-sports/ski and app-emulation/ski both install 'ski' binary, bug #653110
-RDEPEND="${RDEPEND} !!games-sports/ski"
+RDEPEND="${RDEPEND} !!app-emulation/ski"
 
 src_install() {
 	dobin ski
