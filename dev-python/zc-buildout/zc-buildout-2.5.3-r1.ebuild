@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_5,3_6} pypy pypy3 )
+PYTHON_COMPAT=( python3_{5,6} pypy3 )
 
 inherit distutils-r1
 
@@ -17,7 +17,8 @@ LICENSE="ZPL"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
+# Tests are broken
+RESTRICT="test"
 
 RDEPEND=">=dev-python/setuptools-3.3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
@@ -34,11 +35,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	if python_is_python3; then
-		ewarn "Tests are broken for ${EPYTHON}, skipping"
-		continue
-	fi
-
 	distutils_install_for_testing
 	"${PYTHON}" src/zc/buildout/tests.py || die "Tests fail with ${EPYTHON}"
 }
