@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer
 
 DESCRIPTION="AAC audio decoder plugin."
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND=">=media-libs/faad2-2.7-r3[${MULTILIB_USEDEP}]"
