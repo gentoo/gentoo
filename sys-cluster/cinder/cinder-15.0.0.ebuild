@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
+PYTHON_COMPAT=( python3_{5,6,7} )
 inherit distutils-r1 eutils linux-info user
 
 DESCRIPTION="Cinder is the OpenStack Block storage service, a spin out of nova-volumes"
@@ -36,7 +36,6 @@ RDEPEND="
 	${CDEPEND}
 	>=dev-python/decorator-3.4.0[${PYTHON_USEDEP}]
 	>=dev-python/defusedxml-0.5.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'python2_7')
 	>=dev-python/eventlet-0.22.0[${PYTHON_USEDEP}]
 	!~dev-python/eventlet-0.23.0[${PYTHON_USEDEP}]
 	!~dev-python/eventlet-0.25.0[${PYTHON_USEDEP}]
