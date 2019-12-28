@@ -8,10 +8,9 @@ HOMEPAGE="https://www.wireguard.com/"
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="debug +module +tools module-src"
+IUSE="+module +tools"
 
 RDEPEND="
 	tools? ( net-vpn/wireguard-tools )
-	module? ( net-vpn/wireguard-modules[module,debug?] )
-	module-src? ( net-vpn/wireguard-modules[module-src] )
+	module? ( net-vpn/wireguard-modules )
 "

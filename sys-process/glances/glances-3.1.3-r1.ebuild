@@ -22,9 +22,12 @@ RDEPEND="dev-python/future[${PYTHON_USEDEP}]
 
 CONFIG_CHECK="~TASK_IO_ACCOUNTING ~TASK_DELAY_ACCT ~TASKSTATS"
 
-PATCHES=( "${FILESDIR}/${PV}-fix-test.patch" )
+PATCHES=(
+	"${FILESDIR}/disable-update-check.patch"
+	"${FILESDIR}/${PV}-fix-test.patch"
+)
 
-distutils_enable_tests unittest
+distutils_enable_tests setup.py
 distutils_enable_sphinx docs --no-autodoc
 
 pkg_setup() {
