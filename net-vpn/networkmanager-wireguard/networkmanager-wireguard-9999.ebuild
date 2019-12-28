@@ -17,7 +17,7 @@ REQUIRED_USE="glib? ( gtk )"
 
 RDEPEND="
 	net-misc/networkmanager
-	net-vpn/wireguard
+	virtual/wireguard
 	glib? ( dev-libs/glib )
 	gtk? (
 		app-crypt/libsecret
