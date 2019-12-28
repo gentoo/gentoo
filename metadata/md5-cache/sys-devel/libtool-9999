@@ -1,12 +1,13 @@
-DEFINED_PHASES=configure install prepare test unpack
-DEPEND=sys-devel/gnuconfig >=sys-devel/autoconf-2.69 >=sys-devel/automake-1.13 dev-libs/libltdl:0 !<sys-apps/sandbox-2.10-r4 app-arch/xz-utils sys-apps/help2man >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=app-portage/elt-patches-20170317 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=sys-apps/help2man >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=sys-devel/gnuconfig >=sys-devel/autoconf-2.69:* >=sys-devel/automake-1.13:* dev-libs/libltdl:0
 DESCRIPTION=A shared library tool for developers
-EAPI=6
+EAPI=7
 HOMEPAGE=https://www.gnu.org/software/libtool/
 IUSE=vanilla
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=sys-devel/gnuconfig >=sys-devel/autoconf-2.69 >=sys-devel/automake-1.13 dev-libs/libltdl:0 !<sys-apps/sandbox-2.10-r4
+RDEPEND=sys-devel/gnuconfig >=sys-devel/autoconf-2.69:* >=sys-devel/automake-1.13:* dev-libs/libltdl:0
 SLOT=2
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	epunt-cxx	e99babeaa7d98c1caaa6a61a79902210	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=83916570bd3167be2c5d696911db364c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=100fcfa445635e63f2a2356fcafe8b3f
