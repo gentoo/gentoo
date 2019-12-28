@@ -13,10 +13,6 @@
     <flag name="gdbm">
       Enables the Gdbm back-end database engine for pyzord
     </flag>
-    <flag name="mysql">
-      Enables the MySQL back-end database engine for pyzord through
-      <pkg>dev-python/mysql-python</pkg>. Only works with python-2.x!
-    </flag>
     <flag name="redis">
       Enables the redis back-end database engine for pyzord through
       <pkg>dev-python/redis-py</pkg>
