@@ -1,15 +1,14 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 LIBTOOLIZE="true" #225559
 WANT_LIBTOOL="none"
-inherit autotools epatch epunt-cxx multilib unpacker prefix
+inherit autotools prefix
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.savannah.gnu.org/${PN}.git
-		http://git.savannah.gnu.org/r/${PN}.git"
+if [[ ${PV} == *9999 ]] ; then
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/libtool.git"
 	inherit git-r3
 else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
@@ -24,47 +23,41 @@ SLOT="2"
 IUSE="vanilla"
 
 # Pull in libltdl directly until we convert packages to the new dep.
-RDEPEND="sys-devel/gnuconfig
-	>=sys-devel/autoconf-2.69
-	>=sys-devel/automake-1.13
-	dev-libs/libltdl:0
-	!<sys-apps/sandbox-2.10-r4"
-DEPEND="${RDEPEND}
-	app-arch/xz-utils"
-[[ ${PV} == "9999" ]] && DEPEND+=" sys-apps/help2man"
+RDEPEND="
+	sys-devel/gnuconfig
+	>=sys-devel/autoconf-2.69:*
+	>=sys-devel/automake-1.13:*
+	dev-libs/libltdl:0"
+DEPEND="${RDEPEND}"
+[[ ${PV} == *9999 ]] && BDEPEND="sys-apps/help2man"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.3-use-linux-version-in-fbsd.patch #109105
-	"${FILESDIR}"/${P}-link-specs.patch
-	"${FILESDIR}"/${P}-link-fsanitize.patch #573744
-	"${FILESDIR}"/${P}-link-fuse-ld.patch
-	"${FILESDIR}"/${P}-libtoolize-slow.patch
-	"${FILESDIR}"/${P}-libtoolize-delay-help.patch
-	"${FILESDIR}"/${P}-sed-quote-speedup.patch #542252
-	"${FILESDIR}"/${P}-ppc64le.patch #581314
+	"${FILESDIR}"/${PN}-2.4.6-link-specs.patch
+	"${FILESDIR}"/${PN}-2.4.6-link-fsanitize.patch #573744
+	"${FILESDIR}"/${PN}-2.4.6-link-fuse-ld.patch
+	"${FILESDIR}"/${PN}-2.4.6-libtoolize-slow.patch
+	"${FILESDIR}"/${PN}-2.4.6-libtoolize-delay-help.patch
+	"${FILESDIR}"/${PN}-2.4.6-sed-quote-speedup.patch #542252
+	"${FILESDIR}"/${PN}-2.4.6-ppc64le.patch #581314
 
 	"${FILESDIR}"/${PN}-2.4.6-mint.patch
 	"${FILESDIR}"/${PN}-2.2.6a-darwin-module-bundle.patch
 	"${FILESDIR}"/${PN}-2.4.6-darwin-use-linux-version.patch
 )
 
-src_unpack() {
-	if [[ ${PV} == "9999" ]] ; then
-		git-r3_src_unpack
-	else
-		unpacker_src_unpack
-	fi
-}
-
 src_prepare() {
-	if [[ "${PV}" = 9999 ]] ; then
-		eapply "${FILESDIR}"/${P}-pthread.patch #650876
+	if [[ ${PV} == *9999 ]] ; then
+		eapply "${FILESDIR}"/${PN}-2.4.6-pthread.patch #650876
 		./bootstrap || die
 	else
 		PATCHES+=(
-			"${FILESDIR}"/${P}-pthread_bootstrapped.patch #650876
+			"${FILESDIR}"/${PN}-2.4.6-pthread_bootstrapped.patch #650876
 		)
 	fi
+
+	# WARNING: File build-aux/ltmain.sh is read-only; trying to patch anyway
+	chmod +w build-aux/ltmain.sh || die
 
 	if use vanilla ; then
 		eapply_user
@@ -85,15 +78,14 @@ src_prepare() {
 		eprefixify m4/libtool.m4
 	fi
 
-	pushd libltdl >/dev/null
+	pushd libltdl >/dev/null || die
 	AT_NOELIBTOOLIZE=yes eautoreconf
-	popd >/dev/null
+	popd >/dev/null || die
 	AT_NOELIBTOOLIZE=yes eautoreconf
-	epunt_cxx
 
 	# Make sure timestamps don't trigger a rebuild of man pages. #556512
-	if [[ ${PV} != "9999" ]] ; then
-		touch doc/*.1
+	if [[ ${PV} != *9999 ]] ; then
+		touch doc/*.1 || die
 		export HELP2MAN=false
 	fi
 }
@@ -108,13 +100,8 @@ src_configure() {
 	# Do not bother hardcoding the full path to sed.  Just rely on $PATH. #574550
 	export ac_cv_path_SED="$(basename "$(type -P sed)")"
 
-	local myconf
-	[[ ${CHOST} == *-darwin* ]] && myconf="--program-prefix=g"
+	[[ ${CHOST} == *-darwin* ]] && local myconf="--program-prefix=g"
 	ECONF_SOURCE=${S} econf ${myconf} --disable-ltdl-install
-}
-
-src_test() {
-	emake check
 }
 
 src_install() {

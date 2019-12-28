@@ -9,7 +9,7 @@ DESCRIPTION="The Motif user interface component toolkit"
 HOMEPAGE="https://sourceforge.net/projects/motif/
 	https://motif.ics.com/"
 SRC_URI="mirror://sourceforge/project/motif/Motif%20${PV}%20Source%20Code/${P}.tar.gz
-	https://dev.gentoo.org/~ulm/distfiles/${PN}-2.3.6-patches-2.tar.xz"
+	https://dev.gentoo.org/~ulm/distfiles/${P}-patches-1.tar.xz"
 
 LICENSE="LGPL-2.1+ MIT"
 SLOT="0"
@@ -37,12 +37,6 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	eapply ../patch
 	eapply_user
-
-	# disable compilation of demo binaries
-	sed -i -e '/^SUBDIRS/{:x;/\\$/{N;bx;};s/[ \t\n\\]*demos//;}' Makefile.am
-
-	# add X.Org vendor string to aliases for virtual bindings
-	echo -e '"The X.Org Foundation"\t\t\t\t\tpc' >>bindings/xmbind.alias
 
 	AT_M4DIR=. eautoreconf
 
