@@ -7561,6 +7561,7 @@ sci-libs/superlu_mt:int64 - Build the 64 bits integer library
 sci-libs/symengine:arb - Add support for arb (sci-mathematics/arb)
 sci-libs/symengine:benchmarks - Build benchmarks
 sci-libs/symengine:boost - Add support for boost integers(dev-libs/boost)
+sci-libs/symengine:ecm - Add support for ECM integer factorization library (sci-mathematics/gmp-ecm)
 sci-libs/symengine:flint - Add support for (sci-mathematics/flint)
 sci-libs/symengine:llvm - Build with LLVM
 sci-libs/symengine:mpc - Add support for multiprecision complex arithmetic(dev-libs/mpc)
