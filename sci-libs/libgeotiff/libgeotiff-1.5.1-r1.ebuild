@@ -19,7 +19,7 @@ BDEPEND="
 "
 DEPEND="
 	>=media-libs/tiff-3.9.1:0
-	>=sci-libs/proj-6.0.0
+	>=sci-libs/proj-6.0.0:=
 	sys-libs/zlib
 	virtual/jpeg:=
 "
