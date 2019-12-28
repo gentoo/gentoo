@@ -9,10 +9,6 @@
 # A neon64 USE is being discussed
 cpu_flags_arm_neon
 
-# Matt Turner <mattst88@gentoo.org> (2019-12-05)
-# media-libs/libglvnd is not keyworded
-libglvnd
-
 # Unmask arm specific USE flags
 -cpu_flags_arm_v4
 -cpu_flags_arm_v4
