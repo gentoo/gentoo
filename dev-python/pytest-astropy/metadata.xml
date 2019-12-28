@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <remote-id type="pypi">pytest-astropy</remote-id>
+    <remote-id type="github">astropy/pytest-astropy</remote-id>
+  </upstream>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>gentoo@lotz.li</email>
+    <name>Linus Lotz</name>
+  </maintainer>
+  <longdescription lang="en">
+    This is a meta-package that pulls in the dependencies that are used by astropy and some affiliated packages for testing.
+    It can also be used for testing packages that are not affiliated with the Astropy project.
+  </longdescription>
+</pkgmetadata>
