@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 
 inherit java-pkg-2 distutils-r1
 
@@ -23,14 +23,6 @@ DEPEND="
 	>=virtual/jdk-1.6"
 
 #PATCHES=( "${FILESDIR}"/${PN}-gcc6-noexcept.patch )
-
-python_compile() {
-	if ! python_is_python3; then
-		local CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
-		export CXXFLAGS
-	fi
-	distutils-r1_python_compile
-}
 
 python_install() {
 	use doc && local DOCS=( doc/* )
