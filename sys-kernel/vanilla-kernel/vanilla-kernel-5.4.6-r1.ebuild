@@ -36,7 +36,7 @@ RDEPEND="
 		sys-kernel/installkernel-gentoo
 		sys-kernel/installkernel-systemd-boot
 	)
-	initramfs? ( sys-kernel/dracut )"
+	initramfs? ( >=sys-kernel/dracut-049-r2 )"
 BDEPEND="
 	sys-devel/bc
 	virtual/libelf"
