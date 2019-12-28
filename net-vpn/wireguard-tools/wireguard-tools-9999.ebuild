@@ -35,6 +35,7 @@ wg_quick_optional_config_nob() {
 pkg_setup() {
 	wg_quick_optional_config_nob IP_ADVANCED_ROUTER
 	wg_quick_optional_config_nob IP_MULTIPLE_TABLES
+	wg_quick_optional_config_nob IPV6_MULTIPLE_TABLES
 	if has_version net-firewall/nftables; then
 		wg_quick_optional_config_nob NF_TABLES
 		wg_quick_optional_config_nob NF_TABLES_IPV4
