@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <remote-id type="pypi">pytest-remotedata</remote-id>
+    <remote-id type="github">astropy/pytest-remotedata</remote-id>
+  </upstream>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>gentoo@lotz.li</email>
+    <name>Linus Lotz</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    This package provides a plugin for the pytest framework that allows developers
+    to control unit tests that require access to data from the internet.
+  </longdescription>
+</pkgmetadata>
