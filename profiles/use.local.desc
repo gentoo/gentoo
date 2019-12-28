@@ -2510,7 +2510,6 @@ dev-php/pecl-zmq:czmq - Use the czmq high level bindings
 dev-php/phing:zip - Support zip archives by requiring said support in dev-lang/php.
 dev-php/swoole:http2 - Add support for HTTP/2 protocol via net-libs/nghttp2
 dev-php/xcache:coverage - Enable the coverager module (not recommended for production servers).
-dev-python/Kivy:camera - Install libraries needed to support camera
 dev-python/Kivy:garden - Install garden tool to manage user maintained widgets
 dev-python/PyQt5:bluetooth - Build bindings for the QtBluetooth module
 dev-python/PyQt5:dbus - Build bindings for the QtDBus module
@@ -2628,7 +2627,6 @@ dev-python/pyudev:qt5 - Install PyQt5 bindings
 dev-python/pyyaml:libyaml - enable support for C implementation using libyaml
 dev-python/pyzor:gdbm - Enables the Gdbm back-end database engine for pyzord
 dev-python/pyzor:gevent - Use dev-python/gevent to enable asynchronous operation
-dev-python/pyzor:mysql - Enables the MySQL back-end database engine for pyzord through dev-python/mysql-python. Only works with python-2.x!
 dev-python/pyzor:pyzord - Enable the pyzord server daemon
 dev-python/pyzor:redis - Enables the redis back-end database engine for pyzord through dev-python/redis-py
 dev-python/rarfile:compressed - Enables the module to support compressed v3 archives by calling the app-arch/unrar.
@@ -7785,9 +7783,6 @@ sci-visualization/paraview:offscreen - Offscreen rendering through OSMesa
 sci-visualization/paraview:plugins - Build and install additional plugins
 sci-visualization/veusz:fits - Add FITS format via dev-python/astropy
 sci-visualization/veusz:minuit - Use Minuit during fitting viadev-python/pyminuit
-sci-visualization/visit:cgns - Builds the reader for the CFD General Notation System file format.
-sci-visualization/visit:silo - Adds support for reading .silo files.
-sci-visualization/visit:xdmf2 - Support for xdmf2 formatted data.
 sci-visualization/yt:hub - Connect to the yt hub with dev-python/girder-client
 sec-policy/selinux-base:open_perms - Enable the open permissions for file object classes (SELinux policy capability).
 sec-policy/selinux-base:peer_perms - Enable the labeled networking peer permissions (SELinux policy capability).

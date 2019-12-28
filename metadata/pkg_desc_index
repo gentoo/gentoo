@@ -2632,7 +2632,7 @@ app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5 0.6.10-r7 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.47-r1 0.55 0.56: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1 0.9.6_pre20171027 0.9.6_p20180715: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.79.0-r1 0.82.0 0.83.0 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.82.0 0.83.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.8_p20190410: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -7701,7 +7701,7 @@ dev-python/django 1.11.20 1.11.21 2.1.8 2.1.9 2.2.1 2.2.2: High-level Python web
 dev-python/django-annoying 0.7.7 0.8.7: This is django application that try to eliminate annoying things in Django framework
 dev-python/django-appconf 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 1.2.2 1.2.7 1.7.0: Django LDAP authentication backend
-dev-python/django-baker 0.11-r2: Management command that generates views, forms, urls, admin, and templates for models
+dev-python/django-baker 0.11-r2: Management command that generates views, forms, urls, and templates for models
 dev-python/django-cacheops 4.1: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-cors-headers 2.5.1 3.0.2: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
 dev-python/django-crispy-forms 1.6.0: Best way to have Django DRY forms
@@ -7754,7 +7754,7 @@ dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal pref
 dev-python/docutils 0.12 0.13.1 0.14 0.15.2: Python Documentation Utilities
 dev-python/docutils-glep 1.2 9999: Gentoo GLEP support for docutils
 dev-python/dogpile-cache 0.6.4 0.7.1: A locking API for expiring values while a single thread generates a new value.
-dev-python/dogpile-core 0.4.1: A lock which allows a thread to generate an expensive resource while other threads use the old value
+dev-python/dogpile-core 0.4.1: Copy-on-write locking mechanism for expensive resources
 dev-python/doit 0.29.0: Automation tool
 dev-python/doit-py 0.4.0: doit tasks for python stuff
 dev-python/dominate 2.3.1 2.3.5 2.4.0: Library for creating and manipulating HTML documents using an elegant DOM API
@@ -7977,7 +7977,7 @@ dev-python/httreplay 0.2.0: A HTTP replay library for testing.
 dev-python/humanfriendly 4.17: Human friendly output for text interfaces using Python
 dev-python/humanize 0.5.1: Common humanization utilities
 dev-python/husl 4.0.3: Human-friendly HSL
-dev-python/hvac 0.2.17: Python 2/3 client for HashiCorp Vault
+dev-python/hvac 0.2.17: Python client for HashiCorp Vault
 dev-python/hyper-h2 2.5.1 3.0.1 3.1.1: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.1.0 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 17.1.1 17.3.1 18.0.0 19.0.0: A featureful, correct URL for Python
@@ -16572,7 +16572,6 @@ sci-libs/vecmath-objectclub 1.14: Unofficial free implementation of Sun javax.ve
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4 1.4.1 1.5 1.5.1 9999: Votca tools library
 sci-libs/vtk 8.1.0-r3: The Visualization Toolkit
-sci-libs/vtkdata 6.1.0: Example data file for VTK
 sci-libs/xdmf2 1.0_p141226-r3: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.1 1.1.4: Library to read gromacs trajectory and topology files
 sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Graphical Kernel System
@@ -16741,7 +16740,6 @@ sci-visualization/spectromatic 1.0-r3: Generates time-frequency analysis images 
 sci-visualization/spyview 2018.12.24 9999: 2D and 3D data visualization and analysis program
 sci-visualization/tensorboard 1.15.0 2.0.0 2.1.0-r1: TensorFlow's Visualization Toolkit
 sci-visualization/veusz 3.0 3.0.1 3.1: Qt scientific plotting package with good Postscript output
-sci-visualization/visit 2.12.3-r1: A software that delivers parallel interactive visualizations
 sci-visualization/xd3d 8.3.1-r1: Scientific visualization tool
 sci-visualization/xgraph 12.1-r4: X11 Plotting Utility
 sci-visualization/xyscan 4.3.0: Tool for extracting data points from graphs
