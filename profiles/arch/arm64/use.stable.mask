@@ -6,7 +6,7 @@
 
 # Aaron Bauman <bman@gentoo.org> (2019-12-27)
 # not stable yet
-media-libs/libglvnd
+libglvnd
 
 # Aaron Bauman <bman@gentoo.org> (2019-05-20)
 # Does not build on arm64
