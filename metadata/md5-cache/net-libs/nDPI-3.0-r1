@@ -8,7 +8,7 @@ IUSE=static-libs
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=dev-libs/json-c:= net-libs/libpcap
-SLOT=0
+SLOT=0/3
 SRC_URI=https://github.com/ntop/nDPI/archive/3.0.tar.gz -> nDPI-3.0.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ce3c7f4dc6066d3f707f04f8346f8422
+_md5_=1299fc021f3dac3f2dabaf832b8c0a7c
