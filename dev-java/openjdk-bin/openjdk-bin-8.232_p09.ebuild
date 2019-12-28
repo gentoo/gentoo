@@ -5,10 +5,16 @@ EAPI=6
 
 inherit eapi7-ver java-vm-2
 
-abi_uri() {
+abi_uri_hotspot() {
 	echo "${2-$1}? (
-			https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk${MY_PV}/OpenJDK8U-jdk_${1}_linux_hotspot_${MY_PV/-/}.tar.gz
-		)"
+		https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk${MY_PV}/OpenJDK8U-jdk_${1}_linux_hotspot_${MY_PV/-/}.tar.gz
+	)"
+}
+
+abi_uri_openj9() {
+	echo "${2-$1}? (
+		https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk${MY_PV}_openj9-0.17.0/OpenJDK8U-jdk_${1}_linux_openj9_${MY_PV/-/}_openj9-0.17.0.tar.gz
+	)"
 }
 
 MY_PV=$(ver_rs 1 'u' 2 '-' ${PV//p/b})
@@ -16,17 +22,31 @@ SLOT="$(ver_cut 1)"
 
 DESCRIPTION="Prebuilt Java JDK binaries provided by AdoptOpenJDK"
 HOMEPAGE="https://adoptopenjdk.net"
-SRC_URI="
-	$(abi_uri arm)
-	$(abi_uri aarch64 arm64)
-	$(abi_uri ppc64le ppc64)
-	$(abi_uri x64 amd64)
-"
 
 LICENSE="GPL-2-with-classpath-exception"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+OPENJDK_VM="hotspot openj9"
 
-IUSE="alsa cups examples +gentoo-vm headless-awt nsplugin selinux source +webstart"
+IUSE_OPENJDK_VM=""
+for vm in ${OPENJDK_VM}; do
+        IUSE_OPENJDK_VM+=" openjdk_vm_${vm}"
+done
+
+IUSE="${IUSE_OPENJDK_VM}
+	alsa cups examples +gentoo-vm headless-awt nsplugin selinux source +webstart"
+SRC_URI="
+	openjdk_vm_openj9? (
+		amd64? ( $(abi_uri_openj9 x64 amd64) )
+		ppc? ( $(abi_uri_openj9 ppc64le ppc64) )
+		x86? ( $(abi_uri_openj9 x64 amd64) )
+	)
+	openjdk_vm_hotspot? (
+		arm? ( $(abi_uri_hotspot arm) )
+		amd64? ( $(abi_uri_hotspot x64 amd64) )
+		ppc? ( $(abi_uri_hotspot ppc64le ppc64) )
+		x86? ( $(abi_uri_hotspot x64 amd64) )
+	)
+"
 
 RDEPEND="
 	media-libs/fontconfig:1.0

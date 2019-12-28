@@ -5,26 +5,48 @@ EAPI=6
 
 inherit java-vm-2
 
-abi_uri() {
+abi_uri_hotspot() {
 	echo "${2-$1}? (
-			https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk-${MY_PV}/OpenJDK${SLOT}U-jdk_${1}_linux_hotspot_${MY_PV//+/_}.tar.gz
-		)"
+		https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk-${MY_PV}/OpenJDK${SLOT}U-jdk_${1}_linux_hotspot_${MY_PV//+/_}.tar.gz
+	)"
+}
+
+abi_uri_openj9() {
+	echo "${2-$1}? (
+		https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk-${MY_PV}_openj9-0.17.0/OpenJDK11U-jdk_${1}_linux_openj9_${MY_PV//+/_}_openj9-0.17.0.tar.gz
+	)"
 }
 
 MY_PV=${PV/_p/+}
 SLOT=${MY_PV%%[.+]*}
 
 SRC_URI="
-	$(abi_uri arm)
-	$(abi_uri ppc64le ppc64)
-	$(abi_uri x64 amd64)
+	openjdk_vm_openj9? (
+		amd64? ( $(abi_uri_openj9 x64 amd64) )
+		ppc? ( $(abi_uri_openj9 ppc64le ppc64) )
+		x86? ( $(abi_uri_openj9 x64 amd64) )
+	)
+	openjdk_vm_hotspot? (
+		arm? ( $(abi_uri_hotspot arm) )
+		amd64? ( $(abi_uri_hotspot x64 amd64) )
+		ppc? ( $(abi_uri_hotspot ppc64le ppc64) )
+		x86? ( $(abi_uri_hotspot x64 amd64) )
+	)
 "
 
 DESCRIPTION="Prebuilt Java JDK binaries provided by AdoptOpenJDK"
 HOMEPAGE="https://adoptopenjdk.net"
 LICENSE="GPL-2-with-classpath-exception"
 KEYWORDS="~amd64 ~arm ~ppc64"
-IUSE="alsa cups doc examples +gentoo-vm headless-awt nsplugin selinux source +webstart"
+OPENJDK_VM="hotspot openj9"
+
+IUSE_OPENJDK_VM=""
+for vm in ${OPENJDK_VM}; do
+	IUSE_OPENJDK_VM+=" openjdk_vm_${vm}"
+done
+
+IUSE="${IUSE_OPENJDK_VM}
+	alsa cups doc examples +gentoo-vm headless-awt nsplugin selinux source +webstart"
 
 RDEPEND="
 	media-libs/fontconfig:1.0
