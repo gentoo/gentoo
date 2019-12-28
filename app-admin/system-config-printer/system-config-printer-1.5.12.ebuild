@@ -36,6 +36,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	>=app-text/xmlto-0.0.22
+	dev-perl/XML-Parser
 	dev-util/desktop-file-utils
 	dev-util/intltool
 	sys-devel/gettext
