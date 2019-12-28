@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <remote-id type="pypi">pytest-doctestplus</remote-id>
+    <remote-id type="github">astropy/pytest-doctestplus</remote-id>
+  </upstream>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>gentoo@lotz.li</email>
+    <name>Linus Lotz</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    A plugin for the pytest framework that provides advanced doctest support and enables the testing of reStructuredText (.rst) files.
+  </longdescription>
+</pkgmetadata>
