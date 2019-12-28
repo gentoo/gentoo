@@ -7063,6 +7063,7 @@ net-vpn/vpnc:resolvconf - Enable support for DNS managing framework net-dns/open
 net-vpn/wireguard-modules:debug - Enable verbose debug reporting in dmesg of various WireGuard peer and device information.
 net-vpn/wireguard-modules:module - Compile the actual WireGuard kernel module. Most certainly you want this enabled, unless you're doing something strange.
 net-vpn/wireguard-modules:module-src - Install the module source code to /usr/src, in case you like building kernel modules yourself.
+net-vpn/wireguard-tools:wg-quick - Install the wg-quick(8) helper tool. Most users want to use this.
 net-wireless/aircrack-ng:airdrop-ng - Build airdrop-ng
 net-wireless/aircrack-ng:airgraph-ng - Build airgraph-ng
 net-wireless/aircrack-ng:experimental - Build the "experimental" tools which may randomly fail to run properly
