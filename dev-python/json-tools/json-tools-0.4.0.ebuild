@@ -4,7 +4,7 @@
 EAPI=5
 
 # 'Programming Language :: ...  in setup.py requires updating"
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_{5,6} )
 inherit distutils-r1
 
 MY_PN="json_tools"
