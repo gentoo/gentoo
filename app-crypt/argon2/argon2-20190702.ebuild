@@ -39,7 +39,8 @@ src_prepare() {
 }
 
 src_compile() {
-	emake OPTTEST="${OPTTEST}" LIBRARY_REL="$(get_libdir)"
+	emake OPTTEST="${OPTTEST}" LIBRARY_REL="$(get_libdir)" \
+		ARGON2_VERSION="0~${PV}"
 }
 
 src_test() {
