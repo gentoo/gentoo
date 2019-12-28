@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_{5,6} )
 
 MY_PN="curator"
 ES_VERSION="6.4.3"
