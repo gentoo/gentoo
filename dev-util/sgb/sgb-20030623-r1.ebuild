@@ -4,8 +4,8 @@
 EAPI=7
 
 DESCRIPTION="Stanford GraphBase"
-HOMEPAGE="ftp://labrea.stanford.edu/pub/sgb/"
-SRC_URI="ftp://labrea.stanford.edu/pub/sgb/sgb-${PV:0:4}-${PV:4:2}-${PV:6:2}.tar.gz"
+HOMEPAGE="http://ftp.cs.stanford.edu/pub/sgb/"
+SRC_URI="http://ftp.cs.stanford.edu/pub/sgb/sgb-${PV:0:4}-${PV:4:2}-${PV:6:2}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
