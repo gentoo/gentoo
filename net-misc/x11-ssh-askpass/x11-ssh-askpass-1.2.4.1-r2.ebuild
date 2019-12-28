@@ -12,7 +12,7 @@ SRC_URI="http://www.liquidmeme.net/software/x11-ssh-askpass/${P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="alpha amd64 ia64 ppc ~ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="virtual/ssh
