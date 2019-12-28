@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/fluxbox/${P}.tar.xz"
 HOMEPAGE="http://www.fluxbox.org"
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	!!<=x11-misc/fbdesk-1.2.1
