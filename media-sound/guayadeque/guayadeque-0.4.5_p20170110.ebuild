@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,6 +47,10 @@ DEPEND="${RDEPEND}
 	app-arch/unzip
 	sys-devel/gettext
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${PF}-missing-aui-component.patch"
+)
 
 # echo $(cat po/CMakeLists.txt | grep ADD_SUBDIRECTORY | sed 's#ADD_SUBDIRECTORY( \(\w\+\) )#\1#')
 LANGS=( bg ca_ES cs de el es fr hr hu is it ja nb nl pl pt pt_BR ru sk sr sr@latin sv th tr uk )
