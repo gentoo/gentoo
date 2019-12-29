@@ -8,19 +8,18 @@ inherit autotools flag-o-matic pax-utils python-utils-r1 toolchain-funcs
 
 MY_P="Python-${PV}"
 PYVER=$(ver_cut 1-2)
-PATCHSET="python-gentoo-patches-3.6.10"
+PATCHSET_VERSION="2.7.17"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
 SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz"
+	https://dev.gentoo.org/~mgorny/dist/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
-SLOT="${PYVER}/${PYVER}m"
+SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="bluetooth build examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl test +threads tk wininst +xml"
-RESTRICT="!test? ( test )"
+IUSE="-berkdb bluetooth build elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk +wide-unicode wininst +xml"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
 # If you need to apply a patch which requires python for bootstrapping, please
@@ -28,10 +27,20 @@ RESTRICT="!test? ( test )"
 # patchset. See bug 447752.
 
 RDEPEND="app-arch/bzip2:=
-	app-arch/xz-utils:=
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libffi:=
 	virtual/libintl
+	berkdb? ( || (
+		sys-libs/db:5.3
+		sys-libs/db:5.1
+		sys-libs/db:4.8
+		sys-libs/db:4.7
+		sys-libs/db:4.6
+		sys-libs/db:4.5
+		sys-libs/db:4.4
+		sys-libs/db:4.3
+		sys-libs/db:4.2
+	) )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
 	readline? ( >=sys-libs/readline-4.1:= )
@@ -50,11 +59,25 @@ RDEPEND="app-arch/bzip2:=
 # bluetooth requires headers from bluez
 DEPEND="${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
-	test? ( app-arch/xz-utils[extra-filters(+)] )
 	virtual/pkgconfig
 	!sys-devel/gcc[libffi(-)]"
 RDEPEND+=" !build? ( app-misc/mime-types )"
 PDEPEND=">=app-eselect/eselect-python-20140125-r1"
+
+pkg_setup() {
+	if use berkdb; then
+		ewarn "'bsddb' module is out-of-date and no longer maintained inside"
+		ewarn "dev-lang/python. 'bsddb' and 'dbhash' modules have been additionally"
+		ewarn "removed in Python 3. A maintained alternative of 'bsddb3' module"
+		ewarn "is provided by dev-python/bsddb3."
+	else
+		if has_version "=${CATEGORY}/${PN}-${PV%%.*}*[berkdb]"; then
+			ewarn "You are migrating from =${CATEGORY}/${PN}-${PV%%.*}*[berkdb]"
+			ewarn "to =${CATEGORY}/${PN}-${PV%%.*}*[-berkdb]."
+			ewarn "You might need to migrate your databases."
+		fi
+	fi
+}
 
 src_prepare() {
 	# Ensure that internal copies of expat, libffi and zlib are not used.
@@ -63,7 +86,12 @@ src_prepare() {
 	rm -fr Modules/zlib || die
 
 	local PATCHES=(
-		"${WORKDIR}/${PATCHSET}"
+		"${WORKDIR}/patches"
+		# Fix for cross-compiling.
+		"${FILESDIR}/python-2.7.5-nonfatal-compileall.patch"
+		"${FILESDIR}/python-2.7.9-ncurses-pkg-config.patch"
+		"${FILESDIR}/python-2.7.10-cross-compile-warn-test.patch"
+		"${FILESDIR}/python-2.7.10-system-libffi.patch"
 	)
 
 	default
@@ -77,14 +105,17 @@ src_prepare() {
 		Makefile.pre.in \
 		Modules/Setup.dist \
 		Modules/getpath.c \
-		configure.ac \
 		setup.py || die "sed failed to replace @@GENTOO_LIBDIR@@"
 
 	eautoreconf
 }
 
 src_configure() {
+	# dbm module can be linked against berkdb or gdbm.
+	# Defaults to gdbm when both are enabled, #204343.
 	local disable
+	use berkdb    || use gdbm || disable+=" dbm"
+	use berkdb    || disable+=" _bsddb"
 	# disable automagic bluetooth headers detection
 	use bluetooth || export ac_cv_header_bluetooth_bluetooth_h=no
 	use gdbm      || disable+=" gdbm"
@@ -118,11 +149,20 @@ src_configure() {
 		use hardened && replace-flags -O3 -O2
 	fi
 
-	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
-	tc-export CXX
+	if tc-is-cross-compiler; then
+		# Force some tests that try to poke fs paths.
+		export ac_cv_file__dev_ptc=no
+		export ac_cv_file__dev_ptmx=yes
+	fi
 
-	# Set LDFLAGS so we link modules with -lpython3.2 correctly.
-	# Needed on FreeBSD unless Python 3.2 is already installed.
+	# Export CXX so it ends up in /usr/lib/python2.X/config/Makefile.
+	tc-export CXX
+	# The configure script fails to use pkg-config correctly.
+	# http://bugs.python.org/issue15506
+	export ac_cv_path_PKG_CONFIG=$(tc-getPKG_CONFIG)
+
+	# Set LDFLAGS so we link modules with -lpython2.7 correctly.
+	# Needed on FreeBSD unless Python 2.7 is already installed.
 	# Please query BSD team before removing this!
 	append-ldflags "-L."
 
@@ -130,21 +170,30 @@ src_configure() {
 	if use gdbm; then
 		dbmliborder+="${dbmliborder:+:}gdbm"
 	fi
+	if use berkdb; then
+		dbmliborder+="${dbmliborder:+:}bdb"
+	fi
 
 	local myeconfargs=(
+		# The check is broken on clang, and gives false positive:
+		# https://bugs.gentoo.org/596798
+		# (upstream dropped this flag in 3.2a4 anyway)
+		ac_cv_opt_olimit_ok=no
+
 		--with-fpectl
 		--enable-shared
 		$(use_enable ipv6)
 		$(use_with threads)
+		$(use wide-unicode && echo "--enable-unicode=ucs4" || echo "--enable-unicode=ucs2")
 		--infodir='${prefix}/share/info'
 		--mandir='${prefix}/share/man'
 		--with-computed-gotos
 		--with-dbmliborder="${dbmliborder}"
 		--with-libc=
 		--enable-loadable-sqlite-extensions
-		--without-ensurepip
 		--with-system-expat
 		--with-system-ffi
+		--without-ensurepip
 	)
 
 	OPT="" econf "${myeconfargs[@]}"
@@ -161,7 +210,10 @@ src_compile() {
 	# https://bugs.gentoo.org/594768
 	local -x LC_ALL=C
 
-	emake CPPFLAGS= CFLAGS= LDFLAGS=
+	# Avoid invoking pgen for cross-compiles.
+	touch Include/graminit.h Python/graminit.c
+
+	emake
 
 	# Work around bug 329499. See also bug 413751 and 457194.
 	if has_version dev-libs/libffi[pax_kernel]; then
@@ -179,7 +231,7 @@ src_test() {
 	fi
 
 	# Skip failing tests.
-	local skipped_tests="gdb"
+	local skipped_tests="distutils gdb"
 
 	for test in ${skipped_tests}; do
 		mv "${S}"/Lib/test/test_${test}.py "${T}"
@@ -188,10 +240,14 @@ src_test() {
 	# bug 660358
 	local -x COLUMNS=80
 
-	local -x PYTHONDONTWRITEBYTECODE=
+	# Daylight saving time problem
+	# https://bugs.python.org/issue22067
+	# https://bugs.gentoo.org/610628
+	local -x TZ=UTC
 
-	emake test EXTRATESTOPTS="-u-network" CPPFLAGS= CFLAGS= LDFLAGS= < /dev/tty
-	local result=$?
+	# Rerun failed tests in verbose mode (regrtest -w).
+	emake test EXTRATESTOPTS="-w" < /dev/tty
+	local result="$?"
 
 	for test in ${skipped_tests}; do
 		mv "${T}/test_${test}.py" "${S}"/Lib/test
@@ -216,39 +272,18 @@ src_install() {
 
 	emake DESTDIR="${D}" altinstall
 
-	# Remove static library
-	rm "${ED}"/usr/$(get_libdir)/libpython*.a || die
-
-	sed \
-		-e "s/\(CONFIGURE_LDFLAGS=\).*/\1/" \
-		-e "s/\(PY_LDFLAGS=\).*/\1/" \
-		-i "${libdir}/config-${PYVER}"*/Makefile || die "sed failed"
+	sed -e "s/\(LDFLAGS=\).*/\1/" -i "${libdir}/config/Makefile" || die
 
 	# Fix collisions between different slots of Python.
-	rm "${ED}/usr/$(get_libdir)/libpython3.so" || die
+	mv "${ED}/usr/bin/2to3" "${ED}/usr/bin/2to3-${PYVER}" || die
+	mv "${ED}/usr/bin/pydoc" "${ED}/usr/bin/pydoc${PYVER}" || die
+	mv "${ED}/usr/bin/idle" "${ED}/usr/bin/idle${PYVER}" || die
+	rm "${ED}/usr/bin/smtpd.py" || die
 
-	# Cheap hack to get version with ABIFLAGS
-	local abiver=$(cd "${ED}/usr/include"; echo python*)
-	if [[ ${abiver} != python${PYVER} ]]; then
-		# Replace python3.X with a symlink to python3.Xm
-		rm "${ED}/usr/bin/python${PYVER}" || die
-		dosym "${abiver}" "/usr/bin/python${PYVER}"
-		# Create python3.X-config symlink
-		dosym "${abiver}-config" "/usr/bin/python${PYVER}-config"
-		# Create python-3.5m.pc symlink
-		dosym "python-${PYVER}.pc" "/usr/$(get_libdir)/pkgconfig/${abiver/${PYVER}/-${PYVER}}.pc"
-	fi
-
-	# python seems to get rebuilt in src_install (bug 569908)
-	# Work around it for now.
-	if has_version dev-libs/libffi[pax_kernel]; then
-		pax-mark E "${ED}/usr/bin/${abiver}"
-	else
-		pax-mark m "${ED}/usr/bin/${abiver}"
-	fi
-
+	use berkdb || rm -r "${libdir}/"{bsddb,dbhash.py*,test/test_bsddb*} || die
 	use sqlite || rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
-	use tk || rm -r "${ED}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
+	use tk || rm -r "${ED}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,lib-tk} || die
+	use elibc_uclibc && rm -fr "${libdir}/"{bsddb/test,test}
 
 	use threads || rm -r "${libdir}/multiprocessing" || die
 	use wininst || rm "${libdir}/distutils/command/"wininst-*.exe || die
@@ -257,7 +292,6 @@ src_install() {
 
 	if use examples; then
 		docinto examples
-		find Tools -name __pycache__ -exec rm -fr {} + || die
 		dodoc -r Tools
 	fi
 	insinto /usr/share/gdb/auto-load/usr/$(get_libdir) #443510
@@ -292,17 +326,12 @@ src_install() {
 	local pymajor=${PYVER%.*}
 	mkdir -p "${D}${PYTHON_SCRIPTDIR}" || die
 	# python and pythonX
-	ln -s "../../../bin/${abiver}" \
+	ln -s "../../../bin/python${PYVER}" \
 		"${D}${PYTHON_SCRIPTDIR}/python${pymajor}" || die
 	ln -s "python${pymajor}" "${D}${PYTHON_SCRIPTDIR}/python" || die
 	# python-config and pythonX-config
-	# note: we need to create a wrapper rather than symlinking it due
-	# to some random dirname(argv[0]) magic performed by python-config
-	cat > "${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" <<-EOF || die
-		#!/bin/sh
-		exec "${abiver}-config" "\${@}"
-	EOF
-	chmod +x "${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
+	ln -s "../../../bin/python${PYVER}-config" \
+		"${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
 	ln -s "python${pymajor}-config" \
 		"${D}${PYTHON_SCRIPTDIR}/python-config" || die
 	# 2to3, pydoc, pyvenv
@@ -310,18 +339,10 @@ src_install() {
 		"${D}${PYTHON_SCRIPTDIR}/2to3" || die
 	ln -s "../../../bin/pydoc${PYVER}" \
 		"${D}${PYTHON_SCRIPTDIR}/pydoc" || die
-	ln -s "../../../bin/pyvenv-${PYVER}" \
-		"${D}${PYTHON_SCRIPTDIR}/pyvenv" || die
 	# idle
 	if use tk; then
 		ln -s "../../../bin/idle${PYVER}" \
 			"${D}${PYTHON_SCRIPTDIR}/idle" || die
-	fi
-}
-
-pkg_preinst() {
-	if has_version "<${CATEGORY}/${PN}-${PYVER}" && ! has_version ">=${CATEGORY}/${PN}-${PYVER}_alpha"; then
-		python_updater_warning="1"
 	fi
 }
 
@@ -340,12 +361,6 @@ eselect_python_update() {
 
 pkg_postinst() {
 	eselect_python_update
-
-	if [[ "${python_updater_warning}" == "1" ]]; then
-		ewarn "You have just upgraded from an older version of Python."
-		ewarn
-		ewarn "Please adjust PYTHON_TARGETS (if so desired), and run emerge with the --newuse or --changed-use option to rebuild packages installing python modules."
-	fi
 }
 
 pkg_postrm() {
