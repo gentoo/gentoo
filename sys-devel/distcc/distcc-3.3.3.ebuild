@@ -9,8 +9,8 @@ inherit autotools flag-o-matic python-single-r1 systemd \
 	toolchain-funcs user xdg-utils prefix
 
 DESCRIPTION="Distribute compilation of C code across several machines on a network"
-HOMEPAGE="http://distcc.org/"
-SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
+HOMEPAGE="https://github.com/distcc/distcc"
+SRC_URI="https://github.com/distcc/distcc/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
