@@ -13,33 +13,35 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
+	>=net-libs/nDPI-3.0:=
+	dev-db/mysql-connector-c:=
 	dev-db/sqlite:3
-	dev-python/pyzmq
-	dev-lang/luajit:2
-	dev-libs/json-c:=
-	dev-libs/geoip
-	dev-libs/glib:2
 	dev-libs/hiredis
-	dev-libs/libsodium:=
-	dev-libs/libxml2
+	dev-libs/json-c:=
 	dev-libs/libmaxminddb
+	dev-libs/libsodium:=
+	dev-libs/openssl
 	net-analyzer/rrdtool
 	net-libs/libpcap
-	>=net-libs/nDPI-3.0
+	net-libs/zeromq:=
 	net-misc/curl
-	sys-libs/binutils-libs
-	dev-db/mysql-connector-c:=
+	sys-libs/libcap
+	sys-libs/zlib
 "
 RDEPEND="
 	${DEPEND}
 	dev-db/redis
 "
+BDEPEND="
+	virtual/pkgconfig
+"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.8-mysqltool.patch
 	"${FILESDIR}"/${PN}-3.8-ndpi-includes.patch
-	"${FILESDIR}"/${PN}-3.8-missing-min.patch
+	"${FILESDIR}"/${PN}-3.8.1-PKG_CONFIG.patch
 	"${FILESDIR}"/${PN}-3.8.1-parallel-make.patch
 )
+RESTRICT="test"
 
 pkg_setup() {
 	enewuser ntopng
@@ -55,6 +57,11 @@ src_prepare() {
 		> "${S}/configure.ac" || die
 
 	eautoreconf
+}
+
+src_configure() {
+	tc-export PKG_CONFIG
+	default
 }
 
 src_install() {
