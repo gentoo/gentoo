@@ -4357,15 +4357,6 @@ media-libs/lsp-plugins:lv2 - build lv2 plugins
 media-libs/lv2:plugins - Enables examples plugins.
 media-libs/lvtk:gtk2 - Enable x11-libs/gtk+:2 based GUI support
 media-libs/lvtk:tools - Compile and install ttl2c tool
-media-libs/mediastreamer:amr - Use of AMR Narrow Band codec plugin
-media-libs/mediastreamer:filters - Enable compilation of filters
-media-libs/mediastreamer:g726 - Support g726 codec
-media-libs/mediastreamer:g729 - Use g726 codec plugin
-media-libs/mediastreamer:ilbc - Use of iLBC (RFC3951) codec plugin
-media-libs/mediastreamer:ntp-timestamp - Turn on NTP timestamping on received packet
-media-libs/mediastreamer:ortp - Enable usage of net-libs/ortp
-media-libs/mediastreamer:pcap - Enable usage of net-libs/libpcap
-media-libs/mediastreamer:video - Enable video support
 media-libs/mesa:classic - Build drivers based on the classic architecture.
 media-libs/mesa:d3d9 - Enable Direct 3D9 API through Nine state tracker. Can be used together with patched wine.
 media-libs/mesa:dri3 - Enable DRI3 support.
@@ -4537,7 +4528,6 @@ media-plugins/hexter:gtk2 - Enable x11-libs/gtk+:2 based GUI
 media-plugins/imlib2_loaders:eet - Enable Eet image loader
 media-plugins/imlib2_loaders:xcf - Enable XCF image loader
 media-plugins/ir_lv2:tools - Build convert4chan tool
-media-plugins/mediastreamer-ilbc:20ms-frames - enable 20ms frame size (default is 30ms). Some VOIP providers such as Gizmo5 (aka Sipphone) require the codec to be compiled with the 30ms setting.
 media-plugins/mythplugins:cdr - Allows MythMusic to burn CD-Rs
 media-plugins/mythplugins:exif - Allows MythGallery to read EXIF data from photos
 media-plugins/mythplugins:fftw - Adds visual effects to MythMusic when playing back music

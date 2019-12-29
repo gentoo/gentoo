@@ -5,10 +5,10 @@ DESCRIPTION=A manual tiling window manager for X
 EAPI=7
 HOMEPAGE=https://herbstluftwm.org/
 IUSE=examples xinerama zsh-completion
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=BSD-2
 RDEPEND=>=dev-libs/glib-2.24:2 x11-libs/libX11 x11-libs/libXext xinerama? ( x11-libs/libXinerama ) app-shells/bash zsh-completion? ( app-shells/zsh )
 SLOT=0
 SRC_URI=https://herbstluftwm.org/tarballs/herbstluftwm-0.7.2.tar.gz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=1539d7b934f7841f3cbe373cd081379d
+_md5_=ee17a8a6371b37fbddffb8354d3e9a6b

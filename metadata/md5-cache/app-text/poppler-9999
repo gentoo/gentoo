@@ -1,4 +1,4 @@
-BDEPEND=dev-util/glib-utils virtual/pkgconfig dev-util/ninja >=dev-util/cmake-3.9.6 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=dev-util/glib-utils virtual/pkgconfig dev-util/ninja dev-util/cmake >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=media-libs/fontconfig media-libs/freetype sys-libs/zlib cairo? ( dev-libs/glib:2 x11-libs/cairo introspection? ( dev-libs/gobject-introspection:= ) ) curl? ( net-misc/curl ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( >=media-libs/openjpeg-2.3.0-r1:2= ) lcms? ( media-libs/lcms:2 ) nss? ( >=dev-libs/nss-3.19:0 ) png? ( media-libs/libpng:0= ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtxml:5 ) tiff? ( media-libs/tiff:0 )
 DESCRIPTION=PDF rendering library based on the xpdf-3.0 code base
@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=media-libs/fontconfig media-libs/freetype sys-libs/zlib cairo? ( dev-libs/glib:2 x11-libs/cairo introspection? ( dev-libs/gobject-introspection:= ) ) curl? ( net-misc/curl ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( >=media-libs/openjpeg-2.3.0-r1:2= ) lcms? ( media-libs/lcms:2 ) nss? ( >=dev-libs/nss-3.19:0 ) png? ( media-libs/libpng:0= ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtxml:5 ) tiff? ( media-libs/tiff:0 ) cjk? ( app-text/poppler-data )
 RESTRICT=test
 SLOT=0/9999
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=65e889740aa55e4a23ac6268752c6cb7
+_eclasses_=cmake	35b3146b6de4b75aef568db01ba9760c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=05c587bc0be1f384201e55936df83c35

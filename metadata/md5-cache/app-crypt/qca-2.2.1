@@ -1,4 +1,4 @@
-BDEPEND=doc? ( app-doc/doxygen ) dev-util/ninja >=dev-util/cmake-3.9.6
+BDEPEND=doc? ( app-doc/doxygen ) dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-qt/qtcore:5 botan? ( dev-libs/botan:= ) gcrypt? ( dev-libs/libgcrypt:= ) gpg? ( app-crypt/gnupg ) nss? ( dev-libs/nss ) pkcs11? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) dev-libs/pkcs11-helper ) sasl? ( dev-libs/cyrus-sasl:2 ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.1:0= ) libressl? ( dev-libs/libressl:= ) ) test? ( dev-qt/qtnetwork:5 dev-qt/qttest:5 )
 DESCRIPTION=Qt Cryptographic Architecture (QCA)
@@ -11,5 +11,5 @@ RDEPEND=dev-qt/qtcore:5 botan? ( dev-libs/botan:= ) gcrypt? ( dev-libs/libgcrypt
 RESTRICT=!test? ( test )
 SLOT=2
 SRC_URI=mirror://kde/stable/qca/2.2.1/qca-2.2.1.tar.xz
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=c5a1c7185c83b08eb99e0c2a94e018c0
+_eclasses_=cmake	35b3146b6de4b75aef568db01ba9760c	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=7104f03d384a8aee1a5de767f1583a8c
