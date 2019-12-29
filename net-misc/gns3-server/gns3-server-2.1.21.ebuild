@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{5,6} )
 
-inherit distutils-r1 python-utils-r1
+inherit distutils-r1
 
 DESCRIPTION="GNS3 server to asynchronously manage emulators"
 HOMEPAGE="http://www.gns3.net/"
