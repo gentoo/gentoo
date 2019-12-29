@@ -14,7 +14,7 @@ KEYWORDS=""
 IUSE="static-libs"
 
 DOCS=(
-	ChangeLog.md README.md doc/{MIGRATION,RAWSOCKET_NON_SEQUITUR,TODO}
+	ChangeLog.md README.md doc/{MIGRATION,RAWSOCKET,TODO}.md
 )
 S=${WORKDIR}/${P/_/-}
 
