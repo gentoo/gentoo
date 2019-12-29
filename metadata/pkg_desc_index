@@ -14473,7 +14473,7 @@ net-analyzer/nrpe 3.2.1-r1 3.2.1-r2: Nagios Remote Plugin Executor
 net-analyzer/nsat 1.5-r5: Network Security Analysis Tool, an application-level network security scanner
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r2: Displays statistics about ethernet traffic including protocol breakdown
-net-analyzer/ntopng 3.8-r1 3.8.1: Network traffic analyzer with web interface
+net-analyzer/ntopng 3.8-r1 3.8.1-r1: Network traffic analyzer with web interface
 net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/nuttcp 8.1.4: Network performance measurement tool
 net-analyzer/odhcploc 20111021: Open DHCP Locator
