@@ -12,4 +12,4 @@ RESTRICT=preserve-libs splitdebug
 SLOT=8
 SRC_URI=amd64? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u222-b10/OpenJDK8U-jre_x64_linux_hotspot_8u222b10.tar.gz )
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	java-vm-2	7cfcabfd055e69d3568103a4e0b0fae7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=6fddb1d22105a6db4f518c4925368bc1
+_md5_=098e08b175d260af8fef6c78e1abe526
