@@ -217,7 +217,7 @@ src_install() {
 	}
 
 	perf_make -f Makefile.perf install DESTDIR="${D}"
-	if python; then
+	if use python; then
 		python_foreach_impl _install_python_ext
 	fi
 
