@@ -17,7 +17,9 @@ RESTRICT="!test? ( test )"
 # Perl is run on the build host to compile the descriptions in desc/,
 # see for example desc/Makefile.am.
 BDEPEND="dev-lang/perl"
-DEPEND="sci-mathematics/pari"
+
+# This is the first version of pari to put pari.cfg where we expect it.
+DEPEND=">=sci-mathematics/pari-2.11.2"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
