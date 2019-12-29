@@ -4869,7 +4869,7 @@ dev-libs/jemalloc 3.6.0 4.4.0 4.5.0 5.0.1 5.1.0 5.2.0 5.2.1: Jemalloc is a gener
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.12 0.13.1-r1: A JSON implementation in C
 dev-libs/json-glib 1.4.4: Library providing GLib serialization and deserialization for the JSON format
-dev-libs/jsoncpp 1.9.1 1.9.2-r1 1.9.2-r2: C++ JSON reader and writer
+dev-libs/jsoncpp 1.9.2-r1 1.9.2-r2: C++ JSON reader and writer
 dev-libs/jsonrpc-glib 3.32.0: JSON-RPC library for GLib
 dev-libs/jthread 1.3.3: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.5-r2: A C library that implements a dynamic array
@@ -4926,7 +4926,7 @@ dev-libs/libdshconfig 0.20.13: Library for parsing dsh.style configuration files
 dev-libs/libdynd 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.11.0: Hyperdex libe support library
 dev-libs/libebml 1.3.9: Extensible binary format library (kinda like XML)
-dev-libs/libedit 20130712.3.1 20170329.3.1 20190324.3.1: BSD replacement for libreadline
+dev-libs/libedit 20170329.3.1 20190324.3.1: BSD replacement for libreadline
 dev-libs/libee 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.6.1: Erasure Code API library written in C with pluggable Erasure Code backends.
@@ -8157,7 +8157,7 @@ dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle,
 dev-python/mini-amf 0.9.1: Minimal AMF encoder and decoder for Python
 dev-python/minidb 2.0.2 2.0.2-r1: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
-dev-python/miniupnpc 2.1.20190625 2.1.20190824 2.1.20191224: Python bindings for UPnP client library
+dev-python/miniupnpc 2.1.20190824 2.1.20191224: Python bindings for UPnP client library
 dev-python/misaka 1.0.2: The Python binding for Sundown, a markdown parsing library
 dev-python/mistune 0.8.3 0.8.4: The fastest markdown parser in pure Python
 dev-python/mkdocs 0.15.3 1.0.1: Project documentation with Markdown.
@@ -9048,7 +9048,7 @@ dev-python/suds 0.6-r1: Lightweight SOAP client (Jurko's fork) (py3 support) (ac
 dev-python/sudsds 1.0.1-r1: Lightweight SOAP client - Czech NIC labs fork
 dev-python/superlance 0.14 1.0.0: A set of plugins to monitor and control supervisor
 dev-python/supervisor-quick 0.1.4: Bypass supervisor's nasty callbacks stack and make it quick!
-dev-python/sure 1.2.5-r1 1.2.24 1.4.11: idiomatic assertion toolkit with human-friendly failure messages
+dev-python/sure 1.4.11: idiomatic assertion toolkit with human-friendly failure messages
 dev-python/svg-path 3.0: SVG path objects and parser
 dev-python/svgwrite 1.1.12 1.2.1: Python Package to write SVG files
 dev-python/swagger-spec-validator 2.4.3: validate Swagger specs against Swagger 1.1 or 2.0 specification
@@ -15294,7 +15294,7 @@ net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies suppo
 net-misc/mikutter 3.8.6 9999: Simple, powerful and moeful twitter client
 net-misc/minidlna 1.2.1-r1: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20190824: MiniSSDP Daemon
-net-misc/miniupnpd 2.1.20190902 2.1.20190924 2.1.20191006: MiniUPnP IGD Daemon
+net-misc/miniupnpd 2.1.20191006: MiniUPnP IGD Daemon
 net-misc/mobile-broadband-provider-info 20190618: Database of mobile broadband service providers
 net-misc/modemmanager 1.8.2-r1 1.10.0: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
@@ -17525,7 +17525,7 @@ sys-devel/cons 2.3.0: Extensible perl-based build utility
 sys-devel/crossdev 20191222 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
-sys-devel/distcc 3.3.2-r5 3.3.3: Distribute compilation of C code across several machines on a network
+sys-devel/distcc 3.3.3: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.12-r1: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
 sys-devel/gcc 3.3.6-r5 3.4.6-r5 4.0.4-r3 4.1.2-r2 4.2.4-r4 4.3.6-r4 4.4.7-r3 4.5.4-r3 4.6.4-r3 4.7.4-r3 4.8.5-r3 4.9.4-r1 5.5.0 6.5.0-r1 7.4.0-r2 7.5.0 8.3.0-r1 8.3.0-r3 9.2.0-r2 9.2.0-r3: The GNU Compiler Collection
@@ -18748,7 +18748,7 @@ x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.0.0 5.1.2: Lightweight and cross-platform clipboard history applet
 x11-misc/qps 1.10.20: Visual process manager - Qt version of ps/top
-x11-misc/qt5ct 0.35 0.36 0.41: Qt5 configuration tool, similar to qtconfig for Qt4
+x11-misc/qt5ct 0.35 0.41: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.7.1 0.7.3: A BBS client based on Qt
 x11-misc/qtfm 6.2.0 99999: A small, lightweight file manager for desktops based on pure Qt
 x11-misc/quitcount 3.1.3: A simple applet that shows what you saved since you quit smoking.
