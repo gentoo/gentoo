@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{2_7,3_{5,6}} )
 
-inherit distutils-r1 python-utils-r1 prefix
+inherit distutils-r1 prefix
 
 DESCRIPTION="Enterprise scalable realtime graphing"
 HOMEPAGE="https://graphiteapp.org/"
