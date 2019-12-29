@@ -8215,7 +8215,7 @@ dev-python/netaddr 0.7.19: Network address representation and manipulation libra
 dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.6 0.10.7 0.10.9: Portable network interface information
 dev-python/netmiko 1.4.2 2.1.1: Multi-vendor library to simplify Paramiko SSH connections to network devices
-dev-python/networkx 1.11 1.11-r1 2.1 2.2 2.4: Python tools to manipulate graphs and complex networks
+dev-python/networkx 2.2 2.4: Python tools to manipulate graphs and complex networks
 dev-python/neutron-lib 1.18.0 1.25.0 1.29.1: Neutron shared routines and utilities.
 dev-python/nevow 0.11.1 0.14.3: A web templating framework that provides LivePage, an automatic AJAX toolkit
 dev-python/newt_syrup 0.1.2-r2: Python framework for creating text-based applications
@@ -14490,7 +14490,7 @@ net-analyzer/pbnj 2.04: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pchar 1.5-r1: Internet bandwidth, latency, and loss of links analyzer
 net-analyzer/pinger 0.32e 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
 net-analyzer/pktstat 1.8.5-r1: A network monitoring tool with bandwidth tracking
-net-analyzer/pmacct 1.6.2 1.7.1-r1 1.7.2-r1 1.7.3-r1: A network tool to gather IP traffic information
+net-analyzer/pmacct 1.6.2 1.7.1-r1 1.7.2-r1 1.7.3-r1 999999: A network tool to gather IP traffic information
 net-analyzer/pnp4nagios 0.6.26-r9: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portmon 2.0: Portmon is a network service monitoring daemon
@@ -14678,7 +14678,7 @@ net-firewall/fwbuilder 5.3.7: A firewall GUI
 net-firewall/fwknop 2.6.9-r1 2.6.10: Single Packet Authorization and Port Knocking application
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
 net-firewall/ipset 6.29 6.30 6.32 6.34 6.38 7.0 7.1 7.4: IPset tool for iptables, successor to ippool
-net-firewall/ipt_netflow 2.3 2.4 9999: Netflow iptables module
+net-firewall/ipt_netflow 2.4 9999: Netflow iptables module
 net-firewall/iptables 1.6.1-r3 1.6.2-r2 1.8.2-r2 1.8.3-r1 1.8.4: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104: Iptables policy testing and validation tool
 net-firewall/lutelwall 0.99: IPTables firewall setup script
@@ -16498,7 +16498,7 @@ sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
 sci-libs/rtabmap 0.19.3-r1 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2-r1: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1 0.1-r2: Common files for python scikits
-sci-libs/scikits_image 0.13.0 0.13.0-r1: Image processing routines for SciPy
+sci-libs/scikits_image 0.13.0-r1: Image processing routines for SciPy
 sci-libs/scikits_learn 0.19.0-r1: Python modules for machine learning and data mining
 sci-libs/scikits_optimization 0.3 0.3-r1: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r1 0.91.3-r2: SciPy module for manipulating, reporting, and plotting time series

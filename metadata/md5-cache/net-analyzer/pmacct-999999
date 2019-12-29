@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=net-libs/libpcap geoip? ( dev-libs/geoip ) geoipv2? ( dev-libs/libmaxminddb ) jansson? ( dev-libs/jansson ) kafka? ( dev-libs/librdkafka ) mongodb? ( >=dev-libs/mongo-c-driver-0.8.1-r1 <dev-libs/mongo-c-driver-0.98 ) mysql? ( dev-db/mysql-connector-c:0= ) ndpi? ( net-libs/nDPI:= ) nflog? ( net-libs/libnetfilter_log ) postgres? ( dev-db/postgresql:* ) rabbitmq? ( net-libs/rabbitmq-c ) sqlite? ( =dev-db/sqlite-3* ) zmq? ( >=net-libs/zeromq-4.2.0:= ) virtual/pkgconfig
+DESCRIPTION=A network tool to gather IP traffic information
+EAPI=7
+HOMEPAGE=http://www.pmacct.net/
+IUSE=64bit +bgp-bins +bmp-bins geoip geoipv2 jansson kafka +l2 mongodb mysql ndpi nflog plabel postgres rabbitmq sqlite +st-bins +traffic-bins zmq
+LICENSE=GPL-2
+PROPERTIES=live
+RDEPEND=net-libs/libpcap geoip? ( dev-libs/geoip ) geoipv2? ( dev-libs/libmaxminddb ) jansson? ( dev-libs/jansson ) kafka? ( dev-libs/librdkafka ) mongodb? ( >=dev-libs/mongo-c-driver-0.8.1-r1 <dev-libs/mongo-c-driver-0.98 ) mysql? ( dev-db/mysql-connector-c:0= ) ndpi? ( net-libs/nDPI:= ) nflog? ( net-libs/libnetfilter_log ) postgres? ( dev-db/postgresql:* ) rabbitmq? ( net-libs/rabbitmq-c ) sqlite? ( =dev-db/sqlite-3* ) zmq? ( >=net-libs/zeromq-4.2.0:= )
+REQUIRED_USE=?? ( geoip geoipv2 ) kafka? ( jansson ) rabbitmq? ( jansson )
+SLOT=0
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=0075e1b7fb42f6b06d1d0ac0571d4eae
