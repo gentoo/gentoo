@@ -7866,7 +7866,7 @@ dev-python/funcsigs 1.0.2-r1: Python function signatures backport from PEP362 fo
 dev-python/functest 0.8.8-r1: Functest is a test tool/framework for testing in Python
 dev-python/functools32 3.2.3: Backport of the functools module from Python 3
 dev-python/funcy 1.8 1.10.1: A collection of fancy functional tools focused on practicality
-dev-python/fuse-python 0.2.1-r1 0.3.1: Python FUSE bindings
+dev-python/fuse-python 0.2.1-r1 0.3.1 1.0.0: Python FUSE bindings
 dev-python/fusepy 3.0.1: Python FUSE bindings using ctypes
 dev-python/future 0.17.0 0.17.1 0.18.2: Easy, clean, reliable Python 2/3 compatibility
 dev-python/futures 3.1.1 3.2.0: Backport of the concurrent.futures package from Python 3.2
@@ -19170,7 +19170,7 @@ x11-themes/human-icon-theme 0.36: A nice and well polished icon theme
 x11-themes/iceicons 0.10.0-r1: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM
 x11-themes/icewm-extra-themes 1.1 1.2: Extra themes for IceWM
 x11-themes/kfaenza 0.8.9-r2: Faenza-Cupertino icon theme for KDE Plasma
-x11-themes/kvantum 0.13.0-r2: SVG-based theme engine for Qt5, KDE and LXQt
+x11-themes/kvantum 0.13.0-r2 0.14.0: SVG-based theme engine for Qt5, KDE and LXQt
 x11-themes/larry-backgrounds 20110822-r1: Wallpapers featuring Gentoo mascot Larry the cow
 x11-themes/laughlin-backgrounds 14.1.0.3-r1: Fedora 14 official background artwork
 x11-themes/leonidas-backgrounds 11.0.0.2-r1: Fedora 11 official background artwork
