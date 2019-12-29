@@ -34,12 +34,17 @@ RDEPEND="
 	${DEPEND}
 	dev-db/redis
 "
+BDEPEND="
+	virtual/pkgconfig
+"
 PATCHES=(
+	"${FILESDIR}"/${PN}-3.8-missing-min.patch
 	"${FILESDIR}"/${PN}-3.8-mysqltool.patch
 	"${FILESDIR}"/${PN}-3.8-ndpi-includes.patch
-	"${FILESDIR}"/${PN}-3.8-missing-min.patch
+	"${FILESDIR}"/${PN}-3.8.1-PKG_CONFIG.patch
 	"${FILESDIR}"/${PN}-3.8.1-parallel-make.patch
 )
+RESTRICT="test"
 
 pkg_setup() {
 	enewuser ntopng
@@ -55,6 +60,11 @@ src_prepare() {
 		> "${S}/configure.ac" || die
 
 	eautoreconf
+}
+
+src_configure() {
+	tc-export PKG_CONFIG
+	default
 }
 
 src_install() {
