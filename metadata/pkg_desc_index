@@ -1266,8 +1266,8 @@ app-editors/ted 2.23: X-based rich text editor
 app-editors/texworks 0.6.3: A simple interface for working with TeX documents
 app-editors/uemacs-pk 4.0.15_p20180117 4.0.15_p20180719: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8t: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 8.1.1486 8.1.1846 9999: Vim, an improved vi-style text editor
-app-editors/vim-core 8.1.1486 8.1.1846 9999: vim and gvim shared files
+app-editors/vim 8.1.1486 8.1.1846 8.2.0055 9999: Vim, an improved vi-style text editor
+app-editors/vim-core 8.1.1486 8.1.1846 8.2.0055 9999: vim and gvim shared files
 app-editors/vis 0.5 9999: modern, legacy free, simple yet efficient vim-like editor
 app-editors/wily 1.0-r2: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/wxhexeditor 0.24: A cross-platform hex editor designed specially for large files
