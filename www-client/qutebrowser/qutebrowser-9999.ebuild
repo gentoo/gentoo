@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_5,3_6,3_7} )
 
-inherit distutils-r1 eutils xdg-utils
+inherit desktop distutils-r1 eutils xdg-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
@@ -77,12 +77,12 @@ python_install_all() {
 pkg_postinst() {
 	optfeature "PDF display support" www-plugins/pdfjs
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }
