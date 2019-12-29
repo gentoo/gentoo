@@ -1,14 +1,14 @@
 BDEPEND=doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install prepare
-DEPEND=>=media-libs/tiff-3.9.1:0 >=sci-libs/proj-6.0.0 sys-libs/zlib virtual/jpeg:=
+DEPEND=>=media-libs/tiff-3.9.1:0 >=sci-libs/proj-6.0.0:= sys-libs/zlib virtual/jpeg:=
 DESCRIPTION=Library for reading TIFF files with embedded tags for geographic information
 EAPI=7
 HOMEPAGE=https://trac.osgeo.org/geotiff/ https://github.com/OSGeo/libgeotiff
 IUSE=debug doc static-libs
 KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-2
-RDEPEND=>=media-libs/tiff-3.9.1:0 >=sci-libs/proj-6.0.0 sys-libs/zlib virtual/jpeg:=
+RDEPEND=>=media-libs/tiff-3.9.1:0 >=sci-libs/proj-6.0.0:= sys-libs/zlib virtual/jpeg:=
 SLOT=0/5
 SRC_URI=https://download.osgeo.org/geotiff/libgeotiff/libgeotiff-1.5.1.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ad69cd5188728d65c903640b9803bbf7
+_md5_=b3c6d13ebde9fc3697240220ca861081

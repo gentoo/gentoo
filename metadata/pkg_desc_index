@@ -16472,7 +16472,7 @@ sci-libs/o2scl 0.920: Object-oriented Scientific Computing Library
 sci-libs/oc 2.0: Network Data Access Protocol client C library
 sci-libs/oce 0.18.3-r1: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/octomap 1.9.0 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
-sci-libs/ogdi 3.2.0_beta2 3.2.0: Open Geographical Datastore Interface, a GIS support library
+sci-libs/ogdi 3.2.0-r1: Open Geographical Datastore Interface, a GIS support library
 sci-libs/openblas 0.3.6 0.3.7: Optimized BLAS library based on GotoBLAS2
 sci-libs/opencascade 7.3.0 7.4.0: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openlibm 0.5.4: High quality system independent, open source libm

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=net-libs/libtirpc dev-libs/expat >=sci-libs/proj-4.9.0:= <sci-libs/proj-6.0.0:= sys-libs/zlib
+DESCRIPTION=Open Geographical Datastore Interface, a GIS support library
+EAPI=7
+HOMEPAGE=http://ogdi.sourceforge.net/
+IUSE=static-libs
+KEYWORDS=amd64 ~arm arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=net-libs/libtirpc dev-libs/expat >=sci-libs/proj-4.9.0:= <sci-libs/proj-6.0.0:= sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://sourceforge/ogdi/ogdi-3.2.0.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=248f89f2c6b1ede46293bec60f77e291
