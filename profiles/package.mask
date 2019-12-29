@@ -702,10 +702,6 @@ dev-go/logrus
 # Bugs aren't being fixed: #497412, #509334, #511794, #651010, #654484, #701022
 # Removal in 30 days.
 media-libs/mediastreamer
-media-plugins/mediastreamer-amr
-media-plugins/mediastreamer-bcg729
-media-plugins/mediastreamer-ilbc
-media-plugins/mediastreamer-x264
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2019-11-29)
 # Beta for new major version with initial Python 3 support
