@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]] ; then
 	BDEPEND="app-text/asciidoc"
 else
 	SRC_URI="https://herbstluftwm.org/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	BDEPEND=""
 fi
 
