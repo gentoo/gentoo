@@ -33,10 +33,6 @@ media-libs/libvpx svc
 # Avoid circular dependency when installing from scratch
 dev-util/cmake -qt5
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-19)
-# Required by opengl, theora, v4l and X
-media-libs/mediastreamer video
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-08-04)
 # Required by flac and mp3
 kde-apps/k3b taglib

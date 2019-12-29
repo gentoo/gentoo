@@ -78,7 +78,6 @@ kde-plasma/discover firmware
 app-emulation/qemu -sdl
 dev-libs/zziplib -sdl
 media-libs/libmpeg2 -sdl
-media-libs/mediastreamer -sdl
 media-libs/mlt -sdl
 media-libs/openal -sdl
 media-sound/mpg123 -sdl
