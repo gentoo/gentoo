@@ -8245,7 +8245,7 @@ dev-python/nuitka 0.6.0.6 0.6.2 0.6.4 0.6.5: Python to native compiler
 dev-python/numba 0.37.0 0.39.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.6.8 2.6.9: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.14.5 1.15.4 1.16.1 1.16.5 1.17.4: Fast array and numerical python library
+dev-python/numpy 1.14.5 1.15.4 1.16.1 1.16.5 1.17.4 1.17.4-r1: Fast array and numerical python library
 dev-python/numpy-python2 1.16.5: Fast array and numerical python library
 dev-python/numpydoc 0.6.0 0.8.0 0.9.1: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
