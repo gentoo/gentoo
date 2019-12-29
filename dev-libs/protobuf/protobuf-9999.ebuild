@@ -26,16 +26,16 @@ KEYWORDS=""
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
 
-BDEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
+BDEPEND="emacs? ( app-editors/emacs:* )"
 DEPEND="test? ( >=dev-cpp/gtest-1.9[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
-RDEPEND="emacs? ( >=app-editors/emacs-23.1:* )
+RDEPEND="emacs? ( app-editors/emacs:* )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.8.0-disable_no-warning-test.patch"
-	"${FILESDIR}/${PN}-3.8.0-system_libraries.patch"
-	"${FILESDIR}/${PN}-3.8.0-protoc_input_output_files.patch"
+	"${FILESDIR}/${PN}-3.11.0-disable_no-warning-test.patch"
+	"${FILESDIR}/${PN}-3.11.0-system_libraries.patch"
+	"${FILESDIR}/${PN}-3.11.0-protoc_input_output_files.patch"
 )
 
 DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)

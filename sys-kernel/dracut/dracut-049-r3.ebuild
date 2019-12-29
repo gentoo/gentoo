@@ -64,6 +64,21 @@ DOCS=( AUTHORS HACKING NEWS README README.generic README.kernel README.modules
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
+	"${FILESDIR}"/048-dracut-install-simplify-ldd-parsing-logic.patch
+	"${FILESDIR}"/049-40network-Don-t-include-40network-by-default.patch
+	"${FILESDIR}"/049-remove-bashism-in-various-boot-scripts.patch
+	"${FILESDIR}"/049-network-manager-call-the-online-hook-for-connected-d.patch
+	"${FILESDIR}"/049-install-dracut-install.c-install-module-dependencies.patch
+	"${FILESDIR}"/049-install-string_hash_func-should-not-be-fed-with-NULL.patch
+	"${FILESDIR}"/049-dracut.sh-Fix-udevdir-detection.patch
+	"${FILESDIR}"/049-rngd-new-module-running-early-during-boot-to-help-ge.patch
+	"${FILESDIR}"/049-fs-lib-drop-a-bashism.patch
+	"${FILESDIR}"/049-network-manager-remove-useless-use-of-basename.patch
+	"${FILESDIR}"/049-move-setting-the-systemdutildir-variable-before-it-s.patch
+	"${FILESDIR}"/049-dracut-install-Support-the-compressed-firmware-files.patch
+	"${FILESDIR}"/049-crypt-create-locking-directory-run-cryptsetup.patch
+	"${FILESDIR}"/049-network-manager-fix-getting-of-ifname-from-the-sysfs.patch
+	"${FILESDIR}"/049-configure-find-cflags-and-libs-for-fts-on-musl.patch
 )
 
 src_configure() {

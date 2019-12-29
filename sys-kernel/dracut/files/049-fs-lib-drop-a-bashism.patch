@@ -1,0 +1,99 @@
+From 43c8c4ce0471abbb8c0fc4b8be2515cebc636030 Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Fri, 21 Jun 2019 18:39:48 +0200
+Subject: [PATCH] fs-lib: drop a bashism
+To: <initramfs@vger.kernel.org>
+
+Bash 5 apparently longer propagates variable assignments to local variables
+in front of function calls when in POSIX mode:
+
+  [lkundrak@demiurge ~]$ cat feh.sh
+  print_VAR () {
+          echo "$VAR";
+  }
+
+  testfunc () {
+          local VAR="OLD"
+          VAR=NEW print_VAR
+  }
+
+  testfunc
+  [lkundrak@demiurge ~]$ bash4 --posix feh.sh
+  NEW
+  [lkundrak@demiurge ~]$ bash5 --posix feh.sh
+  OLD
+  [lkundrak@demiurge ~]$ bash5 feh.sh
+  NEW
+  [lkundrak@demiurge ~]$
+
+It works the way it did in Bash 4 in non-POSIX mode, for external programs,
+or for non-local variables. Don't ask me why -- it's probably some
+compatibility thing for some sad old people.
+
+However, this precisely happens when fsck_single() is calling into the
+fsck_drv_com(), assigned to _drv by fsck_able(). That ruins the
+TEST-70-BONDBRIDGETEAMVLAN test's server and probably more.
+
+Let's pass the fsck driver binary via the function argument instead. It's
+less messy anyway.
+---
+ modules.d/99fs-lib/fs-lib.sh | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/modules.d/99fs-lib/fs-lib.sh b/modules.d/99fs-lib/fs-lib.sh
+index d39ca1b7..11e795d9 100755
+--- a/modules.d/99fs-lib/fs-lib.sh
++++ b/modules.d/99fs-lib/fs-lib.sh
+@@ -44,22 +44,22 @@ fsck_able() {
+             ;;
+         ext?)
+             type e2fsck >/dev/null 2>&1 &&
+-            _drv="_drv=e2fsck fsck_drv_com" &&
++            _drv="fsck_drv_com e2fsck" &&
+             return 0
+             ;;
+         f2fs)
+ 	    type fsck.f2fs >/dev/null 2>&1 &&
+-	    _drv="_drv=fsck.f2fs fsck_drv_com" &&
++	    _drv="fsck_drv_com fsck.f2fs" &&
+ 	    return 0
+ 	    ;;
+         jfs)
+             type jfs_fsck >/dev/null 2>&1 &&
+-            _drv="_drv=jfs_fsck fsck_drv_com" &&
++            _drv="fsck_drv_com jfs_fsck" &&
+             return 0
+             ;;
+         reiserfs)
+             type reiserfsck >/dev/null 2>&1 &&
+-            _drv="_drv=reiserfsck fsck_drv_com" &&
++            _drv="fsck_drv_com reiserfsck" &&
+             return 0
+             ;;
+         btrfs)
+@@ -70,12 +70,12 @@ fsck_able() {
+             ;;
+         nfs*)
+             # nfs can be a nop, returning success
+-            _drv="_drv=none :" &&
++            _drv=":" &&
+             return 0
+             ;;
+         *)
+             type fsck >/dev/null 2>&1 &&
+-            _drv="_drv=fsck fsck_drv_std" &&
++            _drv="fsck_drv_std fsck" &&
+             return 0
+             ;;
+     esac
+@@ -97,6 +97,7 @@ fsck_drv_btrfs() {
+ 
+ # common code for checkers that follow usual subset of options and return codes
+ fsck_drv_com() {
++    local _drv="$1"
+     local _ret
+     local _out
+ 
+-- 
+2.24.1
+

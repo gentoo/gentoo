@@ -32,7 +32,7 @@
  	fi; \
 --- /configure.ac
 +++ /configure.ac
-@@ -218,12 +218,5 @@
+@@ -223,12 +223,5 @@
  esac
  AM_CONDITIONAL([OBJC_CONFORMANCE_TEST], [test $OBJC_CONFORMANCE_TEST = 1])
  
@@ -47,7 +47,7 @@
  AC_OUTPUT
 --- /src/Makefile.am
 +++ /src/Makefile.am
-@@ -703,19 +703,11 @@
+@@ -708,19 +708,11 @@
    google/protobuf/testing/file.cc                              \
    google/protobuf/testing/file.h
  
@@ -68,7 +68,7 @@
  # Disable optimization for tests unless the user explicitly asked for it,
  # since test_util.cc takes forever to compile with optimization (with GCC).
  # See configure.ac for more info.
-@@ -804,12 +796,8 @@
+@@ -812,12 +804,8 @@
  # Run cpp_unittest again with PROTOBUF_TEST_NO_DESCRIPTORS defined.
  protobuf_lazy_descriptor_test_LDADD = $(PTHREAD_LIBS) libprotobuf.la \
                        libprotoc.la                                   \
@@ -83,7 +83,7 @@
  protobuf_lazy_descriptor_test_CXXFLAGS = $(NO_OPT_CXXFLAGS)
  protobuf_lazy_descriptor_test_SOURCES =                        \
    google/protobuf/compiler/cpp/cpp_unittest.cc                 \
-@@ -830,11 +818,7 @@
+@@ -838,11 +826,7 @@
  # full runtime and we want to make sure this test builds without full
  # runtime.
  protobuf_lite_test_LDADD = $(PTHREAD_LIBS) libprotobuf-lite.la     \
@@ -96,7 +96,7 @@
  protobuf_lite_test_CXXFLAGS = $(NO_OPT_CXXFLAGS)
  protobuf_lite_test_SOURCES =                                           \
    google/protobuf/lite_unittest.cc                                     \
-@@ -846,11 +830,7 @@
+@@ -854,11 +838,7 @@
  # gtest when building the test internally our memory sanitizer doesn't detect
  # memory leaks (don't know why).
  protobuf_lite_arena_test_LDADD = $(PTHREAD_LIBS) libprotobuf-lite.la \
@@ -109,7 +109,7 @@
  protobuf_lite_arena_test_CXXFLAGS = $(NO_OPT_CXXFLAGS)
  protobuf_lite_arena_test_SOURCES =       \
    google/protobuf/lite_arena_unittest.cc \
-@@ -860,8 +840,7 @@
+@@ -868,8 +848,7 @@
  
  # Test plugin binary.
  test_plugin_LDADD = $(PTHREAD_LIBS) libprotobuf.la libprotoc.la \

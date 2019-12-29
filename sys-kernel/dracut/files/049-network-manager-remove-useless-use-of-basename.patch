@@ -1,0 +1,26 @@
+From 5e0f8c8a4ced36268d0077acafa1db2402776fa6 Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Mon, 17 Jun 2019 10:07:38 +0200
+Subject: [PATCH] network-manager: remove useless use of basename
+To: <initramfs@vger.kernel.org>
+
+---
+ modules.d/35network-manager/nm-run.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules.d/35network-manager/nm-run.sh b/modules.d/35network-manager/nm-run.sh
+index 0f943631..5f4b38ca 100755
+--- a/modules.d/35network-manager/nm-run.sh
++++ b/modules.d/35network-manager/nm-run.sh
+@@ -10,7 +10,7 @@ for _i in /sys/class/net/*/
+ do
+     state=/run/NetworkManager/devices/$(cat $_i/ifindex)
+     grep -q connection-uuid= $state 2>/dev/null || continue
+-    ifname=$(basename $_i)
++    ifname=${_i##*/}
+     sed -n 's/root-path/new_root_path/p' <$state >/tmp/dhclient.$ifname.dhcpopts
+     source_hook initqueue/online $ifname
+     /sbin/netroot $ifname
+-- 
+2.24.1
+
