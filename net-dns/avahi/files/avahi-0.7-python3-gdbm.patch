@@ -1,0 +1,234 @@
+From 63750f1be96ad08c407193b08bf3b9ee74310e2d Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Tue, 11 Jul 2017 21:52:37 +0200
+Subject: [PATCH] avahi-python: Use the agnostic DBM interface
+
+Also fixes configure failing if Python 3 is the build python and GDBM is
+enabled, since Py3 only has anydbm under the name of 'dbm'.
+
+Not enough to make ServiceTypeDatabase.py compatible with Py3, but it's
+a start.
+---
+ avahi-python/avahi/Makefile.am                | 15 +--------
+ avahi-python/avahi/ServiceTypeDatabase.py.in  | 33 ++++++++++++++-----
+ configure.ac                                  |  9 +++--
+ service-type-database/.gitignore              |  1 -
+ service-type-database/Makefile.am             | 18 +++-------
+ .../{build-db.in => build-db}                 | 13 +++++---
+ 6 files changed, 42 insertions(+), 47 deletions(-)
+ rename service-type-database/{build-db.in => build-db} (87%)
+
+diff --git a/avahi-python/avahi/Makefile.am b/avahi-python/avahi/Makefile.am
+index 3eb67d0d..c906b9bf 100644
+--- a/avahi-python/avahi/Makefile.am
++++ b/avahi-python/avahi/Makefile.am
+@@ -25,29 +25,16 @@ avahidir = $(pythondir)/avahi
+ 
+ if HAVE_GDBM
+ nodist_avahi_SCRIPTS = ServiceTypeDatabase.py
+-
+-ServiceTypeDatabase.py: ServiceTypeDatabase.py.in
+-	$(AM_V_GEN)sed -e 's,@PYTHON\@,$(PYTHON),g' \
+-		-e 's,@DBM\@,gdbm,g' \
+-		-e 's,@FIRST_KEY\@,key = self.db.firstkey(),g' \
+-		-e 's,@CHECK_KEY\@,while key is not None:,g' \
+-		-e 's,@NEXT_KEY\@,key = self.db.nextkey(key),g' \
+-		-e 's,@pkglibdatadir\@,$(pkglibdatadir),g' $< > $@ && \
+-	chmod +x $@
+ endif
+ 
+ if HAVE_DBM
+ nodist_avahi_SCRIPTS = ServiceTypeDatabase.py
++endif
+ 
+ ServiceTypeDatabase.py: ServiceTypeDatabase.py.in
+ 	$(AM_V_GEN)sed -e 's,@PYTHON\@,$(PYTHON),g' \
+-		-e 's,@DBM\@,dbm,g' \
+-		-e 's,@FIRST_KEY\@,keys = self.db.keys(),g' \
+-		-e 's,@CHECK_KEY\@,for key in keys:,g' \
+-		-e 's,@NEXT_KEY\@,,g' \
+ 		-e 's,@pkglibdatadir\@,$(pkglibdatadir),g' $< > $@ && \
+ 	chmod +x $@
+-endif
+ 
+ avahi_PYTHON = $(avahi_SCRIPTS)
+ 
+diff --git a/avahi-python/avahi/ServiceTypeDatabase.py.in b/avahi-python/avahi/ServiceTypeDatabase.py.in
+index 4ddd6544..d7f9969b 100644
+--- a/avahi-python/avahi/ServiceTypeDatabase.py.in
++++ b/avahi-python/avahi/ServiceTypeDatabase.py.in
+@@ -17,7 +17,11 @@
+ # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+ # USA.
+ 
+-import @DBM@
++try:
++    import anydbm as dbm
++except ImportError:
++    import dbm
++
+ import locale
+ import re
+ 
+@@ -28,7 +32,7 @@ class ServiceTypeDatabase:
+ 
+     def __init__(self, filename = "@pkglibdatadir@/service-types.db"):
+ 
+-        self.db = @DBM@.open(filename, "r")
++        self.db = dbm.open(filename, "r")
+ 
+         l = locale.getlocale(locale.LC_MESSAGES)
+ 
+@@ -90,13 +94,24 @@ class ServiceTypeDatabase:
+ 
+     def __iter__(self):
+ 
+-        @FIRST_KEY@
+-        @CHECK_KEY@
+-
+-            if re.search('_[a-zA-Z0-9-]+\._[a-zA-Z0-9-]+', key) and not re.search('_[a-zA-Z0-9-]+\._[a-zA-Z0-9-]+\[.*\]', key):
+-                yield key
+-
+-            @NEXT_KEY@
++        def want_key(key):
++            if not re.search('_[a-zA-Z0-9-]+\._[a-zA-Z0-9-]+', key):
++                return False
++            if re.search('_[a-zA-Z0-9-]+\._[a-zA-Z0-9-]+\[.*\]', key):
++                return False
++            return True
++
++        try:
++            key = self.db.firstkey()
++        except AttributeError:
++            for key in self.db.keys():
++                if want_key(key):
++                    yield key
++        else:
++            while key is not None:
++                if want_key(key):
++                    yield key
++                key = self.db.nextkey(key)
+ 
+     def __len__(self):
+ 
+diff --git a/configure.ac b/configure.ac
+index 66789718..fbbf7cf3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -824,11 +824,10 @@ if test "x$HAVE_PYTHON" = "xyes" ; then
+         fi
+ 
+         AM_CHECK_PYMOD(socket,,,[AC_MSG_ERROR(Could not find Python module socket)])
+-        if test "x$HAVE_GDBM" = "xyes"; then
+-            AM_CHECK_PYMOD(gdbm,,,[AC_MSG_ERROR(Could not find Python module gdbm)])
+-        fi
+-        if test "x$HAVE_DBM" = "xyes"; then
+-            AM_CHECK_PYMOD(dbm,,,[AC_MSG_ERROR(Could not find Python module dbm)])
++        if test "x$HAVE_GDBM" = "xyes" || test "x$HAVE_DBM" = "xyes"; then
++            AM_CHECK_PYMOD(anydbm,,,[
++                AM_CHECK_PYMOD(dbm,,,[AC_MSG_ERROR(Could not find Python module dbm)])
++            ])
+         fi
+     fi
+ fi
+diff --git a/service-type-database/.gitignore b/service-type-database/.gitignore
+index 581f1929..51b02600 100644
+--- a/service-type-database/.gitignore
++++ b/service-type-database/.gitignore
+@@ -1,4 +1,3 @@
+ Makefile
+ Makefile.in
+ service-types.db
+-build-db
+diff --git a/service-type-database/Makefile.am b/service-type-database/Makefile.am
+index d184fde3..f9fa0825 100644
+--- a/service-type-database/Makefile.am
++++ b/service-type-database/Makefile.am
+@@ -15,7 +15,7 @@
+ # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+ # USA.
+ 
+-EXTRA_DIST=build-db.in service-types
++EXTRA_DIST=service-types
+ 
+ pkglibdatadir=$(libdir)/avahi
+ 
+@@ -27,16 +27,11 @@ if HAVE_GDBM
+ noinst_SCRIPTS=build-db
+ pkglibdata_DATA+=service-types.db
+ 
+-build-db: build-db.in
+-	$(AM_V_GEN)sed -e 's,@PYTHON\@,$(PYTHON),g' \
+-	    -e 's,@DBM\@,gdbm,g' $< > $@ && \
+-	chmod +x $@
+-
+-service-types.db: service-types build-db
++service-types.db: service-types
+ 	$(AM_V_GEN)$(PYTHON) build-db $< $@.coming && \
+ 	mv $@.coming $@
+ 
+-CLEANFILES = service-types.db build-db
++CLEANFILES = service-types.db
+ 
+ endif
+ if HAVE_DBM
+@@ -44,11 +39,6 @@ if HAVE_DBM
+ noinst_SCRIPTS=build-db
+ pkglibdata_DATA+=service-types.db.pag service-types.db.dir
+ 
+-build-db: build-db.in
+-	$(AM_V_GEN)sed -e 's,@PYTHON\@,$(PYTHON),g' \
+-	    -e 's,@DBM\@,dbm,g' $< > $@ && \
+-	chmod +x $@
+-
+ service-types.db.pag: service-types.db
+ 	$(AM_V_GEN)mv service-types.db.coming.pag service-types.db.pag
+ service-types.db.dir: service-types.db
+@@ -57,7 +47,7 @@ service-types.db: service-types build-db
+ 	$(AM_V_GEN)$(PYTHON) build-db $< $@.coming && \
+ 	if test -f "$@.coming"; then mv $@.coming $@; fi
+ 
+-CLEANFILES = service-types.db* build-db
++CLEANFILES = service-types.db*
+ 
+ endif
+ endif
+diff --git a/service-type-database/build-db.in b/service-type-database/build-db
+similarity index 87%
+rename from service-type-database/build-db.in
+rename to service-type-database/build-db
+index 4cda4253..78ee892f 100755
+--- a/service-type-database/build-db.in
++++ b/service-type-database/build-db
+@@ -1,4 +1,4 @@
+-#!@PYTHON@
++#!/usr/bin/env python
+ # -*-python-*-
+ # This file is part of avahi.
+ #
+@@ -17,7 +17,12 @@
+ # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+ # USA.
+ 
+-import @DBM@, sys
++try:
++    import anydbm as dbm
++except ImportError:
++    import dbm
++
++import sys
+ 
+ if len(sys.argv) > 1:
+     infn = sys.argv[1]
+@@ -29,9 +34,9 @@ if len(sys.argv) > 2:
+ else:
+     outfn = infn + ".db"
+ 
+-db = @DBM@.open(outfn, "n")
++db = dbm.open(outfn, "n")
+ 
+-for ln in file(infn, "r"):
++for ln in open(infn, "r"):
+     ln = ln.strip(" \r\n\t")
+     
+     if ln == "" or ln.startswith("#"):
