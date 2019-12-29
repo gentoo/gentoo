@@ -4,7 +4,6 @@
 EAPI=7
 
 DESCRIPTION="Simple yet fast and modern VPN that utilizes state-of-the-art cryptography."
-HOMEPAGE="https://www.wireguard.com/"
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
