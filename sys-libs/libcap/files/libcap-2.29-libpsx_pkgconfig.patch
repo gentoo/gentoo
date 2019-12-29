@@ -1,15 +1,15 @@
-From e13e5b24fb98dc3ec2f76bc51ed0d714460e75d8 Mon Sep 17 00:00:00 2001
+From 8dbae11750ac0f85332355e6aab97005533dfb38 Mon Sep 17 00:00:00 2001
 From: Lars Wendler <polynomial-c@gentoo.org>
 Date: Sat, 28 Dec 2019 18:48:35 +0100
-Subject: [PATCH] USe separate libpsx.pc file instead of libcap.pc
+Subject: [PATCH] Use separate libpsx.pc file instead of libcap.pc
 
 pkgconfig fails to parse current libcap.pc file but pkgconf succeeds
 
 Gentoo-bug: https://bugs.gentoo.org/703932
 ---
  libcap/Makefile     | 12 +++++++++++-
- libcap/libcap.pc.in |  7 -------
- libcap/libpsx.pc.in | 12 ++++++++++++
+ libcap/libcap.pc.in |  8 +-------
+ libcap/libpsx.pc.in | 11 +++++++++++
  3 files changed, 23 insertions(+), 8 deletions(-)
  create mode 100644 libcap/libpsx.pc.in
 
@@ -51,10 +51,10 @@ index 949cfad..5795458 100644
  	mkdir -p -m 0755 $(FAKEROOT)$(GOPKGDIR)/libcap/cap
  	install -m 0644 src/libcap/cap/* $(FAKEROOT)$(GOPKGDIR)/libcap/cap/
 diff --git a/libcap/libcap.pc.in b/libcap/libcap.pc.in
-index 3d6b273..69cd231 100644
+index 3d6b273..8358274 100644
 --- a/libcap/libcap.pc.in
 +++ b/libcap/libcap.pc.in
-@@ -9,10 +9,3 @@ Version: @VERSION@
+@@ -9,10 +9,4 @@ Version: @VERSION@
  Libs: -L${libdir} -lcap
  Libs.private: @deps@
  Cflags: -I${includedir}
@@ -65,12 +65,13 @@ index 3d6b273..69cd231 100644
 -Libs: -L${libdir} -lpsx -lpthread -Wl,-wrap,pthread_create
 -Libs.private: @deps@
 -Cflags: -I${includedir}
++Requires: libpsx
 diff --git a/libcap/libpsx.pc.in b/libcap/libpsx.pc.in
 new file mode 100644
-index 0000000..8677a86
+index 0000000..d032b9f
 --- /dev/null
 +++ b/libcap/libpsx.pc.in
-@@ -0,0 +1,12 @@
+@@ -0,0 +1,11 @@
 +prefix=@prefix@
 +exec_prefix=@exec_prefix@
 +libdir=@libdir@
@@ -82,7 +83,6 @@ index 0000000..8677a86
 +Libs: -L${libdir} -lpsx -lpthread -Wl,-wrap,pthread_create
 +Libs.private: @deps@
 +Cflags: -I${includedir}
-+Requires: libcap
 -- 
 2.24.1
 
