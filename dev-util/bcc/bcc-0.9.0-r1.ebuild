@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
-inherit cmake-utils linux-info python-single-r1 python-utils-r1
+inherit cmake-utils linux-info python-single-r1
 
 DESCRIPTION="Tools for BPF-based Linux IO analysis, networking, monitoring, and more"
 HOMEPAGE="https://iovisor.github.io/bcc/"
