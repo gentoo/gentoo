@@ -26,6 +26,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-eglmesaext-include.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOCS=OFF # hotdoc not packaged
