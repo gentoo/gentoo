@@ -8,12 +8,12 @@ inherit autotools flag-o-matic pax-utils python-utils-r1 toolchain-funcs
 
 MY_P="Python-${PV}"
 PYVER=$(ver_cut 1-2)
-PATCHSET_VERSION="2.7.17"
+PATCHSET="python-gentoo-patches-2.7.17-r1"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
 SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~mgorny/dist/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
+	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
@@ -86,12 +86,7 @@ src_prepare() {
 	rm -fr Modules/zlib || die
 
 	local PATCHES=(
-		"${WORKDIR}/patches"
-		# Fix for cross-compiling.
-		"${FILESDIR}/python-2.7.5-nonfatal-compileall.patch"
-		"${FILESDIR}/python-2.7.9-ncurses-pkg-config.patch"
-		"${FILESDIR}/python-2.7.10-cross-compile-warn-test.patch"
-		"${FILESDIR}/python-2.7.10-system-libffi.patch"
+		"${WORKDIR}/${PATCHSET}"
 	)
 
 	default
