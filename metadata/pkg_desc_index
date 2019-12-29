@@ -10781,7 +10781,7 @@ dev-util/massif-visualizer 0.7.0-r1: Tool visualising massif data
 dev-util/mdds 1.4.3 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.20.1: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
-dev-util/meson 0.51.1 0.51.2 0.52.0 9999: Open source build system
+dev-util/meson 0.51.1 0.51.2 0.52.0 0.52.1 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw64-runtime 5.0.4 6.0.0-r1 6.0.0-r3: Free Win64 runtime and import library definitions
 dev-util/molecule 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
