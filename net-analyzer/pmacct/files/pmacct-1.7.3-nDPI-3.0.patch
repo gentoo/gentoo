@@ -1,5 +1,5 @@
---- a/./configure.ac
-+++ b/./configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -955,6 +955,7 @@
        CFLAGS="$_save_CFLAGS"
      ])
@@ -8,8 +8,8 @@
      ;;
    no)
      AC_MSG_RESULT(no)
---- a/./src/ndpi/ndpi.c
-+++ b/./src/ndpi/ndpi.c
+--- a/src/ndpi/ndpi.c
++++ b/src/ndpi/ndpi.c
 @@ -374,10 +374,14 @@
    if (flow->detection_completed || flow->tcp_finished) {
      if (flow->detected_protocol.app_protocol == NDPI_PROTOCOL_UNKNOWN)
