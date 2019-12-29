@@ -1,8 +1,0 @@
-#!/bin/sh
-# Copyright 2006-2009 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-for f in /etc/portage/postsync.d/* ; do
-	[ -x "${f}" ] && "${f}"
-done
-:
