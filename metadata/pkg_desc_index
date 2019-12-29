@@ -10599,7 +10599,6 @@ dev-util/catkin 0.7.14 0.7.17 0.7.20 9999: Cmake macros and associated python co
 dev-util/cbindgen 0.9.1 0.10.1 0.11.1: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.2 3.7.4 3.7.5 3.7.6: fast compiler cache
 dev-util/cccc 3.1.5-r1: Source metrics (line counts, complexity, etc) for Java and C++
-dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
 dev-util/cdiff 1.0 9999: Colored, side-by-side diff terminal viewer
 dev-util/cflow 1.6: C function call hierarchy analyzer
 dev-util/cgdb 0.6.8 0.7.0-r1 9999: A curses front-end for GDB, the GNU debugger
