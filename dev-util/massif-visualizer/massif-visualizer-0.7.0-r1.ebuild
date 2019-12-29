@@ -40,7 +40,7 @@ PATCHES=( "${FILESDIR}/${P}-fix-window-icon.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package callgraph KGraphViewerPart)
+		$(cmake_use_find_package callgraph KGraphViewerPart)
 	)
 	kde5_src_configure
 }

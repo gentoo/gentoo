@@ -77,11 +77,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DFETCH_TRANSLATIONS=OFF
 		-DBUILD_DOC=$(usex handbook)
-		$(cmake-utils_use_find_package fits CFitsio)
-		$(cmake-utils_use_find_package indi INDI)
-		$(cmake-utils_use_find_package password Qt5Keychain)
-		$(cmake-utils_use_find_package raw LibRaw)
-		$(cmake-utils_use_find_package wcs WCSLIB)
+		$(cmake_use_find_package fits CFitsio)
+		$(cmake_use_find_package indi INDI)
+		$(cmake_use_find_package password Qt5Keychain)
+		$(cmake_use_find_package raw LibRaw)
+		$(cmake_use_find_package wcs WCSLIB)
 	)
 
 	ecm_src_configure

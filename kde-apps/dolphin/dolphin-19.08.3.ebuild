@@ -64,10 +64,10 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package activities KF5Activities)
-		$(cmake-utils_use_find_package semantic-desktop KF5Baloo)
-		$(cmake-utils_use_find_package semantic-desktop KF5BalooWidgets)
-		$(cmake-utils_use_find_package semantic-desktop KF5FileMetaData)
+		$(cmake_use_find_package activities KF5Activities)
+		$(cmake_use_find_package semantic-desktop KF5Baloo)
+		$(cmake_use_find_package semantic-desktop KF5BalooWidgets)
+		$(cmake_use_find_package semantic-desktop KF5FileMetaData)
 	)
 
 	ecm_src_configure

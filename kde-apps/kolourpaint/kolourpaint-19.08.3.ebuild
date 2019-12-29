@@ -38,7 +38,7 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package scanner KF5Sane)
+		$(cmake_use_find_package scanner KF5Sane)
 	)
 
 	ecm_src_configure

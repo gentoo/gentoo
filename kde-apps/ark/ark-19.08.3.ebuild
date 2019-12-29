@@ -55,9 +55,9 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package bzip2 BZip2)
-		$(cmake-utils_use_find_package lzma LibLZMA)
-		$(cmake-utils_use_find_package zip LibZip)
+		$(cmake_use_find_package bzip2 BZip2)
+		$(cmake_use_find_package lzma LibLZMA)
+		$(cmake_use_find_package zip LibZip)
 	)
 
 	ecm_src_configure

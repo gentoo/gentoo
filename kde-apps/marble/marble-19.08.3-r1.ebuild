@@ -74,16 +74,16 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package aprs Perl)
-		$(cmake-utils_use_find_package geolocation Qt5Positioning)
+		$(cmake_use_find_package aprs Perl)
+		$(cmake_use_find_package geolocation Qt5Positioning)
 		-DBUILD_MARBLE_TESTS=$(usex test)
 		-DWITH_DESIGNER_PLUGIN=$(usex designer)
 		-DWITH_libgps=$(usex gps)
 		-DWITH_KF5=$(usex kde)
 		-DWITH_Phonon4Qt5=$(usex phonon)
 		-DWITH_libshp=$(usex shapefile)
-		$(cmake-utils_use_find_package webengine Qt5WebEngine)
-		$(cmake-utils_use_find_package webengine Qt5WebEngineWidgets)
+		$(cmake_use_find_package webengine Qt5WebEngine)
+		$(cmake_use_find_package webengine Qt5WebEngineWidgets)
 		-DWITH_libwlocate=OFF
 		# bug 608890
 		-DKDE_INSTALL_CONFDIR="/etc/xdg"
@@ -91,6 +91,6 @@ src_configure() {
 	if use kde; then
 		ecm_src_configure
 	else
-		cmake-utils_src_configure
+		cmake_src_configure
 	fi
 }

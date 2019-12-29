@@ -82,10 +82,10 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package activities KF5Activities)
-		$(cmake-utils_use_find_package speech Qt5TextToSpeech)
-		$(cmake-utils_use_find_package tidy LibTidy)
-		$(cmake-utils_use_find_package X X11)
+		$(cmake_use_find_package activities KF5Activities)
+		$(cmake_use_find_package speech Qt5TextToSpeech)
+		$(cmake_use_find_package tidy LibTidy)
+		$(cmake_use_find_package X X11)
 	)
 	ecm_src_configure
 }

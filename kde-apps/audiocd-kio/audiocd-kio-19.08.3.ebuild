@@ -39,8 +39,8 @@ PATCHES=( "${FILESDIR}/${PN}-19.04.0-handbook.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package flac FLAC)
-		$(cmake-utils_use_find_package vorbis OggVorbis)
+		$(cmake_use_find_package flac FLAC)
+		$(cmake_use_find_package vorbis OggVorbis)
 	)
 
 	ecm_src_configure

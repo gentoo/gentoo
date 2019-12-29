@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 MY_PN=${PN}3
 MY_P=${MY_PN}-${PV}
 inherit cmake-multilib
@@ -44,7 +45,7 @@ multilib_src_configure() {
 			-DENABLE_DEMO=OFF
 		)
 	fi
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg
+inherit cmake xdg
 
 DESCRIPTION="Qt/C++ wrapper for ALSA sequencer"
 HOMEPAGE="http://drumstick.sourceforge.net/"
@@ -41,7 +41,7 @@ DOCS=( AUTHORS ChangeLog NEWS README TODO )
 RESTRICT="test"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if ! use fluidsynth ; then
 		sed -i -e "/pkg_check_modules(FLUIDSYNTH/d" \
@@ -58,19 +58,19 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=OFF
-		$(cmake-utils_use_find_package doc Doxygen)
+		$(cmake_use_find_package doc Doxygen)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
-	use doc && cmake-utils_src_compile doxygen
+	cmake_src_compile
+	use doc && cmake_src_compile doxygen
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use doc ; then
 		dodoc -r "${BUILD_DIR}"/doc/html

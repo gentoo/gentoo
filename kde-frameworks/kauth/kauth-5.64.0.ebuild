@@ -28,7 +28,7 @@ PDEPEND="policykit? ( kde-plasma/polkit-kde-agent )"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package policykit PolkitQt5-1)
+		$(cmake_use_find_package policykit PolkitQt5-1)
 	)
 
 	ecm_src_configure
