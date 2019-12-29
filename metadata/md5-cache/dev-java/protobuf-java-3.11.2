@@ -1,14 +1,14 @@
-BDEPEND=~dev-libs/protobuf-3.10.1 >=virtual/jdk-1.7
+BDEPEND=~dev-libs/protobuf-3.11.2 >=virtual/jdk-1.7
 DEFINED_PHASES=compile install preinst prepare setup
 DEPEND=>=virtual/jdk-1.7 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 DESCRIPTION=Google's Protocol Buffers - Java bindings
 EAPI=7
 HOMEPAGE=https://developers.google.com/protocol-buffers/ https://github.com/protocolbuffers/protobuf
 IUSE=elibc_FreeBSD doc source elibc_FreeBSD
-KEYWORDS=amd64 ~arm ~arm64 ~ppc64 ~sh x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~sh ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
 LICENSE=BSD
 RDEPEND=>=virtual/jre-1.7 !<dev-libs/protobuf-3[java(-)] >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
-SLOT=0/21
-SRC_URI=https://github.com/protocolbuffers/protobuf/archive/v3.10.1.tar.gz -> protobuf-3.10.1.tar.gz
+SLOT=0/22
+SRC_URI=https://github.com/protocolbuffers/protobuf/archive/v3.11.2.tar.gz -> protobuf-3.11.2.tar.gz
 _eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	3e71074eb6884746b37b70b2c9c881f4	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5
-_md5_=5ba34d2c3d2cd2e3d98355971a3e1c75
+_md5_=c8793c995d4d336af9844b01976ef7be

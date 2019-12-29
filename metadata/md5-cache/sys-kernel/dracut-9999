@@ -1,14 +1,14 @@
 BDEPEND=app-text/asciidoc app-text/docbook-xml-dtd:4.5 >=app-text/docbook-xsl-stylesheets-1.75.2 >=dev-libs/libxslt-1.1.26 virtual/pkgconfig virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install postinst setup unpack
-DEPEND=>=sys-apps/kmod-23
+DEPEND=>=sys-apps/kmod-23 elibc_musl? ( sys-libs/fts-standalone )
 DESCRIPTION=Generic initramfs generation tool
 EAPI=7
 HOMEPAGE=https://dracut.wiki.kernel.org
 IUSE=selinux kernel_linux
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=app-arch/cpio >=app-shells/bash-4.0:0 sys-apps/coreutils[xattr(-)] >=sys-apps/kmod-23[tools] || ( >=sys-apps/sysvinit-2.87-r3 sys-apps/openrc[sysv-utils,selinux?] sys-apps/systemd[sysv-utils] ) >=sys-apps/util-linux-2.21 virtual/pkgconfig virtual/udev selinux? ( sec-policy/selinux-dracut sys-libs/libselinux sys-libs/libsepol )
+RDEPEND=app-arch/cpio >=app-shells/bash-4.0:0 sys-apps/coreutils[xattr(-)] >=sys-apps/kmod-23[tools] || ( >=sys-apps/sysvinit-2.87-r3 sys-apps/openrc[sysv-utils,selinux?] sys-apps/systemd[sysv-utils] ) >=sys-apps/util-linux-2.21 virtual/pkgconfig virtual/udev elibc_musl? ( sys-libs/fts-standalone ) selinux? ( sec-policy/selinux-dracut sys-libs/libselinux sys-libs/libsepol )
 RESTRICT=test
 SLOT=0
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=2c5f9227b5e5ffb5f9f4d908bfdd3edb
+_md5_=de7dc7a1fedf6e0c137ae4977dbc1996

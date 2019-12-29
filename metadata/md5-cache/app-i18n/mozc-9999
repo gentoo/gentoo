@@ -1,15 +1,15 @@
-BDEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-libs/protobuf-3.0.0 dev-util/gyp dev-util/ninja virtual/pkgconfig emacs? ( >=app-editors/emacs-23.1:* ) fcitx4? ( sys-devel/gettext ) >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-libs/protobuf-3.0.0 dev-util/gyp dev-util/ninja virtual/pkgconfig emacs? ( app-editors/emacs:* ) fcitx4? ( sys-devel/gettext ) >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
-DEPEND=>=dev-libs/protobuf-3.0.0:= emacs? ( >=app-editors/emacs-23.1:* ) fcitx4? ( app-i18n/fcitx:4 virtual/libintl ) gui? ( app-i18n/zinnia dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 handwriting-tegaki? ( app-i18n/tegaki-zinnia-japanese ) handwriting-tomoe? ( app-i18n/zinnia-tomoe ) ) ibus? ( >=app-i18n/ibus-1.4.1 dev-libs/glib:2 x11-libs/libxcb ) renderer? ( dev-libs/glib:2 x11-libs/cairo x11-libs/gtk+:2 x11-libs/pango ) test? ( >=dev-cpp/gtest-1.8.0 dev-libs/jsoncpp )
+DEPEND=>=dev-libs/protobuf-3.0.0:= emacs? ( app-editors/emacs:* ) fcitx4? ( app-i18n/fcitx:4 virtual/libintl ) gui? ( app-i18n/zinnia dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 handwriting-tegaki? ( app-i18n/tegaki-zinnia-japanese ) handwriting-tomoe? ( app-i18n/zinnia-tomoe ) ) ibus? ( >=app-i18n/ibus-1.4.1 dev-libs/glib:2 x11-libs/libxcb ) renderer? ( dev-libs/glib:2 x11-libs/cairo x11-libs/gtk+:2 x11-libs/pango ) test? ( >=dev-cpp/gtest-1.8.0 dev-libs/jsoncpp )
 DESCRIPTION=Mozc - Japanese input method editor
 EAPI=7
 HOMEPAGE=https://github.com/google/mozc
 IUSE=debug emacs fcitx4 +gui +handwriting-tegaki handwriting-tomoe ibus renderer test
 LICENSE=BSD BSD-2 ipadic public-domain unicode
 PROPERTIES=live
-RDEPEND=>=dev-libs/protobuf-3.0.0:= emacs? ( >=app-editors/emacs-23.1:* ) fcitx4? ( app-i18n/fcitx:4 virtual/libintl ) gui? ( app-i18n/zinnia dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 handwriting-tegaki? ( app-i18n/tegaki-zinnia-japanese ) handwriting-tomoe? ( app-i18n/zinnia-tomoe ) ) ibus? ( >=app-i18n/ibus-1.4.1 dev-libs/glib:2 x11-libs/libxcb ) renderer? ( dev-libs/glib:2 x11-libs/cairo x11-libs/gtk+:2 x11-libs/pango )
+RDEPEND=>=dev-libs/protobuf-3.0.0:= emacs? ( app-editors/emacs:* ) fcitx4? ( app-i18n/fcitx:4 virtual/libintl ) gui? ( app-i18n/zinnia dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 handwriting-tegaki? ( app-i18n/tegaki-zinnia-japanese ) handwriting-tomoe? ( app-i18n/zinnia-tomoe ) ) ibus? ( >=app-i18n/ibus-1.4.1 dev-libs/glib:2 x11-libs/libxcb ) renderer? ( dev-libs/glib:2 x11-libs/cairo x11-libs/gtk+:2 x11-libs/pango )
 REQUIRED_USE=|| ( emacs fcitx4 ibus ) gui? ( ^^ ( handwriting-tegaki handwriting-tomoe ) ) !gui? ( !handwriting-tegaki !handwriting-tomoe )
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=elisp-common	a1054cff648e1c6a806e17001d052176	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=adec584daf4c507418d6f9c21caa05f7
+_md5_=a06f17299f14f89cc5735ea15c448d08
