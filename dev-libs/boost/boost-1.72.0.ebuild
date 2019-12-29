@@ -58,6 +58,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.72.0-missing-serialization-split_member-include.patch
 	# Bug 703036, per python-impl Boost.MPI
 	"${FILESDIR}"/${PN}-1.72.0-boost-mpi-python.patch
+	# Bug 704128, missing include on Boost.Ranges
+	"${FILESDIR}"/${PN}-1.72.0-revert-cease-dependence-on-range.patch
 )
 
 python_bindings_needed() {
