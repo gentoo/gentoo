@@ -1,10 +1,10 @@
 DEFINED_PHASES=install preinst
 DESCRIPTION=Utility to change the binutils version being used
 EAPI=5
-HOMEPAGE=https://www.gentoo.org/
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Toolchain
 KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 LICENSE=GPL-2
 RDEPEND=sys-apps/gentoo-functions
 SLOT=0
 _eclasses_=prefix	c2993e4c430c1ee24f278983d6189501
-_md5_=2d598ccbe4403ed1b8a02e015951b26f
+_md5_=fcc72f77714d4c8f3e7e764155c849f4
