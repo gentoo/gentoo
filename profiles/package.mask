@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-29)
+# Currently breaks app-text/texlive-core-2019-r5, bug #704166
+~app-text/poppler-0.84.0
+
 # Hans de Graaff <graaff@gentoo.org> (2019-12-27)
 # Causes compatibility issues with the bundled versions in some
 # dev-lang/ruby slots. Use the bundled version instead. The only
