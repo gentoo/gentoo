@@ -10,7 +10,7 @@ SRC_URI="https://github.com/mauke/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3+ MIT"
 SLOT="0/4"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="static-libs"
 
 DEPEND="
