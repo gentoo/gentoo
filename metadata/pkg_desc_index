@@ -16501,7 +16501,7 @@ sci-libs/rtabmap 0.19.3-r1 9999: Real-Time Appearance-Based Mapping (RGB-D Graph
 sci-libs/scalapack 2.0.2-r1: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1 0.1-r2: Common files for python scikits
 sci-libs/scikits_image 0.13.0-r1: Image processing routines for SciPy
-sci-libs/scikits_learn 0.19.0-r1: Python modules for machine learning and data mining
+sci-libs/scikits_learn 0.19.0-r1 0.20.2 0.20.4: Python modules for machine learning and data mining
 sci-libs/scikits_optimization 0.3 0.3-r1: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r1 0.91.3-r2: SciPy module for manipulating, reporting, and plotting time series
 sci-libs/scipy 0.16.1 0.18.1 0.19.1 1.0.0 1.1.0 1.4.1 9999: Scientific algorithms library for Python
