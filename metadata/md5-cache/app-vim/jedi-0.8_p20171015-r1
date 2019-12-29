@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/davidhalter/jedi-vim/archive/77924398bd594e238766153cec97ace62650f082.tar.gz -> jedi-0.8_p20171015.tar.gz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-r1	c037bf23d7eff50e222b067cd54e5f27	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
-_md5_=a4b2ef3e01bd567066b7ad0de6f2b0da
+_md5_=9e47af6811e5ea4b209cacee015a4eb5
