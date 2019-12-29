@@ -1,10 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_P=${P/_/.}
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Open Geographical Datastore Interface, a GIS support library"
 HOMEPAGE="http://ogdi.sourceforge.net/"
@@ -18,12 +18,15 @@ IUSE="static-libs"
 DEPEND="
 	net-libs/libtirpc
 	dev-libs/expat
-	>=sci-libs/proj-4.9.0
+	>=sci-libs/proj-4.9.0:=
+	<sci-libs/proj-6.0.0:=
 	sys-libs/zlib
 "
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
+
+DOCS=( ChangeLog NEWS README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.0_beta2-subdirs.patch
@@ -39,7 +42,7 @@ PATCHES=(
 
 src_prepare() {
 	default
-	rm -rf external
+	rm -r external || die
 	sed 's:O2:O9:g' -i configure || die
 }
 
@@ -51,7 +54,8 @@ src_configure() {
 
 	econf \
 		--with-projlib="-L${EPREFIX}/usr/$(get_libdir) -lproj" \
-		--with-zlib --with-expat
+		--with-expat \
+		--with-zlib
 }
 
 src_compile() {
@@ -70,5 +74,5 @@ src_install() {
 	dolib.so lib/${TARGET}/lib*
 	use static-libs && dolib.a lib/${TARGET}/static/*.a
 #	dosym libogdi31.so /usr/$(get_libdir)/libogdi.so
-	dodoc ChangeLog NEWS README
+	einstalldocs
 }
