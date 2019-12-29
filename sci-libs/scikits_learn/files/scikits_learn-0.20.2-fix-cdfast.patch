@@ -1,0 +1,42 @@
+--- scikit-learn-0.20.3.orig/sklearn/linear_model/cd_fast.c	2019-08-09 03:05:05.351926119 +0500
++++ scikit-learn-0.20.3/sklearn/linear_model/cd_fast.c	2019-08-09 03:05:35.022926006 +0500
+@@ -4889,7 +4889,7 @@
+ 
+ static PyObject *__pyx_pf_7sklearn_12linear_model_7cd_fast_8enet_coordinate_descent(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_w, float __pyx_v_alpha, float __pyx_v_beta, __Pyx_memviewslice __pyx_v_X, __Pyx_memviewslice __pyx_v_y, int __pyx_v_max_iter, float __pyx_v_tol, PyObject *__pyx_v_rng, int __pyx_v_random, int __pyx_v_positive) {
+   PyObject *__pyx_v_dtype = NULL;
+-  void (*__pyx_v_gemv)(enum CBLAS_ORDER, enum CBLAS_TRANSPOSE, int, int, float, float *, int, float *, int, float, float *, int);
++  void (*__pyx_v_gemv)(CBLAS_ORDER, CBLAS_TRANSPOSE, int, int, float, float *, int, float *, int, float, float *, int);
+   float (*__pyx_v_dot)(int, float *, int, float *, int);
+   void (*__pyx_v_axpy)(int, float, float *, int, float *, int);
+   float (*__pyx_v_asum)(int, float *, int);
+@@ -6279,7 +6279,7 @@
+ 
+ static PyObject *__pyx_pf_7sklearn_12linear_model_7cd_fast_10enet_coordinate_descent(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_w, double __pyx_v_alpha, double __pyx_v_beta, __Pyx_memviewslice __pyx_v_X, __Pyx_memviewslice __pyx_v_y, int __pyx_v_max_iter, double __pyx_v_tol, PyObject *__pyx_v_rng, int __pyx_v_random, int __pyx_v_positive) {
+   PyObject *__pyx_v_dtype = NULL;
+-  void (*__pyx_v_gemv)(enum CBLAS_ORDER, enum CBLAS_TRANSPOSE, int, int, double, double *, int, double *, int, double, double *, int);
++  void (*__pyx_v_gemv)(CBLAS_ORDER, CBLAS_TRANSPOSE, int, int, double, double *, int, double *, int, double, double *, int);
+   double (*__pyx_v_dot)(int, double *, int, double *, int);
+   void (*__pyx_v_axpy)(int, double, double *, int, double *, int);
+   double (*__pyx_v_asum)(int, double *, int);
+@@ -16246,8 +16246,8 @@
+   CYTHON_UNUSED float (*__pyx_v_asum)(int, float *, int);
+   void (*__pyx_v_copy)(int, float *, int, float *, int);
+   void (*__pyx_v_scal)(int, float, float *, int);
+-  void (*__pyx_v_ger)(enum CBLAS_ORDER, int, int, float, float *, int, float *, int, float *, int);
+-  void (*__pyx_v_gemv)(enum CBLAS_ORDER, enum CBLAS_TRANSPOSE, int, int, float, float *, int, float *, int, float, float *, int);
++  void (*__pyx_v_ger)(CBLAS_ORDER, int, int, float, float *, int, float *, int, float *, int);
++  void (*__pyx_v_gemv)(CBLAS_ORDER, CBLAS_TRANSPOSE, int, int, float, float *, int, float *, int, float, float *, int);
+   unsigned int __pyx_v_n_samples;
+   unsigned int __pyx_v_n_features;
+   unsigned int __pyx_v_n_tasks;
+@@ -17965,8 +17965,8 @@
+   CYTHON_UNUSED double (*__pyx_v_asum)(int, double *, int);
+   void (*__pyx_v_copy)(int, double *, int, double *, int);
+   void (*__pyx_v_scal)(int, double, double *, int);
+-  void (*__pyx_v_ger)(enum CBLAS_ORDER, int, int, double, double *, int, double *, int, double *, int);
+-  void (*__pyx_v_gemv)(enum CBLAS_ORDER, enum CBLAS_TRANSPOSE, int, int, double, double *, int, double *, int, double, double *, int);
++  void (*__pyx_v_ger)(CBLAS_ORDER, int, int, double, double *, int, double *, int, double *, int);
++  void (*__pyx_v_gemv)(CBLAS_ORDER, CBLAS_TRANSPOSE, int, int, double, double *, int, double *, int, double, double *, int);
+   unsigned int __pyx_v_n_samples;
+   unsigned int __pyx_v_n_features;
+   unsigned int __pyx_v_n_tasks;
