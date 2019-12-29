@@ -42,7 +42,10 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
-PATCHES=( "${FILESDIR}"/${P}-crc32.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-crc32.patch
+	"${FILESDIR}"/${PN}-4.8.3-Werror_only_Debug.patch
+)
 
 # xrootd plugins are not intended to be linked with,
 # they are to be loaded at runtime by xrootd,
