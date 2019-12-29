@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 CMAKE_BUILD_TYPE="None"
-inherit cmake-utils eutils gnome2-utils python-single-r1 python-utils-r1 xdg-utils
+inherit cmake-utils eutils gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
 HOMEPAGE="https://www.gnuradio.org/"
