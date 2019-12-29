@@ -50,6 +50,7 @@ sys-libs/ncurses-compat tinfo
 gnome-base/gnome-desktop seccomp
 app-misc/tracker-miners seccomp
 >gnome-base/nautilus-3.29 seccomp
+net-libs/webkit-gtk seccomp
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
 # All glibc versions that include RPC code are masked now.
