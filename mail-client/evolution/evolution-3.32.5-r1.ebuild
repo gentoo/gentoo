@@ -32,7 +32,6 @@ COMMON_DEPEND="
 	>=media-libs/libcanberra-0.25[gtk3]
 	>=net-libs/libsoup-2.42:2.4
 	>=net-libs/webkit-gtk-2.16.0:4
-	<net-libs/webkit-gtk-2.25:4
 	>=x11-libs/cairo-1.9.15:=[glib]
 	>=x11-libs/gdk-pixbuf-2.24:2
 	>=x11-libs/gtk+-3.22:3
@@ -96,6 +95,7 @@ file from /usr/share/applications if you use a different browser)."
 
 src_prepare() {
 	eapply "${FILESDIR}"/3.32.4-gtk-doc-fix{1,2}.patch
+	eapply "${FILESDIR}"/${PV}-webkitgtk-2.26-compat.patch # Don't use with 3.34, it should be compatible without this hack.
 	cmake-utils_src_prepare
 	gnome2_src_prepare
 }
