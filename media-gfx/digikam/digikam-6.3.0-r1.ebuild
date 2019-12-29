@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_MIN_VERSION=3.14.3
 inherit kde5 toolchain-funcs
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
@@ -23,6 +22,7 @@ LICENSE="GPL-2"
 IUSE="addressbook calendar dnn +imagemagick gphoto2 +lensfun libav marble mediaplayer mysql opengl openmp +panorama scanner semantic-desktop vkontakte webkit X"
 
 BDEPEND="
+	>=dev-util/cmake-3.14.3
 	sys-devel/gettext
 	panorama? (
 		sys-devel/bison
@@ -134,23 +134,23 @@ src_configure() {
 		-DENABLE_APPSTYLES=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_Jasper=ON
 		-DENABLE_AKONADICONTACTSUPPORT=$(usex addressbook)
-		$(cmake-utils_use_find_package calendar KF5CalendarCore)
+		$(cmake_use_find_package calendar KF5CalendarCore)
 		-DENABLE_FACESENGINE_DNN=$(usex dnn)
-		$(cmake-utils_use_find_package gphoto2 Gphoto2)
-		$(cmake-utils_use_find_package imagemagick ImageMagick)
-		$(cmake-utils_use_find_package lensfun LensFun)
-		$(cmake-utils_use_find_package marble Marble)
+		$(cmake_use_find_package gphoto2 Gphoto2)
+		$(cmake_use_find_package imagemagick ImageMagick)
+		$(cmake_use_find_package lensfun LensFun)
+		$(cmake_use_find_package marble Marble)
 		-DENABLE_MEDIAPLAYER=$(usex mediaplayer)
-		$(cmake-utils_use_find_package mediaplayer QtAV)
+		$(cmake_use_find_package mediaplayer QtAV)
 		-DENABLE_MYSQLSUPPORT=$(usex mysql)
 		-DENABLE_INTERNALMYSQL=$(usex mysql)
-		$(cmake-utils_use_find_package opengl OpenGL)
-		$(cmake-utils_use_find_package panorama KF5ThreadWeaver)
-		$(cmake-utils_use_find_package scanner KF5Sane)
-		$(cmake-utils_use_find_package semantic-desktop KF5FileMetaData)
-		$(cmake-utils_use_find_package vkontakte KF5Vkontakte)
+		$(cmake_use_find_package opengl OpenGL)
+		$(cmake_use_find_package panorama KF5ThreadWeaver)
+		$(cmake_use_find_package scanner KF5Sane)
+		$(cmake_use_find_package semantic-desktop KF5FileMetaData)
+		$(cmake_use_find_package vkontakte KF5Vkontakte)
 		-DENABLE_QWEBENGINE=$(usex !webkit)
-		$(cmake-utils_use_find_package X X11)
+		$(cmake_use_find_package X X11)
 	)
 
 	kde5_src_configure

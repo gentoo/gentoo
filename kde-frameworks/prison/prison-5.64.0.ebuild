@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package qml Qt5Quick)
+		$(cmake_use_find_package qml Qt5Quick)
 	)
 
 	ecm_src_configure

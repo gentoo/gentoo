@@ -1,0 +1,88 @@
+From 8dbae11750ac0f85332355e6aab97005533dfb38 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Sat, 28 Dec 2019 18:48:35 +0100
+Subject: [PATCH] Use separate libpsx.pc file instead of libcap.pc
+
+pkgconfig fails to parse current libcap.pc file but pkgconf succeeds
+
+Gentoo-bug: https://bugs.gentoo.org/703932
+---
+ libcap/Makefile     | 12 +++++++++++-
+ libcap/libcap.pc.in |  8 +-------
+ libcap/libpsx.pc.in | 11 +++++++++++
+ 3 files changed, 23 insertions(+), 8 deletions(-)
+ create mode 100644 libcap/libpsx.pc.in
+
+diff --git a/libcap/Makefile b/libcap/Makefile
+index 949cfad..5795458 100644
+--- a/libcap/Makefile
++++ b/libcap/Makefile
+@@ -22,7 +22,7 @@ MAJLIBNAME=$(LIBNAME).$(VERSION)
+ MINLIBNAME=$(MAJLIBNAME).$(MINOR)
+ GPERF_OUTPUT = _caps_output.gperf
+ 
+-all: $(MINLIBNAME) $(STACAPLIBNAME) libcap.pc $(STAPSXLIBNAME)
++all: $(MINLIBNAME) $(STACAPLIBNAME) libcap.pc libpsx.pc $(STAPSXLIBNAME)
+ 
+ ifeq ($(BUILD_GPERF),yes)
+ USE_GPERF_OUTPUT = $(GPERF_OUTPUT)
+@@ -38,6 +38,15 @@ libcap.pc: libcap.pc.in
+ 		-e 's,@deps@,$(DEPS),' \
+ 		$< >$@
+ 
++libpsx.pc: libpsx.pc.in
++	sed -e 's,@prefix@,$(prefix),' \
++		-e 's,@exec_prefix@,$(exec_prefix),' \
++		-e 's,@libdir@,$(LIBDIR),' \
++		-e 's,@includedir@,$(inc_prefix)/include,' \
++		-e 's,@VERSION@,$(VERSION).$(MINOR),' \
++		-e 's,@deps@,$(DEPS),' \
++		$< >$@
++
+ _makenames: _makenames.c cap_names.list.h
+ 	$(BUILD_CC) $(BUILD_CFLAGS) $< -o $@
+ 
+@@ -86,6 +95,7 @@ ifeq ($(FAKEROOT),)
+ endif
+ 	mkdir -p -m 0755 $(FAKEROOT)$(PKGCONFIGDIR)
+ 	install -m 0644 libcap.pc $(FAKEROOT)$(PKGCONFIGDIR)/libcap.pc
++	install -m 0644 libpsx.pc $(FAKEROOT)$(PKGCONFIGDIR)/libpsx.pc
+ ifeq ($(GOLANG),yes)
+ 	mkdir -p -m 0755 $(FAKEROOT)$(GOPKGDIR)/libcap/cap
+ 	install -m 0644 src/libcap/cap/* $(FAKEROOT)$(GOPKGDIR)/libcap/cap/
+diff --git a/libcap/libcap.pc.in b/libcap/libcap.pc.in
+index 3d6b273..8358274 100644
+--- a/libcap/libcap.pc.in
++++ b/libcap/libcap.pc.in
+@@ -9,10 +9,4 @@ Version: @VERSION@
+ Libs: -L${libdir} -lcap
+ Libs.private: @deps@
+ Cflags: -I${includedir}
+-
+-Name: libpsx
+-Description: libpsx - linux posix syscall API for pthreads
+-Version: @VERSION@
+-Libs: -L${libdir} -lpsx -lpthread -Wl,-wrap,pthread_create
+-Libs.private: @deps@
+-Cflags: -I${includedir}
++Requires: libpsx
+diff --git a/libcap/libpsx.pc.in b/libcap/libpsx.pc.in
+new file mode 100644
+index 0000000..d032b9f
+--- /dev/null
++++ b/libcap/libpsx.pc.in
+@@ -0,0 +1,11 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: libpsx
++Description: libpsx - linux posix syscall API for pthreads
++Version: @VERSION@
++Libs: -L${libdir} -lpsx -lpthread -Wl,-wrap,pthread_create
++Libs.private: @deps@
++Cflags: -I${includedir}
+-- 
+2.24.1
+

@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="Unit testing framework for C"
@@ -24,16 +25,16 @@ multilib_src_configure() {
 		-DWITH_EXAMPLES=$(usex examples)
 		-DWITH_STATIC_LIB=$(usex static-libs)
 		-DUNIT_TESTING=$(usex test)
-		$(multilib_is_native_abi && cmake-utils_use_find_package doc Doxygen \
+		$(multilib_is_native_abi && cmake_use_find_package doc Doxygen \
 			|| echo -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=ON)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_compile() {
-	cmake-utils_src_compile
-	multilib_is_native_abi && use doc && cmake-utils_src_compile docs
+	cmake_src_compile
+	multilib_is_native_abi && use doc && cmake_src_compile docs
 }
 
 multilib_src_install() {
@@ -41,5 +42,5 @@ multilib_src_install() {
 		local HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
 	fi
 
-	cmake-utils_src_install
+	cmake_src_install
 }

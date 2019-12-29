@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} pypy )
+PYTHON_COMPAT=( python3_{5,6,7} )
 EGIT_REPO_URI="https://github.com/mgorny/docutils-glep.git"
 
 inherit distutils-r1 git-r3

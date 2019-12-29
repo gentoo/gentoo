@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 COMMIT=54508df30bc888c4d2359576ceb0cc8f2fa8dbdf
 inherit cmake-multilib
 
@@ -35,7 +36,7 @@ MULTILIB_CHOST_TOOLS=(
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -e "s/BUILD_TESTS AND NOT BUILD_SHARED_LIBS/BUILD_TESTS/" \
 		-i CMakeLists.txt \
@@ -48,5 +49,5 @@ multilib_src_configure() {
 		-DBUILD_TESTS=$(usex test)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

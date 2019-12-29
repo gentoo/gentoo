@@ -5,7 +5,7 @@ EAPI=7
 
 MAKE_MAKEFILE_GENERATOR="ninja"
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 inherit cmake-utils python-r1
 

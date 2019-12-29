@@ -11,7 +11,7 @@ SRC_URI="https://github.com/unicode-org/icu/releases/download/release-${PV//./-}
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 hppa ia64 ppc ppc64 sparc ~x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc ~x86"
 IUSE="debug static-libs"
 
 BDEPEND="

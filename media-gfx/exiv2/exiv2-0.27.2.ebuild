@@ -11,6 +11,7 @@ else
 	KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 fi
 
+CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 inherit cmake-multilib python-any-r1
 
@@ -59,7 +60,7 @@ src_prepare() {
 	iconv -f LATIN1 -t UTF-8 doc/cmd.txt > doc/cmd.txt.tmp || die
 	mv -f doc/cmd.txt.tmp doc/cmd.txt || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -e "/^include.*compilerFlags/s/^/#DONT /" -i CMakeLists.txt || die
 }
@@ -79,11 +80,11 @@ multilib_src_configure() {
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}"/usr/share/doc/${PF}/html
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if multilib_is_native_abi; then
 		use doc && eninja doc

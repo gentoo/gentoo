@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		TransFolio is a command line tool for Linux and Windows which,
+		as did Atari's DOS program FT.COM.
+		It enables data transfer between the PC and the Atari Portfolio.
+	</longdescription>
+</pkgmetadata>

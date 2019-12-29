@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Memory efficient Python objects"
@@ -22,12 +22,3 @@ DEPEND="
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 RESTRICT="test"
-
-python_prepare_all() {
-	append-flags -fno-strict-aliasing
-	distutils-r1_python_prepare_all
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
-}

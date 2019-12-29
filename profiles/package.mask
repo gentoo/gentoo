@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-29)
+# Currently breaks app-text/texlive-core-2019-r5, bug #704166
+~app-text/poppler-0.84.0
+
 # Hans de Graaff <graaff@gentoo.org> (2019-12-27)
 # Causes compatibility issues with the bundled versions in some
 # dev-lang/ruby slots. Use the bundled version instead. The only
@@ -160,15 +164,15 @@ app-editors/emacs-vcs
 app-benchmarks/spew
 
 # Jason A. Donenfeld <zx2c4@gentoo.org> (2019-12-16)
-# Simplify FOX packages. Nobody uses the demo apps or the "stable" branch.
+# Simplify FOX packages. Adie, calculator, pathfinder, and shutterbug
+# can now be found behind x11-libs/fox[tools], and reswrap is always
+# installed by it.
 # Removal in 30 days.  Bug #703088. Bug #703084.
 app-editors/adie
 dev-util/reswrap
 sci-calculators/calculator
-x11-libs/fox:1.6
 x11-misc/pathfinder
 x11-misc/shutterbug
-x11-misc/xfe
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-15)
 # Live ebuild only.  Not touched since 2012.  Unsurprisingly,
@@ -693,81 +697,9 @@ dev-python/quixote
 dev-go/zglob
 dev-go/logrus
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-30)
-# Version in Gentoo is multiple years old, broken by several dependencies
-# Bugs aren't being fixed: #497412, #509334, #511794, #651010, #654484, #701022
-# Removal in 30 days.
-media-libs/mediastreamer
-media-plugins/mediastreamer-amr
-media-plugins/mediastreamer-bcg729
-media-plugins/mediastreamer-ilbc
-media-plugins/mediastreamer-x264
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2019-11-29)
 # Beta for new major version with initial Python 3 support
 =app-backup/rdiff-backup-1.4.0_beta*
-
-# Lars Wendler <polynomial-c@gentoo.org> (2019-11-29)
-# Breaks at least libreoffice, inkscape and perhaps more revdeps
-~app-text/poppler-0.83.0
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-29)
-# Astronomy-related Python packages and their revdeps.  They are
-# unmaintained.  Most of them are outdated.  None of them were tested
-# on Python 3.7, some even on 3.6.  The leaf packages are 2.7-only.
-# All of them depend on astropy which has an unconditional dependency
-# on ipython, which in turn dropped py2 support.
-# Bug #701454.  Removal in 30 days.
-dev-python/aplpy
-dev-python/asdf
-dev-python/astlib
-dev-python/astrodendro
-dev-python/astroml-addons
-dev-python/astroml
-dev-python/astroplan
-dev-python/astropy-helpers
-dev-python/astropy
-dev-python/astroquery
-dev-python/astroscrappy
-dev-python/atpy
-dev-python/ccdproc
-dev-python/gammapy
-dev-python/ginga
-dev-python/glue-vispy-viewers
-dev-python/glueviz
-dev-python/gwcs
-dev-python/healpy
-dev-python/imexam
-dev-python/montage-wrapper
-dev-python/naima
-dev-python/photutils
-dev-python/pyavm
-dev-python/pydl
-dev-python/pyfits
-dev-python/pymoc
-dev-python/pyregion
-dev-python/regions
-dev-python/reproject
-dev-python/spectral-cube
-dev-python/specutils
-dev-python/stsci-distutils
-dev-python/stsci-sphinxext
-dev-python/sunpy
-dev-python/wcsaxes
-sci-astronomy/astrometry
-sci-astronomy/kapteyn
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
-# Multiple build failures, automagic, missing deps, no one to fix them
-# Bugs #542756, #554388, #555768, #557974, #574854, #574890 #589182,
-# #590640, #612302, #622574, #698940; Removal in 30 days.
-=sci-libs/vtk-6*
-sci-libs/vtkdata
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
-# Depends on broken =sci-libs/vtk-6*, needs to be bumped to 3.0.2, bug #657952
-# Removal in 30 days.
-=sci-visualization/visit-2*
 
 # Jonas Stein <jstein@gentoo.org> (2019-11-26)
 # Package is obsolete. Successor is net-wireless/b43-fwcutter

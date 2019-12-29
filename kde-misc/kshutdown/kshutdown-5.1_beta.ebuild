@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kde.org xdg
+inherit cmake kde.org xdg
 
 DESCRIPTION="Shutdown manager for desktop environments like KDE Plasma"
 HOMEPAGE="https://kshutdown.sourceforge.io"
@@ -51,7 +51,7 @@ PATCHES=( "${FILESDIR}/${PN}-5.0-cmake-3.15.patch" )
 S="${WORKDIR}/${P/_/-}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -59,5 +59,5 @@ src_configure() {
 		-DKS_PURE_QT=$(usex !kde)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

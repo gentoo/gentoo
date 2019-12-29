@@ -68,8 +68,8 @@ RDEPEND="${DEPEND}
 src_configure() {
 # 	local mycmakeargs=(
 # 	# FIXME: Does not build (last checked 2016-02-17)
-# 		$(cmake-utils_use_find_package X Qt5X11Extras)
-# 		$(cmake-utils_use_find_package X X11)
+# 		$(cmake_use_find_package X Qt5X11Extras)
+# 		$(cmake_use_find_package X X11)
 # 	)
 
 	ecm_src_configure

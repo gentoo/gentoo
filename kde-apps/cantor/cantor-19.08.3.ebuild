@@ -96,14 +96,14 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_PythonLibs=ON
-		$(cmake-utils_use_find_package analitza Analitza5)
-		$(cmake-utils_use_find_package julia Julia)
-		$(cmake-utils_use_find_package lua LuaJIT)
-		$(cmake-utils_use_find_package markdown Discount)
-		$(cmake-utils_use_find_package postscript LibSpectre)
-		$(cmake-utils_use_find_package python PythonLibs3)
-		$(cmake-utils_use_find_package qalculate Qalculate)
-		$(cmake-utils_use_find_package R R)
+		$(cmake_use_find_package analitza Analitza5)
+		$(cmake_use_find_package julia Julia)
+		$(cmake_use_find_package lua LuaJIT)
+		$(cmake_use_find_package markdown Discount)
+		$(cmake_use_find_package postscript LibSpectre)
+		$(cmake_use_find_package python PythonLibs3)
+		$(cmake_use_find_package qalculate Qalculate)
+		$(cmake_use_find_package R R)
 	)
 	ecm_src_configure
 }

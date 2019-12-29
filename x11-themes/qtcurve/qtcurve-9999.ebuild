@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kde.org
+inherit cmake kde.org
 
 DESCRIPTION="Widget styles for Qt and GTK2"
 HOMEPAGE="https://cgit.kde.org/qtcurve.git"
@@ -80,5 +80,5 @@ src_configure() {
 		-DQTC_QT5_ENABLE_KDE="$(usex plasma)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

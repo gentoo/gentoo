@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_MIN_VERSION=3.14.3
 ECM_HANDBOOK="forceoptional"
 KFMIN=5.64.0
 PVCUT=$(ver_cut 1-3)
@@ -20,6 +19,7 @@ IUSE="gles2 ieee1394 +opengl +pci wayland"
 
 REQUIRED_USE="wayland? ( || ( gles2 opengl ) )"
 
+BDEPEND=">=dev-util/cmake-3.14.3"
 COMMON_DEPEND="
 	>=kde-frameworks/kcmutils-${KFMIN}:5
 	>=kde-frameworks/kcompletion-${KFMIN}:5

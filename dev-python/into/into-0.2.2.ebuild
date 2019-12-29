@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
-
+PYTHON_COMPAT=( python3_{5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Data migration utilities"
@@ -16,10 +15,9 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="dev-python/datashape[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-		>=dev-python/pandas-0.15[${PYTHON_USEDEP}]
-		dev-python/toolz[${PYTHON_USEDEP}]
-		dev-python/multipledispatch[${PYTHON_USEDEP}]
-		dev-python/networkx[${PYTHON_USEDEP}]
-		!media-libs/urt" # Bug #552448
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+	dev-python/numpy[${PYTHON_USEDEP}]
+	>=dev-python/pandas-0.15[${PYTHON_USEDEP}]
+	dev-python/toolz[${PYTHON_USEDEP}]
+	dev-python/multipledispatch[${PYTHON_USEDEP}]
+	dev-python/networkx[${PYTHON_USEDEP}]
+	!media-libs/urt" # Bug #552448

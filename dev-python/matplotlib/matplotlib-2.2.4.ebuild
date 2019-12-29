@@ -216,7 +216,7 @@ wrap_setup() {
 }
 
 python_compile() {
-	wrap_setup distutils-r1_python_compile --build-lib="${BUILD_DIR}"/lib
+	wrap_setup distutils-r1_python_compile -j1 --build-lib="${BUILD_DIR}"/lib
 }
 
 python_compile_all() {

@@ -10,7 +10,7 @@ inherit distutils-r1
 MYP=${PN}.py-${PV}
 
 DESCRIPTION="Python wrappers to the symengine C++ library"
-HOMEPAGE="https://github.com/sympy/symengine.py"
+HOMEPAGE="https://github.com/symengine/symengine.py"
 SRC_URI="https://github.com/symengine/symengine.py/archive/v${PV}.tar.gz -> ${MYP}.tar.gz"
 
 LICENSE="MIT"

@@ -6,6 +6,7 @@ EAPI=7
 inherit mount-boot savedconfig toolchain-funcs
 
 MY_P=linux-${PV}
+TCL_VER=10.1
 AMD64_CONFIG_VER=5.4.4.arch1-1
 AMD64_CONFIG_HASH=f101331956bb37080dce191ca789a5c44fac9e69
 I686_CONFIG_VER=5.4.3-arch1
@@ -17,17 +18,24 @@ SRC_URI="https://cdn.kernel.org/pub/linux/kernel/v5.x/${MY_P}.tar.xz
 	amd64? (
 		https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${AMD64_CONFIG_HASH}
 			-> linux-${AMD64_CONFIG_VER}.amd64.config
+		test? (
+			https://dev.gentoo.org/~mgorny/dist/tinycorelinux-${TCL_VER}-amd64.qcow2
+		)
 	)
 	x86? (
 		https://git.archlinux32.org/packages/plain/core/linux/config.i686?id=${I686_CONFIG_HASH}
 			-> linux-${I686_CONFIG_VER}.i686.config
+		test? (
+			https://dev.gentoo.org/~mgorny/dist/tinycorelinux-${TCL_VER}-x86.qcow2
+		)
 	)"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+initramfs"
+IUSE="+initramfs test"
+RESTRICT="!test? ( test ) test? ( userpriv )"
 
 # install-DEPEND actually
 # note: we need installkernel with initramfs support!
@@ -36,10 +44,16 @@ RDEPEND="
 		sys-kernel/installkernel-gentoo
 		sys-kernel/installkernel-systemd-boot
 	)
-	initramfs? ( sys-kernel/dracut )"
+	initramfs? ( >=sys-kernel/dracut-049-r2 )"
 BDEPEND="
 	sys-devel/bc
-	virtual/libelf"
+	virtual/libelf
+	test? (
+		dev-tcltk/expect
+		sys-kernel/dracut
+		amd64? ( app-emulation/qemu[qemu_softmmu_targets_x86_64] )
+		x86? ( app-emulation/qemu[qemu_softmmu_targets_i386] )
+	)"
 
 pkg_pretend() {
 	mount-boot_pkg_pretend
@@ -112,7 +126,60 @@ src_compile() {
 }
 
 src_test() {
-	:
+	local image_arch=${ARCH}
+	local kern_arch=x86
+	local qemu_arch=$(usex amd64 x86_64 i386)
+
+	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
+		INSTALL_MOD_PATH="${T}" modules_install
+
+	dracut \
+		--conf /dev/null \
+		--confdir /dev/null \
+		--no-hostonly \
+		--kmoddir "${T}/lib/modules/${PV}" \
+		"${T}/initrd" "${PV}" || die
+	cp "${DISTDIR}/tinycorelinux-${TCL_VER}-${image_arch}.qcow2" \
+		"${T}/fs.qcow2" || die
+
+	cd "${T}" || die
+	cat > run.sh <<-EOF || die
+		#!/bin/sh
+		exec qemu-system-${qemu_arch} \
+			-m 256M \
+			-display none \
+			-no-reboot \
+			-kernel '${WORKDIR}/build/arch/${kern_arch}/boot/bzImage' \
+			-initrd '${T}/initrd' \
+			-serial mon:stdio \
+			-hda '${T}/fs.qcow2' \
+			-append 'root=/dev/sda console=ttyS0,115200n8'
+	EOF
+	chmod +x run.sh || die
+	# TODO: initramfs does not let core finish starting on some systems,
+	# figure out how to make it better at that
+	expect - <<-EOF || die "Booting kernel failed"
+		set timeout 900
+		spawn ./run.sh
+		expect {
+			"Kernel panic" {
+				send_error "\n* Kernel panic"
+				exit 1
+			}
+			"Entering emergency mode" {
+				send_error "\n* Initramfs failed to start the system"
+				exit 1
+			}
+			"Core 10.1" {
+				send_error "\n* Booted to login"
+				exit 0
+			}
+			timeout {
+				send_error "\n* Kernel boot timed out"
+				exit 2
+			}
+		}
+	EOF
 }
 
 src_install() {
@@ -174,8 +241,9 @@ pkg_postinst() {
 	fi
 
 	local symlink_target=$(readlink "${EROOT}"/usr/src/linux)
-	if [[ ${symlink_target} == linux-[0-9]* ]]; then
-		local symlink_ver=${symlink_target#linux-}
+	local symlink_ver=${symlink_target#linux-}
+	if [[ ${symlink_target} == linux-* && -z ${symlink_ver//[0-9.]/} ]]
+	then
 		local symlink_pkg=${CATEGORY}/${PN}-${symlink_ver}
 		# if the current target is either being replaced, or still
 		# installed (probably depclean candidate), update the symlink

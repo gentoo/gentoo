@@ -3,8 +3,9 @@
 
 EAPI="6"
 GNOME2_LA_PUNT="yes"
+GNOME2_EAUTORECONF="yes"
 
-inherit autotools gnome2
+inherit gnome2
 
 DESCRIPTION="Nautilus extension for encrypting and decrypting files with GnuPG"
 HOMEPAGE="https://wiki.gnome.org/Apps/Seahorse"
@@ -46,8 +47,7 @@ src_prepare() {
 
 	# Doesn't really need libgnome-keyring (from Fedora, fixed in
 	# 'master')
-	eapply "${FILESDIR}"/${P}-remove-libgnome-keyring.patch
-	eautoreconf
+	eapply "${FILESDIR}"/${P}-remove-libgnome-keyring.patch # needs eautoreconf
 
 	gnome2_src_prepare
 }

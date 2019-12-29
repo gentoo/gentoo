@@ -5,14 +5,6 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>sir.suriv@gmail.com</email>
-		<name>Diogo Pereira</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<longdescription>
 		j4-dmenu-desktop is a replacement for i3-dmenu-desktop.
 		The purpose is to find .desktop files,

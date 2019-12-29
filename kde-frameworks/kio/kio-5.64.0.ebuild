@@ -72,11 +72,11 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package acl ACL)
-		$(cmake-utils_use_find_package handbook KF5DocTools)
-		$(cmake-utils_use_find_package kerberos GSSAPI)
-		$(cmake-utils_use_find_package kwallet KF5Wallet)
-		$(cmake-utils_use_find_package X X11)
+		$(cmake_use_find_package acl ACL)
+		$(cmake_use_find_package handbook KF5DocTools)
+		$(cmake_use_find_package kerberos GSSAPI)
+		$(cmake_use_find_package kwallet KF5Wallet)
+		$(cmake_use_find_package X X11)
 	)
 
 	ecm_src_configure

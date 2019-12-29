@@ -13,7 +13,7 @@
 # upstream release groups (Frameworks, Plasma, Applications) but also for any
 # other package that follows similar conventions.
 #
-# This eclass unconditionally inherits cmake-utils.eclass and all its public
+# This eclass unconditionally inherits cmake.eclass and all its public
 # variables and helper functions (not phase functions) may be considered as part
 # of this eclass's API.
 #
@@ -49,7 +49,7 @@ if [[ ${CATEGORY} = kde-frameworks ]] ; then
 fi
 : ${ECM_NONGUI:=false}
 
-inherit cmake-utils flag-o-matic toolchain-funcs virtualx
+inherit cmake flag-o-matic toolchain-funcs virtualx
 
 if [[ ${ECM_NONGUI} = false ]] ; then
 	inherit xdg
@@ -74,7 +74,7 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_po
 
 # @ECLASS-VARIABLE: ECM_DEBUG
 # @DESCRIPTION:
-# Add "debug" to IUSE. If !debug, add -DNDEBUG (via cmake-utils_src_configure)
+# Add "debug" to IUSE. If !debug, add -DNDEBUG (via cmake_src_configure)
 # and -DQT_NO_DEBUG to CPPFLAGS. If set to "false", do nothing.
 : ${ECM_DEBUG:=true}
 
@@ -436,12 +436,12 @@ ecm_pkg_setup() {
 
 # @FUNCTION: ecm_src_prepare
 # @DESCRIPTION:
-# Wrapper for cmake-utils_src_prepare with lots of extra logic for magic
+# Wrapper for cmake_src_prepare with lots of extra logic for magic
 # handling of linguas, tests, handbook etc.
 ecm_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# only build examples when required
 	if ! { in_iuse examples && use examples; } ; then
@@ -517,12 +517,12 @@ ecm_src_prepare() {
 
 # @FUNCTION: ecm_src_configure
 # @DESCRIPTION:
-# Wrapper for cmake-utils_src_configure with extra logic for magic handling of
+# Wrapper for cmake_src_configure with extra logic for magic handling of
 # handbook, tests etc.
 ecm_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	# we rely on cmake-utils.eclass to append -DNDEBUG too
+	# we rely on cmake.eclass to append -DNDEBUG too
 	if in_iuse debug && ! use debug; then
 		append-cppflags -DQT_NO_DEBUG
 	fi
@@ -566,22 +566,22 @@ ecm_src_configure() {
 	# allow the ebuild to override what we set here
 	mycmakeargs=("${cmakeargs[@]}" "${mycmakeargs[@]}")
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 # @FUNCTION: ecm_src_compile
 # @DESCRIPTION:
-# Wrapper for cmake-utils_src_compile. Currently doesn't do anything extra, but
+# Wrapper for cmake_src_compile. Currently doesn't do anything extra, but
 # is included as part of the API just in case it's needed in the future.
 ecm_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cmake-utils_src_compile "$@"
+	cmake_src_compile "$@"
 }
 
 # @FUNCTION: ecm_src_test
 # @DESCRIPTION:
-# Wrapper for cmake-utils_src_test with extra logic for magic handling of dbus
+# Wrapper for cmake_src_test with extra logic for magic handling of dbus
 # and virtualx.
 ecm_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
@@ -591,7 +591,7 @@ ecm_src_test() {
 			export $(dbus-launch)
 		fi
 
-		cmake-utils_src_test
+		cmake_src_test
 	}
 
 	# When run as normal user during ebuild development with the ebuild command,
@@ -613,12 +613,12 @@ ecm_src_test() {
 
 # @FUNCTION: ecm_src_install
 # @DESCRIPTION:
-# Wrapper for cmake-utils_src_install. Currently doesn't do anything extra, but
+# Wrapper for cmake_src_install. Currently doesn't do anything extra, but
 # is included as part of the API just in case it's needed in the future.
 ecm_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cmake-utils_src_install
+	cmake_src_install
 }
 
 # @FUNCTION: ecm_pkg_preinst

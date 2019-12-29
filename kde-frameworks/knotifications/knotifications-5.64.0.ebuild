@@ -40,10 +40,10 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package dbus dbusmenu-qt5)
-		$(cmake-utils_use_find_package !phonon Canberra)
-		$(cmake-utils_use_find_package speech Qt5TextToSpeech)
-		$(cmake-utils_use_find_package X X11)
+		$(cmake_use_find_package dbus dbusmenu-qt5)
+		$(cmake_use_find_package !phonon Canberra)
+		$(cmake_use_find_package speech Qt5TextToSpeech)
+		$(cmake_use_find_package X X11)
 	)
 
 	ecm_src_configure

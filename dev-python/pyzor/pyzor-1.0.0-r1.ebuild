@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
+PYTHON_COMPAT=( python3_{5,6} )
 inherit distutils-r1
 
 MY_PV="1-0-0"
@@ -15,29 +15,29 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
-IUSE="doc gdbm gevent mysql pyzord redis test"
-RESTRICT="!test? ( test )"
+IUSE="doc gdbm gevent pyzord redis test"
+# The test suite is py2-only
+RESTRICT="test"
 
 # The mysql-python library is always required for the MySQL engine. We
 # depend on it conditionally here because otherwise repoman will balk at
 # the potential conflict between PYTHON_TARGETS and USE=mysql. But as a
 # result, if you try to use the MySQL engine with python-3.x, it just
 # won't work because you'll be missing the library.
-RDEPEND="pyzord? (
-	gdbm? ( $(python_gen_impl_dep 'gdbm') )
-	mysql? ( $(python_gen_cond_dep \
-				'dev-python/mysql-python[${PYTHON_USEDEP}]' python2_7) )
-	redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )
-	gevent? ( dev-python/gevent[${PYTHON_USEDEP}] )
-)"
+RDEPEND="
+	pyzord? (
+		gdbm? ( $(python_gen_impl_dep 'gdbm') )
+		redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )
+		gevent? ( dev-python/gevent[${PYTHON_USEDEP}] )
+	)"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( ${RDEPEND} )"
 
 # TODO: maybe upstream would support skipping tests for which the
 # dependencies are missing?
-REQUIRED_USE="pyzord? ( || ( gdbm mysql redis ) )
-	test? ( gdbm mysql redis )"
+REQUIRED_USE="pyzord? ( || ( gdbm redis ) )
+	test? ( gdbm redis )"
 S="${WORKDIR}/${PN}-release-${MY_PV}"
 
 PATCHES=(
@@ -46,10 +46,7 @@ PATCHES=(
 )
 
 python_test() {
-	# The suite is py2 friendly only
-	if ! python_is_python3; then
-		PYTHONPATH=. "${PYTHON}" ./tests/unit/__init__.py
-	fi
+	PYTHONPATH=. "${PYTHON}" ./tests/unit/__init__.py
 }
 
 python_compile_all() {

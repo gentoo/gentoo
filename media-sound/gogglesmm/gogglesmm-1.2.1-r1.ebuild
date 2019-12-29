@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+dbus +flac +mad +vorbis +ogg +opus +aac +pulseaudio +opengl nls"
 
-RDEPEND="x11-libs/fox:=
+RDEPEND="x11-libs/fox:1.7
 		x11-libs/libSM
 		x11-libs/libICE
 		dev-db/sqlite

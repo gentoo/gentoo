@@ -15,7 +15,7 @@ SRC_URI="https://download.osgeo.org/${PN}/${PV}/${P}.tar.gz"
 SLOT="0/2.3"
 LICENSE="BSD Info-ZIP MIT"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="armadillo +aux_xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k lzma mdb mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python spatialite sqlite threads webp xls zstd"
+IUSE="armadillo +aux-xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k lzma mdb mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python spatialite sqlite threads webp xls zstd"
 
 REQUIRED_USE="
 	mdb? ( java )
@@ -187,7 +187,7 @@ src_configure() {
 		--disable-lto
 		$(use_enable debug)
 		$(use_with armadillo)
-		$(use_with aux_xml pam)
+		$(use_with aux-xml pam)
 		$(use_with curl)
 		$(use_with fits cfitsio)
 		$(use_with geos)
