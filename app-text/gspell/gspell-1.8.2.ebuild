@@ -22,7 +22,6 @@ RDEPEND="
 	>=dev-libs/glib-2.44:2
 	>=x11-libs/gtk+-3.20:3[introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.42.0:= )
-	vala? ( $(vala_depend) )
 "
 DEPEND="${RDEPEND}
 	dev-libs/libxml2:2
@@ -30,6 +29,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.25
 	>=sys-devel/gettext-0.19.6
 	virtual/pkgconfig
+	vala? ( $(vala_depend) )
 "
 
 src_prepare() {
