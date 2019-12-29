@@ -11,7 +11,7 @@ fi
 
 PYTHON_COMPAT=( python{2_7,3_5,3_6} pypy{,3} )
 
-inherit ${SCM} cmake-utils python-r1 python-utils-r1
+inherit ${SCM} cmake-utils python-r1
 
 DESCRIPTION="Cmake macros and associated python code used to build some parts of ROS"
 HOMEPAGE="http://wiki.ros.org/catkin"
