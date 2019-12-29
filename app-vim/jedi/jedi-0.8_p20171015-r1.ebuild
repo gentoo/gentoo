@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
-inherit vim-plugin python-r1 python-utils-r1
+inherit vim-plugin python-r1
 
 # Commit Date: Sun Oct 15 20:51:54 2017 +0200
 COMMIT="77924398bd594e238766153cec97ace62650f082"
