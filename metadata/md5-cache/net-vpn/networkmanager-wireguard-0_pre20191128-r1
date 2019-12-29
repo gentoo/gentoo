@@ -1,15 +1,15 @@
 BDEPEND=virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure prepare
-DEPEND=net-misc/networkmanager virtual/wireguard glib? ( dev-libs/glib ) gtk? ( app-crypt/libsecret gnome-extra/nm-applet x11-libs/gtk+:3 )
+DEPEND=net-misc/networkmanager net-vpn/wireguard-tools[wg-quick] glib? ( dev-libs/glib ) gtk? ( app-crypt/libsecret gnome-extra/nm-applet x11-libs/gtk+:3 )
 DESCRIPTION=NetworkManager WireGuard plugin
 EAPI=7
 HOMEPAGE=https://github.com/max-moser/network-manager-wireguard
 IUSE=+glib +gtk +nls
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
-RDEPEND=net-misc/networkmanager virtual/wireguard glib? ( dev-libs/glib ) gtk? ( app-crypt/libsecret gnome-extra/nm-applet x11-libs/gtk+:3 )
+RDEPEND=net-misc/networkmanager net-vpn/wireguard-tools[wg-quick] glib? ( dev-libs/glib ) gtk? ( app-crypt/libsecret gnome-extra/nm-applet x11-libs/gtk+:3 )
 REQUIRED_USE=glib? ( gtk )
 SLOT=0
 SRC_URI=https://github.com/max-moser/network-manager-wireguard/archive/0e1124df9e97129c5e0d9996a2c3876ae18f01c4.tar.gz -> networkmanager-wireguard-0_pre20191128.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=e1b3f68ccaa887e2073b166e3f2a0e49
+_md5_=3cb54d1868442e8ff48a5bf086bcb376
