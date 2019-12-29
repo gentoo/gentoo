@@ -1,14 +1,14 @@
 BDEPEND=dev-lang/perl
 DEFINED_PHASES=configure
-DEPEND=sci-mathematics/pari
+DEPEND=>=sci-mathematics/pari-2.11.2
 DESCRIPTION=A GP to C translator
 EAPI=7
 HOMEPAGE=http://pari.math.u-bordeaux.fr/
 IUSE=test
 KEYWORDS=~amd64
 LICENSE=GPL-2+
-RDEPEND=sci-mathematics/pari
+RDEPEND=>=sci-mathematics/pari-2.11.2
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://pari.math.u-bordeaux.fr/pub/pari/GP2C/gp2c-0.0.11pl2.tar.gz
-_md5_=75d1744239a9fd21e536303b8d2c8c3d
+_md5_=7e1c0f8fbfd96523c8aafbc178175c67

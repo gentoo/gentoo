@@ -16572,7 +16572,7 @@ sci-mathematics/ginac 1.6.6 1.7.2 1.7.4: C++ library and tools for symbolic calc
 sci-mathematics/glpk 4.63: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices
 sci-mathematics/gmp-ecm 6.4.4-r1 7.0.4-r1 9999: Elliptic Curve Method for Integer Factorization
-sci-mathematics/gp2c 0.0.11.2: A GP to C translator
+sci-mathematics/gp2c 0.0.11.2-r1: A GP to C translator
 sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series library
 sci-mathematics/gsl-shell 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
 sci-mathematics/jags 3.4.0 4.0.0 4.1.0 4.2.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
