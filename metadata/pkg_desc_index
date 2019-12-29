@@ -8334,7 +8334,7 @@ dev-python/path-py 8.1.2 10.3.1 11.0.1 11.5.2 12.0.2: A module wrapper for os.pa
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
 dev-python/pathlib2 2.3.0 2.3.2 2.3.5: Fork of pathlib aiming to support the full stdlib Python API
 dev-python/pathspec 0.6.0: Utility library for gitignore style pattern matching of file paths.
-dev-python/pathtools 0.1.2-r2: Pattern matching and various utilities for file systems paths
+dev-python/pathtools 0.1.2-r2 0.1.2-r3: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.4.1 0.5.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.4 1.3.4 1.3.4-r1: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3 1.3-r1: Implementation of PBKDF2, specified in RSA PKCS#5 v2.0
