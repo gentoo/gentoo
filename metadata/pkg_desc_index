@@ -7400,7 +7400,7 @@ dev-python/Numdifftools 0.9.17: Solves automatic numerical differentiation probl
 dev-python/PyContracts 1.7.9 1.8.0 1.8.12: Declare constraints on function parameters and return values
 dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
 dev-python/PyECLib 1.5.0 1.6.0: Messaging API for RPC and notifications over different messaging transports
-dev-python/PyGithub 1.43.8 1.44.1: Python library to access the Github API v3
+dev-python/PyGithub 1.43.8 1.44.1 1.45: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.12.2 5.13.2 5.14.0: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.17 4.19.19 4.19.20: Private sip module for PyQt5
@@ -9264,7 +9264,7 @@ dev-python/zope-schema 4.5.0 4.9.3: Zope schema Architecture
 dev-python/zope-testing 4.6.2 4.7-r1: Zope testing helpers
 dev-python/zope-testrunner 4.7.0 5.1: Zope testrunner script
 dev-python/zsi 2.1_alpha1-r1: Web Services for Python
-dev-python/zstandard 0.8.1 0.11.0 0.12.0: Zstandard Bindings for Python
+dev-python/zstandard 0.8.1 0.11.0 0.12.0 0.13.0: Zstandard Bindings for Python
 dev-qt/assistant 5.12.3 5.12.5 5.13.2 5.14.0: Tool for viewing on-line documentation in Qt help file format
 dev-qt/designer 5.12.3 5.12.5 5.13.2 5.14.0: WYSIWYG tool for designing and building graphical user interfaces with QtWidgets
 dev-qt/linguist 5.12.3 5.12.5 5.13.2 5.14.0: Graphical tool for translating Qt applications
