@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/python-magic[${PYTHON_USEDEP}]
 	>=dev-python/urwid-1.3.0[${PYTHON_USEDEP}]
 	>=dev-python/urwidtrees-1.0[${PYTHON_USEDEP}]
-	dev-python/twisted[${PYTHON_USEDEP}]
+	>=dev-python/twisted-18.4[${PYTHON_USEDEP}]
 	net-mail/mailbase
 	>=net-mail/notmuch-0.27[crypt,python]
 	"
@@ -38,6 +38,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PV}-0001-remove-non-working-test.patch"
+	"${FILESDIR}/${PV}-0002-changed-expired-test-keys.patch"
 	)
 
 python_compile_all() {
