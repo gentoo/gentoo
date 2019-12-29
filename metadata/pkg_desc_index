@@ -2200,6 +2200,7 @@ app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one prog
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
 app-misc/tracker 2.2.2: A tagging metadata database, search tool and indexer
 app-misc/tracker-miners 2.2.2: Collection of data extractors for Tracker/Nepomuk
+app-misc/transfolio 1.0.1: Enables data transfer between the PC and the Atari Portfolio
 app-misc/trash-cli 0.12.9.14-r2 0.17.1.14_p20170816: Python scripts to manipulate trash cans via the command line
 app-misc/ttyload 0.5.3: color-coded graph of load averages over time
 app-misc/ttyrec 1.0.8-r2: ttyrec provides tools to record and replay a terminal session
