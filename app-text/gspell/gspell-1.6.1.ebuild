@@ -13,7 +13,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0/1" # subslot = libgspell-1 soname version
 KEYWORDS="~alpha amd64 ~arm arm64 ~ppc ~ppc64 ~sparc x86"
 
-IUSE="+introspection vala"
+IUSE="+introspection +vala"
 REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
