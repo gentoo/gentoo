@@ -7938,6 +7938,7 @@ dev-python/happydoc 3.1-r2: Tool for extracting documentation from Python source
 dev-python/hcloud-python 1.2.1 1.6.1 1.6.2: Official Hetzner Cloud python library
 dev-python/hcluster 0.2.0-r1: Python hierarchical clustering package for Scipy
 dev-python/hcs-utils 1.5 2.0: A library containing some useful snippets
+dev-python/helpdev 0.6.10: Helping users and developers to get information about the environment
 dev-python/hgdistver 0.25: utility lib to generate python package version infos from mercurial tags
 dev-python/hglib 2.1: Library for using the Mercurial Command Server from Python
 dev-python/hiredis 0.2.0-r1: Python extension that wraps hiredis
