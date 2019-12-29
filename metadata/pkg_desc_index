@@ -5347,7 +5347,7 @@ dev-ml/dune 1.7.2: A composable build system for OCaml
 dev-ml/easy-format 1.0.2 1.2.0: Pretty-printing library for OCaml
 dev-ml/eliom 6.2.0 9999: A web framework to program client/server applications
 dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values of a type
-dev-ml/extlib 1.7.1 1.7.2: Standard library extensions for O'Caml
+dev-ml/extlib 1.7.1 1.7.2 1.7.6: Standard library extensions for O'Caml
 dev-ml/facile 1.1.3: OCaml constraint programming library on integer & integer set finite domains
 dev-ml/fieldslib 0.9.0: Folding over record fields
 dev-ml/findlib 1.7.1 1.7.2 1.7.3 1.8.1: OCaml tool to find/use non-standard packages
@@ -13891,7 +13891,7 @@ media-sound/jalv 1.6.0-r2 1.6.4: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/justeport 0.2: Stream audio to your AirPort Express
 media-sound/kaudiocreator 1.3_p20190225: CD ripper and audio encoder frontend based on KDE Frameworks
-media-sound/kid3 3.7.1 3.8.0 3.8.1: Simple tag editor based on Qt
+media-sound/kid3 3.7.1 3.8.1: Simple tag editor based on Qt
 media-sound/klick 0.12.2-r2: An advanced command-line based metronome for JACK
 media-sound/kmetronome 1.0.1: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.100-r1 3.100-r2: LAME Ain't an MP3 Encoder
