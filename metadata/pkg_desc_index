@@ -5162,12 +5162,12 @@ dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Fr
 dev-libs/redland-bindings 1.0.14.1-r2 1.0.17.1: Language bindings for Redland
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rlog 1.4: A C++ logging library
-dev-libs/rocm-comgr 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0: Radeon Open Compute Code Object Manager
-dev-libs/rocm-device-libs 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0 9999: Radeon Open Compute Device Libraries
+dev-libs/rocm-comgr 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0: Radeon Open Compute Code Object Manager
+dev-libs/rocm-device-libs 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
 dev-libs/rocm-opencl-driver 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0: Radeon Open Compute OpenCL Compiler Tool Driver
-dev-libs/rocm-opencl-runtime 2.6.0-r1 2.8.0 2.9.0 2.9.0-r1 2.10.0: Radeon Open Compute OpenCL Compatible Runtime
-dev-libs/rocr-runtime 2.0.0 2.6.0-r1 2.7.0 2.8.0 2.8.0-r1 2.9.0 2.10.0 9999: Radeon Open Compute Runtime
+dev-libs/rocm-opencl-runtime 2.6.0-r1 2.8.0 2.9.0 2.9.0-r1 2.10.0 3.0.0: Radeon Open Compute OpenCL Compatible Runtime
+dev-libs/rocr-runtime 2.0.0 2.6.0-r1 2.7.0 2.8.0 2.8.0-r1 2.9.0 2.10.0 3.0.0 9999: Radeon Open Compute Runtime
 dev-libs/roct-thunk-interface 2.0.0 2.6.0 2.7.0 2.8.0 2.9.0-r1 2.10.0 3.0.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/satyr 0.26 0.27: Satyr is a collection of low-level algorithms for program failure processing
@@ -17541,7 +17541,7 @@ sys-devel/libtool 2.4.6-r3 2.4.6-r6 9999: A shared library tool for developers
 sys-devel/lld 7.1.0 8.0.1 9.0.0 9.0.1 10.0.0.9999: The LLVM linker (link editor)
 sys-devel/llvm 7.1.0 8.0.1 9.0.0 9.0.1 10.0.0.9999: Low Level Virtual Machine
 sys-devel/llvm-common 7.1.0 8.0.1 9.0.0 9.0.1 10.0.0.9999: Common files shared between multiple slots of LLVM
-sys-devel/llvm-roc 2.6.0-r1 2.7.0 2.8.0 2.9.0 2.10.0: Radeon Open Compute llvm,lld,clang
+sys-devel/llvm-roc 2.6.0-r1 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 7 8 9 10: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18-r1: GNU macro processor
 sys-devel/make 4.2.1-r4: Standard tool to compile source trees
