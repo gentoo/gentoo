@@ -17520,7 +17520,7 @@ sys-devel/clang 7.1.0 8.0.1 9.0.0 9.0.1 10.0.0.9999: C language family frontend 
 sys-devel/clang-common 7.1.0 8.0.1 9.0.0 9.0.1 10.0.0.9999: Common files shared between multiple slots of clang
 sys-devel/clang-runtime 7.1.0 8.0.1 9.0.0 9.0.1 10.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.3.0: Extensible perl-based build utility
-sys-devel/crossdev 20191014 20191222 99999999: Gentoo Cross-toolchain generator
+sys-devel/crossdev 20191222 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.3.2-r5 3.3.3: Distribute compilation of C code across several machines on a network
@@ -17725,7 +17725,7 @@ sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 242 243 243-r2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 33 9999: udev startup scripts for openrc
 sys-fs/udftools 2.0-r2 2.1: Ben Fennema's tools for packet writing and the UDF filesystem
-sys-fs/udiskie 1.7.7 2.0.0: An automatic disk mounting service using udisks
+sys-fs/udiskie 1.7.7 2.0.0 2.0.1: An automatic disk mounting service using udisks
 sys-fs/udisks 1.0.5-r3 2.8.2 2.8.3 2.8.4: Daemon providing interfaces to work with storage devices
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 2.0 9999: Self-syncing tree-merging file system based on FUSE
