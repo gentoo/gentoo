@@ -713,10 +713,6 @@ net-wireless/bcm43xx-fwcutter
 sys-apps/nix
 sys-apps/guix
 
-# Aaron Bauman <bman@gentoo.org> (2019-11-16)
-# EAPI=4 and fails to build
-dev-util/ccglue
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths
 # when being called with --no-absolute-filenames
