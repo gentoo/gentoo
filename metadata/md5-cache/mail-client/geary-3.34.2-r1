@@ -1,0 +1,15 @@
+BDEPEND=dev-util/itstool >=sys-devel/gettext-0.19.8 virtual/pkgconfig || ( dev-lang/vala:0.46 dev-lang/vala:0.44 ) x11-libs/gtk+:3[introspection] net-libs/webkit-gtk:4[introspection] app-crypt/gcr:0[introspection,vala] dev-libs/libgee:0.8[introspection] app-text/gspell[vala] app-crypt/libsecret[introspection,vala] net-libs/libsoup:2.4[introspection,vala] app-arch/xz-utils >=dev-util/meson-0.48.2 >=dev-util/ninja-1.7.2 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=>=dev-libs/glib-2.54:2 >=x11-libs/gtk+-3.24.7:3 >=net-libs/webkit-gtk-2.26:4= >=dev-libs/gmime-2.6.17:2.6 >=dev-db/sqlite-3.12:3 >=dev-libs/appstream-glib-0.7.10 app-text/enchant >=dev-libs/folks-0.11:0 >=app-crypt/gcr-3.10.1:0= >=dev-libs/libgee-0.8.5:0.8= net-libs/gnome-online-accounts app-text/gspell app-text/iso-codes >=dev-libs/json-glib-1.0 >=media-libs/libcanberra-0.28 >=gui-libs/libhandy-0.0.9:0.0= >=app-crypt/libsecret-0.11 >=net-libs/libsoup-2.48:2.4 >=sys-libs/libunwind-1.1:7 >=dev-libs/libxml2-2.7.8:2 ytnef? ( >=net-mail/ytnef-1.9.3 ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=A lightweight, easy-to-use, feature-rich email client
+EAPI=7
+HOMEPAGE=https://wiki.gnome.org/Apps/Geary
+IUSE=ytnef test
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1+ BSD-2 CC-BY-3.0 CC-BY-SA-3.0
+RDEPEND=>=dev-libs/glib-2.54:2 >=x11-libs/gtk+-3.24.7:3 >=net-libs/webkit-gtk-2.26:4= >=dev-libs/gmime-2.6.17:2.6 >=dev-db/sqlite-3.12:3 >=dev-libs/appstream-glib-0.7.10 app-text/enchant >=dev-libs/folks-0.11:0 >=app-crypt/gcr-3.10.1:0= >=dev-libs/libgee-0.8.5:0.8= net-libs/gnome-online-accounts app-text/gspell app-text/iso-codes >=dev-libs/json-glib-1.0 >=media-libs/libcanberra-0.28 >=gui-libs/libhandy-0.0.9:0.0= >=app-crypt/libsecret-0.11 >=net-libs/libsoup-2.48:2.4 >=sys-libs/libunwind-1.1:7 >=dev-libs/libxml2-2.7.8:2 ytnef? ( >=net-mail/ytnef-1.9.3 ) gnome-base/gsettings-desktop-schemas
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://gnome/sources/geary/3.34/geary-3.34.2.tar.xz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	meson	b5ee7a05833ab91225acf30ffdeed006	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	682da46cf615b9f7a7d3680058139dcd	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=83ba92978c28a7bb0d0907f9d8cbef36
