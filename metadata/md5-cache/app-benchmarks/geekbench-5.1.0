@@ -6,5 +6,5 @@ KEYWORDS=-* ~amd64
 LICENSE=geekbench
 RESTRICT=bindist mirror
 SLOT=5
-SRC_URI=https://cdn.geekbench.com/Geekbench-5.0.4-Linux.tar.gz
+SRC_URI=https://cdn.geekbench.com/Geekbench-5.1.0-Linux.tar.gz
 _md5_=7504053e9550229103c2be87c58efaa6
