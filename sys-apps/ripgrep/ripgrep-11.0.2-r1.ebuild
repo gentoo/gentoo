@@ -4,83 +4,66 @@
 EAPI=7
 
 CRATES="
-aho-corasick-0.7.3
-atty-0.2.11
-autocfg-0.1.2
+aho-corasick-0.7.4
+atty-0.2.13
 base64-0.10.1
-bitflags-1.0.4
-bstr-0.1.2
+bitflags-1.1.0
+bstr-0.2.6
 bytecount-0.5.1
-byteorder-1.3.1
-cc-1.0.35
-cfg-if-0.1.7
+byteorder-1.3.2
+c2-chacha-0.2.2
+cc-1.0.38
+cfg-if-0.1.9
 clap-2.33.0
-cloudabi-0.0.3
-crossbeam-channel-0.3.8
-crossbeam-utils-0.6.5
+crossbeam-channel-0.3.9
+crossbeam-utils-0.6.6
 encoding_rs-0.8.17
 encoding_rs_io-0.1.6
 fnv-1.0.6
-fuchsia-cprng-0.1.1
+fs_extra-1.1.0
+getrandom-0.1.7
 glob-0.3.0
-globset-0.4.3
-grep-0.2.4
-grep-cli-0.1.2
-grep-matcher-0.1.2
-grep-pcre2-0.1.3
-grep-printer-0.1.2
-grep-regex-0.1.3
-grep-searcher-0.1.4
-ignore-0.4.7
-itoa-0.4.3
+itoa-0.4.4
+jemallocator-0.3.2
+jemalloc-sys-0.3.2
 lazy_static-1.3.0
-libc-0.2.51
-log-0.4.6
-memchr-2.2.0
+libc-0.2.60
+log-0.4.8
+memchr-2.2.1
 memmap-0.7.0
-num_cpus-1.10.0
+num_cpus-1.10.1
 packed_simd-0.3.3
-pcre2-0.2.0
-pcre2-sys-0.2.0
-pkg-config-0.3.14
-proc-macro2-0.4.27
-quote-0.6.12
-rand-0.6.5
-rand_chacha-0.1.1
-rand_core-0.3.1
-rand_core-0.4.0
-rand_hc-0.1.0
-rand_isaac-0.1.1
-rand_jitter-0.1.3
-rand_os-0.1.3
-rand_pcg-0.1.2
-rand_xorshift-0.1.1
-rdrand-0.4.0
-redox_syscall-0.1.54
-redox_termios-0.1.1
-regex-1.1.6
-regex-automata-0.1.6
-regex-syntax-0.6.6
-remove_dir_all-0.5.1
-ripgrep-11.0.1
-ryu-0.2.7
-same-file-1.0.4
-serde-1.0.90
-serde_derive-1.0.90
-serde_json-1.0.39
-smallvec-0.6.9
+pcre2-0.2.1
+pcre2-sys-0.2.2
+pkg-config-0.3.15
+ppv-lite86-0.2.5
+proc-macro2-0.4.30
+quote-0.6.13
+rand-0.7.0
+rand_chacha-0.2.1
+rand_core-0.5.0
+rand_hc-0.2.0
+redox_syscall-0.1.56
+regex-1.2.0
+regex-automata-0.1.8
+regex-syntax-0.6.10
+remove_dir_all-0.5.2
+ryu-1.0.0
+same-file-1.0.5
+serde-1.0.98
+serde_derive-1.0.98
+serde_json-1.0.40
 strsim-0.8.0
-syn-0.15.31
-tempfile-3.0.7
-termcolor-1.0.4
-termion-1.5.1
+syn-0.15.42
+tempfile-3.1.0
+termcolor-1.0.5
 textwrap-0.11.0
 thread_local-0.3.6
-ucd-util-0.1.3
+ucd-util-0.1.5
 unicode-width-0.1.5
 unicode-xid-0.1.0
-utf8-ranges-1.0.2
-walkdir-2.2.7
+utf8-ranges-1.0.3
+walkdir-2.2.9
 winapi-0.3.7
 winapi-i686-pc-windows-gnu-0.4.0
 winapi-util-0.1.2
@@ -92,11 +75,12 @@ inherit cargo bash-completion-r1
 
 DESCRIPTION="a search tool that combines the usability of ag with the raw speed of grep"
 HOMEPAGE="https://github.com/BurntSushi/ripgrep"
-SRC_URI="$(cargo_crate_uris ${CRATES})"
+SRC_URI="https://github.com/BurntSushi/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	$(cargo_crate_uris ${CRATES})"
 
 LICENSE="|| ( MIT Unlicense )"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ppc64 ~x86"
 IUSE="+man pcre"
 
 DEPEND=""
