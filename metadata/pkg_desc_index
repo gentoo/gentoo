@@ -4869,7 +4869,7 @@ dev-libs/jemalloc 3.6.0 4.4.0 4.5.0 5.0.1 5.1.0 5.2.0 5.2.1: Jemalloc is a gener
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.12 0.13.1-r1: A JSON implementation in C
 dev-libs/json-glib 1.4.4: Library providing GLib serialization and deserialization for the JSON format
-dev-libs/jsoncpp 1.9.2-r1 1.9.2-r2: C++ JSON reader and writer
+dev-libs/jsoncpp 1.9.1 1.9.2-r1 1.9.2-r2: C++ JSON reader and writer
 dev-libs/jsonrpc-glib 3.32.0: JSON-RPC library for GLib
 dev-libs/jthread 1.3.3: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.5-r2: A C library that implements a dynamic array
@@ -19094,7 +19094,7 @@ x11-terms/st 0.8.2 9999: simple terminal implementation for X
 x11-terms/terminator 1.91: Multiple GNOME terminals in one window
 x11-terms/terminology 1.5.0 1.6.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1: A drop down terminal, similar to the consoles found in first person shooters
-x11-terms/xfce4-terminal 0.8.8 0.8.9 0.8.9.1: A terminal emulator for the Xfce desktop environment
+x11-terms/xfce4-terminal 0.8.8 0.8.9.1: A terminal emulator for the Xfce desktop environment
 x11-terms/xterm 327 337 350 351: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=doc? ( app-doc/doxygen || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=C++ JSON reader and writer
+EAPI=6
+HOMEPAGE=https://github.com/open-source-parsers/jsoncpp
+IUSE=doc test
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86
+LICENSE=|| ( public-domain MIT )
+RESTRICT=!test? ( test )
+SLOT=0/21
+SRC_URI=https://github.com/open-source-parsers/jsoncpp/archive/1.9.1.tar.gz -> jsoncpp-1.9.1.tar.gz
+_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=fcbc5d29838e54ae2552f1fbaed2e0b8
