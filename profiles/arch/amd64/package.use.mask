@@ -245,10 +245,8 @@ sys-apps/hwloc -gl
 
 # Michał Górny <mgorny@gentoo.org> (2013-07-22)
 # Meaningless on amd64 (it controls the 32-bit x86 JIT).
-dev-python/pypy cpu_flags_x86_sse2
-dev-python/pypy-bin cpu_flags_x86_sse2
-dev-python/pypy3 cpu_flags_x86_sse2
-dev-python/pypy3-bin cpu_flags_x86_sse2
+dev-python/pypy-exe cpu_flags_x86_sse2
+dev-python/pypy3-exe cpu_flags_x86_sse2
 
 # Christoph Junghans <junghans@gentoo.org> (2012-12-26)
 # cuda works on x86/amd64 (masked in base)
