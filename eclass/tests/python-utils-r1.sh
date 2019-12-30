@@ -190,7 +190,7 @@ test_is "_python_impl_supported pypy1_9" 1
 test_is "_python_impl_supported pypy2_0" 1
 test_is "_python_impl_supported pypy" 1
 test_is "_python_impl_supported pypy3" 0
-test_is "_python_impl_supported jython2_7" 0
+test_is "_python_impl_supported jython2_7" 1
 
 # check _python_impl_matches behavior
 test_is "_python_impl_matches python2_7 -2" 0

@@ -39,7 +39,6 @@ inherit toolchain-funcs
 # @DESCRIPTION:
 # All supported Python implementations, most preferred last.
 _PYTHON_ALL_IMPLS=(
-	jython2_7
 	pypy3
 	python2_7
 	python3_6 python3_7 python3_8
@@ -78,10 +77,10 @@ _python_impl_supported() {
 	# keep in sync with _PYTHON_ALL_IMPLS!
 	# (not using that list because inline patterns shall be faster)
 	case "${impl}" in
-		python2_7|python3_[678]|jython2_7|pypy3)
+		python2_7|python3_[678]|pypy3)
 			return 0
 			;;
-		pypy|pypy1_[89]|pypy2_0|python2_[56]|python3_[12345])
+		jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[56]|python3_[12345])
 			return 1
 			;;
 		*)
