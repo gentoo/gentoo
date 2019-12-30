@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DESCRIPTION=A modern, flat theme for Enlightenment WM
+EAPI=7
+HOMEPAGE=https://www.enlightenment.org/ https://phab.enlightenment.org/T6726
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=LGPL-2.1
+RDEPEND=x11-wm/enlightenment
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~juippis/distfiles/e-flat-theme-0_pre20191230.edj
+_md5_=88c8d04c6bcce7069e2d4aff056e4470
