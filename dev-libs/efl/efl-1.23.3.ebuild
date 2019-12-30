@@ -269,8 +269,8 @@ src_compile() {
 	meson_src_compile
 
 	if use doc; then
-		cd doc/ || die "Failed to switch into doc/ dir."
-		doxygen . || die "Doxygen failed to run."
+		cd doc/ || die "Failed to switch into doc/ dir."
+		doxygen . || die "Doxygen failed to run."
 	fi
 }
 
