@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="LXQt Build tools"
 HOMEPAGE="https://lxqt.org/"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="LXQt about dialog"
 HOMEPAGE="https://lxqt.org/"

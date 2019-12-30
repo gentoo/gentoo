@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Common base library for the LXQt desktop environment"
 HOMEPAGE="https://lxqt.org/"
