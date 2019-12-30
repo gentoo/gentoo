@@ -32,6 +32,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-12-30)
+# The PyPy packages have been restructured and dev-python/pypy is now
+# used unconditionally as the main package.  If you wish to continue
+# using prebuilt executables, install dev-python/pypy{,3}-exe-bin
+# along with it.
+# Removal in 30 days.
+dev-python/pypy-bin
+dev-python/pypy3-bin
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-12-29)
 # Currently breaks app-text/texlive-core-2019-r5, bug #704166
 ~app-text/poppler-0.84.0
