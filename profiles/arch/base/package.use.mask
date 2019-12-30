@@ -62,10 +62,6 @@ net-analyzer/testssl bundled-openssl kerberos
 # Requires media-libs/libheif which is only keyworded for amd64 and x86
 media-gfx/imagemagick heif
 
-# Ben Kohler <bkohler@gentoo.org> (2018-08-23)
-# Mask iwd support until net-wireless/iwd is keyworded
-net-misc/networkmanager iwd
-
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst only has support for assembling bootloader on some arches
 dev-util/catalyst system-bootloader
