@@ -1,9 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils toolchain-funcs
+EAPI=7
+inherit toolchain-funcs
 
 DESCRIPTION="HFS FS Access utils"
 HOMEPAGE="https://www.mars.org/home/rob/proj/hfs/"
@@ -21,15 +20,14 @@ RDEPEND="${DEPEND}"
 
 # use tk requires tcl - bug #150437
 REQUIRED_USE="tk? ( tcl )"
-
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-errno.patch \
-		"${FILESDIR}"/largerthan2gb.patch \
-		"${FILESDIR}"/${P}-fix-tcl-8.6.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-errno.patch
+	"${FILESDIR}"/largerthan2gb.patch
+	"${FILESDIR}"/${P}-fix-tcl-8.6.patch
+)
 
 src_configure() {
+	tc-export CC
 	econf $(use_with tcl) $(use_with tk)
 }
 
