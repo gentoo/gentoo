@@ -1,18 +1,19 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit qmake-utils gnome2-utils xdg-utils
+inherit qmake-utils gnome2-utils xdg
 
 DESCRIPTION="Cloth patternmaking software"
 HOMEPAGE="https://valentinaproject.bitbucket.io/"
-SRC_URI="https://bitbucket.org/dismine/${PN}/get/v${PV}.zip -> ${P}.zip"
+SRC_URI="https://bitbucket.org/dismine/${PN}/get/v${PV}.zip -> ${P}.zip
+	https://dev.gentoo.org/~fordfrog/distfiles/valentina-5858.patch.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnome"
+IUSE=""
 
 LANGS="cs de el en en es fi fr he id it nl pt-BR ro ru uk zh-CN"
 
@@ -40,6 +41,7 @@ S=${WORKDIR}/dismine-${PN}-b639b75d1688
 
 PATCHES=(
 	"${FILESDIR}/5823.patch"
+	"${WORKDIR}/valentina-5858.patch"
 )
 
 src_configure() {
@@ -117,13 +119,4 @@ src_install() {
 	cp dist/debian/valentina.sharedmimeinfo dist/debian/${PN}.xml || die
 	insinto /usr/share/mime/packages
 	doins dist/debian/${PN}.xml
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-
-	if use gnome ; then
-		gnome2_icon_cache_update
-	fi
 }
