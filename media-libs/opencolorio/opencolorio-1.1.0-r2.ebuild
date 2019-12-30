@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
-inherit cmake-utils flag-o-matic python-single-r1
+inherit cmake flag-o-matic python-single-r1
 
 DESCRIPTION="A color management framework for visual effects and animation"
 HOMEPAGE="http://opencolorio.org/"
@@ -57,7 +57,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	use python && python_fix_shebang .
 }
@@ -84,8 +84,7 @@ src_configure() {
 		-DOCIO_BUILD_PYGLUE=$(usex python)
 		-DOCIO_USE_SSE=$(usex cpu_flags_x86_sse2)
 		-DOCIO_BUILD_TESTS=$(usex test)
-		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 		-DCMAKE_DISABLE_FIND_PACKAGE_LATEX=ON # They don't build
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

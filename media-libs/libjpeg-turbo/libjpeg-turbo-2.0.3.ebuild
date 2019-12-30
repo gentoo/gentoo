@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib java-pkg-opt-2 libtool toolchain-funcs
 
 DESCRIPTION="MMX, SSE, and SSE2 SIMD accelerated JPEG library"
@@ -37,7 +38,7 @@ MULTILIB_WRAPPED_HEADERS=( /usr/include/jconfig.h )
 src_prepare() {
 	default
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	java-pkg-opt-2_src_prepare
 }
 
@@ -54,11 +55,11 @@ multilib_src_configure() {
 		-DWITH_MEM_SRCDST=ON
 	)
 	[[ ${ABI} == "x32" ]] && mycmakeargs+=( -DREQUIRE_SIMD=OFF ) #420239
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if multilib_is_native_abi ; then
 		pushd "${WORKDIR}/debian/extra" &>/dev/null || die
@@ -68,7 +69,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if multilib_is_native_abi ; then
 		pushd "${WORKDIR}/debian/extra" &>/dev/null || die
