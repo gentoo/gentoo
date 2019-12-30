@@ -780,7 +780,6 @@ virtual/httpd-php:5.6
 # Brian Evans <grknight@gentoo.org> (2019-10-01)
 # Old extensions which only work with PHP <7
 # Removal in 90 days. Bug 651784
-dev-php/suhosin
 dev-php/xcache
 
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
