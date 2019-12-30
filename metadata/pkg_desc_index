@@ -7612,7 +7612,7 @@ dev-python/colorspacious 1.1.0: Powerful, accurate, and easy-to-use Python libra
 dev-python/columnize 0.3.9: Format a simple (i.e. not nested) list into aligned columns
 dev-python/common 0.1.2: Common tools and data structures implemented in pure python
 dev-python/commonmark 0.5.4 0.7.5 0.8.1: Python parser for the CommonMark Markdown spec
-dev-python/configargparse 0.11.0 0.12.0 0.13.0 0.15.1 0.15.2: Drop-in replacement for argparse supporting config files and env variables
+dev-python/configargparse 0.13.0 1.0: Drop-in replacement for argparse supporting config files and env variables
 dev-python/configclass 0.1.0: A Python to class to hold configuration values
 dev-python/configobj 5.0.6: Simple config file reader and writer
 dev-python/configparser 3.3.0.2 3.5.0 3.5.0-r1: Backport of Python-3 built-in configparser
