@@ -22,7 +22,7 @@ if [[ "${PV}" == 9999 ]]; then
 	EGIT_CLONE_TYPE="shallow"
 else
 	SRC_URI="https://github.com/raspberrypi/firmware/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="-* ~arm"
+	KEYWORDS="-* ~arm ~arm64"
 	S="${WORKDIR}/firmware-${PV}"
 fi
 

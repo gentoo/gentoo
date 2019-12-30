@@ -47,10 +47,6 @@ media-libs/opencv contrib contribcvv contribdnn contribhdf contribsfm contribxfe
 # unmask sssd for sudo
 app-admin/sudo -sssd
 
-# Mart Raudsepp <leio@gentoo.org> (2018-11-01)
-# net-wireless/iwd not stable yet
-net-misc/networkmanager iwd
-
 # Mikle Kolyada <zlogene@gentoo.org> (2018-09-15)
 # the dependency is unstable
 media-video/libav nvidia

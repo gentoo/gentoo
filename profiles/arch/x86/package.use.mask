@@ -76,10 +76,6 @@ dev-python/pymongo test
 # media-libs/qtav not keyworded
 media-video/orion qtav
 
-# Ben Kohler <bkohler@gentoo.org> (2018-08-23)
-# Unmask iwd support where net-wireless/iwd is keyworded
-net-misc/networkmanager -iwd
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-08-23)
 # Dependency sys-cluster/ceph is keyworded for x86
 net-fs/samba -ceph

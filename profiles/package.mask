@@ -806,11 +806,6 @@ app-office/texmacs
 # Fails to dbus activate properly for me. Help welcome figuring it out.
 net-misc/gnome-remote-desktop
 
-# Mart Raudsepp <leio@gentoo.org> (2019-07-28)
-# GNOME 3.33 development release packages
->=dev-libs/vala-common-0.45
-dev-lang/vala:0.46
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-07-26)
 # Mask 5.x version
 # It breaks hundreds of py2 ebuilds and not all deps are keyworded
