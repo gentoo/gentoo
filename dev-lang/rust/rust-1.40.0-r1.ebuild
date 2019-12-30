@@ -60,7 +60,7 @@ LLVM_MAX_SLOT=9
 # FIXME:
 # this should be '>=virtual/rust-1.$(($(ver_cut 2) - 1))', but we can't do it yet
 # as the first gentoo-built rust that can bootstap new compiler is 1.40.0-r1
-BOOTSTRAP_DEPEND="|| ( =dev-lang/rust-${PF} =dev-lang/rust-bin-${PV}* )"
+BOOTSTRAP_DEPEND="|| ( =dev-lang/rust-${PVR} =dev-lang/rust-bin-${PV}* )"
 
 COMMON_DEPEND="
 	sys-libs/zlib
