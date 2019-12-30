@@ -497,7 +497,7 @@ app-arch/lzop 1.04: Utility for fast (even real-time) compression/decompression
 app-arch/makeself 2.2.0-r2: shell script that generates a self-extractible tar.gz
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
 app-arch/mt-st 1.3 9999: control magnetic tape drive operation
-app-arch/ncompress 4.2.4.5: Classic compress & uncompress programs for .Z (LZW) files
+app-arch/ncompress 4.2.4.5 4.2.4.6: Classic compress & uncompress programs for .Z (LZW) files
 app-arch/p7zip 16.02-r4: Port of 7-Zip archiver for Unix
 app-arch/par2cmdline 0.7.3 0.7.4 0.8.0: A PAR-2.0 file verification and repair tool
 app-arch/patool 1.12: Portable archive file manager
