@@ -1,4 +1,4 @@
-BDEPEND=dev-util/cmake >=virtual/rust-1.37.0 >=virtual/cargo-1.37.0 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=dev-util/cmake >=virtual/rust-1.37.0 >=virtual/rust-1.37.0 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install postinst test unpack
 DEPEND=media-libs/fontconfig:= media-libs/freetype:2 x11-libs/libxcb
 DESCRIPTION=GPU-accelerated terminal emulator
@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 PROPERTIES=live
 RDEPEND=media-libs/fontconfig:= media-libs/freetype:2 x11-libs/libxcb sys-libs/zlib sys-libs/ncurses:0 x11-libs/libXcursor x11-libs/libXi x11-libs/libXrandr virtual/opengl
 SLOT=0
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	cargo	2299702da29b5c96cb1ddd387b43779c	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	cargo	e18cdd5369f8cb75459c812a6126192b	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=15845f8e2cc10a284686cc9828226569
