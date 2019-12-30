@@ -16553,6 +16553,7 @@ sci-mathematics/cvc4 1.6 1.7: automatic theorem prover for satisfiability modulo
 sci-mathematics/dataplot 20090821 20131220: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
 sci-mathematics/dunshire 0.1.1: Python library to solve linear games over symmetric cones
+sci-mathematics/eclib 20190909: Programs for elliptic curves defined over the rational numbers
 sci-mathematics/ent 101202: Pseudorandom number sequence test
 sci-mathematics/euler 1.61.0: Mathematical programming environment
 sci-mathematics/factmsieve 76-r1: Convenient factorization helper script using msieve and ggnfs

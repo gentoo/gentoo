@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=sci-mathematics/pari:= dev-libs/ntl:= boost? ( dev-libs/boost:= ) flint? ( sci-mathematics/flint:= )
+DESCRIPTION=Programs for elliptic curves defined over the rational numbers
+EAPI=7
+HOMEPAGE=https://www.warwick.ac.uk/~masgaj/mwrank/index.html
+IUSE=boost flint minimal static-libs test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=sci-mathematics/pari:= dev-libs/ntl:= boost? ( dev-libs/boost:= ) flint? ( sci-mathematics/flint:= )
+RESTRICT=!test? ( test )
+SLOT=0/6
+SRC_URI=http://files.sagemath.org/spkg/upstream/eclib/eclib-20190909.tar.bz2
+_md5_=10ce789901df7a9777f7409ce338a10d
