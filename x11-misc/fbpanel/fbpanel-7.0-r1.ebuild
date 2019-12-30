@@ -48,7 +48,7 @@ src_configure() {
 		$(usex alsa --sound --no-sound)
 	)
 	echo ${myconfigure[@]} || die
-	${myconfigure[@]} || die
+	${myconfigure[@]} || die
 }
 
 pkg_postinst() {
