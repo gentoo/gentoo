@@ -17,6 +17,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Jason A. Donenfeld <zx2c4@gentoo.org> (2019-12-30)
+# Directly install net-vpn/wireguard-tools and net-vpn/wireguard-modules.
+# This may be accomplished by running:
+#     emerge -nO net-vpn/wireguard-tools net-vpn/wireguard-modules
+#     emerge -C virtual/wireguard
+virtual/wireguard
+
 # Michał Górny <mgorny@gentoo.org> (2019-12-30)
 # PyPy packages have been restructured, and the virtual is no longer
 # necessary.  Depend on dev-python/pypy{,3} instead.
