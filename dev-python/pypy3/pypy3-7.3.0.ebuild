@@ -17,7 +17,7 @@ LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
 SLOT="0/pypy36-pp73"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 gdbm +jit libressl ncurses sandbox sqlite test tk"
+IUSE="bzip2 gdbm +jit libressl ncurses sqlite test tk"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
