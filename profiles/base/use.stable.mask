@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Ben Kohler <bkohler@gentoo.org> (2019-12-30)
+# Masked until we get a stable net-wireless/iwd version
+iwd
+
 # Matt Turner <mattst88@gentoo.org> (2019-12-05)
 # Mask for testing. Bug 606924
 libglvnd

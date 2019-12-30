@@ -83,10 +83,6 @@ net-analyzer/testssl -bundled-openssl -kerberos
 # Unmask libheif support where media-libs/libheif is keyworded
 media-gfx/imagemagick -heif
 
-# Ben Kohler <bkohler@gentoo.org> (2018-08-23)
-# Unmask iwd support where net-wireless/iwd is keyworded
-net-misc/networkmanager -iwd
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-08-23)
 # Dependency sys-cluster/ceph is keyworded for amd64
 net-fs/samba -ceph
