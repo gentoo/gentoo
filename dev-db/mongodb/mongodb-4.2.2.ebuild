@@ -10,7 +10,7 @@ CHECKREQS_DISK_BUILD="2400M"
 CHECKREQS_DISK_USR="512M"
 CHECKREQS_MEMORY="1024M"
 
-inherit check-reqs flag-o-matic multiprocessing pax-utils python-any-r1 scons-utils systemd toolchain-funcs user
+inherit check-reqs flag-o-matic multiprocessing pax-utils python-any-r1 scons-utils systemd toolchain-funcs
 
 MY_P=${PN}-src-r${PV/_rc/-rc}
 
@@ -24,7 +24,9 @@ KEYWORDS="~amd64"
 IUSE="debug kerberos libressl lto ssl test +tools"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=app-arch/snappy-1.1.3
+RDEPEND="acct-group/mongodb
+	acct-user/mongodb
+	>=app-arch/snappy-1.1.3
 	>=dev-cpp/yaml-cpp-0.6.2:=
 	>=dev-libs/boost-1.70:=[threads(+)]
 	>=dev-libs/libpcre-8.42[cxx]
@@ -55,7 +57,6 @@ PDEPEND="tools? ( >=app-admin/mongo-tools-${PV} )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-fix-scons.patch"
-	"${FILESDIR}/${PN}-4.2.0-fix-scons-third-party.patch"
 	"${FILESDIR}/${PN}-4.0.0-no-compass.patch"
 )
 
@@ -71,13 +72,6 @@ pkg_pretend() {
 			ewarn "Be sure to set featureCompatibilityVersion to 4.0 before upgrading."
 		fi
 	fi
-}
-
-pkg_setup() {
-	enewgroup mongodb
-	enewuser mongodb -1 -1 /var/lib/${PN} mongodb
-
-	python-any-r1_pkg_setup
 }
 
 src_prepare() {
@@ -108,6 +102,7 @@ src_configure() {
 		--use-system-zstd
 	)
 
+	use arm64 && scons_opts+=( --use-hardware-crc32=off ) # Bug 701300
 	use debug && scons_opts+=( --dbg=on )
 	use kerberos && scons_opts+=( --use-sasl-client )
 	use lto && scons_opts+=( --lto=on )
