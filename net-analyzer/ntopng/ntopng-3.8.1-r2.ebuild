@@ -64,6 +64,13 @@ src_configure() {
 	default
 }
 
+src_compile() {
+	emake \
+		CC="$(tc-getCC)" \
+		MYCFLAGS="${CFLAGS}" \
+		MYLDFLAGS="${LDFLAGS}"
+}
+
 src_install() {
 	SHARE_NTOPNG_DIR="${EPREFIX}/usr/share/${PN}"
 	dodir ${SHARE_NTOPNG_DIR}
