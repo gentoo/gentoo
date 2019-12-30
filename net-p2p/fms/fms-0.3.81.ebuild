@@ -1,28 +1,29 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils cmake-utils user
 
 DESCRIPTION="A spam-resistant message board application for Freenet"
 HOMEPAGE="http://freenetproject.org/tools.html"
-SRC_URI="mirror://gentoo/${PN}-src-${PV}.zip"
+SRC_URI="https://dev.gentoo.org/~tommy/distfiles/${PN}-src-${PV}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="frost"
+IUSE="frost ssl"
 
 RDEPEND="virtual/libiconv
 	frost? ( net-libs/mbedtls )
+	ssl? ( net-libs/mbedtls )
 	>=dev-libs/poco-1.4.3_p1
 	>=dev-db/sqlite-3.6.15"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
 S=${WORKDIR}
-PATCHES=( "${FILESDIR}"/${PN}-use-system-libs3.patch )
+PATCHES=( "${FILESDIR}"/${PN}-use-system-libs4.patch )
 
 pkg_setup() {
 	enewgroup freenet
@@ -32,27 +33,29 @@ pkg_setup() {
 src_prepare() {
 	rm -rv  libs
 	edos2unix src/http/pages/showfilepage.cpp
+	edos2unix CMakeLists.txt
 
 	cmake-utils_src_prepare
 }
 
 src_configure() {
-	local mycmakeargs="-DI_HAVE_READ_THE_README=ON \
+	local mycmakeargs=( -DI_HAVE_READ_THE_README=ON \
 		-DUSE_BUNDLED_SQLITE=OFF \
 		-DDO_CHARSET_CONVERSION=ON \
-		$(cmake-utils_use frost FROST_SUPPORT)"
+		-DFROST_SUPPORT=$(use frost && echo ON || echo OFF) \
+		-DFCP_SSL_SUPPORT=$(use ssl && echo ON || echo OFF) )
 	cmake-utils_src_configure
 }
 
 src_install() {
 	insinto /var/freenet/fms
-	dobin "${CMAKE_BUILD_DIR}"/fms
-	doins *.htm
-	doins -r fonts images styles translations
+	dobin "${CMAKE_BUILD_DIR}"/fms || die
+	doins *.htm || die "doinstall failed"
+	doins -r fonts images styles translations || die
 	fperms -R o-rwx /var/freenet/fms/ /usr/bin/fms
 	fowners -R freenet:freenet /var/freenet/fms/ /usr/bin/fms
-	doinitd "${FILESDIR}/fms"
-	dodoc readme.txt
+	doinitd "${FILESDIR}/fms" || die "installing init.d file failed"
+	dodoc readme.txt || die "installing doc failed"
 }
 
 pkg_postinst() {
