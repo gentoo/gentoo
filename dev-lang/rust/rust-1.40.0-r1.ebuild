@@ -71,8 +71,6 @@ COMMON_DEPEND="
 	net-misc/curl[ssl]
 	system-llvm? (
 		${LLVM_DEPEND}
-		dev-util/cmake
-		dev-util/ninja
 	)
 "
 
@@ -83,6 +81,10 @@ DEPEND="${COMMON_DEPEND}
 		>=sys-devel/clang-3.5
 	)
 	system-bootstrap? ( ${BOOTSTRAP_DEPEND}	)
+	system-llvm? (
+		dev-util/cmake
+		dev-util/ninja
+	)
 "
 
 RDEPEND="${COMMON_DEPEND}
