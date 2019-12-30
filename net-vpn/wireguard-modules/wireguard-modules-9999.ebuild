@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="debug +module module-src"
 
 DEPEND=""
-RDEPEND="${DEPEND} !<=net-vpn/wireguard-0.0.20191219-r1"
+RDEPEND="${DEPEND} !<virtual/wireguard-1"
 
 MODULE_NAMES="wireguard(kernel/drivers/net:src)"
 BUILD_TARGETS="module"
