@@ -4,11 +4,11 @@ DESCRIPTION=Console-mode amateur radio contest logger
 EAPI=7
 HOMEPAGE=http://home.iae.nl/users/reinc/TLF-0.2.html
 IUSE=test
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:= dev-libs/glib:2 media-libs/hamlib media-sound/sox dev-libs/xmlrpc-c[curl]
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://nongnu/tlf/tlf-1.4.0.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=f5c29ffa4c203482562147343f144644
+_md5_=54f3f9db2a55ab32288914587b6bb0ab

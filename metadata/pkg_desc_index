@@ -357,7 +357,7 @@ app-admin/mei-amt-check 0_p20170515: AMT status checker
 app-admin/metalog 3-r2 20181125: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 1.0.0 1.0.1: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1 6.0.0.381_p1: MongoDB MMS agents
-app-admin/mongo-tools 3.6.8 3.6.13 3.6.14 4.0.10 4.0.12 4.0.13 4.2.0 4.2.1: A high-performance, open source, schema-free document-oriented database
+app-admin/mongo-tools 3.6.13 3.6.14 3.6.16 4.0.12 4.0.13 4.0.14 4.2.1 4.2.2: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.25.3 5.26.0: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/mtail 3.0.0_rc33: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
@@ -3176,7 +3176,7 @@ dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
 dev-db/mariadb 5.5.66 10.1.38-r1 10.1.43 10.2.22-r1 10.2.29 10.3.20 10.4.10: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.0.6-r1 3.1.6 9999: C client library for MariaDB/MySQL
 dev-db/metakit 2.4.9.7-r2: Embedded database library
-dev-db/mongodb 3.6.8 3.6.13 3.6.14 4.0.10 4.0.12 4.0.13 4.2.0-r2 4.2.1: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 3.6.13 3.6.14 3.6.16 4.0.12 4.0.13 4.0.14 4.2.1 4.2.2: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.19.0 1.20.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL

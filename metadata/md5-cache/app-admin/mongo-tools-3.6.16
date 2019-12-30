@@ -7,5 +7,5 @@ IUSE=sasl ssl
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
 SLOT=0
-SRC_URI=https://github.com/mongodb/mongo-tools/archive/r4.2.0.tar.gz -> mongo-tools-4.2.0.tar.gz
+SRC_URI=https://github.com/mongodb/mongo-tools/archive/r3.6.16.tar.gz -> mongo-tools-3.6.16.tar.gz
 _md5_=7706679c3ab0ced48d2dd3c8982860c9
