@@ -122,7 +122,7 @@ CDEPEND="
 		php_targets_php7-2? ( dev-lang/php:7.2[embed] )
 		php_targets_php7-3? ( dev-lang/php:7.3[embed] )
 	)
-	pypy? ( virtual/pypy )
+	pypy? ( dev-python/pypy )
 	python? ( ${PYTHON_DEPS} )
 	python_asyncio? ( virtual/python-greenlet[${PYTHON_USEDEP}] )
 	python_gevent? ( >=dev-python/gevent-1.3.5[${PYTHON_USEDEP}] )
