@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CHECKREQS_DISK_BUILD=3500M
-inherit cmake-utils xdg check-reqs
+inherit cmake xdg check-reqs
 
 DESCRIPTION="WYSIWYG Music Score Typesetter"
 HOMEPAGE="https://musescore.org/"
@@ -59,7 +59,7 @@ PATCHES=(
 S="${WORKDIR}/MuseScore-${PV}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Move soundfonts to the correct directory
 	mv "${WORKDIR}"/sound/* "${S}"/share/sound/ || die "Failed to move soundfont files"
@@ -81,11 +81,11 @@ src_configure() {
 		-DSOUNDFONT3="$(usex vorbis)"
 		-DBUILD_WEBENGINE="$(usex webengine)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
 	cd "${BUILD_DIR}" || die
-	cmake-utils_src_make -j1 lrelease manpages
-	cmake-utils_src_compile
+	cmake_build -j1 lrelease manpages
+	cmake_src_compile
 }

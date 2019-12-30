@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop
+inherit cmake desktop
 
 DESCRIPTION="FastTracker 2 inspired music tracker"
 HOMEPAGE="https://milkytracker.titandemo.org/"
@@ -31,15 +31,14 @@ S="${WORKDIR}/MilkyTracker-${PV}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
-		$(cmake-utils_use_find_package alsa ALSA)
-		$(cmake-utils_use_find_package jack JACK)
+		$(cmake_use_find_package alsa ALSA)
+		$(cmake_use_find_package jack JACK)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	newicon resources/pictures/carton.png ${PN}.png
 	make_desktop_entry ${PN} MilkyTracker ${PN} \
