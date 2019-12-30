@@ -4,81 +4,84 @@
 # QA check: ensure that Python modules are compiled after installing
 # Maintainer: Python project <python@gentoo.org>
 
-inherit python-utils-r1
+if [[ ${EAPI} == [5-7] ]]; then
+	inherit python-utils-r1
 
-python_pyc_check() {
-	local impl missing=() outdated=()
-	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		python_export "${impl}" EPYTHON PYTHON
-		[[ -x ${PYTHON} ]] || continue
-		local sitedir=$(python_get_sitedir "${impl}")
+	python_pyc_check() {
+		local impl missing=() outdated=()
+		for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
+			python_export "${impl}" EPYTHON PYTHON
+			[[ -x ${PYTHON} ]] || continue
+			local sitedir=$(python_get_sitedir "${impl}")
 
-		if [[ -d ${D}${sitedir} ]]; then
-			local suffixes=() subdir=
-			case ${EPYTHON} in
-				python2*)
-					suffixes=( .py{c,o} )
-					;;
-				pypy)
-					suffixes=( .pyc )
-					;;
-				python3*|pypy3*)
-					local tag=$("${PYTHON}" -c 'import sys; print(sys.implementation.cache_tag)')
-					suffixes=( ".${tag}"{,.opt-{1,2}}.pyc )
-					subdir=__pycache__/
-					;;
-				*)
-					# skip testing unknown impl
-					continue
-					;;
-			esac
+			if [[ -d ${D}${sitedir} ]]; then
+				local suffixes=() subdir=
+				case ${EPYTHON} in
+					python2*)
+						suffixes=( .py{c,o} )
+						;;
+					pypy)
+						suffixes=( .pyc )
+						;;
+					python3*|pypy3*)
+						local tag=$("${PYTHON}" -c 'import sys; print(sys.implementation.cache_tag)')
+						suffixes=( ".${tag}"{,.opt-{1,2}}.pyc )
+						subdir=__pycache__/
+						;;
+					*)
+						# skip testing unknown impl
+						continue
+						;;
+				esac
 
-			einfo "Verifying compiled files in ${sitedir}"
-			local f s
-			while read -d $'\0' -r f; do
-				local dir=${f%/*}
-				local basename=${f##*/}
-				basename=${basename%.py}
+				einfo "Verifying compiled files in ${sitedir}"
+				local f s
+				while read -d $'\0' -r f; do
+					local dir=${f%/*}
+					local basename=${f##*/}
+					basename=${basename%.py}
 
-				for s in "${suffixes[@]}"; do
-					local cache=${dir}/${subdir}${basename}${s}
-					if [[ ! -f ${cache} ]]; then
-						missing+=( "${cache}" )
-					elif [[ ${f} -nt ${cache} ]]; then
-						outdated+=( "${cache}" )
-					fi
-				done
-			done < <(find "${D}${sitedir}" -name '*.py' -print0)
+					for s in "${suffixes[@]}"; do
+						local cache=${dir}/${subdir}${basename}${s}
+						if [[ ! -f ${cache} ]]; then
+							missing+=( "${cache}" )
+						elif [[ ${f} -nt ${cache} ]]; then
+							outdated+=( "${cache}" )
+						fi
+					done
+				done < <(find "${D}${sitedir}" -name '*.py' -print0)
+			fi
+		done
+
+		if [[ ${missing[@]} ]]; then
+			eqawarn
+			eqawarn "This package installs one or more Python modules that are not byte-compiled."
+			eqawarn "The following files are missing:"
+			eqawarn
+			eqatag -v python-pyc.missing "${missing[@]#${D}}"
 		fi
-	done
 
-	if [[ ${missing[@]} ]]; then
-		eqawarn
-		eqawarn "This package installs one or more Python modules that are not byte-compiled."
-		eqawarn "The following files are missing:"
-		eqawarn
-		eqatag -v python-pyc.missing "${missing[@]#${D}}"
-	fi
+		if [[ ${outdated[@]} ]]; then
+			eqawarn
+			eqawarn "This package installs one or more compiled Python modules that have older"
+			eqawarn "timestamps than the corresponding source files:"
+			eqawarn
+			eqatag -v python-pyc.outdated "${outdated[@]#${D}}"
+		fi
 
-	if [[ ${outdated[@]} ]]; then
-		eqawarn
-		eqawarn "This package installs one or more compiled Python modules that have older"
-		eqawarn "timestamps than the corresponding source files:"
-		eqawarn
-		eqatag -v python-pyc.outdated "${outdated[@]#${D}}"
-	fi
+		if [[ ${missing[@]} || ${outdated[@]} ]]; then
+			eqawarn
+			eqawarn "Please either fix the upstream build system to byte-compile Python modules"
+			eqawarn "correctly, or call python_optimize after installing them.  For more"
+			eqawarn "information, see:"
+			eqawarn "https://wiki.gentoo.org/wiki/Project:Python/Byte_compiling"
+			eqawarn
+		fi
+	}
 
-	if [[ ${missing[@]} || ${outdated[@]} ]]; then
-		eqawarn
-		eqawarn "Please either fix the upstream build system to byte-compile Python modules"
-		eqawarn "correctly, or call python_optimize after installing them.  For more"
-		eqawarn "information, see:"
-		eqawarn "https://wiki.gentoo.org/wiki/Project:Python/Byte_compiling"
-		eqawarn
-	fi
-}
+	python_pyc_check
+fi
 
-python_pyc_check
 : # guarantee successful exit
 
 # vim:ft=ebuild
