@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 VALA_USE_DEPEND="vapigen"
-inherit cmake-utils python-any-r1 vala
+inherit cmake python-any-r1 vala
 
 DESCRIPTION="An implementation of basic iCAL protocols"
 HOMEPAGE="https://github.com/libical/libical"
@@ -53,14 +53,14 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	use examples || cmake_comment_add_subdirectory examples
 	use vala && vala_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package berkdb BDB)
+		$(cmake_use_find_package berkdb BDB)
 		-DICAL_BUILD_DOCS=$(usex doc)
 		-DICAL_GLIB=$(usex introspection)
 		-DGOBJECT_INTROSPECTION=$(usex introspection)
@@ -74,12 +74,12 @@ src_configure() {
 			-DVAPIGEN="${VAPIGEN}"
 		)
 	fi
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
-	use doc && cmake-utils_src_compile docs
+	cmake_src_compile
+	use doc && cmake_src_compile docs
 }
 
 src_test() {
@@ -87,13 +87,13 @@ src_test() {
 		-E "(icalrecurtest|icalrecurtest-r)" # bug 660282
 	)
 
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_install() {
 	use doc && HTML_DOCS=( "${BUILD_DIR}"/apidocs/html/. )
 
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use examples; then
 		rm examples/CMakeLists.txt || die
