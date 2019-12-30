@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/p/path.py/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' python3_{5,6,7} pypy3)
