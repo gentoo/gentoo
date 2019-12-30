@@ -6,7 +6,7 @@ EAPI=5
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=(
 	pypy
-	python3_5 python3_6 python3_7
+	python3_5 python3_6 python3_7 python3_8
 	python2_7
 )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
@@ -17,7 +17,7 @@ DESCRIPTION="Portage is the package management and distribution system for Gento
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
 SLOT="0"
 IUSE="build doc epydoc gentoo-dev +ipc +native-extensions +rsync-verify selinux xattr"
 
@@ -26,7 +26,11 @@ DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	dev-lang/python-exec:2
 	>=sys-apps/sed-4.0.5 sys-devel/patch
 	doc? ( app-text/xmlto ~app-text/docbook-xml-dtd-4.4 )
-	epydoc? ( >=dev-python/epydoc-2.0[$(python_gen_usedep 'python2*')] )"
+	epydoc? (
+		$(python_gen_cond_dep '
+			>=dev-python/epydoc-2.0[${PYTHON_USEDEP}]
+		' 'python2*')
+	)"
 # Require sandbox-2.2 for bug #288863.
 # For xattr, we can spawn getfattr and setfattr from sys-apps/attr, but that's
 # quite slow, so it's not considered in the dependencies as an alternative to
@@ -104,12 +108,8 @@ pkg_setup() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
-	# Apply 03c54e340073620f489ca85bca94267a198174fe,
-	# 0299aedef74e47c0a68acf7905d8714c9578f125, and
-	# 1ca5b822133171b131cef3dc15dc43583893ad6b for bug 698046.
-	sed -e 's|rsync -avP|rsync -LtvP|' -i cnf/make.globals lib/portage/tests/util/test_getconfig.py || die
-	sed -e 's|if os.stat(download_path).st_size == 0:|mystat = os.lstat(download_path)\n\t\t\t\t\t\tif mystat.st_size == 0 or (stat.S_ISLNK(mystat.st_mode) and not os.path.exists(download_path)):|' \
-		-i lib/portage/package/ebuild/fetch.py || die
+	# Apply 605ae9eb6dae230d8bb967edbdd719c61a2b14b8 for bug 704256.
+	sed -e 's|^		rsync ${rsync_opts} . "${repo_location%%/}"$|\t\tchmod 755 .\n\0|' -i bin/emerge-webrsync || die
 
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
@@ -265,5 +265,15 @@ pkg_preinst() {
 	# This is allowed to fail if the user/group are invalid for prefix users.
 	if chown portage:portage "${ED}"var/log/portage{,/elog} 2>/dev/null ; then
 		chmod g+s,ug+rwx "${ED}"var/log/portage{,/elog}
+	fi
+
+	if has_version "<${CATEGORY}/${PN}-2.3.77"; then
+		elog "The emerge --autounmask option is now disabled by default, except for"
+		elog "portions of behavior which are controlled by the --autounmask-use and"
+		elog "--autounmask-license options. For backward compatibility, previous"
+		elog "behavior of --autounmask=y and --autounmask=n is entirely preserved."
+		elog "Users can get the old behavior simply by adding --autounmask to the"
+		elog "make.conf EMERGE_DEFAULT_OPTS variable. For the rationale for this"
+		elog "change, see https://bugs.gentoo.org/658648."
 	fi
 }
