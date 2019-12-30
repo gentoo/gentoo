@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Image Blending with Multiresolution Splines"
 HOMEPAGE="http://enblend.sourceforge.net/"
@@ -52,7 +52,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i -e "s:share/doc/enblend:share/doc/${PF}:" doc/CMakeLists.txt || die
 }
@@ -70,7 +70,7 @@ src_configure() {
 		-DINSTALL_PDF_DOC=ON
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
@@ -81,5 +81,5 @@ src_compile() {
 	export VARTEXFONTS="${T}/fonts"
 
 	# forcing -j1 as every parallel compilation process needs about 1 GB RAM.
-	cmake-utils_src_compile -j1
+	cmake_src_compile -j1
 }

@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 # Make sure that test data are not newer than release;
@@ -41,7 +42,7 @@ src_prepare() {
 			die "Failed to rename test data"
 	fi
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 multilib_src_configure() {
@@ -53,7 +54,7 @@ multilib_src_configure() {
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_test() {

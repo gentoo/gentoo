@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="A library for reading and writing images"
 HOMEPAGE="https://sites.google.com/site/openimageio/ https://github.com/OpenImageIO"
@@ -81,7 +81,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	cmake_comment_add_subdirectory src/fonts
 }
 
@@ -121,5 +121,5 @@ src_configure() {
 		-DUSE_SIMD=$(local IFS=','; echo "${mysimd[*]}")
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

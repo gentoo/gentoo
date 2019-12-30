@@ -3,9 +3,9 @@
 
 EAPI=7
 
-inherit cmake-multilib
-
+CMAKE_ECLASS=cmake
 MYP=RELEASE_${PV//./_}
+inherit cmake-multilib
 
 DESCRIPTION="C/C++ library for PDF generation"
 HOMEPAGE="http://www.libharu.org/"
@@ -36,5 +36,5 @@ multilib_src_configure() {
 		-DLIBHPDF_EXAMPLES=NO # Doesn't work
 		-DLIBHPDF_STATIC=NO
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
