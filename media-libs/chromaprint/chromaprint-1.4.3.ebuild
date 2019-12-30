@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 GTEST_VERSION="1.8.0"
 inherit cmake-multilib
 
@@ -43,7 +44,7 @@ multilib_src_configure() {
 		-DFFT_LIB=avfft
 		-DAUDIO_PROCESSOR_LIB=$(usex libav avresample swresample)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_test() {
