@@ -13,7 +13,7 @@ SRC_URI="https://download.enlightenment.org/rel/bindings/python/${P}.tar.xz"
 
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc test"
 
 RESTRICT="!test? ( test )"
