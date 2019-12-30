@@ -781,7 +781,6 @@ virtual/httpd-php:5.6
 # Old extensions which only work with PHP <7
 # pecl-mongo is replaced by pecl-monogodb
 # Removal in 90 days. Bug 651784
-dev-php/magickwand
 dev-php/pecl-bbcode
 dev-php/pecl-cairo
 dev-php/pecl-dbx
