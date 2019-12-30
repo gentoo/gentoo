@@ -777,11 +777,6 @@ sys-apps/man
 dev-lang/php:5.6
 virtual/httpd-php:5.6
 
-# Brian Evans <grknight@gentoo.org> (2019-10-01)
-# Old extensions which only work with PHP <7
-# Removal in 90 days. Bug 651784
-dev-php/xcache
-
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
