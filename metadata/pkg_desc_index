@@ -10826,7 +10826,7 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 4.14.33-r1 4.20.3 5.3.7 5.4.6: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.7.1 0.7.2 9999: pkgcore-based QA utility
+dev-util/pkgcheck 0.7.2 0.7.3 9999: pkgcore-based QA utility
 dev-util/pkgconf 1.6.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
