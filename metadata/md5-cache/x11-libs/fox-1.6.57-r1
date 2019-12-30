@@ -1,14 +1,14 @@
 BDEPEND=doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install prepare
-DEPEND=x11-libs/libXrandr x11-libs/libXcursor x11-libs/fox-wrapper bzip2? ( app-arch/bzip2 ) jpeg? ( virtual/jpeg ) opengl? ( virtual/glu virtual/opengl ) png? ( media-libs/libpng:0= ) tiff? ( media-libs/tiff:0= ) truetype? ( media-libs/freetype:2 x11-libs/libXft ) zlib? ( sys-libs/zlib ) x11-base/xorg-proto x11-libs/libXt
+DEPEND=x11-libs/fox-wrapper x11-libs/libXcursor x11-libs/libXrandr bzip2? ( app-arch/bzip2 ) jpeg? ( virtual/jpeg ) opengl? ( virtual/glu virtual/opengl ) png? ( media-libs/libpng:0= ) tiff? ( media-libs/tiff:0= ) truetype? ( media-libs/freetype:2 x11-libs/libXft ) zlib? ( sys-libs/zlib ) x11-base/xorg-proto x11-libs/libXt
 DESCRIPTION=C++ Toolkit for developing Graphical User Interfaces easily and effectively
 EAPI=7
 HOMEPAGE=http://www.fox-toolkit.org/
 IUSE=+bzip2 +jpeg +opengl +png tiff +truetype +zlib debug doc profile
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=LGPL-2.1
-RDEPEND=x11-libs/libXrandr x11-libs/libXcursor x11-libs/fox-wrapper bzip2? ( app-arch/bzip2 ) jpeg? ( virtual/jpeg ) opengl? ( virtual/glu virtual/opengl ) png? ( media-libs/libpng:0= ) tiff? ( media-libs/tiff:0= ) truetype? ( media-libs/freetype:2 x11-libs/libXft ) zlib? ( sys-libs/zlib )
+RDEPEND=x11-libs/fox-wrapper x11-libs/libXcursor x11-libs/libXrandr bzip2? ( app-arch/bzip2 ) jpeg? ( virtual/jpeg ) opengl? ( virtual/glu virtual/opengl ) png? ( media-libs/libpng:0= ) tiff? ( media-libs/tiff:0= ) truetype? ( media-libs/freetype:2 x11-libs/libXft ) zlib? ( sys-libs/zlib )
 SLOT=1.6
 SRC_URI=ftp://ftp.fox-toolkit.org/pub/fox-1.6.57.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=8a45f7b01a7558c7440392d1fdc15818
+_md5_=0b3d692b7ea25836d2150024b3e49008

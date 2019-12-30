@@ -1,8 +1,8 @@
-DEFINED_PHASES=-
+DEFINED_PHASES=postinst
 DESCRIPTION=Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 EAPI=7
 IUSE=+module +tools
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 RDEPEND=tools? ( net-vpn/wireguard-tools ) module? ( net-vpn/wireguard-modules )
 SLOT=0
-_md5_=1cd56079f5e6848ad67c4148561c4f27
+_md5_=c2f9a3f3724be70fb603656700f35a54

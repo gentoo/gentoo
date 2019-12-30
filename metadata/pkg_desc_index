@@ -2612,8 +2612,8 @@ app-text/openlp 2.4.6: Free church presentation software
 app-text/opensp 1.5.2-r3 1.5.2-r6: A free, object-oriented toolkit for SGML parsing and entity management
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
 app-text/pandoc 1.12.4.2-r1 1.13.2.1 1.14.0.4 1.15.0.6 1.18 1.19.2.1 1.19.2.1-r1: Conversion between markup formats
-app-text/paperwork 1.2.4-r2 1.3.0: a personal document manager for scanned documents (and PDFs)
-app-text/paperwork-backend 1.2.4 1.3.0: Backend part of Paperwork (Python API, no UI)
+app-text/paperwork 1.2.4-r2 1.3.0 1.3.1: a personal document manager for scanned documents (and PDFs)
+app-text/paperwork-backend 1.2.4 1.3.0 1.3.1: Backend part of Paperwork (Python API, no UI)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
 app-text/par 1.52-r1: a paragraph reformatter, vaguely similar to fmt, but better
 app-text/passivetex 1.25-r1: A namespace-aware XML parser written in Tex
@@ -2685,7 +2685,7 @@ app-text/teseq 1.1.1: A tool for analyzing files that contain control characters
 app-text/tessdata_best 4.0.0: Most accurate trained models for app-text/tesseract
 app-text/tessdata_fast 4.0.0: Fast integer versions of trained models for app-text/tesseract
 app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible with the legacy engine
-app-text/tesseract 3.05.01 3.05.02 4.0.0 4.1.0 4.1.0-r1 9999: An OCR Engine, orginally developed at HP, now open source.
+app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2019-r1: A complete TeX distribution
 app-text/texlive-core 2019-r4 2019-r5: A complete TeX distribution
@@ -13197,7 +13197,7 @@ media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
 media-libs/libiec61883 1.2.0-r1: Library for capturing video (dv or mpeg2) over the IEEE 1394 bus
 media-libs/libifp 1.0.0.2-r1: A general-purpose library for iRiver's iFP portable audio players
 media-libs/libilbc 2.0.2 9999: Packaged version of iLBC codec from the WebRTC project
-media-libs/libinsane 1.0.1 1.0.2: Crossplatform access to image scanners
+media-libs/libinsane 1.0.1 1.0.2 1.0.3: Crossplatform access to image scanners
 media-libs/libiptcdata 1.0.4-r1: library for manipulating the International Press Telecommunications Council (IPTC) metadata
 media-libs/libirman 0.4.5: library for Irman control of Unix software
 media-libs/libjpeg-turbo 1.5.3-r2 2.0.3: MMX, SSE, and SSE2 SIMD accelerated JPEG library
@@ -15362,9 +15362,9 @@ net-misc/puf 1.0.0-r1: A download tool for UNIX-like systems
 net-misc/pulseaudio-dlna 0.5.2 0.5.2-r1 9999: A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio
 net-misc/putty 0.73 9999: A Free Telnet/SSH Client
 net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your command line
-net-misc/pyhoca-cli 0.6.0.1 0.6.1.1: X2Go command line client
-net-misc/pyhoca-gui 0.5.0.8 0.5.1.0: X2Go graphical client applet
-net-misc/python-x2go 0.6.0.2 0.6.1.1: X2Go client-side Python API
+net-misc/pyhoca-cli 0.6.0.1 0.6.1.1 0.6.1.2: X2Go command line client
+net-misc/pyhoca-gui 0.5.0.8 0.5.1.0 0.6.1.0: X2Go graphical client applet
+net-misc/python-x2go 0.6.0.2 0.6.1.1 0.6.1.2: X2Go client-side Python API
 net-misc/pytvshows 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
 net-misc/qtm 1.3.19: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP

@@ -1,0 +1,15 @@
+BDEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/setuptools[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=~app-text/paperwork-backend-1.3.1[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/libpillowfight[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pillow[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pycairo[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pyenchant[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pygobject:3[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/pyocr-0.3.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/python-dateutil[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pyxdg[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/simplebayes[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] media-libs/libinsane x11-libs/gtk+:3[introspection] x11-libs/libnotify[introspection]
+DESCRIPTION=a personal document manager for scanned documents (and PDFs)
+EAPI=7
+HOMEPAGE=https://gitlab.gnome.org/World/OpenPaperwork
+IUSE=python_targets_python3_6
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=~app-text/paperwork-backend-1.3.1[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/libpillowfight[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pillow[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pycairo[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pyenchant[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pygobject:3[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/pyocr-0.3.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/python-dateutil[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pyxdg[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/simplebayes[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] media-libs/libinsane x11-libs/gtk+:3[introspection] x11-libs/libnotify[introspection] python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+REQUIRED_USE=|| ( python_targets_python3_6 )
+SLOT=0
+SRC_URI=mirror://pypi/p/paperwork/paperwork-1.3.1.tar.gz
+_eclasses_=distutils-r1	48c123e514b2cd2128d36eb3bbb9a6fa	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=5ad265504c3c4c158a89d015141629b5
