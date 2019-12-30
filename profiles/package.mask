@@ -771,59 +771,6 @@ dev-libs/gmp:3
 # Please migrate to sys-apps/man-db.
 sys-apps/man
 
-# Brian Evans <grknight@gentoo.org> (2019-10-01)
-# End of life.  Please upgrade.
-# Removal in 90 days. Bug 651784
-dev-lang/php:5.6
-virtual/httpd-php:5.6
-
-# Brian Evans <grknight@gentoo.org> (2019-10-01)
-# Requires end of life PHP 5.6.  Please upgrade.
-# Removal in 90 days. Bug 651784
-=www-apps/rutorrent-3.4-r1
-
-# Brian Evans <grknight@gentoo.org> (2019-10-01)
-# Old slots for support of PHP <7
-# Removal in 90 days. Bug 651784
-dev-php/pecl-apcu:0
-dev-php/pecl-dbase:0
-dev-php/pecl-http:2
-dev-php/pecl-mailparse:0
-dev-php/pecl-memcache:0
-dev-php/pecl-memcached:0
-dev-php/pecl-oauth:0
-dev-php/pecl-propro:0
-dev-php/pecl-ps:0
-dev-php/pecl-raphf:0
-dev-php/pecl-rrd:0
-dev-php/pecl-ssh2:0
-dev-php/pecl-stomp:0
-dev-php/pecl-xdiff:0
-dev-php/pecl-yaml:0
-
-# Brian Evans <grknight@gentoo.org> (2019-10-01)
-# Old extensions which only work with PHP <7
-# pecl-mongo is replaced by pecl-monogodb
-# Removal in 90 days. Bug 651784
-dev-php/PEAR-MDB2_Driver_mysql
-dev-php/magickwand
-dev-php/pecl-bbcode
-dev-php/pecl-cairo
-dev-php/pecl-dbx
-dev-php/pecl-haru
-dev-php/pecl-htscanner
-dev-php/pecl-libevent
-dev-php/pecl-mongo
-dev-php/pecl-mysqlnd_ms
-dev-php/pecl-mysqlnd_qc
-dev-php/pecl-sphinx
-dev-php/pecl-spl_types
-dev-php/pecl-svn
-dev-php/pecl-xrange
-dev-php/suhosin
-dev-php/xcache
-<dev-php/xhprof-0.9.10
-
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
