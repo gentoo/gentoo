@@ -1,0 +1,1495 @@
+# HG changeset patch
+# User Roman Telezhynskyi <kroluku@gmail.com>
+# Date 1577703657 -7200
+#      Mon Dec 30 13:00:57 2019 +0200
+# Branch release
+# Node ID fb8691f522f3515d7c3014a0ea90b60b352a444e
+# Parent  065a26d8b5779ca5c8c2486509352c8c48190a33
+Fix move sematic.
+
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/qmuparser/qmuparsercallback.cpp
+--- a/src/libs/qmuparser/qmuparsercallback.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/qmuparser/qmuparsercallback.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -208,6 +208,21 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++QmuParserCallback &QmuParserCallback::operator=(QmuParserCallback &&a_Fun) Q_DECL_NOTHROW
++{
++    Swap(a_Fun);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void QmuParserCallback::Swap(QmuParserCallback &a_Fun) Q_DECL_NOTHROW
++{
++    std::swap(d, a_Fun.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ /**
+  * @brief Return true if the function is conservative.
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/qmuparser/qmuparsercallback.h
+--- a/src/libs/qmuparser/qmuparsercallback.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/qmuparser/qmuparsercallback.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -86,11 +86,10 @@
+     QmuParserCallback &operator=(const QmuParserCallback &a_Fun);
+ 
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    QmuParserCallback &operator=(QmuParserCallback &&a_Fun) Q_DECL_NOTHROW { Swap(a_Fun); return *this; }
++    QmuParserCallback &operator=(QmuParserCallback &&a_Fun) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(QmuParserCallback &a_Fun) Q_DECL_NOTHROW
+-    { std::swap(d, a_Fun.d); }
++    void Swap(QmuParserCallback &a_Fun) Q_DECL_NOTHROW;
+ 
+     Q_REQUIRED_RESULT QmuParserCallback* Clone() const;
+ 
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vabstractarc.cpp
+--- a/src/libs/vgeometry/vabstractarc.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vabstractarc.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -78,6 +78,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VAbstractArc &VAbstractArc::operator=(VAbstractArc &&arc) Q_DECL_NOTHROW
++{
++    Swap(arc);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VAbstractArc::Swap(VAbstractArc &arc) Q_DECL_NOTHROW
++{
++    VAbstractCurve::Swap(arc);
++    std::swap(d, arc.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VAbstractArc::~VAbstractArc()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vabstractarc.h
+--- a/src/libs/vgeometry/vabstractarc.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vabstractarc.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -58,11 +58,10 @@
+ 
+     VAbstractArc& operator= (const VAbstractArc &arc);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VAbstractArc &operator=(VAbstractArc &&arc) Q_DECL_NOTHROW { Swap(arc); return *this; }
++    VAbstractArc &operator=(VAbstractArc &&arc) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VAbstractArc &arc) Q_DECL_NOTHROW
+-    { VAbstractCurve::Swap(arc); std::swap(d, arc.d); }
++    void Swap(VAbstractArc &arc) Q_DECL_NOTHROW;
+ 
+     QString       GetFormulaF1 () const;
+     void          SetFormulaF1 (const QString &formula, qreal value);
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vabstractcurve.cpp
+--- a/src/libs/vgeometry/vabstractcurve.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vabstractcurve.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -59,6 +59,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VAbstractCurve &VAbstractCurve::operator=(VAbstractCurve &&curve) Q_DECL_NOTHROW
++{
++    Swap(curve);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VAbstractCurve::Swap(VAbstractCurve &curve) Q_DECL_NOTHROW
++{
++    VGObject::Swap(curve);
++    std::swap(d, curve.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VAbstractCurve::~VAbstractCurve()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vabstractcurve.h
+--- a/src/libs/vgeometry/vabstractcurve.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vabstractcurve.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -57,11 +57,10 @@
+ 
+     VAbstractCurve& operator= (const VAbstractCurve &curve);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VAbstractCurve &operator=(VAbstractCurve &&curve) Q_DECL_NOTHROW { Swap(curve); return *this; }
++    VAbstractCurve &operator=(VAbstractCurve &&curve) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VAbstractCurve &curve) Q_DECL_NOTHROW
+-    { VGObject::Swap(curve); std::swap(d, curve.d); }
++    void Swap(VAbstractCurve &curve) Q_DECL_NOTHROW;
+ 
+     virtual QVector<QPointF> GetPoints() const =0;
+     static QVector<QPointF>  GetSegmentPoints(const QVector<QPointF> &points, const QPointF &begin, const QPointF &end,
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/varc.cpp
+--- a/src/libs/vgeometry/varc.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/varc.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -116,6 +116,23 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VArc &VArc::operator=(VArc &&arc) Q_DECL_NOTHROW
++{
++    Swap(arc);
++    return *this;
++}
++#endif
++
++
++//---------------------------------------------------------------------------------------------------------------------
++inline void VArc::Swap(VArc &arc) Q_DECL_NOTHROW
++{
++    VAbstractArc::Swap(arc);
++    std::swap(d, arc.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VArc VArc::Rotate(const QPointF &originPoint, qreal degrees, const QString &prefix) const
+ {
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/varc.h
+--- a/src/libs/vgeometry/varc.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/varc.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -66,11 +66,10 @@
+ 
+     VArc& operator= (const VArc &arc);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VArc &operator=(VArc &&arc) Q_DECL_NOTHROW { Swap(arc); return *this; }
++    VArc &operator=(VArc &&arc) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VArc &arc) Q_DECL_NOTHROW
+-    { VAbstractArc::Swap(arc); std::swap(d, arc.d); }
++    void Swap(VArc &arc) Q_DECL_NOTHROW;
+ 
+     QString GetFormulaRadius () const;
+     void    SetFormulaRadius (const QString &formula, qreal value);
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vcubicbezier.cpp
+--- a/src/libs/vgeometry/vcubicbezier.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vcubicbezier.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -64,6 +64,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VCubicBezier &VCubicBezier::operator=(VCubicBezier &&curve) Q_DECL_NOTHROW
++{
++    Swap(curve);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VCubicBezier::Swap(VCubicBezier &curve) Q_DECL_NOTHROW
++{
++    VAbstractCubicBezier::Swap(curve);
++    std::swap(d, curve.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VCubicBezier VCubicBezier::Rotate(const QPointF &originPoint, qreal degrees, const QString &prefix) const
+ {
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vcubicbezier.h
+--- a/src/libs/vgeometry/vcubicbezier.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vcubicbezier.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -57,11 +57,10 @@
+ 
+     VCubicBezier &operator=(const VCubicBezier &curve);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VCubicBezier &operator=(VCubicBezier &&curve) Q_DECL_NOTHROW { Swap(curve); return *this; }
++    VCubicBezier &operator=(VCubicBezier &&curve) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VCubicBezier &curve) Q_DECL_NOTHROW
+-    { VAbstractCubicBezier::Swap(curve); std::swap(d, curve.d); }
++    void Swap(VCubicBezier &curve) Q_DECL_NOTHROW;
+ 
+     virtual VPointF GetP1() const override;
+     void            SetP1(const VPointF &p);
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vcubicbezierpath.cpp
+--- a/src/libs/vgeometry/vcubicbezierpath.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vcubicbezierpath.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -78,6 +78,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VCubicBezierPath &VCubicBezierPath::operator=(VCubicBezierPath &&curve) Q_DECL_NOTHROW
++{
++    Swap(curve);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VCubicBezierPath::Swap(VCubicBezierPath &curve) Q_DECL_NOTHROW
++{
++    VAbstractCubicBezierPath::Swap(curve);
++    std::swap(d, curve.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VCubicBezierPath VCubicBezierPath::Rotate(const QPointF &originPoint, qreal degrees, const QString &prefix) const
+ {
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vcubicbezierpath.h
+--- a/src/libs/vgeometry/vcubicbezierpath.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vcubicbezierpath.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -58,11 +58,10 @@
+ 
+     VCubicBezierPath &operator=(const VCubicBezierPath &curve);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VCubicBezierPath &operator=(VCubicBezierPath &&curve) Q_DECL_NOTHROW { Swap(curve); return *this; }
++    VCubicBezierPath &operator=(VCubicBezierPath &&curve) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VCubicBezierPath &curve) Q_DECL_NOTHROW
+-    { VAbstractCubicBezierPath::Swap(curve); std::swap(d, curve.d); }
++    void Swap(VCubicBezierPath &curve) Q_DECL_NOTHROW;
+ 
+     VPointF &operator[](int indx);
+ 
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vellipticalarc.cpp
+--- a/src/libs/vgeometry/vellipticalarc.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vellipticalarc.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -123,6 +123,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VEllipticalArc &VEllipticalArc::operator=(VEllipticalArc &&arc) Q_DECL_NOTHROW
++{
++    Swap(arc);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VEllipticalArc::Swap(VEllipticalArc &arc) Q_DECL_NOTHROW
++{
++    VAbstractArc::Swap(arc);
++    std::swap(d, arc.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VEllipticalArc VEllipticalArc::Rotate(QPointF originPoint, qreal degrees, const QString &prefix) const
+ {
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vellipticalarc.h
+--- a/src/libs/vgeometry/vellipticalarc.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vellipticalarc.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -69,11 +69,10 @@
+ 
+     VEllipticalArc& operator= (const VEllipticalArc &arc);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VEllipticalArc &operator=(VEllipticalArc &&arc) Q_DECL_NOTHROW { Swap(arc); return *this; }
++    VEllipticalArc &operator=(VEllipticalArc &&arc) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VEllipticalArc &arc) Q_DECL_NOTHROW
+-    { VAbstractArc::Swap(arc); std::swap(d, arc.d); }
++    void Swap(VEllipticalArc &arc) Q_DECL_NOTHROW;
+ 
+     QString GetFormulaRotationAngle () const;
+     void    SetFormulaRotationAngle (const QString &formula, qreal value);
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vgobject.cpp
+--- a/src/libs/vgeometry/vgobject.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vgobject.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -84,6 +84,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++
++//---------------------------------------------------------------------------------------------------------------------
++VGObject &VGObject::operator=(VGObject &&obj) Q_DECL_NOTHROW
++{
++    Swap(obj);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VGObject::Swap(VGObject &obj) Q_DECL_NOTHROW
++{
++    std::swap(d, obj.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VGObject::~VGObject()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vgobject.h
+--- a/src/libs/vgeometry/vgobject.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vgobject.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -59,11 +59,10 @@
+ 
+     VGObject& operator= (const VGObject &obj);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VGObject &operator=(VGObject &&obj) Q_DECL_NOTHROW { Swap(obj); return *this; }
++    VGObject &operator=(VGObject &&obj) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VGObject &obj) Q_DECL_NOTHROW
+-    { std::swap(d, obj.d); }
++    void Swap(VGObject &obj) Q_DECL_NOTHROW;
+ 
+     quint32         getIdObject() const;
+     void            setIdObject(const quint32 &value);
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vplacelabelitem.cpp
+--- a/src/libs/vgeometry/vplacelabelitem.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vplacelabelitem.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -208,6 +208,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VPlaceLabelItem &VPlaceLabelItem::operator=(VPlaceLabelItem &&item) Q_DECL_NOTHROW
++{
++    Swap(item);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VPlaceLabelItem::Swap(VPlaceLabelItem &item) Q_DECL_NOTHROW
++{
++    VPointF::Swap(item);
++    std::swap(d, item.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ PlaceLabelImg VPlaceLabelItem::LabelShape() const
+ {
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vplacelabelitem.h
+--- a/src/libs/vgeometry/vplacelabelitem.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vplacelabelitem.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -47,11 +47,10 @@
+ 
+     VPlaceLabelItem &operator=(const VPlaceLabelItem &item);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VPlaceLabelItem &operator=(VPlaceLabelItem &&item) Q_DECL_NOTHROW { Swap(item); return *this; }
++    VPlaceLabelItem &operator=(VPlaceLabelItem &&item) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VPlaceLabelItem &item) Q_DECL_NOTHROW
+-    { VPointF::Swap(item); std::swap(d, item.d); }
++    void Swap(VPlaceLabelItem &item) Q_DECL_NOTHROW;
+ 
+     QString  GetWidthFormula() const;
+     QString& GetWidthFormula();
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vpointf.cpp
+--- a/src/libs/vgeometry/vpointf.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vpointf.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -101,6 +101,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VPointF &VPointF::operator=(VPointF &&point) Q_DECL_NOTHROW
++{
++    Swap(point);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VPointF::Swap(VPointF &point) Q_DECL_NOTHROW
++{
++    VGObject::Swap(point);
++    std::swap(d, point.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VPointF::operator QPointF() const
+ {
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vpointf.h
+--- a/src/libs/vgeometry/vpointf.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vpointf.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -62,11 +62,10 @@
+ 
+     VPointF &operator=(const VPointF &point);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VPointF &operator=(VPointF &&point) Q_DECL_NOTHROW { Swap(point); return *this; }
++    VPointF &operator=(VPointF &&point) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VPointF &point) Q_DECL_NOTHROW
+-    { VGObject::Swap(point); std::swap(d, point.d); }
++    void Swap(VPointF &point) Q_DECL_NOTHROW;
+ 
+     explicit operator QPointF() const;
+     VPointF Rotate(const QPointF &originPoint, qreal degrees, const QString &prefix = QString()) const;
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vspline.cpp
+--- a/src/libs/vgeometry/vspline.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vspline.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -246,6 +246,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VSpline &VSpline::operator=(VSpline &&spline) Q_DECL_NOTHROW
++{
++    Swap(spline);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VSpline::Swap(VSpline &spline) Q_DECL_NOTHROW
++{
++    VAbstractCubicBezier::Swap(spline);
++    std::swap(d, spline.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ /**
+  * @brief GetP1 return first spline point.
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vspline.h
+--- a/src/libs/vgeometry/vspline.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vspline.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -67,11 +67,10 @@
+ 
+     VSpline &operator=(const VSpline &spline);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VSpline &operator=(VSpline &&spline) Q_DECL_NOTHROW { Swap(spline); return *this; }
++    VSpline &operator=(VSpline &&spline) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VSpline &spline) Q_DECL_NOTHROW
+-    { VAbstractCubicBezier::Swap(spline); std::swap(d, spline.d); }
++    void Swap(VSpline &spline) Q_DECL_NOTHROW;
+ 
+     virtual VPointF GetP1 () const override;
+     void            SetP1 (const VPointF &p);
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vsplinepath.cpp
+--- a/src/libs/vgeometry/vsplinepath.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vsplinepath.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -301,6 +301,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VSplinePath &VSplinePath::operator=(VSplinePath &&path) Q_DECL_NOTHROW
++{
++    Swap(path);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VSplinePath::Swap(VSplinePath &path) Q_DECL_NOTHROW
++{
++    VAbstractCubicBezierPath::Swap(path);
++    std::swap(d, path.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ /**
+  * @brief operator [] return spline point by index.
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vsplinepath.h
+--- a/src/libs/vgeometry/vsplinepath.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vsplinepath.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -67,11 +67,10 @@
+     VSplinePoint &operator[](int indx);
+     VSplinePath  &operator=(const VSplinePath &path);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VSplinePath &operator=(VSplinePath &&path) Q_DECL_NOTHROW { Swap(path); return *this; }
++    VSplinePath &operator=(VSplinePath &&path) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VSplinePath &path) Q_DECL_NOTHROW
+-    { VAbstractCubicBezierPath::Swap(path); std::swap(d, path.d); }
++    void Swap(VSplinePath &path) Q_DECL_NOTHROW;
+ 
+     void   append(const VSplinePoint &point);
+ 
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vsplinepoint.cpp
+--- a/src/libs/vgeometry/vsplinepoint.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vsplinepoint.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -74,6 +74,20 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VFSplinePoint &VFSplinePoint::operator=(VFSplinePoint &&point) Q_DECL_NOTHROW
++{
++    Swap(point);
++    return *this;
++}
++#endif
++
++void VFSplinePoint::Swap(VFSplinePoint &point) Q_DECL_NOTHROW
++{
++    std::swap(d, point.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VFSplinePoint::~VFSplinePoint()
+ {}
+@@ -219,6 +233,21 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VSplinePoint &VSplinePoint::operator=(VSplinePoint &&point) Q_DECL_NOTHROW
++{
++    Swap(point);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VSplinePoint::Swap(VSplinePoint &point) Q_DECL_NOTHROW
++{
++    std::swap(d, point.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VSplinePoint::~VSplinePoint()
+ {
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vgeometry/vsplinepoint.h
+--- a/src/libs/vgeometry/vsplinepoint.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vgeometry/vsplinepoint.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -53,11 +53,10 @@
+ 
+     VFSplinePoint &operator=(const VFSplinePoint &point);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VFSplinePoint &operator=(VFSplinePoint &&point) Q_DECL_NOTHROW { Swap(point); return *this; }
++    VFSplinePoint &operator=(VFSplinePoint &&point) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VFSplinePoint &point) Q_DECL_NOTHROW
+-    { std::swap(d, point.d); }
++    void Swap(VFSplinePoint &point) Q_DECL_NOTHROW;
+ 
+     VPointF P() const;
+     void    SetP(const VPointF &value);
+@@ -93,11 +92,10 @@
+ 
+     VSplinePoint &operator=(const VSplinePoint &point);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VSplinePoint &operator=(VSplinePoint &&point) Q_DECL_NOTHROW { Swap(point); return *this; }
++    VSplinePoint &operator=(VSplinePoint &&point) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VSplinePoint &point) Q_DECL_NOTHROW
+-    { std::swap(d, point.d); }
++    void Swap(VSplinePoint &point) Q_DECL_NOTHROW;
+ 
+     VPointF P() const;
+     void    SetP(const VPointF &value);
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vlayout/vabstractpiece.cpp
+--- a/src/libs/vlayout/vabstractpiece.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vlayout/vabstractpiece.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -778,6 +778,21 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VAbstractPiece &VAbstractPiece::operator=(VAbstractPiece &&piece) Q_DECL_NOTHROW
++{
++    Swap(piece);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VAbstractPiece::Swap(VAbstractPiece &piece) Q_DECL_NOTHROW
++{
++    std::swap(d, piece.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VAbstractPiece::~VAbstractPiece()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vlayout/vabstractpiece.h
+--- a/src/libs/vlayout/vabstractpiece.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vlayout/vabstractpiece.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -154,11 +154,10 @@
+ 
+     VAbstractPiece &operator=(const VAbstractPiece &piece);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VAbstractPiece &operator=(VAbstractPiece &&piece) Q_DECL_NOTHROW { Swap(piece); return *this; }
++    VAbstractPiece &operator=(VAbstractPiece &&piece) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VAbstractPiece &piece) Q_DECL_NOTHROW
+-    { std::swap(d, piece.d); }
++    void Swap(VAbstractPiece &piece) Q_DECL_NOTHROW;
+ 
+     QString GetName() const;
+     void    SetName(const QString &value);
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vlayout/vcontour.cpp
+--- a/src/libs/vlayout/vcontour.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vlayout/vcontour.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -66,6 +66,21 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VContour &VContour::operator=(VContour &&contour) Q_DECL_NOTHROW
++{
++    Swap(contour);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VContour::Swap(VContour &contour) Q_DECL_NOTHROW
++{
++    std::swap(d, contour.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VContour::~VContour()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vlayout/vcontour.h
+--- a/src/libs/vlayout/vcontour.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vlayout/vcontour.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -55,11 +55,10 @@
+ 
+     VContour &operator=(const VContour &contour);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VContour &operator=(VContour &&contour) Q_DECL_NOTHROW { Swap(contour); return *this; }
++    VContour &operator=(VContour &&contour) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VContour &contour) Q_DECL_NOTHROW
+-    { std::swap(d, contour.d); }
++    void Swap(VContour &contour) Q_DECL_NOTHROW;
+ 
+     void             SetContour(const QVector<QPointF> &contour);
+     QVector<QPointF> GetContour() const;
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vlayout/vlayoutpaper.cpp
+--- a/src/libs/vlayout/vlayoutpaper.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vlayout/vlayoutpaper.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -75,6 +75,21 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VLayoutPaper &VLayoutPaper::operator=(VLayoutPaper &&paper) Q_DECL_NOTHROW
++{
++    Swap(paper);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VLayoutPaper::Swap(VLayoutPaper &paper) Q_DECL_NOTHROW
++{
++    std::swap(d, paper.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VLayoutPaper::~VLayoutPaper()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vlayout/vlayoutpaper.h
+--- a/src/libs/vlayout/vlayoutpaper.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vlayout/vlayoutpaper.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -57,11 +57,10 @@
+ 
+     VLayoutPaper &operator=(const VLayoutPaper &paper);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VLayoutPaper &operator=(VLayoutPaper &&paper) Q_DECL_NOTHROW { Swap(paper); return *this; }
++    VLayoutPaper &operator=(VLayoutPaper &&paper) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VLayoutPaper &paper) Q_DECL_NOTHROW
+-    { std::swap(d, paper.d); }
++    void Swap(VLayoutPaper &paper) Q_DECL_NOTHROW;
+ 
+     int  GetHeight() const;
+     void SetHeight(int height);
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vlayout/vlayoutpiece.cpp
+--- a/src/libs/vlayout/vlayoutpiece.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vlayout/vlayoutpiece.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -388,6 +388,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VLayoutPiece &VLayoutPiece::operator=(VLayoutPiece &&detail) Q_DECL_NOTHROW
++{
++    Swap(detail);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VLayoutPiece::Swap(VLayoutPiece &detail) Q_DECL_NOTHROW
++{
++    VAbstractPiece::Swap(detail);
++    std::swap(d, detail.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VLayoutPiece::~VLayoutPiece()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vlayout/vlayoutpiece.h
+--- a/src/libs/vlayout/vlayoutpiece.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vlayout/vlayoutpiece.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -65,11 +65,10 @@
+ 
+     VLayoutPiece &operator=(const VLayoutPiece &detail);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VLayoutPiece &operator=(VLayoutPiece &&detail) Q_DECL_NOTHROW { Swap(detail); return *this; }
++    VLayoutPiece &operator=(VLayoutPiece &&detail) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VLayoutPiece &detail) Q_DECL_NOTHROW
+-    { VAbstractPiece::Swap(detail); std::swap(d, detail.d); }
++    void Swap(VLayoutPiece &detail) Q_DECL_NOTHROW;
+ 
+     static VLayoutPiece Create(const VPiece &piece, const VContainer *pattern);
+ 
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vlayout/vlayoutpiecepath.cpp
+--- a/src/libs/vlayout/vlayoutpiecepath.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vlayout/vlayoutpiecepath.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -61,6 +61,21 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VLayoutPiecePath &VLayoutPiecePath::operator=(VLayoutPiecePath &&path) Q_DECL_NOTHROW
++{
++    Swap(path);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VLayoutPiecePath::Swap(VLayoutPiecePath &path) Q_DECL_NOTHROW
++{
++    std::swap(d, path.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VLayoutPiecePath::~VLayoutPiecePath()
+ {
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vlayout/vlayoutpiecepath.h
+--- a/src/libs/vlayout/vlayoutpiecepath.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vlayout/vlayoutpiecepath.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -46,11 +46,10 @@
+ 
+     VLayoutPiecePath &operator=(const VLayoutPiecePath &path);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VLayoutPiecePath &operator=(VLayoutPiecePath &&path) Q_DECL_NOTHROW { Swap(path); return *this; }
++    VLayoutPiecePath &operator=(VLayoutPiecePath &&path) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VLayoutPiecePath &path) Q_DECL_NOTHROW
+-    { std::swap(d, path.d); }
++    void Swap(VLayoutPiecePath &path) Q_DECL_NOTHROW;
+ 
+     QPainterPath GetPainterPath() const;
+ 
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/floatItemData/vabstractfloatitemdata.cpp
+--- a/src/libs/vpatterndb/floatItemData/vabstractfloatitemdata.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/floatItemData/vabstractfloatitemdata.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -50,6 +50,21 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VAbstractFloatItemData &VAbstractFloatItemData::operator=(VAbstractFloatItemData &&data) Q_DECL_NOTHROW
++{
++    Swap(data);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VAbstractFloatItemData::Swap(VAbstractFloatItemData &data) Q_DECL_NOTHROW
++{
++    std::swap(d, data.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VAbstractFloatItemData::~VAbstractFloatItemData()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/floatItemData/vabstractfloatitemdata.h
+--- a/src/libs/vpatterndb/floatItemData/vabstractfloatitemdata.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/floatItemData/vabstractfloatitemdata.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -44,11 +44,10 @@
+ 
+     VAbstractFloatItemData &operator=(const VAbstractFloatItemData &data);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VAbstractFloatItemData &operator=(VAbstractFloatItemData &&data) Q_DECL_NOTHROW { Swap(data); return *this; }
++    VAbstractFloatItemData &operator=(VAbstractFloatItemData &&data) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VAbstractFloatItemData &data) Q_DECL_NOTHROW
+-    { std::swap(d, data.d); }
++    void Swap(VAbstractFloatItemData &data) Q_DECL_NOTHROW;
+ 
+     // methods, which set and return values of different parameters
+     QPointF GetPos() const;
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/floatItemData/vgrainlinedata.cpp
+--- a/src/libs/vpatterndb/floatItemData/vgrainlinedata.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/floatItemData/vgrainlinedata.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -55,6 +55,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VGrainlineData &VGrainlineData::operator=(VGrainlineData &&data) Q_DECL_NOTHROW
++{
++    Swap(data);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VGrainlineData::Swap(VGrainlineData &data) Q_DECL_NOTHROW
++{
++    VAbstractFloatItemData::Swap(data);
++    std::swap(d, data.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VGrainlineData::~VGrainlineData()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/floatItemData/vgrainlinedata.h
+--- a/src/libs/vpatterndb/floatItemData/vgrainlinedata.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/floatItemData/vgrainlinedata.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -51,11 +51,10 @@
+ 
+     VGrainlineData &operator=(const VGrainlineData &data);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VGrainlineData &operator=(VGrainlineData &&data) Q_DECL_NOTHROW { Swap(data); return *this; }
++    VGrainlineData &operator=(VGrainlineData &&data) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VGrainlineData &data) Q_DECL_NOTHROW
+-    { VAbstractFloatItemData::Swap(data); std::swap(d, data.d); }
++    void Swap(VGrainlineData &data) Q_DECL_NOTHROW;
+ 
+     // methods, which set and return values of different parameters
+     QString GetLength() const;
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/floatItemData/vpatternlabeldata.cpp
+--- a/src/libs/vpatterndb/floatItemData/vpatternlabeldata.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/floatItemData/vpatternlabeldata.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -54,6 +54,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VPatternLabelData &VPatternLabelData::operator=(VPatternLabelData &&data) Q_DECL_NOTHROW
++{
++    Swap(data);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VPatternLabelData::Swap(VPatternLabelData &data) Q_DECL_NOTHROW
++{
++    VAbstractFloatItemData::Swap(data);
++    std::swap(d, data.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VPatternLabelData::~VPatternLabelData()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/floatItemData/vpatternlabeldata.h
+--- a/src/libs/vpatterndb/floatItemData/vpatternlabeldata.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/floatItemData/vpatternlabeldata.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -48,11 +48,10 @@
+ 
+     VPatternLabelData &operator=(const VPatternLabelData &data);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VPatternLabelData &operator=(VPatternLabelData &&data) Q_DECL_NOTHROW { Swap(data); return *this; }
++    VPatternLabelData &operator=(VPatternLabelData &&data) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VPatternLabelData &data) Q_DECL_NOTHROW
+-    { VAbstractFloatItemData::Swap(data); std::swap(d, data.d); }
++    void Swap(VPatternLabelData &data) Q_DECL_NOTHROW;
+ 
+     // methods, which set up label parameters
+     QString GetLabelWidth() const;
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/floatItemData/vpiecelabeldata.cpp
+--- a/src/libs/vpatterndb/floatItemData/vpiecelabeldata.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/floatItemData/vpiecelabeldata.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -55,6 +55,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VPieceLabelData &VPieceLabelData::operator=(VPieceLabelData &&data) Q_DECL_NOTHROW
++{
++    Swap(data);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VPieceLabelData::Swap(VPieceLabelData &data) Q_DECL_NOTHROW
++{
++    VPatternLabelData::Swap(data);
++    std::swap(d, data.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VPieceLabelData::~VPieceLabelData()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/floatItemData/vpiecelabeldata.h
+--- a/src/libs/vpatterndb/floatItemData/vpiecelabeldata.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/floatItemData/vpiecelabeldata.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -51,11 +51,10 @@
+ 
+     VPieceLabelData &operator=(const VPieceLabelData &data);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VPieceLabelData &operator=(VPieceLabelData &&data) Q_DECL_NOTHROW { Swap(data); return *this; }
++    VPieceLabelData &operator=(VPieceLabelData &&data) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VPieceLabelData &data) Q_DECL_NOTHROW
+-    { VPatternLabelData::Swap(data); std::swap(d, data.d); }
++    void Swap(VPieceLabelData &data) Q_DECL_NOTHROW;
+ 
+     void Clear();
+ 
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/variables/vcurvevariable.cpp
+--- a/src/libs/vpatterndb/variables/vcurvevariable.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/variables/vcurvevariable.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -64,6 +64,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VCurveVariable &VCurveVariable::operator=(VCurveVariable &&var) Q_DECL_NOTHROW
++{
++    Swap(var);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VCurveVariable::Swap(VCurveVariable &var) Q_DECL_NOTHROW
++{
++    VInternalVariable::Swap(var);
++    std::swap(d, var.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VCurveVariable::~VCurveVariable()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/variables/vcurvevariable.h
+--- a/src/libs/vpatterndb/variables/vcurvevariable.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/variables/vcurvevariable.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -49,11 +49,10 @@
+ 
+     VCurveVariable &operator=(const VCurveVariable &var);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VCurveVariable &operator=(VCurveVariable &&var) Q_DECL_NOTHROW { Swap(var); return *this; }
++    VCurveVariable &operator=(VCurveVariable &&var) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VCurveVariable &var) Q_DECL_NOTHROW
+-    { VInternalVariable::Swap(var); std::swap(d, var.d); }
++    void Swap(VCurveVariable &var) Q_DECL_NOTHROW;
+ 
+     virtual bool Filter(quint32 id) override;
+ 
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/variables/vincrement.cpp
+--- a/src/libs/vpatterndb/variables/vincrement.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/variables/vincrement.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -74,6 +74,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VIncrement &VIncrement::operator=(VIncrement &&incr) Q_DECL_NOTHROW
++{
++    Swap(incr);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VIncrement::Swap(VIncrement &incr) Q_DECL_NOTHROW
++{
++    VVariable::Swap(incr);
++    std::swap(d, incr.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VIncrement::~VIncrement()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/variables/vincrement.h
+--- a/src/libs/vpatterndb/variables/vincrement.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/variables/vincrement.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -55,11 +55,10 @@
+ 
+     VIncrement &operator=(const VIncrement &incr);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VIncrement &operator=(VIncrement &&incr) Q_DECL_NOTHROW { Swap(incr); return *this; }
++    VIncrement &operator=(VIncrement &&incr) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VIncrement &incr) Q_DECL_NOTHROW
+-    { VVariable::Swap(incr); std::swap(d, incr.d); }
++    void Swap(VIncrement &incr) Q_DECL_NOTHROW;
+ 
+     quint32     getIndex() const;
+     QString     GetFormula() const;
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/variables/vinternalvariable.cpp
+--- a/src/libs/vpatterndb/variables/vinternalvariable.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/variables/vinternalvariable.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -50,6 +50,21 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VInternalVariable &VInternalVariable::operator=(VInternalVariable &&var) Q_DECL_NOTHROW
++{
++    Swap(var);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VInternalVariable::Swap(VInternalVariable &var) Q_DECL_NOTHROW
++{
++    std::swap(d, var.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VInternalVariable::~VInternalVariable()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/variables/vinternalvariable.h
+--- a/src/libs/vpatterndb/variables/vinternalvariable.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/variables/vinternalvariable.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -48,11 +48,10 @@
+ 
+     VInternalVariable &operator=(const VInternalVariable &var);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VInternalVariable &operator=(VInternalVariable &&var) Q_DECL_NOTHROW { Swap(var); return *this; }
++    VInternalVariable &operator=(VInternalVariable &&var) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VInternalVariable &var) Q_DECL_NOTHROW
+-    { std::swap(d, var.d); }
++    void Swap(VInternalVariable &var) Q_DECL_NOTHROW;
+ 
+     virtual qreal  GetValue() const;
+     virtual qreal* GetValue();
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/variables/vlineangle.cpp
+--- a/src/libs/vpatterndb/variables/vlineangle.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/variables/vlineangle.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -77,6 +77,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VLineAngle &VLineAngle::operator=(VLineAngle &&var) Q_DECL_NOTHROW
++{
++    Swap(var);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VLineAngle::Swap(VLineAngle &var) Q_DECL_NOTHROW
++{
++    VInternalVariable::Swap(var);
++    std::swap(d, var.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VLineAngle::~VLineAngle()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/variables/vlineangle.h
+--- a/src/libs/vpatterndb/variables/vlineangle.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/variables/vlineangle.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -50,11 +50,10 @@
+ 
+     VLineAngle &operator=(const VLineAngle &var);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VLineAngle &operator=(VLineAngle &&var) Q_DECL_NOTHROW { Swap(var); return *this; }
++    VLineAngle &operator=(VLineAngle &&var) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VLineAngle &var) Q_DECL_NOTHROW
+-    { VInternalVariable::Swap(var); std::swap(d, var.d); }
++    void Swap(VLineAngle &var) Q_DECL_NOTHROW;
+ 
+     virtual bool Filter(quint32 id) override;
+     void         SetValue(const VPointF *p1, const VPointF *p2);
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/variables/vlinelength.cpp
+--- a/src/libs/vpatterndb/variables/vlinelength.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/variables/vlinelength.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -75,6 +75,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VLengthLine &VLengthLine::operator=(VLengthLine &&var) Q_DECL_NOTHROW
++{
++    Swap(var);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VLengthLine::Swap(VLengthLine &var) Q_DECL_NOTHROW
++{
++    VInternalVariable::Swap(var);
++    std::swap(d, var.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VLengthLine::~VLengthLine()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/variables/vlinelength.h
+--- a/src/libs/vpatterndb/variables/vlinelength.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/variables/vlinelength.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -52,11 +52,10 @@
+ 
+     VLengthLine &operator=(const VLengthLine &var);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VLengthLine &operator=(VLengthLine &&var) Q_DECL_NOTHROW { Swap(var); return *this; }
++    VLengthLine &operator=(VLengthLine &&var) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VLengthLine &var) Q_DECL_NOTHROW
+-    { VInternalVariable::Swap(var); std::swap(d, var.d); }
++    void Swap(VLengthLine &var) Q_DECL_NOTHROW;
+ 
+     virtual bool Filter(quint32 id) override;
+     void         SetValue(const VPointF *p1, const VPointF *p2);
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/variables/vmeasurement.cpp
+--- a/src/libs/vpatterndb/variables/vmeasurement.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/variables/vmeasurement.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -92,6 +92,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VMeasurement &VMeasurement::operator=(VMeasurement &&m) Q_DECL_NOTHROW
++{
++    Swap(m);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VMeasurement::Swap(VMeasurement &m) Q_DECL_NOTHROW
++{
++    VVariable::Swap(m);
++    std::swap(d, m.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VMeasurement::~VMeasurement()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/variables/vmeasurement.h
+--- a/src/libs/vpatterndb/variables/vmeasurement.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/variables/vmeasurement.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -62,11 +62,10 @@
+ 
+     VMeasurement &operator=(const VMeasurement &m);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VMeasurement &operator=(VMeasurement &&m) Q_DECL_NOTHROW { Swap(m); return *this; }
++    VMeasurement &operator=(VMeasurement &&m) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VMeasurement &m) Q_DECL_NOTHROW
+-    { VVariable::Swap(m); std::swap(d, m.d); }
++    void Swap(VMeasurement &m) Q_DECL_NOTHROW;
+ 
+     QString GetGuiText() const;
+ 
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/variables/vvariable.cpp
+--- a/src/libs/vpatterndb/variables/vvariable.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/variables/vvariable.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -63,6 +63,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VVariable &VVariable::operator=(VVariable &&var) Q_DECL_NOTHROW
++{
++    Swap(var);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VVariable::Swap(VVariable &var) Q_DECL_NOTHROW
++{
++    VInternalVariable::Swap(var);
++    std::swap(d, var.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VVariable::~VVariable()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/variables/vvariable.h
+--- a/src/libs/vpatterndb/variables/vvariable.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/variables/vvariable.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -52,11 +52,10 @@
+ 
+     VVariable &operator=(const VVariable &var);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VVariable &operator=(VVariable &&var) Q_DECL_NOTHROW { Swap(var); return *this; }
++    VVariable &operator=(VVariable &&var) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VVariable &var) Q_DECL_NOTHROW
+-    { VInternalVariable::Swap(var); std::swap(d, var.d); }
++    void Swap(VVariable &var) Q_DECL_NOTHROW;
+ 
+     QString GetDescription() const;
+     void    SetDescription(const QString &desc);
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/vcontainer.cpp
+--- a/src/libs/vpatterndb/vcontainer.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/vcontainer.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -130,6 +130,21 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VContainer &VContainer::operator=(VContainer &&data) Q_DECL_NOTHROW
++{
++    Swap(data);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VContainer::Swap(VContainer &data) Q_DECL_NOTHROW
++{
++    std::swap(d, data.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ /**
+  * @brief VContainer create container from another container
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/vcontainer.h
+--- a/src/libs/vpatterndb/vcontainer.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/vcontainer.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -131,11 +131,10 @@
+ 
+     VContainer &operator=(const VContainer &data);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VContainer &operator=(VContainer &&data) Q_DECL_NOTHROW { Swap(data); return *this; }
++    VContainer &operator=(VContainer &&data) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VContainer &data) Q_DECL_NOTHROW
+-    { std::swap(d, data.d); }
++    void Swap(VContainer &data) Q_DECL_NOTHROW;
+ 
+     static QString UniqueNamespace();
+ 
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/vnodedetail.cpp
+--- a/src/libs/vpatterndb/vnodedetail.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/vnodedetail.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -122,6 +122,21 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VNodeDetail &VNodeDetail::operator=(VNodeDetail &&node) Q_DECL_NOTHROW
++{
++    Swap(node);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VNodeDetail::Swap(VNodeDetail &node) Q_DECL_NOTHROW
++{
++    std::swap(d, node.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VNodeDetail::~VNodeDetail()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/vnodedetail.h
+--- a/src/libs/vpatterndb/vnodedetail.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/vnodedetail.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -74,11 +74,10 @@
+      */
+     VNodeDetail &operator=(const VNodeDetail &node);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VNodeDetail &operator=(VNodeDetail &&node) Q_DECL_NOTHROW { Swap(node); return *this; }
++    VNodeDetail &operator=(VNodeDetail &&node) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VNodeDetail &node) Q_DECL_NOTHROW
+-    { std::swap(d, node.d); }
++    void Swap(VNodeDetail &node) Q_DECL_NOTHROW;
+ 
+     /**
+      * @brief getId return object id.
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/vpiece.cpp
+--- a/src/libs/vpatterndb/vpiece.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/vpiece.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -351,6 +351,22 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VPiece &VPiece::operator=(VPiece &&piece) Q_DECL_NOTHROW
++{
++    Swap(piece);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VPiece::Swap(VPiece &piece) Q_DECL_NOTHROW
++{
++    VAbstractPiece::Swap(piece);
++    std::swap(d, piece.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VPiece::~VPiece()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/vpiece.h
+--- a/src/libs/vpatterndb/vpiece.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/vpiece.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -84,11 +84,10 @@
+ 
+     VPiece &operator=(const VPiece &piece);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VPiece &operator=(VPiece &&piece) Q_DECL_NOTHROW { Swap(piece); return *this; }
++    VPiece &operator=(VPiece &&piece) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VPiece &piece) Q_DECL_NOTHROW
+-    { VAbstractPiece::Swap(piece); std::swap(d, piece.d); }
++    void Swap(VPiece &piece) Q_DECL_NOTHROW;
+ 
+     VPiecePath GetPath() const;
+     VPiecePath &GetPath();
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/vpiecenode.cpp
+--- a/src/libs/vpatterndb/vpiecenode.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/vpiecenode.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -91,6 +91,21 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VPieceNode &VPieceNode::operator=(VPieceNode &&node) Q_DECL_NOTHROW
++{
++    Swap(node);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VPieceNode::Swap(VPieceNode &node) Q_DECL_NOTHROW
++{
++    std::swap(d, node.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VPieceNode::~VPieceNode()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/vpiecenode.h
+--- a/src/libs/vpatterndb/vpiecenode.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/vpiecenode.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -49,11 +49,10 @@
+ 
+     VPieceNode &operator=(const VPieceNode &node);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VPieceNode &operator=(VPieceNode &&node) Q_DECL_NOTHROW { Swap(node); return *this; }
++    VPieceNode &operator=(VPieceNode &&node) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VPieceNode &node) Q_DECL_NOTHROW
+-    { std::swap(d, node.d); }
++    void Swap(VPieceNode &node) Q_DECL_NOTHROW;
+ 
+     friend QDataStream& operator<<(QDataStream& out, const VPieceNode& p);
+     friend QDataStream& operator>>(QDataStream& in, VPieceNode& p);
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/vpiecepath.cpp
+--- a/src/libs/vpatterndb/vpiecepath.cpp	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/vpiecepath.cpp	Mon Dec 30 13:00:57 2019 +0200
+@@ -217,6 +217,21 @@
+     return *this;
+ }
+ 
++#ifdef Q_COMPILER_RVALUE_REFS
++//---------------------------------------------------------------------------------------------------------------------
++VPiecePath &VPiecePath::operator=(VPiecePath &&path) Q_DECL_NOTHROW
++{
++    Swap(path);
++    return *this;
++}
++#endif
++
++//---------------------------------------------------------------------------------------------------------------------
++void VPiecePath::Swap(VPiecePath &path) Q_DECL_NOTHROW
++{
++    std::swap(d, path.d);
++}
++
+ //---------------------------------------------------------------------------------------------------------------------
+ VPiecePath::~VPiecePath()
+ {}
+diff -r 065a26d8b577 -r fb8691f522f3 src/libs/vpatterndb/vpiecepath.h
+--- a/src/libs/vpatterndb/vpiecepath.h	Sun Dec 29 14:37:46 2019 +0200
++++ b/src/libs/vpatterndb/vpiecepath.h	Mon Dec 30 13:00:57 2019 +0200
+@@ -54,11 +54,10 @@
+ 
+     VPiecePath &operator=(const VPiecePath &path);
+ #ifdef Q_COMPILER_RVALUE_REFS
+-    VPiecePath &operator=(VPiecePath &&path) Q_DECL_NOTHROW { Swap(path); return *this; }
++    VPiecePath &operator=(VPiecePath &&path) Q_DECL_NOTHROW;
+ #endif
+ 
+-    inline void Swap(VPiecePath &path) Q_DECL_NOTHROW
+-    { std::swap(d, path.d); }
++    void Swap(VPiecePath &path) Q_DECL_NOTHROW;
+ 
+     void   Append(const VPieceNode &node);
+     void   Clear();

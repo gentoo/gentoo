@@ -40,6 +40,7 @@ S=${WORKDIR}/dismine-${PN}-b639b75d1688
 
 PATCHES=(
 	"${FILESDIR}/5823.patch"
+	"${FILESDIR}/5858.patch"
 )
 
 src_configure() {
