@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="C library for cross-platform real-time audio input and output"
@@ -30,5 +31,5 @@ multilib_src_configure() {
 		-DBUILD_EXAMPLE_PROGRAMS=$(multilib_native_usex examples)
 		-DBUILD_TESTS=no
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

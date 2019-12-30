@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils pax-utils systemd tmpfiles
+inherit cmake pax-utils systemd tmpfiles
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/vstakhov/rspamd.git"
@@ -42,7 +42,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i -e '/PROJECT/s/LANGUAGES C ASM/LANGUAGES C CXX ASM/' CMakeLists.txt \
 		|| die "sed CMakeLists.txt failed"
@@ -63,15 +63,15 @@ src_configure() {
 		-DENABLE_LUAJIT=$(usex jit ON OFF)
 		-DENABLE_PCRE2=$(usex pcre2 ON OFF)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	newconfd "${FILESDIR}"/rspamd.conf rspamd
 	newinitd "${FILESDIR}/rspamd-r7.init" rspamd

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils git-r3
+inherit cmake git-r3
 
 DESCRIPTION="edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg"
 HOMEPAGE="https://github.com/eteran/edb-debugger"
@@ -38,12 +38,12 @@ src_prepare() {
 	if ! use graphviz; then
 		sed -i -e '/pkg_check_modules(GRAPHVIZ/d' CMakeLists.txt || die
 	fi
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_JUMBO=$(usex jumbo-build)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
