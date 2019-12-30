@@ -5,9 +5,6 @@
     <email>radhermit@gentoo.org</email>
     <name>Tim Harder</name>
   </maintainer>
-  <use>
-    <flag name="doc">Build and install API docs.</flag>
-  </use>
   <upstream>
     <remote-id type="github">pkgcore/pkgcore</remote-id>
   </upstream>
