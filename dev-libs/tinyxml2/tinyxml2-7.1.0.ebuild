@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="A simple, small, efficient, C++ XML parser"
@@ -17,5 +18,5 @@ RESTRICT="!test? ( test )"
 
 multilib_src_configure() {
 	local mycmakeargs=( -DBUILD_TESTING=$(usex test) )
-	cmake-utils_src_configure
+	cmake_src_configure
 }

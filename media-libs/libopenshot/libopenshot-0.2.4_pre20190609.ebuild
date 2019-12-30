@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit cmake-utils python-single-r1 toolchain-funcs
+inherit cmake python-single-r1 toolchain-funcs
 
 COMMIT="0d4ea7fe71e88bcee4a7fd1404bd52c8e2169997"
 
@@ -64,7 +64,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	# https://github.com/OpenShot/libopenshot/issues/17
 	use test || cmake_comment_add_subdirectory tests
 }
@@ -73,23 +73,23 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_RUBY=OFF # TODO: add ruby support
 		-DENABLE_PYTHON=$(usex python)
-		$(cmake-utils_use_find_package imagemagick ImageMagick)
+		$(cmake_use_find_package imagemagick ImageMagick)
 	)
 	use python && mycmakeargs+=(
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
-	use doc && cmake-utils_src_make doc
+	cmake_src_compile
+	use doc && cmake_build doc
 }
 
 src_test() {
-	cmake-utils_src_make os_test
+	cmake_build os_test
 }
 
 src_install() {
@@ -97,6 +97,6 @@ src_install() {
 	use examples && DOCS+=( src/examples/ )
 	use doc && local HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
 
-	cmake-utils_src_install
+	cmake_src_install
 	use python && python_optimize
 }

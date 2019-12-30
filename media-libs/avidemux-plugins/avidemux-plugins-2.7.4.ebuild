@@ -6,7 +6,7 @@ EAPI=7
 CMAKE_MAKEFILE_GENERATOR="emake"
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="Plugins for the video editor media-video/avidemux"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
@@ -83,7 +83,7 @@ PATCHES=( "${FILESDIR}"/${PN}-2.6.20-optional-pulse.patch )
 src_prepare() {
 	default
 
-	# Don't reapply PATCHES during cmake-utils_src_prepare
+	# Don't reapply PATCHES during cmake_src_prepare
 	unset PATCHES
 
 	processes="buildPluginsCommon:avidemux_plugins
@@ -91,7 +91,7 @@ src_prepare() {
 	use qt5 && processes+=" buildPluginsQt4:avidemux_plugins"
 
 	for process in ${processes} ; do
-		CMAKE_USE_DIR="${S}"/${process#*:} cmake-utils_src_prepare
+		CMAKE_USE_DIR="${S}"/${process#*:} cmake_src_prepare
 	done
 }
 
@@ -142,20 +142,20 @@ src_configure() {
 		use qt5 && mycmakeargs+=( -DENABLE_QT5=True )
 		use debug && mycmakeargs+=( -DVERBOSE=1 -DADM_DEBUG=1 )
 
-		CMAKE_USE_DIR="${S}"/${process#*:} BUILD_DIR="${build}" cmake-utils_src_configure
+		CMAKE_USE_DIR="${S}"/${process#*:} BUILD_DIR="${build}" cmake_src_configure
 	done
 }
 
 src_compile() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		BUILD_DIR="${build}" cmake-utils_src_compile
+		BUILD_DIR="${build}" cmake_src_compile
 	done
 }
 
 src_install() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		BUILD_DIR="${build}" cmake-utils_src_install
+		BUILD_DIR="${build}" cmake_src_install
 	done
 }
