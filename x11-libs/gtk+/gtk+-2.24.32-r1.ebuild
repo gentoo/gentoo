@@ -49,7 +49,7 @@ COMMON_DEPEND="
 		xinerama? ( >=x11-libs/libXinerama-1.1.3[${MULTILIB_USEDEP}] )
 	)
 "
-# docbook-4.1.2 and xsl required for man pages
+# docbook-4.1.2 and xsl required for man pages
 # docbook-4.3 required for gtk-doc
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xsl-stylesheets
