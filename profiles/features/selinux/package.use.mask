@@ -7,14 +7,14 @@ net-analyzer/wireshark sdjournal
 
 # Brian Dolbec <dolsen@gentoo.org> (2014-09-17)
 # mask pypy for several utilities due to incompatibility with libselinux
-sys-apps/portage python_targets_pypy python_targets_pypy3
-app-portage/gentoolkit python_targets_pypy python_targets_pypy3
-app-portage/layman python_targets_pypy python_targets_pypy3
-app-admin/webapp-config python_targets_pypy python_targets_pypy3
-app-portage/diffmask python_targets_pypy python_targets_pypy3
-app-portage/flaggie python_targets_pypy python_targets_pypy3
-app-portage/gentoopm python_targets_pypy python_targets_pypy3
-app-portage/gpyutils python_targets_pypy python_targets_pypy3
+sys-apps/portage python_targets_pypy3
+app-portage/gentoolkit python_targets_pypy3
+app-portage/layman python_targets_pypy3
+app-admin/webapp-config python_targets_pypy3
+app-portage/diffmask python_targets_pypy3
+app-portage/flaggie python_targets_pypy3
+app-portage/gentoopm python_targets_pypy3
+app-portage/gpyutils python_targets_pypy3
 
 # Jason Zaman <perfinion@gentoo.org> (2015-06-27)
 # SystemD has no support in the SELinux policy at the moment.
