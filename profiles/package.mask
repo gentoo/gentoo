@@ -771,12 +771,6 @@ dev-libs/gmp:3
 # Please migrate to sys-apps/man-db.
 sys-apps/man
 
-# Brian Evans <grknight@gentoo.org> (2019-10-01)
-# End of life.  Please upgrade.
-# Removal in 90 days. Bug 651784
-dev-lang/php:5.6
-virtual/httpd-php:5.6
-
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
