@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 multilib cmake-utils
+inherit git-r3 cmake
 
 DESCRIPTION="Signal Protocol C Library"
 HOMEPAGE="https://www.whispersystems.org/"
