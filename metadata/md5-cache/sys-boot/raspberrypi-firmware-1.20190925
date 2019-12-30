@@ -2,11 +2,11 @@ DEFINED_PHASES=install postinst postrm preinst prerm pretend
 DESCRIPTION=Raspberry Pi (all versions) bootloader and GPU firmware
 EAPI=7
 HOMEPAGE=https://github.com/raspberrypi/firmware
-KEYWORDS=-* ~arm
+KEYWORDS=-* ~arm ~arm64
 LICENSE=GPL-2 raspberrypi-videocore-bin
 RDEPEND=!<=sys-kernel/raspberrypi-image-4.19.57_p20190709
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://github.com/raspberrypi/firmware/archive/1.20190925.tar.gz -> raspberrypi-firmware-1.20190925.tar.gz
 _eclasses_=mount-boot	e30bb691fbb26137f3d46438542bffe4	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=c24613cb7fd5efc0710e5d4b4423d942
+_md5_=939e8e1432b9d3b9add7b42279335c53

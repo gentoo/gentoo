@@ -1,0 +1,14 @@
+BDEPEND=doc? ( app-doc/doxygen ) ruby? ( dev-lang/swig:0 )
+DEFINED_PHASES=compile configure install prepare
+DEPEND=ruby? ( dev-lang/ruby:* )
+DESCRIPTION=Geometry engine library for Geographic Information Systems
+EAPI=7
+HOMEPAGE=http://trac.osgeo.org/geos/
+IUSE=doc python ruby static-libs
+KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris
+LICENSE=LGPL-2.1
+RDEPEND=ruby? ( dev-lang/ruby:* )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.osgeo.org/geos/geos-3.8.0.tar.bz2
+_md5_=e67b779be70a1a4f950140a45333e7e0

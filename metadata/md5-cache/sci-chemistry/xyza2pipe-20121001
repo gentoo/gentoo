@@ -7,4 +7,4 @@ LICENSE=olivia
 SLOT=0
 SRC_URI=http://fermi.pharm.hokudai.ac.jp/olivia/documents/xyza2pipe.tgz -> xyza2pipe-20121001.tgz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=c93da6bf85d6833951ad1ba692d826ed
+_md5_=d056cc95701850434eb72d01e71d2ea5

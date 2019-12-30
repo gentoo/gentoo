@@ -4731,7 +4731,7 @@ dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9: Tool Command Language
 dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolog
 dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1: Tk Widget Set
 dev-lang/tuprolog 2.9.2 3.0.1 3.1.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
-dev-lang/vala 0.36.18 0.36.20 0.40.14 0.40.16 0.42.7 0.44.9 0.46.3: Compiler for the GObject type system
+dev-lang/vala 0.36.18 0.36.20 0.40.14 0.40.16 0.40.18 0.42.7 0.44.9 0.44.11 0.46.3 0.46.5: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.6.0 3.6.0-r1 3.7.0-r1: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3-r1: YAP is a high-performance Prolog compiler
@@ -5214,7 +5214,7 @@ dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library fo
 dev-libs/utfcpp 2.3.4 3.1 9999: UTF-8 C++ library
 dev-libs/uthash 2.0.2: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
-dev-libs/vala-common 0.40.14 0.42.7 0.44.9 0.46.3: Build infrastructure for packages that use Vala
+dev-libs/vala-common 0.40.14 0.42.7 0.44.9 0.44.11 0.46.3 0.46.5: Build infrastructure for packages that use Vala
 dev-libs/vc 1.3.0 1.3.3 1.4.1: SIMD Vector Class Library for C++
 dev-libs/voikko-fi 2.3: Finnish dictionary for libvoikko based spell checkers (vvfst format)
 dev-libs/volume_key 0.3.11 0.3.12: Library for manipulating and storing storage volume encryption keys
@@ -11353,7 +11353,7 @@ games-engines/openxcom 1.0.0_p20180317 9999: An open-source reimplementation of 
 games-engines/qtads 2.1.7-r1: Multimedia interpreter for TADS text adventures
 games-engines/renpy 6.99.12.4-r3: Visual novel engine written in python
 games-engines/residualvm 0.2.1-r1 0.3.1-r2 9999: A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
-games-engines/scummvm 2.0.0-r1 2.1.0: Reimplementation of the SCUMM game engine used in Lucasarts adventures
+games-engines/scummvm 2.1.0: Reimplementation of the SCUMM game engine used in Lucasarts adventures
 games-engines/scummvm-tools 1.8.0-r1 2.0.0-r1: utilities for the SCUMM game engine
 games-engines/solarus 1.3.1-r1: An open-source Zelda-like 2D game engine
 games-engines/stratagus 2.4.1: A realtime strategy game engine
@@ -11923,7 +11923,7 @@ gnome-extra/sushi 3.32.1: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.32.2: Help browser for GNOME
 gnome-extra/yelp-xsl 3.20.1 3.30.1 3.32.1: XSL stylesheets for yelp
-gnome-extra/zenity 3.30.0: Tool to display dialogs from the commandline and shell scripts
+gnome-extra/zenity 3.30.0 3.32.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.8: Addresses is a Apple Addressbook work alike (standalone and for GNUMail)
 gnustep-apps/affiche 0.6.0-r4: Affiche allows people to 'stick' notes
@@ -16359,7 +16359,7 @@ sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r2: Genetic Algorithm Utility Library
 sci-libs/gdal 2.4.1-r1 2.4.1-r2: Translator library for raster geospatial data formats (includes OGR support)
-sci-libs/geos 3.7.2 3.8.0: Geometry engine library for Geographic Information Systems
+sci-libs/geos 3.7.2 3.8.0-r1: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20131206-r1: Gerris Flow Solver
 sci-libs/getdata 0.9.0-r1: Reference implementation of the Dirfile, format for time-ordered binary data
 sci-libs/gmsh 4.4.1: A three-dimensional finite element mesh generator
