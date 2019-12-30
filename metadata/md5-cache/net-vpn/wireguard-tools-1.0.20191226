@@ -7,8 +7,8 @@ HOMEPAGE=https://www.wireguard.com/
 IUSE=+wg-quick kernel_linux
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=GPL-2
-RDEPEND=net-libs/libmnl wg-quick? ( || ( net-firewall/nftables net-firewall/iptables ) virtual/resolvconf ) !<=net-vpn/wireguard-0.0.20191219
+RDEPEND=net-libs/libmnl wg-quick? ( || ( net-firewall/nftables net-firewall/iptables ) virtual/resolvconf ) !<virtual/wireguard-1
 SLOT=0
 SRC_URI=https://git.zx2c4.com/wireguard-tools/snapshot/wireguard-tools-1.0.20191226.tar.xz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=a1b57d82f6879e5842d8a2370707fc80
+_md5_=90cb590293f4cd32998407f2b167ea3c

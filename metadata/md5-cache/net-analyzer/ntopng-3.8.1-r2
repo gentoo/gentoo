@@ -1,5 +1,5 @@
 BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DEFINED_PHASES=configure install postinst prepare setup
+DEFINED_PHASES=compile configure install postinst prepare setup
 DEPEND=>=net-libs/nDPI-3.0:= dev-db/mysql-connector-c:= dev-db/sqlite:3 dev-libs/hiredis dev-libs/json-c:= dev-libs/libmaxminddb dev-libs/libsodium:= dev-libs/openssl net-analyzer/rrdtool net-libs/libpcap net-libs/zeromq:= net-misc/curl sys-libs/libcap sys-libs/zlib
 DESCRIPTION=Network traffic analyzer with web interface
 EAPI=7
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/ntop/ntopng/archive/3.8.1.tar.gz -> ntopng-3.8.1.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=fd2699e15a7d9ac52c3322dcc053a453
+_md5_=f7986f1357abec68a5996fd050ff540b
