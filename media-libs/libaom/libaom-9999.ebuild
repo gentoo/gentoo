@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 if [[ ${PV} == *9999* ]]; then
@@ -63,12 +64,12 @@ multilib_src_configure() {
 		-DENABLE_AVX=$(usex cpu_flags_x86_avx ON OFF)
 		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2 ON OFF)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_install() {
 	if multilib_is_native_abi && use doc ; then
 		local HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
 	fi
-	cmake-utils_src_install
+	cmake_src_install
 }
