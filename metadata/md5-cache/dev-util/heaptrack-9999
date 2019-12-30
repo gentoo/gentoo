@@ -1,4 +1,4 @@
-BDEPEND=gui? ( kde-frameworks/extra-cmake-modules:5 ) dev-util/ninja >=dev-util/cmake-3.9.6 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=gui? ( kde-frameworks/extra-cmake-modules:5 ) dev-util/ninja dev-util/cmake >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install nofetch prepare test unpack
 DEPEND=dev-libs/boost:= sys-libs/libunwind sys-libs/zlib gui? ( dev-libs/kdiagram:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 kde-frameworks/kconfig:5 kde-frameworks/kconfigwidgets:5 kde-frameworks/kcoreaddons:5 kde-frameworks/ki18n:5 kde-frameworks/kio:5 kde-frameworks/kitemmodels:5 kde-frameworks/kwidgetsaddons:5 kde-frameworks/threadweaver:5 ) zstd? ( app-arch/zstd:= )
 DESCRIPTION=Fast heap memory profiler
@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=dev-libs/boost:= sys-libs/libunwind sys-libs/zlib gui? ( dev-libs/kdiagram:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 kde-frameworks/kconfig:5 kde-frameworks/kconfigwidgets:5 kde-frameworks/kcoreaddons:5 kde-frameworks/ki18n:5 kde-frameworks/kio:5 kde-frameworks/kitemmodels:5 kde-frameworks/kwidgetsaddons:5 kde-frameworks/threadweaver:5 ) zstd? ( app-arch/zstd:= ) gui? ( >=kde-frameworks/kf-env-4 )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	kde.org	12c2d7da2a75330ff5de0154686dbf4b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=0d3cd83c9f4ec1748a0254074a5eb1a3
+_eclasses_=cmake	35b3146b6de4b75aef568db01ba9760c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	kde.org	12c2d7da2a75330ff5de0154686dbf4b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=d96bd0bcd514136e2775f568bb39eaa1

@@ -1,4 +1,4 @@
-BDEPEND=dev-lang/perl virtual/pkgconfig doc? ( app-doc/doxygen ) introspection? ( dev-libs/gobject-introspection ) test? ( || ( dev-lang/python:3.7 dev-lang/python:3.6 ) ) vala? ( || ( dev-lang/vala:0.46[vapigen(+)] dev-lang/vala:0.44[vapigen(+)] dev-lang/vala:0.42[vapigen(+)] dev-lang/vala:0.40[vapigen(+)] dev-lang/vala:0.36[vapigen(+)] ) ) dev-util/ninja >=dev-util/cmake-3.9.6
+BDEPEND=dev-lang/perl virtual/pkgconfig doc? ( app-doc/doxygen ) introspection? ( dev-libs/gobject-introspection ) test? ( || ( dev-lang/python:3.7 dev-lang/python:3.6 ) ) vala? ( || ( dev-lang/vala:0.46[vapigen(+)] dev-lang/vala:0.44[vapigen(+)] dev-lang/vala:0.42[vapigen(+)] dev-lang/vala:0.40[vapigen(+)] dev-lang/vala:0.36[vapigen(+)] ) ) dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=dev-libs/icu:= berkdb? ( sys-libs/db:= ) introspection? ( dev-libs/glib:2 ) introspection? ( dev-libs/libxml2:2 )
 DESCRIPTION=An implementation of basic iCAL protocols
@@ -12,5 +12,5 @@ REQUIRED_USE=vala? ( introspection )
 RESTRICT=!test? ( test )
 SLOT=0/3
 SRC_URI=https://github.com/libical/libical/releases/download/v3.0.6/libical-3.0.6.tar.gz
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	682da46cf615b9f7a7d3680058139dcd	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=92a992ef8a3ce5aabe8e5f9ad487b12b
+_eclasses_=cmake	35b3146b6de4b75aef568db01ba9760c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	682da46cf615b9f7a7d3680058139dcd	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=caf8ac33905659efe819d31d226169f4
