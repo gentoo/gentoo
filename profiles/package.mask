@@ -798,7 +798,6 @@ dev-php/pecl-svn
 dev-php/pecl-xrange
 dev-php/suhosin
 dev-php/xcache
-<dev-php/xhprof-0.9.10
 
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
