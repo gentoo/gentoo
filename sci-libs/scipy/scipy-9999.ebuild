@@ -93,7 +93,7 @@ python_prepare_all() {
 python_compile() {
 	${EPYTHON} tools/cythonize.py || die
 	distutils-r1_python_compile \
-		$(usex python_targets_python3_5 "" "-j $(makeopts_jobs)") \
+		"-j $(makeopts_jobs)" \
 		${SCIPY_FCONFIG}
 }
 
