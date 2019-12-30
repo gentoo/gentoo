@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libX11
 SLOT=0
 SRC_URI=mirror://sourceforge/bbtools/bbdate-0.2.4.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=5b80f1807f57dc4010f7e31292647fb6
+_md5_=c4fba1695a46e40e6694f21db6f2f606

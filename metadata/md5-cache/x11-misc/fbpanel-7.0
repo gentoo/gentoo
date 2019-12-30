@@ -10,4 +10,4 @@ RDEPEND=dev-libs/glib:2 alsa? ( media-libs/alsa-lib ) x11-libs/gdk-pixbuf:2[X] x
 SLOT=0
 SRC_URI=https://github.com/aanatoly/fbpanel/archive/7.0.tar.gz -> fbpanel-7.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=f7968bd09f0e13c652f7025271b0194a
+_md5_=b42f733fe0cc98083e1c81d1a9f48c07

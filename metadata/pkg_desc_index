@@ -8608,7 +8608,7 @@ dev-python/pyserial 3.2.1 3.4: Python Serial Port extension
 dev-python/pysha3 1.0.2-r1: SHA-3 (Keccak) for Python 2.7 - 3.5
 dev-python/pyshark 0.3.7.2-r1 0.4.2.3: A Python wrapper for tshark output parsing
 dev-python/pysmi 0.1.3 0.3.1 0.3.4: Python Lex & Yacc
-dev-python/pysnmp 4.4.4 4.4.10-r1 4.4.11 4.4.12 999999: Python SNMP library
+dev-python/pysnmp 4.4.4 4.4.10-r1 4.4.12 999999: Python SNMP library
 dev-python/pysnmp-apps 0.5.3: PySNMP applications
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysol_cards 0.8.6: Deal PySol FreeCell cards
@@ -15698,7 +15698,7 @@ net-wireless/hostapd 2.9-r1 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.2 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 4.9 4.14 5.0.1 5.3 5.4: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
-net-wireless/iwd 0.21 0.22 0.23-r1 1.0-r1 1.1 1.2 1.3 1.4 9999: Wireless daemon for linux
+net-wireless/iwd 1.4 9999: Wireless daemon for linux
 net-wireless/jackit 0.0_p20170918: Exploit Code for Mousejack
 net-wireless/kismet 2016.07.1-r2 2019.09.1-r1 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
