@@ -7,7 +7,7 @@ inherit cmake kde.org xdg
 
 DESCRIPTION="Shutdown manager for desktop environments like KDE Plasma"
 HOMEPAGE="https://kshutdown.sourceforge.io"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-source-${PV/_/-}.zip"
+SRC_URI="mirror://sourceforge/${PN}/${PN}-source-${PV}.zip"
 
 LICENSE="GPL-2+"
 SLOT="5"
@@ -45,10 +45,6 @@ RDEPEND="${DEPEND}
 		kde-frameworks/oxygen-icons:*
 	)
 "
-
-PATCHES=( "${FILESDIR}/${PN}-5.0-cmake-3.15.patch" )
-
-S="${WORKDIR}/${P/_/-}"
 
 src_prepare() {
 	cmake_src_prepare
