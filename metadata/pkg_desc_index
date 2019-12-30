@@ -17673,7 +17673,7 @@ sys-fs/go-mtpfs 9999: a simple FUSE filesystem for mounting Android devices as a
 sys-fs/growpart 0.0.1 0.0.30: A script that can grow your rootfs on first boot
 sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsplusutils 1.0.4-r2: HFS+ Filesystem Access Utilities (a PPC filesystem)
-sys-fs/hfsutils 3.2.6-r6: HFS FS Access utils
+sys-fs/hfsutils 3.2.6-r6 3.2.6_p14: HFS FS Access utils
 sys-fs/inotify-tools 3.14 3.20.1: a set of command-line programs providing a simple interface to inotify
 sys-fs/iprutils 2.4.7 2.4.17.1 2.4.18.1: IBM's tools for support of the ipr SCSI controller
 sys-fs/jdiskreport-bin 1.2.5-r1 1.3.0 1.4.1: JDiskReport helps you to understand disk drive usage
