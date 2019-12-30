@@ -3,7 +3,7 @@
 
 EAPI=7
 # pypy doesn't get started in test run. Still required by www-servers/gunicorn
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy )
 
 inherit distutils-r1 toolchain-funcs
 
