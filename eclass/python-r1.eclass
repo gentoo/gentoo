@@ -126,7 +126,7 @@ fi
 # @CODE
 # dev-lang/python-exec:=
 # python_targets_python2_7? ( dev-lang/python:2.7[gdbm] )
-# python_targets_pypy? ( virtual/pypy[gdbm] )
+# python_targets_pypy? ( dev-python/pypy[gdbm] )
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_USEDEP

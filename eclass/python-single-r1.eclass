@@ -136,7 +136,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @CODE
 # dev-lang/python-exec:=
 # python_single_target_python2_7? ( dev-lang/python:2.7[gdbm] )
-# python_single_target_pypy? ( virtual/pypy[gdbm] )
+# python_single_target_pypy? ( dev-python/pypy[gdbm] )
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_USEDEP
