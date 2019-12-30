@@ -41,7 +41,7 @@ src_prepare() {
 	remove_locale() {
 		sed -i \
 			-e "/TRANSLATIONS += lang\/vym.${1}.ts/d" \
-			vym.pro || die
+			vym.pro || die
 	}
 
 	gunzip doc/vym.1.gz || die
