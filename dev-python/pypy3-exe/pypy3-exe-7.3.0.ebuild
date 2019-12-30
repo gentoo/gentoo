@@ -26,10 +26,10 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	ncurses? ( sys-libs/ncurses:0= )
 	!dev-python/pypy3-exe-bin:${PV}"
 DEPEND="${RDEPEND}
-	low-memory? ( virtual/pypy )
+	low-memory? ( dev-python/pypy )
 	!low-memory? (
 		|| (
-			virtual/pypy
+			dev-python/pypy
 			(
 				dev-lang/python:2.7
 				dev-python/pycparser[python_targets_python2_7(-),python_single_target_python2_7(+)]
@@ -65,7 +65,7 @@ pkg_setup() {
 		else
 			einfo "Using ${EPYTHON:-python2} to perform the translation. Please note that upstream"
 			einfo "recommends using PyPy for that. If you wish to do so, please install"
-			einfo "virtual/pypy and ensure that EPYTHON variable is unset."
+			einfo "dev-python/pypy and ensure that EPYTHON variable is unset."
 		fi
 
 		python-any-r1_pkg_setup
