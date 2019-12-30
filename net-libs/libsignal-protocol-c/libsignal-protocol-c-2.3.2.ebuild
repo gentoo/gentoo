@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib cmake-utils
+inherit cmake
 
 DESCRIPTION="Signal Protocol C Library"
 HOMEPAGE="https://www.whispersystems.org/"

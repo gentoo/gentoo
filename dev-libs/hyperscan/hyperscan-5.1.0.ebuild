@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-r1
+inherit cmake python-r1
 
 DESCRIPTION="High-performance regular expression matching library"
 HOMEPAGE="https://01.org/hyperscan"
@@ -33,5 +33,5 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=$(usex static-libs OFF ON)
 		-DBUILD_STATIC_AND_SHARED=$(usex static-libs ON OFF)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
