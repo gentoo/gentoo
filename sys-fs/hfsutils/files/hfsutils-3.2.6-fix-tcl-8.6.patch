@@ -1,5 +1,5 @@
---- hfsutils-3.2.6/config.h.in
-+++ hfsutils-3.2.6/config.h.in
+--- a/config.h.in
++++ b/config.h.in
 @@ -91,3 +91,5 @@
  # ifndef HAVE_STRTOL
  long strtol(const char *, char **, int);
