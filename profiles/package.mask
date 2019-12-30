@@ -778,11 +778,6 @@ dev-lang/php:5.6
 virtual/httpd-php:5.6
 
 # Brian Evans <grknight@gentoo.org> (2019-10-01)
-# Requires end of life PHP 5.6.  Please upgrade.
-# Removal in 90 days. Bug 651784
-=www-apps/rutorrent-3.4-r1
-
-# Brian Evans <grknight@gentoo.org> (2019-10-01)
 # Old slots for support of PHP <7
 # Removal in 90 days. Bug 651784
 dev-php/pecl-apcu:0
