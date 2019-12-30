@@ -24,6 +24,7 @@ acct-group/epmd 0: Group for Erlang Portmapper Daemon
 acct-group/fhem 0: A group for the FHEM perl server for house automation
 acct-group/ftp 0: File Transfer Protocol server user
 acct-group/gamestat 0: Group for shared high-score and game state files
+acct-group/geneweb 0: Group for geneweb daemon
 acct-group/git 0: System group: git
 acct-group/gkrellmd 0: System group: gkrellmd
 acct-group/graylog 0: Graylog program group
@@ -12333,10 +12334,10 @@ kde-misc/kmarkdownwebview 0.5.5: KPart for rendering Markdown content
 kde-misc/kolor-manager 1.1.0: KControl module for Oyranos CMS cross desktop settings
 kde-misc/krename 5.0.0-r1: Powerful batch file renamer
 kde-misc/krusader 2.7.2: Advanced twin-panel (commander-style) file-manager with many extras
-kde-misc/kshutdown 5.0 5.1_beta: Shutdown manager for desktop environments like KDE Plasma
+kde-misc/kshutdown 5.0 5.2: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
 kde-misc/kwebkitpart 1.4.0_pre20190110: WebKit KPart for Konqueror
-kde-misc/latte-dock 0.9.2 0.9.4 0.9.5: Elegant dock, based on KDE Frameworks
+kde-misc/latte-dock 0.9.2 0.9.4 0.9.5 0.9.6: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: Thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-network-monitor 1.7.3-r1: Plasma 5 applet for monitoring active network connections
 kde-misc/plasma-applet-weather-widget 1.6.10-r1: Plasma 5 applet for weather forecasts
