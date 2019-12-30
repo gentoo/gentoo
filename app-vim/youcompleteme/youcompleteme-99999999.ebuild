@@ -89,7 +89,7 @@ src_test() {
 	LD_LIBRARY_PATH="${EROOT}"/usr/$(get_libdir)/llvm \
 		./ycm_core_tests || die
 
-	cd "${S}"/python/ycm || die
+	cd "${S}"/python/ycm || die
 
 	local dirs=( "${S}"/third_party/*/ "${S}"/third_party/ycmd/third_party/*/ )
 	local -x PYTHONPATH=${PYTHONPATH}:$(IFS=:; echo "${dirs[*]}")

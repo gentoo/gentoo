@@ -56,7 +56,7 @@ src_configure() {
 
 src_test() {
 	# TODO: use system gtest
-	cd "${S}"/cpp || die
+	cd "${S}"/cpp || die
 	emake ycm_core_tests
 	cd ycm/tests || die
 	LD_LIBRARY_PATH="${EROOT}"/usr/$(get_libdir)/llvm \
