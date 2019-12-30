@@ -29,7 +29,7 @@ RDEPEND="
 		sys-apps/systemd[python(-),${PYTHON_USEDEP}]
 	)' 'python*' ) )
 "
-REQUIRED_USE="systemd? ( !python_single_target_pypy )"
+
 RESTRICT="test"
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 
