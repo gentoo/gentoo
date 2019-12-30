@@ -17,7 +17,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 
 COMMON_DEPEND="
 	$(python_gen_cond_dep '>=dev-python/cffi-1.1:=[${PYTHON_USEDEP}]' 'python*')
-	$(python_gen_cond_dep '>=virtual/pypy-2.6.0' pypy )
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
 "
 DEPEND="${COMMON_DEPEND}
