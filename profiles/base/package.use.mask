@@ -79,11 +79,6 @@ net-nds/openldap slp
 sys-block/open-iscsi slp
 sys-block/open-isns slp
 
-# Ben Kohler <bkohler@gentoo.org> (2019-10-03)
-# iwd backend for connman hasn't kept up with iwd releases/API, mask 
-# until it catches up.
-net-misc/connman iwd
-
 # Brian Evans <grknight@gentoo.org> (2019-10-01)
 # PHP support is broken with current version
 # Mask USE until they are fixed
