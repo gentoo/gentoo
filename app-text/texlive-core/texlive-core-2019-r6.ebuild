@@ -9,7 +9,7 @@ inherit flag-o-matic toolchain-funcs libtool texlive-common
 
 MY_P=${PN%-core}-${TL_SOURCE_VERSION}-source
 
-PATCHLEVEL=5
+PATCHLEVEL=6
 
 DESCRIPTION="A complete TeX distribution"
 HOMEPAGE="https://tug.org/texlive/"
@@ -154,6 +154,7 @@ src_prepare() {
 	# Conditional poppler patching
 	if has_version ">=app-text/poppler-0.83.0"; then
 		eapply "${WORKDIR}"/patches/${P}-poppler083.patch
+		eapply "${WORKDIR}"/patches/${P}-poppler0.84.patch
 	else
 		eapply "${WORKDIR}"/patches/${P}-poppler076.patch
 	fi
