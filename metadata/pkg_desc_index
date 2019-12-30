@@ -8970,7 +8970,7 @@ dev-python/slowaes 0.1-r2: AES implementation in pure Python
 dev-python/smmap 0.9.0: A pure git implementation of a sliding window memory map manager
 dev-python/smmap2 2.0.3: A pure python implementation of a sliding window memory map manager
 dev-python/snakefood 1.3.1-r1: Generate dependency graphs from Python code
-dev-python/snakeoil 0.7.5 0.8.3 0.8.4 0.8.5 9999: misc common functionality and useful optimizations
+dev-python/snakeoil 0.7.5 0.8.5 9999: misc common functionality and useful optimizations
 dev-python/snappy 0.5-r2 0.5.1: Python library for the snappy compression library from Google
 dev-python/snowballstemmer 1.2.0 1.2.1: Stemmer algorithms generated from Snowball algorithms
 dev-python/soappy 0.12.22: SOAP Services for Python
@@ -17169,7 +17169,7 @@ sys-apps/pcsc-lite 1.8.24 1.8.25 1.8.25-r1: PC/SC Architecture smartcard middlew
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.3: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
-sys-apps/pkgcore 0.10.7 0.10.8 0.10.9 9999: a framework for package management
+sys-apps/pkgcore 0.10.9 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
