@@ -14,7 +14,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.libssh.org/projects/libssh.git"
 else
 	SRC_URI="https://www.libssh.org/files/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ~ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="LGPL-2.1"
