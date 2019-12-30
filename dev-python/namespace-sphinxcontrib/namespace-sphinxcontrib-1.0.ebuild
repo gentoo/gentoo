@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6,7,8}} )
 inherit python-r1
 
 DESCRIPTION="Namespace package declaration for sphinxcontrib"
