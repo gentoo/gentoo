@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
 RDEPEND=|| ( dev-python/pypy-exe:7.3.0[bzip2?,ncurses?] dev-python/pypy-exe-bin:7.3.0 ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) gdbm? ( sys-libs/gdbm:0= ) sqlite? ( dev-db/sqlite:3= ) tk? ( dev-lang/tk:0= dev-tcltk/tix:0= ) !<dev-python/pypy-bin-7.3.0:0
 SLOT=0/73
-SRC_URI=https://bitbucket.org/pypy/pypy/downloads/pypy2.7-v7.3.0-src.tar.bz2 https://dev.gentoo.org/~mgorny/dist/python-gentoo-patches-2.7.17.tar.xz
+SRC_URI=https://bitbucket.org/pypy/pypy/downloads/pypy2.7-v7.3.0-src.tar.bz2 https://dev.gentoo.org/~mgorny/dist/python/python-gentoo-patches-2.7.17-r1.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=3e9502bebaa4086db4f29003ccd16488
+_md5_=08ce2baebfa32e0be140143200816ca5

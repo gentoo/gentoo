@@ -11,4 +11,4 @@ RDEPEND=x11-libs/libXrandr x11-libs/libXcursor x11-libs/fox-wrapper bzip2? ( app
 SLOT=1.7
 SRC_URI=ftp://ftp.fox-toolkit.org/pub/fox-1.7.67.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=9ce0614b67986475a8b2ed7808965117
+_md5_=b218190b754575f7f6b2d466e25ccced

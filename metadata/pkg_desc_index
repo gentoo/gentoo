@@ -4999,7 +4999,7 @@ dev-libs/libmowgli 1.0.0-r1 2.1.3 9999: Useful set of performance and usability-
 dev-libs/libmspack 0.9.1_alpha-r1 9999: A library for Microsoft compression formats
 dev-libs/libnatspec 0.2.6-r1 0.3.0: library to smooth charset/localization issues
 dev-libs/libnfc 1.7.1: Near Field Communications (NFC) library
-dev-libs/libnl 1.1.4 1.1.4-r1 3.4.0 3.5.0 99999999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
+dev-libs/libnl 1.1.4 1.1.4-r1 1.1.9999 3.4.0 3.5.0 99999999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.2.0-r1 0.2.1: framebuffer abstraction library, written in C
 dev-libs/libnsutils 0.0.5-r1: base64 and time library, written in C
 dev-libs/libofx 0.9.15: Library to support the Open Financial eXchange XML format
