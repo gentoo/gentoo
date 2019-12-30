@@ -12874,7 +12874,7 @@ media-gfx/gthumb 3.6.2-r1: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
 media-gfx/hp2xx 3.4.4-r1: Convert Hewlett-Packard's HP-GL plotter language to other graphics formats
-media-gfx/hugin 2019.0.0 2019.2.0_rc3 9999: GUI for the creation & processing of panoramic images
+media-gfx/hugin 2019.0.0 2019.2.0 9999: GUI for the creation & processing of panoramic images
 media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut vrml visualisations and GPU gamma tables
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.0 0.32.2 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
@@ -17727,7 +17727,7 @@ sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 242 243 243-r2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 33 9999: udev startup scripts for openrc
 sys-fs/udftools 2.0-r2 2.1: Ben Fennema's tools for packet writing and the UDF filesystem
-sys-fs/udiskie 1.7.7 2.0.0 2.0.1: An automatic disk mounting service using udisks
+sys-fs/udiskie 1.7.7 2.0.2: An automatic disk mounting service using udisks
 sys-fs/udisks 1.0.5-r3 2.8.2 2.8.3 2.8.4: Daemon providing interfaces to work with storage devices
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 2.0 9999: Self-syncing tree-merging file system based on FUSE
