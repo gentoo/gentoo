@@ -1,0 +1,25 @@
+Title: Genkernel 4 changed default filenames
+Author: Thomas Deutschmann <whissi@gentoo.org>
+Posted: 2019-12-30
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: >=sys-kernel/genkernel-4
+
+To be consistent with kernel's own naming which allows for easier
+matching of kernel/initramfs with kernel files (/lib/modules),
+genkernel 4 changed default kernel and initramfs filename:
+
+    kernel-genkernel-%%ARCH%%-%%KV%%      -> vmlinuz-%%KV%%
+    System.map-genkernel-%%ARCH%%-%%KV%%  -> System.map-%%KV%%
+    initramfs-genkernel-%%ARCH%%-%%KV%%   -> initramfs-%%KV%%.img
+
+Note that in genkernel 4, filenames are fully customizable and that
+$ARCH value is now part of $KV value by default.
+
+All bootloaders and utilities like sys-apps/kexec-tools available in
+Gentoo repository support the new naming schema.
+
+However, due to lexical ordering, the default boot entry in your boot
+manager could still point to last kernel built with genkernel before
+that name change, resulting in booting old kernel when not paying
+attention on boot.
