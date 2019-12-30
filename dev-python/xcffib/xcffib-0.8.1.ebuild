@@ -20,7 +20,6 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="x11-libs/libxcb"
 RDEPEND="
 	$(python_gen_cond_dep '>=dev-python/cffi-1.1:=[${PYTHON_USEDEP}]' 'python*')
-	$(python_gen_cond_dep '>=virtual/pypy-2.6.0' pypy )
 	dev-python/six[${PYTHON_USEDEP}]
 	${COMMON_DEPEND}"
 DEPEND="

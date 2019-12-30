@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-12-30)
+# PyPy packages have been restructured, and the virtual is no longer
+# necessary.  Depend on dev-python/pypy{,3} instead.
+virtual/pypy
+virtual/pypy3
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-29)
 # consumers should depend on virtual/rust,
 # bug https://bugs.gentoo.org/695698
