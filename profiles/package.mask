@@ -779,9 +779,7 @@ virtual/httpd-php:5.6
 
 # Brian Evans <grknight@gentoo.org> (2019-10-01)
 # Old extensions which only work with PHP <7
-# pecl-mongo is replaced by pecl-monogodb
 # Removal in 90 days. Bug 651784
-dev-php/pecl-mongo
 dev-php/pecl-mysqlnd_ms
 dev-php/pecl-mysqlnd_qc
 dev-php/pecl-sphinx
