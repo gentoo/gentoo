@@ -9,7 +9,7 @@ SRC_URI="https://dev.gentoo.org/~ago/distfiles/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE=""
 DEPEND="dev-lang/go:="
