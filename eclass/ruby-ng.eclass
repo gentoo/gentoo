@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-ng.eclass
@@ -137,7 +137,7 @@ ruby_samelib() {
 	local res=
 	for _ruby_implementation in $(_ruby_get_all_impls); do
 		has -${_ruby_implementation} $@ || \
-			res="${res}ruby_targets_${_ruby_implementation}?,"
+			res="${res}ruby_targets_${_ruby_implementation}(-)?,"
 	done
 
 	echo "[${res%,}]"
@@ -151,9 +151,9 @@ _ruby_atoms_samelib_generic() {
 			"||" | "(" | ")" | *"?")
 				echo "${token}" ;;
 			*])
-				echo "${token%[*}[RUBYTARGET,${token/*[}" ;;
+				echo "${token%[*}[RUBYTARGET(-),${token/*[}" ;;
 			*)
-				echo "${token}[RUBYTARGET]" ;;
+				echo "${token}[RUBYTARGET(-)]" ;;
 		esac
 	done
 	echo ")"
