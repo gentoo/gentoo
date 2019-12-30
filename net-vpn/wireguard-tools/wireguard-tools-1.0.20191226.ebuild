@@ -28,7 +28,7 @@ RDEPEND="${DEPEND}
 		|| ( net-firewall/nftables net-firewall/iptables )
 		virtual/resolvconf
 	)
-	!<=net-vpn/wireguard-0.0.20191219
+	!<virtual/wireguard-1
 "
 
 wg_quick_optional_config_nob() {
