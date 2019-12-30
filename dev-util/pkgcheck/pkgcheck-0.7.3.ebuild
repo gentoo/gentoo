@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/pkgcore/pkgcheck"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="doc network perl test"
+IUSE="network perl test"
 RESTRICT="!test? ( test )"
 
 if [[ ${PV} == *9999 ]]; then
@@ -28,8 +28,8 @@ if [[ ${PV} == *9999 ]]; then
 		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]"
 else
 	RDEPEND="
-		>=dev-python/snakeoil-0.8.4[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.10.8[${PYTHON_USEDEP}]"
+		>=dev-python/snakeoil-0.8.5[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.10.9[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
 	dev-python/chardet[${PYTHON_USEDEP}]
@@ -40,30 +40,8 @@ RDEPEND+="
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( $(python_gen_any_dep '
-		dev-python/setuptools[${PYTHON_USEDEP}]
-		dev-python/snakeoil[${PYTHON_USEDEP}]
-		dev-python/docutils[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	') )
-	!doc? (
-		$(python_gen_any_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
-	)
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
-
-python_check_deps() {
-	has_version "dev-python/setuptools[${PYTHON_USEDEP}]" || return 1
-	has_version "dev-python/snakeoil[${PYTHON_USEDEP}]" || return 1
-	if use doc; then
-		has_version "dev-python/docutils[${PYTHON_USEDEP}]" &&
-		has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-	fi
-}
-
-python_compile_all() {
-	use doc && esetup.py build_docs
-}
 
 python_test() {
 	esetup.py test
@@ -71,8 +49,6 @@ python_test() {
 
 python_install_all() {
 	local DOCS=( AUTHORS NEWS.rst )
-	esetup.py install_docs \
-		--docdir="${ED%/}/usr/share/doc/${PF}" \
-		--mandir="${ED%/}/usr/share/man"
+	[[ ${PV} == *9999 ]] || doman man/*
 	distutils-r1_python_install_all
 }
