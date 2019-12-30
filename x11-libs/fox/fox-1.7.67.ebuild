@@ -14,18 +14,20 @@ SLOT="1.7"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+bzip2 +jpeg +opengl +png tiff +truetype +zlib debug doc profile tools"
 
-RDEPEND="x11-libs/libXrandr
-	x11-libs/libXcursor
+RDEPEND="
 	x11-libs/fox-wrapper
+	x11-libs/libXcursor
+	x11-libs/libXrandr
 	bzip2? ( app-arch/bzip2 )
 	jpeg? ( virtual/jpeg )
 	opengl? ( virtual/glu virtual/opengl )
 	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:0= )
-	truetype? ( media-libs/freetype:2
-		x11-libs/libXft )
-	zlib? ( sys-libs/zlib )
-"
+	truetype? (
+		media-libs/freetype:2
+		x11-libs/libXft
+	)
+	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	x11-libs/libXt"
@@ -37,11 +39,11 @@ src_prepare() {
 	default
 
 	sed -i '/#define REXDEBUG 1/d' lib/FXRex.cpp || die "Unable to remove spurious debug line."
-	sed -i -e "s:windows::" Makefile.am
+	sed -i -e "s:windows::" Makefile.am || die
 	if ! use tools; then
 		local d
 		for d in adie calculator pathfinder shutterbug; do
-			sed -i -e "s:${d}::" Makefile.am
+			sed -i -e "s:${d}::" Makefile.am || die
 		done
 	fi
 
@@ -56,6 +58,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--disable-static \
 		--enable-$(usex debug debug release) \
 		$(use_enable bzip2 bz2lib) \
 		$(use_enable jpeg) \
@@ -69,7 +72,7 @@ src_configure() {
 
 src_compile() {
 	emake
-	use doc && emake -C "${S}"/doc docs
+	use doc && emake -C doc docs
 }
 
 src_install() {
@@ -79,28 +82,29 @@ src_install() {
 		artdir="${EPREFIX}"/usr/share/doc/${PF}/html/art \
 		screenshotsdir="${EPREFIX}"/usr/share/doc/${PF}/html/screenshots
 
-	CP="${ED}/usr/bin/ControlPanel"
-	if [[ -f ${CP} ]] ; then
-		mv "${CP}" "${ED}/usr/bin/fox-ControlPanel-${SLOT}" || \
+	local CP="${ED}"/usr/bin/ControlPanel
+	if [[ -f ${CP} ]]; then
+		mv "${CP}" "${ED}"/usr/bin/fox-ControlPanel-${SLOT} || \
 			die "Failed to install ControlPanel"
 	fi
 
-	for doc in ADDITIONS AUTHORS LICENSE_ADDENDUM README TRACING ; do
-		[[ -f $doc ]] && dodoc $doc
-	done
+	dodoc ADDITIONS AUTHORS LICENSE_ADDENDUM README TRACING
 
-	# remove documentation if USE=-doc
-	use doc || rm -fr "${D}/usr/share/doc/${PF}/html"
-
-	# install class reference docs if USE=doc
 	if use doc; then
+		# install class reference docs if USE=doc
 		docinto html
-		dodoc -r "${S}/doc/ref"
+		dodoc -r doc/ref
+	else
+		# remove documentation if USE=-doc
+		rm -rf "${ED}"/usr/share/doc/${PF}/html || die
 	fi
 
 	# slot fox-config
-	if [[ -f ${D}/usr/bin/fox-config ]] ; then
-		mv "${D}/usr/bin/fox-config" "${D}/usr/bin/fox-${SLOT}-config" \
+	if [[ -f ${ED}/usr/bin/fox-config ]] ; then
+		mv "${ED}"/usr/bin/fox-config "${ED}"/usr/bin/fox-${SLOT}-config \
 		|| die "failed to install fox-config"
 	fi
+
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }
