@@ -15526,7 +15526,7 @@ net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
 net-p2p/deluge 1.3.15-r2 1.3.15-r3 1.3.15-r4 1.3.9999 2.0.3-r1 2.0.3-r2 9999: BitTorrent client with a client/server model
 net-p2p/ed2k_hash 0.4.0-r2: Tool for generating eDonkey2000 links
 net-p2p/eiskaltdcpp 2.2.10 9999: Qt/DC++ based client for DirectConnect and ADC protocols
-net-p2p/fms 0.3.79 0.3.80: A spam-resistant message board application for Freenet
+net-p2p/fms 0.3.80 0.3.81: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1480 0.7.5_p1483 0.7.5_p1484: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.8.15: Official golang implementation of the Ethereum protocol
