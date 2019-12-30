@@ -93,7 +93,7 @@ src_install() {
 	use doc || rm -fr "${D}/usr/share/doc/${PF}/html"
 
 	# install class reference docs if USE=doc
-	if use doc && [[ -z ${FOX_COMPONENT} ]] ; then
+	if use doc; then
 		docinto html
 		dodoc -r "${S}/doc/ref"
 	fi
