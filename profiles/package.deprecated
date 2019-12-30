@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-29)
+# consumers should depend on virtual/rust,
+# bug https://bugs.gentoo.org/695698
+virtual/cargo
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-21)
 # Unmaintained, vulnerable oracle java ebuilds, even fetching distfiles
 # requires agreement to restrictive license
