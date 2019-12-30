@@ -18790,6 +18790,7 @@ x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
 x11-misc/sxhkd 0.6.1: Simple X hotkey daemon
 x11-misc/synergy 1.9.1 2.0.0: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
+x11-misc/tdrop 0.3.0 9999: WM-Independent Dropdown Creator
 x11-misc/tint2 16.2 16.6 16.6.1 16.7: tint2 is a lightweight panel/taskbar for Linux.
 x11-misc/tintwizard 0.3.4-r2: GUI wizard which generates config files for tint2 panels
 x11-misc/tinynotify-send 1.2.1-r1 9999: A notification sending utility (using libtinynotify)

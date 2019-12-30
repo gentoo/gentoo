@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=WM-Independent Dropdown Creator
+EAPI=7
+HOMEPAGE=https://github.com/noctuid/tdrop
+KEYWORDS=~amd64 ~ppc64
+LICENSE=BSD-2
+RDEPEND=app-shells/bash sys-process/procps x11-apps/xprop x11-apps/xrandr x11-apps/xwininfo x11-misc/xdotool
+SLOT=0
+SRC_URI=https://github.com/noctuid/tdrop/archive/0.3.0.tar.gz -> tdrop-0.3.0.tar.gz
+_md5_=3274f5826dc18eee3d47d8bd34ea6e29
