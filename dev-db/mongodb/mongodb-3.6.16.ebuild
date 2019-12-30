@@ -10,7 +10,7 @@ CHECKREQS_DISK_BUILD="2400M"
 CHECKREQS_DISK_USR="512M"
 CHECKREQS_MEMORY="1024M"
 
-inherit check-reqs flag-o-matic multiprocessing pax-utils python-any-r1 scons-utils systemd toolchain-funcs user
+inherit check-reqs flag-o-matic multiprocessing pax-utils python-any-r1 scons-utils systemd toolchain-funcs
 
 MY_P=${PN}-src-r${PV/_rc/-rc}
 
@@ -20,17 +20,19 @@ SRC_URI="https://fastdl.mongodb.org/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="debug kerberos libressl lto mms-agent ssl test +tools"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=app-arch/snappy-1.1.3
+RDEPEND="acct-group/mongodb
+	acct-user/mongodb
+	>=app-arch/snappy-1.1.3
 	>=dev-cpp/yaml-cpp-0.5.3:=
 	>=dev-libs/boost-1.60:=[threads(+)]
 	>=dev-libs/libpcre-8.41[cxx]
 	dev-libs/snowball-stemmer
 	net-libs/libpcap
-	>=sys-libs/zlib-1.2.11:=
+	>=sys-libs/zlib-1.2.8:=
 	kerberos? ( dev-libs/cyrus-sasl[kerberos] )
 	mms-agent? ( app-admin/mms-agent )
 	ssl? (
@@ -54,28 +56,22 @@ PDEPEND="tools? ( >=app-admin/mongo-tools-${PV} )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.6.1-fix-scons.patch"
-	"${FILESDIR}/${PN}-4.0.0-no-compass.patch"
+	"${FILESDIR}/${PN}-3.6.1-no-compass.patch"
+	"${FILESDIR}/${PN}-4.0.12-boost-1.71-cxxabi-include.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
 
 pkg_pretend() {
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
-		if ver_test "$REPLACING_VERSIONS" -lt 3.6; then
-			ewarn "To upgrade from a version earlier than the 3.6-series, you must"
+		if ver_test "$REPLACING_VERSIONS" -lt 3.4; then
+			ewarn "To upgrade from a version earlier than the 3.4-series, you must"
 			ewarn "successively upgrade major releases until you have upgraded"
-			ewarn "to 3.6-series. Then upgrade to 4.0 series."
+			ewarn "to 3.4-series. Then upgrade to 3.6 series."
 		else
-			ewarn "Be sure to set featureCompatibilityVersion to 3.6 before upgrading."
+			ewarn "Be sure to set featureCompatibilityVersion to 3.4 before upgrading."
 		fi
 	fi
-}
-
-pkg_setup() {
-	enewgroup mongodb
-	enewuser mongodb -1 -1 /var/lib/${PN} mongodb
-
-	python-any-r1_pkg_setup
 }
 
 src_prepare() {
