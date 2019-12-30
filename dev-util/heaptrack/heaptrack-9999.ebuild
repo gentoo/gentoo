@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kde.org xdg-utils
+inherit cmake kde.org xdg-utils
 
 DESCRIPTION="Fast heap memory profiler"
 HOMEPAGE="http://milianw.de/blog/heaptrack-a-heap-memory-profiler-for-linux"
@@ -46,9 +46,9 @@ src_configure() {
 	local mycmakeargs=(
 		-DHEAPTRACK_BUILD_GUI=$(usex gui)
 		-DBUILD_TESTING=$(usex test)
-		$(cmake-utils_use_find_package zstd Zstd)
+		$(cmake_use_find_package zstd Zstd)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 xdg_pkg_postinst() {
