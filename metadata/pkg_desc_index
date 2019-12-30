@@ -4701,7 +4701,7 @@ dev-lang/orc 0.4.28-r1 0.4.29 0.4.31: The Oil Runtime Compiler, a just-in-time c
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.24.3-r1 5.24.4 5.26.2 5.28.2-r1 5.30.1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.40-r7 7.1.33 7.2.24 7.2.25 7.2.26 7.3.11 7.3.12 7.3.13 7.4.0 7.4.1: The PHP language runtime engine
+dev-lang/php 7.1.33 7.2.24 7.2.25 7.2.26 7.3.11 7.3.12 7.3.13 7.4.0 7.4.1: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.16 2.7.17 2.7.17-r1 3.5.7 3.5.9 3.6.9 3.6.10 3.7.5-r1 3.7.6 3.8.1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
@@ -7186,7 +7186,6 @@ dev-php/PEAR-Log 1.13.1: The Log framework provides an abstracted logging system
 dev-php/PEAR-MDB 1.3.0-r2: PEAR MDB combines the PEAR DB and Metabase php database abstraction layers
 dev-php/PEAR-MDB2 2.5.0_beta5-r2: Database Abstraction Layer
 dev-php/PEAR-MDB2_Driver_mssql 1.5.0_beta4-r1: Database Abstraction Layer, mssql driver
-dev-php/PEAR-MDB2_Driver_mysql 1.5.0_beta4-r1: Database Abstraction Layer, mysql driver
 dev-php/PEAR-MDB2_Driver_mysqli 1.5.0_beta4-r1: Database Abstraction Layer, mysqli driver
 dev-php/PEAR-MDB2_Driver_oci8 1.5.0_beta4-r1: Database Abstraction Layer, oci8 driver
 dev-php/PEAR-MDB2_Driver_pgsql 1.5.0_beta4-r1: Database Abstraction Layer, pgsql driver
@@ -7268,7 +7267,6 @@ dev-php/json-schema 5.2.8 5.2.9: PHP implementation of JSON schema
 dev-php/jsonlint 1.7.1 1.7.2: JSON Lint for PHP
 dev-php/libchart 1.3: Easy-to-use chart creation library for PHP
 dev-php/libvirt-php 0.5.4 9999: PHP bindings for libvirt
-dev-php/magickwand 1.0.9-r3: A native PHP-extension to the ImageMagick MagickWand API
 dev-php/maxmind-db-reader 1.4.1: PHP reader for the MaxMind database format
 dev-php/mmslib 0.97: library for encoding, decoding, and sending MMSes
 dev-php/mockery 0.9.0-r1: Simple yet flexible PHP mock object framework for use in unit testing
@@ -7276,55 +7274,42 @@ dev-php/myclabs-deepcopy 1.6.0 1.6.1 1.9.4: Create deep copies (clones) of your 
 dev-php/onphp 1.0.11_pre20141124: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.10.1-r1 1.10.3: PEAR - PHP Extension and Application Repository
 dev-php/pecl-amqp 1.9.4 1.9.4-r1: PHP Bindings for AMQP 0-9-1 compatible brokers
-dev-php/pecl-apcu 4.0.11 5.1.12 5.1.17-r1 5.1.18: Stripped down version of APC supporting only user cache
+dev-php/pecl-apcu 5.1.12 5.1.17-r1 5.1.18: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.4-r1 1.0.5: Provides APC backwards compatibility functions via APCu
-dev-php/pecl-bbcode 1.0.3_beta1-r2: A quick and efficient BBCode Parsing Library
-dev-php/pecl-cairo 0.3.2-r1: Cairo bindings for PHP
 dev-php/pecl-cassandra 1.3.2: DataStax PHP Driver for Apache Cassandra
 dev-php/pecl-crack 0.4-r7: PHP interface to the cracklib libraries
-dev-php/pecl-dbase 5.1.1 7.0.1: dBase database file access functions
-dev-php/pecl-dbx 1.1.2-r2: The dbx module is a database abstraction layer
+dev-php/pecl-dbase 7.0.1: dBase database file access functions
 dev-php/pecl-dio 0.1.0-r1: Direct I/O functions for PHP
 dev-php/pecl-eio 2.0.2-r1 2.0.4: PHP wrapper for libeio library
 dev-php/pecl-event 2.2.1 2.5.3: PHP wrapper for libevent2
 dev-php/pecl-geoip 1.1.1-r4: PHP extension to map IP address to geographic places
 dev-php/pecl-gnupg 1.4.0-r2: PHP wrapper around the gpgme library
-dev-php/pecl-haru 1.0.4-r3: An interface to libharu, a PDF generator
-dev-php/pecl-htscanner 1.0.1-r3: Enables .htaccess options for php-scripts running as cgi
-dev-php/pecl-http 2.6.0 2.6.0-r1 2.6.0-r2 3.2.1 3.2.3: Extended HTTP Support for PHP
+dev-php/pecl-http 3.2.1 3.2.3: Extended HTTP Support for PHP
 dev-php/pecl-imagick 3.4.4: PHP wrapper for the ImageMagick library
-dev-php/pecl-libevent 0.1.0-r2: PHP wrapper for libevent
 dev-php/pecl-lzf 1.6.6 1.6.7: This package handles LZF de/compression
-dev-php/pecl-mailparse 2.1.6-r4 3.0.2-r1 3.0.3-r1 3.0.4: PHP extension for parsing and working with RFC822 and MIME compliant messages
+dev-php/pecl-mailparse 3.0.2-r1 3.0.3-r1 3.0.4: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-mcrypt 1.0.1 1.0.2 1.0.3: Bindings for the libmcrypt library
-dev-php/pecl-memcache 3.0.8-r2 3.0.8-r3 4.0.5.2: PHP extension for using memcached
-dev-php/pecl-memcached 2.2.0-r2 3.0.4 3.1.3 3.1.3-r1 3.1.4 3.1.5: Interface PHP with memcached via libmemcached library
-dev-php/pecl-mongo 1.6.14-r1 1.6.16: Legacy MongoDB database driver for PHP
+dev-php/pecl-memcache 4.0.5.2: PHP extension for using memcached
+dev-php/pecl-memcached 3.0.4 3.1.3 3.1.3-r1 3.1.4 3.1.5: Interface PHP with memcached via libmemcached library
 dev-php/pecl-mongodb 1.5.3 1.5.3-r1 1.5.5 1.6.0: MongoDB database driver for PHP
-dev-php/pecl-mysqlnd_ms 1.6.0_pre20141127: A replication and load balancing plugin for the mysqlnd library
-dev-php/pecl-mysqlnd_qc 1.2.0-r2: A query cache plugin for the mysqlnd library
 dev-php/pecl-ncurses 1.0.2-r5: Terminal screen handling and optimization package
-dev-php/pecl-oauth 1.2.3-r5 2.0.2-r2 2.0.3 2.0.4: OAuth is an authorization protocol built on top of HTTP
+dev-php/pecl-oauth 2.0.2-r2 2.0.3 2.0.4: OAuth is an authorization protocol built on top of HTTP
 dev-php/pecl-pam 1.0.3-r3: This extension provides PAM (Pluggable Authentication Modules) integration
-dev-php/pecl-propro 1.0.2-r1 1.0.2-r2 2.1.0: A reusable property proxy API for PHP
-dev-php/pecl-ps 1.3.7-r1 1.3.7-r2 1.4.1: PHP extension for creating PostScript files
+dev-php/pecl-propro 2.1.0: A reusable property proxy API for PHP
+dev-php/pecl-ps 1.4.1: PHP extension for creating PostScript files
 dev-php/pecl-radius 1.4.0_beta1-r2: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
-dev-php/pecl-raphf 1.1.2-r1 1.1.2-r2 2.0.0-r2 2.0.1: A reusable, persistent handle and resource factory API
+dev-php/pecl-raphf 2.0.0-r2 2.0.1: A reusable, persistent handle and resource factory API
 dev-php/pecl-redis 3.1.6-r1 4.2.0 4.3.0 5.0.2 5.1.1: PHP extension for interfacing with Redis
-dev-php/pecl-rrd 1.1.3-r2 2.0.1-r3: RRDtool bindings for PHP
-dev-php/pecl-sphinx 1.3.3-r1: PHP extension to execute search queries on a sphinx daemon
-dev-php/pecl-spl_types 0.4.0-r2: Standard PHP library types add-on
-dev-php/pecl-ssh2 0.13-r3 1.1.2 1.2 9999: PHP bindings for the libssh2 library
-dev-php/pecl-stomp 1.0.9-r1 2.0.2: PHP extension to communicate with Stomp message brokers
-dev-php/pecl-svn 1.0.3-r1: PHP Bindings for the Subversion Revision control system
+dev-php/pecl-rrd 2.0.1-r3: RRDtool bindings for PHP
+dev-php/pecl-ssh2 1.1.2 1.2 9999: PHP bindings for the libssh2 library
+dev-php/pecl-stomp 2.0.2: PHP extension to communicate with Stomp message brokers
 dev-php/pecl-taint 2.0.5 2.0.6: Extension used for detecting XSS code (tainted strings)
 dev-php/pecl-timezonedb 2019.3: Timezone Database to be used with PHP's date and time functions
 dev-php/pecl-translit 0.6.2-r2 0.6.3: Transliterates non-latin character sets to latin
 dev-php/pecl-uploadprogress 1.0.3.1-r4: An extension to track progress of a file upload
 dev-php/pecl-uuid 1.0.4-r2: A wrapper around libuuid
-dev-php/pecl-xdiff 1.5.2-r5 2.0.1-r2: PHP extension for generating diff files
-dev-php/pecl-xrange 1.3.2-r2: Implementation of weak references
-dev-php/pecl-yaml 1.3.2 2.0.4: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
+dev-php/pecl-xdiff 2.0.1-r2: PHP extension for generating diff files
+dev-php/pecl-yaml 2.0.4: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-php/pecl-yaz 1.2.2-r1 1.2.3: This extension implements a Z39.50 client for PHP using the YAZ toolkit
 dev-php/pecl-zmq 1.1.3-r2 9999: PHP Bindings for ZeroMQ messaging
 dev-php/phar-io-manifest 1.0.3: Reading phar.io manifest information from a PHP Archive (PHAR)
@@ -7365,7 +7350,6 @@ dev-php/simpletest 1.1.7: A PHP testing framework
 dev-php/smarty 3.1.33: A template engine for PHP
 dev-php/spdx-licenses 1.2.0 1.4.0-r1 1.5.0: Tools for working with and validating SPDX licenses
 dev-php/stringparser_bbcode 0.3.3-r1: A PHP class to parse BB codes
-dev-php/suhosin 0.9.38-r1: Suhosin is an advanced protection system for PHP installations
 dev-php/swoole 4.2.13 4.4.12: Event-driven asynchronous & concurrent & coroutine networking engine
 dev-php/swoole-async 4.4.12: An extension of Swoole, including the async callback style API
 dev-php/symfony-config 2.8.20: Symfony Config Component
@@ -7380,11 +7364,10 @@ dev-php/tcpdf 6.2.25 6.2.26: TCPDF is a FLOSS PHP class for generating PDF docum
 dev-php/theseer-tokenizer 1.1.0 1.1.3: Convert tokenized PHP source code into XML and other formats
 dev-php/twig 1.40.1-r1 1.42.3 1.42.3-r1: PHP templating engine with syntax similar to Django
 dev-php/webmozart-assert 1.2.0 1.4.0: Assertions to validate method input/output with nice error messages
-dev-php/xcache 3.2.0-r2: A fast and stable PHP opcode cacher
 dev-php/xdebug 2.6.1 2.7.0 2.7.2 2.8.0 2.9.0: A PHP debugging and profiling extension
 dev-php/xdebug-client 2.5.3 2.5.5-r1 2.6.1 2.7.0 2.7.2 2.8.0 2.9.0: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-php/xdebug-handler 1.3.0 1.3.1: Restart a CLI process without loading the xdebug extension
-dev-php/xhprof 0.9.4_p20150226-r1 0.9.10: A Hierarchical Profiler for PHP
+dev-php/xhprof 0.9.10: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.3.1 3.5.3: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.5.0 2.5.3 2.5.3-r1 2.6.0 2.7.0: Collection of tools for internationalizing Python applications
@@ -12527,7 +12510,7 @@ mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.92.2 4.92.3 4.93.0.3: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.3 1.8.6 1.8.7: An SMTP client and SMTP plugin for mail user agents such as Mutt
-mail-mta/netqmail 1.06-r4 1.06-r10 1.06-r11 1.06-r12: qmail -- a secure, reliable, efficient, simple message transfer agent
+mail-mta/netqmail 1.06-r4 1.06-r12: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.3_p1-r1 6.4.0_p1: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 3.4.5-r1 3.4.6 3.4.7 3.4.8 3.5_pre20191214: A fast and secure drop-in replacement for sendmail
@@ -17963,7 +17946,7 @@ virtual/gsasl 2: Virtual for the GNU SASL library
 virtual/httpd-basic 0-r2: Virtual for static HTML-enabled webservers
 virtual/httpd-cgi 0-r1 0-r2: Virtual for CGI-enabled webservers
 virtual/httpd-fastcgi 0-r1: Virtual for FastCGI-enabled webservers
-virtual/httpd-php 5.6 7.1 7.2 7.3 7.4: Virtual to provide PHP-enabled webservers
+virtual/httpd-php 7.1 7.2 7.3 7.4: Virtual to provide PHP-enabled webservers
 virtual/imagemagick-tools 0: Virtual for imagemagick command line tools
 virtual/imap-c-client 1 2: Virtual for IMAP c-client
 virtual/inetd 0: Virtual for the internet super-server daemon
@@ -18243,7 +18226,7 @@ www-apps/redmine 4.0.5 4.0.5-r1: Flexible project management web application usi
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 1.5.1 1.6.1-r1: Issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/rt 4.4.3 4.4.4: RT is an enterprise-grade ticketing system
-www-apps/rutorrent 3.4-r1 3.8-r1 9999: ruTorrent is a front-end for the popular Bittorrent client rTorrent
+www-apps/rutorrent 3.8-r1 9999: ruTorrent is a front-end for the popular Bittorrent client rTorrent
 www-apps/scgi 1.14-r1: A Python package for implementing SCGI servers
 www-apps/trac 1.0.9 1.2.1: Enhanced wiki and issue tracking system for software development projects
 www-apps/trac-accountmanager 0.4.2-r1 0.4.4: A Trac plugin for manage user accounts
