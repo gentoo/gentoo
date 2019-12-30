@@ -94,5 +94,4 @@ dev-cpp/eigen test
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
-dev-lang/python-exec -python_targets_pypy
 dev-lang/python-exec -python_targets_pypy3

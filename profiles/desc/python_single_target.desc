@@ -4,10 +4,8 @@
 # This file contains descriptions of PYTHON_SINGLE_TARGET USE_EXPAND flags.
 
 python2_7 - Build for Python 2.7 only
-python3_5 - Build for Python 3.5 only
 python3_6 - Build for Python 3.6 only
 python3_7 - Build for Python 3.7 only
 python3_8 - Build for Python 3.8 only
 jython2_7 - Build for Jython 2.7 only
-pypy - Build for PyPy only
 pypy3 - Build for PyPy3 only

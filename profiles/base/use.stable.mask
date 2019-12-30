@@ -18,8 +18,6 @@ postgres_targets_postgres12
 
 # Zac Medico <zmedico@gentoo.org> (2016-09-01)
 # Needs virtual/pypy* stable
-python_targets_pypy
-python_single_target_pypy
 python_targets_pypy3
 python_single_target_pypy3
 

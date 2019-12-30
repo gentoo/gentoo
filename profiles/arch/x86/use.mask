@@ -38,8 +38,6 @@ python_single_target_python3_7
 
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is keyworded on this arch.
--python_targets_pypy
--python_single_target_pypy
 -python_targets_pypy3
 -python_single_target_pypy3
 
