@@ -114,7 +114,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.10
 	>=dev-util/gperf-3.0.1
 	>=sys-devel/bison-2.4.3
-	|| ( >=sys-devel/gcc-7.3 >=sys-devel/clang-3.3 )
+	|| ( >=sys-devel/gcc-7.3 >=sys-devel/clang-5 )
 	sys-devel/gettext
 	virtual/pkgconfig
 
@@ -147,10 +147,6 @@ pkg_pretend() {
 
 		if ! test-flag-CXX -std=c++17 ; then
 			die "You need at least GCC 7.3.x or Clang >= 5 for C++17-specific compiler flags"
-		fi
-
-		if tc-is-gcc && [[ $(gcc-version) < 7.3 ]] ; then
-			die 'The active compiler needs to be gcc 7.3 (or newer)'
 		fi
 	fi
 
