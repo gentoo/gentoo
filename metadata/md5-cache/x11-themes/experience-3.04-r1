@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=x11-themes/gtk-engines-experience
 SLOT=0
 SRC_URI=mirror://gnome/teams/art.gnome.org/themes/gtk2/GTK2-EXperience.tar.gz -> experience-3.04.tar.gz
-_md5_=a62457630837a97a07215275b835379b
+_md5_=25a40471bcb6149ef32b516b4428b273

@@ -1,0 +1,13 @@
+BDEPEND=dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install prepare setup test
+DESCRIPTION=Binary-decimal and decimal-binary conversion routines for IEEE doubles
+EAPI=7
+HOMEPAGE=https://github.com/google/double-conversion
+IUSE=static-libs test
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RESTRICT=!test? ( test )
+SLOT=0/3
+SRC_URI=https://github.com/google/double-conversion/archive/v3.1.5.tar.gz -> double-conversion-3.1.5.tar.gz
+_eclasses_=cmake	35b3146b6de4b75aef568db01ba9760c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=1cb5338312cd6a36e730e696fb618a1a

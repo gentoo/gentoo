@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtxml:5 dbus? ( dev-qt/qtdbus:5 )
 SLOT=0
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	estack	686eaab303305a908fd57b2fd7617800	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=e73dbc9dbe580053ae676e2f39727b0d
+_md5_=e728a2ae871ce8a2d09d0a5887990267
