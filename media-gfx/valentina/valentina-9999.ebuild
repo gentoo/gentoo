@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit mercurial qmake-utils gnome2-utils xdg-utils
+inherit mercurial qmake-utils gnome2-utils xdg
 
 DESCRIPTION="Cloth patternmaking software"
 HOMEPAGE="https://valentinaproject.bitbucket.io/"
@@ -13,7 +13,7 @@ EHG_REVISION="develop"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="gnome"
+IUSE=""
 
 LANGS="cs de el en en es fi fr he id it nl pt-BR ro ru uk zh-CN"
 
@@ -110,13 +110,4 @@ src_install() {
 	cp dist/debian/valentina.sharedmimeinfo dist/debian/${PN}.xml || die
 	insinto /usr/share/mime/packages
 	doins dist/debian/${PN}.xml
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-
-	if use gnome ; then
-		gnome2_icon_cache_update
-	fi
 }
