@@ -21,6 +21,6 @@ src_install() {
 	rm -rf "${ED%/}"/usr/share/doc || die
 	einstalldocs
 
-	echo PRELINK_PATH_MASK=\""${EPREFIX}"/usr/bin/bbkeys\" > "${T}"/99bbkeys || die
+	echo PRELINK_PATH_MASK=\""${EPREFIX}"/usr/bin/bbkeys\" > "${T}"/99bbkeys || die
 	doenvd "${T}"/99bbkeys
 }
