@@ -9,7 +9,7 @@ SRC_URI="https://github.com/muennich/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm x86"
+KEYWORDS="amd64 ~arm x86"
 
 RDEPEND="x11-misc/xsel
 	x11-terms/rxvt-unicode[perl]"
