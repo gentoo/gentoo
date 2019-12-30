@@ -13,3 +13,17 @@ RDEPEND="
 	tools? ( net-vpn/wireguard-tools )
 	module? ( net-vpn/wireguard-modules )
 "
+
+pkg_postinst() {
+	ewarn
+	ewarn "This package, ${CATEGORY}/${PN}, has been deprecated, in favor of explicitly"
+	ewarn "merging the tools and the modules separately. You may accomplish this by"
+	ewarn "running:"
+	ewarn
+	ewarn "    emerge -nO net-vpn/wireguard-tools net-vpn/wireguard-modules"
+	ewarn "    emerge -C virtual/wireguard"
+	ewarn
+	ewarn "When Linux 5.6 comes out, net-vpn/wireguard-modules itself will be deprecated,"
+	ewarn "with its functionality having moved directly into Linux."
+	ewarn
+}

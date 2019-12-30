@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools toolchain-funcs
+inherit autotools multilib-minimal toolchain-funcs
 
 DESCRIPTION="An OCR Engine, orginally developed at HP, now open source."
 HOMEPAGE="https://github.com/tesseract-ocr"
@@ -14,10 +14,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc jpeg opencl openmp png static-libs tiff training webp"
 
-COMMON_DEPEND=">=media-libs/leptonica-1.74:=[zlib,tiff?,jpeg?,png?,webp?]
+COMMON_DEPEND=">=media-libs/leptonica-1.74:=[${MULTILIB_USEDEP},zlib,tiff?,jpeg?,png?,webp?]
 	opencl? (
-		virtual/opencl
-		media-libs/tiff:0=
+		virtual/opencl[${MULTILIB_USEDEP}]
+		media-libs/tiff:0=[${MULTILIB_USEDEP}]
 		media-libs/leptonica:=[tiff]
 	)
 	training? (
@@ -37,8 +37,6 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
 	doc? ( app-doc/doxygen )"
 
-DOCS=( AUTHORS ChangeLog README.md )
-
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
@@ -52,7 +50,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+multilib_src_configure() {
 	# scrollview disabled for now, see bug #686944
 	local myeconfargs=(
 		--enable-shared
@@ -62,22 +60,32 @@ src_configure() {
 		$(use_enable static-libs static)
 	)
 
-	econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
-src_compile() {
+multilib_src_compile() {
 	default
-	use doc && emake doc
-	use training && emake training
-}
-
-src_install() {
-	use doc && HTML_DOCS=( doc/html/. )
-	default
-
-	find "${D}" -name '*.la' -type f -delete || die
-
-	if use training; then
-		emake DESTDIR="${D}" training-install
+	if multilib_is_native_abi; then
+		use doc && emake doc
+		use training && emake training
 	fi
+}
+
+multilib_src_install() {
+	if multilib_is_native_abi; then
+		DOCS=( "${S}"/AUTHORS "${S}"/ChangeLog "${S}"/README.md )
+		if use doc; then
+			HTML_DOCS=( doc/html/. )
+		fi
+		einstalldocs
+
+		if use training; then
+			emake DESTDIR="${D}" training-install
+		fi
+	fi
+	emake DESTDIR="${D}" install
+}
+
+multilib_src_install_all() {
+	find "${D}" -name '*.la' -type f -delete || die
 }
