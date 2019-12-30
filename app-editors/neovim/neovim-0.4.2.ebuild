@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils eutils xdg
+inherit cmake eutils xdg
 
 DESCRIPTION="Vim-fork focused on extensibility and agility."
 HOMEPAGE="https://neovim.io"
@@ -58,7 +58,7 @@ src_prepare() {
 	sed -e "/^# define SYS_VIMRC_FILE/s|\$VIM|${EPREFIX}/etc/vim|" \
 		-i src/nvim/globals.h || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -66,11 +66,11 @@ src_configure() {
 		-DFEAT_TUI=$(usex tui)
 		-DPREFER_LUA=$(usex luajit no yes)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# install a default configuration file
 	insinto /etc/vim
