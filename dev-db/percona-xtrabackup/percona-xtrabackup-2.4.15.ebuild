@@ -5,7 +5,7 @@ EAPI="7"
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake-utils flag-o-matic
+inherit cmake flag-o-matic
 
 DESCRIPTION="Hot backup utility for MySQL based servers"
 HOMEPAGE="https://www.percona.com/software/mysql-database/percona-xtrabackup"
@@ -40,7 +40,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# remove bundled libedit, libevent, zlib
 	# just to be safe...
@@ -65,7 +65,7 @@ src_configure() {
 	)
 
 	local CMAKE_BUILD_TYPE="Release"
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {

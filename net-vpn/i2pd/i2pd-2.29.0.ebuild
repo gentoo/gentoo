@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd cmake-utils toolchain-funcs
+inherit systemd cmake toolchain-funcs
 
 DESCRIPTION="A C++ daemon for accessing the I2P anonymous network"
 HOMEPAGE="https://github.com/PurpleI2P/i2pd"
@@ -65,11 +65,11 @@ src_configure() {
 		-DWITH_LIBRARY=ON
 		-DWITH_BINARY=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# config
 	insinto /etc/i2pd

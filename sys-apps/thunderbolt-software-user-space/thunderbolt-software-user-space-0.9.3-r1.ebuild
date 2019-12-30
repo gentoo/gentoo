@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils linux-info
+inherit cmake linux-info
 
 DESCRIPTION="Thunderbolt(TM) user-space components"
 HOMEPAGE="https://github.com/intel/thunderbolt-software-user-space"
@@ -30,11 +30,11 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	cmake_comment_add_subdirectory docs
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	doman tbtadm.1
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop xdg
+inherit cmake desktop xdg
 
 DESCRIPTION="A modder-friendly OpenGL source port based on the DOOM engine"
 HOMEPAGE="https://zdoom.org"
@@ -42,7 +42,7 @@ src_prepare() {
 		rm -rf wadsrc_bm wadsrc_extra || die
 	fi
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -59,13 +59,13 @@ src_configure() {
 		-DNO_OPENMP="$(usex !openmp)"
 		-DBUILD_NONFREE="$(usex nonfree)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
 	newicon src/posix/zdoom.xpm "${PN}.xpm"
 	make_desktop_entry "${PN}" "GZDoom" "${PN}" "Game;ActionGame"
-	cmake-utils_src_install
+	cmake_src_install
 }
 
 pkg_postinst() {

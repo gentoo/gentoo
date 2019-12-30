@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Cross platform unit testing framework for C and C++"
 HOMEPAGE="https://github.com/Snaipe/Criterion"
@@ -30,19 +30,19 @@ src_configure() {
 		-DCTESTS="$(usex test ON OFF)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if use test; then
-		cmake-utils_src_make criterion_tests
+		cmake_build criterion_tests
 	fi
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if [[ "/usr/lib" != "/usr/$(get_libdir)" ]]; then
 		mkdir -p "${D}/usr/$(get_libdir)" || die
