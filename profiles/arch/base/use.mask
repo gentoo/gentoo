@@ -191,8 +191,6 @@ orc
 # Mike Gilbert <floppym@gentoo.org> (2013-01-02)
 # PyPy is unkeyworded on most arches. If you are running amd64 or x86,
 # please switch to one of the testing 13.0 profiles to get it.
-python_targets_pypy
-python_single_target_pypy
 python_targets_pypy3
 python_single_target_pypy3
 

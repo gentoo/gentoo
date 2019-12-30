@@ -42,8 +42,6 @@
 
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is keyworded on this arch.
--python_targets_pypy
--python_single_target_pypy
 -python_targets_pypy3
 -python_single_target_pypy3
 
@@ -71,11 +69,6 @@
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-21)
 # IPMI is only implemented for x86, amd64 and ia64
 -ipmi
-
-# Ralph Sennhauser <sera@gentoo.org> (2012-07-31)
-# Keyworded on amd64
--python_targets_jython2_7
--python_single_target_jython2_7
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2012-03-05)
 # Unmask, works with v4l2, #350211
