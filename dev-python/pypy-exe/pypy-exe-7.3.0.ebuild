@@ -30,7 +30,6 @@ DEPEND="${RDEPEND}
 	!low-memory? (
 		|| (
 			dev-python/pypy
-			dev-python/pypy-bin
 			(
 				dev-lang/python:2.7
 				dev-python/pycparser[python_targets_python2_7(-),python_single_target_python2_7(+)]
@@ -42,7 +41,7 @@ check_env() {
 	if use low-memory; then
 		if ! python_is_installed pypy; then
 			eerror "USE=low-memory requires a (possibly old) version of dev-python/pypy"
-			eerror "or dev-python/pypy-bin being installed. Please install it using e.g.:"
+			eerror "being installed. Please install it using e.g.:"
 			eerror
 			eerror "  $ emerge -1v dev-python/pypy dev-python/pypy-exe-bin"
 			eerror
