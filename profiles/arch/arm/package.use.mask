@@ -64,7 +64,7 @@ sys-apps/fwupd dell thunderbolt
 www-apps/nextcloud imagemagick
 
 # Corentin Pazdera <nado@troglodyte.be> (2018-12-28)
-# Requires virtual/pypy which isn't keyworded for ARM.
+# Requires dev-python/pypy which isn't keyworded for ARM.
 www-servers/uwsgi pypy
 
 # Davide Pesavento <pesa@gentoo.org> (2018-12-27)

@@ -17,7 +17,7 @@ php_targets_php7-4
 postgres_targets_postgres12
 
 # Zac Medico <zmedico@gentoo.org> (2016-09-01)
-# Needs virtual/pypy* stable
+# Needs dev-python/pypy* stable
 python_targets_pypy3
 python_single_target_pypy3
 
