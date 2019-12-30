@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst setup
-DEPEND=>=dev-libs/dbus-glib-0.100 dev-libs/glib:2 x11-libs/gtk+:3 x11-libs/libICE x11-libs/libSM x11-libs/vte:2.91 !x11-terms/roxterm:0 || ( dev-lang/python:3.6 dev-lang/python:3.5 ) dev-libs/libxslt dev-python/lockfile virtual/pkgconfig virtual/imagemagick-tools nls? ( app-text/po4a sys-devel/gettext )
+DEPEND=>=dev-libs/dbus-glib-0.100 dev-libs/glib:2 x11-libs/gtk+:3 x11-libs/libICE x11-libs/libSM x11-libs/vte:2.91 !x11-terms/roxterm:0 || ( dev-lang/python:3.6 ) dev-libs/libxslt dev-python/lockfile virtual/pkgconfig virtual/imagemagick-tools nls? ( app-text/po4a sys-devel/gettext )
 DESCRIPTION=A terminal emulator designed to integrate with the ROX environment
 EAPI=5
 HOMEPAGE=http://roxterm.sourceforge.net/
@@ -9,5 +9,5 @@ LICENSE=GPL-2 LGPL-3
 RDEPEND=>=dev-libs/dbus-glib-0.100 dev-libs/glib:2 x11-libs/gtk+:3 x11-libs/libICE x11-libs/libSM x11-libs/vte:2.91 !x11-terms/roxterm:0
 SLOT=1
 SRC_URI=mirror://sourceforge/roxterm/roxterm-3.1.5.tar.xz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=2c0f3ca25a42834b5241b334ddb6e643

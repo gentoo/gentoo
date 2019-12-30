@@ -1,4 +1,4 @@
-BDEPEND=|| ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/re2c doc? ( app-text/asciidoc app-doc/doxygen dev-libs/libxslt ) test? ( dev-cpp/gtest )
+BDEPEND=|| ( dev-lang/python:3.7 dev-lang/python:3.6 >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/re2c doc? ( app-text/asciidoc app-doc/doxygen dev-libs/libxslt ) test? ( dev-cpp/gtest )
 DEFINED_PHASES=compile install postinst postrm setup test
 DESCRIPTION=A small build system similar to make
 EAPI=7
@@ -10,5 +10,5 @@ RDEPEND=emacs? ( >=app-editors/emacs-23.1:* ) vim-syntax? ( || ( app-editors/vim
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Kitware/ninja/archive/v1.9.0.g99df1.kitware.dyndep-1.jobserver-1.tar.gz -> ninja-1.9.0.g99df1.kitware.dyndep-1.jobserver-1.tar.gz
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	elisp-common	a1054cff648e1c6a806e17001d052176	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	elisp-common	a1054cff648e1c6a806e17001d052176	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=bcdf0a7d8ca0b7526e258460e61158ab

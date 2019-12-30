@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare pretend setup unpack
-DEPEND=!binary? ( amd64? ( >=sys-power/iasl-20060912 || ( dev-lang/python:3.6 dev-lang/python:3.5 >=dev-lang/python-2.7.5-r2:2.7 ) ) x86? ( >=sys-power/iasl-20060912 || ( dev-lang/python:3.6 dev-lang/python:3.5 >=dev-lang/python-2.7.5-r2:2.7 ) ) )
+DEPEND=!binary? ( amd64? ( >=sys-power/iasl-20060912 || ( dev-lang/python:3.6 >=dev-lang/python-2.7.5-r2:2.7 ) ) x86? ( >=sys-power/iasl-20060912 || ( dev-lang/python:3.6 >=dev-lang/python-2.7.5-r2:2.7 ) ) )
 DESCRIPTION=Open Source implementation of a 16-bit x86 BIOS
 EAPI=7
 HOMEPAGE=https://www.seabios.org/
@@ -9,5 +9,5 @@ LICENSE=LGPL-3 GPL-3
 REQUIRED_USE=debug? ( !binary ) !amd64? ( !x86? ( binary ) )
 SLOT=0
 SRC_URI=!binary? ( https://code.coreboot.org/p/seabios/downloads/get/seabios-1.12.0.tar.gz ) binary? ( https://dev.gentoo.org/~tamiko/distfiles/seabios-1.12.0-bin.tar.xz )
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=223822edc07f183bddafcb9e005ec7a2

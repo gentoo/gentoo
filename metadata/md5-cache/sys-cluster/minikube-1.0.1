@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst prepare setup test unpack
-DEPEND=dev-go/go-bindata || ( dev-lang/python:3.6 dev-lang/python:3.5 >=dev-lang/python-2.7.5-r2:2.7 ) libvirt? ( app-emulation/libvirt[qemu] ) >=dev-lang/go-1.10
+DEPEND=dev-go/go-bindata || ( dev-lang/python:3.6 >=dev-lang/python-2.7.5-r2:2.7 ) libvirt? ( app-emulation/libvirt[qemu] ) >=dev-lang/go-1.10
 DESCRIPTION=Single Node Kubernetes Cluster
 EAPI=6
 HOMEPAGE=https://github.com/kubernetes/minikube https://kubernetes.io
@@ -10,5 +10,5 @@ RDEPEND=>=sys-cluster/kubectl-1.14.0
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/kubernetes/minikube/archive/v1.0.1.tar.gz -> minikube-1.0.1.tar.gz
-_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=e0f8d66f7f6a8ea69aa7e780d44e122c

@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare setup
-DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl] >=dev-lang/python-exec-2:=[python_targets_python2_7] ) app-text/docbook-xml-dtd:4.1.2 app-text/xmlto socks5? ( dev-python/PySocks[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),python_single_target_python2_7(+)?] ) virtual/pkgconfig
+DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl] >=dev-lang/python-exec-2:=[python_targets_python2_7] ) app-text/docbook-xml-dtd:4.1.2 app-text/xmlto socks5? ( dev-python/PySocks[python_targets_python2_7(-)?,-python_single_target_pypy3(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),python_single_target_python2_7(+)?] ) virtual/pkgconfig
 DESCRIPTION=Submission tools for IRC notifications
 EAPI=6
 HOMEPAGE=http://www.catb.org/esr/irker/
@@ -10,5 +10,5 @@ RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl] >=
 REQUIRED_USE=^^ ( python_single_target_python2_7 ) python_single_target_python2_7? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://www.catb.org/esr/irker/irker-2.18.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	721d0faeb54c0c332aa593d384993b4c	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=8382dbe75a8d7e83e0ba870bd311b616

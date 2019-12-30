@@ -1,11 +1,11 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install postinst prepare setup unpack
-DEPEND=app-emulation/qemu >=dev-lang/nasm-2.0.7 >=sys-power/iasl-20160729 || ( dev-lang/python:3.7[sqlite] dev-lang/python:3.6[sqlite] dev-lang/python:3.5[sqlite] >=dev-lang/python-2.7.5-r2:2.7[sqlite] )
+DEPEND=app-emulation/qemu >=dev-lang/nasm-2.0.7 >=sys-power/iasl-20160729 || ( dev-lang/python:3.7[sqlite] dev-lang/python:3.6[sqlite] >=dev-lang/python-2.7.5-r2:2.7[sqlite] )
 DESCRIPTION=UEFI firmware for 64-bit x86 virtual machines
 EAPI=7
 HOMEPAGE=https://github.com/tianocore/edk2
 LICENSE=BSD-2 MIT
 PROPERTIES=live
 SLOT=0
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=6732034b16b22fcc6896f41b5ee66651

@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=virtual/perl-Data-Dumper >=virtual/perl-Digest-MD5-2.500.0 >=dev-perl/Inline-0.460.0 python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) python_single_target_python3_5? ( dev-lang/python:3.5 >=dev-lang/python-exec-2:=[python_targets_python3_5] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) virtual/perl-ExtUtils-MakeMaker test? ( >=dev-perl/Proc-ProcessTable-0.530.0 virtual/perl-Test-Simple dev-perl/Test-Deep dev-perl/Test-Number-Delta virtual/perl-Test ) dev-lang/perl
+DEPEND=virtual/perl-Data-Dumper >=virtual/perl-Digest-MD5-2.500.0 >=dev-perl/Inline-0.460.0 python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) virtual/perl-ExtUtils-MakeMaker test? ( >=dev-perl/Proc-ProcessTable-0.530.0 virtual/perl-Test-Simple dev-perl/Test-Deep dev-perl/Test-Number-Delta virtual/perl-Test ) dev-lang/perl
 DESCRIPTION=Easy implementation of Python extensions
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Inline-Python
-IUSE=test python_targets_python2_7 python_targets_python3_5 python_targets_python3_6 python_single_target_python2_7 python_single_target_python3_5 python_single_target_python3_6
+IUSE=test python_targets_python2_7 python_targets_python3_6 python_single_target_python2_7 python_single_target_python3_6
 KEYWORDS=~amd64 ~sparc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=virtual/perl-Data-Dumper >=virtual/perl-Digest-MD5-2.500.0 >=dev-perl/Inline-0.460.0 python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) python_single_target_python3_5? ( dev-lang/python:3.5 >=dev-lang/python-exec-2:=[python_targets_python3_5] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) dev-lang/perl:=
-REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_5 python_single_target_python3_6 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 )
+RDEPEND=virtual/perl-Data-Dumper >=virtual/perl-Digest-MD5-2.500.0 >=dev-perl/Inline-0.460.0 python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) dev-lang/perl:=
+REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_6 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_6? ( python_targets_python3_6 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NI/NINE/Inline-Python-0.56.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	python-single-r1	721d0faeb54c0c332aa593d384993b4c	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=c6f564dd19ac320fd8bb4274c6815b77

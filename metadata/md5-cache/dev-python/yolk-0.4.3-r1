@@ -1,15 +1,15 @@
-BDEPEND=python_targets_pypy? ( >=virtual/pypy-5:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)]
+BDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-python/setuptools[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)] dev-python/yolk-portage[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)]
+DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/yolk-portage[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=Tool and library for querying PyPI and locally installed Python packages
 EAPI=7
 HOMEPAGE=https://pypi.org/project/yolk/
-IUSE=examples python_targets_pypy python_targets_python2_7
+IUSE=examples python_targets_python2_7
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=dev-python/setuptools[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)] dev-python/yolk-portage[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)] python_targets_pypy? ( >=virtual/pypy-5:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)]
-REQUIRED_USE=|| ( python_targets_pypy python_targets_python2_7 )
+RDEPEND=dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/yolk-portage[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=mirror://pypi/y/yolk/yolk-0.4.3.tar.gz
-_eclasses_=distutils-r1	48c123e514b2cd2128d36eb3bbb9a6fa	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	c037bf23d7eff50e222b067cd54e5f27	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=distutils-r1	48c123e514b2cd2128d36eb3bbb9a6fa	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=6296a5bc026f21d6d99adb095729540c

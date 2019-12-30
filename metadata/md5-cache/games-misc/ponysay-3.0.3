@@ -1,14 +1,14 @@
-BDEPEND=python_single_target_python3_5? ( dev-lang/python:3.5 >=dev-lang/python-exec-2:=[python_targets_python3_5] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) doc? ( sys-apps/texinfo )
+BDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) doc? ( sys-apps/texinfo )
 DEFINED_PHASES=compile install setup
 DESCRIPTION=cowsay reimplemention for ponies
 EAPI=7
 HOMEPAGE=https://github.com/erkin/ponysay
-IUSE=doc +non-free bash-completion fish-completion zsh-completion python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7
+IUSE=doc +non-free bash-completion fish-completion zsh-completion python_targets_python3_6 python_targets_python3_7 python_single_target_python3_6 python_single_target_python3_7
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=python_single_target_python3_5? ( dev-lang/python:3.5 >=dev-lang/python-exec-2:=[python_targets_python3_5] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) fish-completion? ( app-shells/fish ) zsh-completion? ( app-shells/zsh )
-REQUIRED_USE=^^ ( python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 )
+RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) fish-completion? ( app-shells/fish ) zsh-completion? ( app-shells/zsh )
+REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 )
 SLOT=0
 SRC_URI=https://github.com/erkin/ponysay/archive/3.0.3.tar.gz -> ponysay-3.0.3.tar.gz
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	721d0faeb54c0c332aa593d384993b4c	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=81ba1d995c9d7293f72e6fe5dedd036d

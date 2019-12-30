@@ -1,4 +1,4 @@
-BDEPEND=|| ( sys-devel/clang:10 sys-devel/clang:9 sys-devel/clang:8 sys-devel/clang:7 sys-devel/clang:6 ) || ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 >=dev-lang/python-2.7.5-r2:2.7 )
+BDEPEND=|| ( sys-devel/clang:10 sys-devel/clang:9 sys-devel/clang:8 sys-devel/clang:7 sys-devel/clang:6 ) || ( dev-lang/python:3.7 dev-lang/python:3.6 >=dev-lang/python-2.7.5-r2:2.7 )
 DEFINED_PHASES=compile configure prepare setup
 DESCRIPTION=OpenCL C library
 EAPI=7
@@ -9,5 +9,5 @@ LICENSE=Apache-2.0-with-LLVM-exceptions || ( MIT BSD )
 REQUIRED_USE=|| ( video_cards_nvidia video_cards_r600 video_cards_radeonsi )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mgorny/dist/libclc-0.2.0_pre20191024.tar.xz
-_eclasses_=llvm	5dbc14df2333105b7c006124ead9bf3f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=llvm	5dbc14df2333105b7c006124ead9bf3f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=ba6c9b0d067e93e63cdac9b4252928c1

@@ -4,11 +4,11 @@ DEPEND=>=dev-libs/libinput-1.8.0 dev-util/desktop-file-utils
 DESCRIPTION=Actions gestures on your touchpad using libinput
 EAPI=7
 HOMEPAGE=https://github.com/bulletmark/libinput-gestures
-IUSE=python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7
+IUSE=python_targets_python3_6 python_targets_python3_7 python_single_target_python3_6 python_single_target_python3_7
 LICENSE=GPL-3+
 PROPERTIES=live
-RDEPEND=python_single_target_python3_5? ( dev-lang/python:3.5 >=dev-lang/python-exec-2:=[python_targets_python3_5] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) >=dev-libs/libinput-1.8.0 x11-misc/wmctrl x11-misc/xdotool
-REQUIRED_USE=^^ ( python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 )
+RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) >=dev-libs/libinput-1.8.0 x11-misc/wmctrl x11-misc/xdotool
+REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 )
 SLOT=0
-_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	721d0faeb54c0c332aa593d384993b4c	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=73ba6b4d1415b7c198f1d9330e787edc

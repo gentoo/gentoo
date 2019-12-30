@@ -1,4 +1,4 @@
-BDEPEND=|| ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 ) doc? ( dev-go/go-md2man )
+BDEPEND=|| ( dev-lang/python:3.7 dev-lang/python:3.6 ) doc? ( dev-go/go-md2man )
 DEFINED_PHASES=compile configure install setup
 DEPEND=dev-libs/yajl sys-libs/libseccomp caps? ( sys-libs/libcap ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd:= )
 DESCRIPTION=A fast and low-memory footprint OCI Container Runtime fully written in C
@@ -11,5 +11,5 @@ RDEPEND=dev-libs/yajl sys-libs/libseccomp caps? ( sys-libs/libcap ) seccomp? ( s
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/containers/crun/releases/download/0.10.6/crun-0.10.6.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=ecffddf25c9304fa570e12a21e8b0b73

@@ -1,6 +1,6 @@
 BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=>=dev-libs/boost-1.65.1:= >=dev-libs/crypto++-8.2.0:= net-misc/curl:= >=sys-fs/fuse-2.8.6:0 !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) || ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 >=dev-lang/python-2.7.5-r2:2.7 ) test? ( dev-cpp/gtest )
+DEPEND=>=dev-libs/boost-1.65.1:= >=dev-libs/crypto++-8.2.0:= net-misc/curl:= >=sys-fs/fuse-2.8.6:0 !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) || ( dev-lang/python:3.7 dev-lang/python:3.6 >=dev-lang/python-2.7.5-r2:2.7 ) test? ( dev-cpp/gtest )
 DESCRIPTION=Encrypted FUSE filesystem that conceals metadata
 EAPI=7
 HOMEPAGE=https://www.cryfs.org/
@@ -11,5 +11,5 @@ RDEPEND=>=dev-libs/boost-1.65.1:= >=dev-libs/crypto++-8.2.0:= net-misc/curl:= >=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/cryfs/cryfs/releases/download/0.10.2/cryfs-0.10.2.tar.xz
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=e8f588a231bb6a016998e3061918d0dc

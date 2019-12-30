@@ -1,15 +1,15 @@
-BDEPEND=python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] dev-python/setuptools[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
+BDEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/setuptools[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-python/numpy[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] sci-libs/scipy[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] dev-python/setuptools[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] dev-python/cython[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
+DEPEND=dev-python/numpy[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] sci-libs/scipy[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/setuptools[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/cython[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
 DESCRIPTION=Quantum master equation package for Quantum dot transport calculations
 EAPI=7
 HOMEPAGE=https://github.com/gedaskir/qmeq
-IUSE=examples python_targets_python3_5 python_targets_python3_6
+IUSE=examples python_targets_python3_6
 KEYWORDS=~amd64
 LICENSE=BSD-2
-RDEPEND=dev-python/numpy[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] sci-libs/scipy[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] examples? ( dev-python/jupyter[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
-REQUIRED_USE=|| ( python_targets_python3_5 python_targets_python3_6 )
+RDEPEND=dev-python/numpy[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] sci-libs/scipy[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] examples? ( dev-python/jupyter[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+REQUIRED_USE=|| ( python_targets_python3_6 )
 SLOT=0
 SRC_URI=mirror://pypi/q/qmeq/qmeq-1.0.tar.gz examples? ( https://github.com/gedaskir/qmeq-examples/archive/1.0.tar.gz -> qmeq-examples-1.0.tgz )
-_eclasses_=distutils-r1	48c123e514b2cd2128d36eb3bbb9a6fa	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	c037bf23d7eff50e222b067cd54e5f27	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=distutils-r1	48c123e514b2cd2128d36eb3bbb9a6fa	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=c9a828551ca608829eeed1e5f6924946

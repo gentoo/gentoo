@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=|| ( dev-lang/python:3.6[threads(+)] dev-lang/python:3.5[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) doc? ( app-doc/doxygen )
+DEPEND=|| ( dev-lang/python:3.6[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) doc? ( app-doc/doxygen )
 DESCRIPTION=Library for RDF syntax which supports reading and writing Turtle and NTriples
 EAPI=6
 HOMEPAGE=http://drobilla.net/software/serd/
@@ -9,5 +9,5 @@ LICENSE=ISC
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://download.drobilla.net/serd-0.28.0.tar.bz2
-_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	waf-utils	1fab5379519d4b71bff5790435a71986
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	waf-utils	1fab5379519d4b71bff5790435a71986
 _md5_=3c81f69ce15d4fca4c7cff57335a7390

@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install setup
-DEPEND=|| ( dev-lang/python:3.6 dev-lang/python:3.5 >=dev-lang/python-2.7.5-r2:2.7 ) test? ( sci-libs/htslib sci-biology/samtools:0 )
+DEPEND=|| ( dev-lang/python:3.6 >=dev-lang/python-2.7.5-r2:2.7 ) test? ( sci-libs/htslib sci-biology/samtools:0 )
 DESCRIPTION=Tools for manipulation and analysis of BED, GFF/GTF, VCF, SAM/BAM file formats
 EAPI=6
 HOMEPAGE=https://bedtools.readthedocs.io/
@@ -10,5 +10,5 @@ RDEPEND=sys-libs/zlib
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/arq5x/bedtools2/releases/download/v2.26.0/bedtools-2.26.0.tar.gz https://dev.gentoo.org/~mgorny/dist/bedtools-2.26.0-fix-buildsystem.patch.bz2
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
 _md5_=e1bd4df60aef5e7f61ab664bcd14cf44

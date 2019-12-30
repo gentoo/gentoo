@@ -1,4 +1,4 @@
-BDEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 ) >=app-misc/pax-utils-0.1.10 sys-devel/bison !<sys-devel/bison-2.7 !<sys-devel/make-4 doc? ( sys-apps/texinfo ) >=sys-devel/binutils-2.24 >=sys-devel/gcc-6 virtual/pkgconfig
+BDEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) >=app-misc/pax-utils-0.1.10 sys-devel/bison !<sys-devel/bison-2.7 !<sys-devel/make-4 doc? ( sys-apps/texinfo ) >=sys-devel/binutils-2.24 >=sys-devel/gcc-6 virtual/pkgconfig
 DEFINED_PHASES=compile configure install postinst preinst prepare pretend setup test unpack
 DEPEND=gd? ( media-libs/gd:2= ) nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap ) ) ) suid? ( caps? ( sys-libs/libcap ) ) selinux? ( sys-libs/libselinux ) systemtap? ( dev-util/systemtap ) test? ( >=net-dns/libidn2-2.0.5 ) virtual/os-headers sys-devel/gnuconfig
 DESCRIPTION=GNU libc C library
@@ -12,5 +12,5 @@ RDEPEND=gd? ( media-libs/gd:2= ) nscd? ( selinux? ( audit? ( sys-process/audit )
 RESTRICT=!test? ( test )
 SLOT=2.2
 SRC_URI=mirror://gnu/glibc/glibc-2.30.tar.xz https://dev.gentoo.org/~dilfridge/distfiles/glibc-2.30-patches-4.tar.xz multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-20180511.tar.xz )
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	c2993e4c430c1ee24f278983d6189501	python-any-r1	2a3000b370786b5c90a651e7dd7c4797	python-utils-r1	f7aef159261e9835066ddf8d3a0e3487	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	c2993e4c430c1ee24f278983d6189501	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=0de60a05f399865726e510227416d273
