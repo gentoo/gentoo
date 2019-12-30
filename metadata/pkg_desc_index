@@ -4711,7 +4711,7 @@ dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre20140304: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.4.9 2.5.7 2.6.5 2.7.0: An object-oriented scripting language
-dev-lang/rust 1.37.0 1.38.0 1.39.0 1.40.0: Systems programming language from Mozilla
+dev-lang/rust 1.37.0 1.38.0 1.39.0 1.40.0 1.40.0-r1: Systems programming language from Mozilla
 dev-lang/rust-bin 1.37.0 1.38.0 1.39.0 1.40.0: Systems programming language from Mozilla
 dev-lang/sassc 3.6.0: A libsass command line driver
 dev-lang/scala 2.12.4: The Scala Programming Language
