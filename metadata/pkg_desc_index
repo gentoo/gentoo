@@ -14965,7 +14965,7 @@ net-libs/libssh2 1.9.0_p20190913 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 1.1.4 1.2.5: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
-net-libs/libtorrent-rasterbar 1.1.13-r1 1.2.3: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/libtorrent-rasterbar 1.1.13-r1 1.1.14 1.2.3: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.9_p1-r1 4.0.10_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.4 1.8.6 1.10.1: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
