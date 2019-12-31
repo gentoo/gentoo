@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/BYVoid/OpenCC"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-KEYWORDS="amd64 ~arm64 hppa ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 arm64 hppa ppc ppc64 ~sparc x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
