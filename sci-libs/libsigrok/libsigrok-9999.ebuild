@@ -134,6 +134,7 @@ each_ruby_install() {
 each_python_install() {
 	cd "${BUILD_DIR}"
 	emake python-install DESTDIR="${D}"
+	python_optimize
 }
 
 src_install() {
