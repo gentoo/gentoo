@@ -13,7 +13,7 @@ SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="ayatana crypt examples gnome-keyring kwallet libressl nls spice ssh rdp telepathy vnc webkit zeroconf"
 
 CDEPEND="
@@ -27,7 +27,7 @@ CDEPEND="
 	x11-libs/libxkbfile
 	ayatana? ( dev-libs/libappindicator:3 )
 	crypt? ( dev-libs/libgcrypt:0= )
-	rdp? ( >=net-misc/freerdp-2.0.0_rc4_p20190508 )
+	rdp? ( >=net-misc/freerdp-2.0.0_rc4_p1129 )
 	gnome-keyring? ( app-crypt/libsecret )
 	kwallet? ( kde-frameworks/kwallet )
 	!libressl? ( dev-libs/openssl:0= )
