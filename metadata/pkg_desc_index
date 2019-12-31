@@ -10020,7 +10020,7 @@ dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.1.0 2.1.1: Terminal painter
 dev-ruby/parallel 1.17.0 1.18.0 1.19.0 1.19.1: Run any code in parallel Processes or Threads
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
-dev-ruby/parser 2.6.4.0 2.6.4.1 2.6.5.0 2.7.0.0: A production-ready Ruby parser written in pure Ruby
+dev-ruby/parser 2.6.4.0 2.6.4.1 2.6.5.0 2.7.0.0 2.7.0.1: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.8.2: A small PEG based parser library
 dev-ruby/pastel 0.7.2 0.7.3: Terminal strings styling with intuitive and clean API
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
@@ -10199,7 +10199,7 @@ dev-ruby/ruby_parser 3.13.1 3.14.0 3.14.1: A ruby parser written in pure ruby
 dev-ruby/ruby_smb 1.0.5 1.1.0: pure Ruby implementation of the SMB Protocol Family
 dev-ruby/rubygems 2.7.10 3.0.3 3.0.4-r1 3.0.6 3.1.2: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.2: Ruby/NTLM provides message creator and parser for the NTLM authentication.
-dev-ruby/rubypants 0.7.0: A Ruby port of the SmartyPants PHP library
+dev-ruby/rubypants 0.7.0 0.7.1: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
 dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
@@ -17177,7 +17177,7 @@ sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.57-r1: Script to rescan the SCSI bus without rebooting
 sys-apps/restartd 0.2.2-r1: A daemon for checking your running and not running processes
 sys-apps/restorecond 2.9 3.0 9999: Daemon to watch for creation and set default SELinux fcontexts
-sys-apps/ripgrep 11.0.1 11.0.2: a search tool that combines the usability of ag with the raw speed of grep
+sys-apps/ripgrep 11.0.2: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rkflashtool 6.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 5-r2 6.6-r1 6.7-r1 6.7-r2 6.8 6.9: Daemon to use hardware random number generators
 sys-apps/roccat-tools 5.7.0 5.9.0: Utility for advanced configuration of Roccat devices
@@ -19058,7 +19058,7 @@ x11-plugins/wmwifi 0.6-r1: wireless network interface monitor dockapp
 x11-plugins/wmwork 0.2.5-r1: a dockapp that lets you easily track time spent on different projects
 x11-plugins/wmxkb 1.2.2-r1: Dockable keyboard layout switcher for Window Maker
 x11-plugins/wmxres 1.2-r1: Dock application to select your display mode among those possible
-x11-terms/alacritty 0.3.3-r1 0.4.0 9999: GPU-accelerated terminal emulator
+x11-terms/alacritty 0.4.0 9999: GPU-accelerated terminal emulator
 x11-terms/aterm 1.0.1-r3: rxvt compatible terminal emulator with transparency support
 x11-terms/cool-retro-term 1.1.0 1.1.1: terminal emulator which mimics the look and feel of the old cathode tube screens
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
