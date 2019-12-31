@@ -1,0 +1,53 @@
+From 6756d00fba11ca2af921a67acdb5e3c92e23bb8a Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Wed, 18 Dec 2019 12:52:15 +0000
+Subject: [calendar] Check out of bounds array access in QLocale lookup
+
+Summary:
+If we have a broken locale setup we don't have any uiLanugages to look
+up the relevant locale object for.
+
+In that case use the system locale.
+
+Test Plan:
+Had a crash here
+
+#11 0x00007ff982aab0b2 in QList<QString>::at(int) const (this=0x7ffd50b1d928, i=0) at /opt/qt5/include/QtCore/qlist.h:571
+#12 0x00007ff982aaaa4a in Calendar::monthName() const (this=0x5640cce026f0) at /home/david/projects/kde5/src/frameworks/plasma-framework/src/declarativeimports/calendar/calendar.cpp:202
+#13 0x00007ff982aa14e9 in Calendar::qt_static_metacall(QObject*, QMetaObject::Call, int, void**) (_o=0x5640cce026f0, _c=QMetaObject::ReadProperty, _id=9, _a=0x7ffd50b1dd40) at src/declarativeimports/calendar/calendarplugin_autogen/EWIEGA46WW/moc_calendar.cpp:340
+
+Reviewers: #plasma, vkrause
+
+Reviewed By: vkrause
+
+Subscribers: kde-frameworks-devel
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D25960
+---
+ src/declarativeimports/calendar/calendar.cpp | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/declarativeimports/calendar/calendar.cpp b/src/declarativeimports/calendar/calendar.cpp
+index f652c65..c77824d 100644
+--- a/src/declarativeimports/calendar/calendar.cpp
++++ b/src/declarativeimports/calendar/calendar.cpp
+@@ -199,9 +199,12 @@ QString Calendar::monthName() const
+     // locale and take the month name from that.
+     //
+     // See https://bugs.kde.org/show_bug.cgi?id=353715
+-    const QString lang = QLocale().uiLanguages().at(0);
+-    // If lang is empty, it will create just a system locale
+-    QLocale langLocale(lang);
++
++    QLocale langLocale;
++
++    if (QLocale().uiLanguages().length() > 0) {
++        langLocale = QLocale(QLocale().uiLanguages().at(0));
++    }
+     return langLocale.standaloneMonthName(m_displayedDate.month());
+ }
+ 
+-- 
+cgit v1.1
