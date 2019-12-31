@@ -31,10 +31,15 @@ src_prepare() {
 
 	tc-export CC
 
+	OPTTEST=1
 	if use amd64 || use x86; then
-		OPTTEST=0
-	else
-		OPTTEST=1
+		$(tc-getCPP) ${CFLAGS} ${CPPFLAGS} -P - <<-EOF &>/dev/null && OPTTEST=0
+			#if defined(__SSE2__)
+			true
+			#else
+			#error false
+			#endif
+		EOF
 	fi
 }
 
