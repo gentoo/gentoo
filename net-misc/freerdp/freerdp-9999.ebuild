@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 if [[ ${PV} != 9999 ]]; then
 	MY_P=${P/_/-}
@@ -118,5 +118,5 @@ src_configure() {
 		-DWITH_XV=$(usex xv ON OFF)
 		-DWITH_WAYLAND=$(usex wayland ON OFF)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
