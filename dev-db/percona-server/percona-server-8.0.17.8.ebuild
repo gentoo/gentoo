@@ -76,6 +76,7 @@ COMMON_DEPEND="
 	dev-libs/icu:=
 	dev-libs/libedit
 	dev-libs/libevent:=
+	>=dev-libs/protobuf-3.8:=
 	net-libs/libtirpc:=
 	>=sys-libs/zlib-1.2.3:0=
 	cjk? ( app-text/mecab:= )
@@ -95,7 +96,6 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 	dev-libs/re2
-	>=dev-libs/protobuf-3.8
 	net-libs/rpcsvc-proto
 	virtual/yacc
 	test? (

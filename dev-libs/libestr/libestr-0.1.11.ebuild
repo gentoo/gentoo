@@ -11,7 +11,7 @@ SRC_URI="https://libestr.adiscon.com/files/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 hppa x86"
+KEYWORDS="amd64 arm arm64 hppa x86"
 IUSE="debug static-libs test"
 RESTRICT="!test? ( test )"
 
