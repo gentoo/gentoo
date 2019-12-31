@@ -31,7 +31,7 @@ else
 		https://github.com/haubi/cygwin-rebase/compare/rebase-${MY_PV}...rebase-${MY_PV}_merge-files-flag-0.patch -> ${P}_merge-files-flag-0.patch
 	"
 	PATCHES=( "${DISTDIR}/${P}_merge-files-flag-0.patch" )
-	KEYWORDS="-* ~x64-cygwin"
+	KEYWORDS="-* ~x64-cygwin ~x86-cygwin"
 fi
 
 DEPEND=""
@@ -60,6 +60,10 @@ pkg_preinst() {
 	local rebasedb
 	local baseaddr
 	case ${CHOST} in
+	i686-*-cygwin*)
+		rebasedb=/etc/rebase.db.i386
+		baseaddr=0x70000000
+		;;
 	x86_64-*-cygwin*)
 		rebasedb=/etc/rebase.db.x86_64
 		baseaddr=0x1000000000
