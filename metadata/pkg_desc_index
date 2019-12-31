@@ -17713,7 +17713,7 @@ sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 242 243 243-r2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 33 9999: udev startup scripts for openrc
 sys-fs/udftools 2.0-r2 2.1: Ben Fennema's tools for packet writing and the UDF filesystem
-sys-fs/udiskie 1.7.7 2.0.2: An automatic disk mounting service using udisks
+sys-fs/udiskie 1.7.7 2.0.2-r1: An automatic disk mounting service using udisks
 sys-fs/udisks 1.0.5-r3 2.8.2 2.8.3 2.8.4: Daemon providing interfaces to work with storage devices
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 2.0 9999: Self-syncing tree-merging file system based on FUSE
@@ -18265,7 +18265,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2 3.9: a free, open source web browser
 www-client/opera 65.0.3467.69: A fast and secure web browser
 www-client/opera-beta 66.0.3515.14 66.0.3515.21: A fast and secure web browser
-www-client/opera-developer 67.0.3536.0 67.0.3541.0: A fast and secure web browser
+www-client/opera-developer 67.0.3541.0 67.0.3554.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.8.1 1.8.3 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine

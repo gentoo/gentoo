@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/bitcoin/bitcoin/archive/2472733a24a9364e4c6233ccd04166a26a68cc65.tar.gz -> bitcoin-v0.18.0.tar.gz https://bitcoinknots.org/files/0.18.x/0.18.0.knots20190502/bitcoin-0.18.0.knots20190502.patches.txz -> bitcoin-0.18.0.knots20190502.patches.tar.xz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	db-use	501a5d0963e0d17f30260023f292ae8e	desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=b3245cd2f083b6e5517cbe0264966a3e
+_md5_=fe737a0d7f01ddef815a8e8b2e67f7ef
