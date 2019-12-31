@@ -21,7 +21,7 @@ DESCRIPTION="basic hardware drivers for logic analyzers and input/output file fo
 HOMEPAGE="https://sigrok.org/wiki/Libsigrok"
 
 LICENSE="GPL-3"
-SLOT="0/9999"
+SLOT="0/4"
 IUSE="cxx ftdi java parport python ruby serial static-libs +udev test usb"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="java? ( cxx ) python? ( cxx ${PYTHON_REQUIRED_USE} ) ruby? ( cxx || ( $(ruby_get_use_targets) ) )"

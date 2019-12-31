@@ -3,35 +3,28 @@
 
 EAPI=7
 
+# Tests fail with pypy
 PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 
 inherit distutils-r1
 
 MY_PN="${PN/-/.}"
-DESCRIPTION="Additional facilities to supplement Python's stdlib logging module"
-HOMEPAGE="https://github.com/jaraco/jaraco.logging"
+DESCRIPTION="Classes used by other projects by developer jaraco"
+HOMEPAGE="https://github.com/jaraco/jaraco.classes"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="doc test"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~sparc ~x86"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
-# TODO: remove six
-# https://github.com/jaraco/jaraco.logging/pull/1
 RDEPEND="
 	>=dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/tempora[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
-	doc? (
-		>=dev-python/jaraco-packaging-3.2[${PYTHON_USEDEP}]
-		>=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	)
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
@@ -40,18 +33,22 @@ BDEPEND="
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-python_compile_all() {
-	if use doc; then
-		# conf.py looks for '../CHANGES.rst'
-		cd docs || die
-		sphinx-build . _build/html || die
-		HTML_DOCS=( docs/_build/html/. )
-	fi
+distutils_enable_sphinx docs \
+	">=dev-python/jaraco-packaging-3.2" \
+	">=dev-python/rst-linker-1.9"
+
+python_prepare_all() {
+	# avoid a setuptools_scm dependency
+	sed -i "s:use_scm_version=True:version='${PV}':" setup.py || die
+	sed -r -i "s:setuptools_scm[[:space:]]*([><=]{1,2}[[:space:]]*[0-9.a-zA-Z]+)[[:space:]]*::" \
+		setup.cfg || die
+
+	distutils-r1_python_prepare_all
 }
 
 python_test() {
-	# Override pytest options to skip flake8
-	PYTHONPATH=. pytest -vv --override-ini="addopts=--doctest-modules" \
+	# Avoid ImportMismatchError, override pytest options to skip flake8
+	pytest -vv "${BUILD_DIR}"/lib --override-ini="addopts=--doctest-modules" \
 		|| die "tests failed with ${EPYTHON}"
 }
 
