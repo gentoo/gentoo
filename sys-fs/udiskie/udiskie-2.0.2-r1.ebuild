@@ -18,7 +18,8 @@ RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	sys-fs/udisks:2"
+	sys-fs/udisks:2
+	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' 'python3_6')"
 DEPEND="app-text/asciidoc
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
