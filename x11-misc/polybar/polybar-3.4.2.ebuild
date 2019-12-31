@@ -36,6 +36,8 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}"/polybar
 
 src_prepare() {
+	mkdir ${S}/lib/i3ipcpp/include/i3
+	cp "${FILESDIR}/ipc.h"	${S}/lib/i3ipcpp/include/i3/ipc.h
 	cmake-utils_src_prepare
 }
 
