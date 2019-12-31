@@ -608,7 +608,7 @@ src_test() {
 }
 
 qemu_python_install() {
-	python_domodule "${S}/python/qemu/qmp.py"
+	python_domodule "${S}/python/qemu"
 
 	python_doscript "${S}/scripts/kvm/vmxcap"
 	python_doscript "${S}/scripts/qmp/qmp-shell"
