@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install postinst postrm prepare
+DEPEND=doc? ( app-text/texi2html sys-apps/texinfo )
+DESCRIPTION=tag system to find an object location in various sources
+EAPI=7
+HOMEPAGE=https://www.gnu.org/software/global/global.html
+IUSE=doc emacs vim
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-3
+RDEPEND=sys-libs/ncurses emacs? ( >=app-editors/emacs-23.1:* ) vim? ( || ( app-editors/vim app-editors/gvim ) ) || ( dev-libs/libltdl:0 sys-devel/libtool:2 )
+SLOT=0
+SRC_URI=mirror://gnu/global/global-6.6.4.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	elisp-common	a1054cff648e1c6a806e17001d052176	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=d6db05cf1d3a2d0645aa50907cd8620f
