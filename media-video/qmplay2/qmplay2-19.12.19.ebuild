@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="A Qt-based video player, which can play most formats and codecs"
 HOMEPAGE="https://github.com/zaps166/QMPlay2"
@@ -73,7 +73,7 @@ src_prepare() {
 		-e 's/(install.+QMPlay2\.1)\.gz/\1/' \
 		-i src/gui/CMakeLists.txt || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -125,7 +125,7 @@ src_configure() {
 		mycmakeargs+=( USE_GIT_VERSION=OFF )
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

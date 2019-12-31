@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils unpacker
+inherit cmake unpacker
 
 # e.g. MY_PV = a.b.c-d
 MY_PV="$(ver_rs 3 -)"
@@ -38,7 +38,7 @@ src_prepare() {
 	# Fix libdir
 	# Match '/lib/' and '/lib"' without capturing / or ", replacing with libdir
 	sed -i -r "s/\/lib(\"|\/)/\/$(get_libdir)\1/g" CMakeLists.txt || die "Failed to sed CMakeLists.txt"
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -50,7 +50,7 @@ src_configure() {
 		-DWITH_LUA_ENGINE=$(usex luajit LuaJIT Lua)
 		-DWITH_SHARED_LIBUV=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {

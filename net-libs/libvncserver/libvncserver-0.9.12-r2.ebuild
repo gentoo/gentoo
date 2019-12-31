@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 MY_P="LibVNCServer-${PV}"
 DESCRIPTION="library for creating vnc servers"
@@ -65,5 +65,5 @@ src_configure() {
 		-DWITH_IPv6=$(usex ipv6 ON OFF)
 		-DWITH_SASL=$(usex sasl ON OFF)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

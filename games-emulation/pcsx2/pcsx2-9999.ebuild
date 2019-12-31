@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils git-r3 multilib toolchain-funcs wxwidgets
+inherit cmake git-r3 multilib toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://www.pcsx2.net"
@@ -83,7 +83,7 @@ src_configure() {
 	)
 
 	WX_GTK_VER="3.0-gtk3" setup-wxwidgets
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
@@ -92,5 +92,5 @@ src_install() {
 	#  https://github.com/PCSX2/pcsx2/issues/3077
 	QA_EXECSTACK="usr/bin/PCSX2"
 	QA_TEXTRELS="usr/$(get_libdir)/pcsx2/* usr/bin/PCSX2"
-	cmake-utils_src_install
+	cmake_src_install
 }

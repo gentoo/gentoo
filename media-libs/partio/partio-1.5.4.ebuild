@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_5,3_6} )
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package doc Doxygen)
+		$(cmake_use_find_package doc Doxygen)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

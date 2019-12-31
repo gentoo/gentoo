@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="A cross-platform image viewer with webm support, written in qt5"
 HOMEPAGE="https://github.com/easymodo/qimgv"
@@ -31,7 +31,7 @@ RDEPEND="
 "
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	# respect make.conf CXXFLAGS
 	sed -i -e '/set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -lstdc++fs -O3")/d' CMakeLists.txt || die
 }
@@ -42,7 +42,7 @@ src_configure() {
 		-DKDE_SUPPORT=$(usex kde)
 		-DVIDEO_SUPPORT=$(usex video)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {
