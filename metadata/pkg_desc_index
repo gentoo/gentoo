@@ -8463,7 +8463,7 @@ dev-python/pycryptodome 3.4.6 3.4.7 3.6.6 3.7.3 3.8.2 3.9.4: A self-contained cr
 dev-python/pycryptopp 0.6.0 0.7.1-r1: Python wrappers for a few algorithms from the Crypto++ library
 dev-python/pycson 0.7: A python parser for the Coffeescript Object Notation (CSON)
 dev-python/pycuda 2017.1 2018.1.1 9999: Python wrapper for NVIDIA CUDA
-dev-python/pycups 1.9.72 1.9.73 1.9.73-r1 1.9.73-r2: Python bindings for the CUPS API
+dev-python/pycups 1.9.73-r1 1.9.73-r2: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0 7.43.0.2 7.43.0.3: python binding for curl/libcurl
 dev-python/pycxx 6.2.6: Set of facilities to extend Python with C++
 dev-python/pydecomp 0.2 0.3 9999: A python library of common (de)compression and contents handling
@@ -12310,7 +12310,7 @@ kde-frameworks/kxmlrpcclient 5.64.0 5.65.0: Framework providing client-side supp
 kde-frameworks/modemmanager-qt 5.64.0 5.65.0: ModemManager bindings for Qt
 kde-frameworks/networkmanager-qt 5.64.0 5.65.0: NetworkManager bindings for Qt
 kde-frameworks/oxygen-icons 5.64.0 5.65.0: Oxygen SVG icon theme
-kde-frameworks/plasma 5.64.0 5.65.0: Plasma framework
+kde-frameworks/plasma 5.64.0 5.65.0 5.65.0-r1: Plasma framework
 kde-frameworks/prison 5.64.0 5.65.0: QRCode and data matrix barcode library
 kde-frameworks/purpose 5.64.0 5.64.0-r2 5.65.0: Library for providing abstractions to get the developer's purposes fulfilled
 kde-frameworks/qqc2-desktop-style 5.64.0 5.65.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
