@@ -24,7 +24,8 @@ DEPEND="${RDEPEND}
 		dev-util/valgrind
 	)"
 
-BDEPEND="virtual/pkgconfig
+BDEPEND="dev-util/glib-utils
+	virtual/pkgconfig
 	$(vala_depend)"
 
 # Tests require an operational valgrind
