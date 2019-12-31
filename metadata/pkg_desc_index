@@ -3098,7 +3098,7 @@ dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
 dev-cpp/catch 1.12.2 1.9999 2.5.0 2.7.0 2.9.1 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-related services
-dev-cpp/cpp-hocon 0.1.4-r1 0.2.1: Provides C++ support for the HOCON configuration file format
+dev-cpp/cpp-hocon 0.2.1: Provides C++ support for the HOCON configuration file format
 dev-cpp/ctemplate 2.3-r1: A simple but powerful template language for C++
 dev-cpp/eigen 3.3.7: C++ template library for linear algebra
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
@@ -7989,7 +7989,7 @@ dev-python/ipyparallel 6.0.2-r1 6.2.3: Interactive Parallel Computing with IPyth
 dev-python/ipython 5.4.1-r2 5.8.0-r1 7.5.0: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0: Vestigial utilities from IPython
 dev-python/ipywidgets 7.0.0 7.4.2 7.4.2-r1: IPython HTML widgets for Jupyter
-dev-python/irc 16.3 17.1 18.0.0: IRC client framework written in Python
+dev-python/irc 16.3 17.1 18.0.0-r1: IRC client framework written in Python
 dev-python/irman-python 0.1-r1: A minimal set of Python bindings for libirman
 dev-python/iso3166 0.8: Self-contained ISO 3166-1 country definitions.
 dev-python/iso8601 0.1.10 0.1.11 0.1.12: Simple module to parse ISO 8601 dates
@@ -7998,12 +7998,12 @@ dev-python/isodate 0.5.4 0.6.0: ISO 8601 date/time/duration parser and formatter
 dev-python/isort 4.2.5 4.3.15 4.3.21_p2: A python utility/library to sort imports
 dev-python/itsdangerous 0.24 0.24-r1 1.1.0: Various helpers to pass trusted data to untrusted environments and back
 dev-python/itypes 1.1.0: basic immutable container types for python
-dev-python/jaraco-classes 2.0-r1: Classes used by other projects by developer jaraco
+dev-python/jaraco-classes 2.0-r1 3.1.0: Classes used by other projects by developer jaraco
 dev-python/jaraco-collections 1.5.3-r1 2.1 3.0.0: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-envs 1.0.1: Classes for orchestrating Python (virtual) environments.
-dev-python/jaraco-functools 1.19-r1 1.20-r1 2.0 2.0-r1: Additional functions used by other projects by developer jaraco
+dev-python/jaraco-functools 1.19-r1 2.0-r1 3.0.0: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 2.3-r1 4.4.2 5.0.0: Tools for working with iterables. Complements itertools and more_itertools
-dev-python/jaraco-logging 1.5.2-r1 2.0 3.0.0: Additional facilities to supplement Python's stdlib logging module
+dev-python/jaraco-logging 1.5.2-r1 2.0 3.0.0-r1: Additional facilities to supplement Python's stdlib logging module
 dev-python/jaraco-packaging 4.1 5.1-r1 6.1 6.2 6.2-r1: Tools to supplement packaging Python releases
 dev-python/jaraco-stream 1.2-r1 2.0-r1 3.0.0: Routines for handling streaming data
 dev-python/jaraco-text 1.10.1-r1 3.1 3.2.0: Text utilities used by other projects by developer jaraco
@@ -9050,7 +9050,7 @@ dev-python/tblib 1.3.2 1.3.2-r1: Traceback fiddling library for Python
 dev-python/telarchive 1.8.3: Script for automated searches of astronomical telescope archives
 dev-python/tempest-lib 1.0.0-r1: Functional or integrated test suites for OpenStack projects
 dev-python/tempita 0.5.3-r1 0.5.3-r2: A very small text templating language
-dev-python/tempora 1.7 1.12 1.14 1.14.1 1.14.1-r1: Objects and routines pertaining to date and time
+dev-python/tempora 1.7 1.12 1.14.1-r1 2.0.0: Objects and routines pertaining to date and time
 dev-python/tenacity 4.8.0: General-purpose retrying library
 dev-python/termcolor 1.1.0-r1 1.1.0-r2: ANSII Color formatting for output in terminal
 dev-python/terminado 0.5 0.6 0.8.1: Terminals served to term.js using Tornado websockets
@@ -9814,7 +9814,7 @@ dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing lib
 dev-ruby/execjs 2.7.0: ExecJS lets you run JavaScript code from Ruby
 dev-ruby/exifr 1.3.6: A library to read EXIF info from JPEG and TIFF images
 dev-ruby/expression_parser 0.9.0_p20130518: A math parser
-dev-ruby/facter 3.14.5 3.14.6 9999: A cross-platform ruby library for retrieving facts from operating systems
+dev-ruby/facter 3.14.6 9999: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.19.2 0.20.0 0.20.1: A fake filesystem. Use it in your tests
 dev-ruby/faker 1.9.6-r1 2.6.0 2.7.0 2.8.0 2.8.1: A library for generating fake data such as names, addresses, and phone numbers
@@ -16414,8 +16414,8 @@ sci-libs/libpdb 991112-r1: PDB Record I/O Libraries -- c version
 sci-libs/libpdb++ 040728-r1: PDB Record I/O Libraries -- c++ version
 sci-libs/libqalculate 0.9.9 2.2.0 2.8.1 3.2.0-r1: A modern multi-purpose calculator library
 sci-libs/libsc 1.0-r1 1.1-r1 2.0 2.2 9999: Support for parallel scientific applications
-sci-libs/libsigrok 0.3.0 0.4.0 0.5.1 9999: basic hardware drivers for logic analyzers and input/output file format support
-sci-libs/libsigrokdecode 0.4.1 0.5.2 9999: provide (streaming) protocol decoding functionality
+sci-libs/libsigrok 0.3.0 0.4.0 0.5.1 0.5.2 9999: basic hardware drivers for logic analyzers and input/output file format support
+sci-libs/libsigrokdecode 0.4.1 0.5.2 0.5.3 9999: provide (streaming) protocol decoding functionality
 sci-libs/libspatialindex 1.8.5-r1: General framework for developing spatial indices
 sci-libs/libsvm 3.22: Library for Support Vector Machines
 sci-libs/libticables2 1.3.3-r1 1.3.4 1.3.5: Library to handle different link cables for TI calculators
