@@ -4,7 +4,7 @@ DESCRIPTION=a fast key-value storage library written at Google
 EAPI=7
 HOMEPAGE=http://leveldb.org/ https://github.com/google/leveldb
 IUSE=+snappy static-libs kernel_FreeBSD +tcmalloc test
-KEYWORDS=amd64 arm ~arm64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 arm arm64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=tcmalloc? ( dev-util/google-perftools ) snappy? ( app-arch/snappy:= )
 REQUIRED_USE=snappy? ( !static-libs )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0/1
 SRC_URI=https://github.com/google/leveldb/archive/v1.20.tar.gz -> leveldb-1.20.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=48bc928e537d93dca61cb7b4c1aadd86
+_md5_=319f77e61e38e2337380177d8d7c14ec
