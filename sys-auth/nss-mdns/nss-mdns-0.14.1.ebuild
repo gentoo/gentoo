@@ -10,7 +10,7 @@ SRC_URI="https://github.com/lathiat/nss-mdns/releases/download/v${PV}/${P}.tar.g
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~mips ppc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~mips ppc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
