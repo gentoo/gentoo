@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit systemd toolchain-funcs udev
 
 DESCRIPTION="NVM-Express user space tooling for Linux"
 HOMEPAGE="https://github.com/linux-nvme/nvme-cli"
@@ -28,5 +28,8 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 	export PREFIX="${EPREFIX}/usr"
+	local unitdir="$(systemd_get_systemunitdir)"
+	export SYSTEMDDIR="${unitdir%/system}"
+	export UDEVDIR="${EPREFIX}$(get_udevdir)"
 	MAKEOPTS+=" LIBUUID=$(usex uuid 0 1)"
 }
