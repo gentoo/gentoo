@@ -14754,7 +14754,7 @@ net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area 
 net-im/libcommuni 3.5.0_p20190110: A cross-platform IRC framework written with Qt
 net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/mattermost-desktop-bin 4.2.3 4.3.1: Mattermost Desktop application
-net-im/mcabber 1.1.0-r1 9999: A small Jabber console client with various features, like MUC, SSL, PGP
+net-im/mcabber 1.1.0-r1 1.1.0-r2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openmittsu 0.9.13.32 0.9.13.46: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.13.0 2.13.0-r1: GTK Instant Messenger client
