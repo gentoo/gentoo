@@ -17139,7 +17139,7 @@ sys-apps/netplug 1.2.9.2-r2 1.2.9.2-r3: Brings up/down ethernet ports automatica
 sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/nix 2.3 2.3-r1 2.3.1: A purely functional package manager
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
-sys-apps/nvme-cli 1.5 1.6 1.6-r1 1.9: NVM-Express user space tooling for Linux
+sys-apps/nvme-cli 1.5 1.6 1.6-r1 1.9-r2: NVM-Express user space tooling for Linux
 sys-apps/onerng 3.6-r2: Software for the Open Hardware Random Number Generator called OneRNG
 sys-apps/opal-utils 6.5 6.5.2: OPAL firmware utilities
 sys-apps/openrc 0.41.2 0.42.1 9999: OpenRC manages the services, startup and shutdown of a host
