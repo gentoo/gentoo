@@ -4,7 +4,7 @@
 EAPI=7
 
 COMMIT=5ba17f90ec173e773470bc80ea26bca9a3f093fd
-inherit cmake-utils xdg
+inherit cmake xdg
 
 DESCRIPTION="QScintilla-based tabbed text editor with syntax highlighting"
 HOMEPAGE="http://juffed.com/en/"
@@ -41,7 +41,7 @@ src_prepare() {
 	# Upstream version outdated/dysfunctional and CRLF terminated
 	cp "${FILESDIR}"/FindQtSingleApplication.cmake cmake/ || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i -e '/set(CMAKE_CXX_FLAGS/d' CMakeLists.txt || die
 }
@@ -54,5 +54,5 @@ src_configure() {
 		-DUSE_SYSTEM_QTSINGLEAPPLICATION=ON
 		-DLIB_SUFFIX=${libdir/lib/}
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

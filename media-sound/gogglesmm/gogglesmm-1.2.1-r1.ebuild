@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Fast and light music player"
 HOMEPAGE="https://gogglesmm.github.io"
@@ -41,5 +41,5 @@ src_configure() {
 		-DWITH_NLS="$(usex nls)"
 		-DWITH_CFOX=OFF
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

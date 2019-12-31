@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 MY_P="${PN}-soft-${PV}"
@@ -60,7 +61,7 @@ src_configure() {
 
 		use cpu_flags_arm_neon && mycmakeargs+=( -DALSOFT_CPUEXT_NEON=$(usex cpu_flags_arm_neon) )
 
-		cmake-utils_src_configure
+		cmake_src_configure
 	}
 
 	multilib_parallel_foreach_abi my_configure
