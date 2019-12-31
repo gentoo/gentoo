@@ -78,7 +78,7 @@ HOMEPAGE="https://github.com/BurntSushi/ripgrep"
 SRC_URI="https://github.com/BurntSushi/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
-LICENSE="Apache-2.0 BSD-2 Boost-1.0 MIT Unlicense )"
+LICENSE="Apache-2.0 BSD-2 Boost-1.0 || ( MIT Unlicense )"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc64 ~x86"
 IUSE="+man pcre"
