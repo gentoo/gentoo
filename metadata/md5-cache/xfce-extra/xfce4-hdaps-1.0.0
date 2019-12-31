@@ -4,10 +4,10 @@ DEPEND=>=x11-libs/gtk+-3.20:3 x11-libs/libX11 >=xfce-base/libxfce4ui-4.14 >=xfce
 DESCRIPTION=Show the status of the IBM Hard Drive Active Protection System
 EAPI=7
 HOMEPAGE=http://michael.orlitzky.com/code/xfce4-hdaps.xhtml
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=AGPL-3+
 RDEPEND=>=x11-libs/gtk+-3.20:3 x11-libs/libX11 >=xfce-base/libxfce4ui-4.14 >=xfce-base/libxfce4util-4.14 >=xfce-base/xfce4-panel-4.14:= app-laptop/hdapsd app-laptop/tp_smapi
 SLOT=0
 SRC_URI=http://michael.orlitzky.com/code/releases/xfce4-hdaps-1.0.0.tar.xz
 _eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=a47270dc0660aabb7c16252d25141614
+_md5_=64bbcf1637710c602f1ce008f7f359a9
