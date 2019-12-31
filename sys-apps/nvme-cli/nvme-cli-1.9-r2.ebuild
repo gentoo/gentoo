@@ -28,7 +28,8 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 	export PREFIX="${EPREFIX}/usr"
-	export SYSTEMDDIR="$(systemd_get_systemunitdir)"
+	local unitdir="$(systemd_get_systemunitdir)"
+	export SYSTEMDDIR="${unitdir%/system}"
 	export UDEVDIR="${EPREFIX}$(get_udevdir)"
 	MAKEOPTS+=" LIBUUID=$(usex uuid 0 1)"
 }
