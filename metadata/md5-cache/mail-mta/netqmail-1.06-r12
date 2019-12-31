@@ -4,7 +4,7 @@ DESCRIPTION=qmail -- a secure, reliable, efficient, simple message transfer agen
 EAPI=7
 HOMEPAGE=http://netqmail.org https://cr.yp.to/qmail.html http://qmail.org
 IUSE=authcram gencertdaily highvolume libressl pop3 qmail-spp ssl vanilla
-KEYWORDS=~alpha ~amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc ~x86
+KEYWORDS=~alpha amd64 ~arm hppa ~ia64 ~mips ppc ~ppc64 ~s390 sparc x86
 LICENSE=public-domain
 RDEPEND=acct-group/nofiles acct-group/qmail acct-user/alias acct-user/qmaild acct-user/qmaill acct-user/qmailp acct-user/qmailq acct-user/qmailr acct-user/qmails net-dns/libidn2 net-mail/queue-repair sys-apps/gentoo-functions sys-apps/groff ssl? ( !libressl? ( >=dev-libs/openssl-1.1:0= ) libressl? ( dev-libs/libressl:= ) ) sys-apps/ucspi-tcp virtual/checkpassword virtual/daemontools authcram? ( >=net-mail/cmd5checkpw-0.30 ) ssl? ( pop3? ( sys-apps/ucspi-ssl ) ) !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp[mta] !mail-mta/nullmailer !mail-mta/opensmtpd !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp[mta]
 REQUIRED_USE=vanilla? ( !ssl !qmail-spp !highvolume )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://qmail/netqmail-1.06.tar.gz https://github.com/DerDakon/genqmail/releases/download/genqmail-20191010/genqmail-20191010.tar.bz2 https://www.ckdhr.com/ckd/qmail-103.patch !vanilla? ( highvolume? ( mirror://qmail/big-todo.103.patch ) qmail-spp? ( mirror://sourceforge/qmail-spp/qmail-spp-0.42.tar.gz ) ssl? ( https://mirror.alexh.name/qmail/netqmail/netqmail-1.05-tls-smtpauth-20190114.patch http://inoa.net/qmail-tls/vu555316.patch https://arnt.gulbrandsen.priv.no/qmail/qmail-smtputf8.patch ) )
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmail	08af176bd391adf3f2798a86ed542ae7	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=e97950f1df741280fb05a4cce30f96a5
+_md5_=a34312e8893c8b5c293f5be68ef73c7a

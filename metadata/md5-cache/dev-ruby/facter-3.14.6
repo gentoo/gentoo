@@ -5,7 +5,7 @@ DESCRIPTION=A cross-platform ruby library for retrieving facts from operating sy
 EAPI=7
 HOMEPAGE=http://www.puppetlabs.com/puppet/related-projects/facter/
 IUSE=test ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26
-KEYWORDS=amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-cpp/cpp-hocon-0.2.1:= >=dev-libs/leatherman-1.0.0:= dev-libs/openssl:0= sys-apps/util-linux app-emulation/virt-what net-misc/curl dev-libs/boost:=[nls] >=dev-cpp/yaml-cpp-0.5.1 !<app-admin/puppet-4.0.0 ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 )
 REQUIRED_USE=|| ( ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/puppetlabs/facter/archive/3.14.6.tar.gz -> facter-3.14.6.tar.gz
 _eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	ruby-ng	5ad91e467b477000267afdeea4a7093e	ruby-utils	cdb4c1e4283adb7707b7dd48ccaa7ad2	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=17e5a83efa4adb2576583b07163a0c57
+_md5_=6c4e39f0cbf9f166d2d41e107d2ba501

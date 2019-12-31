@@ -4,11 +4,11 @@ DESCRIPTION=A lightweight music player (for Xfce)
 EAPI=7
 HOMEPAGE=https://github.com/pragha-music-player/pragha
 IUSE=cdda +glyr grilo +keybinder koel lastfm libnotify mtp +peas +playlist rygel soup +udev
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3+
 RDEPEND=>=dev-db/sqlite-3.4:3= >=dev-libs/glib-2.42 media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 >=media-libs/taglib-1.8:= >=x11-libs/gtk+-3.14:3 >=xfce-base/libxfce4ui-4.11:=[gtk3(+)] cdda? ( >=dev-libs/libcdio-0.90:= >=dev-libs/libcdio-paranoia-0.90:= >=media-libs/libcddb-1.3.0:= ) glyr? ( >=media-libs/glyr-1.0.1:= ) grilo? ( media-libs/grilo:0.3[network] ) keybinder? ( >=dev-libs/keybinder-0.2.0:3 ) koel? ( dev-libs/json-glib ) lastfm? ( >=media-libs/libclastfm-0.5:= ) libnotify? ( >=x11-libs/libnotify-0.7.5 ) mtp? ( >=media-libs/libmtp-1.1.0:= ) peas? ( >=dev-libs/libpeas-1.0.0[gtk] ) playlist? ( >=dev-libs/totem-pl-parser-2.26:= ) rygel? ( >=net-misc/rygel-0.26 ) soup? ( >=net-libs/libsoup-2.38:= ) udev? ( dev-libs/libgudev:= ) media-plugins/gst-plugins-meta:1.0
 REQUIRED_USE=glyr? ( peas ) grilo? ( peas ) koel? ( soup ) libnotify? ( peas ) mtp? ( udev ) rygel? ( peas ) soup? ( peas ) udev? ( peas )
 SLOT=0
 SRC_URI=https://github.com/pragha-music-player/pragha/releases/download/v1.3.99.1/pragha-1.3.99.1.tar.bz2
 _eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=e060df5e0ff2c94505b288c8d0e42ded
+_md5_=b16c1f3f09886cbfd32d019dfc87948f
