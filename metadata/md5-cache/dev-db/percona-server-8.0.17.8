@@ -1,6 +1,6 @@
 BDEPEND=sys-devel/make >=dev-util/cmake-3.9.6
 DEFINED_PHASES=compile config configure install postinst prepare pretend setup test unpack
-DEPEND=>=app-arch/lz4-0_p131:= dev-libs/icu:= dev-libs/libedit dev-libs/libevent:= net-libs/libtirpc:= >=sys-libs/zlib-1.2.3:0= cjk? ( app-text/mecab:= ) jemalloc? ( dev-libs/jemalloc:0= ) kernel_linux? ( dev-libs/libaio:0= sys-process/procps:0= ) libressl? ( dev-libs/libressl:0= ) !libressl? ( >=dev-libs/openssl-1.0.0:0= ) numa? ( sys-process/numactl ) server? ( pam? ( sys-libs/pam:0= ) ) tcmalloc? ( dev-util/google-perftools:0= ) || ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 ) dev-libs/re2 >=dev-libs/protobuf-3.8 net-libs/rpcsvc-proto virtual/yacc test? ( acct-group/mysql acct-user/mysql dev-perl/JSON )
+DEPEND=>=app-arch/lz4-0_p131:= dev-libs/icu:= dev-libs/libedit dev-libs/libevent:= >=dev-libs/protobuf-3.8:= net-libs/libtirpc:= >=sys-libs/zlib-1.2.3:0= cjk? ( app-text/mecab:= ) jemalloc? ( dev-libs/jemalloc:0= ) kernel_linux? ( dev-libs/libaio:0= sys-process/procps:0= ) libressl? ( dev-libs/libressl:0= ) !libressl? ( >=dev-libs/openssl-1.0.0:0= ) numa? ( sys-process/numactl ) server? ( pam? ( sys-libs/pam:0= ) ) tcmalloc? ( dev-util/google-perftools:0= ) || ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 ) dev-libs/re2 net-libs/rpcsvc-proto virtual/yacc test? ( acct-group/mysql acct-user/mysql dev-perl/JSON )
 DESCRIPTION=Fully compatible, enhanced and open source drop-in replacement for MySQL
 EAPI=7
 HOMEPAGE=https://www.percona.com/software/mysql-database/percona-server
@@ -8,10 +8,10 @@ IUSE=cjk cracklib debug jemalloc latin1 libressl numa pam +perl profiling rocksd
 KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 PDEPEND=perl? ( >=dev-perl/DBD-mysql-2.9004 )
-RDEPEND=>=app-arch/lz4-0_p131:= dev-libs/icu:= dev-libs/libedit dev-libs/libevent:= net-libs/libtirpc:= >=sys-libs/zlib-1.2.3:0= cjk? ( app-text/mecab:= ) jemalloc? ( dev-libs/jemalloc:0= ) kernel_linux? ( dev-libs/libaio:0= sys-process/procps:0= ) libressl? ( dev-libs/libressl:0= ) !libressl? ( >=dev-libs/openssl-1.0.0:0= ) numa? ( sys-process/numactl ) server? ( pam? ( sys-libs/pam:0= ) ) tcmalloc? ( dev-util/google-perftools:0= ) !dev-db/mariadb !dev-db/mariadb-galera !dev-db/mysql !dev-db/mysql-cluster selinux? ( sec-policy/selinux-mysql ) !prefix? ( acct-group/mysql acct-user/mysql dev-db/mysql-init-scripts )
+RDEPEND=>=app-arch/lz4-0_p131:= dev-libs/icu:= dev-libs/libedit dev-libs/libevent:= >=dev-libs/protobuf-3.8:= net-libs/libtirpc:= >=sys-libs/zlib-1.2.3:0= cjk? ( app-text/mecab:= ) jemalloc? ( dev-libs/jemalloc:0= ) kernel_linux? ( dev-libs/libaio:0= sys-process/procps:0= ) libressl? ( dev-libs/libressl:0= ) !libressl? ( >=dev-libs/openssl-1.0.0:0= ) numa? ( sys-process/numactl ) server? ( pam? ( sys-libs/pam:0= ) ) tcmalloc? ( dev-util/google-perftools:0= ) !dev-db/mariadb !dev-db/mariadb-galera !dev-db/mysql !dev-db/mysql-cluster selinux? ( sec-policy/selinux-mysql ) !prefix? ( acct-group/mysql acct-user/mysql dev-db/mysql-init-scripts )
 REQUIRED_USE=?? ( tcmalloc jemalloc )
 RESTRICT=!test? ( test ) libressl? ( test )
 SLOT=0
 SRC_URI=https://www.percona.com/downloads/Percona-Server-8.0/Percona-Server-8.0.17-8/source/tarball/percona-server-8.0.17-8.tar.gz https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.bz2 mirror://gentoo/mysql-extras-20191031-0134Z.tar.bz2 https://gitweb.gentoo.org/proj/mysql-extras.git/snapshot/mysql-extras-20191031-0134Z.tar.bz2
 _eclasses_=check-reqs	5e40a693d9c828e8f3655184116e8b73	cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=85c78f7dcd8413aafd5d1c0588ac3b68
+_md5_=0b672140b2cff28f06e67412a7dad881

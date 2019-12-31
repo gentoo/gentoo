@@ -2333,7 +2333,7 @@ app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2-r1: Distfile Patching Support for Gentoo Linux (tools)
 app-portage/eix 0.33.8 0.33.9-r1: Search and query ebuilds
-app-portage/elicense 1.0.1 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
+app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r1 0.7.8-r2: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 2.9: Elog viewer for Gentoo
 app-portage/elt-patches 20170317 20170422 20170815 20170826.1: Collection of patches for libtool.eclass
@@ -3183,7 +3183,7 @@ dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.19.0 1.20.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
 dev-db/myodbc 5.3.9 5.3.10-r3 8.0.16 8.0.17: ODBC driver for MySQL
-dev-db/mysql 5.6.44-r1 5.6.45-r2 5.7.26-r1 5.7.27-r1 8.0.17 8.0.18: A fast, multi-threaded, multi-user SQL database server
+dev-db/mysql 5.6.44-r1 5.6.45-r2 5.7.26-r1 5.7.27-r1 8.0.18: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2-r1 3.2.3-r1 3.2.4 3.2.5: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.34 7.3.22 7.4.21: An enhanced, drop-in replacement for MySQL
 dev-db/mysql-connector-c 6.1.11-r2 8.0.17-r3 8.0.18: C client library for MariaDB/MySQL
@@ -4932,7 +4932,7 @@ dev-libs/libedit 20170329.3.1 20190324.3.1: BSD replacement for libreadline
 dev-libs/libee 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.6.1: Erasure Code API library written in C with pluggable Erasure Code backends.
-dev-libs/libestr 0.1.10 0.1.11: Library for some string essentials
+dev-libs/libestr 0.1.11: Library for some string essentials
 dev-libs/libev 4.23 4.25 4.27: A high-performance event loop/event model with lots of feature
 dev-libs/libevdev 1.8.0 9999: Handler library for evdev events
 dev-libs/libevent 2.1.8 2.1.11 2.1.9999 9999: Library to execute a function when a specific event occurs on a file descriptor
@@ -4978,8 +4978,8 @@ dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x for
 dev-libs/libksba 1.3.5-r1 1.3.5-r2: X.509 and CMS (PKCS#7) library
 dev-libs/liblinear 210-r1 221 230: A Library for Large Linear Classification
 dev-libs/liblist 2.4: Generic linked-list manipulation routines, plus queues and stacks
-dev-libs/liblogging 1.0.5 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
-dev-libs/liblognorm 2.0.5 2.0.6: Fast samples-based log normalization library
+dev-libs/liblogging 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
+dev-libs/liblognorm 2.0.6: Fast samples-based log normalization library
 dev-libs/liblouis 3.10.0: An open-source braille translator and back-translator
 dev-libs/libltdl 2.4.6: A shared library tool for developers
 dev-libs/liblzw 0.2-r1: small C library for reading LZW compressed files (.Z)
@@ -5028,7 +5028,7 @@ dev-libs/libpwquality 1.4.0 1.4.1 1.4.2: Library for password quality checking a
 dev-libs/libqtxdg 3.3.1 3.4.0: A Qt implementation of XDG standards
 dev-libs/libratbag 0.9: Library to configure gaming mice
 dev-libs/librdkafka 1.1.0 1.2.1 1.2.2 1.3.0: Apache Kafka C/C++ client library
-dev-libs/librelp 1.2.18 1.3.0 1.4.0: An easy to use library for the RELP protocol
+dev-libs/librelp 1.4.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.9.5 2.10.0: Generic library for reporting software bugs
 dev-libs/libressl 2.6.5 2.8.3 2.9.1 2.9.2 3.0.0 3.0.1 3.0.2: Free version of the SSL/TLS protocol forked from OpenSSL
@@ -17319,7 +17319,7 @@ sys-block/devio 1.2: correctly read (or write) a region of a block device
 sys-block/di 4.47 4.47.2 4.47.3: Disk Information Utility
 sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/endpoint 0.1.0-r1: Endpoint turns a Linux machine with a firewire card into an SBP-2 device
-sys-block/f3 7.0 7.1 7.2: Utilities to detect broken or counterfeit flash storage
+sys-block/f3 7.2: Utilities to detect broken or counterfeit flash storage
 sys-block/fio 2.15 2.16 3.2 3.7 3.16: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
@@ -17685,7 +17685,7 @@ sys-fs/mtd-utils 1.5.2 2.0.2: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.18-r2 4.0.22 4.0.23: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.1-r5: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.6.4-r1 0.7.9 0.8.1 0.8.2 0.8.3 0.8.3-r1: Device mapper target autoconfig
-sys-fs/ncdu 1.13 1.14 1.14.1: NCurses Disk Usage
+sys-fs/ncdu 1.14.1: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
 sys-fs/ntfs3g 2016.2.22-r2 2017.3.23-r1 2017.3.23-r2: Open source read-write NTFS driver that runs under FUSE
 sys-fs/owfs 3.2_p2-r2: Access 1-Wire devices like a filesystem
@@ -18325,7 +18325,7 @@ www-servers/hiawatha 9.15: Advanced and secure webserver
 www-servers/lighttpd 1.4.53 1.4.54 9999: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.16.1-r1 1.17.3-r1 1.17.4 1.17.5 1.17.6 1.17.7: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.16.1-r1 1.17.7: Robust, small and high performance http and reverse proxy server
 www-servers/nginx-unit 1.8.0 1.12.0-r3 1.13.0 1.14.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
