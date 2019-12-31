@@ -11,7 +11,7 @@ SRC_URI="https://www.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ~ppc64 s390 ~sh ~sparc x86"
 IUSE="icu libedit nls readline"
 
 LIB_DEPEND=">=sys-apps/util-linux-2.17.2[static-libs(+)]
