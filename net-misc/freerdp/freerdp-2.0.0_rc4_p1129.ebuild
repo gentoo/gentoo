@@ -6,9 +6,9 @@ EAPI=7
 inherit cmake
 
 if [[ ${PV} != 9999 ]]; then
-	MY_P=${P/_/-}
-	S="${WORKDIR}/${MY_P}"
-	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz"
+	COMMIT="483d09b760bea529972afad9b6f6c7a89dcffd40"
+	SRC_URI="https://github.com/FreeRDP/FreeRDP/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/FreeRDP-${COMMIT}"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 else
 	inherit git-r3
