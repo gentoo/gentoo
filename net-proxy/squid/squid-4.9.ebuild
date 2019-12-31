@@ -61,8 +61,7 @@ RDEPEND="${COMMON_DEPEND}
 	mysql? ( dev-perl/DBD-mysql )
 	postgres? ( dev-perl/DBD-Pg )
 	selinux? ( sec-policy/selinux-squid )
-	sqlite? ( dev-perl/DBD-SQLite )
-	!<=sci-biology/meme-4.8.1-r1"
+	sqlite? ( dev-perl/DBD-SQLite )"
 
 REQUIRED_USE="tproxy? ( caps )
 		qos? ( caps )"
