@@ -4928,7 +4928,7 @@ dev-libs/libdshconfig 0.20.13: Library for parsing dsh.style configuration files
 dev-libs/libdynd 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.11.0: Hyperdex libe support library
 dev-libs/libebml 1.3.9: Extensible binary format library (kinda like XML)
-dev-libs/libedit 20170329.3.1 20190324.3.1: BSD replacement for libreadline
+dev-libs/libedit 20170329.3.1 20190324.3.1 20191211.3.1: BSD replacement for libreadline
 dev-libs/libee 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.6.1: Erasure Code API library written in C with pluggable Erasure Code backends.
