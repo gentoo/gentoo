@@ -104,7 +104,7 @@ QA_FLAGS_IGNORED="
 	usr/lib/rustlib/*/lib/lib*.so
 "
 
-QA_SONAME="usr/lib*/librustc_macros*.so"
+QA_SONAME="usr/lib.*/librustc_macros.*.so"
 
 PATCHES=(
 	"${FILESDIR}"/1.36.0-libressl.patch
