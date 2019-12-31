@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc test"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 # TODO: remove six
@@ -27,27 +27,16 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
-	doc? (
-		>=dev-python/jaraco-packaging-3.2[${PYTHON_USEDEP}]
-		>=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	)
 	test? (
 		${RDEPEND}
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
 	)
 "
 
-S="${WORKDIR}/${MY_PN}-${PV}"
+distutils_enable_sphinx docs '>=dev-python/jaraco-packaging-3.2' \
+	'>=dev-python/rst-linker-1.9'
 
-python_compile_all() {
-	if use doc; then
-		# conf.py looks for '../CHANGES.rst'
-		cd docs || die
-		sphinx-build . _build/html || die
-		HTML_DOCS=( docs/_build/html/. )
-	fi
-}
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 python_test() {
 	# Override pytest options to skip flake8
