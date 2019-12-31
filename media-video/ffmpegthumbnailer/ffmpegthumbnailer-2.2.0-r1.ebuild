@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Lightweight video thumbnailer that can be used by file managers"
 HOMEPAGE="https://github.com/dirkvdb/ffmpegthumbnailer"
@@ -37,7 +37,7 @@ PATCHES=( "${FILESDIR}/${P}-pkgconfig-libdir.patch" )
 src_prepare() {
 	rm -rf out* || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -48,5 +48,5 @@ src_configure() {
 		-DHAVE_JPEG=$(usex jpeg)
 		-DHAVE_PNG=$(usex png)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

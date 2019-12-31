@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake-utils desktop qmake-utils xdg
+inherit cmake desktop qmake-utils xdg
 
 DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
@@ -50,7 +50,7 @@ src_prepare() {
 	fi
 
 	for process in ${processes} ; do
-		CMAKE_USE_DIR="${S}"/${process#*:} cmake-utils_src_prepare
+		CMAKE_USE_DIR="${S}"/${process#*:} cmake_src_prepare
 	done
 
 	# Fix icon name -> avidemux-2.7
@@ -108,28 +108,28 @@ src_configure() {
 
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		CMAKE_USE_DIR="${S}"/${process#*:} BUILD_DIR="${build}" cmake-utils_src_configure
+		CMAKE_USE_DIR="${S}"/${process#*:} BUILD_DIR="${build}" cmake_src_configure
 	done
 }
 
 src_compile() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		BUILD_DIR="${build}" cmake-utils_src_compile
+		BUILD_DIR="${build}" cmake_src_compile
 	done
 }
 
 src_test() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		BUILD_DIR="${build}" cmake-utils_src_test
+		BUILD_DIR="${build}" cmake_src_test
 	done
 }
 
 src_install() {
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
-		BUILD_DIR="${build}" cmake-utils_src_install
+		BUILD_DIR="${build}" cmake_src_install
 	done
 
 	cd "${S}" || die "Can't enter source folder."

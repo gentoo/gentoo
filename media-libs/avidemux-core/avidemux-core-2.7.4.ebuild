@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Core libraries for simple video cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
@@ -40,7 +40,7 @@ S="${WORKDIR}/avidemux2-${PV}"
 CMAKE_USE_DIR="${S}/${PN/-/_}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if use system-ffmpeg ; then
 		# Preparations to support the system ffmpeg. Currently fails because
@@ -72,13 +72,13 @@ src_configure() {
 
 	use debug && mycmakeargs+=( -DVERBOSE=1 -DADM_DEBUG=1 )
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 }

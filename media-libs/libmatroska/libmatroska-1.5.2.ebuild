@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Extensible multimedia container format based on EBML"
 HOMEPAGE="https://www.matroska.org/ https://github.com/Matroska-Org/libmatroska/"
@@ -19,5 +19,5 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=( -DBUILD_SHARED_LIBS=YES )
-	cmake-utils_src_configure
+	cmake_src_configure
 }
