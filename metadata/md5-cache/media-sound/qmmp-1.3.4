@@ -1,4 +1,4 @@
-BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6
+BDEPEND=dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install postinst postrm prepare test
 DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsql:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 media-libs/taglib x11-libs/libX11 aac? ( media-libs/faad2 ) alsa? ( media-libs/alsa-lib ) archive? ( app-arch/libarchive ) bs2b? ( media-libs/libbs2b ) cdda? ( dev-libs/libcdio:= dev-libs/libcdio-paranoia ) curl? ( net-misc/curl ) dbus? ( dev-qt/qtdbus:5 ) enca? ( app-i18n/enca ) ffmpeg? ( !libav? ( media-video/ffmpeg:= ) libav? ( media-video/libav:= ) ) flac? ( media-libs/flac ) game? ( media-libs/game-music-emu ) jack? ( media-libs/libsamplerate media-sound/jack-audio-connection-kit ) ladspa? ( media-libs/ladspa-cmt ) mad? ( || ( media-libs/libmad media-sound/mpg123 ) ) midi? ( media-sound/wildmidi ) mms? ( media-libs/libmms ) modplug? ( >=media-libs/libmodplug-0.8.4 ) mplayer? ( media-video/mplayer ) musepack? ( >=media-sound/musepack-tools-444 ) opus? ( media-libs/opusfile ) projectm? ( dev-qt/qtgui:5[-gles2] dev-qt/qtopengl:5 media-libs/libprojectm:= ) pulseaudio? ( >=media-sound/pulseaudio-0.9.9 ) qtmedia? ( dev-qt/qtmultimedia:5 ) scrobbler? ( net-misc/curl ) shout? ( media-libs/libshout ) sid? ( >=media-libs/libsidplayfp-1.1.0 ) sndfile? ( media-libs/libsndfile ) soxr? ( media-libs/soxr ) udisks? ( sys-fs/udisks:2 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) wavpack? ( media-sound/wavpack ) dev-qt/linguist-tools:5
 DESCRIPTION=Qt5-based audio player with winamp/xmms skins support
@@ -11,5 +11,5 @@ RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsql:5 dev-qt/
 REQUIRED_USE=gnome? ( dbus ) shout? ( soxr vorbis ) udisks? ( dbus )
 SLOT=0
 SRC_URI=http://qmmp.ylsoftware.com/files/qmmp-1.3.4.tar.bz2 mirror://sourceforge/qmmp-dev/files/qmmp-1.3.4.tar.bz2
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=bfedccc0bec1f35122f990575c335c08
+_eclasses_=cmake	35b3146b6de4b75aef568db01ba9760c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=dbe293b305588eb1e428406cf429da76

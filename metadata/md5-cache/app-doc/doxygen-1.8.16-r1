@@ -4,7 +4,7 @@ DESCRIPTION=Documentation system for most programming languages
 EAPI=6
 HOMEPAGE=http://www.doxygen.org
 IUSE=clang debug doc dot doxysearch latex qt5 sqlite userland_GNU
-KEYWORDS=alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ~ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=app-text/ghostscript-gpl dev-lang/perl media-libs/libpng:0= virtual/libiconv clang? ( >=sys-devel/clang-4.0.0:= ) dot? ( media-gfx/graphviz media-libs/freetype ) doxysearch? ( dev-libs/xapian:= ) latex? ( dev-texlive/texlive-bibtexextra dev-texlive/texlive-fontsextra dev-texlive/texlive-fontutils dev-texlive/texlive-latex dev-texlive/texlive-latexextra ) qt5? ( dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) sqlite? ( dev-db/sqlite:3 )
 REQUIRED_USE=doc? ( latex )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://doxygen.nl/files/doxygen-1.8.16.src.tar.gz
 _eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=a13712cda393a1e68ff5ea9c5b644035
+_md5_=b21c782e5aff22a654e63dad76f2f273
