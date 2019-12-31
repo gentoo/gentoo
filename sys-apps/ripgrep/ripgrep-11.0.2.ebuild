@@ -95,6 +95,9 @@ BDEPEND="${RDEPEND}
 QA_FLAGS_IGNORED="usr/bin/rg"
 
 src_compile() {
+	# allow building on musl with dynamic linking support
+	# https://github.com/BurntSushi/rust-pcre2/issues/7
+	use elibc_musl && export PCRE2_SYS_STATIC=0
 	cargo_src_compile $(usex pcre "--features pcre2" "")
 }
 
