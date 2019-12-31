@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit readme.gentoo-r1 cmake-utils udev user xdg
+inherit readme.gentoo-r1 cmake udev user xdg
 
 DESCRIPTION="Utility for advanced configuration of Roccat devices"
 
@@ -74,9 +74,9 @@ pkg_setup() {
 	done
 }
 
-# Required because xdg.eclass overrides src_prepare() from cmake-utils.eclass
+# Required because xdg.eclass overrides src_prepare() from cmake.eclass
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -98,11 +98,11 @@ src_configure() {
 		fi
 	done
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	local stat_dir=/var/lib/roccat
 	keepdir ${stat_dir}
 	fowners root:roccat ${stat_dir}
