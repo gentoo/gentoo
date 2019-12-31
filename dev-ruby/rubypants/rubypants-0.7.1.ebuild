@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README.rdoc"
 inherit ruby-fakegem
 
 DESCRIPTION="A Ruby port of the SmartyPants PHP library"
-HOMEPAGE="http://chneukirchen.org/repos/rubypants/README"
+HOMEPAGE="https://leahneukirchen.org/repos/rubypants/README"
 
 LICENSE="Ruby"
 SLOT="0"
