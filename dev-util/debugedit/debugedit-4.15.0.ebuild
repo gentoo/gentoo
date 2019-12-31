@@ -13,7 +13,7 @@ SRC_URI="http://ftp.rpm.org/releases/rpm-$(ver_cut 1-2).x/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 hppa ~ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 hppa ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
