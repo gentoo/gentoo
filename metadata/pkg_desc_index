@@ -8613,7 +8613,7 @@ dev-python/pysmi 0.1.3 0.3.1 0.3.4: Python Lex & Yacc
 dev-python/pysnmp 4.4.4 4.4.10-r1 4.4.12 999999: Python SNMP library
 dev-python/pysnmp-apps 0.5.3: PySNMP applications
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
-dev-python/pysol_cards 0.8.6: Deal PySol FreeCell cards
+dev-python/pysol_cards 0.8.6 0.8.7: Deal PySol FreeCell cards
 dev-python/pysolr 3.3.2 3.6.0 3.8.1: Lightweight python wrapper for Apache Solr
 dev-python/pyspectrum2 0.2.0: Implements a protobuf-based interface for Spectrum2 python-based backends
 dev-python/pyspf 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
