@@ -16,6 +16,7 @@ if [[ "${PV}" == 9999 ]]; then
 	S="${WORKDIR}/${PN}"
 else
 	SRC_URI="http://mcabber.com/files/${P}.tar.bz2"
+	SRC_URI+=" https://dev.gentoo.org/~andrey_utkin/distfiles/${P}_bug699972.patch"
 	KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 fi
 
@@ -43,7 +44,14 @@ RDEPEND="crypt? ( >=app-crypt/gpgme-1.0.0 )
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+# only for patching 1.1.0 release, don't port to later ebuilds
+DEPEND+=" sys-devel/automake:1.14"
+
 DOCS=( AUTHORS ChangeLog NEWS README TODO mcabberrc.example doc/README_PGP.txt )
+
+PATCHES=(
+	"${DISTDIR}/${P}_bug699972.patch"
+)
 
 pkg_setup() {
 	if use aspell && use spell; then
