@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>david@ixit.cz</email>
+		<name>David Heidelberg</name>
+	</maintainer>
+
+	<upstream>
+		<remote-id type="github">Nefelim4ag/systemd-swap</remote-id>
+	</upstream>
+</pkgmetadata>
