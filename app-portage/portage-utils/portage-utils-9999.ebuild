@@ -19,8 +19,6 @@ else
 fi
 
 RDEPEND="
-	static? ( dev-libs/iniparser:0[static-libs] )
-	!static? ( dev-libs/iniparser:0 )
 	qmanifest? (
 		openmp? (
 			|| (
