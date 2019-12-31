@@ -9,6 +9,6 @@ LICENSE=Apache-2.0
 RDEPEND=sys-libs/pam
 RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/google/google-authenticator-libpam/archive/1.06.tar.gz -> google-authenticator-1.06.tar.gz
+SRC_URI=https://github.com/google/google-authenticator-libpam/archive/1.08.tar.gz -> google-authenticator-1.08.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b038192ae9b4f4d312034dd97f8bff6f

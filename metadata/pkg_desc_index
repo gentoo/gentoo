@@ -17200,7 +17200,7 @@ sys-apps/servicelog 1.1.14: Provides utilities for logging service-related event
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
 sys-apps/sg3_utils 1.42 1.44: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.6 4.7-r2 4.8-r2: Utilities to deal with user accounts
-sys-apps/smartmontools 7.0-r1 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
+sys-apps/smartmontools 7.0-r1 7.1 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/smc-sum 2.3.0.20190808: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
 sys-apps/smc-sum-driver 1.6.0.20151201-r3: Supermicro Update Manager (SUM) kernel module
 sys-apps/smcipmitool 2.21.0.181029 2.22.0.190701: An out-of-band utility for interfacing with SuperBlade and IPMI devices via CLI
@@ -17254,7 +17254,7 @@ sys-auth/docker_auth 1.3.1 1.4.0: Docker Registry 2 authentication server
 sys-auth/elogind 241.4: The systemd project's logind, extracted to a standalone package
 sys-auth/fingerprint-gui 1.09-r1: Use Fingerprint Devices with Linux
 sys-auth/fprintd 0.8.1 0.8.1-r1: D-Bus service to access fingerprint readers
-sys-auth/google-authenticator 1.05 1.06 1.07 9999: PAM Module for two step verification via mobile platform
+sys-auth/google-authenticator 1.08 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-libpam-hardened 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-wrappers 1 2 3: Set of scripts to manage google-auth setup on Gentoo Infra
 sys-auth/keystone 14.1.0-r1 15.0.0 16.0.0 2018.2.9999 2019.1.9999 2019.2.9999: The Openstack authentication, authorization, and service catalog
@@ -17703,7 +17703,7 @@ sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.3.0: Simple MTP fuse filesystem driver
 sys-fs/snapraid 6.2 6.3 7.0 7.1 8.1 10.0 11.0-r1 11.2: a backup program for disk array for home media centers
 sys-fs/squashfs-tools 4.3-r2 4.3_p7 4.3_p12 4.4 9999: tools to create and extract Squashfs filesystems
-sys-fs/squashfs-tools-ng 0.7 9999: A new set of tools for working with SquashFS images
+sys-fs/squashfs-tools-ng 0.7 0.8 9999: A new set of tools for working with SquashFS images
 sys-fs/squashfuse 0.1.100 0.1.103: FUSE filesystem to mount squashfs archives
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
