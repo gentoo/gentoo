@@ -7,10 +7,10 @@ HOMEPAGE=http://www.squid-cache.org/
 IUSE=caps gnutls ipv6 pam ldap libressl samba sasl kerberos nis radius ssl snmp selinux logrotate test ecap esi ssl-crtd mysql postgres sqlite perl qos tproxy +htcp +wccp +wccpv2 pf-transparent ipf-transparent kqueue elibc_uclibc kernel_linux kernel_linux
 KEYWORDS=alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~sparc x86
 LICENSE=GPL-2
-RDEPEND=caps? ( >=sys-libs/libcap-2.16 ) pam? ( sys-libs/pam ) ldap? ( net-nds/openldap ) kerberos? ( virtual/krb5 ) qos? ( net-libs/libnetfilter_conntrack ) ssl? ( !gnutls? ( libressl? ( dev-libs/libressl:0 ) !libressl? ( dev-libs/openssl:0 ) ) dev-libs/nettle:= ) sasl? ( dev-libs/cyrus-sasl ) ecap? ( net-libs/libecap:1 ) esi? ( dev-libs/expat dev-libs/libxml2 ) gnutls? ( >=net-libs/gnutls-3.1.5 ) logrotate? ( app-admin/logrotate ) >=sys-libs/db-4:* dev-libs/libltdl:0 samba? ( net-fs/samba ) perl? ( dev-lang/perl ) mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) selinux? ( sec-policy/selinux-squid ) sqlite? ( dev-perl/DBD-SQLite ) !<=sci-biology/meme-4.8.1-r1
+RDEPEND=caps? ( >=sys-libs/libcap-2.16 ) pam? ( sys-libs/pam ) ldap? ( net-nds/openldap ) kerberos? ( virtual/krb5 ) qos? ( net-libs/libnetfilter_conntrack ) ssl? ( !gnutls? ( libressl? ( dev-libs/libressl:0 ) !libressl? ( dev-libs/openssl:0 ) ) dev-libs/nettle:= ) sasl? ( dev-libs/cyrus-sasl ) ecap? ( net-libs/libecap:1 ) esi? ( dev-libs/expat dev-libs/libxml2 ) gnutls? ( >=net-libs/gnutls-3.1.5 ) logrotate? ( app-admin/logrotate ) >=sys-libs/db-4:* dev-libs/libltdl:0 samba? ( net-fs/samba ) perl? ( dev-lang/perl ) mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) selinux? ( sec-policy/selinux-squid ) sqlite? ( dev-perl/DBD-SQLite )
 REQUIRED_USE=tproxy? ( caps ) qos? ( caps )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://www.squid-cache.org/Versions/v4/squid-4.9.tar.xz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	a1771fc1e5831c201eaf18451747d94b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=031c0bd1bba3a9b3cfee14ad9d33199c
+_md5_=a24daac031874cdfd91ecb364de9094f
