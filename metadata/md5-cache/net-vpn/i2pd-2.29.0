@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig dev-util/ninja >=dev-util/cmake-3.9.6
+BDEPEND=virtual/pkgconfig dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install postinst prepare pretend test
 DEPEND=acct-user/i2pd acct-group/i2pd !static? ( dev-libs/boost:=[threads] !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= >=dev-libs/boost-1.65:= ) upnp? ( net-libs/miniupnpc ) ) static? ( dev-libs/boost:=[static-libs,threads] !libressl? ( dev-libs/openssl:0=[static-libs] ) libressl? ( dev-libs/libressl:0=[static-libs] >=dev-libs/boost-1.65:= ) sys-libs/zlib:=[static-libs] upnp? ( net-libs/miniupnpc[static-libs] ) ) websocket? ( dev-cpp/websocketpp )
 DESCRIPTION=A C++ daemon for accessing the I2P anonymous network
@@ -10,5 +10,5 @@ LICENSE=BSD
 RDEPEND=acct-user/i2pd acct-group/i2pd !static? ( dev-libs/boost:=[threads] !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= >=dev-libs/boost-1.65:= ) upnp? ( net-libs/miniupnpc ) )
 SLOT=0
 SRC_URI=https://github.com/PurpleI2P/i2pd/archive/2.29.0.tar.gz -> i2pd-2.29.0.tar.gz
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=9072d7c16423dcef59163b8d51f7d789
+_eclasses_=cmake	35b3146b6de4b75aef568db01ba9760c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=77309c9d1031256f30d61a7a43417d39

@@ -1,4 +1,4 @@
-BDEPEND=doc? ( app-doc/doxygen ) dev-util/ninja >=dev-util/cmake-3.9.6
+BDEPEND=doc? ( app-doc/doxygen ) dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-qt/qtcore:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtxml:5 opus? ( media-libs/opus ) speex? ( media-libs/speex ) theora? ( media-libs/libtheora ) vpx? ( media-libs/libvpx:= ) test? ( dev-qt/qttest:5 )
 DESCRIPTION=A cross-platform C++ XMPP client library based on the Qt framework
@@ -11,5 +11,5 @@ RDEPEND=dev-qt/qtcore:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtxml:5 opus? ( media-lib
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/qxmpp-project/qxmpp/archive/v1.0.1.tar.gz -> qxmpp-1.0.1.tar.gz
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=df97b445e8d737a9936a3e100098ca1a
+_eclasses_=cmake	35b3146b6de4b75aef568db01ba9760c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=e022cd4cb2aff86b71588de38fbe0bcc

@@ -15453,7 +15453,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270 0.4.1355: utility to download media contents from the web
-net-misc/youtube-dl 2019.11.28 2019.12.25 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2019.12.25 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.5.5 3.5.8-r1 3.5.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17735,7 +17735,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.4.206 4.4.207 4.9.192 4.9.199 4.9.203 4.9.205 4.9.206 4.14.143 4.14.152 4.14.156 4.14.157 4.14.158 4.14.159 4.14.161 4.19.72 4.19.82 4.19.86 4.19.87 4.19.88 4.19.89 4.19.90 4.19.91 5.3.18 5.4.0 5.4.1 5.4.2 5.4.3 5.4.4 5.4.5 5.4.6: Full sources including the Gentoo patchset for the 5.4 kernel tree
+sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.4.206 4.4.207 4.9.192 4.9.199 4.9.203 4.9.205 4.9.206 4.14.143 4.14.152 4.14.156 4.14.157 4.14.158 4.14.159 4.14.161 4.19.72 4.19.82 4.19.86 4.19.87 4.19.88 4.19.89 4.19.90 4.19.91 4.19.92 5.3.18 5.4.0 5.4.1 5.4.2 5.4.3 5.4.4 5.4.5 5.4.6 5.4.7: Full sources including the Gentoo patchset for the 5.4 kernel tree
 sys-kernel/git-sources 5.5_rc1 5.5_rc2 5.5_rc3 5.5_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
@@ -17752,7 +17752,7 @@ sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 5.4.6-r1: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-kernel-bin 5.4.6: Pre-built vanilla Linux kernel
-sys-kernel/vanilla-sources 3.16.80 4.4.207 4.9.207 4.14.160 4.19.91 5.4.6: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.80 4.4.207 4.9.207 4.14.161 4.19.92 5.4.7: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 4.14.9999 4.15.9999 4.16.9999: The Zen Kernel Live Sources

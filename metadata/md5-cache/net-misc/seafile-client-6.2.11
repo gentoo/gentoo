@@ -1,4 +1,4 @@
-BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6
+BDEPEND=dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install postinst postrm prepare test
 DEPEND=net-libs/libsearpc ~net-misc/seafile-6.2.11 dev-libs/libevent dev-libs/jansson dev-libs/openssl:0 dev-db/sqlite:3 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtnetwork:5 dev-qt/qtdbus:5 shibboleth? ( dev-qt/qtwebengine:5[widgets] ) dev-qt/linguist-tools:5 test? ( dev-qt/qttest:5 )
 DESCRIPTION=Seafile desktop client
@@ -11,5 +11,5 @@ RDEPEND=net-libs/libsearpc ~net-misc/seafile-6.2.11 dev-libs/libevent dev-libs/j
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/haiwen/seafile-client/archive/v6.2.11.tar.gz -> seafile-client-6.2.11.tar.gz
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=7d3b38fd1280b83352305efd1613625c
+_eclasses_=cmake	35b3146b6de4b75aef568db01ba9760c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=dde4e9e2dd11f895806bc9b4e3105337
