@@ -1579,7 +1579,7 @@ app-emulation/spice-vdagent 0.17.0_p20180319-r1 0.19.0-r1: SPICE VD Linux Guest 
 app-emulation/spim 8.0-r3: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/umoci 0.2.1: Manipulation tool for OCI images
-app-emulation/vagrant 2.1.5 2.2.2-r2 2.2.4 2.2.5 2.2.6-r1: A tool for building and distributing development environments
+app-emulation/vagrant 2.2.6-r1: A tool for building and distributing development environments
 app-emulation/vice 3.1: Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 2.0.0 2.2.0 2.2.1 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 7.0 8.0: Graphical console client for connecting to virtual machines
@@ -10314,7 +10314,7 @@ dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form suppor
 dev-ruby/unf_ext 0.0.7.5 0.0.7.6: Unicode Normalization Form support library for CRuby
 dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.5-r1: Simple library to generate UUIDs
-dev-ruby/vagrant_cloud 2.0.2 2.0.3: Vagrant Cloud API Library
+dev-ruby/vagrant_cloud 2.0.3: Vagrant Cloud API Library
 dev-ruby/vcard 0.2.16: Ruby vcard support extracted from Vpim
 dev-ruby/vcr 1.11.3 4.0.0 5.0.0: Records your test suite's HTTP interactions and replay them during test runs
 dev-ruby/virtus 1.0.5: Attributes on Steroids for Plain Old Ruby Objects
