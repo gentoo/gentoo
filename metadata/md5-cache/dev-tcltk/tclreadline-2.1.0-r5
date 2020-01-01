@@ -1,14 +1,14 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
-DEPEND=>=x11-libs/libX11-1.0.0[static-libs?] >=x11-libs/libXt-1.0.0[static-libs?]
-DESCRIPTION=A package of Plan 9 compatibility libraries
+DEPEND=dev-lang/tcl:0= sys-libs/readline:0=
+DESCRIPTION=Readline extension to TCL
 EAPI=7
-HOMEPAGE=https://www.netlib.org/research/9libs/9libs-1.0.README
+HOMEPAGE=http://tclreadline.sf.net/
 IUSE=static-libs
-KEYWORDS=amd64 ~x86
-LICENSE=PLAN9
-RDEPEND=>=x11-libs/libX11-1.0.0[static-libs?] >=x11-libs/libXt-1.0.0[static-libs?]
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=dev-lang/tcl:0= sys-libs/readline:0=
 SLOT=0
-SRC_URI=https://www.netlib.org/research/9libs/9libs-1.0.tar.bz2
+SRC_URI=mirror://sourceforge/tclreadline/tclreadline-2.1.0.tar.gz mirror://debian/pool/main/t/tclreadline/tclreadline_2.1.0-12.debian.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=b1f44649addd791c6282be4f513ded36
+_md5_=2e65fa5cec2ff6b0d69d05a5c51a7fbb
