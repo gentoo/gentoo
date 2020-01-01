@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -210,13 +210,14 @@ python_configure() {
 }
 
 wrap_setup() {
-	local -x MPLSETUPCFG=${BUILD_DIR}/setup.cfg
+	local MAKEOPTS=-j1
+	local -x MPLSETUPCFG="${BUILD_DIR}"/setup.cfg
 	unset DISPLAY
 	"$@"
 }
 
 python_compile() {
-	wrap_setup distutils-r1_python_compile -j1 --build-lib="${BUILD_DIR}"/lib
+	wrap_setup distutils-r1_python_compile --build-lib="${BUILD_DIR}"/lib
 }
 
 python_compile_all() {
