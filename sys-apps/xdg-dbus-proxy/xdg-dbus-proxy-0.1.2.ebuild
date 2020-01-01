@@ -22,6 +22,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+# Musl patch is taken from https://github.com/flatpak/xdg-dbus-proxy/pull/13
+# which is already merged to the mainstream and should be removed after version bump.
+PATCHES=( "${FILESDIR}/${P}-musl.patch" )
+
 src_configure() {
 	econf --enable-man
 }
