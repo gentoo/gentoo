@@ -74,11 +74,6 @@ src_compile() {
 }
 
 src_install() {
-	# fetchmail's homedir (holds fetchmail's .fetchids)
-	keepdir /var/lib/${PN}
-	fowners ${PN}:${PN} /var/lib/${PN}
-	fperms 700 /var/lib/${PN}
-
 	default
 
 	newinitd "${FILESDIR}"/fetchmail.initd fetchmail
