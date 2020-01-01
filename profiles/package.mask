@@ -600,7 +600,6 @@ dev-python/slowaes
 dev-python/snakefood
 dev-python/sphinxcontrib-ditaa
 dev-python/sqlitecachec
-dev-python/stapler
 dev-python/stripogram
 dev-python/sudsds
 dev-python/superlance
