@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install
 DESCRIPTION=Translate TEX into HTML
-EAPI=4
+EAPI=7
 HOMEPAGE=http://hutchinson.belmont.ma.us/tth/
-KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~hppa ppc ppc64 x86
 LICENSE=GPL-2
 RDEPEND=app-text/ghostscript-gpl media-libs/netpbm
 SLOT=0
 SRC_URI=mirror://sourceforge/tth/tth4.08.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=4d620dba6df8d6dda6173072895f6775
+_md5_=d03ae64936c7a59f2b066eeb03026e82

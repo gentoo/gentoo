@@ -417,7 +417,7 @@ app-admin/sshguard 2.4.0 99999: protects hosts from brute force attacks against 
 app-admin/stow 2.2.2-r1 2.3.1: GNU Stow is a symlink farm manager
 app-admin/su-exec 0.2: Switch user and group id and exec
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
-app-admin/sudo 1.8.28_p1-r2 1.8.29-r2 1.8.30_beta3 9999: Allows users or groups to run commands as other users
+app-admin/sudo 1.8.28_p1-r2 1.8.29-r2 1.8.30 9999: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9 1.15: Interactive adduser script from Slackware
 app-admin/supernova 2.2.0: novaclient wrapper for multiple nova environments
 app-admin/supervisor 3.1.4 3.3.5 4.0.3 4.0.4: A system for controlling process state under UNIX
@@ -2833,7 +2833,7 @@ app-vim/multvals 3.10-r1: vim plugin: library for helping with arrays
 app-vim/nagios-syntax 1.8: vim plugin: Nagios configuration files syntax
 app-vim/neocomplcache 7.1-r1: vim plugin: ultimate auto completion system
 app-vim/nerdcommenter 2.5.0 2.5.1 2.5.2 9999: vim plugin: easy commenting of code for many filetypes
-app-vim/nerdtree 5.0.0-r1 9999: vim plugin: A tree explorer plugin for navigating the filesystem
+app-vim/nerdtree 5.0.0-r1 6.4.1 9999: vim plugin: A tree explorer plugin for navigating the filesystem
 app-vim/nerdtree-tabs 1.4.7: vim plugin: NERDTree and tabs in vim
 app-vim/nginx-syntax 0.3.3: vim plugin: Nginx configuration files syntax
 app-vim/notes 0.33.4: vim plugin: easy note taking in vim
@@ -10453,7 +10453,7 @@ dev-tex/latex-beamer 3.56-r1 3.57: LaTeX class for creating presentations using 
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
 dev-tex/latex2html 2015 2017.2-r2: Convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.3.11 2.3.15: LaTeX to RTF converter
-dev-tex/latexdiff 1.1.0 1.2.1 1.3.0 9999: Compare two latex files and mark up significant differences
+dev-tex/latexdiff 1.2.1 1.3.0 9999: Compare two latex files and mark up significant differences
 dev-tex/latexmk 456 465: Perl script for automatically building LaTeX documents
 dev-tex/lazylist 1.0a-r1: Lists in TeX's mouth - lambda-calculus and list-handling macros
 dev-tex/leaflet 20041222: LaTeX package used to create leaflet-type brochures
@@ -10478,7 +10478,7 @@ dev-tex/tex4ht 20090611_p1038-r8: Converts (La)TeX to (X)HTML, XML and OO.org
 dev-tex/texpower 0.2: A bundle of style and class files for creating dynamic online presentations
 dev-tex/tipa 1.3: International Phonetic Alphabet package for LaTeX
 dev-tex/translator 1.00: A package for translating words in TeX
-dev-tex/tth 3.77 4.08: Translate TEX into HTML
+dev-tex/tth 4.08: Translate TEX into HTML
 dev-tex/vc 0.6: The vc (version control) bundle
 dev-tex/xmltex 1.9-r3: A non validating namespace aware XML parser implemented in TeX
 dev-texlive/texlive-basic 2019-r1: TeXLive Essential programs and files
@@ -17794,7 +17794,7 @@ sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libnih 1.0.3-r3: Light-weight 'standard library' of C functions
 sys-libs/libomp 7.1.0 8.0.1 9.0.0 9.0.1 10.0.0.9999: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.4.0: GObject library for managing information about real and virtual OSes
-sys-libs/libraw1394 2.1.0-r1 2.1.1 2.1.2: library that provides direct access to the IEEE 1394 bus
+sys-libs/libraw1394 2.1.0-r1 2.1.1 2.1.2 2.1.2-r1: Library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 2.0.2: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
 sys-libs/libseccomp 2.4.0 2.4.1 2.4.2-r1: high level interface to Linux seccomp filter
 sys-libs/libselinux 2.9-r1 3.0 9999: SELinux userland library
