@@ -72,7 +72,7 @@ all_ruby_prepare() {
 	sed -e '/rb-kqueue/d' \
 		-i ${PN}.gemspec || die
 
-	sed -e "s/@VAGRANT_VERSION@/${PV}/g" "${FILESDIR}/${PN}-r1.in" > "${PN}" || die
+	sed -e "s/@VAGRANT_VERSION@/${PV}/g" "${FILESDIR}/${PN}.in" > "${PN}" || die
 }
 
 all_ruby_install() {
