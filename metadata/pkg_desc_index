@@ -1579,7 +1579,7 @@ app-emulation/spice-vdagent 0.17.0_p20180319-r1 0.19.0-r1: SPICE VD Linux Guest 
 app-emulation/spim 8.0-r3: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/umoci 0.2.1: Manipulation tool for OCI images
-app-emulation/vagrant 2.1.5 2.2.2-r2 2.2.4 2.2.5 2.2.6: A tool for building and distributing development environments
+app-emulation/vagrant 2.1.5 2.2.2-r2 2.2.4 2.2.5 2.2.6-r1: A tool for building and distributing development environments
 app-emulation/vice 3.1: Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 2.0.0 2.2.0 2.2.1 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 7.0 8.0: Graphical console client for connecting to virtual machines
@@ -7372,7 +7372,7 @@ dev-php/xdebug-handler 1.3.0 1.3.1: Restart a CLI process without loading the xd
 dev-php/xhprof 0.9.10: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.3.1 3.5.3: In-process task scheduler with Cron-like capabilities
-dev-python/Babel 2.5.0 2.5.3 2.5.3-r1 2.6.0 2.7.0: Collection of tools for internationalizing Python applications
+dev-python/Babel 2.5.0 2.5.3 2.5.3-r1 2.6.0 2.7.0 2.8.0: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.7 3.4.8: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5 0.11.7: The httplib2 caching algorithms packaged up for use with requests
 dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support for flask

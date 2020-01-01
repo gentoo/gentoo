@@ -12,4 +12,4 @@ RESTRICT=test !test? ( test )
 SLOT=0
 SRC_URI=https://github.com/hashicorp/vagrant/archive/v2.2.6.tar.gz -> vagrant-2.2.6.tar.gz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	estack	686eaab303305a908fd57b2fd7617800	multilib	1d91b03d42ab6308b5f4f6b598ed110e	ruby-fakegem	cca036a1477f29b926bf994faddf4099	ruby-ng	5ad91e467b477000267afdeea4a7093e	ruby-utils	cdb4c1e4283adb7707b7dd48ccaa7ad2	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=f3ec4661d835d2c5f4af700fef328392
+_md5_=3ebeeeb3d9c60f6bf991983d7726e0e2
