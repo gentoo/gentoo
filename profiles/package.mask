@@ -717,13 +717,6 @@ sys-apps/guix
 # until upstream releases fixed versions.
 ~xfce-base/xfce4-panel-4.15.0
 
-# Mikle Kolyada <zlogene@gentoo.org> (2019-10-16)
-# not needed due to openpam removal. Please
-# update your packages running emerge with the
-# --changed-deps option if you have problems
-# with your system.
-virtual/pam
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-10-16)
 # Depends on apache-2.2
 dev-libs/OpenSRF

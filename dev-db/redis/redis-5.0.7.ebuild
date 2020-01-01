@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ HOMEPAGE="https://redis.io"
 SRC_URI="http://download.redis.io/releases/${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
 IUSE="+jemalloc tcmalloc luajit test"
 RESTRICT="!test? ( test )"
 SLOT="0"
