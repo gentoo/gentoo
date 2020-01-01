@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Accessibility"
 LICENSE="LGPL-2+"
 SLOT="2"
 IUSE="X gtk-doc +introspection"
-KEYWORDS="alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 
 RDEPEND="
 	>=sys-apps/dbus-1.5[${MULTILIB_USEDEP}]
