@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{5..7} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -62,6 +63,6 @@ python_test() {
 }
 
 pkg_postinst() {
-	einfo "Sample configuration file has been installed in "
-	einfo " /usr/share/doc/yle-dl-${PV}/yledl.conf.sample.bz2"
+	elog "Sample configuration file has been installed in "
+	elog " /usr/share/doc/yle-dl-${PV}/yledl.conf.sample.bz2"
 }
