@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}-src"
 LICENSE="MIT"
 SLOT="${PV}"
 KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 +jit low-memory ncurses sandbox cpu_flags_x86_sse2"
+IUSE="bzip2 +jit low-memory ncurses cpu_flags_x86_sse2"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
@@ -98,7 +98,6 @@ src_configure() {
 	local args=(
 		--no-shared
 		$(usex jit -Ojit -O2)
-		$(usex sandbox --sandbox '')
 
 		${jit_backend}
 
