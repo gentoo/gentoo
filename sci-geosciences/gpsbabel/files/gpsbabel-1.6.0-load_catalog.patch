@@ -1,0 +1,32 @@
+From 4da11f4440f1284a79ad36d12c10790d2854dd3d Mon Sep 17 00:00:00 2001
+From: tsteven4 <13596209+tsteven4@users.noreply.github.com>
+Date: Wed, 22 May 2019 15:25:41 -0600
+Subject: [PATCH] enable gui to load Qt provided meta catalogs.
+
+QTranslate::load fails to load a meta catalog if
+the absolute file name is given as the filename parameter, and
+the directory parameter is omitted.
+It succeeds if the file name is provided as the filename parameter
+and the directory is provided as the diretory parameter.
+
+This should resolve #359.
+---
+ gui/mainwindow.cc | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/gui/mainwindow.cc b/gui/mainwindow.cc
+index ea995ad69..7f53c4f15 100644
+--- a/gui/mainwindow.cc
++++ b/gui/mainwindow.cc
+@@ -314,10 +314,8 @@ void MainWindow::switchTranslator(QTranslator& translator, const QString& filena
+   // remove the old translator
+   qApp->removeTranslator(&translator);
+ 
+-  QString full_filename(langPath_ + "/" + filename);
+-
+   // load the new translator
+-  if (translator.load(full_filename)) {
++  if (translator.load(filename, langPath_)) {
+     qApp->installTranslator(&translator);
+   }
+ }

@@ -1,0 +1,85 @@
+diff --git a/Makefile.in b/Makefile.in
+index c1d998cc..93f22f64 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -56,7 +56,7 @@ LRELEASE=@LRELEASE@
+ #
+ #OPTIMIZATION=-O $(EXTRA_OPTIMIZATION)
+ #DEBUGGING=-g $(EXTRA_DEBUGGING)
+-GBCFLAGS=$(EXTRA_CFLAGS) $(DEBUGGING) $(BUILD_CPP) @SHAPELIB_CPP@ @ZLIB_CPP@ @QT_INC_OPT@$(QT_INC) \
++GBCFLAGS=$(EXTRA_CFLAGS) $(DEBUGGING) $(BUILD_CPP) @SHAPELIB_CFLAGS@ @ZLIB_CPP@ @QT_INC_OPT@$(QT_INC) \
+ 	$(OPTIMIZATION) -DHAVE_CONFIG_H -DNEW_STRINGS
+ LDFLAGS=$(EXTRA_LDFLAGS) @LDFLAGS@
+ PREFIX=@prefix@
+@@ -154,10 +154,10 @@ toolinfo
+ all: gpsbabel$(EXEEXT)
+ 
+ gpsbabel$(EXEEXT): configure Makefile $(OBJS) @GPSBABEL_DEBUG@
+-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) @LIBS@ $(QT_LIBS) @USB_LIBS@ $(OUTPUT_SWITCH)$@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) @LIBS@ $(QT_LIBS) @SHAPELIB_LIBS@ @USB_LIBS@ $(OUTPUT_SWITCH)$@
+ 
+ gpsbabel-debug: $(OBJS)
+-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) @LIBS@ $(QT_LIBS) @USB_LIBS@ $(OUTPUT_SWITCH)$@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) @LIBS@ $(QT_LIBS) @SHAPELIB_LIBS@ @USB_LIBS@ $(OUTPUT_SWITCH)$@
+ 
+ Makefile gbversion.h: Makefile.in config.status xmldoc/makedoc.in \
+ 	  gbversion.h.in gui/setup.iss.in
+diff --git a/configure b/configure
+index de3d7acb..273948cd 100755
+--- a/configure
++++ b/configure
+@@ -645,7 +645,7 @@ FILEINFO
+ ZLIB
+ ZLIB_CPP
+ SHAPELIB
+-SHAPELIB_CPP
++SHAPELIB_CFLAGS
+ FMTS
+ EGREP
+ GREP
+@@ -5712,7 +5712,7 @@ $as_echo "no" >&6; }
+  ;; #(
+   *) :
+ 
+-	SHAPELIB_CPP="-I\$(srcdir)/shapelib"
++	SHAPELIB_CFLAGS="-I\$(srcdir)/shapelib"
+ 	SHAPELIB="\$(SHAPELIB)"
+ 	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: using included version" >&5
+ $as_echo "using included version" >&6; }
+diff --git a/configure.ac b/configure.ac
+index ebe4bbe2..7cbaf7f0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -104,16 +104,16 @@ AC_ARG_WITH([shapelib],
+ 		[--with-shapelib=(included)|system|no],
+ 		[])])
+ AS_CASE([$with_shapelib], ["system"], [
+-	AC_CHECK_LIB([shp], [SHPOpenLL])
++	PKG_CHECK_MODULES([SHAPELIB], [shapelib])
+ ], ["no"], [
+ 	AC_DEFINE(SHAPELIB_INHIBITED, 1, [1 to inhibit our use of libshp.])
+ 	AC_MSG_RESULT([no])
+ ], [
+-	SHAPELIB_CPP="-I\$(srcdir)/shapelib"
++	SHAPELIB_CFLAGS="-I\$(srcdir)/shapelib"
+ 	SHAPELIB="\$(SHAPELIB)"
+ 	AC_MSG_RESULT([using included version])
+ ])
+-AC_SUBST(SHAPELIB_CPP)
++AC_SUBST(SHAPELIB_CFLAGS)
+ AC_SUBST(SHAPELIB)
+ 
+ AC_MSG_CHECKING([whether to support zlib])
+diff --git a/shape.cc b/shape.cc
+index 1f93cd4e..e8e62ce2 100644
+--- a/shape.cc
++++ b/shape.cc
+@@ -25,7 +25,7 @@
+ #include <QtCore/QVector>
+ 
+ #include "defs.h"
+-#include "shapelib/shapefil.h"
++#include <shapefil.h>
+ #include <cstdlib>
+ 
+ #if !SHAPELIB_INHIBITED

@@ -1,0 +1,330 @@
+commit e237a98b8a044481041d27f5cb6d80ceb0492715
+Author: tsteven4 <13596209+tsteven4@users.noreply.github.com>
+Date:   Tue Aug 6 14:04:14 2019 -0600
+
+    add support for use of libshp to configure.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0ba561b1..a943ebeb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -243,7 +243,6 @@ add_definitions(-DNEW_STRINGS)
+ # We don't care about stripping things out of the build.  Full monty, baby.
+ add_definitions(-DMAXIMAL_ENABLED)
+ add_definitions(-DFILTERS_ENABLED)
+-add_definitions(-DSHAPELIB_ENABLED)
+ add_definitions(-DCSVFMTS_ENABLED)
+ 
+ add_executable(GPSBabel ${SOURCES} ${HEADERS})
+diff --git a/GPSBabel.pro b/GPSBabel.pro
+index 0749981f..e0590d38 100644
+--- a/GPSBabel.pro
++++ b/GPSBabel.pro
+@@ -222,7 +222,6 @@ DEFINES += NEW_STRINGS
+ # We don't care about stripping things out of the build.  Full monty, baby.
+ DEFINES += MAXIMAL_ENABLED
+ DEFINES += FILTERS_ENABLED
+-DEFINES += SHAPELIB_ENABLED
+ DEFINES += CSVFMTS_ENABLED
+ 
+ # Creator insists on adding -W to -Wall which results in a completely
+diff --git a/Makefile.in b/Makefile.in
+index fbf22821..c1d998cc 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -56,7 +56,7 @@ LRELEASE=@LRELEASE@
+ #
+ #OPTIMIZATION=-O $(EXTRA_OPTIMIZATION)
+ #DEBUGGING=-g $(EXTRA_DEBUGGING)
+-GBCFLAGS=$(EXTRA_CFLAGS) $(DEBUGGING) $(BUILD_CPP) @ZLIB_CPP@ @QT_INC_OPT@$(QT_INC) \
++GBCFLAGS=$(EXTRA_CFLAGS) $(DEBUGGING) $(BUILD_CPP) @SHAPELIB_CPP@ @ZLIB_CPP@ @QT_INC_OPT@$(QT_INC) \
+ 	$(OPTIMIZATION) -DHAVE_CONFIG_H -DNEW_STRINGS
+ LDFLAGS=$(EXTRA_LDFLAGS) @LDFLAGS@
+ PREFIX=@prefix@
+@@ -105,7 +105,7 @@ JEEPS=jeeps/gpsapp.o jeeps/gpscom.o \
+ # Extra modules in Jeeps that we don't use
+ # 	jeeps/gpsfmt.o jeeps/gpsinput.o jeeps/gpsproj.o
+ 
+-SHAPE=shapelib/shpopen.o shapelib/dbfopen.o shapelib/safileio.o
++SHAPELIB=shapelib/shpopen.o shapelib/dbfopen.o shapelib/safileio.o
+ 
+ ZLIB=zlib/adler32.o zlib/compress.o zlib/crc32.o zlib/deflate.o zlib/inffast.o \
+ 	zlib/inflate.o zlib/infback.o zlib/inftrees.o zlib/trees.o \
+@@ -121,7 +121,7 @@ LIBOBJS = route.o waypt.o filter_vecs.o util.o vecs.o mkshort.o \
+     src/core/textstream.o \
+ 	  src/core/usasciicodec.o \
+ 	  src/core/xmlstreamwriter.o \
+-	  $(GARMIN) $(JEEPS) $(SHAPE) @ZLIB@ $(FMTS) $(FILTERS)
++	  $(GARMIN) $(JEEPS) @SHAPELIB@ @ZLIB@ $(FMTS) $(FILTERS)
+ OBJS = main.o globals.o $(LIBOBJS) @FILEINFO@
+ 
+ DEPFILES = $(OBJS:.o=.d)
+diff --git a/config.h.in b/config.h.in
+index 4a39b83a..d5ecbadc 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -18,6 +18,9 @@
+ /* Define to 1 if you have the `m' library (-lm). */
+ #undef HAVE_LIBM
+ 
++/* Define to 1 if you have the `shp' library (-lshp). */
++#undef HAVE_LIBSHP
++
+ /* Defined if you have libusb */
+ #undef HAVE_LIBUSB
+ 
+@@ -84,8 +87,8 @@
+ /* Define to the version of this package. */
+ #undef PACKAGE_VERSION
+ 
+-/* 1 to enable shapefile support */
+-#undef SHAPELIB_ENABLED
++/* 1 to inhibit our use of libshp. */
++#undef SHAPELIB_INHIBITED
+ 
+ /* Define to 1 if you have the ANSI C header files. */
+ #undef STDC_HEADERS
+diff --git a/configure b/configure
+index 2181cae1..de3d7acb 100755
+--- a/configure
++++ b/configure
+@@ -644,6 +644,8 @@ RC
+ FILEINFO
+ ZLIB
+ ZLIB_CPP
++SHAPELIB
++SHAPELIB_CPP
+ FMTS
+ EGREP
+ GREP
+@@ -723,10 +725,10 @@ SHELL'
+ ac_subst_files=''
+ ac_user_opts='
+ enable_option_checking
+-enable_shapefile
+ enable_csv
+ enable_most
+ enable_filters
++with_shapelib
+ with_zlib
+ with_doc
+ '
+@@ -1367,7 +1369,6 @@ Optional Features:
+   --disable-option-checking  ignore unrecognized --enable/--with options
+   --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+   --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+-  --disable-shapefile
+   --disable-csv
+   --disable-most
+   --disable-filters
+@@ -1375,6 +1376,8 @@ Optional Features:
+ Optional Packages:
+   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
++  --with-shapelib=(included)|system|no
++
+   --with-zlib=(included)|system|no
+ 
+   --with-doc=DIR          Path where the documentation will be stored.
+@@ -5579,25 +5582,6 @@ if test "$GCC" = "yes"; then :
+ 
+ fi
+ 
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether to support shapefiles" >&5
+-$as_echo_n "checking whether to support shapefiles... " >&6; }
+-# Check whether --enable-shapefile was given.
+-if test "${enable_shapefile+set}" = set; then :
+-  enableval=$enable_shapefile;
+-else
+-  enable_shapefile=yes
+-fi
+-
+-if test "$enable_shapefile" = "yes"; then :
+-
+-
+-$as_echo "#define SHAPELIB_ENABLED 1" >>confdefs.h
+-
+-
+-fi
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $enable_shapefile" >&5
+-$as_echo "$enable_shapefile" >&6; }
+-
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether to support csv formats" >&5
+ $as_echo_n "checking whether to support csv formats... " >&6; }
+ # Check whether --enable-csv was given.
+@@ -5661,6 +5645,82 @@ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $enable_filters" >&5
+ $as_echo "$enable_filters" >&6; }
+ 
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether to support shapefiles" >&5
++$as_echo_n "checking whether to support shapefiles... " >&6; }
++
++# Check whether --with-shapelib was given.
++if test "${with_shapelib+set}" = set; then :
++  withval=$with_shapelib;
++fi
++
++case $with_shapelib in #(
++  "system") :
++
++	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for SHPOpenLL in -lshp" >&5
++$as_echo_n "checking for SHPOpenLL in -lshp... " >&6; }
++if ${ac_cv_lib_shp_SHPOpenLL+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  ac_check_lib_save_LIBS=$LIBS
++LIBS="-lshp  $LIBS"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char SHPOpenLL ();
++int
++main ()
++{
++return SHPOpenLL ();
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_cxx_try_link "$LINENO"; then :
++  ac_cv_lib_shp_SHPOpenLL=yes
++else
++  ac_cv_lib_shp_SHPOpenLL=no
++fi
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS
++fi
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_shp_SHPOpenLL" >&5
++$as_echo "$ac_cv_lib_shp_SHPOpenLL" >&6; }
++if test "x$ac_cv_lib_shp_SHPOpenLL" = xyes; then :
++  cat >>confdefs.h <<_ACEOF
++#define HAVE_LIBSHP 1
++_ACEOF
++
++  LIBS="-lshp $LIBS"
++
++fi
++
++ ;; #(
++  "no") :
++
++
++$as_echo "#define SHAPELIB_INHIBITED 1" >>confdefs.h
++
++	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++ ;; #(
++  *) :
++
++	SHAPELIB_CPP="-I\$(srcdir)/shapelib"
++	SHAPELIB="\$(SHAPELIB)"
++	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: using included version" >&5
++$as_echo "using included version" >&6; }
++ ;;
++esac
++
++
++
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether to support zlib" >&5
+ $as_echo_n "checking whether to support zlib... " >&6; }
+ 
+diff --git a/configure.ac b/configure.ac
+index 9cd94327..ebe4bbe2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -58,18 +58,6 @@ AS_IF([test "$GCC" = "yes"], [
+ 	CXXFLAGS="$CXXFLAGS -Wall"
+ ])
+ 
+-AC_MSG_CHECKING([whether to support shapefiles])
+-AC_ARG_ENABLE([shapefile],
+-	[AS_HELP_STRING(
+-		[--disable-shapefile],
+-		[])],
+-	[],
+-	[AS_VAR_SET([enable_shapefile], [yes])])
+-AS_IF([test "$enable_shapefile" = "yes"], [
+-	AC_DEFINE(SHAPELIB_ENABLED, 1, [1 to enable shapefile support])
+-])
+-AC_MSG_RESULT([$enable_shapefile])
+-
+ AC_MSG_CHECKING([whether to support csv formats])
+ AC_ARG_ENABLE([csv],
+ 	[AS_HELP_STRING(
+@@ -110,6 +98,24 @@ AS_IF([test "$enable_filters" = "yes"], [
+ ])
+ AC_MSG_RESULT([$enable_filters])
+ 
++AC_MSG_CHECKING([whether to support shapefiles])
++AC_ARG_WITH([shapelib],
++	[AS_HELP_STRING(
++		[--with-shapelib=(included)|system|no],
++		[])])
++AS_CASE([$with_shapelib], ["system"], [
++	AC_CHECK_LIB([shp], [SHPOpenLL])
++], ["no"], [
++	AC_DEFINE(SHAPELIB_INHIBITED, 1, [1 to inhibit our use of libshp.])
++	AC_MSG_RESULT([no])
++], [
++	SHAPELIB_CPP="-I\$(srcdir)/shapelib"
++	SHAPELIB="\$(SHAPELIB)"
++	AC_MSG_RESULT([using included version])
++])
++AC_SUBST(SHAPELIB_CPP)
++AC_SUBST(SHAPELIB)
++
+ AC_MSG_CHECKING([whether to support zlib])
+ AC_ARG_WITH([zlib],
+ 	[AS_HELP_STRING(
+diff --git a/main.cc b/main.cc
+index 6c7c6a2f..d19fa77f 100644
+--- a/main.cc
++++ b/main.cc
+@@ -186,7 +186,7 @@ print_extended_info()
+     "CSVFMTS_ENABLED "
+ #endif
+ 
+-#if SHAPELIB_ENABLED
++#if !SHAPELIB_INHIBITED
+     "SHAPELIB_ENABLED "
+ #endif
+ 
+diff --git a/shape.cc b/shape.cc
+index 6f0c7612..1f93cd4e 100644
+--- a/shape.cc
++++ b/shape.cc
+@@ -28,7 +28,7 @@
+ #include "shapelib/shapefil.h"
+ #include <cstdlib>
+ 
+-#if SHAPELIB_ENABLED
++#if !SHAPELIB_INHIBITED
+ static SHPHandle ihandle;
+ static DBFHandle ihandledb;
+ static SHPHandle ohandle;
+@@ -541,4 +541,4 @@ ff_vecs_t shape_vecs = {
+   , NULL_POS_OPS,
+   nullptr
+ };
+-#endif /* SHAPELIB_ENABLED */
++#endif /* !SHAPELIB_INHIBITED */
+diff --git a/vecs.cc b/vecs.cc
+index 6ec8a881..1b61b076 100644
+--- a/vecs.cc
++++ b/vecs.cc
+@@ -369,7 +369,7 @@ vecs_t vec_list[] = {
+     nullptr,
+     nullptr,
+   },
+-#if SHAPELIB_ENABLED
++#if !SHAPELIB_INHIBITED
+   {
+     &shape_vecs,
+     "shape",

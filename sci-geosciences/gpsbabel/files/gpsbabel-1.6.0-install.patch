@@ -1,0 +1,182 @@
+diff --git a/gui/app.pro b/gui/app.pro
+index 3093de24..2d17b90f 100755
+--- a/gui/app.pro
++++ b/gui/app.pro
+@@ -133,3 +133,79 @@ macx|linux{
+   QMAKE_DISTCLEAN += compile_commands.json
+ }
+ 
++linux:!isEmpty(PREFIX) {
++  DATADIR = $$PREFIX/share
++  ICONSDIR = $$DATADIR/pixmaps
++  PKGDATADIR = $$DATADIR/gpsbabel
++
++  target.path = $$PREFIX/bin
++
++  desktop.path = $$DATADIR/applications
++  desktop.files = gpsbabel.desktop
++
++  icon.path = $$ICONSDIR
++  icon.extra = $(INSTALL_FILE) images/appicon.png $(INSTALL_ROOT)$$ICONSDIR/gpsbabel.png
++
++  gmapbase.files = gmapbase.html
++  gmapbase.path = $$PKGDATADIR
++
++  translations.files = gpsbabelfe_*.qm
++  translations.files += coretool/gpsbabel_*.qm
++  translations.path = $$PKGDATADIR/translations
++
++  INSTALLS += target desktop icon gmapbase translations
++}
++
++unix {
++    # Setting PKGDATADIR will:
++    # 1. Look for gmapbase.html in PKGDATADIR instead
++    # of in QApplication::applicationDirPath().
++    # E.g. qmake PKGDATADIR=/usr/share/gpsbabel
++    # will use /usr/share/gpsbabel/gmapbase.html instead of
++    # QApplication::applicationDirPath() + "/gmapbase.html".
++    # 2. Substitude PKGDATADIR/translations in the search path for
++    # translation files instead of
++    # QApplication::applicationDirPath() + "/translations".
++    # E.g. qmake PKGDATADIR=/usr/share/gpsbabel
++    # will look in /usr/share/gpsbabel/translations instead of
++    # QApplication::applicationDirPath() + "/translations".
++
++    # We search for translation files (*.qm) in this order:
++    # 1a. Relative to the executable, specifically at
++    # QApplication::applicationDirPath() + "/translations".
++    # This works when we package the app on windows and macos.
++    # It also works we create a bundled app on linux,
++    # for example with the package target.  However, linux packagers typically
++    # install the translation files in another location.
++    #  OR
++    # 1b. In PKGDATADIR/translations.  This works for linux packages that
++    # place the translations in PKGDATADIR/translations, e.g.
++    # qmake PKGDATADIR=/usr/share/gpsbabel with the translations in
++    # /usr/share/gpsbabel/translations.
++    # 2. In the Qt TranslationsPath.  If this is not overridden in qt.conf it
++    # will point to the hard-coded paths that are compiled into the Qt library.
++    # This hard-coded path can be found with "qmake -query QT_INSTALL_TRANSLATIONS".
++    # This works for linux packages that have some or all translation files
++    # installed in the original location they used when compiling Qt.
++
++    # There are three sets of translation files that should be available
++    # when running gpsbabelfe:
++    # 1. gpsbabelfe_*.qm
++    # 2. gpsbabel_*.qm
++    # 3a. The Qt supplied meta catalogs (qt_*.qm) and the module files they
++    #     refer to (qt*_*.qm).
++    #     Note if you are counting on finding the Qt supplied translations,
++    #     then the package that provides the Qt translations
++    #     needs to be a prerequisite to the gpsbabel gui package.
++    #  OR
++    # 3b. The concatentated translation files for the modules that gpsbabelfe
++    #     uses.  These files are created by building the package target.
++    #     These are named identically to the Qt translation meta catalogs, i.e.
++    #     qt_*.qm, but contain the necessary translation data for the modules
++    #     gpsbabelfe uses.
++    # A description of the meta catalogs and concatentation process is
++    # available at
++    # https://doc.qt.io/qt-5/linguist-programmers.html#deploying-translations
++
++    !isEmpty(PKGDATADIR):DEFINES += PKGDATADIR=\\\"$$PKGDATADIR\\\"
++}
+diff --git a/gui/mainwindow.cc b/gui/mainwindow.cc
+index df5d5e50..13f23a29 100644
+--- a/gui/mainwindow.cc
++++ b/gui/mainwindow.cc
+@@ -26,11 +26,14 @@
+ #include <QtCore/QEvent>               // for QEvent (& QEvent::LanguageChange, QEvent::LocaleChange)
+ #include <QtCore/QFile>                // for QFile
+ #include <QtCore/QFileInfo>            // for QFileInfo
++#include <QtCore/QLibraryInfo>         // for QLibraryInfo, QLibraryInfo::TranslationsPath
+ #include <QtCore/QLocale>              // for QLocale
+ #include <QtCore/QMimeData>            // for QMimeData
+ #include <QtCore/QProcess>             // for QProcess, QProcess::NotRunning
+ #include <QtCore/QRegExp>              // for QRegExp
+ #include <QtCore/QSettings>            // for QSettings
++#include <QtCore/QString>              // for QString
++#include <QtCore/QStringList>          // for QStringList
+ #include <QtCore/QTemporaryFile>       // for QTemporaryFile
+ #include <QtCore/QTime>                // for QTime
+ #include <QtCore/QUrl>                 // for QUrl
+@@ -39,7 +42,6 @@
+ #include <QtCore/QtGlobal>             // for foreach
+ #include <QtGui/QCursor>               // for QCursor
+ #include <QtGui/QDesktopServices>      // for QDesktopServices
+-#include <QtGui/QIcon>                 // for QIcon
+ #include <QtGui/QImage>                // for QImage
+ #include <QtWidgets/QApplication>      // for QApplication, qApp
+ #include <QtWidgets/QCheckBox>         // for QCheckBox
+@@ -222,9 +224,6 @@ MainWindow::MainWindow(QWidget* parent): QMainWindow(parent)
+ 
+   ui_.outputWindow->setReadOnly(true);
+ 
+-  langPath_ = QApplication::applicationDirPath();
+-  langPath_.append("/translations/");
+-
+   // Start up in the current system language.
+   loadLanguage(QLocale::system().name());
+   loadFormats();
+@@ -314,9 +313,22 @@ void MainWindow::switchTranslator(QTranslator& translator, const QString& filena
+   // remove the old translator
+   qApp->removeTranslator(&translator);
+ 
+-  // load the new translator
+-  if (translator.load(filename, langPath_)) {
+-    qApp->installTranslator(&translator);
++  // Set a list of directories to search for the translation file.
++  const QStringList directories = {
++#ifdef PKGDATADIR
++    PKGDATADIR "/translations",
++#else
++    QApplication::applicationDirPath() + "/translations",
++#endif
++    QLibraryInfo::location(QLibraryInfo::TranslationsPath)
++  };
++
++  // Load the new translator.
++  for (const auto& directory : directories) {
++    if (translator.load(filename, directory)) {
++      qApp->installTranslator(&translator);
++      break;
++    }
+   }
+ }
+ 
+diff --git a/gui/mainwindow.h b/gui/mainwindow.h
+index 3fd107fb..b6de3994 100644
+--- a/gui/mainwindow.h
++++ b/gui/mainwindow.h
+@@ -70,7 +70,6 @@ private:
+   QTranslator     translatorCore_; // translation for the core application.
+   QTranslator     translatorQt_;   // translations for Qt.
+   QString         currLang_;       // currently loaded language.
+-  QString         langPath_;       // Absolute path of language files.
+ 
+ private:
+   void loadFormats();
+diff --git a/gui/map.cc b/gui/map.cc
+index 9efeb6e0..661aa19a 100644
+--- a/gui/map.cc
++++ b/gui/map.cc
+@@ -90,13 +90,16 @@ Map::Map(QWidget* parent,
+   connect(mclicker, SIGNAL(logTime(QString)), this, SLOT(logTime(QString)));
+ #endif
+ 
++#ifdef PKGDATADIR
++  QString baseFile =  PKGDATADIR  "/gmapbase.html";
++#else
+   QString baseFile =  QApplication::applicationDirPath() + "/gmapbase.html";
++#endif
+   if (!QFile(baseFile).exists()) {
+     QMessageBox::critical(nullptr, appName,
+                           tr("Missing \"gmapbase.html\" file.  Check installation"));
+   } else {
+-    QString urlStr = "file:///" + baseFile;
+-    this->load(QUrl(urlStr));
++    this->load(QUrl::fromLocalFile(baseFile));
+   }
+ 
+ #ifdef DEBUG_JS_GENERATION
