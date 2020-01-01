@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -144,6 +144,9 @@ src_prepare() {
 
 	# bug with glibc-2.16.0
 	sed -i -e '/gets is a security/d' "${S}"/gnulib/stdio.in.h || die
+
+	# https://bugs.gentoo.org/701416 sandbox violation
+	sed -i -e 's/case `"$SAMBA_CLIENT.*/case "Connection to nosuchhost.amanda.org failed" in/' "${S}"/config/amanda/dumpers.m4 || die
 
 	eautoreconf
 
@@ -388,7 +391,7 @@ src_install() {
 	if ! use minimal ; then
 		fperms 0700 \
 			 "${AMANDA_USER_HOMEDIR}/${AMANDA_CONFIG_NAME}" \
-	         /etc/amanda/${AMANDA_CONFIG_NAME}
+			 /etc/amanda/${AMANDA_CONFIG_NAME}
 	fi
 
 	einfo "Setting setuid permissions"
@@ -476,7 +479,7 @@ amanda_permissions_fix() {
 	local i
 	for i in "${le}"/calcsize "${le}"/killpgrp \
 		"${le}"/rundump "${le}"/runtar ; do
-	    [ -e "${root}"/${i} ] || continue
+		[ -e "${root}"/${i} ] || continue
 		chown root:${AMANDA_GROUP_NAME} "${root}"/${i} || die
 		chmod u=srwx,g=rx,o= "${root}"/${i} || die
 	done
