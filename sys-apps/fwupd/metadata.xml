@@ -22,6 +22,7 @@
     <flag name="redfish">Install redfish plugin</flag>
     <flag name="synaptics">Install synaptics plugin</flag>
     <flag name="thunderbolt">Install Thunderbolt plugin</flag>
+    <flag name="tpm">Install Trusted Platform Module plugin</flag>
     <flag name="uefi">Enable UEFI support</flag>
   </use>
   <upstream>

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 
 inherit linux-info meson python-single-r1 vala xdg toolchain-funcs
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="agent amt consolekit dell gtk-doc elogind minimal +gpg introspection +man nvme pkcs7 redfish synaptics systemd test thunderbolt uefi"
+IUSE="agent amt consolekit dell gtk-doc elogind minimal +gpg introspection +man nvme pkcs7 redfish synaptics systemd test thunderbolt tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( consolekit elogind minimal systemd )
 	dell? ( uefi )
@@ -71,6 +71,7 @@ DEPEND="${PYTHON_DEPS}
 	thunderbolt? (
 		sys-apps/thunderbolt-software-user-space
 	)
+	tpm? ( app-crypt/tpm2-tss )
 	uefi? (
 		app-crypt/tpm2-tss
 		media-libs/fontconfig
@@ -122,6 +123,7 @@ src_configure() {
 		$(meson_use systemd)
 		$(meson_use test tests)
 		$(meson_use thunderbolt plugin_thunderbolt)
+		$(meson_use tpm plugin_tpm)
 		$(meson_use uefi plugin_uefi)
 		# Requires libflashrom which our sys-apps/flashrom
 		# package does not provide
