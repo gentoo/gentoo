@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${P}.tar.xz"
 LICENSE="!gdbm? ( LGPL-2.1 ) gdbm? ( GPL-2 )"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm arm64 ~hppa ~ia64 ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux"
 
 # +alsa-plugin as discussed in bug #519530
 IUSE="+alsa +alsa-plugin +asyncns bluetooth +caps dbus doc equalizer elogind gconf

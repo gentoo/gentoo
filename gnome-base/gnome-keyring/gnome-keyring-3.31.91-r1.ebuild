@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 IUSE="+caps pam selinux +ssh-agent test"
 RESTRICT="!test? ( test )"
-KEYWORDS="alpha amd64 ~arm arm64 ~ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 
 # Replace gkd gpg-agent with pinentry[gnome-keyring] one, bug #547456
 RDEPEND="
