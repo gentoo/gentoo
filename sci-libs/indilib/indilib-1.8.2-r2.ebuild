@@ -43,7 +43,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DINDI_BUILD_QT5_CLIENT=OFF
 		-DINDI_BUILD_UNITTESTS=$(usex test)
-		-DUDEVRULES_INSTALL_DIR="$(get_udevdir)"
+		-DUDEVRULES_INSTALL_DIR="$(get_udevdir)"/rules.d
 		$(cmake_use_find_package ogg OggTheora)
 		-DINDI_BUILD_WEBSOCKET=$(usex websocket)
 	)
