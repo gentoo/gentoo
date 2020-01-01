@@ -17032,7 +17032,7 @@ sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from
 sys-apps/flashrom 0.9.8 1.0 1.1 9999: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/frandom 1.1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwts 17.02.00: Firmware Test Suite
-sys-apps/fwupd 1.2.8 1.2.11 1.3.4 1.3.5: Aims to make updating firmware on Linux automatic, safe and reliable
+sys-apps/fwupd 1.2.11 1.3.5 1.3.6: Aims to make updating firmware on Linux automatic, safe and reliable
 sys-apps/fwupdate 10 12: Tools for using the ESRT and UpdateCapsule() to apply firmware updates
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.0 5.0.1: GNU awk pattern-matching language
