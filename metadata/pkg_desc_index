@@ -15049,7 +15049,7 @@ net-mail/email 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.9 2.0: fetch, filter and deliver mail
-net-mail/fetchmail 6.3.26-r4 6.4.1 6.4.1-r1: the legendary remote-mail retrieval and forwarding utility
+net-mail/fetchmail 6.3.26-r4 6.4.1 6.4.1-r2: the legendary remote-mail retrieval and forwarding utility
 net-mail/getmail 5.13 5.14: A mail retriever with reliable Maildir and mbox delivery
 net-mail/gnubiff 2.2.17-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
@@ -15445,7 +15445,7 @@ net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.20.3-r1 1.20.3-r3: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
-net-misc/whois 5.4.3 5.5.2 5.5.3 9999: improved Whois Client
+net-misc/whois 5.4.3 5.5.3 5.5.4 9999: improved Whois Client
 net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r2: Implements Wake On LAN (Magic Paket) functionality in a small program
 net-misc/wput 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
