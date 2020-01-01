@@ -1,4 +1,4 @@
-BDEPEND=sys-devel/bison sys-devel/flex virtual/pkgconfig extras? ( app-doc/doxygen[dot] app-doc/xmltoman app-text/htmldoc dev-perl/CGI dev-perl/SQL-Translator ) sys-devel/make >=dev-util/cmake-3.9.6
+BDEPEND=sys-devel/bison sys-devel/flex virtual/pkgconfig extras? ( app-doc/doxygen[dot] app-doc/xmltoman app-text/htmldoc dev-perl/CGI dev-perl/SQL-Translator ) sys-devel/make dev-util/cmake
 DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=app-crypt/gpgme:= dev-libs/hiredis dev-libs/libgcrypt:= dev-perl/UUID net-libs/gnutls:= net-libs/libssh:= sys-libs/zlib ldap? ( net-nds/openldap ) radius? ( net-dialup/freeradius-client )
 DESCRIPTION=Greenbone vulnerability management libraries, previously named openvas-libraries
@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=app-crypt/gpgme:= dev-libs/hiredis dev-libs/libgcrypt:= dev-perl/UUID net-libs/gnutls:= net-libs/libssh:= sys-libs/zlib ldap? ( net-nds/openldap ) radius? ( net-dialup/freeradius-client )
 SLOT=0
 SRC_URI=https://github.com/greenbone/gvm-libs/archive/v10.0.1.tar.gz -> gvm-libs-10.0.1.tar.gz
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=0db10794401b76a617d6b823d5069c92
+_eclasses_=cmake	35b3146b6de4b75aef568db01ba9760c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=c49a6c9bd1aaed3d6160653625c835f3

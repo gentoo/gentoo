@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=dev-lang/ocaml[ocamlopt?] dev-ml/camlp5[ocamlopt?] acct-user/geneweb acct-group/geneweb
+DESCRIPTION=Genealogy software program with a Web interface
+EAPI=7
+HOMEPAGE=https://github.com/geneanet/geneweb
+IUSE=+ocamlopt
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/ocaml[ocamlopt?] dev-ml/camlp5[ocamlopt?] acct-user/geneweb acct-group/geneweb
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/geneweb/geneweb/archive/v6.08.tar.gz -> geneweb-6.08.tar.gz https://dev.gentoo.org/~tupone/geneweb-6.08-ocaml-4.patch.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_md5_=dfa8c58b64da0c765e6db96c6268e499

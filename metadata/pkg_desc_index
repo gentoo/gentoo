@@ -2026,7 +2026,7 @@ app-misc/gcal 3.6.3 4.1: The GNU Calendar - a replacement for cal
 app-misc/gcalcli 3.2 3.3.2 3.4.0 4.0.0_alpha3 4.0.0_alpha3-r1 4.2.0: Google Calendar Command Line Interface
 app-misc/gcstar 1.7.0 1.7.1: Manage your collections of movies, games, books, music and more
 app-misc/geekcode 1.7.3-r1: Geek code generator
-app-misc/geneweb 6.08-r1: Genealogy software program with a Web interface
+app-misc/geneweb 6.08-r1 6.08-r2: Genealogy software program with a Web interface
 app-misc/gentoo 0.20.7: Graphical file manager for Unix-like systems, using GTK+
 app-misc/gentoo-elections 0_p20190710: Gentoo election control data and scripts
 app-misc/geoclue 2.4.13 2.5.3-r2: A location information D-Bus service
@@ -14534,7 +14534,7 @@ net-analyzer/tcpflow 1.5.2-r1: A tool for monitoring, capturing and storing TCP 
 net-analyzer/tcping 1.3.5-r1: Ping implementation that uses the TCP protocol
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
 net-analyzer/tcpreplay 4.3.2 999999: utilities for editing and replaying previously captured network traffic
-net-analyzer/tcpslice 1.2a_p3-r1: Extract and concatenate portions of pcap files
+net-analyzer/tcpslice 1.2a_p3-r1 1.2a_p3_p4: Extract and concatenate portions of pcap files
 net-analyzer/tcpstat 1.5-r3: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7_p4_p1 6.6.7_p5: A Tool for analyzing network packet dumps
 net-analyzer/tcptraceroute 1.5_beta7-r2: tcptraceroute is a traceroute implementation using TCP packets
@@ -17432,7 +17432,7 @@ sys-cluster/glusterfs 4.1.8 6.1 6.5 9999: GlusterFS is a powerful network/cluste
 sys-cluster/heartbeat 3.0.5-r3 3.0.6 3.0.6-r1: Heartbeat high availability cluster manager
 sys-cluster/heat 11.0.2 12.0.0 13.0.0 2018.2.9999 2019.1.9999 2019.2.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/hpl 2.0-r3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
-sys-cluster/hpx 0.9.99 1.0.0 1.1.0 1.2.0 1.2.1 9999: C++ runtime system for parallel and distributed applications
+sys-cluster/hpx 1.2.1 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 2.0.17 2.0.18 2.0.19: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3 9999: High-Performance Intra-Node MPI Communication
