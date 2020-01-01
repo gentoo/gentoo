@@ -5,7 +5,7 @@ EAPI=7
 
 inherit mount-boot
 
-MY_P=vanilla-kernel-${PV}-r1-1
+MY_P=vanilla-kernel-${PV}-1
 TCL_VER=10.1
 DESCRIPTION="Pre-built vanilla Linux kernel"
 HOMEPAGE="https://www.kernel.org/"

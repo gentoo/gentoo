@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -46,6 +46,7 @@ src_prepare() {
 multilib_src_configure() {
 	local emesonargs=(
 		-Duseroot=false
+		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
 	)
 	meson_src_configure
 }
