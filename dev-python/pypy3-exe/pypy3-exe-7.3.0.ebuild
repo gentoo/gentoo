@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}-src"
 
 LICENSE="MIT"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 +jit low-memory ncurses sandbox cpu_flags_x86_sse2"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
