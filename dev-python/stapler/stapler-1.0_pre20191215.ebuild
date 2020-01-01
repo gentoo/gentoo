@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1 vcs-snapshot
 
-# Commit Date: 26th Apr 2016
-COMMIT="7c153e6a8f52573ff886ebf0786b64e17699443a"
+# Commit Date: 15th December 2019
+COMMIT="875325103234b4a3ed96a4a5167ff78c291edbff"
 
 DESCRIPTION="Suite of tools for PDF files manipulation written in Python"
 HOMEPAGE="https://github.com/hellerbarde/stapler"
