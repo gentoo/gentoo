@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-inherit cmake-utils flag-o-matic systemd toolchain-funcs
+inherit cmake flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Greenbone vulnerability manager, previously named openvas-manager"
 HOMEPAGE="https://www.greenbone.net/en/"
@@ -48,7 +48,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	# QA-Fix | Use correct FHS/Gentoo policy paths for 8.0.1
 	sed -i -e "s*share/doc/gvm/html/*share/doc/gvmd-${PV}/html/*g" "$S"/doc/CMakeLists.txt || die
 	sed -i -e "s*/doc/gvm/*/doc/gvmd-${PV}/*g" "$S"/CMakeLists.txt || die
@@ -76,21 +76,21 @@ src_configure() {
 	# Add release hardening flags for 8.0.1
 	append-cflags -Wno-nonnull -Wformat -Wformat-security -D_FORTIFY_SOURCE=2 -fstack-protector
 	append-ldflags -Wl,-z,relro -Wl,-z,now
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	if use extras; then
-		cmake-utils_src_make -C "${BUILD_DIR}" doc
-		cmake-utils_src_make doc-full -C "${BUILD_DIR}" doc
+		cmake_build -C "${BUILD_DIR}" doc
+		cmake_build doc-full -C "${BUILD_DIR}" doc
 		HTML_DOCS=( "${BUILD_DIR}"/doc/generated/html/. )
 	fi
-	cmake-utils_src_make rebuild_cache
+	cmake_build rebuild_cache
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	dodir /etc/gvm
 	insinto /etc/gvm
