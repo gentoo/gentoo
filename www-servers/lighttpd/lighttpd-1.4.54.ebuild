@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	rrdtool?  ( net-analyzer/rrdtool )
 	sasl?     ( dev-libs/cyrus-sasl )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.7:0=[kerberos(-)?] )
+		!libressl? ( >=dev-libs/openssl-0.9.7:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
 	sqlite?	( dev-db/sqlite:3 )

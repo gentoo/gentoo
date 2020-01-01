@@ -4,7 +4,7 @@
 EAPI=7
 
 # pypy3 needs to be built using python 2
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 inherit check-reqs pax-utils python-any-r1 toolchain-funcs
 
 MY_P=pypy3.6-v${PV/_/}
@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}-src"
 LICENSE="MIT"
 SLOT="${PV}"
 KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 +jit low-memory ncurses sandbox cpu_flags_x86_sse2"
+IUSE="bzip2 +jit low-memory ncurses cpu_flags_x86_sse2"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
@@ -25,7 +25,8 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	bzip2? ( app-arch/bzip2:0= )
 	ncurses? ( sys-libs/ncurses:0= )
 	!dev-python/pypy3-exe-bin:${PV}"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	low-memory? ( dev-python/pypy )
 	!low-memory? (
 		|| (
@@ -59,16 +60,18 @@ pkg_setup() {
 
 		# unset to allow forcing pypy below :)
 		use low-memory && local EPYTHON=
-		if python_is_installed pypy && [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]]; then
+		if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] &&
+				{ has_version -b dev-python/pypy ||
+				has_version -b dev-python/pypy-bin; }
+		then
 			einfo "Using PyPy to perform the translation."
-			local EPYTHON=pypy
+			EPYTHON=pypy
 		else
 			einfo "Using ${EPYTHON:-python2} to perform the translation. Please note that upstream"
 			einfo "recommends using PyPy for that. If you wish to do so, please install"
 			einfo "dev-python/pypy and ensure that EPYTHON variable is unset."
+			python-any-r1_pkg_setup
 		fi
-
-		python-any-r1_pkg_setup
 	fi
 }
 
@@ -98,7 +101,6 @@ src_configure() {
 	local args=(
 		--no-shared
 		$(usex jit -Ojit -O2)
-		$(usex sandbox --sandbox '')
 
 		${jit_backend}
 
@@ -121,10 +123,10 @@ src_configure() {
 		)
 	done
 
-	local interp=( "${PYTHON}" )
+	local interp=( "${EPYTHON}" )
 	if use low-memory; then
 		interp=( env PYPY_GC_MAX_DELTA=200MB
-			"${PYTHON}" --jit loop_longevity=300 )
+			"${EPYTHON}" --jit loop_longevity=300 )
 	fi
 
 	# translate into the C sources
