@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -30,7 +30,7 @@ CDEPEND="
 	php?      ( dev-lang/php:*[cgi] )
 	rrdtool?  ( net-analyzer/rrdtool )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.7:0=[kerberos?] )
+		!libressl? ( >=dev-libs/openssl-0.9.7:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
 	webdav? (
