@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python logging made (stupidly) simple"
 HOMEPAGE="https://github.com/Delgan/loguru"
-SRC_URI="https://github.com/Delgan/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Delgan/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
