@@ -8014,7 +8014,7 @@ dev-python/jdcal 1.0 1.2 1.4: Julian dates from proleptic Gregorian and Julian c
 dev-python/jedi 0.10.2 0.11.1 0.12.0 0.12.1 0.15.1: Autocompletion library for Python
 dev-python/jeepney 0.3.1 0.4.1: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.7.2: Python module for doing approximate and phonetic matching of strings
-dev-python/jikanpy 3.4.1 3.4.2: Python wrapper for jikan.moe API.
+dev-python/jikanpy 3.4.2: Python wrapper for jikan.moe API.
 dev-python/jinja 2.10.1 2.10.3 2.10.3-r1: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
@@ -8126,7 +8126,7 @@ dev-python/matplotlib2tikz 0.6.18: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/matterhook 0.1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.2.1 0.6.1 0.6.1-r1: flake8 plugin: McCabe complexity checker
 dev-python/mecab-python 0.996: Python binding for MeCab
-dev-python/mechanize 0.2.5-r1 0.3.6: Stateful programmatic web browsing in Python
+dev-python/mechanize 0.2.5-r1 0.3.6 0.4.5: Stateful programmatic web browsing in Python
 dev-python/mediafile 0.2.0: Read and write audio files' tags in Python
 dev-python/medusa 0.5.4-r1: A framework for writing asynchronous long-running, high-performance network servers in Python
 dev-python/meld3 1.0.2-r2: meld3 is an HTML/XML templating engine
@@ -15350,7 +15350,7 @@ net-misc/putty 0.73 9999: A Free Telnet/SSH Client
 net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your command line
 net-misc/pyhoca-cli 0.6.0.1 0.6.1.1 0.6.1.2: X2Go command line client
 net-misc/pyhoca-gui 0.5.0.8 0.5.1.0 0.6.1.0: X2Go graphical client applet
-net-misc/python-x2go 0.6.0.2 0.6.1.1 0.6.1.2: X2Go client-side Python API
+net-misc/python-x2go 0.6.0.2 0.6.1.1 0.6.1.2 0.6.1.3: X2Go client-side Python API
 net-misc/pytvshows 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
 net-misc/qtm 1.3.19: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
