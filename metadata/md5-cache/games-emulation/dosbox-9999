@@ -1,13 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 DEFINED_PHASES=configure install postinst preinst prepare unpack
-DEPEND=alsa? ( media-libs/alsa-lib ) glide? ( media-libs/openglide ) opengl? ( virtual/glu virtual/opengl ) debug? ( sys-libs/ncurses:0 ) X? ( x11-libs/libX11 ) media-libs/libpng:0= media-libs/libsdl[joystick,opengl?,video,X] media-libs/sdl-net media-libs/sdl-sound sys-libs/zlib >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DEPEND=alsa? ( media-libs/alsa-lib ) glide? ( media-libs/openglide ) opengl? ( virtual/glu virtual/opengl ) debug? ( sys-libs/ncurses:0= ) X? ( x11-libs/libX11 ) media-libs/libpng:0= media-libs/libsdl[joystick,opengl?,video,X?] media-libs/sdl-net media-libs/sdl-sound sys-libs/zlib
 DESCRIPTION=DOS emulator
-EAPI=6
+EAPI=7
 HOMEPAGE=https://www.dosbox.com/
 IUSE=alsa +core-inline debug glide hardened opengl X
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=alsa? ( media-libs/alsa-lib ) glide? ( media-libs/openglide ) opengl? ( virtual/glu virtual/opengl ) debug? ( sys-libs/ncurses:0 ) X? ( x11-libs/libX11 ) media-libs/libpng:0= media-libs/libsdl[joystick,opengl?,video,X] media-libs/sdl-net media-libs/sdl-sound sys-libs/zlib
+RDEPEND=alsa? ( media-libs/alsa-lib ) glide? ( media-libs/openglide ) opengl? ( virtual/glu virtual/opengl ) debug? ( sys-libs/ncurses:0= ) X? ( x11-libs/libX11 ) media-libs/libpng:0= media-libs/libsdl[joystick,opengl?,video,X?] media-libs/sdl-net media-libs/sdl-sound sys-libs/zlib
 SLOT=0
 SRC_URI=glide? ( https://raw.githubusercontent.com/voyageur/openglide/841e1071597b64ead14dd08c25a03206b2d1d1b6/platform/dosbox/dosbox_glide.diff -> dosbox_glide-841e1071597b64ead14dd08c25a03206b2d1d1b6.diff )
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	subversion	76e4ab6ae9cda8407c34d0b9a086f81c	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=3e677e592ccdb7d881dd39b9e49086a6
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	subversion	76e4ab6ae9cda8407c34d0b9a086f81c	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=c9fe9afbda61a670b17039f448ac7081

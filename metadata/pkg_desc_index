@@ -1642,7 +1642,7 @@ app-eselect/eselect-rails 0.23 0.24: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.7: Manages renpy symlink
 app-eselect/eselect-repository 7: Manage repos.conf via eselect
 app-eselect/eselect-ruby 20170723 20190121 20191222: Manages multiple Ruby versions
-app-eselect/eselect-rust 20190311: Eselect module for management of multiple Rust versions
+app-eselect/eselect-rust 20190311 20200101: Eselect module for management of multiple Rust versions
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
 app-eselect/eselect-sh 0.4-r2: Manages the /bin/sh (POSIX shell) symlink
 app-eselect/eselect-sndpeek 1.0.1: Manages the /usr/bin/sndpeek symlink
@@ -11288,7 +11288,7 @@ games-emulation/caps 20071115: Support library for accessing and using C.A.P.S. 
 games-emulation/desmume 0.9.11-r2: Nintendo DS emulator
 games-emulation/dgen-sdl 1.33-r1: A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator
 games-emulation/dolphin 5.0 9999: Gamecube and Wii game emulator
-games-emulation/dosbox 0.74_p20160629 0.74_p20160629-r3 9999: DOS emulator
+games-emulation/dosbox 0.74_p20160629 0.74.3 0.75_pre4302 9999: DOS emulator
 games-emulation/emutos 0.9.12: Single-user single-tasking operating system for 32-bit Atari computer emulators
 games-emulation/fakenes 0.5.8-r3: Portable, Open Source NES emulator which is written mostly in C
 games-emulation/fbzx 3.0.0-r1: Full Screen Sinclair Spectrum emulator
