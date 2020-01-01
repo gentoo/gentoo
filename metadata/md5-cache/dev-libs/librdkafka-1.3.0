@@ -4,10 +4,10 @@ DESCRIPTION=Apache Kafka C/C++ client library
 EAPI=7
 HOMEPAGE=https://github.com/edenhill/librdkafka
 IUSE=lz4 sasl ssl static-libs zstd
-KEYWORDS=amd64 ~arm ~arm64 ~hppa ~ppc ~sparc x86
+KEYWORDS=amd64 arm ~arm64 ~hppa ~ppc ~sparc x86
 LICENSE=BSD-2
 RDEPEND=!static-libs? ( lz4? ( app-arch/lz4:= ) sasl? ( dev-libs/cyrus-sasl:= ) ssl? ( dev-libs/openssl:0= ) zstd? ( app-arch/zstd:= ) sys-libs/zlib:= )
 SLOT=0/1
 SRC_URI=https://github.com/edenhill/librdkafka/archive/v1.3.0.tar.gz -> librdkafka-1.3.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=9e5caff409c0ab246c27a4b94bab39b3
+_md5_=bcd24319e7f397a0a37979684269c37d
