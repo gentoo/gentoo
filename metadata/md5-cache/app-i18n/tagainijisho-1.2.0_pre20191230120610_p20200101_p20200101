@@ -1,0 +1,14 @@
+BDEPEND=dev-qt/linguist-tools:5 dev-util/ninja >=dev-util/cmake-3.9.6
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=>=dev-db/sqlite-3.12:3 dev-qt/qtcore:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5
+DESCRIPTION=Open-source Japanese dictionary and kanji lookup tool
+EAPI=7
+HOMEPAGE=https://www.tagaini.net/ https://github.com/Gnurou/tagainijisho
+IUSE=l10n_ar l10n_cs l10n_de l10n_es l10n_fa l10n_fi l10n_fr l10n_hu l10n_id l10n_it l10n_nb l10n_nl l10n_pl l10n_pt l10n_ru l10n_sv l10n_th l10n_tr l10n_uk l10n_vi l10n_zh
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+ public-domain
+RDEPEND=>=dev-db/sqlite-3.12:3 dev-qt/qtcore:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5
+SLOT=0
+SRC_URI=https://github.com/Gnurou/tagainijisho/archive/1257df3934415ed6f30990c34b725d89b2ffbb8b.tar.gz -> tagainijisho-1.2.0_pre20191230120610.tar.gz https://home.apache.org/~arfrever/distfiles/JMdict-2020-01-01.gz https://home.apache.org/~arfrever/distfiles/kanjidic2-2020-01-01.xml.gz https://github.com/KanjiVG/kanjivg/releases/download/r20160426/kanjivg-20160426.xml.gz
+_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=0778027bb704b628a75fbf1e9964c22b

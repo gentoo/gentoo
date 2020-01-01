@@ -701,7 +701,7 @@ app-crypt/acmebot 2.3.0-r1 9999: Certificate manager bot using ACME protocol
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.4e: Encrypts data from stdin to stdout
-app-crypt/argon2 20171227-r1 20190702: Password hashing software that won the Password Hashing Competition (PHC)
+app-crypt/argon2 20190702: Password hashing software that won the Password Hashing Competition (PHC)
 app-crypt/asedriveiiie-serial 3.5: ASEDriveIIIe Serial Card Reader
 app-crypt/asedriveiiie-usb 3.5: ASEDriveIIIe USB Card Reader
 app-crypt/asekey 3.7: ASEKey USB SIM Card Reader
@@ -1788,7 +1788,7 @@ app-i18n/skkserv 9.6-r3: Dictionary server for the SKK Japanese-input software
 app-i18n/skktools 1.3.3_p20170305 1.3.4: SKK utilities to manage dictionaries
 app-i18n/sunpinyin 2.0.4_pre20130108-r2 3.0.0_rc1: A Statistical Language Model based Chinese input method library
 app-i18n/sunpinyin-data 20130220 20140820: Data sets for Sunpinyin
-app-i18n/tagainijisho 1.2.0_pre20180610092832 1.2.0_pre20190507124027_p20191001_p20191001 9999: Open-source Japanese dictionary and kanji lookup tool
+app-i18n/tagainijisho 1.2.0_pre20180610092832 1.2.0_pre20190507124027_p20191001_p20191001 1.2.0_pre20191230120610_p20200101_p20200101 9999: Open-source Japanese dictionary and kanji lookup tool
 app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
 app-i18n/tomoe 0.6.0-r4: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r4: Tomoe GTK+ interface widget library
@@ -10581,7 +10581,7 @@ dev-util/byacc 20170201 20180609 20190617 20191125: the best variant of the Yacc
 dev-util/cargo-ebuild 0.2.0: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/cargo-tree 0.23.0 0.24.0 0.25.0 0.26.0 0.27.0 0.28.0: Cargo subcommand that visualizes crate dependency graph in a tree-like format
 dev-util/catalyst 3.0.5 3.0.6 3.0.7 3.0.8 9999: Release metatool used for creating releases based on Gentoo Linux
-dev-util/catfish 1.4.10 1.4.11: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
+dev-util/catfish 1.4.10 1.4.11 1.4.12: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 0.7.20 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.9.1 0.10.1 0.11.1: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.2 3.7.4 3.7.5 3.7.6: fast compiler cache
@@ -17752,8 +17752,8 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p201909
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4.164_p176 4.9.115_p93 4.9.146_p125 4.14.71_p44 4.14.78_p47 4.14.87_p49 4.16.18_p12 4.18.16_p9 4.19.5_p4 4.19.10_p8: Full Linux 4.19 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
-sys-kernel/vanilla-kernel 5.4.6-r1: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-kernel-bin 5.4.6: Pre-built vanilla Linux kernel
+sys-kernel/vanilla-kernel 5.4.6-r1 5.4.7: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel-bin 5.4.6 5.4.7: Pre-built vanilla Linux kernel
 sys-kernel/vanilla-sources 3.16.80 4.4.207 4.9.207 4.14.161 4.19.92 5.4.7: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
