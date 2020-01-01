@@ -2607,7 +2607,7 @@ app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_pre7: Namazu is a full-text search engine
 app-text/nfoview 1.26 1.27 9999: Simple viewer for NFO files, which are ASCII art in the CP437 codepage
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
-app-text/ocrad 0.22 0.23 0.24 0.25 0.26: GNU Ocrad is an OCR (Optical Character Recognition) program
+app-text/ocrad 0.26 0.27: GNU Ocrad is an OCR (Optical Character Recognition) program
 app-text/odt2txt 0.5: A simple converter from OpenDocument Text to plain text
 app-text/openjade 1.3.2-r9: Jade is an implementation of DSSSL for formatting SGML and XML documents
 app-text/openlp 2.4.6: Free church presentation software
@@ -16363,6 +16363,7 @@ sci-libs/gdal 2.4.1-r1 2.4.1-r2 2.4.3: Translator library for raster geospatial 
 sci-libs/geos 3.7.2 3.8.0-r1: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20131206-r1: Gerris Flow Solver
 sci-libs/getdata 0.9.0-r1: Reference implementation of the Dirfile, format for time-ordered binary data
+sci-libs/givaro 4.1.1: C++ library for arithmetic and algebraic computations
 sci-libs/gmsh 4.4.1: A three-dimensional finite element mesh generator
 sci-libs/gsl 1.16 2.4 2.5 2.5-r1: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library

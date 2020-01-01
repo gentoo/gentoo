@@ -1,0 +1,14 @@
+BDEPEND=doc? ( app-doc/doxygen[dot,latex] )
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/gmp:0[cxx]
+DESCRIPTION=C++ library for arithmetic and algebraic computations
+EAPI=7
+HOMEPAGE=https://casys.gricad-pages.univ-grenoble-alpes.fr/givaro/
+IUSE=cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 doc static-libs test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=CeCILL-B
+RDEPEND=dev-libs/gmp:0[cxx]
+RESTRICT=!test? ( test )
+SLOT=0/9
+SRC_URI=https://github.com/linbox-team/givaro/releases/download/v4.1.1/givaro-4.1.1.tar.gz
+_md5_=fb9cd75e30672f297ec525ff8c97afda
