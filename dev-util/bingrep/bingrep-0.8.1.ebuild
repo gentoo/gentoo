@@ -94,7 +94,6 @@ wincolor-1.0.2
 
 inherit cargo
 
-
 DESCRIPTION="Binary file analysis tool"
 HOMEPAGE="https://github.com/m4b/bingrep"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
