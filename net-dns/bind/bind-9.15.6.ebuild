@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Re dlz/mysql and threads, needs to be verified..
@@ -50,6 +50,7 @@ REQUIRED_USE="
 	mysql? ( dlz )
 	odbc? ( dlz )
 	ldap? ( dlz )
+	dnsrps? ( dlz )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 # sdb-ldap? ( dlz )
 
