@@ -21,6 +21,7 @@ acct-group/dovecot 0: System group: dovecot
 acct-group/dovenull 0: System group: dovenull
 acct-group/elasticsearch 0: Elasticsearch program group
 acct-group/epmd 0: Group for Erlang Portmapper Daemon
+acct-group/fetchmail 0: Group for net-mail/fetchmail
 acct-group/fhem 0: A group for the FHEM perl server for house automation
 acct-group/ftp 0: File Transfer Protocol server user
 acct-group/gamestat 0: Group for shared high-score and game state files
@@ -132,6 +133,7 @@ acct-user/dovecot 0: user for dovecot daemon
 acct-user/dovenull 0: user for dovecot daemon
 acct-user/elasticsearch 0: Elasticsearch program user
 acct-user/epmd 0: User for Erlang Protmapper Daemon
+acct-user/fetchmail 0: User for net-mail/fetchmail
 acct-user/fhem 0: A user for the FHEM perl server for house automation
 acct-user/ftp 0: File Transfer Protocol server user
 acct-user/geneweb 0: user id for geneweb daemon
@@ -13774,7 +13776,7 @@ media-sound/cdstatus 0.97.03: Tool for diagnosing cdrom drive and digital data (
 media-sound/cdtool 2.1.8-r1: collection of command-line utilities to control cdrom devices
 media-sound/chordii 4.5.1 4.5.3: A guitar music typesetter
 media-sound/chuck 1.4.0.0: Strongly-timed, concurrent, and on-the-fly audio programming language
-media-sound/clementine 1.3.1_p20190127 1.3.1_p20190609 1.3.1_p20191004 9999: Modern music player and library organizer based on Amarok 1.4 and Qt
+media-sound/clementine 1.3.1_p20190127 1.3.1_p20191004 1.3.92 9999: Modern music player and library organizer based on Amarok 1.4 and Qt
 media-sound/cmix 1.6: command line audio mixer
 media-sound/cmus 2.8.0 9999: Ncurses based music player with plugin support for many formats
 media-sound/cmusfm 0.2.5 0.3.1 0.3.3: Last.fm scrobbler for cmus music player
@@ -15047,7 +15049,7 @@ net-mail/email 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.9 2.0: fetch, filter and deliver mail
-net-mail/fetchmail 6.3.26-r4 6.4.1: the legendary remote-mail retrieval and forwarding utility
+net-mail/fetchmail 6.3.26-r4 6.4.1 6.4.1-r1: the legendary remote-mail retrieval and forwarding utility
 net-mail/getmail 5.13 5.14: A mail retriever with reliable Maildir and mbox delivery
 net-mail/gnubiff 2.2.17-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
