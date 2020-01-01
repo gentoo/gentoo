@@ -1,0 +1,15 @@
+BDEPEND=test? ( dev-python/pytest[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/immutables[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/setuptools[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=Backport of Python 3.7 contextvars module (PEP 567) for Python 3.6
+EAPI=7
+HOMEPAGE=https://github.com/MagicStack
+IUSE=test python_targets_python3_6
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=dev-python/immutables[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+REQUIRED_USE=|| ( python_targets_python3_6 )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/MagicStack/contextvars/archive/v2.4.tar.gz -> contextvars-2.4.tar.gz
+_eclasses_=distutils-r1	48c123e514b2cd2128d36eb3bbb9a6fa	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=dd78d28ce891516f33026ad311888e1e
