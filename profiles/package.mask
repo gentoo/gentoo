@@ -633,25 +633,6 @@ x11-misc/magick-rotation
 dev-java/balloontip
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unmaintained Rust packages with incorrect license information.
-# Removal in 30 days.  Bug #694414.
-app-misc/rq
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Multiple unmaintained Go packages with incorrect license information.
-# No reverse dependencies.
-#
-# app-admin/linux-bench: #699274
-# dev-go/glide: #694384
-# dev-util/drone{,-cli}: #695240  // TODO: promu?
-# net-misc/istioctl: #695288
-#
-# Removal in 30 days.
-app-admin/linux-bench
-dev-go/glide
-net-misc/istioctl
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
 # Added in 2013 and not updated since.  Unmaintained upstream since
 # inception.  Never had any keywords.
 # Removal in 30 days.  Bug #701462.
