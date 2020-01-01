@@ -11,7 +11,7 @@ SRC_URI="https://github.com/fribidi/fribidi/releases/download/v${PV}/${P}.tar.bz
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="alpha s390"
+KEYWORDS="alpha arm s390"
 IUSE="static-libs"
 
 RDEPEND=""
