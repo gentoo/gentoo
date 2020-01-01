@@ -217,8 +217,8 @@ acct-user/x2gouser 0: User for net-misc/x2goserver
 acct-user/xrootd 0: User for the XRootD server
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
-app-accessibility/at-spi2-atk 2.26.2 2.30.1 2.32.0 2.34.0: Gtk module for bridging AT-SPI to Atk
-app-accessibility/at-spi2-core 2.26.2 2.30.1 2.32.1 2.34.0: D-Bus accessibility specifications and registration daemon
+app-accessibility/at-spi2-atk 2.26.2 2.32.0 2.34.0: Gtk module for bridging AT-SPI to Atk
+app-accessibility/at-spi2-core 2.26.2 2.32.1 2.34.0: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1 6.0-r1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.21: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.7.4: Combination editor, browser, and mail client that is 100% text based
@@ -475,7 +475,7 @@ app-arch/engrampa 1.22.1-r1: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r2 0.98-r3: A jar program written in C
 app-arch/file-roller 3.32.2-r1 3.32.3: Archive manager for GNOME
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
-app-arch/gcab 0.8 1.2 1.3: Library and tool for working with Microsoft Cabinet (CAB) files
+app-arch/gcab 0.8 1.3: Library and tool for working with Microsoft Cabinet (CAB) files
 app-arch/gnome-autoar 0.2.3 0.2.4: Automatic archives creating and extracting library
 app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them back together
 app-arch/gzip 1.9 1.10: Standard GNU compressor
@@ -2733,7 +2733,7 @@ app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edi
 app-text/xmlto 0.0.28-r1: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8 0.4.8-r1 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/xpdf 4.02: The PDF viewer and tools
-app-text/yelp-tools 3.18.0 3.28.0 3.32.2: Collection of tools for building and converting documentation
+app-text/yelp-tools 3.18.0 3.32.2: Collection of tools for building and converting documentation
 app-text/yodl 4.02.01 4.02.02: Your Own Document Language: a pre-document language and tools to process it
 app-text/zathura 0.4.3 0.4.4 9999: A highly customizable and functional document viewer
 app-text/zathura-cb 0.1.8 9999: Comic book plug-in for zathura with 7zip, rar, tar and zip support
@@ -3101,7 +3101,7 @@ dev-cpp/ctemplate 2.3-r1: A simple but powerful template language for C++
 dev-cpp/eigen 3.3.7: C++ template library for linear algebra
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.2.0 2.2.1 2.2.1-r1 9999: Google's C++ argument parsing library
-dev-cpp/glibmm 2.56.1 2.58.1 2.60.1: C++ interface for glib2
+dev-cpp/glibmm 2.56.1 2.60.1: C++ interface for glib2
 dev-cpp/glog 0.3.4-r1 0.4.0: Google's C++ logging library
 dev-cpp/gstreamermm 1.10.0: C++ interface for GStreamer
 dev-cpp/gtest 1.8.0 1.8.0-r1 1.8.1 1.8.1-r1 1.9.0_pre20190607 1.10.0 9999: Google C++ Testing Framework
@@ -4728,7 +4728,7 @@ dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9: Tool Command Language
 dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolog
 dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1: Tk Widget Set
 dev-lang/tuprolog 2.9.2 3.0.1 3.1.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
-dev-lang/vala 0.36.18 0.36.20 0.40.14 0.40.16 0.40.18 0.42.7 0.44.9 0.44.11 0.46.3 0.46.5: Compiler for the GObject type system
+dev-lang/vala 0.36.18 0.36.20 0.40.14 0.40.16 0.40.18 0.42.7 0.44.9 0.44.11 0.46.5: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.6.0 3.6.0-r1 3.7.0-r1: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3-r1: YAP is a high-performance Prolog compiler
@@ -4750,7 +4750,7 @@ dev-libs/apr-util 1.6.1-r3: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-libs/atcore 1.0.0: API to manage the serial connection between the computer and 3D Printers
 dev-libs/atf 0.21-r2: Libraries to write tests in C, C++ and shell
-dev-libs/atk 2.28.1 2.30.0 2.32.0 2.34.1: GTK+ & GNOME Accessibility Toolkit
+dev-libs/atk 2.28.1 2.32.0 2.34.1: GTK+ & GNOME Accessibility Toolkit
 dev-libs/aws-c-common 0.4.11: Core c99 package for AWS SDK for C
 dev-libs/aws-c-event-stream 0.1.3: C99 implementation of the vnd.amazon.eventstream content-type
 dev-libs/aws-checksums 0.1.3: Cross-Platform HW accelerated CRC32c and CRC32 with software fallbacks
@@ -4829,7 +4829,7 @@ dev-libs/geoip 1.6.9-r1 1.6.10 1.6.11 1.6.12: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1 1.2: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.1 0.3.2 0.3.3 9999: UI library that focuses on simplicity and minimalism
-dev-libs/gjs 1.48.7 1.54.3 1.56.2: Javascript bindings for GNOME
+dev-libs/gjs 1.48.7 1.56.2: Javascript bindings for GNOME
 dev-libs/glib 2.58.3-r1 2.60.7 2.60.7-r1: The GLib library of C routines
 dev-libs/gmime 2.6.23-r1 3.2.4 3.2.5: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.1.2 6.1.2-r1: Library for arbitrary-precision arithmetic on different type of numbers
@@ -5079,7 +5079,7 @@ dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.4.0-r1 1.5.2-r1: A library which can read Excel (xls) files
-dev-libs/libxml2 2.9.9 2.9.9-r2: XML C parser and toolkit
+dev-libs/libxml2 2.9.9 2.9.9-r2 2.9.9-r3: XML C parser and toolkit
 dev-libs/libxmlb 0.1.12 0.1.13 0.1.14: Library to help create and query binary XML blobs
 dev-libs/libxslt 1.1.33-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2: YAML 1.1 parser and emitter written in C
@@ -5211,7 +5211,7 @@ dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library fo
 dev-libs/utfcpp 2.3.4 3.1 9999: UTF-8 C++ library
 dev-libs/uthash 2.0.2: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
-dev-libs/vala-common 0.40.14 0.42.7 0.44.9 0.44.11 0.46.3 0.46.5: Build infrastructure for packages that use Vala
+dev-libs/vala-common 0.40.14 0.44.9 0.44.11 0.46.5: Build infrastructure for packages that use Vala
 dev-libs/vc 1.3.0 1.3.3 1.4.1: SIMD Vector Class Library for C++
 dev-libs/voikko-fi 2.3: Finnish dictionary for libvoikko based spell checkers (vvfst format)
 dev-libs/volume_key 0.3.11 0.3.12: Library for manipulating and storing storage volume encryption keys
@@ -7948,7 +7948,7 @@ dev-python/hvac 0.2.17: Python client for HashiCorp Vault
 dev-python/hyper-h2 2.5.1 3.0.1 3.1.1: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.1.0 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 17.1.1 17.3.1 18.0.0 19.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 4.15.0 4.47.5 4.50.8 4.55.1 4.55.2 4.55.4: A library for property based testing
+dev-python/hypothesis 4.15.0 4.47.5 4.50.8 4.55.4 4.57.1: A library for property based testing
 dev-python/icalendar 3.9.2 3.11.7 3.11.7-r1 4.0.3: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.5 2.6 2.7 2.8: Internationalized Domain Names in Applications (IDNA)
@@ -8923,7 +8923,7 @@ dev-python/serpent 1.19 1.28: A simple serialization library based on ast.litera
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 14.0.0 16.0.0 17.0.0 17.0.0-r1 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.10 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 40.6.3 41.5.1 42.0.2 9999: Collection of extensions to Distutils
+dev-python/setuptools 40.6.3 41.5.1 42.0.2 43.0.0 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.15.6-r1 1.15.7 3.2.0 3.3.1: package to manage versions by scm tags via setuptools
@@ -10685,13 +10685,13 @@ dev-util/ftjam 2.5.3_rc2-r2: A 100% compatible, enhanced implementation of the m
 dev-util/ftnchek 3.3.1-r2: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 3.3 4.1 4.2: A Python script for summarizing gcov data
-dev-util/gdbus-codegen 2.58.3 2.60.6 2.60.7: GDBus code and documentation generator
+dev-util/gdbus-codegen 2.58.3 2.60.7: GDBus code and documentation generator
 dev-util/geany 1.30.1 1.34.1 1.35 1.36 9999: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.30 1.34 1.35 1.36: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.3.2 1.4.0 1.5.0 1.6.0 9999: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/glade 3.20.4 3.22.1: A user interface designer for GTK+ and GNOME
-dev-util/glib-utils 2.58.3 2.60.6 2.60.7: Build utilities for GLib using projects
+dev-util/glib-utils 2.58.3 2.60.7: Build utilities for GLib using projects
 dev-util/global 6.3.1 6.5.7 6.6.4: tag system to find an object location in various sources
 dev-util/glslang 7.11.3114_pre20190415-r1 7.12.3353_pre20191027-r1 7.12.3353_pre20191027-r2 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1463 0.1544 0.1616: GN is a meta-build system that generates build files for Ninja
@@ -10707,7 +10707,7 @@ dev-util/gquilt 0.25-r1: A Python/GTK wrapper for quilt
 dev-util/gtk-builder-convert 2.24.32: Converts Glade files to GtkBuilder XML format
 dev-util/gtk-doc 1.25-r1: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.25-r1: Automake files from gtk-doc
-dev-util/gtk-update-icon-cache 3.24.3 3.24.8 3.24.11 3.24.13: GTK update icon cache
+dev-util/gtk-update-icon-cache 3.24.3 3.24.11 3.24.13: GTK update icon cache
 dev-util/gyp 20170904022846 99999999999999: GYP (Generate Your Projects) meta-build system
 dev-util/heaptrack 9999: Fast heap memory profiler
 dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory models
@@ -11824,7 +11824,7 @@ games-util/xgame 1.7.1-r1: Run games in a separate X session
 games-util/xgame-gtk2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
-gnome-base/dconf 0.26.1 0.30.1 0.32.0-r1 0.32.0-r2: Simple low-level configuration system
+gnome-base/dconf 0.26.1 0.32.0-r2: Simple low-level configuration system
 gnome-base/dconf-editor 3.34.2: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.32.0: GNOME Display Manager for managing graphical display servers and user logins
@@ -11846,7 +11846,7 @@ gnome-base/gnome-session 3.32.0: Gnome session manager
 gnome-base/gnome-settings-daemon 3.32.1: Gnome Settings Daemon
 gnome-base/gnome-shell 3.26.2-r4 3.32.2: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
-gnome-base/gsettings-desktop-schemas 3.24.1 3.28.1 3.32.0: Collection of GSettings schemas for GNOME desktop
+gnome-base/gsettings-desktop-schemas 3.24.1 3.32.0: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.32.2 1.38.3 1.40.2: Virtual filesystem implementation for GIO
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
 gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
@@ -11922,7 +11922,7 @@ gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and dec
 gnome-extra/sushi 3.32.1: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.32.2: Help browser for GNOME
-gnome-extra/yelp-xsl 3.20.1 3.30.1 3.32.1: XSL stylesheets for yelp
+gnome-extra/yelp-xsl 3.20.1 3.32.1: XSL stylesheets for yelp
 gnome-extra/zenity 3.30.0 3.32.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.8: Addresses is a Apple Addressbook work alike (standalone and for GNUMail)
@@ -13973,7 +13973,7 @@ media-sound/potamus 16: A lightweight audio player with a simple interface and a
 media-sound/pragha 1.3.4 1.3.99.1: A lightweight music player (for Xfce)
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
-media-sound/pulseaudio 12.2-r1 12.2-r2 13.0: A networked sound server with an advanced plugin system
+media-sound/pulseaudio 12.2-r1 13.0: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.66: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.3 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth (alongside SBC and native+ofono headset)
 media-sound/pulseeffects 4.6.8 4.6.9 4.7.0 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
@@ -14280,7 +14280,7 @@ media-video/x264-encoder 0.0.20190214 0.0.20190903 9999: A free commandline enco
 media-video/xine-ui 0.99.10: Xine movie player
 media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
-media-video/yle-dl 20191022-r1: Download media files from Yle Areena
+media-video/yle-dl 20191022-r1 20191231: Download media files from Yle Areena
 net-analyzer/2ping 4.2 4.3: A bi-directional ping utility
 net-analyzer/alive 2.0.2-r1: a periodic ping program
 net-analyzer/amap 5.4 5.4-r1: A network scanning tool for pentesters
@@ -14957,9 +14957,9 @@ net-libs/libsearpc 3.0.8-r3 3.2.0: A simple C language RPC framework
 net-libs/libsignal-protocol-c 2.3.2 9999: Signal Protocol C Library
 net-libs/libsignon-glib 2.1: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
-net-libs/libsoup 2.58.2 2.62.3 2.64.2 2.66.4: HTTP client/server library for GNOME
+net-libs/libsoup 2.58.2 2.62.3 2.66.4: HTTP client/server library for GNOME
 net-libs/libsrsirc 0.0.14-r1: A lightweight, cross-platform IRC library
-net-libs/libsrtp 1.6.0 1.6.0-r1 2.2.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
+net-libs/libsrtp 1.6.0-r1 2.2.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.9.0 0.9.3 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.9.0_p20190913 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
@@ -15406,7 +15406,7 @@ net-misc/stargazer 2.408-r1: Billing system for small home and office networks
 net-misc/streamlink 0.14.2-r1 1.0.0 1.1.1 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/stunnel 5.50-r1 5.55 5.56-r1: TLS/SSL - Port Wrapper
-net-misc/stuntman 1.2.7 1.2.9 1.2.15: Open source implementation of the STUN protocol
+net-misc/stuntman 1.2.15: Open source implementation of the STUN protocol
 net-misc/suite3270 3.5_p10 3.5_p12 3.6_p4 3.6_p8: Complete 3270 access package
 net-misc/switzerland 0.1.0: Network Testing Tool
 net-misc/taptap 1.0: A program to link two /dev/net/tun to form virtual ethernet
@@ -17150,7 +17150,7 @@ sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags
 sys-apps/paxctld 1.2.3: PaX flags maintenance daemon
 sys-apps/pciutils 3.5.6-r1 3.6.1 3.6.2-r1: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8-r1: PCMCIA userspace utilities for Linux
-sys-apps/pcsc-lite 1.8.24 1.8.25 1.8.25-r1: PC/SC Architecture smartcard middleware library
+sys-apps/pcsc-lite 1.8.24 1.8.25-r1: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.3: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
@@ -18473,7 +18473,7 @@ x11-libs/flowcanvas 0.7.1-r1 0.7.1-r2: Gtkmm/Gnomecanvasmm widget for boxes and 
 x11-libs/fltk 1.3.3-r3 1.3.4 1.3.5-r4 1.3.9999 1.4.9999: C++ user interface toolkit for X and OpenGL
 x11-libs/fox 1.6.57-r1 1.7.67: C++ Toolkit for developing Graphical User Interfaces easily and effectively
 x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
-x11-libs/gdk-pixbuf 2.36.12 2.38.1-r1 2.38.2-r1 2.40.0: Image loading library for GTK+
+x11-libs/gdk-pixbuf 2.36.12 2.40.0: Image loading library for GTK+
 x11-libs/gdk-pixbuf-loader-webp 20160328234507: WebP Image format GdkPixbuf loader
 x11-libs/gl2ps 1.3.9 1.4.0: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
@@ -18573,7 +18573,7 @@ x11-libs/snorenotify 0.7.0-r1: Multi platform Qt notification framework
 x11-libs/spread-sheet-widget 0.3: GNU Spread Sheet Widget
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.0-r3 1.21: Touchscreen Access Library
-x11-libs/vte 0.28.2-r208 0.48.4 0.54.4 0.56.3 0.56.4: Library providing a virtual terminal emulator widget
+x11-libs/vte 0.28.2-r208 0.48.4 0.56.4: Library providing a virtual terminal emulator widget
 x11-libs/wxGTK 3.0.3 3.0.3-r300 3.0.4 3.0.4-r1 3.0.4-r2 3.0.4-r300 3.0.4-r301 3.0.4-r302: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xapps 1.0.4 1.4.2: Cross-desktop libraries and common resources
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
@@ -19085,7 +19085,7 @@ x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/QGnomePlatform 0.5 0.6.0: A Qt Platform Theme aimed to accommodate GNOME settings
 x11-themes/adapta-gtk-theme 3.95.0.11: An adaptive Gtk+ theme based on Material Design Guidelines
-x11-themes/adwaita-icon-theme 3.24.0 3.26.1 3.30.1 3.32.0: GNOME default icon theme
+x11-themes/adwaita-icon-theme 3.24.0 3.32.0: GNOME default icon theme
 x11-themes/adwaita-qt 1.1.0 1.1.1: A style to bend Qt applications to look like they belong into GNOME Shell
 x11-themes/arc-icon-theme 20161122: Vertex icon theme
 x11-themes/arc-theme 20190330 20190917: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
