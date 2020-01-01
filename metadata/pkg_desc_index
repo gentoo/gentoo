@@ -154,7 +154,7 @@ acct-user/minecraft 0: A user for the Minecraft server
 acct-user/minetest 0: A user for the Minetest server
 acct-user/mongodb 0: MongoDB program user
 acct-user/mosquitto 0: A user for the mosquitto MQTT broker
-acct-user/mpd 0: An user for music player daemon (mpd)
+acct-user/mpd 0: A user for music player daemon (mpd)
 acct-user/msmtpd 0: user for msmtp daemon
 acct-user/munin 0: user for munin
 acct-user/munin-async 0: user for munin async proxy node
@@ -2137,7 +2137,7 @@ app-misc/pystopwatch 2012.12.24.1-r1: clock and two countdown functions that can
 app-misc/qcma 0.4.1 0.4.2_pre20181227 9999: Cross-platform content manager assistant for the PS Vita
 app-misc/qlcplus 4.11.1 4.12.2 5.0.0_alpha3: A software to control DMX or analog lighting systems
 app-misc/radeontop 1.2 9999: Utility to view Radeon GPU utilization
-app-misc/ranger 1.9.2 9999: A vim-inspired file manager for the console
+app-misc/ranger 1.9.2 1.9.3 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
 app-misc/rbutil 1.4.1: Rockbox open source firmware manager for music players
 app-misc/realpath 1.17 1.18: Return the canonicalized absolute pathname
@@ -2307,7 +2307,7 @@ app-officeext/ct2n 1.5.0: Extension for converting text to numbers
 app-officeext/dmaths 3.4.9.0-r1: Mathematics Formula Editor Extension
 app-officeext/languagetool 3.4 3.5: Style and Grammar Checker for libreoffice
 app-officeext/ooo2gd 3.0.0-r1: Extension for export to Google docs, zoho and WebDAV
-app-officeext/ooofbtools 2.55: Open/LibreOffice extension for the FictionBook2 format with validation
+app-officeext/ooofbtools 2.55 2.56: Open/LibreOffice extension for the FictionBook2 format with validation
 app-officeext/sun-templates 1.0.0-r1: Collection of sun templates for various countries
 app-officeext/texmaths 0.48: LaTeX Equation Editor for LibreOffice
 app-pda/barry 0.18.3: Sync, backup, program management, and charging for BlackBerry devices
@@ -2573,7 +2573,7 @@ app-text/libetonyek 0.1.9 9999: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.5: Library implementing N-gram-based text categorization
 app-text/libgepub 0.6.0: GObject based library for handling and rendering epub documents
 app-text/libgxps 0.3.0 0.3.1: Library for handling and rendering XPS documents
-app-text/liblangtag 0.6.2: An interface library to access tags for identifying languages
+app-text/liblangtag 0.6.2 0.6.3: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.4 9999: Library parsing Microsoft Publisher documents
 app-text/libmwaw 0.3.15 9999: Library parsing many pre-OSX MAC text formats
 app-text/libnumbertext 1.0.5: Number to number name and money text conversion libraries
@@ -15888,7 +15888,7 @@ sci-astronomy/sextractor 2.19.5 2.19.5-r1: Extract catalogs of sources from astr
 sci-astronomy/skycat 3.1.2-r2 3.1.3: ESO astronomical image visualizer with catalog access
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
 sci-astronomy/sofa_c 20150209a 20160503c 20170420: Library for algorithms for models in fundamental astronomy
-sci-astronomy/stellarium 0.19.0 0.19.1 0.19.2: 3D photo-realistic skies in real time
+sci-astronomy/stellarium 0.19.0 0.19.1 0.19.2 0.19.3: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
 sci-astronomy/swarp 2.38.0: Resample and coadd astronomical FITS images
