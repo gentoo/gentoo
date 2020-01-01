@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,9 +17,6 @@ LICENSE="MIT"
 KEYWORDS="alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
-	!!<=x11-misc/fbdesk-1.2.1
-	!!<=x11-misc/fluxconf-0.9.9
-	!!<x11-themes/fluxbox-styles-fluxmod-20040809-r1
 	bidi? ( >=dev-libs/fribidi-0.19.2 )
 	imlib? ( >=media-libs/imlib2-1.2.0[X] )
 	truetype? ( media-libs/freetype )
