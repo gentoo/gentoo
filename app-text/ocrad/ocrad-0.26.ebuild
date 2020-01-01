@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 inherit unpacker toolchain-funcs
 
 DESCRIPTION="GNU Ocrad is an OCR (Optical Character Recognition) program"
@@ -10,10 +11,8 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.lz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE=""
+KEYWORDS="alpha amd64 ppc ppc64 ~sparc x86"
 
-RDEPEND=""
 DEPEND="$(unpacker_src_uri_depends)"
 
 DOCS="AUTHORS ChangeLog NEWS README"
@@ -25,7 +24,7 @@ src_configure() {
 		CXX="$(tc-getCXX)" \
 		CXXFLAGS="${CXXFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
-		--prefix=/usr
+		--prefix=/usr || die
 }
 
 src_install() {
