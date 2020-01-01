@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic
 
@@ -11,10 +11,12 @@ SRC_URI="https://github.com/pali/udftools/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="sys-libs/readline:0="
 DEPEND="${RDEPEND}"
-
-PATCHES=( "${FILESDIR}/${P}-sysmacros.patch" )
+BDEPEND="
+	virtual/pkgconfig
+	virtual/udev
+"
