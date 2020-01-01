@@ -8,4 +8,7 @@
   <upstream>
     <remote-id type="github">muennich/urxvt-perls</remote-id>
   </upstream>
+  <use>
+    <flag name="deprecated">Install scripts which have been marked as deprecated by upstream</flag>
+  </use>
 </pkgmetadata>
