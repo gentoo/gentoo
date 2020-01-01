@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,8 @@ BDEPEND="
 	>=dev-lang/perl-5
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
+
+#S="${WORKDIR}/${PN}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.7.2-config-file.patch
