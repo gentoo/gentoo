@@ -2402,7 +2402,7 @@ app-shells/hstr 2.0: Shell history suggest box
 app-shells/ksh 2020.0.0 9999: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/kshdb 1.0.0: Korn Shell Debugger
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
-app-shells/loksh 6.4 6.5 6.6: Linux port of OpenBSD's ksh
+app-shells/loksh 6.6: Linux port of OpenBSD's ksh
 app-shells/mcfly 0.3.6: Context-aware bash history search replacement (crtl-r)
 app-shells/mksh 56c 57 57-r1 57-r2 9999: MirBSD Korn Shell
 app-shells/mpibash 1.2 1.3 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
