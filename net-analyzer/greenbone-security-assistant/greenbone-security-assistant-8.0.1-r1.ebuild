@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-inherit cmake-utils flag-o-matic systemd toolchain-funcs
+inherit cmake flag-o-matic systemd toolchain-funcs
 
 MY_PN="gsa"
 MY_DN="gsad"
@@ -63,7 +63,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	# We will use pre-generated npm stuff.
 	mv "${WORKDIR}/${MY_NODE_N}" "${MY_NODE_DIR}" || die "couldn't move node_modules"
 	# Update .yarnrc accordingly.
@@ -92,21 +92,21 @@ src_configure() {
 	# Add release hardening flags for 8.0.1
 	append-cflags -D_FORTIFY_SOURCE=2 -fstack-protector
 	append-ldflags -Wl,-z,relro -Wl,-z,now
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	if use extras; then
-		cmake-utils_src_make -C "${BUILD_DIR}" doc
-		cmake-utils_src_make doc-full -C "${BUILD_DIR}" doc
+		cmake_build -C "${BUILD_DIR}" doc
+		cmake_build doc-full -C "${BUILD_DIR}" doc
 		HTML_DOCS=( "${BUILD_DIR}/${MY_DN}/doc/generated/html/." )
 	fi
-	cmake-utils_src_make rebuild_cache
+	cmake_build rebuild_cache
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	insinto /etc/gvm/sysconfig
 	doins "${FILESDIR}/${MY_DN}-daemon.conf"
