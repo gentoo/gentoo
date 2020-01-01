@@ -9015,7 +9015,7 @@ dev-python/sqlobject 3.4.0: Object-Relational Manager, aka database wrapper
 dev-python/squaremap 1.0.4: Hierarchic data-visualisation control for wxPython
 dev-python/sshtunnel 0.1.4-r2: Pure python SSH tunnels
 dev-python/ssl-fetch 0.4 9999: A small convenience library for fetching files securely
-dev-python/stapler 0.4_p20160424: Suite of tools for PDF files manipulation written in Python
+dev-python/stapler 1.0_pre20191215: Suite of tools for PDF files manipulation written in Python
 dev-python/statsd 3.2.1 3.3.0: A simple statsd client
 dev-python/statsmodels 0.9.0 9999: Statistical computations and models for use with SciPy
 dev-python/steadymark 0.5.3: Markdown-based test runner for python
@@ -9095,7 +9095,7 @@ dev-python/transmissionrpc 0.11 9999: Python module that implements the Transmis
 dev-python/treq 17.8.0: A requests-like API built on top of twisted.web's Agent
 dev-python/trollius 2.1 2.2: Port of the asyncio project to Python 2.7 (deprecated)
 dev-python/trustme 0.5.0-r1 0.5.2 0.5.3 0.6.0: #1 quality TLS certs while you wait, for the discerning tester
-dev-python/ttfquery 1.0.5-r1: Font metadata and glyph outline extraction utility library
+dev-python/ttfquery 1.0.5-r1 2.0.0_beta1: Font metadata and glyph outline extraction utility library
 dev-python/ttystatus 0.36: Terminal progress bar and status output for command line
 dev-python/turbocheetah 1.0-r1: TurboGears plugin to support use of Cheetah templates
 dev-python/turbojson 1.3.2-r1: TurboGears JSON file format support plugin
@@ -15359,7 +15359,7 @@ net-misc/rclone 1.45 1.47.0 1.49.1 9999: A program to sync files to and from var
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
-net-misc/remmina 1.3.4 1.3.6-r1 1.3.9: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.3.4 1.3.6-r1 1.3.9-r1: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.3: File transfer program to keep remote files into sync
