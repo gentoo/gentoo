@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,9 +32,6 @@ DEPEND="libusb? ( virtual/libusb:1 )
 	policykit? ( >=sys-auth/polkit-0.111 )
 	python? ( ${PYTHON_DEPS} )"
 RDEPEND="${DEPEND}
-	!<app-crypt/ccid-1.4.1-r1
-	!<sys-apps/baselayout-2
-	!<sys-apps/openrc-0.11.8
 	selinux? ( sec-policy/selinux-pcscd )"
 BDEPEND="virtual/pkgconfig"
 
