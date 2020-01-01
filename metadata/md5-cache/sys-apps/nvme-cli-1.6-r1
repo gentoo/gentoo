@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/linux-nvme/nvme-cli/archive/v1.6.tar.gz -> nvme-cli-1.6.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=442d7e6bad2359d547f4bf1740b55432
+_md5_=38dcfd9682d9c30ef12119caf4ff5f50
