@@ -340,7 +340,6 @@ app-admin/kubectx 0.6.3 0.7.1: Fast way to switch between clusters and namespace
 app-admin/lastpass-binary-component 4.19.0: Binary component required by the LastPass Password Manager browser extension
 app-admin/lastpass-cli 1.3.1-r1 1.3.2 1.3.3: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.13: Check for mapped libs and open files that are marked as deleted
-app-admin/linux-bench 0.0.2: Bench for Security runs the CIS Distribution-Independent Linux Benchmark
 app-admin/lnav 0.8.5: A curses-based tool for viewing and analyzing log files
 app-admin/logcheck 1.3.18-r1: Mails anomalies in the system logfiles to the administrator
 app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
@@ -3390,7 +3389,6 @@ dev-go/delve 1.3.0 1.3.2: A source-level debugger for the Go programming languag
 dev-go/ed25519 0_pre20170117: ed25519 for Go
 dev-go/fuzzy 0.0.3 0.0.5: Go library that provides fuzzy string matching
 dev-go/get-ego-vendor 0.1.0: Utility to generate EGO_VENDOR data for ebuilds
-dev-go/glide 0.13.2: Vendor Package Managment for Golang
 dev-go/go-bindata 1.0.0: A small utility which generates Go code from any file
 dev-go/go-bindata-assetfs 1.0.0_p20180223: Serve embedded files from jteeuwen/go-bindata with net/http
 dev-go/go-colortext 0_pre20150720: Change the console foreground and background colors
@@ -15253,7 +15251,6 @@ net-misc/iputils 20180629 20190515 20190709 99999999: Network monitoring tools i
 net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0: IPv6 address calculator
 net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/irrtree 1.2.1: The BGP swiss army knife of networking
-net-misc/istioctl 1.1.17: Istio configuration command line utility
 net-misc/jlj 2.12-r1: Simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) for viewing and/or controlling a distance PC
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
@@ -16263,7 +16260,7 @@ sci-geosciences/opencpn-plugin-weatherfax 1.3.20180316 9999: Weatherfax Plugin f
 sci-geosciences/opencpn-plugins-meta 4.2.0-r3: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0 0.96.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/qgis 3.4.12 3.10.0 3.10.1 9999: User friendly Geographic Information System
+sci-geosciences/qgis 3.4.12 3.10.1 9999: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.12.0 1.13.2 1.14.0: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
