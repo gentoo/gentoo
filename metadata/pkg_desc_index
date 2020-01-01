@@ -15452,7 +15452,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270 0.4.1355: utility to download media contents from the web
-net-misc/youtube-dl 2019.12.25 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2019.12.25 2020.01.01 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.5.5 3.5.8-r1 3.5.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17711,7 +17711,7 @@ sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon
 sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 242 243 243-r2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 33 9999: udev startup scripts for openrc
-sys-fs/udftools 2.0-r2 2.1: Ben Fennema's tools for packet writing and the UDF filesystem
+sys-fs/udftools 2.1 2.2: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 1.7.7 2.0.2-r1: An automatic disk mounting service using udisks
 sys-fs/udisks 1.0.5-r3 2.8.2 2.8.3 2.8.4: Daemon providing interfaces to work with storage devices
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
@@ -17777,7 +17777,7 @@ sys-libs/kpmcore 4.0.1: Library for managing partitions
 sys-libs/ldb 1.1.29-r1 1.1.31 1.2.4 1.3.6 1.3.8 1.4.8 1.5.4 1.5.6 1.6.3 2.0.7 2.0.8: An LDAP-like embedded database
 sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
 sys-libs/libapparmor 2.13.3: Library to support AppArmor userspace utilities
-sys-libs/libavc1394 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
+sys-libs/libavc1394 0.5.4-r1 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.20-r2 2.22 2.23 9999: A library for manipulating block devices
 sys-libs/libcap 2.26-r2 2.27 2.28-r1 2.29-r1 2.29-r3: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8 0.7.9 0.7.10: POSIX 1003.1e capabilities
@@ -17995,7 +17995,6 @@ virtual/opengl 7.0-r2: Virtual for OpenGL implementation
 virtual/os-headers 0 0-r1: Virtual for operating system headers
 virtual/package-manager 1: Virtual for the package manager
 virtual/pager 0: Virtual for command-line pagers
-virtual/pam 0-r1: Virtual for PAM (Pluggable Authentication Modules)
 virtual/perl-Archive-Tar 2.40.100_rc-r6 2.240.0 2.300.0-r1 2.320.0: Virtual for Archive-Tar
 virtual/perl-Attribute-Handlers 0.990.0-r2 1.10.0-r1: Virtual for Attribute-Handlers
 virtual/perl-AutoLoader 5.740.0-r7: Virtual for AutoLoader
@@ -19232,7 +19231,7 @@ x11-wm/e16 1.0.20 1.0.21: Enlightenment Window Manager (E16)
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/enlightenment 0.22.4-r1 0.23.1: Enlightenment window manager
 x11-wm/evilwm 1.0.1-r1 1.1.1: A minimalist, no frills window manager for X
-x11-wm/fluxbox 1.3.7-r3 1.3.7-r4 9999: X11 window manager featuring tabs and an iconbar
+x11-wm/fluxbox 1.3.7-r4 9999: X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5-r3 2.6.8-r2: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 9999: A manual tiling window manager for X

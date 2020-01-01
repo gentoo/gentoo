@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=!!<=x11-misc/fbdesk-1.2.1 !!<=x11-misc/fluxconf-0.9.9 !!<x11-themes/fluxbox-styles-fluxmod-20040809-r1 bidi? ( >=dev-libs/fribidi-0.19.2 ) imlib? ( >=media-libs/imlib2-1.2.0[X] ) truetype? ( media-libs/freetype ) vim-syntax? ( app-vim/fluxbox-syntax ) x11-libs/libXext x11-libs/libXft x11-libs/libXpm x11-libs/libXrandr x11-libs/libXrender xinerama? ( x11-libs/libXinerama ) || ( x11-misc/gxmessage x11-apps/xmessage ) bidi? ( virtual/pkgconfig ) nls? ( sys-devel/gettext ) x11-base/xorg-proto >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=bidi? ( >=dev-libs/fribidi-0.19.2 ) imlib? ( >=media-libs/imlib2-1.2.0[X] ) truetype? ( media-libs/freetype ) vim-syntax? ( app-vim/fluxbox-syntax ) x11-libs/libXext x11-libs/libXft x11-libs/libXpm x11-libs/libXrandr x11-libs/libXrender xinerama? ( x11-libs/libXinerama ) || ( x11-misc/gxmessage x11-apps/xmessage ) bidi? ( virtual/pkgconfig ) nls? ( sys-devel/gettext ) x11-base/xorg-proto >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=X11 window manager featuring tabs and an iconbar
 EAPI=5
 HOMEPAGE=http://www.fluxbox.org
 IUSE=nls xinerama bidi +truetype +imlib +slit +systray +toolbar vim-syntax
 LICENSE=MIT
 PROPERTIES=live
-RDEPEND=!!<=x11-misc/fbdesk-1.2.1 !!<=x11-misc/fluxconf-0.9.9 !!<x11-themes/fluxbox-styles-fluxmod-20040809-r1 bidi? ( >=dev-libs/fribidi-0.19.2 ) imlib? ( >=media-libs/imlib2-1.2.0[X] ) truetype? ( media-libs/freetype ) vim-syntax? ( app-vim/fluxbox-syntax ) x11-libs/libXext x11-libs/libXft x11-libs/libXpm x11-libs/libXrandr x11-libs/libXrender xinerama? ( x11-libs/libXinerama ) || ( x11-misc/gxmessage x11-apps/xmessage )
+RDEPEND=bidi? ( >=dev-libs/fribidi-0.19.2 ) imlib? ( >=media-libs/imlib2-1.2.0[X] ) truetype? ( media-libs/freetype ) vim-syntax? ( app-vim/fluxbox-syntax ) x11-libs/libXext x11-libs/libXft x11-libs/libXpm x11-libs/libXrandr x11-libs/libXrender xinerama? ( x11-libs/libXinerama ) || ( x11-misc/gxmessage x11-apps/xmessage )
 REQUIRED_USE=systray? ( toolbar )
 SLOT=0
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=d3d1fb78b2462286235542a280fa2964
+_md5_=00f2fd58d49ce5f937d1bc533b9fc48f
