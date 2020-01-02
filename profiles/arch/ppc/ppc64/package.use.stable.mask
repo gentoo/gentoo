@@ -1,0 +1,28 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# When you add an entry to the top of this file, add your name, the date, and
+# an explanation of why something is getting masked. Please be extremely
+# careful not to commit atoms that are not valid, as it can cause large-scale
+# breakage, especially if it ends up in the daily snapshot.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
+## # Masking foo USE flag until we can get the
+## # foo stuff to work properly again (bug 12345)
+## =media-video/mplayer-0.90_pre5 foo
+## =media-video/mplayer-0.90_pre5-r1 foo
+#
+
+#--- END OF EXAMPLES ---
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
+# app-text/libwpd and app-text/libwpg are not stable
+media-gfx/inkscape cdr visio wpg
+
+# Pacho Ramos <pacho@gentoo.org> (2014-07-02)
+# Mask due Gnome3 not going to be stabilized on this arch
+>=gnome-base/gnome-desktop-2.32.1-r2 license-docs
+gnome-base/gvfs google
+>=x11-libs/gtk+-3.12.2 cloudprint

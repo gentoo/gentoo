@@ -1,0 +1,6 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-04-11)
+# ltrace is not ported to powerpc64le yet.
+dev-util/ltrace

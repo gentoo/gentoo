@@ -1,0 +1,6 @@
+# Copyright 2019-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-15)
+# deps are not yet stable on ppc64
+media-libs/mesa video_cards_radeonsi

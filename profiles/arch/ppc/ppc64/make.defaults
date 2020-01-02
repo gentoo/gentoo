@@ -1,0 +1,24 @@
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+ARCH="ppc64"
+ACCEPT_KEYWORDS="ppc64"
+
+MULTILIB_ABIS="ppc64"
+DEFAULT_ABI="ppc64"
+ABI="${DEFAULT_ABI}"
+
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+LIBDIR_ppc64="lib64"
+IUSE_IMPLICIT="abi_ppc_64"
+
+# Defaults for video drivers
+VIDEO_CARDS="fbdev mga nv r128 radeon"
+
+# Hans de Graaff <graaff@gentoo.org) (2019-07-17)
+# Temporary RUBY_TARGETS for bug 688976
+RUBY_TARGETS="ruby24 -ruby25"
