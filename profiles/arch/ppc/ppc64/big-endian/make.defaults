@@ -1,11 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# All extra USE/etc should be specified in sub-profiles.
-# DO NOT POLLUTE USE ON THIS PROFILE.
+# Big endian PPC64 settins
 
-MULTILIB_ABIS="ppc64"
-
-CFLAGS_ppc64="-m64"
-
-LIBDIR_ppc64="lib64"
+CHOST="powerpc64-unknown-linux-gnu"
+CHOST_ppc64="${CHOST}"

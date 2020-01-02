@@ -1,14 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
-# Remask as this profile is little endian.
-big-endian
-
-# Chris Gianelloni <wolf31o2@gentoo.org> (2008-02-13)
-# Mask multilib, since we cannot use it.
-multilib
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
 # # works on ppc64le
 -video_cards_amdgpu
