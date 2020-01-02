@@ -10642,7 +10642,7 @@ dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0 9999: A script that wraps wdiff to suppo
 dev-util/d-feet 0.3.14: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20160814 12.7.1 12.7.2: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20160814 12.7.2 12.7.3: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.115 1.0.116: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.14.2-r2 4.15.0: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6: Framework for testing other programs
@@ -18792,7 +18792,7 @@ x11-misc/urxvt-perls 2.3: Perl extensions for rxvt-unicode
 x11-misc/urxvt-tabbedex 19.21: An extended version of rxvt-unicode's tabbed perl extension
 x11-misc/urxvtconfig 1.0-r1: GUI configuration tool for the rxvt-unicode terminal emulator
 x11-misc/util-macros 1.19.2-r1: X.Org autotools utility macros
-x11-misc/vdpauinfo 1.0 1.3 99999: Displays info about your card's VDPAU support
+x11-misc/vdpauinfo 1.3 99999: Displays info about your card's VDPAU support
 x11-misc/viewglob 2.0.4-r1: Graphical display of directories and globs referenced at the shell prompt
 x11-misc/virtualgl 2.6.1-r1 9999: Run OpenGL applications remotely with full 3D hardware acceleration
 x11-misc/vnc2swf 0.5.0-r1: A tool for recording Flash SWF movies from VNC sessions
