@@ -10945,7 +10945,7 @@ dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former c
 dev-vcs/fossil 2.8 2.9: Simple, high-reliability, source control management, and more
 dev-vcs/git 2.21.0 2.21.1 2.23.0-r1 2.23.1-r1 2.24.0 2.24.1 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20170818 6.20170818-r1: manage files with git, without checking their contents into git
-dev-vcs/git-bz 0.2015.09.08 9999: Bugzilla subcommand for git
+dev-vcs/git-bz 0.2015.09.08: Bugzilla subcommand for git
 dev-vcs/git-cola 2.11 3.2: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024-r1: make deployments so easy that you'll let new hires do them on their first day
@@ -17740,7 +17740,7 @@ sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.4.206 4.4.207 4.9.192 4.9.199 4.9.203 4.9.205 4.9.206 4.14.143 4.14.152 4.14.156 4.14.157 4.14.158 4.14.159 4.14.161 4.19.72 4.19.82 4.19.86 4.19.87 4.19.88 4.19.89 4.19.90 4.19.91 4.19.92 5.3.18 5.4.0 5.4.1 5.4.2 5.4.3 5.4.4 5.4.5 5.4.6 5.4.7: Full sources including the Gentoo patchset for the 5.4 kernel tree
 sys-kernel/git-sources 5.5_rc1 5.5_rc2 5.5_rc3 5.5_rc4: The very latest -git version of the Linux kernel
-sys-kernel/installkernel-gentoo 1: Gentoo fork of installkernel script from debianutils
+sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
