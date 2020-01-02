@@ -1,2 +1,2 @@
-# Force the flag which corresponds to ARCH.
 ppc64
+abi_ppc_64

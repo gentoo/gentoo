@@ -1,8 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# All extra USE/etc should be specified in sub-profiles.
-# DO NOT POLLUTE USE ON THIS PROFILE.
 
 ARCH="ppc64"
 ACCEPT_KEYWORDS="ppc64"
@@ -17,9 +14,7 @@ FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
 
 LIBDIR_ppc64="lib64"
-
-KERNEL_ABI="ppc64"
-ABI="ppc64"
+IUSE_IMPLICIT="abi_ppc_64"
 
 # Defaults for video drivers
 VIDEO_CARDS="fbdev mga nv r128 radeon"

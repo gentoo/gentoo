@@ -13,10 +13,7 @@ battery
 
 # Unmask the flag which corresponds to ARCH.
 -ppc64
-
-# Unmask the flag for Playstation 3
--ps3
-
+-abi_ppc_64
 # mask custom-cpuopts and cpudetection on ppc64 for mplayer - bug #234629
 cpudetection
 
