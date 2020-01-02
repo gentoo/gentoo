@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils user
+inherit cmake user
 
 DESCRIPTION="Anope IRC Services"
 HOMEPAGE="https://anope.org"
@@ -98,7 +98,7 @@ src_prepare() {
 	# Avoid a silly sandbox error - tries to delete /usr/lib/modules
 	sed -i '/install.*REMOVE_RECURSE.*/d' CMakeLists.txt || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -111,11 +111,11 @@ src_configure() {
 		-DCONF_DIR="/etc/anope"
 		-DLOGS_DIR="../var/log/anope/"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	newinitd "${FILESDIR}/anope-init.d" "${PN}"
 	cp "${FILESDIR}/anope-conf.d-v2" "${T}" || die
 	sed -i "s~%LIBDIR%~${EPREFIX}/usr/$(get_libdir)/anope/~" \

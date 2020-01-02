@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A pomodoro app that blocks distractions while you work"
 HOMEPAGE="https://github.com/iamsergio/flow-pomodoro"

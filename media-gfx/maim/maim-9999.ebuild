@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Commandline tool to take screenshots of the desktop"
 HOMEPAGE="https://github.com/naelstrof/maim"
@@ -37,5 +37,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DMAIM_UNICODE=$(usex unicode)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

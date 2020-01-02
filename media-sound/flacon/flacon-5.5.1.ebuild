@@ -5,7 +5,7 @@ EAPI=7
 
 # Tests require lots of disk space
 CHECKREQS_DISK_BUILD=10G
-inherit check-reqs cmake-utils eutils virtualx xdg-utils
+inherit check-reqs cmake eutils virtualx xdg-utils
 
 DESCRIPTION="Extracts audio tracks from an audio CD image to separate tracks"
 HOMEPAGE="https://flacon.github.io/"
@@ -58,7 +58,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTS="$(usex test)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {

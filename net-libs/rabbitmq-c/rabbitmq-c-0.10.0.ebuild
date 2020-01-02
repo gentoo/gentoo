@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="RabbitMQ C client"
 HOMEPAGE="https://github.com/alanxz/rabbitmq-c"
@@ -44,7 +44,7 @@ src_configure() {
 		-DBUILD_TOOLS_DOCS=$(usex tools)
 		-DENABLE_SSL_SUPPORT=$(usex ssl)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {

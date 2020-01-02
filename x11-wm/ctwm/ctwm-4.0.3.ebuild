@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A clean, light window manager"
 HOMEPAGE="https://ctwm.org/"
@@ -30,7 +30,7 @@ DEPEND="
 "
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# implicit 'isspace'
 	sed -i parse.c -e "/<stdio.h>/ a#include <ctype.h>" || die
@@ -42,5 +42,5 @@ src_configure() {
 		-DDOCDIR=/usr/share/doc/${PF}
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

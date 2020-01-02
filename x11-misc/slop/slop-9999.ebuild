@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Application that queries the user for a selection for printing"
 HOMEPAGE="https://github.com/naelstrof/slop"
@@ -37,5 +37,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DSLOP_OPENGL=$(usex opengl)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
