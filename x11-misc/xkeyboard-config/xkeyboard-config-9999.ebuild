@@ -25,10 +25,7 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
-RDEPEND="
-	!<x11-apps/xkbcomp-1.2.3
-	!<x11-libs/libX11-1.4.3
-"
+RDEPEND=""
 DEPEND="
 	${LIVE_DEPEND}
 "
