@@ -1,0 +1,2 @@
+d /run/schroot/mount  0755 root root -
+L /var/lib/schroot/mount - - - - /run/schroot/mount

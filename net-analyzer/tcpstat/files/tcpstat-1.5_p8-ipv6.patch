@@ -1,0 +1,30 @@
+--- a/configure.in
++++ b/configure.in
+@@ -84,15 +84,26 @@
+ dnl #######################
+ dnl Checks for header files
+ dnl #######################
+ AC_HEADER_STDC
+ AC_HEADER_SYS_WAIT
+-AC_CHECK_HEADERS(sys/time.h sys/stat.h unistd.h strings.h fcntl.h netinet/ip6.h)
++AC_CHECK_HEADERS(sys/time.h sys/stat.h unistd.h strings.h fcntl.h)
+ 
+ dnl BSD/OS Seems to not have a good ethernet header, so we gotta wing it
+ AC_CHECK_HEADERS(net/if.h net/ethernet.h netinet/if_ether.h net/ppp_defs.h)
+ 
++AC_ARG_ENABLE( ipv6, [ AC_HELP_STRING([--enable-ipv6], [s use IPv6?]) ], ip6=$enableval )
++if test "$ip6" = "yes"
++then
++	AC_CHECK_HEADER(netinet/ip6.h, , [AC_MSG_ERROR([I couldn't find netinet/ip6.h though you asked for ipv6 support.])] )
++elif test "$ip6" != "no"
++then
++	AC_CHECK_HEADER(netinet/ip6.h)
++
++fi
++
++
+ dnl #############################################################
+ dnl Checks for typedefs, structures, and compiler characteristics
+ dnl #############################################################
+ AC_C_CONST
+ AC_TYPE_SIZE_T

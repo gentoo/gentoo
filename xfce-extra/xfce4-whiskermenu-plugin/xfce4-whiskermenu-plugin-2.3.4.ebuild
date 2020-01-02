@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="Alternate application launcher for Xfce"
 HOMEPAGE="https://gottcode.org/xfce4-whiskermenu-plugin/"
@@ -35,7 +35,7 @@ src_prepare() {
 	# fix build failure w/ xfce4-panel-4.15.0
 	sed -i -e 's@<libxfce4panel/xfce-panel-plugin\.h>@<libxfce4panel/libxfce4panel.h>@' \
 		panel-plugin/register-plugin.c || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -45,7 +45,7 @@ src_configure() {
 		-DENABLE_DEVELOPER_MODE=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

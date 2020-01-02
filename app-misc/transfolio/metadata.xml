@@ -6,8 +6,8 @@
 		<name>Conrad Kostecki</name>
 	</maintainer>
 	<longdescription>
-		TransFolio is a command line tool for Linux and Windows which,
+		TransFolio is a command line tool for Linux and Windows,
+		which enables data transfer between the PC and the Atari Portfolio,
 		as did Atari's DOS program FT.COM.
-		It enables data transfer between the PC and the Atari Portfolio.
 	</longdescription>
 </pkgmetadata>

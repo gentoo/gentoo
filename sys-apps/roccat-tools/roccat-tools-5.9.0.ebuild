@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit readme.gentoo-r1 cmake udev user xdg
+inherit readme.gentoo-r1 cmake flag-o-matic udev user xdg
 
 DESCRIPTION="Utility for advanced configuration of Roccat devices"
 
@@ -62,6 +62,9 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
+BDEPEND="
+	virtual/pkgconfig
+"
 
 DOCS=( Changelog KNOWN_LIMITATIONS README )
 
@@ -80,6 +83,11 @@ src_prepare() {
 }
 
 src_configure() {
+	if has_version \>=x11-libs/pango-1.44.0 ; then
+		# Fix build with pango-1.44
+		append-cflags "$(pkg-config --cflags harfbuzz)"
+	fi
+
 	mycmakeargs=(
 		-DDEVICES="${USED_MODELS/;/}"
 		-DUDEVDIR="${EPREFIX}$(get_udevdir)/rules.d"

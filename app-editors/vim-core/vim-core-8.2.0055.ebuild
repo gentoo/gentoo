@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-VIM_VERSION="8.1"
+VIM_VERSION="8.2"
 inherit estack vim-doc flag-o-matic bash-completion-r1 prefix desktop gnome2-utils
 
 if [[ ${PV} == 9999* ]] ; then

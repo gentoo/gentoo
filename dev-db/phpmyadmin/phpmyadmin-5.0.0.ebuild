@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos ~x64
 IUSE="setup"
 
 RDEPEND="
-	dev-lang/php[ctype,filter,json,session,unicode]
+	>=dev-lang/php-7.1[ctype,filter,json,session,unicode]
 	|| (
 		dev-lang/php[mysqli]
 		dev-lang/php[mysql]
