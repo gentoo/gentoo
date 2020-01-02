@@ -2,4 +2,5 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-02)
+# Force this on big-endian profile
 big-endian

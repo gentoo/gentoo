@@ -16,7 +16,3 @@ x11-drivers/xf86-video-amdgpu
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2018-02-21)
 # Mozc supports only little-endian architectures.
 app-i18n/mozc
-
-# <gcc-4 does not compile with >=gcc-4 on ppc64
-sys-libs/libstdc++-v3
-<sys-devel/gcc-4.1

@@ -83,6 +83,10 @@ dev-java/ant-apache-bsf python
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
 
+# Brian Evans <grknight@gentoo.org> (2015-11-23)
+# unmask galera for dev-db/mariadb
+>=dev-db/mariadb-10.1.0 -galera
+
 # Ben de Groot <yngwin@gentoo.org> (2015-07-20)
 # missing keywords
 media-sound/audacity midi soundtouch
@@ -113,6 +117,14 @@ www-client/seamonkey ipc
 # Kacper Kowalik <xarthisius@gentoo.org> (2010-05-30)
 # quesoglc is not keyworded
 x11-misc/rss-glx quesoglc
+
+# Brent Baude <ranger@gentoo.org> (2010-01-06)
+# masking toolame for mplayer bug 280281
+media-video/mplayer toolame
+
+# Brent Baude <ranger@gentoo.org> (2009-12-31)
+# Masking for bug 274847
+app-admin/conky apcupsd
 
 # Brent Baude <ranger@gentoo.org> (2009-05-05)
 # Masking webkit from  libproxy due to TOC failure on webkit
