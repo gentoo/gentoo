@@ -18,13 +18,14 @@ BDEPEND="
 	sys-devel/gettext
 	doc? ( dev-util/gtk-doc )
 	introspection? ( dev-libs/gobject-introspection-common )
-	test? ( dev-libs/check )
 "
 RDEPEND="
 	dev-libs/libxml2
 	introspection? ( dev-libs/gobject-introspection )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-libs/check )
+"
 
 # Upstream expect liblangtag to be installed when one runs tests...
 RESTRICT="test"
