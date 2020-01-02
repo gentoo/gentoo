@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -172,6 +172,7 @@ pkg_setup() {
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-2.24.4-icu-65.patch" # bug 698596
 	eapply "${FILESDIR}/${PN}-2.24.4-eglmesaext-include.patch" # bug 699054 # https://bugs.webkit.org/show_bug.cgi?id=204108
+	eapply "${FILESDIR}"/${PV}-fix-noGL-build.patch # bug 704236
 	cmake-utils_src_prepare
 	gnome2_src_prepare
 }
