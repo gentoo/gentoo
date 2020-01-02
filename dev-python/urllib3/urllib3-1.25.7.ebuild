@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,8 +19,7 @@ IUSE="brotli test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-python/PySocks-1.5.6[${PYTHON_USEDEP}]
-	!~dev-python/PySocks-1.5.7[${PYTHON_USEDEP}]
+	>=dev-python/PySocks-1.5.8[${PYTHON_USEDEP}]
 	<dev-python/PySocks-2.0[${PYTHON_USEDEP}]
 	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.3.4[${PYTHON_USEDEP}]
@@ -43,7 +42,9 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs \
+	dev-python/alabaster \
+	dev-python/mock
 
 python_prepare_all() {
 	# tests requiring a route to be present
