@@ -1,0 +1,34 @@
+From 3742559924136c2471ab15081c5b600dd5feaeb0 Mon Sep 17 00:00:00 2001
+From: Jean Ghali <jghali@libertysurf.fr>
+Date: Sat, 28 Dec 2019 21:32:29 +0000
+Subject: [PATCH] Fix failure to build with poppler 0.84.0
+
+git-svn-id: svn://scribus.net/trunk/Scribus@23429 11d20701-8431-0410-a711-e3c959e3b870
+---
+ scribus/plugins/import/pdf/slaoutput.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/scribus/plugins/import/pdf/slaoutput.cpp b/scribus/plugins/import/pdf/slaoutput.cpp
+index ffcfa8450b..d788f9f06c 100644
+--- a/scribus/plugins/import/pdf/slaoutput.cpp
++++ b/scribus/plugins/import/pdf/slaoutput.cpp
+@@ -1189,6 +1189,11 @@ void SlaOutputDev::startDoc(PDFDoc *doc, XRef *xrefA, Catalog *catA)
+ 	catalog = catA;
+ 	pdfDoc = doc;
+ 	updateGUICounter = 0;
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(0, 84, 0)
++	m_fontEngine = new SplashFontEngine(true, true, true, true);
++#elif POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(0, 61, 0)
++	m_fontEngine = new SplashFontEngine(globalParams->getEnableFreeType(), true, true, true);
++#else
+ 	m_fontEngine = new SplashFontEngine(
+ #if HAVE_T1LIB_H
+ 	globalParams->getEnableT1lib(),
+@@ -1199,6 +1204,7 @@ void SlaOutputDev::startDoc(PDFDoc *doc, XRef *xrefA, Catalog *catA)
+ 	true,
+ #endif
+ 	true);
++#endif
+ }
+ 
+ void SlaOutputDev::startPage(int pageNum, GfxState *, XRef *)

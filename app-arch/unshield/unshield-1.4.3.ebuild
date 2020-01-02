@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="InstallShield CAB file extractor"
 HOMEPAGE="https://github.com/twogood/unshield"

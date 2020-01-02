@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Tiny monitor calibration loader for X.org"
 HOMEPAGE="https://github.com/OpenICC/xcalib"
