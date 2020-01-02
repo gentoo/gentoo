@@ -25,7 +25,7 @@ fi
 LICENSE="public-domain"
 SLOT="0"
 
-IUSE="debug"
+IUSE="debug lto"
 
 RDEPEND="
 	dev-libs/libsodium
@@ -38,10 +38,19 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+src_prepare() {
+	sed "/PROJECT_VERSION/s|@PROJECT_VERSION@|${PV}|" -i SourceS/config.h.in || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
-		-DBINARY_RELEASE=ON
+		-DASAN="OFF"
 		-DDEBUG="$(usex debug)"
+		-DDIST="ON"
+		-DFASTER="OFF"
+		-DLTO="$(usex lto)"
+		-DUBSAN="OFF"
 	)
 	cmake_src_configure
 }
