@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -48,6 +48,8 @@ RDEPEND="
 	x11-libs/gtk+:3[introspection]
 	x11-libs/libnotify
 "
+
+PATCHES=( "${FILESDIR}/${P}-gtk.patch" )
 
 python_install_all() {
 	local DOCS=( AUTHORS README.rst docs/installers.rst )
