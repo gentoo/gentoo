@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="NBTscan is a program for scanning IP networks for NetBIOS name information"
 HOMEPAGE="https://github.com/resurrecting-open-source-projects/nbtscan"
-SRC_URI="https://github.com/resurrecting-open-source-projects/nbtscan/archive/1.6.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/resurrecting-open-source-projects/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
