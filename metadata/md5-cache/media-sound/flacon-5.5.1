@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig dev-qt/linguist-tools:5 dev-util/ninja >=dev-util/cmake-3.9.6 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+BDEPEND=virtual/pkgconfig dev-qt/linguist-tools:5 dev-util/ninja dev-util/cmake test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DEFINED_PHASES=compile configure install postinst postrm prepare pretend setup test
 DEPEND=app-i18n/uchardet dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtconcurrent:5 test? ( dev-qt/qttest:5 media-libs/flac media-sound/mac media-sound/shntool media-sound/ttaenc media-sound/wavpack )
 DESCRIPTION=Extracts audio tracks from an audio CD image to separate tracks
@@ -11,5 +11,5 @@ RDEPEND=app-i18n/uchardet dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/flacon/flacon/archive/v5.5.1.tar.gz -> flacon-5.5.1.tar.gz
-_eclasses_=check-reqs	5e40a693d9c828e8f3655184116e8b73	cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=a157bc1ebd75ee29b772b5db795ac202
+_eclasses_=check-reqs	5e40a693d9c828e8f3655184116e8b73	cmake	35b3146b6de4b75aef568db01ba9760c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=bac01b90f1df3d81b95d3830c459f573
