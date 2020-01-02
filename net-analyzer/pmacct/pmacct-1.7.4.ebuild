@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ RDEPEND="
 		<dev-libs/mongo-c-driver-0.98
 	)
 	mysql? ( dev-db/mysql-connector-c:0= )
-	ndpi? ( net-libs/nDPI:= )
+	ndpi? ( >=net-libs/nDPI-2.4:= )
 	nflog? ( net-libs/libnetfilter_log )
 	postgres? ( dev-db/postgresql:* )
 	rabbitmq? ( net-libs/rabbitmq-c )
@@ -45,6 +45,7 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.3-nDPI-3.0.patch
+	"${FILESDIR}"/${PN}-1.7.4--Werror.patch
 )
 
 DOCS=(

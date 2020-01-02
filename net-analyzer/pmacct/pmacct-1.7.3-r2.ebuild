@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic git-r3 toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="A network tool to gather IP traffic information"
 HOMEPAGE="http://www.pmacct.net/"
-EGIT_REPO_URI="https://github.com/pmacct/pmacct/"
+SRC_URI="http://www.pmacct.net/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="
 	64bit +bgp-bins +bmp-bins geoip geoipv2 jansson kafka +l2 mongodb mysql
 	ndpi nflog plabel postgres rabbitmq sqlite +st-bins +traffic-bins zmq
@@ -54,7 +54,6 @@ DOCS=(
 
 src_prepare() {
 	default
-	sed -i -e 's|-Werror||g' configure.ac || die
 	eautoreconf
 }
 
