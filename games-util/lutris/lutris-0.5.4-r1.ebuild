@@ -38,7 +38,7 @@ RDEPEND="
 	dev-python/python-evdev[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	gnome-base/gnome-desktop[introspection]
+	gnome-base/gnome-desktop:3[introspection]
 	media-sound/fluid-soundfont
 	net-libs/libsoup
 	net-libs/webkit-gtk:4[introspection]
