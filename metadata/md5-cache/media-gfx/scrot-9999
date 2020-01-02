@@ -1,0 +1,12 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install prepare unpack
+DEPEND=>=media-libs/giblib-1.2.3 x11-libs/libX11 x11-libs/libXcursor x11-libs/libXfixes || ( media-libs/imlib2[gif] media-libs/imlib2[jpeg] media-libs/imlib2[png] media-libs/imlib2[tiff] ) x11-base/xorg-proto
+DESCRIPTION=Screen capture utility using imlib2 library
+EAPI=7
+HOMEPAGE=https://github.com/resurrecting-open-source-projects/scrot
+LICENSE=feh LGPL-2+
+PROPERTIES=live
+RDEPEND=>=media-libs/giblib-1.2.3 x11-libs/libX11 x11-libs/libXcursor x11-libs/libXfixes || ( media-libs/imlib2[gif] media-libs/imlib2[jpeg] media-libs/imlib2[png] media-libs/imlib2[tiff] )
+SLOT=0
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=5980471871a811d14712e5fe92033640

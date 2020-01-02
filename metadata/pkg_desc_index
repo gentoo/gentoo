@@ -4287,7 +4287,7 @@ dev-java/httpcomponents-client 4.5: A low level toolset of Java components focus
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 3.13.0 3.14.0: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 3.13.0: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea-bin 3.13.0 3.14.0: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
@@ -12965,7 +12965,7 @@ media-gfx/sane-backends 1.0.27-r3: Scanner Access Now Easy - Backends
 media-gfx/sane-frontends 1.0.14-r3 1.0.14-r4: Scanner Access Now Easy
 media-gfx/scantailor-advanced 1.0.14 1.0.16: Interactive post-processing tool for scanned pages
 media-gfx/scour 0.37: Take an SVG file and produce a cleaner and more concise file
-media-gfx/scrot 0.8_p13-r1 1.2: Screen capture utility using imlib2 library
+media-gfx/scrot 0.8_p13-r1 1.2 9999: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.30.7: Open source photo manager for GNOME
 media-gfx/sigal 1.3.0: Simple static web gallery generator
@@ -14427,7 +14427,7 @@ net-analyzer/nagstamon 2.0.1 3.0.2-r1 3.2.1: systray monitor for displaying real
 net-analyzer/nagtrap 0.1.3-r1: Integrated snmptt visualization addon for the Nagios monitoring system
 net-analyzer/namebench 1.3.1-r3: DNS Benchmark Utility
 net-analyzer/nast 0.2.0-r1 0.2.0-r2: NAST - Network Analyzer Sniffer Tool
-net-analyzer/nbtscan 1.5.1-r3: NBTscan is a program for scanning IP networks for NetBIOS name information
+net-analyzer/nbtscan 1.5.1-r3 1.6: NBTscan is a program for scanning IP networks for NetBIOS name information
 net-analyzer/nbwmon 0.5.2: ncurses bandwidth monitor
 net-analyzer/ndoutils 2.1.3-r2: Nagios addon to store Nagios data in a MySQL database
 net-analyzer/ndsad 1.33-r1 1.33-r2: Cisco netflow probe from libpcap, ULOG, tee/divert sources
@@ -14471,7 +14471,7 @@ net-analyzer/ospd 2.0.0: Base class for scanner wrappers,communication protocol 
 net-analyzer/ossec-hids 3.1.0 3.2.0 3.2.0-r1 3.3.0: Open Source Host-based Intrusion Detection System
 net-analyzer/ostinato 0.9_p20180522: A packet generator and analyzer
 net-analyzer/p0f 3.09_beta: A tool to perform passive OS detection based on SYN packets
-net-analyzer/packit 1.0-r2 1.6.1: network packet generator and capture tool
+net-analyzer/packit 1.6.1: network packet generator and capture tool
 net-analyzer/pathload 1.3.2: Non-intrusive utility for estimation of available bandwidth of Internet paths
 net-analyzer/pbgpp 0.2.10: PCAP BGP Parser
 net-analyzer/pbnj 2.04: A tool for running Nmap scans and diff'ing the results
@@ -16997,7 +16997,7 @@ sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
 sys-apps/darwin-miscutils 6-r1 8 9 10 11 12: Miscellaneous commands used on macOS, High Sierra 10.13
 sys-apps/dbus 1.12.16: A message bus system, a simple way for applications to talk to each other
 sys-apps/dbus-broker 21 9999: Linux D-Bus Message Broker
-sys-apps/dcfldd 1.3.4.1-r1: enhanced dd with features for forensics and security
+sys-apps/dcfldd 1.3.4.1-r1 1.5: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
 sys-apps/debianutils 4.8.3 4.8.6.3 4.9 4.9.1: A selection of tools from Debian
 sys-apps/diffutils 3.6-r1 3.7: Tools to make diffs and compare files
