@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ DEPEND="
 	${RDEPEND}
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.4.4-tinfo.patch
+	"${FILESDIR}"/${PN}-0.4.0-tinfo.patch
 )
 S=${WORKDIR}/${PN}-${P}
 
