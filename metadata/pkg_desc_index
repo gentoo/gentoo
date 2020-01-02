@@ -16566,6 +16566,7 @@ sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series li
 sci-mathematics/gsl-shell 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
 sci-mathematics/jags 3.4.0 4.0.0 4.1.0 4.2.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
+sci-mathematics/lrcalc 1.2: Littlewood-Richardson Calculator
 sci-mathematics/lybniz 1.3.2-r1: A function plotter program written in PyGTK
 sci-mathematics/mathmod 4.1-r1: Plot parametric and implicit surfaces
 sci-mathematics/mathomatic 15.8.5 16.0.5: Automatic algebraic manipulator
