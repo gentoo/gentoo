@@ -13,7 +13,6 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc"
 
 COMMON_DEPEND="
 	~app-crypt/argon2-20171227:=
@@ -24,7 +23,6 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 	)
@@ -32,17 +30,9 @@ DEPEND="${COMMON_DEPEND}
 
 DOCS=( AUTHORS.rst CHANGELOG.rst FAQ.rst README.rst )
 
+distutils_enable_sphinx docs
 distutils_enable_tests pytest
 
 python_configure_all() {
 	export ARGON2_CFFI_USE_SYSTEM=1
-}
-
-python_compile_all() {
-	use doc && emake -C docs html
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
 }
