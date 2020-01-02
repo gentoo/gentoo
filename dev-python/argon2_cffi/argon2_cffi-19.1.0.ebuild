@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,8 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
+IUSE="doc"
 
 COMMON_DEPEND="
 	~app-crypt/argon2-20171227:=
@@ -28,11 +27,12 @@ DEPEND="${COMMON_DEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/hypothesis[${PYTHON_USEDEP}]
-		>=dev-python/pytest-3.0[${PYTHON_USEDEP}]
 	)
 "
 
 DOCS=( AUTHORS.rst CHANGELOG.rst FAQ.rst README.rst )
+
+distutils_enable_tests pytest
 
 python_configure_all() {
 	export ARGON2_CFFI_USE_SYSTEM=1
@@ -40,10 +40,6 @@ python_configure_all() {
 
 python_compile_all() {
 	use doc && emake -C docs html
-}
-
-python_test() {
-	pytest -vv || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
