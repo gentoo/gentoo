@@ -14479,7 +14479,7 @@ net-analyzer/pbnj 2.04: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pchar 1.5-r1: Internet bandwidth, latency, and loss of links analyzer
 net-analyzer/pinger 0.32e 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
 net-analyzer/pktstat 1.8.5-r1: A network monitoring tool with bandwidth tracking
-net-analyzer/pmacct 1.6.2 1.7.1-r1 1.7.2-r1 1.7.3-r1 999999: A network tool to gather IP traffic information
+net-analyzer/pmacct 1.6.2 1.7.1-r1 1.7.2-r1 1.7.3-r2 1.7.4 999999: A network tool to gather IP traffic information
 net-analyzer/pnp4nagios 0.6.26-r9: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portmon 2.0: Portmon is a network service monitoring daemon
@@ -18813,7 +18813,7 @@ x11-misc/xaos 3.6: Very fast real-time fractal zoomer
 x11-misc/xautolock 2.2_p5_p1 2.2_p5_p1-r1 2.2_p5_p2: An automatic X screen-locker/screen-saver
 x11-misc/xautomation 1.09-r1: Control X from command line and find things on screen
 x11-misc/xbatt 1.3_rc1: Notebook battery indicator for X
-x11-misc/xbattbar 1.4.8: Advanced Power Management battery status display for X
+x11-misc/xbattbar 1.4.8 1.4.9: Advanced Power Management battery status display for X
 x11-misc/xbindkeys 1.8.6: Tool for launching commands on keystrokes
 x11-misc/xbitmaps 1.1.2-r1: X.Org bitmaps data
 x11-misc/xcalendar 4.0-r2: A simple interactive calendar program with a notebook capability
@@ -18889,7 +18889,7 @@ x11-misc/xwrits 2.26-r1: Reminds you to take wrist breaks to help you prevent re
 x11-misc/xxkb 1.11.1 1.11.1-r1: eXtended XKB - assign different keymaps to different windows
 x11-misc/xystray 1.0: A simple implementation of freedesktop.org notification area for X
 x11-misc/yabar 0.4.0_p20190316: A modern and lightweight status bar for X window managers
-x11-misc/zim 0.65 0.71.1 0.72.0: A desktop wiki
+x11-misc/zim 0.71.1 0.72.0 0.72.1: A desktop wiki
 x11-plugins/allin1 0.5.0-r2: All in one monitoring dockapp: RAM, CPU, Net, Power, df, seti
 x11-plugins/asapm 3.1-r1: APM monitor for AfterStep
 x11-plugins/asclock 2.0.12-r3: Clock applet for AfterStep
