@@ -10530,7 +10530,7 @@ dev-util/ald 0.1.7-r2: Assembly Language Debugger
 dev-util/amtterm 1.6: A nice tool to manage amt-enabled machines
 dev-util/android-ndk 9 9b 9c 9d 10 10b 10d 10e 11c 11c-r1 13b 14b 16b 18: Open Handset Alliance's Android NDK (Native Dev Kit)
 dev-util/android-sdk-update-manager 21 21.1 22 22.0.1 22.0.1-r1 22.0.4 22.0.5 22.0.5-r1 22.2.1 22.3 22.6 22.6.1 23 23-r1 24.4.1: Open Handset Alliance's Android SDK
-dev-util/android-studio 3.4.1.0.183.5522156 3.5.0.21.191.5791312 3.5.1.0.191.5900203: Android development environment based on IntelliJ IDEA
+dev-util/android-studio 3.4.1.0.183.5522156 3.5.0.21.191.5791312 3.5.1.0.191.5900203 3.5.3.0.191.6010548: Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13 6.0.1_p79 8.1.0_p1 9.0.0_p3 9.0.0_p3-r1: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.28.0-r1: A versatile IDE for GNOME
 dev-util/apitrace 8.0: Tool for tracing, analyzing, and debugging graphics APIs

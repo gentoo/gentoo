@@ -2821,6 +2821,7 @@
     <member>
       <email>floppym@gentoo.org</email>
       <name>Mike Gilbert</name>
+      <role>Member</role>
     </member>
     <member>
       <email>gyakovlev@gentoo.org</email>
@@ -2865,6 +2866,11 @@
     <member>
       <email>sping@gentoo.org</email>
       <name>Sebastian Pipping</name>
+      <role>Member</role>
+    </member>
+    <member>
+      <email>zlogene@gentoo.org</email>
+      <name>Mikle Kolyada</name>
       <role>Member</role>
     </member>
   </project>
