@@ -29,6 +29,7 @@ IUSE="debug lto"
 
 RDEPEND="
 	dev-libs/libsodium
+	media-fonts/sil-charis
 	media-libs/libsdl2[haptic]
 	media-libs/sdl2-mixer
 	media-libs/sdl2-ttf
@@ -39,7 +40,10 @@ BDEPEND="
 "
 
 src_prepare() {
-	sed "/PROJECT_VERSION/s|@PROJECT_VERSION@|${PV}|" -i SourceS/config.h.in || die
+	sed "/PROJECT_VERSION/s|@PROJECT_VERSION@|${PV}|" \
+		-i SourceS/config.h.in || die
+	sed 's/CharisSILB.ttf/CharisSIL-B.ttf/g' \
+		-i SourceX/DiabloUI/fonts.h || die
 	cmake_src_prepare
 }
 
@@ -57,7 +61,10 @@ src_configure() {
 
 src_install() {
 	dobin "${BUILD_DIR}/${PN}"
-	make_desktop_entry ${PN} "Diablo devolved"
+
+	newicon -s 32 Packaging/resources/Diablo_32.png ${PN}.png
+	newicon -s 48 Packaging/resources/Diablo_48.png ${PN}.png
+	make_desktop_entry ${PN} "Diablo devolved" "/usr/share/icons/hicolor/48x48/apps/devilutionx.png"
 }
 
 pkg_postinst() {
