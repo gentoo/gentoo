@@ -1,0 +1,31 @@
+From 0fb66b8787a857c5c51b7efdc950a6ecf930b6ee Mon Sep 17 00:00:00 2001
+From: "ross.kirsling@sony.com"
+ <ross.kirsling@sony.com@268f45cc-cd09-0410-ab3c-d52691b4dbfc>
+Date: Fri, 4 Oct 2019 20:25:56 +0000
+Subject: [PATCH] Unreviewed WinCairo build fix for r250717.
+
+* WebProcess/WebPage/CoordinatedGraphics/LayerTreeHost.h:
+(WebKit::LayerTreeHost::invalidate): Deleted.
+
+
+
+git-svn-id: https://svn.webkit.org/repository/webkit/trunk@250743 268f45cc-cd09-0410-ab3c-d52691b4dbfc
+---
+ .../WebProcess/WebPage/CoordinatedGraphics/LayerTreeHost.h | 1 -
+ 1 files changed, 0 insertions(+), 1 deletion(-)
+
+diff --git a/Source/WebKit/WebProcess/WebPage/CoordinatedGraphics/LayerTreeHost.h b/Source/WebKit/WebProcess/WebPage/CoordinatedGraphics/LayerTreeHost.h
+index 980513647ff..d214532d852 100644
+--- a/Source/WebKit/WebProcess/WebPage/CoordinatedGraphics/LayerTreeHost.h
++++ b/Source/WebKit/WebProcess/WebPage/CoordinatedGraphics/LayerTreeHost.h
+@@ -212,7 +212,6 @@ inline void LayerTreeHost::scheduleLayerFlush() { }
+ inline void LayerTreeHost::cancelPendingLayerFlush() { }
+ inline void LayerTreeHost::setRootCompositingLayer(WebCore::GraphicsLayer*) { }
+ inline void LayerTreeHost::setViewOverlayRootLayer(WebCore::GraphicsLayer*) { }
+-inline void LayerTreeHost::invalidate() { }
+ inline void LayerTreeHost::scrollNonCompositedContents(const WebCore::IntRect&) { }
+ inline void LayerTreeHost::forceRepaint() { }
+ inline bool LayerTreeHost::forceRepaintAsync(CallbackID) { return false; }
+-- 
+2.20.1
+
