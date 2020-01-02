@@ -11804,7 +11804,7 @@ games-util/joystick 1.6.1 1.7.0: joystick testing utilities
 games-util/lgogdownloader 3.5 9999: Unofficial GOG.com downloader for Linux
 games-util/linux-wbfs-manager 0.1.12 9999: WBFS manager for Linux using GTK+
 games-util/loki_patch 20091105: Loki Software binary patch tool
-games-util/lutris 0.5.3 0.5.4 9999: An open source gaming platform for GNU/Linux
+games-util/lutris 0.5.3 0.5.4-r1 9999: An open source gaming platform for GNU/Linux
 games-util/mcrcon 0.6.1: Remote connection client for Minecraft servers
 games-util/nml 0.4.5 0.4.5-r1: Compiler of NML files into grf/nfo files
 games-util/pogo-manager-bin 0.1.6 0.1.7: Pokemon Go manager
