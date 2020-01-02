@@ -1,8 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# PPC Specific use flags
-#
+# Use this file to mask on both ppc32 and ppc64
 
 # Matt Turner <mattst88@gentoo.org> (2018-09-18)
 # sci-libs/coinor-mp is not keyworded

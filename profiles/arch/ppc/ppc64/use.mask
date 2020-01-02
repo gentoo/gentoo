@@ -1,3 +1,6 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # Samuli Suominen <ssuominen@gentoo.org> (2012-11-24)
 # TODO: Keyword and stabilize media-gfx/opencolorio and media-libs/opencv
 color-management
@@ -11,12 +14,17 @@ xindy
 # # Masking battery USE for bug 238770
 battery
 
-# Unmask the flag which corresponds to ARCH.
--ppc64
--abi_ppc_64
 # mask custom-cpuopts and cpudetection on ppc64 for mplayer - bug #234629
 cpudetection
+
+# unmask here
+-ibm
 
 # Michał Górny <mgorny@gentoo.org> (2013-05-04)
 # Unmask systemd since it is keyworded here.
 -systemd
+
+# Unmask the flag which corresponds to ARCH.
+-ppc64
+-abi_ppc_64
+

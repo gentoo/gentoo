@@ -1,11 +1,21 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Big endian specific masks
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-02-01)
 # AdoptOpenJDK's ppc64 build is little-endian only so it's impossible
-# to build openjdk:11, but it's possible to build openjdk:8 with icedtea{,-bin}
+# to build openjdk:11
 dev-java/openjdk:11
 dev-java/openjdk-bin
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
+# buggy on big-endian
+x11-drivers/xf86-video-amdgpu
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2018-02-21)
+# Mozc supports only little-endian architectures.
+app-i18n/mozc
 
 # <gcc-4 does not compile with >=gcc-4 on ppc64
 sys-libs/libstdc++-v3

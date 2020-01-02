@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# This file requires eapi 5 or later. New entries go on top.
+# New entries go on top.
 # Please use the same syntax as in use.mask
 
 # Hans de Graaff <graaff@gentoo.org> (2019-07-17)

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2017-05-07)
@@ -54,9 +54,6 @@ pcmcia
 mpd
 # app-admin/hddtemp
 hddtemp
-
-# Unmask this here, since only ppc64 can use it
--ibm
 
 # USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
 # Bug #184563, 2007-09-18
