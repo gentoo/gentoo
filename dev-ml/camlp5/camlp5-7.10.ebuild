@@ -36,7 +36,7 @@ if [ "${PATCHLEVEL}" != "${PV}" ] ; then
 fi
 
 src_prepare() {
-	
+
 	for i in ${PATCHLIST} ; do
 		epatch "${DISTDIR}/${i}"
 	done
@@ -65,8 +65,6 @@ src_install() {
 	# findlib support
 	insinto "$(ocamlfind printconf destdir)/${PN}"
 	doins etc/META
-
-	use doc && dohtml -r doc/*
 
 	dodoc CHANGES DEVEL ICHANGES README.md UPGRADING MODE
 }
