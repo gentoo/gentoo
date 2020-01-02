@@ -1,0 +1,14 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
+# app-text/libwpd and app-text/libwpg are not keyworded
+media-gfx/inkscape cdr visio wpg
+
+# Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
+# sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
+sci-libs/gdal mdb

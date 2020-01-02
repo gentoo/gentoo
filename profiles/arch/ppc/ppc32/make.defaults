@@ -1,0 +1,41 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# All extra USE/etc should be specified in sub-profiles.
+# DO NOT POLLUTE USE ON THIS PROFILE.
+
+ARCH="ppc"
+ACCEPT_KEYWORDS="ppc"
+
+CHOST="powerpc-unknown-linux-gnu"
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
+# Defaults for video drivers
+VIDEO_CARDS="fbdev glint mga nv r128 radeon"
+
+# Diego Pettenò <flameeyes@gentoo.org> (2006-12-06)
+# Defaults for PowerPC sound driver
+ALSA_CARDS="aoa aoa-fabric-layout aoa-onyx aoa-soundbus aoa-soundbus-i2s aoa-tas aoa-toonie powermac usb-audio via82xx"
+
+# Michał Górny <mgorny@gentoo.org> (2014-06-27)
+# Multilib-related setup for compatibility with future multilib.
+ABI="ppc"
+DEFAULT_ABI="ppc"
+MULTILIB_ABIS="ppc"
+CHOST_ppc="${CHOST}"
+LIBDIR_ppc="lib"
+
+# Michał Górny <mgorny@gentoo.org> (2014-06-27)
+# Make the ABI flag implicit for compatibility with native ebuilds.
+IUSE_IMPLICIT="abi_ppc_32"
+
+# Enable abi_ppc_32 for packages that don't have it forced.
+ABI_PPC="32"
+
+# Hans de Graaff <graaff@gentoo.org) (2019-07-17)
+# Temporary RUBY_TARGETS for bug 688976
+RUBY_TARGETS="ruby24 -ruby25"

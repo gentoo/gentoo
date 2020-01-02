@@ -1,0 +1,25 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file requires eapi 5 or later. New entries go on top.
+# Please use the same syntax as in use.mask
+
+# Matt Turner <mattst88@gentoo.org> (2018-04-25)
+# Dropped stable keywords
+octave
+
+# Pacho Ramos <pacho@gentoo.org> (2014-04-17)
+# Dropped stable keywords after the discussion caused by
+# Gnome 3.8/3.10 stabilization on this arch
+colord
+devhelp
+dia
+eds
+epiphany
+evo
+gnome-online-accounts
+gnome-shell
+gnumeric
+gusb
+upnp
+upnp-av

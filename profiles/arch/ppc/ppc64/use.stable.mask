@@ -1,0 +1,16 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# This file requires eapi 5 or later. New entries go on top.
+# Please use the same syntax as in use.mask
+
+# Hans de Graaff <graaff@gentoo.org> (2019-07-17)
+# Temporary mask for stable bug 688976
+ruby_targets_ruby25
+
+# Mike Gilbert <floppym@gentoo.org> (2017-06-08)
+# dev-lang/python:3.7 is not stable.
+python_targets_python3_7
+python_single_target_python3_7
+python_targets_python3_8
+python_single_target_python3_8

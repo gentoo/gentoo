@@ -1,0 +1,128 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-01)
+# low-memory requires pypy2 which is not keyworded
+# sandbox does not build at all #704376
+dev-python/pypy3-exe low-memory sandbox
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-28)
+# not keyworded or irrelevant on ~ppc64, bug 679888
+app-emulation/libvirt virtualbox xen
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Eugene Bright <eugene@bright.gdn> (2019-09-09)
+# Missing keyword on dev-embedded/libjaylink
+sys-apps/flashrom jlink-spi
+
+# Matthew Thode <prometheanfire@gentoo.org> (2019-08-22)
+# context works with newer versions of boost
+# https://github.com/boostorg/context/commit/d4608a4e8ba2e8a0bdd45613243e6c53a23d23dc
+>=dev-libs/boost-1.71.0 -context
+
+# Jimi Huotari <chiitoo@gentoo.org> (2019-07-28)
+# Mask unkeyworded, untested dependencies.
+# https://bugs.gentoo.org/689606
+lxqt-base/lxqt-meta admin powermanagement processviewer screenshot sudo
+lxqt-base/lxqt-panel cpuload networkmonitor pulseaudio sysstat
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-16)
+# sci-libs/dcmtk is not keyworded
+media-libs/openimageio dicom
+
+# Thomas Deutschmann <whissi@gentoo.org> (2018-12-10)
+# dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
+net-analyzer/snort open-appid
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-03-13)
+# missing keyword on media-libs/portmidi
+media-sound/hydrogen portmidi
+
+# Gilles Dartiguelongue <eva@gentoo.org> (2017-08-16)
+# missing keyword on dev-python/dbusmock, bug #620024
+>=gnome-base/gnome-settings-daemon-3.24 test
+
+# Michał Górny <mgorny@gentoo.org> (2017-06-28)
+# app-misc/dtach is not keyworded, and tests are restricted anyway, so
+# no point in pursuing it right now.
+app-shells/bash-completion test
+
+# Jeroen Roovers <jer@gentoo.org> (2017-01-16)
+# Incomplete support, bug #605878.
+net-vpn/tor seccomp
+
+# Jeroen Roovers <jer@gentoo.org> (2017-02-05)
+# media-libs/libilbc has not been ported to PPC64
+media-video/ffmpeg libilbc
+
+# Robin H. Johnson <robbat2@gentoo.org> (2016-11-18)
+# dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
+dev-db/redis luajit
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2016-08-01)
+# kde-frameworks/*:5 not keyworded.
+net-irc/kvirc kde
+app-arch/p7zip kde
+dev-vcs/subversion kwallet
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2016-06-28)
+# Missing keywords on app-text/gspell - bug #587368
+>=app-editors/gedit-3.20 spell
+
+# Patrice Clement <monsieurp@gentoo.org> (2016-02-08)
+# I would need to keyword an awful lot of packages on ppc64
+# that would need Java 7 otherwise.
+dev-java/batik python
+dev-java/bsf python
+dev-java/ant-apache-bsf python
+
+# Jeroen Roovers <jer@gentoo.org> (2015-12-26)
+# Mask until >sys-cluster/ceph-0.94 goes stable
+net-analyzer/rrdtool rados
+
+# Ben de Groot <yngwin@gentoo.org> (2015-07-20)
+# missing keywords
+media-sound/audacity midi soundtouch
+
+# Matthias Maier <tamiko@gentoo.org> (2014-12-24)
+# sys-devel/clang is not keyworded
+app-doc/doxygen clang
+
+# Michael Sterrett <mr_bones_@gentoo.org (2013-11-12)
+# Mask openmedia use flag because the content generation tools
+# are missing keywords.
+games-simulation/openttd openmedia
+
+# Sergey Popov <pinkbyte@gentoo.org> (2013-02-18)
+# sys-cluster/ploop can not be build on ppc64, bug #447644
+# Masking USE-dep on it
+sys-cluster/vzctl ploop
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
+# requires app-office/unoconv, which requires virtual/ooo, which is not
+# keyworded here. Remove mask if this situation changes.
+gnome-extra/sushi office
+
+# Kacper Kowalik <xarthisius@gentoo.org> (2011-09-02)
+# Mask www-client/seamonkey[ipc] on ppc64 wrt #381191
+www-client/seamonkey ipc
+
+# Kacper Kowalik <xarthisius@gentoo.org> (2010-05-30)
+# quesoglc is not keyworded
+x11-misc/rss-glx quesoglc
+
+# Brent Baude <ranger@gentoo.org> (2009-05-05)
+# Masking webkit from  libproxy due to TOC failure on webkit
+# and stupid 64bit toolchain.
+net-libs/libproxy webkit
+
+# Brent Baude <ranger@gentoo.org> (2008-06-11)
+# Masking out passwdqc from pambase since passwdqc
+sys-auth/pambase passwdqc
+
+# Joseph Jezak <josejx@gentoo.org> (2010-02-12)
+# Mask unstable pidgin deps until we can mark them stable (farsight2)
+net-im/pidgin gstreamer

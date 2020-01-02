@@ -1,0 +1,149 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# PPC Specific use flags
+#
+
+# Matt Turner <mattst88@gentoo.org> (2018-09-18)
+# sci-libs/coinor-mp is not keyworded
+coinmp
+
+# Michał Górny <mgorny@gentoo.org> (2018-07-16)
+# Python 3.7 support requires fresh versions of packages which are stuck
+# at keywordreqs.
+# bug #661306: dev-python/pytest
+# bug #661320: dev-python/twisted
+python_targets_python3_7
+python_single_target_python3_7
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-03-18)
+# mongodb is not keyworded on ppc/ppc64 (broken)
+mongodb
+
+# David Seifert <soap@gentoo.org> (2017-07-08)
+# Games are not keyworded anymore on ppc
+fortune
+nagios-game
+physfs
+
+# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
+# Unmask as this profile is big endian.
+-big-endian
+
+# Matt Turner <mattst88@gentoo.org> (2017-03-24)
+# virtual/opencl is not keyworded
+opencl
+
+# Matt Turner <mattst88@gentoo.org> (2017-03-24)
+# We don't have sys-devel/llvm
+llvm
+video_cards_amdgpu
+video_cards_radeonsi
+clang
+
+# Jeroen Roovers <jer@gentoo.org> (2015-09-22)
+# sci-libs/mkl is not supported on PPC
+mkl
+
+# Jeroen Roovers <jer@gentoo.org> (2015-05-25)
+# PowerPC has no support for this bootloader (bug #550322)
+gnuefi
+
+# Patrick Lauer <patrick@gentoo.org> (2015-04-28)
+# dependencies not keyworded yet
+ayatana
+
+#Klibc does not work
+klibc
+
+# These flags should only be used for ppc
+-ppcsha1
+-power8
+# Unmask the Altivec instruction set
+-altivec
+
+# Incompatible Use Flags
+#
+# These use-flags are x86/amd64 only, please feel free to make a bug report if
+# this is in error!
+#
+3dfx
+acpi
+lm-sensors
+rar
+hdf
+xvmc
+# cg is only provided by nvidia's binary only cg toolkit
+cg
+# dmi depends on PC BIOSes, we don't have those
+dmi
+# 2006-10-11 - corsair - bug #150925
+lcd_devices_graphlcd
+# Masked vaapi for PowerPC until it works on hardware available to PowerPC users (cell, etc.)
+vaapi
+
+
+### Other flags -- Please put additional maskings below here
+
+# No keyworded versions of openafs
+afs
+
+# Masking mbrola for bug #84322, if a new version is released, remove this
+mbrola
+
+# Modular X: unmask for architectures on which they are available
+-input_devices_synaptics
+-input_devices_wacom
+
+# Diego Pettenò <flameeyes@gentoo.org> (2006-12-06)
+# Mask ALSA drivers for ISA cards
+alsa_cards_msnd-pinnacle
+alsa_cards_sb16
+alsa_cards_sbawe
+alsa_cards_sscape
+alsa_cards_wavefront
+
+# George Shapovalov <george@gentoo.org> (2007-04-08)
+# supported on ppc
+-ada
+
+# Joseph Jezak <josejx@gentoo.org> (2007-06-28)
+# Masked Parallel LCD devices for bug #180683
+# app-misc/lcd4linux
+lcd_devices_lph7508
+lcd_devices_m50530
+lcd_devices_noritake
+lcd_devices_routerboard
+# app-misc/lcdproc
+lcd_devices_sed1330
+lcd_devices_sed1520
+lcd_devices_stv5730
+# Both
+lcd_devices_t6963
+
+# This will need >=media-libs/libgpod-0.8.0 keyworded and stabilized on both ppc/ppc64, bugs 313691 and 325839
+ipod
+ios
+
+# Christian Faulhammer <fauli@gentoo.org> (2010-11-01)
+# app-misc/lirc fails to compile on PPC64, see bug 275872 for example
+# Samuli Suominen <ssuominen@gentoo.org> (2010-11-03)
+# and it's also masked in arch/powerpc/ppc64/32ul/package.mask
+lirc
+
+# Kacper Kowalik <xarthisius@gentoo.org> (2011-07-26)
+# ppc keywords were dropped for dev-libs/prelude
+prelude
+
+# Julian Ospald <hasufell@gentoo.org> (2012-04-25)
+# Masked because nvidia-texture-tools is not (tested) for PowerPC
+nvtt
+
+# fdk-aac is already keyworded here
+-fdk
+
+# Pacho Ramos <pacho@gentoo.org> (2014-01-08)
+# Unmask systemd since it is keyworded here.
+-systemd
+
+

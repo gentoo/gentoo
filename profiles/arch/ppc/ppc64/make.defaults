@@ -1,0 +1,45 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# All extra USE/etc should be specified in sub-profiles.
+# DO NOT POLLUTE USE ON THIS PROFILE.
+
+ARCH="ppc64"
+ACCEPT_KEYWORDS="${ARCH}"
+
+CHOST="powerpc64-unknown-linux-gnu"
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+USE="ibm"
+
+MULTILIB_ABIS="ppc64"
+DEFAULT_ABI="ppc64"
+KERNEL_ABI="ppc64"
+PROFILE_ARCH="ppc64"
+ABI="ppc64"
+
+#CFLAGS_ppc64="-m64"
+LDFLAGS_ppc64="-m elf64ppc"
+CHOST_ppc64="powerpc64-unknown-linux-gnu"
+
+CFLAGS_ppc="-m32"
+LDFLAGS_ppc="-m elf32ppc"
+CHOST_ppc="powerpc-unknown-linux-gnu"
+
+# Michał Górny <mgorny@gentoo.org> (2014-06-27)
+# Make the ABI flag implicit for compatibility with native ebuilds.
+IUSE_IMPLICIT="abi_ppc_64"
+
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
+# Defaults for video drivers
+VIDEO_CARDS="fbdev mga nv r128 radeon"
+
+# Enable abi_ppc_64 for packages that don't have it forced.
+ABI_PPC="64"
+
+# Hans de Graaff <graaff@gentoo.org) (2019-07-17)
+# Temporary RUBY_TARGETS for bug 688976
+RUBY_TARGETS="ruby24 -ruby25"

@@ -1,0 +1,7 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
+# works on ppc64le, but not yet stable
+video_cards_amdgpu
+video_cards_ast

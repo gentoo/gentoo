@@ -1,0 +1,72 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2017-05-07)
+# There is no luajit support on ppc64 userland. Bug #608326.
+luajit
+
+# Anthony G. Basile <blueness@gentoo.org> (2015-08-01)
+# There is no luajit support on ppc64 userland.  Bug #554376.
+luajittex
+
+# Jeroen Roovers <jer@gentoo.org> (2015-05-10)
+# virtual/opencl requires media-libs/mesa[opencl] (bug #549096)
+opencl
+
+# Agostino Sarubbo <ago@gentoo.org> (2012-12-22)
+# mask kde since is not anymore keyworded for ppc64
+kde
+
+# Kacper Kowalik <xarthisius@gentoo.org> (2011-08-10)
+# Masking frei0r wrt bug #365451
+frei0r
+
+pda
+prelude
+mono
+networkmanager
+ocamlopt
+
+# not tested on ppc64
+capi
+xmms2
+
+# dietlibc
+diet
+
+# we don't have hardware to test. also see bug #113398
+dvb
+
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-03-20)
+# Modular X: mask for architectures on which they aren't available
+video_cards_glint
+# llvm is not keyworded
+video_cards_radeonsi
+
+#until netbeans is keyworded
+netbeans
+
+# mask pcmcia (bug #131306)
+pcmcia
+
+# conky dependencies missing keywords related (dragonheart 2006-11-12)
+# media-sound/mpd
+mpd
+# app-admin/hddtemp
+hddtemp
+
+# Unmask this here, since only ppc64 can use it
+-ibm
+
+# USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
+# Bug #184563, 2007-09-18
+# Robin H. Johnson <robbat2@gentoo.org>
+audit
+
+# unregisterised ghc arch for now.
+# no ghci - no TH
+template-haskell
+
+# Chris Gianelloni <wolf31o2@gentoo.org> (2008-02-13)
+# Mask multilib, since we cannot use it.
+multilib

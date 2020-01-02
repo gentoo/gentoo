@@ -1,0 +1,12 @@
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-02-01)
+# AdoptOpenJDK's ppc64 build is little-endian only so it's impossible
+# to build openjdk:11, but it's possible to build openjdk:8 with icedtea{,-bin}
+dev-java/openjdk:11
+dev-java/openjdk-bin
+
+# <gcc-4 does not compile with >=gcc-4 on ppc64
+sys-libs/libstdc++-v3
+<sys-devel/gcc-4.1

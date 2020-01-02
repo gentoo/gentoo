@@ -1,0 +1,47 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# When you add an entry to the top of this file, add your name, the date, and
+# an explanation of why something is getting masked. Please be extremely
+# careful not to commit atoms that are not valid, as it can cause large-scale
+# breakage, especially if it ends up in the daily snapshot.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
+## # Masking foo USE flag until we can get the
+## # foo stuff to work properly again (bug 12345)
+## =media-video/mplayer-0.90_pre5 foo
+## =media-video/mplayer-0.90_pre5-r1 foo
+#
+
+#--- END OF EXAMPLES ---
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-08-15)
+# media-libs/libsidplay:2 appears to be broken, bug #660288
+media-video/vlc sid
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-03)
+# Requires not yet stable dependencies
+sys-libs/gwenhywfar sensors serialport webkit
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-03)
+# dev-qt/qtwebkit:5 is not stable.
+dev-qt/designer webkit
+
+# Michael Weber <xmw@gentoo.org> (2017-03-01)
+# Mask until >sys-cluster/ceph-0.94 goes stable
+net-analyzer/rrdtool rados
+
+# Pacho Ramos <pacho@gentoo.org> (2015-05-15)
+# Missing keywords
+net-misc/connman l2tp openconnect
+sci-libs/plplot ocaml
+
+# Pacho Ramos <pacho@gentoo.org> (2014-07-02)
+# Mask due Gnome3 not going to be stabilized on this arch
+>=gnome-base/gnome-desktop-2.32.1-r2 license-docs
+gnome-base/gvfs google
+mail-client/balsa webkit
+net-libs/libproxy webkit
+>=x11-libs/gtk+-3.12.2 cloudprint

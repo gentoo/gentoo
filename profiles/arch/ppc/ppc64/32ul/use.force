@@ -1,0 +1,10 @@
+# Force the flag which corresponds to ARCH.
+ppc
+
+# Unforce the flag which corresponds to the 64-bit ARCH.
+-ppc64
+
+# Michał Górny <mgorny@gentoo.org> (2014-06-27)
+# Switch multilib flags for the ABI.
+-abi_ppc_64
+abi_ppc_32

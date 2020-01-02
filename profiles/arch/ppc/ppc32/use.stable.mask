@@ -1,0 +1,23 @@
+# Hans de Graaff <graaff@gentoo.org> (2019-07-17)
+# Temporary mask for stable bug 688976
+ruby_targets_ruby25
+
+# Mike Gilbert <floppym@gentoo.org> (2017-06-08)
+# dev-lang/python:3.7 is not stable.
+python_targets_python3_7
+python_single_target_python3_7
+python_targets_python3_8
+python_single_target_python3_8
+
+# Mikle Kolyada <zlogene@gentoo.org> (2018-04-24)
+# no stable net-misc/aria2 on ppc
+aria2
+
+# Andrey Grozin <grozin@gentoo.org> (2014-06-25)
+# no stable versions on ppc
+ecls
+sbcl
+
+# Chí-Thanh Christopher Nguyễn (2014-03-25)
+# appears to not work correctly since mesa-10
+opencl
