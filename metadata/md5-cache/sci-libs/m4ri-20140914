@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://files.sagemath.org/spkg/upstream/m4ri/m4ri-20140914.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=3cbc4f6e0a517cbd23ec7c0233ce0a29
+_md5_=2590e1a517ffbe5ff2d74f41cda04e83

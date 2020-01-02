@@ -15350,7 +15350,7 @@ net-misc/pulseaudio-dlna 0.5.2 0.5.2-r1 9999: A lightweight DLNA/UPNP/Chromecast
 net-misc/putty 0.73 9999: A Free Telnet/SSH Client
 net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your command line
 net-misc/pyhoca-cli 0.6.0.1 0.6.1.1 0.6.1.2: X2Go command line client
-net-misc/pyhoca-gui 0.5.0.8 0.5.1.0 0.6.1.0: X2Go graphical client applet
+net-misc/pyhoca-gui 0.5.0.8 0.5.1.0 0.6.1.0 0.6.1.1: X2Go graphical client applet
 net-misc/python-x2go 0.6.0.2 0.6.1.1 0.6.1.2 0.6.1.3: X2Go client-side Python API
 net-misc/pytvshows 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
 net-misc/qtm 1.3.19: Qt blogging client
