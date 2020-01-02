@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{5,6,7,8} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="CFFI bindings to the Argon2 password hashing library"
-HOMEPAGE="https://github.com/hynek/argon2_cffi"
+HOMEPAGE="https://github.com/hynek/argon2-cffi"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
