@@ -161,8 +161,8 @@ ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd	sta
 
 # PPC64 flat Profiles
 # @MAINTAINER: ppc64@gentoo.org
-ppc64           default/linux/ppc64/17.0                          stable
-ppc64           default/linux/ppc64le/17.0                        stable
+ppc64           default/linux/ppc64/17.0                          dev
+ppc64           default/linux/ppc64le/17.0                        dev
 
 # RISC-V Profiles
 # @MAINTAINER: riscv@gentoo.org
