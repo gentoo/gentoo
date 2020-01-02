@@ -15879,7 +15879,7 @@ sci-astronomy/gasgano 2.4.8: ESO astronomical data file organizer
 sci-astronomy/gnuastro 0.3: GNU Astronomy Utilities
 sci-astronomy/healpix 3.30 3.31: Hierarchical Equal Area isoLatitude Pixelization of a sphere
 sci-astronomy/idlastro 20161220 99999999: Astronomical user routines for IDL
-sci-astronomy/kstars 3.2.3 3.3.8-r2: Desktop Planetarium
+sci-astronomy/kstars 3.2.3 3.3.8-r2 3.3.9: Desktop Planetarium
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
 sci-astronomy/montage 4.1 5.0: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
