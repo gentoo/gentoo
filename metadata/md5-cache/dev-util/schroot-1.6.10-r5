@@ -1,0 +1,15 @@
+BDEPEND=dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=>=dev-libs/boost-1.42.0:= >=sys-apps/util-linux-2.16 btrfs? ( >=sys-fs/btrfs-progs-0.19-r2 ) lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) app-arch/xz-utils sys-apps/groff doc? ( app-doc/doxygen media-gfx/graphviz ) nls? ( >=app-text/po4a-0.40 sys-devel/gettext ) test? ( >=dev-util/cppunit-1.10.0 )
+DESCRIPTION=Utility to execute commands in a chroot environment
+EAPI=7
+HOMEPAGE=https://packages.debian.org/source/sid/schroot
+IUSE=btrfs +dchroot debug doc lvm nls pam test
+KEYWORDS=~amd64 ~arm ~ppc64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=dev-libs/boost-1.42.0:= >=sys-apps/util-linux-2.16 btrfs? ( >=sys-fs/btrfs-progs-0.19-r2 ) lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) sys-apps/debianutils dchroot? ( !sys-apps/dchroot ) nls? ( virtual/libintl ) virtual/tmpfiles
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://debian/pool/main/s/schroot/schroot_1.6.10.orig.tar.xz mirror://debian/pool/main/s/schroot/schroot_1.6.10-6.debian.tar.xz
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	cmake	35b3146b6de4b75aef568db01ba9760c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	pam	a1771fc1e5831c201eaf18451747d94b	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=005f72bda4a93325a9be1e3091ba56ad

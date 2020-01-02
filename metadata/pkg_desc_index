@@ -10852,7 +10852,7 @@ dev-util/sasm 2.2-r1 3.10.1: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.7.0: The Scala IDE
 dev-util/scanmem 0.17: Locate and modify variables in executing processes
 dev-util/sccache 0.2.8-r2 0.2.9 0.2.10 0.2.12: ccache/distcc like tool with support for rust and cloud storage
-dev-util/schroot 1.6.10-r4: Utility to execute commands in a chroot environment
+dev-util/schroot 1.6.10-r4 1.6.10-r5: Utility to execute commands in a chroot environment
 dev-util/scons 3.1.1 3.1.2: Extensible Python-based build utility
 dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2 9999: simple command-line tool to talk to serial devices
