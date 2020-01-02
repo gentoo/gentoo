@@ -4,10 +4,6 @@
 # Unmask the flag which corresponds to ARCH.
 -riscv
 
-# Matt Turner <mattst88@gentoo.org> (2019-12-05)
-# media-libs/libglvnd is not keyworded
-libglvnd
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-11-27)
 # valgrind has no RISCV port.
 valgrind

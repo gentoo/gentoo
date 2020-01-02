@@ -4,10 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Aaron Bauman <bman@gentoo.org> (2019-12-27)
-# not stable yet
-libglvnd
-
 # Aaron Bauman <bman@gentoo.org> (2019-05-20)
 # Does not build on arm64
 ocamlopt
