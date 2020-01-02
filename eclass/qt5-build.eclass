@@ -582,7 +582,7 @@ qt5_base_configure() {
 
 		# exclude examples and tests from default build
 		-nomake examples
-		-nomake tests
+		$(usex test '' '-nomake tests')
 		-no-compile-examples
 
 		# disable rpath on non-prefix (bugs 380415 and 417169)
