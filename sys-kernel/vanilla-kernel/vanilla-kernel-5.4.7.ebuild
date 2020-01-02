@@ -255,19 +255,25 @@ pkg_postinst() {
 		eend ${?} || die "Installing the kernel failed"
 	fi
 
-	local symlink_target=$(readlink "${EROOT}"/usr/src/linux)
-	local symlink_ver=${symlink_target#linux-}
-	if [[ ${symlink_target} == linux-* && -z ${symlink_ver//[0-9.]/} ]]
-	then
-		local symlink_pkg=${CATEGORY}/${PN}-${symlink_ver}
-		# if the current target is either being replaced, or still
-		# installed (probably depclean candidate), update the symlink
-		if has "${symlink_ver}" ${REPLACING_VERSIONS} ||
-				has_version -r "~${symlink_pkg}"
+	if [[ ! -e ${EROOT}/usr/src/linux ]]; then
+		ebegin "Creating /usr/src/linux symlink"
+		ln -f -n -s linux-${PV} "${EROOT}"/usr/src/linux
+		eend ${?}
+	else
+		local symlink_target=$(readlink "${EROOT}"/usr/src/linux)
+		local symlink_ver=${symlink_target#linux-}
+		if [[ ${symlink_target} == linux-* && -z ${symlink_ver//[0-9.]/} ]]
 		then
-			ebegin "Updating /usr/src/linux symlink"
-			ln -f -n -s linux-${PV} "${EROOT}"/usr/src/linux
-			eend ${?}
+			local symlink_pkg=${CATEGORY}/${PN}-${symlink_ver}
+			# if the current target is either being replaced, or still
+			# installed (probably depclean candidate), update the symlink
+			if has "${symlink_ver}" ${REPLACING_VERSIONS} ||
+					has_version -r "~${symlink_pkg}"
+			then
+				ebegin "Updating /usr/src/linux symlink"
+				ln -f -n -s linux-${PV} "${EROOT}"/usr/src/linux
+				eend ${?}
+			fi
 		fi
 	fi
 
