@@ -19,8 +19,7 @@ IUSE="brotli test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-python/PySocks-1.5.6[${PYTHON_USEDEP}]
-	!~dev-python/PySocks-1.5.7[${PYTHON_USEDEP}]
+	>=dev-python/PySocks-1.5.8[${PYTHON_USEDEP}]
 	<dev-python/PySocks-2.0[${PYTHON_USEDEP}]
 	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.3.4[${PYTHON_USEDEP}]
