@@ -16,6 +16,10 @@ DOCS=(
 	ChangeLog.md README.md doc/MIGRATION.md
 )
 
+# This patch is taken from master branch in mainstream commit a1659e2.  It is
+# necessary in order to support musl libc.
+PATCHES=( "${FILESDIR}/${P}-int64_t.patch" )
+
 src_configure() {
 	econf $(use_enable static-libs static)
 }
