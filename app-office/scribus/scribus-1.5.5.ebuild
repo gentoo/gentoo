@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -70,6 +70,7 @@ PATCHES=(
 	# upstream svn trunk
 	"${FILESDIR}"/${P}-poppler-0.82.patch
 	"${FILESDIR}"/${P}-poppler-0.83.patch
+	"${FILESDIR}"/${P}-poppler-0.84.patch
 	# non(?)-upstreamable
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
 	"${FILESDIR}"/${P}-docdir.patch
