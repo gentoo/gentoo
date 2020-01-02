@@ -16969,7 +16969,7 @@ sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.4.1-r2 2.6-r1 9999: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0-r1: Baselayout for Java
 sys-apps/baselayout-prefix 2.2-r5 2.6-r1 2.6-r2: Filesystem baselayout and init scripts
-sys-apps/bat 0.12.0: cat(1) clone with syntax highlighting and Git integration
+sys-apps/bat 0.12.1: cat(1) clone with syntax highlighting and Git integration
 sys-apps/biosdevname 0.7.2 0.7.3: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/biosdisk 0_p20171116: A script that creates floppy boot images to flash Dell BIOSes
 sys-apps/bleachbit 3.0: Clean junk to free disk space and to maintain privacy
