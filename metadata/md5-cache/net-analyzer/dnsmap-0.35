@@ -1,0 +1,11 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=install prepare
+DESCRIPTION=Scan for subdomains using bruteforcing techniques
+EAPI=7
+HOMEPAGE=https://github.com/resurrecting-open-source-projects/dnsmap
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://github.com/resurrecting-open-source-projects/dnsmap/archive/0.35.tar.gz -> dnsmap-0.35.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=33395e30c6364491349c47f56e3722b0

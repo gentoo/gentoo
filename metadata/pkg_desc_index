@@ -14312,7 +14312,7 @@ net-analyzer/cacti 1.2.8: Cacti is a complete frontend to rrdtool
 net-analyzer/cacti-spine 1.2.8 99999: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r2: An rsync logfile analyzer
-net-analyzer/cbm 0.1-r1: Display the current traffic on all network devices
+net-analyzer/cbm 0.1-r1 0.2: Color Bandwidth Meter
 net-analyzer/chaosreader 0.96: Trace TCP/UDP/... sessions and fetch application data.
 net-analyzer/check_mk_agent 1.2.8_p27 1.4.0_p31: Agent to report data to Check_MK for monitoring
 net-analyzer/chronograf 1.4.3.0 1.6.2 1.7.3: Monitoring, processing and alerting on time series data
@@ -14324,6 +14324,7 @@ net-analyzer/darkstat 3.0.719: Network traffic analyzer with cute web interface
 net-analyzer/dhcp_probe 1.3.0-r4: discover DHCP and BootP servers on a directly-attached Ethernet network
 net-analyzer/dhcpdump 1.8: DHCP Packet Analyzer/tcpdump postprocessor
 net-analyzer/dnsenum 1.2.2: A perl script to enumerate DNS from a server
+net-analyzer/dnsmap 0.35: Scan for subdomains using bruteforcing techniques
 net-analyzer/dnstracer 1.9-r2: Determines where a given nameserver gets its information from
 net-analyzer/dosdetector 20060621 20060621-r1: Tool to analyze and detect suspicious traffic from IP and alert about it
 net-analyzer/driftnet 0.1.6_p20090401 0.1.6_p20090401-r1: Listen to network traffic and pick out images from TCP streams observed
