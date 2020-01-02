@@ -1,14 +1,13 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=configure install prepare unpack
+DEFINED_PHASES=configure install prepare
 DEPEND=!sys-apps/firejail-lts apparmor? ( sys-libs/libapparmor ) test? ( dev-tcltk/expect )
 DESCRIPTION=Security sandbox for any type of processes
 EAPI=7
 HOMEPAGE=https://firejail.wordpress.com/
 IUSE=apparmor +chroot contrib debug +file-transfer +globalcfg +network +overlayfs +private-home +seccomp +suid test +userns vim-syntax +whitelist x11
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-PROPERTIES=live
 RDEPEND=apparmor? ( sys-libs/libapparmor )
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b
+SRC_URI=https://github.com/netblue30/firejail/archive/0.9.62.tar.gz -> firejail-0.9.62.tar.gz
 _md5_=5445cd36563e9ba68cc90b8ee5985430
