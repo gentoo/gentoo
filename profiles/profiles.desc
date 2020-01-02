@@ -173,9 +173,6 @@ s390            default/linux/s390/17.0/s390x                   exp
 # SH Profiles
 # @MAINTAINER: sh@gentoo.org
 sh              default/linux/sh/17.0                           exp
-sh              default/linux/sh/17.0/desktop                   exp
-sh              default/linux/sh/17.0/desktop/gnome             exp
-sh              default/linux/sh/17.0/developer                 exp
 
 # SPARC Profiles
 # @MAINTAINER: sparc@gentoo.org
