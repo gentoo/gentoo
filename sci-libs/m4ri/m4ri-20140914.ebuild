@@ -28,9 +28,7 @@ RDEPEND="${DEPEND}"
 DOCS=( AUTHORS )
 
 pkg_pretend() {
-	if use openmp ; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
+	use openmp && tc-check-openmp
 }
 
 src_configure() {
