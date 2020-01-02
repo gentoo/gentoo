@@ -17452,7 +17452,7 @@ sys-cluster/kubectl 1.14.9 1.14.10 1.15.7 1.16.4 1.17.0: CLI to run commands aga
 sys-cluster/kubelet 1.14.9 1.14.10 1.15.7 1.16.4: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1: API for distributing embarrassingly parallel workloads using self-stabilization
-sys-cluster/libqb 0.17.2 1.0.1 1.0.5: Library providing high performance logging, tracing, ipc, and poll
+sys-cluster/libqb 0.17.2 1.0.1 1.0.5 1.9.0: Library providing high performance logging, tracing, ipc, and poll
 sys-cluster/libquo 1.2 1.2.2 1.2.3 1.2.4-r1 1.2.9 9999: run-time tuning of process binding policies made easy
 sys-cluster/lustre 2.13.0: Lustre is a parallel distributed file system
 sys-cluster/maui 3.3.1-r3: Maui Cluster Scheduler
@@ -17984,7 +17984,7 @@ virtual/libintl 0 0-r1 0-r2: Virtual for the GNU Internationalization Library
 virtual/libstdc++ 3.3: Virtual for the GNU Standard C++ Library for <gcc-3.4
 virtual/libudev 215-r1 232-r1 232-r2 232-r3: Virtual for libudev providers
 virtual/libusb 0-r2 1-r1 1-r2: Virtual for libusb
-virtual/linux-sources 3 3-r1: Virtual for Linux kernel sources
+virtual/linux-sources 3 3-r2: Virtual for Linux kernel sources
 virtual/linuxtv-dvb-headers 5.8: Virtual Package installing the Header files for DVB
 virtual/logger 0-r1: Virtual for system loggers
 virtual/mailx 1 2: Virtual for mail implementations

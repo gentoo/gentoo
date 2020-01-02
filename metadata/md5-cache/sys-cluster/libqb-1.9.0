@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-libs/glib:2 app-arch/xz-utils test? ( dev-libs/check ) doc? ( app-doc/doxygen[dot] )
+DESCRIPTION=Library providing high performance logging, tracing, ipc, and poll
+EAPI=7
+HOMEPAGE=https://github.com/ClusterLabs/libqb
+IUSE=debug doc examples systemd test
+KEYWORDS=~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/glib:2
+RESTRICT=!test? ( test )
+SLOT=0/20
+SRC_URI=https://github.com/ClusterLabs/libqb/archive/v1.9.0.tar.gz -> libqb-1.9.0.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=6415fa5242c8302d85e3ca04dae4a561
