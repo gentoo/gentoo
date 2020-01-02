@@ -5153,7 +5153,7 @@ dev-libs/qoauth 2.0.1_pre20160315-r3: Qt-based library for OAuth support
 dev-libs/qqwing 1.3.3 1.3.4: Sudoku puzzle generator and solver
 dev-libs/qrosscore 0.3.2 9999: KDE-free version of Kross (core libraries and Qt Script backend)
 dev-libs/qrosspython 0.3.2 9999: Python scripting backend for Qross
-dev-libs/qtkeychain 0.9.0: Qt API for storing passwords securely
+dev-libs/qtkeychain 0.9.0 0.10.0: Qt API for storing passwords securely
 dev-libs/quazip 0.8.1: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
 dev-libs/rapidjson 1.1.0 1.1.0-r1 1.1.0-r2 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
@@ -11341,7 +11341,7 @@ games-emulation/zinc 1.1-r1: An x86 binary-only emulator for Sony ZN-1, ZN-2, an
 games-emulation/zsnes 1.51-r7: SNES (Super Nintendo) emulator that uses x86 assembly
 games-engines/box2d 2.1.2 2.2.1 2.3.1: A C++ engine for simulating rigid bodies in 2D games
 games-engines/dMagnetic 0.19: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
-games-engines/devilutionx 1.0.0 9999: Diablo engine for modern operating systems
+games-engines/devilutionx 1.0.0-r1 9999: Diablo engine for modern operating systems
 games-engines/exult 9999: an Ultima 7 game engine that runs on modern operating systems
 games-engines/frobtads 1.2.3-r1 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
 games-engines/frotz 2.50_beta2: Interpreter for Z-code based text games
@@ -16954,7 +16954,7 @@ sec-policy/selinux-xserver 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-
 sec-policy/selinux-zabbix 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 9999: SELinux policy for zabbix
 sys-apps/accountsservice 0.6.50-r1: D-Bus interfaces for querying and manipulating user account information
 sys-apps/ack 3.0.0 3.2.0: ack is a tool like grep, optimized for programmers
-sys-apps/acl 2.2.52-r1 2.2.53: access control list utilities, libraries and headers
+sys-apps/acl 2.2.53: access control list utilities, libraries and headers
 sys-apps/agedu 20180329 20180522 20190630: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
@@ -16962,7 +16962,7 @@ sys-apps/apparmor 2.13.3: Userspace utils and init scripts for the AppArmor appl
 sys-apps/apparmor-utils 2.13.3: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.4.2: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
-sys-apps/attr 2.4.47-r2 2.4.48-r3 9999: Extended attributes tools
+sys-apps/attr 2.4.48-r3 9999: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
 sys-apps/baobab 3.34.0: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar

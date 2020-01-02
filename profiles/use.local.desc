@@ -3230,6 +3230,7 @@ games-emulation/ppsspp:system-ffmpeg - Use the system-wide media-video/ffmpeg in
 games-emulation/snes9x:netplay - Enable playing ROMs over the network (not recommended)
 games-emulation/vbam:link - Enable GBA linking functionality
 games-emulation/zsnes:debug - Enable the builtin debugger
+games-engines/devilutionx:lto - Build with link time optimization enabled
 games-engines/exult:sdl2 - Use libsdl2 instead of libsdl
 games-engines/frobtads:tads2compiler - Build TADS2 compiler
 games-engines/frobtads:tads3compiler - Build TADS3 compiler
