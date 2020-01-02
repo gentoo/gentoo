@@ -5163,13 +5163,13 @@ dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Fr
 dev-libs/redland-bindings 1.0.14.1-r2 1.0.17.1: Language bindings for Redland
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rlog 1.4: A C++ logging library
-dev-libs/rocm-comgr 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0: Radeon Open Compute Code Object Manager
-dev-libs/rocm-device-libs 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 9999: Radeon Open Compute Device Libraries
+dev-libs/rocm-comgr 3.0.0: Radeon Open Compute Code Object Manager
+dev-libs/rocm-device-libs 3.0.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
-dev-libs/rocm-opencl-driver 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0: Radeon Open Compute OpenCL Compiler Tool Driver
-dev-libs/rocm-opencl-runtime 2.6.0-r1 2.8.0 2.9.0 2.9.0-r1 2.10.0 3.0.0: Radeon Open Compute OpenCL Compatible Runtime
-dev-libs/rocr-runtime 2.0.0 2.6.0-r1 2.7.0 2.8.0 2.8.0-r1 2.9.0 2.10.0 3.0.0 9999: Radeon Open Compute Runtime
-dev-libs/roct-thunk-interface 2.0.0 2.6.0 2.7.0 2.8.0 2.9.0-r1 2.10.0 3.0.0 9999: Radeon Open Compute Thunk Interface
+dev-libs/rocm-opencl-driver 2.10.0: Radeon Open Compute OpenCL Compiler Tool Driver
+dev-libs/rocm-opencl-runtime 3.0.0: Radeon Open Compute OpenCL Compatible Runtime
+dev-libs/rocr-runtime 3.0.0 9999: Radeon Open Compute Runtime
+dev-libs/roct-thunk-interface 3.0.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/satyr 0.26 0.27: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 6.0.0 6.1.0 6.2.0: Simulation Description Format (SDF) parser
@@ -15393,7 +15393,7 @@ net-misc/sobby 0.4.8-r1: Standalone Obby server
 net-misc/socat 1.7.3.2 1.7.3.3 2.0.0_beta9 9999: Multipurpose relay (SOcket CAT)
 net-misc/sock 1.1-r1: A shell interface to network sockets
 net-misc/socket 1.5: A shell-level interface to TCP sockets
-net-misc/socket-burst-dampener 1.2.0: A daemon that spawns one command per connection, and dampens connection bursts
+net-misc/socket-burst-dampener 1.2.0 1.2.1: A daemon that spawns one command per connection, and dampens connection bursts
 net-misc/spice-gtk 0.35 0.37-r2 9999: Set of GObject and Gtk objects for connecting to Spice servers and a client GUI
 net-misc/spiped 1.6.0-r1: secure pipe daemon
 net-misc/spread 4.4.1 5.0.1: Distributed network messaging system
